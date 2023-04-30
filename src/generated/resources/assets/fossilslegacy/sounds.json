@@ -1,0 +1,73 @@
+{
+  "block.drum.hit": {
+    "sounds": [
+      "fossilslegacy:drum_hit"
+    ],
+    "subtitle": "sound.fossilslegacy.drum.hit"
+  },
+  "block.drum.triple_hit": {
+    "sounds": [
+      "fossilslegacy:drum_triple_hit"
+    ],
+    "subtitle": "sound.fossilslegacy.drum.triple_hit"
+  },
+  "entity.mammoth.ambient": {
+    "sounds": [
+      "fossilslegacy:mammoth_ambient"
+    ],
+    "subtitle": "sound.fossilslegacy.mammoth.ambient"
+  },
+  "entity.mammoth.death": {
+    "sounds": [
+      "fossilslegacy:mammoth_death"
+    ],
+    "subtitle": "sound.fossilslegacy.mammoth.death"
+  },
+  "entity.mammoth.hurt": {
+    "sounds": [
+      "fossilslegacy:mammoth_hurt"
+    ],
+    "subtitle": "sound.fossilslegacy.mammoth.hurt"
+  },
+  "entity.smilodon.ambient": {
+    "sounds": [
+      "fossilslegacy:smilodon_ambient_1",
+      "fossilslegacy:smilodon_ambient_2",
+      "fossilslegacy:smilodon_ambient_3"
+    ],
+    "subtitle": "sound.fossilslegacy.smilodon.ambient"
+  },
+  "entity.smilodon.death": {
+    "sounds": [
+      "fossilslegacy:smilodon_death"
+    ],
+    "subtitle": "sound.fossilslegacy.smilodon.death"
+  },
+  "entity.smilodon.hurt": {
+    "sounds": [
+      "fossilslegacy:smilodon_hurt"
+    ],
+    "subtitle": "sound.fossilslegacy.smilodon.hurt"
+  },
+  "entity.triceratops.ambient": {
+    "sounds": [
+      "fossilslegacy:triceratops_ambient_1",
+      "fossilslegacy:triceratops_ambient_2",
+      "fossilslegacy:triceratops_ambient_3"
+    ],
+    "subtitle": "sound.fossilslegacy.triceratops.ambient"
+  },
+  "entity.triceratops.death": {
+    "sounds": [
+      "fossilslegacy:triceratops_death"
+    ],
+    "subtitle": "sound.fossilslegacy.triceratops.death"
+  },
+  "entity.triceratops.hurt": {
+    "sounds": [
+      "fossilslegacy:triceratops_hurt_1",
+      "fossilslegacy:triceratops_hurt_2"
+    ],
+    "subtitle": "sound.fossilslegacy.triceratops.hurt"
+  }
+}

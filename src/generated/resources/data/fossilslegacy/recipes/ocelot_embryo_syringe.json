@@ -1,0 +1,8 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "ingredient": {
+    "item": "fossilslegacy:ocelot_dna"
+  },
+  "result": "fossilslegacy:ocelot_embryo_syringe",
+  "time": 6000
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "fossilslegacy:raw_utahraptor_meat"
+  },
+  "result": "fossilslegacy:cooked_utahraptor_meat"
+}

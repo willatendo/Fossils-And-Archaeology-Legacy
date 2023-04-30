@@ -1,0 +1,79 @@
+plugins {
+	id 'eclipse'
+	id 'maven-publish'
+	id 'net.minecraftforge.gradle' version '5.1.+'
+}
+
+version = '0.0.1a'
+group = 'fossilslegacy'
+archivesBaseName = 'fossilslegacy'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+	mappings channel: 'official', version: minecraft_version
+	
+	runs {
+		client {
+			workingDirectory project.file('run')
+
+			mods {
+				fossilslegacy {
+					source sourceSets.main
+				}
+			}
+		}
+
+		server {
+			workingDirectory project.file('run')
+
+			mods {
+				fossilslegacy {
+					source sourceSets.main
+				}
+			}
+		}
+		
+		data {
+			workingDirectory project.file('run')
+
+			args '--mod', 'fossilslegacy', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+
+			mods {
+				fossilslegacy {
+					source sourceSets.main
+				}
+			}
+		}
+	}
+}
+
+sourceSets.main.resources { 
+	srcDir 'src/generated/resources' 
+}
+
+repositories {
+	maven {
+		url 'https://maven.tterrag.com'
+	}
+}
+
+dependencies {
+	minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+}
+
+jar {
+	manifest {
+		attributes([
+				"Specification-Title" : "Fossils Legacy",
+				"Specification-Vendor" : "Willatendo",
+				"Specification-Version" : "0.0.1a",
+				"Implementation-Title" : project.name,
+				"Implementation-Version" : project.jar.archiveVersion,
+				"Implementation-Vendor" : "Willatendo",
+				"Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+		])
+	}
+}
+
+jar.finalizedBy('reobfJar')

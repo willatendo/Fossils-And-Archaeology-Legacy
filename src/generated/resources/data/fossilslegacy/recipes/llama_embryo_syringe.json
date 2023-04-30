@@ -1,0 +1,8 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "ingredient": {
+    "item": "fossilslegacy:llama_dna"
+  },
+  "result": "fossilslegacy:llama_embryo_syringe",
+  "time": 6000
+}

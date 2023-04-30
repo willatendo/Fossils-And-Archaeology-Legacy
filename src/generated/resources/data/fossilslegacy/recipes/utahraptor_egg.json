@@ -1,0 +1,8 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "ingredient": {
+    "item": "fossilslegacy:utahraptor_dna"
+  },
+  "result": "fossilslegacy:utahraptor_egg",
+  "time": 6000
+}

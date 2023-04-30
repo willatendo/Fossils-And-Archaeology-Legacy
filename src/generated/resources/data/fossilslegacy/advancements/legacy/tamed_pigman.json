@@ -1,0 +1,38 @@
+{
+  "parent": "fossilslegacy:legacy/ancient_helmet",
+  "criteria": {
+    "tamed_pigman": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "fossilslegacy:ancient_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.tamed_pigman.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "fossilslegacy:ancient_helmet",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.tamed_pigman.title"
+    }
+  },
+  "requirements": [
+    [
+      "tamed_pigman"
+    ]
+  ]
+}

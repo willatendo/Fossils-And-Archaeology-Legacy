@@ -1,0 +1,8 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "ingredient": {
+    "item": "fossilslegacy:pterosaurus_dna"
+  },
+  "result": "fossilslegacy:pterosaurus_egg",
+  "time": 6000
+}

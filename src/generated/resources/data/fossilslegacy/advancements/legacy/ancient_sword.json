@@ -1,0 +1,38 @@
+{
+  "parent": "fossilslegacy:legacy/sword_artifact",
+  "criteria": {
+    "has_ancient_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "fossilslegacy:ancient_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.ancient_sword.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "fossilslegacy:ancient_sword",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.ancient_sword.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_ancient_sword"
+    ]
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "minecraft:block/spruce_planks",
+    "east": "fossilslegacy:block/drum_side",
+    "north": "fossilslegacy:block/drum_side",
+    "particle": "fossilslegacy:block/drum_side",
+    "south": "fossilslegacy:block/drum_side",
+    "up": "fossilslegacy:block/drum_follow",
+    "west": "fossilslegacy:block/drum_side"
+  }
+}

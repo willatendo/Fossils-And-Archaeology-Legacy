@@ -1,0 +1,36 @@
+{
+  "parent": "fossilslegacy:legacy/archaeology_workbench",
+  "criteria": {
+    "used_cave_painting": {
+      "conditions": {
+        "item": {
+          "items": [
+            "fossilslegacy:cave_painting"
+          ]
+        },
+        "location": {}
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.cave_painting.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "fossilslegacy:cave_painting"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.cave_painting.title"
+    }
+  },
+  "requirements": [
+    [
+      "used_cave_painting"
+    ]
+  ]
+}
