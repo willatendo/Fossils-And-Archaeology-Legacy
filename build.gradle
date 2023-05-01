@@ -52,12 +52,6 @@ sourceSets.main.resources {
 	srcDir 'src/generated/resources' 
 }
 
-repositories {
-	maven {
-		url 'https://maven.tterrag.com'
-	}
-}
-
 dependencies {
 	minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 }

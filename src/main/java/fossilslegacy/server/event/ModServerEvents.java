@@ -1,6 +1,7 @@
 package fossilslegacy.server.event;
 
 import fossilslegacy.server.block.FossilsLegacyBlocks;
+import fossilslegacy.server.entity.CavePaintingTypes;
 import fossilslegacy.server.entity.DrownedPirate;
 import fossilslegacy.server.entity.Egg;
 import fossilslegacy.server.entity.FossilsLegacyEntities;
@@ -82,7 +83,7 @@ public class ModServerEvents {
 
 	@SubscribeEvent
 	public static void creativeModTabRegistry(CreativeModeTabEvent.Register event) {
-		event.registerCreativeModeTab(FossilsLegacyUtils.resource(FossilsLegacyUtils.ID), builder -> builder.title(FossilsLegacyUtils.translation("itemGroup", FossilsLegacyUtils.ID)).icon(() -> FossilsLegacyItems.FOSSIL.get().getDefaultInstance()).displayItems((featureFlagSet, output, isOp) -> {
+		event.registerCreativeModeTab(FossilsLegacyUtils.resource(FossilsLegacyUtils.ID), builder -> builder.title(FossilsLegacyUtils.translation("itemGroup", FossilsLegacyUtils.ID)).icon(() -> FossilsLegacyItems.FOSSIL.get().getDefaultInstance()).displayItems((itemDisplayParameters, output) -> {
 			output.accept(FossilsLegacyItems.FOSSIL.get());
 			output.accept(FossilsLegacyItems.TRICERATOPS_DNA.get());
 			output.accept(FossilsLegacyItems.UTAHRAPTOR_DNA.get());
@@ -191,7 +192,12 @@ public class ModServerEvents {
 			output.accept(FossilsLegacyItems.MAMMOTH_EMBRYO_SYRINGE.get());
 			output.accept(FossilsLegacyItems.JURASSIC_FERN_SPORES.get());
 			output.accept(FossilsLegacyItems.RELIC_SCRAP.get());
-			output.accept(FossilsLegacyItems.CAVE_PAINTING.get());
+			for (int i = 0; i < CavePaintingTypes.values().length + 1; i++) {
+				ItemStack itemStack = new ItemStack(FossilsLegacyItems.CAVE_PAINTING.get());
+				CompoundTag compoundTag = itemStack.getOrCreateTagElement("EntityTag");
+				compoundTag.putInt("Type", i);
+				output.accept(itemStack);
+			}
 			output.accept(FossilsLegacyItems.SWORD_ARTIFACT.get());
 			output.accept(FossilsLegacyItems.HELMET_ARTIFACT.get());
 			output.accept(FossilsLegacyItems.GEM_ARTIFACT.get());

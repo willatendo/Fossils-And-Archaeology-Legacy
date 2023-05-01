@@ -15,5 +15,6 @@
   ],
   "result": {
     "item": "fossilslegacy:skull_stick"
-  }
+  },
+  "show_notification": true
 }

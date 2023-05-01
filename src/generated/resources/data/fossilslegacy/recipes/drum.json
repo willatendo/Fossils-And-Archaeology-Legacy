@@ -19,5 +19,6 @@
   ],
   "result": {
     "item": "fossilslegacy:drum"
-  }
+  },
+  "show_notification": true
 }

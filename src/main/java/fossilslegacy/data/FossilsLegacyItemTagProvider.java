@@ -7,13 +7,12 @@ import fossilslegacy.server.item.FossilsLegacyItems;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class FossilsLegacyItemTagProvider extends ItemTagsProvider {
-	public FossilsLegacyItemTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, TagsProvider<Block> blockTags, String modId, ExistingFileHelper existingFileHelper) {
+	public FossilsLegacyItemTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, CompletableFuture<TagLookup<Block>> blockTags, String modId, ExistingFileHelper existingFileHelper) {
 		super(packOutput, provider, blockTags, modId, existingFileHelper);
 	}
 

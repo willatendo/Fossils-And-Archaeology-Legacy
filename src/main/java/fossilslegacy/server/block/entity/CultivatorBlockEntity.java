@@ -16,6 +16,7 @@ import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -197,7 +198,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
 			}
 
 			int maxStackSize = cultivatorBlockEntity.getMaxStackSize();
-			if (!cultivatorBlockEntity.isOn() && cultivatorBlockEntity.canCultivate(recipe, cultivatorBlockEntity.itemStacks, maxStackSize)) {
+			if (!cultivatorBlockEntity.isOn() && cultivatorBlockEntity.canCultivate(level.registryAccess(), recipe, cultivatorBlockEntity.itemStacks, maxStackSize)) {
 				cultivatorBlockEntity.onTime = cultivatorBlockEntity.getOnDuration(fuel);
 				cultivatorBlockEntity.onDuration = cultivatorBlockEntity.onTime;
 				if (cultivatorBlockEntity.isOn()) {
@@ -213,12 +214,12 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
 				}
 			}
 
-			if (cultivatorBlockEntity.isOn() && cultivatorBlockEntity.canCultivate(recipe, cultivatorBlockEntity.itemStacks, maxStackSize)) {
+			if (cultivatorBlockEntity.isOn() && cultivatorBlockEntity.canCultivate(level.registryAccess(), recipe, cultivatorBlockEntity.itemStacks, maxStackSize)) {
 				++cultivatorBlockEntity.cultivationProgress;
 				if (cultivatorBlockEntity.cultivationProgress == cultivatorBlockEntity.cultivationTotalTime) {
 					cultivatorBlockEntity.cultivationProgress = 0;
 					cultivatorBlockEntity.cultivationTotalTime = getTotalCultivationTime(level, cultivatorBlockEntity);
-					if (cultivatorBlockEntity.cultivate(recipe, cultivatorBlockEntity.itemStacks, maxStackSize)) {
+					if (cultivatorBlockEntity.cultivate(level.registryAccess(), recipe, cultivatorBlockEntity.itemStacks, maxStackSize)) {
 						cultivatorBlockEntity.setRecipeUsed(recipe);
 					}
 
@@ -248,9 +249,9 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
 		}
 	}
 
-	private boolean canCultivate(Recipe<?> recipe, NonNullList<ItemStack> itemStacks, int maxStackSize) {
+	private boolean canCultivate(RegistryAccess registryAccess, Recipe<?> recipe, NonNullList<ItemStack> itemStacks, int maxStackSize) {
 		if (!itemStacks.get(0).isEmpty() && recipe != null) {
-			ItemStack output = ((Recipe<WorldlyContainer>) recipe).assemble(this);
+			ItemStack output = ((Recipe<WorldlyContainer>) recipe).assemble(this, registryAccess);
 			if (output.isEmpty()) {
 				return false;
 			} else {
@@ -270,10 +271,10 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
 		}
 	}
 
-	private boolean cultivate(Recipe<?> recipe, NonNullList<ItemStack> itemStacks, int maxStackSize) {
-		if (recipe != null && this.canCultivate(recipe, itemStacks, maxStackSize)) {
+	private boolean cultivate(RegistryAccess registryAccess, Recipe<?> recipe, NonNullList<ItemStack> itemStacks, int maxStackSize) {
+		if (recipe != null && this.canCultivate(registryAccess, recipe, itemStacks, maxStackSize)) {
 			ItemStack input = itemStacks.get(0);
-			ItemStack output = ((Recipe<WorldlyContainer>) recipe).assemble(this);
+			ItemStack output = ((Recipe<WorldlyContainer>) recipe).assemble(this, registryAccess);
 			ItemStack outputSlot = itemStacks.get(2);
 			if (outputSlot.isEmpty()) {
 				itemStacks.set(2, output.copy());

@@ -14,6 +14,7 @@ import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -157,7 +158,7 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
 			}
 
 			int maxStackSize = archaeologyWorkbenchBlockEntity.getMaxStackSize();
-			if (!archaeologyWorkbenchBlockEntity.isOn() && archaeologyWorkbenchBlockEntity.canFix(recipe, archaeologyWorkbenchBlockEntity.itemStacks, maxStackSize)) {
+			if (!archaeologyWorkbenchBlockEntity.isOn() && archaeologyWorkbenchBlockEntity.canFix(level.registryAccess(), recipe, archaeologyWorkbenchBlockEntity.itemStacks, maxStackSize)) {
 				archaeologyWorkbenchBlockEntity.onTime = archaeologyWorkbenchBlockEntity.getOnDuration(fuel);
 				archaeologyWorkbenchBlockEntity.onDuration = archaeologyWorkbenchBlockEntity.onTime;
 				if (archaeologyWorkbenchBlockEntity.isOn()) {
@@ -173,12 +174,12 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
 				}
 			}
 
-			if (archaeologyWorkbenchBlockEntity.isOn() && archaeologyWorkbenchBlockEntity.canFix(recipe, archaeologyWorkbenchBlockEntity.itemStacks, maxStackSize)) {
+			if (archaeologyWorkbenchBlockEntity.isOn() && archaeologyWorkbenchBlockEntity.canFix(level.registryAccess(), recipe, archaeologyWorkbenchBlockEntity.itemStacks, maxStackSize)) {
 				++archaeologyWorkbenchBlockEntity.archaeologyProgress;
 				if (archaeologyWorkbenchBlockEntity.archaeologyProgress == archaeologyWorkbenchBlockEntity.archaeologyTotalTime) {
 					archaeologyWorkbenchBlockEntity.archaeologyProgress = 0;
 					archaeologyWorkbenchBlockEntity.archaeologyTotalTime = getTotalArchaeologyTime(level, archaeologyWorkbenchBlockEntity);
-					if (archaeologyWorkbenchBlockEntity.fix(recipe, archaeologyWorkbenchBlockEntity.itemStacks, maxStackSize)) {
+					if (archaeologyWorkbenchBlockEntity.fix(level.registryAccess(), recipe, archaeologyWorkbenchBlockEntity.itemStacks, maxStackSize)) {
 						archaeologyWorkbenchBlockEntity.setRecipeUsed(recipe);
 					}
 
@@ -202,9 +203,9 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
 		}
 	}
 
-	private boolean canFix(Recipe<?> recipe, NonNullList<ItemStack> itemStacks, int maxStackSize) {
+	private boolean canFix(RegistryAccess registryAccess, Recipe<?> recipe, NonNullList<ItemStack> itemStacks, int maxStackSize) {
 		if (!itemStacks.get(0).isEmpty() && recipe != null) {
-			ItemStack output = ((Recipe<WorldlyContainer>) recipe).assemble(this);
+			ItemStack output = ((Recipe<WorldlyContainer>) recipe).assemble(this, registryAccess);
 			if (output.isEmpty()) {
 				return false;
 			} else {
@@ -224,10 +225,10 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
 		}
 	}
 
-	private boolean fix(Recipe<?> recipe, NonNullList<ItemStack> itemStacks, int maxStackSize) {
-		if (recipe != null && this.canFix(recipe, itemStacks, maxStackSize)) {
+	private boolean fix(RegistryAccess registryAccess, Recipe<?> recipe, NonNullList<ItemStack> itemStacks, int maxStackSize) {
+		if (recipe != null && this.canFix(registryAccess, recipe, itemStacks, maxStackSize)) {
 			ItemStack input = itemStacks.get(0);
-			ItemStack output = ((Recipe<WorldlyContainer>) recipe).assemble(this);
+			ItemStack output = ((Recipe<WorldlyContainer>) recipe).assemble(this, registryAccess);
 			ItemStack outputSlot = itemStacks.get(2);
 			if (outputSlot.isEmpty()) {
 				itemStacks.set(2, output.copy());

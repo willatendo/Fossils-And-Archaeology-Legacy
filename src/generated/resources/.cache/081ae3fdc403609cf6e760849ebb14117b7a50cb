@@ -1,4 +1,5 @@
-// 1.19.3	2023-04-13T18:56:31.6769408	Custom
+// 1.19.4	2023-05-01T16:21:59.6888816	Custom
+4ae015db008fd712ad0ea6d05b72ca0170963bf0 data/fossilslegacy/damage_type/javelin.json
 c0dee5202ea337538e88adef3edb2999adc8fcf7 data/fossilslegacy/forge/biome_modifier/fossil_ore.json
 cfe2182bb037f767d3466740ab26aa8048c44680 data/fossilslegacy/forge/biome_modifier/permafrost_ore.json
 26bd19a3b18529b5621bb2967431a51934b931d3 data/fossilslegacy/worldgen/configured_feature/ore_fossil.json

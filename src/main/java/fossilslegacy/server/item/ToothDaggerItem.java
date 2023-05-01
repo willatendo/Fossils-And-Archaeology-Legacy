@@ -36,7 +36,7 @@ public class ToothDaggerItem extends SwordItem {
 			if (livingEntity.level.isClientSide) {
 				return InteractionResult.SUCCESS;
 			}
-			BlockPos blockPos = new BlockPos(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ());
+			BlockPos blockPos = new BlockPos((int) livingEntity.getX(), (int) livingEntity.getY(), (int) livingEntity.getZ());
 			if (iForgeShearable.isShearable(itemStack, livingEntity.level, blockPos)) {
 				List<ItemStack> drops = iForgeShearable.onSheared(player, itemStack, livingEntity.level, blockPos, EnchantmentHelper.getItemEnchantmentLevel(Enchantments.BLOCK_FORTUNE, itemStack));
 				Random random = new Random();

@@ -45,13 +45,13 @@ public class FossilsLegacyCustomProviders implements DataProvider {
 	public CompletableFuture<?> run(CachedOutput cachedOutput) {
 		Path path = this.packOutput.getOutputFolder();
 		ArrayList<CompletableFuture> completableFutures = Lists.newArrayList();
-		this.makeAllFeatures((saver) -> {
+		this.makeAllCustomProviders((saver) -> {
 			completableFutures.add(DataProvider.saveStable(cachedOutput, saver.serialise(), path.resolve("data/" + this.modid + "/" + saver.id() + ".json")));
 		});
 		return CompletableFuture.allOf(completableFutures.stream().toArray(CompletableFuture[]::new));
 	}
 
-	public void makeAllFeatures(Consumer<Saver> features) {
+	public void makeAllCustomProviders(Consumer<Saver> features) {
 		features.accept(new OreFeature("ore_fossil", Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), FossilsLegacyBlocks.FOSSIL_ORE.get().defaultBlockState())), 8)));
 		features.accept(new OrePlacement("ore_fossil", FossilsLegacyUtils.resource("ore_fossil"), 25, "minecraft:trapezoid", 128, 10));
 		features.accept(new BiomeModifer("fossil_ore", new ResourceLocation("forge", "add_features"), "forge:any", FossilsLegacyUtils.resource("ore_fossil"), Decoration.UNDERGROUND_ORES));
@@ -62,6 +62,7 @@ public class FossilsLegacyCustomProviders implements DataProvider {
 		features.accept(new Structure("academy", FossilsLegacyBiomeTags.HAS_ACADEMY, "surface_structures"));
 		features.accept(new StructureSet("weapon_shop", 1, 32, 8, 1476272411));
 		features.accept(new Structure("weapon_shop", FossilsLegacyBiomeTags.HAS_WEAPON_SHOP, "surface_structures"));
+		features.accept(new DamageType("javelin", 0.1F, "javelin", "when_caused_by_living_non_player"));
 	}
 
 	@Override
@@ -73,6 +74,22 @@ public class FossilsLegacyCustomProviders implements DataProvider {
 		String id();
 
 		JsonObject serialise();
+	}
+
+	public static record DamageType(String id, float exhaustion, String messageId, String scaling) implements Saver {
+		@Override
+		public String id() {
+			return "damage_type/" + this.id;
+		}
+
+		@Override
+		public JsonObject serialise() {
+			JsonObject damageType = new JsonObject();
+			damageType.addProperty("exhaustion", this.exhaustion);
+			damageType.addProperty("message_id", this.messageId);
+			damageType.addProperty("scaling", this.scaling);
+			return damageType;
+		}
 	}
 
 	public static record StructureSet(String id, int weight, int spacing, int separation, int salt) implements Saver {

@@ -29,8 +29,8 @@ public class DataGen {
 
 		// Server
 		FossilsLegacyBlockTagProvider fossilsLegacyBlockTagProvider = new FossilsLegacyBlockTagProvider(packOutput, provider, FossilsLegacyUtils.ID, existingFileHelper);
-		dataGenerator.addProvider(event.includeServer(), new FossilsLegacyItemTagProvider(packOutput, provider, fossilsLegacyBlockTagProvider, FossilsLegacyUtils.ID, existingFileHelper));
 		dataGenerator.addProvider(event.includeServer(), fossilsLegacyBlockTagProvider);
+		dataGenerator.addProvider(event.includeServer(), new FossilsLegacyItemTagProvider(packOutput, provider, fossilsLegacyBlockTagProvider.contentsGetter(), FossilsLegacyUtils.ID, existingFileHelper));
 		dataGenerator.addProvider(event.includeServer(), new FossilsLegacyFluidTagProvider(packOutput, provider, FossilsLegacyUtils.ID, existingFileHelper));
 		dataGenerator.addProvider(event.includeServer(), new FossilsLegacyBiomeTagProvider(packOutput, provider, FossilsLegacyUtils.ID, existingFileHelper));
 		dataGenerator.addProvider(event.includeServer(), new FossilsLegacyRecipeProvider(packOutput));

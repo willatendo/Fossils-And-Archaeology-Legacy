@@ -301,7 +301,7 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 					f1 *= 0.25F;
 				}
 
-				this.flyingSpeed = this.getSpeed() * 0.1F;
+//				this.flyingSpeed = this.getSpeed() * 0.1F;
 				if (this.isControlledByLocalInstance()) {
 					this.setSpeed((float) this.getAttributeValue(Attributes.MOVEMENT_SPEED));
 					super.travel(new Vec3((double) f, vec3.y, (double) f1));
@@ -309,10 +309,10 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 					this.setDeltaMovement(this.getX() - this.xOld, this.getY() - this.yOld, this.getZ() - this.zOld);
 				}
 
-				this.calculateEntityAnimation(this, false);
+				this.calculateEntityAnimation(false);
 				this.tryCheckInsideBlocks();
 			} else {
-				this.flyingSpeed = 0.02F;
+//				this.flyingSpeed = 0.02F;
 				super.travel(vec3);
 			}
 		}

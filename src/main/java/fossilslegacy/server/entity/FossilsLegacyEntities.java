@@ -57,4 +57,5 @@ public class FossilsLegacyEntities {
 	public static final RegistryObject<EntityType<DrownedPirate>> DROWNED_PIRATE = ENTITY_TYPES.register("drowned_pirate", () -> EntityType.Builder.<DrownedPirate>of(DrownedPirate::new, MobCategory.CREATURE).sized(0.6F, 1.99F).build("drowned_pirate"));
 
 	public static final RegistryObject<EntityType<ThrownJavelin>> THROWN_JAVELIN = ENTITY_TYPES.register("thrown_javelin", () -> EntityType.Builder.<ThrownJavelin>of(ThrownJavelin::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("thrown_javelin"));
+	public static final RegistryObject<EntityType<CavePainting>> CAVE_PAINTING = ENTITY_TYPES.register("cave_painting", () -> EntityType.Builder.<CavePainting>of(CavePainting::new, MobCategory.MISC).sized(0.5F, 0.5F).build("cave_painting"));
 }

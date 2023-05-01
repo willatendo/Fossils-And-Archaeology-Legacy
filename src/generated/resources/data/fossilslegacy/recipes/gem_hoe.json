@@ -1,12 +1,15 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "addition": {
-    "item": "fossilslegacy:gem_artifact"
+    "item": "minecraft:netherite_upgrade_smithing_template"
   },
   "base": {
-    "item": "minecraft:netherite_hoe"
+    "item": "fossilslegacy:gem_artifact"
   },
   "result": {
     "item": "fossilslegacy:gem_hoe"
+  },
+  "template": {
+    "item": "minecraft:netherite_hoe"
   }
 }

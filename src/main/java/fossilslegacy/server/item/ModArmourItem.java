@@ -10,8 +10,8 @@ import net.minecraft.world.item.ItemStack;
 public class ModArmourItem extends ArmorItem {
 	private final String texture;
 
-	public ModArmourItem(String texture, ArmorMaterial armourMaterial, EquipmentSlot equipmentSlot, Properties properties) {
-		super(armourMaterial, equipmentSlot, properties);
+	public ModArmourItem(String texture, ArmorMaterial armourMaterial, Type type, Properties properties) {
+		super(armourMaterial, type, properties);
 		this.texture = texture;
 	}
 

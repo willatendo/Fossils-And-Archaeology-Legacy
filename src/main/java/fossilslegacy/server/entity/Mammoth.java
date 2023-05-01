@@ -253,7 +253,7 @@ public class Mammoth extends Animal implements DinosaurEncyclopediaInfo, HungryA
 					f1 *= 0.25F;
 				}
 
-				this.flyingSpeed = this.getSpeed() * 0.1F;
+//				this.getFlyingSpeed() = this.getSpeed() * 0.1F;
 				if (this.isControlledByLocalInstance()) {
 					this.setSpeed((float) this.getAttributeValue(Attributes.MOVEMENT_SPEED));
 					super.travel(new Vec3((double) f, vec3.y, (double) f1));
@@ -261,10 +261,10 @@ public class Mammoth extends Animal implements DinosaurEncyclopediaInfo, HungryA
 					this.setDeltaMovement(this.getX() - this.xOld, this.getY() - this.yOld, this.getZ() - this.zOld);
 				}
 
-				this.calculateEntityAnimation(this, false);
+				this.calculateEntityAnimation(false);
 				this.tryCheckInsideBlocks();
 			} else {
-				this.flyingSpeed = 0.02F;
+//				this.flyingSpeed = 0.02F;
 				super.travel(vec3);
 			}
 		}
@@ -381,7 +381,7 @@ public class Mammoth extends Animal implements DinosaurEncyclopediaInfo, HungryA
 		this.level.broadcastEntityEvent(this, (byte) 4);
 		float attackDamage = this.getAttackDamage();
 		float variableDamage = (int) attackDamage > 0 ? attackDamage / 2.0F + (float) this.random.nextInt((int) attackDamage) : attackDamage;
-		boolean canHurt = entity.hurt(DamageSource.mobAttack(this), variableDamage);
+		boolean canHurt = entity.hurt(this.damageSources().mobAttack(this), variableDamage);
 		if (canHurt) {
 			double knockbackResistance;
 			if (entity instanceof LivingEntity livingEntity) {

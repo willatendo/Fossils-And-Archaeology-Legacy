@@ -4,6 +4,7 @@ import fossilslegacy.server.item.FossilsLegacyItems;
 import fossilslegacy.server.item.MagicConchItem;
 import fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSerialisers;
 import fossilslegacy.server.utils.DinosaurOrder;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
@@ -33,7 +34,7 @@ public class MagicConchRecipe extends CustomRecipe {
 	}
 
 	@Override
-	public ItemStack assemble(CraftingContainer craftingContainer) {
+	public ItemStack assemble(CraftingContainer craftingContainer, RegistryAccess registryAccess) {
 		ItemStack itemstack = FossilsLegacyItems.MAGIC_CONCH.get().getDefaultInstance();
 		CompoundTag compoundTag = itemstack.getOrCreateTag();
 		int nextOrder = 0;

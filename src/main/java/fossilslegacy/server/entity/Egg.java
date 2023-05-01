@@ -58,7 +58,7 @@ public class Egg extends Animal implements TicksToBirth, DinosaurEncyclopediaInf
 	@Override
 	public boolean doHurtTarget(Entity entity) {
 		this.discard();
-		this.dropAllDeathLoot(DamageSource.GENERIC);
+		this.dropAllDeathLoot(this.damageSources().generic());
 		return false;
 	}
 

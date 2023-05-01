@@ -22,5 +22,6 @@
   ],
   "result": {
     "item": "fossilslegacy:cultivator"
-  }
+  },
+  "show_notification": true
 }

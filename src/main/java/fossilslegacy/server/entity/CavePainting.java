@@ -19,7 +19,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.HangingEntity;
-import net.minecraft.world.entity.decoration.Painting;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
@@ -30,8 +29,18 @@ import net.minecraft.world.phys.Vec3;
 public class CavePainting extends HangingEntity {
 	private static final EntityDataAccessor<Integer> CAVE_PAINTING_TYPE = SynchedEntityData.defineId(CavePainting.class, EntityDataSerializers.INT);
 
-	public CavePainting(EntityType<? extends Painting> entityType, Level level) {
+	public CavePainting(EntityType<? extends CavePainting> entityType, Level level) {
 		super(entityType, level);
+	}
+
+	private CavePainting(Level level, BlockPos blockPos) {
+		super(FossilsLegacyEntities.CAVE_PAINTING.get(), level, blockPos);
+	}
+
+	public CavePainting(Level level, BlockPos blockPos, Direction direction, CavePaintingTypes cavePaintingTypes) {
+		this(level, blockPos);
+		this.setVariant(cavePaintingTypes);
+		this.setDirection(direction);
 	}
 
 	@Override
@@ -57,6 +66,9 @@ public class CavePainting extends HangingEntity {
 	public static Optional<CavePainting> create(Level level, BlockPos blockPos, Direction direction) {
 		CavePainting cavePainting = new CavePainting(level, blockPos);
 		List<CavePaintingTypes> list = new ArrayList<>();
+		for (CavePaintingTypes cavePaintingTypes : cavePainting.getVariant().values()) {
+			list.add(cavePaintingTypes);
+		}
 		cavePainting.setDirection(direction);
 		list.removeIf((cavePaintingTypes) -> {
 			cavePainting.setVariant(cavePaintingTypes);
@@ -82,16 +94,6 @@ public class CavePainting extends HangingEntity {
 
 	private static int variantArea(CavePaintingTypes cavePaintingTypes) {
 		return cavePaintingTypes.getWidth() * cavePaintingTypes.getHeight();
-	}
-
-	private CavePainting(Level level, BlockPos blockPos) {
-		super(EntityType.PAINTING, level, blockPos);
-	}
-
-	public CavePainting(Level level, BlockPos blockPos, Direction direction, CavePaintingTypes cavePaintingTypes) {
-		this(level, blockPos);
-		this.setVariant(cavePaintingTypes);
-		this.setDirection(direction);
 	}
 
 	@Override

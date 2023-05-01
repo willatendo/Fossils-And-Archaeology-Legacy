@@ -15,5 +15,6 @@
   ],
   "result": {
     "item": "fossilslegacy:tooth_dagger"
-  }
+  },
+  "show_notification": true
 }
