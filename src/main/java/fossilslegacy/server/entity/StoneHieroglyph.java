@@ -26,86 +26,86 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
-public class CavePainting extends HangingEntity {
-	private static final EntityDataAccessor<Integer> CAVE_PAINTING_TYPE = SynchedEntityData.defineId(CavePainting.class, EntityDataSerializers.INT);
+public class StoneHieroglyph extends HangingEntity {
+	private static final EntityDataAccessor<Integer> STONE_HIEROGLYPH_TYPE = SynchedEntityData.defineId(StoneHieroglyph.class, EntityDataSerializers.INT);
 
-	public CavePainting(EntityType<? extends CavePainting> entityType, Level level) {
+	public StoneHieroglyph(EntityType<? extends StoneHieroglyph> entityType, Level level) {
 		super(entityType, level);
 	}
 
-	private CavePainting(Level level, BlockPos blockPos) {
-		super(FossilsLegacyEntities.CAVE_PAINTING.get(), level, blockPos);
+	private StoneHieroglyph(Level level, BlockPos blockPos) {
+		super(FossilsLegacyEntities.STONE_HIEROGLYPH.get(), level, blockPos);
 	}
 
-	public CavePainting(Level level, BlockPos blockPos, Direction direction, CavePaintingTypes cavePaintingTypes) {
+	public StoneHieroglyph(Level level, BlockPos blockPos, Direction direction, StoneHieroglyphTypes stoneHieroglyphTypes) {
 		this(level, blockPos);
-		this.setVariant(cavePaintingTypes);
+		this.setStoneHieroglyph(stoneHieroglyphTypes);
 		this.setDirection(direction);
 	}
 
 	@Override
 	protected void defineSynchedData() {
-		this.entityData.define(CAVE_PAINTING_TYPE, 0);
+		this.entityData.define(STONE_HIEROGLYPH_TYPE, 0);
 	}
 
 	@Override
 	public void onSyncedDataUpdated(EntityDataAccessor<?> entityDataAccessor) {
-		if (CAVE_PAINTING_TYPE.equals(entityDataAccessor)) {
+		if (STONE_HIEROGLYPH_TYPE.equals(entityDataAccessor)) {
 			this.recalculateBoundingBox();
 		}
 	}
 
-	public void setVariant(CavePaintingTypes cavePaintingTypes) {
-		this.entityData.set(CAVE_PAINTING_TYPE, cavePaintingTypes.ordinal());
+	public void setStoneHieroglyph(StoneHieroglyphTypes stoneHieroglyphTypes) {
+		this.entityData.set(STONE_HIEROGLYPH_TYPE, stoneHieroglyphTypes.ordinal());
 	}
 
-	public CavePaintingTypes getVariant() {
-		return CavePaintingTypes.values()[this.entityData.get(CAVE_PAINTING_TYPE)];
+	public StoneHieroglyphTypes getStoneHieroglyph() {
+		return StoneHieroglyphTypes.values()[this.entityData.get(STONE_HIEROGLYPH_TYPE)];
 	}
 
-	public static Optional<CavePainting> create(Level level, BlockPos blockPos, Direction direction) {
-		CavePainting cavePainting = new CavePainting(level, blockPos);
-		List<CavePaintingTypes> list = new ArrayList<>();
-		for (CavePaintingTypes cavePaintingTypes : cavePainting.getVariant().values()) {
-			list.add(cavePaintingTypes);
+	public static Optional<StoneHieroglyph> create(Level level, BlockPos blockPos, Direction direction) {
+		StoneHieroglyph cavePainting = new StoneHieroglyph(level, blockPos);
+		List<StoneHieroglyphTypes> list = new ArrayList<>();
+		for (StoneHieroglyphTypes stoneHieroglyphTypes : cavePainting.getStoneHieroglyph().values()) {
+			list.add(stoneHieroglyphTypes);
 		}
 		cavePainting.setDirection(direction);
-		list.removeIf((cavePaintingTypes) -> {
-			cavePainting.setVariant(cavePaintingTypes);
+		list.removeIf((stoneHieroglyphTypes) -> {
+			cavePainting.setStoneHieroglyph(stoneHieroglyphTypes);
 			return !cavePainting.survives();
 		});
 		if (list.isEmpty()) {
 			return Optional.empty();
 		} else {
-			int i = list.stream().mapToInt(CavePainting::variantArea).max().orElse(0);
-			list.removeIf((p_218883_) -> {
-				return variantArea(p_218883_) < i;
+			int i = list.stream().mapToInt(StoneHieroglyph::variantArea).max().orElse(0);
+			list.removeIf((stoneHieroglyphTypes) -> {
+				return variantArea(stoneHieroglyphTypes) < i;
 			});
-			Optional<CavePaintingTypes> randomVarient = Util.getRandomSafe(list, cavePainting.random);
+			Optional<StoneHieroglyphTypes> randomVarient = Util.getRandomSafe(list, cavePainting.random);
 			if (randomVarient.isEmpty()) {
 				return Optional.empty();
 			} else {
-				cavePainting.setVariant(randomVarient.get());
+				cavePainting.setStoneHieroglyph(randomVarient.get());
 				cavePainting.setDirection(direction);
 				return Optional.of(cavePainting);
 			}
 		}
 	}
 
-	private static int variantArea(CavePaintingTypes cavePaintingTypes) {
-		return cavePaintingTypes.getWidth() * cavePaintingTypes.getHeight();
+	private static int variantArea(StoneHieroglyphTypes stoneHieroglyphTypes) {
+		return stoneHieroglyphTypes.getWidth() * stoneHieroglyphTypes.getHeight();
 	}
 
 	@Override
 	public void addAdditionalSaveData(CompoundTag compoundTag) {
-		compoundTag.putInt("Type", this.getVariant().ordinal());
+		compoundTag.putInt("Type", this.getStoneHieroglyph().ordinal());
 		compoundTag.putByte("FacingDirection", (byte) this.direction.get2DDataValue());
 		super.addAdditionalSaveData(compoundTag);
 	}
 
 	@Override
 	public void readAdditionalSaveData(CompoundTag compoundTag) {
-		this.setVariant(CavePaintingTypes.values()[compoundTag.getInt("Type")]);
+		this.setStoneHieroglyph(StoneHieroglyphTypes.values()[compoundTag.getInt("Type")]);
 		this.direction = Direction.from2DDataValue(compoundTag.getByte("FacingDirection"));
 		super.readAdditionalSaveData(compoundTag);
 		this.setDirection(this.direction);
@@ -113,12 +113,12 @@ public class CavePainting extends HangingEntity {
 
 	@Override
 	public int getWidth() {
-		return this.getVariant().getWidth();
+		return this.getStoneHieroglyph().getWidth();
 	}
 
 	@Override
 	public int getHeight() {
-		return this.getVariant().getHeight();
+		return this.getStoneHieroglyph().getHeight();
 	}
 
 	@Override
@@ -131,7 +131,7 @@ public class CavePainting extends HangingEntity {
 				}
 			}
 
-			this.spawnAtLocation(FossilsLegacyItems.CAVE_PAINTING.get());
+			this.spawnAtLocation(FossilsLegacyItems.STONE_HIEROGLYPH.get());
 		}
 	}
 
@@ -141,13 +141,13 @@ public class CavePainting extends HangingEntity {
 	}
 
 	@Override
-	public void moveTo(double p_31929_, double p_31930_, double p_31931_, float p_31932_, float p_31933_) {
-		this.setPos(p_31929_, p_31930_, p_31931_);
+	public void moveTo(double x, double y, double z, float pitch, float yaw) {
+		this.setPos(x, y, z);
 	}
 
 	@Override
-	public void lerpTo(double p_31917_, double p_31918_, double p_31919_, float p_31920_, float p_31921_, int p_31922_, boolean p_31923_) {
-		this.setPos(p_31917_, p_31918_, p_31919_);
+	public void lerpTo(double x, double y, double z, float pitch, float yaw, int p_31922_, boolean p_31923_) {
+		this.setPos(x, y, z);
 	}
 
 	@Override
@@ -168,6 +168,6 @@ public class CavePainting extends HangingEntity {
 
 	@Override
 	public ItemStack getPickedResult(HitResult hitResult) {
-		return FossilsLegacyItems.CAVE_PAINTING.get().getDefaultInstance();
+		return FossilsLegacyItems.STONE_HIEROGLYPH.get().getDefaultInstance();
 	}
 }

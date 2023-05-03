@@ -7,7 +7,7 @@ import fossilslegacy.client.model.SmilodonModel;
 import fossilslegacy.client.model.pterosaurus.BabyPteranodonModel;
 import fossilslegacy.client.model.triceratops.BabyTriceratopsModel;
 import fossilslegacy.client.model.triceratops.TriceratopsModel;
-import fossilslegacy.client.render.CavePaintingRenderer;
+import fossilslegacy.client.render.StoneHieroglyphRenderer;
 import fossilslegacy.client.render.DrownedPirateRenderer;
 import fossilslegacy.client.render.EggRenderer;
 import fossilslegacy.client.render.MammothRenderer;
@@ -83,7 +83,7 @@ public class ModClientEvents {
 		EntityRenderers.register(FossilsLegacyEntities.PREGNANT_WOLF.get(), WolfRenderer::new);
 
 		EntityRenderers.register(FossilsLegacyEntities.THROWN_JAVELIN.get(), ThrownJavelinRenderer::new);
-		EntityRenderers.register(FossilsLegacyEntities.CAVE_PAINTING.get(), CavePaintingRenderer::new);
+		EntityRenderers.register(FossilsLegacyEntities.STONE_HIEROGLYPH.get(), StoneHieroglyphRenderer::new);
 	}
 
 	@SubscribeEvent

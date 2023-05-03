@@ -1,4 +1,4 @@
-// 1.19.4	2023-05-01T16:21:59.6838803	Item Models: fossilslegacy
+// 1.19.4	2023-05-03T16:54:11.2605598	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 41c5f6a309438824458da52752171cd09485a937 assets/fossilslegacy/models/item/ancient_helmet.json
 2701cd233168837331e67cbf0146831ca43eec8a assets/fossilslegacy/models/item/ancient_sword.json
@@ -9,7 +9,6 @@ a4efe70ed5c61f6feac21302b0b7a168b82d5f2b assets/fossilslegacy/models/item/axolot
 8acedddacf7368b55f421a24a3cd08413ee3c58c assets/fossilslegacy/models/item/brachiosaurus_egg.json
 c49ff29f2e7d91eb662a1227bed47245ec0441e2 assets/fossilslegacy/models/item/cat_dna.json
 45a36ff25fe82c32cbb851b6e1c8ffbcea34a859 assets/fossilslegacy/models/item/cat_embryo_syringe.json
-d0e4eacc1983119d4fbfbce9f108cd4b7c85bd1c assets/fossilslegacy/models/item/cave_painting.json
 d57479b1d2eb4ed09fcb1564a0578e325421d04c assets/fossilslegacy/models/item/chicken_dna.json
 8a81c49ffd3b21d1093eb4447366c220b6d2cbae assets/fossilslegacy/models/item/chicken_essence_bottle.json
 e8deae7ccdfd7f518df4d0984a9ffb1326fb1eb5 assets/fossilslegacy/models/item/cooked_brachiosaurus_meat.json
@@ -117,6 +116,7 @@ d49730b24fb6933446cfef28d365de0cb00f9dee assets/fossilslegacy/models/item/skull_
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/smilodon_spawn_egg.json
 301004c4e24140f978fa0f4eb39c7ca0f63018eb assets/fossilslegacy/models/item/stegosaurus_dna.json
 c9f2e78854037eca1f72506bf2d2b213f7ccf801 assets/fossilslegacy/models/item/stegosaurus_egg.json
+8d7cf7120a39017a5ac73a3a92897b511e2652d9 assets/fossilslegacy/models/item/stone_hieroglyph.json
 bd165c5894dc19f85abaab92be30b71091296b42 assets/fossilslegacy/models/item/stone_javelin.json
 59002c5ff9f6239fb259684c2e616170de5d21ea assets/fossilslegacy/models/item/sword_artifact.json
 1ab12f84089ab46e61e918b839cd0de4df2d25fb assets/fossilslegacy/models/item/tooth_dagger.json

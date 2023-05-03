@@ -4,7 +4,7 @@ import fossilslegacy.server.utils.FossilsLegacyUtils;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 
-public enum CavePaintingTypes {
+public enum StoneHieroglyphTypes {
 	LIGHTING("lighting", 32, 16),
 	SOCIAL("social", 16, 16),
 	GREAT_WAR("great_war", 32, 32),
@@ -30,22 +30,22 @@ public enum CavePaintingTypes {
 	private final int width;
 	private final int height;
 
-	private CavePaintingTypes(String name, int width, int height) {
+	private StoneHieroglyphTypes(String name, int width, int height) {
 		this.name = name;
 		this.width = width;
 		this.height = height;
 	}
 
 	public ResourceLocation getTexture() {
-		return FossilsLegacyUtils.resource("textures/entities/cave_painting/" + this.name + ".png");
+		return FossilsLegacyUtils.resource("textures/entities/stone_hieroglyph/" + this.name + ".png");
 	}
 
 	public MutableComponent getName() {
-		return FossilsLegacyUtils.translation("cave_painting", this.name + ".title");
+		return FossilsLegacyUtils.translation("stone_hieroglyph", this.name + ".title");
 	}
 
 	public MutableComponent getAuthor() {
-		return FossilsLegacyUtils.translation("cave_painting", this.name + ".author");
+		return FossilsLegacyUtils.translation("stone_hieroglyph", this.name + ".author");
 	}
 
 	public int getWidth() {

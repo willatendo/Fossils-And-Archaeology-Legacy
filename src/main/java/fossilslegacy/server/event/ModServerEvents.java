@@ -1,7 +1,7 @@
 package fossilslegacy.server.event;
 
 import fossilslegacy.server.block.FossilsLegacyBlocks;
-import fossilslegacy.server.entity.CavePaintingTypes;
+import fossilslegacy.server.entity.StoneHieroglyphTypes;
 import fossilslegacy.server.entity.DrownedPirate;
 import fossilslegacy.server.entity.Egg;
 import fossilslegacy.server.entity.FossilsLegacyEntities;
@@ -192,8 +192,9 @@ public class ModServerEvents {
 			output.accept(FossilsLegacyItems.MAMMOTH_EMBRYO_SYRINGE.get());
 			output.accept(FossilsLegacyItems.JURASSIC_FERN_SPORES.get());
 			output.accept(FossilsLegacyItems.RELIC_SCRAP.get());
-			for (int i = 0; i < CavePaintingTypes.values().length + 1; i++) {
-				ItemStack itemStack = new ItemStack(FossilsLegacyItems.CAVE_PAINTING.get());
+			output.accept(FossilsLegacyItems.STONE_HIEROGLYPH.get());
+			for (int i = 0; i < StoneHieroglyphTypes.values().length; i++) {
+				ItemStack itemStack = new ItemStack(FossilsLegacyItems.STONE_HIEROGLYPH.get());
 				CompoundTag compoundTag = itemStack.getOrCreateTagElement("EntityTag");
 				compoundTag.putInt("Type", i);
 				output.accept(itemStack);

@@ -125,7 +125,7 @@ public class FossilsLegacyItems {
 	public static final RegistryObject<Item> MAMMOTH_EMBRYO_SYRINGE = ITEMS.register("mammoth_embryo_syringe", () -> new SyringeItem(SyringeAnimals.MAMMOTH, new Item.Properties().stacksTo(1)));
 	public static final RegistryObject<Item> JURASSIC_FERN_SPORES = ITEMS.register("jurassic_fern_spores", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> RELIC_SCRAP = ITEMS.register("relic_scrap", () -> new Item(new Item.Properties()));
-	public static final RegistryObject<Item> CAVE_PAINTING = ITEMS.register("cave_painting", () -> new CavePaintingItem(new Item.Properties()));
+	public static final RegistryObject<Item> STONE_HIEROGLYPH = ITEMS.register("stone_hieroglyph", () -> new StoneHieroglyphItem(new Item.Properties()));
 	public static final RegistryObject<Item> SWORD_ARTIFACT = ITEMS.register("sword_artifact", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> HELMET_ARTIFACT = ITEMS.register("helmet_artifact", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> GEM_ARTIFACT = ITEMS.register("gem_artifact", () -> new Item(new Item.Properties()));

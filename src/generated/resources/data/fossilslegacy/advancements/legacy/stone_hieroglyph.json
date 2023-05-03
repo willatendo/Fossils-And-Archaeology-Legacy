@@ -1,11 +1,11 @@
 {
   "parent": "fossilslegacy:legacy/archaeology_workbench",
   "criteria": {
-    "used_cave_painting": {
+    "used_stone_hieroglyph": {
       "conditions": {
         "item": {
           "items": [
-            "fossilslegacy:cave_painting"
+            "fossilslegacy:stone_hieroglyph"
           ]
         },
         "location": {}
@@ -16,21 +16,21 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.fossilslegacy.legacy.cave_painting.desc"
+      "translate": "advancements.fossilslegacy.legacy.stone_hieroglyph.desc"
     },
     "frame": "task",
     "hidden": true,
     "icon": {
-      "item": "fossilslegacy:cave_painting"
+      "item": "fossilslegacy:stone_hieroglyph"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.fossilslegacy.legacy.cave_painting.title"
+      "translate": "advancements.fossilslegacy.legacy.stone_hieroglyph.title"
     }
   },
   "requirements": [
     [
-      "used_cave_painting"
+      "used_stone_hieroglyph"
     ]
   ]
 }

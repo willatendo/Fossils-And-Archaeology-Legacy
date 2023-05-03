@@ -123,7 +123,7 @@ public class ThrownJavelin extends AbstractArrow {
 					lightningbolt.moveTo(Vec3.atBottomCenterOf(blockpos));
 					lightningbolt.setCause(owner instanceof ServerPlayer ? (ServerPlayer) owner : null);
 					this.level.addFreshEntity(lightningbolt);
-					soundevent = SoundEvents.TRIDENT_THUNDER;
+					soundevent = SoundEvents.LIGHTNING_BOLT_THUNDER;
 					soundLevel = 5.0F;
 				}
 			}

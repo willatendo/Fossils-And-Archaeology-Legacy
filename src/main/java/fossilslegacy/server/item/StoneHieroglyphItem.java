@@ -3,8 +3,8 @@ package fossilslegacy.server.item;
 import java.util.List;
 import java.util.Optional;
 
-import fossilslegacy.server.entity.CavePainting;
-import fossilslegacy.server.entity.CavePaintingTypes;
+import fossilslegacy.server.entity.StoneHieroglyph;
+import fossilslegacy.server.entity.StoneHieroglyphTypes;
 import fossilslegacy.server.utils.FossilsLegacyUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -23,10 +23,10 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 
-public class CavePaintingItem extends Item {
-	private static final Component TOOLTIP_RANDOM_VARIANT = FossilsLegacyUtils.translation("cave_painting", "random").withStyle(ChatFormatting.GRAY);
+public class StoneHieroglyphItem extends Item {
+	private static final Component TOOLTIP_RANDOM_VARIANT = FossilsLegacyUtils.translation("stone_hieroglyph", "random").withStyle(ChatFormatting.GRAY);
 
-	public CavePaintingItem(Properties properties) {
+	public StoneHieroglyphItem(Properties properties) {
 		super(properties);
 	}
 
@@ -42,9 +42,9 @@ public class CavePaintingItem extends Item {
 		} else {
 			Level level = useOnContext.getLevel();
 			HangingEntity hangingentity = null;
-			Optional<CavePainting> cavePainting = CavePainting.create(level, blockpos1, direction);
-			if (!cavePainting.isEmpty()) {
-				hangingentity = cavePainting.get();
+			Optional<StoneHieroglyph> stoneHieroglyph = StoneHieroglyph.create(level, blockpos1, direction);
+			if (!stoneHieroglyph.isEmpty()) {
+				hangingentity = stoneHieroglyph.get();
 			}
 
 			CompoundTag compoundtag = itemstack.getTag();
@@ -52,15 +52,19 @@ public class CavePaintingItem extends Item {
 				EntityType.updateCustomEntityTag(level, player, hangingentity, compoundtag);
 			}
 
-			if (hangingentity.survives()) {
-				if (!level.isClientSide()) {
-					hangingentity.playPlacementSound();
-					level.gameEvent(player, GameEvent.ENTITY_PLACE, hangingentity.position());
-					level.addFreshEntity(hangingentity);
-				}
+			if (hangingentity != null) {
+				if (hangingentity.survives()) {
+					if (!level.isClientSide()) {
+						hangingentity.playPlacementSound();
+						level.gameEvent(player, GameEvent.ENTITY_PLACE, hangingentity.position());
+						level.addFreshEntity(hangingentity);
+					}
 
-				itemstack.shrink(1);
-				return InteractionResult.sidedSuccess(level.isClientSide);
+					itemstack.shrink(1);
+					return InteractionResult.sidedSuccess(level.isClientSide);
+				} else {
+					return InteractionResult.CONSUME;
+				}
 			} else {
 				return InteractionResult.CONSUME;
 			}
@@ -78,14 +82,10 @@ public class CavePaintingItem extends Item {
 		if (compoundTag != null && compoundTag.contains("EntityTag", 10)) {
 			CompoundTag entityTag = compoundTag.getCompound("EntityTag");
 			Optional.of(entityTag.getInt("Type")).ifPresentOrElse((cavePaintingType) -> {
-				if (cavePaintingType < CavePaintingTypes.values().length) {
-					CavePaintingTypes cavePaintingTypes = CavePaintingTypes.values()[cavePaintingType];
-					toolTips.add(cavePaintingTypes.getName().withStyle(ChatFormatting.YELLOW));
-					toolTips.add(cavePaintingTypes.getAuthor().withStyle(ChatFormatting.GRAY));
-					toolTips.add(Component.translatable("painting.dimensions", Mth.positiveCeilDiv(cavePaintingTypes.getWidth(), 16), Mth.positiveCeilDiv(cavePaintingTypes.getHeight(), 16)));
-				} else {
-					toolTips.add(TOOLTIP_RANDOM_VARIANT);
-				}
+				StoneHieroglyphTypes cavePaintingTypes = StoneHieroglyphTypes.values()[cavePaintingType];
+				toolTips.add(cavePaintingTypes.getName().withStyle(ChatFormatting.YELLOW));
+				toolTips.add(cavePaintingTypes.getAuthor().withStyle(ChatFormatting.GRAY));
+				toolTips.add(Component.translatable("painting.dimensions", Mth.positiveCeilDiv(cavePaintingTypes.getWidth(), 16), Mth.positiveCeilDiv(cavePaintingTypes.getHeight(), 16)));
 			}, () -> {
 				toolTips.add(TOOLTIP_RANDOM_VARIANT);
 			});

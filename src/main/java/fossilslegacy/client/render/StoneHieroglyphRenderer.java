@@ -8,8 +8,8 @@ import com.mojang.blaze3d.vertex.PoseStack.Pose;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 
-import fossilslegacy.server.entity.CavePainting;
-import fossilslegacy.server.entity.CavePaintingTypes;
+import fossilslegacy.server.entity.StoneHieroglyph;
+import fossilslegacy.server.entity.StoneHieroglyphTypes;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -21,24 +21,24 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
-public class CavePaintingRenderer extends EntityRenderer<CavePainting> {
-	public CavePaintingRenderer(Context context) {
+public class StoneHieroglyphRenderer extends EntityRenderer<StoneHieroglyph> {
+	public StoneHieroglyphRenderer(Context context) {
 		super(context);
 	}
 
 	@Override
-	public void render(CavePainting cavePainting, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
+	public void render(StoneHieroglyph stoneHieroglyph, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
 		poseStack.pushPose();
 		poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - packedLight));
-		CavePaintingTypes cavePaintingTypes = CavePaintingTypes.values()[cavePainting.getVariant().ordinal()];
+		StoneHieroglyphTypes stoneHieroglyphTypes = StoneHieroglyphTypes.values()[stoneHieroglyph.getStoneHieroglyph().ordinal()];
 		poseStack.scale(0.0625F, 0.0625F, 0.0625F);
-		VertexConsumer vertexconsumer = multiBufferSource.getBuffer(RenderType.entitySolid(this.getTextureLocation(cavePainting)));
-		this.renderPainting(poseStack, vertexconsumer, cavePainting, cavePaintingTypes.getWidth(), cavePaintingTypes.getHeight());
+		VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entityTranslucent(this.getTextureLocation(stoneHieroglyph)));
+		this.renderStoneHieroglyph(poseStack, vertexConsumer, stoneHieroglyph, stoneHieroglyphTypes.getWidth(), stoneHieroglyphTypes.getHeight());
 		poseStack.popPose();
-		super.render(cavePainting, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
+		super.render(stoneHieroglyph, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
 	}
 
-	private void renderPainting(PoseStack poseStack, VertexConsumer vertexConsumer, CavePainting cavePainting, int width, int height) {
+	private void renderStoneHieroglyph(PoseStack poseStack, VertexConsumer vertexConsumer, StoneHieroglyph cavePainting, int width, int height) {
 		Pose pose = poseStack.last();
 		Matrix4f matrix4f = pose.pose();
 		Matrix3f matrix3f = pose.normal();
@@ -46,15 +46,15 @@ public class CavePaintingRenderer extends EntityRenderer<CavePainting> {
 		float f1 = (float) (-height) / 2.0F;
 		int i = width / 16;
 		int j = height / 16;
-		double d0 = 16.0D / (double) i;
-		double d1 = 16.0D / (double) j;
+		float d0 = 16.0F / i;
+		float d1 = 16.0F / j;
 
 		for (int k = 0; k < i; ++k) {
 			for (int l = 0; l < j; ++l) {
-				float uStart = f + (float) ((k + 1) * 16);
-				float uEnd = f + (float) (k * 16);
-				float vStart = f1 + (float) ((l + 1) * 16);
-				float vEnd = f1 + (float) (l * 16);
+				float uStart = f + (float) (k * 16);
+				float uEnd = f + (float) ((k + 1) * 16);
+				float vStart = f1 + (float) (l * 16);
+				float vEnd = f1 + (float) ((l + 1) * 16);
 				int x = cavePainting.getBlockX();
 				int y = Mth.floor(cavePainting.getY() + (double) ((vStart + vEnd) / 2.0F / 16.0F));
 				int z = cavePainting.getBlockZ();
@@ -80,10 +80,10 @@ public class CavePaintingRenderer extends EntityRenderer<CavePainting> {
 				float spriteMaxU = (float) (d0 * (i - (k + 1))) / 16f;
 				float spriteMinV = (float) (d1 * (j - l)) / 16f;
 				float spriteMaxV = (float) (d1 * (j - (l + 1))) / 16f;
-				this.vertex(matrix4f, matrix3f, vertexConsumer, uStart, vEnd, spriteMinU, spriteMinV, -0.5F, 0, 0, -1, lightColour);
-				this.vertex(matrix4f, matrix3f, vertexConsumer, uEnd, vEnd, spriteMaxU, spriteMinV, -0.5F, 0, 0, -1, lightColour);
-				this.vertex(matrix4f, matrix3f, vertexConsumer, uEnd, vStart, spriteMaxU, spriteMaxV, -0.5F, 0, 0, -1, lightColour);
-				this.vertex(matrix4f, matrix3f, vertexConsumer, uStart, vStart, spriteMinU, spriteMaxV, -0.5F, 0, 0, -1, lightColour);
+				this.vertex(matrix4f, matrix3f, vertexConsumer, uEnd, vStart, spriteMaxU, spriteMinV, -0.5F, 0, 0, -1, lightColour);
+				this.vertex(matrix4f, matrix3f, vertexConsumer, uStart, vStart, spriteMinU, spriteMinV, -0.5F, 0, 0, -1, lightColour);
+				this.vertex(matrix4f, matrix3f, vertexConsumer, uStart, vEnd, spriteMinU, spriteMaxV, -0.5F, 0, 0, -1, lightColour);
+				this.vertex(matrix4f, matrix3f, vertexConsumer, uEnd, vEnd, spriteMaxU, spriteMaxV, -0.5F, 0, 0, -1, lightColour);
 			}
 		}
 
@@ -94,7 +94,7 @@ public class CavePaintingRenderer extends EntityRenderer<CavePainting> {
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(CavePainting cavePainting) {
-		return cavePainting.getVariant().getTexture();
+	public ResourceLocation getTextureLocation(StoneHieroglyph stoneHieroglyph) {
+		return stoneHieroglyph.getStoneHieroglyph().getTexture();
 	}
 }

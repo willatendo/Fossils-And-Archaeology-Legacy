@@ -125,7 +125,7 @@ public class FossilsLegacyItemModelProvider extends ItemModelProvider {
 		this.basicItem(FossilsLegacyItems.MAGIC_CONCH.get());
 		this.basicItem(FossilsLegacyItems.JURASSIC_FERN_SPORES.get());
 		this.basicItem(FossilsLegacyItems.RELIC_SCRAP.get());
-		this.basicItem(FossilsLegacyItems.CAVE_PAINTING.get());
+		this.basicItem(FossilsLegacyItems.STONE_HIEROGLYPH.get());
 		this.handheldItem(FossilsLegacyItems.SWORD_ARTIFACT.get());
 		this.basicItem(FossilsLegacyItems.HELMET_ARTIFACT.get());
 		this.basicItem(FossilsLegacyItems.GEM_ARTIFACT.get());

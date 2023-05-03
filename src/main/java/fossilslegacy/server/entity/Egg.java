@@ -83,7 +83,7 @@ public class Egg extends Animal implements TicksToBirth, DinosaurEncyclopediaInf
 			this.discard();
 			Player player = this.level.getNearestPlayer(this, 25.0D);
 			if (player != null) {
-				player.sendSystemMessage(FossilsLegacyUtils.translation("egg", "died"));
+				player.sendSystemMessage(FossilsLegacyUtils.translation("entity", "egg.died"));
 			}
 		}
 

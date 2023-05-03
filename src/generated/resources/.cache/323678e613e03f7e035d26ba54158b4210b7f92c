@@ -1,4 +1,4 @@
-// 1.19.4	2023-05-01T16:21:59.686881	Tags for minecraft:item mod id fossilslegacy
+// 1.19.4	2023-05-03T16:54:11.2635595	Tags for minecraft:item mod id fossilslegacy
 17ca31a3ec8b68a2672f263eafc59d95d13a7403 data/fossilslegacy/tags/items/beef_outputs.json
 b7ceaccd732062b0d288e48dfdc719a4ad770d63 data/fossilslegacy/tags/items/brachiosaurus_meat_outputs.json
 5da6c180981b74163a8d511c12575e21d35871fe data/fossilslegacy/tags/items/cake_eggs.json
@@ -17,7 +17,7 @@ baf603b9eb8cd3c0904bba20a23467242fdea50f data/fossilslegacy/tags/items/mosasauru
 5308aaee941b1374a14e5a563470385bd7e6b3a9 data/fossilslegacy/tags/items/porkchop_outputs.json
 576f9072a6d5c8cbd58381dfc220b15deacd7068 data/fossilslegacy/tags/items/pterosaurus_meat_outputs.json
 75c0c1a4307bebb9efae0fd063220ba62cb5344a data/fossilslegacy/tags/items/rabbit_outputs.json
-1b4d54df5c5b6fcce0131e02ea4d6de530728be3 data/fossilslegacy/tags/items/relic_scrap_outputs.json
+78d72dd49f39323c5a7a1494908813cb4f7badde data/fossilslegacy/tags/items/relic_scrap_outputs.json
 d45f9d69088412d83d4312f4f9fa88b084e300dc data/fossilslegacy/tags/items/smilodon_meat_outputs.json
 71d111cee3705b6d80e2a7351083c296ccd8b5ea data/fossilslegacy/tags/items/stegosaurus_meat_outputs.json
 1ad920aa65e2706dabb6265f3b12546ab33e8936 data/fossilslegacy/tags/items/triceratops_commandables.json
