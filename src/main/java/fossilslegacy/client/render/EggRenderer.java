@@ -9,8 +9,6 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
 public class EggRenderer extends MobRenderer<Egg, EggModel> {
-	public static final ResourceLocation TRICERATOPS = FossilsLegacyUtils.resource("textures/entities/egg/triceratops.png");
-
 	public EggRenderer(Context context) {
 		super(context, new EggModel(context.bakeLayer(FossilsLegacyModels.EGG)), 0.3F);
 	}

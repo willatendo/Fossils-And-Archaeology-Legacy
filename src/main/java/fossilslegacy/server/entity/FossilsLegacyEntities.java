@@ -56,6 +56,7 @@ public class FossilsLegacyEntities {
 
 	public static final RegistryObject<EntityType<DrownedPirate>> DROWNED_PIRATE = ENTITY_TYPES.register("drowned_pirate", () -> EntityType.Builder.<DrownedPirate>of(DrownedPirate::new, MobCategory.CREATURE).sized(0.6F, 1.99F).build("drowned_pirate"));
 
-	public static final RegistryObject<EntityType<ThrownJavelin>> THROWN_JAVELIN = ENTITY_TYPES.register("thrown_javelin", () -> EntityType.Builder.<ThrownJavelin>of(ThrownJavelin::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("thrown_javelin"));
+	public static final RegistryObject<EntityType<ThrownJavelin>> THROWN_JAVELIN = ENTITY_TYPES.register("thrown_javelin", () -> EntityType.Builder.<ThrownJavelin>of(ThrownJavelin::new, MobCategory.MISC).sized(0.5F, 0.5F).build("thrown_javelin"));
+	public static final RegistryObject<EntityType<ThrownIncubatedEgg>> THROWN_INCUBATED_EGG = ENTITY_TYPES.register("thrown_incubated_egg", () -> EntityType.Builder.<ThrownIncubatedEgg>of(ThrownIncubatedEgg::new, MobCategory.MISC).sized(0.25F, 0.25F).build("thrown_incubated_egg"));
 	public static final RegistryObject<EntityType<StoneHieroglyph>> STONE_HIEROGLYPH = ENTITY_TYPES.register("stone_hieroglyph", () -> EntityType.Builder.<StoneHieroglyph>of(StoneHieroglyph::new, MobCategory.MISC).sized(0.5F, 0.5F).build("stone_hieroglyph"));
 }

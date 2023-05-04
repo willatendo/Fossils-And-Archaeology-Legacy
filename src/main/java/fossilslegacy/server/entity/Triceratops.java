@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import fossilslegacy.client.sound.FossilsLegacySoundEvents;
+import fossilslegacy.server.block.entity.FeederBlockEntity;
 import fossilslegacy.server.entity.goal.BabyFollowParentGoal;
 import fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
 import fossilslegacy.server.item.FossilsLegacyItemTags;
@@ -12,7 +13,6 @@ import fossilslegacy.server.utils.DinosaurOrder;
 import fossilslegacy.server.utils.FossilsLegacyUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -27,8 +27,6 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.Entity;
@@ -55,11 +53,11 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.DismountHelper;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
@@ -76,6 +74,11 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 
 	public Triceratops(EntityType<? extends Triceratops> entityType, Level level) {
 		super(entityType, level);
+	}
+
+	@Override
+	public boolean removeWhenFarAway(double distance) {
+		return false;
 	}
 
 	@Override
@@ -121,14 +124,11 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 	@Override
 	public void tick() {
 		super.tick();
-		if (!this.hasEffect(MobEffects.WEAKNESS) && this.isInWeaknessBiome()) {
-			this.addEffect(new MobEffectInstance(MobEffects.WEAKNESS));
-		}
 		if (this.isAlive()) {
 			this.timeAlive++;
 			this.setHunger(this.getHunger() - 1);
 		}
-		if (this.timeAlive == 24000) {
+		if (this.timeAlive == Level.TICKS_PER_DAY) {
 			this.setDaysAlive(this.getDaysAlive() + 1);
 			this.timeAlive = 0;
 		}
@@ -141,6 +141,12 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 					this.setGrowthStage(i - 1);
 					break;
 				}
+			}
+		}
+		if (this.tickCount % 10 == 0 && this.getHealth() < this.getMaxHealth()) {
+			if (this.getHunger() > 5000) {
+				this.setHunger(this.getHunger() - 1000);
+				this.setHealth(this.getHealth() + 1.0F);
 			}
 		}
 	}
@@ -165,11 +171,6 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 
 	public EntityDimensions getDimensions(Pose pose) {
 		return super.getDimensions(pose).scale(0.75F * (float) this.getGrowthStage());
-	}
-
-	public boolean isInWeaknessBiome() {
-		Holder<Biome> biome = this.level.getBiome(this.blockPosition());
-		return biome.get().getBaseTemperature() > 1.0F;
 	}
 
 	@Override
@@ -241,7 +242,18 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 			this.setOwnerUUID(player.getUUID());
 			return InteractionResult.SUCCESS;
 		}
-		if (!this.hasPassenger(this) && player.getItemInHand(interactionHand).isEmpty() && !this.isBaby()) {
+		ItemStack itemStack = player.getItemInHand(interactionHand);
+		if (this.isTame() && FeederBlockEntity.getPlantsFoodLevel(itemStack) > 0) {
+			int addition = this.getHunger() + FeederBlockEntity.getPlantsFoodLevel(itemStack);
+			if (!(addition > this.getMaxHealth())) {
+				this.setHunger(addition);
+			} else {
+				this.setHunger(this.getMaxHunger());
+			}
+			itemStack.shrink(1);
+			return InteractionResult.SUCCESS;
+		}
+		if (!this.hasPassenger(this) && itemStack.isEmpty() && !this.isBaby()) {
 			player.startRiding(this);
 			return InteractionResult.SUCCESS;
 		}
@@ -301,7 +313,6 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 					f1 *= 0.25F;
 				}
 
-//				this.flyingSpeed = this.getSpeed() * 0.1F;
 				if (this.isControlledByLocalInstance()) {
 					this.setSpeed((float) this.getAttributeValue(Attributes.MOVEMENT_SPEED));
 					super.travel(new Vec3((double) f, vec3.y, (double) f1));
@@ -312,7 +323,6 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 				this.calculateEntityAnimation(false);
 				this.tryCheckInsideBlocks();
 			} else {
-//				this.flyingSpeed = 0.02F;
 				super.travel(vec3);
 			}
 		}
@@ -386,7 +396,7 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 
 	@Override
 	public int getMaxHunger() {
-		return 5000;
+		return 20000;
 	}
 
 	@Override
@@ -467,33 +477,6 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 		this.setSubSpecies(this.random.nextInt(this.textures().length));
 		return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData, compoundTag);
 	}
-
-//	private float getAttackDamage() {
-//		return (float) this.getAttributeValue(Attributes.ATTACK_DAMAGE);
-//	}
-
-//	@Override
-//	public boolean doHurtTarget(Entity entity) {
-//		this.level.broadcastEntityEvent(this, (byte) 4);
-//		float attackDamage = this.getAttackDamage();
-//		float variableDamage = (int) attackDamage > 0 ? attackDamage / 2.0F + (float) this.random.nextInt((int) attackDamage) : attackDamage;
-//		boolean canHurt = entity.hurt(DamageSource.mobAttack(this), variableDamage);
-//		if (canHurt) {
-//			double knockbackResistance;
-//			if (entity instanceof LivingEntity livingEntity) {
-//				knockbackResistance = livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
-//			} else {
-//				knockbackResistance = 0.0D;
-//			}
-//
-//			double variableKnockbackResistance = Math.max(0.0D, 1.0D - knockbackResistance);
-//			entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, (double) 0.4F * variableKnockbackResistance, 0.0D));
-//			this.doEnchantDamageEffects(this, entity);
-//		}
-//
-//		this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);
-//		return canHurt;
-//	}
 
 	@Override
 	public List<Component> info() {
