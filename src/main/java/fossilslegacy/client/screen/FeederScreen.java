@@ -32,10 +32,10 @@ public class FeederScreen extends AbstractContainerScreen<FeederMenu> {
 		RenderSystem.setShaderTexture(0, TEXTURE);
 		int leftPos = this.leftPos;
 		int topPos = this.topPos;
-		this.blit(poseStack, leftPos, topPos, 0, 0, this.imageWidth, this.imageHeight);
+		blit(poseStack, leftPos, topPos, 0, 0, this.imageWidth, this.imageHeight);
 		int meat = this.menu.getMeatScaled(46);
-		this.blit(poseStack, leftPos + 67, topPos + 55 - meat, 176, 46 - meat, 3, meat);
+		blit(poseStack, leftPos + 67, topPos + 55 - meat, 176, 46 - meat, 3, meat);
 		int plants = this.menu.getPlantsScaled(46);
-		this.blit(poseStack, leftPos + 111, topPos + 55 - plants, 176, 46 - plants, 3, plants);
+		blit(poseStack, leftPos + 111, topPos + 55 - plants, 176, 46 - plants, 3, plants);
 	}
 }

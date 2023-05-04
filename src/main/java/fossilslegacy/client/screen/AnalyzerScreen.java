@@ -30,9 +30,9 @@ public class AnalyzerScreen extends AbstractContainerScreen<AnalyzerMenu> {
 		RenderSystem.setShaderTexture(0, TEXTURE);
 		int leftPos = this.leftPos;
 		int topPos = this.topPos;
-		this.blit(poseStack, leftPos, topPos, 0, 0, this.imageWidth, this.imageHeight);
+		blit(poseStack, leftPos, topPos, 0, 0, this.imageWidth, this.imageHeight);
 
 		int analyzerProgess = this.menu.getAnalyzerProgress();
-		this.blit(poseStack, leftPos + 68, topPos + 39, 176, 0, analyzerProgess + 1, 22);
+		blit(poseStack, leftPos + 68, topPos + 39, 176, 0, analyzerProgess + 1, 22);
 	}
 }

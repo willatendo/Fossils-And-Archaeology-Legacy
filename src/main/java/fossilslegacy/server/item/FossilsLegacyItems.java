@@ -104,7 +104,7 @@ public class FossilsLegacyItems {
 	public static final RegistryObject<Item> MAMMOTH_DNA = ITEMS.register("mammoth_dna", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> AXOLOTL_EGGS = ITEMS.register("axolotl_eggs", () -> new PlaceEntityItem(() -> EntityType.AXOLOTL, new Item.Properties()));
 	public static final RegistryObject<Item> CAT_EMBRYO_SYRINGE = ITEMS.register("cat_embryo_syringe", () -> new SyringeItem(SyringeAnimals.CAT, new Item.Properties().stacksTo(1)));
-	public static final RegistryObject<Item> INCUBATED_CHICKEN_EGG = ITEMS.register("incubated_chicken_egg", () -> new Item(new Item.Properties().stacksTo(16)));
+	public static final RegistryObject<Item> INCUBATED_CHICKEN_EGG = ITEMS.register("incubated_chicken_egg", () -> new IncubatedEggItem(0, new Item.Properties().stacksTo(16)));
 	public static final RegistryObject<Item> COW_EMBRYO_SYRINGE = ITEMS.register("cow_embryo_syringe", () -> new SyringeItem(SyringeAnimals.COW, new Item.Properties().stacksTo(1)));
 	public static final RegistryObject<Item> DOLPHIN_EMBRYO_SYRINGE = ITEMS.register("dolphin_embryo_syringe", () -> new SyringeItem(SyringeAnimals.DOLPHIN, new Item.Properties().stacksTo(1)));
 	public static final RegistryObject<Item> DONKEY_EMBRYO_SYRINGE = ITEMS.register("donkey_embryo_syringe", () -> new SyringeItem(SyringeAnimals.DONKEY, new Item.Properties().stacksTo(1)));
@@ -116,7 +116,7 @@ public class FossilsLegacyItems {
 	public static final RegistryObject<Item> MULE_EMBRYO_SYRINGE = ITEMS.register("mule_embryo_syringe", () -> new SyringeItem(SyringeAnimals.MULE, new Item.Properties().stacksTo(1)));
 	public static final RegistryObject<Item> OCELOT_EMBRYO_SYRINGE = ITEMS.register("ocelot_embryo_syringe", () -> new SyringeItem(SyringeAnimals.OCELOT, new Item.Properties().stacksTo(1)));
 	public static final RegistryObject<Item> PANDA_EMBRYO_SYRINGE = ITEMS.register("panda_embryo_syringe", () -> new SyringeItem(SyringeAnimals.PANDA, new Item.Properties().stacksTo(1)));
-	public static final RegistryObject<Item> INCUBATED_PARROT_EGG = ITEMS.register("incubated_parrot_egg", () -> new Item(new Item.Properties().stacksTo(16)));
+	public static final RegistryObject<Item> INCUBATED_PARROT_EGG = ITEMS.register("incubated_parrot_egg", () -> new IncubatedEggItem(1, new Item.Properties().stacksTo(16)));
 	public static final RegistryObject<Item> PIG_EMBRYO_SYRINGE = ITEMS.register("pig_embryo_syringe", () -> new SyringeItem(SyringeAnimals.PIG, new Item.Properties().stacksTo(1)));
 	public static final RegistryObject<Item> POLAR_BEAR_EMBRYO_SYRINGE = ITEMS.register("polar_bear_embryo_syringe", () -> new SyringeItem(SyringeAnimals.POLAR_BEAR, new Item.Properties().stacksTo(1)));
 	public static final RegistryObject<Item> RABBIT_EMBRYO_SYRINGE = ITEMS.register("rabbit_embryo_syringe", () -> new SyringeItem(SyringeAnimals.RABBIT, new Item.Properties().stacksTo(1)));

@@ -30,13 +30,13 @@ public class ArchaeologyWorkbenchScreen extends AbstractContainerScreen<Archaeol
 		RenderSystem.setShaderTexture(0, TEXTURE);
 		int leftPos = this.leftPos;
 		int topPos = this.topPos;
-		this.blit(poseStack, leftPos, topPos, 0, 0, this.imageWidth, this.imageHeight);
+		blit(poseStack, leftPos, topPos, 0, 0, this.imageWidth, this.imageHeight);
 		if (this.menu.isOn()) {
 			int onProgess = this.menu.getOnProgress();
-			this.blit(poseStack, leftPos + 81, topPos + 36 + 13 - onProgess, 176, 13 - onProgess, 14, onProgess + 1);
+			blit(poseStack, leftPos + 81, topPos + 36 + 13 - onProgess, 176, 13 - onProgess, 14, onProgess + 1);
 		}
 
 		int archaeologyProgess = this.menu.getArchaeologyProgress();
-		this.blit(poseStack, leftPos + 76, topPos + 21, 176, 14, archaeologyProgess + 1, 16);
+		blit(poseStack, leftPos + 76, topPos + 21, 176, 14, archaeologyProgess + 1, 16);
 	}
 }

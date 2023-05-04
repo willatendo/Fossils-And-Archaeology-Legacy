@@ -7,11 +7,11 @@ import fossilslegacy.client.model.SmilodonModel;
 import fossilslegacy.client.model.pterosaurus.BabyPteranodonModel;
 import fossilslegacy.client.model.triceratops.BabyTriceratopsModel;
 import fossilslegacy.client.model.triceratops.TriceratopsModel;
-import fossilslegacy.client.render.StoneHieroglyphRenderer;
 import fossilslegacy.client.render.DrownedPirateRenderer;
 import fossilslegacy.client.render.EggRenderer;
 import fossilslegacy.client.render.MammothRenderer;
 import fossilslegacy.client.render.SmilodonRenderer;
+import fossilslegacy.client.render.StoneHieroglyphRenderer;
 import fossilslegacy.client.render.ThrownJavelinRenderer;
 import fossilslegacy.client.render.TriceratopsRenderer;
 import fossilslegacy.client.screen.AnalyzerScreen;
@@ -38,6 +38,7 @@ import net.minecraft.client.renderer.entity.PigRenderer;
 import net.minecraft.client.renderer.entity.PolarBearRenderer;
 import net.minecraft.client.renderer.entity.RabbitRenderer;
 import net.minecraft.client.renderer.entity.SheepRenderer;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.entity.WolfRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -83,6 +84,7 @@ public class ModClientEvents {
 		EntityRenderers.register(FossilsLegacyEntities.PREGNANT_WOLF.get(), WolfRenderer::new);
 
 		EntityRenderers.register(FossilsLegacyEntities.THROWN_JAVELIN.get(), ThrownJavelinRenderer::new);
+		EntityRenderers.register(FossilsLegacyEntities.THROWN_INCUBATED_EGG.get(), ThrownItemRenderer::new);
 		EntityRenderers.register(FossilsLegacyEntities.STONE_HIEROGLYPH.get(), StoneHieroglyphRenderer::new);
 	}
 
