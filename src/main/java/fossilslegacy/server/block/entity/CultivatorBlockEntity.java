@@ -1,7 +1,6 @@
 package fossilslegacy.server.block.entity;
 
 import java.util.Map;
-import java.util.Random;
 
 import com.google.common.collect.Maps;
 
@@ -233,7 +232,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
 		}
 
 		if (cultivatorBlockEntity.onTime == (cultivatorBlockEntity.getTotalCultivationTime(level, cultivatorBlockEntity) / 2) + 1) {
-			if (new Random().nextInt(100) <= 30) {
+			if (cultivatorBlockEntity.level.getRandom().nextInt(100) <= 30) {
 				((CultivatorBlock) FossilsLegacyBlocks.CULTIVATOR.get()).shatter(level, blockPos, cultivatorBlockEntity);
 			}
 		}

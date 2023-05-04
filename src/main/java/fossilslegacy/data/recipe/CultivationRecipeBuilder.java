@@ -59,7 +59,7 @@ public class CultivationRecipeBuilder implements RecipeBuilder {
 	public void save(Consumer<FinishedRecipe> finishedRecipe, ResourceLocation recipeId) {
 		this.ensureValid(recipeId);
 		this.advancement.parent(ROOT_RECIPE_ADVANCEMENT).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId)).rewards(AdvancementRewards.Builder.recipe(recipeId)).requirements(RequirementsStrategy.OR);
-		finishedRecipe.accept(new CultivationRecipeBuilder.Result(recipeId, this.ingredient, this.result, this.time, this.advancement, recipeId.withPrefix("recipes/archaeology/")));
+		finishedRecipe.accept(new CultivationRecipeBuilder.Result(recipeId, this.ingredient, this.result, this.time, this.advancement, recipeId.withPrefix("recipes/cultivation/")));
 	}
 
 	private void ensureValid(ResourceLocation recipeId) {
