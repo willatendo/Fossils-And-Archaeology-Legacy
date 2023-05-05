@@ -50,6 +50,7 @@ public class ThrownJavelin extends AbstractArrow {
 	@Override
 	public boolean save(CompoundTag compoundTag) {
 		compoundTag.putFloat("Damage", this.damage);
+		compoundTag.putInt("Variant", this.getVariant());
 		return super.save(compoundTag);
 	}
 
@@ -57,6 +58,7 @@ public class ThrownJavelin extends AbstractArrow {
 	public void load(CompoundTag compoundTag) {
 		super.load(compoundTag);
 		this.damage = compoundTag.getFloat("Damage");
+		this.setVariant(compoundTag.getInt("Variant"));
 	}
 
 	public void setVariant(int variant) {
@@ -85,7 +87,7 @@ public class ThrownJavelin extends AbstractArrow {
 		if (tier == FossilsLegacyTiers.GEM) {
 			this.setVariant(6);
 		}
-		this.damage = tier.getAttackDamageBonus();
+		this.damage = 4 + tier.getAttackDamageBonus();
 	}
 
 	public int getVariant() {

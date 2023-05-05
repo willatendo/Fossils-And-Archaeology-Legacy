@@ -4,7 +4,6 @@ import fossilslegacy.client.sound.FossilsLegacySoundEvents;
 import fossilslegacy.server.block.FossilsLegacyBlocks;
 import fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
 import fossilslegacy.server.entity.FossilsLegacyEntities;
-import fossilslegacy.server.game_event.FossilLegacyGameEvents;
 import fossilslegacy.server.item.FossilsLegacyItems;
 import fossilslegacy.server.menu.FossilsLegacyMenus;
 import fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
@@ -28,7 +27,6 @@ public class FossilsLegacyMod {
 		FossilsLegacyBlockEntities.BLOCK_ENTITY_TYPES.register(iEventBus);
 		FossilsLegacyMenus.MENU_TYPES.register(iEventBus);
 		FossilsLegacyBlocks.BLOCKS.register(iEventBus);
-		FossilLegacyGameEvents.GAME_EVENTS.register(iEventBus);
 		FossilsLegacyEntities.ENTITY_TYPES.register(iEventBus);
 		FossilLegacyStructureTypes.STRUCTURE_TYPE.register(iEventBus);
 		FossilLegacysStructurePeices.STRUCTURE_PIECE_TYPE.register(iEventBus);

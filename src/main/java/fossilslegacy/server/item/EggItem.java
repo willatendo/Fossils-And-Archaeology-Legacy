@@ -42,13 +42,10 @@ public class EggItem extends Item {
 			}
 
 			Egg egg = FossilsLegacyEntities.EGG.get().spawn((ServerLevel) level, itemStack, useOnContext.getPlayer(), placePos, MobSpawnType.SPAWN_EGG, true, !Objects.equals(blockPos, placePos) && direction == Direction.UP);
-
-			if (egg != null) {
-				itemStack.shrink(1);
-				egg.setEgg(this.eggs);
-				egg.setRemainingTime(6000);
-				level.gameEvent(useOnContext.getPlayer(), GameEvent.ENTITY_PLACE, blockPos);
-			}
+			egg.setEgg(this.eggs);
+			egg.setRemainingTime(6000);
+			itemStack.shrink(1);
+			level.gameEvent(useOnContext.getPlayer(), GameEvent.ENTITY_PLACE, blockPos);
 
 			return InteractionResult.CONSUME;
 		}

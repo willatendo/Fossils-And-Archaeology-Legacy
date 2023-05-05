@@ -1,12 +1,12 @@
 package fossilslegacy.server.event;
 
 import fossilslegacy.server.block.FossilsLegacyBlocks;
-import fossilslegacy.server.entity.StoneHieroglyphTypes;
 import fossilslegacy.server.entity.DrownedPirate;
 import fossilslegacy.server.entity.Egg;
 import fossilslegacy.server.entity.FossilsLegacyEntities;
 import fossilslegacy.server.entity.Mammoth;
 import fossilslegacy.server.entity.Smilodon;
+import fossilslegacy.server.entity.StoneHieroglyphTypes;
 import fossilslegacy.server.entity.Triceratops;
 import fossilslegacy.server.item.FossilsLegacyItems;
 import fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -66,11 +66,6 @@ public class ModServerEvents {
 		event.put(FossilsLegacyEntities.PREGNANT_SHEEP.get(), Sheep.createAttributes().build());
 		event.put(FossilsLegacyEntities.PREGNANT_WOLF.get(), Wolf.createAttributes().build());
 	}
-
-//	@SubscribeEvent
-//	public static void commonSetup(FMLCommonSetupEvent event) {
-//		VibrationListener.VIBRATION_FREQUENCY_FOR_EVENT.put(FossilLegacyGameEvents.CULTIVATOR_SHATTER.get(), 15);
-//	
 
 	@SubscribeEvent
 	public static void creativeModTabModification(CreativeModeTabEvent.BuildContents event) {
