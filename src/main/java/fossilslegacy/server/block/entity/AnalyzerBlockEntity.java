@@ -142,7 +142,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 			--analyzerBlockEntity.onTime;
 		}
 
-		for (int i = 0; i < 9; i++) {
+		for (int i = 8; i > -1; i--) {
 			boolean hasInput = !analyzerBlockEntity.itemStacks.get(i).isEmpty();
 			if (analyzerBlockEntity.isOn() || hasInput) {
 				TagKey<Item> outputs;
@@ -165,129 +165,162 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 				if (outputs != null) {
 					int maxStackSize = analyzerBlockEntity.getMaxStackSize();
 					ItemStack output = ForgeRegistries.ITEMS.tags().getTag(outputs).stream().toList().get(new Random().nextInt(ForgeRegistries.ITEMS.tags().getTag(outputs).stream().toList().size())).getDefaultInstance();
-					if (analyzerBlockEntity.canAnalyze(9, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-						if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(9, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-							analyzerBlockEntity.onTime = 100;
-							if (analyzerBlockEntity.isOn()) {
-								changed = true;
+					for (int os = 9; os < 12; os++) {
+						if (analyzerBlockEntity.canAnalyze(os, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+							if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(os, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+								analyzerBlockEntity.onTime = 100;
+								if (analyzerBlockEntity.isOn()) {
+									changed = true;
+								}
 							}
-						}
 
-						if (analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(9, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-							++analyzerBlockEntity.analyzationProgress;
-							if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
-								analyzerBlockEntity.analyzationProgress = 0;
-								analyzerBlockEntity.analyzationTotalTime = 100;
-								if (analyzerBlockEntity.canAnalyze(9, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-									ItemStack input = analyzerBlockEntity.itemStacks.get(i);
-									ItemStack outputSlot = analyzerBlockEntity.itemStacks.get(9);
-									if (outputSlot.isEmpty()) {
-										analyzerBlockEntity.itemStacks.set(9, output.copy());
-									} else if (outputSlot.is(output.getItem())) {
-										outputSlot.grow(output.getCount());
+							if (analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(os, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+								++analyzerBlockEntity.analyzationProgress;
+								if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
+									analyzerBlockEntity.analyzationProgress = 0;
+									analyzerBlockEntity.analyzationTotalTime = 100;
+									if (analyzerBlockEntity.canAnalyze(os, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+										ItemStack input = analyzerBlockEntity.itemStacks.get(i);
+										ItemStack outputSlot = analyzerBlockEntity.itemStacks.get(os);
+										if (outputSlot.isEmpty()) {
+											analyzerBlockEntity.itemStacks.set(os, output.copy());
+										} else if (outputSlot.is(output.getItem())) {
+											outputSlot.grow(output.getCount());
+										}
+
+										input.shrink(1);
 									}
 
-									input.shrink(1);
+									changed = true;
 								}
-
-								changed = true;
-							}
-						} else {
-							analyzerBlockEntity.analyzationProgress = 0;
-						}
-					} else if (analyzerBlockEntity.canAnalyze(10, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-						if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(10, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-							analyzerBlockEntity.onTime = 100;
-							if (analyzerBlockEntity.isOn()) {
-								changed = true;
-							}
-						}
-
-						if (analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(10, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-							++analyzerBlockEntity.analyzationProgress;
-							if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
+							} else {
 								analyzerBlockEntity.analyzationProgress = 0;
-								analyzerBlockEntity.analyzationTotalTime = 100;
-								if (analyzerBlockEntity.canAnalyze(10, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-									ItemStack input = analyzerBlockEntity.itemStacks.get(i);
-									ItemStack outputSlot = analyzerBlockEntity.itemStacks.get(10);
-									if (outputSlot.isEmpty()) {
-										analyzerBlockEntity.itemStacks.set(10, output.copy());
-									} else if (outputSlot.is(output.getItem())) {
-										outputSlot.grow(output.getCount());
-									}
-
-									input.shrink(1);
-								}
-
-								changed = true;
-							}
-						} else {
-							analyzerBlockEntity.analyzationProgress = 0;
-						}
-					} else if (analyzerBlockEntity.canAnalyze(11, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-						if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(11, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-							analyzerBlockEntity.onTime = 100;
-							if (analyzerBlockEntity.isOn()) {
-								changed = true;
 							}
 						}
-
-						if (analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(11, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-							++analyzerBlockEntity.analyzationProgress;
-							if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
-								analyzerBlockEntity.analyzationProgress = 0;
-								analyzerBlockEntity.analyzationTotalTime = 100;
-								if (analyzerBlockEntity.canAnalyze(11, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-									ItemStack input = analyzerBlockEntity.itemStacks.get(i);
-									ItemStack outputSlot = analyzerBlockEntity.itemStacks.get(11);
-									if (outputSlot.isEmpty()) {
-										analyzerBlockEntity.itemStacks.set(11, output.copy());
-									} else if (outputSlot.is(output.getItem())) {
-										outputSlot.grow(output.getCount());
-									}
-
-									input.shrink(1);
-								}
-
-								changed = true;
-							}
-						} else {
-							analyzerBlockEntity.analyzationProgress = 0;
-						}
-					} else if (analyzerBlockEntity.canAnalyze(12, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-						if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(12, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-							analyzerBlockEntity.onTime = 100;
-							if (analyzerBlockEntity.isOn()) {
-								changed = true;
-							}
-						}
-
-						if (analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(12, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-							++analyzerBlockEntity.analyzationProgress;
-							if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
-								analyzerBlockEntity.analyzationProgress = 0;
-								analyzerBlockEntity.analyzationTotalTime = 100;
-								if (analyzerBlockEntity.canAnalyze(12, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-									ItemStack input = analyzerBlockEntity.itemStacks.get(i);
-									ItemStack outputSlot = analyzerBlockEntity.itemStacks.get(12);
-									if (outputSlot.isEmpty()) {
-										analyzerBlockEntity.itemStacks.set(12, output.copy());
-									} else if (outputSlot.is(output.getItem())) {
-										outputSlot.grow(output.getCount());
-									}
-
-									input.shrink(1);
-								}
-
-								changed = true;
-							}
-						} else {
-							analyzerBlockEntity.analyzationProgress = 0;
-						}
-					} else {
-						analyzerBlockEntity.analyzationProgress = 0;
 					}
+//					if (analyzerBlockEntity.canAnalyze(9, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+//						if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(9, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+//							analyzerBlockEntity.onTime = 100;
+//							if (analyzerBlockEntity.isOn()) {
+//								changed = true;
+//							}
+//						}
+//
+//						if (analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(9, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+//							++analyzerBlockEntity.analyzationProgress;
+//							if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
+//								analyzerBlockEntity.analyzationProgress = 0;
+//								analyzerBlockEntity.analyzationTotalTime = 100;
+//								if (analyzerBlockEntity.canAnalyze(9, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+//									ItemStack input = analyzerBlockEntity.itemStacks.get(i);
+//									ItemStack outputSlot = analyzerBlockEntity.itemStacks.get(9);
+//									if (outputSlot.isEmpty()) {
+//										analyzerBlockEntity.itemStacks.set(9, output.copy());
+//									} else if (outputSlot.is(output.getItem())) {
+//										outputSlot.grow(output.getCount());
+//									}
+//
+//									input.shrink(1);
+//								}
+//
+//								changed = true;
+//							}
+//						} else {
+//							analyzerBlockEntity.analyzationProgress = 0;
+//						}
+//					} else if (analyzerBlockEntity.canAnalyze(10, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+//						if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(10, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+//							analyzerBlockEntity.onTime = 100;
+//							if (analyzerBlockEntity.isOn()) {
+//								changed = true;
+//							}
+//						}
+//
+//						if (analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(10, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+//							++analyzerBlockEntity.analyzationProgress;
+//							if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
+//								analyzerBlockEntity.analyzationProgress = 0;
+//								analyzerBlockEntity.analyzationTotalTime = 100;
+//								if (analyzerBlockEntity.canAnalyze(10, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+//									ItemStack input = analyzerBlockEntity.itemStacks.get(i);
+//									ItemStack outputSlot = analyzerBlockEntity.itemStacks.get(10);
+//									if (outputSlot.isEmpty()) {
+//										analyzerBlockEntity.itemStacks.set(10, output.copy());
+//									} else if (outputSlot.is(output.getItem())) {
+//										outputSlot.grow(output.getCount());
+//									}
+//
+//									input.shrink(1);
+//								}
+//
+//								changed = true;
+//							}
+//						} else {
+//							analyzerBlockEntity.analyzationProgress = 0;
+//						}
+//					} else if (analyzerBlockEntity.canAnalyze(11, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+//						if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(11, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+//							analyzerBlockEntity.onTime = 100;
+//							if (analyzerBlockEntity.isOn()) {
+//								changed = true;
+//							}
+//						}
+//
+//						if (analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(11, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+//							++analyzerBlockEntity.analyzationProgress;
+//							if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
+//								analyzerBlockEntity.analyzationProgress = 0;
+//								analyzerBlockEntity.analyzationTotalTime = 100;
+//								if (analyzerBlockEntity.canAnalyze(11, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+//									ItemStack input = analyzerBlockEntity.itemStacks.get(i);
+//									ItemStack outputSlot = analyzerBlockEntity.itemStacks.get(11);
+//									if (outputSlot.isEmpty()) {
+//										analyzerBlockEntity.itemStacks.set(11, output.copy());
+//									} else if (outputSlot.is(output.getItem())) {
+//										outputSlot.grow(output.getCount());
+//									}
+//
+//									input.shrink(1);
+//								}
+//
+//								changed = true;
+//							}
+//						} else {
+//							analyzerBlockEntity.analyzationProgress = 0;
+//						}
+//					} else if (analyzerBlockEntity.canAnalyze(12, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+//						if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(12, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+//							analyzerBlockEntity.onTime = 100;
+//							if (analyzerBlockEntity.isOn()) {
+//								changed = true;
+//							}
+//						}
+//
+//						if (analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(12, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+//							++analyzerBlockEntity.analyzationProgress;
+//							if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
+//								analyzerBlockEntity.analyzationProgress = 0;
+//								analyzerBlockEntity.analyzationTotalTime = 100;
+//								if (analyzerBlockEntity.canAnalyze(12, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+//									ItemStack input = analyzerBlockEntity.itemStacks.get(i);
+//									ItemStack outputSlot = analyzerBlockEntity.itemStacks.get(12);
+//									if (outputSlot.isEmpty()) {
+//										analyzerBlockEntity.itemStacks.set(12, output.copy());
+//									} else if (outputSlot.is(output.getItem())) {
+//										outputSlot.grow(output.getCount());
+//									}
+//
+//									input.shrink(1);
+//								}
+//
+//								changed = true;
+//							}
+//						} else {
+//							analyzerBlockEntity.analyzationProgress = 0;
+//						}
+//					} else {
+//						analyzerBlockEntity.analyzationProgress = 0;
+//					}
 				}
 			} else if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.analyzationProgress > 0) {
 				analyzerBlockEntity.analyzationProgress = Mth.clamp(analyzerBlockEntity.analyzationProgress - 2, 0, analyzerBlockEntity.analyzationTotalTime);

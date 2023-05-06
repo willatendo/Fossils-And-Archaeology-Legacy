@@ -13,13 +13,16 @@ import fossilslegacy.server.utils.DinosaurOrder;
 import fossilslegacy.server.utils.FossilsLegacyUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.OldUsersConverter;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
@@ -56,6 +59,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.AABB;
@@ -79,6 +83,18 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 	@Override
 	public boolean removeWhenFarAway(double distance) {
 		return false;
+	}
+
+	@Override
+	public void die(DamageSource damageSource) {
+		net.minecraft.network.chat.Component deathMessage = this.getCombatTracker().getDeathMessage();
+		super.die(damageSource);
+
+		if (this.dead) {
+			if (!this.level.isClientSide && this.level.getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES) && this.getOwner() instanceof ServerPlayer) {
+				this.getOwner().sendSystemMessage(deathMessage);
+			}
+		}
 	}
 
 	@Override
@@ -147,6 +163,9 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 			if (this.getHunger() > 5000) {
 				this.setHunger(this.getHunger() - 1000);
 				this.setHealth(this.getHealth() + 1.0F);
+			}
+			if (this.getHunger() < 0) {
+				this.hurt(new DamageSource(this.level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, FossilsLegacyUtils.resource("dinosaur_starve")))), 1.0F);
 			}
 		}
 	}
@@ -480,7 +499,7 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 
 	@Override
 	public List<Component> info() {
-		return List.of(FossilsLegacyUtils.translation("encyclopedia", "triceratops"), FossilsLegacyUtils.translation("encyclopedia", "owner", this.getOwner() != null ? this.getOwner().getDisplayName().getString() : FossilsLegacyUtils.translation("encyclopedia", "wild").getString()), FossilsLegacyUtils.translation("encyclopedia", "age", this.getDaysAlive()), FossilsLegacyUtils.translation("encyclopedia", "health", (int) this.getHealth()), FossilsLegacyUtils.translation("encyclopedia", "hunger", this.getHunger(), this.getMaxHunger()));
+		return List.of(FossilsLegacyUtils.translation("encyclopedia", "triceratops"), FossilsLegacyUtils.translation("encyclopedia", "owner", this.getOwner() != null ? this.getOwner().getDisplayName().getString() : FossilsLegacyUtils.translation("encyclopedia", "wild").getString()), FossilsLegacyUtils.translation("encyclopedia", "age", this.getDaysAlive()), FossilsLegacyUtils.translation("encyclopedia", "health", (int) this.getHealth(), (int) this.getMaxHealth()), FossilsLegacyUtils.translation("encyclopedia", "hunger", this.getHunger(), this.getMaxHunger()));
 	}
 
 	@Override
