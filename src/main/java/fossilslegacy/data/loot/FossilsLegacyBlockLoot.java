@@ -18,6 +18,7 @@ public class FossilsLegacyBlockLoot extends VanillaBlockLoot {
 		this.dropSelf(FossilsLegacyBlocks.ANALYZER.get());
 		this.dropSelf(FossilsLegacyBlocks.CULTIVATOR.get());
 		this.dropSelf(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get());
+		this.add(FossilsLegacyBlocks.JURASSIC_FERN.get(), block -> this.createDoublePlantWithSeedDrops(block, FossilsLegacyBlocks.JURASSIC_FERN.get()));
 		this.dropSelf(FossilsLegacyBlocks.DRUM.get());
 		this.dropSelf(FossilsLegacyBlocks.FEEDER.get());
 		this.add(FossilsLegacyBlocks.PERMAFROST.get(), noDrop());

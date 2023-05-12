@@ -1,11 +1,13 @@
-// 1.19.4	2023-05-06T15:22:50.9286078	Tags for minecraft:item mod id fossilslegacy
+// 1.19.4	2023-05-10T19:34:31.3233055	Tags for minecraft:item mod id fossilslegacy
 17ca31a3ec8b68a2672f263eafc59d95d13a7403 data/fossilslegacy/tags/items/analyzer_outputs/beef.json
 b7ceaccd732062b0d288e48dfdc719a4ad770d63 data/fossilslegacy/tags/items/analyzer_outputs/brachiosaurus_meat.json
 c37e6c5732a153b72ca98614a529721ffec94433 data/fossilslegacy/tags/items/analyzer_outputs/chicken.json
 4b078b58e28c2be2ab94e48a73c135d16c725f2f data/fossilslegacy/tags/items/analyzer_outputs/dilophosaurus_meat.json
 b90fa3d3b9d8fbe111b89b26a0f9c4e723212bb9 data/fossilslegacy/tags/items/analyzer_outputs/frozen_meat.json
 f20766f2df855ffd4b160ae1362d25d353a51821 data/fossilslegacy/tags/items/analyzer_outputs/high_chance_fossil.json
+1f95f5b24274d4fd0fc64267ea32f81fb53aeb7c data/fossilslegacy/tags/items/analyzer_outputs/high_chance_relic_scrap_outputs.json
 95c2b2d3ce1ecf319e1566baa3a53cc0f4c9ed1a data/fossilslegacy/tags/items/analyzer_outputs/low_chance_fossil.json
+39fbf0050f3c935d1541d0229503926ee0c10277 data/fossilslegacy/tags/items/analyzer_outputs/low_chance_relic_scrap_outputs.json
 0eed42d7beaae15b3444c9e0209f061ecf2f921f data/fossilslegacy/tags/items/analyzer_outputs/mammoth_meat.json
 baf603b9eb8cd3c0904bba20a23467242fdea50f data/fossilslegacy/tags/items/analyzer_outputs/mosasaurus_meat.json
 236bdbce4fadc89624ebc28f9030da6e7d18cc69 data/fossilslegacy/tags/items/analyzer_outputs/mutton.json
@@ -13,7 +15,6 @@ baf603b9eb8cd3c0904bba20a23467242fdea50f data/fossilslegacy/tags/items/analyzer_
 5308aaee941b1374a14e5a563470385bd7e6b3a9 data/fossilslegacy/tags/items/analyzer_outputs/porkchop.json
 576f9072a6d5c8cbd58381dfc220b15deacd7068 data/fossilslegacy/tags/items/analyzer_outputs/pterosaurus_meat.json
 75c0c1a4307bebb9efae0fd063220ba62cb5344a data/fossilslegacy/tags/items/analyzer_outputs/rabbit.json
-78d72dd49f39323c5a7a1494908813cb4f7badde data/fossilslegacy/tags/items/analyzer_outputs/relic_scrap.json
 d45f9d69088412d83d4312f4f9fa88b084e300dc data/fossilslegacy/tags/items/analyzer_outputs/smilodon_meat.json
 71d111cee3705b6d80e2a7351083c296ccd8b5ea data/fossilslegacy/tags/items/analyzer_outputs/stegosaurus_meat.json
 9821993ce3dd12722afe15abf1c44f2bd0cc8b0a data/fossilslegacy/tags/items/analyzer_outputs/triceratops_meat.json

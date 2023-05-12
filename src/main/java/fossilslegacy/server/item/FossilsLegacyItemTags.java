@@ -30,7 +30,8 @@ public class FossilsLegacyItemTags {
 	public static final TagKey<Item> SMILODON_MEAT_OUTPUTS = create("analyzer_outputs/smilodon_meat");
 	public static final TagKey<Item> MAMMOTH_MEAT_OUTPUTS = create("analyzer_outputs/mammoth_meat");
 	public static final TagKey<Item> PIGLIN_TAMER = create("piglin_tamer");
-	public static final TagKey<Item> RELIC_SCRAP_OUTPUTS = create("analyzer_outputs/relic_scrap");
+	public static final TagKey<Item> HIGH_CHANCE_RELIC_SCRAP_OUTPUTS = create("analyzer_outputs/high_chance_relic_scrap_outputs");
+	public static final TagKey<Item> LOW_CHANCE_RELIC_SCRAP_OUTPUTS = create("analyzer_outputs/low_chance_relic_scrap_outputs");
 
 	public static TagKey<Item> create(String name) {
 		return TagKey.create(Registries.ITEM, FossilsLegacyUtils.resource(name));

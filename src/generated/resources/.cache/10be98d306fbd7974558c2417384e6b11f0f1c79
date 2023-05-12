@@ -1,4 +1,4 @@
-// 1.19.4	2023-05-03T16:54:11.2605598	Item Models: fossilslegacy
+// 1.19.4	2023-05-10T20:03:27.8158321	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 41c5f6a309438824458da52752171cd09485a937 assets/fossilslegacy/models/item/ancient_helmet.json
 2701cd233168837331e67cbf0146831ca43eec8a assets/fossilslegacy/models/item/ancient_sword.json
@@ -60,6 +60,7 @@ b129a66d694f99b0036e6b1ca5739f9c78bc6ccd assets/fossilslegacy/models/item/iced_s
 66b2c1ee205734c236ccf2bf64ff55892d9837d1 assets/fossilslegacy/models/item/incubated_chicken_egg.json
 f30c5b45dc420042b9e1f02a40ece73cf79ff3c8 assets/fossilslegacy/models/item/incubated_parrot_egg.json
 af856b5ca7c3419f2ed44336db2cab4db0e1c970 assets/fossilslegacy/models/item/iron_javelin.json
+9c23e3fa5c1cf26d2e7f628563314ae67e6f73ac assets/fossilslegacy/models/item/jurassic_fern.json
 414f64f70498022da0a80f12b50b1e39b177161a assets/fossilslegacy/models/item/jurassic_fern_spores.json
 768b3b472a15aa0a0c3a71674520bd7e89759175 assets/fossilslegacy/models/item/llama_dna.json
 6723cd991826f62b248c48488ed851a4cac8eb5c assets/fossilslegacy/models/item/llama_embryo_syringe.json

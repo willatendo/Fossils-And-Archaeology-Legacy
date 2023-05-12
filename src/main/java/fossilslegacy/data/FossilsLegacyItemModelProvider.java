@@ -150,16 +150,28 @@ public class FossilsLegacyItemModelProvider extends ItemModelProvider {
 
 		for (RegistryObject<Block> blocks : FossilsLegacyBlocks.BLOCKS.getEntries()) {
 			ResourceLocation blockId = blocks.getId();
-			this.getBuilder(blockId.toString()).parent(new ModelFile.UncheckedModelFile(FossilsLegacyUtils.resource("block/" + blockId.getPath() + (blockId.getPath().contains("drum") ? "_follow" : blockId.getPath().contains("feeder") ? "_empty" : ""))));
+			if (blocks.get() == FossilsLegacyBlocks.JURASSIC_FERN.get()) {
+				this.handheldItem(blockId, FossilsLegacyUtils.resource("block/fern_lower_3"));
+			} else {
+				this.getBuilder(blockId.toString()).parent(new ModelFile.UncheckedModelFile(FossilsLegacyUtils.resource("block/" + blockId.getPath() + (blockId.getPath().contains("drum") ? "_follow" : blockId.getPath().contains("feeder") ? "_empty" : ""))));
+			}
 		}
 	}
 
 	public ItemModelBuilder handheldItem(Item item) {
-		return this.handheldItem(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)));
+		return this.handheldItem(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)), new ResourceLocation(ForgeRegistries.ITEMS.getKey(item).getNamespace(), "item/" + ForgeRegistries.ITEMS.getKey(item).getPath()));
 	}
 
-	public ItemModelBuilder handheldItem(ResourceLocation item) {
-		return this.getBuilder(item.toString()).parent(new ModelFile.UncheckedModelFile("item/handheld")).texture("layer0", new ResourceLocation(item.getNamespace(), "item/" + item.getPath()));
+	public ItemModelBuilder basicItem(Item item, ResourceLocation texture) {
+		return this.basicItem(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)), texture);
+	}
+
+	public ItemModelBuilder basicItem(ResourceLocation item, ResourceLocation texture) {
+		return this.getBuilder(item.toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", new ResourceLocation(item.getNamespace(), "item/" + item.getPath()));
+	}
+
+	public ItemModelBuilder handheldItem(ResourceLocation item, ResourceLocation texture) {
+		return this.getBuilder(item.toString()).parent(new ModelFile.UncheckedModelFile("item/handheld")).texture("layer0", texture);
 	}
 
 	public ItemModelBuilder spawnEggItem(Item item) {

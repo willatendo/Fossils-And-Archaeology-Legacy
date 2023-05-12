@@ -46,6 +46,7 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
 		this.add("block.fossilslegacy.cultivator.shatter", "Warning! Cultivation falure!");
 		this.add(FossilsLegacyBlocks.CULTIVATOR.get(), "Cultivator");
 		this.add(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get(), "Archaeology Workbench");
+		this.add(FossilsLegacyBlocks.JURASSIC_FERN.get(), "Jurassic Fern");
 		this.add("block.fossilslegacy.drum.hit", "Set all creatures that are commanded with a %s to %s.");
 		this.add(FossilsLegacyBlocks.DRUM.get(), "Drum");
 		this.add(FossilsLegacyBlocks.FEEDER.get(), "Feeder");

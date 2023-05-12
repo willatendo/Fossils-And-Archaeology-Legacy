@@ -30,7 +30,7 @@ public class WeaponShopStructure extends Structure {
 	private void generatePieces(StructurePiecesBuilder structurePiecesBuilder, Structure.GenerationContext generationContext) {
 		ChunkPos chunkPos = generationContext.chunkPos();
 		WorldgenRandom worldgenRandom = generationContext.random();
-		BlockPos blockPos = new BlockPos(chunkPos.getMinBlockX(), 90, chunkPos.getMinBlockZ());
+		BlockPos blockPos = new BlockPos(chunkPos.getMinBlockX(), 50, chunkPos.getMinBlockZ());
 		Rotation rotation = Rotation.getRandom(worldgenRandom);
 		WeaponShopPieces.addPieces(generationContext.structureTemplateManager(), blockPos, rotation, structurePiecesBuilder, worldgenRandom);
 	}

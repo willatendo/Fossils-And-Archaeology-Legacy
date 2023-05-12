@@ -30,7 +30,7 @@ public class FossilsLegacyEntities {
 	public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, FossilsLegacyUtils.ID);
 
 	public static final RegistryObject<EntityType<Mammoth>> MAMMOTH = ENTITY_TYPES.register("mammoth", () -> EntityType.Builder.<Mammoth>of(Mammoth::new, MobCategory.CREATURE).sized(2.5F, 2.5F).build("mammoth"));
-	public static final RegistryObject<EntityType<Smilodon>> SMILODON = ENTITY_TYPES.register("smilodon", () -> EntityType.Builder.<Smilodon>of(Smilodon::new, MobCategory.CREATURE).sized(2.5F, 2.5F).build("smilodon"));
+	public static final RegistryObject<EntityType<Smilodon>> SMILODON = ENTITY_TYPES.register("smilodon", () -> EntityType.Builder.<Smilodon>of(Smilodon::new, MobCategory.CREATURE).sized(1.5F, 1.5F).build("smilodon"));
 	public static final RegistryObject<EntityType<Triceratops>> TRICERATOPS = ENTITY_TYPES.register("triceratops", () -> EntityType.Builder.<Triceratops>of(Triceratops::new, MobCategory.CREATURE).sized(0.5F, 0.5F).build("triceratops"));
 
 	public static final RegistryObject<EntityType<Egg>> EGG = ENTITY_TYPES.register("egg", () -> EntityType.Builder.<Egg>of(Egg::new, MobCategory.CREATURE).sized(0.5F, 0.5F).build("egg"));

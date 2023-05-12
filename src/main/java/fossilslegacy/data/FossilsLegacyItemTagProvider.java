@@ -41,7 +41,8 @@ public class FossilsLegacyItemTagProvider extends ItemTagsProvider {
 		this.tag(FossilsLegacyItemTags.BRACHIOSAURUS_MEAT_OUTPUTS).add(FossilsLegacyItems.BRACHIOSAURUS_DNA.get());
 		this.tag(FossilsLegacyItemTags.SMILODON_MEAT_OUTPUTS).add(FossilsLegacyItems.SMILODON_DNA.get());
 		this.tag(FossilsLegacyItemTags.MAMMOTH_MEAT_OUTPUTS).add(FossilsLegacyItems.MAMMOTH_DNA.get());
-		this.tag(FossilsLegacyItemTags.RELIC_SCRAP_OUTPUTS).add(FossilsLegacyItems.STONE_HIEROGLYPH.get(), Items.GRAVEL, Items.FLINT, FossilsLegacyItems.HELMET_ARTIFACT.get(), FossilsLegacyItems.SWORD_ARTIFACT.get());
+		this.tag(FossilsLegacyItemTags.HIGH_CHANCE_RELIC_SCRAP_OUTPUTS).add(FossilsLegacyItems.STONE_HIEROGLYPH.get(), Items.GRAVEL, Items.FLINT);
+		this.tag(FossilsLegacyItemTags.LOW_CHANCE_RELIC_SCRAP_OUTPUTS).add(FossilsLegacyItems.HELMET_ARTIFACT.get(), FossilsLegacyItems.SWORD_ARTIFACT.get());
 		this.tag(FossilsLegacyItemTags.PIGLIN_TAMER).add(FossilsLegacyItems.ANCIENT_HELMET.get());
 	}
 }

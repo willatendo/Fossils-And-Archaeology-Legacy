@@ -34,6 +34,7 @@ import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.minecraftforge.registries.ForgeRegistries;
 
 @EventBusSubscriber(bus = Bus.MOD, modid = FossilsLegacyUtils.ID)
 public class ModServerEvents {
@@ -217,6 +218,7 @@ public class ModServerEvents {
 			output.accept(FossilsLegacyBlocks.ANALYZER.get());
 			output.accept(FossilsLegacyBlocks.CULTIVATOR.get());
 			output.accept(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get());
+			output.accept(ForgeRegistries.ITEMS.getValue(FossilsLegacyUtils.resource("jurassic_fern")));
 			output.accept(FossilsLegacyBlocks.DRUM.get());
 			output.accept(FossilsLegacyBlocks.FEEDER.get());
 			output.accept(FossilsLegacyBlocks.PERMAFROST.get());

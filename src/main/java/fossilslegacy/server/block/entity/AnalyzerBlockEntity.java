@@ -115,7 +115,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 		Map<Item, Pair<TagKey<Item>, TagKey<Item>>> map = Maps.newLinkedHashMap();
 		map.put(FossilsLegacyItems.FOSSIL.get(), Pair.of(FossilsLegacyItemTags.LOW_CHANCE_FOSSIL_OUTPUTS, FossilsLegacyItemTags.HIGH_CHANCE_FOSSIL_OUTPUTS));
 		map.put(FossilsLegacyItems.FROZEN_MEAT.get(), Pair.of(null, FossilsLegacyItemTags.FROZEN_MEAT_OUTPUTS));
-		map.put(FossilsLegacyItems.RELIC_SCRAP.get(), Pair.of(null, FossilsLegacyItemTags.RELIC_SCRAP_OUTPUTS));
+		map.put(FossilsLegacyItems.RELIC_SCRAP.get(), Pair.of(FossilsLegacyItemTags.LOW_CHANCE_RELIC_SCRAP_OUTPUTS, FossilsLegacyItemTags.HIGH_CHANCE_RELIC_SCRAP_OUTPUTS));
 		map.put(Items.BEEF, Pair.of(null, FossilsLegacyItemTags.BEEF_OUTPUTS));
 		map.put(Items.PORKCHOP, Pair.of(null, FossilsLegacyItemTags.PORKCHOP_OUTPUTS));
 		map.put(Items.MUTTON, Pair.of(null, FossilsLegacyItemTags.MUTTON_OUTPUTS));
@@ -166,161 +166,36 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 					int maxStackSize = analyzerBlockEntity.getMaxStackSize();
 					ItemStack output = ForgeRegistries.ITEMS.tags().getTag(outputs).stream().toList().get(new Random().nextInt(ForgeRegistries.ITEMS.tags().getTag(outputs).stream().toList().size())).getDefaultInstance();
 					for (int os = 9; os < 12; os++) {
-						if (analyzerBlockEntity.canAnalyze(os, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-							if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(os, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-								analyzerBlockEntity.onTime = 100;
-								if (analyzerBlockEntity.isOn()) {
-									changed = true;
-								}
-							}
-
-							if (analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(os, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-								++analyzerBlockEntity.analyzationProgress;
-								if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
-									analyzerBlockEntity.analyzationProgress = 0;
-									analyzerBlockEntity.analyzationTotalTime = 100;
-									if (analyzerBlockEntity.canAnalyze(os, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-										ItemStack input = analyzerBlockEntity.itemStacks.get(i);
-										ItemStack outputSlot = analyzerBlockEntity.itemStacks.get(os);
-										if (outputSlot.isEmpty()) {
-											analyzerBlockEntity.itemStacks.set(os, output.copy());
-										} else if (outputSlot.is(output.getItem())) {
-											outputSlot.grow(output.getCount());
-										}
-
-										input.shrink(1);
-									}
-
-									changed = true;
-								}
-							} else {
-								analyzerBlockEntity.analyzationProgress = 0;
+						if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(os, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+							analyzerBlockEntity.onTime = 100;
+							if (analyzerBlockEntity.isOn()) {
+								changed = true;
 							}
 						}
+
+						if (analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(os, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+							++analyzerBlockEntity.analyzationProgress;
+							if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
+								analyzerBlockEntity.analyzationProgress = 0;
+								analyzerBlockEntity.analyzationTotalTime = 100;
+								if (analyzerBlockEntity.canAnalyze(os, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+									ItemStack input = analyzerBlockEntity.itemStacks.get(i);
+									ItemStack outputSlot = analyzerBlockEntity.itemStacks.get(os);
+									if (outputSlot.isEmpty()) {
+										analyzerBlockEntity.itemStacks.set(os, output.copy());
+									} else if (outputSlot.is(output.getItem())) {
+										outputSlot.grow(output.getCount());
+									}
+
+									input.shrink(1);
+								}
+
+								changed = true;
+							}
+						} else {
+							analyzerBlockEntity.analyzationProgress = 0;
+						}
 					}
-//					if (analyzerBlockEntity.canAnalyze(9, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-//						if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(9, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-//							analyzerBlockEntity.onTime = 100;
-//							if (analyzerBlockEntity.isOn()) {
-//								changed = true;
-//							}
-//						}
-//
-//						if (analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(9, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-//							++analyzerBlockEntity.analyzationProgress;
-//							if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
-//								analyzerBlockEntity.analyzationProgress = 0;
-//								analyzerBlockEntity.analyzationTotalTime = 100;
-//								if (analyzerBlockEntity.canAnalyze(9, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-//									ItemStack input = analyzerBlockEntity.itemStacks.get(i);
-//									ItemStack outputSlot = analyzerBlockEntity.itemStacks.get(9);
-//									if (outputSlot.isEmpty()) {
-//										analyzerBlockEntity.itemStacks.set(9, output.copy());
-//									} else if (outputSlot.is(output.getItem())) {
-//										outputSlot.grow(output.getCount());
-//									}
-//
-//									input.shrink(1);
-//								}
-//
-//								changed = true;
-//							}
-//						} else {
-//							analyzerBlockEntity.analyzationProgress = 0;
-//						}
-//					} else if (analyzerBlockEntity.canAnalyze(10, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-//						if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(10, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-//							analyzerBlockEntity.onTime = 100;
-//							if (analyzerBlockEntity.isOn()) {
-//								changed = true;
-//							}
-//						}
-//
-//						if (analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(10, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-//							++analyzerBlockEntity.analyzationProgress;
-//							if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
-//								analyzerBlockEntity.analyzationProgress = 0;
-//								analyzerBlockEntity.analyzationTotalTime = 100;
-//								if (analyzerBlockEntity.canAnalyze(10, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-//									ItemStack input = analyzerBlockEntity.itemStacks.get(i);
-//									ItemStack outputSlot = analyzerBlockEntity.itemStacks.get(10);
-//									if (outputSlot.isEmpty()) {
-//										analyzerBlockEntity.itemStacks.set(10, output.copy());
-//									} else if (outputSlot.is(output.getItem())) {
-//										outputSlot.grow(output.getCount());
-//									}
-//
-//									input.shrink(1);
-//								}
-//
-//								changed = true;
-//							}
-//						} else {
-//							analyzerBlockEntity.analyzationProgress = 0;
-//						}
-//					} else if (analyzerBlockEntity.canAnalyze(11, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-//						if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(11, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-//							analyzerBlockEntity.onTime = 100;
-//							if (analyzerBlockEntity.isOn()) {
-//								changed = true;
-//							}
-//						}
-//
-//						if (analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(11, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-//							++analyzerBlockEntity.analyzationProgress;
-//							if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
-//								analyzerBlockEntity.analyzationProgress = 0;
-//								analyzerBlockEntity.analyzationTotalTime = 100;
-//								if (analyzerBlockEntity.canAnalyze(11, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-//									ItemStack input = analyzerBlockEntity.itemStacks.get(i);
-//									ItemStack outputSlot = analyzerBlockEntity.itemStacks.get(11);
-//									if (outputSlot.isEmpty()) {
-//										analyzerBlockEntity.itemStacks.set(11, output.copy());
-//									} else if (outputSlot.is(output.getItem())) {
-//										outputSlot.grow(output.getCount());
-//									}
-//
-//									input.shrink(1);
-//								}
-//
-//								changed = true;
-//							}
-//						} else {
-//							analyzerBlockEntity.analyzationProgress = 0;
-//						}
-//					} else if (analyzerBlockEntity.canAnalyze(12, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-//						if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(12, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-//							analyzerBlockEntity.onTime = 100;
-//							if (analyzerBlockEntity.isOn()) {
-//								changed = true;
-//							}
-//						}
-//
-//						if (analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(12, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-//							++analyzerBlockEntity.analyzationProgress;
-//							if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
-//								analyzerBlockEntity.analyzationProgress = 0;
-//								analyzerBlockEntity.analyzationTotalTime = 100;
-//								if (analyzerBlockEntity.canAnalyze(12, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-//									ItemStack input = analyzerBlockEntity.itemStacks.get(i);
-//									ItemStack outputSlot = analyzerBlockEntity.itemStacks.get(12);
-//									if (outputSlot.isEmpty()) {
-//										analyzerBlockEntity.itemStacks.set(12, output.copy());
-//									} else if (outputSlot.is(output.getItem())) {
-//										outputSlot.grow(output.getCount());
-//									}
-//
-//									input.shrink(1);
-//								}
-//
-//								changed = true;
-//							}
-//						} else {
-//							analyzerBlockEntity.analyzationProgress = 0;
-//						}
-//					} else {
-//						analyzerBlockEntity.analyzationProgress = 0;
-//					}
 				}
 			} else if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.analyzationProgress > 0) {
 				analyzerBlockEntity.analyzationProgress = Mth.clamp(analyzerBlockEntity.analyzationProgress - 2, 0, analyzerBlockEntity.analyzationTotalTime);

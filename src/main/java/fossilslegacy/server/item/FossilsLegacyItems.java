@@ -10,6 +10,7 @@ import net.minecraft.world.item.ArmorItem.Type;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.ShovelItem;
@@ -124,7 +125,7 @@ public class FossilsLegacyItems {
 	public static final RegistryObject<Item> WOLF_EMBRYO_SYRINGE = ITEMS.register("wolf_embryo_syringe", () -> new SyringeItem(SyringeAnimals.WOLF, new Item.Properties().stacksTo(1)));
 	public static final RegistryObject<Item> SMILODON_EMBRYO_SYRINGE = ITEMS.register("smilodon_embryo_syringe", () -> new SyringeItem(SyringeAnimals.SMILODON, new Item.Properties().stacksTo(1)));
 	public static final RegistryObject<Item> MAMMOTH_EMBRYO_SYRINGE = ITEMS.register("mammoth_embryo_syringe", () -> new SyringeItem(SyringeAnimals.MAMMOTH, new Item.Properties().stacksTo(1)));
-	public static final RegistryObject<Item> JURASSIC_FERN_SPORES = ITEMS.register("jurassic_fern_spores", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> JURASSIC_FERN_SPORES = ITEMS.register("jurassic_fern_spores", () -> new ItemNameBlockItem(FossilsLegacyBlocks.JURASSIC_FERN.get(), new Item.Properties()));
 	public static final RegistryObject<Item> RELIC_SCRAP = ITEMS.register("relic_scrap", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> STONE_HIEROGLYPH = ITEMS.register("stone_hieroglyph", () -> new StoneHieroglyphItem(new Item.Properties()));
 	public static final RegistryObject<Item> SWORD_ARTIFACT = ITEMS.register("sword_artifact", () -> new Item(new Item.Properties()));
