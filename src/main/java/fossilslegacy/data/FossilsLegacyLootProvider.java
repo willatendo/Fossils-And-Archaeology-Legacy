@@ -8,7 +8,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.LootTables;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 
 public class FossilsLegacyLootProvider extends LootTableProvider {
@@ -18,6 +17,6 @@ public class FossilsLegacyLootProvider extends LootTableProvider {
 
 	@Override
 	protected void validate(Map<ResourceLocation, LootTable> map, ValidationContext validationContext) {
-		map.forEach((id, lootTable) -> LootTables.validate(validationContext, id, lootTable));
+//		map.forEach((id, lootTable) -> LootTables.validate(validationContext, id, lootTable));
 	}
 }

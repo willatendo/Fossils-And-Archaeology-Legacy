@@ -91,7 +91,7 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 		super.die(damageSource);
 
 		if (this.dead) {
-			if (!this.level.isClientSide && this.level.getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES) && this.getOwner() instanceof ServerPlayer) {
+			if (!this.level().isClientSide && this.level().getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES) && this.getOwner() instanceof ServerPlayer) {
 				this.getOwner().sendSystemMessage(deathMessage);
 			}
 		}
@@ -125,7 +125,7 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 	}
 
 	private void setupAnimationStates() {
-		if (this.onGround && this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6D) {
+		if (this.onGround() && this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6D) {
 			this.walkAnimationState.startIfStopped(this.tickCount);
 		} else {
 			this.walkAnimationState.stop();
@@ -148,7 +148,7 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 			this.setDaysAlive(this.getDaysAlive() + 1);
 			this.timeAlive = 0;
 		}
-		if (this.level.isClientSide()) {
+		if (this.level().isClientSide()) {
 			this.setupAnimationStates();
 		}
 		if (this.getGrowthStage() < this.getGrowthStages().length) {
@@ -165,7 +165,7 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 				this.setHealth(this.getHealth() + 1.0F);
 			}
 			if (this.getHunger() < 0) {
-				this.hurt(new DamageSource(this.level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, FossilsLegacyUtils.resource("dinosaur_starve")))), 1.0F);
+				this.hurt(new DamageSource(this.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, FossilsLegacyUtils.resource("dinosaur_starve")))), 1.0F);
 			}
 		}
 	}
@@ -242,7 +242,7 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 	public LivingEntity getOwner() {
 		try {
 			UUID uuid = this.getOwnerUUID();
-			return uuid == null ? null : this.level.getPlayerByUUID(uuid);
+			return uuid == null ? null : this.level().getPlayerByUUID(uuid);
 		} catch (IllegalArgumentException illegalargumentexception) {
 			return null;
 		}
@@ -304,10 +304,10 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 
 				for (int[] offset : offsets) {
 					mutableBlockPos.set(blockPos.getX() + offset[0], blockPos.getY(), blockPos.getZ() + offset[1]);
-					double floor = this.level.getBlockFloorHeight(mutableBlockPos);
+					double floor = this.level().getBlockFloorHeight(mutableBlockPos);
 					if (DismountHelper.isBlockFloorValid(floor)) {
 						Vec3 vec3 = Vec3.upFromBottomCenterOf(mutableBlockPos, floor);
-						if (DismountHelper.canDismountTo(this.level, livingEntity, aabb.move(vec3))) {
+						if (DismountHelper.canDismountTo(this.level(), livingEntity, aabb.move(vec3))) {
 							livingEntity.setPose(pose);
 							return vec3;
 						}

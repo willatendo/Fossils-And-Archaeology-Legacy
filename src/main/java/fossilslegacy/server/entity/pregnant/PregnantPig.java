@@ -53,7 +53,7 @@ public class PregnantPig extends Pig implements DinosaurEncyclopediaInfo, Pregna
 	@Override
 	public void tick() {
 		super.tick();
-		this.birthTick(this, this.level);
+		this.birthTick(this, this.level());
 	}
 
 	@Override

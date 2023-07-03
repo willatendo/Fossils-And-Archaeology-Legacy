@@ -21,8 +21,8 @@ public class SyringeItem extends Item {
 
 	@Override
 	public InteractionResult interactLivingEntity(ItemStack itemStack, Player player, LivingEntity livingEntity, InteractionHand interactionHand) {
-		if (PregnantAnimal.getFromLivingEntity(livingEntity, player.level) != null) {
-			PregnantAnimal<?> pregnantAnimal = PregnantAnimal.createFromLiving(livingEntity, player.level);
+		if (PregnantAnimal.getFromLivingEntity(livingEntity, player.level()) != null) {
+			PregnantAnimal<?> pregnantAnimal = PregnantAnimal.createFromLiving(livingEntity, player.level());
 			pregnantAnimal.setPregnancy(this.getSyringeAnimals());
 			pregnantAnimal.setRemainingPregnancyTime(6000);
 			if (pregnantAnimal instanceof HungryAnimal hungryAnimal) {
@@ -32,7 +32,7 @@ public class SyringeItem extends Item {
 				tameAccessor.setOwnerUUID(((TameAccessor) pregnantAnimal).getOwnerUUID());
 			}
 			itemStack.shrink(1);
-			return InteractionResult.sidedSuccess(player.level.isClientSide());
+			return InteractionResult.sidedSuccess(player.level().isClientSide());
 		}
 		return super.interactLivingEntity(itemStack, player, livingEntity, interactionHand);
 	}

@@ -37,7 +37,7 @@ public class ThrownIncubatedEgg extends ThrowableItemProjectile {
 	public void handleEntityEvent(byte event) {
 		if (event == 3) {
 			for (int i = 0; i < 8; ++i) {
-				this.level.addParticle(new ItemParticleOption(ParticleTypes.ITEM, this.getItem()), this.getX(), this.getY(), this.getZ(), ((double) this.random.nextFloat() - 0.5D) * 0.08D, ((double) this.random.nextFloat() - 0.5D) * 0.08D, ((double) this.random.nextFloat() - 0.5D) * 0.08D);
+				this.level().addParticle(new ItemParticleOption(ParticleTypes.ITEM, this.getItem()), this.getX(), this.getY(), this.getZ(), ((double) this.random.nextFloat() - 0.5D) * 0.08D, ((double) this.random.nextFloat() - 0.5D) * 0.08D, ((double) this.random.nextFloat() - 0.5D) * 0.08D);
 			}
 		}
 	}
@@ -65,26 +65,26 @@ public class ThrownIncubatedEgg extends ThrowableItemProjectile {
 	@Override
 	protected void onHit(HitResult hitResult) {
 		super.onHit(hitResult);
-		if (!this.level.isClientSide()) {
+		if (!this.level().isClientSide()) {
 			int i = 1;
 			if (this.random.nextInt(32) == 0) {
 				i = 4;
 			}
 
 			for (int animals = 0; animals < i; ++animals) {
-				Animal animalToSpawn = this.getEggType() == 0 ? EntityType.CHICKEN.create(this.level) : EntityType.PARROT.create(this.level);
+				Animal animalToSpawn = this.getEggType() == 0 ? EntityType.CHICKEN.create(this.level()) : EntityType.PARROT.create(this.level());
 				if (animalToSpawn instanceof Chicken) {
 					animalToSpawn.setAge(-24000);
 					animalToSpawn.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
 				}
 				if (animalToSpawn instanceof Parrot parrot) {
 					animalToSpawn.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
-					parrot.setVariant(Util.getRandom(Parrot.Variant.values(), this.level.getRandom()));
+					parrot.setVariant(Util.getRandom(Parrot.Variant.values(), this.level().getRandom()));
 				}
-				this.level.addFreshEntity(animalToSpawn);
+				this.level().addFreshEntity(animalToSpawn);
 			}
 
-			this.level.broadcastEntityEvent(this, (byte) 3);
+			this.level().broadcastEntityEvent(this, (byte) 3);
 			this.discard();
 		}
 	}

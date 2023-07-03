@@ -30,5 +30,6 @@
     "recipes": [
       "fossilslegacy:gem_pickaxe"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

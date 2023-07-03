@@ -77,11 +77,11 @@ public class Egg extends Animal implements TicksToBirth, DinosaurEncyclopediaInf
 	public void tick() {
 		super.tick();
 
-		this.setWarm(this.level.getBrightness(LightLayer.BLOCK, new BlockPos(this.getBlockX(), this.getBlockY(), this.getBlockZ())) > 10.0F || this.level.getBrightness(LightLayer.SKY, new BlockPos(this.getBlockX(), this.getBlockY(), this.getBlockZ())) > 10.0F);
+		this.setWarm(this.level().getBrightness(LightLayer.BLOCK, new BlockPos(this.getBlockX(), this.getBlockY(), this.getBlockZ())) > 10.0F || this.level().getBrightness(LightLayer.SKY, new BlockPos(this.getBlockX(), this.getBlockY(), this.getBlockZ())) > 10.0F);
 
 		if (this.getRemainingTime() > 6500) {
 			this.discard();
-			Player player = this.level.getNearestPlayer(this, 25.0D);
+			Player player = this.level().getNearestPlayer(this, 25.0D);
 			if (player != null) {
 				player.sendSystemMessage(FossilsLegacyUtils.translation("entity", "egg.died"));
 			}
@@ -92,7 +92,7 @@ public class Egg extends Animal implements TicksToBirth, DinosaurEncyclopediaInf
 		}
 
 		if (this.isWarm()) {
-			this.birthTick(this, this.level);
+			this.birthTick(this, this.level());
 		}
 	}
 

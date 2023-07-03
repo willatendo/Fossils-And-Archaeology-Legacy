@@ -33,5 +33,6 @@
     [
       "has_relic_scrap"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

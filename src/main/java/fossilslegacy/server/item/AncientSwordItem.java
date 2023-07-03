@@ -18,7 +18,7 @@ public class AncientSwordItem extends SwordItem {
 
 	@Override
 	public boolean hurtEnemy(ItemStack itemStack, LivingEntity victim, LivingEntity user) {
-		Level level = victim.level;
+		Level level = victim.level();
 		LightningBolt lightningBolt = EntityType.LIGHTNING_BOLT.create(level);
 		lightningBolt.moveTo(Vec3.atBottomCenterOf(victim.blockPosition()));
 		level.addFreshEntity(lightningBolt);

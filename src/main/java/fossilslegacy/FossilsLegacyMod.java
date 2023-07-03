@@ -1,6 +1,7 @@
 package fossilslegacy;
 
 import fossilslegacy.client.sound.FossilsLegacySoundEvents;
+import fossilslegacy.server.FossilsLegacyCreativeModeTabs;
 import fossilslegacy.server.block.FossilsLegacyBlocks;
 import fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
 import fossilslegacy.server.entity.FossilsLegacyEntities;
@@ -21,6 +22,7 @@ public class FossilsLegacyMod {
 		IEventBus iEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
 		FossilsLegacySoundEvents.SOUND_EVENTS.register(iEventBus);
+		FossilsLegacyCreativeModeTabs.CREATIVE_MODE_TABS.register(iEventBus);
 		FossilsLegacyItems.ITEMS.register(iEventBus);
 		FossilsLegacyRecipeSerialisers.RECIPE_SERIALIZERS.register(iEventBus);
 		FossilsLegacyRecipeTypes.RECIPE_TYPES.register(iEventBus);

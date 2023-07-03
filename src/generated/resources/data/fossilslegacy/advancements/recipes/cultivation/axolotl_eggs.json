@@ -30,5 +30,6 @@
     "recipes": [
       "fossilslegacy:axolotl_eggs"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

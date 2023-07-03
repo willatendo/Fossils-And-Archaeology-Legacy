@@ -30,5 +30,6 @@
     "recipes": [
       "fossilslegacy:archaeology_workbench"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

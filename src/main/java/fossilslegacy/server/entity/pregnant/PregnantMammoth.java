@@ -54,7 +54,7 @@ public class PregnantMammoth extends Mammoth implements DinosaurEncyclopediaInfo
 	@Override
 	public void tick() {
 		super.tick();
-		this.birthTick(this, this.level);
+		this.birthTick(this, this.level());
 	}
 
 	@Override

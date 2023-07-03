@@ -30,5 +30,6 @@
     "recipes": [
       "fossilslegacy:polar_bear_embryo_syringe"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

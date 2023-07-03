@@ -46,7 +46,7 @@ public class AnalyzerMenu extends AbstractContainerMenu {
 	}
 
 	public AnalyzerMenu(int windowId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
-		this(windowId, inventory, (AnalyzerBlockEntity) inventory.player.level.getBlockEntity(friendlyByteBuf.readBlockPos()));
+		this(windowId, inventory, (AnalyzerBlockEntity) inventory.player.level().getBlockEntity(friendlyByteBuf.readBlockPos()));
 	}
 
 	@Override

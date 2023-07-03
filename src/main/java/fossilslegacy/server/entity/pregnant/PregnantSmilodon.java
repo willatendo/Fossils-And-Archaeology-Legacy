@@ -54,7 +54,7 @@ public class PregnantSmilodon extends Smilodon implements DinosaurEncyclopediaIn
 	@Override
 	public void tick() {
 		super.tick();
-		this.birthTick(this, this.level);
+		this.birthTick(this, this.level());
 	}
 
 	@Override

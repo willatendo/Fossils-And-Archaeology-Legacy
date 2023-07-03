@@ -35,5 +35,6 @@
     [
       "killed_skeletons"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

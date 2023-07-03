@@ -33,12 +33,12 @@ public class ToothDaggerItem extends SwordItem {
 	@Override
 	public InteractionResult interactLivingEntity(ItemStack itemStack, Player player, LivingEntity livingEntity, InteractionHand interactionHand) {
 		if (livingEntity instanceof IForgeShearable iForgeShearable) {
-			if (livingEntity.level.isClientSide) {
+			if (livingEntity.level().isClientSide) {
 				return InteractionResult.SUCCESS;
 			}
 			BlockPos blockPos = new BlockPos((int) livingEntity.getX(), (int) livingEntity.getY(), (int) livingEntity.getZ());
-			if (iForgeShearable.isShearable(itemStack, livingEntity.level, blockPos)) {
-				List<ItemStack> drops = iForgeShearable.onSheared(player, itemStack, livingEntity.level, blockPos, EnchantmentHelper.getItemEnchantmentLevel(Enchantments.BLOCK_FORTUNE, itemStack));
+			if (iForgeShearable.isShearable(itemStack, livingEntity.level(), blockPos)) {
+				List<ItemStack> drops = iForgeShearable.onSheared(player, itemStack, livingEntity.level(), blockPos, EnchantmentHelper.getItemEnchantmentLevel(Enchantments.BLOCK_FORTUNE, itemStack));
 				Random random = new Random();
 				drops.forEach(d -> {
 					ItemEntity itementity = livingEntity.spawnAtLocation(d, 1.0F);

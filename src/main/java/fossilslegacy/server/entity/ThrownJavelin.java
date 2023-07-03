@@ -103,7 +103,7 @@ public class ThrownJavelin extends AbstractArrow {
 	protected void onHitEntity(EntityHitResult entityHitResult) {
 		Entity entity = entityHitResult.getEntity();
 		Entity owner = this.getOwner();
-		DamageSource damageSource = new DamageSource(this.level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, FossilsLegacyUtils.resource("javelin"))));
+		DamageSource damageSource = new DamageSource(this.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, FossilsLegacyUtils.resource("javelin"))));
 		SoundEvent soundevent = SoundEvents.ARROW_HIT;
 		if (entity.hurt(damageSource, this.damage)) {
 			if (entity.getType() == EntityType.ENDERMAN) {
@@ -117,14 +117,14 @@ public class ThrownJavelin extends AbstractArrow {
 
 		this.setDeltaMovement(this.getDeltaMovement().multiply(-0.01D, -0.1D, -0.01D));
 		float soundLevel = 1.0F;
-		if (this.level instanceof ServerLevel && this.getVariant() == 6) {
+		if (this.level() instanceof ServerLevel && this.getVariant() == 6) {
 			BlockPos blockpos = entity.blockPosition();
-			if (this.level.canSeeSky(blockpos)) {
-				LightningBolt lightningbolt = EntityType.LIGHTNING_BOLT.create(this.level);
+			if (this.level().canSeeSky(blockpos)) {
+				LightningBolt lightningbolt = EntityType.LIGHTNING_BOLT.create(this.level());
 				if (lightningbolt != null) {
 					lightningbolt.moveTo(Vec3.atBottomCenterOf(blockpos));
 					lightningbolt.setCause(owner instanceof ServerPlayer ? (ServerPlayer) owner : null);
-					this.level.addFreshEntity(lightningbolt);
+					this.level().addFreshEntity(lightningbolt);
 					soundevent = SoundEvents.LIGHTNING_BOLT_THUNDER;
 					soundLevel = 5.0F;
 				}

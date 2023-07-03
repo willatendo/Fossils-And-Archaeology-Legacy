@@ -28,5 +28,6 @@
     "recipes": [
       "fossilslegacy:cake_from_eggs"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

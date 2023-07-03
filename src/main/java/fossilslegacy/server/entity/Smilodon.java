@@ -61,7 +61,7 @@ public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, Hungry
 	}
 
 	private void setupAnimationStates() {
-		if (this.onGround && this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6D) {
+		if (this.onGround() && this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6D) {
 			this.walkAnimationState.startIfStopped(this.tickCount);
 		} else {
 			this.walkAnimationState.stop();
@@ -79,7 +79,7 @@ public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, Hungry
 			this.setDaysAlive(this.getDaysAlive() + 1);
 			this.timeAlive = 0;
 		}
-		if (this.level.isClientSide()) {
+		if (this.level().isClientSide()) {
 			this.setupAnimationStates();
 		}
 	}
@@ -111,7 +111,7 @@ public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, Hungry
 	public LivingEntity getOwner() {
 		try {
 			UUID uuid = this.getOwnerUUID();
-			return uuid == null ? null : this.level.getPlayerByUUID(uuid);
+			return uuid == null ? null : this.level().getPlayerByUUID(uuid);
 		} catch (IllegalArgumentException illegalargumentexception) {
 			return null;
 		}

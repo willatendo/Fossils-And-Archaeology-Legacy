@@ -1,4 +1,4 @@
-// 1.19.4	2023-05-10T20:03:27.8158321	Item Models: fossilslegacy
+// 1.20.1	2023-07-03T00:01:44.9707846	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 41c5f6a309438824458da52752171cd09485a937 assets/fossilslegacy/models/item/ancient_helmet.json
 2701cd233168837331e67cbf0146831ca43eec8a assets/fossilslegacy/models/item/ancient_sword.json
@@ -34,6 +34,7 @@ d785ec144b72b4705fa322a5f2ff5301255764b0 assets/fossilslegacy/models/item/dinosa
 b66f2595aa8e6550d38e5723c6b7037f9a8b36b3 assets/fossilslegacy/models/item/dolphin_embryo_syringe.json
 0f3a3fc416ebfec8706d5f7309ffd0ec0ec21e02 assets/fossilslegacy/models/item/donkey_dna.json
 5e6e9a4e462c41a2213534ea164f8f06584b5d15 assets/fossilslegacy/models/item/donkey_embryo_syringe.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/drowned_pirate_spawn_egg.json
 a4d4cde92471787338f3a49155b2d889c69f8ec7 assets/fossilslegacy/models/item/drum.json
 f721525261782165282f95a540d2f505dc9cd572 assets/fossilslegacy/models/item/feeder.json
 863ace764a7f1006ecd967bc24871455b7f5865a assets/fossilslegacy/models/item/fossil.json
@@ -133,3 +134,4 @@ fc8ebe3d58f01fc11adcb947296991fcdef6d054 assets/fossilslegacy/models/item/utahra
 aac7a7282a9d0e05c592dca290ce6f7b4344e486 assets/fossilslegacy/models/item/wolf_dna.json
 f8048c30eef8de701b03e8bfa92793c70826e97f assets/fossilslegacy/models/item/wolf_embryo_syringe.json
 2684b0bd2bf79b2674e3d359d5269ea104b43651 assets/fossilslegacy/models/item/wooden_javelin.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/zombified_pigman_spawn_egg.json

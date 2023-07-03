@@ -28,5 +28,6 @@
     "recipes": [
       "fossilslegacy:dinosaur_encyclopedia"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

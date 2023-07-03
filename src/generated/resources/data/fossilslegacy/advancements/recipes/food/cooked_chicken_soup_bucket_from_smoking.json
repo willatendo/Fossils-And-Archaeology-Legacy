@@ -30,5 +30,6 @@
     "recipes": [
       "fossilslegacy:cooked_chicken_soup_bucket_from_smoking"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -1,5 +1,6 @@
 package fossilslegacy.server.block.entity;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -106,7 +107,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 	protected void saveAdditional(CompoundTag compoundTag) {
 		super.saveAdditional(compoundTag);
 		compoundTag.putInt("OnTime", this.onTime);
-		compoundTag.putInt("aAnalyzationTime", this.analyzationProgress);
+		compoundTag.putInt("AnalyzationTime", this.analyzationProgress);
 		compoundTag.putInt("AnalyzationTimeTotal", this.analyzationTotalTime);
 		ContainerHelper.saveAllItems(compoundTag, this.itemStacks);
 	}
@@ -221,7 +222,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 				ItemStack outputSlot = itemStacks.get(slot);
 				if (outputSlot.isEmpty()) {
 					return true;
-				} else if (!outputSlot.sameItem(output)) {
+				} else if (!ItemStack.isSameItem(outputSlot, output)) {
 					return false;
 				} else if (outputSlot.getCount() + output.getCount() <= maxStackSize && outputSlot.getCount() + output.getCount() <= outputSlot.getMaxStackSize()) {
 					return true;
@@ -287,7 +288,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 	@Override
 	public void setItem(int slot, ItemStack itemStack) {
 		ItemStack itemStackInSlot = this.itemStacks.get(slot);
-		boolean flag = !itemStack.isEmpty() && itemStack.sameItem(itemStackInSlot) && ItemStack.tagMatches(itemStack, itemStackInSlot);
+		boolean flag = !itemStack.isEmpty() && ItemStack.isSameItemSameTags(itemStackInSlot, itemStack);
 		this.itemStacks.set(slot, itemStack);
 		if (itemStack.getCount() > this.getMaxStackSize()) {
 			itemStack.setCount(this.getMaxStackSize());
@@ -317,6 +318,9 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 		} else {
 			return false;
 		}
+	}
+
+	public void awardUsedRecipes(Player player, List<ItemStack> itemStacks) {
 	}
 
 	@Override

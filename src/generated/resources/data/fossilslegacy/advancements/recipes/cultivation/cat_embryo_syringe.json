@@ -30,5 +30,6 @@
     "recipes": [
       "fossilslegacy:cat_embryo_syringe"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

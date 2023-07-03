@@ -75,7 +75,7 @@ public class StoneHieroglyphRenderer extends EntityRenderer<StoneHieroglyph> {
 					z = Mth.floor(cavePainting.getZ() + (double) ((uStart + uEnd) / 2.0F / 16.0F));
 				}
 
-				int lightColour = LevelRenderer.getLightColor(cavePainting.level, new BlockPos(x, y, z));
+				int lightColour = LevelRenderer.getLightColor(cavePainting.level(), new BlockPos(x, y, z));
 				float spriteMinU = (float) (d0 * (i - k)) / 16f;
 				float spriteMaxU = (float) (d0 * (i - (k + 1))) / 16f;
 				float spriteMinV = (float) (d1 * (j - l)) / 16f;

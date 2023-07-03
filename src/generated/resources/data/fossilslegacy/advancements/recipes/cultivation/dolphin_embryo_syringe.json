@@ -30,5 +30,6 @@
     "recipes": [
       "fossilslegacy:dolphin_embryo_syringe"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

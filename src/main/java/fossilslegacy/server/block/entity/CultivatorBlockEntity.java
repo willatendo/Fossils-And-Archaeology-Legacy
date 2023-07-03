@@ -1,5 +1,6 @@
 package fossilslegacy.server.block.entity;
 
+import java.util.List;
 import java.util.Map;
 
 import com.google.common.collect.Maps;
@@ -257,7 +258,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
 				ItemStack outputSlot = itemStacks.get(2);
 				if (outputSlot.isEmpty()) {
 					return true;
-				} else if (!outputSlot.sameItem(output)) {
+				} else if (!ItemStack.isSameItem(outputSlot, output)) {
 					return false;
 				} else if (outputSlot.getCount() + output.getCount() <= maxStackSize && outputSlot.getCount() + output.getCount() <= outputSlot.getMaxStackSize()) {
 					return true;
@@ -356,7 +357,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
 	@Override
 	public void setItem(int slot, ItemStack itemStack) {
 		ItemStack itemStackInSlot = this.itemStacks.get(slot);
-		boolean flag = !itemStack.isEmpty() && itemStack.sameItem(itemStackInSlot) && ItemStack.tagMatches(itemStack, itemStackInSlot);
+		boolean flag = !itemStack.isEmpty() && ItemStack.isSameItemSameTags(itemStackInSlot, itemStack);
 		this.itemStacks.set(slot, itemStack);
 		if (itemStack.getCount() > this.getMaxStackSize()) {
 			itemStack.setCount(this.getMaxStackSize());
@@ -408,8 +409,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
 		return null;
 	}
 
-	@Override
-	public void awardUsedRecipes(Player player) {
+	public void awardUsedRecipes(Player player, List<ItemStack> itemStacks) {
 	}
 
 	@Override

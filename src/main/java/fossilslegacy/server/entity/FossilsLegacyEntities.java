@@ -29,6 +29,8 @@ import net.minecraftforge.registries.RegistryObject;
 public class FossilsLegacyEntities {
 	public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, FossilsLegacyUtils.ID);
 
+	public static final RegistryObject<EntityType<AncientLightningBolt>> ANCIENT_LIGHTNING_BOLT = ENTITY_TYPES.register("ancient_lightning_bolt", () -> EntityType.Builder.<AncientLightningBolt>of(AncientLightningBolt::new, MobCategory.MISC).noSave().sized(0.0F, 0.0F).build("ancient_lightning_bolt"));
+
 	public static final RegistryObject<EntityType<Mammoth>> MAMMOTH = ENTITY_TYPES.register("mammoth", () -> EntityType.Builder.<Mammoth>of(Mammoth::new, MobCategory.CREATURE).sized(2.5F, 2.5F).build("mammoth"));
 	public static final RegistryObject<EntityType<Smilodon>> SMILODON = ENTITY_TYPES.register("smilodon", () -> EntityType.Builder.<Smilodon>of(Smilodon::new, MobCategory.CREATURE).sized(1.5F, 1.5F).build("smilodon"));
 	public static final RegistryObject<EntityType<Triceratops>> TRICERATOPS = ENTITY_TYPES.register("triceratops", () -> EntityType.Builder.<Triceratops>of(Triceratops::new, MobCategory.CREATURE).sized(0.5F, 0.5F).build("triceratops"));
@@ -54,6 +56,7 @@ public class FossilsLegacyEntities {
 	public static final RegistryObject<EntityType<PregnantSmilodon>> PREGNANT_SMILODON = ENTITY_TYPES.register("pregnant_smilodon", () -> EntityType.Builder.<PregnantSmilodon>of(PregnantSmilodon::new, MobCategory.CREATURE).sized(2.5F, 2.5F).build("pregnant_smilodon"));
 	public static final RegistryObject<EntityType<PregnantWolf>> PREGNANT_WOLF = ENTITY_TYPES.register("pregnant_wolf", () -> EntityType.Builder.<PregnantWolf>of(PregnantWolf::new, MobCategory.CREATURE).sized(0.6F, 0.85F).build("pregnant_wolf"));
 
+	public static final RegistryObject<EntityType<ZombifiedPigman>> ZOMBIFIED_PIGMAN = ENTITY_TYPES.register("zombified_pigman", () -> EntityType.Builder.<ZombifiedPigman>of(ZombifiedPigman::new, MobCategory.MONSTER).sized(.6F, 1.95F).build("zombified_pigman"));
 	public static final RegistryObject<EntityType<DrownedPirate>> DROWNED_PIRATE = ENTITY_TYPES.register("drowned_pirate", () -> EntityType.Builder.<DrownedPirate>of(DrownedPirate::new, MobCategory.CREATURE).sized(0.6F, 1.99F).build("drowned_pirate"));
 
 	public static final RegistryObject<EntityType<ThrownJavelin>> THROWN_JAVELIN = ENTITY_TYPES.register("thrown_javelin", () -> EntityType.Builder.<ThrownJavelin>of(ThrownJavelin::new, MobCategory.MISC).sized(0.5F, 0.5F).build("thrown_javelin"));

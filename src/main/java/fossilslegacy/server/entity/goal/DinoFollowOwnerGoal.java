@@ -33,7 +33,7 @@ public class DinoFollowOwnerGoal extends Goal {
 		this.creature = creature;
 		this.playerCommandable = playerCommandable;
 		this.tameAccessor = tameAccessor;
-		this.level = creature.level;
+		this.level = creature.level();
 		this.speedModifier = speedModifer;
 		this.navigation = creature.getNavigation();
 		this.startDistance = startDistance;

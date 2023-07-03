@@ -109,6 +109,7 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
 		this.add(FossilsLegacyEntities.PREGNANT_SHEEP.get(), "Pregnant Sheep");
 		this.add(FossilsLegacyEntities.PREGNANT_SMILODON.get(), "Pregnant Smildon");
 		this.add(FossilsLegacyEntities.PREGNANT_WOLF.get(), "Pregnant Wolf");
+		this.add(FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), "Zombified Pigman");
 		this.add(FossilsLegacyEntities.DROWNED_PIRATE.get(), "Drowned Pirate");
 		this.add(FossilsLegacyEntities.THROWN_JAVELIN.get(), "Thrown Javelin");
 		this.add(FossilsLegacyEntities.STONE_HIEROGLYPH.get(), "Stone Hieroglyph");

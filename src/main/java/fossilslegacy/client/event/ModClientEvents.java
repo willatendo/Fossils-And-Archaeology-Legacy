@@ -14,6 +14,7 @@ import fossilslegacy.client.render.SmilodonRenderer;
 import fossilslegacy.client.render.StoneHieroglyphRenderer;
 import fossilslegacy.client.render.ThrownJavelinRenderer;
 import fossilslegacy.client.render.TriceratopsRenderer;
+import fossilslegacy.client.render.ZombifiedPigmanRenderer;
 import fossilslegacy.client.screen.AnalyzerScreen;
 import fossilslegacy.client.screen.ArchaeologyWorkbenchScreen;
 import fossilslegacy.client.screen.CultivatorScreen;
@@ -31,6 +32,7 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.FoxRenderer;
 import net.minecraft.client.renderer.entity.GoatRenderer;
 import net.minecraft.client.renderer.entity.HorseRenderer;
+import net.minecraft.client.renderer.entity.LightningBoltRenderer;
 import net.minecraft.client.renderer.entity.LlamaRenderer;
 import net.minecraft.client.renderer.entity.OcelotRenderer;
 import net.minecraft.client.renderer.entity.PandaRenderer;
@@ -56,12 +58,15 @@ public class ModClientEvents {
 		MenuScreens.register(FossilsLegacyMenus.CULTIVATOR.get(), CultivatorScreen::new);
 		MenuScreens.register(FossilsLegacyMenus.FEEDER.get(), FeederScreen::new);
 
+		EntityRenderers.register(FossilsLegacyEntities.ANCIENT_LIGHTNING_BOLT.get(), LightningBoltRenderer::new);
+
 		EntityRenderers.register(FossilsLegacyEntities.MAMMOTH.get(), MammothRenderer::new);
 		EntityRenderers.register(FossilsLegacyEntities.SMILODON.get(), SmilodonRenderer::new);
 		EntityRenderers.register(FossilsLegacyEntities.TRICERATOPS.get(), context -> new TriceratopsRenderer(context, new BabyTriceratopsModel(context.bakeLayer(FossilsLegacyModels.TRICERATOPS_BABY))));
 
 		EntityRenderers.register(FossilsLegacyEntities.EGG.get(), EggRenderer::new);
 
+		EntityRenderers.register(FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), ZombifiedPigmanRenderer::new);
 		EntityRenderers.register(FossilsLegacyEntities.DROWNED_PIRATE.get(), DrownedPirateRenderer::new);
 
 		EntityRenderers.register(FossilsLegacyEntities.PREGNANT_CAT.get(), CatRenderer::new);

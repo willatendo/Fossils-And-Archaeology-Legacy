@@ -25,7 +25,7 @@ public class ChickenEssanceBottleItem extends Item {
 					hungryAnimal.setHunger(hungryAnimal.getHunger() - 500);
 				}
 				ItemUtils.createFilledResult(itemStack, player, Items.GLASS_BOTTLE.getDefaultInstance());
-				return InteractionResult.sidedSuccess(player.level.isClientSide());
+				return InteractionResult.sidedSuccess(player.level().isClientSide());
 			}
 		}
 

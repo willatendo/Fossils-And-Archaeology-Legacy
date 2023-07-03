@@ -41,7 +41,7 @@ public class ArchaeologyWorkbenchMenu extends AbstractContainerMenu {
 	}
 
 	public ArchaeologyWorkbenchMenu(int windowId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
-		this(windowId, inventory, (ArchaeologyWorkbenchBlockEntity) inventory.player.level.getBlockEntity(friendlyByteBuf.readBlockPos()));
+		this(windowId, inventory, (ArchaeologyWorkbenchBlockEntity) inventory.player.level().getBlockEntity(friendlyByteBuf.readBlockPos()));
 	}
 
 	@Override

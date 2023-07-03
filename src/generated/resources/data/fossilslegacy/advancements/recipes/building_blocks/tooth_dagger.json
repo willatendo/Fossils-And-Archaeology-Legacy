@@ -30,5 +30,6 @@
     "recipes": [
       "fossilslegacy:tooth_dagger"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

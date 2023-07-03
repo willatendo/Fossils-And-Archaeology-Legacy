@@ -33,5 +33,6 @@
     [
       "has_sword_artifact"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

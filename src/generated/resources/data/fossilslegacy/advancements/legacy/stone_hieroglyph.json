@@ -3,12 +3,20 @@
   "criteria": {
     "used_stone_hieroglyph": {
       "conditions": {
-        "item": {
-          "items": [
-            "fossilslegacy:stone_hieroglyph"
-          ]
-        },
-        "location": {}
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {}
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": [
+                "fossilslegacy:stone_hieroglyph"
+              ]
+            }
+          }
+        ]
       },
       "trigger": "minecraft:item_used_on_block"
     }
@@ -32,5 +40,6 @@
     [
       "used_stone_hieroglyph"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

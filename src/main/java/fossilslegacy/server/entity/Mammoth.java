@@ -81,7 +81,7 @@ public class Mammoth extends Animal implements DinosaurEncyclopediaInfo, HungryA
 	}
 
 	private void setupAnimationStates() {
-		if (this.onGround && this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6D) {
+		if (this.onGround() && this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6D) {
 			this.walkAnimationState.startIfStopped(this.tickCount);
 		} else {
 			this.walkAnimationState.stop();
@@ -112,7 +112,7 @@ public class Mammoth extends Animal implements DinosaurEncyclopediaInfo, HungryA
 
 	@Override
 	public void aiStep() {
-		if (this.level.isClientSide()) {
+		if (this.level().isClientSide()) {
 			this.eatAnimationTick = Math.max(0, this.eatAnimationTick - 1);
 		}
 		super.aiStep();
@@ -137,13 +137,13 @@ public class Mammoth extends Animal implements DinosaurEncyclopediaInfo, HungryA
 			this.setDaysAlive(this.getDaysAlive() + 1);
 			this.timeAlive = 0;
 		}
-		if (this.level.isClientSide()) {
+		if (this.level().isClientSide()) {
 			this.setupAnimationStates();
 		}
 	}
 
 	public boolean isInWeaknessBiome() {
-		Holder<Biome> biome = this.level.getBiome(this.blockPosition());
+		Holder<Biome> biome = this.level().getBiome(this.blockPosition());
 		return biome.get().getBaseTemperature() > 1.0F;
 	}
 
@@ -177,7 +177,7 @@ public class Mammoth extends Animal implements DinosaurEncyclopediaInfo, HungryA
 	public LivingEntity getOwner() {
 		try {
 			UUID uuid = this.getOwnerUUID();
-			return uuid == null ? null : this.level.getPlayerByUUID(uuid);
+			return uuid == null ? null : this.level().getPlayerByUUID(uuid);
 		} catch (IllegalArgumentException illegalargumentexception) {
 			return null;
 		}
@@ -225,10 +225,10 @@ public class Mammoth extends Animal implements DinosaurEncyclopediaInfo, HungryA
 
 				for (int[] offset : offsets) {
 					mutableBlockPos.set(blockPos.getX() + offset[0], blockPos.getY(), blockPos.getZ() + offset[1]);
-					double floor = this.level.getBlockFloorHeight(mutableBlockPos);
+					double floor = this.level().getBlockFloorHeight(mutableBlockPos);
 					if (DismountHelper.isBlockFloorValid(floor)) {
 						Vec3 vec3 = Vec3.upFromBottomCenterOf(mutableBlockPos, floor);
-						if (DismountHelper.canDismountTo(this.level, livingEntity, aabb.move(vec3))) {
+						if (DismountHelper.canDismountTo(this.level(), livingEntity, aabb.move(vec3))) {
 							livingEntity.setPose(pose);
 							return vec3;
 						}
@@ -378,7 +378,7 @@ public class Mammoth extends Animal implements DinosaurEncyclopediaInfo, HungryA
 
 	@Override
 	public boolean doHurtTarget(Entity entity) {
-		this.level.broadcastEntityEvent(this, (byte) 4);
+		this.level().broadcastEntityEvent(this, (byte) 4);
 		float attackDamage = this.getAttackDamage();
 		float variableDamage = (int) attackDamage > 0 ? attackDamage / 2.0F + (float) this.random.nextInt((int) attackDamage) : attackDamage;
 		boolean canHurt = entity.hurt(this.damageSources().mobAttack(this), variableDamage);

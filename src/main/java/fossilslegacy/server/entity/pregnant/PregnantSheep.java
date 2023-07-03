@@ -54,7 +54,7 @@ public class PregnantSheep extends Sheep implements DinosaurEncyclopediaInfo, Pr
 	@Override
 	public void tick() {
 		super.tick();
-		this.birthTick(this, this.level);
+		this.birthTick(this, this.level());
 	}
 
 	@Override

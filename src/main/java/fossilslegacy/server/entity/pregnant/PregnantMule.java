@@ -53,7 +53,7 @@ public class PregnantMule extends Mule implements DinosaurEncyclopediaInfo, Preg
 	@Override
 	public void tick() {
 		super.tick();
-		this.birthTick(this, this.level);
+		this.birthTick(this, this.level());
 	}
 
 	@Override

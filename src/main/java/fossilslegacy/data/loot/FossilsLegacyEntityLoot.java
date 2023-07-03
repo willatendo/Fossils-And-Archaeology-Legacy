@@ -34,6 +34,7 @@ public class FossilsLegacyEntityLoot extends VanillaEntityLoot {
 		this.add(FossilsLegacyEntities.SMILODON.get(), LootTable.lootTable());
 		this.add(FossilsLegacyEntities.TRICERATOPS.get(), LootTable.lootTable());
 
+		this.add(FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), LootTable.lootTable());
 		this.add(FossilsLegacyEntities.DROWNED_PIRATE.get(), LootTable.lootTable());
 
 		this.add(FossilsLegacyEntities.EGG.get(), LootTable.lootTable());

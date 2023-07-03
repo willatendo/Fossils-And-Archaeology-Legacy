@@ -42,7 +42,7 @@ public class ResultSlot extends Slot {
 
 	@Override
 	protected void checkTakeAchievements(ItemStack itemStack) {
-		itemStack.onCraftedBy(this.player.level, this.player, this.removeCount);
+		itemStack.onCraftedBy(this.player.level(), this.player, this.removeCount);
 		this.removeCount = 0;
 	}
 }

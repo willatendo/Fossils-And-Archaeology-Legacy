@@ -235,7 +235,7 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
 	@Override
 	public void setItem(int slot, ItemStack itemStack) {
 		ItemStack itemStackInSlot = this.itemStacks.get(slot);
-		boolean flag = !itemStack.isEmpty() && itemStack.sameItem(itemStackInSlot) && ItemStack.tagMatches(itemStack, itemStackInSlot);
+		boolean flag = !itemStack.isEmpty() && ItemStack.isSameItem(itemStackInSlot, itemStack) && ItemStack.isSameItemSameTags(itemStack, itemStackInSlot);
 		this.itemStacks.set(slot, itemStack);
 		if (itemStack.getCount() > this.getMaxStackSize()) {
 			itemStack.setCount(this.getMaxStackSize());

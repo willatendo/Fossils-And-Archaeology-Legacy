@@ -30,5 +30,6 @@
     "recipes": [
       "fossilslegacy:feeder"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

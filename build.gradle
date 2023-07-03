@@ -1,12 +1,16 @@
 plugins {
 	id 'eclipse'
+	id 'idea'
 	id 'maven-publish'
-	id 'net.minecraftforge.gradle' version '5.1.+'
+	id 'net.minecraftforge.gradle' version '[6.0,6.2)'
 }
 
-version = '0.0.1a'
-group = 'fossilslegacy'
-archivesBaseName = 'fossilslegacy'
+version = modversion
+group = modid
+
+base {
+	archivesName = modid
+}
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
@@ -14,36 +18,26 @@ minecraft {
 	mappings channel: 'official', version: minecraft_version
 	
 	runs {
-		client {
+		configureEach {
 			workingDirectory project.file('run')
-
+			
 			mods {
-				fossilslegacy {
+				"${modid}" {
 					source sourceSets.main
 				}
 			}
 		}
+	
+		client {
+		}
 
 		server {
-			workingDirectory project.file('run')
-
-			mods {
-				fossilslegacy {
-					source sourceSets.main
-				}
-			}
 		}
 		
 		data {
 			workingDirectory project.file('run')
 
-			args '--mod', 'fossilslegacy', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
-			mods {
-				fossilslegacy {
-					source sourceSets.main
-				}
-			}
+			args '--mod', modid, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 		}
 	}
 }

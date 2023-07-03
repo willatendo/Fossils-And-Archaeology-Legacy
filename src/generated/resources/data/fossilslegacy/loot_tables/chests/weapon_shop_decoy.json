@@ -59,5 +59,6 @@
         "min": 1.0
       }
     }
-  ]
+  ],
+  "random_sequence": "fossilslegacy:chests/weapon_shop_decoy"
 }

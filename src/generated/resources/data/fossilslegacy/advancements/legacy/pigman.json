@@ -34,5 +34,6 @@
     [
       "created_pigman"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

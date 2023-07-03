@@ -21,7 +21,7 @@ public class BabyFollowParentGoal extends Goal {
 		if (!this.animal.isBaby()) {
 			return false;
 		} else {
-			List<? extends Animal> animals = this.animal.level.getEntitiesOfClass(this.animal.getClass(), this.animal.getBoundingBox().inflate(8.0D, 4.0D, 8.0D));
+			List<? extends Animal> animals = this.animal.level().getEntitiesOfClass(this.animal.getClass(), this.animal.getBoundingBox().inflate(8.0D, 4.0D, 8.0D));
 			Animal animal = null;
 			double maxDistance = Double.MAX_VALUE;
 

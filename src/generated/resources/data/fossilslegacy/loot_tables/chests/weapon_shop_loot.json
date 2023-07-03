@@ -105,5 +105,6 @@
         "min": 3.0
       }
     }
-  ]
+  ],
+  "random_sequence": "fossilslegacy:chests/weapon_shop_loot"
 }

@@ -26,7 +26,7 @@ public class DinosaurEncyclopediaItem extends Item {
 				for (Component component : dinosaurEncyclopediaInfo.info()) {
 					player.sendSystemMessage(component);
 				}
-				return InteractionResult.sidedSuccess(player.level.isClientSide());
+				return InteractionResult.sidedSuccess(player.level().isClientSide());
 			}
 		}
 

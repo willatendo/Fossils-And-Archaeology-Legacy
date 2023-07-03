@@ -41,7 +41,7 @@ public class CultivatorMenu extends AbstractContainerMenu {
 	}
 
 	public CultivatorMenu(int windowId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
-		this(windowId, inventory, (CultivatorBlockEntity) inventory.player.level.getBlockEntity(friendlyByteBuf.readBlockPos()));
+		this(windowId, inventory, (CultivatorBlockEntity) inventory.player.level().getBlockEntity(friendlyByteBuf.readBlockPos()));
 	}
 
 	@Override

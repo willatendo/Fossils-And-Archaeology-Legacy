@@ -47,7 +47,7 @@ public class DrownedPirate extends Skeleton {
 
 	public DrownedPirate(EntityType<? extends DrownedPirate> entityType, Level level) {
 		super(entityType, level);
-		this.maxUpStep = 1.0F;
+		this.setMaxUpStep(1.0F);
 		this.moveControl = new DrownedPirate.DrownedPirateMoveControl(this);
 		this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
 		this.waterNavigation = new WaterBoundPathNavigation(this, level);
@@ -65,7 +65,7 @@ public class DrownedPirate extends Skeleton {
 		this.goalSelector.addGoal(1, new DrownedPirate.DrownedPirateGoToWaterGoal(this, 1.0D));
 		this.goalSelector.addGoal(2, new DrownedPirate.DrownedPirateAttackGoal(this, 1.0D, false));
 		this.goalSelector.addGoal(5, new DrownedPirate.DrownedPirateGoToBeachGoal(this, 1.0D));
-		this.goalSelector.addGoal(6, new DrownedPirate.DrownedPirateSwimUpGoal(this, 1.0D, this.level.getSeaLevel()));
+		this.goalSelector.addGoal(6, new DrownedPirate.DrownedPirateSwimUpGoal(this, 1.0D, this.level().getSeaLevel()));
 		this.goalSelector.addGoal(7, new RandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
@@ -119,7 +119,7 @@ public class DrownedPirate extends Skeleton {
 
 	@Override
 	public void updateSwimming() {
-		if (!this.level.isClientSide) {
+		if (!this.level().isClientSide) {
 			if (this.isEffectiveAi() && this.isInWater() && this.wantsToSwim()) {
 				this.navigation = this.waterNavigation;
 				this.setSwimming(true);
@@ -159,7 +159,7 @@ public class DrownedPirate extends Skeleton {
 
 	public boolean okTarget(LivingEntity livingEntity) {
 		if (livingEntity != null) {
-			return !this.level.isDay() || livingEntity.isInWater();
+			return !this.level().isDay() || livingEntity.isInWater();
 		} else {
 			return false;
 		}
@@ -194,7 +194,7 @@ public class DrownedPirate extends Skeleton {
 
 		@Override
 		public boolean canUse() {
-			return super.canUse() && !this.drownedPirate.level.isDay() && this.drownedPirate.isInWater() && this.drownedPirate.getY() >= (double) (this.drownedPirate.level.getSeaLevel() - 3);
+			return super.canUse() && !this.drownedPirate.level().isDay() && this.drownedPirate.isInWater() && this.drownedPirate.getY() >= (double) (this.drownedPirate.level().getSeaLevel() - 3);
 		}
 
 		@Override
@@ -232,7 +232,7 @@ public class DrownedPirate extends Skeleton {
 		public DrownedPirateGoToWaterGoal(PathfinderMob pathfinderMob, double sppedModifer) {
 			this.mob = pathfinderMob;
 			this.speedModifier = sppedModifer;
-			this.level = pathfinderMob.level;
+			this.level = pathfinderMob.level();
 			this.setFlags(EnumSet.of(Goal.Flag.MOVE));
 		}
 
@@ -294,7 +294,7 @@ public class DrownedPirate extends Skeleton {
 
 		@Override
 		public boolean canUse() {
-			return !this.drownedPirate.level.isDay() && this.drownedPirate.isInWater() && this.drownedPirate.getY() < (double) (this.seaLevel - 2);
+			return !this.drownedPirate.level().isDay() && this.drownedPirate.isInWater() && this.drownedPirate.getY() < (double) (this.seaLevel - 2);
 		}
 
 		@Override
@@ -360,7 +360,7 @@ public class DrownedPirate extends Skeleton {
 				this.drownedPirate.setSpeed(f2);
 				this.drownedPirate.setDeltaMovement(this.drownedPirate.getDeltaMovement().add((double) f2 * d0 * 0.005D, (double) f2 * d1 * 0.1D, (double) f2 * d2 * 0.005D));
 			} else {
-				if (!this.drownedPirate.onGround) {
+				if (!this.drownedPirate.onGround()) {
 					this.drownedPirate.setDeltaMovement(this.drownedPirate.getDeltaMovement().add(0.0D, -0.008D, 0.0D));
 				}
 

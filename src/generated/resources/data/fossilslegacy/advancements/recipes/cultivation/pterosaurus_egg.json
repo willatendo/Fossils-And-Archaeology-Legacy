@@ -30,5 +30,6 @@
     "recipes": [
       "fossilslegacy:pterosaurus_egg"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

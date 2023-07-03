@@ -30,5 +30,6 @@
     "recipes": [
       "fossilslegacy:chicken_essence_bottle"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

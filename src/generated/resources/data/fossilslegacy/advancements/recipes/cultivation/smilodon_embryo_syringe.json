@@ -30,5 +30,6 @@
     "recipes": [
       "fossilslegacy:smilodon_embryo_syringe"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

@@ -53,7 +53,7 @@ public class PregnantPolarBear extends PolarBear implements DinosaurEncyclopedia
 	@Override
 	public void tick() {
 		super.tick();
-		this.birthTick(this, this.level);
+		this.birthTick(this, this.level());
 	}
 
 	@Override

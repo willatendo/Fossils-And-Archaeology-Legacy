@@ -53,7 +53,7 @@ public class PregnantHorse extends Horse implements DinosaurEncyclopediaInfo, Pr
 	@Override
 	public void tick() {
 		super.tick();
-		this.birthTick(this, this.level);
+		this.birthTick(this, this.level());
 	}
 
 	@Override

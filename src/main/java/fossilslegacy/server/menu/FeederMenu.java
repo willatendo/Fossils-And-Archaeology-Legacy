@@ -48,7 +48,7 @@ public class FeederMenu extends AbstractContainerMenu {
 	}
 
 	public FeederMenu(int windowId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
-		this(windowId, inventory, (FeederBlockEntity) inventory.player.level.getBlockEntity(friendlyByteBuf.readBlockPos()));
+		this(windowId, inventory, (FeederBlockEntity) inventory.player.level().getBlockEntity(friendlyByteBuf.readBlockPos()));
 	}
 
 	@Override
