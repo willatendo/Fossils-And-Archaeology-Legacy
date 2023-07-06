@@ -17,6 +17,7 @@ public class FossilsLegacyItemTags {
 	public static final TagKey<Item> MUTTON_OUTPUTS = create("analyzer_outputs/mutton");
 	public static final TagKey<Item> CHICKEN_OUTPUTS = create("analyzer_outputs/chicken");
 	public static final TagKey<Item> RABBIT_OUTPUTS = create("analyzer_outputs/rabbit");
+	public static final TagKey<Item> PIGLIN_TAMING_HELMETS = create("piglin_taming_helmets");
 	public static final TagKey<Item> TRICERATOPS_MEAT_OUTPUTS = create("analyzer_outputs/triceratops_meat");
 	public static final TagKey<Item> TRICERATOPS_COMMANDABLES = create("triceratops_commandables");
 	public static final TagKey<Item> UTAHRAPTOR_MEAT_OUTPUTS = create("analyzer_outputs/utahraptor_meat");
@@ -29,7 +30,6 @@ public class FossilsLegacyItemTags {
 	public static final TagKey<Item> BRACHIOSAURUS_MEAT_OUTPUTS = create("analyzer_outputs/brachiosaurus_meat");
 	public static final TagKey<Item> SMILODON_MEAT_OUTPUTS = create("analyzer_outputs/smilodon_meat");
 	public static final TagKey<Item> MAMMOTH_MEAT_OUTPUTS = create("analyzer_outputs/mammoth_meat");
-	public static final TagKey<Item> PIGLIN_TAMER = create("piglin_tamer");
 	public static final TagKey<Item> HIGH_CHANCE_RELIC_SCRAP_OUTPUTS = create("analyzer_outputs/high_chance_relic_scrap_outputs");
 	public static final TagKey<Item> LOW_CHANCE_RELIC_SCRAP_OUTPUTS = create("analyzer_outputs/low_chance_relic_scrap_outputs");
 

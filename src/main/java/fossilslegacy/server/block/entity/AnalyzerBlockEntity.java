@@ -143,12 +143,12 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 			--analyzerBlockEntity.onTime;
 		}
 
-		for (int i = 8; i > -1; i--) {
-			boolean hasInput = !analyzerBlockEntity.itemStacks.get(i).isEmpty();
+		for (int inputSlots = 8; inputSlots > -1; inputSlots--) {
+			boolean hasInput = !analyzerBlockEntity.itemStacks.get(inputSlots).isEmpty();
 			if (analyzerBlockEntity.isOn() || hasInput) {
 				TagKey<Item> outputs;
 				if (hasInput) {
-					Pair<TagKey<Item>, TagKey<Item>> maps = analyzerBlockEntity.getForItem(analyzerBlockEntity.itemStacks.get(i));
+					Pair<TagKey<Item>, TagKey<Item>> maps = analyzerBlockEntity.getForItem(analyzerBlockEntity.itemStacks.get(inputSlots));
 					if (maps.getFirst() != null) {
 						int chance = new Random().nextInt(4);
 						if (chance == 0) {
@@ -166,24 +166,24 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 				if (outputs != null) {
 					int maxStackSize = analyzerBlockEntity.getMaxStackSize();
 					ItemStack output = ForgeRegistries.ITEMS.tags().getTag(outputs).stream().toList().get(new Random().nextInt(ForgeRegistries.ITEMS.tags().getTag(outputs).stream().toList().size())).getDefaultInstance();
-					for (int os = 9; os < 12; os++) {
-						if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(os, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+					for (int outputSlots = 9; outputSlots < 13; outputSlots++) {
+						if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(outputSlots, inputSlots, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
 							analyzerBlockEntity.onTime = 100;
 							if (analyzerBlockEntity.isOn()) {
 								changed = true;
 							}
 						}
 
-						if (analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(os, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+						if (analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(outputSlots, inputSlots, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
 							++analyzerBlockEntity.analyzationProgress;
 							if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
 								analyzerBlockEntity.analyzationProgress = 0;
 								analyzerBlockEntity.analyzationTotalTime = 100;
-								if (analyzerBlockEntity.canAnalyze(os, i, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-									ItemStack input = analyzerBlockEntity.itemStacks.get(i);
-									ItemStack outputSlot = analyzerBlockEntity.itemStacks.get(os);
+								if (analyzerBlockEntity.canAnalyze(outputSlots, inputSlots, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+									ItemStack input = analyzerBlockEntity.itemStacks.get(inputSlots);
+									ItemStack outputSlot = analyzerBlockEntity.itemStacks.get(outputSlots);
 									if (outputSlot.isEmpty()) {
-										analyzerBlockEntity.itemStacks.set(os, output.copy());
+										analyzerBlockEntity.itemStacks.set(outputSlots, output.copy());
 									} else if (outputSlot.is(output.getItem())) {
 										outputSlot.grow(output.getCount());
 									}

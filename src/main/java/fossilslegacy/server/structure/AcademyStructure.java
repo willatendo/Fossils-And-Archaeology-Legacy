@@ -30,7 +30,7 @@ public class AcademyStructure extends Structure {
 	private void generatePieces(StructurePiecesBuilder structurePiecesBuilder, Structure.GenerationContext generationContext) {
 		ChunkPos chunkPos = generationContext.chunkPos();
 		WorldgenRandom worldgenRandom = generationContext.random();
-		BlockPos blockPos = new BlockPos(chunkPos.getMinBlockX(), 90, chunkPos.getMinBlockZ()).below(3);
+		BlockPos blockPos = new BlockPos(chunkPos.getMinBlockX(), 90, chunkPos.getMinBlockZ());
 		Rotation rotation = Rotation.getRandom(worldgenRandom);
 		AcademyPieces.addPieces(generationContext.structureTemplateManager(), worldgenRandom.nextInt(2) == 1, blockPos, rotation, structurePiecesBuilder, worldgenRandom);
 	}

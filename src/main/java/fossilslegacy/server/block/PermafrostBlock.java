@@ -10,6 +10,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.Block;
@@ -24,27 +25,31 @@ public class PermafrostBlock extends Block {
 
 	@Override
 	public void spawnAfterBreak(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, ItemStack itemStack, boolean flag) {
-		int chance = new Random().nextInt(20000);
-		if (chance >= 0 && chance < 4000) {
-			popResource(serverLevel, blockPos, FossilsLegacyItems.JURASSIC_FERN_SPORES.get().getDefaultInstance());
-		}
-		if (chance >= 4000 && chance < 8000) {
-			popResource(serverLevel, blockPos, FossilsLegacyBlocks.SKULL_BLOCK.get().asItem().getDefaultInstance());
-		}
-		if (chance >= 8000 && chance < 12000) {
-			popResource(serverLevel, blockPos, FossilsLegacyItems.FROZEN_MEAT.get().getDefaultInstance());
-		}
-		if (chance >= 12000 && chance < 16000) {
-			popResource(serverLevel, blockPos, Items.BEEF.getDefaultInstance());
-		}
-		if (chance >= 16000 && chance < 20000) {
-			popResource(serverLevel, blockPos, Items.PORKCHOP.getDefaultInstance());
-		}
 		super.spawnAfterBreak(blockState, serverLevel, blockPos, itemStack, flag);
 	}
 
 	@Override
 	public void playerDestroy(Level level, Player player, BlockPos blockPos, BlockState blockState, BlockEntity blockEntity, ItemStack itemStack) {
+		if (!EnchantmentHelper.hasSilkTouch(itemStack)) {
+			int chance = new Random().nextInt(20000);
+			if (chance >= 0 && chance < 4000) {
+				popResource(level, blockPos, FossilsLegacyItems.JURASSIC_FERN_SPORES.get().getDefaultInstance());
+			}
+			if (chance >= 4000 && chance < 8000) {
+				popResource(level, blockPos, FossilsLegacyBlocks.SKULL_BLOCK.get().asItem().getDefaultInstance());
+			}
+			if (chance >= 8000 && chance < 12000) {
+				popResource(level, blockPos, FossilsLegacyItems.FROZEN_MEAT.get().getDefaultInstance());
+			}
+			if (chance >= 12000 && chance < 16000) {
+				popResource(level, blockPos, Items.BEEF.getDefaultInstance());
+			}
+			if (chance >= 16000 && chance < 20000) {
+				popResource(level, blockPos, Items.PORKCHOP.getDefaultInstance());
+			}
+		} else {
+			popResource(level, blockPos, FossilsLegacyBlocks.PERMAFROST.get().asItem().getDefaultInstance());
+		}
 		if (level.getBrightness(LightLayer.BLOCK, blockPos) > 11 - blockState.getLightBlock(level, blockPos) || level.dimensionType().ultraWarm()) {
 			return;
 		}

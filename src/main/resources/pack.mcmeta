@@ -1,6 +1,8 @@
 {
-    "pack": {
-        "description": "Fossil Legacy resources",
-        "pack_format": 15
-    }
+	"pack": {
+		"description": {
+			"text": "Fossil Legacy resources"
+		},
+		"pack_format": 15
+	}
 }

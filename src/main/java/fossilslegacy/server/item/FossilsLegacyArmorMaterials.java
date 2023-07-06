@@ -12,19 +12,20 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 
 public enum FossilsLegacyArmorMaterials implements ArmorMaterial {
-	ANCIENT("ancient", 15, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266654_) -> {
-		p_266654_.put(ArmorItem.Type.BOOTS, 2);
-		p_266654_.put(ArmorItem.Type.LEGGINGS, 5);
-		p_266654_.put(ArmorItem.Type.CHESTPLATE, 6);
-		p_266654_.put(ArmorItem.Type.HELMET, 2);
+	ANCIENT("ancient", 15, Util.make(new EnumMap<>(ArmorItem.Type.class), (types) -> {
+		types.put(ArmorItem.Type.BOOTS, 2);
+		types.put(ArmorItem.Type.LEGGINGS, 5);
+		types.put(ArmorItem.Type.CHESTPLATE, 6);
+		types.put(ArmorItem.Type.HELMET, 2);
 	}), 9, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> Ingredient.of());
 
-	private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266653_) -> {
-		p_266653_.put(ArmorItem.Type.BOOTS, 13);
-		p_266653_.put(ArmorItem.Type.LEGGINGS, 15);
-		p_266653_.put(ArmorItem.Type.CHESTPLATE, 16);
-		p_266653_.put(ArmorItem.Type.HELMET, 11);
+	private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (types) -> {
+		types.put(ArmorItem.Type.BOOTS, 13);
+		types.put(ArmorItem.Type.LEGGINGS, 15);
+		types.put(ArmorItem.Type.CHESTPLATE, 16);
+		types.put(ArmorItem.Type.HELMET, 11);
 	});
+
 	private final String name;
 	private final int durabilityMultiplier;
 	private final EnumMap<ArmorItem.Type, Integer> protectionFunctionForType;

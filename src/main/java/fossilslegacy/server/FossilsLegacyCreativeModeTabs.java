@@ -159,6 +159,8 @@ public class FossilsLegacyCreativeModeTabs {
 		output.accept(FossilsLegacyBlocks.FEEDER.get());
 		output.accept(FossilsLegacyBlocks.PERMAFROST.get());
 		output.accept(FossilsLegacyBlocks.ICED_STONE.get());
+		output.accept(FossilsLegacyItems.DROWNED_PIRATE_SPAWN_EGG.get());
+		output.accept(FossilsLegacyItems.ZOMBIFIED_PIGMAN_SPAWN_EGG.get());
 		output.accept(FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get());
 		output.accept(FossilsLegacyItems.SMILODON_SPAWN_EGG.get());
 		output.accept(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get());

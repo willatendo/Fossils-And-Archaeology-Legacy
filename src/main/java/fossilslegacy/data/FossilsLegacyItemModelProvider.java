@@ -77,6 +77,7 @@ public class FossilsLegacyItemModelProvider extends ItemModelProvider {
 		this.basicItem(FossilsLegacyItems.CHICKEN_ESSENCE_BOTTLE.get());
 		this.basicItem(FossilsLegacyItems.NAUTILUS_SHELL.get());
 		this.handheldItem(FossilsLegacyItems.FROZEN_MEAT.get());
+		this.handheldItem(FossilsLegacyItems.BROKEN_FROZEN_MEAT.get(), this.modLoc("item/frozen_meat"));
 		this.basicItem(FossilsLegacyItems.AXOLOTL_DNA.get());
 		this.basicItem(FossilsLegacyItems.CAT_DNA.get());
 		this.basicItem(FossilsLegacyItems.CHICKEN_DNA.get());
@@ -137,12 +138,19 @@ public class FossilsLegacyItemModelProvider extends ItemModelProvider {
 		this.handheldItem(FossilsLegacyItems.GEM_AXE.get());
 		this.handheldItem(FossilsLegacyItems.GEM_HOE.get());
 		this.basicItem(FossilsLegacyItems.WOODEN_JAVELIN.get());
+		this.basicItem(FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get(), this.modLoc("item/wooden_javelin"));
 		this.basicItem(FossilsLegacyItems.STONE_JAVELIN.get());
+		this.basicItem(FossilsLegacyItems.BROKEN_STONE_JAVELIN.get(), this.modLoc("item/stone_javelin"));
 		this.basicItem(FossilsLegacyItems.IRON_JAVELIN.get());
+		this.basicItem(FossilsLegacyItems.BROKEN_IRON_JAVELIN.get(), this.modLoc("item/iron_javelin"));
 		this.basicItem(FossilsLegacyItems.GOLDEN_JAVELIN.get());
+		this.basicItem(FossilsLegacyItems.BROKEN_GOLDEN_JAVELIN.get(), this.modLoc("item/golden_javelin"));
 		this.basicItem(FossilsLegacyItems.DIAMOND_JAVELIN.get());
+		this.basicItem(FossilsLegacyItems.BROKEN_DIAMOND_JAVELIN.get(), this.modLoc("item/diamond_javelin"));
 		this.basicItem(FossilsLegacyItems.NETHERITE_JAVELIN.get());
+		this.basicItem(FossilsLegacyItems.BROKEN_NETHERITE_JAVELIN.get(), this.modLoc("item/netherite_javelin"));
 		this.basicItem(FossilsLegacyItems.GEM_JAVELIN.get());
+		this.basicItem(FossilsLegacyItems.BROKEN_GEM_JAVELIN.get(), this.modLoc("item/gem_javelin"));
 
 		this.spawnEggItem(FossilsLegacyItems.ZOMBIFIED_PIGMAN_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.DROWNED_PIRATE_SPAWN_EGG.get());
@@ -164,12 +172,16 @@ public class FossilsLegacyItemModelProvider extends ItemModelProvider {
 		return this.handheldItem(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)), new ResourceLocation(ForgeRegistries.ITEMS.getKey(item).getNamespace(), "item/" + ForgeRegistries.ITEMS.getKey(item).getPath()));
 	}
 
+	public ItemModelBuilder handheldItem(Item item, ResourceLocation texture) {
+		return this.handheldItem(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)), texture);
+	}
+
 	public ItemModelBuilder basicItem(Item item, ResourceLocation texture) {
 		return this.basicItem(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)), texture);
 	}
 
 	public ItemModelBuilder basicItem(ResourceLocation item, ResourceLocation texture) {
-		return this.getBuilder(item.toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", new ResourceLocation(item.getNamespace(), "item/" + item.getPath()));
+		return this.getBuilder(item.toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", texture);
 	}
 
 	public ItemModelBuilder handheldItem(ResourceLocation item, ResourceLocation texture) {

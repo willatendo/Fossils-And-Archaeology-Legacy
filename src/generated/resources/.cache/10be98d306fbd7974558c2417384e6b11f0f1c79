@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-03T00:01:44.9707846	Item Models: fossilslegacy
+// 1.20.1	2023-07-05T23:18:17.5853558	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 41c5f6a309438824458da52752171cd09485a937 assets/fossilslegacy/models/item/ancient_helmet.json
 2701cd233168837331e67cbf0146831ca43eec8a assets/fossilslegacy/models/item/ancient_sword.json
@@ -7,6 +7,14 @@ b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyz
 a4efe70ed5c61f6feac21302b0b7a168b82d5f2b assets/fossilslegacy/models/item/axolotl_eggs.json
 89ec69b213d909644c7d68e122b8c279574798aa assets/fossilslegacy/models/item/brachiosaurus_dna.json
 8acedddacf7368b55f421a24a3cd08413ee3c58c assets/fossilslegacy/models/item/brachiosaurus_egg.json
+41294aff9ed309331ee8f22d3f0fb9c0cd358b6a assets/fossilslegacy/models/item/broken_diamond_javelin.json
+78e9912105c4467cce2486c1ab8e22805161afc9 assets/fossilslegacy/models/item/broken_frozen_meat.json
+291036137f24acdf000e644d49eeeb076ad95518 assets/fossilslegacy/models/item/broken_gem_javelin.json
+5c318e06889c840c5c13aa939428442050cef61c assets/fossilslegacy/models/item/broken_golden_javelin.json
+af856b5ca7c3419f2ed44336db2cab4db0e1c970 assets/fossilslegacy/models/item/broken_iron_javelin.json
+aef823fbce5a3596646be60e2f4cb76c59e115de assets/fossilslegacy/models/item/broken_netherite_javelin.json
+bd165c5894dc19f85abaab92be30b71091296b42 assets/fossilslegacy/models/item/broken_stone_javelin.json
+2684b0bd2bf79b2674e3d359d5269ea104b43651 assets/fossilslegacy/models/item/broken_wooden_javelin.json
 c49ff29f2e7d91eb662a1227bed47245ec0441e2 assets/fossilslegacy/models/item/cat_dna.json
 45a36ff25fe82c32cbb851b6e1c8ffbcea34a859 assets/fossilslegacy/models/item/cat_embryo_syringe.json
 d57479b1d2eb4ed09fcb1564a0578e325421d04c assets/fossilslegacy/models/item/chicken_dna.json

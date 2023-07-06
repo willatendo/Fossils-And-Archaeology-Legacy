@@ -79,7 +79,8 @@ public class FossilsLegacyItems {
 	public static final RegistryObject<Item> CHICKEN_ESSENCE_BOTTLE = ITEMS.register("chicken_essence_bottle", () -> new ChickenEssanceBottleItem(new Item.Properties().stacksTo(16).food(FossilsLegacyFoods.CHICKEN_ESSENCE)));
 	public static final RegistryObject<Item> NAUTILUS_SHELL = ITEMS.register("nautilus_shell", () -> new Item(new Item.Properties().stacksTo(1)));
 	public static final RegistryObject<Item> MAGIC_CONCH = ITEMS.register("magic_conch", () -> new MagicConchItem(new Item.Properties().stacksTo(1)));
-	public static final RegistryObject<Item> FROZEN_MEAT = ITEMS.register("frozen_meat", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> FROZEN_MEAT = ITEMS.register("frozen_meat", () -> new FrozenMeatItem(new Item.Properties()));
+	public static final RegistryObject<Item> BROKEN_FROZEN_MEAT = ITEMS.register("broken_frozen_meat", () -> new SwordItem(FossilsLegacyTiers.ICED_MEAT, 3, -2.4F, new Item.Properties()));
 	public static final RegistryObject<Item> AXOLOTL_DNA = ITEMS.register("axolotl_dna", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> CAT_DNA = ITEMS.register("cat_dna", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> CHICKEN_DNA = ITEMS.register("chicken_dna", () -> new Item(new Item.Properties()));
@@ -138,13 +139,20 @@ public class FossilsLegacyItems {
 	public static final RegistryObject<Item> GEM_PICKAXE = ITEMS.register("gem_pickaxe", () -> new PickaxeItem(FossilsLegacyTiers.GEM, 1, -2.8F, new Item.Properties()));
 	public static final RegistryObject<Item> GEM_AXE = ITEMS.register("gem_axe", () -> new AxeItem(FossilsLegacyTiers.GEM, 5.0F, -3.0F, new Item.Properties()));
 	public static final RegistryObject<Item> GEM_HOE = ITEMS.register("gem_hoe", () -> new HoeItem(FossilsLegacyTiers.GEM, -4, 0.0F, new Item.Properties()));
-	public static final RegistryObject<Item> WOODEN_JAVELIN = ITEMS.register("wooden_javelin", () -> new JavelinItem(Tiers.WOOD, new Item.Properties()));
-	public static final RegistryObject<Item> STONE_JAVELIN = ITEMS.register("stone_javelin", () -> new JavelinItem(Tiers.STONE, new Item.Properties()));
-	public static final RegistryObject<Item> IRON_JAVELIN = ITEMS.register("iron_javelin", () -> new JavelinItem(Tiers.IRON, new Item.Properties()));
-	public static final RegistryObject<Item> GOLDEN_JAVELIN = ITEMS.register("golden_javelin", () -> new JavelinItem(Tiers.GOLD, new Item.Properties()));
-	public static final RegistryObject<Item> DIAMOND_JAVELIN = ITEMS.register("diamond_javelin", () -> new JavelinItem(Tiers.DIAMOND, new Item.Properties()));
-	public static final RegistryObject<Item> NETHERITE_JAVELIN = ITEMS.register("netherite_javelin", () -> new JavelinItem(Tiers.NETHERITE, new Item.Properties()));
-	public static final RegistryObject<Item> GEM_JAVELIN = ITEMS.register("gem_javelin", () -> new JavelinItem(FossilsLegacyTiers.GEM, new Item.Properties()));
+	public static final RegistryObject<Item> WOODEN_JAVELIN = ITEMS.register("wooden_javelin", () -> new JavelinItem(Tiers.WOOD, new Item.Properties().stacksTo(16)));
+	public static final RegistryObject<Item> BROKEN_WOODEN_JAVELIN = ITEMS.register("broken_wooden_javelin", () -> new BrokenJavelinItem(Tiers.WOOD, new Item.Properties()));
+	public static final RegistryObject<Item> STONE_JAVELIN = ITEMS.register("stone_javelin", () -> new JavelinItem(Tiers.STONE, new Item.Properties().stacksTo(16)));
+	public static final RegistryObject<Item> BROKEN_STONE_JAVELIN = ITEMS.register("broken_stone_javelin", () -> new BrokenJavelinItem(Tiers.STONE, new Item.Properties()));
+	public static final RegistryObject<Item> IRON_JAVELIN = ITEMS.register("iron_javelin", () -> new JavelinItem(Tiers.IRON, new Item.Properties().stacksTo(16)));
+	public static final RegistryObject<Item> BROKEN_IRON_JAVELIN = ITEMS.register("broken_iron_javelin", () -> new BrokenJavelinItem(Tiers.IRON, new Item.Properties()));
+	public static final RegistryObject<Item> GOLDEN_JAVELIN = ITEMS.register("golden_javelin", () -> new JavelinItem(Tiers.GOLD, new Item.Properties().stacksTo(16)));
+	public static final RegistryObject<Item> BROKEN_GOLDEN_JAVELIN = ITEMS.register("broken_golden_javelin", () -> new BrokenJavelinItem(Tiers.GOLD, new Item.Properties()));
+	public static final RegistryObject<Item> DIAMOND_JAVELIN = ITEMS.register("diamond_javelin", () -> new JavelinItem(Tiers.DIAMOND, new Item.Properties().stacksTo(16)));
+	public static final RegistryObject<Item> BROKEN_DIAMOND_JAVELIN = ITEMS.register("broken_diamond_javelin", () -> new BrokenJavelinItem(Tiers.DIAMOND, new Item.Properties()));
+	public static final RegistryObject<Item> NETHERITE_JAVELIN = ITEMS.register("netherite_javelin", () -> new JavelinItem(Tiers.NETHERITE, new Item.Properties().stacksTo(16)));
+	public static final RegistryObject<Item> BROKEN_NETHERITE_JAVELIN = ITEMS.register("broken_netherite_javelin", () -> new BrokenJavelinItem(Tiers.NETHERITE, new Item.Properties()));
+	public static final RegistryObject<Item> GEM_JAVELIN = ITEMS.register("gem_javelin", () -> new JavelinItem(FossilsLegacyTiers.GEM, new Item.Properties().stacksTo(16)));
+	public static final RegistryObject<Item> BROKEN_GEM_JAVELIN = ITEMS.register("broken_gem_javelin", () -> new BrokenJavelinItem(FossilsLegacyTiers.GEM, new Item.Properties()));
 
 	public static final RegistryObject<Item> ZOMBIFIED_PIGMAN_SPAWN_EGG = ITEMS.register("zombified_pigman_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), 0xEA9393, 0x4C7129, new Item.Properties()));
 	public static final RegistryObject<Item> DROWNED_PIRATE_SPAWN_EGG = ITEMS.register("drowned_pirate_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.DROWNED_PIRATE.get(), 0x8FF1D7, 0x799C65, new Item.Properties()));

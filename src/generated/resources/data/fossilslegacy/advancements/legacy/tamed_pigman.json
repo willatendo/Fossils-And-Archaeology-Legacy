@@ -2,16 +2,8 @@
   "parent": "fossilslegacy:legacy/ancient_helmet",
   "criteria": {
     "tamed_pigman": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "fossilslegacy:ancient_sword"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      "conditions": {},
+      "trigger": "fossilslegacy:tame_zombified_pigman"
     }
   },
   "display": {

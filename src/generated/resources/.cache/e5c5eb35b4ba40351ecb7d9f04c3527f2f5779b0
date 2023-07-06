@@ -1,4 +1,4 @@
-// 1.20.1	2023-06-28T17:55:37.0331832	Advancements
+// 1.20.1	2023-07-03T14:09:11.8591895	Advancements
 8e1286ddf4415a3d56d957b058c464b6d782bad7 data/fossilslegacy/advancements/legacy/ancient_helmet.json
 9396f676783e6b8af9a5017bc0888961a63661c7 data/fossilslegacy/advancements/legacy/ancient_sword.json
 f9c3a2d3d51f388052fad78572ad66dfb712c6e2 data/fossilslegacy/advancements/legacy/archaeology_workbench.json
@@ -11,4 +11,4 @@ cbb55770cf8d43684b997a9870f73824becc988a data/fossilslegacy/advancements/legacy/
 d98b8413ed43686a0f89ccc842d69515501b8efd data/fossilslegacy/advancements/legacy/skull_block.json
 61ba3b501c218be885dfb486fcb898bd18e1ef34 data/fossilslegacy/advancements/legacy/stone_hieroglyph.json
 f86c8c139efa649d572a0cd0c2bcc2a2d944c317 data/fossilslegacy/advancements/legacy/sword_artifact.json
-4ec6472eb517a34ebe3564a29873717ee0e6d9ff data/fossilslegacy/advancements/legacy/tamed_pigman.json
+69a297fbb7eedc4b749932d7aff6c5a18c3487b4 data/fossilslegacy/advancements/legacy/tamed_pigman.json

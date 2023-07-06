@@ -4,6 +4,7 @@ import fossilslegacy.client.sound.FossilsLegacySoundEvents;
 import fossilslegacy.server.FossilsLegacyCreativeModeTabs;
 import fossilslegacy.server.block.FossilsLegacyBlocks;
 import fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
+import fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import fossilslegacy.server.entity.FossilsLegacyEntities;
 import fossilslegacy.server.item.FossilsLegacyItems;
 import fossilslegacy.server.menu.FossilsLegacyMenus;
@@ -32,5 +33,7 @@ public class FossilsLegacyMod {
 		FossilsLegacyEntities.ENTITY_TYPES.register(iEventBus);
 		FossilLegacyStructureTypes.STRUCTURE_TYPE.register(iEventBus);
 		FossilLegacysStructurePeices.STRUCTURE_PIECE_TYPE.register(iEventBus);
+
+		FossilsLegacyCriteriaTriggers.init();
 	}
 }

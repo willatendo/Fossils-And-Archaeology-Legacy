@@ -3,6 +3,7 @@ package fossilslegacy.server.entity;
 import java.util.Optional;
 import java.util.UUID;
 
+import fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import fossilslegacy.server.item.FossilsLegacyItems;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -21,7 +22,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.OwnableEntity;
-import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -31,13 +31,18 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.scores.Team;
 
 public class ZombifiedPigman extends ZombifiedPiglin implements OwnableEntity {
-	protected static final EntityDataAccessor<Byte> FLAGS = SynchedEntityData.defineId(TamableAnimal.class, EntityDataSerializers.BYTE);
+	protected static final EntityDataAccessor<Byte> FLAGS = SynchedEntityData.defineId(ZombifiedPigman.class, EntityDataSerializers.BYTE);
 	protected static final EntityDataAccessor<Optional<UUID>> OWNER_UUID = SynchedEntityData.defineId(ZombifiedPigman.class, EntityDataSerializers.OPTIONAL_UUID);
 	private boolean orderedToSit;
 
 	public ZombifiedPigman(EntityType<? extends ZombifiedPigman> zombiePigman, Level level) {
 		super(zombiePigman, level);
 		this.reassessTameGoals();
+	}
+
+	@Override
+	public boolean fireImmune() {
+		return true;
 	}
 
 	@Override
@@ -158,7 +163,7 @@ public class ZombifiedPigman extends ZombifiedPiglin implements OwnableEntity {
 		this.setTame(true);
 		this.setOwnerUUID(player.getUUID());
 		if (player instanceof ServerPlayer) {
-//			CriteriaTriggers.TAME_ANIMAL.trigger((ServerPlayer) player, this);
+			FossilsLegacyCriteriaTriggers.TAME_ZOMBIFIED_PIGMAN_TRIGGER.trigger((ServerPlayer) player, this);
 		}
 	}
 
