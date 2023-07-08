@@ -68,6 +68,8 @@ public class ModServerEvents {
 	@SubscribeEvent
 	public static void creativeModTabModification(BuildCreativeModeTabContentsEvent event) {
 		if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
+			event.accept(FossilsLegacyItems.DROWNED_PIRATE_SPAWN_EGG.get());
+			event.accept(FossilsLegacyItems.ZOMBIFIED_PIGMAN_SPAWN_EGG.get());
 			event.accept(FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get());
 			event.accept(FossilsLegacyItems.SMILODON_SPAWN_EGG.get());
 			event.accept(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get());

@@ -69,7 +69,6 @@ public class FossilsLegacyCreativeModeTabs {
 		output.accept(FossilsLegacyItems.COOKED_CHICKEN_SOUP_BUCKET.get());
 		output.accept(FossilsLegacyItems.CHICKEN_ESSENCE_BOTTLE.get());
 		output.accept(FossilsLegacyItems.NAUTILUS_SHELL.get());
-		output.accept(FossilsLegacyItems.SIO_CHIU_LE.get());
 		for (int i = 0; i < 3; i++) {
 			ItemStack magicConch = new ItemStack(FossilsLegacyItems.MAGIC_CONCH.get());
 			CompoundTag compoundTag = magicConch.getOrCreateTag();
