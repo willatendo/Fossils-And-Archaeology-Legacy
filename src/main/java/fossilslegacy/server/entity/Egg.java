@@ -77,9 +77,9 @@ public class Egg extends Animal implements TicksToBirth, DinosaurEncyclopediaInf
 	public void tick() {
 		super.tick();
 
-		this.setWarm(this.level().getBrightness(LightLayer.BLOCK, new BlockPos(this.getBlockX(), this.getBlockY(), this.getBlockZ())) > 10.0F || this.level().getBrightness(LightLayer.SKY, new BlockPos(this.getBlockX(), this.getBlockY(), this.getBlockZ())) > 10.0F);
+		this.setWarm(this.level().getBrightness(LightLayer.BLOCK, new BlockPos(this.getBlockX(), this.getBlockY(), this.getBlockZ())) > 10.0F || this.level().isDay());
 
-		if (this.getRemainingTime() > 6500) {
+		if (this.getRemainingTime() < -500) {
 			this.discard();
 			Player player = this.level().getNearestPlayer(this, 25.0D);
 			if (player != null) {
@@ -88,7 +88,7 @@ public class Egg extends Animal implements TicksToBirth, DinosaurEncyclopediaInf
 		}
 
 		if (!this.isWarm()) {
-			this.setRemainingTime(this.getRemainingTime() + 1);
+			this.setRemainingTime(this.getRemainingTime() - 1);
 		}
 
 		if (this.isWarm()) {
@@ -99,7 +99,7 @@ public class Egg extends Animal implements TicksToBirth, DinosaurEncyclopediaInf
 	@Override
 	protected void defineSynchedData() {
 		super.defineSynchedData();
-		this.entityData.define(REMAINING_TIME, 6000);
+		this.entityData.define(REMAINING_TIME, 0);
 		this.entityData.define(EGG, 0);
 		this.entityData.define(WARM, false);
 	}
@@ -153,7 +153,7 @@ public class Egg extends Animal implements TicksToBirth, DinosaurEncyclopediaInf
 
 	@Override
 	public List<Component> info() {
-		return List.of(FossilsLegacyUtils.translation("encyclopedia", "egg", FossilsLegacyUtils.translation("encyclopedia", this.getEgg().toString().toLowerCase()).getString()), FossilsLegacyUtils.translation("encyclopedia", "remaining_time", 6000 - this.getRemainingTime()), FossilsLegacyUtils.translation("encyclopedia", "temperature", FossilsLegacyUtils.translation("encyclopedia", "warm." + this.isWarm()).getString()));
+		return List.of(FossilsLegacyUtils.translation("encyclopedia", "egg", FossilsLegacyUtils.translation("encyclopedia", this.getEgg().toString().toLowerCase()).getString()), FossilsLegacyUtils.translation("encyclopedia", "remaining_time", this.getRemainingTime() * 100 / this.maxTime() + "%"), FossilsLegacyUtils.translation("encyclopedia", "temperature", FossilsLegacyUtils.translation("encyclopedia", "warm." + this.isWarm()).getString()));
 	}
 
 	@Override

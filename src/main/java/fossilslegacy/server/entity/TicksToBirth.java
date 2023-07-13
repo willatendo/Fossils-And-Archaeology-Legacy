@@ -16,9 +16,14 @@ public interface TicksToBirth<T extends Entity> {
 	default void onEntityTicksComplete(Mob mob, Level level) {
 	}
 
+	default int maxTime() {
+		return 3000;
+	}
+
 	default void birthTick(Mob mob, Level level) {
-		if (this.getRemainingTime() <= 0) {
+		if (this.getRemainingTime() >= this.maxTime()) {
 			Entity offspring = this.getOffspring(level);
+			offspring.moveTo(mob.getX(), mob.getY(), mob.getZ(), 0.0F, 0.0F);
 			if (offspring instanceof GrowingEntity growingEntity) {
 				growingEntity.setGrowthStage(0);
 				growingEntity.setRealAge(0);
@@ -29,12 +34,11 @@ public interface TicksToBirth<T extends Entity> {
 					tamesOnBirth.setOwnerUUID(player.getUUID());
 				}
 			}
-			offspring.moveTo(mob.getX(), mob.getY(), mob.getZ(), 0.0F, 0.0F);
 			level.addFreshEntity(offspring);
 			this.onEntityTicksComplete(mob, level);
 			mob.remove(RemovalReason.DISCARDED);
 		} else {
-			this.setRemainingTime(this.getRemainingTime() - 1);
+			this.setRemainingTime(this.getRemainingTime() + 1);
 		}
 	}
 }
