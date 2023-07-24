@@ -1,15 +1,15 @@
 {
   "type": "minecraft:smithing_transform",
   "addition": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
+    "item": "fossilslegacy:gem_artifact"
   },
   "base": {
-    "item": "fossilslegacy:gem_artifact"
+    "item": "minecraft:netherite_sword"
   },
   "result": {
     "item": "fossilslegacy:gem_sword"
   },
   "template": {
-    "item": "minecraft:netherite_sword"
+    "item": "fossilslegacy:gem_upgrade_smithing_template"
   }
 }

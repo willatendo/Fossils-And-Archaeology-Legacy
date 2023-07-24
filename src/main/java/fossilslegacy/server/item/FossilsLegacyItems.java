@@ -16,11 +16,11 @@ import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class FossilsLegacyItems {
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, FossilsLegacyUtils.ID);
@@ -80,7 +80,7 @@ public class FossilsLegacyItems {
 	public static final RegistryObject<Item> NAUTILUS_SHELL = ITEMS.register("nautilus_shell", () -> new Item(new Item.Properties().stacksTo(1)));
 	public static final RegistryObject<Item> MAGIC_CONCH = ITEMS.register("magic_conch", () -> new MagicConchItem(new Item.Properties().stacksTo(1)));
 	public static final RegistryObject<Item> FROZEN_MEAT = ITEMS.register("frozen_meat", () -> new FrozenMeatItem(new Item.Properties()));
-	public static final RegistryObject<Item> BROKEN_FROZEN_MEAT = ITEMS.register("broken_frozen_meat", () -> new SwordItem(FossilsLegacyTiers.ICED_MEAT, 3, -2.4F, new Item.Properties()));
+	public static final RegistryObject<Item> BROKEN_FROZEN_MEAT = ITEMS.register("broken_frozen_meat", () -> new BrokenFrozenMeatItem(FossilsLegacyTiers.ICED_MEAT, 3, -2.4F, new Item.Properties()));
 	public static final RegistryObject<Item> AXOLOTL_DNA = ITEMS.register("axolotl_dna", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> CAT_DNA = ITEMS.register("cat_dna", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> CHICKEN_DNA = ITEMS.register("chicken_dna", () -> new Item(new Item.Properties()));
@@ -139,6 +139,7 @@ public class FossilsLegacyItems {
 	public static final RegistryObject<Item> GEM_PICKAXE = ITEMS.register("gem_pickaxe", () -> new PickaxeItem(FossilsLegacyTiers.GEM, 1, -2.8F, new Item.Properties()));
 	public static final RegistryObject<Item> GEM_AXE = ITEMS.register("gem_axe", () -> new AxeItem(FossilsLegacyTiers.GEM, 5.0F, -3.0F, new Item.Properties()));
 	public static final RegistryObject<Item> GEM_HOE = ITEMS.register("gem_hoe", () -> new HoeItem(FossilsLegacyTiers.GEM, -4, 0.0F, new Item.Properties()));
+	public static final RegistryObject<Item> GEM_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("gem_upgrade_smithing_template", () -> ModSmithingTemplateItem.createGemUpgradeTemplate());
 	public static final RegistryObject<Item> WOODEN_JAVELIN = ITEMS.register("wooden_javelin", () -> new JavelinItem(Tiers.WOOD, new Item.Properties().stacksTo(16)));
 	public static final RegistryObject<Item> BROKEN_WOODEN_JAVELIN = ITEMS.register("broken_wooden_javelin", () -> new BrokenJavelinItem(Tiers.WOOD, new Item.Properties()));
 	public static final RegistryObject<Item> STONE_JAVELIN = ITEMS.register("stone_javelin", () -> new JavelinItem(Tiers.STONE, new Item.Properties().stacksTo(16)));
@@ -162,8 +163,6 @@ public class FossilsLegacyItems {
 	public static final RegistryObject<Item> TRICERATOPS_SPAWN_EGG = ITEMS.register("triceratops_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.TRICERATOPS.get(), 0xc2ff51, 0x638a25, new Item.Properties()));
 
 	static {
-		for (RegistryObject<Block> blocks : FossilsLegacyBlocks.BLOCKS.getEntries()) {
-			ITEMS.register(blocks.getId().getPath(), () -> new ModBlockItem(blocks, new Item.Properties()));
-		}
+		SimpleUtils.registerAllItems(ITEMS, FossilsLegacyBlocks.BLOCKS);
 	}
 }

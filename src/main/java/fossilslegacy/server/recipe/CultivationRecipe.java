@@ -2,6 +2,7 @@ package fossilslegacy.server.recipe;
 
 import fossilslegacy.server.block.FossilsLegacyBlocks;
 import fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSerialisers;
+import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
@@ -33,6 +34,13 @@ public class CultivationRecipe implements Recipe<Container> {
 	@Override
 	public ItemStack assemble(Container container, RegistryAccess registryAccess) {
 		return this.result.copy();
+	}
+
+	@Override
+	public NonNullList<Ingredient> getIngredients() {
+		NonNullList<Ingredient> nonnulllist = NonNullList.create();
+		nonnulllist.add(this.ingredient);
+		return nonnulllist;
 	}
 
 	@Override

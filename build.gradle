@@ -52,12 +52,17 @@ dependencies {
 	compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
 	compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
 	runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
+
+	implementation fg.deobf("com.github.willatendo:Simple-Library:${simple_library_version}")
 }
 
 repositories {
 	maven {
 		name = "Jared's maven"
 		url = "https://maven.blamejared.com/"
+	}
+	maven {
+		url "https://jitpack.io" 
 	}
 }
 

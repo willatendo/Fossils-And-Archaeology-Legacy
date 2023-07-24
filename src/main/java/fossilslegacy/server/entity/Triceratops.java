@@ -87,7 +87,7 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 
 	@Override
 	public void die(DamageSource damageSource) {
-		net.minecraft.network.chat.Component deathMessage = this.getCombatTracker().getDeathMessage();
+		Component deathMessage = this.getCombatTracker().getDeathMessage();
 		super.die(damageSource);
 
 		if (this.dead) {
@@ -389,7 +389,7 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 
 	@Override
 	public void setGrowthStage(int growthStage) {
-		this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(8.0D * growthStage);
+		this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(8.0D * (growthStage + 1));
 		this.entityData.set(GROWTH_STAGE, growthStage);
 	}
 

@@ -19,6 +19,7 @@ import net.minecraft.advancements.critereon.ItemUsedOnLocationTrigger;
 import net.minecraft.advancements.critereon.KilledTrigger;
 import net.minecraft.advancements.critereon.LocationPredicate;
 import net.minecraft.advancements.critereon.PlayerTrigger;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -26,8 +27,8 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.ForgeAdvancementProvider;
 
 public class FossilsLegacyAdvancementProvider extends ForgeAdvancementProvider {
-	public FossilsLegacyAdvancementProvider(PackOutput output, CompletableFuture<Provider> provider, ExistingFileHelper existingFileHelper) {
-		super(output, provider, existingFileHelper, List.of(new FossilLegacyAdvancements()));
+	public FossilsLegacyAdvancementProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> provider, String id, ExistingFileHelper existingFileHelper) {
+		super(packOutput, provider, existingFileHelper, List.of(new FossilLegacyAdvancements()));
 	}
 
 	public static class FossilLegacyAdvancements implements AdvancementGenerator {

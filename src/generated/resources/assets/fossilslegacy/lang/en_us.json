@@ -214,6 +214,10 @@
   "item.fossilslegacy.smilodon_dna": "Smilodon DNA",
   "item.fossilslegacy.smilodon_embryo_syringe": "Smilodon Embryo Syringe",
   "item.fossilslegacy.smilodon_spawn_egg": "Smilodon Spawn Egg",
+  "item.fossilslegacy.smithing_template.gem_upgrade.additions_slot_description": "Add gem artifact",
+  "item.fossilslegacy.smithing_template.gem_upgrade.applies_to": "Netherite Equipment",
+  "item.fossilslegacy.smithing_template.gem_upgrade.base_slot_description": "Add netherite weapon or tool",
+  "item.fossilslegacy.smithing_template.gem_upgrade.ingredients": "Gem Artifact",
   "item.fossilslegacy.stegosaurus_dna": "Stegosaurus DNA",
   "item.fossilslegacy.stegosaurus_egg": "Stegosaurus Egg",
   "item.fossilslegacy.stone_hieroglyph": "Stone Hieroglyph",
@@ -234,6 +238,9 @@
   "item.fossilslegacy.wooden_javelin": "Wooden Javelin",
   "item.fossilslegacy.zombified_pigman_spawn_egg": "Zombified Pigman Spawn Egg",
   "itemGroup.fossilslegacy.fossilslegacy": "F/A: Legacy",
+  "jei.fossilslegacy.analyzation": "Analyzation",
+  "jei.fossilslegacy.archaeology": "Archaeology",
+  "jei.fossilslegacy.cultivation": "Cultivation",
   "menu.fossilslegacy.analyzer": "Analyzer",
   "menu.fossilslegacy.archaeology_workbench": "Archaeology Workbench",
   "menu.fossilslegacy.cultivator": "Cultivator",
@@ -294,5 +301,6 @@
   "stone_hieroglyph.fossilslegacy.tyrannosaurus_transport.author": "Team July",
   "stone_hieroglyph.fossilslegacy.tyrannosaurus_transport.title": "Tyrannosaurus Transport",
   "stone_hieroglyph.fossilslegacy.zombie_and_spider.author": "Team July",
-  "stone_hieroglyph.fossilslegacy.zombie_and_spider.title": "Zombie and Spider"
+  "stone_hieroglyph.fossilslegacy.zombie_and_spider.title": "Zombie and Spider",
+  "upgrade.fossilslegacy.gem_upgrade": "Gem Upgrade"
 }

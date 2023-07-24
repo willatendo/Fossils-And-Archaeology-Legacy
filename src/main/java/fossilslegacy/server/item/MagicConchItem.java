@@ -7,13 +7,16 @@ import fossilslegacy.server.utils.FossilsLegacyUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters;
+import net.minecraft.world.item.CreativeModeTab.Output;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistries;
+import willatendo.simplelibrary.server.util.FillCreativeTab;
 
-public class MagicConchItem extends Item {
+public class MagicConchItem extends Item implements FillCreativeTab {
 	public MagicConchItem(Properties properties) {
 		super(properties);
 	}
@@ -27,6 +30,16 @@ public class MagicConchItem extends Item {
 	public static DinosaurOrder getOrder(ItemStack itemStack) {
 		CompoundTag compoundTag = itemStack.getOrCreateTag();
 		return DinosaurOrder.getOrderFromInteger(compoundTag.getInt("Order"));
+	}
+
+	@Override
+	public void fillCreativeTab(ItemDisplayParameters itemDisplayParameters, Output output) {
+		for (int i = 0; i < 3; i++) {
+			ItemStack magicConch = new ItemStack(FossilsLegacyItems.MAGIC_CONCH.get());
+			CompoundTag compoundTag = magicConch.getOrCreateTag();
+			compoundTag.putInt("Order", i);
+			output.accept(magicConch);
+		}
 	}
 
 //	@Override

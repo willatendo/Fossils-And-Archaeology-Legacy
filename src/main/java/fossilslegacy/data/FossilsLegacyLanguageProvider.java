@@ -1,12 +1,13 @@
 package fossilslegacy.data;
 
+import fossilslegacy.server.FossilsLegacyCreativeModeTabs;
 import fossilslegacy.server.block.FossilsLegacyBlocks;
 import fossilslegacy.server.entity.FossilsLegacyEntities;
 import fossilslegacy.server.item.FossilsLegacyItems;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.LanguageProvider;
+import willatendo.simplelibrary.data.SimpleLanguageProvider;
 
-public class FossilsLegacyLanguageProvider extends LanguageProvider {
+public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 	public FossilsLegacyLanguageProvider(PackOutput packedOutput, String modId, String local) {
 		super(packedOutput, modId, local);
 	}
@@ -247,7 +248,10 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
 		this.add(FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get(), "Mammoth Spawn Egg");
 		this.add(FossilsLegacyItems.SMILODON_SPAWN_EGG.get(), "Smilodon Spawn Egg");
 		this.add(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get(), "Triceratops Spawn Egg");
-		this.add("itemGroup.fossilslegacy.fossilslegacy", "F/A: Legacy");
+		this.add(FossilsLegacyCreativeModeTabs.FOSSILS_LEGACY.get(), "F/A: Legacy");
+		this.add("jei.fossilslegacy.archaeology", "Archaeology");
+		this.add("jei.fossilslegacy.analyzation", "Analyzation");
+		this.add("jei.fossilslegacy.cultivaton", "Cultivaton");
 		this.add("menu.fossilslegacy.analyzer", "Analyzer");
 		this.add("menu.fossilslegacy.archaeology_workbench", "Archaeology Workbench");
 		this.add("menu.fossilslegacy.cultivator", "Cultivator");
@@ -309,5 +313,10 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
 		this.add("stone_hieroglyph.fossilslegacy.future.title", "Future");
 		this.add("stone_hieroglyph.fossilslegacy.future.author", "Team July");
 		this.add("stone_hieroglyph.fossilslegacy.random", "Random variant");
+		this.add("upgrade.fossilslegacy.gem_upgrade", "Gem Upgrade");
+		this.add("item.fossilslegacy.smithing_template.gem_upgrade.applies_to", "Netherite Equipment");
+		this.add("item.fossilslegacy.smithing_template.gem_upgrade.ingredients", "Gem Artifact");
+		this.add("item.fossilslegacy.smithing_template.gem_upgrade.base_slot_description", "Add netherite weapon or tool");
+		this.add("item.fossilslegacy.smithing_template.gem_upgrade.additions_slot_description", "Add gem artifact");
 	}
 }

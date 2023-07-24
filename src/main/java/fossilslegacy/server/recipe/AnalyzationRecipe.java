@@ -16,14 +16,14 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
-public class AnalyzerRecipe implements Recipe<Container> {
+public class AnalyzationRecipe implements Recipe<Container> {
 	public final ResourceLocation id;
 	public final Ingredient ingredient;
 	public final List<ItemStack> results;
 	public final List<Integer> weights;
 	public final int time;
 
-	public AnalyzerRecipe(ResourceLocation id, Ingredient ingredient, List<ItemStack> results, List<Integer> weights, int time) {
+	public AnalyzationRecipe(ResourceLocation id, Ingredient ingredient, List<ItemStack> results, List<Integer> weights, int time) {
 		this.id = id;
 		this.ingredient = ingredient;
 		this.results = results;
@@ -73,11 +73,11 @@ public class AnalyzerRecipe implements Recipe<Container> {
 
 	@Override
 	public RecipeSerializer<?> getSerializer() {
-		return FossilsLegacyRecipeSerialisers.ANALYZER.get();
+		return FossilsLegacyRecipeSerialisers.ANALYZATION.get();
 	}
 
 	@Override
 	public RecipeType<?> getType() {
-		return FossilsLegacyRecipeTypes.ANALYZER.get();
+		return FossilsLegacyRecipeTypes.ANALYZATION.get();
 	}
 }

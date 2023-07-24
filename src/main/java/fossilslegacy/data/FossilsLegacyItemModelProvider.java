@@ -1,22 +1,17 @@
 package fossilslegacy.data;
 
-import java.util.Objects;
-
 import fossilslegacy.server.block.FossilsLegacyBlocks;
 import fossilslegacy.server.item.FossilsLegacyItems;
 import fossilslegacy.server.utils.FossilsLegacyUtils;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import willatendo.simplelibrary.data.SimpleItemModelProvider;
 
-public class FossilsLegacyItemModelProvider extends ItemModelProvider {
+public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
 	public FossilsLegacyItemModelProvider(PackOutput packedOutput, String modId, ExistingFileHelper existingFileHelper) {
 		super(packedOutput, modId, existingFileHelper);
 	}
@@ -137,6 +132,7 @@ public class FossilsLegacyItemModelProvider extends ItemModelProvider {
 		this.handheldItem(FossilsLegacyItems.GEM_PICKAXE.get());
 		this.handheldItem(FossilsLegacyItems.GEM_AXE.get());
 		this.handheldItem(FossilsLegacyItems.GEM_HOE.get());
+		this.basicItem(FossilsLegacyItems.GEM_UPGRADE_SMITHING_TEMPLATE.get());
 		this.basicItem(FossilsLegacyItems.WOODEN_JAVELIN.get());
 		this.basicItem(FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get(), this.modLoc("item/wooden_javelin"));
 		this.basicItem(FossilsLegacyItems.STONE_JAVELIN.get());
@@ -166,33 +162,5 @@ public class FossilsLegacyItemModelProvider extends ItemModelProvider {
 				this.getBuilder(blockId.toString()).parent(new ModelFile.UncheckedModelFile(FossilsLegacyUtils.resource("block/" + blockId.getPath() + (blockId.getPath().contains("drum") ? "_follow" : blockId.getPath().contains("feeder") ? "_empty" : ""))));
 			}
 		}
-	}
-
-	public ItemModelBuilder handheldItem(Item item) {
-		return this.handheldItem(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)), new ResourceLocation(ForgeRegistries.ITEMS.getKey(item).getNamespace(), "item/" + ForgeRegistries.ITEMS.getKey(item).getPath()));
-	}
-
-	public ItemModelBuilder handheldItem(Item item, ResourceLocation texture) {
-		return this.handheldItem(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)), texture);
-	}
-
-	public ItemModelBuilder basicItem(Item item, ResourceLocation texture) {
-		return this.basicItem(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)), texture);
-	}
-
-	public ItemModelBuilder basicItem(ResourceLocation item, ResourceLocation texture) {
-		return this.getBuilder(item.toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", texture);
-	}
-
-	public ItemModelBuilder handheldItem(ResourceLocation item, ResourceLocation texture) {
-		return this.getBuilder(item.toString()).parent(new ModelFile.UncheckedModelFile("item/handheld")).texture("layer0", texture);
-	}
-
-	public ItemModelBuilder spawnEggItem(Item item) {
-		return this.spawnEggItem(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)));
-	}
-
-	public ItemModelBuilder spawnEggItem(ResourceLocation item) {
-		return this.getBuilder(item.toString()).parent(new ModelFile.UncheckedModelFile("item/template_spawn_egg"));
 	}
 }

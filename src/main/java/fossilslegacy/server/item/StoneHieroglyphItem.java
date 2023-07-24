@@ -16,14 +16,17 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.HangingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters;
+import net.minecraft.world.item.CreativeModeTab.Output;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
+import willatendo.simplelibrary.server.util.FillCreativeTab;
 
-public class StoneHieroglyphItem extends Item {
+public class StoneHieroglyphItem extends Item implements FillCreativeTab {
 	private static final Component TOOLTIP_RANDOM_VARIANT = FossilsLegacyUtils.translation("stone_hieroglyph", "random").withStyle(ChatFormatting.GRAY);
 
 	public StoneHieroglyphItem(Properties properties) {
@@ -91,6 +94,16 @@ public class StoneHieroglyphItem extends Item {
 			});
 		} else if (toolTipFlag.isCreative()) {
 			toolTips.add(TOOLTIP_RANDOM_VARIANT);
+		}
+	}
+
+	@Override
+	public void fillCreativeTab(ItemDisplayParameters itemDisplayParameters, Output output) {
+		for (int i = 0; i < StoneHieroglyphTypes.values().length; i++) {
+			ItemStack itemStack = new ItemStack(FossilsLegacyItems.STONE_HIEROGLYPH.get());
+			CompoundTag compoundTag = itemStack.getOrCreateTagElement("EntityTag");
+			compoundTag.putInt("Type", i);
+			output.accept(itemStack);
 		}
 	}
 }

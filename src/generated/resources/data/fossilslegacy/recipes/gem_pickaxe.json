@@ -1,15 +1,15 @@
 {
   "type": "minecraft:smithing_transform",
   "addition": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
+    "item": "fossilslegacy:gem_artifact"
   },
   "base": {
-    "item": "fossilslegacy:gem_artifact"
+    "item": "minecraft:netherite_pickaxe"
   },
   "result": {
     "item": "fossilslegacy:gem_pickaxe"
   },
   "template": {
-    "item": "minecraft:netherite_pickaxe"
+    "item": "fossilslegacy:gem_upgrade_smithing_template"
   }
 }

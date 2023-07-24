@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-05T23:18:17.5853558	Item Models: fossilslegacy
+// 1.20.1	2023-07-23T18:44:01.5381101	fossilslegacy: Item Models
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 41c5f6a309438824458da52752171cd09485a937 assets/fossilslegacy/models/item/ancient_helmet.json
 2701cd233168837331e67cbf0146831ca43eec8a assets/fossilslegacy/models/item/ancient_sword.json
@@ -59,6 +59,7 @@ d23c18293c082dd4db525a8084d69f41e5248537 assets/fossilslegacy/models/item/gem_ho
 8535715aaf422b242073936149d5453b2bf5ee28 assets/fossilslegacy/models/item/gem_pickaxe.json
 563d436a7bae7d11272355465bfc1b71637a5281 assets/fossilslegacy/models/item/gem_shovel.json
 0e631dcda0aceee8b1ad9424320b8ffd7f35e9ed assets/fossilslegacy/models/item/gem_sword.json
+866e1b7d3c31ef39b28bc071f6708bf2c967ad0c assets/fossilslegacy/models/item/gem_upgrade_smithing_template.json
 183ffcebb2660a190c71d1f2f0a0754780edf896 assets/fossilslegacy/models/item/goat_dna.json
 7757047c1ecf5f196486783d9db94006327bf913 assets/fossilslegacy/models/item/goat_embryo_syringe.json
 5c318e06889c840c5c13aa939428442050cef61c assets/fossilslegacy/models/item/golden_javelin.json

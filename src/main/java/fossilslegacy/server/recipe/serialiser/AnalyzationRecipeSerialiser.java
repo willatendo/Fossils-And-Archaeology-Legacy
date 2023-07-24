@@ -7,7 +7,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import fossilslegacy.server.recipe.AnalyzerRecipe;
+import fossilslegacy.server.recipe.AnalyzationRecipe;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -17,9 +17,9 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class AnalyzerRecipeSerialiser implements RecipeSerializer<AnalyzerRecipe> {
+public class AnalyzationRecipeSerialiser implements RecipeSerializer<AnalyzationRecipe> {
 	@Override
-	public AnalyzerRecipe fromJson(ResourceLocation id, JsonObject jsonObject) {
+	public AnalyzationRecipe fromJson(ResourceLocation id, JsonObject jsonObject) {
 		JsonElement jsonelement = (JsonElement) (GsonHelper.isArrayNode(jsonObject, "ingredient") ? GsonHelper.getAsJsonArray(jsonObject, "ingredient") : GsonHelper.getAsJsonObject(jsonObject, "ingredient"));
 		Ingredient ingredient = Ingredient.fromJson(jsonelement);
 		List<ItemStack> results = new ArrayList<>();
@@ -40,11 +40,11 @@ public class AnalyzerRecipeSerialiser implements RecipeSerializer<AnalyzerRecipe
 		}
 
 		int time = GsonHelper.getAsInt(jsonObject, "time", 100);
-		return new AnalyzerRecipe(id, ingredient, results, weights, time);
+		return new AnalyzationRecipe(id, ingredient, results, weights, time);
 	}
 
 	@Override
-	public AnalyzerRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf friendlyByteBuf) {
+	public AnalyzationRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf friendlyByteBuf) {
 		Ingredient ingredient = Ingredient.fromNetwork(friendlyByteBuf);
 		List<ItemStack> results = new ArrayList<>();
 		List<Integer> weights = new ArrayList<>();
@@ -53,11 +53,11 @@ public class AnalyzerRecipeSerialiser implements RecipeSerializer<AnalyzerRecipe
 			weights.add(friendlyByteBuf.readVarInt());
 		}
 		int time = friendlyByteBuf.readVarInt();
-		return new AnalyzerRecipe(id, ingredient, results, weights, time);
+		return new AnalyzationRecipe(id, ingredient, results, weights, time);
 	}
 
 	@Override
-	public void toNetwork(FriendlyByteBuf friendlyByteBuf, AnalyzerRecipe archaeologyRecipe) {
+	public void toNetwork(FriendlyByteBuf friendlyByteBuf, AnalyzationRecipe archaeologyRecipe) {
 		archaeologyRecipe.ingredient.toNetwork(friendlyByteBuf);
 		friendlyByteBuf.writeVarInt(archaeologyRecipe.results.size());
 		for (ItemStack itemStack : archaeologyRecipe.results) {

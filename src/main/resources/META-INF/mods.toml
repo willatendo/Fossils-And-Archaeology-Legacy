@@ -29,3 +29,11 @@ An Aether Legacy-style mod for the Fossils and Archaeology mod. This is based on
     versionRange="[1.20.1,1.21)"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.fossilslegacy]]
+    modId="simplelibrary"
+    mandatory=true
+    versionRange="[0.2.0,0.3.0)"
+    ordering="NONE"
+    side="BOTH"
+    
