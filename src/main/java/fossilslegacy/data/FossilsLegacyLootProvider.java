@@ -17,6 +17,5 @@ public class FossilsLegacyLootProvider extends LootTableProvider {
 
 	@Override
 	protected void validate(Map<ResourceLocation, LootTable> map, ValidationContext validationContext) {
-//		map.forEach((id, lootTable) -> LootTables.validate(validationContext, id, lootTable));
 	}
 }

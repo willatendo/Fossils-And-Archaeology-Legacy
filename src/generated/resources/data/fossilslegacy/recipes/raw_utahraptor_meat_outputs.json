@@ -1,0 +1,13 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "fossilslegacy:raw_utahraptor_meat"
+  },
+  "results": [
+    {
+      "result": "fossilslegacy:utahraptor_dna",
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

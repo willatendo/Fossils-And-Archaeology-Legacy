@@ -1,0 +1,13 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "fossilslegacy:raw_brachiosaurus_meat"
+  },
+  "results": [
+    {
+      "result": "fossilslegacy:brachiosaurus_dna",
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

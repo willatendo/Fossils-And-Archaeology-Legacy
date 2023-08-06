@@ -2,14 +2,16 @@ plugins {
 	id 'eclipse'
 	id 'idea'
 	id 'maven-publish'
-	id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+	id 'net.neoforged.gradle' version '[6.0.18,6.2)'
 }
 
-version = modversion
-group = modid
+version = "1.0.0"
+group = mod_id
+
+jarJar.enable()
 
 base {
-	archivesName = modid
+	archivesName = mod_id
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -22,7 +24,7 @@ minecraft {
 			workingDirectory project.file('run')
 			
 			mods {
-				"${modid}" {
+				"${mod_id}" {
 					source sourceSets.main
 				}
 			}
@@ -37,7 +39,7 @@ minecraft {
 		data {
 			workingDirectory project.file('run')
 
-			args '--mod', modid, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+			args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 		}
 	}
 }
@@ -47,31 +49,35 @@ sourceSets.main.resources {
 }
 
 dependencies {
-	minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+	minecraft "net.neoforged:forge:${minecraft_version}-${forge_version}"
 
 	compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
 	compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
 	runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
 
 	implementation fg.deobf("com.github.willatendo:Simple-Library:${simple_library_version}")
+	jarJar(group: 'com.github.willatendo', name: 'Simple-Library', version: "[v1.0.0,v2.0.0)")
 }
 
 repositories {
-	maven {
-		name = "Jared's maven"
-		url = "https://maven.blamejared.com/"
-	}
+	maven { url = "https://maven.blamejared.com/" }
 	maven {
 		url "https://jitpack.io" 
 	}
 }
+
+reobf {
+	jarJar { }
+}
+
+tasks.jarJar.finalizedBy('reobfJarJar')
 
 jar {
 	manifest {
 		attributes([
 				"Specification-Title" : "Fossils Legacy",
 				"Specification-Vendor" : "Willatendo",
-				"Specification-Version" : "0.0.1a",
+				"Specification-Version" : "1",
 				"Implementation-Title" : project.name,
 				"Implementation-Version" : project.jar.archiveVersion,
 				"Implementation-Vendor" : "Willatendo",

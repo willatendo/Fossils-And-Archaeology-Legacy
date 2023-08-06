@@ -1,0 +1,21 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "fossilslegacy:frozen_meat"
+  },
+  "results": [
+    {
+      "result": "minecraft:beef",
+      "weight": 34
+    },
+    {
+      "result": "fossilslegacy:mammoth_dna",
+      "weight": 33
+    },
+    {
+      "result": "fossilslegacy:smilodon_dna",
+      "weight": 33
+    }
+  ],
+  "time": 100
+}

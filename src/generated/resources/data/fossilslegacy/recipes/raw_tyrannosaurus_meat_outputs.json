@@ -1,0 +1,13 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "fossilslegacy:raw_tyrannosaurus_meat"
+  },
+  "results": [
+    {
+      "result": "fossilslegacy:tyrannosaurus_dna",
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

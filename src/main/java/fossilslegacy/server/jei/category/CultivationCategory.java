@@ -82,12 +82,11 @@ public class CultivationCategory implements IRecipeCategory<CultivationRecipe> {
 	@Override
 	public void setRecipe(IRecipeLayoutBuilder iRecipeLayoutBuilder, CultivationRecipe cultivationRecipe, IFocusGroup iFocusGroup) {
 		iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 5, 5).addIngredients(cultivationRecipe.getIngredients().get(0));
-
 		List<ItemStack> fuels = Lists.newArrayList();
 		for (Item item : CultivatorBlockEntity.getOnTimeMap().keySet()) {
 			fuels.add(item.getDefaultInstance());
 		}
-		iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 36, 39).addItemStacks(fuels);
+		iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.RENDER_ONLY, 36, 39).addItemStacks(fuels);
 		iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT, 67, 5).addItemStack(RecipeUtil.getResultItem(cultivationRecipe));
 	}
 

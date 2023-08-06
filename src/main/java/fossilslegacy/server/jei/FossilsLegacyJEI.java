@@ -3,11 +3,13 @@ package fossilslegacy.server.jei;
 import fossilslegacy.client.screen.ArchaeologyWorkbenchScreen;
 import fossilslegacy.client.screen.CultivatorScreen;
 import fossilslegacy.server.block.FossilsLegacyBlocks;
+import fossilslegacy.server.jei.category.AnalyzationCategory;
 import fossilslegacy.server.jei.category.ArchaeologyCategory;
 import fossilslegacy.server.jei.category.CultivationCategory;
 import fossilslegacy.server.menu.ArchaeologyWorkbenchMenu;
 import fossilslegacy.server.menu.CultivatorMenu;
 import fossilslegacy.server.menu.FossilsLegacyMenus;
+import fossilslegacy.server.recipe.AnalyzationRecipe;
 import fossilslegacy.server.recipe.ArchaeologyRecipe;
 import fossilslegacy.server.recipe.CultivationRecipe;
 import fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -28,10 +30,12 @@ import net.minecraft.world.item.ItemStack;
 public class FossilsLegacyJEI implements IModPlugin {
 	public static final RecipeType<ArchaeologyRecipe> ARCHAEOLOGY = RecipeType.create(FossilsLegacyUtils.ID, "archaeology_category", ArchaeologyRecipe.class);
 	public static final RecipeType<CultivationRecipe> CULTIVATION = RecipeType.create(FossilsLegacyUtils.ID, "cultivation_category", CultivationRecipe.class);
+	public static final RecipeType<AnalyzationRecipe> ANALYZATION = RecipeType.create(FossilsLegacyUtils.ID, "analyzation_category", AnalyzationRecipe.class);
 	public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/gui/fossils_legacy_jei.png");
 
 	private ArchaeologyCategory archaeologyCategory;
 	private CultivationCategory cultivationCategory;
+	private AnalyzationCategory analyzationCategory;
 
 	@Override
 	public ResourceLocation getPluginUid() {
@@ -41,7 +45,7 @@ public class FossilsLegacyJEI implements IModPlugin {
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration iRecipeCategoryRegistration) {
 		IGuiHelper iGuiHelper = iRecipeCategoryRegistration.getJeiHelpers().getGuiHelper();
-		iRecipeCategoryRegistration.addRecipeCategories(this.archaeologyCategory = new ArchaeologyCategory(iGuiHelper), this.cultivationCategory = new CultivationCategory(iGuiHelper));
+		iRecipeCategoryRegistration.addRecipeCategories(this.archaeologyCategory = new ArchaeologyCategory(iGuiHelper), this.cultivationCategory = new CultivationCategory(iGuiHelper), this.analyzationCategory = new AnalyzationCategory(iGuiHelper));
 	}
 
 	@Override
@@ -52,12 +56,14 @@ public class FossilsLegacyJEI implements IModPlugin {
 
 		iRecipeRegistration.addRecipes(FossilsLegacyJEI.ARCHAEOLOGY, fossilsLegacyRecipes.getArchaeologyRecipes(this.archaeologyCategory));
 		iRecipeRegistration.addRecipes(FossilsLegacyJEI.CULTIVATION, fossilsLegacyRecipes.getCultivationRecipes(this.cultivationCategory));
+		iRecipeRegistration.addRecipes(FossilsLegacyJEI.ANALYZATION, fossilsLegacyRecipes.getAnalyzationRecipes(this.analyzationCategory));
 	}
 
 	@Override
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration iRecipeCatalystRegistration) {
 		iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get()), FossilsLegacyJEI.ARCHAEOLOGY);
 		iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.CULTIVATOR.get()), FossilsLegacyJEI.CULTIVATION);
+		iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.ANALYZER.get()), FossilsLegacyJEI.ANALYZATION);
 	}
 
 	@Override

@@ -1,0 +1,13 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "fossilslegacy:raw_smilodon_meat"
+  },
+  "results": [
+    {
+      "result": "fossilslegacy:smilodon_dna",
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

@@ -1,9 +1,12 @@
 package fossilslegacy.server.recipe;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import fossilslegacy.server.block.FossilsLegacyBlocks;
 import fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSerialisers;
+import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
@@ -21,6 +24,7 @@ public class AnalyzationRecipe implements Recipe<Container> {
 	public final Ingredient ingredient;
 	public final List<ItemStack> results;
 	public final List<Integer> weights;
+	public final Map<ItemStack, Integer> resultsAndWeight = new HashMap<>();
 	public final int time;
 
 	public AnalyzationRecipe(ResourceLocation id, Ingredient ingredient, List<ItemStack> results, List<Integer> weights, int time) {
@@ -28,6 +32,9 @@ public class AnalyzationRecipe implements Recipe<Container> {
 		this.ingredient = ingredient;
 		this.results = results;
 		this.weights = weights;
+		for (int i = 0; i < results.size(); i++) {
+			this.resultsAndWeight.put(results.get(i), weights.get(i));
+		}
 		this.time = time;
 	}
 
@@ -45,6 +52,21 @@ public class AnalyzationRecipe implements Recipe<Container> {
 			weightedRandomList.add(itemStack, weight);
 		}
 		return weightedRandomList.build().getRandom(RandomSource.create()).get().getData().copy();
+	}
+
+	@Override
+	public NonNullList<Ingredient> getIngredients() {
+		NonNullList<Ingredient> nonnulllist = NonNullList.create();
+		nonnulllist.add(this.ingredient);
+		return nonnulllist;
+	}
+
+	public List<ItemStack> getResults() {
+		return this.results;
+	}
+
+	public int getWeight(ItemStack itemStack) {
+		return this.resultsAndWeight.get(itemStack);
 	}
 
 	@Override

@@ -1,0 +1,13 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "minecraft:porkchop"
+  },
+  "results": [
+    {
+      "result": "fossilslegacy:pig_dna",
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

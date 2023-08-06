@@ -33,7 +33,7 @@ An Aether Legacy-style mod for the Fossils and Archaeology mod. This is based on
 [[dependencies.fossilslegacy]]
     modId="simplelibrary"
     mandatory=true
-    versionRange="[0.2.0,0.3.0)"
+    versionRange="[1.0.0,2.0.0)"
     ordering="NONE"
     side="BOTH"
     

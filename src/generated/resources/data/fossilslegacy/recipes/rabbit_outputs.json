@@ -1,0 +1,13 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "minecraft:rabbit"
+  },
+  "results": [
+    {
+      "result": "fossilslegacy:rabbit_dna",
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

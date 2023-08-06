@@ -1,0 +1,13 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "minecraft:beef"
+  },
+  "results": [
+    {
+      "result": "fossilslegacy:cow_dna",
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

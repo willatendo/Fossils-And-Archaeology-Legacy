@@ -2,6 +2,7 @@ package fossilslegacy.server.jei;
 
 import java.util.List;
 
+import fossilslegacy.server.recipe.AnalyzationRecipe;
 import fossilslegacy.server.recipe.ArchaeologyRecipe;
 import fossilslegacy.server.recipe.CultivationRecipe;
 import fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
@@ -31,5 +32,10 @@ public class FossilsLegacyRecipes {
 	public List<CultivationRecipe> getCultivationRecipes(IRecipeCategory<CultivationRecipe> cultivationCategory) {
 		CategoryRecipeValidator<CultivationRecipe> validator = new CategoryRecipeValidator<>(cultivationCategory, this.iIngredientManager, 1);
 		return recipeManager.getAllRecipesFor(FossilsLegacyRecipeTypes.CULTIVATION.get()).stream().filter(recipe -> validator.isRecipeValid(recipe) && validator.isRecipeHandled(recipe)).toList();
+	}
+
+	public List<AnalyzationRecipe> getAnalyzationRecipes(IRecipeCategory<AnalyzationRecipe> analyzationCategory) {
+		CategoryRecipeValidator<AnalyzationRecipe> validator = new CategoryRecipeValidator<>(analyzationCategory, this.iIngredientManager, 1);
+		return recipeManager.getAllRecipesFor(FossilsLegacyRecipeTypes.ANALYZATION.get()).stream().filter(recipe -> validator.isRecipeValid(recipe) && validator.isRecipeHandled(recipe)).toList();
 	}
 }
