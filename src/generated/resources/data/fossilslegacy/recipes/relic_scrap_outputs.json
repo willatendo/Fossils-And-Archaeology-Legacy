@@ -5,14 +5,6 @@
   },
   "results": [
     {
-      "result": "minecraft:flint",
-      "weight": 20
-    },
-    {
-      "result": "fossilslegacy:helmet_artifact",
-      "weight": 5
-    },
-    {
       "result": "minecraft:gravel",
       "weight": 40
     },
@@ -21,8 +13,16 @@
       "weight": 5
     },
     {
+      "result": "fossilslegacy:helmet_artifact",
+      "weight": 5
+    },
+    {
       "result": "fossilslegacy:stone_hieroglyph",
       "weight": 30
+    },
+    {
+      "result": "minecraft:flint",
+      "weight": 20
     }
   ],
   "time": 100
