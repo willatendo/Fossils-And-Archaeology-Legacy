@@ -105,5 +105,6 @@ public class StoneHieroglyphItem extends Item implements FillCreativeTab {
 			compoundTag.putInt("Type", i);
 			output.accept(itemStack);
 		}
+		output.accept(FossilsLegacyItems.STONE_HIEROGLYPH.get());
 	}
 }

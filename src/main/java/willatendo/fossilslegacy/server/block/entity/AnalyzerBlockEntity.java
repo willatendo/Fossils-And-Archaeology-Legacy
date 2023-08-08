@@ -128,7 +128,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 			--analyzerBlockEntity.onTime;
 		}
 
-		for (int inputSlots = 8; inputSlots > -1; inputSlots--) {
+		for (int inputSlots = 0; inputSlots < 9; inputSlots++) {
 			boolean hasInput = !analyzerBlockEntity.itemStacks.get(inputSlots).isEmpty();
 			if (analyzerBlockEntity.isOn() || hasInput) {
 				Recipe<Container> recipe;
@@ -142,34 +142,33 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 					int maxStackSize = analyzerBlockEntity.getMaxStackSize();
 					ItemStack output = recipe.assemble(analyzerBlockEntity, level.registryAccess());
 					for (int outputSlots = 9; outputSlots < 13; outputSlots++) {
-						if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(outputSlots, inputSlots, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-							analyzerBlockEntity.onTime = 100;
-							if (analyzerBlockEntity.isOn()) {
-								changed = true;
+						if (analyzerBlockEntity.canAnalyze(outputSlots, inputSlots, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+							if (!analyzerBlockEntity.isOn()) {
+								analyzerBlockEntity.onTime = 100;
+								if (analyzerBlockEntity.isOn()) {
+									changed = true;
+								}
 							}
-						}
 
-						if (analyzerBlockEntity.isOn() && analyzerBlockEntity.canAnalyze(outputSlots, inputSlots, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-							++analyzerBlockEntity.analyzationProgress;
-							if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
-								analyzerBlockEntity.analyzationProgress = 0;
-								analyzerBlockEntity.analyzationTotalTime = getTotalCultivationTime(level, analyzerBlockEntity);
-								if (analyzerBlockEntity.canAnalyze(outputSlots, inputSlots, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-									ItemStack input = analyzerBlockEntity.itemStacks.get(inputSlots);
-									ItemStack outputSlot = analyzerBlockEntity.itemStacks.get(outputSlots);
-									if (outputSlot.isEmpty()) {
-										analyzerBlockEntity.itemStacks.set(outputSlots, output.copy());
-									} else if (outputSlot.is(output.getItem())) {
-										outputSlot.grow(output.getCount());
+							if (analyzerBlockEntity.isOn()) {
+								++analyzerBlockEntity.analyzationProgress;
+								if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
+									analyzerBlockEntity.analyzationProgress = 0;
+									analyzerBlockEntity.analyzationTotalTime = getTotalCultivationTime(level, analyzerBlockEntity);
+									if (analyzerBlockEntity.analyze(outputSlots, inputSlots, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
+										analyzerBlockEntity.setRecipeUsed(recipe);
 									}
 
-									input.shrink(1);
+									changed = true;
 								}
-
-								changed = true;
 							}
+							break;
 						} else {
-							analyzerBlockEntity.analyzationProgress = 0;
+							if (outputSlots == 12) {
+								analyzerBlockEntity.analyzationProgress = 0;
+							} else {
+								continue;
+							}
 						}
 					}
 				}
@@ -205,6 +204,23 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 					return outputSlot.getCount() + output.getCount() <= output.getMaxStackSize();
 				}
 			}
+		} else {
+			return false;
+		}
+	}
+
+	private boolean analyze(int slot, int inputSlot, ItemStack output, NonNullList<ItemStack> itemStacks, int maxStackSize) {
+		if (this.canAnalyze(slot, inputSlot, output, itemStacks, maxStackSize)) {
+			ItemStack input = itemStacks.get(inputSlot);
+			ItemStack outputSlot = itemStacks.get(slot);
+			if (outputSlot.isEmpty()) {
+				itemStacks.set(slot, output.copy());
+			} else if (outputSlot.is(output.getItem())) {
+				outputSlot.grow(output.getCount());
+			}
+
+			input.shrink(1);
+			return true;
 		} else {
 			return false;
 		}
@@ -273,12 +289,11 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 			itemStack.setCount(this.getMaxStackSize());
 		}
 
-		if (slot == 0 && !flag) {
+		if ((slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7 || slot == 8) && !flag) {
 			this.analyzationTotalTime = 100;
 			this.analyzationProgress = 0;
 			this.setChanged();
 		}
-
 	}
 
 	@Override
@@ -325,18 +340,17 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 		for (ItemStack itemStack : this.itemStacks) {
 			stackedContents.accountStack(itemStack);
 		}
-
 	}
 
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> capability, Direction direction) {
 		if (!this.remove && direction != null && capability == ForgeCapabilities.ITEM_HANDLER) {
 			if (direction == Direction.UP) {
-				return handlers[0].cast();
+				return this.handlers[0].cast();
 			} else if (direction == Direction.DOWN) {
-				return handlers[1].cast();
+				return this.handlers[1].cast();
 			} else {
-				return handlers[2].cast();
+				return this.handlers[2].cast();
 			}
 		}
 		return super.getCapability(capability, direction);
@@ -345,8 +359,9 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 	@Override
 	public void invalidateCaps() {
 		super.invalidateCaps();
-		for (int x = 0; x < handlers.length; x++)
-			handlers[x].invalidate();
+		for (int x = 0; x < this.handlers.length; x++) {
+			this.handlers[x].invalidate();
+		}
 	}
 
 	@Override

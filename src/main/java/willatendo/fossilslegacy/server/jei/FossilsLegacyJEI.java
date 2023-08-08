@@ -19,6 +19,7 @@ import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.jei.category.AnalyzationCategory;
 import willatendo.fossilslegacy.server.jei.category.ArchaeologyCategory;
 import willatendo.fossilslegacy.server.jei.category.CultivationCategory;
+import willatendo.fossilslegacy.server.menu.AnalyzerMenu;
 import willatendo.fossilslegacy.server.menu.ArchaeologyWorkbenchMenu;
 import willatendo.fossilslegacy.server.menu.CultivatorMenu;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenus;
@@ -78,5 +79,6 @@ public class FossilsLegacyJEI implements IModPlugin {
 	public void registerRecipeTransferHandlers(IRecipeTransferRegistration iRecipeTransferRegistration) {
 		iRecipeTransferRegistration.addRecipeTransferHandler(ArchaeologyWorkbenchMenu.class, FossilsLegacyMenus.ARCHAEOLOGY_WORKBENCH.get(), FossilsLegacyJEI.ARCHAEOLOGY, 0, 1, 3, 36);
 		iRecipeTransferRegistration.addRecipeTransferHandler(CultivatorMenu.class, FossilsLegacyMenus.CULTIVATOR.get(), FossilsLegacyJEI.CULTIVATION, 0, 1, 3, 36);
+		iRecipeTransferRegistration.addRecipeTransferHandler(AnalyzerMenu.class, FossilsLegacyMenus.ANALYZER.get(), FossilsLegacyJEI.ANALYZATION, 0, 9, 10, 36);
 	}
 }

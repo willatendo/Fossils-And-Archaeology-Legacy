@@ -58,6 +58,7 @@ public class FossilsLegacyEntities {
 
 	public static final RegistryObject<EntityType<ZombifiedPigman>> ZOMBIFIED_PIGMAN = ENTITY_TYPES.register("zombified_pigman", () -> EntityType.Builder.<ZombifiedPigman>of(ZombifiedPigman::new, MobCategory.MONSTER).sized(.6F, 1.95F).build("zombified_pigman"));
 	public static final RegistryObject<EntityType<DrownedPirate>> DROWNED_PIRATE = ENTITY_TYPES.register("drowned_pirate", () -> EntityType.Builder.<DrownedPirate>of(DrownedPirate::new, MobCategory.CREATURE).sized(0.6F, 1.99F).build("drowned_pirate"));
+	public static final RegistryObject<EntityType<Failuresaurus>> FAILURESAURUS = ENTITY_TYPES.register("failuresaurus", () -> EntityType.Builder.<Failuresaurus>of(Failuresaurus::new, MobCategory.MONSTER).sized(1.0F, 1.0F).build("failuresaurus"));
 
 	public static final RegistryObject<EntityType<ThrownJavelin>> THROWN_JAVELIN = ENTITY_TYPES.register("thrown_javelin", () -> EntityType.Builder.<ThrownJavelin>of(ThrownJavelin::new, MobCategory.MISC).sized(0.5F, 0.5F).build("thrown_javelin"));
 	public static final RegistryObject<EntityType<ThrownIncubatedEgg>> THROWN_INCUBATED_EGG = ENTITY_TYPES.register("thrown_incubated_egg", () -> EntityType.Builder.<ThrownIncubatedEgg>of(ThrownIncubatedEgg::new, MobCategory.MISC).sized(0.25F, 0.25F).build("thrown_incubated_egg"));

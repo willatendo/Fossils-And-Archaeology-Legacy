@@ -157,6 +157,7 @@ public class FossilsLegacyItems {
 
 	public static final RegistryObject<Item> ZOMBIFIED_PIGMAN_SPAWN_EGG = ITEMS.register("zombified_pigman_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), 0xEA9393, 0x4C7129, new Item.Properties()));
 	public static final RegistryObject<Item> DROWNED_PIRATE_SPAWN_EGG = ITEMS.register("drowned_pirate_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.DROWNED_PIRATE.get(), 0x8FF1D7, 0x799C65, new Item.Properties()));
+	public static final RegistryObject<Item> FAILURESAURUS_SPAWN_EGG = ITEMS.register("failuresaurus_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.FAILURESAURUS.get(), 0x51e6a5, 0x1b5128, new Item.Properties()));
 
 	public static final RegistryObject<Item> MAMMOTH_SPAWN_EGG = ITEMS.register("mammoth_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.MAMMOTH.get(), 0x3d2700, 0x211500, new Item.Properties()));
 	public static final RegistryObject<Item> SMILODON_SPAWN_EGG = ITEMS.register("smilodon_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.SMILODON.get(), 0xefa745, 0x9a6527, new Item.Properties()));

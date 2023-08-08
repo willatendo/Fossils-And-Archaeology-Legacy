@@ -25,6 +25,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import willatendo.fossilslegacy.server.entity.DrownedPirate;
 import willatendo.fossilslegacy.server.entity.Egg;
+import willatendo.fossilslegacy.server.entity.Failuresaurus;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
 import willatendo.fossilslegacy.server.entity.Mammoth;
 import willatendo.fossilslegacy.server.entity.Smilodon;
@@ -42,6 +43,7 @@ public class ModServerEvents {
 
 		event.put(FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), ZombifiedPiglin.createAttributes().build());
 		event.put(FossilsLegacyEntities.DROWNED_PIRATE.get(), DrownedPirate.createAttributes().build());
+		event.put(FossilsLegacyEntities.FAILURESAURUS.get(), Failuresaurus.createAttributes().build());
 
 		event.put(FossilsLegacyEntities.EGG.get(), Egg.eggAttributes());
 
@@ -70,6 +72,7 @@ public class ModServerEvents {
 		if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
 			event.accept(FossilsLegacyItems.DROWNED_PIRATE_SPAWN_EGG.get());
 			event.accept(FossilsLegacyItems.ZOMBIFIED_PIGMAN_SPAWN_EGG.get());
+			event.accept(FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get());
 			event.accept(FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get());
 			event.accept(FossilsLegacyItems.SMILODON_SPAWN_EGG.get());
 			event.accept(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get());

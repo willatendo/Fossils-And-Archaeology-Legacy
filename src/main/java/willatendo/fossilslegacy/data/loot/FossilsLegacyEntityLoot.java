@@ -36,6 +36,7 @@ public class FossilsLegacyEntityLoot extends VanillaEntityLoot {
 
 		this.add(FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), LootTable.lootTable());
 		this.add(FossilsLegacyEntities.DROWNED_PIRATE.get(), LootTable.lootTable());
+		this.add(FossilsLegacyEntities.FAILURESAURUS.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(UniformGenerator.between(0.0F, 2.0F)).add(LootItem.lootTableItem(FossilsLegacyItems.FOSSIL.get()))));
 
 		this.add(FossilsLegacyEntities.EGG.get(), LootTable.lootTable());
 		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.BRACHIOSAURUS_EGG, this.createEggTable(FossilsLegacyItems.BRACHIOSAURUS_EGG.get()));

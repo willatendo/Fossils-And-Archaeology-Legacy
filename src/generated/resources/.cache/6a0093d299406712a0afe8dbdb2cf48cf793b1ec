@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-23T18:44:01.5381101	fossilslegacy: Item Models
+// 1.20.1	2023-08-07T18:41:41.3678597	fossilslegacy: Item Models
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 41c5f6a309438824458da52752171cd09485a937 assets/fossilslegacy/models/item/ancient_helmet.json
 2701cd233168837331e67cbf0146831ca43eec8a assets/fossilslegacy/models/item/ancient_sword.json
@@ -44,6 +44,7 @@ b66f2595aa8e6550d38e5723c6b7037f9a8b36b3 assets/fossilslegacy/models/item/dolphi
 5e6e9a4e462c41a2213534ea164f8f06584b5d15 assets/fossilslegacy/models/item/donkey_embryo_syringe.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/drowned_pirate_spawn_egg.json
 a4d4cde92471787338f3a49155b2d889c69f8ec7 assets/fossilslegacy/models/item/drum.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/failuresaurus_spawn_egg.json
 f721525261782165282f95a540d2f505dc9cd572 assets/fossilslegacy/models/item/feeder.json
 863ace764a7f1006ecd967bc24871455b7f5865a assets/fossilslegacy/models/item/fossil.json
 c20551f3fdf13107fb10808d1a7d69504f7a3674 assets/fossilslegacy/models/item/fossil_ore.json

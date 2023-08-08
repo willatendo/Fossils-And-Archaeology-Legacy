@@ -30,7 +30,7 @@ public class ArchaeologyCategory implements IRecipeCategory<ArchaeologyRecipe> {
 	private final IDrawable background;
 	private final IDrawable icon;
 	private final LoadingCache<Integer, IDrawableAnimated> cachedArrows;
-	protected final IDrawableStatic staticFlame;
+	protected final IDrawableStatic hammer;
 	protected final IDrawableAnimated animatedHammer;
 
 	public ArchaeologyCategory(IGuiHelper guiHelper) {
@@ -42,9 +42,8 @@ public class ArchaeologyCategory implements IRecipeCategory<ArchaeologyRecipe> {
 				return guiHelper.drawableBuilder(FossilsLegacyJEI.TEXTURE, 88, 14, 24, 14).buildAnimated(cookTime, IDrawableAnimated.StartDirection.LEFT, false);
 			}
 		});
-		;
-		this.staticFlame = guiHelper.createDrawable(FossilsLegacyJEI.TEXTURE, 88, 0, 14, 14);
-		this.animatedHammer = guiHelper.createAnimatedDrawable(this.staticFlame, 300, IDrawableAnimated.StartDirection.TOP, true);
+		this.hammer = guiHelper.createDrawable(FossilsLegacyJEI.TEXTURE, 88, 0, 14, 14);
+		this.animatedHammer = guiHelper.createAnimatedDrawable(this.hammer, 300, IDrawableAnimated.StartDirection.TOP, true);
 	}
 
 	protected IDrawableAnimated getArrow(ArchaeologyRecipe archaeologyRecipe) {

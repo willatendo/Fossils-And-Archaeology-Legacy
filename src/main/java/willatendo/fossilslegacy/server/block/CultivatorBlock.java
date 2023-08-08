@@ -9,6 +9,7 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -29,6 +30,7 @@ import net.minecraftforge.network.NetworkHooks;
 import willatendo.fossilslegacy.server.block.entity.BlockEntityHelper;
 import willatendo.fossilslegacy.server.block.entity.CultivatorBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class CultivatorBlock extends Block implements EntityBlock {
@@ -50,6 +52,21 @@ public class CultivatorBlock extends Block implements EntityBlock {
 
 		popResource(level, blockPos, new ItemStack(Items.IRON_INGOT, 3));
 		Containers.dropContents(level, blockPos, cultivatorBlockEntity);
+
+		int chance = level.getRandom().nextInt(100);
+		LivingEntity monster = null;
+		if (chance <= 5) {
+			monster = EntityType.CREEPER.create(level);
+		}
+		if (chance > 5 && chance < 10) {
+			monster = EntityType.ZOMBIFIED_PIGLIN.create(level);
+		}
+		if (chance >= 10) {
+			monster = FossilsLegacyEntities.FAILURESAURUS.get().create(level);
+		}
+
+		monster.moveTo(blockPos, level.getRandom().nextFloat() * 360F, 0.0F);
+		level.addFreshEntity(monster);
 	}
 
 	@Override

@@ -153,6 +153,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
 		this.spawnEggItem(FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.SMILODON_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get());
+		this.spawnEggItem(FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get());
 
 		for (RegistryObject<Block> blocks : FossilsLegacyBlocks.BLOCKS.getEntries()) {
 			ResourceLocation blockId = blocks.getId();

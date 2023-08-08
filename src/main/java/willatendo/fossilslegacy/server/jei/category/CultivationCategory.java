@@ -34,8 +34,8 @@ public class CultivationCategory implements IRecipeCategory<CultivationRecipe> {
 	private final IDrawable background;
 	private final IDrawable icon;
 	private final LoadingCache<Integer, IDrawableAnimated> cachedArrows;
-	protected final IDrawableStatic staticFlame;
-	protected final IDrawableAnimated animatedHammer;
+	protected final IDrawableStatic vat;
+	protected final IDrawableAnimated animatedVat;
 
 	public CultivationCategory(IGuiHelper guiHelper) {
 		this.background = guiHelper.createDrawable(FossilsLegacyJEI.TEXTURE, 0, 56, 88, 56);
@@ -47,8 +47,8 @@ public class CultivationCategory implements IRecipeCategory<CultivationRecipe> {
 			}
 		});
 		;
-		this.staticFlame = guiHelper.createDrawable(FossilsLegacyJEI.TEXTURE, 88, 56, 14, 14);
-		this.animatedHammer = guiHelper.createAnimatedDrawable(this.staticFlame, 300, IDrawableAnimated.StartDirection.TOP, true);
+		this.vat = guiHelper.createDrawable(FossilsLegacyJEI.TEXTURE, 88, 56, 14, 14);
+		this.animatedVat = guiHelper.createAnimatedDrawable(this.vat, 300, IDrawableAnimated.StartDirection.TOP, true);
 	}
 
 	protected IDrawableAnimated getArrow(CultivationRecipe cultivationRecipe) {
@@ -92,7 +92,7 @@ public class CultivationCategory implements IRecipeCategory<CultivationRecipe> {
 
 	@Override
 	public void draw(CultivationRecipe cultivationRecipe, IRecipeSlotsView iRecipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-		this.animatedHammer.draw(guiGraphics, 37, 21);
+		this.animatedVat.draw(guiGraphics, 37, 21);
 
 		IDrawableAnimated arrow = this.getArrow(cultivationRecipe);
 		arrow.draw(guiGraphics, 33, 8);

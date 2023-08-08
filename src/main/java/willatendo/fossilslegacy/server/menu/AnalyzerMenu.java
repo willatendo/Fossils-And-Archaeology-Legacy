@@ -27,6 +27,7 @@ public class AnalyzerMenu extends AbstractContainerMenu {
 				this.addSlot(new Slot(analyzerBlockEntity, column + row * 3, 8 + column * 18, 18 + row * 18));
 			}
 		}
+		
 		this.addSlot(new ResultSlot(inventory.player, analyzerBlockEntity, 9, 102, 22));
 		for (int column = 0; column < 3; ++column) {
 			this.addSlot(new ResultSlot(inventory.player, analyzerBlockEntity, column + 10, 98 + column * 18, 54));

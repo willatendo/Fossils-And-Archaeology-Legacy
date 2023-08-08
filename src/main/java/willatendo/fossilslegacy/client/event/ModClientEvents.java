@@ -28,6 +28,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import willatendo.fossilslegacy.client.FossilsLegacyModels;
 import willatendo.fossilslegacy.client.model.EggModel;
+import willatendo.fossilslegacy.client.model.FailuresaurusModel;
 import willatendo.fossilslegacy.client.model.MammothModel;
 import willatendo.fossilslegacy.client.model.SmilodonModel;
 import willatendo.fossilslegacy.client.model.pterosaurus.BabyPteranodonModel;
@@ -35,6 +36,7 @@ import willatendo.fossilslegacy.client.model.triceratops.BabyTriceratopsModel;
 import willatendo.fossilslegacy.client.model.triceratops.TriceratopsModel;
 import willatendo.fossilslegacy.client.render.DrownedPirateRenderer;
 import willatendo.fossilslegacy.client.render.EggRenderer;
+import willatendo.fossilslegacy.client.render.FailuresaurusRenderer;
 import willatendo.fossilslegacy.client.render.MammothRenderer;
 import willatendo.fossilslegacy.client.render.SmilodonRenderer;
 import willatendo.fossilslegacy.client.render.StoneHieroglyphRenderer;
@@ -68,6 +70,7 @@ public class ModClientEvents {
 
 		EntityRenderers.register(FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), ZombifiedPigmanRenderer::new);
 		EntityRenderers.register(FossilsLegacyEntities.DROWNED_PIRATE.get(), DrownedPirateRenderer::new);
+		EntityRenderers.register(FossilsLegacyEntities.FAILURESAURUS.get(), FailuresaurusRenderer::new);
 
 		EntityRenderers.register(FossilsLegacyEntities.PREGNANT_CAT.get(), CatRenderer::new);
 		EntityRenderers.register(FossilsLegacyEntities.PREGNANT_COW.get(), CowRenderer::new);
@@ -100,6 +103,8 @@ public class ModClientEvents {
 		event.registerLayerDefinition(FossilsLegacyModels.TRICERATOPS_ADULT, TriceratopsModel::createBodyLayer);
 		event.registerLayerDefinition(FossilsLegacyModels.TRICERATOPS_BABY, BabyTriceratopsModel::createBodyLayer);
 		event.registerLayerDefinition(FossilsLegacyModels.PTERANODON_BABY, BabyPteranodonModel::createBodyLayer);
+
+		event.registerLayerDefinition(FossilsLegacyModels.FAILURESAURUS, FailuresaurusModel::createBodyLayer);
 
 		event.registerLayerDefinition(FossilsLegacyModels.EGG, EggModel::createBodyLayer);
 	}

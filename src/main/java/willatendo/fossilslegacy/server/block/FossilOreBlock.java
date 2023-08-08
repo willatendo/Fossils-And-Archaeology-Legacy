@@ -1,7 +1,5 @@
 package willatendo.fossilslegacy.server.block;
 
-import java.util.Random;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
@@ -17,7 +15,7 @@ public class FossilOreBlock extends Block {
 
 	@Override
 	public void spawnAfterBreak(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, ItemStack itemStack, boolean flag) {
-		int chance = new Random().nextInt(20000);
+		int chance = serverLevel.getRandom().nextInt(20000);
 		if (chance >= 20 && chance <= 30) {
 			popResource(serverLevel, blockPos, FossilsLegacyItems.GEM_ARTIFACT.get().getDefaultInstance());
 		}

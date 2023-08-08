@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-02T23:56:28.0165354	Loot Tables
+// 1.20.1	2023-08-07T18:39:31.7418496	Loot Tables
 5fcf811a958fcf132678d4423a7472c475c2b8ca data/fossilslegacy/loot_tables/blocks/analyzer.json
 8bfc811efa599c9be09afe46481ec9ebbf5f3a33 data/fossilslegacy/loot_tables/blocks/archaeology_workbench.json
 e83811b242ba161162f08caf7aa75548ce90fc3c data/fossilslegacy/loot_tables/blocks/cultivator.json
@@ -13,7 +13,7 @@ ff9acaa93520b01eb315a76e435fe9152f7cc96d data/fossilslegacy/loot_tables/blocks/p
 6092aafe4bca6a32828a100accc015b5725a7d51 data/fossilslegacy/loot_tables/chests/academy_disc.json
 72c25f5a1f087e85e16dd2d9f54347730da0fb2c data/fossilslegacy/loot_tables/chests/academy_loot.json
 2a88c80c64cbf9e441234c69b98903788a57571d data/fossilslegacy/loot_tables/chests/weapon_shop_decoy.json
-3a055a47afe5265d40e0b5d6072d14daf55082f1 data/fossilslegacy/loot_tables/chests/weapon_shop_loot.json
+6883587f76bc611b6271d1ef62fd97bc93990b19 data/fossilslegacy/loot_tables/chests/weapon_shop_loot.json
 ca993582bbe3723ad299dbcb25728ede574899ba data/fossilslegacy/loot_tables/entities/drowned_pirate.json
 3f9fbebf1e59b2db877ea746639a80514bc1853c data/fossilslegacy/loot_tables/entities/egg.json
 b42cdd3e259e6373322f855817a4c9a8c68b6921 data/fossilslegacy/loot_tables/entities/egg/brachiosaurus.json
@@ -25,6 +25,7 @@ cff7827900ed6cdee696758d513686a13e646162 data/fossilslegacy/loot_tables/entities
 36a10c15d138f13acfd2f6fb9eb2cb7329d45378 data/fossilslegacy/loot_tables/entities/egg/triceratops.json
 7cd251d20854a8f8905738683d4a1f1b9dd85084 data/fossilslegacy/loot_tables/entities/egg/tyrannosaurus.json
 49b77bcd3e814b8829fa7af8726a7ee6ab9cf2ce data/fossilslegacy/loot_tables/entities/egg/utahraptor.json
+a117ca2df6a362329aa123559019a5a60af648a2 data/fossilslegacy/loot_tables/entities/failuresaurus.json
 7f28c2d6885087756c83249837d16b1f64d53c5b data/fossilslegacy/loot_tables/entities/mammoth.json
 8979d95c4ef9d314987b18c9d2766737b51e5eaa data/fossilslegacy/loot_tables/entities/pregnant_cat.json
 726e44cd96eb91dd36d2ee73f8c1c5dc743718a2 data/fossilslegacy/loot_tables/entities/pregnant_cow.json

@@ -13,5 +13,7 @@ public class FossilsLegacyModels {
 	public static final ModelLayerLocation FLYING_PTERANODON_ADULT = new ModelLayerLocation(FossilsLegacyUtils.resource("flying_pteranodon_adult"), "main");
 	public static final ModelLayerLocation FLYING_PTERANODON_BABY = new ModelLayerLocation(FossilsLegacyUtils.resource("flying_pteranodon_baby"), "main");
 
+	public static final ModelLayerLocation FAILURESAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("failuresaurus"), "main");
+
 	public static final ModelLayerLocation EGG = new ModelLayerLocation(FossilsLegacyUtils.resource("egg"), "main");
 }

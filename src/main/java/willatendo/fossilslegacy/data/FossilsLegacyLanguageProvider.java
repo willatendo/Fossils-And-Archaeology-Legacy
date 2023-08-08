@@ -245,6 +245,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.BROKEN_GEM_JAVELIN.get(), "Gem Javelin");
 		this.add(FossilsLegacyItems.DROWNED_PIRATE_SPAWN_EGG.get(), "Drowned Pirate Spawn Egg");
 		this.add(FossilsLegacyItems.ZOMBIFIED_PIGMAN_SPAWN_EGG.get(), "Zombified Pigman Spawn Egg");
+		this.add(FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get(), "Failuresaurus Spawn Egg");
 		this.add(FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get(), "Mammoth Spawn Egg");
 		this.add(FossilsLegacyItems.SMILODON_SPAWN_EGG.get(), "Smilodon Spawn Egg");
 		this.add(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get(), "Triceratops Spawn Egg");
