@@ -1,4 +1,4 @@
-// 1.20.1	2023-08-07T18:39:31.7418496	Loot Tables
+// 1.20.1	2023-10-21T12:53:30.9582837	Loot Tables
 5fcf811a958fcf132678d4423a7472c475c2b8ca data/fossilslegacy/loot_tables/blocks/analyzer.json
 8bfc811efa599c9be09afe46481ec9ebbf5f3a33 data/fossilslegacy/loot_tables/blocks/archaeology_workbench.json
 e83811b242ba161162f08caf7aa75548ce90fc3c data/fossilslegacy/loot_tables/blocks/cultivator.json
@@ -27,6 +27,7 @@ cff7827900ed6cdee696758d513686a13e646162 data/fossilslegacy/loot_tables/entities
 49b77bcd3e814b8829fa7af8726a7ee6ab9cf2ce data/fossilslegacy/loot_tables/entities/egg/utahraptor.json
 a117ca2df6a362329aa123559019a5a60af648a2 data/fossilslegacy/loot_tables/entities/failuresaurus.json
 7f28c2d6885087756c83249837d16b1f64d53c5b data/fossilslegacy/loot_tables/entities/mammoth.json
+867de7cae1e5b7d346a34240aa9f6dd2930acd8f data/fossilslegacy/loot_tables/entities/nautilus.json
 8979d95c4ef9d314987b18c9d2766737b51e5eaa data/fossilslegacy/loot_tables/entities/pregnant_cat.json
 726e44cd96eb91dd36d2ee73f8c1c5dc743718a2 data/fossilslegacy/loot_tables/entities/pregnant_cow.json
 3050211a49cd39155b2bd369a84070005870381e data/fossilslegacy/loot_tables/entities/pregnant_dolphin.json

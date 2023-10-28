@@ -1,10 +1,7 @@
 package willatendo.fossilslegacy.server.jei.category;
 
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 
-import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
@@ -17,9 +14,9 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.jei.FossilsLegacyJEI;
+import willatendo.fossilslegacy.server.jei.FossilsLegacyJEITextures;
 import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -28,15 +25,10 @@ public class AnalyzationCategory implements IRecipeCategory<AnalyzationRecipe> {
 	private final IDrawable icon;
 	private final LoadingCache<Integer, IDrawableAnimated> cachedArrows;
 
-	public AnalyzationCategory(IGuiHelper guiHelper) {
-		this.background = guiHelper.createDrawable(FossilsLegacyJEI.TEXTURE, 0, 112, 144, 54);
-		this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(FossilsLegacyBlocks.ANALYZER.get()));
-		this.cachedArrows = CacheBuilder.newBuilder().maximumSize(25).build(new CacheLoader<>() {
-			@Override
-			public IDrawableAnimated load(Integer cookTime) {
-				return guiHelper.drawableBuilder(FossilsLegacyJEI.TEXTURE, 144, 122, 21, 10).buildAnimated(cookTime, IDrawableAnimated.StartDirection.LEFT, false);
-			}
-		});
+	public AnalyzationCategory(IGuiHelper guiHelper, FossilsLegacyJEITextures fossilsLegacyJEITextures) {
+		this.background = fossilsLegacyJEITextures.getBackground(0, 112, 144, 54);
+		this.icon = fossilsLegacyJEITextures.getIconFromItemLike(FossilsLegacyBlocks.ANALYZER.get());
+		this.cachedArrows = fossilsLegacyJEITextures.createProgressBar(25, 144, 122, 21, 10, IDrawableAnimated.StartDirection.LEFT);
 	}
 
 	protected IDrawableAnimated getArrow(AnalyzationRecipe analyzationRecipe) {

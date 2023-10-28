@@ -255,7 +255,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("jei.fossilslegacy.cultivaton", "Cultivaton");
 		this.add("menu.fossilslegacy.analyzer", "Analyzer");
 		this.add("menu.fossilslegacy.archaeology_workbench", "Archaeology Workbench");
-		this.add("menu.fossilslegacy.cultivator", "Cultivator");
+		this.add("menu.fossilslegacy.cultivation", "Cultivation");
 		this.add("menu.fossilslegacy.feeder", "Feeder");
 		this.add("order.fossilslegacy.follow", "Follow");
 		this.add("order.fossilslegacy.stay", "Stay");

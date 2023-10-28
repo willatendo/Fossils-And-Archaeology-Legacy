@@ -31,6 +31,7 @@ public class FossilsLegacyEntities {
 
 	public static final RegistryObject<EntityType<AncientLightningBolt>> ANCIENT_LIGHTNING_BOLT = ENTITY_TYPES.register("ancient_lightning_bolt", () -> EntityType.Builder.<AncientLightningBolt>of(AncientLightningBolt::new, MobCategory.MISC).noSave().sized(0.0F, 0.0F).build("ancient_lightning_bolt"));
 
+	public static final RegistryObject<EntityType<Nautilus>> NAUTILUS = ENTITY_TYPES.register("nautilus", () -> EntityType.Builder.<Nautilus>of(Nautilus::new, MobCategory.WATER_CREATURE).sized(1.0F, 0.75F).build("nautilus"));
 	public static final RegistryObject<EntityType<Mammoth>> MAMMOTH = ENTITY_TYPES.register("mammoth", () -> EntityType.Builder.<Mammoth>of(Mammoth::new, MobCategory.CREATURE).sized(2.5F, 2.5F).build("mammoth"));
 	public static final RegistryObject<EntityType<Smilodon>> SMILODON = ENTITY_TYPES.register("smilodon", () -> EntityType.Builder.<Smilodon>of(Smilodon::new, MobCategory.CREATURE).sized(1.5F, 1.5F).build("smilodon"));
 	public static final RegistryObject<EntityType<Triceratops>> TRICERATOPS = ENTITY_TYPES.register("triceratops", () -> EntityType.Builder.<Triceratops>of(Triceratops::new, MobCategory.CREATURE).sized(0.5F, 0.5F).build("triceratops"));

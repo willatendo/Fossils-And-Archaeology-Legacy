@@ -12,9 +12,7 @@ displayName="Fossils and Archaeology Legacy"
 logoFile="fossils_and_archaeology_legacy_icon.png"
 credits="Team July and Fossils and Archaeology Revival Team!"
 authors="Willatendo"
-description='''
-An Aether Legacy-style mod for the Fossils and Archaeology mod, based on the 1.3.2 and 1.2.5 versions of the mod. The Fossils and Archaeology Revival team has nothing to do with this project and it takes nothing from their wonderful mod. When it comes out for 1.18.2, make sure to play it! This is purely for people who want an older version brought to 1.19.4 and not broken.
-'''
+description='''An Aether Legacy-style mod for the Fossils and Archaeology mod, based on the 1.3.2 and 1.2.5 versions of the mod. The Fossils and Archaeology Revival team has nothing to do with this project and it takes nothing from their wonderful mod. When it comes out for 1.18.2, make sure to play it! This is purely for people who want an older version brought to 1.20.1 and fixed up.'''
 
 [[dependencies.fossilslegacy]]
     modId="forge"
@@ -36,4 +34,3 @@ An Aether Legacy-style mod for the Fossils and Archaeology mod, based on the 1.3
     versionRange="[1.0.0,2.0.0)"
     ordering="NONE"
     side="BOTH"
-    

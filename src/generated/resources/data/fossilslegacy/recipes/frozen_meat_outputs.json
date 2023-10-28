@@ -5,11 +5,11 @@
   },
   "results": [
     {
-      "result": "fossilslegacy:mammoth_dna",
+      "result": "fossilslegacy:smilodon_dna",
       "weight": 33
     },
     {
-      "result": "fossilslegacy:smilodon_dna",
+      "result": "fossilslegacy:mammoth_dna",
       "weight": 33
     },
     {

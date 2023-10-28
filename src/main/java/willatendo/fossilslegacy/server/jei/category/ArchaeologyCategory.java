@@ -1,10 +1,7 @@
 package willatendo.fossilslegacy.server.jei.category;
 
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 
-import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
@@ -18,11 +15,11 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.library.util.RecipeUtil;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.jei.FossilsLegacyJEI;
+import willatendo.fossilslegacy.server.jei.FossilsLegacyJEITextures;
 import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -33,15 +30,10 @@ public class ArchaeologyCategory implements IRecipeCategory<ArchaeologyRecipe> {
 	protected final IDrawableStatic hammer;
 	protected final IDrawableAnimated animatedHammer;
 
-	public ArchaeologyCategory(IGuiHelper guiHelper) {
-		this.background = guiHelper.createDrawable(FossilsLegacyJEI.TEXTURE, 0, 0, 88, 56);
-		this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get()));
-		this.cachedArrows = CacheBuilder.newBuilder().maximumSize(25).build(new CacheLoader<>() {
-			@Override
-			public IDrawableAnimated load(Integer cookTime) {
-				return guiHelper.drawableBuilder(FossilsLegacyJEI.TEXTURE, 88, 14, 24, 14).buildAnimated(cookTime, IDrawableAnimated.StartDirection.LEFT, false);
-			}
-		});
+	public ArchaeologyCategory(IGuiHelper guiHelper, FossilsLegacyJEITextures fossilsLegacyJEITextures) {
+		this.background = fossilsLegacyJEITextures.getBackground(0, 0, 88, 56);
+		this.icon = fossilsLegacyJEITextures.getIconFromItemLike(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get());
+		this.cachedArrows = fossilsLegacyJEITextures.createProgressBar(25, 88, 14, 24, 14, IDrawableAnimated.StartDirection.LEFT);
 		this.hammer = guiHelper.createDrawable(FossilsLegacyJEI.TEXTURE, 88, 0, 14, 14);
 		this.animatedHammer = guiHelper.createAnimatedDrawable(this.hammer, 300, IDrawableAnimated.StartDirection.TOP, true);
 	}
