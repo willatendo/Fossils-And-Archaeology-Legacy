@@ -38,12 +38,20 @@ public class FrozenMeatItem extends Item {
 	@Override
 	public boolean hurtEnemy(ItemStack itemStack, LivingEntity victem, LivingEntity attacker) {
 		if (attacker instanceof Player player && !player.isCreative()) {
-			ItemStack brokenItemStack = new ItemStack(FossilsLegacyItems.BROKEN_FROZEN_MEAT.get());
-			if (player instanceof ServerPlayer serverPlayer) {
-				brokenItemStack.hurt(1, RandomSource.create(), serverPlayer);
+			if (itemStack.getCount() > 1) {
+				ItemStack brokenItemStack = new ItemStack(FossilsLegacyItems.BROKEN_FROZEN_MEAT.get());
+				if (player instanceof ServerPlayer serverPlayer) {
+					brokenItemStack.hurt(1, RandomSource.create(), serverPlayer);
+				}
+				player.addItem(brokenItemStack);
+				itemStack.shrink(1);
+			} else {
+				ItemStack brokenItemStack = new ItemStack(FossilsLegacyItems.BROKEN_FROZEN_MEAT.get());
+				if (player instanceof ServerPlayer serverPlayer) {
+					brokenItemStack.hurt(1, RandomSource.create(), serverPlayer);
+				}
+				player.setItemInHand(player.getUsedItemHand(), brokenItemStack);
 			}
-			player.addItem(brokenItemStack);
-			itemStack.shrink(1);
 			return true;
 		}
 		return true;

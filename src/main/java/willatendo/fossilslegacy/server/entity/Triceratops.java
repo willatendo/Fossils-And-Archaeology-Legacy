@@ -59,6 +59,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
+import willatendo.fossilslegacy.server.entity.Egg.Eggs;
 import willatendo.fossilslegacy.server.entity.goal.BabyFollowParentGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
@@ -254,11 +255,10 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 
 	@Override
 	public InteractionResult interactAt(Player player, Vec3 vec3, InteractionHand interactionHand) {
-		if (this.command(player, vec3, interactionHand)) {
+		if (this.command(player, vec3, interactionHand, this)) {
 			return InteractionResult.SUCCESS;
 		}
-		if (!this.isTame()) {
-			this.setOwnerUUID(player.getUUID());
+		if (this.TESTING_autotame(player)) {
 			return InteractionResult.SUCCESS;
 		}
 		ItemStack itemStack = player.getItemInHand(interactionHand);
@@ -446,10 +446,6 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 		return new ResourceLocation[][] { { FossilsLegacyUtils.resource("textures/entities/triceratops/green_adult_triceratops.png"), FossilsLegacyUtils.resource("textures/entities/triceratops/green_baby_triceratops.png") }, { FossilsLegacyUtils.resource("textures/entities/triceratops/brown_adult_triceratops.png"), FossilsLegacyUtils.resource("textures/entities/triceratops/brown_baby_triceratops.png") }, { FossilsLegacyUtils.resource("textures/entities/triceratops/yellow_adult_triceratops.png"), FossilsLegacyUtils.resource("textures/entities/triceratops/yellow_baby_triceratops.png") } };
 	}
 
-	public boolean isTame() {
-		return this.getOwnerUUID() != null;
-	}
-
 	@Override
 	public void addAdditionalSaveData(CompoundTag compoundTag) {
 		super.addAdditionalSaveData(compoundTag);
@@ -504,7 +500,9 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-		return FossilsLegacyEntities.TRICERATOPS.get().create(serverLevel);
+		Egg egg = FossilsLegacyEntities.EGG.get().create(serverLevel);
+		egg.setEgg(Eggs.TRICERATOPS);
+		return egg;
 	}
 
 	@Override
@@ -513,8 +511,8 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 	}
 
 	@Override
-	public void setCommand(DinosaurOrder commands) {
-		this.entityData.set(COMMAND, commands.ordinal());
+	public void setCommand(DinosaurOrder dinosaurOrder) {
+		this.entityData.set(COMMAND, dinosaurOrder.ordinal());
 	}
 
 	@Override

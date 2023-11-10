@@ -8,9 +8,4 @@ public class ZombifiedPigmanModel extends ZombieModel<ZombifiedPigman> {
 	public ZombifiedPigmanModel(ModelPart modelPart) {
 		super(modelPart);
 	}
-
-//	@Override
-//	public boolean isAggressive(ZombifiedPigman zombifiedPigman) {
-//		return zombifiedPigman.isAggressive();
-//	}
 }

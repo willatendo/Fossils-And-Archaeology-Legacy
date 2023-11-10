@@ -1,0 +1,38 @@
+{
+  "parent": "fossilslegacy:legacy/relic_scrap",
+  "criteria": {
+    "has_archaeology_workbench": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "fossilslegacy:archaeology_workbench"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.archaeology_workbench.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "fossilslegacy:archaeology_workbench"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.archaeology_workbench.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_archaeology_workbench"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

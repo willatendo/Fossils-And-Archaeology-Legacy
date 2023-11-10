@@ -12,6 +12,9 @@ public class FossilsLegacySoundEvents {
 	public static final RegistryObject<SoundEvent> MAMMOTH_AMBIENT = SOUND_EVENTS.register("entity.mammoth.ambient", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.mammoth.ambient")));
 	public static final RegistryObject<SoundEvent> MAMMOTH_HURT = SOUND_EVENTS.register("entity.mammoth.hurt", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.mammoth.hurt")));
 	public static final RegistryObject<SoundEvent> MAMMOTH_DEATH = SOUND_EVENTS.register("entity.mammoth.death", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.mammoth.death")));
+	public static final RegistryObject<SoundEvent> PTERANODON_AMBIENT = SOUND_EVENTS.register("entity.pteranodon.ambient", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.pteranodon.ambient")));
+	public static final RegistryObject<SoundEvent> PTERANODON_HURT = SOUND_EVENTS.register("entity.pteranodon.hurt", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.pteranodon.hurt")));
+	public static final RegistryObject<SoundEvent> PTERANODON_DEATH = SOUND_EVENTS.register("entity.pteranodon.death", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.pteranodon.death")));
 	public static final RegistryObject<SoundEvent> SMILODON_AMBIENT = SOUND_EVENTS.register("entity.smilodon.ambient", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.smilodon.ambient")));
 	public static final RegistryObject<SoundEvent> SMILODON_HURT = SOUND_EVENTS.register("entity.smilodon.hurt", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.smilodon.hurt")));
 	public static final RegistryObject<SoundEvent> SMILODON_DEATH = SOUND_EVENTS.register("entity.smilodon.death", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.smilodon.death")));

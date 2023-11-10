@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.client.event;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.CatRenderer;
@@ -21,7 +20,6 @@ import net.minecraft.client.renderer.entity.RabbitRenderer;
 import net.minecraft.client.renderer.entity.SheepRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.entity.WolfRenderer;
-import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
@@ -51,7 +49,6 @@ import willatendo.fossilslegacy.client.screen.ArchaeologyWorkbenchScreen;
 import willatendo.fossilslegacy.client.screen.CultivatorScreen;
 import willatendo.fossilslegacy.client.screen.FeederScreen;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
-import willatendo.fossilslegacy.server.jei.FossilsLegacySpriteUploader;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -115,8 +112,8 @@ public class ModClientEvents {
 
 	@SubscribeEvent
 	public static void onRegisterReloadListenerEvent(RegisterClientReloadListenersEvent event) {
-		Minecraft minecraft = Minecraft.getInstance();
-		TextureManager textureManager = minecraft.getTextureManager();
-		event.registerReloadListener(new FossilsLegacySpriteUploader(textureManager));
+//		Minecraft minecraft = Minecraft.getInstance();
+//		TextureManager textureManager = minecraft.getTextureManager();
+//		event.registerReloadListener(new FossilsLegacySpriteUploader(textureManager));
 	}
 }

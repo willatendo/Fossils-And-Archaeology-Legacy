@@ -10,8 +10,10 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.OldUsersConverter;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -34,22 +36,44 @@ import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
+import willatendo.fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
+import willatendo.fossilslegacy.server.utils.DinosaurOrder;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, HungryAnimal, OwnableEntity, TamesOnBirth, TameAccessor, DaysAlive {
+public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, HungryAnimal, OwnableEntity, TamesOnBirth, TameAccessor, DaysAlive, PlayerCommandable {
 	private static final EntityDataAccessor<Integer> HUNGER = SynchedEntityData.defineId(Smilodon.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> DAYS_ALIVE = SynchedEntityData.defineId(Smilodon.class, EntityDataSerializers.INT);
+	private static final EntityDataAccessor<Integer> COMMAND = SynchedEntityData.defineId(Smilodon.class, EntityDataSerializers.INT);
 	protected static final EntityDataAccessor<Optional<UUID>> OWNER = SynchedEntityData.defineId(Smilodon.class, EntityDataSerializers.OPTIONAL_UUID);
 	public final AnimationState walkAnimationState = new AnimationState();
 	private int timeAlive;
 
 	public Smilodon(EntityType<? extends Animal> entityType, Level level) {
 		super(entityType, level);
+	}
+
+	@Override
+	public boolean removeWhenFarAway(double distance) {
+		return false;
+	}
+
+	@Override
+	public void die(DamageSource damageSource) {
+		Component deathMessage = this.getCombatTracker().getDeathMessage();
+		super.die(damageSource);
+
+		if (this.dead) {
+			if (!this.level().isClientSide && this.level().getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES) && this.getOwner() instanceof ServerPlayer) {
+				this.getOwner().sendSystemMessage(deathMessage);
+			}
+		}
 	}
 
 	public static AttributeSupplier smilodonAttributes() {
@@ -92,7 +116,26 @@ public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, Hungry
 		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, Ingredient.of(Items.WHEAT), false));
 		this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.1D));
 		this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));
-		this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+		this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D) {
+			@Override
+			public boolean canUse() {
+				if (Smilodon.this.getCommand() == DinosaurOrder.STAY) {
+					return false;
+				} else {
+					return super.canUse();
+				}
+			}
+
+			@Override
+			public boolean canContinueToUse() {
+				if (Smilodon.this.getCommand() == DinosaurOrder.STAY) {
+					return false;
+				} else {
+					return super.canContinueToUse();
+				}
+			}
+		});
+		this.goalSelector.addGoal(6, new DinoFollowOwnerGoal(this, this, this, 1.0D, 10.0F, 2.0F));
 		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
 //		this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
@@ -105,6 +148,7 @@ public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, Hungry
 		this.entityData.define(DAYS_ALIVE, 0);
 		this.entityData.define(HUNGER, this.getMaxHunger());
 		this.entityData.define(OWNER, Optional.empty());
+		this.entityData.define(COMMAND, 0);
 	}
 
 	@Override
@@ -123,8 +167,10 @@ public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, Hungry
 
 	@Override
 	public InteractionResult interactAt(Player player, Vec3 vec3, InteractionHand interactionHand) {
-		if (!this.isTame()) {
-			this.setOwnerUUID(player.getUUID());
+		if (this.command(player, vec3, interactionHand, this)) {
+			return InteractionResult.SUCCESS;
+		}
+		if (this.TESTING_autotame(player)) {
 			return InteractionResult.SUCCESS;
 		}
 		return super.interactAt(player, vec3, interactionHand);
@@ -192,6 +238,7 @@ public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, Hungry
 		if (this.getOwnerUUID() != null) {
 			compoundTag.putUUID("Owner", this.getOwnerUUID());
 		}
+		compoundTag.putInt("Command", this.getCommand().ordinal());
 	}
 
 	@Override
@@ -214,6 +261,7 @@ public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, Hungry
 			} catch (Throwable throwable) {
 			}
 		}
+		this.setCommand(DinosaurOrder.values()[compoundTag.getInt("Command")]);
 	}
 
 	@Override
@@ -233,5 +281,20 @@ public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, Hungry
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
 		return FossilsLegacyEntities.SMILODON.get().create(serverLevel);
+	}
+
+	@Override
+	public DinosaurOrder getCommand() {
+		return DinosaurOrder.values()[this.entityData.get(COMMAND)];
+	}
+
+	@Override
+	public void setCommand(DinosaurOrder dinosaurOrder) {
+		this.entityData.set(COMMAND, dinosaurOrder.ordinal());
+	}
+
+	@Override
+	public TagKey<Item> commandItems() {
+		return null;
 	}
 }

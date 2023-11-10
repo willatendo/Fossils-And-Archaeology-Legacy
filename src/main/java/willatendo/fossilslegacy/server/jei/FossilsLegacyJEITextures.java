@@ -11,22 +11,21 @@ import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.helpers.IGuiHelper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FossilsLegacyJEITextures {
 	private final IGuiHelper iGuiHelper;
 
-	private final FossilsLegacyDrawableSprite biomatterTexture;
+//	private final DrawableSprite biomatterTexture;
 
-	public FossilsLegacyJEITextures(IGuiHelper iGuiHelper, FossilsLegacySpriteUploader fossilsLegacySpriteUploader) {
+	public FossilsLegacyJEITextures(IGuiHelper iGuiHelper) {
 		this.iGuiHelper = iGuiHelper;
 
-		this.biomatterTexture = new FossilsLegacyDrawableSprite(fossilsLegacySpriteUploader, FossilsLegacyUtils.resource("icons/biomatter.png"), 14, 14);
+//		this.biomatterTexture = new DrawableSprite(jeiSpriteUploader, FossilsLegacyUtils.resource("icons/biomatter.png"), 14, 14);
 	}
 
-	public FossilsLegacyDrawableSprite getBiomatterTexture() {
-		return this.biomatterTexture;
-	}
+//	public DrawableSprite getBiomatterTexture() {
+//		return this.biomatterTexture;
+//	}
 
 	public IDrawable getBackground(int u, int v, int width, int height) {
 		return this.iGuiHelper.createDrawable(FossilsLegacyJEI.TEXTURE, u, v, width, height);
@@ -46,7 +45,7 @@ public class FossilsLegacyJEITextures {
 	}
 
 	public LoadingCache<Integer, IDrawableAnimated> createProgressBar(long size, int u, int v, int width, int height, IDrawableAnimated.StartDirection startDirection) {
-		return createProgressBar(size, u, v, width, height, startDirection, false);
+		return this.createProgressBar(size, u, v, width, height, startDirection, false);
 	}
 
 	public IDrawableAnimated createBiomatterBar() {

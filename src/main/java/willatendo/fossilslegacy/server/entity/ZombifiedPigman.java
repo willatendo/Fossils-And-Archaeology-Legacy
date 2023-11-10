@@ -1,8 +1,10 @@
 package willatendo.fossilslegacy.server.entity;
 
+import java.util.EnumSet;
 import java.util.Optional;
 import java.util.UUID;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -20,24 +22,43 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.OwnableEntity;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.TargetGoal;
+import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
+import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import net.minecraft.world.scores.Team;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
-import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 
 public class ZombifiedPigman extends ZombifiedPiglin implements OwnableEntity {
 	protected static final EntityDataAccessor<Byte> FLAGS = SynchedEntityData.defineId(ZombifiedPigman.class, EntityDataSerializers.BYTE);
 	protected static final EntityDataAccessor<Optional<UUID>> OWNER_UUID = SynchedEntityData.defineId(ZombifiedPigman.class, EntityDataSerializers.OPTIONAL_UUID);
-	private boolean orderedToSit;
 
 	public ZombifiedPigman(EntityType<? extends ZombifiedPigman> zombiePigman, Level level) {
 		super(zombiePigman, level);
 		this.reassessTameGoals();
+	}
+
+	@Override
+	protected void registerGoals() {
+		super.registerGoals();
+		this.goalSelector.addGoal(6, new ZombifiedPigman.FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F, false));
+		this.targetSelector.addGoal(1, new ZombifiedPigman.OwnerHurtByTargetGoal(this));
+		this.targetSelector.addGoal(2, new ZombifiedPigman.OwnerHurtTargetGoal(this));
+		this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
 	}
 
 	@Override
@@ -58,8 +79,6 @@ public class ZombifiedPigman extends ZombifiedPiglin implements OwnableEntity {
 		if (this.getOwnerUUID() != null) {
 			compoundTag.putUUID("Owner", this.getOwnerUUID());
 		}
-
-		compoundTag.putBoolean("Sitting", this.orderedToSit);
 	}
 
 	@Override
@@ -81,9 +100,6 @@ public class ZombifiedPigman extends ZombifiedPiglin implements OwnableEntity {
 				this.setTame(false);
 			}
 		}
-
-		this.orderedToSit = compoundTag.getBoolean("Sitting");
-		this.setInSittingPose(this.orderedToSit);
 	}
 
 	@Override
@@ -192,7 +208,6 @@ public class ZombifiedPigman extends ZombifiedPiglin implements OwnableEntity {
 	}
 
 	@Override
-
 	public boolean isAlliedTo(Entity entity) {
 		if (this.isTame()) {
 			LivingEntity owner = this.getOwner();
@@ -213,19 +228,11 @@ public class ZombifiedPigman extends ZombifiedPiglin implements OwnableEntity {
 		Component deathMessage = this.getCombatTracker().getDeathMessage();
 		super.die(damageSource);
 
-		if (this.dead)
+		if (this.dead) {
 			if (!this.level().isClientSide() && this.level().getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES) && this.getOwner() instanceof ServerPlayer) {
 				this.getOwner().sendSystemMessage(deathMessage);
 			}
-
-	}
-
-	public boolean isOrderedToSit() {
-		return this.orderedToSit;
-	}
-
-	public void setOrderedToSit(boolean orderedToSit) {
-		this.orderedToSit = orderedToSit;
+		}
 	}
 
 	@Override
@@ -235,11 +242,217 @@ public class ZombifiedPigman extends ZombifiedPiglin implements OwnableEntity {
 
 	@Override
 	protected void populateDefaultEquipmentSlots(RandomSource randomSource, DifficultyInstance difficultyInstance) {
-		if (this.isTame()) {
-			this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(FossilsLegacyItems.ANCIENT_SWORD.get()));
-		} else {
-			this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.GOLDEN_SWORD));
+		this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.GOLDEN_SWORD));
+		this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(Items.GOLDEN_HELMET));
+	}
+
+	class FollowOwnerGoal extends Goal {
+		private final ZombifiedPigman tamable;
+		private LivingEntity owner;
+		private final LevelReader level;
+		private final double speedModifier;
+		private final PathNavigation navigation;
+		private int timeToRecalcPath;
+		private final float stopDistance;
+		private final float startDistance;
+		private float oldWaterCost;
+		private final boolean canFly;
+
+		public FollowOwnerGoal(ZombifiedPigman zombifiedPigman, double speedModifier, float startDistance, float stopDistance, boolean canFly) {
+			this.tamable = zombifiedPigman;
+			this.level = zombifiedPigman.level();
+			this.speedModifier = speedModifier;
+			this.navigation = zombifiedPigman.getNavigation();
+			this.startDistance = startDistance;
+			this.stopDistance = stopDistance;
+			this.canFly = canFly;
+			this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
+			if (!(zombifiedPigman.getNavigation() instanceof GroundPathNavigation) && !(zombifiedPigman.getNavigation() instanceof FlyingPathNavigation)) {
+				throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
+			}
 		}
-		this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(FossilsLegacyItems.ANCIENT_HELMET.get()));
+
+		@Override
+		public boolean canUse() {
+			LivingEntity livingEntity = this.tamable.getOwner();
+			if (livingEntity == null) {
+				return false;
+			} else if (livingEntity.isSpectator()) {
+				return false;
+			} else if (this.unableToMove()) {
+				return false;
+			} else if (this.tamable.distanceToSqr(livingEntity) < (double) (this.startDistance * this.startDistance)) {
+				return false;
+			} else {
+				this.owner = livingEntity;
+				return true;
+			}
+		}
+
+		@Override
+		public boolean canContinueToUse() {
+			if (this.navigation.isDone()) {
+				return false;
+			} else if (this.unableToMove()) {
+				return false;
+			} else {
+				return !(this.tamable.distanceToSqr(this.owner) <= (double) (this.stopDistance * this.stopDistance));
+			}
+		}
+
+		private boolean unableToMove() {
+			return this.tamable.isPassenger() || this.tamable.isLeashed();
+		}
+
+		@Override
+		public void start() {
+			this.timeToRecalcPath = 0;
+			this.oldWaterCost = this.tamable.getPathfindingMalus(BlockPathTypes.WATER);
+			this.tamable.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
+		}
+
+		@Override
+		public void stop() {
+			this.owner = null;
+			this.navigation.stop();
+			this.tamable.setPathfindingMalus(BlockPathTypes.WATER, this.oldWaterCost);
+		}
+
+		@Override
+		public void tick() {
+			this.tamable.getLookControl().setLookAt(this.owner, 10.0F, (float) this.tamable.getMaxHeadXRot());
+			if (--this.timeToRecalcPath <= 0) {
+				this.timeToRecalcPath = this.adjustedTickDelay(10);
+				if (this.tamable.distanceToSqr(this.owner) >= 144.0D) {
+					this.teleportToOwner();
+				} else {
+					this.navigation.moveTo(this.owner, this.speedModifier);
+				}
+
+			}
+		}
+
+		private void teleportToOwner() {
+			BlockPos blockPos = this.owner.blockPosition();
+
+			for (int i = 0; i < 10; ++i) {
+				int xOffset = this.randomIntInclusive(-3, 3);
+				int yOffset = this.randomIntInclusive(-1, 1);
+				int zOffset = this.randomIntInclusive(-3, 3);
+				boolean flag = this.maybeTeleportTo(blockPos.getX() + xOffset, blockPos.getY() + yOffset, blockPos.getZ() + zOffset);
+				if (flag) {
+					return;
+				}
+			}
+		}
+
+		private boolean maybeTeleportTo(int x, int y, int z) {
+			if (Math.abs((double) x - this.owner.getX()) < 2.0D && Math.abs((double) z - this.owner.getZ()) < 2.0D) {
+				return false;
+			} else if (!this.canTeleportTo(new BlockPos(x, y, z))) {
+				return false;
+			} else {
+				this.tamable.moveTo((double) x + 0.5D, (double) y, (double) z + 0.5D, this.tamable.getYRot(), this.tamable.getXRot());
+				this.navigation.stop();
+				return true;
+			}
+		}
+
+		private boolean canTeleportTo(BlockPos blockPos) {
+			BlockPathTypes blockPathTypes = WalkNodeEvaluator.getBlockPathTypeStatic(this.level, blockPos.mutable());
+			if (blockPathTypes != BlockPathTypes.WALKABLE) {
+				return false;
+			} else {
+				BlockState blockState = this.level.getBlockState(blockPos.below());
+				if (!this.canFly && blockState.getBlock() instanceof LeavesBlock) {
+					return false;
+				} else {
+					BlockPos animalPos = blockPos.subtract(this.tamable.blockPosition());
+					return this.level.noCollision(this.tamable, this.tamable.getBoundingBox().move(animalPos));
+				}
+			}
+		}
+
+		private int randomIntInclusive(int low, int high) {
+			return this.tamable.getRandom().nextInt(high - low + 1) + low;
+		}
+	}
+
+	class OwnerHurtByTargetGoal extends TargetGoal {
+		private final ZombifiedPigman zombifiedPigman;
+		private LivingEntity ownerLastHurtBy;
+		private int timestamp;
+
+		public OwnerHurtByTargetGoal(ZombifiedPigman zombifiedPigman) {
+			super(zombifiedPigman, false);
+			this.zombifiedPigman = zombifiedPigman;
+			this.setFlags(EnumSet.of(Goal.Flag.TARGET));
+		}
+
+		@Override
+		public boolean canUse() {
+			if (this.zombifiedPigman.isTame()) {
+				LivingEntity livingentity = this.zombifiedPigman.getOwner();
+				if (livingentity == null) {
+					return false;
+				} else {
+					this.ownerLastHurtBy = livingentity.getLastHurtByMob();
+					int i = livingentity.getLastHurtByMobTimestamp();
+					return i != this.timestamp && this.canAttack(this.ownerLastHurtBy, TargetingConditions.DEFAULT) && this.zombifiedPigman.wantsToAttack(this.ownerLastHurtBy, livingentity);
+				}
+			} else {
+				return false;
+			}
+		}
+
+		@Override
+		public void start() {
+			this.mob.setTarget(this.ownerLastHurtBy);
+			LivingEntity livingentity = this.zombifiedPigman.getOwner();
+			if (livingentity != null) {
+				this.timestamp = livingentity.getLastHurtByMobTimestamp();
+			}
+
+			super.start();
+		}
+	}
+
+	class OwnerHurtTargetGoal extends TargetGoal {
+		private final ZombifiedPigman zombifiedPigman;
+		private LivingEntity ownerLastHurt;
+		private int timestamp;
+
+		public OwnerHurtTargetGoal(ZombifiedPigman zombifiedPigman) {
+			super(zombifiedPigman, false);
+			this.zombifiedPigman = zombifiedPigman;
+			this.setFlags(EnumSet.of(Goal.Flag.TARGET));
+		}
+
+		@Override
+		public boolean canUse() {
+			if (this.zombifiedPigman.isTame()) {
+				LivingEntity livingentity = this.zombifiedPigman.getOwner();
+				if (livingentity == null) {
+					return false;
+				} else {
+					this.ownerLastHurt = livingentity.getLastHurtMob();
+					int i = livingentity.getLastHurtMobTimestamp();
+					return i != this.timestamp && this.canAttack(this.ownerLastHurt, TargetingConditions.DEFAULT) && this.zombifiedPigman.wantsToAttack(this.ownerLastHurt, livingentity);
+				}
+			} else {
+				return false;
+			}
+		}
+
+		@Override
+		public void start() {
+			this.mob.setTarget(this.ownerLastHurt);
+			LivingEntity livingentity = this.zombifiedPigman.getOwner();
+			if (livingentity != null) {
+				this.timestamp = livingentity.getLastHurtMobTimestamp();
+			}
+
+			super.start();
+		}
 	}
 }

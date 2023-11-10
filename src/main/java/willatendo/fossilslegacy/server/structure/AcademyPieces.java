@@ -64,29 +64,47 @@ public class AcademyPieces {
 
 		@Override
 		protected void handleDataMarker(String data, BlockPos blockPos, ServerLevelAccessor serverLevelAccessor, RandomSource randomSource, BoundingBox boundingBox) {
-			if ("academy_loot".equals(data)) {
-				serverLevelAccessor.setBlock(blockPos, Blocks.CHEST.defaultBlockState().setValue(ChestBlock.FACING, Direction.NORTH), 3);
+			Direction offset = Direction.NORTH;
+			if (this.placeSettings.getRotation() == Rotation.CLOCKWISE_90) {
+				offset = Direction.EAST;
+			}
+			if (this.placeSettings.getRotation() == Rotation.CLOCKWISE_180) {
+				offset = Direction.SOUTH;
+			}
+			if (this.placeSettings.getRotation() == Rotation.COUNTERCLOCKWISE_90) {
+				offset = Direction.WEST;
+			}
+
+			if (data.contains("academy_loot")) {
+				Direction facing = Direction.NORTH;
+				if (data.contains("east")) {
+					facing = Direction.EAST;
+				}
+				if (data.contains("west")) {
+					facing = Direction.WEST;
+				}
+				serverLevelAccessor.setBlock(blockPos, Blocks.CHEST.defaultBlockState().setValue(ChestBlock.FACING, this.getDirection(facing, offset)), 3);
 				BlockEntity blockEntity = serverLevelAccessor.getBlockEntity(blockPos);
 				if (blockEntity instanceof ChestBlockEntity chestBlockEntity) {
 					chestBlockEntity.setLootTable(FossilsLegacyLootTables.ACADEMY_LOOT, randomSource.nextLong());
 				}
 			}
 			if ("academy_disc".equals(data)) {
-				serverLevelAccessor.setBlock(blockPos, Blocks.CHEST.defaultBlockState().setValue(ChestBlock.FACING, Direction.NORTH), 3);
+				serverLevelAccessor.setBlock(blockPos, Blocks.CHEST.defaultBlockState().setValue(ChestBlock.FACING, this.getDirection(Direction.SOUTH, offset)), 3);
 				BlockEntity blockEntity = serverLevelAccessor.getBlockEntity(blockPos);
 				if (blockEntity instanceof ChestBlockEntity chestBlockEntity) {
 					chestBlockEntity.setLootTable(FossilsLegacyLootTables.ACADEMY_DISC, randomSource.nextLong());
 				}
 			}
 			if ("academy_loot_right".equals(data)) {
-				serverLevelAccessor.setBlock(blockPos, Blocks.CHEST.defaultBlockState().setValue(ChestBlock.TYPE, ChestType.RIGHT).setValue(ChestBlock.FACING, Direction.NORTH), 3);
+				serverLevelAccessor.setBlock(blockPos, Blocks.CHEST.defaultBlockState().setValue(ChestBlock.TYPE, ChestType.RIGHT).setValue(ChestBlock.FACING, this.getDirection(Direction.NORTH, offset)), 3);
 				BlockEntity blockEntity = serverLevelAccessor.getBlockEntity(blockPos);
 				if (blockEntity instanceof ChestBlockEntity chestBlockEntity) {
 					chestBlockEntity.setLootTable(FossilsLegacyLootTables.ACADEMY_LOOT, randomSource.nextLong());
 				}
 			}
 			if ("academy_loot_left".equals(data)) {
-				serverLevelAccessor.setBlock(blockPos, Blocks.CHEST.defaultBlockState().setValue(ChestBlock.TYPE, ChestType.LEFT).setValue(ChestBlock.FACING, Direction.NORTH), 3);
+				serverLevelAccessor.setBlock(blockPos, Blocks.CHEST.defaultBlockState().setValue(ChestBlock.TYPE, ChestType.LEFT).setValue(ChestBlock.FACING, this.getDirection(Direction.NORTH, offset)), 3);
 				BlockEntity blockEntity = serverLevelAccessor.getBlockEntity(blockPos);
 				if (blockEntity instanceof ChestBlockEntity chestBlockEntity) {
 					chestBlockEntity.setLootTable(FossilsLegacyLootTables.ACADEMY_LOOT, randomSource.nextLong());
@@ -112,6 +130,18 @@ public class AcademyPieces {
 				});
 			}
 			this.templatePosition = templatePos;
+		}
+
+		private Direction getDirection(Direction base, Direction offset) {
+			if (offset == Direction.EAST) {
+				return base.getClockWise();
+			} else if (offset == Direction.SOUTH) {
+				return base.getClockWise().getClockWise();
+			} else if (offset == Direction.WEST) {
+				return base.getCounterClockWise();
+			} else {
+				return base;
+			}
 		}
 	}
 }

@@ -14,32 +14,38 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 
 	@Override
 	protected void addTranslations() {
+		// Advancements
+		this.add("advancements.fossilslegacy.anu.root.title", "Awoken");
+		this.add("advancements.fossilslegacy.anu.root.desc", "Find Anu!");
+		
 		this.add("advancements.fossilslegacy.legacy.root.title", "The Legacy");
 		this.add("advancements.fossilslegacy.legacy.root.desc", "Play the Fossils and Archaeology: Legacy!");
 		this.add("advancements.fossilslegacy.legacy.fossil.title", "Fossils!");
-		this.add("advancements.fossilslegacy.legacy.fossil.desc", "Discover a fossil!");
+		this.add("advancements.fossilslegacy.legacy.fossil.desc", "Aquire a fossil!");
 		this.add("advancements.fossilslegacy.legacy.relic_scrap.title", "Old News");
-		this.add("advancements.fossilslegacy.legacy.relic_scrap.desc", "Discover a relic scrap, the remnants of long forgotten civilizations.");
+		this.add("advancements.fossilslegacy.legacy.relic_scrap.desc", "Aquire a relic scrap!");
 		this.add("advancements.fossilslegacy.legacy.sword_artifact.title", "Once Feared");
-		this.add("advancements.fossilslegacy.legacy.sword_artifact.desc", "Now a mess of red metal. No instructions.");
+		this.add("advancements.fossilslegacy.legacy.sword_artifact.desc", "Aquire a Sword Artifact.");
 		this.add("advancements.fossilslegacy.legacy.ancient_sword.title", "1.21 Gigawatts!");
-		this.add("advancements.fossilslegacy.legacy.ancient_sword.desc", "Charged and loaded!");
+		this.add("advancements.fossilslegacy.legacy.ancient_sword.desc", "Repair an Ancient Sword!");
 		this.add("advancements.fossilslegacy.legacy.pigman.title", "From the Dead!");
-		this.add("advancements.fossilslegacy.legacy.pigman.desc", "Created a pigman!");
+		this.add("advancements.fossilslegacy.legacy.pigman.desc", "Spawn a pigman!");
 		this.add("advancements.fossilslegacy.legacy.helmet_artifact.title", "Black Magic");
-		this.add("advancements.fossilslegacy.legacy.helmet_artifact.desc", "It feels magical somehow...");
+		this.add("advancements.fossilslegacy.legacy.helmet_artifact.desc", "Aquire a Helmet Artifact");
 		this.add("advancements.fossilslegacy.legacy.ancient_helmet.title", "Nether Connections");
-		this.add("advancements.fossilslegacy.legacy.ancient_helmet.desc", "With the right tool, control may be in your power!");
+		this.add("advancements.fossilslegacy.legacy.ancient_helmet.desc", "Repair an Ancient Helmet");
 		this.add("advancements.fossilslegacy.legacy.tamed_pigman.title", "Till Death I'm To Serve You!");
-		this.add("advancements.fossilslegacy.legacy.tamed_pigman.desc", "Created a tamed pigman!");
-		this.add("advancements.fossilslegacy.legacy.archaeology_workbench.title", "We're Cooking!");
-		this.add("advancements.fossilslegacy.legacy.archaeology_workbench.desc", "Maybe we can discover how to put these back together!");
+		this.add("advancements.fossilslegacy.legacy.tamed_pigman.desc", "Spawn a tamed pigman!");
+		this.add("advancements.fossilslegacy.legacy.archaeology_workbench.title", "An Archaeologist's Table!");
+		this.add("advancements.fossilslegacy.legacy.archaeology_workbench.desc", "Make a Archaeology Workbench!");
 		this.add("advancements.fossilslegacy.legacy.stone_hieroglyph.title", "An Old Story");
 		this.add("advancements.fossilslegacy.legacy.stone_hieroglyph.desc", "Place a cave painting!");
 		this.add("advancements.fossilslegacy.legacy.skull_block.title", "Spooky Skeletons!");
 		this.add("advancements.fossilslegacy.legacy.skull_block.desc", "Or...Maybe just their skulls?");
 		this.add("advancements.fossilslegacy.legacy.skeletons.title", "Real Pirates");
 		this.add("advancements.fossilslegacy.legacy.skeletons.desc", "Kill a drowned pirate!");
+
+		// Blocks
 		this.add(FossilsLegacyBlocks.FOSSIL_ORE.get(), "Fossil Ore");
 		this.add(FossilsLegacyBlocks.SKULL_BLOCK.get(), "Skull Block");
 		this.add(FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get(), "Skull Lanturn Block");
@@ -53,8 +59,15 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyBlocks.FEEDER.get(), "Feeder");
 		this.add(FossilsLegacyBlocks.PERMAFROST.get(), "Permafrost");
 		this.add(FossilsLegacyBlocks.ICED_STONE.get(), "Iced Stone");
+
+		// Creative Mode Tab
+		this.add(FossilsLegacyCreativeModeTabs.FOSSILS_LEGACY.get(), "F/A: Legacy");
+
+		// Deaths
 		this.add("death.attack.javelin", "%1$s was impaled by %2$s");
 		this.add("death.attack.dinosaur_starve", "%1$s starved to death");
+
+		// Dinosaur Encycopedia
 		this.add("encyclopedia.fossilslegacy.egg", "%s Egg");
 		this.add("encyclopedia.fossilslegacy.triceratops", "Triceratops");
 		this.add("encyclopedia.fossilslegacy.cat", "Cat");
@@ -87,6 +100,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("encyclopedia.fossilslegacy.pregnancy_time", "Pregnacy Time: %s");
 		this.add("encyclopedia.fossilslegacy.embryo", "Embryo: %s");
 		this.add("encyclopedia.fossilslegacy.creature", "Creature: %s");
+
+		// Entities
 		this.add(FossilsLegacyEntities.MAMMOTH.get(), "Mammoth");
 		this.add(FossilsLegacyEntities.SMILODON.get(), "Smilodon");
 		this.add(FossilsLegacyEntities.TRICERATOPS.get(), "Triceratops");
@@ -114,6 +129,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyEntities.DROWNED_PIRATE.get(), "Drowned Pirate");
 		this.add(FossilsLegacyEntities.THROWN_JAVELIN.get(), "Thrown Javelin");
 		this.add(FossilsLegacyEntities.STONE_HIEROGLYPH.get(), "Stone Hieroglyph");
+
+		// Items
 		this.add(FossilsLegacyItems.FOSSIL.get(), "Fossil");
 		this.add(FossilsLegacyItems.TRICERATOPS_DNA.get(), "Triceratops DNA");
 		this.add(FossilsLegacyItems.UTAHRAPTOR_DNA.get(), "Utahraptor DNA");
@@ -249,19 +266,33 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get(), "Mammoth Spawn Egg");
 		this.add(FossilsLegacyItems.SMILODON_SPAWN_EGG.get(), "Smilodon Spawn Egg");
 		this.add(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get(), "Triceratops Spawn Egg");
-		this.add(FossilsLegacyCreativeModeTabs.FOSSILS_LEGACY.get(), "F/A: Legacy");
+		this.add("item.fossilslegacy.smithing_template.gem_upgrade.applies_to", "Netherite Equipment");
+		this.add("item.fossilslegacy.smithing_template.gem_upgrade.ingredients", "Gem Artifact");
+		this.add("item.fossilslegacy.smithing_template.gem_upgrade.base_slot_description", "Add netherite weapon or tool");
+		this.add("item.fossilslegacy.smithing_template.gem_upgrade.additions_slot_description", "Add gem artifact");
+
+		// JEI
 		this.add("jei.fossilslegacy.archaeology", "Archaeology");
 		this.add("jei.fossilslegacy.analyzation", "Analyzation");
-		this.add("jei.fossilslegacy.cultivaton", "Cultivaton");
+		this.add("jei.fossilslegacy.cultivation", "Cultivation");
+		this.add("jei.fossilslegacy.biomatter", "Biomatter");
+		this.add("jei.fossilslegacy.biomatter.biomatterCount.single", "Biomatter for 1 item");
+		this.add("jei.fossilslegacy.biomatter.biomatterCount", "Biomatter for %s items");
+
+		// Menus
 		this.add("menu.fossilslegacy.analyzer", "Analyzer");
 		this.add("menu.fossilslegacy.archaeology_workbench", "Archaeology Workbench");
-		this.add("menu.fossilslegacy.cultivation", "Cultivation");
+		this.add("menu.fossilslegacy.cultivator", "Cultivator");
 		this.add("menu.fossilslegacy.feeder", "Feeder");
+
+		// Orders
 		this.add("order.fossilslegacy.follow", "Follow");
 		this.add("order.fossilslegacy.stay", "Stay");
 		this.add("order.fossilslegacy.free_move", "Free Move");
 		this.add("order.fossilslegacy.order.use", "Set to %s");
 		this.add("order.fossilslegacy.magic_conch.use", "Set all plesiosaurs in a 30 block radius to %s.");
+
+		// Sounds
 		this.add("sound.fossilslegacy.mammoth.ambient", "Mammoth Trumpets");
 		this.add("sound.fossilslegacy.mammoth.hurt", "Mammoth Hurts");
 		this.add("sound.fossilslegacy.mammoth.death", "Mammoth Dies");
@@ -273,6 +304,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("sound.fossilslegacy.smilodon.death", "Smilodon Dies");
 		this.add("sound.fossilslegacy.drum.hit", "Drum Hit");
 		this.add("sound.fossilslegacy.drum.triple_hit", "Drum Triple Hit");
+
+		// Stone Hieroglyph
 		this.add("stone_hieroglyph.fossilslegacy.lighting.title", "Lightning");
 		this.add("stone_hieroglyph.fossilslegacy.lighting.author", "Team July");
 		this.add("stone_hieroglyph.fossilslegacy.social.title", "Social");
@@ -314,10 +347,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("stone_hieroglyph.fossilslegacy.future.title", "Future");
 		this.add("stone_hieroglyph.fossilslegacy.future.author", "Team July");
 		this.add("stone_hieroglyph.fossilslegacy.random", "Random variant");
+		
+		// Upgrades
 		this.add("upgrade.fossilslegacy.gem_upgrade", "Gem Upgrade");
-		this.add("item.fossilslegacy.smithing_template.gem_upgrade.applies_to", "Netherite Equipment");
-		this.add("item.fossilslegacy.smithing_template.gem_upgrade.ingredients", "Gem Artifact");
-		this.add("item.fossilslegacy.smithing_template.gem_upgrade.base_slot_description", "Add netherite weapon or tool");
-		this.add("item.fossilslegacy.smithing_template.gem_upgrade.additions_slot_description", "Add gem artifact");
 	}
 }

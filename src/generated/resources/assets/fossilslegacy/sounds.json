@@ -29,6 +29,25 @@
     ],
     "subtitle": "sound.fossilslegacy.mammoth.hurt"
   },
+  "entity.pteranodon.ambient": {
+    "sounds": [
+      "fossilslegacy:pteranodon_ambient_1",
+      "fossilslegacy:pteranodon_ambient_2"
+    ],
+    "subtitle": "sound.fossilslegacy.pteranodon.ambient"
+  },
+  "entity.pteranodon.death": {
+    "sounds": [
+      "fossilslegacy:pteranodon_death"
+    ],
+    "subtitle": "sound.fossilslegacy.pteranodon.death"
+  },
+  "entity.pteranodon.hurt": {
+    "sounds": [
+      "fossilslegacy:pteranodon_hurt"
+    ],
+    "subtitle": "sound.fossilslegacy.pteranodon.hurt"
+  },
   "entity.smilodon.ambient": {
     "sounds": [
       "fossilslegacy:smilodon_ambient_1",

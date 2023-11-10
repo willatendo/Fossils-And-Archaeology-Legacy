@@ -28,6 +28,7 @@ public class ForgeServerEvents {
 				zombifiedPigman.setItemInHand(InteractionHand.MAIN_HAND, FossilsLegacyItems.ANCIENT_SWORD.get().getDefaultInstance());
 				zombifiedPigman.setItemSlot(EquipmentSlot.HEAD, FossilsLegacyItems.ANCIENT_HELMET.get().getDefaultInstance());
 				zombifiedPigman.moveTo(pig.getX(), pig.getY(), pig.getZ());
+				zombifiedPigman.setHealth(zombifiedPigman.getMaxHealth());
 				level.addFreshEntity(zombifiedPigman);
 				pig.discard();
 			}

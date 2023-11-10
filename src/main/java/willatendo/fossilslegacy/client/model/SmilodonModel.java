@@ -14,16 +14,27 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.client.animation.SmilodonAnimations;
 import willatendo.fossilslegacy.server.entity.Smilodon;
+import willatendo.fossilslegacy.server.utils.DinosaurOrder;
 
 public class SmilodonModel extends HierarchicalModel<Smilodon> {
 	private final ModelPart head;
 	private final ModelPart root;
 	private final ModelPart tail;
+//	private final ModelPart body;
+//	private final ModelPart backRightLeg;
+//	private final ModelPart backLeftLeg;
+//	private final ModelPart frontRightLeg;
+//	private final ModelPart frontLeftLeg;
 
 	public SmilodonModel(ModelPart root) {
 		this.root = root;
 		this.head = root.getChild("head");
 		this.tail = root.getChild("tail");
+//		this.body = root.getChild("body");
+//		this.backRightLeg = root.getChild("back_right_leg");
+//		this.backLeftLeg = root.getChild("back_left_leg");
+//		this.frontRightLeg = root.getChild("front_right_leg");
+//		this.frontLeftLeg = root.getChild("front_left_leg");
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -46,6 +57,10 @@ public class SmilodonModel extends HierarchicalModel<Smilodon> {
 	public void prepareMobModel(Smilodon smilodon, float limbSwing, float limbSwingAmount, float headPitch) {
 		this.tail.yRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 		super.prepareMobModel(smilodon, limbSwing, limbSwingAmount, headPitch);
+
+		if (smilodon.getCommand() == DinosaurOrder.STAY) {
+		} else {
+		}
 	}
 
 	@Override

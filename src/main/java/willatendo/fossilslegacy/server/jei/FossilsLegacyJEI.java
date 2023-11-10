@@ -13,7 +13,6 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.IRecipeTransferRegistration;
 import mezz.jei.api.runtime.IIngredientManager;
-import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import willatendo.fossilslegacy.client.screen.AnalyzerScreen;
@@ -42,8 +41,12 @@ public class FossilsLegacyJEI implements IModPlugin {
 	public static final RecipeType<AnalyzationRecipe> ANALYZATION = RecipeType.create(FossilsLegacyUtils.ID, "analyzation_category", AnalyzationRecipe.class);
 	public static final RecipeType<BiomatterRecipe> BIOMATTER = RecipeType.create(FossilsLegacyUtils.ID, "biomatter_category", BiomatterRecipe.class);
 	public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/gui/fossils_legacy_jei.png");
-	public static final ResourceLocation BIOMATTER_TEXTURE = FossilsLegacyUtils.resource("textures/gui/fossils_legacy_jei.png");
-	public static final ResourceLocation FOSSILS_LEGACY_TEXTURE_ATLAS = FossilsLegacyUtils.resource("textures/atlas/gui.png");
+
+	// JEI Constants
+	public static final String JEI_ID = "jei";
+	public static final ResourceLocation LOCATION_JEI_GUI_TEXTURE_ATLAS = new ResourceLocation(FossilsLegacyJEI.JEI_ID, "textures/atlas/gui.png");
+
+	private static FossilsLegacyJEITextures textures;
 
 	private ArchaeologyCategory archaeologyCategory;
 	private CultivationCategory cultivationCategory;
@@ -54,10 +57,17 @@ public class FossilsLegacyJEI implements IModPlugin {
 		return FossilsLegacyUtils.resource("fossils_legacy_jei");
 	}
 
+	public static FossilsLegacyJEITextures getTextures(IGuiHelper iGuiHelper) {
+		if (textures == null) {
+			textures = new FossilsLegacyJEITextures(iGuiHelper);
+		}
+		return textures;
+	}
+
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration iRecipeCategoryRegistration) {
 		IGuiHelper iGuiHelper = iRecipeCategoryRegistration.getJeiHelpers().getGuiHelper();
-		FossilsLegacyJEITextures fossilsLegacyJEITextures = new FossilsLegacyJEITextures(iGuiHelper, new FossilsLegacySpriteUploader(Minecraft.getInstance().getTextureManager()));
+		FossilsLegacyJEITextures fossilsLegacyJEITextures = this.getTextures(iGuiHelper);
 		iRecipeCategoryRegistration.addRecipeCategories(this.archaeologyCategory = new ArchaeologyCategory(iGuiHelper, fossilsLegacyJEITextures), this.cultivationCategory = new CultivationCategory(iGuiHelper, fossilsLegacyJEITextures), this.analyzationCategory = new AnalyzationCategory(iGuiHelper, fossilsLegacyJEITextures), new BiomatterCategory(iGuiHelper, fossilsLegacyJEITextures));
 	}
 

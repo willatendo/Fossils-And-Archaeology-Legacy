@@ -34,7 +34,6 @@ public class WeaponShopPieces {
 	}
 
 	public static class WeaponShopPiece extends TemplateStructurePiece {
-
 		public WeaponShopPiece(StructureTemplateManager struxtureTemplateManager, ResourceLocation structureLocation, BlockPos blockPos, Rotation rotation) {
 			super(FossilLegacysStructurePeices.WEAPON_SHOP.get(), 0, struxtureTemplateManager, structureLocation, structureLocation.toString(), makeSettings(rotation, structureLocation), blockPos);
 		}

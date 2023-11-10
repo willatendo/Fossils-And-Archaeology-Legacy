@@ -189,8 +189,7 @@ public class Mammoth extends Animal implements DinosaurEncyclopediaInfo, HungryA
 
 	@Override
 	public InteractionResult interactAt(Player player, Vec3 vec3, InteractionHand interactionHand) {
-		if (!this.isTame()) {
-			this.setOwnerUUID(player.getUUID());
+		if (this.TESTING_autotame(player)) {
 			return InteractionResult.SUCCESS;
 		}
 		if (!this.hasPassenger(this) && player.getItemInHand(interactionHand).isEmpty() && !this.isBaby()) {

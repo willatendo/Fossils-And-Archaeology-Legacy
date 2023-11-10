@@ -1,0 +1,39 @@
+{
+  "parent": "fossilslegacy:legacy/helmet_artifact",
+  "criteria": {
+    "has_ancient_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "fossilslegacy:ancient_helmet"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.ancient_helmet.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "fossilslegacy:ancient_helmet",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.ancient_helmet.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_ancient_helmet"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

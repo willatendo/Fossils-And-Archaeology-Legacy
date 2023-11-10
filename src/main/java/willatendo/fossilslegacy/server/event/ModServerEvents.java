@@ -28,6 +28,8 @@ import willatendo.fossilslegacy.server.entity.Egg;
 import willatendo.fossilslegacy.server.entity.Failuresaurus;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
 import willatendo.fossilslegacy.server.entity.Mammoth;
+import willatendo.fossilslegacy.server.entity.Nautilus;
+import willatendo.fossilslegacy.server.entity.Pteranodon;
 import willatendo.fossilslegacy.server.entity.Smilodon;
 import willatendo.fossilslegacy.server.entity.Triceratops;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
@@ -38,6 +40,8 @@ public class ModServerEvents {
 	@SubscribeEvent
 	public static void entityAttributes(EntityAttributeCreationEvent event) {
 		event.put(FossilsLegacyEntities.MAMMOTH.get(), Mammoth.mammothAttributes());
+		event.put(FossilsLegacyEntities.NAUTILUS.get(), Nautilus.nautilusAttributes());
+		event.put(FossilsLegacyEntities.PTERANODON.get(), Pteranodon.triceratopsAttributes());
 		event.put(FossilsLegacyEntities.SMILODON.get(), Smilodon.smilodonAttributes());
 		event.put(FossilsLegacyEntities.TRICERATOPS.get(), Triceratops.triceratopsAttributes());
 

@@ -1,0 +1,38 @@
+{
+  "parent": "fossilslegacy:legacy/relic_scrap",
+  "criteria": {
+    "has_helmet_artifact": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "fossilslegacy:helmet_artifact"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.helmet_artifact.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "fossilslegacy:helmet_artifact"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.helmet_artifact.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_helmet_artifact"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

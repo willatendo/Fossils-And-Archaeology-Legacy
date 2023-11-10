@@ -1,4 +1,4 @@
-// 1.20.1	2023-10-21T12:53:30.9582837	Loot Tables
+// 1.20.1	2023-10-29T11:27:09.6090004	Loot Tables
 5fcf811a958fcf132678d4423a7472c475c2b8ca data/fossilslegacy/loot_tables/blocks/analyzer.json
 8bfc811efa599c9be09afe46481ec9ebbf5f3a33 data/fossilslegacy/loot_tables/blocks/archaeology_workbench.json
 e83811b242ba161162f08caf7aa75548ce90fc3c data/fossilslegacy/loot_tables/blocks/cultivator.json
@@ -62,6 +62,7 @@ ca3991b9523f89ddd711328238c73e5697c66eb4 data/fossilslegacy/loot_tables/entities
 e84bdf159108ba6d46094e60472b626460bb1483 data/fossilslegacy/loot_tables/entities/pregnant_sheep/yellow.json
 0624df415e20aeedf6fc574ed5e5d8665ddd668a data/fossilslegacy/loot_tables/entities/pregnant_smilodon.json
 1aadba90eff629e1f073886a361663b91e9c522d data/fossilslegacy/loot_tables/entities/pregnant_wolf.json
+6660d4b54a2f7a07954ede07dd8de0157bf66d17 data/fossilslegacy/loot_tables/entities/pteranodon.json
 eaadca06b79dd4ef1f535b6e991a8cee5bc41b2d data/fossilslegacy/loot_tables/entities/smilodon.json
 cd8dcbce21cf19b35eda105edd681447173f5fb0 data/fossilslegacy/loot_tables/entities/triceratops.json
 1b855595ddac04c7062dd907f50930b5a1c043a1 data/fossilslegacy/loot_tables/entities/zombified_pigman.json

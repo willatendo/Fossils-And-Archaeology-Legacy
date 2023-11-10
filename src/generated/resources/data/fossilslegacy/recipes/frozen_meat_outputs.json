@@ -9,12 +9,12 @@
       "weight": 33
     },
     {
-      "result": "fossilslegacy:mammoth_dna",
-      "weight": 33
-    },
-    {
       "result": "minecraft:beef",
       "weight": 34
+    },
+    {
+      "result": "fossilslegacy:mammoth_dna",
+      "weight": 33
     }
   ],
   "time": 100

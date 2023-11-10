@@ -1,0 +1,45 @@
+{
+  "parent": "fossilslegacy:legacy/archaeology_workbench",
+  "criteria": {
+    "used_stone_hieroglyph": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {}
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": [
+                "fossilslegacy:stone_hieroglyph"
+              ]
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.stone_hieroglyph.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "fossilslegacy:stone_hieroglyph"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.stone_hieroglyph.title"
+    }
+  },
+  "requirements": [
+    [
+      "used_stone_hieroglyph"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
