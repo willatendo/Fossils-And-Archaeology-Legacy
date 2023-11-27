@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.server.entity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Entity.RemovalReason;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
@@ -27,6 +28,9 @@ public interface TicksToBirth<T extends Entity> {
 			if (offspring instanceof GrowingEntity growingEntity) {
 				growingEntity.setGrowthStage(0);
 				growingEntity.setRealAge(0);
+			}
+			if (offspring instanceof Animal animal) {
+				animal.setBaby(true);
 			}
 			if (offspring instanceof TamesOnBirth tamesOnBirth) {
 				Player player = level.getNearestPlayer(offspring, 25.0D);

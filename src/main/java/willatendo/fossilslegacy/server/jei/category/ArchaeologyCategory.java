@@ -15,9 +15,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.library.util.RecipeUtil;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.crafting.Ingredient;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
-import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.jei.FossilsLegacyJEI;
 import willatendo.fossilslegacy.server.jei.FossilsLegacyJEITextures;
 import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
@@ -69,7 +67,6 @@ public class ArchaeologyCategory implements IRecipeCategory<ArchaeologyRecipe> {
 	@Override
 	public void setRecipe(IRecipeLayoutBuilder iRecipeLayoutBuilder, ArchaeologyRecipe archaeologyRecipe, IFocusGroup iFocusGroup) {
 		iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 5, 5).addIngredients(archaeologyRecipe.getIngredients().get(0));
-		iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.RENDER_ONLY, 36, 39).addIngredients(Ingredient.of(FossilsLegacyItems.RELIC_SCRAP.get()));
 		iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT, 67, 5).addItemStack(RecipeUtil.getResultItem(archaeologyRecipe));
 	}
 

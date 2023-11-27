@@ -128,7 +128,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 			--analyzerBlockEntity.onTime;
 		}
 
-		for (int inputSlots = 0; inputSlots < 9; inputSlots++) {
+		for (int inputSlots = 8; inputSlots >= 0; inputSlots--) {
 			boolean hasInput = !analyzerBlockEntity.itemStacks.get(inputSlots).isEmpty();
 			if (analyzerBlockEntity.isOn() || hasInput) {
 				Recipe<Container> recipe;
@@ -154,7 +154,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 								++analyzerBlockEntity.analyzationProgress;
 								if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
 									analyzerBlockEntity.analyzationProgress = 0;
-									analyzerBlockEntity.analyzationTotalTime = getTotalCultivationTime(level, analyzerBlockEntity);
+									analyzerBlockEntity.analyzationTotalTime = getTotalAnalyzationTime(level, analyzerBlockEntity);
 									if (analyzerBlockEntity.analyze(outputSlots, inputSlots, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
 										analyzerBlockEntity.setRecipeUsed(recipe);
 									}
@@ -226,7 +226,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 		}
 	}
 
-	private static int getTotalCultivationTime(Level level, AnalyzerBlockEntity analyzerBlockEntity) {
+	private static int getTotalAnalyzationTime(Level level, AnalyzerBlockEntity analyzerBlockEntity) {
 		return analyzerBlockEntity.recipeCheck.getRecipeFor(analyzerBlockEntity, level).map(AnalyzationRecipe::getTime).orElse(100);
 	}
 

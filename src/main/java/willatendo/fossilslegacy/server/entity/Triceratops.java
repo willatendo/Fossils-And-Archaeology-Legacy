@@ -447,6 +447,11 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 	}
 
 	@Override
+	public ResourceLocation[][] legacyTextures() {
+		return new ResourceLocation[][] { { FossilsLegacyUtils.resource("textures/entities/legacy/triceratops/green_adult_triceratops.png"), FossilsLegacyUtils.resource("textures/entities/legacy/triceratops/green_baby_triceratops.png") }, { FossilsLegacyUtils.resource("textures/entities/legacy/triceratops/brown_adult_triceratops.png"), FossilsLegacyUtils.resource("textures/entities/legacy/triceratops/brown_baby_triceratops.png") }, { FossilsLegacyUtils.resource("textures/entities/legacy/triceratops/alternate_adult_triceratops.png"), FossilsLegacyUtils.resource("textures/entities/legacy/triceratops/alternate_baby_triceratops.png") } };
+	}
+
+	@Override
 	public void addAdditionalSaveData(CompoundTag compoundTag) {
 		super.addAdditionalSaveData(compoundTag);
 		compoundTag.putInt("DaysAlive", this.getDaysAlive());

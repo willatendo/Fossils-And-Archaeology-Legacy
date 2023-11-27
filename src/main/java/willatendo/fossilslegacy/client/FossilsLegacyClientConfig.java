@@ -10,7 +10,7 @@ public class FossilsLegacyClientConfig {
 		this.useLegacyModels = builder.comment("If true, legacy models will be used instead of the improved/revamped ones").define("useLegacyModels", false);
 	}
 
-	public BooleanValue useLegacyModels() {
-		return this.useLegacyModels;
+	public boolean useLegacyModels() {
+		return this.useLegacyModels.get();
 	}
 }

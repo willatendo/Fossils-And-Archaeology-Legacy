@@ -36,6 +36,8 @@ public class FossilsLegacyEntities {
 	public static final RegistryObject<EntityType<Smilodon>> SMILODON = ENTITY_TYPES.register("smilodon", () -> EntityType.Builder.<Smilodon>of(Smilodon::new, MobCategory.CREATURE).sized(1.5F, 1.5F).build("smilodon"));
 	public static final RegistryObject<EntityType<Pteranodon>> PTERANODON = ENTITY_TYPES.register("pteranodon", () -> EntityType.Builder.<Pteranodon>of(Pteranodon::new, MobCategory.CREATURE).sized(0.25F, 0.25F).build("pteranodon"));
 	public static final RegistryObject<EntityType<Triceratops>> TRICERATOPS = ENTITY_TYPES.register("triceratops", () -> EntityType.Builder.<Triceratops>of(Triceratops::new, MobCategory.CREATURE).sized(0.5F, 0.5F).build("triceratops"));
+	
+	public static final RegistryObject<EntityType<Fossil>> FOSSIL = ENTITY_TYPES.register("fossil", () -> EntityType.Builder.<Fossil>of(Fossil::new, MobCategory.MISC).sized(0.5F, 0.5F).build("fossil"));
 
 	public static final RegistryObject<EntityType<Egg>> EGG = ENTITY_TYPES.register("egg", () -> EntityType.Builder.<Egg>of(Egg::new, MobCategory.CREATURE).sized(0.5F, 0.5F).build("egg"));
 
