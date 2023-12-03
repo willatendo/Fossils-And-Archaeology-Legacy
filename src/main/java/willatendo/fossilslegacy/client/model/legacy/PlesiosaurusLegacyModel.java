@@ -1,120 +1,54 @@
 package willatendo.fossilslegacy.client.model.legacy;
 
-//public class PlesiosaurLegacyModel extends DinosaurLegacyModel {
-//	public PlesiosaurLegacyModel(ModelPart modelPart) {
-//		super(modelPart);
-//		Body = new ModelRenderer(this, 0, 0);
-//		Body.addBox(-4F, -4F, -4F, 8, 6, 8);
-//		Body.setRotationPoint(0F, 20F, 0F);
-//		Body.rotateAngleX = 0F;
-//		Body.rotateAngleY = 0F;
-//		Body.rotateAngleZ = 0F;
-//		Body.mirror = false;
-//		Neck1 = new ModelRenderer(this, 20, 23);
-//		Neck1.addBox(-3F, 0F, -4F, 6, 5, 4);
-//		Neck1.setRotationPoint(0F, 17F, 0F);
-//		Neck1.rotateAngleX = -0.99446F;
-//		Neck1.rotateAngleY = 0F;
-//		Neck1.rotateAngleZ = 0F;
-//		Neck1.mirror = false;
-//		tail3 = new ModelRenderer(this, 24, 0);
-//		tail3.addBox(-1F, -1F, 0F, 2, 2, 6);
-//		tail3.setRotationPoint(0F, 21F, 11F);
-//		tail3.rotateAngleX = -0.18081F;
-//		tail3.rotateAngleY = 0F;
-//		tail3.rotateAngleZ = 0F;
-//		tail3.mirror = false;
-//		tail2 = new ModelRenderer(this, 18, 14);
-//		tail2.addBox(-2F, -2F, 0F, 4, 3, 6);
-//		tail2.setRotationPoint(0F, 20F, 5F);
-//		tail2.rotateAngleX = -0.27122F;
-//		tail2.rotateAngleY = 0F;
-//		tail2.rotateAngleZ = 0F;
-//		tail2.mirror = false;
-//		tail1 = new ModelRenderer(this, 0, 14);
-//		tail1.addBox(-3F, -5F, 2F, 6, 5, 3);
-//		tail1.setRotationPoint(0F, 20F, 0F);
-//		tail1.rotateAngleX = -0.45203F;
-//		tail1.rotateAngleY = 0F;
-//		tail1.rotateAngleZ = 0F;
-//		tail1.mirror = false;
-//
-//		Neck2 = new ModelRenderer(this, 47, 23);
-//		Neck2.addBox(-2F, -2F, -6F, 4, 4, 5);
-//		Neck2.setRotationPoint(0F, 16F, -4F);
-//		Neck2.rotateAngleX = -0.88974F;
-//		Neck2.rotateAngleY = 0F;
-//		Neck2.rotateAngleZ = 0F;
-//		Neck2.mirror = false;
-//		Neck3 = new ModelRenderer(this, 35, 3);
-//		Neck3.addBox(-1F, -2F, -5F, 2, 3, 5);
-//		Neck3.setRotationPoint(0F, 12.73333F, -8F);
-//		Neck3.rotateAngleX = -0.58764F;
-//		Neck3.rotateAngleY = 0F;
-//		Neck3.rotateAngleZ = 0F;
-//		Neck3.mirror = false;
-//		Neck4 = new ModelRenderer(this, 35, 3);
-//		Neck4.addBox(-1F, -2F, -5F, 2, 3, 5);
-//		Neck4.setRotationPoint(0F, 10F, -11F);
-//		Neck4.rotateAngleX = -0.13561F;
-//		Neck4.rotateAngleY = 0F;
-//		Neck4.rotateAngleZ = 0F;
-//		Neck4.mirror = false;
-//		head = new ModelRenderer(this, 0, 22);
-//		head.addBox(-2F, -2F, -6F, 4, 4, 6);
-//		head.setRotationPoint(0F, 9F, -15F);
-//		head.rotateAngleX = 0.49723F;
-//		head.rotateAngleY = 0F;
-//		head.rotateAngleZ = 0F;
-//		head.mirror = false;
-//		right_arm = new ModelRenderer(this, 44, 13);
-//		right_arm.addBox(0F, 0F, 0F, 6, 1, 4);
-//		right_arm.setRotationPoint(-3F, 21F, -3F);
-//		right_arm.rotateAngleX = -0.5236F;
-//		right_arm.rotateAngleY = -2.35619F;
-//		right_arm.rotateAngleZ = 0F;
-//		right_arm.mirror = false;
-//		left_arm = new ModelRenderer(this, 44, 18);
-//		left_arm.addBox(0F, 0F, -4F, 6, 1, 4);
-//		left_arm.setRotationPoint(3F, 21F, -3F);
-//		left_arm.rotateAngleX = 0.5236F;
-//		left_arm.rotateAngleY = -0.7854F;
-//		left_arm.rotateAngleZ = 0F;
-//		left_arm.mirror = true;
-//		right_leg = new ModelRenderer(this, 48, 0);
-//		right_leg.addBox(0F, 0F, 0F, 5, 1, 3);
-//		right_leg.setRotationPoint(-3F, 21F, 4F);
-//		right_leg.rotateAngleX = -0.5236F;
-//		right_leg.rotateAngleY = -2.0944F;
-//		right_leg.rotateAngleZ = 0F;
-//		right_leg.mirror = false;
-//		left_leg = new ModelRenderer(this, 48, 4);
-//		left_leg.addBox(0F, 0F, -3F, 5, 1, 3);
-//		left_leg.setRotationPoint(3F, 21F, 4F);
-//		left_leg.rotateAngleX = 0.5236F;
-//		left_leg.rotateAngleY = -1.0472F;
-//		left_leg.rotateAngleZ = 0F;
-//		left_leg.mirror = false;
-//	}
-//
-//	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-//		super.render(entity, f, f1, f2, f3, f4, f5);
-//		setRotationAngles(f, f1, f2, f3, f4, f5, false /* ((EntityDinosaurce)entity).isModelized() */);
-//		Body.render(f5);
-//		Neck1.render(f5);
-//		tail3.render(f5);
-//		tail2.render(f5);
-//		tail1.render(f5);
-//		Neck2.render(f5);
-//		Neck3.render(f5);
-//		Neck4.render(f5);
-//		head.render(f5);
-//		right_arm.render(f5);
-//		left_arm.render(f5);
-//		right_leg.render(f5);
-//		left_leg.render(f5);
-//	}
-//
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.CubeListBuilder;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.world.entity.Entity;
+
+public class PlesiosaurusLegacyModel extends EntityModel<Entity> {
+	private final ModelPart root;
+
+	public PlesiosaurusLegacyModel(ModelPart root) {
+		this.root = root;
+	}
+
+	public static LayerDefinition createBodyLayer() {
+		MeshDefinition meshDefinition = new MeshDefinition();
+		PartDefinition partDefinition = meshDefinition.getRoot();
+
+		partDefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 22).addBox(-2.0F, -2.0F, -6.0F, 4.0F, 4.0F, 6.0F), PartPose.offsetAndRotation(0.0F, 9.0F, -15.0F, 0.49723F, 0.0F, 0.0F));
+		partDefinition.addOrReplaceChild("neck_1", CubeListBuilder.create().texOffs(20, 23).addBox(-3.0F, 0.0F, -4.0F, 6.0F, 5.0F, 4.0F), PartPose.offsetAndRotation(0.0F, 17.0F, 0.0F, -0.99446F, 0.0F, 0.0F));
+		partDefinition.addOrReplaceChild("neck_2", CubeListBuilder.create().texOffs(47, 23).addBox(-2.0F, -2.0F, -6.0F, 4.0F, 4.0F, 5.0F), PartPose.offsetAndRotation(0.0F, 16.0F, -4.0F, -0.88974F, 0.0F, 0.0F));
+		partDefinition.addOrReplaceChild("neck_3", CubeListBuilder.create().texOffs(35, 3).addBox(-1.0F, -2.0F, -5.0F, 2.0F, 3.0F, 5.0F), PartPose.offsetAndRotation(0.0F, 12.73333F, -8.0F, -0.58764F, 0.0F, 0.0F));
+		partDefinition.addOrReplaceChild("neck_4", CubeListBuilder.create().texOffs(35, 3).addBox(-1.0F, -2.0F, -5.0F, 2.0F, 3.0F, 5.0F), PartPose.offsetAndRotation(0.0F, 10.0F, -11.0F, -0.13561F, 0.0F, 0.0F));
+		partDefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 6.0F, 8.0F), PartPose.offset(0.0F, 20.0F, 0.0F));
+		partDefinition.addOrReplaceChild("front_right_flipper", CubeListBuilder.create().texOffs(44, 13).addBox(0.0F, 0.0F, 0.0F, 6.0F, 1.0F, 4.0F), PartPose.offsetAndRotation(-3.0F, 21.0F, -3.0F, -0.5236F, -2.35619F, 0.0F));
+		partDefinition.addOrReplaceChild("front_left_flipper", CubeListBuilder.create().texOffs(44, 18).addBox(0.0F, 0.0F, -4.0F, 6.0F, 1.0F, 4.0F), PartPose.offsetAndRotation(3.0F, 21.0F, -3.0F, 0.5236F, -0.7854F, 0.0F));
+		partDefinition.addOrReplaceChild("back_right_flipper", CubeListBuilder.create().texOffs(48, 0).addBox(0.0F, 0.0F, 0.0F, 5.0F, 1.0F, 3.0F), PartPose.offsetAndRotation(-3.0F, 21.0F, 4.0F, -0.5236F, -2.0944F, 0.0F));
+		partDefinition.addOrReplaceChild("back_left_flipper", CubeListBuilder.create().texOffs(48, 4).addBox(0.0F, 0.0F, -3.0F, 5.0F, 1.0F, 3.0F), PartPose.offsetAndRotation(3.0F, 21.0F, 4.0F, 0.5236F, -1.0472F, 0.0F));
+		partDefinition.addOrReplaceChild("tail_1", CubeListBuilder.create().texOffs(0, 14).addBox(-3.0F, -5.0F, 2.0F, 6.0F, 5.0F, 3.0F), PartPose.offsetAndRotation(0.0F, 20.0F, 0.0F, -0.45203F, 0.0F, 0.0F));
+		partDefinition.addOrReplaceChild("tail_2", CubeListBuilder.create().texOffs(18, 14).addBox(-2.0F, -2.0F, 0.0F, 4.0F, 3.0F, 6.0F), PartPose.offsetAndRotation(0.0F, 20.0F, 5.0F, -0.27122F, 0.0F, 0.0F));
+		partDefinition.addOrReplaceChild("tail_3", CubeListBuilder.create().texOffs(24, 0).addBox(-1.0F, -1.0F, 0.0F, 2.0F, 2.0F, 6.0F), PartPose.offsetAndRotation(0.0F, 21.0F, 11.0F, -0.18081F, 0.0F, 0.0F));
+
+		return LayerDefinition.create(meshDefinition, 64, 32);
+	}
+
+	@Override
+	public void setupAnim(Entity plesiosaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+	}
+
+	@Override
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+		this.root.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+	}
+	
 //	public boolean WaveTail(float TargetAngle, boolean ClockDirection, int step) {
 //		boolean result1, result2, result3 = false;
 //		float ActionTargetAngle = TargetAngle;
@@ -404,4 +338,4 @@ package willatendo.fossilslegacy.client.model.legacy;
 //		}
 //
 //	}
-//}
+}

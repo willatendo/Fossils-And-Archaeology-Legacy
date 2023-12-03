@@ -16,7 +16,11 @@ import willatendo.fossilslegacy.client.animation.SmilodonAnimations;
 import willatendo.fossilslegacy.server.entity.Smilodon;
 import willatendo.fossilslegacy.server.utils.DinosaurOrder;
 
-public class SmilodonModel extends HierarchicalModel<Smilodon> {
+public class SmilodonModel extends HierarchicalModel<Smilodon> implements CommonSmilodonRenderer {
+	private float r = 1.0F;
+	private float g = 1.0F;
+	private float b = 1.0F;
+
 	private final ModelPart head;
 	private final ModelPart root;
 	private final ModelPart tail;
@@ -87,15 +91,22 @@ public class SmilodonModel extends HierarchicalModel<Smilodon> {
 			poseStack.pushPose();
 			poseStack.translate(0.0F, 0.75F, 0.0F);
 			poseStack.scale(0.5F, 0.5F, 0.5F);
-			this.root().render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+			this.root().render(poseStack, vertexConsumer, packedLight, packedOverlay, this.r * red, this.g * green, this.b * blue, alpha);
 			poseStack.popPose();
 		} else {
-			this.root().render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+			this.root().render(poseStack, vertexConsumer, packedLight, packedOverlay, this.r * red, this.g * green, this.b * blue, alpha);
 		}
 	}
 
 	@Override
 	public ModelPart root() {
 		return this.root;
+	}
+
+	@Override
+	public void setColor(float r, float g, float b) {
+		this.r = r;
+		this.g = g;
+		this.b = b;
 	}
 }

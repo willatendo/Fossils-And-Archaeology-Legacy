@@ -1,35 +1,15 @@
-package willatendo.fossilslegacy.client.model.legacy;
+package willatendo.fossilslegacy.client.model.fossils;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
 
-public class GroundPteranodonLegacyModel extends EntityModel<Entity> {
-	private final ModelPart root;
-	private final ModelPart head;
-	private final ModelPart crown;
-	private final ModelPart lowerMouth;
-	private final ModelPart upperMouth;
-	private final ModelPart rightLeg;
-	private final ModelPart leftLeg;
-
-	public GroundPteranodonLegacyModel(ModelPart root) {
-		this.root = root;
-		this.head = root.getChild("head");
-		this.crown = root.getChild("crown");
-		this.lowerMouth = root.getChild("lower_mouth");
-		this.upperMouth = root.getChild("upper_mouth");
-		this.rightLeg = root.getChild("right_leg");
-		this.leftLeg = root.getChild("left_leg");
+public class PteranodonLegacySkeletonModel extends AbstractSkeletonModel {
+	public PteranodonLegacySkeletonModel(ModelPart root) {
+		super(root);
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -52,35 +32,5 @@ public class GroundPteranodonLegacyModel extends EntityModel<Entity> {
 		partDefinition.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(0, 11).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 3.0F, 2.0F), PartPose.offsetAndRotation(0.0F, 20.0F, 5.0F, 0.2260139F, 0.0F, 0.0F));
 
 		return LayerDefinition.create(meshDefinition, 64, 32);
-	}
-
-//	public void OpenMouth(int Steps) {
-//		if (lower_mouth.rotateAngleX < 0.109F)
-//			lower_mouth.rotateAngleX += (0.109F / Steps);
-//		else
-//			lower_mouth.rotateAngleX = 0.109F;
-//		// mod_Fossil.ShowMessage(new StringBuilder().append(head3_down.rotateAngleX).toString());
-//	}
-//
-//	public void CloseMouth(int Steps) {
-//		if (lower_mouth.rotateAngleX > 0)
-//			lower_mouth.rotateAngleX -= (0.109F / Steps);
-//		else
-//			lower_mouth.rotateAngleX = 0;
-//		// mod_Fossil.ShowMessage(new StringBuilder().append(head3_down.rotateAngleX).toString());
-//	}
-
-	// fields
-
-	@Override
-	public void setupAnim(Entity brachiosaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.crown.yRot = this.upperMouth.yRot = this.lowerMouth.yRot = this.head.yRot = -netHeadYaw / 57.29578F;
-		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwing - 0.271F;
-		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwing - 0.271F;
-	}
-
-	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		this.root.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 	}
 }

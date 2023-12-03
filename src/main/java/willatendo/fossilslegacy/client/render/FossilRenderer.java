@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,6 +21,9 @@ import net.minecraft.world.entity.Pose;
 import net.minecraft.world.scores.Team;
 import willatendo.fossilslegacy.client.FossilsLegacyModels;
 import willatendo.fossilslegacy.client.model.fossils.AbstractSkeletonModel;
+import willatendo.fossilslegacy.client.model.fossils.BrachiosaurusLegacySkeletonModel;
+import willatendo.fossilslegacy.client.model.fossils.PlesiosaurusLegacySkeletonModel;
+import willatendo.fossilslegacy.client.model.fossils.PteranodonLegacySkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.TriceratopsLegacySkeletonModel;
 import willatendo.fossilslegacy.server.entity.Fossil;
 import willatendo.fossilslegacy.server.entity.Fossils;
@@ -30,7 +34,7 @@ public class FossilRenderer extends EntityRenderer<Fossil> implements LegacyMode
 
 	public FossilRenderer(Context context) {
 		super(context);
-		this.models = new AbstractSkeletonModel[][] { { new TriceratopsLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_TRICERATOPS_SKELETON)), new TriceratopsLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_TRICERATOPS_SKELETON)), new TriceratopsLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_TRICERATOPS_SKELETON)), new TriceratopsLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_TRICERATOPS_SKELETON)) }, { new TriceratopsLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_TRICERATOPS_SKELETON)), new TriceratopsLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_TRICERATOPS_SKELETON)), new TriceratopsLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_TRICERATOPS_SKELETON)), new TriceratopsLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_TRICERATOPS_SKELETON)) } };
+		this.models = new AbstractSkeletonModel[][] { { new BrachiosaurusLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_BRACHIOSAURS_SKELETON)), new PlesiosaurusLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_PLESIOSAURUS_SKELETON)), new PteranodonLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_PTERANODON_SKELETON)), new TriceratopsLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_TRICERATOPS_SKELETON)) }, { new BrachiosaurusLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_BRACHIOSAURS_SKELETON)), new PlesiosaurusLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_PLESIOSAURUS_SKELETON)), new PteranodonLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_PTERANODON_SKELETON)), new TriceratopsLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_TRICERATOPS_SKELETON)) } };
 	}
 
 	@Override
@@ -85,6 +89,8 @@ public class FossilRenderer extends EntityRenderer<Fossil> implements LegacyMode
 			}
 		}
 
+		poseStack.mulPose(Axis.YP.rotation(fossil.getYRot()));
+
 		this.model.prepareMobModel(fossil, limbSwing, limbSwingAmount, packedOverlay);
 		this.model.setupAnim(fossil, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
@@ -96,11 +102,16 @@ public class FossilRenderer extends EntityRenderer<Fossil> implements LegacyMode
 		RenderType renderType = this.getRenderType(fossil, visible, notInvisible, glowing);
 		if (renderType != null) {
 			VertexConsumer vertexConsumer = multiBufferSource.getBuffer(renderType);
-			this.model.renderToBuffer(poseStack, vertexConsumer, partialTicks, 0, 1.0F, 1.0F, 1.0F, notInvisible ? 0.15F : 1.0F);
+			int i = getOverlayCoords(fossil, this.getWhiteOverlayProgress(fossil, packedOverlay));
+			this.model.renderToBuffer(poseStack, vertexConsumer, partialTicks, i, 1.0F, 1.0F, 1.0F, notInvisible ? 0.15F : 1.0F);
 		}
 
 		poseStack.popPose();
 		super.render(fossil, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
+	}
+
+	public static int getOverlayCoords(Fossil fossil, float u) {
+		return OverlayTexture.pack(OverlayTexture.u(u), OverlayTexture.v(fossil.hurtTime > 0 || fossil.deathTime > 0));
 	}
 
 	protected void setupRotations(Fossil fossil, PoseStack poseStack, float bob, float p_115320_, float packedOverlay) {
@@ -116,7 +127,6 @@ public class FossilRenderer extends EntityRenderer<Fossil> implements LegacyMode
 			poseStack.translate(0.0F, fossil.getBbHeight() + 0.1F, 0.0F);
 			poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
 		}
-
 	}
 
 	protected boolean isShaking(Fossil fossil) {
@@ -129,33 +139,37 @@ public class FossilRenderer extends EntityRenderer<Fossil> implements LegacyMode
 
 	@Override
 	protected boolean shouldShowName(Fossil fossil) {
-		double distance = this.entityRenderDispatcher.distanceToSqr(fossil);
-		float distanceToSee = fossil.isDiscrete() ? 32.0F : 64.0F;
-		if (distance >= (double) (distanceToSee * distanceToSee)) {
-			return false;
-		} else {
-			Minecraft minecraft = Minecraft.getInstance();
-			LocalPlayer localPlayer = minecraft.player;
-			boolean flag = !fossil.isInvisibleTo(localPlayer);
-			Team team = fossil.getTeam();
-			Team playerTeam = localPlayer.getTeam();
-			if (team != null) {
-				Team.Visibility teamVisibility = team.getNameTagVisibility();
-				switch (teamVisibility) {
-				case ALWAYS:
-					return flag;
-				case NEVER:
-					return false;
-				case HIDE_FOR_OTHER_TEAMS:
-					return playerTeam == null ? flag : team.isAlliedTo(playerTeam) && (team.canSeeFriendlyInvisibles() || flag);
-				case HIDE_FOR_OWN_TEAM:
-					return playerTeam == null ? flag : !team.isAlliedTo(playerTeam) && flag;
-				default:
-					return true;
+		if (fossil.shouldShowName() || fossil.hasCustomName() && fossil == this.entityRenderDispatcher.crosshairPickEntity) {
+			double distance = this.entityRenderDispatcher.distanceToSqr(fossil);
+			float distanceToSee = fossil.isDiscrete() ? 32.0F : 64.0F;
+			if (distance >= (double) (distanceToSee * distanceToSee)) {
+				return false;
+			} else {
+				Minecraft minecraft = Minecraft.getInstance();
+				LocalPlayer localPlayer = minecraft.player;
+				boolean flag = !fossil.isInvisibleTo(localPlayer);
+				Team team = fossil.getTeam();
+				Team playerTeam = localPlayer.getTeam();
+				if (team != null) {
+					Team.Visibility teamVisibility = team.getNameTagVisibility();
+					switch (teamVisibility) {
+					case ALWAYS:
+						return flag;
+					case NEVER:
+						return false;
+					case HIDE_FOR_OTHER_TEAMS:
+						return playerTeam == null ? flag : team.isAlliedTo(playerTeam) && (team.canSeeFriendlyInvisibles() || flag);
+					case HIDE_FOR_OWN_TEAM:
+						return playerTeam == null ? flag : !team.isAlliedTo(playerTeam) && flag;
+					default:
+						return true;
+					}
 				}
-			}
 
-			return Minecraft.renderNames() && fossil != minecraft.getCameraEntity() && flag && !fossil.isVehicle();
+				return Minecraft.renderNames() && fossil != minecraft.getCameraEntity() && flag && !fossil.isVehicle();
+			}
+		} else {
+			return false;
 		}
 	}
 
@@ -170,7 +184,7 @@ public class FossilRenderer extends EntityRenderer<Fossil> implements LegacyMode
 	}
 
 	protected void scale(Fossil fossil, PoseStack poseStack, float packedOverlay) {
-		poseStack.scale(1.0F * (fossil.getSize() * 0.25F), 1.0F * (fossil.getSize() * 0.25F), 1.0F * (fossil.getSize() * 0.25F));
+		poseStack.scale(1.0F * (1 + fossil.getSize() * 0.25F), 1.0F * (1 + fossil.getSize() * 0.25F), 1.0F * (1 + fossil.getSize() * 0.25F));
 	}
 
 	protected boolean isBodyVisible(Fossil fossil) {
@@ -181,19 +195,19 @@ public class FossilRenderer extends EntityRenderer<Fossil> implements LegacyMode
 		return 90.0F;
 	}
 
-	protected float getWhiteOverlayProgress(Fossil fossil, float p_115335_) {
+	protected float getWhiteOverlayProgress(Fossil fossil, float packedOverlay) {
 		return 0.0F;
 	}
 
 	@Nullable
-	protected RenderType getRenderType(Fossil p_115322_, boolean p_115323_, boolean p_115324_, boolean p_115325_) {
-		ResourceLocation resourcelocation = this.getTextureLocation(p_115322_);
-		if (p_115324_) {
+	protected RenderType getRenderType(Fossil fossil, boolean visible, boolean notInvisible, boolean glowing) {
+		ResourceLocation resourcelocation = this.getTextureLocation(fossil);
+		if (notInvisible) {
 			return RenderType.itemEntityTranslucentCull(resourcelocation);
-		} else if (p_115323_) {
+		} else if (visible) {
 			return this.model.renderType(resourcelocation);
 		} else {
-			return p_115325_ ? RenderType.outline(resourcelocation) : null;
+			return glowing ? RenderType.outline(resourcelocation) : null;
 		}
 	}
 

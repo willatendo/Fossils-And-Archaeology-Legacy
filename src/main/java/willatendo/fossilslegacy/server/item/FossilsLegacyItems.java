@@ -25,7 +25,7 @@ import willatendo.simplelibrary.server.util.SimpleUtils;
 public class FossilsLegacyItems {
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, FossilsLegacyUtils.ID);
 
-	public static final RegistryObject<Item> FOSSIL = ITEMS.register("fossil", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> FOSSIL = ITEMS.register("fossil", () -> new FossilItem(new Item.Properties()));
 	public static final RegistryObject<Item> TRICERATOPS_DNA = ITEMS.register("triceratops_dna", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> UTAHRAPTOR_DNA = ITEMS.register("utahraptor_dna", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> TYRANNOSAURUS_DNA = ITEMS.register("tyrannosaurus_dna", () -> new Item(new Item.Properties()));

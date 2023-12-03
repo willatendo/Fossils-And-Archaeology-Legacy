@@ -1,28 +1,16 @@
-package willatendo.fossilslegacy.client.model.legacy;
+package willatendo.fossilslegacy.client.model.fossils;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
 
-public class BrachiosaurusLegacyModel extends EntityModel<Entity> {
-	private final ModelPart root;
-	private final ModelPart frontRightThigh;
-	private final ModelPart frontRightCalf;
-	private final ModelPart frontLeftThigh;
-	private final ModelPart frontLeftCalf;
-	private final ModelPart backRightThigh;
-	private final ModelPart backRightCalf;
-	private final ModelPart backLeftThigh;
-	private final ModelPart backLeftCalf;
+public class BrachiosaurusLegacySkeletonModel extends AbstractSkeletonModel {
+	public BrachiosaurusLegacySkeletonModel(ModelPart root) {
+		super(root);
+	}
 
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshDefinition = new MeshDefinition();
@@ -35,7 +23,7 @@ public class BrachiosaurusLegacyModel extends EntityModel<Entity> {
 		partDefinition.addOrReplaceChild("neck_2", CubeListBuilder.create().texOffs(22, 0).addBox(-1.5F, 0.0F, 0.0F, 3.0F, 2.0F, 2.0F).mirror(), PartPose.offsetAndRotation(0.0F, -4.5F, -9.0F, -0.9599311F, 0.0F, 0.0F));
 		partDefinition.addOrReplaceChild("neck_3", CubeListBuilder.create().texOffs(22, 0).addBox(-1.5F, 0.0F, 0.0F, 3.0F, 2.0F, 2.0F).mirror(), PartPose.offsetAndRotation(0.0F, -3.0F, -8.0F, -1.23464F, 0.0F, 0.0F));
 		partDefinition.addOrReplaceChild("neck_4", CubeListBuilder.create().texOffs(22, 0).addBox(-1.5F, 0.0F, 0.0F, 3.0F, 2.0F, 2.0F).mirror(), PartPose.offsetAndRotation(0.0F, -1.5F, -7.5F, -1.343904F, 0.0F, 0.0F));
-		partDefinition.addOrReplaceChild("neck_5", CubeListBuilder.create().texOffs(22, 0).addBox(-1.5F, 0.0F, 0.0F, 3.0F, 2.0F, 2.0F).mirror(), PartPose.offsetAndRotation(0.0F, -1.5F, -7.5F, -1.343904F, 0.0F, 0.0F));
+		partDefinition.addOrReplaceChild("neck_5", CubeListBuilder.create().texOffs(22, 0).addBox(-1.5F, 0.0F, 2.0F, 3.0F, 2.0F, 2.0F).mirror(), PartPose.offsetAndRotation(0.0F, -1.5F, -7.5F, -1.343904F, 0.0F, 0.0F));
 		partDefinition.addOrReplaceChild("neck_6", CubeListBuilder.create().texOffs(22, 0).addBox(-1.5F, 0.0F, 4.0F, 3.0F, 2.0F, 2.0F).mirror(), PartPose.offsetAndRotation(0.0F, -1.5F, -7.5F, -1.343904F, 0.0F, 0.0F));
 		partDefinition.addOrReplaceChild("neck_7", CubeListBuilder.create().texOffs(22, 0).addBox(-1.5F, 0.0F, 6.0F, 3.0F, 2.0F, 2.0F).mirror(), PartPose.offsetAndRotation(0.0F, -1.5F, -7.5F, -1.343904F, 0.0F, 0.0F));
 		partDefinition.addOrReplaceChild("neck_8", CubeListBuilder.create().texOffs(34, 11).addBox(-2.0F, -1.0F, -0.5F, 4.0F, 3.0F, 3.0F).mirror(), PartPose.offsetAndRotation(0.0F, 6.0F, -6.5F, -0.9637522F, 0.0F, 0.0F));
@@ -56,34 +44,5 @@ public class BrachiosaurusLegacyModel extends EntityModel<Entity> {
 		partDefinition.addOrReplaceChild("tail_end", CubeListBuilder.create().texOffs(34, 17).addBox(-1.5F, 0.0F, 0.0F, 3.0F, 2.0F, 4.0F).mirror(), PartPose.offsetAndRotation(0.0F, 16.5F, 10.5F, -0.3717943F, 0.0F, 0.0F));
 
 		return LayerDefinition.create(meshDefinition, 64, 32);
-	}
-
-	public BrachiosaurusLegacyModel(ModelPart root) {
-		this.root = root;
-		this.frontRightThigh = root.getChild("front_right_thigh");
-		this.frontRightCalf = root.getChild("front_right_calf");
-		this.frontLeftThigh = root.getChild("front_left_thigh");
-		this.frontLeftCalf = root.getChild("front_left_calf");
-		this.backRightThigh = root.getChild("back_right_thigh");
-		this.backRightCalf = root.getChild("back_right_calf");
-		this.backLeftThigh = root.getChild("back_left_thigh");
-		this.backLeftCalf = root.getChild("back_left_calf");
-	}
-
-	@Override
-	public void setupAnim(Entity brachiosaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		frontRightThigh.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		frontLeftCalf.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		frontLeftThigh.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount;
-		frontRightCalf.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount;
-		backLeftThigh.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount;
-		backRightCalf.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount;
-		backRightThigh.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		backLeftCalf.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-	}
-
-	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		this.root.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 	}
 }

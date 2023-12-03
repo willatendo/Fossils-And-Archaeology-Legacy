@@ -189,6 +189,7 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 		super.onSyncedDataUpdated(entityDataAccessor);
 	}
 
+	@Override
 	public EntityDimensions getDimensions(Pose pose) {
 		return super.getDimensions(pose).scale(0.75F * (float) this.getGrowthStage());
 	}

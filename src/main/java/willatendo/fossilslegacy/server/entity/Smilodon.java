@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -13,7 +14,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.OldUsersConverter;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -41,6 +44,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
@@ -54,9 +58,25 @@ public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, Hungry
 	protected static final EntityDataAccessor<Optional<UUID>> OWNER = SynchedEntityData.defineId(Smilodon.class, EntityDataSerializers.OPTIONAL_UUID);
 	public final AnimationState walkAnimationState = new AnimationState();
 	private int timeAlive;
+	private boolean isWet;
+	private boolean isShaking;
+	private float shakeAnim;
+	private float shakeAnimO;
 
 	public Smilodon(EntityType<? extends Animal> entityType, Level level) {
 		super(entityType, level);
+	}
+
+	@Override
+	public void aiStep() {
+		super.aiStep();
+
+		if (!this.level().isClientSide && this.isWet && !this.isShaking && !this.isPathFinding() && this.onGround()) {
+			this.isShaking = true;
+			this.shakeAnim = 0.0F;
+			this.shakeAnimO = 0.0F;
+			this.level().broadcastEntityEvent(this, (byte) 8);
+		}
 	}
 
 	@Override
@@ -65,7 +85,25 @@ public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, Hungry
 	}
 
 	@Override
+	public void handleEntityEvent(byte event) {
+		if (event == 8) {
+			this.isShaking = true;
+			this.shakeAnim = 0.0F;
+			this.shakeAnimO = 0.0F;
+		} else if (event == 56) {
+			this.cancelShake();
+		} else {
+			super.handleEntityEvent(event);
+		}
+	}
+
+	@Override
 	public void die(DamageSource damageSource) {
+		this.isWet = false;
+		this.isShaking = false;
+		this.shakeAnimO = 0.0F;
+		this.shakeAnim = 0.0F;
+
 		Component deathMessage = this.getCombatTracker().getDeathMessage();
 		super.die(damageSource);
 
@@ -106,6 +144,72 @@ public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, Hungry
 		if (this.level().isClientSide()) {
 			this.setupAnimationStates();
 		}
+
+		if (this.isAlive()) {
+
+			if (this.isInWaterRainOrBubble()) {
+				this.isWet = true;
+				if (this.isShaking && !this.level().isClientSide) {
+					this.level().broadcastEntityEvent(this, (byte) 56);
+					this.cancelShake();
+				}
+			} else if ((this.isWet || this.isShaking) && this.isShaking) {
+				if (this.shakeAnim == 0.0F) {
+					this.playSound(SoundEvents.WOLF_SHAKE, this.getSoundVolume(), (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
+					this.gameEvent(GameEvent.ENTITY_SHAKE);
+				}
+
+				this.shakeAnimO = this.shakeAnim;
+				this.shakeAnim += 0.05F;
+				if (this.shakeAnimO >= 2.0F) {
+					this.isWet = false;
+					this.isShaking = false;
+					this.shakeAnimO = 0.0F;
+					this.shakeAnim = 0.0F;
+				}
+
+				if (this.shakeAnim > 0.4F) {
+					float f = (float) this.getY();
+					int i = (int) (Mth.sin((this.shakeAnim - 0.4F) * (float) Math.PI) * 7.0F);
+					Vec3 vec3 = this.getDeltaMovement();
+
+					for (int j = 0; j < i; ++j) {
+						float f1 = (this.random.nextFloat() * 2.0F - 1.0F) * this.getBbWidth() * 0.5F;
+						float f2 = (this.random.nextFloat() * 2.0F - 1.0F) * this.getBbWidth() * 0.5F;
+						this.level().addParticle(ParticleTypes.SPLASH, this.getX() + (double) f1, (double) (f + 0.8F), this.getZ() + (double) f2, vec3.x, vec3.y, vec3.z);
+					}
+				}
+			}
+		}
+	}
+
+	private void cancelShake() {
+		this.isShaking = false;
+		this.shakeAnim = 0.0F;
+		this.shakeAnimO = 0.0F;
+	}
+
+	public boolean isWet() {
+		return this.isWet;
+	}
+
+	public boolean isShaking() {
+		return this.isShaking;
+	}
+
+	public float getWetShade(float time) {
+		return Math.min(0.5F + Mth.lerp(time, this.shakeAnimO, this.shakeAnim) / 2.0F * 0.5F, 1.0F);
+	}
+
+	public float getBodyRollAngle(float ageInTicks, float max) {
+		float f = (Mth.lerp(ageInTicks, this.shakeAnimO, this.shakeAnim) + max) / 1.8F;
+		if (f < 0.0F) {
+			f = 0.0F;
+		} else if (f > 1.0F) {
+			f = 1.0F;
+		}
+
+		return Mth.sin(f * (float) Math.PI) * Mth.sin(f * (float) Math.PI * 11.0F) * 0.15F * (float) Math.PI;
 	}
 
 	@Override
