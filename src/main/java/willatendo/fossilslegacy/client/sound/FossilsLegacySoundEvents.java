@@ -9,6 +9,9 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 public class FossilsLegacySoundEvents {
 	public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, FossilsLegacyUtils.ID);
 
+	public static final RegistryObject<SoundEvent> BRACHIOSAURUS_AMBIENT = SOUND_EVENTS.register("entity.brachiosaurus.ambient", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.brachiosaurus.ambient")));
+	public static final RegistryObject<SoundEvent> BRACHIOSAURUS_HURT = SOUND_EVENTS.register("entity.brachiosaurus.hurt", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.brachiosaurus.hurt")));
+	public static final RegistryObject<SoundEvent> BRACHIOSAURUS_DEATH = SOUND_EVENTS.register("entity.brachiosaurus.death", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.brachiosaurus.death")));
 	public static final RegistryObject<SoundEvent> MAMMOTH_AMBIENT = SOUND_EVENTS.register("entity.mammoth.ambient", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.mammoth.ambient")));
 	public static final RegistryObject<SoundEvent> MAMMOTH_HURT = SOUND_EVENTS.register("entity.mammoth.hurt", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.mammoth.hurt")));
 	public static final RegistryObject<SoundEvent> MAMMOTH_DEATH = SOUND_EVENTS.register("entity.mammoth.death", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.mammoth.death")));

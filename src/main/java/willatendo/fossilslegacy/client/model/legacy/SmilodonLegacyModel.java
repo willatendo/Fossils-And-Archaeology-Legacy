@@ -78,7 +78,7 @@ public class SmilodonLegacyModel extends EntityModel<Smilodon> implements Common
 //		} else {
 		this.tail.yRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 //		}
-		if (smilodon.isSitting()) {
+		if (smilodon.isOrderedToSit()) {
 			this.body.setPos(0.0F, 17.0F, 0.0F);
 			this.body.xRot = -0.314F;
 			this.body.yRot = 0.0F;

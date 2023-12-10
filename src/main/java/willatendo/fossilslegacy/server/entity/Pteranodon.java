@@ -54,7 +54,7 @@ import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
 import willatendo.fossilslegacy.server.entity.Egg.Eggs;
-import willatendo.fossilslegacy.server.entity.goal.BabyFollowParentGoal;
+import willatendo.fossilslegacy.server.entity.goal.DinoBabyFollowParentGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.utils.DinosaurOrder;
@@ -74,6 +74,7 @@ public class Pteranodon extends Animal implements DinosaurEncyclopediaInfo, Hung
 	public float airPitch = 0.0F;
 	public float lastAirPitch = 0.0F;
 	public boolean landing = false;
+	public boolean isFlying = false;
 
 	public Pteranodon(EntityType<? extends Animal> entityType, Level level) {
 		super(entityType, level);
@@ -103,7 +104,7 @@ public class Pteranodon extends Animal implements DinosaurEncyclopediaInfo, Hung
 
 	@Override
 	public int getAdultAge() {
-		return this.getGrowthStages()[9];
+		return this.getGrowthStages()[4];
 	}
 
 	@Override
@@ -131,6 +132,7 @@ public class Pteranodon extends Animal implements DinosaurEncyclopediaInfo, Hung
 	@Override
 	public void tick() {
 		super.tick();
+
 		if (this.isAlive()) {
 			this.timeAlive++;
 			this.setHunger(this.getHunger() - 1);
@@ -177,7 +179,7 @@ public class Pteranodon extends Animal implements DinosaurEncyclopediaInfo, Hung
 	}
 
 	public EntityDimensions getDimensions(Pose pose) {
-		return super.getDimensions(pose).scale(0.75F * (float) this.getGrowthStage());
+		return super.getDimensions(pose).scale(0.75F * ((float) this.getGrowthStage() + 1));
 	}
 
 	@Override
@@ -186,7 +188,7 @@ public class Pteranodon extends Animal implements DinosaurEncyclopediaInfo, Hung
 		this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
 		this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
 		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, Ingredient.of(Items.WHEAT), false));
-		this.goalSelector.addGoal(4, new BabyFollowParentGoal(this, 1.1D));
+		this.goalSelector.addGoal(4, new DinoBabyFollowParentGoal(this, 1.1D));
 		this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));
 		this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D) {
 			@Override
@@ -248,8 +250,8 @@ public class Pteranodon extends Animal implements DinosaurEncyclopediaInfo, Hung
 			return InteractionResult.SUCCESS;
 		}
 		ItemStack itemStack = player.getItemInHand(interactionHand);
-		if (this.isTame() && FeederBlockEntity.getPlantsFoodLevel(itemStack) > 0) {
-			int addition = this.getHunger() + FeederBlockEntity.getPlantsFoodLevel(itemStack);
+		if (this.isTame() && FeederBlockEntity.getMeatFoodLevel(itemStack) > 0) {
+			int addition = this.getHunger() + FeederBlockEntity.getMeatFoodLevel(itemStack);
 			if (!(addition > this.getMaxHealth())) {
 				this.setHunger(addition);
 			} else {
@@ -310,23 +312,27 @@ public class Pteranodon extends Animal implements DinosaurEncyclopediaInfo, Hung
 		if (this.isAlive()) {
 			LivingEntity livingEntity = this.getControllingPassenger();
 			if (this.isVehicle() && livingEntity != null) {
-				this.setRot(livingEntity.getYRot(), livingEntity.getXRot() * 0.5F);
-				this.yRotO = this.yBodyRot = this.yHeadRot = this.getYRot();
-				float f = livingEntity.xxa * 0.5F;
-				float f1 = livingEntity.zza;
-				if (f1 <= 0.0F) {
-					f1 *= 0.25F;
-				}
+				if (this.isFlying) {
 
-				if (this.isControlledByLocalInstance()) {
-					this.setSpeed((float) this.getAttributeValue(Attributes.MOVEMENT_SPEED));
-					super.travel(new Vec3((double) f, vec3.y, (double) f1));
-				} else if (livingEntity instanceof Player) {
-					this.setDeltaMovement(this.getX() - this.xOld, this.getY() - this.yOld, this.getZ() - this.zOld);
-				}
+				} else {
+					this.setRot(livingEntity.getYRot(), livingEntity.getXRot() * 0.5F);
+					this.yRotO = this.yBodyRot = this.yHeadRot = this.getYRot();
+					float f = livingEntity.xxa * 0.5F;
+					float f1 = livingEntity.zza;
+					if (f1 <= 0.0F) {
+						f1 *= 0.25F;
+					}
 
-				this.calculateEntityAnimation(false);
-				this.tryCheckInsideBlocks();
+					if (this.isControlledByLocalInstance()) {
+						this.setSpeed((float) this.getAttributeValue(Attributes.MOVEMENT_SPEED));
+						super.travel(new Vec3((double) f, vec3.y, (double) f1));
+					} else if (livingEntity instanceof Player) {
+						this.setDeltaMovement(this.getX() - this.xOld, this.getY() - this.yOld, this.getZ() - this.zOld);
+					}
+
+					this.calculateEntityAnimation(false);
+					this.tryCheckInsideBlocks();
+				}
 			} else {
 				super.travel(vec3);
 			}
@@ -386,7 +392,7 @@ public class Pteranodon extends Animal implements DinosaurEncyclopediaInfo, Hung
 
 	@Override
 	public int[] getGrowthStages() {
-		return new int[] { 10000, 25000, 50000, 75000, 100000, 130000, 250000, 370000, 500000 };
+		return new int[] { 10000, 25000, 50000, 75000, 100000, 130000, 250000 };
 	}
 
 	@Override
@@ -485,6 +491,6 @@ public class Pteranodon extends Animal implements DinosaurEncyclopediaInfo, Hung
 
 	@Override
 	public TagKey<Item> commandItems() {
-		return FossilsLegacyItemTags.TRICERATOPS_COMMANDABLES;
+		return FossilsLegacyItemTags.PTERANODON_COMMANDABLES;
 	}
 }

@@ -11,9 +11,9 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
+import willatendo.fossilslegacy.server.entity.Pteranodon;
 
-public class GroundPteranodonLegacyModel extends EntityModel<Entity> {
+public class GroundPteranodonLegacyModel extends EntityModel<Pteranodon> {
 	private final ModelPart root;
 	private final ModelPart head;
 	private final ModelPart crown;
@@ -41,7 +41,8 @@ public class GroundPteranodonLegacyModel extends EntityModel<Entity> {
 		partDefinition.addOrReplaceChild("lower_mouth", CubeListBuilder.create().texOffs(44, 9).addBox(-1.0F, -1.0F, -12.0F, 2.0F, 1.0F, 8.0F), PartPose.offset(0.0F, 14.0F, -4.0F));
 		partDefinition.addOrReplaceChild("upper_mouth", CubeListBuilder.create().texOffs(44, 0).addBox(-1.0F, -2.0F, -12.0F, 2.0F, 1.0F, 8.0F), PartPose.offset(0.0F, 14.0F, -4.0F));
 		partDefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 23).addBox(-2.0F, -5.0F, -1.0F, 4.0F, 5.0F, 4.0F), PartPose.offsetAndRotation(0.0F, 14.0F, -4.0F, 1.571F, 0.0F, 0.0F));
-		partDefinition.addOrReplaceChild("neck_2", CubeListBuilder.create().texOffs(0, 16).addBox(-1.0F, -2.0F, -1.0F, 2.0F, 4.0F, 2.0F), PartPose.offsetAndRotation(0.0F, 14.0F, -2.0F, 1.446489F, 0.0F, 0.0F));
+		partDefinition.addOrReplaceChild("neck_1", CubeListBuilder.create().texOffs(8, 16).addBox(-1.0F, -2.0F, -1.0F, 2.0F, 4.0F, 2.0F), PartPose.offsetAndRotation(0.0F, 15.0F, 0.0F, 1.130069F, 0.0F, 0.0F));
+		partDefinition.addOrReplaceChild("neck_2", CubeListBuilder.create().texOffs(0, 16).addBox(-1.0F, -2.0F, -1.0F, 2.0F, 4.0F, 2.0F), PartPose.offsetAndRotation(0.0F, 14.0F, -3.0F, 1.446489F, 0.0F, 0.0F));
 		partDefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-2.0F, -3.0F, -2.0F, 4.0F, 7.0F, 4.0F), PartPose.offsetAndRotation(0.0F, 18.0F, 2.0F, 0.587636F, 0.0F, 0.0F));
 		partDefinition.addOrReplaceChild("right_wing_1", CubeListBuilder.create().texOffs(16, 7).addBox(0.0F, 0.0F, -1.0F, 8.0F, 6.0F, 1.0F), PartPose.offsetAndRotation(-2.0F, 16.0F, 1.0F, -0.349F, 2.269F, -0.524F));
 		partDefinition.addOrReplaceChild("right_wing_2", CubeListBuilder.create().texOffs(46, 18).addBox(-1.0F, -1.0F, -1.0F, 8.0F, 4.0F, 1.0F), PartPose.offsetAndRotation(-6.9F, 20.0F, -4.0F, 2.541F, -0.419F, -3.002F));
@@ -73,10 +74,10 @@ public class GroundPteranodonLegacyModel extends EntityModel<Entity> {
 	// fields
 
 	@Override
-	public void setupAnim(Entity brachiosaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+	public void setupAnim(Pteranodon pteranodon, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.crown.yRot = this.upperMouth.yRot = this.lowerMouth.yRot = this.head.yRot = -netHeadYaw / 57.29578F;
-		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwing - 0.271F;
-		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwing - 0.271F;
+		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount - 0.271F;
+		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount - 0.271F;
 	}
 
 	@Override

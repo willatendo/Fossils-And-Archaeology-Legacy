@@ -6,6 +6,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 
 public interface TicksToBirth<T extends Entity> {
 	T getOffspring(Level level);
@@ -18,7 +19,7 @@ public interface TicksToBirth<T extends Entity> {
 	}
 
 	default int maxTime() {
-		return 3000;
+		return !FMLEnvironment.production ? 10 : 3000;
 	}
 
 	default void birthTick(Mob mob, Level level) {

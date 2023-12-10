@@ -50,8 +50,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.DismountHelper;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -60,8 +58,10 @@ import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
 import willatendo.fossilslegacy.server.entity.Egg.Eggs;
-import willatendo.fossilslegacy.server.entity.goal.BabyFollowParentGoal;
+import willatendo.fossilslegacy.server.entity.goal.DinoBabyFollowParentGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
+import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
+import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.utils.DinosaurOrder;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -122,7 +122,7 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 	}
 
 	public static AttributeSupplier triceratopsAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 8.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).build();
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 8.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 1.0D).build();
 	}
 
 	private void setupAnimationStates() {
@@ -199,8 +199,8 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 		this.goalSelector.addGoal(0, new FloatGoal(this));
 		this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
 		this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
-		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, Ingredient.of(Items.WHEAT), false));
-		this.goalSelector.addGoal(4, new BabyFollowParentGoal(this, 1.1D));
+		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, DinoConstants.HERBIVORE_FOOD, false));
+		this.goalSelector.addGoal(4, new DinoBabyFollowParentGoal(this, 1.1D));
 		this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));
 		this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D) {
 			@Override
@@ -224,8 +224,8 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 		this.goalSelector.addGoal(6, new DinoFollowOwnerGoal(this, this, this, 1.0D, 10.0F, 2.0F));
 		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-//		this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
-//		this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
+		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this, this, this));
+		this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this, this, this));
 	}
 
 	@Override
@@ -391,6 +391,7 @@ public class Triceratops extends Animal implements DinosaurEncyclopediaInfo, Hun
 	@Override
 	public void setGrowthStage(int growthStage) {
 		this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(8.0D * (growthStage + 1));
+		this.getAttribute(Attributes.ARMOR).setBaseValue(1.0D + growthStage);
 		this.entityData.set(GROWTH_STAGE, growthStage);
 	}
 

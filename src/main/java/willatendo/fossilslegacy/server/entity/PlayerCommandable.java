@@ -17,7 +17,7 @@ public interface PlayerCommandable<T extends Entity> {
 
 	TagKey<Item> commandItems();
 
-	default boolean isSitting() {
+	default boolean isOrderedToSit() {
 		return this.getCommand() == DinosaurOrder.STAY;
 	}
 

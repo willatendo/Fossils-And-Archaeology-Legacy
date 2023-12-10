@@ -17,7 +17,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		// Advancements
 		this.add("advancements.fossilslegacy.anu.root.title", "Awoken");
 		this.add("advancements.fossilslegacy.anu.root.desc", "Find Anu!");
-		
+
 		this.add("advancements.fossilslegacy.legacy.root.title", "The Legacy");
 		this.add("advancements.fossilslegacy.legacy.root.desc", "Play the Fossils and Archaeology: Legacy!");
 		this.add("advancements.fossilslegacy.legacy.fossil.title", "Fossils!");
@@ -68,12 +68,12 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("death.attack.dinosaur_starve", "%1$s starved to death");
 
 		// Dinosaur Encycopedia
-		this.add("encyclopedia.fossilslegacy.egg", "%s Egg");
-		this.add("encyclopedia.fossilslegacy.triceratops", "Triceratops");
+		this.add("encyclopedia.fossilslegacy.brachiosaurus", "Brachiosaurus");
 		this.add("encyclopedia.fossilslegacy.cat", "Cat");
 		this.add("encyclopedia.fossilslegacy.cow", "Cow");
 		this.add("encyclopedia.fossilslegacy.dolphin", "Dolphin");
 		this.add("encyclopedia.fossilslegacy.donkey", "Donkey");
+		this.add("encyclopedia.fossilslegacy.egg", "%s Egg");
 		this.add("encyclopedia.fossilslegacy.fox", "Fox");
 		this.add("encyclopedia.fossilslegacy.goat", "Goat");
 		this.add("encyclopedia.fossilslegacy.horse", "Horse");
@@ -83,6 +83,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("encyclopedia.fossilslegacy.panda", "Panda");
 		this.add("encyclopedia.fossilslegacy.Pig", "Pig");
 		this.add("encyclopedia.fossilslegacy.polar_bear", "Polar Bear");
+		this.add("encyclopedia.fossilslegacy.pteranodon", "Pteranodon");
 		this.add("encyclopedia.fossilslegacy.rabbit", "Rabbit");
 		this.add("encyclopedia.fossilslegacy.sheep", "Sheep");
 		this.add("encyclopedia.fossilslegacy.wolf", "Wolf");
@@ -94,6 +95,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("encyclopedia.fossilslegacy.hunger", "Hunger: %s / %s");
 		this.add("encyclopedia.fossilslegacy.wild", "Wild");
 		this.add("encyclopedia.fossilslegacy.temperature", "Temperature: %s");
+		this.add("encyclopedia.fossilslegacy.triceratops", "Triceratops");
 		this.add("encyclopedia.fossilslegacy.warm.true", "Warm");
 		this.add("encyclopedia.fossilslegacy.warm.false", "Cold");
 		this.add("encyclopedia.fossilslegacy.remaining_time", "Hatching Time: %s");
@@ -102,11 +104,17 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("encyclopedia.fossilslegacy.creature", "Creature: %s");
 
 		// Entities
+		this.add(FossilsLegacyEntities.BRACHIOSAURUS.get(), "Brachiosaurus");
 		this.add(FossilsLegacyEntities.MAMMOTH.get(), "Mammoth");
+		this.add(FossilsLegacyEntities.NAUTILUS.get(), "Nautilus");
 		this.add(FossilsLegacyEntities.SMILODON.get(), "Smilodon");
+		this.add(FossilsLegacyEntities.PTERANODON.get(), "Pteranodon");
 		this.add(FossilsLegacyEntities.TRICERATOPS.get(), "Triceratops");
+
 		this.add(FossilsLegacyEntities.EGG.get(), "Egg");
 		this.add("entity.fossilslegacy.egg.died", "An egg was too cold and died!");
+		this.add(FossilsLegacyEntities.FOSSIL.get(), "Egg");
+
 		this.add(FossilsLegacyEntities.PREGNANT_CAT.get(), "Pregnant Cat");
 		this.add(FossilsLegacyEntities.PREGNANT_COW.get(), "Pregnant Cow");
 		this.add(FossilsLegacyEntities.PREGNANT_DOLPHIN.get(), "Pregnant Dolphin");
@@ -125,8 +133,10 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyEntities.PREGNANT_SHEEP.get(), "Pregnant Sheep");
 		this.add(FossilsLegacyEntities.PREGNANT_SMILODON.get(), "Pregnant Smildon");
 		this.add(FossilsLegacyEntities.PREGNANT_WOLF.get(), "Pregnant Wolf");
+		
 		this.add(FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), "Zombified Pigman");
 		this.add(FossilsLegacyEntities.DROWNED_PIRATE.get(), "Drowned Pirate");
+		
 		this.add(FossilsLegacyEntities.THROWN_JAVELIN.get(), "Thrown Javelin");
 		this.add(FossilsLegacyEntities.STONE_HIEROGLYPH.get(), "Stone Hieroglyph");
 
@@ -263,7 +273,10 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.DROWNED_PIRATE_SPAWN_EGG.get(), "Drowned Pirate Spawn Egg");
 		this.add(FossilsLegacyItems.ZOMBIFIED_PIGMAN_SPAWN_EGG.get(), "Zombified Pigman Spawn Egg");
 		this.add(FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get(), "Failuresaurus Spawn Egg");
+		this.add(FossilsLegacyItems.BRACHIOSAURUS_SPAWN_EGG.get(), "Brachiosaurus Spawn Egg");
 		this.add(FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get(), "Mammoth Spawn Egg");
+		this.add(FossilsLegacyItems.NAUTILUS_SPAWN_EGG.get(), "Nautilus Spawn Egg");
+		this.add(FossilsLegacyItems.PTERANODON_SPAWN_EGG.get(), "Pteranodon Spawn Egg");
 		this.add(FossilsLegacyItems.SMILODON_SPAWN_EGG.get(), "Smilodon Spawn Egg");
 		this.add(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get(), "Triceratops Spawn Egg");
 		this.add("item.fossilslegacy.smithing_template.gem_upgrade.applies_to", "Netherite Equipment");
@@ -347,7 +360,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("stone_hieroglyph.fossilslegacy.future.title", "Future");
 		this.add("stone_hieroglyph.fossilslegacy.future.author", "Team July");
 		this.add("stone_hieroglyph.fossilslegacy.random", "Random variant");
-		
+
 		// Upgrades
 		this.add("upgrade.fossilslegacy.gem_upgrade", "Gem Upgrade");
 	}

@@ -6,10 +6,11 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Mob;
 
-public abstract class DinosaurRenderer<T extends Mob, E extends EntityModel<T>, M extends E, L extends E> extends MobRenderer<T, E> implements LegacyModels {
+public abstract class DinosaurRenderer<T extends Mob, E extends EntityModel<T>, M extends E, L extends E> extends MobRenderer<T, E> implements LegacyModels, RenderLayerParent<T, E> {
 	private final M mainModel;
 	private final L legacyModel;
 	protected boolean hasDeltWithModels = false;
@@ -18,6 +19,11 @@ public abstract class DinosaurRenderer<T extends Mob, E extends EntityModel<T>, 
 		super(context, model, shadowSize);
 		this.mainModel = model;
 		this.legacyModel = legacyModel;
+	}
+
+	@Override
+	public E getModel() {
+		return this.legacyModel;
 	}
 
 	@Override

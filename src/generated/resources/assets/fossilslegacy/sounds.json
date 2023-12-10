@@ -11,6 +11,26 @@
     ],
     "subtitle": "sound.fossilslegacy.drum.triple_hit"
   },
+  "entity.brachiosaurus.ambient": {
+    "sounds": [
+      "fossilslegacy:brachiosaurus_ambient_1",
+      "fossilslegacy:brachiosaurus_ambient_2"
+    ],
+    "subtitle": "sound.fossilslegacy.brachiosaurus.ambient"
+  },
+  "entity.brachiosaurus.death": {
+    "sounds": [
+      "fossilslegacy:brachiosaurus_death"
+    ],
+    "subtitle": "sound.fossilslegacy.brachiosaurus.death"
+  },
+  "entity.brachiosaurus.hurt": {
+    "sounds": [
+      "fossilslegacy:brachiosaurus_hurt_1",
+      "fossilslegacy:brachiosaurus_hurt_2"
+    ],
+    "subtitle": "sound.fossilslegacy.brachiosaurus.hurt"
+  },
   "entity.mammoth.ambient": {
     "sounds": [
       "fossilslegacy:mammoth_ambient"

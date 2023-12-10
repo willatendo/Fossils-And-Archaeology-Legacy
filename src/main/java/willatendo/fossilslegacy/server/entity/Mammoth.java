@@ -70,6 +70,7 @@ public class Mammoth extends Animal implements DinosaurEncyclopediaInfo, HungryA
 	public final AnimationState attackAnimationState = new AnimationState();
 	private int timeAlive;
 	private int eatAnimationTick;
+	@SuppressWarnings("unused")
 	private int swingTick;
 	private EatBlockGoal eatBlockGoal;
 

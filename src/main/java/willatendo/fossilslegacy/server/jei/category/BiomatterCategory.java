@@ -7,6 +7,7 @@ import com.google.common.cache.LoadingCache;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
+import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
@@ -26,6 +27,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class BiomatterCategory implements IRecipeCategory<BiomatterRecipe> {
 	private final IDrawable background;
+	private final IDrawableStatic icon;
 	private final LoadingCache<Integer, IDrawableAnimated> cachedBiomatter;
 	private final ImmutableRect2i textArea;
 
@@ -35,6 +37,7 @@ public class BiomatterCategory implements IRecipeCategory<BiomatterRecipe> {
 		Component maxSmeltCountText = createSmeltCountText(10000000 * 200);
 		int maxStringWidth = fontRenderer.width(maxSmeltCountText.getString());
 		this.background = guiHelper.drawableBuilder(FossilsLegacyJEI.TEXTURE, 35, 77, 18, 35).addPadding(0, 0, 0, 12 + maxStringWidth).build();
+		this.icon = guiHelper.createDrawable(FossilsLegacyJEI.TEXTURE, 0, 166, 14, 14);
 		this.cachedBiomatter = fossilsLegacyJEITextures.createProgressBar(25, 88, 56, 14, 14, IDrawableAnimated.StartDirection.TOP, true);
 		this.textArea = new ImmutableRect2i(20, 0, 20 + maxStringWidth, 34);
 	}
@@ -56,7 +59,7 @@ public class BiomatterCategory implements IRecipeCategory<BiomatterRecipe> {
 
 	@Override
 	public IDrawable getIcon() {
-		return null;
+		return this.icon;
 	}
 
 	@Override

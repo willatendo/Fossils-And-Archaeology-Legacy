@@ -16,6 +16,9 @@ public class FossilsLegacySoundDefinitionsProvider extends SoundDefinitionsProvi
 
 	@Override
 	public void registerSounds() {
+		this.add(FossilsLegacySoundEvents.BRACHIOSAURUS_AMBIENT.get(), SoundDefinition.definition().subtitle(FossilsLegacyUtils.translation("sound", "brachiosaurus.ambient").getString()).with(Sound.sound(FossilsLegacyUtils.resource("brachiosaurus_ambient_1"), SoundType.SOUND)).with(Sound.sound(FossilsLegacyUtils.resource("brachiosaurus_ambient_2"), SoundType.SOUND)));
+		this.add(FossilsLegacySoundEvents.BRACHIOSAURUS_HURT.get(), SoundDefinition.definition().subtitle(FossilsLegacyUtils.translation("sound", "brachiosaurus.hurt").getString()).with(Sound.sound(FossilsLegacyUtils.resource("brachiosaurus_hurt_1"), SoundType.SOUND)).with(Sound.sound(FossilsLegacyUtils.resource("brachiosaurus_hurt_2"), SoundType.SOUND)));
+		this.add(FossilsLegacySoundEvents.BRACHIOSAURUS_DEATH.get(), SoundDefinition.definition().subtitle(FossilsLegacyUtils.translation("sound", "brachiosaurus.death").getString()).with(Sound.sound(FossilsLegacyUtils.resource("brachiosaurus_death"), SoundType.SOUND)));
 		this.add(FossilsLegacySoundEvents.MAMMOTH_AMBIENT.get(), SoundDefinition.definition().subtitle(FossilsLegacyUtils.translation("sound", "mammoth.ambient").getString()).with(Sound.sound(FossilsLegacyUtils.resource("mammoth_ambient"), SoundType.SOUND)));
 		this.add(FossilsLegacySoundEvents.MAMMOTH_HURT.get(), SoundDefinition.definition().subtitle(FossilsLegacyUtils.translation("sound", "mammoth.hurt").getString()).with(Sound.sound(FossilsLegacyUtils.resource("mammoth_hurt"), SoundType.SOUND)));
 		this.add(FossilsLegacySoundEvents.MAMMOTH_DEATH.get(), SoundDefinition.definition().subtitle(FossilsLegacyUtils.translation("sound", "mammoth.death").getString()).with(Sound.sound(FossilsLegacyUtils.resource("mammoth_death"), SoundType.SOUND)));

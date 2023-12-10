@@ -9,14 +9,14 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.HalfTransparentBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import willatendo.fossilslegacy.server.fluid.FossilsLegacyFluidTags;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 
-public class PermafrostBlock extends Block {
+public class PermafrostBlock extends HalfTransparentBlock {
 	public PermafrostBlock(Properties properties) {
 		super(properties);
 	}

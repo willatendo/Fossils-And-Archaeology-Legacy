@@ -1,4 +1,4 @@
-// 1.20.1	2023-08-07T18:41:41.3678597	fossilslegacy: Item Models
+// 1.20.1	2023-12-10T10:56:46.3024323	fossilslegacy: Item Models
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 41c5f6a309438824458da52752171cd09485a937 assets/fossilslegacy/models/item/ancient_helmet.json
 2701cd233168837331e67cbf0146831ca43eec8a assets/fossilslegacy/models/item/ancient_sword.json
@@ -7,6 +7,7 @@ b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyz
 a4efe70ed5c61f6feac21302b0b7a168b82d5f2b assets/fossilslegacy/models/item/axolotl_eggs.json
 89ec69b213d909644c7d68e122b8c279574798aa assets/fossilslegacy/models/item/brachiosaurus_dna.json
 8acedddacf7368b55f421a24a3cd08413ee3c58c assets/fossilslegacy/models/item/brachiosaurus_egg.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/brachiosaurus_spawn_egg.json
 41294aff9ed309331ee8f22d3f0fb9c0cd358b6a assets/fossilslegacy/models/item/broken_diamond_javelin.json
 78e9912105c4467cce2486c1ab8e22805161afc9 assets/fossilslegacy/models/item/broken_frozen_meat.json
 291036137f24acdf000e644d49eeeb076ad95518 assets/fossilslegacy/models/item/broken_gem_javelin.json
@@ -87,6 +88,7 @@ cb0981d8cceb62c4b3dae4d87956682f4f8cb56a assets/fossilslegacy/models/item/mammot
 7d71f2441299d46f96622f939bddf8d6c6533355 assets/fossilslegacy/models/item/nautilus_dna.json
 6376b3b0333caeb74c5267493978506ac825b798 assets/fossilslegacy/models/item/nautilus_eggs.json
 cb75659c64ea79c3de856577b5eb3fd61cba1995 assets/fossilslegacy/models/item/nautilus_shell.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/nautilus_spawn_egg.json
 aef823fbce5a3596646be60e2f4cb76c59e115de assets/fossilslegacy/models/item/netherite_javelin.json
 eb085be866727a3b6d81d0c3015e4c25291dae13 assets/fossilslegacy/models/item/ocelot_dna.json
 3365654da30a55bae98f3102cffe2273e5ecdb57 assets/fossilslegacy/models/item/ocelot_embryo_syringe.json
@@ -100,6 +102,7 @@ bc1c2ad02e092a7747f8e24990018c7ba87b57b9 assets/fossilslegacy/models/item/plesio
 54d2ba7e851bbac9270bf17fea87e00ef1084bbf assets/fossilslegacy/models/item/plesiosaurus_egg.json
 bdc720c4c533df48ee348aa24c647c92635b7418 assets/fossilslegacy/models/item/polar_bear_dna.json
 74eea1089ebf19b7baef4d3230164dcd1984a76a assets/fossilslegacy/models/item/polar_bear_embryo_syringe.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/pteranodon_spawn_egg.json
 49691f14c57c18dadf0b0c3adcb74d1b0af34942 assets/fossilslegacy/models/item/pterosaurus_dna.json
 d7264df588cd3208d86555f852b04c49bbf10506 assets/fossilslegacy/models/item/pterosaurus_egg.json
 bd9cfd4fb2ac96636f21c31895e4806965337ace assets/fossilslegacy/models/item/rabbit_dna.json

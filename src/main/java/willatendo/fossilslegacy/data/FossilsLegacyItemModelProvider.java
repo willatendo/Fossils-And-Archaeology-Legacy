@@ -150,10 +150,14 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
 
 		this.spawnEggItem(FossilsLegacyItems.ZOMBIFIED_PIGMAN_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.DROWNED_PIRATE_SPAWN_EGG.get());
+		this.spawnEggItem(FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get());
+
+		this.spawnEggItem(FossilsLegacyItems.BRACHIOSAURUS_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get());
+		this.spawnEggItem(FossilsLegacyItems.NAUTILUS_SPAWN_EGG.get());
+		this.spawnEggItem(FossilsLegacyItems.PTERANODON_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.SMILODON_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get());
-		this.spawnEggItem(FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get());
 
 		for (RegistryObject<Block> blocks : FossilsLegacyBlocks.BLOCKS.getEntries()) {
 			ResourceLocation blockId = blocks.getId();

@@ -31,12 +31,13 @@ public class FossilsLegacyEntities {
 
 	public static final RegistryObject<EntityType<AncientLightningBolt>> ANCIENT_LIGHTNING_BOLT = ENTITY_TYPES.register("ancient_lightning_bolt", () -> EntityType.Builder.<AncientLightningBolt>of(AncientLightningBolt::new, MobCategory.MISC).noSave().sized(0.0F, 0.0F).build("ancient_lightning_bolt"));
 
+	public static final RegistryObject<EntityType<Brachiosaurus>> BRACHIOSAURUS = ENTITY_TYPES.register("brachiosaurus", () -> EntityType.Builder.<Brachiosaurus>of(Brachiosaurus::new, MobCategory.CREATURE).sized(0.75F, 1.5F).build("brachiosaurus"));
 	public static final RegistryObject<EntityType<Nautilus>> NAUTILUS = ENTITY_TYPES.register("nautilus", () -> EntityType.Builder.<Nautilus>of(Nautilus::new, MobCategory.WATER_CREATURE).sized(1.0F, 0.75F).build("nautilus"));
 	public static final RegistryObject<EntityType<Mammoth>> MAMMOTH = ENTITY_TYPES.register("mammoth", () -> EntityType.Builder.<Mammoth>of(Mammoth::new, MobCategory.CREATURE).sized(2.5F, 2.5F).build("mammoth"));
 	public static final RegistryObject<EntityType<Smilodon>> SMILODON = ENTITY_TYPES.register("smilodon", () -> EntityType.Builder.<Smilodon>of(Smilodon::new, MobCategory.CREATURE).sized(1.5F, 1.5F).build("smilodon"));
 	public static final RegistryObject<EntityType<Pteranodon>> PTERANODON = ENTITY_TYPES.register("pteranodon", () -> EntityType.Builder.<Pteranodon>of(Pteranodon::new, MobCategory.CREATURE).sized(0.25F, 0.25F).build("pteranodon"));
 	public static final RegistryObject<EntityType<Triceratops>> TRICERATOPS = ENTITY_TYPES.register("triceratops", () -> EntityType.Builder.<Triceratops>of(Triceratops::new, MobCategory.CREATURE).sized(0.5F, 0.5F).build("triceratops"));
-	
+
 	public static final RegistryObject<EntityType<Fossil>> FOSSIL = ENTITY_TYPES.register("fossil", () -> EntityType.Builder.<Fossil>of(Fossil::new, MobCategory.MISC).sized(0.5F, 0.5F).build("fossil"));
 
 	public static final RegistryObject<EntityType<Egg>> EGG = ENTITY_TYPES.register("egg", () -> EntityType.Builder.<Egg>of(Egg::new, MobCategory.CREATURE).sized(0.5F, 0.5F).build("egg"));

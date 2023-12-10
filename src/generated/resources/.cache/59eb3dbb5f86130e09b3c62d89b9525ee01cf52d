@@ -1,4 +1,4 @@
-// 1.20.1	2023-10-29T11:27:09.6090004	Loot Tables
+// 1.20.1	2023-12-04T18:59:33.1443014	Loot Tables
 5fcf811a958fcf132678d4423a7472c475c2b8ca data/fossilslegacy/loot_tables/blocks/analyzer.json
 8bfc811efa599c9be09afe46481ec9ebbf5f3a33 data/fossilslegacy/loot_tables/blocks/archaeology_workbench.json
 e83811b242ba161162f08caf7aa75548ce90fc3c data/fossilslegacy/loot_tables/blocks/cultivator.json
@@ -14,6 +14,7 @@ ff9acaa93520b01eb315a76e435fe9152f7cc96d data/fossilslegacy/loot_tables/blocks/p
 72c25f5a1f087e85e16dd2d9f54347730da0fb2c data/fossilslegacy/loot_tables/chests/academy_loot.json
 2a88c80c64cbf9e441234c69b98903788a57571d data/fossilslegacy/loot_tables/chests/weapon_shop_decoy.json
 6883587f76bc611b6271d1ef62fd97bc93990b19 data/fossilslegacy/loot_tables/chests/weapon_shop_loot.json
+ec4fb7bcec1e1c87d0dc007cf5b4d6c90e3d5023 data/fossilslegacy/loot_tables/entities/brachiosaurus.json
 ca993582bbe3723ad299dbcb25728ede574899ba data/fossilslegacy/loot_tables/entities/drowned_pirate.json
 3f9fbebf1e59b2db877ea746639a80514bc1853c data/fossilslegacy/loot_tables/entities/egg.json
 b42cdd3e259e6373322f855817a4c9a8c68b6921 data/fossilslegacy/loot_tables/entities/egg/brachiosaurus.json

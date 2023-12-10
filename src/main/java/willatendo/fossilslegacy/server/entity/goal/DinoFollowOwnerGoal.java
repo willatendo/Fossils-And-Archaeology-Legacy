@@ -17,7 +17,7 @@ import willatendo.fossilslegacy.server.entity.TameAccessor;
 import willatendo.fossilslegacy.server.utils.DinosaurOrder;
 
 public class DinoFollowOwnerGoal extends Goal {
-	private final Animal creature;
+	private final Animal animal;
 	private final PlayerCommandable playerCommandable;
 	private final TameAccessor tameAccessor;
 	private LivingEntity owner;
@@ -29,13 +29,13 @@ public class DinoFollowOwnerGoal extends Goal {
 	private final float startDistance;
 	private float oldWaterCost;
 
-	public DinoFollowOwnerGoal(Animal creature, PlayerCommandable playerCommandable, TameAccessor tameAccessor, double speedModifer, float startDistance, float stopDistance) {
-		this.creature = creature;
+	public DinoFollowOwnerGoal(Animal animal, PlayerCommandable playerCommandable, TameAccessor tameAccessor, double speedModifer, float startDistance, float stopDistance) {
+		this.animal = animal;
 		this.playerCommandable = playerCommandable;
 		this.tameAccessor = tameAccessor;
-		this.level = creature.level();
+		this.level = animal.level();
 		this.speedModifier = speedModifer;
-		this.navigation = creature.getNavigation();
+		this.navigation = animal.getNavigation();
 		this.startDistance = startDistance;
 		this.stopDistance = stopDistance;
 		this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
@@ -52,7 +52,7 @@ public class DinoFollowOwnerGoal extends Goal {
 			return false;
 		} else if (this.playerCommandable.getCommand() == DinosaurOrder.STAY) {
 			return false;
-		} else if (this.creature.distanceToSqr(livingEntity) < (double) (this.startDistance * this.startDistance)) {
+		} else if (this.animal.distanceToSqr(livingEntity) < (double) (this.startDistance * this.startDistance)) {
 			return false;
 		} else {
 			this.owner = livingEntity;
@@ -69,31 +69,31 @@ public class DinoFollowOwnerGoal extends Goal {
 		} else if (this.playerCommandable.getCommand() == DinosaurOrder.STAY) {
 			return false;
 		} else {
-			return !(this.creature.distanceToSqr(this.owner) <= (double) (this.stopDistance * this.stopDistance));
+			return !(this.animal.distanceToSqr(this.owner) <= (double) (this.stopDistance * this.stopDistance));
 		}
 	}
 
 	@Override
 	public void start() {
 		this.timeToRecalcPath = 0;
-		this.oldWaterCost = this.creature.getPathfindingMalus(BlockPathTypes.WATER);
-		this.creature.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
+		this.oldWaterCost = this.animal.getPathfindingMalus(BlockPathTypes.WATER);
+		this.animal.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
 	}
 
 	@Override
 	public void stop() {
 		this.owner = null;
 		this.navigation.stop();
-		this.creature.setPathfindingMalus(BlockPathTypes.WATER, this.oldWaterCost);
+		this.animal.setPathfindingMalus(BlockPathTypes.WATER, this.oldWaterCost);
 	}
 
 	@Override
 	public void tick() {
-		this.creature.getLookControl().setLookAt(this.owner, 10.0F, (float) this.creature.getMaxHeadXRot());
+		this.animal.getLookControl().setLookAt(this.owner, 10.0F, (float) this.animal.getMaxHeadXRot());
 		if (--this.timeToRecalcPath <= 0) {
 			this.timeToRecalcPath = this.adjustedTickDelay(10);
-			if (!this.creature.isLeashed() && !this.creature.isPassenger()) {
-				if (this.creature.distanceToSqr(this.owner) >= 144.0D) {
+			if (!this.animal.isLeashed() && !this.animal.isPassenger()) {
+				if (this.animal.distanceToSqr(this.owner) >= 144.0D) {
 					this.teleportToOwner();
 				} else {
 					this.navigation.moveTo(this.owner, this.speedModifier);
@@ -123,7 +123,7 @@ public class DinoFollowOwnerGoal extends Goal {
 		} else if (!this.canTeleportTo(new BlockPos(x, y, z))) {
 			return false;
 		} else {
-			this.creature.moveTo((double) x + 0.5D, (double) y, (double) z + 0.5D, this.creature.getYRot(), this.creature.getXRot());
+			this.animal.moveTo((double) x + 0.5D, (double) y, (double) z + 0.5D, this.animal.getYRot(), this.animal.getXRot());
 			this.navigation.stop();
 			return true;
 		}
@@ -138,13 +138,13 @@ public class DinoFollowOwnerGoal extends Goal {
 			if (blockState.getBlock() instanceof LeavesBlock) {
 				return false;
 			} else {
-				BlockPos newBlockPos = blockPos.subtract(this.creature.blockPosition());
-				return this.level.noCollision(this.creature, this.creature.getBoundingBox().move(newBlockPos));
+				BlockPos newBlockPos = blockPos.subtract(this.animal.blockPosition());
+				return this.level.noCollision(this.animal, this.animal.getBoundingBox().move(newBlockPos));
 			}
 		}
 	}
 
 	private int randomIntInclusive(int min, int max) {
-		return this.creature.getRandom().nextInt(max - min + 1) + min;
+		return this.animal.getRandom().nextInt(max - min + 1) + min;
 	}
 }

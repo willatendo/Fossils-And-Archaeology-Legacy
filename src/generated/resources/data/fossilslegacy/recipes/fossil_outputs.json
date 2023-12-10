@@ -5,15 +5,7 @@
   },
   "results": [
     {
-      "result": "minecraft:bone_meal",
-      "weight": 60
-    },
-    {
-      "result": "fossilslegacy:mosasaurus_dna",
-      "weight": 2
-    },
-    {
-      "result": "fossilslegacy:plesiosaurus_dna",
+      "result": "fossilslegacy:utahraptor_dna",
       "weight": 2
     },
     {
@@ -21,15 +13,15 @@
       "weight": 2
     },
     {
-      "result": "fossilslegacy:triceratops_dna",
-      "weight": 2
-    },
-    {
       "result": "fossilslegacy:jurassic_fern_spores",
       "weight": 20
     },
     {
-      "result": "fossilslegacy:tyrannosaurus_dna",
+      "result": "minecraft:bone_meal",
+      "weight": 60
+    },
+    {
+      "result": "fossilslegacy:plesiosaurus_dna",
       "weight": 2
     },
     {
@@ -37,11 +29,15 @@
       "weight": 2
     },
     {
-      "result": "fossilslegacy:stegosaurus_dna",
+      "result": "fossilslegacy:mosasaurus_dna",
       "weight": 2
     },
     {
-      "result": "fossilslegacy:nautilus_dna",
+      "result": "fossilslegacy:triceratops_dna",
+      "weight": 2
+    },
+    {
+      "result": "fossilslegacy:stegosaurus_dna",
       "weight": 2
     },
     {
@@ -49,7 +45,11 @@
       "weight": 2
     },
     {
-      "result": "fossilslegacy:utahraptor_dna",
+      "result": "fossilslegacy:tyrannosaurus_dna",
+      "weight": 2
+    },
+    {
+      "result": "fossilslegacy:nautilus_dna",
       "weight": 2
     }
   ],
