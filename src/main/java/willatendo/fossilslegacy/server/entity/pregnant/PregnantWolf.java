@@ -10,15 +10,16 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.Wolf;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
-import willatendo.fossilslegacy.server.entity.DinosaurEncyclopediaInfo;
+import willatendo.fossilslegacy.server.entity.DinopediaInformation;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.fossilslegacy.server.utils.SyringeAnimals;
 
-public class PregnantWolf extends Wolf implements DinosaurEncyclopediaInfo, PregnantAnimal {
+public class PregnantWolf extends Wolf implements DinopediaInformation, PregnantAnimal {
 	private static final EntityDataAccessor<Integer> PREGNANCY_TIME = SynchedEntityData.defineId(PregnantWolf.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> PREGNANCY = SynchedEntityData.defineId(PregnantWolf.class, EntityDataSerializers.INT);
 
@@ -32,7 +33,7 @@ public class PregnantWolf extends Wolf implements DinosaurEncyclopediaInfo, Preg
 	}
 
 	@Override
-	public List<Component> info() {
+	public List<Component> info(Player player) {
 		return List.of(FossilsLegacyUtils.translation("encyclopedia", "wolf"), FossilsLegacyUtils.translation("encyclopedia", "health", (int) this.getHealth()), FossilsLegacyUtils.translation("encyclopedia", "pregnancy_time", this.getRemainingPregnancyTime() - 5999), FossilsLegacyUtils.translation("encyclopedia", "embryo", FossilsLegacyUtils.translation("encyclopedia", this.getPregnancy().toString().toLowerCase()).getString()));
 	}
 

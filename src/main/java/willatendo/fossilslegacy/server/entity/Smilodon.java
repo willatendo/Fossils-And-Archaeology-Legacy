@@ -48,10 +48,10 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
-import willatendo.fossilslegacy.server.utils.DinosaurOrder;
+import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, HungryAnimal, OwnableEntity, TamesOnBirth, TameAccessor, DaysAlive, PlayerCommandable {
+public class Smilodon extends Animal implements DinopediaInformation, HungryAnimal, OwnableEntity, TamesOnBirth, TameAccessor, DaysAlive, PlayerCommandableAccess {
 	private static final EntityDataAccessor<Integer> HUNGER = SynchedEntityData.defineId(Smilodon.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> DAYS_ALIVE = SynchedEntityData.defineId(Smilodon.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> COMMAND = SynchedEntityData.defineId(Smilodon.class, EntityDataSerializers.INT);
@@ -223,7 +223,7 @@ public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, Hungry
 		this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D) {
 			@Override
 			public boolean canUse() {
-				if (Smilodon.this.getCommand() == DinosaurOrder.STAY) {
+				if (Smilodon.this.getCommand() == DinosaurCommand.STAY) {
 					return false;
 				} else {
 					return super.canUse();
@@ -232,7 +232,7 @@ public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, Hungry
 
 			@Override
 			public boolean canContinueToUse() {
-				if (Smilodon.this.getCommand() == DinosaurOrder.STAY) {
+				if (Smilodon.this.getCommand() == DinosaurCommand.STAY) {
 					return false;
 				} else {
 					return super.canContinueToUse();
@@ -271,9 +271,9 @@ public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, Hungry
 
 	@Override
 	public InteractionResult interactAt(Player player, Vec3 vec3, InteractionHand interactionHand) {
-		if (this.command(player, vec3, interactionHand, this)) {
-			return InteractionResult.SUCCESS;
-		}
+//		if (this.command(player, vec3, interactionHand, this)) {
+//			return InteractionResult.SUCCESS;
+//		}
 		if (this.TESTING_autotame(player)) {
 			return InteractionResult.SUCCESS;
 		}
@@ -365,7 +365,7 @@ public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, Hungry
 			} catch (Throwable throwable) {
 			}
 		}
-		this.setCommand(DinosaurOrder.values()[compoundTag.getInt("Command")]);
+		this.setCommand(DinosaurCommand.values()[compoundTag.getInt("Command")]);
 	}
 
 	@Override
@@ -378,7 +378,7 @@ public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, Hungry
 	}
 
 	@Override
-	public List<Component> info() {
+	public List<Component> info(Player player) {
 		return List.of(FossilsLegacyUtils.translation("encyclopedia", "smilodon"), FossilsLegacyUtils.translation("encyclopedia", "owner", this.getOwner() != null ? this.getOwner().getDisplayName().getString() : FossilsLegacyUtils.translation("encyclopedia", "wild").getString()), FossilsLegacyUtils.translation("encyclopedia", "age", this.getDaysAlive()), FossilsLegacyUtils.translation("encyclopedia", "health", (int) this.getHealth()), FossilsLegacyUtils.translation("encyclopedia", "hunger", this.getHunger(), this.getMaxHunger()));
 	}
 
@@ -388,17 +388,23 @@ public class Smilodon extends Animal implements DinosaurEncyclopediaInfo, Hungry
 	}
 
 	@Override
-	public DinosaurOrder getCommand() {
-		return DinosaurOrder.values()[this.entityData.get(COMMAND)];
+	public DinosaurCommand getCommand() {
+		return DinosaurCommand.values()[this.entityData.get(COMMAND)];
 	}
 
 	@Override
-	public void setCommand(DinosaurOrder dinosaurOrder) {
+	public void setCommand(DinosaurCommand dinosaurOrder) {
 		this.entityData.set(COMMAND, dinosaurOrder.ordinal());
 	}
 
 	@Override
 	public TagKey<Item> commandItems() {
 		return null;
+	}
+
+	@Override
+	public void decreaseHunger() {
+		// TODO Auto-generated method stub
+
 	}
 }

@@ -12,7 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistries;
-import willatendo.fossilslegacy.server.utils.DinosaurOrder;
+import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.util.FillCreativeTab;
 
@@ -27,9 +27,9 @@ public class MagicConchItem extends Item implements FillCreativeTab {
 		super.appendHoverText(itemStack, level, components, tooltipFlag);
 	}
 
-	public static DinosaurOrder getOrder(ItemStack itemStack) {
+	public static DinosaurCommand getOrder(ItemStack itemStack) {
 		CompoundTag compoundTag = itemStack.getOrCreateTag();
-		return DinosaurOrder.getOrderFromInteger(compoundTag.getInt("Order"));
+		return DinosaurCommand.getOrderFromInteger(compoundTag.getInt("Order"));
 	}
 
 	@Override

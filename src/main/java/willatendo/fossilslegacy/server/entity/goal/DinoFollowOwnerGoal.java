@@ -12,13 +12,13 @@ import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
-import willatendo.fossilslegacy.server.entity.PlayerCommandable;
+import willatendo.fossilslegacy.server.entity.PlayerCommandableAccess;
 import willatendo.fossilslegacy.server.entity.TameAccessor;
-import willatendo.fossilslegacy.server.utils.DinosaurOrder;
+import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 
 public class DinoFollowOwnerGoal extends Goal {
 	private final Animal animal;
-	private final PlayerCommandable playerCommandable;
+	private final PlayerCommandableAccess playerCommandable;
 	private final TameAccessor tameAccessor;
 	private LivingEntity owner;
 	private final LevelReader level;
@@ -29,7 +29,7 @@ public class DinoFollowOwnerGoal extends Goal {
 	private final float startDistance;
 	private float oldWaterCost;
 
-	public DinoFollowOwnerGoal(Animal animal, PlayerCommandable playerCommandable, TameAccessor tameAccessor, double speedModifer, float startDistance, float stopDistance) {
+	public DinoFollowOwnerGoal(Animal animal, PlayerCommandableAccess playerCommandable, TameAccessor tameAccessor, double speedModifer, float startDistance, float stopDistance) {
 		this.animal = animal;
 		this.playerCommandable = playerCommandable;
 		this.tameAccessor = tameAccessor;
@@ -48,9 +48,9 @@ public class DinoFollowOwnerGoal extends Goal {
 			return false;
 		} else if (livingEntity.isSpectator()) {
 			return false;
-		} else if (this.playerCommandable.getCommand() == DinosaurOrder.FREE_MOVE) {
+		} else if (this.playerCommandable.getCommand() == DinosaurCommand.FREE_MOVE) {
 			return false;
-		} else if (this.playerCommandable.getCommand() == DinosaurOrder.STAY) {
+		} else if (this.playerCommandable.getCommand() == DinosaurCommand.STAY) {
 			return false;
 		} else if (this.animal.distanceToSqr(livingEntity) < (double) (this.startDistance * this.startDistance)) {
 			return false;
@@ -64,9 +64,9 @@ public class DinoFollowOwnerGoal extends Goal {
 	public boolean canContinueToUse() {
 		if (this.navigation.isDone()) {
 			return false;
-		} else if (this.playerCommandable.getCommand() == DinosaurOrder.FREE_MOVE) {
+		} else if (this.playerCommandable.getCommand() == DinosaurCommand.FREE_MOVE) {
 			return false;
-		} else if (this.playerCommandable.getCommand() == DinosaurOrder.STAY) {
+		} else if (this.playerCommandable.getCommand() == DinosaurCommand.STAY) {
 			return false;
 		} else {
 			return !(this.animal.distanceToSqr(this.owner) <= (double) (this.stopDistance * this.stopDistance));

@@ -32,6 +32,7 @@ import willatendo.fossilslegacy.server.entity.Mammoth;
 import willatendo.fossilslegacy.server.entity.Nautilus;
 import willatendo.fossilslegacy.server.entity.Pteranodon;
 import willatendo.fossilslegacy.server.entity.Smilodon;
+import willatendo.fossilslegacy.server.entity.Stegosaurus;
 import willatendo.fossilslegacy.server.entity.Triceratops;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -45,6 +46,7 @@ public class ModServerEvents {
 		event.put(FossilsLegacyEntities.NAUTILUS.get(), Nautilus.nautilusAttributes());
 		event.put(FossilsLegacyEntities.PTERANODON.get(), Pteranodon.triceratopsAttributes());
 		event.put(FossilsLegacyEntities.SMILODON.get(), Smilodon.smilodonAttributes());
+		event.put(FossilsLegacyEntities.STEGOSAURUS.get(), Stegosaurus.stegosaurusAttributes());
 		event.put(FossilsLegacyEntities.TRICERATOPS.get(), Triceratops.triceratopsAttributes());
 
 		event.put(FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), ZombifiedPiglin.createAttributes().build());

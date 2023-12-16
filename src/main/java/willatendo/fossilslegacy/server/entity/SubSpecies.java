@@ -8,6 +8,4 @@ public interface SubSpecies {
 	void setSubSpecies(int subSpecies);
 
 	ResourceLocation[][] textures();
-
-	ResourceLocation[][] legacyTextures();
 }

@@ -3,110 +3,118 @@ package willatendo.fossilslegacy.client.model;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
-import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
-import willatendo.fossilslegacy.client.animation.SmilodonAnimations;
 import willatendo.fossilslegacy.server.entity.Smilodon;
-import willatendo.fossilslegacy.server.utils.DinosaurOrder;
 
-public class SmilodonModel extends HierarchicalModel<Smilodon> implements CommonSmilodonRenderer {
+public class SmilodonModel extends EntityModel<Smilodon> {
 	private float r = 1.0F;
 	private float g = 1.0F;
 	private float b = 1.0F;
 
-	private final ModelPart head;
 	private final ModelPart root;
+	private final ModelPart body;
+	private final ModelPart back;
 	private final ModelPart tail;
-//	private final ModelPart body;
-//	private final ModelPart backRightLeg;
-//	private final ModelPart backLeftLeg;
-//	private final ModelPart frontRightLeg;
-//	private final ModelPart frontLeftLeg;
+	private final ModelPart rightFrontLeg;
+	private final ModelPart rightBackLeg;
+	private final ModelPart leftFrontLeg;
+	private final ModelPart leftBackLeg;
 
 	public SmilodonModel(ModelPart root) {
 		this.root = root;
-		this.head = root.getChild("head");
+		this.body = root.getChild("body");
+		this.back = root.getChild("back");
 		this.tail = root.getChild("tail");
-//		this.body = root.getChild("body");
-//		this.backRightLeg = root.getChild("back_right_leg");
-//		this.backLeftLeg = root.getChild("back_left_leg");
-//		this.frontRightLeg = root.getChild("front_right_leg");
-//		this.frontLeftLeg = root.getChild("front_left_leg");
+		this.rightFrontLeg = root.getChild("right_front_leg");
+		this.rightBackLeg = root.getChild("right_back_leg");
+		this.leftFrontLeg = root.getChild("left_front_leg");
+		this.leftBackLeg = root.getChild("left_back_leg");
 	}
 
 	public static LayerDefinition createBodyLayer() {
-		MeshDefinition meshdefinition = new MeshDefinition();
-		PartDefinition partdefinition = meshdefinition.getRoot();
+		MeshDefinition meshDefinition = new MeshDefinition();
+		PartDefinition partDefinition = meshDefinition.getRoot();
 
-		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(37, 36).addBox(-4.0F, -5.0F, -7.0F, 8.0F, 9.0F, 7.0F, new CubeDeformation(0.0F)).texOffs(0, 0).addBox(1.0F, -7.0F, -5.0F, 2.0F, 2.0F, 4.0F, new CubeDeformation(0.0F)).texOffs(0, 6).addBox(-3.0F, -7.0F, -5.0F, 2.0F, 2.0F, 4.0F, new CubeDeformation(0.0F)).texOffs(0, 23).addBox(1.5F, 3.0F, -11.5F, 1.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)).texOffs(33, 0).addBox(-2.5F, 3.0F, -11.5F, 1.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)).texOffs(41, 18).addBox(-3.0F, -3.0F, -12.0F, 6.0F, 6.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 9.0F, -5.0F));
-		head.addOrReplaceChild("jaw", CubeListBuilder.create().texOffs(44, 29).addBox(-2.0F, 0.0F, -4.0F, 4.0F, 1.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 3.0F, -7.0F));
-		partdefinition.addOrReplaceChild("front_left_leg", CubeListBuilder.create().texOffs(0, 43).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(3.0F, 14.0F, -2.0F));
-		partdefinition.addOrReplaceChild("front_right_leg", CubeListBuilder.create().texOffs(16, 43).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(-3.0F, 14.0F, -2.0F));
-		partdefinition.addOrReplaceChild("back_left_leg", CubeListBuilder.create().texOffs(32, 52).addBox(-2.0F, 0.0F, -3.0F, 3.0F, 10.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(3.0F, 14.0F, 14.0F));
-		partdefinition.addOrReplaceChild("back_right_leg", CubeListBuilder.create().texOffs(46, 52).addBox(-1.0F, 0.0F, -3.0F, 3.0F, 10.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(-3.0F, 14.0F, 14.0F));
-		partdefinition.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(33, 0).addBox(-1.0F, -1.0F, 0.0F, 2.0F, 2.0F, 11.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 6.0F, 16.0F));
-		partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 23).addBox(-7.0F, -7.0F, -9.25F, 14.0F, 12.0F, 8.0F, new CubeDeformation(0.0F)).texOffs(0, 0).addBox(-5.0F, -5.0F, -1.25F, 10.0F, 10.0F, 13.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 9.0F, 4.25F));
+		partDefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-2.5F, -1.5F, -4.0F, 5.0F, 4.0F, 4.0F).mirror(), PartPose.offset(0.0F, 15.0F, -3.0F));
+		partDefinition.addOrReplaceChild("right_ear", CubeListBuilder.create().texOffs(6, 8).addBox(-2.5F, -2.5F, -3.0F, 1.0F, 1.0F, 2.0F).mirror(), PartPose.offset(0.0F, 15.0F, -3.0F));
+		partDefinition.addOrReplaceChild("left_ear", CubeListBuilder.create().texOffs(6, 8).addBox(1.5F, -2.5F, -3.0F, 1.0F, 1.0F, 2.0F).mirror(), PartPose.offset(0.0F, 15.0F, -3.0F));
+		partDefinition.addOrReplaceChild("nose", CubeListBuilder.create().texOffs(18, 0).addBox(-1.0F, -1.0F, -7.0F, 2.0F, 1.0F, 3.0F), PartPose.offset(0.0F, 15.0F, -3.0F));
+		partDefinition.addOrReplaceChild("snout", CubeListBuilder.create().texOffs(18, 5).addBox(-2.0F, 0.0F, -7.0F, 4.0F, 2.0F, 3.0F), PartPose.offset(0.0F, 15.0F, -3.0F));
+		partDefinition.addOrReplaceChild("jaw", CubeListBuilder.create().texOffs(48, 7).addBox(-1.0F, 0.0F, -3.5F, 2.0F, 1.0F, 3.0F), PartPose.offsetAndRotation(0.0F, 16.5F, -6.0F, 0.1745329F, 0.0F, 0.0F));
+		partDefinition.addOrReplaceChild("right_tooth_top", CubeListBuilder.create().texOffs(44, 14).addBox(-1.5F, 2.0F, -6.0F, 1.0F, 2.0F, 1.0F).mirror(), PartPose.offset(0.0F, 15.0F, -3.0F));
+		partDefinition.addOrReplaceChild("right_tooth_bottom", CubeListBuilder.create().texOffs(44, 17).addBox(-1.5F, 4.0F, -6.0F, 1.0F, 2.0F, 1.0F).mirror(), PartPose.offset(0.0F, 15.0F, -3.0F));
+		partDefinition.addOrReplaceChild("left_tooth_top", CubeListBuilder.create().texOffs(44, 14).addBox(0.5F, 2.0F, -6.0F, 1.0F, 2.0F, 1.0F).mirror(), PartPose.offset(0.0F, 15.0F, -3.0F));
+		partDefinition.addOrReplaceChild("left_tooth_bottom", CubeListBuilder.create().texOffs(44, 17).addBox(0.5F, 4.0F, -6.0F, 1.0F, 2.0F, 1.0F).mirror(), PartPose.offset(0.0F, 15.0F, -3.0F));
+		partDefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 11).addBox(-3.5F, -2.5F, -3.0F, 7.0F, 6.0F, 4.0F).mirror(), PartPose.offset(0.0F, 15.0F, 0.0F));
+		partDefinition.addOrReplaceChild("back", CubeListBuilder.create().texOffs(0, 21).addBox(-2.5F, -2.5F, 0.0F, 5.0F, 5.0F, 6.0F).mirror(), PartPose.offset(0.0F, 16.0F, 1.0F));
+		partDefinition.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(44, 7).addBox(-0.5F, 0.0F, -0.5F, 1.0F, 6.0F, 1.0F).mirror(), PartPose.offsetAndRotation(0.0F, 14.0F, 6.5F, 0.5576792F, 0.0F, 0.0F));
+		partDefinition.addOrReplaceChild("right_front_leg", CubeListBuilder.create().texOffs(40, 0).addBox(-1.0F, -0.5F, -1.0F, 2.0F, 5.0F, 2.0F).mirror(), PartPose.offset(-1.5F, 19.0F, -2.0F));
+		partDefinition.addOrReplaceChild("right_back_leg", CubeListBuilder.create().texOffs(56, 0).addBox(-1.0F, -0.5F, -1.0F, 2.0F, 5.0F, 2.0F).mirror(), PartPose.offset(-1.5F, 19.0F, 6.0F));
+		partDefinition.addOrReplaceChild("left_front_leg", CubeListBuilder.create().texOffs(32, 0).addBox(-1.0F, -0.5F, -1.0F, 2.0F, 5.0F, 2.0F).mirror(), PartPose.offset(1.5F, 19.0F, -2.0F));
+		partDefinition.addOrReplaceChild("left_back_leg", CubeListBuilder.create().texOffs(48, 0).addBox(-1.0F, -0.5F, -1.0F, 2.0F, 5.0F, 2.0F).mirror(), PartPose.offset(1.5F, 19.0F, 6.0F));
 
-		return LayerDefinition.create(meshdefinition, 128, 128);
+		return LayerDefinition.create(meshDefinition, 64, 32);
 	}
 
-	@Override
-	public void prepareMobModel(Smilodon smilodon, float limbSwing, float limbSwingAmount, float headPitch) {
-		this.tail.yRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		super.prepareMobModel(smilodon, limbSwing, limbSwingAmount, headPitch);
-
-		if (smilodon.getCommand() == DinosaurOrder.STAY) {
-		} else {
-		}
-	}
-
-	@Override
-	public void setupAnim(Smilodon smilodon, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.root().getAllParts().forEach(ModelPart::resetPose);
-		this.applyHeadRotation(smilodon, netHeadYaw, headPitch, ageInTicks);
-		float f = (float) smilodon.getDeltaMovement().horizontalDistanceSqr();
-		float f1 = Mth.clamp(f * 400.0F, 0.3F, 2.0F);
-		this.animate(smilodon.walkAnimationState, SmilodonAnimations.SMILODON_WALK, ageInTicks, f1);
-		this.tail.xRot = -smilodon.getTailAngle();
-	}
-
-	private void applyHeadRotation(Smilodon smilodon, float x, float y, float z) {
-		x = Mth.clamp(x, -30.0F, 30.0F);
-		y = Mth.clamp(y, -25.0F, 45.0F);
-
-		this.head.yRot = x * ((float) Math.PI / 180F);
-		this.head.xRot = y * ((float) Math.PI / 180F);
-	}
-
-	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		if (this.young) {
-			poseStack.pushPose();
-			poseStack.translate(0.0F, 0.75F, 0.0F);
-			poseStack.scale(0.5F, 0.5F, 0.5F);
-			this.root().render(poseStack, vertexConsumer, packedLight, packedOverlay, this.r * red, this.g * green, this.b * blue, alpha);
-			poseStack.popPose();
-		} else {
-			this.root().render(poseStack, vertexConsumer, packedLight, packedOverlay, this.r * red, this.g * green, this.b * blue, alpha);
-		}
-	}
-
-	@Override
-	public ModelPart root() {
-		return this.root;
-	}
-
-	@Override
 	public void setColor(float r, float g, float b) {
 		this.r = r;
 		this.g = g;
 		this.b = b;
+	}
+
+	@Override
+	public void setupAnim(Smilodon smilodon, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+//		if (smilodon.isAngry()) {
+//			this.tail.yRot = 0.0F;
+//		} else {
+		this.tail.yRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+//		}
+		if (smilodon.isOrderedToSit()) {
+			this.body.setPos(0.0F, 17.0F, 0.0F);
+			this.body.xRot = -0.314F;
+			this.body.yRot = 0.0F;
+			this.back.setPos(0.0F, 20.0F, -1.0F);
+			this.back.xRot = -0.7853982F;
+			this.tail.setPos(0.0F, 23.0F, 4.5F);
+			this.leftFrontLeg.setPos(-1.5F, 25.0F, 1.0F);
+			this.leftFrontLeg.xRot = 4.712389F;
+			this.leftBackLeg.setPos(1.5F, 25.0F, 1.0F);
+			this.leftBackLeg.xRot = 4.712389F;
+			this.rightFrontLeg.xRot = 5.811947F;
+			this.rightFrontLeg.setPos(-1.5F, 20.0F, -2.0F);
+			this.rightBackLeg.xRot = 5.811947F;
+			this.rightBackLeg.setPos(1.5F, 20.0F, -2.0F);
+		} else {
+			this.body.setPos(0.0F, 15.0F, 0.0F);
+			this.back.setPos(0.0F, 16.0F, 1.0F);
+			this.back.xRot = 0.0F;
+			this.body.xRot = back.xRot;
+
+			this.tail.setPos(0.0F, 14.0F, 6.5F);
+			this.leftFrontLeg.setPos(-1.5F, 19.0F, 6.0F);
+			this.leftBackLeg.setPos(1.5F, 19.0F, 6.0F);
+			this.rightFrontLeg.setPos(-1.5F, 19.0F, -2.0F);
+			this.rightBackLeg.setPos(1.5F, 19.0F, -2.0F);
+			this.leftFrontLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+			this.leftBackLeg.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount;
+			this.rightFrontLeg.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount;
+			this.rightBackLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		}
+
+		this.body.zRot = smilodon.getBodyRollAngle(ageInTicks, -0.08F);
+		this.back.zRot = smilodon.getBodyRollAngle(ageInTicks, -0.16F);
+		this.tail.zRot = smilodon.getBodyRollAngle(ageInTicks, -0.2F);
+	}
+
+	@Override
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+		this.root.render(poseStack, vertexConsumer, packedLight, packedOverlay, this.r * red, this.g * green, this.b * blue, alpha);
 	}
 }

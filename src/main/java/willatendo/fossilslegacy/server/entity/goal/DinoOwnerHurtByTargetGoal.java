@@ -7,16 +7,16 @@ import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.target.TargetGoal;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.animal.Animal;
-import willatendo.fossilslegacy.server.entity.PlayerCommandable;
+import willatendo.fossilslegacy.server.entity.PlayerCommandableAccess;
 import willatendo.fossilslegacy.server.entity.TameAccessor;
 
 public class DinoOwnerHurtByTargetGoal extends TargetGoal {
-	private final PlayerCommandable playerCommandable;
+	private final PlayerCommandableAccess playerCommandable;
 	private final TameAccessor tameAccessor;
 	private LivingEntity ownerLastHurtBy;
 	private int timestamp;
 
-	public DinoOwnerHurtByTargetGoal(Animal animal, PlayerCommandable playerCommandable, TameAccessor tameAccessor) {
+	public DinoOwnerHurtByTargetGoal(Animal animal, PlayerCommandableAccess playerCommandable, TameAccessor tameAccessor) {
 		super(animal, false);
 		this.playerCommandable = playerCommandable;
 		this.tameAccessor = tameAccessor;

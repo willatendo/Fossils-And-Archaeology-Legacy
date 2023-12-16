@@ -36,16 +36,16 @@ public class FossilsLegacyItems {
 	public static final RegistryObject<Item> STEGOSAURUS_DNA = ITEMS.register("stegosaurus_dna", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> DILOPHOSAURUS_DNA = ITEMS.register("dilophosaurus_dna", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> BRACHIOSAURUS_DNA = ITEMS.register("brachiosaurus_dna", () -> new Item(new Item.Properties()));
-	public static final RegistryObject<Item> TRICERATOPS_EGG = ITEMS.register("triceratops_egg", () -> new EggItem(Egg.Eggs.TRICERATOPS, new Item.Properties().stacksTo(1)));
-	public static final RegistryObject<Item> UTAHRAPTOR_EGG = ITEMS.register("utahraptor_egg", () -> new EggItem(Egg.Eggs.UTAHRAPTOR, new Item.Properties().stacksTo(1)));
-	public static final RegistryObject<Item> TYRANNOSAURUS_EGG = ITEMS.register("tyrannosaurus_egg", () -> new EggItem(Egg.Eggs.TYRANNOSAURUS, new Item.Properties().stacksTo(1)));
-	public static final RegistryObject<Item> PTEROSAURUS_EGG = ITEMS.register("pterosaurus_egg", () -> new EggItem(Egg.Eggs.PTEROSAURUS, new Item.Properties().stacksTo(1)));
+	public static final RegistryObject<Item> TRICERATOPS_EGG = ITEMS.register("triceratops_egg", () -> new EggItem(Egg.EggType.TRICERATOPS, new Item.Properties().stacksTo(1)));
+	public static final RegistryObject<Item> UTAHRAPTOR_EGG = ITEMS.register("utahraptor_egg", () -> new EggItem(Egg.EggType.UTAHRAPTOR, new Item.Properties().stacksTo(1)));
+	public static final RegistryObject<Item> TYRANNOSAURUS_EGG = ITEMS.register("tyrannosaurus_egg", () -> new EggItem(Egg.EggType.TYRANNOSAURUS, new Item.Properties().stacksTo(1)));
+	public static final RegistryObject<Item> PTEROSAURUS_EGG = ITEMS.register("pterosaurus_egg", () -> new EggItem(Egg.EggType.PTEROSAURUS, new Item.Properties().stacksTo(1)));
 	public static final RegistryObject<Item> NAUTILUS_EGGS = ITEMS.register("nautilus_eggs", () -> new Item(new Item.Properties().stacksTo(1)));
-	public static final RegistryObject<Item> PLESIOSAURUS_EGG = ITEMS.register("plesiosaurus_egg", () -> new EggItem(Egg.Eggs.PLESIOSAURUS, new Item.Properties().stacksTo(1)));
-	public static final RegistryObject<Item> MOSASAURUS_EGG = ITEMS.register("mosasaurus_egg", () -> new EggItem(Egg.Eggs.MOSASAURUS, new Item.Properties().stacksTo(1)));
-	public static final RegistryObject<Item> STEGOSAURUS_EGG = ITEMS.register("stegosaurus_egg", () -> new EggItem(Egg.Eggs.STEGOSAURUS, new Item.Properties().stacksTo(1)));
-	public static final RegistryObject<Item> DILOPHOSAURUS_EGG = ITEMS.register("dilophosaurus_egg", () -> new EggItem(Egg.Eggs.DILOPHOSAURUS, new Item.Properties().stacksTo(1)));
-	public static final RegistryObject<Item> BRACHIOSAURUS_EGG = ITEMS.register("brachiosaurus_egg", () -> new EggItem(Egg.Eggs.BRACHIOSAURUS, new Item.Properties().stacksTo(1)));
+	public static final RegistryObject<Item> PLESIOSAURUS_EGG = ITEMS.register("plesiosaurus_egg", () -> new EggItem(Egg.EggType.PLESIOSAURUS, new Item.Properties().stacksTo(1)));
+	public static final RegistryObject<Item> MOSASAURUS_EGG = ITEMS.register("mosasaurus_egg", () -> new EggItem(Egg.EggType.MOSASAURUS, new Item.Properties().stacksTo(1)));
+	public static final RegistryObject<Item> STEGOSAURUS_EGG = ITEMS.register("stegosaurus_egg", () -> new EggItem(Egg.EggType.STEGOSAURUS, new Item.Properties().stacksTo(1)));
+	public static final RegistryObject<Item> DILOPHOSAURUS_EGG = ITEMS.register("dilophosaurus_egg", () -> new EggItem(Egg.EggType.DILOPHOSAURUS, new Item.Properties().stacksTo(1)));
+	public static final RegistryObject<Item> BRACHIOSAURUS_EGG = ITEMS.register("brachiosaurus_egg", () -> new EggItem(Egg.EggType.BRACHIOSAURUS, new Item.Properties().stacksTo(1)));
 	public static final RegistryObject<Item> RAW_TRICERATOPS_MEAT = ITEMS.register("raw_triceratops_meat", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));
 	public static final RegistryObject<Item> RAW_UTAHRAPTOR_MEAT = ITEMS.register("raw_utahraptor_meat", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));
 	public static final RegistryObject<Item> RAW_TYRANNOSAURUS_MEAT = ITEMS.register("raw_tyrannosaurus_meat", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));
@@ -73,7 +73,7 @@ public class FossilsLegacyItems {
 	public static final RegistryObject<Item> TYRANNOSAURUS_TOOTH = ITEMS.register("tyrannosaurus_tooth", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> TOOTH_DAGGER = ITEMS.register("tooth_dagger", () -> new ToothDaggerItem(FossilsLegacyTiers.DAGGER, 3, -2.4F, new Item.Properties()));
 	public static final RegistryObject<Item> SKULL_STICK = ITEMS.register("skull_stick", () -> new Item(new Item.Properties().stacksTo(1)));
-	public static final RegistryObject<Item> DINOSAUR_ENCYCLOPEDIA = ITEMS.register("dinosaur_encyclopedia", () -> new DinosaurEncyclopediaItem(new Item.Properties().stacksTo(1)));
+	public static final RegistryObject<Item> DINOPEDIA = ITEMS.register("dinopedia", () -> new DinopediaItem(new Item.Properties().stacksTo(1)));
 	public static final RegistryObject<Item> RAW_CHICKEN_SOUP_BUCKET = ITEMS.register("raw_chicken_soup_bucket", () -> new BucketFoodItem(new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET).food(FossilsLegacyFoods.RAW_CHICKEN_SOUP)));
 	public static final RegistryObject<Item> COOKED_CHICKEN_SOUP_BUCKET = ITEMS.register("cooked_chicken_soup_bucket", () -> new BucketFoodItem(new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET).food(FossilsLegacyFoods.COOKED_CHICKEN_SOUP)));
 	public static final RegistryObject<Item> CHICKEN_ESSENCE_BOTTLE = ITEMS.register("chicken_essence_bottle", () -> new ChickenEssanceBottleItem(new Item.Properties().stacksTo(16).food(FossilsLegacyFoods.CHICKEN_ESSENCE)));
@@ -161,9 +161,10 @@ public class FossilsLegacyItems {
 
 	public static final RegistryObject<Item> BRACHIOSAURUS_SPAWN_EGG = ITEMS.register("brachiosaurus_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.BRACHIOSAURUS.get(), 0x3b3e55, 0x7f8ba1, new Item.Properties()));
 	public static final RegistryObject<Item> MAMMOTH_SPAWN_EGG = ITEMS.register("mammoth_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.MAMMOTH.get(), 0x3d2700, 0x211500, new Item.Properties()));
-	public static final RegistryObject<Item> NAUTILUS_SPAWN_EGG = ITEMS.register("nautilus_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.NAUTILUS.get(), 0xa95453, 0xc1c1c1, new Item.Properties()));
+	public static final RegistryObject<Item> NAUTILUS_SPAWN_EGG = ITEMS.register("nautilus_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.NAUTILUS.get(), 0xc1c1c1, 0xa95453, new Item.Properties()));
 	public static final RegistryObject<Item> PTERANODON_SPAWN_EGG = ITEMS.register("pteranodon_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.PTERANODON.get(), 0x7c5d89, 0x450e5b, new Item.Properties()));
 	public static final RegistryObject<Item> SMILODON_SPAWN_EGG = ITEMS.register("smilodon_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.SMILODON.get(), 0xefa745, 0x9a6527, new Item.Properties()));
+	public static final RegistryObject<Item> STEGOSAURUS_SPAWN_EGG = ITEMS.register("stegosaurus_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.STEGOSAURUS.get(), 0x839d00, 0x785f00, new Item.Properties()));
 	public static final RegistryObject<Item> TRICERATOPS_SPAWN_EGG = ITEMS.register("triceratops_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.TRICERATOPS.get(), 0xc2ff51, 0x638a25, new Item.Properties()));
 
 	static {

@@ -39,7 +39,6 @@ import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.DismountHelper;
@@ -53,14 +52,17 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
-import willatendo.fossilslegacy.server.entity.Egg.Eggs;
+import willatendo.fossilslegacy.server.entity.Egg.EggType;
 import willatendo.fossilslegacy.server.entity.goal.DinoBabyFollowParentGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
+import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
+import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
+import willatendo.fossilslegacy.server.entity.goal.DinoWaterAvoidingRandomStrollGoal;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
-import willatendo.fossilslegacy.server.utils.DinosaurOrder;
+import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class Pteranodon extends Animal implements DinosaurEncyclopediaInfo, HungryAnimal, PlayerRideable, OwnableEntity, TamesOnBirth, TameAccessor, DaysAlive, GrowingEntity, PlayerCommandable {
+public class Pteranodon extends Animal implements DinopediaInformation, HungryAnimal, PlayerRideable, OwnableEntity, TamesOnBirth, TameAccessor, DaysAlive, GrowingEntity, PlayerCommandableAccess {
 	private static final EntityDataAccessor<Integer> HUNGER = SynchedEntityData.defineId(Pteranodon.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> REAL_AGE = SynchedEntityData.defineId(Pteranodon.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> DAYS_ALIVE = SynchedEntityData.defineId(Pteranodon.class, EntityDataSerializers.INT);
@@ -102,7 +104,6 @@ public class Pteranodon extends Animal implements DinosaurEncyclopediaInfo, Hung
 		return this.getGrowthStage() < 4;
 	}
 
-	@Override
 	public int getAdultAge() {
 		return this.getGrowthStages()[4];
 	}
@@ -131,33 +132,52 @@ public class Pteranodon extends Animal implements DinosaurEncyclopediaInfo, Hung
 
 	@Override
 	public void tick() {
+		this.handleFlying();
+
 		super.tick();
 
 		if (this.isAlive()) {
 			this.timeAlive++;
-			this.setHunger(this.getHunger() - 1);
-		}
-		if (this.timeAlive == Level.TICKS_PER_DAY) {
-			this.setDaysAlive(this.getDaysAlive() + 1);
-			this.timeAlive = 0;
-		}
-		if (this.getGrowthStage() < this.getGrowthStages().length) {
-			for (int i = this.getGrowthStages().length; i > 0; i--) {
-				if (this.getRealAge() >= this.getGrowthStages()[i - 1]) {
-					this.setGrowthStage(i - 1);
-					break;
+			if (!this.isFlying) {
+				this.airSpeed = 0.0F;
+				this.airAngle = 0.0F;
+				this.airPitch = 0.0F;
+
+				if (this.canFly() && this.tickCount % 10 == 0) {
+					this.isFlying = true;
+				}
+			} else if (this.isFlying && !this.canFly()) {
+				this.isFlying = false;
+			}
+			if (this.timeAlive == Level.TICKS_PER_DAY) {
+				this.setDaysAlive(this.getDaysAlive() + 1);
+				this.timeAlive = 0;
+			}
+			if (this.getGrowthStage() < this.getGrowthStages().length) {
+				for (int i = this.getGrowthStages().length; i > 0; i--) {
+					if (this.getRealAge() >= this.getGrowthStages()[i - 1]) {
+						this.setGrowthStage(i - 1);
+						break;
+					}
+				}
+			}
+			if (this.tickCount % 10 == 0) {
+				this.setHunger(this.getHunger() - 1);
+				if (this.getHealth() < this.getMaxHealth()) {
+					if (this.getHunger() > 5000) {
+						this.setHunger(this.getHunger() - 1000);
+						this.setHealth(this.getHealth() + 1.0F);
+					}
+					if (this.getHunger() < 0) {
+						this.hurt(new DamageSource(this.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, FossilsLegacyUtils.resource("dinosaur_starve")))), 1.0F);
+					}
 				}
 			}
 		}
-		if (this.tickCount % 10 == 0 && this.getHealth() < this.getMaxHealth()) {
-			if (this.getHunger() > 5000) {
-				this.setHunger(this.getHunger() - 1000);
-				this.setHealth(this.getHealth() + 1.0F);
-			}
-			if (this.getHunger() < 0) {
-				this.hurt(new DamageSource(this.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, FossilsLegacyUtils.resource("dinosaur_starve")))), 1.0F);
-			}
-		}
+	}
+
+	public boolean canFly() {
+		return !this.onGround() && !this.isInWaterOrBubble() && this.isVehicle();
 	}
 
 	@Override
@@ -190,30 +210,12 @@ public class Pteranodon extends Animal implements DinosaurEncyclopediaInfo, Hung
 		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, Ingredient.of(Items.WHEAT), false));
 		this.goalSelector.addGoal(4, new DinoBabyFollowParentGoal(this, 1.1D));
 		this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));
-		this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D) {
-			@Override
-			public boolean canUse() {
-				if (Pteranodon.this.getCommand() == DinosaurOrder.STAY) {
-					return false;
-				} else {
-					return super.canUse();
-				}
-			}
-
-			@Override
-			public boolean canContinueToUse() {
-				if (Pteranodon.this.getCommand() == DinosaurOrder.STAY) {
-					return false;
-				} else {
-					return super.canContinueToUse();
-				}
-			}
-		});
+		this.goalSelector.addGoal(6, new DinoWaterAvoidingRandomStrollGoal(this, this, 1.0D));
 		this.goalSelector.addGoal(6, new DinoFollowOwnerGoal(this, this, this, 1.0D, 10.0F, 2.0F));
 		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-//		this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
-//		this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
+		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this, this, this));
+		this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this, this, this));
 	}
 
 	@Override
@@ -243,26 +245,27 @@ public class Pteranodon extends Animal implements DinosaurEncyclopediaInfo, Hung
 
 	@Override
 	public InteractionResult interactAt(Player player, Vec3 vec3, InteractionHand interactionHand) {
-		if (this.command(player, vec3, interactionHand, this)) {
-			return InteractionResult.SUCCESS;
-		}
+//		if (this.command(player, vec3, interactionHand, this)) {
+//			return InteractionResult.SUCCESS;
+//		} else 
 		if (this.TESTING_autotame(player)) {
 			return InteractionResult.SUCCESS;
-		}
-		ItemStack itemStack = player.getItemInHand(interactionHand);
-		if (this.isTame() && FeederBlockEntity.getMeatFoodLevel(itemStack) > 0) {
-			int addition = this.getHunger() + FeederBlockEntity.getMeatFoodLevel(itemStack);
-			if (!(addition > this.getMaxHealth())) {
-				this.setHunger(addition);
-			} else {
-				this.setHunger(this.getMaxHunger());
+		} else {
+			ItemStack itemStack = player.getItemInHand(interactionHand);
+			if (this.isTame() && FeederBlockEntity.getMeatFoodLevel(itemStack) > 0) {
+				int addition = this.getHunger() + FeederBlockEntity.getMeatFoodLevel(itemStack);
+				if (!(addition > this.getMaxHunger())) {
+					this.setHunger(addition);
+				} else {
+					this.setHunger(this.getMaxHunger());
+				}
+				itemStack.shrink(1);
+				return InteractionResult.SUCCESS;
 			}
-			itemStack.shrink(1);
-			return InteractionResult.SUCCESS;
-		}
-		if (!this.hasPassenger(this) && itemStack.isEmpty() && !this.isBaby()) {
-			player.startRiding(this);
-			return InteractionResult.SUCCESS;
+			if (!this.hasPassenger(this) && itemStack.isEmpty() && !this.isBaby()) {
+				player.startRiding(this);
+				return InteractionResult.SUCCESS;
+			}
 		}
 		return super.interactAt(player, vec3, interactionHand);
 	}
@@ -308,13 +311,21 @@ public class Pteranodon extends Animal implements DinosaurEncyclopediaInfo, Hung
 	}
 
 	@Override
+	public boolean isNoGravity() {
+		return this.isFlying;
+	}
+
+	@Override
+	public boolean isNoAi() {
+		return this.isFlying;
+	}
+
+	@Override
 	public void travel(Vec3 vec3) {
 		if (this.isAlive()) {
 			LivingEntity livingEntity = this.getControllingPassenger();
 			if (this.isVehicle() && livingEntity != null) {
-				if (this.isFlying) {
-
-				} else {
+				if (!this.isFlying) {
 					this.setRot(livingEntity.getYRot(), livingEntity.getXRot() * 0.5F);
 					this.yRotO = this.yBodyRot = this.yHeadRot = this.getYRot();
 					float f = livingEntity.xxa * 0.5F;
@@ -332,9 +343,59 @@ public class Pteranodon extends Animal implements DinosaurEncyclopediaInfo, Hung
 
 					this.calculateEntityAnimation(false);
 					this.tryCheckInsideBlocks();
+				} else {
+					super.travel(vec3);
 				}
 			} else {
 				super.travel(vec3);
+			}
+		}
+	}
+
+	private void handleFlying() {
+		if (this.isAlive()) {
+			if (this.isFlying) {
+				LivingEntity livingEntity = this.getControllingPassenger();
+				if (this.isVehicle() && livingEntity != null) {
+					this.setSpeed((float) this.getAttributeValue(Attributes.MOVEMENT_SPEED) * 4);
+//					this.setRot(livingEntity.getYRot(), livingEntity.getXRot() * 0.5F);
+//					this.yRotO = this.yBodyRot = this.yHeadRot = this.getYRot();
+
+					if ((this.horizontalCollision || this.verticalCollision) && this.airSpeed != 0) {
+						this.airSpeed = 0.0F;
+						this.setXxa(0.0F);
+					}
+
+					if (this.airSpeed == 0 && this.xxa != 0) {
+						this.airSpeed = this.xxa * this.getSpeed();
+					}
+
+					this.airPitch += livingEntity.zza;
+					if (this.airPitch > 90) {
+						this.airPitch = 90;
+					}
+					if (this.airPitch < -60) {
+						this.airPitch = -60;
+					}
+
+					this.airAngle += livingEntity.xxa;
+					if (this.airAngle > 30F) {
+						this.airAngle = 30F;
+					}
+					if (this.airAngle < -30F) {
+						this.airAngle = -30F;
+					}
+
+					float pitch = (float) (this.airPitch * (Math.PI / 180));
+					double speedOffset = Math.cos(pitch);
+					if (pitch < 0) {
+						speedOffset += 1;
+					}
+					this.setZza(this.airSpeed * (float) speedOffset);
+					if (this.airPitch < 60 && this.xxa > 0.1F) {
+						this.yya = (float) (Math.sin(pitch) * 0.4);
+					}
+				}
 			}
 		}
 	}
@@ -356,15 +417,13 @@ public class Pteranodon extends Animal implements DinosaurEncyclopediaInfo, Hung
 
 	@Override
 	public double getPassengersRidingOffset() {
-		return 0.3D * this.getGrowthStage();
+		return this.isFlying ? 0.1D : 0.3D * this.getGrowthStage();
 	}
 
-	@Override
 	public void setRealAge(int realAge) {
 		this.entityData.set(REAL_AGE, realAge);
 	}
 
-	@Override
 	public int getRealAge() {
 		return this.entityData.get(REAL_AGE);
 	}
@@ -385,12 +444,18 @@ public class Pteranodon extends Animal implements DinosaurEncyclopediaInfo, Hung
 		this.entityData.set(GROWTH_STAGE, growthStage);
 	}
 
-	@Override
+	public void setGrowingProgress(int growingProgress) {
+		this.timeAlive = growingProgress;
+	}
+
+	public int getGrowingProgress() {
+		return this.timeAlive;
+	}
+
 	public int getGrowthStage() {
 		return this.entityData.get(GROWTH_STAGE);
 	}
 
-	@Override
 	public int[] getGrowthStages() {
 		return new int[] { 10000, 25000, 50000, 75000, 100000, 130000, 250000 };
 	}
@@ -436,6 +501,7 @@ public class Pteranodon extends Animal implements DinosaurEncyclopediaInfo, Hung
 		compoundTag.putFloat("AirSpeed", this.airSpeed);
 		compoundTag.putFloat("AirAngle", this.airAngle);
 		compoundTag.putFloat("AirPitch", this.airPitch);
+		compoundTag.putBoolean("IsFlying", this.isFlying);
 	}
 
 	@Override
@@ -460,37 +526,53 @@ public class Pteranodon extends Animal implements DinosaurEncyclopediaInfo, Hung
 		}
 		this.setGrowthStage(compoundTag.getInt("GrowthStage"));
 		this.setRealAge(compoundTag.getInt("RealAge"));
-		this.setCommand(DinosaurOrder.values()[compoundTag.getInt("Command")]);
+		this.setCommand(DinosaurCommand.values()[compoundTag.getInt("Command")]);
 
 		this.airSpeed = compoundTag.getFloat("AirSpeed");
 		this.airAngle = compoundTag.getFloat("AirAngle");
 		this.airPitch = compoundTag.getFloat("AirPitch");
+		this.isFlying = compoundTag.getBoolean("IsFlying");
 	}
 
 	@Override
-	public List<Component> info() {
+	public List<Component> info(Player player) {
 		return List.of(FossilsLegacyUtils.translation("encyclopedia", "pteranodon"), FossilsLegacyUtils.translation("encyclopedia", "owner", this.getOwner() != null ? this.getOwner().getDisplayName().getString() : FossilsLegacyUtils.translation("encyclopedia", "wild").getString()), FossilsLegacyUtils.translation("encyclopedia", "age", this.getDaysAlive()), FossilsLegacyUtils.translation("encyclopedia", "health", (int) this.getHealth(), (int) this.getMaxHealth()), FossilsLegacyUtils.translation("encyclopedia", "hunger", this.getHunger(), this.getMaxHunger()));
 	}
 
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
 		Egg egg = FossilsLegacyEntities.EGG.get().create(serverLevel);
-		egg.setEgg(Eggs.PTEROSAURUS);
+		egg.setEgg(EggType.PTEROSAURUS);
 		return egg;
 	}
 
 	@Override
-	public DinosaurOrder getCommand() {
-		return DinosaurOrder.values()[this.entityData.get(COMMAND)];
+	public DinosaurCommand getCommand() {
+		return DinosaurCommand.values()[this.entityData.get(COMMAND)];
 	}
 
 	@Override
-	public void setCommand(DinosaurOrder dinosaurOrder) {
+	public void setCommand(DinosaurCommand dinosaurOrder) {
 		this.entityData.set(COMMAND, dinosaurOrder.ordinal());
 	}
 
 	@Override
 	public TagKey<Item> commandItems() {
 		return FossilsLegacyItemTags.PTERANODON_COMMANDABLES;
+	}
+
+	@Override
+	public int maxGrowthStage() {
+		return 0;
+	}
+
+	@Override
+	public void decreaseHunger() {
+	}
+
+	@Override
+	public double getMinHealth() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

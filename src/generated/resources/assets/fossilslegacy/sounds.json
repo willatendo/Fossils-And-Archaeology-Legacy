@@ -88,6 +88,26 @@
     ],
     "subtitle": "sound.fossilslegacy.smilodon.hurt"
   },
+  "entity.stegosaurus.ambient": {
+    "sounds": [
+      "fossilslegacy:stegosaurus_ambient_1",
+      "fossilslegacy:stegosaurus_ambient_2",
+      "fossilslegacy:stegosaurus_ambient_3"
+    ],
+    "subtitle": "sound.fossilslegacy.stegosaurus.ambient"
+  },
+  "entity.stegosaurus.death": {
+    "sounds": [
+      "fossilslegacy:stegosaurus_death"
+    ],
+    "subtitle": "sound.fossilslegacy.stegosaurus.death"
+  },
+  "entity.stegosaurus.hurt": {
+    "sounds": [
+      "fossilslegacy:stegosaurus_hurt"
+    ],
+    "subtitle": "sound.fossilslegacy.stegosaurus.hurt"
+  },
   "entity.triceratops.ambient": {
     "sounds": [
       "fossilslegacy:triceratops_ambient_1",

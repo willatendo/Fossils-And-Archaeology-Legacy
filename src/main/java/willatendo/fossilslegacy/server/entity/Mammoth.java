@@ -60,7 +60,7 @@ import net.minecraftforge.common.IForgeShearable;
 import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class Mammoth extends Animal implements DinosaurEncyclopediaInfo, HungryAnimal, PlayerRideable, OwnableEntity, TamesOnBirth, TameAccessor, DaysAlive, IForgeShearable {
+public class Mammoth extends Animal implements DinopediaInformation, HungryAnimal, PlayerRideable, OwnableEntity, TamesOnBirth, TameAccessor, DaysAlive, IForgeShearable {
 	private static final EntityDataAccessor<Integer> HUNGER = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> DAYS_ALIVE = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Boolean> IS_SHEARED = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.BOOLEAN);
@@ -437,12 +437,18 @@ public class Mammoth extends Animal implements DinosaurEncyclopediaInfo, HungryA
 	}
 
 	@Override
-	public List<Component> info() {
+	public List<Component> info(Player player) {
 		return List.of(FossilsLegacyUtils.translation("encyclopedia", "mammoth"), FossilsLegacyUtils.translation("encyclopedia", "owner", this.getOwner() != null ? this.getOwner().getDisplayName().getString() : FossilsLegacyUtils.translation("encyclopedia", "wild").getString()), FossilsLegacyUtils.translation("encyclopedia", "age", this.getDaysAlive()), FossilsLegacyUtils.translation("encyclopedia", "health", (int) this.getHealth()), FossilsLegacyUtils.translation("encyclopedia", "hunger", this.getHunger(), this.getMaxHunger()));
 	}
 
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
 		return FossilsLegacyEntities.MAMMOTH.get().create(serverLevel);
+	}
+
+	@Override
+	public void decreaseHunger() {
+		// TODO Auto-generated method stub
+		
 	}
 }

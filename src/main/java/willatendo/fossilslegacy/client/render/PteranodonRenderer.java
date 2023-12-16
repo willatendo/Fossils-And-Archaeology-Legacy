@@ -7,19 +7,26 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FossilsLegacyModels;
-import willatendo.fossilslegacy.client.model.legacy.GroundPteranodonLegacyModel;
+import willatendo.fossilslegacy.client.model.AbstractPteranodonModel;
+import willatendo.fossilslegacy.client.model.FlyingPteranodonModel;
+import willatendo.fossilslegacy.client.model.GroundPteranodonModel;
 import willatendo.fossilslegacy.server.entity.Pteranodon;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class PteranodonRenderer extends MobRenderer<Pteranodon, GroundPteranodonLegacyModel> {
-	public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entities/legacy/pteranodon/pteranodon.png");
+public class PteranodonRenderer extends MobRenderer<Pteranodon, AbstractPteranodonModel> {
+	public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/pteranodon/pteranodon.png");
+	private final GroundPteranodonModel groundPteranodonLegacyModel;
+	private final FlyingPteranodonModel flyingPteranodonLegacyModel;
 
 	public PteranodonRenderer(Context context) {
-		super(context, new GroundPteranodonLegacyModel(context.bakeLayer(FossilsLegacyModels.LEGACY_GROUND_PTERANODON)), 0.5F);
+		super(context, new GroundPteranodonModel(context.bakeLayer(FossilsLegacyModels.GROUND_PTERANODON)), 0.5F);
+		this.groundPteranodonLegacyModel = new GroundPteranodonModel(context.bakeLayer(FossilsLegacyModels.GROUND_PTERANODON));
+		this.flyingPteranodonLegacyModel = new FlyingPteranodonModel(context.bakeLayer(FossilsLegacyModels.FLYING_PTERANODON));
 	}
 
 	@Override
 	public void render(Pteranodon pteranodon, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
+		this.model = pteranodon.isFlying ? this.flyingPteranodonLegacyModel : this.groundPteranodonLegacyModel;
 		this.shadowRadius = 0.15F * (float) pteranodon.getGrowthStage();
 		super.render(pteranodon, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
 	}

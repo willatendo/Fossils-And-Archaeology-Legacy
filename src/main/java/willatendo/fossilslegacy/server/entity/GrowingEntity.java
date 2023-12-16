@@ -5,11 +5,7 @@ public interface GrowingEntity {
 
 	int getGrowthStage();
 
-	void setRealAge(int realAge);
+	int maxGrowthStage();
 
-	int getRealAge();
-
-	int[] getGrowthStages();
-
-	int getAdultAge();
+	double getMinHealth();
 }

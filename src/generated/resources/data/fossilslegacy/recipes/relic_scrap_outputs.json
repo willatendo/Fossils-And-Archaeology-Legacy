@@ -5,24 +5,24 @@
   },
   "results": [
     {
-      "result": "fossilslegacy:sword_artifact",
-      "weight": 5
-    },
-    {
-      "result": "fossilslegacy:stone_hieroglyph",
-      "weight": 30
-    },
-    {
-      "result": "fossilslegacy:helmet_artifact",
-      "weight": 5
-    },
-    {
       "result": "minecraft:gravel",
       "weight": 40
     },
     {
       "result": "minecraft:flint",
       "weight": 20
+    },
+    {
+      "result": "fossilslegacy:helmet_artifact",
+      "weight": 5
+    },
+    {
+      "result": "fossilslegacy:sword_artifact",
+      "weight": 5
+    },
+    {
+      "result": "fossilslegacy:stone_hieroglyph",
+      "weight": 30
     }
   ],
   "time": 100

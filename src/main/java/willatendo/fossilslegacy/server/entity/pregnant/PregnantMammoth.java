@@ -9,17 +9,18 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
-import willatendo.fossilslegacy.server.entity.DinosaurEncyclopediaInfo;
+import willatendo.fossilslegacy.server.entity.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
 import willatendo.fossilslegacy.server.entity.Mammoth;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.fossilslegacy.server.utils.SyringeAnimals;
 
-public class PregnantMammoth extends Mammoth implements DinosaurEncyclopediaInfo, PregnantAnimal {
+public class PregnantMammoth extends Mammoth implements DinopediaInformation, PregnantAnimal {
 	private static final EntityDataAccessor<Integer> PREGNANCY_TIME = SynchedEntityData.defineId(PregnantMammoth.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> PREGNANCY = SynchedEntityData.defineId(PregnantMammoth.class, EntityDataSerializers.INT);
 
@@ -33,7 +34,7 @@ public class PregnantMammoth extends Mammoth implements DinosaurEncyclopediaInfo
 	}
 
 	@Override
-	public List<Component> info() {
+	public List<Component> info(Player player) {
 		return List.of(FossilsLegacyUtils.translation("encyclopedia", "mammoth"), FossilsLegacyUtils.translation("encyclopedia", "owner", this.getOwner() != null ? this.getOwner().getDisplayName().getString() : FossilsLegacyUtils.translation("encyclopedia", "wild").getString()), FossilsLegacyUtils.translation("encyclopedia", "age", this.getDaysAlive()), FossilsLegacyUtils.translation("encyclopedia", "health", (int) this.getHealth()), FossilsLegacyUtils.translation("encyclopedia", "hunger", this.getHunger(), this.getMaxHunger()), FossilsLegacyUtils.translation("encyclopedia", "pregnancy_time", this.getRemainingPregnancyTime() - 5999), FossilsLegacyUtils.translation("encyclopedia", "embryo", FossilsLegacyUtils.translation("encyclopedia", this.getPregnancy().toString().toLowerCase()).getString()));
 	}
 

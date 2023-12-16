@@ -2,21 +2,20 @@ package willatendo.fossilslegacy.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
+import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FossilsLegacyModels;
-import willatendo.fossilslegacy.client.model.legacy.BrachiosaurusLegacyModel;
+import willatendo.fossilslegacy.client.model.BrachiosaurusModel;
 import willatendo.fossilslegacy.server.entity.Brachiosaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class BrachiosaurusRenderer extends DinosaurRenderer<Brachiosaurus, EntityModel<Brachiosaurus>, BrachiosaurusLegacyModel, BrachiosaurusLegacyModel> {
-	public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entities/brachiosaurus/brachiosaurus.png");
-	public static final ResourceLocation LEGACY_TEXTURE = FossilsLegacyUtils.resource("textures/entities/legacy/brachiosaurus/brachiosaurus.png");
+public class BrachiosaurusRenderer extends MobRenderer<Brachiosaurus, BrachiosaurusModel> {
+	public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/brachiosaurus/brachiosaurus.png");
 
 	public BrachiosaurusRenderer(Context context) {
-		super(context, new BrachiosaurusLegacyModel(context.bakeLayer(FossilsLegacyModels.BRACHIOSAURUS)), new BrachiosaurusLegacyModel(context.bakeLayer(FossilsLegacyModels.BRACHIOSAURUS)), 0.3F);
+		super(context, new BrachiosaurusModel(context.bakeLayer(FossilsLegacyModels.BRACHIOSAURUS)), 0.3F);
 	}
 
 	@Override
@@ -26,28 +25,13 @@ public class BrachiosaurusRenderer extends DinosaurRenderer<Brachiosaurus, Entit
 	}
 
 	@Override
-	protected void scale(Brachiosaurus brachiosaurus, PoseStack poseStack, float scale) {
-		float newScale = this.growScale(brachiosaurus, this.useLegacyModels());
-
-		poseStack.scale(1.0F * (1 + newScale), 1.0F * (1 + newScale), 1.0F * (1 + newScale));
-	}
-
-	public float growScale(Brachiosaurus brachiosaurus, boolean isLegacyModel) {
-		return isLegacyModel ? (brachiosaurus.getGrowthStage() * 0.5F) : (brachiosaurus.getGrowthStage() - (brachiosaurus.isBaby() ? 0 : 2)) * 0.25F;
+	protected void scale(Brachiosaurus brachiosaurus, PoseStack poseStack, float packedOverlay) {
+		poseStack.scale(1.5F + (0.3F * (float) brachiosaurus.getGrowthStage()), 1.5F + (0.3F * (float) brachiosaurus.getGrowthStage()), 1.5F + (0.3F * (float) brachiosaurus.getGrowthStage()));
+		super.scale(brachiosaurus, poseStack, packedOverlay);
 	}
 
 	@Override
-	public float legacyScaleFactor(Brachiosaurus brachiosaurus) {
-		return 1.0F;
-	}
-
-	@Override
-	public ResourceLocation getTextures(Brachiosaurus brachiosaurus) {
+	public ResourceLocation getTextureLocation(Brachiosaurus brachiosaurus) {
 		return TEXTURE;
-	}
-
-	@Override
-	public ResourceLocation getLegacyTextures(Brachiosaurus brachiosaurus) {
-		return LEGACY_TEXTURE;
 	}
 }

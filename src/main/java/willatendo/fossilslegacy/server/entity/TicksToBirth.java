@@ -28,7 +28,6 @@ public interface TicksToBirth<T extends Entity> {
 			offspring.moveTo(mob.getX(), mob.getY(), mob.getZ(), 0.0F, 0.0F);
 			if (offspring instanceof GrowingEntity growingEntity) {
 				growingEntity.setGrowthStage(0);
-				growingEntity.setRealAge(0);
 			}
 			if (offspring instanceof Animal animal) {
 				animal.setBaby(true);

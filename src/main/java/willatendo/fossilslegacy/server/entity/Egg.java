@@ -29,7 +29,7 @@ import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.item.FossilsLegacyLootTables;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class Egg extends Animal implements TicksToBirth, DinosaurEncyclopediaInfo {
+public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 	private static final EntityDataAccessor<Integer> REMAINING_TIME = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> EGG = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Boolean> WARM = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.BOOLEAN);
@@ -116,7 +116,7 @@ public class Egg extends Animal implements TicksToBirth, DinosaurEncyclopediaInf
 	public void readAdditionalSaveData(CompoundTag compoundTag) {
 		super.readAdditionalSaveData(compoundTag);
 		this.setRemainingTime(compoundTag.getInt("RemainingTime"));
-		this.setEgg(Eggs.values()[compoundTag.getInt("Egg")]);
+		this.setEgg(EggType.values()[compoundTag.getInt("Egg")]);
 		this.setWarm(compoundTag.getBoolean("Warm"));
 	}
 
@@ -143,16 +143,16 @@ public class Egg extends Animal implements TicksToBirth, DinosaurEncyclopediaInf
 		this.entityData.set(WARM, warm);
 	}
 
-	public Eggs getEgg() {
-		return Eggs.values()[this.entityData.get(EGG)];
+	public EggType getEgg() {
+		return EggType.values()[this.entityData.get(EGG)];
 	}
 
-	public void setEgg(Eggs eggs) {
+	public void setEgg(EggType eggs) {
 		this.entityData.set(EGG, eggs.ordinal());
 	}
 
 	@Override
-	public List<Component> info() {
+	public List<Component> info(Player player) {
 		return List.of(FossilsLegacyUtils.translation("encyclopedia", "egg", FossilsLegacyUtils.translation("encyclopedia", this.getEgg().toString().toLowerCase()).getString()), FossilsLegacyUtils.translation("encyclopedia", "remaining_time", this.getRemainingTime() * 100 / this.maxTime() + "%"), FossilsLegacyUtils.translation("encyclopedia", "temperature", FossilsLegacyUtils.translation("encyclopedia", "warm." + this.isWarm()).getString()));
 	}
 
@@ -161,23 +161,23 @@ public class Egg extends Animal implements TicksToBirth, DinosaurEncyclopediaInf
 		return null;
 	}
 
-	public static enum Eggs {
+	public static enum EggType {
 		TRICERATOPS("triceratops", FossilsLegacyLootTables.TRICERATOPS_EGG, () -> FossilsLegacyEntities.TRICERATOPS.get(), () -> FossilsLegacyItems.TRICERATOPS_EGG.get()),
 		UTAHRAPTOR("utahraptor", FossilsLegacyLootTables.UTAHRAPTOR_EGG, () -> EntityType.COW, () -> FossilsLegacyItems.UTAHRAPTOR_EGG.get()),
 		TYRANNOSAURUS("tyrannosaurus", FossilsLegacyLootTables.TYRANNOSAURUS_EGG, () -> EntityType.COW, () -> FossilsLegacyItems.TYRANNOSAURUS_EGG.get()),
-		PTEROSAURUS("pterosaurus", FossilsLegacyLootTables.PTEROSAURUS_EGG, () -> EntityType.COW, () -> FossilsLegacyItems.PTEROSAURUS_EGG.get()),
+		PTEROSAURUS("pterosaurus", FossilsLegacyLootTables.PTEROSAURUS_EGG, () -> FossilsLegacyEntities.PTERANODON.get(), () -> FossilsLegacyItems.PTEROSAURUS_EGG.get()),
 		PLESIOSAURUS("plesiosaurus", FossilsLegacyLootTables.PLESIOSAURUS_EGG, () -> EntityType.COW, () -> FossilsLegacyItems.PLESIOSAURUS_EGG.get()),
 		MOSASAURUS("mosasaurus", FossilsLegacyLootTables.MOSASAURUS_EGG, () -> EntityType.COW, () -> FossilsLegacyItems.MOSASAURUS_EGG.get()),
-		STEGOSAURUS("stegosaurus", FossilsLegacyLootTables.STEGOSAURUS_EGG, () -> EntityType.COW, () -> FossilsLegacyItems.STEGOSAURUS_EGG.get()),
+		STEGOSAURUS("stegosaurus", FossilsLegacyLootTables.STEGOSAURUS_EGG, () -> FossilsLegacyEntities.BRACHIOSAURUS.get(), () -> FossilsLegacyItems.STEGOSAURUS_EGG.get()),
 		DILOPHOSAURUS("dilophosaurus", FossilsLegacyLootTables.DILOPHOSAURUS_EGG, () -> EntityType.COW, () -> FossilsLegacyItems.DILOPHOSAURUS_EGG.get()),
-		BRACHIOSAURUS("brachiosaurus", FossilsLegacyLootTables.BRACHIOSAURUS_EGG, () -> EntityType.COW, () -> FossilsLegacyItems.BRACHIOSAURUS_EGG.get());
+		BRACHIOSAURUS("brachiosaurus", FossilsLegacyLootTables.BRACHIOSAURUS_EGG, () -> FossilsLegacyEntities.BRACHIOSAURUS.get(), () -> FossilsLegacyItems.BRACHIOSAURUS_EGG.get());
 
 		private final String texture;
 		private final ResourceLocation loot;
 		private final Supplier<EntityType> entityType;
 		private final Supplier<Item> pick;
 
-		private Eggs(String texture, ResourceLocation loot, Supplier<EntityType> entityType, Supplier<Item> pick) {
+		private EggType(String texture, ResourceLocation loot, Supplier<EntityType> entityType, Supplier<Item> pick) {
 			this.texture = texture;
 			this.loot = loot;
 			this.entityType = entityType;

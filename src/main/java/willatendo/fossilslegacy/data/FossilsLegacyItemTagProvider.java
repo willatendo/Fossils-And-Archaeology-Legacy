@@ -24,6 +24,7 @@ public class FossilsLegacyItemTagProvider extends ItemTagsProvider {
 		this.tag(FossilsLegacyItemTags.DRUM_INSTRUMENT).add(Items.STICK, Items.BONE, FossilsLegacyItems.SKULL_STICK.get(), Items.ARROW, Items.SPECTRAL_ARROW, Items.TIPPED_ARROW);
 		this.tag(FossilsLegacyItemTags.PIGLIN_TAMING_HELMETS).add(FossilsLegacyItems.ANCIENT_HELMET.get());
 		this.tag(FossilsLegacyItemTags.PTERANODON_COMMANDABLES).add(Items.ARROW, Items.SPECTRAL_ARROW, Items.TIPPED_ARROW);
+		this.tag(FossilsLegacyItemTags.STEGOSAURUS_COMMANDABLES).add(Items.STICK);
 		this.tag(FossilsLegacyItemTags.TRICERATOPS_COMMANDABLES).add(Items.STICK);
 	}
 }

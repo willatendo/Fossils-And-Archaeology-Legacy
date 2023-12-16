@@ -21,10 +21,10 @@ import net.minecraft.world.entity.Pose;
 import net.minecraft.world.scores.Team;
 import willatendo.fossilslegacy.client.FossilsLegacyModels;
 import willatendo.fossilslegacy.client.model.fossils.AbstractSkeletonModel;
-import willatendo.fossilslegacy.client.model.fossils.BrachiosaurusLegacySkeletonModel;
-import willatendo.fossilslegacy.client.model.fossils.PlesiosaurusLegacySkeletonModel;
-import willatendo.fossilslegacy.client.model.fossils.PteranodonLegacySkeletonModel;
-import willatendo.fossilslegacy.client.model.fossils.TriceratopsLegacySkeletonModel;
+import willatendo.fossilslegacy.client.model.fossils.BrachiosaurusSkeletonModel;
+import willatendo.fossilslegacy.client.model.fossils.PlesiosaurusSkeletonModel;
+import willatendo.fossilslegacy.client.model.fossils.PteranodonSkeletonModel;
+import willatendo.fossilslegacy.client.model.fossils.TriceratopsSkeletonModel;
 import willatendo.fossilslegacy.server.entity.Fossil;
 import willatendo.fossilslegacy.server.entity.Fossils;
 
@@ -34,7 +34,7 @@ public class FossilRenderer extends EntityRenderer<Fossil> implements LegacyMode
 
 	public FossilRenderer(Context context) {
 		super(context);
-		this.models = new AbstractSkeletonModel[][] { { new BrachiosaurusLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_BRACHIOSAURUS_SKELETON)), new PlesiosaurusLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_PLESIOSAURUS_SKELETON)), new PteranodonLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_PTERANODON_SKELETON)), new TriceratopsLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_TRICERATOPS_SKELETON)) }, { new BrachiosaurusLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_BRACHIOSAURUS_SKELETON)), new PlesiosaurusLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_PLESIOSAURUS_SKELETON)), new PteranodonLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_PTERANODON_SKELETON)), new TriceratopsLegacySkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_TRICERATOPS_SKELETON)) } };
+		this.models = new AbstractSkeletonModel[][] { { new BrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.BRACHIOSAURUS_SKELETON)), new PlesiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.PLESIOSAURUS_SKELETON)), new PteranodonSkeletonModel(context.bakeLayer(FossilsLegacyModels.PTERANODON_SKELETON)), new TriceratopsSkeletonModel(context.bakeLayer(FossilsLegacyModels.TRICERATOPS_SKELETON)) }, { new BrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.BRACHIOSAURUS_SKELETON)), new PlesiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.PLESIOSAURUS_SKELETON)), new PteranodonSkeletonModel(context.bakeLayer(FossilsLegacyModels.PTERANODON_SKELETON)), new TriceratopsSkeletonModel(context.bakeLayer(FossilsLegacyModels.TRICERATOPS_SKELETON)) } };
 	}
 
 	@Override

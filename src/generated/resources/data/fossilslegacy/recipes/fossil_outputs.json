@@ -5,11 +5,27 @@
   },
   "results": [
     {
+      "result": "fossilslegacy:dilophosaurus_dna",
+      "weight": 2
+    },
+    {
+      "result": "fossilslegacy:triceratops_dna",
+      "weight": 2
+    },
+    {
+      "result": "fossilslegacy:brachiosaurus_dna",
+      "weight": 2
+    },
+    {
+      "result": "fossilslegacy:plesiosaurus_dna",
+      "weight": 2
+    },
+    {
       "result": "fossilslegacy:utahraptor_dna",
       "weight": 2
     },
     {
-      "result": "fossilslegacy:pterosaurus_dna",
+      "result": "fossilslegacy:nautilus_dna",
       "weight": 2
     },
     {
@@ -21,11 +37,7 @@
       "weight": 60
     },
     {
-      "result": "fossilslegacy:plesiosaurus_dna",
-      "weight": 2
-    },
-    {
-      "result": "fossilslegacy:dilophosaurus_dna",
+      "result": "fossilslegacy:stegosaurus_dna",
       "weight": 2
     },
     {
@@ -33,23 +45,11 @@
       "weight": 2
     },
     {
-      "result": "fossilslegacy:triceratops_dna",
-      "weight": 2
-    },
-    {
-      "result": "fossilslegacy:stegosaurus_dna",
-      "weight": 2
-    },
-    {
-      "result": "fossilslegacy:brachiosaurus_dna",
+      "result": "fossilslegacy:pterosaurus_dna",
       "weight": 2
     },
     {
       "result": "fossilslegacy:tyrannosaurus_dna",
-      "weight": 2
-    },
-    {
-      "result": "fossilslegacy:nautilus_dna",
       "weight": 2
     }
   ],

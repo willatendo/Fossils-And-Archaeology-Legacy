@@ -17,9 +17,9 @@ import willatendo.fossilslegacy.server.entity.Egg;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
 
 public class EggItem extends Item {
-	private final Egg.Eggs eggs;
+	private final Egg.EggType eggs;
 
-	public EggItem(Egg.Eggs eggs, Properties properties) {
+	public EggItem(Egg.EggType eggs, Properties properties) {
 		super(properties);
 		this.eggs = eggs;
 	}

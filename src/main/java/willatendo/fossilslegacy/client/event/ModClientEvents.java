@@ -1,11 +1,7 @@
 package willatendo.fossilslegacy.client.event;
 
-import java.util.function.Supplier;
-
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.entity.CatRenderer;
 import net.minecraft.client.renderer.entity.ChestedHorseRenderer;
 import net.minecraft.client.renderer.entity.CowRenderer;
@@ -26,30 +22,24 @@ import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.entity.WolfRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import willatendo.fossilslegacy.client.FossilsLegacyModels;
+import willatendo.fossilslegacy.client.model.BrachiosaurusModel;
 import willatendo.fossilslegacy.client.model.EggModel;
 import willatendo.fossilslegacy.client.model.FailuresaurusModel;
+import willatendo.fossilslegacy.client.model.FlyingPteranodonModel;
+import willatendo.fossilslegacy.client.model.GroundPteranodonModel;
 import willatendo.fossilslegacy.client.model.MammothModel;
+import willatendo.fossilslegacy.client.model.NautilusModel;
 import willatendo.fossilslegacy.client.model.SmilodonModel;
-import willatendo.fossilslegacy.client.model.fossils.BrachiosaurusLegacySkeletonModel;
-import willatendo.fossilslegacy.client.model.fossils.PlesiosaurusLegacySkeletonModel;
-import willatendo.fossilslegacy.client.model.fossils.PteranodonLegacySkeletonModel;
-import willatendo.fossilslegacy.client.model.fossils.TriceratopsLegacySkeletonModel;
-import willatendo.fossilslegacy.client.model.fossils.TriceratopsSkeletonModel;
-import willatendo.fossilslegacy.client.model.legacy.BrachiosaurusLegacyModel;
-import willatendo.fossilslegacy.client.model.legacy.GroundPteranodonLegacyModel;
-import willatendo.fossilslegacy.client.model.legacy.MammothLegacyModel;
-import willatendo.fossilslegacy.client.model.legacy.NautilusLegacyModel;
-import willatendo.fossilslegacy.client.model.legacy.SmilodonLegacyModel;
-import willatendo.fossilslegacy.client.model.legacy.TriceratopsLegacyModel;
-import willatendo.fossilslegacy.client.model.pterosaurus.BabyPteranodonModel;
-import willatendo.fossilslegacy.client.model.triceratops.BabyTriceratopsModel;
-import willatendo.fossilslegacy.client.model.triceratops.TriceratopsModel;
+import willatendo.fossilslegacy.client.model.StegosaurusModel;
+import willatendo.fossilslegacy.client.model.TriceratopsModel;
+import willatendo.fossilslegacy.client.model.fossils.BrachiosaurusSkeletonModel;
+import willatendo.fossilslegacy.client.model.fossils.PlesiosaurusSkeletonModel;
+import willatendo.fossilslegacy.client.model.fossils.PteranodonSkeletonModel;
 import willatendo.fossilslegacy.client.render.BrachiosaurusRenderer;
 import willatendo.fossilslegacy.client.render.DrownedPirateRenderer;
 import willatendo.fossilslegacy.client.render.EggRenderer;
@@ -59,6 +49,7 @@ import willatendo.fossilslegacy.client.render.MammothRenderer;
 import willatendo.fossilslegacy.client.render.NautilusRenderer;
 import willatendo.fossilslegacy.client.render.PteranodonRenderer;
 import willatendo.fossilslegacy.client.render.SmilodonRenderer;
+import willatendo.fossilslegacy.client.render.StegosaurusRenderer;
 import willatendo.fossilslegacy.client.render.StoneHieroglyphRenderer;
 import willatendo.fossilslegacy.client.render.ThrownJavelinRenderer;
 import willatendo.fossilslegacy.client.render.TriceratopsRenderer;
@@ -89,6 +80,7 @@ public class ModClientEvents {
 		EntityRenderers.register(FossilsLegacyEntities.MAMMOTH.get(), MammothRenderer::new);
 		EntityRenderers.register(FossilsLegacyEntities.NAUTILUS.get(), NautilusRenderer::new);
 		EntityRenderers.register(FossilsLegacyEntities.SMILODON.get(), SmilodonRenderer::new);
+		EntityRenderers.register(FossilsLegacyEntities.STEGOSAURUS.get(), StegosaurusRenderer::new);
 		EntityRenderers.register(FossilsLegacyEntities.TRICERATOPS.get(), TriceratopsRenderer::new);
 
 		EntityRenderers.register(FossilsLegacyEntities.EGG.get(), EggRenderer::new);
@@ -123,47 +115,22 @@ public class ModClientEvents {
 
 	@SubscribeEvent
 	public static void entityRenderers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-		registerModel(event, FossilsLegacyModels.MAMMOTH, FossilsLegacyModels.LEGACY_MAMMOTH, MammothModel::createBodyLayer, MammothLegacyModel::createBodyLayer);
+		event.registerLayerDefinition(FossilsLegacyModels.BRACHIOSAURUS, BrachiosaurusModel::createBodyLayer);
+		event.registerLayerDefinition(FossilsLegacyModels.MAMMOTH, MammothModel::createBodyLayer);
+		event.registerLayerDefinition(FossilsLegacyModels.NAUTILUS, NautilusModel::createBodyLayer);
+		event.registerLayerDefinition(FossilsLegacyModels.GROUND_PTERANODON, GroundPteranodonModel::createBodyLayer);
+		event.registerLayerDefinition(FossilsLegacyModels.FLYING_PTERANODON, FlyingPteranodonModel::createBodyLayer);
+		event.registerLayerDefinition(FossilsLegacyModels.SMILODON, SmilodonModel::createBodyLayer);
+		event.registerLayerDefinition(FossilsLegacyModels.STEGOSAURUS, StegosaurusModel::createBodyLayer);
+		event.registerLayerDefinition(FossilsLegacyModels.TRICERATOPS, TriceratopsModel::createBodyLayer);
 
-		event.registerLayerDefinition(FossilsLegacyModels.LEGACY_NAUTILUS, NautilusLegacyModel::createBodyLayer);
-
-		registerModel(event, FossilsLegacyModels.SMILODON, FossilsLegacyModels.LEGACY_SMILODON, SmilodonModel::createBodyLayer, SmilodonLegacyModel::createBodyLayer);
-
-		registerModel(event, new EntityRenderer(FossilsLegacyModels.TRICERATOPS_ADULT, TriceratopsModel::createBodyLayer), new EntityRenderer(FossilsLegacyModels.TRICERATOPS_BABY, BabyTriceratopsModel::createBodyLayer), new EntityRenderer(FossilsLegacyModels.LEGACY_TRICERATOPS, TriceratopsLegacyModel::createBodyLayer), new EntityRenderer(FossilsLegacyModels.TRICERATOPS_SKELETON, TriceratopsSkeletonModel::createBodyLayer), new EntityRenderer(FossilsLegacyModels.LEGACY_TRICERATOPS_SKELETON, TriceratopsLegacySkeletonModel::createBodyLayer));
-
-		event.registerLayerDefinition(FossilsLegacyModels.BRACHIOSAURUS, BrachiosaurusLegacyModel::createBodyLayer);
-		event.registerLayerDefinition(FossilsLegacyModels.LEGACY_BRACHIOSAURUS, BrachiosaurusLegacyModel::createBodyLayer);
-
-		event.registerLayerDefinition(FossilsLegacyModels.LEGACY_GROUND_PTERANODON, GroundPteranodonLegacyModel::createBodyLayer);
-
-		event.registerLayerDefinition(FossilsLegacyModels.LEGACY_BRACHIOSAURUS_SKELETON, BrachiosaurusLegacySkeletonModel::createBodyLayer);
-		event.registerLayerDefinition(FossilsLegacyModels.LEGACY_PLESIOSAURUS_SKELETON, PlesiosaurusLegacySkeletonModel::createBodyLayer);
-		event.registerLayerDefinition(FossilsLegacyModels.LEGACY_PTERANODON_SKELETON, PteranodonLegacySkeletonModel::createBodyLayer);
-
-		event.registerLayerDefinition(FossilsLegacyModels.PTERANODON_BABY, BabyPteranodonModel::createBodyLayer);
+		event.registerLayerDefinition(FossilsLegacyModels.TRICERATOPS_SKELETON, BrachiosaurusSkeletonModel::createBodyLayer);
+		event.registerLayerDefinition(FossilsLegacyModels.BRACHIOSAURUS_SKELETON, BrachiosaurusSkeletonModel::createBodyLayer);
+		event.registerLayerDefinition(FossilsLegacyModels.PLESIOSAURUS_SKELETON, PlesiosaurusSkeletonModel::createBodyLayer);
+		event.registerLayerDefinition(FossilsLegacyModels.PTERANODON_SKELETON, PteranodonSkeletonModel::createBodyLayer);
 
 		event.registerLayerDefinition(FossilsLegacyModels.FAILURESAURUS, FailuresaurusModel::createBodyLayer);
 
 		event.registerLayerDefinition(FossilsLegacyModels.EGG, EggModel::createBodyLayer);
-	}
-
-	private static void registerModel(EntityRenderersEvent.RegisterLayerDefinitions event, ModelLayerLocation mainModel, ModelLayerLocation legacyModel, Supplier<LayerDefinition> mainLayer, Supplier<LayerDefinition> legacyLayer) {
-		registerModel(event, new EntityRenderer(mainModel, mainLayer), new EntityRenderer(legacyModel, legacyLayer));
-	}
-
-	private static void registerModel(EntityRenderersEvent.RegisterLayerDefinitions event, EntityRenderer... entityRenderers) {
-		for (EntityRenderer entityRenderer : entityRenderers) {
-			event.registerLayerDefinition(entityRenderer.modelLayerLocation(), entityRenderer.layer());
-		}
-	}
-
-	@SubscribeEvent
-	public static void onRegisterReloadListenerEvent(RegisterClientReloadListenersEvent event) {
-//		Minecraft minecraft = Minecraft.getInstance();
-//		TextureManager textureManager = minecraft.getTextureManager();
-//		event.registerReloadListener(new FossilsLegacySpriteUploader(textureManager));
-	}
-
-	private static record EntityRenderer(ModelLayerLocation modelLayerLocation, Supplier<LayerDefinition> layer) {
 	}
 }

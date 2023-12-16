@@ -1,42 +1,34 @@
 package willatendo.fossilslegacy.client.render;
 
-import net.minecraft.client.model.EntityModel;
+import com.mojang.blaze3d.vertex.PoseStack;
+
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
+import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FossilsLegacyModels;
-import willatendo.fossilslegacy.client.model.legacy.TriceratopsLegacyModel;
-import willatendo.fossilslegacy.client.model.triceratops.BabyTriceratopsModel;
-import willatendo.fossilslegacy.client.model.triceratops.TriceratopsModel;
+import willatendo.fossilslegacy.client.model.TriceratopsModel;
 import willatendo.fossilslegacy.server.entity.Triceratops;
 
-public class TriceratopsRenderer extends GrowingDinosaurRenderer<Triceratops, EntityModel<Triceratops>, BabyTriceratopsModel, TriceratopsModel, TriceratopsLegacyModel> {
-
+public class TriceratopsRenderer extends MobRenderer<Triceratops, TriceratopsModel> {
 	public TriceratopsRenderer(Context context) {
-		super(context, new BabyTriceratopsModel(context.bakeLayer(FossilsLegacyModels.TRICERATOPS_BABY)), new TriceratopsModel(context.bakeLayer(FossilsLegacyModels.TRICERATOPS_ADULT)), new TriceratopsLegacyModel(context.bakeLayer(FossilsLegacyModels.LEGACY_TRICERATOPS)), 0.15F);
+		super(context, new TriceratopsModel(context.bakeLayer(FossilsLegacyModels.TRICERATOPS)), 0.15F);
 	}
 
 	@Override
-	public float growScale(Triceratops triceratops, boolean isLegacyModel) {
-		return isLegacyModel ? (triceratops.getGrowthStage() * 0.5F) : (triceratops.getGrowthStage() - (triceratops.isBaby() ? 0 : 2)) * 0.25F;
+	public void render(Triceratops triceratops, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
+		this.shadowRadius = 0.15F * (float) triceratops.getGrowthStage();
+		super.render(triceratops, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
 	}
 
 	@Override
-	public float shadowScale(Triceratops triceratops, boolean isLegacyModel) {
-		return 0.15F;
+	protected void scale(Triceratops triceratops, PoseStack poseStack, float packedOverlay) {
+		poseStack.scale(1.5F + (0.3F * (float) triceratops.getGrowthStage()), 1.5F + (0.3F * (float) triceratops.getGrowthStage()), 1.5F + (0.3F * (float) triceratops.getGrowthStage()));
+		super.scale(triceratops, poseStack, packedOverlay);
 	}
 
 	@Override
-	public float legacyScaleFactor(Triceratops triceratops) {
-		return 1.0F;
-	}
-
-	@Override
-	public ResourceLocation getTextures(Triceratops triceratops) {
+	public ResourceLocation getTextureLocation(Triceratops triceratops) {
 		return triceratops.textures()[triceratops.getSubSpecies()][triceratops.isBaby() ? 1 : 0];
-	}
-
-	@Override
-	public ResourceLocation getLegacyTextures(Triceratops triceratops) {
-		return triceratops.legacyTextures()[triceratops.getSubSpecies()][triceratops.isBaby() ? 1 : 0];
 	}
 }

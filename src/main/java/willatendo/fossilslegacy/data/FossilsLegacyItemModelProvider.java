@@ -66,7 +66,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
 		this.basicItem(FossilsLegacyItems.TYRANNOSAURUS_TOOTH.get());
 		this.handheldItem(FossilsLegacyItems.TOOTH_DAGGER.get());
 		this.handheldItem(FossilsLegacyItems.SKULL_STICK.get());
-		this.basicItem(FossilsLegacyItems.DINOSAUR_ENCYCLOPEDIA.get());
+		this.basicItem(FossilsLegacyItems.DINOPEDIA.get());
 		this.basicItem(FossilsLegacyItems.RAW_CHICKEN_SOUP_BUCKET.get());
 		this.basicItem(FossilsLegacyItems.COOKED_CHICKEN_SOUP_BUCKET.get());
 		this.basicItem(FossilsLegacyItems.CHICKEN_ESSENCE_BOTTLE.get());
@@ -157,6 +157,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
 		this.spawnEggItem(FossilsLegacyItems.NAUTILUS_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.PTERANODON_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.SMILODON_SPAWN_EGG.get());
+		this.spawnEggItem(FossilsLegacyItems.STEGOSAURUS_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get());
 
 		for (RegistryObject<Block> blocks : FossilsLegacyBlocks.BLOCKS.getEntries()) {

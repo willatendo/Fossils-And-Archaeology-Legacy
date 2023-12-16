@@ -12,7 +12,7 @@ import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.item.MagicConchItem;
 import willatendo.fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSerialisers;
-import willatendo.fossilslegacy.server.utils.DinosaurOrder;
+import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 
 public class MagicConchRecipe extends CustomRecipe {
 	public MagicConchRecipe(ResourceLocation id, CraftingBookCategory craftingBookCategory) {
@@ -42,15 +42,15 @@ public class MagicConchRecipe extends CustomRecipe {
 		for (int slot = 0; slot < craftingContainer.getContainerSize(); ++slot) {
 			ItemStack itemStackInSlot = craftingContainer.getItem(slot);
 			if (!itemStackInSlot.isEmpty() && itemStackInSlot.getItem() instanceof MagicConchItem) {
-				DinosaurOrder dinosaurOrder = MagicConchItem.getOrder(itemStackInSlot);
-				if (dinosaurOrder == DinosaurOrder.FOLLOW) {
-					nextOrder = DinosaurOrder.STAY.ordinal();
+				DinosaurCommand dinosaurOrder = MagicConchItem.getOrder(itemStackInSlot);
+				if (dinosaurOrder == DinosaurCommand.FOLLOW) {
+					nextOrder = DinosaurCommand.STAY.ordinal();
 				}
-				if (dinosaurOrder == DinosaurOrder.STAY) {
-					nextOrder = DinosaurOrder.FREE_MOVE.ordinal();
+				if (dinosaurOrder == DinosaurCommand.STAY) {
+					nextOrder = DinosaurCommand.FREE_MOVE.ordinal();
 				}
-				if (dinosaurOrder == DinosaurOrder.FREE_MOVE) {
-					nextOrder = DinosaurOrder.FOLLOW.ordinal();
+				if (dinosaurOrder == DinosaurCommand.FREE_MOVE) {
+					nextOrder = DinosaurCommand.FOLLOW.ordinal();
 				}
 			}
 		}

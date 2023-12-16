@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-10T10:56:46.3024323	fossilslegacy: Item Models
+// 1.20.1	2023-12-15T20:16:50.3082597	fossilslegacy: Item Models
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 41c5f6a309438824458da52752171cd09485a937 assets/fossilslegacy/models/item/ancient_helmet.json
 2701cd233168837331e67cbf0146831ca43eec8a assets/fossilslegacy/models/item/ancient_sword.json
@@ -38,7 +38,7 @@ ad8b8d6d0b03f6f57d99a5d05ea1a701ee827856 assets/fossilslegacy/models/item/cow_em
 41294aff9ed309331ee8f22d3f0fb9c0cd358b6a assets/fossilslegacy/models/item/diamond_javelin.json
 74b19b3ed45f9b1f7d7f4b0c6e0d379e00fa82c4 assets/fossilslegacy/models/item/dilophosaurus_dna.json
 8d95bd4bf545fbe761254b3ae61eb721da97d9dc assets/fossilslegacy/models/item/dilophosaurus_egg.json
-d785ec144b72b4705fa322a5f2ff5301255764b0 assets/fossilslegacy/models/item/dinosaur_encyclopedia.json
+34928848d1e2b07f6cceb6629cf5a9d368cd1557 assets/fossilslegacy/models/item/dinopedia.json
 2ed5ba64853da11e77a30cd9d070734232aa0aea assets/fossilslegacy/models/item/dolphin_dna.json
 b66f2595aa8e6550d38e5723c6b7037f9a8b36b3 assets/fossilslegacy/models/item/dolphin_embryo_syringe.json
 0f3a3fc416ebfec8706d5f7309ffd0ec0ec21e02 assets/fossilslegacy/models/item/donkey_dna.json
@@ -131,6 +131,7 @@ d49730b24fb6933446cfef28d365de0cb00f9dee assets/fossilslegacy/models/item/skull_
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/smilodon_spawn_egg.json
 301004c4e24140f978fa0f4eb39c7ca0f63018eb assets/fossilslegacy/models/item/stegosaurus_dna.json
 c9f2e78854037eca1f72506bf2d2b213f7ccf801 assets/fossilslegacy/models/item/stegosaurus_egg.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/stegosaurus_spawn_egg.json
 8d7cf7120a39017a5ac73a3a92897b511e2652d9 assets/fossilslegacy/models/item/stone_hieroglyph.json
 bd165c5894dc19f85abaab92be30b71091296b42 assets/fossilslegacy/models/item/stone_javelin.json
 59002c5ff9f6239fb259684c2e616170de5d21ea assets/fossilslegacy/models/item/sword_artifact.json

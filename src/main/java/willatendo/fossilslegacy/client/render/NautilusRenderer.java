@@ -4,15 +4,15 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FossilsLegacyModels;
-import willatendo.fossilslegacy.client.model.legacy.NautilusLegacyModel;
+import willatendo.fossilslegacy.client.model.NautilusModel;
 import willatendo.fossilslegacy.server.entity.Nautilus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class NautilusRenderer extends MobRenderer<Nautilus, NautilusLegacyModel> {
-	public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entities/legacy/nautilus/nautilus.png");
+public class NautilusRenderer extends MobRenderer<Nautilus, NautilusModel> {
+	public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/nautilus/nautilus.png");
 
 	public NautilusRenderer(Context context) {
-		super(context, new NautilusLegacyModel(context.bakeLayer(FossilsLegacyModels.LEGACY_NAUTILUS)), 0.5F);
+		super(context, new NautilusModel(context.bakeLayer(FossilsLegacyModels.NAUTILUS)), 0.5F);
 	}
 
 	@Override

@@ -17,27 +17,27 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.registries.ForgeRegistries;
 import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
-import willatendo.fossilslegacy.server.entity.PlayerCommandable;
+import willatendo.fossilslegacy.server.entity.PlayerCommandableAccess;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
-import willatendo.fossilslegacy.server.utils.DinosaurOrder;
+import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class DrumBlock extends Block {
-	public static final EnumProperty<DinosaurOrder> DINOSAUR_ORDER = EnumProperty.create("order", DinosaurOrder.class);
+	public static final EnumProperty<DinosaurCommand> DINOSAUR_ORDER = EnumProperty.create("order", DinosaurCommand.class);
 
 	public DrumBlock(Properties properties) {
 		super(properties);
-		this.stateDefinition.any().setValue(DINOSAUR_ORDER, DinosaurOrder.FOLLOW);
+		this.stateDefinition.any().setValue(DINOSAUR_ORDER, DinosaurCommand.FOLLOW);
 	}
 
 	@Override
 	public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
 		ItemStack itemStack = player.getItemInHand(interactionHand);
 		if (itemStack.is(FossilsLegacyItemTags.DRUM_INSTRUMENT)) {
-			DinosaurOrder current = blockState.getValue(DrumBlock.DINOSAUR_ORDER);
+			DinosaurCommand current = blockState.getValue(DrumBlock.DINOSAUR_ORDER);
 			List<LivingEntity> allEntities = level.getEntitiesOfClass(LivingEntity.class, new AABB(blockPos).inflate(30.0D));
 			for (LivingEntity livingEntity : allEntities) {
-				if (livingEntity instanceof PlayerCommandable playerCommandable) {
+				if (livingEntity instanceof PlayerCommandableAccess playerCommandable) {
 					if (ForgeRegistries.ITEMS.tags().getTag(playerCommandable.commandItems()).contains(itemStack.getItem())) {
 						playerCommandable.setCommand(blockState.getValue(DINOSAUR_ORDER));
 					}
@@ -48,14 +48,14 @@ public class DrumBlock extends Block {
 				player.playSound(FossilsLegacySoundEvents.DRUM_TRIPLE_HIT.get());
 			}
 		} else {
-			DinosaurOrder next = DinosaurOrder.FOLLOW;
-			DinosaurOrder current = blockState.getValue(DrumBlock.DINOSAUR_ORDER);
-			if (current == DinosaurOrder.FOLLOW) {
-				next = DinosaurOrder.STAY;
-			} else if (current == DinosaurOrder.STAY) {
-				next = DinosaurOrder.FREE_MOVE;
+			DinosaurCommand next = DinosaurCommand.FOLLOW;
+			DinosaurCommand current = blockState.getValue(DrumBlock.DINOSAUR_ORDER);
+			if (current == DinosaurCommand.FOLLOW) {
+				next = DinosaurCommand.STAY;
+			} else if (current == DinosaurCommand.STAY) {
+				next = DinosaurCommand.FREE_MOVE;
 			} else {
-				next = DinosaurOrder.FOLLOW;
+				next = DinosaurCommand.FOLLOW;
 			}
 			level.setBlock(blockPos, FossilsLegacyBlocks.DRUM.get().defaultBlockState().setValue(DrumBlock.DINOSAUR_ORDER, next), 3);
 			if (level.isClientSide()) {

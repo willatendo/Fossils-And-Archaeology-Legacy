@@ -8,8 +8,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.GrowingEntity;
-import willatendo.fossilslegacy.server.entity.HungryAnimal;
 
 public class ChickenEssanceBottleItem extends Item {
 	public ChickenEssanceBottleItem(Properties properties) {
@@ -19,11 +19,14 @@ public class ChickenEssanceBottleItem extends Item {
 	@Override
 	public InteractionResult interactLivingEntity(ItemStack itemStack, Player player, LivingEntity livingEntity, InteractionHand interactionHand) {
 		if (livingEntity instanceof GrowingEntity growingEntity) {
-			if (growingEntity.getGrowthStage() < growingEntity.getGrowthStages().length) {
+			if (growingEntity.getGrowthStage() < growingEntity.maxGrowthStage()) {
 				growingEntity.setGrowthStage(growingEntity.getGrowthStage() + 1);
-				if (livingEntity instanceof HungryAnimal hungryAnimal) {
-					hungryAnimal.setHunger(hungryAnimal.getHunger() - 500);
+				if (livingEntity instanceof Dinosaur dinosaur) {
+					dinosaur.setHealth((float) (livingEntity.getHealth() + dinosaur.getMinHealth()));
 				}
+//				if (livingEntity instanceof HungryAnimal hungryAnimal) {
+//					hungryAnimal.setHunger(hungryAnimal.getHunger() - 500);
+//				}
 				ItemUtils.createFilledResult(itemStack, player, Items.GLASS_BOTTLE.getDefaultInstance());
 				return InteractionResult.sidedSuccess(player.level().isClientSide());
 			}

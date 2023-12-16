@@ -20,6 +20,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import willatendo.fossilslegacy.server.block.FeederBlock;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.item.FeederMeatLevel;
 import willatendo.fossilslegacy.server.item.FeederPlantsLevel;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
@@ -184,6 +185,20 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
 
 		if (changed) {
 			setChanged(level, blockPos, blockState);
+		}
+	}
+
+	public boolean hasFood(boolean meat) {
+		return meat ? this.meatLevel > 0 : this.plantsLevel > 0;
+	}
+
+	public void feed(Dinosaur dinosaur, boolean meat) {
+		while (dinosaur.feed() && this.hasFood(meat)) {
+			if (meat) {
+				this.meatLevel--;
+			} else {
+				this.plantsLevel--;
+			}
 		}
 	}
 

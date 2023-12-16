@@ -1,8 +1,9 @@
-// 1.20.1	2023-12-10T15:02:32.9161001	Tags for minecraft:item mod id fossilslegacy
+// 1.20.1	2023-12-15T20:16:50.3072596	Tags for minecraft:item mod id fossilslegacy
 1ad920aa65e2706dabb6265f3b12546ab33e8936 data/fossilslegacy/tags/items/brachiosaurus_commandables.json
 5da6c180981b74163a8d511c12575e21d35871fe data/fossilslegacy/tags/items/cake_eggs.json
 ef2b4aa2590deb17a623e42e34d4d10df73514db data/fossilslegacy/tags/items/dna.json
 4af49eafd9aa56796e5a1d21111579e54b77d394 data/fossilslegacy/tags/items/drum_instrument.json
 6fd2af253a1ae8ba939f3bebe89fbc03946d6168 data/fossilslegacy/tags/items/piglin_taming_helmets.json
 cb1403915fd8ebe238f3e86f00123ee24c49e426 data/fossilslegacy/tags/items/pteranodon_commandables.json
+1ad920aa65e2706dabb6265f3b12546ab33e8936 data/fossilslegacy/tags/items/stegosaurus_commandables.json
 1ad920aa65e2706dabb6265f3b12546ab33e8936 data/fossilslegacy/tags/items/triceratops_commandables.json
