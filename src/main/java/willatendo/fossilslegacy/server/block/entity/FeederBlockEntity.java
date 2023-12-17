@@ -94,7 +94,7 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
 		map.put(FossilsLegacyItems.COOKED_STEGOSAURUS_MEAT.get(), 100);
 		map.put(FossilsLegacyItems.COOKED_TRICERATOPS_MEAT.get(), 100);
 		map.put(FossilsLegacyItems.COOKED_TYRANNOSAURUS_MEAT.get(), 100);
-		map.put(FossilsLegacyItems.COOKED_UTAHRAPTOR_MEAT.get(), 100);
+		map.put(FossilsLegacyItems.COOKED_VELOCIRAPTOR_MEAT.get(), 100);
 		map.put(FossilsLegacyItems.SIO_CHIU_LE.get(), 100);
 		map.put(FossilsLegacyItems.RAW_BRACHIOSAURUS_MEAT.get(), 100);
 		map.put(FossilsLegacyItems.RAW_DILOPHOSAURUS_MEAT.get(), 100);
@@ -104,7 +104,7 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
 		map.put(FossilsLegacyItems.RAW_STEGOSAURUS_MEAT.get(), 100);
 		map.put(FossilsLegacyItems.RAW_TRICERATOPS_MEAT.get(), 100);
 		map.put(FossilsLegacyItems.RAW_TYRANNOSAURUS_MEAT.get(), 100);
-		map.put(FossilsLegacyItems.RAW_UTAHRAPTOR_MEAT.get(), 100);
+		map.put(FossilsLegacyItems.RAW_VELOCIRAPTOR_MEAT.get(), 100);
 		map.put(FossilsLegacyItems.NAUTILUS.get(), 100);
 		return map;
 	}

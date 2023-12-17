@@ -115,7 +115,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
 		map.put(new ItemStack(FossilsLegacyItems.STEGOSAURUS_EGG.get()), 12000);
 		map.put(new ItemStack(FossilsLegacyItems.TRICERATOPS_EGG.get()), 12000);
 		map.put(new ItemStack(FossilsLegacyItems.TYRANNOSAURUS_EGG.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.UTAHRAPTOR_EGG.get()), 12000);
+		map.put(new ItemStack(FossilsLegacyItems.VELOCIRAPTOR_EGG.get()), 12000);
 		map.put(new ItemStack(FossilsLegacyItems.RAW_BRACHIOSAURUS_MEAT.get()), 12000);
 		map.put(new ItemStack(FossilsLegacyItems.RAW_DILOPHOSAURUS_MEAT.get()), 12000);
 		map.put(new ItemStack(FossilsLegacyItems.RAW_MAMMOTH_MEAT.get()), 12000);
@@ -126,7 +126,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
 		map.put(new ItemStack(FossilsLegacyItems.RAW_STEGOSAURUS_MEAT.get()), 12000);
 		map.put(new ItemStack(FossilsLegacyItems.RAW_TRICERATOPS_MEAT.get()), 12000);
 		map.put(new ItemStack(FossilsLegacyItems.RAW_TYRANNOSAURUS_MEAT.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.RAW_UTAHRAPTOR_MEAT.get()), 12000);
+		map.put(new ItemStack(FossilsLegacyItems.RAW_VELOCIRAPTOR_MEAT.get()), 12000);
 		map.put(new ItemStack(Items.PORKCHOP), 3000);
 		map.put(new ItemStack(Items.COD), 3000);
 		map.put(new ItemStack(Items.SALMON), 3000);

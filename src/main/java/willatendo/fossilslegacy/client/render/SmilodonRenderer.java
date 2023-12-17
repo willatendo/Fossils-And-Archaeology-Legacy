@@ -12,7 +12,7 @@ import willatendo.fossilslegacy.server.entity.Smilodon;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class SmilodonRenderer extends MobRenderer<Smilodon, SmilodonModel> {
-	public static final ResourceLocation ADULT_TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/smilodon/adult_smilodon.png");
+	public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/smilodon/smilodon.png");
 	public static final ResourceLocation BABY_TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/smilodon/baby_smilodon.png");
 
 	public SmilodonRenderer(Context context) {
@@ -40,6 +40,6 @@ public class SmilodonRenderer extends MobRenderer<Smilodon, SmilodonModel> {
 
 	@Override
 	public ResourceLocation getTextureLocation(Smilodon smilodon) {
-		return smilodon.isBaby() ? BABY_TEXTURE : ADULT_TEXTURE;
+		return smilodon.isBaby() ? BABY_TEXTURE : TEXTURE;
 	}
 }

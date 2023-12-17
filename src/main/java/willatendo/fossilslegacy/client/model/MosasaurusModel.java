@@ -52,7 +52,7 @@ public class MosasaurusModel extends EntityModel<Mosasaurus> {
 		partDefinition.addOrReplaceChild("right_front_flipper", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, 0.0F, 0.0F, 4.0F, 1.0F, 6.0F), PartPose.offsetAndRotation(-3.0F, 20.0F, 0.0F, -0.34907F, -1.0472F, -0.43633F));
 		partDefinition.addOrReplaceChild("left_front_flipper", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, 0.0F, 0.0F, 4.0F, 1.0F, 6.0F), PartPose.offsetAndRotation(5.0F, 20.0F, 0.0F, -0.34907F, 1.0472F, 0.43633F));
 		partDefinition.addOrReplaceChild("right_back_flipper", CubeListBuilder.create().texOffs(20, 1).addBox(-3.0F, 0.0F, 0.0F, 3.0F, 1.0F, 5.0F), PartPose.offsetAndRotation(-2.0F, 20.0F, 7.0F, -0.34907F, -0.87266F, -0.43633F));
-		partDefinition.addOrReplaceChild("left_back_flipper", CubeListBuilder.create().texOffs(20, 1).addBox(0.0F, 0.0F, 0.0F, 3.0F, 1.0F, 5.0F), PartPose.offsetAndRotation(4.0F, 20.0F, 7.0F, -0.34907F, 0.87266F, -0.43633F));
+		partDefinition.addOrReplaceChild("left_back_flipper", CubeListBuilder.create().texOffs(20, 1).addBox(0.0F, 0.0F, 0.0F, 3.0F, 1.0F, 5.0F), PartPose.offsetAndRotation(4.0F, 20.0F, 7.0F, -0.34907F, 0.87266F, 0.43633F));
 		partDefinition.addOrReplaceChild("tail_1", CubeListBuilder.create().texOffs(35, 14).addBox(-3.0F, -2.0F, -4.0F, 6.0F, 4.0F, 6.0F), PartPose.offset(1.0F, 19.0F, 11.0F));
 		partDefinition.addOrReplaceChild("tail_2", CubeListBuilder.create().texOffs(36, 24).addBox(-2.0F, -1.0F, -4.0F, 4.0F, 2.0F, 6.0F), PartPose.offset(1.0F, 19.0F, 16.0F));
 		partDefinition.addOrReplaceChild("tail_2_spike", CubeListBuilder.create().texOffs(26, 22).addBox(0.0F, -3.0F, -4.0F, 1.0F, 2.0F, 6.0F), PartPose.offset(1.0F, 19.0F, 16.0F));

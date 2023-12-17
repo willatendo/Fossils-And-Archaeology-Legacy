@@ -33,9 +33,11 @@ public interface TicksToBirth<T extends Entity> {
 				animal.setBaby(true);
 			}
 			if (offspring instanceof TamesOnBirth tamesOnBirth) {
-				Player player = level.getNearestPlayer(offspring, 25.0D);
-				if (player != null) {
-					tamesOnBirth.setOwnerUUID(player.getUUID());
+				if (tamesOnBirth.tamesOnBirth()) {
+					Player player = level.getNearestPlayer(offspring, 25.0D);
+					if (player != null) {
+						tamesOnBirth.setOwnerUUID(player.getUUID());
+					}
 				}
 			}
 			level.addFreshEntity(offspring);

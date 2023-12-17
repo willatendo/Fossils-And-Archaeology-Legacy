@@ -1,12 +1,9 @@
 package willatendo.fossilslegacy.server.item;
 
-import java.util.Objects;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
@@ -41,9 +38,11 @@ public class EggItem extends Item {
 				placePos = blockPos.relative(direction);
 			}
 
-			Egg egg = FossilsLegacyEntities.EGG.get().spawn((ServerLevel) level, itemStack, useOnContext.getPlayer(), placePos, MobSpawnType.SPAWN_EGG, true, !Objects.equals(blockPos, placePos) && direction == Direction.UP);
+			Egg egg = FossilsLegacyEntities.EGG.get().create(level);
 			egg.setEgg(this.eggs);
 			egg.setRemainingTime(0);
+			egg.moveTo(placePos.getX() + 0.5F, placePos.getY(), placePos.getZ() + 0.5F);
+			level.addFreshEntity(egg);
 			itemStack.shrink(1);
 			level.gameEvent(useOnContext.getPlayer(), GameEvent.ENTITY_PLACE, blockPos);
 

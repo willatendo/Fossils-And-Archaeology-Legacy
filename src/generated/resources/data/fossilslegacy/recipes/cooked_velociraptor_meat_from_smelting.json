@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "fossilslegacy:raw_velociraptor_meat"
+  },
+  "result": "fossilslegacy:cooked_velociraptor_meat"
+}

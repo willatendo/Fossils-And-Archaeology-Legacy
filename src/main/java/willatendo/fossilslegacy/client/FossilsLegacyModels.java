@@ -13,6 +13,9 @@ public class FossilsLegacyModels {
 	public static final ModelLayerLocation SMILODON = new ModelLayerLocation(FossilsLegacyUtils.resource("smilodon"), "main");
 	public static final ModelLayerLocation STEGOSAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("stegosaurus"), "main");
 	public static final ModelLayerLocation TRICERATOPS = new ModelLayerLocation(FossilsLegacyUtils.resource("triceratops"), "main");
+	public static final ModelLayerLocation TYRANNOSAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("tyrannosaurus"), "main");
+	public static final ModelLayerLocation KNOCKED_OUT_TYRANNOSAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("knocked_out_tyrannosaurus"), "main");
+	public static final ModelLayerLocation VELOCIRAPTOR = new ModelLayerLocation(FossilsLegacyUtils.resource("velociraptor"), "main");
 
 	public static final ModelLayerLocation BRACHIOSAURUS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("brachiosaurs_skeleton"), "main");
 	public static final ModelLayerLocation PLESIOSAURUS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("plesiosaurus_skeleton"), "main");

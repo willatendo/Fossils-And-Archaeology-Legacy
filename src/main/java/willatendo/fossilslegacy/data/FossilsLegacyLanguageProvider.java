@@ -75,50 +75,40 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("death.attack.dinosaur_starve", "%1$s starved to death");
 
 		// Dinopedia
-		this.add("dinopedia.fossilslegacy.cat", "Cat");
-		this.add("dinopedia.fossilslegacy.cow", "Cow");
-		this.add("dinopedia.fossilslegacy.dolphin", "Dolphin");
-		this.add("dinopedia.fossilslegacy.donkey", "Donkey");
-		this.add("dinopedia.fossilslegacy.egg", "%s Egg");
-		this.add("dinopedia.fossilslegacy.fox", "Fox");
-		this.add("dinopedia.fossilslegacy.goat", "Goat");
-		this.add("dinopedia.fossilslegacy.horse", "Horse");
-		this.add("dinopedia.fossilslegacy.llama", "Llama");
-		this.add("dinopedia.fossilslegacy.mule", "Mule");
-		this.add("dinopedia.fossilslegacy.ocelot", "Ocelot");
-		this.add("dinopedia.fossilslegacy.panda", "Panda");
-		this.add("dinopedia.fossilslegacy.Pig", "Pig");
-		this.add("dinopedia.fossilslegacy.polar_bear", "Polar Bear");
-		this.add("dinopedia.fossilslegacy.rabbit", "Rabbit");
-		this.add("dinopedia.fossilslegacy.rideable", "Rideable");
-		this.add("dinopedia.fossilslegacy.sheep", "Sheep");
-		this.add("dinopedia.fossilslegacy.wolf", "Wolf");
-		this.add("dinopedia.fossilslegacy.owner", "Owner: %s");
 		this.add("dinopedia.fossilslegacy.age", "Age: %s");
+		this.add("dinopedia.fossilslegacy.cold", "Cold");
+		this.add("dinopedia.fossilslegacy.creature", "Creature: %s");
+		this.add("dinopedia.fossilslegacy.dry", "Dry");
+		this.add("dinopedia.fossilslegacy.egg", "%s Egg");
+		this.add("dinopedia.fossilslegacy.embryo", "Embryo: %s");
 		this.add("dinopedia.fossilslegacy.health", "Health: %s / %s");
 		this.add("dinopedia.fossilslegacy.hunger", "Hunger: %s / %s");
-		this.add("dinopedia.fossilslegacy.wild", "This Animal is Wild");
 		this.add("dinopedia.fossilslegacy.not_owner", "You Are Not the Owner");
-		this.add("dinopedia.fossilslegacy.temperature", "Temperature: %s");
-		this.add("dinopedia.fossilslegacy.warm.true", "Warm");
-		this.add("dinopedia.fossilslegacy.warm.false", "Cold");
-		this.add("dinopedia.fossilslegacy.remaining_time", "Hatching Time: %s");
+		this.add("dinopedia.fossilslegacy.owner", "Owner: %s");
 		this.add("dinopedia.fossilslegacy.pregnancy_time", "Pregnacy Time: %s");
-		this.add("dinopedia.fossilslegacy.embryo", "Embryo: %s");
-		this.add("dinopedia.fossilslegacy.creature", "Creature: %s");
+		this.add("dinopedia.fossilslegacy.remaining_time", "Hatching Time: %s");
+		this.add("dinopedia.fossilslegacy.rideable", "Rideable");
+		this.add("dinopedia.fossilslegacy.temperature", "Temperature: %s");
+		this.add("dinopedia.fossilslegacy.warm", "Warm");
+		this.add("dinopedia.fossilslegacy.wet", "Wet");
+		this.add("dinopedia.fossilslegacy.wild", "This Animal is Wild");
 
 		// Entities
-		this.add(FossilsLegacyEntities.BRACHIOSAURUS.get(), "Brachiosaurus");
-		this.add(FossilsLegacyEntities.MAMMOTH.get(), "Mammoth");
-		this.add(FossilsLegacyEntities.NAUTILUS.get(), "Nautilus");
-		this.add(FossilsLegacyEntities.PTERANODON.get(), "Pteranodon");
-		this.add(FossilsLegacyEntities.SMILODON.get(), "Smilodon");
-		this.add(FossilsLegacyEntities.STEGOSAURUS.get(), "Stegosaurus");
-		this.add(FossilsLegacyEntities.TRICERATOPS.get(), "Triceratops");
+		this.add(FossilsLegacyEntities.BRACHIOSAURUS.get());
+		this.add(FossilsLegacyEntities.MAMMOTH.get());
+		this.add(FossilsLegacyEntities.MOSASAURUS.get());
+		this.add(FossilsLegacyEntities.NAUTILUS.get());
+		this.add(FossilsLegacyEntities.PTERANODON.get());
+		this.add(FossilsLegacyEntities.SMILODON.get());
+		this.add(FossilsLegacyEntities.STEGOSAURUS.get());
+		this.add(FossilsLegacyEntities.TRICERATOPS.get());
+		this.add(FossilsLegacyEntities.TYRANNOSAURUS.get());
+		this.add(FossilsLegacyEntities.VELOCIRAPTOR.get());
 
 		this.add(FossilsLegacyEntities.EGG.get(), "Egg");
 		this.add("entity.fossilslegacy.egg.died", "An egg was too cold and died!");
-		this.add(FossilsLegacyEntities.FOSSIL.get(), "Egg");
+		this.add("entity.fossilslegacy.egg.died.dry", "An egg was dry and died!");
+		this.add(FossilsLegacyEntities.FOSSIL.get(), "Fossil");
 
 		this.add(FossilsLegacyEntities.PREGNANT_CAT.get(), "Pregnant Cat");
 		this.add(FossilsLegacyEntities.PREGNANT_COW.get(), "Pregnant Cow");
@@ -148,7 +138,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		// Items
 		this.add(FossilsLegacyItems.FOSSIL.get(), "Fossil");
 		this.add(FossilsLegacyItems.TRICERATOPS_DNA.get(), "Triceratops DNA");
-		this.add(FossilsLegacyItems.UTAHRAPTOR_DNA.get(), "Utahraptor DNA");
+		this.add(FossilsLegacyItems.VELOCIRAPTOR_DNA.get(), "Velociraptor DNA");
 		this.add(FossilsLegacyItems.TYRANNOSAURUS_DNA.get(), "Tyrannosaurus DNA");
 		this.add(FossilsLegacyItems.PTEROSAURUS_DNA.get(), "Pterosaurus DNA");
 		this.add(FossilsLegacyItems.NAUTILUS_DNA.get(), "Nautilus DNA");
@@ -158,7 +148,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.DILOPHOSAURUS_DNA.get(), "Dilophosaurus DNA");
 		this.add(FossilsLegacyItems.BRACHIOSAURUS_DNA.get(), "Brachiosaurus DNA");
 		this.add(FossilsLegacyItems.TRICERATOPS_EGG.get(), "Triceratops Egg");
-		this.add(FossilsLegacyItems.UTAHRAPTOR_EGG.get(), "Utahraptor Egg");
+		this.add(FossilsLegacyItems.VELOCIRAPTOR_EGG.get(), "Velociraptor Egg");
 		this.add(FossilsLegacyItems.TYRANNOSAURUS_EGG.get(), "Tyrannosaurus Egg");
 		this.add(FossilsLegacyItems.PTEROSAURUS_EGG.get(), "Pterosaurus Egg");
 		this.add(FossilsLegacyItems.NAUTILUS_EGGS.get(), "Nautilus Eggs");
@@ -168,7 +158,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.DILOPHOSAURUS_EGG.get(), "Dilophosaurus Egg");
 		this.add(FossilsLegacyItems.BRACHIOSAURUS_EGG.get(), "Brachiosaurus Egg");
 		this.add(FossilsLegacyItems.RAW_TRICERATOPS_MEAT.get(), "Raw Triceratops Meat");
-		this.add(FossilsLegacyItems.RAW_UTAHRAPTOR_MEAT.get(), "Raw Utahraptor Meat");
+		this.add(FossilsLegacyItems.RAW_VELOCIRAPTOR_MEAT.get(), "Raw Velociraptor Meat");
 		this.add(FossilsLegacyItems.RAW_TYRANNOSAURUS_MEAT.get(), "Raw Tyrannosaurus Meat");
 		this.add(FossilsLegacyItems.RAW_PTEROSAURUS_MEAT.get(), "Raw Pterosaurus Meat");
 		this.add(FossilsLegacyItems.NAUTILUS.get(), "Nautilus");
@@ -180,7 +170,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.RAW_SMILODON_MEAT.get(), "Raw Smilodon Meat");
 		this.add(FossilsLegacyItems.RAW_MAMMOTH_MEAT.get(), "Raw Mammoth Meat");
 		this.add(FossilsLegacyItems.COOKED_TRICERATOPS_MEAT.get(), "Cooked Triceratops Meat");
-		this.add(FossilsLegacyItems.COOKED_UTAHRAPTOR_MEAT.get(), "Cooked Utahraptor Meat");
+		this.add(FossilsLegacyItems.COOKED_VELOCIRAPTOR_MEAT.get(), "Cooked Velociraptor Meat");
 		this.add(FossilsLegacyItems.COOKED_TYRANNOSAURUS_MEAT.get(), "Cooked Tyrannosaurus Meat");
 		this.add(FossilsLegacyItems.COOKED_PTEROSAURUS_MEAT.get(), "Cooked Pterosaurus Meat");
 		this.add(FossilsLegacyItems.SIO_CHIU_LE.get(), "Sio-Chiu-Le");
@@ -275,16 +265,21 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.BROKEN_NETHERITE_JAVELIN.get(), "Netherite Javelin");
 		this.add(FossilsLegacyItems.GEM_JAVELIN.get(), "Gem Javelin");
 		this.add(FossilsLegacyItems.BROKEN_GEM_JAVELIN.get(), "Gem Javelin");
+
 		this.add(FossilsLegacyItems.DROWNED_PIRATE_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.ZOMBIFIED_PIGMAN_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.BRACHIOSAURUS_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get());
+		this.add(FossilsLegacyItems.MOSASAURUS_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.NAUTILUS_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.PTERANODON_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.SMILODON_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.STEGOSAURUS_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get());
+		this.add(FossilsLegacyItems.TYRANNOSAURUS_SPAWN_EGG.get());
+		this.add(FossilsLegacyItems.VELOCIRAPTOR_SPAWN_EGG.get());
+
 		this.add("item.fossilslegacy.smithing_template.gem_upgrade.applies_to", "Netherite Equipment");
 		this.add("item.fossilslegacy.smithing_template.gem_upgrade.ingredients", "Gem Artifact");
 		this.add("item.fossilslegacy.smithing_template.gem_upgrade.base_slot_description", "Add netherite weapon or tool");
@@ -351,6 +346,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("sound.fossilslegacy.brachiosaurus.ambient", "Brachiosaurus Calls");
 		this.add("sound.fossilslegacy.brachiosaurus.hurt", "Brachiosaurus Hurts");
 		this.add("sound.fossilslegacy.brachiosaurus.death", "Brachiosaurus Dies");
+		this.add("sound.fossilslegacy.drum.hit", "Drum Hit");
+		this.add("sound.fossilslegacy.drum.triple_hit", "Drum Triple Hit");
 		this.add("sound.fossilslegacy.mammoth.ambient", "Mammoth Trumpets");
 		this.add("sound.fossilslegacy.mammoth.hurt", "Mammoth Hurts");
 		this.add("sound.fossilslegacy.mammoth.death", "Mammoth Dies");
@@ -366,8 +363,15 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("sound.fossilslegacy.triceratops.ambient", "Triceratops Calls");
 		this.add("sound.fossilslegacy.triceratops.hurt", "Triceratops Hurts");
 		this.add("sound.fossilslegacy.triceratops.death", "Triceratops Dies");
-		this.add("sound.fossilslegacy.drum.hit", "Drum Hit");
-		this.add("sound.fossilslegacy.drum.triple_hit", "Drum Triple Hit");
+		this.add("sound.fossilslegacy.tyrannosaurus.ambient", "Tyrannosaurus Rumbles");
+		this.add("sound.fossilslegacy.tyrannosaurus.attack", "Tyrannosaurus Roars");
+		this.add("sound.fossilslegacy.tyrannosaurus.hurt", "Tyrannosaurus Hurts");
+		this.add("sound.fossilslegacy.tyrannosaurus.death", "Tyrannosaurus Dies");
+		this.add("sound.fossilslegacy.velociraptor.ambient.tame", "Velociraptor Whines");
+		this.add("sound.fossilslegacy.velociraptor.ambient.wild", "Velociraptor Hisses");
+		this.add("sound.fossilslegacy.velociraptor.attack", "Velociraptor Attacks");
+		this.add("sound.fossilslegacy.velociraptor.hurt", "Velociraptor Hurts");
+		this.add("sound.fossilslegacy.velociraptor.death", "Velociraptor Dies");
 
 		// Upgrades
 		this.add("upgrade.fossilslegacy.gem_upgrade", "Gem Upgrade");

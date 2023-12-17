@@ -1,0 +1,13 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "fossilslegacy:raw_velociraptor_meat"
+  },
+  "results": [
+    {
+      "result": "fossilslegacy:velociraptor_dna",
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

@@ -237,7 +237,7 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Playe
 
 	@Override
 	public ResourceLocation[][] textures() {
-		return new ResourceLocation[][] { { FossilsLegacyUtils.resource("textures/entities/animals/triceratops/green_adult_triceratops.png"), FossilsLegacyUtils.resource("textures/entities/animals/triceratops/green_baby_triceratops.png") }, { FossilsLegacyUtils.resource("textures/entities/animals/triceratops/brown_adult_triceratops.png"), FossilsLegacyUtils.resource("textures/entities/animals/triceratops/brown_baby_triceratops.png") }, { FossilsLegacyUtils.resource("textures/entities/animals/triceratops/alternate_adult_triceratops.png"), FossilsLegacyUtils.resource("textures/entities/animals/triceratops/alternate_baby_triceratops.png") } };
+		return new ResourceLocation[][] { { FossilsLegacyUtils.resource("textures/entities/animals/triceratops/green_triceratops.png"), FossilsLegacyUtils.resource("textures/entities/animals/triceratops/green_baby_triceratops.png") }, { FossilsLegacyUtils.resource("textures/entities/animals/triceratops/brown_triceratops.png"), FossilsLegacyUtils.resource("textures/entities/animals/triceratops/brown_baby_triceratops.png") }, { FossilsLegacyUtils.resource("textures/entities/animals/triceratops/alternate_triceratops.png"), FossilsLegacyUtils.resource("textures/entities/animals/triceratops/alternate_baby_triceratops.png") } };
 	}
 
 	@Override

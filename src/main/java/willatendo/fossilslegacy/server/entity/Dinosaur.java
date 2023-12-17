@@ -89,7 +89,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 		if (this.tickCount % 10 == 0) {
 			if (this.getHealth() < this.getMaxHealth()) {
 				if (this.getHunger() > this.getMaxHunger() / 2) {
-					this.setHunger(this.getHunger() - 100);
+					this.setHunger(this.getHunger() - 5);
 					this.setHealth(this.getHealth() + 1.0F);
 				}
 			}
@@ -117,11 +117,20 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 	public InteractionResult interactAt(Player player, Vec3 vec3, InteractionHand interactionHand) {
 		ItemStack itemStack = player.getItemInHand(interactionHand);
 		if (this.isTame() && this.isOwnedBy(player)) {
-			if (itemStack.is(this.commandItems())) {
-				DinosaurCommand dinosaurCommand = DinosaurCommand.getNext(this.getCommand());
-				this.setCommand(dinosaurCommand);
-				player.displayClientMessage(FossilsLegacyUtils.translation("command", "command.use", dinosaurCommand.getComponent().getString()), true);
-				return InteractionResult.SUCCESS;
+			if (this.commandItems() == null) {
+				if (itemStack.isEmpty()) {
+					DinosaurCommand dinosaurCommand = DinosaurCommand.getNext(this.getCommand());
+					this.setCommand(dinosaurCommand);
+					player.displayClientMessage(FossilsLegacyUtils.translation("command", "command.use", dinosaurCommand.getComponent().getString()), true);
+					return InteractionResult.SUCCESS;
+				}
+			} else {
+				if (itemStack.is(this.commandItems())) {
+					DinosaurCommand dinosaurCommand = DinosaurCommand.getNext(this.getCommand());
+					this.setCommand(dinosaurCommand);
+					player.displayClientMessage(FossilsLegacyUtils.translation("command", "command.use", dinosaurCommand.getComponent().getString()), true);
+					return InteractionResult.SUCCESS;
+				}
 			}
 		}
 

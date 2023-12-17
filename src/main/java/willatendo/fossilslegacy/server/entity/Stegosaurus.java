@@ -75,11 +75,6 @@ public class Stegosaurus extends Dinosaur implements DinopediaInformation {
 	}
 
 	@Override
-	public boolean isBaby() {
-		return this.getGrowthStage() < 4;
-	}
-
-	@Override
 	public float getStepHeight() {
 		return this.getGrowthStage() < 4 ? 0.5F : this.getGrowthStage() < 8 ? 1.0F : 1.5F;
 	}

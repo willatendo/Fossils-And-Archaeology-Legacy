@@ -27,6 +27,15 @@ public class FossilsLegacySoundEvents {
 	public static final RegistryObject<SoundEvent> TRICERATOPS_AMBIENT = SOUND_EVENTS.register("entity.triceratops.ambient", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.triceratops.ambient")));
 	public static final RegistryObject<SoundEvent> TRICERATOPS_HURT = SOUND_EVENTS.register("entity.triceratops.hurt", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.triceratops.hurt")));
 	public static final RegistryObject<SoundEvent> TRICERATOPS_DEATH = SOUND_EVENTS.register("entity.triceratops.death", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.triceratops.death")));
+	public static final RegistryObject<SoundEvent> TYRANNOSAURUS_AMBIENT = SOUND_EVENTS.register("entity.tyrannosaurus.ambient", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.tyrannosaurus.ambient")));
+	public static final RegistryObject<SoundEvent> TYRANNOSAURUS_ATTACK = SOUND_EVENTS.register("entity.tyrannosaurus.attack", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.tyrannosaurus.attack")));
+	public static final RegistryObject<SoundEvent> TYRANNOSAURUS_HURT = SOUND_EVENTS.register("entity.tyrannosaurus.hurt", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.tyrannosaurus.hurt")));
+	public static final RegistryObject<SoundEvent> TYRANNOSAURUS_DEATH = SOUND_EVENTS.register("entity.tyrannosaurus.death", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.tyrannosaurus.death")));
+	public static final RegistryObject<SoundEvent> VELOCIRAPTOR_AMBIENT_TAME = SOUND_EVENTS.register("entity.velociraptor.ambient.tame", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.velociraptor.ambient.tame")));
+	public static final RegistryObject<SoundEvent> VELOCIRAPTOR_AMBIENT_WILD = SOUND_EVENTS.register("entity.velociraptor.ambient.wild", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.velociraptor.ambient.wild")));
+	public static final RegistryObject<SoundEvent> VELOCIRAPTOR_ATTACK = SOUND_EVENTS.register("entity.velociraptor.attack", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.velociraptor.attack")));
+	public static final RegistryObject<SoundEvent> VELOCIRAPTOR_HURT = SOUND_EVENTS.register("entity.velociraptor.hurt", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.velociraptor.hurt")));
+	public static final RegistryObject<SoundEvent> VELOCIRAPTOR_DEATH = SOUND_EVENTS.register("entity.velociraptor.death", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.velociraptor.death")));
 
 	public static final RegistryObject<SoundEvent> DRUM_HIT = SOUND_EVENTS.register("block.drum.hit", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("block.drum.hit")));
 	public static final RegistryObject<SoundEvent> DRUM_TRIPLE_HIT = SOUND_EVENTS.register("block.drum.triple_hit", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("block.drum.triple_hit")));

@@ -32,11 +32,14 @@ public class FossilsLegacyEntityLoot extends VanillaEntityLoot {
 	public void generate() {
 		this.add(FossilsLegacyEntities.BRACHIOSAURUS.get(), LootTable.lootTable());
 		this.add(FossilsLegacyEntities.MAMMOTH.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(UniformGenerator.between(1.0F, 3.0F)).setBonusRolls(UniformGenerator.between(0.0F, 2.0F)).add(LootItem.lootTableItem(Items.LEATHER))).withPool(LootPool.lootPool().setRolls(UniformGenerator.between(1.0F, 3.0F)).setBonusRolls(UniformGenerator.between(1.0F, 2.0F)).add(LootItem.lootTableItem(FossilsLegacyItems.RAW_MAMMOTH_MEAT.get()).apply(SmeltItemFunction.smelted().when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, ENTITY_ON_FIRE))))));
+		this.add(FossilsLegacyEntities.MOSASAURUS.get(), LootTable.lootTable());
 		this.add(FossilsLegacyEntities.NAUTILUS.get(), LootTable.lootTable());
 		this.add(FossilsLegacyEntities.PTERANODON.get(), LootTable.lootTable());
 		this.add(FossilsLegacyEntities.SMILODON.get(), LootTable.lootTable());
 		this.add(FossilsLegacyEntities.STEGOSAURUS.get(), LootTable.lootTable());
 		this.add(FossilsLegacyEntities.TRICERATOPS.get(), LootTable.lootTable());
+		this.add(FossilsLegacyEntities.TYRANNOSAURUS.get(), LootTable.lootTable());
+		this.add(FossilsLegacyEntities.VELOCIRAPTOR.get(), LootTable.lootTable());
 
 		this.add(FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), LootTable.lootTable());
 		this.add(FossilsLegacyEntities.DROWNED_PIRATE.get(), LootTable.lootTable());
@@ -51,7 +54,7 @@ public class FossilsLegacyEntityLoot extends VanillaEntityLoot {
 		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.STEGOSAURUS_EGG, this.createEggTable(FossilsLegacyItems.STEGOSAURUS_EGG.get()));
 		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.TRICERATOPS_EGG, this.createEggTable(FossilsLegacyItems.TRICERATOPS_EGG.get()));
 		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.TYRANNOSAURUS_EGG, this.createEggTable(FossilsLegacyItems.TYRANNOSAURUS_EGG.get()));
-		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.UTAHRAPTOR_EGG, this.createEggTable(FossilsLegacyItems.UTAHRAPTOR_EGG.get()));
+		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.VELOCIRAPTOR_EGG, this.createEggTable(FossilsLegacyItems.VELOCIRAPTOR_EGG.get()));
 
 		this.add(FossilsLegacyEntities.PREGNANT_CAT.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.STRING).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))))));
 		this.add(FossilsLegacyEntities.PREGNANT_COW.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.LEATHER).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F))))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.BEEF).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))).apply(SmeltItemFunction.smelted().when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, ENTITY_ON_FIRE))).apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F))))));

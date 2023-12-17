@@ -29,11 +29,14 @@ import willatendo.fossilslegacy.server.entity.Egg;
 import willatendo.fossilslegacy.server.entity.Failuresaurus;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
 import willatendo.fossilslegacy.server.entity.Mammoth;
+import willatendo.fossilslegacy.server.entity.Mosasaurus;
 import willatendo.fossilslegacy.server.entity.Nautilus;
 import willatendo.fossilslegacy.server.entity.Pteranodon;
 import willatendo.fossilslegacy.server.entity.Smilodon;
 import willatendo.fossilslegacy.server.entity.Stegosaurus;
 import willatendo.fossilslegacy.server.entity.Triceratops;
+import willatendo.fossilslegacy.server.entity.Tyrannosaurus;
+import willatendo.fossilslegacy.server.entity.Velociraptor;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -43,11 +46,14 @@ public class ModServerEvents {
 	public static void entityAttributes(EntityAttributeCreationEvent event) {
 		event.put(FossilsLegacyEntities.BRACHIOSAURUS.get(), Brachiosaurus.brachiosaurusAttributes());
 		event.put(FossilsLegacyEntities.MAMMOTH.get(), Mammoth.mammothAttributes());
+		event.put(FossilsLegacyEntities.MOSASAURUS.get(), Mosasaurus.mosasaurusAttributes());
 		event.put(FossilsLegacyEntities.NAUTILUS.get(), Nautilus.nautilusAttributes());
 		event.put(FossilsLegacyEntities.PTERANODON.get(), Pteranodon.triceratopsAttributes());
 		event.put(FossilsLegacyEntities.SMILODON.get(), Smilodon.smilodonAttributes());
 		event.put(FossilsLegacyEntities.STEGOSAURUS.get(), Stegosaurus.stegosaurusAttributes());
 		event.put(FossilsLegacyEntities.TRICERATOPS.get(), Triceratops.triceratopsAttributes());
+		event.put(FossilsLegacyEntities.TYRANNOSAURUS.get(), Tyrannosaurus.tyrannosaurusAttributes());
+		event.put(FossilsLegacyEntities.VELOCIRAPTOR.get(), Velociraptor.velociraptorAttributes());
 
 		event.put(FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), ZombifiedPiglin.createAttributes().build());
 		event.put(FossilsLegacyEntities.DROWNED_PIRATE.get(), DrownedPirate.createAttributes().build());
