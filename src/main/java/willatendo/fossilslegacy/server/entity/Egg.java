@@ -2,6 +2,8 @@ package willatendo.fossilslegacy.server.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.function.Supplier;
 
 import org.apache.commons.compress.utils.Lists;
@@ -14,11 +16,13 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.players.OldUsersConverter;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -37,6 +41,7 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 	private static final EntityDataAccessor<Integer> REMAINING_TIME = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> EGG = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Boolean> WARM = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.BOOLEAN);
+	protected static final EntityDataAccessor<Optional<UUID>> OWNER = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.OPTIONAL_UUID);
 
 	public Egg(EntityType<? extends Egg> egg, Level level) {
 		super(egg, level);
@@ -104,7 +109,7 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 		}
 
 		if (this.isWarm()) {
-			this.birthTick(this, this.level());
+			this.birthTick(this, this.level(), this.getOwnerUUID() != null ? Optional.of(this.getOwnerUUID()) : Optional.empty());
 		}
 	}
 
@@ -114,11 +119,17 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 		this.entityData.define(REMAINING_TIME, 0);
 		this.entityData.define(EGG, 0);
 		this.entityData.define(WARM, false);
+		this.entityData.define(OWNER, Optional.empty());
 	}
 
 	@Override
 	public void addAdditionalSaveData(CompoundTag compoundTag) {
 		super.addAdditionalSaveData(compoundTag);
+
+		if (this.getOwnerUUID() != null) {
+			compoundTag.putUUID("Owner", this.getOwnerUUID());
+		}
+
 		compoundTag.putInt("RemainingTime", this.getRemainingTime());
 		compoundTag.putInt("Egg", this.getEgg().ordinal());
 		compoundTag.putBoolean("Warm", this.isWarm());
@@ -127,6 +138,22 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 	@Override
 	public void readAdditionalSaveData(CompoundTag compoundTag) {
 		super.readAdditionalSaveData(compoundTag);
+
+		UUID uuid;
+		if (compoundTag.hasUUID("Owner")) {
+			uuid = compoundTag.getUUID("Owner");
+		} else {
+			String s = compoundTag.getString("Owner");
+			uuid = OldUsersConverter.convertMobOwnerIfNecessary(this.getServer(), s);
+		}
+
+		if (uuid != null) {
+			try {
+				this.setOwnerUUID(uuid);
+			} catch (Throwable throwable) {
+			}
+		}
+
 		this.setRemainingTime(compoundTag.getInt("RemainingTime"));
 		this.setEgg(EggType.values()[compoundTag.getInt("Egg")]);
 		this.setWarm(compoundTag.getBoolean("Warm"));
@@ -163,6 +190,27 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 		this.entityData.set(EGG, eggs.ordinal());
 	}
 
+	public boolean isOwnedBy(LivingEntity livingEntity) {
+		return livingEntity == this.getOwner();
+	}
+
+	public LivingEntity getOwner() {
+		try {
+			UUID uuid = this.getOwnerUUID();
+			return uuid == null ? null : this.level().getPlayerByUUID(uuid);
+		} catch (IllegalArgumentException illegalargumentexception) {
+			return null;
+		}
+	}
+
+	public UUID getOwnerUUID() {
+		return this.entityData.get(OWNER).orElse((UUID) null);
+	}
+
+	public void setOwnerUUID(UUID uuid) {
+		this.entityData.set(OWNER, Optional.ofNullable(uuid));
+	}
+
 	@Override
 	public List<Component> info(Player player) {
 		ArrayList<Component> information = Lists.newArrayList();
@@ -188,12 +236,12 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 	public static enum EggType {
 		TRICERATOPS("triceratops", FossilsLegacyLootTables.TRICERATOPS_EGG, () -> FossilsLegacyEntities.TRICERATOPS.get(), () -> FossilsLegacyItems.TRICERATOPS_EGG.get()),
 		VELOCIRAPTOR("velociraptor", FossilsLegacyLootTables.VELOCIRAPTOR_EGG, () -> FossilsLegacyEntities.VELOCIRAPTOR.get(), () -> FossilsLegacyItems.VELOCIRAPTOR_EGG.get()),
-		TYRANNOSAURUS("tyrannosaurus", FossilsLegacyLootTables.TYRANNOSAURUS_EGG, () -> EntityType.COW, () -> FossilsLegacyItems.TYRANNOSAURUS_EGG.get()),
+		TYRANNOSAURUS("tyrannosaurus", FossilsLegacyLootTables.TYRANNOSAURUS_EGG, () -> FossilsLegacyEntities.TYRANNOSAURUS.get(), () -> FossilsLegacyItems.TYRANNOSAURUS_EGG.get()),
 		PTEROSAURUS("pterosaurus", FossilsLegacyLootTables.PTEROSAURUS_EGG, () -> FossilsLegacyEntities.PTERANODON.get(), () -> FossilsLegacyItems.PTEROSAURUS_EGG.get()),
 		PLESIOSAURUS("plesiosaurus", FossilsLegacyLootTables.PLESIOSAURUS_EGG, () -> EntityType.COW, () -> FossilsLegacyItems.PLESIOSAURUS_EGG.get()),
 		MOSASAURUS("mosasaurus", FossilsLegacyLootTables.MOSASAURUS_EGG, () -> FossilsLegacyEntities.MOSASAURUS.get(), () -> FossilsLegacyItems.MOSASAURUS_EGG.get()),
 		STEGOSAURUS("stegosaurus", FossilsLegacyLootTables.STEGOSAURUS_EGG, () -> FossilsLegacyEntities.BRACHIOSAURUS.get(), () -> FossilsLegacyItems.STEGOSAURUS_EGG.get()),
-		DILOPHOSAURUS("dilophosaurus", FossilsLegacyLootTables.DILOPHOSAURUS_EGG, () -> EntityType.COW, () -> FossilsLegacyItems.DILOPHOSAURUS_EGG.get()),
+		DILOPHOSAURUS("dilophosaurus", FossilsLegacyLootTables.DILOPHOSAURUS_EGG, () -> FossilsLegacyEntities.DILOPHOSAURUS.get(), () -> FossilsLegacyItems.DILOPHOSAURUS_EGG.get()),
 		BRACHIOSAURUS("brachiosaurus", FossilsLegacyLootTables.BRACHIOSAURUS_EGG, () -> FossilsLegacyEntities.BRACHIOSAURUS.get(), () -> FossilsLegacyItems.BRACHIOSAURUS_EGG.get());
 
 		private final String texture;

@@ -30,6 +30,5 @@ public class FossilsLegacyMod {
 		FossilsLegacyCriteriaTriggers.init();
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, FossilsLegacyConfig.COMMON_SPEC);
-		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, FossilsLegacyConfig.CLIENT_SPEC);
 	}
 }

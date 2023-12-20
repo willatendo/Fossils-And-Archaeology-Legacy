@@ -31,6 +31,7 @@ public class FossilsLegacyEntityLoot extends VanillaEntityLoot {
 	@Override
 	public void generate() {
 		this.add(FossilsLegacyEntities.BRACHIOSAURUS.get(), LootTable.lootTable());
+		this.add(FossilsLegacyEntities.DILOPHOSAURUS.get(), LootTable.lootTable());
 		this.add(FossilsLegacyEntities.MAMMOTH.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(UniformGenerator.between(1.0F, 3.0F)).setBonusRolls(UniformGenerator.between(0.0F, 2.0F)).add(LootItem.lootTableItem(Items.LEATHER))).withPool(LootPool.lootPool().setRolls(UniformGenerator.between(1.0F, 3.0F)).setBonusRolls(UniformGenerator.between(1.0F, 2.0F)).add(LootItem.lootTableItem(FossilsLegacyItems.RAW_MAMMOTH_MEAT.get()).apply(SmeltItemFunction.smelted().when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, ENTITY_ON_FIRE))))));
 		this.add(FossilsLegacyEntities.MOSASAURUS.get(), LootTable.lootTable());
 		this.add(FossilsLegacyEntities.NAUTILUS.get(), LootTable.lootTable());

@@ -268,7 +268,7 @@ public class Fossil extends Entity {
 
 	@Override
 	public EntityDimensions getDimensions(Pose pose) {
-		return super.getDimensions(pose).scale(0.75F * (float) this.getSize());
+		return super.getDimensions(pose).scale(1.0F + (0.75F * (float) this.getSize()));
 	}
 
 	@Override
@@ -369,7 +369,7 @@ public class Fossil extends Entity {
 			return InteractionResult.SUCCESS;
 		}
 		if (itemStack.isEmpty()) {
-			if (this.getSize() > 1) {
+			if (this.getSize() >= 1) {
 				this.setSize(this.getSize() - 1);
 				player.addItem(new ItemStack(Items.BONE));
 				return InteractionResult.SUCCESS;

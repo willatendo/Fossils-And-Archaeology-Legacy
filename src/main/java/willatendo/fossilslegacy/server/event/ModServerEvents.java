@@ -24,6 +24,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import willatendo.fossilslegacy.server.entity.Brachiosaurus;
+import willatendo.fossilslegacy.server.entity.Dilophosaurus;
 import willatendo.fossilslegacy.server.entity.DrownedPirate;
 import willatendo.fossilslegacy.server.entity.Egg;
 import willatendo.fossilslegacy.server.entity.Failuresaurus;
@@ -45,6 +46,7 @@ public class ModServerEvents {
 	@SubscribeEvent
 	public static void entityAttributes(EntityAttributeCreationEvent event) {
 		event.put(FossilsLegacyEntities.BRACHIOSAURUS.get(), Brachiosaurus.brachiosaurusAttributes());
+		event.put(FossilsLegacyEntities.DILOPHOSAURUS.get(), Dilophosaurus.dilophosaurusAttributes());
 		event.put(FossilsLegacyEntities.MAMMOTH.get(), Mammoth.mammothAttributes());
 		event.put(FossilsLegacyEntities.MOSASAURUS.get(), Mosasaurus.mosasaurusAttributes());
 		event.put(FossilsLegacyEntities.NAUTILUS.get(), Nautilus.nautilusAttributes());

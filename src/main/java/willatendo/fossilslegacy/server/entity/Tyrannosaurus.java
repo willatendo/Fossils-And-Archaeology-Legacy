@@ -32,6 +32,7 @@ import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.DismountHelper;
 import net.minecraft.world.item.Item;
@@ -44,6 +45,7 @@ import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
 import willatendo.fossilslegacy.server.entity.Egg.EggType;
 import willatendo.fossilslegacy.server.entity.goal.DinoBabyFollowParentGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
+import willatendo.fossilslegacy.server.entity.goal.DinoNearestAttackableTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoWaterAvoidingRandomStrollGoal;
@@ -170,6 +172,8 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Pla
 				return !Tyrannosaurus.this.isKnockedOut() ? super.canUse() : false;
 			}
 		});
+		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+		this.targetSelector.addGoal(1, new DinoNearestAttackableTargetGoal<>(this, Player.class, true));
 		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this, this, this));
 		this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this, this, this));
 	}
@@ -185,7 +189,7 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Pla
 		ItemStack itemStack = player.getItemInHand(interactionHand);
 
 		if (this.isKnockedOut()) {
-			if (itemStack.is(FossilsLegacyItems.GEM_ARTIFACT.get())) {
+			if (itemStack.is(FossilsLegacyItems.SCARAB_GEM.get())) {
 				this.setKnockedOut(false);
 				this.setHealth(this.getMaxHealth());
 				this.setOwnerUUID(player.getUUID());

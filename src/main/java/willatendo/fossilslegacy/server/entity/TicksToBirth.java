@@ -1,5 +1,8 @@
 package willatendo.fossilslegacy.server.entity;
 
+import java.util.Optional;
+import java.util.UUID;
+
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Entity.RemovalReason;
 import net.minecraft.world.entity.Mob;
@@ -23,6 +26,10 @@ public interface TicksToBirth<T extends Entity> {
 	}
 
 	default void birthTick(Mob mob, Level level) {
+		this.birthTick(mob, level, Optional.empty());
+	}
+
+	default void birthTick(Mob mob, Level level, Optional<UUID> owner) {
 		if (this.getRemainingTime() >= this.maxTime()) {
 			Entity offspring = this.getOffspring(level);
 			offspring.moveTo(mob.getX(), mob.getY(), mob.getZ(), 0.0F, 0.0F);
@@ -32,12 +39,18 @@ public interface TicksToBirth<T extends Entity> {
 			if (offspring instanceof Animal animal) {
 				animal.setBaby(true);
 			}
-			if (offspring instanceof TamesOnBirth tamesOnBirth) {
-				if (tamesOnBirth.tamesOnBirth()) {
-					Player player = level.getNearestPlayer(offspring, 25.0D);
-					if (player != null) {
-						tamesOnBirth.setOwnerUUID(player.getUUID());
+			if (owner.isEmpty()) {
+				if (offspring instanceof TamesOnBirth tamesOnBirth) {
+					if (tamesOnBirth.tamesOnBirth()) {
+						Player player = level.getNearestPlayer(offspring, 25.0D);
+						if (player != null) {
+							tamesOnBirth.setOwnerUUID(player.getUUID());
+						}
 					}
+				}
+			} else {
+				if (offspring instanceof TameAccessor tameAccessor) {
+					tameAccessor.setOwnerUUID(owner.get());
 				}
 			}
 			level.addFreshEntity(offspring);

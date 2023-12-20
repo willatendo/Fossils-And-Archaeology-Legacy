@@ -31,6 +31,31 @@
     ],
     "subtitle": "sound.fossilslegacy.brachiosaurus.hurt"
   },
+  "entity.dilophosaurus.ambient": {
+    "sounds": [
+      "fossilslegacy:dilophosaurus_ambient"
+    ],
+    "subtitle": "sound.fossilslegacy.dilophosaurus.ambient"
+  },
+  "entity.dilophosaurus.call": {
+    "sounds": [
+      "fossilslegacy:dilophosaurus_call_1",
+      "fossilslegacy:dilophosaurus_call_2"
+    ],
+    "subtitle": "sound.fossilslegacy.dilophosaurus.call"
+  },
+  "entity.dilophosaurus.death": {
+    "sounds": [
+      "fossilslegacy:dilophosaurus_death"
+    ],
+    "subtitle": "sound.fossilslegacy.dilophosaurus.death"
+  },
+  "entity.dilophosaurus.hurt": {
+    "sounds": [
+      "fossilslegacy:dilophosaurus_hurt"
+    ],
+    "subtitle": "sound.fossilslegacy.dilophosaurus.hurt"
+  },
   "entity.mammoth.ambient": {
     "sounds": [
       "fossilslegacy:mammoth_ambient"

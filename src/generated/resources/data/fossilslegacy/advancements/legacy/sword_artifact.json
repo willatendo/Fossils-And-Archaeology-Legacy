@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "fossilslegacy:sword_artifact"
+              "fossilslegacy:ancient_sword_artifact"
             ]
           }
         ]
@@ -17,16 +17,16 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.fossilslegacy.legacy.sword_artifact.desc"
+      "translate": "advancements.fossilslegacy.legacy.ancient_sword_artifact.desc"
     },
     "frame": "task",
     "hidden": true,
     "icon": {
-      "item": "fossilslegacy:sword_artifact"
+      "item": "fossilslegacy:ancient_sword_artifact"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.fossilslegacy.legacy.sword_artifact.title"
+      "translate": "advancements.fossilslegacy.legacy.ancient_sword_artifact.title"
     }
   },
   "requirements": [

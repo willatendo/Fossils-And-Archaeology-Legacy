@@ -42,7 +42,7 @@ public class JavelinItem extends Item {
 				if (!level.isClientSide()) {
 					ItemStack damaged = itemStack;
 					if (!(itemStack.getItem() instanceof BrokenJavelinItem)) {
-						damaged = this.tier == Tiers.WOOD ? FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get().getDefaultInstance() : this.tier == Tiers.STONE ? FossilsLegacyItems.BROKEN_STONE_JAVELIN.get().getDefaultInstance() : this.tier == Tiers.IRON ? FossilsLegacyItems.BROKEN_IRON_JAVELIN.get().getDefaultInstance() : this.tier == Tiers.GOLD ? FossilsLegacyItems.BROKEN_GOLDEN_JAVELIN.get().getDefaultInstance() : this.tier == Tiers.DIAMOND ? FossilsLegacyItems.BROKEN_DIAMOND_JAVELIN.get().getDefaultInstance() : this.tier == Tiers.NETHERITE ? FossilsLegacyItems.BROKEN_NETHERITE_JAVELIN.get().getDefaultInstance() : this.tier == FossilsLegacyTiers.GEM ? FossilsLegacyItems.BROKEN_GEM_JAVELIN.get().getDefaultInstance() : itemStack;
+						damaged = this.tier == Tiers.WOOD ? FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get().getDefaultInstance() : this.tier == Tiers.STONE ? FossilsLegacyItems.BROKEN_STONE_JAVELIN.get().getDefaultInstance() : this.tier == Tiers.IRON ? FossilsLegacyItems.BROKEN_IRON_JAVELIN.get().getDefaultInstance() : this.tier == Tiers.GOLD ? FossilsLegacyItems.BROKEN_GOLDEN_JAVELIN.get().getDefaultInstance() : this.tier == Tiers.DIAMOND ? FossilsLegacyItems.BROKEN_DIAMOND_JAVELIN.get().getDefaultInstance() : this.tier == Tiers.NETHERITE ? FossilsLegacyItems.BROKEN_NETHERITE_JAVELIN.get().getDefaultInstance() : this.tier == FossilsLegacyTiers.SCARAB_GEM ? FossilsLegacyItems.BROKEN_SCARAB_GEM_JAVELIN.get().getDefaultInstance() : itemStack;
 					}
 					damaged.hurtAndBreak(1, player, (user) -> {
 						user.broadcastBreakEvent(livingEntity.getUsedItemHand());

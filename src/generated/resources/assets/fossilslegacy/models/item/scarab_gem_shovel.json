@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "fossilslegacy:item/gem_sword"
+    "layer0": "fossilslegacy:item/scarab_gem_shovel"
   }
 }

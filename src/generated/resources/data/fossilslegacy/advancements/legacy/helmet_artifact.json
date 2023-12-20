@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "fossilslegacy:helmet_artifact"
+              "fossilslegacy:ancient_helmet_artifact"
             ]
           }
         ]
@@ -17,16 +17,16 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.fossilslegacy.legacy.helmet_artifact.desc"
+      "translate": "advancements.fossilslegacy.legacy.ancient_helmet_artifact.desc"
     },
     "frame": "task",
     "hidden": true,
     "icon": {
-      "item": "fossilslegacy:helmet_artifact"
+      "item": "fossilslegacy:ancient_helmet_artifact"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.fossilslegacy.legacy.helmet_artifact.title"
+      "translate": "advancements.fossilslegacy.legacy.ancient_helmet_artifact.title"
     }
   },
   "requirements": [

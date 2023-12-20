@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_gem_upgrade_smithing_template": {
+    "has_scarab_gem_upgrade_smithing_template": {
       "conditions": {
         "items": [
           {
             "items": [
-              "fossilslegacy:gem_upgrade_smithing_template"
+              "fossilslegacy:scarab_gem_upgrade_smithing_template"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fossilslegacy:gem_upgrade_smithing_template"
+        "recipe": "fossilslegacy:scarab_gem_upgrade_smithing_template"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_gem_upgrade_smithing_template",
+      "has_scarab_gem_upgrade_smithing_template",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "fossilslegacy:gem_upgrade_smithing_template"
+      "fossilslegacy:scarab_gem_upgrade_smithing_template"
     ]
   },
   "sends_telemetry_event": false

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "fossilslegacy:item/sword_artifact"
+    "layer0": "fossilslegacy:item/ancient_sword_artifact"
   }
 }

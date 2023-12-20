@@ -26,18 +26,18 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 
-public class StoneHieroglyph extends HangingEntity {
-	private static final EntityDataAccessor<Integer> STONE_HIEROGLYPH_TYPE = SynchedEntityData.defineId(StoneHieroglyph.class, EntityDataSerializers.INT);
+public class StoneTablet extends HangingEntity {
+	private static final EntityDataAccessor<Integer> STONE_TABLET_TYPE = SynchedEntityData.defineId(StoneTablet.class, EntityDataSerializers.INT);
 
-	public StoneHieroglyph(EntityType<? extends StoneHieroglyph> entityType, Level level) {
+	public StoneTablet(EntityType<? extends StoneTablet> entityType, Level level) {
 		super(entityType, level);
 	}
 
-	private StoneHieroglyph(Level level, BlockPos blockPos) {
-		super(FossilsLegacyEntities.STONE_HIEROGLYPH.get(), level, blockPos);
+	private StoneTablet(Level level, BlockPos blockPos) {
+		super(FossilsLegacyEntities.STONE_TABLET.get(), level, blockPos);
 	}
 
-	public StoneHieroglyph(Level level, BlockPos blockPos, Direction direction, StoneHieroglyphTypes stoneHieroglyphTypes) {
+	public StoneTablet(Level level, BlockPos blockPos, Direction direction, StoneHieroglyphTypes stoneHieroglyphTypes) {
 		this(level, blockPos);
 		this.setStoneHieroglyph(stoneHieroglyphTypes);
 		this.setDirection(direction);
@@ -45,26 +45,26 @@ public class StoneHieroglyph extends HangingEntity {
 
 	@Override
 	protected void defineSynchedData() {
-		this.entityData.define(STONE_HIEROGLYPH_TYPE, 0);
+		this.entityData.define(STONE_TABLET_TYPE, 0);
 	}
 
 	@Override
 	public void onSyncedDataUpdated(EntityDataAccessor<?> entityDataAccessor) {
-		if (STONE_HIEROGLYPH_TYPE.equals(entityDataAccessor)) {
+		if (STONE_TABLET_TYPE.equals(entityDataAccessor)) {
 			this.recalculateBoundingBox();
 		}
 	}
 
 	public void setStoneHieroglyph(StoneHieroglyphTypes stoneHieroglyphTypes) {
-		this.entityData.set(STONE_HIEROGLYPH_TYPE, stoneHieroglyphTypes.ordinal());
+		this.entityData.set(STONE_TABLET_TYPE, stoneHieroglyphTypes.ordinal());
 	}
 
 	public StoneHieroglyphTypes getStoneHieroglyph() {
-		return StoneHieroglyphTypes.values()[this.entityData.get(STONE_HIEROGLYPH_TYPE)];
+		return StoneHieroglyphTypes.values()[this.entityData.get(STONE_TABLET_TYPE)];
 	}
 
-	public static Optional<StoneHieroglyph> create(Level level, BlockPos blockPos, Direction direction) {
-		StoneHieroglyph cavePainting = new StoneHieroglyph(level, blockPos);
+	public static Optional<StoneTablet> create(Level level, BlockPos blockPos, Direction direction) {
+		StoneTablet cavePainting = new StoneTablet(level, blockPos);
 		List<StoneHieroglyphTypes> list = new ArrayList<>();
 		for (StoneHieroglyphTypes stoneHieroglyphTypes : cavePainting.getStoneHieroglyph().values()) {
 			list.add(stoneHieroglyphTypes);
@@ -77,7 +77,7 @@ public class StoneHieroglyph extends HangingEntity {
 		if (list.isEmpty()) {
 			return Optional.empty();
 		} else {
-			int i = list.stream().mapToInt(StoneHieroglyph::variantArea).max().orElse(0);
+			int i = list.stream().mapToInt(StoneTablet::variantArea).max().orElse(0);
 			list.removeIf((stoneHieroglyphTypes) -> {
 				return variantArea(stoneHieroglyphTypes) < i;
 			});
@@ -131,7 +131,7 @@ public class StoneHieroglyph extends HangingEntity {
 				}
 			}
 
-			this.spawnAtLocation(FossilsLegacyItems.STONE_HIEROGLYPH.get());
+			this.spawnAtLocation(FossilsLegacyItems.STONE_TABLET.get());
 		}
 	}
 
@@ -168,6 +168,6 @@ public class StoneHieroglyph extends HangingEntity {
 
 	@Override
 	public ItemStack getPickedResult(HitResult hitResult) {
-		return FossilsLegacyItems.STONE_HIEROGLYPH.get().getDefaultInstance();
+		return FossilsLegacyItems.STONE_TABLET.get().getDefaultInstance();
 	}
 }

@@ -25,7 +25,7 @@ public class FossilItem extends Item {
 			Fossil fossil = FossilsLegacyEntities.FOSSIL.get().create(level);
 			int skeleton = randomSource.nextInt(Fossils.values().length);
 			fossil.setFossil(skeleton);
-			fossil.setSize(1);
+			fossil.setSize(0);
 			Direction direction = useOnContext.getClickedFace();
 			fossil.moveTo(useOnContext.getClickedPos().relative(direction), (float) randomSource.nextInt(360), 0.0F);
 			level.addFreshEntity(fossil);

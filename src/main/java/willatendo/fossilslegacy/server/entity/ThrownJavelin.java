@@ -84,7 +84,7 @@ public class ThrownJavelin extends AbstractArrow {
 		if (tier == Tiers.NETHERITE) {
 			this.setVariant(5);
 		}
-		if (tier == FossilsLegacyTiers.GEM) {
+		if (tier == FossilsLegacyTiers.SCARAB_GEM) {
 			this.setVariant(6);
 		}
 		this.damage = 4 + tier.getAttackDamageBonus();

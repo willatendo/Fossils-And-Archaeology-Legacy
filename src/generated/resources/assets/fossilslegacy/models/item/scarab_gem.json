@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "fossilslegacy:item/gem_javelin"
+    "layer0": "fossilslegacy:item/scarab_gem"
   }
 }

@@ -114,6 +114,26 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 	}
 
 	@Override
+	public boolean canMate(Animal animal) {
+		if (animal == this) {
+			return false;
+		} else if (!this.isTame()) {
+			return false;
+		} else if (!(animal instanceof Dinosaur)) {
+			return false;
+		} else {
+			Dinosaur dinosaur = (Dinosaur) animal;
+			if (!dinosaur.isTame()) {
+				return false;
+			} else if (dinosaur.getCommand() == DinosaurCommand.STAY) {
+				return false;
+			} else {
+				return this.isInLove() && dinosaur.isInLove();
+			}
+		}
+	}
+
+	@Override
 	public InteractionResult interactAt(Player player, Vec3 vec3, InteractionHand interactionHand) {
 		ItemStack itemStack = player.getItemInHand(interactionHand);
 		if (this.isTame() && this.isOwnedBy(player)) {
@@ -140,6 +160,11 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 				this.setHunger(addition);
 			} else {
 				this.setHunger(this.getMaxHunger());
+				if (!this.level().isClientSide && !this.isBaby() && this.canFallInLove()) {
+					this.usePlayerItem(player, interactionHand, itemStack);
+					this.setInLove(player);
+					return InteractionResult.SUCCESS;
+				}
 			}
 			itemStack.shrink(1);
 			return InteractionResult.SUCCESS;
@@ -303,6 +328,12 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 	public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
 		Egg egg = FossilsLegacyEntities.EGG.get().create(serverLevel);
 		egg.setEgg(this.eggType());
+		if (egg != null) {
+			UUID uuid = this.getOwnerUUID();
+			if (uuid != null) {
+				egg.setOwnerUUID(uuid);
+			}
+		}
 		return egg;
 	}
 }

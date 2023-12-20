@@ -128,18 +128,18 @@ public class FossilsLegacyItems {
 	public static final RegistryObject<Item> MAMMOTH_EMBRYO_SYRINGE = ITEMS.register("mammoth_embryo_syringe", () -> new SyringeItem(SyringeAnimals.MAMMOTH, new Item.Properties().stacksTo(1)));
 	public static final RegistryObject<Item> JURASSIC_FERN_SPORES = ITEMS.register("jurassic_fern_spores", () -> new ItemNameBlockItem(FossilsLegacyBlocks.JURASSIC_FERN.get(), new Item.Properties()));
 	public static final RegistryObject<Item> RELIC_SCRAP = ITEMS.register("relic_scrap", () -> new Item(new Item.Properties()));
-	public static final RegistryObject<Item> STONE_HIEROGLYPH = ITEMS.register("stone_hieroglyph", () -> new StoneHieroglyphItem(new Item.Properties()));
-	public static final RegistryObject<Item> SWORD_ARTIFACT = ITEMS.register("sword_artifact", () -> new Item(new Item.Properties()));
-	public static final RegistryObject<Item> HELMET_ARTIFACT = ITEMS.register("helmet_artifact", () -> new Item(new Item.Properties()));
-	public static final RegistryObject<Item> GEM_ARTIFACT = ITEMS.register("gem_artifact", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> STONE_TABLET = ITEMS.register("stone_tablet", () -> new StoneTabletItem(new Item.Properties()));
+	public static final RegistryObject<Item> ANCIENT_SWORD_ARTIFACT = ITEMS.register("ancient_sword_artifact", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> ANCIENT_HELMET_ARTIFACT = ITEMS.register("ancient_helmet_artifact", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> SCARAB_GEM = ITEMS.register("scarab_gem", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> ANCIENT_SWORD = ITEMS.register("ancient_sword", () -> new AncientSwordItem(FossilsLegacyTiers.ANCIENT, 3, -2.4F, new Item.Properties()));
 	public static final RegistryObject<Item> ANCIENT_HELMET = ITEMS.register("ancient_helmet", () -> new ModArmourItem("ancient", FossilsLegacyArmorMaterials.ANCIENT, Type.HELMET, new Item.Properties()));
-	public static final RegistryObject<Item> GEM_SWORD = ITEMS.register("gem_sword", () -> new SwordItem(FossilsLegacyTiers.GEM, 3, -2.4F, new Item.Properties()));
-	public static final RegistryObject<Item> GEM_SHOVEL = ITEMS.register("gem_shovel", () -> new ShovelItem(FossilsLegacyTiers.GEM, 1.5F, -3.0F, new Item.Properties()));
-	public static final RegistryObject<Item> GEM_PICKAXE = ITEMS.register("gem_pickaxe", () -> new PickaxeItem(FossilsLegacyTiers.GEM, 1, -2.8F, new Item.Properties()));
-	public static final RegistryObject<Item> GEM_AXE = ITEMS.register("gem_axe", () -> new AxeItem(FossilsLegacyTiers.GEM, 5.0F, -3.0F, new Item.Properties()));
-	public static final RegistryObject<Item> GEM_HOE = ITEMS.register("gem_hoe", () -> new HoeItem(FossilsLegacyTiers.GEM, -4, 0.0F, new Item.Properties()));
-	public static final RegistryObject<Item> GEM_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("gem_upgrade_smithing_template", () -> ModSmithingTemplateItem.createGemUpgradeTemplate());
+	public static final RegistryObject<Item> SCARAB_GEM_SWORD = ITEMS.register("scarab_gem_sword", () -> new SwordItem(FossilsLegacyTiers.SCARAB_GEM, 3, -2.4F, new Item.Properties()));
+	public static final RegistryObject<Item> SCARAB_GEM_SHOVEL = ITEMS.register("scarab_gem_shovel", () -> new ShovelItem(FossilsLegacyTiers.SCARAB_GEM, 1.5F, -3.0F, new Item.Properties()));
+	public static final RegistryObject<Item> SCARAB_GEM_PICKAXE = ITEMS.register("scarab_gem_pickaxe", () -> new PickaxeItem(FossilsLegacyTiers.SCARAB_GEM, 1, -2.8F, new Item.Properties()));
+	public static final RegistryObject<Item> SCARAB_GEM_AXE = ITEMS.register("scarab_gem_axe", () -> new AxeItem(FossilsLegacyTiers.SCARAB_GEM, 5.0F, -3.0F, new Item.Properties()));
+	public static final RegistryObject<Item> SCARAB_GEM_HOE = ITEMS.register("scarab_gem_hoe", () -> new HoeItem(FossilsLegacyTiers.SCARAB_GEM, -4, 0.0F, new Item.Properties()));
+	public static final RegistryObject<Item> SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("scarab_gem_upgrade_smithing_template", () -> ModSmithingTemplateItem.createGemUpgradeTemplate());
 	public static final RegistryObject<Item> WOODEN_JAVELIN = ITEMS.register("wooden_javelin", () -> new JavelinItem(Tiers.WOOD, new Item.Properties().stacksTo(16)));
 	public static final RegistryObject<Item> BROKEN_WOODEN_JAVELIN = ITEMS.register("broken_wooden_javelin", () -> new BrokenJavelinItem(Tiers.WOOD, new Item.Properties()));
 	public static final RegistryObject<Item> STONE_JAVELIN = ITEMS.register("stone_javelin", () -> new JavelinItem(Tiers.STONE, new Item.Properties().stacksTo(16)));
@@ -152,14 +152,15 @@ public class FossilsLegacyItems {
 	public static final RegistryObject<Item> BROKEN_DIAMOND_JAVELIN = ITEMS.register("broken_diamond_javelin", () -> new BrokenJavelinItem(Tiers.DIAMOND, new Item.Properties()));
 	public static final RegistryObject<Item> NETHERITE_JAVELIN = ITEMS.register("netherite_javelin", () -> new JavelinItem(Tiers.NETHERITE, new Item.Properties().stacksTo(16)));
 	public static final RegistryObject<Item> BROKEN_NETHERITE_JAVELIN = ITEMS.register("broken_netherite_javelin", () -> new BrokenJavelinItem(Tiers.NETHERITE, new Item.Properties()));
-	public static final RegistryObject<Item> GEM_JAVELIN = ITEMS.register("gem_javelin", () -> new JavelinItem(FossilsLegacyTiers.GEM, new Item.Properties().stacksTo(16)));
-	public static final RegistryObject<Item> BROKEN_GEM_JAVELIN = ITEMS.register("broken_gem_javelin", () -> new BrokenJavelinItem(FossilsLegacyTiers.GEM, new Item.Properties()));
+	public static final RegistryObject<Item> SCARAB_GEM_JAVELIN = ITEMS.register("scarab_gem_javelin", () -> new JavelinItem(FossilsLegacyTiers.SCARAB_GEM, new Item.Properties().stacksTo(16)));
+	public static final RegistryObject<Item> BROKEN_SCARAB_GEM_JAVELIN = ITEMS.register("broken_scarab_gem_javelin", () -> new BrokenJavelinItem(FossilsLegacyTiers.SCARAB_GEM, new Item.Properties()));
 
 	public static final RegistryObject<Item> ZOMBIFIED_PIGMAN_SPAWN_EGG = ITEMS.register("zombified_pigman_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), 0xEA9393, 0x4C7129, new Item.Properties()));
 	public static final RegistryObject<Item> DROWNED_PIRATE_SPAWN_EGG = ITEMS.register("drowned_pirate_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.DROWNED_PIRATE.get(), 0x8FF1D7, 0x799C65, new Item.Properties()));
 	public static final RegistryObject<Item> FAILURESAURUS_SPAWN_EGG = ITEMS.register("failuresaurus_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.FAILURESAURUS.get(), 0x51e6a5, 0x1b5128, new Item.Properties()));
 
 	public static final RegistryObject<Item> BRACHIOSAURUS_SPAWN_EGG = ITEMS.register("brachiosaurus_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.BRACHIOSAURUS.get(), 0x3b3e55, 0x7f8ba1, new Item.Properties()));
+	public static final RegistryObject<Item> DILOPHOSAURUS_SPAWN_EGG = ITEMS.register("dilophosaurus_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.DILOPHOSAURUS.get(), 0x686442, 0xf1bc2c, new Item.Properties()));
 	public static final RegistryObject<Item> MAMMOTH_SPAWN_EGG = ITEMS.register("mammoth_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.MAMMOTH.get(), 0x3d2700, 0x211500, new Item.Properties()));
 	public static final RegistryObject<Item> MOSASAURUS_SPAWN_EGG = ITEMS.register("mosasaurus_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.MOSASAURUS.get(), 0x0d7346, 0xffe1a7, new Item.Properties()));
 	public static final RegistryObject<Item> NAUTILUS_SPAWN_EGG = ITEMS.register("nautilus_spawn_egg", () -> new ForgeSpawnEggItem(() -> FossilsLegacyEntities.NAUTILUS.get(), 0xc1c1c1, 0xa95453, new Item.Properties()));

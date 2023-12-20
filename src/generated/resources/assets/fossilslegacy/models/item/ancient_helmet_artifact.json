@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "fossilslegacy:item/gem_artifact"
+    "layer0": "fossilslegacy:item/ancient_helmet_artifact"
   }
 }

@@ -1,3 +1,4 @@
+
 package willatendo.fossilslegacy.server.entity;
 
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
 import willatendo.fossilslegacy.server.entity.Egg.EggType;
 import willatendo.fossilslegacy.server.entity.goal.DinoBabyFollowParentGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
+import willatendo.fossilslegacy.server.entity.goal.DinoNearestAttackableTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoWaterAvoidingRandomStrollGoal;
@@ -97,6 +99,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 		this.goalSelector.addGoal(6, new DinoFollowOwnerGoal(this, this, this, 1.0D, 10.0F, 2.0F));
 		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
+		this.targetSelector.addGoal(1, new DinoNearestAttackableTargetGoal<>(this, Player.class, true));
 		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this, this, this));
 		this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this, this, this));
 	}

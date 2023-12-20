@@ -17,7 +17,7 @@ public class FossilOreBlock extends Block {
 	public void spawnAfterBreak(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, ItemStack itemStack, boolean flag) {
 		int chance = serverLevel.getRandom().nextInt(20000);
 		if (chance >= 20 && chance <= 30) {
-			popResource(serverLevel, blockPos, FossilsLegacyItems.GEM_ARTIFACT.get().getDefaultInstance());
+			popResource(serverLevel, blockPos, FossilsLegacyItems.SCARAB_GEM.get().getDefaultInstance());
 		}
 		if (chance <= 4500) {
 			popResource(serverLevel, blockPos, FossilsLegacyItems.FOSSIL.get().getDefaultInstance());
@@ -32,10 +32,10 @@ public class FossilOreBlock extends Block {
 			popResource(serverLevel, blockPos, FossilsLegacyBlocks.SKULL_BLOCK.get().asItem().getDefaultInstance());
 		}
 		if (chance > 19800 && chance <= 19900) {
-			popResource(serverLevel, blockPos, FossilsLegacyItems.SWORD_ARTIFACT.get().getDefaultInstance());
+			popResource(serverLevel, blockPos, FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get().getDefaultInstance());
 		}
 		if (chance > 19900 && chance <= 20100) {
-			popResource(serverLevel, blockPos, FossilsLegacyItems.HELMET_ARTIFACT.get().getDefaultInstance());
+			popResource(serverLevel, blockPos, FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get().getDefaultInstance());
 		}
 		super.spawnAfterBreak(blockState, serverLevel, blockPos, itemStack, flag);
 	}

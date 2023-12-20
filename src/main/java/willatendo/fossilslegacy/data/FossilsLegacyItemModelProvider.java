@@ -121,18 +121,18 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
 		this.basicItem(FossilsLegacyItems.MAGIC_CONCH.get());
 		this.basicItem(FossilsLegacyItems.JURASSIC_FERN_SPORES.get());
 		this.basicItem(FossilsLegacyItems.RELIC_SCRAP.get());
-		this.basicItem(FossilsLegacyItems.STONE_HIEROGLYPH.get());
-		this.handheldItem(FossilsLegacyItems.SWORD_ARTIFACT.get());
-		this.basicItem(FossilsLegacyItems.HELMET_ARTIFACT.get());
-		this.basicItem(FossilsLegacyItems.GEM_ARTIFACT.get());
+		this.basicItem(FossilsLegacyItems.STONE_TABLET.get());
+		this.handheldItem(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get());
+		this.basicItem(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get());
+		this.basicItem(FossilsLegacyItems.SCARAB_GEM.get());
 		this.handheldItem(FossilsLegacyItems.ANCIENT_SWORD.get());
 		this.basicItem(FossilsLegacyItems.ANCIENT_HELMET.get());
-		this.handheldItem(FossilsLegacyItems.GEM_SWORD.get());
-		this.handheldItem(FossilsLegacyItems.GEM_SHOVEL.get());
-		this.handheldItem(FossilsLegacyItems.GEM_PICKAXE.get());
-		this.handheldItem(FossilsLegacyItems.GEM_AXE.get());
-		this.handheldItem(FossilsLegacyItems.GEM_HOE.get());
-		this.basicItem(FossilsLegacyItems.GEM_UPGRADE_SMITHING_TEMPLATE.get());
+		this.handheldItem(FossilsLegacyItems.SCARAB_GEM_SWORD.get());
+		this.handheldItem(FossilsLegacyItems.SCARAB_GEM_SHOVEL.get());
+		this.handheldItem(FossilsLegacyItems.SCARAB_GEM_PICKAXE.get());
+		this.handheldItem(FossilsLegacyItems.SCARAB_GEM_AXE.get());
+		this.handheldItem(FossilsLegacyItems.SCARAB_GEM_HOE.get());
+		this.basicItem(FossilsLegacyItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get());
 		this.basicItem(FossilsLegacyItems.WOODEN_JAVELIN.get());
 		this.basicItem(FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get(), this.modLoc("item/wooden_javelin"));
 		this.basicItem(FossilsLegacyItems.STONE_JAVELIN.get());
@@ -145,14 +145,16 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
 		this.basicItem(FossilsLegacyItems.BROKEN_DIAMOND_JAVELIN.get(), this.modLoc("item/diamond_javelin"));
 		this.basicItem(FossilsLegacyItems.NETHERITE_JAVELIN.get());
 		this.basicItem(FossilsLegacyItems.BROKEN_NETHERITE_JAVELIN.get(), this.modLoc("item/netherite_javelin"));
-		this.basicItem(FossilsLegacyItems.GEM_JAVELIN.get());
-		this.basicItem(FossilsLegacyItems.BROKEN_GEM_JAVELIN.get(), this.modLoc("item/gem_javelin"));
+		this.basicItem(FossilsLegacyItems.SCARAB_GEM_JAVELIN.get());
+		this.basicItem(FossilsLegacyItems.BROKEN_SCARAB_GEM_JAVELIN.get(), this.modLoc("item/scarab_gem_javelin"));
 
 		this.spawnEggItem(FossilsLegacyItems.ZOMBIFIED_PIGMAN_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.DROWNED_PIRATE_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get());
 
 		this.spawnEggItem(FossilsLegacyItems.BRACHIOSAURUS_SPAWN_EGG.get());
+		this.spawnEggItem(FossilsLegacyItems.DILOPHOSAURUS_SPAWN_EGG.get());
+		this.spawnEggItem(FossilsLegacyItems.MOSASAURUS_DNA.get());
 		this.spawnEggItem(FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.MOSASAURUS_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.NAUTILUS_SPAWN_EGG.get());

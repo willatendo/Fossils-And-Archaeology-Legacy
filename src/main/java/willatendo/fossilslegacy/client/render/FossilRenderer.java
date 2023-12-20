@@ -27,19 +27,20 @@ import willatendo.fossilslegacy.client.model.fossils.PteranodonSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.TriceratopsSkeletonModel;
 import willatendo.fossilslegacy.server.entity.Fossil;
 import willatendo.fossilslegacy.server.entity.Fossils;
+import willatendo.fossilslegacy.server.entity.Fossils.ScaleFactor;
 
-public class FossilRenderer extends EntityRenderer<Fossil> implements LegacyModels {
+public class FossilRenderer extends EntityRenderer<Fossil> {
 	private AbstractSkeletonModel model;
-	private AbstractSkeletonModel[][] models;
+	private AbstractSkeletonModel[] models;
 
 	public FossilRenderer(Context context) {
 		super(context);
-		this.models = new AbstractSkeletonModel[][] { { new BrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.BRACHIOSAURUS_SKELETON)), new PlesiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.PLESIOSAURUS_SKELETON)), new PteranodonSkeletonModel(context.bakeLayer(FossilsLegacyModels.PTERANODON_SKELETON)), new TriceratopsSkeletonModel(context.bakeLayer(FossilsLegacyModels.TRICERATOPS_SKELETON)) }, { new BrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.BRACHIOSAURUS_SKELETON)), new PlesiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.PLESIOSAURUS_SKELETON)), new PteranodonSkeletonModel(context.bakeLayer(FossilsLegacyModels.PTERANODON_SKELETON)), new TriceratopsSkeletonModel(context.bakeLayer(FossilsLegacyModels.TRICERATOPS_SKELETON)) } };
+		this.models = new AbstractSkeletonModel[] { new BrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.BRACHIOSAURUS_SKELETON)), new PlesiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.PLESIOSAURUS_SKELETON)), new PteranodonSkeletonModel(context.bakeLayer(FossilsLegacyModels.PTERANODON_SKELETON)), new TriceratopsSkeletonModel(context.bakeLayer(FossilsLegacyModels.TRICERATOPS_SKELETON)) };
 	}
 
 	@Override
 	public void render(Fossil fossil, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
-		this.model = this.models[this.useLegacyModels() ? 1 : 0][fossil.getFossil()];
+		this.model = this.models[fossil.getFossil()];
 
 		poseStack.pushPose();
 
@@ -184,7 +185,9 @@ public class FossilRenderer extends EntityRenderer<Fossil> implements LegacyMode
 	}
 
 	protected void scale(Fossil fossil, PoseStack poseStack, float packedOverlay) {
-		poseStack.scale(1.0F * (1 + fossil.getSize() * 0.25F), 1.0F * (1 + fossil.getSize() * 0.25F), 1.0F * (1 + fossil.getSize() * 0.25F));
+		ScaleFactor scaleFactor = Fossils.values()[fossil.getFossil()].getScaleFactor().apply(fossil);
+
+		poseStack.scale(scaleFactor.x(), scaleFactor.y(), scaleFactor.z());
 	}
 
 	protected boolean isBodyVisible(Fossil fossil) {

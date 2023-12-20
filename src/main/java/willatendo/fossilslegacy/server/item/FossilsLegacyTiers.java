@@ -12,7 +12,7 @@ import willatendo.fossilslegacy.server.block.FossilsLegacyBlockTags;
 public enum FossilsLegacyTiers implements Tier {
 	ANCIENT(1, 131, 4.0F, 1.0F, 5, () -> Ingredient.of(), BlockTags.NEEDS_IRON_TOOL),
 	DAGGER(1, 131, 4.0F, 1.0F, 5, () -> Ingredient.of(), BlockTags.NEEDS_IRON_TOOL),
-	GEM(5, 4231, 10.0F, 5.0F, 17, () -> Ingredient.of(), FossilsLegacyBlockTags.NEEDS_GEM_TOOL),
+	SCARAB_GEM(5, 4231, 10.0F, 5.0F, 17, () -> Ingredient.of(), FossilsLegacyBlockTags.NEEDS_SCARAB_GEM_TOOL),
 	ICED_MEAT(0, 4, 4.0F, 6.0F, 0, () -> Ingredient.of(), BlockTags.NEEDS_IRON_TOOL);
 
 	private final int level;

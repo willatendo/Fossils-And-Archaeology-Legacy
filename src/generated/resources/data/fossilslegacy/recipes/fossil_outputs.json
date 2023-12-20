@@ -5,11 +5,7 @@
   },
   "results": [
     {
-      "result": "fossilslegacy:mosasaurus_dna",
-      "weight": 2
-    },
-    {
-      "result": "fossilslegacy:stegosaurus_dna",
+      "result": "fossilslegacy:nautilus_dna",
       "weight": 2
     },
     {
@@ -17,7 +13,19 @@
       "weight": 2
     },
     {
-      "result": "fossilslegacy:tyrannosaurus_dna",
+      "result": "minecraft:bone_meal",
+      "weight": 60
+    },
+    {
+      "result": "fossilslegacy:brachiosaurus_dna",
+      "weight": 2
+    },
+    {
+      "result": "fossilslegacy:dilophosaurus_dna",
+      "weight": 2
+    },
+    {
+      "result": "fossilslegacy:pterosaurus_dna",
       "weight": 2
     },
     {
@@ -25,15 +33,11 @@
       "weight": 2
     },
     {
-      "result": "minecraft:bone_meal",
-      "weight": 60
-    },
-    {
-      "result": "fossilslegacy:dilophosaurus_dna",
+      "result": "fossilslegacy:mosasaurus_dna",
       "weight": 2
     },
     {
-      "result": "fossilslegacy:nautilus_dna",
+      "result": "fossilslegacy:tyrannosaurus_dna",
       "weight": 2
     },
     {
@@ -45,11 +49,7 @@
       "weight": 20
     },
     {
-      "result": "fossilslegacy:pterosaurus_dna",
-      "weight": 2
-    },
-    {
-      "result": "fossilslegacy:brachiosaurus_dna",
+      "result": "fossilslegacy:stegosaurus_dna",
       "weight": 2
     }
   ],

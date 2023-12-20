@@ -1,7 +1,7 @@
 {
   "parent": "fossilslegacy:legacy/archaeology_workbench",
   "criteria": {
-    "used_stone_hieroglyph": {
+    "used_stone_tablet": {
       "conditions": {
         "location": [
           {
@@ -12,7 +12,7 @@
             "condition": "minecraft:match_tool",
             "predicate": {
               "items": [
-                "fossilslegacy:stone_hieroglyph"
+                "fossilslegacy:stone_tablet"
               ]
             }
           }
@@ -24,21 +24,21 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.fossilslegacy.legacy.stone_hieroglyph.desc"
+      "translate": "advancements.fossilslegacy.legacy.stone_tablet.desc"
     },
     "frame": "task",
     "hidden": true,
     "icon": {
-      "item": "fossilslegacy:stone_hieroglyph"
+      "item": "fossilslegacy:stone_tablet"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.fossilslegacy.legacy.stone_hieroglyph.title"
+      "translate": "advancements.fossilslegacy.legacy.stone_tablet.title"
     }
   },
   "requirements": [
     [
-      "used_stone_hieroglyph"
+      "used_stone_tablet"
     ]
   ],
   "sends_telemetry_event": true

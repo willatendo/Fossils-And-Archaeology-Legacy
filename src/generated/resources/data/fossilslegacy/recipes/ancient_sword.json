@@ -1,7 +1,7 @@
 {
   "type": "fossilslegacy:archaeology",
   "ingredient": {
-    "item": "fossilslegacy:sword_artifact"
+    "item": "fossilslegacy:ancient_sword_artifact"
   },
   "result": "fossilslegacy:ancient_sword",
   "time": 3000

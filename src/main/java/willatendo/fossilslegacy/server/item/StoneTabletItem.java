@@ -21,15 +21,15 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
-import willatendo.fossilslegacy.server.entity.StoneHieroglyph;
+import willatendo.fossilslegacy.server.entity.StoneTablet;
 import willatendo.fossilslegacy.server.entity.StoneHieroglyphTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.util.FillCreativeTab;
 
-public class StoneHieroglyphItem extends Item implements FillCreativeTab {
-	private static final Component TOOLTIP_RANDOM_VARIANT = FossilsLegacyUtils.translation("stone_hieroglyph", "random").withStyle(ChatFormatting.GRAY);
+public class StoneTabletItem extends Item implements FillCreativeTab {
+	private static final Component TOOLTIP_RANDOM_VARIANT = FossilsLegacyUtils.translation("stone_tablet", "random").withStyle(ChatFormatting.GRAY);
 
-	public StoneHieroglyphItem(Properties properties) {
+	public StoneTabletItem(Properties properties) {
 		super(properties);
 	}
 
@@ -45,7 +45,7 @@ public class StoneHieroglyphItem extends Item implements FillCreativeTab {
 		} else {
 			Level level = useOnContext.getLevel();
 			HangingEntity hangingentity = null;
-			Optional<StoneHieroglyph> stoneHieroglyph = StoneHieroglyph.create(level, blockpos1, direction);
+			Optional<StoneTablet> stoneHieroglyph = StoneTablet.create(level, blockpos1, direction);
 			if (!stoneHieroglyph.isEmpty()) {
 				hangingentity = stoneHieroglyph.get();
 			}
@@ -100,11 +100,11 @@ public class StoneHieroglyphItem extends Item implements FillCreativeTab {
 	@Override
 	public void fillCreativeTab(ItemDisplayParameters itemDisplayParameters, Output output) {
 		for (int i = 0; i < StoneHieroglyphTypes.values().length; i++) {
-			ItemStack itemStack = new ItemStack(FossilsLegacyItems.STONE_HIEROGLYPH.get());
+			ItemStack itemStack = new ItemStack(FossilsLegacyItems.STONE_TABLET.get());
 			CompoundTag compoundTag = itemStack.getOrCreateTagElement("EntityTag");
 			compoundTag.putInt("Type", i);
 			output.accept(itemStack);
 		}
-		output.accept(FossilsLegacyItems.STONE_HIEROGLYPH.get());
+		output.accept(FossilsLegacyItems.STONE_TABLET.get());
 	}
 }

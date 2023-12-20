@@ -18,16 +18,16 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import willatendo.fossilslegacy.server.entity.StoneHieroglyph;
+import willatendo.fossilslegacy.server.entity.StoneTablet;
 import willatendo.fossilslegacy.server.entity.StoneHieroglyphTypes;
 
-public class StoneHieroglyphRenderer extends EntityRenderer<StoneHieroglyph> {
+public class StoneHieroglyphRenderer extends EntityRenderer<StoneTablet> {
 	public StoneHieroglyphRenderer(Context context) {
 		super(context);
 	}
 
 	@Override
-	public void render(StoneHieroglyph stoneHieroglyph, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
+	public void render(StoneTablet stoneHieroglyph, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
 		poseStack.pushPose();
 		poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - packedLight));
 		StoneHieroglyphTypes stoneHieroglyphTypes = StoneHieroglyphTypes.values()[stoneHieroglyph.getStoneHieroglyph().ordinal()];
@@ -38,7 +38,7 @@ public class StoneHieroglyphRenderer extends EntityRenderer<StoneHieroglyph> {
 		super.render(stoneHieroglyph, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
 	}
 
-	private void renderStoneHieroglyph(PoseStack poseStack, VertexConsumer vertexConsumer, StoneHieroglyph cavePainting, int width, int height) {
+	private void renderStoneHieroglyph(PoseStack poseStack, VertexConsumer vertexConsumer, StoneTablet cavePainting, int width, int height) {
 		Pose pose = poseStack.last();
 		Matrix4f matrix4f = pose.pose();
 		Matrix3f matrix3f = pose.normal();
@@ -94,7 +94,7 @@ public class StoneHieroglyphRenderer extends EntityRenderer<StoneHieroglyph> {
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(StoneHieroglyph stoneHieroglyph) {
+	public ResourceLocation getTextureLocation(StoneTablet stoneHieroglyph) {
 		return stoneHieroglyph.getStoneHieroglyph().getTexture();
 	}
 }

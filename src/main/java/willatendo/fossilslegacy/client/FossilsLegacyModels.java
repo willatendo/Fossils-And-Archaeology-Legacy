@@ -5,6 +5,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FossilsLegacyModels {
 	public static final ModelLayerLocation BRACHIOSAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("brachiosaurus"), "main");
+	public static final ModelLayerLocation DILOPHOSAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("dilophosaurus"), "main");
 	public static final ModelLayerLocation MAMMOTH = new ModelLayerLocation(FossilsLegacyUtils.resource("mammoth"), "main");
 	public static final ModelLayerLocation MOSASAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("mosasaurus"), "main");
 	public static final ModelLayerLocation NAUTILUS = new ModelLayerLocation(FossilsLegacyUtils.resource("nautilus"), "main");

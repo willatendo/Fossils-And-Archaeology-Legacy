@@ -47,6 +47,7 @@ public class FossilsLegacyCustomProviders implements DataProvider {
 		features.accept(new Structure("weapon_shop", FossilsLegacyBiomeTags.HAS_WEAPON_SHOP, "surface_structures"));
 		features.accept(new DamageType("javelin", 0.1F, "javelin", "when_caused_by_living_non_player"));
 		features.accept(new DamageType("dinosaur_starve", 0.0F, "dinosaur_starve", "when_caused_by_living_non_player"));
+		features.accept(new DamageType("dilophosaurus_envenomation", 0.1F, "dilophosaurus_envenomation", "when_caused_by_living_non_player"));
 	}
 
 	@Override

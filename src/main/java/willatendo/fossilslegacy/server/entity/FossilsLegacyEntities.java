@@ -32,9 +32,10 @@ public class FossilsLegacyEntities {
 	public static final RegistryObject<EntityType<AncientLightningBolt>> ANCIENT_LIGHTNING_BOLT = ENTITY_TYPES.register("ancient_lightning_bolt", () -> EntityType.Builder.<AncientLightningBolt>of(AncientLightningBolt::new, MobCategory.MISC).noSave().sized(0.0F, 0.0F).build("ancient_lightning_bolt"));
 
 	public static final RegistryObject<EntityType<Brachiosaurus>> BRACHIOSAURUS = ENTITY_TYPES.register("brachiosaurus", () -> EntityType.Builder.<Brachiosaurus>of(Brachiosaurus::new, MobCategory.CREATURE).sized(0.75F, 1.5F).build("brachiosaurus"));
-	public static final RegistryObject<EntityType<Nautilus>> NAUTILUS = ENTITY_TYPES.register("nautilus", () -> EntityType.Builder.<Nautilus>of(Nautilus::new, MobCategory.WATER_CREATURE).sized(1.0F, 0.75F).build("nautilus"));
+	public static final RegistryObject<EntityType<Dilophosaurus>> DILOPHOSAURUS = ENTITY_TYPES.register("dilophosaurus", () -> EntityType.Builder.<Dilophosaurus>of(Dilophosaurus::new, MobCategory.CREATURE).sized(0.5F, 0.5F).build("dilophosaurus"));
 	public static final RegistryObject<EntityType<Mammoth>> MAMMOTH = ENTITY_TYPES.register("mammoth", () -> EntityType.Builder.<Mammoth>of(Mammoth::new, MobCategory.CREATURE).sized(2.5F, 2.5F).build("mammoth"));
 	public static final RegistryObject<EntityType<Mosasaurus>> MOSASAURUS = ENTITY_TYPES.register("mosasaurus", () -> EntityType.Builder.<Mosasaurus>of(Mosasaurus::new, MobCategory.WATER_CREATURE).sized(0.5F, 0.5F).build("mosasaurus"));
+	public static final RegistryObject<EntityType<Nautilus>> NAUTILUS = ENTITY_TYPES.register("nautilus", () -> EntityType.Builder.<Nautilus>of(Nautilus::new, MobCategory.WATER_CREATURE).sized(1.0F, 0.75F).build("nautilus"));
 	public static final RegistryObject<EntityType<Pteranodon>> PTERANODON = ENTITY_TYPES.register("pteranodon", () -> EntityType.Builder.<Pteranodon>of(Pteranodon::new, MobCategory.CREATURE).sized(0.25F, 0.25F).build("pteranodon"));
 	public static final RegistryObject<EntityType<Smilodon>> SMILODON = ENTITY_TYPES.register("smilodon", () -> EntityType.Builder.<Smilodon>of(Smilodon::new, MobCategory.CREATURE).sized(1.5F, 1.5F).build("smilodon"));
 	public static final RegistryObject<EntityType<Stegosaurus>> STEGOSAURUS = ENTITY_TYPES.register("stegosaurus", () -> EntityType.Builder.<Stegosaurus>of(Stegosaurus::new, MobCategory.CREATURE).sized(0.5F, 0.5F).build("stegosaurus"));
@@ -71,5 +72,7 @@ public class FossilsLegacyEntities {
 
 	public static final RegistryObject<EntityType<ThrownJavelin>> THROWN_JAVELIN = ENTITY_TYPES.register("thrown_javelin", () -> EntityType.Builder.<ThrownJavelin>of(ThrownJavelin::new, MobCategory.MISC).sized(0.5F, 0.5F).build("thrown_javelin"));
 	public static final RegistryObject<EntityType<ThrownIncubatedEgg>> THROWN_INCUBATED_EGG = ENTITY_TYPES.register("thrown_incubated_egg", () -> EntityType.Builder.<ThrownIncubatedEgg>of(ThrownIncubatedEgg::new, MobCategory.MISC).sized(0.25F, 0.25F).build("thrown_incubated_egg"));
-	public static final RegistryObject<EntityType<StoneHieroglyph>> STONE_HIEROGLYPH = ENTITY_TYPES.register("stone_hieroglyph", () -> EntityType.Builder.<StoneHieroglyph>of(StoneHieroglyph::new, MobCategory.MISC).sized(0.5F, 0.5F).build("stone_hieroglyph"));
+	public static final RegistryObject<EntityType<DilophosaurusVenom>> DILOPHOSAURUS_VENOM = ENTITY_TYPES.register("dilophosaurus_venom", () -> EntityType.Builder.<DilophosaurusVenom>of(DilophosaurusVenom::new, MobCategory.MISC).sized(0.5F, 0.5F).build("dilophosaurus_venom"));
+
+	public static final RegistryObject<EntityType<StoneTablet>> STONE_TABLET = ENTITY_TYPES.register("stone_tablet", () -> EntityType.Builder.<StoneTablet>of(StoneTablet::new, MobCategory.MISC).sized(0.5F, 0.5F).build("stone_tablet"));
 }
