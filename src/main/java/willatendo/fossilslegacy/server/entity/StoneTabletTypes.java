@@ -4,7 +4,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public enum StoneHieroglyphTypes {
+public enum StoneTabletTypes {
 	LIGHTING("lighting", 32, 16),
 	SOCIAL("social", 16, 16),
 	GREAT_WAR("great_war", 32, 32),
@@ -30,22 +30,22 @@ public enum StoneHieroglyphTypes {
 	private final int width;
 	private final int height;
 
-	private StoneHieroglyphTypes(String name, int width, int height) {
+	private StoneTabletTypes(String name, int width, int height) {
 		this.name = name;
 		this.width = width;
 		this.height = height;
 	}
 
 	public ResourceLocation getTexture() {
-		return FossilsLegacyUtils.resource("textures/entities/stone_hieroglyph/" + this.name + ".png");
+		return FossilsLegacyUtils.resource("textures/entities/stone_tablet/" + this.name + ".png");
 	}
 
 	public MutableComponent getName() {
-		return FossilsLegacyUtils.translation("stone_hieroglyph", this.name + ".title");
+		return FossilsLegacyUtils.translation("stone_tablet", this.name + ".title");
 	}
 
 	public MutableComponent getAuthor() {
-		return FossilsLegacyUtils.translation("stone_hieroglyph", this.name + ".author");
+		return FossilsLegacyUtils.translation("stone_tablet", this.name + ".author");
 	}
 
 	public int getWidth() {

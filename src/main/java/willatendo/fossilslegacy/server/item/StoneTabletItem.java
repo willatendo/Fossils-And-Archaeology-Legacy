@@ -22,7 +22,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import willatendo.fossilslegacy.server.entity.StoneTablet;
-import willatendo.fossilslegacy.server.entity.StoneHieroglyphTypes;
+import willatendo.fossilslegacy.server.entity.StoneTabletTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.util.FillCreativeTab;
 
@@ -85,7 +85,7 @@ public class StoneTabletItem extends Item implements FillCreativeTab {
 		if (compoundTag != null && compoundTag.contains("EntityTag", 10)) {
 			CompoundTag entityTag = compoundTag.getCompound("EntityTag");
 			Optional.of(entityTag.getInt("Type")).ifPresentOrElse((cavePaintingType) -> {
-				StoneHieroglyphTypes cavePaintingTypes = StoneHieroglyphTypes.values()[cavePaintingType];
+				StoneTabletTypes cavePaintingTypes = StoneTabletTypes.values()[cavePaintingType];
 				toolTips.add(cavePaintingTypes.getName().withStyle(ChatFormatting.YELLOW));
 				toolTips.add(cavePaintingTypes.getAuthor().withStyle(ChatFormatting.GRAY));
 				toolTips.add(Component.translatable("painting.dimensions", Mth.positiveCeilDiv(cavePaintingTypes.getWidth(), 16), Mth.positiveCeilDiv(cavePaintingTypes.getHeight(), 16)));
@@ -99,7 +99,7 @@ public class StoneTabletItem extends Item implements FillCreativeTab {
 
 	@Override
 	public void fillCreativeTab(ItemDisplayParameters itemDisplayParameters, Output output) {
-		for (int i = 0; i < StoneHieroglyphTypes.values().length; i++) {
+		for (int i = 0; i < StoneTabletTypes.values().length; i++) {
 			ItemStack itemStack = new ItemStack(FossilsLegacyItems.STONE_TABLET.get());
 			CompoundTag compoundTag = itemStack.getOrCreateTagElement("EntityTag");
 			compoundTag.putInt("Type", i);

@@ -19,7 +19,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.server.entity.StoneTablet;
-import willatendo.fossilslegacy.server.entity.StoneHieroglyphTypes;
+import willatendo.fossilslegacy.server.entity.StoneTabletTypes;
 
 public class StoneHieroglyphRenderer extends EntityRenderer<StoneTablet> {
 	public StoneHieroglyphRenderer(Context context) {
@@ -30,7 +30,7 @@ public class StoneHieroglyphRenderer extends EntityRenderer<StoneTablet> {
 	public void render(StoneTablet stoneHieroglyph, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
 		poseStack.pushPose();
 		poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - packedLight));
-		StoneHieroglyphTypes stoneHieroglyphTypes = StoneHieroglyphTypes.values()[stoneHieroglyph.getStoneHieroglyph().ordinal()];
+		StoneTabletTypes stoneHieroglyphTypes = StoneTabletTypes.values()[stoneHieroglyph.getStoneHieroglyph().ordinal()];
 		poseStack.scale(0.0625F, 0.0625F, 0.0625F);
 		VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entityTranslucent(this.getTextureLocation(stoneHieroglyph)));
 		this.renderStoneHieroglyph(poseStack, vertexConsumer, stoneHieroglyph, stoneHieroglyphTypes.getWidth(), stoneHieroglyphTypes.getHeight());

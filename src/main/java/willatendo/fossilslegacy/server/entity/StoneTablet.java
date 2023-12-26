@@ -37,7 +37,7 @@ public class StoneTablet extends HangingEntity {
 		super(FossilsLegacyEntities.STONE_TABLET.get(), level, blockPos);
 	}
 
-	public StoneTablet(Level level, BlockPos blockPos, Direction direction, StoneHieroglyphTypes stoneHieroglyphTypes) {
+	public StoneTablet(Level level, BlockPos blockPos, Direction direction, StoneTabletTypes stoneHieroglyphTypes) {
 		this(level, blockPos);
 		this.setStoneHieroglyph(stoneHieroglyphTypes);
 		this.setDirection(direction);
@@ -55,18 +55,18 @@ public class StoneTablet extends HangingEntity {
 		}
 	}
 
-	public void setStoneHieroglyph(StoneHieroglyphTypes stoneHieroglyphTypes) {
+	public void setStoneHieroglyph(StoneTabletTypes stoneHieroglyphTypes) {
 		this.entityData.set(STONE_TABLET_TYPE, stoneHieroglyphTypes.ordinal());
 	}
 
-	public StoneHieroglyphTypes getStoneHieroglyph() {
-		return StoneHieroglyphTypes.values()[this.entityData.get(STONE_TABLET_TYPE)];
+	public StoneTabletTypes getStoneHieroglyph() {
+		return StoneTabletTypes.values()[this.entityData.get(STONE_TABLET_TYPE)];
 	}
 
 	public static Optional<StoneTablet> create(Level level, BlockPos blockPos, Direction direction) {
 		StoneTablet cavePainting = new StoneTablet(level, blockPos);
-		List<StoneHieroglyphTypes> list = new ArrayList<>();
-		for (StoneHieroglyphTypes stoneHieroglyphTypes : cavePainting.getStoneHieroglyph().values()) {
+		List<StoneTabletTypes> list = new ArrayList<>();
+		for (StoneTabletTypes stoneHieroglyphTypes : cavePainting.getStoneHieroglyph().values()) {
 			list.add(stoneHieroglyphTypes);
 		}
 		cavePainting.setDirection(direction);
@@ -81,7 +81,7 @@ public class StoneTablet extends HangingEntity {
 			list.removeIf((stoneHieroglyphTypes) -> {
 				return variantArea(stoneHieroglyphTypes) < i;
 			});
-			Optional<StoneHieroglyphTypes> randomVarient = Util.getRandomSafe(list, cavePainting.random);
+			Optional<StoneTabletTypes> randomVarient = Util.getRandomSafe(list, cavePainting.random);
 			if (randomVarient.isEmpty()) {
 				return Optional.empty();
 			} else {
@@ -92,7 +92,7 @@ public class StoneTablet extends HangingEntity {
 		}
 	}
 
-	private static int variantArea(StoneHieroglyphTypes stoneHieroglyphTypes) {
+	private static int variantArea(StoneTabletTypes stoneHieroglyphTypes) {
 		return stoneHieroglyphTypes.getWidth() * stoneHieroglyphTypes.getHeight();
 	}
 
@@ -105,7 +105,7 @@ public class StoneTablet extends HangingEntity {
 
 	@Override
 	public void readAdditionalSaveData(CompoundTag compoundTag) {
-		this.setStoneHieroglyph(StoneHieroglyphTypes.values()[compoundTag.getInt("Type")]);
+		this.setStoneHieroglyph(StoneTabletTypes.values()[compoundTag.getInt("Type")]);
 		this.direction = Direction.from2DDataValue(compoundTag.getByte("FacingDirection"));
 		super.readAdditionalSaveData(compoundTag);
 		this.setDirection(this.direction);
