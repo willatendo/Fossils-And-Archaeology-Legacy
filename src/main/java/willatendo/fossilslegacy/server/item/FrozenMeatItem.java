@@ -16,8 +16,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.ToolAction;
-import net.minecraftforge.common.ToolActions;
 
 public class FrozenMeatItem extends Item {
 	private final Multimap<Attribute, AttributeModifier> defaultModifiers;
@@ -60,10 +58,5 @@ public class FrozenMeatItem extends Item {
 	@Override
 	public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot equipmentSlot) {
 		return equipmentSlot == EquipmentSlot.MAINHAND ? this.defaultModifiers : super.getDefaultAttributeModifiers(equipmentSlot);
-	}
-
-	@Override
-	public boolean canPerformAction(ItemStack itemStack, ToolAction toolAction) {
-		return ToolActions.DEFAULT_SWORD_ACTIONS.contains(toolAction);
 	}
 }

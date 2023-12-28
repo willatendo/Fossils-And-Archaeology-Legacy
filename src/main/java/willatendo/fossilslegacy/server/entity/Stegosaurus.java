@@ -38,6 +38,8 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 public class Stegosaurus extends Dinosaur implements DinopediaInformation {
 	public Stegosaurus(EntityType<? extends Stegosaurus> entityType, Level level) {
 		super(entityType, level);
+
+		this.setMaxUpStep(this.getGrowthStage() < 4 ? 0.5F : this.getGrowthStage() < 8 ? 1.0F : 1.5F);
 	}
 
 	public static AttributeSupplier stegosaurusAttributes() {
@@ -75,11 +77,6 @@ public class Stegosaurus extends Dinosaur implements DinopediaInformation {
 	}
 
 	@Override
-	public float getStepHeight() {
-		return this.getGrowthStage() < 4 ? 0.5F : this.getGrowthStage() < 8 ? 1.0F : 1.5F;
-	}
-
-	@Override
 	protected void registerGoals() {
 		this.goalSelector.addGoal(0, new FloatGoal(this));
 		this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
@@ -111,11 +108,6 @@ public class Stegosaurus extends Dinosaur implements DinopediaInformation {
 	}
 
 	@Override
-	public double getPassengersRidingOffset() {
-		return 0.15D * this.getGrowthStage();
-	}
-
-	@Override
 	public List<Component> info(Player player) {
 		ArrayList<Component> information = Lists.newArrayList();
 		if (this.isTame() && this.isOwnedBy(player)) {
@@ -137,6 +129,6 @@ public class Stegosaurus extends Dinosaur implements DinopediaInformation {
 
 	@Override
 	public TagKey<Item> commandItems() {
-		return FossilsLegacyItemTags.TRICERATOPS_COMMANDABLES;
+		return FossilsLegacyItemTags.STEGOSAURUS_COMMANDABLES;
 	}
 }

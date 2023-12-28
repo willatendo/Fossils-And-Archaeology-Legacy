@@ -22,21 +22,17 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.inventory.RecipeHolder;
+import net.minecraft.world.inventory.RecipeCraftingHolder;
 import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeManager.CachedCheck;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.wrapper.SidedInvWrapper;
 import willatendo.fossilslegacy.server.block.ArchaeologyWorkbenchBlock;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.menu.ArchaeologyWorkbenchMenu;
@@ -44,12 +40,11 @@ import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
 import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, RecipeHolder, StackedContentsCompatible {
+public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, RecipeCraftingHolder, StackedContentsCompatible {
 	private static final int[] SLOTS_FOR_UP = new int[] { 0 };
 	private static final int[] SLOTS_FOR_DOWN = new int[] { 2 };
 	private static final int[] SLOTS_FOR_SIDES = new int[] { 1 };
 	protected NonNullList<ItemStack> itemStacks = NonNullList.withSize(3, ItemStack.EMPTY);
-	private LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);
 	public int onTime;
 	public int onDuration;
 	public int archaeologyProgress;
@@ -151,7 +146,7 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
 		boolean hasInput = !archaeologyWorkbenchBlockEntity.itemStacks.get(0).isEmpty();
 		boolean hasFuel = !fuel.isEmpty();
 		if (archaeologyWorkbenchBlockEntity.isOn() || hasFuel && hasInput) {
-			Recipe<?> recipe;
+			RecipeHolder<ArchaeologyRecipe> recipe;
 			if (hasInput) {
 				recipe = archaeologyWorkbenchBlockEntity.recipeCheck.getRecipeFor(archaeologyWorkbenchBlockEntity, level).orElse(null);
 			} else {
@@ -164,12 +159,12 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
 				archaeologyWorkbenchBlockEntity.onDuration = archaeologyWorkbenchBlockEntity.onTime;
 				if (archaeologyWorkbenchBlockEntity.isOn()) {
 					changed = true;
-					if (fuel.hasCraftingRemainingItem())
-						archaeologyWorkbenchBlockEntity.itemStacks.set(1, fuel.getCraftingRemainingItem());
-					else if (hasFuel) {
+					if (fuel.getItem().hasCraftingRemainingItem()) {
+						archaeologyWorkbenchBlockEntity.itemStacks.set(1, new ItemStack(fuel.getItem().getCraftingRemainingItem()));
+					} else if (hasFuel) {
 						fuel.shrink(1);
 						if (fuel.isEmpty()) {
-							archaeologyWorkbenchBlockEntity.itemStacks.set(1, fuel.getCraftingRemainingItem());
+							archaeologyWorkbenchBlockEntity.itemStacks.set(1, new ItemStack(fuel.getItem().getCraftingRemainingItem()));
 						}
 					}
 				}
@@ -204,9 +199,9 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
 		}
 	}
 
-	private boolean canFix(RegistryAccess registryAccess, Recipe<?> recipe, NonNullList<ItemStack> itemStacks, int maxStackSize) {
-		if (!itemStacks.get(0).isEmpty() && recipe != null) {
-			ItemStack output = ((Recipe<WorldlyContainer>) recipe).assemble(this, registryAccess);
+	private boolean canFix(RegistryAccess registryAccess, RecipeHolder<?> recipeHolder, NonNullList<ItemStack> itemStacks, int maxStackSize) {
+		if (!itemStacks.get(0).isEmpty() && recipeHolder != null) {
+			ItemStack output = ((Recipe<WorldlyContainer>) recipeHolder.value()).assemble(this, registryAccess);
 			if (output.isEmpty()) {
 				return false;
 			} else {
@@ -226,10 +221,10 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
 		}
 	}
 
-	private boolean fix(RegistryAccess registryAccess, Recipe<?> recipe, NonNullList<ItemStack> itemStacks, int maxStackSize) {
-		if (recipe != null && this.canFix(registryAccess, recipe, itemStacks, maxStackSize)) {
+	private boolean fix(RegistryAccess registryAccess, RecipeHolder<?> recipeHolder, NonNullList<ItemStack> itemStacks, int maxStackSize) {
+		if (recipeHolder != null && this.canFix(registryAccess, recipeHolder, itemStacks, maxStackSize)) {
 			ItemStack input = itemStacks.get(0);
-			ItemStack output = ((Recipe<WorldlyContainer>) recipe).assemble(this, registryAccess);
+			ItemStack output = ((Recipe<WorldlyContainer>) recipeHolder.value()).assemble(this, registryAccess);
 			ItemStack outputSlot = itemStacks.get(2);
 			if (outputSlot.isEmpty()) {
 				itemStacks.set(2, output.copy());
@@ -253,7 +248,7 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
 	}
 
 	private static int getTotalArchaeologyTime(Level p_222693_, ArchaeologyWorkbenchBlockEntity archaeologyWorkbenchBlockEntity) {
-		return archaeologyWorkbenchBlockEntity.recipeCheck.getRecipeFor(archaeologyWorkbenchBlockEntity, p_222693_).map(ArchaeologyRecipe::getTime).orElse(3000);
+		return archaeologyWorkbenchBlockEntity.recipeCheck.getRecipeFor(archaeologyWorkbenchBlockEntity, p_222693_).map(recipeHolder -> recipeHolder.value().getTime()).orElse(3000);
 	}
 
 	@Override
@@ -349,15 +344,15 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
 	}
 
 	@Override
-	public void setRecipeUsed(Recipe<?> recipe) {
+	public void setRecipeUsed(RecipeHolder<?> recipe) {
 		if (recipe != null) {
-			ResourceLocation recipeId = recipe.getId();
+			ResourceLocation recipeId = recipe.id();
 			this.recipesUsed.addTo(recipeId, 1);
 		}
 	}
 
 	@Override
-	public Recipe<?> getRecipeUsed() {
+	public RecipeHolder<?> getRecipeUsed() {
 		return null;
 	}
 
@@ -370,33 +365,6 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
 			stackedContents.accountStack(itemStack);
 		}
 
-	}
-
-	@Override
-	public <T> LazyOptional<T> getCapability(Capability<T> capability, Direction direction) {
-		if (!this.remove && direction != null && capability == ForgeCapabilities.ITEM_HANDLER) {
-			if (direction == Direction.UP) {
-				return handlers[0].cast();
-			} else if (direction == Direction.DOWN) {
-				return handlers[1].cast();
-			} else {
-				return handlers[2].cast();
-			}
-		}
-		return super.getCapability(capability, direction);
-	}
-
-	@Override
-	public void invalidateCaps() {
-		super.invalidateCaps();
-		for (int x = 0; x < handlers.length; x++)
-			handlers[x].invalidate();
-	}
-
-	@Override
-	public void reviveCaps() {
-		super.reviveCaps();
-		this.handlers = SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);
 	}
 
 	@Override

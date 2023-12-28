@@ -6,7 +6,6 @@ import java.util.Map;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.world.Container;
@@ -20,20 +19,16 @@ import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSerialisers;
 
 public class AnalyzationRecipe implements Recipe<Container> {
-	public final ResourceLocation id;
 	public final Ingredient ingredient;
-	public final List<ItemStack> results;
-	public final List<Integer> weights;
+	public final List<AnalyzationOutputs> results;
 	public final Map<ItemStack, Integer> resultsAndWeight = new HashMap<>();
 	public final int time;
 
-	public AnalyzationRecipe(ResourceLocation id, Ingredient ingredient, List<ItemStack> results, List<Integer> weights, int time) {
-		this.id = id;
+	public AnalyzationRecipe(Ingredient ingredient, List<AnalyzationOutputs> results, int time) {
 		this.ingredient = ingredient;
 		this.results = results;
-		this.weights = weights;
-		for (int i = 0; i < results.size(); i++) {
-			this.resultsAndWeight.put(results.get(i), weights.get(i));
+		for (AnalyzationOutputs analyzationOutputs : results) {
+			this.resultsAndWeight.put(analyzationOutputs.getResult(), analyzationOutputs.getWeight());
 		}
 		this.time = time;
 	}
@@ -47,8 +42,8 @@ public class AnalyzationRecipe implements Recipe<Container> {
 	public ItemStack assemble(Container container, RegistryAccess registryAccess) {
 		SimpleWeightedRandomList.Builder<ItemStack> weightedRandomList = SimpleWeightedRandomList.builder();
 		for (int i = 0; i < this.results.size(); i++) {
-			ItemStack itemStack = this.results.get(i);
-			Integer weight = this.weights.get(i);
+			ItemStack itemStack = this.results.get(i).getResult();
+			Integer weight = this.results.get(i).getWeight();
 			weightedRandomList.add(itemStack, weight);
 		}
 		return weightedRandomList.build().getRandom(RandomSource.create()).get().getData().copy();
@@ -61,7 +56,7 @@ public class AnalyzationRecipe implements Recipe<Container> {
 		return nonnulllist;
 	}
 
-	public List<ItemStack> getResults() {
+	public List<AnalyzationOutputs> getResults() {
 		return this.results;
 	}
 
@@ -76,12 +71,7 @@ public class AnalyzationRecipe implements Recipe<Container> {
 
 	@Override
 	public ItemStack getResultItem(RegistryAccess registryAccess) {
-		return this.results.get(0);
-	}
-
-	@Override
-	public ResourceLocation getId() {
-		return this.id;
+		return this.results.get(0).getResult();
 	}
 
 	@Override
@@ -101,5 +91,23 @@ public class AnalyzationRecipe implements Recipe<Container> {
 	@Override
 	public RecipeType<?> getType() {
 		return FossilsLegacyRecipeTypes.ANALYZATION.get();
+	}
+
+	public static class AnalyzationOutputs {
+		public final ItemStack result;
+		public final int weight;
+
+		public AnalyzationOutputs(ItemStack result, int weight) {
+			this.result = result;
+			this.weight = weight;
+		}
+
+		public ItemStack getResult() {
+			return this.result;
+		}
+
+		public int getWeight() {
+			return this.weight;
+		}
 	}
 }

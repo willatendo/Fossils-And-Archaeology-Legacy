@@ -11,7 +11,7 @@ public class FossilsLegacyBlockTags {
 	public static final TagRegister<Block> BLOCK_TAGS = SimpleUtils.create(Registries.BLOCK, FossilsLegacyUtils.ID);
 
 	public static final TagKey<Block> BRACHIOSAURUS_RESISTANT = BLOCK_TAGS.register("brachiosaurus_resistant");
+	public static final TagKey<Block> GLASS = BLOCK_TAGS.register("glass");
 	public static final TagKey<Block> JURASSIC_FERN_PLANTABLE_ON = BLOCK_TAGS.register("jurassic_fern_plantable_on");
-	public static final TagKey<Block> NEEDS_SCARAB_GEM_TOOL = BLOCK_TAGS.register("needs_scarab_gem_tool");
 	public static final TagKey<Block> PERMAFROST_FROSTABLE = BLOCK_TAGS.register("permafrost_frostable");
 }

@@ -1,19 +1,19 @@
 package willatendo.fossilslegacy.data;
 
-import net.minecraft.data.PackOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.data.SimpleItemModelProvider;
+import willatendo.simplelibrary.data.model.ModelFile;
+import willatendo.simplelibrary.data.util.ExistingFileHelper;
+import willatendo.simplelibrary.server.registry.RegistryHolder;
 
 public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
-	public FossilsLegacyItemModelProvider(PackOutput packedOutput, String modId, ExistingFileHelper existingFileHelper) {
-		super(packedOutput, modId, existingFileHelper);
+	public FossilsLegacyItemModelProvider(FabricDataOutput fabricDataOutput, String modId, ExistingFileHelper existingFileHelper) {
+		super(fabricDataOutput, modId, existingFileHelper);
 	}
 
 	@Override
@@ -165,7 +165,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
 		this.spawnEggItem(FossilsLegacyItems.TYRANNOSAURUS_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.VELOCIRAPTOR_SPAWN_EGG.get());
 
-		for (RegistryObject<Block> blocks : FossilsLegacyBlocks.BLOCKS.getEntries()) {
+		for (RegistryHolder<? extends Block> blocks : FossilsLegacyBlocks.BLOCKS.getEntries()) {
 			ResourceLocation blockId = blocks.getId();
 			if (blocks.get() == FossilsLegacyBlocks.JURASSIC_FERN.get()) {
 				this.handheldItem(blockId, FossilsLegacyUtils.resource("block/fern_lower_3"));

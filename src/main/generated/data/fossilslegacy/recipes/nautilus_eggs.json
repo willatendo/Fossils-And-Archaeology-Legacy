@@ -1,0 +1,8 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "ingredient": {
+    "item": "fossilslegacy:nautilus_dna"
+  },
+  "result": "fossilslegacy:nautilus_eggs",
+  "time": 6000
+}

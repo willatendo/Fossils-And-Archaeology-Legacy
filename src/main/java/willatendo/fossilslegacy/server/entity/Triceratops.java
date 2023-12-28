@@ -60,6 +60,8 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Playe
 
 	public Triceratops(EntityType<? extends Triceratops> entityType, Level level) {
 		super(entityType, level);
+
+		this.setMaxUpStep(this.getGrowthStage() < 4 ? 0.5F : this.getGrowthStage() < 8 ? 1.0F : 1.5F);
 	}
 
 	public static AttributeSupplier triceratopsAttributes() {
@@ -94,11 +96,6 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Playe
 	@Override
 	public int foodLevelForItemStack(ItemStack itemStack) {
 		return FeederBlockEntity.getPlantsFoodLevel(itemStack);
-	}
-
-	@Override
-	public float getStepHeight() {
-		return this.getGrowthStage() < 4 ? 0.5F : this.getGrowthStage() < 8 ? 1.0F : 1.5F;
 	}
 
 	@Override
@@ -218,8 +215,8 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Playe
 	}
 
 	@Override
-	public double getPassengersRidingOffset() {
-		return 0.15D * this.getGrowthStage();
+	public Vec3 getPassengerRidingPosition(Entity entity) {
+		return new Vec3(0.0D, 0.15D * this.getGrowthStage(), 0.0D);
 	}
 
 	@Override

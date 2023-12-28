@@ -1,0 +1,13 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "fossilslegacy:raw_stegosaurus_meat"
+  },
+  "results": [
+    {
+      "result": "fossilslegacy:stegosaurus_dna",
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

@@ -1,18 +1,21 @@
 package willatendo.fossilslegacy.server.recipe.serialiser;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import willatendo.fossilslegacy.server.recipe.MagicConchRecipe;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.server.registry.RegistryHolder;
+import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 public class FossilsLegacyRecipeSerialisers {
-	public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, FossilsLegacyUtils.ID);
+	public static final SimpleRegistry<RecipeSerializer<?>> RECIPE_SERIALIZERS = SimpleRegistry.create(BuiltInRegistries.RECIPE_SERIALIZER, FossilsLegacyUtils.ID);
 
-	public static final RegistryObject<AnalyzationRecipeSerialiser> ANALYZATION = RECIPE_SERIALIZERS.register("analyzation", () -> new AnalyzationRecipeSerialiser());
-	public static final RegistryObject<ArchaeologyRecipeSerialiser> ARCHAEOLOGY = RECIPE_SERIALIZERS.register("archaeology", () -> new ArchaeologyRecipeSerialiser());
-	public static final RegistryObject<CultivationRecipeSerialiser> CULTIVATION = RECIPE_SERIALIZERS.register("cultivation", () -> new CultivationRecipeSerialiser());
-	public static final RegistryObject<RecipeSerializer<MagicConchRecipe>> MAGIC_CONCH = RECIPE_SERIALIZERS.register("magic_conch", () -> new SimpleCraftingRecipeSerializer<>(MagicConchRecipe::new));
+	public static final RegistryHolder<AnalyzationRecipeSerialiser> ANALYZATION = RECIPE_SERIALIZERS.register("analyzation", () -> new AnalyzationRecipeSerialiser());
+	public static final RegistryHolder<ArchaeologyRecipeSerialiser> ARCHAEOLOGY = RECIPE_SERIALIZERS.register("archaeology", () -> new ArchaeologyRecipeSerialiser());
+	public static final RegistryHolder<CultivationRecipeSerialiser> CULTIVATION = RECIPE_SERIALIZERS.register("cultivation", () -> new CultivationRecipeSerialiser());
+	public static final RegistryHolder<RecipeSerializer<MagicConchRecipe>> MAGIC_CONCH = RECIPE_SERIALIZERS.register("magic_conch", () -> new SimpleCraftingRecipeSerializer<>(MagicConchRecipe::new));
+
+	public static void init() {
+	}
 }

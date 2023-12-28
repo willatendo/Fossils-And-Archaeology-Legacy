@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.server.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -25,7 +24,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.network.NetworkHooks;
 import willatendo.fossilslegacy.server.block.entity.ArchaeologyWorkbenchBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.BlockEntityHelper;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
@@ -89,7 +87,7 @@ public class ArchaeologyWorkbenchBlock extends Block implements EntityBlock {
 		} else {
 			BlockEntity blockEntity = level.getBlockEntity(blockPos);
 			if (blockEntity instanceof ArchaeologyWorkbenchBlockEntity archaeologyWorkbenchBlockEntity) {
-				NetworkHooks.openScreen((ServerPlayer) player, archaeologyWorkbenchBlockEntity, blockPos);
+				player.openMenu(archaeologyWorkbenchBlockEntity);
 			}
 			return InteractionResult.CONSUME;
 		}

@@ -19,7 +19,7 @@ public class FeederScreen extends AbstractContainerScreen<FeederMenu> {
 
 	@Override
 	public void render(GuiGraphics guiGraphics, int x, int y, float partialTicks) {
-		this.renderBackground(guiGraphics);
+		this.renderBackground(guiGraphics, x, y, partialTicks);
 		super.render(guiGraphics, x, y, partialTicks);
 		this.renderTooltip(guiGraphics, x, y);
 		guiGraphics.drawString(this.font, this.menu.feederBlockEntity.containerData.get(0) + "", this.leftPos + 25, this.topPos + 32, 0xFF0000);

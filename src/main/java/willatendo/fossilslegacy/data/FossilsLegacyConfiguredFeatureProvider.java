@@ -5,6 +5,7 @@ import java.util.List;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -12,7 +13,6 @@ import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguratio
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration.TargetBlockState;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
-import net.minecraftforge.registries.ForgeRegistries;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.simplelibrary.data.SimpleConfiguredFeatureProvider;
 
@@ -35,7 +35,7 @@ public class FossilsLegacyConfiguredFeatureProvider extends SimpleConfiguredFeat
 		for (TargetBlockState targetStates : states) {
 			JsonObject target = new JsonObject();
 			JsonObject state = new JsonObject();
-			state.addProperty("Name", ForgeRegistries.BLOCKS.getKey(targetStates.state.getBlock()).toString());
+			state.addProperty("Name", BuiltInRegistries.BLOCK.getKey(targetStates.state.getBlock()).toString());
 			target.add("state", state);
 			JsonObject targetState = new JsonObject();
 			RuleTest ruleTest = targetStates.target;

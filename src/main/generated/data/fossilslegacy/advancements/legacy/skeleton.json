@@ -1,0 +1,37 @@
+{
+  "parent": "fossilslegacy:legacy/skull_block",
+  "criteria": {
+    "killed_skeletons": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "fossilslegacy:drowned_pirate"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.skeletons.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "item": "fossilslegacy:skull_block"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.skeletons.title"
+    }
+  },
+  "requirements": [
+    [
+      "killed_skeletons"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

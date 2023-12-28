@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.server.block;
 import java.util.List;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,7 +16,6 @@ import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.registries.ForgeRegistries;
 import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.entity.PlayerCommandableAccess;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
@@ -38,7 +38,7 @@ public class DrumBlock extends Block {
 			List<LivingEntity> allEntities = level.getEntitiesOfClass(LivingEntity.class, new AABB(blockPos).inflate(30.0D));
 			for (LivingEntity livingEntity : allEntities) {
 				if (livingEntity instanceof PlayerCommandableAccess playerCommandable) {
-					if (ForgeRegistries.ITEMS.tags().getTag(playerCommandable.commandItems()).contains(itemStack.getItem())) {
+					if (itemStack.is(BuiltInRegistries.ITEM.getTag(playerCommandable.commandItems()).get())) {
 						playerCommandable.setCommand(blockState.getValue(DINOSAUR_ORDER));
 					}
 				}

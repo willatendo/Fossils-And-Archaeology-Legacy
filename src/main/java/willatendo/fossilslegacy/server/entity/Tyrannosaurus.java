@@ -288,8 +288,8 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Pla
 	}
 
 	@Override
-	public double getPassengersRidingOffset() {
-		return 0.75D * this.getGrowthStage();
+	public Vec3 getPassengerRidingPosition(Entity entity) {
+		return new Vec3(0.0D, 0.75D * this.getGrowthStage(), 0.0D);
 	}
 
 	public boolean isKnockedOut() {

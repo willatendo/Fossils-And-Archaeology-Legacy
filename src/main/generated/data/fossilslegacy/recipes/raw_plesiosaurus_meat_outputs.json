@@ -1,0 +1,13 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "fossilslegacy:raw_plesiosaurus_meat"
+  },
+  "results": [
+    {
+      "result": "fossilslegacy:plesiosaurus_dna",
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

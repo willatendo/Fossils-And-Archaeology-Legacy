@@ -12,7 +12,7 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 
 public enum FossilsLegacyArmorMaterials implements ArmorMaterial {
-	ANCIENT("ancient", 15, Util.make(new EnumMap<>(ArmorItem.Type.class), (types) -> {
+	ANCIENT("fossilslegacy:ancient", 15, Util.make(new EnumMap<>(ArmorItem.Type.class), (types) -> {
 		types.put(ArmorItem.Type.BOOTS, 2);
 		types.put(ArmorItem.Type.LEGGINGS, 5);
 		types.put(ArmorItem.Type.CHESTPLATE, 6);

@@ -1,8 +1,5 @@
 package willatendo.fossilslegacy.server.entity;
 
-import javax.annotation.Nullable;
-
-import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -11,7 +8,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -30,9 +26,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.PowderSnowBlock;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ForgeMod;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 
 public class Fossil extends Entity {
@@ -56,72 +50,72 @@ public class Fossil extends Entity {
 		super(entityType, level);
 	}
 
-	public void travel(Vec3 vec3) {
-		if (this.isControlledByLocalInstance()) {
-			double movmentSpeed = 0.08D;
-			boolean flag = this.getDeltaMovement().y <= 0.0D;
-
-			FluidState fluidstate = this.level().getFluidState(this.blockPosition());
-			if ((this.isInWater() || (this.isInFluidType(fluidstate) && fluidstate.getFluidType() != ForgeMod.LAVA_TYPE.get())) && this.isAffectedByFluids() && !this.canStandOnFluid(fluidstate)) {
-				if (this.isInWater() || (this.isInFluidType(fluidstate))) {
-					double y = this.getY();
-					float modifier = this.isSprinting() ? 0.9F : this.getWaterSlowDown();
-					float scale = 0.02F;
-
-					this.moveRelative(scale, vec3);
-					this.move(MoverType.SELF, this.getDeltaMovement());
-					Vec3 deltaMovement = this.getDeltaMovement();
-					if (this.horizontalCollision && this.onClimbable()) {
-						deltaMovement = new Vec3(deltaMovement.x, 0.2D, deltaMovement.z);
-					}
-
-					this.setDeltaMovement(deltaMovement.multiply((double) modifier, (double) 0.8F, (double) modifier));
-					Vec3 fluidFallingAdjustedMovement = this.getFluidFallingAdjustedMovement(movmentSpeed, flag, this.getDeltaMovement());
-					this.setDeltaMovement(fluidFallingAdjustedMovement);
-					if (this.horizontalCollision && this.isFree(fluidFallingAdjustedMovement.x, fluidFallingAdjustedMovement.y + (double) 0.6F - this.getY() + y, fluidFallingAdjustedMovement.z)) {
-						this.setDeltaMovement(fluidFallingAdjustedMovement.x, (double) 0.3F, fluidFallingAdjustedMovement.z);
-					}
-				}
-			} else if (this.isInLava() && this.isAffectedByFluids() && !this.canStandOnFluid(fluidstate)) {
-				double y = this.getY();
-				this.moveRelative(0.02F, vec3);
-				this.move(MoverType.SELF, this.getDeltaMovement());
-				if (this.getFluidHeight(FluidTags.LAVA) <= this.getFluidJumpThreshold()) {
-					this.setDeltaMovement(this.getDeltaMovement().multiply(0.5D, (double) 0.8F, 0.5D));
-					Vec3 fluidFallingAdjustedMovement = this.getFluidFallingAdjustedMovement(movmentSpeed, flag, this.getDeltaMovement());
-					this.setDeltaMovement(fluidFallingAdjustedMovement);
-				} else {
-					this.setDeltaMovement(this.getDeltaMovement().scale(0.5D));
-				}
-
-				if (!this.isNoGravity()) {
-					this.setDeltaMovement(this.getDeltaMovement().add(0.0D, -movmentSpeed / 4.0D, 0.0D));
-				}
-
-				Vec3 deltaMovement = this.getDeltaMovement();
-				if (this.horizontalCollision && this.isFree(deltaMovement.x, deltaMovement.y + (double) 0.6F - this.getY() + y, deltaMovement.z)) {
-					this.setDeltaMovement(deltaMovement.x, (double) 0.3F, deltaMovement.z);
-				}
-			} else {
-				BlockPos blockPos = this.getBlockPosBelowThatAffectsMyMovement();
-				float friction = this.level().getBlockState(this.getBlockPosBelowThatAffectsMyMovement()).getFriction(level(), this.getBlockPosBelowThatAffectsMyMovement(), this);
-				float onGround = this.onGround() ? friction * 0.91F : 0.91F;
-				Vec3 calculate = this.handleRelativeFrictionAndCalculateMovement(vec3, friction);
-				double y = calculate.y;
-				if (this.level().isClientSide && !this.level().hasChunkAt(blockPos)) {
-					if (this.getY() > (double) this.level().getMinBuildHeight()) {
-						y = -0.1D;
-					} else {
-						y = 0.0D;
-					}
-				} else if (!this.isNoGravity()) {
-					y -= movmentSpeed;
-				}
-
-				this.setDeltaMovement(calculate.x * (double) onGround, y * (double) 0.98F, calculate.z * (double) onGround);
-			}
-		}
-	}
+//	public void travel(Vec3 vec3) {
+//		if (this.isControlledByLocalInstance()) {
+//			double movmentSpeed = 0.08D;
+//			boolean flag = this.getDeltaMovement().y <= 0.0D;
+//
+//			FluidState fluidstate = this.level().getFluidState(this.blockPosition());
+//			if ((this.isInWater() || (this.isInFluidType(fluidstate) && fluidstate.getFluidType() != ForgeMod.LAVA_TYPE.get())) && this.isAffectedByFluids() && !this.canStandOnFluid(fluidstate)) {
+//				if (this.isInWater() || (this.isInFluidType(fluidstate))) {
+//					double y = this.getY();
+//					float modifier = this.isSprinting() ? 0.9F : this.getWaterSlowDown();
+//					float scale = 0.02F;
+//
+//					this.moveRelative(scale, vec3);
+//					this.move(MoverType.SELF, this.getDeltaMovement());
+//					Vec3 deltaMovement = this.getDeltaMovement();
+//					if (this.horizontalCollision && this.onClimbable()) {
+//						deltaMovement = new Vec3(deltaMovement.x, 0.2D, deltaMovement.z);
+//					}
+//
+//					this.setDeltaMovement(deltaMovement.multiply((double) modifier, (double) 0.8F, (double) modifier));
+//					Vec3 fluidFallingAdjustedMovement = this.getFluidFallingAdjustedMovement(movmentSpeed, flag, this.getDeltaMovement());
+//					this.setDeltaMovement(fluidFallingAdjustedMovement);
+//					if (this.horizontalCollision && this.isFree(fluidFallingAdjustedMovement.x, fluidFallingAdjustedMovement.y + (double) 0.6F - this.getY() + y, fluidFallingAdjustedMovement.z)) {
+//						this.setDeltaMovement(fluidFallingAdjustedMovement.x, (double) 0.3F, fluidFallingAdjustedMovement.z);
+//					}
+//				}
+//			} else if (this.isInLava() && this.isAffectedByFluids() && !this.canStandOnFluid(fluidstate)) {
+//				double y = this.getY();
+//				this.moveRelative(0.02F, vec3);
+//				this.move(MoverType.SELF, this.getDeltaMovement());
+//				if (this.getFluidHeight(FluidTags.LAVA) <= this.getFluidJumpThreshold()) {
+//					this.setDeltaMovement(this.getDeltaMovement().multiply(0.5D, (double) 0.8F, 0.5D));
+//					Vec3 fluidFallingAdjustedMovement = this.getFluidFallingAdjustedMovement(movmentSpeed, flag, this.getDeltaMovement());
+//					this.setDeltaMovement(fluidFallingAdjustedMovement);
+//				} else {
+//					this.setDeltaMovement(this.getDeltaMovement().scale(0.5D));
+//				}
+//
+//				if (!this.isNoGravity()) {
+//					this.setDeltaMovement(this.getDeltaMovement().add(0.0D, -movmentSpeed / 4.0D, 0.0D));
+//				}
+//
+//				Vec3 deltaMovement = this.getDeltaMovement();
+//				if (this.horizontalCollision && this.isFree(deltaMovement.x, deltaMovement.y + (double) 0.6F - this.getY() + y, deltaMovement.z)) {
+//					this.setDeltaMovement(deltaMovement.x, (double) 0.3F, deltaMovement.z);
+//				}
+//			} else {
+//				BlockPos blockPos = this.getBlockPosBelowThatAffectsMyMovement();
+//				float friction = this.level().getBlockState(this.getBlockPosBelowThatAffectsMyMovement()).getFriction(level(), this.getBlockPosBelowThatAffectsMyMovement(), this);
+//				float onGround = this.onGround() ? friction * 0.91F : 0.91F;
+//				Vec3 calculate = this.handleRelativeFrictionAndCalculateMovement(vec3, friction);
+//				double y = calculate.y;
+//				if (this.level().isClientSide && !this.level().hasChunkAt(blockPos)) {
+//					if (this.getY() > (double) this.level().getMinBuildHeight()) {
+//						y = -0.1D;
+//					} else {
+//						y = 0.0D;
+//					}
+//				} else if (!this.isNoGravity()) {
+//					y -= movmentSpeed;
+//				}
+//
+//				this.setDeltaMovement(calculate.x * (double) onGround, y * (double) 0.98F, calculate.z * (double) onGround);
+//			}
+//		}
+//	}
 
 	public Vec3 getFluidFallingAdjustedMovement(double movmentSpeed, boolean flag, Vec3 vec3) {
 		if (!this.isNoGravity() && !this.isSprinting()) {
@@ -235,7 +229,6 @@ public class Fossil extends Entity {
 		}
 	}
 
-	@Nullable
 	protected SoundEvent getHurtSound(DamageSource damageSource) {
 		return SoundEvents.SKELETON_HURT;
 	}
@@ -290,10 +283,10 @@ public class Fossil extends Entity {
 			this.remove(Entity.RemovalReason.KILLED);
 		}
 
-		this.xxa *= 0.98F;
-		this.zza *= 0.98F;
-		Vec3 vec3 = new Vec3((double) this.xxa, (double) this.yya, (double) this.zza);
-		this.travel(vec3);
+//		this.xxa *= 0.98F;
+//		this.zza *= 0.98F;
+//		Vec3 vec3 = new Vec3((double) this.xxa, (double) this.yya, (double) this.zza);
+//		this.travel(vec3);
 
 		super.tick();
 
@@ -338,7 +331,7 @@ public class Fossil extends Entity {
 	}
 
 	@Override
-	public ItemStack getPickedResult(HitResult hitResult) {
+	public ItemStack getPickResult() {
 		return new ItemStack(FossilsLegacyItems.FOSSIL.get());
 	}
 

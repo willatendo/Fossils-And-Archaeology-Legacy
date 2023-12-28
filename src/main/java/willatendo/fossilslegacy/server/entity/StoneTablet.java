@@ -22,7 +22,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 
@@ -146,7 +145,7 @@ public class StoneTablet extends HangingEntity {
 	}
 
 	@Override
-	public void lerpTo(double x, double y, double z, float pitch, float yaw, int p_31922_, boolean p_31923_) {
+	public void lerpTo(double x, double y, double z, float pitch, float yaw, int p_31922_) {
 		this.setPos(x, y, z);
 	}
 
@@ -167,7 +166,7 @@ public class StoneTablet extends HangingEntity {
 	}
 
 	@Override
-	public ItemStack getPickedResult(HitResult hitResult) {
+	public ItemStack getPickResult() {
 		return FossilsLegacyItems.STONE_TABLET.get().getDefaultInstance();
 	}
 }

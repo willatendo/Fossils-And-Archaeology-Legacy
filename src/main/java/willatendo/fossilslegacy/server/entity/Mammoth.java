@@ -1,7 +1,5 @@
 package willatendo.fossilslegacy.server.entity;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -33,6 +31,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.PlayerRideable;
 import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.Shearable;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.BreedGoal;
@@ -53,14 +52,12 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.IForgeShearable;
 import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class Mammoth extends Animal implements DinopediaInformation, HungryAnimal, PlayerRideable, OwnableEntity, TamesOnBirth, TameAccessor, DaysAlive, IForgeShearable {
+public class Mammoth extends Animal implements DinopediaInformation, HungryAnimal, PlayerRideable, OwnableEntity, TamesOnBirth, TameAccessor, DaysAlive, Shearable {
 	private static final EntityDataAccessor<Integer> HUNGER = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> DAYS_ALIVE = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Boolean> IS_SHEARED = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.BOOLEAN);
@@ -76,6 +73,8 @@ public class Mammoth extends Animal implements DinopediaInformation, HungryAnima
 
 	public Mammoth(EntityType<? extends Mammoth> entityType, Level level) {
 		super(entityType, level);
+
+		this.setMaxUpStep(1.5F);
 	}
 
 	public static AttributeSupplier mammothAttributes() {
@@ -121,11 +120,6 @@ public class Mammoth extends Animal implements DinopediaInformation, HungryAnima
 	}
 
 	@Override
-	public float getStepHeight() {
-		return 1.5F;
-	}
-
-	@Override
 	public void tick() {
 		super.tick();
 		if (!this.hasEffect(MobEffects.WEAKNESS) && this.isInWeaknessBiome()) {
@@ -146,7 +140,7 @@ public class Mammoth extends Animal implements DinopediaInformation, HungryAnima
 
 	public boolean isInWeaknessBiome() {
 		Holder<Biome> biome = this.level().getBiome(this.blockPosition());
-		return biome.get().getBaseTemperature() > 1.0F;
+		return biome.value().getBaseTemperature() > 1.0F;
 	}
 
 	@Override
@@ -287,8 +281,8 @@ public class Mammoth extends Animal implements DinopediaInformation, HungryAnima
 	}
 
 	@Override
-	public double getPassengersRidingOffset() {
-		return 3.0D;
+	public Vec3 getPassengerRidingPosition(Entity entity) {
+		return new Vec3(0.0D, 3.0D, 0.0D);
 	}
 
 	public void setSheared(boolean sheared) {
@@ -410,30 +404,22 @@ public class Mammoth extends Animal implements DinopediaInformation, HungryAnima
 		this.setHunger(this.getMaxHunger());
 	}
 
+	@Override
 	public boolean readyForShearing() {
 		return this.isAlive() && !this.isSheared() && !this.isBaby();
 	}
 
 	@Override
-	public boolean isShearable(ItemStack itemStack, Level level, BlockPos blockPos) {
-		return this.readyForShearing();
-	}
-
-	@Override
-	public List<ItemStack> onSheared(Player player, ItemStack itemStack, Level level, BlockPos blockPos, int fortune) {
-		level.playSound(null, this, SoundEvents.SHEEP_SHEAR, player == null ? SoundSource.BLOCKS : SoundSource.PLAYERS, 1.0F, 1.0F);
-		this.gameEvent(GameEvent.SHEAR, player);
-		if (!level.isClientSide()) {
+	public void shear(SoundSource soundSource) {
+		this.level().playSound(null, this, SoundEvents.SHEEP_SHEAR, soundSource, 1.0f, 1.0f);
+		if (!this.level().isClientSide()) {
 			this.setSheared(true);
 			int amount = 1 + this.random.nextInt(20);
 
-			List<ItemStack> items = new ArrayList<>();
 			for (int i = 0; i < amount; ++i) {
-				items.add(new ItemStack(Items.BROWN_WOOL));
+				this.spawnAtLocation(new ItemStack(Items.BROWN_WOOL), 1);
 			}
-			return items;
 		}
-		return Collections.emptyList();
 	}
 
 	@Override
@@ -448,7 +434,5 @@ public class Mammoth extends Animal implements DinopediaInformation, HungryAnima
 
 	@Override
 	public void decreaseHunger() {
-		// TODO Auto-generated method stub
-		
 	}
 }

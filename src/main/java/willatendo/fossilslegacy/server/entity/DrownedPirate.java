@@ -92,11 +92,6 @@ public class DrownedPirate extends Skeleton {
 	}
 
 	@Override
-	protected SoundEvent getStepSound() {
-		return SoundEvents.DROWNED_STEP;
-	}
-
-	@Override
 	protected SoundEvent getSwimSound() {
 		return SoundEvents.DROWNED_SWIM;
 	}

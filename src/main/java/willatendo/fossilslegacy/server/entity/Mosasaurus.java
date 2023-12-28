@@ -83,11 +83,6 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation {
 	}
 
 	@Override
-	public boolean canBreatheUnderwater() {
-		return true;
-	}
-
-	@Override
 	public boolean isPushedByFluid() {
 		return false;
 	}

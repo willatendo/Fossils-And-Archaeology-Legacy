@@ -2,20 +2,23 @@ package willatendo.fossilslegacy.server.structure;
 
 import java.util.function.Supplier;
 
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType.StructureTemplateType;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.server.registry.RegistryHolder;
+import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 public class FossilLegacysStructurePeices {
-	public static final DeferredRegister<StructurePieceType> STRUCTURE_PIECE_TYPE = DeferredRegister.create(Registries.STRUCTURE_PIECE, FossilsLegacyUtils.ID);
+	public static final SimpleRegistry<StructurePieceType> STRUCTURE_PIECE_TYPE = SimpleRegistry.create(BuiltInRegistries.STRUCTURE_PIECE, FossilsLegacyUtils.ID);
 
-	public static final RegistryObject<StructurePieceType> ACADEMY = register("academy", () -> AcademyPieces.AcademyStructurePiece::new);
-	public static final RegistryObject<StructurePieceType> WEAPON_SHOP = register("weapon_shop", () -> WeaponShopPieces.WeaponShopPiece::new);
+	public static final RegistryHolder<StructureTemplateType> ACADEMY = register("academy", () -> AcademyPieces.AcademyStructurePiece::new);
+	public static final RegistryHolder<StructureTemplateType> WEAPON_SHOP = register("weapon_shop", () -> WeaponShopPieces.WeaponShopPiece::new);
 
-	public static RegistryObject<StructurePieceType> register(String id, Supplier<StructureTemplateType> structureTemplateType) {
+	public static RegistryHolder<StructureTemplateType> register(String id, Supplier<StructureTemplateType> structureTemplateType) {
 		return STRUCTURE_PIECE_TYPE.register(id, structureTemplateType);
+	}
+
+	public static void init() {
 	}
 }

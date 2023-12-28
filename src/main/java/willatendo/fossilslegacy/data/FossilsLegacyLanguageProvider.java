@@ -1,6 +1,6 @@
 package willatendo.fossilslegacy.data;
 
-import net.minecraft.data.PackOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import willatendo.fossilslegacy.server.FossilsLegacyCreativeModeTabs;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
@@ -8,8 +8,8 @@ import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.simplelibrary.data.SimpleLanguageProvider;
 
 public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
-	public FossilsLegacyLanguageProvider(PackOutput packedOutput, String modId, String local) {
-		super(packedOutput, modId, local);
+	public FossilsLegacyLanguageProvider(FabricDataOutput fabricDataOutput, String modId, String local) {
+		super(fabricDataOutput, modId, local);
 	}
 
 	@Override

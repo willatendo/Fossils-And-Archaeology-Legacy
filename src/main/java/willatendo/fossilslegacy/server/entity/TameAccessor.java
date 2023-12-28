@@ -2,9 +2,9 @@ package willatendo.fossilslegacy.server.entity;
 
 import java.util.UUID;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.fml.loading.FMLLoader;
 
 public interface TameAccessor {
 	void setOwnerUUID(UUID uuid);
@@ -18,7 +18,7 @@ public interface TameAccessor {
 	}
 
 	default boolean TESTING_autotame(Player player) {
-		if (!FMLLoader.isProduction()) {
+		if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
 			if (!this.isTame()) {
 				this.setOwnerUUID(player.getUUID());
 				return true;

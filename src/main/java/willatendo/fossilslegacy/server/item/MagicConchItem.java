@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.server.item;
 import java.util.List;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters;
@@ -11,7 +12,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistries;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.util.FillCreativeTab;
@@ -23,7 +23,7 @@ public class MagicConchItem extends Item implements FillCreativeTab {
 
 	@Override
 	public void appendHoverText(ItemStack itemStack, Level level, List<Component> components, TooltipFlag tooltipFlag) {
-		components.add(FossilsLegacyUtils.translation("item", ForgeRegistries.ITEMS.getKey(this).getPath() + ".desc", this.getOrder(itemStack).getName()).withStyle(ChatFormatting.GRAY));
+		components.add(FossilsLegacyUtils.translation("item", BuiltInRegistries.ITEM.getKey(this).getPath() + ".desc", this.getOrder(itemStack).getName()).withStyle(ChatFormatting.GRAY));
 		super.appendHoverText(itemStack, level, components, tooltipFlag);
 	}
 

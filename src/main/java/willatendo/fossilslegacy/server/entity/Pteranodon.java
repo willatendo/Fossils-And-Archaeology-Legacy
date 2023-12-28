@@ -80,6 +80,8 @@ public class Pteranodon extends Animal implements DinopediaInformation, HungryAn
 
 	public Pteranodon(EntityType<? extends Animal> entityType, Level level) {
 		super(entityType, level);
+
+		this.setMaxUpStep(this.getGrowthStage() < 4 ? 0.5F : this.getGrowthStage() < 8 ? 1.0F : 1.5F);
 	}
 
 	@Override
@@ -123,11 +125,6 @@ public class Pteranodon extends Animal implements DinopediaInformation, HungryAn
 
 	public static AttributeSupplier triceratopsAttributes() {
 		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 4.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).build();
-	}
-
-	@Override
-	public float getStepHeight() {
-		return this.getGrowthStage() < 4 ? 0.5F : this.getGrowthStage() < 8 ? 1.0F : 1.5F;
 	}
 
 	@Override
@@ -416,8 +413,8 @@ public class Pteranodon extends Animal implements DinopediaInformation, HungryAn
 	}
 
 	@Override
-	public double getPassengersRidingOffset() {
-		return this.isFlying ? 0.1D : 0.3D * this.getGrowthStage();
+	public Vec3 getPassengerRidingPosition(Entity entity) {
+		return new Vec3(0.0D, this.isFlying ? 0.1D : 0.3D * this.getGrowthStage(), 0.0D);
 	}
 
 	public void setRealAge(int realAge) {

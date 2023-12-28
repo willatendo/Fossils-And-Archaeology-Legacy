@@ -1,6 +1,9 @@
 package willatendo.fossilslegacy.server.block;
 
+import com.mojang.serialization.MapCodec;
+
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
@@ -22,10 +25,8 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.registries.ForgeRegistries;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class JurassicFernBlock extends BushBlock implements BonemealableBlock {
@@ -53,8 +54,8 @@ public class JurassicFernBlock extends BushBlock implements BonemealableBlock {
 	}
 
 	@Override
-	public ItemStack getCloneItemStack(BlockState blockState, HitResult hitResult, BlockGetter blockGetter, BlockPos blockPos, Player player) {
-		return ForgeRegistries.ITEMS.getValue(FossilsLegacyUtils.resource("jurassic_fern")).getDefaultInstance();
+	public ItemStack getCloneItemStack(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
+		return BuiltInRegistries.ITEM.get(FossilsLegacyUtils.resource("jurassic_fern")).getDefaultInstance();
 	}
 
 	@Override
@@ -133,7 +134,7 @@ public class JurassicFernBlock extends BushBlock implements BonemealableBlock {
 	}
 
 	@Override
-	public void playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
+	public BlockState playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
 		if (!level.isClientSide) {
 			if (player.isCreative()) {
 				preventCreativeDropFromBottomPart(level, blockPos, blockState, player);
@@ -142,7 +143,7 @@ public class JurassicFernBlock extends BushBlock implements BonemealableBlock {
 			}
 		}
 
-		super.playerWillDestroy(level, blockPos, blockState, player);
+		return super.playerWillDestroy(level, blockPos, blockState, player);
 	}
 
 	@Override
@@ -180,7 +181,7 @@ public class JurassicFernBlock extends BushBlock implements BonemealableBlock {
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean flag) {
+	public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
 		return true;
 	}
 
@@ -198,7 +199,12 @@ public class JurassicFernBlock extends BushBlock implements BonemealableBlock {
 				this.spread(blockState, blockPos, serverLevel, randomSource);
 			}
 		} else {
-			popResource(serverLevel, blockPos, new ItemStack(ForgeRegistries.ITEMS.getValue(FossilsLegacyUtils.resource("jurassic_fern"))));
+			popResource(serverLevel, blockPos, new ItemStack(BuiltInRegistries.ITEM.get(FossilsLegacyUtils.resource("jurassic_fern"))));
 		}
+	}
+
+	@Override
+	protected MapCodec<? extends BushBlock> codec() {
+		return null;
 	}
 }

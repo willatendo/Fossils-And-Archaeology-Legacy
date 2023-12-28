@@ -1,10 +1,7 @@
 package willatendo.fossilslegacy.data;
 
-import net.minecraft.data.PackOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.common.data.ExistingFileHelper;
 import willatendo.fossilslegacy.server.block.AnalyzerBlock;
 import willatendo.fossilslegacy.server.block.ArchaeologyWorkbenchBlock;
 import willatendo.fossilslegacy.server.block.CultivatorBlock;
@@ -13,10 +10,13 @@ import willatendo.fossilslegacy.server.block.FeederBlock;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.block.JurassicFernBlock;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
+import willatendo.simplelibrary.data.SimpleBlockStateProvider;
+import willatendo.simplelibrary.data.model.ConfiguredModel;
+import willatendo.simplelibrary.data.util.ExistingFileHelper;
 
-public class FossilsLegacyBlockStateProvider extends BlockStateProvider {
-	public FossilsLegacyBlockStateProvider(PackOutput packedOutput, String modId, ExistingFileHelper existingFileHelper) {
-		super(packedOutput, modId, existingFileHelper);
+public class FossilsLegacyBlockStateProvider extends SimpleBlockStateProvider {
+	public FossilsLegacyBlockStateProvider(FabricDataOutput fabricDataOutput, String modId, ExistingFileHelper existingFileHelper) {
+		super(fabricDataOutput, modId, existingFileHelper);
 	}
 
 	@Override

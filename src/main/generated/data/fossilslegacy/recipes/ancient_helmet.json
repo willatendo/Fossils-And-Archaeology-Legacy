@@ -1,0 +1,8 @@
+{
+  "type": "fossilslegacy:archaeology",
+  "ingredient": {
+    "item": "fossilslegacy:ancient_helmet_artifact"
+  },
+  "result": "fossilslegacy:ancient_helmet",
+  "time": 3000
+}

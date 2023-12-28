@@ -157,7 +157,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData, CompoundTag compoundTag) {
-		Biome biome = serverLevelAccessor.getBiome(this.blockPosition()).get();
+		Biome biome = serverLevelAccessor.getBiome(this.blockPosition()).value();
 
 		if (biome.coldEnoughToSnow(this.blockPosition())) {
 			this.setSubSpecies(2);

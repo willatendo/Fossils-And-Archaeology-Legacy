@@ -32,7 +32,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.phys.HitResult;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.item.FossilsLegacyLootTables;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -78,7 +77,7 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 	}
 
 	@Override
-	public ItemStack getPickedResult(HitResult hitResult) {
+	public ItemStack getPickResult() {
 		return this.getEgg().getPick().get().getDefaultInstance();
 	}
 

@@ -1,17 +1,20 @@
 package willatendo.fossilslegacy.server.menu;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.inventory.MenuType;
-import net.minecraftforge.common.extensions.IForgeMenuType;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.server.registry.RegistryHolder;
+import willatendo.simplelibrary.server.registry.SimpleRegistry;
+import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class FossilsLegacyMenus {
-	public static final DeferredRegister<MenuType<?>> MENU_TYPES = DeferredRegister.create(ForgeRegistries.MENU_TYPES, FossilsLegacyUtils.ID);
+	public static final SimpleRegistry<MenuType<?>> MENU_TYPES = SimpleRegistry.create(BuiltInRegistries.MENU, FossilsLegacyUtils.ID);
 
-	public static final RegistryObject<MenuType<ArchaeologyWorkbenchMenu>> ARCHAEOLOGY_WORKBENCH = MENU_TYPES.register("archaeology_workbench", () -> IForgeMenuType.create(ArchaeologyWorkbenchMenu::new));
-	public static final RegistryObject<MenuType<AnalyzerMenu>> ANALYZER = MENU_TYPES.register("analyzer", () -> IForgeMenuType.create(AnalyzerMenu::new));
-	public static final RegistryObject<MenuType<CultivatorMenu>> CULTIVATOR = MENU_TYPES.register("cultivator", () -> IForgeMenuType.create(CultivatorMenu::new));
-	public static final RegistryObject<MenuType<FeederMenu>> FEEDER = MENU_TYPES.register("feeder", () -> IForgeMenuType.create(FeederMenu::new));
+	public static final RegistryHolder<MenuType<ArchaeologyWorkbenchMenu>> ARCHAEOLOGY_WORKBENCH = MENU_TYPES.register("archaeology_workbench", () -> SimpleUtils.createMenuType(ArchaeologyWorkbenchMenu::new));
+	public static final RegistryHolder<MenuType<AnalyzerMenu>> ANALYZER = MENU_TYPES.register("analyzer", () -> SimpleUtils.createMenuType(AnalyzerMenu::new));
+	public static final RegistryHolder<MenuType<CultivatorMenu>> CULTIVATOR = MENU_TYPES.register("cultivator", () -> SimpleUtils.createMenuType(CultivatorMenu::new));
+	public static final RegistryHolder<MenuType<FeederMenu>> FEEDER = MENU_TYPES.register("feeder", () -> SimpleUtils.createMenuType(FeederMenu::new));
+
+	public static void init() {
+	}
 }

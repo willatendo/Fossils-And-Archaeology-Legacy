@@ -2,18 +2,19 @@ package willatendo.fossilslegacy.data;
 
 import java.util.concurrent.CompletableFuture;
 
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.core.HolderLookup.Provider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import willatendo.fossilslegacy.server.block.FossilsLegacyBlockTags;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.simplelibrary.data.SimpleItemTagsProvider;
+import willatendo.simplelibrary.data.util.ExistingFileHelper;
 
-public class FossilsLegacyItemTagProvider extends ItemTagsProvider {
-	public FossilsLegacyItemTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, CompletableFuture<TagLookup<Block>> blockTags, String modId, ExistingFileHelper existingFileHelper) {
-		super(packOutput, provider, blockTags, modId, existingFileHelper);
+public class FossilsLegacyItemTagProvider extends SimpleItemTagsProvider {
+	public FossilsLegacyItemTagProvider(FabricDataOutput fabricDataOutput, CompletableFuture<Provider> provider, CompletableFuture<TagLookup<Block>> blockTags, String modId, ExistingFileHelper existingFileHelper) {
+		super(fabricDataOutput, provider, blockTags, modId, existingFileHelper);
 	}
 
 	@Override
@@ -28,5 +29,7 @@ public class FossilsLegacyItemTagProvider extends ItemTagsProvider {
 		this.tag(FossilsLegacyItemTags.STEGOSAURUS_COMMANDABLES).add(Items.STICK);
 		this.tag(FossilsLegacyItemTags.TRICERATOPS_COMMANDABLES).add(Items.STICK);
 		this.tag(FossilsLegacyItemTags.TYRANNOSAURUS_COMMANDABLES).add(FossilsLegacyItems.SKULL_STICK.get());
+
+		this.copy(FossilsLegacyBlockTags.GLASS, FossilsLegacyItemTags.GLASS);
 	}
 }

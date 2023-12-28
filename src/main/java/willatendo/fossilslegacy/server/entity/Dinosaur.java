@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.server.entity;
 import java.util.Optional;
 import java.util.UUID;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -30,7 +31,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.fml.loading.FMLLoader;
 import willatendo.fossilslegacy.FossilsLegacyConfig;
 import willatendo.fossilslegacy.server.entity.Egg.EggType;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
@@ -67,7 +67,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 	public void tick() {
 		super.tick();
 
-		if (FossilsLegacyConfig.COMMON_CONFIG.willAnimalsGrow()) {
+		if (FossilsLegacyConfig.willAnimalsGrow()) {
 			if (this.getGrowthStage() < this.maxGrowthStage()) {
 				if (this.tickCount >= Level.TICKS_PER_DAY) {
 					this.setGrowthStage(this.getGrowthStage() + 1);
@@ -76,7 +76,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 			}
 		}
 
-		if (FossilsLegacyConfig.COMMON_CONFIG.willAnimalsStarve()) {
+		if (FossilsLegacyConfig.willAnimalsStarve()) {
 			if (this.tickCount % 300 == 0) {
 				this.decreaseHunger();
 			}
@@ -170,7 +170,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 			return InteractionResult.SUCCESS;
 		}
 
-		if (!this.isTame() && !FMLLoader.isProduction() && itemStack.is(Items.DEBUG_STICK) && player.isCreative()) {
+		if (!this.isTame() && FabricLoader.getInstance().isDevelopmentEnvironment() && itemStack.is(Items.DEBUG_STICK) && player.isCreative()) {
 			this.setOwnerUUID(player.getUUID());
 			return InteractionResult.SUCCESS;
 		}

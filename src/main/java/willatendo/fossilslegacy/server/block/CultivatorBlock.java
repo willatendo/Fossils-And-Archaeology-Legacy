@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.server.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
@@ -26,7 +25,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.network.NetworkHooks;
 import willatendo.fossilslegacy.server.block.entity.BlockEntityHelper;
 import willatendo.fossilslegacy.server.block.entity.CultivatorBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
@@ -114,7 +112,7 @@ public class CultivatorBlock extends Block implements EntityBlock {
 		} else {
 			BlockEntity blockEntity = level.getBlockEntity(blockPos);
 			if (blockEntity instanceof CultivatorBlockEntity cultivatorBlockEntity) {
-				NetworkHooks.openScreen((ServerPlayer) player, cultivatorBlockEntity, blockPos);
+				player.openMenu(cultivatorBlockEntity);
 			}
 			return InteractionResult.CONSUME;
 		}

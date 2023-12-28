@@ -1,37 +1,38 @@
 package willatendo.fossilslegacy.data.recipe;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 
 import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;
-import net.minecraft.advancements.CriterionTriggerInstance;
-import net.minecraft.advancements.RequirementsStrategy;
+import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.registries.ForgeRegistries;
-import willatendo.fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSerialisers;
+import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
+import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe.AnalyzationOutputs;
 
 public class AnalyzationRecipeBuilder implements RecipeBuilder {
 	private final Ingredient ingredient;
+	private final List<AnalyzationOutputs> analyzationOutputs = new ArrayList<>();
 	private final Map<Item, Integer> results = new HashMap<>();
 	private final int time;
-	private final Advancement.Builder advancement = Advancement.Builder.advancement();
+	private final Map<String, Criterion<?>> criteria = new LinkedHashMap();
 
 	private AnalyzationRecipeBuilder(Ingredient ingredient, ItemLike result, int weight, int time) {
 		this.ingredient = ingredient;
 		this.time = time;
 		this.results.put(result.asItem(), weight);
+		this.analyzationOutputs.add(new AnalyzationOutputs(new ItemStack(result), weight));
 	}
 
 	public static AnalyzationRecipeBuilder recipe(Ingredient ingredient, ItemLike result, int weight, int time) {
@@ -44,12 +45,13 @@ public class AnalyzationRecipeBuilder implements RecipeBuilder {
 
 	public AnalyzationRecipeBuilder addResult(Item result, int weight) {
 		this.results.put(result, weight);
+		this.analyzationOutputs.add(new AnalyzationOutputs(new ItemStack(result), weight));
 		return this;
 	}
 
 	@Override
-	public AnalyzationRecipeBuilder unlockedBy(String name, CriterionTriggerInstance criterionTriggerInstance) {
-		this.advancement.addCriterion(name, criterionTriggerInstance);
+	public AnalyzationRecipeBuilder unlockedBy(String name, Criterion criterion) {
+		this.criteria.put(name, criterion);
 		return this;
 	}
 
@@ -64,67 +66,16 @@ public class AnalyzationRecipeBuilder implements RecipeBuilder {
 	}
 
 	@Override
-	public void save(Consumer<FinishedRecipe> finishedRecipe, ResourceLocation recipeId) {
+	public void save(RecipeOutput recipeOutput, ResourceLocation recipeId) {
 		this.ensureValid(recipeId);
-		this.advancement.parent(ROOT_RECIPE_ADVANCEMENT).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId)).rewards(AdvancementRewards.Builder.recipe(recipeId)).requirements(RequirementsStrategy.OR);
-		finishedRecipe.accept(new AnalyzationRecipeBuilder.Result(recipeId, this.ingredient, this.results, this.time, this.advancement, recipeId.withPrefix("recipes/archaeology/")));
+		Advancement.Builder builder = recipeOutput.advancement().addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId)).rewards(AdvancementRewards.Builder.recipe(recipeId)).requirements(AdvancementRequirements.Strategy.OR);
+		this.criteria.forEach(builder::addCriterion);
+		recipeOutput.accept(recipeId, new AnalyzationRecipe(this.ingredient, this.analyzationOutputs, this.time), builder.build(recipeId.withPrefix("recipes/misc/")));
 	}
 
 	private void ensureValid(ResourceLocation recipeId) {
-		if (this.advancement.getCriteria().isEmpty()) {
+		if (this.criteria.isEmpty()) {
 			throw new IllegalStateException("No way of obtaining recipe " + recipeId);
-		}
-	}
-
-	static class Result implements FinishedRecipe {
-		private final ResourceLocation id;
-		private final Ingredient ingredient;
-		private final Map<Item, Integer> result;
-		private final int time;
-		private final Advancement.Builder advancement;
-		private final ResourceLocation advancementId;
-
-		public Result(ResourceLocation id, Ingredient ingredient, Map<Item, Integer> result, int time, Advancement.Builder advancement, ResourceLocation advancementId) {
-			this.id = id;
-			this.ingredient = ingredient;
-			this.result = result;
-			this.time = time;
-			this.advancement = advancement;
-			this.advancementId = advancementId;
-		}
-
-		@Override
-		public void serializeRecipeData(JsonObject jsonObject) {
-			jsonObject.add("ingredient", this.ingredient.toJson());
-			JsonArray results = new JsonArray();
-			for (int i = 0; i < this.result.size(); i++) {
-				JsonObject result = new JsonObject();
-				result.addProperty("result", ForgeRegistries.ITEMS.getKey(this.result.keySet().stream().toList().get(i)).toString());
-				result.addProperty("weight", this.result.values().stream().toList().get(i));
-				results.add(result);
-			}
-			jsonObject.add("results", results);
-			jsonObject.addProperty("time", this.time);
-		}
-
-		@Override
-		public RecipeSerializer<?> getType() {
-			return FossilsLegacyRecipeSerialisers.ANALYZATION.get();
-		}
-
-		@Override
-		public ResourceLocation getId() {
-			return this.id;
-		}
-
-		@Override
-		public JsonObject serializeAdvancement() {
-			return this.advancement.serializeToJson();
-		}
-
-		@Override
-		public ResourceLocation getAdvancementId() {
-			return this.advancementId;
 		}
 	}
 }

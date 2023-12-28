@@ -18,32 +18,26 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.inventory.RecipeHolder;
+import net.minecraft.world.inventory.RecipeCraftingHolder;
 import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeManager.CachedCheck;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.wrapper.SidedInvWrapper;
 import willatendo.fossilslegacy.server.block.AnalyzerBlock;
 import willatendo.fossilslegacy.server.menu.AnalyzerMenu;
 import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
 import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, RecipeHolder, StackedContentsCompatible {
+public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, RecipeCraftingHolder, StackedContentsCompatible {
 	private static final int[] SLOTS_FOR_UP = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
 	private static final int[] SLOTS_FOR_DOWN = new int[] { 9, 10, 11, 12 };
 	private static final int[] SLOTS_FOR_SIDES = SLOTS_FOR_UP;
 	protected NonNullList<ItemStack> itemStacks = NonNullList.withSize(13, ItemStack.EMPTY);
-	private LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);
 	public int onTime;
 	public int analyzationProgress;
 	public int analyzationTotalTime;
@@ -131,7 +125,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 		for (int inputSlots = 8; inputSlots >= 0; inputSlots--) {
 			boolean hasInput = !analyzerBlockEntity.itemStacks.get(inputSlots).isEmpty();
 			if (analyzerBlockEntity.isOn() || hasInput) {
-				Recipe<Container> recipe;
+				RecipeHolder<AnalyzationRecipe> recipe;
 				if (hasInput) {
 					recipe = analyzerBlockEntity.recipeCheck.getRecipeFor(analyzerBlockEntity, level).orElse(null);
 				} else {
@@ -140,7 +134,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 
 				if (recipe != null) {
 					int maxStackSize = analyzerBlockEntity.getMaxStackSize();
-					ItemStack output = recipe.assemble(analyzerBlockEntity, level.registryAccess());
+					ItemStack output = recipe.value().assemble(analyzerBlockEntity, level.registryAccess());
 					for (int outputSlots = 9; outputSlots < 13; outputSlots++) {
 						if (analyzerBlockEntity.canAnalyze(outputSlots, inputSlots, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
 							if (!analyzerBlockEntity.isOn()) {
@@ -227,7 +221,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 	}
 
 	private static int getTotalAnalyzationTime(Level level, AnalyzerBlockEntity analyzerBlockEntity) {
-		return analyzerBlockEntity.recipeCheck.getRecipeFor(analyzerBlockEntity, level).map(AnalyzationRecipe::getTime).orElse(100);
+		return analyzerBlockEntity.recipeCheck.getRecipeFor(analyzerBlockEntity, level).map(recipeHolder -> recipeHolder.value().getTime()).orElse(100);
 	}
 
 	@Override
@@ -323,15 +317,15 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 	}
 
 	@Override
-	public void setRecipeUsed(Recipe<?> recipe) {
-		if (recipe != null) {
-			ResourceLocation recipeId = recipe.getId();
+	public void setRecipeUsed(RecipeHolder<?> recipeHolder) {
+		if (recipeHolder != null) {
+			ResourceLocation recipeId = recipeHolder.id();
 			this.recipesUsed.addTo(recipeId, 1);
 		}
 	}
 
 	@Override
-	public Recipe<?> getRecipeUsed() {
+	public RecipeHolder<?> getRecipeUsed() {
 		return null;
 	}
 
@@ -340,34 +334,6 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 		for (ItemStack itemStack : this.itemStacks) {
 			stackedContents.accountStack(itemStack);
 		}
-	}
-
-	@Override
-	public <T> LazyOptional<T> getCapability(Capability<T> capability, Direction direction) {
-		if (!this.remove && direction != null && capability == ForgeCapabilities.ITEM_HANDLER) {
-			if (direction == Direction.UP) {
-				return this.handlers[0].cast();
-			} else if (direction == Direction.DOWN) {
-				return this.handlers[1].cast();
-			} else {
-				return this.handlers[2].cast();
-			}
-		}
-		return super.getCapability(capability, direction);
-	}
-
-	@Override
-	public void invalidateCaps() {
-		super.invalidateCaps();
-		for (int x = 0; x < this.handlers.length; x++) {
-			this.handlers[x].invalidate();
-		}
-	}
-
-	@Override
-	public void reviveCaps() {
-		super.reviveCaps();
-		this.handlers = SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);
 	}
 
 	@Override

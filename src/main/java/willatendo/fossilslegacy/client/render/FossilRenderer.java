@@ -1,7 +1,5 @@
 package willatendo.fossilslegacy.client.render;
 
-import javax.annotation.Nullable;
-
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
@@ -44,7 +42,7 @@ public class FossilRenderer extends EntityRenderer<Fossil> {
 
 		poseStack.pushPose();
 
-		boolean shouldSit = fossil.isPassenger() && (fossil.getVehicle() != null && fossil.getVehicle().shouldRiderSit());
+		boolean shouldSit = fossil.isPassenger() && (fossil.getVehicle() != null);
 		this.model.riding = shouldSit;
 		this.model.young = false;
 		float bodyRot = Mth.rotLerp(packedOverlay, fossil.yBodyRotO, fossil.yBodyRot);
@@ -202,7 +200,6 @@ public class FossilRenderer extends EntityRenderer<Fossil> {
 		return 0.0F;
 	}
 
-	@Nullable
 	protected RenderType getRenderType(Fossil fossil, boolean visible, boolean notInvisible, boolean glowing) {
 		ResourceLocation resourcelocation = this.getTextureLocation(fossil);
 		if (notInvisible) {

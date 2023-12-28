@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.server.recipe;
 
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingBookCategory;
@@ -15,8 +14,8 @@ import willatendo.fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSeri
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 
 public class MagicConchRecipe extends CustomRecipe {
-	public MagicConchRecipe(ResourceLocation id, CraftingBookCategory craftingBookCategory) {
-		super(id, craftingBookCategory);
+	public MagicConchRecipe(CraftingBookCategory craftingBookCategory) {
+		super(craftingBookCategory);
 	}
 
 	@Override

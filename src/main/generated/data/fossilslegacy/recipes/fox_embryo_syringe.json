@@ -1,0 +1,8 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "ingredient": {
+    "item": "fossilslegacy:fox_dna"
+  },
+  "result": "fossilslegacy:fox_dna",
+  "time": 6000
+}

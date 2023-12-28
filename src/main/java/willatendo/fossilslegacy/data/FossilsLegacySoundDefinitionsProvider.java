@@ -1,17 +1,16 @@
 package willatendo.fossilslegacy.data;
 
-import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.data.SoundDefinition;
-import net.minecraftforge.common.data.SoundDefinition.Sound;
-import net.minecraftforge.common.data.SoundDefinition.SoundType;
-import net.minecraftforge.common.data.SoundDefinitionsProvider;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.data.SimpleSoundDefinitionsProvider;
+import willatendo.simplelibrary.data.sounds.SoundDefinition;
+import willatendo.simplelibrary.data.sounds.SoundDefinition.Sound;
+import willatendo.simplelibrary.data.sounds.SoundDefinition.SoundType;
 
-public class FossilsLegacySoundDefinitionsProvider extends SoundDefinitionsProvider {
-	public FossilsLegacySoundDefinitionsProvider(PackOutput packOutput, String modId, ExistingFileHelper existringFileHelper) {
-		super(packOutput, modId, existringFileHelper);
+public class FossilsLegacySoundDefinitionsProvider extends SimpleSoundDefinitionsProvider {
+	public FossilsLegacySoundDefinitionsProvider(FabricDataOutput fabricDataOutput, String modId) {
+		super(fabricDataOutput, modId);
 	}
 
 	@Override

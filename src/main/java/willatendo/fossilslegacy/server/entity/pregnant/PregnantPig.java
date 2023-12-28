@@ -14,7 +14,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.HitResult;
 import willatendo.fossilslegacy.server.entity.DinopediaInformation;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.fossilslegacy.server.utils.SyringeAnimals;
@@ -28,7 +27,7 @@ public class PregnantPig extends Pig implements DinopediaInformation, PregnantAn
 	}
 
 	@Override
-	public ItemStack getPickedResult(HitResult hitResult) {
+	public ItemStack getPickResult() {
 		return Items.PIG_SPAWN_EGG.getDefaultInstance();
 	}
 

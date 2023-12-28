@@ -2,16 +2,16 @@ package willatendo.fossilslegacy.data;
 
 import java.util.concurrent.CompletableFuture;
 
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.core.HolderLookup.Provider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.FluidTagsProvider;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.common.data.ExistingFileHelper;
 import willatendo.fossilslegacy.server.fluid.FossilsLegacyFluidTags;
+import willatendo.simplelibrary.data.SimpleFluidTagsProvider;
+import willatendo.simplelibrary.data.util.ExistingFileHelper;
 
-public class FossilsLegacyFluidTagProvider extends FluidTagsProvider {
-	public FossilsLegacyFluidTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId, ExistingFileHelper existingFileHelper) {
-		super(packOutput, provider, modId, existingFileHelper);
+public class FossilsLegacyFluidTagProvider extends SimpleFluidTagsProvider {
+	public FossilsLegacyFluidTagProvider(FabricDataOutput fabricDataOutput, CompletableFuture<Provider> provider, String modId, ExistingFileHelper existingFileHelper) {
+		super(fabricDataOutput, provider, modId, existingFileHelper);
 	}
 
 	@Override

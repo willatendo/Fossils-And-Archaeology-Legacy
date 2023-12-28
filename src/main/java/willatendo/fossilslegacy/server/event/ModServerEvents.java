@@ -1,5 +1,9 @@
 package willatendo.fossilslegacy.server.event;
 
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.world.entity.animal.Cat;
 import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.entity.animal.Dolphin;
@@ -18,11 +22,8 @@ import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.animal.horse.Mule;
 import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
+import willatendo.fossilslegacy.server.biomes.FossilsLegacyPlacedFeatures;
 import willatendo.fossilslegacy.server.entity.Brachiosaurus;
 import willatendo.fossilslegacy.server.entity.Dilophosaurus;
 import willatendo.fossilslegacy.server.entity.DrownedPirate;
@@ -39,59 +40,60 @@ import willatendo.fossilslegacy.server.entity.Triceratops;
 import willatendo.fossilslegacy.server.entity.Tyrannosaurus;
 import willatendo.fossilslegacy.server.entity.Velociraptor;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-@EventBusSubscriber(bus = Bus.MOD, modid = FossilsLegacyUtils.ID)
 public class ModServerEvents {
-	@SubscribeEvent
-	public static void entityAttributes(EntityAttributeCreationEvent event) {
-		event.put(FossilsLegacyEntities.BRACHIOSAURUS.get(), Brachiosaurus.brachiosaurusAttributes());
-		event.put(FossilsLegacyEntities.DILOPHOSAURUS.get(), Dilophosaurus.dilophosaurusAttributes());
-		event.put(FossilsLegacyEntities.MAMMOTH.get(), Mammoth.mammothAttributes());
-		event.put(FossilsLegacyEntities.MOSASAURUS.get(), Mosasaurus.mosasaurusAttributes());
-		event.put(FossilsLegacyEntities.NAUTILUS.get(), Nautilus.nautilusAttributes());
-		event.put(FossilsLegacyEntities.PTERANODON.get(), Pteranodon.triceratopsAttributes());
-		event.put(FossilsLegacyEntities.SMILODON.get(), Smilodon.smilodonAttributes());
-		event.put(FossilsLegacyEntities.STEGOSAURUS.get(), Stegosaurus.stegosaurusAttributes());
-		event.put(FossilsLegacyEntities.TRICERATOPS.get(), Triceratops.triceratopsAttributes());
-		event.put(FossilsLegacyEntities.TYRANNOSAURUS.get(), Tyrannosaurus.tyrannosaurusAttributes());
-		event.put(FossilsLegacyEntities.VELOCIRAPTOR.get(), Velociraptor.velociraptorAttributes());
+	public static void entityAttributes() {
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.BRACHIOSAURUS.get(), Brachiosaurus.brachiosaurusAttributes());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.DILOPHOSAURUS.get(), Dilophosaurus.dilophosaurusAttributes());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.MAMMOTH.get(), Mammoth.mammothAttributes());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.MOSASAURUS.get(), Mosasaurus.mosasaurusAttributes());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.NAUTILUS.get(), Nautilus.nautilusAttributes());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PTERANODON.get(), Pteranodon.triceratopsAttributes());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.SMILODON.get(), Smilodon.smilodonAttributes());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.STEGOSAURUS.get(), Stegosaurus.stegosaurusAttributes());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.TRICERATOPS.get(), Triceratops.triceratopsAttributes());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.TYRANNOSAURUS.get(), Tyrannosaurus.tyrannosaurusAttributes());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.VELOCIRAPTOR.get(), Velociraptor.velociraptorAttributes());
 
-		event.put(FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), ZombifiedPiglin.createAttributes().build());
-		event.put(FossilsLegacyEntities.DROWNED_PIRATE.get(), DrownedPirate.createAttributes().build());
-		event.put(FossilsLegacyEntities.FAILURESAURUS.get(), Failuresaurus.createAttributes().build());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), ZombifiedPiglin.createAttributes().build());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.DROWNED_PIRATE.get(), DrownedPirate.createAttributes().build());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.FAILURESAURUS.get(), Failuresaurus.createAttributes().build());
 
-		event.put(FossilsLegacyEntities.EGG.get(), Egg.eggAttributes());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.EGG.get(), Egg.eggAttributes());
 
-		event.put(FossilsLegacyEntities.PREGNANT_CAT.get(), Cat.createAttributes().build());
-		event.put(FossilsLegacyEntities.PREGNANT_COW.get(), Cow.createAttributes().build());
-		event.put(FossilsLegacyEntities.PREGNANT_DOLPHIN.get(), Dolphin.createAttributes().build());
-		event.put(FossilsLegacyEntities.PREGNANT_DONKEY.get(), Donkey.createBaseChestedHorseAttributes().build());
-		event.put(FossilsLegacyEntities.PREGNANT_FOX.get(), Fox.createAttributes().build());
-		event.put(FossilsLegacyEntities.PREGNANT_GOAT.get(), Goat.createAttributes().build());
-		event.put(FossilsLegacyEntities.PREGNANT_HORSE.get(), Horse.createBaseHorseAttributes().build());
-		event.put(FossilsLegacyEntities.PREGNANT_LLAMA.get(), Llama.createAttributes().build());
-		event.put(FossilsLegacyEntities.PREGNANT_MAMMOTH.get(), Mammoth.mammothAttributes());
-		event.put(FossilsLegacyEntities.PREGNANT_SMILODON.get(), Smilodon.smilodonAttributes());
-		event.put(FossilsLegacyEntities.PREGNANT_MULE.get(), Mule.createBaseChestedHorseAttributes().build());
-		event.put(FossilsLegacyEntities.PREGNANT_OCELOT.get(), Ocelot.createAttributes().build());
-		event.put(FossilsLegacyEntities.PREGNANT_PANDA.get(), Panda.createAttributes().build());
-		event.put(FossilsLegacyEntities.PREGNANT_PIG.get(), Pig.createAttributes().build());
-		event.put(FossilsLegacyEntities.PREGNANT_POLAR_BEAR.get(), PolarBear.createAttributes().build());
-		event.put(FossilsLegacyEntities.PREGNANT_RABBIT.get(), Rabbit.createAttributes().build());
-		event.put(FossilsLegacyEntities.PREGNANT_SHEEP.get(), Sheep.createAttributes().build());
-		event.put(FossilsLegacyEntities.PREGNANT_WOLF.get(), Wolf.createAttributes().build());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_CAT.get(), Cat.createAttributes().build());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_COW.get(), Cow.createAttributes().build());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_DOLPHIN.get(), Dolphin.createAttributes().build());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_DONKEY.get(), Donkey.createBaseChestedHorseAttributes().build());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_FOX.get(), Fox.createAttributes().build());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_GOAT.get(), Goat.createAttributes().build());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_HORSE.get(), Horse.createBaseHorseAttributes().build());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_LLAMA.get(), Llama.createAttributes().build());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_MAMMOTH.get(), Mammoth.mammothAttributes());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_SMILODON.get(), Smilodon.smilodonAttributes());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_MULE.get(), Mule.createBaseChestedHorseAttributes().build());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_OCELOT.get(), Ocelot.createAttributes().build());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_PANDA.get(), Panda.createAttributes().build());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_PIG.get(), Pig.createAttributes().build());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_POLAR_BEAR.get(), PolarBear.createAttributes().build());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_RABBIT.get(), Rabbit.createAttributes().build());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_SHEEP.get(), Sheep.createAttributes().build());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_WOLF.get(), Wolf.createAttributes().build());
 	}
 
-	@SubscribeEvent
-	public static void creativeModTabModification(BuildCreativeModeTabContentsEvent event) {
-		if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
-			event.accept(FossilsLegacyItems.DROWNED_PIRATE_SPAWN_EGG.get());
-			event.accept(FossilsLegacyItems.ZOMBIFIED_PIGMAN_SPAWN_EGG.get());
-			event.accept(FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get());
-			event.accept(FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get());
-			event.accept(FossilsLegacyItems.SMILODON_SPAWN_EGG.get());
-			event.accept(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get());
-		}
+	public static void creativeModTabModification() {
+		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.SPAWN_EGGS).register(content -> {
+			content.accept(FossilsLegacyItems.DROWNED_PIRATE_SPAWN_EGG.get());
+			content.accept(FossilsLegacyItems.ZOMBIFIED_PIGMAN_SPAWN_EGG.get());
+			content.accept(FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get());
+			content.accept(FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get());
+			content.accept(FossilsLegacyItems.SMILODON_SPAWN_EGG.get());
+			content.accept(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get());
+		});
+	}
+
+	public static void addToBiomes() {
+		BiomeModifications.addFeature(BiomeSelectors.all(), Decoration.UNDERGROUND_ORES, FossilsLegacyPlacedFeatures.ORE_FOSSIL);
+		BiomeModifications.addFeature(BiomeSelectors.all(), Decoration.UNDERGROUND_ORES, FossilsLegacyPlacedFeatures.ORE_PERMAFROST);
 	}
 }

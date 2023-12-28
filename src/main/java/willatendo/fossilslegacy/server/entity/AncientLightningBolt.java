@@ -15,7 +15,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.scores.Team;
 
 public class AncientLightningBolt extends LightningBolt implements OwnableEntity {
 	protected static final EntityDataAccessor<Byte> FLAGS = SynchedEntityData.defineId(AncientLightningBolt.class, EntityDataSerializers.BYTE);
@@ -88,17 +87,6 @@ public class AncientLightningBolt extends LightningBolt implements OwnableEntity
 		} else {
 			this.entityData.set(FLAGS, (byte) (b0 & -5));
 		}
-	}
-
-	public Team getTeam() {
-		if (this.isTame()) {
-			LivingEntity livingEntity = this.getOwner();
-			if (livingEntity != null) {
-				return livingEntity.getTeam();
-			}
-		}
-
-		return super.getTeam();
 	}
 
 	@Override

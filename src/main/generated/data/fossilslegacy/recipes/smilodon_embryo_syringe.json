@@ -1,0 +1,8 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "ingredient": {
+    "item": "fossilslegacy:smilodon_dna"
+  },
+  "result": "fossilslegacy:smilodon_embryo_syringe",
+  "time": 6000
+}

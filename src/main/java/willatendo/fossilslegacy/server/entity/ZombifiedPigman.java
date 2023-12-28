@@ -40,7 +40,6 @@ import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
-import net.minecraft.world.scores.Team;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 
 public class ZombifiedPigman extends ZombifiedPiglin implements OwnableEntity {
@@ -194,17 +193,6 @@ public class ZombifiedPigman extends ZombifiedPiglin implements OwnableEntity {
 
 	public boolean wantsToAttack(LivingEntity target, LivingEntity owner) {
 		return true;
-	}
-
-	public Team getTeam() {
-		if (this.isTame()) {
-			LivingEntity livingEntity = this.getOwner();
-			if (livingEntity != null) {
-				return livingEntity.getTeam();
-			}
-		}
-
-		return super.getTeam();
 	}
 
 	@Override

@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.server.recipe;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -14,13 +13,11 @@ import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSerialisers;
 
 public class CultivationRecipe implements Recipe<Container> {
-	public final ResourceLocation id;
 	public final Ingredient ingredient;
 	public final ItemStack result;
 	public final int time;
 
-	public CultivationRecipe(ResourceLocation id, Ingredient ingredient, ItemStack result, int time) {
-		this.id = id;
+	public CultivationRecipe(Ingredient ingredient, ItemStack result, int time) {
 		this.ingredient = ingredient;
 		this.result = result;
 		this.time = time;
@@ -51,11 +48,6 @@ public class CultivationRecipe implements Recipe<Container> {
 	@Override
 	public ItemStack getResultItem(RegistryAccess registryAccess) {
 		return this.result;
-	}
-
-	@Override
-	public ResourceLocation getId() {
-		return this.id;
 	}
 
 	@Override

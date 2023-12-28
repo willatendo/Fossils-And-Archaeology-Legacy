@@ -1,0 +1,42 @@
+{
+  "parent": "fossilslegacy:legacy/archaeology_workbench",
+  "criteria": {
+    "used_stone_tablet": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {}
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": [
+                "fossilslegacy:stone_tablet"
+              ]
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.stone_tablet.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "item": "fossilslegacy:stone_tablet"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.stone_tablet.title"
+    }
+  },
+  "requirements": [
+    [
+      "used_stone_tablet"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

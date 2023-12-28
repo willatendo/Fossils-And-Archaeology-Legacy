@@ -1,0 +1,27 @@
+{
+  "parent": "fossilslegacy:legacy/ancient_helmet",
+  "criteria": {
+    "tamed_pigman": {
+      "trigger": "minecraft:tame_zombified_pigman_trigger"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.tamed_pigman.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "item": "fossilslegacy:ancient_helmet",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.tamed_pigman.title"
+    }
+  },
+  "requirements": [
+    [
+      "tamed_pigman"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -12,7 +12,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.HitResult;
 import willatendo.fossilslegacy.server.entity.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
 import willatendo.fossilslegacy.server.entity.Smilodon;
@@ -29,7 +28,7 @@ public class PregnantSmilodon extends Smilodon implements DinopediaInformation, 
 	}
 
 	@Override
-	public ItemStack getPickedResult(HitResult hitResult) {
+	public ItemStack getPickResult() {
 		return FossilsLegacyItems.SMILODON_SPAWN_EGG.get().getDefaultInstance();
 	}
 

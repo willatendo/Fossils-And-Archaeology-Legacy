@@ -12,9 +12,9 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
 import willatendo.fossilslegacy.server.biomes.FossilsLegacyBiomeTags;
@@ -22,17 +22,17 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FossilsLegacyCustomProviders implements DataProvider {
 	protected static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().create();
-	protected final PackOutput packOutput;
+	protected final FabricDataOutput fabricDataOutput;
 	protected final String modid;
 
-	public FossilsLegacyCustomProviders(PackOutput packOutput, String modid) {
-		this.packOutput = packOutput;
+	public FossilsLegacyCustomProviders(FabricDataOutput fabricDataOutput, String modid) {
+		this.fabricDataOutput = fabricDataOutput;
 		this.modid = modid;
 	}
 
 	@Override
 	public CompletableFuture<?> run(CachedOutput cachedOutput) {
-		Path path = this.packOutput.getOutputFolder();
+		Path path = this.fabricDataOutput.getOutputFolder();
 		ArrayList<CompletableFuture> completableFutures = Lists.newArrayList();
 		this.makeAllCustomProviders((saver) -> {
 			completableFutures.add(DataProvider.saveStable(cachedOutput, saver.serialise(), path.resolve("data/" + this.modid + "/" + saver.id() + ".json")));
@@ -46,7 +46,7 @@ public class FossilsLegacyCustomProviders implements DataProvider {
 		features.accept(new StructureSet("weapon_shop", 1, 32, 8, 1476272411));
 		features.accept(new Structure("weapon_shop", FossilsLegacyBiomeTags.HAS_WEAPON_SHOP, "surface_structures"));
 		features.accept(new DamageType("javelin", 0.1F, "javelin", "when_caused_by_living_non_player"));
-		features.accept(new DamageType("dinosaur_starve", 0.0F, "dinosaur_starve", "when_caused_by_living_non_player"));
+		features.accept(new DamageType("animal_starve", 0.0F, "animal_starve", "when_caused_by_living_non_player"));
 		features.accept(new DamageType("dilophosaurus_envenomation", 0.1F, "dilophosaurus_envenomation", "when_caused_by_living_non_player"));
 	}
 

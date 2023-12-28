@@ -3,69 +3,46 @@ package willatendo.fossilslegacy.server.recipe.serialiser;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.ShapedRecipe;
-import net.minecraftforge.registries.ForgeRegistries;
 import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
+import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe.AnalyzationOutputs;
 
 public class AnalyzationRecipeSerialiser implements RecipeSerializer<AnalyzationRecipe> {
-	@Override
-	public AnalyzationRecipe fromJson(ResourceLocation id, JsonObject jsonObject) {
-		JsonElement jsonelement = (JsonElement) (GsonHelper.isArrayNode(jsonObject, "ingredient") ? GsonHelper.getAsJsonArray(jsonObject, "ingredient") : GsonHelper.getAsJsonObject(jsonObject, "ingredient"));
-		Ingredient ingredient = Ingredient.fromJson(jsonelement);
-		List<ItemStack> results = new ArrayList<>();
-		List<Integer> weights = new ArrayList<>();
+	private static final Codec<AnalyzationOutputs> RESULTS_CODEC = RecordCodecBuilder.create(instance -> instance.group(BuiltInRegistries.ITEM.byNameCodec().xmap(ItemStack::new, ItemStack::getItem).fieldOf("result").forGetter(analyzationRecipe -> analyzationRecipe.result), Codec.INT.fieldOf("weight").orElse(100).forGetter(analyzationRecipe -> analyzationRecipe.weight)).apply(instance, AnalyzationOutputs::new));
 
-		JsonArray resultsArray = jsonObject.get("results").getAsJsonArray();
-		for (int i = 0; i < resultsArray.size(); i++) {
-			JsonObject objects = resultsArray.get(i).getAsJsonObject();
-			if (objects.get("result").isJsonObject()) {
-				results.add(ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(jsonObject, "result")));
-			} else {
-				String resultName = GsonHelper.getAsString(objects, "result");
-				ResourceLocation resultId = new ResourceLocation(resultName);
-				results.add(new ItemStack(ForgeRegistries.ITEMS.getValue(resultId)));
-			}
-
-			weights.add((int) objects.get("weight").getAsFloat());
-		}
-
-		int time = GsonHelper.getAsInt(jsonObject, "time", 100);
-		return new AnalyzationRecipe(id, ingredient, results, weights, time);
-	}
+	public static final Codec<AnalyzationRecipe> CODEC = RecordCodecBuilder.create(instance -> instance.group(Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(analyzationRecipe -> analyzationRecipe.ingredient), Codec.list(RESULTS_CODEC).fieldOf("results").forGetter(analyzationRecipe -> analyzationRecipe.results), Codec.INT.fieldOf("time").orElse(100).forGetter(analyzationRecipe -> analyzationRecipe.time)).apply(instance, AnalyzationRecipe::new));
 
 	@Override
-	public AnalyzationRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf friendlyByteBuf) {
+	public AnalyzationRecipe fromNetwork(FriendlyByteBuf friendlyByteBuf) {
 		Ingredient ingredient = Ingredient.fromNetwork(friendlyByteBuf);
-		List<ItemStack> results = new ArrayList<>();
-		List<Integer> weights = new ArrayList<>();
+		List<AnalyzationOutputs> analyzationOutputs = new ArrayList<>();
 		for (int i = 0; i < friendlyByteBuf.readVarInt(); i++) {
-			results.add(friendlyByteBuf.readItem());
-			weights.add(friendlyByteBuf.readVarInt());
+			analyzationOutputs.add(new AnalyzationOutputs(friendlyByteBuf.readItem(), friendlyByteBuf.readVarInt()));
 		}
 		int time = friendlyByteBuf.readVarInt();
-		return new AnalyzationRecipe(id, ingredient, results, weights, time);
+		return new AnalyzationRecipe(ingredient, analyzationOutputs, time);
 	}
 
 	@Override
 	public void toNetwork(FriendlyByteBuf friendlyByteBuf, AnalyzationRecipe archaeologyRecipe) {
 		archaeologyRecipe.ingredient.toNetwork(friendlyByteBuf);
-		friendlyByteBuf.writeVarInt(archaeologyRecipe.results.size());
-		for (ItemStack itemStack : archaeologyRecipe.results) {
-			friendlyByteBuf.writeItem(itemStack);
-		}
-		for (int weight : archaeologyRecipe.weights) {
-			friendlyByteBuf.writeVarInt(weight);
+		friendlyByteBuf.writeVarInt(archaeologyRecipe.getResults().size());
+		for (AnalyzationOutputs analyzationOuputs : archaeologyRecipe.getResults()) {
+			friendlyByteBuf.writeItem(analyzationOuputs.getResult());
+			friendlyByteBuf.writeInt(analyzationOuputs.getWeight());
 		}
 		friendlyByteBuf.writeVarInt(archaeologyRecipe.time);
+	}
+
+	@Override
+	public Codec<AnalyzationRecipe> codec() {
+		return CODEC;
 	}
 }
