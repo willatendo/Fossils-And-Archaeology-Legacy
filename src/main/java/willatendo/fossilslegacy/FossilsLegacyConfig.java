@@ -1,34 +1,35 @@
 package willatendo.fossilslegacy;
 
 public class FossilsLegacyConfig {
-	private static final boolean animalsStarve = true;
-	private static final boolean animalsBreakBlocks = true;
-	private static final boolean animalsGrow = true;
-	private static final boolean academiesGenerate = true;
-	private static final boolean weaponShopsGenerate = true;
-	private static final boolean shipwrecksGenerate = true;
-	private static final boolean anuSpawns = true;
+	private static boolean animalsStarve = true;
+	private static boolean animalsBreakBlocks = true;
+	private static boolean animalsGrow = true;
+	private static boolean academiesGenerate = true;
+	private static boolean weaponShopsGenerate = true;
+	private static boolean shipwrecksGenerate = true;
+	private static boolean anuSpawns = true;
 //	public static final SimpleConfig SIMPLE_CONFIG = new SimpleConfig("fossils_legacy");
 
 //	public static void init() {
+//		SIMPLE_CONFIG.saveBooleanValue("animalsstarve", true);
+//		SIMPLE_CONFIG.saveBooleanValue("animalsbreakblocks", true);
+//		SIMPLE_CONFIG.saveBooleanValue("animalsgrow", true);
+//		SIMPLE_CONFIG.saveBooleanValue("academiesgenerate", true);
+//		SIMPLE_CONFIG.saveBooleanValue("weaponshopsgenerate", true);
+//		SIMPLE_CONFIG.saveBooleanValue("shipwrecksgenerate", true);
+//		SIMPLE_CONFIG.saveBooleanValue("anuspawns", true);
+//
+//		SIMPLE_CONFIG.loadConfig();
 //	}
 //
 //	static {
-//		SIMPLE_CONFIG.saveBooleanValue("animals_starve", true);
-//		SIMPLE_CONFIG.saveBooleanValue("animals_break_blocks", true);
-//		SIMPLE_CONFIG.saveBooleanValue("animals_grow", true);
-//		SIMPLE_CONFIG.saveBooleanValue("academies_generate", true);
-//		SIMPLE_CONFIG.saveBooleanValue("weapon_shops_generate", true);
-//		SIMPLE_CONFIG.saveBooleanValue("shipwrecks_generate", true);
-//		SIMPLE_CONFIG.saveBooleanValue("anu_spawns", true);
-//
-//		animalsStarve = SIMPLE_CONFIG.getBooleanValue("animals_starve");
-//		animalsBreakBlocks = SIMPLE_CONFIG.getBooleanValue("animals_break_blocks");
-//		animalsGrow = SIMPLE_CONFIG.getBooleanValue("animals_grow");
-//		academiesGenerate = SIMPLE_CONFIG.getBooleanValue("academies_generate");
-//		weaponShopsGenerate = SIMPLE_CONFIG.getBooleanValue("weapon_shops_generate");
-//		shipwrecksGenerate = SIMPLE_CONFIG.getBooleanValue("shipwrecks_generate");
-//		anuSpawns = SIMPLE_CONFIG.getBooleanValue("anu_spawns");
+//		animalsStarve = SIMPLE_CONFIG.getBooleanValue("animalsstarve");
+//		animalsBreakBlocks = SIMPLE_CONFIG.getBooleanValue("animalsbreakblocks");
+//		animalsGrow = SIMPLE_CONFIG.getBooleanValue("animalsgrow");
+//		academiesGenerate = SIMPLE_CONFIG.getBooleanValue("academiesgenerate");
+//		weaponShopsGenerate = SIMPLE_CONFIG.getBooleanValue("weaponshopsgenerate");
+//		shipwrecksGenerate = SIMPLE_CONFIG.getBooleanValue("shipwrecksgenerate");
+//		anuSpawns = SIMPLE_CONFIG.getBooleanValue("anuspawns");
 //	}
 
 	public static boolean willAnimalsStarve() {

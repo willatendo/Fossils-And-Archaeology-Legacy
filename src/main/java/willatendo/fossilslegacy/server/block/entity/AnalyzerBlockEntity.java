@@ -125,7 +125,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 			--analyzerBlockEntity.onTime;
 		}
 
-		for (int inputSlots = 8; inputSlots >= 0; inputSlots--) {
+		for (int inputSlots = 0; inputSlots < 9; inputSlots++) {
 			boolean hasInput = !analyzerBlockEntity.itemStacks.get(inputSlots).isEmpty();
 			if (analyzerBlockEntity.isOn() || hasInput) {
 				RecipeHolder<AnalyzationRecipe> recipe;
@@ -148,7 +148,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 							}
 
 							if (analyzerBlockEntity.isOn()) {
-								++analyzerBlockEntity.analyzationProgress;
+								analyzerBlockEntity.analyzationProgress++;
 								if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
 									analyzerBlockEntity.analyzationProgress = 0;
 									analyzerBlockEntity.analyzationTotalTime = getTotalAnalyzationTime(level, analyzerBlockEntity);
@@ -163,6 +163,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 						} else {
 							if (outputSlots == 12) {
 								analyzerBlockEntity.analyzationProgress = 0;
+								break;
 							} else {
 								continue;
 							}

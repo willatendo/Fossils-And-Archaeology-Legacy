@@ -22,24 +22,24 @@ public class AnalyzerMenu extends AbstractContainerMenu {
 		this.containerLevelAccess = ContainerLevelAccess.create(analyzerBlockEntity.getLevel(), analyzerBlockEntity.getBlockPos());
 		this.analyzerBlockEntity = analyzerBlockEntity;
 
-		for (int row = 0; row < 3; ++row) {
-			for (int column = 0; column < 3; ++column) {
+		for (int row = 0; row < 3; row++) {
+			for (int column = 0; column < 3; column++) {
 				this.addSlot(new Slot(analyzerBlockEntity, column + row * 3, 8 + column * 18, 18 + row * 18));
 			}
 		}
-		
+
 		this.addSlot(new ResultSlot(inventory.player, analyzerBlockEntity, 9, 102, 22));
-		for (int column = 0; column < 3; ++column) {
+		for (int column = 0; column < 3; column++) {
 			this.addSlot(new ResultSlot(inventory.player, analyzerBlockEntity, column + 10, 98 + column * 18, 54));
 		}
 
-		for (int row = 0; row < 3; ++row) {
-			for (int column = 0; column < 9; ++column) {
+		for (int row = 0; row < 3; row++) {
+			for (int column = 0; column < 9; column++) {
 				this.addSlot(new Slot(inventory, column + row * 9 + 9, 8 + column * 18, 84 + row * 18));
 			}
 		}
 
-		for (int column = 0; column < 9; ++column) {
+		for (int column = 0; column < 9; column++) {
 			this.addSlot(new Slot(inventory, column, 8 + column * 18, 142));
 		}
 
