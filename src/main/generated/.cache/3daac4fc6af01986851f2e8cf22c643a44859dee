@@ -1,4 +1,4 @@
-// 1.20.4	2023-12-27T21:26:48.0529345	Fossils and Archaeology Legacy/Block States: fossilslegacy
+// 1.20.4	2023-12-27T22:11:39.7449726	Fossils and Archaeology Legacy/Block States: fossilslegacy
 c0ce3d8427f3386158621c87e10cdb64aed3c226 assets\fossilslegacy\models\block\cultivator_active.json
 53947a004de390af5396743144020fd7c5c2e55e assets\fossilslegacy\models\block\drum_follow.json
 25f9ed2a080c76e18f41133a4d928b231609850b assets\fossilslegacy\models\block\fern_lower_1.json
@@ -34,7 +34,7 @@ a73052dcea47f18b6e61b56e81c52be4dd7052ac assets\fossilslegacy\models\block\skull
 b59ad4cc1ed93111f94e287ed1081210a72bb37f assets\fossilslegacy\models\block\drum_stay.json
 09aec282ddb117f24204eb0a6a761774cf883069 assets\fossilslegacy\models\block\fossil_ore.json
 e82137f12939945936135821aa7275429a920ece assets\fossilslegacy\models\block\fern_upper_1.json
-7ba0af1012a18d9b8c1aae15aa44780c11151db0 assets\fossilslegacy\models\block\cultivator.json
 55ca09b6ab47e782e9081ebd6f88df4c0a229f49 assets\fossilslegacy\models\block\archaeology_workbench_active.json
+7ba0af1012a18d9b8c1aae15aa44780c11151db0 assets\fossilslegacy\models\block\cultivator.json
 e82137f12939945936135821aa7275429a920ece assets\fossilslegacy\models\block\fern_upper_4.json
 442e4adbdbef24a61fcaaf93811a9a7afe14e1b8 assets\fossilslegacy\models\block\iced_stone.json

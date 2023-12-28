@@ -154,7 +154,6 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
 
 		this.spawnEggItem(FossilsLegacyItems.BRACHIOSAURUS_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.DILOPHOSAURUS_SPAWN_EGG.get());
-		this.spawnEggItem(FossilsLegacyItems.MOSASAURUS_DNA.get());
 		this.spawnEggItem(FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.MOSASAURUS_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.NAUTILUS_SPAWN_EGG.get());

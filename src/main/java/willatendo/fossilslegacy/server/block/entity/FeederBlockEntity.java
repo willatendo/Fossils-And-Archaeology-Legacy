@@ -4,10 +4,13 @@ import java.util.Map;
 
 import com.google.common.collect.Maps;
 
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -27,7 +30,7 @@ import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.menu.FeederMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class FeederBlockEntity extends BaseContainerBlockEntity {
+public class FeederBlockEntity extends BaseContainerBlockEntity implements ExtendedScreenHandlerFactory {
 	private NonNullList<ItemStack> itemStacks = NonNullList.withSize(2, ItemStack.EMPTY);
 	public int meatLevel = 0;
 	public final int maxMeatLevel = 10000;
@@ -283,5 +286,10 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
 	@Override
 	protected AbstractContainerMenu createMenu(int windowId, Inventory inventory) {
 		return new FeederMenu(windowId, inventory, this);
+	}
+
+	@Override
+	public void writeScreenOpeningData(ServerPlayer serverPlayer, FriendlyByteBuf friendlyByteBuf) {
+		friendlyByteBuf.writeBlockPos(this.getBlockPos());
 	}
 }

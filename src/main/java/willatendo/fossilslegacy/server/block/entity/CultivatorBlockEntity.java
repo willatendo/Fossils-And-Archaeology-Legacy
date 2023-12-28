@@ -6,13 +6,16 @@ import java.util.Map;
 import com.google.common.collect.Maps;
 
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
@@ -24,6 +27,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.RecipeCraftingHolder;
 import net.minecraft.world.inventory.StackedContentsCompatible;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Recipe;
@@ -41,7 +45,7 @@ import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
 import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class CultivatorBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, RecipeCraftingHolder, StackedContentsCompatible {
+public class CultivatorBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, RecipeCraftingHolder, StackedContentsCompatible, ExtendedScreenHandlerFactory {
 	private static final int[] SLOTS_FOR_UP = new int[] { 0 };
 	private static final int[] SLOTS_FOR_DOWN = new int[] { 2 };
 	private static final int[] SLOTS_FOR_SIDES = new int[] { 1 };
@@ -93,46 +97,46 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
 	private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
 	private final CachedCheck<Container, CultivationRecipe> recipeCheck = RecipeManager.createCheck(FossilsLegacyRecipeTypes.CULTIVATION.get());
 
-	public static Map<ItemStack, Integer> getOnTimeMap() {
-		Map<ItemStack, Integer> map = Maps.newLinkedHashMap();
-		map.put(new ItemStack(FossilsLegacyItems.FOSSIL.get()), 300);
-		map.put(new ItemStack(FossilsLegacyItems.RAW_CHICKEN_SOUP_BUCKET.get()), 1000);
-		map.put(new ItemStack(FossilsLegacyItems.AXOLOTL_EGGS.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.BRACHIOSAURUS_EGG.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.DILOPHOSAURUS_EGG.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.FROG_EGGS.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.INCUBATED_CHICKEN_EGG.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.INCUBATED_PARROT_EGG.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.MOSASAURUS_EGG.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.NAUTILUS_EGGS.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.PLESIOSAURUS_EGG.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.PTEROSAURUS_EGG.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.STEGOSAURUS_EGG.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.TRICERATOPS_EGG.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.TYRANNOSAURUS_EGG.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.VELOCIRAPTOR_EGG.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.RAW_BRACHIOSAURUS_MEAT.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.RAW_DILOPHOSAURUS_MEAT.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.RAW_MAMMOTH_MEAT.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.RAW_MOSASAURUS_MEAT.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.RAW_PLESIOSAURUS_MEAT.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.RAW_PTEROSAURUS_MEAT.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.RAW_SMILODON_MEAT.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.RAW_STEGOSAURUS_MEAT.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.RAW_TRICERATOPS_MEAT.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.RAW_TYRANNOSAURUS_MEAT.get()), 12000);
-		map.put(new ItemStack(FossilsLegacyItems.RAW_VELOCIRAPTOR_MEAT.get()), 12000);
-		map.put(new ItemStack(Items.PORKCHOP), 3000);
-		map.put(new ItemStack(Items.COD), 3000);
-		map.put(new ItemStack(Items.SALMON), 3000);
-		map.put(new ItemStack(Items.TROPICAL_FISH), 3000);
-		map.put(new ItemStack(Items.BEEF), 4000);
-		map.put(new ItemStack(Items.MUTTON), 3000);
-		map.put(new ItemStack(Items.RABBIT), 3000);
-		map.put(new ItemStack(Items.CHICKEN), 1500);
-		map.put(new ItemStack(Items.EGG), 1000);
-		map.put(new ItemStack(Items.SLIME_BALL), 800);
-		map.put(new ItemStack(Items.MILK_BUCKET), 6000);
+	public static Map<Item, Integer> getOnTimeMap() {
+		Map<Item, Integer> map = Maps.newLinkedHashMap();
+		map.put(FossilsLegacyItems.FOSSIL.get(), 300);
+		map.put(FossilsLegacyItems.RAW_CHICKEN_SOUP_BUCKET.get(), 1000);
+		map.put(FossilsLegacyItems.AXOLOTL_EGGS.get(), 12000);
+		map.put(FossilsLegacyItems.BRACHIOSAURUS_EGG.get(), 12000);
+		map.put(FossilsLegacyItems.DILOPHOSAURUS_EGG.get(), 12000);
+		map.put(FossilsLegacyItems.FROG_EGGS.get(), 12000);
+		map.put(FossilsLegacyItems.INCUBATED_CHICKEN_EGG.get(), 12000);
+		map.put(FossilsLegacyItems.INCUBATED_PARROT_EGG.get(), 12000);
+		map.put(FossilsLegacyItems.MOSASAURUS_EGG.get(), 12000);
+		map.put(FossilsLegacyItems.NAUTILUS_EGGS.get(), 12000);
+		map.put(FossilsLegacyItems.PLESIOSAURUS_EGG.get(), 12000);
+		map.put(FossilsLegacyItems.PTEROSAURUS_EGG.get(), 12000);
+		map.put(FossilsLegacyItems.STEGOSAURUS_EGG.get(), 12000);
+		map.put(FossilsLegacyItems.TRICERATOPS_EGG.get(), 12000);
+		map.put(FossilsLegacyItems.TYRANNOSAURUS_EGG.get(), 12000);
+		map.put(FossilsLegacyItems.VELOCIRAPTOR_EGG.get(), 12000);
+		map.put(FossilsLegacyItems.RAW_BRACHIOSAURUS_MEAT.get(), 12000);
+		map.put(FossilsLegacyItems.RAW_DILOPHOSAURUS_MEAT.get(), 12000);
+		map.put(FossilsLegacyItems.RAW_MAMMOTH_MEAT.get(), 12000);
+		map.put(FossilsLegacyItems.RAW_MOSASAURUS_MEAT.get(), 12000);
+		map.put(FossilsLegacyItems.RAW_PLESIOSAURUS_MEAT.get(), 12000);
+		map.put(FossilsLegacyItems.RAW_PTEROSAURUS_MEAT.get(), 12000);
+		map.put(FossilsLegacyItems.RAW_SMILODON_MEAT.get(), 12000);
+		map.put(FossilsLegacyItems.RAW_STEGOSAURUS_MEAT.get(), 12000);
+		map.put(FossilsLegacyItems.RAW_TRICERATOPS_MEAT.get(), 12000);
+		map.put(FossilsLegacyItems.RAW_TYRANNOSAURUS_MEAT.get(), 12000);
+		map.put(FossilsLegacyItems.RAW_VELOCIRAPTOR_MEAT.get(), 12000);
+		map.put(Items.PORKCHOP, 3000);
+		map.put(Items.COD, 3000);
+		map.put(Items.SALMON, 3000);
+		map.put(Items.TROPICAL_FISH, 3000);
+		map.put(Items.BEEF, 4000);
+		map.put(Items.MUTTON, 3000);
+		map.put(Items.RABBIT, 3000);
+		map.put(Items.CHICKEN, 1500);
+		map.put(Items.EGG, 1000);
+		map.put(Items.SLIME_BALL, 800);
+		map.put(Items.MILK_BUCKET, 6000);
 		return map;
 	}
 
@@ -287,7 +291,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
 		if (itemStack.isEmpty()) {
 			return 0;
 		} else {
-			return this.getOnTimeMap().getOrDefault(itemStack, 0);
+			return this.getOnTimeMap().getOrDefault(itemStack.getItem(), 0);
 		}
 	}
 
@@ -422,5 +426,10 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
 	@Override
 	protected AbstractContainerMenu createMenu(int windowId, Inventory inventory) {
 		return new CultivatorMenu(windowId, inventory, this);
+	}
+
+	@Override
+	public void writeScreenOpeningData(ServerPlayer serverPlayer, FriendlyByteBuf friendlyByteBuf) {
+		friendlyByteBuf.writeBlockPos(this.getBlockPos());
 	}
 }

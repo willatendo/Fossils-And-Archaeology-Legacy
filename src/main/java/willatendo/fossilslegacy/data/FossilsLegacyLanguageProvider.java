@@ -253,6 +253,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.SCARAB_GEM_PICKAXE.get());
 		this.add(FossilsLegacyItems.SCARAB_GEM_AXE.get());
 		this.add(FossilsLegacyItems.SCARAB_GEM_HOE.get());
+		this.add(FossilsLegacyItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), "Smithing Template");
 		this.add(FossilsLegacyItems.WOODEN_JAVELIN.get());
 		this.add(FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get(), "Wooden Javelin");
 		this.add(FossilsLegacyItems.STONE_JAVELIN.get());

@@ -3,12 +3,15 @@ package willatendo.fossilslegacy.server.block.entity;
 import java.util.List;
 
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
@@ -33,7 +36,7 @@ import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
 import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, RecipeCraftingHolder, StackedContentsCompatible {
+public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, RecipeCraftingHolder, StackedContentsCompatible, ExtendedScreenHandlerFactory {
 	private static final int[] SLOTS_FOR_UP = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
 	private static final int[] SLOTS_FOR_DOWN = new int[] { 9, 10, 11, 12 };
 	private static final int[] SLOTS_FOR_SIDES = SLOTS_FOR_UP;
@@ -344,5 +347,10 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 	@Override
 	protected AbstractContainerMenu createMenu(int windowId, Inventory inventory) {
 		return new AnalyzerMenu(windowId, inventory, this);
+	}
+
+	@Override
+	public void writeScreenOpeningData(ServerPlayer serverPlayer, FriendlyByteBuf friendlyByteBuf) {
+		friendlyByteBuf.writeBlockPos(this.getBlockPos());
 	}
 }

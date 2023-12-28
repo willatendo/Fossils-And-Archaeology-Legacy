@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.server.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
@@ -111,8 +112,8 @@ public class CultivatorBlock extends Block implements EntityBlock {
 			return InteractionResult.SUCCESS;
 		} else {
 			BlockEntity blockEntity = level.getBlockEntity(blockPos);
-			if (blockEntity instanceof CultivatorBlockEntity cultivatorBlockEntity) {
-				player.openMenu(cultivatorBlockEntity);
+			if (blockEntity instanceof CultivatorBlockEntity cultivatorBlockEntity && player instanceof ServerPlayer serverPlayer) {
+				serverPlayer.openMenu(cultivatorBlockEntity);
 			}
 			return InteractionResult.CONSUME;
 		}
