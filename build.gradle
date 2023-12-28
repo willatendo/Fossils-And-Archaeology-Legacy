@@ -19,7 +19,7 @@ repositories {
 
 loom {
 	mods {
-		"fossilslegacy" {
+		project.mod_id {
 			sourceSet sourceSets.main
 		}
 	}
