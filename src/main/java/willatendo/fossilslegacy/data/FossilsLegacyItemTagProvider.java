@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.Block;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlockTags;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
-import willatendo.simplelibrary.data.SimpleItemTagsProvider;
+import willatendo.simplelibrary.data.tags.SimpleItemTagsProvider;
 import willatendo.simplelibrary.data.util.ExistingFileHelper;
 
 public class FossilsLegacyItemTagProvider extends SimpleItemTagsProvider {

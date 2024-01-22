@@ -8,8 +8,8 @@ import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.simplelibrary.data.SimpleLanguageProvider;
 
 public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
-	public FossilsLegacyLanguageProvider(FabricDataOutput fabricDataOutput, String modId, String local) {
-		super(fabricDataOutput, modId, local);
+	public FossilsLegacyLanguageProvider(FabricDataOutput fabricDataOutput, String local) {
+		super(fabricDataOutput, local);
 	}
 
 	@Override

@@ -40,12 +40,12 @@ public class AcademyPieces {
 		private final boolean isStoneBricks;
 
 		public AcademyStructurePiece(StructureTemplateManager struxtureTemplateManager, ResourceLocation structureLocation, boolean isStoneBricks, BlockPos blockPos, Rotation rotation) {
-			super(FossilLegacysStructurePeices.ACADEMY.get(), 0, struxtureTemplateManager, structureLocation, structureLocation.toString(), makeSettings(rotation, structureLocation), blockPos);
+			super(FossilsLegacyStructurePeices.ACADEMY.get(), 0, struxtureTemplateManager, structureLocation, structureLocation.toString(), makeSettings(rotation, structureLocation), blockPos);
 			this.isStoneBricks = isStoneBricks;
 		}
 
 		public AcademyStructurePiece(StructureTemplateManager struxtureTemplateManager, CompoundTag compoundTag) {
-			super(FossilLegacysStructurePeices.ACADEMY.get(), compoundTag, struxtureTemplateManager, (structureLocation) -> {
+			super(FossilsLegacyStructurePeices.ACADEMY.get(), compoundTag, struxtureTemplateManager, (structureLocation) -> {
 				return makeSettings(Rotation.valueOf(compoundTag.getString("Rot")), structureLocation);
 			});
 			this.isStoneBricks = compoundTag.getBoolean("IsStoneBricks");

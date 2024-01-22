@@ -6,7 +6,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.world.level.biome.Biomes;
 import willatendo.fossilslegacy.server.biomes.FossilsLegacyBiomeTags;
-import willatendo.simplelibrary.data.SimpleBiomeTagsProvider;
+import willatendo.simplelibrary.data.tags.SimpleBiomeTagsProvider;
 import willatendo.simplelibrary.data.util.ExistingFileHelper;
 
 public class FossilsLegacyBiomeTagProvider extends SimpleBiomeTagsProvider {

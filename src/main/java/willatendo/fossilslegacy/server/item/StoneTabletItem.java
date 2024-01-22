@@ -24,7 +24,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import willatendo.fossilslegacy.server.entity.StoneTablet;
 import willatendo.fossilslegacy.server.entity.StoneTabletTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.server.util.FillCreativeTab;
+import willatendo.simplelibrary.server.creativemodetab.FillCreativeTab;
 
 public class StoneTabletItem extends Item implements FillCreativeTab {
 	private static final Component TOOLTIP_RANDOM_VARIANT = FossilsLegacyUtils.translation("stone_tablet", "random").withStyle(ChatFormatting.GRAY);

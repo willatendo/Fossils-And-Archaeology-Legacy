@@ -37,6 +37,6 @@ public class AcademyStructure extends Structure {
 
 	@Override
 	public StructureType<?> type() {
-		return FossilLegacyStructureTypes.ACADEMY.get();
+		return FossilsLegacyStructureTypes.ACADEMY.get();
 	}
 }

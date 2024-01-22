@@ -37,6 +37,6 @@ public class WeaponShopStructure extends Structure {
 
 	@Override
 	public StructureType<?> type() {
-		return FossilLegacyStructureTypes.WEAPON_SHOP.get();
+		return FossilsLegacyStructureTypes.WEAPON_SHOP.get();
 	}
 }

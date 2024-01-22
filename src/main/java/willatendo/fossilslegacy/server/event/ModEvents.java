@@ -4,6 +4,8 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.animal.Cat;
 import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.entity.animal.Dolphin;
@@ -21,9 +23,12 @@ import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.animal.horse.Mule;
 import net.minecraft.world.entity.monster.ZombifiedPiglin;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
 import willatendo.fossilslegacy.server.biomes.FossilsLegacyPlacedFeatures;
+import willatendo.fossilslegacy.server.entity.AncientLightningBolt;
 import willatendo.fossilslegacy.server.entity.Brachiosaurus;
 import willatendo.fossilslegacy.server.entity.Dilophosaurus;
 import willatendo.fossilslegacy.server.entity.DrownedPirate;
@@ -39,9 +44,33 @@ import willatendo.fossilslegacy.server.entity.Stegosaurus;
 import willatendo.fossilslegacy.server.entity.Triceratops;
 import willatendo.fossilslegacy.server.entity.Tyrannosaurus;
 import willatendo.fossilslegacy.server.entity.Velociraptor;
+import willatendo.fossilslegacy.server.entity.ZombifiedPigman;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.simplelibrary.server.event.EntityStruckByLightningCallback;
+import willatendo.simplelibrary.server.util.SimpleUtils;
 
-public class ModServerEvents {
+public class ModEvents {
+	public static void lightning() {
+		EntityStruckByLightningCallback.EVENT.register((entity, lightningBolt) -> {
+			if (lightningBolt instanceof AncientLightningBolt ancientLightningBolt) {
+				SimpleUtils.LOGGER.warn("Is Ancient Lightning Bolt");
+				if (entity instanceof Pig pig) {
+					SimpleUtils.LOGGER.warn("Is Pig");
+					Level level = ancientLightningBolt.level();
+					ZombifiedPigman zombifiedPigman = FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get().create(level);
+					zombifiedPigman.tame(((Player) ancientLightningBolt.getOwner()));
+					zombifiedPigman.setItemInHand(InteractionHand.MAIN_HAND, FossilsLegacyItems.ANCIENT_SWORD.get().getDefaultInstance());
+					zombifiedPigman.setItemSlot(EquipmentSlot.HEAD, FossilsLegacyItems.ANCIENT_HELMET.get().getDefaultInstance());
+					zombifiedPigman.moveTo(pig.getX(), pig.getY(), pig.getZ());
+					zombifiedPigman.setHealth(zombifiedPigman.getMaxHealth());
+					level.addFreshEntity(zombifiedPigman);
+					pig.discard();
+				}
+			}
+			SimpleUtils.LOGGER.warn("Didn't work");
+		});
+	}
+
 	public static void entityAttributes() {
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.BRACHIOSAURUS.get(), Brachiosaurus.brachiosaurusAttributes());
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.DILOPHOSAURUS.get(), Dilophosaurus.dilophosaurusAttributes());

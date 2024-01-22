@@ -8,7 +8,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlockTags;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
-import willatendo.simplelibrary.data.SimpleBlockTagsProvider;
+import willatendo.simplelibrary.data.tags.SimpleBlockTagsProvider;
 import willatendo.simplelibrary.data.util.ExistingFileHelper;
 
 public class FossilsLegacyBlockTagProvider extends SimpleBlockTagsProvider {

@@ -6,7 +6,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -25,7 +24,6 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.item.FossilsLegacyTiers;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class ThrownJavelin extends AbstractArrow {
 	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(ThrownJavelin.class, EntityDataSerializers.INT);
@@ -103,7 +101,7 @@ public class ThrownJavelin extends AbstractArrow {
 	protected void onHitEntity(EntityHitResult entityHitResult) {
 		Entity entity = entityHitResult.getEntity();
 		Entity owner = this.getOwner();
-		DamageSource damageSource = new DamageSource(this.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, FossilsLegacyUtils.resource("javelin"))));
+		DamageSource damageSource = new DamageSource(this.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(FossilsLegacyDamageTypes.JAVELIN));
 		SoundEvent soundevent = SoundEvents.ARROW_HIT;
 		if (entity.hurt(damageSource, this.damage)) {
 			if (entity.getType() == EntityType.ENDERMAN) {

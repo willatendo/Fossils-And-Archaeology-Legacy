@@ -9,7 +9,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.data.SimpleItemModelProvider;
 import willatendo.simplelibrary.data.model.ModelFile;
 import willatendo.simplelibrary.data.util.ExistingFileHelper;
-import willatendo.simplelibrary.server.registry.RegistryHolder;
+import willatendo.simplelibrary.server.registry.SimpleHolder;
 
 public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
 	public FossilsLegacyItemModelProvider(FabricDataOutput fabricDataOutput, String modId, ExistingFileHelper existingFileHelper) {
@@ -164,7 +164,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
 		this.spawnEggItem(FossilsLegacyItems.TYRANNOSAURUS_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.VELOCIRAPTOR_SPAWN_EGG.get());
 
-		for (RegistryHolder<? extends Block> blocks : FossilsLegacyBlocks.BLOCKS.getEntries()) {
+		for (SimpleHolder<? extends Block> blocks : FossilsLegacyBlocks.BLOCKS.getEntries()) {
 			ResourceLocation blockId = blocks.getId();
 			if (blocks.get() == FossilsLegacyBlocks.JURASSIC_FERN.get()) {
 				this.handheldItem(blockId, FossilsLegacyUtils.resource("block/fern_lower_3"));

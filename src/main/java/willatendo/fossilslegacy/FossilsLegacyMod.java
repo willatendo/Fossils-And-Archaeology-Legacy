@@ -7,13 +7,13 @@ import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
-import willatendo.fossilslegacy.server.event.ModServerEvents;
+import willatendo.fossilslegacy.server.event.ModEvents;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenus;
 import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
 import willatendo.fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSerialisers;
-import willatendo.fossilslegacy.server.structure.FossilLegacyStructureTypes;
-import willatendo.fossilslegacy.server.structure.FossilLegacysStructurePeices;
+import willatendo.fossilslegacy.server.structure.FossilsLegacyStructurePeices;
+import willatendo.fossilslegacy.server.structure.FossilsLegacyStructureTypes;
 
 public class FossilsLegacyMod implements ModInitializer {
 	@Override
@@ -26,16 +26,17 @@ public class FossilsLegacyMod implements ModInitializer {
 		FossilsLegacyBlocks.init();
 		FossilsLegacyBlockEntities.init();
 		FossilsLegacyMenus.init();
-		FossilsLegacyItems.init();
 		FossilsLegacyEntities.init();
+		FossilsLegacyItems.init();
 		FossilsLegacyCreativeModeTabs.init();
-		FossilLegacysStructurePeices.init();
-		FossilLegacyStructureTypes.init();
+		FossilsLegacyStructurePeices.init();
+		FossilsLegacyStructureTypes.init();
 
 		FossilsLegacyCriteriaTriggers.init();
 
-		ModServerEvents.entityAttributes();
-		ModServerEvents.creativeModTabModification();
-		ModServerEvents.addToBiomes();
+		ModEvents.lightning();
+		ModEvents.entityAttributes();
+		ModEvents.creativeModTabModification();
+		ModEvents.addToBiomes();
 	}
 }

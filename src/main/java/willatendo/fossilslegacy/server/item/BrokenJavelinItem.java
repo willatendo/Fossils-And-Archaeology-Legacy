@@ -3,7 +3,7 @@ package willatendo.fossilslegacy.server.item;
 import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters;
 import net.minecraft.world.item.CreativeModeTab.Output;
 import net.minecraft.world.item.Tier;
-import willatendo.simplelibrary.server.util.FillCreativeTab;
+import willatendo.simplelibrary.server.creativemodetab.FillCreativeTab;
 
 public class BrokenJavelinItem extends JavelinItem implements FillCreativeTab {
 	public BrokenJavelinItem(Tier tier, Properties properties) {
@@ -11,6 +11,6 @@ public class BrokenJavelinItem extends JavelinItem implements FillCreativeTab {
 	}
 
 	@Override
-	public void fillCreativeTab(ItemDisplayParameters itemDisplayParameters, Output output) {		
+	public void fillCreativeTab(ItemDisplayParameters itemDisplayParameters, Output output) {
 	}
 }

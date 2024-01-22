@@ -6,7 +6,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.world.level.material.Fluids;
 import willatendo.fossilslegacy.server.fluid.FossilsLegacyFluidTags;
-import willatendo.simplelibrary.data.SimpleFluidTagsProvider;
+import willatendo.simplelibrary.data.tags.SimpleFluidTagsProvider;
 import willatendo.simplelibrary.data.util.ExistingFileHelper;
 
 public class FossilsLegacyFluidTagProvider extends SimpleFluidTagsProvider {

@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.server.block;
 import com.mojang.serialization.MapCodec;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
@@ -28,6 +29,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.server.block.SimplePlantable;
 
 public class JurassicFernBlock extends BushBlock implements BonemealableBlock {
 	public static final IntegerProperty GROWTH = IntegerProperty.create("growth", 0, 5);
@@ -205,6 +207,6 @@ public class JurassicFernBlock extends BushBlock implements BonemealableBlock {
 
 	@Override
 	protected MapCodec<? extends BushBlock> codec() {
-		return null;
+		return Block.simpleCodec(JurassicFernBlock::new);
 	}
 }

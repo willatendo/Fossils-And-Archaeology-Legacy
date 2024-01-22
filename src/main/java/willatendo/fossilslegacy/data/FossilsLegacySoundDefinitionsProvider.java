@@ -9,8 +9,8 @@ import willatendo.simplelibrary.data.sounds.SoundDefinition.Sound;
 import willatendo.simplelibrary.data.sounds.SoundDefinition.SoundType;
 
 public class FossilsLegacySoundDefinitionsProvider extends SimpleSoundDefinitionsProvider {
-	public FossilsLegacySoundDefinitionsProvider(FabricDataOutput fabricDataOutput, String modId) {
-		super(fabricDataOutput, modId);
+	public FossilsLegacySoundDefinitionsProvider(FabricDataOutput fabricDataOutput) {
+		super(fabricDataOutput);
 	}
 
 	@Override
@@ -49,5 +49,10 @@ public class FossilsLegacySoundDefinitionsProvider extends SimpleSoundDefinition
 
 		this.add(FossilsLegacySoundEvents.DRUM_HIT.get(), SoundDefinition.definition().subtitle(FossilsLegacyUtils.translation("sound", "drum.hit").getString()).with(Sound.sound(FossilsLegacyUtils.resource("drum_hit"), SoundType.SOUND)));
 		this.add(FossilsLegacySoundEvents.DRUM_TRIPLE_HIT.get(), SoundDefinition.definition().subtitle(FossilsLegacyUtils.translation("sound", "drum.triple_hit").getString()).with(Sound.sound(FossilsLegacyUtils.resource("drum_triple_hit"), SoundType.SOUND)));
+	}
+
+	@Override
+	public String getName() {
+		return "fossilslegacy: Sound Defs";
 	}
 }

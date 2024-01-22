@@ -18,12 +18,6 @@ repositories {
 }
 
 loom {
-	mods {
-		project.mod_id {
-			sourceSet sourceSets.main
-		}
-	}
-	
 	runs {
 		datagen {
 			inherit client

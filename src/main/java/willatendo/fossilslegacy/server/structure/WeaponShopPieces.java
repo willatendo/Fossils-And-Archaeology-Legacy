@@ -35,11 +35,11 @@ public class WeaponShopPieces {
 
 	public static class WeaponShopPiece extends TemplateStructurePiece {
 		public WeaponShopPiece(StructureTemplateManager struxtureTemplateManager, ResourceLocation structureLocation, BlockPos blockPos, Rotation rotation) {
-			super(FossilLegacysStructurePeices.WEAPON_SHOP.get(), 0, struxtureTemplateManager, structureLocation, structureLocation.toString(), makeSettings(rotation, structureLocation), blockPos);
+			super(FossilsLegacyStructurePeices.WEAPON_SHOP.get(), 0, struxtureTemplateManager, structureLocation, structureLocation.toString(), makeSettings(rotation, structureLocation), blockPos);
 		}
 
 		public WeaponShopPiece(StructureTemplateManager struxtureTemplateManager, CompoundTag compoundTag) {
-			super(FossilLegacysStructurePeices.WEAPON_SHOP.get(), compoundTag, struxtureTemplateManager, (structureLocation) -> {
+			super(FossilsLegacyStructurePeices.WEAPON_SHOP.get(), compoundTag, struxtureTemplateManager, (structureLocation) -> {
 				return makeSettings(Rotation.valueOf(compoundTag.getString("Rot")), structureLocation);
 			});
 		}
