@@ -1,0 +1,13 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "fossilslegacy:raw_pteranodon_meat"
+  },
+  "results": [
+    {
+      "result": "fossilslegacy:pteranodon_dna",
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

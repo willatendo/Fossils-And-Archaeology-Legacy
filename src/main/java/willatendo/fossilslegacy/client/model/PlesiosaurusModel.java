@@ -10,13 +10,22 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.util.Mth;
+import willatendo.fossilslegacy.server.entity.Plesiosaurus;
 
-public class PlesiosaurusModel extends EntityModel<Entity> {
+public class PlesiosaurusModel extends EntityModel<Plesiosaurus> {
 	private final ModelPart root;
+	private final ModelPart frontRightFlipper;
+	private final ModelPart frontLeftFlipper;
+	private final ModelPart backRightFlipper;
+	private final ModelPart backLeftFlipper;
 
 	public PlesiosaurusModel(ModelPart root) {
 		this.root = root;
+		this.frontRightFlipper = root.getChild("front_right_flipper");
+		this.frontLeftFlipper = root.getChild("front_left_flipper");
+		this.backRightFlipper = root.getChild("back_right_flipper");
+		this.backLeftFlipper = root.getChild("back_left_flipper");
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -41,14 +50,18 @@ public class PlesiosaurusModel extends EntityModel<Entity> {
 	}
 
 	@Override
-	public void setupAnim(Entity plesiosaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+	public void setupAnim(Plesiosaurus plesiosaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		this.frontRightFlipper.yRot = (float) (Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.785398163397448 * limbSwingAmount + -2.35619449019234);
+		this.backRightFlipper.yRot = (float) (Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.785398163397448 * limbSwingAmount + -2.0943951023932);
+		this.frontLeftFlipper.yRot = (float) (Mth.cos(limbSwing / (1.919107651F * 0.5F)) * -0.785398163397448 * limbSwingAmount + -0.785398163397448);
+		this.backLeftFlipper.yRot = (float) (Mth.cos(limbSwing / (1.919107651F * 0.5F)) * -0.785398163397448 * limbSwingAmount + -1.0471975511966);
 	}
 
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
 		this.root.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 	}
-	
+
 //	public boolean WaveTail(float TargetAngle, boolean ClockDirection, int step) {
 //		boolean result1, result2, result3 = false;
 //		float ActionTargetAngle = TargetAngle;
@@ -58,65 +71,65 @@ public class PlesiosaurusModel extends EntityModel<Entity> {
 //			return false;
 //		if (ClockDirection) {
 //			// Clockwise
-//			if (tail1.rotateAngleY < ActionTargetAngle)
-//				tail1.rotateAngleY += (ActionTargetAngle / step);
+//			if (tail1.yRot < ActionTargetAngle)
+//				tail1.yRot += (ActionTargetAngle / step);
 //			else
-//				tail1.rotateAngleY = ActionTargetAngle;
-//			result1 = (tail1.rotateAngleY >= ActionTargetAngle);
+//				tail1.yRot = ActionTargetAngle;
+//			result1 = (tail1.yRot >= ActionTargetAngle);
 //			ActionTargetAngle += TargetAngle;
 //			if (!result1) {
 //				tail2.rotationPointX = (float) ((tail2.rotationPointX - tail1.rotationPointX) * Math.cos(-(ActionTargetAngle / step)) - (tail2.rotationPointZ - tail1.rotationPointZ) * Math.sin(-(ActionTargetAngle / step)) + tail1.rotationPointX);
 //				tail2.rotationPointZ = (float) ((tail2.rotationPointX - tail1.rotationPointX) * Math.sin(-(ActionTargetAngle / step)) + (tail2.rotationPointZ - tail1.rotationPointZ) * Math.cos(-(ActionTargetAngle / step)) + tail1.rotationPointZ);
 //			}
-//			if (tail2.rotateAngleY < ActionTargetAngle)
-//				tail2.rotateAngleY += (ActionTargetAngle / step);
+//			if (tail2.yRot < ActionTargetAngle)
+//				tail2.yRot += (ActionTargetAngle / step);
 //			else
-//				tail2.rotateAngleY = ActionTargetAngle;
-//			result2 = (tail2.rotateAngleY >= ActionTargetAngle);
+//				tail2.yRot = ActionTargetAngle;
+//			result2 = (tail2.yRot >= ActionTargetAngle);
 //			ActionTargetAngle += TargetAngle;
 //			if (!result2) {
 //				tail3.rotationPointX = (float) ((tail3.rotationPointX - tail2.rotationPointX) * Math.cos(-(ActionTargetAngle / step)) - (tail3.rotationPointZ - tail2.rotationPointZ) * Math.sin(-(ActionTargetAngle / step)) + tail2.rotationPointX);
 //				tail3.rotationPointZ = (float) ((tail3.rotationPointX - tail2.rotationPointX) * Math.sin(-(ActionTargetAngle / step)) + (tail3.rotationPointZ - tail2.rotationPointZ) * Math.cos(-(ActionTargetAngle / step)) + tail2.rotationPointZ);
 //			}
-//			if (tail3.rotateAngleY < ActionTargetAngle)
-//				tail3.rotateAngleY += (ActionTargetAngle / step);
+//			if (tail3.yRot < ActionTargetAngle)
+//				tail3.yRot += (ActionTargetAngle / step);
 //			else
-//				tail3.rotateAngleY = ActionTargetAngle;
-//			result3 = (tail3.rotateAngleY >= ActionTargetAngle);
+//				tail3.yRot = ActionTargetAngle;
+//			result3 = (tail3.yRot >= ActionTargetAngle);
 //		} else {
 //			ActionTargetAngle = -ActionTargetAngle;
 //			// Anti-Clockwise
-//			if (tail1.rotateAngleY > ActionTargetAngle)
-//				tail1.rotateAngleY += (ActionTargetAngle / step);
+//			if (tail1.yRot > ActionTargetAngle)
+//				tail1.yRot += (ActionTargetAngle / step);
 //			else
-//				tail1.rotateAngleY = ActionTargetAngle;
-//			result1 = (tail1.rotateAngleY <= ActionTargetAngle);
+//				tail1.yRot = ActionTargetAngle;
+//			result1 = (tail1.yRot <= ActionTargetAngle);
 //			ActionTargetAngle -= TargetAngle;
 //			if (!result1) {
 //				tail2.rotationPointX = (float) ((tail2.rotationPointX - tail1.rotationPointX) * Math.cos(-(ActionTargetAngle / step)) - (tail2.rotationPointZ - tail1.rotationPointZ) * Math.sin(-(ActionTargetAngle / step)) + tail1.rotationPointX);
 //				tail2.rotationPointZ = (float) ((tail2.rotationPointX - tail1.rotationPointX) * Math.sin(-(ActionTargetAngle / step)) + (tail2.rotationPointZ - tail1.rotationPointZ) * Math.cos(-(ActionTargetAngle / step)) + tail1.rotationPointZ);
 //			}
-//			if (tail2.rotateAngleY > ActionTargetAngle)
-//				tail2.rotateAngleY += (ActionTargetAngle / step);
+//			if (tail2.yRot > ActionTargetAngle)
+//				tail2.yRot += (ActionTargetAngle / step);
 //			else
-//				tail2.rotateAngleY = ActionTargetAngle;
-//			result2 = (tail2.rotateAngleY <= ActionTargetAngle);
+//				tail2.yRot = ActionTargetAngle;
+//			result2 = (tail2.yRot <= ActionTargetAngle);
 //			ActionTargetAngle -= TargetAngle;
 //			if (!result2) {
 //				tail3.rotationPointX = (float) ((tail3.rotationPointX - tail2.rotationPointX) * Math.cos(-(ActionTargetAngle / step)) - (tail3.rotationPointZ - tail2.rotationPointZ) * Math.sin(-(ActionTargetAngle / step)) + tail2.rotationPointX);
 //				tail3.rotationPointZ = (float) ((tail3.rotationPointX - tail2.rotationPointX) * Math.sin(-(ActionTargetAngle / step)) + (tail3.rotationPointZ - tail2.rotationPointZ) * Math.cos(-(ActionTargetAngle / step)) + tail2.rotationPointZ);
 //			}
-//			if (tail3.rotateAngleY > ActionTargetAngle)
-//				tail3.rotateAngleY += (ActionTargetAngle / step);
+//			if (tail3.yRot > ActionTargetAngle)
+//				tail3.yRot += (ActionTargetAngle / step);
 //			else
-//				tail3.rotateAngleY = ActionTargetAngle;
-//			result3 = (tail3.rotateAngleY <= ActionTargetAngle);
+//				tail3.yRot = ActionTargetAngle;
+//			result3 = (tail3.yRot <= ActionTargetAngle);
 //		}
 //		return (result1 && result2 && result3);
 //	}
 //
 //	public void ReturnTail() {
-//		tail1.rotateAngleY = tail2.rotateAngleY = tail3.rotateAngleY = 0F;
+//		tail1.yRot = tail2.yRot = tail3.yRot = 0F;
 //		tail1.setRotationPoint(0F, 21F, 0F);
 //		tail2.setRotationPoint(0F, 19F, 5F);
 //		tail3.setRotationPoint(0F, 19F, 11F);
@@ -321,20 +334,20 @@ public class PlesiosaurusModel extends EntityModel<Entity> {
 //		// super.setRotationAngles(f, f1, f2, f3, f4, f5);
 //
 //		// Head Yaw
-//		// head.rotateAngleY = -f3 / 57.29578F;
+//		// head.yRot = -f3 / 57.29578F;
 //
-//		right_arm.rotateAngleY = (float) (Mth.cos(f / (1.919107651F * 0.5F)) * 0.785398163397448 * f1 + -2.35619449019234);
-//		right_leg.rotateAngleY = (float) (Mth.cos(f / (1.919107651F * 0.5F)) * 0.785398163397448 * f1 + -2.0943951023932);
+//		right_arm.yRot = (float) (Mth.cos(f / (1.919107651F * 0.5F)) * 0.785398163397448 * f1 + -2.35619449019234);
+//		right_leg.yRot = (float) (Mth.cos(f / (1.919107651F * 0.5F)) * 0.785398163397448 * f1 + -2.0943951023932);
 //		if (LandFlag) {
 //
-//			left_arm.rotateAngleY = (float) (Mth.cos(f / (1.919107651F * 0.5F)) * 0.785398163397448 * f1 + -0.785398163397448);
+//			left_arm.yRot = (float) (Mth.cos(f / (1.919107651F * 0.5F)) * 0.785398163397448 * f1 + -0.785398163397448);
 //
-//			left_leg.rotateAngleY = (float) (Mth.cos(f / (1.919107651F * 0.5F)) * 0.785398163397448 * f1 + -1.0471975511966);
+//			left_leg.yRot = (float) (Mth.cos(f / (1.919107651F * 0.5F)) * 0.785398163397448 * f1 + -1.0471975511966);
 //		} else {
 //
-//			left_arm.rotateAngleY = (float) (Mth.cos(f / (1.919107651F * 0.5F)) * -0.785398163397448 * f1 + -0.785398163397448);
+//			left_arm.yRot = (float) (Mth.cos(f / (1.919107651F * 0.5F)) * -0.785398163397448 * f1 + -0.785398163397448);
 //
-//			left_leg.rotateAngleY = (float) (Mth.cos(f / (1.919107651F * 0.5F)) * -0.785398163397448 * f1 + -1.0471975511966);
+//			left_leg.yRot = (float) (Mth.cos(f / (1.919107651F * 0.5F)) * -0.785398163397448 * f1 + -1.0471975511966);
 //		}
 //
 //	}

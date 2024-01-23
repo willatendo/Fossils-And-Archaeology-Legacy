@@ -1,8 +1,0 @@
-{
-  "type": "fossilslegacy:cultivation",
-  "ingredient": {
-    "item": "fossilslegacy:pig_dna"
-  },
-  "result": "fossilslegacy:pig_embryo_syringe",
-  "time": 6000
-}

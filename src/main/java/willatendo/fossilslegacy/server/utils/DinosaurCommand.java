@@ -24,10 +24,6 @@ public enum DinosaurCommand implements StringRepresentable {
 		return this.order;
 	}
 
-	public Component getName() {
-		return FossilsLegacyUtils.translation("command", this.getOrder());
-	}
-
 	public static DinosaurCommand getOrderFromInteger(int id) {
 		return DinosaurCommand.values()[id];
 	}

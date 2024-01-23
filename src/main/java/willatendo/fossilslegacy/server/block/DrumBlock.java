@@ -3,7 +3,6 @@ package willatendo.fossilslegacy.server.block;
 import java.util.List;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -37,13 +36,13 @@ public class DrumBlock extends Block {
 			DinosaurCommand current = blockState.getValue(DrumBlock.DINOSAUR_ORDER);
 			List<LivingEntity> allEntities = level.getEntitiesOfClass(LivingEntity.class, new AABB(blockPos).inflate(30.0D));
 			for (LivingEntity livingEntity : allEntities) {
-				if (livingEntity instanceof PlayerCommandableAccess playerCommandable) {
-					if (itemStack.is(BuiltInRegistries.ITEM.getTag(playerCommandable.commandItems()).get())) {
-						playerCommandable.setCommand(blockState.getValue(DINOSAUR_ORDER));
+				if (livingEntity instanceof PlayerCommandableAccess playerCommandableAccess) {
+					if (playerCommandableAccess.willListenToDrum(player, interactionHand)) {
+						playerCommandableAccess.setCommand(blockState.getValue(DINOSAUR_ORDER));
 					}
 				}
 			}
-			player.displayClientMessage(FossilsLegacyUtils.translation("block", "drum.hit", itemStack.getHoverName(), current.getName()), true);
+			player.displayClientMessage(FossilsLegacyUtils.translation("block", "drum.hit", itemStack.getHoverName(), current.getComponent()), true);
 			if (level.isClientSide()) {
 				player.playSound(FossilsLegacySoundEvents.DRUM_TRIPLE_HIT.get());
 			}

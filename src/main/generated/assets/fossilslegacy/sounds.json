@@ -74,6 +74,24 @@
     ],
     "subtitle": "sound.fossilslegacy.mammoth.hurt"
   },
+  "entity.plesiosaurus.ambient": {
+    "sounds": [
+      "fossilslegacy:plesiosaurus_ambient"
+    ],
+    "subtitle": "sound.fossilslegacy.plesiosaurus.ambient"
+  },
+  "entity.plesiosaurus.death": {
+    "sounds": [
+      "fossilslegacy:plesiosaurus_death"
+    ],
+    "subtitle": "sound.fossilslegacy.plesiosaurus.death"
+  },
+  "entity.plesiosaurus.hurt": {
+    "sounds": [
+      "fossilslegacy:plesiosaurus_hurt"
+    ],
+    "subtitle": "sound.fossilslegacy.plesiosaurus.hurt"
+  },
   "entity.pteranodon.ambient": {
     "sounds": [
       "fossilslegacy:pteranodon_ambient_1",

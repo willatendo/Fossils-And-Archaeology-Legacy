@@ -92,7 +92,7 @@ public class FeederBlockEntity extends BaseContainerBlockEntity implements Exten
 		map.put(FossilsLegacyItems.COOKED_BRACHIOSAURUS_MEAT.get(), 100);
 		map.put(FossilsLegacyItems.COOKED_DILOPHOSAURUS_MEAT.get(), 100);
 		map.put(FossilsLegacyItems.COOKED_PLESIOSAURUS_MEAT.get(), 100);
-		map.put(FossilsLegacyItems.COOKED_PTEROSAURUS_MEAT.get(), 100);
+		map.put(FossilsLegacyItems.COOKED_PTERANODON_MEAT.get(), 100);
 		map.put(FossilsLegacyItems.COOKED_SMILODON_MEAT.get(), 100);
 		map.put(FossilsLegacyItems.COOKED_STEGOSAURUS_MEAT.get(), 100);
 		map.put(FossilsLegacyItems.COOKED_TRICERATOPS_MEAT.get(), 100);
@@ -102,7 +102,7 @@ public class FeederBlockEntity extends BaseContainerBlockEntity implements Exten
 		map.put(FossilsLegacyItems.RAW_BRACHIOSAURUS_MEAT.get(), 100);
 		map.put(FossilsLegacyItems.RAW_DILOPHOSAURUS_MEAT.get(), 100);
 		map.put(FossilsLegacyItems.RAW_PLESIOSAURUS_MEAT.get(), 100);
-		map.put(FossilsLegacyItems.RAW_PTEROSAURUS_MEAT.get(), 100);
+		map.put(FossilsLegacyItems.RAW_PTERANODON_MEAT.get(), 100);
 		map.put(FossilsLegacyItems.RAW_SMILODON_MEAT.get(), 100);
 		map.put(FossilsLegacyItems.RAW_STEGOSAURUS_MEAT.get(), 100);
 		map.put(FossilsLegacyItems.RAW_TRICERATOPS_MEAT.get(), 100);

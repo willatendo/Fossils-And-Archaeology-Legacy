@@ -1,8 +1,8 @@
 {
   "type": "fossilslegacy:cultivation",
   "ingredient": {
-    "item": "fossilslegacy:pterosaurus_dna"
+    "item": "fossilslegacy:pteranodon_dna"
   },
-  "result": "fossilslegacy:pterosaurus_egg",
+  "result": "fossilslegacy:pteranodon_egg",
   "time": 6000
 }

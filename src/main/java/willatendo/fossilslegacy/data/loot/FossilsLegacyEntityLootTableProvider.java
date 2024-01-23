@@ -50,7 +50,7 @@ public class FossilsLegacyEntityLootTableProvider extends SimpleEntityLootSubPro
 		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.DILOPHOSAURUS_EGG, this.createEggTable(FossilsLegacyItems.DILOPHOSAURUS_EGG.get()));
 		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.MOSASAURUS_EGG, this.createEggTable(FossilsLegacyItems.MOSASAURUS_EGG.get()));
 		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.PLESIOSAURUS_EGG, this.createEggTable(FossilsLegacyItems.PLESIOSAURUS_EGG.get()));
-		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.PTEROSAURUS_EGG, this.createEggTable(FossilsLegacyItems.PTEROSAURUS_EGG.get()));
+		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.PTERANODON_EGG, this.createEggTable(FossilsLegacyItems.PTERANODON_EGG.get()));
 		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.STEGOSAURUS_EGG, this.createEggTable(FossilsLegacyItems.STEGOSAURUS_EGG.get()));
 		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.TRICERATOPS_EGG, this.createEggTable(FossilsLegacyItems.TRICERATOPS_EGG.get()));
 		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.TYRANNOSAURUS_EGG, this.createEggTable(FossilsLegacyItems.TYRANNOSAURUS_EGG.get()));

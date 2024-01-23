@@ -29,6 +29,7 @@ import willatendo.fossilslegacy.client.model.FailuresaurusModel;
 import willatendo.fossilslegacy.client.model.MammothModel;
 import willatendo.fossilslegacy.client.model.MosasaurusModel;
 import willatendo.fossilslegacy.client.model.NautilusModel;
+import willatendo.fossilslegacy.client.model.PlesiosaurusModel;
 import willatendo.fossilslegacy.client.model.SmilodonModel;
 import willatendo.fossilslegacy.client.model.StegosaurusModel;
 import willatendo.fossilslegacy.client.model.TriceratopsModel;
@@ -51,6 +52,7 @@ import willatendo.fossilslegacy.client.render.FossilRenderer;
 import willatendo.fossilslegacy.client.render.MammothRenderer;
 import willatendo.fossilslegacy.client.render.MosasaurusRenderer;
 import willatendo.fossilslegacy.client.render.NautilusRenderer;
+import willatendo.fossilslegacy.client.render.PlesiosaurusRenderer;
 import willatendo.fossilslegacy.client.render.PteranodonRenderer;
 import willatendo.fossilslegacy.client.render.SmilodonRenderer;
 import willatendo.fossilslegacy.client.render.StegosaurusRenderer;
@@ -84,6 +86,7 @@ public class FossilsLegacyClient implements ClientModInitializer {
 		EntityRendererRegistry.register(FossilsLegacyEntities.MAMMOTH.get(), MammothRenderer::new);
 		EntityRendererRegistry.register(FossilsLegacyEntities.MOSASAURUS.get(), MosasaurusRenderer::new);
 		EntityRendererRegistry.register(FossilsLegacyEntities.NAUTILUS.get(), NautilusRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntities.PLESIOSAURUS.get(), PlesiosaurusRenderer::new);
 		EntityRendererRegistry.register(FossilsLegacyEntities.PTERANODON.get(), PteranodonRenderer::new);
 		EntityRendererRegistry.register(FossilsLegacyEntities.SMILODON.get(), SmilodonRenderer::new);
 		EntityRendererRegistry.register(FossilsLegacyEntities.STEGOSAURUS.get(), StegosaurusRenderer::new);
@@ -93,7 +96,7 @@ public class FossilsLegacyClient implements ClientModInitializer {
 
 		EntityRendererRegistry.register(FossilsLegacyEntities.EGG.get(), EggRenderer::new);
 
-		EntityRendererRegistry.register(FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), ZombifiedPigmanRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), context -> new ZombifiedPigmanRenderer(context, ModelLayers.ZOMBIFIED_PIGLIN, ModelLayers.ZOMBIFIED_PIGLIN_INNER_ARMOR, ModelLayers.ZOMBIFIED_PIGLIN_OUTER_ARMOR, true));
 		EntityRendererRegistry.register(FossilsLegacyEntities.DROWNED_PIRATE.get(), DrownedPirateRenderer::new);
 		EntityRendererRegistry.register(FossilsLegacyEntities.FAILURESAURUS.get(), FailuresaurusRenderer::new);
 
@@ -127,6 +130,7 @@ public class FossilsLegacyClient implements ClientModInitializer {
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.MAMMOTH, MammothModel::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.MOSASAURUS, MosasaurusModel::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.NAUTILUS, NautilusModel::createBodyLayer);
+		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.PLESIOSAURUS, PlesiosaurusModel::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.GROUND_PTERANODON, GroundPteranodonModel::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.FLYING_PTERANODON, FlyingPteranodonModel::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.SMILODON, SmilodonModel::createBodyLayer);

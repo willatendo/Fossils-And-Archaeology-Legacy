@@ -1,8 +1,0 @@
-{
-  "type": "fossilslegacy:cultivation",
-  "ingredient": {
-    "item": "fossilslegacy:frog_dna"
-  },
-  "result": "fossilslegacy:frog_eggs",
-  "time": 6000
-}

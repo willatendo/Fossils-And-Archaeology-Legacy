@@ -9,6 +9,7 @@ public class FossilsLegacyModels {
 	public static final ModelLayerLocation MAMMOTH = new ModelLayerLocation(FossilsLegacyUtils.resource("mammoth"), "main");
 	public static final ModelLayerLocation MOSASAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("mosasaurus"), "main");
 	public static final ModelLayerLocation NAUTILUS = new ModelLayerLocation(FossilsLegacyUtils.resource("nautilus"), "main");
+	public static final ModelLayerLocation PLESIOSAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("plesiosaurus"), "main");
 	public static final ModelLayerLocation GROUND_PTERANODON = new ModelLayerLocation(FossilsLegacyUtils.resource("ground_pteranodon"), "main");
 	public static final ModelLayerLocation FLYING_PTERANODON = new ModelLayerLocation(FossilsLegacyUtils.resource("flying_pteranodon"), "main");
 	public static final ModelLayerLocation SMILODON = new ModelLayerLocation(FossilsLegacyUtils.resource("smilodon"), "main");

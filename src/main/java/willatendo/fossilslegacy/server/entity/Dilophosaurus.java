@@ -7,7 +7,6 @@ import org.apache.commons.compress.utils.Lists;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -23,7 +22,6 @@ import net.minecraft.world.entity.ai.goal.RangedAttackGoal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
@@ -69,7 +67,7 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
 
 	@Override
 	public double getMinHealth() {
-		return 7.0F;
+		return 7.0D;
 	}
 
 	@Override
@@ -147,7 +145,7 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
 	}
 
 	@Override
-	public TagKey<Item> commandItems() {
-		return FossilsLegacyItemTags.DILOPHOSAURUS_COMMANDABLES;
+	public CommandType commandItems() {
+		return CommandType.tag(FossilsLegacyItemTags.DILOPHOSAURUS_COMMANDABLES);
 	}
 }

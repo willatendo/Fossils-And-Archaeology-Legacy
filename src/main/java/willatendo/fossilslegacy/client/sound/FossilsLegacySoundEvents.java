@@ -19,6 +19,9 @@ public class FossilsLegacySoundEvents {
 	public static final SimpleHolder<SoundEvent> MAMMOTH_AMBIENT = SOUND_EVENTS.register("entity.mammoth.ambient", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.mammoth.ambient")));
 	public static final SimpleHolder<SoundEvent> MAMMOTH_HURT = SOUND_EVENTS.register("entity.mammoth.hurt", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.mammoth.hurt")));
 	public static final SimpleHolder<SoundEvent> MAMMOTH_DEATH = SOUND_EVENTS.register("entity.mammoth.death", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.mammoth.death")));
+	public static final SimpleHolder<SoundEvent> PLESIOSAURUS_AMBIENT = SOUND_EVENTS.register("entity.plesiosaurus.ambient", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.plesiosaurus.ambient")));
+	public static final SimpleHolder<SoundEvent> PLESIOSAURUS_HURT = SOUND_EVENTS.register("entity.plesiosaurus.hurt", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.plesiosaurus.hurt")));
+	public static final SimpleHolder<SoundEvent> PLESIOSAURUS_DEATH = SOUND_EVENTS.register("entity.plesiosaurus.death", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.plesiosaurus.death")));
 	public static final SimpleHolder<SoundEvent> PTERANODON_AMBIENT = SOUND_EVENTS.register("entity.pteranodon.ambient", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.pteranodon.ambient")));
 	public static final SimpleHolder<SoundEvent> PTERANODON_HURT = SOUND_EVENTS.register("entity.pteranodon.hurt", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.pteranodon.hurt")));
 	public static final SimpleHolder<SoundEvent> PTERANODON_DEATH = SOUND_EVENTS.register("entity.pteranodon.death", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.pteranodon.death")));

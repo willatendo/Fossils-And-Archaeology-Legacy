@@ -14,7 +14,6 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -38,7 +37,6 @@ import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.DismountHelper;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -124,9 +122,13 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Playe
 	public InteractionResult interactAt(Player player, Vec3 vec3, InteractionHand interactionHand) {
 		ItemStack itemStack = player.getItemInHand(interactionHand);
 
-		if (!this.hasPassenger(this) && itemStack.isEmpty() && !this.isBaby()) {
-			player.startRiding(this);
-			return InteractionResult.SUCCESS;
+		if (itemStack.isEmpty() && !this.commandItems().canCommandWithItem(itemStack)) {
+			if (!this.hasPassenger(this) && !this.isBaby()) {
+				if (!this.level().isClientSide) {
+					player.startRiding(this);
+				}
+				return InteractionResult.SUCCESS;
+			}
 		}
 		return super.interactAt(player, vec3, interactionHand);
 	}
@@ -215,11 +217,6 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Playe
 	}
 
 	@Override
-	public Vec3 getPassengerRidingPosition(Entity entity) {
-		return new Vec3(0.0D, 0.15D * this.getGrowthStage(), 0.0D);
-	}
-
-	@Override
 	public int getSubSpecies() {
 		return this.entityData.get(SUB_SPECIES);
 	}
@@ -279,7 +276,7 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Playe
 	}
 
 	@Override
-	public TagKey<Item> commandItems() {
-		return FossilsLegacyItemTags.TRICERATOPS_COMMANDABLES;
+	public CommandType commandItems() {
+		return CommandType.tag(FossilsLegacyItemTags.TRICERATOPS_COMMANDABLES);
 	}
 }

@@ -1,8 +1,0 @@
-// 1.20.1	2023-12-07T17:00:26.8033537	Tags for minecraft:block mod id fossilslegacy
-38dcf1274ff201912ffaca12c4e5998aeeb79155 data/fossilslegacy/tags/blocks/brachiosaurus_resistant.json
-69c396cb051bbe9a130e6979b67065e5041b179d data/fossilslegacy/tags/blocks/jurassic_fern_plantable_on.json
-9e5b271f0c7ec4847dded614168452fd660518de data/fossilslegacy/tags/blocks/permafrost_frostable.json
-7b30bd09eaf1a00c12825fdf629af6f81500183b data/minecraft/tags/blocks/mineable/axe.json
-f7a01062785da08f32a1e8542038a3c85d6ae642 data/minecraft/tags/blocks/mineable/pickaxe.json
-8dd9337b2a202f40f3cb253ecea1f5a37ccc12ba data/minecraft/tags/blocks/mineable/shovel.json
-101e68f8cbe107d756758723dabc33bb92e51677 data/minecraft/tags/blocks/needs_iron_tool.json

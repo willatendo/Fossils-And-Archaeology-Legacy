@@ -142,7 +142,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.TRICERATOPS_DNA.get(), "Triceratops DNA");
 		this.add(FossilsLegacyItems.VELOCIRAPTOR_DNA.get(), "Velociraptor DNA");
 		this.add(FossilsLegacyItems.TYRANNOSAURUS_DNA.get(), "Tyrannosaurus DNA");
-		this.add(FossilsLegacyItems.PTEROSAURUS_DNA.get(), "Plesiosaurus DNA");
+		this.add(FossilsLegacyItems.PTERANODON_DNA.get(), "Pterandon DNA");
 		this.add(FossilsLegacyItems.NAUTILUS_DNA.get(), "Plesiosaurus DNA");
 		this.add(FossilsLegacyItems.PLESIOSAURUS_DNA.get(), "Plesiosaurus DNA");
 		this.add(FossilsLegacyItems.MOSASAURUS_DNA.get(), "Mosasaurus DNA");
@@ -152,7 +152,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.TRICERATOPS_EGG.get());
 		this.add(FossilsLegacyItems.VELOCIRAPTOR_EGG.get());
 		this.add(FossilsLegacyItems.TYRANNOSAURUS_EGG.get());
-		this.add(FossilsLegacyItems.PTEROSAURUS_EGG.get());
+		this.add(FossilsLegacyItems.PTERANODON_EGG.get());
 		this.add(FossilsLegacyItems.NAUTILUS_EGGS.get());
 		this.add(FossilsLegacyItems.PLESIOSAURUS_EGG.get());
 		this.add(FossilsLegacyItems.MOSASAURUS_EGG.get());
@@ -162,7 +162,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.RAW_TRICERATOPS_MEAT.get());
 		this.add(FossilsLegacyItems.RAW_VELOCIRAPTOR_MEAT.get());
 		this.add(FossilsLegacyItems.RAW_TYRANNOSAURUS_MEAT.get());
-		this.add(FossilsLegacyItems.RAW_PTEROSAURUS_MEAT.get());
+		this.add(FossilsLegacyItems.RAW_PTERANODON_MEAT.get());
 		this.add(FossilsLegacyItems.NAUTILUS.get());
 		this.add(FossilsLegacyItems.RAW_PLESIOSAURUS_MEAT.get());
 		this.add(FossilsLegacyItems.RAW_MOSASAURUS_MEAT.get());
@@ -174,7 +174,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.COOKED_TRICERATOPS_MEAT.get());
 		this.add(FossilsLegacyItems.COOKED_VELOCIRAPTOR_MEAT.get());
 		this.add(FossilsLegacyItems.COOKED_TYRANNOSAURUS_MEAT.get());
-		this.add(FossilsLegacyItems.COOKED_PTEROSAURUS_MEAT.get());
+		this.add(FossilsLegacyItems.COOKED_PTERANODON_MEAT.get());
 		this.add(FossilsLegacyItems.SIO_CHIU_LE.get(), "Sio-Chiu-Le");
 		this.add(FossilsLegacyItems.COOKED_PLESIOSAURUS_MEAT.get());
 		this.add(FossilsLegacyItems.COOKED_MOSASAURUS_MEAT.get());
@@ -193,6 +193,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.NAUTILUS_SHELL.get());
 		this.add(FossilsLegacyItems.MAGIC_CONCH.get());
 		this.add("item.fossilslegacy.magic_conch.desc", "%s");
+		this.add("item.fossilslegacy.magic_conch.use", "Set all Plesiosaurs in a 30-Block Area to %s");
 		this.add(FossilsLegacyItems.FROZEN_MEAT.get());
 		this.add(FossilsLegacyItems.BROKEN_FROZEN_MEAT.get(), "Frozen Meat");
 		this.add(FossilsLegacyItems.AXOLOTL_DNA.get(), "Axolotl DNA");
@@ -278,6 +279,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.MOSASAURUS_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.NAUTILUS_SPAWN_EGG.get());
+		this.add(FossilsLegacyItems.PLESIOSAURUS_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.PTERANODON_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.SMILODON_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.STEGOSAURUS_SPAWN_EGG.get());
@@ -360,6 +362,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("sound.fossilslegacy.mammoth.ambient", "Mammoth Trumpets");
 		this.add("sound.fossilslegacy.mammoth.hurt", "Mammoth Hurts");
 		this.add("sound.fossilslegacy.mammoth.death", "Mammoth Dies");
+		this.add("sound.fossilslegacy.plesiosaurus.ambient", "Plesiosaurus Chirps");
+		this.add("sound.fossilslegacy.plesiosaurus.hurt", "Plesiosaurus Hurts");
+		this.add("sound.fossilslegacy.plesiosaurus.death", "Plesiosaurus Dies");
 		this.add("sound.fossilslegacy.pteranodon.ambient", "Pteranodon Calls");
 		this.add("sound.fossilslegacy.pteranodon.hurt", "Pteranodon Hurts");
 		this.add("sound.fossilslegacy.pteranodon.death", "Pteranodon Dies");

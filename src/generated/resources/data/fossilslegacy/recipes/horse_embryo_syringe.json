@@ -1,8 +1,0 @@
-{
-  "type": "fossilslegacy:cultivation",
-  "ingredient": {
-    "item": "fossilslegacy:horse_dna"
-  },
-  "result": "fossilslegacy:horse_embryo_syringe",
-  "time": 6000
-}

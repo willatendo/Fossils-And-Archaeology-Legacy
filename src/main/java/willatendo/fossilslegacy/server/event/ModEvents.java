@@ -38,6 +38,7 @@ import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
 import willatendo.fossilslegacy.server.entity.Mammoth;
 import willatendo.fossilslegacy.server.entity.Mosasaurus;
 import willatendo.fossilslegacy.server.entity.Nautilus;
+import willatendo.fossilslegacy.server.entity.Plesiosaurus;
 import willatendo.fossilslegacy.server.entity.Pteranodon;
 import willatendo.fossilslegacy.server.entity.Smilodon;
 import willatendo.fossilslegacy.server.entity.Stegosaurus;
@@ -47,15 +48,23 @@ import willatendo.fossilslegacy.server.entity.Velociraptor;
 import willatendo.fossilslegacy.server.entity.ZombifiedPigman;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.simplelibrary.server.event.EntityStruckByLightningCallback;
-import willatendo.simplelibrary.server.util.SimpleUtils;
+import willatendo.simplelibrary.server.event.StruckByLightningCallback;
 
 public class ModEvents {
 	public static void lightning() {
+		StruckByLightningCallback.EVENT.register((entity, lightningBolt) -> {
+			if (lightningBolt instanceof AncientLightningBolt ancientLightningBolt) {
+				if (entity instanceof Pig pig) {
+					return false;
+				}
+				return true;
+			}
+			return true;
+		});
+
 		EntityStruckByLightningCallback.EVENT.register((entity, lightningBolt) -> {
 			if (lightningBolt instanceof AncientLightningBolt ancientLightningBolt) {
-				SimpleUtils.LOGGER.warn("Is Ancient Lightning Bolt");
 				if (entity instanceof Pig pig) {
-					SimpleUtils.LOGGER.warn("Is Pig");
 					Level level = ancientLightningBolt.level();
 					ZombifiedPigman zombifiedPigman = FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get().create(level);
 					zombifiedPigman.tame(((Player) ancientLightningBolt.getOwner()));
@@ -67,7 +76,6 @@ public class ModEvents {
 					pig.discard();
 				}
 			}
-			SimpleUtils.LOGGER.warn("Didn't work");
 		});
 	}
 
@@ -77,7 +85,8 @@ public class ModEvents {
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.MAMMOTH.get(), Mammoth.mammothAttributes());
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.MOSASAURUS.get(), Mosasaurus.mosasaurusAttributes());
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.NAUTILUS.get(), Nautilus.nautilusAttributes());
-		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PTERANODON.get(), Pteranodon.triceratopsAttributes());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PLESIOSAURUS.get(), Plesiosaurus.plesiosaurusAttributes());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PTERANODON.get(), Pteranodon.pteranodonAttributes());
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.SMILODON.get(), Smilodon.smilodonAttributes());
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.STEGOSAURUS.get(), Stegosaurus.stegosaurusAttributes());
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.TRICERATOPS.get(), Triceratops.triceratopsAttributes());

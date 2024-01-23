@@ -9,7 +9,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -30,7 +29,6 @@ import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.DismountHelper;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -112,9 +110,13 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Pla
 	public InteractionResult interactAt(Player player, Vec3 vec3, InteractionHand interactionHand) {
 		ItemStack itemStack = player.getItemInHand(interactionHand);
 
-		if (!this.hasPassenger(this) && itemStack.isEmpty() && !this.isBaby()) {
-			player.startRiding(this);
-			return InteractionResult.SUCCESS;
+		if (itemStack.isEmpty() && !this.commandItems().canCommandWithItem(itemStack)) {
+			if (!this.hasPassenger(this) && !this.isBaby()) {
+				if (!this.level().isClientSide) {
+					player.startRiding(this);
+				}
+				return InteractionResult.SUCCESS;
+			}
 		}
 		return super.interactAt(player, vec3, interactionHand);
 	}
@@ -202,10 +204,10 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Pla
 		return FossilsLegacySoundEvents.BRACHIOSAURUS_DEATH.get();
 	}
 
-	@Override
-	public Vec3 getPassengerRidingPosition(Entity entity) {
-		return new Vec3(0.0D, 0.65D * this.getGrowthStage(), 0.0D);
-	}
+//	@Override
+//	public Vec3 getPassengerRidingPosition(Entity entity) {
+//		return new Vec3(0.0D, 0.65D * this.getGrowthStage(), 0.0D);
+//	}
 
 	@Override
 	public List<Component> info(Player player) {
@@ -231,7 +233,7 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Pla
 	}
 
 	@Override
-	public TagKey<Item> commandItems() {
-		return FossilsLegacyItemTags.BRACHIOSAURUS_COMMANDABLES;
+	public CommandType commandItems() {
+		return CommandType.tag(FossilsLegacyItemTags.BRACHIOSAURUS_COMMANDABLES);
 	}
 }

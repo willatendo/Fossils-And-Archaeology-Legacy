@@ -236,7 +236,7 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 		TRICERATOPS("triceratops", FossilsLegacyLootTables.TRICERATOPS_EGG, () -> FossilsLegacyEntities.TRICERATOPS.get(), () -> FossilsLegacyItems.TRICERATOPS_EGG.get()),
 		VELOCIRAPTOR("velociraptor", FossilsLegacyLootTables.VELOCIRAPTOR_EGG, () -> FossilsLegacyEntities.VELOCIRAPTOR.get(), () -> FossilsLegacyItems.VELOCIRAPTOR_EGG.get()),
 		TYRANNOSAURUS("tyrannosaurus", FossilsLegacyLootTables.TYRANNOSAURUS_EGG, () -> FossilsLegacyEntities.TYRANNOSAURUS.get(), () -> FossilsLegacyItems.TYRANNOSAURUS_EGG.get()),
-		PTEROSAURUS("pterosaurus", FossilsLegacyLootTables.PTEROSAURUS_EGG, () -> FossilsLegacyEntities.PTERANODON.get(), () -> FossilsLegacyItems.PTEROSAURUS_EGG.get()),
+		PTERANODON("pteranodon", FossilsLegacyLootTables.PTERANODON_EGG, () -> FossilsLegacyEntities.PTERANODON.get(), () -> FossilsLegacyItems.PTERANODON_EGG.get()),
 		PLESIOSAURUS("plesiosaurus", FossilsLegacyLootTables.PLESIOSAURUS_EGG, () -> EntityType.COW, () -> FossilsLegacyItems.PLESIOSAURUS_EGG.get()),
 		MOSASAURUS("mosasaurus", FossilsLegacyLootTables.MOSASAURUS_EGG, () -> FossilsLegacyEntities.MOSASAURUS.get(), () -> FossilsLegacyItems.MOSASAURUS_EGG.get()),
 		STEGOSAURUS("stegosaurus", FossilsLegacyLootTables.STEGOSAURUS_EGG, () -> FossilsLegacyEntities.BRACHIOSAURUS.get(), () -> FossilsLegacyItems.STEGOSAURUS_EGG.get()),

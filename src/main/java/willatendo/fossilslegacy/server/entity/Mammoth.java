@@ -189,7 +189,9 @@ public class Mammoth extends Animal implements DinopediaInformation, HungryAnima
 			return InteractionResult.SUCCESS;
 		}
 		if (!this.hasPassenger(this) && player.getItemInHand(interactionHand).isEmpty() && !this.isBaby()) {
-			player.startRiding(this);
+			if (!this.level().isClientSide) {
+				player.startRiding(this);
+			}
 			return InteractionResult.SUCCESS;
 		}
 		return super.interactAt(player, vec3, interactionHand);
@@ -280,10 +282,10 @@ public class Mammoth extends Animal implements DinopediaInformation, HungryAnima
 		return FossilsLegacySoundEvents.MAMMOTH_DEATH.get();
 	}
 
-	@Override
-	public Vec3 getPassengerRidingPosition(Entity entity) {
-		return new Vec3(0.0D, 3.0D, 0.0D);
-	}
+//	@Override
+//	public Vec3 getPassengerRidingPosition(Entity entity) {
+//		return new Vec3(0.0D, 3.0D, 0.0D);
+//	}
 
 	public void setSheared(boolean sheared) {
 		this.entityData.set(IS_SHEARED, sheared);

@@ -3,15 +3,23 @@ package willatendo.fossilslegacy.server.item;
 import java.util.List;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters;
 import net.minecraft.world.item.CreativeModeTab.Output;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import willatendo.fossilslegacy.server.entity.Plesiosaurus;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.creativemodetab.FillCreativeTab;
@@ -23,7 +31,7 @@ public class MagicConchItem extends Item implements FillCreativeTab {
 
 	@Override
 	public void appendHoverText(ItemStack itemStack, Level level, List<Component> components, TooltipFlag tooltipFlag) {
-		components.add(FossilsLegacyUtils.translation("item", BuiltInRegistries.ITEM.getKey(this).getPath() + ".desc", this.getOrder(itemStack).getName()).withStyle(ChatFormatting.GRAY));
+		components.add(FossilsLegacyUtils.translation("item", BuiltInRegistries.ITEM.getKey(this).getPath() + ".desc", this.getOrder(itemStack).getComponent()).withStyle(ChatFormatting.GRAY));
 		super.appendHoverText(itemStack, level, components, tooltipFlag);
 	}
 
@@ -42,26 +50,33 @@ public class MagicConchItem extends Item implements FillCreativeTab {
 		}
 	}
 
-//	@Override
-//	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
-//		// Change to for all Plesiosaurs
-//		player.getCooldowns().addCooldown(this, 10);
-//		if (level.isClientSide()) {
-//			level.addParticle(ParticleTypes.NOTE, player.getBlockX(), player.getBlockY() + 1.2D, player.getBlockZ(), 0.0D, 0.0D, 0.0D);
-//		}
-//		player.startUsingItem(interactionHand);
-//		player.sendSystemMessage(FossilsLegacyUtils.translation("order", "magic_conch.use", this.getOrder(player.getItemInHand(interactionHand)).getName()));
-//		player.awardStat(Stats.ITEM_USED.get(this));
-//		return InteractionResultHolder.consume(player.getItemInHand(interactionHand));
-//	}
-//
-//	@Override
-//	public int getUseDuration(ItemStack itemStack) {
-//		return 140;
-//	}
-//
-//	@Override
-//	public UseAnim getUseAnimation(ItemStack itemStack) {
-//		return UseAnim.TOOT_HORN;
-//	}
+	@Override
+	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
+		// Change to for all Plesiosaurs
+		player.getCooldowns().addCooldown(this, 10);
+
+		for (Plesiosaurus plesiosaurus : level.getEntitiesOfClass(Plesiosaurus.class, new AABB(player.blockPosition()).inflate(30.0D))) {
+			if (plesiosaurus.isOwnedBy(player)) {
+				if (level.isClientSide()) {
+					level.addParticle(ParticleTypes.NOTE, plesiosaurus.getBlockX(), plesiosaurus.getBlockY() + 1.2D, plesiosaurus.getBlockZ(), 0.0D, 0.0D, 0.0D);
+				}
+				plesiosaurus.setCommand(getOrder(player.getItemInHand(interactionHand)));
+			}
+		}
+
+		player.startUsingItem(interactionHand);
+		player.sendSystemMessage(FossilsLegacyUtils.translation("item", "magic_conch.use", this.getOrder(player.getItemInHand(interactionHand)).getComponent()));
+		player.awardStat(Stats.ITEM_USED.get(this));
+		return InteractionResultHolder.consume(player.getItemInHand(interactionHand));
+	}
+
+	@Override
+	public int getUseDuration(ItemStack itemStack) {
+		return 140;
+	}
+
+	@Override
+	public UseAnim getUseAnimation(ItemStack itemStack) {
+		return UseAnim.TOOT_HORN;
+	}
 }

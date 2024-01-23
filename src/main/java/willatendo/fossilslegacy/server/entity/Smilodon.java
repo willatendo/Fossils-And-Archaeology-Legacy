@@ -15,7 +15,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.OldUsersConverter;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -39,7 +38,6 @@ import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.GameRules;
@@ -398,13 +396,12 @@ public class Smilodon extends Animal implements DinopediaInformation, HungryAnim
 	}
 
 	@Override
-	public TagKey<Item> commandItems() {
-		return null;
+	public CommandType commandItems() {
+		return CommandType.hand();
 	}
 
 	@Override
 	public void decreaseHunger() {
-		// TODO Auto-generated method stub
-
+		this.setHunger(this.getHunger() - 1);
 	}
 }

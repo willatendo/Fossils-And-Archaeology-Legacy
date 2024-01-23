@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
+    "has_raw_pteranodon_meat": {
       "conditions": {
         "items": [
           {
             "items": [
-              "fossilslegacy:pteranodon_dna"
+              "fossilslegacy:raw_pteranodon_meat"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fossilslegacy:pterosaurus_egg"
+        "recipe": "fossilslegacy:raw_pteranodon_meat_outputs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -23,12 +23,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_item"
+      "has_raw_pteranodon_meat"
     ]
   ],
   "rewards": {
     "recipes": [
-      "fossilslegacy:pterosaurus_egg"
+      "fossilslegacy:raw_pteranodon_meat_outputs"
     ]
   }
 }

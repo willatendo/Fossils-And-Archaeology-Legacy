@@ -1,4 +1,4 @@
-// 1.20.4	2024-01-14T13:56:28.4268213	Fossils and Archaeology Legacy/EntityType Loot Tables
+// 1.20.4	2024-01-23T14:10:00.2285461	Fossils and Archaeology Legacy/EntityType Loot Tables
 11146de30795b1834b628308dc2ffe789147ee2e data\fossilslegacy\loot_tables\entities\egg\plesiosaurus.json
 c7cae11272dc0484f6a2f3519cd1add9790206ea data\fossilslegacy\loot_tables\entities\pregnant_llama.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data\fossilslegacy\loot_tables\entities\pregnant_fox.json
@@ -42,7 +42,7 @@ ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data\fossilslegacy\loot_tables\entities
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data\fossilslegacy\loot_tables\entities\pteranodon.json
 c7cae11272dc0484f6a2f3519cd1add9790206ea data\fossilslegacy\loot_tables\entities\pregnant_mule.json
 b57ae805526e3d40af31d204c33eab3af30edadf data\fossilslegacy\loot_tables\entities\pregnant_dolphin.json
-49de05ac6eb9afe147df02f82153a920dc666067 data\fossilslegacy\loot_tables\entities\egg\pterosaurus.json
+f7915079f4023b66b3059c1c8459eee194f0c35e data\fossilslegacy\loot_tables\entities\egg\pterosaurus.json
 1a274e7920341bcf7bda0d2bc1789cbc5a079949 data\fossilslegacy\loot_tables\entities\pregnant_rabbit.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data\fossilslegacy\loot_tables\entities\drowned_pirate.json
 beeb528329636e5c103328c19722334cfa96376e data\fossilslegacy\loot_tables\entities\pregnant_sheep\lime.json

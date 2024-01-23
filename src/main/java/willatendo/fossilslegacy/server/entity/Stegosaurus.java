@@ -7,7 +7,6 @@ import org.apache.commons.compress.utils.Lists;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -21,7 +20,6 @@ import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
@@ -128,7 +126,7 @@ public class Stegosaurus extends Dinosaur implements DinopediaInformation {
 	}
 
 	@Override
-	public TagKey<Item> commandItems() {
-		return FossilsLegacyItemTags.STEGOSAURUS_COMMANDABLES;
+	public CommandType commandItems() {
+		return CommandType.tag(FossilsLegacyItemTags.STEGOSAURUS_COMMANDABLES);
 	}
 }

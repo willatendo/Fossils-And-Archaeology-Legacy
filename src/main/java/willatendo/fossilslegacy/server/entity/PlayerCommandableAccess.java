@@ -1,7 +1,7 @@
 package willatendo.fossilslegacy.server.entity;
 
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.player.Player;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 
 public interface PlayerCommandableAccess {
@@ -9,9 +9,13 @@ public interface PlayerCommandableAccess {
 
 	void setCommand(DinosaurCommand dinosaurOrder);
 
-	TagKey<Item> commandItems();
+	CommandType commandItems();
 
 	default boolean isOrderedToSit() {
 		return this.getCommand() == DinosaurCommand.STAY;
+	}
+
+	default boolean willListenToDrum(Player player, InteractionHand interactionHand) {
+		return commandItems().canCommandWithItem(player.getItemInHand(interactionHand));
 	}
 }

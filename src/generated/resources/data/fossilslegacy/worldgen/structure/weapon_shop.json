@@ -1,6 +1,0 @@
-{
-  "type": "fossilslegacy:weapon_shop",
-  "biomes": "#fossilslegacy:has_structure/weapon_shop",
-  "spawn_overrides": {},
-  "step": "surface_structures"
-}
