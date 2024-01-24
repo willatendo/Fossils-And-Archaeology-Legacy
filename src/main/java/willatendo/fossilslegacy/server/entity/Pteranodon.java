@@ -18,7 +18,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PlayerRideable;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -46,7 +45,7 @@ import willatendo.fossilslegacy.server.entity.goal.DinoWaterAvoidingRandomStroll
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class Pteranodon extends Dinosaur implements DinopediaInformation, PlayerRideable {
+public class Pteranodon extends Dinosaur implements DinopediaInformation, RideableDinosaur {
 	public float airSpeed = 0.0F;
 	public float airAngle = 0.0F;
 	public float airPitch = 0.0F;
@@ -62,6 +61,11 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Player
 
 	public static AttributeSupplier pteranodonAttributes() {
 		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 4.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).build();
+	}
+
+	@Override
+	public int getMinRideableAge() {
+		return 5;
 	}
 
 	@Override
@@ -110,7 +114,7 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Player
 		ItemStack itemStack = player.getItemInHand(interactionHand);
 
 		if (itemStack.isEmpty() && !this.commandItems().canCommandWithItem(itemStack)) {
-			if (!this.hasPassenger(this) && !this.isBaby()) {
+			if (!this.hasPassenger(this) && this.getGrowthStage() >= this.getMinRideableAge()) {
 				if (!this.level().isClientSide) {
 					player.startRiding(this);
 				}
@@ -332,8 +336,9 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Player
 			information.add(FossilsLegacyUtils.translation("dinopedia", "age", this.getDaysAlive()));
 			information.add(FossilsLegacyUtils.translation("dinopedia", "health", (int) this.getHealth(), (int) this.getMaxHealth()));
 			information.add(FossilsLegacyUtils.translation("dinopedia", "hunger", this.getHunger(), this.getMaxHunger()));
-			if (!this.isBaby()) {
+			if (this.getAge() >= this.getMinRideableAge()) {
 				information.add(FossilsLegacyUtils.translation("dinopedia", "rideable"));
+				information.add(FossilsLegacyUtils.translation("dinopedia", "able_to_fly"));
 			}
 		} else {
 			information.add(this.getDisplayName());

@@ -66,7 +66,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 	public void tick() {
 		super.tick();
 
-		if (FossilsLegacyConfig.willAnimalsGrow()) {
+		if (FossilsLegacyConfig.COMMON_CONFIG.willAnimalsGrow()) {
 			if (this.getGrowthStage() < this.maxGrowthStage()) {
 				if (this.tickCount >= Level.TICKS_PER_DAY) {
 					this.setGrowthStage(this.getGrowthStage() + 1);
@@ -75,7 +75,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 			}
 		}
 
-		if (FossilsLegacyConfig.willAnimalsStarve()) {
+		if (FossilsLegacyConfig.COMMON_CONFIG.willAnimalsStarve()) {
 			if (this.tickCount % 300 == 0) {
 				this.decreaseHunger();
 			}

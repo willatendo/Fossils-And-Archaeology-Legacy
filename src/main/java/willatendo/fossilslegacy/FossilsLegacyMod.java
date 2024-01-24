@@ -14,12 +14,13 @@ import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
 import willatendo.fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSerialisers;
 import willatendo.fossilslegacy.server.structure.FossilsLegacyStructurePeices;
 import willatendo.fossilslegacy.server.structure.FossilsLegacyStructureTypes;
+import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.config.ModConfig.Type;
+import willatendo.simplelibrary.config.api.ForgeConfigRegistry;
 
 public class FossilsLegacyMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
-//		FossilsLegacyConfig.init();
-
 		FossilsLegacyRecipeTypes.init();
 		FossilsLegacyRecipeSerialisers.init();
 		FossilsLegacySoundEvents.init();
@@ -38,5 +39,7 @@ public class FossilsLegacyMod implements ModInitializer {
 		ModEvents.entityAttributes();
 		ModEvents.creativeModTabModification();
 		ModEvents.addToBiomes();
+
+		ForgeConfigRegistry.INSTANCE.register(FossilsLegacyUtils.ID, Type.COMMON, FossilsLegacyConfig.COMMON_SPEC);
 	}
 }

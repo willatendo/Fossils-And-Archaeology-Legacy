@@ -1,8 +1,11 @@
 package willatendo.fossilslegacy.server.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+
+import org.apache.commons.compress.utils.Lists;
 
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -377,7 +380,22 @@ public class Smilodon extends Animal implements DinopediaInformation, HungryAnim
 
 	@Override
 	public List<Component> info(Player player) {
-		return List.of(FossilsLegacyUtils.translation("encyclopedia", "smilodon"), FossilsLegacyUtils.translation("encyclopedia", "owner", this.getOwner() != null ? this.getOwner().getDisplayName().getString() : FossilsLegacyUtils.translation("encyclopedia", "wild").getString()), FossilsLegacyUtils.translation("encyclopedia", "age", this.getDaysAlive()), FossilsLegacyUtils.translation("encyclopedia", "health", (int) this.getHealth()), FossilsLegacyUtils.translation("encyclopedia", "hunger", this.getHunger(), this.getMaxHunger()));
+		ArrayList<Component> information = Lists.newArrayList();
+		if (this.isTame() && this.isOwnedBy(player)) {
+			information.add(this.getDisplayName());
+			information.add(FossilsLegacyUtils.translation("dinopedia", "owner", this.getOwner() != null ? this.getOwner().getDisplayName().getString() : FossilsLegacyUtils.translation("encyclopedia", "wild").getString()));
+			information.add(FossilsLegacyUtils.translation("dinopedia", "age", this.getDaysAlive()));
+			information.add(FossilsLegacyUtils.translation("dinopedia", "health", (int) this.getHealth(), (int) this.getMaxHealth()));
+			information.add(FossilsLegacyUtils.translation("dinopedia", "hunger", this.getHunger(), this.getMaxHunger()));
+		} else {
+			information.add(this.getDisplayName());
+			if (this.isTame()) {
+				information.add(FossilsLegacyUtils.translation("dinopedia", "not_owner"));
+			} else {
+				information.add(FossilsLegacyUtils.translation("dinopedia", "wild"));
+			}
+		}
+		return information;
 	}
 
 	@Override

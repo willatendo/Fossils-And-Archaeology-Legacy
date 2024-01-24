@@ -24,7 +24,7 @@ public class BlockBreakRule {
 	}
 
 	public void tick() {
-		if (!FossilsLegacyConfig.willAnimalsBreakBlocks()) {
+		if (!FossilsLegacyConfig.COMMON_CONFIG.willAnimalsBreakBlocks()) {
 			return;
 		} else if (this.animal instanceof GrowingEntity growningEntity) {
 			if (growningEntity.getGrowthStage() < this.minimumAge) {

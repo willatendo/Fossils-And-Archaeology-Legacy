@@ -77,6 +77,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("death.attack.javelin", "%1$s was impaled by %2$s");
 
 		// Dinopedia
+		this.add("dinopedia.fossilslegacy.able_to_fly", "Able to Fly");
 		this.add("dinopedia.fossilslegacy.age", "Age: %s");
 		this.add("dinopedia.fossilslegacy.cold", "Cold");
 		this.add("dinopedia.fossilslegacy.creature", "Creature: %s");

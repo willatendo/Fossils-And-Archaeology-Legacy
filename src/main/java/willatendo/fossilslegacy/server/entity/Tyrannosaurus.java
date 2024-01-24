@@ -101,7 +101,7 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Pla
 	public void tick() {
 		super.tick();
 
-		if (!this.isTame() && !this.isBaby()) {
+		if (!this.isTame() && this.getGrowthStage() > 3) {
 			if (this.getHunger() == 1 || this.getHealth() <= 20) {
 				this.setKnockedOut(true);
 			}
@@ -323,6 +323,7 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Pla
 			information.add(FossilsLegacyUtils.translation("dinopedia", "age", this.getDaysAlive()));
 			information.add(FossilsLegacyUtils.translation("dinopedia", "health", (int) this.getHealth(), (int) this.getMaxHealth()));
 			information.add(FossilsLegacyUtils.translation("dinopedia", "hunger", this.getHunger(), this.getMaxHunger()));
+			information.add(FossilsLegacyUtils.translation("dinopedia", "rideable"));
 		} else {
 			information.add(this.getDisplayName());
 			if (this.isTame()) {
