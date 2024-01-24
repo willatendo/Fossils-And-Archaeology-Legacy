@@ -13,6 +13,7 @@ public class FossilsLegacyBlockLootTableProvider extends FabricBlockLootTablePro
 	@Override
 	public void generate() {
 		this.add(FossilsLegacyBlocks.FOSSIL_ORE.get(), noDrop());
+		this.add(FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get(), noDrop());
 		this.dropSelf(FossilsLegacyBlocks.SKULL_BLOCK.get());
 		this.dropSelf(FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get());
 		this.dropSelf(FossilsLegacyBlocks.ANALYZER.get());

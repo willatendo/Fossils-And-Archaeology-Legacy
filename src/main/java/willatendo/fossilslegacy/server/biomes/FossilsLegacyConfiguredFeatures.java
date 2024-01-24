@@ -22,7 +22,7 @@ public class FossilsLegacyConfiguredFeatures {
 	}
 
 	public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> bootstapContext) {
-		bootstapContext.register(ORE_FOSSIL, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), FossilsLegacyBlocks.FOSSIL_ORE.get().defaultBlockState())), 8, 0.0F)));
+		bootstapContext.register(ORE_FOSSIL, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), FossilsLegacyBlocks.FOSSIL_ORE.get().defaultBlockState()), OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get().defaultBlockState())), 8, 0.0F)));
 		bootstapContext.register(ORE_PERMAFROST, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), FossilsLegacyBlocks.PERMAFROST.get().defaultBlockState())), 8, 0.0F)));
 	}
 }

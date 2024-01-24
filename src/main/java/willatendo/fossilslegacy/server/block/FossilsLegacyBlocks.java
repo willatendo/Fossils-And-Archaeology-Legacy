@@ -4,6 +4,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -14,7 +15,8 @@ import willatendo.simplelibrary.server.util.SimpleUtils;
 public class FossilsLegacyBlocks {
 	public static final SimpleRegistry<Block> BLOCKS = SimpleRegistry.create(Registries.BLOCK, FossilsLegacyUtils.ID);
 
-	public static final SimpleHolder<FossilOreBlock> FOSSIL_ORE = BLOCKS.register("fossil_ore", () -> new FossilOreBlock(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(3.0F, 3.0F)));
+	public static final SimpleHolder<FossilOreBlock> FOSSIL_ORE = BLOCKS.register("fossil_ore", () -> new FossilOreBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 3.0F)));
+	public static final SimpleHolder<FossilOreBlock> DEEPSLATE_FOSSIL_ORE = BLOCKS.register("deepslate_fossil_ore", () -> new FossilOreBlock(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(4.5F, 3.0F).sound(SoundType.DEEPSLATE)));
 	public static final SimpleHolder<SkullBlock> SKULL_BLOCK = BLOCKS.register("skull_block", () -> new SkullBlock(BlockBehaviour.Properties.of().strength(1.0F)));
 	public static final SimpleHolder<SkullBlock> SKULL_LANTURN_BLOCK = BLOCKS.register("skull_lanturn_block", () -> new SkullBlock(BlockBehaviour.Properties.of().strength(1.0F).lightLevel(blockState -> 15)));
 	public static final SimpleHolder<AnalyzerBlock> ANALYZER = BLOCKS.register("analyzer", () -> new AnalyzerBlock(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)));

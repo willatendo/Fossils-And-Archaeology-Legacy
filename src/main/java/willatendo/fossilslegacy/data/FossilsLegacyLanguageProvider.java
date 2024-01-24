@@ -47,6 +47,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 
 		// Blocks
 		this.add(FossilsLegacyBlocks.FOSSIL_ORE.get());
+		this.add(FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get());
 		this.add(FossilsLegacyBlocks.SKULL_BLOCK.get());
 		this.add(FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get());
 		this.add(FossilsLegacyBlocks.ANALYZER.get());
@@ -305,6 +306,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("menu.fossilslegacy.archaeology_workbench", "Archaeology Workbench");
 		this.add("menu.fossilslegacy.cultivator", "Cultivator");
 		this.add("menu.fossilslegacy.feeder", "Feeder");
+
+		// Packs
+		this.add("pack.fossilslegacy.fa_legacy_textures", "F/A Legacy Original Textures");
 
 		// Stone Tablet
 		this.add("stone_tablet.fossilslegacy.lighting.title", "Lightning");
