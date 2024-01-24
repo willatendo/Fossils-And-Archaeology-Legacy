@@ -46,19 +46,20 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("advancements.fossilslegacy.legacy.skeletons.desc", "Kill a drowned pirate!");
 
 		// Blocks
-		this.add(FossilsLegacyBlocks.FOSSIL_ORE.get(), "Fossil Ore");
-		this.add(FossilsLegacyBlocks.SKULL_BLOCK.get(), "Skull Block");
-		this.add(FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get(), "Skull Lanturn Block");
-		this.add(FossilsLegacyBlocks.ANALYZER.get(), "Analyzer");
+		this.add(FossilsLegacyBlocks.FOSSIL_ORE.get());
+		this.add(FossilsLegacyBlocks.SKULL_BLOCK.get());
+		this.add(FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get());
+		this.add(FossilsLegacyBlocks.ANALYZER.get());
+		this.add(FossilsLegacyBlocks.CULTIVATOR.get());
 		this.add("block.fossilslegacy.cultivator.shatter", "Warning! Cultivation falure!");
-		this.add(FossilsLegacyBlocks.CULTIVATOR.get(), "Cultivator");
-		this.add(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get(), "Archaeology Workbench");
-		this.add(FossilsLegacyBlocks.JURASSIC_FERN.get(), "Jurassic Fern");
+		this.add(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get());
+		this.add(FossilsLegacyBlocks.JURASSIC_FERN.get());
+		this.add(FossilsLegacyBlocks.DRUM.get());
 		this.add("block.fossilslegacy.drum.hit", "Set all creatures that are commanded with a %s to %s.");
-		this.add(FossilsLegacyBlocks.DRUM.get(), "Drum");
-		this.add(FossilsLegacyBlocks.FEEDER.get(), "Feeder");
-		this.add(FossilsLegacyBlocks.PERMAFROST.get(), "Permafrost");
-		this.add(FossilsLegacyBlocks.ICED_STONE.get(), "Iced Stone");
+		this.add(FossilsLegacyBlocks.FEEDER.get());
+		this.add(FossilsLegacyBlocks.PERMAFROST.get());
+		this.add(FossilsLegacyBlocks.ICED_STONE.get());
+		this.add(FossilsLegacyBlocks.AXOLOTLSPAWN.get());
 
 		// Commands
 		this.add("command.fossilslegacy.follow", "Follow");
@@ -219,14 +220,12 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.WOLF_DNA.get(), "Wolf DNA");
 		this.add(FossilsLegacyItems.SMILODON_DNA.get(), "Smilodon DNA");
 		this.add(FossilsLegacyItems.MAMMOTH_DNA.get(), "Mammoth DNA");
-		this.add(FossilsLegacyItems.AXOLOTL_EGGS.get());
 		this.add(FossilsLegacyItems.CAT_EMBRYO_SYRINGE.get());
 		this.add(FossilsLegacyItems.INCUBATED_CHICKEN_EGG.get());
 		this.add(FossilsLegacyItems.COW_EMBRYO_SYRINGE.get());
 		this.add(FossilsLegacyItems.DOLPHIN_EMBRYO_SYRINGE.get());
 		this.add(FossilsLegacyItems.DONKEY_EMBRYO_SYRINGE.get());
 		this.add(FossilsLegacyItems.FOX_EMBRYO_SYRINGE.get());
-		this.add(FossilsLegacyItems.FROG_EGGS.get());
 		this.add(FossilsLegacyItems.GOAT_EMBRYO_SYRINGE.get());
 		this.add(FossilsLegacyItems.HORSE_EMBRYO_SYRINGE.get());
 		this.add(FossilsLegacyItems.LLAMA_EMBRYO_SYRINGE.get());

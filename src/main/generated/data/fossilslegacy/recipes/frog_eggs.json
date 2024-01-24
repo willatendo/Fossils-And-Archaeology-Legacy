@@ -3,6 +3,6 @@
   "ingredient": {
     "item": "fossilslegacy:frog_dna"
   },
-  "result": "fossilslegacy:frog_eggs",
+  "result": "minecraft:frogspawn",
   "time": 6000
 }

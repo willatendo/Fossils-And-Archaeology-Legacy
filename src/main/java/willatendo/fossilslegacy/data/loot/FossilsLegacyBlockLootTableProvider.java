@@ -23,5 +23,6 @@ public class FossilsLegacyBlockLootTableProvider extends FabricBlockLootTablePro
 		this.dropSelf(FossilsLegacyBlocks.FEEDER.get());
 		this.add(FossilsLegacyBlocks.PERMAFROST.get(), noDrop());
 		this.add(FossilsLegacyBlocks.ICED_STONE.get(), block -> this.createSingleItemTableWithSilkTouch(block, Blocks.COBBLESTONE));
+		this.add(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), noDrop());
 	}
 }

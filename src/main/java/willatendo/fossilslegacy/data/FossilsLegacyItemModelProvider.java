@@ -96,14 +96,12 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
 		this.basicItem(FossilsLegacyItems.WOLF_DNA.get());
 		this.basicItem(FossilsLegacyItems.SMILODON_DNA.get());
 		this.basicItem(FossilsLegacyItems.MAMMOTH_DNA.get());
-		this.basicItem(FossilsLegacyItems.AXOLOTL_EGGS.get());
 		this.basicItem(FossilsLegacyItems.CAT_EMBRYO_SYRINGE.get());
 		this.basicItem(FossilsLegacyItems.INCUBATED_CHICKEN_EGG.get());
 		this.basicItem(FossilsLegacyItems.COW_EMBRYO_SYRINGE.get());
 		this.basicItem(FossilsLegacyItems.DOLPHIN_EMBRYO_SYRINGE.get());
 		this.basicItem(FossilsLegacyItems.DONKEY_EMBRYO_SYRINGE.get());
 		this.basicItem(FossilsLegacyItems.FOX_EMBRYO_SYRINGE.get());
-		this.basicItem(FossilsLegacyItems.FROG_EGGS.get());
 		this.basicItem(FossilsLegacyItems.GOAT_EMBRYO_SYRINGE.get());
 		this.basicItem(FossilsLegacyItems.HORSE_EMBRYO_SYRINGE.get());
 		this.basicItem(FossilsLegacyItems.LLAMA_EMBRYO_SYRINGE.get());
@@ -168,7 +166,9 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
 		for (SimpleHolder<? extends Block> blocks : FossilsLegacyBlocks.BLOCKS.getEntries()) {
 			ResourceLocation blockId = blocks.getId();
 			if (blocks.get() == FossilsLegacyBlocks.JURASSIC_FERN.get()) {
-				this.handheldItem(blockId, FossilsLegacyUtils.resource("block/fern_lower_3"));
+				this.basicItem(blockId, this.modLoc("block/fern_lower_3"));
+			} else if (blocks.get() == FossilsLegacyBlocks.AXOLOTLSPAWN.get()) {
+				this.basicItem(blockId, this.modLoc("block/axolotlspawn"));
 			} else {
 				this.getBuilder(blockId.toString()).parent(new ModelFile.UncheckedModelFile(FossilsLegacyUtils.resource("block/" + blockId.getPath() + (blockId.getPath().contains("drum") ? "_follow" : blockId.getPath().contains("feeder") ? "_empty" : ""))));
 			}

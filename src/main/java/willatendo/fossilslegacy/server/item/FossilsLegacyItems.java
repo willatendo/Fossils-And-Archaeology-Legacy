@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.server.item;
 
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorItem.Type;
 import net.minecraft.world.item.AxeItem;
@@ -10,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.PlaceOnWaterBlockItem;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.SwordItem;
@@ -105,14 +105,12 @@ public class FossilsLegacyItems {
 	public static final SimpleHolder<Item> WOLF_DNA = ITEMS.register("wolf_dna", () -> new Item(new Item.Properties()));
 	public static final SimpleHolder<Item> SMILODON_DNA = ITEMS.register("smilodon_dna", () -> new Item(new Item.Properties()));
 	public static final SimpleHolder<Item> MAMMOTH_DNA = ITEMS.register("mammoth_dna", () -> new Item(new Item.Properties()));
-	public static final SimpleHolder<Item> AXOLOTL_EGGS = ITEMS.register("axolotl_eggs", () -> new PlaceEntityItem(() -> EntityType.AXOLOTL, new Item.Properties()));
 	public static final SimpleHolder<Item> CAT_EMBRYO_SYRINGE = ITEMS.register("cat_embryo_syringe", () -> new SyringeItem(SyringeAnimals.CAT, new Item.Properties().stacksTo(1)));
 	public static final SimpleHolder<Item> INCUBATED_CHICKEN_EGG = ITEMS.register("incubated_chicken_egg", () -> new IncubatedEggItem(0, new Item.Properties().stacksTo(16)));
 	public static final SimpleHolder<Item> COW_EMBRYO_SYRINGE = ITEMS.register("cow_embryo_syringe", () -> new SyringeItem(SyringeAnimals.COW, new Item.Properties().stacksTo(1)));
 	public static final SimpleHolder<Item> DOLPHIN_EMBRYO_SYRINGE = ITEMS.register("dolphin_embryo_syringe", () -> new SyringeItem(SyringeAnimals.DOLPHIN, new Item.Properties().stacksTo(1)));
 	public static final SimpleHolder<Item> DONKEY_EMBRYO_SYRINGE = ITEMS.register("donkey_embryo_syringe", () -> new SyringeItem(SyringeAnimals.DONKEY, new Item.Properties().stacksTo(1)));
 	public static final SimpleHolder<Item> FOX_EMBRYO_SYRINGE = ITEMS.register("fox_embryo_syringe", () -> new SyringeItem(SyringeAnimals.FOX, new Item.Properties().stacksTo(1)));
-	public static final SimpleHolder<Item> FROG_EGGS = ITEMS.register("frog_eggs", () -> new PlaceEntityItem(() -> EntityType.TADPOLE, new Item.Properties()));
 	public static final SimpleHolder<Item> GOAT_EMBRYO_SYRINGE = ITEMS.register("goat_embryo_syringe", () -> new SyringeItem(SyringeAnimals.GOAT, new Item.Properties().stacksTo(1)));
 	public static final SimpleHolder<Item> HORSE_EMBRYO_SYRINGE = ITEMS.register("horse_embryo_syringe", () -> new SyringeItem(SyringeAnimals.HORSE, new Item.Properties().stacksTo(1)));
 	public static final SimpleHolder<Item> LLAMA_EMBRYO_SYRINGE = ITEMS.register("llama_embryo_syringe", () -> new SyringeItem(SyringeAnimals.LLAMA, new Item.Properties().stacksTo(1)));
@@ -174,7 +172,8 @@ public class FossilsLegacyItems {
 	public static final SimpleHolder<Item> VELOCIRAPTOR_SPAWN_EGG = ITEMS.register("velociraptor_spawn_egg", () -> new SpawnEggItem(FossilsLegacyEntities.VELOCIRAPTOR.get(), 0x66965f, 0x884c2e, new Item.Properties()));
 
 	public static void init() {
-		SimpleUtils.registerAllItems(ITEMS, FossilsLegacyBlocks.BLOCKS);
+		SimpleUtils.registerAllItems(ITEMS, FossilsLegacyBlocks.BLOCKS, FossilsLegacyBlocks.AXOLOTLSPAWN);
+		ITEMS.register("axolotlspawn", () -> new PlaceOnWaterBlockItem(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), new Item.Properties()));
 		ITEMS.register();
 	}
 }

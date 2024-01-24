@@ -101,10 +101,10 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
 		Map<Item, Integer> map = Maps.newLinkedHashMap();
 		map.put(FossilsLegacyItems.FOSSIL.get(), 300);
 		map.put(FossilsLegacyItems.RAW_CHICKEN_SOUP_BUCKET.get(), 1000);
-		map.put(FossilsLegacyItems.AXOLOTL_EGGS.get(), 12000);
+		map.put(FossilsLegacyBlocks.AXOLOTLSPAWN.get().asItem(), 12000);
 		map.put(FossilsLegacyItems.BRACHIOSAURUS_EGG.get(), 12000);
 		map.put(FossilsLegacyItems.DILOPHOSAURUS_EGG.get(), 12000);
-		map.put(FossilsLegacyItems.FROG_EGGS.get(), 12000);
+		map.put(Items.FROGSPAWN, 12000);
 		map.put(FossilsLegacyItems.INCUBATED_CHICKEN_EGG.get(), 12000);
 		map.put(FossilsLegacyItems.INCUBATED_PARROT_EGG.get(), 12000);
 		map.put(FossilsLegacyItems.MOSASAURUS_EGG.get(), 12000);
