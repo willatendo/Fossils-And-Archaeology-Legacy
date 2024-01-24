@@ -12,7 +12,7 @@ import willatendo.fossilslegacy.server.entity.ThrownJavelin;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class ThrownJavelinRenderer extends ArrowRenderer<ThrownJavelin> {
-	public static final Map<Integer, ResourceLocation> TEXTURES = Map.of(0, FossilsLegacyUtils.resource("textures/entities/wooden_javelin.png"), 1, FossilsLegacyUtils.resource("textures/entities/stone_javelin.png"), 2, FossilsLegacyUtils.resource("textures/entities/iron_javelin.png"), 3, FossilsLegacyUtils.resource("textures/entities/golden_javelin.png"), 4, FossilsLegacyUtils.resource("textures/entities/diamond_javelin.png"), 5, FossilsLegacyUtils.resource("textures/entities/netherite_javelin.png"), 6, FossilsLegacyUtils.resource("textures/entities/gem_javelin.png"));
+	public static final Map<Integer, ResourceLocation> TEXTURES = Map.of(0, FossilsLegacyUtils.resource("textures/entities/wooden_javelin.png"), 1, FossilsLegacyUtils.resource("textures/entities/stone_javelin.png"), 2, FossilsLegacyUtils.resource("textures/entities/iron_javelin.png"), 3, FossilsLegacyUtils.resource("textures/entities/golden_javelin.png"), 4, FossilsLegacyUtils.resource("textures/entities/diamond_javelin.png"), 5, FossilsLegacyUtils.resource("textures/entities/netherite_javelin.png"), 6, FossilsLegacyUtils.resource("textures/entities/scarab_gem_javelin.png"));
 
 	public ThrownJavelinRenderer(Context context) {
 		super(context);

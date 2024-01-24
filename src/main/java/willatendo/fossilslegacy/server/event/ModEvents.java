@@ -1,9 +1,15 @@
 package willatendo.fossilslegacy.server.event;
 
+import java.util.Optional;
+
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
+import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.loader.api.ModContainer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.animal.Cat;
@@ -47,6 +53,7 @@ import willatendo.fossilslegacy.server.entity.Tyrannosaurus;
 import willatendo.fossilslegacy.server.entity.Velociraptor;
 import willatendo.fossilslegacy.server.entity.ZombifiedPigman;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.event.EntityStruckByLightningCallback;
 import willatendo.simplelibrary.server.event.StruckByLightningCallback;
 
@@ -77,6 +84,11 @@ public class ModEvents {
 				}
 			}
 		});
+	}
+
+	public static void addLegacyPack() {
+		Optional<ModContainer> modContainer = FabricLoader.getInstance().getModContainer(FossilsLegacyUtils.ID);
+		ResourceManagerHelper.registerBuiltinResourcePack(FossilsLegacyUtils.resource("fa_legacy_textures"), modContainer.get(), ResourcePackActivationType.NORMAL);
 	}
 
 	public static void entityAttributes() {
