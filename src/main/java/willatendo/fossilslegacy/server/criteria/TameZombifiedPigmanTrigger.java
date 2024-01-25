@@ -14,7 +14,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.level.storage.loot.LootContext;
 import willatendo.fossilslegacy.server.criteria.TameZombifiedPigmanTrigger.TriggerInstance;
-import willatendo.fossilslegacy.server.entity.ZombifiedPigman;
+import willatendo.fossilslegacy.server.entity.TamedZombifiedPiglin;
 
 public class TameZombifiedPigmanTrigger extends SimpleCriterionTrigger<TriggerInstance> {
 	@Override
@@ -22,7 +22,7 @@ public class TameZombifiedPigmanTrigger extends SimpleCriterionTrigger<TriggerIn
 		return TriggerInstance.CODEC;
 	}
 
-	public void trigger(ServerPlayer serverPlayer, ZombifiedPigman zombifiedPigman) {
+	public void trigger(ServerPlayer serverPlayer, TamedZombifiedPiglin zombifiedPigman) {
 		LootContext lootContext = EntityPredicate.createContext(serverPlayer, zombifiedPigman);
 		this.trigger(serverPlayer, (triggerInstance) -> triggerInstance.matches(lootContext));
 	}

@@ -69,7 +69,8 @@ public class FossilsLegacyEntities {
 	public static final SimpleHolder<EntityType<PregnantSmilodon>> PREGNANT_SMILODON = ENTITY_TYPES.register("pregnant_smilodon", () -> FabricEntityTypeBuilder.<PregnantSmilodon>create(MobCategory.CREATURE, PregnantSmilodon::new).dimensions(EntityDimensions.fixed(2.5F, 2.5F)).build());
 	public static final SimpleHolder<EntityType<PregnantWolf>> PREGNANT_WOLF = ENTITY_TYPES.register("pregnant_wolf", () -> FabricEntityTypeBuilder.<PregnantWolf>create(MobCategory.CREATURE, PregnantWolf::new).dimensions(EntityDimensions.fixed(0.6F, 0.85F)).build());
 
-	public static final SimpleHolder<EntityType<ZombifiedPigman>> ZOMBIFIED_PIGMAN = ENTITY_TYPES.register("zombified_pigman", () -> FabricEntityTypeBuilder.<ZombifiedPigman>create(MobCategory.MONSTER, ZombifiedPigman::new).dimensions(EntityDimensions.fixed(.6F, 1.95F)).build());
+	public static final SimpleHolder<EntityType<Anu>> ANU = ENTITY_TYPES.register("anu", () -> FabricEntityTypeBuilder.<Anu>create(MobCategory.MONSTER, Anu::new).dimensions(EntityDimensions.fixed(0.6F, 1.95F)).build());
+	public static final SimpleHolder<EntityType<TamedZombifiedPiglin>> TAMED_ZOMBIFIED_PIGLIN = ENTITY_TYPES.register("tamed_zombified_piglin", () -> FabricEntityTypeBuilder.<TamedZombifiedPiglin>create(MobCategory.MONSTER, TamedZombifiedPiglin::new).dimensions(EntityDimensions.fixed(.6F, 1.95F)).build());
 	public static final SimpleHolder<EntityType<DrownedPirate>> DROWNED_PIRATE = ENTITY_TYPES.register("drowned_pirate", () -> FabricEntityTypeBuilder.<DrownedPirate>create(MobCategory.MONSTER, DrownedPirate::new).dimensions(EntityDimensions.fixed(0.6F, 1.99F)).build());
 	public static final SimpleHolder<EntityType<Failuresaurus>> FAILURESAURUS = ENTITY_TYPES.register("failuresaurus", () -> FabricEntityTypeBuilder.<Failuresaurus>create(MobCategory.MONSTER, Failuresaurus::new).dimensions(EntityDimensions.fixed(1.0F, 1.0F)).build());
 

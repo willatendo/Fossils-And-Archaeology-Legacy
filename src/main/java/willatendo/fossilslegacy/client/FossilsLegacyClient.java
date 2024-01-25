@@ -63,7 +63,7 @@ import willatendo.fossilslegacy.client.render.ThrownJavelinRenderer;
 import willatendo.fossilslegacy.client.render.TriceratopsRenderer;
 import willatendo.fossilslegacy.client.render.TyrannosaurusRenderer;
 import willatendo.fossilslegacy.client.render.VelociraptorRenderer;
-import willatendo.fossilslegacy.client.render.ZombifiedPigmanRenderer;
+import willatendo.fossilslegacy.client.render.TamedZombifiedPiglinRenderer;
 import willatendo.fossilslegacy.client.screen.AnalyzerScreen;
 import willatendo.fossilslegacy.client.screen.ArchaeologyWorkbenchScreen;
 import willatendo.fossilslegacy.client.screen.CultivatorScreen;
@@ -102,7 +102,7 @@ public class FossilsLegacyClient implements ClientModInitializer {
 
 		EntityRendererRegistry.register(FossilsLegacyEntities.EGG.get(), EggRenderer::new);
 
-		EntityRendererRegistry.register(FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), context -> new ZombifiedPigmanRenderer(context, ModelLayers.ZOMBIFIED_PIGLIN, ModelLayers.ZOMBIFIED_PIGLIN_INNER_ARMOR, ModelLayers.ZOMBIFIED_PIGLIN_OUTER_ARMOR, true));
+		EntityRendererRegistry.register(FossilsLegacyEntities.TAMED_ZOMBIFIED_PIGLIN.get(), context -> new TamedZombifiedPiglinRenderer(context, ModelLayers.ZOMBIFIED_PIGLIN, ModelLayers.ZOMBIFIED_PIGLIN_INNER_ARMOR, ModelLayers.ZOMBIFIED_PIGLIN_OUTER_ARMOR, true));
 		EntityRendererRegistry.register(FossilsLegacyEntities.DROWNED_PIRATE.get(), DrownedPirateRenderer::new);
 		EntityRendererRegistry.register(FossilsLegacyEntities.FAILURESAURUS.get(), FailuresaurusRenderer::new);
 

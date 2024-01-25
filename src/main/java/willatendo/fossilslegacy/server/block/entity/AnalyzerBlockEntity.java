@@ -138,6 +138,10 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 				if (recipe != null) {
 					int maxStackSize = analyzerBlockEntity.getMaxStackSize();
 					ItemStack output = recipe.value().assemble(analyzerBlockEntity, level.registryAccess());
+					if (!willFitInSlot(output, 9, analyzerBlockEntity.itemStacks, maxStackSize) && !willFitInSlot(output, 10, analyzerBlockEntity.itemStacks, maxStackSize) && !willFitInSlot(output, 11, analyzerBlockEntity.itemStacks, maxStackSize) && !willFitInSlot(output, 12, analyzerBlockEntity.itemStacks, maxStackSize)) {
+						analyzerBlockEntity.analyzationProgress = 0;
+						break;
+					}
 					for (int outputSlots = 9; outputSlots < 13; outputSlots++) {
 						if (analyzerBlockEntity.canAnalyze(outputSlots, inputSlots, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
 							if (!analyzerBlockEntity.isOn()) {
@@ -160,13 +164,6 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 								}
 							}
 							break;
-						} else {
-							if (outputSlots == 12) {
-								analyzerBlockEntity.analyzationProgress = 0;
-								break;
-							} else {
-								continue;
-							}
 						}
 					}
 				}
@@ -184,6 +181,11 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 		if (changed) {
 			setChanged(level, blockPos, blockState);
 		}
+	}
+
+	private static boolean willFitInSlot(ItemStack itemStack, int slot, NonNullList<ItemStack> itemStacks, int maxStackSize) {
+		ItemStack inSlot = itemStacks.get(slot);
+		return itemStacks.get(slot).isEmpty() || (ItemStack.isSameItem(itemStack, inSlot) && (inSlot.getCount() + itemStack.getCount() <= maxStackSize && inSlot.getCount() + itemStack.getCount() <= inSlot.getMaxStackSize()) && inSlot.getCount() + itemStack.getCount() <= itemStack.getMaxStackSize());
 	}
 
 	private boolean canAnalyze(int slot, int inputSlot, ItemStack output, NonNullList<ItemStack> itemStacks, int maxStackSize) {

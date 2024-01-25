@@ -41,7 +41,7 @@ public class FossilsLegacyEntityLootTableProvider extends SimpleEntityLootSubPro
 		this.add(FossilsLegacyEntities.TYRANNOSAURUS.get(), LootTable.lootTable());
 		this.add(FossilsLegacyEntities.VELOCIRAPTOR.get(), LootTable.lootTable());
 
-		this.add(FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), LootTable.lootTable());
+		this.add(FossilsLegacyEntities.TAMED_ZOMBIFIED_PIGLIN.get(), LootTable.lootTable());
 		this.add(FossilsLegacyEntities.DROWNED_PIRATE.get(), LootTable.lootTable());
 		this.add(FossilsLegacyEntities.FAILURESAURUS.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(UniformGenerator.between(0.0F, 2.0F)).add(LootItem.lootTableItem(FossilsLegacyItems.FOSSIL.get()))));
 

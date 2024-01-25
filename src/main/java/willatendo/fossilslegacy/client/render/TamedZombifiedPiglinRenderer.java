@@ -11,11 +11,11 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
 
-public class ZombifiedPigmanRenderer extends HumanoidMobRenderer<Mob, PiglinModel<Mob>> {
+public class TamedZombifiedPiglinRenderer extends HumanoidMobRenderer<Mob, PiglinModel<Mob>> {
 	private static final ResourceLocation TEXTURES = new ResourceLocation("textures/entity/piglin/zombified_piglin.png");
 
-	public ZombifiedPigmanRenderer(EntityRendererProvider.Context context, ModelLayerLocation modelLayerLocation, ModelLayerLocation modelLayerLocation2, ModelLayerLocation modelLayerLocation3, boolean bl) {
-		super(context, ZombifiedPigmanRenderer.createModel(context.getModelSet(), modelLayerLocation, bl), 0.5f, 1.0019531f, 1.0f, 1.0019531f);
+	public TamedZombifiedPiglinRenderer(EntityRendererProvider.Context context, ModelLayerLocation modelLayerLocation, ModelLayerLocation modelLayerLocation2, ModelLayerLocation modelLayerLocation3, boolean bl) {
+		super(context, TamedZombifiedPiglinRenderer.createModel(context.getModelSet(), modelLayerLocation, bl), 0.5f, 1.0019531f, 1.0f, 1.0019531f);
 		this.addLayer(new HumanoidArmorLayer(this, new HumanoidArmorModel(context.bakeLayer(modelLayerLocation2)), new HumanoidArmorModel(context.bakeLayer(modelLayerLocation3)), context.getModelManager()));
 	}
 

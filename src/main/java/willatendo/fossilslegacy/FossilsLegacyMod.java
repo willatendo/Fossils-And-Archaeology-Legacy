@@ -38,6 +38,7 @@ public class FossilsLegacyMod implements ModInitializer {
 		ModEvents.lightning();
 		ModEvents.addLegacyPack();
 		ModEvents.entityAttributes();
+		ModEvents.entitySpawns();
 		ModEvents.creativeModTabModification();
 		ModEvents.addToBiomes();
 

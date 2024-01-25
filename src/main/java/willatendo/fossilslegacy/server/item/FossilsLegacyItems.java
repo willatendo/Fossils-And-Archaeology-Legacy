@@ -154,7 +154,7 @@ public class FossilsLegacyItems {
 	public static final SimpleHolder<Item> SCARAB_GEM_JAVELIN = ITEMS.register("scarab_gem_javelin", () -> new JavelinItem(FossilsLegacyTiers.SCARAB_GEM, new Item.Properties().stacksTo(16)));
 	public static final SimpleHolder<Item> BROKEN_SCARAB_GEM_JAVELIN = ITEMS.register("broken_scarab_gem_javelin", () -> new BrokenJavelinItem(FossilsLegacyTiers.SCARAB_GEM, new Item.Properties()));
 
-	public static final SimpleHolder<Item> ZOMBIFIED_PIGMAN_SPAWN_EGG = ITEMS.register("zombified_pigman_spawn_egg", () -> new SpawnEggItem(FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), 0xEA9393, 0x4C7129, new Item.Properties()));
+	public static final SimpleHolder<Item> ZOMBIFIED_PIGMAN_SPAWN_EGG = ITEMS.register("zombified_pigman_spawn_egg", () -> new SpawnEggItem(FossilsLegacyEntities.TAMED_ZOMBIFIED_PIGLIN.get(), 0xEA9393, 0x4C7129, new Item.Properties()));
 	public static final SimpleHolder<Item> DROWNED_PIRATE_SPAWN_EGG = ITEMS.register("drowned_pirate_spawn_egg", () -> new SpawnEggItem(FossilsLegacyEntities.DROWNED_PIRATE.get(), 0x8FF1D7, 0x799C65, new Item.Properties()));
 	public static final SimpleHolder<Item> FAILURESAURUS_SPAWN_EGG = ITEMS.register("failuresaurus_spawn_egg", () -> new SpawnEggItem(FossilsLegacyEntities.FAILURESAURUS.get(), 0x51e6a5, 0x1b5128, new Item.Properties()));
 

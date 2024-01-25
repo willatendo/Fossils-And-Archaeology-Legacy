@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.server.entity;
 import java.util.EnumSet;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Function;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
@@ -41,22 +42,35 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
+import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class ZombifiedPigman extends ZombifiedPiglin implements OwnableEntity {
-	protected static final EntityDataAccessor<Byte> FLAGS = SynchedEntityData.defineId(ZombifiedPigman.class, EntityDataSerializers.BYTE);
-	protected static final EntityDataAccessor<Optional<UUID>> OWNER_UUID = SynchedEntityData.defineId(ZombifiedPigman.class, EntityDataSerializers.OPTIONAL_UUID);
+public class TamedZombifiedPiglin extends ZombifiedPiglin implements OwnableEntity, SpeakingEntity {
+	protected static final EntityDataAccessor<Byte> FLAGS = SynchedEntityData.defineId(TamedZombifiedPiglin.class, EntityDataSerializers.BYTE);
+	protected static final EntityDataAccessor<Optional<UUID>> OWNER_UUID = SynchedEntityData.defineId(TamedZombifiedPiglin.class, EntityDataSerializers.OPTIONAL_UUID);
 
-	public ZombifiedPigman(EntityType<? extends ZombifiedPigman> zombiePigman, Level level) {
+	public TamedZombifiedPiglin(EntityType<? extends TamedZombifiedPiglin> zombiePigman, Level level) {
 		super(zombiePigman, level);
 		this.reassessTameGoals();
 	}
 
 	@Override
+	public void tick() {
+		super.tick();
+
+		if (this.getOwner() != null) {
+			if (this.getOwner().isDeadOrDying()) {
+				this.sendMessageToPlayer(TamedZombifiedPiglin.TameZombifiedPiglinSpeaker.SACRIFICE, (Player) this.getOwner());
+				this.discard();
+			}
+		}
+	}
+
+	@Override
 	protected void registerGoals() {
 		super.registerGoals();
-		this.goalSelector.addGoal(6, new ZombifiedPigman.FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F, false));
-		this.targetSelector.addGoal(1, new ZombifiedPigman.OwnerHurtByTargetGoal(this));
-		this.targetSelector.addGoal(2, new ZombifiedPigman.OwnerHurtTargetGoal(this));
+		this.goalSelector.addGoal(6, new TamedZombifiedPiglin.FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F, false));
+		this.targetSelector.addGoal(1, new TamedZombifiedPiglin.OwnerHurtByTargetGoal(this));
+		this.targetSelector.addGoal(2, new TamedZombifiedPiglin.OwnerHurtTargetGoal(this));
 		this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
 	}
 
@@ -235,7 +249,7 @@ public class ZombifiedPigman extends ZombifiedPiglin implements OwnableEntity {
 	}
 
 	class FollowOwnerGoal extends Goal {
-		private final ZombifiedPigman tamable;
+		private final TamedZombifiedPiglin tamable;
 		private LivingEntity owner;
 		private final LevelReader level;
 		private final double speedModifier;
@@ -246,7 +260,7 @@ public class ZombifiedPigman extends ZombifiedPiglin implements OwnableEntity {
 		private float oldWaterCost;
 		private final boolean canFly;
 
-		public FollowOwnerGoal(ZombifiedPigman zombifiedPigman, double speedModifier, float startDistance, float stopDistance, boolean canFly) {
+		public FollowOwnerGoal(TamedZombifiedPiglin zombifiedPigman, double speedModifier, float startDistance, float stopDistance, boolean canFly) {
 			this.tamable = zombifiedPigman;
 			this.level = zombifiedPigman.level();
 			this.speedModifier = speedModifier;
@@ -367,11 +381,11 @@ public class ZombifiedPigman extends ZombifiedPiglin implements OwnableEntity {
 	}
 
 	class OwnerHurtByTargetGoal extends TargetGoal {
-		private final ZombifiedPigman zombifiedPigman;
+		private final TamedZombifiedPiglin zombifiedPigman;
 		private LivingEntity ownerLastHurtBy;
 		private int timestamp;
 
-		public OwnerHurtByTargetGoal(ZombifiedPigman zombifiedPigman) {
+		public OwnerHurtByTargetGoal(TamedZombifiedPiglin zombifiedPigman) {
 			super(zombifiedPigman, false);
 			this.zombifiedPigman = zombifiedPigman;
 			this.setFlags(EnumSet.of(Goal.Flag.TARGET));
@@ -406,11 +420,11 @@ public class ZombifiedPigman extends ZombifiedPiglin implements OwnableEntity {
 	}
 
 	class OwnerHurtTargetGoal extends TargetGoal {
-		private final ZombifiedPigman zombifiedPigman;
+		private final TamedZombifiedPiglin zombifiedPigman;
 		private LivingEntity ownerLastHurt;
 		private int timestamp;
 
-		public OwnerHurtTargetGoal(ZombifiedPigman zombifiedPigman) {
+		public OwnerHurtTargetGoal(TamedZombifiedPiglin zombifiedPigman) {
 			super(zombifiedPigman, false);
 			this.zombifiedPigman = zombifiedPigman;
 			this.setFlags(EnumSet.of(Goal.Flag.TARGET));
@@ -441,6 +455,35 @@ public class ZombifiedPigman extends ZombifiedPiglin implements OwnableEntity {
 			}
 
 			super.start();
+		}
+	}
+
+	public static enum TameZombifiedPiglinSpeaker implements Speaker {
+		ANU_SUMMON("anu_summon"),
+		SACRIFICE("sacrifice"),
+		SUMMON(player -> TamedZombifiedPiglin.TameZombifiedPiglinSpeaker.basicSpeach("summon", player.getDisplayName().getString()));
+
+		private Function<Player, Component> message;
+
+		private TameZombifiedPiglinSpeaker(Function<Player, Component> message) {
+			this.message = message;
+		}
+
+		private TameZombifiedPiglinSpeaker(String id) {
+			this(player -> TamedZombifiedPiglin.TameZombifiedPiglinSpeaker.basicSpeach(id));
+		}
+
+		protected static Component basicSpeach(String id) {
+			return FossilsLegacyUtils.translation("entity", "zombified_piglin.speach." + id);
+		}
+
+		protected static Component basicSpeach(String id, Object... args) {
+			return FossilsLegacyUtils.translation("entity", "zombified_piglin.speach." + id, args);
+		}
+
+		@Override
+		public Component getMessage(Player player) {
+			return this.message.apply(player);
 		}
 	}
 }

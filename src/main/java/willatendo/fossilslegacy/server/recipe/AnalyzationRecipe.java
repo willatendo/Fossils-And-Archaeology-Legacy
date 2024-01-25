@@ -35,7 +35,16 @@ public class AnalyzationRecipe implements Recipe<Container> {
 
 	@Override
 	public boolean matches(Container container, Level level) {
-		return this.ingredient.test(container.getItem(0));
+		boolean matchesAny = false;
+		for (int i = 0; i < 10; i++) {
+			if (this.ingredient.test(container.getItem(i))) {
+				matchesAny = true;
+				break;
+			} else {
+				continue;
+			}
+		}
+		return matchesAny;
 	}
 
 	@Override

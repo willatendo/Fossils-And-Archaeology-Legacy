@@ -134,7 +134,23 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyEntities.PREGNANT_SMILODON.get(), "Smildon");
 		this.add(FossilsLegacyEntities.PREGNANT_WOLF.get(), "Wolf");
 
-		this.add(FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get());
+//		this.add(FossilsLegacyEntities.ANU.get(), "Anu");
+		this.add("entity.fossilslegacy.anu.speach.greetings", "Kneel down! Resistance is futile!");
+		this.add("entity.fossilslegacy.anu.speach.weak_attacked", "Bare hands? Brave!");
+		this.add("entity.fossilslegacy.anu.speach.threating", "Draw your sword, kid!");
+		this.add("entity.fossilslegacy.anu.speach.bow_attacked", "Bow-using coward! Stop hidding!");
+		this.add("entity.fossilslegacy.anu.speach.learned_here", "Look what I learned here!");
+		this.add("entity.fossilslegacy.anu.speach.learned_there", "Look what I learned there!");
+		this.add("entity.fossilslegacy.anu.speach.generic_ranged_attacked", "So, is that your weapon?");
+		this.add("entity.fossilslegacy.anu.speach.generic_melee_attacked", "Ha! Stop Playing!");
+		this.add("entity.fossilslegacy.anu.speach.summon_zombified_piglins", "Work for me, rise my servants!");
+		this.add("entity.fossilslegacy.anu.speach.summon_pigs", "Brutes, wake up your wisdom!");
+		this.add("entity.fossilslegacy.anu.speach.qi_shock", "Qi-shock!");
+		this.add("entity.fossilslegacy.anu.speach.rain_fire", "Let's rain fire!");
+		this.add(FossilsLegacyEntities.TAMED_ZOMBIFIED_PIGLIN.get(), "Zombified Piglin");
+		this.add("entity.fossilslegacy.zombified_piglin.speach.anu_summon", "All hiel Anu!");
+		this.add("entity.fossilslegacy.zombified_piglin.speach.sacrifice", "I cannot live without my Master!");
+		this.add("entity.fossilslegacy.zombified_piglin.speach.summon", "I swear my life to %s!");
 		this.add(FossilsLegacyEntities.DROWNED_PIRATE.get());
 
 		this.add(FossilsLegacyEntities.THROWN_JAVELIN.get());

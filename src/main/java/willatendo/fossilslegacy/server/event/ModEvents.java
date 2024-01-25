@@ -12,6 +12,8 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.SpawnPlacements.Type;
 import net.minecraft.world.entity.animal.Cat;
 import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.entity.animal.Dolphin;
@@ -33,8 +35,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
+import net.minecraft.world.level.levelgen.Heightmap;
 import willatendo.fossilslegacy.server.biomes.FossilsLegacyPlacedFeatures;
 import willatendo.fossilslegacy.server.entity.AncientLightningBolt;
+import willatendo.fossilslegacy.server.entity.Anu;
 import willatendo.fossilslegacy.server.entity.Brachiosaurus;
 import willatendo.fossilslegacy.server.entity.Dilophosaurus;
 import willatendo.fossilslegacy.server.entity.DrownedPirate;
@@ -51,7 +55,7 @@ import willatendo.fossilslegacy.server.entity.Stegosaurus;
 import willatendo.fossilslegacy.server.entity.Triceratops;
 import willatendo.fossilslegacy.server.entity.Tyrannosaurus;
 import willatendo.fossilslegacy.server.entity.Velociraptor;
-import willatendo.fossilslegacy.server.entity.ZombifiedPigman;
+import willatendo.fossilslegacy.server.entity.TamedZombifiedPiglin;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.event.EntityStruckByLightningCallback;
@@ -73,8 +77,9 @@ public class ModEvents {
 			if (lightningBolt instanceof AncientLightningBolt ancientLightningBolt) {
 				if (entity instanceof Pig pig) {
 					Level level = ancientLightningBolt.level();
-					ZombifiedPigman zombifiedPigman = FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get().create(level);
+					TamedZombifiedPiglin zombifiedPigman = FossilsLegacyEntities.TAMED_ZOMBIFIED_PIGLIN.get().create(level);
 					zombifiedPigman.tame(((Player) ancientLightningBolt.getOwner()));
+					zombifiedPigman.sendMessageToPlayer(TamedZombifiedPiglin.TameZombifiedPiglinSpeaker.SUMMON, ((Player) ancientLightningBolt.getOwner()));
 					zombifiedPigman.setItemInHand(InteractionHand.MAIN_HAND, FossilsLegacyItems.ANCIENT_SWORD.get().getDefaultInstance());
 					zombifiedPigman.setItemSlot(EquipmentSlot.HEAD, FossilsLegacyItems.ANCIENT_HELMET.get().getDefaultInstance());
 					zombifiedPigman.moveTo(pig.getX(), pig.getY(), pig.getZ());
@@ -105,7 +110,7 @@ public class ModEvents {
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.TYRANNOSAURUS.get(), Tyrannosaurus.tyrannosaurusAttributes());
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.VELOCIRAPTOR.get(), Velociraptor.velociraptorAttributes());
 
-		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.ZOMBIFIED_PIGMAN.get(), ZombifiedPiglin.createAttributes().build());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.TAMED_ZOMBIFIED_PIGLIN.get(), ZombifiedPiglin.createAttributes().build());
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.DROWNED_PIRATE.get(), DrownedPirate.createAttributes().build());
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.FAILURESAURUS.get(), Failuresaurus.createAttributes().build());
 
@@ -131,14 +136,18 @@ public class ModEvents {
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_WOLF.get(), Wolf.createAttributes().build());
 	}
 
+	public static void entitySpawns() {
+		SpawnPlacements.register(FossilsLegacyEntities.ANU.get(), Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Anu::checkAnuSpawnRules);
+	}
+
 	public static void creativeModTabModification() {
 		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.SPAWN_EGGS).register(content -> {
-			content.accept(FossilsLegacyItems.DROWNED_PIRATE_SPAWN_EGG.get());
-			content.accept(FossilsLegacyItems.ZOMBIFIED_PIGMAN_SPAWN_EGG.get());
-			content.accept(FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get());
-			content.accept(FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get());
-			content.accept(FossilsLegacyItems.SMILODON_SPAWN_EGG.get());
-			content.accept(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get());
+//			content.accept(FossilsLegacyItems.DROWNED_PIRATE_SPAWN_EGG.get());
+//			content.accept(FossilsLegacyItems.ZOMBIFIED_PIGMAN_SPAWN_EGG.get());
+//			content.accept(FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get());
+//			content.accept(FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get());
+//			content.accept(FossilsLegacyItems.SMILODON_SPAWN_EGG.get());
+//			content.accept(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get());
 		});
 	}
 

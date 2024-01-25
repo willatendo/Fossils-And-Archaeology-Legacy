@@ -1,7 +1,7 @@
-// 1.20.4	2024-01-24T10:25:32.8043712	Fossils and Archaeology Legacy/fossilslegacy: Item Models
+// 1.20.4	2024-01-24T12:18:26.0322257	Fossils and Archaeology Legacy/fossilslegacy: Item Models
 8acedddacf7368b55f421a24a3cd08413ee3c58c assets\fossilslegacy\models\item\brachiosaurus_egg.json
-89ec69b213d909644c7d68e122b8c279574798aa assets\fossilslegacy\models\item\brachiosaurus_dna.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\fossilslegacy\models\item\nautilus_spawn_egg.json
+89ec69b213d909644c7d68e122b8c279574798aa assets\fossilslegacy\models\item\brachiosaurus_dna.json
 31dd43877df061d9545cec3170428577d29da4ac assets\fossilslegacy\models\item\archaeology_workbench.json
 6376b3b0333caeb74c5267493978506ac825b798 assets\fossilslegacy\models\item\nautilus_eggs.json
 f482c1cec2d7c7683367552aa0d0c7a1923ed8ef assets\fossilslegacy\models\item\raw_plesiosaurus_meat.json
@@ -62,8 +62,8 @@ b79f7f00ba843cb164ee6ee3e58a3137bbf8074b assets\fossilslegacy\models\item\pig_dn
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets\fossilslegacy\models\item\analyzer.json
 808f37650c373864dc09c58921b9d623142b8e05 assets\fossilslegacy\models\item\cooked_plesiosaurus_meat.json
 340718e203e9dc4b26837480537911524963b4a7 assets\fossilslegacy\models\item\mule_embryo_syringe.json
-c8f1672e08af093a68af718e385f6250480d003d assets\fossilslegacy\models\item\permafrost.json
 7b94531c65ce8269ac68fbb7d19d9201eda46b1c assets\fossilslegacy\models\item\scarab_gem_sword.json
+c8f1672e08af093a68af718e385f6250480d003d assets\fossilslegacy\models\item\permafrost.json
 e067931b1bf2f11b98d4aee3bfbab88bbc0cb545 assets\fossilslegacy\models\item\rabbit_embryo_syringe.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\fossilslegacy\models\item\pteranodon_spawn_egg.json
 c9f2e78854037eca1f72506bf2d2b213f7ccf801 assets\fossilslegacy\models\item\stegosaurus_egg.json
@@ -143,8 +143,8 @@ bd9cfd4fb2ac96636f21c31895e4806965337ace assets\fossilslegacy\models\item\rabbit
 edf4160f29f196b08fd6d8041c585536fa8b4407 assets\fossilslegacy\models\item\cooked_velociraptor_meat.json
 41c5f6a309438824458da52752171cd09485a937 assets\fossilslegacy\models\item\ancient_helmet.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\fossilslegacy\models\item\mammoth_spawn_egg.json
-1268493f3ef08c709dd6675a0561099019d80ceb assets\fossilslegacy\models\item\axolotl_dna.json
 768b3b472a15aa0a0c3a71674520bd7e89759175 assets\fossilslegacy\models\item\llama_dna.json
+1268493f3ef08c709dd6675a0561099019d80ceb assets\fossilslegacy\models\item\axolotl_dna.json
 331458055b6b1bea96500d4333d8916ad6c932fb assets\fossilslegacy\models\item\jurassic_fern.json
 87f5c7ae093510863c35fe9a89b8349e46a98672 assets\fossilslegacy\models\item\raw_dilophosaurus_meat.json
 41294aff9ed309331ee8f22d3f0fb9c0cd358b6a assets\fossilslegacy\models\item\broken_diamond_javelin.json
