@@ -32,14 +32,9 @@ public class PteranodonRenderer extends MobRenderer<Pteranodon, AbstractPteranod
 	}
 
 	@Override
-	protected void scale(Pteranodon pteranodon, PoseStack poseStack, float scale) {
-		float newScale = this.growScale(pteranodon, true);
-
-		poseStack.scale(1.0F * (1 + newScale), 1.0F * (1 + newScale), 1.0F * (1 + newScale));
-	}
-
-	public float growScale(Pteranodon pteranodon, boolean isLegacyModel) {
-		return isLegacyModel ? (pteranodon.getGrowthStage() * 0.25F) : (pteranodon.getGrowthStage() - (pteranodon.isBaby() ? 0 : 2)) * 0.25F;
+	protected void scale(Pteranodon pteranodon, PoseStack poseStack, float packedOverlay) {
+		poseStack.scale(0.8F * (0.2F + (float) pteranodon.getGrowthStage()), 0.8F * (0.2F + (float) pteranodon.getGrowthStage()), 0.8F * (0.2F + (float) pteranodon.getGrowthStage()));
+		super.scale(pteranodon, poseStack, packedOverlay);
 	}
 
 	@Override

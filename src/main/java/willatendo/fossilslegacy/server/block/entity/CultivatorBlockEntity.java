@@ -201,12 +201,12 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
 				cultivatorBlockEntity.onDuration = cultivatorBlockEntity.onTime;
 				if (cultivatorBlockEntity.isOn()) {
 					changed = true;
-					if (fuel.getItem().hasCraftingRemainingItem()) {
-						cultivatorBlockEntity.itemStacks.set(1, new ItemStack(fuel.getItem().getCraftingRemainingItem()));
-					} else if (hasFuel) {
+					if (hasFuel) {
+						Item fuelItem = fuel.getItem();
 						fuel.shrink(1);
 						if (fuel.isEmpty()) {
-							cultivatorBlockEntity.itemStacks.set(1, new ItemStack(fuel.getItem().getCraftingRemainingItem()));
+							Item craftingRemainder = fuelItem.getCraftingRemainingItem();
+							cultivatorBlockEntity.itemStacks.set(1, craftingRemainder == null ? ItemStack.EMPTY : new ItemStack(craftingRemainder));
 						}
 					}
 				}

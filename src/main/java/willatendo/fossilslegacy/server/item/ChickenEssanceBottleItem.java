@@ -24,9 +24,6 @@ public class ChickenEssanceBottleItem extends Item {
 				if (livingEntity instanceof Dinosaur dinosaur) {
 					dinosaur.setHealth((float) (livingEntity.getHealth() + dinosaur.getMinHealth()));
 				}
-//				if (livingEntity instanceof HungryAnimal hungryAnimal) {
-//					hungryAnimal.setHunger(hungryAnimal.getHunger() - 500);
-//				}
 				ItemUtils.createFilledResult(itemStack, player, Items.GLASS_BOTTLE.getDefaultInstance());
 				return InteractionResult.sidedSuccess(player.level().isClientSide());
 			}

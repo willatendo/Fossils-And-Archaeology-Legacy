@@ -8,6 +8,7 @@ import java.util.UUID;
 import org.apache.commons.compress.utils.Lists;
 
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -19,6 +20,7 @@ import net.minecraft.server.players.OldUsersConverter;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -27,7 +29,9 @@ import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.OwnableEntity;
+import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.BreedGoal;
@@ -45,8 +49,10 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
+import willatendo.fossilslegacy.FossilsLegacyConfig;
 import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
@@ -66,6 +72,12 @@ public class Smilodon extends Animal implements DinopediaInformation, HungryAnim
 
 	public Smilodon(EntityType<? extends Animal> entityType, Level level) {
 		super(entityType, level);
+	}
+
+	@Override
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData, CompoundTag compoundTag) {
+		this.setHunger(this.getMaxHunger());
+		return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData, compoundTag);
 	}
 
 	@Override
@@ -179,6 +191,29 @@ public class Smilodon extends Animal implements DinopediaInformation, HungryAnim
 						float f2 = (this.random.nextFloat() * 2.0F - 1.0F) * this.getBbWidth() * 0.5F;
 						this.level().addParticle(ParticleTypes.SPLASH, this.getX() + (double) f1, (double) (f + 0.8F), this.getZ() + (double) f2, vec3.x, vec3.y, vec3.z);
 					}
+				}
+			}
+		}
+
+		if (this.tickCount % Level.TICKS_PER_DAY == 0) {
+			this.setDaysAlive(this.getDaysAlive() + 1);
+		}
+
+		if (FossilsLegacyConfig.COMMON_CONFIG.willAnimalsStarve()) {
+			if (this.tickCount % 300 == 0) {
+				this.decreaseHunger();
+			}
+
+			if (this.getHunger() < 0) {
+				this.hurt(new DamageSource(this.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(FossilsLegacyDamageTypes.ANIMAL_STARVE)), 20.0F);
+			}
+		}
+
+		if (this.tickCount % 10 == 0) {
+			if (this.getHealth() < this.getMaxHealth()) {
+				if (this.getHunger() > this.getMaxHunger() / 2) {
+					this.setHunger(this.getHunger() - 5);
+					this.setHealth(this.getHealth() + 1.0F);
 				}
 			}
 		}

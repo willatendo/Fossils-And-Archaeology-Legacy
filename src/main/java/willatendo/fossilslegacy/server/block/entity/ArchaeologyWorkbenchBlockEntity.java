@@ -37,6 +37,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import willatendo.fossilslegacy.server.block.ArchaeologyWorkbenchBlock;
+import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.menu.ArchaeologyWorkbenchMenu;
 import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
@@ -148,47 +149,52 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
 		ItemStack fuel = archaeologyWorkbenchBlockEntity.itemStacks.get(1);
 		boolean hasInput = !archaeologyWorkbenchBlockEntity.itemStacks.get(0).isEmpty();
 		boolean hasFuel = !fuel.isEmpty();
-		if (archaeologyWorkbenchBlockEntity.isOn() || hasFuel && hasInput) {
-			RecipeHolder<ArchaeologyRecipe> recipe;
-			if (hasInput) {
-				recipe = archaeologyWorkbenchBlockEntity.recipeCheck.getRecipeFor(archaeologyWorkbenchBlockEntity, level).orElse(null);
-			} else {
-				recipe = null;
-			}
+		ItemStack input = archaeologyWorkbenchBlockEntity.itemStacks.get(0);
+		if (input.is(FossilsLegacyItemTags.REPAIR_WHEN_BROKEN_IN_ARCHAEOLOGY_TABLE) && !(input.isDamaged())) {
+		} else {
+			if (archaeologyWorkbenchBlockEntity.isOn() || hasFuel && hasInput) {
 
-			int maxStackSize = archaeologyWorkbenchBlockEntity.getMaxStackSize();
-			if (!archaeologyWorkbenchBlockEntity.isOn() && archaeologyWorkbenchBlockEntity.canFix(level.registryAccess(), recipe, archaeologyWorkbenchBlockEntity.itemStacks, maxStackSize)) {
-				archaeologyWorkbenchBlockEntity.onTime = archaeologyWorkbenchBlockEntity.getOnDuration(fuel);
-				archaeologyWorkbenchBlockEntity.onDuration = archaeologyWorkbenchBlockEntity.onTime;
-				if (archaeologyWorkbenchBlockEntity.isOn()) {
-					changed = true;
-					if (fuel.getItem().hasCraftingRemainingItem()) {
-						archaeologyWorkbenchBlockEntity.itemStacks.set(1, new ItemStack(fuel.getItem().getCraftingRemainingItem()));
-					} else if (hasFuel) {
-						fuel.shrink(1);
-						if (fuel.isEmpty()) {
-							archaeologyWorkbenchBlockEntity.itemStacks.set(1, new ItemStack(fuel.getItem().getCraftingRemainingItem()));
+				RecipeHolder<ArchaeologyRecipe> recipe;
+				if (hasInput) {
+					recipe = archaeologyWorkbenchBlockEntity.recipeCheck.getRecipeFor(archaeologyWorkbenchBlockEntity, level).orElse(null);
+				} else {
+					recipe = null;
+				}
+
+				int maxStackSize = archaeologyWorkbenchBlockEntity.getMaxStackSize();
+				if (!archaeologyWorkbenchBlockEntity.isOn() && archaeologyWorkbenchBlockEntity.canFix(level.registryAccess(), recipe, archaeologyWorkbenchBlockEntity.itemStacks, maxStackSize)) {
+					archaeologyWorkbenchBlockEntity.onTime = archaeologyWorkbenchBlockEntity.getOnDuration(fuel);
+					archaeologyWorkbenchBlockEntity.onDuration = archaeologyWorkbenchBlockEntity.onTime;
+					if (archaeologyWorkbenchBlockEntity.isOn()) {
+						changed = true;
+						if (hasFuel) {
+							Item fuelItem = fuel.getItem();
+							fuel.shrink(1);
+							if (fuel.isEmpty()) {
+								Item craftingRemainder = fuelItem.getCraftingRemainingItem();
+								archaeologyWorkbenchBlockEntity.itemStacks.set(1, craftingRemainder == null ? ItemStack.EMPTY : new ItemStack(craftingRemainder));
+							}
 						}
 					}
 				}
-			}
 
-			if (archaeologyWorkbenchBlockEntity.isOn() && archaeologyWorkbenchBlockEntity.canFix(level.registryAccess(), recipe, archaeologyWorkbenchBlockEntity.itemStacks, maxStackSize)) {
-				++archaeologyWorkbenchBlockEntity.archaeologyProgress;
-				if (archaeologyWorkbenchBlockEntity.archaeologyProgress == archaeologyWorkbenchBlockEntity.archaeologyTotalTime) {
-					archaeologyWorkbenchBlockEntity.archaeologyProgress = 0;
-					archaeologyWorkbenchBlockEntity.archaeologyTotalTime = getTotalArchaeologyTime(level, archaeologyWorkbenchBlockEntity);
-					if (archaeologyWorkbenchBlockEntity.fix(level.registryAccess(), recipe, archaeologyWorkbenchBlockEntity.itemStacks, maxStackSize)) {
-						archaeologyWorkbenchBlockEntity.setRecipeUsed(recipe);
+				if (archaeologyWorkbenchBlockEntity.isOn() && archaeologyWorkbenchBlockEntity.canFix(level.registryAccess(), recipe, archaeologyWorkbenchBlockEntity.itemStacks, maxStackSize)) {
+					++archaeologyWorkbenchBlockEntity.archaeologyProgress;
+					if (archaeologyWorkbenchBlockEntity.archaeologyProgress == archaeologyWorkbenchBlockEntity.archaeologyTotalTime) {
+						archaeologyWorkbenchBlockEntity.archaeologyProgress = 0;
+						archaeologyWorkbenchBlockEntity.archaeologyTotalTime = getTotalArchaeologyTime(level, archaeologyWorkbenchBlockEntity);
+						if (archaeologyWorkbenchBlockEntity.fix(level.registryAccess(), recipe, archaeologyWorkbenchBlockEntity.itemStacks, maxStackSize)) {
+							archaeologyWorkbenchBlockEntity.setRecipeUsed(recipe);
+						}
+
+						changed = true;
 					}
-
-					changed = true;
+				} else {
+					archaeologyWorkbenchBlockEntity.archaeologyProgress = 0;
 				}
-			} else {
-				archaeologyWorkbenchBlockEntity.archaeologyProgress = 0;
+			} else if (!archaeologyWorkbenchBlockEntity.isOn() && archaeologyWorkbenchBlockEntity.archaeologyProgress > 0) {
+				archaeologyWorkbenchBlockEntity.archaeologyProgress = Mth.clamp(archaeologyWorkbenchBlockEntity.archaeologyProgress - 2, 0, archaeologyWorkbenchBlockEntity.archaeologyTotalTime);
 			}
-		} else if (!archaeologyWorkbenchBlockEntity.isOn() && archaeologyWorkbenchBlockEntity.archaeologyProgress > 0) {
-			archaeologyWorkbenchBlockEntity.archaeologyProgress = Mth.clamp(archaeologyWorkbenchBlockEntity.archaeologyProgress - 2, 0, archaeologyWorkbenchBlockEntity.archaeologyTotalTime);
 		}
 
 		if (isOn != archaeologyWorkbenchBlockEntity.isOn()) {

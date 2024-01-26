@@ -92,7 +92,6 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
 		this.basicItem(FossilsLegacyItems.POLAR_BEAR_DNA.get());
 		this.basicItem(FossilsLegacyItems.RABBIT_DNA.get());
 		this.basicItem(FossilsLegacyItems.SHEEP_DNA.get());
-		this.basicItem(FossilsLegacyItems.TURTLE_DNA.get());
 		this.basicItem(FossilsLegacyItems.WOLF_DNA.get());
 		this.basicItem(FossilsLegacyItems.SMILODON_DNA.get());
 		this.basicItem(FossilsLegacyItems.MAMMOTH_DNA.get());

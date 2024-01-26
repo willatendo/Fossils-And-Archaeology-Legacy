@@ -45,11 +45,8 @@ import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class Brachiosaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur {
-//	private final BlockBreakRule blockBreakRule;
-
 	public Brachiosaurus(EntityType<? extends Brachiosaurus> entityType, Level level) {
 		super(entityType, level);
-//		this.blockBreakRule = new BlockBreakRule(this, 6, FossilsLegacyBlockTags.BRACHIOSAURUS_RESISTANT);
 
 		this.setMaxUpStep(this.getGrowthStage() < 4 ? 1.5F : this.getGrowthStage() < 8 ? 3.0F : 5.5F);
 	}

@@ -17,6 +17,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemKilledByPlayerC
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWithLootingCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.item.FossilsLegacyLootTables;
@@ -38,11 +39,11 @@ public class FossilsLegacyEntityLootTableProvider extends SimpleEntityLootSubPro
 		this.add(FossilsLegacyEntities.SMILODON.get(), LootTable.lootTable());
 		this.add(FossilsLegacyEntities.STEGOSAURUS.get(), LootTable.lootTable());
 		this.add(FossilsLegacyEntities.TRICERATOPS.get(), LootTable.lootTable());
-		this.add(FossilsLegacyEntities.TYRANNOSAURUS.get(), LootTable.lootTable());
+		this.add(FossilsLegacyEntities.TYRANNOSAURUS.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FossilsLegacyItems.TYRANNOSAURUS_TOOTH.get()))));
 		this.add(FossilsLegacyEntities.VELOCIRAPTOR.get(), LootTable.lootTable());
 
-		this.add(FossilsLegacyEntities.TAMED_ZOMBIFIED_PIGLIN.get(), LootTable.lootTable());
-		this.add(FossilsLegacyEntities.DROWNED_PIRATE.get(), LootTable.lootTable());
+		this.add(FossilsLegacyEntities.TAMED_ZOMBIFIED_PIGLIN.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(Items.ROTTEN_FLESH).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F))).apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0f, 1.0f))))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(Items.GOLD_NUGGET).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))).apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.GOLD_INGOT)).when(LootItemKilledByPlayerCondition.killedByPlayer()).when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.025F, 0.01F))));
+		this.add(FossilsLegacyEntities.DROWNED_PIRATE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FossilsLegacyBlocks.SKULL_BLOCK.get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))).add(LootItem.lootTableItem(Items.BONE).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F))))));
 		this.add(FossilsLegacyEntities.FAILURESAURUS.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(UniformGenerator.between(0.0F, 2.0F)).add(LootItem.lootTableItem(FossilsLegacyItems.FOSSIL.get()))));
 
 		this.add(FossilsLegacyEntities.EGG.get(), LootTable.lootTable());

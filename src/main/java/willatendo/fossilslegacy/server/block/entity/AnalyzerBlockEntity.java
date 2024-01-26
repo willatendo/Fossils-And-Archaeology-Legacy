@@ -125,50 +125,48 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 			--analyzerBlockEntity.onTime;
 		}
 
-		for (int inputSlots = 0; inputSlots < 9; inputSlots++) {
-			boolean hasInput = !analyzerBlockEntity.itemStacks.get(inputSlots).isEmpty();
-			if (analyzerBlockEntity.isOn() || hasInput) {
-				RecipeHolder<AnalyzationRecipe> recipe;
-				if (hasInput) {
-					recipe = analyzerBlockEntity.recipeCheck.getRecipeFor(analyzerBlockEntity, level).orElse(null);
-				} else {
-					recipe = null;
-				}
-
-				if (recipe != null) {
-					int maxStackSize = analyzerBlockEntity.getMaxStackSize();
-					ItemStack output = recipe.value().assemble(analyzerBlockEntity, level.registryAccess());
-					if (!willFitInSlot(output, 9, analyzerBlockEntity.itemStacks, maxStackSize) && !willFitInSlot(output, 10, analyzerBlockEntity.itemStacks, maxStackSize) && !willFitInSlot(output, 11, analyzerBlockEntity.itemStacks, maxStackSize) && !willFitInSlot(output, 12, analyzerBlockEntity.itemStacks, maxStackSize)) {
-						analyzerBlockEntity.analyzationProgress = 0;
-						break;
+		if (analyzerBlockEntity.itemStacks.get(9).isEmpty() || analyzerBlockEntity.itemStacks.get(10).isEmpty() || analyzerBlockEntity.itemStacks.get(11).isEmpty() || analyzerBlockEntity.itemStacks.get(12).isEmpty()) {
+			for (int inputSlots = 0; inputSlots < 9; inputSlots++) {
+				boolean hasInput = !analyzerBlockEntity.itemStacks.get(inputSlots).isEmpty();
+				if (analyzerBlockEntity.isOn() || hasInput) {
+					RecipeHolder<AnalyzationRecipe> recipe;
+					if (hasInput) {
+						recipe = analyzerBlockEntity.recipeCheck.getRecipeFor(analyzerBlockEntity, level).orElse(null);
+					} else {
+						recipe = null;
 					}
-					for (int outputSlots = 9; outputSlots < 13; outputSlots++) {
-						if (analyzerBlockEntity.canAnalyze(outputSlots, inputSlots, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-							if (!analyzerBlockEntity.isOn()) {
-								analyzerBlockEntity.onTime = 100;
-								if (analyzerBlockEntity.isOn()) {
-									changed = true;
-								}
-							}
 
-							if (analyzerBlockEntity.isOn()) {
-								analyzerBlockEntity.analyzationProgress++;
-								if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
-									analyzerBlockEntity.analyzationProgress = 0;
-									analyzerBlockEntity.analyzationTotalTime = getTotalAnalyzationTime(level, analyzerBlockEntity);
-									if (analyzerBlockEntity.analyze(outputSlots, inputSlots, output, analyzerBlockEntity.itemStacks, maxStackSize)) {
-										analyzerBlockEntity.setRecipeUsed(recipe);
+					if (recipe != null) {
+						int maxStackSize = analyzerBlockEntity.getMaxStackSize();
+						ItemStack outputStack = recipe.value().assemble(analyzerBlockEntity, level.registryAccess());
+						for (int outputSlots = 9; outputSlots < 13; outputSlots++) {
+							if (analyzerBlockEntity.canAnalyze(outputSlots, inputSlots, outputStack, analyzerBlockEntity.itemStacks, maxStackSize)) {
+								if (!analyzerBlockEntity.isOn()) {
+									analyzerBlockEntity.onTime = 100;
+									if (analyzerBlockEntity.isOn()) {
+										changed = true;
 									}
-
-									changed = true;
 								}
+
+								if (analyzerBlockEntity.isOn()) {
+									analyzerBlockEntity.analyzationProgress++;
+									if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
+										analyzerBlockEntity.analyzationProgress = 0;
+										analyzerBlockEntity.analyzationTotalTime = getTotalAnalyzationTime(level, analyzerBlockEntity);
+										if (analyzerBlockEntity.analyze(outputSlots, inputSlots, outputStack, analyzerBlockEntity.itemStacks, maxStackSize)) {
+											analyzerBlockEntity.setRecipeUsed(recipe);
+										}
+
+										changed = true;
+									}
+								}
+								break;
 							}
-							break;
 						}
 					}
+				} else if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.analyzationProgress > 0) {
+					analyzerBlockEntity.analyzationProgress = Mth.clamp(analyzerBlockEntity.analyzationProgress - 2, 0, analyzerBlockEntity.analyzationTotalTime);
 				}
-			} else if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.analyzationProgress > 0) {
-				analyzerBlockEntity.analyzationProgress = Mth.clamp(analyzerBlockEntity.analyzationProgress - 2, 0, analyzerBlockEntity.analyzationTotalTime);
 			}
 		}
 
@@ -181,11 +179,6 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 		if (changed) {
 			setChanged(level, blockPos, blockState);
 		}
-	}
-
-	private static boolean willFitInSlot(ItemStack itemStack, int slot, NonNullList<ItemStack> itemStacks, int maxStackSize) {
-		ItemStack inSlot = itemStacks.get(slot);
-		return itemStacks.get(slot).isEmpty() || (ItemStack.isSameItem(itemStack, inSlot) && (inSlot.getCount() + itemStack.getCount() <= maxStackSize && inSlot.getCount() + itemStack.getCount() <= inSlot.getMaxStackSize()) && inSlot.getCount() + itemStack.getCount() <= itemStack.getMaxStackSize());
 	}
 
 	private boolean canAnalyze(int slot, int inputSlot, ItemStack output, NonNullList<ItemStack> itemStacks, int maxStackSize) {

@@ -15,6 +15,8 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.library.util.RecipeUtil;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.jei.FossilsLegacyJEI;
@@ -68,7 +70,15 @@ public class ArchaeologyCategory implements IRecipeCategory<RecipeHolder<Archaeo
 	@Override
 	public void setRecipe(IRecipeLayoutBuilder iRecipeLayoutBuilder, RecipeHolder<ArchaeologyRecipe> archaeologyRecipeHolder, IFocusGroup iFocusGroup) {
 		ArchaeologyRecipe archaeologyRecipe = archaeologyRecipeHolder.value();
-		iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 5, 5).addIngredients(archaeologyRecipe.getIngredients().get(0));
+		ItemStack[] inputs = archaeologyRecipe.getIngredients().get(0).getItems();
+		for (int i = 0; i < inputs.length; i++) {
+			ItemStack input = inputs[i];
+			if (input.isDamageableItem()) {
+				input.setDamageValue(input.getMaxDamage() * 3 / 4);
+			}
+			inputs[i] = input;
+		}
+		iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 5, 5).addIngredients(Ingredient.of(inputs));
 		iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT, 67, 5).addItemStack(RecipeUtil.getResultItem(archaeologyRecipe));
 	}
 

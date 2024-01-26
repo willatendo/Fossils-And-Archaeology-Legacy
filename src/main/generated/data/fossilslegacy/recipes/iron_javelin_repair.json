@@ -1,0 +1,8 @@
+{
+  "type": "fossilslegacy:archaeology",
+  "ingredient": {
+    "item": "fossilslegacy:broken_iron_javelin"
+  },
+  "result": "fossilslegacy:iron_javelin",
+  "time": 3000
+}

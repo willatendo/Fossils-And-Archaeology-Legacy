@@ -98,6 +98,14 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Pla
 	}
 
 	@Override
+	public boolean hurt(DamageSource damageSource, float hearts) {
+		if (damageSource.is(FossilsLegacyDamgeTypeTags.TYRANNOSAURUS_IMMUNE)) {
+			return false;
+		}
+		return super.hurt(damageSource, hearts);
+	}
+
+	@Override
 	public void tick() {
 		super.tick();
 
@@ -186,12 +194,18 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Pla
 	public InteractionResult interactAt(Player player, Vec3 vec3, InteractionHand interactionHand) {
 		ItemStack itemStack = player.getItemInHand(interactionHand);
 
-		if (this.isKnockedOut()) {
-			if (itemStack.is(FossilsLegacyItems.SCARAB_GEM.get())) {
+		if (itemStack.is(FossilsLegacyItems.SCARAB_GEM.get())) {
+			if (this.isKnockedOut() && !this.isTame() && this.getAge() > 3) {
 				this.setKnockedOut(false);
 				this.setHealth(this.getMaxHealth());
 				this.setOwnerUUID(player.getUUID());
 				return InteractionResult.SUCCESS;
+			} else {
+				if (this.getAge() <= 3) {
+					this.sendMessageToPlayer(DinoSituation.TAME_TYRANNOSAURUS_ERROR_TOO_YOUNG, player);
+				} else if (!this.isKnockedOut()) {
+					this.sendMessageToPlayer(DinoSituation.TAME_TYRANNOSAURUS_ERROR_HEALTH, player);
+				}
 			}
 		}
 

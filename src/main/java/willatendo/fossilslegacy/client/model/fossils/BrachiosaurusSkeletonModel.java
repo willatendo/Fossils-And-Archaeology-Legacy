@@ -34,7 +34,7 @@ public class BrachiosaurusSkeletonModel extends AbstractSkeletonModel {
 		partDefinition.addOrReplaceChild("front_right_thigh", CubeListBuilder.create().texOffs(50, 21).addBox(0.0F, 0.0F, -2.0F, 3.0F, 7.0F, 4.0F).mirror(), PartPose.offset(3.0F, 12.0F, -3.5F));
 		partDefinition.addOrReplaceChild("front_right_calf", CubeListBuilder.create().texOffs(0, 24).addBox(0.5F, 7.0F, -2.0F, 2.0F, 5.0F, 3.0F).mirror(), PartPose.offset(3.0F, 12.0F, -3.5F));
 		partDefinition.addOrReplaceChild("front_left_thigh", CubeListBuilder.create().texOffs(50, 21).addBox(-3.0F, 0.0F, -2.0F, 3.0F, 7.0F, 4.0F).mirror(), PartPose.offset(-3.0F, 12.0F, -3.5F));
-		partDefinition.addOrReplaceChild("front_left_calf", CubeListBuilder.create().texOffs(0, 24).addBox(-2.5F, 7.0F, -2.0F, 2.0F, 5.0F, 3.0F).mirror(), PartPose.offset(3.0F, 12.0F, -3.5F));
+		partDefinition.addOrReplaceChild("front_left_calf", CubeListBuilder.create().texOffs(0, 24).addBox(-2.5F, 7.0F, -2.0F, 2.0F, 5.0F, 3.0F).mirror(), PartPose.offset(-3.0F, 12.0F, -3.5F));
 		partDefinition.addOrReplaceChild("back_right_thigh", CubeListBuilder.create().texOffs(50, 21).addBox(-1.0F, 0.0F, -2.0F, 3.0F, 5.0F, 4.0F).mirror(), PartPose.offset(3.0F, 14.0F, 4.5F));
 		partDefinition.addOrReplaceChild("back_right_calf", CubeListBuilder.create().texOffs(0, 24).addBox(-0.5F, 5.0F, -1.0F, 2.0F, 5.0F, 3.0F).mirror(), PartPose.offset(3.0F, 14.0F, 4.5F));
 		partDefinition.addOrReplaceChild("back_left_thigh", CubeListBuilder.create().texOffs(50, 21).addBox(-2.0F, 0.0F, -2.0F, 3.0F, 5.0F, 4.0F).mirror(), PartPose.offset(-3.0F, 14.0F, 4.5F));

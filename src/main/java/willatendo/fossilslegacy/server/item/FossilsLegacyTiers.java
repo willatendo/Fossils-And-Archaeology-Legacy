@@ -8,7 +8,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 public enum FossilsLegacyTiers implements Tier {
 	ANCIENT(1, 131, 4.0F, 1.0F, 5, () -> Ingredient.of()),
 	DAGGER(1, 131, 4.0F, 1.0F, 5, () -> Ingredient.of()),
-	SCARAB_GEM(5, 4231, 10.0F, 5.0F, 17, () -> Ingredient.of()),
+	SCARAB_GEM(5, 4231, 10.0F, 5.0F, 17, () -> Ingredient.of(FossilsLegacyItems.SCARAB_GEM.get())),
 	ICED_MEAT(0, 4, 4.0F, 6.0F, 0, () -> Ingredient.of());
 
 	private final int level;

@@ -7,6 +7,7 @@ import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
+import willatendo.fossilslegacy.server.event.ModCallbacks;
 import willatendo.fossilslegacy.server.event.ModEvents;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenus;
@@ -35,12 +36,8 @@ public class FossilsLegacyMod implements ModInitializer {
 
 		FossilsLegacyCriteriaTriggers.init();
 
-		ModEvents.lightning();
-		ModEvents.addLegacyPack();
-		ModEvents.entityAttributes();
-		ModEvents.entitySpawns();
-		ModEvents.creativeModTabModification();
-		ModEvents.addToBiomes();
+		ModCallbacks.callbacks();
+		ModEvents.events();
 
 		ForgeConfigRegistry.INSTANCE.register(FossilsLegacyUtils.ID, Type.COMMON, FossilsLegacyConfig.COMMON_SPEC);
 	}

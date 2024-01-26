@@ -1,0 +1,8 @@
+{
+  "type": "fossilslegacy:archaeology",
+  "ingredient": {
+    "item": "fossilslegacy:scarab_gem_hoe"
+  },
+  "result": "fossilslegacy:scarab_gem_hoe",
+  "time": 3000
+}

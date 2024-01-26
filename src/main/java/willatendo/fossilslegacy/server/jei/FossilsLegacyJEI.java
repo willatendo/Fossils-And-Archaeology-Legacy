@@ -5,13 +5,16 @@ import java.util.List;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.RecipeType;
+import mezz.jei.api.recipe.vanilla.IVanillaRecipeFactory;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.IRecipeTransferRegistration;
+import mezz.jei.api.registration.ISubtypeRegistration;
 import mezz.jei.api.runtime.IIngredientManager;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -21,6 +24,7 @@ import willatendo.fossilslegacy.client.screen.ArchaeologyWorkbenchScreen;
 import willatendo.fossilslegacy.client.screen.CultivatorScreen;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.block.entity.CultivatorBlockEntity;
+import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.jei.category.AnalyzationCategory;
 import willatendo.fossilslegacy.server.jei.category.ArchaeologyCategory;
 import willatendo.fossilslegacy.server.jei.category.BiomatterCategory;
@@ -76,6 +80,7 @@ public class FossilsLegacyJEI implements IModPlugin {
 	@Override
 	public void registerRecipes(IRecipeRegistration iRecipeRegistration) {
 		IIngredientManager iIngredientManager = iRecipeRegistration.getIngredientManager();
+		IVanillaRecipeFactory iVanillaRecipeFactory = iRecipeRegistration.getVanillaRecipeFactory();
 
 		FossilsLegacyRecipes fossilsLegacyRecipes = new FossilsLegacyRecipes(iIngredientManager);
 
@@ -87,6 +92,9 @@ public class FossilsLegacyJEI implements IModPlugin {
 		}
 		iRecipeRegistration.addRecipes(FossilsLegacyJEI.BIOMATTER, biomatterRecipes);
 		iRecipeRegistration.addRecipes(FossilsLegacyJEI.ANALYZATION, fossilsLegacyRecipes.getAnalyzationRecipes(this.analyzationCategory));
+
+		iRecipeRegistration.addRecipes(RecipeTypes.CRAFTING, fossilsLegacyRecipes.createMagicConchRecipes());
+		iRecipeRegistration.addRecipes(RecipeTypes.ANVIL, fossilsLegacyRecipes.createRepairRecipes(iVanillaRecipeFactory));
 	}
 
 	@Override
@@ -110,5 +118,10 @@ public class FossilsLegacyJEI implements IModPlugin {
 		iRecipeTransferRegistration.addRecipeTransferHandler(ArchaeologyWorkbenchMenu.class, FossilsLegacyMenus.ARCHAEOLOGY_WORKBENCH.get(), FossilsLegacyJEI.ARCHAEOLOGY, 0, 1, 3, 36);
 		iRecipeTransferRegistration.addRecipeTransferHandler(CultivatorMenu.class, FossilsLegacyMenus.CULTIVATOR.get(), FossilsLegacyJEI.CULTIVATION, 0, 1, 3, 36);
 		iRecipeTransferRegistration.addRecipeTransferHandler(AnalyzerMenu.class, FossilsLegacyMenus.ANALYZER.get(), FossilsLegacyJEI.ANALYZATION, 0, 9, 10, 36);
+	}
+
+	@Override
+	public void registerItemSubtypes(ISubtypeRegistration iSubtypeRegistration) {
+		iSubtypeRegistration.useNbtForSubtypes(FossilsLegacyItems.MAGIC_CONCH.get());
 	}
 }

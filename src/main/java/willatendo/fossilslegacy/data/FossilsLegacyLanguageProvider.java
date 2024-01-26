@@ -97,6 +97,11 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("dinopedia.fossilslegacy.wet", "Wet");
 		this.add("dinopedia.fossilslegacy.wild", "This Animal is Wild");
 
+		// Dino Situations
+		this.add("dinosaur.fossilslegacy.speach.full", "%s is full!");
+		this.add("dinosaur.fossilslegacy.speach.tame_tyrannosaurus_error_too_young", "%s is too young to be tamed!");
+		this.add("dinosaur.fossilslegacy.speach.tame_tyrannosaurus_error_health", "%s must be knocked out to be tamed!");
+
 		// Entities
 		this.add(FossilsLegacyEntities.BRACHIOSAURUS.get());
 		this.add(FossilsLegacyEntities.DILOPHOSAURUS.get());
@@ -234,7 +239,6 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.POLAR_BEAR_DNA.get(), "Polar Bear DNA");
 		this.add(FossilsLegacyItems.RABBIT_DNA.get(), "Rabbit DNA");
 		this.add(FossilsLegacyItems.SHEEP_DNA.get(), "Sheep DNA");
-		this.add(FossilsLegacyItems.TURTLE_DNA.get(), "Turtle DNA");
 		this.add(FossilsLegacyItems.WOLF_DNA.get(), "Wolf DNA");
 		this.add(FossilsLegacyItems.SMILODON_DNA.get(), "Smilodon DNA");
 		this.add(FossilsLegacyItems.MAMMOTH_DNA.get(), "Mammoth DNA");

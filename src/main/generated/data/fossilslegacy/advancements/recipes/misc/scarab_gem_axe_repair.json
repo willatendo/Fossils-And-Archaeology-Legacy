@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "fossilslegacy:turtle_dna"
+              "fossilslegacy:scarab_gem_axe"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fossilslegacy:turtle_egg"
+        "recipe": "fossilslegacy:scarab_gem_axe_repair"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "fossilslegacy:turtle_egg"
+      "fossilslegacy:scarab_gem_axe_repair"
     ]
   }
 }

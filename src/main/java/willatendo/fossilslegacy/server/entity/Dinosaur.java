@@ -13,6 +13,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.OldUsersConverter;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -20,8 +21,10 @@ import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
@@ -29,13 +32,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.FossilsLegacyConfig;
 import willatendo.fossilslegacy.server.entity.Egg.EggType;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnBirth, TameAccessor, PlayerCommandableAccess, HungryAnimal, DaysAlive, GrowingEntity {
+public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnBirth, TameAccessor, PlayerCommandableAccess, HungryAnimal, DaysAlive, GrowingEntity, SpeakingEntity {
 	private static final EntityDataAccessor<Integer> COMMAND = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> DAYS_ALIVE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> GROWTH_STAGE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
@@ -44,6 +48,12 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 
 	public Dinosaur(EntityType<? extends Dinosaur> entityType, Level level) {
 		super(entityType, level);
+	}
+
+	@Override
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData, CompoundTag compoundTag) {
+		this.setHunger(this.getMaxHunger());
+		return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData, compoundTag);
 	}
 
 	public abstract EggType eggType();
@@ -68,11 +78,15 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 
 		if (FossilsLegacyConfig.COMMON_CONFIG.willAnimalsGrow()) {
 			if (this.getGrowthStage() < this.maxGrowthStage()) {
-				if (this.tickCount >= Level.TICKS_PER_DAY) {
+				if (this.tickCount % Level.TICKS_PER_DAY == 0) {
 					this.setGrowthStage(this.getGrowthStage() + 1);
 					this.setHealth((float) (this.getHealth() + this.getMinHealth()));
 				}
 			}
+		}
+
+		if (this.tickCount % Level.TICKS_PER_DAY == 0) {
+			this.setDaysAlive(this.getDaysAlive() + 1);
 		}
 
 		if (FossilsLegacyConfig.COMMON_CONFIG.willAnimalsStarve()) {
@@ -154,6 +168,8 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 					this.usePlayerItem(player, interactionHand, itemStack);
 					this.setInLove(player);
 					return InteractionResult.SUCCESS;
+				} else {
+					this.sendMessageToPlayer(DinoSituation.FULL, player);
 				}
 			}
 			itemStack.shrink(1);
