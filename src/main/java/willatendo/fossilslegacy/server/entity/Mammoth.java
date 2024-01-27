@@ -50,7 +50,6 @@ import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.DismountHelper;
 import net.minecraft.world.item.ItemStack;
@@ -63,9 +62,10 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.FossilsLegacyConfig;
 import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
+import willatendo.fossilslegacy.server.entity.Egg.EggType;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class Mammoth extends Animal implements DinopediaInformation, HungryAnimal, PlayerRideable, OwnableEntity, TamesOnBirth, TameAccessor, DaysAlive, Shearable {
+public class Mammoth extends Dinosaur implements DinopediaInformation, HungryAnimal, PlayerRideable, OwnableEntity, TamesOnBirth, TameAccessor, DaysAlive, Shearable {
 	private static final EntityDataAccessor<Integer> HUNGER = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> DAYS_ALIVE = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Boolean> IS_SHEARED = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.BOOLEAN);
@@ -451,5 +451,41 @@ public class Mammoth extends Animal implements DinopediaInformation, HungryAnima
 	@Override
 	public void decreaseHunger() {
 		this.setHunger(this.getHunger() - 1);
+	}
+
+	@Override
+	public CommandType commandItems() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int maxGrowthStage() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getMinHealth() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public EggType eggType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public float boundingBoxGrowth() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int foodLevelForItemStack(ItemStack itemStack) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

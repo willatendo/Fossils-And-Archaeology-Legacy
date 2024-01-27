@@ -49,17 +49,18 @@ public class PlaceEntityItem extends Item {
 
 			if (this.entityType.get() != null) {
 				ServerLevel serverLevel = (ServerLevel) level;
-				Entity entity = this.entityType.get().create(level);// .spawn(, itemStack, useOnContext.getPlayer(), placePos, MobSpawnType.SPAWN_EGG, true, );
+				Entity entity = this.entityType.get().create(level);
 				this.entityModification(entity);
 				entity.setPos((double) placePos.getX() + 0.5, placePos.getY() + 1, (double) placePos.getZ() + 0.5);
 				double yOffset = getYOffset(serverLevel, blockPos, !Objects.equals(blockPos, placePos) && direction == Direction.UP, ((Entity) entity).getBoundingBox());
-				(entity).moveTo((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + yOffset, (double) blockPos.getZ() + 0.5D, Mth.wrapDegrees(serverLevel.random.nextFloat() * 360.0f), 0.0f);
+				entity.moveTo((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + yOffset, (double) blockPos.getZ() + 0.5D, Mth.wrapDegrees(serverLevel.random.nextFloat() * 360.0f), 0.0f);
 				if (entity instanceof Mob mob) {
 					mob.yHeadRot = mob.getYRot();
 					mob.yBodyRot = mob.getYRot();
 					mob.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(mob.blockPosition()), MobSpawnType.SPAWN_EGG, null, null);
 					mob.playAmbientSound();
 				}
+				level.addFreshEntity(entity);
 				itemStack.shrink(1);
 				level.gameEvent(useOnContext.getPlayer(), GameEvent.ENTITY_PLACE, blockPos);
 			}
@@ -68,7 +69,7 @@ public class PlaceEntityItem extends Item {
 		}
 	}
 
-	protected static double getYOffset(LevelReader levelReader, BlockPos blockPos, boolean bl, AABB aABB) {
+	public static double getYOffset(LevelReader levelReader, BlockPos blockPos, boolean bl, AABB aABB) {
 		AABB aABBAtPos = new AABB(blockPos);
 		if (bl) {
 			aABBAtPos = aABBAtPos.expandTowards(0.0, -1.0, 0.0);

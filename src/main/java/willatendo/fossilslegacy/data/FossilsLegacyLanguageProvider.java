@@ -82,6 +82,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("dinopedia.fossilslegacy.age", "Age: %s");
 		this.add("dinopedia.fossilslegacy.cold", "Cold");
 		this.add("dinopedia.fossilslegacy.creature", "Creature: %s");
+		this.add("dinopedia.fossilslegacy.dangerous", "Caution: Dangerous");
 		this.add("dinopedia.fossilslegacy.dry", "Dry");
 		this.add("dinopedia.fossilslegacy.egg", "%s Egg");
 		this.add("dinopedia.fossilslegacy.embryo", "Embryo: %s");
@@ -307,6 +308,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.TYRANNOSAURUS_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.VELOCIRAPTOR_SPAWN_EGG.get());
+		this.add("item.fossilslegact.dinosaur_spawn_egg.desc", "Crouch to spawn baby");
 
 		this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.applies_to", "Netherite Equipment");
 		this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.ingredients", "Scarab Gem");

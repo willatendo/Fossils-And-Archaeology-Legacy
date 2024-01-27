@@ -344,6 +344,9 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Pla
 				information.add(FossilsLegacyUtils.translation("dinopedia", "not_owner"));
 			} else {
 				information.add(FossilsLegacyUtils.translation("dinopedia", "wild"));
+				if (this.getAge() > 3) {
+					information.add(FossilsLegacyUtils.translation("dinopedia", "dangerous"));
+				}
 			}
 		}
 		return information;

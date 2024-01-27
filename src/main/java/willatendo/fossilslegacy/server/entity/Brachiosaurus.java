@@ -205,11 +205,6 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Rid
 		return FossilsLegacySoundEvents.BRACHIOSAURUS_DEATH.get();
 	}
 
-//	@Override
-//	public Vec3 getPassengerRidingPosition(Entity entity) {
-//		return new Vec3(0.0D, 0.65D * this.getGrowthStage(), 0.0D);
-//	}
-
 	@Override
 	public List<Component> info(Player player) {
 		ArrayList<Component> information = Lists.newArrayList();

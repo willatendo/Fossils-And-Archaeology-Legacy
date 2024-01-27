@@ -31,8 +31,8 @@ public class SmilodonRenderer extends MobRenderer<Smilodon, SmilodonModel> {
 
 	@Override
 	protected void scale(Smilodon smilodon, PoseStack poseStack, float scale) {
-		if (smilodon.isBaby()) {
-			poseStack.scale(0.5F, 0.5F, 0.5F);
+		if (!smilodon.isBaby()) {
+			poseStack.scale(2.0F, 2.0F, 2.0F);
 		}
 
 		super.scale(smilodon, poseStack, scale);

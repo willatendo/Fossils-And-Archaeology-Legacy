@@ -56,7 +56,9 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 		return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData, compoundTag);
 	}
 
-	public abstract EggType eggType();
+	public EggType eggType() {
+		return null;
+	}
 
 	public abstract float boundingBoxGrowth();
 
@@ -69,7 +71,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 
 	@Override
 	public boolean isBaby() {
-		return this.getGrowthStage() < 4;
+		return this.getGrowthStage() < this.maxGrowthStage() / 2;
 	}
 
 	@Override
@@ -332,14 +334,18 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-		Egg egg = FossilsLegacyEntities.EGG.get().create(serverLevel);
-		egg.setEgg(this.eggType());
-		if (egg != null) {
-			UUID uuid = this.getOwnerUUID();
-			if (uuid != null) {
-				egg.setOwnerUUID(uuid);
+		if (this.eggType() != null) {
+			Egg egg = FossilsLegacyEntities.EGG.get().create(serverLevel);
+			egg.setEgg(this.eggType());
+			if (egg != null) {
+				UUID uuid = this.getOwnerUUID();
+				if (uuid != null) {
+					egg.setOwnerUUID(uuid);
+				}
 			}
+			return egg;
+		} else {
+			return null;
 		}
-		return egg;
 	}
 }
