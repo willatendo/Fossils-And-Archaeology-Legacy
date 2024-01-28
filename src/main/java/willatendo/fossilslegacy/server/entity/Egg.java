@@ -47,7 +47,7 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 	}
 
 	public static AttributeSupplier eggAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 1.0F).build();
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 10.0F).build();
 	}
 
 	@Override
@@ -64,16 +64,9 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entity) {
-		this.discard();
-		this.dropAllDeathLoot(this.damageSources().generic());
-		return false;
-	}
-
-	@Override
 	public void die(DamageSource damageSource) {
-		this.discard();
 		this.dropAllDeathLoot(damageSource);
+		this.discard();
 	}
 
 	@Override
@@ -92,7 +85,6 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 		}
 
 		if (this.getRemainingTime() < -500) {
-			this.discard();
 			Player player = this.level().getNearestPlayer(this, 25.0D);
 			if (player != null) {
 				if (this.getEgg() == EggType.MOSASAURUS) {
@@ -100,6 +92,7 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 				} else {
 					player.sendSystemMessage(FossilsLegacyUtils.translation("entity", "egg.died"));
 				}
+				this.discard();
 			}
 		}
 

@@ -14,14 +14,14 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import mezz.jei.common.util.ImmutableRect2i;
-import mezz.jei.common.util.MathUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import willatendo.fossilslegacy.server.jei.FossilsLegacyJEI;
 import willatendo.fossilslegacy.server.jei.FossilsLegacyJEITextures;
+import willatendo.fossilslegacy.server.jei.ImmutableRect2i;
+import willatendo.fossilslegacy.server.jei.MathUtil;
 import willatendo.fossilslegacy.server.jei.recipe.BiomatterRecipe;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 

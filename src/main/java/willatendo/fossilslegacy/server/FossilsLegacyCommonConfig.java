@@ -1,7 +1,7 @@
 package willatendo.fossilslegacy.server;
 
-import willatendo.simplelibrary.config.ModConfigSpec;
-import willatendo.simplelibrary.config.ModConfigSpec.BooleanValue;
+import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec.BooleanValue;
 
 public class FossilsLegacyCommonConfig {
 	private final BooleanValue animalsStarve;

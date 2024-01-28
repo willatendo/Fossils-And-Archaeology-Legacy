@@ -1,14 +1,14 @@
-// 1.20.4	2024-01-27T17:57:59.4141733	Fossils and Archaeology Legacy/Block Loot Tables
+// 1.20.4	2024-01-28T13:05:18.1618265	Fossils and Archaeology Legacy/Block Loot Tables
 4950dc292bbc8762cba10d18f9ee33a4521635bb data\fossilslegacy\loot_tables\blocks\analyzer.json
 cbeb14fb36ff0f836c7f91db70398a4b7f774652 data\fossilslegacy\loot_tables\blocks\archaeology_workbench.json
-3046b8af709d898409c308afe371b1753f11c4b4 data\fossilslegacy\loot_tables\blocks\fossil_ore.json
+613300bbe1f4e582ab59b02af4df469d32659a01 data\fossilslegacy\loot_tables\blocks\fossil_ore.json
 1d4929d7d6176f60e5ea991a577527ed251ef375 data\fossilslegacy\loot_tables\blocks\axolotlspawn.json
-ed76902c7e8e5f59101e0bf3e82be26bed89538d data\fossilslegacy\loot_tables\blocks\permafrost.json
+84b2489234f8b23baff0679a5065916d2c386ec2 data\fossilslegacy\loot_tables\blocks\permafrost.json
 3b22c3e0c7643c82188e5a059abe379aad5decc0 data\fossilslegacy\loot_tables\blocks\iced_stone.json
 bb630bdee5be07d90b6c2ef3f5bc096d50f82373 data\fossilslegacy\loot_tables\blocks\cultivator.json
 d4894e0199fcf7caf1845b78b2e52073d8534bf5 data\fossilslegacy\loot_tables\blocks\skull_lanturn_block.json
 6ce144d4d4252e7785440acac48eac3029ef7542 data\fossilslegacy\loot_tables\blocks\feeder.json
-3fc04c3f0a8949faa2b4a2e56349bca991cc24ba data\fossilslegacy\loot_tables\blocks\deepslate_fossil_ore.json
+b40076ff5a620c7b31c7236ca75eafb48a965641 data\fossilslegacy\loot_tables\blocks\deepslate_fossil_ore.json
 1273e424850220a5c79d15aca440c10b49975ea0 data\fossilslegacy\loot_tables\blocks\jurassic_fern.json
 096bffcf4bdca446e852adb693751dd144c67c35 data\fossilslegacy\loot_tables\blocks\drum.json
 f330956660d26e3f57ec7f1b04306fcc09e65088 data\fossilslegacy\loot_tables\blocks\skull_block.json

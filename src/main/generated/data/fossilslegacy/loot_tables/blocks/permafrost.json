@@ -27,72 +27,38 @@
               "name": "fossilslegacy:permafrost"
             },
             {
-              "type": "minecraft:alternatives",
-              "children": [
+              "type": "fossilslegacy:loot_one_item_of_many_random",
+              "conditions": [
                 {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "chance": 0.2,
-                      "condition": "minecraft:random_chance"
-                    },
-                    {
-                      "condition": "minecraft:survives_explosion"
-                    }
-                  ],
-                  "name": "fossilslegacy:jurassic_fern_spores"
+                  "condition": "minecraft:survives_explosion"
+                }
+              ],
+              "max_weight": 20000,
+              "results": [
+                {
+                  "high_weight": 4000,
+                  "item": "fossilslegacy:jurassic_fern_spores",
+                  "low_weight": 0
                 },
                 {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "chance": 0.2,
-                      "condition": "minecraft:random_chance"
-                    },
-                    {
-                      "condition": "minecraft:survives_explosion"
-                    }
-                  ],
-                  "name": "fossilslegacy:skull_block"
+                  "high_weight": 8000,
+                  "item": "fossilslegacy:skull_block",
+                  "low_weight": 4000
                 },
                 {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "chance": 0.2,
-                      "condition": "minecraft:random_chance"
-                    },
-                    {
-                      "condition": "minecraft:survives_explosion"
-                    }
-                  ],
-                  "name": "fossilslegacy:frozen_meat"
+                  "high_weight": 12000,
+                  "item": "fossilslegacy:frozen_meat",
+                  "low_weight": 8000
                 },
                 {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "chance": 0.2,
-                      "condition": "minecraft:random_chance"
-                    },
-                    {
-                      "condition": "minecraft:survives_explosion"
-                    }
-                  ],
-                  "name": "minecraft:beef"
+                  "high_weight": 16000,
+                  "item": "minecraft:beef",
+                  "low_weight": 12000
                 },
                 {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "chance": 0.2,
-                      "condition": "minecraft:random_chance"
-                    },
-                    {
-                      "condition": "minecraft:survives_explosion"
-                    }
-                  ],
-                  "name": "minecraft:porkchop"
+                  "high_weight": 20000,
+                  "item": "minecraft:porkchop",
+                  "low_weight": 16000
                 }
               ]
             }

@@ -27,98 +27,48 @@
               "name": "fossilslegacy:deepslate_fossil_ore"
             },
             {
-              "type": "minecraft:alternatives",
-              "children": [
+              "type": "fossilslegacy:loot_one_item_of_many_random",
+              "conditions": [
                 {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "chance": 0.2245,
-                      "condition": "minecraft:random_chance"
-                    },
-                    {
-                      "condition": "minecraft:survives_explosion"
-                    }
-                  ],
-                  "name": "fossilslegacy:fossil"
+                  "condition": "minecraft:survives_explosion"
+                }
+              ],
+              "max_weight": 20000,
+              "results": [
+                {
+                  "high_weight": 4500,
+                  "item": "fossilslegacy:fossil",
+                  "low_weight": 10
                 },
                 {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "chance": 0.265,
-                      "condition": "minecraft:random_chance"
-                    },
-                    {
-                      "condition": "minecraft:survives_explosion"
-                    }
-                  ],
-                  "name": "fossilslegacy:relic_scrap"
+                  "high_weight": 9800,
+                  "item": "fossilslegacy:relic_scrap",
+                  "low_weight": 4500
                 },
                 {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "chance": 0.4,
-                      "condition": "minecraft:random_chance"
-                    },
-                    {
-                      "condition": "minecraft:survives_explosion"
-                    }
-                  ],
-                  "name": "minecraft:bone"
+                  "high_weight": 17800,
+                  "item": "minecraft:bone",
+                  "low_weight": 9800
                 },
                 {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "chance": 0.1,
-                      "condition": "minecraft:random_chance"
-                    },
-                    {
-                      "condition": "minecraft:survives_explosion"
-                    }
-                  ],
-                  "name": "fossilslegacy:skull_block"
+                  "high_weight": 19800,
+                  "item": "fossilslegacy:skull_block",
+                  "low_weight": 17800
                 },
                 {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "chance": 0.005,
-                      "condition": "minecraft:random_chance"
-                    },
-                    {
-                      "condition": "minecraft:survives_explosion"
-                    }
-                  ],
-                  "name": "fossilslegacy:ancient_sword_artifact"
+                  "high_weight": 19900,
+                  "item": "fossilslegacy:ancient_sword_artifact",
+                  "low_weight": 19800
                 },
                 {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "chance": 0.005,
-                      "condition": "minecraft:random_chance"
-                    },
-                    {
-                      "condition": "minecraft:survives_explosion"
-                    }
-                  ],
-                  "name": "fossilslegacy:ancient_helmet_artifact"
+                  "high_weight": 20000,
+                  "item": "fossilslegacy:ancient_helmet_artifact",
+                  "low_weight": 19900
                 },
                 {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "chance": 5.0E-4,
-                      "condition": "minecraft:random_chance"
-                    },
-                    {
-                      "condition": "minecraft:survives_explosion"
-                    }
-                  ],
-                  "name": "fossilslegacy:scarab_gem"
+                  "high_weight": 10,
+                  "item": "fossilslegacy:scarab_gem",
+                  "low_weight": 0
                 }
               ]
             }
