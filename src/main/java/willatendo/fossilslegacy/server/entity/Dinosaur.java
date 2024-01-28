@@ -65,6 +65,11 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 	public abstract int foodLevelForItemStack(ItemStack itemStack);
 
 	@Override
+	public boolean isFood(ItemStack itemStack) {
+		return foodLevelForItemStack(itemStack) > 0;
+	}
+
+	@Override
 	public boolean removeWhenFarAway(double distance) {
 		return false;
 	}

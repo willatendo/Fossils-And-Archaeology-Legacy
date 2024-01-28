@@ -19,6 +19,7 @@ public class SmilodonModel extends EntityModel<Smilodon> {
 	private float b = 1.0F;
 
 	private final ModelPart root;
+	private final ModelPart head;
 	private final ModelPart body;
 	private final ModelPart back;
 	private final ModelPart tail;
@@ -29,6 +30,7 @@ public class SmilodonModel extends EntityModel<Smilodon> {
 
 	public SmilodonModel(ModelPart root) {
 		this.root = root;
+		this.head = root.getChild("head");
 		this.body = root.getChild("body");
 		this.back = root.getChild("back");
 		this.tail = root.getChild("tail");
@@ -70,12 +72,8 @@ public class SmilodonModel extends EntityModel<Smilodon> {
 	}
 
 	@Override
-	public void setupAnim(Smilodon smilodon, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-//		if (smilodon.isAngry()) {
-//			this.tail.yRot = 0.0F;
-//		} else {
-		this.tail.yRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-//		}
+	public void prepareMobModel(Smilodon smilodon, float limbSwing, float limbSwingAmount, float packedOverlay) {
+		this.tail.yRot = /* smilodon.isAngry() ? 0.0f : */ Mth.cos(limbSwing * 0.6662f) * 1.4f * g;
 		if (smilodon.isOrderedToSit()) {
 			this.body.setPos(0.0F, 17.0F, 0.0F);
 			this.body.xRot = -0.314F;
@@ -108,9 +106,17 @@ public class SmilodonModel extends EntityModel<Smilodon> {
 			this.rightBackLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 		}
 
-		this.body.zRot = smilodon.getBodyRollAngle(ageInTicks, -0.08F);
-		this.back.zRot = smilodon.getBodyRollAngle(ageInTicks, -0.16F);
-		this.tail.zRot = smilodon.getBodyRollAngle(ageInTicks, -0.2F);
+		this.head.zRot = smilodon.getHeadRollAngle(packedOverlay) + smilodon.getBodyRollAngle(packedOverlay, 0.0f);
+		this.body.zRot = smilodon.getBodyRollAngle(packedOverlay, -0.08F);
+		this.back.zRot = smilodon.getBodyRollAngle(packedOverlay, -0.16F);
+		this.tail.zRot = smilodon.getBodyRollAngle(packedOverlay, -0.2F);
+	}
+
+	@Override
+	public void setupAnim(Smilodon smilodon, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+//		this.head.xRot = headPitch * ((float) Math.PI / 180);
+//		this.head.yRot = netHeadYaw * ((float) Math.PI / 180);
+//		this.tail.xRot = ageInTicks;
 	}
 
 	@Override

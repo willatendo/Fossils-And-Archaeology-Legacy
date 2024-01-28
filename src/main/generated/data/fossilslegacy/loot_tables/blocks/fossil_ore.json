@@ -1,3 +1,131 @@
 {
-  "type": "minecraft:block"
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "enchantments": [
+                      {
+                        "enchantment": "minecraft:silk_touch",
+                        "levels": {
+                          "min": 1
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "name": "fossilslegacy:fossil_ore"
+            },
+            {
+              "type": "minecraft:alternatives",
+              "children": [
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.2245,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "minecraft:survives_explosion"
+                    }
+                  ],
+                  "name": "fossilslegacy:fossil"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.265,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "minecraft:survives_explosion"
+                    }
+                  ],
+                  "name": "fossilslegacy:relic_scrap"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.4,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "minecraft:survives_explosion"
+                    }
+                  ],
+                  "name": "minecraft:bone"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.1,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "minecraft:survives_explosion"
+                    }
+                  ],
+                  "name": "fossilslegacy:skull_block"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.005,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "minecraft:survives_explosion"
+                    }
+                  ],
+                  "name": "fossilslegacy:ancient_sword_artifact"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.005,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "minecraft:survives_explosion"
+                    }
+                  ],
+                  "name": "fossilslegacy:ancient_helmet_artifact"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 5.0E-4,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "minecraft:survives_explosion"
+                    }
+                  ],
+                  "name": "fossilslegacy:scarab_gem"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
 }

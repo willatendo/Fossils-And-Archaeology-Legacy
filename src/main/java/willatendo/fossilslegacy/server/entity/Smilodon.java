@@ -5,9 +5,14 @@ import java.util.List;
 
 import org.apache.commons.compress.utils.Lists;
 
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
@@ -22,9 +27,12 @@ import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
+import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
 import willatendo.fossilslegacy.server.entity.goal.DinoBabyFollowParentGoal;
@@ -32,11 +40,15 @@ import willatendo.fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoWaterAvoidingRandomStrollGoal;
+import willatendo.fossilslegacy.server.entity.goal.SmilodonBegGoal;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class Smilodon extends Dinosaur implements DinopediaInformation {
+	private static final EntityDataAccessor<Boolean> DATA_INTERESTED_ID = SynchedEntityData.defineId(Wolf.class, EntityDataSerializers.BOOLEAN);
 	private boolean isWet;
 	private boolean isShaking;
+	private float interestedAngle;
+	private float interestedAngleO;
 	private float shakeAnim;
 	private float shakeAnimO;
 
@@ -87,6 +99,7 @@ public class Smilodon extends Dinosaur implements DinopediaInformation {
 		this.goalSelector.addGoal(4, new DinoBabyFollowParentGoal(this, 1.1D));
 		this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));
 		this.goalSelector.addGoal(6, new DinoWaterAvoidingRandomStrollGoal(this, this, 1.0D));
+		this.goalSelector.addGoal(9, new SmilodonBegGoal(this, 8.0f));
 		this.goalSelector.addGoal(6, new DinoFollowOwnerGoal(this, this, this, 1.0D, 10.0F, 2.0F));
 		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
@@ -103,6 +116,46 @@ public class Smilodon extends Dinosaur implements DinopediaInformation {
 			this.shakeAnim = 0.0F;
 			this.shakeAnimO = 0.0F;
 			this.level().broadcastEntityEvent(this, (byte) 8);
+		}
+	}
+
+	@Override
+	public void tick() {
+		super.tick();
+		if (!this.isAlive()) {
+			return;
+		}
+		this.interestedAngleO = this.interestedAngle;
+		this.interestedAngle = this.isInterested() ? (this.interestedAngle += (1.0f - this.interestedAngle) * 0.4f) : (this.interestedAngle += (0.0f - this.interestedAngle) * 0.4f);
+		if (this.isInWaterRainOrBubble()) {
+			this.isWet = true;
+			if (this.isShaking && !((Level) this.level()).isClientSide) {
+				this.level().broadcastEntityEvent(this, (byte) 56);
+				this.cancelShake();
+			}
+		} else if ((this.isWet || this.isShaking) && this.isShaking) {
+			if (this.shakeAnim == 0.0f) {
+				this.playSound(SoundEvents.WOLF_SHAKE, this.getSoundVolume(), (this.random.nextFloat() - this.random.nextFloat()) * 0.2f + 1.0f);
+				this.gameEvent(GameEvent.ENTITY_ACTION);
+			}
+			this.shakeAnimO = this.shakeAnim;
+			this.shakeAnim += 0.05f;
+			if (this.shakeAnimO >= 2.0f) {
+				this.isWet = false;
+				this.isShaking = false;
+				this.shakeAnimO = 0.0f;
+				this.shakeAnim = 0.0f;
+			}
+			if (this.shakeAnim > 0.4f) {
+				float f = (float) this.getY();
+				int i = (int) (Mth.sin((this.shakeAnim - 0.4f) * (float) Math.PI) * 7.0f);
+				Vec3 vec3 = this.getDeltaMovement();
+				for (int j = 0; j < i; ++j) {
+					float g = (this.random.nextFloat() * 2.0f - 1.0f) * this.getBbWidth() * 0.5f;
+					float h = (this.random.nextFloat() * 2.0f - 1.0f) * this.getBbWidth() * 0.5f;
+					((Level) this.level()).addParticle(ParticleTypes.SPLASH, this.getX() + (double) g, f + 0.8f, this.getZ() + (double) h, vec3.x, vec3.y, vec3.z);
+				}
+			}
 		}
 	}
 
@@ -141,6 +194,10 @@ public class Smilodon extends Dinosaur implements DinopediaInformation {
 		return Math.min(0.5F + Mth.lerp(time, this.shakeAnimO, this.shakeAnim) / 2.0F * 0.5F, 1.0F);
 	}
 
+	public float getHeadRollAngle(float f) {
+		return Mth.lerp(f, this.interestedAngleO, this.interestedAngle) * 0.15f * (float) Math.PI;
+	}
+
 	public float getBodyRollAngle(float ageInTicks, float max) {
 		float f = (Mth.lerp(ageInTicks, this.shakeAnimO, this.shakeAnim) + max) / 1.8F;
 		if (f < 0.0F) {
@@ -165,6 +222,20 @@ public class Smilodon extends Dinosaur implements DinopediaInformation {
 	@Override
 	protected SoundEvent getDeathSound() {
 		return FossilsLegacySoundEvents.SMILODON_DEATH.get();
+	}
+
+	@Override
+	protected void defineSynchedData() {
+		super.defineSynchedData();
+		this.entityData.define(DATA_INTERESTED_ID, false);
+	}
+
+	public void setIsInterested(boolean interested) {
+		this.entityData.set(DATA_INTERESTED_ID, interested);
+	}
+
+	public boolean isInterested() {
+		return this.entityData.get(DATA_INTERESTED_ID);
 	}
 
 	@Override
