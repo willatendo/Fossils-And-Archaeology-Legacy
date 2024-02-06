@@ -45,12 +45,15 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 public class Plesiosaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur {
 	public Plesiosaurus(EntityType<? extends Dinosaur> entityType, Level level) {
 		super(entityType, level);
-
-		this.setMaxUpStep(this.getGrowthStage() < 4 ? 0.5F : this.getGrowthStage() < 8 ? 1.0F : 1.5F);
 	}
 
 	public static AttributeSupplier plesiosaurusAttributes() {
 		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 8.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).build();
+	}
+
+	@Override
+	public float maxUpStep() {
+		return DinosaurTypes.PLESIOSAURUS.getStepHeights()[this.getGrowthStage()];
 	}
 
 	@Override

@@ -35,7 +35,6 @@ import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
 import willatendo.fossilslegacy.server.entity.Egg.EggType;
 import willatendo.fossilslegacy.server.entity.goal.DinoBabyFollowParentGoal;
-import willatendo.fossilslegacy.server.entity.goal.DinoEatFromFeederGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
@@ -47,12 +46,15 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 public class Brachiosaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur {
 	public Brachiosaurus(EntityType<? extends Brachiosaurus> entityType, Level level) {
 		super(entityType, level);
-
-		this.setMaxUpStep(this.getGrowthStage() < 4 ? 1.5F : this.getGrowthStage() < 8 ? 3.0F : 5.5F);
 	}
 
 	public static AttributeSupplier brachiosaurusAttributes() {
 		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 2.0D).build();
+	}
+
+	@Override
+	public float maxUpStep() {
+		return DinosaurTypes.BRACHIOSAURUS.getStepHeights()[this.getGrowthStage()];
 	}
 
 	@Override
@@ -100,7 +102,7 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Rid
 		this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));
 		this.goalSelector.addGoal(6, new DinoWaterAvoidingRandomStrollGoal(this, this, 1.0D));
 		this.goalSelector.addGoal(6, new DinoFollowOwnerGoal(this, this, this, 1.0D, 10.0F, 2.0F));
-		this.goalSelector.addGoal(6, new DinoEatFromFeederGoal(this, 1.0D, 24, false));
+//		this.goalSelector.addGoal(6, new DinoEatFromFeederGoal(this, 1.0D, 24, false));
 		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this, this, this));

@@ -57,12 +57,15 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Ridea
 
 	public Triceratops(EntityType<? extends Triceratops> entityType, Level level) {
 		super(entityType, level);
-
-		this.setMaxUpStep(this.getGrowthStage() < 4 ? 0.5F : this.getGrowthStage() < 8 ? 1.0F : 1.5F);
 	}
 
 	public static AttributeSupplier triceratopsAttributes() {
 		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 10.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 1.0D).build();
+	}
+
+	@Override
+	public float maxUpStep() {
+		return DinosaurTypes.TRICERATOPS.getStepHeights()[this.getGrowthStage()];
 	}
 
 	@Override

@@ -1,4 +1,3 @@
-
 package willatendo.fossilslegacy.server.entity;
 
 import java.util.ArrayList;
@@ -53,6 +52,11 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 
 	public static AttributeSupplier velociraptorAttributes() {
 		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 5.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.ATTACK_DAMAGE, 1.0D).build();
+	}
+
+	@Override
+	public float maxUpStep() {
+		return DinosaurTypes.VELOCIRAPTOR.getStepHeights()[this.getGrowthStage()];
 	}
 
 	@Override

@@ -78,8 +78,50 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, PlayerRid
 
 	public Mammoth(EntityType<? extends Mammoth> entityType, Level level) {
 		super(entityType, level);
+	}
 
-		this.setMaxUpStep(1.5F);
+	public static AttributeSupplier mammothAttributes() {
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 24.0F).add(Attributes.MOVEMENT_SPEED, 0.23D).build();
+	}
+
+	@Override
+	public float maxUpStep() {
+		return DinosaurTypes.MAMMOTH.getStepHeights()[this.getGrowthStage()];
+	}
+
+	@Override
+	public int getMaxHunger() {
+		return 100;
+	}
+
+	@Override
+	public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
+		return FossilsLegacyEntities.MAMMOTH.get().create(serverLevel);
+	}
+
+	@Override
+	public void decreaseHunger() {
+		this.setHunger(this.getHunger() - 1);
+	}
+
+	@Override
+	public CommandType commandItems() {
+		return CommandType.none();
+	}
+
+	@Override
+	public int maxGrowthStage() {
+		return 1;
+	}
+
+	@Override
+	public float boundingBoxGrowth() {
+		return 3.5F;
+	}
+
+	@Override
+	public int foodLevelForItemStack(ItemStack itemStack) {
+		return FeederBlockEntity.getPlantsFoodLevel(itemStack);
 	}
 
 	public int getSwingTick() {
@@ -90,10 +132,6 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, PlayerRid
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData, CompoundTag compoundTag) {
 		this.setHunger(this.getMaxHunger());
 		return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData, compoundTag);
-	}
-
-	public static AttributeSupplier mammothAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 24.0F).add(Attributes.MOVEMENT_SPEED, 0.23D).build();
 	}
 
 	@Override
@@ -309,11 +347,6 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, PlayerRid
 	}
 
 	@Override
-	public int getMaxHunger() {
-		return 5000;
-	}
-
-	@Override
 	public UUID getOwnerUUID() {
 		return this.entityData.get(OWNER).orElse((UUID) null);
 	}
@@ -436,35 +469,5 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, PlayerRid
 			}
 		}
 		return information;
-	}
-
-	@Override
-	public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-		return FossilsLegacyEntities.MAMMOTH.get().create(serverLevel);
-	}
-
-	@Override
-	public void decreaseHunger() {
-		this.setHunger(this.getHunger() - 1);
-	}
-
-	@Override
-	public CommandType commandItems() {
-		return CommandType.none();
-	}
-
-	@Override
-	public int maxGrowthStage() {
-		return 1;
-	}
-
-	@Override
-	public float boundingBoxGrowth() {
-		return 3.5F;
-	}
-
-	@Override
-	public int foodLevelForItemStack(ItemStack itemStack) {
-		return FeederBlockEntity.getPlantsFoodLevel(itemStack);
 	}
 }

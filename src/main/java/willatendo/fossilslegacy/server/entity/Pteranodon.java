@@ -55,12 +55,15 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 
 	public Pteranodon(EntityType<? extends Pteranodon> entityType, Level level) {
 		super(entityType, level);
-
-		this.setMaxUpStep(this.getGrowthStage() < 4 ? 0.5F : this.getGrowthStage() < 8 ? 1.0F : 1.5F);
 	}
 
 	public static AttributeSupplier pteranodonAttributes() {
 		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 4.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).build();
+	}
+
+	@Override
+	public float maxUpStep() {
+		return DinosaurTypes.PTEROSAURUS.getStepHeights()[this.getGrowthStage()];
 	}
 
 	@Override

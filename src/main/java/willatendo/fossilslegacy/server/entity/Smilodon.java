@@ -61,6 +61,11 @@ public class Smilodon extends Dinosaur implements DinopediaInformation {
 	}
 
 	@Override
+	public float maxUpStep() {
+		return DinosaurTypes.SMILODON.getStepHeights()[this.getGrowthStage()];
+	}
+
+	@Override
 	public int getMaxHunger() {
 		return 100;
 	}

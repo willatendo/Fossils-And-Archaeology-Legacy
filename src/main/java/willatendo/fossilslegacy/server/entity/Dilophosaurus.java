@@ -46,6 +46,11 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
 	}
 
 	@Override
+	public float maxUpStep() {
+		return DinosaurTypes.DILOPHOSAURUS.getStepHeights()[this.getGrowthStage()];
+	}
+
+	@Override
 	public int getMaxHunger() {
 		return 100;
 	}

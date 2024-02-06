@@ -63,6 +63,11 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Pla
 	}
 
 	@Override
+	public float maxUpStep() {
+		return DinosaurTypes.TYRANNOSAURUS.getStepHeights()[this.getGrowthStage()];
+	}
+
+	@Override
 	public boolean tamesOnBirth() {
 		return false;
 	}
