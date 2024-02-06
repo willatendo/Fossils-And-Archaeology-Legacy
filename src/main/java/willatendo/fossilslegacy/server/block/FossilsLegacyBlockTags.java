@@ -4,11 +4,10 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.server.util.SimpleUtils;
-import willatendo.simplelibrary.server.util.TagRegister;
+import willatendo.simplelibrary.server.TagRegister;
 
 public class FossilsLegacyBlockTags {
-	public static final TagRegister<Block> BLOCK_TAGS = SimpleUtils.create(Registries.BLOCK, FossilsLegacyUtils.ID);
+	public static final TagRegister<Block> BLOCK_TAGS = TagRegister.create(Registries.BLOCK, FossilsLegacyUtils.ID);
 
 	public static final TagKey<Block> BRACHIOSAURUS_RESISTANT = BLOCK_TAGS.register("brachiosaurus_resistant");
 	public static final TagKey<Block> GLASS = BLOCK_TAGS.register("glass");

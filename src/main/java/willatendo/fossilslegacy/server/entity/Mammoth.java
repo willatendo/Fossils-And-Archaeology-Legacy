@@ -10,7 +10,6 @@ import org.apache.commons.compress.utils.Lists;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -33,7 +32,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.PlayerRideable;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.Shearable;
@@ -50,29 +48,31 @@ import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.DismountHelper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.FossilsLegacyConfig;
-import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
-import willatendo.fossilslegacy.server.entity.Egg.EggType;
+import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
+import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
+import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
+import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class Mammoth extends Dinosaur implements DinopediaInformation, HungryAnimal, PlayerRideable, OwnableEntity, TamesOnBirth, TameAccessor, DaysAlive, Shearable {
+public class Mammoth extends Dinosaur implements DinopediaInformation, PlayerRideable, Shearable {
 	private static final EntityDataAccessor<Integer> HUNGER = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> DAYS_ALIVE = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Boolean> IS_SHEARED = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.BOOLEAN);
 	protected static final EntityDataAccessor<Optional<UUID>> OWNER = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.OPTIONAL_UUID);
 	private int timeAlive;
 	private int eatAnimationTick;
-	@SuppressWarnings("unused")
 	private int swingTick;
 	private EatBlockGoal eatBlockGoal;
 
@@ -80,6 +80,10 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, HungryAni
 		super(entityType, level);
 
 		this.setMaxUpStep(1.5F);
+	}
+
+	public int getSwingTick() {
+		return this.swingTick;
 	}
 
 	@Override
@@ -110,37 +114,18 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, HungryAni
 	public void tick() {
 		super.tick();
 
+		if (this.swingTick > 0) {
+			--this.swingTick;
+		}
+
 		if (!this.hasEffect(MobEffects.WEAKNESS) && this.isInWeaknessBiome()) {
 			this.addEffect(new MobEffectInstance(MobEffects.WEAKNESS));
-		}
-
-		if (this.tickCount % Level.TICKS_PER_DAY == 0) {
-			this.setDaysAlive(this.getDaysAlive() + 1);
-		}
-
-		if (FossilsLegacyConfig.COMMON_CONFIG.willAnimalsStarve()) {
-			if (this.tickCount % 300 == 0) {
-				this.decreaseHunger();
-			}
-
-			if (this.getHunger() < 0) {
-				this.hurt(new DamageSource(this.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(FossilsLegacyDamageTypes.ANIMAL_STARVE)), 20.0F);
-			}
-		}
-
-		if (this.tickCount % 10 == 0) {
-			if (this.getHealth() < this.getMaxHealth()) {
-				if (this.getHunger() > this.getMaxHunger() / 2) {
-					this.setHunger(this.getHunger() - 5);
-					this.setHealth(this.getHealth() + 1.0F);
-				}
-			}
 		}
 	}
 
 	public boolean isInWeaknessBiome() {
 		Holder<Biome> biome = this.level().getBiome(this.blockPosition());
-		return biome.value().getBaseTemperature() > 1.0F;
+		return this.isSheared() ? biome.value().getBaseTemperature() < 0.5F : biome.value().getBaseTemperature() > 1.0F;
 	}
 
 	@Override
@@ -149,15 +134,16 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, HungryAni
 		this.goalSelector.addGoal(0, new FloatGoal(this));
 		this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
 		this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
-		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, Ingredient.of(Items.WHEAT), false));
+		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, DinoConstants.HERBIVORE_FOOD, false));
 		this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.1D));
 		this.goalSelector.addGoal(5, this.eatBlockGoal);
 		this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));
 		this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-//		this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
-//		this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
+		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this, this, this));
+		this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this, this, this));
+		this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
 	}
 
 	@Override
@@ -185,16 +171,30 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, HungryAni
 
 	@Override
 	public InteractionResult interactAt(Player player, Vec3 vec3, InteractionHand interactionHand) {
-		if (this.TESTING_autotame(player)) {
-			return InteractionResult.SUCCESS;
-		}
-		if (!this.hasPassenger(this) && player.getItemInHand(interactionHand).isEmpty() && !this.isBaby()) {
-			if (!this.level().isClientSide) {
-				player.startRiding(this);
+		ItemStack itemStack = player.getItemInHand(interactionHand);
+		if (itemStack.is(Items.SHEARS) || itemStack.is(FossilsLegacyItems.TOOTH_DAGGER.get())) {
+			if (!this.level().isClientSide && this.readyForShearing()) {
+				this.shear(SoundSource.PLAYERS);
+				this.gameEvent(GameEvent.SHEAR, player);
+				itemStack.hurtAndBreak(1, player, user -> user.broadcastBreakEvent(interactionHand));
+				return InteractionResult.SUCCESS;
 			}
-			return InteractionResult.SUCCESS;
+			return InteractionResult.CONSUME;
+		}
+		if (itemStack.isEmpty() && !this.commandItems().canCommandWithItem(itemStack)) {
+			if (!this.hasPassenger(this) && !this.isBaby()) {
+				if (!this.level().isClientSide) {
+					player.startRiding(this);
+				}
+				return InteractionResult.SUCCESS;
+			}
 		}
 		return super.interactAt(player, vec3, interactionHand);
+	}
+
+	@Override
+	public boolean isBaby() {
+		return this.getGrowthStage() == 0;
 	}
 
 	@Override
@@ -250,7 +250,6 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, HungryAni
 					f1 *= 0.25F;
 				}
 
-//				this.getFlyingSpeed() = this.getSpeed() * 0.1F;
 				if (this.isControlledByLocalInstance()) {
 					this.setSpeed((float) this.getAttributeValue(Attributes.MOVEMENT_SPEED));
 					super.travel(new Vec3((double) f, vec3.y, (double) f1));
@@ -261,7 +260,6 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, HungryAni
 				this.calculateEntityAnimation(false);
 				this.tryCheckInsideBlocks();
 			} else {
-//				this.flyingSpeed = 0.02F;
 				super.travel(vec3);
 			}
 		}
@@ -395,9 +393,6 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, HungryAni
 	public void ate() {
 		super.ate();
 		this.setSheared(false);
-		if (this.isBaby()) {
-			this.ageUp(60);
-		}
 		this.setHunger(this.getMaxHunger());
 	}
 
@@ -408,7 +403,7 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, HungryAni
 
 	@Override
 	public void shear(SoundSource soundSource) {
-		this.level().playSound(null, this, SoundEvents.SHEEP_SHEAR, soundSource, 1.0f, 1.0f);
+		this.level().playSound(null, this, SoundEvents.SHEEP_SHEAR, soundSource, 1.0F, 1.0F);
 		if (!this.level().isClientSide()) {
 			this.setSheared(true);
 			int amount = 1 + this.random.nextInt(20);
@@ -455,37 +450,21 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, HungryAni
 
 	@Override
 	public CommandType commandItems() {
-		// TODO Auto-generated method stub
-		return null;
+		return CommandType.none();
 	}
 
 	@Override
 	public int maxGrowthStage() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getMinHealth() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public EggType eggType() {
-		// TODO Auto-generated method stub
-		return null;
+		return 1;
 	}
 
 	@Override
 	public float boundingBoxGrowth() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 3.5F;
 	}
 
 	@Override
 	public int foodLevelForItemStack(ItemStack itemStack) {
-		// TODO Auto-generated method stub
-		return 0;
+		return FeederBlockEntity.getPlantsFoodLevel(itemStack);
 	}
 }

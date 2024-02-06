@@ -25,6 +25,7 @@ import willatendo.fossilslegacy.server.entity.pregnant.PregnantSheep;
 import willatendo.fossilslegacy.server.entity.pregnant.PregnantSmilodon;
 import willatendo.fossilslegacy.server.entity.pregnant.PregnantWolf;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.server.registry.FabricRegister;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
@@ -35,7 +36,7 @@ public class FossilsLegacyEntities {
 
 	public static final SimpleHolder<EntityType<Brachiosaurus>> BRACHIOSAURUS = ENTITY_TYPES.register("brachiosaurus", () -> FabricEntityTypeBuilder.<Brachiosaurus>create(MobCategory.CREATURE, Brachiosaurus::new).dimensions(EntityDimensions.scalable(0.75F, 1.5F)).build());
 	public static final SimpleHolder<EntityType<Dilophosaurus>> DILOPHOSAURUS = ENTITY_TYPES.register("dilophosaurus", () -> FabricEntityTypeBuilder.<Dilophosaurus>create(MobCategory.CREATURE, Dilophosaurus::new).dimensions(EntityDimensions.scalable(0.5F, 0.5F)).build());
-	public static final SimpleHolder<EntityType<Mammoth>> MAMMOTH = ENTITY_TYPES.register("mammoth", () -> FabricEntityTypeBuilder.<Mammoth>create(MobCategory.CREATURE, Mammoth::new).dimensions(EntityDimensions.scalable(2.5F, 2.5F)).build());
+	public static final SimpleHolder<EntityType<Mammoth>> MAMMOTH = ENTITY_TYPES.register("mammoth", () -> FabricEntityTypeBuilder.<Mammoth>create(MobCategory.CREATURE, Mammoth::new).dimensions(EntityDimensions.scalable(1.0F, 1.0F)).build());
 	public static final SimpleHolder<EntityType<Mosasaurus>> MOSASAURUS = ENTITY_TYPES.register("mosasaurus", () -> FabricEntityTypeBuilder.<Mosasaurus>create(MobCategory.WATER_CREATURE, Mosasaurus::new).dimensions(EntityDimensions.scalable(0.5F, 0.5F)).build());
 	public static final SimpleHolder<EntityType<Nautilus>> NAUTILUS = ENTITY_TYPES.register("nautilus", () -> FabricEntityTypeBuilder.<Nautilus>create(MobCategory.WATER_AMBIENT, Nautilus::new).dimensions(EntityDimensions.scalable(1.0F, 0.75F)).build());
 	public static final SimpleHolder<EntityType<Plesiosaurus>> PLESIOSAURUS = ENTITY_TYPES.register("plesiosaurus", () -> FabricEntityTypeBuilder.<Plesiosaurus>create(MobCategory.WATER_CREATURE, Plesiosaurus::new).dimensions(EntityDimensions.scalable(1.0F, 1.0F)).build());
@@ -81,6 +82,6 @@ public class FossilsLegacyEntities {
 	public static final SimpleHolder<EntityType<StoneTablet>> STONE_TABLET = ENTITY_TYPES.register("stone_tablet", () -> FabricEntityTypeBuilder.<StoneTablet>create(MobCategory.MISC, StoneTablet::new).dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build());
 
 	public static void init() {
-		ENTITY_TYPES.register();
+		FabricRegister.register(ENTITY_TYPES);
 	}
 }

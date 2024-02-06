@@ -15,8 +15,8 @@ import willatendo.fossilslegacy.server.entity.Mammoth;
 
 public class MammothModel extends EntityModel<Mammoth> {
 	private final ModelPart root;
-//	private final ModelPart noseTop;
-//	private final ModelPart noseBottom;
+	private final ModelPart noseTop;
+	private final ModelPart noseBottom;
 	private final ModelPart leftArm;
 	private final ModelPart rightArm;
 	private final ModelPart leftLeg;
@@ -24,8 +24,8 @@ public class MammothModel extends EntityModel<Mammoth> {
 
 	public MammothModel(ModelPart modelPart) {
 		this.root = modelPart;
-//		this.noseTop = modelPart.getChild("nose_top");
-//		this.noseBottom = modelPart.getChild("nose_bottom");
+		this.noseTop = modelPart.getChild("nose_top");
+		this.noseBottom = modelPart.getChild("nose_bottom");
 		this.leftArm = modelPart.getChild("left_arm");
 		this.rightArm = modelPart.getChild("right_arm");
 		this.leftLeg = modelPart.getChild("left_leg");
@@ -56,30 +56,25 @@ public class MammothModel extends EntityModel<Mammoth> {
 		return LayerDefinition.create(meshDefinition, 64, 32);
 	}
 
-//	public void setLivingAnimations(LivingEntity par1EntityLiving, float par2, float par3, float par4) {
-////		Mammoth var5 = (Mammoth) par1EntityLiving;
-//		int var6 = 0 /* var5.getSwingTick() */;
-//		if (var6 > 0) {
-//			this.noseTop.xRot = (-2.0F + 1.5F * this.swingTrunk((float) var6 - par4, 10.0F) / 3) - 0.1897142F;
-//			this.noseBottom.xRot = (-2.0F + 1.5F * this.swingTrunk((float) var6 - par4, 10.0F) / 3) - 0.5986789F;
-//		} else {
-//			this.noseTop.xRot = -0.1897142F;
-//			this.noseBottom.xRot = -0.5986789F;
-//		}
-//
-//	}
-
 	@Override
 	public void setupAnim(Mammoth mammoth, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.rightArm.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 		this.leftArm.xRot = Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
 		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
 		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		int swing = mammoth.getSwingTick();
+		if (swing > 0) {
+			this.noseTop.xRot = (-2.0F + 1.5F * this.swingTrunk((float) swing - headPitch, 10.0F) / 3) - 0.1897142F;
+			this.noseBottom.xRot = (-2.0F + 1.5F * this.swingTrunk((float) swing - headPitch, 10.0F) / 3) - 0.5986789F;
+		} else {
+			this.noseTop.xRot = -0.1897142F;
+			this.noseBottom.xRot = -0.5986789F;
+		}
 	}
 
-//	private float swingTrunk(float par1, float par2) {
-//		return (Math.abs(par1 % par2 - par2 * 0.5F) - par2 * 0.25F) / (par2 * 0.25F);
-//	}
+	private float swingTrunk(float par1, float par2) {
+		return (Math.abs(par1 % par2 - par2 * 0.5F) - par2 * 0.25F) / (par2 * 0.25F);
+	}
 
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {

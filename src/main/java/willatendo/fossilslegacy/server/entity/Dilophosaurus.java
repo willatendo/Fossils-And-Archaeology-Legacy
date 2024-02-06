@@ -24,7 +24,6 @@ import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
 import willatendo.fossilslegacy.server.entity.Egg.EggType;
 import willatendo.fossilslegacy.server.entity.goal.DinoBabyFollowParentGoal;
@@ -34,6 +33,7 @@ import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoWaterAvoidingRandomStrollGoal;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
+import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class Dilophosaurus extends Dinosaur implements DinopediaInformation, RangedAttackMob {

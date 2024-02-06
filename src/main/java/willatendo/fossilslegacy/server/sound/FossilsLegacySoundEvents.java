@@ -1,8 +1,9 @@
-package willatendo.fossilslegacy.client.sound;
+package willatendo.fossilslegacy.server.sound;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvent;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.server.registry.FabricRegister;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
@@ -48,6 +49,6 @@ public class FossilsLegacySoundEvents {
 	public static final SimpleHolder<SoundEvent> DRUM_TRIPLE_HIT = SOUND_EVENTS.register("block.drum.triple_hit", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("block.drum.triple_hit")));
 
 	public static void init() {
-		SOUND_EVENTS.register();
+		FabricRegister.register(SOUND_EVENTS);
 	}
 }

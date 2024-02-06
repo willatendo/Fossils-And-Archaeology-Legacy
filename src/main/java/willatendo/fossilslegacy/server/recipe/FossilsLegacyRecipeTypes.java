@@ -4,6 +4,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeType;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.recipe.SimpleRecipeType;
+import willatendo.simplelibrary.server.registry.FabricRegister;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
@@ -15,6 +16,6 @@ public class FossilsLegacyRecipeTypes {
 	public static final SimpleHolder<SimpleRecipeType<CultivationRecipe>> CULTIVATION = RECIPE_TYPES.register("cultivation", () -> new SimpleRecipeType<CultivationRecipe>());
 
 	public static void init() {
-		RECIPE_TYPES.register();
+		FabricRegister.register(RECIPE_TYPES);
 	}
 }

@@ -1,5 +1,7 @@
 package willatendo.fossilslegacy.data;
 
+import io.github.fabricators_of_create.porting_lib.data.ExistingFileHelper;
+import io.github.fabricators_of_create.porting_lib.models.generators.ConfiguredModel;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import willatendo.fossilslegacy.server.block.AnalyzerBlock;
@@ -11,12 +13,10 @@ import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.block.JurassicFernBlock;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.simplelibrary.data.SimpleBlockStateProvider;
-import willatendo.simplelibrary.data.model.ConfiguredModel;
-import willatendo.simplelibrary.data.util.ExistingFileHelper;
 
 public class FossilsLegacyBlockStateProvider extends SimpleBlockStateProvider {
-	public FossilsLegacyBlockStateProvider(FabricDataOutput fabricDataOutput, String modId, ExistingFileHelper existingFileHelper) {
-		super(fabricDataOutput, modId, existingFileHelper);
+	public FossilsLegacyBlockStateProvider(FabricDataOutput fabricDataOutput, ExistingFileHelper existingFileHelper) {
+		super(fabricDataOutput, existingFileHelper);
 	}
 
 	@Override

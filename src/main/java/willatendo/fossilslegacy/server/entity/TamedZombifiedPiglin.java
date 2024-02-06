@@ -192,7 +192,7 @@ public class TamedZombifiedPiglin extends ZombifiedPiglin implements OwnableEnti
 		this.setTame(true);
 		this.setOwnerUUID(player.getUUID());
 		if (player instanceof ServerPlayer) {
-			FossilsLegacyCriteriaTriggers.TAME_ZOMBIFIED_PIGMAN_TRIGGER.trigger((ServerPlayer) player, this);
+			FossilsLegacyCriteriaTriggers.TAME_ZOMBIFIED_PIGMAN.get().trigger((ServerPlayer) player, this);
 		}
 	}
 

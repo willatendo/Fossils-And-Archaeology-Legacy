@@ -24,9 +24,9 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import willatendo.fossilslegacy.server.entity.StoneTablet;
 import willatendo.fossilslegacy.server.entity.StoneTabletTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.server.creativemodetab.FillCreativeTab;
+import willatendo.simplelibrary.server.creativemodetab.CreativeModeTabFill;
 
-public class StoneTabletItem extends Item implements FillCreativeTab {
+public class StoneTabletItem extends Item implements CreativeModeTabFill {
 	private static final Component TOOLTIP_RANDOM_VARIANT = FossilsLegacyUtils.translation("stone_tablet", "random").withStyle(ChatFormatting.GRAY);
 
 	public StoneTabletItem(Properties properties) {
@@ -98,7 +98,7 @@ public class StoneTabletItem extends Item implements FillCreativeTab {
 	}
 
 	@Override
-	public void fillCreativeTab(ItemDisplayParameters itemDisplayParameters, Output output) {
+	public void fill(ItemDisplayParameters itemDisplayParameters, Output output) {
 		for (int i = 0; i < StoneTabletTypes.values().length; i++) {
 			ItemStack itemStack = new ItemStack(FossilsLegacyItems.STONE_TABLET.get());
 			CompoundTag compoundTag = itemStack.getOrCreateTagElement("EntityTag");

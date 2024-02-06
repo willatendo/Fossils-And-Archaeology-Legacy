@@ -19,6 +19,7 @@ import willatendo.fossilslegacy.server.entity.Egg;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.fossilslegacy.server.utils.SyringeAnimals;
+import willatendo.simplelibrary.server.registry.FabricRegister;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 import willatendo.simplelibrary.server.util.SimpleUtils;
@@ -173,6 +174,6 @@ public class FossilsLegacyItems {
 	public static void init() {
 		SimpleUtils.registerAllItems(ITEMS, FossilsLegacyBlocks.BLOCKS, FossilsLegacyBlocks.AXOLOTLSPAWN);
 		ITEMS.register("axolotlspawn", () -> new PlaceOnWaterBlockItem(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), new Item.Properties()));
-		ITEMS.register();
+		FabricRegister.register(ITEMS);
 	}
 }

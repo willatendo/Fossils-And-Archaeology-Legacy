@@ -5,6 +5,7 @@ import com.mojang.serialization.Codec;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.structure.StructureType;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.server.registry.FabricRegister;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
@@ -26,6 +27,6 @@ public class FossilsLegacyStructureTypes {
 	});
 
 	public static void init() {
-		STRUCTURE_TYPE.register();
+		FabricRegister.register(STRUCTURE_TYPE);
 	}
 }

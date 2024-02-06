@@ -39,6 +39,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.FossilsLegacyConfig;
+import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class Anu extends Monster implements SpeakingEntity {
@@ -101,6 +102,14 @@ public class Anu extends Monster implements SpeakingEntity {
 	@Override
 	public void tick() {
 		super.tick();
+
+		if (this.level().dimension() != Level.NETHER) {
+			for (Player player : this.level().players()) {
+				if (player instanceof ServerPlayer serverPlayer) {
+					FossilsLegacyCriteriaTriggers.ANU_ON_EARTH.get().trigger(serverPlayer, this);
+				}
+			}
+		}
 
 		if (this.getTarget() != null && this.getRandom().nextInt(100) <= 25) {
 			List<ZombifiedPiglin> zombifiedPiglins = this.level().getEntitiesOfClass(ZombifiedPiglin.class, new AABB(this.getX(), this.getY(), this.getZ(), this.getX() + 1.0D, this.getY() + 1.0D, this.getZ() + 1.0D).inflate(16D, 4D, 16D));

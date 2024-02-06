@@ -1,7 +1,7 @@
 {
   "criteria": {
-    "ticks": {
-      "trigger": "minecraft:tick"
+    "anu_on_earth": {
+      "trigger": "fossilslegacy:anu_on_earth"
     }
   },
   "display": {
@@ -20,7 +20,7 @@
   },
   "requirements": [
     [
-      "ticks"
+      "anu_on_earth"
     ]
   ],
   "sends_telemetry_event": true

@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.data;
 
 import java.util.concurrent.CompletableFuture;
 
+import io.github.fabricators_of_create.porting_lib.data.ExistingFileHelper;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.world.item.Items;
@@ -10,7 +11,6 @@ import willatendo.fossilslegacy.server.block.FossilsLegacyBlockTags;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.simplelibrary.data.tags.SimpleItemTagsProvider;
-import willatendo.simplelibrary.data.util.ExistingFileHelper;
 
 public class FossilsLegacyItemTagProvider extends SimpleItemTagsProvider {
 	public FossilsLegacyItemTagProvider(FabricDataOutput fabricDataOutput, CompletableFuture<Provider> provider, CompletableFuture<TagLookup<Block>> blockTags, String modId, ExistingFileHelper existingFileHelper) {

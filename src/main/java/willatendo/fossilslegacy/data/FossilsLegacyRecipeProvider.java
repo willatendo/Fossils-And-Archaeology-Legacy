@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.data;
 
+import io.github.fabricators_of_create.porting_lib.tags.Tags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -29,7 +30,6 @@ import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.recipe.MagicConchRecipe;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.server.item.ForgeItemTags;
 
 public class FossilsLegacyRecipeProvider extends FabricRecipeProvider {
 	public FossilsLegacyRecipeProvider(FabricDataOutput fabricDataOutput) {
@@ -47,7 +47,7 @@ public class FossilsLegacyRecipeProvider extends FabricRecipeProvider {
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyBlocks.ANALYZER.get()).pattern("#%#").pattern("#$#").define('#', Items.IRON_INGOT).define('%', FossilsLegacyItems.RELIC_SCRAP.get()).define('$', FossilsLegacyItems.FOSSIL.get()).unlockedBy("has_item", has(FossilsLegacyItems.FOSSIL.get())).save(recipeOutput, FossilsLegacyUtils.resource("analyzer"));
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyBlocks.CULTIVATOR.get()).pattern("#$#").pattern("#%#").pattern("@@@").define('#', FossilsLegacyItemTags.GLASS).define('$', Items.GREEN_DYE).define('%', Items.WATER_BUCKET).define('@', Items.IRON_INGOT).unlockedBy("has_item", has(FossilsLegacyItemTags.GLASS)).save(recipeOutput, FossilsLegacyUtils.resource("cultivator"));
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get()).requires(Items.PAPER).requires(Blocks.CRAFTING_TABLE).unlockedBy("has_item", has(Blocks.CRAFTING_TABLE)).save(recipeOutput, FossilsLegacyUtils.resource("archaeology_workbench"));
-		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyBlocks.DRUM.get()).pattern("###").pattern("$%$").pattern("$$$").define('#', ForgeItemTags.LEATHER).define('$', ItemTags.PLANKS).define('%', Items.REDSTONE).unlockedBy("has_item", has(ForgeItemTags.LEATHER)).save(recipeOutput, FossilsLegacyUtils.resource("drum"));
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyBlocks.DRUM.get()).pattern("###").pattern("$%$").pattern("$$$").define('#', Tags.Items.LEATHER).define('$', ItemTags.PLANKS).define('%', Items.REDSTONE).unlockedBy("has_item", has(Tags.Items.LEATHER)).save(recipeOutput, FossilsLegacyUtils.resource("drum"));
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyBlocks.FEEDER.get()).pattern("#$#").pattern("%@!").pattern("!!!").define('#', Items.IRON_INGOT).define('$', FossilsLegacyItemTags.GLASS).define('%', Blocks.STONE_BUTTON).define('@', Items.BUCKET).define('!', Blocks.STONE).unlockedBy("has_item", has(Blocks.STONE)).save(recipeOutput, FossilsLegacyUtils.resource("feeder"));
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyItems.RAW_CHICKEN_SOUP_BUCKET.get()).requires(Items.CHICKEN).requires(Items.BUCKET).unlockedBy("has_item", has(Items.BUCKET)).save(recipeOutput, FossilsLegacyUtils.resource("raw_chicken_soup_bucket"));
 		faCookRecipes(recipeOutput, "smelting", RecipeSerializer.SMELTING_RECIPE, SmeltingRecipe::new, 200);

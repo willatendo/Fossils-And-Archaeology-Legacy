@@ -16,6 +16,7 @@ import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
+import willatendo.fossilslegacy.server.criteria.AnuOnEarthTrigger;
 import willatendo.fossilslegacy.server.criteria.TameZombifiedPigmanTrigger;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
@@ -27,7 +28,6 @@ public class FossilsLegacyAdvancementProvider implements AdvancementGenerator {
 	public void generate(Provider provider, Consumer<AdvancementHolder> saver) {
 		// Legacy Advancements
 		AdvancementHolder legacyRoot = Advancement.Builder.advancement().display(FossilsLegacyBlocks.FOSSIL_ORE.get(), FossilsLegacyUtils.translation("advancements", "legacy.root.title"), FossilsLegacyUtils.translation("advancements", "legacy.root.desc"), new ResourceLocation("textures/gui/advancements/backgrounds/stone.png"), AdvancementType.TASK, false, false, false).addCriterion("ticks", PlayerTrigger.TriggerInstance.tick()).save(saver, FossilsLegacyUtils.resource("legacy/root").toString());
-//		Advancement fossil =
 		Advancement.Builder.advancement().parent(legacyRoot).display(FossilsLegacyItems.FOSSIL.get(), FossilsLegacyUtils.translation("advancements", "legacy.fossil.title"), FossilsLegacyUtils.translation("advancements", "legacy.fossil.desc"), null, AdvancementType.TASK, true, true, true).addCriterion("has_fossil", InventoryChangeTrigger.TriggerInstance.hasItems(FossilsLegacyItems.FOSSIL.get())).save(saver, FossilsLegacyUtils.resource("legacy/fossil").toString());
 		AdvancementHolder relicScraps = Advancement.Builder.advancement().parent(legacyRoot).display(FossilsLegacyItems.RELIC_SCRAP.get(), FossilsLegacyUtils.translation("advancements", "legacy.relic_scrap.title"), FossilsLegacyUtils.translation("advancements", "legacy.relic_scrap.desc"), null, AdvancementType.TASK, true, true, true).addCriterion("has_relic_scrap", InventoryChangeTrigger.TriggerInstance.hasItems(FossilsLegacyItems.RELIC_SCRAP.get())).save(saver, FossilsLegacyUtils.resource("legacy/relic_scrap").toString());
 		AdvancementHolder ancientSwordArtifact = Advancement.Builder.advancement().parent(relicScraps).display(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get(), FossilsLegacyUtils.translation("advancements", "legacy.ancient_sword_artifact.title"), FossilsLegacyUtils.translation("advancements", "legacy.ancient_sword_artifact.desc"), null, AdvancementType.TASK, true, true, true).addCriterion("has_sword_artifact", InventoryChangeTrigger.TriggerInstance.hasItems(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get())).save(saver, FossilsLegacyUtils.resource("legacy/sword_artifact").toString());
@@ -42,7 +42,6 @@ public class FossilsLegacyAdvancementProvider implements AdvancementGenerator {
 		Advancement.Builder.advancement().parent(skull).display(FossilsLegacyBlocks.SKULL_BLOCK.get(), FossilsLegacyUtils.translation("advancements", "legacy.skeletons.title"), FossilsLegacyUtils.translation("advancements", "legacy.skeletons.desc"), null, AdvancementType.TASK, true, true, true).addCriterion("killed_skeletons", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(FossilsLegacyEntities.DROWNED_PIRATE.get()))).save(saver, FossilsLegacyUtils.resource("legacy/skeleton").toString());
 
 		// Anu Advancements
-//		Advancement anuRoot = 
-		Advancement.Builder.advancement().display(Blocks.LAPIS_BLOCK, FossilsLegacyUtils.translation("advancements", "anu.root.title"), FossilsLegacyUtils.translation("advancements", "anu.root.desc"), new ResourceLocation("textures/gui/advancements/backgrounds/stone.png"), AdvancementType.TASK, false, false, false).addCriterion("ticks", PlayerTrigger.TriggerInstance.tick()).save(saver, FossilsLegacyUtils.resource("anu/root").toString());
+		Advancement.Builder.advancement().display(Blocks.LAPIS_BLOCK, FossilsLegacyUtils.translation("advancements", "anu.root.title"), FossilsLegacyUtils.translation("advancements", "anu.root.desc"), new ResourceLocation("textures/gui/advancements/backgrounds/stone.png"), AdvancementType.TASK, false, false, false).addCriterion("anu_on_earth", AnuOnEarthTrigger.TriggerInstance.anuOnEarth()).save(saver, FossilsLegacyUtils.resource("anu/root").toString());
 	}
 }

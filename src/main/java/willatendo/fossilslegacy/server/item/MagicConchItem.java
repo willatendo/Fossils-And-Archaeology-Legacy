@@ -22,9 +22,9 @@ import net.minecraft.world.phys.AABB;
 import willatendo.fossilslegacy.server.entity.Plesiosaurus;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.server.creativemodetab.FillCreativeTab;
+import willatendo.simplelibrary.server.creativemodetab.CreativeModeTabFill;
 
-public class MagicConchItem extends Item implements FillCreativeTab {
+public class MagicConchItem extends Item implements CreativeModeTabFill {
 	public MagicConchItem(Properties properties) {
 		super(properties);
 	}
@@ -41,7 +41,7 @@ public class MagicConchItem extends Item implements FillCreativeTab {
 	}
 
 	@Override
-	public void fillCreativeTab(ItemDisplayParameters itemDisplayParameters, Output output) {
+	public void fill(ItemDisplayParameters itemDisplayParameters, Output output) {
 		for (int i = 0; i < 3; i++) {
 			ItemStack magicConch = new ItemStack(FossilsLegacyItems.MAGIC_CONCH.get());
 			CompoundTag compoundTag = magicConch.getOrCreateTag();

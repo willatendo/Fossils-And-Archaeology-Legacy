@@ -2,7 +2,7 @@
   "parent": "fossilslegacy:legacy/ancient_helmet",
   "criteria": {
     "tamed_pigman": {
-      "trigger": "minecraft:tame_zombified_pigman_trigger"
+      "trigger": "fossilslegacy:tame_zombified_pigman"
     }
   },
   "display": {

@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.server.registry.FabricRegister;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 import willatendo.simplelibrary.server.util.SimpleUtils;
@@ -30,6 +31,6 @@ public class FossilsLegacyBlocks {
 	public static final SimpleHolder<AxolotlspawnBlock> AXOLOTLSPAWN = BLOCKS.register("axolotlspawn", () -> new AxolotlspawnBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WATER).instabreak().noOcclusion().noCollission().sound(SoundType.FROGSPAWN).pushReaction(PushReaction.DESTROY)));
 
 	public static void init() {
-		BLOCKS.register();
+		FabricRegister.register(BLOCKS);
 	}
 }

@@ -33,7 +33,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
 import willatendo.fossilslegacy.server.entity.goal.DinoBabyFollowParentGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
@@ -41,6 +40,7 @@ import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoWaterAvoidingRandomStrollGoal;
 import willatendo.fossilslegacy.server.entity.goal.SmilodonBegGoal;
+import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class Smilodon extends Dinosaur implements DinopediaInformation {

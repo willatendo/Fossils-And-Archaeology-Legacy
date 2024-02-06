@@ -4,11 +4,10 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.server.util.SimpleUtils;
-import willatendo.simplelibrary.server.util.TagRegister;
+import willatendo.simplelibrary.server.TagRegister;
 
 public class FossilsLegacyItemTags {
-	public static final TagRegister<Item> ITEM_TAGS = SimpleUtils.create(Registries.ITEM, FossilsLegacyUtils.ID);
+	public static final TagRegister<Item> ITEM_TAGS = TagRegister.create(Registries.ITEM, FossilsLegacyUtils.ID);
 
 	public static final TagKey<Item> BRACHIOSAURUS_COMMANDABLES = ITEM_TAGS.register("brachiosaurus_commandables");
 	public static final TagKey<Item> CAKE_EGGS = ITEM_TAGS.register("cake_eggs");

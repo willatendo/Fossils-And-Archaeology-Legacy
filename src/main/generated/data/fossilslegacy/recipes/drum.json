@@ -3,7 +3,7 @@
   "category": "building",
   "key": {
     "#": {
-      "tag": "forge:leather"
+      "tag": "c:leather"
     },
     "$": {
       "tag": "minecraft:planks"

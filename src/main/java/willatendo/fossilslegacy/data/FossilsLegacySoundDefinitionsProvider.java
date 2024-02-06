@@ -1,7 +1,7 @@
 package willatendo.fossilslegacy.data;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import willatendo.fossilslegacy.client.sound.FossilsLegacySoundEvents;
+import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.data.SimpleSoundDefinitionsProvider;
 import willatendo.simplelibrary.data.sounds.SoundDefinition;

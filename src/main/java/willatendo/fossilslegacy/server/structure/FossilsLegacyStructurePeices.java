@@ -6,6 +6,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType.StructureTemplateType;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.server.registry.FabricRegister;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
@@ -20,6 +21,6 @@ public class FossilsLegacyStructurePeices {
 	}
 
 	public static void init() {
-		STRUCTURE_PIECE_TYPE.register();
+		FabricRegister.register(STRUCTURE_PIECE_TYPE);
 	}
 }

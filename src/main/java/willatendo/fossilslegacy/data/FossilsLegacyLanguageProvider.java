@@ -15,8 +15,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 	@Override
 	protected void addTranslations() {
 		// Advancements
-		this.add("advancements.fossilslegacy.anu.root.title", "Awoken");
-		this.add("advancements.fossilslegacy.anu.root.desc", "Find Anu!");
+		this.add("advancements.fossilslegacy.anu.root.title", "Broken Rule");
+		this.add("advancements.fossilslegacy.anu.root.desc", "Bring Anu to the Overworld!");
 
 		this.add("advancements.fossilslegacy.legacy.root.title", "The Legacy");
 		this.add("advancements.fossilslegacy.legacy.root.desc", "Play the Fossils and Archaeology: Legacy!");
@@ -52,7 +52,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get());
 		this.add(FossilsLegacyBlocks.ANALYZER.get());
 		this.add(FossilsLegacyBlocks.CULTIVATOR.get());
-		this.add("block.fossilslegacy.cultivator.shatter", "Warning! Cultivation falure!");
+		this.add("block.fossilslegacy.cultivator.shatter", "Warning! Cultivation failure!");
 		this.add(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get());
 		this.add(FossilsLegacyBlocks.JURASSIC_FERN.get());
 		this.add(FossilsLegacyBlocks.DRUM.get());
@@ -80,20 +80,20 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		// Dinopedia
 		this.add("dinopedia.fossilslegacy.able_to_fly", "Able to Fly");
 		this.add("dinopedia.fossilslegacy.age", "Age: %s");
-		this.add("dinopedia.fossilslegacy.cold", "Cold");
+		this.add("dinopedia.fossilslegacy.cold", "Too Cold");
 		this.add("dinopedia.fossilslegacy.creature", "Creature: %s");
 		this.add("dinopedia.fossilslegacy.dangerous", "Caution: Dangerous");
-		this.add("dinopedia.fossilslegacy.dry", "Dry");
+		this.add("dinopedia.fossilslegacy.dry", "Too Dry");
 		this.add("dinopedia.fossilslegacy.egg", "%s Egg");
 		this.add("dinopedia.fossilslegacy.embryo", "Embryo: %s");
 		this.add("dinopedia.fossilslegacy.health", "Health: %s / %s");
 		this.add("dinopedia.fossilslegacy.hunger", "Hunger: %s / %s");
 		this.add("dinopedia.fossilslegacy.not_owner", "You Are Not the Owner");
 		this.add("dinopedia.fossilslegacy.owner", "Owner: %s");
-		this.add("dinopedia.fossilslegacy.pregnancy_time", "Pregnacy Time: %s");
+		this.add("dinopedia.fossilslegacy.pregnancy_time", "Pregnancy Time: %s");
 		this.add("dinopedia.fossilslegacy.remaining_time", "Hatching Time: %s");
 		this.add("dinopedia.fossilslegacy.rideable", "Rideable");
-		this.add("dinopedia.fossilslegacy.temperature", "Temperature: %s");
+		this.add("dinopedia.fossilslegacy.status", "Status: %s");
 		this.add("dinopedia.fossilslegacy.warm", "Warm");
 		this.add("dinopedia.fossilslegacy.wet", "Wet");
 		this.add("dinopedia.fossilslegacy.wild", "This Animal is Wild");
@@ -167,8 +167,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.TRICERATOPS_DNA.get(), "Triceratops DNA");
 		this.add(FossilsLegacyItems.VELOCIRAPTOR_DNA.get(), "Velociraptor DNA");
 		this.add(FossilsLegacyItems.TYRANNOSAURUS_DNA.get(), "Tyrannosaurus DNA");
-		this.add(FossilsLegacyItems.PTERANODON_DNA.get(), "Pterandon DNA");
-		this.add(FossilsLegacyItems.NAUTILUS_DNA.get(), "Plesiosaurus DNA");
+		this.add(FossilsLegacyItems.PTERANODON_DNA.get(), "Pteranodon DNA");
+		this.add(FossilsLegacyItems.NAUTILUS_DNA.get(), "Nautilus DNA");
 		this.add(FossilsLegacyItems.PLESIOSAURUS_DNA.get(), "Plesiosaurus DNA");
 		this.add(FossilsLegacyItems.MOSASAURUS_DNA.get(), "Mosasaurus DNA");
 		this.add(FossilsLegacyItems.STEGOSAURUS_DNA.get(), "Stegosaurus DNA");
@@ -308,7 +308,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.TYRANNOSAURUS_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.VELOCIRAPTOR_SPAWN_EGG.get());
-		this.add("item.fossilslegact.dinosaur_spawn_egg.desc", "Crouch to spawn baby");
+		this.add("item.fossilslegacy.dinosaur_spawn_egg.desc", "Crouch to spawn baby");
 
 		this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.applies_to", "Netherite Equipment");
 		this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.ingredients", "Scarab Gem");

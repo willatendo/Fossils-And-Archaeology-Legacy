@@ -30,9 +30,11 @@ import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.animal.horse.Mule;
 import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
 import net.minecraft.world.level.levelgen.Heightmap;
 import willatendo.fossilslegacy.server.biomes.FossilsLegacyPlacedFeatures;
+import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.Anu;
 import willatendo.fossilslegacy.server.entity.Brachiosaurus;
 import willatendo.fossilslegacy.server.entity.Dilophosaurus;
@@ -56,11 +58,17 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class ModEvents {
 	public static void events() {
+		addToMaps();
 		addToBiomes();
 		addToCreativeModeTab();
 		addEntityAttributes();
 		addEntitySpawnPlacements();
 		addLegacyPack();
+	}
+
+	public static void addToMaps() {
+		ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.JURASSIC_FERN.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(FossilsLegacyItems.JURASSIC_FERN_SPORES.get(), 0.65F);
 	}
 
 	public static void addToBiomes() {

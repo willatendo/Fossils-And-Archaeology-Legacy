@@ -1,4 +1,4 @@
-// 1.20.4	2024-01-28T13:05:18.1549906	Fossils and Archaeology Legacy/Recipes
+// 1.20.4	2024-02-05T17:59:24.7230583	Fossils and Archaeology Legacy/Recipes
 dbe2329aa1304a12cf53a876e8f62aee71e40850 data\fossilslegacy\advancements\recipes\misc\mammoth_embryo_syringe.json
 245871f86ea5b8023e8ac160899a68e456cabfa4 data\fossilslegacy\recipes\sio_chiu_le_from_campfire_cooking.json
 40e04dab866072fb932392ab081fdf5b6aaf5064 data\fossilslegacy\recipes\frozen_meat_outputs.json
@@ -120,7 +120,7 @@ bd1a2309065b2e25cb5a8a0fdb3c5d1338be48f5 data\fossilslegacy\recipes\ocelot_embry
 975edf1b1899b9d71e62eb3ff92dc95d622fe35c data\fossilslegacy\recipes\tooth_dagger.json
 7e5ec6d5115cc2dd044ca17061f70d60611ed4e5 data\fossilslegacy\advancements\recipes\tools\dinopedia.json
 40b22fd6c9ba2623bb4107670999471fd2895f60 data\fossilslegacy\advancements\recipes\misc\dilophosaurus_egg.json
-b328d8e83452491d4b8f64dc50e58695e8243e31 data\fossilslegacy\advancements\recipes\building_blocks\drum.json
+76b727cf5718e42e4ae08790c8eb4a89ff3b8874 data\fossilslegacy\advancements\recipes\building_blocks\drum.json
 e38f2fdba69c7160137368a3a9ce535872311993 data\fossilslegacy\recipes\cooked_mammoth_meat_from_smelting.json
 6260b4afb5e9179dd5dfae8e661c83a83c8ac580 data\fossilslegacy\recipes\sio_chiu_le_from_smoking.json
 6e98db718bea6f42569a1de3964e16a2c6ecc3f7 data\fossilslegacy\advancements\recipes\misc\wolf_embryo_syringe.json
@@ -207,7 +207,7 @@ bfd2e5371486137600fafbe80b8bf84d689fb09d data\fossilslegacy\advancements\recipes
 ad230cb8409883b5cd1ef1746ce02b09922cf77e data\fossilslegacy\recipes\cat_embryo_syringe.json
 81c6705b18f12857ac7999a056907f47f5b79445 data\fossilslegacy\recipes\porkchop_outputs.json
 d479bdc3c76ce550a6d4ff2799536c69807bafcb data\fossilslegacy\recipes\scarab_gem_javelin_repair.json
-12075fa98b546c56fe6c44526382413fcbbfdafb data\fossilslegacy\recipes\drum.json
+f1785f82bb7fa80e68a0a402932097e72f75d3c6 data\fossilslegacy\recipes\drum.json
 786b72b96eeca4f52576d76a1160509d3d0ef647 data\fossilslegacy\recipes\polar_bear_embryo_syringe.json
 c4b39610ad06a9bf81bb130e58fe41967dbda9bc data\fossilslegacy\advancements\recipes\misc\porkchop_outputs.json
 4456b11f4e6a2ab42d93e5e3d704d24d38d34f65 data\fossilslegacy\advancements\recipes\misc\raw_stegosaurus_meat_outputs.json

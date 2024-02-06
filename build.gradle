@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.4-SNAPSHOT'
+	id 'fabric-loom' version '1.5-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -15,9 +15,12 @@ base {
 
 repositories {
 	maven { url "https://jitpack.io" }
+	maven { url "https://api.modrinth.com/maven" }
 	maven { url "https://maven.blamejared.com/" }
 	maven { url "https://modmaven.dev" }
 	maven { url "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" }
+	maven { url "https://mvn.devos.one/snapshots/" }
+	maven { url "https://maven.jamieswhiteshirt.com/libs-release" }
 }
 
 loom {
@@ -28,6 +31,7 @@ loom {
 			vmArg "-Dfabric-api.datagen"
 			vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
 			vmArg "-Dfabric-api.datagen.modid=${mod_id}"
+			vmArg "-Dporting_lib.datagen.existing_resources=${file("src/main/resources")}"
  
 			runDir "build/datagen"
 		}
@@ -47,16 +51,22 @@ sourceSets {
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings loom.officialMojangMappings()
-	
+
 	modImplementation "net.fabricmc:fabric-loader:${project.fabric_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.api_version}"
+
+	modApi include("maven.modrinth:simple-library:${project.simple_library_version}")
 	
-	modApi include("com.github.willatendo:Simple-Library:${project.simple_library_version}")
-	
-	modApi include("fuzs.forgeconfigapiport:forgeconfigapiport-common-neoforgeapi:${project.forge_config_api_version}")
-	modApi include("fuzs.forgeconfigapiport:forgeconfigapiport-common-forgeapi:${project.forge_config_api_version}")
-	modApi include("fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${project.forge_config_api_version}")
-	
+	modImplementation(include("io.github.fabricators_of_create.Porting-Lib:data:${porting_lib_version}"))
+	modImplementation(include("io.github.fabricators_of_create.Porting-Lib:model_generators:${porting_lib_version}"))
+	modImplementation(include("io.github.fabricators_of_create.Porting-Lib:utility:${porting_lib_version}"))
+	modImplementation(include("io.github.fabricators_of_create.Porting-Lib:model_materials:${porting_lib_version}"))
+	modImplementation(include("io.github.fabricators_of_create.Porting-Lib:tags:${porting_lib_version}"))
+		
+	api "fuzs.forgeconfigapiport:forgeconfigapiport-common-neoforgeapi:${project.forge_config_api_version}"
+	api "fuzs.forgeconfigapiport:forgeconfigapiport-common-forgeapi:${project.forge_config_api_version}"
+	modApi "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${project.forge_config_api_version}"
+
 	modCompileOnlyApi("mezz.jei:jei-${project.minecraft_version}-common-api:${project.jei_version}")
 	modCompileOnlyApi("mezz.jei:jei-${project.minecraft_version}-fabric-api:${project.jei_version}")
 	modRuntimeOnly("mezz.jei:jei-${project.minecraft_version}-fabric:${project.jei_version}")

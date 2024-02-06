@@ -6,7 +6,6 @@ import java.util.UUID;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -25,7 +24,6 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -45,6 +43,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 	private static final EntityDataAccessor<Integer> GROWTH_STAGE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> HUNGER = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
 	protected static final EntityDataAccessor<Optional<UUID>> OWNER = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.OPTIONAL_UUID);
+	private int internalClock = 0;
 
 	public Dinosaur(EntityType<? extends Dinosaur> entityType, Level level) {
 		super(entityType, level);
@@ -81,23 +80,29 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 
 	@Override
 	public void tick() {
+		if (this.internalClock == Level.TICKS_PER_DAY) {
+			this.internalClock = 0;
+		}
+
+		this.internalClock++;
+
 		super.tick();
 
 		if (FossilsLegacyConfig.COMMON_CONFIG.willAnimalsGrow()) {
 			if (this.getGrowthStage() < this.maxGrowthStage()) {
-				if (this.tickCount % Level.TICKS_PER_DAY == 0) {
+				if (this.internalClock % Level.TICKS_PER_DAY == 0) {
 					this.setGrowthStage(this.getGrowthStage() + 1);
 					this.setHealth((float) (this.getHealth() + this.getMinHealth()));
 				}
 			}
 		}
 
-		if (this.tickCount % Level.TICKS_PER_DAY == 0) {
+		if (this.internalClock % Level.TICKS_PER_DAY == 0) {
 			this.setDaysAlive(this.getDaysAlive() + 1);
 		}
 
 		if (FossilsLegacyConfig.COMMON_CONFIG.willAnimalsStarve()) {
-			if (this.tickCount % 300 == 0) {
+			if (this.internalClock % 300 == 0) {
 				this.decreaseHunger();
 			}
 
@@ -106,7 +111,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 			}
 		}
 
-		if (this.tickCount % 10 == 0) {
+		if (this.internalClock % 10 == 0) {
 			if (this.getHealth() < this.getMaxHealth()) {
 				if (this.getHunger() > this.getMaxHunger() / 2) {
 					this.setHunger(this.getHunger() - 5);
@@ -123,14 +128,10 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 
 	@Override
 	public void die(DamageSource damageSource) {
-		Component deathMessage = this.getCombatTracker().getDeathMessage();
-		super.die(damageSource);
-
-		if (this.dead) {
-			if (!this.level().isClientSide && this.level().getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES) && this.getOwner() instanceof ServerPlayer) {
-				this.getOwner().sendSystemMessage(deathMessage);
-			}
+		if (!this.level().isClientSide && this.level().getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES) && this.getOwner() instanceof ServerPlayer) {
+			this.getOwner().sendSystemMessage(this.getCombatTracker().getDeathMessage());
 		}
+		super.die(damageSource);
 	}
 
 	@Override
@@ -230,7 +231,6 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 
 	@Override
 	public void setGrowthStage(int growthStage) {
-		this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(this.getMinHealth() * (growthStage + 1));
 		this.entityData.set(GROWTH_STAGE, growthStage);
 	}
 
@@ -279,6 +279,14 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 	}
 
 	@Override
+	public boolean canAttack(LivingEntity livingEntity) {
+		if (this.isOwnedBy(livingEntity)) {
+			return false;
+		}
+		return super.canAttack(livingEntity);
+	}
+
+	@Override
 	public UUID getOwnerUUID() {
 		return this.entityData.get(OWNER).orElse((UUID) null);
 	}
@@ -310,6 +318,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 		compoundTag.putInt("DaysAlive", this.getDaysAlive());
 		compoundTag.putInt("Hunger", this.getHunger());
 		compoundTag.putInt("GrowthStage", this.getGrowthStage());
+		compoundTag.putInt("InternalClock", this.internalClock);
 	}
 
 	@Override
@@ -335,6 +344,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 		this.setDaysAlive(compoundTag.getInt("DaysAlive"));
 		this.setHunger(compoundTag.getInt("Hunger"));
 		this.setGrowthStage(compoundTag.getInt("GrowthStage"));
+		this.internalClock = compoundTag.getInt("InternalClock");
 	}
 
 	@Override

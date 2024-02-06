@@ -35,7 +35,7 @@ public class FossilsLegacyData implements DataGeneratorEntrypoint {
 		DataHandler dataHandler = new DataHandler(fabricDataGenerator);
 
 		dataHandler.addProvider(FossilsLegacyItemModelProvider::new);
-		dataHandler.addProvider(FossilsLegacyBlockStateProvider::new);
+		dataHandler.addProvider((fabricDataOutput, provider, modId, existingFileHelper) -> new FossilsLegacyBlockStateProvider(fabricDataOutput, existingFileHelper));
 		dataHandler.addProvider(FossilsLegacySoundDefinitionsProvider::new);
 		dataHandler.addLanguageProvider("en_us", FossilsLegacyLanguageProvider::new);
 

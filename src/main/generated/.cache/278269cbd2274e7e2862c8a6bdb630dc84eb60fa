@@ -1,4 +1,4 @@
-// 1.20.4	2024-01-28T13:05:18.159831	Fossils and Archaeology Legacy/fossilslegacy: Item Models
+// 1.20.4	2024-02-05T17:59:24.7280592	Fossils and Archaeology Legacy/fossilslegacy: Item Models
 8acedddacf7368b55f421a24a3cd08413ee3c58c assets\fossilslegacy\models\item\brachiosaurus_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\fossilslegacy\models\item\nautilus_spawn_egg.json
 89ec69b213d909644c7d68e122b8c279574798aa assets\fossilslegacy\models\item\brachiosaurus_dna.json
@@ -6,8 +6,8 @@
 6376b3b0333caeb74c5267493978506ac825b798 assets\fossilslegacy\models\item\nautilus_eggs.json
 f482c1cec2d7c7683367552aa0d0c7a1923ed8ef assets\fossilslegacy\models\item\raw_plesiosaurus_meat.json
 2b62a4c46f1eeeb410678409898bcd3e575adf6a assets\fossilslegacy\models\item\ancient_sword_artifact.json
-63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\fossilslegacy\models\item\plesiosaurus_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\fossilslegacy\models\item\dilophosaurus_spawn_egg.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\fossilslegacy\models\item\plesiosaurus_spawn_egg.json
 863ace764a7f1006ecd967bc24871455b7f5865a assets\fossilslegacy\models\item\fossil.json
 5e6e9a4e462c41a2213534ea164f8f06584b5d15 assets\fossilslegacy\models\item\donkey_embryo_syringe.json
 a1e6a2bc4e794dff7b1e21874584604123f7c35d assets\fossilslegacy\models\item\cooked_smilodon_meat.json
@@ -76,8 +76,8 @@ c09dcdcd3d6a9a0225dd59cd6721487826901c94 assets\fossilslegacy\models\item\fox_em
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\fossilslegacy\models\item\mosasaurus_spawn_egg.json
 d6bceb669375ccc87d58ff14dcc80064f8ab5091 assets\fossilslegacy\models\item\velociraptor_dna.json
 d49730b24fb6933446cfef28d365de0cb00f9dee assets\fossilslegacy\models\item\skull_stick.json
-63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\fossilslegacy\models\item\smilodon_spawn_egg.json
 2289fcac9e84d4d3f0cd3b4ebae35fe8332fb540 assets\fossilslegacy\models\item\sheep_dna.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\fossilslegacy\models\item\smilodon_spawn_egg.json
 78e9912105c4467cce2486c1ab8e22805161afc9 assets\fossilslegacy\models\item\broken_frozen_meat.json
 bd165c5894dc19f85abaab92be30b71091296b42 assets\fossilslegacy\models\item\stone_javelin.json
 fab704a980924513c3605afad000c0ab90f4ef66 assets\fossilslegacy\models\item\tyrannosaurus_dna.json
@@ -114,8 +114,8 @@ aef823fbce5a3596646be60e2f4cb76c59e115de assets\fossilslegacy\models\item\nether
 cb0981d8cceb62c4b3dae4d87956682f4f8cb56a assets\fossilslegacy\models\item\mammoth_embryo_syringe.json
 a18661d6c353a390459a259944c4cac1b3778217 assets\fossilslegacy\models\item\cooked_mammoth_meat.json
 2eab951685ce90fe277562cbe70ba7eb2524833f assets\fossilslegacy\models\item\broken_scarab_gem_javelin.json
-9e42f12af89f112896e75788a999108dc171c4a6 assets\fossilslegacy\models\item\skull_lanturn_block.json
 af856b5ca7c3419f2ed44336db2cab4db0e1c970 assets\fossilslegacy\models\item\iron_javelin.json
+9e42f12af89f112896e75788a999108dc171c4a6 assets\fossilslegacy\models\item\skull_lanturn_block.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\fossilslegacy\models\item\tyrannosaurus_spawn_egg.json
 4bf487c835cd8ffd5b0030819685e48705fb12ac assets\fossilslegacy\models\item\sheep_embryo_syringe.json
 cb75659c64ea79c3de856577b5eb3fd61cba1995 assets\fossilslegacy\models\item\nautilus_shell.json
