@@ -58,7 +58,7 @@ public class Stegosaurus extends Dinosaur implements DinopediaInformation {
 	}
 
 	@Override
-	public int maxGrowthStage() {
+	public int getMaxGrowthStage() {
 		return 12;
 	}
 
@@ -85,12 +85,12 @@ public class Stegosaurus extends Dinosaur implements DinopediaInformation {
 		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, DinoConstants.HERBIVORE_FOOD, false));
 		this.goalSelector.addGoal(4, new DinoBabyFollowParentGoal(this, 1.1D));
 		this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));
-		this.goalSelector.addGoal(6, new DinoWaterAvoidingRandomStrollGoal(this, this, 1.0D));
-		this.goalSelector.addGoal(6, new DinoFollowOwnerGoal(this, this, this, 1.0D, 10.0F, 2.0F));
+		this.goalSelector.addGoal(6, new DinoWaterAvoidingRandomStrollGoal(this, 1.0D));
+		this.goalSelector.addGoal(6, new DinoFollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
 		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this, this, this));
-		this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this, this, this));
+		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this));
+		this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this));
 	}
 
 	@Override

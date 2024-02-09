@@ -19,9 +19,9 @@ public class SmilodonBegGoal extends Goal {
 	private int lookTime;
 	private final TargetingConditions begTargeting;
 
-	public SmilodonBegGoal(Smilodon wolf, float lookDistance) {
-		this.smilodon = wolf;
-		this.level = wolf.level();
+	public SmilodonBegGoal(Smilodon smilodon, float lookDistance) {
+		this.smilodon = smilodon;
+		this.level = smilodon.level();
 		this.lookDistance = lookDistance;
 		this.begTargeting = TargetingConditions.forNonCombat().range(lookDistance);
 		this.setFlags(EnumSet.of(Goal.Flag.LOOK));

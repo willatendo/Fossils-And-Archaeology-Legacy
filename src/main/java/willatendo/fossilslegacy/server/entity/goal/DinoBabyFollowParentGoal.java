@@ -3,44 +3,44 @@ package willatendo.fossilslegacy.server.entity.goal;
 import java.util.List;
 
 import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.animal.Animal;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 
 public class DinoBabyFollowParentGoal extends Goal {
-	private final Animal animal;
-	private Animal parent;
+	private final Dinosaur dinosaur;
+	private Dinosaur parent;
 	private final double speedModifier;
 	private int timeToRecalcPath;
 
-	public DinoBabyFollowParentGoal(Animal animal, double speedModifier) {
-		this.animal = animal;
+	public DinoBabyFollowParentGoal(Dinosaur dinosaur, double speedModifier) {
+		this.dinosaur = dinosaur;
 		this.speedModifier = speedModifier;
 	}
 
 	@Override
 	public boolean canUse() {
-		if (!this.animal.isBaby()) {
+		if (!this.dinosaur.isBaby()) {
 			return false;
 		} else {
-			List<? extends Animal> animals = this.animal.level().getEntitiesOfClass(this.animal.getClass(), this.animal.getBoundingBox().inflate(8.0D, 4.0D, 8.0D));
-			Animal animal = null;
+			List<? extends Dinosaur> dinosaurs = this.dinosaur.level().getEntitiesOfClass(this.dinosaur.getClass(), this.dinosaur.getBoundingBox().inflate(8.0D, 4.0D, 8.0D));
+			Dinosaur dinosaur = null;
 			double maxDistance = Double.MAX_VALUE;
 
-			for (Animal animalsNearby : animals) {
-				if (animalsNearby.getAge() >= 0) {
-					double d1 = this.animal.distanceToSqr(animalsNearby);
+			for (Dinosaur dinosaursNearby : dinosaurs) {
+				if (dinosaursNearby.getAge() >= 0) {
+					double d1 = this.dinosaur.distanceToSqr(dinosaursNearby);
 					if (!(d1 > maxDistance)) {
 						maxDistance = d1;
-						animal = animalsNearby;
+						dinosaur = dinosaursNearby;
 					}
 				}
 			}
 
-			if (animal == null) {
+			if (dinosaur == null) {
 				return false;
 			} else if (maxDistance < 9.0D) {
 				return false;
 			} else {
-				this.parent = animal;
+				this.parent = dinosaur;
 				return true;
 			}
 		}
@@ -48,12 +48,12 @@ public class DinoBabyFollowParentGoal extends Goal {
 
 	@Override
 	public boolean canContinueToUse() {
-		if (this.animal.getAge() >= 0) {
+		if (this.dinosaur.getAge() >= 0) {
 			return false;
 		} else if (!this.parent.isAlive()) {
 			return false;
 		} else {
-			double distance = this.animal.distanceToSqr(this.parent);
+			double distance = this.dinosaur.distanceToSqr(this.parent);
 			return !(distance < 9.0D) && !(distance > 256.0D);
 		}
 	}
@@ -72,7 +72,7 @@ public class DinoBabyFollowParentGoal extends Goal {
 	public void tick() {
 		if (--this.timeToRecalcPath <= 0) {
 			this.timeToRecalcPath = this.adjustedTickDelay(10);
-			this.animal.getNavigation().moveTo(this.parent, this.speedModifier);
+			this.dinosaur.getNavigation().moveTo(this.parent, this.speedModifier);
 		}
 	}
 }

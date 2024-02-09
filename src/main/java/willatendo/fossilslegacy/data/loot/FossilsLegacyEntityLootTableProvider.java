@@ -1,5 +1,7 @@
 package willatendo.fossilslegacy.data.loot;
 
+import java.util.Optional;
+
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
@@ -17,10 +19,11 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemKilledByPlayerC
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWithLootingCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.item.FossilsLegacyLootTables;
+import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom;
+import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom.ItemAndChance;
 import willatendo.simplelibrary.data.loot.SimpleEntityLootSubProvider;
 
 public class FossilsLegacyEntityLootTableProvider extends SimpleEntityLootSubProvider {
@@ -30,20 +33,20 @@ public class FossilsLegacyEntityLootTableProvider extends SimpleEntityLootSubPro
 
 	@Override
 	public void generate() {
-		this.add(FossilsLegacyEntities.BRACHIOSAURUS.get(), LootTable.lootTable());
-		this.add(FossilsLegacyEntities.DILOPHOSAURUS.get(), LootTable.lootTable());
-		this.add(FossilsLegacyEntities.MAMMOTH.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(UniformGenerator.between(1.0F, 3.0F)).setBonusRolls(UniformGenerator.between(0.0F, 2.0F)).add(LootItem.lootTableItem(Items.LEATHER))).withPool(LootPool.lootPool().setRolls(UniformGenerator.between(1.0F, 3.0F)).setBonusRolls(UniformGenerator.between(1.0F, 2.0F)).add(LootItem.lootTableItem(FossilsLegacyItems.RAW_MAMMOTH_MEAT.get()).apply(SmeltItemFunction.smelted().when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, ENTITY_ON_FIRE))))));
-		this.add(FossilsLegacyEntities.MOSASAURUS.get(), LootTable.lootTable());
-		this.add(FossilsLegacyEntities.NAUTILUS.get(), LootTable.lootTable());
-		this.add(FossilsLegacyEntities.PTERANODON.get(), LootTable.lootTable());
-		this.add(FossilsLegacyEntities.SMILODON.get(), LootTable.lootTable());
-		this.add(FossilsLegacyEntities.STEGOSAURUS.get(), LootTable.lootTable());
-		this.add(FossilsLegacyEntities.TRICERATOPS.get(), LootTable.lootTable());
-		this.add(FossilsLegacyEntities.TYRANNOSAURUS.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FossilsLegacyItems.TYRANNOSAURUS_TOOTH.get()))));
-		this.add(FossilsLegacyEntities.VELOCIRAPTOR.get(), LootTable.lootTable());
+		this.add(FossilsLegacyEntities.BRACHIOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_BRACHIOSAURUS_MEAT.get()));
+		this.add(FossilsLegacyEntities.DILOPHOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_DILOPHOSAURUS_MEAT.get()));
+		this.add(FossilsLegacyEntities.MAMMOTH.get(), this.createDinosaurTable(0.0F, 3.0F, Items.LEATHER, 1.0F, 3.0F, FossilsLegacyItems.RAW_MAMMOTH_MEAT.get()));
+		this.add(FossilsLegacyEntities.MOSASAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_MOSASAURUS_MEAT.get()));
+		this.add(FossilsLegacyEntities.NAUTILUS.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootOneItemOfManyRandom.lootTableItem(5, new ItemAndChance(FossilsLegacyItems.NAUTILUS_SHELL.get(), 0, 3), new ItemAndChance(FossilsLegacyItems.MAGIC_CONCH.get(), 3, 5)))));
+		this.add(FossilsLegacyEntities.PTERANODON.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_PTERANODON_MEAT.get()));
+		this.add(FossilsLegacyEntities.PLESIOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_PLESIOSAURUS_MEAT.get()));
+		this.add(FossilsLegacyEntities.SMILODON.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_SMILODON_MEAT.get()));
+		this.add(FossilsLegacyEntities.STEGOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_STEGOSAURUS_MEAT.get()));
+		this.add(FossilsLegacyEntities.TRICERATOPS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_TRICERATOPS_MEAT.get()));
+		this.add(FossilsLegacyEntities.TYRANNOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_TYRANNOSAURUS_MEAT.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FossilsLegacyItems.TYRANNOSAURUS_TOOTH.get()))));
+		this.add(FossilsLegacyEntities.VELOCIRAPTOR.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_VELOCIRAPTOR_MEAT.get()));
 
 		this.add(FossilsLegacyEntities.TAMED_ZOMBIFIED_PIGLIN.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(Items.ROTTEN_FLESH).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F))).apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0f, 1.0f))))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(Items.GOLD_NUGGET).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))).apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.GOLD_INGOT)).when(LootItemKilledByPlayerCondition.killedByPlayer()).when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.025F, 0.01F))));
-		this.add(FossilsLegacyEntities.DROWNED_PIRATE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FossilsLegacyBlocks.SKULL_BLOCK.get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))).add(LootItem.lootTableItem(Items.BONE).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F))))));
 		this.add(FossilsLegacyEntities.FAILURESAURUS.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(UniformGenerator.between(0.0F, 2.0F)).add(LootItem.lootTableItem(FossilsLegacyItems.FOSSIL.get()))));
 
 		this.add(FossilsLegacyEntities.EGG.get(), LootTable.lootTable());
@@ -91,6 +94,23 @@ public class FossilsLegacyEntityLootTableProvider extends SimpleEntityLootSubPro
 		this.add(FossilsLegacyEntities.PREGNANT_SHEEP.get(), FossilsLegacyLootTables.PREGNANT_SHEEP_YELLOW, this.createPregnantSheepTable(Blocks.YELLOW_WOOL));
 		this.add(FossilsLegacyEntities.PREGNANT_SMILODON.get(), LootTable.lootTable());
 		this.add(FossilsLegacyEntities.PREGNANT_WOLF.get(), LootTable.lootTable());
+	}
+
+	protected LootTable.Builder createDinosaurTable(float minAdditional, float maxAdditional, ItemLike additionalDrop, float min, float max, ItemLike rawMeat) {
+		return this.createDinosaurTable(Optional.of(minAdditional), Optional.of(maxAdditional), Optional.of(additionalDrop), min, max, rawMeat);
+	}
+
+	protected LootTable.Builder createDinosaurTable(float min, float max, ItemLike rawMeat) {
+		return this.createDinosaurTable(Optional.empty(), Optional.empty(), Optional.empty(), min, max, rawMeat);
+	}
+
+	protected LootTable.Builder createDinosaurTable(Optional<Float> minAdditional, Optional<Float> maxAdditional, Optional<ItemLike> additionalDrop, float min, float max, ItemLike rawMeat) {
+		LootTable.Builder builder = LootTable.lootTable();
+		if (additionalDrop.isPresent() && minAdditional.isPresent() && maxAdditional.isPresent()) {
+			builder.withPool(LootPool.lootPool().setRolls(UniformGenerator.between(minAdditional.get(), maxAdditional.get())).setBonusRolls(UniformGenerator.between(0.0F, 2.0F)).add(LootItem.lootTableItem(additionalDrop.get())));
+		}
+		builder.withPool(LootPool.lootPool().setRolls(UniformGenerator.between(min, max)).setBonusRolls(UniformGenerator.between(1.0F, 2.0F)).add(LootItem.lootTableItem(rawMeat).apply(SmeltItemFunction.smelted().when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, ENTITY_ON_FIRE)))));
+		return builder;
 	}
 
 	protected LootTable.Builder createPregnantSheepTable(ItemLike itemLike) {

@@ -2,8 +2,6 @@ package willatendo.fossilslegacy.server.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 import org.apache.commons.compress.utils.Lists;
 
@@ -16,7 +14,6 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.players.OldUsersConverter;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -32,7 +29,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.PlayerRideable;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.Shearable;
 import net.minecraft.world.entity.SpawnGroupData;
@@ -66,12 +62,8 @@ import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class Mammoth extends Dinosaur implements DinopediaInformation, PlayerRideable, Shearable {
-	private static final EntityDataAccessor<Integer> HUNGER = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.INT);
-	private static final EntityDataAccessor<Integer> DAYS_ALIVE = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.INT);
+public class Mammoth extends Dinosaur implements DinopediaInformation, RideableDinosaur, Shearable {
 	private static final EntityDataAccessor<Boolean> IS_SHEARED = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.BOOLEAN);
-	protected static final EntityDataAccessor<Optional<UUID>> OWNER = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.OPTIONAL_UUID);
-	private int timeAlive;
 	private int eatAnimationTick;
 	private int swingTick;
 	private EatBlockGoal eatBlockGoal;
@@ -87,6 +79,11 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, PlayerRid
 	@Override
 	public float maxUpStep() {
 		return DinosaurTypes.MAMMOTH.getStepHeights()[this.getGrowthStage()];
+	}
+
+	@Override
+	public int getMinRideableAge() {
+		return 1;
 	}
 
 	@Override
@@ -110,7 +107,7 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, PlayerRid
 	}
 
 	@Override
-	public int maxGrowthStage() {
+	public int getMaxGrowthStage() {
 		return 1;
 	}
 
@@ -179,8 +176,8 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, PlayerRid
 		this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this, this, this));
-		this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this, this, this));
+		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this));
+		this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this));
 		this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
 	}
 
@@ -188,23 +185,6 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, PlayerRid
 	protected void defineSynchedData() {
 		super.defineSynchedData();
 		this.entityData.define(IS_SHEARED, false);
-		this.entityData.define(DAYS_ALIVE, 0);
-		this.entityData.define(HUNGER, this.getMaxHunger());
-		this.entityData.define(OWNER, Optional.empty());
-	}
-
-	@Override
-	public LivingEntity getOwner() {
-		try {
-			UUID uuid = this.getOwnerUUID();
-			return uuid == null ? null : this.level().getPlayerByUUID(uuid);
-		} catch (IllegalArgumentException illegalargumentexception) {
-			return null;
-		}
-	}
-
-	public boolean isOwnedBy(LivingEntity livingEntity) {
-		return livingEntity == this.getOwner();
 	}
 
 	@Override
@@ -220,7 +200,7 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, PlayerRid
 			return InteractionResult.CONSUME;
 		}
 		if (itemStack.isEmpty() && !this.commandItems().canCommandWithItem(itemStack)) {
-			if (!this.hasPassenger(this) && !this.isBaby()) {
+			if (!this.hasPassenger(this) && this.getGrowthStage() >= this.getMinRideableAge() && this.isTame()) {
 				if (!this.level().isClientSide) {
 					player.startRiding(this);
 				}
@@ -327,72 +307,15 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, PlayerRid
 	}
 
 	@Override
-	public void setDaysAlive(int daysAlive) {
-		this.entityData.set(DAYS_ALIVE, daysAlive);
-	}
-
-	@Override
-	public int getDaysAlive() {
-		return this.entityData.get(DAYS_ALIVE);
-	}
-
-	@Override
-	public void setHunger(int hunger) {
-		this.entityData.set(HUNGER, hunger);
-	}
-
-	@Override
-	public int getHunger() {
-		return this.entityData.get(HUNGER);
-	}
-
-	@Override
-	public UUID getOwnerUUID() {
-		return this.entityData.get(OWNER).orElse((UUID) null);
-	}
-
-	@Override
-	public void setOwnerUUID(UUID uuid) {
-		this.entityData.set(OWNER, Optional.ofNullable(uuid));
-	}
-
-	public boolean isTame() {
-		return this.getOwnerUUID() != null;
-	}
-
-	@Override
 	public void addAdditionalSaveData(CompoundTag compoundTag) {
 		super.addAdditionalSaveData(compoundTag);
 		compoundTag.putBoolean("IsSheared", this.isSheared());
-		compoundTag.putInt("DaysAlive", this.getDaysAlive());
-		compoundTag.putInt("Hunger", this.getHunger());
-		compoundTag.putInt("TicksAlive", this.timeAlive);
-		if (this.getOwnerUUID() != null) {
-			compoundTag.putUUID("Owner", this.getOwnerUUID());
-		}
 	}
 
 	@Override
 	public void readAdditionalSaveData(CompoundTag compoundTag) {
 		super.readAdditionalSaveData(compoundTag);
 		this.setSheared(compoundTag.getBoolean("IsSheared"));
-		this.setDaysAlive(compoundTag.getInt("DaysAlive"));
-		this.setHunger(compoundTag.getInt("Hunger"));
-		this.timeAlive = compoundTag.getInt("TicksAlive");
-		UUID uuid;
-		if (compoundTag.hasUUID("Owner")) {
-			uuid = compoundTag.getUUID("Owner");
-		} else {
-			String s = compoundTag.getString("Owner");
-			uuid = OldUsersConverter.convertMobOwnerIfNecessary(this.getServer(), s);
-		}
-
-		if (uuid != null) {
-			try {
-				this.setOwnerUUID(uuid);
-			} catch (Throwable throwable) {
-			}
-		}
 	}
 
 	private float getAttackDamage() {

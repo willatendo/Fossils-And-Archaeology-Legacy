@@ -27,6 +27,7 @@ import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -57,7 +58,7 @@ public class Smilodon extends Dinosaur implements DinopediaInformation {
 	}
 
 	public static AttributeSupplier smilodonAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 8.0F).add(Attributes.MOVEMENT_SPEED, 0.23D).build();
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.23D).build();
 	}
 
 	@Override
@@ -76,7 +77,7 @@ public class Smilodon extends Dinosaur implements DinopediaInformation {
 	}
 
 	@Override
-	public int maxGrowthStage() {
+	public int getMaxGrowthStage() {
 		return 1;
 	}
 
@@ -103,13 +104,14 @@ public class Smilodon extends Dinosaur implements DinopediaInformation {
 		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, DinoConstants.CARNIVORE_FOOD, false));
 		this.goalSelector.addGoal(4, new DinoBabyFollowParentGoal(this, 1.1D));
 		this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));
-		this.goalSelector.addGoal(6, new DinoWaterAvoidingRandomStrollGoal(this, this, 1.0D));
+		this.goalSelector.addGoal(6, new DinoWaterAvoidingRandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(9, new SmilodonBegGoal(this, 8.0f));
-		this.goalSelector.addGoal(6, new DinoFollowOwnerGoal(this, this, this, 1.0D, 10.0F, 2.0F));
+		this.goalSelector.addGoal(6, new DinoFollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
 		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this, this, this));
-		this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this, this, this));
+		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this));
+		this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this));
+		this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
 	}
 
 	@Override

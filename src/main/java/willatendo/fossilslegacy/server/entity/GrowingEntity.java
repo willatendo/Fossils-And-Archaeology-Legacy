@@ -5,7 +5,7 @@ public interface GrowingEntity {
 
 	int getGrowthStage();
 
-	int maxGrowthStage();
+	int getMaxGrowthStage();
 
 	default double getMinHealth() {
 		return 0.0D;

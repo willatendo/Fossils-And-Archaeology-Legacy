@@ -6,20 +6,16 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
-import willatendo.fossilslegacy.server.entity.PlayerCommandableAccess;
-import willatendo.fossilslegacy.server.entity.TameAccessor;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 
 public class DinoFollowOwnerGoal extends Goal {
-	private final Animal animal;
-	private final PlayerCommandableAccess playerCommandable;
-	private final TameAccessor tameAccessor;
+	private final Dinosaur dinosaur;
 	private LivingEntity owner;
 	private final LevelReader level;
 	private final double speedModifier;
@@ -29,13 +25,11 @@ public class DinoFollowOwnerGoal extends Goal {
 	private final float startDistance;
 	private float oldWaterCost;
 
-	public DinoFollowOwnerGoal(Animal animal, PlayerCommandableAccess playerCommandable, TameAccessor tameAccessor, double speedModifer, float startDistance, float stopDistance) {
-		this.animal = animal;
-		this.playerCommandable = playerCommandable;
-		this.tameAccessor = tameAccessor;
-		this.level = animal.level();
+	public DinoFollowOwnerGoal(Dinosaur dinosaur, double speedModifer, float startDistance, float stopDistance) {
+		this.dinosaur = dinosaur;
+		this.level = dinosaur.level();
 		this.speedModifier = speedModifer;
-		this.navigation = animal.getNavigation();
+		this.navigation = dinosaur.getNavigation();
 		this.startDistance = startDistance;
 		this.stopDistance = stopDistance;
 		this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
@@ -43,16 +37,16 @@ public class DinoFollowOwnerGoal extends Goal {
 
 	@Override
 	public boolean canUse() {
-		LivingEntity livingEntity = this.tameAccessor.getOwner();
+		LivingEntity livingEntity = this.dinosaur.getOwner();
 		if (livingEntity == null) {
 			return false;
 		} else if (livingEntity.isSpectator()) {
 			return false;
-		} else if (this.playerCommandable.getCommand() == DinosaurCommand.FREE_MOVE) {
+		} else if (this.dinosaur.getCommand() == DinosaurCommand.FREE_MOVE) {
 			return false;
-		} else if (this.playerCommandable.getCommand() == DinosaurCommand.STAY) {
+		} else if (this.dinosaur.getCommand() == DinosaurCommand.STAY) {
 			return false;
-		} else if (this.animal.distanceToSqr(livingEntity) < (double) (this.startDistance * this.startDistance)) {
+		} else if (this.dinosaur.distanceToSqr(livingEntity) < (double) (this.startDistance * this.startDistance)) {
 			return false;
 		} else {
 			this.owner = livingEntity;
@@ -64,36 +58,36 @@ public class DinoFollowOwnerGoal extends Goal {
 	public boolean canContinueToUse() {
 		if (this.navigation.isDone()) {
 			return false;
-		} else if (this.playerCommandable.getCommand() == DinosaurCommand.FREE_MOVE) {
+		} else if (this.dinosaur.getCommand() == DinosaurCommand.FREE_MOVE) {
 			return false;
-		} else if (this.playerCommandable.getCommand() == DinosaurCommand.STAY) {
+		} else if (this.dinosaur.getCommand() == DinosaurCommand.STAY) {
 			return false;
 		} else {
-			return !(this.animal.distanceToSqr(this.owner) <= (double) (this.stopDistance * this.stopDistance));
+			return !(this.dinosaur.distanceToSqr(this.owner) <= (double) (this.stopDistance * this.stopDistance));
 		}
 	}
 
 	@Override
 	public void start() {
 		this.timeToRecalcPath = 0;
-		this.oldWaterCost = this.animal.getPathfindingMalus(BlockPathTypes.WATER);
-		this.animal.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
+		this.oldWaterCost = this.dinosaur.getPathfindingMalus(BlockPathTypes.WATER);
+		this.dinosaur.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
 	}
 
 	@Override
 	public void stop() {
 		this.owner = null;
 		this.navigation.stop();
-		this.animal.setPathfindingMalus(BlockPathTypes.WATER, this.oldWaterCost);
+		this.dinosaur.setPathfindingMalus(BlockPathTypes.WATER, this.oldWaterCost);
 	}
 
 	@Override
 	public void tick() {
-		this.animal.getLookControl().setLookAt(this.owner, 10.0F, (float) this.animal.getMaxHeadXRot());
+		this.dinosaur.getLookControl().setLookAt(this.owner, 10.0F, (float) this.dinosaur.getMaxHeadXRot());
 		if (--this.timeToRecalcPath <= 0) {
 			this.timeToRecalcPath = this.adjustedTickDelay(10);
-			if (!this.animal.isLeashed() && !this.animal.isPassenger()) {
-				if (this.animal.distanceToSqr(this.owner) >= 144.0D) {
+			if (!this.dinosaur.isLeashed() && !this.dinosaur.isPassenger()) {
+				if (this.dinosaur.distanceToSqr(this.owner) >= 144.0D) {
 					this.teleportToOwner();
 				} else {
 					this.navigation.moveTo(this.owner, this.speedModifier);
@@ -123,7 +117,7 @@ public class DinoFollowOwnerGoal extends Goal {
 		} else if (!this.canTeleportTo(new BlockPos(x, y, z))) {
 			return false;
 		} else {
-			this.animal.moveTo((double) x + 0.5D, (double) y, (double) z + 0.5D, this.animal.getYRot(), this.animal.getXRot());
+			this.dinosaur.moveTo((double) x + 0.5D, (double) y, (double) z + 0.5D, this.dinosaur.getYRot(), this.dinosaur.getXRot());
 			this.navigation.stop();
 			return true;
 		}
@@ -138,13 +132,13 @@ public class DinoFollowOwnerGoal extends Goal {
 			if (blockState.getBlock() instanceof LeavesBlock) {
 				return false;
 			} else {
-				BlockPos newBlockPos = blockPos.subtract(this.animal.blockPosition());
-				return this.level.noCollision(this.animal, this.animal.getBoundingBox().move(newBlockPos));
+				BlockPos newBlockPos = blockPos.subtract(this.dinosaur.blockPosition());
+				return this.level.noCollision(this.dinosaur, this.dinosaur.getBoundingBox().move(newBlockPos));
 			}
 		}
 	}
 
 	private int randomIntInclusive(int min, int max) {
-		return this.animal.getRandom().nextInt(max - min + 1) + min;
+		return this.dinosaur.getRandom().nextInt(max - min + 1) + min;
 	}
 }

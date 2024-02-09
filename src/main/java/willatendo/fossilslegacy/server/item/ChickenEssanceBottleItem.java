@@ -19,7 +19,7 @@ public class ChickenEssanceBottleItem extends Item {
 	@Override
 	public InteractionResult interactLivingEntity(ItemStack itemStack, Player player, LivingEntity livingEntity, InteractionHand interactionHand) {
 		if (livingEntity instanceof GrowingEntity growingEntity) {
-			if (growingEntity.getGrowthStage() < growingEntity.maxGrowthStage()) {
+			if (growingEntity.getGrowthStage() < growingEntity.getMaxGrowthStage()) {
 				growingEntity.setGrowthStage(growingEntity.getGrowthStage() + 1);
 				if (livingEntity instanceof Dinosaur dinosaur) {
 					dinosaur.setHealth((float) (livingEntity.getHealth() + dinosaur.getMinHealth()));

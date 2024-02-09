@@ -1,21 +1,20 @@
 package willatendo.fossilslegacy.server.entity.goal;
 
-import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import willatendo.fossilslegacy.server.entity.PlayerCommandableAccess;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 
 public class DinoWaterAvoidingRandomStrollGoal extends WaterAvoidingRandomStrollGoal {
-	private final PlayerCommandableAccess playerCommandable;
+	private final Dinosaur dinosaur;
 
-	public DinoWaterAvoidingRandomStrollGoal(PathfinderMob pathfinderMob, PlayerCommandableAccess playerCommandable, double speedModifier) {
-		super(pathfinderMob, speedModifier);
-		this.playerCommandable = playerCommandable;
+	public DinoWaterAvoidingRandomStrollGoal(Dinosaur dinosaur, double speedModifier) {
+		super(dinosaur, speedModifier);
+		this.dinosaur = dinosaur;
 	}
 
 	@Override
 	public boolean canUse() {
-		if (this.playerCommandable.getCommand() == DinosaurCommand.STAY) {
+		if (this.dinosaur.getCommand() == DinosaurCommand.STAY) {
 			return false;
 		} else {
 			return super.canUse();
@@ -24,7 +23,7 @@ public class DinoWaterAvoidingRandomStrollGoal extends WaterAvoidingRandomStroll
 
 	@Override
 	public boolean canContinueToUse() {
-		if (this.playerCommandable.getCommand() == DinosaurCommand.STAY) {
+		if (this.dinosaur.getCommand() == DinosaurCommand.STAY) {
 			return false;
 		} else {
 			return super.canContinueToUse();

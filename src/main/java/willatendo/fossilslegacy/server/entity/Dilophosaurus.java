@@ -20,6 +20,7 @@ import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RangedAttackGoal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -42,7 +43,7 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
 	}
 
 	public static AttributeSupplier dilophosaurusAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 7.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.ATTACK_DAMAGE, 1.0D).build();
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.ATTACK_DAMAGE, 1.0D).build();
 	}
 
 	@Override
@@ -61,7 +62,7 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
 	}
 
 	@Override
-	public int maxGrowthStage() {
+	public int getMaxGrowthStage() {
 		return 8;
 	}
 
@@ -93,13 +94,14 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
 		this.goalSelector.addGoal(3, new DinoBabyFollowParentGoal(this, 1.1D));
 		this.goalSelector.addGoal(3, new RangedAttackGoal(this, 1.25D, 20, 10.0F));
 		this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, true));
-		this.goalSelector.addGoal(5, new DinoWaterAvoidingRandomStrollGoal(this, this, 1.0D));
-		this.goalSelector.addGoal(5, new DinoFollowOwnerGoal(this, this, this, 1.0D, 10.0F, 2.0F));
+		this.goalSelector.addGoal(5, new DinoWaterAvoidingRandomStrollGoal(this, 1.0D));
+		this.goalSelector.addGoal(5, new DinoFollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
 		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
-		this.targetSelector.addGoal(1, new DinoNearestAttackableTargetGoal<>(this, Player.class, true));
-		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this, this, this));
-		this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this, this, this));
+		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this));
+		this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this));
+		this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
+		this.targetSelector.addGoal(4, new DinoNearestAttackableTargetGoal<>(this, LivingEntity.class, true));
 	}
 
 	@Override

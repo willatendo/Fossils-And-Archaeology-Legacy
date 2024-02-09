@@ -20,7 +20,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PlayerRideable;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -51,7 +50,7 @@ import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, PlayerRideable {
+public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur {
 	private static final EntityDataAccessor<Boolean> KNOCKED_OUT = SynchedEntityData.defineId(Tyrannosaurus.class, EntityDataSerializers.BOOLEAN);
 
 	public Tyrannosaurus(EntityType<? extends Tyrannosaurus> entityType, Level level) {
@@ -59,12 +58,17 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Pla
 	}
 
 	public static AttributeSupplier tyrannosaurusAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 15.0F).add(Attributes.MOVEMENT_SPEED, 0.6D).add(Attributes.ATTACK_DAMAGE, 2.0D).build();
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 200.0F).add(Attributes.MOVEMENT_SPEED, 0.4D).add(Attributes.ATTACK_DAMAGE, 2.0D).build();
 	}
 
 	@Override
 	public float maxUpStep() {
 		return DinosaurTypes.TYRANNOSAURUS.getStepHeights()[this.getGrowthStage()];
+	}
+
+	@Override
+	public int getMinRideableAge() {
+		return this.getMaxGrowthStage() / 2;
 	}
 
 	@Override
@@ -83,7 +87,7 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Pla
 	}
 
 	@Override
-	public int maxGrowthStage() {
+	public int getMaxGrowthStage() {
 		return 8;
 	}
 
@@ -159,13 +163,13 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Pla
 				return !Tyrannosaurus.this.isKnockedOut() ? super.canUse() : false;
 			}
 		});
-		this.goalSelector.addGoal(6, new DinoWaterAvoidingRandomStrollGoal(this, this, 1.0D) {
+		this.goalSelector.addGoal(6, new DinoWaterAvoidingRandomStrollGoal(this, 1.0D) {
 			@Override
 			public boolean canUse() {
 				return !Tyrannosaurus.this.isKnockedOut() ? super.canUse() : false;
 			}
 		});
-		this.goalSelector.addGoal(6, new DinoFollowOwnerGoal(this, this, this, 1.0D, 10.0F, 2.0F) {
+		this.goalSelector.addGoal(6, new DinoFollowOwnerGoal(this, 1.0D, 10.0F, 2.0F) {
 			@Override
 			public boolean canUse() {
 				return !Tyrannosaurus.this.isKnockedOut() ? super.canUse() : false;
@@ -183,10 +187,10 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Pla
 				return !Tyrannosaurus.this.isKnockedOut() ? super.canUse() : false;
 			}
 		});
-		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-		this.targetSelector.addGoal(1, new DinoNearestAttackableTargetGoal<>(this, Player.class, true));
-		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this, this, this));
-		this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this, this, this));
+		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this));
+		this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this));
+		this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
+		this.targetSelector.addGoal(4, new DinoNearestAttackableTargetGoal<>(this, LivingEntity.class, true));
 	}
 
 	@Override
@@ -200,13 +204,13 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Pla
 		ItemStack itemStack = player.getItemInHand(interactionHand);
 
 		if (itemStack.is(FossilsLegacyItems.SCARAB_GEM.get())) {
-			if (this.isKnockedOut() && !this.isTame() && this.getAge() > 3) {
+			if (this.isKnockedOut() && !this.isTame() && this.getGrowthStage() > 3) {
 				this.setKnockedOut(false);
 				this.setHealth(this.getMaxHealth());
 				this.setOwnerUUID(player.getUUID());
 				return InteractionResult.SUCCESS;
 			} else {
-				if (this.getAge() <= 3) {
+				if (this.getGrowthStage() <= 3) {
 					this.sendMessageToPlayer(DinoSituation.TAME_TYRANNOSAURUS_ERROR_TOO_YOUNG, player);
 				} else if (!this.isKnockedOut()) {
 					this.sendMessageToPlayer(DinoSituation.TAME_TYRANNOSAURUS_ERROR_HEALTH, player);
@@ -215,7 +219,7 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Pla
 		}
 
 		if (itemStack.isEmpty() && !this.commandItems().canCommandWithItem(itemStack)) {
-			if (!this.hasPassenger(this) && !this.isBaby()) {
+			if (!this.hasPassenger(this) && this.getGrowthStage() >= this.getMinRideableAge() && this.isTame()) {
 				if (!this.level().isClientSide) {
 					player.startRiding(this);
 				}

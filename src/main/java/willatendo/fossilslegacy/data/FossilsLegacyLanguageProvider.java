@@ -1,11 +1,13 @@
 package willatendo.fossilslegacy.data;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.minecraft.world.item.Item;
 import willatendo.fossilslegacy.server.FossilsLegacyCreativeModeTabs;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.simplelibrary.data.SimpleLanguageProvider;
+import willatendo.simplelibrary.server.registry.SimpleHolder;
 
 public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 	public FossilsLegacyLanguageProvider(FabricDataOutput fabricDataOutput, String local) {
@@ -42,8 +44,6 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("advancements.fossilslegacy.legacy.stone_tablet.desc", "Place a cave painting!");
 		this.add("advancements.fossilslegacy.legacy.skull_block.title", "Spooky Skeletons!");
 		this.add("advancements.fossilslegacy.legacy.skull_block.desc", "Or...Maybe just their skulls?");
-		this.add("advancements.fossilslegacy.legacy.skeletons.title", "Real Pirates");
-		this.add("advancements.fossilslegacy.legacy.skeletons.desc", "Kill a drowned pirate!");
 
 		// Blocks
 		this.add(FossilsLegacyBlocks.FOSSIL_ORE.get());
@@ -99,9 +99,12 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("dinopedia.fossilslegacy.wild", "This Animal is Wild");
 
 		// Dino Situations
-		this.add("dinosaur.fossilslegacy.speach.full", "%s is full!");
-		this.add("dinosaur.fossilslegacy.speach.tame_tyrannosaurus_error_too_young", "%s is too young to be tamed!");
-		this.add("dinosaur.fossilslegacy.speach.tame_tyrannosaurus_error_health", "%s must be knocked out to be tamed!");
+		this.add("dinosaur.fossilslegacy.speach.hungry", "Is hungry!");
+		this.add("dinosaur.fossilslegacy.speach.starve", "Is starving!");
+		this.add("dinosaur.fossilslegacy.speach.no_space", "Has no space to grow!");
+		this.add("dinosaur.fossilslegacy.speach.full", "Is full!");
+		this.add("dinosaur.fossilslegacy.speach.tame_tyrannosaurus_error_too_young", "Is too young to be tamed!");
+		this.add("dinosaur.fossilslegacy.speach.tame_tyrannosaurus_error_health", "Must be knocked out to be tamed!");
 
 		// Entities
 		this.add(FossilsLegacyEntities.BRACHIOSAURUS.get());
@@ -157,7 +160,6 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("entity.fossilslegacy.zombified_piglin.speach.anu_summon", "All hiel Anu!");
 		this.add("entity.fossilslegacy.zombified_piglin.speach.sacrifice", "I cannot live without my Master!");
 		this.add("entity.fossilslegacy.zombified_piglin.speach.summon", "I swear my life to %s!");
-		this.add(FossilsLegacyEntities.DROWNED_PIRATE.get());
 
 		this.add(FossilsLegacyEntities.THROWN_JAVELIN.get());
 		this.add(FossilsLegacyEntities.STONE_TABLET.get());
@@ -292,8 +294,6 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.SCARAB_GEM_JAVELIN.get());
 		this.add(FossilsLegacyItems.BROKEN_SCARAB_GEM_JAVELIN.get(), "Scarab Gem Javelin");
 
-		this.add(FossilsLegacyItems.DROWNED_PIRATE_SPAWN_EGG.get());
-		this.add(FossilsLegacyItems.ZOMBIFIED_PIGMAN_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get());
 
 		this.add(FossilsLegacyItems.BRACHIOSAURUS_SPAWN_EGG.get());
@@ -314,6 +314,17 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.ingredients", "Scarab Gem");
 		this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.base_slot_description", "Add netherite weapon or tool");
 		this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.additions_slot_description", "Add scarab gem");
+
+		for (SimpleHolder<? extends Item> items : FossilsLegacyItems.DEBUG_ITEMS.getEntriesView()) {
+			this.add(items.get(), "Debug Item");
+		}
+
+		this.add("debugItem.fossilslegacy.type", "Type: %s");
+		this.add("debugItem.fossilslegacy.set_max_hunger", "Set Max Hunger");
+		this.add("debugItem.fossilslegacy.set_max_health", "Set Max Health");
+		this.add("debugItem.fossilslegacy.set_full_grown", "Set Full Grown");
+		this.add("debugItem.fossilslegacy.set_baby", "Set Baby");
+		this.add("debugItem.fossilslegacy.set_owner_as_me", "Set Owner As Me");
 
 		// JEI
 		this.add("jei.fossilslegacy.archaeology", "Archaeology");

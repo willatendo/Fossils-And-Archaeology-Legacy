@@ -26,6 +26,7 @@ import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class FossilsLegacyItems {
 	public static final SimpleRegistry<Item> ITEMS = SimpleRegistry.create(Registries.ITEM, FossilsLegacyUtils.ID);
+	public static final SimpleRegistry<Item> DEBUG_ITEMS = SimpleRegistry.create(Registries.ITEM, FossilsLegacyUtils.ID);
 
 	public static final SimpleHolder<Item> FOSSIL = ITEMS.register("fossil", () -> new FossilItem(new Item.Properties()));
 	public static final SimpleHolder<Item> TRICERATOPS_DNA = ITEMS.register("triceratops_dna", () -> new Item(new Item.Properties()));
@@ -153,11 +154,7 @@ public class FossilsLegacyItems {
 	public static final SimpleHolder<BrokenJavelinItem> BROKEN_NETHERITE_JAVELIN = ITEMS.register("broken_netherite_javelin", () -> new BrokenJavelinItem(Tiers.NETHERITE, new Item.Properties()));
 	public static final SimpleHolder<JavelinItem> SCARAB_GEM_JAVELIN = ITEMS.register("scarab_gem_javelin", () -> new JavelinItem(FossilsLegacyTiers.SCARAB_GEM, new Item.Properties().stacksTo(16)));
 	public static final SimpleHolder<BrokenJavelinItem> BROKEN_SCARAB_GEM_JAVELIN = ITEMS.register("broken_scarab_gem_javelin", () -> new BrokenJavelinItem(FossilsLegacyTiers.SCARAB_GEM, new Item.Properties()));
-
-	public static final SimpleHolder<SpawnEggItem> ZOMBIFIED_PIGMAN_SPAWN_EGG = ITEMS.register("zombified_pigman_spawn_egg", () -> new SpawnEggItem(FossilsLegacyEntities.TAMED_ZOMBIFIED_PIGLIN.get(), 0xEA9393, 0x4C7129, new Item.Properties()));
-	public static final SimpleHolder<SpawnEggItem> DROWNED_PIRATE_SPAWN_EGG = ITEMS.register("drowned_pirate_spawn_egg", () -> new SpawnEggItem(FossilsLegacyEntities.DROWNED_PIRATE.get(), 0x8FF1D7, 0x799C65, new Item.Properties()));
 	public static final SimpleHolder<SpawnEggItem> FAILURESAURUS_SPAWN_EGG = ITEMS.register("failuresaurus_spawn_egg", () -> new SpawnEggItem(FossilsLegacyEntities.FAILURESAURUS.get(), 0x51e6a5, 0x1b5128, new Item.Properties()));
-
 	public static final SimpleHolder<DinosaurSpawnEggItem> BRACHIOSAURUS_SPAWN_EGG = ITEMS.register("brachiosaurus_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntities.BRACHIOSAURUS.get(), 0x3b3e55, 0x7f8ba1, new Item.Properties()));
 	public static final SimpleHolder<DinosaurSpawnEggItem> DILOPHOSAURUS_SPAWN_EGG = ITEMS.register("dilophosaurus_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntities.DILOPHOSAURUS.get(), 0x686442, 0xf1bc2c, new Item.Properties()));
 	public static final SimpleHolder<DinosaurSpawnEggItem> MAMMOTH_SPAWN_EGG = ITEMS.register("mammoth_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntities.MAMMOTH.get(), 0x3d2700, 0x211500, new Item.Properties()));
@@ -172,8 +169,15 @@ public class FossilsLegacyItems {
 	public static final SimpleHolder<DinosaurSpawnEggItem> VELOCIRAPTOR_SPAWN_EGG = ITEMS.register("velociraptor_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntities.VELOCIRAPTOR.get(), 0x66965f, 0x884c2e, new Item.Properties()));
 
 	public static void init() {
+		// Debug
+		DEBUG_ITEMS.register("debug_max_hunger", () -> DebugItem.debugMaxHunger());
+		DEBUG_ITEMS.register("debug_max_health", () -> DebugItem.debugMaxHealth());
+		DEBUG_ITEMS.register("debug_full_grown", () -> DebugItem.debugFullGrown());
+		DEBUG_ITEMS.register("debug_baby", () -> DebugItem.debugBaby());
+		DEBUG_ITEMS.register("debug_tame", () -> DebugItem.debugTame());
+
 		SimpleUtils.registerAllItems(ITEMS, FossilsLegacyBlocks.BLOCKS, FossilsLegacyBlocks.AXOLOTLSPAWN);
 		ITEMS.register("axolotlspawn", () -> new PlaceOnWaterBlockItem(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), new Item.Properties()));
-		FabricRegister.register(ITEMS);
+		FabricRegister.register(ITEMS, DEBUG_ITEMS);
 	}
 }

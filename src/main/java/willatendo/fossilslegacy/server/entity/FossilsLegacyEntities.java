@@ -34,7 +34,7 @@ public class FossilsLegacyEntities {
 
 	public static final SimpleHolder<EntityType<AncientLightningBolt>> ANCIENT_LIGHTNING_BOLT = ENTITY_TYPES.register("ancient_lightning_bolt", () -> FabricEntityTypeBuilder.<AncientLightningBolt>create(MobCategory.MISC, AncientLightningBolt::new).disableSaving().dimensions(EntityDimensions.fixed(0.0F, 0.0F)).build());
 
-	public static final SimpleHolder<EntityType<Brachiosaurus>> BRACHIOSAURUS = ENTITY_TYPES.register("brachiosaurus", () -> FabricEntityTypeBuilder.<Brachiosaurus>create(MobCategory.CREATURE, Brachiosaurus::new).dimensions(EntityDimensions.scalable(0.75F, 1.5F)).build());
+	public static final SimpleHolder<EntityType<Brachiosaurus>> BRACHIOSAURUS = ENTITY_TYPES.register("brachiosaurus", () -> FabricEntityTypeBuilder.<Brachiosaurus>create(MobCategory.CREATURE, Brachiosaurus::new).dimensions(EntityDimensions.scalable(1.0F, 1.5F)).build());
 	public static final SimpleHolder<EntityType<Dilophosaurus>> DILOPHOSAURUS = ENTITY_TYPES.register("dilophosaurus", () -> FabricEntityTypeBuilder.<Dilophosaurus>create(MobCategory.CREATURE, Dilophosaurus::new).dimensions(EntityDimensions.scalable(0.5F, 0.5F)).build());
 	public static final SimpleHolder<EntityType<Mammoth>> MAMMOTH = ENTITY_TYPES.register("mammoth", () -> FabricEntityTypeBuilder.<Mammoth>create(MobCategory.CREATURE, Mammoth::new).dimensions(EntityDimensions.scalable(1.0F, 1.0F)).build());
 	public static final SimpleHolder<EntityType<Mosasaurus>> MOSASAURUS = ENTITY_TYPES.register("mosasaurus", () -> FabricEntityTypeBuilder.<Mosasaurus>create(MobCategory.WATER_CREATURE, Mosasaurus::new).dimensions(EntityDimensions.scalable(0.5F, 0.5F)).build());
@@ -44,8 +44,8 @@ public class FossilsLegacyEntities {
 	public static final SimpleHolder<EntityType<Smilodon>> SMILODON = ENTITY_TYPES.register("smilodon", () -> FabricEntityTypeBuilder.<Smilodon>create(MobCategory.CREATURE, Smilodon::new).dimensions(EntityDimensions.scalable(1.5F, 1.5F)).build());
 	public static final SimpleHolder<EntityType<Stegosaurus>> STEGOSAURUS = ENTITY_TYPES.register("stegosaurus", () -> FabricEntityTypeBuilder.<Stegosaurus>create(MobCategory.CREATURE, Stegosaurus::new).dimensions(EntityDimensions.scalable(0.5F, 0.5F)).build());
 	public static final SimpleHolder<EntityType<Triceratops>> TRICERATOPS = ENTITY_TYPES.register("triceratops", () -> FabricEntityTypeBuilder.<Triceratops>create(MobCategory.CREATURE, Triceratops::new).dimensions(EntityDimensions.scalable(0.5F, 0.5F)).build());
-	public static final SimpleHolder<EntityType<Tyrannosaurus>> TYRANNOSAURUS = ENTITY_TYPES.register("tyrannosaurus", () -> FabricEntityTypeBuilder.<Tyrannosaurus>create(MobCategory.CREATURE, Tyrannosaurus::new).dimensions(EntityDimensions.scalable(0.5F, 0.5F)).build());
-	public static final SimpleHolder<EntityType<Velociraptor>> VELOCIRAPTOR = ENTITY_TYPES.register("velociraptor", () -> FabricEntityTypeBuilder.<Velociraptor>create(MobCategory.CREATURE, Velociraptor::new).dimensions(EntityDimensions.scalable(0.5F, 0.5F)).build());
+	public static final SimpleHolder<EntityType<Tyrannosaurus>> TYRANNOSAURUS = ENTITY_TYPES.register("tyrannosaurus", () -> FabricEntityTypeBuilder.<Tyrannosaurus>create(MobCategory.CREATURE, Tyrannosaurus::new).dimensions(EntityDimensions.scalable(0.5F, 0.75F)).build());
+	public static final SimpleHolder<EntityType<Velociraptor>> VELOCIRAPTOR = ENTITY_TYPES.register("velociraptor", () -> FabricEntityTypeBuilder.<Velociraptor>create(MobCategory.CREATURE, Velociraptor::new).dimensions(EntityDimensions.scalable(0.25F, 0.5F)).build());
 
 	public static final SimpleHolder<EntityType<Fossil>> FOSSIL = ENTITY_TYPES.register("fossil", () -> FabricEntityTypeBuilder.<Fossil>create(MobCategory.MISC, Fossil::new).dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build());
 
@@ -72,7 +72,6 @@ public class FossilsLegacyEntities {
 
 	public static final SimpleHolder<EntityType<Anu>> ANU = ENTITY_TYPES.register("anu", () -> FabricEntityTypeBuilder.<Anu>create(MobCategory.MONSTER, Anu::new).dimensions(EntityDimensions.fixed(0.6F, 1.95F)).build());
 	public static final SimpleHolder<EntityType<TamedZombifiedPiglin>> TAMED_ZOMBIFIED_PIGLIN = ENTITY_TYPES.register("tamed_zombified_piglin", () -> FabricEntityTypeBuilder.<TamedZombifiedPiglin>create(MobCategory.MONSTER, TamedZombifiedPiglin::new).dimensions(EntityDimensions.fixed(.6F, 1.95F)).build());
-	public static final SimpleHolder<EntityType<DrownedPirate>> DROWNED_PIRATE = ENTITY_TYPES.register("drowned_pirate", () -> FabricEntityTypeBuilder.<DrownedPirate>create(MobCategory.MONSTER, DrownedPirate::new).dimensions(EntityDimensions.fixed(0.6F, 1.99F)).build());
 	public static final SimpleHolder<EntityType<Failuresaurus>> FAILURESAURUS = ENTITY_TYPES.register("failuresaurus", () -> FabricEntityTypeBuilder.<Failuresaurus>create(MobCategory.MONSTER, Failuresaurus::new).dimensions(EntityDimensions.fixed(1.0F, 1.0F)).build());
 
 	public static final SimpleHolder<EntityType<ThrownJavelin>> THROWN_JAVELIN = ENTITY_TYPES.register("thrown_javelin", () -> FabricEntityTypeBuilder.<ThrownJavelin>create(MobCategory.MISC, ThrownJavelin::new).dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build());

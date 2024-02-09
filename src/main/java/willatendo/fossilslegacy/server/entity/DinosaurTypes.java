@@ -8,24 +8,24 @@ public enum DinosaurTypes {
 	PTEROSAURUS(8, 0.5F, 1.0F),
 	STEGOSAURUS(12, 1.0F, 1.5F),
 	DILOPHOSAURUS(8, 1.0F),
-	BRACHIOSAURUS(37, 1.0F, 5.0F),
+	BRACHIOSAURUS(36, 1.0F, 5.0F),
 	MAMMOTH(1.0F, 1.5F),
 	SMILODON(2, 1.0F);
 
 	private final float[] stepHeights;
 
 	private DinosaurTypes(int growthStages, float minStepHeight, float maxStepHeight) {
-		this.stepHeights = new float[growthStages];
+		this.stepHeights = new float[growthStages + 1];
 		float diff = maxStepHeight - minStepHeight;
-		float change = diff / growthStages;
-		for (int i = 0; i < growthStages; i++) {
+		float change = diff / (growthStages + 1);
+		for (int i = 0; i < (growthStages + 1); i++) {
 			this.stepHeights[i] = (float) Math.floor(minStepHeight + (change * ((float) i)));
 		}
 	}
 
 	private DinosaurTypes(int growthStages, float stepHeight) {
-		this.stepHeights = new float[growthStages];
-		for (int i = 0; i < growthStages; i++) {
+		this.stepHeights = new float[growthStages + 1];
+		for (int i = 0; i < (growthStages + 1); i++) {
 			this.stepHeights[i] = stepHeight;
 		}
 	}

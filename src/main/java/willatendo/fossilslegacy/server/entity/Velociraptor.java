@@ -15,6 +15,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnGroupData;
@@ -24,9 +25,12 @@ import net.minecraft.world.entity.ai.goal.BreedGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.OpenDoorGoal;
 import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -43,15 +47,17 @@ import willatendo.fossilslegacy.server.entity.goal.DinoWaterAvoidingRandomStroll
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class Velociraptor extends Dinosaur implements DinopediaInformation, SubSpecies {
+public class Velociraptor extends Dinosaur implements DinopediaInformation, SubSpecies, HighlyIntelligent {
 	private static final EntityDataAccessor<Integer> SUB_SPECIES = SynchedEntityData.defineId(Velociraptor.class, EntityDataSerializers.INT);
+	private static final EntityDataAccessor<Boolean> LEARNED_CHESTS = SynchedEntityData.defineId(Velociraptor.class, EntityDataSerializers.BOOLEAN);
 
 	public Velociraptor(EntityType<? extends Velociraptor> entityType, Level level) {
 		super(entityType, level);
+		((GroundPathNavigation) this.navigation).setCanOpenDoors(true);
 	}
 
 	public static AttributeSupplier velociraptorAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 5.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.ATTACK_DAMAGE, 1.0D).build();
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.ATTACK_DAMAGE, 1.0D).build();
 	}
 
 	@Override
@@ -70,7 +76,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 	}
 
 	@Override
-	public int maxGrowthStage() {
+	public int getMaxGrowthStage() {
 		return 8;
 	}
 
@@ -97,19 +103,27 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, DinoConstants.CARNIVORE_FOOD, false));
 		this.goalSelector.addGoal(4, new DinoBabyFollowParentGoal(this, 1.1D));
 		this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));
-		this.goalSelector.addGoal(6, new DinoWaterAvoidingRandomStrollGoal(this, this, 1.0D));
-		this.goalSelector.addGoal(6, new DinoFollowOwnerGoal(this, this, this, 1.0D, 10.0F, 2.0F));
+		this.goalSelector.addGoal(6, new DinoWaterAvoidingRandomStrollGoal(this, 1.0D));
+		this.goalSelector.addGoal(6, new DinoFollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
+		this.goalSelector.addGoal(6, new OpenDoorGoal(this, false) {
+			@Override
+			public void stop() {
+			}
+		});
+//		this.goalSelector.addGoal(6, new LearnChestsGoal(this));
 		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-		this.targetSelector.addGoal(1, new DinoNearestAttackableTargetGoal<>(this, Player.class, true));
-		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this, this, this));
-		this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this, this, this));
+		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this));
+		this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this));
+		this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
+		this.targetSelector.addGoal(4, new DinoNearestAttackableTargetGoal<>(this, LivingEntity.class, true));
 	}
 
 	@Override
 	protected void defineSynchedData() {
 		super.defineSynchedData();
 		this.entityData.define(SUB_SPECIES, 0);
+		this.entityData.define(LEARNED_CHESTS, false);
 	}
 
 	@Override
@@ -141,6 +155,16 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 	}
 
 	@Override
+	public void setLearnedChests(boolean learnedChests) {
+		this.entityData.set(LEARNED_CHESTS, learnedChests);
+	}
+
+	@Override
+	public boolean hasLearnedChests() {
+		return this.entityData.get(LEARNED_CHESTS);
+	}
+
+	@Override
 	public ResourceLocation[][] textures() {
 		return new ResourceLocation[][] { { FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/sandy_velociraptor.png"), FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/sandy_baby_velociraptor.png") }, { FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/green_velociraptor.png"), FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/green_baby_velociraptor.png") }, { FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/white_velociraptor.png"), FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/white_baby_velociraptor.png") } };
 	}
@@ -149,12 +173,14 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 	public void addAdditionalSaveData(CompoundTag compoundTag) {
 		super.addAdditionalSaveData(compoundTag);
 		compoundTag.putInt("SubSpecies", this.getSubSpecies());
+		compoundTag.putBoolean("LearnedChests", this.hasLearnedChests());
 	}
 
 	@Override
 	public void readAdditionalSaveData(CompoundTag compoundTag) {
 		super.readAdditionalSaveData(compoundTag);
 		this.setSubSpecies(compoundTag.getInt("SubSpecies"));
+		this.setLearnedChests(compoundTag.getBoolean("LearnedChests"));
 	}
 
 	@Override

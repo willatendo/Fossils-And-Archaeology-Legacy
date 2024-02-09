@@ -150,8 +150,6 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
 		this.basicItem(FossilsLegacyItems.SCARAB_GEM_JAVELIN.get());
 		this.basicItem(FossilsLegacyItems.BROKEN_SCARAB_GEM_JAVELIN.get(), this.modLoc("item/scarab_gem_javelin"));
 
-		this.spawnEggItem(FossilsLegacyItems.ZOMBIFIED_PIGMAN_SPAWN_EGG.get());
-		this.spawnEggItem(FossilsLegacyItems.DROWNED_PIRATE_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get());
 
 		this.spawnEggItem(FossilsLegacyItems.BRACHIOSAURUS_SPAWN_EGG.get());
@@ -166,6 +164,10 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
 		this.spawnEggItem(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.TYRANNOSAURUS_SPAWN_EGG.get());
 		this.spawnEggItem(FossilsLegacyItems.VELOCIRAPTOR_SPAWN_EGG.get());
+
+		for (SimpleHolder<? extends Item> items : FossilsLegacyItems.DEBUG_ITEMS.getEntriesView()) {
+			this.handheldItem(items.get(), new ResourceLocation("item/bone"));
+		}
 
 		for (SimpleHolder<? extends Block> blocks : FossilsLegacyBlocks.BLOCKS.getEntriesView()) {
 			ResourceLocation blockId = blocks.getId();

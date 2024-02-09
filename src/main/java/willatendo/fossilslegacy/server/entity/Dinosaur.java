@@ -3,7 +3,6 @@ package willatendo.fossilslegacy.server.entity;
 import java.util.Optional;
 import java.util.UUID;
 
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -22,12 +21,10 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.OwnableEntity;
-import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -37,7 +34,7 @@ import willatendo.fossilslegacy.server.entity.Egg.EggType;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnBirth, TameAccessor, PlayerCommandableAccess, HungryAnimal, DaysAlive, GrowingEntity, SpeakingEntity {
+public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnBirth, TameAccessor, PlayerCommandableAccess, HungryAnimal, DaysAlive, GrowingEntity, TamedSpeakingEntity {
 	private static final EntityDataAccessor<Integer> COMMAND = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> DAYS_ALIVE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> GROWTH_STAGE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
@@ -63,6 +60,12 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 
 	public abstract int foodLevelForItemStack(ItemStack itemStack);
 
+	public boolean hasSpace() {
+		EntityDimensions entityDimensions = this.getDimensions(this.getPose());
+		EntityDimensions updatedDimensions = entityDimensions.scale(1.0F + (((float) this.boundingBoxGrowth()) * ((float) this.getGrowthStage() + 1.0F)));
+		return !this.level().getBlockCollisions(this, updatedDimensions.makeBoundingBox(this.position())).iterator().hasNext();
+	}
+
 	@Override
 	public boolean isFood(ItemStack itemStack) {
 		return foodLevelForItemStack(itemStack) > 0;
@@ -75,7 +78,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 
 	@Override
 	public boolean isBaby() {
-		return this.getGrowthStage() < this.maxGrowthStage() / 2;
+		return this.getGrowthStage() < this.getMaxGrowthStage() / 2;
 	}
 
 	@Override
@@ -89,10 +92,14 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 		super.tick();
 
 		if (FossilsLegacyConfig.COMMON_CONFIG.willAnimalsGrow()) {
-			if (this.getGrowthStage() < this.maxGrowthStage()) {
+			if (this.getGrowthStage() < this.getMaxGrowthStage()) {
 				if (this.internalClock % Level.TICKS_PER_DAY == 0) {
-					this.setGrowthStage(this.getGrowthStage() + 1);
-					this.setHealth((float) (this.getHealth() + this.getMinHealth()));
+					if (this.hasSpace()) {
+						this.setGrowthStage(this.getGrowthStage() + 1);
+						this.setHealth((float) (this.getHealth() + this.getMinHealth()));
+					} else {
+						this.sendMessageToOwnerOrElseAll(DinoSituation.NO_SPACE);
+					}
 				}
 			}
 		}
@@ -106,24 +113,33 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 				this.decreaseHunger();
 			}
 
+			if (this.getHunger() == (this.getMaxHunger() / 2)) {
+				this.sendMessageToOwnerOrElseAll(DinoSituation.HUNGRY);
+			}
+
 			if (this.getHunger() < 0) {
+				if (this.internalClock % 100 == 0) {
+					this.sendMessageToOwnerOrElseAll(DinoSituation.STARVE);
+				}
 				this.hurt(new DamageSource(this.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(FossilsLegacyDamageTypes.ANIMAL_STARVE)), 20.0F);
 			}
 		}
 
-		if (this.internalClock % 10 == 0) {
-			if (this.getHealth() < this.getMaxHealth()) {
-				if (this.getHunger() > this.getMaxHunger() / 2) {
-					this.setHunger(this.getHunger() - 5);
-					this.setHealth(this.getHealth() + 1.0F);
+		if (!this.isDeadOrDying()) {
+			if (this.internalClock % 10 == 0) {
+				if (this.getHealth() < this.getMaxHealth()) {
+					if (this.getHunger() > this.getMaxHunger() / 2) {
+						this.setHunger(this.getHunger() - 5);
+						this.setHealth(this.getHealth() + 1.0F);
+					}
 				}
 			}
 		}
 	}
 
 	@Override
-	public EntityDimensions getDimensions(Pose pose) {
-		return super.getDimensions(pose).scale(1.0F + (this.boundingBoxGrowth() * this.getGrowthStage()));
+	public float getScale() {
+		return 1.0F + (((float) this.boundingBoxGrowth()) * ((float) this.getGrowthStage()));
 	}
 
 	@Override
@@ -181,11 +197,6 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 				}
 			}
 			itemStack.shrink(1);
-			return InteractionResult.SUCCESS;
-		}
-
-		if (!this.isTame() && FabricLoader.getInstance().isDevelopmentEnvironment() && itemStack.is(Items.DEBUG_STICK) && player.isCreative()) {
-			this.setOwnerUUID(player.getUUID());
 			return InteractionResult.SUCCESS;
 		}
 

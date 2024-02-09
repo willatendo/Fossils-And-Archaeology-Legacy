@@ -7,16 +7,14 @@ import net.minecraft.world.entity.player.Player;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public enum DinoSituation implements Speaker {
-	Hungry,
-	Starve,
-	LearingChest,
+	HUNGRY("hungry"),
+	STARVE("starve"),
+	LEARNED_CHESTS,
 	Bytreate,
-	NoSpace,
-	StarveEsc,
-	SJLBite,
-	ChewTime,
+	NO_SPACE("no_space"),
+	STARVE_ESCAPE,
+	SJL_BITE,
 	FULL("full"),
-	Nervous,
 	TAME_TYRANNOSAURUS_ERROR_TOO_YOUNG("tame_tyrannosaurus_error_too_young"),
 	TAME_TYRANNOSAURUS_ERROR_HEALTH("tame_tyrannosaurus_error_health");
 

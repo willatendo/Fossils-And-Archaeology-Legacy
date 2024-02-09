@@ -99,12 +99,12 @@ public class StoneTabletItem extends Item implements CreativeModeTabFill {
 
 	@Override
 	public void fill(ItemDisplayParameters itemDisplayParameters, Output output) {
+		output.accept(FossilsLegacyItems.STONE_TABLET.get());
 		for (int i = 0; i < StoneTabletTypes.values().length; i++) {
 			ItemStack itemStack = new ItemStack(FossilsLegacyItems.STONE_TABLET.get());
 			CompoundTag compoundTag = itemStack.getOrCreateTagElement("EntityTag");
 			compoundTag.putInt("Type", i);
 			output.accept(itemStack);
 		}
-		output.accept(FossilsLegacyItems.STONE_TABLET.get());
 	}
 }

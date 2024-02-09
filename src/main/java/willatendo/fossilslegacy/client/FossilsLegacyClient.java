@@ -47,7 +47,6 @@ import willatendo.fossilslegacy.client.model.tyrannosaurus.TyrannosaurusModel;
 import willatendo.fossilslegacy.client.render.BrachiosaurusRenderer;
 import willatendo.fossilslegacy.client.render.DilophosaurusRenderer;
 import willatendo.fossilslegacy.client.render.DilophosaurusVenomRenderer;
-import willatendo.fossilslegacy.client.render.DrownedPirateRenderer;
 import willatendo.fossilslegacy.client.render.EggRenderer;
 import willatendo.fossilslegacy.client.render.FailuresaurusRenderer;
 import willatendo.fossilslegacy.client.render.FossilRenderer;
@@ -59,11 +58,11 @@ import willatendo.fossilslegacy.client.render.PteranodonRenderer;
 import willatendo.fossilslegacy.client.render.SmilodonRenderer;
 import willatendo.fossilslegacy.client.render.StegosaurusRenderer;
 import willatendo.fossilslegacy.client.render.StoneHieroglyphRenderer;
+import willatendo.fossilslegacy.client.render.TamedZombifiedPiglinRenderer;
 import willatendo.fossilslegacy.client.render.ThrownJavelinRenderer;
 import willatendo.fossilslegacy.client.render.TriceratopsRenderer;
 import willatendo.fossilslegacy.client.render.TyrannosaurusRenderer;
 import willatendo.fossilslegacy.client.render.VelociraptorRenderer;
-import willatendo.fossilslegacy.client.render.TamedZombifiedPiglinRenderer;
 import willatendo.fossilslegacy.client.screen.AnalyzerScreen;
 import willatendo.fossilslegacy.client.screen.ArchaeologyWorkbenchScreen;
 import willatendo.fossilslegacy.client.screen.CultivatorScreen;
@@ -103,7 +102,6 @@ public class FossilsLegacyClient implements ClientModInitializer {
 		EntityRendererRegistry.register(FossilsLegacyEntities.EGG.get(), EggRenderer::new);
 
 		EntityRendererRegistry.register(FossilsLegacyEntities.TAMED_ZOMBIFIED_PIGLIN.get(), context -> new TamedZombifiedPiglinRenderer(context, ModelLayers.ZOMBIFIED_PIGLIN, ModelLayers.ZOMBIFIED_PIGLIN_INNER_ARMOR, ModelLayers.ZOMBIFIED_PIGLIN_OUTER_ARMOR, true));
-		EntityRendererRegistry.register(FossilsLegacyEntities.DROWNED_PIRATE.get(), DrownedPirateRenderer::new);
 		EntityRendererRegistry.register(FossilsLegacyEntities.FAILURESAURUS.get(), FailuresaurusRenderer::new);
 
 		EntityRendererRegistry.register(FossilsLegacyEntities.PREGNANT_CAT.get(), CatRenderer::new);

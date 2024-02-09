@@ -30,6 +30,7 @@ import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.animal.horse.Mule;
 import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -38,7 +39,6 @@ import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.Anu;
 import willatendo.fossilslegacy.server.entity.Brachiosaurus;
 import willatendo.fossilslegacy.server.entity.Dilophosaurus;
-import willatendo.fossilslegacy.server.entity.DrownedPirate;
 import willatendo.fossilslegacy.server.entity.Egg;
 import willatendo.fossilslegacy.server.entity.Failuresaurus;
 import willatendo.fossilslegacy.server.entity.Fossil;
@@ -55,15 +55,24 @@ import willatendo.fossilslegacy.server.entity.Tyrannosaurus;
 import willatendo.fossilslegacy.server.entity.Velociraptor;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.server.registry.SimpleHolder;
 
 public class ModEvents {
 	public static void events() {
+		addToCreativeModeTabs();
 		addToMaps();
 		addToBiomes();
-		addToCreativeModeTab();
 		addEntityAttributes();
 		addEntitySpawnPlacements();
 		addLegacyPack();
+	}
+
+	public static void addToCreativeModeTabs() {
+		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.OP_BLOCKS).register(fabricItemGroupEntries -> {
+			for (SimpleHolder<? extends Item> items : FossilsLegacyItems.DEBUG_ITEMS.getEntriesView()) {
+				fabricItemGroupEntries.accept(items.get());
+			}
+		});
 	}
 
 	public static void addToMaps() {
@@ -76,30 +85,9 @@ public class ModEvents {
 		BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FossilsLegacyPlacedFeatures.ORE_PERMAFROST);
 	}
 
-	public static void addToCreativeModeTab() {
-		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.SPAWN_EGGS).register(content -> {
-			content.accept(FossilsLegacyItems.BRACHIOSAURUS_SPAWN_EGG.get());
-			content.accept(FossilsLegacyItems.DILOPHOSAURUS_SPAWN_EGG.get());
-			content.accept(FossilsLegacyItems.DROWNED_PIRATE_SPAWN_EGG.get());
-			content.accept(FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get());
-			content.accept(FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get());
-			content.accept(FossilsLegacyItems.MOSASAURUS_SPAWN_EGG.get());
-			content.accept(FossilsLegacyItems.NAUTILUS_SPAWN_EGG.get());
-			content.accept(FossilsLegacyItems.PLESIOSAURUS_SPAWN_EGG.get());
-			content.accept(FossilsLegacyItems.PTERANODON_SPAWN_EGG.get());
-			content.accept(FossilsLegacyItems.SMILODON_SPAWN_EGG.get());
-			content.accept(FossilsLegacyItems.STEGOSAURUS_SPAWN_EGG.get());
-			content.accept(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get());
-			content.accept(FossilsLegacyItems.TYRANNOSAURUS_SPAWN_EGG.get());
-			content.accept(FossilsLegacyItems.VELOCIRAPTOR_SPAWN_EGG.get());
-			content.accept(FossilsLegacyItems.ZOMBIFIED_PIGMAN_SPAWN_EGG.get());
-		});
-	}
-
 	public static void addEntityAttributes() {
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.BRACHIOSAURUS.get(), Brachiosaurus.brachiosaurusAttributes());
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.DILOPHOSAURUS.get(), Dilophosaurus.dilophosaurusAttributes());
-		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.DROWNED_PIRATE.get(), DrownedPirate.createAttributes().build());
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.EGG.get(), Egg.eggAttributes());
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.FAILURESAURUS.get(), Failuresaurus.createAttributes().build());
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.FOSSIL.get(), Fossil.fossilAttributes());
