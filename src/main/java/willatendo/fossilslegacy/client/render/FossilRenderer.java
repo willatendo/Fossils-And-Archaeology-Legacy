@@ -13,8 +13,8 @@ import willatendo.fossilslegacy.client.model.fossils.PlesiosaurusSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.PteranodonSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.TriceratopsSkeletonModel;
 import willatendo.fossilslegacy.server.entity.Fossil;
-import willatendo.fossilslegacy.server.entity.Fossils;
-import willatendo.fossilslegacy.server.entity.Fossils.FossilScaleFactor;
+import willatendo.fossilslegacy.server.entity.FossilTypes;
+import willatendo.fossilslegacy.server.entity.FossilTypes.FossilScaleFactor;
 
 public class FossilRenderer extends MobRenderer<Fossil, AbstractSkeletonModel> {
 	private AbstractSkeletonModel[] models;
@@ -26,6 +26,7 @@ public class FossilRenderer extends MobRenderer<Fossil, AbstractSkeletonModel> {
 
 	@Override
 	public void render(Fossil fossil, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
+		this.shadowRadius = 0.15F * (float) fossil.getSize();
 		this.model = this.models[fossil.getFossil()];
 
 		super.render(fossil, packedOverlay, packedLight, poseStack, multiBufferSource, partialTicks);
@@ -33,8 +34,8 @@ public class FossilRenderer extends MobRenderer<Fossil, AbstractSkeletonModel> {
 
 	@Override
 	protected void scale(Fossil fossil, PoseStack poseStack, float packedOverlay) {
-		Fossils fossils = Fossils.values()[fossil.getFossil()];
-		FossilScaleFactor scaleFactor = fossils.getScaleFactor().apply(fossil);
+		FossilTypes fossils = FossilTypes.get(fossil.getFossil());
+		FossilScaleFactor scaleFactor = fossils.getScaleFactor(fossil);
 
 		poseStack.scale(scaleFactor.x(), scaleFactor.y(), scaleFactor.z());
 
@@ -43,6 +44,6 @@ public class FossilRenderer extends MobRenderer<Fossil, AbstractSkeletonModel> {
 
 	@Override
 	public ResourceLocation getTextureLocation(Fossil fossil) {
-		return Fossils.values()[fossil.getFossil()].getFossilTexture();
+		return FossilTypes.get(fossil.getFossil()).getFossilTexture();
 	}
 }

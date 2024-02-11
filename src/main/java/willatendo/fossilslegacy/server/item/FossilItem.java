@@ -21,7 +21,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.entity.Fossil;
-import willatendo.fossilslegacy.server.entity.Fossils;
+import willatendo.fossilslegacy.server.entity.FossilTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
 
 public class FossilItem extends Item {
@@ -49,7 +49,7 @@ public class FossilItem extends Item {
 			Consumer consumer = EntityType.createDefaultStackConfig(serverLevel, itemStack, useOnContext.getPlayer());
 			Fossil fossil = FossilsLegacyEntities.FOSSIL.get().create(serverLevel, itemStack.getTag(), consumer, blockPos, MobSpawnType.SPAWN_EGG, true, true);
 			RandomSource randomSource = level.getRandom();
-			int skeleton = randomSource.nextInt(Fossils.values().length);
+			int skeleton = randomSource.nextInt(FossilTypes.values().length);
 			fossil.setFossil(skeleton);
 			fossil.setSize(0);
 			float yRot = (float) Mth.floor((Mth.wrapDegrees(useOnContext.getRotation() - 180.0f) + 22.5f) / 45.0f) * 45.0f;

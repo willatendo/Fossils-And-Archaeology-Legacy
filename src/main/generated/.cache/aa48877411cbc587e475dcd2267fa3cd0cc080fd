@@ -1,9 +1,10 @@
-// 1.20.4	2024-02-08T20:37:33.5108042	Fossils and Archaeology Legacy/Tags for minecraft:block: fossilslegacy
+// 1.20.4	2024-02-10T22:02:28.4783076	Fossils and Archaeology Legacy/Tags for minecraft:block: fossilslegacy
 0782b099381e8a0d3f9be67775b231dcb163ff68 data\fossilslegacy\tags\blocks\glass.json
 8dd9337b2a202f40f3cb253ecea1f5a37ccc12ba data\minecraft\tags\blocks\mineable\shovel.json
 38dcf1274ff201912ffaca12c4e5998aeeb79155 data\fossilslegacy\tags\blocks\brachiosaurus_resistant.json
-83f23241c6598e3571f5ab0c1b7f2cd402001686 data\minecraft\tags\blocks\mineable\pickaxe.json
+1127f77eb8cace8c1b282963c96612fe0637c879 data\fossilslegacy\tags\blocks\eatable_fern.json
 69c396cb051bbe9a130e6979b67065e5041b179d data\fossilslegacy\tags\blocks\jurassic_fern_plantable_on.json
+83f23241c6598e3571f5ab0c1b7f2cd402001686 data\minecraft\tags\blocks\mineable\pickaxe.json
 b618667772fbc412a6446fad6a3619c27d66d734 data\minecraft\tags\blocks\needs_iron_tool.json
 9e5b271f0c7ec4847dded614168452fd660518de data\fossilslegacy\tags\blocks\permafrost_frostable.json
 7b30bd09eaf1a00c12825fdf629af6f81500183b data\minecraft\tags\blocks\mineable\axe.json

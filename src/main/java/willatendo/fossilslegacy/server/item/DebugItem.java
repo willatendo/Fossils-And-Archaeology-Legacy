@@ -21,7 +21,7 @@ public class DebugItem extends Item {
 	private final BiFunction<Dinosaur, Player, InteractionResult> function;
 
 	private DebugItem(String type, BiFunction<Dinosaur, Player, InteractionResult> function, Properties properties) {
-		super(properties);
+		super(properties.stacksTo(1));
 		this.type = type;
 		this.function = function;
 	}

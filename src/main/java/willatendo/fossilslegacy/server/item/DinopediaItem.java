@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.server.item;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -26,6 +27,7 @@ public class DinopediaItem extends Item {
 			for (Component component : dinosaurEncyclopediaInfo.info(player)) {
 				player.sendSystemMessage(component);
 			}
+			player.awardStat(Stats.ITEM_USED.get(this));
 			return InteractionResult.sidedSuccess(player.level().isClientSide());
 		}
 

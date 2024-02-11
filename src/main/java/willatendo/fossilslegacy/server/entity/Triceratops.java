@@ -113,11 +113,17 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Ridea
 		this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));
 		this.goalSelector.addGoal(6, new DinoWaterAvoidingRandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new DinoFollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
+//		this.goalSelector.addGoal(6, new DinoEatFernsGoal(this, this.hungerLimit()));
+//		this.goalSelector.addGoal(6, new DinoEatFromFeederGoal(this, 1.0D, 24, this.hungerLimit(), false));
 		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this));
 		this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this));
 	}
+
+//	private int hungerLimit() {
+//		return (this.getMaxHunger() * 4) / 5;
+//	}
 
 	@Override
 	protected void defineSynchedData() {

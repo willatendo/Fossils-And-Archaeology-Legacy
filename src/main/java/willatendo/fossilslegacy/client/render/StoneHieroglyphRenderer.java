@@ -19,7 +19,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.server.entity.StoneTablet;
-import willatendo.fossilslegacy.server.entity.StoneTabletTypes;
+import willatendo.fossilslegacy.server.entity.StoneTabletVariant;
 
 public class StoneHieroglyphRenderer extends EntityRenderer<StoneTablet> {
 	public StoneHieroglyphRenderer(Context context) {
@@ -27,18 +27,18 @@ public class StoneHieroglyphRenderer extends EntityRenderer<StoneTablet> {
 	}
 
 	@Override
-	public void render(StoneTablet stoneHieroglyph, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
+	public void render(StoneTablet stoneTablet, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
 		poseStack.pushPose();
 		poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - packedLight));
-		StoneTabletTypes stoneHieroglyphTypes = StoneTabletTypes.values()[stoneHieroglyph.getStoneHieroglyph().ordinal()];
+		StoneTabletVariant stoneHieroglyphTypes = stoneTablet.getVariant().value();
 		poseStack.scale(0.0625F, 0.0625F, 0.0625F);
-		VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entityTranslucent(this.getTextureLocation(stoneHieroglyph)));
-		this.renderStoneHieroglyph(poseStack, vertexConsumer, stoneHieroglyph, stoneHieroglyphTypes.getWidth(), stoneHieroglyphTypes.getHeight());
+		VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entityTranslucent(this.getTextureLocation(stoneTablet)));
+		this.renderStoneHieroglyph(poseStack, vertexConsumer, stoneTablet, stoneHieroglyphTypes.width(), stoneHieroglyphTypes.height());
 		poseStack.popPose();
-		super.render(stoneHieroglyph, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
+		super.render(stoneTablet, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
 	}
 
-	private void renderStoneHieroglyph(PoseStack poseStack, VertexConsumer vertexConsumer, StoneTablet cavePainting, int width, int height) {
+	private void renderStoneHieroglyph(PoseStack poseStack, VertexConsumer vertexConsumer, StoneTablet stoneTablet, int width, int height) {
 		Pose pose = poseStack.last();
 		Matrix4f matrix4f = pose.pose();
 		Matrix3f matrix3f = pose.normal();
@@ -55,27 +55,27 @@ public class StoneHieroglyphRenderer extends EntityRenderer<StoneTablet> {
 				float uEnd = f + (float) ((k + 1) * 16);
 				float vStart = f1 + (float) (l * 16);
 				float vEnd = f1 + (float) ((l + 1) * 16);
-				int x = cavePainting.getBlockX();
-				int y = Mth.floor(cavePainting.getY() + (double) ((vStart + vEnd) / 2.0F / 16.0F));
-				int z = cavePainting.getBlockZ();
-				Direction direction = cavePainting.getDirection();
+				int x = stoneTablet.getBlockX();
+				int y = Mth.floor(stoneTablet.getY() + (double) ((vStart + vEnd) / 2.0F / 16.0F));
+				int z = stoneTablet.getBlockZ();
+				Direction direction = stoneTablet.getDirection();
 				if (direction == Direction.NORTH) {
-					x = Mth.floor(cavePainting.getX() + (double) ((uStart + uEnd) / 2.0F / 16.0F));
+					x = Mth.floor(stoneTablet.getX() + (double) ((uStart + uEnd) / 2.0F / 16.0F));
 				}
 
 				if (direction == Direction.WEST) {
-					z = Mth.floor(cavePainting.getZ() - (double) ((uStart + uEnd) / 2.0F / 16.0F));
+					z = Mth.floor(stoneTablet.getZ() - (double) ((uStart + uEnd) / 2.0F / 16.0F));
 				}
 
 				if (direction == Direction.SOUTH) {
-					x = Mth.floor(cavePainting.getX() - (double) ((uStart + uEnd) / 2.0F / 16.0F));
+					x = Mth.floor(stoneTablet.getX() - (double) ((uStart + uEnd) / 2.0F / 16.0F));
 				}
 
 				if (direction == Direction.EAST) {
-					z = Mth.floor(cavePainting.getZ() + (double) ((uStart + uEnd) / 2.0F / 16.0F));
+					z = Mth.floor(stoneTablet.getZ() + (double) ((uStart + uEnd) / 2.0F / 16.0F));
 				}
 
-				int lightColour = LevelRenderer.getLightColor(cavePainting.level(), new BlockPos(x, y, z));
+				int lightColour = LevelRenderer.getLightColor(stoneTablet.level(), new BlockPos(x, y, z));
 				float spriteMinU = (float) (d0 * (i - k)) / 16f;
 				float spriteMaxU = (float) (d0 * (i - (k + 1))) / 16f;
 				float spriteMinV = (float) (d1 * (j - l)) / 16f;
@@ -94,7 +94,7 @@ public class StoneHieroglyphRenderer extends EntityRenderer<StoneTablet> {
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(StoneTablet stoneHieroglyph) {
-		return stoneHieroglyph.getStoneHieroglyph().getTexture();
+	public ResourceLocation getTextureLocation(StoneTablet stoneTablet) {
+		return stoneTablet.getVariant().value().getTexture();
 	}
 }

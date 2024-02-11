@@ -7,26 +7,36 @@ import java.util.Optional;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.VariantHolder;
 import net.minecraft.world.entity.decoration.HangingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
+import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 
-public class StoneTablet extends HangingEntity {
-	private static final EntityDataAccessor<Integer> STONE_TABLET_TYPE = SynchedEntityData.defineId(StoneTablet.class, EntityDataSerializers.INT);
+public class StoneTablet extends HangingEntity implements VariantHolder<Holder<StoneTabletVariant>> {
+	private static final EntityDataAccessor<Holder<StoneTabletVariant>> STONE_TABLET_VARIANT = SynchedEntityData.defineId(StoneTablet.class, FossilsLegacyEntityDataSerializers.STONE_TABLET_VARIANTS);
+	private static final ResourceKey<StoneTabletVariant> DEFAULT_VARIANT = FossilsLegacyStoneTabletVariants.LIGHTING.getKey();
+
+	private static Holder<StoneTabletVariant> getDefaultVariant() {
+		return FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS.getHolderOrThrow(DEFAULT_VARIANT);
+	}
 
 	public StoneTablet(EntityType<? extends StoneTablet> entityType, Level level) {
 		super(entityType, level);
@@ -36,88 +46,96 @@ public class StoneTablet extends HangingEntity {
 		super(FossilsLegacyEntities.STONE_TABLET.get(), level, blockPos);
 	}
 
-	public StoneTablet(Level level, BlockPos blockPos, Direction direction, StoneTabletTypes stoneHieroglyphTypes) {
+	public StoneTablet(Level level, BlockPos blockPos, Direction direction, Holder<StoneTabletVariant> stoneTabletVariant) {
 		this(level, blockPos);
-		this.setStoneHieroglyph(stoneHieroglyphTypes);
+		this.setVariant(stoneTabletVariant);
 		this.setDirection(direction);
 	}
 
 	@Override
 	protected void defineSynchedData() {
-		this.entityData.define(STONE_TABLET_TYPE, 0);
+		this.entityData.define(STONE_TABLET_VARIANT, getDefaultVariant());
 	}
 
 	@Override
 	public void onSyncedDataUpdated(EntityDataAccessor<?> entityDataAccessor) {
-		if (STONE_TABLET_TYPE.equals(entityDataAccessor)) {
+		if (STONE_TABLET_VARIANT.equals(entityDataAccessor)) {
 			this.recalculateBoundingBox();
 		}
 	}
 
-	public void setStoneHieroglyph(StoneTabletTypes stoneHieroglyphTypes) {
-		this.entityData.set(STONE_TABLET_TYPE, stoneHieroglyphTypes.ordinal());
+	@Override
+	public void setVariant(Holder<StoneTabletVariant> stoneTabletVariant) {
+		this.entityData.set(STONE_TABLET_VARIANT, stoneTabletVariant);
 	}
 
-	public StoneTabletTypes getStoneHieroglyph() {
-		return StoneTabletTypes.values()[this.entityData.get(STONE_TABLET_TYPE)];
+	@Override
+	public Holder<StoneTabletVariant> getVariant() {
+		return this.entityData.get(STONE_TABLET_VARIANT);
 	}
 
 	public static Optional<StoneTablet> create(Level level, BlockPos blockPos, Direction direction) {
-		StoneTablet cavePainting = new StoneTablet(level, blockPos);
-		List<StoneTabletTypes> list = new ArrayList<>();
-		for (StoneTabletTypes stoneHieroglyphTypes : cavePainting.getStoneHieroglyph().values()) {
-			list.add(stoneHieroglyphTypes);
-		}
-		cavePainting.setDirection(direction);
-		list.removeIf((stoneHieroglyphTypes) -> {
-			cavePainting.setStoneHieroglyph(stoneHieroglyphTypes);
-			return !cavePainting.survives();
-		});
-		if (list.isEmpty()) {
+		StoneTablet stoneTablet = new StoneTablet(level, blockPos);
+		List<Holder<StoneTabletVariant>> stoneTabletVariants = new ArrayList<>();
+		FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS.getTagOrEmpty(StoneTabletVariantTags.PLACEABLE).forEach(stoneTabletVariants::add);
+		if (stoneTabletVariants.isEmpty()) {
 			return Optional.empty();
-		} else {
-			int i = list.stream().mapToInt(StoneTablet::variantArea).max().orElse(0);
-			list.removeIf((stoneHieroglyphTypes) -> {
-				return variantArea(stoneHieroglyphTypes) < i;
-			});
-			Optional<StoneTabletTypes> randomVarient = Util.getRandomSafe(list, cavePainting.random);
-			if (randomVarient.isEmpty()) {
-				return Optional.empty();
-			} else {
-				cavePainting.setStoneHieroglyph(randomVarient.get());
-				cavePainting.setDirection(direction);
-				return Optional.of(cavePainting);
-			}
 		}
+		stoneTablet.setDirection(direction);
+		stoneTabletVariants.removeIf(holder -> {
+			stoneTablet.setVariant(holder);
+			return !stoneTablet.survives();
+		});
+		if (stoneTabletVariants.isEmpty()) {
+			return Optional.empty();
+		}
+		int i = stoneTabletVariants.stream().mapToInt(StoneTablet::variantArea).max().orElse(0);
+		stoneTabletVariants.removeIf(holder -> StoneTablet.variantArea(holder) < i);
+		Optional<Holder<StoneTabletVariant>> optional = Util.getRandomSafe(stoneTabletVariants, stoneTablet.random);
+		if (optional.isEmpty()) {
+			return Optional.empty();
+		}
+		stoneTablet.setVariant(optional.get());
+		stoneTablet.setDirection(direction);
+		return Optional.of(stoneTablet);
 	}
 
-	private static int variantArea(StoneTabletTypes stoneHieroglyphTypes) {
-		return stoneHieroglyphTypes.getWidth() * stoneHieroglyphTypes.getHeight();
+	private static int variantArea(Holder<StoneTabletVariant> stoneTabletVariant) {
+		return stoneTabletVariant.value().width() * stoneTabletVariant.value().height();
 	}
 
 	@Override
 	public void addAdditionalSaveData(CompoundTag compoundTag) {
-		compoundTag.putInt("Type", this.getStoneHieroglyph().ordinal());
+		StoneTablet.storeVariant(compoundTag, this.getVariant());
 		compoundTag.putByte("FacingDirection", (byte) this.direction.get2DDataValue());
 		super.addAdditionalSaveData(compoundTag);
 	}
 
 	@Override
 	public void readAdditionalSaveData(CompoundTag compoundTag) {
-		this.setStoneHieroglyph(StoneTabletTypes.values()[compoundTag.getInt("Type")]);
+		Holder holder = StoneTablet.loadVariant(compoundTag).orElseGet(StoneTablet::getDefaultVariant);
+		this.setVariant(holder);
 		this.direction = Direction.from2DDataValue(compoundTag.getByte("FacingDirection"));
 		super.readAdditionalSaveData(compoundTag);
 		this.setDirection(this.direction);
 	}
 
+	public static void storeVariant(CompoundTag compoundTag, Holder<StoneTabletVariant> stoneTabletVariant) {
+		compoundTag.putString("Type", stoneTabletVariant.unwrapKey().orElse(DEFAULT_VARIANT).location().toString());
+	}
+
+	public static Optional<Holder<StoneTabletVariant>> loadVariant(CompoundTag compoundTag) {
+		return Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("Type"))).map(resourceLocation -> ResourceKey.create(FossilsLegacyRegistries.STONE_TABLET_VARIANTS, resourceLocation)).flatMap(FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS::getHolder);
+	}
+
 	@Override
 	public int getWidth() {
-		return this.getStoneHieroglyph().getWidth();
+		return this.getVariant().value().width();
 	}
 
 	@Override
 	public int getHeight() {
-		return this.getStoneHieroglyph().getHeight();
+		return this.getVariant().value().height();
 	}
 
 	@Override

@@ -6,7 +6,8 @@
 	"mixins": [
 		"SheepMixin",
 		"MushroomCowMixin",
-		"SnowGolemMixin"
+		"SnowGolemMixin",
+		"LightningBoltMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

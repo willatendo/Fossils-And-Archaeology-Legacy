@@ -73,6 +73,36 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 	}
 
 	@Override
+	public int getMaxGrowthStage() {
+		return 8;
+	}
+
+	@Override
+	public double getMinHealth() {
+		return 4.0D;
+	}
+
+	@Override
+	public int getMaxHunger() {
+		return 100;
+	}
+
+	@Override
+	public EggType eggType() {
+		return EggType.PTERANODON;
+	}
+
+	@Override
+	public float boundingBoxGrowth() {
+		return 0.15F;
+	}
+
+	@Override
+	public int foodLevelForItemStack(ItemStack itemStack) {
+		return FeederBlockEntity.getMeatFoodLevel(itemStack);
+	}
+
+	@Override
 	public void aiStep() {
 		this.handleFlying();
 		super.aiStep();
@@ -354,35 +384,5 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 	@Override
 	public CommandType commandItems() {
 		return CommandType.tag(FossilsLegacyItemTags.PTERANODON_COMMANDABLES);
-	}
-
-	@Override
-	public int getMaxGrowthStage() {
-		return 8;
-	}
-
-	@Override
-	public double getMinHealth() {
-		return 4.0D;
-	}
-
-	@Override
-	public int getMaxHunger() {
-		return 100;
-	}
-
-	@Override
-	public EggType eggType() {
-		return EggType.PTERANODON;
-	}
-
-	@Override
-	public float boundingBoxGrowth() {
-		return 0.15F;
-	}
-
-	@Override
-	public int foodLevelForItemStack(ItemStack itemStack) {
-		return FeederBlockEntity.getMeatFoodLevel(itemStack);
 	}
 }

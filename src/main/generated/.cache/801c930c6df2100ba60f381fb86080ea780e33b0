@@ -1,10 +1,10 @@
-// 1.20.4	2024-02-08T20:37:33.5078083	Fossils and Archaeology Legacy/fossilslegacy: Built In Registries
+// 1.20.4	2024-02-10T22:02:28.4753068	Fossils and Archaeology Legacy/fossilslegacy: Built In Registries
 dda288cc8d5539167d2b19913180d2c3135c4aad data\fossilslegacy\worldgen\configured_feature\ore_fossil.json
 ebde1ca22d4571f61273c8349843b995eb334362 data\fossilslegacy\worldgen\structure_set\weapon_shop.json
 272b73d0ec6656b7beba50d287714cb055cc1dce data\fossilslegacy\damage_type\dilophosaurus_envenomation.json
 532001524c06f9b4a4565f8b548bb4a8de84ba73 data\fossilslegacy\damage_type\animal_starve.json
-af7539dc2bdc8076d5e3b674503e6f265df59339 data\fossilslegacy\worldgen\configured_feature\ore_permafrost.json
 6eba9937bbc8e9405238eec8b4b3c8bc781fae09 data\fossilslegacy\worldgen\structure_set\academy.json
+af7539dc2bdc8076d5e3b674503e6f265df59339 data\fossilslegacy\worldgen\configured_feature\ore_permafrost.json
 39c54592bb4a44ef9af68e98e4cc100322476838 data\fossilslegacy\worldgen\placed_feature\ore_fossil.json
 5ff4237a1d582ff862d2ef43a68dda58cd8452b7 data\fossilslegacy\worldgen\structure\weapon_shop.json
 4ae015db008fd712ad0ea6d05b72ca0170963bf0 data\fossilslegacy\damage_type\javelin.json

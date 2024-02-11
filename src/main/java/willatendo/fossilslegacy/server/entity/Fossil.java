@@ -9,10 +9,8 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -36,9 +34,15 @@ public class Fossil extends Mob {
 	}
 
 	@Override
+	public float getScale() {
+		FossilTypes fossilTypes = FossilTypes.get(this.getFossil());
+		return fossilTypes.getBaseSize() + (((float) fossilTypes.getBoundingBoxGrowth()) * ((float) this.getSize()));
+	}
+
+	@Override
 	public void die(DamageSource damageSource) {
 		if (this.getSize() > 1) {
-			for (int i = 0; i < (this.getSize() - 1); i++) {
+			for (int i = 0; i < this.getSize(); i++) {
 				Block.popResource(this.level(), this.blockPosition(), new ItemStack(Items.BONE));
 			}
 		}
@@ -67,11 +71,6 @@ public class Fossil extends Mob {
 		}
 
 		super.onSyncedDataUpdated(entityDataAccessor);
-	}
-
-	@Override
-	public EntityDimensions getDimensions(Pose pose) {
-		return super.getDimensions(pose).scale(1.0F + (1.75F * (float) this.getSize()));
 	}
 
 	@Override
@@ -104,7 +103,7 @@ public class Fossil extends Mob {
 	public InteractionResult interactAt(Player player, Vec3 vec3, InteractionHand interactionHand) {
 		ItemStack itemStack = player.getItemInHand(interactionHand);
 		if (itemStack.is(Items.BONE)) {
-			if (this.getSize() < Fossils.values()[this.getFossil()].getMaxSize()) {
+			if (this.getSize() < FossilTypes.values()[this.getFossil()].getMaxSize()) {
 				this.setSize(this.getSize() + 1);
 				itemStack.shrink(1);
 				return InteractionResult.SUCCESS;

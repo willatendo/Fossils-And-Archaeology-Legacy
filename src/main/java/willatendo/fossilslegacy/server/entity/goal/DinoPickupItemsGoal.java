@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 
-public class DinoEatFromFeederGoal extends Goal {
+public class DinoPickupItemsGoal extends Goal {
 	private final Dinosaur dinosaur;
 	private final double speed;
 	private final int searchRange;
@@ -16,12 +16,12 @@ public class DinoEatFromFeederGoal extends Goal {
 	protected FeederBlockEntity targetFeeder = null;
 	private BlockPos feederPos;
 
-	public DinoEatFromFeederGoal(Dinosaur dinosaur, double speed, int searchRange, float hungerLimit, boolean meat) {
+	public DinoPickupItemsGoal(Dinosaur dinosaur, double speed, int searchRange, boolean meat) {
 		this.dinosaur = dinosaur;
 		this.speed = speed;
 		this.searchRange = searchRange;
 		this.meat = meat;
-		this.hungerLimit = hungerLimit;
+		this.hungerLimit = this.dinosaur.getMaxHunger() * 0.9F;
 	}
 
 	@Override
@@ -47,15 +47,12 @@ public class DinoEatFromFeederGoal extends Goal {
 
 	@Override
 	public void tick() {
-		if (this.feederPos != null) {
-			if ((Math.pow((this.dinosaur.getBlockX() - this.feederPos.getX()), 2) + Math.pow((this.dinosaur.getBlockZ() - this.feederPos.getZ()), 2)) < Math.pow(3, 2)) {
-				this.targetFeeder.feed(this.dinosaur, this.meat);
-				if (this.dinosaur.getHunger() > this.hungerLimit) {
-					this.dinosaur.getNavigation().stop();
-				}
-			} else {
-				this.dinosaur.getNavigation().moveTo(this.dinosaur.getNavigation().createPath(this.feederPos, 1), this.speed);
-			}
+		if ((Math.pow((this.dinosaur.getBlockX() - this.feederPos.getX()), 2) + Math.pow((this.dinosaur.getBlockZ() - this.feederPos.getZ()), 2)) < Math.pow(3, 2)) {
+			this.targetFeeder.feed(this.dinosaur, this.meat);
+			if (this.dinosaur.getHunger() > this.hungerLimit)
+				this.dinosaur.getNavigation().stop();
+		} else {
+			this.dinosaur.getNavigation().moveTo(this.dinosaur.getNavigation().createPath(this.feederPos, 1), this.speed);
 		}
 	}
 

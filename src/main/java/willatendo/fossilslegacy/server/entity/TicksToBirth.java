@@ -21,7 +21,7 @@ public interface TicksToBirth<T extends Entity> {
 	}
 
 	default int maxTime() {
-		return /* FabricLoader.getInstance().isDevelopmentEnvironment() ? 100 : */ 3000;
+		return 3000;
 	}
 
 	default void birthTick(Mob mob, Level level) {

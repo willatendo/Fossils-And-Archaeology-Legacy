@@ -111,10 +111,10 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 		if (FossilsLegacyConfig.COMMON_CONFIG.willAnimalsStarve()) {
 			if (this.internalClock % 300 == 0) {
 				this.decreaseHunger();
-			}
 
-			if (this.getHunger() == (this.getMaxHunger() / 2)) {
-				this.sendMessageToOwnerOrElseAll(DinoSituation.HUNGRY);
+				if (this.getHunger() == (this.getMaxHunger() / 2)) {
+					this.sendMessageToOwnerOrElseAll(DinoSituation.HUNGRY);
+				}
 			}
 
 			if (this.getHunger() < 0) {
@@ -356,6 +356,12 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 		this.setHunger(compoundTag.getInt("Hunger"));
 		this.setGrowthStage(compoundTag.getInt("GrowthStage"));
 		this.internalClock = compoundTag.getInt("InternalClock");
+	}
+
+	@Override
+	public void ate() {
+		this.setHunger(this.getMaxHunger());
+		super.ate();
 	}
 
 	@Override

@@ -50,5 +50,6 @@ public class FossilsLegacyData implements DataGeneratorEntrypoint {
 		dataHandler.addProvider(FossilsLegacyFluidTagProvider::new);
 		dataHandler.addProvider(FossilsLegacyEntityTypeTagProvider::new);
 		dataHandler.addProvider(FossilsLegacyDamageTypeTagProvider::new);
+		dataHandler.addProvider(FossilsLegacyStoneTabletVariantTagProvider::new);
 	}
 }
