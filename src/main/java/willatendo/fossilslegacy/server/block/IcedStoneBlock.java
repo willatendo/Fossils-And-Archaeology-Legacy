@@ -5,11 +5,11 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.HalfTransparentBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class IcedStoneBlock extends Block {
+public class IcedStoneBlock extends HalfTransparentBlock {
 	public IcedStoneBlock(Properties properties) {
 		super(properties);
 	}

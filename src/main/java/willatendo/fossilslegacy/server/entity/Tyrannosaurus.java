@@ -37,9 +37,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
-import willatendo.fossilslegacy.server.entity.Egg.EggType;
 import willatendo.fossilslegacy.server.entity.goal.DinoBabyFollowParentGoal;
+import willatendo.fossilslegacy.server.entity.goal.DinoEatFromFeederGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoNearestAttackableTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
@@ -63,7 +62,7 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
 
 	@Override
 	public float maxUpStep() {
-		return DinosaurTypes.TYRANNOSAURUS.getStepHeights()[this.getGrowthStage()];
+		return DinoUtils.getStepHeights(8, 1.0F, 2.0F)[this.getGrowthStage()];
 	}
 
 	@Override
@@ -82,8 +81,8 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
 	}
 
 	@Override
-	public EggType eggType() {
-		return EggType.TYRANNOSAURUS;
+	public EggVariant getEggVariant() {
+		return FossilsLegacyEggVariants.TYRANNOSAURUS.get();
 	}
 
 	@Override
@@ -92,7 +91,7 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
 	}
 
 	@Override
-	public float boundingBoxGrowth() {
+	public float getBoundingBoxGrowth() {
 		return 1.0F;
 	}
 
@@ -102,8 +101,8 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
 	}
 
 	@Override
-	public int foodLevelForItemStack(ItemStack itemStack) {
-		return FeederBlockEntity.getMeatFoodLevel(itemStack);
+	public Diet getDiet() {
+		return Diet.carnivore();
 	}
 
 	@Override
@@ -145,7 +144,7 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
 				return !Tyrannosaurus.this.isKnockedOut() ? super.canUse() : false;
 			}
 		});
-		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, DinoConstants.CARNIVORE_FOOD, false) {
+		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, DinoUtils.CARNIVORE_FOOD, false) {
 			@Override
 			public boolean canUse() {
 				return !Tyrannosaurus.this.isKnockedOut() ? super.canUse() : false;
@@ -170,6 +169,12 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
 			}
 		});
 		this.goalSelector.addGoal(6, new DinoFollowOwnerGoal(this, 1.0D, 10.0F, 2.0F) {
+			@Override
+			public boolean canUse() {
+				return !Tyrannosaurus.this.isKnockedOut() ? super.canUse() : false;
+			}
+		});
+		this.goalSelector.addGoal(6, new DinoEatFromFeederGoal(this, 1.0D, 24, true) {
 			@Override
 			public boolean canUse() {
 				return !Tyrannosaurus.this.isKnockedOut() ? super.canUse() : false;

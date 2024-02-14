@@ -20,14 +20,12 @@ import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.ai.navigation.AmphibiousPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
-import willatendo.fossilslegacy.server.entity.Egg.EggType;
+import willatendo.fossilslegacy.server.entity.goal.DinoEatFromFeederGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -52,8 +50,8 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation {
 	}
 
 	@Override
-	public EggType eggType() {
-		return EggType.MOSASAURUS;
+	public EggVariant getEggVariant() {
+		return FossilsLegacyEggVariants.MOSASAURUS.get();
 	}
 
 	@Override
@@ -62,7 +60,7 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation {
 	}
 
 	@Override
-	public float boundingBoxGrowth() {
+	public float getBoundingBoxGrowth() {
 		return 0.35F;
 	}
 
@@ -72,8 +70,8 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation {
 	}
 
 	@Override
-	public int foodLevelForItemStack(ItemStack itemStack) {
-		return FeederBlockEntity.getMeatFoodLevel(itemStack);
+	public Diet getDiet() {
+		return Diet.piscivore();
 	}
 
 	@Override
@@ -95,11 +93,12 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation {
 //		this.goalSelector.addGoal(0, new FloatGoal(this));
 //		this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
 //		this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
-		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, DinoConstants.PISCIVORE_FOOD, false));
+		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, DinoUtils.PISCIVORE_FOOD, false));
 //		this.goalSelector.addGoal(4, new DinoBabyFollowParentGoal(this, 1.1D));
 		this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));
 		this.goalSelector.addGoal(6, new RandomSwimmingGoal(this, 1.0D, 10));
 //		this.goalSelector.addGoal(6, new DinoFollowOwnerGoal(this, this, this, 1.0D, 10.0F, 2.0F));
+		this.goalSelector.addGoal(6, new DinoEatFromFeederGoal(this, 1.0D, 24, true));
 		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this));

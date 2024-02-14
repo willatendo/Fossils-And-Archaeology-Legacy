@@ -17,10 +17,10 @@ public class DinoEatFernsGoal extends Goal {
 	private final float hungerLimit;
 	private int eatAnimationTick = 0;
 
-	public DinoEatFernsGoal(Dinosaur dinosaur, float hungerLimit) {
+	public DinoEatFernsGoal(Dinosaur dinosaur) {
 		this.dinosaur = dinosaur;
 		this.level = dinosaur.level();
-		this.hungerLimit = hungerLimit;
+		this.hungerLimit = (dinosaur.getMaxHunger() * 4) / 5;
 		this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK, Goal.Flag.JUMP));
 	}
 

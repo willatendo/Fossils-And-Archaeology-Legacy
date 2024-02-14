@@ -1,0 +1,21 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "minecraft:string"
+  },
+  "results": [
+    {
+      "result": "fossilslegacy:cat_dna",
+      "weight": 33
+    },
+    {
+      "result": "fossilslegacy:ocelot_dna",
+      "weight": 33
+    },
+    {
+      "result": "fossilslegacy:fox_dna",
+      "weight": 33
+    }
+  ],
+  "time": 100
+}

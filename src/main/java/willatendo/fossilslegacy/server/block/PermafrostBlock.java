@@ -21,7 +21,7 @@ public class PermafrostBlock extends HalfTransparentBlock {
 	@Override
 	public void playerDestroy(Level level, Player player, BlockPos blockPos, BlockState blockState, BlockEntity blockEntity, ItemStack itemStack) {
 		if (level.getBrightness(LightLayer.BLOCK, blockPos) > 11 - blockState.getLightBlock(level, blockPos) || level.dimensionType().ultraWarm()) {
-			return;
+			super.playerDestroy(level, player, blockPos, blockState, blockEntity, itemStack);
 		}
 		for (int targetX = -1; targetX <= 1; targetX++) {
 			for (int targetY = -1; targetY <= 1; targetY++) {
@@ -35,6 +35,7 @@ public class PermafrostBlock extends HalfTransparentBlock {
 				}
 			}
 		}
+		super.playerDestroy(level, player, blockPos, blockState, blockEntity, itemStack);
 	}
 
 	@Override

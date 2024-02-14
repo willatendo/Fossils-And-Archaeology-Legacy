@@ -1,7 +1,7 @@
-// 1.20.4	2024-02-10T22:02:28.4773075	Fossils and Archaeology Legacy/Block Loot Tables
+// 1.20.4	2024-02-14T16:51:18.9648499	Fossils and Archaeology Legacy/Block Loot Tables
 4950dc292bbc8762cba10d18f9ee33a4521635bb data\fossilslegacy\loot_tables\blocks\analyzer.json
-613300bbe1f4e582ab59b02af4df469d32659a01 data\fossilslegacy\loot_tables\blocks\fossil_ore.json
 cbeb14fb36ff0f836c7f91db70398a4b7f774652 data\fossilslegacy\loot_tables\blocks\archaeology_workbench.json
+613300bbe1f4e582ab59b02af4df469d32659a01 data\fossilslegacy\loot_tables\blocks\fossil_ore.json
 1d4929d7d6176f60e5ea991a577527ed251ef375 data\fossilslegacy\loot_tables\blocks\axolotlspawn.json
 84b2489234f8b23baff0679a5065916d2c386ec2 data\fossilslegacy\loot_tables\blocks\permafrost.json
 3b22c3e0c7643c82188e5a059abe379aad5decc0 data\fossilslegacy\loot_tables\blocks\iced_stone.json

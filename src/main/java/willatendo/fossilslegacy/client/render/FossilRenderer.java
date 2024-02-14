@@ -1,5 +1,8 @@
 package willatendo.fossilslegacy.client.render;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -13,29 +16,33 @@ import willatendo.fossilslegacy.client.model.fossils.PlesiosaurusSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.PteranodonSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.TriceratopsSkeletonModel;
 import willatendo.fossilslegacy.server.entity.Fossil;
-import willatendo.fossilslegacy.server.entity.FossilTypes;
-import willatendo.fossilslegacy.server.entity.FossilTypes.FossilScaleFactor;
+import willatendo.fossilslegacy.server.entity.FossilVariant;
+import willatendo.fossilslegacy.server.entity.FossilVariant.FossilScaleFactor;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyFossilVariants;
 
 public class FossilRenderer extends MobRenderer<Fossil, AbstractSkeletonModel> {
-	private AbstractSkeletonModel[] models;
+	public static final Map<FossilVariant, AbstractSkeletonModel> MODELS = new HashMap<FossilVariant, AbstractSkeletonModel>();
 
 	public FossilRenderer(Context context) {
 		super(context, new BrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.BRACHIOSAURUS_SKELETON)), 0.5F);
-		this.models = new AbstractSkeletonModel[] { new BrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.BRACHIOSAURUS_SKELETON)), new PlesiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.PLESIOSAURUS_SKELETON)), new PteranodonSkeletonModel(context.bakeLayer(FossilsLegacyModels.PTERANODON_SKELETON)), new TriceratopsSkeletonModel(context.bakeLayer(FossilsLegacyModels.TRICERATOPS_SKELETON)) };
+		MODELS.put(FossilsLegacyFossilVariants.BRACHIOSAURUS.get(), new BrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.BRACHIOSAURUS_SKELETON)));
+		MODELS.put(FossilsLegacyFossilVariants.PLESIOSAURUS.get(), new PlesiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.PLESIOSAURUS_SKELETON)));
+		MODELS.put(FossilsLegacyFossilVariants.PTERANODON.get(), new PteranodonSkeletonModel(context.bakeLayer(FossilsLegacyModels.PTERANODON_SKELETON)));
+		MODELS.put(FossilsLegacyFossilVariants.TRICERATOPS.get(), new TriceratopsSkeletonModel(context.bakeLayer(FossilsLegacyModels.TRICERATOPS_SKELETON)));
 	}
 
 	@Override
 	public void render(Fossil fossil, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
 		this.shadowRadius = 0.15F * (float) fossil.getSize();
-		this.model = this.models[fossil.getFossil()];
+		this.model = MODELS.get(fossil.getFossilVariant());
 
 		super.render(fossil, packedOverlay, packedLight, poseStack, multiBufferSource, partialTicks);
 	}
 
 	@Override
 	protected void scale(Fossil fossil, PoseStack poseStack, float packedOverlay) {
-		FossilTypes fossils = FossilTypes.get(fossil.getFossil());
-		FossilScaleFactor scaleFactor = fossils.getScaleFactor(fossil);
+		FossilVariant fossilVariant = fossil.getFossilVariant();
+		FossilScaleFactor scaleFactor = fossilVariant.getScaleFactor(fossil);
 
 		poseStack.scale(scaleFactor.x(), scaleFactor.y(), scaleFactor.z());
 
@@ -44,6 +51,6 @@ public class FossilRenderer extends MobRenderer<Fossil, AbstractSkeletonModel> {
 
 	@Override
 	public ResourceLocation getTextureLocation(Fossil fossil) {
-		return FossilTypes.get(fossil.getFossil()).getFossilTexture();
+		return fossil.getFossilVariant().fossilTexture();
 	}
 }

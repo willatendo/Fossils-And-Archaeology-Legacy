@@ -1,60 +1,64 @@
 package willatendo.fossilslegacy.server.item;
 
+import java.util.function.Consumer;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.entity.Egg;
+import willatendo.fossilslegacy.server.entity.EggVariant;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
 
-public class EggItem extends PlaceEntityItem {
-	private final Egg.EggType eggs;
+public class EggItem extends Item {
+	private final EggVariant eggVariant;
 
-	public EggItem(Egg.EggType eggs, Properties properties) {
-		super(() -> FossilsLegacyEntities.EGG.get(), properties);
-		this.eggs = eggs;
-	}
-	
-	@Override
-	public void entityModification(Entity entity) {
-		if(entity instanceof Egg egg) {
-			egg.setEgg(this.eggs);
-			egg.setRemainingTime(0);
-		}
+	public EggItem(EggVariant eggVariant, Properties properties) {
+		super(properties);
+		this.eggVariant = eggVariant;
 	}
 
 	@Override
 	public InteractionResult useOn(UseOnContext useOnContext) {
-		Level level = useOnContext.getLevel();
-		if (!(level instanceof ServerLevel)) {
-			return InteractionResult.SUCCESS;
-		} else {
-			ItemStack itemStack = useOnContext.getItemInHand();
-			BlockPos blockPos = useOnContext.getClickedPos();
-			Direction direction = useOnContext.getClickedFace();
-			BlockState blockState = level.getBlockState(blockPos);
-			BlockPos placePos;
-			if (blockState.getCollisionShape(level, blockPos).isEmpty()) {
-				placePos = blockPos;
-			} else {
-				placePos = blockPos.relative(direction);
-			}
-
-			Egg egg = FossilsLegacyEntities.EGG.get().create(level);
-			egg.setEgg(this.eggs);
-			;
-			egg.moveTo(placePos.getX() + 0.5F, placePos.getY(), placePos.getZ() + 0.5F);
-			level.addFreshEntity(egg);
-			itemStack.shrink(1);
-			level.gameEvent(useOnContext.getPlayer(), GameEvent.ENTITY_PLACE, blockPos);
-
-			return InteractionResult.CONSUME;
+		Direction direction = useOnContext.getClickedFace();
+		if (direction == Direction.DOWN) {
+			return InteractionResult.FAIL;
 		}
+		Level level = useOnContext.getLevel();
+		BlockPlaceContext blockPlaceContext = new BlockPlaceContext(useOnContext);
+		BlockPos blockPos = blockPlaceContext.getClickedPos();
+		ItemStack itemStack = useOnContext.getItemInHand();
+		Vec3 vec3 = Vec3.atBottomCenterOf(blockPos);
+		AABB aABB = EntityType.ARMOR_STAND.getDimensions().makeBoundingBox(vec3.x(), vec3.y(), vec3.z());
+		if (!level.noCollision(null, aABB) || !level.getEntities(null, aABB).isEmpty()) {
+			return InteractionResult.FAIL;
+		}
+		if (level instanceof ServerLevel) {
+			ServerLevel serverLevel = (ServerLevel) level;
+			Consumer consumer = EntityType.createDefaultStackConfig(serverLevel, itemStack, useOnContext.getPlayer());
+			Egg egg = FossilsLegacyEntities.EGG.get().create(serverLevel, itemStack.getTag(), consumer, blockPos, MobSpawnType.SPAWN_EGG, true, true);
+			egg.setEggVariant(this.eggVariant);
+			float yRot = (float) Mth.floor((Mth.wrapDegrees(useOnContext.getRotation() - 180.0f) + 22.5f) / 45.0f) * 45.0f;
+			egg.moveTo(egg.getX(), egg.getY(), egg.getZ(), yRot, 0.0f);
+			level.addFreshEntity(egg);
+			Player player = useOnContext.getPlayer();
+			egg.gameEvent(GameEvent.ENTITY_PLACE, player);
+			InteractionHand interactionHand = useOnContext.getHand();
+			player.getItemInHand(interactionHand).shrink(1);
+		}
+		return InteractionResult.sidedSuccess(level.isClientSide());
 	}
 }

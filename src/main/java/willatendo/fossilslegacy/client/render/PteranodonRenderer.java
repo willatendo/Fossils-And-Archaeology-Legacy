@@ -27,13 +27,13 @@ public class PteranodonRenderer extends MobRenderer<Pteranodon, AbstractPteranod
 	@Override
 	public void render(Pteranodon pteranodon, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
 		this.model = pteranodon.isFlying ? this.flyingPteranodonLegacyModel : this.groundPteranodonLegacyModel;
-		this.shadowRadius = 0.15F * (float) pteranodon.getGrowthStage();
+		this.shadowRadius = 0.125F * (float) pteranodon.getGrowthStage();
 		super.render(pteranodon, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
 	}
 
 	@Override
 	protected void scale(Pteranodon pteranodon, PoseStack poseStack, float packedOverlay) {
-		poseStack.scale(0.8F * (0.2F + (float) pteranodon.getGrowthStage()), 0.8F * (0.2F + (float) pteranodon.getGrowthStage()), 0.8F * (0.2F + (float) pteranodon.getGrowthStage()));
+		poseStack.scale(0.8F + (0.2F * (float) pteranodon.getGrowthStage()), 0.8F + (0.2F * (float) pteranodon.getGrowthStage()), 0.8F + (0.2F * (float) pteranodon.getGrowthStage()));
 		super.scale(pteranodon, poseStack, packedOverlay);
 	}
 

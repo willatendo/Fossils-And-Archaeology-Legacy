@@ -32,13 +32,11 @@ import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.biome.Biome;
-import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
-import willatendo.fossilslegacy.server.entity.Egg.EggType;
 import willatendo.fossilslegacy.server.entity.goal.DinoBabyFollowParentGoal;
+import willatendo.fossilslegacy.server.entity.goal.DinoEatFromFeederGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoNearestAttackableTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
@@ -62,7 +60,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 
 	@Override
 	public float maxUpStep() {
-		return DinosaurTypes.VELOCIRAPTOR.getStepHeights()[this.getGrowthStage()];
+		return DinoUtils.getStepHeights(8, 1.0F)[this.getGrowthStage()];
 	}
 
 	@Override
@@ -71,8 +69,8 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 	}
 
 	@Override
-	public EggType eggType() {
-		return EggType.VELOCIRAPTOR;
+	public EggVariant getEggVariant() {
+		return FossilsLegacyEggVariants.VELOCIRAPTOR.get();
 	}
 
 	@Override
@@ -81,7 +79,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 	}
 
 	@Override
-	public float boundingBoxGrowth() {
+	public float getBoundingBoxGrowth() {
 		return 0.15F;
 	}
 
@@ -91,8 +89,8 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 	}
 
 	@Override
-	public int foodLevelForItemStack(ItemStack itemStack) {
-		return FeederBlockEntity.getMeatFoodLevel(itemStack);
+	public Diet getDiet() {
+		return Diet.carnivore();
 	}
 
 	@Override
@@ -100,11 +98,12 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 		this.goalSelector.addGoal(0, new FloatGoal(this));
 		this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
 		this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
-		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, DinoConstants.CARNIVORE_FOOD, false));
+		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, DinoUtils.CARNIVORE_FOOD, false));
 		this.goalSelector.addGoal(4, new DinoBabyFollowParentGoal(this, 1.1D));
 		this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));
 		this.goalSelector.addGoal(6, new DinoWaterAvoidingRandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new DinoFollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
+		this.goalSelector.addGoal(6, new DinoEatFromFeederGoal(this, 1.0D, 24, true));
 		this.goalSelector.addGoal(6, new OpenDoorGoal(this, false) {
 			@Override
 			public void stop() {

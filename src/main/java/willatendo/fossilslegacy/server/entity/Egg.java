@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
 import org.apache.commons.compress.utils.Lists;
 
@@ -17,8 +15,6 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.players.OldUsersConverter;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.Entity;
@@ -29,18 +25,14 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
-import willatendo.fossilslegacy.server.item.FossilsLegacyLootTables;
+import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
+	private static final EntityDataAccessor<EggVariant> EGG_VARIANT = SynchedEntityData.defineId(Egg.class, FossilsLegacyEntityDataSerializers.EGG_VARIANTS);
 	private static final EntityDataAccessor<Integer> REMAINING_TIME = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.INT);
-	private static final EntityDataAccessor<Integer> EGG = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Boolean> WARM = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.BOOLEAN);
 	protected static final EntityDataAccessor<Optional<UUID>> OWNER = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.OPTIONAL_UUID);
 
@@ -62,7 +54,7 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 
 	@Override
 	protected ResourceLocation getDefaultLootTable() {
-		return this.getEgg().getLoot();
+		return this.getEggVariant().loot();
 	}
 
 	@Override
@@ -73,19 +65,19 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 
 	@Override
 	public ItemStack getPickResult() {
-		return this.getEgg().getPick().get().getDefaultInstance();
+		return this.getEggVariant().pick().get().getDefaultInstance();
 	}
 
 	@Override
 	public void tick() {
 		super.tick();
 
-		this.setWarm(this.getEgg().shouldIncubate(this));
+		this.setWarm(this.getEggVariant().shouldIncubate(this));
 
 		if (this.getRemainingTime() < -500) {
 			Player player = this.level().getNearestPlayer(this, 25.0D);
 			if (player != null) {
-				if (this.getEgg() == EggType.MOSASAURUS) {
+				if (this.getEggVariant().wet()) {
 					player.sendSystemMessage(FossilsLegacyUtils.translation("entity", "egg.died.dry"));
 				} else {
 					player.sendSystemMessage(FossilsLegacyUtils.translation("entity", "egg.died"));
@@ -98,7 +90,7 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 			this.setRemainingTime(this.getRemainingTime() - 1);
 		}
 
-		if ((this.getEgg() == EggType.MOSASAURUS && this.isInWaterOrBubble()) || this.isWarm()) {
+		if (this.getEggVariant().shouldIncubate(this)) {
 			this.birthTick(this, this.level(), this.getOwnerUUID() != null ? Optional.of(this.getOwnerUUID()) : Optional.empty());
 		}
 	}
@@ -106,8 +98,8 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 	@Override
 	protected void defineSynchedData() {
 		super.defineSynchedData();
+		this.entityData.define(EGG_VARIANT, FossilsLegacyBuiltInRegistries.EGG_VARIANTS.getOrThrow(FossilsLegacyEggVariants.TRICERATOPS.getKey()));
 		this.entityData.define(REMAINING_TIME, 0);
-		this.entityData.define(EGG, 0);
 		this.entityData.define(WARM, false);
 		this.entityData.define(OWNER, Optional.empty());
 	}
@@ -120,8 +112,8 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 			compoundTag.putUUID("Owner", this.getOwnerUUID());
 		}
 
+		compoundTag.putString("Variant", FossilsLegacyBuiltInRegistries.EGG_VARIANTS.getKey(this.getEggVariant()).toString());
 		compoundTag.putInt("RemainingTime", this.getRemainingTime());
-		compoundTag.putInt("Egg", this.getEgg().ordinal());
 		compoundTag.putBoolean("Warm", this.isWarm());
 	}
 
@@ -144,14 +136,17 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 			}
 		}
 
+		EggVariant eggVariant = FossilsLegacyBuiltInRegistries.EGG_VARIANTS.get(ResourceLocation.tryParse(compoundTag.getString("Variant")));
+		if (eggVariant != null) {
+			this.setEggVariant(eggVariant);
+		}
 		this.setRemainingTime(compoundTag.getInt("RemainingTime"));
-		this.setEgg(EggType.values()[compoundTag.getInt("Egg")]);
 		this.setWarm(compoundTag.getBoolean("Warm"));
 	}
 
 	@Override
 	public Entity getOffspring(Level level) {
-		return this.getEgg().getEntityType().get().create(level);
+		return this.getEggVariant().entityType().get().create(level);
 	}
 
 	@Override
@@ -172,12 +167,12 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 		this.entityData.set(WARM, warm);
 	}
 
-	public EggType getEgg() {
-		return EggType.values()[this.entityData.get(EGG)];
+	public EggVariant getEggVariant() {
+		return this.entityData.get(EGG_VARIANT);
 	}
 
-	public void setEgg(EggType eggs) {
-		this.entityData.set(EGG, eggs.ordinal());
+	public void setEggVariant(EggVariant eggVariant) {
+		this.entityData.set(EGG_VARIANT, eggVariant);
 	}
 
 	public boolean isOwnedBy(LivingEntity livingEntity) {
@@ -202,89 +197,16 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 	}
 
 	@Override
-	public InteractionResult interactAt(Player player, Vec3 vec3, InteractionHand interactionHand) {
-		if (player.getItemInHand(interactionHand).isEmpty()) {
-			player.addItem(this.getPickResult());
-			this.discard();
-		}
-		return super.interactAt(player, vec3, interactionHand);
-	}
-
-	@Override
 	public List<Component> info(Player player) {
 		ArrayList<Component> information = Lists.newArrayList();
-		information.add(FossilsLegacyUtils.translation("dinopedia", "egg", this.getEgg().getEntityType().get().getDescription().getString()));
+		information.add(FossilsLegacyUtils.translation("dinopedia", "egg", this.getEggVariant().entityType().get().getDescription().getString()));
 		information.add(FossilsLegacyUtils.translation("dinopedia", "remaining_time", (int) Math.floor((((float) this.getRemainingTime()) / this.maxTime()) * 100) + "%"));
-		information.add(FossilsLegacyUtils.translation("dinopedia", "status", this.getEgg().getTemperature(this)));
+		information.add(FossilsLegacyUtils.translation("dinopedia", "status", this.getEggVariant().getTemperature(this)));
 		return information;
 	}
 
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
 		return null;
-	}
-
-	public static enum EggType {
-		TRICERATOPS("triceratops", egg -> EggType.isWarm(egg), FossilsLegacyLootTables.TRICERATOPS_EGG, () -> FossilsLegacyEntities.TRICERATOPS.get(), () -> FossilsLegacyItems.TRICERATOPS_EGG.get()),
-		VELOCIRAPTOR("velociraptor", egg -> EggType.isWarm(egg), FossilsLegacyLootTables.VELOCIRAPTOR_EGG, () -> FossilsLegacyEntities.VELOCIRAPTOR.get(), () -> FossilsLegacyItems.VELOCIRAPTOR_EGG.get()),
-		TYRANNOSAURUS("tyrannosaurus", egg -> EggType.isWarm(egg), FossilsLegacyLootTables.TYRANNOSAURUS_EGG, () -> FossilsLegacyEntities.TYRANNOSAURUS.get(), () -> FossilsLegacyItems.TYRANNOSAURUS_EGG.get()),
-		PTERANODON("pteranodon", egg -> EggType.isWarm(egg), FossilsLegacyLootTables.PTERANODON_EGG, () -> FossilsLegacyEntities.PTERANODON.get(), () -> FossilsLegacyItems.PTERANODON_EGG.get()),
-		PLESIOSAURUS("plesiosaurus", egg -> EggType.isWarm(egg), FossilsLegacyLootTables.PLESIOSAURUS_EGG, () -> EntityType.COW, () -> FossilsLegacyItems.PLESIOSAURUS_EGG.get()),
-		MOSASAURUS("mosasaurus", true, egg -> egg.isInWaterOrBubble(), FossilsLegacyLootTables.MOSASAURUS_EGG, () -> FossilsLegacyEntities.MOSASAURUS.get(), () -> FossilsLegacyItems.MOSASAURUS_EGG.get()),
-		STEGOSAURUS("stegosaurus", egg -> EggType.isWarm(egg), FossilsLegacyLootTables.STEGOSAURUS_EGG, () -> FossilsLegacyEntities.BRACHIOSAURUS.get(), () -> FossilsLegacyItems.STEGOSAURUS_EGG.get()),
-		DILOPHOSAURUS("dilophosaurus", egg -> EggType.isWarm(egg), FossilsLegacyLootTables.DILOPHOSAURUS_EGG, () -> FossilsLegacyEntities.DILOPHOSAURUS.get(), () -> FossilsLegacyItems.DILOPHOSAURUS_EGG.get()),
-		BRACHIOSAURUS("brachiosaurus", egg -> EggType.isWarm(egg), FossilsLegacyLootTables.BRACHIOSAURUS_EGG, () -> FossilsLegacyEntities.BRACHIOSAURUS.get(), () -> FossilsLegacyItems.BRACHIOSAURUS_EGG.get());
-
-		private final String texture;
-		private final boolean wet;
-		private final Function<Egg, Boolean> incubate;
-		private final ResourceLocation loot;
-		private final Supplier<EntityType> entityType;
-		private final Supplier<Item> pick;
-
-		private EggType(String texture, boolean wet, Function<Egg, Boolean> incubate, ResourceLocation loot, Supplier<EntityType> entityType, Supplier<Item> pick) {
-			this.texture = texture;
-			this.wet = wet;
-			this.incubate = incubate;
-			this.loot = loot;
-			this.entityType = entityType;
-			this.pick = pick;
-		}
-
-		private EggType(String texture, Function<Egg, Boolean> incubate, ResourceLocation loot, Supplier<EntityType> entityType, Supplier<Item> pick) {
-			this(texture, false, incubate, loot, entityType, pick);
-		}
-
-		public String getTexture() {
-			return this.texture;
-		}
-
-		public Component getTemperature(Egg egg) {
-			if (this.wet) {
-				return this.shouldIncubate(egg) ? FossilsLegacyUtils.translation("dinopedia", "wet") : FossilsLegacyUtils.translation("dinopedia", "dry");
-			} else {
-				return this.shouldIncubate(egg) ? FossilsLegacyUtils.translation("dinopedia", "warm") : FossilsLegacyUtils.translation("dinopedia", "cold");
-			}
-		}
-
-		public boolean shouldIncubate(Egg egg) {
-			return this.incubate.apply(egg);
-		}
-
-		public ResourceLocation getLoot() {
-			return this.loot;
-		}
-
-		public Supplier<EntityType> getEntityType() {
-			return this.entityType;
-		}
-
-		public Supplier<Item> getPick() {
-			return this.pick;
-		}
-
-		private static boolean isWarm(Egg egg) {
-			return egg.level().getBrightness(LightLayer.BLOCK, egg.blockPosition()) > 10.0F;
-		}
 	}
 }

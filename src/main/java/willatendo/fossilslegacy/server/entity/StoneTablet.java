@@ -77,7 +77,7 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
 	public static Optional<StoneTablet> create(Level level, BlockPos blockPos, Direction direction) {
 		StoneTablet stoneTablet = new StoneTablet(level, blockPos);
 		List<Holder<StoneTabletVariant>> stoneTabletVariants = new ArrayList<>();
-		FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS.getTagOrEmpty(StoneTabletVariantTags.PLACEABLE).forEach(stoneTabletVariants::add);
+		FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS.getTagOrEmpty(FossilsLegacyStoneTabletVariantTags.PLACEABLE).forEach(stoneTabletVariants::add);
 		if (stoneTabletVariants.isEmpty()) {
 			return Optional.empty();
 		}
@@ -121,11 +121,11 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
 	}
 
 	public static void storeVariant(CompoundTag compoundTag, Holder<StoneTabletVariant> stoneTabletVariant) {
-		compoundTag.putString("Type", stoneTabletVariant.unwrapKey().orElse(DEFAULT_VARIANT).location().toString());
+		compoundTag.putString("Variant", stoneTabletVariant.unwrapKey().orElse(DEFAULT_VARIANT).location().toString());
 	}
 
 	public static Optional<Holder<StoneTabletVariant>> loadVariant(CompoundTag compoundTag) {
-		return Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("Type"))).map(resourceLocation -> ResourceKey.create(FossilsLegacyRegistries.STONE_TABLET_VARIANTS, resourceLocation)).flatMap(FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS::getHolder);
+		return Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("Variant"))).map(resourceLocation -> ResourceKey.create(FossilsLegacyRegistries.STONE_TABLET_VARIANTS, resourceLocation)).flatMap(FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS::getHolder);
 	}
 
 	@Override

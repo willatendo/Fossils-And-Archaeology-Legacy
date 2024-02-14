@@ -6,8 +6,30 @@ import net.minecraft.world.level.ItemLike;
 import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 
-public class DinoConstants {
+public class DinoUtils {
 	public static final Ingredient HERBIVORE_FOOD = Ingredient.of(FeederBlockEntity.getPlantsFoodLevel().keySet().stream().toArray(ItemLike[]::new));
 	public static final Ingredient CARNIVORE_FOOD = Ingredient.of(FeederBlockEntity.getMeatFoodLevel().keySet().stream().toArray(ItemLike[]::new));
 	public static final Ingredient PISCIVORE_FOOD = Ingredient.of(Items.COD, Items.COOKED_COD, Items.SALMON, Items.COOKED_SALMON, Items.TROPICAL_FISH, FossilsLegacyItems.SIO_CHIU_LE.get(), FossilsLegacyItems.NAUTILUS.get());
+
+	public static float[] getStepHeights(int growthStages, float minStepHeight, float maxStepHeight) {
+		float[] stepHeights = new float[growthStages + 1];
+		float diff = maxStepHeight - minStepHeight;
+		float change = diff / (growthStages + 1);
+		for (int i = 0; i < (growthStages + 1); i++) {
+			stepHeights[i] = (float) Math.floor(minStepHeight + (change * ((float) i)));
+		}
+		return stepHeights;
+	}
+
+	public static float[] getStepHeights(int growthStages, float stepHeight) {
+		float[] stepHeights = new float[growthStages + 1];
+		for (int i = 0; i < (growthStages + 1); i++) {
+			stepHeights[i] = stepHeight;
+		}
+		return stepHeights;
+	}
+
+	public static float[] getStepHeights(float... stepHeights) {
+		return stepHeights;
+	}
 }

@@ -29,7 +29,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.StoneTablet;
 import willatendo.fossilslegacy.server.entity.StoneTabletVariant;
-import willatendo.fossilslegacy.server.entity.StoneTabletVariantTags;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyStoneTabletVariantTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.creativemodetab.CreativeModeTabFill;
 
@@ -107,7 +107,7 @@ public class StoneTabletItem extends Item implements CreativeModeTabFill {
 	@Override
 	public void fill(ItemDisplayParameters itemDisplayParameters, Output output) {
 		output.accept(FossilsLegacyItems.STONE_TABLET.get());
-		itemDisplayParameters.holders().lookup(FossilsLegacyRegistries.STONE_TABLET_VARIANTS).ifPresent(registryLookup -> StoneTabletItem.generatePresetStoneTablets(output, registryLookup, holder -> holder.is(StoneTabletVariantTags.PLACEABLE), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
+		itemDisplayParameters.holders().lookup(FossilsLegacyRegistries.STONE_TABLET_VARIANTS).ifPresent(registryLookup -> StoneTabletItem.generatePresetStoneTablets(output, registryLookup, holder -> holder.is(FossilsLegacyStoneTabletVariantTags.PLACEABLE), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
 	}
 
 	private static void generatePresetStoneTablets(CreativeModeTab.Output output, HolderLookup.RegistryLookup<StoneTabletVariant> registryLookup, Predicate<Holder<StoneTabletVariant>> predicate, CreativeModeTab.TabVisibility tabVisibility) {

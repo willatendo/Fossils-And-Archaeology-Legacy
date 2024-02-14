@@ -1,0 +1,13 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "tag": "fossilslegacy:froglights"
+  },
+  "results": [
+    {
+      "result": "fossilslegacy:frog_dna",
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

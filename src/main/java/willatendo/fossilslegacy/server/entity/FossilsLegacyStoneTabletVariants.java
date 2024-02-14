@@ -7,7 +7,7 @@ import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 public class FossilsLegacyStoneTabletVariants {
-	public static final SimpleRegistry<StoneTabletVariant> STONE_TABLET_TYPES = SimpleRegistry.create(FossilsLegacyRegistries.STONE_TABLET_VARIANTS, FossilsLegacyUtils.ID);
+	public static final SimpleRegistry<StoneTabletVariant> STONE_TABLET_VARIANTS = SimpleRegistry.create(FossilsLegacyRegistries.STONE_TABLET_VARIANTS, FossilsLegacyUtils.ID);
 
 	public static final SimpleHolder<StoneTabletVariant> LIGHTING = register("lighting", 32, 16);
 	public static final SimpleHolder<StoneTabletVariant> SOCIAL = register("social", 16, 16);
@@ -31,10 +31,10 @@ public class FossilsLegacyStoneTabletVariants {
 	public static final SimpleHolder<StoneTabletVariant> FUTURE = register("future", 32, 32);
 
 	public static SimpleHolder<StoneTabletVariant> register(String id, int width, int height) {
-		return STONE_TABLET_TYPES.register(id, () -> new StoneTabletVariant(id, width, height));
+		return STONE_TABLET_VARIANTS.register(id, () -> new StoneTabletVariant(id, width, height));
 	}
 
 	public static void init() {
-		FabricRegister.register(STONE_TABLET_TYPES);
+		FabricRegister.register(STONE_TABLET_VARIANTS);
 	}
 }

@@ -24,12 +24,15 @@ import willatendo.fossilslegacy.client.screen.ArchaeologyWorkbenchScreen;
 import willatendo.fossilslegacy.client.screen.CultivatorScreen;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.block.entity.CultivatorBlockEntity;
+import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.jei.category.AnalyzationCategory;
 import willatendo.fossilslegacy.server.jei.category.ArchaeologyCategory;
 import willatendo.fossilslegacy.server.jei.category.BiomatterCategory;
 import willatendo.fossilslegacy.server.jei.category.CultivationCategory;
+import willatendo.fossilslegacy.server.jei.category.FeederCategory;
 import willatendo.fossilslegacy.server.jei.recipe.BiomatterRecipe;
+import willatendo.fossilslegacy.server.jei.recipe.FeederRecipe;
 import willatendo.fossilslegacy.server.menu.AnalyzerMenu;
 import willatendo.fossilslegacy.server.menu.ArchaeologyWorkbenchMenu;
 import willatendo.fossilslegacy.server.menu.CultivatorMenu;
@@ -46,6 +49,7 @@ public class FossilsLegacyJEI implements IModPlugin {
 	public static final RecipeType<RecipeHolder<CultivationRecipe>> CULTIVATION = RecipeType.createFromVanilla(FossilsLegacyRecipeTypes.CULTIVATION.get());
 	public static final RecipeType<RecipeHolder<AnalyzationRecipe>> ANALYZATION = RecipeType.createFromVanilla(FossilsLegacyRecipeTypes.ANALYZATION.get());
 	public static final RecipeType<BiomatterRecipe> BIOMATTER = RecipeType.create(FossilsLegacyUtils.ID, "biomatter_category", BiomatterRecipe.class);
+	public static final RecipeType<FeederRecipe> FEEDER = RecipeType.create(FossilsLegacyUtils.ID, "feeder_category", FeederRecipe.class);
 	public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/gui/fossils_legacy_jei.png");
 
 	// JEI Constants
@@ -74,7 +78,7 @@ public class FossilsLegacyJEI implements IModPlugin {
 	public void registerCategories(IRecipeCategoryRegistration iRecipeCategoryRegistration) {
 		IGuiHelper iGuiHelper = iRecipeCategoryRegistration.getJeiHelpers().getGuiHelper();
 		FossilsLegacyJEITextures fossilsLegacyJEITextures = this.getTextures(iGuiHelper);
-		iRecipeCategoryRegistration.addRecipeCategories(this.archaeologyCategory = new ArchaeologyCategory(iGuiHelper, fossilsLegacyJEITextures), this.cultivationCategory = new CultivationCategory(iGuiHelper, fossilsLegacyJEITextures), this.analyzationCategory = new AnalyzationCategory(iGuiHelper, fossilsLegacyJEITextures), new BiomatterCategory(iGuiHelper, fossilsLegacyJEITextures));
+		iRecipeCategoryRegistration.addRecipeCategories(this.archaeologyCategory = new ArchaeologyCategory(iGuiHelper, fossilsLegacyJEITextures), this.cultivationCategory = new CultivationCategory(iGuiHelper, fossilsLegacyJEITextures), this.analyzationCategory = new AnalyzationCategory(iGuiHelper, fossilsLegacyJEITextures), new BiomatterCategory(iGuiHelper, fossilsLegacyJEITextures), new FeederCategory(iGuiHelper, fossilsLegacyJEITextures));
 	}
 
 	@Override
@@ -91,6 +95,14 @@ public class FossilsLegacyJEI implements IModPlugin {
 			biomatterRecipes.add(new BiomatterRecipe(new ItemStack(CultivatorBlockEntity.getOnTimeMap().keySet().stream().toList().get(i)), CultivatorBlockEntity.getOnTimeMap().values().stream().toList().get(i)));
 		}
 		iRecipeRegistration.addRecipes(FossilsLegacyJEI.BIOMATTER, biomatterRecipes);
+		List<FeederRecipe> feederRecipes = new ArrayList<>();
+		for (int i = 0; i < FeederBlockEntity.getMeatFoodLevel().size(); i++) {
+			feederRecipes.add(new FeederRecipe(new ItemStack(FeederBlockEntity.getMeatFoodLevel().keySet().stream().toList().get(i)), FeederBlockEntity.getMeatFoodLevel().values().stream().toList().get(i), true));
+		}
+		for (int i = 0; i < FeederBlockEntity.getPlantsFoodLevel().size(); i++) {
+			feederRecipes.add(new FeederRecipe(new ItemStack(FeederBlockEntity.getPlantsFoodLevel().keySet().stream().toList().get(i)), FeederBlockEntity.getPlantsFoodLevel().values().stream().toList().get(i), false));
+		}
+		iRecipeRegistration.addRecipes(FossilsLegacyJEI.FEEDER, feederRecipes);
 		iRecipeRegistration.addRecipes(FossilsLegacyJEI.ANALYZATION, fossilsLegacyRecipes.getAnalyzationRecipes(this.analyzationCategory));
 
 		iRecipeRegistration.addRecipes(RecipeTypes.CRAFTING, fossilsLegacyRecipes.createMagicConchRecipes());
@@ -103,6 +115,7 @@ public class FossilsLegacyJEI implements IModPlugin {
 		iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.CULTIVATOR.get()), FossilsLegacyJEI.CULTIVATION);
 		iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.CULTIVATOR.get()), FossilsLegacyJEI.BIOMATTER);
 		iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.ANALYZER.get()), FossilsLegacyJEI.ANALYZATION);
+		iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.FEEDER.get()), FossilsLegacyJEI.FEEDER);
 	}
 
 	@Override

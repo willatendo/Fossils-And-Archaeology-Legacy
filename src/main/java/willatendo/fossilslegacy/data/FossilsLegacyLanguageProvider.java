@@ -333,6 +333,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("jei.fossilslegacy.biomatter", "Biomatter");
 		this.add("jei.fossilslegacy.biomatter.biomatterCount.single", "Biomatter for 1 item");
 		this.add("jei.fossilslegacy.biomatter.biomatterCount", "Biomatter for %s items");
+		this.add("jei.fossilslegacy.feeder", "Feeder");
+		this.add("jei.fossilslegacy.feeder.food_level", "Provides %s food");
 
 		// Menus
 		this.add("menu.fossilslegacy.analyzer", "Analyzer");

@@ -30,7 +30,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.FossilsLegacyConfig;
-import willatendo.fossilslegacy.server.entity.Egg.EggType;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -52,23 +51,41 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 		return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData, compoundTag);
 	}
 
-	public EggType eggType() {
+	@Override
+	public boolean killedEntity(ServerLevel serverLevel, LivingEntity livingEntity) {
+		if (this.getDiet().getsFoodFromKill()) {
+			this.increaseHunger(this.getDiet().getEntityFoodValue(livingEntity));
+		}
+		return super.killedEntity(serverLevel, livingEntity);
+	}
+
+	public EggVariant getEggVariant() {
 		return null;
 	}
 
-	public abstract float boundingBoxGrowth();
+	public abstract float getBoundingBoxGrowth();
 
-	public abstract int foodLevelForItemStack(ItemStack itemStack);
+	public abstract Diet getDiet();
 
 	public boolean hasSpace() {
 		EntityDimensions entityDimensions = this.getDimensions(this.getPose());
-		EntityDimensions updatedDimensions = entityDimensions.scale(1.0F + (((float) this.boundingBoxGrowth()) * ((float) this.getGrowthStage() + 1.0F)));
+		EntityDimensions updatedDimensions = entityDimensions.scale(1.0F + (((float) this.getBoundingBoxGrowth()) * ((float) this.getGrowthStage() + 1.0F)));
 		return !this.level().getBlockCollisions(this, updatedDimensions.makeBoundingBox(this.position())).iterator().hasNext();
 	}
 
 	@Override
+	public int getAmbientSoundInterval() {
+		return 360;
+	}
+
+	@Override
+	public float getVoicePitch() {
+		return 0.5F + (0.1F * this.getGrowthStage());
+	}
+
+	@Override
 	public boolean isFood(ItemStack itemStack) {
-		return foodLevelForItemStack(itemStack) > 0;
+		return this.getDiet().getItemStackFoodValue(itemStack) > 0;
 	}
 
 	@Override
@@ -139,7 +156,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 
 	@Override
 	public float getScale() {
-		return 1.0F + (((float) this.boundingBoxGrowth()) * ((float) this.getGrowthStage()));
+		return 1.0F + (((float) this.getBoundingBoxGrowth()) * ((float) this.getGrowthStage()));
 	}
 
 	@Override
@@ -182,8 +199,8 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 			}
 		}
 
-		if (this.foodLevelForItemStack(itemStack) > 0) {
-			int addition = this.getHunger() + this.foodLevelForItemStack(itemStack);
+		if (this.getDiet().getItemStackFoodValue(itemStack) > 0) {
+			int addition = this.getHunger() + this.getDiet().getItemStackFoodValue(itemStack);
 			if (!(addition > this.getMaxHunger())) {
 				this.setHunger(addition);
 			} else {
@@ -263,11 +280,6 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 	@Override
 	public void setHunger(int hunger) {
 		this.entityData.set(HUNGER, hunger);
-	}
-
-	@Override
-	public void decreaseHunger() {
-		this.setHunger(this.getHunger() - 1);
 	}
 
 	@Override
@@ -366,9 +378,9 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-		if (this.eggType() != null) {
+		if (this.getEggVariant() != null) {
 			Egg egg = FossilsLegacyEntities.EGG.get().create(serverLevel);
-			egg.setEgg(this.eggType());
+			egg.setEggVariant(this.getEggVariant());
 			if (egg != null) {
 				UUID uuid = this.getOwnerUUID();
 				if (uuid != null) {

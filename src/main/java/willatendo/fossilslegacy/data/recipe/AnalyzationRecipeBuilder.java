@@ -14,6 +14,7 @@ import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -41,6 +42,10 @@ public class AnalyzationRecipeBuilder implements RecipeBuilder {
 
 	public static AnalyzationRecipeBuilder recipe(ItemLike ingredient, ItemLike result, int weight, int time) {
 		return new AnalyzationRecipeBuilder(Ingredient.of(ingredient), result, weight, time);
+	}
+
+	public static AnalyzationRecipeBuilder recipe(TagKey<Item> tag, ItemLike result, int weight, int time) {
+		return new AnalyzationRecipeBuilder(Ingredient.of(tag), result, weight, time);
 	}
 
 	public AnalyzationRecipeBuilder addResult(Item result, int weight) {
