@@ -256,7 +256,7 @@ public class Anu extends Monster implements SpeakingEntity {
 		return SoundEvents.ZOMBIFIED_PIGLIN_DEATH;
 	}
 
-	public static enum AnuSpeaker implements Speaker {
+	public static enum AnuSpeaker implements SpeakerType {
 		GREETINGS("greetings"),
 		HAND_ATTACKED("weak_attacked"),
 		THREATEN("threating"),

@@ -42,7 +42,6 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.player.Player;
@@ -58,6 +57,7 @@ import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.entity.goal.DinoEatFromFeederGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
+import willatendo.fossilslegacy.server.entity.goal.DinoTemptGoal;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -78,7 +78,7 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
 
 	@Override
 	public float maxUpStep() {
-		return DinoUtils.getStepHeights(1.0F, 1.5F)[this.getGrowthStage()];
+		return this.getGrowthStage() == 0 ? 1.0F : 1.5F;
 	}
 
 	@Override
@@ -169,7 +169,7 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
 		this.goalSelector.addGoal(0, new FloatGoal(this));
 		this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
 		this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
-		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, DinoUtils.HERBIVORE_FOOD, false));
+		this.goalSelector.addGoal(3, new DinoTemptGoal(this, 1.1D, false));
 		this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.1D));
 		this.goalSelector.addGoal(5, this.eatBlockGoal);
 		this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));

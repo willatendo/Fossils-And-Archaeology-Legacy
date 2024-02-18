@@ -458,7 +458,7 @@ public class TamedZombifiedPiglin extends ZombifiedPiglin implements OwnableEnti
 		}
 	}
 
-	public static enum TameZombifiedPiglinSpeaker implements Speaker {
+	public static enum TameZombifiedPiglinSpeaker implements SpeakerType {
 		ANU_SUMMON("anu_summon"),
 		SACRIFICE("sacrifice"),
 		SUMMON(player -> TamedZombifiedPiglin.TameZombifiedPiglinSpeaker.basicSpeach("summon", player.getDisplayName().getString()));

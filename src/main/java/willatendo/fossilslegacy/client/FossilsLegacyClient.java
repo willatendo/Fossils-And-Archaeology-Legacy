@@ -42,6 +42,7 @@ import willatendo.fossilslegacy.client.model.fossils.PteranodonSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.TriceratopsSkeletonModel;
 import willatendo.fossilslegacy.client.model.pteranodon.FlyingPteranodonModel;
 import willatendo.fossilslegacy.client.model.pteranodon.GroundPteranodonModel;
+import willatendo.fossilslegacy.client.model.pteranodon.LandingPteranodonModel;
 import willatendo.fossilslegacy.client.model.tyrannosaurus.KnockedOutTyrannosaurusModel;
 import willatendo.fossilslegacy.client.model.tyrannosaurus.TyrannosaurusModel;
 import willatendo.fossilslegacy.client.render.BrachiosaurusRenderer;
@@ -137,6 +138,7 @@ public class FossilsLegacyClient implements ClientModInitializer {
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.PLESIOSAURUS, PlesiosaurusModel::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.GROUND_PTERANODON, GroundPteranodonModel::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.FLYING_PTERANODON, FlyingPteranodonModel::createBodyLayer);
+		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.LANDING_PTERANODON, LandingPteranodonModel::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.SMILODON, SmilodonModel::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.STEGOSAURUS, StegosaurusModel::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.TRICERATOPS, TriceratopsModel::createBodyLayer);

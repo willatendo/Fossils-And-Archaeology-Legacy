@@ -37,22 +37,21 @@ public class MagicConchItem extends Item implements CreativeModeTabFill {
 
 	public static DinosaurCommand getOrder(ItemStack itemStack) {
 		CompoundTag compoundTag = itemStack.getOrCreateTag();
-		return DinosaurCommand.getOrderFromInteger(compoundTag.getInt("Order"));
+		return DinosaurCommand.load(compoundTag);
 	}
 
 	@Override
 	public void fill(ItemDisplayParameters itemDisplayParameters, Output output) {
-		for (int i = 0; i < 3; i++) {
+		for (DinosaurCommand dinosaurCommand : DinosaurCommand.values()) {
 			ItemStack magicConch = new ItemStack(FossilsLegacyItems.MAGIC_CONCH.get());
 			CompoundTag compoundTag = magicConch.getOrCreateTag();
-			compoundTag.putInt("Order", i);
+			DinosaurCommand.save(compoundTag, dinosaurCommand);
 			output.accept(magicConch);
 		}
 	}
 
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
-		// Change to for all Plesiosaurs
 		player.getCooldowns().addCooldown(this, 10);
 
 		for (Plesiosaurus plesiosaurus : level.getEntitiesOfClass(Plesiosaurus.class, new AABB(player.blockPosition()).inflate(30.0D))) {

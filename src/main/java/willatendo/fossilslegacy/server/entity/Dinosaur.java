@@ -39,7 +39,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 	private static final EntityDataAccessor<Integer> GROWTH_STAGE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> HUNGER = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
 	protected static final EntityDataAccessor<Optional<UUID>> OWNER = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.OPTIONAL_UUID);
-	private int internalClock = 0;
+	protected int internalClock = 0;
 
 	public Dinosaur(EntityType<? extends Dinosaur> entityType, Level level) {
 		super(entityType, level);
@@ -337,7 +337,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 			compoundTag.putUUID("Owner", this.getOwnerUUID());
 		}
 
-		compoundTag.putInt("Command", this.getCommand().ordinal());
+		DinosaurCommand.save(compoundTag, this.getCommand());
 		compoundTag.putInt("DaysAlive", this.getDaysAlive());
 		compoundTag.putInt("Hunger", this.getHunger());
 		compoundTag.putInt("GrowthStage", this.getGrowthStage());
@@ -363,7 +363,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 			}
 		}
 
-		this.setCommand(DinosaurCommand.values()[compoundTag.getInt("Command")]);
+		DinosaurCommand.load(compoundTag);
 		this.setDaysAlive(compoundTag.getInt("DaysAlive"));
 		this.setHunger(compoundTag.getInt("Hunger"));
 		this.setGrowthStage(compoundTag.getInt("GrowthStage"));

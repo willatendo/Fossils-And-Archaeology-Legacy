@@ -19,7 +19,6 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RangedAttackGoal;
-import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
@@ -30,6 +29,7 @@ import willatendo.fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoNearestAttackableTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
+import willatendo.fossilslegacy.server.entity.goal.DinoTemptGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoWaterAvoidingRandomStrollGoal;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
@@ -46,7 +46,7 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
 
 	@Override
 	public float maxUpStep() {
-		return DinoUtils.getStepHeights(8, 1.0F)[this.getGrowthStage()];
+		return 1.0F;
 	}
 
 	@Override
@@ -88,7 +88,7 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
 	protected void registerGoals() {
 		this.goalSelector.addGoal(0, new FloatGoal(this));
 		this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D));
-		this.goalSelector.addGoal(2, new TemptGoal(this, 1.1D, DinoUtils.CARNIVORE_FOOD, false));
+		this.goalSelector.addGoal(2, new DinoTemptGoal(this, 1.1D, false));
 		this.goalSelector.addGoal(3, new DinoBabyFollowParentGoal(this, 1.1D));
 		this.goalSelector.addGoal(3, new RangedAttackGoal(this, 1.25D, 20, 10.0F));
 		this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, true));

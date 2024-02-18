@@ -1,5 +1,9 @@
 package willatendo.fossilslegacy.server.utils;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.StringRepresentable;
 
@@ -8,6 +12,7 @@ public enum DinosaurCommand implements StringRepresentable {
 	STAY("stay"),
 	FREE_MOVE("free_move");
 
+	public static final Map<String, DinosaurCommand> COMMANDS = new HashMap<String, DinosaurCommand>();
 	private final Component component;
 	private final String order;
 
@@ -24,10 +29,6 @@ public enum DinosaurCommand implements StringRepresentable {
 		return this.order;
 	}
 
-	public static DinosaurCommand getOrderFromInteger(int id) {
-		return DinosaurCommand.values()[id];
-	}
-
 	public static DinosaurCommand getNext(DinosaurCommand dinosaurOrder) {
 		if (dinosaurOrder == STAY) {
 			return FOLLOW;
@@ -40,8 +41,22 @@ public enum DinosaurCommand implements StringRepresentable {
 		}
 	}
 
+	public static void save(CompoundTag compoundTag, DinosaurCommand dinosaurCommand) {
+		compoundTag.putString("Command", dinosaurCommand.getOrder());
+	}
+
+	public static DinosaurCommand load(CompoundTag compoundTag) {
+		return COMMANDS.get(compoundTag.getString("Command"));
+	}
+
 	@Override
 	public String getSerializedName() {
 		return this.order;
+	}
+
+	static {
+		COMMANDS.put("follow", FOLLOW);
+		COMMANDS.put("stay", STAY);
+		COMMANDS.put("free_move", FREE_MOVE);
 	}
 }

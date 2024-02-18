@@ -7,6 +7,7 @@ import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.animal.goat.Goat;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
 
 public interface Diet {
@@ -15,6 +16,8 @@ public interface Diet {
 	int getItemStackFoodValue(ItemStack itemStack);
 
 	int getEntityFoodValue(Entity entity);
+
+	Ingredient getTemptFoods();
 
 	public static Diet piscivore() {
 		return new Diet() {
@@ -34,6 +37,11 @@ public interface Diet {
 					return 100;
 				}
 				return 5;
+			}
+
+			@Override
+			public Ingredient getTemptFoods() {
+				return DinoUtils.PISCIVORE_FOOD;
 			}
 		};
 	}
@@ -69,6 +77,11 @@ public interface Diet {
 				}
 				return 20;
 			}
+
+			@Override
+			public Ingredient getTemptFoods() {
+				return DinoUtils.CARNIVORE_FOOD;
+			}
 		};
 	}
 
@@ -87,6 +100,11 @@ public interface Diet {
 			@Override
 			public int getEntityFoodValue(Entity entity) {
 				return 0;
+			}
+
+			@Override
+			public Ingredient getTemptFoods() {
+				return DinoUtils.HERBIVORE_FOOD;
 			}
 		};
 	}

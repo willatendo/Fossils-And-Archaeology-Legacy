@@ -6,14 +6,14 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public enum DinoSituation implements Speaker {
+public enum DinoSituation implements SpeakerType {
 	HUNGRY("hungry"),
 	STARVE("starve"),
-	LEARNED_CHESTS,
-	Bytreate,
+	LEARNED_CHESTS("learned_chests"),
+	TAME_WITH_TREAT("tame_with_treat"),
 	NO_SPACE("no_space"),
-	STARVE_ESCAPE,
-	SJL_BITE,
+	ESCAPE("escape"),
+	SJL_BITE("sjl_bite"),
 	FULL("full"),
 	TAME_TYRANNOSAURUS_ERROR_TOO_YOUNG("tame_tyrannosaurus_error_too_young"),
 	TAME_TYRANNOSAURUS_ERROR_HEALTH("tame_tyrannosaurus_error_health");
@@ -26,10 +26,6 @@ public enum DinoSituation implements Speaker {
 
 	private DinoSituation(String id) {
 		this(player -> DinoSituation.basicSpeach(id));
-	}
-
-	private DinoSituation() {
-		this("");
 	}
 
 	protected static Component basicSpeach(String id) {

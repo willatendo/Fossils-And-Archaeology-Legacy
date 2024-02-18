@@ -27,9 +27,7 @@ import net.minecraft.world.entity.ai.goal.BreedGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.DismountHelper;
@@ -43,6 +41,7 @@ import willatendo.fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoNearestAttackableTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
+import willatendo.fossilslegacy.server.entity.goal.DinoTemptGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoWaterAvoidingRandomStrollGoal;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
@@ -132,43 +131,37 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
 				return !Tyrannosaurus.this.isKnockedOut() ? super.canUse() : false;
 			}
 		});
-		this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D) {
+		this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D) {
 			@Override
 			public boolean canUse() {
 				return !Tyrannosaurus.this.isKnockedOut() ? super.canUse() : false;
 			}
 		});
-		this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D) {
+		this.goalSelector.addGoal(2, new DinoTemptGoal(this, 1.1D, false) {
 			@Override
 			public boolean canUse() {
 				return !Tyrannosaurus.this.isKnockedOut() ? super.canUse() : false;
 			}
 		});
-		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, DinoUtils.CARNIVORE_FOOD, false) {
+		this.goalSelector.addGoal(3, new DinoBabyFollowParentGoal(this, 1.1D) {
 			@Override
 			public boolean canUse() {
 				return !Tyrannosaurus.this.isKnockedOut() ? super.canUse() : false;
 			}
 		});
-		this.goalSelector.addGoal(4, new DinoBabyFollowParentGoal(this, 1.1D) {
+		this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, true) {
 			@Override
 			public boolean canUse() {
 				return !Tyrannosaurus.this.isKnockedOut() ? super.canUse() : false;
 			}
 		});
-		this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true) {
+		this.goalSelector.addGoal(5, new DinoWaterAvoidingRandomStrollGoal(this, 1.0D) {
 			@Override
 			public boolean canUse() {
 				return !Tyrannosaurus.this.isKnockedOut() ? super.canUse() : false;
 			}
 		});
-		this.goalSelector.addGoal(6, new DinoWaterAvoidingRandomStrollGoal(this, 1.0D) {
-			@Override
-			public boolean canUse() {
-				return !Tyrannosaurus.this.isKnockedOut() ? super.canUse() : false;
-			}
-		});
-		this.goalSelector.addGoal(6, new DinoFollowOwnerGoal(this, 1.0D, 10.0F, 2.0F) {
+		this.goalSelector.addGoal(5, new DinoFollowOwnerGoal(this, 1.0D, 10.0F, 2.0F) {
 			@Override
 			public boolean canUse() {
 				return !Tyrannosaurus.this.isKnockedOut() ? super.canUse() : false;

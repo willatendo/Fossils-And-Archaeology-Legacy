@@ -36,25 +36,25 @@ public class MagicConchRecipe extends CustomRecipe {
 	public ItemStack assemble(CraftingContainer craftingContainer, RegistryAccess registryAccess) {
 		ItemStack itemstack = FossilsLegacyItems.MAGIC_CONCH.get().getDefaultInstance();
 		CompoundTag compoundTag = itemstack.getOrCreateTag();
-		int nextOrder = 0;
+		String nextOrder = DinosaurCommand.FOLLOW.getOrder();
 
 		for (int slot = 0; slot < craftingContainer.getContainerSize(); ++slot) {
 			ItemStack itemStackInSlot = craftingContainer.getItem(slot);
 			if (!itemStackInSlot.isEmpty() && itemStackInSlot.getItem() instanceof MagicConchItem) {
 				DinosaurCommand dinosaurOrder = MagicConchItem.getOrder(itemStackInSlot);
 				if (dinosaurOrder == DinosaurCommand.FOLLOW) {
-					nextOrder = DinosaurCommand.STAY.ordinal();
+					nextOrder = DinosaurCommand.STAY.getOrder();
 				}
 				if (dinosaurOrder == DinosaurCommand.STAY) {
-					nextOrder = DinosaurCommand.FREE_MOVE.ordinal();
+					nextOrder = DinosaurCommand.FREE_MOVE.getOrder();
 				}
 				if (dinosaurOrder == DinosaurCommand.FREE_MOVE) {
-					nextOrder = DinosaurCommand.FOLLOW.ordinal();
+					nextOrder = DinosaurCommand.FOLLOW.getOrder();
 				}
 			}
 		}
 
-		compoundTag.putInt("Order", nextOrder);
+		compoundTag.putString("Command", nextOrder);
 
 		return itemstack;
 	}

@@ -9,6 +9,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -16,7 +17,6 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
-import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.ai.navigation.AmphibiousPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.player.Player;
@@ -28,6 +28,7 @@ import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.entity.goal.DinoEatFromFeederGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
+import willatendo.fossilslegacy.server.entity.goal.DinoTemptGoal;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class Mosasaurus extends Dinosaur implements DinopediaInformation {
@@ -93,7 +94,7 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation {
 //		this.goalSelector.addGoal(0, new FloatGoal(this));
 //		this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
 //		this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
-		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, DinoUtils.PISCIVORE_FOOD, false));
+		this.goalSelector.addGoal(3, new DinoTemptGoal(this, 1.1D, false));
 //		this.goalSelector.addGoal(4, new DinoBabyFollowParentGoal(this, 1.1D));
 		this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));
 		this.goalSelector.addGoal(6, new RandomSwimmingGoal(this, 1.0D, 10));
@@ -143,6 +144,11 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation {
 	@Override
 	public CommandType commandItems() {
 		return CommandType.none();
+	}
+
+	@Override
+	public MobType getMobType() {
+		return MobType.WATER;
 	}
 
 	public static class MosasaurusPathNavigation extends AmphibiousPathNavigation {

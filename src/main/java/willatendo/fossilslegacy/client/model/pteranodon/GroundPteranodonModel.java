@@ -53,24 +53,6 @@ public class GroundPteranodonModel extends AbstractPteranodonModel {
 		return LayerDefinition.create(meshDefinition, 64, 32);
 	}
 
-//	public void OpenMouth(int Steps) {
-//		if (lower_mouth.rotateAngleX < 0.109F)
-//			lower_mouth.rotateAngleX += (0.109F / Steps);
-//		else
-//			lower_mouth.rotateAngleX = 0.109F;
-//		// mod_Fossil.ShowMessage(new StringBuilder().append(head3_down.rotateAngleX).toString());
-//	}
-//
-//	public void CloseMouth(int Steps) {
-//		if (lower_mouth.rotateAngleX > 0)
-//			lower_mouth.rotateAngleX -= (0.109F / Steps);
-//		else
-//			lower_mouth.rotateAngleX = 0;
-//		// mod_Fossil.ShowMessage(new StringBuilder().append(head3_down.rotateAngleX).toString());
-//	}
-
-	// fields
-
 	@Override
 	public void setupAnim(Pteranodon pteranodon, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.crown.yRot = this.upperMouth.yRot = this.lowerMouth.yRot = this.head.yRot = -netHeadYaw / 57.29578F;

@@ -34,15 +34,15 @@ public class AnalyzationCategory implements IRecipeCategory<RecipeHolder<Analyza
 	public AnalyzationCategory(IGuiHelper guiHelper, FossilsLegacyJEITextures fossilsLegacyJEITextures) {
 		this.background = fossilsLegacyJEITextures.getBackground(0, 112, 144, 54);
 		this.icon = fossilsLegacyJEITextures.getIconFromItemLike(FossilsLegacyBlocks.ANALYZER.get());
-		this.cachedArrows = fossilsLegacyJEITextures.createProgressBar(25, 144, 122, 21, 10, IDrawableAnimated.StartDirection.LEFT);
+		this.cachedArrows = fossilsLegacyJEITextures.createProgressBar(25, 144, 112, 21, 10, IDrawableAnimated.StartDirection.LEFT);
 	}
 
 	protected IDrawableAnimated getArrow(RecipeHolder<AnalyzationRecipe> analyzationRecipeHolder) {
-		int cookTime = analyzationRecipeHolder.value().getTime();
-		if (cookTime <= 0) {
-			cookTime = 100;
+		int analyzeTime = analyzationRecipeHolder.value().getTime();
+		if (analyzeTime <= 0) {
+			analyzeTime = 100;
 		}
-		return this.cachedArrows.getUnchecked(cookTime);
+		return this.cachedArrows.getUnchecked(analyzeTime);
 	}
 
 	@Override
@@ -82,6 +82,6 @@ public class AnalyzationCategory implements IRecipeCategory<RecipeHolder<Analyza
 	@Override
 	public void draw(RecipeHolder<AnalyzationRecipe> analyzationRecipe, IRecipeSlotsView iRecipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
 		IDrawableAnimated arrow = this.getArrow(analyzationRecipe);
-		arrow.draw(guiGraphics, 61, 21);
+		arrow.draw(guiGraphics, 61, 22);
 	}
 }

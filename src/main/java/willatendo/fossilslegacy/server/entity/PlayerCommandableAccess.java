@@ -16,6 +16,6 @@ public interface PlayerCommandableAccess {
 	}
 
 	default boolean willListenToDrum(Player player, InteractionHand interactionHand) {
-		return commandItems().canCommandWithItem(player.getItemInHand(interactionHand));
+		return this.commandItems().canCommandWithItem(player.getItemInHand(interactionHand));
 	}
 }

@@ -51,7 +51,6 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 	public float airPitch = 0.0F;
 	public float lastAirPitch = 0.0F;
 	public boolean landing = false;
-	public boolean isFlying = false;
 
 	public Pteranodon(EntityType<? extends Pteranodon> entityType, Level level) {
 		super(entityType, level);
@@ -98,32 +97,17 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 
 	@Override
 	public Diet getDiet() {
-		return Diet.carnivore();
+		return Diet.piscivore();
 	}
 
 	@Override
 	public void aiStep() {
-		this.handleFlying();
+		this.handleRiding();
 		super.aiStep();
 	}
 
-	@Override
-	public void tick() {
-		super.tick();
-
-		if (this.isAlive()) {
-			if (!this.isFlying) {
-				if (this.canFly() && this.tickCount % 10 == 0) {
-					this.isFlying = true;
-				}
-			} else if (this.isFlying && !this.canFly()) {
-				this.isFlying = false;
-			}
-		}
-	}
-
-	public boolean canFly() {
-		return !this.onGround() && !this.isInWaterOrBubble() && this.isVehicle();
+	public boolean shouldFly() {
+		return !this.onGround() && !this.isInWaterOrBubble();
 	}
 
 	@Override
@@ -201,12 +185,12 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 
 	@Override
 	public boolean isNoGravity() {
-		return this.isFlying;
+		return this.hasControllingPassenger();
 	}
 
 	@Override
 	public boolean isNoAi() {
-		return this.isFlying;
+		return this.hasControllingPassenger();
 	}
 
 	@Override
@@ -214,7 +198,7 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 		if (this.isAlive()) {
 			LivingEntity livingEntity = this.getControllingPassenger();
 			if (this.isVehicle() && livingEntity != null) {
-				if (!this.isFlying) {
+				if (!this.shouldFly()) {
 					this.setRot(livingEntity.getYRot(), livingEntity.getXRot() * 0.5F);
 					this.yRotO = this.yBodyRot = this.yHeadRot = this.getYRot();
 					float f = livingEntity.xxa * 0.5F;
@@ -241,86 +225,6 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 		}
 	}
 
-	private void handleFlying() {
-		if (!this.hasControllingPassenger() || !(this.getControllingPassenger() instanceof LocalPlayer)) {
-			return;
-		}
-		LocalPlayer localPlayer = (LocalPlayer) this.getControllingPassenger();
-		this.handleLanding();
-		if (this.isFlying) {
-			this.airAngle -= localPlayer.xxa;
-			if (this.airAngle > 30F) {
-				this.airAngle = 30F;
-			}
-			if (this.airAngle < -30F) {
-				this.airAngle = -30F;
-			}
-			if (Math.abs(this.airAngle) > 10) {
-				this.yRotO += (this.airAngle > 0 ? 1 : -1);
-			}
-			for (; this.yRotO < -180F; this.yRotO += 360F) {
-			}
-			for (; this.yRotO >= 180F; this.yRotO -= 360F) {
-			}
-			if (this.landing) {
-				this.airPitch = 0;
-				if (!this.verticalCollision) {
-					this.setDeltaMovement(this.getDeltaMovement().add(0.0F, -0.2F, 0.0F));
-				} else {
-					this.setDeltaMovement(this.getDeltaMovement().add(0.0F, 0.0F, 0.0F));
-				}
-//				this.moveRelative(this.airSpeed, stuckSpeedMultiplier);
-			} else {
-				if ((this.horizontalCollision || this.verticalCollision) && this.airSpeed != 0) {
-					this.airSpeed = 0.0F;
-					return;
-				}
-				if (this.airSpeed == 0 && this.yya != 0) {
-					this.airSpeed = this.yya * this.yya;
-				}
-				this.airAngle -= localPlayer.xxa;
-				if (this.airAngle > 30F) {
-					this.airAngle = 30F;
-				}
-				if (this.airAngle < -30F) {
-					this.airAngle = -30F;
-				}
-
-				this.airPitch -= localPlayer.zza * 2;
-				if (this.airPitch > 90) {
-					this.airPitch = 90;
-				}
-				if (this.airPitch < -60) {
-					this.airPitch = -60;
-				}
-				float pitch = (float) (this.airPitch * (Math.PI / 180));
-				if (this.lastAirPitch >= this.airPitch) {
-					double speedOffset = Math.cos(pitch);
-					if (pitch < 0) {
-						speedOffset += 1;
-					}
-					this.setZza(this.airSpeed * (float) speedOffset);
-					if (this.airPitch < 60 && this.zza > 0.1F) {
-						this.setDeltaMovement(this.getDeltaMovement().add(0.0F, (float) (Math.sin(pitch) * 0.4F), 0.0F));
-					}
-				}
-				this.lastAirPitch = this.airPitch;
-			}
-		}
-	}
-
-	public void handleLanding() {
-		if (this.hasControllingPassenger() && !this.verticalCollision && !this.onGround()) {
-			if (!this.landing) {
-				if (this.airPitch > 60) {
-					this.landing = true;
-				}
-			}
-		} else {
-			this.landing = false;
-		}
-	}
-
 	@Override
 	protected SoundEvent getAmbientSound() {
 		return FossilsLegacySoundEvents.PTERANODON_AMBIENT.get();
@@ -343,7 +247,7 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 		compoundTag.putFloat("AirSpeed", this.airSpeed);
 		compoundTag.putFloat("AirAngle", this.airAngle);
 		compoundTag.putFloat("AirPitch", this.airPitch);
-		compoundTag.putBoolean("IsFlying", this.isFlying);
+		compoundTag.putBoolean("IsLanding", this.landing);
 	}
 
 	@Override
@@ -353,7 +257,7 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 		this.airSpeed = compoundTag.getFloat("AirSpeed");
 		this.airAngle = compoundTag.getFloat("AirAngle");
 		this.airPitch = compoundTag.getFloat("AirPitch");
-		this.isFlying = compoundTag.getBoolean("IsFlying");
+		this.landing = compoundTag.getBoolean("IsLanding");
 	}
 
 	@Override
@@ -383,5 +287,106 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 	@Override
 	public CommandType commandItems() {
 		return CommandType.tag(FossilsLegacyItemTags.PTERANODON_COMMANDABLES);
+	}
+
+	private void handleRiding() {
+		if (this.hasControllingPassenger() && this.getControllingPassenger() instanceof LocalPlayer localPlayer) {
+			this.handleLanding();
+			if (!this.shouldFly()) {
+				if (this.airSpeed != 0.0F) {
+					this.airSpeed = 0.0F;
+				}
+				if (this.airAngle != 0.0F) {
+					this.airAngle = 0.0F;
+				}
+				if (this.airPitch != 0.0F) {
+					this.airPitch = 0.0F;
+				}
+				this.addYRot(-(localPlayer.xxa * 5.0F));
+				for (; this.getYRot() < -180F; this.addYRot(360.0F)) {
+				}
+				for (; this.getYRot() >= 180F; this.addYRot(-360.0F)) {
+				}
+			} else {
+				this.airAngle -= localPlayer.xxa;
+				if (this.airAngle > 30F) {
+					this.airAngle = 30F;
+				}
+				if (this.airAngle < -30F) {
+					this.airAngle = -30F;
+				}
+				if (Math.abs(this.airAngle) > 10) {
+					this.addYRot(this.airAngle > 0 ? 1 : -1);
+				}
+				for (; this.getYRot() < -180F; this.addYRot(360.0F)) {
+				}
+				for (; this.getYRot() >= 180F; this.addYRot(-360.0F)) {
+				}
+				if (this.landing) {
+					this.airPitch = 0;
+					if (!this.verticalCollision) {
+						this.yya = -0.2F;
+					} else {
+						this.yya = 0;
+					}
+					Vec3 moveDirection = new Vec3(this.xxa, this.yya, this.zza);
+					this.moveRelative(this.airSpeed, moveDirection);
+				} else {
+					if ((this.horizontalCollision || this.verticalCollision) && this.airSpeed != 0) {
+						this.airSpeed = 0.0F;
+						Vec3 noDirection = new Vec3(0.0F, 0.0F, 0.0F);
+						this.moveRelative(this.airSpeed, noDirection);
+						return;
+					}
+					if (this.airSpeed == 0 && this.zza != 0) {
+						this.airSpeed = (this.zza * this.getSpeed()) * 2;
+					}
+					this.airAngle -= localPlayer.xxa;
+					if (this.airAngle > 30.0F) {
+						this.airAngle = 30.0F;
+					}
+					if (this.airAngle < -30.0F) {
+						this.airAngle = -30.0F;
+					}
+
+					this.airPitch -= localPlayer.zza * 2;
+					if (this.airPitch > 90.0F) {
+						this.airPitch = 90.0F;
+					}
+					if (this.airPitch < -60.0F) {
+						this.airPitch = -60.0F;
+					}
+					float yPitch = (float) (this.airPitch * (Math.PI / 180));
+					if (this.lastAirPitch >= airPitch) {
+						double speedOffset = Math.cos(yPitch);
+						if (yPitch < 0) {
+							speedOffset += 1;
+						}
+						Vec3 moveDirection = new Vec3(this.xxa, this.yya, this.zza);
+						this.moveRelative(this.airSpeed * (float) speedOffset, moveDirection);
+						if (this.airPitch < 60 && this.zza > 0.1F) {
+							this.yya = (float) (Math.sin(yPitch) * 0.4F);
+						}
+					}
+					this.lastAirPitch = this.airPitch;
+				}
+			}
+		}
+	}
+
+	public void handleLanding() {
+		if (this.hasControllingPassenger() && !this.verticalCollision && !this.onGround()) {
+			if (!this.landing) {
+				if (this.airPitch > 60) {
+					this.landing = true;
+				}
+			}
+		} else {
+			this.landing = false;
+		}
+	}
+
+	public void addYRot(float add) {
+		this.setYRot(this.getYRot() + add);
 	}
 }
