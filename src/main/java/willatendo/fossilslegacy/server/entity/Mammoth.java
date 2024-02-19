@@ -73,7 +73,7 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
 	}
 
 	public static AttributeSupplier mammothAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 24.0F).add(Attributes.MOVEMENT_SPEED, 0.23D).build();
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 24.0F).add(Attributes.MOVEMENT_SPEED, 0.23D).add(Attributes.ATTACK_DAMAGE, 3.0D).build();
 	}
 
 	@Override

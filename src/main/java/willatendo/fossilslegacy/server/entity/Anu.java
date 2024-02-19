@@ -38,7 +38,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.FossilsLegacyConfig;
+import willatendo.fossilslegacy.server.ConfigHelper;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -50,7 +50,7 @@ public class Anu extends Monster implements SpeakingEntity {
 	}
 
 	public static boolean checkAnuSpawnRules(EntityType<Anu> entityType, ServerLevelAccessor serverLevelAccessor, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource) {
-		return FossilsLegacyConfig.COMMON_CONFIG.shouldAnuSpawn() && serverLevelAccessor.getDifficulty() != Difficulty.PEACEFUL;
+		return ConfigHelper.shouldAnuSpawn() && serverLevelAccessor.getDifficulty() != Difficulty.PEACEFUL;
 	}
 
 	@Override

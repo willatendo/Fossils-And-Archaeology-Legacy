@@ -1,9 +1,8 @@
 package willatendo.fossilslegacy;
 
-import fuzs.forgeconfigapiport.fabric.api.neoforge.v4.NeoForgeConfigRegistry;
 import net.fabricmc.api.ModInitializer;
-import net.neoforged.fml.config.ModConfig.Type;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
+import willatendo.fossilslegacy.server.ConfigHelper;
 import willatendo.fossilslegacy.server.FossilsLegacyCreativeModeTabs;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
@@ -23,7 +22,6 @@ import willatendo.fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSeri
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.structure.FossilsLegacyStructurePeices;
 import willatendo.fossilslegacy.server.structure.FossilsLegacyStructureTypes;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FossilsLegacyMod implements ModInitializer {
 	@Override
@@ -51,6 +49,6 @@ public class FossilsLegacyMod implements ModInitializer {
 		ModCallbacks.callbacks();
 		ModEvents.events();
 
-		NeoForgeConfigRegistry.INSTANCE.register(FossilsLegacyUtils.ID, Type.COMMON, FossilsLegacyConfig.COMMON_SPEC);
+		ConfigHelper.loadConfig();
 	}
 }

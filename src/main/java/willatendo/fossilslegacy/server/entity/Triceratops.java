@@ -60,7 +60,7 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Ridea
 	}
 
 	public static AttributeSupplier triceratopsAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 1.0D).build();
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 4.0D).build();
 	}
 
 	@Override

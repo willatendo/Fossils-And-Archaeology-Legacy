@@ -15,6 +15,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -57,7 +58,16 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 	}
 
 	public static AttributeSupplier pteranodonAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).build();
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 3.0D).build();
+	}
+
+	@Override
+	public EntityDimensions getDimensions(Pose pose) {
+		if (this.shouldFly() && !this.landing) {
+			return super.getDimensions(pose).scale(1.0F, 0.5F);
+		} else {
+			return super.getDimensions(pose);
+		}
 	}
 
 	@Override
@@ -92,7 +102,7 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 
 	@Override
 	public float getBoundingBoxGrowth() {
-		return 0.15F;
+		return 0.2F;
 	}
 
 	@Override
@@ -107,7 +117,7 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 	}
 
 	public boolean shouldFly() {
-		return !this.onGround() && !this.isInWaterOrBubble();
+		return !this.onGround() && !this.isInWaterOrBubble() && this.level().getBlockState(this.blockPosition()).isAir();
 	}
 
 	@Override

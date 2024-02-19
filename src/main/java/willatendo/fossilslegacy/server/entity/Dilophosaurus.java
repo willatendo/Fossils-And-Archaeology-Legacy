@@ -41,7 +41,7 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
 	}
 
 	public static AttributeSupplier dilophosaurusAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.ATTACK_DAMAGE, 1.0D).build();
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.ATTACK_DAMAGE, 4.0D).build();
 	}
 
 	@Override

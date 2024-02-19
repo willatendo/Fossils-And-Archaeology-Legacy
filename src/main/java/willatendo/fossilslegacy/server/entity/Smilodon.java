@@ -56,7 +56,7 @@ public class Smilodon extends Dinosaur implements DinopediaInformation {
 	}
 
 	public static AttributeSupplier smilodonAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.23D).build();
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.23D).add(Attributes.ATTACK_DAMAGE, 5.0D).build();
 	}
 
 	@Override

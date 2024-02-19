@@ -29,7 +29,7 @@ import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.FossilsLegacyConfig;
+import willatendo.fossilslegacy.server.ConfigHelper;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -108,7 +108,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 
 		super.tick();
 
-		if (FossilsLegacyConfig.COMMON_CONFIG.willAnimalsGrow()) {
+		if (ConfigHelper.willAnimalsGrow()) {
 			if (this.getGrowthStage() < this.getMaxGrowthStage()) {
 				if (this.internalClock % Level.TICKS_PER_DAY == 0) {
 					if (this.hasSpace()) {
@@ -125,7 +125,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 			this.setDaysAlive(this.getDaysAlive() + 1);
 		}
 
-		if (FossilsLegacyConfig.COMMON_CONFIG.willAnimalsStarve()) {
+		if (ConfigHelper.willAnimalsStarve()) {
 			if (this.internalClock % 300 == 0) {
 				this.decreaseHunger();
 

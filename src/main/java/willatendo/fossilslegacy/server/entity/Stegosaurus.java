@@ -38,7 +38,7 @@ public class Stegosaurus extends Dinosaur implements DinopediaInformation {
 	}
 
 	public static AttributeSupplier stegosaurusAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 10.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 1.0D).build();
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 10.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 4.0D).build();
 	}
 
 	@Override

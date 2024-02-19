@@ -73,7 +73,7 @@ public class Plesiosaurus extends Dinosaur implements DinopediaInformation, Ride
 	}
 
 	public static AttributeSupplier plesiosaurusAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 8.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).build();
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 8.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 3.0D).build();
 	}
 
 	@Override

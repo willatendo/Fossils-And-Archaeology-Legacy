@@ -8,7 +8,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import willatendo.fossilslegacy.FossilsLegacyConfig;
+import willatendo.fossilslegacy.server.ConfigHelper;
 
 public class BlockBreakRule {
 	private final Animal animal;
@@ -24,7 +24,7 @@ public class BlockBreakRule {
 	}
 
 	public void tick() {
-		if (!FossilsLegacyConfig.COMMON_CONFIG.willAnimalsBreakBlocks()) {
+		if (!ConfigHelper.willAnimalsBreakBlocks()) {
 			return;
 		} else if (this.animal instanceof GrowingEntity growningEntity) {
 			if (growningEntity.getGrowthStage() < this.minimumAge) {

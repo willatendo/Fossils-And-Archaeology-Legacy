@@ -42,7 +42,7 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation {
 	}
 
 	public static AttributeSupplier mosasaurusAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 7.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 1.0D).build();
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 7.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 6.0D).build();
 	}
 
 	@Override
