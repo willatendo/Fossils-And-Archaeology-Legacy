@@ -66,7 +66,7 @@ public class ModEvents {
 		addToBiomes();
 		addEntityAttributes();
 		addEntitySpawnPlacements();
-		addLegacyPack();
+		addResourcePacks();
 	}
 
 	public static void addToCreativeModeTabs() {
@@ -130,7 +130,7 @@ public class ModEvents {
 		SpawnPlacements.register(FossilsLegacyEntities.NAUTILUS.get(), Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Nautilus::checkNautilusSpawnRules);
 	}
 
-	public static void addLegacyPack() {
+	public static void addResourcePacks() {
 		Optional<ModContainer> modContainer = FabricLoader.getInstance().getModContainer(FossilsLegacyUtils.ID);
 		ResourceManagerHelper.registerBuiltinResourcePack(FossilsLegacyUtils.resource("fa_legacy_textures"), modContainer.get(), FossilsLegacyUtils.translation("pack", "fa_legacy_textures"), ResourcePackActivationType.NORMAL);
 	}

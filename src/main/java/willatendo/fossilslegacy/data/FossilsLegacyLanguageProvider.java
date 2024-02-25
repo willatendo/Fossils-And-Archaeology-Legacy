@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.data;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.world.item.Item;
+import willatendo.fossilsexperiments.server.item.FossilsExperimentsItems;
 import willatendo.fossilslegacy.server.FossilsLegacyCreativeModeTabs;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
@@ -71,6 +72,11 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 
 		// Creative Mode Tab
 		this.add(FossilsLegacyCreativeModeTabs.FOSSILS_LEGACY.get(), "F/A: Legacy");
+
+		// Data Pack
+		this.add("dataPack.fossilslegacy.description", "Fossils and Archaeology: Legacy Edition Assets");
+		this.add("dataPack.fossilslegacy.fa_legacy_textures.description", "Fossils and Archaeology Legacy Assets");
+		this.add("dataPack.fossilslegacy.experiments.description", "Fossils and Archaeology: Legacy Experiments Assets");
 
 		// Deaths
 		this.add("death.attack.dinosaur_starve", "%1$s starved to death");
@@ -314,6 +320,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.ingredients", "Scarab Gem");
 		this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.base_slot_description", "Add netherite weapon or tool");
 		this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.additions_slot_description", "Add scarab gem");
+
+		this.add(FossilsExperimentsItems.OVERWORLD_COIN.get());
 
 		for (SimpleHolder<? extends Item> items : FossilsLegacyItems.DEBUG_ITEMS.getEntriesView()) {
 			this.add(items.get(), "Debug Item");

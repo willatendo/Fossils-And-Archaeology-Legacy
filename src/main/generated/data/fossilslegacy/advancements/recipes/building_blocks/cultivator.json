@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "fossilslegacy:glass"
+            "tag": "c:glass_blocks"
           }
         ]
       },

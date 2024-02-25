@@ -14,6 +14,7 @@ import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
+import willatendo.fossilsexperiments.server.item.FossilsExperimentsItems;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEggVariants;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
@@ -175,6 +176,8 @@ public class FossilsLegacyItems {
 		DEBUG_ITEMS.register("debug_full_grown", () -> DebugItem.debugFullGrown());
 		DEBUG_ITEMS.register("debug_baby", () -> DebugItem.debugBaby());
 		DEBUG_ITEMS.register("debug_tame", () -> DebugItem.debugTame());
+
+		FossilsExperimentsItems.init();
 
 		SimpleUtils.registerAllItems(ITEMS, FossilsLegacyBlocks.BLOCKS, FossilsLegacyBlocks.AXOLOTLSPAWN);
 		ITEMS.register("axolotlspawn", () -> new PlaceOnWaterBlockItem(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), new Item.Properties()));

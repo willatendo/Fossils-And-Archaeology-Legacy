@@ -1,0 +1,13 @@
+{
+  "features": {
+    "enabled": [
+      "fossilslegacy:fossil_experiments"
+    ]
+  },
+  "pack": {
+    "description": {
+      "translate": "dataPack.fossilslegacy.experiments.description"
+    },
+    "pack_format": 26
+  }
+}

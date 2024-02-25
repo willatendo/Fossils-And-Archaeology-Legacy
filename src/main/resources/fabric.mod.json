@@ -4,6 +4,7 @@
 	"version": "1.0.0",
 	"name": "Fossils and Archaeology Legacy",
 	"description": "An Aether Legacy-style mod for the Fossils and Archaeology mod, based on the 1.3.2 and 1.2.5 versions of the mod. The Fossils and Archaeology Revival team has nothing to do with this project and it takes nothing from their wonderful mod. When it comes out for 1.18.2, make sure to play it! This is purely for people who want an older version brought to 1.20.1 and fixed up.",
+	"accessWidener": "fossilslegacy.accesswidener",
 	"authors": [
 		"Willatendo"
 	],
