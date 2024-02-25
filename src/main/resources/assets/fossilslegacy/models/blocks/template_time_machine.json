@@ -1,0 +1,24 @@
+{
+	"parent": "block/cube_all",
+	"textures": {
+		"bottom": "fossilslegacy:block/time_machine_bottom",
+		"side": "fossilslegacy:block/time_machine_side",
+		"front": "fossilslegacy:block/time_machine_front",
+		"top": "fossilslegacy:block/time_machine_top",
+		"particle": "#top"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 12, 16],
+			"faces": {
+				"north": {"uv": [0, 4, 16, 16], "texture": "#front"},
+				"east": {"uv": [0, 4, 16, 16], "texture": "#side"},
+				"south": {"uv": [0, 4, 16, 16], "texture": "#front"},
+				"west": {"uv": [0, 4, 16, 16], "texture": "#side"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#top"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#bottom"}
+			}
+		}
+	]
+}
