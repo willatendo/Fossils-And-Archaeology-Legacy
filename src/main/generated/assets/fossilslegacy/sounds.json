@@ -56,6 +56,25 @@
     ],
     "subtitle": "sound.fossilslegacy.dilophosaurus.hurt"
   },
+  "entity.futabasaurus.ambient": {
+    "sounds": [
+      "fossilslegacy:pteranodon_ambient_1",
+      "fossilslegacy:pteranodon_ambient_2"
+    ],
+    "subtitle": "sound.fossilslegacy.pteranodon.ambient"
+  },
+  "entity.futabasaurus.death": {
+    "sounds": [
+      "fossilslegacy:futabasaurus_death"
+    ],
+    "subtitle": "sound.fossilslegacy.futabasaurus.death"
+  },
+  "entity.futabasaurus.hurt": {
+    "sounds": [
+      "fossilslegacy:futabasaurus_hurt"
+    ],
+    "subtitle": "sound.fossilslegacy.futabasaurus.hurt"
+  },
   "entity.mammoth.ambient": {
     "sounds": [
       "fossilslegacy:mammoth_ambient"
@@ -76,28 +95,9 @@
   },
   "entity.plesiosaurus.ambient": {
     "sounds": [
-      "fossilslegacy:plesiosaurus_ambient"
+      "fossilslegacy:futabasaurus_ambient"
     ],
-    "subtitle": "sound.fossilslegacy.plesiosaurus.ambient"
-  },
-  "entity.plesiosaurus.death": {
-    "sounds": [
-      "fossilslegacy:plesiosaurus_death"
-    ],
-    "subtitle": "sound.fossilslegacy.plesiosaurus.death"
-  },
-  "entity.plesiosaurus.hurt": {
-    "sounds": [
-      "fossilslegacy:plesiosaurus_hurt"
-    ],
-    "subtitle": "sound.fossilslegacy.plesiosaurus.hurt"
-  },
-  "entity.pteranodon.ambient": {
-    "sounds": [
-      "fossilslegacy:pteranodon_ambient_1",
-      "fossilslegacy:pteranodon_ambient_2"
-    ],
-    "subtitle": "sound.fossilslegacy.pteranodon.ambient"
+    "subtitle": "sound.fossilslegacy.futabasaurus.ambient"
   },
   "entity.pteranodon.death": {
     "sounds": [

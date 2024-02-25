@@ -1,4 +1,4 @@
-// 1.20.4	2024-02-25T10:26:56.8042935	Fossils and Archaeology Legacy/fossilslegacy: Block States
+// 1.20.4	2024-02-25T12:04:13.9045217	Fossils and Archaeology Legacy/fossilslegacy: Block States
 c0ce3d8427f3386158621c87e10cdb64aed3c226 assets\fossilslegacy\models\block\cultivator_active.json
 53947a004de390af5396743144020fd7c5c2e55e assets\fossilslegacy\models\block\drum_follow.json
 25f9ed2a080c76e18f41133a4d928b231609850b assets\fossilslegacy\models\block\fern_lower_1.json
@@ -26,8 +26,8 @@ b146d7e8f66c2e3e9a9d194b9b36d71c37c36b5a assets\fossilslegacy\models\block\fern_
 a708923879e784d537efb80d40860b1ab428d750 assets\fossilslegacy\models\block\fern_lower_0.json
 d976bb908a167106a7106ed646c80667d5f8e768 assets\fossilslegacy\models\block\feeder_full.json
 7a3328faa352a6a3dc4679e2e71a12463b6fdf9e assets\fossilslegacy\blockstates\deepslate_fossil_ore.json
-ed31951b501aa2ee0ecf441c1d9c83207ffc29b9 assets\fossilslegacy\blockstates\skull_lanturn_block.json
 b35e4eb39636d1687092533caa84ab464fac932a assets\fossilslegacy\blockstates\archaeology_workbench.json
+ed31951b501aa2ee0ecf441c1d9c83207ffc29b9 assets\fossilslegacy\blockstates\skull_lanturn_block.json
 e332eb0ca1a5581fc2f583ed98594f03c370f94b assets\fossilslegacy\blockstates\drum.json
 0ee493a2611a51edc66682b9f70729b22e974d73 assets\fossilslegacy\models\block\fern_lower_3.json
 bec29ea7b9ebe8be0a4ebc956a1ee9ffc7eab6ed assets\fossilslegacy\blockstates\skull_block.json

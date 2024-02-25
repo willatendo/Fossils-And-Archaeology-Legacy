@@ -48,7 +48,7 @@ import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
 import willatendo.fossilslegacy.server.entity.Mammoth;
 import willatendo.fossilslegacy.server.entity.Mosasaurus;
 import willatendo.fossilslegacy.server.entity.Nautilus;
-import willatendo.fossilslegacy.server.entity.Plesiosaurus;
+import willatendo.fossilslegacy.server.entity.Futabasaurus;
 import willatendo.fossilslegacy.server.entity.Pteranodon;
 import willatendo.fossilslegacy.server.entity.Smilodon;
 import willatendo.fossilslegacy.server.entity.Stegosaurus;
@@ -97,7 +97,7 @@ public class ModEvents {
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.MAMMOTH.get(), Mammoth.mammothAttributes());
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.MOSASAURUS.get(), Mosasaurus.mosasaurusAttributes());
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.NAUTILUS.get(), Nautilus.nautilusAttributes());
-		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PLESIOSAURUS.get(), Plesiosaurus.plesiosaurusAttributes());
+		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.FUTABASAURUS.get(), Futabasaurus.plesiosaurusAttributes());
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_CAT.get(), Cat.createAttributes().build());
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_COW.get(), Cow.createAttributes().build());
 		FabricDefaultAttributeRegistry.register(FossilsLegacyEntities.PREGNANT_DOLPHIN.get(), Dolphin.createAttributes().build());

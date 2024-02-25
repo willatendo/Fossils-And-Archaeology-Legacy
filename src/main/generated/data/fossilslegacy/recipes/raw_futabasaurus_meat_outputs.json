@@ -1,11 +1,11 @@
 {
   "type": "fossilslegacy:analyzation",
   "ingredient": {
-    "item": "fossilslegacy:raw_plesiosaurus_meat"
+    "item": "fossilslegacy:raw_futabasaurus_meat"
   },
   "results": [
     {
-      "result": "fossilslegacy:plesiosaurus_dna",
+      "result": "fossilslegacy:futabasaurus_dna",
       "weight": 100
     }
   ],

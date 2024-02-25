@@ -39,7 +39,7 @@ public class FossilsLegacyEntityLootTableProvider extends SimpleEntityLootSubPro
 		this.add(FossilsLegacyEntities.MOSASAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_MOSASAURUS_MEAT.get()));
 		this.add(FossilsLegacyEntities.NAUTILUS.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootOneItemOfManyRandom.lootTableItem(5, new ItemAndChance(FossilsLegacyItems.NAUTILUS_SHELL.get(), 0, 3), new ItemAndChance(FossilsLegacyItems.MAGIC_CONCH.get(), 3, 5)))));
 		this.add(FossilsLegacyEntities.PTERANODON.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_PTERANODON_MEAT.get()));
-		this.add(FossilsLegacyEntities.PLESIOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_PLESIOSAURUS_MEAT.get()));
+		this.add(FossilsLegacyEntities.FUTABASAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_FUTABASAURUS_MEAT.get()));
 		this.add(FossilsLegacyEntities.SMILODON.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_SMILODON_MEAT.get()));
 		this.add(FossilsLegacyEntities.STEGOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_STEGOSAURUS_MEAT.get()));
 		this.add(FossilsLegacyEntities.TRICERATOPS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_TRICERATOPS_MEAT.get()));
@@ -53,7 +53,7 @@ public class FossilsLegacyEntityLootTableProvider extends SimpleEntityLootSubPro
 		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.BRACHIOSAURUS_EGG, this.createEggTable(FossilsLegacyItems.BRACHIOSAURUS_EGG.get()));
 		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.DILOPHOSAURUS_EGG, this.createEggTable(FossilsLegacyItems.DILOPHOSAURUS_EGG.get()));
 		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.MOSASAURUS_EGG, this.createEggTable(FossilsLegacyItems.MOSASAURUS_EGG.get()));
-		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.PLESIOSAURUS_EGG, this.createEggTable(FossilsLegacyItems.PLESIOSAURUS_EGG.get()));
+		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.FUTABASAURUS_EGG, this.createEggTable(FossilsLegacyItems.FUTABASAURUS_EGG.get()));
 		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.PTERANODON_EGG, this.createEggTable(FossilsLegacyItems.PTERANODON_EGG.get()));
 		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.STEGOSAURUS_EGG, this.createEggTable(FossilsLegacyItems.STEGOSAURUS_EGG.get()));
 		this.add(FossilsLegacyEntities.EGG.get(), FossilsLegacyLootTables.TRICERATOPS_EGG, this.createEggTable(FossilsLegacyItems.TRICERATOPS_EGG.get()));

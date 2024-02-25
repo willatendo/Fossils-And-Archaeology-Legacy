@@ -19,7 +19,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import willatendo.fossilslegacy.server.entity.Plesiosaurus;
+import willatendo.fossilslegacy.server.entity.Futabasaurus;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.creativemodetab.CreativeModeTabFill;
@@ -54,7 +54,7 @@ public class MagicConchItem extends Item implements CreativeModeTabFill {
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
 		player.getCooldowns().addCooldown(this, 10);
 
-		for (Plesiosaurus plesiosaurus : level.getEntitiesOfClass(Plesiosaurus.class, new AABB(player.blockPosition()).inflate(30.0D))) {
+		for (Futabasaurus plesiosaurus : level.getEntitiesOfClass(Futabasaurus.class, new AABB(player.blockPosition()).inflate(30.0D))) {
 			if (plesiosaurus.isOwnedBy(player)) {
 				if (level.isClientSide()) {
 					level.addParticle(ParticleTypes.NOTE, plesiosaurus.getBlockX(), plesiosaurus.getBlockY() + 1.2D, plesiosaurus.getBlockZ(), 0.0D, 0.0D, 0.0D);

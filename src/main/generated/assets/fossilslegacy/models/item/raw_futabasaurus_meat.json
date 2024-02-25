@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "fossilslegacy:item/plesiosaurus_dna"
+    "layer0": "fossilslegacy:item/raw_futabasaurus_meat"
   }
 }

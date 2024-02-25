@@ -18,6 +18,6 @@ public class FossilsLegacyEntityTypeTagProvider extends SimpleEntityTypeTagsProv
 	@Override
 	protected void addTags(Provider provider) {
 		this.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(FossilsLegacyEntities.PTERANODON.get());
-		this.tag(EntityTypeTags.CAN_BREATHE_UNDER_WATER).add(FossilsLegacyEntities.MOSASAURUS.get(), FossilsLegacyEntities.PLESIOSAURUS.get());
+		this.tag(EntityTypeTags.CAN_BREATHE_UNDER_WATER).add(FossilsLegacyEntities.MOSASAURUS.get(), FossilsLegacyEntities.FUTABASAURUS.get());
 	}
 }

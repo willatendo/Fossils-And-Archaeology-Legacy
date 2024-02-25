@@ -46,6 +46,18 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("advancements.fossilslegacy.legacy.skull_block.title", "Spooky Skeletons!");
 		this.add("advancements.fossilslegacy.legacy.skull_block.desc", "Or...Maybe just their skulls?");
 
+		// Cloth-Config
+		this.add("text.autoconfig.fossilslegacy.title", "Fossils and Archaeology Legacy");
+
+		this.add("text.autoconfig.fossilslegacy.category.common", "Common Options");
+		this.add("text.autoconfig.fossilslegacy.option.common.animalsStarve", "Animals Starve");
+		this.add("text.autoconfig.fossilslegacy.option.common.animalsBreakBlocks", "Animals Break Blocks");
+		this.add("text.autoconfig.fossilslegacy.option.common.animalsGrow", "Animals Grow");
+		this.add("text.autoconfig.fossilslegacy.option.common.anuSpawns", "Anu Spawns");
+
+		this.add("text.autoconfig.fossilslegacy.category.server", "Server Options");
+		this.add("text.autoconfig.fossilslegacy.option.server.enableExperiments", "Enable Experiments");
+
 		// Blocks
 		this.add(FossilsLegacyBlocks.FOSSIL_ORE.get());
 		this.add(FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get());
@@ -177,7 +189,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.TYRANNOSAURUS_DNA.get(), "Tyrannosaurus DNA");
 		this.add(FossilsLegacyItems.PTERANODON_DNA.get(), "Pteranodon DNA");
 		this.add(FossilsLegacyItems.NAUTILUS_DNA.get(), "Nautilus DNA");
-		this.add(FossilsLegacyItems.PLESIOSAURUS_DNA.get(), "Plesiosaurus DNA");
+		this.add(FossilsLegacyItems.FUTABASAURUS_DNA.get(), "Futabasaurus DNA");
 		this.add(FossilsLegacyItems.MOSASAURUS_DNA.get(), "Mosasaurus DNA");
 		this.add(FossilsLegacyItems.STEGOSAURUS_DNA.get(), "Stegosaurus DNA");
 		this.add(FossilsLegacyItems.DILOPHOSAURUS_DNA.get(), "Dilophosaurus DNA");
@@ -187,7 +199,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.TYRANNOSAURUS_EGG.get());
 		this.add(FossilsLegacyItems.PTERANODON_EGG.get());
 		this.add(FossilsLegacyItems.NAUTILUS_EGGS.get());
-		this.add(FossilsLegacyItems.PLESIOSAURUS_EGG.get());
+		this.add(FossilsLegacyItems.FUTABASAURUS_EGG.get());
 		this.add(FossilsLegacyItems.MOSASAURUS_EGG.get());
 		this.add(FossilsLegacyItems.STEGOSAURUS_EGG.get());
 		this.add(FossilsLegacyItems.DILOPHOSAURUS_EGG.get());
@@ -197,7 +209,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.RAW_TYRANNOSAURUS_MEAT.get());
 		this.add(FossilsLegacyItems.RAW_PTERANODON_MEAT.get());
 		this.add(FossilsLegacyItems.NAUTILUS.get());
-		this.add(FossilsLegacyItems.RAW_PLESIOSAURUS_MEAT.get());
+		this.add(FossilsLegacyItems.RAW_FUTABASAURUS_MEAT.get());
 		this.add(FossilsLegacyItems.RAW_MOSASAURUS_MEAT.get());
 		this.add(FossilsLegacyItems.RAW_STEGOSAURUS_MEAT.get());
 		this.add(FossilsLegacyItems.RAW_DILOPHOSAURUS_MEAT.get());
@@ -209,7 +221,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.COOKED_TYRANNOSAURUS_MEAT.get());
 		this.add(FossilsLegacyItems.COOKED_PTERANODON_MEAT.get());
 		this.add(FossilsLegacyItems.SIO_CHIU_LE.get(), "Sio-Chiu-Le");
-		this.add(FossilsLegacyItems.COOKED_PLESIOSAURUS_MEAT.get());
+		this.add(FossilsLegacyItems.COOKED_FUTABASAURUS_MEAT.get());
 		this.add(FossilsLegacyItems.COOKED_MOSASAURUS_MEAT.get());
 		this.add(FossilsLegacyItems.COOKED_STEGOSAURUS_MEAT.get());
 		this.add(FossilsLegacyItems.COOKED_DILOPHOSAURUS_MEAT.get());
@@ -307,7 +319,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.MOSASAURUS_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.NAUTILUS_SPAWN_EGG.get());
-		this.add(FossilsLegacyItems.PLESIOSAURUS_SPAWN_EGG.get());
+		this.add(FossilsLegacyItems.FUTABASAURUS_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.PTERANODON_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.SMILODON_SPAWN_EGG.get());
 		this.add(FossilsLegacyItems.STEGOSAURUS_SPAWN_EGG.get());
@@ -322,6 +334,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.additions_slot_description", "Add scarab gem");
 
 		this.add(FossilsExperimentsItems.OVERWORLD_COIN.get());
+		this.add(FossilsExperimentsItems.NETHER_COIN.get());
+		this.add(FossilsExperimentsItems.PREHISTORIC_COIN.get());
 
 		for (SimpleHolder<? extends Item> items : FossilsLegacyItems.DEBUG_ITEMS.getEntriesView()) {
 			this.add(items.get(), "Debug Item");
@@ -409,9 +423,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("sound.fossilslegacy.mammoth.ambient", "Mammoth Trumpets");
 		this.add("sound.fossilslegacy.mammoth.hurt", "Mammoth Hurts");
 		this.add("sound.fossilslegacy.mammoth.death", "Mammoth Dies");
-		this.add("sound.fossilslegacy.plesiosaurus.ambient", "Plesiosaurus Chirps");
-		this.add("sound.fossilslegacy.plesiosaurus.hurt", "Plesiosaurus Hurts");
-		this.add("sound.fossilslegacy.plesiosaurus.death", "Plesiosaurus Dies");
+		this.add("sound.fossilslegacy.futabasaurus.ambient", "Plesiosaurus Chirps");
+		this.add("sound.fossilslegacy.futabasaurus.hurt", "Plesiosaurus Hurts");
+		this.add("sound.fossilslegacy.futabasaurus.death", "Plesiosaurus Dies");
 		this.add("sound.fossilslegacy.pteranodon.ambient", "Pteranodon Calls");
 		this.add("sound.fossilslegacy.pteranodon.hurt", "Pteranodon Hurts");
 		this.add("sound.fossilslegacy.pteranodon.death", "Pteranodon Dies");

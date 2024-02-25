@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "fossilslegacy:raw_plesiosaurus_meat"
+              "fossilslegacy:futabasaurus_dna"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fossilslegacy:cooked_plesiosaurus_meat_from_smoking"
+        "recipe": "fossilslegacy:futabasaurus_egg"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "fossilslegacy:cooked_plesiosaurus_meat_from_smoking"
+      "fossilslegacy:futabasaurus_egg"
     ]
   }
 }

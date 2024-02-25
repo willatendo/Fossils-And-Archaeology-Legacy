@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "fossilslegacy:raw_plesiosaurus_meat"
+              "fossilslegacy:raw_futabasaurus_meat"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fossilslegacy:cooked_plesiosaurus_meat_from_smelting"
+        "recipe": "fossilslegacy:cooked_futabasaurus_meat_from_campfire_cooking"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "fossilslegacy:cooked_plesiosaurus_meat_from_smelting"
+      "fossilslegacy:cooked_futabasaurus_meat_from_campfire_cooking"
     ]
   }
 }

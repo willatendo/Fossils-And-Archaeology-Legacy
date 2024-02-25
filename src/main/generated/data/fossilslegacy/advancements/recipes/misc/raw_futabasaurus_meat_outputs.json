@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
+    "has_raw_futabasaurus_meat": {
       "conditions": {
         "items": [
           {
             "items": [
-              "fossilslegacy:raw_plesiosaurus_meat"
+              "fossilslegacy:raw_futabasaurus_meat"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fossilslegacy:cooked_plesiosaurus_meat_from_campfire_cooking"
+        "recipe": "fossilslegacy:raw_futabasaurus_meat_outputs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -23,12 +23,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_item"
+      "has_raw_futabasaurus_meat"
     ]
   ],
   "rewards": {
     "recipes": [
-      "fossilslegacy:cooked_plesiosaurus_meat_from_campfire_cooking"
+      "fossilslegacy:raw_futabasaurus_meat_outputs"
     ]
   }
 }

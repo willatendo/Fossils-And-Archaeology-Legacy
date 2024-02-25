@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FossilsLegacyModels;
 import willatendo.fossilslegacy.client.model.fossils.AbstractSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.BrachiosaurusSkeletonModel;
-import willatendo.fossilslegacy.client.model.fossils.PlesiosaurusSkeletonModel;
+import willatendo.fossilslegacy.client.model.fossils.FutabasaurusSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.PteranodonSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.TriceratopsSkeletonModel;
 import willatendo.fossilslegacy.server.entity.Fossil;
@@ -26,7 +26,7 @@ public class FossilRenderer extends MobRenderer<Fossil, AbstractSkeletonModel> {
 	public FossilRenderer(Context context) {
 		super(context, new BrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.BRACHIOSAURUS_SKELETON)), 0.5F);
 		MODELS.put(FossilsLegacyFossilVariants.BRACHIOSAURUS.get(), new BrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.BRACHIOSAURUS_SKELETON)));
-		MODELS.put(FossilsLegacyFossilVariants.PLESIOSAURUS.get(), new PlesiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.PLESIOSAURUS_SKELETON)));
+		MODELS.put(FossilsLegacyFossilVariants.FUTABASAURUS.get(), new FutabasaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.PLESIOSAURUS_SKELETON)));
 		MODELS.put(FossilsLegacyFossilVariants.PTERANODON.get(), new PteranodonSkeletonModel(context.bakeLayer(FossilsLegacyModels.PTERANODON_SKELETON)));
 		MODELS.put(FossilsLegacyFossilVariants.TRICERATOPS.get(), new TriceratopsSkeletonModel(context.bakeLayer(FossilsLegacyModels.TRICERATOPS_SKELETON)));
 	}

@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server;
 
+import static willatendo.fossilslegacy.server.config.FossilsLegacyBaseConfigSettings.ENABLE_EXPERIMENTS;
 import static willatendo.fossilslegacy.server.config.FossilsLegacyBaseConfigSettings.SHOULD_ANU_SPAWN;
 import static willatendo.fossilslegacy.server.config.FossilsLegacyBaseConfigSettings.WILL_ANIMALS_BREAK_BLOCKS;
 import static willatendo.fossilslegacy.server.config.FossilsLegacyBaseConfigSettings.WILL_ANIMALS_GROW;
@@ -28,6 +29,10 @@ public class ConfigHelper {
 		return isForgeConfigAPILoaded() ? FossilsLegacyForgeConfig.COMMON_CONFIG.shouldAnuSpawn() : isClothConfigLoaded() ? FossilsLegacyClothConfigSettings.willAnimalsStarve() : SHOULD_ANU_SPAWN;
 	}
 
+	public static boolean shouldEnableExperiments() {
+		return isForgeConfigAPILoaded() ? FossilsLegacyForgeConfig.SERVER_CONFIG.enableExperiments() : isClothConfigLoaded() ? FossilsLegacyClothConfigSettings.enableExperiments() : ENABLE_EXPERIMENTS;
+	}
+
 	public static void loadConfig() {
 		if (ConfigHelper.isForgeConfigAPILoaded()) {
 			FossilsLegacyUtils.LOGGER.info("ForgeAPIConfigPort Detected: Using");
@@ -40,11 +45,11 @@ public class ConfigHelper {
 		}
 	}
 
-	private static boolean isForgeConfigAPILoaded() {
+	public static boolean isForgeConfigAPILoaded() {
 		return SimpleUtils.isModLoaded("forgeconfigapiport");
 	}
 
-	private static boolean isClothConfigLoaded() {
+	public static boolean isClothConfigLoaded() {
 		return SimpleUtils.isModLoaded("cloth-config");
 	}
 }

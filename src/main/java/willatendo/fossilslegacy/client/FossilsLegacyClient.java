@@ -31,13 +31,13 @@ import willatendo.fossilslegacy.client.model.FailuresaurusModel;
 import willatendo.fossilslegacy.client.model.MammothModel;
 import willatendo.fossilslegacy.client.model.MosasaurusModel;
 import willatendo.fossilslegacy.client.model.NautilusModel;
-import willatendo.fossilslegacy.client.model.PlesiosaurusModel;
+import willatendo.fossilslegacy.client.model.FutabasaurusModel;
 import willatendo.fossilslegacy.client.model.SmilodonModel;
 import willatendo.fossilslegacy.client.model.StegosaurusModel;
 import willatendo.fossilslegacy.client.model.TriceratopsModel;
 import willatendo.fossilslegacy.client.model.VelociraptorModel;
 import willatendo.fossilslegacy.client.model.fossils.BrachiosaurusSkeletonModel;
-import willatendo.fossilslegacy.client.model.fossils.PlesiosaurusSkeletonModel;
+import willatendo.fossilslegacy.client.model.fossils.FutabasaurusSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.PteranodonSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.TriceratopsSkeletonModel;
 import willatendo.fossilslegacy.client.model.pteranodon.FlyingPteranodonModel;
@@ -54,7 +54,7 @@ import willatendo.fossilslegacy.client.render.FossilRenderer;
 import willatendo.fossilslegacy.client.render.MammothRenderer;
 import willatendo.fossilslegacy.client.render.MosasaurusRenderer;
 import willatendo.fossilslegacy.client.render.NautilusRenderer;
-import willatendo.fossilslegacy.client.render.PlesiosaurusRenderer;
+import willatendo.fossilslegacy.client.render.FutabasaurusRenderer;
 import willatendo.fossilslegacy.client.render.PteranodonRenderer;
 import willatendo.fossilslegacy.client.render.SmilodonRenderer;
 import willatendo.fossilslegacy.client.render.StegosaurusRenderer;
@@ -92,7 +92,7 @@ public class FossilsLegacyClient implements ClientModInitializer {
 		EntityRendererRegistry.register(FossilsLegacyEntities.MAMMOTH.get(), MammothRenderer::new);
 		EntityRendererRegistry.register(FossilsLegacyEntities.MOSASAURUS.get(), MosasaurusRenderer::new);
 		EntityRendererRegistry.register(FossilsLegacyEntities.NAUTILUS.get(), NautilusRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.PLESIOSAURUS.get(), PlesiosaurusRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntities.FUTABASAURUS.get(), FutabasaurusRenderer::new);
 		EntityRendererRegistry.register(FossilsLegacyEntities.PTERANODON.get(), PteranodonRenderer::new);
 		EntityRendererRegistry.register(FossilsLegacyEntities.SMILODON.get(), SmilodonRenderer::new);
 		EntityRendererRegistry.register(FossilsLegacyEntities.STEGOSAURUS.get(), StegosaurusRenderer::new);
@@ -135,7 +135,7 @@ public class FossilsLegacyClient implements ClientModInitializer {
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.MAMMOTH, MammothModel::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.MOSASAURUS, MosasaurusModel::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.NAUTILUS, NautilusModel::createBodyLayer);
-		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.PLESIOSAURUS, PlesiosaurusModel::createBodyLayer);
+		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.FUTABASAURUS, FutabasaurusModel::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.GROUND_PTERANODON, GroundPteranodonModel::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.FLYING_PTERANODON, FlyingPteranodonModel::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.LANDING_PTERANODON, LandingPteranodonModel::createBodyLayer);
@@ -148,7 +148,7 @@ public class FossilsLegacyClient implements ClientModInitializer {
 
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.TRICERATOPS_SKELETON, TriceratopsSkeletonModel::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.BRACHIOSAURUS_SKELETON, BrachiosaurusSkeletonModel::createBodyLayer);
-		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.PLESIOSAURUS_SKELETON, PlesiosaurusSkeletonModel::createBodyLayer);
+		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.PLESIOSAURUS_SKELETON, FutabasaurusSkeletonModel::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.PTERANODON_SKELETON, PteranodonSkeletonModel::createBodyLayer);
 
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.FAILURESAURUS, FailuresaurusModel::createBodyLayer);

@@ -10,8 +10,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.metadata.PackMetadataGenerator;
 import net.minecraft.data.registries.VanillaRegistries;
-import net.minecraft.world.flag.FeatureFlagSet;
-import willatendo.fossilsexperiments.flags.FossilsLegacyFeatureFlags;
 import willatendo.fossilslegacy.data.loot.FossilsLegacyBlockLootTableProvider;
 import willatendo.fossilslegacy.data.loot.FossilsLegacyChestLootTableProvider;
 import willatendo.fossilslegacy.data.loot.FossilsLegacyEntityLootTableProvider;
@@ -23,7 +21,6 @@ import willatendo.fossilslegacy.server.structure.FossilsLegacyStructures;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.data.DataHandler;
 import willatendo.simplelibrary.data.DataHandler.SimplePack;
-import willatendo.simplelibrary.server.flag.FeatureFlagsMetadataSection;
 
 public class FossilsLegacyData implements DataGeneratorEntrypoint {
 	private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder().add(Registries.CONFIGURED_FEATURE, (RegistryBootstrap) FossilsLegacyConfiguredFeatures::bootstrap).add(Registries.PLACED_FEATURE, (RegistryBootstrap) FossilsLegacyPlacedFeatures::bootstrap).add(Registries.DAMAGE_TYPE, (RegistryBootstrap) FossilsLegacyDamageTypes::bootstrap).add(Registries.STRUCTURE, (RegistryBootstrap) FossilsLegacyStructures::bootstrap).add(Registries.STRUCTURE_SET, (RegistryBootstrap) FossilsLegacyStructureSets::bootstrap);
@@ -60,8 +57,5 @@ public class FossilsLegacyData implements DataGeneratorEntrypoint {
 
 		SimplePack legacyPackGenerator = dataHandler.createBuiltinResourcePack(FossilsLegacyUtils.resource("fa_legacy_textures"));
 		legacyPackGenerator.addProvider(packOutput -> PackMetadataGenerator.forFeaturePack(packOutput, FossilsLegacyUtils.translation("dataPack", "fa_legacy_textures.description")));
-
-		SimplePack fossilsExperimentsGenerator = dataHandler.createBuiltinDataPack(FossilsLegacyUtils.resource("fossil_experiments"));
-		fossilsExperimentsGenerator.addProvider(packOutput -> PackMetadataGenerator.forFeaturePack(packOutput, FossilsLegacyUtils.translation("dataPack", "experiments.description")).add(FeatureFlagsMetadataSection.getType(FossilsLegacyFeatureFlags.CODEC), new FeatureFlagsMetadataSection(FeatureFlagSet.of(FossilsLegacyFeatureFlags.FOSSIL_EXPERIMENTS))));
 	}
 }

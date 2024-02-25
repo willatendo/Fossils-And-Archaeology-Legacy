@@ -5,4 +5,5 @@ public class FossilsLegacyBaseConfigSettings {
 	public static final boolean WILL_ANIMALS_BREAK_BLOCKS = true;
 	public static final boolean WILL_ANIMALS_GROW = true;
 	public static final boolean SHOULD_ANU_SPAWN = true;
+	public static final boolean ENABLE_EXPERIMENTS = false;
 }

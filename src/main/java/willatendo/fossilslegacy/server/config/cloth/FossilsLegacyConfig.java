@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.config.cloth;
 
+import static willatendo.fossilslegacy.server.config.FossilsLegacyBaseConfigSettings.ENABLE_EXPERIMENTS;
 import static willatendo.fossilslegacy.server.config.FossilsLegacyBaseConfigSettings.SHOULD_ANU_SPAWN;
 import static willatendo.fossilslegacy.server.config.FossilsLegacyBaseConfigSettings.WILL_ANIMALS_BREAK_BLOCKS;
 import static willatendo.fossilslegacy.server.config.FossilsLegacyBaseConfigSettings.WILL_ANIMALS_GROW;
@@ -13,10 +14,17 @@ import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 @Config(name = FossilsLegacyUtils.ID)
-@Config.Gui.Background("minecraft:textures/block/stone.png")
-public class FossilsLegacyCommonConfig extends PartitioningSerializer.GlobalData {
+@Config.Gui.Background("minecraft:textures/block/dirt.png")
+@Config.Gui.CategoryBackground(category = "common", background = "minecraft:textures/block/stone.png")
+@Config.Gui.CategoryBackground(category = "server", background = "minecraft:textures/block/deepslate.png")
+public class FossilsLegacyConfig extends PartitioningSerializer.GlobalData {
 	@ConfigEntry.Category("common")
+	@ConfigEntry.Gui.TransitiveObject
 	public Common common = new Common();
+
+	@ConfigEntry.Category("server")
+	@ConfigEntry.Gui.TransitiveObject
+	public Server server = new Server();
 
 	@Config(name = "common")
 	public static final class Common implements ConfigData {
@@ -46,6 +54,16 @@ public class FossilsLegacyCommonConfig extends PartitioningSerializer.GlobalData
 
 		public boolean shouldAnuSpawn() {
 			return this.anuSpawns;
+		}
+	}
+
+	@Config(name = "server")
+	public static final class Server implements ConfigData {
+		@Comment("Enables the experimental items/blocks that were never implemented into the original mod")
+		private boolean enableExperiments = ENABLE_EXPERIMENTS;
+
+		public boolean enableExperiments() {
+			return this.enableExperiments;
 		}
 	}
 }

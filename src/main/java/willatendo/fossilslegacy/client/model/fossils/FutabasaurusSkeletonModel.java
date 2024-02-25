@@ -7,8 +7,8 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 
-public class PlesiosaurusSkeletonModel extends AbstractSkeletonModel {
-	public PlesiosaurusSkeletonModel(ModelPart root) {
+public class FutabasaurusSkeletonModel extends AbstractSkeletonModel {
+	public FutabasaurusSkeletonModel(ModelPart root) {
 		super(root);
 	}
 

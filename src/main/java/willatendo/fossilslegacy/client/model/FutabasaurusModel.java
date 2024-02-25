@@ -11,16 +11,16 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
-import willatendo.fossilslegacy.server.entity.Plesiosaurus;
+import willatendo.fossilslegacy.server.entity.Futabasaurus;
 
-public class PlesiosaurusModel extends EntityModel<Plesiosaurus> {
+public class FutabasaurusModel extends EntityModel<Futabasaurus> {
 	private final ModelPart root;
 	private final ModelPart frontRightFlipper;
 	private final ModelPart frontLeftFlipper;
 	private final ModelPart backRightFlipper;
 	private final ModelPart backLeftFlipper;
 
-	public PlesiosaurusModel(ModelPart root) {
+	public FutabasaurusModel(ModelPart root) {
 		this.root = root;
 		this.frontRightFlipper = root.getChild("front_right_flipper");
 		this.frontLeftFlipper = root.getChild("front_left_flipper");
@@ -50,7 +50,7 @@ public class PlesiosaurusModel extends EntityModel<Plesiosaurus> {
 	}
 
 	@Override
-	public void setupAnim(Plesiosaurus plesiosaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+	public void setupAnim(Futabasaurus futabasaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.frontRightFlipper.yRot = (float) (Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.785398163397448 * limbSwingAmount + -2.35619449019234);
 		this.backRightFlipper.yRot = (float) (Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.785398163397448 * limbSwingAmount + -2.0943951023932);
 		this.frontLeftFlipper.yRot = (float) (Mth.cos(limbSwing / (1.919107651F * 0.5F)) * -0.785398163397448 * limbSwingAmount + -0.785398163397448);

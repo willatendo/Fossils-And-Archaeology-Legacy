@@ -19,6 +19,6 @@ public class FossilsLegacyFossilVariantTagProvider extends SimpleTagsProvider<Fo
 
 	@Override
 	protected void addTags(Provider provider) {
-		this.tag(FossilsLegacyFossilVariantTags.PLACEABLE_FROM_FOSSIL).add(FossilsLegacyFossilVariants.BRACHIOSAURUS.getKey(), FossilsLegacyFossilVariants.PLESIOSAURUS.getKey(), FossilsLegacyFossilVariants.PTERANODON.getKey(), FossilsLegacyFossilVariants.TRICERATOPS.getKey());
+		this.tag(FossilsLegacyFossilVariantTags.PLACEABLE_FROM_FOSSIL).add(FossilsLegacyFossilVariants.BRACHIOSAURUS.getKey(), FossilsLegacyFossilVariants.FUTABASAURUS.getKey(), FossilsLegacyFossilVariants.PTERANODON.getKey(), FossilsLegacyFossilVariants.TRICERATOPS.getKey());
 	}
 }

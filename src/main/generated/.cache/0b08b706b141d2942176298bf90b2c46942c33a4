@@ -1,11 +1,11 @@
-// 1.20.4	2024-02-25T10:26:56.79229	Fossils and Archaeology Legacy/EntityType Loot Tables
-11146de30795b1834b628308dc2ffe789147ee2e data\fossilslegacy\loot_tables\entities\egg\plesiosaurus.json
+// 1.20.4	2024-02-25T12:04:13.8905185	Fossils and Archaeology Legacy/EntityType Loot Tables
 c7cae11272dc0484f6a2f3519cd1add9790206ea data\fossilslegacy\loot_tables\entities\pregnant_llama.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data\fossilslegacy\loot_tables\entities\pregnant_fox.json
 a99f63c34fa8135565d7d4e9c189d89215b1e5f3 data\fossilslegacy\loot_tables\entities\pregnant_sheep\brown.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data\fossilslegacy\loot_tables\entities\pregnant_smilodon.json
 28d918423677a73166abd83d6376f31c0a76e799 data\fossilslegacy\loot_tables\entities\pregnant_sheep\yellow.json
 1a564949c96ad3f3707f73ac6e85ac0911696b2e data\fossilslegacy\loot_tables\entities\dilophosaurus.json
+4238321565533d01e7bfcf08e1c18c44ad22afc9 data\fossilslegacy\loot_tables\entities\futabasaurus.json
 6cf7894c5048b8e94c562315b68f19f8161b9dd9 data\fossilslegacy\loot_tables\entities\egg\mosasaurus.json
 8a8f1c222972c6e0bb7c59fbdd85ccf83317772a data\fossilslegacy\loot_tables\entities\pregnant_sheep\purple.json
 81e53ce691df11dea35d9093b8472aa554e83d88 data\fossilslegacy\loot_tables\entities\egg\tyrannosaurus.json
@@ -31,7 +31,7 @@ dcfdb2bc519661abfdfb1a311d23ddebf6f31ea0 data\fossilslegacy\loot_tables\entities
 1f93f3aa1d8f13a01284f226fa5c86f8e6c2507f data\fossilslegacy\loot_tables\entities\pregnant_sheep.json
 751f1157a4940198c6aadff9eac1c9ddedccd844 data\fossilslegacy\loot_tables\entities\pregnant_panada.json
 71ed9270536b557d1463c5b4aeb4483fdd0122d3 data\fossilslegacy\loot_tables\entities\brachiosaurus.json
-11b3ca5fff7d7184d8f7059221d27ea23587d31d data\fossilslegacy\loot_tables\entities\plesiosaurus.json
+1c63053bc6f3d920866993bb507025154a7d67f4 data\fossilslegacy\loot_tables\entities\egg\futabasaurus.json
 5dbe8dd0082f5e81a8ae7bb46c1d1a317b0fa600 data\fossilslegacy\loot_tables\entities\pregnant_sheep\red.json
 ea3970609c1622edc2217cd7ec7acfb4705b28fb data\fossilslegacy\loot_tables\entities\mammoth.json
 141d5d6c3bc3a8f5080486a1ccf9653964f9a4ca data\fossilslegacy\loot_tables\entities\pregnant_pig.json

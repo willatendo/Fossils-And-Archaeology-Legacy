@@ -53,7 +53,7 @@ import willatendo.fossilslegacy.server.entity.goal.DinoWaterAvoidingRandomStroll
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class Plesiosaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur {
+public class Futabasaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur {
 	private float invFriction;
 	private float deltaRotation;
 	private int lerpSteps;
@@ -68,7 +68,7 @@ public class Plesiosaurus extends Dinosaur implements DinopediaInformation, Ride
 	private Status oldStatus;
 	private double lastYd;
 
-	public Plesiosaurus(EntityType<? extends Dinosaur> entityType, Level level) {
+	public Futabasaurus(EntityType<? extends Dinosaur> entityType, Level level) {
 		super(entityType, level);
 	}
 
@@ -93,7 +93,7 @@ public class Plesiosaurus extends Dinosaur implements DinopediaInformation, Ride
 
 	@Override
 	public EggVariant getEggVariant() {
-		return FossilsLegacyEggVariants.PLESIOSAURUS.get();
+		return FossilsLegacyEggVariants.FUTABASAURUS.get();
 	}
 
 	@Override
@@ -222,17 +222,17 @@ public class Plesiosaurus extends Dinosaur implements DinopediaInformation, Ride
 
 	@Override
 	protected SoundEvent getAmbientSound() {
-		return FossilsLegacySoundEvents.PLESIOSAURUS_AMBIENT.get();
+		return FossilsLegacySoundEvents.FUTABASAURUS_AMBIENT.get();
 	}
 
 	@Override
 	protected SoundEvent getHurtSound(DamageSource damageSource) {
-		return FossilsLegacySoundEvents.PLESIOSAURUS_HURT.get();
+		return FossilsLegacySoundEvents.FUTABASAURUS_HURT.get();
 	}
 
 	@Override
 	protected SoundEvent getDeathSound() {
-		return FossilsLegacySoundEvents.PLESIOSAURUS_DEATH.get();
+		return FossilsLegacySoundEvents.FUTABASAURUS_DEATH.get();
 	}
 
 	@Override
