@@ -54,7 +54,19 @@ public class TimeMachineMenu extends AbstractContainerMenu {
 		return null;
 	}
 
-	public ContainerData getContainerData() {
+	public int getChargeLevel() {
+		return this.getContainerData().get(0);
+	}
+
+	public boolean isCharged() {
+		return this.getContainerData().get(0) == TimeMachineBlockEntity.MAX_CHARGE;
+	}
+
+	public boolean isRestoring() {
+		return this.getContainerData().get(1) == 1;
+	}
+
+	protected ContainerData getContainerData() {
 		return this.timeMachineBlockEntity.containerData;
 	}
 }

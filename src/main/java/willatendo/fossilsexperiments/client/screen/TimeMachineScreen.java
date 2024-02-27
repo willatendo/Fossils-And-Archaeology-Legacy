@@ -22,10 +22,18 @@ public class TimeMachineScreen extends AbstractContainerScreen<TimeMachineMenu> 
 	@Override
 	protected void init() {
 		super.init();
-		this.addWidget(Button.builder(FossilsLegacyUtils.translation("menu", "time_machine.start"), button -> {
+		Button start = this.addRenderableWidget(TimeMachineButton.create(FossilsLegacyUtils.translation("menu", "time_machine.start"), button -> {
+			if (this.menu.isCharged() && !this.menu.isRestoring()) {
+				this.menu.timeMachineBlockEntity.startRestoring();
+			}
 		}).bounds(this.leftPos + 131, this.topPos + 18, 34, 14).build());
-		this.addWidget(Button.builder(FossilsLegacyUtils.translation("menu", "time_machine.memory"), button -> {
+		start.active = this.menu.isCharged() && !this.menu.isRestoring();
+		Button memory = this.addRenderableWidget(TimeMachineButton.create(FossilsLegacyUtils.translation("menu", "time_machine.memory"), button -> {
+			if (!this.menu.isRestoring()) {
+				this.menu.timeMachineBlockEntity.startMemory();
+			}
 		}).bounds(this.leftPos + 131, this.topPos + 56, 34, 14).build());
+		memory.active = !this.menu.isRestoring();
 	}
 
 	@Override
@@ -41,15 +49,15 @@ public class TimeMachineScreen extends AbstractContainerScreen<TimeMachineMenu> 
 		int leftPos = this.leftPos;
 		int topPos = this.topPos;
 		guiGraphics.blit(TEXTURE, leftPos, topPos, 0, 0, this.imageWidth, this.imageHeight);
-		float charge = ((float) (TimeMachineBlockEntity.MAX_CHARGE - this.menu.getContainerData().get(0))) / (float) TimeMachineBlockEntity.MAX_CHARGE;
+		float charge = ((float) (TimeMachineBlockEntity.MAX_CHARGE - this.menu.getChargeLevel())) / (float) TimeMachineBlockEntity.MAX_CHARGE;
 		int height = (int) (charge * (float) 75.0F);
-		guiGraphics.blit(TEXTURE, leftPos + 51, topPos + 6, 177, 1, 75, height);
+		guiGraphics.blit(TEXTURE, leftPos + 51, topPos + 7, 177, 1, 75, height);
 	}
 
 	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int x, int y) {
 		super.renderLabels(guiGraphics, x, y);
-		String precentage = this.menu.getContainerData().get(0) / 10 + "%";
+		String precentage = this.menu.getChargeLevel() / 10 + "%";
 		int secondWordPosX = (34 - this.font.width(precentage)) / 2;
 		guiGraphics.drawString(this.font, Component.literal(precentage), 131 + secondWordPosX, 40, 0xFF0000);
 	}

@@ -4,11 +4,15 @@ import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -19,6 +23,7 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import willatendo.fossilsexperiments.server.menu.TimeMachineMenu;
@@ -30,6 +35,8 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
 	private static final int[] SLOTS_FOR_SIDES = SLOTS_FOR_UP;
 	public static final int MAX_RESTORE_TICK = 10;
 	public static final int MAX_CHARGE = 1000;
+	public static final int MEMORY_WIDTH = 10;
+	public static final int MEMORY_HEIGHT = 10;
 	protected NonNullList<ItemStack> itemStacks = NonNullList.withSize(7, ItemStack.EMPTY);
 
 	public int time;
@@ -37,7 +44,9 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
 	public float oRot;
 	public float tRot;
 	private int chargeLevel = 0;
+	private BlockState[][][] memoryArray = null;
 	public boolean isRestoring = false;
+	private int restoringLayer = 0;
 	private int restoreTick = 0;
 
 	public final ContainerData containerData = new ContainerData() {
@@ -46,6 +55,8 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
 			switch (data) {
 			case 0:
 				return TimeMachineBlockEntity.this.chargeLevel;
+			case 1:
+				return TimeMachineBlockEntity.this.isRestoring ? 1 : 0;
 			default:
 				return 0;
 			}
@@ -56,6 +67,13 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
 			switch (data) {
 			case 0:
 				TimeMachineBlockEntity.this.chargeLevel = set;
+				break;
+			case 1:
+				if (set == 1) {
+					TimeMachineBlockEntity.this.isRestoring = true;
+				} else {
+					TimeMachineBlockEntity.this.isRestoring = false;
+				}
 				break;
 			}
 
@@ -93,9 +111,13 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
 	public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, TimeMachineBlockEntity timeMachineBlockEntity) {
 		if (!timeMachineBlockEntity.isRestoring) {
 			timeMachineBlockEntity.charge();
+			if (timeMachineBlockEntity.memoryArray == null) {
+				timeMachineBlockEntity.startMemory();
+			}
 		} else {
 			++timeMachineBlockEntity.restoreTick;
 			if (timeMachineBlockEntity.restoreTick == MAX_RESTORE_TICK) {
+				timeMachineBlockEntity.restoreProgress();
 				timeMachineBlockEntity.restoreTick = 0;
 			}
 		}
@@ -133,10 +155,67 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
 		timeMachineBlockEntity.time++;
 	}
 
+	private void restoreProgress() {
+		BlockState blockState = Blocks.AIR.defaultBlockState();
+		for (int posX = 0; posX < MEMORY_WIDTH; posX++) {
+			for (int posZ = 0; posZ < MEMORY_WIDTH; posZ++) {
+				BlockState testState = this.level.getBlockState(this.getBlockPos().offset(posX - (this.MEMORY_WIDTH / 2), this.restoringLayer, posZ - (this.MEMORY_WIDTH / 2)));
+				if (this.isNonPerserveBlock(testState)) {
+					continue;
+				}
+				blockState = this.memoryArray[posX][this.restoringLayer][posZ];
+				this.level.setBlock(this.getBlockPos().offset(posX - (this.MEMORY_WIDTH / 2), this.restoringLayer, posZ - (this.MEMORY_WIDTH / 2)), blockState, 3);
+				if (!blockState.isAir()) {
+					RandomSource randomSource = this.level.getRandom();
+					this.level.addParticle(ParticleTypes.PORTAL, posX - (this.MEMORY_WIDTH / 2) + (randomSource.nextDouble() - 0.5D), this.restoringLayer + randomSource.nextDouble(), posZ - (this.MEMORY_WIDTH / 2) + (randomSource.nextDouble() - 0.5D), (randomSource.nextDouble() - 0.5D) * 2.0D, -randomSource.nextDouble(), (randomSource.nextDouble() - 0.5D) * 2.0D);
+				}
+			}
+			this.level.playLocalSound(this.getBlockPos(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.BLOCKS, 1.0F, 1.0F, true);
+			this.chargeLevel = MAX_CHARGE - (int) ((float) this.restoringLayer / (float) this.MEMORY_HEIGHT * MAX_CHARGE);
+			++this.restoringLayer;
+			if (this.restoringLayer >= this.MEMORY_HEIGHT) {
+				this.isRestoring = false;
+				this.restoringLayer = 0;
+				this.chargeLevel = 0;
+			}
+		}
+	}
+
 	private void charge() {
 		if (!this.isFullyCharged()) {
 			this.chargeLevel++;
 		}
+	}
+
+	public void startMemory() {
+		this.memoryArray = new BlockState[MEMORY_WIDTH][MEMORY_HEIGHT][MEMORY_WIDTH];
+		for (int x = 0; x < MEMORY_WIDTH; x++) {
+			for (int y = 0; y < MEMORY_HEIGHT; y++) {
+				for (int z = 0; z < MEMORY_WIDTH; z++) {
+					BlockState blockState = this.level.getBlockState(this.getBlockPos().offset(x - MEMORY_WIDTH / 2, y, z - MEMORY_WIDTH / 2));
+					if (this.isNonPerserveBlock(blockState)) {
+						blockState = Blocks.AIR.defaultBlockState();
+					}
+
+					this.memoryArray[x][y][z] = blockState;
+				}
+			}
+		}
+	}
+
+	private boolean isNonPerserveBlock(BlockState blockState) {
+		if (blockState.isAir()) {
+			return false;
+		}
+		if (blockState.hasBlockEntity()) {
+			return true;
+		}
+		if (blockState.is(Blocks.DIAMOND_BLOCK) || blockState.is(Blocks.DIAMOND_ORE)) {
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public int getChargeLevel() {
@@ -145,6 +224,16 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
 
 	public boolean isFullyCharged() {
 		return this.chargeLevel == MAX_CHARGE;
+	}
+
+	public void startRestoring() {
+		if (this.memoryArray == null) {
+			return;
+		}
+		if (!this.isFullyCharged()) {
+			return;
+		}
+		this.isRestoring = true;
 	}
 
 	@Override
