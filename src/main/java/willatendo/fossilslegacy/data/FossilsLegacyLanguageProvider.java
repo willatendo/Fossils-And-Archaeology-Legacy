@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.data;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.world.item.Item;
+import willatendo.fossilsexperiments.server.block.FossilsExperimentsBlocks;
 import willatendo.fossilsexperiments.server.item.FossilsExperimentsItems;
 import willatendo.fossilslegacy.server.FossilsLegacyCreativeModeTabs;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
@@ -74,6 +75,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyBlocks.PERMAFROST.get());
 		this.add(FossilsLegacyBlocks.ICED_STONE.get());
 		this.add(FossilsLegacyBlocks.AXOLOTLSPAWN.get());
+
+		this.add(FossilsExperimentsBlocks.TIME_MACHINE.get());
 
 		// Commands
 		this.add("command.fossilslegacy.follow", "Follow");
@@ -363,6 +366,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("menu.fossilslegacy.archaeology_workbench", "Archaeology Workbench");
 		this.add("menu.fossilslegacy.cultivator", "Cultivator");
 		this.add("menu.fossilslegacy.feeder", "Feeder");
+		this.add("menu.fossilslegacy.time_machine", "Time Machine");
+		this.add("menu.fossilslegacy.time_machine.start", "Start");
+		this.add("menu.fossilslegacy.time_machine.memory", "Memory");
 
 		// Packs
 		this.add("pack.fossilslegacy.fa_legacy_textures", "F/A Legacy Original Textures");

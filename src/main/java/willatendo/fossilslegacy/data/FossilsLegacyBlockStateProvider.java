@@ -4,6 +4,7 @@ import io.github.fabricators_of_create.porting_lib.data.ExistingFileHelper;
 import io.github.fabricators_of_create.porting_lib.models.generators.ConfiguredModel;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import willatendo.fossilsexperiments.server.block.FossilsExperimentsBlocks;
 import willatendo.fossilslegacy.server.block.AnalyzerBlock;
 import willatendo.fossilslegacy.server.block.ArchaeologyWorkbenchBlock;
 import willatendo.fossilslegacy.server.block.CultivatorBlock;
@@ -34,5 +35,7 @@ public class FossilsLegacyBlockStateProvider extends SimpleBlockStateProvider {
 		this.simpleBlock(FossilsLegacyBlocks.PERMAFROST.get());
 		this.simpleBlock(FossilsLegacyBlocks.ICED_STONE.get());
 		this.simpleBlock(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), this.models().withExistingParent("axolotlspawn", this.mcLoc("block/frogspawn")).texture("texture", this.modLoc("block/axolotlspawn")).texture("particle", this.modLoc("block/axolotlspawn")));
+
+		this.simpleBlock(FossilsExperimentsBlocks.TIME_MACHINE.get(), this.models().withExistingParent("time_machine", this.modLoc("block/template_time_machine")));
 	}
 }

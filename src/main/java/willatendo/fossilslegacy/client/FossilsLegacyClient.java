@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.CatRenderer;
 import net.minecraft.client.renderer.entity.ChestedHorseRenderer;
 import net.minecraft.client.renderer.entity.CowRenderer;
@@ -24,14 +25,19 @@ import net.minecraft.client.renderer.entity.RabbitRenderer;
 import net.minecraft.client.renderer.entity.SheepRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.entity.WolfRenderer;
+import willatendo.fossilsexperiments.client.model.TimeMachineClockModel;
+import willatendo.fossilsexperiments.client.render.TimeMachineClockRenderer;
+import willatendo.fossilsexperiments.client.screen.TimeMachineScreen;
+import willatendo.fossilsexperiments.server.block.entity.FossilsExperimentsBlockEntities;
+import willatendo.fossilsexperiments.server.menu.FossilsExperimentsMenus;
 import willatendo.fossilslegacy.client.model.BrachiosaurusModel;
 import willatendo.fossilslegacy.client.model.DilophosaurusModel;
 import willatendo.fossilslegacy.client.model.EggModel;
 import willatendo.fossilslegacy.client.model.FailuresaurusModel;
+import willatendo.fossilslegacy.client.model.FutabasaurusModel;
 import willatendo.fossilslegacy.client.model.MammothModel;
 import willatendo.fossilslegacy.client.model.MosasaurusModel;
 import willatendo.fossilslegacy.client.model.NautilusModel;
-import willatendo.fossilslegacy.client.model.FutabasaurusModel;
 import willatendo.fossilslegacy.client.model.SmilodonModel;
 import willatendo.fossilslegacy.client.model.StegosaurusModel;
 import willatendo.fossilslegacy.client.model.TriceratopsModel;
@@ -51,10 +57,10 @@ import willatendo.fossilslegacy.client.render.DilophosaurusVenomRenderer;
 import willatendo.fossilslegacy.client.render.EggRenderer;
 import willatendo.fossilslegacy.client.render.FailuresaurusRenderer;
 import willatendo.fossilslegacy.client.render.FossilRenderer;
+import willatendo.fossilslegacy.client.render.FutabasaurusRenderer;
 import willatendo.fossilslegacy.client.render.MammothRenderer;
 import willatendo.fossilslegacy.client.render.MosasaurusRenderer;
 import willatendo.fossilslegacy.client.render.NautilusRenderer;
-import willatendo.fossilslegacy.client.render.FutabasaurusRenderer;
 import willatendo.fossilslegacy.client.render.PteranodonRenderer;
 import willatendo.fossilslegacy.client.render.SmilodonRenderer;
 import willatendo.fossilslegacy.client.render.StegosaurusRenderer;
@@ -79,6 +85,8 @@ public class FossilsLegacyClient implements ClientModInitializer {
 		MenuScreens.register(FossilsLegacyMenus.ARCHAEOLOGY_WORKBENCH.get(), ArchaeologyWorkbenchScreen::new);
 		MenuScreens.register(FossilsLegacyMenus.CULTIVATOR.get(), CultivatorScreen::new);
 		MenuScreens.register(FossilsLegacyMenus.FEEDER.get(), FeederScreen::new);
+
+		MenuScreens.register(FossilsExperimentsMenus.TIME_MACHINE.get(), TimeMachineScreen::new);
 
 		BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.JURASSIC_FERN.get(), RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), RenderType.cutout());
@@ -154,5 +162,9 @@ public class FossilsLegacyClient implements ClientModInitializer {
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.FAILURESAURUS, FailuresaurusModel::createBodyLayer);
 
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.EGG, EggModel::createBodyLayer);
+
+		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.TIME_MACHINE_CLOCK, TimeMachineClockModel::createBodyLayer);
+
+		BlockEntityRenderers.register(FossilsExperimentsBlockEntities.TIME_MACHINE.get(), TimeMachineClockRenderer::new);
 	}
 }

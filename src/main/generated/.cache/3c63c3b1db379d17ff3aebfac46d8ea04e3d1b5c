@@ -1,4 +1,4 @@
-// 1.20.4	2024-02-25T12:04:13.9045217	Fossils and Archaeology Legacy/fossilslegacy: Block States
+// 1.20.4	2024-02-26T17:44:00.556542	Fossils and Archaeology Legacy/fossilslegacy: Block States
 c0ce3d8427f3386158621c87e10cdb64aed3c226 assets\fossilslegacy\models\block\cultivator_active.json
 53947a004de390af5396743144020fd7c5c2e55e assets\fossilslegacy\models\block\drum_follow.json
 25f9ed2a080c76e18f41133a4d928b231609850b assets\fossilslegacy\models\block\fern_lower_1.json
@@ -10,6 +10,7 @@ fda4ba176b17a29e100ec0dc63fd484b644afcc1 assets\fossilslegacy\models\block\fern_
 e82137f12939945936135821aa7275429a920ece assets\fossilslegacy\models\block\fern_upper_0.json
 91789c5442ea75888d496a8e85887a0398292fef assets\fossilslegacy\models\block\drum_free_move.json
 e82137f12939945936135821aa7275429a920ece assets\fossilslegacy\models\block\fern_upper_3.json
+293b1a61153505dec26b82596821b0910d395a18 assets\fossilslegacy\models\block\time_machine.json
 09b32d47cc8f67fa314bb83493f0b14cff5045f1 assets\fossilslegacy\models\block\deepslate_fossil_ore.json
 3517aebe6bf371d076c0857edb7b546f9b961487 assets\fossilslegacy\blockstates\fossil_ore.json
 bb5356c33eef7c2508526705bd5542144c2971ab assets\fossilslegacy\models\block\feeder_empty.json
@@ -26,8 +27,8 @@ b146d7e8f66c2e3e9a9d194b9b36d71c37c36b5a assets\fossilslegacy\models\block\fern_
 a708923879e784d537efb80d40860b1ab428d750 assets\fossilslegacy\models\block\fern_lower_0.json
 d976bb908a167106a7106ed646c80667d5f8e768 assets\fossilslegacy\models\block\feeder_full.json
 7a3328faa352a6a3dc4679e2e71a12463b6fdf9e assets\fossilslegacy\blockstates\deepslate_fossil_ore.json
-b35e4eb39636d1687092533caa84ab464fac932a assets\fossilslegacy\blockstates\archaeology_workbench.json
 ed31951b501aa2ee0ecf441c1d9c83207ffc29b9 assets\fossilslegacy\blockstates\skull_lanturn_block.json
+b35e4eb39636d1687092533caa84ab464fac932a assets\fossilslegacy\blockstates\archaeology_workbench.json
 e332eb0ca1a5581fc2f583ed98594f03c370f94b assets\fossilslegacy\blockstates\drum.json
 0ee493a2611a51edc66682b9f70729b22e974d73 assets\fossilslegacy\models\block\fern_lower_3.json
 bec29ea7b9ebe8be0a4ebc956a1ee9ffc7eab6ed assets\fossilslegacy\blockstates\skull_block.json
@@ -42,3 +43,4 @@ e82137f12939945936135821aa7275429a920ece assets\fossilslegacy\models\block\fern_
 55ca09b6ab47e782e9081ebd6f88df4c0a229f49 assets\fossilslegacy\models\block\archaeology_workbench_active.json
 e82137f12939945936135821aa7275429a920ece assets\fossilslegacy\models\block\fern_upper_4.json
 442e4adbdbef24a61fcaaf93811a9a7afe14e1b8 assets\fossilslegacy\models\block\iced_stone.json
+c58c3abb3d43c251bb0b8fd1683a229ac9eba289 assets\fossilslegacy\blockstates\time_machine.json

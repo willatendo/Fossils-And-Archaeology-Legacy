@@ -28,4 +28,6 @@ public class FossilsLegacyModels {
 	public static final ModelLayerLocation FAILURESAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("failuresaurus"), "main");
 
 	public static final ModelLayerLocation EGG = new ModelLayerLocation(FossilsLegacyUtils.resource("egg"), "main");
+
+	public static final ModelLayerLocation TIME_MACHINE_CLOCK = new ModelLayerLocation(FossilsLegacyUtils.resource("time_machine_clock"), "main");
 }
