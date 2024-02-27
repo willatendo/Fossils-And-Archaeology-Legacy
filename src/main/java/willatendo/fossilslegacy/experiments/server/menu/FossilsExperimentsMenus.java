@@ -1,4 +1,4 @@
-package willatendo.fossilsexperiments.server.menu;
+package willatendo.fossilslegacy.experiments.server.menu;
 
 import net.minecraft.world.inventory.MenuType;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenus;

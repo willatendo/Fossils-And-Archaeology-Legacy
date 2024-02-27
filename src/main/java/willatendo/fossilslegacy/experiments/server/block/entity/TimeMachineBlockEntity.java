@@ -1,4 +1,4 @@
-package willatendo.fossilsexperiments.server.block.entity;
+package willatendo.fossilslegacy.experiments.server.block.entity;
 
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.core.BlockPos;
@@ -26,7 +26,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import willatendo.fossilsexperiments.server.menu.TimeMachineMenu;
+import willatendo.fossilslegacy.experiments.server.menu.TimeMachineMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, StackedContentsCompatible, ExtendedScreenHandlerFactory {

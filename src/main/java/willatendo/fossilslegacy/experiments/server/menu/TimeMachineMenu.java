@@ -1,4 +1,4 @@
-package willatendo.fossilsexperiments.server.menu;
+package willatendo.fossilslegacy.experiments.server.menu;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
@@ -8,8 +8,8 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import willatendo.fossilsexperiments.server.block.TimeMachineBlock;
-import willatendo.fossilsexperiments.server.block.entity.TimeMachineBlockEntity;
+import willatendo.fossilslegacy.experiments.server.block.TimeMachineBlock;
+import willatendo.fossilslegacy.experiments.server.block.entity.TimeMachineBlockEntity;
 
 public class TimeMachineMenu extends AbstractContainerMenu {
 	private final ContainerLevelAccess containerLevelAccess;

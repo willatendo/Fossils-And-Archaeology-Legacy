@@ -1,4 +1,4 @@
-package willatendo.fossilsexperiments.server.item;
+package willatendo.fossilslegacy.experiments.server.item;
 
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.flag.FeatureFlagSet;

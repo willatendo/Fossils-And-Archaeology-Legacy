@@ -1,7 +1,7 @@
-package willatendo.fossilsexperiments.server.block.entity;
+package willatendo.fossilslegacy.experiments.server.block.entity;
 
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import willatendo.fossilsexperiments.server.block.FossilsExperimentsBlocks;
+import willatendo.fossilslegacy.experiments.server.block.FossilsExperimentsBlocks;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 

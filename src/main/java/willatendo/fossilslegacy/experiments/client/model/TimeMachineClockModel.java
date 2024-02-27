@@ -1,4 +1,4 @@
-package willatendo.fossilsexperiments.client.model;
+package willatendo.fossilslegacy.experiments.client.model;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

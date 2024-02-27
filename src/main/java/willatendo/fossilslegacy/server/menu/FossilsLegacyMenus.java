@@ -2,7 +2,7 @@ package willatendo.fossilslegacy.server.menu;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
-import willatendo.fossilsexperiments.server.menu.FossilsExperimentsMenus;
+import willatendo.fossilslegacy.experiments.server.menu.FossilsExperimentsMenus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.FabricRegister;
 import willatendo.simplelibrary.server.registry.SimpleHolder;

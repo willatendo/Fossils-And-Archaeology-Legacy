@@ -1,4 +1,4 @@
-package willatendo.fossilsexperiments.server.block;
+package willatendo.fossilslegacy.experiments.server.block;
 
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;

@@ -1,4 +1,4 @@
-package willatendo.fossilsexperiments.client.render;
+package willatendo.fossilslegacy.experiments.client.render;
 
 import java.util.Calendar;
 
@@ -12,9 +12,9 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import willatendo.fossilsexperiments.client.model.TimeMachineClockModel;
-import willatendo.fossilsexperiments.server.block.entity.TimeMachineBlockEntity;
 import willatendo.fossilslegacy.client.FossilsLegacyModels;
+import willatendo.fossilslegacy.experiments.client.model.TimeMachineClockModel;
+import willatendo.fossilslegacy.experiments.server.block.entity.TimeMachineBlockEntity;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class TimeMachineClockRenderer implements BlockEntityRenderer<TimeMachineBlockEntity> {

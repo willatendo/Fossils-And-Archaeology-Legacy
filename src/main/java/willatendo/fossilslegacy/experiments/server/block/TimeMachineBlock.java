@@ -1,4 +1,4 @@
-package willatendo.fossilsexperiments.server.block;
+package willatendo.fossilslegacy.experiments.server.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -22,8 +22,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import willatendo.fossilsexperiments.server.block.entity.FossilsExperimentsBlockEntities;
-import willatendo.fossilsexperiments.server.block.entity.TimeMachineBlockEntity;
+import willatendo.fossilslegacy.experiments.server.block.entity.FossilsExperimentsBlockEntities;
+import willatendo.fossilslegacy.experiments.server.block.entity.TimeMachineBlockEntity;
 import willatendo.fossilslegacy.server.ConfigHelper;
 import willatendo.fossilslegacy.server.block.entity.BlockEntityHelper;
 

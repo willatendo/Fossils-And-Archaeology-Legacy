@@ -2,8 +2,8 @@ package willatendo.fossilslegacy.data;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.world.item.Item;
-import willatendo.fossilsexperiments.server.block.FossilsExperimentsBlocks;
-import willatendo.fossilsexperiments.server.item.FossilsExperimentsItems;
+import willatendo.fossilslegacy.experiments.server.block.FossilsExperimentsBlocks;
+import willatendo.fossilslegacy.experiments.server.item.FossilsExperimentsItems;
 import willatendo.fossilslegacy.server.FossilsLegacyCreativeModeTabs;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;

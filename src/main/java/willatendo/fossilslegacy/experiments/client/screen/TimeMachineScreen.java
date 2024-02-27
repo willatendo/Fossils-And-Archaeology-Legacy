@@ -1,4 +1,4 @@
-package willatendo.fossilsexperiments.client.screen;
+package willatendo.fossilslegacy.experiments.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 
@@ -8,8 +8,8 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import willatendo.fossilsexperiments.server.block.entity.TimeMachineBlockEntity;
-import willatendo.fossilsexperiments.server.menu.TimeMachineMenu;
+import willatendo.fossilslegacy.experiments.server.block.entity.TimeMachineBlockEntity;
+import willatendo.fossilslegacy.experiments.server.menu.TimeMachineMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class TimeMachineScreen extends AbstractContainerScreen<TimeMachineMenu> {

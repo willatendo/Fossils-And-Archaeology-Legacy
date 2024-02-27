@@ -1,4 +1,4 @@
-package willatendo.fossilsexperiments.server.item;
+package willatendo.fossilslegacy.experiments.server.item;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;

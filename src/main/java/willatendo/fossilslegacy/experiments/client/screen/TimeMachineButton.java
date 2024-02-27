@@ -1,4 +1,4 @@
-package willatendo.fossilsexperiments.client.screen;
+package willatendo.fossilslegacy.experiments.client.screen;
 
 import org.jetbrains.annotations.Nullable;
 
