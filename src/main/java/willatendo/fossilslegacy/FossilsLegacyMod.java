@@ -1,6 +1,7 @@
 package willatendo.fossilslegacy;
 
 import net.fabricmc.api.ModInitializer;
+import willatendo.fossilslegacy.experiments.FossilsExperiments;
 import willatendo.fossilslegacy.server.ConfigHelper;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.FossilsLegacyCreativeModeTabs;
@@ -26,6 +27,8 @@ import willatendo.fossilslegacy.server.structure.FossilsLegacyStructureTypes;
 public class FossilsLegacyMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
+		FossilsExperiments.init();
+
 		FossilsLegacyBuiltInRegistries.init();
 
 		FossilsLegacyRecipeTypes.init();

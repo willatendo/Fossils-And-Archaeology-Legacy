@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.server.block.entity;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import willatendo.fossilslegacy.experiments.server.block.entity.FossilsExperimentsBlockEntities;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.FabricRegister;
@@ -18,8 +17,6 @@ public class FossilsLegacyBlockEntities {
 	public static final SimpleHolder<BlockEntityType<FeederBlockEntity>> FEEDER = BLOCK_ENTITY_TYPES.register("feeder", () -> BlockEntityType.Builder.<FeederBlockEntity>of(FeederBlockEntity::new, FossilsLegacyBlocks.FEEDER.get()).build(null));
 
 	public static void init() {
-		FossilsExperimentsBlockEntities.init();
-
 		FabricRegister.register(BLOCK_ENTITY_TYPES);
 	}
 }

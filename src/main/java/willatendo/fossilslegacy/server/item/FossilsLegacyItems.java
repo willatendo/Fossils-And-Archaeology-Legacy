@@ -14,7 +14,6 @@ import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
-import willatendo.fossilslegacy.experiments.server.item.FossilsExperimentsItems;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEggVariants;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
@@ -170,8 +169,6 @@ public class FossilsLegacyItems {
 	public static final SimpleHolder<DinosaurSpawnEggItem> VELOCIRAPTOR_SPAWN_EGG = ITEMS.register("velociraptor_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntities.VELOCIRAPTOR.get(), 0x66965f, 0x884c2e, new Item.Properties()));
 
 	public static void init() {
-		FossilsExperimentsItems.init();
-
 		// Debug
 		DEBUG_ITEMS.register("debug_max_hunger", () -> DebugItem.debugMaxHunger());
 		DEBUG_ITEMS.register("debug_max_health", () -> DebugItem.debugMaxHealth());

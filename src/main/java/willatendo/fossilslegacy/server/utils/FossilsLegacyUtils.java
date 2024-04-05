@@ -15,6 +15,10 @@ public class FossilsLegacyUtils {
 		return new ResourceLocation(ID, path);
 	}
 
+	public static MutableComponent fullTranslation(String in) {
+		return Component.translatable(in);
+	}
+
 	public static MutableComponent translation(String type, String name) {
 		return Component.translatable(type + "." + ID + "." + name);
 	}

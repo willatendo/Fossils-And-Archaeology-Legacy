@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.server.menu;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
-import willatendo.fossilslegacy.experiments.server.menu.FossilsExperimentsMenus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.FabricRegister;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
@@ -18,8 +17,6 @@ public class FossilsLegacyMenus {
 	public static final SimpleHolder<MenuType<FeederMenu>> FEEDER = MENU_TYPES.register("feeder", () -> FabricUtils.createMenuType(FeederMenu::new));
 
 	public static void init() {
-		FossilsExperimentsMenus.init();
-
 		FabricRegister.register(MENU_TYPES);
 	}
 }

@@ -7,7 +7,6 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.CatRenderer;
 import net.minecraft.client.renderer.entity.ChestedHorseRenderer;
 import net.minecraft.client.renderer.entity.CowRenderer;
@@ -69,11 +68,7 @@ import willatendo.fossilslegacy.client.screen.AnalyzerScreen;
 import willatendo.fossilslegacy.client.screen.ArchaeologyWorkbenchScreen;
 import willatendo.fossilslegacy.client.screen.CultivatorScreen;
 import willatendo.fossilslegacy.client.screen.FeederScreen;
-import willatendo.fossilslegacy.experiments.client.model.TimeMachineClockModel;
-import willatendo.fossilslegacy.experiments.client.render.TimeMachineClockRenderer;
-import willatendo.fossilslegacy.experiments.client.screen.TimeMachineScreen;
-import willatendo.fossilslegacy.experiments.server.block.entity.FossilsExperimentsBlockEntities;
-import willatendo.fossilslegacy.experiments.server.menu.FossilsExperimentsMenus;
+import willatendo.fossilslegacy.experiments.client.FossilsExperimentsClient;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenus;
@@ -81,12 +76,12 @@ import willatendo.fossilslegacy.server.menu.FossilsLegacyMenus;
 public class FossilsLegacyClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
+		FossilsExperimentsClient.init();
+
 		MenuScreens.register(FossilsLegacyMenus.ANALYZER.get(), AnalyzerScreen::new);
 		MenuScreens.register(FossilsLegacyMenus.ARCHAEOLOGY_WORKBENCH.get(), ArchaeologyWorkbenchScreen::new);
 		MenuScreens.register(FossilsLegacyMenus.CULTIVATOR.get(), CultivatorScreen::new);
 		MenuScreens.register(FossilsLegacyMenus.FEEDER.get(), FeederScreen::new);
-
-		MenuScreens.register(FossilsExperimentsMenus.TIME_MACHINE.get(), TimeMachineScreen::new);
 
 		BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.JURASSIC_FERN.get(), RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), RenderType.cutout());
@@ -162,9 +157,5 @@ public class FossilsLegacyClient implements ClientModInitializer {
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.FAILURESAURUS, FailuresaurusModel::createBodyLayer);
 
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.EGG, EggModel::createBodyLayer);
-
-		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.TIME_MACHINE_CLOCK, TimeMachineClockModel::createBodyLayer);
-
-		BlockEntityRenderers.register(FossilsExperimentsBlockEntities.TIME_MACHINE.get(), TimeMachineClockRenderer::new);
 	}
 }

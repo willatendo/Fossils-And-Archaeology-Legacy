@@ -49,6 +49,10 @@ public class ConfigHelper {
 		return SimpleUtils.isModLoaded("forgeconfigapiport");
 	}
 
+	public static boolean isForgeConfigScreensLoaded() {
+		return SimpleUtils.isModLoaded("forgeconfigscreens");
+	}
+
 	public static boolean isClothConfigLoaded() {
 		return SimpleUtils.isModLoaded("cloth-config");
 	}

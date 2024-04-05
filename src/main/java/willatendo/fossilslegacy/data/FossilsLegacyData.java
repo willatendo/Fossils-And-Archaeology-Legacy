@@ -2,33 +2,15 @@ package willatendo.fossilslegacy.data;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.RegistrySetBuilder;
-import net.minecraft.core.RegistrySetBuilder.PatchedRegistries;
-import net.minecraft.core.RegistrySetBuilder.RegistryBootstrap;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.metadata.PackMetadataGenerator;
-import net.minecraft.data.registries.VanillaRegistries;
 import willatendo.fossilslegacy.data.loot.FossilsLegacyBlockLootTableProvider;
 import willatendo.fossilslegacy.data.loot.FossilsLegacyChestLootTableProvider;
 import willatendo.fossilslegacy.data.loot.FossilsLegacyEntityLootTableProvider;
-import willatendo.fossilslegacy.server.biomes.FossilsLegacyConfiguredFeatures;
-import willatendo.fossilslegacy.server.biomes.FossilsLegacyPlacedFeatures;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyDamageTypes;
-import willatendo.fossilslegacy.server.structure.FossilsLegacyStructureSets;
-import willatendo.fossilslegacy.server.structure.FossilsLegacyStructures;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.data.DataHandler;
 import willatendo.simplelibrary.data.DataHandler.SimplePack;
 
 public class FossilsLegacyData implements DataGeneratorEntrypoint {
-	private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder().add(Registries.CONFIGURED_FEATURE, (RegistryBootstrap) FossilsLegacyConfiguredFeatures::bootstrap).add(Registries.PLACED_FEATURE, (RegistryBootstrap) FossilsLegacyPlacedFeatures::bootstrap).add(Registries.DAMAGE_TYPE, (RegistryBootstrap) FossilsLegacyDamageTypes::bootstrap).add(Registries.STRUCTURE, (RegistryBootstrap) FossilsLegacyStructures::bootstrap).add(Registries.STRUCTURE_SET, (RegistryBootstrap) FossilsLegacyStructureSets::bootstrap);
-
-	public static PatchedRegistries createLookup() {
-		return BUILDER.buildPatch(RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY), VanillaRegistries.createLookup(), null);
-	}
-
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
 		DataHandler dataHandler = new DataHandler(fabricDataGenerator);
@@ -45,7 +27,7 @@ public class FossilsLegacyData implements DataGeneratorEntrypoint {
 		dataHandler.addProvider(FossilsLegacyChestLootTableProvider::new);
 		dataHandler.addProvider(FossilsLegacyEntityLootTableProvider::new);
 		// Data-Driven
-		dataHandler.addDataPackEntryProvider(BUILDER);
+		dataHandler.addProvider((a, b, c, d) -> new FossilsLegacyBuiltinProvider(a, b));
 		dataHandler.addTagsProvider(FossilsLegacyItemTagProvider::new, FossilsLegacyBlockTagProvider::new);
 		dataHandler.addProvider(FossilsLegacyBiomeTagProvider::new);
 		dataHandler.addProvider(FossilsLegacyFluidTagProvider::new);

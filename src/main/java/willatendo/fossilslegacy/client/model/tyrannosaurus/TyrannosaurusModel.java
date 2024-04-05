@@ -30,7 +30,6 @@ public class TyrannosaurusModel extends AbstractTyrannosaurusModel {
 	private final ModelPart leftFoot;
 	private final ModelPart leftLeg;
 	private final ModelPart leftThigh;
-//	private final ModelPart New_Shape10;
 	private final ModelPart rightArm;
 	private final ModelPart leftArm;
 
@@ -102,7 +101,7 @@ public class TyrannosaurusModel extends AbstractTyrannosaurusModel {
 	}
 
 	private void runPose() {
-		runPose(20.0F);
+		this.runPose(20.0F);
 	}
 
 	private void runPose(float moves) {

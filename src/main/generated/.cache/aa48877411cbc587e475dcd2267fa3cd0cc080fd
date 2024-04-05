@@ -1,6 +1,6 @@
-// 1.20.4	2024-02-26T17:44:00.5595431	Fossils and Archaeology Legacy/Tags for minecraft:block: fossilslegacy
-8dd9337b2a202f40f3cb253ecea1f5a37ccc12ba data\minecraft\tags\blocks\mineable\shovel.json
+// 1.20.4	2024-02-28T22:23:58.8044975	Fossils and Archaeology Legacy/Tags for minecraft:block: fossilslegacy
 1127f77eb8cace8c1b282963c96612fe0637c879 data\fossilslegacy\tags\blocks\eatable_fern.json
+8dd9337b2a202f40f3cb253ecea1f5a37ccc12ba data\minecraft\tags\blocks\mineable\shovel.json
 83f23241c6598e3571f5ab0c1b7f2cd402001686 data\minecraft\tags\blocks\mineable\pickaxe.json
 69c396cb051bbe9a130e6979b67065e5041b179d data\fossilslegacy\tags\blocks\jurassic_fern_plantable_on.json
 b618667772fbc412a6446fad6a3619c27d66d734 data\minecraft\tags\blocks\needs_iron_tool.json

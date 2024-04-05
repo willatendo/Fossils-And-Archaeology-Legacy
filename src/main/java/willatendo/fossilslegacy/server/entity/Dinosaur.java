@@ -11,6 +11,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.OldUsersConverter;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -108,46 +109,50 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 
 		super.tick();
 
-		if (ConfigHelper.willAnimalsGrow()) {
-			if (this.getGrowthStage() < this.getMaxGrowthStage()) {
-				if (this.internalClock % Level.TICKS_PER_DAY == 0) {
-					if (this.hasSpace()) {
-						this.setGrowthStage(this.getGrowthStage() + 1);
-						this.setHealth((float) (this.getHealth() + this.getMinHealth()));
-					} else {
-						this.sendMessageToOwnerOrElseAll(DinoSituation.NO_SPACE);
+		if (!this.isNoAi()) {
+			if (ConfigHelper.willAnimalsGrow()) {
+				if (this.getGrowthStage() < this.getMaxGrowthStage()) {
+					if (this.internalClock % Level.TICKS_PER_DAY == 0) {
+						if (this.hasSpace()) {
+							this.setGrowthStage(this.getGrowthStage() + 1);
+							this.setHealth((float) (this.getHealth() + this.getMinHealth()));
+						} else {
+							this.sendMessageToOwnerOrElseAll(DinoSituation.NO_SPACE);
+						}
 					}
 				}
 			}
-		}
 
-		if (this.internalClock % Level.TICKS_PER_DAY == 0) {
-			this.setDaysAlive(this.getDaysAlive() + 1);
-		}
+			if (this.internalClock % Level.TICKS_PER_DAY == 0) {
+				this.setDaysAlive(this.getDaysAlive() + 1);
+			}
 
-		if (ConfigHelper.willAnimalsStarve()) {
-			if (this.internalClock % 300 == 0) {
-				this.decreaseHunger();
+			if (ConfigHelper.willAnimalsStarve()) {
+				if (this.level().getDifficulty() != Difficulty.PEACEFUL) {
+					if (this.internalClock % 300 == 0) {
+						this.decreaseHunger();
 
-				if (this.getHunger() == (this.getMaxHunger() / 2)) {
-					this.sendMessageToOwnerOrElseAll(DinoSituation.HUNGRY);
+						if (this.getHunger() == (this.getMaxHunger() / 2)) {
+							this.sendMessageToOwnerOrElseAll(DinoSituation.HUNGRY);
+						}
+					}
+
+					if (this.getHunger() < 0) {
+						if (this.internalClock % 100 == 0) {
+							this.sendMessageToOwnerOrElseAll(DinoSituation.STARVE);
+						}
+						this.hurt(new DamageSource(this.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(FossilsLegacyDamageTypes.ANIMAL_STARVE)), 20.0F);
+					}
 				}
 			}
 
-			if (this.getHunger() < 0) {
-				if (this.internalClock % 100 == 0) {
-					this.sendMessageToOwnerOrElseAll(DinoSituation.STARVE);
-				}
-				this.hurt(new DamageSource(this.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(FossilsLegacyDamageTypes.ANIMAL_STARVE)), 20.0F);
-			}
-		}
-
-		if (!this.isDeadOrDying()) {
-			if (this.internalClock % 10 == 0) {
-				if (this.getHealth() < this.getMaxHealth()) {
-					if (this.getHunger() > this.getMaxHunger() / 2) {
-						this.setHunger(this.getHunger() - 5);
-						this.setHealth(this.getHealth() + 1.0F);
+			if (!this.isDeadOrDying()) {
+				if (this.internalClock % 10 == 0) {
+					if (this.getHealth() < this.getMaxHealth()) {
+						if (this.getHunger() > this.getMaxHunger() / 2) {
+							this.setHunger(this.getHunger() - 5);
+							this.setHealth(this.getHealth() + 1.0F);
+						}
 					}
 				}
 			}

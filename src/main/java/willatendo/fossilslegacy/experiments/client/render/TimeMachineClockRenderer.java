@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import willatendo.fossilslegacy.client.FossilsLegacyModels;
+import willatendo.fossilslegacy.experiments.client.FossilsExperimentsModels;
 import willatendo.fossilslegacy.experiments.client.model.TimeMachineClockModel;
 import willatendo.fossilslegacy.experiments.server.block.entity.TimeMachineBlockEntity;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -28,7 +28,7 @@ public class TimeMachineClockRenderer implements BlockEntityRenderer<TimeMachine
 	private Calendar calendar = Calendar.getInstance();
 
 	public TimeMachineClockRenderer(BlockEntityRendererProvider.Context context) {
-		this.timeMachineClockModel = new TimeMachineClockModel(context.bakeLayer(FossilsLegacyModels.TIME_MACHINE_CLOCK));
+		this.timeMachineClockModel = new TimeMachineClockModel(context.bakeLayer(FossilsExperimentsModels.TIME_MACHINE_CLOCK));
 	}
 
 	@Override
