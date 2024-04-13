@@ -25,6 +25,7 @@ public class FossilsLegacyModels {
 	public static final ModelLayerLocation PTERANODON_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("pteranodon_skeleton"), "main");
 	public static final ModelLayerLocation TRICERATOPS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("triceratops_skeleton"), "main");
 
+	public static final ModelLayerLocation ANU = new ModelLayerLocation(FossilsLegacyUtils.resource("anu"), "main");
 	public static final ModelLayerLocation FAILURESAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("failuresaurus"), "main");
 
 	public static final ModelLayerLocation EGG = new ModelLayerLocation(FossilsLegacyUtils.resource("egg"), "main");

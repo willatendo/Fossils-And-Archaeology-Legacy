@@ -31,7 +31,6 @@ import net.minecraft.resources.RegistryOps;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.experiments.server.dimension.FossilsExperimentsDimensionTypes;
-import willatendo.fossilslegacy.experiments.server.dimension.FossilsExperimentsLevelStems;
 import willatendo.fossilslegacy.server.biomes.FossilsLegacyConfiguredFeatures;
 import willatendo.fossilslegacy.server.biomes.FossilsLegacyPlacedFeatures;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyDamageTypes;
@@ -41,7 +40,7 @@ import willatendo.fossilslegacy.server.structure.FossilsLegacyStructures;
 public class FossilsLegacyBuiltinProvider extends RegistriesDatapackGenerator {
 	private static final List<RegistryDataLoader.RegistryData<?>> DATA_PACK_REGISTRIES = new ArrayList<>(Stream.concat(RegistryDataLoader.WORLDGEN_REGISTRIES.stream(), RegistryDataLoader.DIMENSION_REGISTRIES.stream()).toList());
 	private static final List<RegistryDataLoader.RegistryData<?>> DATA_PACK_REGISTRIES_VIEW = Collections.unmodifiableList(DATA_PACK_REGISTRIES);
-	private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder().add(Registries.CONFIGURED_FEATURE, (RegistryBootstrap) FossilsLegacyConfiguredFeatures::bootstrap).add(Registries.PLACED_FEATURE, (RegistryBootstrap) FossilsLegacyPlacedFeatures::bootstrap).add(Registries.DAMAGE_TYPE, (RegistryBootstrap) FossilsLegacyDamageTypes::bootstrap).add(Registries.STRUCTURE, (RegistryBootstrap) FossilsLegacyStructures::bootstrap).add(Registries.STRUCTURE_SET, (RegistryBootstrap) FossilsLegacyStructureSets::bootstrap).add(Registries.DIMENSION_TYPE, (RegistryBootstrap) FossilsExperimentsDimensionTypes::bootstrap).add(Registries.LEVEL_STEM, (RegistryBootstrap) FossilsExperimentsLevelStems::bootstrap);
+	private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder().add(Registries.CONFIGURED_FEATURE, (RegistryBootstrap) FossilsLegacyConfiguredFeatures::bootstrap).add(Registries.PLACED_FEATURE, (RegistryBootstrap) FossilsLegacyPlacedFeatures::bootstrap).add(Registries.DAMAGE_TYPE, (RegistryBootstrap) FossilsLegacyDamageTypes::bootstrap).add(Registries.STRUCTURE, (RegistryBootstrap) FossilsLegacyStructures::bootstrap).add(Registries.STRUCTURE_SET, (RegistryBootstrap) FossilsLegacyStructureSets::bootstrap).add(Registries.DIMENSION_TYPE, (RegistryBootstrap) FossilsExperimentsDimensionTypes::bootstrap);// .add(Registries.LEVEL_STEM, (RegistryBootstrap) FossilsExperimentsLevelStems::bootstrap);
 
 	private final PackOutput packOutput;
 	private final CompletableFuture<Provider> registries;

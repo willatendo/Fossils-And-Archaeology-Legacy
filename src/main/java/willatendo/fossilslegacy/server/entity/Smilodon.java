@@ -71,7 +71,7 @@ public class Smilodon extends Dinosaur implements DinopediaInformation {
 
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-		return FossilsLegacyEntities.SMILODON.get().create(serverLevel);
+		return FossilsLegacyEntityTypes.SMILODON.get().create(serverLevel);
 	}
 
 	@Override

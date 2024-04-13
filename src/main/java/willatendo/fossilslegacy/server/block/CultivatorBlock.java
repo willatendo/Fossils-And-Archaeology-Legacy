@@ -29,7 +29,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import willatendo.fossilslegacy.server.block.entity.BlockEntityHelper;
 import willatendo.fossilslegacy.server.block.entity.CultivatorBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class CultivatorBlock extends Block implements EntityBlock {
@@ -61,7 +61,7 @@ public class CultivatorBlock extends Block implements EntityBlock {
 			monster = EntityType.ZOMBIFIED_PIGLIN.create(level);
 		}
 		if (chance >= 10) {
-			monster = FossilsLegacyEntities.FAILURESAURUS.get().create(level);
+			monster = FossilsLegacyEntityTypes.FAILURESAURUS.get().create(level);
 		}
 
 		monster.moveTo(blockPos, level.getRandom().nextFloat() * 360F, 0.0F);

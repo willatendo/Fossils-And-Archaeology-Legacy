@@ -22,7 +22,7 @@ public class VelociraptorModel extends EntityModel<Velociraptor> {
 	private final ModelPart upperBody;
 	private final ModelPart lowerBody;
 	private final ModelPart tail;
-	private final ModelPart leftThigh;
+	public final ModelPart leftThigh;
 	private final ModelPart leftLeg;
 	private final ModelPart leftFoot;
 	private final ModelPart leftHook1;
@@ -115,7 +115,7 @@ public class VelociraptorModel extends EntityModel<Velociraptor> {
 			this.tailLower();
 		}
 
-		if (Math.abs(leftThigh.xRot) >= 0.174532F) {
+		if (Math.abs(this.leftThigh.xRot) >= 0.174532F) {
 			this.headLower();
 		} else {
 			this.headUpper();

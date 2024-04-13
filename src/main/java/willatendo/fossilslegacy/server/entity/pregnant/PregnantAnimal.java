@@ -22,7 +22,7 @@ import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.animal.horse.Mule;
 import net.minecraft.world.level.Level;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.entity.HungryAnimal;
 import willatendo.fossilslegacy.server.entity.Mammoth;
 import willatendo.fossilslegacy.server.entity.Smilodon;
@@ -105,10 +105,10 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth<T> {
 			finalEntity = (T) EntityType.WOLF.create(level);
 		}
 		if (livingEntity instanceof Mammoth) {
-			finalEntity = (T) FossilsLegacyEntities.MAMMOTH.get().create(level);
+			finalEntity = (T) FossilsLegacyEntityTypes.MAMMOTH.get().create(level);
 		}
 		if (livingEntity instanceof Smilodon) {
-			finalEntity = (T) FossilsLegacyEntities.SMILODON.get().create(level);
+			finalEntity = (T) FossilsLegacyEntityTypes.SMILODON.get().create(level);
 		}
 		return finalEntity;
 	}
@@ -117,59 +117,59 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth<T> {
 		livingEntity.remove(RemovalReason.DISCARDED);
 		Entity toCreate = null;
 		if (livingEntity instanceof Cat) {
-			toCreate = FossilsLegacyEntities.PREGNANT_CAT.get().create(level);
+			toCreate = FossilsLegacyEntityTypes.PREGNANT_CAT.get().create(level);
 		}
 		if (livingEntity instanceof Cow) {
-			toCreate = FossilsLegacyEntities.PREGNANT_COW.get().create(level);
+			toCreate = FossilsLegacyEntityTypes.PREGNANT_COW.get().create(level);
 		}
 		if (livingEntity instanceof Dolphin) {
-			toCreate = FossilsLegacyEntities.PREGNANT_DOLPHIN.get().create(level);
+			toCreate = FossilsLegacyEntityTypes.PREGNANT_DOLPHIN.get().create(level);
 		}
 		if (livingEntity instanceof Donkey) {
-			toCreate = FossilsLegacyEntities.PREGNANT_DONKEY.get().create(level);
+			toCreate = FossilsLegacyEntityTypes.PREGNANT_DONKEY.get().create(level);
 		}
 		if (livingEntity instanceof Fox) {
-			toCreate = FossilsLegacyEntities.PREGNANT_FOX.get().create(level);
+			toCreate = FossilsLegacyEntityTypes.PREGNANT_FOX.get().create(level);
 		}
 		if (livingEntity instanceof Goat) {
-			toCreate = FossilsLegacyEntities.PREGNANT_GOAT.get().create(level);
+			toCreate = FossilsLegacyEntityTypes.PREGNANT_GOAT.get().create(level);
 		}
 		if (livingEntity instanceof Horse) {
-			toCreate = FossilsLegacyEntities.PREGNANT_HORSE.get().create(level);
+			toCreate = FossilsLegacyEntityTypes.PREGNANT_HORSE.get().create(level);
 		}
 		if (livingEntity instanceof Llama) {
-			toCreate = FossilsLegacyEntities.PREGNANT_LLAMA.get().create(level);
+			toCreate = FossilsLegacyEntityTypes.PREGNANT_LLAMA.get().create(level);
 		}
 		if (livingEntity instanceof Mule) {
-			toCreate = FossilsLegacyEntities.PREGNANT_MULE.get().create(level);
+			toCreate = FossilsLegacyEntityTypes.PREGNANT_MULE.get().create(level);
 		}
 		if (livingEntity instanceof Ocelot) {
-			toCreate = FossilsLegacyEntities.PREGNANT_OCELOT.get().create(level);
+			toCreate = FossilsLegacyEntityTypes.PREGNANT_OCELOT.get().create(level);
 		}
 		if (livingEntity instanceof Panda) {
-			toCreate = FossilsLegacyEntities.PREGNANT_PANDA.get().create(level);
+			toCreate = FossilsLegacyEntityTypes.PREGNANT_PANDA.get().create(level);
 		}
 		if (livingEntity instanceof Pig) {
-			toCreate = FossilsLegacyEntities.PREGNANT_PIG.get().create(level);
+			toCreate = FossilsLegacyEntityTypes.PREGNANT_PIG.get().create(level);
 		}
 		if (livingEntity instanceof PolarBear) {
-			toCreate = FossilsLegacyEntities.PREGNANT_POLAR_BEAR.get().create(level);
+			toCreate = FossilsLegacyEntityTypes.PREGNANT_POLAR_BEAR.get().create(level);
 		}
 		if (livingEntity instanceof Rabbit) {
-			toCreate = FossilsLegacyEntities.PREGNANT_RABBIT.get().create(level);
+			toCreate = FossilsLegacyEntityTypes.PREGNANT_RABBIT.get().create(level);
 		}
 		if (livingEntity instanceof Sheep sheep) {
-			toCreate = FossilsLegacyEntities.PREGNANT_SHEEP.get().create(level);
+			toCreate = FossilsLegacyEntityTypes.PREGNANT_SHEEP.get().create(level);
 			((PregnantSheep) toCreate).setColor(sheep.getColor());
 		}
 		if (livingEntity instanceof Wolf) {
-			toCreate = FossilsLegacyEntities.PREGNANT_WOLF.get().create(level);
+			toCreate = FossilsLegacyEntityTypes.PREGNANT_WOLF.get().create(level);
 		}
 		if (livingEntity instanceof Mammoth) {
-			toCreate = FossilsLegacyEntities.PREGNANT_MAMMOTH.get().create(level);
+			toCreate = FossilsLegacyEntityTypes.PREGNANT_MAMMOTH.get().create(level);
 		}
 		if (livingEntity instanceof Smilodon) {
-			toCreate = FossilsLegacyEntities.PREGNANT_SMILODON.get().create(level);
+			toCreate = FossilsLegacyEntityTypes.PREGNANT_SMILODON.get().create(level);
 		}
 		toCreate.moveTo(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), livingEntity.getYRot(), livingEntity.getXRot());
 		level.addFreshEntity(toCreate);

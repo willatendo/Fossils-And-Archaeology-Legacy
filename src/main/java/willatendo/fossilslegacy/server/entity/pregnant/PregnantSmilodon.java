@@ -13,7 +13,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.entity.DinopediaInformation;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.entity.Smilodon;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -91,6 +91,6 @@ public class PregnantSmilodon extends Smilodon implements DinopediaInformation, 
 
 	@Override
 	public Entity getBaseEntity(Level level) {
-		return FossilsLegacyEntities.MAMMOTH.get().create(level);
+		return FossilsLegacyEntityTypes.MAMMOTH.get().create(level);
 	}
 }

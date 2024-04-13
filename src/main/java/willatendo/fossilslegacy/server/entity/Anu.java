@@ -7,6 +7,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -19,19 +22,26 @@ import net.minecraft.world.BossEvent;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.animal.Pig;
-import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.LargeFireball;
+import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
@@ -42,11 +52,18 @@ import willatendo.fossilslegacy.server.ConfigHelper;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class Anu extends Monster implements SpeakingEntity {
+public class Anu extends Zombie implements SpeakingEntity {
+	private static final EntityDataAccessor<Boolean> IS_CHARGING = SynchedEntityData.defineId(Anu.class, EntityDataSerializers.BOOLEAN);
+	private static final EntityDataAccessor<Integer> ATTACK_MODE = SynchedEntityData.defineId(Anu.class, EntityDataSerializers.INT);
 	private final ServerBossEvent anuBossEvent = (ServerBossEvent) new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
 
 	public Anu(EntityType<? extends Anu> entityType, Level level) {
 		super(entityType, level);
+		this.xpReward = 50;
+	}
+
+	public static AttributeSupplier anuAttributes() {
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 100.0D).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 4.0D).add(Attributes.SPAWN_REINFORCEMENTS_CHANCE, 0.0D).build();
 	}
 
 	public static boolean checkAnuSpawnRules(EntityType<Anu> entityType, ServerLevelAccessor serverLevelAccessor, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource) {
@@ -54,8 +71,28 @@ public class Anu extends Monster implements SpeakingEntity {
 	}
 
 	@Override
+	protected void registerGoals() {
+		super.registerGoals();
+		this.goalSelector.addGoal(7, new AnuShootFireballGoal(this));
+	}
+
+	@Override
+	protected void defineSynchedData() {
+		super.defineSynchedData();
+		this.entityData.define(IS_CHARGING, false);
+		this.entityData.define(ATTACK_MODE, 0);
+	}
+
+	@Override
+	public void addAdditionalSaveData(CompoundTag compoundTag) {
+		super.addAdditionalSaveData(compoundTag);
+		compoundTag.putInt("AttackMode", this.getAttackMode());
+	}
+
+	@Override
 	public void readAdditionalSaveData(CompoundTag compoundTag) {
 		super.readAdditionalSaveData(compoundTag);
+		this.setAttackMode(compoundTag.getInt("AttackMode"));
 		if (this.hasCustomName()) {
 			this.anuBossEvent.setName(this.getDisplayName());
 		}
@@ -103,12 +140,16 @@ public class Anu extends Monster implements SpeakingEntity {
 	public void tick() {
 		super.tick();
 
-		if (this.level().dimension() != Level.NETHER) {
+		if (this.level().dimension() == Level.OVERWORLD) {
 			for (Player player : this.level().players()) {
 				if (player instanceof ServerPlayer serverPlayer) {
 					FossilsLegacyCriteriaTriggers.ANU_ON_EARTH.get().trigger(serverPlayer, this);
 				}
 			}
+		}
+
+		if (this.random.nextInt(5000) <= 5 && this.level().getNearestPlayer(this, 16.0D) != null) {
+			this.qiShock();
 		}
 
 		if (this.getTarget() != null && this.getRandom().nextInt(100) <= 25) {
@@ -123,6 +164,22 @@ public class Anu extends Monster implements SpeakingEntity {
 				this.turnPigsIntoZombifiedPiglins(pigsInArea);
 			}
 		}
+	}
+
+	public boolean isCharging() {
+		return this.entityData.get(IS_CHARGING);
+	}
+
+	public void setCharging(boolean charging) {
+		this.entityData.set(IS_CHARGING, charging);
+	}
+
+	public int getAttackMode() {
+		return this.entityData.get(ATTACK_MODE);
+	}
+
+	public void setAttackMode(int attackMode) {
+		this.entityData.set(ATTACK_MODE, attackMode);
 	}
 
 	@Override
@@ -141,7 +198,7 @@ public class Anu extends Monster implements SpeakingEntity {
 						this.level().setBlock(blockPos, Blocks.NETHERRACK.defaultBlockState(), 3);
 					}
 					if (blockState.is(BlockTags.DIRT) || blockState.is(BlockTags.SAND) || blockState.is(Blocks.GRAVEL)) {
-						this.level().setBlock(blockPos, Blocks.SOUL_SOIL.defaultBlockState(), 3);
+						this.level().setBlock(blockPos, Blocks.SOUL_SAND.defaultBlockState(), 3);
 					}
 					if (blockState.is(BlockTags.ICE)) {
 						this.level().setBlock(blockPos, Blocks.OBSIDIAN.defaultBlockState(), 3);
@@ -151,13 +208,17 @@ public class Anu extends Monster implements SpeakingEntity {
 					}
 					if (x != Math.round(this.getBlockX()) && z != (Math.round(this.getBlockZ()))) {
 						if (this.getRandom().nextInt(2000) <= 1 && this.level().getBlockState(blockPos.above()).isAir()) {
-							this.level().setBlock(blockPos.above(), Blocks.FIRE.defaultBlockState(), 3);
+							if (this.level().getBlockState(blockPos).is(BlockTags.SOUL_FIRE_BASE_BLOCKS)) {
+								this.level().setBlock(blockPos.above(), Blocks.SOUL_FIRE.defaultBlockState(), 3);
+							} else {
+								this.level().setBlock(blockPos.above(), Blocks.FIRE.defaultBlockState(), 3);
+							}
 						}
 					}
 				}
 			}
 			if (this.level() instanceof ServerLevel serverLevel) {
-				serverLevel.setDayTime(24000L);
+				serverLevel.setDayTime(18000L);
 			}
 		}
 	}
@@ -175,7 +236,7 @@ public class Anu extends Monster implements SpeakingEntity {
 				if ((tamedZombifiedPiglin).getTarget() == null) {
 					tamedZombifiedPiglin.setTarget(this.getTarget());
 					if (this.getTarget() instanceof Player player) {
-						tamedZombifiedPiglin.sendMessageToPlayer(TamedZombifiedPiglin.TameZombifiedPiglinSpeaker.ANU_SUMMON, player);
+						tamedZombifiedPiglin.sendMessageToPlayer(TamedZombifiedPiglin.TamedZombifiedPiglinSpeaker.ANU_SUMMON, player);
 					}
 				}
 			}
@@ -221,19 +282,58 @@ public class Anu extends Monster implements SpeakingEntity {
 		}
 	}
 
-	public void fireFireball(Entity target) {
-		if (this.getTarget() instanceof Player player) {
-			this.sendMessageToPlayer(Anu.AnuSpeaker.RAIN_FIRE, player);
+	@Override
+	public boolean hurt(DamageSource damageSource, float damage) {
+		Entity attacker = damageSource.getEntity();
+		if (attacker instanceof Player player) {
+			if (damage > 0.0F) {
+				ItemStack itemInMainHand = player.getMainHandItem();
+				if (itemInMainHand.isEmpty()) {
+					if (this.getAttackMode() != 0) {
+						this.sendMessageToPlayer(AnuSpeaker.HAND_ATTACKED, player);
+						this.setAttackMode(0);
+						return super.hurt(damageSource, damage);
+					}
+				} else {
+					if (itemInMainHand.getItem() instanceof SwordItem && this.getAttackMode() != 0) {
+						this.sendMessageToPlayer(AnuSpeaker.THREATEN, player);
+						this.setAttackMode(0);
+						return super.hurt(damageSource, damage);
+					}
+					if (damageSource.is(DamageTypes.ARROW) && this.getAttackMode() != 1) {
+						this.sendMessageToPlayer(AnuSpeaker.BOW_ATTACKED, player);
+						this.setAttackMode(1);
+						return super.hurt(damageSource, damage);
+					}
+					if (!(itemInMainHand.getItem() instanceof BowItem) && !(itemInMainHand.getItem() instanceof SwordItem)) {
+						double playerDistance = Math.sqrt(this.distanceToSqr(this.level().getNearestPlayer(this, 24.0D)));
+						if (playerDistance > 6 && this.getAttackMode() != 1) {
+							if (this.level().dimension() == Level.NETHER) {
+								this.sendMessageToPlayer(AnuSpeaker.LEARNED_HERE, player);
+							} else {
+								this.sendMessageToPlayer(AnuSpeaker.LEARNED_THERE, player);
+							}
+							this.setAttackMode(1);
+							return super.hurt(damageSource, damage);
+						}
+
+						if (playerDistance < 6 && this.getAttackMode() != 0) {
+							this.sendMessageToPlayer(AnuSpeaker.GENERIC_RANGED_ATTACKED, player);
+							this.setAttackMode(0);
+							return super.hurt(damageSource, damage);
+						}
+					}
+				}
+			} else {
+				if (this.getAttackMode() != 1) {
+					this.sendMessageToPlayer(AnuSpeaker.GENERIC_MELEE_ATTACKED, player);
+					this.setAttackMode(1);
+					return super.hurt(damageSource, damage);
+				}
+			}
+
 		}
-		double x = target.getX() - this.getX();
-		double y = target.getY(0.5) - (0.5 + this.getY(0.5));
-		double z = target.getZ() - this.getZ();
-		for (int i = 1; i <= 16; i++) {
-			Vec3 vec3 = this.getViewVector(1.0f);
-			LargeFireball largeFireball = new LargeFireball(this.level(), this, x, y, z, 1);
-			largeFireball.setPos(this.getX() + vec3.x * 4.0, this.getY(0.5) + 0.5, largeFireball.getZ() + vec3.z * 4.0);
-			this.level().addFreshEntity(largeFireball);
-		}
+		return super.hurt(damageSource, damage);
 	}
 
 	@Override
@@ -256,13 +356,76 @@ public class Anu extends Monster implements SpeakingEntity {
 		return SoundEvents.ZOMBIFIED_PIGLIN_DEATH;
 	}
 
-	public static enum AnuSpeaker implements SpeakerType {
+	@Override
+	protected float getBlockSpeedFactor() {
+		return 1.0F;
+	}
+
+	public static class AnuShootFireballGoal extends Goal {
+		private final Anu anu;
+		public int chargeTime;
+
+		public AnuShootFireballGoal(Anu ghast) {
+			this.anu = ghast;
+		}
+
+		@Override
+		public boolean canUse() {
+			return this.anu.getTarget() != null && this.anu.getAttackMode() == 0;
+		}
+
+		@Override
+		public void start() {
+			this.chargeTime = 0;
+		}
+
+		@Override
+		public void stop() {
+			this.anu.setCharging(false);
+		}
+
+		@Override
+		public boolean requiresUpdateEveryTick() {
+			return true;
+		}
+
+		@Override
+		public void tick() {
+			LivingEntity target = this.anu.getTarget();
+			if (target == null) {
+				return;
+			}
+			if (target.distanceToSqr(this.anu) < 4096.0 && this.anu.hasLineOfSight(target)) {
+				Level level = this.anu.level();
+				++this.chargeTime;
+				if (this.chargeTime == 20) {
+					Vec3 vec3 = this.anu.getViewVector(1.0f);
+					double x = target.getX() - (this.anu.getX() + vec3.x * 4.0);
+					double y = target.getY(0.5) - (0.5 + this.anu.getY(0.5));
+					double z = target.getZ() - (this.anu.getZ() + vec3.z * 4.0);
+					LargeFireball largeFireball = new LargeFireball(level, (LivingEntity) this.anu, x, y, z, 1);
+					largeFireball.setPos(this.anu.getX() + vec3.x * 4.0, this.anu.getY(0.5) + 0.5, largeFireball.getZ() + vec3.z * 4.0);
+					level.addFreshEntity(largeFireball);
+					this.chargeTime = -40;
+
+					if (target instanceof Player player) {
+						this.anu.sendMessageToPlayer(AnuSpeaker.RAIN_FIRE, player);
+					}
+				}
+			} else if (this.chargeTime > 0) {
+				--this.chargeTime;
+			}
+			this.anu.setCharging(this.chargeTime > 10);
+		}
+	}
+
+	public static enum AnuSpeaker implements SpeakerType<Anu> {
 		GREETINGS("greetings"),
 		HAND_ATTACKED("weak_attacked"),
 		THREATEN("threating"),
 		BOW_ATTACKED("bow_attacked"),
 		LEARNED_HERE("learned_here"),
-		LEANRED_THERE("learned_there"),
+		LEARNED_THERE("learned_there"),
 		GENERIC_RANGED_ATTACKED("generic_ranged_attacked"),
 		GENERIC_MELEE_ATTACKED("generic_melee_attacked"),
 		SUMMON_ZOMBIFIED_PIGLINS("summon_zombified_piglins"),
@@ -271,13 +434,20 @@ public class Anu extends Monster implements SpeakingEntity {
 		RAIN_FIRE("rain_fire");
 
 		private Function<Player, Component> message;
+		private final String translationKey;
 
-		private AnuSpeaker(Function<Player, Component> message) {
+		private AnuSpeaker(Function<Player, Component> message, String translationKey) {
 			this.message = message;
+			this.translationKey = translationKey;
 		}
 
 		private AnuSpeaker(String id) {
-			this(player -> Anu.AnuSpeaker.basicSpeach(id));
+			this(player -> Anu.AnuSpeaker.basicSpeach(id), "entity.fossilslegacy.anu.speach." + id);
+		}
+
+		@Override
+		public String getTranslationKey() {
+			return this.translationKey;
 		}
 
 		protected static Component basicSpeach(String id) {
@@ -289,7 +459,7 @@ public class Anu extends Monster implements SpeakingEntity {
 		}
 
 		@Override
-		public Component getMessage(Player player) {
+		public Component getMessage(Player player, Anu anu) {
 			return this.message.apply(player);
 		}
 	}

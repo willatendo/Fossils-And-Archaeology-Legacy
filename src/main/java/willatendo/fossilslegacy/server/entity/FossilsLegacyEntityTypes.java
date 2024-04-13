@@ -29,7 +29,7 @@ import willatendo.simplelibrary.server.registry.FabricRegister;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
-public class FossilsLegacyEntities {
+public class FossilsLegacyEntityTypes {
 	public static final SimpleRegistry<EntityType<?>> ENTITY_TYPES = SimpleRegistry.create(Registries.ENTITY_TYPE, FossilsLegacyUtils.ID);
 
 	public static final SimpleHolder<EntityType<AncientLightningBolt>> ANCIENT_LIGHTNING_BOLT = ENTITY_TYPES.register("ancient_lightning_bolt", () -> FabricEntityTypeBuilder.<AncientLightningBolt>create(MobCategory.MISC, AncientLightningBolt::new).disableSaving().dimensions(EntityDimensions.fixed(0.0F, 0.0F)).build());
@@ -70,7 +70,7 @@ public class FossilsLegacyEntities {
 	public static final SimpleHolder<EntityType<PregnantSmilodon>> PREGNANT_SMILODON = ENTITY_TYPES.register("pregnant_smilodon", () -> FabricEntityTypeBuilder.<PregnantSmilodon>create(MobCategory.CREATURE, PregnantSmilodon::new).dimensions(EntityDimensions.fixed(2.5F, 2.5F)).build());
 	public static final SimpleHolder<EntityType<PregnantWolf>> PREGNANT_WOLF = ENTITY_TYPES.register("pregnant_wolf", () -> FabricEntityTypeBuilder.<PregnantWolf>create(MobCategory.CREATURE, PregnantWolf::new).dimensions(EntityDimensions.fixed(0.6F, 0.85F)).build());
 
-	public static final SimpleHolder<EntityType<Anu>> ANU = ENTITY_TYPES.register("anu", () -> FabricEntityTypeBuilder.<Anu>create(MobCategory.MONSTER, Anu::new).dimensions(EntityDimensions.fixed(0.6F, 1.95F)).build());
+	public static final SimpleHolder<EntityType<Anu>> ANU = ENTITY_TYPES.register("anu", () -> FabricEntityTypeBuilder.<Anu>create(MobCategory.MONSTER, Anu::new).fireImmune().dimensions(EntityDimensions.fixed(0.6F, 1.95F)).build());
 	public static final SimpleHolder<EntityType<TamedZombifiedPiglin>> TAMED_ZOMBIFIED_PIGLIN = ENTITY_TYPES.register("tamed_zombified_piglin", () -> FabricEntityTypeBuilder.<TamedZombifiedPiglin>create(MobCategory.MONSTER, TamedZombifiedPiglin::new).dimensions(EntityDimensions.fixed(.6F, 1.95F)).build());
 	public static final SimpleHolder<EntityType<Failuresaurus>> FAILURESAURUS = ENTITY_TYPES.register("failuresaurus", () -> FabricEntityTypeBuilder.<Failuresaurus>create(MobCategory.MONSTER, Failuresaurus::new).dimensions(EntityDimensions.fixed(1.0F, 1.0F)).build());
 

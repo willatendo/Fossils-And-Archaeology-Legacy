@@ -13,7 +13,7 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.entity.AncientLightningBolt;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 
 public class AncientSwordItem extends SwordItem {
 	public AncientSwordItem(Tier tier, int attackDamage, float attackSpeed, Properties properties) {
@@ -26,7 +26,7 @@ public class AncientSwordItem extends SwordItem {
 			Level level = victim.level();
 			LightningBolt lightningBolt;
 			if (user.getItemBySlot(EquipmentSlot.HEAD).is(FossilsLegacyItemTags.PIGLIN_TAMING_HELMETS)) {
-				lightningBolt = FossilsLegacyEntities.ANCIENT_LIGHTNING_BOLT.get().create(level);
+				lightningBolt = FossilsLegacyEntityTypes.ANCIENT_LIGHTNING_BOLT.get().create(level);
 				((AncientLightningBolt) lightningBolt).tame(player);
 			} else {
 				lightningBolt = EntityType.LIGHTNING_BOLT.create(level);

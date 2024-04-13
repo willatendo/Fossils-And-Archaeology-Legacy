@@ -24,6 +24,7 @@ import net.minecraft.client.renderer.entity.RabbitRenderer;
 import net.minecraft.client.renderer.entity.SheepRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.entity.WolfRenderer;
+import willatendo.fossilslegacy.client.model.AnuModel;
 import willatendo.fossilslegacy.client.model.BrachiosaurusModel;
 import willatendo.fossilslegacy.client.model.DilophosaurusModel;
 import willatendo.fossilslegacy.client.model.EggModel;
@@ -45,6 +46,7 @@ import willatendo.fossilslegacy.client.model.pteranodon.GroundPteranodonModel;
 import willatendo.fossilslegacy.client.model.pteranodon.LandingPteranodonModel;
 import willatendo.fossilslegacy.client.model.tyrannosaurus.KnockedOutTyrannosaurusModel;
 import willatendo.fossilslegacy.client.model.tyrannosaurus.TyrannosaurusModel;
+import willatendo.fossilslegacy.client.render.AnuRenderer;
 import willatendo.fossilslegacy.client.render.BrachiosaurusRenderer;
 import willatendo.fossilslegacy.client.render.DilophosaurusRenderer;
 import willatendo.fossilslegacy.client.render.DilophosaurusVenomRenderer;
@@ -70,7 +72,7 @@ import willatendo.fossilslegacy.client.screen.CultivatorScreen;
 import willatendo.fossilslegacy.client.screen.FeederScreen;
 import willatendo.fossilslegacy.experiments.client.FossilsExperimentsClient;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenus;
 
 public class FossilsLegacyClient implements ClientModInitializer {
@@ -86,52 +88,53 @@ public class FossilsLegacyClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.JURASSIC_FERN.get(), RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), RenderType.cutout());
 
-		EntityRendererRegistry.register(FossilsLegacyEntities.ANCIENT_LIGHTNING_BOLT.get(), LightningBoltRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.ANCIENT_LIGHTNING_BOLT.get(), LightningBoltRenderer::new);
 
-		EntityRendererRegistry.register(FossilsLegacyEntities.FOSSIL.get(), FossilRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.FOSSIL.get(), FossilRenderer::new);
 
-		EntityRendererRegistry.register(FossilsLegacyEntities.BRACHIOSAURUS.get(), BrachiosaurusRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.DILOPHOSAURUS.get(), DilophosaurusRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.MAMMOTH.get(), MammothRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.MOSASAURUS.get(), MosasaurusRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.NAUTILUS.get(), NautilusRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.FUTABASAURUS.get(), FutabasaurusRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.PTERANODON.get(), PteranodonRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.SMILODON.get(), SmilodonRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.STEGOSAURUS.get(), StegosaurusRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.TRICERATOPS.get(), TriceratopsRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.TYRANNOSAURUS.get(), TyrannosaurusRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.VELOCIRAPTOR.get(), VelociraptorRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), BrachiosaurusRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), DilophosaurusRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.MAMMOTH.get(), MammothRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.MOSASAURUS.get(), MosasaurusRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.NAUTILUS.get(), NautilusRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.FUTABASAURUS.get(), FutabasaurusRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.PTERANODON.get(), PteranodonRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.SMILODON.get(), SmilodonRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.STEGOSAURUS.get(), StegosaurusRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.TRICERATOPS.get(), TriceratopsRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.TYRANNOSAURUS.get(), TyrannosaurusRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.VELOCIRAPTOR.get(), VelociraptorRenderer::new);
 
-		EntityRendererRegistry.register(FossilsLegacyEntities.EGG.get(), EggRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.EGG.get(), EggRenderer::new);
 
-		EntityRendererRegistry.register(FossilsLegacyEntities.TAMED_ZOMBIFIED_PIGLIN.get(), context -> new TamedZombifiedPiglinRenderer(context, ModelLayers.ZOMBIFIED_PIGLIN, ModelLayers.ZOMBIFIED_PIGLIN_INNER_ARMOR, ModelLayers.ZOMBIFIED_PIGLIN_OUTER_ARMOR, true));
-		EntityRendererRegistry.register(FossilsLegacyEntities.FAILURESAURUS.get(), FailuresaurusRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.ANU.get(), AnuRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.FAILURESAURUS.get(), FailuresaurusRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.TAMED_ZOMBIFIED_PIGLIN.get(), context -> new TamedZombifiedPiglinRenderer(context, ModelLayers.ZOMBIFIED_PIGLIN, ModelLayers.ZOMBIFIED_PIGLIN_INNER_ARMOR, ModelLayers.ZOMBIFIED_PIGLIN_OUTER_ARMOR, true));
 
-		EntityRendererRegistry.register(FossilsLegacyEntities.PREGNANT_CAT.get(), CatRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.PREGNANT_COW.get(), CowRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.PREGNANT_DOLPHIN.get(), DolphinRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.PREGNANT_DONKEY.get(), context -> new ChestedHorseRenderer<>(context, 0.87F, ModelLayers.DONKEY));
-		EntityRendererRegistry.register(FossilsLegacyEntities.PREGNANT_FOX.get(), FoxRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.PREGNANT_GOAT.get(), GoatRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.PREGNANT_HORSE.get(), HorseRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.PREGNANT_LLAMA.get(), context -> new LlamaRenderer(context, ModelLayers.LLAMA));
-		EntityRendererRegistry.register(FossilsLegacyEntities.PREGNANT_MAMMOTH.get(), MammothRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.PREGNANT_MULE.get(), context -> new ChestedHorseRenderer<>(context, 0.92F, ModelLayers.MULE));
-		EntityRendererRegistry.register(FossilsLegacyEntities.PREGNANT_OCELOT.get(), OcelotRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.PREGNANT_PANDA.get(), PandaRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.PREGNANT_PIG.get(), PigRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.PREGNANT_POLAR_BEAR.get(), PolarBearRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.PREGNANT_RABBIT.get(), RabbitRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.PREGNANT_SHEEP.get(), SheepRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.PREGNANT_SMILODON.get(), SmilodonRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.PREGNANT_WOLF.get(), WolfRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.PREGNANT_CAT.get(), CatRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.PREGNANT_COW.get(), CowRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.PREGNANT_DOLPHIN.get(), DolphinRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.PREGNANT_DONKEY.get(), context -> new ChestedHorseRenderer<>(context, 0.87F, ModelLayers.DONKEY));
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.PREGNANT_FOX.get(), FoxRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.PREGNANT_GOAT.get(), GoatRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.PREGNANT_HORSE.get(), HorseRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.PREGNANT_LLAMA.get(), context -> new LlamaRenderer(context, ModelLayers.LLAMA));
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.PREGNANT_MAMMOTH.get(), MammothRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.PREGNANT_MULE.get(), context -> new ChestedHorseRenderer<>(context, 0.92F, ModelLayers.MULE));
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.PREGNANT_OCELOT.get(), OcelotRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.PREGNANT_PANDA.get(), PandaRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.PREGNANT_PIG.get(), PigRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.PREGNANT_POLAR_BEAR.get(), PolarBearRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.PREGNANT_RABBIT.get(), RabbitRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.PREGNANT_SHEEP.get(), SheepRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.PREGNANT_SMILODON.get(), SmilodonRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.PREGNANT_WOLF.get(), WolfRenderer::new);
 
-		EntityRendererRegistry.register(FossilsLegacyEntities.THROWN_JAVELIN.get(), ThrownJavelinRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.THROWN_INCUBATED_EGG.get(), ThrownItemRenderer::new);
-		EntityRendererRegistry.register(FossilsLegacyEntities.DILOPHOSAURUS_VENOM.get(), DilophosaurusVenomRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.THROWN_JAVELIN.get(), ThrownJavelinRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.THROWN_INCUBATED_EGG.get(), ThrownItemRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.DILOPHOSAURUS_VENOM.get(), DilophosaurusVenomRenderer::new);
 
-		EntityRendererRegistry.register(FossilsLegacyEntities.STONE_TABLET.get(), StoneHieroglyphRenderer::new);
+		EntityRendererRegistry.register(FossilsLegacyEntityTypes.STONE_TABLET.get(), StoneHieroglyphRenderer::new);
 
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.BRACHIOSAURUS, BrachiosaurusModel::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.DILOPHOSAURUS, DilophosaurusModel::createBodyLayer);
@@ -154,6 +157,7 @@ public class FossilsLegacyClient implements ClientModInitializer {
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.PLESIOSAURUS_SKELETON, FutabasaurusSkeletonModel::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.PTERANODON_SKELETON, PteranodonSkeletonModel::createBodyLayer);
 
+		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.ANU, AnuModel::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.FAILURESAURUS, FailuresaurusModel::createBodyLayer);
 
 		EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.EGG, EggModel::createBodyLayer);

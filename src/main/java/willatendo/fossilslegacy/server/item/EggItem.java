@@ -21,7 +21,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.entity.Egg;
 import willatendo.fossilslegacy.server.entity.EggVariant;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 
 public class EggItem extends Item {
 	private final EggVariant eggVariant;
@@ -49,7 +49,7 @@ public class EggItem extends Item {
 		if (level instanceof ServerLevel) {
 			ServerLevel serverLevel = (ServerLevel) level;
 			Consumer consumer = EntityType.createDefaultStackConfig(serverLevel, itemStack, useOnContext.getPlayer());
-			Egg egg = FossilsLegacyEntities.EGG.get().create(serverLevel, itemStack.getTag(), consumer, blockPos, MobSpawnType.SPAWN_EGG, true, true);
+			Egg egg = FossilsLegacyEntityTypes.EGG.get().create(serverLevel, itemStack.getTag(), consumer, blockPos, MobSpawnType.SPAWN_EGG, true, true);
 			egg.setEggVariant(this.eggVariant);
 			float yRot = (float) Mth.floor((Mth.wrapDegrees(useOnContext.getRotation() - 180.0f) + 22.5f) / 45.0f) * 45.0f;
 			egg.moveTo(egg.getX(), egg.getY(), egg.getZ(), yRot, 0.0f);

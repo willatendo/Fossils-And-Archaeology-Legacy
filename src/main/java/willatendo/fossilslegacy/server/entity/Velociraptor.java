@@ -13,6 +13,8 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -30,9 +32,11 @@ import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.entity.goal.DinoBabyFollowParentGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoEatFromFeederGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
@@ -47,6 +51,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 public class Velociraptor extends Dinosaur implements DinopediaInformation, SubSpecies, HighlyIntelligent {
 	private static final EntityDataAccessor<Integer> SUB_SPECIES = SynchedEntityData.defineId(Velociraptor.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Boolean> LEARNED_CHESTS = SynchedEntityData.defineId(Velociraptor.class, EntityDataSerializers.BOOLEAN);
+	private static final EntityDataAccessor<ItemStack> HELD_ITEM = SynchedEntityData.defineId(Velociraptor.class, EntityDataSerializers.ITEM_STACK);
 
 	public Velociraptor(EntityType<? extends Velociraptor> entityType, Level level) {
 		super(entityType, level);
@@ -107,7 +112,6 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 			public void stop() {
 			}
 		});
-//		this.goalSelector.addGoal(6, new LearnChestsGoal(this));
 		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this));
@@ -117,10 +121,21 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 	}
 
 	@Override
+	public InteractionResult additionalInteractions(Player player, Vec3 vec3, InteractionHand interactionHand) {
+		ItemStack itemStack = player.getItemInHand(interactionHand);
+		if (!itemStack.isEmpty()) {
+			this.setHeldItem(itemStack);
+			return InteractionResult.CONSUME;
+		}
+		return super.additionalInteractions(player, vec3, interactionHand);
+	}
+
+	@Override
 	protected void defineSynchedData() {
 		super.defineSynchedData();
 		this.entityData.define(SUB_SPECIES, 0);
 		this.entityData.define(LEARNED_CHESTS, false);
+		this.entityData.define(HELD_ITEM, ItemStack.EMPTY);
 	}
 
 	@Override
@@ -161,6 +176,14 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 		return this.entityData.get(LEARNED_CHESTS);
 	}
 
+	public void setHeldItem(ItemStack itemStack) {
+		this.entityData.set(HELD_ITEM, itemStack);
+	}
+
+	public ItemStack getHeldItem() {
+		return this.entityData.get(HELD_ITEM);
+	}
+
 	@Override
 	public ResourceLocation[][] textures() {
 		return new ResourceLocation[][] { { FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/sandy_velociraptor.png"), FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/sandy_baby_velociraptor.png") }, { FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/green_velociraptor.png"), FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/green_baby_velociraptor.png") }, { FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/white_velociraptor.png"), FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/white_baby_velociraptor.png") } };
@@ -171,6 +194,9 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 		super.addAdditionalSaveData(compoundTag);
 		compoundTag.putInt("SubSpecies", this.getSubSpecies());
 		compoundTag.putBoolean("LearnedChests", this.hasLearnedChests());
+		if (!this.getHeldItem().isEmpty()) {
+			compoundTag.put("HeldItem", this.getHeldItem().save(new CompoundTag()));
+		}
 	}
 
 	@Override
@@ -178,6 +204,10 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 		super.readAdditionalSaveData(compoundTag);
 		this.setSubSpecies(compoundTag.getInt("SubSpecies"));
 		this.setLearnedChests(compoundTag.getBoolean("LearnedChests"));
+		CompoundTag itemCompoundTag = compoundTag.getCompound("HeldItem");
+		if (itemCompoundTag != null && !itemCompoundTag.isEmpty()) {
+			this.setHeldItem(ItemStack.of(itemCompoundTag));
+		}
 	}
 
 	@Override
@@ -218,5 +248,18 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 	@Override
 	public CommandType commandItems() {
 		return CommandType.hand();
+	}
+
+	@Override
+	public boolean hurt(DamageSource damageSource, float damage) {
+		if (this.isTame()) {
+			if (damageSource.getEntity() instanceof Player player) {
+				if (this.isOwnedBy(player)) {
+					this.sendMessageToOwnerOrElseAll(DinoSituation.HURT_ESCAPE);
+					this.setOwnerUUID(null);
+				}
+			}
+		}
+		return super.hurt(damageSource, damage);
 	}
 }

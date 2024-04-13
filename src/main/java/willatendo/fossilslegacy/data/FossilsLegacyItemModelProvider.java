@@ -151,6 +151,8 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
 		this.basicItem(FossilsLegacyItems.SCARAB_GEM_JAVELIN.get());
 		this.basicItem(FossilsLegacyItems.BROKEN_SCARAB_GEM_JAVELIN.get(), this.modLoc("item/scarab_gem_javelin"));
 
+		this.spawnEggItem(FossilsLegacyItems.ANU_SPAWN_EGG.get());
+
 		this.spawnEggItem(FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get());
 
 		this.spawnEggItem(FossilsLegacyItems.BRACHIOSAURUS_SPAWN_EGG.get());

@@ -6,7 +6,11 @@ import willatendo.fossilslegacy.experiments.server.block.FossilsExperimentsBlock
 import willatendo.fossilslegacy.experiments.server.item.FossilsExperimentsItems;
 import willatendo.fossilslegacy.server.FossilsLegacyCreativeModeTabs;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
+import willatendo.fossilslegacy.server.entity.Anu;
+import willatendo.fossilslegacy.server.entity.DinoSituation;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
+import willatendo.fossilslegacy.server.entity.SpeakerType;
+import willatendo.fossilslegacy.server.entity.TamedZombifiedPiglin;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.simplelibrary.data.SimpleLanguageProvider;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
@@ -120,70 +124,81 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("dinopedia.fossilslegacy.wild", "This Animal is Wild");
 
 		// Dino Situations
-		this.add("dinosaur.fossilslegacy.speach.hungry", "Is hungry!");
-		this.add("dinosaur.fossilslegacy.speach.starve", "Is starving!");
-		this.add("dinosaur.fossilslegacy.speach.no_space", "Has no space to grow!");
-		this.add("dinosaur.fossilslegacy.speach.full", "Is full!");
-		this.add("dinosaur.fossilslegacy.speach.tame_tyrannosaurus_error_too_young", "Is too young to be tamed!");
-		this.add("dinosaur.fossilslegacy.speach.tame_tyrannosaurus_error_health", "Must be knocked out to be tamed!");
+		this.add(DinoSituation.HUNGRY, "%s is hungry!");
+		this.add(DinoSituation.STARVE, "%s is starving!");
+		this.add(DinoSituation.NO_SPACE, "%s has no space to grow!");
+		this.add(DinoSituation.STARVE_ESCAPE, "%s has escaped from starvation!");
+		this.add(DinoSituation.HURT_ESCAPE, "%s will not trust humanity again!");
+		this.add(DinoSituation.FULL, "%s is full!");
+		this.add(DinoSituation.TAME_TYRANNOSAURUS_ERROR_TOO_YOUNG, "%s is too young to be tamed!");
+		this.add(DinoSituation.TAME_TYRANNOSAURUS_ERROR_HEALTH, "%s must be knocked out to be tamed!");
 
 		// Entities
-		this.add(FossilsLegacyEntities.BRACHIOSAURUS.get());
-		this.add(FossilsLegacyEntities.DILOPHOSAURUS.get());
-		this.add(FossilsLegacyEntities.MAMMOTH.get());
-		this.add(FossilsLegacyEntities.MOSASAURUS.get());
-		this.add(FossilsLegacyEntities.NAUTILUS.get());
-		this.add(FossilsLegacyEntities.PTERANODON.get());
-		this.add(FossilsLegacyEntities.SMILODON.get());
-		this.add(FossilsLegacyEntities.STEGOSAURUS.get());
-		this.add(FossilsLegacyEntities.TRICERATOPS.get());
-		this.add(FossilsLegacyEntities.TYRANNOSAURUS.get());
-		this.add(FossilsLegacyEntities.VELOCIRAPTOR.get());
+		this.add(FossilsLegacyEntityTypes.BRACHIOSAURUS.get());
+		this.add(FossilsLegacyEntityTypes.DILOPHOSAURUS.get());
+		this.add(FossilsLegacyEntityTypes.MAMMOTH.get());
+		this.add(FossilsLegacyEntityTypes.MOSASAURUS.get());
+		this.add(FossilsLegacyEntityTypes.NAUTILUS.get());
+		this.add(FossilsLegacyEntityTypes.FUTABASAURUS.get());
+		this.add(FossilsLegacyEntityTypes.PTERANODON.get());
+		this.add(FossilsLegacyEntityTypes.SMILODON.get());
+		this.add(FossilsLegacyEntityTypes.STEGOSAURUS.get());
+		this.add(FossilsLegacyEntityTypes.TRICERATOPS.get());
+		this.add(FossilsLegacyEntityTypes.TYRANNOSAURUS.get());
+		this.add(FossilsLegacyEntityTypes.VELOCIRAPTOR.get());
 
-		this.add(FossilsLegacyEntities.EGG.get());
+		this.add(FossilsLegacyEntityTypes.EGG.get());
 		this.add("entity.fossilslegacy.egg.died", "An egg was too cold and died!");
 		this.add("entity.fossilslegacy.egg.died.dry", "An egg was dry and died!");
-		this.add(FossilsLegacyEntities.FOSSIL.get());
+		this.add(FossilsLegacyEntityTypes.FOSSIL.get());
 
-		this.add(FossilsLegacyEntities.PREGNANT_CAT.get(), "Cat");
-		this.add(FossilsLegacyEntities.PREGNANT_COW.get(), "Cow");
-		this.add(FossilsLegacyEntities.PREGNANT_DOLPHIN.get(), "Dolphin");
-		this.add(FossilsLegacyEntities.PREGNANT_DONKEY.get(), "Donkey");
-		this.add(FossilsLegacyEntities.PREGNANT_FOX.get(), "Fox");
-		this.add(FossilsLegacyEntities.PREGNANT_GOAT.get(), "Goat");
-		this.add(FossilsLegacyEntities.PREGNANT_HORSE.get(), "Horse");
-		this.add(FossilsLegacyEntities.PREGNANT_LLAMA.get(), "Llama");
-		this.add(FossilsLegacyEntities.PREGNANT_MAMMOTH.get(), "Mammoth");
-		this.add(FossilsLegacyEntities.PREGNANT_MULE.get(), "Mule");
-		this.add(FossilsLegacyEntities.PREGNANT_OCELOT.get(), "Ocelot");
-		this.add(FossilsLegacyEntities.PREGNANT_PANDA.get(), "Panda");
-		this.add(FossilsLegacyEntities.PREGNANT_PIG.get(), "Pig");
-		this.add(FossilsLegacyEntities.PREGNANT_POLAR_BEAR.get(), "Polar Bear");
-		this.add(FossilsLegacyEntities.PREGNANT_RABBIT.get(), "Rabbit");
-		this.add(FossilsLegacyEntities.PREGNANT_SHEEP.get(), "Sheep");
-		this.add(FossilsLegacyEntities.PREGNANT_SMILODON.get(), "Smildon");
-		this.add(FossilsLegacyEntities.PREGNANT_WOLF.get(), "Wolf");
+		this.add(FossilsLegacyEntityTypes.PREGNANT_CAT.get(), "Cat");
+		this.add(FossilsLegacyEntityTypes.PREGNANT_COW.get(), "Cow");
+		this.add(FossilsLegacyEntityTypes.PREGNANT_DOLPHIN.get(), "Dolphin");
+		this.add(FossilsLegacyEntityTypes.PREGNANT_DONKEY.get(), "Donkey");
+		this.add(FossilsLegacyEntityTypes.PREGNANT_FOX.get(), "Fox");
+		this.add(FossilsLegacyEntityTypes.PREGNANT_GOAT.get(), "Goat");
+		this.add(FossilsLegacyEntityTypes.PREGNANT_HORSE.get(), "Horse");
+		this.add(FossilsLegacyEntityTypes.PREGNANT_LLAMA.get(), "Llama");
+		this.add(FossilsLegacyEntityTypes.PREGNANT_MAMMOTH.get(), "Mammoth");
+		this.add(FossilsLegacyEntityTypes.PREGNANT_MULE.get(), "Mule");
+		this.add(FossilsLegacyEntityTypes.PREGNANT_OCELOT.get(), "Ocelot");
+		this.add(FossilsLegacyEntityTypes.PREGNANT_PANDA.get(), "Panda");
+		this.add(FossilsLegacyEntityTypes.PREGNANT_PIG.get(), "Pig");
+		this.add(FossilsLegacyEntityTypes.PREGNANT_POLAR_BEAR.get(), "Polar Bear");
+		this.add(FossilsLegacyEntityTypes.PREGNANT_RABBIT.get(), "Rabbit");
+		this.add(FossilsLegacyEntityTypes.PREGNANT_SHEEP.get(), "Sheep");
+		this.add(FossilsLegacyEntityTypes.PREGNANT_SMILODON.get(), "Smildon");
+		this.add(FossilsLegacyEntityTypes.PREGNANT_WOLF.get(), "Wolf");
 
-//		this.add(FossilsLegacyEntities.ANU.get(), "Anu");
-		this.add("entity.fossilslegacy.anu.speach.greetings", "Kneel down! Resistance is futile!");
-		this.add("entity.fossilslegacy.anu.speach.weak_attacked", "Bare hands? Brave!");
-		this.add("entity.fossilslegacy.anu.speach.threating", "Draw your sword, kid!");
-		this.add("entity.fossilslegacy.anu.speach.bow_attacked", "Bow-using coward! Stop hidding!");
-		this.add("entity.fossilslegacy.anu.speach.learned_here", "Look what I learned here!");
-		this.add("entity.fossilslegacy.anu.speach.learned_there", "Look what I learned there!");
-		this.add("entity.fossilslegacy.anu.speach.generic_ranged_attacked", "So, is that your weapon?");
-		this.add("entity.fossilslegacy.anu.speach.generic_melee_attacked", "Ha! Stop Playing!");
-		this.add("entity.fossilslegacy.anu.speach.summon_zombified_piglins", "Work for me, rise my servants!");
-		this.add("entity.fossilslegacy.anu.speach.summon_pigs", "Brutes, wake up your wisdom!");
-		this.add("entity.fossilslegacy.anu.speach.qi_shock", "Qi-shock!");
-		this.add("entity.fossilslegacy.anu.speach.rain_fire", "Let's rain fire!");
-		this.add(FossilsLegacyEntities.TAMED_ZOMBIFIED_PIGLIN.get(), "Zombified Piglin");
-		this.add("entity.fossilslegacy.zombified_piglin.speach.anu_summon", "All hiel Anu!");
-		this.add("entity.fossilslegacy.zombified_piglin.speach.sacrifice", "I cannot live without my Master!");
-		this.add("entity.fossilslegacy.zombified_piglin.speach.summon", "I swear my life to %s!");
+		this.add(FossilsLegacyEntityTypes.ANU.get(), "Anu");
+		this.add(Anu.AnuSpeaker.GREETINGS, "Kneel down! Resistance is futile!");
+		this.add(Anu.AnuSpeaker.HAND_ATTACKED, "Bare hands? Brave!");
+		this.add(Anu.AnuSpeaker.THREATEN, "Draw your sword, kid!");
+		this.add(Anu.AnuSpeaker.BOW_ATTACKED, "Bow-using coward! Stop hidding!");
+		this.add(Anu.AnuSpeaker.LEARNED_HERE, "Look what I learned here!");
+		this.add(Anu.AnuSpeaker.LEARNED_THERE, "Look what I learned there!");
+		this.add(Anu.AnuSpeaker.GENERIC_RANGED_ATTACKED, "So, is that your weapon?");
+		this.add(Anu.AnuSpeaker.GENERIC_MELEE_ATTACKED, "Ha! Stop Playing!");
+		this.add(Anu.AnuSpeaker.SUMMON_ZOMBIFIED_PIGLINS, "Work for me, rise my servants!");
+		this.add(Anu.AnuSpeaker.SUMMON_PIGS, "Brutes, wake up your wisdom!");
+		this.add(Anu.AnuSpeaker.QI_SHOCK, "Qi-shock!");
+		this.add(Anu.AnuSpeaker.RAIN_FIRE, "Let fire rain!");
 
-		this.add(FossilsLegacyEntities.THROWN_JAVELIN.get());
-		this.add(FossilsLegacyEntities.STONE_TABLET.get());
+		this.add(FossilsLegacyEntityTypes.TAMED_ZOMBIFIED_PIGLIN.get(), "Zombified Piglin");
+		this.add(TamedZombifiedPiglin.TamedZombifiedPiglinSpeaker.ANU_SUMMON, "All hiel Anu!");
+		this.add(TamedZombifiedPiglin.TamedZombifiedPiglinSpeaker.SACRIFICE, "I cannot live without my Master!");
+		this.add(TamedZombifiedPiglin.TamedZombifiedPiglinSpeaker.SUMMON, "I swear my life to %s!");
+
+		this.add(FossilsLegacyEntityTypes.FAILURESAURUS.get());
+
+		this.add(FossilsLegacyEntityTypes.ANCIENT_LIGHTNING_BOLT.get(), "Lightning Bolt");
+
+		this.add(FossilsLegacyEntityTypes.THROWN_JAVELIN.get());
+		this.add(FossilsLegacyEntityTypes.THROWN_INCUBATED_EGG.get());
+		this.add(FossilsLegacyEntityTypes.DILOPHOSAURUS_VENOM.get());
+
+		this.add(FossilsLegacyEntityTypes.STONE_TABLET.get());
 
 		// Items
 		this.add(FossilsLegacyItems.FOSSIL.get());
@@ -314,6 +329,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add(FossilsLegacyItems.BROKEN_NETHERITE_JAVELIN.get(), "Netherite Javelin");
 		this.add(FossilsLegacyItems.SCARAB_GEM_JAVELIN.get());
 		this.add(FossilsLegacyItems.BROKEN_SCARAB_GEM_JAVELIN.get(), "Scarab Gem Javelin");
+
+		this.add(FossilsLegacyItems.ANU_SPAWN_EGG.get());
 
 		this.add(FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get());
 
@@ -456,5 +473,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 
 		// Upgrades
 		this.add("upgrade.fossilslegacy.scarab_gem_upgrade", "Scarab Gem Upgrade");
+	}
+
+	public void add(SpeakerType<?> speakerType, String translation) {
+		this.add(speakerType.getTranslationKey(), translation);
 	}
 }

@@ -93,7 +93,7 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
 
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-		return FossilsLegacyEntities.MAMMOTH.get().create(serverLevel);
+		return FossilsLegacyEntityTypes.MAMMOTH.get().create(serverLevel);
 	}
 
 	@Override

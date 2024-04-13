@@ -4,7 +4,7 @@ import java.util.function.Supplier;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 
 public enum SyringeAnimals {
 	CAT(() -> EntityType.CAT),
@@ -23,8 +23,8 @@ public enum SyringeAnimals {
 	RABBIT(() -> EntityType.RABBIT),
 	SHEEP(() -> EntityType.SHEEP),
 	WOLF(() -> EntityType.WOLF),
-	MAMMOTH(() -> FossilsLegacyEntities.MAMMOTH.get()),
-	SMILODON(() -> FossilsLegacyEntities.SMILODON.get());
+	MAMMOTH(() -> FossilsLegacyEntityTypes.MAMMOTH.get()),
+	SMILODON(() -> FossilsLegacyEntityTypes.SMILODON.get());
 
 	private final Supplier<EntityType<? extends Entity>> entityType;
 

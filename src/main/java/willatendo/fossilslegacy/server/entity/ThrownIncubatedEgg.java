@@ -26,11 +26,11 @@ public class ThrownIncubatedEgg extends ThrowableItemProjectile {
 	}
 
 	public ThrownIncubatedEgg(Level level, LivingEntity livingEntity) {
-		super(FossilsLegacyEntities.THROWN_INCUBATED_EGG.get(), livingEntity, level);
+		super(FossilsLegacyEntityTypes.THROWN_INCUBATED_EGG.get(), livingEntity, level);
 	}
 
 	public ThrownIncubatedEgg(Level level, double x, double y, double z) {
-		super(FossilsLegacyEntities.THROWN_INCUBATED_EGG.get(), x, y, z, level);
+		super(FossilsLegacyEntityTypes.THROWN_INCUBATED_EGG.get(), x, y, z, level);
 	}
 
 	@Override

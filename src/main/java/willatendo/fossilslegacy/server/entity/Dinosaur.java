@@ -138,6 +138,11 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 					}
 
 					if (this.getHunger() < 0) {
+						if (this.isTame()) {
+							this.sendMessageToOwnerOrElseAll(DinoSituation.STARVE_ESCAPE);
+							this.setCommand(DinosaurCommand.FREE_MOVE);
+							this.setOwnerUUID(null);
+						}
 						if (this.internalClock % 100 == 0) {
 							this.sendMessageToOwnerOrElseAll(DinoSituation.STARVE);
 						}
@@ -192,6 +197,10 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 		}
 	}
 
+	public InteractionResult additionalInteractions(Player player, Vec3 vec3, InteractionHand interactionHand) {
+		return super.interactAt(player, vec3, interactionHand);
+	}
+
 	@Override
 	public InteractionResult interactAt(Player player, Vec3 vec3, InteractionHand interactionHand) {
 		ItemStack itemStack = player.getItemInHand(interactionHand);
@@ -222,7 +231,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 			return InteractionResult.SUCCESS;
 		}
 
-		return super.interactAt(player, vec3, interactionHand);
+		return this.additionalInteractions(player, vec3, interactionHand);
 	}
 
 	@Override
@@ -384,7 +393,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
 		if (this.getEggVariant() != null) {
-			Egg egg = FossilsLegacyEntities.EGG.get().create(serverLevel);
+			Egg egg = FossilsLegacyEntityTypes.EGG.get().create(serverLevel);
 			egg.setEggVariant(this.getEggVariant());
 			if (egg != null) {
 				UUID uuid = this.getOwnerUUID();

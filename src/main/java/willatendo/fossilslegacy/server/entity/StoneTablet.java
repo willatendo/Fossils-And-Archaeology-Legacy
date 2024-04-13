@@ -43,7 +43,7 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
 	}
 
 	private StoneTablet(Level level, BlockPos blockPos) {
-		super(FossilsLegacyEntities.STONE_TABLET.get(), level, blockPos);
+		super(FossilsLegacyEntityTypes.STONE_TABLET.get(), level, blockPos);
 	}
 
 	public StoneTablet(Level level, BlockPos blockPos, Direction direction, Holder<StoneTabletVariant> stoneTabletVariant) {

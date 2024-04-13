@@ -17,11 +17,11 @@ public class DilophosaurusVenom extends ThrowableProjectile {
 	}
 
 	public DilophosaurusVenom(Level level, LivingEntity livingEntity) {
-		super(FossilsLegacyEntities.DILOPHOSAURUS_VENOM.get(), livingEntity, level);
+		super(FossilsLegacyEntityTypes.DILOPHOSAURUS_VENOM.get(), livingEntity, level);
 	}
 
 	public DilophosaurusVenom(Level level, double x, double y, double z) {
-		super(FossilsLegacyEntities.DILOPHOSAURUS_VENOM.get(), x, y, z, level);
+		super(FossilsLegacyEntityTypes.DILOPHOSAURUS_VENOM.get(), x, y, z, level);
 	}
 
 	@Override

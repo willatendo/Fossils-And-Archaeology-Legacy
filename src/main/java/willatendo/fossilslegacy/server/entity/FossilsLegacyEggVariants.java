@@ -15,15 +15,15 @@ import willatendo.simplelibrary.server.registry.SimpleRegistry;
 public class FossilsLegacyEggVariants {
 	public static final SimpleRegistry<EggVariant> EGG_VARIANTS = SimpleRegistry.create(FossilsLegacyRegistries.EGG_VARIANTS, FossilsLegacyUtils.ID);
 
-	public static final SimpleHolder<EggVariant> TRICERATOPS = register("triceratops", () -> FossilsLegacyEntities.TRICERATOPS.get(), () -> FossilsLegacyItems.TRICERATOPS_EGG.get());
-	public static final SimpleHolder<EggVariant> VELOCIRAPTOR = register("velociraptor", () -> FossilsLegacyEntities.VELOCIRAPTOR.get(), () -> FossilsLegacyItems.VELOCIRAPTOR_EGG.get());
-	public static final SimpleHolder<EggVariant> TYRANNOSAURUS = register("tyrannosaurus", () -> FossilsLegacyEntities.TYRANNOSAURUS.get(), () -> FossilsLegacyItems.TYRANNOSAURUS_EGG.get());
-	public static final SimpleHolder<EggVariant> PTERANODON = register("pteranodon", () -> FossilsLegacyEntities.PTERANODON.get(), () -> FossilsLegacyItems.PTERANODON_EGG.get());
-	public static final SimpleHolder<EggVariant> FUTABASAURUS = register("futabasaurus", () -> FossilsLegacyEntities.FUTABASAURUS.get(), () -> FossilsLegacyItems.FUTABASAURUS_EGG.get());
-	public static final SimpleHolder<EggVariant> MOSASAURUS = register("mosasaurus", true, egg -> egg.isInWaterOrBubble(), () -> FossilsLegacyEntities.MOSASAURUS.get(), () -> FossilsLegacyItems.MOSASAURUS_EGG.get());
-	public static final SimpleHolder<EggVariant> STEGOSAURUS = register("stegosaurus", () -> FossilsLegacyEntities.BRACHIOSAURUS.get(), () -> FossilsLegacyItems.STEGOSAURUS_EGG.get());
-	public static final SimpleHolder<EggVariant> DILOPHOSAURUS = register("dilophosaurus", () -> FossilsLegacyEntities.DILOPHOSAURUS.get(), () -> FossilsLegacyItems.DILOPHOSAURUS_EGG.get());
-	public static final SimpleHolder<EggVariant> BRACHIOSAURUS = register("brachiosaurus", () -> FossilsLegacyEntities.BRACHIOSAURUS.get(), () -> FossilsLegacyItems.BRACHIOSAURUS_EGG.get());
+	public static final SimpleHolder<EggVariant> TRICERATOPS = register("triceratops", () -> FossilsLegacyEntityTypes.TRICERATOPS.get(), () -> FossilsLegacyItems.TRICERATOPS_EGG.get());
+	public static final SimpleHolder<EggVariant> VELOCIRAPTOR = register("velociraptor", () -> FossilsLegacyEntityTypes.VELOCIRAPTOR.get(), () -> FossilsLegacyItems.VELOCIRAPTOR_EGG.get());
+	public static final SimpleHolder<EggVariant> TYRANNOSAURUS = register("tyrannosaurus", () -> FossilsLegacyEntityTypes.TYRANNOSAURUS.get(), () -> FossilsLegacyItems.TYRANNOSAURUS_EGG.get());
+	public static final SimpleHolder<EggVariant> PTERANODON = register("pteranodon", () -> FossilsLegacyEntityTypes.PTERANODON.get(), () -> FossilsLegacyItems.PTERANODON_EGG.get());
+	public static final SimpleHolder<EggVariant> FUTABASAURUS = register("futabasaurus", () -> FossilsLegacyEntityTypes.FUTABASAURUS.get(), () -> FossilsLegacyItems.FUTABASAURUS_EGG.get());
+	public static final SimpleHolder<EggVariant> MOSASAURUS = register("mosasaurus", true, egg -> egg.isInWaterOrBubble(), () -> FossilsLegacyEntityTypes.MOSASAURUS.get(), () -> FossilsLegacyItems.MOSASAURUS_EGG.get());
+	public static final SimpleHolder<EggVariant> STEGOSAURUS = register("stegosaurus", () -> FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), () -> FossilsLegacyItems.STEGOSAURUS_EGG.get());
+	public static final SimpleHolder<EggVariant> DILOPHOSAURUS = register("dilophosaurus", () -> FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), () -> FossilsLegacyItems.DILOPHOSAURUS_EGG.get());
+	public static final SimpleHolder<EggVariant> BRACHIOSAURUS = register("brachiosaurus", () -> FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), () -> FossilsLegacyItems.BRACHIOSAURUS_EGG.get());
 
 	public static SimpleHolder<EggVariant> register(String id, Supplier<EntityType> entityType, Supplier<Item> pick) {
 		return register(id, false, egg -> EggVariant.isWarm(egg), entityType, pick);

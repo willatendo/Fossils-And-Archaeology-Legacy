@@ -22,7 +22,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.entity.Fossil;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyFossilVariantTags;
 
 public class FossilItem extends Item {
@@ -48,7 +48,7 @@ public class FossilItem extends Item {
 		if (level instanceof ServerLevel) {
 			ServerLevel serverLevel = (ServerLevel) level;
 			Consumer consumer = EntityType.createDefaultStackConfig(serverLevel, itemStack, useOnContext.getPlayer());
-			Fossil fossil = FossilsLegacyEntities.FOSSIL.get().create(serverLevel, itemStack.getTag(), consumer, blockPos, MobSpawnType.SPAWN_EGG, true, true);
+			Fossil fossil = FossilsLegacyEntityTypes.FOSSIL.get().create(serverLevel, itemStack.getTag(), consumer, blockPos, MobSpawnType.SPAWN_EGG, true, true);
 			RandomSource randomSource = level.getRandom();
 			FossilsLegacyBuiltInRegistries.FOSSIL_VARIANTS.getTag(FossilsLegacyFossilVariantTags.PLACEABLE_FROM_FOSSIL).flatMap(named -> named.getRandomElement(randomSource)).ifPresent(holder -> fossil.setFossilVariant(holder.value()));
 			fossil.setSize(0);

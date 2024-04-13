@@ -35,7 +35,7 @@ public class ThrownJavelin extends AbstractArrow {
 	}
 
 	public ThrownJavelin(Level level, LivingEntity livingEntity, ItemStack itemStack) {
-		super(FossilsLegacyEntities.THROWN_JAVELIN.get(), livingEntity, level, itemStack);
+		super(FossilsLegacyEntityTypes.THROWN_JAVELIN.get(), livingEntity, level, itemStack);
 		this.itemStack = itemStack.copy();
 	}
 

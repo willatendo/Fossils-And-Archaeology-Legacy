@@ -9,7 +9,7 @@ import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEggVariants;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyEntities;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityDataSerializers;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyFossilVariants;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyStoneTabletVariants;
@@ -41,7 +41,7 @@ public class FossilsLegacyMod implements ModInitializer {
 		FossilsLegacyFossilVariants.init();
 		FossilsLegacyStoneTabletVariants.init();
 		FossilsLegacyEntityDataSerializers.init();
-		FossilsLegacyEntities.init();
+		FossilsLegacyEntityTypes.init();
 		FossilsLegacyItems.init();
 		FossilsLegacyCreativeModeTabs.init();
 		FossilsLegacyLootPoolEntryTypes.init();

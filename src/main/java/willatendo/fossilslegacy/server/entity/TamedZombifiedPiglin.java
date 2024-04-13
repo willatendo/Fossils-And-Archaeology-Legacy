@@ -59,7 +59,7 @@ public class TamedZombifiedPiglin extends ZombifiedPiglin implements OwnableEnti
 
 		if (this.getOwner() != null) {
 			if (this.getOwner().isDeadOrDying()) {
-				this.sendMessageToPlayer(TamedZombifiedPiglin.TameZombifiedPiglinSpeaker.SACRIFICE, (Player) this.getOwner());
+				this.sendMessageToPlayer(TamedZombifiedPiglin.TamedZombifiedPiglinSpeaker.SACRIFICE, (Player) this.getOwner());
 				this.discard();
 			}
 		}
@@ -458,19 +458,26 @@ public class TamedZombifiedPiglin extends ZombifiedPiglin implements OwnableEnti
 		}
 	}
 
-	public static enum TameZombifiedPiglinSpeaker implements SpeakerType {
+	public static enum TamedZombifiedPiglinSpeaker implements SpeakerType<TamedZombifiedPiglin> {
 		ANU_SUMMON("anu_summon"),
 		SACRIFICE("sacrifice"),
-		SUMMON(player -> TamedZombifiedPiglin.TameZombifiedPiglinSpeaker.basicSpeach("summon", player.getDisplayName().getString()));
+		SUMMON(player -> TamedZombifiedPiglin.TamedZombifiedPiglinSpeaker.basicSpeach("summon", player.getDisplayName().getString()), "entity.fossilslegacy.zombified_piglin.speach.summon");
 
 		private Function<Player, Component> message;
+		private final String translationKey;
 
-		private TameZombifiedPiglinSpeaker(Function<Player, Component> message) {
+		private TamedZombifiedPiglinSpeaker(Function<Player, Component> message, String translationKey) {
 			this.message = message;
+			this.translationKey = translationKey;
 		}
 
-		private TameZombifiedPiglinSpeaker(String id) {
-			this(player -> TamedZombifiedPiglin.TameZombifiedPiglinSpeaker.basicSpeach(id));
+		@Override
+		public String getTranslationKey() {
+			return this.translationKey;
+		}
+
+		private TamedZombifiedPiglinSpeaker(String id) {
+			this(player -> TamedZombifiedPiglin.TamedZombifiedPiglinSpeaker.basicSpeach(id), "entity.fossilslegacy.zombified_piglin.speach." + id);
 		}
 
 		protected static Component basicSpeach(String id) {
@@ -482,7 +489,7 @@ public class TamedZombifiedPiglin extends ZombifiedPiglin implements OwnableEnti
 		}
 
 		@Override
-		public Component getMessage(Player player) {
+		public Component getMessage(Player player, TamedZombifiedPiglin tamedZombifiedPiglin) {
 			return this.message.apply(player);
 		}
 	}
