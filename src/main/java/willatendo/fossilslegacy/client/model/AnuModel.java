@@ -22,6 +22,7 @@ import net.minecraft.world.entity.HumanoidArm;
 import willatendo.fossilslegacy.server.entity.Anu;
 
 public class AnuModel extends AgeableListModel<Anu> implements ArmedModel, HeadedModel {
+	public final ModelPart root;
 	public final ModelPart head;
 	public final ModelPart body;
 	public final ModelPart rightArm;
@@ -34,6 +35,7 @@ public class AnuModel extends AgeableListModel<Anu> implements ArmedModel, Heade
 
 	public AnuModel(ModelPart root) {
 		super(RenderType::entityCutoutNoCull, true, 16.0f, 0.0f, 2.0f, 2.0f, 20.0f);
+		this.root = root;
 		this.head = root.getChild("head");
 		this.body = root.getChild("body");
 		this.rightArm = root.getChild("right_arm");

@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FossilsLegacyModels;
 import willatendo.fossilslegacy.client.model.AnuModel;
+import willatendo.fossilslegacy.client.render.layer.AnuOverlayLayer;
 import willatendo.fossilslegacy.server.entity.Anu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -20,6 +21,7 @@ public class AnuRenderer extends MobRenderer<Anu, AnuModel> {
 		this.addLayer(new CustomHeadLayer(this, context.getModelSet(), 1.0F, 1.0F, 1.0F, context.getItemInHandRenderer()));
 		this.addLayer(new ElytraLayer(this, context.getModelSet()));
 		this.addLayer(new ItemInHandLayer(this, context.getItemInHandRenderer()));
+		this.addLayer(new AnuOverlayLayer(this));
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package willatendo.fossilslegacy.client.render;
+package willatendo.fossilslegacy.client.render.layer;
 
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
