@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:cooked_porkchop"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "fossilslegacy:time_machine"
+        }
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 3.0,
+        "min": 1.0
+      }
+    }
+  ]
+}

@@ -148,8 +148,10 @@ public class Anu extends Zombie implements SpeakingEntity {
 			}
 		}
 
-		if (this.random.nextInt(5000) <= 5 && this.level().getNearestPlayer(this, 16.0D) != null) {
-			this.qiShock();
+		if (this.getAttackMode() != 1) {
+			if (this.random.nextInt(5000) <= 5 && this.level().getNearestPlayer(this, 16.0D) != null) {
+				this.qiShock();
+			}
 		}
 
 		if (this.getTarget() != null && this.getRandom().nextInt(100) <= 25) {

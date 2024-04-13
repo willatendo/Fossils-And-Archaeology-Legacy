@@ -1,7 +1,7 @@
-// 1.20.4	2024-04-07T13:28:08.4144292	Fossils and Archaeology Legacy/fossilslegacy: Item Models
+// 1.20.4	2024-04-13T12:13:00.6814879	Fossils and Archaeology Legacy/fossilslegacy: Item Models
 8acedddacf7368b55f421a24a3cd08413ee3c58c assets\fossilslegacy\models\item\brachiosaurus_egg.json
-63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\fossilslegacy\models\item\nautilus_spawn_egg.json
 89ec69b213d909644c7d68e122b8c279574798aa assets\fossilslegacy\models\item\brachiosaurus_dna.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\fossilslegacy\models\item\nautilus_spawn_egg.json
 31dd43877df061d9545cec3170428577d29da4ac assets\fossilslegacy\models\item\archaeology_workbench.json
 6376b3b0333caeb74c5267493978506ac825b798 assets\fossilslegacy\models\item\nautilus_eggs.json
 2b62a4c46f1eeeb410678409898bcd3e575adf6a assets\fossilslegacy\models\item\ancient_sword_artifact.json
@@ -52,8 +52,8 @@ ef3ba7e8c10d7b40b3d38ce4079d8bd10e4b301d assets\fossilslegacy\models\item\cooked
 bd165c5894dc19f85abaab92be30b71091296b42 assets\fossilslegacy\models\item\broken_stone_javelin.json
 3751b2e080da0f9f6b399206e7b5714668e1ff55 assets\fossilslegacy\models\item\prehistoric_coin.json
 c1dc22f67cdf27a4d81756e7c3bcdd6143e8f483 assets\fossilslegacy\models\item\time_machine.json
-7757047c1ecf5f196486783d9db94006327bf913 assets\fossilslegacy\models\item\goat_embryo_syringe.json
 2684b0bd2bf79b2674e3d359d5269ea104b43651 assets\fossilslegacy\models\item\broken_wooden_javelin.json
+7757047c1ecf5f196486783d9db94006327bf913 assets\fossilslegacy\models\item\goat_embryo_syringe.json
 aac7a7282a9d0e05c592dca290ce6f7b4344e486 assets\fossilslegacy\models\item\wolf_dna.json
 bdc720c4c533df48ee348aa24c647c92635b7418 assets\fossilslegacy\models\item\polar_bear_dna.json
 e75cb4777a5cc1065ea33a0fc375155a5894734c assets\fossilslegacy\models\item\pig_embryo_syringe.json
@@ -84,8 +84,8 @@ d49730b24fb6933446cfef28d365de0cb00f9dee assets\fossilslegacy\models\item\skull_
 2289fcac9e84d4d3f0cd3b4ebae35fe8332fb540 assets\fossilslegacy\models\item\sheep_dna.json
 78e9912105c4467cce2486c1ab8e22805161afc9 assets\fossilslegacy\models\item\broken_frozen_meat.json
 bd165c5894dc19f85abaab92be30b71091296b42 assets\fossilslegacy\models\item\stone_javelin.json
-c90cf1db781c345e657631c473f18c38d6d051e3 assets\fossilslegacy\models\item\debug_baby.json
 fab704a980924513c3605afad000c0ab90f4ef66 assets\fossilslegacy\models\item\tyrannosaurus_dna.json
+c90cf1db781c345e657631c473f18c38d6d051e3 assets\fossilslegacy\models\item\debug_baby.json
 e6e67e14c1be93a7b836f6faf4936837f94f6362 assets\fossilslegacy\models\item\tyrannosaurus_egg.json
 151202e91933efefc63b4df9a95998761b726c5b assets\fossilslegacy\models\item\tyrannosaurus_tooth.json
 d57479b1d2eb4ed09fcb1564a0578e325421d04c assets\fossilslegacy\models\item\chicken_dna.json
