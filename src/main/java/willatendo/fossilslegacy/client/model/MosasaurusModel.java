@@ -80,32 +80,4 @@ public class MosasaurusModel extends EntityModel<Mosasaurus> {
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
 		this.root.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 	}
-
-//	public void OpenMouth(int time) {
-//		if (this.Lower_jaw.rotateAngleX < 0.349066)
-//			this.Lower_jaw.rotateAngleX += (0.349066 / time);
-//		else
-//			this.Lower_jaw.rotateAngleX = 0.349066F;
-//
-//		if (this.Upper_Jaws.rotateAngleX > -0.174533)
-//			this.Upper_Jaws.rotateAngleX -= (0.174533 / time);
-//		else
-//			this.Upper_Jaws.rotateAngleX = -0.174533F;
-//
-//		this.Upper_Teeth.rotateAngleX = this.Upper_Jaws.rotateAngleX;
-//	}
-//
-//	public void CloseMouth(int time) {
-//		if (this.Lower_jaw.rotateAngleX > 0)
-//			this.Lower_jaw.rotateAngleX -= (0.349066 / time);
-//		else
-//			this.Lower_jaw.rotateAngleX = 0;
-//
-//		if (this.Upper_Jaws.rotateAngleX < 0)
-//			this.Upper_Jaws.rotateAngleX += (0.174533 / time);
-//		else
-//			this.Upper_Jaws.rotateAngleX = 0;
-//
-//		this.Upper_Teeth.rotateAngleX = this.Upper_Jaws.rotateAngleX;
-//	}
 }

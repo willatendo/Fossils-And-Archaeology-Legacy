@@ -15,6 +15,11 @@ import willatendo.fossilslegacy.server.entity.Futabasaurus;
 
 public class FutabasaurusModel extends EntityModel<Futabasaurus> {
 	private final ModelPart root;
+	private final ModelPart head;
+	private final ModelPart neck1;
+	private final ModelPart neck2;
+	private final ModelPart neck3;
+	private final ModelPart neck4;
 	private final ModelPart frontRightFlipper;
 	private final ModelPart frontLeftFlipper;
 	private final ModelPart backRightFlipper;
@@ -22,6 +27,11 @@ public class FutabasaurusModel extends EntityModel<Futabasaurus> {
 
 	public FutabasaurusModel(ModelPart root) {
 		this.root = root;
+		this.head = root.getChild("head");
+		this.neck1 = root.getChild("neck_1");
+		this.neck2 = root.getChild("neck_2");
+		this.neck3 = root.getChild("neck_3");
+		this.neck4 = root.getChild("neck_4");
 		this.frontRightFlipper = root.getChild("front_right_flipper");
 		this.frontLeftFlipper = root.getChild("front_left_flipper");
 		this.backRightFlipper = root.getChild("back_right_flipper");
@@ -50,7 +60,7 @@ public class FutabasaurusModel extends EntityModel<Futabasaurus> {
 	}
 
 	@Override
-	public void setupAnim(Futabasaurus futabasaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+	public void prepareMobModel(Futabasaurus entity, float limbSwing, float limbSwingAmount, float packedOverlay) {
 		this.frontRightFlipper.yRot = (float) (Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.785398163397448 * limbSwingAmount + -2.35619449019234);
 		this.backRightFlipper.yRot = (float) (Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.785398163397448 * limbSwingAmount + -2.0943951023932);
 		this.frontLeftFlipper.yRot = (float) (Mth.cos(limbSwing / (1.919107651F * 0.5F)) * -0.785398163397448 * limbSwingAmount + -0.785398163397448);
@@ -58,297 +68,209 @@ public class FutabasaurusModel extends EntityModel<Futabasaurus> {
 	}
 
 	@Override
+	public void setupAnim(Futabasaurus futabasaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		int steps = 16 + futabasaurus.getGrowthStage();
+		if (!futabasaurus.hasControllingPassenger() || futabasaurus.isOnSurface()) {
+			this.surfacePose(steps);
+		} else {
+			this.divePose(steps);
+		}
+	}
+
+	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
 		this.root.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 	}
 
-//	public boolean WaveTail(float TargetAngle, boolean ClockDirection, int step) {
-//		boolean result1, result2, result3 = false;
-//		float ActionTargetAngle = TargetAngle;
-//		if (TargetAngle < 0)
-//			return false;
-//		if (step <= 0)
-//			return false;
-//		if (ClockDirection) {
-//			// Clockwise
-//			if (tail1.yRot < ActionTargetAngle)
-//				tail1.yRot += (ActionTargetAngle / step);
-//			else
-//				tail1.yRot = ActionTargetAngle;
-//			result1 = (tail1.yRot >= ActionTargetAngle);
-//			ActionTargetAngle += TargetAngle;
-//			if (!result1) {
-//				tail2.rotationPointX = (float) ((tail2.rotationPointX - tail1.rotationPointX) * Math.cos(-(ActionTargetAngle / step)) - (tail2.rotationPointZ - tail1.rotationPointZ) * Math.sin(-(ActionTargetAngle / step)) + tail1.rotationPointX);
-//				tail2.rotationPointZ = (float) ((tail2.rotationPointX - tail1.rotationPointX) * Math.sin(-(ActionTargetAngle / step)) + (tail2.rotationPointZ - tail1.rotationPointZ) * Math.cos(-(ActionTargetAngle / step)) + tail1.rotationPointZ);
-//			}
-//			if (tail2.yRot < ActionTargetAngle)
-//				tail2.yRot += (ActionTargetAngle / step);
-//			else
-//				tail2.yRot = ActionTargetAngle;
-//			result2 = (tail2.yRot >= ActionTargetAngle);
-//			ActionTargetAngle += TargetAngle;
-//			if (!result2) {
-//				tail3.rotationPointX = (float) ((tail3.rotationPointX - tail2.rotationPointX) * Math.cos(-(ActionTargetAngle / step)) - (tail3.rotationPointZ - tail2.rotationPointZ) * Math.sin(-(ActionTargetAngle / step)) + tail2.rotationPointX);
-//				tail3.rotationPointZ = (float) ((tail3.rotationPointX - tail2.rotationPointX) * Math.sin(-(ActionTargetAngle / step)) + (tail3.rotationPointZ - tail2.rotationPointZ) * Math.cos(-(ActionTargetAngle / step)) + tail2.rotationPointZ);
-//			}
-//			if (tail3.yRot < ActionTargetAngle)
-//				tail3.yRot += (ActionTargetAngle / step);
-//			else
-//				tail3.yRot = ActionTargetAngle;
-//			result3 = (tail3.yRot >= ActionTargetAngle);
-//		} else {
-//			ActionTargetAngle = -ActionTargetAngle;
-//			// Anti-Clockwise
-//			if (tail1.yRot > ActionTargetAngle)
-//				tail1.yRot += (ActionTargetAngle / step);
-//			else
-//				tail1.yRot = ActionTargetAngle;
-//			result1 = (tail1.yRot <= ActionTargetAngle);
-//			ActionTargetAngle -= TargetAngle;
-//			if (!result1) {
-//				tail2.rotationPointX = (float) ((tail2.rotationPointX - tail1.rotationPointX) * Math.cos(-(ActionTargetAngle / step)) - (tail2.rotationPointZ - tail1.rotationPointZ) * Math.sin(-(ActionTargetAngle / step)) + tail1.rotationPointX);
-//				tail2.rotationPointZ = (float) ((tail2.rotationPointX - tail1.rotationPointX) * Math.sin(-(ActionTargetAngle / step)) + (tail2.rotationPointZ - tail1.rotationPointZ) * Math.cos(-(ActionTargetAngle / step)) + tail1.rotationPointZ);
-//			}
-//			if (tail2.yRot > ActionTargetAngle)
-//				tail2.yRot += (ActionTargetAngle / step);
-//			else
-//				tail2.yRot = ActionTargetAngle;
-//			result2 = (tail2.yRot <= ActionTargetAngle);
-//			ActionTargetAngle -= TargetAngle;
-//			if (!result2) {
-//				tail3.rotationPointX = (float) ((tail3.rotationPointX - tail2.rotationPointX) * Math.cos(-(ActionTargetAngle / step)) - (tail3.rotationPointZ - tail2.rotationPointZ) * Math.sin(-(ActionTargetAngle / step)) + tail2.rotationPointX);
-//				tail3.rotationPointZ = (float) ((tail3.rotationPointX - tail2.rotationPointX) * Math.sin(-(ActionTargetAngle / step)) + (tail3.rotationPointZ - tail2.rotationPointZ) * Math.cos(-(ActionTargetAngle / step)) + tail2.rotationPointZ);
-//			}
-//			if (tail3.yRot > ActionTargetAngle)
-//				tail3.yRot += (ActionTargetAngle / step);
-//			else
-//				tail3.yRot = ActionTargetAngle;
-//			result3 = (tail3.yRot <= ActionTargetAngle);
-//		}
-//		return (result1 && result2 && result3);
-//	}
-//
-//	public void ReturnTail() {
-//		tail1.yRot = tail2.yRot = tail3.yRot = 0F;
-//		tail1.setRotationPoint(0F, 21F, 0F);
-//		tail2.setRotationPoint(0F, 19F, 5F);
-//		tail3.setRotationPoint(0F, 19F, 11F);
-//	}
-//
-//	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5) {
-//
-//	}
-//
-//	public void setLivingAnimations(LivingEntity entityliving, float f, float f1, float f2) {
-////    	  if (((EntityDinosaurce)entityliving).isModelized()) return;
-////    	  EntityPlesiosaur MainEntity=(EntityPlesiosaur)entityliving;
-////    	  final int STEPS=16+MainEntity.getDinoAge();
-////    	  if (MainEntity.riddenByEntity==null || MainEntity.isOnSurface()) PoseSurface(STEPS);
-////    	  else PoseDive(STEPS);
-//	}
-//
-//	public boolean PoseDive(int steps) {
-//		boolean result = true;
-//		if (Neck1.rotateAngleX < -0.453F) {
-//			Neck1.rotateAngleX += ((0.994F - 0.453F) / steps);
-//			result &= false;
-//		} else
-//			Neck1.rotateAngleX = -0.453F;
-//
-//		if (Neck2.rotateAngleX < -0.174F) {
-//			Neck2.rotateAngleX += ((0.890F - 0.174F) / steps);
-//			result &= false;
-//		} else
-//			Neck2.rotateAngleX = -0.174F;
-//
-//		if (Neck2.rotationPointY < 18F) {
-//			Neck2.rotationPointY += ((18F - 16F) / steps);
-//			result &= false;
-//		} else
-//			Neck2.rotationPointY = 18F;
-//
-//		if (Neck2.rotationPointZ < -3F) {
-//			Neck2.rotationPointZ += ((4F - 3F) / steps);
-//			result &= false;
-//		} else
-//			Neck2.rotationPointZ = -3F;
-//
-//		if (Neck3.rotateAngleX < -0.116F) {
-//			Neck3.rotateAngleX += ((0.588F - 0.116F) / steps);
-//			result &= false;
-//		} else
-//			Neck3.rotateAngleX = -0.116F;
-//
-//		if (Neck3.rotationPointY < 17.7F) {
-//			Neck3.rotationPointY += ((17.7F - 12.7F) / steps);
-//			result &= false;
-//		} else
-//			Neck3.rotationPointY = 17.7F;
-//
-//		if (Neck3.rotationPointZ > -9F) {
-//			Neck3.rotationPointZ -= ((9F - 8F) / steps);
-//			result &= false;
-//		} else
-//			Neck3.rotationPointZ = -9F;
-//
-//		if (Neck4.rotateAngleX < -0.013F) {
-//			Neck4.rotateAngleX += ((0.136F - 0.013F) / steps);
-//			result &= false;
-//		} else
-//			Neck4.rotateAngleX = -0.013F;
-//
-//		if (Neck4.rotationPointY < 17F) {
-//			Neck4.rotationPointY += ((17F - 10F) / steps);
-//			result &= false;
-//		} else
-//			Neck4.rotationPointY = 17F;
-//
-//		if (Neck4.rotationPointZ > -13F) {
-//			Neck4.rotationPointZ -= ((13F - 11F) / steps);
-//			result &= false;
-//		} else
-//			Neck4.rotationPointZ = -13F;
-//
-//		if (head.rotateAngleX > 0.009F) {
-//			head.rotateAngleX -= ((0.497F - 0.009F) / steps);
-//			result &= false;
-//		} else
-//			head.rotateAngleX = 0.009F;
-//
-//		if (head.rotationPointY < 16F) {
-//			head.rotationPointY += ((16F - 9F) / steps);
-//			result &= false;
-//		} else
-//			head.rotationPointY = 16F;
-//
-//		if (head.rotationPointZ > -18F) {
-//			head.rotationPointZ -= ((18F - 15F) / steps);
-//			result &= false;
-//		} else
-//			head.rotationPointZ = -18F;
-//		return result;
-//	}
-//
-//	public boolean PoseSurface(int steps) {
-//		boolean result = true;
-//		if (Neck1.rotateAngleX > -0.994F) {
-//			Neck1.rotateAngleX -= ((0.994F - 0.453F) / steps);
-//			result &= false;
-//		} else
-//			Neck1.rotateAngleX = -0.994F;
-//
-//		if (Neck2.rotateAngleX > -0.890F) {
-//			Neck2.rotateAngleX -= ((0.890F - 0.174F) / steps);
-//			result &= false;
-//		} else
-//			Neck2.rotateAngleX = -0.890F;
-//
-//		if (Neck2.rotationPointY > 16F) {
-//			Neck2.rotationPointY -= ((18F - 16F) / steps);
-//			result &= false;
-//		} else
-//			Neck2.rotationPointY = 16F;
-//
-//		if (Neck2.rotationPointZ > -4F) {
-//			Neck2.rotationPointZ -= ((4F - 3F) / steps);
-//			result &= false;
-//		} else
-//			Neck2.rotationPointZ = -4F;
-//
-//		if (Neck3.rotateAngleX > -0.588F) {
-//			Neck3.rotateAngleX -= ((0.588F - 0.116F) / steps);
-//			result &= false;
-//		} else
-//			Neck3.rotateAngleX = -0.588F;
-//
-//		if (Neck3.rotationPointY > 12.7F) {
-//			Neck3.rotationPointY -= ((17.7F - 12.7F) / steps);
-//			result &= false;
-//		} else
-//			Neck3.rotationPointY = 12.7F;
-//
-//		if (Neck3.rotationPointZ < -8F) {
-//			Neck3.rotationPointZ += ((9F - 8F) / steps);
-//			result &= false;
-//		} else
-//			Neck3.rotationPointZ = -8F;
-//
-//		if (Neck4.rotateAngleX > -0.136F) {
-//			Neck4.rotateAngleX -= ((0.136F - 0.013F) / steps);
-//			result &= false;
-//		} else
-//			Neck4.rotateAngleX = -0.136F;
-//
-//		if (Neck4.rotationPointY > 10F) {
-//			Neck4.rotationPointY -= ((17F - 10F) / steps);
-//			result &= false;
-//		} else
-//			Neck4.rotationPointY = 10F;
-//
-//		if (Neck4.rotationPointZ < -11F) {
-//			Neck4.rotationPointZ += ((13F - 11F) / steps);
-//			result &= false;
-//		} else
-//			Neck4.rotationPointZ = -11F;
-//
-//		if (head.rotateAngleX < 0.497F) {
-//			head.rotateAngleX += ((0.497F - 0.009F) / steps);
-//			result &= false;
-//		} else
-//			head.rotateAngleX = 0.497F;
-//
-//		if (head.rotationPointY > 9F) {
-//			head.rotationPointY -= ((16F - 9F) / steps);
-//			result &= false;
-//		} else
-//			head.rotationPointY = 9F;
-//
-//		if (head.rotationPointZ < -15F) {
-//			head.rotationPointZ += ((18F - 15F) / steps);
-//			result &= false;
-//		} else
-//			head.rotationPointZ = -15F;
-//		return result;
-//	}
-//
-//	// fields
-//	ModelRenderer Body;
-//	ModelRenderer Neck1;
-//	ModelRenderer tail3;
-//	ModelRenderer tail2;
-//	ModelRenderer tail1;
-//	ModelRenderer Neck2;
-//	ModelRenderer Neck3;
-//	ModelRenderer Neck4;
-//	ModelRenderer head;
-//	ModelRenderer right_arm;
-//	ModelRenderer left_arm;
-//	ModelRenderer right_leg;
-//	ModelRenderer left_leg;
-//	public boolean LandFlag = false;
-//
-//	@Override
-//	protected void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, boolean modelized) {
-//		if (modelized)
-//			return;
-//		// super.setRotationAngles(f, f1, f2, f3, f4, f5);
-//
-//		// Head Yaw
-//		// head.yRot = -f3 / 57.29578F;
-//
-//		right_arm.yRot = (float) (Mth.cos(f / (1.919107651F * 0.5F)) * 0.785398163397448 * f1 + -2.35619449019234);
-//		right_leg.yRot = (float) (Mth.cos(f / (1.919107651F * 0.5F)) * 0.785398163397448 * f1 + -2.0943951023932);
-//		if (LandFlag) {
-//
-//			left_arm.yRot = (float) (Mth.cos(f / (1.919107651F * 0.5F)) * 0.785398163397448 * f1 + -0.785398163397448);
-//
-//			left_leg.yRot = (float) (Mth.cos(f / (1.919107651F * 0.5F)) * 0.785398163397448 * f1 + -1.0471975511966);
-//		} else {
-//
-//			left_arm.yRot = (float) (Mth.cos(f / (1.919107651F * 0.5F)) * -0.785398163397448 * f1 + -0.785398163397448);
-//
-//			left_leg.yRot = (float) (Mth.cos(f / (1.919107651F * 0.5F)) * -0.785398163397448 * f1 + -1.0471975511966);
-//		}
-//
-//	}
+	public boolean divePose(int steps) {
+		boolean result = true;
+		if (this.neck1.xRot < -0.453F) {
+			this.neck1.xRot += (0.541F / steps);
+			result &= false;
+		} else {
+			this.neck1.xRot = -0.453F;
+		}
+
+		if (this.neck2.xRot < -0.174F) {
+			this.neck2.xRot += (0.716F / steps);
+			result &= false;
+		} else {
+			this.neck2.xRot = -0.174F;
+		}
+
+		if (this.neck2.y < 18.0F) {
+			this.neck2.y += (2.0F / steps);
+			result &= false;
+		} else {
+			this.neck2.y = 18.0F;
+		}
+
+		if (this.neck2.z < -3.0F) {
+			this.neck2.z += (1.0F / steps);
+			result &= false;
+		} else {
+			this.neck2.z = -3.0F;
+		}
+
+		if (this.neck3.xRot < -0.116F) {
+			this.neck3.xRot += (0.472F / steps);
+			result &= false;
+		} else {
+			this.neck3.xRot = -0.116F;
+		}
+
+		if (this.neck3.y < 17.7F) {
+			this.neck3.y += (5.0F / steps);
+			result &= false;
+		} else {
+			this.neck3.y = 17.7F;
+		}
+
+		if (this.neck3.z > -9F) {
+			this.neck3.z -= (1.0F / steps);
+			result &= false;
+		} else {
+			this.neck3.z = -9F;
+		}
+
+		if (this.neck4.xRot < -0.013F) {
+			this.neck4.xRot += (0.123F / steps);
+			result &= false;
+		} else {
+			this.neck4.xRot = -0.013F;
+		}
+
+		if (this.neck4.y < 17.0F) {
+			this.neck4.y += (7.0F / steps);
+			result &= false;
+		} else {
+			this.neck4.y = 17.0F;
+		}
+
+		if (this.neck4.z > -13.0F) {
+			this.neck4.z -= (2.0F / steps);
+			result &= false;
+		} else {
+			this.neck4.z = -13.0F;
+		}
+
+		if (this.head.xRot > 0.009F) {
+			this.head.xRot -= (0.488F / steps);
+			result &= false;
+		} else {
+			this.head.xRot = 0.009F;
+		}
+
+		if (this.head.y < 16.0F) {
+			this.head.y += (7.0F / steps);
+			result &= false;
+		} else {
+			this.head.y = 16.0F;
+		}
+
+		if (this.head.z > -18.0F) {
+			this.head.z -= (3.0F / steps);
+			result &= false;
+		} else {
+			this.head.z = -18.0F;
+		}
+
+		return result;
+	}
+
+	public boolean surfacePose(int steps) {
+		boolean result = true;
+		if (this.neck1.xRot > -0.994F) {
+			this.neck1.xRot -= (0.541F / steps);
+			result &= false;
+		} else {
+			this.neck1.xRot = -0.994F;
+		}
+
+		if (this.neck2.xRot > -0.890F) {
+			this.neck2.xRot -= (0.716F / steps);
+			result &= false;
+		} else {
+			this.neck2.xRot = -0.890F;
+		}
+
+		if (this.neck2.y > 16.0F) {
+			this.neck2.y -= (2.0F / steps);
+			result &= false;
+		} else {
+			this.neck2.y = 16.0F;
+		}
+
+		if (this.neck2.z > -4.0F) {
+			this.neck2.z -= (1.0F / steps);
+			result &= false;
+		} else {
+			this.neck2.z = -4.0F;
+		}
+
+		if (this.neck3.xRot > -0.588F) {
+			this.neck3.xRot -= (0.472F / steps);
+			result &= false;
+		} else {
+			this.neck3.xRot = -0.588F;
+		}
+
+		if (this.neck3.y > 12.7F) {
+			this.neck3.y -= (5.0F / steps);
+			result &= false;
+		} else {
+			this.neck3.y = 12.7F;
+		}
+
+		if (this.neck3.z < -8.0F) {
+			this.neck3.z += (1.0F / steps);
+			result &= false;
+		} else {
+			this.neck3.z = -8.0F;
+		}
+
+		if (this.neck4.xRot > -0.136F) {
+			this.neck4.xRot -= (0.123F / steps);
+			result &= false;
+		} else {
+			this.neck4.xRot = -0.136F;
+		}
+
+		if (this.neck4.y > 10.0F) {
+			this.neck4.y -= (7.0F / steps);
+			result &= false;
+		} else {
+			this.neck4.y = 10.0F;
+		}
+
+		if (this.neck4.z < -11.0F) {
+			this.neck4.z += (2.0F / steps);
+			result &= false;
+		} else {
+			this.neck4.z = -11.0F;
+		}
+
+		if (this.head.xRot < 0.497F) {
+			this.head.xRot += (0.488F / steps);
+			result &= false;
+		} else {
+			this.head.xRot = 0.497F;
+		}
+
+		if (this.head.y > 9.0F) {
+			this.head.y -= (7.0F / steps);
+			result &= false;
+		} else {
+			this.head.y = 9.0F;
+		}
+
+		if (this.head.z < -15.0F) {
+			this.head.z += (3.0F / steps);
+			result &= false;
+		} else {
+			this.head.z = -15.0F;
+		}
+
+		return result;
+	}
 }

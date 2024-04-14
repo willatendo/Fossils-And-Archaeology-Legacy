@@ -446,9 +446,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("sound.fossilslegacy.mammoth.ambient", "Mammoth Trumpets");
 		this.add("sound.fossilslegacy.mammoth.hurt", "Mammoth Hurts");
 		this.add("sound.fossilslegacy.mammoth.death", "Mammoth Dies");
-		this.add("sound.fossilslegacy.futabasaurus.ambient", "Plesiosaurus Chirps");
-		this.add("sound.fossilslegacy.futabasaurus.hurt", "Plesiosaurus Hurts");
-		this.add("sound.fossilslegacy.futabasaurus.death", "Plesiosaurus Dies");
+		this.add("sound.fossilslegacy.futabasaurus.ambient", "Futabasaurus Chirps");
+		this.add("sound.fossilslegacy.futabasaurus.hurt", "Futabasaurus Hurts");
+		this.add("sound.fossilslegacy.futabasaurus.death", "Futabasaurus Dies");
 		this.add("sound.fossilslegacy.pteranodon.ambient", "Pteranodon Calls");
 		this.add("sound.fossilslegacy.pteranodon.hurt", "Pteranodon Hurts");
 		this.add("sound.fossilslegacy.pteranodon.death", "Pteranodon Dies");

@@ -91,7 +91,7 @@ public class Smilodon extends Dinosaur implements DinopediaInformation {
 
 	@Override
 	public Diet getDiet() {
-		return Diet.herbivore();
+		return Diet.carnivore();
 	}
 
 	@Override

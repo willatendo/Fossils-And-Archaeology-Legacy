@@ -20,6 +20,15 @@ public class SmilodonModel extends EntityModel<Smilodon> {
 
 	private final ModelPart root;
 	private final ModelPart head;
+	private final ModelPart rightEar;
+	private final ModelPart leftEar;
+	private final ModelPart nose;
+	private final ModelPart snout;
+	private final ModelPart jaw;
+	private final ModelPart rightToothTop;
+	private final ModelPart rightToothBottom;
+	private final ModelPart leftToothTop;
+	private final ModelPart leftToothBottom;
 	private final ModelPart body;
 	private final ModelPart back;
 	private final ModelPart tail;
@@ -31,6 +40,15 @@ public class SmilodonModel extends EntityModel<Smilodon> {
 	public SmilodonModel(ModelPart root) {
 		this.root = root;
 		this.head = root.getChild("head");
+		this.rightEar = root.getChild("right_ear");
+		this.leftEar = root.getChild("left_ear");
+		this.nose = root.getChild("nose");
+		this.snout = root.getChild("snout");
+		this.jaw = root.getChild("jaw");
+		this.rightToothTop = root.getChild("right_tooth_top");
+		this.rightToothBottom = root.getChild("right_tooth_bottom");
+		this.leftToothTop = root.getChild("left_tooth_top");
+		this.leftToothBottom = root.getChild("left_tooth_bottom");
 		this.body = root.getChild("body");
 		this.back = root.getChild("back");
 		this.tail = root.getChild("tail");
@@ -73,7 +91,7 @@ public class SmilodonModel extends EntityModel<Smilodon> {
 
 	@Override
 	public void prepareMobModel(Smilodon smilodon, float limbSwing, float limbSwingAmount, float packedOverlay) {
-		this.tail.yRot = /* smilodon.isAngry() ? 0.0f : */ Mth.cos(limbSwing * 0.6662f) * 1.4f * g;
+		this.tail.yRot = Mth.cos(limbSwing * 0.6662f) * 1.4f * g;
 		if (smilodon.isOrderedToSit()) {
 			this.body.setPos(0.0F, 17.0F, 0.0F);
 			this.body.xRot = -0.314F;
@@ -105,8 +123,7 @@ public class SmilodonModel extends EntityModel<Smilodon> {
 			this.rightFrontLeg.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount;
 			this.rightBackLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 		}
-
-		this.head.zRot = smilodon.getHeadRollAngle(packedOverlay) + smilodon.getBodyRollAngle(packedOverlay, 0.0f);
+		this.head.zRot = this.rightEar.zRot = this.leftEar.zRot = this.leftToothBottom.zRot = this.leftToothTop.zRot = this.rightToothBottom.zRot = this.rightToothTop.zRot = this.snout.zRot = this.jaw.zRot = this.nose.zRot = smilodon.getHeadRollAngle(packedOverlay) + smilodon.getBodyRollAngle(packedOverlay, 0.0F);
 		this.body.zRot = smilodon.getBodyRollAngle(packedOverlay, -0.08F);
 		this.back.zRot = smilodon.getBodyRollAngle(packedOverlay, -0.16F);
 		this.tail.zRot = smilodon.getBodyRollAngle(packedOverlay, -0.2F);
@@ -114,9 +131,6 @@ public class SmilodonModel extends EntityModel<Smilodon> {
 
 	@Override
 	public void setupAnim(Smilodon smilodon, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-//		this.head.xRot = headPitch * ((float) Math.PI / 180);
-//		this.head.yRot = netHeadYaw * ((float) Math.PI / 180);
-//		this.tail.xRot = ageInTicks;
 	}
 
 	@Override
