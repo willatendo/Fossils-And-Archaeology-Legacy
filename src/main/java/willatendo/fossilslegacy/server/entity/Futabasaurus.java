@@ -73,7 +73,7 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
 	}
 
 	public static AttributeSupplier plesiosaurusAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 8.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 3.0D).build();
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 16.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 3.0D).build();
 	}
 
 	@Override
@@ -114,10 +114,6 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
 	@Override
 	public Diet getDiet() {
 		return Diet.piscivore();
-	}
-
-	public boolean shouldBeBoat() {
-		return this.hasControllingPassenger();
 	}
 
 	@Override
@@ -194,7 +190,7 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
 
 	@Override
 	public void travel(Vec3 vec3) {
-		if (this.isAlive()) {
+		if (this.isAlive() && !this.isInWaterOrBubble()) {
 			LivingEntity livingEntity = this.getControllingPassenger();
 			if (this.isVehicle() && livingEntity != null) {
 				this.setRot(livingEntity.getYRot(), livingEntity.getXRot() * 0.5F);
@@ -217,6 +213,8 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
 			} else {
 				super.travel(vec3);
 			}
+		} else {
+			super.travel(vec3);
 		}
 	}
 
@@ -264,12 +262,12 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
 	}
 
 	@Override
-	public void lerpTo(double d, double e, double f, float g, float h, int i) {
-		this.lerpX = d;
-		this.lerpY = e;
-		this.lerpZ = f;
-		this.lerpYRot = g;
-		this.lerpXRot = h;
+	public void lerpTo(double x, double y, double z, float yRot, float xRot, int steps) {
+		this.lerpX = x;
+		this.lerpY = y;
+		this.lerpZ = z;
+		this.lerpYRot = yRot;
+		this.lerpXRot = xRot;
 		this.lerpSteps = 10;
 	}
 
@@ -300,32 +298,33 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
 
 	@Nullable
 	private Status isUnderwater() {
-		AABB aABB = this.getBoundingBox();
-		double d = aABB.maxY + 0.001;
-		int i = Mth.floor(aABB.minX);
-		int j = Mth.ceil(aABB.maxX);
-		int k = Mth.floor(aABB.maxY);
-		int l = Mth.ceil(d);
-		int m = Mth.floor(aABB.minZ);
-		int n = Mth.ceil(aABB.maxZ);
-		boolean bl = false;
+		AABB boundingBox = this.getBoundingBox();
+		double maxYPlus = boundingBox.maxY + 0.001;
+		int minX = Mth.floor(boundingBox.minX);
+		int maxX = Mth.ceil(boundingBox.maxX);
+		int minY = Mth.floor(boundingBox.maxY);
+		int maxY = Mth.ceil(maxYPlus);
+		int minZ = Mth.floor(boundingBox.minZ);
+		int maxZ = Mth.ceil(boundingBox.maxZ);
+		boolean underWater = false;
 		BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
-		for (int o = i; o < j; ++o) {
-			for (int p = k; p < l; ++p) {
-				for (int q = m; q < n; ++q) {
-					mutableBlockPos.set(o, p, q);
+		for (int x = minX; x < maxX; ++x) {
+			for (int y = minY; y < maxY; ++y) {
+				for (int z = minZ; z < maxZ; ++z) {
+					mutableBlockPos.set(x, y, z);
 					FluidState fluidState = this.level().getFluidState(mutableBlockPos);
-					if (!fluidState.is(FluidTags.WATER) || !(d < (double) ((float) mutableBlockPos.getY() + fluidState.getHeight(this.level(), mutableBlockPos))))
+					if (!fluidState.is(FluidTags.WATER) || !(maxYPlus < (double) ((float) mutableBlockPos.getY() + fluidState.getHeight(this.level(), mutableBlockPos)))) {
 						continue;
+					}
 					if (fluidState.isSource()) {
-						bl = true;
+						underWater = true;
 						continue;
 					}
 					return Status.UNDER_FLOWING_WATER;
 				}
 			}
 		}
-		return bl ? Status.UNDER_WATER : null;
+		return underWater ? Status.UNDER_WATER : null;
 	}
 
 	private Status getStatus() {
@@ -338,7 +337,7 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
 			return Status.IN_WATER;
 		}
 		float groundFriction = this.getGroundFriction();
-		if (groundFriction > 0.0f) {
+		if (groundFriction > 0.0F) {
 			this.landFriction = groundFriction;
 			return Status.ON_LAND;
 		}
@@ -346,98 +345,104 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
 	}
 
 	public float getWaterLevelAbove() {
-		AABB aABB = this.getBoundingBox();
-		int i = Mth.floor(aABB.minX);
-		int j = Mth.ceil(aABB.maxX);
-		int k = Mth.floor(aABB.maxY);
-		int l = Mth.ceil(aABB.maxY - this.lastYd);
-		int m = Mth.floor(aABB.minZ);
-		int n = Mth.ceil(aABB.maxZ);
+		AABB boundingBox = this.getBoundingBox();
+		int minX = Mth.floor(boundingBox.minX);
+		int maxX = Mth.ceil(boundingBox.maxX);
+		int minY = Mth.floor(boundingBox.maxY);
+		int maxY = Mth.ceil(boundingBox.maxY - this.lastYd);
+		int minZ = Mth.floor(boundingBox.minZ);
+		int maxZ = Mth.ceil(boundingBox.maxZ);
 		BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
-		block0: for (int o = k; o < l; ++o) {
-			float f = 0.0f;
-			for (int p = i; p < j; ++p) {
-				for (int q = m; q < n; ++q) {
-					mutableBlockPos.set(p, o, q);
+		loop: for (int y = minY; y < maxY; ++y) {
+			float height = 0.0F;
+			for (int x = minX; x < maxX; ++x) {
+				for (int z = minZ; z < maxZ; ++z) {
+					mutableBlockPos.set(x, y, z);
 					FluidState fluidState = this.level().getFluidState(mutableBlockPos);
 					if (fluidState.is(FluidTags.WATER)) {
-						f = Math.max(f, fluidState.getHeight(this.level(), mutableBlockPos));
+						height = Math.max(height, fluidState.getHeight(this.level(), mutableBlockPos));
 					}
-					if (f >= 1.0f)
-						continue block0;
+					if (height >= 1.0F) {
+						continue loop;
+					}
 				}
 			}
-			if (!(f < 1.0f))
+			if (!(height < 1.0F)) {
 				continue;
-			return (float) mutableBlockPos.getY() + f;
+			}
+			return (float) mutableBlockPos.getY() + height;
 		}
-		return l + 1;
+		return maxY + 1;
 	}
 
 	public float getGroundFriction() {
-		AABB aABB = this.getBoundingBox();
-		AABB aABB2 = new AABB(aABB.minX, aABB.minY - 0.001, aABB.minZ, aABB.maxX, aABB.minY, aABB.maxZ);
-		int i = Mth.floor(aABB2.minX) - 1;
-		int j = Mth.ceil(aABB2.maxX) + 1;
-		int k = Mth.floor(aABB2.minY) - 1;
-		int l = Mth.ceil(aABB2.maxY) + 1;
-		int m = Mth.floor(aABB2.minZ) - 1;
-		int n = Mth.ceil(aABB2.maxZ) + 1;
-		VoxelShape voxelShape = Shapes.create(aABB2);
-		float f = 0.0f;
-		int o = 0;
+		AABB boundingBox = this.getBoundingBox();
+		AABB adjusted = new AABB(boundingBox.minX, boundingBox.minY - 0.001, boundingBox.minZ, boundingBox.maxX, boundingBox.minY, boundingBox.maxZ);
+		int minX = Mth.floor(adjusted.minX) - 1;
+		int maxX = Mth.ceil(adjusted.maxX) + 1;
+		int minY = Mth.floor(adjusted.minY) - 1;
+		int maxY = Mth.ceil(adjusted.maxY) + 1;
+		int minZ = Mth.floor(adjusted.minZ) - 1;
+		int maxZ = Mth.ceil(adjusted.maxZ) + 1;
+		VoxelShape voxelShape = Shapes.create(adjusted);
+		float friction = 0.0F;
+		int value = 0;
 		BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
-		for (int p = i; p < j; ++p) {
-			for (int q = m; q < n; ++q) {
-				int r = (p == i || p == j - 1 ? 1 : 0) + (q == m || q == n - 1 ? 1 : 0);
-				if (r == 2)
+		for (int x = minX; x < maxX; ++x) {
+			for (int z = minZ; z < maxZ; ++z) {
+				int plus = (x == minX || x == maxX - 1 ? 1 : 0) + (z == minZ || z == maxZ - 1 ? 1 : 0);
+				if (plus == 2) {
 					continue;
-				for (int s = k; s < l; ++s) {
-					if (r > 0 && (s == k || s == l - 1))
+				}
+				for (int y = minY; y < maxY; ++y) {
+					if (plus > 0 && (y == minY || y == maxY - 1)) {
 						continue;
-					mutableBlockPos.set(p, s, q);
+					}
+					mutableBlockPos.set(x, y, z);
 					BlockState blockState = this.level().getBlockState(mutableBlockPos);
-					if (blockState.getBlock() instanceof WaterlilyBlock || !Shapes.joinIsNotEmpty(blockState.getCollisionShape(this.level(), mutableBlockPos).move(p, s, q), voxelShape, BooleanOp.AND))
+					if (blockState.getBlock() instanceof WaterlilyBlock || !Shapes.joinIsNotEmpty(blockState.getCollisionShape(this.level(), mutableBlockPos).move(x, y, z), voxelShape, BooleanOp.AND)) {
 						continue;
-					f += blockState.getBlock().getFriction();
-					++o;
+					}
+					friction += blockState.getBlock().getFriction();
+					++value;
 				}
 			}
 		}
-		return f / (float) o;
+		return friction / (float) value;
 	}
 
 	private boolean checkInWater() {
-		AABB aABB = this.getBoundingBox();
-		int i = Mth.floor(aABB.minX);
-		int j = Mth.ceil(aABB.maxX);
-		int k = Mth.floor(aABB.minY);
-		int l = Mth.ceil(aABB.minY + 0.001);
-		int m = Mth.floor(aABB.minZ);
-		int n = Mth.ceil(aABB.maxZ);
-		boolean bl = false;
+		AABB boundingBox = this.getBoundingBox();
+		int minX = Mth.floor(boundingBox.minX);
+		int maxX = Mth.ceil(boundingBox.maxX);
+		int minY = Mth.floor(boundingBox.minY);
+		int maxY = Mth.ceil(boundingBox.minY + 0.001);
+		int minZ = Mth.floor(boundingBox.minZ);
+		int maxZ = Mth.ceil(boundingBox.maxZ);
+		boolean inWater = false;
 		this.waterLevel = -1.7976931348623157E308;
 		BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
-		for (int o = i; o < j; ++o) {
-			for (int p = k; p < l; ++p) {
-				for (int q = m; q < n; ++q) {
-					mutableBlockPos.set(o, p, q);
+		for (int x = minX; x < maxX; ++x) {
+			for (int y = minY; y < maxY; ++y) {
+				for (int z = minZ; z < maxZ; ++z) {
+					mutableBlockPos.set(x, y, z);
 					FluidState fluidState = this.level().getFluidState(mutableBlockPos);
-					if (!fluidState.is(FluidTags.WATER))
+					if (!fluidState.is(FluidTags.WATER)) {
 						continue;
-					float f = (float) p + fluidState.getHeight(this.level(), mutableBlockPos);
-					this.waterLevel = Math.max((double) f, this.waterLevel);
-					bl |= aABB.minY < (double) f;
+					}
+					float height = (float) y + fluidState.getHeight(this.level(), mutableBlockPos);
+					this.waterLevel = Math.max((double) height, this.waterLevel);
+					inWater |= boundingBox.minY < (double) height;
 				}
 			}
 		}
-		return bl;
+		return inWater;
 	}
 
 	private void floatBoat() {
-		double yFlowing = this.isNoGravity() ? 0.0 : (double) -0.04f;
+		double yFlowing = this.isNoGravity() ? 0.0 : (double) -0.04F;
 		double yWater = 0.0;
-		this.invFriction = 0.05f;
+		this.invFriction = 0.05F;
 		if (this.oldStatus == Status.IN_AIR && this.status != Status.IN_AIR && this.status != Status.ON_LAND) {
 			this.waterLevel = this.getY(1.0);
 			this.setPos(this.getX(), (double) (this.getWaterLevelAbove() - this.getBbHeight()) + 0.101, this.getZ());
@@ -447,19 +452,19 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
 		} else {
 			if (this.status == Status.IN_WATER) {
 				yWater = (this.waterLevel - this.getY()) / (double) this.getBbHeight();
-				this.invFriction = 0.9f;
+				this.invFriction = 0.9F;
 			} else if (this.status == Status.UNDER_FLOWING_WATER) {
 				yFlowing = -7.0E-4;
-				this.invFriction = 0.9f;
+				this.invFriction = 0.9F;
 			} else if (this.status == Status.UNDER_WATER) {
-				yWater = 0.01f;
-				this.invFriction = 0.45f;
+				yWater = 0.01F;
+				this.invFriction = 0.45F;
 			} else if (this.status == Status.IN_AIR) {
-				this.invFriction = 0.9f;
+				this.invFriction = 0.9F;
 			} else if (this.status == Status.ON_LAND) {
 				this.invFriction = this.landFriction;
 				if (this.getControllingPassenger() instanceof Player) {
-					this.landFriction /= 2.0f;
+					this.landFriction /= 2.0F;
 				}
 			}
 			Vec3 deltaMovement = this.getDeltaMovement();
@@ -476,26 +481,26 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
 		if (!this.isVehicle()) {
 			return;
 		}
-		float f = 0.0f;
+		float movement = 0.0F;
 		if (this.getControllingPassenger() instanceof LocalPlayer localPlayer) {
 			if (localPlayer.input.left) {
-				this.deltaRotation -= 1.0f;
+				this.deltaRotation -= 1.0F;
 			}
 			if (localPlayer.input.right) {
-				this.deltaRotation += 1.0f;
+				this.deltaRotation += 1.0F;
 			}
 			if (localPlayer.input.right != localPlayer.input.left && !localPlayer.input.up && !localPlayer.input.down) {
-				f += 0.005f;
+				movement += 0.005F;
 			}
 			this.setYRot(this.getYRot() + this.deltaRotation);
 			if (localPlayer.input.up) {
-				f += 0.04f;
+				movement += 0.04F;
 			}
 			if (localPlayer.input.down) {
-				f -= 0.005f;
+				movement -= 0.005F;
 			}
 		}
-		this.setDeltaMovement(this.getDeltaMovement().add(Mth.sin(-this.getYRot() * ((float) Math.PI / 180)) * f, 0.0, Mth.cos(this.getYRot() * ((float) Math.PI / 180)) * f));
+		this.setDeltaMovement(this.getDeltaMovement().add(Mth.sin(-this.getYRot() * ((float) Math.PI / 180)) * movement, 0.0, Mth.cos(this.getYRot() * ((float) Math.PI / 180)) * movement));
 	}
 
 	private void tickLerp() {

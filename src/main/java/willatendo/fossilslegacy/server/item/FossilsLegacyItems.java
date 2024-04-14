@@ -1,5 +1,7 @@
 package willatendo.fossilslegacy.server.item;
 
+import java.util.List;
+
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorItem.Type;
@@ -50,6 +52,7 @@ public class FossilsLegacyItems {
 	public static final SimpleHolder<EggItem> STEGOSAURUS_EGG = ITEMS.register("stegosaurus_egg", () -> new EggItem(FossilsLegacyEggVariants.STEGOSAURUS.get(), new Item.Properties().stacksTo(1)));
 	public static final SimpleHolder<EggItem> DILOPHOSAURUS_EGG = ITEMS.register("dilophosaurus_egg", () -> new EggItem(FossilsLegacyEggVariants.DILOPHOSAURUS.get(), new Item.Properties().stacksTo(1)));
 	public static final SimpleHolder<EggItem> BRACHIOSAURUS_EGG = ITEMS.register("brachiosaurus_egg", () -> new EggItem(FossilsLegacyEggVariants.BRACHIOSAURUS.get(), new Item.Properties().stacksTo(1)));
+	public static final List<SimpleHolder<EggItem>> EGGS = List.of(FossilsLegacyItems.TRICERATOPS_EGG, FossilsLegacyItems.VELOCIRAPTOR_EGG, FossilsLegacyItems.TYRANNOSAURUS_EGG, FossilsLegacyItems.PTERANODON_EGG, FossilsLegacyItems.FUTABASAURUS_EGG, FossilsLegacyItems.MOSASAURUS_EGG, FossilsLegacyItems.STEGOSAURUS_EGG, FossilsLegacyItems.DILOPHOSAURUS_EGG, FossilsLegacyItems.BRACHIOSAURUS_EGG);
 	public static final SimpleHolder<Item> RAW_TRICERATOPS_MEAT = ITEMS.register("raw_triceratops_meat", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));
 	public static final SimpleHolder<Item> RAW_VELOCIRAPTOR_MEAT = ITEMS.register("raw_velociraptor_meat", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));
 	public static final SimpleHolder<Item> RAW_TYRANNOSAURUS_MEAT = ITEMS.register("raw_tyrannosaurus_meat", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));
@@ -141,28 +144,28 @@ public class FossilsLegacyItems {
 	public static final SimpleHolder<AxeItem> SCARAB_GEM_AXE = ITEMS.register("scarab_gem_axe", () -> new AxeItem(FossilsLegacyTiers.SCARAB_GEM, 5.0F, -3.0F, new Item.Properties()));
 	public static final SimpleHolder<HoeItem> SCARAB_GEM_HOE = ITEMS.register("scarab_gem_hoe", () -> new HoeItem(FossilsLegacyTiers.SCARAB_GEM, -4, 0.0F, new Item.Properties()));
 	public static final SimpleHolder<ModSmithingTemplateItem> SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("scarab_gem_upgrade_smithing_template", () -> ModSmithingTemplateItem.createGemUpgradeTemplate());
-	public static final SimpleHolder<JavelinItem> WOODEN_JAVELIN = ITEMS.register("wooden_javelin", () -> new JavelinItem(Tiers.WOOD, new Item.Properties().stacksTo(16)));
+	public static final SimpleHolder<JavelinItem> WOODEN_JAVELIN = ITEMS.register("wooden_javelin", () -> new JavelinItem(Tiers.WOOD, new Item.Properties()));
 	public static final SimpleHolder<BrokenJavelinItem> BROKEN_WOODEN_JAVELIN = ITEMS.register("broken_wooden_javelin", () -> new BrokenJavelinItem(Tiers.WOOD, new Item.Properties()));
-	public static final SimpleHolder<JavelinItem> STONE_JAVELIN = ITEMS.register("stone_javelin", () -> new JavelinItem(Tiers.STONE, new Item.Properties().stacksTo(16)));
+	public static final SimpleHolder<JavelinItem> STONE_JAVELIN = ITEMS.register("stone_javelin", () -> new JavelinItem(Tiers.STONE, new Item.Properties()));
 	public static final SimpleHolder<BrokenJavelinItem> BROKEN_STONE_JAVELIN = ITEMS.register("broken_stone_javelin", () -> new BrokenJavelinItem(Tiers.STONE, new Item.Properties()));
-	public static final SimpleHolder<JavelinItem> IRON_JAVELIN = ITEMS.register("iron_javelin", () -> new JavelinItem(Tiers.IRON, new Item.Properties().stacksTo(16)));
+	public static final SimpleHolder<JavelinItem> IRON_JAVELIN = ITEMS.register("iron_javelin", () -> new JavelinItem(Tiers.IRON, new Item.Properties()));
 	public static final SimpleHolder<BrokenJavelinItem> BROKEN_IRON_JAVELIN = ITEMS.register("broken_iron_javelin", () -> new BrokenJavelinItem(Tiers.IRON, new Item.Properties()));
-	public static final SimpleHolder<JavelinItem> GOLDEN_JAVELIN = ITEMS.register("golden_javelin", () -> new JavelinItem(Tiers.GOLD, new Item.Properties().stacksTo(16)));
+	public static final SimpleHolder<JavelinItem> GOLDEN_JAVELIN = ITEMS.register("golden_javelin", () -> new JavelinItem(Tiers.GOLD, new Item.Properties()));
 	public static final SimpleHolder<BrokenJavelinItem> BROKEN_GOLDEN_JAVELIN = ITEMS.register("broken_golden_javelin", () -> new BrokenJavelinItem(Tiers.GOLD, new Item.Properties()));
-	public static final SimpleHolder<JavelinItem> DIAMOND_JAVELIN = ITEMS.register("diamond_javelin", () -> new JavelinItem(Tiers.DIAMOND, new Item.Properties().stacksTo(16)));
+	public static final SimpleHolder<JavelinItem> DIAMOND_JAVELIN = ITEMS.register("diamond_javelin", () -> new JavelinItem(Tiers.DIAMOND, new Item.Properties()));
 	public static final SimpleHolder<BrokenJavelinItem> BROKEN_DIAMOND_JAVELIN = ITEMS.register("broken_diamond_javelin", () -> new BrokenJavelinItem(Tiers.DIAMOND, new Item.Properties()));
-	public static final SimpleHolder<JavelinItem> NETHERITE_JAVELIN = ITEMS.register("netherite_javelin", () -> new JavelinItem(Tiers.NETHERITE, new Item.Properties().stacksTo(16)));
+	public static final SimpleHolder<JavelinItem> NETHERITE_JAVELIN = ITEMS.register("netherite_javelin", () -> new JavelinItem(Tiers.NETHERITE, new Item.Properties()));
 	public static final SimpleHolder<BrokenJavelinItem> BROKEN_NETHERITE_JAVELIN = ITEMS.register("broken_netherite_javelin", () -> new BrokenJavelinItem(Tiers.NETHERITE, new Item.Properties()));
-	public static final SimpleHolder<JavelinItem> SCARAB_GEM_JAVELIN = ITEMS.register("scarab_gem_javelin", () -> new JavelinItem(FossilsLegacyTiers.SCARAB_GEM, new Item.Properties().stacksTo(16)));
+	public static final SimpleHolder<JavelinItem> SCARAB_GEM_JAVELIN = ITEMS.register("scarab_gem_javelin", () -> new JavelinItem(FossilsLegacyTiers.SCARAB_GEM, new Item.Properties()));
 	public static final SimpleHolder<BrokenJavelinItem> BROKEN_SCARAB_GEM_JAVELIN = ITEMS.register("broken_scarab_gem_javelin", () -> new BrokenJavelinItem(FossilsLegacyTiers.SCARAB_GEM, new Item.Properties()));
 	public static final SimpleHolder<SpawnEggItem> ANU_SPAWN_EGG = ITEMS.register("anu_spawn_egg", () -> new SpawnEggItem(FossilsLegacyEntityTypes.ANU.get(), 0x432600, 0xa62c14, new Item.Properties()));
 	public static final SimpleHolder<SpawnEggItem> FAILURESAURUS_SPAWN_EGG = ITEMS.register("failuresaurus_spawn_egg", () -> new SpawnEggItem(FossilsLegacyEntityTypes.FAILURESAURUS.get(), 0x51e6a5, 0x1b5128, new Item.Properties()));
 	public static final SimpleHolder<DinosaurSpawnEggItem> BRACHIOSAURUS_SPAWN_EGG = ITEMS.register("brachiosaurus_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), 0x3b3e55, 0x7f8ba1, new Item.Properties()));
 	public static final SimpleHolder<DinosaurSpawnEggItem> DILOPHOSAURUS_SPAWN_EGG = ITEMS.register("dilophosaurus_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), 0x686442, 0xf1bc2c, new Item.Properties()));
+	public static final SimpleHolder<DinosaurSpawnEggItem> FUTABASAURUS_SPAWN_EGG = ITEMS.register("futabasaurus_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntityTypes.FUTABASAURUS.get(), 0xca6700, 0xb92200, new Item.Properties()));
 	public static final SimpleHolder<DinosaurSpawnEggItem> MAMMOTH_SPAWN_EGG = ITEMS.register("mammoth_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntityTypes.MAMMOTH.get(), 0x3d2700, 0x211500, new Item.Properties()));
 	public static final SimpleHolder<DinosaurSpawnEggItem> MOSASAURUS_SPAWN_EGG = ITEMS.register("mosasaurus_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntityTypes.MOSASAURUS.get(), 0x0d7346, 0xffe1a7, new Item.Properties()));
 	public static final SimpleHolder<SpawnEggItem> NAUTILUS_SPAWN_EGG = ITEMS.register("nautilus_spawn_egg", () -> new SpawnEggItem(FossilsLegacyEntityTypes.NAUTILUS.get(), 0xc1c1c1, 0xa95453, new Item.Properties()));
-	public static final SimpleHolder<DinosaurSpawnEggItem> FUTABASAURUS_SPAWN_EGG = ITEMS.register("futabasaurus_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntityTypes.FUTABASAURUS.get(), 0xca6700, 0xb92200, new Item.Properties()));
 	public static final SimpleHolder<DinosaurSpawnEggItem> PTERANODON_SPAWN_EGG = ITEMS.register("pteranodon_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntityTypes.PTERANODON.get(), 0x7c5d89, 0x450e5b, new Item.Properties()));
 	public static final SimpleHolder<DinosaurSpawnEggItem> SMILODON_SPAWN_EGG = ITEMS.register("smilodon_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntityTypes.SMILODON.get(), 0xefa745, 0x9a6527, new Item.Properties()));
 	public static final SimpleHolder<DinosaurSpawnEggItem> STEGOSAURUS_SPAWN_EGG = ITEMS.register("stegosaurus_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntityTypes.STEGOSAURUS.get(), 0x839d00, 0x785f00, new Item.Properties()));

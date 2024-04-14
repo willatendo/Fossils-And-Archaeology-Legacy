@@ -20,8 +20,12 @@ public class JavelinItem extends Item {
 	private final Tier tier;
 
 	public JavelinItem(Tier tier, Properties properties) {
-		super(properties.defaultDurability(tier.getUses()));
+		super(properties);
 		this.tier = tier;
+	}
+
+	public Tier getTier() {
+		return this.tier;
 	}
 
 	@Override
@@ -42,7 +46,7 @@ public class JavelinItem extends Item {
 				if (!level.isClientSide()) {
 					ItemStack damaged = itemStack;
 					if (!(itemStack.getItem() instanceof BrokenJavelinItem)) {
-						damaged = this.tier == Tiers.WOOD ? FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get().getDefaultInstance() : this.tier == Tiers.STONE ? FossilsLegacyItems.BROKEN_STONE_JAVELIN.get().getDefaultInstance() : this.tier == Tiers.IRON ? FossilsLegacyItems.BROKEN_IRON_JAVELIN.get().getDefaultInstance() : this.tier == Tiers.GOLD ? FossilsLegacyItems.BROKEN_GOLDEN_JAVELIN.get().getDefaultInstance() : this.tier == Tiers.DIAMOND ? FossilsLegacyItems.BROKEN_DIAMOND_JAVELIN.get().getDefaultInstance() : this.tier == Tiers.NETHERITE ? FossilsLegacyItems.BROKEN_NETHERITE_JAVELIN.get().getDefaultInstance() : this.tier == FossilsLegacyTiers.SCARAB_GEM ? FossilsLegacyItems.BROKEN_SCARAB_GEM_JAVELIN.get().getDefaultInstance() : itemStack;
+						damaged = JavelinItem.getDamaged(this.tier);
 					}
 					damaged.hurtAndBreak(1, player, (user) -> {
 						user.broadcastBreakEvent(livingEntity.getUsedItemHand());
@@ -77,5 +81,9 @@ public class JavelinItem extends Item {
 			player.startUsingItem(interactionHand);
 			return InteractionResultHolder.consume(itemStack);
 		}
+	}
+
+	public static ItemStack getDamaged(Tier tier) {
+		return tier == Tiers.WOOD ? FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get().getDefaultInstance() : tier == Tiers.STONE ? FossilsLegacyItems.BROKEN_STONE_JAVELIN.get().getDefaultInstance() : tier == Tiers.IRON ? FossilsLegacyItems.BROKEN_IRON_JAVELIN.get().getDefaultInstance() : tier == Tiers.GOLD ? FossilsLegacyItems.BROKEN_GOLDEN_JAVELIN.get().getDefaultInstance() : tier == Tiers.DIAMOND ? FossilsLegacyItems.BROKEN_DIAMOND_JAVELIN.get().getDefaultInstance() : tier == Tiers.NETHERITE ? FossilsLegacyItems.BROKEN_NETHERITE_JAVELIN.get().getDefaultInstance() : tier == FossilsLegacyTiers.SCARAB_GEM ? FossilsLegacyItems.BROKEN_SCARAB_GEM_JAVELIN.get().getDefaultInstance() : null;
 	}
 }

@@ -30,6 +30,10 @@ public class PlaceEntityItem extends Item {
 		this.entityType = entityType;
 	}
 
+	public Supplier<EntityType<?>> getEntityType() {
+		return this.entityType;
+	}
+
 	@Override
 	public InteractionResult useOn(UseOnContext useOnContext) {
 		Level level = useOnContext.getLevel();
@@ -51,9 +55,9 @@ public class PlaceEntityItem extends Item {
 				ServerLevel serverLevel = (ServerLevel) level;
 				Entity entity = this.entityType.get().create(level);
 				this.entityModification(entity);
-				entity.setPos((double) placePos.getX() + 0.5, placePos.getY() + 1, (double) placePos.getZ() + 0.5);
+				entity.setPos((double) placePos.getX() + 0.5D, placePos.getY() + 1.0D, (double) placePos.getZ() + 0.5D);
 				double yOffset = getYOffset(serverLevel, blockPos, !Objects.equals(blockPos, placePos) && direction == Direction.UP, ((Entity) entity).getBoundingBox());
-				entity.moveTo((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + yOffset, (double) blockPos.getZ() + 0.5D, Mth.wrapDegrees(serverLevel.random.nextFloat() * 360.0f), 0.0f);
+				entity.moveTo((double) placePos.getX() + 0.5D, (double) placePos.getY() + yOffset, (double) placePos.getZ() + 0.5D, Mth.wrapDegrees(serverLevel.random.nextFloat() * 360.0F), 0.0F);
 				if (entity instanceof Mob mob) {
 					mob.yHeadRot = mob.getYRot();
 					mob.yBodyRot = mob.getYRot();

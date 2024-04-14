@@ -27,11 +27,24 @@ import willatendo.fossilslegacy.server.item.FossilsLegacyTiers;
 
 public class ThrownJavelin extends AbstractArrow {
 	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(ThrownJavelin.class, EntityDataSerializers.INT);
-	private ItemStack itemStack = FossilsLegacyItems.WOODEN_JAVELIN.get().getDefaultInstance();
+	private ItemStack itemStack = FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get().getDefaultInstance();
 	private float damage = 1.0F;
 
+	public ThrownJavelin(EntityType<? extends ThrownJavelin> entityType, Level level, ItemStack itemStack) {
+		super(entityType, level, itemStack);
+	}
+
 	public ThrownJavelin(EntityType<? extends ThrownJavelin> entityType, Level level) {
-		super(entityType, level, new ItemStack(FossilsLegacyItems.WOODEN_JAVELIN.get()));
+		this(entityType, level, FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get().getDefaultInstance());
+	}
+
+	protected ThrownJavelin(EntityType<? extends ThrownJavelin> entityType, double x, double y, double z, Level level, ItemStack itemStack) {
+		this(entityType, level, itemStack);
+		this.setPos(x, y, z);
+	}
+
+	public ThrownJavelin(Level level, double x, double y, double z, ItemStack itemStack) {
+		this(FossilsLegacyEntityTypes.THROWN_JAVELIN.get(), x, y, z, level, itemStack);
 	}
 
 	public ThrownJavelin(Level level, LivingEntity livingEntity, ItemStack itemStack) {

@@ -1,4 +1,4 @@
-// 1.20.4	2024-04-13T12:13:00.6768819	Fossils and Archaeology Legacy/Recipes
+// 1.20.4	2024-04-13T18:34:54.598922	Fossils and Archaeology Legacy/Recipes
 dbe2329aa1304a12cf53a876e8f62aee71e40850 data\fossilslegacy\advancements\recipes\misc\mammoth_embryo_syringe.json
 bb1d2559f43e29b77aee5c201214d115cc7656c4 data\fossilslegacy\advancements\recipes\misc\leather_outputs.json
 245871f86ea5b8023e8ac160899a68e456cabfa4 data\fossilslegacy\recipes\sio_chiu_le_from_campfire_cooking.json
@@ -121,8 +121,8 @@ fcc3809345b6bd936b7fa315dcacbf9cab83bf24 data\fossilslegacy\advancements\recipes
 1c7ffc8d73690e450474d0b6f53892a30e33f832 data\fossilslegacy\advancements\recipes\food\cooked_chicken_soup_bucket_from_smelting.json
 4c563c2bd001c5116cbbe2d9ea327b1f95a70982 data\fossilslegacy\advancements\recipes\food\cooked_pteranodon_meat_from_smoking.json
 4d527d8952f228f471455df57af457a3a834574e data\fossilslegacy\advancements\recipes\misc\triceratops_egg.json
-fa0bd08f5c5fafc6184c4b79224fbacb23bcf600 data\fossilslegacy\recipes\cultivator.json
 37849d320001d3521af3b759f3709496d46e1bb4 data\fossilslegacy\advancements\recipes\food\cooked_pteranodon_meat_from_smelting.json
+fa0bd08f5c5fafc6184c4b79224fbacb23bcf600 data\fossilslegacy\recipes\cultivator.json
 abbbbdc7e0463a0a4c3bdc9a1c88a999bb0d78dd data\fossilslegacy\advancements\recipes\misc\rabbit_embryo_syringe.json
 63376c718ac2dcc3eb1fa3266d167636ab2913b4 data\fossilslegacy\advancements\recipes\misc\incubated_parrot_egg.json
 adb9e51a153aeeb1a797c59c898ed41b7fa8b0c0 data\fossilslegacy\advancements\recipes\food\cooked_brachiosaurus_meat_from_smelting.json

@@ -26,6 +26,11 @@ public class DebugItem extends Item {
 		this.function = function;
 	}
 
+	@Override
+	public boolean isFoil(ItemStack itemStack) {
+		return true;
+	}
+
 	public static DebugItem debugMaxHunger() {
 		return new DebugItem("set_max_hunger", (dinosaur, player) -> {
 			dinosaur.setHunger(dinosaur.getMaxHunger());

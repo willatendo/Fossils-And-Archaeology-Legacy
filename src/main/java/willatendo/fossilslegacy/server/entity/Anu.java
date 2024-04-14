@@ -71,6 +71,16 @@ public class Anu extends Zombie implements SpeakingEntity {
 	}
 
 	@Override
+	protected boolean convertsInWater() {
+		return false;
+	}
+
+	@Override
+	protected ItemStack getSkull() {
+		return null;
+	}
+
+	@Override
 	protected void registerGoals() {
 		super.registerGoals();
 		this.goalSelector.addGoal(7, new AnuShootFireballGoal(this));

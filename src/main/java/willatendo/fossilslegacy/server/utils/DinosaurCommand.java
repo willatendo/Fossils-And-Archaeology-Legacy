@@ -5,6 +5,7 @@ import java.util.Map;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
 
 public enum DinosaurCommand implements StringRepresentable {
@@ -27,6 +28,11 @@ public enum DinosaurCommand implements StringRepresentable {
 
 	public String getOrder() {
 		return this.order;
+	}
+
+	public static DinosaurCommand getRandom() {
+		RandomSource randomSource = RandomSource.create();
+		return DinosaurCommand.values()[randomSource.nextInt(3)];
 	}
 
 	public static DinosaurCommand getNext(DinosaurCommand dinosaurOrder) {

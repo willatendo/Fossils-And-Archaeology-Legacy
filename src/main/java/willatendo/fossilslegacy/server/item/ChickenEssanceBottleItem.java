@@ -8,7 +8,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
-import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.GrowingEntity;
 
 public class ChickenEssanceBottleItem extends Item {
@@ -21,9 +20,7 @@ public class ChickenEssanceBottleItem extends Item {
 		if (livingEntity instanceof GrowingEntity growingEntity) {
 			if (growingEntity.getGrowthStage() < growingEntity.getMaxGrowthStage()) {
 				growingEntity.setGrowthStage(growingEntity.getGrowthStage() + 1);
-				if (livingEntity instanceof Dinosaur dinosaur) {
-					dinosaur.setHealth((float) (livingEntity.getHealth() + dinosaur.getMinHealth()));
-				}
+				livingEntity.setHealth((float) (livingEntity.getHealth() + growingEntity.getMinHealth()));
 				ItemUtils.createFilledResult(itemStack, player, Items.GLASS_BOTTLE.getDefaultInstance());
 				return InteractionResult.sidedSuccess(player.level().isClientSide());
 			}

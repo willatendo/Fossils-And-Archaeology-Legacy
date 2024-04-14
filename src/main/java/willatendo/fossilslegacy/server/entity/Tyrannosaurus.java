@@ -35,6 +35,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import willatendo.fossilslegacy.server.block.FossilsLegacyBlockTags;
 import willatendo.fossilslegacy.server.entity.goal.DinoBabyFollowParentGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoEatFromFeederGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
@@ -50,6 +51,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur {
 	private static final EntityDataAccessor<Boolean> KNOCKED_OUT = SynchedEntityData.defineId(Tyrannosaurus.class, EntityDataSerializers.BOOLEAN);
+	private final BlockBreakRule blockBreakRule = new BlockBreakRule(this, 3, FossilsLegacyBlockTags.TYRANNOSAURUS_UNBREAKABLES);
 
 	public Tyrannosaurus(EntityType<? extends Tyrannosaurus> entityType, Level level) {
 		super(entityType, level);
@@ -115,6 +117,8 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
 	@Override
 	public void tick() {
 		super.tick();
+
+		this.blockBreakRule.tick();
 
 		if (!this.isTame() && this.getGrowthStage() > 3) {
 			if (this.getHunger() == 1 || this.getHealth() <= 20) {

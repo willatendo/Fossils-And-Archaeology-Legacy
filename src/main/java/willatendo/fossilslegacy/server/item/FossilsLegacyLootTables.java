@@ -13,7 +13,7 @@ public class FossilsLegacyLootTables {
 	public static final ResourceLocation DILOPHOSAURUS_EGG = FossilsLegacyUtils.resource("entities/egg/dilophosaurus");
 	public static final ResourceLocation MOSASAURUS_EGG = FossilsLegacyUtils.resource("entities/egg/mosasaurus");
 	public static final ResourceLocation FUTABASAURUS_EGG = FossilsLegacyUtils.resource("entities/egg/futabasaurus");
-	public static final ResourceLocation PTERANODON_EGG = FossilsLegacyUtils.resource("entities/egg/pterosaurus");
+	public static final ResourceLocation PTERANODON_EGG = FossilsLegacyUtils.resource("entities/egg/pteranodon");
 	public static final ResourceLocation STEGOSAURUS_EGG = FossilsLegacyUtils.resource("entities/egg/stegosaurus");
 	public static final ResourceLocation TRICERATOPS_EGG = FossilsLegacyUtils.resource("entities/egg/triceratops");
 	public static final ResourceLocation TYRANNOSAURUS_EGG = FossilsLegacyUtils.resource("entities/egg/tyrannosaurus");

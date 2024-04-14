@@ -10,6 +10,9 @@ import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
+import net.minecraft.Util;
+import net.minecraft.core.Position;
+import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
@@ -31,13 +34,19 @@ import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.animal.horse.Mule;
 import net.minecraft.world.entity.monster.ZombifiedPiglin;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
 import net.minecraft.world.level.levelgen.Heightmap;
 import willatendo.fossilslegacy.server.biomes.FossilsLegacyPlacedFeatures;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
+import willatendo.fossilslegacy.server.dispenser.DispenseEntityItemBehavior;
 import willatendo.fossilslegacy.server.entity.Anu;
 import willatendo.fossilslegacy.server.entity.Brachiosaurus;
 import willatendo.fossilslegacy.server.entity.Dilophosaurus;
@@ -52,6 +61,7 @@ import willatendo.fossilslegacy.server.entity.Nautilus;
 import willatendo.fossilslegacy.server.entity.Pteranodon;
 import willatendo.fossilslegacy.server.entity.Smilodon;
 import willatendo.fossilslegacy.server.entity.Stegosaurus;
+import willatendo.fossilslegacy.server.entity.ThrownIncubatedEgg;
 import willatendo.fossilslegacy.server.entity.Triceratops;
 import willatendo.fossilslegacy.server.entity.Tyrannosaurus;
 import willatendo.fossilslegacy.server.entity.Velociraptor;
@@ -75,11 +85,48 @@ public class ModEvents {
 				fabricItemGroupEntries.accept(items.get());
 			}
 		});
+		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.SPAWN_EGGS).register(fabricItemGroupEntries -> {
+			fabricItemGroupEntries.addAfter(Items.ALLAY_SPAWN_EGG, FossilsLegacyItems.ANU_SPAWN_EGG.get());
+			fabricItemGroupEntries.addAfter(Items.BLAZE_SPAWN_EGG, FossilsLegacyItems.BRACHIOSAURUS_SPAWN_EGG.get());
+			fabricItemGroupEntries.addAfter(Items.CREEPER_SPAWN_EGG, FossilsLegacyItems.DILOPHOSAURUS_SPAWN_EGG.get());
+			fabricItemGroupEntries.addAfter(Items.EVOKER_SPAWN_EGG, FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get(), FossilsLegacyItems.FUTABASAURUS_SPAWN_EGG.get());
+			fabricItemGroupEntries.addAfter(Items.MAGMA_CUBE_SPAWN_EGG, FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get());
+			fabricItemGroupEntries.addAfter(Items.MOOSHROOM_SPAWN_EGG, FossilsLegacyItems.MOSASAURUS_SPAWN_EGG.get());
+			fabricItemGroupEntries.addAfter(Items.MULE_SPAWN_EGG, FossilsLegacyItems.NAUTILUS_SPAWN_EGG.get());
+			fabricItemGroupEntries.addAfter(Items.POLAR_BEAR_SPAWN_EGG, FossilsLegacyItems.PTERANODON_SPAWN_EGG.get());
+			fabricItemGroupEntries.addAfter(Items.SLIME_SPAWN_EGG, FossilsLegacyItems.SMILODON_SPAWN_EGG.get());
+			fabricItemGroupEntries.addAfter(Items.SQUID_SPAWN_EGG, FossilsLegacyItems.STEGOSAURUS_SPAWN_EGG.get());
+			fabricItemGroupEntries.addAfter(Items.TRADER_LLAMA_SPAWN_EGG, FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get());
+			fabricItemGroupEntries.addAfter(Items.TURTLE_SPAWN_EGG, FossilsLegacyItems.TYRANNOSAURUS_SPAWN_EGG.get());
+		});
 	}
 
 	public static void addToMaps() {
 		ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.JURASSIC_FERN.get(), 0.65F);
 		ComposterBlock.COMPOSTABLES.put(FossilsLegacyItems.JURASSIC_FERN_SPORES.get(), 0.65F);
+
+		FossilsLegacyItems.EGGS.forEach(eggItem -> DispenserBlock.registerBehavior(eggItem.get(), new DispenseEntityItemBehavior(entity -> ((Egg) entity).setEggVariant(eggItem.get().getEggVariant()))));
+		DispenserBlock.registerBehavior(FossilsLegacyItems.NAUTILUS_EGGS.get(), new DispenseEntityItemBehavior());
+		DispenserBlock.registerBehavior(FossilsLegacyItems.NAUTILUS.get(), new DispenseEntityItemBehavior());
+		DispenserBlock.registerBehavior(FossilsLegacyItems.FOSSIL.get(), new DispenseEntityItemBehavior());
+		DispenserBlock.registerBehavior(FossilsLegacyItems.INCUBATED_CHICKEN_EGG.get(), new AbstractProjectileDispenseBehavior() {
+			@Override
+			protected Projectile getProjectile(Level level, Position position, ItemStack itemStack) {
+				return Util.make(new ThrownIncubatedEgg(level, position.x(), position.y(), position.z()), thrownIncubatedEgg -> {
+					thrownIncubatedEgg.setItem(itemStack);
+					thrownIncubatedEgg.setEggType(0);
+				});
+			}
+		});
+		DispenserBlock.registerBehavior(FossilsLegacyItems.INCUBATED_PARROT_EGG.get(), new AbstractProjectileDispenseBehavior() {
+			@Override
+			protected Projectile getProjectile(Level level, Position position, ItemStack itemStack) {
+				return Util.make(new ThrownIncubatedEgg(level, position.x(), position.y(), position.z()), thrownIncubatedEgg -> {
+					thrownIncubatedEgg.setItem(itemStack);
+					thrownIncubatedEgg.setEggType(1);
+				});
+			}
+		});
 	}
 
 	public static void addToBiomes() {
