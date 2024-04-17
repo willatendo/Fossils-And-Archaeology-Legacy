@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.commons.compress.utils.Lists;
 
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -32,6 +33,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import willatendo.fossilslegacy.client.FossilsLegacyKeys;
 import willatendo.fossilslegacy.server.entity.goal.DinoBabyFollowParentGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoEatFromFeederGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoFollowOwnerGoal;
@@ -95,12 +97,7 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
 
 	@Override
 	protected void registerGoals() {
-		this.goalSelector.addGoal(0, new FloatGoal(this) {
-			@Override
-			public boolean canUse() {
-				return !Futabasaurus.this.hasControllingPassenger() ? super.canUse() : false;
-			}
-		});
+		this.goalSelector.addGoal(0, new FloatGoal(this));
 		this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
 		this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
 		this.goalSelector.addGoal(3, new DinoTemptGoal(this, 1.1D, false));
@@ -248,7 +245,61 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
 	}
 
 	@Override
+	public void aiStep() {
+		super.aiStep();
+
+		this.handleRiding();
+	}
+
+	@Override
+	public void tick() {
+		FossilsLegacyUtils.LOGGER.info(this.targetY + "");
+
+		super.tick();
+
+		if (this.isInWaterOrBubble()) {
+			if (((!this.isOnSurface() && this.targetY > this.getY()) || this.targetY < this.getY()) && !this.verticalCollision) {
+				if (this.targetY > this.getY()) {
+					this.setYya(2.0F);
+				} else {
+					this.setYya(-1.0F);
+				}
+			}
+			if ((Math.abs(this.getY() - this.targetY) <= 0.125D) || this.isOnSurface()) {
+				this.setYya(0.0F);
+			}
+		}
+	}
+
+	private void handleRiding() {
+		if (this.hasControllingPassenger()) {
+			if (this.getControllingPassenger() instanceof LocalPlayer localPlayer) {
+				if (FossilsLegacyKeys.SINK.isDown()) {
+					this.targetY = (float) this.getY() - 0.5F;
+				} else {
+					if (this.isOnSurface()) {
+						this.targetY = (float) this.getY();
+					} else if (localPlayer.xxa == 0.0F) {
+						this.targetY = (float) this.getY() + 0.2F;
+					} else {
+						this.targetY = (float) this.getY();
+					}
+				}
+			}
+		}
+	}
+
+	public void addYRot(float add) {
+		this.setYRot(this.getYRot() + add);
+	}
+
+	@Override
 	public boolean isPushedByFluid() {
 		return false;
+	}
+
+	@Override
+	protected float getWaterSlowDown() {
+		return this.hasControllingPassenger() ? 0.75F : super.getWaterSlowDown();
 	}
 }

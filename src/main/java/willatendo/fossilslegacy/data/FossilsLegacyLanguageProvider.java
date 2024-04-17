@@ -378,6 +378,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 		this.add("jei.fossilslegacy.feeder", "Feeder");
 		this.add("jei.fossilslegacy.feeder.food_level", "Provides %s food");
 
+		// Keys
+		this.add("key.fossilslegacy.sink", "Sink");
+
 		// Menus
 		this.add("menu.fossilslegacy.analyzer", "Analyzer");
 		this.add("menu.fossilslegacy.archaeology_workbench", "Archaeology Workbench");

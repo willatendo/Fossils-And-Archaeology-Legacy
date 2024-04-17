@@ -1,4 +1,4 @@
-// 1.20.4	2024-04-13T21:31:36.1352244	Fossils and Archaeology Legacy/Tags for minecraft:item: fossilslegacy
+// 1.20.4	2024-04-14T12:45:43.7704515	Fossils and Archaeology Legacy/Tags for minecraft:item: fossilslegacy
 0d91c860420e5c6d47e16f6376dad63806657b0b data\fossilslegacy\tags\items\froglights.json
 e71ff39a58e6626fffa365ff9e1ee48712eecece data\fossilslegacy\tags\items\tyrannosaurus_commandables.json
 6fd2af253a1ae8ba939f3bebe89fbc03946d6168 data\fossilslegacy\tags\items\piglin_taming_helmets.json
@@ -9,5 +9,5 @@ e71ff39a58e6626fffa365ff9e1ee48712eecece data\fossilslegacy\tags\items\tyrannosa
 243f2dab6ef46a493d12775f6f28baf7b72922cf data\fossilslegacy\tags\items\dilophosaurus_commandables.json
 cb1403915fd8ebe238f3e86f00123ee24c49e426 data\fossilslegacy\tags\items\pteranodon_commandables.json
 1ad920aa65e2706dabb6265f3b12546ab33e8936 data\fossilslegacy\tags\items\brachiosaurus_commandables.json
-d76677c29f7873d57168ee1e3f0d7552ccaf4b95 data\fossilslegacy\tags\items\cake_eggs.json
 1ad920aa65e2706dabb6265f3b12546ab33e8936 data\fossilslegacy\tags\items\triceratops_commandables.json
+d76677c29f7873d57168ee1e3f0d7552ccaf4b95 data\fossilslegacy\tags\items\cake_eggs.json

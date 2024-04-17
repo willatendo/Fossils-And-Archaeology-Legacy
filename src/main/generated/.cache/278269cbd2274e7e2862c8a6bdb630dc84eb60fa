@@ -1,7 +1,7 @@
-// 1.20.4	2024-04-13T21:31:36.1342342	Fossils and Archaeology Legacy/fossilslegacy: Item Models
+// 1.20.4	2024-04-14T12:45:43.7684518	Fossils and Archaeology Legacy/fossilslegacy: Item Models
 8acedddacf7368b55f421a24a3cd08413ee3c58c assets\fossilslegacy\models\item\brachiosaurus_egg.json
-89ec69b213d909644c7d68e122b8c279574798aa assets\fossilslegacy\models\item\brachiosaurus_dna.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\fossilslegacy\models\item\nautilus_spawn_egg.json
+89ec69b213d909644c7d68e122b8c279574798aa assets\fossilslegacy\models\item\brachiosaurus_dna.json
 31dd43877df061d9545cec3170428577d29da4ac assets\fossilslegacy\models\item\archaeology_workbench.json
 6376b3b0333caeb74c5267493978506ac825b798 assets\fossilslegacy\models\item\nautilus_eggs.json
 2b62a4c46f1eeeb410678409898bcd3e575adf6a assets\fossilslegacy\models\item\ancient_sword_artifact.json

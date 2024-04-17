@@ -80,6 +80,8 @@ public class FossilsLegacyClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		FossilsExperimentsClient.init();
 
+		FossilsLegacyKeys.init();
+
 		MenuScreens.register(FossilsLegacyMenus.ANALYZER.get(), AnalyzerScreen::new);
 		MenuScreens.register(FossilsLegacyMenus.ARCHAEOLOGY_WORKBENCH.get(), ArchaeologyWorkbenchScreen::new);
 		MenuScreens.register(FossilsLegacyMenus.CULTIVATOR.get(), CultivatorScreen::new);
