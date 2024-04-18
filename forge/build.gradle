@@ -1,0 +1,127 @@
+plugins {
+	id 'idea'
+	id 'maven-publish'
+	id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+
+base {
+	archivesName = "${mod_id}-forge"
+}
+
+minecraft {
+	mappings channel: 'official', version: minecraft_version
+
+	accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+
+	copyIdeResources = true
+
+	runs {
+		client {
+			workingDirectory project.file('run')
+			taskName 'Client'
+
+			mods {
+				modClientRun {
+					source sourceSets.main
+					source project(":common").sourceSets.main
+				}
+			}
+		}
+
+		server {
+			workingDirectory project.file('run')
+			taskName 'Server'
+
+			mods {
+				modServerRun {
+					source sourceSets.main
+					source project(":common").sourceSets.main
+				}
+			}
+		}
+
+		data {
+			workingDirectory project.file('run')
+			args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+			taskName 'Data'
+			mods {
+				modDataRun {
+					source sourceSets.main
+					source project(":common").sourceSets.main
+				}
+			}
+		}
+	}
+}
+
+sourceSets.main.resources.srcDir 'src/generated/resources'
+
+loom {
+	accessWidenerPath = file("src/main/resources/fossilslegacy.accesswidener")
+	
+	runs {
+		datagen {
+			inherit client
+			name "Data Generation"
+			vmArg "-Dfabric-api.datagen"
+			vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
+			vmArg "-Dfabric-api.datagen.modid=${mod_id}"
+			vmArg "-Dporting_lib.datagen.existing_resources=${file("src/main/resources")}"
+ 
+			runDir "build/datagen"
+		}
+	}
+}
+
+sourceSets {
+	main {
+		resources {
+			srcDirs += [
+					'src/main/generated'
+			]
+		}
+	}
+} 
+
+dependencies {
+	minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+	modApi include("simplelibrary:simplelibrary-forge:3.0.0-beta12")
+
+	modCompileOnlyApi("mezz.jei:jei-${project.minecraft_version}-common-api:${project.jei_version}")
+	modCompileOnlyApi("mezz.jei:jei-${project.minecraft_version}-forge-api:${project.jei_version}")
+	modRuntimeOnly("mezz.jei:jei-${project.minecraft_version}-forge:${project.jei_version}")
+
+	compileOnly project(":common")
+}
+
+tasks.withType(JavaCompile).configureEach {
+	source(project(":common").sourceSets.main.allSource)
+}
+
+processResources {
+	from project(":common").sourceSets.main.resources
+}
+
+jar.finalizedBy('reobfJar')
+
+sourceSets.each {
+	def dir = layout.buildDirectory.dir("sourcesSets/$it.name")
+	it.output.resourcesDir = dir
+	it.java.destinationDirectory = dir
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			artifactId base.archivesName.get()
+			from components.java
+			fg.component(it)
+		}
+	}
+	repositories {
+		maven {
+			url "file://" + System.getenv("local_maven")
+		}
+	}
+}
