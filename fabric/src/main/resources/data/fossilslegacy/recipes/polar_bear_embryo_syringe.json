@@ -1,8 +1,0 @@
-{
-  "type": "fossilslegacy:cultivation",
-  "ingredient": {
-    "item": "fossilslegacy:polar_bear_dna"
-  },
-  "result": "fossilslegacy:polar_bear_embryo_syringe",
-  "time": 6000
-}

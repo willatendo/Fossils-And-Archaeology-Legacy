@@ -1,8 +1,0 @@
-{
-  "type": "fossilslegacy:archaeology",
-  "ingredient": {
-    "item": "fossilslegacy:scarab_gem_axe"
-  },
-  "result": "fossilslegacy:scarab_gem_axe",
-  "time": 3000
-}

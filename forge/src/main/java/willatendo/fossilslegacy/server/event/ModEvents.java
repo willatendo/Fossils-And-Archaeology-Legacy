@@ -4,6 +4,7 @@ import net.minecraft.Util;
 import net.minecraft.core.Position;
 import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.PathPackResources;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.world.entity.animal.*;
@@ -26,22 +27,27 @@ import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.forgespi.language.IModFileInfo;
-import net.minecraftforge.forgespi.locating.IModFile;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.RegisterEvent;
 import willatendo.fossilslegacy.FossilsLegacyForgeMod;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.dispenser.DispenseEntityItemBehavior;
 import willatendo.fossilslegacy.server.entity.*;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
-import willatendo.fossilslegacy.server.pack.ModFilePackResources;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.ForgeRegister;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
+import java.nio.file.Path;
+
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID)
 public class ModEvents {
+    @SubscribeEvent
+    public static void clientSetup(FMLCommonSetupEvent event) {
+        ModEvents.addToMaps();
+    }
+
     @SubscribeEvent
     public static void creativeModTabModification(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.OP_BLOCKS) {
@@ -100,16 +106,15 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void addPackFinders(AddPackFindersEvent event) {
-//        if (event.getPackType() == PackType.CLIENT_RESOURCES) {
-//            IModFileInfo iModFileInfo = ModList.get().getModFileById(FossilsLegacyUtils.ID);
-//            IModFile iModFile = iModFileInfo.getFile();
-//            event.addRepositorySource(consumer -> {
-//                Pack pack = Pack.readMetaAndCreate(FossilsLegacyUtils.resource("fa_legacy_textures").toString(), FossilsLegacyUtils.translation("pack", "fa_legacy_textures"), false, id -> new ModFilePackResources(id, true, iModFile, "resourcepacks/fa_legacy_textures"), PackType.CLIENT_RESOURCES, Pack.Position.TOP, PackSource.BUILT_IN);
-//                if (pack != null) {
-//                    consumer.accept(pack);
-//                }
-//            });
-//        }
+        if (event.getPackType() == PackType.CLIENT_RESOURCES) {
+            Path resourcePath = ModList.get().getModFileById(FossilsLegacyUtils.ID).getFile().findResource("resourcepacks/fa_legacy_textures");
+            event.addRepositorySource(consumer -> {
+                Pack pack = Pack.readMetaAndCreate(FossilsLegacyUtils.resource("resourcepacks.fa_legacy_textures").toString(), FossilsLegacyUtils.translation("pack", "resourcepacks.fa_legacy_textures"), false, new PathPackResources.PathResourcesSupplier(resourcePath, true), PackType.CLIENT_RESOURCES, Pack.Position.TOP, PackSource.BUILT_IN);
+                if (pack != null) {
+                    consumer.accept(pack);
+                }
+            });
+        }
     }
 
     public static void addToMaps() {

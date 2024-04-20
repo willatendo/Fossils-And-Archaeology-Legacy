@@ -1,8 +1,0 @@
-{
-  "type": "fossilslegacy:archaeology",
-  "ingredient": {
-    "item": "fossilslegacy:broken_wooden_javelin"
-  },
-  "result": "fossilslegacy:wooden_javelin",
-  "time": 3000
-}

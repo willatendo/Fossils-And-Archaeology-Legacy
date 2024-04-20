@@ -5,20 +5,22 @@ import willatendo.fossilslegacy.server.entity.Egg;
 import willatendo.fossilslegacy.server.entity.EggVariant;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 
+import java.util.function.Supplier;
+
 public class EggItem extends PlaceEntityItem {
-	private final EggVariant eggVariant;
+    private final Supplier<EggVariant> eggVariant;
 
-	public EggItem(EggVariant eggVariant, Properties properties) {
-		super(() -> FossilsLegacyEntityTypes.EGG.get(), properties);
-		this.eggVariant = eggVariant;
-	}
+    public EggItem(Supplier<EggVariant> eggVariant, Properties properties) {
+        super(() -> FossilsLegacyEntityTypes.EGG.get(), properties);
+        this.eggVariant = eggVariant;
+    }
 
-	public EggVariant getEggVariant() {
-		return this.eggVariant;
-	}
+    public EggVariant getEggVariant() {
+        return this.eggVariant.get();
+    }
 
-	@Override
-	public void entityModification(Entity entity) {
-		((Egg) entity).setEggVariant(this.eggVariant);
-	}
+    @Override
+    public void entityModification(Entity entity) {
+        ((Egg) entity).setEggVariant(this.eggVariant.get());
+    }
 }

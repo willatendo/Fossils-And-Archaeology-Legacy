@@ -1,6 +1,8 @@
 package willatendo.fossilslegacy.platform;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
+import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -14,9 +16,11 @@ public interface FossilsModloaderHelper {
 
     <T extends AbstractContainerMenu> MenuType<T> createMenuType(ExtendedMenuSupplier<T> extendedMenuSupplier);
 
+    <T> void registerDataSerializer(String id, EntityDataSerializer<T> entityDataSerializer);
+
     <T> Registry<T> createRegistry(ResourceKey<Registry<T>> resourceKey);
 
-    void openContainer(BlockEntity blockEntity, ServerPlayer serverPlayer);
+    void openContainer(BlockEntity blockEntity, BlockPos blockPos, ServerPlayer serverPlayer);
 
     boolean willAnimalsStarve();
 

@@ -1,8 +1,0 @@
-{
-  "type": "fossilslegacy:archaeology",
-  "ingredient": {
-    "item": "fossilslegacy:scarab_gem_pickaxe"
-  },
-  "result": "fossilslegacy:scarab_gem_pickaxe",
-  "time": 3000
-}

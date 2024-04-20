@@ -1,8 +1,0 @@
-{
-  "type": "fossilslegacy:cultivation",
-  "ingredient": {
-    "item": "fossilslegacy:axolotl_dna"
-  },
-  "result": "fossilslegacy:axolotlspawn",
-  "time": 6000
-}

@@ -1,8 +1,0 @@
-{
-  "type": "fossilslegacy:cultivation",
-  "ingredient": {
-    "item": "fossilslegacy:dilophosaurus_dna"
-  },
-  "result": "fossilslegacy:dilophosaurus_egg",
-  "time": 6000
-}

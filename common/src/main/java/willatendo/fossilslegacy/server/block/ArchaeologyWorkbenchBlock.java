@@ -89,7 +89,7 @@ public class ArchaeologyWorkbenchBlock extends Block implements EntityBlock {
         } else {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
             if (blockEntity instanceof ArchaeologyWorkbenchBlockEntity && player instanceof ServerPlayer serverPlayer) {
-                FossilsModloaderHelper.INSTANCE.openContainer(blockEntity, serverPlayer);
+                FossilsModloaderHelper.INSTANCE.openContainer(blockEntity, blockPos, serverPlayer);
             }
             return InteractionResult.CONSUME;
         }

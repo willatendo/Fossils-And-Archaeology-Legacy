@@ -1,8 +1,0 @@
-{
-  "type": "fossilslegacy:cultivation",
-  "ingredient": {
-    "item": "fossilslegacy:tyrannosaurus_dna"
-  },
-  "result": "fossilslegacy:tyrannosaurus_egg",
-  "time": 6000
-}

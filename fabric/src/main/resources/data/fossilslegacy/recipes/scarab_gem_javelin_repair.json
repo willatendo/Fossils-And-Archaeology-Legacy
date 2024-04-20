@@ -1,8 +1,0 @@
-{
-  "type": "fossilslegacy:archaeology",
-  "ingredient": {
-    "item": "fossilslegacy:broken_scarab_gem_javelin"
-  },
-  "result": "fossilslegacy:scarab_gem_javelin",
-  "time": 3000
-}

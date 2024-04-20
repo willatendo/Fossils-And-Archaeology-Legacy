@@ -1,8 +1,0 @@
-{
-  "type": "fossilslegacy:cultivation",
-  "ingredient": {
-    "item": "fossilslegacy:panda_dna"
-  },
-  "result": "fossilslegacy:panda_embryo_syringe",
-  "time": 6000
-}

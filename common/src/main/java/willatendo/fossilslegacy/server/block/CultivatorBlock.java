@@ -114,7 +114,7 @@ public class CultivatorBlock extends Block implements EntityBlock {
         } else {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
             if (blockEntity instanceof CultivatorBlockEntity && player instanceof ServerPlayer serverPlayer) {
-                FossilsModloaderHelper.INSTANCE.openContainer(blockEntity, serverPlayer);
+                FossilsModloaderHelper.INSTANCE.openContainer(blockEntity, blockPos, serverPlayer);
             }
             return InteractionResult.CONSUME;
         }
