@@ -7,10 +7,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
@@ -42,7 +40,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.List;
 import java.util.Map;
 
-public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, RecipeCraftingHolder, StackedContentsCompatible, ExtendedScreenHandlerFactory {
+public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, RecipeCraftingHolder, StackedContentsCompatible {
     private static final int[] SLOTS_FOR_UP = new int[]{0};
     private static final int[] SLOTS_FOR_DOWN = new int[]{2};
     private static final int[] SLOTS_FOR_SIDES = new int[]{1};
@@ -382,10 +380,5 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
     @Override
     protected AbstractContainerMenu createMenu(int windowId, Inventory inventory) {
         return new ArchaeologyWorkbenchMenu(windowId, inventory, this);
-    }
-
-    @Override
-    public void writeScreenOpeningData(ServerPlayer serverPlayer, FriendlyByteBuf friendlyByteBuf) {
-        friendlyByteBuf.writeBlockPos(this.getBlockPos());
     }
 }

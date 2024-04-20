@@ -1,19 +1,19 @@
 package willatendo.fossilslegacy.platform;
 
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder;
-import net.minecraft.client.KeyMapping;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.core.Registry;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
-import willatendo.fossilslegacy.client.TexturedModelDataProvider;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import org.jetbrains.annotations.Nullable;
 import willatendo.fossilslegacy.server.config.FabricConfigHelper;
 import willatendo.fossilslegacy.server.menu.ExtendedMenuSupplier;
 import willatendo.simplelibrary.server.util.FabricUtils;
@@ -30,8 +30,24 @@ public class FossilsFabricHelper implements FossilsModloaderHelper {
     }
 
     @Override
-    public void regsiterKeyMapping(KeyMapping keyMapping) {
-        KeyBindingHelper.registerKeyBinding(keyMapping);
+    public void openContainer(BlockEntity blockEntity, ServerPlayer serverPlayer) {
+        serverPlayer.openMenu(new ExtendedScreenHandlerFactory() {
+            @Override
+            public void writeScreenOpeningData(ServerPlayer serverPlayer, FriendlyByteBuf friendlyByteBuf) {
+                friendlyByteBuf.writeBlockPos(blockEntity.getBlockPos());
+            }
+
+            @Override
+            public Component getDisplayName() {
+                return ((MenuProvider) blockEntity).getDisplayName();
+            }
+
+            @Nullable
+            @Override
+            public AbstractContainerMenu createMenu(int windowId, Inventory inventory, Player player) {
+                return ((MenuProvider) blockEntity).createMenu(windowId, inventory, player);
+            }
+        });
     }
 
     @Override
@@ -57,15 +73,5 @@ public class FossilsFabricHelper implements FossilsModloaderHelper {
     @Override
     public boolean shouldEnableExperiments() {
         return FabricConfigHelper.shouldEnableExperiments();
-    }
-
-    @Override
-    public <T extends Entity> void entityRendererRegistry(EntityType<? extends T> entityType, EntityRendererProvider<T> entityRendererProvider) {
-        EntityRendererRegistry.<T>register(entityType, entityRendererProvider);
-    }
-
-    @Override
-    public void entityModelLayerRegistry(ModelLayerLocation modelLayerLocation, TexturedModelDataProvider texturedModelDataProvider) {
-        EntityModelLayerRegistry.registerModelLayer(modelLayerLocation, texturedModelDataProvider::createModelData);
     }
 }

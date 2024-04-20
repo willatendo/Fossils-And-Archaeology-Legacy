@@ -43,7 +43,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.List;
 import java.util.Map;
 
-public class CultivatorBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, RecipeCraftingHolder, StackedContentsCompatible, ExtendedScreenHandlerFactory {
+public class CultivatorBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, RecipeCraftingHolder, StackedContentsCompatible {
     private static final int[] SLOTS_FOR_UP = new int[]{0};
     private static final int[] SLOTS_FOR_DOWN = new int[]{2};
     private static final int[] SLOTS_FOR_SIDES = new int[]{1};
@@ -424,10 +424,5 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
     @Override
     protected AbstractContainerMenu createMenu(int windowId, Inventory inventory) {
         return new CultivatorMenu(windowId, inventory, this);
-    }
-
-    @Override
-    public void writeScreenOpeningData(ServerPlayer serverPlayer, FriendlyByteBuf friendlyByteBuf) {
-        friendlyByteBuf.writeBlockPos(this.getBlockPos());
     }
 }

@@ -5,9 +5,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -26,10 +24,9 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import willatendo.fossilslegacy.experiments.server.menu.TimeMachineMenu;
-import willatendo.fossilslegacy.server.block.entity.ExtendedScreenHandlerFactory;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, StackedContentsCompatible, ExtendedScreenHandlerFactory {
+public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, StackedContentsCompatible {
     private static final int[] SLOTS_FOR_UP = new int[]{0, 1, 2, 3, 4, 5, 6};
     private static final int[] SLOTS_FOR_DOWN = SLOTS_FOR_UP;
     private static final int[] SLOTS_FOR_SIDES = SLOTS_FOR_UP;
@@ -323,10 +320,5 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
     @Override
     protected AbstractContainerMenu createMenu(int windowId, Inventory inventory) {
         return new TimeMachineMenu(windowId, inventory, this);
-    }
-
-    @Override
-    public void writeScreenOpeningData(ServerPlayer serverPlayer, FriendlyByteBuf friendlyByteBuf) {
-        friendlyByteBuf.writeBlockPos(this.getBlockPos());
     }
 }
