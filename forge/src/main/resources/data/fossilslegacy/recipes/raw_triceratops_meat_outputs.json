@@ -1,0 +1,13 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "fossilslegacy:raw_triceratops_meat"
+  },
+  "results": [
+    {
+      "result": "fossilslegacy:triceratops_dna",
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

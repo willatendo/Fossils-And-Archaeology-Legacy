@@ -1,71 +1,54 @@
 plugins {
-	id 'idea'
-	id 'maven-publish'
-	id 'net.neoforged.gradle.userdev' version '7.0.81'
-	id 'java-library'
+    id 'idea'
+    id 'net.neoforged.gradle.userdev' version '7.0.81'
+    id 'java-library'
 }
 
 base {
-	archivesName = "${mod_id}-neoforge"
-}
-
-minecraft {
-	accessTransformers {
-		file('src/main/resources/META-INF/accesstransformer.cfg')
-	}
+    archivesName = "fossilslegacy-neoforge"
 }
 
 runs {
-	configureEach {
-		modSource project.sourceSets.main
-	}
-	
-	client {
-	}
-	
-	server {
-		programArgument '--nogui'
-	}
+    configureEach {
+        modSource project.sourceSets.main
+    }
 
-	data {
-		programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
-	}
+    client {
+        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+    }
+
+    server {
+        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        programArgument '--nogui'
+    }
+
+    data {
+        programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+    }
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
-	implementation "net.neoforged:neoforge:${neoforge_version}"
+    implementation "net.neoforged:neoforge:${neoforge_version}"
 
-	modApi include("simplelibrary:simplelibrary-neoforge:3.0.0-beta12")
-
-	modCompileOnlyApi("mezz.jei:jei-${project.minecraft_version}-common-api:${project.jei_version}")
-	modCompileOnlyApi("mezz.jei:jei-${project.minecraft_version}-neoforge-api:${project.jei_version}")
-	modRuntimeOnly("mezz.jei:jei-${project.minecraft_version}-neoforge:${project.jei_version}")
-
-	compileOnly project(":common")
+    compileOnly project(":common")
 }
 
 Spec<Task> notNeoTask = { Task it -> !it.name.startsWith("neo") } as Spec<Task>
 
 tasks.withType(JavaCompile).matching(notNeoTask).configureEach {
-	source(project(":common").sourceSets.main.allSource)
+    source(project(":common").sourceSets.main.allSource)
+}
+
+tasks.withType(Javadoc).matching(notNeoTask).configureEach {
+    source(project(":common").sourceSets.main.allJava)
+}
+
+tasks.named("sourcesJar", Jar) {
+    from(project(":common").sourceSets.main.allSource)
 }
 
 tasks.withType(ProcessResources).matching(notNeoTask).configureEach {
-	from project(":common").sourceSets.main.resources
-}
-
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			artifactId base.archivesName.get()
-			from components.java
-		}
-	}
-	repositories {
-		maven {
-			url "file://" + System.getenv("local_maven")
-		}
-	}
+    from project(":common").sourceSets.main.resources
 }

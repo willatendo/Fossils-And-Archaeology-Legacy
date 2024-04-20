@@ -1,0 +1,8 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "ingredient": {
+    "item": "fossilslegacy:rabbit_dna"
+  },
+  "result": "fossilslegacy:rabbit_embryo_syringe",
+  "time": 6000
+}

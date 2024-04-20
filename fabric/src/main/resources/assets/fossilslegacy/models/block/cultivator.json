@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "fossilslegacy:block/cultivator_bottom",
+    "east": "fossilslegacy:block/cultivator_side_off",
+    "north": "fossilslegacy:block/cultivator_side_off",
+    "particle": "fossilslegacy:block/cultivator_side_off",
+    "south": "fossilslegacy:block/cultivator_side_off",
+    "up": "fossilslegacy:block/cultivator_top",
+    "west": "fossilslegacy:block/cultivator_side_off"
+  }
+}

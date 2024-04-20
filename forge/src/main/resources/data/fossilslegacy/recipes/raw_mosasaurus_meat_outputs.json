@@ -1,0 +1,13 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "fossilslegacy:raw_mosasaurus_meat"
+  },
+  "results": [
+    {
+      "result": "fossilslegacy:mosasaurus_dna",
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

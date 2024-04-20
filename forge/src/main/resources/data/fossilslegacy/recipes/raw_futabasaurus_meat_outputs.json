@@ -1,0 +1,13 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "fossilslegacy:raw_futabasaurus_meat"
+  },
+  "results": [
+    {
+      "result": "fossilslegacy:futabasaurus_dna",
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

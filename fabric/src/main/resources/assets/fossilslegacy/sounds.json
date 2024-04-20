@@ -1,0 +1,238 @@
+{
+  "block.drum.hit": {
+    "sounds": [
+      "fossilslegacy:drum_hit"
+    ],
+    "subtitle": "sound.fossilslegacy.drum.hit"
+  },
+  "block.drum.triple_hit": {
+    "sounds": [
+      "fossilslegacy:drum_triple_hit"
+    ],
+    "subtitle": "sound.fossilslegacy.drum.triple_hit"
+  },
+  "entity.brachiosaurus.ambient": {
+    "sounds": [
+      "fossilslegacy:brachiosaurus_ambient_1",
+      "fossilslegacy:brachiosaurus_ambient_2"
+    ],
+    "subtitle": "sound.fossilslegacy.brachiosaurus.ambient"
+  },
+  "entity.brachiosaurus.death": {
+    "sounds": [
+      "fossilslegacy:brachiosaurus_death"
+    ],
+    "subtitle": "sound.fossilslegacy.brachiosaurus.death"
+  },
+  "entity.brachiosaurus.hurt": {
+    "sounds": [
+      "fossilslegacy:brachiosaurus_hurt_1",
+      "fossilslegacy:brachiosaurus_hurt_2"
+    ],
+    "subtitle": "sound.fossilslegacy.brachiosaurus.hurt"
+  },
+  "entity.dilophosaurus.ambient": {
+    "sounds": [
+      "fossilslegacy:dilophosaurus_ambient"
+    ],
+    "subtitle": "sound.fossilslegacy.dilophosaurus.ambient"
+  },
+  "entity.dilophosaurus.call": {
+    "sounds": [
+      "fossilslegacy:dilophosaurus_call_1",
+      "fossilslegacy:dilophosaurus_call_2"
+    ],
+    "subtitle": "sound.fossilslegacy.dilophosaurus.call"
+  },
+  "entity.dilophosaurus.death": {
+    "sounds": [
+      "fossilslegacy:dilophosaurus_death"
+    ],
+    "subtitle": "sound.fossilslegacy.dilophosaurus.death"
+  },
+  "entity.dilophosaurus.hurt": {
+    "sounds": [
+      "fossilslegacy:dilophosaurus_hurt"
+    ],
+    "subtitle": "sound.fossilslegacy.dilophosaurus.hurt"
+  },
+  "entity.futabasaurus.ambient": {
+    "sounds": [
+      "fossilslegacy:pteranodon_ambient_1",
+      "fossilslegacy:pteranodon_ambient_2"
+    ],
+    "subtitle": "sound.fossilslegacy.pteranodon.ambient"
+  },
+  "entity.futabasaurus.death": {
+    "sounds": [
+      "fossilslegacy:futabasaurus_death"
+    ],
+    "subtitle": "sound.fossilslegacy.futabasaurus.death"
+  },
+  "entity.futabasaurus.hurt": {
+    "sounds": [
+      "fossilslegacy:futabasaurus_hurt"
+    ],
+    "subtitle": "sound.fossilslegacy.futabasaurus.hurt"
+  },
+  "entity.mammoth.ambient": {
+    "sounds": [
+      "fossilslegacy:mammoth_ambient"
+    ],
+    "subtitle": "sound.fossilslegacy.mammoth.ambient"
+  },
+  "entity.mammoth.death": {
+    "sounds": [
+      "fossilslegacy:mammoth_death"
+    ],
+    "subtitle": "sound.fossilslegacy.mammoth.death"
+  },
+  "entity.mammoth.hurt": {
+    "sounds": [
+      "fossilslegacy:mammoth_hurt"
+    ],
+    "subtitle": "sound.fossilslegacy.mammoth.hurt"
+  },
+  "entity.plesiosaurus.ambient": {
+    "sounds": [
+      "fossilslegacy:futabasaurus_ambient"
+    ],
+    "subtitle": "sound.fossilslegacy.futabasaurus.ambient"
+  },
+  "entity.pteranodon.death": {
+    "sounds": [
+      "fossilslegacy:pteranodon_death"
+    ],
+    "subtitle": "sound.fossilslegacy.pteranodon.death"
+  },
+  "entity.pteranodon.hurt": {
+    "sounds": [
+      "fossilslegacy:pteranodon_hurt"
+    ],
+    "subtitle": "sound.fossilslegacy.pteranodon.hurt"
+  },
+  "entity.smilodon.ambient": {
+    "sounds": [
+      "fossilslegacy:smilodon_ambient_1",
+      "fossilslegacy:smilodon_ambient_2",
+      "fossilslegacy:smilodon_ambient_3"
+    ],
+    "subtitle": "sound.fossilslegacy.smilodon.ambient"
+  },
+  "entity.smilodon.death": {
+    "sounds": [
+      "fossilslegacy:smilodon_death"
+    ],
+    "subtitle": "sound.fossilslegacy.smilodon.death"
+  },
+  "entity.smilodon.hurt": {
+    "sounds": [
+      "fossilslegacy:smilodon_hurt"
+    ],
+    "subtitle": "sound.fossilslegacy.smilodon.hurt"
+  },
+  "entity.stegosaurus.ambient": {
+    "sounds": [
+      "fossilslegacy:stegosaurus_ambient_1",
+      "fossilslegacy:stegosaurus_ambient_2",
+      "fossilslegacy:stegosaurus_ambient_3"
+    ],
+    "subtitle": "sound.fossilslegacy.stegosaurus.ambient"
+  },
+  "entity.stegosaurus.death": {
+    "sounds": [
+      "fossilslegacy:stegosaurus_death"
+    ],
+    "subtitle": "sound.fossilslegacy.stegosaurus.death"
+  },
+  "entity.stegosaurus.hurt": {
+    "sounds": [
+      "fossilslegacy:stegosaurus_hurt"
+    ],
+    "subtitle": "sound.fossilslegacy.stegosaurus.hurt"
+  },
+  "entity.triceratops.ambient": {
+    "sounds": [
+      "fossilslegacy:triceratops_ambient_1",
+      "fossilslegacy:triceratops_ambient_2",
+      "fossilslegacy:triceratops_ambient_3"
+    ],
+    "subtitle": "sound.fossilslegacy.triceratops.ambient"
+  },
+  "entity.triceratops.death": {
+    "sounds": [
+      "fossilslegacy:triceratops_death"
+    ],
+    "subtitle": "sound.fossilslegacy.triceratops.death"
+  },
+  "entity.triceratops.hurt": {
+    "sounds": [
+      "fossilslegacy:triceratops_hurt_1",
+      "fossilslegacy:triceratops_hurt_2"
+    ],
+    "subtitle": "sound.fossilslegacy.triceratops.hurt"
+  },
+  "entity.tyrannosaurus.ambient": {
+    "sounds": [
+      "fossilslegacy:tyrannosaurus_ambient_1",
+      "fossilslegacy:tyrannosaurus_ambient_2",
+      "fossilslegacy:tyrannosaurus_ambient_3"
+    ],
+    "subtitle": "sound.fossilslegacy.tyrannosaurus.ambient"
+  },
+  "entity.tyrannosaurus.attack": {
+    "sounds": [
+      "fossilslegacy:tyrannosaurus_attack_1",
+      "fossilslegacy:tyrannosaurus_attack_2",
+      "fossilslegacy:tyrannosaurus_attack_3"
+    ],
+    "subtitle": "sound.fossilslegacy.tyrannosaurus.attack"
+  },
+  "entity.tyrannosaurus.death": {
+    "sounds": [
+      "fossilslegacy:tyrannosaurus_death"
+    ],
+    "subtitle": "sound.fossilslegacy.tyrannosaurus.death"
+  },
+  "entity.tyrannosaurus.hurt": {
+    "sounds": [
+      "fossilslegacy:tyrannosaurus_hurt"
+    ],
+    "subtitle": "sound.fossilslegacy.tyrannosaurus.hurt"
+  },
+  "entity.velociraptor.ambient.tame": {
+    "sounds": [
+      "fossilslegacy:velociraptor_ambient_tame_1",
+      "fossilslegacy:velociraptor_ambient_tame_2"
+    ],
+    "subtitle": "sound.fossilslegacy.velociraptor.ambient.tame"
+  },
+  "entity.velociraptor.ambient.wild": {
+    "sounds": [
+      "fossilslegacy:velociraptor_ambient_wild_1",
+      "fossilslegacy:velociraptor_ambient_wild_2"
+    ],
+    "subtitle": "sound.fossilslegacy.velociraptor.ambient.wild"
+  },
+  "entity.velociraptor.attack": {
+    "sounds": [
+      "fossilslegacy:velociraptor_attack_1",
+      "fossilslegacy:velociraptor_attack_2"
+    ],
+    "subtitle": "sound.fossilslegacy.velociraptor.attack"
+  },
+  "entity.velociraptor.death": {
+    "sounds": [
+      "fossilslegacy:velociraptor_death"
+    ],
+    "subtitle": "sound.fossilslegacy.velociraptor.death"
+  },
+  "entity.velociraptor.hurt": {
+    "sounds": [
+      "fossilslegacy:velociraptor_hurt_1",
+      "fossilslegacy:velociraptor_hurt_2",
+      "fossilslegacy:velociraptor_hurt_3"
+    ],
+    "subtitle": "sound.fossilslegacy.velociraptor.hurt"
+  }
+}

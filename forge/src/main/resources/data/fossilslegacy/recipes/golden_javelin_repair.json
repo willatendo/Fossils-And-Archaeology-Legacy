@@ -1,0 +1,8 @@
+{
+  "type": "fossilslegacy:archaeology",
+  "ingredient": {
+    "item": "fossilslegacy:broken_golden_javelin"
+  },
+  "result": "fossilslegacy:golden_javelin",
+  "time": 3000
+}

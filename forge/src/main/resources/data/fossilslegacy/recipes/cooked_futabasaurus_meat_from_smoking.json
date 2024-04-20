@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "fossilslegacy:raw_futabasaurus_meat"
+  },
+  "result": "fossilslegacy:cooked_futabasaurus_meat"
+}

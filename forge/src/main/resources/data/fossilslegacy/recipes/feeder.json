@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "!": {
+      "item": "minecraft:stone"
+    },
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "$": {
+      "tag": "c:glass_blocks"
+    },
+    "%": {
+      "item": "minecraft:stone_button"
+    },
+    "@": {
+      "item": "minecraft:bucket"
+    }
+  },
+  "pattern": [
+    "#$#",
+    "%@!",
+    "!!!"
+  ],
+  "result": {
+    "item": "fossilslegacy:feeder"
+  }
+}

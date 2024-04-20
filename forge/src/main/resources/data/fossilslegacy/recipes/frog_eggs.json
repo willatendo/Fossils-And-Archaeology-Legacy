@@ -1,0 +1,8 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "ingredient": {
+    "item": "fossilslegacy:frog_dna"
+  },
+  "result": "minecraft:frogspawn",
+  "time": 6000
+}

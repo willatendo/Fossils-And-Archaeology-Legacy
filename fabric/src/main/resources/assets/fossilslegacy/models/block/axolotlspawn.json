@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/frogspawn",
+  "textures": {
+    "particle": "fossilslegacy:block/axolotlspawn",
+    "texture": "fossilslegacy:block/axolotlspawn"
+  }
+}
