@@ -40,12 +40,20 @@ dependencies {
     compileOnly project(":common")
 }
 
+sourceSets {
+    main {
+        resources {
+            srcDir("../common/src/generated/resources")
+            exclude("../common/src/generated/resources/.cache")
+        }
+    }
+}
+
 loom {
     mixin {
         defaultRefmapName.set("${mod_id}.refmap.json")
     }
     runs {
-
         client {
             client()
             setConfigName("Fabric Client")
@@ -57,17 +65,6 @@ loom {
             setConfigName("Fabric Server")
             ideConfigGenerated(true)
             runDir("run")
-        }
-        datagen {
-            inherit client
-            setConfigName("Fabric Data")
-            ideConfigGenerated(true)
-            vmArg "-Dfabric-api.datagen"
-            vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
-            vmArg "-Dfabric-api.datagen.modid=${mod_id}"
-            vmArg "-Dporting_lib.datagen.existing_resources=${file("${project(':common').projectDir.path}/src/main/resources")}"
-
-            runDir "build/datagen"
         }
     }
 }

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "tag": "forge:leather"
+    },
+    "$": {
+      "tag": "minecraft:planks"
+    },
+    "%": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    "###",
+    "$%$",
+    "$$$"
+  ],
+  "result": {
+    "item": "fossilslegacy:drum"
+  }
+}

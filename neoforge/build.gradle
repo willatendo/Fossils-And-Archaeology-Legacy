@@ -23,11 +23,11 @@ runs {
     }
 
     data {
-        programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file("${project(':common').projectDir.path}src/main/resources/").getAbsolutePath()
+        programArguments.addAll '--mod', project.mod_id, '--all', '--output', file("${project(':common').projectDir.path}/src/generated/resources/").getAbsolutePath(), '--existing', file("${project(':common').projectDir.path}/src/main/resources/").getAbsolutePath()
     }
 }
 
-sourceSets.main.resources { srcDir 'src/generated/resources' }
+sourceSets.main.resources { srcDir "${project(':common').projectDir.path}/src/generated/resources/" }
 
 dependencies {
     implementation "net.neoforged:neoforge:${neoforge_version}"
@@ -39,7 +39,6 @@ dependencies {
     runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
 
     compileOnly project(":common")
-    compileOnly project(":art")
 }
 
 Spec<Task> notNeoTask = { Task it -> !it.name.startsWith("neo") } as Spec<Task>

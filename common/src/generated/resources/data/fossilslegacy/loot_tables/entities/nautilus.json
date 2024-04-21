@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "fossilslegacy:loot_one_item_of_many_random",
+          "max_weight": 5,
+          "results": [
+            {
+              "high_weight": 3,
+              "item": "fossilslegacy:nautilus_shell",
+              "low_weight": 0
+            },
+            {
+              "high_weight": 5,
+              "item": "fossilslegacy:magic_conch",
+              "low_weight": 3
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "fossilslegacy:entities/nautilus"
+}

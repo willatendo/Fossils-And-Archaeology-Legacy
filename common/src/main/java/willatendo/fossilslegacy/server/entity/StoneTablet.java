@@ -1,9 +1,5 @@
 package willatendo.fossilslegacy.server.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -30,161 +26,165 @@ import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 public class StoneTablet extends HangingEntity implements VariantHolder<Holder<StoneTabletVariant>> {
-	private static final EntityDataAccessor<Holder<StoneTabletVariant>> STONE_TABLET_VARIANT = SynchedEntityData.defineId(StoneTablet.class, FossilsLegacyEntityDataSerializers.STONE_TABLET_VARIANTS);
-	private static final ResourceKey<StoneTabletVariant> DEFAULT_VARIANT = FossilsLegacyStoneTabletVariants.LIGHTING.getKey();
+    private static final EntityDataAccessor<Holder<StoneTabletVariant>> STONE_TABLET_VARIANT = SynchedEntityData.defineId(StoneTablet.class, FossilsLegacyEntityDataSerializers.STONE_TABLET_VARIANTS.get());
+    private static final ResourceKey<StoneTabletVariant> DEFAULT_VARIANT = FossilsLegacyStoneTabletVariants.LIGHTING.getKey();
 
-	private static Holder<StoneTabletVariant> getDefaultVariant() {
-		return FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS.getHolderOrThrow(DEFAULT_VARIANT);
-	}
+    private static Holder<StoneTabletVariant> getDefaultVariant() {
+        return FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS.getHolderOrThrow(DEFAULT_VARIANT);
+    }
 
-	public StoneTablet(EntityType<? extends StoneTablet> entityType, Level level) {
-		super(entityType, level);
-	}
+    public StoneTablet(EntityType<? extends StoneTablet> entityType, Level level) {
+        super(entityType, level);
+    }
 
-	private StoneTablet(Level level, BlockPos blockPos) {
-		super(FossilsLegacyEntityTypes.STONE_TABLET.get(), level, blockPos);
-	}
+    private StoneTablet(Level level, BlockPos blockPos) {
+        super(FossilsLegacyEntityTypes.STONE_TABLET.get(), level, blockPos);
+    }
 
-	public StoneTablet(Level level, BlockPos blockPos, Direction direction, Holder<StoneTabletVariant> stoneTabletVariant) {
-		this(level, blockPos);
-		this.setVariant(stoneTabletVariant);
-		this.setDirection(direction);
-	}
+    public StoneTablet(Level level, BlockPos blockPos, Direction direction, Holder<StoneTabletVariant> stoneTabletVariant) {
+        this(level, blockPos);
+        this.setVariant(stoneTabletVariant);
+        this.setDirection(direction);
+    }
 
-	@Override
-	protected void defineSynchedData() {
-		this.entityData.define(STONE_TABLET_VARIANT, getDefaultVariant());
-	}
+    @Override
+    protected void defineSynchedData() {
+        this.entityData.define(STONE_TABLET_VARIANT, getDefaultVariant());
+    }
 
-	@Override
-	public void onSyncedDataUpdated(EntityDataAccessor<?> entityDataAccessor) {
-		if (STONE_TABLET_VARIANT.equals(entityDataAccessor)) {
-			this.recalculateBoundingBox();
-		}
-	}
+    @Override
+    public void onSyncedDataUpdated(EntityDataAccessor<?> entityDataAccessor) {
+        if (STONE_TABLET_VARIANT.equals(entityDataAccessor)) {
+            this.recalculateBoundingBox();
+        }
+    }
 
-	@Override
-	public void setVariant(Holder<StoneTabletVariant> stoneTabletVariant) {
-		this.entityData.set(STONE_TABLET_VARIANT, stoneTabletVariant);
-	}
+    @Override
+    public void setVariant(Holder<StoneTabletVariant> stoneTabletVariant) {
+        this.entityData.set(STONE_TABLET_VARIANT, stoneTabletVariant);
+    }
 
-	@Override
-	public Holder<StoneTabletVariant> getVariant() {
-		return this.entityData.get(STONE_TABLET_VARIANT);
-	}
+    @Override
+    public Holder<StoneTabletVariant> getVariant() {
+        return this.entityData.get(STONE_TABLET_VARIANT);
+    }
 
-	public static Optional<StoneTablet> create(Level level, BlockPos blockPos, Direction direction) {
-		StoneTablet stoneTablet = new StoneTablet(level, blockPos);
-		List<Holder<StoneTabletVariant>> stoneTabletVariants = new ArrayList<>();
-		FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS.getTagOrEmpty(FossilsLegacyStoneTabletVariantTags.PLACEABLE).forEach(stoneTabletVariants::add);
-		if (stoneTabletVariants.isEmpty()) {
-			return Optional.empty();
-		}
-		stoneTablet.setDirection(direction);
-		stoneTabletVariants.removeIf(holder -> {
-			stoneTablet.setVariant(holder);
-			return !stoneTablet.survives();
-		});
-		if (stoneTabletVariants.isEmpty()) {
-			return Optional.empty();
-		}
-		int i = stoneTabletVariants.stream().mapToInt(StoneTablet::variantArea).max().orElse(0);
-		stoneTabletVariants.removeIf(holder -> StoneTablet.variantArea(holder) < i);
-		Optional<Holder<StoneTabletVariant>> optional = Util.getRandomSafe(stoneTabletVariants, stoneTablet.random);
-		if (optional.isEmpty()) {
-			return Optional.empty();
-		}
-		stoneTablet.setVariant(optional.get());
-		stoneTablet.setDirection(direction);
-		return Optional.of(stoneTablet);
-	}
+    public static Optional<StoneTablet> create(Level level, BlockPos blockPos, Direction direction) {
+        StoneTablet stoneTablet = new StoneTablet(level, blockPos);
+        List<Holder<StoneTabletVariant>> stoneTabletVariants = new ArrayList<>();
+        FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS.getTagOrEmpty(FossilsLegacyStoneTabletVariantTags.PLACEABLE).forEach(stoneTabletVariants::add);
+        if (stoneTabletVariants.isEmpty()) {
+            return Optional.empty();
+        }
+        stoneTablet.setDirection(direction);
+        stoneTabletVariants.removeIf(holder -> {
+            stoneTablet.setVariant(holder);
+            return !stoneTablet.survives();
+        });
+        if (stoneTabletVariants.isEmpty()) {
+            return Optional.empty();
+        }
+        int i = stoneTabletVariants.stream().mapToInt(StoneTablet::variantArea).max().orElse(0);
+        stoneTabletVariants.removeIf(holder -> StoneTablet.variantArea(holder) < i);
+        Optional<Holder<StoneTabletVariant>> optional = Util.getRandomSafe(stoneTabletVariants, stoneTablet.random);
+        if (optional.isEmpty()) {
+            return Optional.empty();
+        }
+        stoneTablet.setVariant(optional.get());
+        stoneTablet.setDirection(direction);
+        return Optional.of(stoneTablet);
+    }
 
-	private static int variantArea(Holder<StoneTabletVariant> stoneTabletVariant) {
-		return stoneTabletVariant.value().width() * stoneTabletVariant.value().height();
-	}
+    private static int variantArea(Holder<StoneTabletVariant> stoneTabletVariant) {
+        return stoneTabletVariant.value().width() * stoneTabletVariant.value().height();
+    }
 
-	@Override
-	public void addAdditionalSaveData(CompoundTag compoundTag) {
-		StoneTablet.storeVariant(compoundTag, this.getVariant());
-		compoundTag.putByte("FacingDirection", (byte) this.direction.get2DDataValue());
-		super.addAdditionalSaveData(compoundTag);
-	}
+    @Override
+    public void addAdditionalSaveData(CompoundTag compoundTag) {
+        StoneTablet.storeVariant(compoundTag, this.getVariant());
+        compoundTag.putByte("FacingDirection", (byte) this.direction.get2DDataValue());
+        super.addAdditionalSaveData(compoundTag);
+    }
 
-	@Override
-	public void readAdditionalSaveData(CompoundTag compoundTag) {
-		Holder holder = StoneTablet.loadVariant(compoundTag).orElseGet(StoneTablet::getDefaultVariant);
-		this.setVariant(holder);
-		this.direction = Direction.from2DDataValue(compoundTag.getByte("FacingDirection"));
-		super.readAdditionalSaveData(compoundTag);
-		this.setDirection(this.direction);
-	}
+    @Override
+    public void readAdditionalSaveData(CompoundTag compoundTag) {
+        Holder holder = StoneTablet.loadVariant(compoundTag).orElseGet(StoneTablet::getDefaultVariant);
+        this.setVariant(holder);
+        this.direction = Direction.from2DDataValue(compoundTag.getByte("FacingDirection"));
+        super.readAdditionalSaveData(compoundTag);
+        this.setDirection(this.direction);
+    }
 
-	public static void storeVariant(CompoundTag compoundTag, Holder<StoneTabletVariant> stoneTabletVariant) {
-		compoundTag.putString("Variant", stoneTabletVariant.unwrapKey().orElse(DEFAULT_VARIANT).location().toString());
-	}
+    public static void storeVariant(CompoundTag compoundTag, Holder<StoneTabletVariant> stoneTabletVariant) {
+        compoundTag.putString("Variant", stoneTabletVariant.unwrapKey().orElse(DEFAULT_VARIANT).location().toString());
+    }
 
-	public static Optional<Holder<StoneTabletVariant>> loadVariant(CompoundTag compoundTag) {
-		return Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("Variant"))).map(resourceLocation -> ResourceKey.create(FossilsLegacyRegistries.STONE_TABLET_VARIANTS, resourceLocation)).flatMap(FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS::getHolder);
-	}
+    public static Optional<Holder<StoneTabletVariant>> loadVariant(CompoundTag compoundTag) {
+        return Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("Variant"))).map(resourceLocation -> ResourceKey.create(FossilsLegacyRegistries.STONE_TABLET_VARIANTS, resourceLocation)).flatMap(FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS::getHolder);
+    }
 
-	@Override
-	public int getWidth() {
-		return this.getVariant().value().width();
-	}
+    @Override
+    public int getWidth() {
+        return this.getVariant().value().width();
+    }
 
-	@Override
-	public int getHeight() {
-		return this.getVariant().value().height();
-	}
+    @Override
+    public int getHeight() {
+        return this.getVariant().value().height();
+    }
 
-	@Override
-	public void dropItem(Entity entity) {
-		if (this.level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
-			this.playSound(SoundEvents.PAINTING_BREAK, 1.0F, 1.0F);
-			if (entity instanceof Player player) {
-				if (player.getAbilities().instabuild) {
-					return;
-				}
-			}
+    @Override
+    public void dropItem(Entity entity) {
+        if (this.level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
+            this.playSound(SoundEvents.PAINTING_BREAK, 1.0F, 1.0F);
+            if (entity instanceof Player player) {
+                if (player.getAbilities().instabuild) {
+                    return;
+                }
+            }
 
-			this.spawnAtLocation(FossilsLegacyItems.STONE_TABLET.get());
-		}
-	}
+            this.spawnAtLocation(FossilsLegacyItems.STONE_TABLET.get());
+        }
+    }
 
-	@Override
-	public void playPlacementSound() {
-		this.playSound(SoundEvents.PAINTING_PLACE, 1.0F, 1.0F);
-	}
+    @Override
+    public void playPlacementSound() {
+        this.playSound(SoundEvents.PAINTING_PLACE, 1.0F, 1.0F);
+    }
 
-	@Override
-	public void moveTo(double x, double y, double z, float pitch, float yaw) {
-		this.setPos(x, y, z);
-	}
+    @Override
+    public void moveTo(double x, double y, double z, float pitch, float yaw) {
+        this.setPos(x, y, z);
+    }
 
-	@Override
-	public void lerpTo(double x, double y, double z, float pitch, float yaw, int p_31922_) {
-		this.setPos(x, y, z);
-	}
+    @Override
+    public void lerpTo(double x, double y, double z, float pitch, float yaw, int p_31922_) {
+        this.setPos(x, y, z);
+    }
 
-	@Override
-	public Vec3 trackingPosition() {
-		return Vec3.atLowerCornerOf(this.pos);
-	}
+    @Override
+    public Vec3 trackingPosition() {
+        return Vec3.atLowerCornerOf(this.pos);
+    }
 
-	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
-		return new ClientboundAddEntityPacket(this, this.direction.get3DDataValue(), this.getPos());
-	}
+    @Override
+    public Packet<ClientGamePacketListener> getAddEntityPacket() {
+        return new ClientboundAddEntityPacket(this, this.direction.get3DDataValue(), this.getPos());
+    }
 
-	@Override
-	public void recreateFromPacket(ClientboundAddEntityPacket clientboundAddEntityPacket) {
-		super.recreateFromPacket(clientboundAddEntityPacket);
-		this.setDirection(Direction.from3DDataValue(clientboundAddEntityPacket.getData()));
-	}
+    @Override
+    public void recreateFromPacket(ClientboundAddEntityPacket clientboundAddEntityPacket) {
+        super.recreateFromPacket(clientboundAddEntityPacket);
+        this.setDirection(Direction.from3DDataValue(clientboundAddEntityPacket.getData()));
+    }
 
-	@Override
-	public ItemStack getPickResult() {
-		return FossilsLegacyItems.STONE_TABLET.get().getDefaultInstance();
-	}
+    @Override
+    public ItemStack getPickResult() {
+        return FossilsLegacyItems.STONE_TABLET.get().getDefaultInstance();
+    }
 }

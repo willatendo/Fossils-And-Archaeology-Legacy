@@ -12,6 +12,6 @@ public class FossilsLegacyServerConfig {
     }
 
     public boolean shouldEnableExperiments() {
-        return this.enableExperiments.get();
+        return true;
     }
 }

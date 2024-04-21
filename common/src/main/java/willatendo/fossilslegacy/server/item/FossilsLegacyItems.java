@@ -4,6 +4,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.ArmorItem.Type;
 import willatendo.fossilslegacy.experiments.server.block.FossilsExperimentsBlocks;
+import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEggVariants;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
@@ -146,20 +147,20 @@ public class FossilsLegacyItems {
     public static final SimpleHolder<BrokenJavelinItem> BROKEN_NETHERITE_JAVELIN = ITEMS.register("broken_netherite_javelin", () -> new BrokenJavelinItem(Tiers.NETHERITE, new Item.Properties()));
     public static final SimpleHolder<JavelinItem> SCARAB_GEM_JAVELIN = ITEMS.register("scarab_gem_javelin", () -> new JavelinItem(FossilsLegacyTiers.SCARAB_GEM, new Item.Properties()));
     public static final SimpleHolder<BrokenJavelinItem> BROKEN_SCARAB_GEM_JAVELIN = ITEMS.register("broken_scarab_gem_javelin", () -> new BrokenJavelinItem(FossilsLegacyTiers.SCARAB_GEM, new Item.Properties()));
-    public static final SimpleHolder<SpawnEggItem> ANU_SPAWN_EGG = ITEMS.register("anu_spawn_egg", () -> new SpawnEggItem(FossilsLegacyEntityTypes.ANU.get(), 0x432600, 0xa62c14, new Item.Properties()));
-    public static final SimpleHolder<SpawnEggItem> FAILURESAURUS_SPAWN_EGG = ITEMS.register("failuresaurus_spawn_egg", () -> new SpawnEggItem(FossilsLegacyEntityTypes.FAILURESAURUS.get(), 0x51e6a5, 0x1b5128, new Item.Properties()));
-    public static final SimpleHolder<DinosaurSpawnEggItem> BRACHIOSAURUS_SPAWN_EGG = ITEMS.register("brachiosaurus_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), 0x3b3e55, 0x7f8ba1, new Item.Properties()));
-    public static final SimpleHolder<DinosaurSpawnEggItem> DILOPHOSAURUS_SPAWN_EGG = ITEMS.register("dilophosaurus_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), 0x686442, 0xf1bc2c, new Item.Properties()));
-    public static final SimpleHolder<DinosaurSpawnEggItem> FUTABASAURUS_SPAWN_EGG = ITEMS.register("futabasaurus_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntityTypes.FUTABASAURUS.get(), 0xca6700, 0xb92200, new Item.Properties()));
-    public static final SimpleHolder<DinosaurSpawnEggItem> MAMMOTH_SPAWN_EGG = ITEMS.register("mammoth_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntityTypes.MAMMOTH.get(), 0x3d2700, 0x211500, new Item.Properties()));
-    public static final SimpleHolder<DinosaurSpawnEggItem> MOSASAURUS_SPAWN_EGG = ITEMS.register("mosasaurus_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntityTypes.MOSASAURUS.get(), 0x0d7346, 0xffe1a7, new Item.Properties()));
-    public static final SimpleHolder<SpawnEggItem> NAUTILUS_SPAWN_EGG = ITEMS.register("nautilus_spawn_egg", () -> new SpawnEggItem(FossilsLegacyEntityTypes.NAUTILUS.get(), 0xc1c1c1, 0xa95453, new Item.Properties()));
-    public static final SimpleHolder<DinosaurSpawnEggItem> PTERANODON_SPAWN_EGG = ITEMS.register("pteranodon_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntityTypes.PTERANODON.get(), 0x7c5d89, 0x450e5b, new Item.Properties()));
-    public static final SimpleHolder<DinosaurSpawnEggItem> SMILODON_SPAWN_EGG = ITEMS.register("smilodon_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntityTypes.SMILODON.get(), 0xefa745, 0x9a6527, new Item.Properties()));
-    public static final SimpleHolder<DinosaurSpawnEggItem> STEGOSAURUS_SPAWN_EGG = ITEMS.register("stegosaurus_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntityTypes.STEGOSAURUS.get(), 0x839d00, 0x785f00, new Item.Properties()));
-    public static final SimpleHolder<DinosaurSpawnEggItem> TRICERATOPS_SPAWN_EGG = ITEMS.register("triceratops_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntityTypes.TRICERATOPS.get(), 0xc2ff51, 0x638a25, new Item.Properties()));
-    public static final SimpleHolder<DinosaurSpawnEggItem> TYRANNOSAURUS_SPAWN_EGG = ITEMS.register("tyrannosaurus_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntityTypes.TYRANNOSAURUS.get(), 0x918066, 0x4f473a, new Item.Properties()));
-    public static final SimpleHolder<DinosaurSpawnEggItem> VELOCIRAPTOR_SPAWN_EGG = ITEMS.register("velociraptor_spawn_egg", () -> new DinosaurSpawnEggItem(FossilsLegacyEntityTypes.VELOCIRAPTOR.get(), 0x66965f, 0x884c2e, new Item.Properties()));
+    public static final SimpleHolder<SpawnEggItem> ANU_SPAWN_EGG = ITEMS.register("anu_spawn_egg", () -> FossilsModloaderHelper.INSTANCE.createSpawnEgg(() -> FossilsLegacyEntityTypes.ANU.get(), 0x432600, 0xa62c14, new Item.Properties()));
+    public static final SimpleHolder<SpawnEggItem> FAILURESAURUS_SPAWN_EGG = ITEMS.register("failuresaurus_spawn_egg", () -> FossilsModloaderHelper.INSTANCE.createSpawnEgg(() -> FossilsLegacyEntityTypes.FAILURESAURUS.get(), 0x51e6a5, 0x1b5128, new Item.Properties()));
+    public static final SimpleHolder<SpawnEggItem> BRACHIOSAURUS_SPAWN_EGG = ITEMS.register("brachiosaurus_spawn_egg", () -> FossilsModloaderHelper.INSTANCE.createDinosaurSpawnEgg(() -> FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), 0x3b3e55, 0x7f8ba1, new Item.Properties()));
+    public static final SimpleHolder<SpawnEggItem> DILOPHOSAURUS_SPAWN_EGG = ITEMS.register("dilophosaurus_spawn_egg", () -> FossilsModloaderHelper.INSTANCE.createDinosaurSpawnEgg(() -> FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), 0x686442, 0xf1bc2c, new Item.Properties()));
+    public static final SimpleHolder<SpawnEggItem> FUTABASAURUS_SPAWN_EGG = ITEMS.register("futabasaurus_spawn_egg", () -> FossilsModloaderHelper.INSTANCE.createDinosaurSpawnEgg(() -> FossilsLegacyEntityTypes.FUTABASAURUS.get(), 0xca6700, 0xb92200, new Item.Properties()));
+    public static final SimpleHolder<SpawnEggItem> MAMMOTH_SPAWN_EGG = ITEMS.register("mammoth_spawn_egg", () -> FossilsModloaderHelper.INSTANCE.createDinosaurSpawnEgg(() -> FossilsLegacyEntityTypes.MAMMOTH.get(), 0x3d2700, 0x211500, new Item.Properties()));
+    public static final SimpleHolder<SpawnEggItem> MOSASAURUS_SPAWN_EGG = ITEMS.register("mosasaurus_spawn_egg", () -> FossilsModloaderHelper.INSTANCE.createDinosaurSpawnEgg(() -> FossilsLegacyEntityTypes.MOSASAURUS.get(), 0x0d7346, 0xffe1a7, new Item.Properties()));
+    public static final SimpleHolder<SpawnEggItem> NAUTILUS_SPAWN_EGG = ITEMS.register("nautilus_spawn_egg", () -> FossilsModloaderHelper.INSTANCE.createSpawnEgg(() -> FossilsLegacyEntityTypes.NAUTILUS.get(), 0xc1c1c1, 0xa95453, new Item.Properties()));
+    public static final SimpleHolder<SpawnEggItem> PTERANODON_SPAWN_EGG = ITEMS.register("pteranodon_spawn_egg", () -> FossilsModloaderHelper.INSTANCE.createDinosaurSpawnEgg(() -> FossilsLegacyEntityTypes.PTERANODON.get(), 0x7c5d89, 0x450e5b, new Item.Properties()));
+    public static final SimpleHolder<SpawnEggItem> SMILODON_SPAWN_EGG = ITEMS.register("smilodon_spawn_egg", () -> FossilsModloaderHelper.INSTANCE.createDinosaurSpawnEgg(() -> FossilsLegacyEntityTypes.SMILODON.get(), 0xefa745, 0x9a6527, new Item.Properties()));
+    public static final SimpleHolder<SpawnEggItem> STEGOSAURUS_SPAWN_EGG = ITEMS.register("stegosaurus_spawn_egg", () -> FossilsModloaderHelper.INSTANCE.createDinosaurSpawnEgg(() -> FossilsLegacyEntityTypes.STEGOSAURUS.get(), 0x839d00, 0x785f00, new Item.Properties()));
+    public static final SimpleHolder<SpawnEggItem> TRICERATOPS_SPAWN_EGG = ITEMS.register("triceratops_spawn_egg", () -> FossilsModloaderHelper.INSTANCE.createDinosaurSpawnEgg(() -> FossilsLegacyEntityTypes.TRICERATOPS.get(), 0xc2ff51, 0x638a25, new Item.Properties()));
+    public static final SimpleHolder<SpawnEggItem> TYRANNOSAURUS_SPAWN_EGG = ITEMS.register("tyrannosaurus_spawn_egg", () -> FossilsModloaderHelper.INSTANCE.createDinosaurSpawnEgg(() -> FossilsLegacyEntityTypes.TYRANNOSAURUS.get(), 0x918066, 0x4f473a, new Item.Properties()));
+    public static final SimpleHolder<SpawnEggItem> VELOCIRAPTOR_SPAWN_EGG = ITEMS.register("velociraptor_spawn_egg", () -> FossilsModloaderHelper.INSTANCE.createDinosaurSpawnEgg(() -> FossilsLegacyEntityTypes.VELOCIRAPTOR.get(), 0x66965f, 0x884c2e, new Item.Properties()));
 
     public static void init(List<SimpleRegistry<?>> simpleRegistries) {
         // Debug
