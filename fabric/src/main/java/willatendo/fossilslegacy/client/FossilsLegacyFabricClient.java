@@ -80,7 +80,7 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         EntityRendererRegistry.register(FossilsLegacyEntityTypes.THROWN_INCUBATED_EGG.get(), ThrownItemRenderer::new);
         EntityRendererRegistry.register(FossilsLegacyEntityTypes.DILOPHOSAURUS_VENOM.get(), DilophosaurusVenomRenderer::new);
 
-        EntityRendererRegistry.register(FossilsLegacyEntityTypes.STONE_TABLET.get(), StoneHieroglyphRenderer::new);
+        EntityRendererRegistry.register(FossilsLegacyEntityTypes.STONE_TABLET.get(), StoneTabletRenderer::new);
 
         EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.BRACHIOSAURUS, BrachiosaurusModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(FossilsLegacyModels.DILOPHOSAURUS, DilophosaurusModel::createBodyLayer);

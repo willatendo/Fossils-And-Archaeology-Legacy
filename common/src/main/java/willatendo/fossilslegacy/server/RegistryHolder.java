@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.server;
 
 import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
 import net.minecraft.core.IdMap;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
@@ -18,8 +17,6 @@ public interface RegistryHolder<T> extends IdMap<T> {
     Holder<T> getHolderOrThrow(ResourceKey<T> resourceKey);
 
     Optional<Holder.Reference<T>> getHolder(ResourceKey<T> resourceKey);
-
-    Optional<HolderSet.Named<T>> getTag(TagKey<T> tagKey);
 
     Iterable<Holder<T>> getTagOrEmpty(TagKey<T> tagKey);
 
@@ -46,11 +43,6 @@ public interface RegistryHolder<T> extends IdMap<T> {
         @Override
         public Optional<Holder.Reference<T>> getHolder(ResourceKey<T> resourceKey) {
             return this.registry.getHolder(resourceKey);
-        }
-
-        @Override
-        public Optional<HolderSet.Named<T>> getTag(TagKey<T> tagKey) {
-            return this.registry.getTag(tagKey);
         }
 
         @Override

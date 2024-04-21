@@ -1,6 +1,9 @@
 package willatendo.fossilslegacy.platform;
 
-import net.minecraft.core.*;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.IdMap;
+import net.minecraft.core.Registry;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -66,11 +69,6 @@ public class FossilsForgeHelper implements FossilsModloaderHelper {
             @Override
             public Optional<Holder.Reference<T>> getHolder(ResourceKey<T> resourceKey) {
                 return iForgeRegistry.get().getDelegate(resourceKey);
-            }
-
-            @Override
-            public Optional<HolderSet.Named<T>> getTag(TagKey<T> tagKey) {
-                return Optional.ofNullable(HolderSet.emptyNamed(null, tagKey));
             }
 
             @Override

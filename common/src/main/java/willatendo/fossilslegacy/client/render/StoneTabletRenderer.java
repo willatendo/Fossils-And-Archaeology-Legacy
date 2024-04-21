@@ -21,8 +21,8 @@ import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.server.entity.StoneTablet;
 import willatendo.fossilslegacy.server.entity.StoneTabletVariant;
 
-public class StoneHieroglyphRenderer extends EntityRenderer<StoneTablet> {
-	public StoneHieroglyphRenderer(Context context) {
+public class StoneTabletRenderer extends EntityRenderer<StoneTablet> {
+	public StoneTabletRenderer(Context context) {
 		super(context);
 	}
 

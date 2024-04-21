@@ -84,7 +84,7 @@ public class ClientEvents {
         event.registerEntityRenderer(FossilsLegacyEntityTypes.THROWN_INCUBATED_EGG.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(FossilsLegacyEntityTypes.DILOPHOSAURUS_VENOM.get(), DilophosaurusVenomRenderer::new);
 
-        event.registerEntityRenderer(FossilsLegacyEntityTypes.STONE_TABLET.get(), StoneHieroglyphRenderer::new);
+        event.registerEntityRenderer(FossilsLegacyEntityTypes.STONE_TABLET.get(), StoneTabletRenderer::new);
     }
 
     @SubscribeEvent
