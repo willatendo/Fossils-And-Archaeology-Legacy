@@ -1,4 +1,4 @@
-// 1.20.4	2024-04-20T21:39:39.1845961	Loot Tables
+// 1.20.4	2024-04-22T18:02:18.3239972	Loot Tables
 5fcf811a958fcf132678d4423a7472c475c2b8ca data/fossilslegacy/loot_tables/blocks/analyzer.json
 8bfc811efa599c9be09afe46481ec9ebbf5f3a33 data/fossilslegacy/loot_tables/blocks/archaeology_workbench.json
 e4c3f2afd7c71b1d42778ff89f2ddfe5a03122da data/fossilslegacy/loot_tables/blocks/axolotlspawn.json
@@ -19,6 +19,8 @@ b402169b5269efca9d331913a53749b2f42260dc data/fossilslegacy/loot_tables/blocks/j
 56fd519c48bb18a79c7304a00c16a702caae46c6 data/fossilslegacy/loot_tables/chests/weapon_shop_loot.json
 daf13a0fe51fdd4ca048e716129fc627f715b594 data/fossilslegacy/loot_tables/entities/anu.json
 d053acccc4d62033c0c854fe957eb22126765748 data/fossilslegacy/loot_tables/entities/brachiosaurus.json
+cc72c44bf0e8b020b5e76f6deaf1bc73e38e8ca7 data/fossilslegacy/loot_tables/entities/carnotaurus.json
+f584a476c9949107c57337ac1770025e1fe7b9a3 data/fossilslegacy/loot_tables/entities/cryolophosaurus.json
 15666fb873677b997f2169eec60e0157317b33e8 data/fossilslegacy/loot_tables/entities/dilophosaurus.json
 3f9fbebf1e59b2db877ea746639a80514bc1853c data/fossilslegacy/loot_tables/entities/egg.json
 b42cdd3e259e6373322f855817a4c9a8c68b6921 data/fossilslegacy/loot_tables/entities/egg/brachiosaurus.json

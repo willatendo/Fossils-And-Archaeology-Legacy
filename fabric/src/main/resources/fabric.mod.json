@@ -22,9 +22,6 @@
 		"client": [
 			"willatendo.fossilslegacy.client.FossilsLegacyFabricClient"
 		],
-		"fabric-datagen": [
-			"willatendo.fossilslegacy.data.FossilsLegacyData"
-		],
 		"jei_mod_plugin": [
 			"willatendo.fossilslegacy.server.jei.FossilsLegacyJEI"
 		],

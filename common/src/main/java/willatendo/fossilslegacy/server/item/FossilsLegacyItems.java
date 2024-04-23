@@ -14,11 +14,13 @@ import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FossilsLegacyItems {
     public static final SimpleRegistry<Item> ITEMS = SimpleRegistry.create(Registries.ITEM, FossilsLegacyUtils.ID);
     public static final SimpleRegistry<Item> DEBUG_ITEMS = SimpleRegistry.create(Registries.ITEM, FossilsLegacyUtils.ID);
+    public static final List<EggItem> EGGS = new ArrayList<>();
 
     public static final SimpleHolder<Item> FOSSIL = ITEMS.register("fossil", () -> new FossilItem(new Item.Properties()));
     public static final SimpleHolder<Item> TRICERATOPS_DNA = ITEMS.register("triceratops_dna", () -> new Item(new Item.Properties()));
@@ -41,7 +43,6 @@ public class FossilsLegacyItems {
     public static final SimpleHolder<EggItem> STEGOSAURUS_EGG = ITEMS.register("stegosaurus_egg", () -> new EggItem(FossilsLegacyEggVariants.STEGOSAURUS, new Item.Properties().stacksTo(1)));
     public static final SimpleHolder<EggItem> DILOPHOSAURUS_EGG = ITEMS.register("dilophosaurus_egg", () -> new EggItem(FossilsLegacyEggVariants.DILOPHOSAURUS, new Item.Properties().stacksTo(1)));
     public static final SimpleHolder<EggItem> BRACHIOSAURUS_EGG = ITEMS.register("brachiosaurus_egg", () -> new EggItem(FossilsLegacyEggVariants.BRACHIOSAURUS, new Item.Properties().stacksTo(1)));
-    public static final List<SimpleHolder<EggItem>> EGGS = List.of(FossilsLegacyItems.TRICERATOPS_EGG, FossilsLegacyItems.VELOCIRAPTOR_EGG, FossilsLegacyItems.TYRANNOSAURUS_EGG, FossilsLegacyItems.PTERANODON_EGG, FossilsLegacyItems.FUTABASAURUS_EGG, FossilsLegacyItems.MOSASAURUS_EGG, FossilsLegacyItems.STEGOSAURUS_EGG, FossilsLegacyItems.DILOPHOSAURUS_EGG, FossilsLegacyItems.BRACHIOSAURUS_EGG);
     public static final SimpleHolder<Item> RAW_TRICERATOPS_MEAT = ITEMS.register("raw_triceratops_meat", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_VELOCIRAPTOR_MEAT = ITEMS.register("raw_velociraptor_meat", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_TYRANNOSAURUS_MEAT = ITEMS.register("raw_tyrannosaurus_meat", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));

@@ -33,11 +33,9 @@ dependencies {
 
     modImplementation "com.terraformersmc:modmenu:${mod_menu_version}"
 
-    modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-    modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-fabric-api:${jei_version}")
-    modRuntimeOnly("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}")
-
     compileOnly project(":common")
+
+    modImplementation "mezz.jei:jei-${minecraft_version}-fabric:${jei_version}"
 }
 
 sourceSets {
@@ -50,6 +48,7 @@ sourceSets {
 }
 
 loom {
+    accessWidenerPath.set(project(":common").file("src/main/resources/${mod_id}.accesswidener"))
     mixin {
         defaultRefmapName.set("${mod_id}.refmap.json")
     }

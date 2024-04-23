@@ -48,12 +48,11 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     implementation fg.deobf("simplelibrary:simplelibrary-forge:${simple_library_version}")
-
-    compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
-    compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
-    runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
+    jarJar(group: 'simplelibrary', name: 'simplelibrary-forge', version: "[3.0.0,4.0.0)")
 
     compileOnly project(":common")
+
+    implementation fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 }
 
 reobf {

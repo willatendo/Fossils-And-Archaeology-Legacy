@@ -8,6 +8,8 @@ base {
     archivesName = "fossilslegacy-neoforge"
 }
 
+jarJar.enable()
+
 runs {
     configureEach {
         modSource project.sourceSets.main
@@ -33,12 +35,11 @@ dependencies {
     implementation "net.neoforged:neoforge:${neoforge_version}"
 
     implementation "simplelibrary:simplelibrary-neoforge:${simple_library_version}"
-
-    compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-    compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
-    runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+    jarJar(group: 'simplelibrary', name: 'simplelibrary-neoforge', version: "[3.0.0,4.0.0)")
 
     compileOnly project(":common")
+
+    implementation "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 }
 
 Spec<Task> notNeoTask = { Task it -> !it.name.startsWith("neo") } as Spec<Task>

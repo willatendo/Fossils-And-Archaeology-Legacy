@@ -2,6 +2,7 @@ package willatendo.fossilslegacy;
 
 import net.fabricmc.api.ModInitializer;
 import willatendo.fossilslegacy.server.config.FabricConfigHelper;
+import willatendo.fossilslegacy.server.event.BasicEvents;
 import willatendo.fossilslegacy.server.event.ModCallbacks;
 import willatendo.fossilslegacy.server.event.ModEvents;
 import willatendo.simplelibrary.server.registry.FabricRegister;
@@ -19,6 +20,7 @@ public class FossilsLegacyFabricMod implements ModInitializer {
 
         FabricConfigHelper.loadConfig();
 
+        BasicEvents.init();
         ModCallbacks.callbacks();
         ModEvents.events();
     }

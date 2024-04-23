@@ -51,6 +51,14 @@
     {
       "result": "fossilslegacy:velociraptor_dna",
       "weight": 2
+    },
+    {
+      "result": "fossilslegacy:carnotaurus_dna",
+      "weight": 2
+    },
+    {
+      "result": "fossilslegacy:cryolophosaurus_dna",
+      "weight": 2
     }
   ],
   "time": 100

@@ -16,5 +16,5 @@ minecraft {
 dependencies {
     compileOnly "simplelibrary:simplelibrary-common:${simple_library_version}"
 
-    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${minecraft_version}-common:${jei_version}"
 }

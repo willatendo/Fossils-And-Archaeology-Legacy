@@ -172,6 +172,17 @@ public class FossilsLegacyItemModelProvider extends ItemModelProvider {
         this.basicItem(FossilsExperimentsItems.NETHER_COIN.get());
         this.basicItem(FossilsExperimentsItems.PREHISTORIC_COIN.get());
 
+        this.basicItem(FossilsExperimentsItems.CARNOTAURUS_DNA.get());
+        this.basicItem(FossilsExperimentsItems.CRYOLOPHOSAURUS_DNA.get());
+        this.basicItem(FossilsExperimentsItems.CARNOTAURUS_EGG.get());
+        this.basicItem(FossilsExperimentsItems.CRYOLOPHOSAURUS_EGG.get());
+        this.basicItem(FossilsExperimentsItems.RAW_CARNOTAURUS_MEAT.get());
+        this.basicItem(FossilsExperimentsItems.RAW_CRYOLOPHOSAURUS_MEAT.get());
+        this.basicItem(FossilsExperimentsItems.COOKED_CARNOTAURUS_MEAT.get());
+        this.basicItem(FossilsExperimentsItems.COOKED_CRYOLOPHOSAURUS_MEAT.get());
+        this.spawnEggItem(FossilsExperimentsItems.CARNOTAURUS_SPAWN_EGG.get());
+        this.spawnEggItem(FossilsExperimentsItems.CRYOLOPHOSAURUS_SPAWN_EGG.get());
+
         for (SimpleHolder<? extends Item> items : FossilsLegacyItems.DEBUG_ITEMS.getEntriesView()) {
             this.handheldItem(items.get(), new ResourceLocation("item/bone"));
         }

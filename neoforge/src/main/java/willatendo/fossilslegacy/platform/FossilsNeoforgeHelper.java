@@ -16,6 +16,7 @@ import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.RegistryBuilder;
 import willatendo.fossilslegacy.FossilsLegacyNeoforgeMod;
 import willatendo.fossilslegacy.server.RegistryHolder;
@@ -23,6 +24,8 @@ import willatendo.fossilslegacy.server.config.FossilsLegacyConfig;
 import willatendo.fossilslegacy.server.item.DeferredDinosaurSpawnEggItem;
 import willatendo.fossilslegacy.server.menu.ExtendedMenuSupplier;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 
 public class FossilsNeoforgeHelper implements FossilsModloaderHelper {

@@ -1,0 +1,11 @@
+{
+  "type": "fossilslegacy:prehistory",
+  "generator": {
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "minecraft:swamp"
+    },
+    "settings": "minecraft:overworld"
+  }
+}

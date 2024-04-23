@@ -13,6 +13,7 @@ public class EggItem extends PlaceEntityItem {
     public EggItem(Supplier<EggVariant> eggVariant, Properties properties) {
         super(() -> FossilsLegacyEntityTypes.EGG.get(), properties);
         this.eggVariant = eggVariant;
+        FossilsLegacyItems.EGGS.add(this);
     }
 
     public EggVariant getEggVariant() {

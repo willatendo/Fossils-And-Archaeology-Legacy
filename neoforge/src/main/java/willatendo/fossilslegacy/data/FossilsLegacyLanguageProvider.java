@@ -13,6 +13,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import willatendo.fossilslegacy.experiments.server.block.FossilsExperimentsBlocks;
+import willatendo.fossilslegacy.experiments.server.entity.FossilsExperimentsEntityTypes;
 import willatendo.fossilslegacy.experiments.server.item.FossilsExperimentsItems;
 import willatendo.fossilslegacy.server.FossilsLegacyCreativeModeTabs;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
@@ -209,6 +210,8 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
 
         this.add(FossilsLegacyEntityTypes.STONE_TABLET.get());
 
+        this.add(FossilsExperimentsEntityTypes.CARNOTAURUS.get());
+
         // Items
         this.add(FossilsLegacyItems.FOSSIL.get());
         this.add(FossilsLegacyItems.TRICERATOPS_DNA.get(), "Triceratops DNA");
@@ -366,6 +369,17 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add(FossilsExperimentsItems.NETHER_COIN.get());
         this.add(FossilsExperimentsItems.PREHISTORIC_COIN.get());
 
+        this.add(FossilsExperimentsItems.CARNOTAURUS_DNA.get());
+        this.add(FossilsExperimentsItems.CRYOLOPHOSAURUS_DNA.get());
+        this.add(FossilsExperimentsItems.CARNOTAURUS_EGG.get());
+        this.add(FossilsExperimentsItems.CRYOLOPHOSAURUS_EGG.get());
+        this.add(FossilsExperimentsItems.RAW_CARNOTAURUS_MEAT.get());
+        this.add(FossilsExperimentsItems.RAW_CRYOLOPHOSAURUS_MEAT.get());
+        this.add(FossilsExperimentsItems.COOKED_CARNOTAURUS_MEAT.get());
+        this.add(FossilsExperimentsItems.COOKED_CRYOLOPHOSAURUS_MEAT.get());
+        this.add(FossilsExperimentsItems.CARNOTAURUS_SPAWN_EGG.get());
+        this.add(FossilsExperimentsItems.CRYOLOPHOSAURUS_SPAWN_EGG.get());
+
         for (SimpleHolder<? extends Item> items : FossilsLegacyItems.DEBUG_ITEMS.getEntriesView()) {
             this.add(items.get(), "Debug Item");
         }
@@ -449,6 +463,12 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add("sound.fossilslegacy.brachiosaurus.ambient", "Brachiosaurus Calls");
         this.add("sound.fossilslegacy.brachiosaurus.hurt", "Brachiosaurus Hurts");
         this.add("sound.fossilslegacy.brachiosaurus.death", "Brachiosaurus Dies");
+        this.add("sound.fossilslegacy.carnotaurus.ambient", "Carnotaurus Grumbles");
+        this.add("sound.fossilslegacy.carnotaurus.hurt", "Carnotaurus Hurts");
+        this.add("sound.fossilslegacy.carnotaurus.death", "Carnotaurus Dies");
+        this.add("sound.fossilslegacy.cryolophosaurus.ambient", "Cryolophosaurus Grumbles");
+        this.add("sound.fossilslegacy.cryolophosaurus.hurt", "CryolophosaurusHurts");
+        this.add("sound.fossilslegacy.cryolophosaurus.death", "CryolophosaurusDies");
         this.add("sound.fossilslegacy.dilophosaurus.ambient", "Dilophosaurus Hisses");
         this.add("sound.fossilslegacy.dilophosaurus.call", "Dilophosaurus Calls");
         this.add("sound.fossilslegacy.dilophosaurus.hurt", "Dilophosaurus Hurts");

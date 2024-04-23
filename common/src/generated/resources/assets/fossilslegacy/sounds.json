@@ -31,6 +31,45 @@
     ],
     "subtitle": "sound.fossilslegacy.brachiosaurus.hurt"
   },
+  "entity.carnotaurus.ambient": {
+    "sounds": [
+      "fossilslegacy:carnotaurus_ambient_1",
+      "fossilslegacy:carnotaurus_ambient_2"
+    ],
+    "subtitle": "sound.fossilslegacy.carnotaurus.ambient"
+  },
+  "entity.carnotaurus.death": {
+    "sounds": [
+      "fossilslegacy:carnotaurus_death"
+    ],
+    "subtitle": "sound.fossilslegacy.carnotaurus.death"
+  },
+  "entity.carnotaurus.hurt": {
+    "sounds": [
+      "fossilslegacy:carnotaurus_hurt"
+    ],
+    "subtitle": "sound.fossilslegacy.carnotaurus.hurt"
+  },
+  "entity.cryolophosaurus.ambient": {
+    "sounds": [
+      "fossilslegacy:cryolophosaurus_ambient_1",
+      "fossilslegacy:cryolophosaurus_ambient_2",
+      "fossilslegacy:cryolophosaurus_ambient_3"
+    ],
+    "subtitle": "sound.fossilslegacy.cryolophosaurus.ambient"
+  },
+  "entity.cryolophosaurus.death": {
+    "sounds": [
+      "fossilslegacy:cryolophosaurus_death"
+    ],
+    "subtitle": "sound.fossilslegacy.cryolophosaurus.death"
+  },
+  "entity.cryolophosaurus.hurt": {
+    "sounds": [
+      "fossilslegacy:cryolophosaurus_hurt"
+    ],
+    "subtitle": "sound.fossilslegacy.cryolophosaurus.hurt"
+  },
   "entity.dilophosaurus.ambient": {
     "sounds": [
       "fossilslegacy:dilophosaurus_ambient"

@@ -1,6 +1,7 @@
 package willatendo.fossilslegacy.server.config;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.data.loading.DatagenModLoader;
 
 import static willatendo.fossilslegacy.server.config.FossilsLegacyBaseConfigSettings.ENABLE_EXPERIMENTS;
 
@@ -12,6 +13,6 @@ public class FossilsLegacyServerConfig {
     }
 
     public boolean shouldEnableExperiments() {
-        return true;
+        return DatagenModLoader.isRunningDataGen() ? true : this.enableExperiments.get();
     }
 }
