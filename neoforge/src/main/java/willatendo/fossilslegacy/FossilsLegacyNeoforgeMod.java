@@ -24,6 +24,7 @@ public class FossilsLegacyNeoforgeMod {
 
         FossilsLegacyUtils.LOGGER.info(REGISTRIES.size() + "");
 
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, FossilsLegacyConfig.CLIENT_SPEC);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, FossilsLegacyConfig.COMMON_SPEC);
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, FossilsLegacyConfig.SERVER_SPEC);
     }

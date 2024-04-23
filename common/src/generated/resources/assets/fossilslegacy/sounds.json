@@ -190,6 +190,25 @@
     ],
     "subtitle": "sound.fossilslegacy.stegosaurus.hurt"
   },
+  "entity.therizinosaurus.ambient": {
+    "sounds": [
+      "fossilslegacy:therizinosaurus_ambient_1",
+      "fossilslegacy:therizinosaurus_ambient_2"
+    ],
+    "subtitle": "sound.fossilslegacy.therizinosaurus.ambient"
+  },
+  "entity.therizinosaurus.death": {
+    "sounds": [
+      "fossilslegacy:therizinosaurus_death"
+    ],
+    "subtitle": "sound.fossilslegacy.therizinosaurus.death"
+  },
+  "entity.therizinosaurus.hurt": {
+    "sounds": [
+      "fossilslegacy:therizinosaurus_hurt"
+    ],
+    "subtitle": "sound.fossilslegacy.therizinosaurus.hurt"
+  },
   "entity.triceratops.ambient": {
     "sounds": [
       "fossilslegacy:triceratops_ambient_1",

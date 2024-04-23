@@ -9,6 +9,7 @@ import static willatendo.fossilslegacy.server.entity.FossilsLegacyEggVariants.re
 public class FossilsExperimentsEggVariants {
     public static final SimpleHolder<EggVariant> CARNOTAURUS = register("carnotaurus", () -> FossilsExperimentsEntityTypes.CARNOTAURUS.get(), () -> FossilsExperimentsItems.CARNOTAURUS_EGG.get());
     public static final SimpleHolder<EggVariant> CRYOLOPHOSAURUS = register("cryolophosaurus", () -> FossilsExperimentsEntityTypes.CRYOLOPHOSAURUS.get(), () -> FossilsExperimentsItems.CARNOTAURUS_EGG.get());
+    public static final SimpleHolder<EggVariant> THERIZINOSAURUS = register("therizinosaurus", () -> FossilsExperimentsEntityTypes.THERIZINOSAURUS.get(), () -> FossilsExperimentsItems.THERIZINOSAURUS_EGG.get());
 
     public static void init() {
     }

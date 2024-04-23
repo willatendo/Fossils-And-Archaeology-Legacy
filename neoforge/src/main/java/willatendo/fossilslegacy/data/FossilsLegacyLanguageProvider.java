@@ -371,14 +371,19 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
 
         this.add(FossilsExperimentsItems.CARNOTAURUS_DNA.get());
         this.add(FossilsExperimentsItems.CRYOLOPHOSAURUS_DNA.get());
+        this.add(FossilsExperimentsItems.THERIZINOSAURUS_DNA.get());
         this.add(FossilsExperimentsItems.CARNOTAURUS_EGG.get());
         this.add(FossilsExperimentsItems.CRYOLOPHOSAURUS_EGG.get());
+        this.add(FossilsExperimentsItems.THERIZINOSAURUS_EGG.get());
         this.add(FossilsExperimentsItems.RAW_CARNOTAURUS_MEAT.get());
         this.add(FossilsExperimentsItems.RAW_CRYOLOPHOSAURUS_MEAT.get());
+        this.add(FossilsExperimentsItems.RAW_THERIZINOSAURUS_MEAT.get());
         this.add(FossilsExperimentsItems.COOKED_CARNOTAURUS_MEAT.get());
         this.add(FossilsExperimentsItems.COOKED_CRYOLOPHOSAURUS_MEAT.get());
+        this.add(FossilsExperimentsItems.COOKED_THERIZINOSAURUS_MEAT.get());
         this.add(FossilsExperimentsItems.CARNOTAURUS_SPAWN_EGG.get());
         this.add(FossilsExperimentsItems.CRYOLOPHOSAURUS_SPAWN_EGG.get());
+        this.add(FossilsExperimentsItems.THERIZINOSAURUS_SPAWN_EGG.get());
 
         for (SimpleHolder<? extends Item> items : FossilsLegacyItems.DEBUG_ITEMS.getEntriesView()) {
             this.add(items.get(), "Debug Item");
@@ -467,8 +472,8 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add("sound.fossilslegacy.carnotaurus.hurt", "Carnotaurus Hurts");
         this.add("sound.fossilslegacy.carnotaurus.death", "Carnotaurus Dies");
         this.add("sound.fossilslegacy.cryolophosaurus.ambient", "Cryolophosaurus Grumbles");
-        this.add("sound.fossilslegacy.cryolophosaurus.hurt", "CryolophosaurusHurts");
-        this.add("sound.fossilslegacy.cryolophosaurus.death", "CryolophosaurusDies");
+        this.add("sound.fossilslegacy.cryolophosaurus.hurt", "Cryolophosaurus Hurts");
+        this.add("sound.fossilslegacy.cryolophosaurus.death", "Cryolophosaurus Dies");
         this.add("sound.fossilslegacy.dilophosaurus.ambient", "Dilophosaurus Hisses");
         this.add("sound.fossilslegacy.dilophosaurus.call", "Dilophosaurus Calls");
         this.add("sound.fossilslegacy.dilophosaurus.hurt", "Dilophosaurus Hurts");
@@ -493,6 +498,9 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add("sound.fossilslegacy.triceratops.ambient", "Triceratops Calls");
         this.add("sound.fossilslegacy.triceratops.hurt", "Triceratops Hurts");
         this.add("sound.fossilslegacy.triceratops.death", "Triceratops Dies");
+        this.add("sound.fossilslegacy.therizinosaurus.ambient", "Therizinosaurus Grumbles");
+        this.add("sound.fossilslegacy.therizinosaurus.hurt", "Therizinosaurus Hurts");
+        this.add("sound.fossilslegacy.therizinosaurus.death", "Therizinosaurus Dies");
         this.add("sound.fossilslegacy.tyrannosaurus.ambient", "Tyrannosaurus Rumbles");
         this.add("sound.fossilslegacy.tyrannosaurus.attack", "Tyrannosaurus Roars");
         this.add("sound.fossilslegacy.tyrannosaurus.hurt", "Tyrannosaurus Hurts");

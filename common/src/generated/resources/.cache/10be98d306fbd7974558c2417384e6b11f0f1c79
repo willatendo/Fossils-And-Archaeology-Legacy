@@ -1,4 +1,4 @@
-// 1.20.4	2024-04-22T18:02:18.3209962	Item Models: fossilslegacy
+// 1.20.4	2024-04-22T21:20:55.1840915	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 41c5f6a309438824458da52752171cd09485a937 assets/fossilslegacy/models/item/ancient_helmet.json
 1b00aecb972342e5bc57d055c16f2c28f4ccc3d4 assets/fossilslegacy/models/item/ancient_helmet_artifact.json
@@ -37,6 +37,7 @@ a18661d6c353a390459a259944c4cac1b3778217 assets/fossilslegacy/models/item/cooked
 7e0ad408af6b58371af75f4bd3e51bf154033517 assets/fossilslegacy/models/item/cooked_pteranodon_meat.json
 a1e6a2bc4e794dff7b1e21874584604123f7c35d assets/fossilslegacy/models/item/cooked_smilodon_meat.json
 d6e3f4684e209f666028d492a6200e104fba6387 assets/fossilslegacy/models/item/cooked_stegosaurus_meat.json
+bb56202110788799804591a098c1eeb699274a39 assets/fossilslegacy/models/item/cooked_therizinosaurus_meat.json
 859c5141347177f24e026d8cd986c679e209da8b assets/fossilslegacy/models/item/cooked_triceratops_meat.json
 8fd20905e63747af4c4a86c9e10d48a7d340948f assets/fossilslegacy/models/item/cooked_tyrannosaurus_meat.json
 edf4160f29f196b08fd6d8041c585536fa8b4407 assets/fossilslegacy/models/item/cooked_velociraptor_meat.json
@@ -130,6 +131,7 @@ f6129961cb4cf6091a0d6398dea96050b1f18a21 assets/fossilslegacy/models/item/raw_fu
 50e88470f04de80d46dbe930f9b3996f0208beeb assets/fossilslegacy/models/item/raw_pteranodon_meat.json
 6c3f31b8181b5d564067183e9fd176b8e886de3f assets/fossilslegacy/models/item/raw_smilodon_meat.json
 cc3d7651e50f2adaa0928bed8cef6c43c4a177f4 assets/fossilslegacy/models/item/raw_stegosaurus_meat.json
+9f55818b20c1664d8806584906ec16a28e5fd77d assets/fossilslegacy/models/item/raw_therizinosaurus_meat.json
 7576b0e441321a450fe9947d587012e21d2cb599 assets/fossilslegacy/models/item/raw_triceratops_meat.json
 255cf24aea434e5035ace0581386dde8bc3b2e2a assets/fossilslegacy/models/item/raw_tyrannosaurus_meat.json
 af20b9fd44752a2fca1bdc18b54059dea7e968cc assets/fossilslegacy/models/item/raw_velociraptor_meat.json
@@ -156,6 +158,9 @@ c9f2e78854037eca1f72506bf2d2b213f7ccf801 assets/fossilslegacy/models/item/stegos
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/stegosaurus_spawn_egg.json
 bd165c5894dc19f85abaab92be30b71091296b42 assets/fossilslegacy/models/item/stone_javelin.json
 c8cf686f2818d41140c164c63b2c2d295e6c032b assets/fossilslegacy/models/item/stone_tablet.json
+8707b9c70efdf1937c558e67223839a39ae8181a assets/fossilslegacy/models/item/therizinosaurus_dna.json
+4ca2d6809e7fccf100dd634cdd697ba9f2e1340e assets/fossilslegacy/models/item/therizinosaurus_egg.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/therizinosaurus_spawn_egg.json
 c1dc22f67cdf27a4d81756e7c3bcdd6143e8f483 assets/fossilslegacy/models/item/time_machine.json
 1ab12f84089ab46e61e918b839cd0de4df2d25fb assets/fossilslegacy/models/item/tooth_dagger.json
 19d3c96619058c191701063e847bf65b2f1b495e assets/fossilslegacy/models/item/triceratops_dna.json

@@ -3,13 +3,10 @@ package willatendo.fossilslegacy.experiments.server.block.entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -23,28 +20,26 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
+import willatendo.fossilslegacy.experiments.server.dimension.FossilsExperimentsLevels;
 import willatendo.fossilslegacy.experiments.server.menu.TimeMachineMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
+import java.util.List;
+
 public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, StackedContentsCompatible {
-    private static final int[] SLOTS_FOR_UP = new int[]{0, 1, 2, 3, 4, 5, 6};
+    private static final int[] SLOTS_FOR_UP = new int[]{0};
     private static final int[] SLOTS_FOR_DOWN = SLOTS_FOR_UP;
     private static final int[] SLOTS_FOR_SIDES = SLOTS_FOR_UP;
-    public static final int MAX_RESTORE_TICK = 10;
     public static final int MAX_CHARGE = 1000;
-    public static final int MEMORY_WIDTH = 10;
-    public static final int MEMORY_HEIGHT = 10;
-    protected NonNullList<ItemStack> itemStacks = NonNullList.withSize(7, ItemStack.EMPTY);
+    protected NonNullList<ItemStack> itemStacks = NonNullList.withSize(1, ItemStack.EMPTY);
 
     public int time;
     public float rot;
     public float oRot;
     public float tRot;
     private int chargeLevel = 0;
-    private BlockState[][][] memoryArray = null;
-    public boolean isRestoring = false;
-    private int restoringLayer = 0;
-    private int restoreTick = 0;
+    private boolean timeTravelling = false;
 
     public final ContainerData containerData = new ContainerData() {
         @Override
@@ -53,7 +48,7 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
                 case 0:
                     return TimeMachineBlockEntity.this.chargeLevel;
                 case 1:
-                    return TimeMachineBlockEntity.this.isRestoring ? 1 : 0;
+                    return TimeMachineBlockEntity.this.timeTravelling ? 1 : 0;
                 default:
                     return 0;
             }
@@ -66,11 +61,7 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
                     TimeMachineBlockEntity.this.chargeLevel = set;
                     break;
                 case 1:
-                    if (set == 1) {
-                        TimeMachineBlockEntity.this.isRestoring = true;
-                    } else {
-                        TimeMachineBlockEntity.this.isRestoring = false;
-                    }
+                    TimeMachineBlockEntity.this.timeTravelling = set == 1 ? true : false;
                     break;
             }
 
@@ -96,6 +87,7 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
         this.itemStacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
         ContainerHelper.loadAllItems(compoundTag, this.itemStacks);
         this.chargeLevel = compoundTag.getInt("ChargeLevel");
+        this.timeTravelling = compoundTag.getBoolean("TimeTravelling");
     }
 
     @Override
@@ -103,20 +95,22 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
         super.saveAdditional(compoundTag);
         ContainerHelper.saveAllItems(compoundTag, this.itemStacks);
         compoundTag.putInt("ChargeLevel", this.chargeLevel);
+        compoundTag.putBoolean("TimeTravelling", this.timeTravelling);
     }
 
     public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, TimeMachineBlockEntity timeMachineBlockEntity) {
-        if (!timeMachineBlockEntity.isRestoring) {
-            timeMachineBlockEntity.charge();
-            if (timeMachineBlockEntity.memoryArray == null) {
-                timeMachineBlockEntity.startMemory();
+        if (timeMachineBlockEntity.timeTravelling) {
+            if (timeMachineBlockEntity.chargeLevel != 0) {
+                timeMachineBlockEntity.chargeLevel--;
+            } else {
+                List<Player> players = level.getEntitiesOfClass(Player.class, new AABB(blockPos).inflate(25.0D));
+                players.forEach(player -> {
+                    ServerLevel serverLevel = level.getServer().getLevel(FossilsExperimentsLevels.PREHISTORY);
+                    player.changeDimension(serverLevel);
+                });
             }
         } else {
-            ++timeMachineBlockEntity.restoreTick;
-            if (timeMachineBlockEntity.restoreTick == MAX_RESTORE_TICK) {
-                timeMachineBlockEntity.restoreProgress();
-                timeMachineBlockEntity.restoreTick = 0;
-            }
+            timeMachineBlockEntity.charge();
         }
     }
 
@@ -152,51 +146,13 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
         timeMachineBlockEntity.time++;
     }
 
-    private void restoreProgress() {
-        BlockState blockState = Blocks.AIR.defaultBlockState();
-        for (int posX = 0; posX < MEMORY_WIDTH; posX++) {
-            for (int posZ = 0; posZ < MEMORY_WIDTH; posZ++) {
-                BlockState testState = this.level.getBlockState(this.getBlockPos().offset(posX - (this.MEMORY_WIDTH / 2), this.restoringLayer, posZ - (this.MEMORY_WIDTH / 2)));
-                if (this.isNonPerserveBlock(testState)) {
-                    continue;
-                }
-                blockState = this.memoryArray[posX][this.restoringLayer][posZ];
-                this.level.setBlock(this.getBlockPos().offset(posX - (this.MEMORY_WIDTH / 2), this.restoringLayer, posZ - (this.MEMORY_WIDTH / 2)), blockState, 3);
-                if (!blockState.isAir()) {
-                    RandomSource randomSource = this.level.getRandom();
-                    this.level.addParticle(ParticleTypes.PORTAL, posX - (this.MEMORY_WIDTH / 2) + (randomSource.nextDouble() - 0.5D), this.restoringLayer + randomSource.nextDouble(), posZ - (this.MEMORY_WIDTH / 2) + (randomSource.nextDouble() - 0.5D), (randomSource.nextDouble() - 0.5D) * 2.0D, -randomSource.nextDouble(), (randomSource.nextDouble() - 0.5D) * 2.0D);
-                }
-            }
-            this.level.playLocalSound(this.getBlockPos(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.BLOCKS, 1.0F, 1.0F, true);
-            this.chargeLevel = MAX_CHARGE - (int) ((float) this.restoringLayer / (float) this.MEMORY_HEIGHT * MAX_CHARGE);
-            ++this.restoringLayer;
-            if (this.restoringLayer >= this.MEMORY_HEIGHT) {
-                this.isRestoring = false;
-                this.restoringLayer = 0;
-                this.chargeLevel = 0;
-            }
-        }
+    public void setTimeTravelling() {
+        this.timeTravelling = true;
     }
 
     private void charge() {
-        if (!this.isFullyCharged()) {
+        if (!this.isFullyCharged() && !this.timeTravelling) {
             this.chargeLevel++;
-        }
-    }
-
-    public void startMemory() {
-        this.memoryArray = new BlockState[MEMORY_WIDTH][MEMORY_HEIGHT][MEMORY_WIDTH];
-        for (int x = 0; x < MEMORY_WIDTH; x++) {
-            for (int y = 0; y < MEMORY_HEIGHT; y++) {
-                for (int z = 0; z < MEMORY_WIDTH; z++) {
-                    BlockState blockState = this.level.getBlockState(this.getBlockPos().offset(x - MEMORY_WIDTH / 2, y, z - MEMORY_WIDTH / 2));
-                    if (this.isNonPerserveBlock(blockState)) {
-                        blockState = Blocks.AIR.defaultBlockState();
-                    }
-
-                    this.memoryArray[x][y][z] = blockState;
-                }
-            }
         }
     }
 
@@ -221,16 +177,6 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
 
     public boolean isFullyCharged() {
         return this.chargeLevel == MAX_CHARGE;
-    }
-
-    public void startRestoring() {
-        if (this.memoryArray == null) {
-            return;
-        }
-        if (!this.isFullyCharged()) {
-            return;
-        }
-        this.isRestoring = true;
     }
 
     @Override

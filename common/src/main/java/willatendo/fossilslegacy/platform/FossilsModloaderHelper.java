@@ -34,6 +34,8 @@ public interface FossilsModloaderHelper {
 
     void openContainer(BlockEntity blockEntity, BlockPos blockPos, ServerPlayer serverPlayer);
 
+    boolean featheredDinosaurs();
+
     boolean willAnimalsStarve();
 
     boolean willAnimalsBreakBlocks();

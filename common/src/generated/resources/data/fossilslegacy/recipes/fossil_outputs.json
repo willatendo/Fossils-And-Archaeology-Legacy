@@ -59,6 +59,10 @@
     {
       "result": "fossilslegacy:cryolophosaurus_dna",
       "weight": 2
+    },
+    {
+      "result": "fossilslegacy:therizinosaurus_dna",
+      "weight": 2
     }
   ],
   "time": 100

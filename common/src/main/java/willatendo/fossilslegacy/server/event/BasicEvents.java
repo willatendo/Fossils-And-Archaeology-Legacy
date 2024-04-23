@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.DispenserBlock;
 import willatendo.fossilslegacy.experiments.server.entity.Carnotaurus;
 import willatendo.fossilslegacy.experiments.server.entity.Cryolophosaurus;
 import willatendo.fossilslegacy.experiments.server.entity.FossilsExperimentsEntityTypes;
+import willatendo.fossilslegacy.experiments.server.entity.Therizinosaurus;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.dispenser.DispenseEntityItemBehavior;
 import willatendo.fossilslegacy.server.entity.*;
@@ -104,6 +105,7 @@ public class BasicEvents {
 
         BasicEvents.addAttribute(FossilsExperimentsEntityTypes.CARNOTAURUS.get(), Carnotaurus.carnotaurusAttributes());
         BasicEvents.addAttribute(FossilsExperimentsEntityTypes.CRYOLOPHOSAURUS.get(), Cryolophosaurus.cryolophosaurusAttributes());
+        BasicEvents.addAttribute(FossilsExperimentsEntityTypes.THERIZINOSAURUS.get(), Therizinosaurus.therizinosaurusAttributes());
     }
 
     public static final record Attributes(EntityType<? extends LivingEntity> entityType,

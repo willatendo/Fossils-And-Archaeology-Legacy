@@ -1,0 +1,13 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "fossilslegacy:raw_therizinosaurus_meat"
+  },
+  "results": [
+    {
+      "result": "fossilslegacy:therizinosaurus_dna",
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

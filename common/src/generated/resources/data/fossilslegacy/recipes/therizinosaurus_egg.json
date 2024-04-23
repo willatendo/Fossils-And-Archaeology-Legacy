@@ -1,0 +1,8 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "ingredient": {
+    "item": "fossilslegacy:therizinosaurus_dna"
+  },
+  "result": "fossilslegacy:therizinosaurus_egg",
+  "time": 6000
+}

@@ -80,6 +80,11 @@ public class FossilsFabricHelper implements FossilsModloaderHelper {
     }
 
     @Override
+    public boolean featheredDinosaurs() {
+        return FabricConfigHelper.featheredDinosaurs();
+    }
+
+    @Override
     public boolean willAnimalsStarve() {
         return FabricConfigHelper.willAnimalsStarve();
     }

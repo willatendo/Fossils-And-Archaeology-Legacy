@@ -25,9 +25,11 @@ import willatendo.fossilslegacy.experiments.client.FossilsExperimentsClient;
 import willatendo.fossilslegacy.experiments.client.FossilsExperimentsModels;
 import willatendo.fossilslegacy.experiments.client.model.CarnotaurusModel;
 import willatendo.fossilslegacy.experiments.client.model.CryolophosaurusModel;
+import willatendo.fossilslegacy.experiments.client.model.TherizinosaurusModel;
 import willatendo.fossilslegacy.experiments.client.model.TimeMachineClockModel;
 import willatendo.fossilslegacy.experiments.client.render.CarnotaurusRenderer;
 import willatendo.fossilslegacy.experiments.client.render.CryolophosaurusRenderer;
+import willatendo.fossilslegacy.experiments.client.render.TherizinosaurusRenderer;
 import willatendo.fossilslegacy.experiments.server.entity.FossilsExperimentsEntityTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenus;
@@ -105,6 +107,7 @@ public class FossilsLegacyClient {
 
         FossilsLegacyClient.addModel(FossilsExperimentsEntityTypes.CARNOTAURUS.get(), CarnotaurusRenderer::new);
         FossilsLegacyClient.addModel(FossilsExperimentsEntityTypes.CRYOLOPHOSAURUS.get(), CryolophosaurusRenderer::new);
+        FossilsLegacyClient.addModel(FossilsExperimentsEntityTypes.THERIZINOSAURUS.get(), TherizinosaurusRenderer::new);
 
         FossilsLegacyClient.addModelLayer(FossilsLegacyModels.BRACHIOSAURUS, BrachiosaurusModel::createBodyLayer);
         FossilsLegacyClient.addModelLayer(FossilsLegacyModels.DILOPHOSAURUS, DilophosaurusModel::createBodyLayer);
@@ -134,6 +137,7 @@ public class FossilsLegacyClient {
 
         FossilsLegacyClient.addModelLayer(FossilsExperimentsModels.CARNOTAURUS, CarnotaurusModel::createBodyLayer);
         FossilsLegacyClient.addModelLayer(FossilsExperimentsModels.CRYOLOPHOSAURUS, CryolophosaurusModel::createBodyLayer);
+        FossilsLegacyClient.addModelLayer(FossilsExperimentsModels.THERIZINOSAURUS, TherizinosaurusModel::createBodyLayer);
 
         FossilsLegacyClient.addModelLayer(FossilsExperimentsModels.TIME_MACHINE_CLOCK, TimeMachineClockModel::createBodyLayer);
     }
