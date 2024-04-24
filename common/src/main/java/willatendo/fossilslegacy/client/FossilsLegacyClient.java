@@ -22,11 +22,6 @@ import willatendo.fossilslegacy.client.screen.ArchaeologyWorkbenchScreen;
 import willatendo.fossilslegacy.client.screen.CultivatorScreen;
 import willatendo.fossilslegacy.client.screen.FeederScreen;
 import willatendo.fossilslegacy.experiments.client.FossilsExperimentsClient;
-import willatendo.fossilslegacy.experiments.client.FossilsExperimentsModels;
-import willatendo.fossilslegacy.experiments.client.model.CarnotaurusModel;
-import willatendo.fossilslegacy.experiments.client.model.CryolophosaurusModel;
-import willatendo.fossilslegacy.experiments.client.model.TherizinosaurusModel;
-import willatendo.fossilslegacy.experiments.client.model.TimeMachineClockModel;
 import willatendo.fossilslegacy.experiments.client.render.CarnotaurusRenderer;
 import willatendo.fossilslegacy.experiments.client.render.CryolophosaurusRenderer;
 import willatendo.fossilslegacy.experiments.client.render.TherizinosaurusRenderer;
@@ -134,12 +129,6 @@ public class FossilsLegacyClient {
         FossilsLegacyClient.addModelLayer(FossilsLegacyModels.FAILURESAURUS, FailuresaurusModel::createBodyLayer);
 
         FossilsLegacyClient.addModelLayer(FossilsLegacyModels.EGG, EggModel::createBodyLayer);
-
-        FossilsLegacyClient.addModelLayer(FossilsExperimentsModels.CARNOTAURUS, CarnotaurusModel::createBodyLayer);
-        FossilsLegacyClient.addModelLayer(FossilsExperimentsModels.CRYOLOPHOSAURUS, CryolophosaurusModel::createBodyLayer);
-        FossilsLegacyClient.addModelLayer(FossilsExperimentsModels.THERIZINOSAURUS, TherizinosaurusModel::createBodyLayer);
-
-        FossilsLegacyClient.addModelLayer(FossilsExperimentsModels.TIME_MACHINE_CLOCK, TimeMachineClockModel::createBodyLayer);
     }
 
     public static final record Model<T extends Entity>(EntityType<T> entityType,

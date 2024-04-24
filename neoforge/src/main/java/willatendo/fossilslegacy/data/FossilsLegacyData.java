@@ -57,7 +57,7 @@ public class FossilsLegacyData {
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyStoneTabletVariantTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper));
         dataGenerator.addProvider(gatherDataEvent.includeServer(), PackMetadataGenerator.forFeaturePack(packOutput, FossilsLegacyUtils.translation("dataPack", "description")));
 
-        //SimplePack legacyPackGenerator = dataGenerator.createBuiltinResourcePack(FossilsLegacyUtils.resource("fa_legacy_textures"));
-        //legacyPackGenerator.addProvider(packOutput -> PackMetadataGenerator.forFeaturePack(packOutput, FossilsLegacyUtils.translation("dataPack", "fa_legacy_textures.description")));
+        PackOutput legacyPack = new PackOutput(packOutput.getOutputFolder().resolve("resourcepacks").resolve("fa_legacy_textures"));
+        dataGenerator.addProvider(gatherDataEvent.includeServer(), PackMetadataGenerator.forFeaturePack(legacyPack, FossilsLegacyUtils.translation("dataPack", "fa_legacy_textures.description")));
     }
 }
