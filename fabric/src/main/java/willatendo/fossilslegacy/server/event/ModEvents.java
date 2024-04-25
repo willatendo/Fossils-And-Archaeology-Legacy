@@ -40,7 +40,9 @@ public class ModEvents {
     public static void addToCreativeModeTabs() {
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.OP_BLOCKS).register(fabricItemGroupEntries -> {
             for (SimpleHolder<? extends Item> items : FossilsLegacyItems.DEBUG_ITEMS.getEntriesView()) {
-                fabricItemGroupEntries.accept(items.get());
+                if ((fabricItemGroupEntries.shouldShowOpRestrictedItems())) {
+                    fabricItemGroupEntries.accept(items.get());
+                }
             }
         });
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.SPAWN_EGGS).register(fabricItemGroupEntries -> {

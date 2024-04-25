@@ -1,0 +1,100 @@
+28/4/2024
+- Internal Cleanup
+- Fixed Legacy Texture Pack Missing pack.mcmeta
+- Fixed F/A Operator Items Without Operater Permissions Showing Up
+- Fixed Academy Placement
+- Added Holes to Academies
+
+Experimental:
+- Added Prehistoric Dimension
+- Update Time Machine Interface
+- Added Carnotaurus
+- Added Cryolophosaurus
+- Added Therizinosaurus
+- Added Carnotaurus DNA
+- Added Cryolophosaurus DNA
+- Added Therizinosaurus DNA
+- Added Carnotaurus Egg
+- Added Cryolophosaurus Egg
+- Added Therizinosaurus Egg
+- Added Raw Carnotaurus Meat
+- Added Raw Cryolophosaurus Meat
+- Added Raw Therizinosaurus Meat
+- Added Cooked Carnotaurus Meat
+- Added Cooked Cryolophosaurus Meat
+- Added Cooked Therizinosaurus Meat
+21/4/2024
+- Multiloader Restructure
+- Fixed Time Machine not having a loot table
+17/4/2024
+- Added Triceratops
+- Added Velociraptor
+- Added Tyrannosaurus
+- Added Pterandon
+- Added Nautilus
+- Added Futabasaurus
+- Added Mosasaurus
+- Added Stegosaurus
+- Added Dilophosaurus
+- Added Brachiosaurus
+- Added Mammoth
+- Added Smilodon
+- Added Failuresaurus
+- Added Anu
+- Added Tamed Zombified Piglin
+- Added Smilodon
+- Added Fossil
+- Added DNA for 12 Prehistoric Creatures and other Minecraft Creatures
+- Added Eggs for 10 Prehistoric Creatures
+- Added Meats for 12 Prehistoric Creatures
+- Added Syringes for 2 Prehistoric Creatures and other Minecraft Creatures
+- Added Tyrannosaurus Rex Tooth
+- Added Tooth Dagger
+- Added Skull Stick
+- Added Dinopedia
+- Added Chicken Soup
+- Added Chicken Essence
+- Added Nautilus Shell
+- Added Magic Conch
+- Added Frozen Meat
+- Added Jurassic Fern Spores
+- Added Relic Scrap
+- Added Stone Tablet
+- Added Ancient Sword Artifact
+- Added Ancient Helmet Artifact
+- Added Scarab Gem
+- Added Ancient Sword
+- Added Ancient Helmet
+- Added Scarab Sword
+- Added Scarab Shovel
+- Added Scarab Pickaxe
+- Added Scarab Axe
+- Added Scarab Hoe
+- Added Wooden Javelin
+- Added Stone Javelin
+- Added Iron Javelin
+- Added Golden Javelin
+- Added Diamond Javelin
+- Added Netherite Javelin
+- Added Scarab Javelin
+- Added Spawn Eggs for All Entities
+- Added Academy
+- Added Weapon Shop
+- Added Fossil Ore
+- Added Deepslate Fossil Ore
+- Added Skull Block
+- Added Skull Lanturn Block
+- Added Analyzer
+- Added Cultivator
+- Added Archaeology Workbench
+- Added Jurassic Fern
+- Added Drum
+- Added Feeder
+- Added Permafrost
+- Added Iced Stone
+- Added Axolotlspawn
+
+Experimental:
+- Added 3 Coins
+- Added Time Machine
+

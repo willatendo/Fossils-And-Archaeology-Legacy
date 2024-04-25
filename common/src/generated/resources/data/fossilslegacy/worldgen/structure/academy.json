@@ -2,5 +2,6 @@
   "type": "fossilslegacy:academy",
   "biomes": "#fossilslegacy:has_structure/academy",
   "spawn_overrides": {},
-  "step": "surface_structures"
+  "step": "surface_structures",
+  "terrain_adaptation": "beard_thin"
 }

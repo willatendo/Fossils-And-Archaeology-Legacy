@@ -3,9 +3,12 @@ package willatendo.fossilslegacy.client;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import willatendo.fossilslegacy.client.model.*;
 import willatendo.fossilslegacy.client.model.fossils.BrachiosaurusSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.FutabasaurusSkeletonModel;
@@ -22,39 +25,38 @@ import willatendo.fossilslegacy.client.screen.ArchaeologyWorkbenchScreen;
 import willatendo.fossilslegacy.client.screen.CultivatorScreen;
 import willatendo.fossilslegacy.client.screen.FeederScreen;
 import willatendo.fossilslegacy.experiments.client.FossilsExperimentsClient;
-import willatendo.fossilslegacy.experiments.client.render.CarnotaurusRenderer;
-import willatendo.fossilslegacy.experiments.client.render.CryolophosaurusRenderer;
-import willatendo.fossilslegacy.experiments.client.render.TherizinosaurusRenderer;
-import willatendo.fossilslegacy.experiments.server.entity.FossilsExperimentsEntityTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenus;
+import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FossilsLegacyClient {
-    public static final List<Model> MODELS = new ArrayList<>();
+    public static final List<EntityModel> ENTITY_MODELS = new ArrayList<>();
+    public static final List<BlockModel> BLOCK_MODELS = new ArrayList<>();
     public static final List<ModelLayer> MODEL_LAYERS = new ArrayList<>();
 
     public static <T extends Entity> void addModel(EntityType<? extends T> entityType, EntityRendererProvider<? extends T> entityRendererProvider) {
-        MODELS.add(new Model(entityType, entityRendererProvider));
+        ENTITY_MODELS.add(new EntityModel(entityType, entityRendererProvider));
+    }
+
+    public static <T extends BlockEntity> void addModel(BlockEntityType<? extends T> blockEntityType, BlockEntityRendererProvider<? extends T> blockEntityRendererProvider) {
+        BLOCK_MODELS.add(new BlockModel(blockEntityType, blockEntityRendererProvider));
     }
 
     public static void addModelLayer(ModelLayerLocation modelLayerLocation, TexturedModelDataProvider texturedModelDataProvider) {
         MODEL_LAYERS.add(new ModelLayer(modelLayerLocation, texturedModelDataProvider));
     }
 
-    public static void onInitializeClient() {
-        FossilsExperimentsClient.init();
+    public static void init() {
+        FossilsLegacyClient.loadModelLayers();
+        FossilsLegacyClient.loadModels();
+        FossilsLegacyClient.bindScreens();
+    }
 
-        MenuScreens.register(FossilsLegacyMenus.ANALYZER.get(), AnalyzerScreen::new);
-        MenuScreens.register(FossilsLegacyMenus.ARCHAEOLOGY_WORKBENCH.get(), ArchaeologyWorkbenchScreen::new);
-        MenuScreens.register(FossilsLegacyMenus.CULTIVATOR.get(), CultivatorScreen::new);
-        MenuScreens.register(FossilsLegacyMenus.FEEDER.get(), FeederScreen::new);
-
-        FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.ANCIENT_LIGHTNING_BOLT.get(), LightningBoltRenderer::new);
-
-        FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.FOSSIL.get(), FossilRenderer::new);
+    public static void loadModels() {
+        FossilsExperimentsClient.loadModels();
 
         FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), BrachiosaurusRenderer::new);
         FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), DilophosaurusRenderer::new);
@@ -98,11 +100,15 @@ public class FossilsLegacyClient {
         FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.THROWN_INCUBATED_EGG.get(), ThrownItemRenderer::new);
         FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.DILOPHOSAURUS_VENOM.get(), DilophosaurusVenomRenderer::new);
 
-        FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.STONE_TABLET.get(), StoneTabletRenderer::new);
+        FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.ANCIENT_LIGHTNING_BOLT.get(), LightningBoltRenderer::new);
 
-        FossilsLegacyClient.addModel(FossilsExperimentsEntityTypes.CARNOTAURUS.get(), CarnotaurusRenderer::new);
-        FossilsLegacyClient.addModel(FossilsExperimentsEntityTypes.CRYOLOPHOSAURUS.get(), CryolophosaurusRenderer::new);
-        FossilsLegacyClient.addModel(FossilsExperimentsEntityTypes.THERIZINOSAURUS.get(), TherizinosaurusRenderer::new);
+        FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.FOSSIL.get(), FossilRenderer::new);
+
+        FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.STONE_TABLET.get(), StoneTabletRenderer::new);
+    }
+
+    public static void loadModelLayers() {
+        FossilsExperimentsClient.loadModelLayers();
 
         FossilsLegacyClient.addModelLayer(FossilsLegacyModels.BRACHIOSAURUS, BrachiosaurusModel::createBodyLayer);
         FossilsLegacyClient.addModelLayer(FossilsLegacyModels.DILOPHOSAURUS, DilophosaurusModel::createBodyLayer);
@@ -131,8 +137,21 @@ public class FossilsLegacyClient {
         FossilsLegacyClient.addModelLayer(FossilsLegacyModels.EGG, EggModel::createBodyLayer);
     }
 
-    public static final record Model<T extends Entity>(EntityType<T> entityType,
-                                                       EntityRendererProvider<T> entityRendererProvider) {
+    public static void bindScreens() {
+        FossilsExperimentsClient.bindScreens();
+
+        MenuScreens.register(FossilsLegacyMenus.ANALYZER.get(), AnalyzerScreen::new);
+        MenuScreens.register(FossilsLegacyMenus.ARCHAEOLOGY_WORKBENCH.get(), ArchaeologyWorkbenchScreen::new);
+        MenuScreens.register(FossilsLegacyMenus.CULTIVATOR.get(), CultivatorScreen::new);
+        MenuScreens.register(FossilsLegacyMenus.FEEDER.get(), FeederScreen::new);
+    }
+
+    public static final record EntityModel<T extends Entity>(EntityType<T> entityType,
+                                                             EntityRendererProvider<T> entityRendererProvider) {
+    }
+
+    public static final record BlockModel<T extends BlockEntity>(BlockEntityType<T> blockEntityType,
+                                                                 BlockEntityRendererProvider<T> blockEntityRendererProvider) {
     }
 
     public static final record ModelLayer(ModelLayerLocation modelLayerLocation,

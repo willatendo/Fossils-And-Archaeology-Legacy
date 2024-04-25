@@ -1,8 +1,8 @@
 {
   "pack": {
     "description": {
-      "translate": "dataPack.fossilslegacy.description"
+      "translate": "resourcePack.fossilslegacy.description"
     },
-    "pack_format": 26
+    "pack_format": 22
   }
 }

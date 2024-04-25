@@ -102,10 +102,9 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         // Creative Mode Tab
         this.add(FossilsLegacyCreativeModeTabs.FOSSILS_LEGACY.get(), "F/A: Legacy");
 
-        // Data Pack
-        this.add("dataPack.fossilslegacy.description", "Fossils and Archaeology: Legacy Edition Assets");
-        this.add("dataPack.fossilslegacy.fa_legacy_textures.description", "Fossils and Archaeology Legacy Assets");
-        this.add("dataPack.fossilslegacy.experiments.description", "Fossils and Archaeology: Legacy Experiments Assets");
+        // Resource Packs
+        this.add("resourcePack.fossilslegacy.description", "Fossils and Archaeology: Legacy Edition Assets");
+        this.add("resourcePack.fossilslegacy.fa_legacy_textures.description", "Fossils and Archaeology Legacy Assets");
 
         // Deaths
         this.add("death.attack.dinosaur_starve", "%1$s starved to death");

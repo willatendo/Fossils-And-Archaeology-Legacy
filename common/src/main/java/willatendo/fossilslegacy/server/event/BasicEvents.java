@@ -66,7 +66,7 @@ public class BasicEvents {
         ATTRIBUTES.add(new Attributes(entityType, attributeSupplier));
     }
 
-    public static void init() {
+    public static void attributeInit() {
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.ANU.get(), Anu.anuAttributes());
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), Brachiosaurus.brachiosaurusAttributes());
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), Dilophosaurus.dilophosaurusAttributes());

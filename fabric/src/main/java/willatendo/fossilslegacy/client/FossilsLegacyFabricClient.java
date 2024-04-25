@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 
 public class FossilsLegacyFabricClient implements ClientModInitializer {
@@ -16,10 +17,13 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
 
         KeyBindingHelper.registerKeyBinding(FossilsLegacyKeys.SINK);
 
-        FossilsLegacyClient.onInitializeClient();
+        FossilsLegacyClient.init();
 
-        FossilsLegacyClient.MODELS.forEach(model -> {
-            EntityRendererRegistry.register(model.entityType(), model.entityRendererProvider());
+        FossilsLegacyClient.ENTITY_MODELS.forEach(entityModel -> {
+            EntityRendererRegistry.register(entityModel.entityType(), entityModel.entityRendererProvider());
+        });
+        FossilsLegacyClient.BLOCK_MODELS.forEach(blockModel -> {
+            BlockEntityRenderers.register(blockModel.blockEntityType(), blockModel.blockEntityRendererProvider());
         });
 
         FossilsLegacyClient.MODEL_LAYERS.forEach(modelLayer -> {

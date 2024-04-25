@@ -1,11 +1,15 @@
 package willatendo.fossilslegacy.data;
 
+import net.minecraft.DetectedVersion;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.metadata.PackMetadataGenerator;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
@@ -22,6 +26,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID)
@@ -55,9 +60,37 @@ public class FossilsLegacyData {
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyDamageTypeTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper));
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyFossilVariantTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper));
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyStoneTabletVariantTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper));
-        dataGenerator.addProvider(gatherDataEvent.includeServer(), PackMetadataGenerator.forFeaturePack(packOutput, FossilsLegacyUtils.translation("dataPack", "description")));
+        dataGenerator.addProvider(gatherDataEvent.includeServer(), new PackMetadataGenerator(packOutput).add(PackMetadataSection.TYPE, new PackMetadataSection(FossilsLegacyUtils.translation("resourcePack", "description"), DetectedVersion.BUILT_IN.getPackVersion(PackType.CLIENT_RESOURCES), Optional.empty())));
 
-        PackOutput legacyPack = new PackOutput(packOutput.getOutputFolder().resolve("resourcepacks").resolve("fa_legacy_textures"));
-        dataGenerator.addProvider(gatherDataEvent.includeServer(), PackMetadataGenerator.forFeaturePack(legacyPack, FossilsLegacyUtils.translation("dataPack", "fa_legacy_textures.description")));
+        ResourceLocation legacyPack = FossilsLegacyUtils.resource("fa_legacy_textures");
+        FossilsLegacyData.PackGenerator legacyPackGenerator = new FossilsLegacyData.PackGenerator(dataGenerator, true, legacyPack.toString(), new PackOutput(dataGenerator.getPackOutput().getOutputFolder().resolve("resourcepacks").resolve(legacyPack.getPath())));
+        legacyPackGenerator.addProvider(legacyPackOutput -> new PackMetadataGenerator(legacyPackOutput).add(PackMetadataSection.TYPE, new PackMetadataSection(FossilsLegacyUtils.translation("resourcePack", "fa_legacy_textures.description"), DetectedVersion.BUILT_IN.getPackVersion(PackType.CLIENT_RESOURCES), Optional.empty())));
+    }
+
+    private static class PackGenerator {
+        private final DataGenerator dataGenerator;
+        private final boolean toRun;
+        private final String providerPrefix;
+        private final PackOutput packOutput;
+
+        public PackGenerator(DataGenerator dataGenerator, boolean toRun, String providerPrefix, PackOutput packOutput) {
+            this.dataGenerator = dataGenerator;
+            this.toRun = toRun;
+            this.providerPrefix = providerPrefix;
+            this.packOutput = packOutput;
+        }
+
+        public <T extends DataProvider> T addProvider(DataProvider.Factory<T> factory) {
+            T dataProvider = factory.create(this.packOutput);
+            String name = this.providerPrefix + "/" + dataProvider.getName();
+            if (!this.dataGenerator.allProviderIds.add(name)) {
+                throw new IllegalStateException("Duplicate provider: " + name);
+            } else {
+                if (this.toRun) {
+                    this.dataGenerator.providersToRun.put(name, dataProvider);
+                }
+                return dataProvider;
+            }
+        }
     }
 }

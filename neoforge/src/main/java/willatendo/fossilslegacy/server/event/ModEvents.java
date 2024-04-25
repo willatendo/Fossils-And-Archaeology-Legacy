@@ -27,8 +27,7 @@ import java.nio.file.Path;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID)
 public class ModEvents {
     @SubscribeEvent
-    public static void clientSetup(FMLCommonSetupEvent event) {
-        BasicEvents.init();
+    public static void commonSetup(FMLCommonSetupEvent event) {
         BasicEvents.addToMaps();
     }
 
@@ -36,7 +35,9 @@ public class ModEvents {
     public static void creativeModTabModification(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.OP_BLOCKS) {
             for (SimpleHolder<? extends Item> items : FossilsLegacyItems.DEBUG_ITEMS.getEntriesView()) {
-                event.accept(items.get());
+                if (event.hasPermissions()) {
+                    event.accept(items.get());
+                }
             }
         }
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
@@ -63,6 +64,7 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
+        BasicEvents.attributeInit();
         BasicEvents.ATTRIBUTES.forEach(attributes -> {
             event.put(attributes.entityType(), attributes.attributeSupplier());
         });
@@ -73,7 +75,7 @@ public class ModEvents {
         if (event.getPackType() == PackType.CLIENT_RESOURCES) {
             Path resourcePath = ModList.get().getModFileById(FossilsLegacyUtils.ID).getFile().findResource("resourcepacks/fa_legacy_textures");
             event.addRepositorySource(consumer -> {
-                Pack pack = Pack.readMetaAndCreate(FossilsLegacyUtils.resource("resourcepacks.fa_legacy_textures").toString(), FossilsLegacyUtils.translation("pack", "resourcepacks.fa_legacy_textures"), false, new PathPackResources.PathResourcesSupplier(resourcePath, true), PackType.CLIENT_RESOURCES, Pack.Position.TOP, PackSource.BUILT_IN);
+                Pack pack = Pack.readMetaAndCreate(FossilsLegacyUtils.resource("resourcepacks.fa_legacy_textures").toString(), FossilsLegacyUtils.translation("resourcePack", "fa_legacy_textures.description"), false, new PathPackResources.PathResourcesSupplier(resourcePath, true), PackType.CLIENT_RESOURCES, Pack.Position.TOP, PackSource.BUILT_IN);
                 if (pack != null) {
                     consumer.accept(pack);
                 }
