@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.server.structure;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
@@ -12,6 +11,7 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
@@ -24,6 +24,9 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 import willatendo.fossilslegacy.server.structure.holes.RelicHoleList;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AcademyPieces {
     public static final ResourceLocation STRUCTURE_LOCATION = FossilsLegacyUtils.resource("academy");
@@ -65,7 +68,6 @@ public class AcademyPieces {
 
         @Override
         public void postProcess(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
-            this.relicHoleList = new RelicHoleList(this.templatePosition, worldGenLevel.getRandom(), this.getBoundingBox().getXSpan(), this.getBoundingBox().getYSpan(), this.getBoundingBox().getZSpan(), 15, 3);
             ResourceLocation structure = new ResourceLocation(this.templateName);
             StructurePlaceSettings structurePlaceSettings = makeSettings(this.placeSettings.getRotation(), structure);
             BlockPos offsetPos = new BlockPos(3, 0, 5);
@@ -74,6 +76,33 @@ public class AcademyPieces {
             BlockPos templatePos = this.templatePosition;
             this.templatePosition = this.templatePosition.offset(0, worldHeight - 90 - 1, 0);
             super.postProcess(worldGenLevel, structureManager, chunkGenerator, randomSource, boundingBox, chunkPos, blockPos);
+            List<BlockState> blockStates = new ArrayList<>();
+            BlockPos.betweenClosedStream(this.getBoundingBox()).forEach(blockPoses -> {
+                blockStates.add(worldGenLevel.getBlockState(blockPoses));
+            });
+            int width;
+            int depth;
+            Rotation rotation = structurePlaceSettings.getRotation();
+            switch (rotation) {
+                default:
+                case NONE: {
+                    width = 24;
+                    depth = 27;
+                }
+                case CLOCKWISE_90: {
+                    width = 27;
+                    depth = 24;
+                }
+                case CLOCKWISE_180: {
+                    width = -24;
+                    depth = -27;
+                }
+                case COUNTERCLOCKWISE_90: {
+                    width = -27;
+                    depth = 24;
+                }
+            }
+            this.relicHoleList = new RelicHoleList(blockStates, this.templatePosition, worldGenLevel.getRandom(), width, 26, depth, 7, 3);
             BlockPos.betweenClosedStream(this.getBoundingBox()).forEach((blockPoses) -> {
                 if (this.isStoneBricks) {
                     if (worldGenLevel.getBlockState(blockPoses).is(Blocks.BRICKS)) {
@@ -81,22 +110,10 @@ public class AcademyPieces {
                     }
                 }
                 if (this.relicHoleList.isHole(blockPoses)) {
-                    worldGenLevel.setBlock(blockPoses, Blocks.AIR.defaultBlockState(), 3);
+                    worldGenLevel.setBlock(blockPoses, Blocks.DIAMOND_BLOCK.defaultBlockState(), 3);
                 }
             });
             this.templatePosition = templatePos;
-        }
-
-        private Direction getDirection(Direction base, Direction offset) {
-            if (offset == Direction.EAST) {
-                return base.getClockWise();
-            } else if (offset == Direction.SOUTH) {
-                return base.getClockWise().getClockWise();
-            } else if (offset == Direction.WEST) {
-                return base.getCounterClockWise();
-            } else {
-                return base;
-            }
         }
     }
 }

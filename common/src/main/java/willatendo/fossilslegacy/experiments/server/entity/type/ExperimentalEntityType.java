@@ -84,8 +84,8 @@ public class ExperimentalEntityType<T extends Entity> extends EntityType<T> {
             return this;
         }
 
-        public EntityType<T> build() {
-            return new EntityType(this.entityFactory, this.mobCategory, this.serialize, this.summon, this.fireImmune, this.canSpawnFarFromPlayer, this.immuneTo, this.entityDimensions, this.clientTrackingRange, this.updateInterval, this.requiredFeatures);
+        public ExperimentalEntityType<T> build() {
+            return new ExperimentalEntityType(this.entityFactory, this.mobCategory, this.serialize, this.summon, this.fireImmune, this.canSpawnFarFromPlayer, this.immuneTo, this.entityDimensions, this.clientTrackingRange, this.updateInterval, this.requiredFeatures);
         }
     }
 }

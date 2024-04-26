@@ -1,10 +1,17 @@
 28/4/2024
 - Internal Cleanup
+- Fixed Stegosaurus Eggs Hatching Brachiosaurus
 - Fixed Legacy Texture Pack Missing pack.mcmeta
 - Fixed F/A Operator Items Without Operater Permissions Showing Up
 - Fixed Academy Placement
+- Fixed Pregnant Animals Not Becoming the Correct Animal Upon Returning To None Pregnant Variant
+- Fixed Impregnation of Baby Animals
+- Fixed Insta-Births
+- Fixed Stegosaurus Tail Texture Issue
+- Fixed Velociraptor Interactions
+- SyringeAnimals Has Been Replaced With PregnancyType and It Can Be Expanded On
+- Fix Untranslated Strings for Pregnanant Animals
 - Added Holes to Academies
-
 Experimental:
 - Added Prehistoric Dimension
 - Update Time Machine Interface

@@ -87,6 +87,7 @@ public class ModEvents {
     public static void registerRegistries(NewRegistryEvent event) {
         event.register(FossilsLegacyBuiltInRegistries.FOSSIL_VARIANTS.registry());
         event.register(FossilsLegacyBuiltInRegistries.EGG_VARIANTS.registry());
+        event.register(FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES.registry());
         event.register(FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS.registry());
     }
 }
