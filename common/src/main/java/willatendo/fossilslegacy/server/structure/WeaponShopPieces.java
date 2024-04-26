@@ -27,62 +27,62 @@ import willatendo.fossilslegacy.server.item.FossilsLegacyLootTables;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class WeaponShopPieces {
-	public static final ResourceLocation STRUCTURE_LOCATION = FossilsLegacyUtils.resource("weapon_shop");
+    public static final ResourceLocation STRUCTURE_LOCATION = FossilsLegacyUtils.resource("weapon_shop");
 
-	public static void addPieces(StructureTemplateManager struxtureTemplateManager, BlockPos blockPos, Rotation rotation, StructurePieceAccessor structurePieceAccessor, RandomSource randomSource) {
-		structurePieceAccessor.addPiece(new WeaponShopPieces.WeaponShopPiece(struxtureTemplateManager, STRUCTURE_LOCATION, blockPos, rotation));
-	}
+    public static void addPieces(StructureTemplateManager struxtureTemplateManager, BlockPos blockPos, Rotation rotation, StructurePieceAccessor structurePieceAccessor, RandomSource randomSource) {
+        structurePieceAccessor.addPiece(new WeaponShopPieces.WeaponShopPiece(struxtureTemplateManager, STRUCTURE_LOCATION, blockPos, rotation));
+    }
 
-	public static class WeaponShopPiece extends TemplateStructurePiece {
-		public WeaponShopPiece(StructureTemplateManager struxtureTemplateManager, ResourceLocation structureLocation, BlockPos blockPos, Rotation rotation) {
-			super(FossilsLegacyStructurePeices.WEAPON_SHOP.get(), 0, struxtureTemplateManager, structureLocation, structureLocation.toString(), makeSettings(rotation, structureLocation), blockPos);
-		}
+    public static class WeaponShopPiece extends TemplateStructurePiece {
+        public WeaponShopPiece(StructureTemplateManager struxtureTemplateManager, ResourceLocation structureLocation, BlockPos blockPos, Rotation rotation) {
+            super(FossilsLegacyStructurePeices.WEAPON_SHOP.get(), 0, struxtureTemplateManager, structureLocation, structureLocation.toString(), makeSettings(rotation, structureLocation), blockPos);
+        }
 
-		public WeaponShopPiece(StructureTemplateManager struxtureTemplateManager, CompoundTag compoundTag) {
-			super(FossilsLegacyStructurePeices.WEAPON_SHOP.get(), compoundTag, struxtureTemplateManager, (structureLocation) -> {
-				return makeSettings(Rotation.valueOf(compoundTag.getString("Rot")), structureLocation);
-			});
-		}
+        public WeaponShopPiece(StructureTemplateManager struxtureTemplateManager, CompoundTag compoundTag) {
+            super(FossilsLegacyStructurePeices.WEAPON_SHOP.get(), compoundTag, struxtureTemplateManager, (structureLocation) -> {
+                return makeSettings(Rotation.valueOf(compoundTag.getString("Rot")), structureLocation);
+            });
+        }
 
-		private static StructurePlaceSettings makeSettings(Rotation rotation, ResourceLocation structureLocation) {
-			return (new StructurePlaceSettings()).setRotation(rotation).setMirror(Mirror.NONE).addProcessor(BlockIgnoreProcessor.STRUCTURE_BLOCK);
-		}
+        private static StructurePlaceSettings makeSettings(Rotation rotation, ResourceLocation structureLocation) {
+            return (new StructurePlaceSettings()).setRotation(rotation).setMirror(Mirror.NONE).addProcessor(BlockIgnoreProcessor.STRUCTURE_BLOCK);
+        }
 
-		@Override
-		protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
-			super.addAdditionalSaveData(structurePieceSerializationContext, compoundTag);
-			compoundTag.putString("Rot", this.placeSettings.getRotation().name());
-		}
+        @Override
+        protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
+            super.addAdditionalSaveData(structurePieceSerializationContext, compoundTag);
+            compoundTag.putString("Rot", this.placeSettings.getRotation().name());
+        }
 
-		@Override
-		protected void handleDataMarker(String data, BlockPos blockPos, ServerLevelAccessor serverLevelAccessor, RandomSource randomSource, BoundingBox boundingBox) {
-			if ("weapon_shop_decoy".equals(data)) {
-				serverLevelAccessor.setBlock(blockPos, Blocks.CHEST.defaultBlockState(), 3);
-				BlockEntity blockEntity = serverLevelAccessor.getBlockEntity(blockPos);
-				if (blockEntity instanceof ChestBlockEntity chestBlockEntity) {
-					chestBlockEntity.setLootTable(FossilsLegacyLootTables.WEAPON_SHOP_DECOY, randomSource.nextLong());
-				}
-			}
-			if ("weapon_shop_loot".equals(data)) {
-				serverLevelAccessor.setBlock(blockPos, Blocks.CHEST.defaultBlockState(), 3);
-				BlockEntity blockEntity = serverLevelAccessor.getBlockEntity(blockPos);
-				if (blockEntity instanceof ChestBlockEntity chestBlockEntity) {
-					chestBlockEntity.setLootTable(FossilsLegacyLootTables.WEAPON_SHOP_LOOT, randomSource.nextLong());
-				}
-			}
-		}
+        @Override
+        protected void handleDataMarker(String data, BlockPos blockPos, ServerLevelAccessor serverLevelAccessor, RandomSource randomSource, BoundingBox boundingBox) {
+            if ("weapon_shop_decoy".equals(data)) {
+                serverLevelAccessor.setBlock(blockPos, Blocks.CHEST.defaultBlockState(), 3);
+                BlockEntity blockEntity = serverLevelAccessor.getBlockEntity(blockPos);
+                if (blockEntity instanceof ChestBlockEntity chestBlockEntity) {
+                    chestBlockEntity.setLootTable(FossilsLegacyLootTables.WEAPON_SHOP_DECOY, randomSource.nextLong());
+                }
+            }
+            if ("weapon_shop_loot".equals(data)) {
+                serverLevelAccessor.setBlock(blockPos, Blocks.CHEST.defaultBlockState(), 3);
+                BlockEntity blockEntity = serverLevelAccessor.getBlockEntity(blockPos);
+                if (blockEntity instanceof ChestBlockEntity chestBlockEntity) {
+                    chestBlockEntity.setLootTable(FossilsLegacyLootTables.WEAPON_SHOP_LOOT, randomSource.nextLong());
+                }
+            }
+        }
 
-		@Override
-		public void postProcess(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
-			ResourceLocation structure = new ResourceLocation(this.templateName);
-			StructurePlaceSettings structurePlaceSettings = makeSettings(this.placeSettings.getRotation(), structure);
-			BlockPos offsetPos = new BlockPos(3, 3, 5);
-			BlockPos offsetedPos = this.templatePosition.offset(StructureTemplate.calculateRelativePosition(structurePlaceSettings, new BlockPos(3 - offsetPos.getX(), 0, -offsetPos.getZ())));
-			int worldHeight = worldGenLevel.getHeight(Heightmap.Types.WORLD_SURFACE_WG, offsetedPos.getX(), offsetedPos.getZ());
-			BlockPos templatePos = this.templatePosition;
-			this.templatePosition = this.templatePosition.offset(0, worldHeight - 90 - 1, 0);
-			super.postProcess(worldGenLevel, structureManager, chunkGenerator, randomSource, boundingBox, chunkPos, blockPos);
-			this.templatePosition = templatePos;
-		}
-	}
+        @Override
+        public void postProcess(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
+            ResourceLocation structure = new ResourceLocation(this.templateName);
+            StructurePlaceSettings structurePlaceSettings = makeSettings(this.placeSettings.getRotation(), structure);
+            BlockPos offsetPos = new BlockPos(3, 3, 5);
+            BlockPos offsetedPos = this.templatePosition.offset(StructureTemplate.calculateRelativePosition(structurePlaceSettings, new BlockPos(3 - offsetPos.getX(), 0, -offsetPos.getZ())));
+            int worldHeight = worldGenLevel.getHeight(Heightmap.Types.WORLD_SURFACE_WG, offsetedPos.getX(), offsetedPos.getZ());
+            BlockPos templatePos = this.templatePosition;
+            this.templatePosition = this.templatePosition.offset(0, worldHeight - 90 - 1, 0);
+            super.postProcess(worldGenLevel, structureManager, chunkGenerator, randomSource, boundingBox, chunkPos, blockPos);
+            this.templatePosition = templatePos;
+        }
+    }
 }

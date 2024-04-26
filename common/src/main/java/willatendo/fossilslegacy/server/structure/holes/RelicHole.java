@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.server.structure.holes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class RelicHole {
         this.blockPos = BlockPos.ZERO;
     }
 
-    public RelicHole(List<BlockState> blockStates, BlockPos blockPos, RandomSource randomSource, int xWidth, int layers, int zWidth, int holeSize) {
+    public RelicHole(List<BlockState> blockStates, Rotation rotation, BlockPos blockPos, RandomSource randomSource, int xWidth, int layers, int zWidth, int holeSize) {
         do {
             int xOffset = randomSource.nextInt(xWidth);
             int zOffset = randomSource.nextInt(zWidth);

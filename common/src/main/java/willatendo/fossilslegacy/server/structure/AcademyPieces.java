@@ -80,29 +80,7 @@ public class AcademyPieces {
             BlockPos.betweenClosedStream(this.getBoundingBox()).forEach(blockPoses -> {
                 blockStates.add(worldGenLevel.getBlockState(blockPoses));
             });
-            int width;
-            int depth;
-            Rotation rotation = structurePlaceSettings.getRotation();
-            switch (rotation) {
-                default:
-                case NONE: {
-                    width = 24;
-                    depth = 27;
-                }
-                case CLOCKWISE_90: {
-                    width = 27;
-                    depth = 24;
-                }
-                case CLOCKWISE_180: {
-                    width = -24;
-                    depth = -27;
-                }
-                case COUNTERCLOCKWISE_90: {
-                    width = -27;
-                    depth = 24;
-                }
-            }
-            this.relicHoleList = new RelicHoleList(blockStates, this.templatePosition, worldGenLevel.getRandom(), width, 26, depth, 7, 3);
+            this.relicHoleList = new RelicHoleList(blockStates, structurePlaceSettings.getRotation(), this.templatePosition, worldGenLevel.getRandom(), 24, 26, 27, 7, 3);
             BlockPos.betweenClosedStream(this.getBoundingBox()).forEach((blockPoses) -> {
                 if (this.isStoneBricks) {
                     if (worldGenLevel.getBlockState(blockPoses).is(Blocks.BRICKS)) {
