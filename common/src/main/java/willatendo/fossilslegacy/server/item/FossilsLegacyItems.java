@@ -47,7 +47,7 @@ public class FossilsLegacyItems {
     public static final SimpleHolder<Item> RAW_VELOCIRAPTOR_MEAT = ITEMS.register("raw_velociraptor_meat", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_TYRANNOSAURUS_MEAT = ITEMS.register("raw_tyrannosaurus_meat", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_PTERANODON_MEAT = ITEMS.register("raw_pteranodon_meat", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));
-    public static final SimpleHolder<PlaceEntityItem> NAUTILUS = ITEMS.register("nautilus", () -> new PlaceEntityItem(() -> FossilsLegacyEntityTypes.NAUTILUS.get(), new Item.Properties()));
+    public static final SimpleHolder<PlaceEntityItem> NAUTILUS = ITEMS.register("nautilus", () -> new PlaceEntityItem(() -> FossilsLegacyEntityTypes.NAUTILUS.get(), new Item.Properties().stacksTo(1)));
     public static final SimpleHolder<Item> RAW_FUTABASAURUS_MEAT = ITEMS.register("raw_futabasaurus_meat", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_MOSASAURUS_MEAT = ITEMS.register("raw_mosasaurus_meat", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_STEGOSAURUS_MEAT = ITEMS.register("raw_stegosaurus_meat", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));

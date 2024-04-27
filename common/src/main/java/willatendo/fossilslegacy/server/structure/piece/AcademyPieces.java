@@ -1,4 +1,4 @@
-package willatendo.fossilslegacy.server.structure;
+package willatendo.fossilslegacy.server.structure.piece;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -11,7 +11,6 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
@@ -70,17 +69,18 @@ public class AcademyPieces {
         public void postProcess(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
             ResourceLocation structure = new ResourceLocation(this.templateName);
             StructurePlaceSettings structurePlaceSettings = makeSettings(this.placeSettings.getRotation(), structure);
-            BlockPos offsetPos = new BlockPos(3, 0, 5);
+            BlockPos offsetPos = new BlockPos(3, 3, 5);
             BlockPos offsetedPos = this.templatePosition.offset(StructureTemplate.calculateRelativePosition(structurePlaceSettings, new BlockPos(3 - offsetPos.getX(), 0, -offsetPos.getZ())));
-            int worldHeight = worldGenLevel.getHeight(Heightmap.Types.WORLD_SURFACE_WG, offsetedPos.getX(), offsetedPos.getZ());
+            int worldHeight = worldGenLevel.getHeight(Heightmap.Types.WORLD_SURFACE_WG, offsetedPos.getX(), offsetedPos.getZ()) - 2;
             BlockPos templatePos = this.templatePosition;
             this.templatePosition = this.templatePosition.offset(0, worldHeight - 90 - 1, 0);
             super.postProcess(worldGenLevel, structureManager, chunkGenerator, randomSource, boundingBox, chunkPos, blockPos);
-            List<BlockState> blockStates = new ArrayList<>();
+            this.templatePosition = templatePos;
+            List<BlockPos> blockPosList = new ArrayList<>();
             BlockPos.betweenClosedStream(this.getBoundingBox()).forEach(blockPoses -> {
-                blockStates.add(worldGenLevel.getBlockState(blockPoses));
+                blockPosList.add(blockPoses.mutable());
             });
-            this.relicHoleList = new RelicHoleList(blockStates, structurePlaceSettings.getRotation(), this.templatePosition, worldGenLevel.getRandom(), 24, 26, 27, 7, 3);
+            this.relicHoleList = new RelicHoleList(randomSource, blockPosList, 5, 3);
             BlockPos.betweenClosedStream(this.getBoundingBox()).forEach((blockPoses) -> {
                 if (this.isStoneBricks) {
                     if (worldGenLevel.getBlockState(blockPoses).is(Blocks.BRICKS)) {
@@ -88,10 +88,9 @@ public class AcademyPieces {
                     }
                 }
                 if (this.relicHoleList.isHole(blockPoses)) {
-                    worldGenLevel.setBlock(blockPoses, Blocks.DIAMOND_BLOCK.defaultBlockState(), 3);
+                    worldGenLevel.setBlock(blockPoses, Blocks.AIR.defaultBlockState(), 2);
                 }
             });
-            this.templatePosition = templatePos;
         }
     }
 }

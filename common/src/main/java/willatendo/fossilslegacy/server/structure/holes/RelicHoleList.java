@@ -2,26 +2,20 @@ package willatendo.fossilslegacy.server.structure.holes;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
+import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
 
 public class RelicHoleList {
-    private RelicHole[] relicHoles;
-    private int DEFAULT_HOLE_COUNT = 9;
-    private int DEFAULT_HOLE_SIZE = 7;
+    private final RelicHole[] relicHoles;
 
-    public RelicHoleList(List<BlockState> blockStates, Rotation rotation, BlockPos blockPos, RandomSource randomSource, int xWidth, int layers, int zWidth, int holeCount, int holeSize) {
-        if (holeCount < 0) {
-            holeCount = DEFAULT_HOLE_COUNT;
-        }
-        if (holeSize < 0) {
-            holeSize = DEFAULT_HOLE_SIZE;
-        }
+    public RelicHoleList(RandomSource randomSource, List<BlockPos> structureBlockPoses, int holeCount, int holeSize) {
         this.relicHoles = new RelicHole[holeCount + 1];
         for (int i = 0; i < this.relicHoles.length; i++) {
-            this.relicHoles[i] = new RelicHole(blockStates, rotation, blockPos, randomSource, xWidth, layers, zWidth, holeSize);
+            BlockPos blockPos = structureBlockPoses.get(randomSource.nextInt(structureBlockPoses.size()));
+            FossilsLegacyUtils.LOGGER.info("" + blockPos + " " + structureBlockPoses.get(structureBlockPoses.indexOf(blockPos) + 1));
+            this.relicHoles[i] = new RelicHole(randomSource, blockPos, holeSize);
         }
     }
 

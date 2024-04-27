@@ -8,6 +8,7 @@ import net.minecraft.world.item.*;
 import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
@@ -62,10 +63,19 @@ public class ModEvents {
     }
 
     @SubscribeEvent
-    public static void registerRegistries(NewRegistryEvent event) {
-        event.create(new RegistryBuilder<EggVariant>().setName(FossilsLegacyRegistries.EGG_VARIANTS.location()).setMaxID(Integer.MAX_VALUE - 1).disableSync().disableSaving().hasTags());
-        event.create(new RegistryBuilder<FossilVariant>().setName(FossilsLegacyRegistries.FOSSIL_VARIANTS.location()).setMaxID(Integer.MAX_VALUE - 1).disableSync().disableSaving().hasTags());
-        event.create(new RegistryBuilder<StoneTabletVariant>().setName(FossilsLegacyRegistries.STONE_TABLET_VARIANTS.location()).setMaxID(Integer.MAX_VALUE - 1).disableSync().disableSaving().hasTags());
+    public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
+        BasicEvents.attributeInit();
+        BasicEvents.ATTRIBUTE_ENTRIES.forEach(attributes -> {
+            event.put(attributes.entityType(), attributes.attributeSupplier());
+        });
+    }
+
+    @SubscribeEvent
+    public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
+        BasicEvents.spawnPlacementsInit();
+        BasicEvents.SPAWN_PLACEMENT_ENTRIES.forEach(spawnPlacementEntry -> {
+            event.register(spawnPlacementEntry.entityType(), spawnPlacementEntry.type(), spawnPlacementEntry.types(), spawnPlacementEntry.spawnPredicate(), SpawnPlacementRegisterEvent.Operation.OR);
+        });
     }
 
     @SubscribeEvent
@@ -74,15 +84,14 @@ public class ModEvents {
     }
 
     @SubscribeEvent
-    public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
-        BasicEvents.attributeInit();
-        BasicEvents.ATTRIBUTES.forEach(attributes -> {
-            event.put(attributes.entityType(), attributes.attributeSupplier());
-        });
+    public static void registerRegistries(NewRegistryEvent event) {
+        event.create(new RegistryBuilder<EggVariant>().setName(FossilsLegacyRegistries.EGG_VARIANTS.location()).setMaxID(Integer.MAX_VALUE - 1).disableSync().disableSaving().hasTags());
+        event.create(new RegistryBuilder<FossilVariant>().setName(FossilsLegacyRegistries.FOSSIL_VARIANTS.location()).setMaxID(Integer.MAX_VALUE - 1).disableSync().disableSaving().hasTags());
+        event.create(new RegistryBuilder<StoneTabletVariant>().setName(FossilsLegacyRegistries.STONE_TABLET_VARIANTS.location()).setMaxID(Integer.MAX_VALUE - 1).disableSync().disableSaving().hasTags());
     }
 
     @SubscribeEvent
-    public static void addPackFinders(AddPackFindersEvent event) {
+    public static void registerResourcePack(AddPackFindersEvent event) {
         if (event.getPackType() == PackType.CLIENT_RESOURCES) {
             Path resourcePath = ModList.get().getModFileById(FossilsLegacyUtils.ID).getFile().findResource("resourcepacks/fa_legacy_textures");
             event.addRepositorySource(consumer -> {

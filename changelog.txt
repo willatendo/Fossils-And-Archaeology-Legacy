@@ -9,6 +9,13 @@
 - Fixed Insta-Births
 - Fixed Stegosaurus Tail Texture Issue
 - Fixed Velociraptor Interactions
+- Fixed Non-Broken Javelins From Being Used 
+- Fixed Javelins Removing an Entire Stack When Used
+- Fixed Nautilus Stacking Above 1
+- Fixed Magic Conch JEI
+- Fixed Spawn Placements on Forge and NeoForge
+- Fixed Academy Disc Loot Table
+- Fixed Pregnant Animals Being Able to Breed
 - Weapon Shops Now Generate Closer to The Surface
 - SyringeAnimals Has Been Replaced With PregnancyType and It Can Be Expanded On
 - Fix Untranslated Strings for Pregnanant Animals

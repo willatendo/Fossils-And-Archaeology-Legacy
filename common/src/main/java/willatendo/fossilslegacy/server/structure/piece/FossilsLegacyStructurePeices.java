@@ -1,4 +1,4 @@
-package willatendo.fossilslegacy.server.structure;
+package willatendo.fossilslegacy.server.structure.piece;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;

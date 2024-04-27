@@ -38,6 +38,11 @@ public class PregnantCat extends Cat implements DinopediaInformation, PregnantAn
     }
 
     @Override
+    public boolean canBreed() {
+        return false;
+    }
+
+    @Override
     public List<Component> info(Player player) {
         ArrayList<Component> information = Lists.newArrayList();
         information.add(this.getDisplayName());

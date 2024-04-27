@@ -22,6 +22,6 @@ public class FossilsLegacyFabricMod implements ModInitializer {
 
         BasicEvents.attributeInit();
         ModCallbacks.callbacks();
-        ModEvents.events();
+        ModEvents.commonSetup();
     }
 }

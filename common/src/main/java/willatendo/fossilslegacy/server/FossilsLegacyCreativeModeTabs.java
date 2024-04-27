@@ -1,21 +1,34 @@
 package willatendo.fossilslegacy.server;
 
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import willatendo.fossilslegacy.experiments.server.block.FossilsExperimentsBlocks;
 import willatendo.fossilslegacy.experiments.server.item.FossilsExperimentsItems;
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyStoneTabletVariantTags;
+import willatendo.fossilslegacy.server.entity.StoneTablet;
+import willatendo.fossilslegacy.server.entity.StoneTabletVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.item.MagicConchItem;
+import willatendo.fossilslegacy.server.item.StoneTabletItem;
+import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class FossilsLegacyCreativeModeTabs {
     public static final SimpleRegistry<CreativeModeTab> CREATIVE_MODE_TABS = SimpleRegistry.create(Registries.CREATIVE_MODE_TAB, FossilsLegacyUtils.ID);
+    private static final Comparator<Holder<StoneTabletVariant>> STONE_TABLET_COMPARATOR = Comparator.comparing(Holder::value, Comparator.<StoneTabletVariant>comparingInt(paintingVariant -> paintingVariant.height() * paintingVariant.width()).thenComparing(StoneTabletVariant::width));
 
     public static final SimpleHolder<CreativeModeTab> FOSSILS_LEGACY = CREATIVE_MODE_TABS.register("fossils_legacy", () -> SimpleUtils.create(FossilsLegacyUtils.ID, FossilsLegacyUtils.ID, () -> FossilsLegacyItems.FOSSIL.get(), (itemDisplayParameters, output) -> {
         output.accept(FossilsLegacyItems.FOSSIL.get());
@@ -91,7 +104,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.COOKED_CHICKEN_SOUP_BUCKET.get());
         output.accept(FossilsLegacyItems.CHICKEN_ESSENCE_BOTTLE.get());
         output.accept(FossilsLegacyItems.NAUTILUS_SHELL.get());
-        output.accept(FossilsLegacyItems.MAGIC_CONCH.get());
+        FossilsLegacyCreativeModeTabs.generateMagicConches(itemDisplayParameters, output);
         output.accept(FossilsLegacyItems.FROZEN_MEAT.get());
         output.accept(FossilsLegacyItems.AXOLOTL_DNA.get());
         output.accept(FossilsLegacyItems.CAT_DNA.get());
@@ -138,6 +151,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.JURASSIC_FERN_SPORES.get());
         output.accept(FossilsLegacyItems.RELIC_SCRAP.get());
         output.accept(FossilsLegacyItems.STONE_TABLET.get());
+        FossilsLegacyCreativeModeTabs.generateStoneTabletVariants(itemDisplayParameters, output);
         output.accept(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get());
         output.accept(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get());
         output.accept(FossilsLegacyItems.SCARAB_GEM.get());
@@ -197,6 +211,27 @@ public class FossilsLegacyCreativeModeTabs {
             output.accept(FossilsExperimentsBlocks.TIME_MACHINE.get());
         }
     }).build());
+
+    private static void generateMagicConches(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
+        for (DinosaurCommand dinosaurCommand : DinosaurCommand.values()) {
+            ItemStack itemStack = new ItemStack(FossilsLegacyItems.MAGIC_CONCH.get());
+            MagicConchItem.setOrder(itemStack, dinosaurCommand);
+            output.accept(itemStack);
+        }
+    }
+
+    private static void generateStoneTabletVariants(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
+        itemDisplayParameters.holders().lookup(FossilsLegacyRegistries.STONE_TABLET_VARIANTS).ifPresent(registryLookup -> FossilsLegacyCreativeModeTabs.generatePresetStoneTablets(output, registryLookup, holder -> holder.is(FossilsLegacyStoneTabletVariantTags.PLACEABLE), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
+    }
+
+    private static void generatePresetStoneTablets(CreativeModeTab.Output output, HolderLookup.RegistryLookup<StoneTabletVariant> registryLookup, Predicate<Holder<StoneTabletVariant>> predicate, CreativeModeTab.TabVisibility tabVisibility) {
+        registryLookup.listElements().filter(predicate).sorted(STONE_TABLET_COMPARATOR).forEach(reference -> {
+            ItemStack itemStack = new ItemStack(FossilsLegacyItems.STONE_TABLET.get());
+            CompoundTag compoundTag = itemStack.getOrCreateTagElement("EntityTag");
+            StoneTablet.storeVariant(compoundTag, reference);
+            output.accept(itemStack, tabVisibility);
+        });
+    }
 
     public static void init(List<SimpleRegistry<?>> simpleRegistries) {
         simpleRegistries.add(CREATIVE_MODE_TABS);

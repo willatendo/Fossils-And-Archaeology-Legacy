@@ -9,6 +9,7 @@ import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
+import willatendo.fossilslegacy.server.structure.piece.AcademyPieces;
 
 import java.util.Optional;
 

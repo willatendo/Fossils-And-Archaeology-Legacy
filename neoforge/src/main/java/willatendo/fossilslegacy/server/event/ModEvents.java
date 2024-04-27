@@ -12,6 +12,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import willatendo.fossilslegacy.FossilsLegacyNeoforgeMod;
@@ -58,20 +59,36 @@ public class ModEvents {
     }
 
     @SubscribeEvent
-    public static void register(RegisterEvent event) {
-        NeoForgeRegister.register(event, FossilsLegacyNeoforgeMod.REGISTRIES.toArray(SimpleRegistry[]::new));
-    }
-
-    @SubscribeEvent
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
         BasicEvents.attributeInit();
-        BasicEvents.ATTRIBUTES.forEach(attributes -> {
+        BasicEvents.ATTRIBUTE_ENTRIES.forEach(attributes -> {
             event.put(attributes.entityType(), attributes.attributeSupplier());
         });
     }
 
     @SubscribeEvent
-    public static void addPackFinders(AddPackFindersEvent event) {
+    public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
+        BasicEvents.spawnPlacementsInit();
+        BasicEvents.SPAWN_PLACEMENT_ENTRIES.forEach(spawnPlacementEntry -> {
+            event.register(spawnPlacementEntry.entityType(), spawnPlacementEntry.type(), spawnPlacementEntry.types(), spawnPlacementEntry.spawnPredicate(), SpawnPlacementRegisterEvent.Operation.OR);
+        });
+    }
+
+    @SubscribeEvent
+    public static void register(RegisterEvent event) {
+        NeoForgeRegister.register(event, FossilsLegacyNeoforgeMod.REGISTRIES.toArray(SimpleRegistry[]::new));
+    }
+
+    @SubscribeEvent
+    public static void registerRegistries(NewRegistryEvent event) {
+        event.register(FossilsLegacyBuiltInRegistries.FOSSIL_VARIANTS.registry());
+        event.register(FossilsLegacyBuiltInRegistries.EGG_VARIANTS.registry());
+        event.register(FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES.registry());
+        event.register(FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS.registry());
+    }
+
+    @SubscribeEvent
+    public static void registerResourcePack(AddPackFindersEvent event) {
         if (event.getPackType() == PackType.CLIENT_RESOURCES) {
             Path resourcePath = ModList.get().getModFileById(FossilsLegacyUtils.ID).getFile().findResource("resourcepacks/fa_legacy_textures");
             event.addRepositorySource(consumer -> {
@@ -81,13 +98,5 @@ public class ModEvents {
                 }
             });
         }
-    }
-
-    @SubscribeEvent
-    public static void registerRegistries(NewRegistryEvent event) {
-        event.register(FossilsLegacyBuiltInRegistries.FOSSIL_VARIANTS.registry());
-        event.register(FossilsLegacyBuiltInRegistries.EGG_VARIANTS.registry());
-        event.register(FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES.registry());
-        event.register(FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS.registry());
     }
 }

@@ -1,9 +1,7 @@
-// 1.20.4	2024-04-25T07:53:53.3137861	Registries
+// 1.20.4	2024-04-26T21:36:33.6382613	Registries
 532001524c06f9b4a4565f8b548bb4a8de84ba73 data/fossilslegacy/damage_type/animal_starve.json
 272b73d0ec6656b7beba50d287714cb055cc1dce data/fossilslegacy/damage_type/dilophosaurus_envenomation.json
 4ae015db008fd712ad0ea6d05b72ca0170963bf0 data/fossilslegacy/damage_type/javelin.json
-8a05075675ac2bf5b5b1ad3c564e51886e22d4b7 data/fossilslegacy/dimension/prehistory.json
-6f13b995395056b5b3e98311a931015d804d65b8 data/fossilslegacy/dimension_type/prehistory.json
 29a806ddd4df09cc7e48d756861a55e755faa1a0 data/fossilslegacy/neoforge/biome_modifier/add_anu_spawn.json
 061831ce4635216feb3296371cf483c0c6221f4c data/fossilslegacy/neoforge/biome_modifier/add_nautilus_spawn.json
 af215a2fbbdc55bf9be1c39a35ee1d6c39d6e602 data/fossilslegacy/neoforge/biome_modifier/add_ore_fossil.json
@@ -12,7 +10,7 @@ dda288cc8d5539167d2b19913180d2c3135c4aad data/fossilslegacy/worldgen/configured_
 af7539dc2bdc8076d5e3b674503e6f265df59339 data/fossilslegacy/worldgen/configured_feature/ore_permafrost.json
 39c54592bb4a44ef9af68e98e4cc100322476838 data/fossilslegacy/worldgen/placed_feature/ore_fossil.json
 5648f25e3228eae0d267699e9ea3ba79f1a59a4e data/fossilslegacy/worldgen/placed_feature/ore_permafrost.json
-9e8b2f53f42a96b10efa9ae0a949a7d62c055227 data/fossilslegacy/worldgen/structure/academy.json
+52ef9dd9ee1c46e58db1842f72fad3dc84264814 data/fossilslegacy/worldgen/structure/academy.json
 5ff4237a1d582ff862d2ef43a68dda58cd8452b7 data/fossilslegacy/worldgen/structure/weapon_shop.json
 6eba9937bbc8e9405238eec8b4b3c8bc781fae09 data/fossilslegacy/worldgen/structure_set/academy.json
 ebde1ca22d4571f61273c8349843b995eb334362 data/fossilslegacy/worldgen/structure_set/weapon_shop.json

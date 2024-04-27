@@ -6,7 +6,6 @@ import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import willatendo.fossilslegacy.experiments.client.FossilsExperimentsClient;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID, value = Dist.CLIENT)
@@ -24,10 +23,10 @@ public class ClientEvents {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         FossilsLegacyClient.loadModels();
-        FossilsLegacyClient.ENTITY_MODELS.forEach(entityModel -> {
+        FossilsLegacyClient.ENTITY_MODEL_ENTRIES.forEach(entityModel -> {
             event.registerEntityRenderer(entityModel.entityType(), entityModel.entityRendererProvider());
         });
-        FossilsLegacyClient.BLOCK_MODELS.forEach(blockModel -> {
+        FossilsLegacyClient.BLOCK_MODEL_ENTRIES.forEach(blockModel -> {
             event.registerBlockEntityRenderer(blockModel.blockEntityType(), blockModel.blockEntityRendererProvider());
         });
     }
@@ -35,7 +34,7 @@ public class ClientEvents {
     @SubscribeEvent
     public static void registerModelLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         FossilsLegacyClient.loadModelLayers();
-        FossilsLegacyClient.MODEL_LAYERS.forEach(modelLayer -> {
+        FossilsLegacyClient.MODEL_LAYER_ENTRIES.forEach(modelLayer -> {
             event.registerLayerDefinition(modelLayer.modelLayerLocation(), modelLayer.texturedModelDataProvider()::createModelData);
         });
     }

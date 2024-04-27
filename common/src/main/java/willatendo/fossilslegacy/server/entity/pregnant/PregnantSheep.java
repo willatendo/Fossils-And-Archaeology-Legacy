@@ -38,6 +38,11 @@ public class PregnantSheep extends Sheep implements DinopediaInformation, Pregna
     }
 
     @Override
+    public boolean canBreed() {
+        return false;
+    }
+
+    @Override
     public List<Component> info(Player player) {
         ArrayList<Component> information = Lists.newArrayList();
         information.add(this.getDisplayName());

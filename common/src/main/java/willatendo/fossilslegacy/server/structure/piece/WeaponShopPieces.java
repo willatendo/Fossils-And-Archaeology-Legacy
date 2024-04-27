@@ -1,4 +1,4 @@
-package willatendo.fossilslegacy.server.structure;
+package willatendo.fossilslegacy.server.structure.piece;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -8,11 +8,8 @@ import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
@@ -23,7 +20,6 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnorePr
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-import willatendo.fossilslegacy.server.item.FossilsLegacyLootTables;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class WeaponShopPieces {
@@ -56,20 +52,6 @@ public class WeaponShopPieces {
 
         @Override
         protected void handleDataMarker(String data, BlockPos blockPos, ServerLevelAccessor serverLevelAccessor, RandomSource randomSource, BoundingBox boundingBox) {
-            if ("weapon_shop_decoy".equals(data)) {
-                serverLevelAccessor.setBlock(blockPos, Blocks.CHEST.defaultBlockState(), 3);
-                BlockEntity blockEntity = serverLevelAccessor.getBlockEntity(blockPos);
-                if (blockEntity instanceof ChestBlockEntity chestBlockEntity) {
-                    chestBlockEntity.setLootTable(FossilsLegacyLootTables.WEAPON_SHOP_DECOY, randomSource.nextLong());
-                }
-            }
-            if ("weapon_shop_loot".equals(data)) {
-                serverLevelAccessor.setBlock(blockPos, Blocks.CHEST.defaultBlockState(), 3);
-                BlockEntity blockEntity = serverLevelAccessor.getBlockEntity(blockPos);
-                if (blockEntity instanceof ChestBlockEntity chestBlockEntity) {
-                    chestBlockEntity.setLootTable(FossilsLegacyLootTables.WEAPON_SHOP_LOOT, randomSource.nextLong());
-                }
-            }
         }
 
         @Override
@@ -78,7 +60,7 @@ public class WeaponShopPieces {
             StructurePlaceSettings structurePlaceSettings = makeSettings(this.placeSettings.getRotation(), structure);
             BlockPos offsetPos = new BlockPos(3, 3, 5);
             BlockPos offsetedPos = this.templatePosition.offset(StructureTemplate.calculateRelativePosition(structurePlaceSettings, new BlockPos(3 - offsetPos.getX(), 0, -offsetPos.getZ())));
-            int worldHeight = worldGenLevel.getHeight(Heightmap.Types.WORLD_SURFACE_WG, offsetedPos.getX(), offsetedPos.getZ());
+            int worldHeight = worldGenLevel.getHeight(Heightmap.Types.WORLD_SURFACE_WG, offsetedPos.getX(), offsetedPos.getZ()) - 15;
             BlockPos templatePos = this.templatePosition;
             this.templatePosition = this.templatePosition.offset(0, worldHeight - 90 - 1, 0);
             super.postProcess(worldGenLevel, structureManager, chunkGenerator, randomSource, boundingBox, chunkPos, blockPos);

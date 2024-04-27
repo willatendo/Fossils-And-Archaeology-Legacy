@@ -13,8 +13,8 @@ import willatendo.fossilslegacy.server.menu.FossilsLegacyMenus;
 import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
 import willatendo.fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSerialisers;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
-import willatendo.fossilslegacy.server.structure.FossilsLegacyStructurePeices;
 import willatendo.fossilslegacy.server.structure.FossilsLegacyStructureTypes;
+import willatendo.fossilslegacy.server.structure.piece.FossilsLegacyStructurePeices;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 import java.util.List;

@@ -33,7 +33,7 @@ public class FossilsLegacyStructures {
 
     public static void bootstrap(BootstapContext<Structure> bootstapContext) {
         HolderGetter<Biome> biomes = bootstapContext.lookup(Registries.BIOME);
-        bootstapContext.register(ACADEMY, new AcademyStructure(FossilsLegacyStructures.structure(biomes.getOrThrow(FossilsLegacyBiomeTags.HAS_ACADEMY), TerrainAdjustment.BEARD_THIN)));
+        bootstapContext.register(ACADEMY, new AcademyStructure(FossilsLegacyStructures.structure(biomes.getOrThrow(FossilsLegacyBiomeTags.HAS_ACADEMY), TerrainAdjustment.NONE)));
         bootstapContext.register(WEAPON_SHOP, new WeaponShopStructure(FossilsLegacyStructures.structure(biomes.getOrThrow(FossilsLegacyBiomeTags.HAS_WEAPON_SHOP), TerrainAdjustment.NONE)));
     }
 }

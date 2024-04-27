@@ -11,16 +11,12 @@ import net.fabricmc.loader.api.ModContainer;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.entity.SpawnPlacements.Type;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
-import net.minecraft.world.level.levelgen.Heightmap;
 import willatendo.fossilslegacy.server.biomes.FossilsLegacyPlacedFeatures;
-import willatendo.fossilslegacy.server.entity.Anu;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
-import willatendo.fossilslegacy.server.entity.Nautilus;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
@@ -28,13 +24,13 @@ import willatendo.simplelibrary.server.registry.SimpleHolder;
 import java.util.Optional;
 
 public class ModEvents {
-    public static void events() {
+    public static void commonSetup() {
         BasicEvents.addToMaps();
-        addToCreativeModeTabs();
-        addToBiomes();
-        addEntityAttributes();
-        addEntitySpawnPlacements();
-        addResourcePacks();
+        ModEvents.addToCreativeModeTabs();
+        ModEvents.registerNewBiomeFeatures();
+        ModEvents.registerEntityAttributes();
+        ModEvents.registerSpawnPlacements();
+        ModEvents.registerResourcePack();
     }
 
     public static void addToCreativeModeTabs() {
@@ -61,25 +57,28 @@ public class ModEvents {
         });
     }
 
-    public static void addToBiomes() {
+    public static void registerNewBiomeFeatures() {
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FossilsLegacyPlacedFeatures.ORE_FOSSIL);
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FossilsLegacyPlacedFeatures.ORE_PERMAFROST);
         BiomeModifications.addSpawn(BiomeSelectors.tag(BiomeTags.HAS_OCEAN_RUIN_WARM), MobCategory.WATER_AMBIENT, FossilsLegacyEntityTypes.NAUTILUS.get(), 1, 1, 1);
         BiomeModifications.addSpawn(BiomeSelectors.foundInTheNether(), MobCategory.MONSTER, FossilsLegacyEntityTypes.ANU.get(), 1, 1, 1);
     }
 
-    public static void addEntityAttributes() {
-        BasicEvents.ATTRIBUTES.forEach(attributes -> {
+    public static void registerEntityAttributes() {
+        BasicEvents.attributeInit();
+        BasicEvents.ATTRIBUTE_ENTRIES.forEach(attributes -> {
             FabricDefaultAttributeRegistry.register(attributes.entityType(), attributes.attributeSupplier());
         });
     }
 
-    public static void addEntitySpawnPlacements() {
-        SpawnPlacements.register(FossilsLegacyEntityTypes.ANU.get(), Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Anu::checkAnuSpawnRules);
-        SpawnPlacements.register(FossilsLegacyEntityTypes.NAUTILUS.get(), Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Nautilus::checkNautilusSpawnRules);
+    public static void registerSpawnPlacements() {
+        BasicEvents.spawnPlacementsInit();
+        BasicEvents.SPAWN_PLACEMENT_ENTRIES.forEach(spawnPlacementEntry -> {
+            SpawnPlacements.register(spawnPlacementEntry.entityType(), spawnPlacementEntry.type(), spawnPlacementEntry.types(), spawnPlacementEntry.spawnPredicate());
+        });
     }
 
-    public static void addResourcePacks() {
+    public static void registerResourcePack() {
         Optional<ModContainer> modContainer = FabricLoader.getInstance().getModContainer(FossilsLegacyUtils.ID);
         ResourceManagerHelper.registerBuiltinResourcePack(FossilsLegacyUtils.resource("fa_legacy_textures"), modContainer.get(), FossilsLegacyUtils.translation("pack", "fa_legacy_textures"), ResourcePackActivationType.NORMAL);
     }

@@ -3,8 +3,10 @@ package willatendo.fossilslegacy.server.event;
 import net.minecraft.Util;
 import net.minecraft.core.Position;
 import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.animal.goat.Goat;
@@ -18,6 +20,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraft.world.level.levelgen.Heightmap;
 import willatendo.fossilslegacy.experiments.server.entity.Carnotaurus;
 import willatendo.fossilslegacy.experiments.server.entity.Cryolophosaurus;
 import willatendo.fossilslegacy.experiments.server.entity.FossilsExperimentsEntityTypes;
@@ -31,8 +34,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BasicEvents {
-    public static final List<Attributes> ATTRIBUTES = new ArrayList<>();
-
+    public static final List<AttributeEntry> ATTRIBUTE_ENTRIES = new ArrayList<>();
+    public static final List<SpawnPlacementEntry> SPAWN_PLACEMENT_ENTRIES = new ArrayList<>();
 
     public static void addToMaps() {
         ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.JURASSIC_FERN.get(), 0.65F);
@@ -62,8 +65,8 @@ public class BasicEvents {
         });
     }
 
-    public static void addAttribute(EntityType<? extends LivingEntity> entityType, AttributeSupplier attributeSupplier) {
-        ATTRIBUTES.add(new Attributes(entityType, attributeSupplier));
+    private static void addAttribute(EntityType<? extends LivingEntity> entityType, AttributeSupplier attributeSupplier) {
+        ATTRIBUTE_ENTRIES.add(new AttributeEntry(entityType, attributeSupplier));
     }
 
     public static void attributeInit() {
@@ -108,7 +111,21 @@ public class BasicEvents {
         BasicEvents.addAttribute(FossilsExperimentsEntityTypes.THERIZINOSAURUS.get(), Therizinosaurus.therizinosaurusAttributes());
     }
 
-    public static final record Attributes(EntityType<? extends LivingEntity> entityType,
-                                          AttributeSupplier attributeSupplier) {
+    private static <T extends Entity> void addSpawnPlacement(EntityType<T> entityType, SpawnPlacements.Type type, Heightmap.Types types, SpawnPlacements.SpawnPredicate<T> spawnPredicate) {
+        SPAWN_PLACEMENT_ENTRIES.add(new SpawnPlacementEntry(entityType, type, types, spawnPredicate));
+    }
+
+    public static void spawnPlacementsInit() {
+        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.ANU.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Anu::checkAnuSpawnRules);
+        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.NAUTILUS.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Nautilus::checkNautilusSpawnRules);
+    }
+
+    public static final record AttributeEntry(EntityType<? extends LivingEntity> entityType,
+                                              AttributeSupplier attributeSupplier) {
+    }
+
+    public static final record SpawnPlacementEntry<T extends Entity>(EntityType<T> entityType,
+                                                                     SpawnPlacements.Type type, Heightmap.Types types,
+                                                                     SpawnPlacements.SpawnPredicate<T> spawnPredicate) {
     }
 }

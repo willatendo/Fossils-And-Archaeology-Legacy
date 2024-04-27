@@ -27,26 +27,25 @@ import willatendo.fossilslegacy.client.screen.FeederScreen;
 import willatendo.fossilslegacy.experiments.client.FossilsExperimentsClient;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenus;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FossilsLegacyClient {
-    public static final List<EntityModel> ENTITY_MODELS = new ArrayList<>();
-    public static final List<BlockModel> BLOCK_MODELS = new ArrayList<>();
-    public static final List<ModelLayer> MODEL_LAYERS = new ArrayList<>();
+    public static final List<EntityModelEntry> ENTITY_MODEL_ENTRIES = new ArrayList<>();
+    public static final List<BlockModelEntry> BLOCK_MODEL_ENTRIES = new ArrayList<>();
+    public static final List<ModelLayerEntry> MODEL_LAYER_ENTRIES = new ArrayList<>();
 
     public static <T extends Entity> void addModel(EntityType<? extends T> entityType, EntityRendererProvider<? extends T> entityRendererProvider) {
-        ENTITY_MODELS.add(new EntityModel(entityType, entityRendererProvider));
+        ENTITY_MODEL_ENTRIES.add(new EntityModelEntry(entityType, entityRendererProvider));
     }
 
     public static <T extends BlockEntity> void addModel(BlockEntityType<? extends T> blockEntityType, BlockEntityRendererProvider<? extends T> blockEntityRendererProvider) {
-        BLOCK_MODELS.add(new BlockModel(blockEntityType, blockEntityRendererProvider));
+        BLOCK_MODEL_ENTRIES.add(new BlockModelEntry(blockEntityType, blockEntityRendererProvider));
     }
 
     public static void addModelLayer(ModelLayerLocation modelLayerLocation, TexturedModelDataProvider texturedModelDataProvider) {
-        MODEL_LAYERS.add(new ModelLayer(modelLayerLocation, texturedModelDataProvider));
+        MODEL_LAYER_ENTRIES.add(new ModelLayerEntry(modelLayerLocation, texturedModelDataProvider));
     }
 
     public static void init() {
@@ -146,15 +145,15 @@ public class FossilsLegacyClient {
         MenuScreens.register(FossilsLegacyMenus.FEEDER.get(), FeederScreen::new);
     }
 
-    public static final record EntityModel<T extends Entity>(EntityType<T> entityType,
-                                                             EntityRendererProvider<T> entityRendererProvider) {
+    public static final record EntityModelEntry<T extends Entity>(EntityType<T> entityType,
+                                                                  EntityRendererProvider<T> entityRendererProvider) {
     }
 
-    public static final record BlockModel<T extends BlockEntity>(BlockEntityType<T> blockEntityType,
-                                                                 BlockEntityRendererProvider<T> blockEntityRendererProvider) {
+    public static final record BlockModelEntry<T extends BlockEntity>(BlockEntityType<T> blockEntityType,
+                                                                      BlockEntityRendererProvider<T> blockEntityRendererProvider) {
     }
 
-    public static final record ModelLayer(ModelLayerLocation modelLayerLocation,
-                                          TexturedModelDataProvider texturedModelDataProvider) {
+    public static final record ModelLayerEntry(ModelLayerLocation modelLayerLocation,
+                                               TexturedModelDataProvider texturedModelDataProvider) {
     }
 }
