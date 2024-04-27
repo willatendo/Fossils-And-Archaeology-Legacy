@@ -5,7 +5,7 @@ issueTrackerURL = "https://github.com/willatendo/Fossils-And-Archaeology-Legacy/
 
 [[mods]]
 modId = "fossilslegacy"
-version = "1.0.0"
+version = "1.0.0b"
 displayName = "Fossils and Archaeology Legacy"
 displayURL = "https://modrinth.com/project/fossils-and-archaeology-legacy"
 logoFile = "fossils_and_archaeology_legacy_icon.png"
