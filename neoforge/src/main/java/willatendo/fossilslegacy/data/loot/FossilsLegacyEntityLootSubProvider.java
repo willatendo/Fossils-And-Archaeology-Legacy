@@ -106,7 +106,7 @@ public class FossilsLegacyEntityLootSubProvider extends EntityLootSubProvider {
 
         this.add(FossilsExperimentsEntityTypes.CARNOTAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsExperimentsItems.RAW_CRYOLOPHOSAURUS_MEAT.get()));
         this.add(FossilsExperimentsEntityTypes.CRYOLOPHOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsExperimentsItems.RAW_CRYOLOPHOSAURUS_MEAT.get()));
-        this.add(FossilsExperimentsEntityTypes.THERIZINOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsExperimentsItems.RAW_THERIZINOSAURUS_MEAT.get()));
+        this.add(FossilsExperimentsEntityTypes.THERIZINOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsExperimentsItems.RAW_THERIZINOSAURUS_MEAT.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.FEATHER).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 3.0F)))).add(LootItem.lootTableItem(FossilsExperimentsItems.THERIZINOSAURUS_CLAWS.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))));
     }
 
     protected LootTable.Builder createDinosaurTable(float minAdditional, float maxAdditional, ItemLike additionalDrop, float min, float max, ItemLike rawMeat) {

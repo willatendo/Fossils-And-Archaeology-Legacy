@@ -98,6 +98,9 @@ public class FossilsLegacyCreativeModeTabs {
         }
         output.accept(FossilsLegacyItems.TYRANNOSAURUS_TOOTH.get());
         output.accept(FossilsLegacyItems.TOOTH_DAGGER.get());
+        if (FossilsModloaderHelper.INSTANCE.shouldEnableExperiments()) {
+            output.accept(FossilsExperimentsItems.THERIZINOSAURUS_CLAWS.get());
+        }
         output.accept(FossilsLegacyItems.SKULL_STICK.get());
         output.accept(FossilsLegacyItems.DINOPEDIA.get());
         output.accept(FossilsLegacyItems.RAW_CHICKEN_SOUP_BUCKET.get());

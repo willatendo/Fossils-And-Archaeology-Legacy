@@ -7,9 +7,9 @@ import willatendo.fossilslegacy.experiments.server.block.FossilsExperimentsBlock
 import willatendo.fossilslegacy.experiments.server.entity.FossilsExperimentsEggVariants;
 import willatendo.fossilslegacy.experiments.server.entity.FossilsExperimentsEntityTypes;
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
-import willatendo.fossilslegacy.server.item.EggItem;
 import willatendo.fossilslegacy.server.item.FossilsLegacyFoods;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.item.FossilsLegacyTiers;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 
 import static willatendo.fossilslegacy.server.item.FossilsLegacyItems.ITEMS;
@@ -30,6 +30,7 @@ public class FossilsExperimentsItems {
     public static final SimpleHolder<ExperimentalItem> COOKED_CARNOTAURUS_MEAT = ITEMS.register("cooked_carnotaurus_meat", () -> new ExperimentalItem(new Item.Properties().food(FossilsLegacyFoods.COOKED_DINOSAUR_MEAT)));
     public static final SimpleHolder<ExperimentalItem> COOKED_CRYOLOPHOSAURUS_MEAT = ITEMS.register("cooked_cryolophosaurus_meat", () -> new ExperimentalItem(new Item.Properties().food(FossilsLegacyFoods.COOKED_DINOSAUR_MEAT)));
     public static final SimpleHolder<ExperimentalItem> COOKED_THERIZINOSAURUS_MEAT = ITEMS.register("cooked_therizinosaurus_meat", () -> new ExperimentalItem(new Item.Properties().food(FossilsLegacyFoods.COOKED_DINOSAUR_MEAT)));
+    public static final SimpleHolder<TherizinosaurusClawsItem> THERIZINOSAURUS_CLAWS = ITEMS.register("therizinosaurus_claws", () -> new TherizinosaurusClawsItem(0, -3.0F, FossilsLegacyTiers.DAGGER, new Item.Properties()));
     public static final SimpleHolder<SpawnEggItem> CARNOTAURUS_SPAWN_EGG = ITEMS.register("carnotaurus_spawn_egg", () -> FossilsModloaderHelper.INSTANCE.createExperimentalDinosaurSpawnEgg(() -> FossilsExperimentsEntityTypes.CARNOTAURUS.get(), 0xbf5242, 0x371c18, new Item.Properties()));
     public static final SimpleHolder<SpawnEggItem> CRYOLOPHOSAURUS_SPAWN_EGG = ITEMS.register("cryolophosaurus_spawn_egg", () -> FossilsModloaderHelper.INSTANCE.createExperimentalDinosaurSpawnEgg(() -> FossilsExperimentsEntityTypes.CRYOLOPHOSAURUS.get(), 0x547096, 0xec353c, new Item.Properties()));
     public static final SimpleHolder<SpawnEggItem> THERIZINOSAURUS_SPAWN_EGG = ITEMS.register("therizinosaurus_spawn_egg", () -> FossilsModloaderHelper.INSTANCE.createExperimentalDinosaurSpawnEgg(() -> FossilsExperimentsEntityTypes.THERIZINOSAURUS.get(), 0x626c44, 0xcf561e, new Item.Properties()));

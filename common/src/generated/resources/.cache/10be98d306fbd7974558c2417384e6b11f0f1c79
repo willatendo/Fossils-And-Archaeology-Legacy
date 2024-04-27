@@ -1,4 +1,4 @@
-// 1.20.4	2024-04-22T21:20:55.1840915	Item Models: fossilslegacy
+// 1.20.4	2024-04-27T15:17:28.3594293	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 41c5f6a309438824458da52752171cd09485a937 assets/fossilslegacy/models/item/ancient_helmet.json
 1b00aecb972342e5bc57d055c16f2c28f4ccc3d4 assets/fossilslegacy/models/item/ancient_helmet_artifact.json
@@ -158,6 +158,7 @@ c9f2e78854037eca1f72506bf2d2b213f7ccf801 assets/fossilslegacy/models/item/stegos
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/stegosaurus_spawn_egg.json
 bd165c5894dc19f85abaab92be30b71091296b42 assets/fossilslegacy/models/item/stone_javelin.json
 c8cf686f2818d41140c164c63b2c2d295e6c032b assets/fossilslegacy/models/item/stone_tablet.json
+cd65c4fdb760e3669eee925addde3a48e07f5dbe assets/fossilslegacy/models/item/therizinosaurus_claws.json
 8707b9c70efdf1937c558e67223839a39ae8181a assets/fossilslegacy/models/item/therizinosaurus_dna.json
 4ca2d6809e7fccf100dd634cdd697ba9f2e1340e assets/fossilslegacy/models/item/therizinosaurus_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/therizinosaurus_spawn_egg.json

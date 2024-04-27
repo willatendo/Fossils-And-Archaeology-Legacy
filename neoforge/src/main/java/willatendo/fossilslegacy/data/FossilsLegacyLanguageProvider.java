@@ -382,6 +382,7 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add(FossilsExperimentsItems.COOKED_CARNOTAURUS_MEAT.get());
         this.add(FossilsExperimentsItems.COOKED_CRYOLOPHOSAURUS_MEAT.get());
         this.add(FossilsExperimentsItems.COOKED_THERIZINOSAURUS_MEAT.get());
+        this.add(FossilsExperimentsItems.THERIZINOSAURUS_CLAWS.get());
         this.add(FossilsExperimentsItems.CARNOTAURUS_SPAWN_EGG.get());
         this.add(FossilsExperimentsItems.CRYOLOPHOSAURUS_SPAWN_EGG.get());
         this.add(FossilsExperimentsItems.THERIZINOSAURUS_SPAWN_EGG.get());

@@ -184,6 +184,7 @@ public class FossilsLegacyItemModelProvider extends ItemModelProvider {
         this.basicItem(FossilsExperimentsItems.COOKED_CARNOTAURUS_MEAT.get());
         this.basicItem(FossilsExperimentsItems.COOKED_CRYOLOPHOSAURUS_MEAT.get());
         this.basicItem(FossilsExperimentsItems.COOKED_THERIZINOSAURUS_MEAT.get());
+        this.handheldItem(FossilsExperimentsItems.THERIZINOSAURUS_CLAWS.get());
         this.spawnEggItem(FossilsExperimentsItems.CARNOTAURUS_SPAWN_EGG.get());
         this.spawnEggItem(FossilsExperimentsItems.CRYOLOPHOSAURUS_SPAWN_EGG.get());
         this.spawnEggItem(FossilsExperimentsItems.THERIZINOSAURUS_SPAWN_EGG.get());

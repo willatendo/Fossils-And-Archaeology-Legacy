@@ -1,4 +1,4 @@
-// 1.20.4	2024-04-22T21:20:55.1869129	Loot Tables
+// 1.20.4	2024-04-27T15:03:55.8335397	Loot Tables
 5fcf811a958fcf132678d4423a7472c475c2b8ca data/fossilslegacy/loot_tables/blocks/analyzer.json
 8bfc811efa599c9be09afe46481ec9ebbf5f3a33 data/fossilslegacy/loot_tables/blocks/archaeology_workbench.json
 e4c3f2afd7c71b1d42778ff89f2ddfe5a03122da data/fossilslegacy/loot_tables/blocks/axolotlspawn.json
@@ -75,7 +75,7 @@ e84bdf159108ba6d46094e60472b626460bb1483 data/fossilslegacy/loot_tables/entities
 0b94a68caa6a9e0b41c516e38598db58ad824d0b data/fossilslegacy/loot_tables/entities/smilodon.json
 26aaa7939499debd6e4fbd96bb4f8b4b9e49f6a7 data/fossilslegacy/loot_tables/entities/stegosaurus.json
 8c5b0b35d656033fe7cde563d347930ed367de96 data/fossilslegacy/loot_tables/entities/tamed_zombified_piglin.json
-d1591c35cc1765eb6b2cfdcb361bafe2d512527d data/fossilslegacy/loot_tables/entities/therizinosaurus.json
+86e855fb771b632754c8c9e10e6bf5cd0913cf17 data/fossilslegacy/loot_tables/entities/therizinosaurus.json
 abb39c453e2330a1ab6a60b5426bd7434e705403 data/fossilslegacy/loot_tables/entities/triceratops.json
 cf1249764eca96dc3abde4d19b0c2e6bea174361 data/fossilslegacy/loot_tables/entities/tyrannosaurus.json
 57c9c4e060d11b5d530dc8b20ec876d806e431a4 data/fossilslegacy/loot_tables/entities/velociraptor.json
