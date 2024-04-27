@@ -1,3 +1,10 @@
+27/4/2024
+- Dinopedia Now Displays % Done Instead of Ticks On Pregnant Animals
+- Fixed Smilodon Not Having Baby Variant
+- Fixed Entity Voice's Being Really Deep As Babies And High As Adults
+- Fixed Dinosaur's Commands Not Loading
+Experimental:
+- Fixed Therizinosaurus's Commanding Items
 26/4/2024
 - Internal Cleanup
 - Fixed Stegosaurus Eggs Hatching Brachiosaurus

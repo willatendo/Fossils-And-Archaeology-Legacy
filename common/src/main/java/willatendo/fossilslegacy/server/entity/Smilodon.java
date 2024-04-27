@@ -267,4 +267,9 @@ public class Smilodon extends Dinosaur implements DinopediaInformation {
     public CommandType commandItems() {
         return CommandType.hand();
     }
+
+    @Override
+    public boolean isBaby() {
+        return this.getGrowthStage() == 0;
+    }
 }

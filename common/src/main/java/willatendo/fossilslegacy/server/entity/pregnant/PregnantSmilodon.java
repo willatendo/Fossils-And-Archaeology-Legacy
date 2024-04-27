@@ -43,7 +43,7 @@ public class PregnantSmilodon extends Smilodon implements DinopediaInformation, 
         ArrayList<Component> information = Lists.newArrayList();
         information.add(this.getDisplayName());
         information.add(FossilsLegacyUtils.translation("dinopedia", "health", (int) this.getHealth(), (int) this.getMaxHealth()));
-        information.add(FossilsLegacyUtils.translation("dinopedia", "pregnancy_time", this.getRemainingPregnancyTime()));
+        information.add(FossilsLegacyUtils.translation("dinopedia", "pregnancy_time", (int) Math.floor((((float) this.getRemainingTime()) / this.maxTime()) * 100) + "%"));
         information.add(FossilsLegacyUtils.translation("dinopedia", "embryo", this.getPregnancyType().getDescription().getString()));
         return information;
     }

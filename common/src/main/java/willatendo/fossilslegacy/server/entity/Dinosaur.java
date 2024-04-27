@@ -1,8 +1,5 @@
 package willatendo.fossilslegacy.server.entity;
 
-import java.util.Optional;
-import java.util.UUID;
-
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -16,13 +13,7 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.OwnableEntity;
-import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -34,8 +25,11 @@ import willatendo.fossilslegacy.server.ConfigHelper;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
+import java.util.Optional;
+import java.util.UUID;
+
 public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnBirth, TameAccessor, PlayerCommandableAccess, HungryAnimal, DaysAlive, GrowingEntity, TamedSpeakingEntity {
-    private static final EntityDataAccessor<Integer> COMMAND = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<String> COMMAND = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.STRING);
     private static final EntityDataAccessor<Integer> DAYS_ALIVE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> GROWTH_STAGE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> HUNGER = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
@@ -77,11 +71,6 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
     @Override
     public int getAmbientSoundInterval() {
         return 360;
-    }
-
-    @Override
-    public float getVoicePitch() {
-        return 0.5F + (0.1F * this.getGrowthStage());
     }
 
     @Override
@@ -265,7 +254,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(COMMAND, 0);
+        this.entityData.define(COMMAND, DinosaurCommand.FREE_MOVE.getOrder());
         this.entityData.define(GROWTH_STAGE, 0);
         this.entityData.define(DAYS_ALIVE, 0);
         this.entityData.define(HUNGER, this.getMaxHunger());
@@ -336,12 +325,12 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 
     @Override
     public DinosaurCommand getCommand() {
-        return DinosaurCommand.values()[this.entityData.get(COMMAND)];
+        return DinosaurCommand.getFromString(this.entityData.get(COMMAND));
     }
 
     @Override
     public void setCommand(DinosaurCommand dinosaurOrder) {
-        this.entityData.set(COMMAND, dinosaurOrder.ordinal());
+        this.entityData.set(COMMAND, dinosaurOrder.getOrder());
     }
 
     @Override
@@ -378,7 +367,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
             }
         }
 
-        DinosaurCommand.load(compoundTag);
+        this.setCommand(DinosaurCommand.load(compoundTag));
         this.setDaysAlive(compoundTag.getInt("DaysAlive"));
         this.setHunger(compoundTag.getInt("Hunger"));
         this.setGrowthStage(compoundTag.getInt("GrowthStage"));

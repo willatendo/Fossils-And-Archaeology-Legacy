@@ -9,13 +9,26 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.experiments.server.entity.Carnotaurus;
 
 public class CarnotaurusModel extends EntityModel<Carnotaurus> {
     private final ModelPart root;
+    private final ModelPart rightFoot;
+    private final ModelPart rightLeg;
+    private final ModelPart rightThigh;
+    private final ModelPart leftFoot;
+    private final ModelPart leftLeg;
+    private final ModelPart leftThigh;
 
     public CarnotaurusModel(ModelPart root) {
         this.root = root;
+        this.rightThigh = root.getChild("right_thigh");
+        this.rightLeg = root.getChild("right_leg");
+        this.rightFoot = root.getChild("right_foot");
+        this.leftThigh = root.getChild("left_thigh");
+        this.leftLeg = root.getChild("left_leg");
+        this.leftFoot = root.getChild("left_foot");
     }
 
     public static LayerDefinition createBodyLayer() {
@@ -47,6 +60,8 @@ public class CarnotaurusModel extends EntityModel<Carnotaurus> {
 
     @Override
     public void setupAnim(Carnotaurus carnotaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+        this.rightThigh.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+        this.leftThigh.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount;
     }
 
     @Override

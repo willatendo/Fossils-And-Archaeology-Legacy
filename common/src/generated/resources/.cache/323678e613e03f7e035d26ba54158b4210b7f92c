@@ -1,4 +1,4 @@
-// 1.20.4	2024-04-22T18:02:18.3249975	Tags for minecraft:item mod id fossilslegacy
+// 1.20.4	2024-04-27T13:25:29.4377271	Tags for minecraft:item mod id fossilslegacy
 1ad920aa65e2706dabb6265f3b12546ab33e8936 data/fossilslegacy/tags/items/brachiosaurus_commandables.json
 d76677c29f7873d57168ee1e3f0d7552ccaf4b95 data/fossilslegacy/tags/items/cake_eggs.json
 243f2dab6ef46a493d12775f6f28baf7b72922cf data/fossilslegacy/tags/items/carnotaurus_commandables.json
@@ -11,5 +11,6 @@ d76677c29f7873d57168ee1e3f0d7552ccaf4b95 data/fossilslegacy/tags/items/cake_eggs
 cb1403915fd8ebe238f3e86f00123ee24c49e426 data/fossilslegacy/tags/items/pteranodon_commandables.json
 09773104f8173e987f84ad20d8f0ea8fb62627b7 data/fossilslegacy/tags/items/repair_when_broken_in_archaeology_table.json
 1ad920aa65e2706dabb6265f3b12546ab33e8936 data/fossilslegacy/tags/items/stegosaurus_commandables.json
+1ad920aa65e2706dabb6265f3b12546ab33e8936 data/fossilslegacy/tags/items/therizinosaurus_commandables.json
 1ad920aa65e2706dabb6265f3b12546ab33e8936 data/fossilslegacy/tags/items/triceratops_commandables.json
 e71ff39a58e6626fffa365ff9e1ee48712eecece data/fossilslegacy/tags/items/tyrannosaurus_commandables.json
