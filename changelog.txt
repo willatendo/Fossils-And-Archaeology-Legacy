@@ -21,7 +21,6 @@
 - Fix Untranslated Strings for Pregnanant Animals
 - Added Holes to Academies
 Experimental:
-- Added Prehistoric Dimension
 - Update Time Machine Interface
 - Added Carnotaurus
 - Added Cryolophosaurus
