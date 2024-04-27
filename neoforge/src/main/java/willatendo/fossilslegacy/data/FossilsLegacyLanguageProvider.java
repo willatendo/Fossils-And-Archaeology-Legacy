@@ -210,6 +210,8 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add(FossilsLegacyEntityTypes.STONE_TABLET.get());
 
         this.add(FossilsExperimentsEntityTypes.CARNOTAURUS.get());
+        this.add(FossilsExperimentsEntityTypes.CRYOLOPHOSAURUS.get());
+        this.add(FossilsExperimentsEntityTypes.THERIZINOSAURUS.get());
 
         // Items
         this.add(FossilsLegacyItems.FOSSIL.get());
