@@ -1,28 +1,27 @@
 modLoader = "javafml"
-loaderVersion = "[2,)"
-license = "MIT"
-issueTrackerURL = "https://github.com/willatendo/Fossils-And-Archaeology-Legacy/issues"
+loaderVersion = "${neoforge_version_range}"
+license = "${license}"
+issueTrackerURL = "${issue_tracker}"
 
 [[mods]]
-modId = "fossilslegacy"
-version = "1.0.0c"
-displayName = "Fossils and Archaeology Legacy"
-displayURL = "https://modrinth.com/project/fossils-and-archaeology-legacy"
-logoFile = "fossils_and_archaeology_legacy_icon.png"
-credits = "Team July"
-authors = "Willatendo"
-description = '''THIS IS NOT THE F/A: REVIVAL MOD! One of the most famous dinosaur mods of all times had such humble beginnings! A small mod by Team July. Unfortunetly, the lead had to abandon the mod due to time constrains. Leaving it open source, there are many who've tried to take up the mantle. However, few have tried to take up the original version of the mod. It is buggy. It is a bit broken. And for many, it's on a difficult version of Minecraft. This mod is a remake of the mod, fixed up and experimenting with some of Team July's ideas that have gone unused. The mod adds a multitude of dinosaurs and machines to revive them. In addition, you can make skeletons out of their bones. A few new structures are added to explore and discover archaeological sites!'''
+modId = "${mod_id}"
+version = "${version}"
+displayName = "${mod_name}"
+displayURL = "${homepage}"
+logoFile = "${icon}"
+authors = "${mod_author}"
+description = '''${description}'''
 
 [[dependencies.fossilslegacy]]
 modId = "neoforge"
 type = "required"
-versionRange = "[20.4,)"
+versionRange = "${neoforge_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.fossilslegacy]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.20.4,1.21)"
+versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"

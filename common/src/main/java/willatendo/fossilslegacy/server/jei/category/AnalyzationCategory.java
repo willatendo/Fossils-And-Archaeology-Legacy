@@ -13,8 +13,10 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import willatendo.fossilslegacy.server.ConfigHelper;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.jei.FossilsLegacyJEIRecipeTypes;
 import willatendo.fossilslegacy.server.jei.FossilsLegacyJEITextures;
@@ -71,7 +73,16 @@ public class AnalyzationCategory implements IRecipeCategory<RecipeHolder<Analyza
         iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 1, 1).addIngredients(analyzationRecipe.getIngredients().get(0));
         List<ItemStack> outputs = new ArrayList<>();
         for (AnalyzationOutputs analyzationOutputs : analyzationRecipe.getResults()) {
-            outputs.add(analyzationOutputs.getResult());
+            ItemStack result = analyzationOutputs.getResult();
+            if (!ConfigHelper.shouldEnableExperiments()) {
+                if (!result.getItem().isEnabled(FeatureFlags.VANILLA_SET)) {
+                    continue;
+                } else {
+                    outputs.add(result);
+                }
+            } else {
+                outputs.add(result);
+            }
         }
         iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT, 95, 5).addItemStacks(outputs).addTooltipCallback((iRecipeSlotView, tooltip) -> {
             tooltip.add(Component.literal(analyzationRecipe.getWeight(iRecipeSlotView.getDisplayedItemStack().get()) + "%").withStyle(ChatFormatting.GRAY));

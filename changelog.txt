@@ -1,4 +1,9 @@
-27/4/2024
+27/4/2024b
+- Fixed Velociraptor Not Appearing In Spawn Eggs Creative Mode Tab
+- Fixed Experimental Items Being Crafted From Analyzer
+Experimental:
+- Added Therizinosaurus Claws
+27/4/2024a
 - Dinopedia Now Displays % Done Instead of Ticks On Pregnant Animals
 - Fixed Smilodon Not Having Baby Variant
 - Fixed Entity Voice's Being Really Deep As Babies And High As Adults
