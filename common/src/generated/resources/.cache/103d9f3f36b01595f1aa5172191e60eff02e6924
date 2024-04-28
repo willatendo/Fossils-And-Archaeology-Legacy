@@ -1,8 +1,7 @@
-// 1.20.4	2024-04-26T21:36:33.6382613	Registries
+// 1.20.4	2024-04-28T14:08:41.4597978	Registries
 532001524c06f9b4a4565f8b548bb4a8de84ba73 data/fossilslegacy/damage_type/animal_starve.json
 272b73d0ec6656b7beba50d287714cb055cc1dce data/fossilslegacy/damage_type/dilophosaurus_envenomation.json
 4ae015db008fd712ad0ea6d05b72ca0170963bf0 data/fossilslegacy/damage_type/javelin.json
-29a806ddd4df09cc7e48d756861a55e755faa1a0 data/fossilslegacy/neoforge/biome_modifier/add_anu_spawn.json
 061831ce4635216feb3296371cf483c0c6221f4c data/fossilslegacy/neoforge/biome_modifier/add_nautilus_spawn.json
 af215a2fbbdc55bf9be1c39a35ee1d6c39d6e602 data/fossilslegacy/neoforge/biome_modifier/add_ore_fossil.json
 281bbb823aed0673c8c1101dc1f967b633d51e68 data/fossilslegacy/neoforge/biome_modifier/add_ore_permafrost.json

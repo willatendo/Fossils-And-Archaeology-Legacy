@@ -46,7 +46,6 @@ public class FossilsLegacyBuiltinProvider extends DatapackBuiltinEntriesProvider
         bootstapContext.register(createBiomeModifier("add_ore_fossil"), new BiomeModifiers.AddFeaturesBiomeModifier(isOverworld, oreFossil, GenerationStep.Decoration.UNDERGROUND_ORES));
         bootstapContext.register(createBiomeModifier("add_ore_permafrost"), new BiomeModifiers.AddFeaturesBiomeModifier(isOverworld, orePermafrost, GenerationStep.Decoration.UNDERGROUND_ORES));
         bootstapContext.register(createBiomeModifier("add_nautilus_spawn"), BiomeModifiers.AddSpawnsBiomeModifier.singleSpawn(biomes.getOrThrow(BiomeTags.HAS_OCEAN_RUIN_WARM), new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.NAUTILUS.get(), 1, 1, 1)));
-        bootstapContext.register(createBiomeModifier("add_anu_spawn"), BiomeModifiers.AddSpawnsBiomeModifier.singleSpawn(biomes.getOrThrow(BiomeTags.IS_NETHER), new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.ANU.get(), 1, 1, 1)));
     }
 
     public static ResourceKey<BiomeModifier> createBiomeModifier(String name) {

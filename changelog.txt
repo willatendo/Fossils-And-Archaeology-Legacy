@@ -1,4 +1,8 @@
-28/4/2024
+28/4/2024b
+- Anu No Longer Spawns
+- Added "Anu Totem" To Summon Anu
+- Fixed Anu Being a Baby
+28/4/2024a
 - Added Overworld Coin
 - Added Nether Coin
 - Added Prehistoric Coin

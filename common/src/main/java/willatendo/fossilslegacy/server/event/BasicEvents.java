@@ -1,8 +1,11 @@
 package willatendo.fossilslegacy.server.event;
 
 import net.minecraft.Util;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Position;
 import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
+import net.minecraft.core.dispenser.BlockSource;
+import net.minecraft.core.dispenser.OptionalDispenseItemBehavior;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,12 +19,17 @@ import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.animal.horse.Mule;
 import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CarvedPumpkinBlock;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.Heightmap;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
+import willatendo.fossilslegacy.server.block.SkullBlock;
 import willatendo.fossilslegacy.server.dispenser.DispenseEntityItemBehavior;
 import willatendo.fossilslegacy.server.entity.*;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
@@ -57,6 +65,44 @@ public class BasicEvents {
                     thrownIncubatedEgg.setItem(itemStack);
                     thrownIncubatedEgg.setEggType(1);
                 });
+            }
+        });
+        DispenserBlock.registerBehavior(FossilsLegacyBlocks.SKULL_BLOCK.get(), new OptionalDispenseItemBehavior() {
+            @Override
+            protected ItemStack execute(BlockSource blockSource, ItemStack itemStack) {
+                Level level = blockSource.level();
+                BlockPos blockPos = blockSource.pos().relative(blockSource.state().getValue(DispenserBlock.FACING));
+                SkullBlock skullBlock = (SkullBlock) FossilsLegacyBlocks.SKULL_BLOCK.get();
+                if (level.isEmptyBlock(blockPos) && skullBlock.canSpawnAnu(level, blockPos)) {
+                    if (!level.isClientSide()) {
+                        level.setBlock(blockPos, skullBlock.defaultBlockState(), 3);
+                        level.gameEvent((Entity) null, GameEvent.BLOCK_PLACE, blockPos);
+                    }
+
+                    itemStack.shrink(1);
+                    this.setSuccess(true);
+                }
+
+                return itemStack;
+            }
+        });
+        DispenserBlock.registerBehavior(FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get(), new OptionalDispenseItemBehavior() {
+            @Override
+            protected ItemStack execute(BlockSource blockSource, ItemStack itemStack) {
+                Level level = blockSource.level();
+                BlockPos blockPos = blockSource.pos().relative(blockSource.state().getValue(DispenserBlock.FACING));
+                SkullBlock skullBlock = (SkullBlock) FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get();
+                if (level.isEmptyBlock(blockPos) && skullBlock.canSpawnAnu(level, blockPos)) {
+                    if (!level.isClientSide()) {
+                        level.setBlock(blockPos, skullBlock.defaultBlockState(), 3);
+                        level.gameEvent((Entity) null, GameEvent.BLOCK_PLACE, blockPos);
+                    }
+
+                    itemStack.shrink(1);
+                    this.setSuccess(true);
+                }
+
+                return itemStack;
             }
         });
     }
@@ -112,7 +158,6 @@ public class BasicEvents {
     }
 
     public static void spawnPlacementsInit() {
-        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.ANU.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Anu::checkAnuSpawnRules);
         BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.NAUTILUS.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Nautilus::checkNautilusSpawnRules);
     }
 
