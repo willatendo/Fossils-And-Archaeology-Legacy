@@ -21,10 +21,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
-import willatendo.fossilslegacy.experiments.server.entity.Carnotaurus;
-import willatendo.fossilslegacy.experiments.server.entity.Cryolophosaurus;
-import willatendo.fossilslegacy.experiments.server.entity.FossilsExperimentsEntityTypes;
-import willatendo.fossilslegacy.experiments.server.entity.Therizinosaurus;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.dispenser.DispenseEntityItemBehavior;
 import willatendo.fossilslegacy.server.entity.*;
@@ -106,9 +102,9 @@ public class BasicEvents {
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.TYRANNOSAURUS.get(), Tyrannosaurus.tyrannosaurusAttributes());
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.VELOCIRAPTOR.get(), Velociraptor.velociraptorAttributes());
 
-        BasicEvents.addAttribute(FossilsExperimentsEntityTypes.CARNOTAURUS.get(), Carnotaurus.carnotaurusAttributes());
-        BasicEvents.addAttribute(FossilsExperimentsEntityTypes.CRYOLOPHOSAURUS.get(), Cryolophosaurus.cryolophosaurusAttributes());
-        BasicEvents.addAttribute(FossilsExperimentsEntityTypes.THERIZINOSAURUS.get(), Therizinosaurus.therizinosaurusAttributes());
+        BasicEvents.addAttribute(FossilsLegacyEntityTypes.CARNOTAURUS.get(), Carnotaurus.carnotaurusAttributes());
+        BasicEvents.addAttribute(FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get(), Cryolophosaurus.cryolophosaurusAttributes());
+        BasicEvents.addAttribute(FossilsLegacyEntityTypes.THERIZINOSAURUS.get(), Therizinosaurus.therizinosaurusAttributes());
     }
 
     private static <T extends Entity> void addSpawnPlacement(EntityType<T> entityType, SpawnPlacements.Type type, Heightmap.Types types, SpawnPlacements.SpawnPredicate<T> spawnPredicate) {

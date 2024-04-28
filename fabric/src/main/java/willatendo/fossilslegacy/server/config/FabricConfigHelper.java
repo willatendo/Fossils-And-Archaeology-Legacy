@@ -30,10 +30,6 @@ public class FabricConfigHelper {
         return isForgeConfigAPILoaded() ? FossilsLegacyForgeConfig.COMMON_CONFIG.shouldAnuSpawn() : isClothConfigLoaded() ? FossilsLegacyClothConfigSettings.willAnimalsStarve() : SHOULD_ANU_SPAWN;
     }
 
-    public static boolean shouldEnableExperiments() {
-        return isForgeConfigAPILoaded() ? FossilsLegacyForgeConfig.SERVER_CONFIG.enableExperiments() : isClothConfigLoaded() ? FossilsLegacyClothConfigSettings.enableExperiments() : ENABLE_EXPERIMENTS;
-    }
-
     public static void loadConfig() {
         if (FabricConfigHelper.isForgeConfigAPILoaded()) {
             FossilsLegacyUtils.LOGGER.info("ForgeAPIConfigPort Detected: Using");

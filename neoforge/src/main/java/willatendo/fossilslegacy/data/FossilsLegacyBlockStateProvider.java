@@ -1,12 +1,10 @@
 package willatendo.fossilslegacy.data;
 
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import willatendo.fossilslegacy.experiments.server.block.FossilsExperimentsBlocks;
 import willatendo.fossilslegacy.server.block.*;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 
@@ -30,7 +28,6 @@ public class FossilsLegacyBlockStateProvider extends BlockStateProvider {
         this.simpleBlock(FossilsLegacyBlocks.PERMAFROST.get());
         this.simpleBlock(FossilsLegacyBlocks.ICED_STONE.get());
         this.simpleBlock(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), this.models().withExistingParent("axolotlspawn", this.mcLoc("block/frogspawn")).texture("texture", this.modLoc("block/axolotlspawn")).texture("particle", this.modLoc("block/axolotlspawn")).renderType(this.mcLoc("cutout")));
-
-        this.simpleBlock(FossilsExperimentsBlocks.TIME_MACHINE.get(), this.models().withExistingParent("time_machine", this.modLoc("block/template_time_machine")));
+        this.simpleBlock(FossilsLegacyBlocks.TIME_MACHINE.get(), this.models().withExistingParent("time_machine", this.modLoc("block/template_time_machine")));
     }
 }

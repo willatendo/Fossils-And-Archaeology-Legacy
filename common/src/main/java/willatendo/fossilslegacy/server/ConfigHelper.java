@@ -20,10 +20,6 @@ public class ConfigHelper {
         return FossilsModloaderHelper.INSTANCE.shouldAnuSpawn();
     }
 
-    public static boolean shouldEnableExperiments() {
-        return FossilsModloaderHelper.INSTANCE.shouldEnableExperiments();
-    }
-
     public static boolean isForgeConfigAPILoaded() {
         return SimpleUtils.isModLoaded("forgeconfigapiport");
     }

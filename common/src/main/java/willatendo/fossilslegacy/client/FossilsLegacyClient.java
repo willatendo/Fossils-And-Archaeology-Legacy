@@ -24,7 +24,16 @@ import willatendo.fossilslegacy.client.screen.AnalyzerScreen;
 import willatendo.fossilslegacy.client.screen.ArchaeologyWorkbenchScreen;
 import willatendo.fossilslegacy.client.screen.CultivatorScreen;
 import willatendo.fossilslegacy.client.screen.FeederScreen;
-import willatendo.fossilslegacy.experiments.client.FossilsExperimentsClient;
+import willatendo.fossilslegacy.client.model.CarnotaurusModel;
+import willatendo.fossilslegacy.client.model.CryolophosaurusModel;
+import willatendo.fossilslegacy.client.model.TherizinosaurusModel;
+import willatendo.fossilslegacy.client.model.TimeMachineClockModel;
+import willatendo.fossilslegacy.client.render.CarnotaurusRenderer;
+import willatendo.fossilslegacy.client.render.CryolophosaurusRenderer;
+import willatendo.fossilslegacy.client.render.TherizinosaurusRenderer;
+import willatendo.fossilslegacy.client.render.TimeMachineClockRenderer;
+import willatendo.fossilslegacy.client.screen.TimeMachineScreen;
+import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenus;
 
@@ -55,8 +64,6 @@ public class FossilsLegacyClient {
     }
 
     public static void loadModels() {
-        FossilsExperimentsClient.loadModels();
-
         FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), BrachiosaurusRenderer::new);
         FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), DilophosaurusRenderer::new);
         FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.MAMMOTH.get(), MammothRenderer::new);
@@ -69,6 +76,9 @@ public class FossilsLegacyClient {
         FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.TRICERATOPS.get(), TriceratopsRenderer::new);
         FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.TYRANNOSAURUS.get(), TyrannosaurusRenderer::new);
         FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.VELOCIRAPTOR.get(), VelociraptorRenderer::new);
+        FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.CARNOTAURUS.get(), CarnotaurusRenderer::new);
+        FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get(), CryolophosaurusRenderer::new);
+        FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.THERIZINOSAURUS.get(), TherizinosaurusRenderer::new);
 
         FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.EGG.get(), EggRenderer::new);
 
@@ -104,11 +114,11 @@ public class FossilsLegacyClient {
         FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.FOSSIL.get(), FossilRenderer::new);
 
         FossilsLegacyClient.addModel(FossilsLegacyEntityTypes.STONE_TABLET.get(), StoneTabletRenderer::new);
+
+        FossilsLegacyClient.addModel(FossilsLegacyBlockEntities.TIME_MACHINE.get(), TimeMachineClockRenderer::new);
     }
 
     public static void loadModelLayers() {
-        FossilsExperimentsClient.loadModelLayers();
-
         FossilsLegacyClient.addModelLayer(FossilsLegacyModels.BRACHIOSAURUS, BrachiosaurusModel::createBodyLayer);
         FossilsLegacyClient.addModelLayer(FossilsLegacyModels.DILOPHOSAURUS, DilophosaurusModel::createBodyLayer);
         FossilsLegacyClient.addModelLayer(FossilsLegacyModels.MAMMOTH, MammothModel::createBodyLayer);
@@ -124,6 +134,9 @@ public class FossilsLegacyClient {
         FossilsLegacyClient.addModelLayer(FossilsLegacyModels.TYRANNOSAURUS, TyrannosaurusModel::createBodyLayer);
         FossilsLegacyClient.addModelLayer(FossilsLegacyModels.KNOCKED_OUT_TYRANNOSAURUS, KnockedOutTyrannosaurusModel::createBodyLayer);
         FossilsLegacyClient.addModelLayer(FossilsLegacyModels.VELOCIRAPTOR, VelociraptorModel::createBodyLayer);
+        FossilsLegacyClient.addModelLayer(FossilsLegacyModels.CARNOTAURUS, CarnotaurusModel::createBodyLayer);
+        FossilsLegacyClient.addModelLayer(FossilsLegacyModels.CRYOLOPHOSAURUS, CryolophosaurusModel::createBodyLayer);
+        FossilsLegacyClient.addModelLayer(FossilsLegacyModels.THERIZINOSAURUS, TherizinosaurusModel::createBodyLayer);
 
         FossilsLegacyClient.addModelLayer(FossilsLegacyModels.TRICERATOPS_SKELETON, TriceratopsSkeletonModel::createBodyLayer);
         FossilsLegacyClient.addModelLayer(FossilsLegacyModels.BRACHIOSAURUS_SKELETON, BrachiosaurusSkeletonModel::createBodyLayer);
@@ -134,15 +147,16 @@ public class FossilsLegacyClient {
         FossilsLegacyClient.addModelLayer(FossilsLegacyModels.FAILURESAURUS, FailuresaurusModel::createBodyLayer);
 
         FossilsLegacyClient.addModelLayer(FossilsLegacyModels.EGG, EggModel::createBodyLayer);
+
+        FossilsLegacyClient.addModelLayer(FossilsLegacyModels.TIME_MACHINE_CLOCK, TimeMachineClockModel::createBodyLayer);
     }
 
     public static void bindScreens() {
-        FossilsExperimentsClient.bindScreens();
-
         MenuScreens.register(FossilsLegacyMenus.ANALYZER.get(), AnalyzerScreen::new);
         MenuScreens.register(FossilsLegacyMenus.ARCHAEOLOGY_WORKBENCH.get(), ArchaeologyWorkbenchScreen::new);
         MenuScreens.register(FossilsLegacyMenus.CULTIVATOR.get(), CultivatorScreen::new);
         MenuScreens.register(FossilsLegacyMenus.FEEDER.get(), FeederScreen::new);
+        MenuScreens.register(FossilsLegacyMenus.TIME_MACHINE.get(), TimeMachineScreen::new);
     }
 
     public static final record EntityModelEntry<T extends Entity>(EntityType<T> entityType,

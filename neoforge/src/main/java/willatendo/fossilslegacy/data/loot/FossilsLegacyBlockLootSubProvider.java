@@ -6,7 +6,6 @@ import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import willatendo.fossilslegacy.experiments.server.block.FossilsExperimentsBlocks;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom;
@@ -36,8 +35,7 @@ public class FossilsLegacyBlockLootSubProvider extends BlockLootSubProvider {
         this.add(FossilsLegacyBlocks.PERMAFROST.get(), block -> this.createSilkTouchDispatchTable(block, this.applyExplosionCondition(block, LootOneItemOfManyRandom.lootTableItem(20000, new ItemAndChance(FossilsLegacyItems.JURASSIC_FERN_SPORES.get(), 0, 4000), new ItemAndChance(FossilsLegacyBlocks.SKULL_BLOCK.get(), 4000, 8000), new ItemAndChance(FossilsLegacyItems.FROZEN_MEAT.get(), 8000, 12000), new ItemAndChance(Items.BEEF, 12000, 16000), new ItemAndChance(Items.PORKCHOP, 16000, 20000)))));
         this.add(FossilsLegacyBlocks.ICED_STONE.get(), block -> this.createSingleItemTableWithSilkTouch(block, Blocks.COBBLESTONE));
         this.add(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), noDrop());
-
-        this.dropSelf(FossilsExperimentsBlocks.TIME_MACHINE.get());
+        this.dropSelf(FossilsLegacyBlocks.TIME_MACHINE.get());
     }
 
     @Override

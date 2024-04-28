@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy;
 
-import willatendo.fossilslegacy.experiments.FossilsExperiments;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.FossilsLegacyCreativeModeTabs;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
@@ -21,8 +20,6 @@ import java.util.List;
 
 public class FossilsLegacyMod {
     public static void onInitialize(List<SimpleRegistry<?>> simpleRegistries) {
-        FossilsExperiments.init();
-
         FossilsLegacyBuiltInRegistries.init();
 
         FossilsLegacyRecipeTypes.init(simpleRegistries);

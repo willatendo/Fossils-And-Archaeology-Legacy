@@ -24,8 +24,4 @@ public class FossilsLegacyClothConfigSettings {
     public static boolean shouldAnuSpawn() {
         return CONFIG.common.shouldAnuSpawn();
     }
-
-    public static boolean enableExperiments() {
-        return CONFIG.server.enableExperiments();
-    }
 }

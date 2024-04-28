@@ -6,16 +6,12 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import willatendo.fossilslegacy.experiments.server.block.FossilsExperimentsBlocks;
-import willatendo.fossilslegacy.experiments.server.item.FossilsExperimentsItems;
-import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyStoneTabletVariantTags;
 import willatendo.fossilslegacy.server.entity.StoneTablet;
 import willatendo.fossilslegacy.server.entity.StoneTabletVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.item.MagicConchItem;
-import willatendo.fossilslegacy.server.item.StoneTabletItem;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
@@ -42,11 +38,9 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.STEGOSAURUS_DNA.get());
         output.accept(FossilsLegacyItems.DILOPHOSAURUS_DNA.get());
         output.accept(FossilsLegacyItems.BRACHIOSAURUS_DNA.get());
-        if (FossilsModloaderHelper.INSTANCE.shouldEnableExperiments()) {
-            output.accept(FossilsExperimentsItems.CARNOTAURUS_DNA.get());
-            output.accept(FossilsExperimentsItems.CRYOLOPHOSAURUS_DNA.get());
-            output.accept(FossilsExperimentsItems.THERIZINOSAURUS_DNA.get());
-        }
+        output.accept(FossilsLegacyItems.CARNOTAURUS_DNA.get());
+        output.accept(FossilsLegacyItems.CRYOLOPHOSAURUS_DNA.get());
+        output.accept(FossilsLegacyItems.THERIZINOSAURUS_DNA.get());
         output.accept(FossilsLegacyItems.TRICERATOPS_EGG.get());
         output.accept(FossilsLegacyItems.VELOCIRAPTOR_EGG.get());
         output.accept(FossilsLegacyItems.TYRANNOSAURUS_EGG.get());
@@ -57,11 +51,9 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.STEGOSAURUS_EGG.get());
         output.accept(FossilsLegacyItems.DILOPHOSAURUS_EGG.get());
         output.accept(FossilsLegacyItems.BRACHIOSAURUS_EGG.get());
-        if (FossilsModloaderHelper.INSTANCE.shouldEnableExperiments()) {
-            output.accept(FossilsExperimentsItems.CARNOTAURUS_EGG.get());
-            output.accept(FossilsExperimentsItems.CRYOLOPHOSAURUS_EGG.get());
-            output.accept(FossilsExperimentsItems.THERIZINOSAURUS_EGG.get());
-        }
+        output.accept(FossilsLegacyItems.CARNOTAURUS_EGG.get());
+        output.accept(FossilsLegacyItems.CRYOLOPHOSAURUS_EGG.get());
+        output.accept(FossilsLegacyItems.THERIZINOSAURUS_EGG.get());
         output.accept(FossilsLegacyItems.RAW_TRICERATOPS_MEAT.get());
         output.accept(FossilsLegacyItems.RAW_VELOCIRAPTOR_MEAT.get());
         output.accept(FossilsLegacyItems.RAW_TYRANNOSAURUS_MEAT.get());
@@ -74,11 +66,9 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.RAW_BRACHIOSAURUS_MEAT.get());
         output.accept(FossilsLegacyItems.RAW_SMILODON_MEAT.get());
         output.accept(FossilsLegacyItems.RAW_MAMMOTH_MEAT.get());
-        if (FossilsModloaderHelper.INSTANCE.shouldEnableExperiments()) {
-            output.accept(FossilsExperimentsItems.RAW_CARNOTAURUS_MEAT.get());
-            output.accept(FossilsExperimentsItems.RAW_CRYOLOPHOSAURUS_MEAT.get());
-            output.accept(FossilsExperimentsItems.RAW_THERIZINOSAURUS_MEAT.get());
-        }
+        output.accept(FossilsLegacyItems.RAW_CARNOTAURUS_MEAT.get());
+        output.accept(FossilsLegacyItems.RAW_CRYOLOPHOSAURUS_MEAT.get());
+        output.accept(FossilsLegacyItems.RAW_THERIZINOSAURUS_MEAT.get());
         output.accept(FossilsLegacyItems.COOKED_TRICERATOPS_MEAT.get());
         output.accept(FossilsLegacyItems.COOKED_VELOCIRAPTOR_MEAT.get());
         output.accept(FossilsLegacyItems.COOKED_TYRANNOSAURUS_MEAT.get());
@@ -91,16 +81,12 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.COOKED_BRACHIOSAURUS_MEAT.get());
         output.accept(FossilsLegacyItems.COOKED_SMILODON_MEAT.get());
         output.accept(FossilsLegacyItems.COOKED_MAMMOTH_MEAT.get());
-        if (FossilsModloaderHelper.INSTANCE.shouldEnableExperiments()) {
-            output.accept(FossilsExperimentsItems.COOKED_CARNOTAURUS_MEAT.get());
-            output.accept(FossilsExperimentsItems.COOKED_CRYOLOPHOSAURUS_MEAT.get());
-            output.accept(FossilsExperimentsItems.COOKED_THERIZINOSAURUS_MEAT.get());
-        }
+        output.accept(FossilsLegacyItems.COOKED_CARNOTAURUS_MEAT.get());
+        output.accept(FossilsLegacyItems.COOKED_CRYOLOPHOSAURUS_MEAT.get());
+        output.accept(FossilsLegacyItems.COOKED_THERIZINOSAURUS_MEAT.get());
         output.accept(FossilsLegacyItems.TYRANNOSAURUS_TOOTH.get());
         output.accept(FossilsLegacyItems.TOOTH_DAGGER.get());
-        if (FossilsModloaderHelper.INSTANCE.shouldEnableExperiments()) {
-            output.accept(FossilsExperimentsItems.THERIZINOSAURUS_CLAWS.get());
-        }
+        output.accept(FossilsLegacyItems.THERIZINOSAURUS_CLAWS.get());
         output.accept(FossilsLegacyItems.SKULL_STICK.get());
         output.accept(FossilsLegacyItems.DINOPEDIA.get());
         output.accept(FossilsLegacyItems.RAW_CHICKEN_SOUP_BUCKET.get());
@@ -173,11 +159,9 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.DIAMOND_JAVELIN.get());
         output.accept(FossilsLegacyItems.NETHERITE_JAVELIN.get());
         output.accept(FossilsLegacyItems.SCARAB_GEM_JAVELIN.get());
-        if (FossilsModloaderHelper.INSTANCE.shouldEnableExperiments()) {
-            output.accept(FossilsExperimentsItems.OVERWORLD_COIN.get());
-            output.accept(FossilsExperimentsItems.NETHER_COIN.get());
-            output.accept(FossilsExperimentsItems.PREHISTORIC_COIN.get());
-        }
+        output.accept(FossilsLegacyItems.OVERWORLD_COIN.get());
+        output.accept(FossilsLegacyItems.NETHER_COIN.get());
+        output.accept(FossilsLegacyItems.PREHISTORIC_COIN.get());
         output.accept(FossilsLegacyItems.ANU_SPAWN_EGG.get());
         output.accept(FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get());
         output.accept(FossilsLegacyItems.BRACHIOSAURUS_SPAWN_EGG.get());
@@ -192,11 +176,9 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get());
         output.accept(FossilsLegacyItems.TYRANNOSAURUS_SPAWN_EGG.get());
         output.accept(FossilsLegacyItems.VELOCIRAPTOR_SPAWN_EGG.get());
-        if (FossilsModloaderHelper.INSTANCE.shouldEnableExperiments()) {
-            output.accept(FossilsExperimentsItems.CARNOTAURUS_SPAWN_EGG.get());
-            output.accept(FossilsExperimentsItems.CRYOLOPHOSAURUS_SPAWN_EGG.get());
-            output.accept(FossilsExperimentsItems.THERIZINOSAURUS_SPAWN_EGG.get());
-        }
+        output.accept(FossilsLegacyItems.CARNOTAURUS_SPAWN_EGG.get());
+        output.accept(FossilsLegacyItems.CRYOLOPHOSAURUS_SPAWN_EGG.get());
+        output.accept(FossilsLegacyItems.THERIZINOSAURUS_SPAWN_EGG.get());
         output.accept(FossilsLegacyBlocks.FOSSIL_ORE.get());
         output.accept(FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get());
         output.accept(FossilsLegacyBlocks.SKULL_BLOCK.get());
@@ -210,9 +192,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyBlocks.PERMAFROST.get());
         output.accept(FossilsLegacyBlocks.ICED_STONE.get());
         output.accept(FossilsLegacyBlocks.AXOLOTLSPAWN.get());
-        if (FossilsModloaderHelper.INSTANCE.shouldEnableExperiments()) {
-            output.accept(FossilsExperimentsBlocks.TIME_MACHINE.get());
-        }
+        output.accept(FossilsLegacyBlocks.TIME_MACHINE.get());
     }).build());
 
     private static void generateMagicConches(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {

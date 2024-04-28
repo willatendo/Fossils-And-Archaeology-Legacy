@@ -16,6 +16,7 @@ public class FossilsLegacyMenus {
     public static final SimpleHolder<MenuType<AnalyzerMenu>> ANALYZER = MENU_TYPES.register("analyzer", () -> FossilsModloaderHelper.INSTANCE.createMenuType(AnalyzerMenu::new));
     public static final SimpleHolder<MenuType<CultivatorMenu>> CULTIVATOR = MENU_TYPES.register("cultivator", () -> FossilsModloaderHelper.INSTANCE.createMenuType(CultivatorMenu::new));
     public static final SimpleHolder<MenuType<FeederMenu>> FEEDER = MENU_TYPES.register("feeder", () -> FossilsModloaderHelper.INSTANCE.createMenuType(FeederMenu::new));
+    public static final SimpleHolder<MenuType<TimeMachineMenu>> TIME_MACHINE = MENU_TYPES.register("time_machine", () -> FossilsModloaderHelper.INSTANCE.createMenuType(TimeMachineMenu::new));
 
     public static void init(List<SimpleRegistry<?>> simpleRegistries) {
         simpleRegistries.add(MENU_TYPES);

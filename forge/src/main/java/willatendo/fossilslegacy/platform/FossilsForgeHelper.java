@@ -12,7 +12,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
@@ -26,7 +25,6 @@ import net.minecraftforge.registries.RegistryBuilder;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import willatendo.fossilslegacy.FossilsLegacyForgeMod;
-import willatendo.fossilslegacy.server.ConfigHelper;
 import willatendo.fossilslegacy.server.RegistryHolder;
 import willatendo.fossilslegacy.server.config.FossilsLegacyConfig;
 import willatendo.fossilslegacy.server.item.ForgeDinosaurSpawnEggItem;
@@ -149,16 +147,6 @@ public class FossilsForgeHelper implements FossilsModloaderHelper {
     }
 
     @Override
-    public SpawnEggItem createExperimentalDinosaurSpawnEgg(Supplier<EntityType<? extends Mob>> entityType, int primaryColor, int secondaryColor, Item.Properties properties) {
-        return new ForgeDinosaurSpawnEggItem(entityType, primaryColor, secondaryColor, properties) {
-            @Override
-            public boolean isEnabled(FeatureFlagSet featureFlagSet) {
-                return ConfigHelper.shouldEnableExperiments();
-            }
-        };
-    }
-
-    @Override
     public SpawnEggItem createSpawnEgg(Supplier<EntityType<? extends Mob>> entityType, int primaryColor, int secondaryColor, Item.Properties properties) {
         return new ForgeSpawnEggItem(entityType, primaryColor, secondaryColor, properties);
     }
@@ -196,10 +184,5 @@ public class FossilsForgeHelper implements FossilsModloaderHelper {
     @Override
     public boolean shouldAnuSpawn() {
         return FossilsLegacyConfig.COMMON_CONFIG.shouldAnuSpawn();
-    }
-
-    @Override
-    public boolean shouldEnableExperiments() {
-        return FossilsLegacyConfig.SERVER_CONFIG.shouldEnableExperiments();
     }
 }

@@ -28,8 +28,6 @@ public interface FossilsModloaderHelper {
 
     <T> RegistryHolder<T> createRegistry(ResourceKey<Registry<T>> resourceKey);
 
-    SpawnEggItem createExperimentalDinosaurSpawnEgg(Supplier<EntityType<? extends Mob>> entityType, int primaryColor, int secondaryColor, Item.Properties properties);
-
     SpawnEggItem createSpawnEgg(Supplier<EntityType<? extends Mob>> entityType, int primaryColor, int secondaryColor, Item.Properties properties);
 
     SpawnEggItem createDinosaurSpawnEgg(Supplier<EntityType<? extends Mob>> entityType, int primaryColor, int secondaryColor, Item.Properties properties);
@@ -45,10 +43,4 @@ public interface FossilsModloaderHelper {
     boolean willAnimalsGrow();
 
     boolean shouldAnuSpawn();
-
-    boolean shouldEnableExperiments();
-
-    public static interface SpawnEggSupplier {
-        SpawnEggItem accept(EntityType<? extends Mob> entityType, int primaryColor, int secondaryColor, Item.Properties properties);
-    }
 }

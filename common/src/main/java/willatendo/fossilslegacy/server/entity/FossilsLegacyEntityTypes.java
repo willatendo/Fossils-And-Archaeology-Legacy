@@ -61,6 +61,9 @@ public class FossilsLegacyEntityTypes {
     public static final SimpleHolder<EntityType<DilophosaurusVenom>> DILOPHOSAURUS_VENOM = ENTITY_TYPES.register("dilophosaurus_venom", () -> EntityType.Builder.<DilophosaurusVenom>of(DilophosaurusVenom::new, MobCategory.MISC).sized(0.5F, 0.5F).build("dilophosaurus_venom"));
 
     public static final SimpleHolder<EntityType<StoneTablet>> STONE_TABLET = ENTITY_TYPES.register("stone_tablet", () -> EntityType.Builder.<StoneTablet>of(StoneTablet::new, MobCategory.MISC).sized(0.5F, 0.5F).build("stone_tablet"));
+    public static final SimpleHolder<EntityType<Carnotaurus>> CARNOTAURUS = FossilsLegacyEntityTypes.ENTITY_TYPES.register("carnotaurus", () -> EntityType.Builder.<Carnotaurus>of(Carnotaurus::new, MobCategory.CREATURE).sized(0.5F, 0.75F).build("carnotaurus"));
+    public static final SimpleHolder<EntityType<Cryolophosaurus>> CRYOLOPHOSAURUS = FossilsLegacyEntityTypes.ENTITY_TYPES.register("cryolophosaurus", () -> EntityType.Builder.<Cryolophosaurus>of(Cryolophosaurus::new, MobCategory.CREATURE).sized(0.5F, 0.75F).build("cryolophosaurus"));
+    public static final SimpleHolder<EntityType<Therizinosaurus>> THERIZINOSAURUS = FossilsLegacyEntityTypes.ENTITY_TYPES.register("therizinosaurus", () -> EntityType.Builder.<Therizinosaurus>of(Therizinosaurus::new, MobCategory.CREATURE).sized(0.5F, 0.75F).build("therizinosaurus"));
 
     public static void init(List<SimpleRegistry<?>> simpleRegistries) {
         simpleRegistries.add(ENTITY_TYPES);

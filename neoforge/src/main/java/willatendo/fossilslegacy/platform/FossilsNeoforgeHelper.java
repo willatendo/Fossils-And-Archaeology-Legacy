@@ -9,7 +9,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
@@ -19,7 +18,6 @@ import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
 import net.neoforged.neoforge.registries.RegistryBuilder;
 import willatendo.fossilslegacy.FossilsLegacyNeoforgeMod;
-import willatendo.fossilslegacy.server.ConfigHelper;
 import willatendo.fossilslegacy.server.RegistryHolder;
 import willatendo.fossilslegacy.server.config.FossilsLegacyConfig;
 import willatendo.fossilslegacy.server.item.DeferredDinosaurSpawnEggItem;
@@ -41,16 +39,6 @@ public class FossilsNeoforgeHelper implements FossilsModloaderHelper {
     @Override
     public <T> RegistryHolder<T> createRegistry(ResourceKey<Registry<T>> resourceKey) {
         return new RegistryHolder.BasicRegistryHolder<>(new RegistryBuilder<T>(resourceKey).create());
-    }
-
-    @Override
-    public SpawnEggItem createExperimentalDinosaurSpawnEgg(Supplier<EntityType<? extends Mob>> entityType, int primaryColor, int secondaryColor, Item.Properties properties) {
-        return new DeferredDinosaurSpawnEggItem(entityType, primaryColor, secondaryColor, properties) {
-            @Override
-            public boolean isEnabled(FeatureFlagSet featureFlagSet) {
-                return ConfigHelper.shouldEnableExperiments();
-            }
-        };
     }
 
     @Override
@@ -91,10 +79,5 @@ public class FossilsNeoforgeHelper implements FossilsModloaderHelper {
     @Override
     public boolean shouldAnuSpawn() {
         return FossilsLegacyConfig.COMMON_CONFIG.shouldAnuSpawn();
-    }
-
-    @Override
-    public boolean shouldEnableExperiments() {
-        return FossilsLegacyConfig.SERVER_CONFIG.shouldEnableExperiments();
     }
 }

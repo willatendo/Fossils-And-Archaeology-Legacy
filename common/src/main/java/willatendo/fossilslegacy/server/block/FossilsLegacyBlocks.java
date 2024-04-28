@@ -30,6 +30,7 @@ public class FossilsLegacyBlocks {
     public static final SimpleHolder<PermafrostBlock> PERMAFROST = BLOCKS.register("permafrost", () -> new PermafrostBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.CHIME).strength(0.5F).randomTicks().noOcclusion().sound(SoundType.GRAVEL)));
     public static final SimpleHolder<IcedStoneBlock> ICED_STONE = BLOCKS.register("iced_stone", () -> new IcedStoneBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.CHIME).requiresCorrectToolForDrops().strength(1.5F, 6.0F).randomTicks().noOcclusion()));
     public static final SimpleHolder<AxolotlspawnBlock> AXOLOTLSPAWN = BLOCKS.register("axolotlspawn", () -> new AxolotlspawnBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WATER).instabreak().noOcclusion().noCollission().sound(SoundType.FROGSPAWN).pushReaction(PushReaction.DESTROY)));
+    public static final SimpleHolder<TimeMachineBlock> TIME_MACHINE = BLOCKS.register("time_machine", () -> new TimeMachineBlock(BlockBehaviour.Properties.of().strength(0.3F).lightLevel(blockState -> 14).sound(SoundType.GLASS)));
 
     public static void init(List<SimpleRegistry<?>> simpleRegistries) {
         simpleRegistries.add(BLOCKS);

@@ -18,8 +18,6 @@ import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
-import willatendo.fossilslegacy.experiments.server.dimension.FossilsExperimentsDimensionTypes;
-import willatendo.fossilslegacy.experiments.server.dimension.FossilsExperimentsLevelStems;
 import willatendo.fossilslegacy.server.biomes.FossilsLegacyConfiguredFeatures;
 import willatendo.fossilslegacy.server.biomes.FossilsLegacyPlacedFeatures;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyDamageTypes;

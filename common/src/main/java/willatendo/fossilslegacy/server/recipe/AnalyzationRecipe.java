@@ -5,15 +5,12 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.world.Container;
-import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
-import willatendo.fossilslegacy.server.ConfigHelper;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSerialisers;
 
@@ -58,14 +55,7 @@ public class AnalyzationRecipe implements Recipe<Container> {
             Integer weight = this.results.get(i).getWeight();
             weightedRandomList.add(itemStack, weight);
         }
-        SimpleWeightedRandomList<ItemStack> results = weightedRandomList.build();
-        ItemStack result = results.getRandom(RandomSource.create()).get().getData().copy();
-        if (!ConfigHelper.shouldEnableExperiments()) {
-            if (!result.isItemEnabled(FeatureFlags.VANILLA_SET)) {
-                result = new ItemStack(Items.BONE_MEAL);
-            }
-        }
-        return result;
+        return weightedRandomList.build().getRandom(RandomSource.create()).get().getData().copy();
     }
 
     @Override

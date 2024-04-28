@@ -21,10 +21,6 @@ public class FossilsLegacyConfig extends PartitioningSerializer.GlobalData {
     @ConfigEntry.Gui.TransitiveObject
     public Common common = new Common();
 
-    @ConfigEntry.Category("server")
-    @ConfigEntry.Gui.TransitiveObject
-    public Server server = new Server();
-
     @Config(name = "client")
     public static final class Client implements ConfigData {
         @Comment("If true, some dinosaurs will have feathers")
@@ -63,16 +59,6 @@ public class FossilsLegacyConfig extends PartitioningSerializer.GlobalData {
 
         public boolean shouldAnuSpawn() {
             return this.anuSpawns;
-        }
-    }
-
-    @Config(name = "server")
-    public static final class Server implements ConfigData {
-        @Comment("Enables the experimental items/blocks that were never implemented into the original mod")
-        private boolean enableExperiments = ENABLE_EXPERIMENTS;
-
-        public boolean enableExperiments() {
-            return this.enableExperiments;
         }
     }
 }

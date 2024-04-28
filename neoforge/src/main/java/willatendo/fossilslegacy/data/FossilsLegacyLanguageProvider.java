@@ -12,9 +12,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
-import willatendo.fossilslegacy.experiments.server.block.FossilsExperimentsBlocks;
-import willatendo.fossilslegacy.experiments.server.entity.FossilsExperimentsEntityTypes;
-import willatendo.fossilslegacy.experiments.server.item.FossilsExperimentsItems;
 import willatendo.fossilslegacy.server.FossilsLegacyCreativeModeTabs;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.*;
@@ -89,8 +86,7 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add(FossilsLegacyBlocks.PERMAFROST.get());
         this.add(FossilsLegacyBlocks.ICED_STONE.get());
         this.add(FossilsLegacyBlocks.AXOLOTLSPAWN.get());
-
-        this.add(FossilsExperimentsBlocks.TIME_MACHINE.get());
+        this.add(FossilsLegacyBlocks.TIME_MACHINE.get());
 
         // Commands
         this.add("command.fossilslegacy.follow", "Follow");
@@ -131,6 +127,9 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add("dinopedia.fossilslegacy.warm", "Warm");
         this.add("dinopedia.fossilslegacy.wet", "Wet");
         this.add("dinopedia.fossilslegacy.wild", "This Animal is Wild");
+
+        // Data Packs
+        this.add("dataPack.fossilslegacy.fa_experiments.description", "Enables Experimental F/A Legacy Features");
 
         // Dino Situations
         this.add(DinoSituation.HUNGRY, "%s is hungry!");
@@ -209,9 +208,9 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
 
         this.add(FossilsLegacyEntityTypes.STONE_TABLET.get());
 
-        this.add(FossilsExperimentsEntityTypes.CARNOTAURUS.get());
-        this.add(FossilsExperimentsEntityTypes.CRYOLOPHOSAURUS.get());
-        this.add(FossilsExperimentsEntityTypes.THERIZINOSAURUS.get());
+        this.add(FossilsLegacyEntityTypes.CARNOTAURUS.get());
+        this.add(FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get());
+        this.add(FossilsLegacyEntityTypes.THERIZINOSAURUS.get());
 
         // Items
         this.add(FossilsLegacyItems.FOSSIL.get());
@@ -225,6 +224,9 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add(FossilsLegacyItems.STEGOSAURUS_DNA.get(), "Stegosaurus DNA");
         this.add(FossilsLegacyItems.DILOPHOSAURUS_DNA.get(), "Dilophosaurus DNA");
         this.add(FossilsLegacyItems.BRACHIOSAURUS_DNA.get(), "Brachiosaurus DNA");
+        this.add(FossilsLegacyItems.CARNOTAURUS_DNA.get(), "Carnotaurus DNA");
+        this.add(FossilsLegacyItems.CRYOLOPHOSAURUS_DNA.get(), "Cryolophosaurus DNA");
+        this.add(FossilsLegacyItems.THERIZINOSAURUS_DNA.get(), "Therizinosaurus DNA");
         this.add(FossilsLegacyItems.TRICERATOPS_EGG.get());
         this.add(FossilsLegacyItems.VELOCIRAPTOR_EGG.get());
         this.add(FossilsLegacyItems.TYRANNOSAURUS_EGG.get());
@@ -235,6 +237,9 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add(FossilsLegacyItems.STEGOSAURUS_EGG.get());
         this.add(FossilsLegacyItems.DILOPHOSAURUS_EGG.get());
         this.add(FossilsLegacyItems.BRACHIOSAURUS_EGG.get());
+        this.add(FossilsLegacyItems.CARNOTAURUS_EGG.get());
+        this.add(FossilsLegacyItems.CRYOLOPHOSAURUS_EGG.get());
+        this.add(FossilsLegacyItems.THERIZINOSAURUS_EGG.get());
         this.add(FossilsLegacyItems.RAW_TRICERATOPS_MEAT.get());
         this.add(FossilsLegacyItems.RAW_VELOCIRAPTOR_MEAT.get());
         this.add(FossilsLegacyItems.RAW_TYRANNOSAURUS_MEAT.get());
@@ -247,6 +252,9 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add(FossilsLegacyItems.RAW_BRACHIOSAURUS_MEAT.get());
         this.add(FossilsLegacyItems.RAW_SMILODON_MEAT.get());
         this.add(FossilsLegacyItems.RAW_MAMMOTH_MEAT.get());
+        this.add(FossilsLegacyItems.RAW_CARNOTAURUS_MEAT.get());
+        this.add(FossilsLegacyItems.RAW_CRYOLOPHOSAURUS_MEAT.get());
+        this.add(FossilsLegacyItems.RAW_THERIZINOSAURUS_MEAT.get());
         this.add(FossilsLegacyItems.COOKED_TRICERATOPS_MEAT.get());
         this.add(FossilsLegacyItems.COOKED_VELOCIRAPTOR_MEAT.get());
         this.add(FossilsLegacyItems.COOKED_TYRANNOSAURUS_MEAT.get());
@@ -259,8 +267,12 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add(FossilsLegacyItems.COOKED_BRACHIOSAURUS_MEAT.get());
         this.add(FossilsLegacyItems.COOKED_SMILODON_MEAT.get());
         this.add(FossilsLegacyItems.COOKED_MAMMOTH_MEAT.get());
+        this.add(FossilsLegacyItems.COOKED_CARNOTAURUS_MEAT.get());
+        this.add(FossilsLegacyItems.COOKED_CRYOLOPHOSAURUS_MEAT.get());
+        this.add(FossilsLegacyItems.COOKED_THERIZINOSAURUS_MEAT.get());
         this.add(FossilsLegacyItems.TYRANNOSAURUS_TOOTH.get());
         this.add(FossilsLegacyItems.TOOTH_DAGGER.get());
+        this.add(FossilsLegacyItems.THERIZINOSAURUS_CLAWS.get());
         this.add(FossilsLegacyItems.SKULL_STICK.get());
         this.add(FossilsLegacyItems.DINOPEDIA.get());
         this.add(FossilsLegacyItems.RAW_CHICKEN_SOUP_BUCKET.get(), "Bucket of Raw Chicken Soup");
@@ -359,6 +371,9 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add(FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get());
         this.add(FossilsLegacyItems.TYRANNOSAURUS_SPAWN_EGG.get());
         this.add(FossilsLegacyItems.VELOCIRAPTOR_SPAWN_EGG.get());
+        this.add(FossilsLegacyItems.CARNOTAURUS_SPAWN_EGG.get());
+        this.add(FossilsLegacyItems.CRYOLOPHOSAURUS_SPAWN_EGG.get());
+        this.add(FossilsLegacyItems.THERIZINOSAURUS_SPAWN_EGG.get());
         this.add("item.fossilslegacy.dinosaur_spawn_egg.desc", "Crouch to spawn baby");
 
         this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.applies_to", "Netherite Equipment");
@@ -366,26 +381,9 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.base_slot_description", "Add netherite weapon or tool");
         this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.additions_slot_description", "Add scarab gem");
 
-        this.add(FossilsExperimentsItems.OVERWORLD_COIN.get());
-        this.add(FossilsExperimentsItems.NETHER_COIN.get());
-        this.add(FossilsExperimentsItems.PREHISTORIC_COIN.get());
-
-        this.add(FossilsExperimentsItems.CARNOTAURUS_DNA.get());
-        this.add(FossilsExperimentsItems.CRYOLOPHOSAURUS_DNA.get());
-        this.add(FossilsExperimentsItems.THERIZINOSAURUS_DNA.get());
-        this.add(FossilsExperimentsItems.CARNOTAURUS_EGG.get());
-        this.add(FossilsExperimentsItems.CRYOLOPHOSAURUS_EGG.get());
-        this.add(FossilsExperimentsItems.THERIZINOSAURUS_EGG.get());
-        this.add(FossilsExperimentsItems.RAW_CARNOTAURUS_MEAT.get());
-        this.add(FossilsExperimentsItems.RAW_CRYOLOPHOSAURUS_MEAT.get());
-        this.add(FossilsExperimentsItems.RAW_THERIZINOSAURUS_MEAT.get());
-        this.add(FossilsExperimentsItems.COOKED_CARNOTAURUS_MEAT.get());
-        this.add(FossilsExperimentsItems.COOKED_CRYOLOPHOSAURUS_MEAT.get());
-        this.add(FossilsExperimentsItems.COOKED_THERIZINOSAURUS_MEAT.get());
-        this.add(FossilsExperimentsItems.THERIZINOSAURUS_CLAWS.get());
-        this.add(FossilsExperimentsItems.CARNOTAURUS_SPAWN_EGG.get());
-        this.add(FossilsExperimentsItems.CRYOLOPHOSAURUS_SPAWN_EGG.get());
-        this.add(FossilsExperimentsItems.THERIZINOSAURUS_SPAWN_EGG.get());
+        this.add(FossilsLegacyItems.OVERWORLD_COIN.get());
+        this.add(FossilsLegacyItems.NETHER_COIN.get());
+        this.add(FossilsLegacyItems.PREHISTORIC_COIN.get());
 
         for (SimpleHolder<? extends Item> items : FossilsLegacyItems.DEBUG_ITEMS.getEntriesView()) {
             this.add(items.get(), "Debug Item");

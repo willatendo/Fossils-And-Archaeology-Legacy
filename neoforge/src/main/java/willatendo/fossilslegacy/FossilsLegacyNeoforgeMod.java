@@ -22,10 +22,7 @@ public class FossilsLegacyNeoforgeMod {
         FossilsLegacyMod.onInitialize(REGISTRIES);
         REGISTRIES.add(FossilsLegacyNeoforgeMod.ENTITY_DATA_SERIALIZER);
 
-        FossilsLegacyUtils.LOGGER.info(REGISTRIES.size() + "");
-
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, FossilsLegacyConfig.CLIENT_SPEC);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, FossilsLegacyConfig.COMMON_SPEC);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, FossilsLegacyConfig.SERVER_SPEC);
     }
 }

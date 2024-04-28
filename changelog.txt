@@ -1,3 +1,25 @@
+28/4/2024
+- Added Overworld Coin
+- Added Nether Coin
+- Added Prehistoric Coin
+- Added Time Machine
+- Added Carnotaurus
+- Added Cryolophosaurus
+- Added Therizinosaurus
+- Added Carnotaurus DNA
+- Added Cryolophosaurus DNA
+- Added Therizinosaurus DNA
+- Added Carnotaurus Egg
+- Added Cryolophosaurus Egg
+- Added Therizinosaurus Egg
+- Added Raw Carnotaurus Meat
+- Added Raw Cryolophosaurus Meat
+- Added Raw Therizinosaurus Meat
+- Added Cooked Carnotaurus Meat
+- Added Cooked Cryolophosaurus Meat
+- Added Cooked Therizinosaurus Meat
+- Added Therizinosaurus Claws
+- Fixed Dilophosaurus's Attacking Texture
 27/4/2024b
 - Fixed Velociraptor Not Appearing In Spawn Eggs Creative Mode Tab
 - Fixed Experimental Items Being Crafted From Analyzer

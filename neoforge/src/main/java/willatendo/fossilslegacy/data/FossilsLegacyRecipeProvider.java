@@ -14,7 +14,6 @@ import net.neoforged.neoforge.common.Tags;
 import willatendo.fossilslegacy.data.recipe.AnalyzationRecipeBuilder;
 import willatendo.fossilslegacy.data.recipe.ArchaeologyRecipeBuilder;
 import willatendo.fossilslegacy.data.recipe.CultivationRecipeBuilder;
-import willatendo.fossilslegacy.experiments.server.item.FossilsExperimentsItems;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
@@ -80,6 +79,9 @@ public class FossilsLegacyRecipeProvider extends RecipeProvider {
         CultivationRecipeBuilder.recipe(FossilsLegacyItems.WOLF_DNA.get(), FossilsLegacyItems.WOLF_EMBRYO_SYRINGE.get(), 6000).unlockedBy("has_item", has(FossilsLegacyItems.WOLF_DNA.get())).save(recipeOutput, FossilsLegacyUtils.resource("wolf_embryo_syringe"));
         CultivationRecipeBuilder.recipe(FossilsLegacyItems.SMILODON_DNA.get(), FossilsLegacyItems.SMILODON_EMBRYO_SYRINGE.get(), 6000).unlockedBy("has_item", has(FossilsLegacyItems.SMILODON_DNA.get())).save(recipeOutput, FossilsLegacyUtils.resource("smilodon_embryo_syringe"));
         CultivationRecipeBuilder.recipe(FossilsLegacyItems.MAMMOTH_DNA.get(), FossilsLegacyItems.MAMMOTH_EMBRYO_SYRINGE.get(), 6000).unlockedBy("has_item", has(FossilsLegacyItems.MAMMOTH_DNA.get())).save(recipeOutput, FossilsLegacyUtils.resource("mammoth_embryo_syringe"));
+        CultivationRecipeBuilder.recipe(FossilsLegacyItems.CARNOTAURUS_DNA.get(), FossilsLegacyItems.CARNOTAURUS_EGG.get(), 6000).unlockedBy("has_item", has(FossilsLegacyItems.CARNOTAURUS_DNA.get())).save(recipeOutput, FossilsLegacyUtils.resource("carnotaurus_egg"));
+        CultivationRecipeBuilder.recipe(FossilsLegacyItems.CRYOLOPHOSAURUS_DNA.get(), FossilsLegacyItems.CRYOLOPHOSAURUS_EGG.get(), 6000).unlockedBy("has_item", has(FossilsLegacyItems.CRYOLOPHOSAURUS_DNA.get())).save(recipeOutput, FossilsLegacyUtils.resource("cryolophosaurus_egg"));
+        CultivationRecipeBuilder.recipe(FossilsLegacyItems.THERIZINOSAURUS_DNA.get(), FossilsLegacyItems.THERIZINOSAURUS_EGG.get(), 6000).unlockedBy("has_item", has(FossilsLegacyItems.THERIZINOSAURUS_DNA.get())).save(recipeOutput, FossilsLegacyUtils.resource("therizinosaurus_egg"));
         ArchaeologyRecipeBuilder.recipe(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get(), FossilsLegacyItems.ANCIENT_HELMET.get(), 3000).unlockedBy("has_item", has(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get())).save(recipeOutput, FossilsLegacyUtils.resource("ancient_helmet"));
         ArchaeologyRecipeBuilder.recipe(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get(), FossilsLegacyItems.ANCIENT_SWORD.get(), 3000).unlockedBy("has_item", has(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get())).save(recipeOutput, FossilsLegacyUtils.resource("ancient_sword"));
         ArchaeologyRecipeBuilder.recipe(FossilsLegacyItems.SCARAB_GEM_AXE.get(), FossilsLegacyItems.SCARAB_GEM_AXE.get(), 3000).unlockedBy("has_item", has(FossilsLegacyItems.SCARAB_GEM_AXE.get())).save(recipeOutput, FossilsLegacyUtils.resource("scarab_gem_axe_repair"));
@@ -97,7 +99,7 @@ public class FossilsLegacyRecipeProvider extends RecipeProvider {
         SpecialRecipeBuilder.special(MagicConchRecipe::new).save(recipeOutput, FossilsLegacyUtils.resource("magic_conch"));
         copySmithingTemplate(recipeOutput, FossilsLegacyItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), Blocks.STONE_BRICKS);
 
-        AnalyzationRecipeBuilder.recipe(FossilsLegacyItems.FOSSIL.get(), Items.BONE_MEAL, 60, 100).addResult(FossilsLegacyItems.JURASSIC_FERN_SPORES.get(), 20).addResult(FossilsLegacyItems.BRACHIOSAURUS_DNA.get(), 2).addResult(FossilsLegacyItems.DILOPHOSAURUS_DNA.get(), 2).addResult(FossilsLegacyItems.MOSASAURUS_DNA.get(), 2).addResult(FossilsLegacyItems.NAUTILUS_DNA.get(), 2).addResult(FossilsLegacyItems.FUTABASAURUS_DNA.get(), 2).addResult(FossilsLegacyItems.PTERANODON_DNA.get(), 2).addResult(FossilsLegacyItems.STEGOSAURUS_DNA.get(), 2).addResult(FossilsLegacyItems.TRICERATOPS_DNA.get(), 2).addResult(FossilsLegacyItems.TYRANNOSAURUS_DNA.get(), 2).addResult(FossilsLegacyItems.VELOCIRAPTOR_DNA.get(), 2).addResult(FossilsExperimentsItems.CARNOTAURUS_DNA.get(), 2).addResult(FossilsExperimentsItems.CRYOLOPHOSAURUS_DNA.get(), 2).addResult(FossilsExperimentsItems.THERIZINOSAURUS_DNA.get(), 2).unlockedBy(getHasName(FossilsLegacyItems.FOSSIL.get()), has(FossilsLegacyItems.FOSSIL.get())).save(recipeOutput, FossilsLegacyUtils.resource("fossil_outputs"));
+        AnalyzationRecipeBuilder.recipe(FossilsLegacyItems.FOSSIL.get(), Items.BONE_MEAL, 60, 100).addResult(FossilsLegacyItems.JURASSIC_FERN_SPORES.get(), 20).addResult(FossilsLegacyItems.BRACHIOSAURUS_DNA.get(), 2).addResult(FossilsLegacyItems.DILOPHOSAURUS_DNA.get(), 2).addResult(FossilsLegacyItems.MOSASAURUS_DNA.get(), 2).addResult(FossilsLegacyItems.NAUTILUS_DNA.get(), 2).addResult(FossilsLegacyItems.FUTABASAURUS_DNA.get(), 2).addResult(FossilsLegacyItems.PTERANODON_DNA.get(), 2).addResult(FossilsLegacyItems.STEGOSAURUS_DNA.get(), 2).addResult(FossilsLegacyItems.TRICERATOPS_DNA.get(), 2).addResult(FossilsLegacyItems.TYRANNOSAURUS_DNA.get(), 2).addResult(FossilsLegacyItems.VELOCIRAPTOR_DNA.get(), 2).addResult(FossilsLegacyItems.CARNOTAURUS_DNA.get(), 2).addResult(FossilsLegacyItems.CRYOLOPHOSAURUS_DNA.get(), 2).addResult(FossilsLegacyItems.THERIZINOSAURUS_DNA.get(), 2).unlockedBy(getHasName(FossilsLegacyItems.FOSSIL.get()), has(FossilsLegacyItems.FOSSIL.get())).save(recipeOutput, FossilsLegacyUtils.resource("fossil_outputs"));
         AnalyzationRecipeBuilder.recipe(FossilsLegacyItems.RELIC_SCRAP.get(), Blocks.GRAVEL, 40, 100).addResult(FossilsLegacyItems.STONE_TABLET.get(), 30).addResult(Items.FLINT, 20).addResult(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get(), 5).addResult(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get(), 5).unlockedBy(getHasName(FossilsLegacyItems.RELIC_SCRAP.get()), has(FossilsLegacyItems.RELIC_SCRAP.get())).save(recipeOutput, FossilsLegacyUtils.resource("relic_scrap_outputs"));
         AnalyzationRecipeBuilder.recipe(FossilsLegacyItems.FROZEN_MEAT.get(), FossilsLegacyItems.SMILODON_DNA.get(), 33, 100).addResult(FossilsLegacyItems.MAMMOTH_DNA.get(), 33).addResult(Items.BEEF, 34).unlockedBy(getHasName(FossilsLegacyItems.FROZEN_MEAT.get()), has(FossilsLegacyItems.FROZEN_MEAT.get())).save(recipeOutput, FossilsLegacyUtils.resource("frozen_meat_outputs"));
         simpleAnalyzation(Items.PORKCHOP, FossilsLegacyItems.PIG_DNA.get(), recipeOutput);
@@ -128,13 +130,9 @@ public class FossilsLegacyRecipeProvider extends RecipeProvider {
         simpleAnalyzation(FossilsLegacyItems.RAW_TRICERATOPS_MEAT.get(), FossilsLegacyItems.TRICERATOPS_DNA.get(), recipeOutput);
         simpleAnalyzation(FossilsLegacyItems.RAW_TYRANNOSAURUS_MEAT.get(), FossilsLegacyItems.TYRANNOSAURUS_DNA.get(), recipeOutput);
         simpleAnalyzation(FossilsLegacyItems.RAW_VELOCIRAPTOR_MEAT.get(), FossilsLegacyItems.VELOCIRAPTOR_DNA.get(), recipeOutput);
-        simpleAnalyzation(FossilsExperimentsItems.RAW_CARNOTAURUS_MEAT.get(), FossilsExperimentsItems.CARNOTAURUS_DNA.get(), recipeOutput);
-        simpleAnalyzation(FossilsExperimentsItems.RAW_CRYOLOPHOSAURUS_MEAT.get(), FossilsExperimentsItems.CRYOLOPHOSAURUS_DNA.get(), recipeOutput);
-        simpleAnalyzation(FossilsExperimentsItems.RAW_THERIZINOSAURUS_MEAT.get(), FossilsExperimentsItems.THERIZINOSAURUS_DNA.get(), recipeOutput);
-
-        CultivationRecipeBuilder.recipe(FossilsExperimentsItems.CARNOTAURUS_DNA.get(), FossilsExperimentsItems.CARNOTAURUS_EGG.get(), 6000).unlockedBy("has_item", has(FossilsExperimentsItems.CARNOTAURUS_DNA.get())).save(recipeOutput, FossilsLegacyUtils.resource("carnotaurus_egg"));
-        CultivationRecipeBuilder.recipe(FossilsExperimentsItems.CRYOLOPHOSAURUS_DNA.get(), FossilsExperimentsItems.CRYOLOPHOSAURUS_EGG.get(), 6000).unlockedBy("has_item", has(FossilsExperimentsItems.CRYOLOPHOSAURUS_DNA.get())).save(recipeOutput, FossilsLegacyUtils.resource("cryolophosaurus_egg"));
-        CultivationRecipeBuilder.recipe(FossilsExperimentsItems.THERIZINOSAURUS_DNA.get(), FossilsExperimentsItems.THERIZINOSAURUS_EGG.get(), 6000).unlockedBy("has_item", has(FossilsExperimentsItems.THERIZINOSAURUS_DNA.get())).save(recipeOutput, FossilsLegacyUtils.resource("therizinosaurus_egg"));
+        simpleAnalyzation(FossilsLegacyItems.RAW_CARNOTAURUS_MEAT.get(), FossilsLegacyItems.CARNOTAURUS_DNA.get(), recipeOutput);
+        simpleAnalyzation(FossilsLegacyItems.RAW_CRYOLOPHOSAURUS_MEAT.get(), FossilsLegacyItems.CRYOLOPHOSAURUS_DNA.get(), recipeOutput);
+        simpleAnalyzation(FossilsLegacyItems.RAW_THERIZINOSAURUS_MEAT.get(), FossilsLegacyItems.THERIZINOSAURUS_DNA.get(), recipeOutput);
     }
 
     public static void simpleAnalyzation(ItemLike input, Item dna, RecipeOutput recipeOutput) {
@@ -175,12 +173,12 @@ public class FossilsLegacyRecipeProvider extends RecipeProvider {
         faCookingRecipe(recipeOutput, type, recipeSerialiser, factory, time, FossilsLegacyItems.RAW_SMILODON_MEAT.get(), FossilsLegacyItems.COOKED_SMILODON_MEAT.get(), 0.35F);
         faCookingRecipe(recipeOutput, type, recipeSerialiser, factory, time, FossilsLegacyItems.RAW_MAMMOTH_MEAT.get(), FossilsLegacyItems.COOKED_MAMMOTH_MEAT.get(), 0.35F);
         faCookingRecipe(recipeOutput, type, recipeSerialiser, factory, time, FossilsLegacyItems.RAW_CHICKEN_SOUP_BUCKET.get(), FossilsLegacyItems.COOKED_CHICKEN_SOUP_BUCKET.get(), 0.35F);
-        faCookingRecipe(recipeOutput, type, recipeSerialiser, factory, time, FossilsExperimentsItems.RAW_CARNOTAURUS_MEAT.get(), FossilsExperimentsItems.COOKED_CARNOTAURUS_MEAT.get(), 0.35F);
-        faCookingRecipe(recipeOutput, type, recipeSerialiser, factory, time, FossilsExperimentsItems.RAW_CRYOLOPHOSAURUS_MEAT.get(), FossilsExperimentsItems.COOKED_CRYOLOPHOSAURUS_MEAT.get(), 0.35F);
-        faCookingRecipe(recipeOutput, type, recipeSerialiser, factory, time, FossilsExperimentsItems.RAW_THERIZINOSAURUS_MEAT.get(), FossilsExperimentsItems.COOKED_THERIZINOSAURUS_MEAT.get(), 0.35F);
+        faCookingRecipe(recipeOutput, type, recipeSerialiser, factory, time, FossilsLegacyItems.RAW_CARNOTAURUS_MEAT.get(), FossilsLegacyItems.COOKED_CARNOTAURUS_MEAT.get(), 0.35F);
+        faCookingRecipe(recipeOutput, type, recipeSerialiser, factory, time, FossilsLegacyItems.RAW_CRYOLOPHOSAURUS_MEAT.get(), FossilsLegacyItems.COOKED_CRYOLOPHOSAURUS_MEAT.get(), 0.35F);
+        faCookingRecipe(recipeOutput, type, recipeSerialiser, factory, time, FossilsLegacyItems.RAW_THERIZINOSAURUS_MEAT.get(), FossilsLegacyItems.COOKED_THERIZINOSAURUS_MEAT.get(), 0.35F);
     }
 
-    protected static <T extends AbstractCookingRecipe> void faCookingRecipe(RecipeOutput recipeOutput, String type, RecipeSerializer<T> recipeSerialiser, AbstractCookingRecipe.Factory<T> factory, int time, ItemLike input, ItemLike output, float experience) {
+    public static <T extends AbstractCookingRecipe> void faCookingRecipe(RecipeOutput recipeOutput, String type, RecipeSerializer<T> recipeSerialiser, AbstractCookingRecipe.Factory<T> factory, int time, ItemLike input, ItemLike output, float experience) {
         SimpleCookingRecipeBuilder.generic(Ingredient.of(input), RecipeCategory.FOOD, output, experience, time, recipeSerialiser, factory).unlockedBy("has_item", has(input)).save(recipeOutput, FossilsLegacyUtils.resource(getItemName(output) + "_from_" + type).toString());
     }
 }
