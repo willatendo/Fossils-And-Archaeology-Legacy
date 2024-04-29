@@ -10,20 +10,21 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.LightLayer;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public record EggVariant(ResourceLocation texture, boolean wet, Function<Egg, Boolean> incubate, ResourceLocation loot, Supplier<EntityType> entityType, Supplier<Item> pick) {
-	public Component getTemperature(Egg egg) {
-		if (this.wet) {
-			return this.shouldIncubate(egg) ? FossilsLegacyUtils.translation("dinopedia", "wet") : FossilsLegacyUtils.translation("dinopedia", "dry");
-		} else {
-			return this.shouldIncubate(egg) ? FossilsLegacyUtils.translation("dinopedia", "warm") : FossilsLegacyUtils.translation("dinopedia", "cold");
-		}
-	}
+public record EggVariant(ResourceLocation texture, boolean wet, Function<Egg, Boolean> incubate, ResourceLocation loot,
+                         Supplier<EntityType> entityType, Supplier<Item> pick) {
+    public Component getTemperature(Egg egg) {
+        if (this.wet) {
+            return this.shouldIncubate(egg) ? FossilsLegacyUtils.translation("dinopedia", "wet") : FossilsLegacyUtils.translation("dinopedia", "dry");
+        } else {
+            return this.shouldIncubate(egg) ? FossilsLegacyUtils.translation("dinopedia", "warm") : FossilsLegacyUtils.translation("dinopedia", "cold");
+        }
+    }
 
-	public boolean shouldIncubate(Egg egg) {
-		return this.incubate.apply(egg);
-	}
+    public boolean shouldIncubate(Egg egg) {
+        return this.incubate.apply(egg);
+    }
 
-	public static boolean isWarm(Egg egg) {
-		return egg.level().getBrightness(LightLayer.BLOCK, egg.blockPosition()) > 10.0F;
-	}
+    public static boolean isWarm(Egg egg) {
+        return egg.level().getBrightness(LightLayer.BLOCK, egg.blockPosition()) > 10.0F;
+    }
 }

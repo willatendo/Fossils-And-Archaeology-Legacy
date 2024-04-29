@@ -377,7 +377,6 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
             information.add(FossilsLegacyUtils.translation("dinopedia", "hunger", this.getHunger(), this.getMaxHunger()));
             if (!this.isBaby()) {
                 information.add(FossilsLegacyUtils.translation("dinopedia", "rideable"));
-                information.add(FossilsLegacyUtils.translation("dinopedia", "able_to_fly"));
             }
         } else {
             information.add(this.getDisplayName());

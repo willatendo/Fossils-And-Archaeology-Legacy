@@ -104,8 +104,10 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
 
         // Deaths
         this.add("death.attack.dinosaur_starve", "%1$s starved to death");
-        this.add("death.attack.dilophosaurus_envenomation", "%1$s was envenomated by %2$s");
-        this.add("death.attack.javelin", "%1$s was impaled by %2$s");
+        this.add("death.attack.dilophosaurus_envenomation", "%1$s was envenomated");
+        this.add("death.attack.dilophosaurus_envenomation.player", "%1$s was envenomated by %2$s");
+        this.add("death.attack.javelin", "%1$s was impaled");
+        this.add("death.attack.javelin.player", "%1$s was impaled by %2$s");
 
         // Dinopedia
         this.add("dinopedia.fossilslegacy.able_to_fly", "Able to Fly");

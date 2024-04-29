@@ -58,6 +58,9 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
         return null;
     }
 
+    public void onHatchFromEgg() {
+    }
+
     public abstract float getBoundingBoxGrowth();
 
     public abstract Diet getDiet();

@@ -169,7 +169,7 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth<T> {
     }
 
     @Override
-    default void onEntityTicksComplete(Mob mob, Level level) {
+    default void onEntityTicksComplete(Mob mob, Entity offspring, Level level) {
         Entity replaced = this.getBaseEntity(level);
         replaced.moveTo(mob.getX(), mob.getY(), mob.getZ(), mob.getYRot(), mob.getXRot());
         level.addFreshEntity(replaced);

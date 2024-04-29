@@ -1,14 +1,14 @@
 package willatendo.fossilslegacy.server.entity;
 
-import java.util.Optional;
-import java.util.UUID;
-
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Entity.RemovalReason;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+
+import java.util.Optional;
+import java.util.UUID;
 
 public interface TicksToBirth<T extends Entity> {
     T getOffspring(Level level);
@@ -17,7 +17,7 @@ public interface TicksToBirth<T extends Entity> {
 
     void setRemainingTime(int remainingPregnancyTime);
 
-    default void onEntityTicksComplete(Mob mob, Level level) {
+    default void onEntityTicksComplete(Mob mob, Entity offspring, Level level) {
     }
 
     default int maxTime() {
@@ -52,8 +52,8 @@ public interface TicksToBirth<T extends Entity> {
                     tameAccessor.setOwnerUUID(owner.get());
                 }
             }
+            this.onEntityTicksComplete(mob, offspring, level);
             level.addFreshEntity(offspring);
-            this.onEntityTicksComplete(mob, level);
             mob.remove(RemovalReason.DISCARDED);
         } else {
             this.setRemainingTime(this.getRemainingTime() + 1);

@@ -12,7 +12,7 @@ public interface HungryAnimal {
 	}
 
 	default void decreaseHunger(int value) {
-		this.setHunger(this.getMaxHunger() - value);
+		this.setHunger(this.getHunger() - value);
 	}
 
 	default void increaseHunger() {

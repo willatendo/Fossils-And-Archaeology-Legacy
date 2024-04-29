@@ -88,7 +88,7 @@ public class TyrannosaurusModel extends AbstractTyrannosaurusModel {
 		this.leftThigh.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount;
 		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount - 0.6108652F;
 		this.leftFoot.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount;
-		if (Math.abs(this.rightThigh.xRot) >= 0.174532F) {
+		if (Math.abs(this.rightThigh.xRot) >= 0.2F) {
 			this.runPose();
 		} else {
 			this.standPose();

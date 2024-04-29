@@ -1,3 +1,14 @@
+28/4/2024c
+- Added Recipe: Skull Block -> 5 Bonemeal
+- Fixed Damage Types's Translation Keys
+- Fixed Carnotaurus Dropping Cryolophosaurus Meat
+- Fixed Dinosaurus Not Starving
+- Fixed Velociraptors Only Hatching Sandy Coloured
+- Fixed Therizinosaurus's Left Hand
+- Fixed Tyrannosaurus Rex Animation
+- Fixed Velociraptor Animation
+- Fixed "Able to fly" Text In Mammoth
+- Fixed Cannibalism
 28/4/2024b
 - Anu No Longer Spawns
 - Added "Anu Totem" To Summon Anu

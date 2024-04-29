@@ -1,12 +1,5 @@
 package willatendo.fossilslegacy.server.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-
-import org.apache.commons.compress.utils.Lists;
-
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -16,19 +9,21 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.players.OldUsersConverter;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
     private static final EntityDataAccessor<EggVariant> EGG_VARIANT = SynchedEntityData.defineId(Egg.class, FossilsLegacyEntityDataSerializers.EGG_VARIANTS.get());
@@ -66,6 +61,13 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
     @Override
     public ItemStack getPickResult() {
         return this.getEggVariant().pick().get().getDefaultInstance();
+    }
+
+    @Override
+    public void onEntityTicksComplete(Mob mob, Entity offspring, Level level) {
+        if (offspring instanceof Dinosaur dinosaur) {
+            dinosaur.onHatchFromEgg();
+        }
     }
 
     @Override

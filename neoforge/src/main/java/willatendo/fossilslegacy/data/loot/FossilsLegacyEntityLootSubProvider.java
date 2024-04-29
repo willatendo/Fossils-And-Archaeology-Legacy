@@ -51,7 +51,7 @@ public class FossilsLegacyEntityLootSubProvider extends EntityLootSubProvider {
         this.add(FossilsLegacyEntityTypes.TRICERATOPS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_TRICERATOPS_MEAT.get()));
         this.add(FossilsLegacyEntityTypes.TYRANNOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_TYRANNOSAURUS_MEAT.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FossilsLegacyItems.TYRANNOSAURUS_TOOTH.get()))));
         this.add(FossilsLegacyEntityTypes.VELOCIRAPTOR.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_VELOCIRAPTOR_MEAT.get()));
-        this.add(FossilsLegacyEntityTypes.CARNOTAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_CRYOLOPHOSAURUS_MEAT.get()));
+        this.add(FossilsLegacyEntityTypes.CARNOTAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_CARNOTAURUS_MEAT.get()));
         this.add(FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_CRYOLOPHOSAURUS_MEAT.get()));
         this.add(FossilsLegacyEntityTypes.THERIZINOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_THERIZINOSAURUS_MEAT.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.FEATHER).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 3.0F)))).add(LootItem.lootTableItem(FossilsLegacyItems.THERIZINOSAURUS_CLAWS.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))));
 
