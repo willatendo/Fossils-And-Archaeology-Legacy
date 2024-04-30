@@ -6,6 +6,7 @@ import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.LootTable;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom;
@@ -22,8 +23,8 @@ public class FossilsLegacyBlockLootSubProvider extends BlockLootSubProvider {
 
     @Override
     public void generate() {
-        this.add(FossilsLegacyBlocks.FOSSIL_ORE.get(), block -> this.createSilkTouchDispatchTable(block, this.applyExplosionCondition(block, LootOneItemOfManyRandom.lootTableItem(20000, new ItemAndChance(FossilsLegacyItems.FOSSIL.get(), 10, 4500), new ItemAndChance(FossilsLegacyItems.RELIC_SCRAP.get(), 4500, 9800), new ItemAndChance(Items.BONE, 9800, 17800), new ItemAndChance(FossilsLegacyBlocks.SKULL_BLOCK.get(), 17800, 19800), new ItemAndChance(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get(), 19800, 19900), new ItemAndChance(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get(), 19900, 20000), new ItemAndChance(FossilsLegacyItems.SCARAB_GEM.get(), 0, 10)))));
-        this.add(FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get(), block -> this.createSilkTouchDispatchTable(block, this.applyExplosionCondition(block, LootOneItemOfManyRandom.lootTableItem(20000, new ItemAndChance(FossilsLegacyItems.FOSSIL.get(), 10, 4500), new ItemAndChance(FossilsLegacyItems.RELIC_SCRAP.get(), 4500, 9800), new ItemAndChance(Items.BONE, 9800, 17800), new ItemAndChance(FossilsLegacyBlocks.SKULL_BLOCK.get(), 17800, 19800), new ItemAndChance(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get(), 19800, 19900), new ItemAndChance(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get(), 19900, 20000), new ItemAndChance(FossilsLegacyItems.SCARAB_GEM.get(), 0, 10)))));
+        this.add(FossilsLegacyBlocks.FOSSIL_ORE.get(), block -> this.createFossilOreLootTable(block));
+        this.add(FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get(), block -> this.createFossilOreLootTable(block));
         this.dropSelf(FossilsLegacyBlocks.SKULL_BLOCK.get());
         this.dropSelf(FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get());
         this.dropSelf(FossilsLegacyBlocks.ANALYZER.get());
@@ -36,6 +37,10 @@ public class FossilsLegacyBlockLootSubProvider extends BlockLootSubProvider {
         this.add(FossilsLegacyBlocks.ICED_STONE.get(), block -> this.createSingleItemTableWithSilkTouch(block, Blocks.COBBLESTONE));
         this.add(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), noDrop());
         this.dropSelf(FossilsLegacyBlocks.TIME_MACHINE.get());
+    }
+
+    protected LootTable.Builder createFossilOreLootTable(Block block) {
+        return createSelfDropDispatchTable(block, HAS_SILK_TOUCH, this.applyExplosionCondition(block, LootOneItemOfManyRandom.lootTableItem(20000, new ItemAndChance(FossilsLegacyItems.FOSSIL.get(), 10, 4500), new ItemAndChance(FossilsLegacyItems.RELIC_SCRAP.get(), 4500, 9800), new ItemAndChance(Items.BONE, 9800, 17800), new ItemAndChance(FossilsLegacyBlocks.SKULL_BLOCK.get(), 17800, 19800), new ItemAndChance(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get(), 19800, 19900), new ItemAndChance(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get(), 19900, 19925), new ItemAndChance(FossilsLegacyItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 19925, 19950), new ItemAndChance(FossilsLegacyItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 19950, 19975), new ItemAndChance(FossilsLegacyItems.ANCIENT_BOOTS_ARTIFACT.get(), 19975, 20000), new ItemAndChance(FossilsLegacyItems.SCARAB_GEM.get(), 0, 10))));
     }
 
     @Override

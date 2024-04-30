@@ -19,6 +19,8 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.LeadItem;
+import net.minecraft.world.item.NameTagItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.biome.Biome;
@@ -108,8 +110,11 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
     @Override
     public InteractionResult additionalInteractions(Player player, Vec3 vec3, InteractionHand interactionHand) {
         ItemStack itemStack = player.getItemInHand(interactionHand);
-        if (!itemStack.isEmpty() && this.getHeldItem() == ItemStack.EMPTY && !itemStack.is(FossilsLegacyItems.DINOPEDIA.get()) && !(itemStack.getItem() instanceof DebugItem)) {
-            this.setHeldItem(itemStack);
+        if (!itemStack.isEmpty() && this.getHeldItem() == ItemStack.EMPTY && !itemStack.is(FossilsLegacyItems.DINOPEDIA.get()) && !(itemStack.getItem() instanceof DebugItem) && !(itemStack.getItem() instanceof NameTagItem) && !(itemStack.getItem() instanceof LeadItem) && !this.isFood(itemStack)) {
+            this.setHeldItem(new ItemStack(itemStack.getItem()));
+            if (!player.isCreative()) {
+                itemStack.shrink(1);
+            }
             return InteractionResult.CONSUME;
         } else {
             if (itemStack.isEmpty() && this.getHeldItem() != ItemStack.EMPTY) {

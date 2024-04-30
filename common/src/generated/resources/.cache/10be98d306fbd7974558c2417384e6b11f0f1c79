@@ -1,7 +1,13 @@
-// 1.20.4	2024-04-27T15:17:28.3594293	Item Models: fossilslegacy
+// 1.20.4	2024-04-29T16:16:53.9078418	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
+4381095ccc6fdb9d02fd9439e08297e28995979f assets/fossilslegacy/models/item/ancient_boots.json
+495af42a87db67a3f9c92eed60f8921391a60f44 assets/fossilslegacy/models/item/ancient_boots_artifact.json
+107a185adacb88ff98e8b9640c3734eb565f22b2 assets/fossilslegacy/models/item/ancient_chestplate.json
+cbdcacbe7cd3916f0bf32a318f97b61feaf30cfb assets/fossilslegacy/models/item/ancient_chestplate_artifact.json
 41c5f6a309438824458da52752171cd09485a937 assets/fossilslegacy/models/item/ancient_helmet.json
 1b00aecb972342e5bc57d055c16f2c28f4ccc3d4 assets/fossilslegacy/models/item/ancient_helmet_artifact.json
+691f288c5e58ca7eeecae302a9ce28cf88bd82a0 assets/fossilslegacy/models/item/ancient_leggings.json
+8228d715213ab9753891fc3f98491fccfbe1af88 assets/fossilslegacy/models/item/ancient_leggings_artifact.json
 2701cd233168837331e67cbf0146831ca43eec8a assets/fossilslegacy/models/item/ancient_sword.json
 2b62a4c46f1eeeb410678409898bcd3e575adf6a assets/fossilslegacy/models/item/ancient_sword_artifact.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/anu_spawn_egg.json

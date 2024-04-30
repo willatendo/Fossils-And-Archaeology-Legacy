@@ -10,7 +10,7 @@ public class DinoNearestAttackableTargetGoal<T extends LivingEntity> extends Nea
     private final Dinosaur dinosaur;
 
     public DinoNearestAttackableTargetGoal(Dinosaur dinosaur, Class<T> classTarget, boolean mustSee) {
-        super(dinosaur, classTarget, mustSee, livingEntity -> livingEntity != dinosaur);
+        super(dinosaur, classTarget, mustSee);
         this.dinosaur = dinosaur;
     }
 
@@ -27,6 +27,6 @@ public class DinoNearestAttackableTargetGoal<T extends LivingEntity> extends Nea
 
     @Override
     public boolean canUse() {
-        return (!this.dinosaur.isBaby() && !this.dinosaur.isOwnedBy(this.target)) ? super.canUse() : false;
+        return (!this.dinosaur.isBaby() && !this.dinosaur.isOwnedBy(this.target)) && this.dinosaur.getType() != this.target.getType() ? super.canUse() : false;
     }
 }

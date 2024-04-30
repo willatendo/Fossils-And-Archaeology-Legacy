@@ -1,0 +1,8 @@
+{
+  "type": "fossilslegacy:archaeology",
+  "ingredient": {
+    "item": "fossilslegacy:ancient_chestplate_artifact"
+  },
+  "result": "fossilslegacy:ancient_chestplate",
+  "time": 3000
+}

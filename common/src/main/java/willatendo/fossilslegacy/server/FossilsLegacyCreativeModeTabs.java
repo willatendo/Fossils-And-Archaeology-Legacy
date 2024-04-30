@@ -143,9 +143,15 @@ public class FossilsLegacyCreativeModeTabs {
         FossilsLegacyCreativeModeTabs.generateStoneTabletVariants(itemDisplayParameters, output);
         output.accept(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get());
         output.accept(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get());
+        output.accept(FossilsLegacyItems.ANCIENT_CHESTPLATE_ARTIFACT.get());
+        output.accept(FossilsLegacyItems.ANCIENT_LEGGINGS_ARTIFACT.get());
+        output.accept(FossilsLegacyItems.ANCIENT_BOOTS_ARTIFACT.get());
         output.accept(FossilsLegacyItems.SCARAB_GEM.get());
         output.accept(FossilsLegacyItems.ANCIENT_SWORD.get());
         output.accept(FossilsLegacyItems.ANCIENT_HELMET.get());
+        output.accept(FossilsLegacyItems.ANCIENT_CHESTPLATE.get());
+        output.accept(FossilsLegacyItems.ANCIENT_LEGGINGS.get());
+        output.accept(FossilsLegacyItems.ANCIENT_BOOTS.get());
         output.accept(FossilsLegacyItems.SCARAB_GEM_SWORD.get());
         output.accept(FossilsLegacyItems.SCARAB_GEM_SHOVEL.get());
         output.accept(FossilsLegacyItems.SCARAB_GEM_PICKAXE.get());

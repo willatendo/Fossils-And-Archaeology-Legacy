@@ -1,3 +1,21 @@
+30/4/2024
+- Fixed Recipe: Skull Block -> 5 Bonemeal
+- Fixed Cannibalism
+- Fixed Velociraptors Taking Name Tags, Leads, And Food Items
+- Fixed Brachiosaurus DNA Being Slightly Less Common In Academies
+- Fixed Velociraptor Duplication Glitch
+- Added Ancient Chestplate
+- Added Ancient Leggings
+- Added Ancient Boots
+- Added Ancient Chestplate Artifact
+- Added Ancient Leggings Artifact
+- Added Ancient Boots Artifact
+- Added Carnotaurus DNA To Academy Loot Pool
+- Added Cryolophosaurus DNA To Academy Loot Pool
+- Added Therizinosaurus DNA To Academy Loot Pool
+- Added Carnotaurus DNA To DNA Tag
+- Added Cryolophosaurus DNA To DNA Tag
+- Added Therizinosaurus DNA To DNA Tag
 28/4/2024c
 - Added Recipe: Skull Block -> 5 Bonemeal
 - Fixed Damage Types's Translation Keys

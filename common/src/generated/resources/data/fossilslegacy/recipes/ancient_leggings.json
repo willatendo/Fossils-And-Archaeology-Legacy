@@ -1,0 +1,8 @@
+{
+  "type": "fossilslegacy:archaeology",
+  "ingredient": {
+    "item": "fossilslegacy:ancient_leggings_artifact"
+  },
+  "result": "fossilslegacy:ancient_leggings",
+  "time": 3000
+}

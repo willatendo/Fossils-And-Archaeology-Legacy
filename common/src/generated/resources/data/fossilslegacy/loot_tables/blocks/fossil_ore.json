@@ -61,9 +61,24 @@
                   "low_weight": 19800
                 },
                 {
-                  "high_weight": 20000,
+                  "high_weight": 19925,
                   "item": "fossilslegacy:ancient_helmet_artifact",
                   "low_weight": 19900
+                },
+                {
+                  "high_weight": 19950,
+                  "item": "fossilslegacy:ancient_chestplate_artifact",
+                  "low_weight": 19925
+                },
+                {
+                  "high_weight": 19975,
+                  "item": "fossilslegacy:ancient_leggings_artifact",
+                  "low_weight": 19950
+                },
+                {
+                  "high_weight": 20000,
+                  "item": "fossilslegacy:ancient_boots_artifact",
+                  "low_weight": 19975
                 },
                 {
                   "high_weight": 10,

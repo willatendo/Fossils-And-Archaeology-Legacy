@@ -105,7 +105,6 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         // Deaths
         this.add("death.attack.dinosaur_starve", "%1$s starved to death");
         this.add("death.attack.dilophosaurus_envenomation", "%1$s was envenomated");
-        this.add("death.attack.dilophosaurus_envenomation.player", "%1$s was envenomated by %2$s");
         this.add("death.attack.javelin", "%1$s was impaled");
         this.add("death.attack.javelin.player", "%1$s was impaled by %2$s");
 
@@ -333,9 +332,15 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add(FossilsLegacyItems.STONE_TABLET.get());
         this.add(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get());
         this.add(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get());
+        this.add(FossilsLegacyItems.ANCIENT_CHESTPLATE_ARTIFACT.get());
+        this.add(FossilsLegacyItems.ANCIENT_LEGGINGS_ARTIFACT.get());
+        this.add(FossilsLegacyItems.ANCIENT_BOOTS_ARTIFACT.get());
         this.add(FossilsLegacyItems.SCARAB_GEM.get());
         this.add(FossilsLegacyItems.ANCIENT_SWORD.get());
         this.add(FossilsLegacyItems.ANCIENT_HELMET.get());
+        this.add(FossilsLegacyItems.ANCIENT_CHESTPLATE.get());
+        this.add(FossilsLegacyItems.ANCIENT_LEGGINGS.get());
+        this.add(FossilsLegacyItems.ANCIENT_BOOTS.get());
         this.add(FossilsLegacyItems.SCARAB_GEM_SWORD.get());
         this.add(FossilsLegacyItems.SCARAB_GEM_SHOVEL.get());
         this.add(FossilsLegacyItems.SCARAB_GEM_PICKAXE.get());

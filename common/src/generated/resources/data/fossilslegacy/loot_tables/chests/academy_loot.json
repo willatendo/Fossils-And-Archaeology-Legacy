@@ -50,7 +50,20 @@
         },
         {
           "type": "minecraft:item",
-          "name": "fossilslegacy:brachiosaurus_dna"
+          "name": "fossilslegacy:brachiosaurus_dna",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "fossilslegacy:carnotaurus_dna"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "fossilslegacy:cryolophosaurus_dna"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "fossilslegacy:therizinosaurus_dna"
         }
       ],
       "rolls": {

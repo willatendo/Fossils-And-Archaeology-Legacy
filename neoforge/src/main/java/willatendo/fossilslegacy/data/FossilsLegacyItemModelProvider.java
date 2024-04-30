@@ -139,9 +139,15 @@ public class FossilsLegacyItemModelProvider extends ItemModelProvider {
         this.basicItem(FossilsLegacyItems.STONE_TABLET.get());
         this.handheldItem(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get());
         this.basicItem(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get());
+        this.basicItem(FossilsLegacyItems.ANCIENT_CHESTPLATE_ARTIFACT.get());
+        this.basicItem(FossilsLegacyItems.ANCIENT_LEGGINGS_ARTIFACT.get());
+        this.basicItem(FossilsLegacyItems.ANCIENT_BOOTS_ARTIFACT.get());
         this.basicItem(FossilsLegacyItems.SCARAB_GEM.get());
         this.handheldItem(FossilsLegacyItems.ANCIENT_SWORD.get());
         this.basicItem(FossilsLegacyItems.ANCIENT_HELMET.get());
+        this.basicItem(FossilsLegacyItems.ANCIENT_CHESTPLATE.get());
+        this.basicItem(FossilsLegacyItems.ANCIENT_LEGGINGS.get());
+        this.basicItem(FossilsLegacyItems.ANCIENT_BOOTS.get());
         this.handheldItem(FossilsLegacyItems.SCARAB_GEM_SWORD.get());
         this.handheldItem(FossilsLegacyItems.SCARAB_GEM_SHOVEL.get());
         this.handheldItem(FossilsLegacyItems.SCARAB_GEM_PICKAXE.get());
