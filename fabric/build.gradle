@@ -17,12 +17,6 @@ dependencies {
 
     modApi include("simplelibrary:simplelibrary-fabric:${simple_library_version}")
 
-    modImplementation(include("io.github.fabricators_of_create.Porting-Lib:data:${porting_lib_version}"))
-    modImplementation(include("io.github.fabricators_of_create.Porting-Lib:model_generators:${porting_lib_version}"))
-    modImplementation(include("io.github.fabricators_of_create.Porting-Lib:utility:${porting_lib_version}"))
-    modImplementation(include("io.github.fabricators_of_create.Porting-Lib:model_materials:${porting_lib_version}"))
-    modImplementation(include("io.github.fabricators_of_create.Porting-Lib:tags:${porting_lib_version}"))
-
     api "fuzs.forgeconfigapiport:forgeconfigapiport-common-neoforgeapi:${forge_config_api_version}"
     api "fuzs.forgeconfigapiport:forgeconfigapiport-common-forgeapi:${forge_config_api_version}"
     modApi "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${forge_config_api_version}"
