@@ -23,6 +23,18 @@
     {
       "result": "fossilslegacy:ancient_helmet_artifact",
       "weight": 5
+    },
+    {
+      "result": "fossilslegacy:ancient_chestplate_artifact",
+      "weight": 5
+    },
+    {
+      "result": "fossilslegacy:ancient_leggings_artifact",
+      "weight": 5
+    },
+    {
+      "result": "fossilslegacy:ancient_boots_artifact",
+      "weight": 5
     }
   ],
   "time": 100

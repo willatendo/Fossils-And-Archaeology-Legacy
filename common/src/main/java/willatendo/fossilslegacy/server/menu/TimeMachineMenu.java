@@ -10,6 +10,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import willatendo.fossilslegacy.server.block.TimeMachineBlock;
 import willatendo.fossilslegacy.server.block.entity.TimeMachineBlockEntity;
+import willatendo.fossilslegacy.server.menu.slot.CoinSlot;
 
 public class TimeMachineMenu extends AbstractContainerMenu {
     private final ContainerLevelAccess containerLevelAccess;
@@ -20,7 +21,7 @@ public class TimeMachineMenu extends AbstractContainerMenu {
         this.containerLevelAccess = ContainerLevelAccess.create(timeMachineBlockEntity.getLevel(), timeMachineBlockEntity.getBlockPos());
         this.timeMachineBlockEntity = timeMachineBlockEntity;
 
-        this.addSlot(new Slot(timeMachineBlockEntity, 0, 80, 37));
+        this.addSlot(new CoinSlot(timeMachineBlockEntity, 0, 80, 37));
 
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 9; column++) {
@@ -46,7 +47,33 @@ public class TimeMachineMenu extends AbstractContainerMenu {
 
     @Override
     public ItemStack quickMoveStack(Player player, int slotIndex) {
-        return null;
+        ItemStack itemstack = ItemStack.EMPTY;
+        Slot slot = this.slots.get(slotIndex);
+        if (slot != null && slot.hasItem()) {
+            ItemStack slotStack = slot.getItem();
+            itemstack = slotStack.copy();
+            if (slotIndex < 1) {
+                if (!this.moveItemStackTo(slotStack, 1, 37, true)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (!this.moveItemStackTo(slotStack, 0, 1, false)) {
+                return ItemStack.EMPTY;
+            }
+
+            if (slotStack.isEmpty()) {
+                slot.setByPlayer(ItemStack.EMPTY);
+            } else {
+                slot.setChanged();
+            }
+
+            if (slotStack.getCount() == itemstack.getCount()) {
+                return ItemStack.EMPTY;
+            }
+
+            slot.onTake(player, slotStack);
+        }
+
+        return itemstack;
     }
 
     public int getChargeLevel() {

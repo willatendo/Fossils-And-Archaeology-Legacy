@@ -31,6 +31,9 @@
     "fossilslegacy:triceratops_dna",
     "fossilslegacy:tyrannosaurus_dna",
     "fossilslegacy:velociraptor_dna",
-    "fossilslegacy:wolf_dna"
+    "fossilslegacy:wolf_dna",
+    "fossilslegacy:carnotaurus_dna",
+    "fossilslegacy:cryolophosaurus_dna",
+    "fossilslegacy:therizinosaurus_dna"
   ]
 }

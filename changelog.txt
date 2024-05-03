@@ -1,5 +1,10 @@
-1/5/2024
-- Updated Dinosaur Models
+3/5/2024
+- Added Ancient Chestplate Artifact To Relic Scrap Analyzation Recipe
+- Added Ancient Leggings Artifact To Relic Scrap Analyzation Recipe
+- Added Ancient Boots Artifact To Relic Scrap Analyzation Recipe
+- Added Prehistoric Coin to Relic Scrap Analyzation Recipe
+- Time Machines Can Only Have Coins In Them
+- Time Machines Will No Longer Crash When Shift Clicking
 30/4/2024
 - Fixed Recipe: Skull Block -> 5 Bonemeal
 - Fixed Cannibalism

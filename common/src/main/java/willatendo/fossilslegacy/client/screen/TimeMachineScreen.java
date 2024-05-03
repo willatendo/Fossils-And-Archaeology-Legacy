@@ -26,7 +26,7 @@ public class TimeMachineScreen extends AbstractContainerScreen<TimeMachineMenu> 
                 this.menu.setTimeTravelling();
             }
         }).bounds(this.leftPos + 131, this.topPos + 18, 34, 14).build());
-        start.active = this.menu.isCharged() && !this.menu.isTimeTravelling();
+        start.active = this.menu.getSlot(0).hasItem(); //this.menu.isCharged() && !this.menu.isTimeTravelling();
     }
 
     @Override
