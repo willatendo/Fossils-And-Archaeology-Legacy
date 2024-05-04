@@ -17,25 +17,6 @@ public class FossilsLegacyBiomes {
 
     public static final ResourceKey<Biome> PREHISTORIC_OCEAN = register("prehistoric_ocean");
     public static final ResourceKey<Biome> PREHISTORIC_PLAINS = register("prehistoric_plains");
-    public static final ResourceKey<Biome> PREHISTORIC_DESERT = register("prehistoric_desert");
-    public static final ResourceKey<Biome> PREHISTORIC_EXTREME_HILLS = register("prehistoric_extreme_hills");
-    public static final ResourceKey<Biome> PREHISTORIC_FOREST = register("prehistoric_forest");
-    public static final ResourceKey<Biome> PREHISTORIC_TAIGA = register("prehistoric_taiga");
-    public static final ResourceKey<Biome> PREHISTORIC_SWAMPLAND = register("prehistoric_swampland");
-    public static final ResourceKey<Biome> PREHISTORIC_RIVER = register("prehistoric_river");
-    public static final ResourceKey<Biome> PREHISTORIC_FROZEN_OCEAN = register("prehistoric_frozen_ocean");
-    public static final ResourceKey<Biome> PREHISTORIC_FROZEN_RIVER = register("prehistoric_frozen_river");
-    public static final ResourceKey<Biome> PREHISTORIC_ICE_PLAINS = register("prehistoric_ice_plains");
-    public static final ResourceKey<Biome> PREHISTORIC_ICE_MOUNTAINS = register("prehistoric_ice_mountains");
-    public static final ResourceKey<Biome> PREHISTORIC_MUSHROOM_ISLANDS = register("prehistoric_mushroom_islands");
-    public static final ResourceKey<Biome> PREHISTORIC_MUSHROOM_ISLANDS_SHORE = register("prehistoric_mushroom_islands_shore");
-    public static final ResourceKey<Biome> PREHISTORIC_BEACH = register("prehistoric_beach");
-    public static final ResourceKey<Biome> PREHISTORIC_DESERT_HILLS = register("prehistoric_desert_hills");
-    public static final ResourceKey<Biome> PREHISTORIC_FOREST_HILLS = register("prehistoric_forest_hills");
-    public static final ResourceKey<Biome> PREHISTORIC_TAIGA_HILLS = register("prehistoric_taiga_hills");
-    public static final ResourceKey<Biome> PREHISTORIC_EXTREME_HILLS_EDGE = register("prehistoric_extreme_hills_edge");
-    public static final ResourceKey<Biome> PREHISTORIC_JUNGLE = register("prehistoric_jungle");
-    public static final ResourceKey<Biome> PREHISTORIC_JUNGLE_HILLS = register("prehistoric_jungle_hills");
 
     private static ResourceKey<Biome> register(String name) {
         return ResourceKey.create(Registries.BIOME, FossilsLegacyUtils.resource(name));

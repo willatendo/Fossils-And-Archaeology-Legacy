@@ -1,0 +1,35 @@
+{
+  "parent": "fossilslegacy:legacy/fossil",
+  "criteria": {
+    "has_analyzer": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "fossilslegacy:analyzer"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.analyzer.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "item": "fossilslegacy:analyzer"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.analyzer.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_analyzer"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

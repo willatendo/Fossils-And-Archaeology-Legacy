@@ -5,6 +5,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -20,6 +22,8 @@ import net.minecraft.world.level.block.state.pattern.BlockPatternBuilder;
 import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import org.jetbrains.annotations.Nullable;
+import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.Anu;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 
@@ -79,6 +83,7 @@ public class SkullBlock extends Block {
 
         for (ServerPlayer serverplayer : level.getEntitiesOfClass(ServerPlayer.class, entity.getBoundingBox().inflate(5.0))) {
             CriteriaTriggers.SUMMONED_ENTITY.trigger(serverplayer, entity);
+            FossilsLegacyCriteriaTriggers.SUMMON_ANU.get().trigger(serverplayer, (Anu) entity);
         }
 
         updatePatternBlocks(level, blockPatternMatch);
@@ -117,6 +122,11 @@ public class SkullBlock extends Block {
         }
 
         return this.anuFull;
+    }
+
+    @Override
+    public void setPlacedBy(Level $$0, BlockPos $$1, BlockState $$2, @Nullable LivingEntity $$3, ItemStack $$4) {
+        super.setPlacedBy($$0, $$1, $$2, $$3, $$4);
     }
 
     @Override

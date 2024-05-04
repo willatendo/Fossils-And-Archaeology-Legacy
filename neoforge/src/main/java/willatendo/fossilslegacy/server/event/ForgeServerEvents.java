@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.event;
 
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.animal.Pig;
@@ -8,6 +9,7 @@ import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.EntityStruckByLightningEvent;
+import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.AncientLightningBolt;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.entity.TamedZombifiedPiglin;
@@ -23,12 +25,16 @@ public class ForgeServerEvents {
                 event.setCanceled(true);
                 Level level = ancientLightningBolt.level();
                 TamedZombifiedPiglin tamedZombifiedPiglin = FossilsLegacyEntityTypes.TAMED_ZOMBIFIED_PIGLIN.get().create(level);
-                tamedZombifiedPiglin.tame(((Player) ancientLightningBolt.getOwner()));
+                Player player = (Player) ancientLightningBolt.getOwner();
+                tamedZombifiedPiglin.tame(player);
                 tamedZombifiedPiglin.setItemInHand(InteractionHand.MAIN_HAND, FossilsLegacyItems.ANCIENT_SWORD.get().getDefaultInstance());
                 tamedZombifiedPiglin.setItemSlot(EquipmentSlot.HEAD, FossilsLegacyItems.ANCIENT_HELMET.get().getDefaultInstance());
                 tamedZombifiedPiglin.moveTo(pig.getX(), pig.getY(), pig.getZ());
                 tamedZombifiedPiglin.setHealth(tamedZombifiedPiglin.getMaxHealth());
                 level.addFreshEntity(tamedZombifiedPiglin);
+                if (player instanceof ServerPlayer serverPlayer) {
+                    FossilsLegacyCriteriaTriggers.TAME_ZOMBIFIED_PIGMAN.get().trigger(serverPlayer, tamedZombifiedPiglin);
+                }
                 pig.discard();
             }
         }

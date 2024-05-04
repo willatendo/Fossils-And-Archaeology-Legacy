@@ -10,12 +10,15 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.common.extensions.IForgeMenuType;
@@ -38,6 +41,21 @@ import java.util.function.Supplier;
 
 public class FossilsForgeHelper implements FossilsModloaderHelper {
     public static final List<DeferredRegister<?>> DEFERRED_REGISTERS = new ArrayList<>();
+
+    @Override
+    public <T extends Entity> EntityType<T> entityTypeBuilder(String name, EntityType.EntityFactory<T> entityFactory, MobCategory mobCategory, boolean noSave, boolean fireImmune, Optional<Block> immuneTo, float width, float height) {
+        EntityType.Builder<T> builder = EntityType.Builder.of(entityFactory, mobCategory).sized(width, height);
+        if (noSave) {
+            builder.noSave();
+        }
+        if (fireImmune) {
+            builder.fireImmune();
+        }
+        if (!immuneTo.isEmpty()) {
+            builder.immuneTo(immuneTo.get());
+        }
+        return builder.build(name);
+    }
 
     @Override
     public <T extends AbstractContainerMenu> MenuType<T> createMenuType(ExtendedMenuSupplier<T> extendedMenuSupplier) {

@@ -1,12 +1,12 @@
 {
-  "parent": "fossilslegacy:legacy/helmet_artifact",
+  "parent": "fossilslegacy:legacy/prehistoric_coin",
   "criteria": {
-    "has_ancient_helmet": {
+    "time_travelled": {
       "conditions": {
         "items": [
           {
             "items": [
-              "fossilslegacy:ancient_helmet"
+              "fossilslegacy:overworld_coin"
             ]
           }
         ]
@@ -16,20 +16,20 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.fossilslegacy.legacy.ancient_helmet.desc"
+      "translate": "advancements.fossilslegacy.legacy.time_machine.desc"
     },
+    "frame": "goal",
     "hidden": true,
     "icon": {
-      "item": "fossilslegacy:ancient_helmet",
-      "nbt": "{Damage:0}"
+      "item": "fossilslegacy:time_machine"
     },
     "title": {
-      "translate": "advancements.fossilslegacy.legacy.ancient_helmet.title"
+      "translate": "advancements.fossilslegacy.legacy.time_machine.title"
     }
   },
   "requirements": [
     [
-      "has_ancient_helmet"
+      "time_travelled"
     ]
   ],
   "sends_telemetry_event": true

@@ -1,10 +1,31 @@
-3/5/2024
+5/5/2024
+- Fixed Anu Spawning Naturally In Fabric Versions
+- Fixed Tag "mammoth_commandables" Being Empty
+- Fixed Advancement "From the Dead!" Being Granted When Obtaining An Ancient Sword
+- Fixed DataFixer Spam On Fabric
+- Fixed Advancement Typos
+- Removed Tag "piglin_taming_helmets"
+- Removed Advancement "Anu On Earth"
+- Added Tag "piglin_taming_armour"
 - Added Ancient Chestplate Artifact To Relic Scrap Analyzation Recipe
 - Added Ancient Leggings Artifact To Relic Scrap Analyzation Recipe
 - Added Ancient Boots Artifact To Relic Scrap Analyzation Recipe
 - Added Prehistoric Coin to Relic Scrap Analyzation Recipe
+- Added Advancement "The Master!"
+- Added Advancement "Analyzer!"
+- Added Advancement "Decked Out!"
+- Added Advancement "Ticket to the Past!"
+- Added Advancement "Time Traveller!"
+- Added Advancement "Back to the Future!"
+- Added Prehistoric Dimension
+- Added Prehistoric Ocean
+- Added Prehistoric Plains
 - Time Machines Can Only Have Coins In Them
 - Time Machines Will No Longer Crash When Shift Clicking
+- Spawning Tamed Zombified Piglins Now Requires The Full Ancient Set
+- Moved Advancement "Till Death I'm To Serve You!" to after "Decked Out!"
+- Advancement Descriptions Are Now More Consistently Capitalised
+- Advancement "Nether Connections" Now Requires Any Piece Of Ancient Armor Instead Of Just The Ancient Helmet
 30/4/2024
 - Fixed Recipe: Skull Block -> 5 Bonemeal
 - Fixed Cannibalism
@@ -185,4 +206,3 @@ Experimental:
 Experimental:
 - Added 3 Coins
 - Added Time Machine
-

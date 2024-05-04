@@ -2,16 +2,7 @@
   "parent": "fossilslegacy:legacy/ancient_sword",
   "criteria": {
     "created_pigman": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "fossilslegacy:ancient_sword"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      "trigger": "fossilslegacy:create_zombified_pigman"
     }
   },
   "display": {

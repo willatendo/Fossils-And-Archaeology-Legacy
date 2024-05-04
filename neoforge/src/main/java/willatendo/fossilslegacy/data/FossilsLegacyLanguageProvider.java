@@ -30,33 +30,42 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         // Advancements
-        this.add("advancements.fossilslegacy.anu.root.title", "Broken Rule");
-        this.add("advancements.fossilslegacy.anu.root.desc", "Bring Anu to the Overworld!");
-
         this.add("advancements.fossilslegacy.legacy.root.title", "The Legacy");
         this.add("advancements.fossilslegacy.legacy.root.desc", "Play the Fossils and Archaeology: Legacy!");
         this.add("advancements.fossilslegacy.legacy.fossil.title", "Fossils!");
-        this.add("advancements.fossilslegacy.legacy.fossil.desc", "Aquire a fossil!");
+        this.add("advancements.fossilslegacy.legacy.fossil.desc", "Acquire a fossil!");
+        this.add("advancements.fossilslegacy.legacy.analyzer.title", "Analyzer!");
+        this.add("advancements.fossilslegacy.legacy.analyzer.desc", "Acquire an analyzer!");
         this.add("advancements.fossilslegacy.legacy.relic_scrap.title", "Old News");
-        this.add("advancements.fossilslegacy.legacy.relic_scrap.desc", "Aquire a relic scrap!");
+        this.add("advancements.fossilslegacy.legacy.relic_scrap.desc", "Acquire a relic scrap!");
         this.add("advancements.fossilslegacy.legacy.ancient_sword_artifact.title", "Once Feared");
-        this.add("advancements.fossilslegacy.legacy.ancient_sword_artifact.desc", "Aquire a Sword Artifact.");
+        this.add("advancements.fossilslegacy.legacy.ancient_sword_artifact.desc", "Aquire a sword artifact.");
         this.add("advancements.fossilslegacy.legacy.ancient_sword.title", "1.21 Gigawatts!");
-        this.add("advancements.fossilslegacy.legacy.ancient_sword.desc", "Repair an Ancient Sword!");
+        this.add("advancements.fossilslegacy.legacy.ancient_sword.desc", "Repair an ancient sword!");
         this.add("advancements.fossilslegacy.legacy.pigman.title", "From the Dead!");
         this.add("advancements.fossilslegacy.legacy.pigman.desc", "Spawn a pigman!");
         this.add("advancements.fossilslegacy.legacy.ancient_helmet_artifact.title", "Black Magic");
-        this.add("advancements.fossilslegacy.legacy.ancient_helmet_artifact.desc", "Aquire a Helmet Artifact");
-        this.add("advancements.fossilslegacy.legacy.ancient_helmet.title", "Nether Connections");
-        this.add("advancements.fossilslegacy.legacy.ancient_helmet.desc", "Repair an Ancient Helmet");
+        this.add("advancements.fossilslegacy.legacy.ancient_helmet_artifact.desc", "Acquire an ancient helmet artifact");
+        this.add("advancements.fossilslegacy.legacy.fixed_ancient_armor.title", "Nether Connections");
+        this.add("advancements.fossilslegacy.legacy.fixed_ancient_armor.desc", "Repair a peice of ancient armor");
+        this.add("advancements.fossilslegacy.legacy.decked_out.title", "Decked Out!");
+        this.add("advancements.fossilslegacy.legacy.decked_out.desc", "Have a complete set of ancient armor!");
         this.add("advancements.fossilslegacy.legacy.tamed_pigman.title", "Till Death I'm To Serve You!");
         this.add("advancements.fossilslegacy.legacy.tamed_pigman.desc", "Spawn a tamed pigman!");
         this.add("advancements.fossilslegacy.legacy.archaeology_workbench.title", "An Archaeologist's Table!");
-        this.add("advancements.fossilslegacy.legacy.archaeology_workbench.desc", "Make a Archaeology Workbench!");
+        this.add("advancements.fossilslegacy.legacy.archaeology_workbench.desc", "Make a archaeology workbench!");
         this.add("advancements.fossilslegacy.legacy.stone_tablet.title", "An Old Story");
         this.add("advancements.fossilslegacy.legacy.stone_tablet.desc", "Place a cave painting!");
         this.add("advancements.fossilslegacy.legacy.skull_block.title", "Spooky Skeletons!");
         this.add("advancements.fossilslegacy.legacy.skull_block.desc", "Or...Maybe just their skulls?");
+        this.add("advancements.fossilslegacy.legacy.anu.title", "The Master!");
+        this.add("advancements.fossilslegacy.legacy.anu.desc", "Summon Anu, the master of the zombified piglins!");
+        this.add("advancements.fossilslegacy.legacy.prehistoric_coin.title", "Ticket to the Past!");
+        this.add("advancements.fossilslegacy.legacy.prehistoric_coin.desc", "Acquire a prehistoric coin!");
+        this.add("advancements.fossilslegacy.legacy.overworld_coin.title", "Back to the Future!");
+        this.add("advancements.fossilslegacy.legacy.overworld_coin.desc", "Acquire an overworld coin!");
+        this.add("advancements.fossilslegacy.legacy.time_machine.title", "Time Traveller!");
+        this.add("advancements.fossilslegacy.legacy.time_machine.desc", "Travel to the past (without art theft)!");
 
         // Cloth-Config
         this.add("text.autoconfig.fossilslegacy.title", "Fossils and Archaeology Legacy");

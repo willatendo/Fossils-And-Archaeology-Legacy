@@ -1,5 +1,5 @@
 {
-  "parent": "fossilslegacy:legacy/ancient_helmet",
+  "parent": "fossilslegacy:legacy/decked_out",
   "criteria": {
     "tamed_pigman": {
       "trigger": "fossilslegacy:tame_zombified_pigman"
@@ -9,6 +9,7 @@
     "description": {
       "translate": "advancements.fossilslegacy.legacy.tamed_pigman.desc"
     },
+    "frame": "goal",
     "hidden": true,
     "icon": {
       "item": "fossilslegacy:ancient_helmet",

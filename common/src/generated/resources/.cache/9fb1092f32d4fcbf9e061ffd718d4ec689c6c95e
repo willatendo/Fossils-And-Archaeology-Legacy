@@ -1,4 +1,4 @@
-// 1.20.4	2024-05-02T07:58:49.3687517	Recipes
+// 1.20.4	2024-05-04T10:06:54.7938174	Recipes
 03d8759ac1ea9c7ad662e3535ef5f38bdcbd5a0b data/fossilslegacy/advancements/recipes/building_blocks/analyzer.json
 7cff988c8d4d84ec2cc198d1a102ec9662f8ff68 data/fossilslegacy/advancements/recipes/building_blocks/archaeology_workbench.json
 c5695c8133bf2d7f87c64e7e0bac370c30854ec2 data/fossilslegacy/advancements/recipes/building_blocks/cultivator.json
@@ -274,7 +274,7 @@ b73d317678bd1021a91a3dd5d4bab8662a9c0b1d data/fossilslegacy/recipes/raw_therizin
 94fdf32bf36d04b507b3568297ba2e49416a8586 data/fossilslegacy/recipes/raw_triceratops_meat_outputs.json
 d747c3d675ffdb6104cc1b499ecde9f08acdebbc data/fossilslegacy/recipes/raw_tyrannosaurus_meat_outputs.json
 3064a7bd1ba55f427197129be43ed26651eeba49 data/fossilslegacy/recipes/raw_velociraptor_meat_outputs.json
-dd9195286d89667a3a0c59f5d4ab1a2ba0e6a018 data/fossilslegacy/recipes/relic_scrap_outputs.json
+cbd432cafe006954c866ef5b3058e25355f55e96 data/fossilslegacy/recipes/relic_scrap_outputs.json
 047396a9a49097fd615707e20ba40929042b3c02 data/fossilslegacy/recipes/salmon_outputs.json
 3070f4a0e990afe63ad4d9c5a68c4029af1f2d2b data/fossilslegacy/recipes/scarab_gem_axe_repair.json
 d26741983497ede3763dc6b371eec877592966e3 data/fossilslegacy/recipes/scarab_gem_hoe_repair.json

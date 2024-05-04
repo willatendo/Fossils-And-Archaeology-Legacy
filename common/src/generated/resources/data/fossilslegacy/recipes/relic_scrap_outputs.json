@@ -35,6 +35,10 @@
     {
       "result": "fossilslegacy:ancient_boots_artifact",
       "weight": 5
+    },
+    {
+      "result": "fossilslegacy:prehistoric_coin",
+      "weight": 1
     }
   ],
   "time": 100
