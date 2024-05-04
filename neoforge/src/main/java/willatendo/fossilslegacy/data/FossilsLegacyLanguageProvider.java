@@ -13,6 +13,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import willatendo.fossilslegacy.server.FossilsLegacyCreativeModeTabs;
+import willatendo.fossilslegacy.server.biomes.FossilsLegacyBiomes;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.*;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
@@ -96,6 +97,10 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add(FossilsLegacyBlocks.ICED_STONE.get());
         this.add(FossilsLegacyBlocks.AXOLOTLSPAWN.get());
         this.add(FossilsLegacyBlocks.TIME_MACHINE.get());
+
+        // Biomes
+        this.add("biome.fossilslegacy.prehistoric_ocean", "Prehistoric Ocean");
+        this.add("biome.fossilslegacy.prehistoric_plains", "Prehistoric Plains");
 
         // Commands
         this.add("command.fossilslegacy.follow", "Follow");

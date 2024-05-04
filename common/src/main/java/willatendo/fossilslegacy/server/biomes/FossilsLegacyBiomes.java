@@ -71,39 +71,27 @@ public class FossilsLegacyBiomes {
         return biome(true, 0.5F, 0.5F, 4159204, 329011, null, null, new MobSpawnSettings.Builder(), baseOceanGeneration(placedFeatures, configuredWorldCarvers), NORMAL_MUSIC);
     }
 
-    public static Biome plains(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers, boolean snowyPlains) {
+    public static Biome plains(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
         MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder(placedFeatures, configuredWorldCarvers);
         globalOverworldGeneration(biomeGenerationSettings);
-        if (snowyPlains) {
-            mobSpawnSettings.creatureGenerationProbability(0.07F);
-            BiomeDefaultFeatures.snowySpawns(mobSpawnSettings);
-        } else {
-            BiomeDefaultFeatures.plainsSpawns(mobSpawnSettings);
-            BiomeDefaultFeatures.addPlainGrass(biomeGenerationSettings);
-        }
+        BiomeDefaultFeatures.addPlainGrass(biomeGenerationSettings);
 
         BiomeDefaultFeatures.addDefaultOres(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultSoftDisks(biomeGenerationSettings);
-        if (snowyPlains) {
-            BiomeDefaultFeatures.addSnowyTrees(biomeGenerationSettings);
-            BiomeDefaultFeatures.addDefaultFlowers(biomeGenerationSettings);
-            BiomeDefaultFeatures.addDefaultGrass(biomeGenerationSettings);
-        } else {
-            BiomeDefaultFeatures.addPlainVegetation(biomeGenerationSettings);
-        }
+        BiomeDefaultFeatures.addPlainVegetation(biomeGenerationSettings);
 
         BiomeDefaultFeatures.addDefaultMushrooms(biomeGenerationSettings);
 
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeGenerationSettings);
 
-        return biome(true, snowyPlains ? 0.0F : 0.8F, snowyPlains ? 0.5F : 0.4F, mobSpawnSettings, biomeGenerationSettings, NORMAL_MUSIC);
+        return biome(true, 0.8F, 0.4F, mobSpawnSettings, biomeGenerationSettings, NORMAL_MUSIC);
     }
 
     public static void bootstrap(BootstapContext<Biome> bootstapContext) {
         HolderGetter<PlacedFeature> placedFeatures = bootstapContext.lookup(Registries.PLACED_FEATURE);
         HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers = bootstapContext.lookup(Registries.CONFIGURED_CARVER);
         bootstapContext.register(PREHISTORIC_OCEAN, ocean(placedFeatures, configuredWorldCarvers));
-        bootstapContext.register(PREHISTORIC_PLAINS, plains(placedFeatures, configuredWorldCarvers, false));
+        bootstapContext.register(PREHISTORIC_PLAINS, plains(placedFeatures, configuredWorldCarvers));
     }
 }
