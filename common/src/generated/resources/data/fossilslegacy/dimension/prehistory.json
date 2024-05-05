@@ -6,6 +6,6 @@
       "type": "minecraft:multi_noise",
       "preset": "fossilslegacy:prehistoric"
     },
-    "settings": "minecraft:overworld"
+    "settings": "fossilslegacy:prehistoric"
   }
 }

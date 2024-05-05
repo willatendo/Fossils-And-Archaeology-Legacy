@@ -21,6 +21,8 @@
 - Added Prehistoric Dimension
 - Added Prehistoric Ocean
 - Added Prehistoric Plains
+- Added Prehistoric Forest
+- Added Prehistoric Desert
 - Time Machines Can Only Have Coins In Them
 - Time Machines Will No Longer Crash When Shift Clicking
 - Spawning Tamed Zombified Piglins Now Requires The Full Ancient Set

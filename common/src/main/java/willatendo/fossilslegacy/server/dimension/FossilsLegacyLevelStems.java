@@ -28,7 +28,7 @@ public class FossilsLegacyLevelStems {
         HolderGetter<NoiseGeneratorSettings> noiseGeneratorSettingsGetter = bootstapContext.lookup(Registries.NOISE_SETTINGS);
         HolderGetter<DimensionType> dimensionTypeGetter = bootstapContext.lookup(Registries.DIMENSION_TYPE);
         MultiNoiseBiomeSource multiNoiseBiomeSource = MultiNoiseBiomeSource.createFromPreset(multiNoiseBiomeSourceParameterListHolderGetter.getOrThrow(FossilsLegacyMultiNoiseBiomeSourceParameterLists.PREHISTORIC));
-        NoiseBasedChunkGenerator noiseBasedChunkGenerator = new NoiseBasedChunkGenerator(multiNoiseBiomeSource, noiseGeneratorSettingsGetter.getOrThrow(NoiseGeneratorSettings.OVERWORLD));
+        NoiseBasedChunkGenerator noiseBasedChunkGenerator = new NoiseBasedChunkGenerator(multiNoiseBiomeSource, noiseGeneratorSettingsGetter.getOrThrow(PrehistoricNoiseGeneratorSettings.PREHISTORIC));
         bootstapContext.register(PREHISTORY, new LevelStem(dimensionTypeGetter.getOrThrow(FossilsLegacyDimensionTypes.PREHISTORY), noiseBasedChunkGenerator));
     }
 }
