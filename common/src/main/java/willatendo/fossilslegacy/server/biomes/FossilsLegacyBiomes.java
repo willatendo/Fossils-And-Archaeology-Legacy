@@ -6,10 +6,13 @@ import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.Music;
+import net.minecraft.sounds.Musics;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import willatendo.fossilslegacy.server.features.PrehistoricBiomeFeatures;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FossilsLegacyBiomes {
@@ -17,6 +20,8 @@ public class FossilsLegacyBiomes {
 
     public static final ResourceKey<Biome> PREHISTORIC_OCEAN = register("prehistoric_ocean");
     public static final ResourceKey<Biome> PREHISTORIC_PLAINS = register("prehistoric_plains");
+    public static final ResourceKey<Biome> PREHISTORIC_FOREST = register("prehistoric_forest");
+    public static final ResourceKey<Biome> PREHISTORIC_DESERT = register("prehistoric_desert");
 
     private static ResourceKey<Biome> register(String name) {
         return ResourceKey.create(Registries.BIOME, FossilsLegacyUtils.resource(name));
@@ -45,10 +50,9 @@ public class FossilsLegacyBiomes {
         return new Biome.BiomeBuilder().hasPrecipitation(hasPrecipitation).temperature(temperature).downfall(downfall).specialEffects(biomespecialeffects$builder.build()).mobSpawnSettings(mobSpwanSettings.build()).generationSettings(biomeGenerationSettings.build()).build();
     }
 
-    private static void globalOverworldGeneration(BiomeGenerationSettings.Builder biomeGenerationSettings) {
+    private static void globalPrehistoricGeneration(BiomeGenerationSettings.Builder biomeGenerationSettings) {
         BiomeDefaultFeatures.addDefaultCarversAndLakes(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultCrystalFormations(biomeGenerationSettings);
-        BiomeDefaultFeatures.addDefaultMonsterRoom(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultUndergroundVariety(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultSprings(biomeGenerationSettings);
         BiomeDefaultFeatures.addSurfaceFreezing(biomeGenerationSettings);
@@ -56,7 +60,7 @@ public class FossilsLegacyBiomes {
 
     private static BiomeGenerationSettings.Builder baseOceanGeneration(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
         BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder(placedFeatures, configuredWorldCarvers);
-        globalOverworldGeneration(biomeGenerationSettings);
+        globalPrehistoricGeneration(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultOres(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultSoftDisks(biomeGenerationSettings);
         BiomeDefaultFeatures.addWaterTrees(biomeGenerationSettings);
@@ -74,12 +78,12 @@ public class FossilsLegacyBiomes {
     public static Biome plains(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
         MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder(placedFeatures, configuredWorldCarvers);
-        globalOverworldGeneration(biomeGenerationSettings);
+        globalPrehistoricGeneration(biomeGenerationSettings);
         BiomeDefaultFeatures.addPlainGrass(biomeGenerationSettings);
 
         BiomeDefaultFeatures.addDefaultOres(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultSoftDisks(biomeGenerationSettings);
-        BiomeDefaultFeatures.addPlainVegetation(biomeGenerationSettings);
+        PrehistoricBiomeFeatures.addPrehistoricPlainVegetation(biomeGenerationSettings);
 
         BiomeDefaultFeatures.addDefaultMushrooms(biomeGenerationSettings);
 
@@ -88,10 +92,48 @@ public class FossilsLegacyBiomes {
         return biome(true, 0.8F, 0.4F, mobSpawnSettings, biomeGenerationSettings, NORMAL_MUSIC);
     }
 
+    public static Biome forest(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
+        MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
+        BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder(placedFeatures, configuredWorldCarvers);
+        globalPrehistoricGeneration(biomeGenerationSettings);
+        BiomeDefaultFeatures.addForestFlowers(biomeGenerationSettings);
+
+        PrehistoricBiomeFeatures.addOtherBirchTrees(biomeGenerationSettings);
+
+        BiomeDefaultFeatures.addDefaultOres(biomeGenerationSettings);
+        BiomeDefaultFeatures.addDefaultSoftDisks(biomeGenerationSettings);
+
+        BiomeDefaultFeatures.addDefaultFlowers(biomeGenerationSettings);
+        BiomeDefaultFeatures.addForestGrass(biomeGenerationSettings);
+
+        BiomeDefaultFeatures.addDefaultMushrooms(biomeGenerationSettings);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(biomeGenerationSettings);
+
+        return biome(true, 0.7F, 0.8F, mobSpawnSettings, biomeGenerationSettings, Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FOREST));
+    }
+
+    public static Biome desert(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
+        MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
+        BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder(placedFeatures, configuredWorldCarvers);
+        BiomeDefaultFeatures.addFossilDecoration(biomeGenerationSettings);
+        globalPrehistoricGeneration(biomeGenerationSettings);
+        BiomeDefaultFeatures.addDefaultOres(biomeGenerationSettings);
+        BiomeDefaultFeatures.addDefaultSoftDisks(biomeGenerationSettings);
+        BiomeDefaultFeatures.addDefaultFlowers(biomeGenerationSettings);
+        BiomeDefaultFeatures.addDefaultGrass(biomeGenerationSettings);
+        BiomeDefaultFeatures.addDesertVegetation(biomeGenerationSettings);
+        BiomeDefaultFeatures.addDefaultMushrooms(biomeGenerationSettings);
+        BiomeDefaultFeatures.addDesertExtraVegetation(biomeGenerationSettings);
+        BiomeDefaultFeatures.addDesertExtraDecoration(biomeGenerationSettings);
+        return biome(false, 2.0F, 0.0F, mobSpawnSettings, biomeGenerationSettings, Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DESERT));
+    }
+
     public static void bootstrap(BootstapContext<Biome> bootstapContext) {
         HolderGetter<PlacedFeature> placedFeatures = bootstapContext.lookup(Registries.PLACED_FEATURE);
         HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers = bootstapContext.lookup(Registries.CONFIGURED_CARVER);
         bootstapContext.register(PREHISTORIC_OCEAN, ocean(placedFeatures, configuredWorldCarvers));
         bootstapContext.register(PREHISTORIC_PLAINS, plains(placedFeatures, configuredWorldCarvers));
+        bootstapContext.register(PREHISTORIC_FOREST, forest(placedFeatures, configuredWorldCarvers));
+        bootstapContext.register(PREHISTORIC_DESERT, desert(placedFeatures, configuredWorldCarvers));
     }
 }

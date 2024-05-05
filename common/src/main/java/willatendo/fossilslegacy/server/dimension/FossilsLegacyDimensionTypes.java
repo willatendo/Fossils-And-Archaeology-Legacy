@@ -11,7 +11,7 @@ import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.level.dimension.DimensionType;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class FossilsExperimentsDimensionTypes {
+public class FossilsLegacyDimensionTypes {
     public static final ResourceKey<DimensionType> PREHISTORY = create("prehistory");
 
     public static ResourceKey<DimensionType> create(String name) {
@@ -19,6 +19,6 @@ public class FossilsExperimentsDimensionTypes {
     }
 
     public static void bootstrap(BootstapContext<DimensionType> bootstapContext) {
-        bootstapContext.register(PREHISTORY, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0F, true, false, 0, 256, 256, BlockTags.INFINIBURN_OVERWORLD, BuiltinDimensionTypes.OVERWORLD_EFFECTS, 0.0F, new DimensionType.MonsterSettings(false, true, UniformInt.of(0, 7), 0)));
+        bootstapContext.register(PREHISTORY, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0F, true, false, -64, 384, 384, BlockTags.INFINIBURN_OVERWORLD, BuiltinDimensionTypes.OVERWORLD_EFFECTS, 0.0F, new DimensionType.MonsterSettings(false, true, UniformInt.of(0, 7), 0)));
     }
 }

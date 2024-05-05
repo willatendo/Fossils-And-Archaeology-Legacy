@@ -3,8 +3,8 @@
   "generator": {
     "type": "minecraft:noise",
     "biome_source": {
-      "type": "minecraft:fixed",
-      "biome": "fossilslegacy:prehistoric_plains"
+      "type": "minecraft:multi_noise",
+      "preset": "fossilslegacy:prehistoric"
     },
     "settings": "minecraft:overworld"
   }

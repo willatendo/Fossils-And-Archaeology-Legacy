@@ -21,7 +21,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
-import willatendo.fossilslegacy.server.dimension.FossilsExperimentsLevels;
+import willatendo.fossilslegacy.server.dimension.FossilsLegacyLevels;
 import willatendo.fossilslegacy.server.menu.TimeMachineMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -105,7 +105,7 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
             } else {
                 List<Player> players = level.getEntitiesOfClass(Player.class, new AABB(blockPos).inflate(25.0D));
                 players.forEach(player -> {
-                    ServerLevel serverLevel = level.getServer().getLevel(FossilsExperimentsLevels.PREHISTORY);
+                    ServerLevel serverLevel = level.getServer().getLevel(FossilsLegacyLevels.PREHISTORY);
                     player.changeDimension(serverLevel);
                 });
             }
