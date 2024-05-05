@@ -19,11 +19,8 @@ import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.animal.horse.Mule;
 import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CarvedPumpkinBlock;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -33,13 +30,10 @@ import willatendo.fossilslegacy.server.block.SkullBlock;
 import willatendo.fossilslegacy.server.dispenser.DispenseEntityItemBehavior;
 import willatendo.fossilslegacy.server.entity.*;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
-
-import java.util.ArrayList;
-import java.util.List;
+import willatendo.simplelibrary.server.event.EventsHolder;
 
 public class BasicEvents {
-    public static final List<AttributeEntry> ATTRIBUTE_ENTRIES = new ArrayList<>();
-    public static final List<SpawnPlacementEntry> SPAWN_PLACEMENT_ENTRIES = new ArrayList<>();
+    public static final EventsHolder EVENTS_HOLDER = new EventsHolder();
 
     public static void addToMaps() {
         ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.JURASSIC_FERN.get(), 0.65F);
@@ -108,7 +102,7 @@ public class BasicEvents {
     }
 
     private static void addAttribute(EntityType<? extends LivingEntity> entityType, AttributeSupplier attributeSupplier) {
-        ATTRIBUTE_ENTRIES.add(new AttributeEntry(entityType, attributeSupplier));
+        EVENTS_HOLDER.addAttribute(entityType, attributeSupplier);
     }
 
     public static void attributeInit() {
@@ -154,19 +148,10 @@ public class BasicEvents {
     }
 
     private static <T extends Entity> void addSpawnPlacement(EntityType<T> entityType, SpawnPlacements.Type type, Heightmap.Types types, SpawnPlacements.SpawnPredicate<T> spawnPredicate) {
-        SPAWN_PLACEMENT_ENTRIES.add(new SpawnPlacementEntry(entityType, type, types, spawnPredicate));
+        EVENTS_HOLDER.addSpawnPlacement(entityType, type, types, spawnPredicate);
     }
 
     public static void spawnPlacementsInit() {
         BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.NAUTILUS.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Nautilus::checkNautilusSpawnRules);
-    }
-
-    public static final record AttributeEntry(EntityType<? extends LivingEntity> entityType,
-                                              AttributeSupplier attributeSupplier) {
-    }
-
-    public static final record SpawnPlacementEntry<T extends Entity>(EntityType<T> entityType,
-                                                                     SpawnPlacements.Type type, Heightmap.Types types,
-                                                                     SpawnPlacements.SpawnPredicate<T> spawnPredicate) {
     }
 }

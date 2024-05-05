@@ -26,10 +26,10 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
-import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.block.entity.BlockEntityHelper;
 import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
+import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class FeederBlock extends Block implements EntityBlock {
     public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -85,7 +85,7 @@ public class FeederBlock extends Block implements EntityBlock {
         } else {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
             if (blockEntity instanceof FeederBlockEntity && player instanceof ServerPlayer serverPlayer) {
-                FossilsModloaderHelper.INSTANCE.openContainer(blockEntity, blockPos, serverPlayer);
+                SimpleUtils.openContainer(blockEntity, blockPos, serverPlayer);
             }
             return InteractionResult.CONSUME;
         }

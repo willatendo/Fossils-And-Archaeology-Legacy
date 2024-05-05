@@ -73,7 +73,7 @@ public class ModEvents {
     @SubscribeEvent
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
         BasicEvents.attributeInit();
-        BasicEvents.ATTRIBUTE_ENTRIES.forEach(attributes -> {
+        BasicEvents.EVENTS_HOLDER.registerAllAttributes(attributes -> {
             event.put(attributes.entityType(), attributes.attributeSupplier());
         });
     }
@@ -81,7 +81,7 @@ public class ModEvents {
     @SubscribeEvent
     public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
         BasicEvents.spawnPlacementsInit();
-        BasicEvents.SPAWN_PLACEMENT_ENTRIES.forEach(spawnPlacementEntry -> {
+        BasicEvents.EVENTS_HOLDER.registerAllSpawnPlacements(spawnPlacementEntry -> {
             event.register(spawnPlacementEntry.entityType(), spawnPlacementEntry.type(), spawnPlacementEntry.types(), spawnPlacementEntry.spawnPredicate(), SpawnPlacementRegisterEvent.Operation.OR);
         });
     }

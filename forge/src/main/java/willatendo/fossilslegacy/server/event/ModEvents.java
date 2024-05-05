@@ -20,6 +20,7 @@ import willatendo.fossilslegacy.FossilsLegacyForgeMod;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.EggVariant;
 import willatendo.fossilslegacy.server.entity.FossilVariant;
+import willatendo.fossilslegacy.server.entity.PregnancyType;
 import willatendo.fossilslegacy.server.entity.StoneTabletVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -69,7 +70,7 @@ public class ModEvents {
     @SubscribeEvent
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
         BasicEvents.attributeInit();
-        BasicEvents.ATTRIBUTE_ENTRIES.forEach(attributes -> {
+        BasicEvents.EVENTS_HOLDER.registerAllAttributes(attributes -> {
             event.put(attributes.entityType(), attributes.attributeSupplier());
         });
     }
@@ -77,7 +78,7 @@ public class ModEvents {
     @SubscribeEvent
     public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
         BasicEvents.spawnPlacementsInit();
-        BasicEvents.SPAWN_PLACEMENT_ENTRIES.forEach(spawnPlacementEntry -> {
+        BasicEvents.EVENTS_HOLDER.registerAllSpawnPlacements(spawnPlacementEntry -> {
             event.register(spawnPlacementEntry.entityType(), spawnPlacementEntry.type(), spawnPlacementEntry.types(), spawnPlacementEntry.spawnPredicate(), SpawnPlacementRegisterEvent.Operation.OR);
         });
     }
@@ -89,8 +90,9 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void registerRegistries(NewRegistryEvent event) {
-        event.create(new RegistryBuilder<EggVariant>().setName(FossilsLegacyRegistries.EGG_VARIANTS.location()).setMaxID(Integer.MAX_VALUE - 1).disableSync().disableSaving().hasTags());
         event.create(new RegistryBuilder<FossilVariant>().setName(FossilsLegacyRegistries.FOSSIL_VARIANTS.location()).setMaxID(Integer.MAX_VALUE - 1).disableSync().disableSaving().hasTags());
+        event.create(new RegistryBuilder<EggVariant>().setName(FossilsLegacyRegistries.EGG_VARIANTS.location()).setMaxID(Integer.MAX_VALUE - 1).disableSync().disableSaving().hasTags());
+        event.create(new RegistryBuilder<PregnancyType>().setName(FossilsLegacyRegistries.PREGNANCY_TYPES.location()).setMaxID(Integer.MAX_VALUE - 1).disableSync().disableSaving().hasTags());
         event.create(new RegistryBuilder<StoneTabletVariant>().setName(FossilsLegacyRegistries.STONE_TABLET_VARIANTS.location()).setMaxID(Integer.MAX_VALUE - 1).disableSync().disableSaving().hasTags());
     }
 

@@ -23,10 +23,10 @@ public class ClientEvents {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         FossilsLegacyClient.loadModels();
-        FossilsLegacyClient.ENTITY_MODEL_ENTRIES.forEach(entityModel -> {
+        FossilsLegacyClient.CLIENT_EVENTS_HOLDER.registerAllEntityModels(entityModel -> {
             event.registerEntityRenderer(entityModel.entityType(), entityModel.entityRendererProvider());
         });
-        FossilsLegacyClient.BLOCK_MODEL_ENTRIES.forEach(blockModel -> {
+        FossilsLegacyClient.CLIENT_EVENTS_HOLDER.registerAllBlockModels(blockModel -> {
             event.registerBlockEntityRenderer(blockModel.blockEntityType(), blockModel.blockEntityRendererProvider());
         });
     }
@@ -34,7 +34,7 @@ public class ClientEvents {
     @SubscribeEvent
     public static void registerModelLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         FossilsLegacyClient.loadModelLayers();
-        FossilsLegacyClient.MODEL_LAYER_ENTRIES.forEach(modelLayer -> {
+        FossilsLegacyClient.CLIENT_EVENTS_HOLDER.registerAllModelLayers(modelLayer -> {
             event.registerLayerDefinition(modelLayer.modelLayerLocation(), modelLayer.texturedModelDataProvider()::createModelData);
         });
     }

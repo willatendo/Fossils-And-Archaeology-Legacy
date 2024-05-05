@@ -21,10 +21,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.block.entity.BlockEntityHelper;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
 import willatendo.fossilslegacy.server.block.entity.TimeMachineBlockEntity;
+import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class TimeMachineBlock extends Block implements EntityBlock {
     public static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D);
@@ -83,7 +83,7 @@ public class TimeMachineBlock extends Block implements EntityBlock {
         } else {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
             if (blockEntity instanceof TimeMachineBlockEntity && player instanceof ServerPlayer serverPlayer) {
-                FossilsModloaderHelper.INSTANCE.openContainer(blockEntity, blockPos, serverPlayer);
+                SimpleUtils.openContainer(blockEntity, blockPos, serverPlayer);
             }
             return InteractionResult.CONSUME;
         }

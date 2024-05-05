@@ -67,14 +67,14 @@ public class ModEvents {
 
     public static void registerEntityAttributes() {
         BasicEvents.attributeInit();
-        BasicEvents.ATTRIBUTE_ENTRIES.forEach(attributes -> {
+        BasicEvents.EVENTS_HOLDER.registerAllAttributes(attributes -> {
             FabricDefaultAttributeRegistry.register(attributes.entityType(), attributes.attributeSupplier());
         });
     }
 
     public static void registerSpawnPlacements() {
         BasicEvents.spawnPlacementsInit();
-        BasicEvents.SPAWN_PLACEMENT_ENTRIES.forEach(spawnPlacementEntry -> {
+        BasicEvents.EVENTS_HOLDER.registerAllSpawnPlacements(spawnPlacementEntry -> {
             SpawnPlacements.register(spawnPlacementEntry.entityType(), spawnPlacementEntry.type(), spawnPlacementEntry.types(), spawnPlacementEntry.spawnPredicate());
         });
     }

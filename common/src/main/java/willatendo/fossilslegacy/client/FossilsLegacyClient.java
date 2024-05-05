@@ -20,41 +20,26 @@ import willatendo.fossilslegacy.client.model.pteranodon.LandingPteranodonModel;
 import willatendo.fossilslegacy.client.model.tyrannosaurus.KnockedOutTyrannosaurusModel;
 import willatendo.fossilslegacy.client.model.tyrannosaurus.TyrannosaurusModel;
 import willatendo.fossilslegacy.client.render.*;
-import willatendo.fossilslegacy.client.screen.AnalyzerScreen;
-import willatendo.fossilslegacy.client.screen.ArchaeologyWorkbenchScreen;
-import willatendo.fossilslegacy.client.screen.CultivatorScreen;
-import willatendo.fossilslegacy.client.screen.FeederScreen;
-import willatendo.fossilslegacy.client.model.CarnotaurusModel;
-import willatendo.fossilslegacy.client.model.CryolophosaurusModel;
-import willatendo.fossilslegacy.client.model.TherizinosaurusModel;
-import willatendo.fossilslegacy.client.model.TimeMachineClockModel;
-import willatendo.fossilslegacy.client.render.CarnotaurusRenderer;
-import willatendo.fossilslegacy.client.render.CryolophosaurusRenderer;
-import willatendo.fossilslegacy.client.render.TherizinosaurusRenderer;
-import willatendo.fossilslegacy.client.render.TimeMachineClockRenderer;
-import willatendo.fossilslegacy.client.screen.TimeMachineScreen;
+import willatendo.fossilslegacy.client.screen.*;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenus;
-
-import java.util.ArrayList;
-import java.util.List;
+import willatendo.simplelibrary.client.event.ClientEventsHolder;
+import willatendo.simplelibrary.client.event.TexturedModelDataProvider;
 
 public class FossilsLegacyClient {
-    public static final List<EntityModelEntry> ENTITY_MODEL_ENTRIES = new ArrayList<>();
-    public static final List<BlockModelEntry> BLOCK_MODEL_ENTRIES = new ArrayList<>();
-    public static final List<ModelLayerEntry> MODEL_LAYER_ENTRIES = new ArrayList<>();
+    public static final ClientEventsHolder CLIENT_EVENTS_HOLDER = new ClientEventsHolder();
 
     public static <T extends Entity> void addModel(EntityType<? extends T> entityType, EntityRendererProvider<? extends T> entityRendererProvider) {
-        ENTITY_MODEL_ENTRIES.add(new EntityModelEntry(entityType, entityRendererProvider));
+        CLIENT_EVENTS_HOLDER.addModel(entityType, entityRendererProvider);
     }
 
     public static <T extends BlockEntity> void addModel(BlockEntityType<? extends T> blockEntityType, BlockEntityRendererProvider<? extends T> blockEntityRendererProvider) {
-        BLOCK_MODEL_ENTRIES.add(new BlockModelEntry(blockEntityType, blockEntityRendererProvider));
+        CLIENT_EVENTS_HOLDER.addModel(blockEntityType, blockEntityRendererProvider);
     }
 
     public static void addModelLayer(ModelLayerLocation modelLayerLocation, TexturedModelDataProvider texturedModelDataProvider) {
-        MODEL_LAYER_ENTRIES.add(new ModelLayerEntry(modelLayerLocation, texturedModelDataProvider));
+        CLIENT_EVENTS_HOLDER.addModelLayer(modelLayerLocation, texturedModelDataProvider);
     }
 
     public static void init() {

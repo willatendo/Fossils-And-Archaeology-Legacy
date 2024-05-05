@@ -4,6 +4,7 @@
 - Fixed Advancement "From the Dead!" Being Granted When Obtaining An Ancient Sword
 - Fixed DataFixer Spam On Fabric
 - Fixed Advancement Typos
+- Fixed Forge Pregnancy Type Registry
 - Removed Tag "piglin_taming_helmets"
 - Removed Advancement "Anu On Earth"
 - Added Tag "piglin_taming_armour"
@@ -26,6 +27,7 @@
 - Moved Advancement "Till Death I'm To Serve You!" to after "Decked Out!"
 - Advancement Descriptions Are Now More Consistently Capitalised
 - Advancement "Nether Connections" Now Requires Any Piece Of Ancient Armor Instead Of Just The Ancient Helmet
+- Updated SimpleLibrary to 3.1.0
 30/4/2024
 - Fixed Recipe: Skull Block -> 5 Bonemeal
 - Fixed Cannibalism

@@ -19,14 +19,14 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
 
         FossilsLegacyClient.init();
 
-        FossilsLegacyClient.ENTITY_MODEL_ENTRIES.forEach(entityModel -> {
+        FossilsLegacyClient.CLIENT_EVENTS_HOLDER.registerAllEntityModels(entityModel -> {
             EntityRendererRegistry.register(entityModel.entityType(), entityModel.entityRendererProvider());
         });
-        FossilsLegacyClient.BLOCK_MODEL_ENTRIES.forEach(blockModel -> {
+        FossilsLegacyClient.CLIENT_EVENTS_HOLDER.registerAllBlockModels(blockModel -> {
             BlockEntityRenderers.register(blockModel.blockEntityType(), blockModel.blockEntityRendererProvider());
         });
 
-        FossilsLegacyClient.MODEL_LAYER_ENTRIES.forEach(modelLayer -> {
+        FossilsLegacyClient.CLIENT_EVENTS_HOLDER.registerAllModelLayers(modelLayer -> {
             EntityModelLayerRegistry.registerModelLayer(modelLayer.modelLayerLocation(), modelLayer.texturedModelDataProvider()::createModelData);
         });
     }

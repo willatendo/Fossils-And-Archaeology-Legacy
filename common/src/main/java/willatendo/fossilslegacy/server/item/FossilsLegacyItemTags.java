@@ -4,7 +4,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.server.TagRegister;
+import willatendo.simplelibrary.server.util.TagRegister;
 
 public class FossilsLegacyItemTags {
     public static final TagRegister<Item> ITEM_TAGS = TagRegister.create(Registries.ITEM, FossilsLegacyUtils.ID);
