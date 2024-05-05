@@ -100,9 +100,15 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
 
         // Biomes
         this.add("biome.fossilslegacy.prehistoric_ocean", "Prehistoric Ocean");
+        this.add("biome.fossilslegacy.deep_prehistoric_ocean", "Deep Prehistoric Desert");
         this.add("biome.fossilslegacy.prehistoric_plains", "Prehistoric Plains");
         this.add("biome.fossilslegacy.prehistoric_forest", "Prehistoric Forest");
         this.add("biome.fossilslegacy.prehistoric_desert", "Prehistoric Desert");
+        this.add("biome.fossilslegacy.prehistoric_jungle", "Prehistoric Jungle");
+        this.add("biome.fossilslegacy.prehistoric_river", "Prehistoric River");
+        this.add("biome.fossilslegacy.prehistoric_taiga", "Prehistoric Taiga");
+        this.add("biome.fossilslegacy.prehistoric_swamp", "Prehistoric Swamp");
+        this.add("biome.fossilslegacy.prehistoric_beach", "Prehistoric Beach");
 
         // Commands
         this.add("command.fossilslegacy.follow", "Follow");

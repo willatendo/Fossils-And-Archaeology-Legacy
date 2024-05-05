@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "fossilslegacy:prehistoric_jungle_tree",
+    "features": [
+      {
+        "chance": 0.1,
+        "feature": "fossilslegacy:prehistoric_fancy_oak_checked"
+      },
+      {
+        "chance": 0.5,
+        "feature": "minecraft:jungle_bush"
+      },
+      {
+        "chance": 0.33333334,
+        "feature": "fossilslegacy:mega_prehistoric_jungle_tree_checked"
+      }
+    ]
+  }
+}
