@@ -94,7 +94,14 @@
     "monster": [],
     "underground_water_creature": [],
     "water_ambient": [],
-    "water_creature": []
+    "water_creature": [
+      {
+        "type": "fossilslegacy:mosasaurus",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 1
+      }
+    ]
   },
   "temperature": 0.5
 }

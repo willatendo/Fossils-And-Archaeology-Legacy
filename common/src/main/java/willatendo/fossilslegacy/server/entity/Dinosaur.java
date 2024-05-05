@@ -43,6 +43,9 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData, CompoundTag compoundTag) {
         this.setHunger(this.getMaxHunger());
+        if (MobSpawnType.isSpawner(mobSpawnType) || mobSpawnType == MobSpawnType.SPAWN_EGG || mobSpawnType == MobSpawnType.COMMAND || mobSpawnType == MobSpawnType.MOB_SUMMONED || mobSpawnType == MobSpawnType.NATURAL || mobSpawnType == MobSpawnType.CHUNK_GENERATION) {
+            this.setGrowthStage(this.getMaxGrowthStage());
+        }
         return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData, compoundTag);
     }
 
