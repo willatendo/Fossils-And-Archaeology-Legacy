@@ -29,6 +29,32 @@
 - Added Prehistoric Taiga
 - Added Prehistoric Swamp
 - Added Prehistoric Beach
+- Added Prehistoric Oak Feature
+- Added Prehistoric Birch Feature
+- Added Prehistoric Fancy Oak Feature
+- Added Prehistoric Swamp Oak Feature
+- Added Prehistoric Spruce Feature
+- Added Prehistoric Pine Feature
+- Added Prehistoric Jungle Tree Feature
+- Added Mega Prehistoric Jungle Tree Feature
+- Added Trees Prehistoric Plains Feature
+- Added Trees Prehistoric Forest Feature
+- Added Trees Prehistoric Water Feature
+- Added Trees Prehistoric Taiga Feature
+- Added Trees Prehistoric Jungle Feature
+- Added Prehistoric Oak Checked Placement
+- Added Prehistoric Birch Checked Placement
+- Added Prehistoric Fancy Oak Checked Placement
+- Added Prehistoric Swamp Oak Checked Placement
+- Added Prehistoric Spruce Checked Placement
+- Added Prehistoric Pine Checked Placement
+- Added Prehistoric Jungle Tree Checked Placement
+- Added Mega Prehistoric Jungle Tree Checked Placement
+- Added Trees Prehistoric Plains Placement
+- Added Trees Prehistoric Forest Placement
+- Added Trees Prehistoric Water Placement
+- Added Trees Prehistoric Taiga Placement
+- Added Trees Prehistoric Jungle Placement
 - Time Machines Can Only Have Coins In Them
 - Time Machines Will No Longer Crash When Shift Clicking
 - Spawning Tamed Zombified Piglins Now Requires The Full Ancient Set
