@@ -36,12 +36,12 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
             EntityModelLayerRegistry.registerModelLayer(modelLayer.modelLayerLocation(), modelLayer.texturedModelDataProvider()::createModelData);
         });
 
-        ClientTickEvents.END_CLIENT_TICK.register(minecraft -> {
-            if (FossilsLegacyKeys.SINK.isDown()) {
-                ClientPlayNetworking.send(FossilsLegacyPackets.SINK, PacketByteBufs.create().writeBoolean(true));
-            } else {
-                ClientPlayNetworking.send(FossilsLegacyPackets.SINK, PacketByteBufs.create().writeBoolean(false));
-            }
-        });
+//        ClientTickEvents.END_CLIENT_TICK.register(minecraft -> {
+//            if (FossilsLegacyKeys.SINK.isDown()) {
+//                ClientPlayNetworking.send(FossilsLegacyPackets.SINK, PacketByteBufs.create().writeBoolean(true));
+//            } else {
+//                ClientPlayNetworking.send(FossilsLegacyPackets.SINK, PacketByteBufs.create().writeBoolean(false));
+//            }
+//        });
     }
 }

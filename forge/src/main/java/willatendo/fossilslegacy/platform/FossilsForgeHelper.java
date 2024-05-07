@@ -26,8 +26,8 @@ public class FossilsForgeHelper implements FossilsModloaderHelper {
     }
 
     @Override
-    public void changeDimensions(Player player, ServerLevel serverLevel, PortalInfo portalInfo) {
-        player.changeDimension(serverLevel, new TimeMachineTeleporter(portalInfo));
+    public void changeDimensions(Player player, ServerLevel serverLevel, PortalInfo portalInfo, BlockPos timeMachineBlockPos) {
+        player.changeDimension(serverLevel, new TimeMachineTeleporter(portalInfo, timeMachineBlockPos));
     }
 
     @Override

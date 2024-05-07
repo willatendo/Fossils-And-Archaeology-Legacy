@@ -23,12 +23,20 @@ public class TimeMachineTeleporter implements ITeleporter {
     }
 
     @Override
-    public PortalInfo getPortalInfo(Entity entity, ServerLevel destWorld, Function<ServerLevel, PortalInfo> defaultPortalInfo) {
-        destWorld.setBlock(this.timeMachineBlockPos, FossilsLegacyBlocks.TIME_MACHINE.get().defaultBlockState(), 3);
-        BlockEntity blockEntity = destWorld.getBlockEntity(this.timeMachineBlockPos);
+    public PortalInfo getPortalInfo(Entity entity, ServerLevel destinationLevel, Function<ServerLevel, PortalInfo> defaultPortalInfo) {
+        if (!destinationLevel.getBlockState(this.timeMachineBlockPos).is(FossilsLegacyBlocks.TIME_MACHINE.get())) {
+            destinationLevel.setBlock(this.timeMachineBlockPos, FossilsLegacyBlocks.TIME_MACHINE.get().defaultBlockState(), 3);
+        }
+        BlockEntity blockEntity = destinationLevel.getBlockEntity(this.timeMachineBlockPos);
         if (blockEntity instanceof TimeMachineBlockEntity timeMachineBlockEntity) {
-            timeMachineBlockEntity.setItem(0, new ItemStack(CoinItem.ITEM_MAP.get(destWorld.dimension())));
+            timeMachineBlockEntity.setItem(0, new ItemStack(CoinItem.ITEM_MAP.get(destinationLevel.dimension())));
         }
         return this.portalInfo;
+    }
+
+    @Override
+    public Entity placeEntity(Entity newEntity, ServerLevel currentLevel, ServerLevel destinationLevel, float yaw, Function<Boolean, Entity> repositionEntity) {
+        newEntity.fallDistance = 0;
+        return repositionEntity.apply(false);
     }
 }
