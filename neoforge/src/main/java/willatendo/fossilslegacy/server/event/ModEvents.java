@@ -50,8 +50,8 @@ public class ModEvents {
     public static void registerPackets(RegisterPayloadHandlerEvent event) {
         IPayloadRegistrar iPayloadRegistrar = event.registrar(FossilsLegacyUtils.ID).versioned("1.0.0").optional();
 
-        iPayloadRegistrar.play(FossilsLegacyUtils.resource("time_machine_update"), ServerboundTimeMachineUpdatePacket::decode, handler -> handler.server(ServerboundTimeMachineUpdatePacket::handle));
-        iPayloadRegistrar.play(FossilsLegacyUtils.resource("sink"), ServerboundSinkPacket::decode, handler -> handler.server(ServerboundSinkPacket::handle));
+        iPayloadRegistrar.play(FossilsLegacyPackets.TIME_MACHINE_UPDATE, ServerboundTimeMachineUpdatePacket::decode, handler -> handler.server(ServerboundTimeMachineUpdatePacket::handle));
+        iPayloadRegistrar.play(FossilsLegacyPackets.SINK, ServerboundSinkPacket::decode, handler -> handler.server(ServerboundSinkPacket::handle));
     }
 
     @SubscribeEvent

@@ -6,6 +6,7 @@ import net.minecraft.world.item.ArmorItem.Type;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
+import willatendo.fossilslegacy.server.dimension.FossilsLegacyLevels;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEggVariants;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyPregnancyTypes;
@@ -144,7 +145,7 @@ public class FossilsLegacyItems {
     public static final SimpleHolder<Item> SCARAB_GEM = ITEMS.register("scarab_gem", () -> new Item(new Item.Properties()));
     public static final SimpleHolder<CoinItem> OVERWORLD_COIN = ITEMS.register("overworld_coin", () -> new CoinItem(Level.OVERWORLD, new Item.Properties()));
     public static final SimpleHolder<CoinItem> NETHER_COIN = ITEMS.register("nether_coin", () -> new CoinItem(Level.NETHER, new Item.Properties()));
-    public static final SimpleHolder<CoinItem> PREHISTORIC_COIN = ITEMS.register("prehistoric_coin", () -> new CoinItem(Level.OVERWORLD, new Item.Properties()));
+    public static final SimpleHolder<CoinItem> PREHISTORIC_COIN = ITEMS.register("prehistoric_coin", () -> new CoinItem(FossilsLegacyLevels.PREHISTORY, new Item.Properties()));
     public static final SimpleHolder<AncientSwordItem> ANCIENT_SWORD = ITEMS.register("ancient_sword", () -> new AncientSwordItem(FossilsLegacyTiers.ANCIENT, 3, -2.4F, new Item.Properties()));
     public static final SimpleHolder<ArmorItem> ANCIENT_HELMET = ITEMS.register("ancient_helmet", () -> new ArmorItem(FossilsLegacyArmorMaterials.ANCIENT, Type.HELMET, new Item.Properties()));
     public static final SimpleHolder<ArmorItem> ANCIENT_CHESTPLATE = ITEMS.register("ancient_chestplate", () -> new ArmorItem(FossilsLegacyArmorMaterials.ANCIENT, Type.CHESTPLATE, new Item.Properties()));

@@ -5,6 +5,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.ContainerHelper;
@@ -17,15 +19,17 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.portal.PortalInfo;
 import net.minecraft.world.phys.AABB;
-import willatendo.fossilslegacy.server.dimension.FossilsLegacyLevels;
+import net.minecraft.world.phys.Vec3;
+import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
+import willatendo.fossilslegacy.server.item.CoinItem;
 import willatendo.fossilslegacy.server.menu.TimeMachineMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-import java.sql.Time;
 import java.util.List;
 
 public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, StackedContentsCompatible {
@@ -48,8 +52,6 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
             switch (data) {
                 case 0:
                     return TimeMachineBlockEntity.this.chargeLevel;
-                case 1:
-                    return TimeMachineBlockEntity.this.timeTravelling ? 1 : 0;
                 default:
                     return 0;
             }
@@ -61,20 +63,13 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
                 case 0:
                     TimeMachineBlockEntity.this.chargeLevel = set;
                     break;
-                case 1:
-                    if (set == 1) {
-                        TimeMachineBlockEntity.this.setTimeTravelling(true);
-                    } else {
-                        TimeMachineBlockEntity.this.setTimeTravelling(false);
-                    }
-                    break;
             }
 
         }
 
         @Override
         public int getCount() {
-            return 2;
+            return 1;
         }
     };
 
@@ -110,8 +105,18 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
             } else {
                 List<Player> players = level.getEntitiesOfClass(Player.class, new AABB(blockPos).inflate(25.0D));
                 players.forEach(player -> {
-                    ServerLevel serverLevel = level.getServer().getLevel(FossilsLegacyLevels.PREHISTORY);
-                    player.changeDimension(serverLevel);
+                    if (level instanceof ServerLevel serverLevel) {
+                        MinecraftServer minecraftServer = serverLevel.getServer();
+                        ResourceKey<Level> destinedLevel = ((CoinItem) timeMachineBlockEntity.itemStacks.get(0).getItem()).getDestinedLevel();
+                        ResourceKey<Level> blockEntityLevel = level.dimension();
+                        if (destinedLevel != blockEntityLevel) {
+                            double x = player.position().x();
+                            double z = player.position().z();
+                            double y = serverLevel.getHeight(Heightmap.Types.WORLD_SURFACE, (int) x, (int) z);
+                            double finalY = y > -64.0D ? y : 70;
+                            FossilsModloaderHelper.INSTANCE.changeDimensions(player, minecraftServer.getLevel(destinedLevel), new PortalInfo(new Vec3(x, finalY, z), Vec3.ZERO, player.getYRot(), player.getXRot()), blockPos);
+                        }
+                    }
                 });
                 timeMachineBlockEntity.setTimeTravelling(false);
             }
@@ -121,6 +126,9 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
     }
 
     public static void clockTick(Level level, BlockPos blockPos, BlockState blockState, TimeMachineBlockEntity timeMachineBlockEntity) {
+        if (timeMachineBlockEntity.isTimeTravelling()) {
+
+        }
         float facing;
         timeMachineBlockEntity.oRot = timeMachineBlockEntity.rot;
         Player player = level.getNearestPlayer((double) blockPos.getX() + 0.5, (double) blockPos.getY() + 0.5, (double) blockPos.getZ() + 0.5, 3.0, false);

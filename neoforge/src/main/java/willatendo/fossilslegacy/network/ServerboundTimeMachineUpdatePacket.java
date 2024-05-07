@@ -17,7 +17,7 @@ public record ServerboundTimeMachineUpdatePacket(BlockPos blockPos,
 
     @Override
     public ResourceLocation id() {
-        return FossilsLegacyPackets.SINK;
+        return FossilsLegacyPackets.TIME_MACHINE_UPDATE;
     }
 
     public static ServerboundTimeMachineUpdatePacket decode(FriendlyByteBuf friendlyByteBuf) {

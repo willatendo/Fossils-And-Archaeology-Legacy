@@ -3,15 +3,9 @@
   "criteria": {
     "time_travelled": {
       "conditions": {
-        "items": [
-          {
-            "items": [
-              "fossilslegacy:overworld_coin"
-            ]
-          }
-        ]
+        "to": "fossilslegacy:prehistory"
       },
-      "trigger": "minecraft:inventory_changed"
+      "trigger": "minecraft:changed_dimension"
     }
   },
   "display": {

@@ -3,14 +3,18 @@ package willatendo.fossilslegacy.platform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.IdMap;
 import net.minecraft.network.syncher.EntityDataSerializer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.level.portal.PortalInfo;
 import willatendo.fossilslegacy.FossilsLegacyNeoforgeMod;
 import willatendo.fossilslegacy.network.FossilsLegacyPackets;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
 import willatendo.fossilslegacy.server.config.FossilsLegacyConfig;
+import willatendo.fossilslegacy.server.dimension.TimeMachineTeleporter;
 import willatendo.fossilslegacy.server.item.DeferredDinosaurSpawnEggItem;
 
 import java.util.function.Supplier;
@@ -19,6 +23,11 @@ public class FossilsNeoforgeHelper implements FossilsModloaderHelper {
     @Override
     public void sendTimeMachinePacket(BlockPos blockPos, boolean timeTravelling) {
         FossilsLegacyPackets.sendToServer(new ServerboundTimeMachineUpdatePacket(blockPos, timeTravelling));
+    }
+
+    @Override
+    public void changeDimensions(Player player, ServerLevel serverLevel, PortalInfo portalInfo, BlockPos timeMachineBlockPos) {
+        player.changeDimension(serverLevel, new TimeMachineTeleporter(portalInfo, timeMachineBlockPos));
     }
 
     @Override

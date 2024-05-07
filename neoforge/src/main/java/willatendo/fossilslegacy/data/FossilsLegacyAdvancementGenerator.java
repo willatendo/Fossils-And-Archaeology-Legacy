@@ -13,6 +13,8 @@ import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.criteria.CreateZombifiedPigmanTrigger;
 import willatendo.fossilslegacy.server.criteria.SummonAnuTrigger;
 import willatendo.fossilslegacy.server.criteria.TameZombifiedPigmanTrigger;
+import willatendo.fossilslegacy.server.dimension.FossilsLegacyDimensionTypes;
+import willatendo.fossilslegacy.server.dimension.FossilsLegacyLevels;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -38,6 +40,6 @@ public class FossilsLegacyAdvancementGenerator implements AdvancementProvider.Ad
         Advancement.Builder.advancement().parent(skullBlock).display(FossilsLegacyBlocks.TIME_MACHINE.get(), FossilsLegacyUtils.translation("advancements", "legacy.anu.title"), FossilsLegacyUtils.translation("advancements", "legacy.anu.desc"), null, AdvancementType.GOAL, true, true, true).addCriterion("summoned_anu", SummonAnuTrigger.TriggerInstance.summonAnu()).save(saver, FossilsLegacyUtils.resource("legacy/anu").toString());
         AdvancementHolder prehistoricCoin = Advancement.Builder.advancement().parent(legacyRoot).display(FossilsLegacyItems.PREHISTORIC_COIN.get(), FossilsLegacyUtils.translation("advancements", "legacy.prehistoric_coin.title"), FossilsLegacyUtils.translation("advancements", "legacy.prehistoric_coin.desc"), null, AdvancementType.TASK, true, true, true).addCriterion("has_prehistoric_coin", InventoryChangeTrigger.TriggerInstance.hasItems(FossilsLegacyItems.PREHISTORIC_COIN.get())).save(saver, FossilsLegacyUtils.resource("legacy/prehistoric_coin").toString());
         Advancement.Builder.advancement().parent(prehistoricCoin).display(FossilsLegacyItems.OVERWORLD_COIN.get(), FossilsLegacyUtils.translation("advancements", "legacy.overworld_coin.title"), FossilsLegacyUtils.translation("advancements", "legacy.overworld_coin.desc"), null, AdvancementType.TASK, true, true, true).addCriterion("has_overworld_coin", InventoryChangeTrigger.TriggerInstance.hasItems(FossilsLegacyItems.OVERWORLD_COIN.get())).save(saver, FossilsLegacyUtils.resource("legacy/overworld_coin").toString());
-        Advancement.Builder.advancement().parent(prehistoricCoin).display(FossilsLegacyBlocks.TIME_MACHINE.get(), FossilsLegacyUtils.translation("advancements", "legacy.time_machine.title"), FossilsLegacyUtils.translation("advancements", "legacy.time_machine.desc"), null, AdvancementType.GOAL, true, true, true).addCriterion("time_travelled", InventoryChangeTrigger.TriggerInstance.hasItems(FossilsLegacyItems.OVERWORLD_COIN.get())).save(saver, FossilsLegacyUtils.resource("legacy/time_machine").toString());
+        Advancement.Builder.advancement().parent(prehistoricCoin).display(FossilsLegacyBlocks.TIME_MACHINE.get(), FossilsLegacyUtils.translation("advancements", "legacy.time_machine.title"), FossilsLegacyUtils.translation("advancements", "legacy.time_machine.desc"), null, AdvancementType.GOAL, true, true, true).addCriterion("time_travelled", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(FossilsLegacyLevels.PREHISTORY)).save(saver, FossilsLegacyUtils.resource("legacy/time_machine").toString());
     }
 }
