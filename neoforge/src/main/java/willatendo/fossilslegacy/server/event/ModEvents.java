@@ -18,9 +18,15 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlerEvent;
+import net.neoforged.neoforge.network.handlers.ClientPayloadHandler;
+import net.neoforged.neoforge.network.registration.IPayloadRegistrar;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import willatendo.fossilslegacy.FossilsLegacyNeoforgeMod;
+import willatendo.fossilslegacy.network.FossilsLegacyPackets;
+import willatendo.fossilslegacy.network.ServerboundSinkPacket;
+import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.Anu;
@@ -38,6 +44,14 @@ public class ModEvents {
     @SubscribeEvent
     public static void commonSetup(FMLCommonSetupEvent event) {
         BasicEvents.addToMaps();
+    }
+
+    @SubscribeEvent
+    public static void registerPackets(RegisterPayloadHandlerEvent event) {
+        IPayloadRegistrar iPayloadRegistrar = event.registrar(FossilsLegacyUtils.ID).versioned("1.0.0").optional();
+
+        iPayloadRegistrar.play(FossilsLegacyUtils.resource("time_machine_update"), ServerboundTimeMachineUpdatePacket::decode, handler -> handler.server(ServerboundTimeMachineUpdatePacket::handle));
+        iPayloadRegistrar.play(FossilsLegacyUtils.resource("sink"), ServerboundSinkPacket::decode, handler -> handler.server(ServerboundSinkPacket::handle));
     }
 
     @SubscribeEvent

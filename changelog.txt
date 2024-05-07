@@ -5,6 +5,8 @@
 - Fixed DataFixer Spam On Fabric
 - Fixed Advancement Typos
 - Fixed Forge Pregnancy Type Registry
+- Fixed Logger Spam While Ridding Futabasaurus
+- Fixed Some Server Issues -> Still Untested And Unsupported
 - Removed Tag "piglin_taming_helmets"
 - Removed Advancement "Anu On Earth"
 - Added Tag "piglin_taming_armour"
@@ -60,6 +62,7 @@
 - Added Prehistoric Noise Setting
 - Time Machines Can Only Have Coins In Them
 - Time Machines Will No Longer Crash When Shift Clicking
+- Time Machines Can Now Transport Players To The Prehistoric Dimension
 - Spawning Tamed Zombified Piglins Now Requires The Full Ancient Set
 - Moved Advancement "Till Death I'm To Serve You!" to after "Decked Out!"
 - Advancement Descriptions Are Now More Consistently Capitalised

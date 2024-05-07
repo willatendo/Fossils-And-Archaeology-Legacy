@@ -1,0 +1,35 @@
+package willatendo.fossilslegacy.network;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.network.handling.PlayPayloadContext;
+
+public record ServerboundTimeMachineUpdatePacket(BlockPos blockPos,
+                                                 boolean timeTravelling) implements CustomPacketPayload {
+    @Override
+    public void write(FriendlyByteBuf friendlyByteBuf) {
+        friendlyByteBuf.writeBlockPos(this.blockPos);
+        friendlyByteBuf.writeBoolean(this.timeTravelling);
+    }
+
+    @Override
+    public ResourceLocation id() {
+        return FossilsLegacyPackets.SINK;
+    }
+
+    public static ServerboundTimeMachineUpdatePacket decode(FriendlyByteBuf friendlyByteBuf) {
+        BlockPos blockPos = friendlyByteBuf.readBlockPos();
+        boolean timeTravelling = friendlyByteBuf.readBoolean();
+        return new ServerboundTimeMachineUpdatePacket(blockPos, timeTravelling);
+    }
+
+    public void handle(PlayPayloadContext playPayloadContext) {
+        playPayloadContext.workHandler().submitAsync(() -> {
+            Level level = playPayloadContext.level().get();
+            BasicPackets.serverboundTimeMachineUpdatePacket(this.blockPos(), this.timeTravelling(), level);
+        });
+    }
+}

@@ -17,6 +17,7 @@ import net.minecraftforge.registries.NewRegistryEvent;
 import net.minecraftforge.registries.RegisterEvent;
 import net.minecraftforge.registries.RegistryBuilder;
 import willatendo.fossilslegacy.FossilsLegacyForgeMod;
+import willatendo.fossilslegacy.network.FossilsLegacyPackets;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.EggVariant;
 import willatendo.fossilslegacy.server.entity.FossilVariant;
@@ -34,7 +35,10 @@ import java.nio.file.Path;
 public class ModEvents {
     @SubscribeEvent
     public static void commonSetup(FMLCommonSetupEvent event) {
-        BasicEvents.addToMaps();
+        event.enqueueWork(() -> {
+            BasicEvents.addToMaps();
+        });
+        FossilsLegacyPackets.registerPackets();
     }
 
     @SubscribeEvent

@@ -23,7 +23,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.apache.commons.compress.utils.Lists;
-import willatendo.fossilslegacy.client.FossilsLegacyKeys;
 import willatendo.fossilslegacy.server.entity.goal.*;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -33,6 +32,7 @@ import java.util.List;
 
 public class Futabasaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur {
     public float targetY = 0.0F;
+    private boolean shouldSink = false;
 
     public Futabasaurus(EntityType<? extends Dinosaur> entityType, Level level) {
         super(entityType, level);
@@ -244,8 +244,6 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
 
     @Override
     public void tick() {
-        FossilsLegacyUtils.LOGGER.info(this.targetY + "");
-
         super.tick();
 
         if (this.isInWaterOrBubble()) {
@@ -265,7 +263,7 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
     private void handleRiding() {
         if (this.hasControllingPassenger()) {
             if (this.getControllingPassenger() instanceof LocalPlayer localPlayer) {
-                if (FossilsLegacyKeys.SINK.isDown()) {
+                if (this.shouldSink) {
                     this.targetY = (float) this.getY() - 0.5F;
                 } else {
                     if (this.isOnSurface()) {
@@ -280,10 +278,6 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
         }
     }
 
-    public void addYRot(float add) {
-        this.setYRot(this.getYRot() + add);
-    }
-
     @Override
     public boolean isPushedByFluid() {
         return false;
@@ -292,5 +286,9 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
     @Override
     protected float getWaterSlowDown() {
         return this.hasControllingPassenger() ? 0.75F : super.getWaterSlowDown();
+    }
+
+    public void setShouldSink(boolean shouldSink) {
+        this.shouldSink = shouldSink;
     }
 }

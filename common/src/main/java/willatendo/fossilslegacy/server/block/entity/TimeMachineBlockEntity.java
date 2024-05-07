@@ -25,6 +25,7 @@ import willatendo.fossilslegacy.server.dimension.FossilsLegacyLevels;
 import willatendo.fossilslegacy.server.menu.TimeMachineMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
+import java.sql.Time;
 import java.util.List;
 
 public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, StackedContentsCompatible {
@@ -61,7 +62,11 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
                     TimeMachineBlockEntity.this.chargeLevel = set;
                     break;
                 case 1:
-                    TimeMachineBlockEntity.this.timeTravelling = set == 1 ? true : false;
+                    if (set == 1) {
+                        TimeMachineBlockEntity.this.setTimeTravelling(true);
+                    } else {
+                        TimeMachineBlockEntity.this.setTimeTravelling(false);
+                    }
                     break;
             }
 
@@ -69,7 +74,7 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
 
         @Override
         public int getCount() {
-            return 1;
+            return 2;
         }
     };
 
@@ -108,6 +113,7 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
                     ServerLevel serverLevel = level.getServer().getLevel(FossilsLegacyLevels.PREHISTORY);
                     player.changeDimension(serverLevel);
                 });
+                timeMachineBlockEntity.setTimeTravelling(false);
             }
         } else {
             timeMachineBlockEntity.charge();
@@ -146,29 +152,18 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
         timeMachineBlockEntity.time++;
     }
 
-    public void setTimeTravelling() {
-        this.timeTravelling = true;
+    public void setTimeTravelling(boolean timeTravelling) {
+        this.timeTravelling = timeTravelling;
+    }
+
+    public boolean isTimeTravelling() {
+        return this.timeTravelling;
     }
 
     private void charge() {
         if (!this.isFullyCharged() && !this.timeTravelling) {
             this.chargeLevel++;
         }
-    }
-
-    private boolean isNonPerserveBlock(BlockState blockState) {
-        if (blockState.isAir()) {
-            return false;
-        }
-        if (blockState.hasBlockEntity()) {
-            return true;
-        }
-        if (blockState.is(Blocks.DIAMOND_BLOCK) || blockState.is(Blocks.DIAMOND_ORE)) {
-            {
-                return true;
-            }
-        }
-        return false;
     }
 
     public int getChargeLevel() {

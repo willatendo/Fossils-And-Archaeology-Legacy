@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.platform;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.IdMap;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.world.entity.EntityType;
@@ -12,6 +13,8 @@ import java.util.function.Supplier;
 
 public interface FossilsModloaderHelper {
     public static final FossilsModloaderHelper INSTANCE = SimpleUtils.loadModloaderHelper(FossilsModloaderHelper.class);
+
+    void sendTimeMachinePacket(BlockPos blockPos, boolean timeTravelling);
 
     <T> Supplier<EntityDataSerializer<T>> registerDataSerializer(String id, IdMap<T> idMap);
 

@@ -84,14 +84,6 @@ public class TimeMachineMenu extends AbstractContainerMenu {
         return this.getContainerData().get(0) == TimeMachineBlockEntity.MAX_CHARGE;
     }
 
-    public boolean isTimeTravelling() {
-        return this.getContainerData().get(1) == 1;
-    }
-
-    public void setTimeTravelling() {
-        this.getContainerData().set(1, 1);
-    }
-
     protected ContainerData getContainerData() {
         return this.timeMachineBlockEntity.containerData;
     }
