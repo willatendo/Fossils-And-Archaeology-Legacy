@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.IdMap;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.server.level.ServerLevel;
@@ -28,7 +29,10 @@ import java.util.function.Supplier;
 public class FossilsFabricHelper implements FossilsModloaderHelper {
     @Override
     public void sendTimeMachinePacket(BlockPos blockPos, boolean timeTravelling) {
-        ClientPlayNetworking.send(FossilsLegacyPackets.TIME_MACHINE_UPDATE, PacketByteBufs.create().writeBlockPos(blockPos).writeBoolean(timeTravelling));
+        FriendlyByteBuf friendlyByteBuf = PacketByteBufs.create();
+        friendlyByteBuf.writeBlockPos(blockPos);
+        friendlyByteBuf.writeBoolean(timeTravelling);
+        ClientPlayNetworking.send(FossilsLegacyPackets.TIME_MACHINE_UPDATE, friendlyByteBuf);
     }
 
     @Override

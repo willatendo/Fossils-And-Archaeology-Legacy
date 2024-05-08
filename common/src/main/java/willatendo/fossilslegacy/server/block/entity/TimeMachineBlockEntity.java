@@ -8,6 +8,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
@@ -114,6 +116,7 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
                             double z = player.position().z();
                             double y = serverLevel.getHeight(Heightmap.Types.WORLD_SURFACE, (int) x, (int) z);
                             double finalY = y > -64.0D ? y : 70;
+                            level.playSound(player, blockPos, SoundEvents.PORTAL_TRAVEL, SoundSource.BLOCKS, 1.0F, 1.0F);
                             FossilsModloaderHelper.INSTANCE.changeDimensions(player, minecraftServer.getLevel(destinedLevel), new PortalInfo(new Vec3(x, finalY, z), Vec3.ZERO, player.getYRot(), player.getXRot()), blockPos);
                         }
                     }

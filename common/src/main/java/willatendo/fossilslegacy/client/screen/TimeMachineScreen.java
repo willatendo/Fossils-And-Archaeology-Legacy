@@ -27,7 +27,6 @@ public class TimeMachineScreen extends AbstractContainerScreen<TimeMachineMenu> 
                 FossilsModloaderHelper.INSTANCE.sendTimeMachinePacket(this.menu.timeMachineBlockEntity.getBlockPos(), true);
             }
         }).bounds(this.leftPos + 131, this.topPos + 18, 34, 14).build());
-        start.active = this.menu.isCharged();
     }
 
     @Override

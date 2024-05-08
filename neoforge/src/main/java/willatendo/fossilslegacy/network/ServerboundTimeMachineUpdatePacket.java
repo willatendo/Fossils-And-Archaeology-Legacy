@@ -4,7 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
 import net.neoforged.neoforge.network.handling.PlayPayloadContext;
 
 public record ServerboundTimeMachineUpdatePacket(BlockPos blockPos,
@@ -28,8 +28,7 @@ public record ServerboundTimeMachineUpdatePacket(BlockPos blockPos,
 
     public void handle(PlayPayloadContext playPayloadContext) {
         playPayloadContext.workHandler().submitAsync(() -> {
-            Level level = playPayloadContext.level().get();
-            BasicPackets.serverboundTimeMachineUpdatePacket(this.blockPos(), this.timeTravelling(), level);
+            BasicPackets.serverboundTimeMachineUpdatePacket(this.blockPos(), this.timeTravelling(), playPayloadContext.level().get());
         });
     }
 }
