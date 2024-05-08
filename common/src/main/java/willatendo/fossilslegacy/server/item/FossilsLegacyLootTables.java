@@ -18,6 +18,9 @@ public class FossilsLegacyLootTables {
 	public static final ResourceLocation TRICERATOPS_EGG = FossilsLegacyUtils.resource("entities/egg/triceratops");
 	public static final ResourceLocation TYRANNOSAURUS_EGG = FossilsLegacyUtils.resource("entities/egg/tyrannosaurus");
 	public static final ResourceLocation VELOCIRAPTOR_EGG = FossilsLegacyUtils.resource("entities/egg/velociraptor");
+	public static final ResourceLocation CARNOTAURUS_EGG = FossilsLegacyUtils.resource("entities/egg/carnotaurus");
+	public static final ResourceLocation CRYOLOPHOSAURUS_EGG = FossilsLegacyUtils.resource("entities/egg/cryolophosaurus");
+	public static final ResourceLocation THERIZINOSAURUS_EGG = FossilsLegacyUtils.resource("entities/egg/therizinosaurus");
 
 	public static final ResourceLocation PREGNANT_SHEEP_WHITE = FossilsLegacyUtils.resource("entities/pregnant_sheep/white");
 	public static final ResourceLocation PREGNANT_SHEEP_ORANGE = FossilsLegacyUtils.resource("entities/pregnant_sheep/orange");

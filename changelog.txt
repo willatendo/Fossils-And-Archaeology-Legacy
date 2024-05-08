@@ -7,6 +7,11 @@
 - Fixed Forge Pregnancy Type Registry
 - Fixed Logger Spam While Ridding Futabasaurus
 - Fixed Some Server Issues -> Still Untested And Unsupported
+- Fixed Skeletons Disappearing
+- Fixed Cryolophosaurus Egg Picking Carnotaurus Egg
+- Fixed Carnotaurus Egg Not Dropping
+- Fixed Cryolophosaurus Egg Not Dropping
+- Fixed Therizinosaurus Egg Not Dropping
 - Removed Tag "piglin_taming_helmets"
 - Removed Advancement "Anu On Earth"
 - Added Tag "piglin_taming_armour"

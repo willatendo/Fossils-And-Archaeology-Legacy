@@ -25,7 +25,7 @@ public class FossilsLegacyEggVariants {
     public static final SimpleHolder<EggVariant> DILOPHOSAURUS = register("dilophosaurus", () -> FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), () -> FossilsLegacyItems.DILOPHOSAURUS_EGG.get());
     public static final SimpleHolder<EggVariant> BRACHIOSAURUS = register("brachiosaurus", () -> FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), () -> FossilsLegacyItems.BRACHIOSAURUS_EGG.get());
     public static final SimpleHolder<EggVariant> CARNOTAURUS = register("carnotaurus", () -> FossilsLegacyEntityTypes.CARNOTAURUS.get(), () -> FossilsLegacyItems.CARNOTAURUS_EGG.get());
-    public static final SimpleHolder<EggVariant> CRYOLOPHOSAURUS = register("cryolophosaurus", () -> FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get(), () -> FossilsLegacyItems.CARNOTAURUS_EGG.get());
+    public static final SimpleHolder<EggVariant> CRYOLOPHOSAURUS = register("cryolophosaurus", () -> FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get(), () -> FossilsLegacyItems.CRYOLOPHOSAURUS_EGG.get());
     public static final SimpleHolder<EggVariant> THERIZINOSAURUS = register("therizinosaurus", () -> FossilsLegacyEntityTypes.THERIZINOSAURUS.get(), () -> FossilsLegacyItems.THERIZINOSAURUS_EGG.get());
 
     public static SimpleHolder<EggVariant> register(String id, Supplier<EntityType> entityType, Supplier<Item> pick) {

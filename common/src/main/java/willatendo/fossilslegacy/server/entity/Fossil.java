@@ -36,6 +36,11 @@ public class Fossil extends Mob {
     }
 
     @Override
+    public boolean removeWhenFarAway(double distance) {
+        return false;
+    }
+
+    @Override
     public float getScale() {
         FossilVariant fossilVariant = this.getFossilVariant();
         return fossilVariant.baseSize() + (((float) fossilVariant.boundingBoxGrowth()) * ((float) this.getSize()));
