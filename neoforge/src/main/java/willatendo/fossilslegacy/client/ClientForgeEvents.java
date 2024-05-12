@@ -16,5 +16,8 @@ public class ClientForgeEvents {
         if (FossilsLegacyKeys.SINK.isDown()) {
             FossilsLegacyPackets.sendToServer(new ServerboundSinkPacket(true));
         }
+        if (FossilsLegacyKeys.SINK.consumeClick() == false) {
+            FossilsLegacyPackets.sendToServer(new ServerboundSinkPacket(false));
+        }
     }
 }

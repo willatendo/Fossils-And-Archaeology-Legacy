@@ -70,10 +70,10 @@ public class FutabasaurusModel extends EntityModel<Futabasaurus> {
     @Override
     public void setupAnim(Futabasaurus futabasaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         int steps = 16 + futabasaurus.getGrowthStage();
-        if (!futabasaurus.hasControllingPassenger() || futabasaurus.shouldDivePose()) {
-            this.surfacePose(steps);
-        } else {
+        if (futabasaurus.divePose() && futabasaurus.hasControllingPassenger()) {
             this.divePose(steps);
+        } else {
+            this.surfacePose(steps);
         }
     }
 

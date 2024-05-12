@@ -3,7 +3,11 @@ package willatendo.fossilslegacy.server.entity;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
@@ -31,8 +35,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Futabasaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur {
-    public float targetY = 0.0F;
-    private boolean shouldSink = false;
+    private static final EntityDataAccessor<Boolean> SHOULD_SINK = SynchedEntityData.defineId(Futabasaurus.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DIVE_POSE = SynchedEntityData.defineId(Futabasaurus.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Float> TARGET_Y = SynchedEntityData.defineId(Futabasaurus.class, EntityDataSerializers.FLOAT);
 
     public Futabasaurus(EntityType<? extends Dinosaur> entityType, Level level) {
         super(entityType, level);
@@ -203,6 +208,55 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
     }
 
     @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(SHOULD_SINK, false);
+        this.entityData.define(DIVE_POSE, false);
+        this.entityData.define(TARGET_Y, 0.0F);
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag compoundTag) {
+        super.addAdditionalSaveData(compoundTag);
+
+        compoundTag.putBoolean("ShouldSink", this.shouldSink());
+        compoundTag.putBoolean("DivePose", this.shouldSink());
+        compoundTag.putFloat("TargetY", this.targetY());
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag compoundTag) {
+        super.readAdditionalSaveData(compoundTag);
+
+        this.setShouldSink(compoundTag.getBoolean("ShouldSink"));
+        this.setTargetY(compoundTag.getFloat("TargetY"));
+    }
+
+    public boolean shouldSink() {
+        return this.entityData.get(SHOULD_SINK);
+    }
+
+    public void setShouldSink(boolean shouldSink) {
+        this.entityData.set(SHOULD_SINK, shouldSink);
+    }
+
+    public boolean divePose() {
+        return this.entityData.get(DIVE_POSE);
+    }
+
+    public void setDivePose(boolean divePose) {
+        this.entityData.set(DIVE_POSE, divePose);
+    }
+
+    public float targetY() {
+        return this.entityData.get(TARGET_Y);
+    }
+
+    public void setTargetY(float shouldSink) {
+        this.entityData.set(TARGET_Y, shouldSink);
+    }
+
+    @Override
     public List<Component> info(Player player) {
         ArrayList<Component> information = Lists.newArrayList();
         if (this.isTame() && this.isOwnedBy(player)) {
@@ -243,6 +297,12 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
         super.aiStep();
 
         this.creatureFloat();
+
+        if (!this.shouldDivePose()) {
+            this.setDivePose(true);
+        } else {
+            this.setDivePose(false);
+        }
     }
 
     @Override
@@ -250,14 +310,14 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
         super.tick();
 
         if (this.isInWaterOrBubble()) {
-            if (((!this.isOnSurface() && this.targetY > this.getY()) || this.targetY < this.getY()) && !this.verticalCollision) {
-                if (this.targetY > this.getY()) {
+            if (((!this.isOnSurface() && this.targetY() > this.getY()) || this.targetY() < this.getY()) && !this.verticalCollision) {
+                if (this.targetY() > this.getY()) {
                     this.setYya(2.0F);
                 } else {
                     this.setYya(-1.0F);
                 }
             }
-            if ((Math.abs(this.getY() - this.targetY) <= 0.125D) || this.isOnSurface()) {
+            if ((Math.abs(this.getY() - this.targetY()) <= 0.125D) || this.isOnSurface()) {
                 this.setYya(0.0F);
             }
         }
@@ -266,25 +326,23 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
     private void creatureFloat() {
         if (this.hasControllingPassenger()) {
             if (this.getControllingPassenger() instanceof LocalPlayer localPlayer) {
-                if (this.shouldSink) {
-                    FossilsLegacyUtils.LOGGER.info("Sinking " + this.targetY);
-                    this.targetY = (float) this.getY() - 0.5F;
+                if (this.shouldSink()) {
+                    this.setTargetY((float) this.getY() - 0.5F);
                 } else {
-                    FossilsLegacyUtils.LOGGER.info("Staying " + this.targetY);
                     if (this.isOnSurface()) {
-                        this.targetY = (float) this.getY();
+                        this.setTargetY((float) this.getY());
                     } else if (localPlayer.xxa == 0.0F) {
-                        this.targetY = (float) this.getY() + 0.2F;
+                        this.setTargetY((float) this.getY() + 0.2F);
                     } else {
-                        this.targetY = (float) this.getY();
+                        this.setTargetY((float) this.getY());
                     }
                 }
             }
         } else {
             if (this.isOnSurface()) {
-                this.targetY = (float) this.getY();
+                this.setTargetY((float) this.getY());
             } else {
-                this.targetY = (float) this.getY() + 0.2F;
+                this.setTargetY((float) this.getY() + 0.2F);
             }
         }
     }
@@ -297,10 +355,5 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
     @Override
     protected float getWaterSlowDown() {
         return this.hasControllingPassenger() ? 1.0F : super.getWaterSlowDown();
-    }
-
-    public void setShouldSink(boolean shouldSink) {
-        FossilsLegacyUtils.LOGGER.info("Sinking futabasaurus " + this.targetY + " " + this.shouldSink);
-        this.shouldSink = shouldSink;
     }
 }
