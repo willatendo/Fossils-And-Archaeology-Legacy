@@ -10,8 +10,10 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.world.entity.player.Player;
 import willatendo.fossilslegacy.network.FossilsLegacyPackets;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
+import willatendo.fossilslegacy.server.entity.Futabasaurus;
 
 public class FossilsLegacyFabricClient implements ClientModInitializer {
     @Override
@@ -37,12 +39,17 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         });
 
         ClientTickEvents.END_CLIENT_TICK.register(minecraft -> {
-            if (minecraft.player != null) {
-                if (FossilsLegacyKeys.SINK.isDown()) {
-                    ClientPlayNetworking.send(FossilsLegacyPackets.SINK, PacketByteBufs.create().writeBoolean(true));
-                }
-                if (FossilsLegacyKeys.SINK.consumeClick() == false) {
-                    ClientPlayNetworking.send(FossilsLegacyPackets.SINK, PacketByteBufs.create().writeBoolean(false));
+            Player player = minecraft.player;
+            if (player != null) {
+                if (player.isPassenger()) {
+                    if (player.getVehicle() instanceof Futabasaurus) {
+                        if (FossilsLegacyKeys.SINK.isDown()) {
+                            ClientPlayNetworking.send(FossilsLegacyPackets.SINK, PacketByteBufs.create().writeBoolean(true));
+                        }
+                        if (FossilsLegacyKeys.SINK.consumeClick() == false) {
+                            ClientPlayNetworking.send(FossilsLegacyPackets.SINK, PacketByteBufs.create().writeBoolean(false));
+                        }
+                    }
                 }
             }
         });

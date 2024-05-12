@@ -17,8 +17,12 @@ public class DinoNearestAttackableTargetGoal<T extends LivingEntity> extends Nea
     @Override
     protected void findTarget() {
         if (this.targetType != Player.class && this.targetType != ServerPlayer.class) {
-            this.target = this.mob.level().getNearestEntity(this.mob.level().getEntitiesOfClass(this.targetType, this.getTargetSearchArea(this.getFollowDistance()), ($$0) -> {
-                return true;
+            this.target = this.mob.level().getNearestEntity(this.mob.level().getEntitiesOfClass(this.targetType, this.getTargetSearchArea(this.getFollowDistance()), (entity) -> {
+                if (entity.getType() != this.dinosaur.getType()) {
+                    return true;
+                } else {
+                    return false;
+                }
             }), this.targetConditions, this.mob, this.mob.getX(), this.mob.getEyeY(), this.mob.getZ());
         } else {
             this.target = this.mob.level().getNearestPlayer(this.targetConditions, this.mob, this.mob.getX(), this.mob.getEyeY(), this.mob.getZ());

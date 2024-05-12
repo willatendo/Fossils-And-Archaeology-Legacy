@@ -19,6 +19,7 @@
 - Fixed Crash When Using Syringes
 - Fixed Crash With Animals Hunting
 - Fixed Spelling Errors
+- Fixed Cannibalism
 - Removed Tag "piglin_taming_helmets"
 - Removed Advancement "Anu On Earth"
 - Added Tag "piglin_taming_armour"
