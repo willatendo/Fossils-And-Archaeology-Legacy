@@ -105,7 +105,7 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
             if (timeMachineBlockEntity.chargeLevel != 0) {
                 timeMachineBlockEntity.chargeLevel--;
             } else {
-                List<Player> players = level.getEntitiesOfClass(Player.class, new AABB(blockPos).inflate(25.0D));
+                List<Player> players = level.getEntitiesOfClass(Player.class, new AABB(blockPos).inflate(7.0D));
                 players.forEach(player -> {
                     if (level instanceof ServerLevel serverLevel) {
                         MinecraftServer minecraftServer = serverLevel.getServer();
@@ -130,7 +130,6 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
 
     public static void clockTick(Level level, BlockPos blockPos, BlockState blockState, TimeMachineBlockEntity timeMachineBlockEntity) {
         if (timeMachineBlockEntity.isTimeTravelling()) {
-
         }
         float facing;
         timeMachineBlockEntity.oRot = timeMachineBlockEntity.rot;

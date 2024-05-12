@@ -108,13 +108,17 @@ public class TimeMachineBlock extends Block implements EntityBlock {
 
     @Override
     public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
-        if (randomSource.nextInt(100) == 0) {
-            level.playLocalSound((double) blockPos.getX() + 0.5, (double) blockPos.getY() + 0.5, (double) blockPos.getZ() + 0.5, SoundEvents.PORTAL_AMBIENT, SoundSource.BLOCKS, 0.5F, randomSource.nextFloat() * 0.4F + 0.8F, false);
-        }
+        if (level.getBlockEntity(blockPos) instanceof TimeMachineBlockEntity timeMachineBlockEntity) {
+            if (timeMachineBlockEntity.isTimeTravelling()) {
+                if (randomSource.nextInt(100) == 0) {
+                    level.playLocalSound((double) blockPos.getX() + 0.5, (double) blockPos.getY() + 0.5, (double) blockPos.getZ() + 0.5, SoundEvents.PORTAL_AMBIENT, SoundSource.BLOCKS, 0.5F, randomSource.nextFloat() * 0.4F + 0.8F, false);
+                }
 
-        for (BlockPos particleSpawnPos : PARTICLE_SPAWN_OFFSETS) {
-            if (randomSource.nextInt(16) == 0) {
-                level.addParticle(ParticleTypes.PORTAL, (double) blockPos.getX() + 0.5, (double) blockPos.getY() + 2.0, (double) blockPos.getZ() + 0.5, (double) ((float) particleSpawnPos.getX() + randomSource.nextFloat()) - 0.5, (double) ((float) particleSpawnPos.getY() - randomSource.nextFloat() - 1.0F), (double) ((float) particleSpawnPos.getZ() + randomSource.nextFloat()) - 0.5);
+                for (BlockPos particleSpawnPos : PARTICLE_SPAWN_OFFSETS) {
+                    if (randomSource.nextInt(16) == 0) {
+                        level.addParticle(ParticleTypes.PORTAL, (double) blockPos.getX() + 0.5, (double) blockPos.getY() + 2.0, (double) blockPos.getZ() + 0.5, (double) ((float) particleSpawnPos.getX() + randomSource.nextFloat()) - 0.5, (double) ((float) particleSpawnPos.getY() - randomSource.nextFloat() - 1.0F), (double) ((float) particleSpawnPos.getZ() + randomSource.nextFloat()) - 0.5);
+                    }
+                }
             }
         }
     }

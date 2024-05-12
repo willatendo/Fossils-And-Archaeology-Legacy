@@ -72,6 +72,7 @@
 - Added Prehistoric Multi Noise Biome Source Parameter List Preset
 - Added Prehistoric Multi Noise Biome Source Parameter List
 - Added Prehistoric Noise Setting
+- Added French Translation (merci beaucoup "Weewee")
 - Time Machines Can Only Have Coins In Them
 - Time Machines Will No Longer Crash When Shift Clicking
 - Time Machines Can Now Transport Players To The Prehistoric Dimension

@@ -37,11 +37,13 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         });
 
         ClientTickEvents.END_CLIENT_TICK.register(minecraft -> {
-            if (FossilsLegacyKeys.SINK.isDown()) {
-                ClientPlayNetworking.send(FossilsLegacyPackets.SINK, PacketByteBufs.create().writeBoolean(true));
-            }
-            if (FossilsLegacyKeys.SINK.consumeClick() == false) {
-                ClientPlayNetworking.send(FossilsLegacyPackets.SINK, PacketByteBufs.create().writeBoolean(false));
+            if (minecraft.player != null) {
+                if (FossilsLegacyKeys.SINK.isDown()) {
+                    ClientPlayNetworking.send(FossilsLegacyPackets.SINK, PacketByteBufs.create().writeBoolean(true));
+                }
+                if (FossilsLegacyKeys.SINK.consumeClick() == false) {
+                    ClientPlayNetworking.send(FossilsLegacyPackets.SINK, PacketByteBufs.create().writeBoolean(false));
+                }
             }
         });
     }

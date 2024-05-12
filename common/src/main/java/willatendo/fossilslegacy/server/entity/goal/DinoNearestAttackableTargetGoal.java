@@ -31,7 +31,7 @@ public class DinoNearestAttackableTargetGoal<T extends LivingEntity> extends Nea
             if (this.dinosaur.isTame()) {
                 return !this.dinosaur.isOwnedBy(this.target) && this.dinosaur.getType() != this.target.getType();
             } else {
-                return this.dinosaur.getType() != this.target.getType();
+                return this.target != null ? this.dinosaur.getType() != this.target.getType() : super.canUse();
             }
         } else {
             return false;
