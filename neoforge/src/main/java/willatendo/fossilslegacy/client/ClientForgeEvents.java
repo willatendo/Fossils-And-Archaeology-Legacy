@@ -13,10 +13,8 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 public class ClientForgeEvents {
     @SubscribeEvent
     public static void keyEvents(InputEvent.Key event) {
-//        if (FossilsLegacyKeys.SINK.isDown()) {
-//            FossilsLegacyPackets.sendToServer(new ServerboundSinkPacket(true));
-//        } else {
-//            FossilsLegacyPackets.sendToServer(new ServerboundSinkPacket(false));
-//        }
+        if (FossilsLegacyKeys.SINK.isDown()) {
+            FossilsLegacyPackets.sendToServer(new ServerboundSinkPacket(true));
+        }
     }
 }

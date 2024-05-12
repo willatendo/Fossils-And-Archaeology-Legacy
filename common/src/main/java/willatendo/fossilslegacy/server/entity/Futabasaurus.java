@@ -88,7 +88,6 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(3, new DinoTemptGoal(this, 1.1D, false));
@@ -235,11 +234,15 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
         return (this.level().getBlockState(new BlockPos((int) Math.floor(this.getX()), (int) Math.floor(this.getY() + this.getEyeHeight() / 2), (int) Math.floor(this.getZ()))).is(Blocks.AIR));
     }
 
+    public boolean shouldDivePose() {
+        return (this.level().getBlockState(new BlockPos((int) Math.floor(this.getX()), (int) Math.floor(this.getY() + this.getEyeHeight() / 2 + 1), (int) Math.floor(this.getZ()))).is(Blocks.AIR));
+    }
+
     @Override
     public void aiStep() {
         super.aiStep();
 
-        this.handleRiding();
+        this.creatureFloat();
     }
 
     @Override
@@ -260,12 +263,14 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
         }
     }
 
-    private void handleRiding() {
+    private void creatureFloat() {
         if (this.hasControllingPassenger()) {
             if (this.getControllingPassenger() instanceof LocalPlayer localPlayer) {
                 if (this.shouldSink) {
+                    FossilsLegacyUtils.LOGGER.info("Sinking " + this.targetY);
                     this.targetY = (float) this.getY() - 0.5F;
                 } else {
+                    FossilsLegacyUtils.LOGGER.info("Staying " + this.targetY);
                     if (this.isOnSurface()) {
                         this.targetY = (float) this.getY();
                     } else if (localPlayer.xxa == 0.0F) {
@@ -274,6 +279,12 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
                         this.targetY = (float) this.getY();
                     }
                 }
+            }
+        } else {
+            if (this.isOnSurface()) {
+                this.targetY = (float) this.getY();
+            } else {
+                this.targetY = (float) this.getY() + 0.2F;
             }
         }
     }
@@ -285,10 +296,11 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
 
     @Override
     protected float getWaterSlowDown() {
-        return this.hasControllingPassenger() ? 0.75F : super.getWaterSlowDown();
+        return this.hasControllingPassenger() ? 1.0F : super.getWaterSlowDown();
     }
 
     public void setShouldSink(boolean shouldSink) {
+        FossilsLegacyUtils.LOGGER.info("Sinking futabasaurus " + this.targetY + " " + this.shouldSink);
         this.shouldSink = shouldSink;
     }
 }

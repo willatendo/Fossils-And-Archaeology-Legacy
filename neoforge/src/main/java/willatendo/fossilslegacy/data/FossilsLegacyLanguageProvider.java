@@ -13,7 +13,6 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import willatendo.fossilslegacy.server.FossilsLegacyCreativeModeTabs;
-import willatendo.fossilslegacy.server.biomes.FossilsLegacyBiomes;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.*;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
@@ -40,23 +39,23 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add("advancements.fossilslegacy.legacy.relic_scrap.title", "Old News");
         this.add("advancements.fossilslegacy.legacy.relic_scrap.desc", "Acquire a relic scrap!");
         this.add("advancements.fossilslegacy.legacy.ancient_sword_artifact.title", "Once Feared");
-        this.add("advancements.fossilslegacy.legacy.ancient_sword_artifact.desc", "Aquire a sword artifact.");
+        this.add("advancements.fossilslegacy.legacy.ancient_sword_artifact.desc", "Acquire an ancient sword artifact!");
         this.add("advancements.fossilslegacy.legacy.ancient_sword.title", "1.21 Gigawatts!");
         this.add("advancements.fossilslegacy.legacy.ancient_sword.desc", "Repair an ancient sword!");
         this.add("advancements.fossilslegacy.legacy.pigman.title", "From the Dead!");
-        this.add("advancements.fossilslegacy.legacy.pigman.desc", "Spawn a pigman!");
+        this.add("advancements.fossilslegacy.legacy.pigman.desc", "Spawn a piglin!");
         this.add("advancements.fossilslegacy.legacy.ancient_helmet_artifact.title", "Black Magic");
-        this.add("advancements.fossilslegacy.legacy.ancient_helmet_artifact.desc", "Acquire an ancient helmet artifact");
+        this.add("advancements.fossilslegacy.legacy.ancient_helmet_artifact.desc", "Acquire an ancient helmet artifact!");
         this.add("advancements.fossilslegacy.legacy.fixed_ancient_armor.title", "Nether Connections");
-        this.add("advancements.fossilslegacy.legacy.fixed_ancient_armor.desc", "Repair a peice of ancient armor");
+        this.add("advancements.fossilslegacy.legacy.fixed_ancient_armor.desc", "Repair a piece of ancient armor!");
         this.add("advancements.fossilslegacy.legacy.decked_out.title", "Decked Out!");
         this.add("advancements.fossilslegacy.legacy.decked_out.desc", "Have a complete set of ancient armor!");
         this.add("advancements.fossilslegacy.legacy.tamed_pigman.title", "Till Death I'm To Serve You!");
-        this.add("advancements.fossilslegacy.legacy.tamed_pigman.desc", "Spawn a tamed pigman!");
+        this.add("advancements.fossilslegacy.legacy.tamed_pigman.desc", "Spawn a tamed piglin!");
         this.add("advancements.fossilslegacy.legacy.archaeology_workbench.title", "An Archaeologist's Table!");
         this.add("advancements.fossilslegacy.legacy.archaeology_workbench.desc", "Make a archaeology workbench!");
         this.add("advancements.fossilslegacy.legacy.stone_tablet.title", "An Old Story");
-        this.add("advancements.fossilslegacy.legacy.stone_tablet.desc", "Place a cave painting!");
+        this.add("advancements.fossilslegacy.legacy.stone_tablet.desc", "Place a stone tablet!");
         this.add("advancements.fossilslegacy.legacy.skull_block.title", "Spooky Skeletons!");
         this.add("advancements.fossilslegacy.legacy.skull_block.desc", "Or...Maybe just their skulls?");
         this.add("advancements.fossilslegacy.legacy.anu.title", "The Master!");
@@ -75,7 +74,6 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add("text.autoconfig.fossilslegacy.option.common.animalsStarve", "Animals Starve");
         this.add("text.autoconfig.fossilslegacy.option.common.animalsBreakBlocks", "Animals Break Blocks");
         this.add("text.autoconfig.fossilslegacy.option.common.animalsGrow", "Animals Grow");
-        this.add("text.autoconfig.fossilslegacy.option.common.anuSpawns", "Anu Spawns");
 
         this.add("text.autoconfig.fossilslegacy.category.server", "Server Options");
         this.add("text.autoconfig.fossilslegacy.option.server.enableExperiments", "Enable Experiments");
@@ -151,9 +149,6 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add("dinopedia.fossilslegacy.wet", "Wet");
         this.add("dinopedia.fossilslegacy.wild", "This Animal is Wild");
 
-        // Data Packs
-        this.add("dataPack.fossilslegacy.fa_experiments.description", "Enables Experimental F/A Legacy Features");
-
         // Dino Situations
         this.add(DinoSituation.HUNGRY, "%s is hungry!");
         this.add(DinoSituation.STARVE, "%s is starving!");
@@ -199,7 +194,7 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add(FossilsLegacyEntityTypes.PREGNANT_POLAR_BEAR.get(), "Polar Bear");
         this.add(FossilsLegacyEntityTypes.PREGNANT_RABBIT.get(), "Rabbit");
         this.add(FossilsLegacyEntityTypes.PREGNANT_SHEEP.get(), "Sheep");
-        this.add(FossilsLegacyEntityTypes.PREGNANT_SMILODON.get(), "Smildon");
+        this.add(FossilsLegacyEntityTypes.PREGNANT_SMILODON.get(), "Smilodon");
         this.add(FossilsLegacyEntityTypes.PREGNANT_WOLF.get(), "Wolf");
 
         this.add(FossilsLegacyEntityTypes.ANU.get(), "Anu");
@@ -445,7 +440,6 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add("menu.fossilslegacy.feeder", "Feeder");
         this.add("menu.fossilslegacy.time_machine", "Time Machine");
         this.add("menu.fossilslegacy.time_machine.start", "Start");
-        this.add("menu.fossilslegacy.time_machine.memory", "Memory");
 
         // Packs
         this.add("pack.fossilslegacy.fa_legacy_textures", "F/A Legacy Original Textures");

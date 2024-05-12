@@ -7,6 +7,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import willatendo.fossilslegacy.server.block.entity.TimeMachineBlockEntity;
 import willatendo.fossilslegacy.server.entity.Futabasaurus;
+import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class BasicPackets {
     public static void serverboundTimeMachineUpdatePacket(BlockPos blockPos, boolean timeTravelling, Level level) {

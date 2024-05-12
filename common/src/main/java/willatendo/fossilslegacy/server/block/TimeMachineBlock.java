@@ -1,8 +1,12 @@
 package willatendo.fossilslegacy.server.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -26,8 +30,11 @@ import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
 import willatendo.fossilslegacy.server.block.entity.TimeMachineBlockEntity;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
+import java.util.List;
+
 public class TimeMachineBlock extends Block implements EntityBlock {
     public static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D);
+    public static final List<BlockPos> PARTICLE_SPAWN_OFFSETS = BlockPos.betweenClosedStream(-2, 0, -2, 2, 1, 2).filter(blockPos -> Math.abs(blockPos.getX()) == 2 || Math.abs(blockPos.getZ()) == 2).map(BlockPos::immutable).toList();
 
     public TimeMachineBlock(Properties properties) {
         super(properties);
@@ -97,5 +104,18 @@ public class TimeMachineBlock extends Block implements EntityBlock {
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
         return new TimeMachineBlockEntity(blockPos, blockState);
+    }
+
+    @Override
+    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
+        if (randomSource.nextInt(100) == 0) {
+            level.playLocalSound((double) blockPos.getX() + 0.5, (double) blockPos.getY() + 0.5, (double) blockPos.getZ() + 0.5, SoundEvents.PORTAL_AMBIENT, SoundSource.BLOCKS, 0.5F, randomSource.nextFloat() * 0.4F + 0.8F, false);
+        }
+
+        for (BlockPos particleSpawnPos : PARTICLE_SPAWN_OFFSETS) {
+            if (randomSource.nextInt(16) == 0) {
+                level.addParticle(ParticleTypes.PORTAL, (double) blockPos.getX() + 0.5, (double) blockPos.getY() + 2.0, (double) blockPos.getZ() + 0.5, (double) ((float) particleSpawnPos.getX() + randomSource.nextFloat()) - 0.5, (double) ((float) particleSpawnPos.getY() - randomSource.nextFloat() - 1.0F), (double) ((float) particleSpawnPos.getZ() + randomSource.nextFloat()) - 0.5);
+            }
+        }
     }
 }

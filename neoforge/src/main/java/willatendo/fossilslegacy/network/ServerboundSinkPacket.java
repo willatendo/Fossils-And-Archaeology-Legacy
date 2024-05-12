@@ -26,7 +26,6 @@ public record ServerboundSinkPacket(boolean shouldSink) implements CustomPacketP
 
     public void handle(PlayPayloadContext playPayloadContext) {
         playPayloadContext.workHandler().submitAsync(() -> {
-            Level level = playPayloadContext.level().get();
             BasicPackets.serverboundSinkPacket((ServerPlayer) playPayloadContext.player().get(), this.shouldSink());
         });
     }

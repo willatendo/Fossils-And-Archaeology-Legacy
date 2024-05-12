@@ -88,7 +88,7 @@ public class AcademyPieces {
                     }
                 }
                 if (this.relicHoleList.isHole(blockPoses)) {
-                    worldGenLevel.setBlock(blockPoses, Blocks.AIR.defaultBlockState(), 2);
+                    worldGenLevel.setBlock(blockPoses, Blocks.AIR.defaultBlockState(), 3);
                 }
             });
         }

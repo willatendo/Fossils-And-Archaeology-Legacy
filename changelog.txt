@@ -1,4 +1,4 @@
-7/5/2024
+12/5/2024
 - Fixed Anu Spawning Naturally In Fabric Versions
 - Fixed Tag "mammoth_commandables" Being Empty
 - Fixed Advancement "From the Dead!" Being Granted When Obtaining An Ancient Sword
@@ -12,6 +12,13 @@
 - Fixed Carnotaurus Egg Not Dropping
 - Fixed Cryolophosaurus Egg Not Dropping
 - Fixed Therizinosaurus Egg Not Dropping
+- Fixed Academy Holes Occasionally Creating Illegal Blocks
+- Fixed Analyzer
+- Fixed Futabasaurus Speed In Water
+- Fixed Futabasaurus's Rocking Head
+- Fixed Crash When Using Syringes
+- Fixed Crash With Animals Hunting
+- Fixed Spelling Errors
 - Removed Tag "piglin_taming_helmets"
 - Removed Advancement "Anu On Earth"
 - Added Tag "piglin_taming_armour"

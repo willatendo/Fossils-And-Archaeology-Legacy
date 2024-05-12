@@ -123,8 +123,8 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
         }
 
         if (analyzerBlockEntity.itemStacks.get(9).isEmpty() || analyzerBlockEntity.itemStacks.get(10).isEmpty() || analyzerBlockEntity.itemStacks.get(11).isEmpty() || analyzerBlockEntity.itemStacks.get(12).isEmpty()) {
-            for (int inputSlots = 0; inputSlots < 9; inputSlots++) {
-                boolean hasInput = !analyzerBlockEntity.itemStacks.get(inputSlots).isEmpty();
+            for (int inputSlot = 0; inputSlot < 9; inputSlot++) {
+                boolean hasInput = !analyzerBlockEntity.itemStacks.get(inputSlot).isEmpty();
                 if (analyzerBlockEntity.isOn() || hasInput) {
                     RecipeHolder<AnalyzationRecipe> recipe;
                     if (hasInput) {
@@ -136,8 +136,8 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
                     if (recipe != null) {
                         int maxStackSize = analyzerBlockEntity.getMaxStackSize();
                         ItemStack outputStack = recipe.value().assemble(analyzerBlockEntity, level.registryAccess());
-                        for (int outputSlots = 9; outputSlots < 13; outputSlots++) {
-                            if (analyzerBlockEntity.canAnalyze(outputSlots, inputSlots, outputStack, analyzerBlockEntity.itemStacks, maxStackSize)) {
+                        for (int outputSlot = 9; outputSlot < 13; outputSlot++) {
+                            if (analyzerBlockEntity.canAnalyze(outputSlot, inputSlot, outputStack, analyzerBlockEntity.itemStacks, maxStackSize)) {
                                 if (!analyzerBlockEntity.isOn()) {
                                     analyzerBlockEntity.onTime = 100;
                                     if (analyzerBlockEntity.isOn()) {
@@ -150,7 +150,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
                                     if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
                                         analyzerBlockEntity.analyzationProgress = 0;
                                         analyzerBlockEntity.analyzationTotalTime = getTotalAnalyzationTime(level, analyzerBlockEntity);
-                                        if (analyzerBlockEntity.analyze(outputSlots, inputSlots, outputStack, analyzerBlockEntity.itemStacks, maxStackSize)) {
+                                        if (analyzerBlockEntity.analyze(outputSlot, inputSlot, outputStack, analyzerBlockEntity.itemStacks, maxStackSize)) {
                                             analyzerBlockEntity.setRecipeUsed(recipe);
                                         }
 
@@ -160,6 +160,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
                                 break;
                             }
                         }
+                        break;
                     }
                 } else if (!analyzerBlockEntity.isOn() && analyzerBlockEntity.analyzationProgress > 0) {
                     analyzerBlockEntity.analyzationProgress = Mth.clamp(analyzerBlockEntity.analyzationProgress - 2, 0, analyzerBlockEntity.analyzationTotalTime);
