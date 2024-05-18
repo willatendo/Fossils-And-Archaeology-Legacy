@@ -11,7 +11,7 @@ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.world.entity.player.Player;
-import willatendo.fossilslegacy.network.FossilsLegacyPackets;
+import willatendo.fossilslegacy.network.BasicPackets;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.Futabasaurus;
 
@@ -22,8 +22,6 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), RenderType.cutout());
 
         KeyBindingHelper.registerKeyBinding(FossilsLegacyKeys.SINK);
-
-        FossilsLegacyPackets.registerClientToServerPackets();
 
         FossilsLegacyClient.init();
 
@@ -44,10 +42,10 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
                 if (player.isPassenger()) {
                     if (player.getVehicle() instanceof Futabasaurus) {
                         if (FossilsLegacyKeys.SINK.isDown()) {
-                            ClientPlayNetworking.send(FossilsLegacyPackets.SINK, PacketByteBufs.create().writeBoolean(true));
+                            ClientPlayNetworking.send(BasicPackets.SINK, PacketByteBufs.create().writeBoolean(true));
                         }
                         if (FossilsLegacyKeys.SINK.consumeClick() == false) {
-                            ClientPlayNetworking.send(FossilsLegacyPackets.SINK, PacketByteBufs.create().writeBoolean(false));
+                            ClientPlayNetworking.send(BasicPackets.SINK, PacketByteBufs.create().writeBoolean(false));
                         }
                     }
                 }

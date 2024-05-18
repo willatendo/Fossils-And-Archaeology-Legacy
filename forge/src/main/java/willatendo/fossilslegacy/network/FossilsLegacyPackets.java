@@ -14,6 +14,7 @@ public class FossilsLegacyPackets {
 
     public static void registerPackets() {
         INSTANCE.messageBuilder(ServerboundTimeMachineUpdatePacket.class, getId(), NetworkDirection.PLAY_TO_SERVER).decoder(ServerboundTimeMachineUpdatePacket::new).encoder(ServerboundTimeMachineUpdatePacket::toBytes).consumerMainThread(ServerboundTimeMachineUpdatePacket::handle).add();
+        INSTANCE.messageBuilder(ServerboundSinkPacket.class, getId(), NetworkDirection.PLAY_TO_SERVER).decoder(ServerboundSinkPacket::new).encoder(ServerboundSinkPacket::toBytes).consumerMainThread(ServerboundSinkPacket::handle).add();
     }
 
     public static <MSG> void sendToServer(MSG message) {

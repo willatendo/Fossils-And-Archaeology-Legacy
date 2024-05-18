@@ -46,7 +46,6 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
     public float oRot;
     public float tRot;
     private int chargeLevel = 0;
-    private boolean timeTravelling = false;
 
     public final ContainerData containerData = new ContainerData() {
         @Override
@@ -89,7 +88,6 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
         this.itemStacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
         ContainerHelper.loadAllItems(compoundTag, this.itemStacks);
         this.chargeLevel = compoundTag.getInt("ChargeLevel");
-        this.timeTravelling = compoundTag.getBoolean("TimeTravelling");
     }
 
     @Override
@@ -97,40 +95,33 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
         super.saveAdditional(compoundTag);
         ContainerHelper.saveAllItems(compoundTag, this.itemStacks);
         compoundTag.putInt("ChargeLevel", this.chargeLevel);
-        compoundTag.putBoolean("TimeTravelling", this.timeTravelling);
+    }
+
+    public void timeTravel() {
+        this.setChargeLevel(0);
+        List<Player> players = level.getEntitiesOfClass(Player.class, new AABB(this.getBlockPos()).inflate(7.0D));
+        players.forEach(player -> {
+            if (level instanceof ServerLevel serverLevel) {
+                MinecraftServer minecraftServer = serverLevel.getServer();
+                ResourceKey<Level> destinedLevel = ((CoinItem) this.itemStacks.get(0).getItem()).getDestinedLevel();
+                ResourceKey<Level> blockEntityLevel = level.dimension();
+                if (destinedLevel != blockEntityLevel) {
+                    double x = player.position().x();
+                    double z = player.position().z();
+                    double y = serverLevel.getHeight(Heightmap.Types.WORLD_SURFACE, (int) x, (int) z);
+                    double finalY = y > -64.0D ? y : 70;
+                    level.playSound(player, this.getBlockPos(), SoundEvents.PORTAL_TRAVEL, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    FossilsModloaderHelper.INSTANCE.changeDimensions(player, minecraftServer.getLevel(destinedLevel), new PortalInfo(new Vec3(x, finalY, z), Vec3.ZERO, player.getYRot(), player.getXRot()), this.getBlockPos());
+                }
+            }
+        });
     }
 
     public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, TimeMachineBlockEntity timeMachineBlockEntity) {
-        if (timeMachineBlockEntity.timeTravelling) {
-            if (timeMachineBlockEntity.chargeLevel != 0) {
-                timeMachineBlockEntity.chargeLevel--;
-            } else {
-                List<Player> players = level.getEntitiesOfClass(Player.class, new AABB(blockPos).inflate(7.0D));
-                players.forEach(player -> {
-                    if (level instanceof ServerLevel serverLevel) {
-                        MinecraftServer minecraftServer = serverLevel.getServer();
-                        ResourceKey<Level> destinedLevel = ((CoinItem) timeMachineBlockEntity.itemStacks.get(0).getItem()).getDestinedLevel();
-                        ResourceKey<Level> blockEntityLevel = level.dimension();
-                        if (destinedLevel != blockEntityLevel) {
-                            double x = player.position().x();
-                            double z = player.position().z();
-                            double y = serverLevel.getHeight(Heightmap.Types.WORLD_SURFACE, (int) x, (int) z);
-                            double finalY = y > -64.0D ? y : 70;
-                            level.playSound(player, blockPos, SoundEvents.PORTAL_TRAVEL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                            FossilsModloaderHelper.INSTANCE.changeDimensions(player, minecraftServer.getLevel(destinedLevel), new PortalInfo(new Vec3(x, finalY, z), Vec3.ZERO, player.getYRot(), player.getXRot()), blockPos);
-                        }
-                    }
-                });
-                timeMachineBlockEntity.setTimeTravelling(false);
-            }
-        } else {
-            timeMachineBlockEntity.charge();
-        }
+        timeMachineBlockEntity.charge();
     }
 
     public static void clockTick(Level level, BlockPos blockPos, BlockState blockState, TimeMachineBlockEntity timeMachineBlockEntity) {
-        if (timeMachineBlockEntity.isTimeTravelling()) {
-        }
         float facing;
         timeMachineBlockEntity.oRot = timeMachineBlockEntity.rot;
         Player player = level.getNearestPlayer((double) blockPos.getX() + 0.5, (double) blockPos.getY() + 0.5, (double) blockPos.getZ() + 0.5, 3.0, false);
@@ -162,22 +153,18 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
         timeMachineBlockEntity.time++;
     }
 
-    public void setTimeTravelling(boolean timeTravelling) {
-        this.timeTravelling = timeTravelling;
-    }
-
-    public boolean isTimeTravelling() {
-        return this.timeTravelling;
-    }
-
     private void charge() {
-        if (!this.isFullyCharged() && !this.timeTravelling) {
+        if (!this.isFullyCharged()) {
             this.chargeLevel++;
         }
     }
 
     public int getChargeLevel() {
         return this.chargeLevel;
+    }
+
+    public void setChargeLevel(int chargeLevel) {
+        this.chargeLevel = chargeLevel;
     }
 
     public boolean isFullyCharged() {

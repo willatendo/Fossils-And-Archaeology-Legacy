@@ -17,7 +17,7 @@ import java.util.function.Supplier;
 public interface FossilsModloaderHelper {
     public static final FossilsModloaderHelper INSTANCE = SimpleUtils.loadModloaderHelper(FossilsModloaderHelper.class);
 
-    void sendTimeMachinePacket(BlockPos blockPos, boolean timeTravelling);
+    void sendTimeMachinePacket(BlockPos blockPos);
 
     void changeDimensions(Player player, ServerLevel serverLevel, PortalInfo portalInfo, BlockPos timeMachineBlockPos);
 

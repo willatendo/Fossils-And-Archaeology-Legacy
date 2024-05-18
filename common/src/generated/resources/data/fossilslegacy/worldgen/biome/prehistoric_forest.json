@@ -107,12 +107,6 @@
         "weight": 1
       },
       {
-        "type": "fossilslegacy:pteranodon",
-        "maxCount": 5,
-        "minCount": 2,
-        "weight": 1
-      },
-      {
         "type": "fossilslegacy:carnotaurus",
         "maxCount": 2,
         "minCount": 1,

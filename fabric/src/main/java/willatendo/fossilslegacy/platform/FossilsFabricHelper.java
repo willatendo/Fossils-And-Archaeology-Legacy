@@ -17,24 +17,22 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.portal.PortalInfo;
+import willatendo.fossilslegacy.network.BasicPackets;
 import willatendo.fossilslegacy.network.FossilsLegacyPackets;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.block.entity.TimeMachineBlockEntity;
 import willatendo.fossilslegacy.server.config.FabricConfigHelper;
 import willatendo.fossilslegacy.server.item.CoinItem;
 import willatendo.fossilslegacy.server.item.DinosaurSpawnEggItem;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.function.Supplier;
 
 public class FossilsFabricHelper implements FossilsModloaderHelper {
     @Override
-    public void sendTimeMachinePacket(BlockPos blockPos, boolean timeTravelling) {
+    public void sendTimeMachinePacket(BlockPos blockPos) {
         FriendlyByteBuf friendlyByteBuf = PacketByteBufs.create();
         friendlyByteBuf.writeBlockPos(blockPos);
-        friendlyByteBuf.writeBoolean(timeTravelling);
-        FossilsLegacyUtils.LOGGER.info("BP " + blockPos + " TT " + timeTravelling);
-        ClientPlayNetworking.send(FossilsLegacyPackets.TIME_MACHINE_UPDATE, friendlyByteBuf);
+        ClientPlayNetworking.send(BasicPackets.TIME_MACHINE_UPDATE, friendlyByteBuf);
     }
 
     @Override

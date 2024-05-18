@@ -73,7 +73,7 @@ public class FossilsLegacyBiomes {
         globalPrehistoricGeneration(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultOres(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultSoftDisks(biomeGenerationSettings);
-        BiomeDefaultFeatures.addWaterTrees(biomeGenerationSettings);
+        PrehistoricBiomeFeatures.addPrehistoricWaterTrees(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultFlowers(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultGrass(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultMushrooms(biomeGenerationSettings);
@@ -115,13 +115,12 @@ public class FossilsLegacyBiomes {
         MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
         mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.THERIZINOSAURUS.get(), 1, 1, 2));
         mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.STEGOSAURUS.get(), 1, 2, 6));
-        mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.PTERANODON.get(), 1, 2, 5));
         mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.CARNOTAURUS.get(), 1, 1, 2));
         BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder(placedFeatures, configuredWorldCarvers);
         globalPrehistoricGeneration(biomeGenerationSettings);
         BiomeDefaultFeatures.addForestFlowers(biomeGenerationSettings);
 
-        PrehistoricBiomeFeatures.addOtherBirchTrees(biomeGenerationSettings);
+        PrehistoricBiomeFeatures.addPrehistoricOtherBirchTrees(biomeGenerationSettings);
 
         BiomeDefaultFeatures.addDefaultOres(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultSoftDisks(biomeGenerationSettings);

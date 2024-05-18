@@ -11,7 +11,7 @@ public class PrehistoricBiomeFeatures {
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_GRASS_PLAIN);
     }
 
-    public static void addOtherBirchTrees(BiomeGenerationSettings.Builder builder) {
+    public static void addPrehistoricOtherBirchTrees(BiomeGenerationSettings.Builder builder) {
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FossilsLegacyPlacedFeatures.TREES_PREHISTORIC_FOREST);
     }
 

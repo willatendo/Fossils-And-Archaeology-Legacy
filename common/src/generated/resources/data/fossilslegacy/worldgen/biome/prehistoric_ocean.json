@@ -69,7 +69,7 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:trees_water",
+      "fossilslegacy:trees_prehistoric_water",
       "minecraft:flower_default",
       "minecraft:patch_grass_badlands",
       "minecraft:brown_mushroom_normal",

@@ -21,8 +21,8 @@ import java.util.function.Supplier;
 
 public class FossilsForgeHelper implements FossilsModloaderHelper {
     @Override
-    public void sendTimeMachinePacket(BlockPos blockPos, boolean timeTravelling) {
-        FossilsLegacyPackets.sendToServer(new ServerboundTimeMachineUpdatePacket(blockPos, timeTravelling));
+    public void sendTimeMachinePacket(BlockPos blockPos) {
+        FossilsLegacyPackets.sendToServer(new ServerboundTimeMachineUpdatePacket(blockPos));
     }
 
     @Override

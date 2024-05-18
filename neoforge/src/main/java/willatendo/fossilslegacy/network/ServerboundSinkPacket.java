@@ -1,11 +1,9 @@
 package willatendo.fossilslegacy.network;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.network.handling.PlayPayloadContext;
 
 public record ServerboundSinkPacket(boolean shouldSink) implements CustomPacketPayload {
@@ -16,7 +14,7 @@ public record ServerboundSinkPacket(boolean shouldSink) implements CustomPacketP
 
     @Override
     public ResourceLocation id() {
-        return FossilsLegacyPackets.SINK;
+        return BasicPackets.SINK;
     }
 
     public static ServerboundSinkPacket decode(FriendlyByteBuf friendlyByteBuf) {

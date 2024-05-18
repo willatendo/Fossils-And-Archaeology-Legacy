@@ -1,14 +1,10 @@
 package willatendo.fossilslegacy.server.event;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.PathPackResources;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
@@ -17,20 +13,15 @@ import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
-import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlerEvent;
-import net.neoforged.neoforge.network.handlers.ClientPayloadHandler;
 import net.neoforged.neoforge.network.registration.IPayloadRegistrar;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import willatendo.fossilslegacy.FossilsLegacyNeoforgeMod;
-import willatendo.fossilslegacy.network.FossilsLegacyPackets;
+import willatendo.fossilslegacy.network.BasicPackets;
 import willatendo.fossilslegacy.network.ServerboundSinkPacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
-import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
-import willatendo.fossilslegacy.server.entity.Anu;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.NeoForgeRegister;
@@ -50,8 +41,8 @@ public class ModEvents {
     public static void registerPackets(RegisterPayloadHandlerEvent event) {
         IPayloadRegistrar iPayloadRegistrar = event.registrar(FossilsLegacyUtils.ID).versioned("1.0.0").optional();
 
-        iPayloadRegistrar.play(FossilsLegacyPackets.TIME_MACHINE_UPDATE, ServerboundTimeMachineUpdatePacket::decode, handler -> handler.server(ServerboundTimeMachineUpdatePacket::handle));
-        iPayloadRegistrar.play(FossilsLegacyPackets.SINK, ServerboundSinkPacket::decode, handler -> handler.server(ServerboundSinkPacket::handle));
+        iPayloadRegistrar.play(BasicPackets.TIME_MACHINE_UPDATE, ServerboundTimeMachineUpdatePacket::decode, handler -> handler.server(ServerboundTimeMachineUpdatePacket::handle));
+        iPayloadRegistrar.play(BasicPackets.SINK, ServerboundSinkPacket::decode, handler -> handler.server(ServerboundSinkPacket::handle));
     }
 
     @SubscribeEvent
