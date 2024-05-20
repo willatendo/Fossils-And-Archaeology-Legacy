@@ -25,7 +25,7 @@ public class BrachiosaurusRenderer extends MobRenderer<Brachiosaurus, Brachiosau
 
     @Override
     protected void scale(Brachiosaurus brachiosaurus, PoseStack poseStack, float packedOverlay) {
-        poseStack.scale(0.75F + (0.2F * (float) brachiosaurus.getGrowthStage()), 0.75F + (0.2F * (float) brachiosaurus.getGrowthStage()), 0.75F + (0.2F * (float) brachiosaurus.getGrowthStage()));
+        poseStack.scale(1.5F + (0.3F * (float) brachiosaurus.getGrowthStage()), 1.5F + (0.3F * (float) brachiosaurus.getGrowthStage()), 1.5F + (0.3F * (float) brachiosaurus.getGrowthStage()));
         super.scale(brachiosaurus, poseStack, packedOverlay);
     }
 

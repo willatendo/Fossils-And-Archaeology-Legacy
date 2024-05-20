@@ -1,3 +1,11 @@
+20/5/2024
+- Fixed Nautilus Duplication Glitch
+- Fixed Wrong GUI Texture In Legacy Pack
+- Fixed "pack.png" In Legacy Pack
+- Fixed Crouching Not Spawning Babies
+- Fixed Brachiosaurus Height
+- Fixed Drinking Chicken Essence Bottle Not Giving Back Glass Bottle
+- Added Romantic Concoction Bottle
 18/5/2024
 - Fixed Anu Spawning Naturally In Fabric Versions
 - Fixed Tag "mammoth_commandables" Being Empty

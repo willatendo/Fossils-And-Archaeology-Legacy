@@ -65,8 +65,8 @@ public class Nautilus extends WaterAnimal {
 		ItemStack itemStack = player.getItemInHand(interactionHand);
 		if (itemStack.isEmpty()) {
 			player.addItem(new ItemStack(FossilsLegacyItems.NAUTILUS.get()));
-			player.swing(interactionHand, this.level().isClientSide());
 			this.discard();
+			return InteractionResult.sidedSuccess(this.level().isClientSide());
 		}
 		return super.interactAt(player, vec3, interactionHand);
 	}

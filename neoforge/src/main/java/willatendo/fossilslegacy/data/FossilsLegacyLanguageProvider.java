@@ -296,6 +296,7 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add(FossilsLegacyItems.RAW_CHICKEN_SOUP_BUCKET.get(), "Bucket of Raw Chicken Soup");
         this.add(FossilsLegacyItems.COOKED_CHICKEN_SOUP_BUCKET.get(), "Bucket of Cooked Chicken Soup");
         this.add(FossilsLegacyItems.CHICKEN_ESSENCE_BOTTLE.get());
+        this.add(FossilsLegacyItems.ROMANTIC_CONCOCTION_BOTTLE.get());
         this.add(FossilsLegacyItems.NAUTILUS_SHELL.get());
         this.add(FossilsLegacyItems.MAGIC_CONCH.get());
         this.add("item.fossilslegacy.magic_conch.desc", "%s");

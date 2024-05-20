@@ -88,6 +88,7 @@ public class FossilsLegacyItems {
     public static final SimpleHolder<BucketFoodItem> RAW_CHICKEN_SOUP_BUCKET = ITEMS.register("raw_chicken_soup_bucket", () -> new BucketFoodItem(new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET).food(FossilsLegacyFoods.RAW_CHICKEN_SOUP)));
     public static final SimpleHolder<BucketFoodItem> COOKED_CHICKEN_SOUP_BUCKET = ITEMS.register("cooked_chicken_soup_bucket", () -> new BucketFoodItem(new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET).food(FossilsLegacyFoods.COOKED_CHICKEN_SOUP)));
     public static final SimpleHolder<ChickenEssanceBottleItem> CHICKEN_ESSENCE_BOTTLE = ITEMS.register("chicken_essence_bottle", () -> new ChickenEssanceBottleItem(new Item.Properties().stacksTo(16).food(FossilsLegacyFoods.CHICKEN_ESSENCE)));
+    public static final SimpleHolder<DrinkingGlassBottleItem> ROMANTIC_CONCOCTION_BOTTLE = ITEMS.register("romantic_concoction_bottle", () -> new DrinkingGlassBottleItem(new Item.Properties().stacksTo(16).food(FossilsLegacyFoods.ROMANTIC_CONCOCTION)));
     public static final SimpleHolder<Item> NAUTILUS_SHELL = ITEMS.register("nautilus_shell", () -> new Item(new Item.Properties().stacksTo(1)));
     public static final SimpleHolder<MagicConchItem> MAGIC_CONCH = ITEMS.register("magic_conch", () -> new MagicConchItem(new Item.Properties().stacksTo(1)));
     public static final SimpleHolder<FrozenMeatItem> FROZEN_MEAT = ITEMS.register("frozen_meat", () -> new FrozenMeatItem(new Item.Properties()));

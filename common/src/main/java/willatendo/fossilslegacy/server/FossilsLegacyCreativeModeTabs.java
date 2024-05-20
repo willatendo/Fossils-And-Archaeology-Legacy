@@ -92,6 +92,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.RAW_CHICKEN_SOUP_BUCKET.get());
         output.accept(FossilsLegacyItems.COOKED_CHICKEN_SOUP_BUCKET.get());
         output.accept(FossilsLegacyItems.CHICKEN_ESSENCE_BOTTLE.get());
+        output.accept(FossilsLegacyItems.ROMANTIC_CONCOCTION_BOTTLE.get());
         output.accept(FossilsLegacyItems.NAUTILUS_SHELL.get());
         FossilsLegacyCreativeModeTabs.generateMagicConches(itemDisplayParameters, output);
         output.accept(FossilsLegacyItems.FROZEN_MEAT.get());

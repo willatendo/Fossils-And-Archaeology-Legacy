@@ -88,6 +88,7 @@ public class FossilsLegacyItemModelProvider extends ItemModelProvider {
         this.basicItem(FossilsLegacyItems.RAW_CHICKEN_SOUP_BUCKET.get());
         this.basicItem(FossilsLegacyItems.COOKED_CHICKEN_SOUP_BUCKET.get());
         this.basicItem(FossilsLegacyItems.CHICKEN_ESSENCE_BOTTLE.get());
+        this.basicItem(FossilsLegacyItems.ROMANTIC_CONCOCTION_BOTTLE.get());
         this.basicItem(FossilsLegacyItems.NAUTILUS_SHELL.get());
         this.handheldItem(FossilsLegacyItems.FROZEN_MEAT.get());
         this.handheldItem(FossilsLegacyItems.BROKEN_FROZEN_MEAT.get(), this.modLoc("item/frozen_meat"));

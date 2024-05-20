@@ -1,4 +1,4 @@
-// 1.20.4	2024-04-29T16:16:53.9078418	Item Models: fossilslegacy
+// 1.20.4	2024-05-20T12:09:59.3680179	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 4381095ccc6fdb9d02fd9439e08297e28995979f assets/fossilslegacy/models/item/ancient_boots.json
 495af42a87db67a3f9c92eed60f8921391a60f44 assets/fossilslegacy/models/item/ancient_boots_artifact.json
@@ -142,6 +142,7 @@ cc3d7651e50f2adaa0928bed8cef6c43c4a177f4 assets/fossilslegacy/models/item/raw_st
 255cf24aea434e5035ace0581386dde8bc3b2e2a assets/fossilslegacy/models/item/raw_tyrannosaurus_meat.json
 af20b9fd44752a2fca1bdc18b54059dea7e968cc assets/fossilslegacy/models/item/raw_velociraptor_meat.json
 eee2fae45d2a58532e958913cc18f67b6fd8b2b1 assets/fossilslegacy/models/item/relic_scrap.json
+6cdebee5eac0449d3fda5b34c61ff823a2ce0c23 assets/fossilslegacy/models/item/romantic_concoction_bottle.json
 161102eed937132c498c57a212899687c90fbab3 assets/fossilslegacy/models/item/scarab_gem.json
 eabee148f13bcc47efdafbdba7b84f5b68067c43 assets/fossilslegacy/models/item/scarab_gem_axe.json
 1e11904a7091a66ce6423a867085c8529851415a assets/fossilslegacy/models/item/scarab_gem_hoe.json

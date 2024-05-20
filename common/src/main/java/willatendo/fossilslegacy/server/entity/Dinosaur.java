@@ -22,6 +22,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.ConfigHelper;
+import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -43,7 +44,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData, CompoundTag compoundTag) {
         this.setHunger(this.getMaxHunger());
-        if (MobSpawnType.isSpawner(mobSpawnType) || mobSpawnType == MobSpawnType.SPAWN_EGG || mobSpawnType == MobSpawnType.COMMAND || mobSpawnType == MobSpawnType.MOB_SUMMONED || mobSpawnType == MobSpawnType.NATURAL || mobSpawnType == MobSpawnType.CHUNK_GENERATION) {
+        if (MobSpawnType.isSpawner(mobSpawnType) || mobSpawnType == MobSpawnType.COMMAND || mobSpawnType == MobSpawnType.MOB_SUMMONED || mobSpawnType == MobSpawnType.NATURAL || mobSpawnType == MobSpawnType.CHUNK_GENERATION) {
             this.setGrowthStage(this.getMaxGrowthStage());
         }
         return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData, compoundTag);
@@ -184,8 +185,6 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
             Dinosaur dinosaur = (Dinosaur) animal;
             if (!dinosaur.isTame()) {
                 return false;
-            } else if (dinosaur.getCommand() == DinosaurCommand.STAY) {
-                return false;
             } else {
                 return this.isInLove() && dinosaur.isInLove();
             }
@@ -226,17 +225,24 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
             return InteractionResult.SUCCESS;
         }
 
+        if (itemStack.is(FossilsLegacyItems.ROMANTIC_CONCOCTION_BOTTLE.get())) {
+            if (!this.level().isClientSide() && this.isTame() && !this.isBaby() && this.canFallInLove()) {
+                this.usePlayerItem(player, interactionHand, itemStack);
+                this.setInLove(player);
+                return InteractionResult.SUCCESS;
+            }
+        }
 
         return this.additionalInteractions(player, vec3, interactionHand);
     }
 
     @Override
     public void refreshDimensions() {
-        double d0 = this.getX();
-        double d1 = this.getY();
-        double d2 = this.getZ();
+        double x = this.getX();
+        double y = this.getY();
+        double z = this.getZ();
         super.refreshDimensions();
-        this.setPos(d0, d1, d2);
+        this.setPos(x, y, z);
     }
 
     @Override

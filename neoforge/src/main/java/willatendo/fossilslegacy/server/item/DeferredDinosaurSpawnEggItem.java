@@ -69,6 +69,8 @@ public class DeferredDinosaurSpawnEggItem extends DeferredSpawnEggItem {
         if (entity instanceof Dinosaur dinosaur) {
             if (!useOnContext.getPlayer().isCrouching()) {
                 dinosaur.setGrowthStage(dinosaur.getMaxGrowthStage());
+            } else {
+                dinosaur.setGrowthStage(0);
             }
         }
         entity.setPos((double) blockPos2.getX() + 0.5, blockPos2.getY(), (double) blockPos2.getZ() + 0.5);
