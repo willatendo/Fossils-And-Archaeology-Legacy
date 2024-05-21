@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.server.menu.slot;
 
 import com.google.common.base.Function;
-
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;

@@ -1,8 +1,5 @@
 package willatendo.fossilslegacy.server.item;
 
-import java.util.Objects;
-import java.util.function.Supplier;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -21,6 +18,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.shapes.Shapes;
+
+import java.util.Objects;
+import java.util.function.Supplier;
 
 public class PlaceEntityItem extends Item {
 	private final Supplier<EntityType<?>> entityType;

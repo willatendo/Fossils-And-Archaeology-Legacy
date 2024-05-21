@@ -1,15 +1,13 @@
 package willatendo.fossilslegacy.client.screen;
 
-import org.jetbrains.annotations.Nullable;
-
 import com.mojang.blaze3d.systems.RenderSystem;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
+import org.jetbrains.annotations.Nullable;
 
 public class TimeMachineButton extends Button {
 	private TimeMachineButton(int x, int y, int width, int height, Component component, OnPress onPress, CreateNarration createNarration) {

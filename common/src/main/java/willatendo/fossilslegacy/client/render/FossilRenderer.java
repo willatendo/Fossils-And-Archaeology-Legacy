@@ -1,24 +1,19 @@
 package willatendo.fossilslegacy.client.render;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.mojang.blaze3d.vertex.PoseStack;
-
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FossilsLegacyModels;
-import willatendo.fossilslegacy.client.model.fossils.AbstractSkeletonModel;
-import willatendo.fossilslegacy.client.model.fossils.BrachiosaurusSkeletonModel;
-import willatendo.fossilslegacy.client.model.fossils.FutabasaurusSkeletonModel;
-import willatendo.fossilslegacy.client.model.fossils.PteranodonSkeletonModel;
-import willatendo.fossilslegacy.client.model.fossils.TriceratopsSkeletonModel;
+import willatendo.fossilslegacy.client.model.fossils.*;
 import willatendo.fossilslegacy.server.entity.Fossil;
 import willatendo.fossilslegacy.server.entity.FossilVariant;
 import willatendo.fossilslegacy.server.entity.FossilVariant.FossilScaleFactor;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyFossilVariants;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class FossilRenderer extends MobRenderer<Fossil, AbstractSkeletonModel> {
 	public static final Map<FossilVariant, AbstractSkeletonModel> MODELS = new HashMap<FossilVariant, AbstractSkeletonModel>();

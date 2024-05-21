@@ -1,7 +1,5 @@
 package willatendo.fossilslegacy.server.menu;
 
-import java.util.List;
-
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -13,6 +11,8 @@ import willatendo.fossilslegacy.server.block.ArchaeologyWorkbenchBlock;
 import willatendo.fossilslegacy.server.block.entity.ArchaeologyWorkbenchBlockEntity;
 import willatendo.fossilslegacy.server.menu.slot.FuelSlot;
 import willatendo.fossilslegacy.server.menu.slot.ResultSlot;
+
+import java.util.List;
 
 public class ArchaeologyWorkbenchMenu extends AbstractContainerMenu {
 	private final ContainerLevelAccess containerLevelAccess;

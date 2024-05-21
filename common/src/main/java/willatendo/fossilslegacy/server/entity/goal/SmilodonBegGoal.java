@@ -1,7 +1,5 @@
 package willatendo.fossilslegacy.server.entity.goal;
 
-import java.util.EnumSet;
-
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
@@ -10,6 +8,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.entity.Smilodon;
+
+import java.util.EnumSet;
 
 public class SmilodonBegGoal extends Goal {
 	private final Smilodon smilodon;

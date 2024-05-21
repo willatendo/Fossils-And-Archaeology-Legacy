@@ -1,7 +1,5 @@
 package willatendo.fossilslegacy.server.block;
 
-import java.util.List;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -20,6 +18,8 @@ import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+
+import java.util.List;
 
 public class DrumBlock extends Block {
 	public static final EnumProperty<DinosaurCommand> DINOSAUR_ORDER = EnumProperty.create("order", DinosaurCommand.class);

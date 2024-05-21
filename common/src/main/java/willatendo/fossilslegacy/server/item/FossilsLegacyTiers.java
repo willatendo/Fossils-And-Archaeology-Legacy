@@ -1,9 +1,9 @@
 package willatendo.fossilslegacy.server.item;
 
-import java.util.function.Supplier;
-
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
+
+import java.util.function.Supplier;
 
 public enum FossilsLegacyTiers implements Tier {
 	ANCIENT(1, 131, 4.0F, 1.0F, 5, () -> Ingredient.of()),

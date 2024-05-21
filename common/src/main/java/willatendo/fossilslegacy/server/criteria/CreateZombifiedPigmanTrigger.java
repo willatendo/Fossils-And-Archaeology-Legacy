@@ -10,9 +10,7 @@ import net.minecraft.advancements.critereon.SimpleCriterionTrigger;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.entity.animal.Pig;
-import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.level.storage.loot.LootContext;
-import willatendo.fossilslegacy.server.entity.TamedZombifiedPiglin;
 
 import java.util.Optional;
 

@@ -1,8 +1,5 @@
 package willatendo.fossilslegacy.server.item;
 
-import java.util.List;
-import java.util.function.BiFunction;
-
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -15,6 +12,9 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+
+import java.util.List;
+import java.util.function.BiFunction;
 
 public class DebugItem extends Item {
 	private final String type;

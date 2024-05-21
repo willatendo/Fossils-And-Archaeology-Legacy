@@ -1,10 +1,5 @@
 package willatendo.fossilslegacy.server.entity;
 
-import java.util.EnumSet;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -18,11 +13,7 @@ import net.minecraft.server.players.OldUsersConverter;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.OwnableEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.TargetGoal;
@@ -43,6 +34,11 @@ import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+
+import java.util.EnumSet;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
 
 public class TamedZombifiedPiglin extends ZombifiedPiglin implements OwnableEntity, SpeakingEntity {
 	protected static final EntityDataAccessor<Byte> FLAGS = SynchedEntityData.defineId(TamedZombifiedPiglin.class, EntityDataSerializers.BYTE);

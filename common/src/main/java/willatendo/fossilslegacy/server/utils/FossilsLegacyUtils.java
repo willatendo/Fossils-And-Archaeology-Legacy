@@ -1,11 +1,10 @@
 package willatendo.fossilslegacy.server.utils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class FossilsLegacyUtils {
 	public static final String ID = "fossilslegacy";

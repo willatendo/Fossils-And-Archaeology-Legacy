@@ -1,7 +1,5 @@
 package willatendo.fossilslegacy.server.entity.goal;
 
-import java.util.EnumSet;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
@@ -13,6 +11,8 @@ import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
+
+import java.util.EnumSet;
 
 public class DinoFollowOwnerGoal extends Goal {
 	private final Dinosaur dinosaur;

@@ -5,14 +5,12 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.FixedBiomeSource;
 import net.minecraft.world.level.biome.MultiNoiseBiomeSource;
 import net.minecraft.world.level.biome.MultiNoiseBiomeSourceParameterList;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
-import willatendo.fossilslegacy.server.biomes.FossilsLegacyBiomes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FossilsLegacyLevelStems {

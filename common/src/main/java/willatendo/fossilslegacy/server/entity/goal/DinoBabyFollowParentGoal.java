@@ -1,9 +1,9 @@
 package willatendo.fossilslegacy.server.entity.goal;
 
-import java.util.List;
-
 import net.minecraft.world.entity.ai.goal.Goal;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
+
+import java.util.List;
 
 public class DinoBabyFollowParentGoal extends Goal {
 	private final Dinosaur dinosaur;

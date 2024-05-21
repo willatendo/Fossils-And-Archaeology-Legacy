@@ -1,8 +1,8 @@
 package willatendo.fossilslegacy.server.jei.recipe;
 
-import java.util.List;
-
 import net.minecraft.world.item.ItemStack;
+
+import java.util.List;
 
 public class BiomatterRecipe {
 	private final List<ItemStack> itemStacks;

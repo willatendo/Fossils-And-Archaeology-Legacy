@@ -1,11 +1,7 @@
 package willatendo.fossilslegacy.server.recipe.serialiser;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.item.ItemStack;
@@ -13,6 +9,9 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
 import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe.AnalyzationOutputs;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AnalyzationRecipeSerialiser implements RecipeSerializer<AnalyzationRecipe> {
 	private static final Codec<AnalyzationOutputs> RESULTS_CODEC = RecordCodecBuilder.create(instance -> instance.group(BuiltInRegistries.ITEM.byNameCodec().xmap(ItemStack::new, ItemStack::getItem).fieldOf("result").forGetter(analyzationRecipe -> analyzationRecipe.result), Codec.INT.fieldOf("weight").orElse(100).forGetter(analyzationRecipe -> analyzationRecipe.weight)).apply(instance, AnalyzationOutputs::new));

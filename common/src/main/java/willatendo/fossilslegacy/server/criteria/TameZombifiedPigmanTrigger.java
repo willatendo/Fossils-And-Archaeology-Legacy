@@ -1,10 +1,7 @@
 package willatendo.fossilslegacy.server.criteria;
 
-import java.util.Optional;
-
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.ContextAwarePredicate;
 import net.minecraft.advancements.critereon.CriterionValidator;
@@ -14,6 +11,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.level.storage.loot.LootContext;
 import willatendo.fossilslegacy.server.entity.TamedZombifiedPiglin;
+
+import java.util.Optional;
 
 public class TameZombifiedPigmanTrigger extends SimpleCriterionTrigger<TameZombifiedPigmanTrigger.TriggerInstance> {
     @Override

@@ -1,12 +1,12 @@
 package willatendo.fossilslegacy.server.utils;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public enum DinosaurCommand implements StringRepresentable {
     FOLLOW("follow"),

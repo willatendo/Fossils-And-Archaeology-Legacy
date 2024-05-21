@@ -1,13 +1,9 @@
 package willatendo.fossilslegacy.client.render;
 
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.PoseStack.Pose;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -18,6 +14,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
 import willatendo.fossilslegacy.server.entity.StoneTablet;
 import willatendo.fossilslegacy.server.entity.StoneTabletVariant;
 

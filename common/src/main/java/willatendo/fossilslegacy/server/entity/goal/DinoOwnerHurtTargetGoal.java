@@ -1,12 +1,12 @@
 package willatendo.fossilslegacy.server.entity.goal;
 
-import java.util.EnumSet;
-
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.target.TargetGoal;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
+
+import java.util.EnumSet;
 
 public class DinoOwnerHurtTargetGoal extends TargetGoal {
 	private final Dinosaur dinosaur;

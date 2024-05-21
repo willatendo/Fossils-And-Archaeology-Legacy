@@ -1,8 +1,8 @@
 package willatendo.fossilslegacy.server.entity;
 
-import java.util.function.Function;
-
 import net.minecraft.resources.ResourceLocation;
+
+import java.util.function.Function;
 
 public record FossilVariant(int maxSize, ResourceLocation fossilTexture, float baseSize, float boundingBoxGrowth, float shadowSize, Function<Fossil, FossilScaleFactor> fossilScaleFactor) {
 

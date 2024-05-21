@@ -1,11 +1,7 @@
 package willatendo.fossilslegacy.server.loot;
 
-import java.util.List;
-import java.util.function.Consumer;
-
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
@@ -20,6 +16,9 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import willatendo.fossilslegacy.server.item.MagicConchItem;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.simplelibrary.server.util.SimpleUtils;
+
+import java.util.List;
+import java.util.function.Consumer;
 
 public class LootOneItemOfManyRandom extends LootPoolSingletonContainer {
 	public static final Codec<LootOneItemOfManyRandom> CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.INT.fieldOf("max_weight").orElse(100).forGetter(lootOneItemOfManyRandom -> lootOneItemOfManyRandom.maxWeight), Codec.list(ItemAndChance.CODEC).fieldOf("results").forGetter(lootOneItemOfManyRandom -> lootOneItemOfManyRandom.itemAndChances)).and(LootItem.singletonFields(instance)).apply(instance, LootOneItemOfManyRandom::new));

@@ -1,7 +1,5 @@
 package willatendo.fossilslegacy.server.entity.goal;
 
-import java.util.EnumSet;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;
@@ -9,6 +7,8 @@ import net.minecraft.world.level.LevelReader;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlockTags;
 import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
+
+import java.util.EnumSet;
 
 public class DinoEatFromFeederGoal extends MoveToBlockGoal {
 	protected final Dinosaur dinosaur;

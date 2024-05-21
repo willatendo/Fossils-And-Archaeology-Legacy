@@ -1,8 +1,5 @@
 package willatendo.fossilslegacy.server.item;
 
-import java.util.EnumMap;
-import java.util.function.Supplier;
-
 import net.minecraft.Util;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -10,6 +7,9 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorItem.Type;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
+
+import java.util.EnumMap;
+import java.util.function.Supplier;
 
 public enum FossilsLegacyArmorMaterials implements ArmorMaterial {
 	ANCIENT("fossilslegacy:ancient", 15, Util.make(new EnumMap<>(ArmorItem.Type.class), (types) -> {

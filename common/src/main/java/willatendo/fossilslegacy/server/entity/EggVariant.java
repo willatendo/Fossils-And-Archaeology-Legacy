@@ -1,14 +1,14 @@
 package willatendo.fossilslegacy.server.entity;
 
-import java.util.function.Function;
-import java.util.function.Supplier;
-
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.LightLayer;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public record EggVariant(ResourceLocation texture, boolean wet, Function<Egg, Boolean> incubate, ResourceLocation loot,
                          Supplier<EntityType> entityType, Supplier<Item> pick) {

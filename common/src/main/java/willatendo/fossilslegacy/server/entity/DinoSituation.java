@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.server.entity;
 
 import com.google.common.base.Function;
-
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;

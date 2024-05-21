@@ -1,7 +1,5 @@
 package willatendo.fossilslegacy.server.dispenser;
 
-import java.util.function.Consumer;
-
 import net.minecraft.core.Direction;
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
@@ -12,6 +10,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.gameevent.GameEvent;
 import willatendo.fossilslegacy.server.item.PlaceEntityItem;
+
+import java.util.function.Consumer;
 
 public class DispenseEntityItemBehavior extends DefaultDispenseItemBehavior {
 	private Consumer<Entity> additionalInfo;

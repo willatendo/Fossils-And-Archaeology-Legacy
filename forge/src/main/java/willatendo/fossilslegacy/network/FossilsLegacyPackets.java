@@ -1,6 +1,9 @@
 package willatendo.fossilslegacy.network;
 
-import net.minecraftforge.network.*;
+import net.minecraftforge.network.ChannelBuilder;
+import net.minecraftforge.network.NetworkDirection;
+import net.minecraftforge.network.PacketDistributor;
+import net.minecraftforge.network.SimpleChannel;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FossilsLegacyPackets {

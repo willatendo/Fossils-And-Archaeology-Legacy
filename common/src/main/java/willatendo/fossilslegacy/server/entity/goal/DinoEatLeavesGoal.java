@@ -1,7 +1,5 @@
 package willatendo.fossilslegacy.server.entity.goal;
 
-import java.util.EnumSet;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.level.GameRules;
@@ -10,6 +8,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlockTags;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
+
+import java.util.EnumSet;
 
 public class DinoEatLeavesGoal extends Goal {
 	private final Dinosaur dinosaur;

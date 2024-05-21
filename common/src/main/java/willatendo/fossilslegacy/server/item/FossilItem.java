@@ -6,7 +6,10 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
-import willatendo.fossilslegacy.server.entity.*;
+import willatendo.fossilslegacy.server.entity.Fossil;
+import willatendo.fossilslegacy.server.entity.FossilVariant;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyFossilVariantTags;
 
 import java.util.ArrayList;
 import java.util.List;

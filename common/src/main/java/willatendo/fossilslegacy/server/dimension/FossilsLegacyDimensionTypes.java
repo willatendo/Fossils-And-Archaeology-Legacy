@@ -1,7 +1,5 @@
 package willatendo.fossilslegacy.server.dimension;
 
-import java.util.OptionalLong;
-
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
@@ -10,6 +8,8 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.level.dimension.DimensionType;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+
+import java.util.OptionalLong;
 
 public class FossilsLegacyDimensionTypes {
     public static final ResourceKey<DimensionType> PREHISTORY = create("prehistory");

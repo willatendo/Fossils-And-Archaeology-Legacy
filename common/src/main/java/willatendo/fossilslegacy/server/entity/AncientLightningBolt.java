@@ -1,20 +1,16 @@
 package willatendo.fossilslegacy.server.entity;
 
-import java.util.Optional;
-import java.util.UUID;
-
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.players.OldUsersConverter;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LightningBolt;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.OwnableEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+
+import java.util.Optional;
+import java.util.UUID;
 
 public class AncientLightningBolt extends LightningBolt implements OwnableEntity {
 	protected static final EntityDataAccessor<Byte> FLAGS = SynchedEntityData.defineId(AncientLightningBolt.class, EntityDataSerializers.BYTE);

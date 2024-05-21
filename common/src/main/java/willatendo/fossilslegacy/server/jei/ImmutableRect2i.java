@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.server.jei;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
-
 import net.minecraft.client.renderer.Rect2i;
 
 public class ImmutableRect2i {

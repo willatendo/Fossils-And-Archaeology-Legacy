@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;

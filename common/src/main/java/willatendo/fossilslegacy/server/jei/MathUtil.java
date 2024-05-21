@@ -1,11 +1,11 @@
 package willatendo.fossilslegacy.server.jei;
 
-import java.util.Collection;
-
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.Rect2i;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.world.phys.Vec2;
+
+import java.util.Collection;
 
 public final class MathUtil {
 	private MathUtil() {
