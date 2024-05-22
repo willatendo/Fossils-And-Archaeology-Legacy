@@ -1,10 +1,10 @@
 package willatendo.fossilslegacy.server.config.cloth;
 
-import java.util.function.Supplier;
-
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.minecraft.client.gui.screens.Screen;
+
+import java.util.function.Supplier;
 
 public class FossilsLegacyClothConfig {
 	public static void loadConfig() {

@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.client;
 
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -13,11 +14,14 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 public class ClientForgeEvents {
     @SubscribeEvent
     public static void keyEvents(InputEvent.Key event) {
-        if (FossilsLegacyKeys.SINK.isDown()) {
-            FossilsLegacyPackets.sendToServer(new ServerboundSinkPacket(true));
-        }
-        if (FossilsLegacyKeys.SINK.consumeClick() == false) {
-            FossilsLegacyPackets.sendToServer(new ServerboundSinkPacket(false));
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft.player != null) {
+            if (FossilsLegacyKeys.SINK.isDown()) {
+                FossilsLegacyPackets.sendToServer(new ServerboundSinkPacket(true));
+            }
+            if (FossilsLegacyKeys.SINK.consumeClick() == false) {
+                FossilsLegacyPackets.sendToServer(new ServerboundSinkPacket(false));
+            }
         }
     }
 }

@@ -1,11 +1,5 @@
 package willatendo.fossilslegacy.data.recipe;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;
@@ -21,6 +15,8 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
 import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe.AnalyzationOutputs;
+
+import java.util.*;
 
 public class AnalyzationRecipeBuilder implements RecipeBuilder {
 	private final Ingredient ingredient;

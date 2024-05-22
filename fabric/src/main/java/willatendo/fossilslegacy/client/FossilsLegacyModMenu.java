@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.client;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
-
 import willatendo.fossilslegacy.server.ConfigHelper;
 import willatendo.fossilslegacy.server.config.cloth.FossilsLegacyClothConfig;
 

@@ -1,9 +1,6 @@
 package willatendo.fossilslegacy.server.structure;
 
-import java.util.Optional;
-
 import com.mojang.serialization.Codec;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.block.Rotation;
@@ -13,6 +10,8 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
 import willatendo.fossilslegacy.server.structure.piece.WeaponShopPieces;
+
+import java.util.Optional;
 
 public class WeaponShopStructure extends Structure {
     public static final Codec<WeaponShopStructure> CODEC = simpleCodec(WeaponShopStructure::new);

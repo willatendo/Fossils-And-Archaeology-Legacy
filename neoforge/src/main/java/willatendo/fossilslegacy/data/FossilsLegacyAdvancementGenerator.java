@@ -13,7 +13,6 @@ import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.criteria.CreateZombifiedPigmanTrigger;
 import willatendo.fossilslegacy.server.criteria.SummonAnuTrigger;
 import willatendo.fossilslegacy.server.criteria.TameZombifiedPigmanTrigger;
-import willatendo.fossilslegacy.server.dimension.FossilsLegacyDimensionTypes;
 import willatendo.fossilslegacy.server.dimension.FossilsLegacyLevels;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;

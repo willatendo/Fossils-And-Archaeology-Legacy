@@ -18,7 +18,6 @@ import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.portal.PortalInfo;
 import willatendo.fossilslegacy.network.BasicPackets;
-import willatendo.fossilslegacy.network.FossilsLegacyPackets;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.block.entity.TimeMachineBlockEntity;
 import willatendo.fossilslegacy.server.config.FabricConfigHelper;

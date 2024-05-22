@@ -1,12 +1,9 @@
 package willatendo.fossilslegacy.server.config.forge;
 
-import static willatendo.fossilslegacy.server.config.FossilsLegacyBaseConfigSettings.SHOULD_ANU_SPAWN;
-import static willatendo.fossilslegacy.server.config.FossilsLegacyBaseConfigSettings.WILL_ANIMALS_BREAK_BLOCKS;
-import static willatendo.fossilslegacy.server.config.FossilsLegacyBaseConfigSettings.WILL_ANIMALS_GROW;
-import static willatendo.fossilslegacy.server.config.FossilsLegacyBaseConfigSettings.WILL_ANIMALS_STARVE;
-
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.ModConfigSpec.BooleanValue;
+
+import static willatendo.fossilslegacy.server.config.FossilsLegacyBaseConfigSettings.*;
 
 public class FossilsLegacyCommonConfig {
 	private final BooleanValue animalsStarve;

@@ -1,8 +1,5 @@
 package willatendo.fossilslegacy.data.recipe;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;
@@ -17,6 +14,9 @@ import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class CultivationRecipeBuilder implements RecipeBuilder {
 	private final Item result;
