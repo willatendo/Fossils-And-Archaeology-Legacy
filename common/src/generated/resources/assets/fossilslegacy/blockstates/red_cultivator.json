@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "fossilslegacy:block/red_cultivator"
+    },
+    "active=true": {
+      "model": "fossilslegacy:block/red_cultivator_active"
+    }
+  }
+}

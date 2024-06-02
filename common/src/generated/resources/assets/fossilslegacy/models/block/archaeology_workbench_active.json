@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube",
   "textures": {
-    "down": "minecraft:block/spruce_planks",
+    "down": "fossilslegacy:block/archaeology_workbench_bottom",
     "east": "fossilslegacy:block/archaeology_workbench_side",
     "north": "fossilslegacy:block/archaeology_workbench_books",
     "particle": "fossilslegacy:block/archaeology_workbench_side",

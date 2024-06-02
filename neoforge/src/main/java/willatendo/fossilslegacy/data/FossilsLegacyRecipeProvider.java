@@ -29,13 +29,29 @@ public class FossilsLegacyRecipeProvider extends RecipeProvider {
     public void buildRecipes(RecipeOutput recipeOutput) {
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, Items.CAKE).pattern("###").pattern("$%$").pattern("&&&").define('#', Items.MILK_BUCKET).define('$', Items.SUGAR).define('%', FossilsLegacyItemTags.CAKE_EGGS).define('&', Items.WHEAT).unlockedBy("has_item", has(FossilsLegacyItemTags.CAKE_EGGS)).save(recipeOutput, FossilsLegacyUtils.resource("cake_from_eggs"));
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, FossilsLegacyItems.CHICKEN_ESSENCE_BOTTLE.get(), 8).pattern("###").pattern("#$#").pattern("###").define('#', Items.GLASS_BOTTLE).define('$', FossilsLegacyItems.COOKED_CHICKEN_SOUP_BUCKET.get()).unlockedBy("has_item", has(FossilsLegacyItems.COOKED_CHICKEN_SOUP_BUCKET.get())).save(recipeOutput, FossilsLegacyUtils.resource("chicken_essence_bottle"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FossilsLegacyItems.ROMANTIC_CONCOCTION_BOTTLE.get(), 8).requires(Items.GLASS_BOTTLE).requires(Items.SWEET_BERRIES, 4).requires(Items.CARROT).requires(Items.POTATO).requires(Items.BEEF).requires(Items.PORKCHOP).unlockedBy("has_item", has(Items.GLASS_BOTTLE)).save(recipeOutput, FossilsLegacyUtils.resource("romantic_concoction_bottle"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FossilsLegacyItems.RAW_BERRY_MEDLEY_BUCKET.get()).requires(Items.BUCKET).requires(Items.SWEET_BERRIES, 4).requires(Items.CARROT).requires(Items.POTATO).requires(Items.BEEF).requires(Items.PORKCHOP).unlockedBy("has_item", has(Items.BUCKET)).save(recipeOutput, FossilsLegacyUtils.resource("raw_berry_medley_bucket"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, FossilsLegacyItems.ROMANTIC_CONCOCTION_BOTTLE.get(), 8).pattern("###").pattern("#$#").pattern("###").define('#', Items.GLASS_BOTTLE).define('$', FossilsLegacyItems.COOKED_BERRY_MEDLEY_BUCKET.get()).unlockedBy("has_item", has(FossilsLegacyItems.COOKED_BERRY_MEDLEY_BUCKET.get())).save(recipeOutput, FossilsLegacyUtils.resource("romantic_concoction_bottle"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get()).requires(FossilsLegacyBlocks.SKULL_BLOCK.get()).requires(Items.TORCH).unlockedBy("has_item", has(FossilsLegacyBlocks.SKULL_BLOCK.get())).save(recipeOutput, FossilsLegacyUtils.resource("skull_lanturn_block"));
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyItems.SKULL_STICK.get()).pattern("#").pattern("$").define('#', FossilsLegacyBlocks.SKULL_BLOCK.get()).define('$', Items.STICK).unlockedBy("has_item", has(FossilsLegacyBlocks.SKULL_BLOCK.get())).save(recipeOutput, FossilsLegacyUtils.resource("skull_stick"));
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyItems.TOOTH_DAGGER.get()).pattern("#").pattern("$").define('#', FossilsLegacyItems.TYRANNOSAURUS_TOOTH.get()).define('$', Items.STICK).unlockedBy("has_item", has(FossilsLegacyItems.TYRANNOSAURUS_TOOTH.get())).save(recipeOutput, FossilsLegacyUtils.resource("tooth_dagger"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, FossilsLegacyItems.DINOPEDIA.get()).requires(Items.BOOK).requires(FossilsLegacyItemTags.DNA).unlockedBy("has_item", has(FossilsLegacyItemTags.DNA)).save(recipeOutput, FossilsLegacyUtils.resource("dinopedia"));
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyBlocks.ANALYZER.get()).pattern("#%#").pattern("#$#").define('#', Items.IRON_INGOT).define('%', FossilsLegacyItems.RELIC_SCRAP.get()).define('$', FossilsLegacyItems.FOSSIL.get()).unlockedBy("has_item", has(FossilsLegacyItems.FOSSIL.get())).save(recipeOutput, FossilsLegacyUtils.resource("analyzer"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyBlocks.CULTIVATOR.get()).pattern("#$#").pattern("#%#").pattern("@@@").define('#', Tags.Items.GLASS).define('$', Items.GREEN_DYE).define('%', Items.WATER_BUCKET).define('@', Items.IRON_INGOT).unlockedBy("has_item", has(Tags.Items.GLASS)).save(recipeOutput, FossilsLegacyUtils.resource("cultivator"));
+        cultivator(FossilsLegacyBlocks.WHITE_CULTIVATOR.get(), Items.WHITE_DYE, recipeOutput);
+        cultivator(FossilsLegacyBlocks.ORANGE_CULTIVATOR.get(), Items.ORANGE_DYE, recipeOutput);
+        cultivator(FossilsLegacyBlocks.MAGENTA_CULTIVATOR.get(), Items.MAGENTA_DYE, recipeOutput);
+        cultivator(FossilsLegacyBlocks.LIGHT_BLUE_CULTIVATOR.get(), Items.LIGHT_BLUE_DYE, recipeOutput);
+        cultivator(FossilsLegacyBlocks.YELLOW_CULTIVATOR.get(), Items.YELLOW_DYE, recipeOutput);
+        cultivator(FossilsLegacyBlocks.LIME_CULTIVATOR.get(), Items.LIME_DYE, recipeOutput);
+        cultivator(FossilsLegacyBlocks.PINK_CULTIVATOR.get(), Items.PINK_DYE, recipeOutput);
+        cultivator(FossilsLegacyBlocks.GRAY_CULTIVATOR.get(), Items.GRAY_DYE, recipeOutput);
+        cultivator(FossilsLegacyBlocks.LIGHT_GRAY_CULTIVATOR.get(), Items.LIGHT_GRAY_DYE, recipeOutput);
+        cultivator(FossilsLegacyBlocks.CYAN_CULTIVATOR.get(), Items.CYAN_DYE, recipeOutput);
+        cultivator(FossilsLegacyBlocks.PURPLE_CULTIVATOR.get(), Items.PURPLE_DYE, recipeOutput);
+        cultivator(FossilsLegacyBlocks.BLUE_CULTIVATOR.get(), Items.BLUE_DYE, recipeOutput);
+        cultivator(FossilsLegacyBlocks.BROWN_CULTIVATOR.get(), Items.BROWN_DYE, recipeOutput);
+        cultivator(FossilsLegacyBlocks.GREEN_CULTIVATOR.get(), Items.GREEN_DYE, recipeOutput);
+        cultivator(FossilsLegacyBlocks.RED_CULTIVATOR.get(), Items.RED_DYE, recipeOutput);
+        cultivator(FossilsLegacyBlocks.BLACK_CULTIVATOR.get(), Items.BLACK_DYE, recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get()).requires(Items.PAPER).requires(Blocks.CRAFTING_TABLE).unlockedBy("has_item", has(Blocks.CRAFTING_TABLE)).save(recipeOutput, FossilsLegacyUtils.resource("archaeology_workbench"));
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyBlocks.DRUM.get()).pattern("###").pattern("$%$").pattern("$$$").define('#', Tags.Items.LEATHER).define('$', ItemTags.PLANKS).define('%', Items.REDSTONE).unlockedBy("has_item", has(Tags.Items.LEATHER)).save(recipeOutput, FossilsLegacyUtils.resource("drum"));
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyBlocks.FEEDER.get()).pattern("#$#").pattern("%@!").pattern("!!!").define('#', Items.IRON_INGOT).define('$', Tags.Items.GLASS).define('%', Blocks.STONE_BUTTON).define('@', Items.BUCKET).define('!', Blocks.STONE).unlockedBy("has_item", has(Blocks.STONE)).save(recipeOutput, FossilsLegacyUtils.resource("feeder"));
@@ -142,6 +158,10 @@ public class FossilsLegacyRecipeProvider extends RecipeProvider {
         simpleAnalyzation(FossilsLegacyItems.RAW_THERIZINOSAURUS_MEAT.get(), FossilsLegacyItems.THERIZINOSAURUS_DNA.get(), recipeOutput);
     }
 
+    public static void cultivator(ItemLike input, Item dye, RecipeOutput recipeOutput) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, input).pattern("#$#").pattern("#%#").pattern("@@@").define('#', Tags.Items.GLASS).define('$', dye).define('%', Items.WATER_BUCKET).define('@', Items.IRON_INGOT).unlockedBy("has_item", has(Tags.Items.GLASS)).save(recipeOutput, FossilsLegacyUtils.resource(BuiltInRegistries.ITEM.getKey(input.asItem()).getPath()));
+    }
+
     public static void simpleAnalyzation(ItemLike input, Item dna, RecipeOutput recipeOutput) {
         AnalyzationRecipeBuilder.recipe(input, dna, 100, 100).unlockedBy(getHasName(input), has(input)).save(recipeOutput, FossilsLegacyUtils.resource(BuiltInRegistries.ITEM.getKey(input.asItem()).getPath() + "_outputs"));
     }
@@ -180,6 +200,7 @@ public class FossilsLegacyRecipeProvider extends RecipeProvider {
         faCookingRecipe(recipeOutput, type, recipeSerialiser, factory, time, FossilsLegacyItems.RAW_SMILODON_MEAT.get(), FossilsLegacyItems.COOKED_SMILODON_MEAT.get(), 0.35F);
         faCookingRecipe(recipeOutput, type, recipeSerialiser, factory, time, FossilsLegacyItems.RAW_MAMMOTH_MEAT.get(), FossilsLegacyItems.COOKED_MAMMOTH_MEAT.get(), 0.35F);
         faCookingRecipe(recipeOutput, type, recipeSerialiser, factory, time, FossilsLegacyItems.RAW_CHICKEN_SOUP_BUCKET.get(), FossilsLegacyItems.COOKED_CHICKEN_SOUP_BUCKET.get(), 0.35F);
+        faCookingRecipe(recipeOutput, type, recipeSerialiser, factory, time, FossilsLegacyItems.RAW_BERRY_MEDLEY_BUCKET.get(), FossilsLegacyItems.COOKED_BERRY_MEDLEY_BUCKET.get(), 0.35F);
         faCookingRecipe(recipeOutput, type, recipeSerialiser, factory, time, FossilsLegacyItems.RAW_CARNOTAURUS_MEAT.get(), FossilsLegacyItems.COOKED_CARNOTAURUS_MEAT.get(), 0.35F);
         faCookingRecipe(recipeOutput, type, recipeSerialiser, factory, time, FossilsLegacyItems.RAW_CRYOLOPHOSAURUS_MEAT.get(), FossilsLegacyItems.COOKED_CRYOLOPHOSAURUS_MEAT.get(), 0.35F);
         faCookingRecipe(recipeOutput, type, recipeSerialiser, factory, time, FossilsLegacyItems.RAW_THERIZINOSAURUS_MEAT.get(), FossilsLegacyItems.COOKED_THERIZINOSAURUS_MEAT.get(), 0.35F);

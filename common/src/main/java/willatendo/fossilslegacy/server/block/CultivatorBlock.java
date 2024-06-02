@@ -12,6 +12,7 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -35,9 +36,11 @@ import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class CultivatorBlock extends Block implements EntityBlock {
     public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
+    private final DyeColor dyeColor;
 
-    public CultivatorBlock(Properties properties) {
+    public CultivatorBlock(DyeColor dyeColor, Properties properties) {
         super(properties);
+        this.dyeColor = dyeColor;
         this.stateDefinition.any().setValue(ACTIVE, false);
     }
 
@@ -127,7 +130,7 @@ public class CultivatorBlock extends Block implements EntityBlock {
 
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return new CultivatorBlockEntity(blockPos, blockState);
+        return new CultivatorBlockEntity(this.dyeColor, blockPos, blockState);
     }
 
     @Override

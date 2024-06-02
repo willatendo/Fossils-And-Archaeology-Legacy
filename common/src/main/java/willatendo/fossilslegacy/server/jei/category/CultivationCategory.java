@@ -28,7 +28,7 @@ public class CultivationCategory implements IRecipeCategory<RecipeHolder<Cultiva
 
     public CultivationCategory(IGuiHelper guiHelper, FossilsLegacyJEITextures fossilsLegacyJEITextures) {
         this.background = fossilsLegacyJEITextures.getBackground(0, 56, 88, 56);
-        this.icon = fossilsLegacyJEITextures.getIconFromItemLike(FossilsLegacyBlocks.CULTIVATOR.get());
+        this.icon = fossilsLegacyJEITextures.getIconFromItemLike(FossilsLegacyBlocks.LIME_CULTIVATOR.get());
         this.cachedArrows = fossilsLegacyJEITextures.createProgressBar(25, 88, 70, 24, 14, IDrawableAnimated.StartDirection.LEFT);
         this.animatedVat = fossilsLegacyJEITextures.createBiomatterBar();
     }

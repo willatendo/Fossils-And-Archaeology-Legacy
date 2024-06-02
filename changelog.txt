@@ -1,3 +1,24 @@
+2/6/2024
+- Changed Romantic Concoction Recipe -> No Longer Duplicates Glass Bottles
+- Added Bucket of Raw Berry Medley
+- Added Bucket of Cooked Berry Medley
+- Added White Cultivator
+- Added Orange Cultivator
+- Added Magenta Cultivator
+- Added Light Blue Cultivator
+- Added Yellow Cultivator
+- Added Lime Cultivator
+- Added Pink Cultivator
+- Added Gray Cultivator
+- Added Light Gray Cultivator
+- Added Cyan Cultivator
+- Added Purple Cultivator
+- Added Blue Cultivator
+- Added Brown Cultivator
+- Added Green Cultivator
+- Added Red Cultivator
+- Added Black Cultivator
+- Removed Cultivator -> Will Update To Lime Cultivator
 22/5/2024
 - Fixed Crash
 - Updated French Translation

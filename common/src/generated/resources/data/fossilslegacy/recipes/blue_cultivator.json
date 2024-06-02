@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "tag": "forge:glass"
+    },
+    "$": {
+      "item": "minecraft:blue_dye"
+    },
+    "%": {
+      "item": "minecraft:water_bucket"
+    },
+    "@": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "#$#",
+    "#%#",
+    "@@@"
+  ],
+  "result": {
+    "item": "fossilslegacy:blue_cultivator"
+  }
+}

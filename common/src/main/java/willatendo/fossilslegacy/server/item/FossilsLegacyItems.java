@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.item;
 
+import com.mojang.serialization.Decoder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.ArmorItem.Type;
@@ -86,7 +87,9 @@ public class FossilsLegacyItems {
     public static final SimpleHolder<TherizinosaurusClawsItem> THERIZINOSAURUS_CLAWS = ITEMS.register("therizinosaurus_claws", () -> new TherizinosaurusClawsItem(0, -3.0F, FossilsLegacyTiers.DAGGER, new Item.Properties()));
     public static final SimpleHolder<DinopediaItem> DINOPEDIA = ITEMS.register("dinopedia", () -> new DinopediaItem(new Item.Properties().stacksTo(1)));
     public static final SimpleHolder<BucketFoodItem> RAW_CHICKEN_SOUP_BUCKET = ITEMS.register("raw_chicken_soup_bucket", () -> new BucketFoodItem(new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET).food(FossilsLegacyFoods.RAW_CHICKEN_SOUP)));
+    public static final SimpleHolder<BucketFoodItem> RAW_BERRY_MEDLEY_BUCKET = ITEMS.register("raw_berry_medley_bucket", () -> new BucketFoodItem(new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET).food(FossilsLegacyFoods.RAW_BERRY_MEDLEY_BUCKET)));
     public static final SimpleHolder<BucketFoodItem> COOKED_CHICKEN_SOUP_BUCKET = ITEMS.register("cooked_chicken_soup_bucket", () -> new BucketFoodItem(new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET).food(FossilsLegacyFoods.COOKED_CHICKEN_SOUP)));
+    public static final SimpleHolder<BucketFoodItem> COOKED_BERRY_MEDLEY_BUCKET = ITEMS.register("cooked_berry_medley_bucket", () -> new BucketFoodItem(new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET).food(FossilsLegacyFoods.COOKED_BERRY_MEDLEY_BUCKET)));
     public static final SimpleHolder<ChickenEssanceBottleItem> CHICKEN_ESSENCE_BOTTLE = ITEMS.register("chicken_essence_bottle", () -> new ChickenEssanceBottleItem(new Item.Properties().stacksTo(16).food(FossilsLegacyFoods.CHICKEN_ESSENCE)));
     public static final SimpleHolder<DrinkingGlassBottleItem> ROMANTIC_CONCOCTION_BOTTLE = ITEMS.register("romantic_concoction_bottle", () -> new DrinkingGlassBottleItem(new Item.Properties().stacksTo(16).food(FossilsLegacyFoods.ROMANTIC_CONCOCTION)));
     public static final SimpleHolder<Item> NAUTILUS_SHELL = ITEMS.register("nautilus_shell", () -> new Item(new Item.Properties().stacksTo(1)));

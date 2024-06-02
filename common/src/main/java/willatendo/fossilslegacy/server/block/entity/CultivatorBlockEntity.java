@@ -20,6 +20,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.RecipeCraftingHolder;
 import net.minecraft.world.inventory.StackedContentsCompatible;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -28,6 +29,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeManager.CachedCheck;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import willatendo.fossilslegacy.server.block.CultivatorBlock;
@@ -90,8 +92,32 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
             return 4;
         }
     };
+
     private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
     private final CachedCheck<Container, CultivationRecipe> recipeCheck = RecipeManager.createCheck(FossilsLegacyRecipeTypes.CULTIVATION.get());
+
+    private final DyeColor dyeColor;
+
+    private static Map<DyeColor, Block> getDyeToBlockMap() {
+        Map<DyeColor, Block> map = Maps.newLinkedHashMap();
+        map.put(DyeColor.WHITE, FossilsLegacyBlocks.WHITE_CULTIVATOR.get());
+        map.put(DyeColor.ORANGE, FossilsLegacyBlocks.ORANGE_CULTIVATOR.get());
+        map.put(DyeColor.MAGENTA, FossilsLegacyBlocks.MAGENTA_CULTIVATOR.get());
+        map.put(DyeColor.LIGHT_BLUE, FossilsLegacyBlocks.LIGHT_BLUE_CULTIVATOR.get());
+        map.put(DyeColor.YELLOW, FossilsLegacyBlocks.YELLOW_CULTIVATOR.get());
+        map.put(DyeColor.LIME, FossilsLegacyBlocks.LIME_CULTIVATOR.get());
+        map.put(DyeColor.PINK, FossilsLegacyBlocks.PINK_CULTIVATOR.get());
+        map.put(DyeColor.GRAY, FossilsLegacyBlocks.GRAY_CULTIVATOR.get());
+        map.put(DyeColor.LIGHT_GRAY, FossilsLegacyBlocks.LIGHT_GRAY_CULTIVATOR.get());
+        map.put(DyeColor.CYAN, FossilsLegacyBlocks.CYAN_CULTIVATOR.get());
+        map.put(DyeColor.PURPLE, FossilsLegacyBlocks.PURPLE_CULTIVATOR.get());
+        map.put(DyeColor.BLUE, FossilsLegacyBlocks.BLUE_CULTIVATOR.get());
+        map.put(DyeColor.BROWN, FossilsLegacyBlocks.BROWN_CULTIVATOR.get());
+        map.put(DyeColor.GREEN, FossilsLegacyBlocks.GREEN_CULTIVATOR.get());
+        map.put(DyeColor.RED, FossilsLegacyBlocks.RED_CULTIVATOR.get());
+        map.put(DyeColor.BLACK, FossilsLegacyBlocks.BLACK_CULTIVATOR.get());
+        return map;
+    }
 
     public static Map<Item, Integer> getOnTimeMap() {
         Map<Item, Integer> map = Maps.newLinkedHashMap();
@@ -137,7 +163,12 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
     }
 
     public CultivatorBlockEntity(BlockPos blockPos, BlockState blockState) {
+        this(DyeColor.RED, blockPos, blockState);
+    }
+
+    public CultivatorBlockEntity(DyeColor dyeColor, BlockPos blockPos, BlockState blockState) {
         super(FossilsLegacyBlockEntities.CULTIVATOR.get(), blockPos, blockState);
+        this.dyeColor = dyeColor;
     }
 
     private boolean isOn() {
@@ -228,7 +259,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
 
         if (cultivatorBlockEntity.onTime == (cultivatorBlockEntity.getTotalCultivationTime(level, cultivatorBlockEntity) / 2) + 1) {
             if (cultivatorBlockEntity.level.getRandom().nextInt(100) <= 30) {
-                ((CultivatorBlock) FossilsLegacyBlocks.CULTIVATOR.get()).shatter(level, blockPos, cultivatorBlockEntity);
+                ((CultivatorBlock) CultivatorBlockEntity.getDyeToBlockMap().get(cultivatorBlockEntity.dyeColor)).shatter(level, blockPos, cultivatorBlockEntity);
             }
         }
 
