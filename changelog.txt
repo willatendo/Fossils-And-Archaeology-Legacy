@@ -26,8 +26,7 @@
 - Added Raw Berry Medley Cauldron
 - Added Cooked Berry Medley Cauldron
 - Added Brazilian Portuguese Translation (muito obrigado "Sir Pentious")
-- Removed Cultivator -> Will Update To Lime Cultivator
-- Fixed Cultivator Recipes on Fabric
+- Fixed Cultivator Recipe on Fabric
 - Fixed Drum Recipe on Fabric
 - Fixed Feeder Recipe on Fabric
 - Fixed Server Support
