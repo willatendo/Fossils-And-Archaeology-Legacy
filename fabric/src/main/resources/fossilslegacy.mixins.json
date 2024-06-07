@@ -6,6 +6,9 @@
 	"mixins": [
 		"LightningBoltMixin"
 	],
+	"client": [
+		"client.GuiMixin"
+	],
 	"injectors": {
 		"defaultRequire": 1
 	}

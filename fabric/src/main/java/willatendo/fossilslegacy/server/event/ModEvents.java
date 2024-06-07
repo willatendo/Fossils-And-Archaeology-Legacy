@@ -25,6 +25,7 @@ import java.util.Optional;
 
 public class ModEvents {
     public static void commonSetup() {
+        BasicEvents.common();
         BasicEvents.addToMaps();
         ModEvents.addToCreativeModeTabs();
         ModEvents.registerNewBiomeFeatures();

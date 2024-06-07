@@ -17,6 +17,7 @@ import java.util.function.Supplier;
 public interface FossilsModloaderHelper {
     public static final FossilsModloaderHelper INSTANCE = SimpleUtils.loadModloaderHelper(FossilsModloaderHelper.class);
 
+    // Platform
     void sendTimeMachinePacket(BlockPos blockPos);
 
     void changeDimensions(Player player, ServerLevel serverLevel, PortalInfo portalInfo, BlockPos timeMachineBlockPos);
@@ -25,6 +26,7 @@ public interface FossilsModloaderHelper {
 
     SpawnEggItem createDinosaurSpawnEgg(Supplier<EntityType<? extends Mob>> entityType, int primaryColor, int secondaryColor, Item.Properties properties);
 
+    // Config
     boolean featheredDinosaurs();
 
     boolean willAnimalsStarve();

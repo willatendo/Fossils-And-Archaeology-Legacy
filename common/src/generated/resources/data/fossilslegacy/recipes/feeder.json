@@ -9,7 +9,7 @@
       "item": "minecraft:iron_ingot"
     },
     "$": {
-      "tag": "forge:glass"
+      "item": "minecraft:glass"
     },
     "%": {
       "item": "minecraft:stone_button"

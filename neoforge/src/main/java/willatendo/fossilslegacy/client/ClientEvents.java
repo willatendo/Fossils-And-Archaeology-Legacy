@@ -1,10 +1,12 @@
 package willatendo.fossilslegacy.client;
 
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterGuiOverlaysEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -13,6 +15,11 @@ public class ClientEvents {
     @SubscribeEvent
     public static void clientSetup(FMLClientSetupEvent event) {
         FossilsLegacyClient.bindScreens();
+    }
+
+    @SubscribeEvent
+    public static void skullOverlay(RegisterGuiOverlaysEvent event) {
+        event.registerBelow(new ResourceLocation("hotbar"), FossilsLegacyUtils.resource("skull_overlay"), new SkullOverlayScreen());
     }
 
     @SubscribeEvent

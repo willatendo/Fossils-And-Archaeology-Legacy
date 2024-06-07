@@ -38,6 +38,7 @@ public class ModEvents {
         event.enqueueWork(() -> {
             BasicEvents.addToMaps();
         });
+        BasicEvents.common();
         FossilsLegacyPackets.registerPackets();
     }
 

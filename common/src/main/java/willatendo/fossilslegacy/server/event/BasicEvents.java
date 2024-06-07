@@ -26,6 +26,7 @@ import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.Heightmap;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
+import willatendo.fossilslegacy.server.block.FossilsLegacyCauldronInteraction;
 import willatendo.fossilslegacy.server.block.SkullBlock;
 import willatendo.fossilslegacy.server.dispenser.DispenseEntityItemBehavior;
 import willatendo.fossilslegacy.server.entity.*;
@@ -34,6 +35,10 @@ import willatendo.simplelibrary.server.event.EventsHolder;
 
 public class BasicEvents {
     public static final EventsHolder EVENTS_HOLDER = new EventsHolder();
+
+    public static void common() {
+        FossilsLegacyCauldronInteraction.init();
+    }
 
     public static void addToMaps() {
         ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.JURASSIC_FERN.get(), 0.65F);

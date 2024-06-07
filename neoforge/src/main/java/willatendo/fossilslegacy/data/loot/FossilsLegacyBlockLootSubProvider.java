@@ -52,6 +52,10 @@ public class FossilsLegacyBlockLootSubProvider extends BlockLootSubProvider {
         this.add(FossilsLegacyBlocks.ICED_STONE.get(), block -> this.createSingleItemTableWithSilkTouch(block, Blocks.COBBLESTONE));
         this.add(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), noDrop());
         this.dropSelf(FossilsLegacyBlocks.TIME_MACHINE.get());
+        this.dropOther(FossilsLegacyBlocks.RAW_CHICKEN_SOUP_CAULDRON.get(), Blocks.CAULDRON);
+        this.dropOther(FossilsLegacyBlocks.COOKED_CHICKEN_SOUP_CAULDRON.get(), Blocks.CAULDRON);
+        this.dropOther(FossilsLegacyBlocks.RAW_BERRY_MEDLEY_CAULDRON.get(), Blocks.CAULDRON);
+        this.dropOther(FossilsLegacyBlocks.COOKED_BERRY_MEDLEY_CAULDRON.get(), Blocks.CAULDRON);
     }
 
     protected LootTable.Builder createFossilOreLootTable(Block block) {

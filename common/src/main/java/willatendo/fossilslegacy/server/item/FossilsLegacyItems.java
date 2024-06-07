@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.server.item;
 
-import com.mojang.serialization.Decoder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.ArmorItem.Type;
@@ -201,7 +200,7 @@ public class FossilsLegacyItems {
         DEBUG_ITEMS.register("debug_baby", () -> DebugItem.debugBaby());
         DEBUG_ITEMS.register("debug_tame", () -> DebugItem.debugTame());
 
-        SimpleUtils.registerAllItems(ITEMS, FossilsLegacyBlocks.BLOCKS, FossilsLegacyBlocks.AXOLOTLSPAWN);
+        SimpleUtils.registerAllItems(ITEMS, FossilsLegacyBlocks.BLOCKS, FossilsLegacyBlocks.AXOLOTLSPAWN, FossilsLegacyBlocks.RAW_CHICKEN_SOUP_CAULDRON, FossilsLegacyBlocks.COOKED_CHICKEN_SOUP_CAULDRON, FossilsLegacyBlocks.RAW_BERRY_MEDLEY_CAULDRON, FossilsLegacyBlocks.COOKED_BERRY_MEDLEY_CAULDRON);
         ITEMS.register("axolotlspawn", () -> new PlaceOnWaterBlockItem(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), new Item.Properties()));
         simpleRegistries.add(ITEMS);
         simpleRegistries.add(DEBUG_ITEMS);

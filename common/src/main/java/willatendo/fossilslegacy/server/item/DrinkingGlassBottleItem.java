@@ -14,7 +14,9 @@ public class DrinkingGlassBottleItem extends Item {
 
     @Override
     public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity livingEntity) {
-        ItemStack superItemStack = super.finishUsingItem(itemStack, level, livingEntity);
-        return livingEntity instanceof Player && ((Player) livingEntity).getAbilities().instabuild ? superItemStack : new ItemStack(Items.GLASS_BOTTLE);
+        if (livingEntity instanceof Player player) {
+            player.getInventory().add(new ItemStack(Items.GLASS_BOTTLE));
+        }
+        return super.finishUsingItem(itemStack, level, livingEntity);
     }
 }

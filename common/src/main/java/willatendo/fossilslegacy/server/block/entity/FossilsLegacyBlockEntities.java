@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.server.block.entity;
 
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -18,6 +17,7 @@ public class FossilsLegacyBlockEntities {
     public static final SimpleHolder<BlockEntityType<ArchaeologyWorkbenchBlockEntity>> ARCHAEOLOGY_WORKBENCH = BLOCK_ENTITY_TYPES.register("archaeology_workbench", () -> BlockEntityType.Builder.<ArchaeologyWorkbenchBlockEntity>of(ArchaeologyWorkbenchBlockEntity::new, FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get()).build(null));
     public static final SimpleHolder<BlockEntityType<FeederBlockEntity>> FEEDER = BLOCK_ENTITY_TYPES.register("feeder", () -> BlockEntityType.Builder.<FeederBlockEntity>of(FeederBlockEntity::new, FossilsLegacyBlocks.FEEDER.get()).build(null));
     public static final SimpleHolder<BlockEntityType<TimeMachineBlockEntity>> TIME_MACHINE = BLOCK_ENTITY_TYPES.register("time_machine", () -> BlockEntityType.Builder.<TimeMachineBlockEntity>of(TimeMachineBlockEntity::new, FossilsLegacyBlocks.TIME_MACHINE.get()).build(null));
+    public static final SimpleHolder<BlockEntityType<RawSoupBlockEntity>> RAW_SOUP = BLOCK_ENTITY_TYPES.register("raw_soup", () -> BlockEntityType.Builder.<RawSoupBlockEntity>of(RawSoupBlockEntity::new, FossilsLegacyBlocks.RAW_CHICKEN_SOUP_CAULDRON.get(), FossilsLegacyBlocks.RAW_BERRY_MEDLEY_CAULDRON.get()).build(null));
 
     public static void init(List<SimpleRegistry<?>> simpleRegistries) {
         simpleRegistries.add(BLOCK_ENTITY_TYPES);

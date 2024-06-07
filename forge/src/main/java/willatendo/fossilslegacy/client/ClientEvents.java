@@ -1,7 +1,9 @@
 package willatendo.fossilslegacy.client;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -13,6 +15,11 @@ public class ClientEvents {
     @SubscribeEvent
     public static void clientSetup(FMLClientSetupEvent event) {
         FossilsLegacyClient.bindScreens();
+    }
+
+    @SubscribeEvent
+    public static void skullOverlay(RegisterGuiOverlaysEvent event) {
+        event.registerBelow(new ResourceLocation("hotbar"), "skull_overlay", new SkullOverlayScreen());
     }
 
     @SubscribeEvent

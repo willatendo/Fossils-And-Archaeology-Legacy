@@ -102,6 +102,14 @@ public class AnalyzationRecipe implements Recipe<Container> {
         return FossilsLegacyRecipeTypes.ANALYZATION.get();
     }
 
+    public Map<ItemStack, Integer> getResultsAndWeight() {
+        Map<ItemStack, Integer> map = new HashMap<>();
+        this.resultsAndWeight.forEach((result, weight) -> {
+            map.put(result, weight);
+        });
+        return map;
+    }
+
     public static class AnalyzationOutputs {
         public final ItemStack result;
         public final int weight;
