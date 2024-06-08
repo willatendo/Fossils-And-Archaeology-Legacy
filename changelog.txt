@@ -33,6 +33,7 @@
 - Fixed Making Tamed Zombified Piglin
 - Fixed Server Support
 - Fixed Time Machine GUI
+- Updated Forge To 49.1.0
 22/5/2024
 - Fixed Crash
 - Updated French Translation
