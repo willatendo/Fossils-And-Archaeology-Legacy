@@ -110,6 +110,10 @@ public class FossilsLegacyLanguageProvider extends LanguageProvider {
         this.add(FossilsLegacyBlocks.ICED_STONE.get());
         this.add(FossilsLegacyBlocks.AXOLOTLSPAWN.get());
         this.add(FossilsLegacyBlocks.TIME_MACHINE.get());
+        this.add(FossilsLegacyBlocks.RAW_CHICKEN_SOUP_CAULDRON.get());
+        this.add(FossilsLegacyBlocks.COOKED_CHICKEN_SOUP_CAULDRON.get());
+        this.add(FossilsLegacyBlocks.RAW_BERRY_MEDLEY_CAULDRON.get());
+        this.add(FossilsLegacyBlocks.COOKED_BERRY_MEDLEY_CAULDRON.get());
 
         // Biomes
         this.add("biome.fossilslegacy.prehistoric_ocean", "Prehistoric Ocean");

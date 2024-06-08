@@ -3,6 +3,7 @@
 - Archaeology Workbench Now Has Different Bottom Texture
 - Academy Now Generates With Lime Cultivator
 - Changed Romantic Concoction Recipe -> No Longer Duplicates Glass Bottles
+- Cleaned Up Fossils Legacy Textures
 - Added Bucket of Raw Berry Medley
 - Added Bucket of Cooked Berry Medley
 - Added White Cultivator
@@ -29,7 +30,9 @@
 - Fixed Cultivator Recipe on Fabric
 - Fixed Drum Recipe on Fabric
 - Fixed Feeder Recipe on Fabric
+- Fixed Making Tamed Zombified Piglin
 - Fixed Server Support
+- Fixed Time Machine GUI
 22/5/2024
 - Fixed Crash
 - Updated French Translation

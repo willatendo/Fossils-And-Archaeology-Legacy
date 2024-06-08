@@ -1,10 +1,13 @@
 package willatendo.fossilslegacy.mixin.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -17,12 +20,16 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 @Mixin(Gui.class)
 public abstract class GuiMixin {
     @Shadow
-    protected abstract void renderTextureOverlay(ResourceLocation texture, float opacity);
+    @Final
+    private Minecraft minecraft;
 
-    @Inject(at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/world/entity/player/Inventory;getArmor(I)Lnet/minecraft/world/item/ItemStack;"), method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;F)V", locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void render(PoseStack poseStack, float scopeScale, CallbackInfo callbackInfo, Font font, ItemStack itemStack) {
-        if (itemStack.getItem() == FossilsLegacyBlocks.SKULL_BLOCK.get().asItem()) {
-            this.renderTextureOverlay(FossilsLegacyUtils.resource("textures/gui/skullblur.png"), 1.0F);
+    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Inventory;getArmor(I)Lnet/minecraft/world/item/ItemStack;"), cancellable = true)
+    private void fossil_renderSkullOverlay(GuiGraphics guiGraphics, float spyglassScale, CallbackInfo callbackInfo) {
+        ItemStack itemStack = this.minecraft.player.getInventory().getArmor(3);
+
+        RenderTextureOverlayAccessor renderTextureOverlayAccessor = (RenderTextureOverlayAccessor) this;
+        if (itemStack.is(FossilsLegacyBlocks.SKULL_BLOCK.get().asItem())) {
+            renderTextureOverlayAccessor.fossil_renderTextureOverlay(guiGraphics, FossilsLegacyUtils.resource("textures/gui/skullblur.png"), 1.0F);
         }
     }
 }
