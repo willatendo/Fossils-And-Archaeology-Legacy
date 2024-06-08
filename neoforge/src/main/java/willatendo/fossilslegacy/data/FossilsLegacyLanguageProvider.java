@@ -22,8 +22,8 @@ import willatendo.simplelibrary.server.util.SimpleUtils;
 public class FossilsLegacyLanguageProvider extends LanguageProvider {
     private final String modId;
 
-    public FossilsLegacyLanguageProvider(PackOutput packfabricDataOutput, String modId, String local) {
-        super(packfabricDataOutput, modId, local);
+    public FossilsLegacyLanguageProvider(PackOutput packOutput, String modId, String local) {
+        super(packOutput, modId, local);
         this.modId = modId;
     }
 
