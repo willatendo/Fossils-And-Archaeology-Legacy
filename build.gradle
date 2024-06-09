@@ -20,7 +20,7 @@ subprojects {
         maven { url "https://maven.jamieswhiteshirt.com/libs-release/" }
         maven { url "https://maven.shedaniel.me/" }
         maven { url "https://maven.terraformersmc.com/releases/" }
-        maven { url "https://raw.githubusercontent.com/willatendo/Simple-Library/main/builds/" }
+        maven { url "https://raw.githubusercontent.com/willatendo/Willatendo-Mods/main/builds/" }
     }
 
     tasks.withType(JavaCompile).configureEach {
