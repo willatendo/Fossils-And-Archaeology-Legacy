@@ -1,4 +1,6 @@
-2/7/2024
+13/7/2024
+- Updated to 1.20.6
+8/7/2024
 - Skull Blocks Can Now Be Worn Like Pumpkins
 - Archaeology Workbench Now Has Different Bottom Texture
 - Academy Now Generates With Lime Cultivator

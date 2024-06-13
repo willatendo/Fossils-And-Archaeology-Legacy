@@ -1,19 +1,14 @@
 plugins {
-    id 'java'
-    id 'idea'
+    id 'multiloader-loader'
     id 'fabric-loom' version '1.6-SNAPSHOT'
-}
-
-base {
-    archivesName = "fossilslegacy-fabric"
 }
 
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
     mappings loom.officialMojangMappings()
 
-    modImplementation "net.fabricmc:fabric-loader:${fabric_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${api_version}"
+    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 
     modApi include("simplelibrary:simplelibrary-fabric:${simple_library_version}")
 
@@ -26,8 +21,6 @@ dependencies {
     }
 
     modImplementation "com.terraformersmc:modmenu:${mod_menu_version}"
-
-    compileOnly project(":common")
 
     modImplementation "mezz.jei:jei-${minecraft_version}-fabric:${jei_version}"
 }
@@ -43,37 +36,19 @@ sourceSets {
 
 loom {
     accessWidenerPath.set(project(":common").file("src/main/resources/${mod_id}.accesswidener"))
-    mixin {
-        defaultRefmapName.set("${mod_id}.refmap.json")
-    }
+
     runs {
         client {
             client()
             setConfigName("Fabric Client")
             ideConfigGenerated(true)
-            runDir("run")
+            runDir("runs/client")
         }
         server {
             server()
             setConfigName("Fabric Server")
             ideConfigGenerated(true)
-            runDir("run")
+            runDir("runs/server")
         }
     }
-}
-
-tasks.withType(JavaCompile).configureEach {
-    source(project(":common").sourceSets.main.allSource)
-}
-
-tasks.withType(Javadoc).configureEach {
-    source(project(":common").sourceSets.main.allJava)
-}
-
-tasks.named("sourcesJar", Jar) {
-    from(project(":common").sourceSets.main.allSource)
-}
-
-processResources {
-    from project(":common").sourceSets.main.resources
 }
