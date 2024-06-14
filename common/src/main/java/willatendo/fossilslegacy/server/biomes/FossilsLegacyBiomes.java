@@ -3,7 +3,7 @@ package willatendo.fossilslegacy.server.biomes;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.AquaticPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.Music;
@@ -240,18 +240,18 @@ public class FossilsLegacyBiomes {
         return biome(true, 0.8F, 0.4F, 4159204, 329011, (Integer) null, (Integer) null, mobSpawnSettings, biomeGenerationSettings, NORMAL_MUSIC);
     }
 
-    public static void bootstrap(BootstapContext<Biome> bootstapContext) {
-        HolderGetter<PlacedFeature> placedFeatures = bootstapContext.lookup(Registries.PLACED_FEATURE);
-        HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers = bootstapContext.lookup(Registries.CONFIGURED_CARVER);
-        bootstapContext.register(PREHISTORIC_OCEAN, ocean(placedFeatures, configuredWorldCarvers, true));
-        bootstapContext.register(DEEP_PREHISTORIC_OCEAN, ocean(placedFeatures, configuredWorldCarvers, false));
-        bootstapContext.register(PREHISTORIC_PLAINS, plains(placedFeatures, configuredWorldCarvers));
-        bootstapContext.register(PREHISTORIC_FOREST, forest(placedFeatures, configuredWorldCarvers));
-        bootstapContext.register(PREHISTORIC_DESERT, desert(placedFeatures, configuredWorldCarvers));
-        bootstapContext.register(PREHISTORIC_JUNGLE, jungle(placedFeatures, configuredWorldCarvers));
-        bootstapContext.register(PREHISTORIC_RIVER, river(placedFeatures, configuredWorldCarvers));
-        bootstapContext.register(PREHISTORIC_TAIGA, taiga(placedFeatures, configuredWorldCarvers));
-        bootstapContext.register(PREHISTORIC_SWAMP, swamp(placedFeatures, configuredWorldCarvers));
-        bootstapContext.register(PREHISTORIC_BEACH, beach(placedFeatures, configuredWorldCarvers));
+    public static void bootstrap(BootstrapContext<Biome> bootstrapContext) {
+        HolderGetter<PlacedFeature> placedFeatures = bootstrapContext.lookup(Registries.PLACED_FEATURE);
+        HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers = bootstrapContext.lookup(Registries.CONFIGURED_CARVER);
+        bootstrapContext.register(PREHISTORIC_OCEAN, ocean(placedFeatures, configuredWorldCarvers, true));
+        bootstrapContext.register(DEEP_PREHISTORIC_OCEAN, ocean(placedFeatures, configuredWorldCarvers, false));
+        bootstrapContext.register(PREHISTORIC_PLAINS, plains(placedFeatures, configuredWorldCarvers));
+        bootstrapContext.register(PREHISTORIC_FOREST, forest(placedFeatures, configuredWorldCarvers));
+        bootstrapContext.register(PREHISTORIC_DESERT, desert(placedFeatures, configuredWorldCarvers));
+        bootstrapContext.register(PREHISTORIC_JUNGLE, jungle(placedFeatures, configuredWorldCarvers));
+        bootstrapContext.register(PREHISTORIC_RIVER, river(placedFeatures, configuredWorldCarvers));
+        bootstrapContext.register(PREHISTORIC_TAIGA, taiga(placedFeatures, configuredWorldCarvers));
+        bootstrapContext.register(PREHISTORIC_SWAMP, swamp(placedFeatures, configuredWorldCarvers));
+        bootstrapContext.register(PREHISTORIC_BEACH, beach(placedFeatures, configuredWorldCarvers));
     }
 }

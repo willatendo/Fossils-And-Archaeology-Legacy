@@ -1,7 +1,7 @@
 package willatendo.fossilslegacy.server.dimension;
 
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -18,7 +18,7 @@ public class FossilsLegacyDimensionTypes {
         return ResourceKey.create(Registries.DIMENSION_TYPE, FossilsLegacyUtils.resource(name));
     }
 
-    public static void bootstrap(BootstapContext<DimensionType> bootstapContext) {
-        bootstapContext.register(PREHISTORY, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0F, true, false, -64, 384, 384, BlockTags.INFINIBURN_OVERWORLD, BuiltinDimensionTypes.OVERWORLD_EFFECTS, 0.0F, new DimensionType.MonsterSettings(false, true, UniformInt.of(0, 7), 0)));
+    public static void bootstrap(BootstrapContext<DimensionType> bootstrapContext) {
+        bootstrapContext.register(PREHISTORY, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0F, true, false, -64, 384, 384, BlockTags.INFINIBURN_OVERWORLD, BuiltinDimensionTypes.OVERWORLD_EFFECTS, 0.0F, new DimensionType.MonsterSettings(false, true, UniformInt.of(0, 7), 0)));
     }
 }

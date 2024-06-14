@@ -1,88 +1,51 @@
 package willatendo.fossilslegacy.server.item;
 
 import net.minecraft.Util;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorItem.Type;
 import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
+import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.server.registry.SimpleHolder;
+import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 import java.util.EnumMap;
+import java.util.List;
 import java.util.function.Supplier;
 
-public enum FossilsLegacyArmorMaterials implements ArmorMaterial {
-	ANCIENT("fossilslegacy:ancient", 15, Util.make(new EnumMap<>(ArmorItem.Type.class), (types) -> {
-		types.put(ArmorItem.Type.BOOTS, 2);
-		types.put(ArmorItem.Type.LEGGINGS, 5);
-		types.put(ArmorItem.Type.CHESTPLATE, 6);
-		types.put(ArmorItem.Type.HELMET, 2);
-	}), 9, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> Ingredient.of());
+public class FossilsLegacyArmorMaterials {
+    public static final SimpleRegistry<ArmorMaterial> ARMOR_MATERIALS = SimpleRegistry.create(Registries.ARMOR_MATERIAL, FossilsLegacyUtils.ID);
 
-	private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (types) -> {
-		types.put(ArmorItem.Type.BOOTS, 13);
-		types.put(ArmorItem.Type.LEGGINGS, 15);
-		types.put(ArmorItem.Type.CHESTPLATE, 16);
-		types.put(ArmorItem.Type.HELMET, 11);
-	});
+    public static final SimpleHolder<ArmorMaterial> ANCIENT = register("ancient", (EnumMap) Util.make(new EnumMap(ArmorItem.Type.class), (types) -> {
+        types.put(ArmorItem.Type.BOOTS, 2);
+        types.put(ArmorItem.Type.LEGGINGS, 5);
+        types.put(ArmorItem.Type.CHESTPLATE, 6);
+        types.put(ArmorItem.Type.HELMET, 2);
+    }), 9, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
+        return Ingredient.of(new ItemLike[]{Items.NETHERITE_INGOT});
+    });
 
-	private final String name;
-	private final int durabilityMultiplier;
-	private final EnumMap<ArmorItem.Type, Integer> protectionFunctionForType;
-	private final int enchantmentValue;
-	private final SoundEvent sound;
-	private final float toughness;
-	private final float knockbackResistance;
-	private final Supplier<Ingredient> repairIngredient;
+    private static SimpleHolder<ArmorMaterial> register(String id, EnumMap<ArmorItem.Type, Integer> defenseMap, int enchantmentValue, Holder<SoundEvent> equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient) {
+        List<ArmorMaterial.Layer> layers = List.of(new ArmorMaterial.Layer(new ResourceLocation(id)));
+        return register(id, defenseMap, enchantmentValue, equipSound, toughness, knockbackResistance, repairIngredient, layers);
+    }
 
-	private FossilsLegacyArmorMaterials(String name, int durabilityMultiplier, EnumMap<ArmorItem.Type, Integer> protectionFunctionForType, int enchantmentValue, SoundEvent sound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient) {
-		this.name = name;
-		this.durabilityMultiplier = durabilityMultiplier;
-		this.protectionFunctionForType = protectionFunctionForType;
-		this.enchantmentValue = enchantmentValue;
-		this.sound = sound;
-		this.toughness = toughness;
-		this.knockbackResistance = knockbackResistance;
-		this.repairIngredient = repairIngredient;
-	}
+    private static SimpleHolder<ArmorMaterial> register(String id, EnumMap<ArmorItem.Type, Integer> defenseMap, int enchantmentValue, Holder<SoundEvent> equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient, List<ArmorMaterial.Layer> layers) {
+        EnumMap<ArmorItem.Type, Integer> defense = new EnumMap(ArmorItem.Type.class);
+        ArmorItem.Type[] types = Type.values();
 
-	@Override
-	public int getDurabilityForType(Type type) {
-		return HEALTH_FUNCTION_FOR_TYPE.get(type) * this.durabilityMultiplier;
-	}
+        for (int i = 0; i < types.length; ++i) {
+            ArmorItem.Type type = types[i];
+            defense.put(type, defenseMap.get(type));
+        }
 
-	@Override
-	public int getDefenseForType(Type type) {
-		return this.protectionFunctionForType.get(type);
-	}
-
-	@Override
-	public int getEnchantmentValue() {
-		return this.enchantmentValue;
-	}
-
-	@Override
-	public SoundEvent getEquipSound() {
-		return this.sound;
-	}
-
-	@Override
-	public Ingredient getRepairIngredient() {
-		return this.repairIngredient.get();
-	}
-
-	@Override
-	public String getName() {
-		return this.name;
-	}
-
-	@Override
-	public float getToughness() {
-		return this.toughness;
-	}
-
-	@Override
-	public float getKnockbackResistance() {
-		return this.knockbackResistance;
-	}
+        return ARMOR_MATERIALS.register(id, () -> new ArmorMaterial(defense, enchantmentValue, equipSound, repairIngredient, layers, toughness, knockbackResistance));
+    }
 }

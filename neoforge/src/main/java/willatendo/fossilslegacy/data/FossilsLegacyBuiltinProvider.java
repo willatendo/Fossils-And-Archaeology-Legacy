@@ -7,7 +7,7 @@ import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.RegistrySetBuilder.RegistryBootstrap;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biome;
@@ -41,7 +41,7 @@ public class FossilsLegacyBuiltinProvider extends DatapackBuiltinEntriesProvider
         super(packOutput, registries, BUILDER, Collections.singleton(modId));
     }
 
-    public static void bootstrap(BootstapContext<BiomeModifier> bootstapContext) {
+    public static void bootstrap(BootstrapContext<BiomeModifier> bootstapContext) {
         HolderGetter<Biome> biomes = bootstapContext.lookup(Registries.BIOME);
         HolderGetter<PlacedFeature> placedFeatures = bootstapContext.lookup(Registries.PLACED_FEATURE);
         HolderSet<PlacedFeature> oreFossil = HolderSet.direct(placedFeatures.getOrThrow(FossilsLegacyPlacedFeatures.ORE_FOSSIL));

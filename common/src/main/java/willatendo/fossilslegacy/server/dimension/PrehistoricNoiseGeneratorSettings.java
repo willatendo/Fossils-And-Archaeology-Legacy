@@ -1,7 +1,7 @@
 package willatendo.fossilslegacy.server.dimension;
 
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.OverworldBiomeBuilder;
 import net.minecraft.world.level.block.Blocks;
@@ -17,7 +17,7 @@ public class PrehistoricNoiseGeneratorSettings {
         return ResourceKey.create(Registries.NOISE_SETTINGS, FossilsLegacyUtils.resource(name));
     }
 
-    public static void bootstrap(BootstapContext<NoiseGeneratorSettings> bootstapContext) {
-        bootstapContext.register(PREHISTORIC, new NoiseGeneratorSettings(NoiseSettings.OVERWORLD_NOISE_SETTINGS, Blocks.STONE.defaultBlockState(), Blocks.WATER.defaultBlockState(), NoiseRouterData.overworld(bootstapContext.lookup(Registries.DENSITY_FUNCTION), bootstapContext.lookup(Registries.NOISE), false, false), PrehistoricSurfaceRules.prehistoric(), new OverworldBiomeBuilder().spawnTarget(), 63, false, true, true, false));
+    public static void bootstrap(BootstrapContext<NoiseGeneratorSettings> bootstrapContext) {
+        bootstrapContext.register(PREHISTORIC, new NoiseGeneratorSettings(NoiseSettings.OVERWORLD_NOISE_SETTINGS, Blocks.STONE.defaultBlockState(), Blocks.WATER.defaultBlockState(), NoiseRouterData.overworld(bootstrapContext.lookup(Registries.DENSITY_FUNCTION), bootstrapContext.lookup(Registries.NOISE), false, false), PrehistoricSurfaceRules.prehistoric(), new OverworldBiomeBuilder().spawnTarget(), 63, false, true, true, false));
     }
 }

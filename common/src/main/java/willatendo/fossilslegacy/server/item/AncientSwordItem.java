@@ -19,8 +19,8 @@ import willatendo.fossilslegacy.server.entity.AncientLightningBolt;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 
 public class AncientSwordItem extends SwordItem {
-    public AncientSwordItem(Tier tier, int attackDamage, float attackSpeed, Properties properties) {
-        super(tier, attackDamage, attackSpeed, properties);
+    public AncientSwordItem(Tier tier, Properties properties) {
+        super(tier, properties);
     }
 
     @Override

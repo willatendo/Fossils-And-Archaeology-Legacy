@@ -3,7 +3,6 @@ package willatendo.fossilslegacy.server.item;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -27,11 +26,11 @@ public class MagicConchItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, Level level, List<Component> components, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> components, TooltipFlag tooltipFlag) {
         if (MagicConchItem.getOrder(itemStack) != null) {
             components.add(FossilsLegacyUtils.translation("item", BuiltInRegistries.ITEM.getKey(this).getPath() + ".desc", MagicConchItem.getOrder(itemStack).getComponent()).withStyle(ChatFormatting.GRAY));
         }
-        super.appendHoverText(itemStack, level, components, tooltipFlag);
+        super.appendHoverText(itemStack, tooltipContext, components, tooltipFlag);
     }
 
     @Override
@@ -67,12 +66,10 @@ public class MagicConchItem extends Item {
     }
 
     public static DinosaurCommand getOrder(ItemStack itemStack) {
-        CompoundTag compoundTag = itemStack.getOrCreateTag();
-        return DinosaurCommand.load(compoundTag);
+        return itemStack.get(FossilsLegacyDataComponents.DINOSAUR_COMMAND.get());
     }
 
     public static void setOrder(ItemStack itemStack, DinosaurCommand dinosaurCommand) {
-        CompoundTag compoundTag = itemStack.getOrCreateTag();
-        DinosaurCommand.save(compoundTag, dinosaurCommand);
+        itemStack.set(FossilsLegacyDataComponents.DINOSAUR_COMMAND.get(), dinosaurCommand);
     }
 }

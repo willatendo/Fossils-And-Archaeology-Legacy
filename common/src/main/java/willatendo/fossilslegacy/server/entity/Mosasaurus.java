@@ -4,7 +4,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
@@ -18,7 +21,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
 import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.entity.goal.DinoEatFromFeederGoal;
@@ -37,7 +40,7 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation {
 
     public Mosasaurus(EntityType<? extends Mosasaurus> entityType, Level level) {
         super(entityType, level);
-        this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
+        this.setPathfindingMalus(PathType.WATER, 0.0F);
     }
 
     public static AttributeSupplier mosasaurusAttributes() {
@@ -142,11 +145,6 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation {
     @Override
     public CommandType commandItems() {
         return CommandType.none();
-    }
-
-    @Override
-    public MobType getMobType() {
-        return MobType.WATER;
     }
 
     public static class MosasaurusPathNavigation extends AmphibiousPathNavigation {

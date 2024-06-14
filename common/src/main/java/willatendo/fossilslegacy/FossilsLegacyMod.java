@@ -7,6 +7,7 @@ import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import willatendo.fossilslegacy.server.dimension.FossilsLegacyBiomeSources;
 import willatendo.fossilslegacy.server.entity.*;
+import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.loot.FossilsLegacyLootPoolEntryTypes;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenus;
@@ -35,6 +36,7 @@ public class FossilsLegacyMod {
         FossilsLegacyStoneTabletVariants.init(simpleRegistries);
         FossilsLegacyEntityDataSerializers.init();
         FossilsLegacyEntityTypes.init(simpleRegistries);
+        FossilsLegacyDataComponents.init(simpleRegistries);
         FossilsLegacyItems.init(simpleRegistries);
         FossilsLegacyCreativeModeTabs.init(simpleRegistries);
         FossilsLegacyLootPoolEntryTypes.init(simpleRegistries);

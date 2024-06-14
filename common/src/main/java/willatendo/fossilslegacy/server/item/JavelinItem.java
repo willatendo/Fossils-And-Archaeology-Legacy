@@ -44,9 +44,7 @@ public class JavelinItem extends Item {
                     if (!(itemStack.getItem() instanceof BrokenJavelinItem)) {
                         damaged = JavelinItem.getDamaged(this.tier);
                     }
-                    damaged.hurtAndBreak(1, player, (user) -> {
-                        user.broadcastBreakEvent(livingEntity.getUsedItemHand());
-                    });
+                    damaged.hurtAndBreak(1, player, LivingEntity.getSlotForHand(livingEntity.getUsedItemHand()));
                     ThrownJavelin thrownJavelin = new ThrownJavelin(level, player, damaged);
                     thrownJavelin.setVariant(this.tier);
                     thrownJavelin.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 2.5F, 1.0F);

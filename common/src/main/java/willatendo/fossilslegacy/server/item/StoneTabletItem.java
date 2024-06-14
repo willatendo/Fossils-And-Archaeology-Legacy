@@ -3,7 +3,7 @@ package willatendo.fossilslegacy.server.item;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionResult;
@@ -13,6 +13,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -40,23 +41,23 @@ public class StoneTabletItem extends Item {
             return InteractionResult.FAIL;
         } else {
             Level level = useOnContext.getLevel();
-            HangingEntity hangingentity = null;
-            Optional<StoneTablet> stoneHieroglyph = StoneTablet.create(level, relativePos, direction);
-            if (!stoneHieroglyph.isEmpty()) {
-                hangingentity = stoneHieroglyph.get();
+            HangingEntity hangingEntity = null;
+            Optional<StoneTablet> stoneTablet = StoneTablet.create(level, relativePos, direction);
+            if (!stoneTablet.isEmpty()) {
+                hangingEntity = stoneTablet.get();
             }
 
-            CompoundTag compoundtag = itemStack.getTag();
-            if (compoundtag != null) {
-                EntityType.updateCustomEntityTag(level, player, hangingentity, compoundtag);
+            CustomData customData = itemStack.getOrDefault(DataComponents.ENTITY_DATA, CustomData.EMPTY);
+            if (!customData.isEmpty()) {
+                EntityType.updateCustomEntityTag(level, player, hangingEntity, customData);
             }
 
-            if (hangingentity != null) {
-                if (hangingentity.survives()) {
+            if (hangingEntity != null) {
+                if (hangingEntity.survives()) {
                     if (!level.isClientSide()) {
-                        hangingentity.playPlacementSound();
-                        level.gameEvent(player, GameEvent.ENTITY_PLACE, hangingentity.position());
-                        level.addFreshEntity(hangingentity);
+                        hangingEntity.playPlacementSound();
+                        level.gameEvent(player, GameEvent.ENTITY_PLACE, hangingEntity.position());
+                        level.addFreshEntity(hangingEntity);
                     }
 
                     itemStack.shrink(1);
@@ -75,15 +76,16 @@ public class StoneTabletItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, Level level, List<Component> toolTips, TooltipFlag toolTipFlag) {
-        super.appendHoverText(itemStack, level, toolTips, toolTipFlag);
-        CompoundTag compoundTag = itemStack.getTag();
-        if (compoundTag != null && compoundTag.contains("EntityTag", 10)) {
-            CompoundTag entityTag = compoundTag.getCompound("EntityTag");
-            StoneTablet.loadVariant(entityTag).ifPresentOrElse((stoneTabletVariant) -> {
-                toolTips.add(stoneTabletVariant.value().getName().withStyle(ChatFormatting.YELLOW));
-                toolTips.add(stoneTabletVariant.value().getAuthor().withStyle(ChatFormatting.GRAY));
-                toolTips.add(Component.translatable("painting.dimensions", Mth.positiveCeilDiv(stoneTabletVariant.value().width(), 16), Mth.positiveCeilDiv(stoneTabletVariant.value().height(), 16)));
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> toolTips, TooltipFlag toolTipFlag) {
+        super.appendHoverText(itemStack, tooltipContext, toolTips, toolTipFlag);
+        CustomData customData = itemStack.getOrDefault(DataComponents.ENTITY_DATA, CustomData.EMPTY);
+        if (!customData.isEmpty()) {
+            customData.read(StoneTablet.VARIANT_MAP_CODEC).result().ifPresentOrElse(holder -> {
+                holder.unwrapKey().ifPresent((resourceKey) -> {
+                    toolTips.add(holder.value().getName().withStyle(ChatFormatting.YELLOW));
+                    toolTips.add(holder.value().getAuthor().withStyle(ChatFormatting.GRAY));
+                });
+                toolTips.add(Component.translatable("painting.dimensions", Mth.positiveCeilDiv(holder.value().width(), 16), Mth.positiveCeilDiv(holder.value().height(), 16)));
             }, () -> {
                 toolTips.add(TOOLTIP_RANDOM_VARIANT);
             });

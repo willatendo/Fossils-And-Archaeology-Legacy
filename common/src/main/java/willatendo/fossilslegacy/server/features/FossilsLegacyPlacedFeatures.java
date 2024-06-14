@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableList;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Blocks;
@@ -62,28 +62,28 @@ public class FossilsLegacyPlacedFeatures {
         return treePlacementBase(placementModifier).build();
     }
 
-    public static void bootstrap(BootstapContext<PlacedFeature> bootstapContext) {
-        HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = bootstapContext.lookup(Registries.CONFIGURED_FEATURE);
+    public static void bootstrap(BootstrapContext<PlacedFeature> bootstrapContext) {
+        HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = bootstrapContext.lookup(Registries.CONFIGURED_FEATURE);
         PlacementModifier placementmodifier = SurfaceWaterDepthFilter.forMaxDepth(0);
 
         // Ores
-        PlacementUtils.register(bootstapContext, ORE_FOSSIL, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.ORE_FOSSIL), FossilsLegacyPlacedFeatures.commonOrePlacement(25, HeightRangePlacement.triangle(VerticalAnchor.absolute(10), VerticalAnchor.absolute(128))));
-        PlacementUtils.register(bootstapContext, ORE_PERMAFROST, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.ORE_PERMAFROST), FossilsLegacyPlacedFeatures.commonOrePlacement(25, HeightRangePlacement.triangle(VerticalAnchor.absolute(25), VerticalAnchor.absolute(256))));
+        PlacementUtils.register(bootstrapContext, ORE_FOSSIL, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.ORE_FOSSIL), FossilsLegacyPlacedFeatures.commonOrePlacement(25, HeightRangePlacement.triangle(VerticalAnchor.absolute(10), VerticalAnchor.absolute(128))));
+        PlacementUtils.register(bootstrapContext, ORE_PERMAFROST, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.ORE_PERMAFROST), FossilsLegacyPlacedFeatures.commonOrePlacement(25, HeightRangePlacement.triangle(VerticalAnchor.absolute(25), VerticalAnchor.absolute(256))));
 
         // Trees
-        PlacementUtils.register(bootstapContext, PREHISTORIC_OAK_CHECKED, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.PREHISTORIC_OAK), List.of(PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING)));
-        PlacementUtils.register(bootstapContext, PREHISTORIC_BIRCH_CHECKED, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.PREHISTORIC_BIRCH), List.of(PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING)));
-        PlacementUtils.register(bootstapContext, PREHISTORIC_FANCY_OAK_CHECKED, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.PREHISTORIC_FANCY_OAK), List.of(PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING)));
-        PlacementUtils.register(bootstapContext, PREHISTORIC_SPRUCE_CHECKED, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.PREHISTORIC_SPRUCE), PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
-        PlacementUtils.register(bootstapContext, PREHISTORIC_PINE_CHECKED, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.PREHISTORIC_PINE), PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
-        PlacementUtils.register(bootstapContext, PREHISTORIC_JUNGLE_TREE_CHECKED, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.PREHISTORIC_JUNGLE_TREE), PlacementUtils.filteredByBlockSurvival(Blocks.JUNGLE_SAPLING));
-        PlacementUtils.register(bootstapContext, MEGA_PREHISTORIC_JUNGLE_TREE_CHECKED, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.MEGA_PREHISTORIC_JUNGLE_TREE), PlacementUtils.filteredByBlockSurvival(Blocks.JUNGLE_SAPLING));
+        PlacementUtils.register(bootstrapContext, PREHISTORIC_OAK_CHECKED, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.PREHISTORIC_OAK), List.of(PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING)));
+        PlacementUtils.register(bootstrapContext, PREHISTORIC_BIRCH_CHECKED, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.PREHISTORIC_BIRCH), List.of(PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING)));
+        PlacementUtils.register(bootstrapContext, PREHISTORIC_FANCY_OAK_CHECKED, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.PREHISTORIC_FANCY_OAK), List.of(PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING)));
+        PlacementUtils.register(bootstrapContext, PREHISTORIC_SPRUCE_CHECKED, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.PREHISTORIC_SPRUCE), PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
+        PlacementUtils.register(bootstrapContext, PREHISTORIC_PINE_CHECKED, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.PREHISTORIC_PINE), PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
+        PlacementUtils.register(bootstrapContext, PREHISTORIC_JUNGLE_TREE_CHECKED, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.PREHISTORIC_JUNGLE_TREE), PlacementUtils.filteredByBlockSurvival(Blocks.JUNGLE_SAPLING));
+        PlacementUtils.register(bootstrapContext, MEGA_PREHISTORIC_JUNGLE_TREE_CHECKED, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.MEGA_PREHISTORIC_JUNGLE_TREE), PlacementUtils.filteredByBlockSurvival(Blocks.JUNGLE_SAPLING));
 
-        PlacementUtils.register(bootstapContext, TREES_PREHISTORIC_PLAINS, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.TREES_PREHISTORIC_PLAINS), PlacementUtils.countExtra(0, 0.05F, 1), InSquarePlacement.spread(), placementmodifier, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome());
-        PlacementUtils.register(bootstapContext, TREES_PREHISTORIC_FOREST, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.TREES_PREHISTORIC_FOREST), PlacementUtils.countExtra(10, 0.1F, 1), InSquarePlacement.spread(), placementmodifier, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome());
-        PlacementUtils.register(bootstapContext, TREES_PREHISTORIC_SWAMP, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.PREHISTORIC_SWAMP_OAK), PlacementUtils.countExtra(2, 0.1F, 1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(2), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)));
-        PlacementUtils.register(bootstapContext, TREES_PREHISTORIC_WATER, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.TREES_PREHISTORIC_WATER), treePlacement(PlacementUtils.countExtra(0, 0.1F, 1)));
-        PlacementUtils.register(bootstapContext, TREES_PREHISTORIC_TAIGA, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.TREES_PREHISTORIC_TAIGA), treePlacement(PlacementUtils.countExtra(10, 0.1F, 1)));
-        PlacementUtils.register(bootstapContext, TREES_PREHISTORIC_JUNGLE, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.TREES_PREHISTORIC_JUNGLE), treePlacement(PlacementUtils.countExtra(50, 0.1F, 1)));
+        PlacementUtils.register(bootstrapContext, TREES_PREHISTORIC_PLAINS, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.TREES_PREHISTORIC_PLAINS), PlacementUtils.countExtra(0, 0.05F, 1), InSquarePlacement.spread(), placementmodifier, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome());
+        PlacementUtils.register(bootstrapContext, TREES_PREHISTORIC_FOREST, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.TREES_PREHISTORIC_FOREST), PlacementUtils.countExtra(10, 0.1F, 1), InSquarePlacement.spread(), placementmodifier, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome());
+        PlacementUtils.register(bootstrapContext, TREES_PREHISTORIC_SWAMP, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.PREHISTORIC_SWAMP_OAK), PlacementUtils.countExtra(2, 0.1F, 1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(2), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)));
+        PlacementUtils.register(bootstrapContext, TREES_PREHISTORIC_WATER, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.TREES_PREHISTORIC_WATER), treePlacement(PlacementUtils.countExtra(0, 0.1F, 1)));
+        PlacementUtils.register(bootstrapContext, TREES_PREHISTORIC_TAIGA, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.TREES_PREHISTORIC_TAIGA), treePlacement(PlacementUtils.countExtra(10, 0.1F, 1)));
+        PlacementUtils.register(bootstrapContext, TREES_PREHISTORIC_JUNGLE, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.TREES_PREHISTORIC_JUNGLE), treePlacement(PlacementUtils.countExtra(50, 0.1F, 1)));
     }
 }

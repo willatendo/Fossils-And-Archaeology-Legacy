@@ -14,6 +14,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -22,6 +23,7 @@ import willatendo.fossilslegacy.data.loot.FossilsLegacyBlockLootSubProvider;
 import willatendo.fossilslegacy.data.loot.FossilsLegacyChestLootSubProvider;
 import willatendo.fossilslegacy.data.loot.FossilsLegacyEntityLootSubProvider;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.data.SimpleLootTableProvider;
 
 import java.util.List;
 import java.util.Map;
@@ -29,7 +31,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID)
 public class FossilsLegacyData {
     @SubscribeEvent
     public static void gatherDataEvent(GatherDataEvent gatherDataEvent) {
@@ -43,13 +45,9 @@ public class FossilsLegacyData {
         dataGenerator.addProvider(gatherDataEvent.includeClient(), new FossilsLegacySoundDefinitionsProvider(packOutput, FossilsLegacyUtils.ID, existingFileHelper));
         dataGenerator.addProvider(gatherDataEvent.includeClient(), new FossilsLegacyLanguageProvider(packOutput, FossilsLegacyUtils.ID, "en_us"));
 
-        dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyRecipeProvider(packOutput));
+        dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyRecipeProvider(packOutput, registries, FossilsLegacyUtils.ID));
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new AdvancementProvider(packOutput, registries, existingFileHelper, List.of(new FossilsLegacyAdvancementGenerator())));
-        dataGenerator.addProvider(gatherDataEvent.includeServer(), new LootTableProvider(packOutput, Set.of(), List.of(new LootTableProvider.SubProviderEntry(FossilsLegacyBlockLootSubProvider::new, LootContextParamSets.BLOCK), new LootTableProvider.SubProviderEntry(FossilsLegacyEntityLootSubProvider::new, LootContextParamSets.ENTITY), new LootTableProvider.SubProviderEntry(FossilsLegacyChestLootSubProvider::new, LootContextParamSets.CHEST))) {
-            @Override
-            protected void validate(Map<ResourceLocation, LootTable> map, ValidationContext validationcontext) {
-            }
-        });
+        dataGenerator.addProvider(gatherDataEvent.includeServer(), new SimpleLootTableProvider(packOutput, registries, new LootTableProvider.SubProviderEntry(FossilsLegacyBlockLootSubProvider::new, LootContextParamSets.BLOCK), new LootTableProvider.SubProviderEntry(FossilsLegacyEntityLootSubProvider::new, LootContextParamSets.ENTITY), new LootTableProvider.SubProviderEntry(FossilsLegacyChestLootSubProvider::new, LootContextParamSets.CHEST)));
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyBuiltinProvider(packOutput, registries, FossilsLegacyUtils.ID));
         FossilsLegacyBlockTagProvider fossilsLegacyBlockTagProvider = new FossilsLegacyBlockTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper);
         dataGenerator.addProvider(gatherDataEvent.includeServer(), fossilsLegacyBlockTagProvider);

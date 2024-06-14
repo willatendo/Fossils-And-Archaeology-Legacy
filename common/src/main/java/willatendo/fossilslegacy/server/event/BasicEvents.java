@@ -1,15 +1,9 @@
 package willatendo.fossilslegacy.server.event;
 
-import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Position;
-import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.OptionalDispenseItemBehavior;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.animal.goat.Goat;
@@ -18,7 +12,6 @@ import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.animal.horse.Mule;
 import net.minecraft.world.entity.monster.ZombifiedPiglin;
-import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.ComposterBlock;
@@ -48,24 +41,8 @@ public class BasicEvents {
         DispenserBlock.registerBehavior(FossilsLegacyItems.NAUTILUS_EGGS.get(), new DispenseEntityItemBehavior());
         DispenserBlock.registerBehavior(FossilsLegacyItems.NAUTILUS.get(), new DispenseEntityItemBehavior());
         DispenserBlock.registerBehavior(FossilsLegacyItems.FOSSIL.get(), new DispenseEntityItemBehavior());
-        DispenserBlock.registerBehavior(FossilsLegacyItems.INCUBATED_CHICKEN_EGG.get(), new AbstractProjectileDispenseBehavior() {
-            @Override
-            protected Projectile getProjectile(Level level, Position position, ItemStack itemStack) {
-                return Util.make(new ThrownIncubatedEgg(level, position.x(), position.y(), position.z()), thrownIncubatedEgg -> {
-                    thrownIncubatedEgg.setItem(itemStack);
-                    thrownIncubatedEgg.setEggType(0);
-                });
-            }
-        });
-        DispenserBlock.registerBehavior(FossilsLegacyItems.INCUBATED_PARROT_EGG.get(), new AbstractProjectileDispenseBehavior() {
-            @Override
-            protected Projectile getProjectile(Level level, Position position, ItemStack itemStack) {
-                return Util.make(new ThrownIncubatedEgg(level, position.x(), position.y(), position.z()), thrownIncubatedEgg -> {
-                    thrownIncubatedEgg.setItem(itemStack);
-                    thrownIncubatedEgg.setEggType(1);
-                });
-            }
-        });
+        DispenserBlock.registerProjectileBehavior(FossilsLegacyItems.INCUBATED_CHICKEN_EGG.get());
+        DispenserBlock.registerProjectileBehavior(FossilsLegacyItems.INCUBATED_PARROT_EGG.get());
         DispenserBlock.registerBehavior(FossilsLegacyBlocks.SKULL_BLOCK.get(), new OptionalDispenseItemBehavior() {
             @Override
             protected ItemStack execute(BlockSource blockSource, ItemStack itemStack) {
@@ -152,23 +129,23 @@ public class BasicEvents {
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.THERIZINOSAURUS.get(), Therizinosaurus.therizinosaurusAttributes());
     }
 
-    private static <T extends Entity> void addSpawnPlacement(EntityType<T> entityType, SpawnPlacements.Type type, Heightmap.Types types, SpawnPlacements.SpawnPredicate<T> spawnPredicate) {
-        EVENTS_HOLDER.addSpawnPlacement(entityType, type, types, spawnPredicate);
+    private static <T extends Entity> void addSpawnPlacement(EntityType<T> entityType, SpawnPlacementType spawnPlacementType, Heightmap.Types types, SpawnPlacements.SpawnPredicate<T> spawnPredicate) {
+        EVENTS_HOLDER.addSpawnPlacement(entityType, spawnPlacementType, types, spawnPredicate);
     }
 
     public static void spawnPlacementsInit() {
-        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Brachiosaurus::checkAnimalSpawnRules);
-        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Dilophosaurus::checkAnimalSpawnRules);
-        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.MOSASAURUS.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mosasaurus::checkMosasaurusSpawnRules);
-        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.NAUTILUS.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Nautilus::checkNautilusSpawnRules);
-        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.FUTABASAURUS.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Futabasaurus::checkFutabasaurusSpawnRules);
-        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.PTERANODON.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Pteranodon::checkAnimalSpawnRules);
-        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.STEGOSAURUS.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Stegosaurus::checkAnimalSpawnRules);
-        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.TRICERATOPS.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Triceratops::checkAnimalSpawnRules);
-        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.TYRANNOSAURUS.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Tyrannosaurus::checkAnimalSpawnRules);
-        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.VELOCIRAPTOR.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Velociraptor::checkAnimalSpawnRules);
-        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.CARNOTAURUS.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Carnotaurus::checkAnimalSpawnRules);
-        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Cryolophosaurus::checkAnimalSpawnRules);
-        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.THERIZINOSAURUS.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Therizinosaurus::checkAnimalSpawnRules);
+        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Brachiosaurus::checkAnimalSpawnRules);
+        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Dilophosaurus::checkAnimalSpawnRules);
+        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.MOSASAURUS.get(), SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mosasaurus::checkMosasaurusSpawnRules);
+        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.NAUTILUS.get(), SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Nautilus::checkNautilusSpawnRules);
+        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.FUTABASAURUS.get(), SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Futabasaurus::checkFutabasaurusSpawnRules);
+        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.PTERANODON.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Pteranodon::checkAnimalSpawnRules);
+        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.STEGOSAURUS.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Stegosaurus::checkAnimalSpawnRules);
+        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.TRICERATOPS.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Triceratops::checkAnimalSpawnRules);
+        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.TYRANNOSAURUS.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Tyrannosaurus::checkAnimalSpawnRules);
+        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.VELOCIRAPTOR.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Velociraptor::checkAnimalSpawnRules);
+        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.CARNOTAURUS.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Carnotaurus::checkAnimalSpawnRules);
+        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Cryolophosaurus::checkAnimalSpawnRules);
+        BasicEvents.addSpawnPlacement(FossilsLegacyEntityTypes.THERIZINOSAURUS.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Therizinosaurus::checkAnimalSpawnRules);
     }
 }

@@ -2,7 +2,7 @@ package willatendo.fossilslegacy.server.dimension;
 
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.MultiNoiseBiomeSourceParameterList;
@@ -15,8 +15,8 @@ public class FossilsLegacyMultiNoiseBiomeSourceParameterLists {
         return ResourceKey.create(Registries.MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST, FossilsLegacyUtils.resource(name));
     }
 
-    public static void bootstrap(BootstapContext<MultiNoiseBiomeSourceParameterList> bootstapContext) {
-        HolderGetter<Biome> biomeGetter = bootstapContext.lookup(Registries.BIOME);
-        bootstapContext.register(PREHISTORIC, new MultiNoiseBiomeSourceParameterList(FossilsLegacyBiomeSources.PREHISTORIC, biomeGetter));
+    public static void bootstrap(BootstrapContext<MultiNoiseBiomeSourceParameterList> bootstrapContext) {
+        HolderGetter<Biome> biomeGetter = bootstrapContext.lookup(Registries.BIOME);
+        bootstrapContext.register(PREHISTORIC, new MultiNoiseBiomeSourceParameterList(FossilsLegacyBiomeSources.PREHISTORIC, biomeGetter));
     }
 }

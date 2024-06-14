@@ -4,16 +4,11 @@ import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionUtils;
-import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.gameevent.GameEvent;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 
@@ -45,7 +40,7 @@ public class FossilsLegacyCauldronInteraction {
                 level.gameEvent(null, GameEvent.FLUID_PICKUP, blockPos);
             }
 
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
         });
         FossilsLegacyCauldronInteraction.defaultFill(cookedChickenSoup);
         Map<Item, CauldronInteraction> rawBerryMedley = RAW_BERRY_MEDLEY.map();
@@ -62,7 +57,7 @@ public class FossilsLegacyCauldronInteraction {
                 level.gameEvent(null, GameEvent.FLUID_PICKUP, blockPos);
             }
 
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
         });
         FossilsLegacyCauldronInteraction.defaultFill(cookedBerryMedley);
         FossilsLegacyCauldronInteraction.modFill(CauldronInteraction.EMPTY.map());
