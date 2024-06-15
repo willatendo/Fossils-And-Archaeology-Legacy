@@ -97,6 +97,11 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
     }
 
     @Override
+    public float renderScale() {
+        return 0.8F + (0.2F * (float) this.getGrowthStage());
+    }
+
+    @Override
     public void aiStep() {
         this.handleRiding();
         super.aiStep();
@@ -254,16 +259,6 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
         this.airAngle = compoundTag.getFloat("AirAngle");
         this.airPitch = compoundTag.getFloat("AirPitch");
         this.landing = compoundTag.getBoolean("IsLanding");
-    }
-
-    @Override
-    public float getXScaling(Dinosaur dinosaur) {
-        return 0.8F + (0.2F * (float) dinosaur.getGrowthStage());
-    }
-
-    @Override
-    public float getYScaling(Dinosaur dinosaur) {
-        return 0.8F + (0.2F * (float) dinosaur.getGrowthStage());
     }
 
     @Override

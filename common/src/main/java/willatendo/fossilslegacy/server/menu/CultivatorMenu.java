@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.server.menu;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -96,13 +97,13 @@ public class CultivatorMenu extends AbstractContainerMenu {
         return itemStack;
     }
 
-    public int getOnProgress() {
+    public float getOnProgress() {
         int onDuration = this.cultivatorBlockEntity.containerData.get(1);
         if (onDuration == 0) {
             onDuration = 100;
         }
 
-        return this.cultivatorBlockEntity.containerData.get(0) * 14 / onDuration;
+        return Mth.clamp(this.cultivatorBlockEntity.containerData.get(0) / (float) onDuration, 0.0F, 1.0F);
     }
 
     public int getCultivationProgress() {

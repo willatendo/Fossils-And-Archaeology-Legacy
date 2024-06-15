@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.client.render;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
+import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FossilsLegacyModels;
 import willatendo.fossilslegacy.client.model.pteranodon.AbstractPteranodonModel;
@@ -12,7 +13,7 @@ import willatendo.fossilslegacy.client.model.pteranodon.LandingPteranodonModel;
 import willatendo.fossilslegacy.server.entity.Pteranodon;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class PteranodonRenderer extends DinosaurRenderer<Pteranodon, AbstractPteranodonModel> {
+public class PteranodonRenderer extends MobRenderer<Pteranodon, AbstractPteranodonModel> {
     public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/pteranodon/pteranodon.png");
     private final GroundPteranodonModel groundPteranodonLegacyModel;
     private final FlyingPteranodonModel flyingPteranodonLegacyModel;
@@ -24,7 +25,6 @@ public class PteranodonRenderer extends DinosaurRenderer<Pteranodon, AbstractPte
         this.flyingPteranodonLegacyModel = new FlyingPteranodonModel(context.bakeLayer(FossilsLegacyModels.FLYING_PTERANODON));
         this.landingPteranodonModel = new LandingPteranodonModel(context.bakeLayer(FossilsLegacyModels.LANDING_PTERANODON));
 
-        this.shadowModification = 0.125F;
     }
 
     @Override

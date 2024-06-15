@@ -10,7 +10,7 @@ import willatendo.fossilslegacy.client.model.BrachiosaurusModel;
 import willatendo.fossilslegacy.server.entity.Brachiosaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class BrachiosaurusRenderer extends DinosaurRenderer<Brachiosaurus, BrachiosaurusModel> {
+public class BrachiosaurusRenderer extends MobRenderer<Brachiosaurus, BrachiosaurusModel> {
     public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/brachiosaurus/brachiosaurus.png");
 
     public BrachiosaurusRenderer(Context context) {

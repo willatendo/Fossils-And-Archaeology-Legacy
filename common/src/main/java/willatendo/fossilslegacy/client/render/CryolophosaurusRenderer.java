@@ -8,7 +8,7 @@ import willatendo.fossilslegacy.client.model.CryolophosaurusModel;
 import willatendo.fossilslegacy.server.entity.Cryolophosaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class CryolophosaurusRenderer extends DinosaurRenderer<Cryolophosaurus, CryolophosaurusModel> {
+public class CryolophosaurusRenderer extends MobRenderer<Cryolophosaurus, CryolophosaurusModel> {
     public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/cryolophosaurus/cryolophosaurus.png");
 
     public CryolophosaurusRenderer(EntityRendererProvider.Context context) {

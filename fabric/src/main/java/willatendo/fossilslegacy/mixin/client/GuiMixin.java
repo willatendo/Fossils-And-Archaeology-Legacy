@@ -23,7 +23,7 @@ public abstract class GuiMixin {
     @Final
     private Minecraft minecraft;
 
-    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Inventory;getArmor(I)Lnet/minecraft/world/item/ItemStack;"), cancellable = true)
+    @Inject(method = "renderCameraOverlays", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Inventory;getArmor(I)Lnet/minecraft/world/item/ItemStack;"), cancellable = true)
     private void fossil_renderSkullOverlay(GuiGraphics guiGraphics, float spyglassScale, CallbackInfo callbackInfo) {
         ItemStack itemStack = this.minecraft.player.getInventory().getArmor(3);
 

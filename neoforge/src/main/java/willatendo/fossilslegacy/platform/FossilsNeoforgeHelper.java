@@ -18,7 +18,6 @@ import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
 import willatendo.fossilslegacy.server.config.FossilsLegacyConfig;
 import willatendo.fossilslegacy.server.dimension.TimeMachineTeleporter;
 import willatendo.fossilslegacy.server.item.DeferredDinosaurSpawnEggItem;
-import willatendo.simplelibrary.server.registry.SimpleHolder;
 
 import java.util.function.Supplier;
 
@@ -34,7 +33,7 @@ public class FossilsNeoforgeHelper implements FossilsModloaderHelper {
     }
 
     @Override
-    public <T> SimpleHolder<EntityDataSerializer<Holder<T>>> registerDataSerializer(String id, StreamCodec<RegistryFriendlyByteBuf, Holder<T>> streamCodec) {
+    public <T> Supplier<EntityDataSerializer<Holder<T>>> registerDataSerializer(String id, StreamCodec<RegistryFriendlyByteBuf, Holder<T>> streamCodec) {
         return FossilsLegacyNeoforgeMod.ENTITY_DATA_SERIALIZER.register(id, () -> EntityDataSerializer.forValueType(streamCodec));
     }
 

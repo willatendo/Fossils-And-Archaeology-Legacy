@@ -88,6 +88,11 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
     }
 
     @Override
+    public float renderScale() {
+        return 0.2F + (0.1F * (float) this.getGrowthStage());
+    }
+
+    @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D));
@@ -208,16 +213,6 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
         if (itemCompoundTag != null && !itemCompoundTag.isEmpty()) {
             this.setHeldItem(ItemStack.parseOptional(this.registryAccess(), itemCompoundTag));
         }
-    }
-
-    @Override
-    public float getXScaling(Dinosaur dinosaur) {
-        return 0.2F + (0.1F * (float) dinosaur.getGrowthStage());
-    }
-
-    @Override
-    public float getYScaling(Dinosaur dinosaur) {
-        return 0.2F + (0.1F * (float) dinosaur.getGrowthStage());
     }
 
     @Override

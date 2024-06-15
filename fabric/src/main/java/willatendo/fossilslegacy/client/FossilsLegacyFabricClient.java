@@ -7,11 +7,11 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.world.entity.player.Player;
-import willatendo.fossilslegacy.network.BasicPackets;
+import willatendo.fossilslegacy.network.ServerboundSinkPacket;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.Futabasaurus;
 
@@ -24,6 +24,10 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         KeyBindingHelper.registerKeyBinding(FossilsLegacyKeys.SINK);
 
         FossilsLegacyClient.init();
+
+        FossilsLegacyClient.CLIENT_EVENTS_HOLDER.registerAllMenuScreens(menuScreenEntry -> {
+            MenuScreens.register(menuScreenEntry.menuType(), menuScreenEntry.screenConstructor());
+        });
 
         FossilsLegacyClient.CLIENT_EVENTS_HOLDER.registerAllEntityModels(entityModel -> {
             EntityRendererRegistry.register(entityModel.entityType(), entityModel.entityRendererProvider());
@@ -42,10 +46,10 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
                 if (player.isPassenger()) {
                     if (player.getVehicle() instanceof Futabasaurus) {
                         if (FossilsLegacyKeys.SINK.isDown()) {
-                            ClientPlayNetworking.send(BasicPackets.SINK, PacketByteBufs.create().writeBoolean(true));
+                            ClientPlayNetworking.send(new ServerboundSinkPacket(true));
                         }
                         if (FossilsLegacyKeys.SINK.consumeClick() == false) {
-                            ClientPlayNetworking.send(BasicPackets.SINK, PacketByteBufs.create().writeBoolean(false));
+                            ClientPlayNetworking.send(new ServerboundSinkPacket(false));
                         }
                     }
                 }

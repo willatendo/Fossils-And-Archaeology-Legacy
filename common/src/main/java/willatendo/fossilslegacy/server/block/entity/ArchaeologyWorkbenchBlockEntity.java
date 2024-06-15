@@ -24,6 +24,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeManager.CachedCheck;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import willatendo.fossilslegacy.server.block.ArchaeologyWorkbenchBlock;
@@ -51,9 +52,13 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
         public int get(int slot) {
             switch (slot) {
                 case 0:
+                    if (ArchaeologyWorkbenchBlockEntity.this.onDuration > 32767) {
+                        return Mth.floor((double) ArchaeologyWorkbenchBlockEntity.this.onTime / (double) ArchaeologyWorkbenchBlockEntity.this.onDuration * 32767.0);
+                    }
+
                     return ArchaeologyWorkbenchBlockEntity.this.onTime;
                 case 1:
-                    return ArchaeologyWorkbenchBlockEntity.this.onDuration;
+                    return Math.min(ArchaeologyWorkbenchBlockEntity.this.onDuration, 32767);
                 case 2:
                     return ArchaeologyWorkbenchBlockEntity.this.archaeologyProgress;
                 case 3:
@@ -66,19 +71,11 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
         @Override
         public void set(int slot, int set) {
             switch (slot) {
-                case 0:
-                    ArchaeologyWorkbenchBlockEntity.this.onTime = set;
-                    break;
-                case 1:
-                    ArchaeologyWorkbenchBlockEntity.this.onDuration = set;
-                    break;
-                case 2:
-                    ArchaeologyWorkbenchBlockEntity.this.archaeologyProgress = set;
-                    break;
-                case 3:
-                    ArchaeologyWorkbenchBlockEntity.this.archaeologyTotalTime = set;
+                case 0 -> ArchaeologyWorkbenchBlockEntity.this.onTime = set;
+                case 1 -> ArchaeologyWorkbenchBlockEntity.this.onDuration = set;
+                case 2 -> ArchaeologyWorkbenchBlockEntity.this.archaeologyProgress = set;
+                case 3 -> ArchaeologyWorkbenchBlockEntity.this.archaeologyTotalTime = set;
             }
-
         }
 
         @Override
@@ -144,6 +141,7 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
         boolean hasFuel = !fuel.isEmpty();
         ItemStack input = archaeologyWorkbenchBlockEntity.itemStacks.get(0);
         if (input.is(FossilsLegacyItemTags.REPAIR_WHEN_BROKEN_IN_ARCHAEOLOGY_TABLE) && !(input.isDamaged())) {
+            return;
         } else {
             if (archaeologyWorkbenchBlockEntity.isOn() || hasFuel && hasInput) {
 

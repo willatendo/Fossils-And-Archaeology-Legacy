@@ -81,6 +81,11 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Rid
     }
 
     @Override
+    public float renderScale() {
+        return 1.5F + (0.3F * (float) this.getGrowthStage());
+    }
+
+    @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
@@ -111,16 +116,6 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Rid
             }
         }
         return super.interactAt(player, vec3, interactionHand);
-    }
-
-    @Override
-    public float getXScaling(Dinosaur dinosaur) {
-        return 1.5F + (0.3F * (float) dinosaur.getGrowthStage());
-    }
-
-    @Override
-    public float getYScaling(Dinosaur dinosaur) {
-        return 1.5F + (0.3F * (float) dinosaur.getGrowthStage());
     }
 
     @Override

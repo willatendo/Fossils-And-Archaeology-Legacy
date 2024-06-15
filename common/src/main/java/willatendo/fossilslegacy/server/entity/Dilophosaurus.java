@@ -78,6 +78,11 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
     }
 
     @Override
+    public float renderScale() {
+        return 0.2F + (0.1F * (float) this.getGrowthStage());
+    }
+
+    @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D));
@@ -141,16 +146,6 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
         super.readAdditionalSaveData(compoundTag);
 
         this.setAttacking(compoundTag.getBoolean("Attacking"));
-    }
-
-    @Override
-    public float getXScaling(Dinosaur dinosaur) {
-        return 0.2F + (0.1F * (float) dinosaur.getGrowthStage());
-    }
-
-    @Override
-    public float getYScaling(Dinosaur dinosaur) {
-        return 0.2F + (0.1F * (float) dinosaur.getGrowthStage());
     }
 
     public boolean isAttacking() {

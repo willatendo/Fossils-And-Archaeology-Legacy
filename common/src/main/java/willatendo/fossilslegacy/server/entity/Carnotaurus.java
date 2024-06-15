@@ -76,6 +76,11 @@ public class Carnotaurus extends Dinosaur implements DinopediaInformation, SubSp
     }
 
     @Override
+    public float renderScale() {
+        return 0.5F + (0.3F * (float) this.getGrowthStage());
+    }
+
+    @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
@@ -144,16 +149,6 @@ public class Carnotaurus extends Dinosaur implements DinopediaInformation, SubSp
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
         this.setSubSpecies(compoundTag.getInt("SubSpecies"));
-    }
-
-    @Override
-    public float getXScaling(Dinosaur dinosaur) {
-        return 0.5F + (0.3F * (float) dinosaur.getGrowthStage());
-    }
-
-    @Override
-    public float getYScaling(Dinosaur dinosaur) {
-        return 0.5F + (0.3F * (float) dinosaur.getGrowthStage());
     }
 
     @Override

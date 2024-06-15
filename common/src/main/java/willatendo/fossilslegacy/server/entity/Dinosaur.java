@@ -165,7 +165,11 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 
     @Override
     public float getScale() {
-        return 1.0F + (((float) this.getBoundingBoxGrowth()) * ((float) this.getGrowthStage()));
+        return this.renderScale();
+    }
+
+    public float renderScale() {
+        return 1.0F;
     }
 
     @Override
@@ -410,13 +414,5 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
         } else {
             return null;
         }
-    }
-
-    public float getXScaling(Dinosaur dinosaur) {
-        return 0.0F;
-    }
-
-    public float getYScaling(Dinosaur dinosaur) {
-        return 0.0F;
     }
 }

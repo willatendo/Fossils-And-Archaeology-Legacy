@@ -76,6 +76,11 @@ public class Therizinosaurus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
+    public float renderScale() {
+        return 0.5F + (0.3F * (float) this.getGrowthStage());
+    }
+
+    @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
@@ -98,16 +103,6 @@ public class Therizinosaurus extends Dinosaur implements DinopediaInformation {
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
         builder.define(SUB_SPECIES, 0);
-    }
-
-    @Override
-    public float getXScaling(Dinosaur dinosaur) {
-        return 0.5F + (0.3F * (float) dinosaur.getGrowthStage());
-    }
-
-    @Override
-    public float getYScaling(Dinosaur dinosaur) {
-        return 0.5F + (0.3F * (float) dinosaur.getGrowthStage());
     }
 
     @Override

@@ -115,6 +115,11 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
     }
 
     @Override
+    public float renderScale() {
+        return 0.5F + (0.5125F * (float) this.getGrowthStage());
+    }
+
+    @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this) {
             @Override
@@ -324,16 +329,6 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
         this.setKnockedOut(compoundTag.getBoolean("KnockedOut"));
-    }
-
-    @Override
-    public float getXScaling(Dinosaur dinosaur) {
-        return 0.5F + (0.5125F * (float) dinosaur.getGrowthStage());
-    }
-
-    @Override
-    public float getYScaling(Dinosaur dinosaur) {
-        return 0.5F + (0.5125F * (float) dinosaur.getGrowthStage());
     }
 
     @Override

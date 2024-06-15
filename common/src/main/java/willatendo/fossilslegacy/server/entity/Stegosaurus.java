@@ -70,13 +70,8 @@ public class Stegosaurus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
-    public float getXScaling(Dinosaur dinosaur) {
-        return 1.5F + (0.3F * (float) dinosaur.getGrowthStage());
-    }
-
-    @Override
-    public float getYScaling(Dinosaur dinosaur) {
-        return 1.5F + (0.3F * (float) dinosaur.getGrowthStage());
+    public float renderScale() {
+        return 1.5F + (0.3F * (float) this.getGrowthStage());
     }
 
     @Override

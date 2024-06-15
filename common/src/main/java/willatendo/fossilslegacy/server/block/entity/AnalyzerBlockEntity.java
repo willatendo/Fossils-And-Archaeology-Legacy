@@ -60,14 +60,9 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
         @Override
         public void set(int slot, int set) {
             switch (slot) {
-                case 0:
-                    AnalyzerBlockEntity.this.onTime = set;
-                    break;
-                case 1:
-                    AnalyzerBlockEntity.this.analyzationProgress = set;
-                    break;
-                case 2:
-                    AnalyzerBlockEntity.this.analyzationTotalTime = set;
+                case 0 -> AnalyzerBlockEntity.this.onTime = set;
+                case 1 -> AnalyzerBlockEntity.this.analyzationProgress = set;
+                case 2 -> AnalyzerBlockEntity.this.analyzationTotalTime = set;
             }
 
         }

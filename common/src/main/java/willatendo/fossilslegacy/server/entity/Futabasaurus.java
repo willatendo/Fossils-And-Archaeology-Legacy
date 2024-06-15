@@ -235,16 +235,6 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
         this.setTargetY(compoundTag.getFloat("TargetY"));
     }
 
-    @Override
-    public float getXScaling(Dinosaur dinosaur) {
-        return 1.5F + (0.3F * (float) dinosaur.getGrowthStage());
-    }
-
-    @Override
-    public float getYScaling(Dinosaur dinosaur) {
-        return 1.5F + (0.3F * (float) dinosaur.getGrowthStage());
-    }
-
     public boolean shouldSink() {
         return this.entityData.get(SHOULD_SINK);
     }
@@ -334,6 +324,11 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
                 this.setYya(0.0F);
             }
         }
+    }
+
+    @Override
+    public float renderScale() {
+        return 1.5F + (0.3F * (float) this.getGrowthStage());
     }
 
     private void creatureFloat() {

@@ -54,9 +54,13 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         public int get(int slot) {
             switch (slot) {
                 case 0:
+                    if (CultivatorBlockEntity.this.onDuration > 32767) {
+                        return Mth.floor((double) CultivatorBlockEntity.this.onTime / (double) CultivatorBlockEntity.this.onDuration * 32767.0);
+                    }
+
                     return CultivatorBlockEntity.this.onTime;
                 case 1:
-                    return CultivatorBlockEntity.this.onDuration;
+                    return Math.min(CultivatorBlockEntity.this.onDuration, 32767);
                 case 2:
                     return CultivatorBlockEntity.this.cultivationProgress;
                 case 3:

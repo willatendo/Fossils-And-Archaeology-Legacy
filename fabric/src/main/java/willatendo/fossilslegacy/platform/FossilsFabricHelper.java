@@ -4,8 +4,10 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.IdMap;
+import net.minecraft.core.Holder;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.server.level.ServerLevel;
@@ -17,7 +19,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.portal.PortalInfo;
-import willatendo.fossilslegacy.network.BasicPackets;
+import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.block.entity.TimeMachineBlockEntity;
 import willatendo.fossilslegacy.server.config.FabricConfigHelper;
@@ -31,7 +33,7 @@ public class FossilsFabricHelper implements FossilsModloaderHelper {
     public void sendTimeMachinePacket(BlockPos blockPos) {
         FriendlyByteBuf friendlyByteBuf = PacketByteBufs.create();
         friendlyByteBuf.writeBlockPos(blockPos);
-        ClientPlayNetworking.send(BasicPackets.TIME_MACHINE_UPDATE, friendlyByteBuf);
+        ClientPlayNetworking.send(new ServerboundTimeMachineUpdatePacket(blockPos));
     }
 
     @Override
@@ -45,8 +47,8 @@ public class FossilsFabricHelper implements FossilsModloaderHelper {
     }
 
     @Override
-    public <T> Supplier<EntityDataSerializer<T>> registerDataSerializer(String id, IdMap<T> idMap) {
-        EntityDataSerializer entityDataSerializer = EntityDataSerializer.simpleId(idMap);
+    public <T> Supplier<EntityDataSerializer<Holder<T>>> registerDataSerializer(String id, StreamCodec<RegistryFriendlyByteBuf, Holder<T>> streamCodec) {
+        EntityDataSerializer entityDataSerializer = EntityDataSerializer.forValueType(streamCodec);
         EntityDataSerializers.registerSerializer(entityDataSerializer);
         return () -> entityDataSerializer;
     }

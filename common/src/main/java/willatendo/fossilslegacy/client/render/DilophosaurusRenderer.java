@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.client.render;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -9,7 +8,7 @@ import willatendo.fossilslegacy.client.model.DilophosaurusModel;
 import willatendo.fossilslegacy.server.entity.Dilophosaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class DilophosaurusRenderer extends DinosaurRenderer<Dilophosaurus, DilophosaurusModel> {
+public class DilophosaurusRenderer extends MobRenderer<Dilophosaurus, DilophosaurusModel> {
     public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/dilophosaurus/dilophosaurus.png");
     public static final ResourceLocation AGGRESSIVE_TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/dilophosaurus/aggressive_dilophosaurus.png");
 

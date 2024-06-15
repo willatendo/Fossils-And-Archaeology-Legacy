@@ -72,13 +72,8 @@ public class Cryolophosaurus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
-    public float getXScaling(Dinosaur dinosaur) {
-        return 0.25F + (0.2F * (float) dinosaur.getGrowthStage());
-    }
-
-    @Override
-    public float getYScaling(Dinosaur dinosaur) {
-        return 0.25F + (0.2F * (float) dinosaur.getGrowthStage());
+    public float renderScale() {
+        return 0.25F + (0.2F * (float) this.getGrowthStage());
     }
 
     @Override

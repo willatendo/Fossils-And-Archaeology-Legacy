@@ -76,7 +76,7 @@ public class ModEvents {
     public static void registerSpawnPlacements() {
         BasicEvents.spawnPlacementsInit();
         BasicEvents.EVENTS_HOLDER.registerAllSpawnPlacements(spawnPlacementEntry -> {
-            SpawnPlacements.register(spawnPlacementEntry.entityType(), spawnPlacementEntry.type(), spawnPlacementEntry.types(), spawnPlacementEntry.spawnPredicate());
+            SpawnPlacements.register(spawnPlacementEntry.entityType(), spawnPlacementEntry.spawnPlacementType(), spawnPlacementEntry.types(), spawnPlacementEntry.spawnPredicate());
         });
     }
 
