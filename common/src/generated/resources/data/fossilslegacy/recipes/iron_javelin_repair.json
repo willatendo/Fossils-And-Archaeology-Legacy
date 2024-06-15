@@ -3,6 +3,8 @@
   "ingredient": {
     "item": "fossilslegacy:broken_iron_javelin"
   },
-  "result": "fossilslegacy:iron_javelin",
+  "result": {
+    "id": "fossilslegacy:iron_javelin"
+  },
   "time": 3000
 }

@@ -11,8 +11,8 @@
     },
     "hidden": true,
     "icon": {
-      "item": "fossilslegacy:ancient_sword",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "fossilslegacy:ancient_sword"
     },
     "title": {
       "translate": "advancements.fossilslegacy.legacy.pigman.title"

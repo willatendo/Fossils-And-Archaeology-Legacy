@@ -1,6 +1,6 @@
 package willatendo.fossilslegacy.server.structure;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.block.Rotation;
@@ -14,7 +14,7 @@ import willatendo.fossilslegacy.server.structure.piece.AcademyPieces;
 import java.util.Optional;
 
 public class AcademyStructure extends Structure {
-    public static final Codec<AcademyStructure> CODEC = simpleCodec(AcademyStructure::new);
+    public static final MapCodec<AcademyStructure> CODEC = simpleCodec(AcademyStructure::new);
 
     public AcademyStructure(Structure.StructureSettings structureSettings) {
         super(structureSettings);

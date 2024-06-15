@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_fossil_outputs": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:fossil"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:fossil"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_fossil_outputs"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:fossil"
+    ]
+  }
+}

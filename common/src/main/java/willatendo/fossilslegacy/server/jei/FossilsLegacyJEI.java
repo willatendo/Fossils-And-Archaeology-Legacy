@@ -145,6 +145,6 @@ public class FossilsLegacyJEI implements IModPlugin {
 
     @Override
     public void registerItemSubtypes(ISubtypeRegistration iSubtypeRegistration) {
-        iSubtypeRegistration.useNbtForSubtypes(FossilsLegacyItems.MAGIC_CONCH.get());
+        iSubtypeRegistration.registerSubtypeInterpreter(FossilsLegacyItems.MAGIC_CONCH.get(), MagicConchSubtypeInterpreter.INSTANCE);
     }
 }

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:overworld_coin"
-            ]
+            "items": "fossilslegacy:overworld_coin"
           }
         ]
       },
@@ -20,7 +18,8 @@
     },
     "hidden": true,
     "icon": {
-      "item": "fossilslegacy:overworld_coin"
+      "count": 1,
+      "id": "fossilslegacy:overworld_coin"
     },
     "title": {
       "translate": "advancements.fossilslegacy.legacy.overworld_coin.title"

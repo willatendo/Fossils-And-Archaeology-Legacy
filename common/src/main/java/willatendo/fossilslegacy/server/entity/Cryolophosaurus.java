@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.entity;
 
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
@@ -14,6 +15,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.entity.goal.*;
+import willatendo.fossilslegacy.server.entity.util.CommandType;
+import willatendo.fossilslegacy.server.entity.util.Diet;
+import willatendo.fossilslegacy.server.entity.util.DinoUtils;
+import willatendo.fossilslegacy.server.entity.util.DinopediaInformation;
+import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -41,8 +47,8 @@ public class Cryolophosaurus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
-    public EggVariant getEggVariant() {
-        return FossilsLegacyEggVariants.CRYOLOPHOSAURUS.get();
+    public Holder<EggVariant> getEggVariant() {
+        return FossilsLegacyEggVariants.CRYOLOPHOSAURUS;
     }
 
     @Override
@@ -63,6 +69,16 @@ public class Cryolophosaurus extends Dinosaur implements DinopediaInformation {
     @Override
     public Diet getDiet() {
         return Diet.carnivore();
+    }
+
+    @Override
+    public float getXScaling(Dinosaur dinosaur) {
+        return 0.25F + (0.2F * (float) dinosaur.getGrowthStage());
+    }
+
+    @Override
+    public float getYScaling(Dinosaur dinosaur) {
+        return 0.25F + (0.2F * (float) dinosaur.getGrowthStage());
     }
 
     @Override

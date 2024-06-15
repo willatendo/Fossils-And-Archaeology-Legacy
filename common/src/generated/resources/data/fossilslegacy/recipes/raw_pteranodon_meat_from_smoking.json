@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "fossilslegacy:cooked_pteranodon_meat"
+  },
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:raw_pteranodon_meat"
+  }
+}

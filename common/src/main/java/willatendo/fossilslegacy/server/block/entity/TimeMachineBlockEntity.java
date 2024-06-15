@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.server.block.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -83,17 +84,17 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
     }
 
     @Override
-    public void load(CompoundTag compoundTag) {
-        super.load(compoundTag);
+    protected void loadAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
+        super.loadAdditional(compoundTag, provider);
         this.itemStacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-        ContainerHelper.loadAllItems(compoundTag, this.itemStacks);
+        ContainerHelper.loadAllItems(compoundTag, this.itemStacks, provider);
         this.chargeLevel = compoundTag.getInt("ChargeLevel");
     }
 
     @Override
-    protected void saveAdditional(CompoundTag compoundTag) {
-        super.saveAdditional(compoundTag);
-        ContainerHelper.saveAllItems(compoundTag, this.itemStacks);
+    protected void saveAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
+        super.saveAdditional(compoundTag, provider);
+        ContainerHelper.saveAllItems(compoundTag, this.itemStacks, provider);
         compoundTag.putInt("ChargeLevel", this.chargeLevel);
     }
 
@@ -253,6 +254,16 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
     @Override
     protected Component getDefaultName() {
         return FossilsLegacyUtils.translation("menu", "time_machine");
+    }
+
+    @Override
+    protected NonNullList<ItemStack> getItems() {
+        return this.itemStacks;
+    }
+
+    @Override
+    protected void setItems(NonNullList<ItemStack> itemStacks) {
+        this.itemStacks = itemStacks;
     }
 
     @Override

@@ -3,6 +3,8 @@
   "ingredient": {
     "item": "fossilslegacy:chicken_dna"
   },
-  "result": "fossilslegacy:incubated_chicken_egg",
+  "result": {
+    "id": "fossilslegacy:incubated_chicken_egg"
+  },
   "time": 6000
 }

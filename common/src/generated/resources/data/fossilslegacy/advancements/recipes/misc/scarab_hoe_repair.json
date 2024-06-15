@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_scarab_gem_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:scarab_gem_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:scarab_hoe_repair"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_scarab_gem_hoe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:scarab_hoe_repair"
+    ]
+  }
+}

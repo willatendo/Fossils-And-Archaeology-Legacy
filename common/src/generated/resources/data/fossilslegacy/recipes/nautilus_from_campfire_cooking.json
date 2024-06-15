@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 400,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "fossilslegacy:sio_chiu_le"
+  },
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:nautilus"
+  }
+}

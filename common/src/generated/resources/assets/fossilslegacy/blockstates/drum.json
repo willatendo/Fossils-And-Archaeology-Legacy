@@ -1,13 +1,13 @@
 {
   "variants": {
-    "order=follow": {
+    "order=1": {
       "model": "fossilslegacy:block/drum_follow"
     },
-    "order=free_move": {
-      "model": "fossilslegacy:block/drum_free_move"
-    },
-    "order=stay": {
+    "order=2": {
       "model": "fossilslegacy:block/drum_stay"
+    },
+    "order=3": {
+      "model": "fossilslegacy:block/drum_free_move"
     }
   }
 }

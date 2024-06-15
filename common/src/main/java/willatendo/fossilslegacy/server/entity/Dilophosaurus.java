@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.entity;
 
+import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -19,6 +20,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.entity.goal.*;
+import willatendo.fossilslegacy.server.entity.util.CommandType;
+import willatendo.fossilslegacy.server.entity.util.Diet;
+import willatendo.fossilslegacy.server.entity.util.DinopediaInformation;
+import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -48,8 +53,8 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
     }
 
     @Override
-    public EggVariant getEggVariant() {
-        return FossilsLegacyEggVariants.DILOPHOSAURUS.get();
+    public Holder<EggVariant> getEggVariant() {
+        return FossilsLegacyEggVariants.DILOPHOSAURUS;
     }
 
     @Override
@@ -119,9 +124,9 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(ATTACKING, false);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(ATTACKING, false);
     }
 
     @Override
@@ -136,6 +141,16 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
         super.readAdditionalSaveData(compoundTag);
 
         this.setAttacking(compoundTag.getBoolean("Attacking"));
+    }
+
+    @Override
+    public float getXScaling(Dinosaur dinosaur) {
+        return 0.2F + (0.1F * (float) dinosaur.getGrowthStage());
+    }
+
+    @Override
+    public float getYScaling(Dinosaur dinosaur) {
+        return 0.2F + (0.1F * (float) dinosaur.getGrowthStage());
     }
 
     public boolean isAttacking() {

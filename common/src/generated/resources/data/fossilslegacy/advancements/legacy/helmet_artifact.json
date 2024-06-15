@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:ancient_helmet_artifact"
-            ]
+            "items": "fossilslegacy:ancient_helmet_artifact"
           }
         ]
       },
@@ -20,7 +18,8 @@
     },
     "hidden": true,
     "icon": {
-      "item": "fossilslegacy:ancient_helmet_artifact"
+      "count": 1,
+      "id": "fossilslegacy:ancient_helmet_artifact"
     },
     "title": {
       "translate": "advancements.fossilslegacy.legacy.ancient_helmet_artifact.title"

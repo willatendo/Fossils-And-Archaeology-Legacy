@@ -4,7 +4,7 @@
   "group": "cultivators",
   "key": {
     "#": {
-      "item": "minecraft:light_blue_stained_glass"
+      "item": "minecraft:glass"
     },
     "%": {
       "item": "minecraft:water_bucket"
@@ -19,6 +19,7 @@
     "@@@"
   ],
   "result": {
-    "item": "fossilslegacy:light_blue_cultivator"
+    "count": 1,
+    "id": "fossilslegacy:light_blue_cultivator"
   }
 }

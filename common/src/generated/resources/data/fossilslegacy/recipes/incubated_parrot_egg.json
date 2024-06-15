@@ -3,6 +3,8 @@
   "ingredient": {
     "item": "fossilslegacy:parrot_dna"
   },
-  "result": "fossilslegacy:incubated_parrot_egg",
+  "result": {
+    "id": "fossilslegacy:incubated_parrot_egg"
+  },
   "time": 6000
 }

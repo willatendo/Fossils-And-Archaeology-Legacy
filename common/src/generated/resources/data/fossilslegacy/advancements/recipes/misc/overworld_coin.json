@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
+    "has_prehistoric_coin": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:prehistoric_coin"
-            ]
+            "items": "fossilslegacy:prehistoric_coin"
           }
         ]
       },
@@ -23,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_item"
+      "has_prehistoric_coin"
     ]
   ],
   "rewards": {

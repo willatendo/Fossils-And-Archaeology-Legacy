@@ -3,7 +3,9 @@ package willatendo.fossilslegacy.server.entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
+import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.item.FossilsLegacyLootTables;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
@@ -33,7 +35,7 @@ public class FossilsLegacyEggVariants {
     }
 
     public static SimpleHolder<EggVariant> register(String id, boolean wet, Function<Egg, Boolean> incubate, Supplier<EntityType> entityType, Supplier<Item> pick) {
-        return EGG_VARIANTS.register(id, () -> new EggVariant(FossilsLegacyUtils.resource("textures/entities/egg/" + id + ".png"), wet, incubate, FossilsLegacyUtils.resource("entities/egg/" + id), entityType, pick));
+        return EGG_VARIANTS.register(id, () -> new EggVariant(FossilsLegacyUtils.resource("textures/entities/egg/" + id + ".png"), wet, incubate, FossilsLegacyLootTables.create("entities/egg/" + id), entityType, pick));
     }
 
     public static void init(List<SimpleRegistry<?>> simpleRegistries) {

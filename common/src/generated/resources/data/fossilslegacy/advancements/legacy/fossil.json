@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:fossil"
-            ]
+            "items": "fossilslegacy:fossil"
           }
         ]
       },
@@ -20,7 +18,8 @@
     },
     "hidden": true,
     "icon": {
-      "item": "fossilslegacy:fossil"
+      "count": 1,
+      "id": "fossilslegacy:fossil"
     },
     "title": {
       "translate": "advancements.fossilslegacy.legacy.fossil.title"

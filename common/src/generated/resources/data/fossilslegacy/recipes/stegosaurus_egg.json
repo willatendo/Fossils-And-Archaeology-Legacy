@@ -3,6 +3,8 @@
   "ingredient": {
     "item": "fossilslegacy:stegosaurus_dna"
   },
-  "result": "fossilslegacy:stegosaurus_egg",
+  "result": {
+    "id": "fossilslegacy:stegosaurus_egg"
+  },
   "time": 6000
 }

@@ -3,6 +3,8 @@
   "ingredient": {
     "item": "fossilslegacy:carnotaurus_dna"
   },
-  "result": "fossilslegacy:carnotaurus_egg",
+  "result": {
+    "id": "fossilslegacy:carnotaurus_egg"
+  },
   "time": 6000
 }

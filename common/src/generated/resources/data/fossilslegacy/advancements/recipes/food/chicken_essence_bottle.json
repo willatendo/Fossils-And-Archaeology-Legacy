@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
+    "has_cooked_chicken_soup_bucket": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:cooked_chicken_soup_bucket"
-            ]
+            "items": "fossilslegacy:cooked_chicken_soup_bucket"
           }
         ]
       },
@@ -23,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_item"
+      "has_cooked_chicken_soup_bucket"
     ]
   ],
   "rewards": {

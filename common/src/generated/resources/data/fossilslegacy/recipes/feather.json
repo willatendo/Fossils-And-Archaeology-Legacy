@@ -1,0 +1,27 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "minecraft:feather"
+  },
+  "results": [
+    {
+      "result": {
+        "id": "fossilslegacy:chicken_dna"
+      },
+      "weight": 50
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:chicken_dna"
+      },
+      "weight": 50
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:parrot_dna"
+      },
+      "weight": 50
+    }
+  ],
+  "time": 100
+}

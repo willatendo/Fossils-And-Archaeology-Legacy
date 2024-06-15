@@ -6,7 +6,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.TagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
-import willatendo.fossilslegacy.server.entity.FossilVariant;
+import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyFossilVariantTags;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyFossilVariants;
 

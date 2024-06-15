@@ -8,7 +8,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyStoneTabletVariantTags;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyStoneTabletVariants;
-import willatendo.fossilslegacy.server.entity.StoneTabletVariant;
+import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 
 import java.util.concurrent.CompletableFuture;
 

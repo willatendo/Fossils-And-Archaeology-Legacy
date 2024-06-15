@@ -1,12 +1,13 @@
 package willatendo.fossilslegacy.server.entity;
 
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
@@ -18,13 +19,13 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.VariantHolder;
 import net.minecraft.world.entity.decoration.HangingEntity;
-import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
+import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
     private static final EntityDataAccessor<Holder<StoneTabletVariant>> STONE_TABLET_VARIANT = SynchedEntityData.defineId(StoneTablet.class, FossilsLegacyEntityDataSerializers.STONE_TABLET_VARIANTS.get());
     private static final ResourceKey<StoneTabletVariant> DEFAULT_VARIANT = FossilsLegacyStoneTabletVariants.LIGHTING.getKey();
     public static final MapCodec<Holder<StoneTabletVariant>> VARIANT_MAP_CODEC = FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS.registry().holderByNameCodec().fieldOf("variant");
+    public static final Codec<Holder<StoneTabletVariant>> CODEC = VARIANT_MAP_CODEC.codec();
 
     private static Holder<StoneTabletVariant> getDefaultVariant() {
         return FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS.getHolderOrThrow(DEFAULT_VARIANT);
@@ -55,8 +57,8 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
     }
 
     @Override
-    protected void defineSynchedData() {
-        this.entityData.define(STONE_TABLET_VARIANT, getDefaultVariant());
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        builder.define(STONE_TABLET_VARIANT, getDefaultVariant());
     }
 
     @Override
@@ -115,7 +117,7 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
-        Holder holder = StoneTablet.loadVariant(compoundTag).orElseGet(StoneTablet::getDefaultVariant);
+        Holder holder = CODEC.parse(NbtOps.INSTANCE, compoundTag).result().orElseGet(StoneTablet::getDefaultVariant);
         this.setVariant(holder);
         this.direction = Direction.from2DDataValue(compoundTag.getByte("FacingDirection"));
         super.readAdditionalSaveData(compoundTag);

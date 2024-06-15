@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:ancient_boots"
-            ]
+            "items": "fossilslegacy:ancient_boots"
           }
         ]
       },
@@ -17,9 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:ancient_chestplate"
-            ]
+            "items": "fossilslegacy:ancient_chestplate"
           }
         ]
       },
@@ -29,9 +25,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:ancient_helmet"
-            ]
+            "items": "fossilslegacy:ancient_helmet"
           }
         ]
       },
@@ -41,9 +35,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:ancient_leggings"
-            ]
+            "items": "fossilslegacy:ancient_leggings"
           }
         ]
       },
@@ -57,8 +49,8 @@
     "frame": "goal",
     "hidden": true,
     "icon": {
-      "item": "fossilslegacy:ancient_chestplate",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "fossilslegacy:ancient_chestplate"
     },
     "title": {
       "translate": "advancements.fossilslegacy.legacy.decked_out.title"

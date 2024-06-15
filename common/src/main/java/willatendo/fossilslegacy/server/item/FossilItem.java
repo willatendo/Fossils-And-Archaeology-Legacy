@@ -6,9 +6,9 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.entity.Fossil;
-import willatendo.fossilslegacy.server.entity.FossilVariant;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyFossilVariantTags;
+import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class FossilItem extends PlaceEntityItem {
         List<Holder<FossilVariant>> fossilVariants = new ArrayList<>();
         FossilsLegacyBuiltInRegistries.FOSSIL_VARIANTS.getTagOrEmpty(FossilsLegacyFossilVariantTags.PLACEABLE_FROM_FOSSIL).forEach(fossilVariants::add);
         Optional<Holder<FossilVariant>> optional = Util.getRandomSafe(fossilVariants, entity.level().getRandom());
-        ((Fossil) entity).setFossilVariant(optional.get().value());
+        ((Fossil) entity).setFossilVariant(optional.get());
         ((Fossil) entity).setSize(0);
     }
 }

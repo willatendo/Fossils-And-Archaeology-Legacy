@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
+    "has_skull_block": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:skull_block"
-            ]
+            "items": "fossilslegacy:skull_block"
           }
         ]
       },
@@ -23,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_item"
+      "has_skull_block"
     ]
   ],
   "rewards": {

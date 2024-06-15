@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:skull_block"
-            ]
+            "items": "fossilslegacy:skull_block"
           }
         ]
       },
@@ -20,7 +18,8 @@
     },
     "hidden": true,
     "icon": {
-      "item": "fossilslegacy:skull_block"
+      "count": 1,
+      "id": "fossilslegacy:skull_block"
     },
     "title": {
       "translate": "advancements.fossilslegacy.legacy.skull_block.title"

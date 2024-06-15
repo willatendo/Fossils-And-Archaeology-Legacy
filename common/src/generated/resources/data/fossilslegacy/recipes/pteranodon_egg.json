@@ -1,0 +1,10 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "ingredient": {
+    "item": "fossilslegacy:pteranodon_dna"
+  },
+  "result": {
+    "id": "fossilslegacy:pteranodon_egg"
+  },
+  "time": 6000
+}

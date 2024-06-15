@@ -19,6 +19,8 @@ import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.recipe.MagicConchRecipe;
 import willatendo.simplelibrary.data.SimpleRecipeProvider;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
@@ -54,7 +56,7 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         this.cultivator(FossilsLegacyBlocks.RED_CULTIVATOR.get(), Items.RED_DYE, Blocks.RED_STAINED_GLASS);
         this.cultivator(FossilsLegacyBlocks.BLACK_CULTIVATOR.get(), Items.BLACK_DYE, Blocks.BLACK_STAINED_GLASS);
         this.shapeless(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get(), IngredientBuilder.build(Items.PAPER), IngredientBuilder.build(Blocks.CRAFTING_TABLE).requires());
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyBlocks.DRUM.get(), PatternBuilder.builder("###", "$%$", "$$$"), IngredientBuilder.build(Items.LEATHER).symbol('#').requires(), IngredientBuilder.build(ItemTags.PLANKS).symbol('$'), IngredientBuilder.build(Items.REDSTONE, '%'));
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyBlocks.DRUM.get(), PatternBuilder.builder("###", "$%$", "$$$"), IngredientBuilder.build(Items.LEATHER).symbol('#').requires(), IngredientBuilder.build(ItemTags.PLANKS).symbol('$'), IngredientBuilder.build(Items.REDSTONE).symbol('%'));
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyBlocks.FEEDER.get(), PatternBuilder.builder("#$#", "%@!", "!!!"), IngredientBuilder.build(Items.IRON_INGOT).symbol('#'), IngredientBuilder.build(Blocks.GLASS).symbol('$'), IngredientBuilder.build(Blocks.STONE_BUTTON).symbol('%'), IngredientBuilder.build(Items.BUCKET).symbol('@'), IngredientBuilder.build(Blocks.STONE).symbol('!').requires());
         this.shapeless(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyItems.RAW_CHICKEN_SOUP_BUCKET.get(), IngredientBuilder.build(Items.CHICKEN), IngredientBuilder.build(Items.BUCKET).requires());
         this.shapeless("skull_bonemeal", RecipeCategory.MISC, Items.BONE_MEAL, 5, IngredientBuilder.build(FossilsLegacyBlocks.SKULL_BLOCK.get()));
@@ -122,18 +124,18 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         this.archaeology(FossilsLegacyItems.ANCIENT_LEGGINGS_ARTIFACT.get(), FossilsLegacyItems.ANCIENT_LEGGINGS.get(), 3000);
         this.archaeology(FossilsLegacyItems.ANCIENT_BOOTS_ARTIFACT.get(), FossilsLegacyItems.ANCIENT_BOOTS.get(), 3000);
         this.archaeology(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get(), FossilsLegacyItems.ANCIENT_SWORD.get(), 3000);
-        this.archaeology(FossilsLegacyItems.SCARAB_GEM_AXE.get(), FossilsLegacyItems.SCARAB_GEM_AXE.get(), 3000);
-        this.archaeology(FossilsLegacyItems.SCARAB_GEM_HOE.get(), FossilsLegacyItems.SCARAB_GEM_HOE.get(), 3000);
-        this.archaeology(FossilsLegacyItems.SCARAB_GEM_PICKAXE.get(), FossilsLegacyItems.SCARAB_GEM_PICKAXE.get(), 3000);
-        this.archaeology(FossilsLegacyItems.SCARAB_GEM_SHOVEL.get(), FossilsLegacyItems.SCARAB_GEM_SHOVEL.get(), 3000);
-        this.archaeology(FossilsLegacyItems.SCARAB_GEM_SWORD.get(), FossilsLegacyItems.SCARAB_GEM_SWORD.get(), 3000);
-        this.archaeology(FossilsLegacyItems.BROKEN_DIAMOND_JAVELIN.get(), FossilsLegacyItems.DIAMOND_JAVELIN.get(), 3000);
-        this.archaeology(FossilsLegacyItems.BROKEN_GOLDEN_JAVELIN.get(), FossilsLegacyItems.GOLDEN_JAVELIN.get(), 3000);
-        this.archaeology(FossilsLegacyItems.BROKEN_IRON_JAVELIN.get(), FossilsLegacyItems.IRON_JAVELIN.get(), 3000);
-        this.archaeology(FossilsLegacyItems.BROKEN_NETHERITE_JAVELIN.get(), FossilsLegacyItems.NETHERITE_JAVELIN.get(), 3000);
-        this.archaeology(FossilsLegacyItems.BROKEN_SCARAB_GEM_JAVELIN.get(), FossilsLegacyItems.SCARAB_GEM_JAVELIN.get(), 3000);
-        this.archaeology(FossilsLegacyItems.BROKEN_STONE_JAVELIN.get(), FossilsLegacyItems.STONE_JAVELIN.get(), 3000);
-        this.archaeology(FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get(), FossilsLegacyItems.WOODEN_JAVELIN.get(), 3000);
+        this.archaeology("scarab_axe_repair", FossilsLegacyItems.SCARAB_GEM_AXE.get(), FossilsLegacyItems.SCARAB_GEM_AXE.get(), 3000);
+        this.archaeology("scarab_hoe_repair", FossilsLegacyItems.SCARAB_GEM_HOE.get(), FossilsLegacyItems.SCARAB_GEM_HOE.get(), 3000);
+        this.archaeology("scarab_pickaxe_repair", FossilsLegacyItems.SCARAB_GEM_PICKAXE.get(), FossilsLegacyItems.SCARAB_GEM_PICKAXE.get(), 3000);
+        this.archaeology("scarab_shovel_repair", FossilsLegacyItems.SCARAB_GEM_SHOVEL.get(), FossilsLegacyItems.SCARAB_GEM_SHOVEL.get(), 3000);
+        this.archaeology("scarab_sword_repair", FossilsLegacyItems.SCARAB_GEM_SWORD.get(), FossilsLegacyItems.SCARAB_GEM_SWORD.get(), 3000);
+        this.archaeology("diamond_javelin_repair", FossilsLegacyItems.BROKEN_DIAMOND_JAVELIN.get(), FossilsLegacyItems.DIAMOND_JAVELIN.get(), 3000);
+        this.archaeology("golden_javelin_repair", FossilsLegacyItems.BROKEN_GOLDEN_JAVELIN.get(), FossilsLegacyItems.GOLDEN_JAVELIN.get(), 3000);
+        this.archaeology("iron_javelin_repair", FossilsLegacyItems.BROKEN_IRON_JAVELIN.get(), FossilsLegacyItems.IRON_JAVELIN.get(), 3000);
+        this.archaeology("netherite_javelin_repair", FossilsLegacyItems.BROKEN_NETHERITE_JAVELIN.get(), FossilsLegacyItems.NETHERITE_JAVELIN.get(), 3000);
+        this.archaeology("scarab_gem_javelin_repair", FossilsLegacyItems.BROKEN_SCARAB_GEM_JAVELIN.get(), FossilsLegacyItems.SCARAB_GEM_JAVELIN.get(), 3000);
+        this.archaeology("stone_javelin_repair", FossilsLegacyItems.BROKEN_STONE_JAVELIN.get(), FossilsLegacyItems.STONE_JAVELIN.get(), 3000);
+        this.archaeology("wooden_javelin_repair", FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get(), FossilsLegacyItems.WOODEN_JAVELIN.get(), 3000);
         this.special("magic_conch", MagicConchRecipe::new);
         this.copySmithingTemplate(FossilsLegacyItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), Blocks.STONE_BRICKS);
 
@@ -175,12 +177,17 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
 
     public void cultivator(ItemLike output, ItemLike dye, ItemLike glass) {
         this.shaped(RecipeCategory.BUILDING_BLOCKS, "cultivators", output, PatternBuilder.builder("#$#", "#%#", "@@@"), IngredientBuilder.build(Blocks.GLASS).symbol('#').requires(), IngredientBuilder.build(dye).symbol('$'), IngredientBuilder.build(Items.WATER_BUCKET).symbol('%'), IngredientBuilder.build(Items.IRON_INGOT).symbol('@'));
-        this.shaped(this.toName(output) + "_from_colored_glass", RecipeCategory.BUILDING_BLOCKS, "cultivators", output, PatternBuilder.builder("# #", "#%#", "@@@"), IngredientBuilder.build(Blocks.GLASS).symbol('#').requires(), IngredientBuilder.build(dye).symbol('$'), IngredientBuilder.build(Items.WATER_BUCKET).symbol('%'), IngredientBuilder.build(Items.IRON_INGOT).symbol('@'));
+        this.shaped(this.toName(output) + "_from_colored_glass", RecipeCategory.BUILDING_BLOCKS, "cultivators", output, PatternBuilder.builder("# #", "#%#", "@@@"), IngredientBuilder.build(Blocks.GLASS).symbol('#').requires(), IngredientBuilder.build(Items.WATER_BUCKET).symbol('%'), IngredientBuilder.build(Items.IRON_INGOT).symbol('@'));
     }
 
     public void cultivate(Item ingredient, ItemLike itemLike, int time) {
         CultivationRecipeBuilder cultivationRecipeBuilder = CultivationRecipeBuilder.recipe(ingredient, itemLike, time).unlockedBy(getHasName(ingredient), has(ingredient));
         this.recipeBuilders.put(this.toName(itemLike), cultivationRecipeBuilder);
+    }
+
+    public void archaeology(String name, Item ingredient, ItemLike itemLike, int time) {
+        ArchaeologyRecipeBuilder archaeologyRecipeBuilder = ArchaeologyRecipeBuilder.recipe(ingredient, itemLike, time).unlockedBy(getHasName(ingredient), has(ingredient));
+        this.recipeBuilders.put(name, archaeologyRecipeBuilder);
     }
 
     public void archaeology(Item ingredient, ItemLike itemLike, int time) {
@@ -220,11 +227,11 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
     }
 
     public void simpleAnalyzation(ItemLike input, Item... dnas) {
-        AnalyzerResult[] analyzerResults = new AnalyzerResult[dnas.length];
-        for (int i = 1; i < dnas.length; i++) {
-            analyzerResults[i] = new AnalyzerResult(dnas[i], 100 / dnas.length);
+        List<AnalyzerResult> analyzerResults = new ArrayList<>();
+        for (Item dna : dnas) {
+            analyzerResults.add(new AnalyzerResult(dna, 100 / dnas.length));
         }
-        this.analyzation(input, dnas[0], 100 / dnas.length, 100, analyzerResults);
+        this.analyzation(input, dnas[0], 100 / dnas.length, 100, analyzerResults.toArray(AnalyzerResult[]::new));
     }
 
     private String toName(ItemLike itemLike) {

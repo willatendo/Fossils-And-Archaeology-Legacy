@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.server.entity;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -28,6 +29,8 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.entity.goal.*;
+import willatendo.fossilslegacy.server.entity.util.*;
+import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -67,8 +70,8 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
     }
 
     @Override
-    public EggVariant getEggVariant() {
-        return FossilsLegacyEggVariants.FUTABASAURUS.get();
+    public Holder<EggVariant> getEggVariant() {
+        return FossilsLegacyEggVariants.FUTABASAURUS;
     }
 
     @Override
@@ -208,11 +211,11 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(SHOULD_SINK, false);
-        this.entityData.define(DIVE_POSE, false);
-        this.entityData.define(TARGET_Y, 0.0F);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(SHOULD_SINK, false);
+        builder.define(DIVE_POSE, false);
+        builder.define(TARGET_Y, 0.0F);
     }
 
     @Override
@@ -230,6 +233,16 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
 
         this.setShouldSink(compoundTag.getBoolean("ShouldSink"));
         this.setTargetY(compoundTag.getFloat("TargetY"));
+    }
+
+    @Override
+    public float getXScaling(Dinosaur dinosaur) {
+        return 1.5F + (0.3F * (float) dinosaur.getGrowthStage());
+    }
+
+    @Override
+    public float getYScaling(Dinosaur dinosaur) {
+        return 1.5F + (0.3F * (float) dinosaur.getGrowthStage());
     }
 
     public boolean shouldSink() {

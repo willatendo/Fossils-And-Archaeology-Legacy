@@ -1,0 +1,15 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "minecraft:bone"
+  },
+  "results": [
+    {
+      "result": {
+        "id": "fossilslegacy:wolf_dna"
+      },
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

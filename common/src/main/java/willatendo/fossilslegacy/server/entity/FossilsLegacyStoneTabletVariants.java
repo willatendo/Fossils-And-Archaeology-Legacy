@@ -1,6 +1,7 @@
 package willatendo.fossilslegacy.server.entity;
 
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
+import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;

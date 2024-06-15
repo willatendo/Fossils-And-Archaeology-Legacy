@@ -15,6 +15,8 @@ import net.neoforged.neoforge.common.data.LanguageProvider;
 import willatendo.fossilslegacy.server.FossilsLegacyCreativeModeTabs;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.*;
+import willatendo.fossilslegacy.server.entity.util.DinoSituation;
+import willatendo.fossilslegacy.server.entity.util.SpeakerType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.util.SimpleUtils;

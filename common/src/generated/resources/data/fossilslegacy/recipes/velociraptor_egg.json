@@ -3,6 +3,8 @@
   "ingredient": {
     "item": "fossilslegacy:velociraptor_dna"
   },
-  "result": "fossilslegacy:velociraptor_egg",
+  "result": {
+    "id": "fossilslegacy:velociraptor_egg"
+  },
   "time": 6000
 }

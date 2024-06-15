@@ -1,0 +1,15 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "minecraft:emerald"
+  },
+  "results": [
+    {
+      "result": {
+        "id": "fossilslegacy:fox_dna"
+      },
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

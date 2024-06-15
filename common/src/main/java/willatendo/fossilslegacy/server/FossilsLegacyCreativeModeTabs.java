@@ -2,14 +2,18 @@ package willatendo.fossilslegacy.server;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.decoration.Painting;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.CustomData;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyStoneTabletVariantTags;
 import willatendo.fossilslegacy.server.entity.StoneTablet;
-import willatendo.fossilslegacy.server.entity.StoneTabletVariant;
+import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.item.MagicConchItem;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
@@ -233,9 +237,11 @@ public class FossilsLegacyCreativeModeTabs {
 
     private static void generatePresetStoneTablets(CreativeModeTab.Output output, HolderLookup.RegistryLookup<StoneTabletVariant> registryLookup, Predicate<Holder<StoneTabletVariant>> predicate, CreativeModeTab.TabVisibility tabVisibility) {
         registryLookup.listElements().filter(predicate).sorted(STONE_TABLET_COMPARATOR).forEach(reference -> {
+            CustomData customData = (CustomData.EMPTY.update(StoneTablet.VARIANT_MAP_CODEC, reference).getOrThrow()).update((compoundTag) -> {
+                compoundTag.putString("id", "fossilslegacy:stone_tablet");
+            });
             ItemStack itemStack = new ItemStack(FossilsLegacyItems.STONE_TABLET.get());
-            CompoundTag compoundTag = itemStack.getOrCreateTagElement("EntityTag");
-            StoneTablet.storeVariant(compoundTag, reference);
+            itemStack.set(DataComponents.ENTITY_DATA, customData);
             output.accept(itemStack, tabVisibility);
         });
     }

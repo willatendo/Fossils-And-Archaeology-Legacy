@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:relic_scrap"
-            ]
+            "items": "fossilslegacy:relic_scrap"
           }
         ]
       },
@@ -20,7 +18,8 @@
     },
     "hidden": true,
     "icon": {
-      "item": "fossilslegacy:relic_scrap"
+      "count": 1,
+      "id": "fossilslegacy:relic_scrap"
     },
     "title": {
       "translate": "advancements.fossilslegacy.legacy.relic_scrap.title"

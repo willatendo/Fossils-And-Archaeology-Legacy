@@ -3,6 +3,8 @@
   "ingredient": {
     "item": "fossilslegacy:brachiosaurus_dna"
   },
-  "result": "fossilslegacy:brachiosaurus_egg",
+  "result": {
+    "id": "fossilslegacy:brachiosaurus_egg"
+  },
   "time": 6000
 }

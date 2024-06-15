@@ -1,0 +1,15 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "minecraft:slime_ball"
+  },
+  "results": [
+    {
+      "result": {
+        "id": "fossilslegacy:panda_dna"
+      },
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

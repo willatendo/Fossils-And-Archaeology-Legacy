@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
+    "has_leather": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:leather"
-            ]
+            "items": "minecraft:leather"
           }
         ]
       },
@@ -23,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_item"
+      "has_leather"
     ]
   ],
   "rewards": {

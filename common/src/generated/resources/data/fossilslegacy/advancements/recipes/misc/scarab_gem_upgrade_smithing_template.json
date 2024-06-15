@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:scarab_gem_upgrade_smithing_template"
-            ]
+            "items": "fossilslegacy:scarab_gem_upgrade_smithing_template"
           }
         ]
       },

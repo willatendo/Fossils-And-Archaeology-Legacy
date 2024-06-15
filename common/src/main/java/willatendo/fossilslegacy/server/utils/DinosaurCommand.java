@@ -14,28 +14,30 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DinosaurCommand implements StringRepresentable {
-    public static final DinosaurCommand FOLLOW = new DinosaurCommand("follow");
-    public static final DinosaurCommand STAY = new DinosaurCommand("stay");
-    public static final DinosaurCommand FREE_MOVE = new DinosaurCommand("free_move");
+public record DinosaurCommand(String order) implements StringRepresentable {
+    public static final Map<String, DinosaurCommand> COMMANDS = new HashMap<String, DinosaurCommand>();
+    public static final List<DinosaurCommand> DINOSAUR_COMMANDS = new ArrayList<>();
+
+    public static final DinosaurCommand FOLLOW = DinosaurCommand.create("follow");
+    public static final DinosaurCommand STAY = DinosaurCommand.create("stay");
+    public static final DinosaurCommand FREE_MOVE = DinosaurCommand.create("free_move");
 
     public static final Codec<DinosaurCommand> CODEC = Codec.STRING.xmap(DinosaurCommand::new, DinosaurCommand::getOrder);
     public static final StreamCodec<ByteBuf, DinosaurCommand> STREAM_CODEC = ByteBufCodecs.STRING_UTF8.map(DinosaurCommand::new, DinosaurCommand::getOrder);
 
-    public static final Map<String, DinosaurCommand> COMMANDS = new HashMap<String, DinosaurCommand>();
-    public static final List<DinosaurCommand> DINOSAUR_COMMANDS = new ArrayList<>();
-    private final Component component;
-    private final String order;
+    private static DinosaurCommand create(String order) {
+        DinosaurCommand dinosaurCommand = new DinosaurCommand(order);
+        DINOSAUR_COMMANDS.add(dinosaurCommand);
+        COMMANDS.put(order, dinosaurCommand);
+        return dinosaurCommand;
+    }
 
-    private DinosaurCommand(String order) {
-        this.order = order;
-        this.component = FossilsLegacyUtils.translation("command", order);
-        DINOSAUR_COMMANDS.add(this);
-        COMMANDS.put(order, this);
+    public static List<DinosaurCommand> values() {
+        return DINOSAUR_COMMANDS;
     }
 
     public Component getComponent() {
-        return this.component;
+        return FossilsLegacyUtils.translation("command", this.order);
     }
 
     public String getOrder() {
@@ -77,5 +79,13 @@ public class DinosaurCommand implements StringRepresentable {
 
     public static DinosaurCommand getFromString(String order) {
         return COMMANDS.get(order);
+    }
+
+    public static DinosaurCommand getFromInteger(int order) {
+        return order == 1 ? FOLLOW : order == 2 ? STAY : FREE_MOVE;
+    }
+
+    public int getAsInt() {
+        return this == FOLLOW ? 1 : this == STAY ? 2 : 3;
     }
 }

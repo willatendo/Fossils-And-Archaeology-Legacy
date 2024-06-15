@@ -1,0 +1,15 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "fossilslegacy:raw_dilophosaurus_meat"
+  },
+  "results": [
+    {
+      "result": {
+        "id": "fossilslegacy:dilophosaurus_dna"
+      },
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

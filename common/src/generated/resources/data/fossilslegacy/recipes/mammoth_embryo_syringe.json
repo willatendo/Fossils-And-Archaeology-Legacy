@@ -3,6 +3,8 @@
   "ingredient": {
     "item": "fossilslegacy:mammoth_dna"
   },
-  "result": "fossilslegacy:mammoth_embryo_syringe",
+  "result": {
+    "id": "fossilslegacy:mammoth_embryo_syringe"
+  },
   "time": 6000
 }

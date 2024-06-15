@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.entity;
 
+import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -27,6 +28,8 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.phys.Vec3;
 import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.entity.goal.*;
+import willatendo.fossilslegacy.server.entity.util.*;
+import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.item.DebugItem;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
@@ -60,8 +63,8 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
     }
 
     @Override
-    public EggVariant getEggVariant() {
-        return FossilsLegacyEggVariants.VELOCIRAPTOR.get();
+    public Holder<EggVariant> getEggVariant() {
+        return FossilsLegacyEggVariants.VELOCIRAPTOR;
     }
 
     @Override
@@ -128,11 +131,11 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(SUB_SPECIES, 0);
-        this.entityData.define(LEARNED_CHESTS, false);
-        this.entityData.define(HELD_ITEM, ItemStack.EMPTY);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(SUB_SPECIES, 0);
+        builder.define(LEARNED_CHESTS, false);
+        builder.define(HELD_ITEM, ItemStack.EMPTY);
     }
 
     @Override
@@ -192,7 +195,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
         compoundTag.putInt("SubSpecies", this.getSubSpecies());
         compoundTag.putBoolean("LearnedChests", this.hasLearnedChests());
         if (!this.getHeldItem().isEmpty()) {
-            compoundTag.put("HeldItem", this.getHeldItem().save(new CompoundTag()));
+            compoundTag.put("HeldItem", this.getHeldItem().saveOptional(this.registryAccess()));
         }
     }
 
@@ -203,8 +206,18 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
         this.setLearnedChests(compoundTag.getBoolean("LearnedChests"));
         CompoundTag itemCompoundTag = compoundTag.getCompound("HeldItem");
         if (itemCompoundTag != null && !itemCompoundTag.isEmpty()) {
-            this.setHeldItem(ItemStack.of(itemCompoundTag));
+            this.setHeldItem(ItemStack.parseOptional(this.registryAccess(), itemCompoundTag));
         }
+    }
+
+    @Override
+    public float getXScaling(Dinosaur dinosaur) {
+        return 0.2F + (0.1F * (float) dinosaur.getGrowthStage());
+    }
+
+    @Override
+    public float getYScaling(Dinosaur dinosaur) {
+        return 0.2F + (0.1F * (float) dinosaur.getGrowthStage());
     }
 
     @Override
@@ -221,7 +234,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
     }
 
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData, CompoundTag compoundTag) {
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData) {
         Biome biome = serverLevelAccessor.getBiome(this.blockPosition()).value();
 
         if (biome.coldEnoughToSnow(this.blockPosition())) {
@@ -232,7 +245,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
             this.setSubSpecies(1);
         }
 
-        return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData, compoundTag);
+        return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData);
     }
 
     @Override

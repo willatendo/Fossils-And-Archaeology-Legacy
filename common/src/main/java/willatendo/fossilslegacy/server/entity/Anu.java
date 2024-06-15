@@ -38,6 +38,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
+import willatendo.fossilslegacy.server.entity.util.SpeakerType;
+import willatendo.fossilslegacy.server.entity.util.SpeakingEntity;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
@@ -74,10 +76,10 @@ public class Anu extends Zombie implements SpeakingEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(IS_CHARGING, false);
-        this.entityData.define(ATTACK_MODE, 0);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(IS_CHARGING, false);
+        builder.define(ATTACK_MODE, 0);
     }
 
     @Override
@@ -131,7 +133,7 @@ public class Anu extends Zombie implements SpeakingEntity {
     public void aiStep() {
         this.spreadNether();
         super.aiStep();
-        if(this.isBaby()) {
+        if (this.isBaby()) {
             this.setBaby(false);
         }
     }
@@ -263,7 +265,7 @@ public class Anu extends Zombie implements SpeakingEntity {
             if (this.getTarget() instanceof Player player) {
                 this.sendMessageToPlayer(Anu.AnuSpeaker.QI_SHOCK, player);
             }
-            this.level().playLocalSound(this, SoundEvents.GENERIC_EXPLODE, SoundSource.HOSTILE, 6.0F, (1.0F + (this.getRandom().nextFloat() - this.getRandom().nextFloat()) * 0.2F) * 0.7F);
+            this.level().playLocalSound(this, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.HOSTILE, 6.0F, (1.0F + (this.getRandom().nextFloat() - this.getRandom().nextFloat()) * 0.2F) * 0.7F);
             this.level().addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
             for (int i = 0; i < livingEntities.size(); i++) {
                 LivingEntity livingEntity = livingEntities.get(i);

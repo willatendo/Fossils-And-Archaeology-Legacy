@@ -1,0 +1,10 @@
+{
+  "type": "fossilslegacy:archaeology",
+  "ingredient": {
+    "item": "fossilslegacy:scarab_gem_shovel"
+  },
+  "result": {
+    "id": "fossilslegacy:scarab_gem_shovel"
+  },
+  "time": 3000
+}

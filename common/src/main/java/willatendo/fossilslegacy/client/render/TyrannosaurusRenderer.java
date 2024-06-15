@@ -12,35 +12,28 @@ import willatendo.fossilslegacy.client.model.tyrannosaurus.TyrannosaurusModel;
 import willatendo.fossilslegacy.server.entity.Tyrannosaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class TyrannosaurusRenderer extends MobRenderer<Tyrannosaurus, AbstractTyrannosaurusModel> {
-	public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/tyrannosaurus/tyrannosaurus.png");
-	public static final ResourceLocation AGRESSIVE_TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/tyrannosaurus/aggressive_tyrannosaurus.png");
-	public static final ResourceLocation WEAK_TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/tyrannosaurus/weak_tyrannosaurus.png");
+public class TyrannosaurusRenderer extends DinosaurRenderer<Tyrannosaurus, AbstractTyrannosaurusModel> {
+    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/tyrannosaurus/tyrannosaurus.png");
+    public static final ResourceLocation AGRESSIVE_TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/tyrannosaurus/aggressive_tyrannosaurus.png");
+    public static final ResourceLocation WEAK_TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/tyrannosaurus/weak_tyrannosaurus.png");
 
-	private final TyrannosaurusModel tyrannosaurusModel;
-	private final KnockedOutTyrannosaurusModel knockedOutTyrannosaurusModel;
+    private final TyrannosaurusModel tyrannosaurusModel;
+    private final KnockedOutTyrannosaurusModel knockedOutTyrannosaurusModel;
 
-	public TyrannosaurusRenderer(Context context) {
-		super(context, new TyrannosaurusModel(context.bakeLayer(FossilsLegacyModels.TYRANNOSAURUS)), 0.3F);
-		this.tyrannosaurusModel = new TyrannosaurusModel(context.bakeLayer(FossilsLegacyModels.TYRANNOSAURUS));
-		this.knockedOutTyrannosaurusModel = new KnockedOutTyrannosaurusModel(context.bakeLayer(FossilsLegacyModels.KNOCKED_OUT_TYRANNOSAURUS));
-	}
+    public TyrannosaurusRenderer(Context context) {
+        super(context, new TyrannosaurusModel(context.bakeLayer(FossilsLegacyModels.TYRANNOSAURUS)), 0.3F);
+        this.tyrannosaurusModel = new TyrannosaurusModel(context.bakeLayer(FossilsLegacyModels.TYRANNOSAURUS));
+        this.knockedOutTyrannosaurusModel = new KnockedOutTyrannosaurusModel(context.bakeLayer(FossilsLegacyModels.KNOCKED_OUT_TYRANNOSAURUS));
+    }
 
-	@Override
-	public void render(Tyrannosaurus tyrannosaurus, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
-		this.model = tyrannosaurus.isKnockedOut() ? this.knockedOutTyrannosaurusModel : this.tyrannosaurusModel;
-		this.shadowRadius = 0.15F * (float) tyrannosaurus.getGrowthStage();
-		super.render(tyrannosaurus, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
-	}
+    @Override
+    public void render(Tyrannosaurus tyrannosaurus, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
+        this.model = tyrannosaurus.isKnockedOut() ? this.knockedOutTyrannosaurusModel : this.tyrannosaurusModel;
+        super.render(tyrannosaurus, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
+    }
 
-	@Override
-	protected void scale(Tyrannosaurus tyrannosaurus, PoseStack poseStack, float packedOverlay) {
-		poseStack.scale(0.5F + (0.5125F * (float) tyrannosaurus.getGrowthStage()), 0.5F + (0.5125F * (float) tyrannosaurus.getGrowthStage()), 0.5F + (0.5125F * (float) tyrannosaurus.getGrowthStage()));
-		super.scale(tyrannosaurus, poseStack, packedOverlay);
-	}
-
-	@Override
-	public ResourceLocation getTextureLocation(Tyrannosaurus tyrannosaurus) {
-		return tyrannosaurus.isKnockedOut() ? WEAK_TEXTURE : (tyrannosaurus.isTame() || tyrannosaurus.isBaby()) ? TEXTURE : AGRESSIVE_TEXTURE;
-	}
+    @Override
+    public ResourceLocation getTextureLocation(Tyrannosaurus tyrannosaurus) {
+        return tyrannosaurus.isKnockedOut() ? WEAK_TEXTURE : (tyrannosaurus.isTame() || tyrannosaurus.isBaby()) ? TEXTURE : AGRESSIVE_TEXTURE;
+    }
 }

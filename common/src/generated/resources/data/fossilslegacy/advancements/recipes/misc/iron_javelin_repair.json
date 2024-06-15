@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
+    "has_broken_iron_javelin": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:broken_iron_javelin"
-            ]
+            "items": "fossilslegacy:broken_iron_javelin"
           }
         ]
       },
@@ -23,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_item"
+      "has_broken_iron_javelin"
     ]
   ],
   "rewards": {

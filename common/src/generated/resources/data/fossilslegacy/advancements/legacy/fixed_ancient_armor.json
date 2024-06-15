@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:ancient_boots"
-            ]
+            "items": "fossilslegacy:ancient_boots"
           }
         ]
       },
@@ -17,9 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:ancient_chestplate"
-            ]
+            "items": "fossilslegacy:ancient_chestplate"
           }
         ]
       },
@@ -29,9 +25,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:ancient_helmet"
-            ]
+            "items": "fossilslegacy:ancient_helmet"
           }
         ]
       },
@@ -41,9 +35,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:ancient_leggings"
-            ]
+            "items": "fossilslegacy:ancient_leggings"
           }
         ]
       },
@@ -56,8 +48,8 @@
     },
     "hidden": true,
     "icon": {
-      "item": "fossilslegacy:ancient_helmet",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "fossilslegacy:ancient_helmet"
     },
     "title": {
       "translate": "advancements.fossilslegacy.legacy.fixed_ancient_armor.title"

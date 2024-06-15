@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
+    "has_cat_dna": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:cat_dna"
-            ]
+            "items": "fossilslegacy:cat_dna"
           }
         ]
       },
@@ -23,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_item"
+      "has_cat_dna"
     ]
   ],
   "rewards": {

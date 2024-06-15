@@ -3,6 +3,8 @@
   "ingredient": {
     "item": "fossilslegacy:ocelot_dna"
   },
-  "result": "fossilslegacy:ocelot_embryo_syringe",
+  "result": {
+    "id": "fossilslegacy:ocelot_embryo_syringe"
+  },
   "time": 6000
 }

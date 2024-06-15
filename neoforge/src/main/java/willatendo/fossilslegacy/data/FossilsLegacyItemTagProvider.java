@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.data;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -18,6 +19,7 @@ public class FossilsLegacyItemTagProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(Provider provider) {
+        this.tag(ItemTags.WOLF_FOOD).add(FossilsLegacyItems.RAW_TRICERATOPS_MEAT.get(), FossilsLegacyItems.RAW_VELOCIRAPTOR_MEAT.get(), FossilsLegacyItems.RAW_TYRANNOSAURUS_MEAT.get(), FossilsLegacyItems.RAW_PTERANODON_MEAT.get(), FossilsLegacyItems.NAUTILUS.get(), FossilsLegacyItems.RAW_FUTABASAURUS_MEAT.get(), FossilsLegacyItems.RAW_MOSASAURUS_MEAT.get(), FossilsLegacyItems.RAW_STEGOSAURUS_MEAT.get(), FossilsLegacyItems.RAW_DILOPHOSAURUS_MEAT.get(), FossilsLegacyItems.RAW_BRACHIOSAURUS_MEAT.get(), FossilsLegacyItems.RAW_SMILODON_MEAT.get(), FossilsLegacyItems.RAW_MAMMOTH_MEAT.get(), FossilsLegacyItems.RAW_CARNOTAURUS_MEAT.get(), FossilsLegacyItems.RAW_CRYOLOPHOSAURUS_MEAT.get(), FossilsLegacyItems.RAW_THERIZINOSAURUS_MEAT.get(), FossilsLegacyItems.COOKED_TRICERATOPS_MEAT.get(), FossilsLegacyItems.COOKED_VELOCIRAPTOR_MEAT.get(), FossilsLegacyItems.COOKED_TYRANNOSAURUS_MEAT.get(), FossilsLegacyItems.COOKED_PTERANODON_MEAT.get(), FossilsLegacyItems.SIO_CHIU_LE.get(), FossilsLegacyItems.COOKED_FUTABASAURUS_MEAT.get(), FossilsLegacyItems.COOKED_MOSASAURUS_MEAT.get(), FossilsLegacyItems.COOKED_STEGOSAURUS_MEAT.get(), FossilsLegacyItems.COOKED_DILOPHOSAURUS_MEAT.get(), FossilsLegacyItems.COOKED_BRACHIOSAURUS_MEAT.get(), FossilsLegacyItems.COOKED_SMILODON_MEAT.get(), FossilsLegacyItems.COOKED_MAMMOTH_MEAT.get(), FossilsLegacyItems.COOKED_CARNOTAURUS_MEAT.get(), FossilsLegacyItems.COOKED_CRYOLOPHOSAURUS_MEAT.get(), FossilsLegacyItems.COOKED_THERIZINOSAURUS_MEAT.get());
         this.tag(FossilsLegacyItemTags.BRACHIOSAURUS_COMMANDABLES).add(Items.STICK);
         this.tag(FossilsLegacyItemTags.CAKE_EGGS).add(FossilsLegacyItems.TRICERATOPS_EGG.get(), FossilsLegacyItems.VELOCIRAPTOR_EGG.get(), FossilsLegacyItems.TYRANNOSAURUS_EGG.get(), FossilsLegacyItems.PTERANODON_EGG.get(), FossilsLegacyItems.FUTABASAURUS_EGG.get(), FossilsLegacyItems.MOSASAURUS_EGG.get(), FossilsLegacyItems.STEGOSAURUS_EGG.get(), FossilsLegacyItems.DILOPHOSAURUS_EGG.get(), FossilsLegacyItems.BRACHIOSAURUS_EGG.get());
         this.tag(FossilsLegacyItemTags.CARNOTAURUS_COMMANDABLES).add(Items.BONE);

@@ -27,7 +27,7 @@ public class TameZombifiedPigmanTrigger extends SimpleCriterionTrigger<TameZombi
 
     public record TriggerInstance(Optional<ContextAwarePredicate> player,
                                   Optional<ContextAwarePredicate> entity) implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<TriggerInstance> CODEC = RecordCodecBuilder.create(triggerInstance -> triggerInstance.group(ExtraCodecs.strictOptionalField(EntityPredicate.ADVANCEMENT_CODEC, "player").forGetter(TriggerInstance::player), ExtraCodecs.strictOptionalField(EntityPredicate.ADVANCEMENT_CODEC, "entity").forGetter(TriggerInstance::entity)).apply(triggerInstance, TriggerInstance::new));
+        public static final Codec<TriggerInstance> CODEC = RecordCodecBuilder.create(triggerInstance -> triggerInstance.group(EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(TriggerInstance::player), EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("entity").forGetter(TriggerInstance::entity)).apply(triggerInstance, TriggerInstance::new));
 
         public static Criterion<TriggerInstance> tamedZombifiedPiglin() {
             return FossilsLegacyCriteriaTriggers.TAME_ZOMBIFIED_PIGMAN.get().createCriterion(new TriggerInstance(Optional.empty(), Optional.empty()));

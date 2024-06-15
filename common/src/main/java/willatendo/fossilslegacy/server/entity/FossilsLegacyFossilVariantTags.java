@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.server.entity;
 
 import net.minecraft.tags.TagKey;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
+import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.util.TagRegister;
 

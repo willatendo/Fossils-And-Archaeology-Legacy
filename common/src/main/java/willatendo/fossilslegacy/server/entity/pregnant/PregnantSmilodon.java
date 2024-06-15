@@ -1,28 +1,31 @@
 package willatendo.fossilslegacy.server.entity.pregnant;
 
+import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.apache.commons.compress.utils.Lists;
-import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
-import willatendo.fossilslegacy.server.entity.*;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityDataSerializers;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
+import willatendo.fossilslegacy.server.entity.Smilodon;
+import willatendo.fossilslegacy.server.entity.util.DinopediaInformation;
+import willatendo.fossilslegacy.server.entity.util.PregnantAnimal;
+import willatendo.fossilslegacy.server.entity.variants.PregnancyType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PregnantSmilodon extends Smilodon implements DinopediaInformation, PregnantAnimal {
+public class PregnantSmilodon extends Smilodon implements DinopediaInformation, PregnantAnimal<Smilodon> {
     private static final EntityDataAccessor<Integer> PREGNANCY_TIME = SynchedEntityData.defineId(PregnantSmilodon.class, EntityDataSerializers.INT);
-    private static final EntityDataAccessor<PregnancyType> PREGNANCY = SynchedEntityData.defineId(PregnantSmilodon.class, FossilsLegacyEntityDataSerializers.PREGNANCY_TYPES.get());
+    private static final EntityDataAccessor<Holder<PregnancyType>> PREGNANCY = SynchedEntityData.defineId(PregnantSmilodon.class, FossilsLegacyEntityDataSerializers.PREGNANCY_TYPES.get());
 
     public PregnantSmilodon(EntityType<? extends Smilodon> entityType, Level level) {
         super(entityType, level);
@@ -44,7 +47,7 @@ public class PregnantSmilodon extends Smilodon implements DinopediaInformation, 
         information.add(this.getDisplayName());
         information.add(FossilsLegacyUtils.translation("dinopedia", "health", (int) this.getHealth(), (int) this.getMaxHealth()));
         information.add(FossilsLegacyUtils.translation("dinopedia", "pregnancy_time", (int) Math.floor((((float) this.getRemainingTime()) / this.maxTime()) * 100) + "%"));
-        information.add(FossilsLegacyUtils.translation("dinopedia", "embryo", this.getPregnancyType().getDescription().getString()));
+        information.add(FossilsLegacyUtils.translation("dinopedia", "embryo", this.getPregnancyType().value().getDescription().getString()));
         return information;
     }
 
@@ -52,17 +55,14 @@ public class PregnantSmilodon extends Smilodon implements DinopediaInformation, 
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
         compoundTag.putInt("PregnancyTime", this.getRemainingPregnancyTime());
-        compoundTag.putString("Variant", FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES.getKey(this.getPregnancyType()).toString());
+        this.addPregnancyData(compoundTag);
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
         this.setRemainingPregnancyTime(compoundTag.getInt("PregnancyTime"));
-        PregnancyType pregnancyType = FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES.get(ResourceLocation.tryParse(compoundTag.getString("Variant")));
-        if (pregnancyType != null) {
-            this.setPregnancyType(pregnancyType);
-        }
+        this.readPregnancyData(compoundTag);
     }
 
     @Override
@@ -72,10 +72,10 @@ public class PregnantSmilodon extends Smilodon implements DinopediaInformation, 
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(PREGNANCY, FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES.getOrThrow(FossilsLegacyPregnancyTypes.CAT.getKey()));
-        this.entityData.define(PREGNANCY_TIME, 0);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        this.definePregnancyData(PREGNANCY, builder);
+        builder.define(PREGNANCY_TIME, 0);
     }
 
     @Override
@@ -89,22 +89,22 @@ public class PregnantSmilodon extends Smilodon implements DinopediaInformation, 
     }
 
     @Override
-    public PregnancyType getPregnancyType() {
+    public Holder<PregnancyType> getPregnancyType() {
         return this.entityData.get(PREGNANCY);
     }
 
     @Override
-    public void setPregnancyType(PregnancyType pregnancyType) {
+    public void setPregnancyType(Holder<PregnancyType> pregnancyType) {
         this.entityData.set(PREGNANCY, pregnancyType);
     }
 
     @Override
-    public Entity getOffspring(Level level) {
-        return this.getPregnancyType().entityType().get().create(level);
+    public Smilodon getOffspring(Level level) {
+        return (Smilodon) this.getPregnancyType().value().entityType().get().create(level);
     }
 
     @Override
-    public Entity getBaseEntity(Level level) {
+    public Smilodon getBaseEntity(Level level) {
         return FossilsLegacyEntityTypes.SMILODON.get().create(level);
     }
 }

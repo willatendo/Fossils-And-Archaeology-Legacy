@@ -1,5 +1,7 @@
 package willatendo.fossilslegacy.server.event;
 
+import net.minecraft.server.packs.PackLocationInfo;
+import net.minecraft.server.packs.PackSelectionConfig;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.PathPackResources;
 import net.minecraft.server.packs.repository.Pack;
@@ -7,19 +9,17 @@ import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
-import net.neoforged.neoforge.network.event.RegisterPayloadHandlerEvent;
-import net.neoforged.neoforge.network.registration.IPayloadRegistrar;
-import net.neoforged.neoforge.registries.IdMappingEvent;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import willatendo.fossilslegacy.FossilsLegacyNeoforgeMod;
-import willatendo.fossilslegacy.network.BasicPackets;
 import willatendo.fossilslegacy.network.ServerboundSinkPacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
@@ -30,8 +30,9 @@ import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 import java.nio.file.Path;
+import java.util.Optional;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID)
 public class ModEvents {
     @SubscribeEvent
     public static void commonSetup(FMLCommonSetupEvent event) {
@@ -40,11 +41,11 @@ public class ModEvents {
     }
 
     @SubscribeEvent
-    public static void registerPackets(RegisterPayloadHandlerEvent event) {
-        IPayloadRegistrar iPayloadRegistrar = event.registrar(FossilsLegacyUtils.ID).versioned("1.0.0").optional();
+    public static void registerPackets(RegisterPayloadHandlersEvent event) {
+        PayloadRegistrar payloadRegistrar = event.registrar(FossilsLegacyUtils.ID).versioned("1.0.0").optional();
 
-        iPayloadRegistrar.play(BasicPackets.TIME_MACHINE_UPDATE, ServerboundTimeMachineUpdatePacket::decode, handler -> handler.server(ServerboundTimeMachineUpdatePacket::handle));
-        iPayloadRegistrar.play(BasicPackets.SINK, ServerboundSinkPacket::decode, handler -> handler.server(ServerboundSinkPacket::handle));
+        payloadRegistrar.playToServer(ServerboundTimeMachineUpdatePacket.TYPE, ServerboundTimeMachineUpdatePacket.STREAM_CODEC, ServerboundTimeMachineUpdatePacket::handle);
+        payloadRegistrar.playToServer(ServerboundSinkPacket.TYPE, ServerboundSinkPacket.STREAM_CODEC, ServerboundSinkPacket::handle);
     }
 
     @SubscribeEvent
@@ -89,7 +90,7 @@ public class ModEvents {
     public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
         BasicEvents.spawnPlacementsInit();
         BasicEvents.EVENTS_HOLDER.registerAllSpawnPlacements(spawnPlacementEntry -> {
-            event.register(spawnPlacementEntry.entityType(), spawnPlacementEntry.type(), spawnPlacementEntry.types(), spawnPlacementEntry.spawnPredicate(), SpawnPlacementRegisterEvent.Operation.OR);
+            event.register(spawnPlacementEntry.entityType(), spawnPlacementEntry.spawnPlacementType(), spawnPlacementEntry.types(), spawnPlacementEntry.spawnPredicate(), SpawnPlacementRegisterEvent.Operation.OR);
         });
     }
 
@@ -111,7 +112,7 @@ public class ModEvents {
         if (event.getPackType() == PackType.CLIENT_RESOURCES) {
             Path resourcePath = ModList.get().getModFileById(FossilsLegacyUtils.ID).getFile().findResource("resourcepacks/fa_legacy_textures");
             event.addRepositorySource(consumer -> {
-                Pack pack = Pack.readMetaAndCreate(FossilsLegacyUtils.resource("resourcepacks.fa_legacy_textures").toString(), FossilsLegacyUtils.translation("resourcePack", "fa_legacy_textures.description"), false, new PathPackResources.PathResourcesSupplier(resourcePath, true), PackType.CLIENT_RESOURCES, Pack.Position.TOP, PackSource.BUILT_IN);
+                Pack pack = Pack.readMetaAndCreate(new PackLocationInfo(FossilsLegacyUtils.resource("resourcepacks.fa_legacy_textures").toString(), FossilsLegacyUtils.translation("resourcePack", "fa_legacy_textures.description"), PackSource.BUILT_IN, Optional.empty()), new PathPackResources.PathResourcesSupplier(resourcePath), PackType.CLIENT_RESOURCES, new PackSelectionConfig(false, Pack.Position.TOP, false));
                 if (pack != null) {
                     consumer.accept(pack);
                 }

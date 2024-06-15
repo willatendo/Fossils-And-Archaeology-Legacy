@@ -1,58 +1,47 @@
 package willatendo.fossilslegacy.server.item;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.storage.loot.LootTable;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FossilsLegacyLootTables {
-	public static final ResourceLocation ACADEMY_LOOT = FossilsLegacyUtils.resource("chests/academy_loot");
-	public static final ResourceLocation ACADEMY_DISC = FossilsLegacyUtils.resource("chests/academy_disc");
-	public static final ResourceLocation WEAPON_SHOP_DECOY = FossilsLegacyUtils.resource("chests/weapon_shop_decoy");
-	public static final ResourceLocation WEAPON_SHOP_LOOT = FossilsLegacyUtils.resource("chests/weapon_shop_loot");
+    public static final ResourceKey<LootTable> ACADEMY_LOOT = create("chests/academy_loot");
+    public static final ResourceKey<LootTable> ACADEMY_DISC = create("chests/academy_disc");
+    public static final ResourceKey<LootTable> WEAPON_SHOP_DECOY = create("chests/weapon_shop_decoy");
+    public static final ResourceKey<LootTable> WEAPON_SHOP_LOOT = create("chests/weapon_shop_loot");
 
-	public static final ResourceLocation BRACHIOSAURUS_EGG = FossilsLegacyUtils.resource("entities/egg/brachiosaurus");
-	public static final ResourceLocation DILOPHOSAURUS_EGG = FossilsLegacyUtils.resource("entities/egg/dilophosaurus");
-	public static final ResourceLocation MOSASAURUS_EGG = FossilsLegacyUtils.resource("entities/egg/mosasaurus");
-	public static final ResourceLocation FUTABASAURUS_EGG = FossilsLegacyUtils.resource("entities/egg/futabasaurus");
-	public static final ResourceLocation PTERANODON_EGG = FossilsLegacyUtils.resource("entities/egg/pteranodon");
-	public static final ResourceLocation STEGOSAURUS_EGG = FossilsLegacyUtils.resource("entities/egg/stegosaurus");
-	public static final ResourceLocation TRICERATOPS_EGG = FossilsLegacyUtils.resource("entities/egg/triceratops");
-	public static final ResourceLocation TYRANNOSAURUS_EGG = FossilsLegacyUtils.resource("entities/egg/tyrannosaurus");
-	public static final ResourceLocation VELOCIRAPTOR_EGG = FossilsLegacyUtils.resource("entities/egg/velociraptor");
-	public static final ResourceLocation CARNOTAURUS_EGG = FossilsLegacyUtils.resource("entities/egg/carnotaurus");
-	public static final ResourceLocation CRYOLOPHOSAURUS_EGG = FossilsLegacyUtils.resource("entities/egg/cryolophosaurus");
-	public static final ResourceLocation THERIZINOSAURUS_EGG = FossilsLegacyUtils.resource("entities/egg/therizinosaurus");
+    public static final ResourceKey<LootTable> BRACHIOSAURUS_EGG = create("entities/egg/brachiosaurus");
+    public static final ResourceKey<LootTable> DILOPHOSAURUS_EGG = create("entities/egg/dilophosaurus");
+    public static final ResourceKey<LootTable> MOSASAURUS_EGG = create("entities/egg/mosasaurus");
+    public static final ResourceKey<LootTable> FUTABASAURUS_EGG = create("entities/egg/futabasaurus");
+    public static final ResourceKey<LootTable> PTERANODON_EGG = create("entities/egg/pteranodon");
+    public static final ResourceKey<LootTable> STEGOSAURUS_EGG = create("entities/egg/stegosaurus");
+    public static final ResourceKey<LootTable> TRICERATOPS_EGG = create("entities/egg/triceratops");
+    public static final ResourceKey<LootTable> TYRANNOSAURUS_EGG = create("entities/egg/tyrannosaurus");
+    public static final ResourceKey<LootTable> VELOCIRAPTOR_EGG = create("entities/egg/velociraptor");
+    public static final ResourceKey<LootTable> CARNOTAURUS_EGG = create("entities/egg/carnotaurus");
+    public static final ResourceKey<LootTable> CRYOLOPHOSAURUS_EGG = create("entities/egg/cryolophosaurus");
+    public static final ResourceKey<LootTable> THERIZINOSAURUS_EGG = create("entities/egg/therizinosaurus");
 
-	public static final ResourceLocation PREGNANT_SHEEP_WHITE = FossilsLegacyUtils.resource("entities/pregnant_sheep/white");
-	public static final ResourceLocation PREGNANT_SHEEP_ORANGE = FossilsLegacyUtils.resource("entities/pregnant_sheep/orange");
-	public static final ResourceLocation PREGNANT_SHEEP_MAGENTA = FossilsLegacyUtils.resource("entities/pregnant_sheep/magenta");
-	public static final ResourceLocation PREGNANT_SHEEP_LIGHT_BLUE = FossilsLegacyUtils.resource("entities/pregnant_sheep/light_blue");
-	public static final ResourceLocation PREGNANT_SHEEP_YELLOW = FossilsLegacyUtils.resource("entities/pregnant_sheep/yellow");
-	public static final ResourceLocation PREGNANT_SHEEP_LIME = FossilsLegacyUtils.resource("entities/pregnant_sheep/lime");
-	public static final ResourceLocation PREGNANT_SHEEP_PINK = FossilsLegacyUtils.resource("entities/pregnant_sheep/pink");
-	public static final ResourceLocation PREGNANT_SHEEP_GRAY = FossilsLegacyUtils.resource("entities/pregnant_sheep/gray");
-	public static final ResourceLocation PREGNANT_SHEEP_LIGHT_GRAY = FossilsLegacyUtils.resource("entities/pregnant_sheep/light_gray");
-	public static final ResourceLocation PREGNANT_SHEEP_CYAN = FossilsLegacyUtils.resource("entities/pregnant_sheep/cyan");
-	public static final ResourceLocation PREGNANT_SHEEP_PURPLE = FossilsLegacyUtils.resource("entities/pregnant_sheep/purple");
-	public static final ResourceLocation PREGNANT_SHEEP_BLUE = FossilsLegacyUtils.resource("entities/pregnant_sheep/blue");
-	public static final ResourceLocation PREGNANT_SHEEP_BROWN = FossilsLegacyUtils.resource("entities/pregnant_sheep/brown");
-	public static final ResourceLocation PREGNANT_SHEEP_GREEN = FossilsLegacyUtils.resource("entities/pregnant_sheep/green");
-	public static final ResourceLocation PREGNANT_SHEEP_RED = FossilsLegacyUtils.resource("entities/pregnant_sheep/red");
-	public static final ResourceLocation PREGNANT_SHEEP_BLACK = FossilsLegacyUtils.resource("entities/pregnant_sheep/black");
+    public static final ResourceKey<LootTable> PREGNANT_SHEEP_WHITE = create("entities/pregnant_sheep/white");
+    public static final ResourceKey<LootTable> PREGNANT_SHEEP_ORANGE = create("entities/pregnant_sheep/orange");
+    public static final ResourceKey<LootTable> PREGNANT_SHEEP_MAGENTA = create("entities/pregnant_sheep/magenta");
+    public static final ResourceKey<LootTable> PREGNANT_SHEEP_LIGHT_BLUE = create("entities/pregnant_sheep/light_blue");
+    public static final ResourceKey<LootTable> PREGNANT_SHEEP_YELLOW = create("entities/pregnant_sheep/yellow");
+    public static final ResourceKey<LootTable> PREGNANT_SHEEP_LIME = create("entities/pregnant_sheep/lime");
+    public static final ResourceKey<LootTable> PREGNANT_SHEEP_PINK = create("entities/pregnant_sheep/pink");
+    public static final ResourceKey<LootTable> PREGNANT_SHEEP_GRAY = create("entities/pregnant_sheep/gray");
+    public static final ResourceKey<LootTable> PREGNANT_SHEEP_LIGHT_GRAY = create("entities/pregnant_sheep/light_gray");
+    public static final ResourceKey<LootTable> PREGNANT_SHEEP_CYAN = create("entities/pregnant_sheep/cyan");
+    public static final ResourceKey<LootTable> PREGNANT_SHEEP_PURPLE = create("entities/pregnant_sheep/purple");
+    public static final ResourceKey<LootTable> PREGNANT_SHEEP_BLUE = create("entities/pregnant_sheep/blue");
+    public static final ResourceKey<LootTable> PREGNANT_SHEEP_BROWN = create("entities/pregnant_sheep/brown");
+    public static final ResourceKey<LootTable> PREGNANT_SHEEP_GREEN = create("entities/pregnant_sheep/green");
+    public static final ResourceKey<LootTable> PREGNANT_SHEEP_RED = create("entities/pregnant_sheep/red");
+    public static final ResourceKey<LootTable> PREGNANT_SHEEP_BLACK = create("entities/pregnant_sheep/black");
 
-	public static final ResourceLocation GEEP_WHITE = FossilsLegacyUtils.resource("entities/geep/white");
-	public static final ResourceLocation GEEP_ORANGE = FossilsLegacyUtils.resource("entities/geep/orange");
-	public static final ResourceLocation GEEP_MAGENTA = FossilsLegacyUtils.resource("entities/geep/magenta");
-	public static final ResourceLocation GEEP_LIGHT_BLUE = FossilsLegacyUtils.resource("entities/geep/light_blue");
-	public static final ResourceLocation GEEP_YELLOW = FossilsLegacyUtils.resource("entities/geep/yellow");
-	public static final ResourceLocation GEEP_LIME = FossilsLegacyUtils.resource("entities/geep/lime");
-	public static final ResourceLocation GEEP_PINK = FossilsLegacyUtils.resource("entities/geep/pink");
-	public static final ResourceLocation GEEP_GRAY = FossilsLegacyUtils.resource("entities/geep/gray");
-	public static final ResourceLocation GEEP_LIGHT_GRAY = FossilsLegacyUtils.resource("entities/geep/light_gray");
-	public static final ResourceLocation GEEP_CYAN = FossilsLegacyUtils.resource("entities/geep/cyan");
-	public static final ResourceLocation GEEP_PURPLE = FossilsLegacyUtils.resource("entities/geep/purple");
-	public static final ResourceLocation GEEP_BLUE = FossilsLegacyUtils.resource("entities/geep/blue");
-	public static final ResourceLocation GEEP_BROWN = FossilsLegacyUtils.resource("entities/geep/brown");
-	public static final ResourceLocation GEEP_GREEN = FossilsLegacyUtils.resource("entities/geep/green");
-	public static final ResourceLocation GEEP_RED = FossilsLegacyUtils.resource("entities/geep/red");
-	public static final ResourceLocation GEEP_BLACK = FossilsLegacyUtils.resource("entities/geep/black");
+    public static ResourceKey<LootTable> create(String name) {
+        return ResourceKey.create(Registries.LOOT_TABLE, FossilsLegacyUtils.resource(name));
+    }
 }

@@ -3,6 +3,8 @@
   "ingredient": {
     "item": "fossilslegacy:futabasaurus_dna"
   },
-  "result": "fossilslegacy:futabasaurus_egg",
+  "result": {
+    "id": "fossilslegacy:futabasaurus_egg"
+  },
   "time": 6000
 }

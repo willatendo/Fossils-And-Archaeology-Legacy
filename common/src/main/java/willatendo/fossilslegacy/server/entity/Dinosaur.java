@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.entity;
 
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -22,6 +23,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.ConfigHelper;
+import willatendo.fossilslegacy.server.entity.util.*;
+import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -42,12 +45,12 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
     }
 
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData, CompoundTag compoundTag) {
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData) {
         this.setHunger(this.getMaxHunger());
         if (MobSpawnType.isSpawner(mobSpawnType) || mobSpawnType == MobSpawnType.COMMAND || mobSpawnType == MobSpawnType.MOB_SUMMONED || mobSpawnType == MobSpawnType.NATURAL || mobSpawnType == MobSpawnType.CHUNK_GENERATION) {
             this.setGrowthStage(this.getMaxGrowthStage());
         }
-        return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData, compoundTag);
+        return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData);
     }
 
     @Override
@@ -58,7 +61,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
         return super.killedEntity(serverLevel, livingEntity);
     }
 
-    public EggVariant getEggVariant() {
+    public Holder<EggVariant> getEggVariant() {
         return null;
     }
 
@@ -264,13 +267,13 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(COMMAND, DinosaurCommand.FREE_MOVE.getOrder());
-        this.entityData.define(GROWTH_STAGE, 0);
-        this.entityData.define(DAYS_ALIVE, 0);
-        this.entityData.define(HUNGER, this.getMaxHunger());
-        this.entityData.define(OWNER, Optional.empty());
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(COMMAND, DinosaurCommand.FREE_MOVE.getOrder());
+        builder.define(GROWTH_STAGE, 0);
+        builder.define(DAYS_ALIVE, 0);
+        builder.define(HUNGER, this.getMaxHunger());
+        builder.define(OWNER, Optional.empty());
     }
 
     @Override
@@ -407,5 +410,13 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
         } else {
             return null;
         }
+    }
+
+    public float getXScaling(Dinosaur dinosaur) {
+        return 0.0F;
+    }
+
+    public float getYScaling(Dinosaur dinosaur) {
+        return 0.0F;
     }
 }

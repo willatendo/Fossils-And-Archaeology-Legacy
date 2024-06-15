@@ -11,7 +11,8 @@
       "translate": "advancements.fossilslegacy.legacy.root.desc"
     },
     "icon": {
-      "item": "fossilslegacy:fossil_ore"
+      "count": 1,
+      "id": "fossilslegacy:fossil_ore"
     },
     "show_toast": false,
     "title": {

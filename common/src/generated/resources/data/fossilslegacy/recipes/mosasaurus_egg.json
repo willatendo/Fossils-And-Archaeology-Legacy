@@ -3,6 +3,8 @@
   "ingredient": {
     "item": "fossilslegacy:mosasaurus_dna"
   },
-  "result": "fossilslegacy:mosasaurus_egg",
+  "result": {
+    "id": "fossilslegacy:mosasaurus_egg"
+  },
   "time": 6000
 }

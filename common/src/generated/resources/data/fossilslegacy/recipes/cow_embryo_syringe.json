@@ -3,6 +3,8 @@
   "ingredient": {
     "item": "fossilslegacy:cow_dna"
   },
-  "result": "fossilslegacy:cow_embryo_syringe",
+  "result": {
+    "id": "fossilslegacy:cow_embryo_syringe"
+  },
   "time": 6000
 }

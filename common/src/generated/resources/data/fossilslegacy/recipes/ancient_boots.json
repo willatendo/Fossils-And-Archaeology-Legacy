@@ -3,6 +3,8 @@
   "ingredient": {
     "item": "fossilslegacy:ancient_boots_artifact"
   },
-  "result": "fossilslegacy:ancient_boots",
+  "result": {
+    "id": "fossilslegacy:ancient_boots"
+  },
   "time": 3000
 }

@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
+    "has_ancient_chestplate_artifact": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:ancient_chestplate_artifact"
-            ]
+            "items": "fossilslegacy:ancient_chestplate_artifact"
           }
         ]
       },
@@ -23,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_item"
+      "has_ancient_chestplate_artifact"
     ]
   ],
   "rewards": {

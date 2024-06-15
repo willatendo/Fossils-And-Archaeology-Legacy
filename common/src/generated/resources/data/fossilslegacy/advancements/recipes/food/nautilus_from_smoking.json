@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sio_chiu_le": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:sio_chiu_le"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:nautilus_from_smoking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sio_chiu_le"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:nautilus_from_smoking"
+    ]
+  }
+}

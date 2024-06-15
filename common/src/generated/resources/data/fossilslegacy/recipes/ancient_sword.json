@@ -3,6 +3,8 @@
   "ingredient": {
     "item": "fossilslegacy:ancient_sword_artifact"
   },
-  "result": "fossilslegacy:ancient_sword",
+  "result": {
+    "id": "fossilslegacy:ancient_sword"
+  },
   "time": 3000
 }

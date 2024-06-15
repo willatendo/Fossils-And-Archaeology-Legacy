@@ -16,7 +16,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "fossilslegacy:entities/pregnant_sheep"
+          "value": "fossilslegacy:entities/pregnant_sheep"
         }
       ],
       "rolls": 1.0

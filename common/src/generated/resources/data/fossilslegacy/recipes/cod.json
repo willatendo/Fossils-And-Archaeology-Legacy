@@ -1,0 +1,27 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "minecraft:cod"
+  },
+  "results": [
+    {
+      "result": {
+        "id": "fossilslegacy:polar_bear_dna"
+      },
+      "weight": 50
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:polar_bear_dna"
+      },
+      "weight": 50
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:dolphin_dna"
+      },
+      "weight": 50
+    }
+  ],
+  "time": 100
+}

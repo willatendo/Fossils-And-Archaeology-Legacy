@@ -1,0 +1,99 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "fossilslegacy:fossil"
+  },
+  "results": [
+    {
+      "result": {
+        "id": "minecraft:bone_meal"
+      },
+      "weight": 60
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:jurassic_fern_spores"
+      },
+      "weight": 20
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:brachiosaurus_dna"
+      },
+      "weight": 2
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:dilophosaurus_dna"
+      },
+      "weight": 2
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:mosasaurus_dna"
+      },
+      "weight": 2
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:nautilus_dna"
+      },
+      "weight": 2
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:futabasaurus_dna"
+      },
+      "weight": 2
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:pteranodon_dna"
+      },
+      "weight": 2
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:stegosaurus_dna"
+      },
+      "weight": 2
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:triceratops_dna"
+      },
+      "weight": 2
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:tyrannosaurus_dna"
+      },
+      "weight": 2
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:velociraptor_dna"
+      },
+      "weight": 2
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:carnotaurus_dna"
+      },
+      "weight": 2
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:cryolophosaurus_dna"
+      },
+      "weight": 2
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:therizinosaurus_dna"
+      },
+      "weight": 2
+    }
+  ],
+  "time": 100
+}

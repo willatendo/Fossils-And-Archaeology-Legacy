@@ -1,0 +1,28 @@
+modLoader = "javafml"
+loaderVersion = "${neoforge_version_range}"
+license = "${license}"
+issueTrackerURL = "${issue_tracker}"
+
+[[mods]]
+modId = "${mod_id}"
+version = "${version}"
+displayName = "${mod_name}"
+updateJSONURL = "${update_tracker}"
+displayURL = "${homepage}"
+logoFile = "${mod_id}_icon.png"
+authors = "${mod_author}"
+description = '''${description}'''
+
+[[dependencies.fossilslegacy]]
+modId = "neoforge"
+type = "required"
+versionRange = "${neoforge_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.fossilslegacy]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft_version_range}"
+ordering = "NONE"
+side = "BOTH"

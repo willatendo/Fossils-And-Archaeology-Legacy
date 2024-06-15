@@ -3,6 +3,8 @@
   "ingredient": {
     "item": "fossilslegacy:panda_dna"
   },
-  "result": "fossilslegacy:panda_embryo_syringe",
+  "result": {
+    "id": "fossilslegacy:panda_embryo_syringe"
+  },
   "time": 6000
 }

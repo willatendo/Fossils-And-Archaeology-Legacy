@@ -8,12 +8,12 @@ import willatendo.fossilslegacy.client.model.EggModel;
 import willatendo.fossilslegacy.server.entity.Egg;
 
 public class EggRenderer extends MobRenderer<Egg, EggModel> {
-	public EggRenderer(Context context) {
-		super(context, new EggModel(context.bakeLayer(FossilsLegacyModels.EGG)), 0.3F);
-	}
+    public EggRenderer(Context context) {
+        super(context, new EggModel(context.bakeLayer(FossilsLegacyModels.EGG)), 0.3F);
+    }
 
-	@Override
-	public ResourceLocation getTextureLocation(Egg egg) {
-		return egg.getEggVariant().texture();
-	}
+    @Override
+    public ResourceLocation getTextureLocation(Egg egg) {
+        return egg.getEggVariant().value().texture();
+    }
 }

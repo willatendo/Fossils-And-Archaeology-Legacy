@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
+    "has_polar_bear_dna": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:polar_bear_dna"
-            ]
+            "items": "fossilslegacy:polar_bear_dna"
           }
         ]
       },
@@ -23,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_item"
+      "has_polar_bear_dna"
     ]
   ],
   "rewards": {

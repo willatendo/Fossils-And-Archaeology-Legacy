@@ -2,10 +2,7 @@ package willatendo.fossilslegacy.server.block.entity;
 
 import com.google.common.collect.Maps;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
-import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.*;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -176,10 +173,10 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
     }
 
     @Override
-    public void load(CompoundTag compoundTag) {
-        super.load(compoundTag);
+    protected void loadAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
+        super.loadAdditional(compoundTag, provider);
         this.itemStacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-        ContainerHelper.loadAllItems(compoundTag, this.itemStacks);
+        ContainerHelper.loadAllItems(compoundTag, this.itemStacks, provider);
         this.onTime = compoundTag.getInt("OnTime");
         this.cultivationProgress = compoundTag.getInt("CultivationTime");
         this.cultivationTotalTime = compoundTag.getInt("CultivationTimeTotal");
@@ -191,12 +188,12 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
     }
 
     @Override
-    protected void saveAdditional(CompoundTag compoundTag) {
-        super.saveAdditional(compoundTag);
+    protected void saveAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
+        super.saveAdditional(compoundTag, provider);
         compoundTag.putInt("OnTime", this.onTime);
         compoundTag.putInt("CultivationTime", this.cultivationProgress);
         compoundTag.putInt("CultivationTimeTotal", this.cultivationTotalTime);
-        ContainerHelper.saveAllItems(compoundTag, this.itemStacks);
+        ContainerHelper.saveAllItems(compoundTag, this.itemStacks, provider);
         CompoundTag usedRecipes = new CompoundTag();
         this.recipesUsed.forEach((recipeId, recipe) -> {
             usedRecipes.putInt(recipeId.toString(), recipe);
@@ -382,7 +379,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
     @Override
     public void setItem(int slot, ItemStack itemStack) {
         ItemStack itemStackInSlot = this.itemStacks.get(slot);
-        boolean flag = !itemStack.isEmpty() && ItemStack.isSameItemSameTags(itemStackInSlot, itemStack);
+        boolean flag = !itemStack.isEmpty() && ItemStack.isSameItemSameComponents(itemStackInSlot, itemStack);
         this.itemStacks.set(slot, itemStack);
         if (itemStack.getCount() > this.getMaxStackSize()) {
             itemStack.setCount(this.getMaxStackSize());
@@ -448,6 +445,16 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
     @Override
     protected Component getDefaultName() {
         return FossilsLegacyUtils.translation("menu", "cultivator");
+    }
+
+    @Override
+    protected NonNullList<ItemStack> getItems() {
+        return this.itemStacks;
+    }
+
+    @Override
+    protected void setItems(NonNullList<ItemStack> itemStacks) {
+        this.itemStacks = itemStacks;
     }
 
     @Override

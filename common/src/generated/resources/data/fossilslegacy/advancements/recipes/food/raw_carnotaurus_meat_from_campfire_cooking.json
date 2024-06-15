@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cooked_carnotaurus_meat": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:cooked_carnotaurus_meat"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:raw_carnotaurus_meat_from_campfire_cooking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cooked_carnotaurus_meat"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:raw_carnotaurus_meat_from_campfire_cooking"
+    ]
+  }
+}

@@ -15,7 +15,8 @@
     "frame": "goal",
     "hidden": true,
     "icon": {
-      "item": "fossilslegacy:time_machine"
+      "count": 1,
+      "id": "fossilslegacy:time_machine"
     },
     "title": {
       "translate": "advancements.fossilslegacy.legacy.time_machine.title"

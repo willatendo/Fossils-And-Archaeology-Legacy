@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.menu;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -37,7 +38,11 @@ public class TimeMachineMenu extends AbstractContainerMenu {
     }
 
     public TimeMachineMenu(int windowId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
-        this(windowId, inventory, (TimeMachineBlockEntity) inventory.player.level().getBlockEntity(friendlyByteBuf.readBlockPos()));
+        this(windowId, inventory, friendlyByteBuf.readBlockPos());
+    }
+
+    public TimeMachineMenu(int windowId, Inventory inventory, BlockPos blockPos) {
+        this(windowId, inventory, (TimeMachineBlockEntity) inventory.player.level().getBlockEntity(blockPos));
     }
 
     @Override

@@ -26,126 +26,131 @@ import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.item.FossilsLegacyTiers;
 
 public class ThrownJavelin extends AbstractArrow {
-	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(ThrownJavelin.class, EntityDataSerializers.INT);
-	private ItemStack itemStack = FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get().getDefaultInstance();
-	private float damage = 1.0F;
+    private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(ThrownJavelin.class, EntityDataSerializers.INT);
+    private ItemStack itemStack = FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get().getDefaultInstance();
+    private float damage = 1.0F;
 
-	public ThrownJavelin(EntityType<? extends ThrownJavelin> entityType, Level level, ItemStack itemStack) {
-		super(entityType, level, itemStack);
-	}
+    public ThrownJavelin(EntityType<? extends ThrownJavelin> entityType, Level level, ItemStack itemStack) {
+        super(entityType, level, itemStack);
+    }
 
-	public ThrownJavelin(EntityType<? extends ThrownJavelin> entityType, Level level) {
-		this(entityType, level, FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get().getDefaultInstance());
-	}
+    public ThrownJavelin(EntityType<? extends ThrownJavelin> entityType, Level level) {
+        this(entityType, level, FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get().getDefaultInstance());
+    }
 
-	protected ThrownJavelin(EntityType<? extends ThrownJavelin> entityType, double x, double y, double z, Level level, ItemStack itemStack) {
-		this(entityType, level, itemStack);
-		this.setPos(x, y, z);
-	}
+    protected ThrownJavelin(EntityType<? extends ThrownJavelin> entityType, double x, double y, double z, Level level, ItemStack itemStack) {
+        this(entityType, level, itemStack);
+        this.setPos(x, y, z);
+    }
 
-	public ThrownJavelin(Level level, double x, double y, double z, ItemStack itemStack) {
-		this(FossilsLegacyEntityTypes.THROWN_JAVELIN.get(), x, y, z, level, itemStack);
-	}
+    public ThrownJavelin(Level level, double x, double y, double z, ItemStack itemStack) {
+        this(FossilsLegacyEntityTypes.THROWN_JAVELIN.get(), x, y, z, level, itemStack);
+    }
 
-	public ThrownJavelin(Level level, LivingEntity livingEntity, ItemStack itemStack) {
-		super(FossilsLegacyEntityTypes.THROWN_JAVELIN.get(), livingEntity, level, itemStack);
-		this.itemStack = itemStack.copy();
-	}
+    public ThrownJavelin(Level level, LivingEntity livingEntity, ItemStack itemStack) {
+        super(FossilsLegacyEntityTypes.THROWN_JAVELIN.get(), livingEntity, level, itemStack);
+        this.itemStack = itemStack.copy();
+    }
 
-	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(DATA_VARIANT_ID, 0);
-	}
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_VARIANT_ID, 0);
+    }
 
-	@Override
-	public boolean save(CompoundTag compoundTag) {
-		compoundTag.putFloat("Damage", this.damage);
-		compoundTag.putInt("Variant", this.getVariant());
-		return super.save(compoundTag);
-	}
+    @Override
+    public boolean save(CompoundTag compoundTag) {
+        compoundTag.putFloat("Damage", this.damage);
+        compoundTag.putInt("Variant", this.getVariant());
+        return super.save(compoundTag);
+    }
 
-	@Override
-	public void load(CompoundTag compoundTag) {
-		super.load(compoundTag);
-		this.damage = compoundTag.getFloat("Damage");
-		this.setVariant(compoundTag.getInt("Variant"));
-	}
+    @Override
+    public void load(CompoundTag compoundTag) {
+        super.load(compoundTag);
+        this.damage = compoundTag.getFloat("Damage");
+        this.setVariant(compoundTag.getInt("Variant"));
+    }
 
-	public void setVariant(int variant) {
-		this.entityData.set(DATA_VARIANT_ID, variant);
-	}
+    public void setVariant(int variant) {
+        this.entityData.set(DATA_VARIANT_ID, variant);
+    }
 
-	public void setVariant(Tier tier) {
-		if (tier == Tiers.WOOD) {
-			this.setVariant(0);
-		}
-		if (tier == Tiers.STONE) {
-			this.setVariant(1);
-		}
-		if (tier == Tiers.IRON) {
-			this.setVariant(2);
-		}
-		if (tier == Tiers.GOLD) {
-			this.setVariant(3);
-		}
-		if (tier == Tiers.DIAMOND) {
-			this.setVariant(4);
-		}
-		if (tier == Tiers.NETHERITE) {
-			this.setVariant(5);
-		}
-		if (tier == FossilsLegacyTiers.SCARAB_GEM) {
-			this.setVariant(6);
-		}
-		this.damage = 4 + tier.getAttackDamageBonus();
-	}
+    public void setVariant(Tier tier) {
+        if (tier == Tiers.WOOD) {
+            this.setVariant(0);
+        }
+        if (tier == Tiers.STONE) {
+            this.setVariant(1);
+        }
+        if (tier == Tiers.IRON) {
+            this.setVariant(2);
+        }
+        if (tier == Tiers.GOLD) {
+            this.setVariant(3);
+        }
+        if (tier == Tiers.DIAMOND) {
+            this.setVariant(4);
+        }
+        if (tier == Tiers.NETHERITE) {
+            this.setVariant(5);
+        }
+        if (tier == FossilsLegacyTiers.SCARAB_GEM) {
+            this.setVariant(6);
+        }
+        this.damage = 4 + tier.getAttackDamageBonus();
+    }
 
-	public int getVariant() {
-		return this.entityData.get(DATA_VARIANT_ID);
-	}
+    public int getVariant() {
+        return this.entityData.get(DATA_VARIANT_ID);
+    }
 
-	@Override
-	public boolean fireImmune() {
-		return true;
-	}
+    @Override
+    public boolean fireImmune() {
+        return true;
+    }
 
-	@Override
-	protected void onHitEntity(EntityHitResult entityHitResult) {
-		Entity entity = entityHitResult.getEntity();
-		Entity owner = this.getOwner();
-		DamageSource damageSource = new DamageSource(this.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(FossilsLegacyDamageTypes.JAVELIN));
-		SoundEvent soundevent = SoundEvents.ARROW_HIT;
-		if (entity.hurt(damageSource, this.damage)) {
-			if (entity.getType() == EntityType.ENDERMAN) {
-				return;
-			}
+    @Override
+    protected void onHitEntity(EntityHitResult entityHitResult) {
+        Entity entity = entityHitResult.getEntity();
+        Entity owner = this.getOwner();
+        DamageSource damageSource = new DamageSource(this.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(FossilsLegacyDamageTypes.JAVELIN));
+        SoundEvent soundevent = SoundEvents.ARROW_HIT;
+        if (entity.hurt(damageSource, this.damage)) {
+            if (entity.getType() == EntityType.ENDERMAN) {
+                return;
+            }
 
-			if (entity instanceof LivingEntity livingEntity) {
-				this.doPostHurtEffects(livingEntity);
-			}
-		}
+            if (entity instanceof LivingEntity livingEntity) {
+                this.doPostHurtEffects(livingEntity);
+            }
+        }
 
-		this.setDeltaMovement(this.getDeltaMovement().multiply(-0.01D, -0.1D, -0.01D));
-		float soundLevel = 1.0F;
-		if (this.level() instanceof ServerLevel && this.getVariant() == 6) {
-			BlockPos blockpos = entity.blockPosition();
-			if (this.level().canSeeSky(blockpos)) {
-				LightningBolt lightningbolt = EntityType.LIGHTNING_BOLT.create(this.level());
-				if (lightningbolt != null) {
-					lightningbolt.moveTo(Vec3.atBottomCenterOf(blockpos));
-					lightningbolt.setCause(owner instanceof ServerPlayer ? (ServerPlayer) owner : null);
-					this.level().addFreshEntity(lightningbolt);
-					soundevent = SoundEvents.LIGHTNING_BOLT_THUNDER;
-					soundLevel = 5.0F;
-				}
-			}
-		}
-		this.playSound(soundevent, soundLevel, 1.0F);
-	}
+        this.setDeltaMovement(this.getDeltaMovement().multiply(-0.01D, -0.1D, -0.01D));
+        float soundLevel = 1.0F;
+        if (this.level() instanceof ServerLevel && this.getVariant() == 6) {
+            BlockPos blockpos = entity.blockPosition();
+            if (this.level().canSeeSky(blockpos)) {
+                LightningBolt lightningbolt = EntityType.LIGHTNING_BOLT.create(this.level());
+                if (lightningbolt != null) {
+                    lightningbolt.moveTo(Vec3.atBottomCenterOf(blockpos));
+                    lightningbolt.setCause(owner instanceof ServerPlayer ? (ServerPlayer) owner : null);
+                    this.level().addFreshEntity(lightningbolt);
+                    soundevent = SoundEvents.LIGHTNING_BOLT_THUNDER;
+                    soundLevel = 5.0F;
+                }
+            }
+        }
+        this.playSound(soundevent, soundLevel, 1.0F);
+    }
 
-	@Override
-	protected ItemStack getPickupItem() {
-		return this.itemStack;
-	}
+    @Override
+    protected ItemStack getPickupItem() {
+        return this.itemStack;
+    }
+
+    @Override
+    protected ItemStack getDefaultPickupItem() {
+        return new ItemStack(FossilsLegacyItems.WOODEN_JAVELIN.get());
+    }
 }

@@ -23,6 +23,9 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.entity.goal.*;
+import willatendo.fossilslegacy.server.entity.util.CommandType;
+import willatendo.fossilslegacy.server.entity.util.Diet;
+import willatendo.fossilslegacy.server.entity.util.DinopediaInformation;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -217,9 +220,9 @@ public class Smilodon extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DATA_INTERESTED_ID, false);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_INTERESTED_ID, false);
     }
 
     public void setIsInterested(boolean interested) {

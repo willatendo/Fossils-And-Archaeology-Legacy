@@ -1,0 +1,15 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "minecraft:mutton"
+  },
+  "results": [
+    {
+      "result": {
+        "id": "fossilslegacy:sheep_dna"
+      },
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

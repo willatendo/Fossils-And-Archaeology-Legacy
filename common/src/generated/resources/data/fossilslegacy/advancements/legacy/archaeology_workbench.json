@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:archaeology_workbench"
-            ]
+            "items": "fossilslegacy:archaeology_workbench"
           }
         ]
       },
@@ -20,7 +18,8 @@
     },
     "hidden": true,
     "icon": {
-      "item": "fossilslegacy:archaeology_workbench"
+      "count": 1,
+      "id": "fossilslegacy:archaeology_workbench"
     },
     "title": {
       "translate": "advancements.fossilslegacy.legacy.archaeology_workbench.title"

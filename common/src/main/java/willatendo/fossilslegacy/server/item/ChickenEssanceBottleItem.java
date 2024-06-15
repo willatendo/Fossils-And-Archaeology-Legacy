@@ -7,7 +7,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
-import willatendo.fossilslegacy.server.entity.GrowingEntity;
+import willatendo.fossilslegacy.server.entity.util.GrowingEntity;
 
 public class ChickenEssanceBottleItem extends DrinkingGlassBottleItem {
     public ChickenEssanceBottleItem(Properties properties) {

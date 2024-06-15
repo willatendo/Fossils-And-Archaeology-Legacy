@@ -3,6 +3,8 @@
   "ingredient": {
     "item": "fossilslegacy:dolphin_dna"
   },
-  "result": "fossilslegacy:dolphin_embryo_syringe",
+  "result": {
+    "id": "fossilslegacy:dolphin_embryo_syringe"
+  },
   "time": 6000
 }

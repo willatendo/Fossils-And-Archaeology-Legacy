@@ -1,6 +1,7 @@
 package willatendo.fossilslegacy.server.entity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
@@ -28,6 +29,10 @@ import willatendo.fossilslegacy.server.entity.goal.DinoEatFromFeederGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoTemptGoal;
+import willatendo.fossilslegacy.server.entity.util.CommandType;
+import willatendo.fossilslegacy.server.entity.util.Diet;
+import willatendo.fossilslegacy.server.entity.util.DinopediaInformation;
+import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.ArrayList;
@@ -57,8 +62,8 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
-    public EggVariant getEggVariant() {
-        return FossilsLegacyEggVariants.MOSASAURUS.get();
+    public Holder<EggVariant> getEggVariant() {
+        return FossilsLegacyEggVariants.MOSASAURUS;
     }
 
     @Override
@@ -79,6 +84,16 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation {
     @Override
     public Diet getDiet() {
         return Diet.piscivore();
+    }
+
+    @Override
+    public float getXScaling(Dinosaur dinosaur) {
+        return 0.5F + (0.5125F * (float) dinosaur.getGrowthStage());
+    }
+
+    @Override
+    public float getYScaling(Dinosaur dinosaur) {
+        return 0.5F + (0.5125F * (float) dinosaur.getGrowthStage());
     }
 
     @Override

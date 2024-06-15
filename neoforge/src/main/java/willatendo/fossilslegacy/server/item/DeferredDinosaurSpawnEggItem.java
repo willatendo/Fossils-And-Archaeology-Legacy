@@ -37,9 +37,9 @@ public class DeferredDinosaurSpawnEggItem extends DeferredSpawnEggItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, Level level, List<Component> list, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
         list.add(FossilsLegacyUtils.translation("item", "dinosaur_spawn_egg.desc").withStyle(ChatFormatting.GRAY));
-        super.appendHoverText(itemStack, level, list, tooltipFlag);
+        super.appendHoverText(itemStack, tooltipContext, list, tooltipFlag);
     }
 
     @Override
@@ -55,7 +55,7 @@ public class DeferredDinosaurSpawnEggItem extends DeferredSpawnEggItem {
         BlockState blockState = level.getBlockState(blockPos);
         BlockEntity blockEntity = level.getBlockEntity(blockPos);
         if (blockEntity instanceof Spawner spawner) {
-            entityType = this.getType(itemStack.getTag());
+            entityType = this.getType(itemStack);
             spawner.setEntityId(entityType, level.getRandom());
             level.sendBlockUpdated(blockPos, blockState, blockState, 3);
             level.gameEvent(useOnContext.getPlayer(), GameEvent.BLOCK_CHANGE, blockPos);
@@ -64,7 +64,7 @@ public class DeferredDinosaurSpawnEggItem extends DeferredSpawnEggItem {
         }
         ServerLevel serverLevel = (ServerLevel) level;
         BlockPos blockPos2 = blockState.getCollisionShape(level, blockPos).isEmpty() ? blockPos : blockPos.relative(direction);
-        entityType = this.getType(itemStack.getTag());
+        entityType = this.getType(itemStack);
         Entity entity = entityType.create(level);
         if (entity instanceof Dinosaur dinosaur) {
             if (!useOnContext.getPlayer().isCrouching()) {
@@ -79,7 +79,7 @@ public class DeferredDinosaurSpawnEggItem extends DeferredSpawnEggItem {
         if (entity instanceof Mob mob) {
             mob.yHeadRot = mob.getYRot();
             mob.yBodyRot = mob.getYRot();
-            mob.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(mob.blockPosition()), MobSpawnType.SPAWN_EGG, null, null);
+            mob.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(mob.blockPosition()), MobSpawnType.SPAWN_EGG, null);
             mob.playAmbientSound();
         }
         level.addFreshEntity(entity);

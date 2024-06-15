@@ -3,28 +3,32 @@ package willatendo.fossilslegacy.client;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.client.event.RegisterGuiOverlaysEvent;
+import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID, value = Dist.CLIENT)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID, value = Dist.CLIENT)
 public class ClientEvents {
     @SubscribeEvent
-    public static void clientSetup(FMLClientSetupEvent event) {
-        FossilsLegacyClient.bindScreens();
-    }
-
-    @SubscribeEvent
-    public static void skullOverlay(RegisterGuiOverlaysEvent event) {
+    public static void skullOverlay(RegisterGuiLayersEvent event) {
         event.registerBelow(new ResourceLocation("hotbar"), FossilsLegacyUtils.resource("skull_overlay"), new SkullOverlayScreen());
     }
 
     @SubscribeEvent
     public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
         event.register(FossilsLegacyKeys.SINK);
+    }
+
+    @SubscribeEvent
+    public static void screens(RegisterMenuScreensEvent event) {
+        FossilsLegacyClient.bindScreens();
+        FossilsLegacyClient.CLIENT_EVENTS_HOLDER.registerAllMenuScreens(menuScreen -> {
+            event.register(menuScreen.menuType(), menuScreen.screenConstructor());
+        });
     }
 
     @SubscribeEvent

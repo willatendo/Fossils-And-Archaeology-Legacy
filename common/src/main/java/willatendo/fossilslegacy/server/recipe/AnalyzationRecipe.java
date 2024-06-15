@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.recipe;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.util.RandomSource;
@@ -48,14 +49,14 @@ public class AnalyzationRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack assemble(Container container, RegistryAccess registryAccess) {
+    public ItemStack assemble(Container container, HolderLookup.Provider provider) {
         SimpleWeightedRandomList.Builder<ItemStack> weightedRandomList = SimpleWeightedRandomList.builder();
         for (int i = 0; i < this.results.size(); i++) {
             ItemStack itemStack = this.results.get(i).getResult();
             Integer weight = this.results.get(i).getWeight();
             weightedRandomList.add(itemStack, weight);
         }
-        return weightedRandomList.build().getRandom(RandomSource.create()).get().getData().copy();
+        return weightedRandomList.build().getRandom(RandomSource.create()).get().data().copy();
     }
 
     @Override
@@ -79,7 +80,7 @@ public class AnalyzationRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess registryAccess) {
+    public ItemStack getResultItem(HolderLookup.Provider provider) {
         return this.results.get(0).getResult();
     }
 

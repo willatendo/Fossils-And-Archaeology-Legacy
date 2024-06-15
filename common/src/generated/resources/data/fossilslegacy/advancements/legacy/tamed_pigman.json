@@ -12,8 +12,8 @@
     "frame": "goal",
     "hidden": true,
     "icon": {
-      "item": "fossilslegacy:ancient_helmet",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "fossilslegacy:ancient_helmet"
     },
     "title": {
       "translate": "advancements.fossilslegacy.legacy.tamed_pigman.title"

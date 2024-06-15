@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:prehistoric_coin"
-            ]
+            "items": "fossilslegacy:prehistoric_coin"
           }
         ]
       },
@@ -20,7 +18,8 @@
     },
     "hidden": true,
     "icon": {
-      "item": "fossilslegacy:prehistoric_coin"
+      "count": 1,
+      "id": "fossilslegacy:prehistoric_coin"
     },
     "title": {
       "translate": "advancements.fossilslegacy.legacy.prehistoric_coin.title"

@@ -48,4 +48,8 @@ public class FossilsLegacyArmorMaterials {
 
         return ARMOR_MATERIALS.register(id, () -> new ArmorMaterial(defense, enchantmentValue, equipSound, repairIngredient, layers, toughness, knockbackResistance));
     }
+
+    public static void init(List<SimpleRegistry<?>> simpleRegistries) {
+        simpleRegistries.add(ARMOR_MATERIALS);
+    }
 }

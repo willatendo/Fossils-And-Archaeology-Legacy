@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
+    "has_overworld_coin": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "fossilslegacy:overworld_coin"
-            ]
+            "items": "fossilslegacy:overworld_coin"
           }
         ]
       },
@@ -23,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_item"
+      "has_overworld_coin"
     ]
   ],
   "rewards": {

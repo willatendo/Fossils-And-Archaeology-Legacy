@@ -1,0 +1,15 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "minecraft:chicken"
+  },
+  "results": [
+    {
+      "result": {
+        "id": "fossilslegacy:chicken_dna"
+      },
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

@@ -1,9 +1,9 @@
 package willatendo.fossilslegacy.server;
 
-import willatendo.fossilslegacy.server.entity.EggVariant;
-import willatendo.fossilslegacy.server.entity.FossilVariant;
-import willatendo.fossilslegacy.server.entity.PregnancyType;
-import willatendo.fossilslegacy.server.entity.StoneTabletVariant;
+import willatendo.fossilslegacy.server.entity.variants.EggVariant;
+import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
+import willatendo.fossilslegacy.server.entity.variants.PregnancyType;
+import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 import willatendo.simplelibrary.server.util.RegistryHolder;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
