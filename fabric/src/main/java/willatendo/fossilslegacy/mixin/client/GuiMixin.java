@@ -1,6 +1,7 @@
 package willatendo.fossilslegacy.mixin.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
@@ -24,7 +25,7 @@ public abstract class GuiMixin {
     private Minecraft minecraft;
 
     @Inject(method = "renderCameraOverlays", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Inventory;getArmor(I)Lnet/minecraft/world/item/ItemStack;"), cancellable = true)
-    private void fossil_renderSkullOverlay(GuiGraphics guiGraphics, float spyglassScale, CallbackInfo callbackInfo) {
+    private void fossil_renderSkullOverlay(GuiGraphics guiGraphics, DeltaTracker deltaTracker, CallbackInfo callbackInfo) {
         ItemStack itemStack = this.minecraft.player.getInventory().getArmor(3);
 
         RenderTextureOverlayAccessor renderTextureOverlayAccessor = (RenderTextureOverlayAccessor) this;
