@@ -4,6 +4,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingBookCategory;
+import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
@@ -19,11 +20,11 @@ public class MagicConchRecipe extends CustomRecipe {
     }
 
     @Override
-    public boolean matches(CraftingContainer craftingContainer, Level level) {
+    public boolean matches(CraftingInput craftingInput, Level level) {
         ItemStack itemStack = ItemStack.EMPTY;
 
-        for (int slot = 0; slot < craftingContainer.getContainerSize(); ++slot) {
-            ItemStack itemStackInSlot = craftingContainer.getItem(slot);
+        for (int slot = 0; slot < craftingInput.size(); ++slot) {
+            ItemStack itemStackInSlot = craftingInput.getItem(slot);
             if (itemStackInSlot.is(FossilsLegacyItems.MAGIC_CONCH.get())) {
                 itemStack = itemStackInSlot;
             }
@@ -33,12 +34,12 @@ public class MagicConchRecipe extends CustomRecipe {
     }
 
     @Override
-    public ItemStack assemble(CraftingContainer craftingContainer, HolderLookup.Provider provider) {
+    public ItemStack assemble(CraftingInput craftingInput, HolderLookup.Provider provider) {
         ItemStack itemStack = FossilsLegacyItems.MAGIC_CONCH.get().getDefaultInstance();
         DinosaurCommand nextOrder = DinosaurCommand.FOLLOW;
 
-        for (int slot = 0; slot < craftingContainer.getContainerSize(); ++slot) {
-            ItemStack itemStackInSlot = craftingContainer.getItem(slot);
+        for (int slot = 0; slot < craftingInput.size(); ++slot) {
+            ItemStack itemStackInSlot = craftingInput.getItem(slot);
             if (!itemStackInSlot.isEmpty() && itemStackInSlot.getItem() instanceof MagicConchItem) {
                 nextOrder = DinosaurCommand.getNext(MagicConchItem.getOrder(itemStackInSlot));
             }

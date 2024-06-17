@@ -2,17 +2,13 @@ package willatendo.fossilslegacy.server.recipe;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
-import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSerialisers;
 
-public class ArchaeologyRecipe implements Recipe<Container> {
+public class ArchaeologyRecipe implements Recipe<SingleRecipeInput> {
     public final Ingredient ingredient;
     public final ItemStack result;
     public final int time;
@@ -24,12 +20,12 @@ public class ArchaeologyRecipe implements Recipe<Container> {
     }
 
     @Override
-    public boolean matches(Container container, Level level) {
-        return this.ingredient.test(container.getItem(0));
+    public boolean matches(SingleRecipeInput singleRecipeInput, Level level) {
+        return this.ingredient.test(singleRecipeInput.getItem(0));
     }
 
     @Override
-    public ItemStack assemble(Container container, HolderLookup.Provider provider) {
+    public ItemStack assemble(SingleRecipeInput singleRecipeInput, HolderLookup.Provider provider) {
         return this.result.copy();
     }
 

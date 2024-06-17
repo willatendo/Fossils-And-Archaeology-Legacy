@@ -407,7 +407,7 @@ public class Anu extends Zombie implements SpeakingEntity {
                     double x = target.getX() - (this.anu.getX() + vec3.x * 4.0);
                     double y = target.getY(0.5) - (0.5 + this.anu.getY(0.5));
                     double z = target.getZ() - (this.anu.getZ() + vec3.z * 4.0);
-                    LargeFireball largeFireball = new LargeFireball(level, (LivingEntity) this.anu, x, y, z, 1);
+                    LargeFireball largeFireball = new LargeFireball(level, (LivingEntity) this.anu, new Vec3(x, y, z), 1);
                     largeFireball.setPos(this.anu.getX() + vec3.x * 4.0, this.anu.getY(0.5) + 0.5, largeFireball.getZ() + vec3.z * 4.0);
                     level.addFreshEntity(largeFireball);
                     this.chargeTime = -40;

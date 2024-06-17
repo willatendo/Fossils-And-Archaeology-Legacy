@@ -5,7 +5,12 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
+import net.minecraft.nbt.Tag;
+import net.minecraft.resources.RegistryOps;
+import net.minecraft.tags.PaintingVariantTags;
 import net.minecraft.world.entity.decoration.Painting;
+import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -147,7 +152,11 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.JURASSIC_FERN_SPORES.get());
         output.accept(FossilsLegacyItems.RELIC_SCRAP.get());
         output.accept(FossilsLegacyItems.STONE_TABLET.get());
-        FossilsLegacyCreativeModeTabs.generateStoneTabletVariants(itemDisplayParameters, output);
+        itemDisplayParameters.holders().lookup(FossilsLegacyRegistries.STONE_TABLET_VARIANTS).ifPresent((registryLookup) -> {
+            FossilsLegacyCreativeModeTabs.generatePresetStoneTablets(output, itemDisplayParameters.holders(), registryLookup, (p_270037_) -> {
+                return p_270037_.is(FossilsLegacyStoneTabletVariantTags.PLACEABLE);
+            }, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        });
         output.accept(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get());
         output.accept(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get());
         output.accept(FossilsLegacyItems.ANCIENT_CHESTPLATE_ARTIFACT.get());
@@ -231,13 +240,10 @@ public class FossilsLegacyCreativeModeTabs {
         }
     }
 
-    private static void generateStoneTabletVariants(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
-        itemDisplayParameters.holders().lookup(FossilsLegacyRegistries.STONE_TABLET_VARIANTS).ifPresent(registryLookup -> FossilsLegacyCreativeModeTabs.generatePresetStoneTablets(output, registryLookup, holder -> holder.is(FossilsLegacyStoneTabletVariantTags.PLACEABLE), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
-    }
-
-    private static void generatePresetStoneTablets(CreativeModeTab.Output output, HolderLookup.RegistryLookup<StoneTabletVariant> registryLookup, Predicate<Holder<StoneTabletVariant>> predicate, CreativeModeTab.TabVisibility tabVisibility) {
+    private static void generatePresetStoneTablets(CreativeModeTab.Output output, HolderLookup.Provider provider, HolderLookup.RegistryLookup<StoneTabletVariant> registryLookup, Predicate<Holder<StoneTabletVariant>> predicate, CreativeModeTab.TabVisibility tabVisibility) {
+        RegistryOps<Tag> registryOps = provider.createSerializationContext(NbtOps.INSTANCE);
         registryLookup.listElements().filter(predicate).sorted(STONE_TABLET_COMPARATOR).forEach(reference -> {
-            CustomData customData = (CustomData.EMPTY.update(StoneTablet.VARIANT_MAP_CODEC, reference).getOrThrow()).update((compoundTag) -> {
+            CustomData customData = (CustomData.EMPTY.update(registryOps, StoneTablet.VARIANT_MAP_CODEC, reference).getOrThrow()).update((compoundTag) -> {
                 compoundTag.putString("id", "fossilslegacy:stone_tablet");
             });
             ItemStack itemStack = new ItemStack(FossilsLegacyItems.STONE_TABLET.get());

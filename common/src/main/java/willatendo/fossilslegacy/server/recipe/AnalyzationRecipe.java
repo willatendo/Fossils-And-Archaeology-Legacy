@@ -7,10 +7,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSerialisers;
@@ -19,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AnalyzationRecipe implements Recipe<Container> {
+public class AnalyzationRecipe implements Recipe<AnalyzerInput> {
     public final Ingredient ingredient;
     public final List<AnalyzationOutputs> results;
     public final Map<ItemStack, Integer> resultsAndWeight = new HashMap<>();
@@ -35,10 +32,10 @@ public class AnalyzationRecipe implements Recipe<Container> {
     }
 
     @Override
-    public boolean matches(Container container, Level level) {
+    public boolean matches(AnalyzerInput analyzerInput, Level level) {
         boolean matchesAny = false;
         for (int i = 0; i < 10; i++) {
-            if (this.ingredient.test(container.getItem(i))) {
+            if (this.ingredient.test(analyzerInput.getItem(i))) {
                 matchesAny = true;
                 break;
             } else {
@@ -49,7 +46,7 @@ public class AnalyzationRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack assemble(Container container, HolderLookup.Provider provider) {
+    public ItemStack assemble(AnalyzerInput analyzerInput, HolderLookup.Provider provider) {
         SimpleWeightedRandomList.Builder<ItemStack> weightedRandomList = SimpleWeightedRandomList.builder();
         for (int i = 0; i < this.results.size(); i++) {
             ItemStack itemStack = this.results.get(i).getResult();

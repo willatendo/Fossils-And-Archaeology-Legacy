@@ -1,6 +1,7 @@
 package willatendo.fossilslegacy.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.LayeredDraw;
@@ -10,7 +11,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class SkullOverlayScreen implements LayeredDraw.Layer {
     @Override
-    public void render(GuiGraphics guiGraphics, float v) {
+    public void render(GuiGraphics guiGraphics, DeltaTracker deltaTracker) {
         Minecraft minecraft = Minecraft.getInstance();
         ItemStack itemstack = minecraft.player.getInventory().getArmor(3);
         if (itemstack.is(FossilsLegacyBlocks.SKULL_BLOCK.get().asItem())) {

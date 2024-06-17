@@ -8,8 +8,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -19,10 +17,12 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.VariantHolder;
 import net.minecraft.world.entity.decoration.HangingEntity;
+import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
@@ -129,16 +129,6 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
     }
 
     @Override
-    public int getWidth() {
-        return this.getVariant().value().width();
-    }
-
-    @Override
-    public int getHeight() {
-        return this.getVariant().value().height();
-    }
-
-    @Override
     public void dropItem(Entity entity) {
         if (this.level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
             this.playSound(SoundEvents.PAINTING_BREAK, 1.0F, 1.0F);
@@ -150,6 +140,25 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
 
             this.spawnAtLocation(FossilsLegacyItems.STONE_TABLET.get());
         }
+    }
+
+    @Override
+    protected AABB calculateBoundingBox(BlockPos blockPos, Direction direction) {
+        Vec3 vec3 = Vec3.atCenterOf(blockPos).relative(direction, -0.46875);
+        StoneTabletVariant stoneTabletVariant = this.getVariant().value();
+        double withOffset = this.offsetForStoneTabletSize(stoneTabletVariant.width());
+        double heightOffset = this.offsetForStoneTabletSize(stoneTabletVariant.height());
+        Direction counterClockWise = direction.getCounterClockWise();
+        Vec3 relative = vec3.relative(counterClockWise, withOffset).relative(Direction.UP, heightOffset);
+        Direction.Axis axis = direction.getAxis();
+        double xWidth = axis == Direction.Axis.X ? 0.0625 : (double) stoneTabletVariant.width();
+        double height = (double) stoneTabletVariant.height();
+        double zWidth = axis == Direction.Axis.Z ? 0.0625 : (double) stoneTabletVariant.width();
+        return AABB.ofSize(relative, xWidth, height, zWidth);
+    }
+
+    private double offsetForStoneTabletSize(int size) {
+        return size % 2 == 0 ? 0.5 : 0.0;
     }
 
     @Override
@@ -170,11 +179,6 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
     @Override
     public Vec3 trackingPosition() {
         return Vec3.atLowerCornerOf(this.pos);
-    }
-
-    @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return new ClientboundAddEntityPacket(this, this.direction.get3DDataValue(), this.getPos());
     }
 
     @Override

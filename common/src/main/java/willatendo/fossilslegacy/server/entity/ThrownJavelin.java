@@ -30,25 +30,21 @@ public class ThrownJavelin extends AbstractArrow {
     private ItemStack itemStack = FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get().getDefaultInstance();
     private float damage = 1.0F;
 
-    public ThrownJavelin(EntityType<? extends ThrownJavelin> entityType, Level level, ItemStack itemStack) {
-        super(entityType, level, itemStack);
-    }
-
     public ThrownJavelin(EntityType<? extends ThrownJavelin> entityType, Level level) {
-        this(entityType, level, FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get().getDefaultInstance());
+        super(entityType, level);
     }
 
-    protected ThrownJavelin(EntityType<? extends ThrownJavelin> entityType, double x, double y, double z, Level level, ItemStack itemStack) {
-        this(entityType, level, itemStack);
+    protected ThrownJavelin(EntityType<? extends ThrownJavelin> entityType, double x, double y, double z, Level level) {
+        this(entityType, level);
         this.setPos(x, y, z);
     }
 
-    public ThrownJavelin(Level level, double x, double y, double z, ItemStack itemStack) {
-        this(FossilsLegacyEntityTypes.THROWN_JAVELIN.get(), x, y, z, level, itemStack);
+    public ThrownJavelin(Level level, double x, double y, double z) {
+        this(FossilsLegacyEntityTypes.THROWN_JAVELIN.get(), x, y, z, level);
     }
 
     public ThrownJavelin(Level level, LivingEntity livingEntity, ItemStack itemStack) {
-        super(FossilsLegacyEntityTypes.THROWN_JAVELIN.get(), livingEntity, level, itemStack);
+        super(FossilsLegacyEntityTypes.THROWN_JAVELIN.get(), livingEntity, level, itemStack, null);
         this.itemStack = itemStack.copy();
     }
 

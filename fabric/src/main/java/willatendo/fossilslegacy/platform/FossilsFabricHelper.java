@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.platform;
 
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -10,20 +9,12 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.portal.PortalInfo;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
-import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
-import willatendo.fossilslegacy.server.block.entity.TimeMachineBlockEntity;
 import willatendo.fossilslegacy.server.config.FabricConfigHelper;
-import willatendo.fossilslegacy.server.item.CoinItem;
 import willatendo.fossilslegacy.server.item.DinosaurSpawnEggItem;
 
 import java.util.function.Supplier;
@@ -34,16 +25,6 @@ public class FossilsFabricHelper implements FossilsModloaderHelper {
         FriendlyByteBuf friendlyByteBuf = PacketByteBufs.create();
         friendlyByteBuf.writeBlockPos(blockPos);
         ClientPlayNetworking.send(new ServerboundTimeMachineUpdatePacket(blockPos));
-    }
-
-    @Override
-    public void changeDimensions(Player player, ServerLevel serverLevel, PortalInfo portalInfo, BlockPos timeMachineBlockPos) {
-        serverLevel.setBlock(timeMachineBlockPos, FossilsLegacyBlocks.TIME_MACHINE.get().defaultBlockState(), 3);
-        BlockEntity blockEntity = serverLevel.getBlockEntity(timeMachineBlockPos);
-        if (blockEntity instanceof TimeMachineBlockEntity timeMachineBlockEntity) {
-            timeMachineBlockEntity.setItem(0, new ItemStack(CoinItem.ITEM_MAP.get(serverLevel.dimension())));
-        }
-        FabricDimensions.teleport(player, serverLevel, portalInfo);
     }
 
     @Override

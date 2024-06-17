@@ -47,7 +47,7 @@ public class TimeMachineClockRenderer implements BlockEntityRenderer<TimeMachine
         poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
         this.showTime(timeMachineBlockEntity);
         VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entityTranslucent(TEXTURE));
-        this.timeMachineClockModel.renderToBuffer(poseStack, vertexConsumer, packedLight, packedOverlay, 1.0F, 1.0F, 1.0F, 1.0F);
+        this.timeMachineClockModel.renderToBuffer(poseStack, vertexConsumer, packedLight, packedOverlay);
         poseStack.popPose();
     }
 

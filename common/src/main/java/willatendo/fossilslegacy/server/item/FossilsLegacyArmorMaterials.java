@@ -33,7 +33,7 @@ public class FossilsLegacyArmorMaterials {
     });
 
     private static SimpleHolder<ArmorMaterial> register(String id, EnumMap<ArmorItem.Type, Integer> defenseMap, int enchantmentValue, Holder<SoundEvent> equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient) {
-        List<ArmorMaterial.Layer> layers = List.of(new ArmorMaterial.Layer(new ResourceLocation(id)));
+        List<ArmorMaterial.Layer> layers = List.of(new ArmorMaterial.Layer(FossilsLegacyUtils.resource(id)));
         return register(id, defenseMap, enchantmentValue, equipSound, toughness, knockbackResistance, repairIngredient, layers);
     }
 

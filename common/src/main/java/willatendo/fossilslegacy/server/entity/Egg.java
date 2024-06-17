@@ -45,7 +45,7 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
     }
 
     @Override
-    protected void dropExperience() {
+    protected void dropExperience(Entity entity) {
     }
 
     @Override
@@ -59,9 +59,13 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 
     @Override
     public void die(DamageSource damageSource) {
-        this.dropAllDeathLoot(damageSource);
+        Level level = this.level();
+        if (level instanceof ServerLevel serverLevel) {
+            this.dropAllDeathLoot(serverLevel, damageSource);
+        }
         this.discard();
     }
+
 
     @Override
     public ItemStack getPickResult() {

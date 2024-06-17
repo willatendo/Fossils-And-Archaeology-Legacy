@@ -14,6 +14,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.StackedContents;
@@ -23,12 +24,13 @@ import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.portal.PortalInfo;
+import net.minecraft.world.level.portal.DimensionTransition;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
+import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.item.CoinItem;
 import willatendo.fossilslegacy.server.menu.TimeMachineMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -112,7 +114,19 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
                     double y = serverLevel.getHeight(Heightmap.Types.WORLD_SURFACE, (int) x, (int) z);
                     double finalY = y > -64.0D ? y : 70;
                     level.playSound(player, this.getBlockPos(), SoundEvents.PORTAL_TRAVEL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                    FossilsModloaderHelper.INSTANCE.changeDimensions(player, minecraftServer.getLevel(destinedLevel), new PortalInfo(new Vec3(x, finalY, z), Vec3.ZERO, player.getYRot(), player.getXRot()), this.getBlockPos());
+                    player.changeDimension(new DimensionTransition(minecraftServer.getLevel(destinedLevel), new Vec3(x, finalY, z), Vec3.ZERO, player.getYRot(), player.getXRot(), false, DimensionTransition.PLAY_PORTAL_SOUND.then(new DimensionTransition.PostDimensionTransition() {
+                        @Override
+                        public void onTransition(Entity entity) {
+                            Level level = entity.level();
+                            if (!level.getBlockState(TimeMachineBlockEntity.this.getBlockPos()).is(FossilsLegacyBlocks.TIME_MACHINE.get())) {
+                                level.setBlock(TimeMachineBlockEntity.this.getBlockPos(), FossilsLegacyBlocks.TIME_MACHINE.get().defaultBlockState(), 3);
+                            }
+                            BlockEntity blockEntity = level.getBlockEntity(TimeMachineBlockEntity.this.getBlockPos());
+                            if (blockEntity instanceof TimeMachineBlockEntity timeMachineBlockEntity) {
+                                timeMachineBlockEntity.setItem(0, new ItemStack(CoinItem.ITEM_MAP.get(level.dimension())));
+                            }
+                        }
+                    })));
                 }
             }
         });

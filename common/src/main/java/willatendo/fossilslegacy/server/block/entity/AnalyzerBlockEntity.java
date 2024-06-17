@@ -9,7 +9,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -23,12 +22,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeManager.CachedCheck;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import willatendo.fossilslegacy.server.block.AnalyzerBlock;
 import willatendo.fossilslegacy.server.menu.AnalyzerMenu;
 import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
+import willatendo.fossilslegacy.server.recipe.AnalyzerInput;
 import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -73,7 +74,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
         }
     };
     private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-    private final CachedCheck<Container, AnalyzationRecipe> recipeCheck = RecipeManager.createCheck(FossilsLegacyRecipeTypes.ANALYZATION.get());
+    private final CachedCheck<AnalyzerInput, AnalyzationRecipe> recipeCheck = RecipeManager.createCheck(FossilsLegacyRecipeTypes.ANALYZATION.get());
 
     public AnalyzerBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(FossilsLegacyBlockEntities.ANALYZER.get(), blockPos, blockState);
@@ -93,7 +94,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
         this.analyzationTotalTime = compoundTag.getInt("AnalyzationTimeTotal");
         CompoundTag usedRecipes = compoundTag.getCompound("RecipesUsed");
         for (String recipes : usedRecipes.getAllKeys()) {
-            this.recipesUsed.put(new ResourceLocation(recipes), usedRecipes.getInt(recipes));
+            this.recipesUsed.put(ResourceLocation.parse(recipes), usedRecipes.getInt(recipes));
         }
     }
 
@@ -124,14 +125,14 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
                 if (analyzerBlockEntity.isOn() || hasInput) {
                     RecipeHolder<AnalyzationRecipe> recipe;
                     if (hasInput) {
-                        recipe = analyzerBlockEntity.recipeCheck.getRecipeFor(analyzerBlockEntity, level).orElse(null);
+                        recipe = analyzerBlockEntity.recipeCheck.getRecipeFor(new AnalyzerInput(analyzerBlockEntity.itemStacks.get(inputSlot), analyzerBlockEntity.itemStacks), level).orElse(null);
                     } else {
                         recipe = null;
                     }
 
                     if (recipe != null) {
                         int maxStackSize = analyzerBlockEntity.getMaxStackSize();
-                        ItemStack outputStack = recipe.value().assemble(analyzerBlockEntity, level.registryAccess());
+                        ItemStack outputStack = recipe.value().assemble(new AnalyzerInput(analyzerBlockEntity.itemStacks.get(inputSlot), analyzerBlockEntity.itemStacks), level.registryAccess());
                         for (int outputSlot = 9; outputSlot < 13; outputSlot++) {
                             if (analyzerBlockEntity.canAnalyze(outputSlot, inputSlot, outputStack, analyzerBlockEntity.itemStacks, maxStackSize)) {
                                 if (!analyzerBlockEntity.isOn()) {
@@ -145,7 +146,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
                                     analyzerBlockEntity.analyzationProgress++;
                                     if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
                                         analyzerBlockEntity.analyzationProgress = 0;
-                                        analyzerBlockEntity.analyzationTotalTime = getTotalAnalyzationTime(level, analyzerBlockEntity);
+                                        analyzerBlockEntity.analyzationTotalTime = getTotalAnalyzationTime(inputSlot, level, analyzerBlockEntity);
                                         if (analyzerBlockEntity.analyze(outputSlot, inputSlot, outputStack, analyzerBlockEntity.itemStacks, maxStackSize)) {
                                             analyzerBlockEntity.setRecipeUsed(recipe);
                                         }
@@ -213,8 +214,8 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
         }
     }
 
-    private static int getTotalAnalyzationTime(Level level, AnalyzerBlockEntity analyzerBlockEntity) {
-        return analyzerBlockEntity.recipeCheck.getRecipeFor(analyzerBlockEntity, level).map(recipeHolder -> recipeHolder.value().getTime()).orElse(100);
+    private static int getTotalAnalyzationTime(int inputSlot, Level level, AnalyzerBlockEntity analyzerBlockEntity) {
+        return analyzerBlockEntity.recipeCheck.getRecipeFor(new AnalyzerInput(analyzerBlockEntity.itemStacks.get(inputSlot), analyzerBlockEntity.itemStacks), level).map(recipeHolder -> recipeHolder.value().getTime()).orElse(100);
     }
 
     @Override

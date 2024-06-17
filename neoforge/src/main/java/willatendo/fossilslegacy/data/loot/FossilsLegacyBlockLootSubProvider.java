@@ -1,8 +1,7 @@
 package willatendo.fossilslegacy.data.loot;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.loot.BlockLootSubProvider;
-import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -12,13 +11,14 @@ import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom;
 import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom.ItemAndChance;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.data.loot.SimpleBlockLootSubProvider;
 
-import java.util.Set;
 import java.util.stream.Collectors;
 
-public class FossilsLegacyBlockLootSubProvider extends BlockLootSubProvider {
-    public FossilsLegacyBlockLootSubProvider() {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+public class FossilsLegacyBlockLootSubProvider extends SimpleBlockLootSubProvider {
+
+    public FossilsLegacyBlockLootSubProvider(HolderLookup.Provider registries) {
+        super(registries, FossilsLegacyUtils.ID);
     }
 
     @Override
@@ -59,11 +59,6 @@ public class FossilsLegacyBlockLootSubProvider extends BlockLootSubProvider {
     }
 
     protected LootTable.Builder createFossilOreLootTable(Block block) {
-        return createSelfDropDispatchTable(block, HAS_SILK_TOUCH, this.applyExplosionCondition(block, LootOneItemOfManyRandom.lootTableItem(20000, new ItemAndChance(FossilsLegacyItems.FOSSIL.get(), 10, 4500), new ItemAndChance(FossilsLegacyItems.RELIC_SCRAP.get(), 4500, 9800), new ItemAndChance(Items.BONE, 9800, 17800), new ItemAndChance(FossilsLegacyBlocks.SKULL_BLOCK.get(), 17800, 19800), new ItemAndChance(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get(), 19800, 19900), new ItemAndChance(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get(), 19900, 19925), new ItemAndChance(FossilsLegacyItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 19925, 19950), new ItemAndChance(FossilsLegacyItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 19950, 19975), new ItemAndChance(FossilsLegacyItems.ANCIENT_BOOTS_ARTIFACT.get(), 19975, 20000), new ItemAndChance(FossilsLegacyItems.SCARAB_GEM.get(), 0, 10))));
-    }
-
-    @Override
-    protected Iterable<Block> getKnownBlocks() {
-        return BuiltInRegistries.BLOCK.stream().filter(block -> FossilsLegacyUtils.ID.equals(BuiltInRegistries.BLOCK.getKey(block).getNamespace())).collect(Collectors.toSet());
+        return createSelfDropDispatchTable(block, this.hasSilkTouch(), this.applyExplosionCondition(block, LootOneItemOfManyRandom.lootTableItem(20000, new ItemAndChance(FossilsLegacyItems.FOSSIL.get(), 10, 4500), new ItemAndChance(FossilsLegacyItems.RELIC_SCRAP.get(), 4500, 9800), new ItemAndChance(Items.BONE, 9800, 17800), new ItemAndChance(FossilsLegacyBlocks.SKULL_BLOCK.get(), 17800, 19800), new ItemAndChance(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get(), 19800, 19900), new ItemAndChance(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get(), 19900, 19925), new ItemAndChance(FossilsLegacyItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 19925, 19950), new ItemAndChance(FossilsLegacyItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 19950, 19975), new ItemAndChance(FossilsLegacyItems.ANCIENT_BOOTS_ARTIFACT.get(), 19975, 20000), new ItemAndChance(FossilsLegacyItems.SCARAB_GEM.get(), 0, 10))));
     }
 }

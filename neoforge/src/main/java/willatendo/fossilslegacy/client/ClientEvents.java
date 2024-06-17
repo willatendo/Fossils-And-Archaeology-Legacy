@@ -15,7 +15,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 public class ClientEvents {
     @SubscribeEvent
     public static void skullOverlay(RegisterGuiLayersEvent event) {
-        event.registerBelow(new ResourceLocation("hotbar"), FossilsLegacyUtils.resource("skull_overlay"), new SkullOverlayScreen());
+        event.registerBelow(FossilsLegacyUtils.mc("hotbar"), FossilsLegacyUtils.resource("skull_overlay"), new SkullOverlayScreen());
     }
 
     @SubscribeEvent

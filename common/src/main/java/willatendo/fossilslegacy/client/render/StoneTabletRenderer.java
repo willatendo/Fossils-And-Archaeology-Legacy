@@ -87,7 +87,7 @@ public class StoneTabletRenderer extends EntityRenderer<StoneTablet> {
     }
 
     private void vertex(PoseStack.Pose pose, VertexConsumer vertexConsumer, float x, float y, float u, float v, float z, int x2, int y2, int y3, int lightColour) {
-        vertexConsumer.vertex(pose, x, y, z).color(255, 255, 255, 255).uv(u, v).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(lightColour).normal(pose, (float) x2, (float) y2, (float) y3).endVertex();
+        vertexConsumer.addVertex(pose, x, y, z).setColor(255, 255, 255, 255).setUv(u, v).setOverlay(OverlayTexture.NO_OVERLAY).setLight(lightColour).setNormal(pose, (float) x2, (float) y2, (float) y3);
     }
 
     @Override

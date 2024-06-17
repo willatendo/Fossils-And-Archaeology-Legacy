@@ -27,6 +27,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.DismountHelper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.biome.Biome;
@@ -310,6 +311,7 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
         this.level().broadcastEntityEvent(this, (byte) 4);
         float attackDamage = this.getAttackDamage();
         float variableDamage = (int) attackDamage > 0 ? attackDamage / 2.0F + (float) this.random.nextInt((int) attackDamage) : attackDamage;
+        DamageSource damageSource = this.damageSources().mobAttack(this);
         boolean canHurt = entity.hurt(this.damageSources().mobAttack(this), variableDamage);
         if (canHurt) {
             double knockbackResistance;
@@ -321,7 +323,10 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
 
             double variableKnockbackResistance = Math.max(0.0D, 1.0D - knockbackResistance);
             entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, (double) 0.4F * variableKnockbackResistance, 0.0D));
-            this.doEnchantDamageEffects(this, entity);
+            Level level = this.level();
+            if (level instanceof ServerLevel serverLevel) {
+                EnchantmentHelper.doPostAttackEffects(serverLevel, entity, damageSource);
+            }
         }
 
         this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);

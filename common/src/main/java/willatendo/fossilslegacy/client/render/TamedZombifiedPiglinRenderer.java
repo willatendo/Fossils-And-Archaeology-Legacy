@@ -10,9 +10,10 @@ import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
+import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class TamedZombifiedPiglinRenderer extends HumanoidMobRenderer<Mob, PiglinModel<Mob>> {
-	private static final ResourceLocation TEXTURES = new ResourceLocation("textures/entity/piglin/zombified_piglin.png");
+	private static final ResourceLocation TEXTURES = FossilsLegacyUtils.mc("textures/entity/piglin/zombified_piglin.png");
 
 	public TamedZombifiedPiglinRenderer(EntityRendererProvider.Context context, ModelLayerLocation modelLayerLocation, ModelLayerLocation modelLayerLocation2, ModelLayerLocation modelLayerLocation3, boolean bl) {
 		super(context, TamedZombifiedPiglinRenderer.createModel(context.getModelSet(), modelLayerLocation, bl), 0.5f, 1.0019531f, 1.0f, 1.0019531f);

@@ -13,6 +13,9 @@ public class FossilsLegacyUtils {
 	public static ResourceLocation resource(String path) {
 		return new ResourceLocation(ID, path);
 	}
+	public static ResourceLocation mc(String path) {
+		return new ResourceLocation("minecraft", path);
+	}
 
 	public static MutableComponent fullTranslation(String in) {
 		return Component.translatable(in);

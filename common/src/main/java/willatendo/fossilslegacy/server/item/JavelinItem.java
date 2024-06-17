@@ -30,14 +30,14 @@ public class JavelinItem extends Item {
     }
 
     @Override
-    public int getUseDuration(ItemStack itemStack) {
+    public int getUseDuration(ItemStack itemStack, LivingEntity livingEntity) {
         return 72000;
     }
 
     @Override
     public void releaseUsing(ItemStack itemStack, Level level, LivingEntity livingEntity, int time) {
         if (livingEntity instanceof Player player) {
-            int i = this.getUseDuration(itemStack) - time;
+            int i = this.getUseDuration(itemStack, livingEntity) - time;
             if (i >= 0) {
                 if (!level.isClientSide()) {
                     ItemStack damaged = itemStack;

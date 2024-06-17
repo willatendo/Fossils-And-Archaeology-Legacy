@@ -25,6 +25,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeManager.CachedCheck;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
@@ -95,7 +96,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
     };
 
     private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-    private final CachedCheck<Container, CultivationRecipe> recipeCheck = RecipeManager.createCheck(FossilsLegacyRecipeTypes.CULTIVATION.get());
+    private final CachedCheck<SingleRecipeInput, CultivationRecipe> recipeCheck = RecipeManager.createCheck(FossilsLegacyRecipeTypes.CULTIVATION.get());
 
     private final DyeColor dyeColor;
 
@@ -187,7 +188,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         this.onDuration = this.getOnDuration(this.itemStacks.get(1));
         CompoundTag usedRecipes = compoundTag.getCompound("RecipesUsed");
         for (String recipes : usedRecipes.getAllKeys()) {
-            this.recipesUsed.put(new ResourceLocation(recipes), usedRecipes.getInt(recipes));
+            this.recipesUsed.put(ResourceLocation.parse(recipes), usedRecipes.getInt(recipes));
         }
     }
 
@@ -218,7 +219,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         if (cultivatorBlockEntity.isOn() || hasFuel && hasInput) {
             RecipeHolder<CultivationRecipe> recipe;
             if (hasInput) {
-                recipe = cultivatorBlockEntity.recipeCheck.getRecipeFor(cultivatorBlockEntity, level).orElse(null);
+                recipe = cultivatorBlockEntity.recipeCheck.getRecipeFor(new SingleRecipeInput(cultivatorBlockEntity.itemStacks.get(0)), level).orElse(null);
             } else {
                 recipe = null;
             }
@@ -277,7 +278,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
 
     private boolean canCultivate(RegistryAccess registryAccess, RecipeHolder<?> recipeHolder, NonNullList<ItemStack> itemStacks, int maxStackSize) {
         if (!itemStacks.get(0).isEmpty() && recipeHolder != null) {
-            ItemStack output = ((Recipe<WorldlyContainer>) recipeHolder.value()).assemble(this, registryAccess);
+            ItemStack output = ((CultivationRecipe) recipeHolder.value()).assemble(new SingleRecipeInput(itemStacks.get(0)), registryAccess);
             if (output.isEmpty()) {
                 return false;
             } else {
@@ -300,7 +301,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
     private boolean cultivate(RegistryAccess registryAccess, RecipeHolder<?> recipeHolder, NonNullList<ItemStack> itemStacks, int maxStackSize) {
         if (recipeHolder != null && this.canCultivate(registryAccess, recipeHolder, itemStacks, maxStackSize)) {
             ItemStack input = itemStacks.get(0);
-            ItemStack output = ((Recipe<WorldlyContainer>) recipeHolder.value()).assemble(this, registryAccess);
+            ItemStack output = ((CultivationRecipe) recipeHolder.value()).assemble(new SingleRecipeInput(itemStacks.get(0)), registryAccess);
             ItemStack outputSlot = itemStacks.get(2);
             if (outputSlot.isEmpty()) {
                 itemStacks.set(2, output.copy());
@@ -323,8 +324,8 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         }
     }
 
-    private static int getTotalCultivationTime(Level p_222693_, CultivatorBlockEntity cultivatorBlockEntity) {
-        return cultivatorBlockEntity.recipeCheck.getRecipeFor(cultivatorBlockEntity, p_222693_).map(recipeHolder -> recipeHolder.value().getTime()).orElse(6000);
+    private static int getTotalCultivationTime(Level level, CultivatorBlockEntity cultivatorBlockEntity) {
+        return cultivatorBlockEntity.recipeCheck.getRecipeFor(new SingleRecipeInput(cultivatorBlockEntity.getItem(0)), level).map(recipeHolder -> recipeHolder.value().getTime()).orElse(6000);
     }
 
     @Override

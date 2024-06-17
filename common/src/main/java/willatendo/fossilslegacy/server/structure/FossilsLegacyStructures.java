@@ -23,17 +23,9 @@ public class FossilsLegacyStructures {
         return ResourceKey.create(Registries.STRUCTURE, FossilsLegacyUtils.resource(name));
     }
 
-    public static Structure.StructureSettings structure(HolderSet<Biome> holderSet, GenerationStep.Decoration decoration, TerrainAdjustment terrainAdjustment) {
-        return Structures.structure(holderSet, Map.of(), decoration, terrainAdjustment);
-    }
-
-    public static Structure.StructureSettings structure(HolderSet<Biome> holderSet, TerrainAdjustment terrainAdjustment) {
-        return Structures.structure(holderSet, Map.of(), GenerationStep.Decoration.SURFACE_STRUCTURES, terrainAdjustment);
-    }
-
     public static void bootstrap(BootstrapContext<Structure> bootstrapContext) {
         HolderGetter<Biome> biomes = bootstrapContext.lookup(Registries.BIOME);
-        bootstrapContext.register(ACADEMY, new AcademyStructure(FossilsLegacyStructures.structure(biomes.getOrThrow(FossilsLegacyBiomeTags.HAS_ACADEMY), TerrainAdjustment.NONE)));
-        bootstrapContext.register(WEAPON_SHOP, new WeaponShopStructure(FossilsLegacyStructures.structure(biomes.getOrThrow(FossilsLegacyBiomeTags.HAS_WEAPON_SHOP), TerrainAdjustment.NONE)));
+        bootstrapContext.register(ACADEMY, new AcademyStructure(new Structure.StructureSettings(biomes.getOrThrow(FossilsLegacyBiomeTags.HAS_ACADEMY))));
+        bootstrapContext.register(WEAPON_SHOP, new WeaponShopStructure(new Structure.StructureSettings(biomes.getOrThrow(FossilsLegacyBiomeTags.HAS_WEAPON_SHOP))));
     }
 }

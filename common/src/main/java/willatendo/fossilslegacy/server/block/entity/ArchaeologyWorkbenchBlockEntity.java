@@ -23,6 +23,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeManager.CachedCheck;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
@@ -32,6 +33,7 @@ import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.menu.ArchaeologyWorkbenchMenu;
 import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
+import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
 import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -84,7 +86,7 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
         }
     };
     private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-    private final CachedCheck<Container, ArchaeologyRecipe> recipeCheck = RecipeManager.createCheck(FossilsLegacyRecipeTypes.ARCHAEOLOGY.get());
+    private final CachedCheck<SingleRecipeInput, ArchaeologyRecipe> recipeCheck = RecipeManager.createCheck(FossilsLegacyRecipeTypes.ARCHAEOLOGY.get());
 
     public static Map<Item, Integer> getOnTimeMap() {
         Map<Item, Integer> map = Maps.newLinkedHashMap();
@@ -111,7 +113,7 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
         this.onDuration = this.getOnDuration(this.itemStacks.get(1));
         CompoundTag usedRecipes = compoundTag.getCompound("RecipesUsed");
         for (String recipes : usedRecipes.getAllKeys()) {
-            this.recipesUsed.put(new ResourceLocation(recipes), usedRecipes.getInt(recipes));
+            this.recipesUsed.put(ResourceLocation.parse(recipes), usedRecipes.getInt(recipes));
         }
     }
 
@@ -147,7 +149,7 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
 
                 RecipeHolder<ArchaeologyRecipe> recipe;
                 if (hasInput) {
-                    recipe = archaeologyWorkbenchBlockEntity.recipeCheck.getRecipeFor(archaeologyWorkbenchBlockEntity, level).orElse(null);
+                    recipe = archaeologyWorkbenchBlockEntity.recipeCheck.getRecipeFor(new SingleRecipeInput(archaeologyWorkbenchBlockEntity.itemStacks.get(0)), level).orElse(null);
                 } else {
                     recipe = null;
                 }
@@ -201,7 +203,7 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
 
     private boolean canFix(RegistryAccess registryAccess, RecipeHolder<?> recipeHolder, NonNullList<ItemStack> itemStacks, int maxStackSize) {
         if (!itemStacks.get(0).isEmpty() && recipeHolder != null) {
-            ItemStack output = ((Recipe<WorldlyContainer>) recipeHolder.value()).assemble(this, registryAccess);
+            ItemStack output = ((ArchaeologyRecipe) recipeHolder.value()).assemble(new SingleRecipeInput(itemStacks.get(0)), registryAccess);
             if (output.isEmpty()) {
                 return false;
             } else {
@@ -224,7 +226,7 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
     private boolean fix(RegistryAccess registryAccess, RecipeHolder<?> recipeHolder, NonNullList<ItemStack> itemStacks, int maxStackSize) {
         if (recipeHolder != null && this.canFix(registryAccess, recipeHolder, itemStacks, maxStackSize)) {
             ItemStack input = itemStacks.get(0);
-            ItemStack output = ((Recipe<WorldlyContainer>) recipeHolder.value()).assemble(this, registryAccess);
+            ItemStack output = ((ArchaeologyRecipe) recipeHolder.value()).assemble(new SingleRecipeInput(itemStacks.get(0)), registryAccess);
             ItemStack outputSlot = itemStacks.get(2);
             if (outputSlot.isEmpty()) {
                 itemStacks.set(2, output.copy());
@@ -248,7 +250,7 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
     }
 
     private static int getTotalArchaeologyTime(Level p_222693_, ArchaeologyWorkbenchBlockEntity archaeologyWorkbenchBlockEntity) {
-        return archaeologyWorkbenchBlockEntity.recipeCheck.getRecipeFor(archaeologyWorkbenchBlockEntity, p_222693_).map(recipeHolder -> recipeHolder.value().getTime()).orElse(3000);
+        return archaeologyWorkbenchBlockEntity.recipeCheck.getRecipeFor(new SingleRecipeInput(archaeologyWorkbenchBlockEntity.getItem(0)), p_222693_).map(recipeHolder -> recipeHolder.value().getTime()).orElse(3000);
     }
 
     @Override
