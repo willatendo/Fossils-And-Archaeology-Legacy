@@ -13,7 +13,6 @@ public class RelicHoleList {
         this.relicHoles = new RelicHole[holeCount + 1];
         for (int i = 0; i < this.relicHoles.length; i++) {
             BlockPos blockPos = structureBlockPoses.get(randomSource.nextInt(structureBlockPoses.size()));
-            FossilsLegacyUtils.LOGGER.info("" + blockPos + " " + structureBlockPoses.get(structureBlockPoses.indexOf(blockPos) + 1));
             this.relicHoles[i] = new RelicHole(randomSource, blockPos, holeSize);
         }
     }
