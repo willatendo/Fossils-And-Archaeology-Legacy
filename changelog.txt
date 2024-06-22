@@ -1,4 +1,13 @@
-21/7/2024
+22/7/2024
+- Added Pachycephalosaurus
+- Added Pachycephalosaurus DNA
+- Added Pachycephalosaurus Egg
+- Added Raw Pachycephalosaurus Meat
+- Added Cooked Pachycephalosaurus Meat
+21/7/2024 B
+- Fixed Summoning Entities
+- Fixed Entity Data
+21/7/2024 A
 - Fixed Academy Crash (#6)
 - Fixed Structures Not Spawning
 17/7/2024

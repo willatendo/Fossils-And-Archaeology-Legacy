@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Deprecated
 public record DinosaurCommand(String order) implements StringRepresentable {
     public static final Map<String, DinosaurCommand> COMMANDS = new HashMap<String, DinosaurCommand>();
     public static final List<DinosaurCommand> DINOSAUR_COMMANDS = new ArrayList<>();
@@ -74,7 +75,7 @@ public record DinosaurCommand(String order) implements StringRepresentable {
 
     @Deprecated
     public static DinosaurCommand load(CompoundTag compoundTag) {
-        return COMMANDS.get(compoundTag.getString("Command"));
+        return COMMANDS.getOrDefault(compoundTag.getString("Command"), FREE_MOVE);
     }
 
     public static DinosaurCommand getFromString(String order) {
