@@ -16,10 +16,6 @@ public class ConfigHelper {
         return FossilsModloaderHelper.INSTANCE.willAnimalsGrow();
     }
 
-    public static boolean shouldAnuSpawn() {
-        return FossilsModloaderHelper.INSTANCE.shouldAnuSpawn();
-    }
-
     public static boolean isForgeConfigAPILoaded() {
         return SimpleUtils.isModLoaded("forgeconfigapiport");
     }

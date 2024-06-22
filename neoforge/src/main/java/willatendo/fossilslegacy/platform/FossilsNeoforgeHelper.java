@@ -52,9 +52,4 @@ public class FossilsNeoforgeHelper implements FossilsModloaderHelper {
     public boolean willAnimalsGrow() {
         return FossilsLegacyConfig.COMMON_CONFIG.willAnimalsGrow();
     }
-
-    @Override
-    public boolean shouldAnuSpawn() {
-        return FossilsLegacyConfig.COMMON_CONFIG.shouldAnuSpawn();
-    }
 }

@@ -1,0 +1,7 @@
+- Fixed Cooked Dinosaur Meat Recipes
+- Added Pachycephalosaurus
+- Added Pachycephalosaurus DNA
+- Added Pachycephalosaurus Egg
+- Added Raw Pachycephalosaurus Meat
+- Added Cooked Pachycephalosaurus Meat
+- Removed Antiquated "Anu Spawns" Config Option

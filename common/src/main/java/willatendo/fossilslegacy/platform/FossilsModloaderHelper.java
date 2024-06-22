@@ -31,6 +31,4 @@ public interface FossilsModloaderHelper {
     boolean willAnimalsBreakBlocks();
 
     boolean willAnimalsGrow();
-
-    boolean shouldAnuSpawn();
 }

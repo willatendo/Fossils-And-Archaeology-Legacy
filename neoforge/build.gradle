@@ -1,6 +1,7 @@
 plugins {
     id 'multiloader-loader'
     id 'net.neoforged.gradle.userdev' version '7.0.142'
+    id 'com.modrinth.minotaur' version '[2,3)'
 }
 
 minecraft.accessTransformers.file file('src/main/resources/META-INF/accesstransformer.cfg')
@@ -35,4 +36,18 @@ dependencies {
     jarJar(group: 'simplelibrary', name: 'simplelibrary-neoforge', version: "[3.4.4,4.0.0)")
 
     implementation "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+}
+
+modrinth {
+    token = System.getenv("MODRINTH_TOKEN")
+    projectId = "fossils-and-archaeology-legacy"
+    versionNumber = "${version}"
+    versionType = "release"
+    uploadFile = jar
+    gameVersions = ["${minecraft_version}"]
+    loaders = ["neoforge"]
+    changelog = new File("$rootDir/changelog-${version}.md").text
+    dependencies {
+        optional.version "jei"
+    }
 }

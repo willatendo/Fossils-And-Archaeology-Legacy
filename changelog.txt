@@ -5,6 +5,7 @@
 - Added Pachycephalosaurus Egg
 - Added Raw Pachycephalosaurus Meat
 - Added Cooked Pachycephalosaurus Meat
+- Removed Antiquated "Anu Spawns" Config Option
 21/7/2024 B
 - Fixed Summoning Entities
 - Fixed Entity Data

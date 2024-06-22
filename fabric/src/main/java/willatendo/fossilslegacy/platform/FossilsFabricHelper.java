@@ -58,9 +58,4 @@ public class FossilsFabricHelper implements FossilsModloaderHelper {
     public boolean willAnimalsGrow() {
         return FabricConfigHelper.willAnimalsGrow();
     }
-
-    @Override
-    public boolean shouldAnuSpawn() {
-        return FabricConfigHelper.shouldAnuSpawn();
-    }
 }

@@ -42,9 +42,6 @@ public class FossilsLegacyConfig extends PartitioningSerializer.GlobalData {
         @Comment("If true, animals will grow")
         private boolean animalsGrow = WILL_ANIMALS_GROW;
 
-        @Comment("If true, anu will spawn once in the nether")
-        private boolean anuSpawns = WILL_ANIMALS_STARVE;
-
         public boolean willAnimalsStarve() {
             return this.animalsStarve;
         }
@@ -55,10 +52,6 @@ public class FossilsLegacyConfig extends PartitioningSerializer.GlobalData {
 
         public boolean willAnimalsGrow() {
             return this.animalsGrow;
-        }
-
-        public boolean shouldAnuSpawn() {
-            return this.anuSpawns;
         }
     }
 }

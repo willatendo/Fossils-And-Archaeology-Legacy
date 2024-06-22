@@ -26,10 +26,6 @@ public class FabricConfigHelper {
         return isForgeConfigAPILoaded() ? FossilsLegacyForgeConfig.COMMON_CONFIG.willAnimalsGrow() : isClothConfigLoaded() ? FossilsLegacyClothConfigSettings.willAnimalsGrow() : WILL_ANIMALS_GROW;
     }
 
-    public static boolean shouldAnuSpawn() {
-        return isForgeConfigAPILoaded() ? FossilsLegacyForgeConfig.COMMON_CONFIG.shouldAnuSpawn() : isClothConfigLoaded() ? FossilsLegacyClothConfigSettings.willAnimalsStarve() : SHOULD_ANU_SPAWN;
-    }
-
     public static void loadConfig() {
         if (FabricConfigHelper.isForgeConfigAPILoaded()) {
             FossilsLegacyUtils.LOGGER.info("ForgeAPIConfigPort Detected: Using");

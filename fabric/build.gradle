@@ -1,6 +1,7 @@
 plugins {
     id 'multiloader-loader'
     id 'fabric-loom' version '1.7-SNAPSHOT'
+    id 'com.modrinth.minotaur' version '[2,3)'
 }
 
 dependencies {
@@ -50,5 +51,23 @@ loom {
             ideConfigGenerated(true)
             runDir("runs/server")
         }
+    }
+}
+
+modrinth {
+    token = System.getenv("MODRINTH_TOKEN")
+    projectId = "fossils-and-archaeology-legacy"
+    versionNumber = "${version}"
+    versionType = "release"
+    uploadFile = remapJar
+    gameVersions = ["${minecraft_version}"]
+    loaders = ["fabric"]
+    changelog = new File("$rootDir/changelog-${version}.md").text
+    dependencies {
+        required.project "fabric-api"
+        optional.version "cloth-config"
+        optional.version "modmenu"
+        optional.version "forge-config-api-port"
+        optional.version "jei"
     }
 }

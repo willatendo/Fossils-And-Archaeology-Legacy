@@ -20,8 +20,4 @@ public class FossilsLegacyClothConfigSettings {
     public static boolean willAnimalsGrow() {
         return CONFIG.common.willAnimalsGrow();
     }
-
-    public static boolean shouldAnuSpawn() {
-        return CONFIG.common.shouldAnuSpawn();
-    }
 }
