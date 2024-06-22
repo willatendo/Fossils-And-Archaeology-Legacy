@@ -56,6 +56,7 @@ public class FossilsLegacyClient {
         CLIENT_EVENTS_HOLDER.addModel(FossilsLegacyEntityTypes.CARNOTAURUS.get(), CarnotaurusRenderer::new);
         CLIENT_EVENTS_HOLDER.addModel(FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get(), CryolophosaurusRenderer::new);
         CLIENT_EVENTS_HOLDER.addModel(FossilsLegacyEntityTypes.THERIZINOSAURUS.get(), TherizinosaurusRenderer::new);
+        CLIENT_EVENTS_HOLDER.addModel(FossilsLegacyEntityTypes.PACHYCEPHALOSAURUS.get(), PachycephalosaurusRenderer::new);
 
         CLIENT_EVENTS_HOLDER.addModel(FossilsLegacyEntityTypes.EGG.get(), EggRenderer::new);
 
@@ -114,6 +115,7 @@ public class FossilsLegacyClient {
         CLIENT_EVENTS_HOLDER.addModelLayer(FossilsLegacyModels.CARNOTAURUS, CarnotaurusModel::createBodyLayer);
         CLIENT_EVENTS_HOLDER.addModelLayer(FossilsLegacyModels.CRYOLOPHOSAURUS, CryolophosaurusModel::createBodyLayer);
         CLIENT_EVENTS_HOLDER.addModelLayer(FossilsLegacyModels.THERIZINOSAURUS, TherizinosaurusModel::createBodyLayer);
+        CLIENT_EVENTS_HOLDER.addModelLayer(FossilsLegacyModels.PACHYCEPHALOSAURUS, PachycephalosaurusModel::createBodyLayer);
 
         CLIENT_EVENTS_HOLDER.addModelLayer(FossilsLegacyModels.TRICERATOPS_SKELETON, TriceratopsSkeletonModel::createBodyLayer);
         CLIENT_EVENTS_HOLDER.addModelLayer(FossilsLegacyModels.BRACHIOSAURUS_SKELETON, BrachiosaurusSkeletonModel::createBodyLayer);

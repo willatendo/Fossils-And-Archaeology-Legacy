@@ -1,4 +1,4 @@
-// 1.21	2024-06-17T13:55:41.2599651	Item Models: fossilslegacy
+// 1.21	2024-06-21T22:30:30.9530874	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 4381095ccc6fdb9d02fd9439e08297e28995979f assets/fossilslegacy/models/item/ancient_boots.json
 495af42a87db67a3f9c92eed60f8921391a60f44 assets/fossilslegacy/models/item/ancient_boots_artifact.json
@@ -46,6 +46,7 @@ cda2ea88386451c1ba29815b300ecd2a81467c1a assets/fossilslegacy/models/item/cooked
 7f7a0059225a2ad8b144f49eed0cabc346be4188 assets/fossilslegacy/models/item/cooked_futabasaurus_meat.json
 a18661d6c353a390459a259944c4cac1b3778217 assets/fossilslegacy/models/item/cooked_mammoth_meat.json
 5861be756e1b4c1f156fa5f3389e948c39be06bf assets/fossilslegacy/models/item/cooked_mosasaurus_meat.json
+f85e76e4072ec4c6d558be3f23801d44fcc7b486 assets/fossilslegacy/models/item/cooked_pachycephalosaurus_meat.json
 7e0ad408af6b58371af75f4bd3e51bf154033517 assets/fossilslegacy/models/item/cooked_pteranodon_meat.json
 a1e6a2bc4e794dff7b1e21874584604123f7c35d assets/fossilslegacy/models/item/cooked_smilodon_meat.json
 d6e3f4684e209f666028d492a6200e104fba6387 assets/fossilslegacy/models/item/cooked_stegosaurus_meat.json
@@ -125,6 +126,9 @@ eb085be866727a3b6d81d0c3015e4c25291dae13 assets/fossilslegacy/models/item/ocelot
 3365654da30a55bae98f3102cffe2273e5ecdb57 assets/fossilslegacy/models/item/ocelot_embryo_syringe.json
 ecbc1c1361d6b74e2656f68e15b11e0890e99409 assets/fossilslegacy/models/item/orange_cultivator.json
 07ebdf264e1f9a9bf8c98c515b658fba9f373606 assets/fossilslegacy/models/item/overworld_coin.json
+666b06ab7dea545145cfb26323f3cf9fafc4baa8 assets/fossilslegacy/models/item/pachycephalosaurus_dna.json
+831df03e8aa5a5e209fcf402c9be69b8f4b34110 assets/fossilslegacy/models/item/pachycephalosaurus_egg.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/pachycephalosaurus_spawn_egg.json
 d3909062239a16142ba4f1f06487da230d6ec05a assets/fossilslegacy/models/item/panda_dna.json
 91098fcfab0418a3240a9e485c56407676c0efae assets/fossilslegacy/models/item/panda_embryo_syringe.json
 25ddde88c6cb5b4dd7cbad77e79cedb551940a47 assets/fossilslegacy/models/item/parrot_dna.json
@@ -152,6 +156,7 @@ a83d220d9b56729085f254318b321a35e6be60d2 assets/fossilslegacy/models/item/raw_ch
 f6129961cb4cf6091a0d6398dea96050b1f18a21 assets/fossilslegacy/models/item/raw_futabasaurus_meat.json
 45f2aa07c8f8991fa7dd193b95d8003585a766c9 assets/fossilslegacy/models/item/raw_mammoth_meat.json
 75d1eb340c57033fbf6827ad3f3c5004b879fe90 assets/fossilslegacy/models/item/raw_mosasaurus_meat.json
+913834313b4119b68458e218eafa377616b37994 assets/fossilslegacy/models/item/raw_pachycephalosaurus_meat.json
 50e88470f04de80d46dbe930f9b3996f0208beeb assets/fossilslegacy/models/item/raw_pteranodon_meat.json
 6c3f31b8181b5d564067183e9fd176b8e886de3f assets/fossilslegacy/models/item/raw_smilodon_meat.json
 cc3d7651e50f2adaa0928bed8cef6c43c4a177f4 assets/fossilslegacy/models/item/raw_stegosaurus_meat.json

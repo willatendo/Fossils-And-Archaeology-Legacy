@@ -33,6 +33,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.CARNOTAURUS_DNA.get());
         this.basicItem(FossilsLegacyItems.CRYOLOPHOSAURUS_DNA.get());
         this.basicItem(FossilsLegacyItems.THERIZINOSAURUS_DNA.get());
+        this.basicItem(FossilsLegacyItems.PACHYCEPHALOSAURUS_DNA.get());
         this.basicItem(FossilsLegacyItems.TRICERATOPS_EGG.get());
         this.basicItem(FossilsLegacyItems.VELOCIRAPTOR_EGG.get());
         this.basicItem(FossilsLegacyItems.TYRANNOSAURUS_EGG.get());
@@ -46,6 +47,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.CARNOTAURUS_EGG.get());
         this.basicItem(FossilsLegacyItems.CRYOLOPHOSAURUS_EGG.get());
         this.basicItem(FossilsLegacyItems.THERIZINOSAURUS_EGG.get());
+        this.basicItem(FossilsLegacyItems.PACHYCEPHALOSAURUS_EGG.get());
         this.basicItem(FossilsLegacyItems.RAW_TRICERATOPS_MEAT.get());
         this.basicItem(FossilsLegacyItems.RAW_VELOCIRAPTOR_MEAT.get());
         this.basicItem(FossilsLegacyItems.RAW_TYRANNOSAURUS_MEAT.get());
@@ -61,6 +63,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.RAW_CARNOTAURUS_MEAT.get());
         this.basicItem(FossilsLegacyItems.RAW_CRYOLOPHOSAURUS_MEAT.get());
         this.basicItem(FossilsLegacyItems.RAW_THERIZINOSAURUS_MEAT.get());
+        this.basicItem(FossilsLegacyItems.RAW_PACHYCEPHALOSAURUS_MEAT.get());
         this.basicItem(FossilsLegacyItems.COOKED_TRICERATOPS_MEAT.get());
         this.basicItem(FossilsLegacyItems.COOKED_VELOCIRAPTOR_MEAT.get());
         this.basicItem(FossilsLegacyItems.COOKED_TYRANNOSAURUS_MEAT.get());
@@ -76,6 +79,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.COOKED_CARNOTAURUS_MEAT.get());
         this.basicItem(FossilsLegacyItems.COOKED_CRYOLOPHOSAURUS_MEAT.get());
         this.basicItem(FossilsLegacyItems.COOKED_THERIZINOSAURUS_MEAT.get());
+        this.basicItem(FossilsLegacyItems.COOKED_PACHYCEPHALOSAURUS_MEAT.get());
         this.basicItem(FossilsLegacyItems.TYRANNOSAURUS_TOOTH.get());
         this.handheldItem(FossilsLegacyItems.TOOTH_DAGGER.get());
         this.handheldItem(FossilsLegacyItems.THERIZINOSAURUS_CLAWS.get());
@@ -187,6 +191,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.spawnEggItem(FossilsLegacyItems.CARNOTAURUS_SPAWN_EGG.get());
         this.spawnEggItem(FossilsLegacyItems.CRYOLOPHOSAURUS_SPAWN_EGG.get());
         this.spawnEggItem(FossilsLegacyItems.THERIZINOSAURUS_SPAWN_EGG.get());
+        this.spawnEggItem(FossilsLegacyItems.PACHYCEPHALOSAURUS_SPAWN_EGG.get());
 
         this.basicItem(FossilsLegacyItems.OVERWORLD_COIN.get());
         this.basicItem(FossilsLegacyItems.NETHER_COIN.get());

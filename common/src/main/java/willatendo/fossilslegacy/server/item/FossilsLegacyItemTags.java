@@ -18,6 +18,7 @@ public class FossilsLegacyItemTags {
     public static final TagKey<Item> DRUM_INSTRUMENT = ITEM_TAGS.register("drum_instrument");
     public static final TagKey<Item> FROGLIGHTS = ITEM_TAGS.register("froglights");
     public static final TagKey<Item> MAMMOTH_COMMANDABLES = ITEM_TAGS.register("mammoth_commandables");
+    public static final TagKey<Item> PACHYCEPHALOSAURUS_COMMANDABLES = ITEM_TAGS.register("pachycephalosaurus_commandables");
     public static final TagKey<Item> PIGLIN_TAMING_ARMOUR = ITEM_TAGS.register("piglin_taming_helmets");
     public static final TagKey<Item> PTERANODON_COMMANDABLES = ITEM_TAGS.register("pteranodon_commandables");
     public static final TagKey<Item> REPAIR_WHEN_BROKEN_IN_ARCHAEOLOGY_TABLE = ITEM_TAGS.register("repair_when_broken_in_archaeology_table");

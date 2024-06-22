@@ -1,4 +1,4 @@
-// 1.21	2024-06-17T13:55:41.263969	Loot Tables
+// 1.21	2024-06-21T22:55:59.0758626	Loot Tables
 5fcf811a958fcf132678d4423a7472c475c2b8ca data/fossilslegacy/loot_table/blocks/analyzer.json
 8bfc811efa599c9be09afe46481ec9ebbf5f3a33 data/fossilslegacy/loot_table/blocks/archaeology_workbench.json
 e4c3f2afd7c71b1d42778ff89f2ddfe5a03122da data/fossilslegacy/loot_table/blocks/axolotlspawn.json
@@ -33,7 +33,7 @@ b74a1925f81846082aed9411c17ff2a74fb583ea data/fossilslegacy/loot_table/blocks/ra
 3f19ae6b855812ee9f88baf69d3699d762f8a419 data/fossilslegacy/loot_table/blocks/white_cultivator.json
 2b4fd7e536a5eb5042c10fe54432be5eaf746b01 data/fossilslegacy/loot_table/blocks/yellow_cultivator.json
 6092aafe4bca6a32828a100accc015b5725a7d51 data/fossilslegacy/loot_table/chests/academy_disc.json
-224b9ddc6591722b8610a22a33ec75629c058619 data/fossilslegacy/loot_table/chests/academy_loot.json
+3fabd2786a327e5a84a59e6cc275f81d3c2d21ff data/fossilslegacy/loot_table/chests/academy_loot.json
 2a88c80c64cbf9e441234c69b98903788a57571d data/fossilslegacy/loot_table/chests/weapon_shop_decoy.json
 56fd519c48bb18a79c7304a00c16a702caae46c6 data/fossilslegacy/loot_table/chests/weapon_shop_loot.json
 daf13a0fe51fdd4ca048e716129fc627f715b594 data/fossilslegacy/loot_table/entities/anu.json
@@ -59,6 +59,7 @@ a117ca2df6a362329aa123559019a5a60af648a2 data/fossilslegacy/loot_table/entities/
 cba018b29a6758c20ce090e153dcca0673205eed data/fossilslegacy/loot_table/entities/mammoth.json
 ffa85baec8415ca1f429cf3bdaa9da714f8b5fdc data/fossilslegacy/loot_table/entities/mosasaurus.json
 3581d3409c523471d2ffc83c6d40ca12182193fc data/fossilslegacy/loot_table/entities/nautilus.json
+f62b43b08eaf1a0d2b2863cc2a32a457f01585a4 data/fossilslegacy/loot_table/entities/pachycephalosaurus.json
 8979d95c4ef9d314987b18c9d2766737b51e5eaa data/fossilslegacy/loot_table/entities/pregnant_cat.json
 8df4b6366d830fb98ef3715b451f73500ec19505 data/fossilslegacy/loot_table/entities/pregnant_cow.json
 a6e39de737e1a17654e05ad4d17b3825a205eb58 data/fossilslegacy/loot_table/entities/pregnant_dolphin.json

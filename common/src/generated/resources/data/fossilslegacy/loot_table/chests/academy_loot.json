@@ -64,6 +64,10 @@
         {
           "type": "minecraft:item",
           "name": "fossilslegacy:therizinosaurus_dna"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "fossilslegacy:pachycephalosaurus_dna"
         }
       ],
       "rolls": {

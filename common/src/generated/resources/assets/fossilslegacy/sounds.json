@@ -132,6 +132,26 @@
     ],
     "subtitle": "sound.fossilslegacy.mammoth.hurt"
   },
+  "entity.pachycephalosaurus.ambient": {
+    "sounds": [
+      "fossilslegacy:pachycephalosaurus_ambient_1",
+      "fossilslegacy:pachycephalosaurus_ambient_2"
+    ],
+    "subtitle": "sound.fossilslegacy.pachycephalosaurus.ambient"
+  },
+  "entity.pachycephalosaurus.death": {
+    "sounds": [
+      "fossilslegacy:pachycephalosaurus_death"
+    ],
+    "subtitle": "sound.fossilslegacy.pachycephalosaurus.death"
+  },
+  "entity.pachycephalosaurus.hurt": {
+    "sounds": [
+      "fossilslegacy:pachycephalosaurus_hurt_1",
+      "fossilslegacy:pachycephalosaurus_hurt_2"
+    ],
+    "subtitle": "sound.fossilslegacy.pachycephalosaurus.hurt"
+  },
   "entity.plesiosaurus.ambient": {
     "sounds": [
       "fossilslegacy:futabasaurus_ambient"

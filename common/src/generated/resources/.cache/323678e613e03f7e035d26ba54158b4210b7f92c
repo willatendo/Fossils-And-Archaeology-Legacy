@@ -1,4 +1,4 @@
-// 1.21	2024-06-17T13:55:41.2659693	Tags for minecraft:item mod id fossilslegacy
+// 1.21	2024-06-21T22:33:29.5859906	Tags for minecraft:item mod id fossilslegacy
 1ad920aa65e2706dabb6265f3b12546ab33e8936 data/fossilslegacy/tags/item/brachiosaurus_commandables.json
 d76677c29f7873d57168ee1e3f0d7552ccaf4b95 data/fossilslegacy/tags/item/cake_eggs.json
 243f2dab6ef46a493d12775f6f28baf7b72922cf data/fossilslegacy/tags/item/carnotaurus_commandables.json
@@ -8,6 +8,7 @@ d76677c29f7873d57168ee1e3f0d7552ccaf4b95 data/fossilslegacy/tags/item/cake_eggs.
 4af49eafd9aa56796e5a1d21111579e54b77d394 data/fossilslegacy/tags/item/drum_instrument.json
 0d91c860420e5c6d47e16f6376dad63806657b0b data/fossilslegacy/tags/item/froglights.json
 1ad920aa65e2706dabb6265f3b12546ab33e8936 data/fossilslegacy/tags/item/mammoth_commandables.json
+1ad920aa65e2706dabb6265f3b12546ab33e8936 data/fossilslegacy/tags/item/pachycephalosaurus_commandables.json
 6a2ec8a487cf8a17501c5ffe9b096c48e6350237 data/fossilslegacy/tags/item/piglin_taming_helmets.json
 cb1403915fd8ebe238f3e86f00123ee24c49e426 data/fossilslegacy/tags/item/pteranodon_commandables.json
 09773104f8173e987f84ad20d8f0ea8fb62627b7 data/fossilslegacy/tags/item/repair_when_broken_in_archaeology_table.json

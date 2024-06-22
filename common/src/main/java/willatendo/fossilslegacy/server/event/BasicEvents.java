@@ -98,6 +98,7 @@ public class BasicEvents {
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.MOSASAURUS.get(), Mosasaurus.mosasaurusAttributes());
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.NAUTILUS.get(), Nautilus.nautilusAttributes());
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.FUTABASAURUS.get(), Futabasaurus.plesiosaurusAttributes());
+        BasicEvents.addAttribute(FossilsLegacyEntityTypes.PACHYCEPHALOSAURUS.get(), Pachycephalosaurus.pachycephalosaurusAttributes());
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.PREGNANT_CAT.get(), Cat.createAttributes().build());
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.PREGNANT_COW.get(), Cow.createAttributes().build());
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.PREGNANT_DOLPHIN.get(), Dolphin.createAttributes().build());

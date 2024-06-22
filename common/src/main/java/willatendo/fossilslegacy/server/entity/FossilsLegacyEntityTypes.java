@@ -33,6 +33,7 @@ public class FossilsLegacyEntityTypes {
     public static final SimpleHolder<EntityType<Carnotaurus>> CARNOTAURUS = FossilsLegacyEntityTypes.ENTITY_TYPES.register("carnotaurus", () -> SimpleUtils.entityTypeBuilder("carnotaurus", Carnotaurus::new, MobCategory.CREATURE, 0.5F, 0.75F));
     public static final SimpleHolder<EntityType<Cryolophosaurus>> CRYOLOPHOSAURUS = FossilsLegacyEntityTypes.ENTITY_TYPES.register("cryolophosaurus", () -> SimpleUtils.entityTypeBuilder("cryolophosaurus", Cryolophosaurus::new, MobCategory.CREATURE, 0.5F, 0.75F));
     public static final SimpleHolder<EntityType<Therizinosaurus>> THERIZINOSAURUS = FossilsLegacyEntityTypes.ENTITY_TYPES.register("therizinosaurus", () -> SimpleUtils.entityTypeBuilder("therizinosaurus", Therizinosaurus::new, MobCategory.CREATURE, 0.5F, 0.75F));
+    public static final SimpleHolder<EntityType<Pachycephalosaurus>> PACHYCEPHALOSAURUS = ENTITY_TYPES.register("pachycephalosaurus", () -> SimpleUtils.entityTypeBuilder("packycephalosaurus", Pachycephalosaurus::new, MobCategory.CREATURE, 1.0F, 1.0F));
 
     public static final SimpleHolder<EntityType<Fossil>> FOSSIL = ENTITY_TYPES.register("fossil", () -> SimpleUtils.entityTypeBuilder("fossil", Fossil::new, MobCategory.MISC, 0.5F, 0.5F));
 
