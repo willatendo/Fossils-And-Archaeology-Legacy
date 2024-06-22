@@ -90,6 +90,9 @@ public class BasicEvents {
     public static void attributeInit() {
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.ANU.get(), Anu.anuAttributes());
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), Brachiosaurus.brachiosaurusAttributes());
+        BasicEvents.addAttribute(FossilsLegacyEntityTypes.CARNOTAURUS.get(), Carnotaurus.carnotaurusAttributes());
+        BasicEvents.addAttribute(FossilsLegacyEntityTypes.COMPSOGNATHUS.get(), Compsognathus.compsognathusAttributes());
+        BasicEvents.addAttribute(FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get(), Cryolophosaurus.cryolophosaurusAttributes());
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), Dilophosaurus.dilophosaurusAttributes());
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.EGG.get(), Egg.eggAttributes());
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.FAILURESAURUS.get(), Failuresaurus.createAttributes().build());
@@ -121,13 +124,10 @@ public class BasicEvents {
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.SMILODON.get(), Smilodon.smilodonAttributes());
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.STEGOSAURUS.get(), Stegosaurus.stegosaurusAttributes());
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.TAMED_ZOMBIFIED_PIGLIN.get(), ZombifiedPiglin.createAttributes().build());
+        BasicEvents.addAttribute(FossilsLegacyEntityTypes.THERIZINOSAURUS.get(), Therizinosaurus.therizinosaurusAttributes());
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.TRICERATOPS.get(), Triceratops.triceratopsAttributes());
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.TYRANNOSAURUS.get(), Tyrannosaurus.tyrannosaurusAttributes());
         BasicEvents.addAttribute(FossilsLegacyEntityTypes.VELOCIRAPTOR.get(), Velociraptor.velociraptorAttributes());
-
-        BasicEvents.addAttribute(FossilsLegacyEntityTypes.CARNOTAURUS.get(), Carnotaurus.carnotaurusAttributes());
-        BasicEvents.addAttribute(FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get(), Cryolophosaurus.cryolophosaurusAttributes());
-        BasicEvents.addAttribute(FossilsLegacyEntityTypes.THERIZINOSAURUS.get(), Therizinosaurus.therizinosaurusAttributes());
     }
 
     private static <T extends Entity> void addSpawnPlacement(EntityType<T> entityType, SpawnPlacementType spawnPlacementType, Heightmap.Types types, SpawnPlacements.SpawnPredicate<T> spawnPredicate) {

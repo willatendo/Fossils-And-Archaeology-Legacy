@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import willatendo.fossilslegacy.client.model.VelociraptorModel;
+import willatendo.fossilslegacy.client.model.legacy.VelociraptorModel;
 import willatendo.fossilslegacy.server.entity.Velociraptor;
 
 public class VelociraptorHoldItemInMouthLayer extends RenderLayer<Velociraptor, VelociraptorModel> {

@@ -1,4 +1,5 @@
 22/7/2024
+- Fixed Cooked Dinosaur Meat Recipes
 - Added Pachycephalosaurus
 - Added Pachycephalosaurus DNA
 - Added Pachycephalosaurus Egg

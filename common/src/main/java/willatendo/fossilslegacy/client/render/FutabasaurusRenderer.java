@@ -4,7 +4,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FossilsLegacyModels;
-import willatendo.fossilslegacy.client.model.FutabasaurusModel;
+import willatendo.fossilslegacy.client.model.legacy.FutabasaurusModel;
 import willatendo.fossilslegacy.server.entity.Futabasaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 

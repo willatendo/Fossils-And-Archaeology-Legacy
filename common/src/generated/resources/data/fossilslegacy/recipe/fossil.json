@@ -99,6 +99,12 @@
         "id": "fossilslegacy:pachycephalosaurus_dna"
       },
       "weight": 2
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:compsognathus_dna"
+      },
+      "weight": 2
     }
   ],
   "time": 100

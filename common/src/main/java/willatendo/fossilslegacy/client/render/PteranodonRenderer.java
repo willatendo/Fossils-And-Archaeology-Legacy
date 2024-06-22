@@ -6,10 +6,10 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FossilsLegacyModels;
-import willatendo.fossilslegacy.client.model.pteranodon.AbstractPteranodonModel;
-import willatendo.fossilslegacy.client.model.pteranodon.FlyingPteranodonModel;
-import willatendo.fossilslegacy.client.model.pteranodon.GroundPteranodonModel;
-import willatendo.fossilslegacy.client.model.pteranodon.LandingPteranodonModel;
+import willatendo.fossilslegacy.client.model.legacy.pteranodon.AbstractPteranodonModel;
+import willatendo.fossilslegacy.client.model.legacy.pteranodon.FlyingPteranodonModel;
+import willatendo.fossilslegacy.client.model.legacy.pteranodon.GroundPteranodonModel;
+import willatendo.fossilslegacy.client.model.legacy.pteranodon.LandingPteranodonModel;
 import willatendo.fossilslegacy.server.entity.Pteranodon;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 

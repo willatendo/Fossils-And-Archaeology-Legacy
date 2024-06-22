@@ -30,6 +30,7 @@ public class FossilsLegacyEggVariants {
     public static final SimpleHolder<EggVariant> CRYOLOPHOSAURUS = register("cryolophosaurus", () -> FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get(), () -> FossilsLegacyItems.CRYOLOPHOSAURUS_EGG.get());
     public static final SimpleHolder<EggVariant> THERIZINOSAURUS = register("therizinosaurus", () -> FossilsLegacyEntityTypes.THERIZINOSAURUS.get(), () -> FossilsLegacyItems.THERIZINOSAURUS_EGG.get());
     public static final SimpleHolder<EggVariant> PACHYCEPHALOSAURUS = register("pachycephalosaurus", () -> FossilsLegacyEntityTypes.PACHYCEPHALOSAURUS.get(), () -> FossilsLegacyItems.PACHYCEPHALOSAURUS_EGG.get());
+    public static final SimpleHolder<EggVariant> COMPSOGNATHUS = register("compsognathus", () -> FossilsLegacyEntityTypes.COMPSOGNATHUS.get(), () -> FossilsLegacyItems.COMPSOGNATHUS_EGG.get());
 
     public static SimpleHolder<EggVariant> register(String id, Supplier<EntityType> entityType, Supplier<Item> pick) {
         return register(id, false, egg -> EggVariant.isWarm(egg), entityType, pick);

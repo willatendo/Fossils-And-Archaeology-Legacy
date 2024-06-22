@@ -6,9 +6,9 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FossilsLegacyModels;
-import willatendo.fossilslegacy.client.model.tyrannosaurus.AbstractTyrannosaurusModel;
-import willatendo.fossilslegacy.client.model.tyrannosaurus.KnockedOutTyrannosaurusModel;
-import willatendo.fossilslegacy.client.model.tyrannosaurus.TyrannosaurusModel;
+import willatendo.fossilslegacy.client.model.legacy.tyrannosaurus.AbstractTyrannosaurusModel;
+import willatendo.fossilslegacy.client.model.legacy.tyrannosaurus.KnockedOutTyrannosaurusModel;
+import willatendo.fossilslegacy.client.model.legacy.tyrannosaurus.TyrannosaurusModel;
 import willatendo.fossilslegacy.server.entity.Tyrannosaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 

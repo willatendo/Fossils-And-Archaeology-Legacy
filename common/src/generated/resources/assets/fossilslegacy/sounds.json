@@ -50,6 +50,27 @@
     ],
     "subtitle": "sound.fossilslegacy.carnotaurus.hurt"
   },
+  "entity.compsognathus.ambient": {
+    "sounds": [
+      "fossilslegacy:compsognathus_ambient_1",
+      "fossilslegacy:compsognathus_ambient_2",
+      "fossilslegacy:compsognathus_ambient_3"
+    ],
+    "subtitle": "sound.fossilslegacy.compsognathus.ambient"
+  },
+  "entity.compsognathus.death": {
+    "sounds": [
+      "fossilslegacy:compsognathus_death_1",
+      "fossilslegacy:compsognathus_death_2"
+    ],
+    "subtitle": "sound.fossilslegacy.compsognathus.death"
+  },
+  "entity.compsognathus.hurt": {
+    "sounds": [
+      "fossilslegacy:compsognathus_hurt"
+    ],
+    "subtitle": "sound.fossilslegacy.compsognathus.hurt"
+  },
   "entity.cryolophosaurus.ambient": {
     "sounds": [
       "fossilslegacy:cryolophosaurus_ambient_1",

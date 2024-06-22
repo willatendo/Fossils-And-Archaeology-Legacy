@@ -68,6 +68,10 @@
         {
           "type": "minecraft:item",
           "name": "fossilslegacy:pachycephalosaurus_dna"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "fossilslegacy:compsognathus_dna"
         }
       ],
       "rolls": {

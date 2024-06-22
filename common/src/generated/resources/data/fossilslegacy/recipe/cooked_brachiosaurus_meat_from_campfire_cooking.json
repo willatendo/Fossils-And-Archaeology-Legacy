@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 400,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "fossilslegacy:raw_brachiosaurus_meat"
+  },
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:cooked_brachiosaurus_meat"
+  }
+}

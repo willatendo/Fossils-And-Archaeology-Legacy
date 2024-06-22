@@ -23,6 +23,8 @@ public class FossilsLegacyLootTables {
     public static final ResourceKey<LootTable> CARNOTAURUS_EGG = create("entities/egg/carnotaurus");
     public static final ResourceKey<LootTable> CRYOLOPHOSAURUS_EGG = create("entities/egg/cryolophosaurus");
     public static final ResourceKey<LootTable> THERIZINOSAURUS_EGG = create("entities/egg/therizinosaurus");
+    public static final ResourceKey<LootTable> PACHYCEPHALOSAURUS_EGG = create("entities/egg/pachycephalosaurus");
+    public static final ResourceKey<LootTable> COMPSOGNATHUS_EGG = create("entities/egg/compsognathus");
 
     public static final ResourceKey<LootTable> PREGNANT_SHEEP_WHITE = create("entities/pregnant_sheep/white");
     public static final ResourceKey<LootTable> PREGNANT_SHEEP_ORANGE = create("entities/pregnant_sheep/orange");

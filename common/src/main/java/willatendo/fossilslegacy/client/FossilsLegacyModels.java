@@ -23,6 +23,7 @@ public class FossilsLegacyModels {
     public static final ModelLayerLocation CRYOLOPHOSAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("cryolophosaurus"), "main");
     public static final ModelLayerLocation THERIZINOSAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("therizinosaurus"), "main");
     public static final ModelLayerLocation PACHYCEPHALOSAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("pachycephalosaurus"), "main");
+    public static final ModelLayerLocation COMPSOGNATHUS = new ModelLayerLocation(FossilsLegacyUtils.resource("compsognathus"), "main");
 
     public static final ModelLayerLocation BRACHIOSAURUS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("brachiosaurs_skeleton"), "main");
     public static final ModelLayerLocation PLESIOSAURUS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("plesiosaurus_skeleton"), "main");

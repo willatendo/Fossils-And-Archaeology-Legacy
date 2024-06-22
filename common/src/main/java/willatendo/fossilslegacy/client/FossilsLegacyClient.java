@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.client;
 
-import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -14,22 +13,19 @@ import willatendo.fossilslegacy.client.model.fossils.BrachiosaurusSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.FutabasaurusSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.PteranodonSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.TriceratopsSkeletonModel;
-import willatendo.fossilslegacy.client.model.pteranodon.FlyingPteranodonModel;
-import willatendo.fossilslegacy.client.model.pteranodon.GroundPteranodonModel;
-import willatendo.fossilslegacy.client.model.pteranodon.LandingPteranodonModel;
-import willatendo.fossilslegacy.client.model.tyrannosaurus.KnockedOutTyrannosaurusModel;
-import willatendo.fossilslegacy.client.model.tyrannosaurus.TyrannosaurusModel;
+import willatendo.fossilslegacy.client.model.legacy.*;
+import willatendo.fossilslegacy.client.model.legacy.pteranodon.FlyingPteranodonModel;
+import willatendo.fossilslegacy.client.model.legacy.pteranodon.GroundPteranodonModel;
+import willatendo.fossilslegacy.client.model.legacy.pteranodon.LandingPteranodonModel;
+import willatendo.fossilslegacy.client.model.legacy.tyrannosaurus.KnockedOutTyrannosaurusModel;
+import willatendo.fossilslegacy.client.model.legacy.tyrannosaurus.TyrannosaurusModel;
 import willatendo.fossilslegacy.client.render.*;
 import willatendo.fossilslegacy.client.screen.*;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenus;
 import willatendo.simplelibrary.client.event.ClientEventsHolder;
-import willatendo.simplelibrary.client.event.ModelLayerEntry;
 import willatendo.simplelibrary.client.event.TexturedModelDataProvider;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class FossilsLegacyClient {
     public static final ClientEventsHolder CLIENT_EVENTS_HOLDER = new ClientEventsHolder();
@@ -57,6 +53,7 @@ public class FossilsLegacyClient {
         CLIENT_EVENTS_HOLDER.addModel(FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get(), CryolophosaurusRenderer::new);
         CLIENT_EVENTS_HOLDER.addModel(FossilsLegacyEntityTypes.THERIZINOSAURUS.get(), TherizinosaurusRenderer::new);
         CLIENT_EVENTS_HOLDER.addModel(FossilsLegacyEntityTypes.PACHYCEPHALOSAURUS.get(), PachycephalosaurusRenderer::new);
+        CLIENT_EVENTS_HOLDER.addModel(FossilsLegacyEntityTypes.COMPSOGNATHUS.get(), CompsognathusRenderer::new);
 
         CLIENT_EVENTS_HOLDER.addModel(FossilsLegacyEntityTypes.EGG.get(), EggRenderer::new);
 
@@ -116,6 +113,7 @@ public class FossilsLegacyClient {
         CLIENT_EVENTS_HOLDER.addModelLayer(FossilsLegacyModels.CRYOLOPHOSAURUS, CryolophosaurusModel::createBodyLayer);
         CLIENT_EVENTS_HOLDER.addModelLayer(FossilsLegacyModels.THERIZINOSAURUS, TherizinosaurusModel::createBodyLayer);
         CLIENT_EVENTS_HOLDER.addModelLayer(FossilsLegacyModels.PACHYCEPHALOSAURUS, PachycephalosaurusModel::createBodyLayer);
+        CLIENT_EVENTS_HOLDER.addModelLayer(FossilsLegacyModels.COMPSOGNATHUS, CompsognathusModel::createBodyLayer);
 
         CLIENT_EVENTS_HOLDER.addModelLayer(FossilsLegacyModels.TRICERATOPS_SKELETON, TriceratopsSkeletonModel::createBodyLayer);
         CLIENT_EVENTS_HOLDER.addModelLayer(FossilsLegacyModels.BRACHIOSAURUS_SKELETON, BrachiosaurusSkeletonModel::createBodyLayer);
