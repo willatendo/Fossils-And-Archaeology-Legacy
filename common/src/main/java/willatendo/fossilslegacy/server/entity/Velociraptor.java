@@ -27,6 +27,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.phys.Vec3;
 import org.apache.commons.compress.utils.Lists;
+import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.entity.goal.*;
 import willatendo.fossilslegacy.server.entity.util.*;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
@@ -89,7 +90,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 
     @Override
     public float renderScale() {
-        return 0.2F + (0.1F * (float) this.getGrowthStage());
+        return FossilsModloaderHelper.INSTANCE.legacyModels() ? 0.2F + (0.1F * (float) this.getGrowthStage()) : 0.5F + (0.1F * (float) this.getGrowthStage());
     }
 
     @Override
@@ -192,6 +193,11 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
     @Override
     public ResourceLocation[][] textures() {
         return new ResourceLocation[][]{{FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/sandy_velociraptor.png"), FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/sandy_baby_velociraptor.png")}, {FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/green_velociraptor.png"), FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/green_baby_velociraptor.png")}, {FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/white_velociraptor.png"), FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/white_baby_velociraptor.png")}};
+    }
+
+    @Override
+    public ResourceLocation[][] legacyTextures() {
+        return new ResourceLocation[][]{{FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/legacy/sandy_velociraptor.png"), FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/legacy/sandy_baby_velociraptor.png")}, {FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/legacy/green_velociraptor.png"), FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/legacy/green_baby_velociraptor.png")}, {FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/legacy/white_velociraptor.png"), FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/legacy/white_baby_velociraptor.png")}};
     }
 
     @Override

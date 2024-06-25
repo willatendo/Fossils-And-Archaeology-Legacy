@@ -3,35 +3,37 @@ package willatendo.fossilslegacy.server.event;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
-import net.fabricmc.loader.api.FabricLoader;
-import net.fabricmc.loader.api.ModContainer;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
+import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.features.FossilsLegacyPlacedFeatures;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.server.event.FabricAttributeRegister;
+import willatendo.simplelibrary.server.event.FabricResourcePackRegister;
+import willatendo.simplelibrary.server.event.FabricSpawnPlacementRegister;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
-
-import java.util.Optional;
 
 public class ModEvents {
     public static void commonSetup() {
-        BasicEvents.common();
-        BasicEvents.addToMaps();
+        BasicEvents.commonSetup();
         ModEvents.addToCreativeModeTabs();
-        ModEvents.registerNewBiomeFeatures();
-        ModEvents.registerEntityAttributes();
-        ModEvents.registerSpawnPlacements();
-        ModEvents.registerResourcePack();
+
+        BasicEvents.resourcePackEvent(new FabricResourcePackRegister());
+        BasicEvents.attributeEvent(new FabricAttributeRegister());
+        BasicEvents.spawnPlacementEvent(new FabricSpawnPlacementRegister());
+
+        ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.JURASSIC_FERN.get(), 0.65F);
+        ComposterBlock.COMPOSTABLES.put(FossilsLegacyItems.JURASSIC_FERN_SPORES.get(), 0.65F);
+
+        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FossilsLegacyPlacedFeatures.ORE_FOSSIL);
+        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FossilsLegacyPlacedFeatures.ORE_PERMAFROST);
+        BiomeModifications.addSpawn(BiomeSelectors.tag(BiomeTags.HAS_OCEAN_RUIN_WARM), MobCategory.WATER_AMBIENT, FossilsLegacyEntityTypes.NAUTILUS.get(), 1, 1, 1);
     }
 
     public static void addToCreativeModeTabs() {
@@ -58,30 +60,5 @@ public class ModEvents {
             fabricItemGroupEntries.addAfter(Items.TRADER_LLAMA_SPAWN_EGG, FossilsLegacyItems.TRICERATOPS_SPAWN_EGG.get());
             fabricItemGroupEntries.addAfter(Items.TURTLE_SPAWN_EGG, FossilsLegacyItems.TYRANNOSAURUS_SPAWN_EGG.get(), FossilsLegacyItems.VELOCIRAPTOR_SPAWN_EGG.get());
         });
-    }
-
-    public static void registerNewBiomeFeatures() {
-        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FossilsLegacyPlacedFeatures.ORE_FOSSIL);
-        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FossilsLegacyPlacedFeatures.ORE_PERMAFROST);
-        BiomeModifications.addSpawn(BiomeSelectors.tag(BiomeTags.HAS_OCEAN_RUIN_WARM), MobCategory.WATER_AMBIENT, FossilsLegacyEntityTypes.NAUTILUS.get(), 1, 1, 1);
-    }
-
-    public static void registerEntityAttributes() {
-        BasicEvents.attributeInit();
-        BasicEvents.EVENTS_HOLDER.registerAllAttributes(attributes -> {
-            FabricDefaultAttributeRegistry.register(attributes.entityType(), attributes.attributeSupplier());
-        });
-    }
-
-    public static void registerSpawnPlacements() {
-        BasicEvents.spawnPlacementsInit();
-        BasicEvents.EVENTS_HOLDER.registerAllSpawnPlacements(spawnPlacementEntry -> {
-            SpawnPlacements.register(spawnPlacementEntry.entityType(), spawnPlacementEntry.spawnPlacementType(), spawnPlacementEntry.types(), spawnPlacementEntry.spawnPredicate());
-        });
-    }
-
-    public static void registerResourcePack() {
-        Optional<ModContainer> modContainer = FabricLoader.getInstance().getModContainer(FossilsLegacyUtils.ID);
-        ResourceManagerHelper.registerBuiltinResourcePack(FossilsLegacyUtils.resource("fa_legacy_textures"), modContainer.get(), FossilsLegacyUtils.translation("pack", "fa_legacy_textures"), ResourcePackActivationType.NORMAL);
     }
 }

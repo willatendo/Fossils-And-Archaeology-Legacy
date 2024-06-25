@@ -1,10 +1,21 @@
-22/7/2024
+26/7/2024
 - Fixed Cooked Dinosaur Meat Recipes
+- (NeoForge) Fixed Compostables
+- Fixed Skeletons Not Working
+- Fixed Skeletons Consuming Bones In Creative
+- Fixed Skeleton's Bounding Box Sizes
+- Update Velociraptor Model
 - Added Pachycephalosaurus
 - Added Pachycephalosaurus DNA
 - Added Pachycephalosaurus Egg
 - Added Raw Pachycephalosaurus Meat
 - Added Cooked Pachycephalosaurus Meat
+- Added Compsognathus
+- Added Compsognathus DNA
+- Added Compsognathus Egg
+- Added Raw Compsognathus Meat
+- Added Cooked Compsognathus Meat
+- Added "Legacy Models" Config Option
 - Removed Antiquated "Anu Spawns" Config Option
 21/7/2024 B
 - Fixed Summoning Entities

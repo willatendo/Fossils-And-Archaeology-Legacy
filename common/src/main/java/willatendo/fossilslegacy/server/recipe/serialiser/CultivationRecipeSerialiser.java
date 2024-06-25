@@ -3,14 +3,11 @@ package willatendo.fossilslegacy.server.recipe.serialiser;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
 import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
 
 public class CultivationRecipeSerialiser implements RecipeSerializer<CultivationRecipe> {

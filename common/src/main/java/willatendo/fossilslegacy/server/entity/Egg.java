@@ -150,7 +150,7 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
         Optional<ResourceKey<EggVariant>> eggVariant = Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("Variant"))).map((resourceLocation) -> {
             return ResourceKey.create(FossilsLegacyRegistries.EGG_VARIANTS, resourceLocation);
         });
-        Registry<EggVariant> registry = FossilsLegacyBuiltInRegistries.EGG_VARIANTS.registry();
+        Registry<EggVariant> registry = FossilsLegacyBuiltInRegistries.EGG_VARIANTS;
         Objects.requireNonNull(registry);
         eggVariant.flatMap(registry::getHolder).ifPresent(this::setEggVariant);
         this.setRemainingTime(compoundTag.getInt("RemainingTime"));

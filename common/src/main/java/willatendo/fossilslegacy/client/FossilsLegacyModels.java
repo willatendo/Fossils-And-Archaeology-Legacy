@@ -19,6 +19,7 @@ public class FossilsLegacyModels {
     public static final ModelLayerLocation TYRANNOSAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("tyrannosaurus"), "main");
     public static final ModelLayerLocation KNOCKED_OUT_TYRANNOSAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("knocked_out_tyrannosaurus"), "main");
     public static final ModelLayerLocation VELOCIRAPTOR = new ModelLayerLocation(FossilsLegacyUtils.resource("velociraptor"), "main");
+    public static final ModelLayerLocation LEGACY_VELOCIRAPTOR = new ModelLayerLocation(FossilsLegacyUtils.resource("legacy_velociraptor"), "main");
     public static final ModelLayerLocation CARNOTAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("carnotaurus"), "main");
     public static final ModelLayerLocation CRYOLOPHOSAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("cryolophosaurus"), "main");
     public static final ModelLayerLocation THERIZINOSAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("therizinosaurus"), "main");
@@ -26,9 +27,12 @@ public class FossilsLegacyModels {
     public static final ModelLayerLocation COMPSOGNATHUS = new ModelLayerLocation(FossilsLegacyUtils.resource("compsognathus"), "main");
 
     public static final ModelLayerLocation BRACHIOSAURUS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("brachiosaurs_skeleton"), "main");
-    public static final ModelLayerLocation PLESIOSAURUS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("plesiosaurus_skeleton"), "main");
+    public static final ModelLayerLocation COMPSOGNATHUS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("compsognathus_skeleton"), "main");
+    public static final ModelLayerLocation FUTABASAURUS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("futabasaurus_skeleton"), "main");
     public static final ModelLayerLocation PTERANODON_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("pteranodon_skeleton"), "main");
+    public static final ModelLayerLocation PACHYCEPHALOSAURUS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("pachycephalosaurus_skeleton"), "main");
     public static final ModelLayerLocation TRICERATOPS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("triceratops_skeleton"), "main");
+    public static final ModelLayerLocation VELOCIRAPTOR_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("velociraptor_skeleton"), "main");
 
     public static final ModelLayerLocation ANU = new ModelLayerLocation(FossilsLegacyUtils.resource("anu"), "main");
     public static final ModelLayerLocation FAILURESAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("failuresaurus"), "main");

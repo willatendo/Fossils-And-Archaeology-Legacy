@@ -48,7 +48,7 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
     }
 
     @Override
-    protected EntityDimensions getDefaultDimensions(Pose pose) {
+    public EntityDimensions getDefaultDimensions(Pose pose) {
         if (this.shouldFly() && !this.landing) {
             return super.getDimensions(pose).scale(1.0F, 0.5F);
         } else {

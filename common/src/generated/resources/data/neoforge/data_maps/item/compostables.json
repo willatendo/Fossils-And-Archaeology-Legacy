@@ -1,0 +1,10 @@
+{
+  "values": {
+    "fossilslegacy:jurassic_fern": {
+      "chance": 0.65
+    },
+    "fossilslegacy:jurassic_fern_spores": {
+      "chance": 0.65
+    }
+  }
+}

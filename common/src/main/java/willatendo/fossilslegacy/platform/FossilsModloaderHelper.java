@@ -26,6 +26,8 @@ public interface FossilsModloaderHelper {
     // Config
     boolean featheredDinosaurs();
 
+    boolean legacyModels();
+
     boolean willAnimalsStarve();
 
     boolean willAnimalsBreakBlocks();

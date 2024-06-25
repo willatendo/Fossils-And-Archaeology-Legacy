@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.server.structure.holes;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
 

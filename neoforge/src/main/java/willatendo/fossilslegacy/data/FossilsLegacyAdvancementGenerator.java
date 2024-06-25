@@ -6,7 +6,6 @@ import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementType;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderLookup.Provider;
-import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;

@@ -1,19 +1,13 @@
 package willatendo.fossilslegacy.server.structure;
 
 import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.Structures;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.TerrainAdjustment;
 import willatendo.fossilslegacy.server.biomes.FossilsLegacyBiomeTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-
-import java.util.Map;
 
 public class FossilsLegacyStructures {
     public static final ResourceKey<Structure> ACADEMY = create("academy");

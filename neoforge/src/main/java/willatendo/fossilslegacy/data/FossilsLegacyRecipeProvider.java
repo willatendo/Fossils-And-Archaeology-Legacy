@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.data;
 
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.tags.ItemTags;
@@ -238,10 +237,6 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
             analyzerResults.add(new AnalyzerResult(dna, 100 / dnas.length));
         }
         this.analyzation(input, dnas[0], 100 / dnas.length, 100, analyzerResults.toArray(AnalyzerResult[]::new));
-    }
-
-    private String toName(ItemLike itemLike) {
-        return BuiltInRegistries.ITEM.getKey(itemLike.asItem()).getPath();
     }
 
     private static final record AnalyzerResult(Item result, int weight) {

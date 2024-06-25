@@ -4,13 +4,11 @@ import net.minecraft.core.Holder;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
-import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
 import willatendo.fossilslegacy.server.entity.variants.PregnancyType;
 import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
-import willatendo.simplelibrary.server.registry.SimpleHolder;
 
 import java.util.function.Supplier;
 

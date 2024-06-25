@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.data.loot;
 
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -12,8 +11,6 @@ import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom;
 import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom.ItemAndChance;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.data.loot.SimpleBlockLootSubProvider;
-
-import java.util.stream.Collectors;
 
 public class FossilsLegacyBlockLootSubProvider extends SimpleBlockLootSubProvider {
 

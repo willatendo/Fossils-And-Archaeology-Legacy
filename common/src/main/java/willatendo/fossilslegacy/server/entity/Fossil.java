@@ -13,8 +13,10 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -25,7 +27,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
-import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 
@@ -52,7 +53,13 @@ public class Fossil extends Mob {
     @Override
     public float getScale() {
         FossilVariant fossilVariant = this.getFossilVariant().value();
-        return fossilVariant.baseSize() + (((float) fossilVariant.boundingBoxGrowth()) * ((float) this.getSize()));
+        return fossilVariant.fossilScaleFactor().apply(this).x();
+    }
+
+    @Override
+    public EntityDimensions getDefaultDimensions(Pose pose) {
+        FossilVariant fossilVariant = this.getFossilVariant().value();
+        return EntityDimensions.scalable(fossilVariant.boundingBoxWidth(), fossilVariant.boundingBoxHeight());
     }
 
     @Override
@@ -103,7 +110,7 @@ public class Fossil extends Mob {
         Optional<ResourceKey<FossilVariant>> eggVariant = Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("Variant"))).map((resourceLocation) -> {
             return ResourceKey.create(FossilsLegacyRegistries.FOSSIL_VARIANTS, resourceLocation);
         });
-        Registry<FossilVariant> registry = FossilsLegacyBuiltInRegistries.FOSSIL_VARIANTS.registry();
+        Registry<FossilVariant> registry = FossilsLegacyBuiltInRegistries.FOSSIL_VARIANTS;
         Objects.requireNonNull(registry);
         eggVariant.flatMap(registry::getHolder).ifPresent(this::setFossilVariant);
         this.setSize(compoundTag.getInt("Size"));
@@ -115,14 +122,18 @@ public class Fossil extends Mob {
         if (itemStack.is(Items.BONE)) {
             if (this.getSize() < this.getFossilVariant().value().maxSize()) {
                 this.setSize(this.getSize() + 1);
-                itemStack.shrink(1);
+                if (!player.isCreative()) {
+                    itemStack.shrink(1);
+                }
                 return InteractionResult.SUCCESS;
             }
         }
         if (itemStack.isEmpty()) {
             if (this.getSize() >= 1) {
                 this.setSize(this.getSize() - 1);
-                player.addItem(new ItemStack(Items.BONE));
+                if (!player.isCreative()) {
+                    player.addItem(new ItemStack(Items.BONE));
+                }
                 return InteractionResult.SUCCESS;
             }
         }

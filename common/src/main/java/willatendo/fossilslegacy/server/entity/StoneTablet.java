@@ -17,7 +17,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.VariantHolder;
 import net.minecraft.world.entity.decoration.HangingEntity;
-import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
@@ -35,7 +34,7 @@ import java.util.Optional;
 public class StoneTablet extends HangingEntity implements VariantHolder<Holder<StoneTabletVariant>> {
     private static final EntityDataAccessor<Holder<StoneTabletVariant>> STONE_TABLET_VARIANT = SynchedEntityData.defineId(StoneTablet.class, FossilsLegacyEntityDataSerializers.STONE_TABLET_VARIANTS.get());
     private static final ResourceKey<StoneTabletVariant> DEFAULT_VARIANT = FossilsLegacyStoneTabletVariants.LIGHTING.getKey();
-    public static final MapCodec<Holder<StoneTabletVariant>> VARIANT_MAP_CODEC = FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS.registry().holderByNameCodec().fieldOf("variant");
+    public static final MapCodec<Holder<StoneTabletVariant>> VARIANT_MAP_CODEC = FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS.holderByNameCodec().fieldOf("variant");
     public static final Codec<Holder<StoneTabletVariant>> CODEC = VARIANT_MAP_CODEC.codec();
 
     private static Holder<StoneTabletVariant> getDefaultVariant() {

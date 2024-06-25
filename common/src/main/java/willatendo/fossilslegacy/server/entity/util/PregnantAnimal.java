@@ -211,7 +211,7 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth<T> {
         Optional<ResourceKey<PregnancyType>> eggVariant = Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("Variant"))).map((resourceLocation) -> {
             return ResourceKey.create(FossilsLegacyRegistries.PREGNANCY_TYPES, resourceLocation);
         });
-        Registry<PregnancyType> registry = FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES.registry();
+        Registry<PregnancyType> registry = FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES;
         Objects.requireNonNull(registry);
         eggVariant.flatMap(registry::getHolder).ifPresent(this::setPregnancyType);
     }

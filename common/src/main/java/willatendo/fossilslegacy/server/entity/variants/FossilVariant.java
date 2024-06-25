@@ -5,8 +5,7 @@ import willatendo.fossilslegacy.server.entity.Fossil;
 
 import java.util.function.Function;
 
-public record FossilVariant(int maxSize, ResourceLocation fossilTexture, float baseSize, float boundingBoxGrowth, float shadowSize, Function<Fossil, FossilScaleFactor> fossilScaleFactor) {
-
+public record FossilVariant(int maxSize, ResourceLocation fossilTexture, float shadowSize, float boundingBoxWidth, float boundingBoxHeight, Function<Fossil, FossilScaleFactor> fossilScaleFactor) {
 	public FossilScaleFactor getScaleFactor(Fossil fossil) {
 		return this.fossilScaleFactor.apply(fossil);
 	}

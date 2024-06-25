@@ -13,7 +13,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME, modid = FossilsLegacyUtils.ID, value = Dist.CLIENT)
 public class ClientForgeEvents {
     @SubscribeEvent
-    public static void keyEvents(InputEvent.Key event) {
+    public static void inputEvent_key(InputEvent.Key event) {
         Minecraft minecraft = Minecraft.getInstance();
         if (minecraft.player != null) {
             if (FossilsLegacyKeys.SINK.isDown()) {

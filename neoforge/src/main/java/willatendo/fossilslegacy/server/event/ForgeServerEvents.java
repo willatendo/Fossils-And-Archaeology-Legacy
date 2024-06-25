@@ -19,7 +19,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME, modid = FossilsLegacyUtils.ID)
 public class ForgeServerEvents {
     @SubscribeEvent
-    public static void pigmanCreation(EntityStruckByLightningEvent event) {
+    public static void entityStruckByLightningEvent(EntityStruckByLightningEvent event) {
         if (event.getLightning() instanceof AncientLightningBolt ancientLightningBolt) {
             if (event.getEntity() instanceof Pig pig) {
                 event.setCanceled(true);

@@ -9,7 +9,6 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import willatendo.fossilslegacy.server.block.FeederBlock;
-import willatendo.fossilslegacy.server.block.entity.CultivatorBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
 
 import java.util.List;

@@ -4,7 +4,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FossilsLegacyModels;
-import willatendo.fossilslegacy.client.model.legacy.CryolophosaurusModel;
+import willatendo.fossilslegacy.client.model.dinosaur.legacy.CryolophosaurusModel;
 import willatendo.fossilslegacy.server.entity.Cryolophosaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 

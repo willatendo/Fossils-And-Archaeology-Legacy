@@ -9,7 +9,6 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
 import willatendo.fossilslegacy.server.block.CultivatorBlock;
 import willatendo.fossilslegacy.server.block.entity.CultivatorBlockEntity;
 import willatendo.fossilslegacy.server.menu.slot.FuelSlot;

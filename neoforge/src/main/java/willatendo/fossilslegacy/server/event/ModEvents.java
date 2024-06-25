@@ -1,14 +1,7 @@
 package willatendo.fossilslegacy.server.event;
 
-import net.minecraft.server.packs.PackLocationInfo;
-import net.minecraft.server.packs.PackSelectionConfig;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.PathPackResources;
-import net.minecraft.server.packs.repository.Pack;
-import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
@@ -23,26 +16,30 @@ import willatendo.fossilslegacy.FossilsLegacyNeoforgeMod;
 import willatendo.fossilslegacy.network.NeoforgePacketHelper;
 import willatendo.fossilslegacy.network.ServerboundSinkPacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
-import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.server.event.NeoforgeAttributeRegister;
+import willatendo.simplelibrary.server.event.NeoforgeNewRegistryRegister;
+import willatendo.simplelibrary.server.event.NeoforgeResourcePackRegister;
+import willatendo.simplelibrary.server.event.NeoforgeSpawnPlacementRegister;
 import willatendo.simplelibrary.server.registry.NeoForgeRegister;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
-import java.nio.file.Path;
-import java.util.Optional;
-
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID)
 public class ModEvents {
     @SubscribeEvent
-    public static void commonSetup(FMLCommonSetupEvent event) {
-        BasicEvents.common();
-        BasicEvents.addToMaps();
+    public static void fmlCommonSetupEvent(FMLCommonSetupEvent event) {
+        BasicEvents.commonSetup();
     }
 
     @SubscribeEvent
-    public static void registerPackets(RegisterPayloadHandlersEvent event) {
+    public static void registerEvent(RegisterEvent event) {
+        NeoForgeRegister.register(event, FossilsLegacyNeoforgeMod.REGISTRIES.toArray(SimpleRegistry[]::new));
+    }
+
+    @SubscribeEvent
+    public static void registerPayloadHandlersEvent(RegisterPayloadHandlersEvent event) {
         PayloadRegistrar payloadRegistrar = event.registrar(FossilsLegacyUtils.ID).versioned("1.0.0").optional();
 
         payloadRegistrar.playToServer(ServerboundTimeMachineUpdatePacket.TYPE, ServerboundTimeMachineUpdatePacket.STREAM_CODEC, NeoforgePacketHelper::handleTimeMachineUpdatePacket);
@@ -50,7 +47,7 @@ public class ModEvents {
     }
 
     @SubscribeEvent
-    public static void creativeModTabModification(BuildCreativeModeTabContentsEvent event) {
+    public static void buildCreativeModeTabContentsEvent(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.OP_BLOCKS) {
             for (SimpleHolder<? extends Item> items : FossilsLegacyItems.DEBUG_ITEMS.getEntriesView()) {
                 if (event.hasPermissions()) {
@@ -80,44 +77,22 @@ public class ModEvents {
     }
 
     @SubscribeEvent
-    public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
-        BasicEvents.attributeInit();
-        BasicEvents.EVENTS_HOLDER.registerAllAttributes(attributes -> {
-            event.put(attributes.entityType(), attributes.attributeSupplier());
-        });
+    public static void addPackFindersEvent(AddPackFindersEvent event) {
+        BasicEvents.resourcePackEvent(new NeoforgeResourcePackRegister(event));
     }
 
     @SubscribeEvent
-    public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
-        BasicEvents.spawnPlacementsInit();
-        BasicEvents.EVENTS_HOLDER.registerAllSpawnPlacements(spawnPlacementEntry -> {
-            event.register(spawnPlacementEntry.entityType(), spawnPlacementEntry.spawnPlacementType(), spawnPlacementEntry.types(), spawnPlacementEntry.spawnPredicate(), SpawnPlacementRegisterEvent.Operation.OR);
-        });
+    public static void newRegistryEvent(NewRegistryEvent event) {
+        BasicEvents.newRegistryEvent(new NeoforgeNewRegistryRegister(event));
     }
 
     @SubscribeEvent
-    public static void register(RegisterEvent event) {
-        NeoForgeRegister.register(event, FossilsLegacyNeoforgeMod.REGISTRIES.toArray(SimpleRegistry[]::new));
+    public static void entityAttributeCreationEvent(EntityAttributeCreationEvent event) {
+        BasicEvents.attributeEvent(new NeoforgeAttributeRegister(event));
     }
 
     @SubscribeEvent
-    public static void registerRegistries(NewRegistryEvent event) {
-        event.register(FossilsLegacyBuiltInRegistries.FOSSIL_VARIANTS.registry());
-        event.register(FossilsLegacyBuiltInRegistries.EGG_VARIANTS.registry());
-        event.register(FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES.registry());
-        event.register(FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS.registry());
-    }
-
-    @SubscribeEvent
-    public static void registerResourcePack(AddPackFindersEvent event) {
-        if (event.getPackType() == PackType.CLIENT_RESOURCES) {
-            Path resourcePath = ModList.get().getModFileById(FossilsLegacyUtils.ID).getFile().findResource("resourcepacks/fa_legacy_textures");
-            event.addRepositorySource(consumer -> {
-                Pack pack = Pack.readMetaAndCreate(new PackLocationInfo(FossilsLegacyUtils.resource("resourcepacks.fa_legacy_textures").toString(), FossilsLegacyUtils.translation("resourcePack", "fa_legacy_textures.description"), PackSource.BUILT_IN, Optional.empty()), new PathPackResources.PathResourcesSupplier(resourcePath), PackType.CLIENT_RESOURCES, new PackSelectionConfig(false, Pack.Position.TOP, false));
-                if (pack != null) {
-                    consumer.accept(pack);
-                }
-            });
-        }
+    public static void spawnPlacementRegisterEvent(SpawnPlacementRegisterEvent event) {
+        BasicEvents.spawnPlacementEvent(new NeoforgeSpawnPlacementRegister(event));
     }
 }
