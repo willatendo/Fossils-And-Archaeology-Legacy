@@ -12,7 +12,7 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.server.entity.Futabasaurus;
 
-public class FutabasaurusModel extends EntityModel<Futabasaurus> {
+public class LegacyFutabasaurusModel extends EntityModel<Futabasaurus> {
     private final ModelPart root;
     private final ModelPart head;
     private final ModelPart neck1;
@@ -24,7 +24,7 @@ public class FutabasaurusModel extends EntityModel<Futabasaurus> {
     private final ModelPart backRightFlipper;
     private final ModelPart backLeftFlipper;
 
-    public FutabasaurusModel(ModelPart root) {
+    public LegacyFutabasaurusModel(ModelPart root) {
         this.root = root;
         this.head = root.getChild("head");
         this.neck1 = root.getChild("neck_1");

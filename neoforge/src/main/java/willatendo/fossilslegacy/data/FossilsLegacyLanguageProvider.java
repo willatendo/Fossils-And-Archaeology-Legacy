@@ -249,7 +249,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.TYRANNOSAURUS_DNA.get(), "Tyrannosaurus DNA");
         this.add(FossilsLegacyItems.PTERANODON_DNA.get(), "Pteranodon DNA");
         this.add(FossilsLegacyItems.NAUTILUS_DNA.get(), "Nautilus DNA");
-        this.add(FossilsLegacyItems.FUTABASAURUS_DNA.get(), "Futabasaurus DNA");
+        this.add(FossilsLegacyItems.FUTABASAURUS_DNA.get(), "willatendo.fossilslegacy.client.model.dinosaur.Futabasaurus DNA");
         this.add(FossilsLegacyItems.MOSASAURUS_DNA.get(), "Mosasaurus DNA");
         this.add(FossilsLegacyItems.STEGOSAURUS_DNA.get(), "Stegosaurus DNA");
         this.add(FossilsLegacyItems.DILOPHOSAURUS_DNA.get(), "Dilophosaurus DNA");
@@ -534,9 +534,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("sound.fossilslegacy.mammoth.ambient", "Mammoth Trumpets");
         this.add("sound.fossilslegacy.mammoth.hurt", "Mammoth Hurts");
         this.add("sound.fossilslegacy.mammoth.death", "Mammoth Dies");
-        this.add("sound.fossilslegacy.futabasaurus.ambient", "Futabasaurus Chirps");
-        this.add("sound.fossilslegacy.futabasaurus.hurt", "Futabasaurus Hurts");
-        this.add("sound.fossilslegacy.futabasaurus.death", "Futabasaurus Dies");
+        this.add("sound.fossilslegacy.futabasaurus.ambient", "willatendo.fossilslegacy.client.model.dinosaur.Futabasaurus Chirps");
+        this.add("sound.fossilslegacy.futabasaurus.hurt", "willatendo.fossilslegacy.client.model.dinosaur.Futabasaurus Hurts");
+        this.add("sound.fossilslegacy.futabasaurus.death", "willatendo.fossilslegacy.client.model.dinosaur.Futabasaurus Dies");
         this.add("sound.fossilslegacy.pachycephalosaurus.ambient", "Pachycephalosaurus Chirps");
         this.add("sound.fossilslegacy.pachycephalosaurus.hurt", "Pachycephalosaurus Hurts");
         this.add("sound.fossilslegacy.pachycephalosaurus.death", "Pachycephalosaurus Dies");

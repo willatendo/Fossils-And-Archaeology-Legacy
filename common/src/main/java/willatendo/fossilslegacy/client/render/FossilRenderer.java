@@ -18,9 +18,10 @@ import net.minecraft.world.entity.Pose;
 import willatendo.fossilslegacy.client.FossilsLegacyModels;
 import willatendo.fossilslegacy.client.model.fossils.*;
 import willatendo.fossilslegacy.client.model.fossils.legacy.BrachiosaurusSkeletonModel;
-import willatendo.fossilslegacy.client.model.fossils.legacy.FutabasaurusSkeletonModel;
+import willatendo.fossilslegacy.client.model.fossils.legacy.LegacyFutabasaurusSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.legacy.PteranodonSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.legacy.TriceratopsSkeletonModel;
+import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.entity.Fossil;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyFossilVariants;
 import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
@@ -39,7 +40,7 @@ public class FossilRenderer extends EntityRenderer<Fossil> {
         this.shadowRadius = 0.5F;
 
         this.models.put(FossilsLegacyFossilVariants.BRACHIOSAURUS.get(), this.model = new BrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.BRACHIOSAURUS_SKELETON)));
-        this.models.put(FossilsLegacyFossilVariants.FUTABASAURUS.get(), new FutabasaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.FUTABASAURUS_SKELETON)));
+        this.models.put(FossilsLegacyFossilVariants.FUTABASAURUS.get(), FossilsModloaderHelper.INSTANCE.legacyModels() ? new LegacyFutabasaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_FUTABASAURUS_SKELETON)) : new FutabasaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.FUTABASAURUS_SKELETON)));
         this.models.put(FossilsLegacyFossilVariants.PTERANODON.get(), new PteranodonSkeletonModel(context.bakeLayer(FossilsLegacyModels.PTERANODON_SKELETON)));
         this.models.put(FossilsLegacyFossilVariants.TRICERATOPS.get(), new TriceratopsSkeletonModel(context.bakeLayer(FossilsLegacyModels.TRICERATOPS_SKELETON)));
         this.models.put(FossilsLegacyFossilVariants.PACHYCEPHALOSAURUS.get(), new PachycephalosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.PACHYCEPHALOSAURUS_SKELETON)));
@@ -172,6 +173,7 @@ public class FossilRenderer extends EntityRenderer<Fossil> {
 
     @Override
     public ResourceLocation getTextureLocation(Fossil fossil) {
-        return fossil.getFossilVariant().value().fossilTexture();
+        FossilVariant fossilVariant = fossil.getFossilVariant().value();
+        return FossilsModloaderHelper.INSTANCE.legacyModels() ? fossilVariant.legacyTexture() != null ? fossilVariant.legacyTexture() : fossilVariant.fossilTexture() : fossilVariant.fossilTexture();
     }
 }

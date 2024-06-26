@@ -7,6 +7,7 @@ public class FossilsLegacyModels {
     public static final ModelLayerLocation BRACHIOSAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("brachiosaurus"), "main");
     public static final ModelLayerLocation DILOPHOSAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("dilophosaurus"), "main");
     public static final ModelLayerLocation FUTABASAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("futabasaurus"), "main");
+    public static final ModelLayerLocation LEGACY_FUTABASAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("legacy_futabasaurus"), "main");
     public static final ModelLayerLocation MAMMOTH = new ModelLayerLocation(FossilsLegacyUtils.resource("mammoth"), "main");
     public static final ModelLayerLocation MOSASAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("mosasaurus"), "main");
     public static final ModelLayerLocation NAUTILUS = new ModelLayerLocation(FossilsLegacyUtils.resource("nautilus"), "main");
@@ -29,6 +30,7 @@ public class FossilsLegacyModels {
     public static final ModelLayerLocation BRACHIOSAURUS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("brachiosaurs_skeleton"), "main");
     public static final ModelLayerLocation COMPSOGNATHUS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("compsognathus_skeleton"), "main");
     public static final ModelLayerLocation FUTABASAURUS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("futabasaurus_skeleton"), "main");
+    public static final ModelLayerLocation LEGACY_FUTABASAURUS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("legacy_futabasaurus_skeleton"), "main");
     public static final ModelLayerLocation PTERANODON_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("pteranodon_skeleton"), "main");
     public static final ModelLayerLocation PACHYCEPHALOSAURUS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("pachycephalosaurus_skeleton"), "main");
     public static final ModelLayerLocation TRICERATOPS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("triceratops_skeleton"), "main");

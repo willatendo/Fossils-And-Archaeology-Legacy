@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_glass": {
+    "has_green_stained_glass": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:glass"
+            "items": "minecraft:green_stained_glass"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_glass"
+      "has_green_stained_glass"
     ]
   ],
   "rewards": {

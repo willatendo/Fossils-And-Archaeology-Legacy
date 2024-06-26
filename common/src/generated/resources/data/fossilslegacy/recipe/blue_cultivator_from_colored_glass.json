@@ -4,7 +4,7 @@
   "group": "cultivators",
   "key": {
     "#": {
-      "item": "minecraft:glass"
+      "item": "minecraft:blue_stained_glass"
     },
     "%": {
       "item": "minecraft:water_bucket"

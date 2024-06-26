@@ -8,8 +8,8 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import willatendo.fossilslegacy.client.model.fossils.AbstractSkeletonModel;
 
-public class FutabasaurusSkeletonModel extends AbstractSkeletonModel {
-	public FutabasaurusSkeletonModel(ModelPart root) {
+public class LegacyFutabasaurusSkeletonModel extends AbstractSkeletonModel {
+	public LegacyFutabasaurusSkeletonModel(ModelPart root) {
 		super(root);
 	}
 
