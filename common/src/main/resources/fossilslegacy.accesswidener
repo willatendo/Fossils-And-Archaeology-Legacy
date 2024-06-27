@@ -10,7 +10,19 @@ accessible method net/minecraft/client/renderer/blockentity/BlockEntityRenderers
 accessible method net/minecraft/world/level/block/state/BlockBehaviour$Properties <init> ()V
 accessible method net/minecraft/world/level/levelgen/NoiseRouterData overworld (Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;ZZ)Lnet/minecraft/world/level/levelgen/NoiseRouter;
 accessible method net/minecraft/resources/ResourceLocation <init> (Ljava/lang/String;Ljava/lang/String;)V
+accessible method net/minecraft/world/level/block/SaplingBlock <init> (Lnet/minecraft/world/level/block/grower/TreeGrower;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+accessible method net/minecraft/world/level/block/StairBlock <init> (Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+accessible method net/minecraft/world/level/block/state/properties/WoodType register (Lnet/minecraft/world/level/block/state/properties/WoodType;)Lnet/minecraft/world/level/block/state/properties/WoodType;
+accessible method net/minecraft/world/level/block/state/properties/BlockSetType register (Lnet/minecraft/world/level/block/state/properties/BlockSetType;)Lnet/minecraft/world/level/block/state/properties/BlockSetType;
+accessible method net/minecraft/world/level/block/PressurePlateBlock <init> (Lnet/minecraft/world/level/block/state/properties/BlockSetType;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+accessible method net/minecraft/world/level/block/TrapDoorBlock <init> (Lnet/minecraft/world/level/block/state/properties/BlockSetType;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+accessible method net/minecraft/world/level/block/ButtonBlock <init> (Lnet/minecraft/world/level/block/state/properties/BlockSetType;ILnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+accessible method net/minecraft/world/level/block/DoorBlock <init> (Lnet/minecraft/world/level/block/state/properties/BlockSetType;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
 
 accessible field net/minecraft/world/level/biome/MultiNoiseBiomeSourceParameterList$Preset BY_NAME Ljava/util/Map;
 accessible field net/minecraft/world/level/levelgen/NoiseSettings OVERWORLD_NOISE_SETTINGS Lnet/minecraft/world/level/levelgen/NoiseSettings;
 accessible field net/minecraft/client/gui/GuiGraphics minecraft Lnet/minecraft/client/Minecraft;
+accessible field net/minecraft/world/item/AxeItem STRIPPABLES Ljava/util/Map;
+mutable field net/minecraft/world/item/AxeItem STRIPPABLES Ljava/util/Map;
+accessible field net/minecraft/world/entity/vehicle/Boat lastYd D
+accessible field net/minecraft/world/entity/vehicle/Boat status Lnet/minecraft/world/entity/vehicle/Boat$Status;

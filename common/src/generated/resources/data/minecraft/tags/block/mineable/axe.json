@@ -1,6 +1,23 @@
 {
   "values": [
     "fossilslegacy:archaeology_workbench",
-    "fossilslegacy:drum"
+    "fossilslegacy:drum",
+    "fossilslegacy:lepidodendron_planks",
+    "fossilslegacy:lepidodendron_log",
+    "fossilslegacy:stripped_lepidodendron_log",
+    "fossilslegacy:lepidodendron_wood",
+    "fossilslegacy:stripped_lepidodendron_wood",
+    "fossilslegacy:lepidodendron_stairs",
+    "fossilslegacy:lepidodendron_sign",
+    "fossilslegacy:lepidodendron_wall_sign",
+    "fossilslegacy:lepidodendron_door",
+    "fossilslegacy:lepidodendron_hanging_sign",
+    "fossilslegacy:lepidodendron_wall_hanging_sign",
+    "fossilslegacy:lepidodendron_pressure_plate",
+    "fossilslegacy:lepidodendron_fence",
+    "fossilslegacy:lepidodendron_trapdoor",
+    "fossilslegacy:lepidodendron_fence_gate",
+    "fossilslegacy:lepidodendron_button",
+    "fossilslegacy:lepidodendron_slab"
   ]
 }

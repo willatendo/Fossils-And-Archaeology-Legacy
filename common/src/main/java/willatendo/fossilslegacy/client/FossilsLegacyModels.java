@@ -1,6 +1,7 @@
 package willatendo.fossilslegacy.client;
 
 import net.minecraft.client.model.geom.ModelLayerLocation;
+import willatendo.fossilslegacy.server.entity.variants.BoatType;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FossilsLegacyModels {
@@ -42,4 +43,12 @@ public class FossilsLegacyModels {
     public static final ModelLayerLocation EGG = new ModelLayerLocation(FossilsLegacyUtils.resource("egg"), "main");
 
     public static final ModelLayerLocation TIME_MACHINE_CLOCK = new ModelLayerLocation(FossilsLegacyUtils.resource("time_machine_clock"), "main");
+
+    public static ModelLayerLocation createBoatModelName(BoatType boatType) {
+        return new ModelLayerLocation(FossilsLegacyUtils.resource("boat/" + boatType.name()), "main");
+    }
+
+    public static ModelLayerLocation createChestBoatModelName(BoatType boatType) {
+        return new ModelLayerLocation(FossilsLegacyUtils.resource("chest_boat/" + boatType.name()), "main");
+    }
 }

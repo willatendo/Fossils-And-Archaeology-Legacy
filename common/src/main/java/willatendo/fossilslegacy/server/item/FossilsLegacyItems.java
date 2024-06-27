@@ -1,12 +1,14 @@
 package willatendo.fossilslegacy.server.item;
 
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.ArmorItem.Type;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.dimension.FossilsLegacyLevels;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyBoatTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEggVariants;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyPregnancyTypes;
@@ -202,6 +204,34 @@ public class FossilsLegacyItems {
     public static final SimpleHolder<SpawnEggItem> PACHYCEPHALOSAURUS_SPAWN_EGG = ITEMS.register("pachycephalosaurus_spawn_egg", () -> FossilsModloaderHelper.INSTANCE.createDinosaurSpawnEgg(() -> FossilsLegacyEntityTypes.PACHYCEPHALOSAURUS.get(), 0xc06929, 0x2e1a0b, new Item.Properties()));
     public static final SimpleHolder<SpawnEggItem> COMPSOGNATHUS_SPAWN_EGG = ITEMS.register("compsognathus_spawn_egg", () -> FossilsModloaderHelper.INSTANCE.createDinosaurSpawnEgg(() -> FossilsLegacyEntityTypes.COMPSOGNATHUS.get(), 0x2b482a, 0x172116, new Item.Properties()));
 
+    public static SimpleHolder<PlaceOnWaterBlockItem> AXOLOTLSPAWN;
+    public static SimpleHolder<SignItem> LEPIDODENDRON_SIGN;
+    public static SimpleHolder<HangingSignItem> LEPIDODENDRON_HANGING_SIGN;
+    public static SimpleHolder<DoubleHighBlockItem> LEPIDODENDRON_DOOR;
+
+    public static final SimpleHolder<LepidodendronBoatItem> LEPIDODENDRON_BOAT = ITEMS.register("lepidodendron_boat", () -> new LepidodendronBoatItem(false, FossilsLegacyBoatTypes.LEPIDODENDRON, new Item.Properties().stacksTo(1)));
+    public static final SimpleHolder<LepidodendronBoatItem> LEPIDODENDRON_CHEST_BOAT = ITEMS.register("lepidodendron_chest_boat", () -> new LepidodendronBoatItem(true, FossilsLegacyBoatTypes.LEPIDODENDRON, new Item.Properties().stacksTo(1)));
+
+    public static final ResourceKey<Item> LEPIDODENDRON_PLANKS = FossilsLegacyItems.blockReference("lepidodendron_planks");
+    public static final ResourceKey<Item> LEPIDODENDRON_SAPLING = FossilsLegacyItems.blockReference("lepidodendron_sapling");
+    public static final ResourceKey<Item> LEPIDODENDRON_LOG = FossilsLegacyItems.blockReference("lepidodendron_log");
+    public static final ResourceKey<Item> STRIPPED_LEPIDODENDRON_LOG = FossilsLegacyItems.blockReference("stripped_lepidodendron_log");
+    public static final ResourceKey<Item> LEPIDODENDRON_WOOD = FossilsLegacyItems.blockReference("lepidodendron_wood");
+    public static final ResourceKey<Item> STRIPPED_LEPIDODENDRON_WOOD = FossilsLegacyItems.blockReference("stripped_lepidodendron_wood");
+    public static final ResourceKey<Item> LEPIDODENDRON_LEAVES = FossilsLegacyItems.blockReference("lepidodendron_leaves");
+    public static final ResourceKey<Item> LEPIDODENDRON_STAIRS = FossilsLegacyItems.blockReference("lepidodendron_stairs");
+    public static final ResourceKey<Item> LEPIDODENDRON_PRESSURE_PLATE = FossilsLegacyItems.blockReference("lepidodendron_pressure_plate");
+    public static final ResourceKey<Item> LEPIDODENDRON_FENCE = FossilsLegacyItems.blockReference("lepidodendron_fence");
+    public static final ResourceKey<Item> LEPIDODENDRON_TRAPDOOR = FossilsLegacyItems.blockReference("lepidodendron_trapdoor");
+    public static final ResourceKey<Item> LEPIDODENDRON_FENCE_GATE = FossilsLegacyItems.blockReference("lepidodendron_fence_gate");
+    public static final ResourceKey<Item> POTTED_LEPIDODENDRON_SAPLING = FossilsLegacyItems.blockReference("potted_lepidodendron_sapling");
+    public static final ResourceKey<Item> LEPIDODENDRON_BUTTON = FossilsLegacyItems.blockReference("lepidodendron_button");
+    public static final ResourceKey<Item> LEPIDODENDRON_SLAB = FossilsLegacyItems.blockReference("lepidodendron_slab");
+
+    private static ResourceKey<Item> blockReference(String id) {
+        return ResourceKey.create(Registries.ITEM, FossilsLegacyUtils.resource(id));
+    }
+
     public static void init(List<SimpleRegistry<?>> simpleRegistries) {
         // Debug
         DEBUG_ITEMS.register("debug_max_hunger", () -> DebugItem.debugMaxHunger());
@@ -210,8 +240,11 @@ public class FossilsLegacyItems {
         DEBUG_ITEMS.register("debug_baby", () -> DebugItem.debugBaby());
         DEBUG_ITEMS.register("debug_tame", () -> DebugItem.debugTame());
 
-        SimpleUtils.registerAllItems(ITEMS, FossilsLegacyBlocks.BLOCKS, FossilsLegacyBlocks.AXOLOTLSPAWN, FossilsLegacyBlocks.RAW_CHICKEN_SOUP_CAULDRON, FossilsLegacyBlocks.COOKED_CHICKEN_SOUP_CAULDRON, FossilsLegacyBlocks.RAW_BERRY_MEDLEY_CAULDRON, FossilsLegacyBlocks.COOKED_BERRY_MEDLEY_CAULDRON);
-        ITEMS.register("axolotlspawn", () -> new PlaceOnWaterBlockItem(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), new Item.Properties()));
+        SimpleUtils.registerAllItems(ITEMS, FossilsLegacyBlocks.BLOCKS, FossilsLegacyBlocks.AXOLOTLSPAWN, FossilsLegacyBlocks.RAW_CHICKEN_SOUP_CAULDRON, FossilsLegacyBlocks.COOKED_CHICKEN_SOUP_CAULDRON, FossilsLegacyBlocks.RAW_BERRY_MEDLEY_CAULDRON, FossilsLegacyBlocks.COOKED_BERRY_MEDLEY_CAULDRON, FossilsLegacyBlocks.LEPIDODENDRON_SIGN, FossilsLegacyBlocks.LEPIDODENDRON_WALL_SIGN, FossilsLegacyBlocks.LEPIDODENDRON_HANGING_SIGN, FossilsLegacyBlocks.LEPIDODENDRON_WALL_HANGING_SIGN, FossilsLegacyBlocks.LEPIDODENDRON_DOOR, FossilsLegacyBlocks.POTTED_LEPIDODENDRON_SAPLING);
+        AXOLOTLSPAWN = ITEMS.register("axolotlspawn", () -> new PlaceOnWaterBlockItem(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), new Item.Properties()));
+        LEPIDODENDRON_SIGN = ITEMS.register("lepidodendron_sign", () -> new SignItem(new Item.Properties().stacksTo(16), FossilsLegacyBlocks.LEPIDODENDRON_SIGN.get(), FossilsLegacyBlocks.LEPIDODENDRON_WALL_SIGN.get()));
+        LEPIDODENDRON_HANGING_SIGN = ITEMS.register("lepidodendron_hanging_sign", () -> new HangingSignItem(FossilsLegacyBlocks.LEPIDODENDRON_HANGING_SIGN.get(), FossilsLegacyBlocks.LEPIDODENDRON_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
+        LEPIDODENDRON_DOOR = ITEMS.register("lepidodendron_door", () -> new DoubleHighBlockItem(FossilsLegacyBlocks.LEPIDODENDRON_DOOR.get(), new Item.Properties()));
         simpleRegistries.add(ITEMS);
         simpleRegistries.add(DEBUG_ITEMS);
     }

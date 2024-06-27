@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.event;
 
+import com.google.common.collect.Maps;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.OptionalDispenseItemBehavior;
@@ -12,9 +13,12 @@ import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.animal.horse.Mule;
 import net.minecraft.world.entity.monster.ZombifiedPiglin;
+import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.Heightmap;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
@@ -78,6 +82,22 @@ public class BasicEvents {
                 return itemStack;
             }
         });
+
+        AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
+        AxeItem.STRIPPABLES.put(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get(), FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_LOG.get());
+        AxeItem.STRIPPABLES.put(FossilsLegacyBlocks.LEPIDODENDRON_WOOD.get(), FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_WOOD.get());
+
+        FireBlock fireblock = (FireBlock) Blocks.FIRE;
+        fireblock.setFlammable(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get(), 5, 20);
+        fireblock.setFlammable(FossilsLegacyBlocks.LEPIDODENDRON_SLAB.get(), 5, 20);
+        fireblock.setFlammable(FossilsLegacyBlocks.LEPIDODENDRON_FENCE_GATE.get(), 5, 20);
+        fireblock.setFlammable(FossilsLegacyBlocks.LEPIDODENDRON_FENCE.get(), 5, 20);
+        fireblock.setFlammable(FossilsLegacyBlocks.LEPIDODENDRON_STAIRS.get(), 5, 20);
+        fireblock.setFlammable(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get(), 5, 5);
+        fireblock.setFlammable(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_LOG.get(), 5, 5);
+        fireblock.setFlammable(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_WOOD.get(), 5, 5);
+        fireblock.setFlammable(FossilsLegacyBlocks.LEPIDODENDRON_WOOD.get(), 5, 5);
+        fireblock.setFlammable(FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get(), 30, 60);
     }
 
     public static void resourcePackEvent(ResourcePackRegister resourcePackRegister) {
@@ -85,6 +105,7 @@ public class BasicEvents {
     }
 
     public static void newRegistryEvent(NewRegistryRegister newRegistryRegister) {
+        newRegistryRegister.register(FossilsLegacyBuiltInRegistries.BOAT_TYPES);
         newRegistryRegister.register(FossilsLegacyBuiltInRegistries.EGG_VARIANTS);
         newRegistryRegister.register(FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES);
         newRegistryRegister.register(FossilsLegacyBuiltInRegistries.FOSSIL_VARIANTS);

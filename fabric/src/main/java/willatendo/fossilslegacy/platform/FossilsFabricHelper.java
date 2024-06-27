@@ -45,13 +45,18 @@ public class FossilsFabricHelper implements FossilsModloaderHelper {
     }
 
     @Override
+    public boolean legacyModels() {
+        return FabricConfigHelper.legacyModels();
+    }
+
+    @Override
     public boolean willAnimalsStarve() {
         return FabricConfigHelper.willAnimalsStarve();
     }
 
     @Override
     public boolean willAnimalsBreakBlocks() {
-        return FabricConfigHelper.willAnimalsStarve();
+        return FabricConfigHelper.willAnimalsBreakBlocks();
     }
 
     @Override

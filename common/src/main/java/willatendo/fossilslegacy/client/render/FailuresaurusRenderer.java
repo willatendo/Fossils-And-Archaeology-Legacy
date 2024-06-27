@@ -9,7 +9,7 @@ import willatendo.fossilslegacy.server.entity.Failuresaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FailuresaurusRenderer extends MobRenderer<Failuresaurus, FailuresaurusModel> {
-	public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entities/failuresaurus.png");
+	public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/failuresaurus.png");
 
 	public FailuresaurusRenderer(Context context) {
 		super(context, new FailuresaurusModel(context.bakeLayer(FossilsLegacyModels.FAILURESAURUS)), 0.5F);

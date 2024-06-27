@@ -235,6 +235,25 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyBlocks.ICED_STONE.get());
         output.accept(FossilsLegacyBlocks.AXOLOTLSPAWN.get());
         output.accept(FossilsLegacyBlocks.TIME_MACHINE.get());
+        output.accept(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get());
+        output.accept(FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get());
+        output.accept(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get());
+        output.accept(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_LOG.get());
+        output.accept(FossilsLegacyBlocks.LEPIDODENDRON_WOOD.get());
+        output.accept(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_WOOD.get());
+        output.accept(FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get());
+        output.accept(FossilsLegacyBlocks.LEPIDODENDRON_STAIRS.get());
+        output.accept(FossilsLegacyBlocks.LEPIDODENDRON_SIGN.get());
+        output.accept(FossilsLegacyBlocks.LEPIDODENDRON_DOOR.get());
+        output.accept(FossilsLegacyBlocks.LEPIDODENDRON_HANGING_SIGN.get());
+        output.accept(FossilsLegacyBlocks.LEPIDODENDRON_PRESSURE_PLATE.get());
+        output.accept(FossilsLegacyBlocks.LEPIDODENDRON_FENCE.get());
+        output.accept(FossilsLegacyBlocks.LEPIDODENDRON_TRAPDOOR.get());
+        output.accept(FossilsLegacyBlocks.LEPIDODENDRON_FENCE_GATE.get());
+        output.accept(FossilsLegacyBlocks.LEPIDODENDRON_BUTTON.get());
+        output.accept(FossilsLegacyBlocks.LEPIDODENDRON_SLAB.get());
+        output.accept(FossilsLegacyItems.LEPIDODENDRON_BOAT.get());
+        output.accept(FossilsLegacyItems.LEPIDODENDRON_CHEST_BOAT.get());
     }).build());
 
     private static void generateMagicConches(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {

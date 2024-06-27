@@ -136,7 +136,7 @@ public class Carnotaurus extends Dinosaur implements DinopediaInformation, SubSp
 
     @Override
     public ResourceLocation[][] textures() {
-        return new ResourceLocation[][]{{FossilsLegacyUtils.resource("textures/entities/animals/carnotaurus/green_carnotaurus.png")}, {FossilsLegacyUtils.resource("textures/entities/animals/carnotaurus/red_carnotaurus.png")}};
+        return new ResourceLocation[][]{{FossilsLegacyUtils.resource("textures/entity/animals/carnotaurus/green_carnotaurus.png")}, {FossilsLegacyUtils.resource("textures/entity/animals/carnotaurus/red_carnotaurus.png")}};
     }
 
     @Override

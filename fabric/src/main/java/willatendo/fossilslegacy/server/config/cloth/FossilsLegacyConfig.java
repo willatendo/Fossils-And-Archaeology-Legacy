@@ -26,15 +26,22 @@ public class FossilsLegacyConfig extends PartitioningSerializer.GlobalData {
         @Comment("If true, some dinosaurs will have feathers")
         private boolean featheredDinosaurs = FEATHERED_DINOSAURUS;
 
+        @Comment("If true, where applicable, legacy models will be used")
+        private boolean legacyModels = LEGACY_MODELS;
+
         public boolean featheredDinosaurs() {
             return this.featheredDinosaurs;
+        }
+
+        public boolean legacyModels() {
+            return this.legacyModels;
         }
     }
 
     @Config(name = "common")
     public static final class Common implements ConfigData {
         @Comment("If true, animals will starve")
-        private boolean animalsStarve = SHOULD_ANU_SPAWN;
+        private boolean animalsStarve = WILL_ANIMALS_STARVE;
 
         @Comment("If true, some animals will be able to break blocks")
         private boolean animalsBreakBlocks = WILL_ANIMALS_BREAK_BLOCKS;

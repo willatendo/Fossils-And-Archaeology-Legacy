@@ -2,10 +2,12 @@ package willatendo.fossilslegacy.data;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import willatendo.fossilslegacy.server.block.*;
@@ -50,6 +52,24 @@ public class FossilsLegacyBlockStateProvider extends BlockStateProvider {
         this.cauldron(FossilsLegacyBlocks.COOKED_CHICKEN_SOUP_CAULDRON.get(), "cooked_chicken_soup");
         this.cauldron(FossilsLegacyBlocks.RAW_BERRY_MEDLEY_CAULDRON.get(), "raw_berry_medley");
         this.cauldron(FossilsLegacyBlocks.COOKED_BERRY_MEDLEY_CAULDRON.get(), "cooked_berry_medley");
+        this.simpleBlock(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get());
+        this.simpleBlock(FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get(), this.models().cross("lepidodendron_sapling", this.modLoc("block/lepidodendron_sapling")).renderType("cutout"));
+        this.logBlock(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get());
+        this.logBlock(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_LOG.get());
+        this.woodBlock(FossilsLegacyBlocks.LEPIDODENDRON_WOOD.get(), this.modLoc("block/lepidodendron_log"));
+        this.woodBlock(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_WOOD.get(), this.modLoc("block/stripped_lepidodendron_log"));
+        this.simpleBlock(FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get(), this.models().withExistingParent("lepidodendron_leaves", this.mcLoc("block/leaves")).texture("all", this.modLoc("block/lepidodendron_leaves")).renderType("cutout"));
+        this.stairsBlock(FossilsLegacyBlocks.LEPIDODENDRON_STAIRS.get(), this.modLoc("block/lepidodendron_planks"));
+        this.signBlock(FossilsLegacyBlocks.LEPIDODENDRON_SIGN.get(), FossilsLegacyBlocks.LEPIDODENDRON_WALL_SIGN.get(), this.modLoc("block/lepidodendron_planks"));
+        this.doorBlockWithRenderType(FossilsLegacyBlocks.LEPIDODENDRON_DOOR.get(), this.modLoc("block/lepidodendron_door_bottom"), this.modLoc("block/lepidodendron_door_top"), "cutout");
+        this.hangingSignBlock(FossilsLegacyBlocks.LEPIDODENDRON_HANGING_SIGN.get(), FossilsLegacyBlocks.LEPIDODENDRON_WALL_HANGING_SIGN.get(), this.modLoc("block/stripped_lepidodendron_log"));
+        this.pressurePlateBlock(FossilsLegacyBlocks.LEPIDODENDRON_PRESSURE_PLATE.get(), this.modLoc("block/lepidodendron_planks"));
+        this.fenceBlock(FossilsLegacyBlocks.LEPIDODENDRON_FENCE.get(), this.modLoc("block/lepidodendron_planks"));
+        this.trapdoorBlockWithRenderType(FossilsLegacyBlocks.LEPIDODENDRON_TRAPDOOR.get(), this.modLoc("block/lepidodendron_trapdoor"), true, "cutout");
+        this.fenceGateBlock(FossilsLegacyBlocks.LEPIDODENDRON_FENCE_GATE.get(), this.modLoc("block/lepidodendron_planks"));
+        this.simpleBlock(FossilsLegacyBlocks.POTTED_LEPIDODENDRON_SAPLING.get(), this.models().withExistingParent("potted_lepidodendron_sapling", this.mcLoc("block/flower_pot_cross")).texture("plant", this.modLoc("block/lepidodendron_sapling")).renderType("cutout"));
+        this.buttonBlock(FossilsLegacyBlocks.LEPIDODENDRON_BUTTON.get(), this.modLoc("block/lepidodendron_planks"));
+        this.slabBlock(FossilsLegacyBlocks.LEPIDODENDRON_SLAB.get(), this.modLoc("block/lepidodendron_planks"), this.modLoc("block/lepidodendron_planks"));
     }
 
     private void cultivator(Block block, String color) {
@@ -61,5 +81,40 @@ public class FossilsLegacyBlockStateProvider extends BlockStateProvider {
         for (int level = 1; level < 9; level++) {
             partialBlockstate.with(SoupCauldronBlock.LEVEL, level).addModels(new ConfiguredModel(this.models().withExistingParent(BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + level, this.modLoc("block/template_soup_cauldron_" + level)).texture("content", this.modLoc("block/" + liquid))));
         }
+    }
+
+    public void woodBlock(RotatedPillarBlock block, ResourceLocation texture) {
+        this.axisBlock(block, texture, texture);
+    }
+
+    public void hangingSignBlock(CeilingHangingSignBlock ceilingHangingSignBlock, WallHangingSignBlock wallHangingSignBlock, ResourceLocation texture) {
+        ModelFile sign = this.models().sign(this.name(ceilingHangingSignBlock), texture);
+        this.hangingSignBlock(ceilingHangingSignBlock, wallHangingSignBlock, sign);
+    }
+
+    public void hangingSignBlock(CeilingHangingSignBlock ceilingHangingSignBlock, WallHangingSignBlock wallHangingSignBlock, ModelFile sign) {
+        this.simpleBlock(ceilingHangingSignBlock, sign);
+        this.simpleBlock(wallHangingSignBlock, sign);
+    }
+
+    public void fenceBlock(FenceBlock block, ResourceLocation texture) {
+        String baseName = this.key(block).toString();
+        this.fourWayBlock(block, this.models().fencePost(baseName + "_post", texture), this.models().fenceSide(baseName + "_side", texture));
+        this.models().fenceInventory(baseName + "_inventory", texture);
+    }
+
+    public void buttonBlock(ButtonBlock block, ResourceLocation texture) {
+        ModelFile button = this.models().button(this.name(block), texture);
+        ModelFile buttonPressed = this.models().buttonPressed(this.name(block) + "_pressed", texture);
+        this.buttonBlock(block, button, buttonPressed);
+        this.models().buttonInventory(this.name(block) + "_inventory", texture);
+    }
+
+    private String name(Block block) {
+        return this.key(block).getPath();
+    }
+
+    private ResourceLocation key(Block block) {
+        return BuiltInRegistries.BLOCK.getKey(block);
     }
 }

@@ -17,7 +17,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.Calendar;
 
 public class TimeMachineClockRenderer implements BlockEntityRenderer<TimeMachineBlockEntity> {
-    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entities/time_machine_clock.png");
+    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/time_machine_clock.png");
     private final TimeMachineClockModel timeMachineClockModel;
 
     private int updateTick = 0;

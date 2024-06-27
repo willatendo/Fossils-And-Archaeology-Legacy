@@ -9,8 +9,8 @@ import willatendo.fossilslegacy.server.entity.Futabasaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FutabasaurusRenderer extends LegacyEntityRenderer<Futabasaurus> {
-    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/futabasaurus/futabasaurus.png");
-    public static final ResourceLocation LEGACY_TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/futabasaurus/legacy/futabasaurus.png");
+    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/animals/futabasaurus/futabasaurus.png");
+    public static final ResourceLocation LEGACY_TEXTURE = FossilsLegacyUtils.resource("textures/entity/animals/futabasaurus/legacy/futabasaurus.png");
 
     public FutabasaurusRenderer(Context context) {
         super(context, new FutabasaurusModel(context.bakeLayer(FossilsLegacyModels.FUTABASAURUS)), new LegacyFutabasaurusModel(context.bakeLayer(FossilsLegacyModels.LEGACY_FUTABASAURUS)), 0.3F);

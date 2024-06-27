@@ -6,10 +6,6 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.util.Mth;
-import willatendo.fossilslegacy.client.animation.VelociraptorAnimations;
-import willatendo.fossilslegacy.client.model.dinosaur.base.BaseVelociraptorModel;
-import willatendo.fossilslegacy.server.entity.Velociraptor;
 
 public class VelociraptorSkeletonModel extends AbstractSkeletonModel {
     public VelociraptorSkeletonModel(ModelPart root) {

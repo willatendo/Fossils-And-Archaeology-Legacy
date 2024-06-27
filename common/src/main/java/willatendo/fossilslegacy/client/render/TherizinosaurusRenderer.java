@@ -10,8 +10,8 @@ import willatendo.fossilslegacy.server.entity.Therizinosaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class TherizinosaurusRenderer extends MobRenderer<Therizinosaurus, TherizinosaurusModel> {
-    public static final ResourceLocation FEATHERED = FossilsLegacyUtils.resource("textures/entities/animals/therizinosaurus/feathered_therizinosaurus.png");
-    public static final ResourceLocation FEATHERLESS = FossilsLegacyUtils.resource("textures/entities/animals/therizinosaurus/featherless_therizinosaurus.png");
+    public static final ResourceLocation FEATHERED = FossilsLegacyUtils.resource("textures/entity/animals/therizinosaurus/feathered_therizinosaurus.png");
+    public static final ResourceLocation FEATHERLESS = FossilsLegacyUtils.resource("textures/entity/animals/therizinosaurus/featherless_therizinosaurus.png");
 
     public TherizinosaurusRenderer(EntityRendererProvider.Context context) {
         super(context, new TherizinosaurusModel(context.bakeLayer(FossilsLegacyModels.THERIZINOSAURUS)), 0.15F);

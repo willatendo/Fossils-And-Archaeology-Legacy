@@ -31,6 +31,7 @@ public class FossilsLegacyMod {
         FossilsLegacyBlocks.init(simpleRegistries);
         FossilsLegacyBlockEntities.init(simpleRegistries);
         FossilsLegacyMenus.init(simpleRegistries);
+        FossilsLegacyBoatTypes.init(simpleRegistries);
         FossilsLegacyEggVariants.init(simpleRegistries);
         FossilsLegacyPregnancyTypes.init(simpleRegistries);
         FossilsLegacyFossilVariants.init(simpleRegistries);

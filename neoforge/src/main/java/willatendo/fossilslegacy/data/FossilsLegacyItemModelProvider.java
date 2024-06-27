@@ -1,9 +1,10 @@
 package willatendo.fossilslegacy.data;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
@@ -197,6 +198,8 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.spawnEggItem(FossilsLegacyItems.THERIZINOSAURUS_SPAWN_EGG.get());
         this.spawnEggItem(FossilsLegacyItems.PACHYCEPHALOSAURUS_SPAWN_EGG.get());
         this.spawnEggItem(FossilsLegacyItems.COMPSOGNATHUS_SPAWN_EGG.get());
+        this.basicItem(FossilsLegacyItems.LEPIDODENDRON_BOAT.get());
+        this.basicItem(FossilsLegacyItems.LEPIDODENDRON_CHEST_BOAT.get());
 
         this.basicItem(FossilsLegacyItems.OVERWORLD_COIN.get());
         this.basicItem(FossilsLegacyItems.NETHER_COIN.get());
@@ -206,15 +209,55 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
             this.handheldItem(items.get(), FossilsLegacyUtils.mc("item/bone"));
         }
 
-        for (SimpleHolder<? extends Block> blocks : FossilsLegacyBlocks.BLOCKS.getEntriesView()) {
-            ResourceLocation blockId = blocks.getId();
-            if (blocks.get() == FossilsLegacyBlocks.JURASSIC_FERN.get()) {
-                this.basicItem(blockId, this.modLoc("block/fern_lower_3"));
-            } else if (blocks.get() == FossilsLegacyBlocks.AXOLOTLSPAWN.get()) {
-                this.basicItem(blockId, this.modLoc("block/axolotlspawn"));
-            } else {
-                this.getBuilder(blockId.toString()).parent(new ModelFile.UncheckedModelFile(FossilsLegacyUtils.resource("block/" + blockId.getPath() + (blockId.getPath().contains("drum") ? "_follow" : blockId.getPath().contains("feeder") ? "_empty" : ""))));
-            }
-        }
+        this.basicBlock(FossilsLegacyBlocks.FOSSIL_ORE.get());
+        this.basicBlock(FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get());
+        this.basicBlock(FossilsLegacyBlocks.SKULL_BLOCK.get());
+        this.basicBlock(FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get());
+        this.basicBlock(FossilsLegacyBlocks.ANALYZER.get());
+        this.basicBlock(FossilsLegacyBlocks.WHITE_CULTIVATOR.get());
+        this.basicBlock(FossilsLegacyBlocks.ORANGE_CULTIVATOR.get());
+        this.basicBlock(FossilsLegacyBlocks.MAGENTA_CULTIVATOR.get());
+        this.basicBlock(FossilsLegacyBlocks.LIGHT_BLUE_CULTIVATOR.get());
+        this.basicBlock(FossilsLegacyBlocks.YELLOW_CULTIVATOR.get());
+        this.basicBlock(FossilsLegacyBlocks.LIME_CULTIVATOR.get());
+        this.basicBlock(FossilsLegacyBlocks.PINK_CULTIVATOR.get());
+        this.basicBlock(FossilsLegacyBlocks.GRAY_CULTIVATOR.get());
+        this.basicBlock(FossilsLegacyBlocks.LIGHT_GRAY_CULTIVATOR.get());
+        this.basicBlock(FossilsLegacyBlocks.CYAN_CULTIVATOR.get());
+        this.basicBlock(FossilsLegacyBlocks.PURPLE_CULTIVATOR.get());
+        this.basicBlock(FossilsLegacyBlocks.BLUE_CULTIVATOR.get());
+        this.basicBlock(FossilsLegacyBlocks.BROWN_CULTIVATOR.get());
+        this.basicBlock(FossilsLegacyBlocks.GREEN_CULTIVATOR.get());
+        this.basicBlock(FossilsLegacyBlocks.RED_CULTIVATOR.get());
+        this.basicBlock(FossilsLegacyBlocks.BLACK_CULTIVATOR.get());
+        this.basicBlock(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get());
+        this.basicItem(FossilsLegacyBlocks.JURASSIC_FERN.getId(), this.modLoc("block/fern_lower_3"));
+        this.basicBlock(FossilsLegacyBlocks.DRUM.get(), "drum_follow");
+        this.basicBlock(FossilsLegacyBlocks.FEEDER.get(), "feeder_empty");
+        this.basicBlock(FossilsLegacyBlocks.PERMAFROST.get());
+        this.basicBlock(FossilsLegacyBlocks.ICED_STONE.get());
+        this.basicItem(FossilsLegacyItems.AXOLOTLSPAWN.get(), this.modLoc("block/axolotlspawn"));
+        this.basicBlock(FossilsLegacyBlocks.TIME_MACHINE.get());
+        this.basicBlock(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get());
+        this.basicItem(FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.getId(), this.modLoc("block/lepidodendron_sapling"));
+        this.basicBlock(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get());
+        this.basicBlock(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_LOG.get());
+        this.basicBlock(FossilsLegacyBlocks.LEPIDODENDRON_WOOD.get());
+        this.basicBlock(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_WOOD.get());
+        this.basicBlock(FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get());
+        this.basicBlock(FossilsLegacyBlocks.LEPIDODENDRON_STAIRS.get());
+        this.basicItem(FossilsLegacyItems.LEPIDODENDRON_SIGN.get());
+        this.basicItem(FossilsLegacyItems.LEPIDODENDRON_DOOR.get());
+        this.basicItem(FossilsLegacyItems.LEPIDODENDRON_HANGING_SIGN.get());
+        this.basicBlock(FossilsLegacyBlocks.LEPIDODENDRON_PRESSURE_PLATE.get());
+        this.basicBlock(FossilsLegacyBlocks.LEPIDODENDRON_FENCE.get(), "lepidodendron_fence_inventory");
+        this.basicBlock(FossilsLegacyBlocks.LEPIDODENDRON_TRAPDOOR.get(), "lepidodendron_trapdoor_bottom");
+        this.basicBlock(FossilsLegacyBlocks.LEPIDODENDRON_FENCE_GATE.get());
+        this.basicBlock(FossilsLegacyBlocks.LEPIDODENDRON_BUTTON.get(), "lepidodendron_button_inventory");
+        this.basicBlock(FossilsLegacyBlocks.LEPIDODENDRON_SLAB.get());
+    }
+
+    public void basicBlock(Block block, String blockModel) {
+        ((ItemModelBuilder) this.getBuilder(BuiltInRegistries.BLOCK.getKey(block).getPath())).parent(new ModelFile.UncheckedModelFile(this.modLoc("block/" + blockModel)));
     }
 }

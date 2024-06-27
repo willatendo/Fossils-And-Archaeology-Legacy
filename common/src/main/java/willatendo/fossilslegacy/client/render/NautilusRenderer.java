@@ -9,7 +9,7 @@ import willatendo.fossilslegacy.server.entity.Nautilus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class NautilusRenderer extends MobRenderer<Nautilus, NautilusModel> {
-	public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/nautilus/nautilus.png");
+	public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/animals/nautilus/nautilus.png");
 
 	public NautilusRenderer(Context context) {
 		super(context, new NautilusModel(context.bakeLayer(FossilsLegacyModels.NAUTILUS)), 0.5F);

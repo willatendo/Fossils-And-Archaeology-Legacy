@@ -9,6 +9,9 @@ import willatendo.simplelibrary.server.util.SimpleUtils;
 import static willatendo.fossilslegacy.server.config.FossilsLegacyBaseConfigSettings.*;
 
 public class FabricConfigHelper {
+    public static boolean legacyModels() {
+        return isForgeConfigAPILoaded() ? FossilsLegacyForgeConfig.CLIENT_CONFIG.legacyModels() : isClothConfigLoaded() ? FossilsLegacyClothConfigSettings.legacyModels() : LEGACY_MODELS;
+    }
 
     public static boolean featheredDinosaurs() {
         return isForgeConfigAPILoaded() ? FossilsLegacyForgeConfig.CLIENT_CONFIG.featheredDinosaurs() : isClothConfigLoaded() ? FossilsLegacyClothConfigSettings.featheredDinosaurs() : FEATHERED_DINOSAURUS;

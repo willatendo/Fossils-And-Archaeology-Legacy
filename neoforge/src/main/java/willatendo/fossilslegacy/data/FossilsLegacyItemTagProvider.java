@@ -7,6 +7,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import willatendo.fossilslegacy.server.block.FossilsLegacyBlockTags;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 
@@ -19,7 +20,24 @@ public class FossilsLegacyItemTagProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(Provider provider) {
+        this.tag(ItemTags.PLANKS).add(FossilsLegacyItems.LEPIDODENDRON_PLANKS);
+        this.tag(ItemTags.WOODEN_BUTTONS).add(FossilsLegacyItems.LEPIDODENDRON_BUTTON);
+        this.tag(ItemTags.WOODEN_DOORS).add(FossilsLegacyItems.LEPIDODENDRON_DOOR.get());
+        this.tag(ItemTags.WOODEN_STAIRS).add(FossilsLegacyItems.LEPIDODENDRON_STAIRS);
+        this.tag(ItemTags.WOODEN_SLABS).add(FossilsLegacyItems.LEPIDODENDRON_SLAB);
+        this.tag(ItemTags.WOODEN_FENCES).add(FossilsLegacyItems.LEPIDODENDRON_FENCE);
+        this.tag(ItemTags.SAPLINGS).add(FossilsLegacyItems.LEPIDODENDRON_SAPLING);
+        this.tag(ItemTags.LOGS_THAT_BURN).addTags(FossilsLegacyItemTags.LEPIDODENDRON_LOGS);
+        this.tag(ItemTags.WOODEN_PRESSURE_PLATES).add(FossilsLegacyItems.LEPIDODENDRON_PRESSURE_PLATE);
+        this.tag(ItemTags.LEAVES).add(FossilsLegacyItems.LEPIDODENDRON_LEAVES);
+        this.tag(ItemTags.WOODEN_TRAPDOORS).add(FossilsLegacyItems.LEPIDODENDRON_TRAPDOOR);
+        this.tag(ItemTags.SIGNS).add(FossilsLegacyItems.LEPIDODENDRON_SIGN.get());
+        this.tag(ItemTags.HANGING_SIGNS).add(FossilsLegacyItems.LEPIDODENDRON_HANGING_SIGN.get());
+        this.tag(ItemTags.FENCE_GATES).add(FossilsLegacyItems.LEPIDODENDRON_FENCE_GATE);
+
         this.tag(ItemTags.WOLF_FOOD).add(FossilsLegacyItems.RAW_TRICERATOPS_MEAT.get(), FossilsLegacyItems.RAW_VELOCIRAPTOR_MEAT.get(), FossilsLegacyItems.RAW_TYRANNOSAURUS_MEAT.get(), FossilsLegacyItems.RAW_PTERANODON_MEAT.get(), FossilsLegacyItems.NAUTILUS.get(), FossilsLegacyItems.RAW_FUTABASAURUS_MEAT.get(), FossilsLegacyItems.RAW_MOSASAURUS_MEAT.get(), FossilsLegacyItems.RAW_STEGOSAURUS_MEAT.get(), FossilsLegacyItems.RAW_DILOPHOSAURUS_MEAT.get(), FossilsLegacyItems.RAW_BRACHIOSAURUS_MEAT.get(), FossilsLegacyItems.RAW_SMILODON_MEAT.get(), FossilsLegacyItems.RAW_MAMMOTH_MEAT.get(), FossilsLegacyItems.RAW_CARNOTAURUS_MEAT.get(), FossilsLegacyItems.RAW_CRYOLOPHOSAURUS_MEAT.get(), FossilsLegacyItems.RAW_THERIZINOSAURUS_MEAT.get(), FossilsLegacyItems.COOKED_TRICERATOPS_MEAT.get(), FossilsLegacyItems.COOKED_VELOCIRAPTOR_MEAT.get(), FossilsLegacyItems.COOKED_TYRANNOSAURUS_MEAT.get(), FossilsLegacyItems.COOKED_PTERANODON_MEAT.get(), FossilsLegacyItems.SIO_CHIU_LE.get(), FossilsLegacyItems.COOKED_FUTABASAURUS_MEAT.get(), FossilsLegacyItems.COOKED_MOSASAURUS_MEAT.get(), FossilsLegacyItems.COOKED_STEGOSAURUS_MEAT.get(), FossilsLegacyItems.COOKED_DILOPHOSAURUS_MEAT.get(), FossilsLegacyItems.COOKED_BRACHIOSAURUS_MEAT.get(), FossilsLegacyItems.COOKED_SMILODON_MEAT.get(), FossilsLegacyItems.COOKED_MAMMOTH_MEAT.get(), FossilsLegacyItems.COOKED_CARNOTAURUS_MEAT.get(), FossilsLegacyItems.COOKED_CRYOLOPHOSAURUS_MEAT.get(), FossilsLegacyItems.COOKED_THERIZINOSAURUS_MEAT.get());
+
+        this.copy(FossilsLegacyBlockTags.LEPIDODENDRON_LOGS, FossilsLegacyItemTags.LEPIDODENDRON_LOGS);
         this.tag(FossilsLegacyItemTags.BRACHIOSAURUS_COMMANDABLES).add(Items.STICK);
         this.tag(FossilsLegacyItemTags.CAKE_EGGS).add(FossilsLegacyItems.TRICERATOPS_EGG.get(), FossilsLegacyItems.VELOCIRAPTOR_EGG.get(), FossilsLegacyItems.TYRANNOSAURUS_EGG.get(), FossilsLegacyItems.PTERANODON_EGG.get(), FossilsLegacyItems.FUTABASAURUS_EGG.get(), FossilsLegacyItems.MOSASAURUS_EGG.get(), FossilsLegacyItems.STEGOSAURUS_EGG.get(), FossilsLegacyItems.DILOPHOSAURUS_EGG.get(), FossilsLegacyItems.BRACHIOSAURUS_EGG.get());
         this.tag(FossilsLegacyItemTags.CARNOTAURUS_COMMANDABLES).add(Items.BONE);

@@ -53,6 +53,24 @@ public class FossilsLegacyBlockLootSubProvider extends SimpleBlockLootSubProvide
         this.dropOther(FossilsLegacyBlocks.COOKED_CHICKEN_SOUP_CAULDRON.get(), Blocks.CAULDRON);
         this.dropOther(FossilsLegacyBlocks.RAW_BERRY_MEDLEY_CAULDRON.get(), Blocks.CAULDRON);
         this.dropOther(FossilsLegacyBlocks.COOKED_BERRY_MEDLEY_CAULDRON.get(), Blocks.CAULDRON);
+        this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get());
+        this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get());
+        this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get());
+        this.dropSelf(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_LOG.get());
+        this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_WOOD.get());
+        this.dropSelf(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_WOOD.get());
+        this.add(FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get(), block -> this.createLeavesDrops(block, FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_STAIRS.get());
+        this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_SIGN.get());
+        this.add(FossilsLegacyBlocks.LEPIDODENDRON_DOOR.get(), block -> this.createDoorTable(block));
+        this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_HANGING_SIGN.get());
+        this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_PRESSURE_PLATE.get());
+        this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_FENCE.get());
+        this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_TRAPDOOR.get());
+        this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_FENCE_GATE.get());
+        this.dropPottedContents(FossilsLegacyBlocks.POTTED_LEPIDODENDRON_SAPLING.get());
+        this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_BUTTON.get());
+        this.add(FossilsLegacyBlocks.LEPIDODENDRON_SLAB.get(), block -> this.createSlabItemTable(block));
     }
 
     protected LootTable.Builder createFossilOreLootTable(Block block) {

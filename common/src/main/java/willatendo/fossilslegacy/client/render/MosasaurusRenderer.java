@@ -10,7 +10,7 @@ import willatendo.fossilslegacy.server.entity.Mosasaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class MosasaurusRenderer extends MobRenderer<Mosasaurus, MosasaurusModel> {
-    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/mosasaurus/mosasaurus.png");
+    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/animals/mosasaurus/mosasaurus.png");
 
     public MosasaurusRenderer(Context context) {
         super(context, new MosasaurusModel(context.bakeLayer(FossilsLegacyModels.MOSASAURUS)), 0.3F);

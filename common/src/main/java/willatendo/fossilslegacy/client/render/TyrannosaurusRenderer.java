@@ -13,9 +13,9 @@ import willatendo.fossilslegacy.server.entity.Tyrannosaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class TyrannosaurusRenderer extends MobRenderer<Tyrannosaurus, AbstractTyrannosaurusModel> {
-    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/tyrannosaurus/tyrannosaurus.png");
-    public static final ResourceLocation AGRESSIVE_TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/tyrannosaurus/aggressive_tyrannosaurus.png");
-    public static final ResourceLocation WEAK_TEXTURE = FossilsLegacyUtils.resource("textures/entities/animals/tyrannosaurus/weak_tyrannosaurus.png");
+    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/animals/tyrannosaurus/tyrannosaurus.png");
+    public static final ResourceLocation AGRESSIVE_TEXTURE = FossilsLegacyUtils.resource("textures/entity/animals/tyrannosaurus/aggressive_tyrannosaurus.png");
+    public static final ResourceLocation WEAK_TEXTURE = FossilsLegacyUtils.resource("textures/entity/animals/tyrannosaurus/weak_tyrannosaurus.png");
 
     private final TyrannosaurusModel tyrannosaurusModel;
     private final KnockedOutTyrannosaurusModel knockedOutTyrannosaurusModel;

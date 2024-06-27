@@ -9,6 +9,10 @@ public class FossilsLegacyClothConfigSettings {
         return CONFIG.client.featheredDinosaurs();
     }
 
+    public static boolean legacyModels() {
+        return CONFIG.client.legacyModels();
+    }
+
     public static boolean willAnimalsStarve() {
         return CONFIG.common.willAnimalsStarve();
     }

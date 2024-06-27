@@ -192,12 +192,12 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 
     @Override
     public ResourceLocation[][] textures() {
-        return new ResourceLocation[][]{{FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/sandy_velociraptor.png"), FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/sandy_baby_velociraptor.png")}, {FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/green_velociraptor.png"), FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/green_baby_velociraptor.png")}, {FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/white_velociraptor.png"), FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/white_baby_velociraptor.png")}};
+        return new ResourceLocation[][]{{FossilsLegacyUtils.resource("textures/entity/animals/velociraptor/sandy_velociraptor.png"), FossilsLegacyUtils.resource("textures/entity/animals/velociraptor/sandy_baby_velociraptor.png")}, {FossilsLegacyUtils.resource("textures/entity/animals/velociraptor/green_velociraptor.png"), FossilsLegacyUtils.resource("textures/entity/animals/velociraptor/green_baby_velociraptor.png")}, {FossilsLegacyUtils.resource("textures/entity/animals/velociraptor/white_velociraptor.png"), FossilsLegacyUtils.resource("textures/entity/animals/velociraptor/white_baby_velociraptor.png")}};
     }
 
     @Override
     public ResourceLocation[][] legacyTextures() {
-        return new ResourceLocation[][]{{FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/legacy/sandy_velociraptor.png"), FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/legacy/sandy_baby_velociraptor.png")}, {FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/legacy/green_velociraptor.png"), FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/legacy/green_baby_velociraptor.png")}, {FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/legacy/white_velociraptor.png"), FossilsLegacyUtils.resource("textures/entities/animals/velociraptor/legacy/white_baby_velociraptor.png")}};
+        return new ResourceLocation[][]{{FossilsLegacyUtils.resource("textures/entity/animals/velociraptor/legacy/sandy_velociraptor.png"), FossilsLegacyUtils.resource("textures/entity/animals/velociraptor/legacy/sandy_baby_velociraptor.png")}, {FossilsLegacyUtils.resource("textures/entity/animals/velociraptor/legacy/green_velociraptor.png"), FossilsLegacyUtils.resource("textures/entity/animals/velociraptor/legacy/green_baby_velociraptor.png")}, {FossilsLegacyUtils.resource("textures/entity/animals/velociraptor/legacy/white_velociraptor.png"), FossilsLegacyUtils.resource("textures/entity/animals/velociraptor/legacy/white_baby_velociraptor.png")}};
     }
 
     @Override

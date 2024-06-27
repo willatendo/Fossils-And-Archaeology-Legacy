@@ -1,21 +1,47 @@
 26/7/2024
 - Fixed Cooked Dinosaur Meat Recipes
 - (NeoForge) Fixed Compostables
+- (Fabric) Fixed Animals Breaking Blocks Not Being Toggleable
+- (Fabric) Fixed Animals Not Starving Not Being Toggleable
 - Fixed Skeletons Not Working
 - Fixed Skeletons Consuming Bones In Creative
 - Fixed Skeleton's Bounding Box Sizes
+- Fixed Anu Charging Texture
+- Update (Fabric) Mixins Compatibility To Java 21
 - Update Velociraptor Model
+- Update Futabasaurus Model
+- Added Velociraptor Skeleton
+- Added Futabasaurus Skeleton
 - Added Pachycephalosaurus
 - Added Pachycephalosaurus DNA
 - Added Pachycephalosaurus Egg
 - Added Raw Pachycephalosaurus Meat
 - Added Cooked Pachycephalosaurus Meat
+- Added Pachycephalosaurus Skeleton
 - Added Compsognathus
 - Added Compsognathus DNA
 - Added Compsognathus Egg
 - Added Raw Compsognathus Meat
 - Added Cooked Compsognathus Meat
+- Added Compsognathus Skeleton
 - Added "Legacy Models" Config Option
+- Added Lepidodendron Planks
+- Added Lepidodendron Log
+- Added Stripped Lepidodendron Log
+- Added Lepidodendron Wood
+- Added Stripped Lepidodendron Wood
+- Added Lepidodendron Leaves
+- Added Lepidodendron Stairs
+- Added Lepidodendron Sign
+- Added Lepidodendron Door
+- Added Lepidodendron Hanging Sign
+- Added Lepidodendron Pressure Plate
+- Added Lepidodendron Fence
+- Added Lepidodendron Trapdoor
+- Added Lepidodendron Fence Gate
+- Added Potted Lepidodendron Sapling
+- Added Lepidodendron Button
+- Added Lepidodendron Slab
 - Removed Antiquated "Anu Spawns" Config Option
 21/7/2024 B
 - Fixed Summoning Entities

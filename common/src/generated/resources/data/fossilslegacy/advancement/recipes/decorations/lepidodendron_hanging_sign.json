@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_stripped_lepidodendron_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:stripped_lepidodendron_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:lepidodendron_hanging_sign"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_stripped_lepidodendron_log"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:lepidodendron_hanging_sign"
+    ]
+  }
+}

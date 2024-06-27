@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_lepidodendron_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:lepidodendron_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:lepidodendron_trapdoor"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_lepidodendron_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:lepidodendron_trapdoor"
+    ]
+  }
+}

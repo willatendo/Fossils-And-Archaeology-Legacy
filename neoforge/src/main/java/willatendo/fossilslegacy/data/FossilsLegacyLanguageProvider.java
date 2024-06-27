@@ -105,6 +105,23 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyBlocks.COOKED_CHICKEN_SOUP_CAULDRON.get());
         this.add(FossilsLegacyBlocks.RAW_BERRY_MEDLEY_CAULDRON.get());
         this.add(FossilsLegacyBlocks.COOKED_BERRY_MEDLEY_CAULDRON.get());
+        this.add(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get());
+        this.add(FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get());
+        this.add(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get());
+        this.add(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_LOG.get());
+        this.add(FossilsLegacyBlocks.LEPIDODENDRON_WOOD.get());
+        this.add(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_WOOD.get());
+        this.add(FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get());
+        this.add(FossilsLegacyBlocks.LEPIDODENDRON_STAIRS.get());
+        this.add(FossilsLegacyBlocks.LEPIDODENDRON_SIGN.get());
+        this.add(FossilsLegacyBlocks.LEPIDODENDRON_DOOR.get());
+        this.add(FossilsLegacyBlocks.LEPIDODENDRON_HANGING_SIGN.get());
+        this.add(FossilsLegacyBlocks.LEPIDODENDRON_PRESSURE_PLATE.get());
+        this.add(FossilsLegacyBlocks.LEPIDODENDRON_FENCE.get());
+        this.add(FossilsLegacyBlocks.LEPIDODENDRON_TRAPDOOR.get());
+        this.add(FossilsLegacyBlocks.LEPIDODENDRON_FENCE_GATE.get());
+        this.add(FossilsLegacyBlocks.LEPIDODENDRON_BUTTON.get());
+        this.add(FossilsLegacyBlocks.LEPIDODENDRON_SLAB.get());
 
         // Biomes
         this.add("biome.fossilslegacy.prehistoric_ocean", "Prehistoric Ocean");
@@ -249,7 +266,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.TYRANNOSAURUS_DNA.get(), "Tyrannosaurus DNA");
         this.add(FossilsLegacyItems.PTERANODON_DNA.get(), "Pteranodon DNA");
         this.add(FossilsLegacyItems.NAUTILUS_DNA.get(), "Nautilus DNA");
-        this.add(FossilsLegacyItems.FUTABASAURUS_DNA.get(), "willatendo.fossilslegacy.client.model.dinosaur.Futabasaurus DNA");
+        this.add(FossilsLegacyItems.FUTABASAURUS_DNA.get(), "Futabasaurus DNA");
         this.add(FossilsLegacyItems.MOSASAURUS_DNA.get(), "Mosasaurus DNA");
         this.add(FossilsLegacyItems.STEGOSAURUS_DNA.get(), "Stegosaurus DNA");
         this.add(FossilsLegacyItems.DILOPHOSAURUS_DNA.get(), "Dilophosaurus DNA");
@@ -434,6 +451,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.NETHER_COIN.get());
         this.add(FossilsLegacyItems.PREHISTORIC_COIN.get());
 
+        this.add(FossilsLegacyItems.LEPIDODENDRON_BOAT.get());
+        this.add(FossilsLegacyItems.LEPIDODENDRON_CHEST_BOAT.get(), "Lepidodendron Boat with Chest");
+
         for (SimpleHolder<? extends Item> items : FossilsLegacyItems.DEBUG_ITEMS.getEntriesView()) {
             this.add(items.get(), "Debug Item");
         }
@@ -534,9 +554,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("sound.fossilslegacy.mammoth.ambient", "Mammoth Trumpets");
         this.add("sound.fossilslegacy.mammoth.hurt", "Mammoth Hurts");
         this.add("sound.fossilslegacy.mammoth.death", "Mammoth Dies");
-        this.add("sound.fossilslegacy.futabasaurus.ambient", "willatendo.fossilslegacy.client.model.dinosaur.Futabasaurus Chirps");
-        this.add("sound.fossilslegacy.futabasaurus.hurt", "willatendo.fossilslegacy.client.model.dinosaur.Futabasaurus Hurts");
-        this.add("sound.fossilslegacy.futabasaurus.death", "willatendo.fossilslegacy.client.model.dinosaur.Futabasaurus Dies");
+        this.add("sound.fossilslegacy.futabasaurus.ambient", "Futabasaurus Chirps");
+        this.add("sound.fossilslegacy.futabasaurus.hurt", "Futabasaurus Hurts");
+        this.add("sound.fossilslegacy.futabasaurus.death", "Futabasaurus Dies");
         this.add("sound.fossilslegacy.pachycephalosaurus.ambient", "Pachycephalosaurus Chirps");
         this.add("sound.fossilslegacy.pachycephalosaurus.hurt", "Pachycephalosaurus Hurts");
         this.add("sound.fossilslegacy.pachycephalosaurus.death", "Pachycephalosaurus Dies");

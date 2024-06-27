@@ -13,19 +13,19 @@ import willatendo.fossilslegacy.server.entity.Anu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class AnuRenderer extends MobRenderer<Anu, AnuModel> {
-	public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entities/anu/anu.png");
-	public static final ResourceLocation CHARGING = FossilsLegacyUtils.resource("textures/entities/anu/anu_charging.png");
+    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/anu/anu.png");
+    public static final ResourceLocation CHARGING = FossilsLegacyUtils.resource("textures/entity/anu/anu_charging.png");
 
-	public AnuRenderer(Context context) {
-		super(context, new AnuModel(context.bakeLayer(FossilsLegacyModels.ANU)), 0.3F);
-		this.addLayer(new CustomHeadLayer(this, context.getModelSet(), 1.0F, 1.0F, 1.0F, context.getItemInHandRenderer()));
-		this.addLayer(new ElytraLayer(this, context.getModelSet()));
-		this.addLayer(new ItemInHandLayer(this, context.getItemInHandRenderer()));
-		this.addLayer(new AnuOverlayLayer(this));
-	}
+    public AnuRenderer(Context context) {
+        super(context, new AnuModel(context.bakeLayer(FossilsLegacyModels.ANU)), 0.3F);
+        this.addLayer(new CustomHeadLayer(this, context.getModelSet(), 1.0F, 1.0F, 1.0F, context.getItemInHandRenderer()));
+        this.addLayer(new ElytraLayer(this, context.getModelSet()));
+        this.addLayer(new ItemInHandLayer(this, context.getItemInHandRenderer()));
+        this.addLayer(new AnuOverlayLayer(this));
+    }
 
-	@Override
-	public ResourceLocation getTextureLocation(Anu anu) {
-		return TEXTURE;
-	}
+    @Override
+    public ResourceLocation getTextureLocation(Anu anu) {
+        return anu.isCharging() ? CHARGING : TEXTURE;
+    }
 }

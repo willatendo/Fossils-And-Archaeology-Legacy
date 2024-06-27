@@ -6,7 +6,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public record StoneTabletVariant(String name, int width, int height) {
 	public ResourceLocation getTexture() {
-		return FossilsLegacyUtils.resource("textures/entities/stone_tablet/" + this.name + ".png");
+		return FossilsLegacyUtils.resource("textures/entity/stone_tablet/" + this.name + ".png");
 	}
 
 	public MutableComponent getName() {

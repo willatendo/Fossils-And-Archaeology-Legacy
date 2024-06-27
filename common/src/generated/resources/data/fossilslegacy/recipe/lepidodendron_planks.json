@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "fossilslegacy:lepidodendron_logs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "fossilslegacy:lepidodendron_planks"
+  }
+}
