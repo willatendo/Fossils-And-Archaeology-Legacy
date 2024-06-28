@@ -9,7 +9,7 @@ import willatendo.fossilslegacy.server.entity.Brachiosaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class BrachiosaurusRenderer extends MobRenderer<Brachiosaurus, BrachiosaurusModel> {
-    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/animals/brachiosaurus/brachiosaurus_skeleton.png");
+    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/animals/brachiosaurus/brachiosaurus.png");
 
     public BrachiosaurusRenderer(Context context) {
         super(context, new BrachiosaurusModel(context.bakeLayer(FossilsLegacyModels.BRACHIOSAURUS)), 0.3F);
