@@ -1,4 +1,6 @@
 26/7/2024
+- Entity Textures Moved From "entities" to "entity"
+- Screens Render Like Vanilla
 - Fixed Cooked Dinosaur Meat Recipes
 - (NeoForge) Fixed Compostables
 - (Fabric) Fixed Animals Breaking Blocks Not Being Toggleable
@@ -7,7 +9,7 @@
 - Fixed Skeletons Consuming Bones In Creative
 - Fixed Skeleton's Bounding Box Sizes
 - Fixed Anu Charging Texture
-- Update (Fabric) Mixins Compatibility To Java 21
+- (Fabric) Update Mixins Compatibility To Java 21
 - Update Velociraptor Model
 - Update Futabasaurus Model
 - Added Velociraptor Skeleton
@@ -42,6 +44,9 @@
 - Added Potted Lepidodendron Sapling
 - Added Lepidodendron Button
 - Added Lepidodendron Slab
+- Added Lepidodendron Boat
+- Added Lepidodendron Boat with Chest
+- Added Lepidodendron Tree
 - Removed Antiquated "Anu Spawns" Config Option
 21/7/2024 B
 - Fixed Summoning Entities

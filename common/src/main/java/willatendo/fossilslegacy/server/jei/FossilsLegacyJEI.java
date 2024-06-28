@@ -30,7 +30,7 @@ import java.util.List;
 
 @JeiPlugin
 public class FossilsLegacyJEI implements IModPlugin {
-    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/gui/fossils_legacy_jei.png");
+    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/gui/container/fossils_legacy_jei.png");
 
     // JEI Constants
     public static final String JEI_ID = "jei";

@@ -26,7 +26,7 @@ public abstract class GuiMixin {
 
         RenderTextureOverlayAccessor renderTextureOverlayAccessor = (RenderTextureOverlayAccessor) this;
         if (itemStack.is(FossilsLegacyBlocks.SKULL_BLOCK.get().asItem())) {
-            renderTextureOverlayAccessor.fossil_renderTextureOverlay(guiGraphics, FossilsLegacyUtils.resource("textures/gui/skullblur.png"), 1.0F);
+            renderTextureOverlayAccessor.fossil_renderTextureOverlay(guiGraphics, FossilsLegacyUtils.resource("textures/misc/skullblur.png"), 1.0F);
         }
     }
 }

@@ -13,7 +13,8 @@ import willatendo.fossilslegacy.server.menu.TimeMachineMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class TimeMachineScreen extends AbstractContainerScreen<TimeMachineMenu> {
-    private static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/gui/time_machine.png");
+    private static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/gui/container/time_machine.png");
+    private static final ResourceLocation CLOCK_SPRITE = FossilsLegacyUtils.resource("container/time_machine/clock");
 
     public TimeMachineScreen(TimeMachineMenu timeMachineMenu, Inventory inventory, Component component) {
         super(timeMachineMenu, inventory, component);
@@ -44,7 +45,7 @@ public class TimeMachineScreen extends AbstractContainerScreen<TimeMachineMenu> 
         guiGraphics.blit(TEXTURE, leftPos, topPos, 0, 0, this.imageWidth, this.imageHeight);
         float charge = ((float) (TimeMachineBlockEntity.MAX_CHARGE - this.menu.getChargeLevel())) / (float) TimeMachineBlockEntity.MAX_CHARGE;
         int height = (int) (charge * (float) 75.0F);
-        guiGraphics.blit(TEXTURE, leftPos + 51, topPos + 7, 177, 1, 75, height);
+        guiGraphics.blitSprite(CLOCK_SPRITE, 76, 76, 0, 0, leftPos + 50, topPos + 6, 75, height);
     }
 
     @Override

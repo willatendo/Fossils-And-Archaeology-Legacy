@@ -1,0 +1,17 @@
+{
+  "feature": "fossilslegacy:lepidodendron",
+  "placement": [
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "fossilslegacy:lepidodendron_sapling",
+          "Properties": {
+            "stage": "0"
+          }
+        }
+      }
+    }
+  ]
+}

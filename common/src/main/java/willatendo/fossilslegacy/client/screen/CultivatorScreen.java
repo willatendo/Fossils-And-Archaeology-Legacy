@@ -11,7 +11,9 @@ import willatendo.fossilslegacy.server.menu.CultivatorMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class CultivatorScreen extends AbstractContainerScreen<CultivatorMenu> {
-    private static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/gui/cultivator.png");
+    private static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/gui/container/cultivator.png");
+    private static final ResourceLocation CULTIVATION_PROGRESS_SPRITE = FossilsLegacyUtils.resource("container/cultivator/cultivation_progress");
+    private static final ResourceLocation BIOMASS_PROGRESS_SPRITE = FossilsLegacyUtils.resource("container/cultivator/biomass_progress");
 
     public CultivatorScreen(CultivatorMenu archaeologyWorkbenchMenu, Inventory inventory, Component title) {
         super(archaeologyWorkbenchMenu, inventory, title);
@@ -32,10 +34,10 @@ public class CultivatorScreen extends AbstractContainerScreen<CultivatorMenu> {
         guiGraphics.blit(TEXTURE, leftPos, topPos, 0, 0, this.imageWidth, this.imageHeight);
         if (this.menu.isOn()) {
             int onProgess = Mth.ceil(this.menu.getOnProgress() * 13.0F) + 1;
-            guiGraphics.blit(TEXTURE, leftPos + 81, topPos + 36 + 13 - onProgess, 176, 13 - onProgess, 14, onProgess + 1);
+            guiGraphics.blitSprite(BIOMASS_PROGRESS_SPRITE, 14, 14, 0, 14 - onProgess, leftPos + 81, topPos + 36 + 14 - onProgess, 14, onProgess);
         }
 
         int cultivationProgess = this.menu.getCultivationProgress();
-        guiGraphics.blit(TEXTURE, leftPos + 77, topPos + 23, 176, 14, cultivationProgess + 1, 22);
+        guiGraphics.blitSprite(CULTIVATION_PROGRESS_SPRITE, 22, 9, 0, 0, leftPos + 77, topPos + 23, cultivationProgess + 1, 9);
     }
 }

@@ -25,8 +25,8 @@ import willatendo.fossilslegacy.server.dimension.FossilsLegacyMultiNoiseBiomeSou
 import willatendo.fossilslegacy.server.dimension.PrehistoricNoiseGeneratorSettings;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyDamageTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
-import willatendo.fossilslegacy.server.features.FossilsLegacyConfiguredFeatures;
-import willatendo.fossilslegacy.server.features.FossilsLegacyPlacedFeatures;
+import willatendo.fossilslegacy.server.feature.FossilsLegacyConfiguredFeatures;
+import willatendo.fossilslegacy.server.feature.FossilsLegacyPlacedFeatures;
 import willatendo.fossilslegacy.server.structure.FossilsLegacyStructureSets;
 import willatendo.fossilslegacy.server.structure.FossilsLegacyStructures;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;

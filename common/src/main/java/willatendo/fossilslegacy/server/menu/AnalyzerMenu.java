@@ -99,7 +99,7 @@ public class AnalyzerMenu extends AbstractContainerMenu {
     public int getAnalyzerProgress() {
         int analyzerProgress = this.analyzerBlockEntity.containerData.get(1);
         int analyzerTotalTime = this.analyzerBlockEntity.containerData.get(2);
-        return analyzerTotalTime != 0 && analyzerProgress != 0 ? analyzerProgress * 22 / analyzerTotalTime : 0;
+        return analyzerTotalTime != 0 && analyzerProgress != 0 ? analyzerProgress * 21 / analyzerTotalTime : 0;
     }
 
     public boolean isOn() {

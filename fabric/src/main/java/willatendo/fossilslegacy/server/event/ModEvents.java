@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
-import willatendo.fossilslegacy.server.features.FossilsLegacyPlacedFeatures;
+import willatendo.fossilslegacy.server.feature.FossilsLegacyPlacedFeatures;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.simplelibrary.server.event.FabricAttributeRegister;
 import willatendo.simplelibrary.server.event.FabricResourcePackRegister;

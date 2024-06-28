@@ -11,7 +11,9 @@ import willatendo.fossilslegacy.server.menu.ArchaeologyWorkbenchMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class ArchaeologyWorkbenchScreen extends AbstractContainerScreen<ArchaeologyWorkbenchMenu> {
-    private static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/gui/archaeology_workbench.png");
+    private static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/gui/container/archaeology_workbench.png");
+    private static final ResourceLocation ARCHAEOLOGY_PROGRESS_SPRITE = FossilsLegacyUtils.resource("container/archaeology_workbench/archaeology_progress");
+    private static final ResourceLocation INFORMATION_PROGRESS_SPRITE = FossilsLegacyUtils.resource("container/archaeology_workbench/information_progress");
 
     public ArchaeologyWorkbenchScreen(ArchaeologyWorkbenchMenu archaeologyWorkbenchMenu, Inventory inventory, Component title) {
         super(archaeologyWorkbenchMenu, inventory, title);
@@ -32,10 +34,10 @@ public class ArchaeologyWorkbenchScreen extends AbstractContainerScreen<Archaeol
         guiGraphics.blit(TEXTURE, leftPos, topPos, 0, 0, this.imageWidth, this.imageHeight);
         if (this.menu.isOn()) {
             int onProgess = Mth.ceil(this.menu.getOnProgress() * 13.0F) + 1;
-            guiGraphics.blit(TEXTURE, leftPos + 81, topPos + 36 + 13 - onProgess, 176, 13 - onProgess, 14, onProgess + 1);
+            guiGraphics.blitSprite(INFORMATION_PROGRESS_SPRITE, 14, 14, 0, 14 - onProgess, leftPos + 81, topPos + 36 + 14 - onProgess, 14, onProgess);
         }
 
         int archaeologyProgess = this.menu.getArchaeologyProgress();
-        guiGraphics.blit(TEXTURE, leftPos + 76, topPos + 21, 176, 14, archaeologyProgess + 1, 16);
+        guiGraphics.blitSprite(ARCHAEOLOGY_PROGRESS_SPRITE, 24, 14, 0, 0, leftPos + 76, topPos + 21, archaeologyProgess + 1, 14);
     }
 }

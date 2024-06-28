@@ -7,6 +7,8 @@ import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import willatendo.fossilslegacy.server.dimension.FossilsLegacyBiomeSources;
 import willatendo.fossilslegacy.server.entity.*;
+import willatendo.fossilslegacy.server.feature.foliageplacer.FossilsLegacyFoliagePlacerTypes;
+import willatendo.fossilslegacy.server.feature.trunkplacer.FossilsLegacyTrunkPlacerTypes;
 import willatendo.fossilslegacy.server.item.FossilsLegacyArmorMaterials;
 import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
@@ -28,6 +30,8 @@ public class FossilsLegacyMod {
         FossilsLegacyRecipeTypes.init(simpleRegistries);
         FossilsLegacyRecipeSerialisers.init(simpleRegistries);
         FossilsLegacySoundEvents.init(simpleRegistries);
+        FossilsLegacyTrunkPlacerTypes.init(simpleRegistries);
+        FossilsLegacyFoliagePlacerTypes.init(simpleRegistries);
         FossilsLegacyBlocks.init(simpleRegistries);
         FossilsLegacyBlockEntities.init(simpleRegistries);
         FossilsLegacyMenus.init(simpleRegistries);
