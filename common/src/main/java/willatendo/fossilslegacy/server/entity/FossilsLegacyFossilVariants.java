@@ -23,15 +23,15 @@ public class FossilsLegacyFossilVariants {
     public static final SimpleHolder<FossilVariant> VELOCIRAPTOR = nonLegacy("velociraptor", 8, 0.15F, 0.25F, 0.5F, fossil -> FossilScaleFactor.create(0.5F + (0.1F * (float) fossil.getSize())));
 
     public static SimpleHolder<FossilVariant> legacy(String id, int maxSize, float shadowSize, float boundingBoxWidth, float boundingBoxHeight, Function<Fossil, FossilScaleFactor> fossilScaleFactor) {
-        return FossilsLegacyFossilVariants.register(id, maxSize, FossilsLegacyUtils.resource("textures/entity/animals/" + id + "/" + id + "_skeleton.png"), shadowSize, boundingBoxWidth, boundingBoxHeight, fossilScaleFactor);
+        return FossilsLegacyFossilVariants.register(id, maxSize, FossilsLegacyUtils.resource("textures/entity/" + id + "/" + id + "_skeleton.png"), shadowSize, boundingBoxWidth, boundingBoxHeight, fossilScaleFactor);
     }
 
     public static SimpleHolder<FossilVariant> withLegacy(String id, int maxSize, float shadowSize, float boundingBoxWidth, float boundingBoxHeight, Function<Fossil, FossilScaleFactor> fossilScaleFactor) {
-        return FossilsLegacyFossilVariants.register(id, maxSize, FossilsLegacyUtils.resource("textures/entity/animals/" + id + "/" + id + "_skeleton.png"), FossilsLegacyUtils.resource("textures/entity/animals/" + id + "/legacy/" + id + "_skeleton.png"), shadowSize, boundingBoxWidth, boundingBoxHeight, fossilScaleFactor);
+        return FossilsLegacyFossilVariants.register(id, maxSize, FossilsLegacyUtils.resource("textures/entity/" + id + "/" + id + "_skeleton.png"), FossilsLegacyUtils.resource("textures/entity/" + id + "/legacy/" + id + "_skeleton.png"), shadowSize, boundingBoxWidth, boundingBoxHeight, fossilScaleFactor);
     }
 
     public static SimpleHolder<FossilVariant> nonLegacy(String id, int maxSize, float shadowSize, float boundingBoxWidth, float boundingBoxHeight, Function<Fossil, FossilScaleFactor> fossilScaleFactor) {
-        return FossilsLegacyFossilVariants.register(id, maxSize, FossilsLegacyUtils.resource("textures/entity/animals/" + id + "/" + id + "_skeleton.png"), shadowSize, boundingBoxWidth, boundingBoxHeight, fossilScaleFactor);
+        return FossilsLegacyFossilVariants.register(id, maxSize, FossilsLegacyUtils.resource("textures/entity/" + id + "/" + id + "_skeleton.png"), shadowSize, boundingBoxWidth, boundingBoxHeight, fossilScaleFactor);
     }
 
     public static SimpleHolder<FossilVariant> register(String id, int maxSize, ResourceLocation textureLocation, ResourceLocation legacyTextureLocation, float shadowSize, float boundingBoxWidth, float boundingBoxHeight, Function<Fossil, FossilScaleFactor> fossilScaleFactor) {

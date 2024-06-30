@@ -1,0 +1,15 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "minecraft:tropical_fish_bucket"
+  },
+  "results": [
+    {
+      "result": {
+        "id": "fossilslegacy:axolotl_dna"
+      },
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

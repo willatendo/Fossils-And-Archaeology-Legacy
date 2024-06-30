@@ -28,8 +28,10 @@ public class FossilsLegacyModelLayers {
     public static final ModelLayerLocation THERIZINOSAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("therizinosaurus"), "main");
     public static final ModelLayerLocation PACHYCEPHALOSAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("pachycephalosaurus"), "main");
     public static final ModelLayerLocation COMPSOGNATHUS = new ModelLayerLocation(FossilsLegacyUtils.resource("compsognathus"), "main");
+    public static final ModelLayerLocation DODO = new ModelLayerLocation(FossilsLegacyUtils.resource("dodo"), "main");
 
     public static final ModelLayerLocation BRACHIOSAURUS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("brachiosaurs_skeleton"), "main");
+    public static final ModelLayerLocation LEGACY_BRACHIOSAURUS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("legacy_brachiosaurus_skeleton"), "main");
     public static final ModelLayerLocation COMPSOGNATHUS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("compsognathus_skeleton"), "main");
     public static final ModelLayerLocation FUTABASAURUS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("futabasaurus_skeleton"), "main");
     public static final ModelLayerLocation LEGACY_FUTABASAURUS_SKELETON = new ModelLayerLocation(FossilsLegacyUtils.resource("legacy_futabasaurus_skeleton"), "main");

@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.OptionalDispenseItemBehavior;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.animal.goat.Goat;
@@ -49,11 +48,11 @@ public class BasicEvents {
             protected ItemStack execute(BlockSource blockSource, ItemStack itemStack) {
                 Level level = blockSource.level();
                 BlockPos blockPos = blockSource.pos().relative(blockSource.state().getValue(DispenserBlock.FACING));
-                SkullBlock skullBlock = (SkullBlock) FossilsLegacyBlocks.SKULL_BLOCK.get();
+                SkullBlock skullBlock = FossilsLegacyBlocks.SKULL_BLOCK.get();
                 if (level.isEmptyBlock(blockPos) && skullBlock.canSpawnAnu(level, blockPos)) {
                     if (!level.isClientSide()) {
                         level.setBlock(blockPos, skullBlock.defaultBlockState(), 3);
-                        level.gameEvent((Entity) null, GameEvent.BLOCK_PLACE, blockPos);
+                        level.gameEvent(null, GameEvent.BLOCK_PLACE, blockPos);
                     }
 
                     itemStack.shrink(1);
@@ -72,7 +71,7 @@ public class BasicEvents {
                 if (level.isEmptyBlock(blockPos) && skullBlock.canSpawnAnu(level, blockPos)) {
                     if (!level.isClientSide()) {
                         level.setBlock(blockPos, skullBlock.defaultBlockState(), 3);
-                        level.gameEvent((Entity) null, GameEvent.BLOCK_PLACE, blockPos);
+                        level.gameEvent(null, GameEvent.BLOCK_PLACE, blockPos);
                     }
 
                     itemStack.shrink(1);
@@ -119,6 +118,7 @@ public class BasicEvents {
         attributeRegister.register(FossilsLegacyEntityTypes.COMPSOGNATHUS.get(), Compsognathus.compsognathusAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get(), Cryolophosaurus.cryolophosaurusAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), Dilophosaurus.dilophosaurusAttributes());
+        attributeRegister.register(FossilsLegacyEntityTypes.DODO.get(), Dodo.dodoAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.EGG.get(), Egg.eggAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.FAILURESAURUS.get(), Failuresaurus.createAttributes().build());
         attributeRegister.register(FossilsLegacyEntityTypes.FOSSIL.get(), Fossil.fossilAttributes());

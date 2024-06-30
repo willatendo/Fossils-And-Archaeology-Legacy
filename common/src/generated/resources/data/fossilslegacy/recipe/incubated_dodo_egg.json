@@ -1,0 +1,10 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "ingredient": {
+    "item": "fossilslegacy:dodo_dna"
+  },
+  "result": {
+    "id": "fossilslegacy:incubated_dodo_egg"
+  },
+  "time": 6000
+}

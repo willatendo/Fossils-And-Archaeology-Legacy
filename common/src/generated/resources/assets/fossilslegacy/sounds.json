@@ -116,6 +116,33 @@
     ],
     "subtitle": "sound.fossilslegacy.dilophosaurus.hurt"
   },
+  "entity.dodo.ambient": {
+    "sounds": [
+      "fossilslegacy:dodo_ambient_1",
+      "fossilslegacy:dodo_ambient_2",
+      "fossilslegacy:dodo_ambient_3"
+    ],
+    "subtitle": "sound.fossilslegacy.dodo.ambient"
+  },
+  "entity.dodo.death": {
+    "sounds": [
+      "fossilslegacy:dodo_death"
+    ],
+    "subtitle": "sound.fossilslegacy.dodo.death"
+  },
+  "entity.dodo.hurt": {
+    "sounds": [
+      "fossilslegacy:dodo_hurt_1",
+      "fossilslegacy:dodo_hurt_2"
+    ],
+    "subtitle": "sound.fossilslegacy.dodo.hurt"
+  },
+  "entity.dodo.step": {
+    "sounds": [
+      "fossilslegacy:dodo_step"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
   "entity.futabasaurus.ambient": {
     "sounds": [
       "fossilslegacy:pteranodon_ambient_1",

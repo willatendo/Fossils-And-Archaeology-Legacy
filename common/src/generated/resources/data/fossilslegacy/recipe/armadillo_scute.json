@@ -1,0 +1,15 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "minecraft:armadillo_scute"
+  },
+  "results": [
+    {
+      "result": {
+        "id": "fossilslegacy:armadillo_dna"
+      },
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

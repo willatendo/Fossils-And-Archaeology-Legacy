@@ -44,17 +44,12 @@ public class Compsognathus extends Dinosaur implements DinopediaInformation {
 
     @Override
     public boolean tamesOnBirth() {
-        return false;
+        return true;
     }
 
     @Override
     public int getMaxHunger() {
         return 100;
-    }
-
-    @Override
-    public Holder<EggVariant> getEggVariant() {
-        return FossilsLegacyEggVariants.COMPSOGNATHUS;
     }
 
     @Override

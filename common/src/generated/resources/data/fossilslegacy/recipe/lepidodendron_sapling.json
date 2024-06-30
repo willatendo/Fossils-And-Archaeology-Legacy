@@ -1,0 +1,10 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "ingredient": {
+    "item": "fossilslegacy:petrified_lepidodendron_sapling"
+  },
+  "result": {
+    "id": "fossilslegacy:lepidodendron_sapling"
+  },
+  "time": 6000
+}

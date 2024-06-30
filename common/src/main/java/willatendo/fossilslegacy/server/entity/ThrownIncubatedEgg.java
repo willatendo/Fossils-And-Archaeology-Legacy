@@ -72,15 +72,14 @@ public class ThrownIncubatedEgg extends ThrowableItemProjectile {
             }
 
             for (int animals = 0; animals < i; ++animals) {
-                Animal animalToSpawn = this.getEggType() == 0 ? EntityType.CHICKEN.create(this.level()) : EntityType.PARROT.create(this.level());
-                if (animalToSpawn instanceof Chicken) {
-                    animalToSpawn.setAge(-24000);
-                    animalToSpawn.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
+                Animal animalToSpawn = this.getSpawnedAnimal();
+                if (animalToSpawn instanceof Chicken || animalToSpawn instanceof Dodo) {
+                    animalToSpawn.setBaby(true);
                 }
                 if (animalToSpawn instanceof Parrot parrot) {
-                    animalToSpawn.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
                     parrot.setVariant(Util.getRandom(Parrot.Variant.values(), this.level().getRandom()));
                 }
+                animalToSpawn.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
                 this.level().addFreshEntity(animalToSpawn);
             }
 
@@ -91,6 +90,18 @@ public class ThrownIncubatedEgg extends ThrowableItemProjectile {
 
     @Override
     protected Item getDefaultItem() {
-        return getEggType() == 0 ? FossilsLegacyItems.INCUBATED_CHICKEN_EGG.get() : FossilsLegacyItems.INCUBATED_PARROT_EGG.get();
+        return FossilsLegacyItems.INCUBATED_CHICKEN_EGG.get();
+    }
+
+    protected Animal getSpawnedAnimal() {
+        switch (this.getEggType()) {
+            default:
+            case 0:
+                return EntityType.CHICKEN.create(this.level());
+            case 1:
+                return EntityType.PARROT.create(this.level());
+            case 2:
+                return FossilsLegacyEntityTypes.DODO.get().create(this.level());
+        }
     }
 }

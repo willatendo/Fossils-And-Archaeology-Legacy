@@ -13,6 +13,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.*;
+import net.minecraft.world.entity.animal.armadillo.Armadillo;
 import net.minecraft.world.entity.animal.goat.Goat;
 import net.minecraft.world.entity.animal.horse.Donkey;
 import net.minecraft.world.entity.animal.horse.Horse;
@@ -61,6 +62,9 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth<T> {
         T finalEntity = null;
         if (livingEntity instanceof PregnantAnimal) {
             return null;
+        }
+        if (livingEntity instanceof Armadillo) {
+            finalEntity = (T) EntityType.ARMADILLO.create(level);
         }
         if (livingEntity instanceof Cat) {
             finalEntity = (T) EntityType.CAT.create(level);
@@ -122,6 +126,9 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth<T> {
     static PregnantAnimal createFromLiving(LivingEntity livingEntity, Level level) {
         livingEntity.remove(RemovalReason.DISCARDED);
         Entity toCreate = null;
+        if (livingEntity instanceof Armadillo) {
+            toCreate = FossilsLegacyEntityTypes.PREGNANT_ARMADILLO.get().create(level);
+        }
         if (livingEntity instanceof Cat) {
             toCreate = FossilsLegacyEntityTypes.PREGNANT_CAT.get().create(level);
         }

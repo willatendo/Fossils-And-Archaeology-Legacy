@@ -27,28 +27,26 @@ public class IncubatedEggItem extends Item implements ProjectileItem {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
         ItemStack itemStack = player.getItemInHand(interactionHand);
-        level.playSound((Player) null, player.getX(), player.getY(), player.getZ(), SoundEvents.EGG_THROW, SoundSource.PLAYERS, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
+        level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.EGG_THROW, SoundSource.PLAYERS, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
         if (!level.isClientSide) {
             ThrownIncubatedEgg thrownegg = new ThrownIncubatedEgg(level, player);
-            thrownegg.setEggType(this.eggType);
             thrownegg.setItem(itemStack);
+            thrownegg.setEggType(this.eggType);
             thrownegg.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
             level.addFreshEntity(thrownegg);
         }
 
         player.awardStat(Stats.ITEM_USED.get(this));
-        if (!player.getAbilities().instabuild) {
-            itemStack.shrink(1);
-        }
+        itemStack.consume(1, player);
 
         return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide());
     }
 
     @Override
     public Projectile asProjectile(Level level, Position position, ItemStack itemStack, Direction direction) {
-        return Util.make(new ThrownIncubatedEgg(level, position.x(), position.y(), position.z()), thrownIncubatedEgg -> {
-            thrownIncubatedEgg.setItem(itemStack);
-            thrownIncubatedEgg.setEggType(1);
-        });
+        ThrownIncubatedEgg thrownIncubatedEgg = new ThrownIncubatedEgg(level, position.x(), position.y(), position.z());
+        thrownIncubatedEgg.setItem(itemStack);
+        thrownIncubatedEgg.setEggType(this.eggType);
+        return thrownIncubatedEgg;
     }
 }

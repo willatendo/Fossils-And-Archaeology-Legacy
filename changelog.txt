@@ -3,6 +3,8 @@
 - Dinosaur Textures Moved Out Of "animals"
 - Javelin Textures Moved Into "javelin"
 - Screens Render Like Vanilla
+- Mammoths can now be commanded
+- Reorganised Creative Mode Tab
 - Fixed Cooked Dinosaur Meat Recipes
 - (NeoForge) Fixed Compostables
 - (Fabric) Fixed Animals Breaking Blocks Not Being Toggleable
@@ -11,11 +13,38 @@
 - Fixed Skeletons Consuming Bones In Creative
 - Fixed Skeleton's Bounding Box Sizes
 - Fixed Anu Charging Texture
+- Fixed Incubated Eggs Not Working
+- Fixed Frog DNA Having No Recipe
+- Fixed Sheep DNA Missing A Recipe
 - (Fabric) Update Mixins Compatibility To Java 21
-- Update Velociraptor Model
-- Update Futabasaurus Model
-- Update Brachiosaurus Model
+- Updated Smildon DNA Texture
+- Updated Mammoth DNA Texture
+- Updated Axolotl DNA Texture
+- Updated Cat DNA Texture
+- Updated Chicken DNA Texture
+- Updated Cow DNA Texture
+- Updated Dolphin DNA Texture
+- Updated Donkey DNA Texture
+- Updated Fox DNA Texture
+- Updated Frog DNA Texture
+- Updated Goat Model
+- Updated Horse Model
+- Updated Llama Model
+- Updated Mule DNA Texture
+- Updated Nautilus DNA Texture
+- Updated Ocelot DNA Texture
+- Updated Panda DNA Texture
+- Updated Parrot DNA Texture
+- Updated Pig DNA Texture
+- Updated Polar Bear DNA Texture
+- Updated Rabbit DNA Texture
+- Updated Sheep DNA Texture
+- Updated Wolf DNA Texture
+- Updated Incubated Chicken Egg Texture
+- Updated Incubated Parrot Egg Texture
+- Added Axolotl DNA Recipe
 - Added Velociraptor Skeleton
+- Added "Legacy Models" Config Option
 - Added Pachycephalosaurus
 - Added Pachycephalosaurus DNA
 - Added Pachycephalosaurus Egg
@@ -28,7 +57,12 @@
 - Added Raw Compsognathus Meat
 - Added Cooked Compsognathus Meat
 - Added Compsognathus Skeleton
-- Added "Legacy Models" Config Option
+- Added Dodo
+- Added Dodo DNA
+- Added Dodo Egg
+- Added Incubated Dodo Egg
+- Added Raw Dodo Meat
+- Added Cooked Dodo Meat
 - Added Lepidodendron Planks
 - Added Lepidodendron Log
 - Added Stripped Lepidodendron Log
@@ -49,6 +83,9 @@
 - Added Lepidodendron Boat
 - Added Lepidodendron Boat with Chest
 - Added Lepidodendron Tree
+- Added Armadillo DNA
+- Added Armadillo Embryo Syringe
+- Added Pregnant Armadillo
 - Removed Antiquated "Anu Spawns" Config Option
 21/7/2024 B
 - Fixed Summoning Entities

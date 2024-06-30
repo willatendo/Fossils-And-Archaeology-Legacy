@@ -36,6 +36,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.THERIZINOSAURUS_DNA.get());
         this.basicItem(FossilsLegacyItems.PACHYCEPHALOSAURUS_DNA.get());
         this.basicItem(FossilsLegacyItems.COMPSOGNATHUS_DNA.get());
+        this.basicItem(FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get());
         this.basicItem(FossilsLegacyItems.TRICERATOPS_EGG.get());
         this.basicItem(FossilsLegacyItems.VELOCIRAPTOR_EGG.get());
         this.basicItem(FossilsLegacyItems.TYRANNOSAURUS_EGG.get());
@@ -68,6 +69,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.RAW_THERIZINOSAURUS_MEAT.get());
         this.basicItem(FossilsLegacyItems.RAW_PACHYCEPHALOSAURUS_MEAT.get());
         this.basicItem(FossilsLegacyItems.RAW_COMPSOGNATHUS_MEAT.get());
+        this.basicItem(FossilsLegacyItems.RAW_DODO.get());
         this.basicItem(FossilsLegacyItems.COOKED_TRICERATOPS_MEAT.get());
         this.basicItem(FossilsLegacyItems.COOKED_VELOCIRAPTOR_MEAT.get());
         this.basicItem(FossilsLegacyItems.COOKED_TYRANNOSAURUS_MEAT.get());
@@ -85,6 +87,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.COOKED_THERIZINOSAURUS_MEAT.get());
         this.basicItem(FossilsLegacyItems.COOKED_PACHYCEPHALOSAURUS_MEAT.get());
         this.basicItem(FossilsLegacyItems.COOKED_COMPSOGNATHUS_MEAT.get());
+        this.basicItem(FossilsLegacyItems.COOKED_DODO.get());
         this.basicItem(FossilsLegacyItems.TYRANNOSAURUS_TOOTH.get());
         this.handheldItem(FossilsLegacyItems.TOOTH_DAGGER.get());
         this.handheldItem(FossilsLegacyItems.THERIZINOSAURUS_CLAWS.get());
@@ -99,6 +102,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.NAUTILUS_SHELL.get());
         this.handheldItem(FossilsLegacyItems.FROZEN_MEAT.get());
         this.handheldItem(FossilsLegacyItems.BROKEN_FROZEN_MEAT.get(), this.modLoc("item/frozen_meat"));
+        this.basicItem(FossilsLegacyItems.ARMADILLO_DNA.get());
         this.basicItem(FossilsLegacyItems.AXOLOTL_DNA.get());
         this.basicItem(FossilsLegacyItems.CAT_DNA.get());
         this.basicItem(FossilsLegacyItems.CHICKEN_DNA.get());
@@ -121,6 +125,8 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.WOLF_DNA.get());
         this.basicItem(FossilsLegacyItems.SMILODON_DNA.get());
         this.basicItem(FossilsLegacyItems.MAMMOTH_DNA.get());
+        this.basicItem(FossilsLegacyItems.DODO_DNA.get());
+        this.basicItem(FossilsLegacyItems.ARMADILLO_EMBRYO_SYRINGE.get());
         this.basicItem(FossilsLegacyItems.CAT_EMBRYO_SYRINGE.get());
         this.basicItem(FossilsLegacyItems.INCUBATED_CHICKEN_EGG.get());
         this.basicItem(FossilsLegacyItems.COW_EMBRYO_SYRINGE.get());
@@ -141,6 +147,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.WOLF_EMBRYO_SYRINGE.get());
         this.basicItem(FossilsLegacyItems.SMILODON_EMBRYO_SYRINGE.get());
         this.basicItem(FossilsLegacyItems.MAMMOTH_EMBRYO_SYRINGE.get());
+        this.basicItem(FossilsLegacyItems.INCUBATED_DODO_EGG.get());
         this.basicItem(FossilsLegacyItems.MAGIC_CONCH.get());
         this.basicItem(FossilsLegacyItems.JURASSIC_FERN_SPORES.get());
         this.basicItem(FossilsLegacyItems.RELIC_SCRAP.get());
@@ -198,6 +205,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.spawnEggItem(FossilsLegacyItems.THERIZINOSAURUS_SPAWN_EGG.get());
         this.spawnEggItem(FossilsLegacyItems.PACHYCEPHALOSAURUS_SPAWN_EGG.get());
         this.spawnEggItem(FossilsLegacyItems.COMPSOGNATHUS_SPAWN_EGG.get());
+        this.spawnEggItem(FossilsLegacyItems.DODO_SPAWN_EGG.get());
         this.basicItem(FossilsLegacyItems.LEPIDODENDRON_BOAT.get());
         this.basicItem(FossilsLegacyItems.LEPIDODENDRON_CHEST_BOAT.get());
 

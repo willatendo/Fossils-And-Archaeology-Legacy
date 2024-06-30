@@ -12,6 +12,7 @@ import java.util.List;
 public class FossilsLegacyPregnancyTypes {
     public static final SimpleRegistry<PregnancyType> PREGNANCY_TYPES = SimpleRegistry.create(FossilsLegacyRegistries.PREGNANCY_TYPES, FossilsLegacyUtils.ID);
 
+    public static final SimpleHolder<PregnancyType> ARMADILLO = PREGNANCY_TYPES.register("armadillo", () -> new PregnancyType(() -> EntityType.ARMADILLO));
     public static final SimpleHolder<PregnancyType> CAT = PREGNANCY_TYPES.register("cat", () -> new PregnancyType(() -> EntityType.CAT));
     public static final SimpleHolder<PregnancyType> COW = PREGNANCY_TYPES.register("cow", () -> new PregnancyType(() -> EntityType.COW));
     public static final SimpleHolder<PregnancyType> DOLPHIN = PREGNANCY_TYPES.register("dolphin", () -> new PregnancyType(() -> EntityType.DOLPHIN));

@@ -18,6 +18,12 @@
     },
     {
       "result": {
+        "id": "fossilslegacy:petrified_lepidodendron_sapling"
+      },
+      "weight": 20
+    },
+    {
+      "result": {
         "id": "fossilslegacy:brachiosaurus_dna"
       },
       "weight": 2

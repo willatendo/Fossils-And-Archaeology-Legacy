@@ -1,4 +1,3 @@
-
 package willatendo.fossilslegacy.data;
 
 import net.minecraft.core.HolderLookup.Provider;
@@ -17,7 +16,7 @@ public class FossilsLegacyEntityTypeTagProvider extends EntityTypeTagsProvider {
 
     @Override
     protected void addTags(Provider provider) {
-        this.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(FossilsLegacyEntityTypes.PTERANODON.get());
+        this.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(FossilsLegacyEntityTypes.DODO.get(), FossilsLegacyEntityTypes.PTERANODON.get());
         this.tag(EntityTypeTags.CAN_BREATHE_UNDER_WATER).add(FossilsLegacyEntityTypes.MOSASAURUS.get(), FossilsLegacyEntityTypes.FUTABASAURUS.get());
     }
 }

@@ -103,6 +103,7 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         this.food(FossilsLegacyItems.COOKED_THERIZINOSAURUS_MEAT.get(), FossilsLegacyItems.RAW_THERIZINOSAURUS_MEAT.get(), 0.35F);
         this.food(FossilsLegacyItems.COOKED_PACHYCEPHALOSAURUS_MEAT.get(), FossilsLegacyItems.RAW_PACHYCEPHALOSAURUS_MEAT.get(), 0.35F);
         this.food(FossilsLegacyItems.COOKED_COMPSOGNATHUS_MEAT.get(), FossilsLegacyItems.RAW_COMPSOGNATHUS_MEAT.get(), 0.35F);
+        this.food(FossilsLegacyItems.COOKED_DODO.get(), FossilsLegacyItems.RAW_DODO.get(), 0.35F);
 
         this.smithing(FossilsLegacyItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), Items.NETHERITE_SWORD, FossilsLegacyItems.SCARAB_GEM.get(), FossilsLegacyItems.SCARAB_GEM_SWORD.get(), RecipeCategory.COMBAT);
         this.smithing(FossilsLegacyItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), Items.NETHERITE_SHOVEL, FossilsLegacyItems.SCARAB_GEM.get(), FossilsLegacyItems.SCARAB_GEM_SHOVEL.get(), RecipeCategory.TOOLS);
@@ -120,7 +121,8 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         this.cultivate(FossilsLegacyItems.STEGOSAURUS_DNA.get(), FossilsLegacyItems.STEGOSAURUS_EGG.get(), 6000);
         this.cultivate(FossilsLegacyItems.DILOPHOSAURUS_DNA.get(), FossilsLegacyItems.DILOPHOSAURUS_EGG.get(), 6000);
         this.cultivate(FossilsLegacyItems.BRACHIOSAURUS_DNA.get(), FossilsLegacyItems.BRACHIOSAURUS_EGG.get(), 6000);
-        this.cultivate(FossilsLegacyItems.AXOLOTL_DNA.get(), FossilsLegacyBlocks.AXOLOTLSPAWN.get(), 6000);
+        this.cultivate(FossilsLegacyItems.ARMADILLO_DNA.get(), FossilsLegacyItems.ARMADILLO_EMBRYO_SYRINGE.get(), 6000);
+        this.cultivate(FossilsLegacyItems.AXOLOTL_DNA.get(), FossilsLegacyItems.AXOLOTLSPAWN.get(), 6000);
         this.cultivate(FossilsLegacyItems.CAT_DNA.get(), FossilsLegacyItems.CAT_EMBRYO_SYRINGE.get(), 6000);
         this.cultivate(FossilsLegacyItems.CHICKEN_DNA.get(), FossilsLegacyItems.INCUBATED_CHICKEN_EGG.get(), 6000);
         this.cultivate(FossilsLegacyItems.COW_DNA.get(), FossilsLegacyItems.COW_EMBRYO_SYRINGE.get(), 6000);
@@ -147,6 +149,8 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         this.cultivate(FossilsLegacyItems.THERIZINOSAURUS_DNA.get(), FossilsLegacyItems.THERIZINOSAURUS_EGG.get(), 6000);
         this.cultivate(FossilsLegacyItems.PACHYCEPHALOSAURUS_DNA.get(), FossilsLegacyItems.PACHYCEPHALOSAURUS_EGG.get(), 6000);
         this.cultivate(FossilsLegacyItems.COMPSOGNATHUS_DNA.get(), FossilsLegacyItems.COMPSOGNATHUS_EGG.get(), 6000);
+        this.cultivate(FossilsLegacyItems.DODO_DNA.get(), FossilsLegacyItems.INCUBATED_DODO_EGG.get(), 6000);
+        this.cultivate(FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get(), FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get(), 6000);
 
         this.archaeology(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get(), FossilsLegacyItems.ANCIENT_HELMET.get(), 3000);
         this.archaeology(FossilsLegacyItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), FossilsLegacyItems.ANCIENT_CHESTPLATE.get(), 3000);
@@ -166,9 +170,11 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         this.archaeology("stone_javelin_repair", FossilsLegacyItems.BROKEN_STONE_JAVELIN.get(), FossilsLegacyItems.STONE_JAVELIN.get(), 3000);
         this.archaeology("wooden_javelin_repair", FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get(), FossilsLegacyItems.WOODEN_JAVELIN.get(), 3000);
 
-        this.analyzation(FossilsLegacyItems.FOSSIL.get(), Items.BONE_MEAL, 60, 100, new AnalyzerResult(FossilsLegacyItems.JURASSIC_FERN_SPORES.get(), 20), new AnalyzerResult(FossilsLegacyItems.BRACHIOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.DILOPHOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.MOSASAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.NAUTILUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.FUTABASAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.PTERANODON_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.STEGOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.TRICERATOPS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.TYRANNOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.VELOCIRAPTOR_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.CARNOTAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.CRYOLOPHOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.THERIZINOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.PACHYCEPHALOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.COMPSOGNATHUS_DNA.get(), 2));
+        this.analyzation(FossilsLegacyItems.FOSSIL.get(), Items.BONE_MEAL, 60, 100, new AnalyzerResult(FossilsLegacyItems.JURASSIC_FERN_SPORES.get(), 20), new AnalyzerResult(FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get(), 20), new AnalyzerResult(FossilsLegacyItems.BRACHIOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.DILOPHOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.MOSASAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.NAUTILUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.FUTABASAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.PTERANODON_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.STEGOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.TRICERATOPS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.TYRANNOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.VELOCIRAPTOR_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.CARNOTAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.CRYOLOPHOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.THERIZINOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.PACHYCEPHALOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.COMPSOGNATHUS_DNA.get(), 2));
         this.analyzation(FossilsLegacyItems.RELIC_SCRAP.get(), Blocks.GRAVEL, 40, 100, new AnalyzerResult(FossilsLegacyItems.STONE_TABLET.get(), 30), new AnalyzerResult(Items.FLINT, 20), new AnalyzerResult(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get(), 5), new AnalyzerResult(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get(), 5), new AnalyzerResult(FossilsLegacyItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 5), new AnalyzerResult(FossilsLegacyItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 5), new AnalyzerResult(FossilsLegacyItems.ANCIENT_BOOTS_ARTIFACT.get(), 5), new AnalyzerResult(FossilsLegacyItems.PREHISTORIC_COIN.get(), 1));
-        this.analyzation(FossilsLegacyItems.FROZEN_MEAT.get(), FossilsLegacyItems.SMILODON_DNA.get(), 33, 100, new AnalyzerResult(FossilsLegacyItems.MAMMOTH_DNA.get(), 33), new AnalyzerResult(Items.BEEF, 34));
+        this.analyzation(FossilsLegacyItems.FROZEN_MEAT.get(), FossilsLegacyItems.SMILODON_DNA.get(), 33, 100, new AnalyzerResult(FossilsLegacyItems.MAMMOTH_DNA.get(), 33), new AnalyzerResult(FossilsLegacyItems.DODO_DNA.get(), 33), new AnalyzerResult(Items.BEEF, 34));
+        this.simpleAnalyzation(Items.AXOLOTL_BUCKET, FossilsLegacyItems.AXOLOTL_DNA.get());
+        this.simpleAnalyzation(Items.TROPICAL_FISH_BUCKET, FossilsLegacyItems.AXOLOTL_DNA.get());
         this.simpleAnalyzation(Items.PORKCHOP, FossilsLegacyItems.PIG_DNA.get());
         this.simpleAnalyzation(Items.BEEF, FossilsLegacyItems.COW_DNA.get());
         this.simpleAnalyzation(Items.CHICKEN, FossilsLegacyItems.CHICKEN_DNA.get());
@@ -180,12 +186,13 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         this.simpleAnalyzation(Items.BONE, FossilsLegacyItems.WOLF_DNA.get());
         this.simpleAnalyzation(Items.EMERALD, FossilsLegacyItems.FOX_DNA.get());
         this.simpleAnalyzation(Items.GOAT_HORN, FossilsLegacyItems.GOAT_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItemTags.FROGLIGHTS, FossilsLegacyItems.FROG_DNA.get());
+        this.simpleAnalyzation(FossilsLegacyItemTags.FROGLIGHTS, "has_froglights", FossilsLegacyItems.FROG_DNA.get());
         this.simpleAnalyzation(Items.LEATHER, FossilsLegacyItems.COW_DNA.get(), FossilsLegacyItems.LLAMA_DNA.get(), FossilsLegacyItems.HORSE_DNA.get(), FossilsLegacyItems.DONKEY_DNA.get(), FossilsLegacyItems.MULE_DNA.get());
         this.simpleAnalyzation(Items.STRING, FossilsLegacyItems.CAT_DNA.get(), FossilsLegacyItems.OCELOT_DNA.get(), FossilsLegacyItems.FOX_DNA.get());
         this.simpleAnalyzation(Items.COD, FossilsLegacyItems.POLAR_BEAR_DNA.get(), FossilsLegacyItems.DOLPHIN_DNA.get());
         this.simpleAnalyzation(Items.SALMON, FossilsLegacyItems.POLAR_BEAR_DNA.get());
-        this.simpleAnalyzation(ItemTags.WOOL, FossilsLegacyItems.SHEEP_DNA.get());
+        this.simpleAnalyzation(ItemTags.WOOL, "has_wool", FossilsLegacyItems.SHEEP_DNA.get());
+        this.simpleAnalyzation(Items.ARMADILLO_SCUTE, FossilsLegacyItems.ARMADILLO_DNA.get());
         this.simpleAnalyzation(FossilsLegacyItems.RAW_BRACHIOSAURUS_MEAT.get(), FossilsLegacyItems.BRACHIOSAURUS_DNA.get());
         this.simpleAnalyzation(FossilsLegacyItems.RAW_DILOPHOSAURUS_MEAT.get(), FossilsLegacyItems.DILOPHOSAURUS_DNA.get());
         this.simpleAnalyzation(FossilsLegacyItems.RAW_MAMMOTH_MEAT.get(), FossilsLegacyItems.MAMMOTH_DNA.get());
@@ -285,10 +292,6 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
 
     public void simpleAnalyzation(ItemLike input, Item dna) {
         this.analyzation(input, dna, 100, 100);
-    }
-
-    public void simpleAnalyzation(TagKey<Item> input, Item dna) {
-        AnalyzationRecipeBuilder.recipe(input, dna, 100, 100);
     }
 
     public void simpleAnalyzation(TagKey<Item> input, String requires, Item... dnas) {

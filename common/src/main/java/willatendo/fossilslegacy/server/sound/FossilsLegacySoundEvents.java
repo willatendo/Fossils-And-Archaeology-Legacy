@@ -27,6 +27,10 @@ public class FossilsLegacySoundEvents {
     public static final SimpleHolder<SoundEvent> DILOPHOSAURUS_CALL = SOUND_EVENTS.register("entity.dilophosaurus.call", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.dilophosaurus.call")));
     public static final SimpleHolder<SoundEvent> DILOPHOSAURUS_HURT = SOUND_EVENTS.register("entity.dilophosaurus.hurt", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.dilophosaurus.hurt")));
     public static final SimpleHolder<SoundEvent> DILOPHOSAURUS_DEATH = SOUND_EVENTS.register("entity.dilophosaurus.death", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.dilophosaurus.death")));
+    public static final SimpleHolder<SoundEvent> DODO_AMBIENT = SOUND_EVENTS.register("entity.dodo.ambient", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.dodo.ambient")));
+    public static final SimpleHolder<SoundEvent> DODO_HURT = SOUND_EVENTS.register("entity.dodo.hurt", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.dodo.hurt")));
+    public static final SimpleHolder<SoundEvent> DODO_DEATH = SOUND_EVENTS.register("entity.dodo.death", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.dodo.death")));
+    public static final SimpleHolder<SoundEvent> DODO_STEP = SOUND_EVENTS.register("entity.dodo.step", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.dodo.step")));
     public static final SimpleHolder<SoundEvent> MAMMOTH_AMBIENT = SOUND_EVENTS.register("entity.mammoth.ambient", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.mammoth.ambient")));
     public static final SimpleHolder<SoundEvent> MAMMOTH_HURT = SOUND_EVENTS.register("entity.mammoth.hurt", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.mammoth.hurt")));
     public static final SimpleHolder<SoundEvent> MAMMOTH_DEATH = SOUND_EVENTS.register("entity.mammoth.death", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.mammoth.death")));

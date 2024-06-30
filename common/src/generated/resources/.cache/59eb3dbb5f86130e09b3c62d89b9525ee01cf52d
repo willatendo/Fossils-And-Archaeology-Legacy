@@ -1,4 +1,4 @@
-// 1.21	2024-06-26T18:45:16.9322344	Loot Tables
+// 1.21	2024-06-30T03:58:13.8337836	Loot Tables
 5fcf811a958fcf132678d4423a7472c475c2b8ca data/fossilslegacy/loot_table/blocks/analyzer.json
 8bfc811efa599c9be09afe46481ec9ebbf5f3a33 data/fossilslegacy/loot_table/blocks/archaeology_workbench.json
 e4c3f2afd7c71b1d42778ff89f2ddfe5a03122da data/fossilslegacy/loot_table/blocks/axolotlspawn.json
@@ -60,6 +60,7 @@ ee1a8911985d869a8e1a6a1c4871d727eac15534 data/fossilslegacy/loot_table/entities/
 48ff085ad58c86cff6ea74a7fb8c866c5919e578 data/fossilslegacy/loot_table/entities/compsognathus.json
 9b7ec51c5b70dafbf30efba7ae9b93c082a86da3 data/fossilslegacy/loot_table/entities/cryolophosaurus.json
 3c464b45cf87f3a3f4c5aec559a4b5e5ff22f783 data/fossilslegacy/loot_table/entities/dilophosaurus.json
+9e6e706a08ec3ca51c4738cf85f18aa134b29f5c data/fossilslegacy/loot_table/entities/dodo.json
 3f9fbebf1e59b2db877ea746639a80514bc1853c data/fossilslegacy/loot_table/entities/egg.json
 b42cdd3e259e6373322f855817a4c9a8c68b6921 data/fossilslegacy/loot_table/entities/egg/brachiosaurus.json
 532de809360dfb9f15a4f5adf0d59728088ed948 data/fossilslegacy/loot_table/entities/egg/carnotaurus.json
@@ -81,6 +82,7 @@ cba018b29a6758c20ce090e153dcca0673205eed data/fossilslegacy/loot_table/entities/
 ffa85baec8415ca1f429cf3bdaa9da714f8b5fdc data/fossilslegacy/loot_table/entities/mosasaurus.json
 3581d3409c523471d2ffc83c6d40ca12182193fc data/fossilslegacy/loot_table/entities/nautilus.json
 f62b43b08eaf1a0d2b2863cc2a32a457f01585a4 data/fossilslegacy/loot_table/entities/pachycephalosaurus.json
+2515c0993b00124e39c75a5316f80d840b573fcc data/fossilslegacy/loot_table/entities/pregnant_armadillo.json
 8979d95c4ef9d314987b18c9d2766737b51e5eaa data/fossilslegacy/loot_table/entities/pregnant_cat.json
 8df4b6366d830fb98ef3715b451f73500ec19505 data/fossilslegacy/loot_table/entities/pregnant_cow.json
 a6e39de737e1a17654e05ad4d17b3825a205eb58 data/fossilslegacy/loot_table/entities/pregnant_dolphin.json

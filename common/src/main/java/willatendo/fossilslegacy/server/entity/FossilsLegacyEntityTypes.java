@@ -34,12 +34,14 @@ public class FossilsLegacyEntityTypes {
     public static final SimpleHolder<EntityType<Cryolophosaurus>> CRYOLOPHOSAURUS = FossilsLegacyEntityTypes.ENTITY_TYPES.register("cryolophosaurus", () -> SimpleUtils.entityTypeBuilder("cryolophosaurus", Cryolophosaurus::new, MobCategory.CREATURE, 0.5F, 0.75F));
     public static final SimpleHolder<EntityType<Therizinosaurus>> THERIZINOSAURUS = FossilsLegacyEntityTypes.ENTITY_TYPES.register("therizinosaurus", () -> SimpleUtils.entityTypeBuilder("therizinosaurus", Therizinosaurus::new, MobCategory.CREATURE, 0.5F, 0.75F));
     public static final SimpleHolder<EntityType<Pachycephalosaurus>> PACHYCEPHALOSAURUS = ENTITY_TYPES.register("pachycephalosaurus", () -> SimpleUtils.entityTypeBuilder("packycephalosaurus", Pachycephalosaurus::new, MobCategory.CREATURE, 1.0F, 1.0F));
-    public static final SimpleHolder<EntityType<Compsognathus>> COMPSOGNATHUS = ENTITY_TYPES.register("compsognathus", () -> SimpleUtils.entityTypeBuilder("compsognathus", Compsognathus::new, MobCategory.CREATURE, 0.75F, 0.75F));
+    public static final SimpleHolder<EntityType<Compsognathus>> COMPSOGNATHUS = ENTITY_TYPES.register("compsognathus", () -> SimpleUtils.entityTypeBuilder("compsognathus", Compsognathus::new, MobCategory.CREATURE, 0.4F, 0.7F));
+    public static final SimpleHolder<EntityType<Dodo>> DODO = ENTITY_TYPES.register("dodo", () -> SimpleUtils.entityTypeBuilder("dodo", Dodo::new, MobCategory.CREATURE, 0.75F, 0.75F));
 
     public static final SimpleHolder<EntityType<Fossil>> FOSSIL = ENTITY_TYPES.register("fossil", () -> SimpleUtils.entityTypeBuilder("fossil", Fossil::new, MobCategory.MISC, 0.5F, 0.5F));
 
     public static final SimpleHolder<EntityType<Egg>> EGG = ENTITY_TYPES.register("egg", () -> SimpleUtils.entityTypeBuilder("egg", Egg::new, MobCategory.CREATURE, 0.5F, 0.5F));
 
+    public static final SimpleHolder<EntityType<PregnantArmadillo>> PREGNANT_ARMADILLO = ENTITY_TYPES.register("pregnant_armadillo", () -> SimpleUtils.entityTypeBuilder("pregnant_armadillo", PregnantArmadillo::new, MobCategory.CREATURE, 0.7F, 0.65F));
     public static final SimpleHolder<EntityType<PregnantCat>> PREGNANT_CAT = ENTITY_TYPES.register("pregnant_cat", () -> SimpleUtils.entityTypeBuilder("pregnant_cat", PregnantCat::new, MobCategory.CREATURE, 0.6F, 0.7F));
     public static final SimpleHolder<EntityType<PregnantCow>> PREGNANT_COW = ENTITY_TYPES.register("pregnant_cow", () -> SimpleUtils.entityTypeBuilder("pregnant_cow", PregnantCow::new, MobCategory.CREATURE, 0.9F, 1.4F));
     public static final SimpleHolder<EntityType<PregnantDolphin>> PREGNANT_DOLPHIN = ENTITY_TYPES.register("pregnant_dolphin", () -> SimpleUtils.entityTypeBuilder("pregnant_dolphin", PregnantDolphin::new, MobCategory.WATER_CREATURE, 0.9F, 0.6F));

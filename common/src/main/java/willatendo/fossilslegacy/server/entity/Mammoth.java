@@ -85,13 +85,8 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
     }
 
     @Override
-    public void decreaseHunger() {
-        this.setHunger(this.getHunger() - 1);
-    }
-
-    @Override
     public CommandType commandItems() {
-        return CommandType.none();
+        return CommandType.hand();
     }
 
     @Override

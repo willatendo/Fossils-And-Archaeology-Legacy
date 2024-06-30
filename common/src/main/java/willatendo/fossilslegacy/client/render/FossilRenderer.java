@@ -17,7 +17,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
 import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
 import willatendo.fossilslegacy.client.model.fossils.*;
-import willatendo.fossilslegacy.client.model.fossils.legacy.BrachiosaurusSkeletonModel;
+import willatendo.fossilslegacy.client.model.fossils.legacy.LegacyBrachiosaurusSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.legacy.LegacyFutabasaurusSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.legacy.PteranodonSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.legacy.TriceratopsSkeletonModel;
@@ -39,7 +39,7 @@ public class FossilRenderer extends EntityRenderer<Fossil> {
 
         this.shadowRadius = 0.5F;
 
-        this.models.put(FossilsLegacyFossilVariants.BRACHIOSAURUS.get(), this.model = new BrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.BRACHIOSAURUS_SKELETON)));
+        this.models.put(FossilsLegacyFossilVariants.BRACHIOSAURUS.get(), this.model = FossilsModloaderHelper.INSTANCE.legacyModels() ? new LegacyBrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.LEGACY_BRACHIOSAURUS_SKELETON)) : new BrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.BRACHIOSAURUS_SKELETON)));
         this.models.put(FossilsLegacyFossilVariants.FUTABASAURUS.get(), FossilsModloaderHelper.INSTANCE.legacyModels() ? new LegacyFutabasaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.LEGACY_FUTABASAURUS_SKELETON)) : new FutabasaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.FUTABASAURUS_SKELETON)));
         this.models.put(FossilsLegacyFossilVariants.PTERANODON.get(), new PteranodonSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.PTERANODON_SKELETON)));
         this.models.put(FossilsLegacyFossilVariants.TRICERATOPS.get(), new TriceratopsSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.TRICERATOPS_SKELETON)));
