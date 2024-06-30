@@ -14,7 +14,7 @@ import java.util.function.Function;
 public class FossilsLegacyFossilVariants {
     public static final SimpleRegistry<FossilVariant> FOSSIL_VARIANTS = SimpleRegistry.create(FossilsLegacyRegistries.FOSSIL_VARIANTS, FossilsLegacyUtils.ID);
 
-    public static final SimpleHolder<FossilVariant> BRACHIOSAURUS = legacy("brachiosaurus", 36, 0.15F, 1.0F, 1.5F, fossil -> FossilScaleFactor.create(1.5F + (0.3F * (float) fossil.getSize())));
+    public static final SimpleHolder<FossilVariant> BRACHIOSAURUS = withLegacy("brachiosaurus", 36, 0.15F, 1.0F, 1.5F, fossil -> FossilScaleFactor.create(1.5F + (0.3F * (float) fossil.getSize())));
     public static final SimpleHolder<FossilVariant> COMPSOGNATHUS = nonLegacy("compsognathus", 8, 0.125F, 0.75F, 0.75F, fossil -> FossilScaleFactor.create(0.25F + (0.125F * (float) fossil.getSize())));
     public static final SimpleHolder<FossilVariant> FUTABASAURUS = withLegacy("futabasaurus", 12, 0.15F, 1.0F, 0.65F, fossil -> FossilScaleFactor.create(1.5F + (0.3F * (float) fossil.getSize())));
     public static final SimpleHolder<FossilVariant> PACHYCEPHALOSAURUS = nonLegacy("pachycephalosaurus", 8, 0.15F, 1.0F, 1.0F, fossil -> FossilScaleFactor.create(1.0F + (0.1F * (float) fossil.getSize())));

@@ -229,7 +229,7 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Ridea
 
     @Override
     public ResourceLocation[][] textures() {
-        return new ResourceLocation[][]{{FossilsLegacyUtils.resource("textures/entity/animals/triceratops/green_triceratops.png"), FossilsLegacyUtils.resource("textures/entity/animals/triceratops/green_baby_triceratops.png")}, {FossilsLegacyUtils.resource("textures/entity/animals/triceratops/brown_triceratops.png"), FossilsLegacyUtils.resource("textures/entity/animals/triceratops/brown_baby_triceratops.png")}, {FossilsLegacyUtils.resource("textures/entity/animals/triceratops/alternate_triceratops.png"), FossilsLegacyUtils.resource("textures/entity/animals/triceratops/alternate_baby_triceratops.png")}};
+        return new ResourceLocation[][]{{FossilsLegacyUtils.resource("textures/entity/triceratops/green_triceratops.png"), FossilsLegacyUtils.resource("textures/entity/triceratops/green_baby_triceratops.png")}, {FossilsLegacyUtils.resource("textures/entity/triceratops/brown_triceratops.png"), FossilsLegacyUtils.resource("textures/entity/triceratops/brown_baby_triceratops.png")}, {FossilsLegacyUtils.resource("textures/entity/triceratops/alternate_triceratops.png"), FossilsLegacyUtils.resource("textures/entity/triceratops/alternate_baby_triceratops.png")}};
     }
 
     @Override

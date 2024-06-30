@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
-import willatendo.fossilslegacy.client.FossilsLegacyModels;
+import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.tyrannosaurus.AbstractTyrannosaurusModel;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.tyrannosaurus.KnockedOutTyrannosaurusModel;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.tyrannosaurus.TyrannosaurusModel;
@@ -13,17 +13,17 @@ import willatendo.fossilslegacy.server.entity.Tyrannosaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class TyrannosaurusRenderer extends MobRenderer<Tyrannosaurus, AbstractTyrannosaurusModel> {
-    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/animals/tyrannosaurus/tyrannosaurus.png");
-    public static final ResourceLocation AGRESSIVE_TEXTURE = FossilsLegacyUtils.resource("textures/entity/animals/tyrannosaurus/aggressive_tyrannosaurus.png");
-    public static final ResourceLocation WEAK_TEXTURE = FossilsLegacyUtils.resource("textures/entity/animals/tyrannosaurus/weak_tyrannosaurus.png");
+    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/tyrannosaurus/tyrannosaurus.png");
+    public static final ResourceLocation AGRESSIVE_TEXTURE = FossilsLegacyUtils.resource("textures/entity/tyrannosaurus/aggressive_tyrannosaurus.png");
+    public static final ResourceLocation WEAK_TEXTURE = FossilsLegacyUtils.resource("textures/entity/tyrannosaurus/weak_tyrannosaurus.png");
 
     private final TyrannosaurusModel tyrannosaurusModel;
     private final KnockedOutTyrannosaurusModel knockedOutTyrannosaurusModel;
 
     public TyrannosaurusRenderer(Context context) {
-        super(context, new TyrannosaurusModel(context.bakeLayer(FossilsLegacyModels.TYRANNOSAURUS)), 0.3F);
-        this.tyrannosaurusModel = new TyrannosaurusModel(context.bakeLayer(FossilsLegacyModels.TYRANNOSAURUS));
-        this.knockedOutTyrannosaurusModel = new KnockedOutTyrannosaurusModel(context.bakeLayer(FossilsLegacyModels.KNOCKED_OUT_TYRANNOSAURUS));
+        super(context, new TyrannosaurusModel(context.bakeLayer(FossilsLegacyModelLayers.TYRANNOSAURUS)), 0.3F);
+        this.tyrannosaurusModel = new TyrannosaurusModel(context.bakeLayer(FossilsLegacyModelLayers.TYRANNOSAURUS));
+        this.knockedOutTyrannosaurusModel = new KnockedOutTyrannosaurusModel(context.bakeLayer(FossilsLegacyModelLayers.KNOCKED_OUT_TYRANNOSAURUS));
     }
 
     @Override

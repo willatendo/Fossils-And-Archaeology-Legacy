@@ -4,8 +4,9 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import willatendo.fossilslegacy.server.entity.variants.BoatType;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class FossilsLegacyModels {
+public class FossilsLegacyModelLayers {
     public static final ModelLayerLocation BRACHIOSAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("brachiosaurus"), "main");
+    public static final ModelLayerLocation LEGACY_BRACHIOSAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("legacy_brachiosaurus"), "main");
     public static final ModelLayerLocation DILOPHOSAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("dilophosaurus"), "main");
     public static final ModelLayerLocation FUTABASAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("futabasaurus"), "main");
     public static final ModelLayerLocation LEGACY_FUTABASAURUS = new ModelLayerLocation(FossilsLegacyUtils.resource("legacy_futabasaurus"), "main");

@@ -5,17 +5,17 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
-import willatendo.fossilslegacy.client.FossilsLegacyModels;
+import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.SmilodonModel;
 import willatendo.fossilslegacy.server.entity.Smilodon;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class SmilodonRenderer extends MobRenderer<Smilodon, SmilodonModel> {
-	public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/animals/smilodon/smilodon.png");
-	public static final ResourceLocation BABY_TEXTURE = FossilsLegacyUtils.resource("textures/entity/animals/smilodon/baby_smilodon.png");
+	public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/smilodon/smilodon.png");
+	public static final ResourceLocation BABY_TEXTURE = FossilsLegacyUtils.resource("textures/entity/smilodon/baby_smilodon.png");
 
 	public SmilodonRenderer(Context context) {
-		super(context, new SmilodonModel(context.bakeLayer(FossilsLegacyModels.SMILODON)), 0.3F);
+		super(context, new SmilodonModel(context.bakeLayer(FossilsLegacyModelLayers.SMILODON)), 0.3F);
 	}
 
 	@Override

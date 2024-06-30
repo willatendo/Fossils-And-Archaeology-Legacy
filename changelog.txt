@@ -1,5 +1,7 @@
 26/7/2024
 - Entity Textures Moved From "entities" to "entity"
+- Dinosaur Textures Moved Out Of "animals"
+- Javelin Textures Moved Into "javelin"
 - Screens Render Like Vanilla
 - Fixed Cooked Dinosaur Meat Recipes
 - (NeoForge) Fixed Compostables
@@ -12,8 +14,8 @@
 - (Fabric) Update Mixins Compatibility To Java 21
 - Update Velociraptor Model
 - Update Futabasaurus Model
+- Update Brachiosaurus Model
 - Added Velociraptor Skeleton
-- Added Futabasaurus Skeleton
 - Added Pachycephalosaurus
 - Added Pachycephalosaurus DNA
 - Added Pachycephalosaurus Egg

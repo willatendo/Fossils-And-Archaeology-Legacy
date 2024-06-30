@@ -15,7 +15,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
-import willatendo.fossilslegacy.client.FossilsLegacyModels;
+import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
 import willatendo.fossilslegacy.client.model.fossils.*;
 import willatendo.fossilslegacy.client.model.fossils.legacy.BrachiosaurusSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.legacy.LegacyFutabasaurusSkeletonModel;
@@ -39,13 +39,13 @@ public class FossilRenderer extends EntityRenderer<Fossil> {
 
         this.shadowRadius = 0.5F;
 
-        this.models.put(FossilsLegacyFossilVariants.BRACHIOSAURUS.get(), this.model = new BrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.BRACHIOSAURUS_SKELETON)));
-        this.models.put(FossilsLegacyFossilVariants.FUTABASAURUS.get(), FossilsModloaderHelper.INSTANCE.legacyModels() ? new LegacyFutabasaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.LEGACY_FUTABASAURUS_SKELETON)) : new FutabasaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.FUTABASAURUS_SKELETON)));
-        this.models.put(FossilsLegacyFossilVariants.PTERANODON.get(), new PteranodonSkeletonModel(context.bakeLayer(FossilsLegacyModels.PTERANODON_SKELETON)));
-        this.models.put(FossilsLegacyFossilVariants.TRICERATOPS.get(), new TriceratopsSkeletonModel(context.bakeLayer(FossilsLegacyModels.TRICERATOPS_SKELETON)));
-        this.models.put(FossilsLegacyFossilVariants.PACHYCEPHALOSAURUS.get(), new PachycephalosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModels.PACHYCEPHALOSAURUS_SKELETON)));
-        this.models.put(FossilsLegacyFossilVariants.COMPSOGNATHUS.get(), new CompsognathusSkeletonModel(context.bakeLayer(FossilsLegacyModels.COMPSOGNATHUS_SKELETON)));
-        this.models.put(FossilsLegacyFossilVariants.VELOCIRAPTOR.get(), new VelociraptorSkeletonModel(context.bakeLayer(FossilsLegacyModels.VELOCIRAPTOR_SKELETON)));
+        this.models.put(FossilsLegacyFossilVariants.BRACHIOSAURUS.get(), this.model = new BrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.BRACHIOSAURUS_SKELETON)));
+        this.models.put(FossilsLegacyFossilVariants.FUTABASAURUS.get(), FossilsModloaderHelper.INSTANCE.legacyModels() ? new LegacyFutabasaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.LEGACY_FUTABASAURUS_SKELETON)) : new FutabasaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.FUTABASAURUS_SKELETON)));
+        this.models.put(FossilsLegacyFossilVariants.PTERANODON.get(), new PteranodonSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.PTERANODON_SKELETON)));
+        this.models.put(FossilsLegacyFossilVariants.TRICERATOPS.get(), new TriceratopsSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.TRICERATOPS_SKELETON)));
+        this.models.put(FossilsLegacyFossilVariants.PACHYCEPHALOSAURUS.get(), new PachycephalosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.PACHYCEPHALOSAURUS_SKELETON)));
+        this.models.put(FossilsLegacyFossilVariants.COMPSOGNATHUS.get(), new CompsognathusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.COMPSOGNATHUS_SKELETON)));
+        this.models.put(FossilsLegacyFossilVariants.VELOCIRAPTOR.get(), new VelociraptorSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.VELOCIRAPTOR_SKELETON)));
     }
 
     @Override

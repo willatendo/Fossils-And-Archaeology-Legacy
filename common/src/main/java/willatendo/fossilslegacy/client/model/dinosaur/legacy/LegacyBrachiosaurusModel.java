@@ -1,8 +1,5 @@
 package willatendo.fossilslegacy.client.model.dinosaur.legacy;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
@@ -10,10 +7,10 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
+import willatendo.fossilslegacy.client.model.dinosaur.base.BaseBrachiosaurusModel;
 import willatendo.fossilslegacy.server.entity.Brachiosaurus;
 
-public class BrachiosaurusModel extends EntityModel<Brachiosaurus> {
-    private final ModelPart root;
+public class LegacyBrachiosaurusModel extends BaseBrachiosaurusModel {
     private final ModelPart frontRightThigh;
     private final ModelPart frontLeftCalf;
     private final ModelPart frontLeftThigh;
@@ -23,8 +20,8 @@ public class BrachiosaurusModel extends EntityModel<Brachiosaurus> {
     private final ModelPart backLeftThigh;
     private final ModelPart backRightCalf;
 
-    public BrachiosaurusModel(ModelPart root) {
-        this.root = root;
+    public LegacyBrachiosaurusModel(ModelPart root) {
+        super(root);
         this.frontRightThigh = root.getChild("front_right_thigh");
         this.frontRightCalf = root.getChild("front_right_calf");
         this.frontLeftThigh = root.getChild("front_left_thigh");
@@ -79,10 +76,5 @@ public class BrachiosaurusModel extends EntityModel<Brachiosaurus> {
         this.backLeftCalf.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount;
         this.backRightThigh.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
         this.backRightCalf.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-    }
-
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int red, int green, int blue) {
-        this.root.render(poseStack, vertexConsumer, red, green, blue);
     }
 }

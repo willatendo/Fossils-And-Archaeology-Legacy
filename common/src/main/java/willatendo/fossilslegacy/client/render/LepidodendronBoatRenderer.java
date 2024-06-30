@@ -17,7 +17,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.vehicle.Boat;
 import org.joml.Quaternionf;
-import willatendo.fossilslegacy.client.FossilsLegacyModels;
+import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.entity.util.BoatTypeAccessor;
 import willatendo.fossilslegacy.server.entity.variants.BoatType;
@@ -35,7 +35,7 @@ public class LepidodendronBoatRenderer extends EntityRenderer<Boat> {
     }
 
     private ListModel<Boat> createBoatModel(EntityRendererProvider.Context context, BoatType boatType, boolean chestBoat) {
-        ModelLayerLocation modelLayerLocation = chestBoat ? FossilsLegacyModels.createChestBoatModelName(boatType) : FossilsLegacyModels.createBoatModelName(boatType);
+        ModelLayerLocation modelLayerLocation = chestBoat ? FossilsLegacyModelLayers.createChestBoatModelName(boatType) : FossilsLegacyModelLayers.createBoatModelName(boatType);
         ModelPart modelPart = context.bakeLayer(modelLayerLocation);
         if (boatType.raft()) {
             return chestBoat ? new ChestRaftModel(modelPart) : new RaftModel(modelPart);

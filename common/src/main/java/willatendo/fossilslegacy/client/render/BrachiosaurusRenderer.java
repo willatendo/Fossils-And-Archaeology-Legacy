@@ -3,20 +3,28 @@ package willatendo.fossilslegacy.client.render;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
-import willatendo.fossilslegacy.client.FossilsLegacyModels;
-import willatendo.fossilslegacy.client.model.dinosaur.legacy.BrachiosaurusModel;
+import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
+import willatendo.fossilslegacy.client.model.dinosaur.BrachiosaurusModel;
+import willatendo.fossilslegacy.client.model.dinosaur.legacy.LegacyBrachiosaurusModel;
 import willatendo.fossilslegacy.server.entity.Brachiosaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class BrachiosaurusRenderer extends MobRenderer<Brachiosaurus, BrachiosaurusModel> {
-    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/animals/brachiosaurus/brachiosaurus.png");
+public class BrachiosaurusRenderer extends LegacyEntityRenderer<Brachiosaurus> {
+    public static final ResourceLocation ADULT_TEXTURE = FossilsLegacyUtils.resource("textures/entity/brachiosaurus/brachiosaurus_adult.png");
+    public static final ResourceLocation BABY_TEXTURE = FossilsLegacyUtils.resource("textures/entity/brachiosaurus/brachiosaurus_baby.png");
+    public static final ResourceLocation LEGACY_TEXTURE = FossilsLegacyUtils.resource("textures/entity/brachiosaurus/legacy/brachiosaurus.png");
 
     public BrachiosaurusRenderer(Context context) {
-        super(context, new BrachiosaurusModel(context.bakeLayer(FossilsLegacyModels.BRACHIOSAURUS)), 0.3F);
+        super(context, new BrachiosaurusModel(context.bakeLayer(FossilsLegacyModelLayers.BRACHIOSAURUS)), new LegacyBrachiosaurusModel(context.bakeLayer(FossilsLegacyModelLayers.LEGACY_BRACHIOSAURUS)), 0.3F);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(Brachiosaurus brachiosaurus) {
-        return TEXTURE;
+    protected ResourceLocation legacyTextureLocation(Brachiosaurus brachiosaurus) {
+        return LEGACY_TEXTURE;
+    }
+
+    @Override
+    protected ResourceLocation textureLocation(Brachiosaurus brachiosaurus) {
+        return brachiosaurus.isBaby() ? BABY_TEXTURE : ADULT_TEXTURE;
     }
 }

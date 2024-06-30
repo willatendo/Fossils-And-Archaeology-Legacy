@@ -3,7 +3,7 @@ package willatendo.fossilslegacy.client.render;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
-import willatendo.fossilslegacy.client.FossilsLegacyModels;
+import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
 import willatendo.fossilslegacy.client.model.dinosaur.VelociraptorModel;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.LegacyVelociraptorModel;
 import willatendo.fossilslegacy.client.render.layer.VelociraptorHoldItemInMouthLayer;
@@ -11,7 +11,7 @@ import willatendo.fossilslegacy.server.entity.Velociraptor;
 
 public class VelociraptorRenderer extends LegacyEntityRenderer<Velociraptor> {
     public VelociraptorRenderer(Context context) {
-        super(context, new VelociraptorModel(context.bakeLayer(FossilsLegacyModels.VELOCIRAPTOR)), new LegacyVelociraptorModel(context.bakeLayer(FossilsLegacyModels.LEGACY_VELOCIRAPTOR)), 0.3F);
+        super(context, new VelociraptorModel(context.bakeLayer(FossilsLegacyModelLayers.VELOCIRAPTOR)), new LegacyVelociraptorModel(context.bakeLayer(FossilsLegacyModelLayers.LEGACY_VELOCIRAPTOR)), 0.3F);
         this.addLayer(new VelociraptorHoldItemInMouthLayer(this, context.getItemInHandRenderer()) {
             @Override
             public void pose(PoseStack poseStack) {

@@ -11,20 +11,20 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.Map;
 
 public class ThrownJavelinRenderer extends ArrowRenderer<ThrownJavelin> {
-	public static final Map<Integer, ResourceLocation> TEXTURES = Map.of(0, FossilsLegacyUtils.resource("textures/entity/wooden_javelin.png"), 1, FossilsLegacyUtils.resource("textures/entity/stone_javelin.png"), 2, FossilsLegacyUtils.resource("textures/entity/iron_javelin.png"), 3, FossilsLegacyUtils.resource("textures/entity/golden_javelin.png"), 4, FossilsLegacyUtils.resource("textures/entity/diamond_javelin.png"), 5, FossilsLegacyUtils.resource("textures/entity/netherite_javelin.png"), 6, FossilsLegacyUtils.resource("textures/entity/scarab_gem_javelin.png"));
+    public static final Map<Integer, ResourceLocation> TEXTURES = Map.of(0, FossilsLegacyUtils.resource("textures/entity/javelin/wooden_javelin.png"), 1, FossilsLegacyUtils.resource("textures/entity/javelin/stone_javelin.png"), 2, FossilsLegacyUtils.resource("textures/entity/javelin/iron_javelin.png"), 3, FossilsLegacyUtils.resource("textures/entity/javelin/golden_javelin.png"), 4, FossilsLegacyUtils.resource("textures/entity/javelin/diamond_javelin.png"), 5, FossilsLegacyUtils.resource("textures/entity/javelin/netherite_javelin.png"), 6, FossilsLegacyUtils.resource("textures/entity/javelin/scarab_gem_javelin.png"));
 
-	public ThrownJavelinRenderer(Context context) {
-		super(context);
-	}
+    public ThrownJavelinRenderer(Context context) {
+        super(context);
+    }
 
-	@Override
-	public void render(ThrownJavelin thrownJavelin, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight) {
-		poseStack.scale(2.0F, 2.0F, 2.0F);
-		super.render(thrownJavelin, entityYaw, partialTicks, poseStack, multiBufferSource, packedLight);
-	}
+    @Override
+    public void render(ThrownJavelin thrownJavelin, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight) {
+        poseStack.scale(2.0F, 2.0F, 2.0F);
+        super.render(thrownJavelin, entityYaw, partialTicks, poseStack, multiBufferSource, packedLight);
+    }
 
-	@Override
-	public ResourceLocation getTextureLocation(ThrownJavelin thrownJavelin) {
-		return TEXTURES.get(thrownJavelin.getVariant());
-	}
+    @Override
+    public ResourceLocation getTextureLocation(ThrownJavelin thrownJavelin) {
+        return TEXTURES.get(thrownJavelin.getVariant());
+    }
 }
