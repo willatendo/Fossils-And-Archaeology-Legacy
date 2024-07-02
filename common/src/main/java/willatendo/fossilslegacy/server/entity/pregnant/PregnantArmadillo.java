@@ -6,6 +6,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.armadillo.Armadillo;
 import net.minecraft.world.entity.player.Player;
@@ -32,7 +33,7 @@ public class PregnantArmadillo extends Armadillo implements PregnantAnimal<Armad
 
     @Override
     public ItemStack getPickResult() {
-        return Items.CAT_SPAWN_EGG.getDefaultInstance();
+        return Items.ARMADILLO_SPAWN_EGG.getDefaultInstance();
     }
 
     @Override
@@ -98,8 +99,8 @@ public class PregnantArmadillo extends Armadillo implements PregnantAnimal<Armad
     }
 
     @Override
-    public Armadillo getOffspring(Level level) {
-        return (Armadillo) this.getPregnancyType().value().entityType().get().create(level);
+    public Entity getOffspring(Level level) {
+        return this.getPregnancyType().value().entityType().get().create(level);
     }
 
     @Override

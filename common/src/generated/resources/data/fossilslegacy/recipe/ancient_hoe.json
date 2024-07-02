@@ -1,0 +1,10 @@
+{
+  "type": "fossilslegacy:archaeology",
+  "ingredient": {
+    "item": "fossilslegacy:ancient_hoe_artifact"
+  },
+  "result": {
+    "id": "fossilslegacy:ancient_hoe"
+  },
+  "time": 3000
+}

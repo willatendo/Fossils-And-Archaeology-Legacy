@@ -20,10 +20,10 @@ public class PteranodonRenderer extends MobRenderer<Pteranodon, AbstractPteranod
     private final LandingPteranodonModel landingPteranodonModel;
 
     public PteranodonRenderer(Context context) {
-        super(context, new GroundPteranodonModel(context.bakeLayer(FossilsLegacyModelLayers.GROUND_PTERANODON)), 0.5F);
-        this.groundPteranodonLegacyModel = new GroundPteranodonModel(context.bakeLayer(FossilsLegacyModelLayers.GROUND_PTERANODON));
-        this.flyingPteranodonLegacyModel = new FlyingPteranodonModel(context.bakeLayer(FossilsLegacyModelLayers.FLYING_PTERANODON));
-        this.landingPteranodonModel = new LandingPteranodonModel(context.bakeLayer(FossilsLegacyModelLayers.LANDING_PTERANODON));
+        super(context, new GroundPteranodonModel(context.bakeLayer(FossilsLegacyModelLayers.PTERANODON_GROUND)), 0.5F);
+        this.groundPteranodonLegacyModel = new GroundPteranodonModel(context.bakeLayer(FossilsLegacyModelLayers.PTERANODON_GROUND));
+        this.flyingPteranodonLegacyModel = new FlyingPteranodonModel(context.bakeLayer(FossilsLegacyModelLayers.PTERANODON_FLYING));
+        this.landingPteranodonModel = new LandingPteranodonModel(context.bakeLayer(FossilsLegacyModelLayers.PTERANODON_LANDING));
 
     }
 

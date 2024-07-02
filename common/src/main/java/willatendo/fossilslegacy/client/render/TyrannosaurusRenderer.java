@@ -23,7 +23,7 @@ public class TyrannosaurusRenderer extends MobRenderer<Tyrannosaurus, AbstractTy
     public TyrannosaurusRenderer(Context context) {
         super(context, new TyrannosaurusModel(context.bakeLayer(FossilsLegacyModelLayers.TYRANNOSAURUS)), 0.3F);
         this.tyrannosaurusModel = new TyrannosaurusModel(context.bakeLayer(FossilsLegacyModelLayers.TYRANNOSAURUS));
-        this.knockedOutTyrannosaurusModel = new KnockedOutTyrannosaurusModel(context.bakeLayer(FossilsLegacyModelLayers.KNOCKED_OUT_TYRANNOSAURUS));
+        this.knockedOutTyrannosaurusModel = new KnockedOutTyrannosaurusModel(context.bakeLayer(FossilsLegacyModelLayers.TYRANNOSAURUS_KNOCKED_OUT));
     }
 
     @Override

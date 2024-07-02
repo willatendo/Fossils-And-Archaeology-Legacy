@@ -4,7 +4,10 @@
 - Javelin Textures Moved Into "javelin"
 - Screens Render Like Vanilla
 - Mammoths can now be commanded
-- Reorganised Creative Mode Tab
+- Reorganised Creative Mode Tab As Such: Fossils, DNA (Mesozoic, Cenozoic, Modern), Eggs/Embryo Syringes (Mesozoic, Cenozoic, Modern), Food Stuff (Meat (Mesozoic, Cenozoic, Modern), Nautilus, Food Buckets, Essence), Prehistoric Plants, Archaeology, Misc Drops, Tools (Dinosaurs, Ancient, Scarab, Javelins), Blocks (Ore, Machines, Decoration, Plants), Spawn Eggs
+- Spawn Eggs No Longer Exist In Spawn Eggs Tab
+- Renamned All Meats To Remove "Meat" Part of Their Name
+- Scarab Tools Are Now Fire Resistant
 - Fixed Cooked Dinosaur Meat Recipes
 - (NeoForge) Fixed Compostables
 - (Fabric) Fixed Animals Breaking Blocks Not Being Toggleable
@@ -16,6 +19,10 @@
 - Fixed Incubated Eggs Not Working
 - Fixed Frog DNA Having No Recipe
 - Fixed Sheep DNA Missing A Recipe
+- Fixed Pregnant Animals Crashing
+- Fixed Stegosaurus Model
+- Fixed Ancient Armor Being Fixed With Netherite Ingot
+- Fixed Ancient Armor Not Having Durability and Stacking
 - (Fabric) Update Mixins Compatibility To Java 21
 - Updated Smildon DNA Texture
 - Updated Mammoth DNA Texture
@@ -42,6 +49,10 @@
 - Updated Wolf DNA Texture
 - Updated Incubated Chicken Egg Texture
 - Updated Incubated Parrot Egg Texture
+- Updated Raw Mammoth Texture
+- Updated Cooked Mammoth Texture
+- Updated Raw Smildon Texture
+- Updated Cooked Smildon Texture
 - Added Axolotl DNA Recipe
 - Added Velociraptor Skeleton
 - Added "Legacy Models" Config Option
@@ -86,6 +97,18 @@
 - Added Armadillo DNA
 - Added Armadillo Embryo Syringe
 - Added Pregnant Armadillo
+- Added Ancient Shovel
+- Added Ancient Shovel Artifact
+- Added Ancient Pickaxe
+- Added Ancient Pickaxe Artifact
+- Added Ancient Axe
+- Added Ancient Axe Artifact
+- Added Ancient Hoe
+- Added Ancient Hoe Artifact
+- Added Scarab Gem Helmet
+- Added Scarab Gem Chestplate
+- Added Scarab Gem Leggings
+- Added Scarab Gem Boots
 - Removed Antiquated "Anu Spawns" Config Option
 21/7/2024 B
 - Fixed Summoning Entities

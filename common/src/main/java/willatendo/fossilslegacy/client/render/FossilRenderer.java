@@ -39,8 +39,8 @@ public class FossilRenderer extends EntityRenderer<Fossil> {
 
         this.shadowRadius = 0.5F;
 
-        this.models.put(FossilsLegacyFossilVariants.BRACHIOSAURUS.get(), this.model = FossilsModloaderHelper.INSTANCE.legacyModels() ? new LegacyBrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.LEGACY_BRACHIOSAURUS_SKELETON)) : new BrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.BRACHIOSAURUS_SKELETON)));
-        this.models.put(FossilsLegacyFossilVariants.FUTABASAURUS.get(), FossilsModloaderHelper.INSTANCE.legacyModels() ? new LegacyFutabasaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.LEGACY_FUTABASAURUS_SKELETON)) : new FutabasaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.FUTABASAURUS_SKELETON)));
+        this.models.put(FossilsLegacyFossilVariants.BRACHIOSAURUS.get(), this.model = FossilsModloaderHelper.INSTANCE.legacyModels() ? new LegacyBrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.BRACHIOSAURUS_SKELETON.getSecond())) : new BrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.BRACHIOSAURUS_SKELETON.getFirst())));
+        this.models.put(FossilsLegacyFossilVariants.FUTABASAURUS.get(), FossilsModloaderHelper.INSTANCE.legacyModels() ? new LegacyFutabasaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.FUTABASAURUS_SKELETON.getSecond())) : new FutabasaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.FUTABASAURUS_SKELETON.getFirst())));
         this.models.put(FossilsLegacyFossilVariants.PTERANODON.get(), new PteranodonSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.PTERANODON_SKELETON)));
         this.models.put(FossilsLegacyFossilVariants.TRICERATOPS.get(), new TriceratopsSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.TRICERATOPS_SKELETON)));
         this.models.put(FossilsLegacyFossilVariants.PACHYCEPHALOSAURUS.get(), new PachycephalosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.PACHYCEPHALOSAURUS_SKELETON)));

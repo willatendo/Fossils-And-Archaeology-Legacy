@@ -48,12 +48,12 @@
               "function": "minecraft:furnace_smelt"
             }
           ],
-          "name": "fossilslegacy:raw_compsognathus_meat"
+          "name": "fossilslegacy:raw_dodo"
         }
       ],
       "rolls": {
         "type": "minecraft:uniform",
-        "max": 3.0,
+        "max": 2.0,
         "min": 1.0
       }
     }

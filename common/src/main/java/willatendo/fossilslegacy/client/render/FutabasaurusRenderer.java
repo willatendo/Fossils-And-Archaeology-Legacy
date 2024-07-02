@@ -13,7 +13,7 @@ public class FutabasaurusRenderer extends LegacyEntityRenderer<Futabasaurus> {
     public static final ResourceLocation LEGACY_TEXTURE = FossilsLegacyUtils.resource("textures/entity/futabasaurus/legacy/futabasaurus.png");
 
     public FutabasaurusRenderer(Context context) {
-        super(context, new FutabasaurusModel(context.bakeLayer(FossilsLegacyModelLayers.FUTABASAURUS)), new LegacyFutabasaurusModel(context.bakeLayer(FossilsLegacyModelLayers.LEGACY_FUTABASAURUS)), 0.3F);
+        super(context, new FutabasaurusModel(context.bakeLayer(FossilsLegacyModelLayers.FUTABASAURUS.getFirst())), new LegacyFutabasaurusModel(context.bakeLayer(FossilsLegacyModelLayers.FUTABASAURUS.getSecond())), 0.3F);
     }
 
     @Override

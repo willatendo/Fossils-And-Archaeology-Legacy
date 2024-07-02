@@ -66,7 +66,7 @@ public class FossilsLegacyEntityTypes {
     public static final SimpleHolder<EntityType<Failuresaurus>> FAILURESAURUS = ENTITY_TYPES.register("failuresaurus", () -> SimpleUtils.entityTypeBuilder("failuresaurus", Failuresaurus::new, MobCategory.MONSTER, 1.0F, 1.0F));
 
     public static final SimpleHolder<EntityType<ThrownJavelin>> THROWN_JAVELIN = ENTITY_TYPES.register("thrown_javelin", () -> SimpleUtils.entityTypeBuilder("thrown_javelin", ThrownJavelin::new, MobCategory.MISC, 0.5F, 0.5F));
-    public static final SimpleHolder<EntityType<ThrownIncubatedEgg>> THROWN_INCUBATED_EGG = ENTITY_TYPES.register("thrown_incubated_egg", () -> SimpleUtils.entityTypeBuilder("thrown_incubated_egg", ThrownIncubatedEgg::new, MobCategory.MISC, 0.25F, 0.25F));
+    public static final SimpleHolder<EntityType<ThrownAnimalEgg>> THROWN_INCUBATED_EGG = ENTITY_TYPES.register("thrown_incubated_egg", () -> SimpleUtils.entityTypeBuilder("thrown_incubated_egg", ThrownAnimalEgg::new, MobCategory.MISC, 0.25F, 0.25F));
     public static final SimpleHolder<EntityType<DilophosaurusVenom>> DILOPHOSAURUS_VENOM = ENTITY_TYPES.register("dilophosaurus_venom", () -> SimpleUtils.entityTypeBuilder("dilophosaurus_venom", DilophosaurusVenom::new, MobCategory.MISC, 0.5F, 0.5F));
 
     public static final SimpleHolder<EntityType<StoneTablet>> STONE_TABLET = ENTITY_TYPES.register("stone_tablet", () -> SimpleUtils.entityTypeBuilder("stone_tablet", StoneTablet::new, MobCategory.MISC, 0.5F, 0.5F));

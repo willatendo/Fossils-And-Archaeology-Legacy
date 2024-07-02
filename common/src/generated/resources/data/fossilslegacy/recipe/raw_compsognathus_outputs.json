@@ -1,0 +1,15 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "fossilslegacy:raw_compsognathus"
+  },
+  "results": [
+    {
+      "result": {
+        "id": "fossilslegacy:compsognathus_dna"
+      },
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

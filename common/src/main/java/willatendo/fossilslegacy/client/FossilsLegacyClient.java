@@ -69,6 +69,7 @@ public class FossilsLegacyClient {
         modelRegister.register(FossilsLegacyEntityTypes.ANU.get(), AnuRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.FAILURESAURUS.get(), FailuresaurusRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.TAMED_ZOMBIFIED_PIGLIN.get(), context -> new TamedZombifiedPiglinRenderer(context, ModelLayers.ZOMBIFIED_PIGLIN, ModelLayers.ZOMBIFIED_PIGLIN_INNER_ARMOR, ModelLayers.ZOMBIFIED_PIGLIN_OUTER_ARMOR, true));
+        modelRegister.register(FossilsLegacyEntityTypes.PREGNANT_ARMADILLO.get(), ArmadilloRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.PREGNANT_CAT.get(), CatRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.PREGNANT_COW.get(), CowRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.PREGNANT_DOLPHIN.get(), DolphinRenderer::new);
@@ -102,47 +103,43 @@ public class FossilsLegacyClient {
     }
 
     public static void modelLayerEvent(ModelLayerRegister modelLayerRegister) {
-        modelLayerRegister.register(FossilsLegacyModelLayers.BRACHIOSAURUS, BrachiosaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.LEGACY_BRACHIOSAURUS, LegacyBrachiosaurusModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.ANU, AnuModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.BRACHIOSAURUS.getFirst(), BrachiosaurusModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.BRACHIOSAURUS.getSecond(), LegacyBrachiosaurusModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.BRACHIOSAURUS_SKELETON.getFirst(), BrachiosaurusSkeletonModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.BRACHIOSAURUS_SKELETON.getSecond(), LegacyBrachiosaurusSkeletonModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.CARNOTAURUS, CarnotaurusModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.COMPSOGNATHUS, CompsognathusModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.COMPSOGNATHUS_SKELETON, CompsognathusSkeletonModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.CRYOLOPHOSAURUS, CryolophosaurusModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.DILOPHOSAURUS, DilophosaurusModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.DODO, DodoModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.EGG, EggModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.FAILURESAURUS, FailuresaurusModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.FUTABASAURUS.getFirst(), FutabasaurusModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.FUTABASAURUS.getSecond(), LegacyFutabasaurusModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.FUTABASAURUS_SKELETON.getFirst(), FutabasaurusSkeletonModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.FUTABASAURUS_SKELETON.getSecond(), LegacyFutabasaurusSkeletonModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.MAMMOTH, MammothModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.MOSASAURUS, MosasaurusModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.NAUTILUS, NautilusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.FUTABASAURUS, FutabasaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.LEGACY_FUTABASAURUS, LegacyFutabasaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.GROUND_PTERANODON, GroundPteranodonModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.FLYING_PTERANODON, FlyingPteranodonModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.LANDING_PTERANODON, LandingPteranodonModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.PACHYCEPHALOSAURUS, PachycephalosaurusModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.PACHYCEPHALOSAURUS_SKELETON, PachycephalosaurusSkeletonModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.PTERANODON_GROUND, GroundPteranodonModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.PTERANODON_FLYING, FlyingPteranodonModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.PTERANODON_LANDING, LandingPteranodonModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.PTERANODON_SKELETON, PteranodonSkeletonModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.SMILODON, SmilodonModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.STEGOSAURUS, StegosaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.TRICERATOPS, TriceratopsModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.TYRANNOSAURUS, TyrannosaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.KNOCKED_OUT_TYRANNOSAURUS, KnockedOutTyrannosaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.VELOCIRAPTOR, VelociraptorModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.LEGACY_VELOCIRAPTOR, LegacyVelociraptorModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.CARNOTAURUS, CarnotaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.CRYOLOPHOSAURUS, CryolophosaurusModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.THERIZINOSAURUS, TherizinosaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.PACHYCEPHALOSAURUS, PachycephalosaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.COMPSOGNATHUS, CompsognathusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.DODO, DodoModel::createBodyLayer);
-
-        modelLayerRegister.register(FossilsLegacyModelLayers.TRICERATOPS_SKELETON, TriceratopsSkeletonModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.BRACHIOSAURUS_SKELETON, BrachiosaurusSkeletonModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.LEGACY_BRACHIOSAURUS_SKELETON, LegacyBrachiosaurusSkeletonModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.FUTABASAURUS_SKELETON, FutabasaurusSkeletonModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.LEGACY_FUTABASAURUS_SKELETON, LegacyFutabasaurusSkeletonModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.PTERANODON_SKELETON, PteranodonSkeletonModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.PACHYCEPHALOSAURUS_SKELETON, PachycephalosaurusSkeletonModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.COMPSOGNATHUS_SKELETON, CompsognathusSkeletonModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.VELOCIRAPTOR_SKELETON, VelociraptorSkeletonModel::createBodyLayer);
-
-        modelLayerRegister.register(FossilsLegacyModelLayers.ANU, AnuModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.FAILURESAURUS, FailuresaurusModel::createBodyLayer);
-
-        modelLayerRegister.register(FossilsLegacyModelLayers.EGG, EggModel::createBodyLayer);
-
         modelLayerRegister.register(FossilsLegacyModelLayers.TIME_MACHINE_CLOCK, TimeMachineClockModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.TRICERATOPS, TriceratopsModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.TRICERATOPS_SKELETON, TriceratopsSkeletonModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.TYRANNOSAURUS, TyrannosaurusModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.TYRANNOSAURUS_KNOCKED_OUT, KnockedOutTyrannosaurusModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.VELOCIRAPTOR.getFirst(), VelociraptorModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.VELOCIRAPTOR.getSecond(), LegacyVelociraptorModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.VELOCIRAPTOR_SKELETON, VelociraptorSkeletonModel::createBodyLayer);
 
         for (BoatType boatType : FossilsLegacyBuiltInRegistries.BOAT_TYPES) {
             modelLayerRegister.register(FossilsLegacyModelLayers.createBoatModelName(boatType), boatType.raft() ? RaftModel::createBodyModel : BoatModel::createBodyModel);

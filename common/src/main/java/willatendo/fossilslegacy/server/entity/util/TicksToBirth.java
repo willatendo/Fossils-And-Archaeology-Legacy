@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface TicksToBirth<T extends Entity> {
-    T getOffspring(Level level);
+    Entity getOffspring(Level level);
 
     int getRemainingTime();
 

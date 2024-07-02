@@ -6,6 +6,7 @@ import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.OptionalDispenseItemBehavior;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.animal.*;
+import net.minecraft.world.entity.animal.armadillo.Armadillo;
 import net.minecraft.world.entity.animal.goat.Goat;
 import net.minecraft.world.entity.animal.horse.Donkey;
 import net.minecraft.world.entity.animal.horse.Horse;
@@ -127,6 +128,7 @@ public class BasicEvents {
         attributeRegister.register(FossilsLegacyEntityTypes.NAUTILUS.get(), Nautilus.nautilusAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.FUTABASAURUS.get(), Futabasaurus.plesiosaurusAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.PACHYCEPHALOSAURUS.get(), Pachycephalosaurus.pachycephalosaurusAttributes());
+        attributeRegister.register(FossilsLegacyEntityTypes.PREGNANT_ARMADILLO.get(), Armadillo.createAttributes().build());
         attributeRegister.register(FossilsLegacyEntityTypes.PREGNANT_CAT.get(), Cat.createAttributes().build());
         attributeRegister.register(FossilsLegacyEntityTypes.PREGNANT_COW.get(), Cow.createAttributes().build());
         attributeRegister.register(FossilsLegacyEntityTypes.PREGNANT_DOLPHIN.get(), Dolphin.createAttributes().build());

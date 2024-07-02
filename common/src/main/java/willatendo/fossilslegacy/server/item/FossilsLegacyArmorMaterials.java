@@ -22,14 +22,20 @@ import java.util.function.Supplier;
 public class FossilsLegacyArmorMaterials {
     public static final SimpleRegistry<ArmorMaterial> ARMOR_MATERIALS = SimpleRegistry.create(Registries.ARMOR_MATERIAL, FossilsLegacyUtils.ID);
 
-    public static final SimpleHolder<ArmorMaterial> ANCIENT = register("ancient", (EnumMap) Util.make(new EnumMap(ArmorItem.Type.class), (types) -> {
+    public static final SimpleHolder<ArmorMaterial> ANCIENT = register("ancient", Util.make(new EnumMap(ArmorItem.Type.class), (types) -> {
         types.put(ArmorItem.Type.BOOTS, 2);
         types.put(ArmorItem.Type.LEGGINGS, 5);
         types.put(ArmorItem.Type.CHESTPLATE, 6);
         types.put(ArmorItem.Type.HELMET, 2);
-    }), 9, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
-        return Ingredient.of(new ItemLike[]{Items.NETHERITE_INGOT});
-    });
+        types.put(Type.BODY, 5);
+    }), 9, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, null);
+    public static final SimpleHolder<ArmorMaterial> SCARAB_GEM = register("scarab_gem", Util.make(new EnumMap(ArmorItem.Type.class), (types) -> {
+        types.put(ArmorItem.Type.BOOTS, 3);
+        types.put(ArmorItem.Type.LEGGINGS, 6);
+        types.put(ArmorItem.Type.CHESTPLATE, 8);
+        types.put(ArmorItem.Type.HELMET, 3);
+        types.put(Type.BODY, 11);
+    }), 15, SoundEvents.ARMOR_EQUIP_IRON, 5.0F, 0.2F, () -> Ingredient.of(FossilsLegacyItems.SCARAB_GEM.get()));
 
     private static SimpleHolder<ArmorMaterial> register(String id, EnumMap<ArmorItem.Type, Integer> defenseMap, int enchantmentValue, Holder<SoundEvent> equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient) {
         List<ArmorMaterial.Layer> layers = List.of(new ArmorMaterial.Layer(FossilsLegacyUtils.resource(id)));

@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.entity.Velociraptor;
 
 public class VelociraptorHoldItemInMouthLayer<T extends EntityModel<Velociraptor>> extends RenderLayer<Velociraptor, T> {
@@ -24,7 +25,7 @@ public class VelociraptorHoldItemInMouthLayer<T extends EntityModel<Velociraptor
 
     @Override
     public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks, Velociraptor velociraptor, float position, float speed, float packedOverlay, float bob, float headPitch, float headYaw) {
-        float ageOffset = (1.0F + 0.0F * ((float) velociraptor.getGrowthStage()));
+        float ageOffset = ((FossilsModloaderHelper.INSTANCE.legacyModels() ? 1.0F : 0.5F) + 0.0F * ((float) velociraptor.getGrowthStage()));
         ItemStack heldItem = velociraptor.getHeldItem();
         poseStack.pushPose();
         poseStack.mulPose(Axis.ZP.rotation(60.0F));

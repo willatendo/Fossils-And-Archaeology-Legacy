@@ -58,9 +58,29 @@
                   "low_weight": 17800
                 },
                 {
-                  "high_weight": 19900,
+                  "high_weight": 19820,
                   "item": "fossilslegacy:ancient_sword_artifact",
                   "low_weight": 19800
+                },
+                {
+                  "high_weight": 19840,
+                  "item": "fossilslegacy:ancient_shovel_artifact",
+                  "low_weight": 19820
+                },
+                {
+                  "high_weight": 19860,
+                  "item": "fossilslegacy:ancient_pickaxe_artifact",
+                  "low_weight": 19840
+                },
+                {
+                  "high_weight": 19880,
+                  "item": "fossilslegacy:ancient_axe_artifact",
+                  "low_weight": 19860
+                },
+                {
+                  "high_weight": 19900,
+                  "item": "fossilslegacy:ancient_hoe_artifact",
+                  "low_weight": 19880
                 },
                 {
                   "high_weight": 19925,

@@ -5,10 +5,9 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.block.ArchaeologyWorkbenchBlock;
 import willatendo.fossilslegacy.server.block.entity.ArchaeologyWorkbenchBlockEntity;
 import willatendo.fossilslegacy.server.menu.slot.FuelSlot;
@@ -18,11 +17,13 @@ import java.util.List;
 
 public class ArchaeologyWorkbenchMenu extends AbstractContainerMenu {
     private final ContainerLevelAccess containerLevelAccess;
+    private final Level level;
     public final ArchaeologyWorkbenchBlockEntity archaeologyWorkbenchBlockEntity;
 
     public ArchaeologyWorkbenchMenu(int windowId, Inventory inventory, ArchaeologyWorkbenchBlockEntity archaeologyWorkbenchBlockEntity) {
         super(FossilsLegacyMenus.ARCHAEOLOGY_WORKBENCH.get(), windowId);
         this.containerLevelAccess = ContainerLevelAccess.create(archaeologyWorkbenchBlockEntity.getLevel(), archaeologyWorkbenchBlockEntity.getBlockPos());
+        this.level = inventory.player.level();
         this.archaeologyWorkbenchBlockEntity = archaeologyWorkbenchBlockEntity;
 
         this.addSlot(new Slot(archaeologyWorkbenchBlockEntity, 0, 49, 20));
@@ -109,5 +110,4 @@ public class ArchaeologyWorkbenchMenu extends AbstractContainerMenu {
     public boolean isOn() {
         return this.archaeologyWorkbenchBlockEntity.containerData.get(0) > 0;
     }
-
 }

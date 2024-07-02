@@ -57,7 +57,7 @@ public class StegosaurusModel extends EntityModel<Stegosaurus> {
         partDefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(20, 0).addBox(-3.0F, 0.0F, 0.0F, 7.0F, 8.0F, 8.0F).mirror(), PartPose.offset(0.0F, 14.0F, -6.0F));
         partDefinition.addOrReplaceChild("back_plates_1", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, -2.5F, 8.0F, 1.0F, 5.0F, 3.0F).mirror(), PartPose.offset(0.0F, 14.0F, -1.0F));
         partDefinition.addOrReplaceChild("back_body", CubeListBuilder.create().texOffs(32, 24).addBox(-0.5F, 3.5F, -8.0F, 2.0F, 3.0F, 5.0F).mirror(), PartPose.offsetAndRotation(0.0F, 14.0F, -6.0F, 0.1745329F, 0.0F, 0.0F));
-        partDefinition.addOrReplaceChild("back_plates_2", CubeListBuilder.create().texOffs(12, 13).addBox(0.5F, -3.5F, 2.0F, 2.0F, 5.0F, 3.0F).mirror(), PartPose.offset(0.0F, 14.0F, -6.0F));
+        partDefinition.addOrReplaceChild("back_plates_2", CubeListBuilder.create().texOffs(12, 13).addBox(-0.5F, -3.5F, 2.0F, 2.0F, 5.0F, 4.0F).mirror(), PartPose.offset(0.0F, 14.0F, -1.0F));
         partDefinition.addOrReplaceChild("tail_1", CubeListBuilder.create().texOffs(46, 23).addBox(-2.0F, 1.5F, 2.0F, 5.0F, 5.0F, 4.0F).mirror(), PartPose.offset(0.0F, 14.0F, -1.0F));
         partDefinition.addOrReplaceChild("back_plates_3", CubeListBuilder.create().texOffs(0, 13).addBox(-0.5F, -3.0F, -3.0F, 2.0F, 5.0F, 4.0F).mirror(), PartPose.offsetAndRotation(0.0F, 14.0F, -6.0F, 0.2617994F, 0.0F, 0.0F));
         partDefinition.addOrReplaceChild("tail_2", CubeListBuilder.create().texOffs(32, 16).addBox(-1.0F, 2.0F, 4.5F, 3.0F, 3.0F, 4.0F).mirror(), PartPose.offset(0.0F, 14.0F, -1.0F));
@@ -93,8 +93,8 @@ public class StegosaurusModel extends EntityModel<Stegosaurus> {
         this.rightBackFoot.xRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * -0.174532925199433F * limbSwingAmount + 1.22173047639603F;
         this.rightBackFoot.yRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.174532925199433F * limbSwingAmount + 0F;
         this.backPlates1.yRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.488692190558412F * limbSwingAmount + 0F;
-        this.backPlates2.yRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.349065850398866F * limbSwingAmount + 0F;
-        this.backPlates2.zRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.174532925199433F * limbSwingAmount + 0F;
+        //this.backPlates2.yRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.349065850398866F * limbSwingAmount + 0F;
+        // this.backPlates2.zRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.174532925199433F * limbSwingAmount + 0F;
         this.thagomizer.zRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.174532925199433F * limbSwingAmount + 0F;
         this.backPlates3.zRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.174532925199433F * limbSwingAmount + 0F;
     }

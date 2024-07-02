@@ -11,7 +11,7 @@ import willatendo.fossilslegacy.server.entity.Velociraptor;
 
 public class VelociraptorRenderer extends LegacyEntityRenderer<Velociraptor> {
     public VelociraptorRenderer(Context context) {
-        super(context, new VelociraptorModel(context.bakeLayer(FossilsLegacyModelLayers.VELOCIRAPTOR)), new LegacyVelociraptorModel(context.bakeLayer(FossilsLegacyModelLayers.LEGACY_VELOCIRAPTOR)), 0.3F);
+        super(context, new VelociraptorModel(context.bakeLayer(FossilsLegacyModelLayers.VELOCIRAPTOR.getFirst())), new LegacyVelociraptorModel(context.bakeLayer(FossilsLegacyModelLayers.VELOCIRAPTOR.getSecond())), 0.3F);
         this.addLayer(new VelociraptorHoldItemInMouthLayer(this, context.getItemInHandRenderer()) {
             @Override
             public void pose(PoseStack poseStack) {

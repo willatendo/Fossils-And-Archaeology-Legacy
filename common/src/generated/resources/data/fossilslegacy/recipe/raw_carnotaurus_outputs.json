@@ -1,0 +1,15 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "fossilslegacy:raw_carnotaurus"
+  },
+  "results": [
+    {
+      "result": {
+        "id": "fossilslegacy:carnotaurus_dna"
+      },
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

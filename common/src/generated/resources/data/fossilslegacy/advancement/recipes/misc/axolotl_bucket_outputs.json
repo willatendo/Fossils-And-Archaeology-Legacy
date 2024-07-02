@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_axolotl_bucket": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:axolotl_bucket"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:axolotl_bucket_outputs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_axolotl_bucket"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:axolotl_bucket_outputs"
+    ]
+  }
+}

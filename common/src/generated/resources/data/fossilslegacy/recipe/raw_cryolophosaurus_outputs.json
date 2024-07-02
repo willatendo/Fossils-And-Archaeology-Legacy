@@ -1,0 +1,15 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "ingredient": {
+    "item": "fossilslegacy:raw_cryolophosaurus"
+  },
+  "results": [
+    {
+      "result": {
+        "id": "fossilslegacy:cryolophosaurus_dna"
+      },
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

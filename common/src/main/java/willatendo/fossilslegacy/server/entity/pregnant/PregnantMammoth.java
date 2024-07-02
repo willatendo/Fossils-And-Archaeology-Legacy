@@ -6,6 +6,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -99,8 +100,8 @@ public class PregnantMammoth extends Mammoth implements DinopediaInformation, Pr
     }
 
     @Override
-    public Mammoth getOffspring(Level level) {
-        return (Mammoth) this.getPregnancyType().value().entityType().get().create(level);
+    public Entity getOffspring(Level level) {
+        return this.getPregnancyType().value().entityType().get().create(level);
     }
 
     @Override

@@ -6,6 +6,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.entity.player.Player;
@@ -98,8 +99,8 @@ public class PregnantCow extends Cow implements DinopediaInformation, PregnantAn
     }
 
     @Override
-    public Cow getOffspring(Level level) {
-        return (Cow) this.getPregnancyType().value().entityType().get().create(level);
+    public Entity getOffspring(Level level) {
+        return this.getPregnancyType().value().entityType().get().create(level);
     }
 
     @Override

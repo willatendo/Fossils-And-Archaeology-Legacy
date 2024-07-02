@@ -15,7 +15,7 @@ public class BrachiosaurusRenderer extends LegacyEntityRenderer<Brachiosaurus> {
     public static final ResourceLocation LEGACY_TEXTURE = FossilsLegacyUtils.resource("textures/entity/brachiosaurus/legacy/brachiosaurus.png");
 
     public BrachiosaurusRenderer(Context context) {
-        super(context, new BrachiosaurusModel(context.bakeLayer(FossilsLegacyModelLayers.BRACHIOSAURUS)), new LegacyBrachiosaurusModel(context.bakeLayer(FossilsLegacyModelLayers.LEGACY_BRACHIOSAURUS)), 0.3F);
+        super(context, new BrachiosaurusModel(context.bakeLayer(FossilsLegacyModelLayers.BRACHIOSAURUS.getFirst())), new LegacyBrachiosaurusModel(context.bakeLayer(FossilsLegacyModelLayers.BRACHIOSAURUS.getSecond())), 0.3F);
     }
 
     @Override

@@ -6,6 +6,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.Panda;
 import net.minecraft.world.entity.player.Player;
@@ -98,8 +99,8 @@ public class PregnantPanda extends Panda implements DinopediaInformation, Pregna
     }
 
     @Override
-    public Panda getOffspring(Level level) {
-        return (Panda) this.getPregnancyType().value().entityType().get().create(level);
+    public Entity getOffspring(Level level) {
+        return this.getPregnancyType().value().entityType().get().create(level);
     }
 
     @Override
