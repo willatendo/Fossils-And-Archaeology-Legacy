@@ -10,6 +10,7 @@
 - Scarab Tools Are Now Fire Resistant
 - Internal Translation Keys Now Follow Vanilla Rules
 - Internal Class Names More Consistent
+- Updated Legacy Textures Pack Name
 - Fixed Cooked Dinosaur Meat Recipes
 - (NeoForge) Fixed Compostables
 - (Fabric) Fixed Animals Breaking Blocks Not Being Toggleable
@@ -27,6 +28,7 @@
 - Fixed Ancient Armor Not Having Durability and Stacking
 - Fixed Internal Typos
 - Fixed Inconsistent Capitalisation With Subtitles
+- (NeoForge) Fixed Legacy Textures Pack Having Same Name As Description
 - (Fabric) Update Mixins Compatibility To Java 21
 - Updated Smildon DNA Texture
 - Updated Mammoth DNA Texture
