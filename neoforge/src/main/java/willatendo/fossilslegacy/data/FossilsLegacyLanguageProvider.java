@@ -61,13 +61,14 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         // Cloth-Config
         this.add("text.autoconfig.fossilslegacy.title", "Fossils and Archaeology Legacy");
 
+        this.add("text.autoconfig.fossilslegacy.category.client", "Client Options");
+        this.add("text.autoconfig.fossilslegacy.option.client.featheredDinosaurs", "Feathered Dinosaurs");
+        this.add("text.autoconfig.fossilslegacy.option.client.legacyModels", "Legacy Models");
+
         this.add("text.autoconfig.fossilslegacy.category.common", "Common Options");
         this.add("text.autoconfig.fossilslegacy.option.common.animalsStarve", "Animals Starve");
         this.add("text.autoconfig.fossilslegacy.option.common.animalsBreakBlocks", "Animals Break Blocks");
         this.add("text.autoconfig.fossilslegacy.option.common.animalsGrow", "Animals Grow");
-
-        this.add("text.autoconfig.fossilslegacy.category.server", "Server Options");
-        this.add("text.autoconfig.fossilslegacy.option.server.enableExperiments", "Enable Experiments");
 
         // Blocks
         this.add(FossilsLegacyBlocks.FOSSIL_ORE.get());

@@ -14,7 +14,7 @@ import willatendo.fossilslegacy.server.entity.Pteranodon;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class PteranodonRenderer extends MobRenderer<Pteranodon, AbstractPteranodonModel> {
-    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/pteranodon/pteranodon_skeleton.png");
+    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/pteranodon/pteranodon.png");
     private final GroundPteranodonModel groundPteranodonLegacyModel;
     private final FlyingPteranodonModel flyingPteranodonLegacyModel;
     private final LandingPteranodonModel landingPteranodonModel;
