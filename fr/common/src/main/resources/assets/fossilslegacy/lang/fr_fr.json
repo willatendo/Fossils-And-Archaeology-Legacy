@@ -530,12 +530,13 @@
   "subtitles.entity.velociraptor.attack": "Velociraptor attacks",
   "subtitles.entity.velociraptor.death": "Velociraptor dies",
   "subtitles.entity.velociraptor.hurt": "Velociraptor hurts",
+  "text.autoconfig.fossilslegacy.category.client": "Client Options",
   "text.autoconfig.fossilslegacy.category.common": "Common Options",
-  "text.autoconfig.fossilslegacy.category.server": "Server Options",
+  "text.autoconfig.fossilslegacy.option.client.featheredDinosaurs": "Feathered Dinosaurs",
+  "text.autoconfig.fossilslegacy.option.client.legacyModels": "Legacy Models",
   "text.autoconfig.fossilslegacy.option.common.animalsBreakBlocks": "Animals Break Blocks",
   "text.autoconfig.fossilslegacy.option.common.animalsGrow": "Animals Grow",
   "text.autoconfig.fossilslegacy.option.common.animalsStarve": "Animals Starve",
-  "text.autoconfig.fossilslegacy.option.server.enableExperiments": "Enable Experiments",
   "text.autoconfig.fossilslegacy.title": "Fossils and Archaeology Legacy",
   "upgrade.fossilslegacy.scarab_gem_upgrade": "Scarab Gem Upgrade"
 }
