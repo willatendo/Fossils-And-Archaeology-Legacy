@@ -6,14 +6,19 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
+import willatendo.fossilslegacy.server.inventory.ArchaeologyBookCategory;
 import willatendo.fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSerialisers;
 
 public class ArchaeologyRecipe implements Recipe<SingleRecipeInput> {
+    public final ArchaeologyBookCategory archaeologyBookCategory;
     public final Ingredient ingredient;
     public final ItemStack result;
     public final int time;
+    public String group;
 
-    public ArchaeologyRecipe(Ingredient ingredient, ItemStack result, int time) {
+    public ArchaeologyRecipe(ArchaeologyBookCategory archaeologyBookCategory, String group, Ingredient ingredient, ItemStack result, int time) {
+        this.archaeologyBookCategory = archaeologyBookCategory;
+        this.group = group;
         this.ingredient = ingredient;
         this.result = result;
         this.time = time;

@@ -1,5 +1,6 @@
 {
   "type": "fossilslegacy:archaeology",
+  "category": "restore",
   "ingredient": {
     "item": "fossilslegacy:ancient_boots_artifact"
   },

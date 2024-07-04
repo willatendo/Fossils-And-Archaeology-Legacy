@@ -19,7 +19,7 @@ public class ClientForgeEvents {
             if (FossilsLegacyKeys.SINK.isDown()) {
                 PacketDistributor.sendToServer(new ServerboundSinkPacket(true));
             }
-            if (FossilsLegacyKeys.SINK.consumeClick() == false) {
+            if (!FossilsLegacyKeys.SINK.consumeClick()) {
                 PacketDistributor.sendToServer(new ServerboundSinkPacket(false));
             }
         }

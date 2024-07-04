@@ -1,18 +1,17 @@
 package willatendo.fossilslegacy.client;
 
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import net.minecraft.client.RecipeBookCategories;
+import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 
-import java.util.Arrays;
-import java.util.List;
-
-public enum FossilsLegacyRecipeBookCategories {
-    ARCHAEOLOGY_WORKBENCH_SEARCH(new ItemStack(Items.COMPASS)),
-    ARCHAEOLOGY_WORKBENCH_REPAIR(new ItemStack(FossilsLegacyItems.STONE_TABLET.get()));
-    private final List<ItemStack> itemIcons;
-
-    private FossilsLegacyRecipeBookCategories(ItemStack... itemIcons) {
-        this.itemIcons = Arrays.asList(itemIcons);
-    }
+public class FossilsLegacyRecipeBookCategories {
+    public static final RecipeBookCategories ANALYZATION_SEARCH = FossilsModloaderHelper.INSTANCE.createRecipeBookCategory("analyzation_search");
+    public static final RecipeBookCategories ANALYZATION_MISC = FossilsModloaderHelper.INSTANCE.createRecipeBookCategory("analyzation_misc");
+    public static final RecipeBookCategories ARCHAEOLOGY_WORKBENCH_SEARCH = FossilsModloaderHelper.INSTANCE.createRecipeBookCategory("archaeology_search");
+    public static final RecipeBookCategories ARCHAEOLOGY_WORKBENCH_RESTORE = FossilsModloaderHelper.INSTANCE.createRecipeBookCategory("archaeology_restore");
+    public static final RecipeBookCategories ARCHAEOLOGY_WORKBENCH_REPAIR = FossilsModloaderHelper.INSTANCE.createRecipeBookCategory("archaeology_repair");
+    public static final RecipeBookCategories ARCHAEOLOGY_WORKBENCH_MISC = FossilsModloaderHelper.INSTANCE.createRecipeBookCategory("archaeology_misc");
+    public static final RecipeBookCategories CULTIVATION_SEARCH = FossilsModloaderHelper.INSTANCE.createRecipeBookCategory("cultivation_search");
+    public static final RecipeBookCategories CULTIVATION_EGGS = FossilsModloaderHelper.INSTANCE.createRecipeBookCategory("cultivation_eggs");
+    public static final RecipeBookCategories CULTIVATION_PLANTS = FossilsModloaderHelper.INSTANCE.createRecipeBookCategory("cultivation_plants");
+    public static final RecipeBookCategories CULTIVATION_MISC = FossilsModloaderHelper.INSTANCE.createRecipeBookCategory("cultivation_misc");
 }

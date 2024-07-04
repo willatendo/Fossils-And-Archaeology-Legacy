@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.event;
 
+import net.minecraft.stats.RecipeBookSettings;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -16,6 +17,7 @@ import willatendo.fossilslegacy.FossilsLegacyNeoforgeMod;
 import willatendo.fossilslegacy.network.NeoforgePacketHelper;
 import willatendo.fossilslegacy.network.ServerboundSinkPacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
+import willatendo.fossilslegacy.server.inventory.FossilsLegacyRecipeBookTypes;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.event.NeoforgeAttributeRegister;
@@ -31,6 +33,10 @@ public class ModEvents {
     @SubscribeEvent
     public static void fmlCommonSetupEvent(FMLCommonSetupEvent event) {
         BasicEvents.commonSetup();
+
+        RecipeBookSettings.addTagsForType(FossilsLegacyRecipeBookTypes.ARCHAEOLOGY_WORKBENCH, "isArchaeologyWorkbenchGuiOpen", "isArchaeologyWorkbenchFilteringCraftable");
+        RecipeBookSettings.addTagsForType(FossilsLegacyRecipeBookTypes.CULTIVATOR, "isCultivatorGuiOpen", "isCultivatorFilteringCraftable");
+        RecipeBookSettings.addTagsForType(FossilsLegacyRecipeBookTypes.ANALYZER, "isAnalyzerGuiOpen", "isAnalyzerFilteringCraftable");
     }
 
     @SubscribeEvent

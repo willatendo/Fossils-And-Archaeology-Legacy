@@ -11,6 +11,8 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
+import willatendo.fossilslegacy.server.inventory.AnalyzationBookCategory;
+import willatendo.fossilslegacy.server.inventory.ArchaeologyBookCategory;
 import willatendo.fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSerialisers;
 
 import java.util.HashMap;
@@ -18,12 +20,16 @@ import java.util.List;
 import java.util.Map;
 
 public class AnalyzationRecipe implements Recipe<AnalyzerInput> {
+    public final AnalyzationBookCategory analyzationBookCategory;
     public final Ingredient ingredient;
     public final List<AnalyzationOutputs> results;
     public final Map<ItemStack, Integer> resultsAndWeight = new HashMap<>();
     public final int time;
+    public String group;
 
-    public AnalyzationRecipe(Ingredient ingredient, List<AnalyzationOutputs> results, int time) {
+    public AnalyzationRecipe(AnalyzationBookCategory analyzationBookCategory, String group, Ingredient ingredient, List<AnalyzationOutputs> results, int time) {
+        this.analyzationBookCategory = analyzationBookCategory;
+        this.group = group;
         this.ingredient = ingredient;
         this.results = results;
         for (AnalyzationOutputs analyzationOutputs : results) {

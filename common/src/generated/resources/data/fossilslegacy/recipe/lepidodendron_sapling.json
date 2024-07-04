@@ -1,5 +1,6 @@
 {
   "type": "fossilslegacy:cultivation",
+  "category": "plant",
   "ingredient": {
     "item": "fossilslegacy:petrified_lepidodendron_sapling"
   },

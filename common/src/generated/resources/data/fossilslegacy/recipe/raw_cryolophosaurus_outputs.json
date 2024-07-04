@@ -1,5 +1,6 @@
 {
   "type": "fossilslegacy:analyzation",
+  "category": "misc",
   "ingredient": {
     "item": "fossilslegacy:raw_cryolophosaurus"
   },

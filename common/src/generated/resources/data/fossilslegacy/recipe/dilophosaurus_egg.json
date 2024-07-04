@@ -1,5 +1,6 @@
 {
   "type": "fossilslegacy:cultivation",
+  "category": "egg",
   "ingredient": {
     "item": "fossilslegacy:dilophosaurus_dna"
   },

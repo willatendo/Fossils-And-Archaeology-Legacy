@@ -27,6 +27,9 @@
     ],
     "modmenu": [
       "willatendo.fossilslegacy.client.FossilsLegacyModMenu"
+    ],
+    "simplelibrary:enum_initializer": [
+      "willatendo.fossilslegacy.FossilsLegacyEnumExtenders"
     ]
   },
   "mixins": [

@@ -1,5 +1,6 @@
 {
   "type": "fossilslegacy:archaeology",
+  "category": "repair",
   "ingredient": {
     "item": "fossilslegacy:broken_diamond_javelin"
   },

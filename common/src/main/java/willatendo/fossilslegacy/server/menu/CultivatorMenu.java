@@ -5,24 +5,31 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.entity.player.StackedContents;
+import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
+import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.block.CultivatorBlock;
 import willatendo.fossilslegacy.server.block.entity.CultivatorBlockEntity;
+import willatendo.fossilslegacy.server.inventory.FossilsLegacyRecipeBookTypes;
 import willatendo.fossilslegacy.server.menu.slot.FuelSlot;
 import willatendo.fossilslegacy.server.menu.slot.ResultSlot;
+import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
+import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
 
 import java.util.List;
 
-public class CultivatorMenu extends AbstractContainerMenu {
+public class CultivatorMenu extends RecipeBookMenu<SingleRecipeInput, CultivationRecipe> {
     private final ContainerLevelAccess containerLevelAccess;
+    private final Level level;
     public final CultivatorBlockEntity cultivatorBlockEntity;
 
     public CultivatorMenu(int windowId, Inventory inventory, CultivatorBlockEntity cultivatorBlockEntity) {
         super(FossilsLegacyMenus.CULTIVATOR.get(), windowId);
         this.containerLevelAccess = ContainerLevelAccess.create(cultivatorBlockEntity.getLevel(), cultivatorBlockEntity.getBlockPos());
+        this.level = inventory.player.level();
         this.cultivatorBlockEntity = cultivatorBlockEntity;
 
         this.addSlot(new Slot(cultivatorBlockEntity, 0, 49, 20));
@@ -48,6 +55,45 @@ public class CultivatorMenu extends AbstractContainerMenu {
 
     public CultivatorMenu(int windowId, Inventory inventory, BlockPos blockPos) {
         this(windowId, inventory, (CultivatorBlockEntity) inventory.player.level().getBlockEntity(blockPos));
+    }
+
+
+    @Override
+    public void fillCraftSlotsStackedContents(StackedContents stackedContents) {
+        if (this.cultivatorBlockEntity instanceof StackedContentsCompatible stackedContentsCompatible) {
+            stackedContentsCompatible.fillStackedContents(stackedContents);
+        }
+    }
+
+    @Override
+    public void clearCraftingContent() {
+        this.getSlot(0).set(ItemStack.EMPTY);
+        this.getSlot(2).set(ItemStack.EMPTY);
+    }
+
+    @Override
+    public boolean recipeMatches(RecipeHolder<CultivationRecipe> recipeHolder) {
+        return recipeHolder.value().matches(new SingleRecipeInput(this.cultivatorBlockEntity.getItem(0)), this.level);
+    }
+
+    @Override
+    public int getResultSlotIndex() {
+        return 2;
+    }
+
+    @Override
+    public int getGridWidth() {
+        return 1;
+    }
+
+    @Override
+    public int getGridHeight() {
+        return 1;
+    }
+
+    @Override
+    public int getSize() {
+        return 3;
     }
 
     @Override
@@ -115,4 +161,13 @@ public class CultivatorMenu extends AbstractContainerMenu {
         return this.cultivatorBlockEntity.containerData.get(0) > 0;
     }
 
+    @Override
+    public RecipeBookType getRecipeBookType() {
+        return FossilsLegacyRecipeBookTypes.CULTIVATOR;
+    }
+
+    @Override
+    public boolean shouldMoveToInventory(int slotIndex) {
+        return slotIndex != 1;
+    }
 }

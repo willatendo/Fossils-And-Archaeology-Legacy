@@ -16,10 +16,18 @@ import net.minecraft.world.level.block.state.BlockState;
 import willatendo.fossilslegacy.network.ServerboundSinkPacket;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.Futabasaurus;
+import willatendo.fossilslegacy.server.inventory.FossilsLegacyRecipeBookTypes;
+import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
+import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
+import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
+import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
 import willatendo.simplelibrary.client.event.FabricKeyMappingRegister;
 import willatendo.simplelibrary.client.event.FabricMenuScreenRegister;
 import willatendo.simplelibrary.client.event.FabricModelLayerRegister;
 import willatendo.simplelibrary.client.event.FabricModelRegister;
+import willatendo.simplelibrary.server.util.RecipeBookRegistry;
+
+import java.util.List;
 
 public class FossilsLegacyFabricClient implements ClientModInitializer {
     @Override
@@ -59,11 +67,52 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
                         if (FossilsLegacyKeys.SINK.isDown()) {
                             ClientPlayNetworking.send(new ServerboundSinkPacket(true));
                         }
-                        if (FossilsLegacyKeys.SINK.consumeClick() == false) {
+                        if (!FossilsLegacyKeys.SINK.consumeClick()) {
                             ClientPlayNetworking.send(new ServerboundSinkPacket(false));
                         }
                     }
                 }
+            }
+        });
+
+        RecipeBookRegistry.registerBookCategories(FossilsLegacyRecipeBookTypes.ANALYZER, List.of(FossilsLegacyRecipeBookCategories.ANALYZATION_SEARCH, FossilsLegacyRecipeBookCategories.ANALYZATION_MISC));
+        RecipeBookRegistry.registerBookCategories(FossilsLegacyRecipeBookTypes.ARCHAEOLOGY_WORKBENCH, List.of(FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_SEARCH, FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_REPAIR, FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_RESTORE, FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_MISC));
+        RecipeBookRegistry.registerBookCategories(FossilsLegacyRecipeBookTypes.CULTIVATOR, List.of(FossilsLegacyRecipeBookCategories.CULTIVATION_SEARCH, FossilsLegacyRecipeBookCategories.CULTIVATION_EGGS, FossilsLegacyRecipeBookCategories.CULTIVATION_PLANTS, FossilsLegacyRecipeBookCategories.CULTIVATION_MISC));
+
+        RecipeBookRegistry.registerAggregateCategory(FossilsLegacyRecipeBookCategories.ANALYZATION_SEARCH, List.of(FossilsLegacyRecipeBookCategories.ANALYZATION_MISC));
+        RecipeBookRegistry.registerAggregateCategory(FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_SEARCH, List.of(FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_RESTORE, FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_REPAIR, FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_MISC));
+        RecipeBookRegistry.registerAggregateCategory(FossilsLegacyRecipeBookCategories.CULTIVATION_SEARCH, List.of(FossilsLegacyRecipeBookCategories.CULTIVATION_EGGS, FossilsLegacyRecipeBookCategories.CULTIVATION_PLANTS, FossilsLegacyRecipeBookCategories.CULTIVATION_MISC));
+
+        RecipeBookRegistry.registerRecipeCategoryFinder(FossilsLegacyRecipeTypes.ANALYZATION.get(), recipeHolder -> {
+            AnalyzationRecipe analyzationRecipe = (AnalyzationRecipe) recipeHolder.value();
+            switch (analyzationRecipe.analyzationBookCategory) {
+                default:
+                case MISC:
+                    return FossilsLegacyRecipeBookCategories.ANALYZATION_MISC;
+            }
+        });
+        RecipeBookRegistry.registerRecipeCategoryFinder(FossilsLegacyRecipeTypes.ARCHAEOLOGY.get(), recipeHolder -> {
+            ArchaeologyRecipe archaeologyRecipe = (ArchaeologyRecipe) recipeHolder.value();
+            switch (archaeologyRecipe.archaeologyBookCategory) {
+                case RESTORE:
+                    return FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_RESTORE;
+                case REPAIR:
+                    return FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_REPAIR;
+                default:
+                case MISC:
+                    return FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_MISC;
+            }
+        });
+        RecipeBookRegistry.registerRecipeCategoryFinder(FossilsLegacyRecipeTypes.CULTIVATION.get(), recipeHolder -> {
+            CultivationRecipe cultivationRecipe = (CultivationRecipe) recipeHolder.value();
+            switch (cultivationRecipe.cultivationBookCategory) {
+                case EGG:
+                    return FossilsLegacyRecipeBookCategories.CULTIVATION_EGGS;
+                case PLANT:
+                    return FossilsLegacyRecipeBookCategories.CULTIVATION_PLANTS;
+                default:
+                case MISC:
+                    return FossilsLegacyRecipeBookCategories.CULTIVATION_MISC;
             }
         });
     }

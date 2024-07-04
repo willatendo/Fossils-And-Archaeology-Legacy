@@ -1,5 +1,6 @@
 {
   "type": "fossilslegacy:analyzation",
+  "category": "misc",
   "ingredient": {
     "item": "minecraft:armadillo_scute"
   },

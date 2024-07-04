@@ -109,6 +109,9 @@
 - Added Scarab Gem Chestplate
 - Added Scarab Gem Leggings
 - Added Scarab Gem Boots
+- Added Analyzer Recipe Book
+- Added Archaeology Workbench Recipe Book
+- Added Cultivator Recipe Book
 - Removed Antiquated "Anu Spawns" Config Option
 21/7/2024 B
 - Fixed Summoning Entities

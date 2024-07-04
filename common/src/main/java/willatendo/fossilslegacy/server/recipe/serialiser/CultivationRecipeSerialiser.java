@@ -8,28 +8,26 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import willatendo.fossilslegacy.server.inventory.ArchaeologyBookCategory;
+import willatendo.fossilslegacy.server.inventory.CultivationBookCategory;
 import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
 
 public class CultivationRecipeSerialiser implements RecipeSerializer<CultivationRecipe> {
-    private static final MapCodec<CultivationRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> {
-        return instance.group(Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(archaeologyRecipe -> {
-            return archaeologyRecipe.ingredient;
-        }), ItemStack.STRICT_SINGLE_ITEM_CODEC.fieldOf("result").forGetter(archaeologyRecipe -> {
-            return archaeologyRecipe.result;
-        }), Codec.INT.fieldOf("time").orElse(6000).forGetter(archaeologyRecipe -> {
-            return archaeologyRecipe.time;
-        })).apply(instance, CultivationRecipe::new);
-    });
+    private static final MapCodec<CultivationRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(CultivationBookCategory.CODEC.fieldOf("category").forGetter(cultivationRecipe -> cultivationRecipe.cultivationBookCategory), Codec.STRING.optionalFieldOf("group", "").forGetter(cultivationRecipe -> cultivationRecipe.group), Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(archaeologyRecipe -> archaeologyRecipe.ingredient), ItemStack.STRICT_SINGLE_ITEM_CODEC.fieldOf("result").forGetter(archaeologyRecipe -> archaeologyRecipe.result), Codec.INT.fieldOf("time").orElse(6000).forGetter(archaeologyRecipe -> archaeologyRecipe.time)).apply(instance, CultivationRecipe::new));
     private static final StreamCodec<RegistryFriendlyByteBuf, CultivationRecipe> STREAM_CODEC = StreamCodec.of(CultivationRecipeSerialiser::toNetwork, CultivationRecipeSerialiser::fromNetwork);
 
     private static CultivationRecipe fromNetwork(RegistryFriendlyByteBuf registryFriendlyByteBuf) {
+        CultivationBookCategory cultivationBookCategory = registryFriendlyByteBuf.readEnum(CultivationBookCategory.class);
+        String group = registryFriendlyByteBuf.readUtf();
         Ingredient ingredient = Ingredient.CONTENTS_STREAM_CODEC.decode(registryFriendlyByteBuf);
         ItemStack result = ItemStack.STREAM_CODEC.decode(registryFriendlyByteBuf);
         int time = registryFriendlyByteBuf.readVarInt();
-        return new CultivationRecipe(ingredient, result, time);
+        return new CultivationRecipe(cultivationBookCategory, group, ingredient, result, time);
     }
 
     private static void toNetwork(RegistryFriendlyByteBuf registryFriendlyByteBuf, CultivationRecipe cultivationRecipe) {
+        registryFriendlyByteBuf.writeEnum(cultivationRecipe.cultivationBookCategory);
+        registryFriendlyByteBuf.writeUtf(cultivationRecipe.group);
         Ingredient.CONTENTS_STREAM_CODEC.encode(registryFriendlyByteBuf, cultivationRecipe.ingredient);
         ItemStack.STREAM_CODEC.encode(registryFriendlyByteBuf, cultivationRecipe.result);
         registryFriendlyByteBuf.writeVarInt(cultivationRecipe.time);

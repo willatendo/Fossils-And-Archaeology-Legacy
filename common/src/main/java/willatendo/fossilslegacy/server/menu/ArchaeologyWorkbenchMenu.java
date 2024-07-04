@@ -5,17 +5,23 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.AbstractCookingRecipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.block.ArchaeologyWorkbenchBlock;
 import willatendo.fossilslegacy.server.block.entity.ArchaeologyWorkbenchBlockEntity;
+import willatendo.fossilslegacy.server.inventory.FossilsLegacyRecipeBookTypes;
 import willatendo.fossilslegacy.server.menu.slot.FuelSlot;
 import willatendo.fossilslegacy.server.menu.slot.ResultSlot;
+import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
 
 import java.util.List;
 
-public class ArchaeologyWorkbenchMenu extends AbstractContainerMenu {
+public class ArchaeologyWorkbenchMenu extends RecipeBookMenu<SingleRecipeInput, ArchaeologyRecipe> {
     private final ContainerLevelAccess containerLevelAccess;
     private final Level level;
     public final ArchaeologyWorkbenchBlockEntity archaeologyWorkbenchBlockEntity;
@@ -49,6 +55,44 @@ public class ArchaeologyWorkbenchMenu extends AbstractContainerMenu {
 
     public ArchaeologyWorkbenchMenu(int windowId, Inventory inventory, BlockPos blockPos) {
         this(windowId, inventory, (ArchaeologyWorkbenchBlockEntity) inventory.player.level().getBlockEntity(blockPos));
+    }
+
+    @Override
+    public void fillCraftSlotsStackedContents(StackedContents stackedContents) {
+        if (this.archaeologyWorkbenchBlockEntity instanceof StackedContentsCompatible stackedContentsCompatible) {
+            stackedContentsCompatible.fillStackedContents(stackedContents);
+        }
+    }
+
+    @Override
+    public void clearCraftingContent() {
+        this.getSlot(0).set(ItemStack.EMPTY);
+        this.getSlot(2).set(ItemStack.EMPTY);
+    }
+
+    @Override
+    public boolean recipeMatches(RecipeHolder<ArchaeologyRecipe> recipeHolder) {
+        return recipeHolder.value().matches(new SingleRecipeInput(this.archaeologyWorkbenchBlockEntity.getItem(0)), this.level);
+    }
+
+    @Override
+    public int getResultSlotIndex() {
+        return 2;
+    }
+
+    @Override
+    public int getGridWidth() {
+        return 1;
+    }
+
+    @Override
+    public int getGridHeight() {
+        return 1;
+    }
+
+    @Override
+    public int getSize() {
+        return 3;
     }
 
     @Override
@@ -109,5 +153,15 @@ public class ArchaeologyWorkbenchMenu extends AbstractContainerMenu {
 
     public boolean isOn() {
         return this.archaeologyWorkbenchBlockEntity.containerData.get(0) > 0;
+    }
+
+    @Override
+    public RecipeBookType getRecipeBookType() {
+        return FossilsLegacyRecipeBookTypes.ARCHAEOLOGY_WORKBENCH;
+    }
+
+    @Override
+    public boolean shouldMoveToInventory(int slotIndex) {
+        return slotIndex != 1;
     }
 }

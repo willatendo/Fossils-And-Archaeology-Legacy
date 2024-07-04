@@ -61,30 +61,18 @@ public class FossilsLegacyData {
         legacyPackGenerator.addProvider(legacyPackOutput -> new PackMetadataGenerator(legacyPackOutput).add(PackMetadataSection.TYPE, new PackMetadataSection(FossilsLegacyUtils.translation("resourcePack", "fa_legacy_textures.description"), DetectedVersion.BUILT_IN.getPackVersion(PackType.CLIENT_RESOURCES), Optional.empty())));
     }
 
-    private static class PackGenerator {
-        private final DataGenerator dataGenerator;
-        private final boolean toRun;
-        private final String providerPrefix;
-        private final PackOutput packOutput;
-
-        public PackGenerator(DataGenerator dataGenerator, boolean toRun, String providerPrefix, PackOutput packOutput) {
-            this.dataGenerator = dataGenerator;
-            this.toRun = toRun;
-            this.providerPrefix = providerPrefix;
-            this.packOutput = packOutput;
-        }
-
+    private record PackGenerator(DataGenerator dataGenerator, boolean toRun, String providerPrefix, PackOutput packOutput) {
         public <T extends DataProvider> T addProvider(DataProvider.Factory<T> factory) {
-            T dataProvider = factory.create(this.packOutput);
-            String name = this.providerPrefix + "/" + dataProvider.getName();
-            if (!this.dataGenerator.allProviderIds.add(name)) {
-                throw new IllegalStateException("Duplicate provider: " + name);
-            } else {
-                if (this.toRun) {
-                    this.dataGenerator.providersToRun.put(name, dataProvider);
+                T dataProvider = factory.create(this.packOutput);
+                String name = this.providerPrefix + "/" + dataProvider.getName();
+                if (!this.dataGenerator.allProviderIds.add(name)) {
+                    throw new IllegalStateException("Duplicate provider: " + name);
+                } else {
+                    if (this.toRun) {
+                        this.dataGenerator.providersToRun.put(name, dataProvider);
+                    }
+                    return dataProvider;
                 }
-                return dataProvider;
             }
         }
-    }
 }

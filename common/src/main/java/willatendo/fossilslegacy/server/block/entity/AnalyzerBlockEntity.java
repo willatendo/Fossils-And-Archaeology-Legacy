@@ -348,4 +348,8 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
     protected AbstractContainerMenu createMenu(int windowId, Inventory inventory) {
         return new AnalyzerMenu(windowId, inventory, this);
     }
+
+    public NonNullList<ItemStack> getItemStacks() {
+        return this.itemStacks;
+    }
 }

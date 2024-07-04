@@ -1,0 +1,112 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/world/inventory/RecipeBookType",
+      "name": "fossilslegacyarchaeology_workbench",
+      "constructor": "()V",
+      "parameters": []
+    },
+    {
+      "enum": "net/minecraft/world/inventory/RecipeBookType",
+      "name": "fossilslegacycultivator",
+      "constructor": "()V",
+      "parameters": []
+    },
+    {
+      "enum": "net/minecraft/world/inventory/RecipeBookType",
+      "name": "fossilslegacyanalyzer",
+      "constructor": "()V",
+      "parameters": []
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "fossilslegacyarchaeology_search",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "willatendo/fossilslegacy/server/FossilsLegacyNeoforgeEnumParameters",
+        "method": "getArchaeologySearchParameters"
+      }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "fossilslegacyarchaeology_restore",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "willatendo/fossilslegacy/server/FossilsLegacyNeoforgeEnumParameters",
+        "method": "getArchaeologyRestoreParameters"
+      }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "fossilslegacyarchaeology_repair",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "willatendo/fossilslegacy/server/FossilsLegacyNeoforgeEnumParameters",
+        "method": "getArchaeologyRepairParameters"
+      }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "fossilslegacyarchaeology_misc",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "willatendo/fossilslegacy/server/FossilsLegacyNeoforgeEnumParameters",
+        "method": "getArchaeologyMiscParameters"
+      }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "fossilslegacycultivation_search",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "willatendo/fossilslegacy/server/FossilsLegacyNeoforgeEnumParameters",
+        "method": "getCultivationSearchParameters"
+      }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "fossilslegacycultivation_eggs",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "willatendo/fossilslegacy/server/FossilsLegacyNeoforgeEnumParameters",
+        "method": "getCultivationEggParameters"
+      }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "fossilslegacycultivation_plants",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "willatendo/fossilslegacy/server/FossilsLegacyNeoforgeEnumParameters",
+        "method": "getCultivationPlantParameters"
+      }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "fossilslegacycultivation_misc",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "willatendo/fossilslegacy/server/FossilsLegacyNeoforgeEnumParameters",
+        "method": "getCultivationMiscParameters"
+      }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "fossilslegacyanalyzation_search",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "willatendo/fossilslegacy/server/FossilsLegacyNeoforgeEnumParameters",
+        "method": "getAnalyzationSearchParameters"
+      }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "fossilslegacyanalyzation_misc",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "willatendo/fossilslegacy/server/FossilsLegacyNeoforgeEnumParameters",
+        "method": "getAnalyzationMiscParameters"
+      }
+    }
+  ]
+}

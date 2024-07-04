@@ -4,23 +4,31 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.entity.player.StackedContents;
+import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
+import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.block.AnalyzerBlock;
 import willatendo.fossilslegacy.server.block.entity.AnalyzerBlockEntity;
+import willatendo.fossilslegacy.server.inventory.FossilsLegacyRecipeBookTypes;
 import willatendo.fossilslegacy.server.menu.slot.ResultSlot;
+import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
+import willatendo.fossilslegacy.server.recipe.AnalyzerInput;
+import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
 
 import java.util.List;
 
-public class AnalyzerMenu extends AbstractContainerMenu {
+public class AnalyzerMenu extends RecipeBookMenu<AnalyzerInput, AnalyzationRecipe> {
     private final ContainerLevelAccess containerLevelAccess;
+    private final Level level;
     public final AnalyzerBlockEntity analyzerBlockEntity;
 
     public AnalyzerMenu(int windowId, Inventory inventory, AnalyzerBlockEntity analyzerBlockEntity) {
         super(FossilsLegacyMenus.ANALYZER.get(), windowId);
         this.containerLevelAccess = ContainerLevelAccess.create(analyzerBlockEntity.getLevel(), analyzerBlockEntity.getBlockPos());
+        this.level = inventory.player.level();
         this.analyzerBlockEntity = analyzerBlockEntity;
 
         for (int row = 0; row < 3; row++) {
@@ -54,6 +62,45 @@ public class AnalyzerMenu extends AbstractContainerMenu {
     public AnalyzerMenu(int windowId, Inventory inventory, BlockPos blockPos) {
         this(windowId, inventory, (AnalyzerBlockEntity) inventory.player.level().getBlockEntity(blockPos));
     }
+
+    @Override
+    public void fillCraftSlotsStackedContents(StackedContents stackedContents) {
+        if (this.analyzerBlockEntity instanceof StackedContentsCompatible stackedContentsCompatible) {
+            stackedContentsCompatible.fillStackedContents(stackedContents);
+        }
+    }
+
+    @Override
+    public void clearCraftingContent() {
+        this.getSlot(0).set(ItemStack.EMPTY);
+        this.getSlot(2).set(ItemStack.EMPTY);
+    }
+
+    @Override
+    public boolean recipeMatches(RecipeHolder<AnalyzationRecipe> recipeHolder) {
+        return recipeHolder.value().matches(new AnalyzerInput(this.analyzerBlockEntity.getItem(0), this.analyzerBlockEntity.getItemStacks()), this.level);
+    }
+
+    @Override
+    public int getResultSlotIndex() {
+        return 2;
+    }
+
+    @Override
+    public int getGridWidth() {
+        return 1;
+    }
+
+    @Override
+    public int getGridHeight() {
+        return 1;
+    }
+
+    @Override
+    public int getSize() {
+        return 3;
+    }
+
 
     @Override
     public boolean stillValid(Player player) {
@@ -106,4 +153,13 @@ public class AnalyzerMenu extends AbstractContainerMenu {
         return this.analyzerBlockEntity.containerData.get(0) > 0;
     }
 
+    @Override
+    public RecipeBookType getRecipeBookType() {
+        return FossilsLegacyRecipeBookTypes.ANALYZER;
+    }
+
+    @Override
+    public boolean shouldMoveToInventory(int slotIndex) {
+        return slotIndex != 1;
+    }
 }
