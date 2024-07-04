@@ -8,7 +8,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
@@ -27,7 +26,7 @@ public class ArchaeologyWorkbenchMenu extends RecipeBookMenu<SingleRecipeInput, 
     public final ArchaeologyWorkbenchBlockEntity archaeologyWorkbenchBlockEntity;
 
     public ArchaeologyWorkbenchMenu(int windowId, Inventory inventory, ArchaeologyWorkbenchBlockEntity archaeologyWorkbenchBlockEntity) {
-        super(FossilsLegacyMenus.ARCHAEOLOGY_WORKBENCH.get(), windowId);
+        super(FossilsLegacyMenuTypes.ARCHAEOLOGY_WORKBENCH.get(), windowId);
         this.containerLevelAccess = ContainerLevelAccess.create(archaeologyWorkbenchBlockEntity.getLevel(), archaeologyWorkbenchBlockEntity.getBlockPos());
         this.level = inventory.player.level();
         this.archaeologyWorkbenchBlockEntity = archaeologyWorkbenchBlockEntity;

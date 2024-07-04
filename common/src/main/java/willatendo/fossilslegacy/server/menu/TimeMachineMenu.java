@@ -18,7 +18,7 @@ public class TimeMachineMenu extends AbstractContainerMenu {
     public final TimeMachineBlockEntity timeMachineBlockEntity;
 
     public TimeMachineMenu(int windowId, Inventory inventory, TimeMachineBlockEntity timeMachineBlockEntity) {
-        super(FossilsLegacyMenus.TIME_MACHINE.get(), windowId);
+        super(FossilsLegacyMenuTypes.TIME_MACHINE.get(), windowId);
         this.containerLevelAccess = ContainerLevelAccess.create(timeMachineBlockEntity.getLevel(), timeMachineBlockEntity.getBlockPos());
         this.timeMachineBlockEntity = timeMachineBlockEntity;
 

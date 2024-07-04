@@ -24,7 +24,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import willatendo.fossilslegacy.server.block.entity.ArchaeologyWorkbenchBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.BlockEntityHelper;
-import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
+import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntityTypes;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class ArchaeologyWorkbenchBlock extends Block implements EntityBlock {
@@ -84,7 +84,7 @@ public class ArchaeologyWorkbenchBlock extends Block implements EntityBlock {
 
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide() ? null : BlockEntityHelper.createTickerHelper(blockEntityType, FossilsLegacyBlockEntities.ARCHAEOLOGY_WORKBENCH.get(), ArchaeologyWorkbenchBlockEntity::serverTick);
+        return level.isClientSide() ? null : BlockEntityHelper.createTickerHelper(blockEntityType, FossilsLegacyBlockEntityTypes.ARCHAEOLOGY_WORKBENCH.get(), ArchaeologyWorkbenchBlockEntity::serverTick);
     }
 
     @Override

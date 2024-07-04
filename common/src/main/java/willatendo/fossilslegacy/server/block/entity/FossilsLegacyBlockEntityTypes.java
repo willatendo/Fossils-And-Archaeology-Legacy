@@ -9,7 +9,7 @@ import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 import java.util.List;
 
-public class FossilsLegacyBlockEntities {
+public class FossilsLegacyBlockEntityTypes {
     public static final SimpleRegistry<BlockEntityType<?>> BLOCK_ENTITY_TYPES = SimpleRegistry.create(Registries.BLOCK_ENTITY_TYPE, FossilsLegacyUtils.ID);
 
     public static final SimpleHolder<BlockEntityType<AnalyzerBlockEntity>> ANALYZER = BLOCK_ENTITY_TYPES.register("analyzer", () -> BlockEntityType.Builder.<AnalyzerBlockEntity>of(AnalyzerBlockEntity::new, FossilsLegacyBlocks.ANALYZER.get()).build(null));

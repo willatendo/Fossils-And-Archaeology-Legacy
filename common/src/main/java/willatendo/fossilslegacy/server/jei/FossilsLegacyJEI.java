@@ -22,7 +22,7 @@ import willatendo.fossilslegacy.server.jei.recipe.FeederRecipe;
 import willatendo.fossilslegacy.server.menu.AnalyzerMenu;
 import willatendo.fossilslegacy.server.menu.ArchaeologyWorkbenchMenu;
 import willatendo.fossilslegacy.server.menu.CultivatorMenu;
-import willatendo.fossilslegacy.server.menu.FossilsLegacyMenus;
+import willatendo.fossilslegacy.server.menu.FossilsLegacyMenuTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.ArrayList;
@@ -138,9 +138,9 @@ public class FossilsLegacyJEI implements IModPlugin {
 
     @Override
     public void registerRecipeTransferHandlers(IRecipeTransferRegistration iRecipeTransferRegistration) {
-        iRecipeTransferRegistration.addRecipeTransferHandler(ArchaeologyWorkbenchMenu.class, FossilsLegacyMenus.ARCHAEOLOGY_WORKBENCH.get(), FossilsLegacyJEIRecipeTypes.ARCHAEOLOGY, 0, 1, 3, 36);
-        iRecipeTransferRegistration.addRecipeTransferHandler(CultivatorMenu.class, FossilsLegacyMenus.CULTIVATOR.get(), FossilsLegacyJEIRecipeTypes.CULTIVATION, 0, 1, 3, 36);
-        iRecipeTransferRegistration.addRecipeTransferHandler(AnalyzerMenu.class, FossilsLegacyMenus.ANALYZER.get(), FossilsLegacyJEIRecipeTypes.ANALYZATION, 0, 9, 10, 36);
+        iRecipeTransferRegistration.addRecipeTransferHandler(ArchaeologyWorkbenchMenu.class, FossilsLegacyMenuTypes.ARCHAEOLOGY_WORKBENCH.get(), FossilsLegacyJEIRecipeTypes.ARCHAEOLOGY, 0, 1, 3, 36);
+        iRecipeTransferRegistration.addRecipeTransferHandler(CultivatorMenu.class, FossilsLegacyMenuTypes.CULTIVATOR.get(), FossilsLegacyJEIRecipeTypes.CULTIVATION, 0, 1, 3, 36);
+        iRecipeTransferRegistration.addRecipeTransferHandler(AnalyzerMenu.class, FossilsLegacyMenuTypes.ANALYZER.get(), FossilsLegacyJEIRecipeTypes.ANALYZATION, 0, 9, 10, 36);
     }
 
     @Override

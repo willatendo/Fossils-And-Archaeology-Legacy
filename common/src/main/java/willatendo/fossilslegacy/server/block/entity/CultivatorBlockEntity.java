@@ -167,7 +167,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
     }
 
     public CultivatorBlockEntity(DyeColor dyeColor, BlockPos blockPos, BlockState blockState) {
-        super(FossilsLegacyBlockEntities.CULTIVATOR.get(), blockPos, blockState);
+        super(FossilsLegacyBlockEntityTypes.CULTIVATOR.get(), blockPos, blockState);
         this.dyeColor = dyeColor;
     }
 
@@ -447,7 +447,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
 
     @Override
     protected Component getDefaultName() {
-        return FossilsLegacyUtils.translation("menu", "cultivator");
+        return FossilsLegacyUtils.translation("container", "cultivator");
     }
 
     @Override

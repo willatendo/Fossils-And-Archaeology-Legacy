@@ -19,7 +19,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import willatendo.fossilslegacy.server.block.entity.BlockEntityHelper;
-import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
+import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntityTypes;
 import willatendo.fossilslegacy.server.block.entity.TimeMachineBlockEntity;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
@@ -81,7 +81,7 @@ public class TimeMachineBlock extends Block implements EntityBlock {
 
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide() ? BlockEntityHelper.createTickerHelper(blockEntityType, FossilsLegacyBlockEntities.TIME_MACHINE.get(), TimeMachineBlockEntity::clockTick) : BlockEntityHelper.createTickerHelper(blockEntityType, FossilsLegacyBlockEntities.TIME_MACHINE.get(), TimeMachineBlockEntity::serverTick);
+        return level.isClientSide() ? BlockEntityHelper.createTickerHelper(blockEntityType, FossilsLegacyBlockEntityTypes.TIME_MACHINE.get(), TimeMachineBlockEntity::clockTick) : BlockEntityHelper.createTickerHelper(blockEntityType, FossilsLegacyBlockEntityTypes.TIME_MACHINE.get(), TimeMachineBlockEntity::serverTick);
     }
 
     @Override

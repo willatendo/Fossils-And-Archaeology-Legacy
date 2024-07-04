@@ -1,4 +1,4 @@
-26/7/2024
+6/8/2024
 - Entity Textures Moved From "entities" to "entity"
 - Dinosaur Textures Moved Out Of "animals"
 - Javelin Textures Moved Into "javelin"
@@ -8,6 +8,8 @@
 - Spawn Eggs No Longer Exist In Spawn Eggs Tab
 - Renamned All Meats To Remove "Meat" Part of Their Name
 - Scarab Tools Are Now Fire Resistant
+- Internal Translation Keys Now Follow Vanilla Rules
+- Internal Class Names More Consistent
 - Fixed Cooked Dinosaur Meat Recipes
 - (NeoForge) Fixed Compostables
 - (Fabric) Fixed Animals Breaking Blocks Not Being Toggleable
@@ -23,6 +25,8 @@
 - Fixed Stegosaurus Model
 - Fixed Ancient Armor Being Fixed With Netherite Ingot
 - Fixed Ancient Armor Not Having Durability and Stacking
+- Fixed Internal Typos
+- Fixed Inconsistent Capitalisation With Subtitles
 - (Fabric) Update Mixins Compatibility To Java 21
 - Updated Smildon DNA Texture
 - Updated Mammoth DNA Texture

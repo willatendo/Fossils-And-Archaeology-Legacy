@@ -66,7 +66,7 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
     };
 
     public FeederBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(FossilsLegacyBlockEntities.FEEDER.get(), blockPos, blockState);
+        super(FossilsLegacyBlockEntityTypes.FEEDER.get(), blockPos, blockState);
     }
 
     public static Map<Item, Integer> getMeatFoodLevel() {
@@ -277,7 +277,7 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
 
     @Override
     protected Component getDefaultName() {
-        return FossilsLegacyUtils.translation("menu", "feeder");
+        return FossilsLegacyUtils.translation("container", "feeder");
     }
 
     @Override

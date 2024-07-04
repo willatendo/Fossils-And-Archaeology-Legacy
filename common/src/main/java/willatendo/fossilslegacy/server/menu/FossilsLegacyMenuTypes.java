@@ -13,7 +13,7 @@ import willatendo.simplelibrary.server.util.SimpleUtils;
 
 import java.util.List;
 
-public class FossilsLegacyMenus {
+public class FossilsLegacyMenuTypes {
     public static final SimpleRegistry<MenuType<?>> MENU_TYPES = SimpleRegistry.create(Registries.MENU, FossilsLegacyUtils.ID);
 
     public static final SimpleHolder<MenuType<ArchaeologyWorkbenchMenu>> ARCHAEOLOGY_WORKBENCH = MENU_TYPES.register("archaeology_workbench", () -> SimpleUtils.createMenuType(new ExtendedMenuSupplier<ArchaeologyWorkbenchMenu>() {

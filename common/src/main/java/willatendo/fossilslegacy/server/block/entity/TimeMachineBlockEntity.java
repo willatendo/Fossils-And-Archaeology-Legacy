@@ -78,7 +78,7 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
     };
 
     public TimeMachineBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(FossilsLegacyBlockEntities.TIME_MACHINE.get(), blockPos, blockState);
+        super(FossilsLegacyBlockEntityTypes.TIME_MACHINE.get(), blockPos, blockState);
     }
 
     public float getCircleSize() {
@@ -267,7 +267,7 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
 
     @Override
     protected Component getDefaultName() {
-        return FossilsLegacyUtils.translation("menu", "time_machine");
+        return FossilsLegacyUtils.translation("container", "time_machine");
     }
 
     @Override

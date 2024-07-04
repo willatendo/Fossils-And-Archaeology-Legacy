@@ -76,7 +76,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
     private final CachedCheck<AnalyzerInput, AnalyzationRecipe> recipeCheck = RecipeManager.createCheck(FossilsLegacyRecipeTypes.ANALYZATION.get());
 
     public AnalyzerBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(FossilsLegacyBlockEntities.ANALYZER.get(), blockPos, blockState);
+        super(FossilsLegacyBlockEntityTypes.ANALYZER.get(), blockPos, blockState);
     }
 
     private boolean isOn() {
@@ -331,7 +331,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
 
     @Override
     protected Component getDefaultName() {
-        return FossilsLegacyUtils.translation("menu", "analyzer");
+        return FossilsLegacyUtils.translation("container", "analyzer");
     }
 
     @Override

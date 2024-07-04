@@ -8,7 +8,6 @@ import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.block.AnalyzerBlock;
 import willatendo.fossilslegacy.server.block.entity.AnalyzerBlockEntity;
@@ -16,7 +15,6 @@ import willatendo.fossilslegacy.server.inventory.FossilsLegacyRecipeBookTypes;
 import willatendo.fossilslegacy.server.menu.slot.ResultSlot;
 import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
 import willatendo.fossilslegacy.server.recipe.AnalyzerInput;
-import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
 
 import java.util.List;
 
@@ -26,7 +24,7 @@ public class AnalyzerMenu extends RecipeBookMenu<AnalyzerInput, AnalyzationRecip
     public final AnalyzerBlockEntity analyzerBlockEntity;
 
     public AnalyzerMenu(int windowId, Inventory inventory, AnalyzerBlockEntity analyzerBlockEntity) {
-        super(FossilsLegacyMenus.ANALYZER.get(), windowId);
+        super(FossilsLegacyMenuTypes.ANALYZER.get(), windowId);
         this.containerLevelAccess = ContainerLevelAccess.create(analyzerBlockEntity.getLevel(), analyzerBlockEntity.getBlockPos());
         this.level = inventory.player.level();
         this.analyzerBlockEntity = analyzerBlockEntity;

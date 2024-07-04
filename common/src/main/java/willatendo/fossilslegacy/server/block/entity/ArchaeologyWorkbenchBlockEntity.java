@@ -91,7 +91,7 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
     }
 
     public ArchaeologyWorkbenchBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(FossilsLegacyBlockEntities.ARCHAEOLOGY_WORKBENCH.get(), blockPos, blockState);
+        super(FossilsLegacyBlockEntityTypes.ARCHAEOLOGY_WORKBENCH.get(), blockPos, blockState);
     }
 
     private boolean isOn() {
@@ -367,7 +367,7 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
 
     @Override
     protected Component getDefaultName() {
-        return FossilsLegacyUtils.translation("menu", "archaeology_workbench");
+        return FossilsLegacyUtils.translation("container", "archaeology_workbench");
     }
 
     @Override

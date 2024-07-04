@@ -18,7 +18,7 @@ public class FeederMenu extends AbstractContainerMenu {
     public final FeederBlockEntity feederBlockEntity;
 
     public FeederMenu(int windowId, Inventory inventory, FeederBlockEntity feederBlockEntity) {
-        super(FossilsLegacyMenus.FEEDER.get(), windowId);
+        super(FossilsLegacyMenuTypes.FEEDER.get(), windowId);
         this.containerLevelAccess = ContainerLevelAccess.create(feederBlockEntity.getLevel(), feederBlockEntity.getBlockPos());
         this.feederBlockEntity = feederBlockEntity;
 

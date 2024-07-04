@@ -22,41 +22,41 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
     protected void addTranslations() {
         // Advancements
         this.add("advancements.fossilslegacy.legacy.root.title", "The Legacy");
-        this.add("advancements.fossilslegacy.legacy.root.desc", "Play the Fossils and Archaeology: Legacy!");
+        this.add("advancements.fossilslegacy.legacy.root.description", "Play the Fossils and Archaeology: Legacy!");
         this.add("advancements.fossilslegacy.legacy.fossil.title", "Fossils!");
-        this.add("advancements.fossilslegacy.legacy.fossil.desc", "Acquire a fossil!");
+        this.add("advancements.fossilslegacy.legacy.fossil.description", "Acquire a fossil!");
         this.add("advancements.fossilslegacy.legacy.analyzer.title", "Analyzer!");
-        this.add("advancements.fossilslegacy.legacy.analyzer.desc", "Acquire an analyzer!");
+        this.add("advancements.fossilslegacy.legacy.analyzer.description", "Acquire an analyzer!");
         this.add("advancements.fossilslegacy.legacy.relic_scrap.title", "Old News");
-        this.add("advancements.fossilslegacy.legacy.relic_scrap.desc", "Acquire a relic scrap!");
+        this.add("advancements.fossilslegacy.legacy.relic_scrap.description", "Acquire a relic scrap!");
         this.add("advancements.fossilslegacy.legacy.ancient_sword_artifact.title", "Once Feared");
-        this.add("advancements.fossilslegacy.legacy.ancient_sword_artifact.desc", "Acquire an ancient sword artifact!");
+        this.add("advancements.fossilslegacy.legacy.ancient_sword_artifact.description", "Acquire an ancient sword artifact!");
         this.add("advancements.fossilslegacy.legacy.ancient_sword.title", "1.21 Gigawatts!");
-        this.add("advancements.fossilslegacy.legacy.ancient_sword.desc", "Repair an ancient sword!");
+        this.add("advancements.fossilslegacy.legacy.ancient_sword.description", "Repair an ancient sword!");
         this.add("advancements.fossilslegacy.legacy.pigman.title", "From the Dead!");
-        this.add("advancements.fossilslegacy.legacy.pigman.desc", "Spawn a piglin!");
+        this.add("advancements.fossilslegacy.legacy.pigman.description", "Spawn a piglin!");
         this.add("advancements.fossilslegacy.legacy.ancient_helmet_artifact.title", "Black Magic");
-        this.add("advancements.fossilslegacy.legacy.ancient_helmet_artifact.desc", "Acquire an ancient helmet artifact!");
+        this.add("advancements.fossilslegacy.legacy.ancient_helmet_artifact.description", "Acquire an ancient helmet artifact!");
         this.add("advancements.fossilslegacy.legacy.fixed_ancient_armor.title", "Nether Connections");
-        this.add("advancements.fossilslegacy.legacy.fixed_ancient_armor.desc", "Repair a piece of ancient armor!");
+        this.add("advancements.fossilslegacy.legacy.fixed_ancient_armor.description", "Repair a piece of ancient armor!");
         this.add("advancements.fossilslegacy.legacy.decked_out.title", "Decked Out!");
-        this.add("advancements.fossilslegacy.legacy.decked_out.desc", "Have a complete set of ancient armor!");
+        this.add("advancements.fossilslegacy.legacy.decked_out.description", "Have a complete set of ancient armor!");
         this.add("advancements.fossilslegacy.legacy.tamed_pigman.title", "Till Death I'm To Serve You!");
-        this.add("advancements.fossilslegacy.legacy.tamed_pigman.desc", "Spawn a tamed piglin!");
+        this.add("advancements.fossilslegacy.legacy.tamed_pigman.description", "Spawn a tamed piglin!");
         this.add("advancements.fossilslegacy.legacy.archaeology_workbench.title", "An Archaeologist's Table!");
-        this.add("advancements.fossilslegacy.legacy.archaeology_workbench.desc", "Make a archaeology workbench!");
+        this.add("advancements.fossilslegacy.legacy.archaeology_workbench.description", "Make a archaeology workbench!");
         this.add("advancements.fossilslegacy.legacy.stone_tablet.title", "An Old Story");
-        this.add("advancements.fossilslegacy.legacy.stone_tablet.desc", "Place a stone tablet!");
+        this.add("advancements.fossilslegacy.legacy.stone_tablet.description", "Place a stone tablet!");
         this.add("advancements.fossilslegacy.legacy.skull_block.title", "Spooky Skeletons!");
-        this.add("advancements.fossilslegacy.legacy.skull_block.desc", "Or...Maybe just their skulls?");
+        this.add("advancements.fossilslegacy.legacy.skull_block.description", "Or...Maybe just their skulls?");
         this.add("advancements.fossilslegacy.legacy.anu.title", "The Master!");
-        this.add("advancements.fossilslegacy.legacy.anu.desc", "Summon Anu, the master of the zombified piglins!");
+        this.add("advancements.fossilslegacy.legacy.anu.description", "Summon Anu, the master of the zombified piglins!");
         this.add("advancements.fossilslegacy.legacy.prehistoric_coin.title", "Ticket to the Past!");
-        this.add("advancements.fossilslegacy.legacy.prehistoric_coin.desc", "Acquire a prehistoric coin!");
+        this.add("advancements.fossilslegacy.legacy.prehistoric_coin.description", "Acquire a prehistoric coin!");
         this.add("advancements.fossilslegacy.legacy.overworld_coin.title", "Back to the Future!");
-        this.add("advancements.fossilslegacy.legacy.overworld_coin.desc", "Acquire an overworld coin!");
+        this.add("advancements.fossilslegacy.legacy.overworld_coin.description", "Acquire an overworld coin!");
         this.add("advancements.fossilslegacy.legacy.time_machine.title", "Time Traveller!");
-        this.add("advancements.fossilslegacy.legacy.time_machine.desc", "Travel to the past (without art theft)!");
+        this.add("advancements.fossilslegacy.legacy.time_machine.description", "Travel to the past (without art theft)!");
 
         // Cloth-Config
         this.add("text.autoconfig.fossilslegacy.title", "Fossils and Archaeology Legacy");
@@ -142,12 +142,16 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("command.fossilslegacy.command.use", "Set to %s");
         this.add("command.fossilslegacy.magic_conch.use", "Set all plesiosaurs in a 30 block radius to %s.");
 
+        // Containers
+        this.add("container.fossilslegacy.analyzer", "Analyzer");
+        this.add("container.fossilslegacy.archaeology_workbench", "Archaeology Workbench");
+        this.add("container.fossilslegacy.cultivator", "Cultivator");
+        this.add("container.fossilslegacy.feeder", "Feeder");
+        this.add("container.fossilslegacy.time_machine", "Time Machine");
+        this.add("container.fossilslegacy.time_machine.start", "Start");
+
         // Creative Mode Tab
         this.add(FossilsLegacyCreativeModeTabs.FOSSILS_LEGACY.get(), "F/A: Legacy");
-
-        // Resource Packs
-        this.add("resourcePack.fossilslegacy.description", "Fossils and Archaeology: Legacy Edition Assets");
-        this.add("resourcePack.fossilslegacy.fa_legacy_textures.description", "Fossils and Archaeology Legacy Assets");
 
         // Deaths
         this.add("death.attack.dinosaur_starve", "%1$s starved to death");
@@ -375,8 +379,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.CAT_EMBRYO_SYRINGE.get());
         this.add(FossilsLegacyItems.INCUBATED_CHICKEN_EGG.get());
         this.add(FossilsLegacyItems.COW_EMBRYO_SYRINGE.get());
-        this.add(FossilsLegacyItems.DOLPHIN_EMBRYO_SYRINGE.get());
         this.add(FossilsLegacyItems.DONKEY_EMBRYO_SYRINGE.get());
+        this.add(FossilsLegacyItems.DOLPHIN_EMBRYO_SYRINGE.get());
         this.add(FossilsLegacyItems.FOX_EMBRYO_SYRINGE.get());
         this.add(FossilsLegacyItems.GOAT_EMBRYO_SYRINGE.get());
         this.add(FossilsLegacyItems.HORSE_EMBRYO_SYRINGE.get());
@@ -501,16 +505,10 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         // Keys
         this.add("key.fossilslegacy.sink", "Sink");
 
-        // Menus
-        this.add("menu.fossilslegacy.analyzer", "Analyzer");
-        this.add("menu.fossilslegacy.archaeology_workbench", "Archaeology Workbench");
-        this.add("menu.fossilslegacy.cultivator", "Cultivator");
-        this.add("menu.fossilslegacy.feeder", "Feeder");
-        this.add("menu.fossilslegacy.time_machine", "Time Machine");
-        this.add("menu.fossilslegacy.time_machine.start", "Start");
-
-        // Packs
-        this.add("pack.fossilslegacy.fa_legacy_textures", "F/A Legacy Original Textures");
+        // Resource Packs
+        this.add("resourcePack.fossilslegacy.description", "Fossils and Archaeology: Legacy Assets");
+        this.add("resourcePack.fossilslegacy.fa_legacy_textures.description", "1.3.2 Assets");
+        this.add("resourcePack.fossilslegacy.fa_legacy_textures.name", "F/A Original Textures");
 
         // Stone Tablet
         this.add("stone_tablet.fossilslegacy.lighting.title", "Lightning");

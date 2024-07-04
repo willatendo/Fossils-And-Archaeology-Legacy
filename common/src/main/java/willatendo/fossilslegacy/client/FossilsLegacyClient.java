@@ -28,10 +28,10 @@ import willatendo.fossilslegacy.client.render.*;
 import willatendo.fossilslegacy.client.screen.*;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.block.FossilsLegacyWoodTypes;
-import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
+import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntityTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.entity.variants.BoatType;
-import willatendo.fossilslegacy.server.menu.FossilsLegacyMenus;
+import willatendo.fossilslegacy.server.menu.FossilsLegacyMenuTypes;
 import willatendo.simplelibrary.client.event.KeyMappingRegister;
 import willatendo.simplelibrary.client.event.MenuScreenRegister;
 import willatendo.simplelibrary.client.event.ModelLayerRegister;
@@ -97,9 +97,9 @@ public class FossilsLegacyClient {
         modelRegister.register(FossilsLegacyEntityTypes.LEPIDODENDRON_BOAT.get(), context -> new LepidodendronBoatRenderer(context, false));
         modelRegister.register(FossilsLegacyEntityTypes.LEPIDODENDRON_CHEST_BOAT.get(), context -> new LepidodendronBoatRenderer(context, true));
 
-        modelRegister.register(FossilsLegacyBlockEntities.TIME_MACHINE.get(), TimeMachineClockRenderer::new);
-        modelRegister.register(FossilsLegacyBlockEntities.LEPIDODENDRON_SIGN.get(), SignRenderer::new);
-        modelRegister.register(FossilsLegacyBlockEntities.LEPIDODENDRON_HANGING_SIGN.get(), HangingSignRenderer::new);
+        modelRegister.register(FossilsLegacyBlockEntityTypes.TIME_MACHINE.get(), TimeMachineClockRenderer::new);
+        modelRegister.register(FossilsLegacyBlockEntityTypes.LEPIDODENDRON_SIGN.get(), SignRenderer::new);
+        modelRegister.register(FossilsLegacyBlockEntityTypes.LEPIDODENDRON_HANGING_SIGN.get(), HangingSignRenderer::new);
     }
 
     public static void modelLayerEvent(ModelLayerRegister modelLayerRegister) {
@@ -148,10 +148,10 @@ public class FossilsLegacyClient {
     }
 
     public static void menuScreenEvent(MenuScreenRegister menuScreenRegister) {
-        menuScreenRegister.addMenuScreen(FossilsLegacyMenus.ANALYZER.get(), AnalyzerScreen::new);
-        menuScreenRegister.addMenuScreen(FossilsLegacyMenus.ARCHAEOLOGY_WORKBENCH.get(), ArchaeologyWorkbenchScreen::new);
-        menuScreenRegister.addMenuScreen(FossilsLegacyMenus.CULTIVATOR.get(), CultivatorScreen::new);
-        menuScreenRegister.addMenuScreen(FossilsLegacyMenus.FEEDER.get(), FeederScreen::new);
-        menuScreenRegister.addMenuScreen(FossilsLegacyMenus.TIME_MACHINE.get(), TimeMachineScreen::new);
+        menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.ANALYZER.get(), AnalyzerScreen::new);
+        menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.ARCHAEOLOGY_WORKBENCH.get(), ArchaeologyWorkbenchScreen::new);
+        menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.CULTIVATOR.get(), CultivatorScreen::new);
+        menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.FEEDER.get(), FeederScreen::new);
+        menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.TIME_MACHINE.get(), TimeMachineScreen::new);
     }
 }

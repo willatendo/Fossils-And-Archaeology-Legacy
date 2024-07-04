@@ -16,7 +16,6 @@ import willatendo.fossilslegacy.server.block.entity.CultivatorBlockEntity;
 import willatendo.fossilslegacy.server.inventory.FossilsLegacyRecipeBookTypes;
 import willatendo.fossilslegacy.server.menu.slot.FuelSlot;
 import willatendo.fossilslegacy.server.menu.slot.ResultSlot;
-import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
 import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
 
 import java.util.List;
@@ -27,7 +26,7 @@ public class CultivatorMenu extends RecipeBookMenu<SingleRecipeInput, Cultivatio
     public final CultivatorBlockEntity cultivatorBlockEntity;
 
     public CultivatorMenu(int windowId, Inventory inventory, CultivatorBlockEntity cultivatorBlockEntity) {
-        super(FossilsLegacyMenus.CULTIVATOR.get(), windowId);
+        super(FossilsLegacyMenuTypes.CULTIVATOR.get(), windowId);
         this.containerLevelAccess = ContainerLevelAccess.create(cultivatorBlockEntity.getLevel(), cultivatorBlockEntity.getBlockPos());
         this.level = inventory.player.level();
         this.cultivatorBlockEntity = cultivatorBlockEntity;

@@ -12,6 +12,6 @@ public class LepidodendronSignBlockEntity extends SignBlockEntity {
 
     @Override
     public BlockEntityType<?> getType() {
-        return FossilsLegacyBlockEntities.LEPIDODENDRON_SIGN.get();
+        return FossilsLegacyBlockEntityTypes.LEPIDODENDRON_SIGN.get();
     }
 }

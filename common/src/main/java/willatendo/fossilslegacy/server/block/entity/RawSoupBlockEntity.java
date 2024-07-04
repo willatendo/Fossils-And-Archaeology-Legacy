@@ -16,7 +16,7 @@ public class RawSoupBlockEntity extends BlockEntity {
     private int cookingTick;
 
     public RawSoupBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(FossilsLegacyBlockEntities.RAW_SOUP.get(), blockPos, blockState);
+        super(FossilsLegacyBlockEntityTypes.RAW_SOUP.get(), blockPos, blockState);
     }
 
     @Override

@@ -446,7 +446,7 @@ public class Anu extends Zombie implements SpeakingEntity {
         }
 
         private AnuSpeaker(String id) {
-            this(player -> Anu.AnuSpeaker.basicSpeach(id), "entity.fossilslegacy.anu.speach." + id);
+            this(player -> Anu.AnuSpeaker.basicSpeach(id), "entity.fossilslegacy.anu.speech." + id);
         }
 
         @Override

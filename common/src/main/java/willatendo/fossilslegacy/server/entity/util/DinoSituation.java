@@ -27,11 +27,11 @@ public enum DinoSituation implements SpeakerType<Dinosaur> {
 	}
 
 	private DinoSituation(String id) {
-		this(DinoSituation.basicSpeach(id), "dinosaur.fossilslegacy.speach." + id);
+		this(DinoSituation.basicSpeach(id), "dinosaur.fossilslegacy.speech." + id);
 	}
 
 	protected static Function<Dinosaur, Component> basicSpeach(String id) {
-		return dinosaur -> FossilsLegacyUtils.translation("dinosaur", "speach." + id, dinosaur.getDisplayName());
+		return dinosaur -> FossilsLegacyUtils.translation("dinosaur", "speech." + id, dinosaur.getDisplayName());
 	}
 
 	public String getTranslationKey() {

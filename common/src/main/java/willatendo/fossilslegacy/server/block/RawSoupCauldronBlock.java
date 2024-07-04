@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 import willatendo.fossilslegacy.server.block.entity.BlockEntityHelper;
-import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntities;
+import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntityTypes;
 import willatendo.fossilslegacy.server.block.entity.RawSoupBlockEntity;
 
 public class RawSoupCauldronBlock extends SoupCauldronBlock implements EntityBlock {
@@ -20,7 +20,7 @@ public class RawSoupCauldronBlock extends SoupCauldronBlock implements EntityBlo
 
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide() ? null : BlockEntityHelper.createTickerHelper(blockEntityType, FossilsLegacyBlockEntities.RAW_SOUP.get(), RawSoupBlockEntity::serverTick);
+        return level.isClientSide() ? null : BlockEntityHelper.createTickerHelper(blockEntityType, FossilsLegacyBlockEntityTypes.RAW_SOUP.get(), RawSoupBlockEntity::serverTick);
     }
 
     @Nullable
