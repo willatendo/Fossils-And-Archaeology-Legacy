@@ -31,6 +31,8 @@
 - (NeoForge) Fixed Legacy Textures Pack Having Same Name As Description
 - Fixed Cloth Config Having Untranslated Strings
 - Fixed Pteranodon Crash
+- Fixed Legacy Textures Not Working With Blocks
+- Fixed Legacy Textures Not Having Gray Cultivator Texture
 - (Fabric) Update Mixins Compatibility To Java 21
 - Updated Smildon DNA Texture
 - Updated Mammoth DNA Texture
