@@ -7,6 +7,9 @@
 - Spawn Eggs No Longer Exist In Spawn Eggs Tab
 - Renamned All Meats To Remove "Meat" Part of Their Name
 - Scarab Tools Are Now Fire Resistant
+- Internal Translation Keys Now Follow Vanilla Rules
+- Internal Class Names More Consistent
+- Updated Legacy Textures Pack Name
 - Fixed Cooked Dinosaur Meat Recipes
 - (NeoForge) Fixed Compostables
 - (Fabric) Fixed Animals Breaking Blocks Not Being Toggleable
@@ -22,6 +25,13 @@
 - Fixed Stegosaurus Model
 - Fixed Ancient Armor Being Fixed With Netherite Ingot
 - Fixed Ancient Armor Not Having Durability and Stacking
+- Fixed Internal Typos
+- Fixed Inconsistent Capitalisation With Subtitles
+- (NeoForge) Fixed Legacy Textures Pack Having Same Name As Description
+- Fixed Cloth Config Having Untranslated Strings
+- Fixed Pteranodon Crash
+- Fixed Legacy Textures Not Working With Blocks
+- Fixed Legacy Textures Not Having Gray Cultivator Texture
 - (Fabric) Update Mixins Compatibility To Java 21
 - Updated Smildon DNA Texture
 - Updated Mammoth DNA Texture
