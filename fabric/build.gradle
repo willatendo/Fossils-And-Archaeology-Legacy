@@ -60,17 +60,18 @@ loom {
 modrinth {
     token = System.getenv("MODRINTH_TOKEN")
     projectId = "fossils-and-archaeology-legacy"
-    versionNumber = "${version}"
+    versionNumber = "${mod_version}"
+    versionName = "${mod_version_name}"
     versionType = "release"
     uploadFile = remapJar
     gameVersions = ["${minecraft_version}"]
     loaders = ["fabric"]
-    changelog = new File("$rootDir/changelog-${version}.md").text
+    changelog = new File("$rootDir/changelog-${mod_version}.md").text
     dependencies {
         required.project "fabric-api"
-        optional.version "cloth-config"
-        optional.version "modmenu"
-        optional.version "forge-config-api-port"
-        optional.version "jei"
+        optional.project "cloth-config"
+        optional.project "modmenu"
+        optional.project "forge-config-api-port"
+        optional.project "jei"
     }
 }

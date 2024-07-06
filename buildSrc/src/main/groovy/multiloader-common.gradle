@@ -9,8 +9,6 @@ base {
 
 java {
     toolchain.languageVersion = JavaLanguageVersion.of(java_version)
-    withSourcesJar()
-    withJavadocJar()
 }
 
 repositories {
@@ -44,7 +42,7 @@ repositories {
     maven { url = "https://modmaven.dev" }
 }
 
-['apiElements', 'runtimeElements', 'sourcesElements', 'javadocElements'].each { variant ->
+['apiElements', 'runtimeElements'].each { variant ->
     configurations."$variant".outgoing {
         capability("$group:${base.archivesName.get()}:$version")
         capability("$group:$mod_id-${project.name}-${minecraft_version}:$version")
@@ -55,33 +53,9 @@ repositories {
     }
 }
 
-sourcesJar {
-    from(rootProject.file("LICENSE")) {
-        rename { "${it}_${mod_name}" }
-    }
-}
-
-jar {
-    from(rootProject.file("LICENSE")) {
-        rename { "${it}_${mod_name}" }
-    }
-
-    manifest {
-        attributes([
-                'Specification-Title'   : mod_name,
-                'Specification-Vendor'  : mod_author,
-                'Specification-Version' : project.jar.archiveVersion,
-                'Implementation-Title'  : project.name,
-                'Implementation-Version': project.jar.archiveVersion,
-                'Implementation-Vendor' : mod_author,
-                'Built-On-Minecraft'    : minecraft_version
-        ])
-    }
-}
-
 processResources {
     def expandProps = [
-            "version"                : version,
+            "version"                : mod_version,
             "group"                  : project.group,
             "minecraft_version"      : minecraft_version,
             "minecraft_version_range": minecraft_version_range,
