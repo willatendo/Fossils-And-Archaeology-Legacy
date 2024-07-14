@@ -7,7 +7,7 @@ public interface TamedSpeakingEntity extends SpeakingEntity, TameAccessor, Simpl
 		if (this.isTame() && this.getOwner() instanceof Player player) {
 			this.sendMessageToPlayer(speaker, player);
 		} else {
-			for (Player player : this.level().players()) {
+			for (Player player : this.getLevel().players()) {
 				this.sendMessageToPlayer(speaker, player);
 			}
 		}

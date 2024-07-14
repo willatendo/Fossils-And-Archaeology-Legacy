@@ -20,9 +20,9 @@ public interface TameAccessor extends SimpleLevelAccessor {
 	default void setOwnerUUID(UUID uuid, boolean treat) {
 		if (treat) {
 			if (this instanceof SpeakingEntity speakingEntity) {
-				speakingEntity.sendMessageToPlayer(DinoSituation.TAME_WITH_TREAT, this.level().getPlayerByUUID(uuid));
+				speakingEntity.sendMessageToPlayer(DinoSituation.TAME_WITH_TREAT, this.getLevel().getPlayerByUUID(uuid));
 			} else {
-				Player player = this.level().getPlayerByUUID(uuid);
+				Player player = this.getLevel().getPlayerByUUID(uuid);
 				player.sendSystemMessage(DinoSituation.TAME_WITH_TREAT.getMessage(player, (Dinosaur) (Object) this));
 			}
 		}
