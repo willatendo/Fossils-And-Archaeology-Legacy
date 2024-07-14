@@ -8,7 +8,6 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import willatendo.fossilslegacy.server.inventory.ArchaeologyBookCategory;
 import willatendo.fossilslegacy.server.inventory.CultivationBookCategory;
 import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
 

@@ -7,8 +7,6 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
-import java.util.List;
-
 public class FossilsLegacyPregnancyTypes {
     public static final SimpleRegistry<PregnancyType> PREGNANCY_TYPES = SimpleRegistry.create(FossilsLegacyRegistries.PREGNANCY_TYPES, FossilsLegacyUtils.ID);
 
@@ -31,8 +29,4 @@ public class FossilsLegacyPregnancyTypes {
     public static final SimpleHolder<PregnancyType> WOLF = PREGNANCY_TYPES.register("wolf", () -> new PregnancyType(() -> EntityType.WOLF));
     public static final SimpleHolder<PregnancyType> MAMMOTH = PREGNANCY_TYPES.register("mammoth", () -> new PregnancyType(() -> FossilsLegacyEntityTypes.MAMMOTH.get()));
     public static final SimpleHolder<PregnancyType> SMILODON = PREGNANCY_TYPES.register("smilodon", () -> new PregnancyType(() -> FossilsLegacyEntityTypes.SMILODON.get()));
-
-    public static void init(List<SimpleRegistry<?>> simpleRegistries) {
-        simpleRegistries.add(PREGNANCY_TYPES);
-    }
 }

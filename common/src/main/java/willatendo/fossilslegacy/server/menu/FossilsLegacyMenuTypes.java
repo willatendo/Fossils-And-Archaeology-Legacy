@@ -11,8 +11,6 @@ import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
-import java.util.List;
-
 public class FossilsLegacyMenuTypes {
     public static final SimpleRegistry<MenuType<?>> MENU_TYPES = SimpleRegistry.create(Registries.MENU, FossilsLegacyUtils.ID);
 
@@ -71,9 +69,4 @@ public class FossilsLegacyMenuTypes {
             return new TimeMachineMenu(windowId, inventory, blockPos);
         }
     }));
-    ;
-
-    public static void init(List<SimpleRegistry<?>> simpleRegistries) {
-        simpleRegistries.add(MENU_TYPES);
-    }
 }

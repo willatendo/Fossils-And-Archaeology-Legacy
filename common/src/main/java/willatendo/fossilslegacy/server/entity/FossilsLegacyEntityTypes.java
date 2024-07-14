@@ -10,7 +10,6 @@ import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
-import java.util.List;
 import java.util.Optional;
 
 public class FossilsLegacyEntityTypes {
@@ -70,11 +69,4 @@ public class FossilsLegacyEntityTypes {
     public static final SimpleHolder<EntityType<DilophosaurusVenom>> DILOPHOSAURUS_VENOM = ENTITY_TYPES.register("dilophosaurus_venom", () -> SimpleUtils.entityTypeBuilder("dilophosaurus_venom", DilophosaurusVenom::new, MobCategory.MISC, 0.5F, 0.5F));
 
     public static final SimpleHolder<EntityType<StoneTablet>> STONE_TABLET = ENTITY_TYPES.register("stone_tablet", () -> SimpleUtils.entityTypeBuilder("stone_tablet", StoneTablet::new, MobCategory.MISC, 0.5F, 0.5F));
-
-    public static final SimpleHolder<EntityType<LepidodendronBoat>> LEPIDODENDRON_BOAT = ENTITY_TYPES.register("lepidodendron_boat", () -> SimpleUtils.entityTypeBuilder("lepidodendron_boat", LepidodendronBoat::new, MobCategory.MISC, 1.375F, 0.5625F));
-    public static final SimpleHolder<EntityType<LepidodendronChestBoat>> LEPIDODENDRON_CHEST_BOAT = ENTITY_TYPES.register("lepidodendron_chest_boat", () -> SimpleUtils.entityTypeBuilder("lepidodendron_chest_boat", LepidodendronChestBoat::new, MobCategory.MISC, 1.375F, 0.5625F));
-
-    public static void init(List<SimpleRegistry<?>> simpleRegistries) {
-        simpleRegistries.add(ENTITY_TYPES);
-    }
 }

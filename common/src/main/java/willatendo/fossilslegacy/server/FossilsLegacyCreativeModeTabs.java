@@ -23,7 +23,6 @@ import willatendo.simplelibrary.server.registry.SimpleRegistry;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 import java.util.Comparator;
-import java.util.List;
 import java.util.function.Predicate;
 
 public class FossilsLegacyCreativeModeTabs {
@@ -293,9 +292,5 @@ public class FossilsLegacyCreativeModeTabs {
             itemStack.set(DataComponents.ENTITY_DATA, customData);
             output.accept(itemStack, tabVisibility);
         });
-    }
-
-    public static void init(List<SimpleRegistry<?>> simpleRegistries) {
-        simpleRegistries.add(CREATIVE_MODE_TABS);
     }
 }

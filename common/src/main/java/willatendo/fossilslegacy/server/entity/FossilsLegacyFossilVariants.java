@@ -8,7 +8,6 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
-import java.util.List;
 import java.util.function.Function;
 
 public class FossilsLegacyFossilVariants {
@@ -40,9 +39,5 @@ public class FossilsLegacyFossilVariants {
 
     public static SimpleHolder<FossilVariant> register(String id, int maxSize, ResourceLocation textureLocation, float shadowSize, float boundingBoxWidth, float boundingBoxHeight, Function<Fossil, FossilScaleFactor> fossilScaleFactor) {
         return FOSSIL_VARIANTS.register(id, () -> new FossilVariant(maxSize, textureLocation, shadowSize, boundingBoxWidth, boundingBoxHeight, fossilScaleFactor));
-    }
-
-    public static void init(List<SimpleRegistry<?>> simpleRegistries) {
-        simpleRegistries.add(FOSSIL_VARIANTS);
     }
 }

@@ -7,8 +7,6 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
-import java.util.List;
-
 public class FossilsLegacyBlockEntityTypes {
     public static final SimpleRegistry<BlockEntityType<?>> BLOCK_ENTITY_TYPES = SimpleRegistry.create(Registries.BLOCK_ENTITY_TYPE, FossilsLegacyUtils.ID);
 
@@ -20,8 +18,4 @@ public class FossilsLegacyBlockEntityTypes {
     public static final SimpleHolder<BlockEntityType<RawSoupBlockEntity>> RAW_SOUP = BLOCK_ENTITY_TYPES.register("raw_soup", () -> BlockEntityType.Builder.<RawSoupBlockEntity>of(RawSoupBlockEntity::new, FossilsLegacyBlocks.RAW_CHICKEN_SOUP_CAULDRON.get(), FossilsLegacyBlocks.RAW_BERRY_MEDLEY_CAULDRON.get()).build(null));
     public static final SimpleHolder<BlockEntityType<LepidodendronSignBlockEntity>> LEPIDODENDRON_SIGN = BLOCK_ENTITY_TYPES.register("lepidodendron_sign", () -> BlockEntityType.Builder.<LepidodendronSignBlockEntity>of(LepidodendronSignBlockEntity::new, FossilsLegacyBlocks.LEPIDODENDRON_SIGN.get(), FossilsLegacyBlocks.LEPIDODENDRON_WALL_SIGN.get()).build(null));
     public static final SimpleHolder<BlockEntityType<LepidodendronHangingSignBlockEntity>> LEPIDODENDRON_HANGING_SIGN = BLOCK_ENTITY_TYPES.register("lepidodendron_hanging_sign", () -> BlockEntityType.Builder.<LepidodendronHangingSignBlockEntity>of(LepidodendronHangingSignBlockEntity::new, FossilsLegacyBlocks.LEPIDODENDRON_HANGING_SIGN.get(), FossilsLegacyBlocks.LEPIDODENDRON_WALL_HANGING_SIGN.get()).build(null));
-
-    public static void init(List<SimpleRegistry<?>> simpleRegistries) {
-        simpleRegistries.add(BLOCK_ENTITY_TYPES);
-    }
 }

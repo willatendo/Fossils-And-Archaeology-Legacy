@@ -10,7 +10,6 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
-import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -38,9 +37,5 @@ public class FossilsLegacyEggVariants {
 
     public static SimpleHolder<EggVariant> register(String id, boolean wet, Function<Egg, Boolean> incubate, Supplier<EntityType> entityType, Supplier<Item> pick) {
         return EGG_VARIANTS.register(id, () -> new EggVariant(FossilsLegacyUtils.resource("textures/entity/egg/" + id + ".png"), wet, incubate, FossilsLegacyLootTables.create("entities/egg/" + id), entityType, pick));
-    }
-
-    public static void init(List<SimpleRegistry<?>> simpleRegistries) {
-        simpleRegistries.add(EGG_VARIANTS);
     }
 }

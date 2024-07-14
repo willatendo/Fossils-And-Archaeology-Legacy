@@ -7,8 +7,6 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
-import java.util.List;
-
 public class FossilsLegacyStructureTypes {
     public static final SimpleRegistry<StructureType<?>> STRUCTURE_TYPE = SimpleRegistry.create(Registries.STRUCTURE_TYPE, FossilsLegacyUtils.ID);
 
@@ -25,8 +23,4 @@ public class FossilsLegacyStructureTypes {
             return WeaponShopStructure.CODEC;
         }
     });
-
-    public static void init(List<SimpleRegistry<?>> simpleRegistries) {
-        simpleRegistries.add(STRUCTURE_TYPE);
-    }
 }

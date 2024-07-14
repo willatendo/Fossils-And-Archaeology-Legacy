@@ -7,14 +7,8 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
-import java.util.List;
-
 public class FossilsLegacyDataComponents {
     public static final SimpleRegistry<DataComponentType<?>> DATA_COMPONENT_TYPES = SimpleRegistry.create(Registries.DATA_COMPONENT_TYPE, FossilsLegacyUtils.ID);
 
     public static final SimpleHolder<DataComponentType<DinosaurCommand>> DINOSAUR_COMMAND = DATA_COMPONENT_TYPES.register("dinosaur_command", () -> DataComponentType.<DinosaurCommand>builder().persistent(DinosaurCommand.CODEC).networkSynchronized(DinosaurCommand.STREAM_CODEC).cacheEncoding().build());
-
-    public static void init(List<SimpleRegistry<?>> simpleRegistries) {
-        simpleRegistries.add(DATA_COMPONENT_TYPES);
-    }
 }

@@ -226,9 +226,11 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.NETHER_COIN.get());
         this.basicItem(FossilsLegacyItems.PREHISTORIC_COIN.get());
 
-        for (SimpleHolder<? extends Item> items : FossilsLegacyItems.DEBUG_ITEMS.getEntriesView()) {
-            this.handheldItem(items.get(), FossilsLegacyUtils.mc("item/bone"));
-        }
+        this.handheldItem(FossilsLegacyItems.DEBUG_MAX_HUNGER.get(), FossilsLegacyUtils.mc("item/bone"));
+        this.handheldItem(FossilsLegacyItems.DEBUG_MAX_HEALTH.get(), FossilsLegacyUtils.mc("item/bone"));
+        this.handheldItem(FossilsLegacyItems.DEBUG_FULL_GROWN.get(), FossilsLegacyUtils.mc("item/bone"));
+        this.handheldItem(FossilsLegacyItems.DEBUG_BABY.get(), FossilsLegacyUtils.mc("item/bone"));
+        this.handheldItem(FossilsLegacyItems.DEBUG_TAME.get(), FossilsLegacyUtils.mc("item/bone"));
 
         this.basicBlock(FossilsLegacyBlocks.FOSSIL_ORE.get());
         this.basicBlock(FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get());

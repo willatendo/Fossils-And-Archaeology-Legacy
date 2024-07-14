@@ -6,8 +6,6 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
-import java.util.List;
-
 public class FossilsLegacyStoneTabletVariants {
     public static final SimpleRegistry<StoneTabletVariant> STONE_TABLET_VARIANTS = SimpleRegistry.create(FossilsLegacyRegistries.STONE_TABLET_VARIANTS, FossilsLegacyUtils.ID);
 
@@ -34,9 +32,5 @@ public class FossilsLegacyStoneTabletVariants {
 
     public static SimpleHolder<StoneTabletVariant> register(String id, int width, int height) {
         return STONE_TABLET_VARIANTS.register(id, () -> new StoneTabletVariant(id, width, height));
-    }
-
-    public static void init(List<SimpleRegistry<?>> simpleRegistries) {
-        simpleRegistries.add(STONE_TABLET_VARIANTS);
     }
 }

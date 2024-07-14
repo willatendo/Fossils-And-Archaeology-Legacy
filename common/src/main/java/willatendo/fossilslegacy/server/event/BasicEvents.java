@@ -105,7 +105,6 @@ public class BasicEvents {
     }
 
     public static void newRegistryEvent(NewRegistryRegister newRegistryRegister) {
-        newRegistryRegister.register(FossilsLegacyBuiltInRegistries.BOAT_TYPES);
         newRegistryRegister.register(FossilsLegacyBuiltInRegistries.EGG_VARIANTS);
         newRegistryRegister.register(FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES);
         newRegistryRegister.register(FossilsLegacyBuiltInRegistries.FOSSIL_VARIANTS);

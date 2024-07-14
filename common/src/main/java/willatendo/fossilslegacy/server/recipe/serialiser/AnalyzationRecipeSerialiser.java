@@ -9,7 +9,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import willatendo.fossilslegacy.server.inventory.AnalyzationBookCategory;
-import willatendo.fossilslegacy.server.inventory.ArchaeologyBookCategory;
 import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
 import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe.AnalyzationOutputs;
 

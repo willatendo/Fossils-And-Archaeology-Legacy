@@ -7,16 +7,10 @@ import willatendo.simplelibrary.server.recipe.SimpleRecipeType;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
-import java.util.List;
-
 public class FossilsLegacyRecipeTypes {
     public static final SimpleRegistry<RecipeType<?>> RECIPE_TYPES = SimpleRegistry.create(Registries.RECIPE_TYPE, FossilsLegacyUtils.ID);
 
-    public static final SimpleHolder<SimpleRecipeType<AnalyzationRecipe>> ANALYZATION = RECIPE_TYPES.register("analyzation", () -> new SimpleRecipeType<AnalyzationRecipe>());
-    public static final SimpleHolder<SimpleRecipeType<ArchaeologyRecipe>> ARCHAEOLOGY = RECIPE_TYPES.register("archaeology", () -> new SimpleRecipeType<ArchaeologyRecipe>());
-    public static final SimpleHolder<SimpleRecipeType<CultivationRecipe>> CULTIVATION = RECIPE_TYPES.register("cultivation", () -> new SimpleRecipeType<CultivationRecipe>());
-
-    public static void init(List<SimpleRegistry<?>> simpleRegistries) {
-        simpleRegistries.add(RECIPE_TYPES);
-    }
+    public static final SimpleHolder<SimpleRecipeType<AnalyzationRecipe>> ANALYZATION = RECIPE_TYPES.register("analyzation", SimpleRecipeType::new);
+    public static final SimpleHolder<SimpleRecipeType<ArchaeologyRecipe>> ARCHAEOLOGY = RECIPE_TYPES.register("archaeology", SimpleRecipeType::new);
+    public static final SimpleHolder<SimpleRecipeType<CultivationRecipe>> CULTIVATION = RECIPE_TYPES.register("cultivation", SimpleRecipeType::new);
 }

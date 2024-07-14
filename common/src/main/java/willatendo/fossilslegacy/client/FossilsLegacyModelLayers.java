@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.client;
 
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import willatendo.fossilslegacy.server.entity.variants.BoatType;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FossilsLegacyModelLayers {
@@ -49,13 +48,5 @@ public class FossilsLegacyModelLayers {
 
     private static ModelLayerLocation create(String layerName, String layer) {
         return new ModelLayerLocation(FossilsLegacyUtils.resource(layerName), layer);
-    }
-
-    public static ModelLayerLocation createBoatModelName(BoatType boatType) {
-        return new ModelLayerLocation(FossilsLegacyUtils.resource("boat/" + boatType.name()), "main");
-    }
-
-    public static ModelLayerLocation createChestBoatModelName(BoatType boatType) {
-        return new ModelLayerLocation(FossilsLegacyUtils.resource("chest_boat/" + boatType.name()), "main");
     }
 }

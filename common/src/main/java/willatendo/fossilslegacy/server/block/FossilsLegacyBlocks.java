@@ -15,8 +15,6 @@ import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
-import java.util.List;
-
 public class FossilsLegacyBlocks {
     public static final SimpleRegistry<Block> BLOCKS = SimpleRegistry.create(Registries.BLOCK, FossilsLegacyUtils.ID);
 
@@ -94,9 +92,5 @@ public class FossilsLegacyBlocks {
 
     private static StairBlock stair(Block block) {
         return new StairBlock(block.defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(block));
-    }
-
-    public static void init(List<SimpleRegistry<?>> simpleRegistries) {
-        simpleRegistries.add(BLOCKS);
     }
 }

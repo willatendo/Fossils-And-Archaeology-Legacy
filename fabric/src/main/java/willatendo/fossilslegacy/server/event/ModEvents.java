@@ -48,10 +48,12 @@ public class ModEvents {
 
     public static void addToCreativeModeTabs() {
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.OP_BLOCKS).register(fabricItemGroupEntries -> {
-            for (SimpleHolder<? extends Item> items : FossilsLegacyItems.DEBUG_ITEMS.getEntriesView()) {
-                if ((fabricItemGroupEntries.shouldShowOpRestrictedItems())) {
-                    fabricItemGroupEntries.accept(items.get());
-                }
+            if (fabricItemGroupEntries.shouldShowOpRestrictedItems()) {
+                fabricItemGroupEntries.accept(FossilsLegacyItems.DEBUG_MAX_HUNGER.get());
+                fabricItemGroupEntries.accept(FossilsLegacyItems.DEBUG_MAX_HEALTH.get());
+                fabricItemGroupEntries.accept(FossilsLegacyItems.DEBUG_FULL_GROWN.get());
+                fabricItemGroupEntries.accept(FossilsLegacyItems.DEBUG_BABY.get());
+                fabricItemGroupEntries.accept(FossilsLegacyItems.DEBUG_TAME.get());
             }
         });
     }

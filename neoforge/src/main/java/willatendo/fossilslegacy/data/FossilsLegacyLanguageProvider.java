@@ -10,6 +10,7 @@ import willatendo.fossilslegacy.server.entity.TamedZombifiedPiglin;
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.SpeakerType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.data.SimpleLanguageProvider;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 
@@ -482,9 +483,12 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.LEPIDODENDRON_BOAT.get());
         this.add(FossilsLegacyItems.LEPIDODENDRON_CHEST_BOAT.get(), "Lepidodendron Boat with Chest");
 
-        for (SimpleHolder<? extends Item> items : FossilsLegacyItems.DEBUG_ITEMS.getEntriesView()) {
-            this.add(items.get(), "Debug Item");
-        }
+        this.add(FossilsLegacyItems.DEBUG_MAX_HUNGER.get(), "Debug Item");
+        this.add(FossilsLegacyItems.DEBUG_MAX_HEALTH.get(), "Debug Item");
+        this.add(FossilsLegacyItems.DEBUG_FULL_GROWN.get(), "Debug Item");
+        this.add(FossilsLegacyItems.DEBUG_BABY.get(), "Debug Item");
+        this.add(FossilsLegacyItems.DEBUG_TAME.get(), "Debug Item");
+
 
         this.add("debugItem.fossilslegacy.type", "Type: %s");
         this.add("debugItem.fossilslegacy.set_max_hunger", "Set Max Hunger");

@@ -19,37 +19,35 @@ import willatendo.fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSeri
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.structure.FossilsLegacyStructureTypes;
 import willatendo.fossilslegacy.server.structure.piece.FossilsLegacyStructurePeices;
-import willatendo.simplelibrary.server.registry.SimpleRegistry;
-
-import java.util.List;
+import willatendo.simplelibrary.server.event.SimpleRegistryRegister;
 
 public class FossilsLegacyMod {
-    public static void onInitialize(List<SimpleRegistry<?>> simpleRegistries) {
+    public static void onInitialize(SimpleRegistryRegister simpleRegistryRegister) {
         FossilsLegacyBuiltInRegistries.init();
 
-        FossilsLegacyRecipeTypes.init(simpleRegistries);
-        FossilsLegacyRecipeSerialisers.init(simpleRegistries);
-        FossilsLegacySoundEvents.init(simpleRegistries);
-        FossilsLegacyTrunkPlacerTypes.init(simpleRegistries);
-        FossilsLegacyFoliagePlacerTypes.init(simpleRegistries);
-        FossilsLegacyBlocks.init(simpleRegistries);
-        FossilsLegacyBlockEntityTypes.init(simpleRegistries);
-        FossilsLegacyMenuTypes.init(simpleRegistries);
-        FossilsLegacyBoatTypes.init(simpleRegistries);
-        FossilsLegacyEggVariants.init(simpleRegistries);
-        FossilsLegacyPregnancyTypes.init(simpleRegistries);
-        FossilsLegacyFossilVariants.init(simpleRegistries);
-        FossilsLegacyStoneTabletVariants.init(simpleRegistries);
+        simpleRegistryRegister.register(FossilsLegacyRecipeTypes.RECIPE_TYPES);
+        simpleRegistryRegister.register(FossilsLegacyRecipeSerialisers.RECIPE_SERIALIZERS);
+        simpleRegistryRegister.register(FossilsLegacySoundEvents.SOUND_EVENTS);
+        simpleRegistryRegister.register(FossilsLegacyTrunkPlacerTypes.TRUNK_PLACER_TYPES);
+        simpleRegistryRegister.register(FossilsLegacyFoliagePlacerTypes.FOLIAGE_PLACER_TYPES);
+        simpleRegistryRegister.register(FossilsLegacyBlocks.BLOCKS);
+        simpleRegistryRegister.register(FossilsLegacyBlockEntityTypes.BLOCK_ENTITY_TYPES);
+        simpleRegistryRegister.register(FossilsLegacyMenuTypes.MENU_TYPES);
+        simpleRegistryRegister.register(FossilsLegacyBoatTypes.BOAT_TYPES);
+        simpleRegistryRegister.register(FossilsLegacyEggVariants.EGG_VARIANTS);
+        simpleRegistryRegister.register(FossilsLegacyPregnancyTypes.PREGNANCY_TYPES);
+        simpleRegistryRegister.register(FossilsLegacyFossilVariants.FOSSIL_VARIANTS);
+        simpleRegistryRegister.register(FossilsLegacyStoneTabletVariants.STONE_TABLET_VARIANTS);
         FossilsLegacyEntityDataSerializers.init();
-        FossilsLegacyEntityTypes.init(simpleRegistries);
-        FossilsLegacyDataComponents.init(simpleRegistries);
-        FossilsLegacyArmorMaterials.init(simpleRegistries);
-        FossilsLegacyItems.init(simpleRegistries);
-        FossilsLegacyCreativeModeTabs.init(simpleRegistries);
-        FossilsLegacyLootPoolEntryTypes.init(simpleRegistries);
-        FossilsLegacyStructurePeices.init(simpleRegistries);
-        FossilsLegacyStructureTypes.init(simpleRegistries);
-        FossilsLegacyCriteriaTriggers.init(simpleRegistries);
+        simpleRegistryRegister.register(FossilsLegacyEntityTypes.ENTITY_TYPES);
+        simpleRegistryRegister.register(FossilsLegacyDataComponents.DATA_COMPONENT_TYPES);
+        simpleRegistryRegister.register(FossilsLegacyArmorMaterials.ARMOR_MATERIALS);
+        simpleRegistryRegister.register(FossilsLegacyItems.ITEMS);
+        simpleRegistryRegister.register(FossilsLegacyCreativeModeTabs.CREATIVE_MODE_TABS);
+        simpleRegistryRegister.register(FossilsLegacyLootPoolEntryTypes.LOOT_POOL_ENTRY_TYPES);
+        simpleRegistryRegister.register(FossilsLegacyStructurePeices.STRUCTURE_PIECE_TYPE);
+        simpleRegistryRegister.register(FossilsLegacyStructureTypes.STRUCTURE_TYPE);
+        simpleRegistryRegister.register(FossilsLegacyCriteriaTriggers.TRIGGER_TYPES);
         FossilsLegacyBiomeSources.init();
     }
 }

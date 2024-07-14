@@ -6,8 +6,6 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
-import java.util.List;
-
 public class FossilsLegacyCriteriaTriggers {
     public static final SimpleRegistry<CriterionTrigger<?>> TRIGGER_TYPES = SimpleRegistry.create(Registries.TRIGGER_TYPE, FossilsLegacyUtils.ID);
 
@@ -15,8 +13,4 @@ public class FossilsLegacyCriteriaTriggers {
     public static final SimpleHolder<CreateZombifiedPigmanTrigger> CREATE_ZOMBIFIED_PIGMAN = TRIGGER_TYPES.register("create_zombified_pigman", () -> new CreateZombifiedPigmanTrigger());
     public static final SimpleHolder<SummonAnuTrigger> SUMMON_ANU = TRIGGER_TYPES.register("summon_anu", () -> new SummonAnuTrigger());
     public static final SimpleHolder<TameZombifiedPigmanTrigger> TAME_ZOMBIFIED_PIGMAN = TRIGGER_TYPES.register("tame_zombified_pigman", () -> new TameZombifiedPigmanTrigger());
-
-    public static void init(List<SimpleRegistry<?>> simpleRegistries) {
-        simpleRegistries.add(TRIGGER_TYPES);
-    }
 }

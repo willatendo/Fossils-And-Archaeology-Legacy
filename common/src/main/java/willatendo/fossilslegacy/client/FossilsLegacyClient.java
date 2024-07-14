@@ -1,9 +1,5 @@
 package willatendo.fossilslegacy.client;
 
-import net.minecraft.client.model.BoatModel;
-import net.minecraft.client.model.ChestBoatModel;
-import net.minecraft.client.model.ChestRaftModel;
-import net.minecraft.client.model.RaftModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
@@ -26,11 +22,9 @@ import willatendo.fossilslegacy.client.model.fossils.legacy.PteranodonSkeletonMo
 import willatendo.fossilslegacy.client.model.fossils.legacy.TriceratopsSkeletonModel;
 import willatendo.fossilslegacy.client.render.*;
 import willatendo.fossilslegacy.client.screen.*;
-import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.block.FossilsLegacyWoodTypes;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntityTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
-import willatendo.fossilslegacy.server.entity.variants.BoatType;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenuTypes;
 import willatendo.simplelibrary.client.event.KeyMappingRegister;
 import willatendo.simplelibrary.client.event.MenuScreenRegister;
@@ -94,8 +88,6 @@ public class FossilsLegacyClient {
         modelRegister.register(FossilsLegacyEntityTypes.ANCIENT_LIGHTNING_BOLT.get(), LightningBoltRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.FOSSIL.get(), FossilRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.STONE_TABLET.get(), StoneTabletRenderer::new);
-        modelRegister.register(FossilsLegacyEntityTypes.LEPIDODENDRON_BOAT.get(), context -> new LepidodendronBoatRenderer(context, false));
-        modelRegister.register(FossilsLegacyEntityTypes.LEPIDODENDRON_CHEST_BOAT.get(), context -> new LepidodendronBoatRenderer(context, true));
 
         modelRegister.register(FossilsLegacyBlockEntityTypes.TIME_MACHINE.get(), TimeMachineClockRenderer::new);
         modelRegister.register(FossilsLegacyBlockEntityTypes.LEPIDODENDRON_SIGN.get(), SignRenderer::new);
@@ -140,11 +132,6 @@ public class FossilsLegacyClient {
         modelLayerRegister.register(FossilsLegacyModelLayers.VELOCIRAPTOR.getFirst(), VelociraptorModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.VELOCIRAPTOR.getSecond(), LegacyVelociraptorModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.VELOCIRAPTOR_SKELETON, VelociraptorSkeletonModel::createBodyLayer);
-
-        for (BoatType boatType : FossilsLegacyBuiltInRegistries.BOAT_TYPES) {
-            modelLayerRegister.register(FossilsLegacyModelLayers.createBoatModelName(boatType), boatType.raft() ? RaftModel::createBodyModel : BoatModel::createBodyModel);
-            modelLayerRegister.register(FossilsLegacyModelLayers.createChestBoatModelName(boatType), boatType.raft() ? ChestRaftModel::createBodyModel : ChestBoatModel::createBodyModel);
-        }
     }
 
     public static void menuScreenEvent(MenuScreenRegister menuScreenRegister) {

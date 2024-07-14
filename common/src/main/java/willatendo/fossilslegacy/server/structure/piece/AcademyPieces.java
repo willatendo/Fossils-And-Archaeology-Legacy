@@ -8,7 +8,6 @@ import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.chunk.ChunkGenerator;
@@ -21,33 +20,22 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnorePr
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-import willatendo.fossilslegacy.server.structure.holes.RelicHoleList;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AcademyPieces {
     public static final ResourceLocation STRUCTURE_LOCATION = FossilsLegacyUtils.resource("academy");
 
-    public static void addPieces(StructureTemplateManager struxtureTemplateManager, boolean isStoneBricks, BlockPos blockPos, Rotation rotation, StructurePieceAccessor structurePieceAccessor, RandomSource randomSource) {
-        structurePieceAccessor.addPiece(new AcademyPieces.AcademyStructurePiece(struxtureTemplateManager, STRUCTURE_LOCATION, isStoneBricks, blockPos, rotation));
+    public static void addPieces(StructureTemplateManager struxtureTemplateManager, BlockPos blockPos, Rotation rotation, StructurePieceAccessor structurePieceAccessor, RandomSource randomSource) {
+        structurePieceAccessor.addPiece(new AcademyPieces.AcademyStructurePiece(struxtureTemplateManager, STRUCTURE_LOCATION, blockPos, rotation));
     }
 
     public static class AcademyStructurePiece extends TemplateStructurePiece {
-        private final boolean isStoneBricks;
-        private RelicHoleList relicHoleList;
-
-        public AcademyStructurePiece(StructureTemplateManager struxtureTemplateManager, ResourceLocation structureLocation, boolean isStoneBricks, BlockPos blockPos, Rotation rotation) {
+        public AcademyStructurePiece(StructureTemplateManager struxtureTemplateManager, ResourceLocation structureLocation, BlockPos blockPos, Rotation rotation) {
             super(FossilsLegacyStructurePeices.ACADEMY.get(), 0, struxtureTemplateManager, structureLocation, structureLocation.toString(), makeSettings(rotation, structureLocation), blockPos);
-            this.isStoneBricks = isStoneBricks;
         }
 
         public AcademyStructurePiece(StructureTemplateManager struxtureTemplateManager, CompoundTag compoundTag) {
-            super(FossilsLegacyStructurePeices.ACADEMY.get(), compoundTag, struxtureTemplateManager, (structureLocation) -> {
-                return makeSettings(Rotation.valueOf(compoundTag.getString("Rot")), structureLocation);
-            });
-            this.isStoneBricks = compoundTag.getBoolean("IsStoneBricks");
+            super(FossilsLegacyStructurePeices.ACADEMY.get(), compoundTag, struxtureTemplateManager, structureLocation -> makeSettings(Rotation.valueOf(compoundTag.getString("Rot")), structureLocation));
         }
 
         private static StructurePlaceSettings makeSettings(Rotation rotation, ResourceLocation structureLocation) {
@@ -58,7 +46,6 @@ public class AcademyPieces {
         protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
             super.addAdditionalSaveData(structurePieceSerializationContext, compoundTag);
             compoundTag.putString("Rot", this.placeSettings.getRotation().name());
-            compoundTag.putBoolean("IsStoneBricks", this.isStoneBricks);
         }
 
         @Override
@@ -76,21 +63,6 @@ public class AcademyPieces {
             this.templatePosition = this.templatePosition.offset(0, worldHeight - 90 - 1, 0);
             super.postProcess(worldGenLevel, structureManager, chunkGenerator, randomSource, boundingBox, chunkPos, blockPos);
             this.templatePosition = templatePos;
-            List<BlockPos> blockPosList = new ArrayList<>();
-            BlockPos.betweenClosedStream(this.getBoundingBox()).forEach(blockPoses -> {
-                blockPosList.add(blockPoses.mutable());
-            });
-            this.relicHoleList = new RelicHoleList(randomSource, blockPosList, 5, 3);
-            BlockPos.betweenClosedStream(this.getBoundingBox()).forEach((blockPoses) -> {
-                if (this.isStoneBricks) {
-                    if (worldGenLevel.getBlockState(blockPoses).is(Blocks.BRICKS)) {
-                        worldGenLevel.setBlock(blockPoses, Blocks.STONE_BRICKS.defaultBlockState(), 3);
-                    }
-                }
-                if (this.relicHoleList.isHole(blockPoses)) {
-                    worldGenLevel.setBlock(blockPoses, Blocks.AIR.defaultBlockState(), 3);
-                }
-            });
         }
     }
 }
