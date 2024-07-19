@@ -1,4 +1,0 @@
-- (Neoforge) Updated Neoforge to 21.0.95
-- (Fabric) Updated Fabric to 0.100.7+1.21
-- Updated JEI to 19.5.0.32
-- Updated SimpleLibrary to 3.9.1

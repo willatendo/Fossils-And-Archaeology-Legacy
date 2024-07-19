@@ -1,3 +1,7 @@
+19/8/2024
+- (Neoforge) Updated Neoforge to 21.0.107
+- (Neoforge) Fixed Antiquated Code
+- (Fabric) Fixed Crash
 14/8/2024
 - (Neoforge) Updated Neoforge to 21.0.95
 - (Fabric) Updated Fabric to 0.100.7+1.21

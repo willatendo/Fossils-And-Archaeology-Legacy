@@ -5,6 +5,7 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.RegisterRecipeBookCategoriesEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
@@ -28,10 +29,6 @@ public class ModEvents {
     @SubscribeEvent
     public static void fmlCommonSetupEvent(FMLCommonSetupEvent event) {
         BasicEvents.commonSetup();
-
-        RecipeBookSettings.addTagsForType(FossilsLegacyRecipeBookTypes.ARCHAEOLOGY_WORKBENCH, "isArchaeologyWorkbenchGuiOpen", "isArchaeologyWorkbenchFilteringCraftable");
-        RecipeBookSettings.addTagsForType(FossilsLegacyRecipeBookTypes.CULTIVATOR, "isCultivatorGuiOpen", "isCultivatorFilteringCraftable");
-        RecipeBookSettings.addTagsForType(FossilsLegacyRecipeBookTypes.ANALYZER, "isAnalyzerGuiOpen", "isAnalyzerFilteringCraftable");
     }
 
     @SubscribeEvent
