@@ -1,3 +1,5 @@
+13/9/2024
+- Added Updated Triceratops Model
 12/9/2024
 - (Fabric) Fixed Crash
 19/8/2024

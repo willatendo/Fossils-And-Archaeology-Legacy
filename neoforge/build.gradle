@@ -47,7 +47,10 @@ modrinth {
     uploadFile = tasks.jarJar
     gameVersions = ["${minecraft_version}"]
     loaders = ["neoforge"]
-    changelog = new File("$rootDir/changelog-${mod_version}.md").text
+    File f = new File("$rootDir/changelog-${mod_version}.md")
+    if (f.exists()) {
+        changelog = f.text
+    }
     dependencies {
         optional.project "jei"
     }

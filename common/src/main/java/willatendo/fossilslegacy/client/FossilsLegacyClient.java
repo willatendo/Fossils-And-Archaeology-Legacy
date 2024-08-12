@@ -9,6 +9,7 @@ import willatendo.fossilslegacy.client.model.EggModel;
 import willatendo.fossilslegacy.client.model.FailuresaurusModel;
 import willatendo.fossilslegacy.client.model.TimeMachineClockModel;
 import willatendo.fossilslegacy.client.model.dinosaur.*;
+import willatendo.fossilslegacy.client.model.dinosaur.TriceratopsModel;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.*;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.pteranodon.FlyingPteranodonModel;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.pteranodon.GroundPteranodonModel;
@@ -125,7 +126,8 @@ public class FossilsLegacyClient {
         modelLayerRegister.register(FossilsLegacyModelLayers.STEGOSAURUS, StegosaurusModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.THERIZINOSAURUS, TherizinosaurusModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.TIME_MACHINE_CLOCK, TimeMachineClockModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.TRICERATOPS, TriceratopsModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.TRICERATOPS.getFirst(), TriceratopsModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.TRICERATOPS.getSecond(), LegacyTriceratopsModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.TRICERATOPS_SKELETON, TriceratopsSkeletonModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.TYRANNOSAURUS, TyrannosaurusModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.TYRANNOSAURUS_KNOCKED_OUT, KnockedOutTyrannosaurusModel::createBodyLayer);

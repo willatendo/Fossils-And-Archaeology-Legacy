@@ -233,6 +233,11 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Ridea
     }
 
     @Override
+    public ResourceLocation[][] legacyTextures() {
+        return new ResourceLocation[][]{{FossilsLegacyUtils.resource("textures/entity/triceratops/legacy/green_triceratops.png"), FossilsLegacyUtils.resource("textures/entity/triceratops/legacy/green_baby_triceratops.png")}, {FossilsLegacyUtils.resource("textures/entity/triceratops/legacy/brown_triceratops.png"), FossilsLegacyUtils.resource("textures/entity/triceratops/legacy/brown_baby_triceratops.png")}, {FossilsLegacyUtils.resource("textures/entity/triceratops/legacy/alternate_triceratops.png"), FossilsLegacyUtils.resource("textures/entity/triceratops/legacy/alternate_baby_triceratops.png")}};
+    }
+
+    @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
         compoundTag.putInt("SubSpecies", this.getSubSpecies());

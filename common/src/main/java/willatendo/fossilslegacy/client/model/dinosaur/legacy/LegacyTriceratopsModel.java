@@ -12,7 +12,7 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.server.entity.Triceratops;
 
-public class TriceratopsModel extends EntityModel<Triceratops> {
+public class LegacyTriceratopsModel extends EntityModel<Triceratops> {
     private final ModelPart root;
     private final ModelPart lowerBody;
     private final ModelPart back;
@@ -26,7 +26,7 @@ public class TriceratopsModel extends EntityModel<Triceratops> {
     private final ModelPart leftBackThigh;
     private final ModelPart leftBackLeg;
 
-    public TriceratopsModel(ModelPart root) {
+    public LegacyTriceratopsModel(ModelPart root) {
         this.root = root;
         this.lowerBody = root.getChild("lower_body");
         this.back = root.getChild("back");

@@ -31,13 +31,13 @@ public class FossilsLegacyModelLayers {
     public static final ModelLayerLocation STEGOSAURUS = FossilsLegacyModelLayers.create("stegosaurus");
     public static final ModelLayerLocation THERIZINOSAURUS = FossilsLegacyModelLayers.create("therizinosaurus");
     public static final ModelLayerLocation TIME_MACHINE_CLOCK = FossilsLegacyModelLayers.create("time_machine_clock");
-    public static final ModelLayerLocation TRICERATOPS = FossilsLegacyModelLayers.create("triceratops");
+    public static final Pair<ModelLayerLocation, ModelLayerLocation> TRICERATOPS = FossilsLegacyModelLayers.createLegacyPair("triceratops");
     public static final ModelLayerLocation TRICERATOPS_SKELETON = FossilsLegacyModelLayers.create("triceratops_skeleton");
     public static final ModelLayerLocation TYRANNOSAURUS = FossilsLegacyModelLayers.create("tyrannosaurus");
     public static final ModelLayerLocation TYRANNOSAURUS_KNOCKED_OUT = FossilsLegacyModelLayers.create("tyrannosaurus_knocked_out");
     public static final Pair<ModelLayerLocation, ModelLayerLocation> VELOCIRAPTOR = FossilsLegacyModelLayers.createLegacyPair("velociraptor");
     public static final ModelLayerLocation VELOCIRAPTOR_SKELETON = FossilsLegacyModelLayers.create("velociraptor_skeleton");
-    
+
     private static Pair<ModelLayerLocation, ModelLayerLocation> createLegacyPair(String layerName) {
         return Pair.of(FossilsLegacyModelLayers.create(layerName), FossilsLegacyModelLayers.create("legacy_" + layerName));
     }
