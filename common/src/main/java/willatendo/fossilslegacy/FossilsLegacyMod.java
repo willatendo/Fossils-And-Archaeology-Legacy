@@ -19,6 +19,7 @@ import willatendo.fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSeri
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.structure.FossilsLegacyStructureTypes;
 import willatendo.fossilslegacy.server.structure.piece.FossilsLegacyStructurePeices;
+import willatendo.simplelibrary.server.SimpleBuiltInRegistries;
 import willatendo.simplelibrary.server.event.SimpleRegistryRegister;
 
 public class FossilsLegacyMod {
@@ -33,7 +34,6 @@ public class FossilsLegacyMod {
         simpleRegistryRegister.register(FossilsLegacyBlocks.BLOCKS);
         simpleRegistryRegister.register(FossilsLegacyBlockEntityTypes.BLOCK_ENTITY_TYPES);
         simpleRegistryRegister.register(FossilsLegacyMenuTypes.MENU_TYPES);
-        simpleRegistryRegister.register(FossilsLegacyBoatTypes.BOAT_TYPES);
         simpleRegistryRegister.register(FossilsLegacyEggVariants.EGG_VARIANTS);
         simpleRegistryRegister.register(FossilsLegacyPregnancyTypes.PREGNANCY_TYPES);
         simpleRegistryRegister.register(FossilsLegacyFossilVariants.FOSSIL_VARIANTS);
@@ -49,5 +49,7 @@ public class FossilsLegacyMod {
         simpleRegistryRegister.register(FossilsLegacyStructureTypes.STRUCTURE_TYPE);
         simpleRegistryRegister.register(FossilsLegacyCriteriaTriggers.TRIGGER_TYPES);
         FossilsLegacyBiomeSources.init();
+        SimpleBuiltInRegistries.init();
+        simpleRegistryRegister.register(FossilsLegacyBoatTypes.BOAT_TYPES);
     }
 }
