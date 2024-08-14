@@ -115,5 +115,7 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
                     return FossilsLegacyRecipeBookCategories.CULTIVATION_MISC;
             }
         });
+
+        FossilsLegacyClient.modifiyRecipeTypeTagFields();
     }
 }

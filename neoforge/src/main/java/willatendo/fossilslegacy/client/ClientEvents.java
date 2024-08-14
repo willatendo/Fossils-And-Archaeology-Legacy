@@ -28,6 +28,7 @@ public class ClientEvents {
     @SubscribeEvent
     public static void fmlClientSetupEvent(FMLClientSetupEvent event) {
         FossilsLegacyClient.signSheets();
+        FossilsLegacyClient.modifiyRecipeTypeTagFields();
     }
 
     @SubscribeEvent

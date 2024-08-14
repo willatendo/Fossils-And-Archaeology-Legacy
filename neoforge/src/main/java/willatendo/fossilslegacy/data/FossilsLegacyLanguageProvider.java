@@ -556,6 +556,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("stone_tablet.fossilslegacy.time_machine.author", "Kajun");
         this.add("stone_tablet.fossilslegacy.future.title", "Future");
         this.add("stone_tablet.fossilslegacy.future.author", "Kajun");
+        this.add("stone_tablet.fossilslegacy.anu_totem.title", "Anu Totem");
+        this.add("stone_tablet.fossilslegacy.anu_totem.author", "Willatendo");
         this.add("stone_tablet.fossilslegacy.random", "Random variant");
 
         // Sounds

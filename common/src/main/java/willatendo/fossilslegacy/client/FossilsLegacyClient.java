@@ -1,9 +1,13 @@
 package willatendo.fossilslegacy.client;
 
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.*;
+import net.minecraft.stats.RecipeBookSettings;
+import net.minecraft.world.inventory.RecipeBookType;
 import willatendo.fossilslegacy.client.model.AnuModel;
 import willatendo.fossilslegacy.client.model.EggModel;
 import willatendo.fossilslegacy.client.model.FailuresaurusModel;
@@ -26,6 +30,7 @@ import willatendo.fossilslegacy.client.screen.*;
 import willatendo.fossilslegacy.server.block.FossilsLegacyWoodTypes;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntityTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
+import willatendo.fossilslegacy.server.inventory.FossilsLegacyRecipeBookTypes;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenuTypes;
 import willatendo.simplelibrary.client.event.KeyMappingRegister;
 import willatendo.simplelibrary.client.event.MenuScreenRegister;
@@ -142,5 +147,13 @@ public class FossilsLegacyClient {
         menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.CULTIVATOR.get(), CultivatorScreen::new);
         menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.FEEDER.get(), FeederScreen::new);
         menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.TIME_MACHINE.get(), TimeMachineScreen::new);
+    }
+
+    public static void modifiyRecipeTypeTagFields() {
+        ImmutableMap.Builder<RecipeBookType, Pair<String, String>> tagFields = ImmutableMap.<RecipeBookType, Pair<String, String>>builder().putAll(RecipeBookSettings.TAG_FIELDS);
+        tagFields.put(FossilsLegacyRecipeBookTypes.ARCHAEOLOGY_WORKBENCH, Pair.of("isArchaeologyWorkbenchGuiOpen", "isArchaeologyWorkbenchFilteringCraftable"));
+        tagFields.put(FossilsLegacyRecipeBookTypes.CULTIVATOR, Pair.of("isCultivatorGuiOpen", "isCultivatorFilteringCraftable"));
+        tagFields.put(FossilsLegacyRecipeBookTypes.ANALYZER, Pair.of("isAnalyzerGuiOpen", "isAnalyzerFilteringCraftable"));
+        RecipeBookSettings.TAG_FIELDS = tagFields.build();
     }
 }

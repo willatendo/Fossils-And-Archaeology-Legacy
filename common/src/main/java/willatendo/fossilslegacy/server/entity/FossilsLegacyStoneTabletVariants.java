@@ -29,6 +29,7 @@ public class FossilsLegacyStoneTabletVariants {
     public static final SimpleHolder<StoneTabletVariant> PAST = register("past", 32, 32);
     public static final SimpleHolder<StoneTabletVariant> TIME_MACHINE = register("time_machine", 16, 32);
     public static final SimpleHolder<StoneTabletVariant> FUTURE = register("future", 32, 32);
+    public static final SimpleHolder<StoneTabletVariant> ANU_TOTEM = register("anu_totem", 32, 16);
 
     public static SimpleHolder<StoneTabletVariant> register(String id, int width, int height) {
         return STONE_TABLET_VARIANTS.register(id, () -> new StoneTabletVariant(id, width, height));
