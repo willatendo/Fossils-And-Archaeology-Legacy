@@ -5,15 +5,19 @@ import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public record StoneTabletVariant(String name, int width, int height) {
-	public ResourceLocation getTexture() {
-		return FossilsLegacyUtils.resource("textures/entity/stone_tablet/" + this.name + ".png");
-	}
+    public int area() {
+        return this.width() * this.height();
+    }
 
-	public MutableComponent getName() {
-		return FossilsLegacyUtils.translation("stone_tablet", this.name + ".title");
-	}
+    public ResourceLocation getTexture() {
+        return FossilsLegacyUtils.resource("textures/entity/stone_tablet/" + this.name + ".png");
+    }
 
-	public MutableComponent getAuthor() {
-		return FossilsLegacyUtils.translation("stone_tablet", this.name + ".author");
-	}
+    public MutableComponent getName() {
+        return FossilsLegacyUtils.translation("stone_tablet", this.name + ".title");
+    }
+
+    public MutableComponent getAuthor() {
+        return FossilsLegacyUtils.translation("stone_tablet", this.name + ".author");
+    }
 }

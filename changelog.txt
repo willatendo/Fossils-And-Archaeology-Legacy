@@ -1,6 +1,7 @@
 13/9/2024
 - (Fabric) Fixed Server Crash
 - Added Updated Triceratops Model
+- Added "Anu Totem" Stone Tablet
 12/9/2024
 - (Fabric) Fixed Crash
 19/8/2024

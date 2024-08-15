@@ -6,12 +6,16 @@ import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerEntity;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -24,11 +28,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
+import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class StoneTablet extends HangingEntity implements VariantHolder<Holder<StoneTabletVariant>> {
@@ -57,7 +64,7 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        builder.define(STONE_TABLET_VARIANT, getDefaultVariant());
+        builder.define(STONE_TABLET_VARIANT, (Holder) this.registryAccess().registryOrThrow(Registries.PAINTING_VARIANT).getAny().orElseThrow());
     }
 
     @Override
@@ -80,51 +87,54 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
     public static Optional<StoneTablet> create(Level level, BlockPos blockPos, Direction direction) {
         StoneTablet stoneTablet = new StoneTablet(level, blockPos);
         List<Holder<StoneTabletVariant>> stoneTabletVariants = new ArrayList<>();
-        FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS.getTagOrEmpty(FossilsLegacyStoneTabletVariantTags.PLACEABLE).forEach(stoneTabletVariants::add);
+        Iterable<Holder<StoneTabletVariant>> stoneTabletVariantIterable = level.registryAccess().registryOrThrow(FossilsLegacyRegistries.STONE_TABLET_VARIANTS).getTagOrEmpty(FossilsLegacyStoneTabletVariantTags.PLACEABLE);
+        Objects.requireNonNull(stoneTabletVariantIterable);
+        stoneTabletVariantIterable.forEach(stoneTabletVariants::add);
         if (stoneTabletVariants.isEmpty()) {
             return Optional.empty();
+        } else {
+            stoneTablet.setDirection(direction);
+            stoneTabletVariants.removeIf(holder -> {
+                stoneTablet.setVariant(holder);
+                return !stoneTablet.survives();
+            });
+            FossilsLegacyUtils.LOGGER.info("" + stoneTabletVariants.size());
+            if (stoneTabletVariants.isEmpty()) {
+                FossilsLegacyUtils.LOGGER.info("CHHH");
+                return Optional.empty();
+            } else {
+                int area = stoneTabletVariants.stream().mapToInt(StoneTablet::variantArea).max().orElse(0);
+                stoneTabletVariants.removeIf(holder -> StoneTablet.variantArea(holder) < area);
+                Optional<Holder<StoneTabletVariant>> stoneTabletVariantHolder = Util.getRandomSafe(stoneTabletVariants, stoneTablet.random);
+                if (stoneTabletVariantHolder.isEmpty()) {
+                    return Optional.empty();
+                }
+                stoneTablet.setVariant(stoneTabletVariantHolder.get());
+                stoneTablet.setDirection(direction);
+                return Optional.of(stoneTablet);
+            }
         }
-        stoneTablet.setDirection(direction);
-        stoneTabletVariants.removeIf(holder -> {
-            stoneTablet.setVariant(holder);
-            return !stoneTablet.survives();
-        });
-        if (stoneTabletVariants.isEmpty()) {
-            return Optional.empty();
-        }
-        int i = stoneTabletVariants.stream().mapToInt(StoneTablet::variantArea).max().orElse(0);
-        stoneTabletVariants.removeIf(holder -> StoneTablet.variantArea(holder) < i);
-        Optional<Holder<StoneTabletVariant>> optional = Util.getRandomSafe(stoneTabletVariants, stoneTablet.random);
-        if (optional.isEmpty()) {
-            return Optional.empty();
-        }
-        stoneTablet.setVariant(optional.get());
-        stoneTablet.setDirection(direction);
-        return Optional.of(stoneTablet);
     }
 
     private static int variantArea(Holder<StoneTabletVariant> stoneTabletVariant) {
-        return stoneTabletVariant.value().width() * stoneTabletVariant.value().height();
+        return stoneTabletVariant.value().area();
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
-        StoneTablet.storeVariant(compoundTag, this.getVariant());
+        CODEC.encodeStart(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), this.getVariant()).ifSuccess(tag -> {
+            compoundTag.merge((CompoundTag) tag);
+        });
         compoundTag.putByte("FacingDirection", (byte) this.direction.get2DDataValue());
         super.addAdditionalSaveData(compoundTag);
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
-        Holder holder = CODEC.parse(NbtOps.INSTANCE, compoundTag).result().orElseGet(StoneTablet::getDefaultVariant);
-        this.setVariant(holder);
+        CODEC.parse(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), compoundTag).ifSuccess(this::setVariant);
         this.direction = Direction.from2DDataValue(compoundTag.getByte("FacingDirection"));
         super.readAdditionalSaveData(compoundTag);
         this.setDirection(this.direction);
-    }
-
-    public static void storeVariant(CompoundTag compoundTag, Holder<StoneTabletVariant> stoneTabletVariant) {
-        compoundTag.putString("Variant", stoneTabletVariant.unwrapKey().orElse(DEFAULT_VARIANT).location().toString());
     }
 
     @Override
@@ -132,7 +142,7 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
         if (this.level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
             this.playSound(SoundEvents.PAINTING_BREAK, 1.0F, 1.0F);
             if (entity instanceof Player player) {
-                if (player.getAbilities().instabuild) {
+                if (player.hasInfiniteMaterials()) {
                     return;
                 }
             }
@@ -145,15 +155,15 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
     protected AABB calculateBoundingBox(BlockPos blockPos, Direction direction) {
         Vec3 vec3 = Vec3.atCenterOf(blockPos).relative(direction, -0.46875);
         StoneTabletVariant stoneTabletVariant = this.getVariant().value();
-        double withOffset = this.offsetForStoneTabletSize(stoneTabletVariant.width());
+        double widthOffset = this.offsetForStoneTabletSize(stoneTabletVariant.width());
         double heightOffset = this.offsetForStoneTabletSize(stoneTabletVariant.height());
-        Direction counterClockWise = direction.getCounterClockWise();
-        Vec3 relative = vec3.relative(counterClockWise, withOffset).relative(Direction.UP, heightOffset);
+        Direction counterClockWiseDirection = direction.getCounterClockWise();
+        Vec3 minVec3 = vec3.relative(counterClockWiseDirection, widthOffset).relative(Direction.UP, heightOffset);
         Direction.Axis axis = direction.getAxis();
-        double xWidth = axis == Direction.Axis.X ? 0.0625 : (double) stoneTabletVariant.width();
-        double height = (double) stoneTabletVariant.height();
-        double zWidth = axis == Direction.Axis.Z ? 0.0625 : (double) stoneTabletVariant.width();
-        return AABB.ofSize(relative, xWidth, height, zWidth);
+        double x = axis == Direction.Axis.X ? 0.0625 : (double) stoneTabletVariant.width();
+        double y = (double) stoneTabletVariant.height();
+        double z = axis == Direction.Axis.Z ? 0.0625 : (double) stoneTabletVariant.width();
+        return AABB.ofSize(minVec3, x, y, z);
     }
 
     private double offsetForStoneTabletSize(int size) {
@@ -178,6 +188,11 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
     @Override
     public Vec3 trackingPosition() {
         return Vec3.atLowerCornerOf(this.pos);
+    }
+
+    @Override
+    public Packet<ClientGamePacketListener> getAddEntityPacket(ServerEntity serverEntity) {
+        return new ClientboundAddEntityPacket(this, this.direction.get3DDataValue(), this.getPos());
     }
 
     @Override

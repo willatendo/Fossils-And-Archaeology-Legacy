@@ -32,16 +32,16 @@ public class StoneTabletItem extends Item {
 
     @Override
     public InteractionResult useOn(UseOnContext useOnContext) {
-        BlockPos blockpos = useOnContext.getClickedPos();
+        BlockPos blockPos = useOnContext.getClickedPos();
         Direction direction = useOnContext.getClickedFace();
-        BlockPos relativePos = blockpos.relative(direction);
+        BlockPos relativePos = blockPos.relative(direction);
         Player player = useOnContext.getPlayer();
         ItemStack itemStack = useOnContext.getItemInHand();
         if (player != null && !this.mayPlace(player, direction, itemStack, relativePos)) {
             return InteractionResult.FAIL;
         } else {
             Level level = useOnContext.getLevel();
-            HangingEntity hangingEntity = null;
+            StoneTablet hangingEntity = null;
             Optional<StoneTablet> stoneTablet = StoneTablet.create(level, relativePos, direction);
             if (!stoneTablet.isEmpty()) {
                 hangingEntity = stoneTablet.get();
