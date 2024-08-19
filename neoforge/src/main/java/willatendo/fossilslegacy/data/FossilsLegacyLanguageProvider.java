@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.data;
 
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.item.Item;
 import willatendo.fossilslegacy.server.FossilsLegacyCreativeModeTabs;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.Anu;
@@ -10,9 +9,7 @@ import willatendo.fossilslegacy.server.entity.TamedZombifiedPiglin;
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.SpeakerType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.data.SimpleLanguageProvider;
-import willatendo.simplelibrary.server.registry.SimpleHolder;
 
 public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
     public FossilsLegacyLanguageProvider(PackOutput packOutput, String modId, String local) {
@@ -477,7 +474,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.additions_slot_description", "Add scarab gem");
 
         this.add(FossilsLegacyItems.OVERWORLD_COIN.get());
-        this.add(FossilsLegacyItems.NETHER_COIN.get());
+        this.add(FossilsLegacyItems.ICE_AGE_COIN.get());
         this.add(FossilsLegacyItems.PREHISTORIC_COIN.get());
 
         this.add(FossilsLegacyItems.LEPIDODENDRON_BOAT.get());

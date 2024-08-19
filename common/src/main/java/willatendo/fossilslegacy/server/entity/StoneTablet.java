@@ -155,15 +155,15 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
     protected AABB calculateBoundingBox(BlockPos blockPos, Direction direction) {
         Vec3 vec3 = Vec3.atCenterOf(blockPos).relative(direction, -0.46875);
         StoneTabletVariant stoneTabletVariant = this.getVariant().value();
-        double widthOffset = this.offsetForStoneTabletSize(stoneTabletVariant.width());
+        double withOffset = this.offsetForStoneTabletSize(stoneTabletVariant.width());
         double heightOffset = this.offsetForStoneTabletSize(stoneTabletVariant.height());
-        Direction counterClockWiseDirection = direction.getCounterClockWise();
-        Vec3 minVec3 = vec3.relative(counterClockWiseDirection, widthOffset).relative(Direction.UP, heightOffset);
+        Direction counterClockWise = direction.getCounterClockWise();
+        Vec3 relative = vec3.relative(counterClockWise, withOffset).relative(Direction.UP, heightOffset);
         Direction.Axis axis = direction.getAxis();
-        double x = axis == Direction.Axis.X ? 0.0625 : (double) stoneTabletVariant.width();
-        double y = (double) stoneTabletVariant.height();
-        double z = axis == Direction.Axis.Z ? 0.0625 : (double) stoneTabletVariant.width();
-        return AABB.ofSize(minVec3, x, y, z);
+        double xWidth = axis == Direction.Axis.X ? 0.0625 : (double) stoneTabletVariant.width();
+        double height = (double) stoneTabletVariant.height();
+        double zWidth = axis == Direction.Axis.Z ? 0.0625 : (double) stoneTabletVariant.width();
+        return AABB.ofSize(relative, xWidth, height, zWidth);
     }
 
     private double offsetForStoneTabletSize(int size) {

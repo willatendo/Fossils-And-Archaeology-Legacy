@@ -170,7 +170,7 @@ public class FossilsLegacyItems {
     public static final SimpleHolder<Item> ANCIENT_BOOTS_ARTIFACT = ITEMS.register("ancient_boots_artifact", () -> new Item(new Item.Properties()));
     public static final SimpleHolder<Item> SCARAB_GEM = ITEMS.register("scarab_gem", () -> new Item(new Item.Properties()));
     public static final SimpleHolder<CoinItem> OVERWORLD_COIN = ITEMS.register("overworld_coin", () -> new CoinItem(Level.OVERWORLD, new Item.Properties()));
-    public static final SimpleHolder<CoinItem> NETHER_COIN = ITEMS.register("nether_coin", () -> new CoinItem(Level.NETHER, new Item.Properties()));
+    public static final SimpleHolder<CoinItem> ICE_AGE_COIN = ITEMS.register("ice_age_coin", () -> new CoinItem(Level.NETHER, new Item.Properties()));
     public static final SimpleHolder<CoinItem> PREHISTORIC_COIN = ITEMS.register("prehistoric_coin", () -> new CoinItem(FossilsLegacyLevels.PREHISTORY, new Item.Properties()));
     public static final SimpleHolder<AncientSwordItem> ANCIENT_SWORD = ITEMS.register("ancient_sword", () -> new AncientSwordItem(FossilsLegacyTiers.ANCIENT, new Item.Properties().attributes(AncientSwordItem.createAttributes(FossilsLegacyTiers.ANCIENT, 3, -2.4F))));
     public static final SimpleHolder<ShovelItem> ANCIENT_SHOVEL = ITEMS.register("ancient_shovel", () -> new ShovelItem(FossilsLegacyTiers.ANCIENT, new Item.Properties().attributes(ShovelItem.createAttributes(FossilsLegacyTiers.ANCIENT, 1.5F, -3.0F))));

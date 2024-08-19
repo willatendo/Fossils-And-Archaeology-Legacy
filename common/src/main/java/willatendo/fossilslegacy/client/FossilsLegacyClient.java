@@ -13,7 +13,6 @@ import willatendo.fossilslegacy.client.model.EggModel;
 import willatendo.fossilslegacy.client.model.FailuresaurusModel;
 import willatendo.fossilslegacy.client.model.TimeMachineClockModel;
 import willatendo.fossilslegacy.client.model.dinosaur.*;
-import willatendo.fossilslegacy.client.model.dinosaur.TriceratopsModel;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.*;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.pteranodon.FlyingPteranodonModel;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.pteranodon.GroundPteranodonModel;

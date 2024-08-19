@@ -27,7 +27,7 @@ import java.util.function.Predicate;
 
 public class FossilsLegacyCreativeModeTabs {
     public static final SimpleRegistry<CreativeModeTab> CREATIVE_MODE_TABS = SimpleRegistry.create(Registries.CREATIVE_MODE_TAB, FossilsLegacyUtils.ID);
-    private static final Comparator<Holder<StoneTabletVariant>> STONE_TABLET_COMPARATOR = Comparator.comparing(Holder::value, Comparator.<StoneTabletVariant>comparingInt(paintingVariant -> paintingVariant.height() * paintingVariant.width()).thenComparing(StoneTabletVariant::width));
+    private static final Comparator<Holder<StoneTabletVariant>> STONE_TABLET_COMPARATOR = Comparator.comparing(Holder::value, Comparator.<StoneTabletVariant>comparingInt(stoneTabletVariant -> stoneTabletVariant.height() * stoneTabletVariant.width()).thenComparing(StoneTabletVariant::width));
 
     public static final SimpleHolder<CreativeModeTab> FOSSILS_LEGACY = CREATIVE_MODE_TABS.register("fossils_legacy", () -> SimpleUtils.create(FossilsLegacyUtils.ID, FossilsLegacyUtils.ID, () -> FossilsLegacyItems.FOSSIL.get(), (itemDisplayParameters, output) -> {
         output.accept(FossilsLegacyItems.FOSSIL.get());
@@ -170,7 +170,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.ANCIENT_LEGGINGS_ARTIFACT.get());
         output.accept(FossilsLegacyItems.ANCIENT_BOOTS_ARTIFACT.get());
         output.accept(FossilsLegacyItems.OVERWORLD_COIN.get());
-        output.accept(FossilsLegacyItems.NETHER_COIN.get());
+        output.accept(FossilsLegacyItems.ICE_AGE_COIN.get());
         output.accept(FossilsLegacyItems.PREHISTORIC_COIN.get());
         output.accept(FossilsLegacyItems.DODO_EGG.get());
         output.accept(FossilsLegacyItems.THERIZINOSAURUS_CLAWS.get());

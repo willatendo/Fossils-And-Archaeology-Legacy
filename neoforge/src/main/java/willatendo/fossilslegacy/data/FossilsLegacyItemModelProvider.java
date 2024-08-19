@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.data;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
@@ -11,7 +10,6 @@ import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.data.SimpleItemModelProvider;
-import willatendo.simplelibrary.server.registry.SimpleHolder;
 
 public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
     public FossilsLegacyItemModelProvider(PackOutput packOutput, String modId, ExistingFileHelper existingFileHelper) {
@@ -223,7 +221,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.LEPIDODENDRON_CHEST_BOAT.get());
 
         this.basicItem(FossilsLegacyItems.OVERWORLD_COIN.get());
-        this.basicItem(FossilsLegacyItems.NETHER_COIN.get());
+        this.basicItem(FossilsLegacyItems.ICE_AGE_COIN.get());
         this.basicItem(FossilsLegacyItems.PREHISTORIC_COIN.get());
 
         this.handheldItem(FossilsLegacyItems.DEBUG_MAX_HUNGER.get(), FossilsLegacyUtils.mc("item/bone"));

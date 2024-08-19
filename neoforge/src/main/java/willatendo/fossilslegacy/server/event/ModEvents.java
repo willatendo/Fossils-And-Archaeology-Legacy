@@ -1,11 +1,9 @@
 package willatendo.fossilslegacy.server.event;
 
-import net.minecraft.stats.RecipeBookSettings;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.client.event.RegisterRecipeBookCategoriesEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
@@ -16,7 +14,6 @@ import net.neoforged.neoforge.registries.NewRegistryEvent;
 import willatendo.fossilslegacy.network.NeoforgePacketHelper;
 import willatendo.fossilslegacy.network.ServerboundSinkPacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
-import willatendo.fossilslegacy.server.inventory.FossilsLegacyRecipeBookTypes;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.event.NeoforgeAttributeRegister;
