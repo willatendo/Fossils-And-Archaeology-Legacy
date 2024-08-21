@@ -9,6 +9,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
+import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.inventory.FossilsLegacyRecipeBookTypes;
 import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
@@ -28,7 +29,11 @@ public class ClientEvents {
     @SubscribeEvent
     public static void fmlClientSetupEvent(FMLClientSetupEvent event) {
         FossilsLegacyClient.signSheets();
-        FossilsLegacyClient.modifiyRecipeTypeTagFields();
+    }
+
+    @SubscribeEvent
+    public static void registerClientReloadListenersEvent(RegisterClientReloadListenersEvent event) {
+        event.registerReloadListener(StoneTabletTextureManager.INSTANCE);
     }
 
     @SubscribeEvent

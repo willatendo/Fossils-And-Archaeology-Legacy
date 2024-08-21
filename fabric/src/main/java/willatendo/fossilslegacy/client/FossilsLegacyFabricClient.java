@@ -1,5 +1,7 @@
 package willatendo.fossilslegacy.client;
 
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.util.Pair;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -9,7 +11,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.stats.RecipeBookSettings;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.state.BlockState;
@@ -116,6 +120,10 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
             }
         });
 
-        FossilsLegacyClient.modifiyRecipeTypeTagFields();
+        ImmutableMap.Builder<RecipeBookType, Pair<String, String>> tagFields = ImmutableMap.<RecipeBookType, Pair<String, String>>builder().putAll(RecipeBookSettings.TAG_FIELDS);
+        tagFields.put(FossilsLegacyRecipeBookTypes.ARCHAEOLOGY_WORKBENCH, Pair.of("isArchaeologyWorkbenchGuiOpen", "isArchaeologyWorkbenchFilteringCraftable"));
+        tagFields.put(FossilsLegacyRecipeBookTypes.CULTIVATOR, Pair.of("isCultivatorGuiOpen", "isCultivatorFilteringCraftable"));
+        tagFields.put(FossilsLegacyRecipeBookTypes.ANALYZER, Pair.of("isAnalyzerGuiOpen", "isAnalyzerFilteringCraftable"));
+        RecipeBookSettings.TAG_FIELDS = tagFields.build();
     }
 }

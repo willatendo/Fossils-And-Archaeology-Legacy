@@ -1,4 +1,4 @@
-// 1.21	2024-07-01T21:43:30.8034161	Item Models: fossilslegacy
+// 1.21	2024-08-20T16:05:20.3578422	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 1f02e6db84914fc2677089f5e420f925ba109484 assets/fossilslegacy/models/item/ancient_axe.json
 e6aea94981911965db91c7f52bfa4555de4d4182 assets/fossilslegacy/models/item/ancient_axe_artifact.json
@@ -111,6 +111,7 @@ db81080d23dafcb3e3efef593bfb3ccebb96e654 assets/fossilslegacy/models/item/green_
 65b1c0d10a4b59cea37fd77efbb7d187327680b9 assets/fossilslegacy/models/item/horse_dna.json
 4f7ac1cbbea87ab66f07137d83c0c7c12893f84b assets/fossilslegacy/models/item/horse_embryo_syringe.json
 b129a66d694f99b0036e6b1ca5739f9c78bc6ccd assets/fossilslegacy/models/item/iced_stone.json
+518125d72ae3795cebc61998bbdf396270f6bc85 assets/fossilslegacy/models/item/ice_age_coin.json
 66b2c1ee205734c236ccf2bf64ff55892d9837d1 assets/fossilslegacy/models/item/incubated_chicken_egg.json
 03a8de5e09482ea8bdc1d9a4473a2a5e7c8f1983 assets/fossilslegacy/models/item/incubated_dodo_egg.json
 f30c5b45dc420042b9e1f02a40ece73cf79ff3c8 assets/fossilslegacy/models/item/incubated_parrot_egg.json
@@ -155,7 +156,6 @@ cb0981d8cceb62c4b3dae4d87956682f4f8cb56a assets/fossilslegacy/models/item/mammot
 cb75659c64ea79c3de856577b5eb3fd61cba1995 assets/fossilslegacy/models/item/nautilus_shell.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/nautilus_spawn_egg.json
 aef823fbce5a3596646be60e2f4cb76c59e115de assets/fossilslegacy/models/item/netherite_javelin.json
-64c8080779d31e767e1b7d6aa54c70c5915c6b5d assets/fossilslegacy/models/item/nether_coin.json
 eb085be866727a3b6d81d0c3015e4c25291dae13 assets/fossilslegacy/models/item/ocelot_dna.json
 3365654da30a55bae98f3102cffe2273e5ecdb57 assets/fossilslegacy/models/item/ocelot_embryo_syringe.json
 ecbc1c1361d6b74e2656f68e15b11e0890e99409 assets/fossilslegacy/models/item/orange_cultivator.json

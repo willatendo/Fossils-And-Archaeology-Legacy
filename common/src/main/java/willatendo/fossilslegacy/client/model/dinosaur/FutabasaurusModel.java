@@ -16,10 +16,14 @@ import willatendo.fossilslegacy.server.entity.Futabasaurus;
 
 public class FutabasaurusModel extends BaseFutabasaurusModel {
     private final ModelPart neck;
+    private final ModelPart middleNeck;
+    private final ModelPart head;
 
     public FutabasaurusModel(ModelPart root) {
         super(root);
         this.neck = root.getChild("neck");
+        this.middleNeck = this.neck.getChild("middle_neck");
+        this.head = this.middleNeck.getChild("head");
     }
 
     public static LayerDefinition createBodyLayer() {
@@ -48,6 +52,10 @@ public class FutabasaurusModel extends BaseFutabasaurusModel {
 
         this.neck.yRot = netHeadYaw * 0.017453292F;
         this.neck.xRot = headPitch * 0.017453292F;
+        this.middleNeck.yRot = netHeadYaw * 0.017453292F;
+        this.middleNeck.xRot = headPitch * 0.017453292F;
+        this.head.yRot = netHeadYaw * 0.017453292F;
+        this.head.xRot = headPitch * 0.017453292F;
 
         if (futabasaurus.isInWaterOrBubble()) {
             this.animateWalk(FutabasaurusAnimations.FUTABASAURUS_SWIM, limbSwing, limbSwingAmount, 2.0F, 2.5F);

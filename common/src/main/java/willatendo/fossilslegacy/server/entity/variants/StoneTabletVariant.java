@@ -10,7 +10,7 @@ public record StoneTabletVariant(String name, int width, int height) {
     }
 
     public ResourceLocation getTexture() {
-        return FossilsLegacyUtils.resource("textures/entity/stone_tablet/" + this.name + ".png");
+        return FossilsLegacyUtils.resource(this.name);
     }
 
     public MutableComponent getName() {

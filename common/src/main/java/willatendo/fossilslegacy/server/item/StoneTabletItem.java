@@ -40,23 +40,23 @@ public class StoneTabletItem extends Item {
             return InteractionResult.FAIL;
         } else {
             Level level = useOnContext.getLevel();
-            StoneTablet hangingEntity = null;
-            Optional<StoneTablet> stoneTablet = StoneTablet.create(level, relativePos, direction);
-            if (!stoneTablet.isEmpty()) {
-                hangingEntity = stoneTablet.get();
+            StoneTablet stoneTablet = null;
+            Optional<StoneTablet> optionalStoneTablet = StoneTablet.create(level, relativePos, direction);
+            if (!optionalStoneTablet.isEmpty()) {
+                stoneTablet = optionalStoneTablet.get();
             }
 
             CustomData customData = itemStack.getOrDefault(DataComponents.ENTITY_DATA, CustomData.EMPTY);
             if (!customData.isEmpty()) {
-                EntityType.updateCustomEntityTag(level, player, hangingEntity, customData);
+                EntityType.updateCustomEntityTag(level, player, stoneTablet, customData);
             }
 
-            if (hangingEntity != null) {
-                if (hangingEntity.survives()) {
+            if (stoneTablet != null) {
+                if (stoneTablet.survives()) {
                     if (!level.isClientSide()) {
-                        hangingEntity.playPlacementSound();
-                        level.gameEvent(player, GameEvent.ENTITY_PLACE, hangingEntity.position());
-                        level.addFreshEntity(hangingEntity);
+                        stoneTablet.playPlacementSound();
+                        level.gameEvent(player, GameEvent.ENTITY_PLACE, stoneTablet.position());
+                        level.addFreshEntity(stoneTablet);
                     }
 
                     itemStack.shrink(1);
@@ -84,7 +84,7 @@ public class StoneTabletItem extends Item {
                     toolTips.add(holder.value().getName().withStyle(ChatFormatting.YELLOW));
                     toolTips.add(holder.value().getAuthor().withStyle(ChatFormatting.GRAY));
                 });
-                toolTips.add(Component.translatable("painting.dimensions", Mth.positiveCeilDiv(holder.value().width(), 16), Mth.positiveCeilDiv(holder.value().height(), 16)));
+                toolTips.add(Component.translatable("painting.dimensions", holder.value().width(), holder.value().height()));
             }, () -> {
                 toolTips.add(TOOLTIP_RANDOM_VARIANT);
             });
