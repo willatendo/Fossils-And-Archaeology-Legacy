@@ -1,0 +1,10 @@
+{
+  "age_scale": 0.3,
+  "base_scale": 0.5,
+  "bounding_box_growth": 0.35,
+  "model": "fossilslegacy:carnotaurus",
+  "name": {
+    "translate": "coatType.fossilslegacy.green_carnotaurus"
+  },
+  "texture": "fossilslegacy:textures/entity/carnotaurus/green_carnotaurus.png"
+}

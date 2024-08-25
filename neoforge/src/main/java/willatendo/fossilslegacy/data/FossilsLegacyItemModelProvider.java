@@ -229,6 +229,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.handheldItem(FossilsLegacyItems.DEBUG_FULL_GROWN.get(), FossilsLegacyUtils.mc("item/bone"));
         this.handheldItem(FossilsLegacyItems.DEBUG_BABY.get(), FossilsLegacyUtils.mc("item/bone"));
         this.handheldItem(FossilsLegacyItems.DEBUG_TAME.get(), FossilsLegacyUtils.mc("item/bone"));
+        this.handheldItem(FossilsLegacyItems.DEBUG_CHANGE_GENETICS.get(), FossilsLegacyUtils.mc("item/bone"));
 
         this.basicBlock(FossilsLegacyBlocks.FOSSIL_ORE.get());
         this.basicBlock(FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get());

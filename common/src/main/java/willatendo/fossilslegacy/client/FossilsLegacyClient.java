@@ -1,17 +1,10 @@
 package willatendo.fossilslegacy.client;
 
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.util.Pair;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.*;
-import net.minecraft.stats.RecipeBookSettings;
-import net.minecraft.world.inventory.RecipeBookType;
-import willatendo.fossilslegacy.client.model.AnuModel;
-import willatendo.fossilslegacy.client.model.EggModel;
-import willatendo.fossilslegacy.client.model.FailuresaurusModel;
-import willatendo.fossilslegacy.client.model.TimeMachineClockModel;
+import willatendo.fossilslegacy.client.model.*;
 import willatendo.fossilslegacy.client.model.dinosaur.*;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.*;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.pteranodon.FlyingPteranodonModel;
@@ -29,7 +22,6 @@ import willatendo.fossilslegacy.client.screen.*;
 import willatendo.fossilslegacy.server.block.FossilsLegacyWoodTypes;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntityTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
-import willatendo.fossilslegacy.server.inventory.FossilsLegacyRecipeBookTypes;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenuTypes;
 import willatendo.simplelibrary.client.event.KeyMappingRegister;
 import willatendo.simplelibrary.client.event.MenuScreenRegister;
@@ -46,6 +38,8 @@ public class FossilsLegacyClient {
     }
 
     public static void modelEvent(ModelRegister modelRegister) {
+        ModelRegistry.init();
+
         modelRegister.register(FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), BrachiosaurusRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), DilophosaurusRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.DODO.get(), DodoRenderer::new);

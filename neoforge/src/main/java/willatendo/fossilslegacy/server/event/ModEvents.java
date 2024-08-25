@@ -1,5 +1,7 @@
 package willatendo.fossilslegacy.server.event;
 
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -10,16 +12,17 @@ import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import willatendo.fossilslegacy.network.NeoforgePacketHelper;
 import willatendo.fossilslegacy.network.ServerboundSinkPacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
+import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
+import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
+import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.server.event.NeoforgeAttributeRegister;
-import willatendo.simplelibrary.server.event.NeoforgeNewRegistryRegister;
-import willatendo.simplelibrary.server.event.NeoforgeResourcePackRegister;
-import willatendo.simplelibrary.server.event.NeoforgeSpawnPlacementRegister;
+import willatendo.simplelibrary.server.event.*;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID)
 public class ModEvents {
@@ -45,6 +48,7 @@ public class ModEvents {
                 event.accept(FossilsLegacyItems.DEBUG_FULL_GROWN.get());
                 event.accept(FossilsLegacyItems.DEBUG_BABY.get());
                 event.accept(FossilsLegacyItems.DEBUG_TAME.get());
+                event.accept(FossilsLegacyItems.DEBUG_CHANGE_GENETICS.get());
             }
         }
     }
@@ -57,6 +61,11 @@ public class ModEvents {
     @SubscribeEvent
     public static void newRegistryEvent(NewRegistryEvent event) {
         BasicEvents.newRegistryEvent(new NeoforgeNewRegistryRegister(event));
+    }
+
+    @SubscribeEvent
+    public static void dataPackRegistryEvent_newRegistry(DataPackRegistryEvent.NewRegistry event) {
+        BasicEvents.newDynamicRegistryEvent(new NeoforgeDynamicRegistryRegister(event));
     }
 
     @SubscribeEvent

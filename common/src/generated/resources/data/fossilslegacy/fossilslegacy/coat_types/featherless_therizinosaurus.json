@@ -1,0 +1,10 @@
+{
+  "age_scale": 0.3,
+  "base_scale": 0.5,
+  "bounding_box_growth": 0.35,
+  "model": "fossilslegacy:therizinosaurus",
+  "name": {
+    "translate": "coatType.fossilslegacy.featherless_therizinosaurus"
+  },
+  "texture": "fossilslegacy:textures/entity/therizinosaurus/featherless_therizinosaurus.png"
+}

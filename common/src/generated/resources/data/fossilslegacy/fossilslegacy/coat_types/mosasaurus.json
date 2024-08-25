@@ -1,0 +1,10 @@
+{
+  "age_scale": 0.5125,
+  "base_scale": 0.5,
+  "bounding_box_growth": 0.35,
+  "model": "fossilslegacy:mosasaurus",
+  "name": {
+    "translate": "coatType.fossilslegacy.mosasaurus"
+  },
+  "texture": "fossilslegacy:textures/entity/mosasaurus/mosasaurus.png"
+}

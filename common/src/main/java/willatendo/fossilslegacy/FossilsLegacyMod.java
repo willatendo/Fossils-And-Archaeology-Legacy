@@ -37,7 +37,6 @@ public class FossilsLegacyMod {
         simpleRegistryRegister.register(FossilsLegacyEggVariants.EGG_VARIANTS);
         simpleRegistryRegister.register(FossilsLegacyPregnancyTypes.PREGNANCY_TYPES);
         simpleRegistryRegister.register(FossilsLegacyFossilVariants.FOSSIL_VARIANTS);
-        simpleRegistryRegister.register(FossilsLegacyStoneTabletVariants.STONE_TABLET_VARIANTS);
         FossilsLegacyEntityDataSerializers.init();
         simpleRegistryRegister.register(FossilsLegacyEntityTypes.ENTITY_TYPES);
         simpleRegistryRegister.register(FossilsLegacyDataComponents.DATA_COMPONENT_TYPES);

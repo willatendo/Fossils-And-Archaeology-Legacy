@@ -1,0 +1,10 @@
+{
+  "age_scale": 0.125,
+  "base_scale": 0.25,
+  "bounding_box_growth": 1.0,
+  "model": "fossilslegacy:compsognathus",
+  "name": {
+    "translate": "coatType.fossilslegacy.compsognathus"
+  },
+  "texture": "fossilslegacy:textures/entity/compsognathus/compsognathus.png"
+}

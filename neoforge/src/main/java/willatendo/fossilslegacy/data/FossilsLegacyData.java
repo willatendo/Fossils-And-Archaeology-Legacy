@@ -54,6 +54,7 @@ public class FossilsLegacyData {
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyDamageTypeTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper));
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyFossilVariantTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper));
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyStoneTabletVariantTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper));
+        dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyCoatTypeTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper));
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new PackMetadataGenerator(packOutput).add(PackMetadataSection.TYPE, new PackMetadataSection(FossilsLegacyUtils.translation("resourcePack", "description"), DetectedVersion.BUILT_IN.getPackVersion(PackType.CLIENT_RESOURCES), Optional.empty())));
 
         ResourceLocation legacyPack = FossilsLegacyUtils.resource("fa_legacy_textures");
@@ -61,18 +62,19 @@ public class FossilsLegacyData {
         legacyPackGenerator.addProvider(legacyPackOutput -> new PackMetadataGenerator(legacyPackOutput).add(PackMetadataSection.TYPE, new PackMetadataSection(FossilsLegacyUtils.translation("resourcePack", "fa_legacy_textures.description"), DetectedVersion.BUILT_IN.getPackVersion(PackType.CLIENT_RESOURCES), Optional.empty())));
     }
 
-    private record PackGenerator(DataGenerator dataGenerator, boolean toRun, String providerPrefix, PackOutput packOutput) {
+    private record PackGenerator(DataGenerator dataGenerator, boolean toRun, String providerPrefix,
+                                 PackOutput packOutput) {
         public <T extends DataProvider> T addProvider(DataProvider.Factory<T> factory) {
-                T dataProvider = factory.create(this.packOutput);
-                String name = this.providerPrefix + "/" + dataProvider.getName();
-                if (!this.dataGenerator.allProviderIds.add(name)) {
-                    throw new IllegalStateException("Duplicate provider: " + name);
-                } else {
-                    if (this.toRun) {
-                        this.dataGenerator.providersToRun.put(name, dataProvider);
-                    }
-                    return dataProvider;
+            T dataProvider = factory.create(this.packOutput);
+            String name = this.providerPrefix + "/" + dataProvider.getName();
+            if (!this.dataGenerator.allProviderIds.add(name)) {
+                throw new IllegalStateException("Duplicate provider: " + name);
+            } else {
+                if (this.toRun) {
+                    this.dataGenerator.providersToRun.put(name, dataProvider);
                 }
+                return dataProvider;
             }
         }
+    }
 }

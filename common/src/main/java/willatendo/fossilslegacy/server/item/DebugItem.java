@@ -1,6 +1,8 @@
 package willatendo.fossilslegacy.server.item;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -9,6 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import willatendo.fossilslegacy.client.screen.GeneticsScreen;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -61,6 +64,16 @@ public class DebugItem extends Item {
     public static DebugItem debugTame() {
         return new DebugItem("set_owner_as_me", (dinosaur, player) -> {
             dinosaur.setOwnerUUID(player.getUUID());
+            return InteractionResult.SUCCESS;
+        }, new Item.Properties());
+    }
+
+    public static DebugItem debugChangeGenetics() {
+        return new DebugItem("change_genetics", (dinosaur, player) -> {
+            if (player instanceof LocalPlayer) {
+                Minecraft minecraft = Minecraft.getInstance();
+                minecraft.setScreen(new GeneticsScreen());
+            }
             return InteractionResult.SUCCESS;
         }, new Item.Properties());
     }

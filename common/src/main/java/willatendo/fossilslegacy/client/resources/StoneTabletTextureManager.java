@@ -15,6 +15,6 @@ public class StoneTabletTextureManager extends TextureAtlasHolder {
     }
 
     public TextureAtlasSprite get(StoneTabletVariant stoneTabletVariant) {
-        return this.getSprite(stoneTabletVariant.getTexture());
+        return this.getSprite(stoneTabletVariant.assetId());
     }
 }

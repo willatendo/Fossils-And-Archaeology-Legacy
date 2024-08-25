@@ -1,0 +1,10 @@
+{
+  "age_scale": 0.5,
+  "base_scale": 0.5,
+  "bounding_box_growth": 1.0,
+  "model": "fossilslegacy:dodo",
+  "name": {
+    "translate": "coatType.fossilslegacy.dodo"
+  },
+  "texture": "fossilslegacy:textures/entity/dodo/dodo.png"
+}

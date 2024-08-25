@@ -23,7 +23,7 @@ public class TimeMachineScreen extends AbstractContainerScreen<TimeMachineMenu> 
     @Override
     protected void init() {
         super.init();
-        Button start = this.addRenderableWidget(TimeMachineButton.create(FossilsLegacyUtils.translation("menu", "time_machine.start"), button -> {
+        this.addRenderableWidget(TimeMachineButton.create(FossilsLegacyUtils.translation("menu", "time_machine.start"), button -> {
             if (this.menu.getSlot(0).hasItem() && this.menu.isCharged()) {
                 FossilsModloaderHelper.INSTANCE.sendTimeMachinePacket(this.menu.timeMachineBlockEntity.getBlockPos());
             }

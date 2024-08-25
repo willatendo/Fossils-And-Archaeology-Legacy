@@ -22,17 +22,17 @@ import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.Heightmap;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
+import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.block.FossilsLegacyCauldronInteraction;
 import willatendo.fossilslegacy.server.block.SkullBlock;
 import willatendo.fossilslegacy.server.dispenser.DispenseEntityItemBehavior;
 import willatendo.fossilslegacy.server.entity.*;
+import willatendo.fossilslegacy.server.entity.genetics.CoatType;
+import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.server.event.AttributeRegister;
-import willatendo.simplelibrary.server.event.NewRegistryRegister;
-import willatendo.simplelibrary.server.event.ResourcePackRegister;
-import willatendo.simplelibrary.server.event.SpawnPlacementRegister;
+import willatendo.simplelibrary.server.event.*;
 
 public class BasicEvents {
     public static void commonSetup() {
@@ -108,7 +108,11 @@ public class BasicEvents {
         newRegistryRegister.register(FossilsLegacyBuiltInRegistries.EGG_VARIANTS);
         newRegistryRegister.register(FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES);
         newRegistryRegister.register(FossilsLegacyBuiltInRegistries.FOSSIL_VARIANTS);
-        newRegistryRegister.register(FossilsLegacyBuiltInRegistries.STONE_TABLET_VARIANTS);
+    }
+
+    public static void newDynamicRegistryEvent(DynamicRegistryRegister dynamicRegistryRegister) {
+        dynamicRegistryRegister.register(FossilsLegacyRegistries.STONE_TABLET_VARIANTS, StoneTabletVariant.DIRECT_CODEC);
+        dynamicRegistryRegister.register(FossilsLegacyRegistries.COAT_TYPES, CoatType.DIRECT_CODEC);
     }
 
     public static void attributeEvent(AttributeRegister attributeRegister) {

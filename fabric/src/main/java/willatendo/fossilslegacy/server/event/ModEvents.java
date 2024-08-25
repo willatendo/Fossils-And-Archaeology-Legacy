@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.server.event;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.event.registry.DynamicRegistries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -15,12 +16,15 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
 import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;
+import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
+import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 import willatendo.fossilslegacy.server.feature.FossilsLegacyPlacedFeatures;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.event.FabricAttributeRegister;
+import willatendo.simplelibrary.server.event.FabricDynamicRegistryRegister;
 import willatendo.simplelibrary.server.event.FabricResourcePackRegister;
 import willatendo.simplelibrary.server.event.FabricSpawnPlacementRegister;
 
@@ -48,6 +52,7 @@ public class ModEvents {
         BasicEvents.resourcePackEvent(new FabricResourcePackRegister());
         BasicEvents.attributeEvent(new FabricAttributeRegister());
         BasicEvents.spawnPlacementEvent(new FabricSpawnPlacementRegister());
+        BasicEvents.newDynamicRegistryEvent(new FabricDynamicRegistryRegister());
 
         ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.JURASSIC_FERN.get(), 0.65F);
         ComposterBlock.COMPOSTABLES.put(FossilsLegacyItems.JURASSIC_FERN_SPORES.get(), 0.65F);
@@ -65,6 +70,7 @@ public class ModEvents {
                 fabricItemGroupEntries.accept(FossilsLegacyItems.DEBUG_FULL_GROWN.get());
                 fabricItemGroupEntries.accept(FossilsLegacyItems.DEBUG_BABY.get());
                 fabricItemGroupEntries.accept(FossilsLegacyItems.DEBUG_TAME.get());
+                fabricItemGroupEntries.accept(FossilsLegacyItems.DEBUG_CHANGE_GENETICS.get());
             }
         });
     }

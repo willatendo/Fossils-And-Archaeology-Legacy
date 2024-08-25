@@ -1,0 +1,10 @@
+{
+  "age_scale": 0.2,
+  "base_scale": 0.8,
+  "bounding_box_growth": 0.2,
+  "model": "fossilslegacy:pteranodon",
+  "name": {
+    "translate": "coatType.fossilslegacy.pteranodon"
+  },
+  "texture": "fossilslegacy:textures/entity/pteranodon/pteranodon.png"
+}

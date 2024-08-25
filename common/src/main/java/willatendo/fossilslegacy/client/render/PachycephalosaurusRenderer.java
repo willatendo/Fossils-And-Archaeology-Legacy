@@ -9,8 +9,8 @@ import willatendo.fossilslegacy.server.entity.Pachycephalosaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class PachycephalosaurusRenderer extends MobRenderer<Pachycephalosaurus, PachycephalosaurusModel> {
-    public static final ResourceLocation BABY_TEXTURE = FossilsLegacyUtils.resource("textures/entity/pachycephalosaurus/pachycephalosaurus_baby.png");
-    public static final ResourceLocation ADULT_TEXTURE = FossilsLegacyUtils.resource("textures/entity/pachycephalosaurus/pachycephalosaurus_adult.png");
+    public static final ResourceLocation BABY_TEXTURE = FossilsLegacyUtils.resource("textures/entity/pachycephalosaurus/baby_pachycephalosaurus.png");
+    public static final ResourceLocation ADULT_TEXTURE = FossilsLegacyUtils.resource("textures/entity/pachycephalosaurus/pachycephalosaurus.png");
 
     public PachycephalosaurusRenderer(Context context) {
         super(context, new PachycephalosaurusModel(context.bakeLayer(FossilsLegacyModelLayers.PACHYCEPHALOSAURUS)), 0.3F);

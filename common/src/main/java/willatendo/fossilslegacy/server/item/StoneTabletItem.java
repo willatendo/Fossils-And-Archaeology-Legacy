@@ -3,11 +3,14 @@ package willatendo.fossilslegacy.server.item;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.decoration.Painting;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -77,17 +80,16 @@ public class StoneTabletItem extends Item {
     @Override
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> toolTips, TooltipFlag toolTipFlag) {
         super.appendHoverText(itemStack, tooltipContext, toolTips, toolTipFlag);
+        HolderLookup.Provider provider = tooltipContext.registries();
         CustomData customData = itemStack.getOrDefault(DataComponents.ENTITY_DATA, CustomData.EMPTY);
         if (!customData.isEmpty()) {
-            customData.read(StoneTablet.VARIANT_MAP_CODEC).result().ifPresentOrElse(holder -> {
-                holder.unwrapKey().ifPresent((resourceKey) -> {
-                    toolTips.add(holder.value().getName().withStyle(ChatFormatting.YELLOW));
-                    toolTips.add(holder.value().getAuthor().withStyle(ChatFormatting.GRAY));
+            customData.read(provider.createSerializationContext(NbtOps.INSTANCE), StoneTablet.VARIANT_MAP_CODEC).result().ifPresentOrElse(holder -> {
+                holder.unwrapKey().ifPresent(resourceKey -> {
+                    toolTips.add(Component.translatable(resourceKey.location().toLanguageKey("stone_tablet", "title")).withStyle(ChatFormatting.YELLOW));
+                    toolTips.add(Component.translatable(resourceKey.location().toLanguageKey("stone_tablet", "author")).withStyle(ChatFormatting.GRAY));
                 });
                 toolTips.add(Component.translatable("painting.dimensions", holder.value().width(), holder.value().height()));
-            }, () -> {
-                toolTips.add(TOOLTIP_RANDOM_VARIANT);
-            });
+            }, () -> toolTips.add(TOOLTIP_RANDOM_VARIANT));
         } else if (toolTipFlag.isCreative()) {
             toolTips.add(TOOLTIP_RANDOM_VARIANT);
         }

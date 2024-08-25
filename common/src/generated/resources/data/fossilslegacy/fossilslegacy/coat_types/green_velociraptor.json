@@ -1,0 +1,11 @@
+{
+  "age_scale": 0.1,
+  "baby_texture": "fossilslegacy:textures/entity/velociraptor/green_baby_velociraptor.png",
+  "base_scale": 0.2,
+  "bounding_box_growth": 0.15,
+  "model": "fossilslegacy:velociraptor",
+  "name": {
+    "translate": "coatType.fossilslegacy.green_velociraptor"
+  },
+  "texture": "fossilslegacy:textures/entity/velociraptor/green_velociraptor.png"
+}

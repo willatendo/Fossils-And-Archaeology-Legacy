@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.data;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.TagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyStoneTabletVariantTags;
@@ -11,13 +10,13 @@ import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 
 import java.util.concurrent.CompletableFuture;
 
-public class FossilsLegacyStoneTabletVariantTagProvider extends TagsProvider<StoneTabletVariant> {
+public class FossilsLegacyStoneTabletVariantTagProvider extends DataDrivenTagsProvider<StoneTabletVariant> {
     public FossilsLegacyStoneTabletVariantTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId, ExistingFileHelper existingFileHelper) {
         super(packOutput, FossilsLegacyRegistries.STONE_TABLET_VARIANTS, provider, modId, existingFileHelper);
     }
 
     @Override
     protected void addTags(Provider provider) {
-        this.tag(FossilsLegacyStoneTabletVariantTags.PLACEABLE).add(FossilsLegacyStoneTabletVariants.LIGHTING.getKey(), FossilsLegacyStoneTabletVariants.SOCIAL.getKey(), FossilsLegacyStoneTabletVariants.GREAT_WAR.getKey(), FossilsLegacyStoneTabletVariants.ANU_DEATH.getKey(), FossilsLegacyStoneTabletVariants.PORTAL.getKey(), FossilsLegacyStoneTabletVariants.HEROBRINE.getKey(), FossilsLegacyStoneTabletVariants.SKELETON_AND_CREEPER.getKey(), FossilsLegacyStoneTabletVariants.ZOMBIE_AND_SPIDER.getKey(), FossilsLegacyStoneTabletVariants.TYRANNOSAURUS_IN_ICEBERG.getKey(), FossilsLegacyStoneTabletVariants.TYRANNOSAURUS_TRANSPORT.getKey(), FossilsLegacyStoneTabletVariants.TYRANNOSAURUS_MELT.getKey(), FossilsLegacyStoneTabletVariants.TYRANNOSAURUS_ATTACK.getKey(), FossilsLegacyStoneTabletVariants.TYRANNOSAURUS_DEATH.getKey(), FossilsLegacyStoneTabletVariants.TYRANNOSAURUS_CORPSE.getKey(), FossilsLegacyStoneTabletVariants.PRINCESS.getKey(), FossilsLegacyStoneTabletVariants.MOSASAURUS.getKey(), FossilsLegacyStoneTabletVariants.HOLY_MOSASAURUS.getKey(), FossilsLegacyStoneTabletVariants.PAST.getKey(), FossilsLegacyStoneTabletVariants.TIME_MACHINE.getKey(), FossilsLegacyStoneTabletVariants.FUTURE.getKey(), FossilsLegacyStoneTabletVariants.ANU_TOTEM.getKey());
+        this.tag(FossilsLegacyStoneTabletVariantTags.PLACEABLE).add(FossilsLegacyStoneTabletVariants.LIGHTING, FossilsLegacyStoneTabletVariants.SOCIAL, FossilsLegacyStoneTabletVariants.GREAT_WAR, FossilsLegacyStoneTabletVariants.ANU_DEATH, FossilsLegacyStoneTabletVariants.PORTAL, FossilsLegacyStoneTabletVariants.HEROBRINE, FossilsLegacyStoneTabletVariants.SKELETON_AND_CREEPER, FossilsLegacyStoneTabletVariants.ZOMBIE_AND_SPIDER, FossilsLegacyStoneTabletVariants.TYRANNOSAURUS_IN_ICEBERG, FossilsLegacyStoneTabletVariants.TYRANNOSAURUS_TRANSPORT, FossilsLegacyStoneTabletVariants.TYRANNOSAURUS_MELT, FossilsLegacyStoneTabletVariants.TYRANNOSAURUS_ATTACK, FossilsLegacyStoneTabletVariants.TYRANNOSAURUS_DEATH, FossilsLegacyStoneTabletVariants.TYRANNOSAURUS_CORPSE, FossilsLegacyStoneTabletVariants.PRINCESS, FossilsLegacyStoneTabletVariants.MOSASAURUS, FossilsLegacyStoneTabletVariants.HOLY_MOSASAURUS, FossilsLegacyStoneTabletVariants.PAST, FossilsLegacyStoneTabletVariants.TIME_MACHINE, FossilsLegacyStoneTabletVariants.FUTURE, FossilsLegacyStoneTabletVariants.ANU_TOTEM);
     }
 }

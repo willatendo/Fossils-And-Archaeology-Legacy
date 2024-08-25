@@ -30,8 +30,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Brachiosaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur {
-    public final float hungryLevel = this.getMaxHunger() * 4 / 5;
-
     public Brachiosaurus(EntityType<? extends Brachiosaurus> entityType, Level level) {
         super(entityType, level);
     }

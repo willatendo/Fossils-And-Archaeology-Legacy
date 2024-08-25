@@ -1,0 +1,10 @@
+{
+  "age_scale": 0.3,
+  "base_scale": 1.5,
+  "bounding_box_growth": 0.25,
+  "model": "fossilslegacy:futabasaurus",
+  "name": {
+    "translate": "coatType.fossilslegacy.futabasaurus"
+  },
+  "texture": "fossilslegacy:textures/entity/futabasaurus/futabasaurus.png"
+}

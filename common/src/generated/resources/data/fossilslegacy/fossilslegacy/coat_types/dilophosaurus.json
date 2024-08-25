@@ -1,0 +1,10 @@
+{
+  "age_scale": 0.15,
+  "base_scale": 0.2,
+  "bounding_box_growth": 0.1,
+  "model": "fossilslegacy:dilophosaurus",
+  "name": {
+    "translate": "coatType.fossilslegacy.dilophosaurus"
+  },
+  "texture": "fossilslegacy:textures/entity/dilophosaurus/dilophosaurus.png"
+}

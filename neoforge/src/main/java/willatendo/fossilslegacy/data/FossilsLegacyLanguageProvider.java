@@ -134,6 +134,37 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("biome.fossilslegacy.prehistoric_swamp", "Prehistoric Swamp");
         this.add("biome.fossilslegacy.prehistoric_beach", "Prehistoric Beach");
 
+        // Coat Types
+        this.add("coatType.fossilslegacy.brachiosaurus", "Brachiosaurus (2024)");
+        this.add("coatType.fossilslegacy.green_carnotaurus", "Green Carnotaurus (2011)");
+        this.add("coatType.fossilslegacy.red_carnotaurus", "Red Carnotaurus (2011)");
+        this.add("coatType.fossilslegacy.compsognathus", "Compsognathus (2024)");
+        this.add("coatType.fossilslegacy.cryolophosaurus", "Cryolophosaurus (2011)");
+        this.add("coatType.fossilslegacy.dilophosaurus", "Dilophosaurus (2011)");
+        this.add("coatType.fossilslegacy.dodo", "Dodo (2024)");
+        this.add("coatType.fossilslegacy.futabasaurus", "Futabasaurus (2024)");
+        this.add("coatType.fossilslegacy.mammoth", "Mammoth (2011)");
+        this.add("coatType.fossilslegacy.mosasaurus", "Mosasaurus (2011)");
+        this.add("coatType.fossilslegacy.pachycephalosaurus", "Pachycephalosaurus (2024)");
+        this.add("coatType.fossilslegacy.pteranodon", "Pteranodon (2011)");
+        this.add("coatType.fossilslegacy.stegosaurus", "Stegosaurus (2011)");
+        this.add("coatType.fossilslegacy.smilodon", "Smilodon (2011)");
+        this.add("coatType.fossilslegacy.feathered_therizinosaurus", "Feathered Therizinosaurus (2011)");
+        this.add("coatType.fossilslegacy.featherless_therizinosaurus", "Featherless Therizinosaurus (2011)");
+        this.add("coatType.fossilslegacy.brown_triceratops", "Brown Triceratops (2024)");
+        this.add("coatType.fossilslegacy.green_triceratops", "Green Triceratops (2024)");
+        this.add("coatType.fossilslegacy.tyrannosaurus", "Tyrannosaurus (2011)");
+        this.add("coatType.fossilslegacy.green_velociraptor", "Green Velociraptor (2024)");
+        this.add("coatType.fossilslegacy.sandy_velociraptor", "Sandy Velociraptor (2024)");
+        this.add("coatType.fossilslegacy.white_velociraptor", "White Velociraptor (2024)");
+        this.add("coatType.fossilslegacy.legacy_brachiosaurus", "Brachiosaurus (2011)");
+        this.add("coatType.fossilslegacy.legacy_futabasaurus", "Futabasaurus (2011)");
+        this.add("coatType.fossilslegacy.legacy_brown_triceratops", "Brown Triceratops (2011)");
+        this.add("coatType.fossilslegacy.legacy_green_triceratops", "Green Triceratops (2011)");
+        this.add("coatType.fossilslegacy.legacy_green_velociraptor", "Green Velociraptor (2011)");
+        this.add("coatType.fossilslegacy.legacy_sandy_velociraptor", "Sandy Velociraptor (2011)");
+        this.add("coatType.fossilslegacy.legacy_white_velociraptor", "White Velociraptor (2011)");
+
         // Commands
         this.add("command.fossilslegacy.follow", "Follow");
         this.add("command.fossilslegacy.stay", "Stay");
@@ -145,6 +176,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("container.fossilslegacy.analyzer", "Analyzer");
         this.add("container.fossilslegacy.archaeology_workbench", "Archaeology Workbench");
         this.add("container.fossilslegacy.cultivator", "Cultivator");
+        this.add("container.fossilslegacy.genetics", "Genetics");
         this.add("container.fossilslegacy.feeder", "Feeder");
         this.add("container.fossilslegacy.time_machine", "Time Machine");
         this.add("container.fossilslegacy.time_machine.start", "Start");
@@ -281,6 +313,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.THERIZINOSAURUS_DNA.get(), "Therizinosaurus DNA");
         this.add(FossilsLegacyItems.PACHYCEPHALOSAURUS_DNA.get(), "Pachycephalosaurus DNA");
         this.add(FossilsLegacyItems.COMPSOGNATHUS_DNA.get(), "Compsognathus DNA");
+        this.add("item.fossilslegacy.dna.coat_type", "Coat Type: %s");
         this.add(FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get());
         this.add(FossilsLegacyItems.TRICERATOPS_EGG.get());
         this.add(FossilsLegacyItems.VELOCIRAPTOR_EGG.get());
@@ -485,7 +518,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.DEBUG_FULL_GROWN.get(), "Debug Item");
         this.add(FossilsLegacyItems.DEBUG_BABY.get(), "Debug Item");
         this.add(FossilsLegacyItems.DEBUG_TAME.get(), "Debug Item");
-
+        this.add(FossilsLegacyItems.DEBUG_CHANGE_GENETICS.get(), "Debug Item");
 
         this.add("debugItem.fossilslegacy.type", "Type: %s");
         this.add("debugItem.fossilslegacy.set_max_hunger", "Set Max Hunger");
@@ -493,6 +526,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("debugItem.fossilslegacy.set_full_grown", "Set Full Grown");
         this.add("debugItem.fossilslegacy.set_baby", "Set Baby");
         this.add("debugItem.fossilslegacy.set_owner_as_me", "Set Owner As Me");
+        this.add("debugItem.fossilslegacy.change_genetics", "Change Genetics");
 
         // JEI
         this.add("jei.fossilslegacy.archaeology", "Archaeology");

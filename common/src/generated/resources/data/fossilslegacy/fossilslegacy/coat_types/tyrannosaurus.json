@@ -1,0 +1,10 @@
+{
+  "age_scale": 0.5125,
+  "base_scale": 0.5,
+  "bounding_box_growth": 1.0,
+  "model": "fossilslegacy:tyrannosaurus",
+  "name": {
+    "translate": "coatType.fossilslegacy.tyrannosaurus"
+  },
+  "texture": "fossilslegacy:textures/entity/tyrannosaurus/tyrannosaurus.png"
+}

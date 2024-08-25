@@ -1,4 +1,4 @@
-// 1.21	2024-08-20T16:05:20.3578422	Item Models: fossilslegacy
+// 1.21	2024-08-25T13:41:59.35109	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 1f02e6db84914fc2677089f5e420f925ba109484 assets/fossilslegacy/models/item/ancient_axe.json
 e6aea94981911965db91c7f52bfa4555de4d4182 assets/fossilslegacy/models/item/ancient_axe_artifact.json
@@ -74,6 +74,7 @@ be4ccc71a5cc349872efa5b65aa5533c8b3ae1cc assets/fossilslegacy/models/item/cryolo
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/cryolophosaurus_spawn_egg.json
 ce40a32ccdcdecee90608bc0ddbc3082c63d2119 assets/fossilslegacy/models/item/cyan_cultivator.json
 c90cf1db781c345e657631c473f18c38d6d051e3 assets/fossilslegacy/models/item/debug_baby.json
+c90cf1db781c345e657631c473f18c38d6d051e3 assets/fossilslegacy/models/item/debug_change_genetics.json
 c90cf1db781c345e657631c473f18c38d6d051e3 assets/fossilslegacy/models/item/debug_full_grown.json
 c90cf1db781c345e657631c473f18c38d6d051e3 assets/fossilslegacy/models/item/debug_max_health.json
 c90cf1db781c345e657631c473f18c38d6d051e3 assets/fossilslegacy/models/item/debug_max_hunger.json

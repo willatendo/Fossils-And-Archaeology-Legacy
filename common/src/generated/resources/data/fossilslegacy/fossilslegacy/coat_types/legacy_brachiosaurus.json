@@ -1,0 +1,10 @@
+{
+  "age_scale": 0.3,
+  "base_scale": 1.5,
+  "bounding_box_growth": 0.2,
+  "model": "fossilslegacy:legacy_brachiosaurus",
+  "name": {
+    "translate": "coatType.fossilslegacy.legacy_brachiosaurus"
+  },
+  "texture": "fossilslegacy:textures/entity/brachiosaurus/legacy/brachiosaurus.png"
+}

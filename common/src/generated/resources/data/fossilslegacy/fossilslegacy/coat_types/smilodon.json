@@ -1,0 +1,11 @@
+{
+  "age_scale": 1.0,
+  "baby_texture": "fossilslegacy:textures/entity/smilodon/baby_smilodon.png",
+  "base_scale": 1.0,
+  "bounding_box_growth": 1.0,
+  "model": "fossilslegacy:smilodon",
+  "name": {
+    "translate": "coatType.fossilslegacy.smilodon"
+  },
+  "texture": "fossilslegacy:textures/entity/smilodon/smilodon.png"
+}

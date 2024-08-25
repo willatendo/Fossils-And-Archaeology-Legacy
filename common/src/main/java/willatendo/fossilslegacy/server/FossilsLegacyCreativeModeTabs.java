@@ -8,12 +8,16 @@ import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
 import net.minecraft.resources.RegistryOps;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyStoneTabletVariantTags;
 import willatendo.fossilslegacy.server.entity.StoneTablet;
+import willatendo.fossilslegacy.server.entity.genetics.CoatType;
 import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
+import willatendo.fossilslegacy.server.item.DNAItem;
+import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.item.MagicConchItem;
 import willatendo.fossilslegacy.server.utils.DinosaurCommand;
@@ -32,23 +36,25 @@ public class FossilsLegacyCreativeModeTabs {
     public static final SimpleHolder<CreativeModeTab> FOSSILS_LEGACY = CREATIVE_MODE_TABS.register("fossils_legacy", () -> SimpleUtils.create(FossilsLegacyUtils.ID, FossilsLegacyUtils.ID, () -> FossilsLegacyItems.FOSSIL.get(), (itemDisplayParameters, output) -> {
         output.accept(FossilsLegacyItems.FOSSIL.get());
         output.accept(FossilsLegacyItems.FROZEN_MEAT.get());
-        output.accept(FossilsLegacyItems.BRACHIOSAURUS_DNA.get());
-        output.accept(FossilsLegacyItems.CARNOTAURUS_DNA.get());
-        output.accept(FossilsLegacyItems.COMPSOGNATHUS_DNA.get());
-        output.accept(FossilsLegacyItems.CRYOLOPHOSAURUS_DNA.get());
-        output.accept(FossilsLegacyItems.DILOPHOSAURUS_DNA.get());
-        output.accept(FossilsLegacyItems.FUTABASAURUS_DNA.get());
-        output.accept(FossilsLegacyItems.MOSASAURUS_DNA.get());
-        output.accept(FossilsLegacyItems.PACHYCEPHALOSAURUS_DNA.get());
-        output.accept(FossilsLegacyItems.PTERANODON_DNA.get());
-        output.accept(FossilsLegacyItems.STEGOSAURUS_DNA.get());
-        output.accept(FossilsLegacyItems.THERIZINOSAURUS_DNA.get());
-        output.accept(FossilsLegacyItems.TRICERATOPS_DNA.get());
-        output.accept(FossilsLegacyItems.TYRANNOSAURUS_DNA.get());
-        output.accept(FossilsLegacyItems.VELOCIRAPTOR_DNA.get());
-        output.accept(FossilsLegacyItems.DODO_DNA.get());
-        output.accept(FossilsLegacyItems.MAMMOTH_DNA.get());
-        output.accept(FossilsLegacyItems.SMILODON_DNA.get());
+        itemDisplayParameters.holders().lookup(FossilsLegacyRegistries.COAT_TYPES).ifPresent(registryLookup -> {
+            FossilsLegacyCreativeModeTabs.generateDNAs(FossilsLegacyItems.BRACHIOSAURUS_DNA.get(), output, registryLookup, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            FossilsLegacyCreativeModeTabs.generateDNAs(FossilsLegacyItems.CARNOTAURUS_DNA.get(), output, registryLookup, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            FossilsLegacyCreativeModeTabs.generateDNAs(FossilsLegacyItems.COMPSOGNATHUS_DNA.get(), output, registryLookup, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            FossilsLegacyCreativeModeTabs.generateDNAs(FossilsLegacyItems.CRYOLOPHOSAURUS_DNA.get(), output, registryLookup, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            FossilsLegacyCreativeModeTabs.generateDNAs(FossilsLegacyItems.DILOPHOSAURUS_DNA.get(), output, registryLookup, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            FossilsLegacyCreativeModeTabs.generateDNAs(FossilsLegacyItems.FUTABASAURUS_DNA.get(), output, registryLookup, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            FossilsLegacyCreativeModeTabs.generateDNAs(FossilsLegacyItems.MOSASAURUS_DNA.get(), output, registryLookup, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            FossilsLegacyCreativeModeTabs.generateDNAs(FossilsLegacyItems.PACHYCEPHALOSAURUS_DNA.get(), output, registryLookup, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            FossilsLegacyCreativeModeTabs.generateDNAs(FossilsLegacyItems.PTERANODON_DNA.get(), output, registryLookup, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            FossilsLegacyCreativeModeTabs.generateDNAs(FossilsLegacyItems.STEGOSAURUS_DNA.get(), output, registryLookup, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            FossilsLegacyCreativeModeTabs.generateDNAs(FossilsLegacyItems.THERIZINOSAURUS_DNA.get(), output, registryLookup, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            FossilsLegacyCreativeModeTabs.generateDNAs(FossilsLegacyItems.TRICERATOPS_DNA.get(), output, registryLookup, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            FossilsLegacyCreativeModeTabs.generateDNAs(FossilsLegacyItems.TYRANNOSAURUS_DNA.get(), output, registryLookup, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            FossilsLegacyCreativeModeTabs.generateDNAs(FossilsLegacyItems.VELOCIRAPTOR_DNA.get(), output, registryLookup, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            FossilsLegacyCreativeModeTabs.generateDNAs(FossilsLegacyItems.DODO_DNA.get(), output, registryLookup, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            FossilsLegacyCreativeModeTabs.generateDNAs(FossilsLegacyItems.MAMMOTH_DNA.get(), output, registryLookup, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            FossilsLegacyCreativeModeTabs.generateDNAs(FossilsLegacyItems.SMILODON_DNA.get(), output, registryLookup, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        });
         output.accept(FossilsLegacyItems.ARMADILLO_DNA.get());
         output.accept(FossilsLegacyItems.AXOLOTL_DNA.get());
         output.accept(FossilsLegacyItems.CAT_DNA.get());
@@ -156,7 +162,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.RELIC_SCRAP.get());
         output.accept(FossilsLegacyItems.STONE_TABLET.get());
         itemDisplayParameters.holders().lookup(FossilsLegacyRegistries.STONE_TABLET_VARIANTS).ifPresent((registryLookup) -> {
-            FossilsLegacyCreativeModeTabs.generatePresetStoneTablets(output, itemDisplayParameters.holders(), registryLookup, (stoneTabletVariantHolder) -> stoneTabletVariantHolder.is(FossilsLegacyStoneTabletVariantTags.PLACEABLE), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            FossilsLegacyCreativeModeTabs.generatePresetStoneTablets(output, itemDisplayParameters.holders(), registryLookup, stoneTabletVariantHolder -> stoneTabletVariantHolder.is(FossilsLegacyStoneTabletVariantTags.PLACEABLE), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         });
         output.accept(FossilsLegacyItems.SCARAB_GEM.get());
         output.accept(FossilsLegacyItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get());
@@ -290,6 +296,23 @@ public class FossilsLegacyCreativeModeTabs {
             });
             ItemStack itemStack = new ItemStack(FossilsLegacyItems.STONE_TABLET.get());
             itemStack.set(DataComponents.ENTITY_DATA, customData);
+            output.accept(itemStack, tabVisibility);
+        });
+    }
+
+    private static void generateDNAs(DNAItem dnaItem, CreativeModeTab.Output output, HolderLookup.RegistryLookup<CoatType> registryLookup, CreativeModeTab.TabVisibility tabVisibility) {
+        if (dnaItem.getApplicableCoatTypes() != null) {
+            output.accept(dnaItem, tabVisibility);
+            FossilsLegacyCreativeModeTabs.generateDNA(dnaItem, output, registryLookup, coatTypeHolder -> coatTypeHolder.is(dnaItem.getApplicableCoatTypes()), tabVisibility);
+        } else {
+            output.accept(dnaItem, tabVisibility);
+        }
+    }
+
+    private static void generateDNA(Item item, CreativeModeTab.Output output, HolderLookup.RegistryLookup<CoatType> registryLookup, Predicate<Holder<CoatType>> predicate, CreativeModeTab.TabVisibility tabVisibility) {
+        registryLookup.listElements().filter(predicate).forEach(reference -> {
+            ItemStack itemStack = new ItemStack(item);
+            itemStack.set(FossilsLegacyDataComponents.COAT_TYPE.get(), reference);
             output.accept(itemStack, tabVisibility);
         });
     }

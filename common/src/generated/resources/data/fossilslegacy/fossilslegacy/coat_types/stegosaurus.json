@@ -1,0 +1,11 @@
+{
+  "age_scale": 0.3,
+  "baby_texture": "fossilslegacy:textures/entity/stegosaurus/baby_stegosaurus.png",
+  "base_scale": 1.5,
+  "bounding_box_growth": 0.35,
+  "model": "fossilslegacy:stegosaurus",
+  "name": {
+    "translate": "coatType.fossilslegacy.stegosaurus"
+  },
+  "texture": "fossilslegacy:textures/entity/stegosaurus/stegosaurus.png"
+}

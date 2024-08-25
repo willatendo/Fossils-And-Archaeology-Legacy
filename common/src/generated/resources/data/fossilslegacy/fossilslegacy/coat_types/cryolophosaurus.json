@@ -1,0 +1,10 @@
+{
+  "age_scale": 0.2,
+  "base_scale": 0.25,
+  "bounding_box_growth": 0.35,
+  "model": "fossilslegacy:cryolophosaurus",
+  "name": {
+    "translate": "coatType.fossilslegacy.cryolophosaurus"
+  },
+  "texture": "fossilslegacy:textures/entity/cryolophosaurus/cryolophosaurus.png"
+}

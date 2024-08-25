@@ -1,6 +1,7 @@
-13/9/2024
+31/9/2024
 - Futabasaurus Now Moves Entire Neck
 - Replaced Nether Coin With Ice Age Coin
+- Stone Tablets Are Now Data-Driven
 - (Fabric) Fixed Server Crash
 - Fixed Placing Stone Tables
 - Fixed Cannibalism

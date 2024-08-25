@@ -1,0 +1,11 @@
+{
+  "age_scale": 0.3,
+  "baby_texture": "fossilslegacy:textures/entity/triceratops/legacy/green_baby_triceratops.png",
+  "base_scale": 1.5,
+  "bounding_box_growth": 0.35,
+  "model": "fossilslegacy:legacy_triceratops",
+  "name": {
+    "translate": "coatType.fossilslegacy.legacy_green_triceratops"
+  },
+  "texture": "fossilslegacy:textures/entity/triceratops/legacy/green_triceratops.png"
+}
