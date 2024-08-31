@@ -5,8 +5,10 @@
 - (Fabric) Fixed Server Crash
 - Fixed Placing Stone Tables
 - Fixed Cannibalism
+- Fixed Bounding Boxes
 - Added Updated Triceratops Model
 - Added "Anu Totem" Stone Tablet
+- Added Coat-Types; data-driven cosmetics for dinosaurs
 12/9/2024
 - (Fabric) Fixed Crash
 19/8/2024

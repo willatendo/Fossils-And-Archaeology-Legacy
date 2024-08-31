@@ -6,13 +6,13 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -23,11 +23,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.LeadItem;
 import net.minecraft.world.item.NameTagItem;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.phys.Vec3;
 import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
+import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
+import willatendo.fossilslegacy.server.entity.genetics.CoatType;
 import willatendo.fossilslegacy.server.entity.goal.*;
 import willatendo.fossilslegacy.server.entity.util.*;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
@@ -39,8 +39,8 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Velociraptor extends Dinosaur implements DinopediaInformation, SubSpecies, HighlyIntelligent {
-    private static final EntityDataAccessor<Integer> SUB_SPECIES = SynchedEntityData.defineId(Velociraptor.class, EntityDataSerializers.INT);
+public class Velociraptor extends Dinosaur implements DinopediaInformation, HighlyIntelligent, CoatTypeEntity {
+    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Velociraptor.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
     private static final EntityDataAccessor<Boolean> LEARNED_CHESTS = SynchedEntityData.defineId(Velociraptor.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<ItemStack> HELD_ITEM = SynchedEntityData.defineId(Velociraptor.class, EntityDataSerializers.ITEM_STACK);
 
@@ -75,7 +75,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 
     @Override
     public float getBoundingBoxGrowth() {
-        return 0.15F;
+        return this.getCoatType().value().boundingBoxGrowth();
     }
 
     @Override
@@ -90,7 +90,8 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
 
     @Override
     public float renderScale() {
-        return FossilsModloaderHelper.INSTANCE.legacyModels() ? 0.2F + (0.1F * (float) this.getGrowthStage()) : 0.5F + (0.1F * (float) this.getGrowthStage());
+        CoatType coatType = this.getCoatType().value();
+        return coatType.baseScale() + (coatType.ageScale() * (float) this.getGrowthStage());
     }
 
     @Override
@@ -139,7 +140,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(SUB_SPECIES, 0);
+        builder.define(COAT_TYPE, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getAny().orElseThrow());
         builder.define(LEARNED_CHESTS, false);
         builder.define(HELD_ITEM, ItemStack.EMPTY);
     }
@@ -159,17 +160,12 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
         return FossilsLegacySoundEvents.VELOCIRAPTOR_DEATH.get();
     }
 
-    @Override
-    public int getSubSpecies() {
-        return this.entityData.get(SUB_SPECIES);
+    public Holder<CoatType> getCoatType() {
+        return this.entityData.get(COAT_TYPE);
     }
 
-    @Override
-    public void setSubSpecies(int subSpecies) {
-        if (subSpecies > 2) {
-            subSpecies = 2;
-        }
-        this.entityData.set(SUB_SPECIES, subSpecies);
+    public void setCoatType(Holder<CoatType> coatTypeHolder) {
+        this.entityData.set(COAT_TYPE, coatTypeHolder);
     }
 
     @Override
@@ -191,19 +187,9 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
     }
 
     @Override
-    public ResourceLocation[][] textures() {
-        return new ResourceLocation[][]{{FossilsLegacyUtils.resource("textures/entity/velociraptor/sandy_velociraptor.png"), FossilsLegacyUtils.resource("textures/entity/velociraptor/sandy_baby_velociraptor.png")}, {FossilsLegacyUtils.resource("textures/entity/velociraptor/green_velociraptor.png"), FossilsLegacyUtils.resource("textures/entity/velociraptor/green_baby_velociraptor.png")}, {FossilsLegacyUtils.resource("textures/entity/velociraptor/white_velociraptor.png"), FossilsLegacyUtils.resource("textures/entity/velociraptor/white_baby_velociraptor.png")}};
-    }
-
-    @Override
-    public ResourceLocation[][] legacyTextures() {
-        return new ResourceLocation[][]{{FossilsLegacyUtils.resource("textures/entity/velociraptor/legacy/sandy_velociraptor.png"), FossilsLegacyUtils.resource("textures/entity/velociraptor/legacy/sandy_baby_velociraptor.png")}, {FossilsLegacyUtils.resource("textures/entity/velociraptor/legacy/green_velociraptor.png"), FossilsLegacyUtils.resource("textures/entity/velociraptor/legacy/green_baby_velociraptor.png")}, {FossilsLegacyUtils.resource("textures/entity/velociraptor/legacy/white_velociraptor.png"), FossilsLegacyUtils.resource("textures/entity/velociraptor/legacy/white_baby_velociraptor.png")}};
-    }
-
-    @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        compoundTag.putInt("SubSpecies", this.getSubSpecies());
+        this.addCoatType(compoundTag);
         compoundTag.putBoolean("LearnedChests", this.hasLearnedChests());
         if (!this.getHeldItem().isEmpty()) {
             compoundTag.put("HeldItem", this.getHeldItem().saveOptional(this.registryAccess()));
@@ -213,40 +199,12 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, SubS
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        this.setSubSpecies(compoundTag.getInt("SubSpecies"));
+        this.readCoatType(compoundTag);
         this.setLearnedChests(compoundTag.getBoolean("LearnedChests"));
         CompoundTag itemCompoundTag = compoundTag.getCompound("HeldItem");
         if (itemCompoundTag != null && !itemCompoundTag.isEmpty()) {
             this.setHeldItem(ItemStack.parseOptional(this.registryAccess(), itemCompoundTag));
         }
-    }
-
-    @Override
-    public void onHatchFromEgg() {
-        Biome biome = this.level().getBiome(this.blockPosition()).value();
-
-        if (biome.coldEnoughToSnow(this.blockPosition())) {
-            this.setSubSpecies(2);
-        } else if (biome.getBaseTemperature() > 1.75F) {
-            this.setSubSpecies(0);
-        } else {
-            this.setSubSpecies(1);
-        }
-    }
-
-    @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData) {
-        Biome biome = serverLevelAccessor.getBiome(this.blockPosition()).value();
-
-        if (biome.coldEnoughToSnow(this.blockPosition())) {
-            this.setSubSpecies(2);
-        } else if (biome.getBaseTemperature() > 1.75F) {
-            this.setSubSpecies(0);
-        } else {
-            this.setSubSpecies(1);
-        }
-
-        return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData);
     }
 
     @Override

@@ -54,7 +54,7 @@ public class PlaceEntityItem extends Item {
             if (this.entityType.get() != null) {
                 ServerLevel serverLevel = (ServerLevel) level;
                 Entity entity = this.entityType.get().create(level);
-                this.entityModification(entity);
+                this.entityModification(itemStack, entity);
                 entity.setPos((double) placePos.getX() + 0.5D, placePos.getY() + 1.0D, (double) placePos.getZ() + 0.5D);
                 double yOffset = getYOffset(serverLevel, blockPos, !Objects.equals(blockPos, placePos) && direction == Direction.UP, ((Entity) entity).getBoundingBox());
                 entity.moveTo((double) placePos.getX() + 0.5D, (double) placePos.getY() + yOffset, (double) placePos.getZ() + 0.5D, Mth.wrapDegrees(serverLevel.random.nextFloat() * 360.0F), 0.0F);
@@ -82,6 +82,6 @@ public class PlaceEntityItem extends Item {
         return 1.0 + Shapes.collide(Direction.Axis.Y, aABB, iterable, bl ? -2.0 : -1.0);
     }
 
-    public void entityModification(Entity entity) {
+    public void entityModification(ItemStack itemStack, Entity entity) {
     }
 }

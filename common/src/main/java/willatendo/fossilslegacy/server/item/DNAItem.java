@@ -34,9 +34,7 @@ public class DNAItem extends Item {
         if (itemStack.has(FossilsLegacyDataComponents.COAT_TYPE.get())) {
             Holder<CoatType> holder = itemStack.get(FossilsLegacyDataComponents.COAT_TYPE.get());
             components.add(FossilsLegacyUtils.translation("item", "dna.coat_type", holder.value().name()).withStyle(ChatFormatting.GRAY));
-            super.appendHoverText(itemStack, tooltipContext, components, tooltipFlag);
-        } else {
-            super.appendHoverText(itemStack, tooltipContext, components, tooltipFlag);
         }
+        super.appendHoverText(itemStack, tooltipContext, components, tooltipFlag);
     }
 }

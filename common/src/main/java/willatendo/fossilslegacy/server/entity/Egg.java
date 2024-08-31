@@ -1,8 +1,11 @@
 package willatendo.fossilslegacy.server.entity;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -23,6 +26,8 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
+import willatendo.fossilslegacy.server.entity.genetics.CoatType;
+import willatendo.fossilslegacy.server.entity.util.CoatTypeEntity;
 import willatendo.fossilslegacy.server.entity.util.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.TicksToBirth;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
@@ -32,6 +37,9 @@ import java.util.*;
 
 public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
     private static final EntityDataAccessor<Holder<EggVariant>> EGG_VARIANT = SynchedEntityData.defineId(Egg.class, FossilsLegacyEntityDataSerializers.EGG_VARIANTS.get());
+    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Egg.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
+    public static final MapCodec<Holder<CoatType>> VARIANT_MAP_CODEC = CoatType.CODEC.fieldOf("CoatType");
+    public static final Codec<Holder<CoatType>> VARIANT_CODEC = VARIANT_MAP_CODEC.codec();
     private static final EntityDataAccessor<Integer> REMAINING_TIME = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> WARM = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.BOOLEAN);
     protected static final EntityDataAccessor<Optional<UUID>> OWNER = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.OPTIONAL_UUID);
@@ -74,8 +82,8 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 
     @Override
     public void onEntityTicksComplete(Mob mob, Entity offspring, Level level) {
-        if (offspring instanceof Dinosaur dinosaur) {
-            dinosaur.onHatchFromEgg();
+        if (offspring instanceof CoatTypeEntity coatTypeEntity) {
+            coatTypeEntity.setCoatType(this.getCoatType());
         }
     }
 
@@ -110,6 +118,7 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
         builder.define(EGG_VARIANT, FossilsLegacyBuiltInRegistries.EGG_VARIANTS.getHolderOrThrow(FossilsLegacyEggVariants.TRICERATOPS.getKey()));
+        builder.define(COAT_TYPE, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getAny().orElseThrow());
         builder.define(REMAINING_TIME, 0);
         builder.define(WARM, false);
         builder.define(OWNER, Optional.empty());
@@ -124,6 +133,7 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
         }
 
         compoundTag.putString("Variant", this.getEggVariant().unwrapKey().orElse(FossilsLegacyEggVariants.TRICERATOPS.getKey()).location().toString());
+        VARIANT_CODEC.encodeStart(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), this.getCoatType()).ifSuccess(tag -> compoundTag.merge((CompoundTag) tag));
         compoundTag.putInt("RemainingTime", this.getRemainingTime());
         compoundTag.putBoolean("Warm", this.isWarm());
     }
@@ -147,12 +157,11 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
             }
         }
 
-        Optional<ResourceKey<EggVariant>> eggVariant = Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("Variant"))).map((resourceLocation) -> {
-            return ResourceKey.create(FossilsLegacyRegistries.EGG_VARIANTS, resourceLocation);
-        });
+        Optional<ResourceKey<EggVariant>> eggVariant = Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("Variant"))).map(resourceLocation -> ResourceKey.create(FossilsLegacyRegistries.EGG_VARIANTS, resourceLocation));
         Registry<EggVariant> registry = FossilsLegacyBuiltInRegistries.EGG_VARIANTS;
         Objects.requireNonNull(registry);
         eggVariant.flatMap(registry::getHolder).ifPresent(this::setEggVariant);
+        VARIANT_CODEC.parse(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), compoundTag).ifSuccess(this::setCoatType);
         this.setRemainingTime(compoundTag.getInt("RemainingTime"));
         this.setWarm(compoundTag.getBoolean("Warm"));
     }
@@ -191,6 +200,14 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 
     public void setEggVariant(Holder<EggVariant> eggVariant) {
         this.entityData.set(EGG_VARIANT, eggVariant);
+    }
+
+    public Holder<CoatType> getCoatType() {
+        return this.entityData.get(COAT_TYPE);
+    }
+
+    public void setCoatType(Holder<CoatType> coatTypeHolder) {
+        this.entityData.set(COAT_TYPE, coatTypeHolder);
     }
 
     public boolean isOwnedBy(LivingEntity livingEntity) {

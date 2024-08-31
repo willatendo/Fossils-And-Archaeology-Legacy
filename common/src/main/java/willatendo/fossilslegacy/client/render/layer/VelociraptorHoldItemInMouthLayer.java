@@ -20,9 +20,6 @@ public class VelociraptorHoldItemInMouthLayer<T extends EntityModel<Velociraptor
         this.itemInHandRenderer = itemInHandRenderer;
     }
 
-    public void pose(PoseStack poseStack) {
-    }
-
     @Override
     public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks, Velociraptor velociraptor, float position, float speed, float packedOverlay, float bob, float headPitch, float headYaw) {
         float ageOffset = ((FossilsModloaderHelper.INSTANCE.legacyModels() ? 1.0F : 0.5F) + 0.0F * ((float) velociraptor.getGrowthStage()));

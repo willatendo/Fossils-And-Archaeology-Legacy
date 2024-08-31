@@ -23,6 +23,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.ConfigHelper;
+import willatendo.fossilslegacy.server.entity.genetics.CoatType;
 import willatendo.fossilslegacy.server.entity.util.*;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
@@ -39,6 +40,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
     private static final EntityDataAccessor<Integer> HUNGER = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
     protected static final EntityDataAccessor<Optional<UUID>> OWNER = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.OPTIONAL_UUID);
     protected int internalClock = 0;
+    protected EntityDimensions entityDimensions;
 
     public Dinosaur(EntityType<? extends Dinosaur> entityType, Level level) {
         super(entityType, level);
@@ -70,17 +72,24 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
         return null;
     }
 
-    public void onHatchFromEgg() {
-    }
-
     public abstract float getBoundingBoxGrowth();
 
     public abstract Diet getDiet();
 
     public boolean hasSpace() {
         EntityDimensions entityDimensions = this.getDimensions(this.getPose());
-        EntityDimensions updatedDimensions = entityDimensions.scale(1.0F + (((float) this.getBoundingBoxGrowth()) * ((float) this.getGrowthStage() + 1.0F)));
+        EntityDimensions updatedDimensions = entityDimensions.scale(1.0F + (this.getBoundingBoxGrowth() * ((float) this.getGrowthStage() + 1.0F)));
         return !this.level().getBlockCollisions(this, updatedDimensions.makeBoundingBox(this.position())).iterator().hasNext();
+    }
+
+    @Override
+    protected EntityDimensions getDefaultDimensions(Pose pose) {
+        if (this instanceof CoatTypeEntity coatTypeEntity) {
+            CoatType coatType = coatTypeEntity.getCoatType().value();
+            return entityDimensions = EntityDimensions.fixed(coatType.boundingBoxWidth() + (this.getBoundingBoxGrowth() * this.getGrowthStage()), coatType.boundingBoxHeight() + (this.getBoundingBoxGrowth() * this.getGrowthStage()));
+        } else {
+            return this.entityDimensions = super.getDefaultDimensions(pose);
+        }
     }
 
     @Override
@@ -166,11 +175,6 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
                 }
             }
         }
-    }
-
-    @Override
-    public float getScale() {
-        return this.renderScale();
     }
 
     public float renderScale() {
@@ -370,6 +374,12 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
         compoundTag.putInt("Hunger", this.getHunger());
         compoundTag.putInt("GrowthStage", this.getGrowthStage());
         compoundTag.putInt("InternalClock", this.internalClock);
+
+        if (this.entityDimensions != null) {
+            compoundTag.putFloat("BoundingBoxWidth", this.entityDimensions.width());
+            compoundTag.putFloat("BoundingBoxHeight", this.entityDimensions.height());
+            compoundTag.putBoolean("BoundingBoxFixed", this.entityDimensions.fixed());
+        }
     }
 
     @Override
@@ -396,6 +406,13 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
         this.setHunger(compoundTag.getInt("Hunger"));
         this.setGrowthStage(compoundTag.getInt("GrowthStage"));
         this.internalClock = compoundTag.getInt("InternalClock");
+
+        if (this.entityDimensions == null) {
+            float width = compoundTag.getFloat("BoundingBoxWidth");
+            float height = compoundTag.getFloat("BoundingBoxHeight");
+            boolean fixed = compoundTag.getBoolean("BoundingBoxFixed");
+            this.entityDimensions = fixed ? EntityDimensions.fixed(width, height) : EntityDimensions.scalable(width, height);
+        }
     }
 
     @Override

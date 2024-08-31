@@ -47,7 +47,7 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        builder.define(STONE_TABLET_VARIANT, (Holder) this.registryAccess().registryOrThrow(FossilsLegacyRegistries.STONE_TABLET_VARIANTS).getAny().orElseThrow());
+        builder.define(STONE_TABLET_VARIANT, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.STONE_TABLET_VARIANTS).getAny().orElseThrow());
     }
 
     @Override
@@ -107,9 +107,7 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
 
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
-        VARIANT_CODEC.encodeStart(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), this.getVariant()).ifSuccess(tag -> {
-            compoundTag.merge((CompoundTag) tag);
-        });
+        VARIANT_CODEC.encodeStart(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), this.getVariant()).ifSuccess(tag -> compoundTag.merge((CompoundTag) tag));
         compoundTag.putByte("facing", (byte) this.direction.get2DDataValue());
         super.addAdditionalSaveData(compoundTag);
     }

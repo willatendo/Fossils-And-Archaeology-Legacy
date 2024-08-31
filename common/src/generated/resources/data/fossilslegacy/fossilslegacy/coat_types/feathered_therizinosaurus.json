@@ -2,6 +2,8 @@
   "age_scale": 0.3,
   "base_scale": 0.5,
   "bounding_box_growth": 0.35,
+  "bounding_box_height": 0.5,
+  "bounding_box_width": 0.5,
   "model": "fossilslegacy:therizinosaurus",
   "name": {
     "translate": "coatType.fossilslegacy.feathered_therizinosaurus"

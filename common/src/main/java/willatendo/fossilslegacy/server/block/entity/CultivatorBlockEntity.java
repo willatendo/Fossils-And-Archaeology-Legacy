@@ -30,6 +30,7 @@ import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import willatendo.fossilslegacy.server.block.CultivatorBlock;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
+import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.menu.CultivatorMenu;
 import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
@@ -300,6 +301,9 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         if (recipeHolder != null && this.canCultivate(registryAccess, recipeHolder, itemStacks, maxStackSize)) {
             ItemStack input = itemStacks.get(0);
             ItemStack output = ((CultivationRecipe) recipeHolder.value()).assemble(new SingleRecipeInput(itemStacks.get(0)), registryAccess);
+            if (input.has(FossilsLegacyDataComponents.COAT_TYPE.get())) {
+                output.set(FossilsLegacyDataComponents.COAT_TYPE.get(), input.get(FossilsLegacyDataComponents.COAT_TYPE.get()));
+            }
             ItemStack outputSlot = itemStacks.get(2);
             if (outputSlot.isEmpty()) {
                 itemStacks.set(2, output.copy());

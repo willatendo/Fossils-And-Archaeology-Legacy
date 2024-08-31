@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.server.item;
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.entity.Fossil;
@@ -20,7 +21,7 @@ public class FossilItem extends PlaceEntityItem {
     }
 
     @Override
-    public void entityModification(Entity entity) {
+    public void entityModification(ItemStack itemStack, Entity entity) {
         Level level = entity.level();
         List<Holder<FossilVariant>> fossilVariants = new ArrayList<>();
         FossilsLegacyBuiltInRegistries.FOSSIL_VARIANTS.getTagOrEmpty(FossilsLegacyFossilVariantTags.PLACEABLE_FROM_FOSSIL).forEach(fossilVariants::add);

@@ -28,8 +28,12 @@ public class EggItem extends PlaceEntityItem {
     }
 
     @Override
-    public void entityModification(Entity entity) {
-        ((Egg) entity).setEggVariant(this.eggVariant);
+    public void entityModification(ItemStack itemStack, Entity entity) {
+        Egg egg = (Egg) entity;
+        egg.setEggVariant(this.eggVariant);
+        if (itemStack.has(FossilsLegacyDataComponents.COAT_TYPE.get())) {
+            egg.setCoatType(itemStack.get(FossilsLegacyDataComponents.COAT_TYPE.get()));
+        }
     }
 
     @Override
@@ -37,9 +41,7 @@ public class EggItem extends PlaceEntityItem {
         if (itemStack.has(FossilsLegacyDataComponents.COAT_TYPE.get())) {
             Holder<CoatType> holder = itemStack.get(FossilsLegacyDataComponents.COAT_TYPE.get());
             components.add(FossilsLegacyUtils.translation("item", "dna.coat_type", holder.value().name()).withStyle(ChatFormatting.GRAY));
-            super.appendHoverText(itemStack, tooltipContext, components, tooltipFlag);
-        } else {
-            super.appendHoverText(itemStack, tooltipContext, components, tooltipFlag);
         }
+        super.appendHoverText(itemStack, tooltipContext, components, tooltipFlag);
     }
 }

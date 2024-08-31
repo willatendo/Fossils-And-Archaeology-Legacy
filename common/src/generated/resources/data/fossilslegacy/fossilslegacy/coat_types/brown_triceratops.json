@@ -3,6 +3,8 @@
   "baby_texture": "fossilslegacy:textures/entity/triceratops/brown_baby_triceratops.png",
   "base_scale": 1.5,
   "bounding_box_growth": 0.35,
+  "bounding_box_height": 1.5,
+  "bounding_box_width": 1.5,
   "model": "fossilslegacy:triceratops",
   "name": {
     "translate": "coatType.fossilslegacy.brown_triceratops"
