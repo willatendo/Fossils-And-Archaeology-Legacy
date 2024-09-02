@@ -1,42 +1,51 @@
 plugins {
     id 'multiloader-loader'
-    id 'net.neoforged.gradle.userdev' version '7.0.142'
+    id 'net.neoforged.moddev'
     id 'com.modrinth.minotaur' version '[2,3)'
 }
 
-minecraft.accessTransformers.file file('src/main/resources/META-INF/accesstransformer.cfg')
-
-jarJar.enable()
-
-runs {
-    configureEach {
-        modSource project.sourceSets.main
-    }
-
-    client {
-        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
-    }
-
-    server {
-        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
-        programArgument '--nogui'
-    }
-
-    data {
-        programArguments.addAll '--mod', project.mod_id, '--all', '--output', file("${project(':common').projectDir.path}/src/generated/resources/").getAbsolutePath(), '--existing', file("${project(':common').projectDir.path}/src/main/resources/").getAbsolutePath()
-    }
-}
-
-sourceSets.main.resources { srcDir "${project(':common').projectDir.path}/src/generated/resources/" }
-
 dependencies {
-    implementation "net.neoforged:neoforge:${neoforge_version}"
-
     implementation "simplelibrary:simplelibrary-neoforge:${simple_library_version}"
     jarJar(group: 'simplelibrary', name: 'simplelibrary-neoforge', version: "[${simple_library_version},4.0.0)")
 
     implementation "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 }
+
+neoForge {
+    version = neoforge_version
+    def at = project(':common').file('src/main/resources/META-INF/accesstransformer.cfg')
+    if (at.exists()) {
+        accessTransformers.add(at.absolutePath)
+    }
+    parchment {
+        minecraftVersion = parchment_minecraft
+        mappingsVersion = parchment_version
+    }
+    runs {
+        configureEach {
+            systemProperty('neoforge.enabledGameTestNamespaces', mod_id)
+            ideName = "NeoForge ${it.name.capitalize()} (${project.path})"
+        }
+        client {
+            client()
+        }
+        data {
+            data()
+
+            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+        }
+        server {
+            server()
+        }
+    }
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 modrinth {
     token = System.getenv("MODRINTH_TOKEN")

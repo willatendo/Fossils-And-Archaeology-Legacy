@@ -22,7 +22,7 @@ import willatendo.fossilslegacy.server.structure.piece.FossilsLegacyStructurePei
 import willatendo.simplelibrary.server.SimpleBuiltInRegistries;
 import willatendo.simplelibrary.server.event.SimpleRegistryRegister;
 
-public class FossilsLegacyMod {
+public final class FossilsLegacyMod {
     public static void onInitialize(SimpleRegistryRegister simpleRegistryRegister) {
         FossilsLegacyBuiltInRegistries.init();
 
