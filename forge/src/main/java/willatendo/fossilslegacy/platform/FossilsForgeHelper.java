@@ -10,6 +10,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import willatendo.fossilslegacy.FossilsLegacyForgeMod;
 import willatendo.fossilslegacy.network.ForgePacketHelper;
@@ -42,8 +43,8 @@ public class FossilsForgeHelper implements FossilsModloaderHelper {
     }
 
     @Override
-    public RecipeBookCategories createRecipeBookCategory(String name) {
-        return RecipeBookCategories.create(FossilsLegacyUtils.ID + name);
+    public RecipeBookCategories createRecipeBookCategory(String name, ItemStack... icons) {
+        return RecipeBookCategories.create(FossilsLegacyUtils.ID + name, icons);
     }
 
     @Override

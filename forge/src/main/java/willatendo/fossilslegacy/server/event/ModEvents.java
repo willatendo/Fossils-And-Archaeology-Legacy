@@ -13,6 +13,7 @@ import net.minecraftforge.registries.NewRegistryEvent;
 import willatendo.fossilslegacy.network.ForgePacketHelper;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.server.event.modification.ForgeCreativeModeTabModification;
 import willatendo.simplelibrary.server.event.registry.*;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID)
@@ -25,16 +26,7 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void buildCreativeModeTabContentsEvent(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.OP_BLOCKS) {
-            if (event.hasPermissions()) {
-                event.accept(FossilsLegacyItems.DEBUG_MAX_HUNGER.get());
-                event.accept(FossilsLegacyItems.DEBUG_MAX_HEALTH.get());
-                event.accept(FossilsLegacyItems.DEBUG_FULL_GROWN.get());
-                event.accept(FossilsLegacyItems.DEBUG_BABY.get());
-                event.accept(FossilsLegacyItems.DEBUG_TAME.get());
-                event.accept(FossilsLegacyItems.DEBUG_CHANGE_GENETICS.get());
-            }
-        }
+        BasicEvents.buildCreativeModeTabEvent(new ForgeCreativeModeTabModification(event));
     }
 
     @SubscribeEvent

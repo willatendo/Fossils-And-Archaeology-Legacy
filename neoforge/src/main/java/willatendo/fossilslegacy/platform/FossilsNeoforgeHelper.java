@@ -10,6 +10,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.neoforged.neoforge.network.PacketDistributor;
 import willatendo.fossilslegacy.FossilsLegacyNeoforgeMod;
@@ -42,7 +43,7 @@ public class FossilsNeoforgeHelper implements FossilsModloaderHelper {
     }
 
     @Override
-    public RecipeBookCategories createRecipeBookCategory(String name) {
+    public RecipeBookCategories createRecipeBookCategory(String name, ItemStack... icons) {
         return RecipeBookCategories.valueOf(FossilsLegacyUtils.ID + name);
     }
 

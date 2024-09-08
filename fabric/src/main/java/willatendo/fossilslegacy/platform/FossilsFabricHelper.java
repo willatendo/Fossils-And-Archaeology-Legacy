@@ -14,6 +14,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
 import willatendo.fossilslegacy.server.config.FabricConfigHelper;
@@ -49,7 +50,7 @@ public class FossilsFabricHelper implements FossilsModloaderHelper {
     }
 
     @Override
-    public RecipeBookCategories createRecipeBookCategory(String name) {
+    public RecipeBookCategories createRecipeBookCategory(String name, ItemStack... icons) {
         return FabricClientUtils.createRecipeBookCategory(name);
     }
 

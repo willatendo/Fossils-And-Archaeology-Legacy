@@ -10,6 +10,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
@@ -27,7 +28,7 @@ public interface FossilsModloaderHelper {
 
     RecipeBookType createRecipeBookType(String name);
 
-    RecipeBookCategories createRecipeBookCategory(String name);
+    RecipeBookCategories createRecipeBookCategory(String name, ItemStack... icons);
 
     // Config
     boolean featheredDinosaurs();
