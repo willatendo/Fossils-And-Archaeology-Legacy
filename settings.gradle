@@ -44,7 +44,7 @@ plugins {
 }
 
 rootProject.name = 'Fossils-And-Archaeology-Legacy'
-include("common")
-include("fabric")
-include("neoforge")
-include("forge")
+include('common')
+include('fabric')
+include('neoforge')
+include('forge')

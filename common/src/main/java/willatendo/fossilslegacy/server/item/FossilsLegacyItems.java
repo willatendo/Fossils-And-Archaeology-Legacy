@@ -108,7 +108,7 @@ public class FossilsLegacyItems {
     public static final SimpleHolder<DrinkingGlassBottleItem> ROMANTIC_CONCOCTION_BOTTLE = ITEMS.register("romantic_concoction_bottle", () -> new DrinkingGlassBottleItem(new Item.Properties().stacksTo(16).food(FossilsLegacyFoods.ROMANTIC_CONCOCTION)));
     public static final SimpleHolder<Item> NAUTILUS_SHELL = ITEMS.register("nautilus_shell", () -> new Item(new Item.Properties().stacksTo(1)));
     public static final SimpleHolder<MagicConchItem> MAGIC_CONCH = ITEMS.register("magic_conch", () -> new MagicConchItem(new Item.Properties().stacksTo(1)));
-    public static final SimpleHolder<FrozenMeatItem> FROZEN_MEAT = ITEMS.register("frozen_meat", () -> new FrozenMeatItem(new Item.Properties()));
+    public static final SimpleHolder<FrozenMeatItem> FROZEN_MEAT = ITEMS.register("frozen_meat", () -> new FrozenMeatItem(new Item.Properties().attributes(FrozenMeatItem.createAttributes(FossilsLegacyTiers.ICED_MEAT, 3, -2.4F))));
     public static final SimpleHolder<BrokenFrozenMeatItem> BROKEN_FROZEN_MEAT = ITEMS.register("broken_frozen_meat", () -> new BrokenFrozenMeatItem(FossilsLegacyTiers.ICED_MEAT, new Item.Properties().attributes(BrokenFrozenMeatItem.createAttributes(FossilsLegacyTiers.ICED_MEAT, 3, -2.4F))));
     public static final SimpleHolder<DNAItem> ARMADILLO_DNA = ITEMS.register("armadillo_dna", () -> new DNAItem(new Item.Properties()));
     public static final SimpleHolder<DNAItem> AXOLOTL_DNA = ITEMS.register("axolotl_dna", () -> new DNAItem(new Item.Properties()));

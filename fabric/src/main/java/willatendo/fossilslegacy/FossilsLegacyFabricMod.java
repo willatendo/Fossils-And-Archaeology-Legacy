@@ -5,7 +5,7 @@ import willatendo.fossilslegacy.network.FossilsLegacyPackets;
 import willatendo.fossilslegacy.server.config.FabricConfigHelper;
 import willatendo.fossilslegacy.server.event.ModCallbacks;
 import willatendo.fossilslegacy.server.event.ModEvents;
-import willatendo.simplelibrary.server.event.FabricSimpleRegistryRegister;
+import willatendo.simplelibrary.server.event.registry.FabricSimpleRegistryRegister;
 
 public class FossilsLegacyFabricMod implements ModInitializer {
     @Override

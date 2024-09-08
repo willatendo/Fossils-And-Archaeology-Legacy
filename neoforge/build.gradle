@@ -1,7 +1,6 @@
 plugins {
     id 'multiloader-loader'
     id 'net.neoforged.moddev'
-    id 'com.modrinth.minotaur' version '[2,3)'
 }
 
 dependencies {
@@ -13,18 +12,21 @@ dependencies {
 
 neoForge {
     version = neoforge_version
+
     def at = project(':common').file('src/main/resources/META-INF/accesstransformer.cfg')
     if (at.exists()) {
         accessTransformers.add(at.absolutePath)
     }
+
     parchment {
         minecraftVersion = parchment_minecraft
         mappingsVersion = parchment_version
     }
+
     runs {
         configureEach {
             systemProperty('neoforge.enabledGameTestNamespaces', mod_id)
-            ideName = "NeoForge ${it.name.capitalize()} (${project.path})"
+            ideName = "NeoForge ${it.name.capitalize()} (${project.path})" // Unify the run config names with fabric
         }
         client {
             client()
@@ -32,7 +34,7 @@ neoForge {
         data {
             data()
 
-            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file("${project(':common').getDependencyProject().projectDir.path}/src/generated/resources/").getAbsolutePath(), '--existing', file("${project(':common').getDependencyProject().projectDir.path}/src/main/resources/").getAbsolutePath()
         }
         server {
             server()
@@ -45,22 +47,4 @@ neoForge {
     }
 }
 
-sourceSets.main.resources { srcDir 'src/generated/resources' }
-
-modrinth {
-    token = System.getenv("MODRINTH_TOKEN")
-    projectId = "fossils-and-archaeology-legacy"
-    versionNumber = "${mod_version}"
-    versionName = "${mod_version_name}"
-    versionType = "release"
-    uploadFile = tasks.jarJar
-    gameVersions = ["${minecraft_version}"]
-    loaders = ["neoforge"]
-    File f = new File("$rootDir/changelog-${mod_version}.md")
-    if (f.exists()) {
-        changelog = f.text
-    }
-    dependencies {
-        optional.project "jei"
-    }
-}
+sourceSets.main.resources { srcDir "${project(':common').projectDir.path}/src/generated/resources/" }

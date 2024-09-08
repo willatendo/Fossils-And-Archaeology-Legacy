@@ -9,10 +9,6 @@ import net.minecraftforge.client.event.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.inventory.FossilsLegacyRecipeBookTypes;
@@ -25,10 +21,6 @@ import willatendo.simplelibrary.client.event.ForgeKeyMappingRegister;
 import willatendo.simplelibrary.client.event.ForgeMenuScreenRegister;
 import willatendo.simplelibrary.client.event.ForgeModelLayerRegister;
 import willatendo.simplelibrary.client.event.ForgeModelRegister;
-import willatendo.simplelibrary.client.event.NeoforgeKeyMappingRegister;
-import willatendo.simplelibrary.client.event.NeoforgeMenuScreenRegister;
-import willatendo.simplelibrary.client.event.NeoforgeModelLayerRegister;
-import willatendo.simplelibrary.client.event.NeoforgeModelRegister;
 
 import java.util.List;
 
@@ -88,11 +80,11 @@ public class ClientEvents {
         });
     }
 
-    @SubscribeEvent
+    /*SubscribeEvent
     public static void registerGuiLayersEvent(RegisterGuiOverlaysEvent event) {
 
         event.registerBelow(FossilsLegacyUtils.mc("hotbar"), FossilsLegacyUtils.resource("skull_overlay"), new SkullOverlayScreen());
-    }
+    }*/
 
     @SubscribeEvent
     public static void registerKeyMappingsEvent(RegisterKeyMappingsEvent event) {

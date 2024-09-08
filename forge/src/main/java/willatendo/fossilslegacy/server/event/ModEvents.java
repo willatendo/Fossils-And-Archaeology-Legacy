@@ -13,7 +13,7 @@ import net.minecraftforge.registries.NewRegistryEvent;
 import willatendo.fossilslegacy.network.ForgePacketHelper;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.server.event.*;
+import willatendo.simplelibrary.server.event.registry.*;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID)
 public class ModEvents {

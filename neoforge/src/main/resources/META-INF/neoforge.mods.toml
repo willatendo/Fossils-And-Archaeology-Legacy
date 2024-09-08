@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "${neoforge_version_range}"
+loaderVersion = "${neoforge_loader_version_range}"
 license = "${license}"
 issueTrackerURL = "${issue_tracker}"
 
@@ -17,7 +17,7 @@ enumExtensions = "META-INF/enum_extensions.json"
 [[dependencies.${mod_id}]]
 modId = "neoforge"
 type = "required"
-versionRange = "${neoforge_version_range}"
+versionRange = "[${neoforge_version},)"
 ordering = "NONE"
 side = "BOTH"
 

@@ -4,7 +4,7 @@ plugins {
 }
 
 base {
-    archivesName = "${mod_id}-${project.name}"
+    archivesName = "${mod_id}-${version}"
 }
 
 java {
@@ -20,7 +20,7 @@ repositories {
                 url = 'https://repo.spongepowered.org/repository/maven-public'
             }
         }
-        filter { includeGroupAndSubgroups("org.spongepowered") }
+        filter { includeGroupAndSubgroups('org.spongepowered') }
     }
     exclusiveContent {
         forRepositories(
@@ -36,7 +36,7 @@ repositories {
         filter { includeGroup('org.parchmentmc.data') }
     }
     maven { url = 'https://maven.blamejared.com' }
-	
+
     // ASM
     maven { url "https://jitpack.io" }
 
@@ -86,7 +86,6 @@ jar {
     }
 }
 
-
 processResources {
     var expandProps = [
             'version'                      : version,
@@ -100,14 +99,14 @@ processResources {
             'mod_id'                       : mod_id,
             'license'                      : license,
             'description'                  : project.description,
+            'homepage'                     : homepage,
+            'issue_tracker'                : issue_tracker,
+            'update_tracker'               : update_tracker,
             'neoforge_version'             : neoforge_version,
             'neoforge_loader_version_range': neoforge_loader_version_range,
             "forge_version"                : forge_version,
             "forge_loader_version_range"   : forge_loader_version_range,
-            'java_version'                 : java_version,
-            'homepage'                     : homepage,
-            'issue_tracker'                : issue_tracker,
-            'update_tracker'               : update_tracker
+            'java_version'                 : java_version
     ]
 
     filesMatching(['pack.mcmeta', 'fabric.mod.json', 'META-INF/mods.toml', 'META-INF/neoforge.mods.toml', '*.mixins.json']) {

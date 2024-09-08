@@ -7,7 +7,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.registries.ForgeRegistries;
 import willatendo.fossilslegacy.server.config.FossilsLegacyConfig;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.server.event.ForgeSimpleRegistryRegister;
+import willatendo.simplelibrary.server.event.registry.ForgeSimpleRegistryRegister;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 @Mod(FossilsLegacyUtils.ID)

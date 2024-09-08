@@ -32,7 +32,7 @@ import willatendo.fossilslegacy.server.entity.genetics.CoatType;
 import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.server.event.*;
+import willatendo.simplelibrary.server.event.registry.*;
 
 public class BasicEvents {
     public static void commonSetup() {
@@ -105,9 +105,9 @@ public class BasicEvents {
     }
 
     public static void newRegistryEvent(NewRegistryRegister newRegistryRegister) {
-        newRegistryRegister.register(FossilsLegacyBuiltInRegistries.EGG_VARIANTS);
-        newRegistryRegister.register(FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES);
-        newRegistryRegister.register(FossilsLegacyBuiltInRegistries.FOSSIL_VARIANTS);
+        newRegistryRegister.register(FossilsLegacyBuiltInRegistries.EGG_VARIANTS, FossilsLegacyRegistries.EGG_VARIANTS);
+        newRegistryRegister.register(FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES, FossilsLegacyRegistries.PREGNANCY_TYPES);
+        newRegistryRegister.register(FossilsLegacyBuiltInRegistries.FOSSIL_VARIANTS, FossilsLegacyRegistries.FOSSIL_VARIANTS);
     }
 
     public static void newDynamicRegistryEvent(DynamicRegistryRegister dynamicRegistryRegister) {

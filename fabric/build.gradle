@@ -1,7 +1,6 @@
 plugins {
     id 'multiloader-loader'
     id 'fabric-loom'
-    id 'com.modrinth.minotaur' version '[2,3)'
 }
 
 dependencies {
@@ -10,7 +9,7 @@ dependencies {
         officialMojangMappings()
         parchment("org.parchmentmc.data:parchment-${parchment_minecraft}:${parchment_version}@zip")
     }
-
+	
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 
@@ -32,14 +31,25 @@ dependencies {
     modImplementation "mezz.jei:jei-${minecraft_version}-fabric:${jei_version}"
 }
 
+sourceSets {
+    main {
+        resources {
+            srcDir("../common/src/generated/resources")
+            exclude("../common/src/generated/resources/.cache")
+        }
+    }
+}
+
 loom {
-    def aw = project(':common').file("src/main/resources/${mod_id}.accesswidener")
+    def aw = file("src/main/resources/${mod_id}.accesswidener")
     if (aw.exists()) {
         accessWidenerPath.set(aw)
     }
+	
     mixin {
         defaultRefmapName.set("${mod_id}.refmap.json")
     }
+
     runs {
         client {
             client()
@@ -53,27 +63,5 @@ loom {
             ideConfigGenerated(true)
             runDir('runs/server')
         }
-    }
-}
-
-modrinth {
-    token = System.getenv("MODRINTH_TOKEN")
-    projectId = "fossils-and-archaeology-legacy"
-    versionNumber = "${mod_version}"
-    versionName = "${mod_version_name}"
-    versionType = "release"
-    uploadFile = remapJar
-    gameVersions = ["${minecraft_version}"]
-    loaders = ["fabric"]
-    File f = new File("$rootDir/changelog-${mod_version}.md")
-    if (f.exists()) {
-        changelog = f.text
-    }
-    dependencies {
-        required.project "fabric-api"
-        optional.project "cloth-config"
-        optional.project "modmenu"
-        optional.project "forge-config-api-port"
-        optional.project "jei"
     }
 }

@@ -24,6 +24,7 @@ import willatendo.fossilslegacy.server.menu.ArchaeologyWorkbenchMenu;
 import willatendo.fossilslegacy.server.menu.CultivatorMenu;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenuTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.server.util.SimpleUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,7 @@ public class FossilsLegacyJEI implements IModPlugin {
 
     // JEI Constants
     public static final String JEI_ID = "jei";
-    public static final ResourceLocation LOCATION_JEI_GUI_TEXTURE_ATLAS = new ResourceLocation(FossilsLegacyJEI.JEI_ID, "textures/atlas/gui.png");
+    public static final ResourceLocation LOCATION_JEI_GUI_TEXTURE_ATLAS = SimpleUtils.resource(FossilsLegacyJEI.JEI_ID, "textures/atlas/gui.png");
 
     private static FossilsLegacyJEITextures textures;
 

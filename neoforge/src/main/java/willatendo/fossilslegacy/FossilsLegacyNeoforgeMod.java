@@ -8,7 +8,7 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import willatendo.fossilslegacy.server.config.FossilsLegacyConfig;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.server.event.NeoforgeSimpleRegistryRegister;
+import willatendo.simplelibrary.server.event.registry.NeoforgeSimpleRegistryRegister;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 @Mod(FossilsLegacyUtils.ID)

@@ -56,7 +56,7 @@ public class WeaponShopPieces {
 
         @Override
         public void postProcess(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
-            ResourceLocation structure = FossilsLegacyUtils.mc(this.templateName);
+            ResourceLocation structure = ResourceLocation.parse(this.templateName);
             StructurePlaceSettings structurePlaceSettings = makeSettings(this.placeSettings.getRotation(), structure);
             BlockPos offsetPos = new BlockPos(3, 3, 5);
             BlockPos offsetedPos = this.templatePosition.offset(StructureTemplate.calculateRelativePosition(structurePlaceSettings, new BlockPos(3 - offsetPos.getX(), 0, -offsetPos.getZ())));

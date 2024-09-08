@@ -6,6 +6,7 @@
 - Fixed Placing Stone Tables
 - Fixed Cannibalism
 - Fixed Bounding Boxes
+- Fixed Frozen Meat's Attack Damage
 - Added Updated Triceratops Model
 - Added "Anu Totem" Stone Tablet
 - Added Coat-Types; data-driven cosmetics for dinosaurs

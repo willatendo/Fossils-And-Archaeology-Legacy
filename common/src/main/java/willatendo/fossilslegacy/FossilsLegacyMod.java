@@ -20,7 +20,7 @@ import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.structure.FossilsLegacyStructureTypes;
 import willatendo.fossilslegacy.server.structure.piece.FossilsLegacyStructurePeices;
 import willatendo.simplelibrary.server.SimpleBuiltInRegistries;
-import willatendo.simplelibrary.server.event.SimpleRegistryRegister;
+import willatendo.simplelibrary.server.event.registry.SimpleRegistryRegister;
 
 public final class FossilsLegacyMod {
     public static void onInitialize(SimpleRegistryRegister simpleRegistryRegister) {
