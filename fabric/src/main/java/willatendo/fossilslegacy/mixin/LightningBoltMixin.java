@@ -11,7 +11,7 @@ import willatendo.fossilslegacy.server.event.ModCallbacks;
 @Mixin(LightningBolt.class)
 public class LightningBoltMixin {
 	@WrapWithCondition(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;thunderHit(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/LightningBolt;)V"))
-	private boolean fossil_lightningStrike(Entity entity, ServerLevel level, LightningBolt lightningBolt) {
+	private boolean fossilslegacy_lightningStrike(Entity entity, ServerLevel level, LightningBolt lightningBolt) {
 		return ModCallbacks.ENTITY_STRUCK_BY_LIGHTING.invoker().onEntityStruckByLightning(entity, lightningBolt);
 	}
 }

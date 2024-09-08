@@ -14,6 +14,7 @@ import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.animal.horse.Mule;
 import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -32,6 +33,7 @@ import willatendo.fossilslegacy.server.entity.genetics.CoatType;
 import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.server.event.modification.CreativeModeTabModification;
 import willatendo.simplelibrary.server.event.registry.*;
 
 public class BasicEvents {
@@ -98,6 +100,15 @@ public class BasicEvents {
         fireblock.setFlammable(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_WOOD.get(), 5, 5);
         fireblock.setFlammable(FossilsLegacyBlocks.LEPIDODENDRON_WOOD.get(), 5, 5);
         fireblock.setFlammable(FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get(), 30, 60);
+    }
+
+    public static void buildCreativeModeTabEvent(CreativeModeTabModification creativeModeTabModification) {
+        creativeModeTabModification.add(CreativeModeTabs.OP_BLOCKS, FossilsLegacyItems.DEBUG_MAX_HUNGER.get());
+        creativeModeTabModification.add(CreativeModeTabs.OP_BLOCKS, FossilsLegacyItems.DEBUG_MAX_HEALTH.get());
+        creativeModeTabModification.add(CreativeModeTabs.OP_BLOCKS, FossilsLegacyItems.DEBUG_FULL_GROWN.get());
+        creativeModeTabModification.add(CreativeModeTabs.OP_BLOCKS, FossilsLegacyItems.DEBUG_BABY.get());
+        creativeModeTabModification.add(CreativeModeTabs.OP_BLOCKS, FossilsLegacyItems.DEBUG_TAME.get());
+        creativeModeTabModification.add(CreativeModeTabs.OP_BLOCKS, FossilsLegacyItems.DEBUG_CHANGE_GENETICS.get());
     }
 
     public static void resourcePackEvent(ResourcePackRegister resourcePackRegister) {

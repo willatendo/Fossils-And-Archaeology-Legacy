@@ -20,6 +20,7 @@ import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.feature.FossilsLegacyPlacedFeatures;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.server.event.modification.FabricCreativeModeTabModification;
 import willatendo.simplelibrary.server.event.registry.FabricAttributeRegister;
 import willatendo.simplelibrary.server.event.registry.FabricDynamicRegistryRegister;
 import willatendo.simplelibrary.server.event.registry.FabricResourcePackRegister;
@@ -44,8 +45,9 @@ public class ModEvents {
             }
         });
 
-        ModEvents.addToCreativeModeTabs();
-
+        FabricCreativeModeTabModification fabricCreativeModeTabModification = new FabricCreativeModeTabModification();
+        BasicEvents.buildCreativeModeTabEvent(fabricCreativeModeTabModification);
+        fabricCreativeModeTabModification.build();
         BasicEvents.resourcePackEvent(new FabricResourcePackRegister());
         BasicEvents.attributeEvent(new FabricAttributeRegister());
         BasicEvents.spawnPlacementEvent(new FabricSpawnPlacementRegister());

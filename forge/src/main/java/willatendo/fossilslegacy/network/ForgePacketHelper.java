@@ -10,8 +10,8 @@ public class ForgePacketHelper {
     private static final SimpleChannel INSTANCE = ChannelBuilder.named(FossilsLegacyUtils.resource("main")).serverAcceptedVersions((status, version) -> true).clientAcceptedVersions((status, version) -> true).networkProtocolVersion(1).simpleChannel();
 
     public static void register() {
-        INSTANCE.messageBuilder(ServerboundSinkPacket.class, NetworkDirection.PLAY_TO_SERVER).encoder(ServerboundSinkPacket::encode).decoder(ServerboundSinkPacket::decode).consumerMainThread((msg, context) -> ServerboundSinkPacket.handle(() -> context.getSender(), msg));
-        INSTANCE.messageBuilder(ServerboundTimeMachineUpdatePacket.class, NetworkDirection.PLAY_TO_CLIENT).encoder(ServerboundTimeMachineUpdatePacket::encode).decoder(ServerboundTimeMachineUpdatePacket::decode).consumerMainThread((msg, context) -> ServerboundTimeMachineUpdatePacket.handle(() -> context.getSender(), msg));
+        INSTANCE.messageBuilder(ServerboundSinkPacket.class, NetworkDirection.PLAY_TO_SERVER).encoder(ServerboundSinkPacket::encode).decoder(ServerboundSinkPacket::decode).consumerMainThread((msg, context) -> ServerboundSinkPacket.handle(() -> context.getSender(), msg)).add();
+        INSTANCE.messageBuilder(ServerboundTimeMachineUpdatePacket.class, NetworkDirection.PLAY_TO_CLIENT).encoder(ServerboundTimeMachineUpdatePacket::encode).decoder(ServerboundTimeMachineUpdatePacket::decode).consumerMainThread((msg, context) -> ServerboundTimeMachineUpdatePacket.handle(() -> context.getSender(), msg)).add();
     }
 
     public static void sendToServer(Object msg) {

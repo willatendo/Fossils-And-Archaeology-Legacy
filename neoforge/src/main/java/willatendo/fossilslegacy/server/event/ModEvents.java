@@ -23,6 +23,7 @@ import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.event.*;
+import willatendo.simplelibrary.server.event.modification.NeoforgeCreativeModeTabModification;
 import willatendo.simplelibrary.server.event.registry.*;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID)
@@ -42,16 +43,7 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void buildCreativeModeTabContentsEvent(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.OP_BLOCKS) {
-            if (event.hasPermissions()) {
-                event.accept(FossilsLegacyItems.DEBUG_MAX_HUNGER.get());
-                event.accept(FossilsLegacyItems.DEBUG_MAX_HEALTH.get());
-                event.accept(FossilsLegacyItems.DEBUG_FULL_GROWN.get());
-                event.accept(FossilsLegacyItems.DEBUG_BABY.get());
-                event.accept(FossilsLegacyItems.DEBUG_TAME.get());
-                event.accept(FossilsLegacyItems.DEBUG_CHANGE_GENETICS.get());
-            }
-        }
+        BasicEvents.buildCreativeModeTabEvent(new NeoforgeCreativeModeTabModification(event));
     }
 
     @SubscribeEvent
