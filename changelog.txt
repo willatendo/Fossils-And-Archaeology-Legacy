@@ -7,6 +7,7 @@
 - Fixed Cannibalism
 - Fixed Bounding Boxes
 - Fixed Frozen Meat's Attack Damage
+- Fixed Bucket Pickup On Mod Cauldron
 - Added Updated Triceratops Model
 - Added "Anu Totem" Stone Tablet
 - Added Coat-Types; data-driven cosmetics for dinosaurs
