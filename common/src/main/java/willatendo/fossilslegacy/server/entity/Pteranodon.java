@@ -97,7 +97,7 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
     }
 
     @Override
-    public float renderScale() {
+    public float renderScaleWidth() {
         return 0.8F + (0.2F * (float) this.getGrowthStage());
     }
 

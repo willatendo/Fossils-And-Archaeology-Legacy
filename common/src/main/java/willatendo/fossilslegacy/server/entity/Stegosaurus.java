@@ -70,7 +70,7 @@ public class Stegosaurus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
-    public float renderScale() {
+    public float renderScaleWidth() {
         return 1.5F + (0.3F * (float) this.getGrowthStage());
     }
 

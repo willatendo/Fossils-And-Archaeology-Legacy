@@ -1,10 +1,11 @@
 {
   "age_scale": 0.1,
   "baby_texture": "fossilslegacy:textures/entity/velociraptor/sandy_baby_velociraptor.png",
-  "base_scale": 0.5,
+  "base_scale_height": 0.5,
+  "base_scale_width": 0.5,
   "bounding_box_growth": 0.05,
-  "bounding_box_height": 0.5,
-  "bounding_box_width": 0.5,
+  "bounding_box_height": 0.2,
+  "bounding_box_width": 0.2,
   "model": "fossilslegacy:velociraptor",
   "name": {
     "translate": "coatType.fossilslegacy.sandy_velociraptor"

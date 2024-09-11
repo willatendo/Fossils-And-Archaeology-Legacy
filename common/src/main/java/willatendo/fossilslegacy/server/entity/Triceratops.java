@@ -88,7 +88,7 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Ridea
     }
 
     @Override
-    public float renderScale() {
+    public float renderScaleWidth() {
         return 1.5F + (0.3F * (float) this.getGrowthStage());
     }
 

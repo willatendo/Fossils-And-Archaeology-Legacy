@@ -71,7 +71,7 @@ public class Compsognathus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
-    public float renderScale() {
+    public float renderScaleWidth() {
         return 0.25F + (0.125F * (float) this.getGrowthStage());
     }
 

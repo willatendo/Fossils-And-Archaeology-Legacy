@@ -327,7 +327,7 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
     }
 
     @Override
-    public float renderScale() {
+    public float renderScaleWidth() {
         return 1.5F + (0.3F * (float) this.getGrowthStage());
     }
 

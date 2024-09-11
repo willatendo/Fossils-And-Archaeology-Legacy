@@ -115,7 +115,7 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
     }
 
     @Override
-    public float renderScale() {
+    public float renderScaleWidth() {
         return 0.5F + (0.5125F * (float) this.getGrowthStage());
     }
 

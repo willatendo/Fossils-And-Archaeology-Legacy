@@ -72,7 +72,7 @@ public class Cryolophosaurus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
-    public float renderScale() {
+    public float renderScaleWidth() {
         return 0.25F + (0.2F * (float) this.getGrowthStage());
     }
 

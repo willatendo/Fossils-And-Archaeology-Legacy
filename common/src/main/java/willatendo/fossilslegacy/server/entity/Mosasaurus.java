@@ -87,7 +87,7 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
-    public float renderScale() {
+    public float renderScaleWidth() {
         return 0.5F + (0.5125F * (float) this.getGrowthStage());
     }
 

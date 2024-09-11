@@ -78,7 +78,7 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
     }
 
     @Override
-    public float renderScale() {
+    public float renderScaleWidth() {
         return 0.2F + (0.1F * (float) this.getGrowthStage());
     }
 

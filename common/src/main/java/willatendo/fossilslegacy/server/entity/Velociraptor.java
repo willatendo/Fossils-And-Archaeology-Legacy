@@ -89,9 +89,15 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
     }
 
     @Override
-    public float renderScale() {
+    public float renderScaleWidth() {
         CoatType coatType = this.getCoatType().value();
-        return coatType.baseScale() + (coatType.ageScale() * (float) this.getGrowthStage());
+        return coatType.baseScaleWidth() + (coatType.ageScale() * (float) this.getGrowthStage());
+    }
+
+    @Override
+    public float renderScaleHeight() {
+        CoatType coatType = this.getCoatType().value();
+        return coatType.baseScaleHeight() + (coatType.ageScale() * (float) this.getGrowthStage());
     }
 
     @Override

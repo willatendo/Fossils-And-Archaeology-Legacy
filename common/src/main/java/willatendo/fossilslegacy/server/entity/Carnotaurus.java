@@ -76,7 +76,7 @@ public class Carnotaurus extends Dinosaur implements DinopediaInformation, SubSp
     }
 
     @Override
-    public float renderScale() {
+    public float renderScaleWidth() {
         return 0.5F + (0.3F * (float) this.getGrowthStage());
     }
 

@@ -1,10 +1,11 @@
 {
   "age_scale": 0.1,
   "baby_texture": "fossilslegacy:textures/entity/pachycephalosaurus/baby_pachycephalosaurus.png",
-  "base_scale": 1.0,
+  "base_scale_height": 1.0,
+  "base_scale_width": 1.0,
   "bounding_box_growth": 0.35,
-  "bounding_box_height": 1.0,
-  "bounding_box_width": 1.0,
+  "bounding_box_height": 0.5,
+  "bounding_box_width": 0.5,
   "model": "fossilslegacy:pachycephalosaurus",
   "name": {
     "translate": "coatType.fossilslegacy.pachycephalosaurus"

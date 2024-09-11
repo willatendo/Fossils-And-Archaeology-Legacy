@@ -70,7 +70,7 @@ public class Pachycephalosaurus extends Dinosaur implements DinopediaInformation
     }
 
     @Override
-    public float renderScale() {
+    public float renderScaleWidth() {
         return 1.0F + (0.1F * (float) this.getGrowthStage());
     }
 

@@ -1,10 +1,11 @@
 {
   "age_scale": 2.0,
   "baby_texture": "fossilslegacy:textures/entity/mammoth/baby_mammoth.png",
-  "base_scale": 1.0,
+  "base_scale_height": 1.0,
+  "base_scale_width": 1.0,
   "bounding_box_growth": 3.5,
-  "bounding_box_height": 1.0,
-  "bounding_box_width": 1.0,
+  "bounding_box_height": 0.5,
+  "bounding_box_width": 0.5,
   "model": "fossilslegacy:mammoth",
   "name": {
     "translate": "coatType.fossilslegacy.mammoth"
