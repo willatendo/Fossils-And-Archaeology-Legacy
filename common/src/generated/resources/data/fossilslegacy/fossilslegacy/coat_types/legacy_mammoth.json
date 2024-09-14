@@ -5,6 +5,7 @@
   "bounding_box_growth": 0.25,
   "bounding_box_height": 0.5,
   "bounding_box_width": 0.5,
+  "color": 13064960,
   "model": "fossilslegacy:legacy_futabasaurus",
   "name": {
     "translate": "coatType.fossilslegacy.legacy_futabasaurus"

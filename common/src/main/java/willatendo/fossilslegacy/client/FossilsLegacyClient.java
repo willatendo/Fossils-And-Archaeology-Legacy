@@ -38,7 +38,7 @@ public class FossilsLegacyClient {
     }
 
     public static void modelEvent(ModelRegister modelRegister) {
-        ModelRegistry.init();
+        FossilsLegacyModelIdentifiers.init();
 
         modelRegister.register(FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), BrachiosaurusRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), DilophosaurusRenderer::new);

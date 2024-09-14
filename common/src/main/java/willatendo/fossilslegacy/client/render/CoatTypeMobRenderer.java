@@ -7,7 +7,8 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import willatendo.fossilslegacy.client.model.ModelRegistry;
+import willatendo.fossilslegacy.api.ModelIdentifierRegistry;
+import willatendo.fossilslegacy.client.model.FossilsLegacyModelIdentifiers;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.genetics.CoatType;
 import willatendo.fossilslegacy.server.entity.util.CoatTypeEntity;
@@ -19,7 +20,7 @@ public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends Mo
 
     public CoatTypeMobRenderer(EntityRendererProvider.Context context, EntityModel<T> baseModel, float shadowSize) {
         super(context, baseModel, shadowSize);
-        this.models = ModelRegistry.registerAllModels(context::bakeLayer);
+        this.models = ModelIdentifierRegistry.registerAllModels(context::bakeLayer);
     }
 
     @Override

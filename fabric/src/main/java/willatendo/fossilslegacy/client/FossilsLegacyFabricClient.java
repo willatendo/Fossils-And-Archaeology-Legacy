@@ -33,7 +33,7 @@ import willatendo.simplelibrary.server.util.RecipeBookRegistry;
 
 import java.util.List;
 
-public class FossilsLegacyFabricClient implements ClientModInitializer {
+    public class FossilsLegacyFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.JURASSIC_FERN.get(), RenderType.cutout());

@@ -6,6 +6,7 @@
   "bounding_box_growth": 0.2,
   "bounding_box_height": 0.5,
   "bounding_box_width": 0.5,
+  "color": 3948374,
   "model": "fossilslegacy:brachiosaurus",
   "name": {
     "translate": "coatType.fossilslegacy.brachiosaurus"
