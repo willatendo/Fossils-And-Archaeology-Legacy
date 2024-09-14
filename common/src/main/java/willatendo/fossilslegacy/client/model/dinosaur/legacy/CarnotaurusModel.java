@@ -11,8 +11,9 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.server.entity.Carnotaurus;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 
-public class CarnotaurusModel extends EntityModel<Carnotaurus> {
+public class CarnotaurusModel extends EntityModel<Dinosaur> {
     private final ModelPart root;
     private final ModelPart rightThigh;
     private final ModelPart leftThigh;
@@ -51,7 +52,7 @@ public class CarnotaurusModel extends EntityModel<Carnotaurus> {
     }
 
     @Override
-    public void setupAnim(Carnotaurus carnotaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.rightThigh.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
         this.leftThigh.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount;
     }

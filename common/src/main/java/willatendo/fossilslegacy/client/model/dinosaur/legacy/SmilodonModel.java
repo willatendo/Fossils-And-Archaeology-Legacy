@@ -10,9 +10,10 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Smilodon;
 
-public class SmilodonModel extends EntityModel<Smilodon> {
+public class SmilodonModel extends EntityModel<Dinosaur> {
     private float r = 1.0F;
     private float g = 1.0F;
     private float b = 1.0F;
@@ -89,9 +90,9 @@ public class SmilodonModel extends EntityModel<Smilodon> {
     }
 
     @Override
-    public void prepareMobModel(Smilodon smilodon, float limbSwing, float limbSwingAmount, float packedOverlay) {
+    public void prepareMobModel(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float packedOverlay) {
         this.tail.yRot = Mth.cos(limbSwing * 0.6662f) * 1.4f * g;
-        if (smilodon.isOrderedToSit()) {
+        if (dinosaur.isOrderedToSit()) {
             this.body.setPos(0.0F, 17.0F, 0.0F);
             this.body.xRot = -0.314F;
             this.body.yRot = 0.0F;
@@ -122,14 +123,16 @@ public class SmilodonModel extends EntityModel<Smilodon> {
             this.rightFrontLeg.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount;
             this.rightBackLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
         }
-        this.head.zRot = this.rightEar.zRot = this.leftEar.zRot = this.leftToothBottom.zRot = this.leftToothTop.zRot = this.rightToothBottom.zRot = this.rightToothTop.zRot = this.snout.zRot = this.jaw.zRot = this.nose.zRot = smilodon.getHeadRollAngle(packedOverlay) + smilodon.getBodyRollAngle(packedOverlay, 0.0F);
-        this.body.zRot = smilodon.getBodyRollAngle(packedOverlay, -0.08F);
-        this.back.zRot = smilodon.getBodyRollAngle(packedOverlay, -0.16F);
-        this.tail.zRot = smilodon.getBodyRollAngle(packedOverlay, -0.2F);
+        if (dinosaur instanceof Smilodon smilodon) {
+            this.head.zRot = this.rightEar.zRot = this.leftEar.zRot = this.leftToothBottom.zRot = this.leftToothTop.zRot = this.rightToothBottom.zRot = this.rightToothTop.zRot = this.snout.zRot = this.jaw.zRot = this.nose.zRot = smilodon.getHeadRollAngle(packedOverlay) + smilodon.getBodyRollAngle(packedOverlay, 0.0F);
+            this.body.zRot = smilodon.getBodyRollAngle(packedOverlay, -0.08F);
+            this.back.zRot = smilodon.getBodyRollAngle(packedOverlay, -0.16F);
+            this.tail.zRot = smilodon.getBodyRollAngle(packedOverlay, -0.2F);
+        }
     }
 
     @Override
-    public void setupAnim(Smilodon smilodon, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
     }
 
     @Override

@@ -5,10 +5,10 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
 import willatendo.fossilslegacy.client.model.dinosaur.CompsognathusModel;
-import willatendo.fossilslegacy.server.entity.Compsognathus;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class CompsognathusRenderer extends MobRenderer<Compsognathus, CompsognathusModel> {
+public class CompsognathusRenderer extends MobRenderer<Dinosaur, CompsognathusModel> {
     public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/compsognathus/compsognathus.png");
 
     public CompsognathusRenderer(EntityRendererProvider.Context context) {
@@ -16,7 +16,7 @@ public class CompsognathusRenderer extends MobRenderer<Compsognathus, Compsognat
     }
 
     @Override
-    public ResourceLocation getTextureLocation(Compsognathus compsognathus) {
+    public ResourceLocation getTextureLocation(Dinosaur dinosaur) {
         return TEXTURE;
     }
 }

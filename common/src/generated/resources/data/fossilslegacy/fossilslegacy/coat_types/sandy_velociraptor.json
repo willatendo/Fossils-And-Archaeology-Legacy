@@ -11,5 +11,8 @@
   "name": {
     "translate": "coatType.fossilslegacy.sandy_velociraptor"
   },
+  "pattern": {
+    "translate": "pattern.fossilslegacy.eastern_brown_snake"
+  },
   "texture": "fossilslegacy:textures/entity/velociraptor/sandy_velociraptor.png"
 }

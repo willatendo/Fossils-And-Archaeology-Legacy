@@ -2,13 +2,11 @@ package willatendo.fossilslegacy.server.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.CraftingMenu;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -26,15 +24,15 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
-import willatendo.fossilslegacy.server.menu.GeneModifierMenu;
+import willatendo.fossilslegacy.server.menu.GeneModificationMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class GeneModifierBlock extends Block {
+public class GeneModificationBlock extends Block {
     public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty ACTIVE = FossilsLegacyBlockStateProperties.ACTIVE;
     public static final VoxelShape SHAPE = Shapes.join(Block.box(0, 0, 0, 16, 5, 16), Block.box(2, 5, 2, 14, 12, 14), BooleanOp.OR);
 
-    public GeneModifierBlock(Properties properties) {
+    public GeneModificationBlock(Properties properties) {
         super(properties);
         this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH).setValue(ACTIVE, false);
     }
@@ -78,6 +76,6 @@ public class GeneModifierBlock extends Block {
     @Nullable
     @Override
     protected MenuProvider getMenuProvider(BlockState blockState, Level level, BlockPos blockPos) {
-        return new SimpleMenuProvider((windowId, inventory, player) -> new GeneModifierMenu(windowId, inventory, ContainerLevelAccess.create(level, blockPos)), FossilsLegacyUtils.translation("container", "gene_modifier"));
+        return new SimpleMenuProvider((windowId, inventory, player) -> new GeneModificationMenu(windowId, inventory, ContainerLevelAccess.create(level, blockPos)), FossilsLegacyUtils.translation("container", "gene_modifier"));
     }
 }

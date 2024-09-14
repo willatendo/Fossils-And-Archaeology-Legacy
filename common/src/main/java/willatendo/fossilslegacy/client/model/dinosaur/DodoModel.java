@@ -11,9 +11,10 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.client.animation.DodoAnimations;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Dodo;
 
-public class DodoModel extends HierarchicalModel<Dodo> {
+public class DodoModel extends HierarchicalModel<Dinosaur> {
     private final ModelPart root;
     private final ModelPart head;
 
@@ -37,7 +38,7 @@ public class DodoModel extends HierarchicalModel<Dodo> {
     }
 
     @Override
-    public void setupAnim(Dodo dodo, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.root().getAllParts().forEach(ModelPart::resetPose);
         netHeadYaw = Mth.clamp(netHeadYaw, -30.0F, 30.0F);
         headPitch = Mth.clamp(headPitch, -25.0F, 45.0F);
@@ -46,7 +47,9 @@ public class DodoModel extends HierarchicalModel<Dodo> {
         this.head.xRot = headPitch * 0.017453292F;
 
         this.animateWalk(DodoAnimations.DODO_WALK, limbSwing, limbSwingAmount, 2.0F, 2.5F);
-        this.animate(dodo.fallAnimationState, DodoAnimations.DODO_FALL, ageInTicks);
+        if (dinosaur instanceof Dodo dodo) {
+            this.animate(dodo.fallAnimationState, DodoAnimations.DODO_FALL, ageInTicks);
+        }
     }
 
     @Override

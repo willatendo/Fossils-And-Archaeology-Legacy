@@ -9,6 +9,7 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Pteranodon;
 
 public class GroundPteranodonModel extends AbstractPteranodonModel {
@@ -53,7 +54,7 @@ public class GroundPteranodonModel extends AbstractPteranodonModel {
     }
 
     @Override
-    public void setupAnim(Pteranodon pteranodon, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.crown.yRot = this.upperMouth.yRot = this.lowerMouth.yRot = this.head.yRot = -netHeadYaw / 57.29578F;
         this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount - 0.271F;
         this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount - 0.271F;

@@ -8,27 +8,38 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import willatendo.fossilslegacy.server.block.GeneModifierBlock;
+import willatendo.fossilslegacy.server.block.GeneModificationBlock;
+import willatendo.fossilslegacy.server.item.DNAItem;
+import willatendo.fossilslegacy.server.menu.slot.ResultSlot;
 
 import java.util.List;
 
-public class GeneModifierMenu extends AbstractContainerMenu {
+public class GeneModificationMenu extends AbstractContainerMenu {
     private final ContainerLevelAccess containerLevelAccess;
     private final Container modifySlot;
+    private final Container resultSlot;
     public final Player player;
 
-    public GeneModifierMenu(int windowId, Inventory inventory, ContainerLevelAccess containerLevelAccess) {
-        super(FossilsLegacyMenuTypes.GENE_MODIFIER.get(), windowId);
+    public GeneModificationMenu(int windowId, Inventory inventory, ContainerLevelAccess containerLevelAccess) {
+        super(FossilsLegacyMenuTypes.GENE_MODIFICATION.get(), windowId);
         this.modifySlot = new SimpleContainer(1);
+        this.resultSlot = new SimpleContainer(1);
         this.containerLevelAccess = containerLevelAccess;
         this.player = inventory.player;
 
-        this.addSlot(new Slot(this.modifySlot, 0, 45, 29) {
+        this.addSlot(new Slot(this.modifySlot, 0, 30, 26) {
             @Override
             public int getMaxStackSize() {
                 return 1;
             }
+
+            @Override
+            public boolean mayPlace(ItemStack itemStack) {
+                return itemStack.getItem() instanceof DNAItem;
+            }
         });
+
+        this.addSlot(new ResultSlot(this.player, this.resultSlot, 0, 58, 26));
 
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 9; column++) {
@@ -41,7 +52,7 @@ public class GeneModifierMenu extends AbstractContainerMenu {
         }
     }
 
-    public GeneModifierMenu(int windowId, Inventory inventory) {
+    public GeneModificationMenu(int windowId, Inventory inventory) {
         this(windowId, inventory, ContainerLevelAccess.NULL);
     }
 
@@ -83,6 +94,6 @@ public class GeneModifierMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        return this.containerLevelAccess.evaluate((level, blockPos) -> level.getBlockState(blockPos).getBlock() instanceof GeneModifierBlock && player.distanceToSqr((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 0.5D, (double) blockPos.getZ() + 0.5D) <= 64.0D, true);
+        return this.containerLevelAccess.evaluate((level, blockPos) -> level.getBlockState(blockPos).getBlock() instanceof GeneModificationBlock && player.distanceToSqr((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 0.5D, (double) blockPos.getZ() + 0.5D) <= 64.0D, true);
     }
 }

@@ -8,10 +8,10 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.client.animation.BrachiosaurusAnimations;
-import willatendo.fossilslegacy.client.model.dinosaur.base.BaseBrachiosaurusModel;
-import willatendo.fossilslegacy.server.entity.Brachiosaurus;
+import willatendo.fossilslegacy.client.model.dinosaur.base.DinosaurModel;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 
-public class BrachiosaurusModel extends BaseBrachiosaurusModel {
+public class BrachiosaurusModel extends DinosaurModel<Dinosaur> {
     private final ModelPart neck;
 
     public BrachiosaurusModel(ModelPart root) {
@@ -36,7 +36,7 @@ public class BrachiosaurusModel extends BaseBrachiosaurusModel {
     }
 
     @Override
-    public void setupAnim(Brachiosaurus dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.root().getAllParts().forEach(ModelPart::resetPose);
         netHeadYaw = Mth.clamp(netHeadYaw, -30.0F, 30.0F);
         headPitch = Mth.clamp(headPitch, -25.0F, 45.0F);

@@ -10,5 +10,8 @@
   "name": {
     "translate": "coatType.fossilslegacy.cryolophosaurus"
   },
+  "pattern": {
+    "translate": "pattern.fossilslegacy.blue_iguana"
+  },
   "texture": "fossilslegacy:textures/entity/cryolophosaurus/cryolophosaurus.png"
 }

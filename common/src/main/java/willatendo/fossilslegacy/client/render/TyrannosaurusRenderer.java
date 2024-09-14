@@ -9,10 +9,11 @@ import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.tyrannosaurus.AbstractTyrannosaurusModel;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.tyrannosaurus.KnockedOutTyrannosaurusModel;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.tyrannosaurus.TyrannosaurusModel;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Tyrannosaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class TyrannosaurusRenderer extends MobRenderer<Tyrannosaurus, AbstractTyrannosaurusModel> {
+public class TyrannosaurusRenderer extends MobRenderer<Dinosaur, AbstractTyrannosaurusModel> {
     public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/tyrannosaurus/tyrannosaurus.png");
     public static final ResourceLocation AGRESSIVE_TEXTURE = FossilsLegacyUtils.resource("textures/entity/tyrannosaurus/aggressive_tyrannosaurus.png");
     public static final ResourceLocation WEAK_TEXTURE = FossilsLegacyUtils.resource("textures/entity/tyrannosaurus/weak_tyrannosaurus.png");
@@ -27,13 +28,13 @@ public class TyrannosaurusRenderer extends MobRenderer<Tyrannosaurus, AbstractTy
     }
 
     @Override
-    public void render(Tyrannosaurus tyrannosaurus, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
-        this.model = tyrannosaurus.isKnockedOut() ? this.knockedOutTyrannosaurusModel : this.tyrannosaurusModel;
-        super.render(tyrannosaurus, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
+    public void render(Dinosaur dinosaur, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
+        this.model = ((Tyrannosaurus) dinosaur).isKnockedOut() ? this.knockedOutTyrannosaurusModel : this.tyrannosaurusModel;
+        super.render(dinosaur, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(Tyrannosaurus tyrannosaurus) {
-        return tyrannosaurus.isKnockedOut() ? WEAK_TEXTURE : (tyrannosaurus.isTame() || tyrannosaurus.isBaby()) ? TEXTURE : AGRESSIVE_TEXTURE;
+    public ResourceLocation getTextureLocation(Dinosaur dinosaur) {
+        return ((Tyrannosaurus) dinosaur).isKnockedOut() ? WEAK_TEXTURE : (dinosaur.isTame() || dinosaur.isBaby()) ? TEXTURE : AGRESSIVE_TEXTURE;
     }
 }

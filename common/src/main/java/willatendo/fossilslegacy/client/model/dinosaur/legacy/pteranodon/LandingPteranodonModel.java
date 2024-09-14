@@ -8,7 +8,7 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import willatendo.fossilslegacy.server.entity.Pteranodon;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 
 public class LandingPteranodonModel extends AbstractPteranodonModel {
     private final ModelPart root;
@@ -40,7 +40,7 @@ public class LandingPteranodonModel extends AbstractPteranodonModel {
     }
 
     @Override
-    public void setupAnim(Pteranodon pteranodon, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
     }
 
     @Override

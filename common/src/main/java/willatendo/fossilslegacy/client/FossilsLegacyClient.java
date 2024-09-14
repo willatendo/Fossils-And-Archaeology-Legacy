@@ -35,6 +35,8 @@ public class FossilsLegacyClient {
 
     public static void keyMappingEvent(KeyMappingRegister keyMappingRegister) {
         keyMappingRegister.register(FossilsLegacyKeys.SINK);
+        keyMappingRegister.register(FossilsLegacyKeys.NAVIGATE_LEFT);
+        keyMappingRegister.register(FossilsLegacyKeys.NAVIGATE_RIGHT);
     }
 
     public static void modelEvent(ModelRegister modelRegister) {
@@ -140,6 +142,6 @@ public class FossilsLegacyClient {
         menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.CULTIVATOR.get(), CultivatorScreen::new);
         menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.FEEDER.get(), FeederScreen::new);
         menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.TIME_MACHINE.get(), TimeMachineScreen::new);
-        menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.GENE_MODIFIER.get(), GeneModifierScreen::new);
+        menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.GENE_MODIFICATION.get(), GeneModificationScreen::new);
     }
 }

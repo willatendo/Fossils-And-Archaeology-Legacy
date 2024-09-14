@@ -10,9 +10,10 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Futabasaurus;
 
-public class LegacyFutabasaurusModel extends EntityModel<Futabasaurus> {
+public class LegacyFutabasaurusModel extends EntityModel<Dinosaur> {
     private final ModelPart root;
     private final ModelPart head;
     private final ModelPart neck1;
@@ -59,7 +60,7 @@ public class LegacyFutabasaurusModel extends EntityModel<Futabasaurus> {
     }
 
     @Override
-    public void prepareMobModel(Futabasaurus entity, float limbSwing, float limbSwingAmount, float packedOverlay) {
+    public void prepareMobModel(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float packedOverlay) {
         this.frontRightFlipper.yRot = (float) (Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.785398163397448 * limbSwingAmount + -2.35619449019234);
         this.backRightFlipper.yRot = (float) (Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.785398163397448 * limbSwingAmount + -2.0943951023932);
         this.frontLeftFlipper.yRot = (float) (Mth.cos(limbSwing / (1.919107651F * 0.5F)) * -0.785398163397448 * limbSwingAmount + -0.785398163397448);
@@ -67,12 +68,14 @@ public class LegacyFutabasaurusModel extends EntityModel<Futabasaurus> {
     }
 
     @Override
-    public void setupAnim(Futabasaurus futabasaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        int steps = 16 + futabasaurus.getGrowthStage();
-        if (futabasaurus.divePose() && futabasaurus.hasControllingPassenger()) {
-            this.divePose(steps);
-        } else {
-            this.surfacePose(steps);
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+        int steps = 16 + dinosaur.getGrowthStage();
+        if (dinosaur instanceof Futabasaurus futabasaurus) {
+            if (futabasaurus.divePose() && dinosaur.hasControllingPassenger()) {
+                this.divePose(steps);
+            } else {
+                this.surfacePose(steps);
+            }
         }
     }
 

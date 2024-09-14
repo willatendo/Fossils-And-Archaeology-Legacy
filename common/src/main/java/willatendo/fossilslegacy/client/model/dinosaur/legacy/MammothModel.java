@@ -10,9 +10,10 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Mammoth;
 
-public class MammothModel extends EntityModel<Mammoth> {
+public class MammothModel extends EntityModel<Dinosaur> {
     private final ModelPart root;
     private final ModelPart noseTop;
     private final ModelPart noseBottom;
@@ -56,18 +57,20 @@ public class MammothModel extends EntityModel<Mammoth> {
     }
 
     @Override
-    public void setupAnim(Mammoth mammoth, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.rightArm.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
         this.leftArm.xRot = Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
         this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
         this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-        int swing = mammoth.getSwingTick();
-        if (swing > 0) {
-            this.noseTop.xRot = (-2.0F + 1.5F * this.swingTrunk((float) swing - headPitch, 10.0F) / 3) - 0.1897142F;
-            this.noseBottom.xRot = (-2.0F + 1.5F * this.swingTrunk((float) swing - headPitch, 10.0F) / 3) - 0.5986789F;
-        } else {
-            this.noseTop.xRot = -0.1897142F;
-            this.noseBottom.xRot = -0.5986789F;
+        if (dinosaur instanceof Mammoth mammoth) {
+            int swing = mammoth.getSwingTick();
+            if (swing > 0) {
+                this.noseTop.xRot = (-2.0F + 1.5F * this.swingTrunk((float) swing - headPitch, 10.0F) / 3) - 0.1897142F;
+                this.noseBottom.xRot = (-2.0F + 1.5F * this.swingTrunk((float) swing - headPitch, 10.0F) / 3) - 0.5986789F;
+            } else {
+                this.noseTop.xRot = -0.1897142F;
+                this.noseBottom.xRot = -0.5986789F;
+            }
         }
     }
 

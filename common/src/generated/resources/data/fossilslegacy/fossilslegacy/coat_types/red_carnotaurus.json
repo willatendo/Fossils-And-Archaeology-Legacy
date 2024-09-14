@@ -10,5 +10,8 @@
   "name": {
     "translate": "coatType.fossilslegacy.red_carnotaurus"
   },
+  "pattern": {
+    "translate": "pattern.fossilslegacy.northern_cardinal"
+  },
   "texture": "fossilslegacy:textures/entity/carnotaurus/red_carnotaurus.png"
 }

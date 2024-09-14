@@ -9,7 +9,7 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
-import willatendo.fossilslegacy.server.entity.Tyrannosaurus;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 
 public class TyrannosaurusModel extends AbstractTyrannosaurusModel {
     final float SwingAngle = 0.174533F;
@@ -77,7 +77,7 @@ public class TyrannosaurusModel extends AbstractTyrannosaurusModel {
     }
 
     @Override
-    public void setupAnim(Tyrannosaurus tyrannosaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.head.yRot = -netHeadYaw / 57.29578F;
         this.snout.yRot = -netHeadYaw / 57.29578F;
         this.jaw.yRot = -netHeadYaw / 57.29578F;
@@ -91,8 +91,8 @@ public class TyrannosaurusModel extends AbstractTyrannosaurusModel {
 
 
     @Override
-    public void prepareMobModel(Tyrannosaurus tyrannosaurus, float limbSwing, float limbSwingAmount, float packedOverlay) {
-        super.prepareMobModel(tyrannosaurus, limbSwing, limbSwingAmount, packedOverlay);
+    public void prepareMobModel(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float packedOverlay) {
+        super.prepareMobModel(dinosaur, limbSwing, limbSwingAmount, packedOverlay);
         if (Math.abs(this.rightThigh.xRot) >= 0.174532F) {
             this.runPose();
         } else {

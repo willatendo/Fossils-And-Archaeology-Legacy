@@ -1,10 +1,10 @@
 {
 	"parent": "block/cube_all",
 	"textures": {
-		"side": "fossilslegacy:block/gene_modifier_side",
-		"base": "fossilslegacy:block/gene_modifier_base_end",
-		"top": "fossilslegacy:block/gene_modifier_top",
-		"particle": "fossilslegacy:block/gene_modifier_base_end"
+		"side": "fossilslegacy:block/gene_modification_table_side",
+		"base": "fossilslegacy:block/gene_modification_table_base_end",
+		"top": "fossilslegacy:block/gene_modification_table_top",
+		"particle": "fossilslegacy:block/gene_modification_table_base_end"
 	},
 	"elements": [
 		{

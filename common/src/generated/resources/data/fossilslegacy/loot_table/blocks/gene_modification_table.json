@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "fossilslegacy:gene_modifier"
+          "name": "fossilslegacy:gene_modification_table"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "fossilslegacy:blocks/gene_modifier"
+  "random_sequence": "fossilslegacy:blocks/gene_modification_table"
 }

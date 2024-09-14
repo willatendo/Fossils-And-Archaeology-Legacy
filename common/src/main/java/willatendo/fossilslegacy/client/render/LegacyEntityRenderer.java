@@ -8,7 +8,7 @@ import net.minecraft.world.entity.Mob;
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 
 public abstract class LegacyEntityRenderer<T extends Mob> extends MobRenderer<T, EntityModel<T>> {
-    public LegacyEntityRenderer(EntityRendererProvider.Context context, EntityModel<T> model, EntityModel<T> legacyModel, float shadowSize) {
+    public LegacyEntityRenderer(EntityRendererProvider.Context context, EntityModel model, EntityModel legacyModel, float shadowSize) {
         super(context, FossilsModloaderHelper.INSTANCE.legacyModels() ? legacyModel : model, shadowSize);
     }
 

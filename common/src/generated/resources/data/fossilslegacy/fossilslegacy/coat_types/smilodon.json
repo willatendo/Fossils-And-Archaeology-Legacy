@@ -11,5 +11,8 @@
   "name": {
     "translate": "coatType.fossilslegacy.smilodon"
   },
+  "pattern": {
+    "translate": "pattern.fossilslegacy.tiger"
+  },
   "texture": "fossilslegacy:textures/entity/smilodon/smilodon.png"
 }

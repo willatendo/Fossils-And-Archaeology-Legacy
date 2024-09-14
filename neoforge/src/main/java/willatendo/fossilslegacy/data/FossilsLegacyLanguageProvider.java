@@ -91,7 +91,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyBlocks.RED_CULTIVATOR.get());
         this.add(FossilsLegacyBlocks.BLACK_CULTIVATOR.get());
         this.add("block.fossilslegacy.cultivator.shatter", "Warning! Cultivation failure!");
-        this.add(FossilsLegacyBlocks.GENE_MODIFIER.get());
+        this.add(FossilsLegacyBlocks.GENE_MODIFICATION_TABLE.get());
         this.add(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get());
         this.add(FossilsLegacyBlocks.JURASSIC_FERN.get());
         this.add(FossilsLegacyBlocks.DRUM.get());
@@ -178,6 +178,11 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("container.fossilslegacy.archaeology_workbench", "Archaeology Workbench");
         this.add("container.fossilslegacy.cultivator", "Cultivator");
         this.add("container.fossilslegacy.gene_modifier", "Gene Modifier");
+        this.add("container.fossilslegacy.gene_modification_table.coat_type.location", "%s/%s");
+        this.add("container.fossilslegacy.gene_modification_table.coat_type.none", "N/A");
+        this.add("container.fossilslegacy.gene_modification_table.insert", "Insert DNA");
+        this.add("container.fossilslegacy.gene_modification_table.navigate_left.tutorial", "Use '%s' to navigate left.");
+        this.add("container.fossilslegacy.gene_modification_table.navigate_right.tutorial", "Use '%s' to navigate right.");
         this.add("container.fossilslegacy.feeder", "Feeder");
         this.add("container.fossilslegacy.time_machine", "Time Machine");
         this.add("container.fossilslegacy.time_machine.start", "Start");
@@ -541,6 +546,23 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 
         // Keys
         this.add("key.fossilslegacy.sink", "Sink");
+        this.add("key.fossilslegacy.navigate_left", "Navigate Left");
+        this.add("key.fossilslegacy.navigate_right", "Navigate Right");
+
+        // Patterns
+        this.add("pattern.fossilslegacy.american_bison", "American Bison");
+        this.add("pattern.fossilslegacy.blue_iguana", "Blue Iguana");
+        this.add("pattern.fossilslegacy.broadhead_skink", "Broadhead Skink");
+        this.add("pattern.fossilslegacy.domestic_pigeon", "Domestic Pigeon");
+        this.add("pattern.fossilslegacy.eastern_brown_snake", "Eastern Brown Snake");
+        this.add("pattern.fossilslegacy.eastern_indigo_snake", "Eastern Indigo Snake");
+        this.add("pattern.fossilslegacy.gray_ratsnake", "Gray Ratsnake");
+        this.add("pattern.fossilslegacy.green_parakeet", "Green Parakeet");
+        this.add("pattern.fossilslegacy.green_tree_python", "Green Tree Python");
+        this.add("pattern.fossilslegacy.inland_taipan", "Inland Taipan");
+        this.add("pattern.fossilslegacy.marine_iguana", "Marine Iguana");
+        this.add("pattern.fossilslegacy.northern_cardinal", "Northern Cardinal");
+        this.add("pattern.fossilslegacy.tiger", "Tiger");
 
         // Resource Packs
         this.add("resourcePack.fossilslegacy.description", "Fossils and Archaeology: Legacy Assets");

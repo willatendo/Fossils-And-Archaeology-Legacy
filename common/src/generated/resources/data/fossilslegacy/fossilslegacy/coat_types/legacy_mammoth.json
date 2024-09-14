@@ -10,5 +10,8 @@
   "name": {
     "translate": "coatType.fossilslegacy.legacy_futabasaurus"
   },
+  "pattern": {
+    "translate": "pattern.fossilslegacy.broadhead_skink"
+  },
   "texture": "fossilslegacy:textures/entity/futabasaurus/legacy/futabasaurus.png"
 }

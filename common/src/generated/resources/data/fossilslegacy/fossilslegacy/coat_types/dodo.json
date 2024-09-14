@@ -10,5 +10,8 @@
   "name": {
     "translate": "coatType.fossilslegacy.dodo"
   },
+  "pattern": {
+    "translate": "pattern.fossilslegacy.domestic_pigeon"
+  },
   "texture": "fossilslegacy:textures/entity/dodo/dodo.png"
 }

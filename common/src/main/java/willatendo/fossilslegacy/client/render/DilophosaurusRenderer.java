@@ -6,9 +6,10 @@ import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.DilophosaurusModel;
 import willatendo.fossilslegacy.server.entity.Dilophosaurus;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class DilophosaurusRenderer extends MobRenderer<Dilophosaurus, DilophosaurusModel> {
+public class DilophosaurusRenderer extends MobRenderer<Dinosaur, DilophosaurusModel> {
     public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/dilophosaurus/dilophosaurus.png");
     public static final ResourceLocation AGGRESSIVE_TEXTURE = FossilsLegacyUtils.resource("textures/entity/dilophosaurus/aggressive_dilophosaurus.png");
 
@@ -17,7 +18,7 @@ public class DilophosaurusRenderer extends MobRenderer<Dilophosaurus, Dilophosau
     }
 
     @Override
-    public ResourceLocation getTextureLocation(Dilophosaurus dilophosaurus) {
-        return dilophosaurus.isAttacking() ? AGGRESSIVE_TEXTURE : TEXTURE;
+    public ResourceLocation getTextureLocation(Dinosaur dinosaur) {
+        return ((Dilophosaurus) dinosaur).isAttacking() ? AGGRESSIVE_TEXTURE : TEXTURE;
     }
 }

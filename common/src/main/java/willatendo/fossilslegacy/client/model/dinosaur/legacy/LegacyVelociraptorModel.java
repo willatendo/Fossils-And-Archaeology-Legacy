@@ -7,10 +7,11 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
-import willatendo.fossilslegacy.client.model.dinosaur.base.BaseVelociraptorModel;
+import willatendo.fossilslegacy.client.model.dinosaur.base.DinosaurModel;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Velociraptor;
 
-public class LegacyVelociraptorModel extends BaseVelociraptorModel {
+public class LegacyVelociraptorModel extends DinosaurModel<Dinosaur> {
     private final ModelPart neck;
     private final ModelPart head;
     private final ModelPart snout;
@@ -89,7 +90,7 @@ public class LegacyVelociraptorModel extends BaseVelociraptorModel {
     }
 
     @Override
-    public void setupAnim(Velociraptor velociraptor, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.rightThigh.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
         this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount + 0.9948377F;
         this.rightFoot.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;

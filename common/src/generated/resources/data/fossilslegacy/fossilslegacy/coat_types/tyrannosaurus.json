@@ -10,5 +10,8 @@
   "name": {
     "translate": "coatType.fossilslegacy.tyrannosaurus"
   },
+  "pattern": {
+    "translate": "pattern.fossilslegacy.eastern_brown_snake"
+  },
   "texture": "fossilslegacy:textures/entity/tyrannosaurus/tyrannosaurus.png"
 }

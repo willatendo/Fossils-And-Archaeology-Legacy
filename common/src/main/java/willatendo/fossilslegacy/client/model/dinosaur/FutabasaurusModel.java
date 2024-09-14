@@ -1,7 +1,4 @@
-package willatendo.fossilslegacy.client.model.dinosaur;// Made with Blockbench 4.10.3
-// Exported for Minecraft version 1.17 or later with Mojang mappings
-// Paste this class into your mod and generate all required imports
-
+package willatendo.fossilslegacy.client.model.dinosaur;
 
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -11,10 +8,10 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.client.animation.FutabasaurusAnimations;
-import willatendo.fossilslegacy.client.model.dinosaur.base.BaseFutabasaurusModel;
-import willatendo.fossilslegacy.server.entity.Futabasaurus;
+import willatendo.fossilslegacy.client.model.dinosaur.base.DinosaurModel;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 
-public class FutabasaurusModel extends BaseFutabasaurusModel {
+public class FutabasaurusModel extends DinosaurModel<Dinosaur> {
     private final ModelPart neck;
     private final ModelPart middleNeck;
     private final ModelPart head;
@@ -45,7 +42,7 @@ public class FutabasaurusModel extends BaseFutabasaurusModel {
 
 
     @Override
-    public void setupAnim(Futabasaurus futabasaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.root().getAllParts().forEach(ModelPart::resetPose);
         netHeadYaw = Mth.clamp(netHeadYaw, -30.0F, 30.0F);
         headPitch = Mth.clamp(headPitch, -25.0F, 45.0F);
@@ -57,7 +54,7 @@ public class FutabasaurusModel extends BaseFutabasaurusModel {
         this.head.yRot = netHeadYaw * 0.017453292F;
         this.head.xRot = headPitch * 0.017453292F;
 
-        if (futabasaurus.isInWaterOrBubble()) {
+        if (dinosaur.isInWaterOrBubble()) {
             this.animateWalk(FutabasaurusAnimations.FUTABASAURUS_SWIM, limbSwing, limbSwingAmount, 2.0F, 2.5F);
         } else {
             this.animateWalk(FutabasaurusAnimations.FUTABASAURUS_WALK, limbSwing, limbSwingAmount, 2.0F, 2.5F);

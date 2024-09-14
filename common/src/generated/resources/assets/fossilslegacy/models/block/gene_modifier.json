@@ -1,6 +1,0 @@
-{
-  "parent": "fossilslegacy:block/template_gene_modifier",
-  "textures": {
-    "front": "fossilslegacy:block/gene_modifier_front_off"
-  }
-}

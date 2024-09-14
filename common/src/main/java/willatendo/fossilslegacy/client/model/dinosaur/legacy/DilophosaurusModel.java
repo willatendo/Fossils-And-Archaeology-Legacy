@@ -10,9 +10,9 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
-import willatendo.fossilslegacy.server.entity.Dilophosaurus;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 
-public class DilophosaurusModel extends EntityModel<Dilophosaurus> {
+public class DilophosaurusModel extends EntityModel<Dinosaur> {
     private final ModelPart root;
     private final ModelPart rightThigh;
     private final ModelPart leftThigh;
@@ -64,7 +64,7 @@ public class DilophosaurusModel extends EntityModel<Dilophosaurus> {
     }
 
     @Override
-    public void setupAnim(Dilophosaurus dilophosaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.leftThigh.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
         this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount - 0.372F;
         this.leftFoot.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;

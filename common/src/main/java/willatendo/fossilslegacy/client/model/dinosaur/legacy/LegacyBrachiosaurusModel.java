@@ -7,10 +7,11 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
-import willatendo.fossilslegacy.client.model.dinosaur.base.BaseBrachiosaurusModel;
+import willatendo.fossilslegacy.client.model.dinosaur.base.DinosaurModel;
 import willatendo.fossilslegacy.server.entity.Brachiosaurus;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 
-public class LegacyBrachiosaurusModel extends BaseBrachiosaurusModel {
+public class LegacyBrachiosaurusModel extends DinosaurModel<Dinosaur> {
     private final ModelPart frontRightThigh;
     private final ModelPart frontLeftCalf;
     private final ModelPart frontLeftThigh;
@@ -67,7 +68,7 @@ public class LegacyBrachiosaurusModel extends BaseBrachiosaurusModel {
     }
 
     @Override
-    public void setupAnim(Brachiosaurus brachiosaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.frontRightThigh.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
         this.frontRightCalf.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
         this.frontLeftThigh.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount;

@@ -11,5 +11,8 @@
   "name": {
     "translate": "coatType.fossilslegacy.pachycephalosaurus"
   },
+  "pattern": {
+    "translate": "pattern.fossilslegacy.broadhead_skink"
+  },
   "texture": "fossilslegacy:textures/entity/pachycephalosaurus/pachycephalosaurus.png"
 }

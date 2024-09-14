@@ -6,10 +6,11 @@ import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.MosasaurusModel;
 import willatendo.fossilslegacy.client.render.layer.MosasaurusEyesLayer;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Mosasaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class MosasaurusRenderer extends MobRenderer<Mosasaurus, MosasaurusModel> {
+public class MosasaurusRenderer extends MobRenderer<Dinosaur, MosasaurusModel> {
     public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/mosasaurus/mosasaurus.png");
 
     public MosasaurusRenderer(Context context) {
@@ -18,7 +19,7 @@ public class MosasaurusRenderer extends MobRenderer<Mosasaurus, MosasaurusModel>
     }
 
     @Override
-    public ResourceLocation getTextureLocation(Mosasaurus mosasaurus) {
+    public ResourceLocation getTextureLocation(Dinosaur dinosaur) {
         return TEXTURE;
     }
 }

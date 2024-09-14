@@ -11,9 +11,9 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.client.animation.PachycephalosaurusAnimations;
-import willatendo.fossilslegacy.server.entity.Pachycephalosaurus;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 
-public class PachycephalosaurusModel extends HierarchicalModel<Pachycephalosaurus> {
+public class PachycephalosaurusModel extends HierarchicalModel<Dinosaur> {
     private final ModelPart head;
     private final ModelPart root;
 
@@ -38,7 +38,7 @@ public class PachycephalosaurusModel extends HierarchicalModel<Pachycephalosauru
     }
 
     @Override
-    public void setupAnim(Pachycephalosaurus pachycephalosaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.root().getAllParts().forEach(ModelPart::resetPose);
         netHeadYaw = Mth.clamp(netHeadYaw, -30.0F, 30.0F);
         headPitch = Mth.clamp(headPitch, -25.0F, 45.0F);

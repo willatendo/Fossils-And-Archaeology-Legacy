@@ -10,9 +10,9 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
-import willatendo.fossilslegacy.server.entity.Cryolophosaurus;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 
-public class CryolophosaurusModel extends EntityModel<Cryolophosaurus> {
+public class CryolophosaurusModel extends EntityModel<Dinosaur> {
     private final ModelPart root;
     private final ModelPart rightThigh;
     private final ModelPart leftThigh;
@@ -53,11 +53,11 @@ public class CryolophosaurusModel extends EntityModel<Cryolophosaurus> {
     }
 
     @Override
-    public void setupAnim(Cryolophosaurus cryolophosaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.leftThigh.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
         this.rightThigh.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount;
     }
-    
+
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int red, int green, int blue) {
         this.root.render(poseStack, vertexConsumer, red, green, blue);

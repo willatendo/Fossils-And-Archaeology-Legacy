@@ -11,5 +11,8 @@
   "name": {
     "translate": "coatType.fossilslegacy.mammoth"
   },
+  "pattern": {
+    "translate": "pattern.fossilslegacy.american_bison"
+  },
   "texture": "fossilslegacy:textures/entity/mammoth/mammoth.png"
 }

@@ -8,6 +8,7 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Pteranodon;
 
 public class FlyingPteranodonModel extends AbstractPteranodonModel {
@@ -68,37 +69,39 @@ public class FlyingPteranodonModel extends AbstractPteranodonModel {
     }
 
     @Override
-    public void setupAnim(Pteranodon pteranodon, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        float airPitch = (float) -(pteranodon.airPitch * (Math.PI / 180.0F));
-        float airAngle = (float) -(pteranodon.airAngle * (Math.PI / 180.0F));
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+        if (dinosaur instanceof Pteranodon pteranodon) {
+            float airPitch = (float) -(pteranodon.airPitch * (Math.PI / 180.0F));
+            float airAngle = (float) -(pteranodon.airAngle * (Math.PI / 180.0F));
 
-        this.leftWing1.xRot = -1.570796F + airPitch;
-        this.leftWing2.xRot = 1.570796F + airPitch;
-        this.rightWing1.xRot = 1.570796F - airPitch;
-        this.rightWing2.xRot = -1.570796F - airPitch;
-        this.body.xRot = 1.570796F + airPitch;
-        this.neck1.xRot = 1.570796F + airPitch;
-        this.neck2.xRot = 1.570796F + airPitch;
-        this.tail.xRot = 1.570796F + airPitch;
-        this.crown.xRot = 0.4859298F + airPitch;
-        this.head.xRot = 1.570796F + airPitch;
-        this.upperMouth.xRot = airPitch;
-        this.lowerMouth.xRot = 0.1356083F + airPitch;
-        this.leftLeg.xRot = this.rightLeg.xRot = 1.570796F + airPitch;
+            this.leftWing1.xRot = -1.570796F + airPitch;
+            this.leftWing2.xRot = 1.570796F + airPitch;
+            this.rightWing1.xRot = 1.570796F - airPitch;
+            this.rightWing2.xRot = -1.570796F - airPitch;
+            this.body.xRot = 1.570796F + airPitch;
+            this.neck1.xRot = 1.570796F + airPitch;
+            this.neck2.xRot = 1.570796F + airPitch;
+            this.tail.xRot = 1.570796F + airPitch;
+            this.crown.xRot = 0.4859298F + airPitch;
+            this.head.xRot = 1.570796F + airPitch;
+            this.upperMouth.xRot = airPitch;
+            this.lowerMouth.xRot = 0.1356083F + airPitch;
+            this.leftLeg.xRot = this.rightLeg.xRot = 1.570796F + airPitch;
 
-        this.body.zRot = airAngle;
-        this.neck1.zRot = airAngle;
-        this.neck2.zRot = airAngle;
-        this.leftWing1.zRot = 2.792527F + airAngle;
-        this.leftWing2.zRot = airAngle;
-        this.rightWing1.zRot = -2.792527F + airAngle;
-        this.rightWing2.zRot = airAngle;
-        this.tail.zRot = airAngle;
-        this.crown.zRot = airAngle;
-        this.head.zRot = airAngle;
-        this.upperMouth.zRot = airAngle;
-        this.lowerMouth.zRot = airAngle;
-        this.leftLeg.zRot = this.rightLeg.zRot = airAngle;
+            this.body.zRot = airAngle;
+            this.neck1.zRot = airAngle;
+            this.neck2.zRot = airAngle;
+            this.leftWing1.zRot = 2.792527F + airAngle;
+            this.leftWing2.zRot = airAngle;
+            this.rightWing1.zRot = -2.792527F + airAngle;
+            this.rightWing2.zRot = airAngle;
+            this.tail.zRot = airAngle;
+            this.crown.zRot = airAngle;
+            this.head.zRot = airAngle;
+            this.upperMouth.zRot = airAngle;
+            this.lowerMouth.zRot = airAngle;
+            this.leftLeg.zRot = this.rightLeg.zRot = airAngle;
+        }
     }
 
     @Override

@@ -12,8 +12,9 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.client.animation.CompsognathusAnimations;
 import willatendo.fossilslegacy.server.entity.Compsognathus;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 
-public class CompsognathusModel extends HierarchicalModel<Compsognathus> {
+public class CompsognathusModel extends HierarchicalModel<Dinosaur> {
     private final ModelPart head;
     private final ModelPart root;
 
@@ -38,7 +39,7 @@ public class CompsognathusModel extends HierarchicalModel<Compsognathus> {
     }
 
     @Override
-    public void setupAnim(Compsognathus compsognathus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.root().getAllParts().forEach(ModelPart::resetPose);
         netHeadYaw = Mth.clamp(netHeadYaw, -30.0F, 30.0F);
         headPitch = Mth.clamp(headPitch, -25.0F, 45.0F);

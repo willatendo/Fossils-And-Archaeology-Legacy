@@ -10,5 +10,8 @@
   "name": {
     "translate": "coatType.fossilslegacy.green_carnotaurus"
   },
+  "pattern": {
+    "translate": "pattern.fossilslegacy.green_tree_python"
+  },
   "texture": "fossilslegacy:textures/entity/carnotaurus/green_carnotaurus.png"
 }

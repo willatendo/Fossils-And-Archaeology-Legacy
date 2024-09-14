@@ -11,5 +11,8 @@
   "name": {
     "translate": "coatType.fossilslegacy.legacy_brown_triceratops"
   },
+  "pattern": {
+    "translate": "pattern.fossilslegacy.eastern_brown_snake"
+  },
   "texture": "fossilslegacy:textures/entity/triceratops/legacy/brown_triceratops.png"
 }

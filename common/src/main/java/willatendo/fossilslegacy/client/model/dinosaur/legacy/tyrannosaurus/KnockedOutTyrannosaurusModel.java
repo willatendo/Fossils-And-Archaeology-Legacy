@@ -8,7 +8,7 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import willatendo.fossilslegacy.server.entity.Tyrannosaurus;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 
 public class KnockedOutTyrannosaurusModel extends AbstractTyrannosaurusModel {
 
@@ -43,7 +43,7 @@ public class KnockedOutTyrannosaurusModel extends AbstractTyrannosaurusModel {
     }
 
     @Override
-    public void setupAnim(Tyrannosaurus tyrannosaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
     }
 
     @Override

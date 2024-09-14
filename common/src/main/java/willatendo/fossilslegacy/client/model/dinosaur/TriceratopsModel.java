@@ -1,7 +1,4 @@
-package willatendo.fossilslegacy.client.model.dinosaur;// Made with Blockbench 4.10.4
-// Exported for Minecraft version 1.17 or later with Mojang mappings
-// Paste this class into your mod and generate all required imports
-
+package willatendo.fossilslegacy.client.model.dinosaur;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -14,9 +11,10 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.client.animation.TriceratopsAnimations;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Triceratops;
 
-public class TriceratopsModel extends HierarchicalModel<Triceratops> {
+public class TriceratopsModel extends HierarchicalModel<Dinosaur> {
     private final ModelPart head;
     private final ModelPart root;
 
@@ -41,7 +39,7 @@ public class TriceratopsModel extends HierarchicalModel<Triceratops> {
     }
 
     @Override
-    public void setupAnim(Triceratops triceratops, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.root().getAllParts().forEach(ModelPart::resetPose);
         netHeadYaw = Mth.clamp(netHeadYaw, -30.0F, 30.0F);
         headPitch = Mth.clamp(headPitch, -25.0F, 45.0F);

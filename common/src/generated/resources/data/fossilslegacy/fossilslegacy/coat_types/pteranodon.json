@@ -10,5 +10,8 @@
   "name": {
     "translate": "coatType.fossilslegacy.pteranodon"
   },
+  "pattern": {
+    "translate": "pattern.fossilslegacy.eastern_indigo_snake"
+  },
   "texture": "fossilslegacy:textures/entity/pteranodon/pteranodon.png"
 }

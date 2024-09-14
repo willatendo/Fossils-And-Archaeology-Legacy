@@ -10,9 +10,10 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Stegosaurus;
 
-public class StegosaurusModel extends EntityModel<Stegosaurus> {
+public class StegosaurusModel extends EntityModel<Dinosaur> {
     private final ModelPart root;
     private final ModelPart tail1;
     private final ModelPart tail2;
@@ -76,7 +77,7 @@ public class StegosaurusModel extends EntityModel<Stegosaurus> {
     }
 
     @Override
-    public void setupAnim(Stegosaurus stegosaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.tail1.yRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.349065850398866F * limbSwingAmount + 0F;
         this.tail2.yRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.436332312998582F * limbSwingAmount + 0F;
         this.tail3.yRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.488692190558412F * limbSwingAmount + 0F;

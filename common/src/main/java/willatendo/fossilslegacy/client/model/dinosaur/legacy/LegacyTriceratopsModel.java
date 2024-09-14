@@ -10,9 +10,10 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Triceratops;
 
-public class LegacyTriceratopsModel extends EntityModel<Triceratops> {
+public class LegacyTriceratopsModel extends EntityModel<Dinosaur> {
     private final ModelPart root;
     private final ModelPart lowerBody;
     private final ModelPart back;
@@ -70,26 +71,8 @@ public class LegacyTriceratopsModel extends EntityModel<Triceratops> {
         return LayerDefinition.create(meshDefinition, 64, 32);
     }
 
-//	public void RunningPose(float f, float f1, float f2, float f3, float f4, float f5, boolean modelized) {
-//		super.setRotationAngles(f, f1, f2, f3, f4, f5);
-//		if (modelized)
-//			return;
-//		noumenon1.xRot = Mth.cos(f / (1.919107651F * 0.33F)) * 0.0872664625997165F * f1 + 0F;
-//		noumenon2.xRot = Mth.cos(f / (1.919107651F * 0.33F)) * 0.174532925199433F * f1 + -0.271216631964586F;
-//		noumenon3.xRot = Mth.cos(f / (1.919107651F * 0.33F)) * 0.261799387799149F * f1 + -0.452027719940978F;
-//		noumenon4.xRot = Mth.cos(f / (1.919107651F * 0.33F)) * 0.349065850398866F * f1 + -0.180811087976391F;
-//		thigh_R1.xRot = Mth.cos(f / (1.919107651F * 0.33F)) * -0.174532925199433F * f1 + 0F;
-//		leg_R1.xRot = Mth.cos(f / (1.919107651F * 0.33F)) * -0.174532925199433F * f1 + 0.994460983870151F;
-//		thigh_L1.xRot = Mth.cos(f / (1.919107651F * 0.33F)) * -0.261799387799149F * f1 + 0F;
-//		leg_L1.xRot = Mth.cos(f / (1.919107651F * 0.33F)) * -0.261799387799149F * f1 + 0.994460983870151F;
-//		thigh_R2.xRot = Mth.cos(f / (1.919107651F * 0.33F)) * 0.261799387799149F * f1 + 0F;
-//		leg_R2.xRot = Mth.cos(f / (1.919107651F * 0.33F)) * 0.261799387799149F * f1 + 0.994460983870151F;
-//		thigh_L2.xRot = Mth.cos(f / (1.919107651F * 0.33F)) * 0.174532925199433F * f1 + 0F;
-//		leg_L2.xRot = Mth.cos(f / (1.919107651F * 0.33F)) * 0.174532925199433F * f1 + 0.994460983870151F;
-//	}
-
     @Override
-    public void setupAnim(Triceratops triceratops, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.lowerBody.yRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.174532925199433F * limbSwingAmount + 0.0F;
         this.back.yRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.261799387799149F * limbSwingAmount + 0.0F;
         this.tail.yRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.349065850398866F * limbSwingAmount + 0.0F;

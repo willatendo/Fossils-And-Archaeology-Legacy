@@ -10,10 +10,11 @@ import willatendo.fossilslegacy.client.model.dinosaur.legacy.pteranodon.Abstract
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.pteranodon.FlyingPteranodonModel;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.pteranodon.GroundPteranodonModel;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.pteranodon.LandingPteranodonModel;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Pteranodon;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class PteranodonRenderer extends MobRenderer<Pteranodon, AbstractPteranodonModel> {
+public class PteranodonRenderer extends MobRenderer<Dinosaur, AbstractPteranodonModel> {
     public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/pteranodon/pteranodon.png");
     private final GroundPteranodonModel groundPteranodonLegacyModel;
     private final FlyingPteranodonModel flyingPteranodonLegacyModel;
@@ -28,13 +29,14 @@ public class PteranodonRenderer extends MobRenderer<Pteranodon, AbstractPteranod
     }
 
     @Override
-    public void render(Pteranodon pteranodon, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
+    public void render(Dinosaur dinosaur, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
+        Pteranodon pteranodon = (Pteranodon) dinosaur;
         this.model = pteranodon.landing ? this.landingPteranodonModel : pteranodon.shouldFly() ? this.flyingPteranodonLegacyModel : this.groundPteranodonLegacyModel;
-        super.render(pteranodon, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
+        super.render(dinosaur, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(Pteranodon pteranodon) {
+    public ResourceLocation getTextureLocation(Dinosaur dinosaur) {
         return TEXTURE;
     }
 }

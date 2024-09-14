@@ -10,5 +10,8 @@
   "name": {
     "translate": "coatType.fossilslegacy.legacy_brachiosaurus"
   },
+  "pattern": {
+    "translate": "pattern.fossilslegacy.blue_iguana"
+  },
   "texture": "fossilslegacy:textures/entity/brachiosaurus/legacy/brachiosaurus.png"
 }

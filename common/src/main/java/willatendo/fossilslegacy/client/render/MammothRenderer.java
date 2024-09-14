@@ -6,10 +6,11 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.MammothModel;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Mammoth;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class MammothRenderer extends MobRenderer<Mammoth, MammothModel> {
+public class MammothRenderer extends MobRenderer<Dinosaur, MammothModel> {
     public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/mammoth/mammoth.png");
     public static final ResourceLocation SHEARED_TEXTURE = FossilsLegacyUtils.resource("textures/entity/mammoth/sheared_mammoth.png");
     public static final ResourceLocation BABY_TEXTURE = FossilsLegacyUtils.resource("textures/entity/mammoth/baby_mammoth.png");
@@ -19,15 +20,15 @@ public class MammothRenderer extends MobRenderer<Mammoth, MammothModel> {
     }
 
     @Override
-    protected void scale(Mammoth mammoth, PoseStack poseStack, float f) {
-        if (!mammoth.isBaby()) {
+    protected void scale(Dinosaur dinosaur, PoseStack poseStack, float f) {
+        if (!dinosaur.isBaby()) {
             poseStack.scale(6.0F, 6.0F, 6.0F);
         }
-        super.scale(mammoth, poseStack, f);
+        super.scale(dinosaur, poseStack, f);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(Mammoth mammoth) {
-        return mammoth.isBaby() ? BABY_TEXTURE : (mammoth.isSheared() ? SHEARED_TEXTURE : TEXTURE);
+    public ResourceLocation getTextureLocation(Dinosaur dinosaur) {
+        return dinosaur.isBaby() ? BABY_TEXTURE : (((Mammoth) dinosaur).isSheared() ? SHEARED_TEXTURE : TEXTURE);
     }
 }

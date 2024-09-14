@@ -11,5 +11,8 @@
   "name": {
     "translate": "coatType.fossilslegacy.legacy_white_velociraptor"
   },
+  "pattern": {
+    "translate": "pattern.fossilslegacy.gray_ratsnake"
+  },
   "texture": "fossilslegacy:textures/entity/velociraptor/legacy/white_velociraptor.png"
 }

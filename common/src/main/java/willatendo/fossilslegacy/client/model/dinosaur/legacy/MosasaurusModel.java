@@ -10,9 +10,9 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
-import willatendo.fossilslegacy.server.entity.Mosasaurus;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 
-public class MosasaurusModel extends EntityModel<Mosasaurus> {
+public class MosasaurusModel extends EntityModel<Dinosaur> {
     private final ModelPart root;
     private final ModelPart body;
     private final ModelPart rightFrontFlipper;
@@ -62,7 +62,7 @@ public class MosasaurusModel extends EntityModel<Mosasaurus> {
     }
 
     @Override
-    public void setupAnim(Mosasaurus mosasaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.body.yRot = (float) (Mth.cos(limbSwing / (1.919107651F * 1)) * -0.0872664625997165 * limbSwingAmount + 0);
         this.tail1.yRot = (float) (Mth.cos(limbSwing / (1.919107651F * 1)) * 0.174532925199433 * limbSwingAmount + 0);
         this.tail2.yRot = (float) (Mth.cos(limbSwing / (1.919107651F * 1)) * -0.174532925199433 * limbSwingAmount + 0);

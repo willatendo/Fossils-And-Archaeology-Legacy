@@ -10,5 +10,8 @@
   "name": {
     "translate": "coatType.fossilslegacy.mosasaurus"
   },
+  "pattern": {
+    "translate": "pattern.fossilslegacy.marine_iguana"
+  },
   "texture": "fossilslegacy:textures/entity/mosasaurus/mosasaurus.png"
 }
