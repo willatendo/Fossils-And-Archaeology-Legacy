@@ -41,6 +41,7 @@ public class FossilsLegacyBlockLootSubProvider extends SimpleBlockLootSubProvide
         this.dropSelf(FossilsLegacyBlocks.GREEN_CULTIVATOR.get());
         this.dropSelf(FossilsLegacyBlocks.RED_CULTIVATOR.get());
         this.dropSelf(FossilsLegacyBlocks.BLACK_CULTIVATOR.get());
+        this.dropSelf(FossilsLegacyBlocks.GENE_MODIFIER.get());
         this.dropSelf(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get());
         this.add(FossilsLegacyBlocks.JURASSIC_FERN.get(), block -> this.createDoublePlantWithSeedDrops(block, FossilsLegacyBlocks.JURASSIC_FERN.get()));
         this.dropSelf(FossilsLegacyBlocks.DRUM.get());

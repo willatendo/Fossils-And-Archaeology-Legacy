@@ -7,6 +7,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -19,6 +20,8 @@ import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.apache.commons.compress.utils.Lists;
+import willatendo.fossilslegacy.server.entity.genetics.CoatType;
+import willatendo.fossilslegacy.server.entity.genetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
 import willatendo.fossilslegacy.server.entity.util.CommandType;
 import willatendo.fossilslegacy.server.entity.util.Diet;
@@ -50,6 +53,11 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
     @Override
     public int getMaxHunger() {
         return 100;
+    }
+
+    @Override
+    public TagKey<CoatType> getCoatTypes() {
+        return FossilsLegacyCoatTypeTags.DILOPHOSAURUS;
     }
 
     @Override

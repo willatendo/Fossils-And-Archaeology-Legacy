@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.server.entity;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -12,6 +13,8 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.apache.commons.compress.utils.Lists;
+import willatendo.fossilslegacy.server.entity.genetics.CoatType;
+import willatendo.fossilslegacy.server.entity.genetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
 import willatendo.fossilslegacy.server.entity.util.CommandType;
 import willatendo.fossilslegacy.server.entity.util.Diet;
@@ -42,6 +45,11 @@ public class Stegosaurus extends Dinosaur implements DinopediaInformation {
     @Override
     public int getMaxHunger() {
         return 500;
+    }
+
+    @Override
+    public TagKey<CoatType> getCoatTypes() {
+        return FossilsLegacyCoatTypeTags.STEGOSAURUS;
     }
 
     @Override

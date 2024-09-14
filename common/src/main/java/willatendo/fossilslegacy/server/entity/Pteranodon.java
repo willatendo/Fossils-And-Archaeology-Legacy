@@ -7,6 +7,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -22,6 +23,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.apache.commons.compress.utils.Lists;
+import willatendo.fossilslegacy.server.entity.genetics.CoatType;
+import willatendo.fossilslegacy.server.entity.genetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
 import willatendo.fossilslegacy.server.entity.util.*;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
@@ -79,6 +82,11 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
     @Override
     public int getMaxHunger() {
         return 100;
+    }
+
+    @Override
+    public TagKey<CoatType> getCoatTypes() {
+        return FossilsLegacyCoatTypeTags.PTERANODON;
     }
 
     @Override

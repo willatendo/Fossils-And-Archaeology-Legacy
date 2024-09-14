@@ -12,101 +12,101 @@ import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
 import willatendo.fossilslegacy.server.entity.Nautilus;
 
 public interface Diet {
-	boolean getsFoodFromKill();
+    boolean getsFoodFromKill();
 
-	int getItemStackFoodValue(ItemStack itemStack);
+    int getItemStackFoodValue(ItemStack itemStack);
 
-	int getEntityFoodValue(Entity entity);
+    int getEntityFoodValue(Entity entity);
 
-	Ingredient getTemptFoods();
+    Ingredient getTemptFoods();
 
-	public static Diet piscivore() {
-		return new Diet() {
-			@Override
-			public boolean getsFoodFromKill() {
-				return true;
-			}
+    static Diet piscivore() {
+        return new Diet() {
+            @Override
+            public boolean getsFoodFromKill() {
+                return true;
+            }
 
-			@Override
-			public int getItemStackFoodValue(ItemStack itemStack) {
-				return FeederBlockEntity.getMeatFoodLevel(itemStack);
-			}
+            @Override
+            public int getItemStackFoodValue(ItemStack itemStack) {
+                return FeederBlockEntity.getMeatFoodLevel(itemStack);
+            }
 
-			@Override
-			public int getEntityFoodValue(Entity entity) {
-				if (entity instanceof Nautilus) {
-					return 100;
-				}
-				return 5;
-			}
+            @Override
+            public int getEntityFoodValue(Entity entity) {
+                if (entity instanceof Nautilus) {
+                    return 100;
+                }
+                return 5;
+            }
 
-			@Override
-			public Ingredient getTemptFoods() {
-				return DinoUtils.PISCIVORE_FOOD;
-			}
-		};
-	}
+            @Override
+            public Ingredient getTemptFoods() {
+                return DinoUtils.PISCIVORE_FOOD;
+            }
+        };
+    }
 
-	public static Diet carnivore() {
-		return new Diet() {
-			@Override
-			public boolean getsFoodFromKill() {
-				return true;
-			}
+    static Diet carnivore() {
+        return new Diet() {
+            @Override
+            public boolean getsFoodFromKill() {
+                return true;
+            }
 
-			@Override
-			public int getItemStackFoodValue(ItemStack itemStack) {
-				return FeederBlockEntity.getMeatFoodLevel(itemStack);
-			}
+            @Override
+            public int getItemStackFoodValue(ItemStack itemStack) {
+                return FeederBlockEntity.getMeatFoodLevel(itemStack);
+            }
 
-			@Override
-			public int getEntityFoodValue(Entity entity) {
-				if (entity instanceof Pig) {
-					return 30;
-				}
-				if (entity instanceof Sheep) {
-					return 35;
-				}
-				if (entity instanceof Goat) {
-					return 35;
-				}
-				if (entity instanceof Cow) {
-					return 50;
-				}
-				if (entity instanceof Chicken) {
-					return 20;
-				}
-				return 20;
-			}
+            @Override
+            public int getEntityFoodValue(Entity entity) {
+                if (entity instanceof Pig) {
+                    return 30;
+                }
+                if (entity instanceof Sheep) {
+                    return 35;
+                }
+                if (entity instanceof Goat) {
+                    return 35;
+                }
+                if (entity instanceof Cow) {
+                    return 50;
+                }
+                if (entity instanceof Chicken) {
+                    return 20;
+                }
+                return 20;
+            }
 
-			@Override
-			public Ingredient getTemptFoods() {
-				return DinoUtils.CARNIVORE_FOOD;
-			}
-		};
-	}
+            @Override
+            public Ingredient getTemptFoods() {
+                return DinoUtils.CARNIVORE_FOOD;
+            }
+        };
+    }
 
-	public static Diet herbivore() {
-		return new Diet() {
-			@Override
-			public boolean getsFoodFromKill() {
-				return false;
-			}
+    static Diet herbivore() {
+        return new Diet() {
+            @Override
+            public boolean getsFoodFromKill() {
+                return false;
+            }
 
-			@Override
-			public int getItemStackFoodValue(ItemStack itemStack) {
-				return FeederBlockEntity.getPlantsFoodLevel(itemStack);
-			}
+            @Override
+            public int getItemStackFoodValue(ItemStack itemStack) {
+                return FeederBlockEntity.getPlantsFoodLevel(itemStack);
+            }
 
-			@Override
-			public int getEntityFoodValue(Entity entity) {
-				return 0;
-			}
+            @Override
+            public int getEntityFoodValue(Entity entity) {
+                return 0;
+            }
 
-			@Override
-			public Ingredient getTemptFoods() {
-				return DinoUtils.HERBIVORE_FOOD;
-			}
-		};
-	}
+            @Override
+            public Ingredient getTemptFoods() {
+                return DinoUtils.HERBIVORE_FOOD;
+            }
+        };
+    }
 }

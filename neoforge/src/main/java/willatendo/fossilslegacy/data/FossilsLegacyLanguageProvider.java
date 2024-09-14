@@ -91,6 +91,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyBlocks.RED_CULTIVATOR.get());
         this.add(FossilsLegacyBlocks.BLACK_CULTIVATOR.get());
         this.add("block.fossilslegacy.cultivator.shatter", "Warning! Cultivation failure!");
+        this.add(FossilsLegacyBlocks.GENE_MODIFIER.get());
         this.add(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get());
         this.add(FossilsLegacyBlocks.JURASSIC_FERN.get());
         this.add(FossilsLegacyBlocks.DRUM.get());
@@ -176,7 +177,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("container.fossilslegacy.analyzer", "Analyzer");
         this.add("container.fossilslegacy.archaeology_workbench", "Archaeology Workbench");
         this.add("container.fossilslegacy.cultivator", "Cultivator");
-        this.add("container.fossilslegacy.genetics", "Genetics");
+        this.add("container.fossilslegacy.gene_modifier", "Gene Modifier");
         this.add("container.fossilslegacy.feeder", "Feeder");
         this.add("container.fossilslegacy.time_machine", "Time Machine");
         this.add("container.fossilslegacy.time_machine.start", "Start");

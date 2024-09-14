@@ -1,4 +1,4 @@
-// 1.21	2024-09-08T12:30:17.2279372	Recipes
+// 1.21	2024-09-13T17:04:29.0172224	Recipes
 0ed98d717097975a11c79f9fff8bf82b0607422e data/fossilslegacy/advancement/recipes/building_blocks/analyzer.json
 2524602d938a5c655495c128507574dbef42c140 data/fossilslegacy/advancement/recipes/building_blocks/archaeology_workbench.json
 84f06f624bf05340d48034deaa1bba87adda3d20 data/fossilslegacy/advancement/recipes/building_blocks/black_cultivator.json
@@ -11,6 +11,7 @@
 fe6f95611408721017a4904b0f07a7ca7f7921bb data/fossilslegacy/advancement/recipes/building_blocks/cyan_cultivator_from_colored_glass.json
 1488affb4a2d74e871c34684de115c0f7219be97 data/fossilslegacy/advancement/recipes/building_blocks/drum.json
 57824f73525619fc75daed7bf737edd74f2637cb data/fossilslegacy/advancement/recipes/building_blocks/feeder.json
+a97ae83a894682598ebcd696201ed434dcd45dad data/fossilslegacy/advancement/recipes/building_blocks/gene_modifier.json
 7512b7d34c2493c1279197c2f13a7faa79c83d7f data/fossilslegacy/advancement/recipes/building_blocks/gray_cultivator.json
 32f9c25dc5b0bdc3a3d63b227f18bf5fc1b3e69b data/fossilslegacy/advancement/recipes/building_blocks/gray_cultivator_from_colored_glass.json
 6da542a759c76026cf19823b2c580c9f884277ec data/fossilslegacy/advancement/recipes/building_blocks/green_cultivator.json
@@ -340,6 +341,7 @@ a17c48908634df9d9b77ff7cb1c55ec0fbbc13cc data/fossilslegacy/recipe/froglights_ou
 622b27585bfd4ff570e1254144c4ddc7bc04a68c data/fossilslegacy/recipe/frogspawn.json
 36f86a0689efc3a3a2686a98c2f5bcb9ee3167f3 data/fossilslegacy/recipe/frozen_meat_outputs.json
 4275c1fc8503f382abd3eadc1d876440618054d0 data/fossilslegacy/recipe/futabasaurus_egg.json
+7cc2c64e95d43379118138f2a0466c100b36f6cc data/fossilslegacy/recipe/gene_modifier.json
 375516dbe8f1ccfd42a3748b1538d56528a6afaa data/fossilslegacy/recipe/goat_embryo_syringe.json
 467220b5b85b5e74b14082820062619c3bab0830 data/fossilslegacy/recipe/goat_horn_outputs.json
 5dea659469f887b8644045446b90855b9e43902a data/fossilslegacy/recipe/golden_javelin_repair.json

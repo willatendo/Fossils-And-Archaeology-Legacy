@@ -1,4 +1,4 @@
-// 1.21	2024-09-08T12:30:17.2210395	Loot Tables
+// 1.21	2024-09-13T17:04:29.0112206	Loot Tables
 5fcf811a958fcf132678d4423a7472c475c2b8ca data/fossilslegacy/loot_table/blocks/analyzer.json
 8bfc811efa599c9be09afe46481ec9ebbf5f3a33 data/fossilslegacy/loot_table/blocks/archaeology_workbench.json
 e4c3f2afd7c71b1d42778ff89f2ddfe5a03122da data/fossilslegacy/loot_table/blocks/axolotlspawn.json
@@ -12,6 +12,7 @@ e64baba654328670eed45b5734f825543fcd3108 data/fossilslegacy/loot_table/blocks/de
 6da1931da9a56e5e2575fa925a70356f055b9406 data/fossilslegacy/loot_table/blocks/drum.json
 424d25d17373ea39dd8c45c4d09c0deb2dc93da4 data/fossilslegacy/loot_table/blocks/feeder.json
 ce310603a57172d00235770d3400b1884767bb59 data/fossilslegacy/loot_table/blocks/fossil_ore.json
+3a1b3e9f1973ff2f92dc29b8e7665c5b3bb763a7 data/fossilslegacy/loot_table/blocks/gene_modifier.json
 5a5c0597fe95a5c8e5a9cd38f139d6618ff96702 data/fossilslegacy/loot_table/blocks/gray_cultivator.json
 b6ed5d71db5ec39567c87149215623740fb93db8 data/fossilslegacy/loot_table/blocks/green_cultivator.json
 5a4c71c352394e29742b1e628f81b4f0a0527065 data/fossilslegacy/loot_table/blocks/iced_stone.json

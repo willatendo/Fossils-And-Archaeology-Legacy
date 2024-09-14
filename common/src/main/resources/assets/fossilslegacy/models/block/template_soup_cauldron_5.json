@@ -1,5 +1,5 @@
 {
-	"credit": "Made with Blockbench",
+	"parent": "block/cube_all",
 	"ambientocclusion": false,
 	"textures": {
 		"top": "block/cauldron_top",

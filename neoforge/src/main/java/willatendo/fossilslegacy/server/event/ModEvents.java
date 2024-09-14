@@ -1,8 +1,5 @@
 package willatendo.fossilslegacy.server.event;
 
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -17,12 +14,7 @@ import net.neoforged.neoforge.registries.NewRegistryEvent;
 import willatendo.fossilslegacy.network.NeoforgePacketHelper;
 import willatendo.fossilslegacy.network.ServerboundSinkPacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
-import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
-import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
-import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
-import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.server.event.*;
 import willatendo.simplelibrary.server.event.modification.NeoforgeCreativeModeTabModification;
 import willatendo.simplelibrary.server.event.registry.*;
 

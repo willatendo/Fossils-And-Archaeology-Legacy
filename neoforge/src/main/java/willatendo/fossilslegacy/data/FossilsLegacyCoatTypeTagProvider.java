@@ -4,12 +4,9 @@ import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyStoneTabletVariantTags;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyStoneTabletVariants;
 import willatendo.fossilslegacy.server.entity.genetics.CoatType;
 import willatendo.fossilslegacy.server.entity.genetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.genetics.FossilsLegacyCoatTypes;
-import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 
 import java.util.concurrent.CompletableFuture;
 

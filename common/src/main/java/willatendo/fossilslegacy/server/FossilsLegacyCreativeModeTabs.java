@@ -232,6 +232,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyBlocks.GREEN_CULTIVATOR.get());
         output.accept(FossilsLegacyBlocks.RED_CULTIVATOR.get());
         output.accept(FossilsLegacyBlocks.BLACK_CULTIVATOR.get());
+        output.accept(FossilsLegacyBlocks.GENE_MODIFIER.get());
         output.accept(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get());
         output.accept(FossilsLegacyBlocks.DRUM.get());
         output.accept(FossilsLegacyBlocks.FEEDER.get());

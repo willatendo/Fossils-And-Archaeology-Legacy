@@ -11,7 +11,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import willatendo.fossilslegacy.client.screen.GeneticsScreen;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -72,7 +71,6 @@ public class DebugItem extends Item {
         return new DebugItem("change_genetics", (dinosaur, player) -> {
             if (player instanceof LocalPlayer) {
                 Minecraft minecraft = Minecraft.getInstance();
-                minecraft.setScreen(new GeneticsScreen());
             }
             return InteractionResult.SUCCESS;
         }, new Item.Properties());

@@ -29,7 +29,7 @@ import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class ArchaeologyWorkbenchBlock extends Block implements EntityBlock {
     public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
-    public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
+    public static final BooleanProperty ACTIVE = FossilsLegacyBlockStateProperties.ACTIVE;
 
     public ArchaeologyWorkbenchBlock(Properties properties) {
         super(properties);

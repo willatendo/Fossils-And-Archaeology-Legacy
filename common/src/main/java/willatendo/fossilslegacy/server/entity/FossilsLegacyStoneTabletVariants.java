@@ -5,7 +5,6 @@ import net.minecraft.resources.ResourceKey;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 public class FossilsLegacyStoneTabletVariants {
     public static final ResourceKey<StoneTabletVariant> LIGHTING = FossilsLegacyStoneTabletVariants.create("lighting");

@@ -4,7 +4,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.PoseStack.Pose;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -19,7 +18,6 @@ import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;
 import willatendo.fossilslegacy.server.entity.StoneTablet;
 import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class StoneTabletRenderer extends EntityRenderer<StoneTablet> {
     public StoneTabletRenderer(Context context) {

@@ -1,4 +1,4 @@
-// 1.21	2024-09-08T12:30:17.2180387	Item Models: fossilslegacy
+// 1.21	2024-09-13T17:04:29.0036612	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 1f02e6db84914fc2677089f5e420f925ba109484 assets/fossilslegacy/models/item/ancient_axe.json
 e6aea94981911965db91c7f52bfa4555de4d4182 assets/fossilslegacy/models/item/ancient_axe_artifact.json
@@ -104,6 +104,7 @@ c09dcdcd3d6a9a0225dd59cd6721487826901c94 assets/fossilslegacy/models/item/fox_em
 504a4696ea6872efd4042d430aa830a14dda056b assets/fossilslegacy/models/item/futabasaurus_dna.json
 056d390d44f9cc2641bb5d22e82cd3893abe83af assets/fossilslegacy/models/item/futabasaurus_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/futabasaurus_spawn_egg.json
+058748fc7bb8fe942371dd24fbfb9ce23be1819c assets/fossilslegacy/models/item/gene_modifier.json
 183ffcebb2660a190c71d1f2f0a0754780edf896 assets/fossilslegacy/models/item/goat_dna.json
 7757047c1ecf5f196486783d9db94006327bf913 assets/fossilslegacy/models/item/goat_embryo_syringe.json
 5c318e06889c840c5c13aa939428442050cef61c assets/fossilslegacy/models/item/golden_javelin.json

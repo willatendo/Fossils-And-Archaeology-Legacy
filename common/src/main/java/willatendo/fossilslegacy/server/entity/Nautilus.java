@@ -41,7 +41,7 @@ public class Nautilus extends WaterAnimal {
 
     public Nautilus(EntityType<? extends Nautilus> entityType, Level level) {
         super(entityType, level);
-        this.random.setSeed((long) this.getId());
+        this.random.setSeed(this.getId());
         this.tentacleSpeed = 1.0F / (this.random.nextFloat() + 1.0F) * 0.2F;
     }
 

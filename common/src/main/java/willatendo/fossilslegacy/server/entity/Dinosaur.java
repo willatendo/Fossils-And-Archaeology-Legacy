@@ -1,6 +1,7 @@
 package willatendo.fossilslegacy.server.entity;
 
 import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -9,6 +10,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.OldUsersConverter;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
@@ -23,6 +25,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.ConfigHelper;
+import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.genetics.CoatType;
 import willatendo.fossilslegacy.server.entity.util.*;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
@@ -45,6 +48,12 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
         super(entityType, level);
     }
 
+    public abstract TagKey<CoatType> getCoatTypes();
+
+    public abstract float getBoundingBoxGrowth();
+
+    public abstract Diet getDiet();
+
     @Override
     public Level getLevel() {
         return this.level();
@@ -52,6 +61,10 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData) {
+        if (this instanceof CoatTypeEntity coatTypeEntity) {
+            Registry<CoatType> coatType = serverLevelAccessor.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES);
+            coatTypeEntity.setCoatType(coatType.getTag(this.getCoatTypes()).get().getRandomElement(this.getRandom()).get());
+        }
         this.setHunger(this.getMaxHunger());
         if (MobSpawnType.isSpawner(mobSpawnType) || mobSpawnType == MobSpawnType.COMMAND || mobSpawnType == MobSpawnType.MOB_SUMMONED || mobSpawnType == MobSpawnType.NATURAL || mobSpawnType == MobSpawnType.CHUNK_GENERATION) {
             this.setGrowthStage(this.getMaxGrowthStage());
@@ -71,24 +84,10 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
         return null;
     }
 
-    public abstract float getBoundingBoxGrowth();
-
-    public abstract Diet getDiet();
-
     public boolean hasSpace() {
         EntityDimensions entityDimensions = this.getDimensions(this.getPose());
         EntityDimensions updatedDimensions = entityDimensions.scale(1.0F + (this.getBoundingBoxGrowth() * ((float) this.getGrowthStage() + 1.0F)));
         return !this.level().getBlockCollisions(this, updatedDimensions.makeBoundingBox(this.position())).iterator().hasNext();
-    }
-
-    @Override
-    protected EntityDimensions getDefaultDimensions(Pose pose) {
-        if (this instanceof CoatTypeEntity coatTypeEntity) {
-            CoatType coatType = coatTypeEntity.getCoatType().value();
-            return this.dimensions = EntityDimensions.fixed(coatType.boundingBoxWidth() + (this.getBoundingBoxGrowth() * this.getGrowthStage()), coatType.boundingBoxHeight() + (this.getBoundingBoxGrowth() * this.getGrowthStage()));
-        } else {
-            return this.dimensions = super.getDefaultDimensions(pose);
-        }
     }
 
     @Override
@@ -256,6 +255,16 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
     }
 
     @Override
+    protected EntityDimensions getDefaultDimensions(Pose pose) {
+        if (this instanceof CoatTypeEntity coatTypeEntity) {
+            CoatType coatType = coatTypeEntity.getCoatType().value();
+            return this.dimensions = EntityDimensions.fixed(coatType.boundingBoxWidth() + (this.getBoundingBoxGrowth() * this.getGrowthStage()), coatType.boundingBoxHeight() + (this.getBoundingBoxGrowth() * this.getGrowthStage()));
+        } else {
+            return this.dimensions = super.getDefaultDimensions(pose);
+        }
+    }
+
+    @Override
     public void refreshDimensions() {
         double x = this.getX();
         double y = this.getY();
@@ -378,11 +387,9 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
         compoundTag.putInt("GrowthStage", this.getGrowthStage());
         compoundTag.putInt("InternalClock", this.internalClock);
 
-        if (this.dimensions != null) {
-            compoundTag.putFloat("BoundingBoxWidth", this.dimensions.width());
-            compoundTag.putFloat("BoundingBoxHeight", this.dimensions.height());
-            compoundTag.putBoolean("BoundingBoxFixed", this.dimensions.fixed());
-        }
+        compoundTag.putFloat("BoundingBoxWidth", this.dimensions.width());
+        compoundTag.putFloat("BoundingBoxHeight", this.dimensions.height());
+        compoundTag.putBoolean("BoundingBoxFixed", this.dimensions.fixed());
     }
 
     @Override

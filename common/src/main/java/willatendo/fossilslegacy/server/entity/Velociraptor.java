@@ -7,12 +7,14 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -25,9 +27,9 @@ import net.minecraft.world.item.NameTagItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.apache.commons.compress.utils.Lists;
-import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.genetics.CoatType;
+import willatendo.fossilslegacy.server.entity.genetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
 import willatendo.fossilslegacy.server.entity.util.*;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
@@ -61,6 +63,11 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
     @Override
     public int getMaxHunger() {
         return 100;
+    }
+
+    @Override
+    public TagKey<CoatType> getCoatTypes() {
+        return FossilsLegacyCoatTypeTags.VELOCIRAPTOR;
     }
 
     @Override
@@ -230,6 +237,12 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
                 information.add(FossilsLegacyUtils.translation("dinopedia", "wild"));
             }
         }
+        information.add(Component.literal("Type: " + this.getCoatType().getRegisteredName()));
+        information.add(Component.literal("Age Scale: " + this.getCoatType().value().ageScale()));
+        information.add(Component.literal("Base Scale Height: " + this.getCoatType().value().baseScaleHeight()));
+        information.add(Component.literal("Base Scale Width: " + this.getCoatType().value().baseScaleWidth()));
+        information.add(Component.literal("Bounding Box Height: " + this.getDimensions(Pose.STANDING).height()));
+        information.add(Component.literal("Bounding Box Width: " + this.getDimensions(Pose.STANDING).height()));
         return information;
     }
 

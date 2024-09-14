@@ -140,5 +140,6 @@ public class FossilsLegacyClient {
         menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.CULTIVATOR.get(), CultivatorScreen::new);
         menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.FEEDER.get(), FeederScreen::new);
         menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.TIME_MACHINE.get(), TimeMachineScreen::new);
+        menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.GENE_MODIFIER.get(), GeneModifierScreen::new);
     }
 }
