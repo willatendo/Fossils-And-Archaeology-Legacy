@@ -1,20 +1,26 @@
 {
-  "age_scale": 0.5125,
-  "base_scale_height": 0.5,
-  "base_scale_width": 0.5,
-  "bounding_box_growth": 1.0,
-  "bounding_box_height": 0.5,
-  "bounding_box_width": 0.5,
-  "color": 9535590,
+  "age_scale_info": {
+    "age_scale": 0.5125,
+    "base_scale_height": 0.5,
+    "base_scale_width": 0.5
+  },
+  "bounding_box_info": {
+    "bounding_box_growth": 1.0,
+    "bounding_box_height": 0.5,
+    "bounding_box_width": 0.5
+  },
+  "display_info": {
+    "color": 9535590,
+    "name": {
+      "translate": "coatType.fossilslegacy.tyrannosaurus"
+    },
+    "pattern": {
+      "translate": "pattern.fossilslegacy.eastern_brown_snake"
+    }
+  },
   "models": {
     "knocked_out_model": "fossilslegacy:knocked_out_tyrannosaurus",
     "model": "fossilslegacy:tyrannosaurus"
-  },
-  "name": {
-    "translate": "coatType.fossilslegacy.tyrannosaurus"
-  },
-  "pattern": {
-    "translate": "pattern.fossilslegacy.eastern_brown_snake"
   },
   "textures": {
     "aggressive_texture": "fossilslegacy:textures/entity/tyrannosaurus/aggressive_tyrannosaurus.png",

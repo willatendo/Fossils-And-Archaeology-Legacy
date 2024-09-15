@@ -1,19 +1,25 @@
 {
-  "age_scale": 0.1,
-  "base_scale_height": 0.32,
-  "base_scale_width": 0.2,
-  "bounding_box_growth": 0.1,
-  "bounding_box_height": 0.3,
-  "bounding_box_width": 0.3,
-  "color": 7447399,
+  "age_scale_info": {
+    "age_scale": 0.1,
+    "base_scale_height": 0.32,
+    "base_scale_width": 0.2
+  },
+  "bounding_box_info": {
+    "bounding_box_growth": 0.1,
+    "bounding_box_height": 0.3,
+    "bounding_box_width": 0.3
+  },
+  "display_info": {
+    "color": 7447399,
+    "name": {
+      "translate": "coatType.fossilslegacy.legacy_green_velociraptor"
+    },
+    "pattern": {
+      "translate": "pattern.fossilslegacy.green_tree_python"
+    }
+  },
   "models": {
     "model": "fossilslegacy:legacy_velociraptor"
-  },
-  "name": {
-    "translate": "coatType.fossilslegacy.legacy_green_velociraptor"
-  },
-  "pattern": {
-    "translate": "pattern.fossilslegacy.green_tree_python"
   },
   "textures": {
     "baby_texture": "fossilslegacy:textures/entity/velociraptor/legacy/green_baby_velociraptor.png",

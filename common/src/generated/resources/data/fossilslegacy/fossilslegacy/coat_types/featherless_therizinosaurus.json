@@ -1,19 +1,25 @@
 {
-  "age_scale": 0.3,
-  "base_scale_height": 0.5,
-  "base_scale_width": 0.5,
-  "bounding_box_growth": 0.35,
-  "bounding_box_height": 0.5,
-  "bounding_box_width": 0.5,
-  "color": 6319935,
+  "age_scale_info": {
+    "age_scale": 0.3,
+    "base_scale_height": 0.5,
+    "base_scale_width": 0.5
+  },
+  "bounding_box_info": {
+    "bounding_box_growth": 0.35,
+    "bounding_box_height": 0.5,
+    "bounding_box_width": 0.5
+  },
+  "display_info": {
+    "color": 6319935,
+    "name": {
+      "translate": "coatType.fossilslegacy.featherless_therizinosaurus"
+    },
+    "pattern": {
+      "translate": "pattern.fossilslegacy.green_tree_python"
+    }
+  },
   "models": {
     "model": "fossilslegacy:therizinosaurus"
-  },
-  "name": {
-    "translate": "coatType.fossilslegacy.featherless_therizinosaurus"
-  },
-  "pattern": {
-    "translate": "pattern.fossilslegacy.green_tree_python"
   },
   "textures": {
     "texture": "fossilslegacy:textures/entity/therizinosaurus/featherless_therizinosaurus.png"

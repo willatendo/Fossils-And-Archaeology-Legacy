@@ -3,7 +3,7 @@ package willatendo.fossilslegacy.client.render;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import willatendo.fossilslegacy.server.entity.Pteranodon;
-import willatendo.fossilslegacy.server.entity.genetics.CoatType;
+import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
 
 import java.util.Optional;
 

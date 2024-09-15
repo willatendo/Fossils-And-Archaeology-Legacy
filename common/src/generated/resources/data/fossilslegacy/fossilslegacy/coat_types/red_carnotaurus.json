@@ -1,19 +1,25 @@
 {
-  "age_scale": 0.3,
-  "base_scale_height": 0.5,
-  "base_scale_width": 0.5,
-  "bounding_box_growth": 0.35,
-  "bounding_box_height": 0.5,
-  "bounding_box_width": 0.5,
-  "color": 12538434,
+  "age_scale_info": {
+    "age_scale": 0.3,
+    "base_scale_height": 0.5,
+    "base_scale_width": 0.5
+  },
+  "bounding_box_info": {
+    "bounding_box_growth": 0.35,
+    "bounding_box_height": 0.5,
+    "bounding_box_width": 0.5
+  },
+  "display_info": {
+    "color": 12538434,
+    "name": {
+      "translate": "coatType.fossilslegacy.red_carnotaurus"
+    },
+    "pattern": {
+      "translate": "pattern.fossilslegacy.northern_cardinal"
+    }
+  },
   "models": {
     "model": "fossilslegacy:carnotaurus"
-  },
-  "name": {
-    "translate": "coatType.fossilslegacy.red_carnotaurus"
-  },
-  "pattern": {
-    "translate": "pattern.fossilslegacy.northern_cardinal"
   },
   "textures": {
     "texture": "fossilslegacy:textures/entity/carnotaurus/red_carnotaurus.png"

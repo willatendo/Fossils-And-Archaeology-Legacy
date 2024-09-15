@@ -2,7 +2,7 @@ package willatendo.fossilslegacy.server;
 
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
-import willatendo.fossilslegacy.server.entity.genetics.CoatType;
+import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
 import willatendo.fossilslegacy.server.entity.variants.PregnancyType;

@@ -13,7 +13,7 @@ import willatendo.fossilslegacy.server.entity.FossilsLegacyBoatTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEggVariants;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyPregnancyTypes;
-import willatendo.fossilslegacy.server.entity.genetics.FossilsLegacyCoatTypeTags;
+import willatendo.fossilslegacy.server.entity.genetics.cosmetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.item.SimpleBoatItem;
 import willatendo.simplelibrary.server.registry.SimpleHolder;

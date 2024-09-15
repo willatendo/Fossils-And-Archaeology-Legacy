@@ -30,8 +30,8 @@ import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
 import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
-import willatendo.fossilslegacy.server.entity.genetics.CoatType;
-import willatendo.fossilslegacy.server.entity.genetics.FossilsLegacyCoatTypeTags;
+import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.entity.genetics.cosmetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.DinoEatFromFeederGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
@@ -102,13 +102,13 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation, CoatTy
     @Override
     public float renderScaleWidth() {
         CoatType coatType = this.getCoatType().value();
-        return coatType.baseScaleWidth() + (coatType.ageScale() * (float) this.getGrowthStage());
+        return coatType.ageScaleInfo().baseScaleWidth() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
     }
 
     @Override
     public float renderScaleHeight() {
         CoatType coatType = this.getCoatType().value();
-        return coatType.baseScaleHeight() + (coatType.ageScale() * (float) this.getGrowthStage());
+        return coatType.ageScaleInfo().baseScaleHeight() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
     }
 
     @Override

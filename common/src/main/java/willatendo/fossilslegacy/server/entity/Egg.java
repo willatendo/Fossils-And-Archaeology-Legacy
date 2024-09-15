@@ -26,7 +26,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
-import willatendo.fossilslegacy.server.entity.genetics.CoatType;
+import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.entity.util.CoatTypeEntity;
 import willatendo.fossilslegacy.server.entity.util.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.TicksToBirth;

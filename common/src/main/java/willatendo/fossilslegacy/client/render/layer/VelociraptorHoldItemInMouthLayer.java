@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import willatendo.fossilslegacy.server.entity.Velociraptor;
-import willatendo.fossilslegacy.server.entity.genetics.FossilsLegacyCoatTypeTags;
+import willatendo.fossilslegacy.server.entity.genetics.cosmetics.FossilsLegacyCoatTypeTags;
 
 public class VelociraptorHoldItemInMouthLayer<T extends EntityModel<Velociraptor>> extends RenderLayer<Velociraptor, T> {
     private final ItemInHandRenderer itemInHandRenderer;

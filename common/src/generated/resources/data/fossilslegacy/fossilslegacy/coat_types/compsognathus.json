@@ -1,19 +1,25 @@
 {
-  "age_scale": 0.125,
-  "base_scale_height": 0.25,
-  "base_scale_width": 0.25,
-  "bounding_box_growth": 1.0,
-  "bounding_box_height": 0.5,
-  "bounding_box_width": 0.5,
-  "color": 2178336,
+  "age_scale_info": {
+    "age_scale": 0.125,
+    "base_scale_height": 0.25,
+    "base_scale_width": 0.25
+  },
+  "bounding_box_info": {
+    "bounding_box_growth": 1.0,
+    "bounding_box_height": 0.5,
+    "bounding_box_width": 0.5
+  },
+  "display_info": {
+    "color": 2178336,
+    "name": {
+      "translate": "coatType.fossilslegacy.compsognathus"
+    },
+    "pattern": {
+      "translate": "pattern.fossilslegacy.green_tree_python"
+    }
+  },
   "models": {
     "model": "fossilslegacy:compsognathus"
-  },
-  "name": {
-    "translate": "coatType.fossilslegacy.compsognathus"
-  },
-  "pattern": {
-    "translate": "pattern.fossilslegacy.green_tree_python"
   },
   "textures": {
     "texture": "fossilslegacy:textures/entity/compsognathus/compsognathus.png"

@@ -24,7 +24,7 @@ import willatendo.fossilslegacy.client.FossilsLegacyKeys;
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
-import willatendo.fossilslegacy.server.entity.genetics.CoatType;
+import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.entity.util.CoatTypeEntity;
 import willatendo.fossilslegacy.server.item.DNAItem;
 import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
@@ -95,13 +95,13 @@ public class GeneModificationScreen extends AbstractContainerScreen<GeneModifica
 
                 if (this.coatTypes.length > 0) {
                     CoatType selectedCoatType = this.coatTypes[this.selection];
-                    float red = ((selectedCoatType.color() & 0xFF0000) >> 16) / 255.0F;
-                    float green = ((selectedCoatType.color() & 0xFF00) >> 8) / 255.0F;
-                    float blue = (selectedCoatType.color() & 0xFF) / 255.0F;
+                    float red = ((selectedCoatType.displayInfo().color() & 0xFF0000) >> 16) / 255.0F;
+                    float green = ((selectedCoatType.displayInfo().color() & 0xFF00) >> 8) / 255.0F;
+                    float blue = (selectedCoatType.displayInfo().color() & 0xFF) / 255.0F;
                     RenderSystem.setShaderColor(red, green, blue, 1.0F);
                     guiGraphics.blitSprite(GENE_SPRITE, this.leftPos + 42, this.topPos + 61, 22, 8);
                     RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-                    guiGraphics.drawString(this.font, selectedCoatType.name(), this.leftPos + 8, this.topPos + 74, 0xC9C9C9, false);
+                    guiGraphics.drawString(this.font, selectedCoatType.displayInfo().name(), this.leftPos + 8, this.topPos + 74, 0xC9C9C9, false);
                     guiGraphics.drawCenteredString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.coat_type.location", this.selection + 1, this.size), this.leftPos + 53, this.topPos + 47, 0xC9C9C9);
                 } else {
                     guiGraphics.drawCenteredString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.coat_type.none", this.selection + 1, this.size), this.leftPos + 53, this.topPos + 47, 0xC9C9C9);
@@ -136,7 +136,7 @@ public class GeneModificationScreen extends AbstractContainerScreen<GeneModifica
         super.renderTooltip(guiGraphics, x, y);
         if (this.menu.getCarried().isEmpty() && this.size > 0 && (x >= this.leftPos + 40 && x <= this.leftPos + 65) && (y >= this.topPos + 59 && y <= this.topPos + 70)) {
             List<Component> tooltip = Lists.newArrayList();
-            tooltip.add(this.coatTypes[this.selection].pattern());
+            tooltip.add(this.coatTypes[this.selection].displayInfo().pattern());
             if (this.minecraft.options.advancedItemTooltips) {
                 tooltip.add(Component.literal(this.minecraft.level.registryAccess().registry(FossilsLegacyRegistries.COAT_TYPES).get().getKey(this.coatTypes[this.selection]).toString()).withStyle(ChatFormatting.DARK_GRAY));
             }

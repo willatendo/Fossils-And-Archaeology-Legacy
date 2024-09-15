@@ -28,8 +28,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
-import willatendo.fossilslegacy.server.entity.genetics.CoatType;
-import willatendo.fossilslegacy.server.entity.genetics.FossilsLegacyCoatTypeTags;
+import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.entity.genetics.cosmetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
 import willatendo.fossilslegacy.server.entity.util.*;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
@@ -82,7 +82,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
 
     @Override
     public float getBoundingBoxGrowth() {
-        return this.getCoatType().value().boundingBoxGrowth();
+        return this.getCoatType().value().boundingBoxInfo().boundingBoxGrowth();
     }
 
     @Override
@@ -98,13 +98,13 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
     @Override
     public float renderScaleWidth() {
         CoatType coatType = this.getCoatType().value();
-        return coatType.baseScaleWidth() + (coatType.ageScale() * (float) this.getGrowthStage());
+        return coatType.ageScaleInfo().baseScaleWidth() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
     }
 
     @Override
     public float renderScaleHeight() {
         CoatType coatType = this.getCoatType().value();
-        return coatType.baseScaleHeight() + (coatType.ageScale() * (float) this.getGrowthStage());
+        return coatType.ageScaleInfo().baseScaleHeight() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
     }
 
     @Override
@@ -239,12 +239,6 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
                 information.add(FossilsLegacyUtils.translation("dinopedia", "wild"));
             }
         }
-        information.add(Component.literal("Type: " + this.getCoatType().getRegisteredName()));
-        information.add(Component.literal("Age Scale: " + this.getCoatType().value().ageScale()));
-        information.add(Component.literal("Base Scale Height: " + this.getCoatType().value().baseScaleHeight()));
-        information.add(Component.literal("Base Scale Width: " + this.getCoatType().value().baseScaleWidth()));
-        information.add(Component.literal("Bounding Box Height: " + this.getDimensions(Pose.STANDING).height()));
-        information.add(Component.literal("Bounding Box Width: " + this.getDimensions(Pose.STANDING).height()));
         return information;
     }
 

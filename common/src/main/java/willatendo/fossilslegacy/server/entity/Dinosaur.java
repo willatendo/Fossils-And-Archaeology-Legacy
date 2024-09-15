@@ -4,6 +4,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -26,7 +27,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.ConfigHelper;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
-import willatendo.fossilslegacy.server.entity.genetics.CoatType;
+import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.entity.util.*;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
@@ -258,7 +259,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
     protected EntityDimensions getDefaultDimensions(Pose pose) {
         if (this instanceof CoatTypeEntity coatTypeEntity) {
             CoatType coatType = coatTypeEntity.getCoatType().value();
-            return this.dimensions = EntityDimensions.fixed(coatType.boundingBoxWidth() + (this.getBoundingBoxGrowth() * this.getGrowthStage()), coatType.boundingBoxHeight() + (this.getBoundingBoxGrowth() * this.getGrowthStage()));
+            return this.dimensions = EntityDimensions.fixed(coatType.boundingBoxInfo().boundingBoxWidth() + (this.getBoundingBoxGrowth() * this.getGrowthStage()), coatType.boundingBoxInfo().boundingBoxHeight() + (this.getBoundingBoxGrowth() * this.getGrowthStage()));
         } else {
             return this.dimensions = super.getDefaultDimensions(pose);
         }

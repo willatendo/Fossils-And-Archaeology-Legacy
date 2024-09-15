@@ -13,7 +13,7 @@ import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.block.entity.GeneModificationTableBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.TimeMachineBlockEntity;
 import willatendo.fossilslegacy.server.entity.Futabasaurus;
-import willatendo.fossilslegacy.server.entity.genetics.CoatType;
+import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 

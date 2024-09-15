@@ -1,19 +1,25 @@
 {
-  "age_scale": 0.5,
-  "base_scale_height": 0.5,
-  "base_scale_width": 0.5,
-  "bounding_box_growth": 1.0,
-  "bounding_box_height": 0.5,
-  "bounding_box_width": 0.5,
-  "color": 5921370,
+  "age_scale_info": {
+    "age_scale": 0.5,
+    "base_scale_height": 0.5,
+    "base_scale_width": 0.5
+  },
+  "bounding_box_info": {
+    "bounding_box_growth": 1.0,
+    "bounding_box_height": 0.5,
+    "bounding_box_width": 0.5
+  },
+  "display_info": {
+    "color": 5921370,
+    "name": {
+      "translate": "coatType.fossilslegacy.dodo"
+    },
+    "pattern": {
+      "translate": "pattern.fossilslegacy.domestic_pigeon"
+    }
+  },
   "models": {
     "model": "fossilslegacy:dodo"
-  },
-  "name": {
-    "translate": "coatType.fossilslegacy.dodo"
-  },
-  "pattern": {
-    "translate": "pattern.fossilslegacy.domestic_pigeon"
   },
   "textures": {
     "texture": "fossilslegacy:textures/entity/dodo/dodo.png"

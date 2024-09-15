@@ -1,19 +1,25 @@
 {
-  "age_scale": 0.15,
-  "base_scale_height": 1.0,
-  "base_scale_width": 1.0,
-  "bounding_box_growth": 0.2,
-  "bounding_box_height": 0.5,
-  "bounding_box_width": 0.5,
-  "color": 11396674,
+  "age_scale_info": {
+    "age_scale": 0.15,
+    "base_scale_height": 1.0,
+    "base_scale_width": 1.0
+  },
+  "bounding_box_info": {
+    "bounding_box_growth": 0.2,
+    "bounding_box_height": 0.5,
+    "bounding_box_width": 0.5
+  },
+  "display_info": {
+    "color": 11396674,
+    "name": {
+      "translate": "coatType.fossilslegacy.green_triceratops"
+    },
+    "pattern": {
+      "translate": "pattern.fossilslegacy.green_tree_python"
+    }
+  },
   "models": {
     "model": "fossilslegacy:triceratops"
-  },
-  "name": {
-    "translate": "coatType.fossilslegacy.green_triceratops"
-  },
-  "pattern": {
-    "translate": "pattern.fossilslegacy.green_tree_python"
   },
   "textures": {
     "baby_texture": "fossilslegacy:textures/entity/triceratops/green_baby_triceratops.png",

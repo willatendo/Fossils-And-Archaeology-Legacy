@@ -27,7 +27,7 @@ import willatendo.fossilslegacy.server.dimension.PrehistoricNoiseGeneratorSettin
 import willatendo.fossilslegacy.server.entity.FossilsLegacyDamageTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyStoneTabletVariants;
-import willatendo.fossilslegacy.server.entity.genetics.FossilsLegacyCoatTypes;
+import willatendo.fossilslegacy.server.entity.genetics.cosmetics.FossilsLegacyCoatTypes;
 import willatendo.fossilslegacy.server.feature.FossilsLegacyConfiguredFeatures;
 import willatendo.fossilslegacy.server.feature.FossilsLegacyPlacedFeatures;
 import willatendo.fossilslegacy.server.structure.FossilsLegacyStructureSets;

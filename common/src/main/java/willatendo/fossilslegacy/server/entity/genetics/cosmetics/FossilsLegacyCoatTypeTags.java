@@ -1,4 +1,4 @@
-package willatendo.fossilslegacy.server.entity.genetics;
+package willatendo.fossilslegacy.server.entity.genetics.cosmetics;
 
 import net.minecraft.tags.TagKey;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;

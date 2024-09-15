@@ -1,19 +1,25 @@
 {
-  "age_scale": 0.3,
-  "base_scale_height": 1.5,
-  "base_scale_width": 1.5,
-  "bounding_box_growth": 0.25,
-  "bounding_box_height": 0.5,
-  "bounding_box_width": 0.5,
-  "color": 12132864,
+  "age_scale_info": {
+    "age_scale": 0.3,
+    "base_scale_height": 1.5,
+    "base_scale_width": 1.5
+  },
+  "bounding_box_info": {
+    "bounding_box_growth": 0.25,
+    "bounding_box_height": 0.5,
+    "bounding_box_width": 0.5
+  },
+  "display_info": {
+    "color": 12132864,
+    "name": {
+      "translate": "coatType.fossilslegacy.futabasaurus"
+    },
+    "pattern": {
+      "translate": "pattern.fossilslegacy.broadhead_skink"
+    }
+  },
   "models": {
     "model": "fossilslegacy:futabasaurus"
-  },
-  "name": {
-    "translate": "coatType.fossilslegacy.futabasaurus"
-  },
-  "pattern": {
-    "translate": "pattern.fossilslegacy.broadhead_skink"
   },
   "textures": {
     "texture": "fossilslegacy:textures/entity/futabasaurus/futabasaurus.png"
