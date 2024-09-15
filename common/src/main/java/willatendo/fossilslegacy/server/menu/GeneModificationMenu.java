@@ -1,7 +1,7 @@
 package willatendo.fossilslegacy.server.menu;
 
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -9,6 +9,7 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import willatendo.fossilslegacy.server.block.GeneModificationBlock;
+import willatendo.fossilslegacy.server.block.entity.GeneModificationTableBlockEntity;
 import willatendo.fossilslegacy.server.item.DNAItem;
 import willatendo.fossilslegacy.server.menu.slot.ResultSlot;
 
@@ -16,18 +17,16 @@ import java.util.List;
 
 public class GeneModificationMenu extends AbstractContainerMenu {
     private final ContainerLevelAccess containerLevelAccess;
-    private final Container modifySlot;
-    private final Container resultSlot;
+    public final GeneModificationTableBlockEntity geneModificationTableBlockEntity;
     public final Player player;
 
-    public GeneModificationMenu(int windowId, Inventory inventory, ContainerLevelAccess containerLevelAccess) {
+    public GeneModificationMenu(int windowId, Inventory inventory, GeneModificationTableBlockEntity geneModificationTableBlockEntity) {
         super(FossilsLegacyMenuTypes.GENE_MODIFICATION.get(), windowId);
-        this.modifySlot = new SimpleContainer(1);
-        this.resultSlot = new SimpleContainer(1);
-        this.containerLevelAccess = containerLevelAccess;
+        this.containerLevelAccess = ContainerLevelAccess.create(geneModificationTableBlockEntity.getLevel(), geneModificationTableBlockEntity.getBlockPos());
+        this.geneModificationTableBlockEntity = geneModificationTableBlockEntity;
         this.player = inventory.player;
 
-        this.addSlot(new Slot(this.modifySlot, 0, 30, 26) {
+        this.addSlot(new Slot(geneModificationTableBlockEntity, 0, 30, 26) {
             @Override
             public int getMaxStackSize() {
                 return 1;
@@ -39,7 +38,7 @@ public class GeneModificationMenu extends AbstractContainerMenu {
             }
         });
 
-        this.addSlot(new ResultSlot(this.player, this.resultSlot, 0, 58, 26));
+        this.addSlot(new ResultSlot(this.player, geneModificationTableBlockEntity, 1, 58, 26));
 
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 9; column++) {
@@ -52,8 +51,12 @@ public class GeneModificationMenu extends AbstractContainerMenu {
         }
     }
 
-    public GeneModificationMenu(int windowId, Inventory inventory) {
-        this(windowId, inventory, ContainerLevelAccess.NULL);
+    public GeneModificationMenu(int windowId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
+        this(windowId, inventory, friendlyByteBuf.readBlockPos());
+    }
+
+    public GeneModificationMenu(int windowId, Inventory inventory, BlockPos blockPos) {
+        this(windowId, inventory, (GeneModificationTableBlockEntity) inventory.player.level().getBlockEntity(blockPos));
     }
 
     @Override

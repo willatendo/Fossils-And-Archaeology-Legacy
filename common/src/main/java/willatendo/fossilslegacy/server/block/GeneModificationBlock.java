@@ -2,6 +2,9 @@ package willatendo.fossilslegacy.server.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
@@ -11,8 +14,10 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -24,10 +29,13 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
+import willatendo.fossilslegacy.server.block.entity.ArchaeologyWorkbenchBlockEntity;
+import willatendo.fossilslegacy.server.block.entity.GeneModificationTableBlockEntity;
 import willatendo.fossilslegacy.server.menu.GeneModificationMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.server.util.SimpleUtils;
 
-public class GeneModificationBlock extends Block {
+public class GeneModificationBlock extends Block implements EntityBlock {
     public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty ACTIVE = FossilsLegacyBlockStateProperties.ACTIVE;
     public static final VoxelShape SHAPE = Shapes.join(Block.box(0, 0, 0, 16, 5, 16), Block.box(2, 5, 2, 14, 12, 14), BooleanOp.OR);
@@ -48,6 +56,52 @@ public class GeneModificationBlock extends Block {
     }
 
     @Override
+    public boolean triggerEvent(BlockState blockState, Level level, BlockPos blockPos, int a, int b) {
+        super.triggerEvent(blockState, level, blockPos, a, b);
+        BlockEntity blockEntity = level.getBlockEntity(blockPos);
+        return blockEntity == null ? false : blockEntity.triggerEvent(a, b);
+    }
+
+    @Override
+    public void onRemove(BlockState blockState, Level level, BlockPos blockPos, BlockState newBlockState, boolean flag) {
+        if (!blockState.is(newBlockState.getBlock())) {
+            BlockEntity blockEntity = level.getBlockEntity(blockPos);
+            if (blockEntity instanceof GeneModificationTableBlockEntity geneModificationTableBlockEntity) {
+                if (level instanceof ServerLevel) {
+                    Containers.dropContents(level, blockPos, geneModificationTableBlockEntity);
+                }
+                level.updateNeighbourForOutputSignal(blockPos, this);
+            }
+
+            super.onRemove(blockState, level, blockPos, newBlockState, flag);
+        }
+    }
+
+    @Override
+    public MenuProvider getMenuProvider(BlockState blockState, Level level, BlockPos blockPos) {
+        BlockEntity blockEntity = level.getBlockEntity(blockPos);
+        return blockEntity instanceof MenuProvider ? (MenuProvider) blockEntity : null;
+    }
+
+    @Override
+    public InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
+        if (level.isClientSide) {
+            return InteractionResult.SUCCESS;
+        } else {
+            BlockEntity blockEntity = level.getBlockEntity(blockPos);
+            if (blockEntity instanceof GeneModificationTableBlockEntity && player instanceof ServerPlayer serverPlayer) {
+                SimpleUtils.openContainer(blockEntity, blockPos, serverPlayer);
+            }
+            return InteractionResult.CONSUME;
+        }
+    }
+
+    @Override
+    public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+        return new GeneModificationTableBlockEntity(blockPos, blockState);
+    }
+
+    @Override
     public BlockState rotate(BlockState blockState, Rotation rotation) {
         return blockState.setValue(HORIZONTAL_FACING, rotation.rotate(blockState.getValue(HORIZONTAL_FACING)));
     }
@@ -61,21 +115,5 @@ public class GeneModificationBlock extends Block {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(HORIZONTAL_FACING, ACTIVE);
         super.createBlockStateDefinition(builder);
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
-        if (level.isClientSide) {
-            return InteractionResult.SUCCESS;
-        } else {
-            player.openMenu(blockState.getMenuProvider(level, blockPos));
-            return InteractionResult.CONSUME;
-        }
-    }
-
-    @Nullable
-    @Override
-    protected MenuProvider getMenuProvider(BlockState blockState, Level level, BlockPos blockPos) {
-        return new SimpleMenuProvider((windowId, inventory, player) -> new GeneModificationMenu(windowId, inventory, ContainerLevelAccess.create(level, blockPos)), FossilsLegacyUtils.translation("container", "gene_modifier"));
     }
 }

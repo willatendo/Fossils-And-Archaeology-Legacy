@@ -14,6 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import willatendo.fossilslegacy.FossilsLegacyForgeMod;
 import willatendo.fossilslegacy.network.ForgePacketHelper;
+import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
 import willatendo.fossilslegacy.server.config.FossilsLegacyConfig;
 import willatendo.fossilslegacy.server.item.ForgeDinosaurSpawnEggItem;
@@ -25,6 +26,11 @@ public class FossilsForgeHelper implements FossilsModloaderHelper {
     @Override
     public void sendTimeMachinePacket(BlockPos blockPos) {
         ForgePacketHelper.sendToServer(new ServerboundTimeMachineUpdatePacket(blockPos));
+    }
+
+    @Override
+    public void sendApplyGenePacket(BlockPos blockPos, String coatType) {
+        ForgePacketHelper.sendToServer(new ServerboundApplyGenePacket(blockPos, coatType));
     }
 
     @Override

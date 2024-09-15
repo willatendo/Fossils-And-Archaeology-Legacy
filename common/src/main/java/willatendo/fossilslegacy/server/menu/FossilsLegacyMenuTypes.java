@@ -72,12 +72,12 @@ public class FossilsLegacyMenuTypes {
     public static final SimpleHolder<MenuType<GeneModificationMenu>> GENE_MODIFICATION = MENU_TYPES.register("gene_modification", () -> SimpleUtils.createMenuType(new ExtendedMenuSupplier<GeneModificationMenu>() {
         @Override
         public GeneModificationMenu create(int windowId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
-            return new GeneModificationMenu(windowId, inventory);
+            return new GeneModificationMenu(windowId, inventory, friendlyByteBuf);
         }
 
         @Override
         public GeneModificationMenu create(int windowId, Inventory inventory, BlockPos blockPos) {
-            return new GeneModificationMenu(windowId, inventory);
+            return new GeneModificationMenu(windowId, inventory, blockPos);
         }
     }));
 }

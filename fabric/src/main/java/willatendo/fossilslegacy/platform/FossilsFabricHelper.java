@@ -16,6 +16,7 @@ import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
+import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
 import willatendo.fossilslegacy.server.config.FabricConfigHelper;
 import willatendo.fossilslegacy.server.item.DinosaurSpawnEggItem;
@@ -30,6 +31,14 @@ public class FossilsFabricHelper implements FossilsModloaderHelper {
         FriendlyByteBuf friendlyByteBuf = PacketByteBufs.create();
         friendlyByteBuf.writeBlockPos(blockPos);
         ClientPlayNetworking.send(new ServerboundTimeMachineUpdatePacket(blockPos));
+    }
+
+    @Override
+    public void sendApplyGenePacket(BlockPos blockPos, String coatType) {
+        FriendlyByteBuf friendlyByteBuf = PacketByteBufs.create();
+        friendlyByteBuf.writeBlockPos(blockPos);
+        friendlyByteBuf.writeUtf(coatType);
+        ClientPlayNetworking.send(new ServerboundApplyGenePacket(blockPos, coatType));
     }
 
     @Override

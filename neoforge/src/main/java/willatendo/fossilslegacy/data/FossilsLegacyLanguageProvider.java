@@ -177,7 +177,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("container.fossilslegacy.analyzer", "Analyzer");
         this.add("container.fossilslegacy.archaeology_workbench", "Archaeology Workbench");
         this.add("container.fossilslegacy.cultivator", "Cultivator");
-        this.add("container.fossilslegacy.gene_modifier", "Gene Modifier");
+        this.add("container.fossilslegacy.gene_modification_table", "Gene Modification Table");
+        this.add("container.fossilslegacy.gene_modification_table.apply_gene.tutorial", "Use '%s' to apply gene.");
         this.add("container.fossilslegacy.gene_modification_table.coat_type.location", "%s/%s");
         this.add("container.fossilslegacy.gene_modification_table.coat_type.none", "N/A");
         this.add("container.fossilslegacy.gene_modification_table.insert", "Insert DNA");

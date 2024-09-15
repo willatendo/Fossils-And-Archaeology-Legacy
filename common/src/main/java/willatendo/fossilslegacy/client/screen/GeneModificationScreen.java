@@ -21,6 +21,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.client.FossilsLegacyKeys;
+import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.genetics.CoatType;
@@ -29,7 +30,6 @@ import willatendo.fossilslegacy.server.item.DNAItem;
 import willatendo.fossilslegacy.server.menu.GeneModificationMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -110,6 +110,7 @@ public class GeneModificationScreen extends AbstractContainerScreen<GeneModifica
         }
         guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.navigate_left.tutorial", FossilsLegacyKeys.NAVIGATE_LEFT.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 2, 0xFFFFFF, false);
         guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.navigate_right.tutorial", FossilsLegacyKeys.NAVIGATE_RIGHT.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 10, 0xFFFFFF, false);
+        guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.apply_gene.tutorial", FossilsLegacyKeys.APPLY_GENE.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 18, 0xFFFFFF, false);
     }
 
     @Override
@@ -136,6 +137,12 @@ public class GeneModificationScreen extends AbstractContainerScreen<GeneModifica
         if (FossilsLegacyKeys.NAVIGATE_RIGHT.matches(keyCode, scanCode)) {
             if (this.selection != this.size - 1) {
                 this.selection++;
+                return true;
+            }
+        }
+        if (FossilsLegacyKeys.APPLY_GENE.matches(keyCode, scanCode)) {
+            if (this.size > 0) {
+                FossilsModloaderHelper.INSTANCE.sendApplyGenePacket(this.menu.geneModificationTableBlockEntity.getBlockPos(), this.minecraft.level.registryAccess().registry(FossilsLegacyRegistries.COAT_TYPES).get().getKey(this.coatTypes[this.selection]).toString());
                 return true;
             }
         }

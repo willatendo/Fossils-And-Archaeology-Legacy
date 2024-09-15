@@ -15,4 +15,10 @@ public class NeoforgePacketHelper {
             BasicPackets.serverboundTimeMachineUpdatePacket(serverboundTimeMachineUpdatePacket.blockPos(), iPayloadContext.player().level());
         });
     }
+
+    public static void handleApplyGenePacket(ServerboundApplyGenePacket serverboundApplyGenePacket, IPayloadContext iPayloadContext) {
+        iPayloadContext.enqueueWork(() -> {
+            BasicPackets.serverboundApplyGenePacket(serverboundApplyGenePacket.blockPos(), serverboundApplyGenePacket.coatType(), iPayloadContext.player().level());
+        });
+    }
 }

@@ -1,5 +1,5 @@
 31/9/2024
-- Futabasaurus Now Moves Entire Neck
+- Futabasaurus Now Articulates Entire Neck
 - Replaced Nether Coin With Ice Age Coin
 - Stone Tablets Are Now Data-Driven
 - (Fabric) Fixed Server Crash
@@ -11,6 +11,7 @@
 - Added Updated Triceratops Model
 - Added "Anu Totem" Stone Tablet
 - Added Coat-Types; data-driven cosmetics for dinosaurs
+- Added Gene Modification Table
 12/9/2024
 - (Fabric) Fixed Crash
 19/8/2024

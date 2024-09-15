@@ -37,6 +37,7 @@ public class FossilsLegacyClient {
         keyMappingRegister.register(FossilsLegacyKeys.SINK);
         keyMappingRegister.register(FossilsLegacyKeys.NAVIGATE_LEFT);
         keyMappingRegister.register(FossilsLegacyKeys.NAVIGATE_RIGHT);
+        keyMappingRegister.register(FossilsLegacyKeys.APPLY_GENE);
     }
 
     public static void modelEvent(ModelRegister modelRegister) {

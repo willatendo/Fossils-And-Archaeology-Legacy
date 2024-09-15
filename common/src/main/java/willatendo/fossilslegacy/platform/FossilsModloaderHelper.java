@@ -17,10 +17,12 @@ import willatendo.simplelibrary.server.util.SimpleUtils;
 import java.util.function.Supplier;
 
 public interface FossilsModloaderHelper {
-    public static final FossilsModloaderHelper INSTANCE = SimpleUtils.loadModloaderHelper(FossilsModloaderHelper.class);
+    FossilsModloaderHelper INSTANCE = SimpleUtils.loadModloaderHelper(FossilsModloaderHelper.class);
 
     // Platform
     void sendTimeMachinePacket(BlockPos blockPos);
+
+    void sendApplyGenePacket(BlockPos blockPos, String coatType);
 
     <T> Supplier<EntityDataSerializer<Holder<T>>> registerDataSerializer(String id, StreamCodec<RegistryFriendlyByteBuf, Holder<T>> streamCodec);
 

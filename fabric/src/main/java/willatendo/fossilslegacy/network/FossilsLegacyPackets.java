@@ -7,21 +7,24 @@ import net.minecraft.server.level.ServerLevel;
 
 public class FossilsLegacyPackets {
     public static void registerClientToServerPackets() {
-        PayloadTypeRegistry.playC2S().register(ServerboundTimeMachineUpdatePacket.TYPE, ServerboundTimeMachineUpdatePacket.STREAM_CODEC);
+        PayloadTypeRegistry.playC2S().register(ServerboundApplyGenePacket.TYPE, ServerboundApplyGenePacket.STREAM_CODEC);
         PayloadTypeRegistry.playC2S().register(ServerboundSinkPacket.TYPE, ServerboundSinkPacket.STREAM_CODEC);
+        PayloadTypeRegistry.playC2S().register(ServerboundTimeMachineUpdatePacket.TYPE, ServerboundTimeMachineUpdatePacket.STREAM_CODEC);
 
-        ServerPlayNetworking.registerGlobalReceiver(ServerboundTimeMachineUpdatePacket.TYPE, FossilsLegacyPackets::serverboundTimeMachineUpdatePacket);
+        ServerPlayNetworking.registerGlobalReceiver(ServerboundApplyGenePacket.TYPE, FossilsLegacyPackets::serverboundApplyGenePacket);
         ServerPlayNetworking.registerGlobalReceiver(ServerboundSinkPacket.TYPE, FossilsLegacyPackets::serverboundSinkPacket);
+        ServerPlayNetworking.registerGlobalReceiver(ServerboundTimeMachineUpdatePacket.TYPE, FossilsLegacyPackets::serverboundTimeMachineUpdatePacket);
+    }
+
+    public static void serverboundApplyGenePacket(ServerboundApplyGenePacket serverboundApplyGenePacket, ServerPlayNetworking.Context context) {
+        BasicPackets.serverboundApplyGenePacket(serverboundApplyGenePacket.blockPos(), serverboundApplyGenePacket.coatType(), context.player().serverLevel());
     }
 
     public static void serverboundTimeMachineUpdatePacket(ServerboundTimeMachineUpdatePacket serverboundTimeMachineUpdatePacket, ServerPlayNetworking.Context context) {
-        BlockPos blockPos = serverboundTimeMachineUpdatePacket.blockPos();
-        ServerLevel serverLevel = context.player().serverLevel();
-        BasicPackets.serverboundTimeMachineUpdatePacket(blockPos, serverLevel);
+        BasicPackets.serverboundTimeMachineUpdatePacket(serverboundTimeMachineUpdatePacket.blockPos(), context.player().serverLevel());
     }
 
     public static void serverboundSinkPacket(ServerboundSinkPacket serverboundSinkPacket, ServerPlayNetworking.Context context) {
-        boolean shouldSink = serverboundSinkPacket.shouldSink();
-        BasicPackets.serverboundSinkPacket(context.player(), shouldSink);
+        BasicPackets.serverboundSinkPacket(context.player(), serverboundSinkPacket.shouldSink());
     }
 }
