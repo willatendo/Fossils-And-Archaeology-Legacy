@@ -41,7 +41,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur, CoatTypeEntity {
-    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Triceratops.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
+    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Tyrannosaurus.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
     private static final EntityDataAccessor<Boolean> KNOCKED_OUT = SynchedEntityData.defineId(Tyrannosaurus.class, EntityDataSerializers.BOOLEAN);
     private final BlockBreakRule blockBreakRule = new BlockBreakRule(this, 3, FossilsLegacyBlockTags.TYRANNOSAURUS_UNBREAKABLES);
 

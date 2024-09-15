@@ -11,13 +11,13 @@ import java.util.Map;
 import java.util.function.Function;
 
 public class ModelIdentifierRegistry {
-    private static final Map<ResourceLocation, ModelProvider<? extends Entity>> ENTITY_MODELS = Maps.newHashMap();
+    private static final Map<ResourceLocation, ModelProvider> ENTITY_MODELS = Maps.newHashMap();
     private static final Map<ResourceLocation, ModelLayerLocation> MODEL_LAYERS = Maps.newHashMap();
 
-    public static Map<ResourceLocation, EntityModel<? extends Entity>> registerAllModels(Function<ModelLayerLocation, ModelPart> root) {
-        Map<ResourceLocation, EntityModel<? extends Entity>> maps = Maps.newHashMap();
+    public static Map<ResourceLocation, EntityModel> registerAllModels(Function<ModelLayerLocation, ModelPart> root) {
+        Map<ResourceLocation, EntityModel> maps = Maps.newHashMap();
         ENTITY_MODELS.forEach(((resourceLocation, modelProvider) -> {
-            EntityModel<? extends Entity> entityModel = modelProvider.create(root.apply(MODEL_LAYERS.get(resourceLocation)));
+            EntityModel entityModel = modelProvider.create(root.apply(MODEL_LAYERS.get(resourceLocation)));
             maps.put(resourceLocation, entityModel);
         }));
         return maps;

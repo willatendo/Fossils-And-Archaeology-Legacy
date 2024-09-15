@@ -9,7 +9,6 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.client.model.dinosaur.base.DinosaurModel;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
-import willatendo.fossilslegacy.server.entity.Velociraptor;
 
 public class LegacyVelociraptorModel extends DinosaurModel<Dinosaur> {
     private final ModelPart neck;

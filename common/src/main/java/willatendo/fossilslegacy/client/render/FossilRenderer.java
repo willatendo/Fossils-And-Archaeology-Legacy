@@ -19,7 +19,6 @@ import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
 import willatendo.fossilslegacy.client.model.fossils.*;
 import willatendo.fossilslegacy.client.model.fossils.legacy.PteranodonSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.legacy.TriceratopsSkeletonModel;
-import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.entity.Fossil;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyFossilVariants;
 import willatendo.fossilslegacy.server.entity.variants.FossilVariant;

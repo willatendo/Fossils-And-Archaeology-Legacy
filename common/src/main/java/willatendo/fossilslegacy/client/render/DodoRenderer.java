@@ -7,7 +7,6 @@ import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
 import willatendo.fossilslegacy.client.model.dinosaur.DodoModel;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
-import willatendo.fossilslegacy.server.entity.Dodo;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class DodoRenderer extends MobRenderer<Dinosaur, DodoModel> {

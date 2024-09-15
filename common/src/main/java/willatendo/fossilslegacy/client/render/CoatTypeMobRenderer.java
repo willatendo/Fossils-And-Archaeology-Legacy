@@ -6,7 +6,6 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
 import willatendo.fossilslegacy.api.client.ModelIdentifierRegistry;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.genetics.CoatType;
@@ -16,7 +15,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends MobRenderer<T, EntityModel<T>> {
-    private final Map<ResourceLocation, EntityModel<? extends Entity>> models;
+    protected final Map<ResourceLocation, EntityModel> models;
 
     public CoatTypeMobRenderer(EntityRendererProvider.Context context, float shadowSize) {
         super(context, null, shadowSize);
@@ -28,9 +27,14 @@ public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends Mo
         poseStack.scale(dinosaur.renderScaleWidth(), dinosaur.renderScaleHeight(), dinosaur.renderScaleWidth());
     }
 
+    protected Optional<EntityModel<T>> getAdditionalModel(T mob, CoatType coatType) {
+        return Optional.empty();
+    }
+
     @Override
     public void render(T dinosaur, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
-        this.model = (EntityModel<T>) this.models.get(dinosaur.getCoatType().value().models().model());
+        CoatType coatType = dinosaur.getCoatType().value();
+        this.model = this.getAdditionalModel(dinosaur, coatType).isPresent() ? this.getAdditionalModel(dinosaur, coatType).get() : (EntityModel<T>) this.models.get(dinosaur.getCoatType().value().models().model());
         super.render(dinosaur, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
     }
 

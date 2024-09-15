@@ -2,8 +2,6 @@ package willatendo.fossilslegacy.network;
 
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 
 public class FossilsLegacyPackets {
     public static void registerClientToServerPackets() {

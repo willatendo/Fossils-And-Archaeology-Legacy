@@ -10,7 +10,6 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
-import willatendo.fossilslegacy.server.entity.Carnotaurus;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 
 public class CarnotaurusModel extends EntityModel<Dinosaur> {

@@ -1,8 +1,6 @@
 package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
-import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
-import willatendo.fossilslegacy.client.model.dinosaur.VelociraptorModel;
 import willatendo.fossilslegacy.client.render.layer.VelociraptorHoldItemInMouthLayer;
 import willatendo.fossilslegacy.server.entity.Velociraptor;
 

@@ -11,7 +11,6 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.client.animation.CompsognathusAnimations;
-import willatendo.fossilslegacy.server.entity.Compsognathus;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 
 public class CompsognathusModel extends HierarchicalModel<Dinosaur> {

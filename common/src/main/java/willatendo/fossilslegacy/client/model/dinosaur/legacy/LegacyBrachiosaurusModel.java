@@ -8,7 +8,6 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.client.model.dinosaur.base.DinosaurModel;
-import willatendo.fossilslegacy.server.entity.Brachiosaurus;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 
 public class LegacyBrachiosaurusModel extends DinosaurModel<Dinosaur> {

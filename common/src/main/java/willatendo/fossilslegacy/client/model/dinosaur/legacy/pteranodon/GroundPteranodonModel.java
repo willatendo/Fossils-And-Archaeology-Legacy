@@ -10,7 +10,6 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
-import willatendo.fossilslegacy.server.entity.Pteranodon;
 
 public class GroundPteranodonModel extends AbstractPteranodonModel {
     private final ModelPart root;
