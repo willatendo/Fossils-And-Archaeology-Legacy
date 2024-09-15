@@ -6,12 +6,17 @@
   "bounding_box_height": 0.5,
   "bounding_box_width": 0.5,
   "color": 7565130,
-  "model": "fossilslegacy:dilophosaurus",
+  "models": {
+    "model": "fossilslegacy:dilophosaurus"
+  },
   "name": {
     "translate": "coatType.fossilslegacy.dilophosaurus"
   },
   "pattern": {
     "translate": "pattern.fossilslegacy.inland_taipan"
   },
-  "texture": "fossilslegacy:textures/entity/dilophosaurus/dilophosaurus.png"
+  "textures": {
+    "aggressive_texture": "fossilslegacy:textures/entity/dilophosaurus/aggressive_dilophosaurus.png",
+    "texture": "fossilslegacy:textures/entity/dilophosaurus/dilophosaurus.png"
+  }
 }

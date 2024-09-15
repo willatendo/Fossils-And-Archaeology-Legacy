@@ -1,4 +1,4 @@
-package willatendo.fossilslegacy.api;
+package willatendo.fossilslegacy.api.client;
 
 import com.google.common.collect.Maps;
 import net.minecraft.client.model.EntityModel;

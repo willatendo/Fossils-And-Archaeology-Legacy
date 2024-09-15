@@ -1,18 +1,22 @@
 {
   "age_scale": 0.1,
-  "baby_texture": "fossilslegacy:textures/entity/velociraptor/legacy/sandy_baby_velociraptor.png",
   "base_scale_height": 0.32,
   "base_scale_width": 0.2,
   "bounding_box_growth": 0.1,
   "bounding_box_height": 0.3,
   "bounding_box_width": 0.3,
   "color": 14075534,
-  "model": "fossilslegacy:legacy_velociraptor",
+  "models": {
+    "model": "fossilslegacy:legacy_velociraptor"
+  },
   "name": {
     "translate": "coatType.fossilslegacy.legacy_sandy_velociraptor"
   },
   "pattern": {
     "translate": "pattern.fossilslegacy.eastern_brown_snake"
   },
-  "texture": "fossilslegacy:textures/entity/velociraptor/legacy/sandy_velociraptor.png"
+  "textures": {
+    "baby_texture": "fossilslegacy:textures/entity/velociraptor/legacy/sandy_baby_velociraptor.png",
+    "texture": "fossilslegacy:textures/entity/velociraptor/legacy/sandy_velociraptor.png"
+  }
 }

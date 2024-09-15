@@ -25,6 +25,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.apache.commons.compress.utils.Lists;
+import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlockTags;
 import willatendo.fossilslegacy.server.entity.genetics.CoatType;
 import willatendo.fossilslegacy.server.entity.genetics.FossilsLegacyCoatTypeTags;
@@ -39,7 +40,8 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur {
+public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur, CoatTypeEntity {
+    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Triceratops.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
     private static final EntityDataAccessor<Boolean> KNOCKED_OUT = SynchedEntityData.defineId(Tyrannosaurus.class, EntityDataSerializers.BOOLEAN);
     private final BlockBreakRule blockBreakRule = new BlockBreakRule(this, 3, FossilsLegacyBlockTags.TYRANNOSAURUS_UNBREAKABLES);
 
@@ -124,7 +126,14 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
 
     @Override
     public float renderScaleWidth() {
-        return 0.5F + (0.5125F * (float) this.getGrowthStage());
+        CoatType coatType = this.getCoatType().value();
+        return coatType.baseScaleWidth() + (coatType.ageScale() * (float) this.getGrowthStage());
+    }
+
+    @Override
+    public float renderScaleHeight() {
+        CoatType coatType = this.getCoatType().value();
+        return coatType.baseScaleHeight() + (coatType.ageScale() * (float) this.getGrowthStage());
     }
 
     @Override
@@ -198,6 +207,7 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
+        builder.define(COAT_TYPE, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getAny().orElseThrow());
         builder.define(KNOCKED_OUT, false);
     }
 
@@ -314,10 +324,15 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
         return !this.isKnockedOut() ? FossilsLegacySoundEvents.TYRANNOSAURUS_DEATH.get() : null;
     }
 
-//	@Override
-//	public Vec3 getPassengerRidingPosition(Entity entity) {
-//		return new Vec3(0.0D, 0.75D * this.getGrowthStage(), 0.0D);
-//	}
+    @Override
+    public Holder<CoatType> getCoatType() {
+        return this.entityData.get(COAT_TYPE);
+    }
+
+    @Override
+    public void setCoatType(Holder<CoatType> coatTypeHolder) {
+        this.entityData.set(COAT_TYPE, coatTypeHolder);
+    }
 
     public boolean isKnockedOut() {
         return this.entityData.get(KNOCKED_OUT);
@@ -330,12 +345,14 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
+        this.addCoatType(compoundTag);
         compoundTag.putBoolean("KnockedOut", this.isKnockedOut());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
+        this.readCoatType(compoundTag);
         this.setKnockedOut(compoundTag.getBoolean("KnockedOut"));
     }
 

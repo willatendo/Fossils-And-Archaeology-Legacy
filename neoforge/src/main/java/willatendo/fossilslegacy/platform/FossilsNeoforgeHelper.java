@@ -60,16 +60,6 @@ public class FossilsNeoforgeHelper implements FossilsModloaderHelper {
     }
 
     @Override
-    public boolean featheredDinosaurs() {
-        return FossilsLegacyConfig.CLIENT_CONFIG.featheredDinosaurs();
-    }
-
-    @Override
-    public boolean legacyModels() {
-        return FossilsLegacyConfig.CLIENT_CONFIG.legacyModels();
-    }
-
-    @Override
     public boolean willAnimalsStarve() {
         return FossilsLegacyConfig.COMMON_CONFIG.willAnimalsStarve();
     }

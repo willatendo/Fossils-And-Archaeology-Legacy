@@ -15,12 +15,12 @@ import willatendo.fossilslegacy.server.menu.slot.ResultSlot;
 
 import java.util.List;
 
-public class GeneModificationMenu extends AbstractContainerMenu {
+public class GeneModificationTableMenu extends AbstractContainerMenu {
     private final ContainerLevelAccess containerLevelAccess;
     public final GeneModificationTableBlockEntity geneModificationTableBlockEntity;
     public final Player player;
 
-    public GeneModificationMenu(int windowId, Inventory inventory, GeneModificationTableBlockEntity geneModificationTableBlockEntity) {
+    public GeneModificationTableMenu(int windowId, Inventory inventory, GeneModificationTableBlockEntity geneModificationTableBlockEntity) {
         super(FossilsLegacyMenuTypes.GENE_MODIFICATION.get(), windowId);
         this.containerLevelAccess = ContainerLevelAccess.create(geneModificationTableBlockEntity.getLevel(), geneModificationTableBlockEntity.getBlockPos());
         this.geneModificationTableBlockEntity = geneModificationTableBlockEntity;
@@ -51,11 +51,11 @@ public class GeneModificationMenu extends AbstractContainerMenu {
         }
     }
 
-    public GeneModificationMenu(int windowId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
+    public GeneModificationTableMenu(int windowId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
         this(windowId, inventory, friendlyByteBuf.readBlockPos());
     }
 
-    public GeneModificationMenu(int windowId, Inventory inventory, BlockPos blockPos) {
+    public GeneModificationTableMenu(int windowId, Inventory inventory, BlockPos blockPos) {
         this(windowId, inventory, (GeneModificationTableBlockEntity) inventory.player.level().getBlockEntity(blockPos));
     }
 
@@ -69,7 +69,7 @@ public class GeneModificationMenu extends AbstractContainerMenu {
             ItemStack itemStackInSlot = slot.getItem();
             itemStack = itemStackInSlot.copy();
 
-            int playerInventoryStartIndex = 1;
+            int playerInventoryStartIndex = 2;
 
             if (slotIndex < playerInventoryStartIndex) {
                 if (!this.moveItemStackTo(itemStackInSlot, playerInventoryStartIndex, inventorySlots.size(), true)) {

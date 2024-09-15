@@ -6,12 +6,16 @@
   "bounding_box_height": 0.5,
   "bounding_box_width": 0.5,
   "color": 4810123,
-  "model": "fossilslegacy:cryolophosaurus",
+  "models": {
+    "model": "fossilslegacy:cryolophosaurus"
+  },
   "name": {
     "translate": "coatType.fossilslegacy.cryolophosaurus"
   },
   "pattern": {
     "translate": "pattern.fossilslegacy.blue_iguana"
   },
-  "texture": "fossilslegacy:textures/entity/cryolophosaurus/cryolophosaurus.png"
+  "textures": {
+    "texture": "fossilslegacy:textures/entity/cryolophosaurus/cryolophosaurus.png"
+  }
 }

@@ -69,15 +69,15 @@ public class FossilsLegacyMenuTypes {
             return new TimeMachineMenu(windowId, inventory, blockPos);
         }
     }));
-    public static final SimpleHolder<MenuType<GeneModificationMenu>> GENE_MODIFICATION = MENU_TYPES.register("gene_modification", () -> SimpleUtils.createMenuType(new ExtendedMenuSupplier<GeneModificationMenu>() {
+    public static final SimpleHolder<MenuType<GeneModificationTableMenu>> GENE_MODIFICATION = MENU_TYPES.register("gene_modification", () -> SimpleUtils.createMenuType(new ExtendedMenuSupplier<GeneModificationTableMenu>() {
         @Override
-        public GeneModificationMenu create(int windowId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
-            return new GeneModificationMenu(windowId, inventory, friendlyByteBuf);
+        public GeneModificationTableMenu create(int windowId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
+            return new GeneModificationTableMenu(windowId, inventory, friendlyByteBuf);
         }
 
         @Override
-        public GeneModificationMenu create(int windowId, Inventory inventory, BlockPos blockPos) {
-            return new GeneModificationMenu(windowId, inventory, blockPos);
+        public GeneModificationTableMenu create(int windowId, Inventory inventory, BlockPos blockPos) {
+            return new GeneModificationTableMenu(windowId, inventory, blockPos);
         }
     }));
 }

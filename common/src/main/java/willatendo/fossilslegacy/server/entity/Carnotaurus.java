@@ -20,6 +20,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.apache.commons.compress.utils.Lists;
+import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.genetics.CoatType;
 import willatendo.fossilslegacy.server.entity.genetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
@@ -32,8 +33,8 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Carnotaurus extends Dinosaur implements DinopediaInformation, SubSpecies {
-    private static final EntityDataAccessor<Integer> SUB_SPECIES = SynchedEntityData.defineId(Carnotaurus.class, EntityDataSerializers.INT);
+public class Carnotaurus extends Dinosaur implements DinopediaInformation, CoatTypeEntity {
+    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Carnotaurus.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
 
     public Carnotaurus(EntityType<? extends Carnotaurus> entityType, Level level) {
         super(entityType, level);
@@ -85,7 +86,14 @@ public class Carnotaurus extends Dinosaur implements DinopediaInformation, SubSp
 
     @Override
     public float renderScaleWidth() {
-        return 0.5F + (0.3F * (float) this.getGrowthStage());
+        CoatType coatType = this.getCoatType().value();
+        return coatType.baseScaleWidth() + (coatType.ageScale() * (float) this.getGrowthStage());
+    }
+
+    @Override
+    public float renderScaleHeight() {
+        CoatType coatType = this.getCoatType().value();
+        return coatType.baseScaleHeight() + (coatType.ageScale() * (float) this.getGrowthStage());
     }
 
     @Override
@@ -111,7 +119,7 @@ public class Carnotaurus extends Dinosaur implements DinopediaInformation, SubSp
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(SUB_SPECIES, 0);
+        builder.define(COAT_TYPE, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getAny().orElseThrow());
     }
 
     @Override
@@ -130,39 +138,25 @@ public class Carnotaurus extends Dinosaur implements DinopediaInformation, SubSp
     }
 
     @Override
-    public int getSubSpecies() {
-        return this.entityData.get(SUB_SPECIES);
+    public Holder<CoatType> getCoatType() {
+        return this.entityData.get(COAT_TYPE);
     }
 
     @Override
-    public void setSubSpecies(int subSpecies) {
-        if (subSpecies > 1) {
-            subSpecies = 1;
-        }
-        this.entityData.set(SUB_SPECIES, subSpecies);
-    }
-
-    @Override
-    public ResourceLocation[][] textures() {
-        return new ResourceLocation[][]{{FossilsLegacyUtils.resource("textures/entity/carnotaurus/green_carnotaurus.png")}, {FossilsLegacyUtils.resource("textures/entity/carnotaurus/red_carnotaurus.png")}};
+    public void setCoatType(Holder<CoatType> coatTypeHolder) {
+        this.entityData.set(COAT_TYPE, coatTypeHolder);
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        compoundTag.putInt("SubSpecies", this.getSubSpecies());
+        this.addCoatType(compoundTag);
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        this.setSubSpecies(compoundTag.getInt("SubSpecies"));
-    }
-
-    @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData) {
-        this.setSubSpecies(this.random.nextInt(this.textures().length));
-        return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData);
+        this.readCoatType(compoundTag);
     }
 
     @Override

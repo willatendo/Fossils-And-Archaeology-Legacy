@@ -173,10 +173,12 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
         return FossilsLegacySoundEvents.VELOCIRAPTOR_DEATH.get();
     }
 
+    @Override
     public Holder<CoatType> getCoatType() {
         return this.entityData.get(COAT_TYPE);
     }
 
+    @Override
     public void setCoatType(Holder<CoatType> coatTypeHolder) {
         this.entityData.set(COAT_TYPE, coatTypeHolder);
     }

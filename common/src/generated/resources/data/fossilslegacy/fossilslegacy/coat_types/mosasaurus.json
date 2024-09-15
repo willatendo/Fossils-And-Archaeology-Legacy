@@ -6,12 +6,16 @@
   "bounding_box_height": 0.5,
   "bounding_box_width": 0.5,
   "color": 881478,
-  "model": "fossilslegacy:mosasaurus",
+  "models": {
+    "model": "fossilslegacy:mosasaurus"
+  },
   "name": {
     "translate": "coatType.fossilslegacy.mosasaurus"
   },
   "pattern": {
     "translate": "pattern.fossilslegacy.marine_iguana"
   },
-  "texture": "fossilslegacy:textures/entity/mosasaurus/mosasaurus.png"
+  "textures": {
+    "texture": "fossilslegacy:textures/entity/mosasaurus/mosasaurus.png"
+  }
 }

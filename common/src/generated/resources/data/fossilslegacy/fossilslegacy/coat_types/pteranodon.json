@@ -6,12 +6,18 @@
   "bounding_box_height": 0.5,
   "bounding_box_width": 0.5,
   "color": 8150409,
-  "model": "fossilslegacy:pteranodon",
+  "models": {
+    "flying_model": "fossilslegacy:flying_pteranodon",
+    "landing_model": "fossilslegacy:landing_pteranodon",
+    "model": "fossilslegacy:pteranodon"
+  },
   "name": {
     "translate": "coatType.fossilslegacy.pteranodon"
   },
   "pattern": {
     "translate": "pattern.fossilslegacy.eastern_indigo_snake"
   },
-  "texture": "fossilslegacy:textures/entity/pteranodon/pteranodon.png"
+  "textures": {
+    "texture": "fossilslegacy:textures/entity/pteranodon/pteranodon.png"
+  }
 }

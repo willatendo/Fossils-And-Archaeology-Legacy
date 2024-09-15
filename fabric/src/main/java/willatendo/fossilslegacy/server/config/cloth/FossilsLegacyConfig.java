@@ -12,31 +12,10 @@ import static willatendo.fossilslegacy.server.config.FossilsLegacyBaseConfigSett
 @Config(name = FossilsLegacyUtils.ID)
 @Config.Gui.Background("minecraft:textures/block/dirt.png")
 @Config.Gui.CategoryBackground(category = "common", background = "minecraft:textures/block/stone.png")
-@Config.Gui.CategoryBackground(category = "server", background = "minecraft:textures/block/deepslate.png")
 public class FossilsLegacyConfig extends PartitioningSerializer.GlobalData {
-    @ConfigEntry.Category("client")
-    @ConfigEntry.Gui.TransitiveObject
-    public Client client = new Client();
     @ConfigEntry.Category("common")
     @ConfigEntry.Gui.TransitiveObject
     public Common common = new Common();
-
-    @Config(name = "client")
-    public static final class Client implements ConfigData {
-        @Comment("If true, some dinosaurs will have feathers")
-        private boolean featheredDinosaurs = FEATHERED_DINOSAURUS;
-
-        @Comment("If true, where applicable, legacy models will be used")
-        private boolean legacyModels = LEGACY_MODELS;
-
-        public boolean featheredDinosaurs() {
-            return this.featheredDinosaurs;
-        }
-
-        public boolean legacyModels() {
-            return this.legacyModels;
-        }
-    }
 
     @Config(name = "common")
     public static final class Common implements ConfigData {

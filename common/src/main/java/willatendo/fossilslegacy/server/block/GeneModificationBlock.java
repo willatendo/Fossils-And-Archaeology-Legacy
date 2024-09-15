@@ -7,9 +7,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -28,11 +26,7 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.Nullable;
-import willatendo.fossilslegacy.server.block.entity.ArchaeologyWorkbenchBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.GeneModificationTableBlockEntity;
-import willatendo.fossilslegacy.server.menu.GeneModificationMenu;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class GeneModificationBlock extends Block implements EntityBlock {

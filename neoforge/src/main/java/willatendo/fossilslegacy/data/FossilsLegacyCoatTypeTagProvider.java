@@ -24,6 +24,7 @@ public class FossilsLegacyCoatTypeTagProvider extends DataDrivenTagsProvider<Coa
         this.tag(FossilsLegacyCoatTypeTags.DILOPHOSAURUS).add(FossilsLegacyCoatTypes.DILOPHOSAURUS);
         this.tag(FossilsLegacyCoatTypeTags.DODO).add(FossilsLegacyCoatTypes.DODO);
         this.tag(FossilsLegacyCoatTypeTags.FUTABASAURUS).add(FossilsLegacyCoatTypes.FUTABASAURUS, FossilsLegacyCoatTypes.LEGACY_FUTABASAURUS);
+        this.tag(FossilsLegacyCoatTypeTags.NON_LEGACY_FUTABASAURUS).add(FossilsLegacyCoatTypes.FUTABASAURUS);
         this.tag(FossilsLegacyCoatTypeTags.MAMMOTH).add(FossilsLegacyCoatTypes.MAMMOTH);
         this.tag(FossilsLegacyCoatTypeTags.MOSASAURUS).add(FossilsLegacyCoatTypes.MOSASAURUS);
         this.tag(FossilsLegacyCoatTypeTags.PACHYCEPHALOSAURUS).add(FossilsLegacyCoatTypes.PACHYCEPHALOSAURUS);
@@ -32,7 +33,10 @@ public class FossilsLegacyCoatTypeTagProvider extends DataDrivenTagsProvider<Coa
         this.tag(FossilsLegacyCoatTypeTags.STEGOSAURUS).add(FossilsLegacyCoatTypes.STEGOSAURUS);
         this.tag(FossilsLegacyCoatTypeTags.THERIZINOSAURUS).add(FossilsLegacyCoatTypes.FEATHERED_THERIZINOSAURUS, FossilsLegacyCoatTypes.FEATHERLESS_THERIZINOSAURUS);
         this.tag(FossilsLegacyCoatTypeTags.TRICERATOPS).add(FossilsLegacyCoatTypes.BROWN_TRICERATOPS, FossilsLegacyCoatTypes.GREEN_TRICERATOPS, FossilsLegacyCoatTypes.LEGACY_BROWN_TRICERATOPS, FossilsLegacyCoatTypes.LEGACY_GREEN_TRICERATOPS);
+        this.tag(FossilsLegacyCoatTypeTags.NON_LEGACY_TRICERATOPS).add(FossilsLegacyCoatTypes.BROWN_TRICERATOPS, FossilsLegacyCoatTypes.GREEN_TRICERATOPS);
         this.tag(FossilsLegacyCoatTypeTags.TYRANNOSAURUS).add(FossilsLegacyCoatTypes.TYRANNOSAURUS);
         this.tag(FossilsLegacyCoatTypeTags.VELOCIRAPTOR).add(FossilsLegacyCoatTypes.GREEN_VELOCIRAPTOR, FossilsLegacyCoatTypes.SANDY_VELOCIRAPTOR, FossilsLegacyCoatTypes.WHITE_VELOCIRAPTOR, FossilsLegacyCoatTypes.LEGACY_GREEN_VELOCIRAPTOR, FossilsLegacyCoatTypes.LEGACY_SANDY_VELOCIRAPTOR, FossilsLegacyCoatTypes.LEGACY_WHITE_VELOCIRAPTOR);
+        this.tag(FossilsLegacyCoatTypeTags.LEGACY_VELOCIRAPTOR).add(FossilsLegacyCoatTypes.LEGACY_GREEN_VELOCIRAPTOR, FossilsLegacyCoatTypes.LEGACY_SANDY_VELOCIRAPTOR, FossilsLegacyCoatTypes.LEGACY_WHITE_VELOCIRAPTOR);
+        this.tag(FossilsLegacyCoatTypeTags.NON_LEGACY_VELOCIRAPTOR).add(FossilsLegacyCoatTypes.GREEN_VELOCIRAPTOR, FossilsLegacyCoatTypes.SANDY_VELOCIRAPTOR, FossilsLegacyCoatTypes.WHITE_VELOCIRAPTOR);
     }
 }

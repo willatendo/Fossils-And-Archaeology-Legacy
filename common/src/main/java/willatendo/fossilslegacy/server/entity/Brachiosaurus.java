@@ -3,7 +3,10 @@ package willatendo.fossilslegacy.server.entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
@@ -20,6 +23,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.apache.commons.compress.utils.Lists;
+import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.genetics.CoatType;
 import willatendo.fossilslegacy.server.entity.genetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
@@ -32,7 +36,9 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Brachiosaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur {
+public class Brachiosaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur, CoatTypeEntity {
+    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Brachiosaurus.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
+
     public Brachiosaurus(EntityType<? extends Brachiosaurus> entityType, Level level) {
         super(entityType, level);
     }
@@ -88,7 +94,14 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Rid
 
     @Override
     public float renderScaleWidth() {
-        return 1.5F + (0.3F * (float) this.getGrowthStage());
+        CoatType coatType = this.getCoatType().value();
+        return coatType.baseScaleWidth() + (coatType.ageScale() * (float) this.getGrowthStage());
+    }
+
+    @Override
+    public float renderScaleHeight() {
+        CoatType coatType = this.getCoatType().value();
+        return coatType.baseScaleHeight() + (coatType.ageScale() * (float) this.getGrowthStage());
     }
 
     @Override
@@ -107,6 +120,12 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Rid
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this));
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(COAT_TYPE, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getAny().orElseThrow());
     }
 
     @Override
@@ -205,6 +224,28 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Rid
     @Override
     protected SoundEvent getDeathSound() {
         return FossilsLegacySoundEvents.BRACHIOSAURUS_DEATH.get();
+    }
+
+    @Override
+    public Holder<CoatType> getCoatType() {
+        return this.entityData.get(COAT_TYPE);
+    }
+
+    @Override
+    public void setCoatType(Holder<CoatType> coatTypeHolder) {
+        this.entityData.set(COAT_TYPE, coatTypeHolder);
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag compoundTag) {
+        super.addAdditionalSaveData(compoundTag);
+        this.addCoatType(compoundTag);
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag compoundTag) {
+        super.readAdditionalSaveData(compoundTag);
+        this.readCoatType(compoundTag);
     }
 
     @Override

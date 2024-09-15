@@ -6,12 +6,16 @@
   "bounding_box_height": 0.5,
   "bounding_box_width": 0.5,
   "color": 5921370,
-  "model": "fossilslegacy:dodo",
+  "models": {
+    "model": "fossilslegacy:dodo"
+  },
   "name": {
     "translate": "coatType.fossilslegacy.dodo"
   },
   "pattern": {
     "translate": "pattern.fossilslegacy.domestic_pigeon"
   },
-  "texture": "fossilslegacy:textures/entity/dodo/dodo.png"
+  "textures": {
+    "texture": "fossilslegacy:textures/entity/dodo/dodo.png"
+  }
 }

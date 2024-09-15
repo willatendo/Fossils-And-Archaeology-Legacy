@@ -16,7 +16,7 @@ import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import willatendo.fossilslegacy.server.menu.GeneModificationMenu;
+import willatendo.fossilslegacy.server.menu.GeneModificationTableMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class GeneModificationTableBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, StackedContentsCompatible {
@@ -154,6 +154,6 @@ public class GeneModificationTableBlockEntity extends BaseContainerBlockEntity i
 
     @Override
     protected AbstractContainerMenu createMenu(int windowId, Inventory inventory) {
-        return new GeneModificationMenu(windowId, inventory, this);
+        return new GeneModificationTableMenu(windowId, inventory, this);
     }
 }

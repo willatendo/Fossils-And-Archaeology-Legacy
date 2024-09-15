@@ -1,4 +1,4 @@
-package willatendo.fossilslegacy.server.item;
+package willatendo.fossilslegacy.api.item;
 
 public interface FeederMeatLevel {
 	int feederMeatLevel();

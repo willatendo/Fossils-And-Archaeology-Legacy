@@ -9,16 +9,8 @@ import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Stegosaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class StegosaurusRenderer extends MobRenderer<Dinosaur, StegosaurusModel> {
-    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/stegosaurus/stegosaurus.png");
-    public static final ResourceLocation BABY_TEXTURE = FossilsLegacyUtils.resource("textures/entity/stegosaurus/baby_stegosaurus.png");
-
+public class StegosaurusRenderer extends CoatTypeMobRenderer<Stegosaurus> {
     public StegosaurusRenderer(Context context) {
-        super(context, new StegosaurusModel(context.bakeLayer(FossilsLegacyModelLayers.STEGOSAURUS)), 0.15F);
-    }
-
-    @Override
-    public ResourceLocation getTextureLocation(Dinosaur dinosaur) {
-        return dinosaur.isBaby() ? BABY_TEXTURE : TEXTURE;
+        super(context, 0.15F);
     }
 }

@@ -6,12 +6,19 @@
   "bounding_box_height": 0.5,
   "bounding_box_width": 0.5,
   "color": 9535590,
-  "model": "fossilslegacy:tyrannosaurus",
+  "models": {
+    "knocked_out_model": "fossilslegacy:knocked_out_tyrannosaurus",
+    "model": "fossilslegacy:tyrannosaurus"
+  },
   "name": {
     "translate": "coatType.fossilslegacy.tyrannosaurus"
   },
   "pattern": {
     "translate": "pattern.fossilslegacy.eastern_brown_snake"
   },
-  "texture": "fossilslegacy:textures/entity/tyrannosaurus/tyrannosaurus.png"
+  "textures": {
+    "aggressive_texture": "fossilslegacy:textures/entity/tyrannosaurus/aggressive_tyrannosaurus.png",
+    "knocked_out_texture": "fossilslegacy:textures/entity/tyrannosaurus/weak_tyrannosaurus.png",
+    "texture": "fossilslegacy:textures/entity/tyrannosaurus/tyrannosaurus.png"
+  }
 }

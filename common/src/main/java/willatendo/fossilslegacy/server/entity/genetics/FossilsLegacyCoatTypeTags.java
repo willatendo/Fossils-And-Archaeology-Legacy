@@ -15,6 +15,7 @@ public class FossilsLegacyCoatTypeTags {
     public static final TagKey<CoatType> DILOPHOSAURUS = COAT_TYPE_TAGS.register("dilophosaurus");
     public static final TagKey<CoatType> DODO = COAT_TYPE_TAGS.register("dodo");
     public static final TagKey<CoatType> FUTABASAURUS = COAT_TYPE_TAGS.register("futabasaurus");
+    public static final TagKey<CoatType> NON_LEGACY_FUTABASAURUS = COAT_TYPE_TAGS.register("non_legacy_futabasaurus");
     public static final TagKey<CoatType> MAMMOTH = COAT_TYPE_TAGS.register("mammoth");
     public static final TagKey<CoatType> MOSASAURUS = COAT_TYPE_TAGS.register("mosasaurus");
     public static final TagKey<CoatType> PACHYCEPHALOSAURUS = COAT_TYPE_TAGS.register("pachycephalosaurus");
@@ -23,6 +24,9 @@ public class FossilsLegacyCoatTypeTags {
     public static final TagKey<CoatType> STEGOSAURUS = COAT_TYPE_TAGS.register("stegosaurus");
     public static final TagKey<CoatType> THERIZINOSAURUS = COAT_TYPE_TAGS.register("therizinosaurus");
     public static final TagKey<CoatType> TRICERATOPS = COAT_TYPE_TAGS.register("triceratops");
+    public static final TagKey<CoatType> NON_LEGACY_TRICERATOPS = COAT_TYPE_TAGS.register("non_legacy_triceratops");
     public static final TagKey<CoatType> TYRANNOSAURUS = COAT_TYPE_TAGS.register("tyrannosaurus");
     public static final TagKey<CoatType> VELOCIRAPTOR = COAT_TYPE_TAGS.register("velociraptor");
+    public static final TagKey<CoatType> LEGACY_VELOCIRAPTOR = COAT_TYPE_TAGS.register("legacy_velociraptor");
+    public static final TagKey<CoatType> NON_LEGACY_VELOCIRAPTOR = COAT_TYPE_TAGS.register("non_legacy_velociraptor");
 }

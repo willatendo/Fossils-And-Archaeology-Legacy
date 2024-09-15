@@ -8,7 +8,7 @@ import willatendo.fossilslegacy.server.entity.Velociraptor;
 
 public class VelociraptorRenderer extends CoatTypeMobRenderer<Velociraptor> {
     public VelociraptorRenderer(Context context) {
-        super(context, new VelociraptorModel(context.bakeLayer(FossilsLegacyModelLayers.VELOCIRAPTOR.getFirst())), 0.3F);
+        super(context, 0.3F);
         this.addLayer(new VelociraptorHoldItemInMouthLayer(this, context.getItemInHandRenderer()));
     }
 }

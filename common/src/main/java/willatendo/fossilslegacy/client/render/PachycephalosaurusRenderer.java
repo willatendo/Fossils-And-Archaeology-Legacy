@@ -9,16 +9,8 @@ import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Pachycephalosaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class PachycephalosaurusRenderer extends MobRenderer<Dinosaur, PachycephalosaurusModel> {
-    public static final ResourceLocation BABY_TEXTURE = FossilsLegacyUtils.resource("textures/entity/pachycephalosaurus/baby_pachycephalosaurus.png");
-    public static final ResourceLocation ADULT_TEXTURE = FossilsLegacyUtils.resource("textures/entity/pachycephalosaurus/pachycephalosaurus.png");
-
+public class PachycephalosaurusRenderer extends CoatTypeMobRenderer<Pachycephalosaurus> {
     public PachycephalosaurusRenderer(Context context) {
-        super(context, new PachycephalosaurusModel(context.bakeLayer(FossilsLegacyModelLayers.PACHYCEPHALOSAURUS)), 0.3F);
-    }
-
-    @Override
-    public ResourceLocation getTextureLocation(Dinosaur dinosaur) {
-        return dinosaur.isBaby() ? BABY_TEXTURE : ADULT_TEXTURE;
+        super(context, 0.3F);
     }
 }

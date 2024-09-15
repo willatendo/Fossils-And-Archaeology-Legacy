@@ -6,12 +6,16 @@
   "bounding_box_height": 0.5,
   "bounding_box_width": 0.5,
   "color": 13522205,
-  "model": "fossilslegacy:therizinosaurus",
+  "models": {
+    "model": "fossilslegacy:therizinosaurus"
+  },
   "name": {
     "translate": "coatType.fossilslegacy.feathered_therizinosaurus"
   },
   "pattern": {
     "translate": "pattern.fossilslegacy.green_parakeet"
   },
-  "texture": "fossilslegacy:textures/entity/therizinosaurus/feathered_therizinosaurus.png"
+  "textures": {
+    "texture": "fossilslegacy:textures/entity/therizinosaurus/feathered_therizinosaurus.png"
+  }
 }

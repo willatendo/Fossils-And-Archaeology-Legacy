@@ -1,8 +1,5 @@
 package willatendo.fossilslegacy.client.model.dinosaur.legacy;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
@@ -10,15 +7,15 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
+import willatendo.fossilslegacy.client.model.dinosaur.base.DinosaurModel;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Smilodon;
 
-public class SmilodonModel extends EntityModel<Dinosaur> {
+public class SmilodonModel<T extends Dinosaur> extends DinosaurModel<T> {
     private float r = 1.0F;
     private float g = 1.0F;
     private float b = 1.0F;
 
-    private final ModelPart root;
     private final ModelPart head;
     private final ModelPart rightEar;
     private final ModelPart leftEar;
@@ -38,7 +35,7 @@ public class SmilodonModel extends EntityModel<Dinosaur> {
     private final ModelPart leftBackLeg;
 
     public SmilodonModel(ModelPart root) {
-        this.root = root;
+        super(root);
         this.head = root.getChild("head");
         this.rightEar = root.getChild("right_ear");
         this.leftEar = root.getChild("left_ear");
@@ -133,10 +130,5 @@ public class SmilodonModel extends EntityModel<Dinosaur> {
 
     @Override
     public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-    }
-
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int red, int green, int blue) {
-        this.root.render(poseStack, vertexConsumer, red, green, blue);
     }
 }

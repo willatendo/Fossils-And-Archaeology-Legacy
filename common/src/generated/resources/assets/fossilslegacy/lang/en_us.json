@@ -140,7 +140,6 @@
   "container.fossilslegacy.gene_modification_table.apply_gene.tutorial": "Use '%s' to apply gene.",
   "container.fossilslegacy.gene_modification_table.coat_type.location": "%s/%s",
   "container.fossilslegacy.gene_modification_table.coat_type.none": "N/A",
-  "container.fossilslegacy.gene_modification_table.insert": "Insert DNA",
   "container.fossilslegacy.gene_modification_table.navigate_left.tutorial": "Use '%s' to navigate left.",
   "container.fossilslegacy.gene_modification_table.navigate_right.tutorial": "Use '%s' to navigate right.",
   "container.fossilslegacy.time_machine": "Time Machine",

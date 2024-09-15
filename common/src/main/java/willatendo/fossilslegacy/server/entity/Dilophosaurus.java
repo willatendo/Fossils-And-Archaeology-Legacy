@@ -20,9 +20,11 @@ import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.apache.commons.compress.utils.Lists;
+import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.genetics.CoatType;
 import willatendo.fossilslegacy.server.entity.genetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
+import willatendo.fossilslegacy.server.entity.util.CoatTypeEntity;
 import willatendo.fossilslegacy.server.entity.util.CommandType;
 import willatendo.fossilslegacy.server.entity.util.Diet;
 import willatendo.fossilslegacy.server.entity.util.DinopediaInformation;
@@ -34,7 +36,8 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dilophosaurus extends Dinosaur implements DinopediaInformation, RangedAttackMob {
+public class Dilophosaurus extends Dinosaur implements DinopediaInformation, CoatTypeEntity, RangedAttackMob {
+    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Dilophosaurus.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
     private static final EntityDataAccessor<Boolean> ATTACKING = SynchedEntityData.defineId(Dilophosaurus.class, EntityDataSerializers.BOOLEAN);
 
     public Dilophosaurus(EntityType<? extends Dilophosaurus> entityType, Level level) {
@@ -87,7 +90,14 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
 
     @Override
     public float renderScaleWidth() {
-        return 0.2F + (0.1F * (float) this.getGrowthStage());
+        CoatType coatType = this.getCoatType().value();
+        return coatType.baseScaleWidth() + (coatType.ageScale() * (float) this.getGrowthStage());
+    }
+
+    @Override
+    public float renderScaleHeight() {
+        CoatType coatType = this.getCoatType().value();
+        return coatType.baseScaleHeight() + (coatType.ageScale() * (float) this.getGrowthStage());
     }
 
     @Override
@@ -107,6 +117,13 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
         this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this));
         this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
         this.targetSelector.addGoal(4, new DinoNearestAttackableTargetGoal<>(this, LivingEntity.class, true));
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(COAT_TYPE, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getAny().orElseThrow());
+        builder.define(ATTACKING, false);
     }
 
     @Override
@@ -136,32 +153,36 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
         return FossilsLegacySoundEvents.DILOPHOSAURUS_DEATH.get();
     }
 
-    @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        super.defineSynchedData(builder);
-        builder.define(ATTACKING, false);
-    }
-
-    @Override
-    public void addAdditionalSaveData(CompoundTag compoundTag) {
-        super.addAdditionalSaveData(compoundTag);
-
-        compoundTag.putBoolean("Attacking", this.isAttacking());
-    }
-
-    @Override
-    public void readAdditionalSaveData(CompoundTag compoundTag) {
-        super.readAdditionalSaveData(compoundTag);
-
-        this.setAttacking(compoundTag.getBoolean("Attacking"));
-    }
-
     public boolean isAttacking() {
         return this.entityData.get(ATTACKING);
     }
 
     public void setAttacking(boolean attacking) {
         this.entityData.set(ATTACKING, attacking);
+    }
+
+    @Override
+    public Holder<CoatType> getCoatType() {
+        return this.entityData.get(COAT_TYPE);
+    }
+
+    @Override
+    public void setCoatType(Holder<CoatType> coatTypeHolder) {
+        this.entityData.set(COAT_TYPE, coatTypeHolder);
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag compoundTag) {
+        super.addAdditionalSaveData(compoundTag);
+        this.addCoatType(compoundTag);
+        compoundTag.putBoolean("Attacking", this.isAttacking());
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag compoundTag) {
+        super.readAdditionalSaveData(compoundTag);
+        this.readCoatType(compoundTag);
+        this.setAttacking(compoundTag.getBoolean("Attacking"));
     }
 
     @Override

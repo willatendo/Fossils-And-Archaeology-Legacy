@@ -20,7 +20,6 @@ public class FossilsLegacyForgeMod {
         forgeSimpleRegistryRegister.register(FossilsLegacyForgeMod.ENTITY_DATA_SERIALIZER);
 
         ModLoadingContext modLoadingContext = ModLoadingContext.get();
-        modLoadingContext.registerConfig(ModConfig.Type.CLIENT, FossilsLegacyConfig.CLIENT_SPEC);
         modLoadingContext.registerConfig(ModConfig.Type.COMMON, FossilsLegacyConfig.COMMON_SPEC);
     }
 }

@@ -2,7 +2,10 @@ package willatendo.fossilslegacy.server.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
@@ -26,12 +29,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
 import org.apache.commons.compress.utils.Lists;
+import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.genetics.CoatType;
 import willatendo.fossilslegacy.server.entity.genetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.DinoEatFromFeederGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoTemptGoal;
+import willatendo.fossilslegacy.server.entity.util.CoatTypeEntity;
 import willatendo.fossilslegacy.server.entity.util.CommandType;
 import willatendo.fossilslegacy.server.entity.util.Diet;
 import willatendo.fossilslegacy.server.entity.util.DinopediaInformation;
@@ -41,10 +46,10 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mosasaurus extends Dinosaur implements DinopediaInformation {
+public class Mosasaurus extends Dinosaur implements DinopediaInformation, CoatTypeEntity {
+    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Mosasaurus.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
     public final float idleSinkSpeed = -0.00375F;
     public final float activeSinkSpeed = this.idleSinkSpeed * 5.0F;
-    public final float floatSpeed = this.activeSinkSpeed * -5.0f;
 
     public Mosasaurus(EntityType<? extends Mosasaurus> entityType, Level level) {
         super(entityType, level);
@@ -96,7 +101,14 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation {
 
     @Override
     public float renderScaleWidth() {
-        return 0.5F + (0.5125F * (float) this.getGrowthStage());
+        CoatType coatType = this.getCoatType().value();
+        return coatType.baseScaleWidth() + (coatType.ageScale() * (float) this.getGrowthStage());
+    }
+
+    @Override
+    public float renderScaleHeight() {
+        CoatType coatType = this.getCoatType().value();
+        return coatType.baseScaleHeight() + (coatType.ageScale() * (float) this.getGrowthStage());
     }
 
     @Override
@@ -126,6 +138,12 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(COAT_TYPE, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getAny().orElseThrow());
+    }
+
+    @Override
     public void travel(Vec3 vec3) {
         if (this.isControlledByLocalInstance() && this.isInWater()) {
             this.moveRelative(0.1F, vec3);
@@ -137,7 +155,28 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation {
         } else {
             super.travel(vec3);
         }
+    }
 
+    @Override
+    public Holder<CoatType> getCoatType() {
+        return this.entityData.get(COAT_TYPE);
+    }
+
+    @Override
+    public void setCoatType(Holder<CoatType> coatTypeHolder) {
+        this.entityData.set(COAT_TYPE, coatTypeHolder);
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag compoundTag) {
+        super.addAdditionalSaveData(compoundTag);
+        this.addCoatType(compoundTag);
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag compoundTag) {
+        super.readAdditionalSaveData(compoundTag);
+        this.readCoatType(compoundTag);
     }
 
     @Override

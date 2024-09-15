@@ -27,6 +27,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.apache.commons.compress.utils.Lists;
+import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.genetics.CoatType;
 import willatendo.fossilslegacy.server.entity.genetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
@@ -39,8 +40,8 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Triceratops extends Dinosaur implements DinopediaInformation, RideableDinosaur, SubSpecies {
-    private static final EntityDataAccessor<Integer> SUB_SPECIES = SynchedEntityData.defineId(Triceratops.class, EntityDataSerializers.INT);
+public class Triceratops extends Dinosaur implements DinopediaInformation, RideableDinosaur, CoatTypeEntity {
+    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Triceratops.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
 
     public Triceratops(EntityType<? extends Triceratops> entityType, Level level) {
         super(entityType, level);
@@ -97,7 +98,14 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Ridea
 
     @Override
     public float renderScaleWidth() {
-        return 1.5F + (0.3F * (float) this.getGrowthStage());
+        CoatType coatType = this.getCoatType().value();
+        return coatType.baseScaleWidth() + (coatType.ageScale() * (float) this.getGrowthStage());
+    }
+
+    @Override
+    public float renderScaleHeight() {
+        CoatType coatType = this.getCoatType().value();
+        return coatType.baseScaleHeight() + (coatType.ageScale() * (float) this.getGrowthStage());
     }
 
     @Override
@@ -121,7 +129,7 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Ridea
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(SUB_SPECIES, 0);
+        builder.define(COAT_TYPE, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getAny().orElseThrow());
     }
 
     @Override
@@ -223,44 +231,25 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Ridea
     }
 
     @Override
-    public int getSubSpecies() {
-        return this.entityData.get(SUB_SPECIES);
+    public Holder<CoatType> getCoatType() {
+        return this.entityData.get(COAT_TYPE);
     }
 
     @Override
-    public void setSubSpecies(int subSpecies) {
-        if (subSpecies > 2) {
-            subSpecies = 2;
-        }
-        this.entityData.set(SUB_SPECIES, subSpecies);
-    }
-
-    @Override
-    public ResourceLocation[][] textures() {
-        return new ResourceLocation[][]{{FossilsLegacyUtils.resource("textures/entity/triceratops/green_triceratops.png"), FossilsLegacyUtils.resource("textures/entity/triceratops/green_baby_triceratops.png")}, {FossilsLegacyUtils.resource("textures/entity/triceratops/brown_triceratops.png"), FossilsLegacyUtils.resource("textures/entity/triceratops/brown_baby_triceratops.png")}, {FossilsLegacyUtils.resource("textures/entity/triceratops/alternate_triceratops.png"), FossilsLegacyUtils.resource("textures/entity/triceratops/alternate_baby_triceratops.png")}};
-    }
-
-    @Override
-    public ResourceLocation[][] legacyTextures() {
-        return new ResourceLocation[][]{{FossilsLegacyUtils.resource("textures/entity/triceratops/legacy/green_triceratops.png"), FossilsLegacyUtils.resource("textures/entity/triceratops/legacy/green_baby_triceratops.png")}, {FossilsLegacyUtils.resource("textures/entity/triceratops/legacy/brown_triceratops.png"), FossilsLegacyUtils.resource("textures/entity/triceratops/legacy/brown_baby_triceratops.png")}, {FossilsLegacyUtils.resource("textures/entity/triceratops/legacy/alternate_triceratops.png"), FossilsLegacyUtils.resource("textures/entity/triceratops/legacy/alternate_baby_triceratops.png")}};
+    public void setCoatType(Holder<CoatType> coatTypeHolder) {
+        this.entityData.set(COAT_TYPE, coatTypeHolder);
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        compoundTag.putInt("SubSpecies", this.getSubSpecies());
+        this.addCoatType(compoundTag);
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        this.setSubSpecies(compoundTag.getInt("SubSpecies"));
-    }
-
-    @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData) {
-        this.setSubSpecies(this.random.nextInt(this.textures().length));
-        return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData);
+        this.readCoatType(compoundTag);
     }
 
     @Override

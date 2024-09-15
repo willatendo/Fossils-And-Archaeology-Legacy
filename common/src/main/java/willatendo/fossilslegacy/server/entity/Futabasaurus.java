@@ -29,6 +29,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.apache.commons.compress.utils.Lists;
+import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.genetics.CoatType;
 import willatendo.fossilslegacy.server.entity.genetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
@@ -40,7 +41,8 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Futabasaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur {
+public class Futabasaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur, CoatTypeEntity {
+    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Futabasaurus.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
     private static final EntityDataAccessor<Boolean> SHOULD_SINK = SynchedEntityData.defineId(Futabasaurus.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> DIVE_POSE = SynchedEntityData.defineId(Futabasaurus.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Float> TARGET_Y = SynchedEntityData.defineId(Futabasaurus.class, EntityDataSerializers.FLOAT);
@@ -103,6 +105,18 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
     }
 
     @Override
+    public float renderScaleWidth() {
+        CoatType coatType = this.getCoatType().value();
+        return coatType.baseScaleWidth() + (coatType.ageScale() * (float) this.getGrowthStage());
+    }
+
+    @Override
+    public float renderScaleHeight() {
+        CoatType coatType = this.getCoatType().value();
+        return coatType.baseScaleHeight() + (coatType.ageScale() * (float) this.getGrowthStage());
+    }
+
+    @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
@@ -116,6 +130,15 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this));
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(COAT_TYPE, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getAny().orElseThrow());
+        builder.define(SHOULD_SINK, false);
+        builder.define(DIVE_POSE, false);
+        builder.define(TARGET_Y, 0.0F);
     }
 
     @Override
@@ -219,17 +242,19 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        super.defineSynchedData(builder);
-        builder.define(SHOULD_SINK, false);
-        builder.define(DIVE_POSE, false);
-        builder.define(TARGET_Y, 0.0F);
+    public Holder<CoatType> getCoatType() {
+        return this.entityData.get(COAT_TYPE);
+    }
+
+    @Override
+    public void setCoatType(Holder<CoatType> coatTypeHolder) {
+        this.entityData.set(COAT_TYPE, coatTypeHolder);
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-
+        this.addCoatType(compoundTag);
         compoundTag.putBoolean("ShouldSink", this.shouldSink());
         compoundTag.putBoolean("DivePose", this.shouldSink());
         compoundTag.putFloat("TargetY", this.targetY());
@@ -238,7 +263,7 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-
+        this.readCoatType(compoundTag);
         this.setShouldSink(compoundTag.getBoolean("ShouldSink"));
         this.setTargetY(compoundTag.getFloat("TargetY"));
     }
@@ -332,11 +357,6 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
                 this.setYya(0.0F);
             }
         }
-    }
-
-    @Override
-    public float renderScaleWidth() {
-        return 1.5F + (0.3F * (float) this.getGrowthStage());
     }
 
     private void creatureFloat() {

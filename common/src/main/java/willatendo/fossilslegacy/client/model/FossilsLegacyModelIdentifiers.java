@@ -2,10 +2,14 @@ package willatendo.fossilslegacy.client.model;
 
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.world.entity.Entity;
-import willatendo.fossilslegacy.api.ModelIdentifierRegistry;
+import willatendo.fossilslegacy.api.client.ModelIdentifierRegistry;
 import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
 import willatendo.fossilslegacy.client.model.dinosaur.*;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.*;
+import willatendo.fossilslegacy.client.model.dinosaur.legacy.pteranodon.FlyingPteranodonModel;
+import willatendo.fossilslegacy.client.model.dinosaur.legacy.pteranodon.GroundPteranodonModel;
+import willatendo.fossilslegacy.client.model.dinosaur.legacy.pteranodon.LandingPteranodonModel;
+import willatendo.fossilslegacy.client.model.dinosaur.legacy.tyrannosaurus.KnockedOutTyrannosaurusModel;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.tyrannosaurus.TyrannosaurusModel;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -27,12 +31,16 @@ public class FossilsLegacyModelIdentifiers {
         FossilsLegacyModelIdentifiers.register("mammoth", MammothModel::new, FossilsLegacyModelLayers.MAMMOTH);
         FossilsLegacyModelIdentifiers.register("mosasaurus", MosasaurusModel::new, FossilsLegacyModelLayers.MOSASAURUS);
         FossilsLegacyModelIdentifiers.register("pachycephalosaurus", PachycephalosaurusModel::new, FossilsLegacyModelLayers.PACHYCEPHALOSAURUS);
+        FossilsLegacyModelIdentifiers.register("pteranodon", GroundPteranodonModel::new, FossilsLegacyModelLayers.PTERANODON_GROUND);
+        FossilsLegacyModelIdentifiers.register("flying_pteranodon", FlyingPteranodonModel::new, FossilsLegacyModelLayers.PTERANODON_FLYING);
+        FossilsLegacyModelIdentifiers.register("landing_pteranodon", LandingPteranodonModel::new, FossilsLegacyModelLayers.PTERANODON_LANDING);
         FossilsLegacyModelIdentifiers.register("smilodon", SmilodonModel::new, FossilsLegacyModelLayers.SMILODON);
         FossilsLegacyModelIdentifiers.register("stegosaurus", StegosaurusModel::new, FossilsLegacyModelLayers.STEGOSAURUS);
         FossilsLegacyModelIdentifiers.register("therizinosaurus", TherizinosaurusModel::new, FossilsLegacyModelLayers.THERIZINOSAURUS);
         FossilsLegacyModelIdentifiers.register("triceratops", TriceratopsModel::new, FossilsLegacyModelLayers.TRICERATOPS.getFirst());
         FossilsLegacyModelIdentifiers.register("legacy_triceratops", LegacyTriceratopsModel::new, FossilsLegacyModelLayers.TRICERATOPS.getSecond());
         FossilsLegacyModelIdentifiers.register("tyrannosaurus", TyrannosaurusModel::new, FossilsLegacyModelLayers.TYRANNOSAURUS);
+        FossilsLegacyModelIdentifiers.register("knocked_out_tyrannosaurus", KnockedOutTyrannosaurusModel::new, FossilsLegacyModelLayers.TYRANNOSAURUS_KNOCKED_OUT);
         FossilsLegacyModelIdentifiers.register("velociraptor", VelociraptorModel::new, FossilsLegacyModelLayers.VELOCIRAPTOR.getFirst());
         FossilsLegacyModelIdentifiers.register("legacy_velociraptor", LegacyVelociraptorModel::new, FossilsLegacyModelLayers.VELOCIRAPTOR.getSecond());
     }

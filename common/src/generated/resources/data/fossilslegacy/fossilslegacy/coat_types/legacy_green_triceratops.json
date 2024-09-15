@@ -1,18 +1,22 @@
 {
   "age_scale": 0.3,
-  "baby_texture": "fossilslegacy:textures/entity/triceratops/legacy/green_baby_triceratops.png",
   "base_scale_height": 1.5,
   "base_scale_width": 1.5,
-  "bounding_box_growth": 0.35,
+  "bounding_box_growth": 0.15,
   "bounding_box_height": 0.5,
   "bounding_box_width": 0.5,
   "color": 11988811,
-  "model": "fossilslegacy:legacy_triceratops",
+  "models": {
+    "model": "fossilslegacy:legacy_triceratops"
+  },
   "name": {
     "translate": "coatType.fossilslegacy.legacy_green_triceratops"
   },
   "pattern": {
     "translate": "pattern.fossilslegacy.green_tree_python"
   },
-  "texture": "fossilslegacy:textures/entity/triceratops/legacy/green_triceratops.png"
+  "textures": {
+    "baby_texture": "fossilslegacy:textures/entity/triceratops/legacy/green_baby_triceratops.png",
+    "texture": "fossilslegacy:textures/entity/triceratops/legacy/green_triceratops.png"
+  }
 }

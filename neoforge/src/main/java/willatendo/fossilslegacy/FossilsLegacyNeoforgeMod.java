@@ -20,7 +20,6 @@ public class FossilsLegacyNeoforgeMod {
         FossilsLegacyMod.onInitialize(neoforgeSimpleRegistryRegister);
         neoforgeSimpleRegistryRegister.register(FossilsLegacyNeoforgeMod.ENTITY_DATA_SERIALIZER);
 
-        modContainer.registerConfig(ModConfig.Type.CLIENT, FossilsLegacyConfig.CLIENT_SPEC);
         modContainer.registerConfig(ModConfig.Type.COMMON, FossilsLegacyConfig.COMMON_SPEC);
     }
 }

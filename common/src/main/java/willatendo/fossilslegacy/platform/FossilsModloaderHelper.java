@@ -36,10 +36,6 @@ public interface FossilsModloaderHelper {
     RecipeBookCategories createRecipeBookCategory(String name, ItemStack... icons);
 
     // Config
-    boolean featheredDinosaurs();
-
-    boolean legacyModels();
-
     boolean willAnimalsStarve();
 
     boolean willAnimalsBreakBlocks();

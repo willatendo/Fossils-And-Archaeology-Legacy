@@ -5,14 +5,6 @@ import me.shedaniel.autoconfig.AutoConfig;
 public class FossilsLegacyClothConfigSettings {
     public static final FossilsLegacyConfig CONFIG = AutoConfig.getConfigHolder(FossilsLegacyConfig.class).getConfig();
 
-    public static boolean featheredDinosaurs() {
-        return CONFIG.client.featheredDinosaurs();
-    }
-
-    public static boolean legacyModels() {
-        return CONFIG.client.legacyModels();
-    }
-
     public static boolean willAnimalsStarve() {
         return CONFIG.common.willAnimalsStarve();
     }

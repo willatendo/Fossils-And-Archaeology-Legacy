@@ -11,16 +11,16 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.client.animation.TriceratopsAnimations;
+import willatendo.fossilslegacy.client.model.dinosaur.base.DinosaurModel;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Triceratops;
 
-public class TriceratopsModel extends HierarchicalModel<Dinosaur> {
+public class TriceratopsModel extends DinosaurModel<Dinosaur> {
     private final ModelPart head;
-    private final ModelPart root;
 
     public TriceratopsModel(ModelPart root) {
+        super(root);
         this.head = root.getChild("head");
-        this.root = root;
     }
 
     public static LayerDefinition createBodyLayer() {
@@ -48,15 +48,5 @@ public class TriceratopsModel extends HierarchicalModel<Dinosaur> {
         this.head.xRot = headPitch * 0.017453292F;
 
         this.animateWalk(TriceratopsAnimations.TRICERATOPS_WALK, limbSwing, limbSwingAmount, 2.0F, 2.5F);
-    }
-
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int red, int green, int blue) {
-        this.root.render(poseStack, vertexConsumer, red, green, blue);
-    }
-
-    @Override
-    public ModelPart root() {
-        return this.root;
     }
 }

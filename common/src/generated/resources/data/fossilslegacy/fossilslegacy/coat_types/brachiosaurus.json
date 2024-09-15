@@ -1,18 +1,22 @@
 {
   "age_scale": 0.3,
-  "baby_texture": "fossilslegacy:textures/entity/brachiosaurus/brachiosaurus_baby.png",
   "base_scale_height": 1.5,
   "base_scale_width": 1.5,
   "bounding_box_growth": 0.2,
   "bounding_box_height": 0.5,
   "bounding_box_width": 0.5,
   "color": 3948374,
-  "model": "fossilslegacy:brachiosaurus",
+  "models": {
+    "model": "fossilslegacy:brachiosaurus"
+  },
   "name": {
     "translate": "coatType.fossilslegacy.brachiosaurus"
   },
   "pattern": {
     "translate": "pattern.fossilslegacy.blue_iguana"
   },
-  "texture": "fossilslegacy:textures/entity/brachiosaurus/brachiosaurus_adult.png"
+  "textures": {
+    "baby_texture": "fossilslegacy:textures/entity/brachiosaurus/brachiosaurus_baby.png",
+    "texture": "fossilslegacy:textures/entity/brachiosaurus/brachiosaurus_adult.png"
+  }
 }

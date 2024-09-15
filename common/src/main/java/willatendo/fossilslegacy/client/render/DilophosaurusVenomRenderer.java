@@ -15,7 +15,7 @@ import willatendo.fossilslegacy.server.entity.DilophosaurusVenom;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class DilophosaurusVenomRenderer extends EntityRenderer<DilophosaurusVenom> {
-    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.mc("textures/entity/llama/spit.png");
+    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/dilophosaurus/venom.png");
     private final LlamaSpitModel<DilophosaurusVenom> model;
 
     public DilophosaurusVenomRenderer(Context context) {

@@ -1,18 +1,22 @@
 {
-  "age_scale": 0.3,
-  "baby_texture": "fossilslegacy:textures/entity/triceratops/brown_baby_triceratops.png",
-  "base_scale_height": 1.5,
-  "base_scale_width": 1.5,
-  "bounding_box_growth": 0.35,
+  "age_scale": 0.15,
+  "base_scale_height": 1.0,
+  "base_scale_width": 1.0,
+  "bounding_box_growth": 0.2,
   "bounding_box_height": 0.5,
   "bounding_box_width": 0.5,
   "color": 10848342,
-  "model": "fossilslegacy:triceratops",
+  "models": {
+    "model": "fossilslegacy:triceratops"
+  },
   "name": {
     "translate": "coatType.fossilslegacy.brown_triceratops"
   },
   "pattern": {
     "translate": "pattern.fossilslegacy.eastern_brown_snake"
   },
-  "texture": "fossilslegacy:textures/entity/triceratops/brown_triceratops.png"
+  "textures": {
+    "baby_texture": "fossilslegacy:textures/entity/triceratops/brown_baby_triceratops.png",
+    "texture": "fossilslegacy:textures/entity/triceratops/brown_triceratops.png"
+  }
 }

@@ -1,18 +1,22 @@
 {
   "age_scale": 1.0,
-  "baby_texture": "fossilslegacy:textures/entity/smilodon/baby_smilodon.png",
   "base_scale_height": 1.0,
   "base_scale_width": 1.0,
   "bounding_box_growth": 1.0,
   "bounding_box_height": 0.5,
   "bounding_box_width": 0.5,
   "color": 15705925,
-  "model": "fossilslegacy:smilodon",
+  "models": {
+    "model": "fossilslegacy:smilodon"
+  },
   "name": {
     "translate": "coatType.fossilslegacy.smilodon"
   },
   "pattern": {
     "translate": "pattern.fossilslegacy.tiger"
   },
-  "texture": "fossilslegacy:textures/entity/smilodon/smilodon.png"
+  "textures": {
+    "baby_texture": "fossilslegacy:textures/entity/smilodon/baby_smilodon.png",
+    "texture": "fossilslegacy:textures/entity/smilodon/smilodon.png"
+  }
 }

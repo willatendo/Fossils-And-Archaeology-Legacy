@@ -11,36 +11,20 @@ import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Smilodon;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class SmilodonRenderer extends MobRenderer<Dinosaur, SmilodonModel> {
-    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/smilodon/smilodon.png");
-    public static final ResourceLocation BABY_TEXTURE = FossilsLegacyUtils.resource("textures/entity/smilodon/baby_smilodon.png");
-
+public class SmilodonRenderer extends CoatTypeMobRenderer<Smilodon> {
     public SmilodonRenderer(Context context) {
-        super(context, new SmilodonModel(context.bakeLayer(FossilsLegacyModelLayers.SMILODON)), 0.3F);
+        super(context, 0.3F);
     }
 
     @Override
-    public void render(Dinosaur dinosaur, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
-        Smilodon smilodon = (Smilodon) dinosaur;
+    public void render(Smilodon smilodon, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
         if (smilodon.isWet()) {
             float f = smilodon.getWetShade(packedOverlay);
-            this.model.setColor(f, f, f);
+            if (this.model instanceof SmilodonModel<Smilodon> smilodonModel) {
+                smilodonModel.setColor(f, f, f);
+            }
         }
 
-        super.render(dinosaur, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
-    }
-
-    @Override
-    protected void scale(Dinosaur dinosaur, PoseStack poseStack, float scale) {
-        if (!dinosaur.isBaby()) {
-            poseStack.scale(2.0F, 2.0F, 2.0F);
-        }
-
-        super.scale(dinosaur, poseStack, scale);
-    }
-
-    @Override
-    public ResourceLocation getTextureLocation(Dinosaur dinosaur) {
-        return dinosaur.isBaby() ? BABY_TEXTURE : TEXTURE;
+        super.render(smilodon, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
     }
 }
