@@ -82,9 +82,7 @@ public class FossilsLegacyBlocks {
     }
 
     private static RotatedPillarBlock log(MapColor topMapColor, MapColor sideMapColor) {
-        return new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor((blockState) -> {
-            return blockState.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? topMapColor : sideMapColor;
-        }).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava());
+        return new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(blockState -> blockState.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? topMapColor : sideMapColor).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava());
     }
 
     private static LeavesBlock leaves(SoundType soundType) {

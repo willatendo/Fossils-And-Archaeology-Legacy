@@ -80,12 +80,6 @@ public class ClientEvents {
         });
     }
 
-    /*SubscribeEvent
-    public static void registerGuiLayersEvent(RegisterGuiOverlaysEvent event) {
-
-        event.registerBelow(FossilsLegacyUtils.mc("hotbar"), FossilsLegacyUtils.resource("skull_overlay"), new SkullOverlayScreen());
-    }*/
-
     @SubscribeEvent
     public static void registerKeyMappingsEvent(RegisterKeyMappingsEvent event) {
         FossilsLegacyClient.keyMappingEvent(new ForgeKeyMappingRegister(event));

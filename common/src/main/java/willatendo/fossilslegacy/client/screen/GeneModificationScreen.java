@@ -104,9 +104,15 @@ public class GeneModificationScreen extends AbstractContainerScreen<GeneModifica
                 mob.tickCount = Minecraft.getInstance().player.tickCount;
                 InventoryScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos + 86, this.topPos + 13, this.leftPos + 131, this.topPos + 53, 18, 0.25F, this.xMouse, this.yMouse, mob);
             } else {
+                this.coatTypes = new CoatType[0];
+                this.size = 0;
+
                 guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.insert"), this.leftPos + 8, this.topPos + 74, 0xC9C9C9, false);
                 guiGraphics.drawCenteredString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.coat_type.none", this.selection + 1, this.size), this.leftPos + 53, this.topPos + 48, 0xC9C9C9);
             }
+        } else {
+            this.coatTypes = new CoatType[0];
+            this.size = 0;
         }
         guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.navigate_left.tutorial", FossilsLegacyKeys.NAVIGATE_LEFT.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 2, 0xFFFFFF, false);
         guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.navigate_right.tutorial", FossilsLegacyKeys.NAVIGATE_RIGHT.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 10, 0xFFFFFF, false);

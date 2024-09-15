@@ -12,6 +12,7 @@ import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
+import willatendo.fossilslegacy.server.utils.Platform;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 import java.util.function.Supplier;
@@ -20,6 +21,8 @@ public interface FossilsModloaderHelper {
     FossilsModloaderHelper INSTANCE = SimpleUtils.loadModloaderHelper(FossilsModloaderHelper.class);
 
     // Platform
+    Platform getPlatform();
+
     void sendTimeMachinePacket(BlockPos blockPos);
 
     void sendApplyGenePacket(BlockPos blockPos, String coatType);

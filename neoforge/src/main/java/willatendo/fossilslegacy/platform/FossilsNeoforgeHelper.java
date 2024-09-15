@@ -19,10 +19,16 @@ import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
 import willatendo.fossilslegacy.server.config.FossilsLegacyConfig;
 import willatendo.fossilslegacy.server.item.DeferredDinosaurSpawnEggItem;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.Platform;
 
 import java.util.function.Supplier;
 
 public class FossilsNeoforgeHelper implements FossilsModloaderHelper {
+    @Override
+    public Platform getPlatform() {
+        return Platform.NEOFORGE;
+    }
+
     @Override
     public void sendTimeMachinePacket(BlockPos blockPos) {
         PacketDistributor.sendToServer(new ServerboundTimeMachineUpdatePacket(blockPos));

@@ -6,6 +6,8 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.ArmorItem.Type;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.dimension.FossilsLegacyLevels;

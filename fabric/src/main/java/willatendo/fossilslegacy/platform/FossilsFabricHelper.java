@@ -20,12 +20,18 @@ import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
 import willatendo.fossilslegacy.server.config.FabricConfigHelper;
 import willatendo.fossilslegacy.server.item.DinosaurSpawnEggItem;
+import willatendo.fossilslegacy.server.utils.Platform;
 import willatendo.simplelibrary.client.util.FabricClientUtils;
 import willatendo.simplelibrary.server.util.FabricUtils;
 
 import java.util.function.Supplier;
 
 public class FossilsFabricHelper implements FossilsModloaderHelper {
+    @Override
+    public Platform getPlatform() {
+        return Platform.FABRIC;
+    }
+
     @Override
     public void sendTimeMachinePacket(BlockPos blockPos) {
         FriendlyByteBuf friendlyByteBuf = PacketByteBufs.create();
