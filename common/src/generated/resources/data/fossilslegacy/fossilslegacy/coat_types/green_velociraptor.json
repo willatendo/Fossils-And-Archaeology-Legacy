@@ -11,6 +11,8 @@
   },
   "display_info": {
     "color": 802636,
+    "display_scale": 0.05,
+    "display_y_offset": 0.25,
     "name": {
       "translate": "coatType.fossilslegacy.green_velociraptor"
     },

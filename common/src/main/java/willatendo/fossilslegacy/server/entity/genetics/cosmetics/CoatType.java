@@ -20,8 +20,8 @@ public record CoatType(DisplayInfo displayInfo, Models models, Textures textures
     public static final Codec<Holder<CoatType>> CODEC = RegistryFileCodec.create(FossilsLegacyRegistries.COAT_TYPES, DIRECT_CODEC);
     public static final StreamCodec<RegistryFriendlyByteBuf, Holder<CoatType>> STREAM_CODEC = ByteBufCodecs.holderRegistry(FossilsLegacyRegistries.COAT_TYPES);
 
-    public record DisplayInfo(Component name, Component pattern, int color) {
-        public static final Codec<DisplayInfo> CODEC = RecordCodecBuilder.create(instance -> instance.group(ComponentSerialization.CODEC.fieldOf("name").forGetter(DisplayInfo::name), ComponentSerialization.CODEC.fieldOf("pattern").forGetter(DisplayInfo::pattern), ExtraCodecs.POSITIVE_INT.fieldOf("color").forGetter(DisplayInfo::color)).apply(instance, DisplayInfo::new));
+    public record DisplayInfo(Component name, Component pattern, int color, float displayScale, float displayYOffset) {
+        public static final Codec<DisplayInfo> CODEC = RecordCodecBuilder.create(instance -> instance.group(ComponentSerialization.CODEC.fieldOf("name").forGetter(DisplayInfo::name), ComponentSerialization.CODEC.fieldOf("pattern").forGetter(DisplayInfo::pattern), ExtraCodecs.POSITIVE_INT.fieldOf("color").forGetter(DisplayInfo::color), ExtraCodecs.POSITIVE_FLOAT.fieldOf("display_scale").forGetter(DisplayInfo::displayScale), Codec.FLOAT.fieldOf("display_y_offset").forGetter(DisplayInfo::displayYOffset)).apply(instance, DisplayInfo::new));
     }
 
     public record Models(ResourceLocation model, Optional<ResourceLocation> flyingModel, Optional<ResourceLocation> landingModel, Optional<ResourceLocation> knockedOutModel) {
@@ -40,14 +40,16 @@ public record CoatType(DisplayInfo displayInfo, Models models, Textures textures
         public static final Codec<AgeScaleInfo> CODEC = RecordCodecBuilder.create(instance -> instance.group(ExtraCodecs.POSITIVE_FLOAT.fieldOf("base_scale_width").forGetter(AgeScaleInfo::baseScaleWidth), ExtraCodecs.POSITIVE_FLOAT.fieldOf("base_scale_height").forGetter(AgeScaleInfo::baseScaleHeight), ExtraCodecs.POSITIVE_FLOAT.fieldOf("age_scale").forGetter(AgeScaleInfo::ageScale)).apply(instance, AgeScaleInfo::new));
     }
 
-    public static Builder build(Component name, Component pattern, int color, ResourceLocation model, ResourceLocation texture, float boundingBoxWidth, float boundingBoxHeight, float boundingBoxGrowth, float baseScaleWidth, float baseScaleHeight, float ageScale) {
-        return new Builder(name, pattern, color, model, texture, boundingBoxWidth, boundingBoxHeight, boundingBoxGrowth, baseScaleWidth, baseScaleHeight, ageScale);
+    public static Builder build(Component name, Component pattern, int color, float displayScale, float displayYOffset, ResourceLocation model, ResourceLocation texture, float boundingBoxWidth, float boundingBoxHeight, float boundingBoxGrowth, float baseScaleWidth, float baseScaleHeight, float ageScale) {
+        return new Builder(name, pattern, color, displayScale, displayYOffset, model, texture, boundingBoxWidth, boundingBoxHeight, boundingBoxGrowth, baseScaleWidth, baseScaleHeight, ageScale);
     }
 
     public static class Builder {
         private final Component name;
         private final Component pattern;
         private final int color;
+        private final float displayScale;
+        private final float displayYOffset;
         private final ResourceLocation model;
         private Optional<ResourceLocation> flyingModel = Optional.empty();
         private Optional<ResourceLocation> landingModel = Optional.empty();
@@ -64,10 +66,12 @@ public record CoatType(DisplayInfo displayInfo, Models models, Textures textures
         private final float baseScaleHeight;
         private final float ageScale;
 
-        private Builder(Component name, Component pattern, int color, ResourceLocation model, ResourceLocation texture, float boundingBoxWidth, float boundingBoxHeight, float boundingBoxGrowth, float baseScaleWidth, float baseScaleHeight, float ageScale) {
+        private Builder(Component name, Component pattern, int color, float displayScale, float displayYOffset, ResourceLocation model, ResourceLocation texture, float boundingBoxWidth, float boundingBoxHeight, float boundingBoxGrowth, float baseScaleWidth, float baseScaleHeight, float ageScale) {
             this.name = name;
             this.pattern = pattern;
             this.color = color;
+            this.displayScale = displayScale;
+            this.displayYOffset = displayYOffset;
             this.model = model;
             this.texture = texture;
             this.boundingBoxWidth = boundingBoxWidth;
@@ -111,7 +115,7 @@ public record CoatType(DisplayInfo displayInfo, Models models, Textures textures
         }
 
         public CoatType build() {
-            return new CoatType(new DisplayInfo(this.name, this.pattern, this.color), new Models(this.model, this.flyingModel, this.landingModel, this.knockedOutModel), new Textures(this.texture, this.babyTexture, this.aggressiveTexture, this.aggressiveBabyTexture, this.knockedOutTexture), new BoundingBoxInfo(this.boundingBoxWidth, this.boundingBoxHeight, this.boundingBoxGrowth), new AgeScaleInfo(this.baseScaleWidth, this.baseScaleHeight, this.ageScale));
+            return new CoatType(new DisplayInfo(this.name, this.pattern, this.color, this.displayScale, this.displayYOffset), new Models(this.model, this.flyingModel, this.landingModel, this.knockedOutModel), new Textures(this.texture, this.babyTexture, this.aggressiveTexture, this.aggressiveBabyTexture, this.knockedOutTexture), new BoundingBoxInfo(this.boundingBoxWidth, this.boundingBoxHeight, this.boundingBoxGrowth), new AgeScaleInfo(this.baseScaleWidth, this.baseScaleHeight, this.ageScale));
         }
     }
 }

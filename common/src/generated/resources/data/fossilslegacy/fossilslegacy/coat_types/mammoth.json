@@ -11,6 +11,8 @@
   },
   "display_info": {
     "color": 4007680,
+    "display_scale": 0.5,
+    "display_y_offset": 0.25,
     "name": {
       "translate": "coatType.fossilslegacy.mammoth"
     },

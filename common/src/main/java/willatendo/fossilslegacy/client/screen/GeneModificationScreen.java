@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.client.screen;
 
+import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -7,6 +8,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
@@ -15,11 +17,14 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import org.apache.commons.compress.utils.Lists;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 import willatendo.fossilslegacy.client.FossilsLegacyKeys;
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
@@ -31,6 +36,7 @@ import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
 import willatendo.fossilslegacy.server.menu.GeneModificationTableMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
 
@@ -109,14 +115,18 @@ public class GeneModificationScreen extends AbstractContainerScreen<GeneModifica
 
                 EntityType<? extends Mob> entityType = dnaItem.getEntityType().get();
                 Mob mob = entityType.create(clientLevel);
+                mob.tickCount = Minecraft.getInstance().player.tickCount;
                 if (mob instanceof Dinosaur dinosaur) {
                     dinosaur.setGrowthStage(dinosaur.getMaxGrowthStage());
                 }
                 if (mob instanceof CoatTypeEntity coatTypeEntity && this.coatTypes.length > 0) {
-                    coatTypeEntity.setCoatType(Holder.direct(this.coatTypes[this.selection]));
+                    CoatType coatType = this.coatTypes[this.selection];
+                    coatTypeEntity.setCoatType(Holder.direct(coatType));
+                    CoatType.DisplayInfo displayInfo = coatType.displayInfo();
+                    GeneModificationScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos + 86, this.topPos + 15, this.leftPos + 131, this.topPos + 53, 16, displayInfo.displayScale(), displayInfo.displayYOffset(), this.xMouse, this.yMouse, mob);
+                } else {
+                    GeneModificationScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos + 86, this.topPos + 15, this.leftPos + 131, this.topPos + 53, 16, 1.0F, 5.0F, this.xMouse, this.yMouse, mob);
                 }
-                mob.tickCount = Minecraft.getInstance().player.tickCount;
-                InventoryScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos + 86, this.topPos + 13, this.leftPos + 131, this.topPos + 53, 18, 0.25F, this.xMouse, this.yMouse, mob);
             }
         } else {
             this.coatTypes = new CoatType[0];
@@ -171,5 +181,60 @@ public class GeneModificationScreen extends AbstractContainerScreen<GeneModifica
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         guiGraphics.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, 0xC9C9C9, false);
         guiGraphics.drawString(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, 0x404040, false);
+    }
+
+
+    public static void renderEntityInInventoryFollowsMouse(GuiGraphics guiGraphics, int left, int top, int right, int bottom, int scale, float displayScale, float yOffset, float mouseX, float mouseY, LivingEntity livingEntity) {
+        float x = (left + right) / 2.0F;
+        float y = (top + bottom) / 2.0F;
+        guiGraphics.enableScissor(left, top, right, bottom);
+        float mouseXLook = (float) Math.atan((x - mouseX) / 40.0F);
+        float mouseYLook = (float) Math.atan((y - mouseY) / 40.0F);
+        Quaternionf zRotation = new Quaternionf().rotateZ(3.1415927F);
+        Quaternionf xRotation = new Quaternionf().rotateX(mouseYLook * 20.0F * 0.017453292F);
+        zRotation.mul(xRotation);
+        float yBodyRot = livingEntity.yBodyRot;
+        float yRot = livingEntity.getYRot();
+        float xRot = livingEntity.getXRot();
+        float yHeadRotO = livingEntity.yHeadRotO;
+        float yHeadRot = livingEntity.yHeadRot;
+        livingEntity.yBodyRot = 180.0F + mouseXLook * 20.0F;
+        livingEntity.setYRot(180.0F + mouseXLook * 40.0F);
+        livingEntity.setXRot(-mouseYLook * 20.0F);
+        livingEntity.yHeadRot = livingEntity.getYRot();
+        livingEntity.yHeadRotO = livingEntity.getYRot();
+        float entityScale = livingEntity.getScale();
+        Vector3f vector3f = new Vector3f(0.0F, livingEntity.getBbHeight() / 2.0F + yOffset * entityScale, 0.0F);
+        float normalizedScale = (float) scale / entityScale;
+        renderEntityInInventory(guiGraphics, x, y, normalizedScale, displayScale, vector3f, zRotation, xRotation, livingEntity);
+        livingEntity.yBodyRot = yBodyRot;
+        livingEntity.setYRot(yRot);
+        livingEntity.setXRot(xRot);
+        livingEntity.yHeadRotO = yHeadRotO;
+        livingEntity.yHeadRot = yHeadRot;
+        guiGraphics.disableScissor();
+    }
+
+
+    public static void renderEntityInInventory(GuiGraphics guiGraphics, float x, float y, float scale, float displayScale, Vector3f translate, Quaternionf pose, Quaternionf cameraOrientation, LivingEntity livingEntity) {
+        guiGraphics.pose().pushPose();
+        guiGraphics.pose().translate(x, y, 50.0);
+        guiGraphics.pose().scale(displayScale * scale, displayScale * scale, displayScale * -scale);
+        guiGraphics.pose().translate(translate.x, translate.y, translate.z);
+        guiGraphics.pose().mulPose(pose);
+        Lighting.setupForEntityInInventory();
+        EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
+        if (cameraOrientation != null) {
+            entityRenderDispatcher.overrideCameraOrientation(cameraOrientation.conjugate(new Quaternionf()).rotateY(3.1415927F));
+        }
+
+        entityRenderDispatcher.setRenderShadow(false);
+        RenderSystem.runAsFancy(() -> {
+            entityRenderDispatcher.render(livingEntity, 0.0, 0.0, 0.0, 0.0F, 1.0F, guiGraphics.pose(), guiGraphics.bufferSource(), 15728880);
+        });
+        guiGraphics.flush();
+        entityRenderDispatcher.setRenderShadow(true);
+        guiGraphics.pose().popPose();
+        Lighting.setupFor3DItems();
     }
 }
