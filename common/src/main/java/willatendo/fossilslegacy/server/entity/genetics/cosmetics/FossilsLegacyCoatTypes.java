@@ -3,11 +3,8 @@ package willatendo.fossilslegacy.server.entity.genetics.cosmetics;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-
-import java.util.Optional;
 
 public class FossilsLegacyCoatTypes {
     public static final ResourceKey<CoatType> BRACHIOSAURUS = FossilsLegacyCoatTypes.create("brachiosaurus");

@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.api.client.ModelIdentifierRegistry;
+import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.entity.util.CoatTypeEntity;
@@ -22,6 +23,26 @@ public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends Mo
         this.models = ModelIdentifierRegistry.registerAllModels(context::bakeLayer);
     }
 
+    private boolean hasModel(ResourceLocation id) {
+        return this.models.keySet().contains(id);
+    }
+
+    private void setModel(EntityModel<T> entityModel) {
+        if (this.model != entityModel) {
+            this.model = entityModel;
+        }
+    }
+
+    private EntityModel<T> getModel(ResourceLocation id) {
+        if (this.hasModel(id)) {
+            return this.models.getOrDefault(id, this.models.values().stream().toList().get(0));
+        } else if (JsonModelLoader.isJsonModel(id)) {
+            return JsonModelLoader.getModel(id);
+        } else {
+            return null;
+        }
+    }
+
     @Override
     protected void scale(T dinosaur, PoseStack poseStack, float packedOverlay) {
         poseStack.scale(dinosaur.renderScaleWidth(), dinosaur.renderScaleHeight(), dinosaur.renderScaleWidth());
@@ -34,7 +55,12 @@ public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends Mo
     @Override
     public void render(T dinosaur, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
         CoatType coatType = dinosaur.getCoatType().value();
-        this.model = this.getAdditionalModel(dinosaur, coatType).isPresent() ? this.getAdditionalModel(dinosaur, coatType).get() : (EntityModel<T>) this.models.get(dinosaur.getCoatType().value().models().model());
+        if (this.getAdditionalModel(dinosaur, coatType).isPresent()) {
+            this.setModel(this.getAdditionalModel(dinosaur, coatType).get());
+        } else {
+            this.setModel(this.getModel(coatType.models().model()));
+        }
+
         super.render(dinosaur, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
     }
 

@@ -25,15 +25,15 @@ import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
 import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
 import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
 import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
-import willatendo.simplelibrary.client.event.FabricKeyMappingRegister;
-import willatendo.simplelibrary.client.event.FabricMenuScreenRegister;
-import willatendo.simplelibrary.client.event.FabricModelLayerRegister;
-import willatendo.simplelibrary.client.event.FabricModelRegister;
+import willatendo.simplelibrary.client.event.registry.FabricKeyMappingRegister;
+import willatendo.simplelibrary.client.event.registry.FabricMenuScreenRegister;
+import willatendo.simplelibrary.client.event.registry.FabricModelLayerRegister;
+import willatendo.simplelibrary.client.event.registry.FabricModelRegister;
 import willatendo.simplelibrary.server.util.RecipeBookRegistry;
 
 import java.util.List;
 
-    public class FossilsLegacyFabricClient implements ClientModInitializer {
+public class FossilsLegacyFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.JURASSIC_FERN.get(), RenderType.cutout());
@@ -49,9 +49,7 @@ import java.util.List;
             BlockColors blockColors = Minecraft.getInstance().getBlockColors();
             return blockColors.getColor(blockState, null, null, tintIndex);
         }, FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get());
-        ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, tintIndex) -> {
-            return blockAndTintGetter != null && blockPos != null ? BiomeColors.getAverageFoliageColor(blockAndTintGetter, blockPos) : FoliageColor.getDefaultColor();
-        }, FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get());
+        ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, tintIndex) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getAverageFoliageColor(blockAndTintGetter, blockPos) : FoliageColor.getDefaultColor(), FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get());
 
         FossilsLegacyClient.signSheets();
 

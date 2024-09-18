@@ -9,7 +9,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
-import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;
+import willatendo.fossilslegacy.dual.FossilsLegacyDualEvents;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.inventory.FossilsLegacyRecipeBookTypes;
 import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
@@ -17,10 +17,11 @@ import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
 import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
 import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.client.event.NeoforgeKeyMappingRegister;
-import willatendo.simplelibrary.client.event.NeoforgeMenuScreenRegister;
-import willatendo.simplelibrary.client.event.NeoforgeModelLayerRegister;
-import willatendo.simplelibrary.client.event.NeoforgeModelRegister;
+import willatendo.simplelibrary.client.event.registry.NeoforgeKeyMappingRegister;
+import willatendo.simplelibrary.client.event.registry.NeoforgeMenuScreenRegister;
+import willatendo.simplelibrary.client.event.registry.NeoforgeModelLayerRegister;
+import willatendo.simplelibrary.client.event.registry.NeoforgeModelRegister;
+import willatendo.simplelibrary.server.event.registry.NeoforgeClientReloadListenerRegister;
 
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class ClientEvents {
 
     @SubscribeEvent
     public static void registerClientReloadListenersEvent(RegisterClientReloadListenersEvent event) {
-        event.registerReloadListener(StoneTabletTextureManager.INSTANCE);
+        FossilsLegacyDualEvents.clientReloadListenersEvent(new NeoforgeClientReloadListenerRegister(event));
     }
 
     @SubscribeEvent
@@ -115,8 +116,6 @@ public class ClientEvents {
 
     @SubscribeEvent
     public static void registerColorHandlersEvent_Block(RegisterColorHandlersEvent.Block event) {
-        event.register((blockState, blockAndTintGetter, blockPos, tintIndex) -> {
-            return blockAndTintGetter != null && blockPos != null ? BiomeColors.getAverageFoliageColor(blockAndTintGetter, blockPos) : FoliageColor.getDefaultColor();
-        }, FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get());
+        event.register((blockState, blockAndTintGetter, blockPos, tintIndex) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getAverageFoliageColor(blockAndTintGetter, blockPos) : FoliageColor.getDefaultColor(), FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get());
     }
 }

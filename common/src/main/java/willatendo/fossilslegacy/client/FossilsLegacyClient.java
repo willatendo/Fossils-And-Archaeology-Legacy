@@ -23,10 +23,10 @@ import willatendo.fossilslegacy.server.block.FossilsLegacyWoodTypes;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntityTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenuTypes;
-import willatendo.simplelibrary.client.event.KeyMappingRegister;
-import willatendo.simplelibrary.client.event.MenuScreenRegister;
-import willatendo.simplelibrary.client.event.ModelLayerRegister;
-import willatendo.simplelibrary.client.event.ModelRegister;
+import willatendo.simplelibrary.client.event.registry.KeyMappingRegister;
+import willatendo.simplelibrary.client.event.registry.MenuScreenRegister;
+import willatendo.simplelibrary.client.event.registry.ModelLayerRegister;
+import willatendo.simplelibrary.client.event.registry.ModelRegister;
 
 public class FossilsLegacyClient {
     public static void signSheets() {

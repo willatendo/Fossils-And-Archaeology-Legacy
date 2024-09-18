@@ -9,7 +9,7 @@ import net.minecraftforge.client.event.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;
+import willatendo.fossilslegacy.dual.FossilsLegacyDualEvents;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.inventory.FossilsLegacyRecipeBookTypes;
 import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
@@ -17,10 +17,11 @@ import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
 import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
 import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.client.event.ForgeKeyMappingRegister;
-import willatendo.simplelibrary.client.event.ForgeMenuScreenRegister;
-import willatendo.simplelibrary.client.event.ForgeModelLayerRegister;
-import willatendo.simplelibrary.client.event.ForgeModelRegister;
+import willatendo.simplelibrary.client.event.registry.ForgeKeyMappingRegister;
+import willatendo.simplelibrary.client.event.registry.ForgeMenuScreenRegister;
+import willatendo.simplelibrary.client.event.registry.ForgeModelLayerRegister;
+import willatendo.simplelibrary.client.event.registry.ForgeModelRegister;
+import willatendo.simplelibrary.server.event.registry.ForgeClientReloadListenerRegister;
 
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class ClientEvents {
 
     @SubscribeEvent
     public static void registerClientReloadListenersEvent(RegisterClientReloadListenersEvent event) {
-        event.registerReloadListener(StoneTabletTextureManager.INSTANCE);
+        FossilsLegacyDualEvents.clientReloadListenersEvent(new ForgeClientReloadListenerRegister(event));
     }
 
     @SubscribeEvent
