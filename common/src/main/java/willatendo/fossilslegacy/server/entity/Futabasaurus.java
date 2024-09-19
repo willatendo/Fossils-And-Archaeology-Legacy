@@ -33,7 +33,8 @@ import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
-import willatendo.fossilslegacy.server.entity.util.*;
+import willatendo.fossilslegacy.server.entity.util.DinoUtils;
+import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -316,8 +317,8 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
     }
 
     @Override
-    public CommandType commandItems() {
-        return CommandType.none();
+    public CommandingType commandItems() {
+        return CommandingType.none();
     }
 
     public boolean isOnSurface() {

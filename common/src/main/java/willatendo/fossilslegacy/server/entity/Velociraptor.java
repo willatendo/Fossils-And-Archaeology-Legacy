@@ -30,7 +30,8 @@ import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
-import willatendo.fossilslegacy.server.entity.util.*;
+import willatendo.fossilslegacy.server.entity.util.DinoSituation;
+import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.item.DebugItem;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
@@ -242,8 +243,8 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
     }
 
     @Override
-    public CommandType commandItems() {
-        return CommandType.hand();
+    public CommandingType commandItems() {
+        return CommandingType.hand();
     }
 
     @Override

@@ -30,7 +30,10 @@ import willatendo.fossilslegacy.server.block.FossilsLegacyBlockTags;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
-import willatendo.fossilslegacy.server.entity.util.*;
+import willatendo.fossilslegacy.server.entity.util.BlockBreakRule;
+import willatendo.fossilslegacy.server.entity.util.DinoSituation;
+import willatendo.fossilslegacy.server.entity.util.DinoUtils;
+import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
@@ -381,7 +384,7 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
     }
 
     @Override
-    public CommandType commandItems() {
-        return CommandType.tag(FossilsLegacyItemTags.TYRANNOSAURUS_COMMANDABLES);
+    public CommandingType commandItems() {
+        return CommandingType.tag(FossilsLegacyItemTags.TYRANNOSAURUS_COMMANDABLES);
     }
 }

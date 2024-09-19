@@ -8,9 +8,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import willatendo.fossilslegacy.server.entity.util.HungryAnimal;
-import willatendo.fossilslegacy.server.entity.util.PregnantAnimal;
-import willatendo.fossilslegacy.server.entity.util.TameAccessor;
+import willatendo.fossilslegacy.server.entity.util.interfaces.HungryAnimal;
+import willatendo.fossilslegacy.server.entity.util.interfaces.PregnantAnimal;
+import willatendo.fossilslegacy.server.entity.util.interfaces.TameAccessor;
 import willatendo.fossilslegacy.server.entity.variants.PregnancyType;
 
 public class SyringeItem extends Item {

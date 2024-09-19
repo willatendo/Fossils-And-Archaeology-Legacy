@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
-import willatendo.fossilslegacy.server.utils.DinosaurCommand;
+import willatendo.fossilslegacy.server.entity.util.CommandType;
 
 import java.util.EnumSet;
 
@@ -42,9 +42,9 @@ public class DinoFollowOwnerGoal extends Goal {
             return false;
         } else if (livingEntity.isSpectator()) {
             return false;
-        } else if (this.dinosaur.getCommand() == DinosaurCommand.FREE_MOVE) {
+        } else if (this.dinosaur.getCommand() == CommandType.FREE_MOVE) {
             return false;
-        } else if (this.dinosaur.getCommand() == DinosaurCommand.STAY) {
+        } else if (this.dinosaur.getCommand() == CommandType.STAY) {
             return false;
         } else if (this.dinosaur.distanceToSqr(livingEntity) < (double) (this.startDistance * this.startDistance)) {
             return false;
@@ -58,9 +58,9 @@ public class DinoFollowOwnerGoal extends Goal {
     public boolean canContinueToUse() {
         if (this.navigation.isDone()) {
             return false;
-        } else if (this.dinosaur.getCommand() == DinosaurCommand.FREE_MOVE) {
+        } else if (this.dinosaur.getCommand() == CommandType.FREE_MOVE) {
             return false;
-        } else if (this.dinosaur.getCommand() == DinosaurCommand.STAY) {
+        } else if (this.dinosaur.getCommand() == CommandType.STAY) {
             return false;
         } else {
             return !(this.dinosaur.distanceToSqr(this.owner) <= (double) (this.stopDistance * this.stopDistance));

@@ -10,7 +10,7 @@ import willatendo.fossilslegacy.api.client.ModelIdentifierRegistry;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
-import willatendo.fossilslegacy.server.entity.util.CoatTypeEntity;
+import willatendo.fossilslegacy.server.entity.util.interfaces.CoatTypeEntity;
 
 import java.util.Map;
 import java.util.Optional;

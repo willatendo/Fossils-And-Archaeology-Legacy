@@ -15,8 +15,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityDataSerializers;
-import willatendo.fossilslegacy.server.entity.util.DinopediaInformation;
-import willatendo.fossilslegacy.server.entity.util.PregnantAnimal;
+import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
+import willatendo.fossilslegacy.server.entity.util.interfaces.PregnantAnimal;
 import willatendo.fossilslegacy.server.entity.variants.PregnancyType;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 

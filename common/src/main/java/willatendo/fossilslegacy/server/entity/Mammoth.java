@@ -36,16 +36,14 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.apache.commons.compress.utils.Lists;
+import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.DinoEatFromFeederGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoTemptGoal;
-import willatendo.fossilslegacy.server.entity.util.CommandType;
-import willatendo.fossilslegacy.server.entity.util.Diet;
-import willatendo.fossilslegacy.server.entity.util.DinopediaInformation;
-import willatendo.fossilslegacy.server.entity.util.RideableDinosaur;
+import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -53,7 +51,8 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mammoth extends Dinosaur implements DinopediaInformation, RideableDinosaur, Shearable {
+public class Mammoth extends Dinosaur implements DinopediaInformation, RideableDinosaur, Shearable, CoatTypeEntity {
+    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Mammoth.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
     private static final EntityDataAccessor<Boolean> IS_SHEARED = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.BOOLEAN);
     private int eatAnimationTick;
     private int swingTick;
@@ -93,8 +92,8 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
     }
 
     @Override
-    public CommandType commandItems() {
-        return CommandType.hand();
+    public CommandingType commandItems() {
+        return CommandingType.hand();
     }
 
     @Override
@@ -177,6 +176,7 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
         builder.define(IS_SHEARED, false);
+        builder.define(COAT_TYPE, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getAny().orElseThrow());
     }
 
     @Override
@@ -294,14 +294,27 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
     }
 
     @Override
+    public Holder<CoatType> getCoatType() {
+        return this.entityData.get(COAT_TYPE);
+    }
+
+    @Override
+    public void setCoatType(Holder<CoatType> coatTypeHolder) {
+        this.entityData.set(COAT_TYPE, coatTypeHolder);
+    }
+
+
+    @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
+        this.addCoatType(compoundTag);
         compoundTag.putBoolean("IsSheared", this.isSheared());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
+        this.readCoatType(compoundTag);
         this.setSheared(compoundTag.getBoolean("IsSheared"));
     }
 

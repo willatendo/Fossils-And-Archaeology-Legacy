@@ -9,6 +9,7 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
+import willatendo.fossilslegacy.server.entity.util.CommandType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.item.FossilsLegacyTiers;
@@ -16,7 +17,6 @@ import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
 import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
 import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
 import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
-import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.ArrayList;
@@ -47,11 +47,11 @@ public class FossilsLegacyRecipes {
     public static List<RecipeHolder<CraftingRecipe>> createMagicConchRecipes() {
         List<RecipeHolder<CraftingRecipe>> recipes = new ArrayList<>();
         ItemStack magicConchFollow = new ItemStack(FossilsLegacyItems.MAGIC_CONCH.get());
-        magicConchFollow.set(FossilsLegacyDataComponents.DINOSAUR_COMMAND.get(), DinosaurCommand.FOLLOW);
+        magicConchFollow.set(FossilsLegacyDataComponents.COMMAND_TYPE.get(), CommandType.FOLLOW);
         ItemStack magicConchStay = new ItemStack(FossilsLegacyItems.MAGIC_CONCH.get());
-        magicConchStay.set(FossilsLegacyDataComponents.DINOSAUR_COMMAND.get(), DinosaurCommand.STAY);
+        magicConchStay.set(FossilsLegacyDataComponents.COMMAND_TYPE.get(), CommandType.STAY);
         ItemStack magicConchFreeMove = new ItemStack(FossilsLegacyItems.MAGIC_CONCH.get());
-        magicConchFreeMove.set(FossilsLegacyDataComponents.DINOSAUR_COMMAND.get(), DinosaurCommand.FREE_MOVE);
+        magicConchFreeMove.set(FossilsLegacyDataComponents.COMMAND_TYPE.get(), CommandType.FREE_MOVE);
 
         recipes.add(new RecipeHolder<>(FossilsLegacyUtils.resource("magic_conch_stay"), new ShapelessRecipe("magic_conch", CraftingBookCategory.MISC, magicConchStay, NonNullList.of(Ingredient.EMPTY, Ingredient.of(magicConchFollow)))));
         recipes.add(new RecipeHolder<>(FossilsLegacyUtils.resource("magic_conch_free_move"), new ShapelessRecipe("magic_conch", CraftingBookCategory.MISC, magicConchFreeMove, NonNullList.of(Ingredient.EMPTY, Ingredient.of(magicConchStay)))));

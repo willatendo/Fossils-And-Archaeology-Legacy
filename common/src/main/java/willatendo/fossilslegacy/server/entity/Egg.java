@@ -27,9 +27,9 @@ import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
-import willatendo.fossilslegacy.server.entity.util.CoatTypeEntity;
-import willatendo.fossilslegacy.server.entity.util.DinopediaInformation;
-import willatendo.fossilslegacy.server.entity.util.TicksToBirth;
+import willatendo.fossilslegacy.server.entity.util.interfaces.CoatTypeEntity;
+import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
+import willatendo.fossilslegacy.server.entity.util.interfaces.TicksToBirth;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 

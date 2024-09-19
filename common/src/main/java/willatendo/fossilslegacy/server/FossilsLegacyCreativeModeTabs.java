@@ -13,10 +13,10 @@ import net.minecraft.world.item.component.CustomData;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyStoneTabletVariantTags;
 import willatendo.fossilslegacy.server.entity.StoneTablet;
+import willatendo.fossilslegacy.server.entity.util.CommandType;
 import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.item.MagicConchItem;
-import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
@@ -276,9 +276,9 @@ public class FossilsLegacyCreativeModeTabs {
     }).build());
 
     private static void generateMagicConches(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
-        for (DinosaurCommand dinosaurCommand : DinosaurCommand.values()) {
+        for (CommandType commandType : CommandType.COMMAND_TYPES) {
             ItemStack itemStack = new ItemStack(FossilsLegacyItems.MAGIC_CONCH.get());
-            MagicConchItem.setOrder(itemStack, dinosaurCommand);
+            MagicConchItem.setOrder(itemStack, commandType);
             output.accept(itemStack);
         }
     }

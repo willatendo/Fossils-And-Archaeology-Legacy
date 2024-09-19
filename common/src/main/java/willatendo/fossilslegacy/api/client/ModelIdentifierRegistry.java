@@ -2,12 +2,10 @@ package willatendo.fossilslegacy.api.client;
 
 import com.google.common.collect.Maps;
 import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.Model;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.Map;
 import java.util.function.Function;

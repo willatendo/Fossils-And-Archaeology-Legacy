@@ -36,10 +36,10 @@ import willatendo.fossilslegacy.server.entity.goal.DinoEatFromFeederGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoTemptGoal;
-import willatendo.fossilslegacy.server.entity.util.CoatTypeEntity;
-import willatendo.fossilslegacy.server.entity.util.CommandType;
-import willatendo.fossilslegacy.server.entity.util.Diet;
-import willatendo.fossilslegacy.server.entity.util.DinopediaInformation;
+import willatendo.fossilslegacy.server.entity.util.interfaces.CoatTypeEntity;
+import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
+import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
+import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -200,8 +200,8 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation, CoatTy
     }
 
     @Override
-    public CommandType commandItems() {
-        return CommandType.none();
+    public CommandingType commandItems() {
+        return CommandingType.none();
     }
 
     public static class MosasaurusPathNavigation extends AmphibiousPathNavigation {

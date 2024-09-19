@@ -27,10 +27,11 @@ import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.ConfigHelper;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
-import willatendo.fossilslegacy.server.entity.util.*;
+import willatendo.fossilslegacy.server.entity.util.CommandType;
+import willatendo.fossilslegacy.server.entity.util.DinoSituation;
+import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
-import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.Optional;
@@ -151,7 +152,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
                     if (this.getHunger() < 0) {
                         if (this.isTame()) {
                             this.sendMessageToOwnerOrElseAll(DinoSituation.STARVE_ESCAPE);
-                            this.setCommand(DinosaurCommand.FREE_MOVE);
+                            this.setCommand(CommandType.FREE_MOVE);
                             this.setOwnerUUID(null);
                         }
                         if (this.internalClock % 100 == 0) {
@@ -218,9 +219,9 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
         ItemStack itemStack = player.getItemInHand(interactionHand);
         if (this.isTame() && this.isOwnedBy(player)) {
             if (this.commandItems().canCommand(player, interactionHand)) {
-                DinosaurCommand dinosaurCommand = DinosaurCommand.getNext(this.getCommand());
-                this.setCommand(dinosaurCommand);
-                player.displayClientMessage(FossilsLegacyUtils.translation("command", "command.use", dinosaurCommand.getComponent().getString()), true);
+                CommandType nextCommandType = CommandType.getNext(this.getCommand());
+                this.setCommand(nextCommandType);
+                player.displayClientMessage(FossilsLegacyUtils.translation("command", "command.use", nextCommandType.getComponent().getString()), true);
                 return InteractionResult.SUCCESS;
             }
         }
@@ -294,7 +295,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(COMMAND, DinosaurCommand.FREE_MOVE.getOrder());
+        builder.define(COMMAND, CommandType.FREE_MOVE.name());
         builder.define(GROWTH_STAGE, 0);
         builder.define(DAYS_ALIVE, 0);
         builder.define(HUNGER, this.getMaxHunger());
@@ -364,13 +365,13 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
     }
 
     @Override
-    public DinosaurCommand getCommand() {
-        return DinosaurCommand.getFromString(this.entityData.get(COMMAND));
+    public CommandType getCommand() {
+        return CommandType.get(this.entityData.get(COMMAND));
     }
 
     @Override
-    public void setCommand(DinosaurCommand dinosaurOrder) {
-        this.entityData.set(COMMAND, dinosaurOrder.getOrder());
+    public void setCommand(CommandType dinosaurOrder) {
+        this.entityData.set(COMMAND, dinosaurOrder.name());
     }
 
     @Override
@@ -381,7 +382,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
             compoundTag.putUUID("Owner", this.getOwnerUUID());
         }
 
-        DinosaurCommand.save(compoundTag, this.getCommand());
+        CommandType.save(compoundTag, this.getCommand());
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
         compoundTag.putInt("Hunger", this.getHunger());
         compoundTag.putInt("GrowthStage", this.getGrowthStage());
@@ -411,7 +412,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
             }
         }
 
-        this.setCommand(DinosaurCommand.load(compoundTag));
+        this.setCommand(CommandType.load(compoundTag));
         this.setDaysAlive(compoundTag.getInt("DaysAlive"));
         this.setHunger(compoundTag.getInt("Hunger"));
         this.setGrowthStage(compoundTag.getInt("GrowthStage"));

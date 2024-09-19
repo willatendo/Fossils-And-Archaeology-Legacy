@@ -4,6 +4,7 @@ import com.google.common.base.Function;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
+import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakerType;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public enum DinoSituation implements SpeakerType<Dinosaur> {

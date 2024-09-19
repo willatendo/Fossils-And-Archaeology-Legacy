@@ -23,7 +23,11 @@ import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
-import willatendo.fossilslegacy.server.entity.util.*;
+import willatendo.fossilslegacy.server.entity.util.DinoUtils;
+import willatendo.fossilslegacy.server.entity.util.interfaces.CoatTypeEntity;
+import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
+import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
+import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -167,7 +171,7 @@ public class Compsognathus extends Dinosaur implements DinopediaInformation, Coa
     }
 
     @Override
-    public CommandType commandItems() {
-        return CommandType.tag(FossilsLegacyItemTags.COMPSOGNATHUS_COMMANDABLES);
+    public CommandingType commandItems() {
+        return CommandingType.tag(FossilsLegacyItemTags.COMPSOGNATHUS_COMMANDABLES);
     }
 }

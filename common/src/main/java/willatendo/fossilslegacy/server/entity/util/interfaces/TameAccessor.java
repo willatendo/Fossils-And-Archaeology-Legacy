@@ -1,8 +1,9 @@
-package willatendo.fossilslegacy.server.entity.util;
+package willatendo.fossilslegacy.server.entity.util.interfaces;
 
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
+import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 
 import java.util.UUID;
 

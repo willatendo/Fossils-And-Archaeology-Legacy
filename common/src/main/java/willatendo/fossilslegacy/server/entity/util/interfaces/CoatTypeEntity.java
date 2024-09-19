@@ -1,4 +1,4 @@
-package willatendo.fossilslegacy.server.entity.util;
+package willatendo.fossilslegacy.server.entity.util.interfaces;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;

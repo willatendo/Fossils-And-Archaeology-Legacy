@@ -1,4 +1,4 @@
-package willatendo.fossilslegacy.server.entity.util;
+package willatendo.fossilslegacy.server.entity.util.interfaces;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.animal.Chicken;
@@ -10,6 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
 import willatendo.fossilslegacy.server.entity.Nautilus;
+import willatendo.fossilslegacy.server.entity.util.DinoUtils;
 
 public interface Diet {
     boolean getsFoodFromKill();

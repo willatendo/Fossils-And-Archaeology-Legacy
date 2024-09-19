@@ -6,7 +6,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.core.Holder;
@@ -29,18 +28,18 @@ import willatendo.fossilslegacy.client.FossilsLegacyKeys;
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
+import willatendo.fossilslegacy.server.entity.Pteranodon;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
-import willatendo.fossilslegacy.server.entity.util.CoatTypeEntity;
+import willatendo.fossilslegacy.server.entity.util.interfaces.CoatTypeEntity;
 import willatendo.fossilslegacy.server.item.DNAItem;
 import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
 import willatendo.fossilslegacy.server.menu.GeneModificationTableMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
 
-public class GeneModificationScreen extends AbstractContainerScreen<GeneModificationTableMenu> {
+public class GeneModificationTableScreen extends AbstractContainerScreen<GeneModificationTableMenu> {
     private static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/gui/container/gene_modification_table.png");
     private static final ResourceLocation GENE_SPRITE = FossilsLegacyUtils.resource("container/gene_modification_table/gene");
     private float xMouse;
@@ -50,7 +49,7 @@ public class GeneModificationScreen extends AbstractContainerScreen<GeneModifica
     private int size = 0;
     private boolean hasSet = false;
 
-    public GeneModificationScreen(GeneModificationTableMenu geneModifierMenu, Inventory inventory, Component title) {
+    public GeneModificationTableScreen(GeneModificationTableMenu geneModifierMenu, Inventory inventory, Component title) {
         super(geneModifierMenu, inventory, title);
         this.imageHeight = 187;
         this.inventoryLabelY = 93;
@@ -119,13 +118,16 @@ public class GeneModificationScreen extends AbstractContainerScreen<GeneModifica
                 if (mob instanceof Dinosaur dinosaur) {
                     dinosaur.setGrowthStage(dinosaur.getMaxGrowthStage());
                 }
+                if (mob instanceof Pteranodon pteranodon) {
+                    pteranodon.setOnGround(true);
+                }
                 if (mob instanceof CoatTypeEntity coatTypeEntity && this.coatTypes.length > 0) {
                     CoatType coatType = this.coatTypes[this.selection];
                     coatTypeEntity.setCoatType(Holder.direct(coatType));
                     CoatType.DisplayInfo displayInfo = coatType.displayInfo();
-                    GeneModificationScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos + 86, this.topPos + 15, this.leftPos + 131, this.topPos + 53, 16, displayInfo.displayScale(), displayInfo.displayYOffset(), this.xMouse, this.yMouse, mob);
+                    GeneModificationTableScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos + 86, this.topPos + 15, this.leftPos + 131, this.topPos + 53, 16, displayInfo.displayScale(), displayInfo.displayYOffset(), this.xMouse, this.yMouse, mob);
                 } else {
-                    GeneModificationScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos + 86, this.topPos + 15, this.leftPos + 131, this.topPos + 53, 16, 1.0F, 5.0F, this.xMouse, this.yMouse, mob);
+                    GeneModificationTableScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos + 86, this.topPos + 15, this.leftPos + 131, this.topPos + 53, 16, 1.0F, 0.25F, this.xMouse, this.yMouse, mob);
                 }
             }
         } else {

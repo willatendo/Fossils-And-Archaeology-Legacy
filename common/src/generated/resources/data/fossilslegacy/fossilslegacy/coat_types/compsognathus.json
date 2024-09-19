@@ -5,13 +5,13 @@
     "base_scale_width": 0.25
   },
   "bounding_box_info": {
-    "bounding_box_growth": 1.0,
+    "bounding_box_growth": 0.02,
     "bounding_box_height": 0.5,
     "bounding_box_width": 0.5
   },
   "display_info": {
     "color": 2178336,
-    "display_scale": 1.5,
+    "display_scale": 15.0,
     "display_y_offset": 0.0,
     "name": {
       "translate": "coatType.fossilslegacy.compsognathus"

@@ -5,8 +5,10 @@ import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.model.dinosaur.base.DinosaurModel;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 
+import java.util.Optional;
+
 public class JsonModel extends DinosaurModel<Dinosaur> {
-    private final JsonModelLoader.Animations animations;
+    private final Optional<JsonModelLoader.Animations> animations;
 
     public JsonModel(ResourceLocation id, ModelPart root) {
         super(root);
@@ -17,10 +19,13 @@ public class JsonModel extends DinosaurModel<Dinosaur> {
     public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.root().getAllParts().forEach(ModelPart::resetPose);
 
-        if (this.animations.swimAnimation().isPresent() && dinosaur.isInWaterOrBubble()) {
-            this.animations.swimAnimation().ifPresent(resourceLocation -> this.animateWalk(JsonAnimationLoader.getAnimations().get(resourceLocation), limbSwing, limbSwingAmount, 2.0F, 2.5F));
-        } else {
-            this.animations.walkAnimation().ifPresent(resourceLocation -> this.animateWalk(JsonAnimationLoader.getAnimations().get(resourceLocation), limbSwing, limbSwingAmount, 2.0F, 2.5F));
+        if (this.animations.isPresent()) {
+            JsonModelLoader.Animations animations = this.animations.get();
+            if (animations.swimAnimation().isPresent() && dinosaur.isInWaterOrBubble()) {
+                animations.swimAnimation().ifPresent(resourceLocation -> this.animateWalk(JsonAnimationLoader.getAnimations().get(resourceLocation), limbSwing, limbSwingAmount, 2.0F, 2.5F));
+            } else {
+                animations.walkAnimation().ifPresent(resourceLocation -> this.animateWalk(JsonAnimationLoader.getAnimations().get(resourceLocation), limbSwing, limbSwingAmount, 2.0F, 2.5F));
+            }
         }
     }
 }

@@ -38,8 +38,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
-import willatendo.fossilslegacy.server.entity.util.SpeakerType;
-import willatendo.fossilslegacy.server.entity.util.SpeakingEntity;
+import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakerType;
+import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakingEntity;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;

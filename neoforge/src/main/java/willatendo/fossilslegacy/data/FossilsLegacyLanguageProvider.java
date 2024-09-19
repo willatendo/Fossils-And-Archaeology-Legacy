@@ -7,7 +7,7 @@ import willatendo.fossilslegacy.server.entity.Anu;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.entity.TamedZombifiedPiglin;
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
-import willatendo.fossilslegacy.server.entity.util.SpeakerType;
+import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakerType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.simplelibrary.data.SimpleLanguageProvider;
 

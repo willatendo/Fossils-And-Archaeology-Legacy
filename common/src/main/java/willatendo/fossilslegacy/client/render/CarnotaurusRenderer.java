@@ -5,6 +5,6 @@ import willatendo.fossilslegacy.server.entity.Carnotaurus;
 
 public class CarnotaurusRenderer extends CoatTypeMobRenderer<Carnotaurus> {
     public CarnotaurusRenderer(EntityRendererProvider.Context context) {
-        super(context,  0.15F);
+        super(context, 0.15F);
     }
 }

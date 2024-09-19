@@ -1,4 +1,4 @@
-package willatendo.fossilslegacy.server.entity.util;
+package willatendo.fossilslegacy.server.entity.util.interfaces;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Entity.RemovalReason;

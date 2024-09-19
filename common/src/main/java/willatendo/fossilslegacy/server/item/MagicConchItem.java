@@ -16,7 +16,7 @@ import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import willatendo.fossilslegacy.server.entity.Futabasaurus;
-import willatendo.fossilslegacy.server.utils.DinosaurCommand;
+import willatendo.fossilslegacy.server.entity.util.CommandType;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
@@ -66,11 +66,11 @@ public class MagicConchItem extends Item {
         return UseAnim.TOOT_HORN;
     }
 
-    public static DinosaurCommand getOrder(ItemStack itemStack) {
-        return itemStack.get(FossilsLegacyDataComponents.DINOSAUR_COMMAND.get());
+    public static CommandType getOrder(ItemStack itemStack) {
+        return itemStack.get(FossilsLegacyDataComponents.COMMAND_TYPE.get());
     }
 
-    public static void setOrder(ItemStack itemStack, DinosaurCommand dinosaurCommand) {
-        itemStack.set(FossilsLegacyDataComponents.DINOSAUR_COMMAND.get(), dinosaurCommand);
+    public static void setOrder(ItemStack itemStack, CommandType commandType) {
+        itemStack.set(FossilsLegacyDataComponents.COMMAND_TYPE.get(), commandType);
     }
 }

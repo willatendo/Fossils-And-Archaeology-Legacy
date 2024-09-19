@@ -33,8 +33,9 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
         return MODELS.keySet().stream().map(ModelLayerLocation::getModel).toList().contains(id);
     }
 
-    public static Animations getAnimations(ResourceLocation id) {
-        return ANIMATIONS.get(id);
+    public static Optional<Animations> getAnimations(ResourceLocation id) {
+        Animations animations = ANIMATIONS.get(id);
+        return animations == null ? Optional.empty() : Optional.of(animations);
     }
 
     public static EntityModel getModel(ResourceLocation id) {
@@ -137,8 +138,7 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
         return ResourceLocation.parse(GsonHelper.getAsString(jsonObject, memberName));
     }
 
-    private record Box(float xOrigin, float yOrigin, float zOrigin, float xDimension, float yDimension,
-                       float zDimension) {
+    private record Box(float xOrigin, float yOrigin, float zOrigin, float xDimension, float yDimension, float zDimension) {
     }
 
     public record Animations(Optional<ResourceLocation> walkAnimation, Optional<ResourceLocation> swimAnimation) {

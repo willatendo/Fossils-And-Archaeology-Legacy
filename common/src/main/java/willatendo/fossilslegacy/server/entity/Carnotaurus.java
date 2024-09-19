@@ -22,7 +22,11 @@ import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
-import willatendo.fossilslegacy.server.entity.util.*;
+import willatendo.fossilslegacy.server.entity.util.DinoUtils;
+import willatendo.fossilslegacy.server.entity.util.interfaces.CoatTypeEntity;
+import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
+import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
+import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
@@ -178,7 +182,7 @@ public class Carnotaurus extends Dinosaur implements DinopediaInformation, CoatT
     }
 
     @Override
-    public CommandType commandItems() {
-        return CommandType.tag(FossilsLegacyItemTags.CARNOTAURUS_COMMANDABLES);
+    public CommandingType commandItems() {
+        return CommandingType.tag(FossilsLegacyItemTags.CARNOTAURUS_COMMANDABLES);
     }
 }

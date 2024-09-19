@@ -7,11 +7,11 @@ import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
+import willatendo.fossilslegacy.server.entity.util.CommandType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.item.MagicConchItem;
 import willatendo.fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSerialisers;
-import willatendo.fossilslegacy.server.utils.DinosaurCommand;
 
 public class MagicConchRecipe extends CustomRecipe {
     public MagicConchRecipe(CraftingBookCategory craftingBookCategory) {
@@ -35,16 +35,16 @@ public class MagicConchRecipe extends CustomRecipe {
     @Override
     public ItemStack assemble(CraftingInput craftingInput, HolderLookup.Provider provider) {
         ItemStack itemStack = FossilsLegacyItems.MAGIC_CONCH.get().getDefaultInstance();
-        DinosaurCommand nextOrder = DinosaurCommand.FOLLOW;
+        CommandType nextOrder = CommandType.FOLLOW;
 
         for (int slot = 0; slot < craftingInput.size(); ++slot) {
             ItemStack itemStackInSlot = craftingInput.getItem(slot);
             if (!itemStackInSlot.isEmpty() && itemStackInSlot.getItem() instanceof MagicConchItem) {
-                nextOrder = DinosaurCommand.getNext(MagicConchItem.getOrder(itemStackInSlot));
+                nextOrder = CommandType.getNext(MagicConchItem.getOrder(itemStackInSlot));
             }
         }
 
-        itemStack.set(FossilsLegacyDataComponents.DINOSAUR_COMMAND.get(), nextOrder);
+        itemStack.set(FossilsLegacyDataComponents.COMMAND_TYPE.get(), nextOrder);
 
         return itemStack;
     }

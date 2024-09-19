@@ -27,7 +27,8 @@ import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
-import willatendo.fossilslegacy.server.entity.util.*;
+import willatendo.fossilslegacy.server.entity.util.DinoUtils;
+import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
@@ -272,7 +273,7 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Rid
     }
 
     @Override
-    public CommandType commandItems() {
-        return CommandType.tag(FossilsLegacyItemTags.BRACHIOSAURUS_COMMANDABLES);
+    public CommandingType commandItems() {
+        return CommandingType.tag(FossilsLegacyItemTags.BRACHIOSAURUS_COMMANDABLES);
     }
 }
