@@ -15,7 +15,8 @@ public class TyrannosaurusRenderer extends CoatTypeMobRenderer<Tyrannosaurus> {
 
     @Override
     protected Optional<EntityModel<Tyrannosaurus>> getAdditionalModel(Tyrannosaurus tyrannosaurus, CoatType coatType) {
-        return tyrannosaurus.isKnockedOut() ? Optional.of(this.models.getOrDefault(coatType.models().knockedOutModel().get(), this.models.get(coatType.models().model()))) : Optional.empty();
+        CoatType.Models models = coatType.models();
+        return tyrannosaurus.isKnockedOut() ? this.additionalModel(models.knockedOutModel(), models) : Optional.empty();
     }
 
     @Override

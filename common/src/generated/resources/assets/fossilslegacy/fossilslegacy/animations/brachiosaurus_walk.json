@@ -1,0 +1,139 @@
+{
+  "animations": [
+    {
+      "bone": "left_leg",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 4.0
+        },
+        {
+          "degree_vec": {
+            "x": -17.5,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 5.0
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 6.0
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "right_arm",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 2.0
+        },
+        {
+          "degree_vec": {
+            "x": -17.5,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 3.0
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 4.0
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "right_leg",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 6.0
+        },
+        {
+          "degree_vec": {
+            "x": -17.5,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 7.0
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 8.0
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "left_arm",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": -17.5,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 1.0
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 2.0
+        }
+      ],
+      "target": "rotation"
+    }
+  ],
+  "id": "fossilslegacy:brachiosaurus_walk",
+  "length": 8.0,
+  "looping": true
+}

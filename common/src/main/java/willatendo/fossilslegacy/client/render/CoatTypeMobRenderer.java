@@ -43,6 +43,10 @@ public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends Mo
         }
     }
 
+    protected Optional<EntityModel<T>> additionalModel(Optional<ResourceLocation> additionalModel, CoatType.Models models) {
+        return additionalModel.isPresent() ? Optional.of(this.getModel(additionalModel.get())) : Optional.of(this.getModel(models.model()));
+    }
+
     @Override
     protected void scale(T dinosaur, PoseStack poseStack, float packedOverlay) {
         poseStack.scale(dinosaur.renderScaleWidth(), dinosaur.renderScaleHeight(), dinosaur.renderScaleWidth());

@@ -29,17 +29,14 @@ import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
-import willatendo.fossilslegacy.server.entity.util.interfaces.CoatTypeEntity;
-import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
-import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
-import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
+import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Smilodon extends Dinosaur implements DinopediaInformation, CoatTypeEntity {
+public class Smilodon extends Dinosaur implements DinopediaInformation, CoatTypeEntity, ShakingEntity {
     private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Smilodon.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
     private static final EntityDataAccessor<Boolean> DATA_INTERESTED_ID = SynchedEntityData.defineId(Smilodon.class, EntityDataSerializers.BOOLEAN);
     private boolean isWet;
@@ -221,10 +218,12 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, CoatType
         return Math.min(0.5F + Mth.lerp(time, this.shakeAnimO, this.shakeAnim) / 2.0F * 0.5F, 1.0F);
     }
 
+    @Override
     public float getHeadRollAngle(float f) {
         return Mth.lerp(f, this.interestedAngleO, this.interestedAngle) * 0.15f * (float) Math.PI;
     }
 
+    @Override
     public float getBodyRollAngle(float ageInTicks, float max) {
         float f = (Mth.lerp(ageInTicks, this.shakeAnimO, this.shakeAnim) + max) / 1.8F;
         if (f < 0.0F) {

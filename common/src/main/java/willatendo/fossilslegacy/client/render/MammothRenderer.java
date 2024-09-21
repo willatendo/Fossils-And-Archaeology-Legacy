@@ -8,27 +8,26 @@ import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.MammothModel;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Mammoth;
+import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class MammothRenderer extends MobRenderer<Dinosaur, MammothModel> {
-    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/mammoth/mammoth.png");
-    public static final ResourceLocation SHEARED_TEXTURE = FossilsLegacyUtils.resource("textures/entity/mammoth/sheared_mammoth.png");
-    public static final ResourceLocation BABY_TEXTURE = FossilsLegacyUtils.resource("textures/entity/mammoth/baby_mammoth.png");
+import java.util.Optional;
 
+public class MammothRenderer extends CoatTypeMobRenderer<Mammoth> {
     public MammothRenderer(Context context) {
-        super(context, new MammothModel(context.bakeLayer(FossilsLegacyModelLayers.MAMMOTH)), 0.3F);
+        super(context, 0.3F);
     }
 
     @Override
-    protected void scale(Dinosaur dinosaur, PoseStack poseStack, float f) {
-        if (!dinosaur.isBaby()) {
+    protected void scale(Mammoth mammoth, PoseStack poseStack, float f) {
+        if (!mammoth.isBaby()) {
             poseStack.scale(6.0F, 6.0F, 6.0F);
         }
-        super.scale(dinosaur, poseStack, f);
+        super.scale(mammoth, poseStack, f);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(Dinosaur dinosaur) {
-        return dinosaur.isBaby() ? BABY_TEXTURE : (((Mammoth) dinosaur).isSheared() ? SHEARED_TEXTURE : TEXTURE);
+    protected Optional<ResourceLocation> getAdditionalTexture(Mammoth mammoth, CoatType coatType) {
+        return mammoth.isSheared() ? coatType.textures().shearedTexture() : Optional.empty();
     }
 }

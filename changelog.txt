@@ -1,6 +1,7 @@
 31/9/2024
 - Futabasaurus Now Articulates Entire Neck
 - Brachiosaurus Adult Now Has Double-Sized Texture
+- Tamed Tyrannosaurus No Longer Breaks Blocks
 - Replaced Nether Coin With Ice Age Coin
 - Stone Tablets Are Now Data-Driven
 - (Fabric) Fixed Server Crash
@@ -12,8 +13,10 @@
 - Fixed Dilophosaurus's Venom Being White/Blue
 - Added Updated Triceratops Model
 - Added "Anu Totem" Stone Tablet
-- Added Coat-Types; data-driven cosmetics for dinosaurs
+- Added Coat-Types; Data-Driven Cosmetics For Dinosaurs
 - Added Gene Modification Table
+- Added Data-Driven Models
+- Added Data-Driven Animations
 - Removed Client Config As It Is No Longer Necessary
 12/9/2024
 - (Fabric) Fixed Crash

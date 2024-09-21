@@ -28,8 +28,8 @@ public record CoatType(DisplayInfo displayInfo, Models models, Textures textures
         public static final Codec<Models> CODEC = RecordCodecBuilder.create(instance -> instance.group(ResourceLocation.CODEC.fieldOf("model").forGetter(Models::model), ResourceLocation.CODEC.optionalFieldOf("flying_model").forGetter(Models::flyingModel), ResourceLocation.CODEC.optionalFieldOf("landing_model").forGetter(Models::landingModel), ResourceLocation.CODEC.optionalFieldOf("knocked_out_model").forGetter(Models::knockedOutModel)).apply(instance, Models::new));
     }
 
-    public record Textures(ResourceLocation texture, Optional<ResourceLocation> babyTexture, Optional<ResourceLocation> aggressiveTexture, Optional<ResourceLocation> aggressiveBabyTexture, Optional<ResourceLocation> knockedOutTexture) {
-        public static final Codec<Textures> CODEC = RecordCodecBuilder.create(instance -> instance.group(ResourceLocation.CODEC.fieldOf("texture").forGetter(Textures::texture), ResourceLocation.CODEC.optionalFieldOf("baby_texture").forGetter(Textures::babyTexture), ResourceLocation.CODEC.optionalFieldOf("aggressive_texture").forGetter(Textures::aggressiveTexture), ResourceLocation.CODEC.optionalFieldOf("aggressive_baby_texture").forGetter(Textures::aggressiveBabyTexture), ResourceLocation.CODEC.optionalFieldOf("knocked_out_texture").forGetter(Textures::knockedOutTexture)).apply(instance, Textures::new));
+    public record Textures(ResourceLocation texture, Optional<ResourceLocation> babyTexture, Optional<ResourceLocation> shearedTexture, Optional<ResourceLocation> aggressiveTexture, Optional<ResourceLocation> aggressiveBabyTexture, Optional<ResourceLocation> knockedOutTexture) {
+        public static final Codec<Textures> CODEC = RecordCodecBuilder.create(instance -> instance.group(ResourceLocation.CODEC.fieldOf("texture").forGetter(Textures::texture), ResourceLocation.CODEC.optionalFieldOf("baby_texture").forGetter(Textures::babyTexture), ResourceLocation.CODEC.optionalFieldOf("sheared_texture").forGetter(Textures::shearedTexture), ResourceLocation.CODEC.optionalFieldOf("aggressive_texture").forGetter(Textures::aggressiveTexture), ResourceLocation.CODEC.optionalFieldOf("aggressive_baby_texture").forGetter(Textures::aggressiveBabyTexture), ResourceLocation.CODEC.optionalFieldOf("knocked_out_texture").forGetter(Textures::knockedOutTexture)).apply(instance, Textures::new));
     }
 
     public record BoundingBoxInfo(float boundingBoxWidth, float boundingBoxHeight, float boundingBoxGrowth) {
@@ -56,6 +56,7 @@ public record CoatType(DisplayInfo displayInfo, Models models, Textures textures
         private Optional<ResourceLocation> knockedOutModel = Optional.empty();
         private final ResourceLocation texture;
         private Optional<ResourceLocation> babyTexture = Optional.empty();
+        private Optional<ResourceLocation> shearedTexture = Optional.empty();
         private Optional<ResourceLocation> aggressiveTexture = Optional.empty();
         private Optional<ResourceLocation> aggressiveBabyTexture = Optional.empty();
         private Optional<ResourceLocation> knockedOutTexture = Optional.empty();
@@ -98,6 +99,11 @@ public record CoatType(DisplayInfo displayInfo, Models models, Textures textures
             return this;
         }
 
+        public Builder withShearedTexture(ResourceLocation shearedTexture) {
+            this.shearedTexture = Optional.of(shearedTexture);
+            return this;
+        }
+
         public Builder withAggressiveTexture(ResourceLocation aggressiveTexture) {
             this.aggressiveTexture = Optional.of(aggressiveTexture);
             return this;
@@ -115,7 +121,7 @@ public record CoatType(DisplayInfo displayInfo, Models models, Textures textures
         }
 
         public CoatType build() {
-            return new CoatType(new DisplayInfo(this.name, this.pattern, this.color, this.displayScale, this.displayYOffset), new Models(this.model, this.flyingModel, this.landingModel, this.knockedOutModel), new Textures(this.texture, this.babyTexture, this.aggressiveTexture, this.aggressiveBabyTexture, this.knockedOutTexture), new BoundingBoxInfo(this.boundingBoxWidth, this.boundingBoxHeight, this.boundingBoxGrowth), new AgeScaleInfo(this.baseScaleWidth, this.baseScaleHeight, this.ageScale));
+            return new CoatType(new DisplayInfo(this.name, this.pattern, this.color, this.displayScale, this.displayYOffset), new Models(this.model, this.flyingModel, this.landingModel, this.knockedOutModel), new Textures(this.texture, this.babyTexture, this.shearedTexture, this.aggressiveTexture, this.aggressiveBabyTexture, this.knockedOutTexture), new BoundingBoxInfo(this.boundingBoxWidth, this.boundingBoxHeight, this.boundingBoxGrowth), new AgeScaleInfo(this.baseScaleWidth, this.baseScaleHeight, this.ageScale));
         }
     }
 }

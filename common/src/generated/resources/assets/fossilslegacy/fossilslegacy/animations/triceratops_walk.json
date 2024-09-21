@@ -1,0 +1,175 @@
+{
+  "animations": [
+    {
+      "bone": "right_arm",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": 20.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.5
+        },
+        {
+          "degree_vec": {
+            "x": -20.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 1.5
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 2.0
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "left_leg",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": 10.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.5
+        },
+        {
+          "degree_vec": {
+            "x": -10.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 1.5
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 2.0
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "left_arm",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": -20.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.5
+        },
+        {
+          "degree_vec": {
+            "x": 20.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 1.5
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 2.0
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "right_leg",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": -10.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.5
+        },
+        {
+          "degree_vec": {
+            "x": 10.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 1.5
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 2.0
+        }
+      ],
+      "target": "rotation"
+    }
+  ],
+  "id": "fossilslegacy:triceratops_walk",
+  "length": 2.0,
+  "looping": true
+}

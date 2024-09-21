@@ -118,7 +118,9 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
     public void tick() {
         super.tick();
 
-        this.blockBreakRule.tick();
+        if (this.blockBreakRule.canUse()) {
+            this.blockBreakRule.tick();
+        }
 
         if (!this.isTame() && this.getGrowthStage() > 3) {
             if (this.getHunger() == 1 || this.getHealth() <= 20) {

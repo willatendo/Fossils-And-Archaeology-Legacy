@@ -39,7 +39,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pteranodon extends Dinosaur implements DinopediaInformation, RideableDinosaur, CoatTypeEntity {
+public class Pteranodon extends Dinosaur implements DinopediaInformation, RideableDinosaur, CoatTypeEntity, FlyingDinosaur {
     private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Pteranodon.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
     public float airSpeed = 0.0F;
     public float airAngle = 0.0F;
@@ -53,6 +53,21 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 
     public static AttributeSupplier pteranodonAttributes() {
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 3.0D).build();
+    }
+
+    @Override
+    public float getAirPitch() {
+        return this.airPitch;
+    }
+
+    @Override
+    public float getAirAngle() {
+        return this.airAngle;
+    }
+
+    @Override
+    public boolean shouldFly() {
+        return !this.onGround() && !this.isInWaterOrBubble() && this.level().getBlockState(this.blockPosition()).isAir();
     }
 
     @Override
@@ -125,10 +140,6 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
     public void aiStep() {
         this.handleRiding();
         super.aiStep();
-    }
-
-    public boolean shouldFly() {
-        return !this.onGround() && !this.isInWaterOrBubble() && this.level().getBlockState(this.blockPosition()).isAir();
     }
 
     @Override

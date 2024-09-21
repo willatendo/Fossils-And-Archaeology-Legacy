@@ -1,4 +1,4 @@
-// 1.21	2024-09-18T16:52:36.5358307	Registries
+// 1.21	2024-09-20T16:21:50.1672323	Registries
 532001524c06f9b4a4565f8b548bb4a8de84ba73 data/fossilslegacy/damage_type/animal_starve.json
 272b73d0ec6656b7beba50d287714cb055cc1dce data/fossilslegacy/damage_type/dilophosaurus_envenomation.json
 4ae015db008fd712ad0ea6d05b72ca0170963bf0 data/fossilslegacy/damage_type/javelin.json
@@ -23,7 +23,7 @@ a09bef3fbc5c21e2b872e37ebe4a91a527fec543 data/fossilslegacy/fossilslegacy/coat_t
 77792d700ffbed78ef0df56a169a2aaf96d73a79 data/fossilslegacy/fossilslegacy/coat_types/legacy_mammoth.json
 86c1a25d692aa53051c7b57b6c1d807be44e2e29 data/fossilslegacy/fossilslegacy/coat_types/legacy_sandy_velociraptor.json
 2b13b4adc07ab1a05938ed3cdf4ca171844e377c data/fossilslegacy/fossilslegacy/coat_types/legacy_white_velociraptor.json
-d9ef3e33886b8b435534777925ce8de0859a1b3d data/fossilslegacy/fossilslegacy/coat_types/mammoth.json
+dfdeea137ffccda2bddcb1a78a09630191055fd3 data/fossilslegacy/fossilslegacy/coat_types/mammoth.json
 b2e574d9b3034743ef522ea20f65770b598b5c52 data/fossilslegacy/fossilslegacy/coat_types/mosasaurus.json
 ac6cb9a6b98205dd1598f34b13ff6295d8de7c7e data/fossilslegacy/fossilslegacy/coat_types/pachycephalosaurus.json
 b6c510d381826964ff6516ee591d9447a1c55d51 data/fossilslegacy/fossilslegacy/coat_types/pteranodon.json

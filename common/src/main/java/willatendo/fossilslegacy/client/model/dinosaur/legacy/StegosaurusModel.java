@@ -93,8 +93,8 @@ public class StegosaurusModel extends EntityModel<Dinosaur> {
         this.rightBackFoot.xRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * -0.174532925199433F * limbSwingAmount + 1.22173047639603F;
         this.rightBackFoot.yRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.174532925199433F * limbSwingAmount + 0F;
         this.backPlates1.yRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.488692190558412F * limbSwingAmount + 0F;
-        //this.backPlates2.yRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.349065850398866F * limbSwingAmount + 0F;
-        // this.backPlates2.zRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.174532925199433F * limbSwingAmount + 0F;
+        this.backPlates2.yRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.349065850398866F * limbSwingAmount + 0F;
+        this.backPlates2.zRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.174532925199433F * limbSwingAmount + 0F;
         this.thagomizer.zRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.174532925199433F * limbSwingAmount + 0F;
         this.backPlates3.zRot = Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.174532925199433F * limbSwingAmount + 0F;
     }

@@ -12,8 +12,6 @@ import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 
 public class TyrannosaurusModel extends AbstractTyrannosaurusModel {
-    final float SwingAngle = 0.174533F;
-
     private final ModelPart root;
     private final ModelPart head;
     private final ModelPart snout;

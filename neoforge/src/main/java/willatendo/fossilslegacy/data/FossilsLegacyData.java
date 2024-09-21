@@ -39,6 +39,8 @@ public class FossilsLegacyData {
         dataGenerator.addProvider(gatherDataEvent.includeClient(), new FossilsLegacyBlockStateProvider(packOutput, FossilsLegacyUtils.ID, existingFileHelper));
         dataGenerator.addProvider(gatherDataEvent.includeClient(), new FossilsLegacySoundDefinitionsProvider(packOutput, FossilsLegacyUtils.ID, existingFileHelper));
         dataGenerator.addProvider(gatherDataEvent.includeClient(), new FossilsLegacyLanguageProvider(packOutput, FossilsLegacyUtils.ID, "en_us"));
+        dataGenerator.addProvider(gatherDataEvent.includeClient(), new FossilsLegacyEntityModelProvider(packOutput, FossilsLegacyUtils.ID));
+        dataGenerator.addProvider(gatherDataEvent.includeClient(), new FossilsLegacyAnimationProvider(packOutput, FossilsLegacyUtils.ID));
 
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyRecipeProvider(packOutput, registries, FossilsLegacyUtils.ID));
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new AdvancementProvider(packOutput, registries, existingFileHelper, List.of(new FossilsLegacyAdvancementGenerator())));
@@ -62,8 +64,7 @@ public class FossilsLegacyData {
         legacyPackGenerator.addProvider(legacyPackOutput -> new PackMetadataGenerator(legacyPackOutput).add(PackMetadataSection.TYPE, new PackMetadataSection(FossilsLegacyUtils.translation("resourcePack", "fa_legacy_textures.description"), DetectedVersion.BUILT_IN.getPackVersion(PackType.CLIENT_RESOURCES), Optional.empty())));
     }
 
-    private record PackGenerator(DataGenerator dataGenerator, boolean toRun, String providerPrefix,
-                                 PackOutput packOutput) {
+    private record PackGenerator(DataGenerator dataGenerator, boolean toRun, String providerPrefix, PackOutput packOutput) {
         public <T extends DataProvider> T addProvider(DataProvider.Factory<T> factory) {
             T dataProvider = factory.create(this.packOutput);
             String name = this.providerPrefix + "/" + dataProvider.getName();

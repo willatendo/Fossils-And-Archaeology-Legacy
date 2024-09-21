@@ -1,6 +1,6 @@
 {
   "age_scale_info": {
-    "age_scale": 2.0,
+    "age_scale": 6.0,
     "base_scale_height": 1.0,
     "base_scale_width": 1.0
   },
@@ -25,6 +25,7 @@
   },
   "textures": {
     "baby_texture": "fossilslegacy:textures/entity/mammoth/baby_mammoth.png",
+    "sheared_texture": "fossilslegacy:textures/entity/mammoth/sheared_mammoth.png",
     "texture": "fossilslegacy:textures/entity/mammoth/mammoth.png"
   }
 }

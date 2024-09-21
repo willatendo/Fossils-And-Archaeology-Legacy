@@ -1,0 +1,175 @@
+{
+  "animations": [
+    {
+      "bone": "left_leg",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": -25.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.5
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 25.0
+          },
+          "interpolation": "linear",
+          "timestamp": 2.0
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 2.5
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "right_arm",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 25.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.5
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": -25.0
+          },
+          "interpolation": "linear",
+          "timestamp": 2.0
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 2.5
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "right_leg",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": -25.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.5
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 25.0
+          },
+          "interpolation": "linear",
+          "timestamp": 2.0
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 2.5
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "left_arm",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 25.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.5
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": -25.0
+          },
+          "interpolation": "linear",
+          "timestamp": 2.0
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 2.5
+        }
+      ],
+      "target": "rotation"
+    }
+  ],
+  "id": "fossilslegacy:futabasaurus_swim",
+  "length": 2.5,
+  "looping": true
+}

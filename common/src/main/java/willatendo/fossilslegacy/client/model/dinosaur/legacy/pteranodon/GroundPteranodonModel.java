@@ -52,15 +52,13 @@ public class GroundPteranodonModel extends AbstractPteranodonModel {
         return LayerDefinition.create(meshDefinition, 64, 32);
     }
 
-    @Override
-    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    @Override public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.crown.yRot = this.upperMouth.yRot = this.lowerMouth.yRot = this.head.yRot = -netHeadYaw / 57.29578F;
         this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount - 0.271F;
         this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount - 0.271F;
     }
 
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int red, int green, int blue) {
+    @Override public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int red, int green, int blue) {
         this.root.render(poseStack, vertexConsumer, red, green, blue);
     }
 }

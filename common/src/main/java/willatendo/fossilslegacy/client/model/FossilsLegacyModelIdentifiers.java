@@ -19,7 +19,7 @@ public class FossilsLegacyModelIdentifiers {
     }
 
     public static void init() {
-        FossilsLegacyModelIdentifiers.register("brachiosaurus", BrachiosaurusModel::new, FossilsLegacyModelLayers.BRACHIOSAURUS.getFirst());
+        /*FossilsLegacyModelIdentifiers.register("brachiosaurus", BrachiosaurusModel::new, FossilsLegacyModelLayers.BRACHIOSAURUS.getFirst());
         FossilsLegacyModelIdentifiers.register("legacy_brachiosaurus", LegacyBrachiosaurusModel::new, FossilsLegacyModelLayers.BRACHIOSAURUS.getSecond());
         FossilsLegacyModelIdentifiers.register("carnotaurus", CarnotaurusModel::new, FossilsLegacyModelLayers.CARNOTAURUS);
         FossilsLegacyModelIdentifiers.register("compsognathus", CompsognathusModel::new, FossilsLegacyModelLayers.COMPSOGNATHUS);
@@ -42,6 +42,6 @@ public class FossilsLegacyModelIdentifiers {
         FossilsLegacyModelIdentifiers.register("tyrannosaurus", TyrannosaurusModel::new, FossilsLegacyModelLayers.TYRANNOSAURUS);
         FossilsLegacyModelIdentifiers.register("knocked_out_tyrannosaurus", KnockedOutTyrannosaurusModel::new, FossilsLegacyModelLayers.TYRANNOSAURUS_KNOCKED_OUT);
         FossilsLegacyModelIdentifiers.register("velociraptor", VelociraptorModel::new, FossilsLegacyModelLayers.VELOCIRAPTOR.getFirst());
-        FossilsLegacyModelIdentifiers.register("legacy_velociraptor", LegacyVelociraptorModel::new, FossilsLegacyModelLayers.VELOCIRAPTOR.getSecond());
+        FossilsLegacyModelIdentifiers.register("legacy_velociraptor", LegacyVelociraptorModel::new, FossilsLegacyModelLayers.VELOCIRAPTOR.getSecond());*/
     }
 }

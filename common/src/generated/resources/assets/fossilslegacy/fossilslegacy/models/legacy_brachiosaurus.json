@@ -1,0 +1,546 @@
+{
+  "animations": {
+    "walk": "fossilslegacy:legacy_brachiosaurus_walk"
+  },
+  "elements": [
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 50,
+          "texture_y_offset": 21,
+          "x_dimension": 3.0,
+          "x_origin": 0.0,
+          "y_dimension": 7.0,
+          "y_origin": 0.0,
+          "z_dimension": 4.0,
+          "z_origin": -2.0
+        }
+      ],
+      "id": "front_right_thigh",
+      "poses": {
+        "x": 3.0,
+        "y": 12.0,
+        "z": -3.5
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 18,
+          "texture_y_offset": 13,
+          "x_dimension": 4.0,
+          "x_origin": -2.0,
+          "y_dimension": 3.0,
+          "y_origin": 0.0,
+          "z_dimension": 4.0,
+          "z_origin": 0.0
+        }
+      ],
+      "id": "tail_mid",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -0.5576873,
+        "y": 14.0,
+        "z": 8.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 0,
+          "x_dimension": 8.0,
+          "x_origin": -4.0,
+          "y_dimension": 7.0,
+          "y_origin": 0.0,
+          "z_dimension": 6.0,
+          "z_origin": 0.0
+        }
+      ],
+      "id": "body",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -0.1115358,
+        "y": 8.0,
+        "z": -3.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 48,
+          "texture_y_offset": 14,
+          "x_dimension": 4.0,
+          "x_origin": -2.0,
+          "y_dimension": 3.0,
+          "y_origin": -1.0,
+          "z_dimension": 4.0,
+          "z_origin": -4.0
+        }
+      ],
+      "id": "head",
+      "poses": {
+        "x": 0.0,
+        "y": -6.0,
+        "z": -10.5
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 13,
+          "x_dimension": 5.0,
+          "x_origin": -2.5,
+          "y_dimension": 4.0,
+          "y_origin": 0.0,
+          "z_dimension": 4.0,
+          "z_origin": 0.0
+        }
+      ],
+      "id": "tail_base",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -0.7064018,
+        "y": 11.0,
+        "z": 6.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 50,
+          "texture_y_offset": 8,
+          "x_dimension": 3.0,
+          "x_origin": -1.5,
+          "y_dimension": 2.0,
+          "y_origin": -1.0,
+          "z_dimension": 4.0,
+          "z_origin": -6.5
+        }
+      ],
+      "id": "snout",
+      "poses": {
+        "x": 0.0,
+        "x_rot": 0.2617994,
+        "y": -6.0,
+        "z": -11.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 24,
+          "x_dimension": 2.0,
+          "x_origin": 0.5,
+          "y_dimension": 5.0,
+          "y_origin": 7.0,
+          "z_dimension": 3.0,
+          "z_origin": -2.0
+        }
+      ],
+      "id": "front_right_calf",
+      "poses": {
+        "x": 3.0,
+        "y": 12.0,
+        "z": -3.5
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 24,
+          "x_dimension": 2.0,
+          "x_origin": -1.5,
+          "y_dimension": 5.0,
+          "y_origin": 5.0,
+          "z_dimension": 3.0,
+          "z_origin": -1.0
+        }
+      ],
+      "id": "back_left_calf",
+      "poses": {
+        "x": -3.0,
+        "y": 14.0,
+        "z": 4.5
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 52,
+          "texture_y_offset": 0,
+          "x_dimension": 2.0,
+          "x_origin": -1.0,
+          "y_dimension": 4.0,
+          "y_origin": -3.0,
+          "z_dimension": 4.0,
+          "z_origin": -5.0
+        }
+      ],
+      "id": "crest",
+      "poses": {
+        "x": 0.0,
+        "y": -6.0,
+        "z": -11.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 22,
+          "texture_y_offset": 0,
+          "x_dimension": 3.0,
+          "x_origin": -1.5,
+          "y_dimension": 2.0,
+          "y_origin": 0.0,
+          "z_dimension": 2.0,
+          "z_origin": 0.0
+        }
+      ],
+      "id": "neck_2",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -0.9599311,
+        "y": -4.5,
+        "z": -9.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 22,
+          "texture_y_offset": 0,
+          "x_dimension": 3.0,
+          "x_origin": -1.5,
+          "y_dimension": 2.0,
+          "y_origin": 0.0,
+          "z_dimension": 2.0,
+          "z_origin": 0.0
+        }
+      ],
+      "id": "neck_3",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -1.23464,
+        "y": -3.0,
+        "z": -8.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 22,
+          "texture_y_offset": 0,
+          "x_dimension": 3.0,
+          "x_origin": -1.5,
+          "y_dimension": 2.0,
+          "y_origin": 0.0,
+          "z_dimension": 2.0,
+          "z_origin": 0.0
+        }
+      ],
+      "id": "neck_1",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -0.7853982,
+        "y": -6.0,
+        "z": -10.5
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 22,
+          "texture_y_offset": 0,
+          "x_dimension": 3.0,
+          "x_origin": -1.5,
+          "y_dimension": 2.0,
+          "y_origin": 0.0,
+          "z_dimension": 2.0,
+          "z_origin": 4.0
+        }
+      ],
+      "id": "neck_6",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -1.343904,
+        "y": -1.5,
+        "z": -7.5
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 22,
+          "texture_y_offset": 0,
+          "x_dimension": 3.0,
+          "x_origin": -1.5,
+          "y_dimension": 2.0,
+          "y_origin": 0.0,
+          "z_dimension": 2.0,
+          "z_origin": 6.0
+        }
+      ],
+      "id": "neck_7",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -1.343904,
+        "y": -1.5,
+        "z": -7.5
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 22,
+          "texture_y_offset": 0,
+          "x_dimension": 3.0,
+          "x_origin": -1.5,
+          "y_dimension": 2.0,
+          "y_origin": 0.0,
+          "z_dimension": 2.0,
+          "z_origin": 0.0
+        }
+      ],
+      "id": "neck_4",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -1.343904,
+        "y": -1.5,
+        "z": -7.5
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 22,
+          "texture_y_offset": 0,
+          "x_dimension": 3.0,
+          "x_origin": -1.5,
+          "y_dimension": 2.0,
+          "y_origin": 0.0,
+          "z_dimension": 2.0,
+          "z_origin": 2.0
+        }
+      ],
+      "id": "neck_5",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -1.343904,
+        "y": -1.5,
+        "z": -7.5
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 24,
+          "x_dimension": 2.0,
+          "x_origin": -0.5,
+          "y_dimension": 5.0,
+          "y_origin": 5.0,
+          "z_dimension": 3.0,
+          "z_origin": -1.0
+        }
+      ],
+      "id": "back_right_calf",
+      "poses": {
+        "x": 3.0,
+        "y": 14.0,
+        "z": 4.5
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 32,
+          "texture_y_offset": 24,
+          "x_dimension": 5.0,
+          "x_origin": -2.5,
+          "y_dimension": 4.0,
+          "y_origin": -0.5,
+          "z_dimension": 4.0,
+          "z_origin": -0.5
+        }
+      ],
+      "id": "lower_neck_1",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -0.8377581,
+        "y": 7.0,
+        "z": -5.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 34,
+          "texture_y_offset": 11,
+          "x_dimension": 4.0,
+          "x_origin": -2.0,
+          "y_dimension": 3.0,
+          "y_origin": -1.0,
+          "z_dimension": 3.0,
+          "z_origin": -0.5
+        }
+      ],
+      "id": "neck_8",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -0.9637522,
+        "y": 6.0,
+        "z": -6.5
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 50,
+          "texture_y_offset": 21,
+          "x_dimension": 3.0,
+          "x_origin": -3.0,
+          "y_dimension": 7.0,
+          "y_origin": 0.0,
+          "z_dimension": 4.0,
+          "z_origin": -2.0
+        }
+      ],
+      "id": "front_left_thigh",
+      "poses": {
+        "x": -3.0,
+        "y": 12.0,
+        "z": -3.5
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 50,
+          "texture_y_offset": 21,
+          "x_dimension": 3.0,
+          "x_origin": -1.0,
+          "y_dimension": 5.0,
+          "y_origin": 0.0,
+          "z_dimension": 4.0,
+          "z_origin": -2.0
+        }
+      ],
+      "id": "back_right_thigh",
+      "poses": {
+        "x": 3.0,
+        "y": 14.0,
+        "z": 4.5
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 10,
+          "texture_y_offset": 21,
+          "x_dimension": 6.0,
+          "x_origin": -3.0,
+          "y_dimension": 6.0,
+          "y_origin": 0.0,
+          "z_dimension": 5.0,
+          "z_origin": 0.0
+        }
+      ],
+      "id": "lower_neck_2",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -0.3907885,
+        "y": 7.0,
+        "z": -5.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 24,
+          "x_dimension": 2.0,
+          "x_origin": -2.5,
+          "y_dimension": 5.0,
+          "y_origin": 7.0,
+          "z_dimension": 3.0,
+          "z_origin": -2.0
+        }
+      ],
+      "id": "front_left_calf",
+      "poses": {
+        "x": -3.0,
+        "y": 12.0,
+        "z": -3.5
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 28,
+          "texture_y_offset": 0,
+          "x_dimension": 7.0,
+          "x_origin": -3.5,
+          "y_dimension": 6.0,
+          "y_origin": 0.0,
+          "z_dimension": 5.0,
+          "z_origin": 0.0
+        }
+      ],
+      "id": "lower_body",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -0.3346075,
+        "y": 9.0,
+        "z": 2.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 34,
+          "texture_y_offset": 17,
+          "x_dimension": 3.0,
+          "x_origin": -1.5,
+          "y_dimension": 2.0,
+          "y_origin": 0.0,
+          "z_dimension": 4.0,
+          "z_origin": 0.0
+        }
+      ],
+      "id": "tail_end",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -0.3717943,
+        "y": 16.5,
+        "z": 10.5
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 50,
+          "texture_y_offset": 21,
+          "x_dimension": 3.0,
+          "x_origin": -2.0,
+          "y_dimension": 5.0,
+          "y_origin": 0.0,
+          "z_dimension": 4.0,
+          "z_origin": -2.0
+        }
+      ],
+      "id": "back_left_thigh",
+      "poses": {
+        "x": -3.0,
+        "y": 14.0,
+        "z": 4.5
+      }
+    }
+  ],
+  "model_layer_location": "fossilslegacy:legacy_brachiosaurus",
+  "texture_height": 32,
+  "texture_width": 64
+}

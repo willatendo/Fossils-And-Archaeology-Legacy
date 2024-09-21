@@ -28,10 +28,7 @@ import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
-import willatendo.fossilslegacy.server.entity.util.interfaces.CoatTypeEntity;
-import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
-import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
-import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
+import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -39,7 +36,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dodo extends Dinosaur implements DinopediaInformation, CoatTypeEntity {
+public class Dodo extends Dinosaur implements DinopediaInformation, CoatTypeEntity, FloatDownEntity {
     private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Dodo.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
     public final AnimationState fallAnimationState = new AnimationState();
     public int eggTime = this.random.nextInt(6000) + 6000;
@@ -50,6 +47,11 @@ public class Dodo extends Dinosaur implements DinopediaInformation, CoatTypeEnti
 
     public static AttributeSupplier dodoAttributes() {
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 4.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).build();
+    }
+
+    @Override
+    public AnimationState getFallAnimationState() {
+        return this.fallAnimationState;
     }
 
     @Override

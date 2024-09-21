@@ -27,8 +27,8 @@ public class JsonAnimationLoader extends SimpleJsonResourceReloadListener {
         super(new Gson(), "fossilslegacy/animations");
     }
 
-    public static Map<ResourceLocation, AnimationDefinition> getAnimations() {
-        return ANIMATIONS;
+    public static AnimationDefinition getAnimation(ResourceLocation resourceLocation) {
+        return ANIMATIONS.get(resourceLocation);
     }
 
     @Override
@@ -55,10 +55,10 @@ public class JsonAnimationLoader extends SimpleJsonResourceReloadListener {
         }
         JsonArray animations = GsonHelper.getAsJsonArray(jsonObject, "animations");
         for (JsonElement animationElement : animations.asList()) {
-            JsonObject element = animationElement.getAsJsonObject();
-            String bone = GsonHelper.getAsString(element, "bone");
-            String target = GsonHelper.getAsString(element, "target");
-            JsonArray keyframe = GsonHelper.getAsJsonArray(element, "keyframes");
+            JsonObject animation = animationElement.getAsJsonObject();
+            String bone = GsonHelper.getAsString(animation, "bone");
+            String target = GsonHelper.getAsString(animation, "target");
+            JsonArray keyframe = GsonHelper.getAsJsonArray(animation, "keyframes");
             Keyframe[] keyframes = new Keyframe[keyframe.size()];
             List<JsonElement> keyframeElements = keyframe.asList();
             for (int i = 0; i < keyframeElements.size(); i++) {
