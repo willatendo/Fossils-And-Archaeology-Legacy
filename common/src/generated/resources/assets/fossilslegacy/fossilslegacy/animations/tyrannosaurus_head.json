@@ -1,0 +1,9 @@
+{
+  "type": "built_in",
+  "id": "fossilslegacy:tyrannosaurus_head",
+  "parts": [
+    "head",
+    "snout",
+    "jaw"
+  ]
+}

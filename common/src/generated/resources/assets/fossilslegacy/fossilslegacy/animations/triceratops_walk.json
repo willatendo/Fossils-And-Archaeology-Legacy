@@ -1,4 +1,5 @@
 {
+  "type": "json",
   "animations": [
     {
       "bone": "right_arm",

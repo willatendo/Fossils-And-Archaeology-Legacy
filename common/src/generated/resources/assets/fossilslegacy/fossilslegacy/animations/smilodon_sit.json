@@ -1,0 +1,13 @@
+{
+  "type": "built_in",
+  "id": "fossilslegacy:smilodon_sit",
+  "parts": [
+    "body",
+    "back",
+    "tail",
+    "left_front_leg",
+    "left_back_leg",
+    "right_front_leg",
+    "right_back_leg"
+  ]
+}

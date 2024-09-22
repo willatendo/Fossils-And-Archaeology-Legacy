@@ -1,0 +1,22 @@
+{
+  "type": "built_in",
+  "id": "fossilslegacy:tyrannosaurus_walk",
+  "parts": [
+    "left_thigh",
+    "left_leg",
+    "left_foot",
+    "right_thigh",
+    "right_leg",
+    "right_foot",
+    "body",
+    "neck",
+    "right_arm",
+    "left_arm",
+    "tail_base",
+    "tail_mid",
+    "tail_end",
+    "head",
+    "snout",
+    "jaw"
+  ]
+}

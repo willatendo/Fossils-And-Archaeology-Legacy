@@ -1,0 +1,8 @@
+{
+  "type": "built_in",
+  "id": "fossilslegacy:pteranodon_walk",
+  "parts": [
+    "right_leg",
+    "left_leg"
+  ]
+}

@@ -116,8 +116,6 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
                 FossilsLegacyUtils.LOGGER.error("Failed to load json models! {}", e);
             }
         }
-
-        FossilsLegacyUtils.LOGGER.info("Registered {} json models!", MODELS.size());
     }
 
     private void load(JsonObject jsonObject) {

@@ -1,0 +1,8 @@
+{
+  "type": "built_in",
+  "id": "fossilslegacy:cryolophosaurus_walk",
+  "parts": [
+    "right_thigh",
+    "left_thigh"
+  ]
+}

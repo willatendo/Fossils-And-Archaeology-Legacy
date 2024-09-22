@@ -32,24 +32,24 @@ public enum BuiltInAnimationTypes implements BuiltInAnimationType {
 
     private final ResourceLocation id;
     private final Function<Dinosaur, Boolean> canUse;
-    private final AnimationProivder animationProivder;
-    private final ModelPrepProivder modelPrepProivder;
+    private final AnimationProvider animationProvider;
+    private final ModelPrepProvider modelPrepProvider;
 
-    private BuiltInAnimationTypes(ResourceLocation id, Function<Dinosaur, Boolean> canUse, AnimationProivder animationProivder, ModelPrepProivder modelPrepProivder) {
+    BuiltInAnimationTypes(ResourceLocation id, Function<Dinosaur, Boolean> canUse, AnimationProvider animationProvider, ModelPrepProvider modelPrepProvider) {
         this.id = id;
         this.canUse = canUse;
-        this.animationProivder = animationProivder;
-        this.modelPrepProivder = modelPrepProivder;
+        this.animationProvider = animationProvider;
+        this.modelPrepProvider = modelPrepProvider;
 
-        AnimationUtils.register(id, this);
+        AnimationUtils.VALUES.put(id, this);
     }
 
-    private BuiltInAnimationTypes(String id, Function<Dinosaur, Boolean> canUse, AnimationProivder animationProivder) {
-        this(FossilsLegacyUtils.resource(id), canUse, animationProivder, null);
+    BuiltInAnimationTypes(String id, Function<Dinosaur, Boolean> canUse, AnimationProvider animationProvider) {
+        this(FossilsLegacyUtils.resource(id), canUse, animationProvider, null);
     }
 
-    private BuiltInAnimationTypes(String id, Function<Dinosaur, Boolean> canUse, AnimationProivder animationProivder, ModelPrepProivder modelPrepProivder) {
-        this(FossilsLegacyUtils.resource(id), canUse, animationProivder, modelPrepProivder);
+    BuiltInAnimationTypes(String id, Function<Dinosaur, Boolean> canUse, AnimationProvider animationProivder, ModelPrepProvider modelPrepProvider) {
+        this(FossilsLegacyUtils.resource(id), canUse, animationProivder, modelPrepProvider);
     }
 
     @Override
@@ -64,26 +64,26 @@ public enum BuiltInAnimationTypes implements BuiltInAnimationType {
 
     @Override
     public void setupAnim(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        if (this.animationProivder != null) {
-            this.animationProivder.accept(dinosaur, jsonModel, limbSwing, limbSwingAmount, netHeadYaw);
+        if (this.animationProvider != null) {
+            this.animationProvider.accept(dinosaur, jsonModel, limbSwing, limbSwingAmount, netHeadYaw);
         }
     }
 
     @Override
     public void prepareMobModel(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float partialTick) {
-        if (this.modelPrepProivder != null) {
-            this.modelPrepProivder.accept(dinosaur, jsonModel, limbSwing, limbSwingAmount, partialTick);
+        if (this.modelPrepProvider != null) {
+            this.modelPrepProvider.accept(dinosaur, jsonModel, limbSwing, limbSwingAmount, partialTick);
         }
     }
 
     public static void init() {
     }
 
-    private interface AnimationProivder {
+    private interface AnimationProvider {
         void accept(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw);
     }
 
-    private interface ModelPrepProivder {
+    private interface ModelPrepProvider {
         void accept(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw);
     }
 }

@@ -10,7 +10,7 @@ public enum CultivationBookCategory implements StringRepresentable {
     public static final StringRepresentable.EnumCodec<CultivationBookCategory> CODEC = StringRepresentable.fromEnum(CultivationBookCategory::values);
     private final String name;
 
-    private CultivationBookCategory(String name) {
+    CultivationBookCategory(String name) {
         this.name = name;
     }
 

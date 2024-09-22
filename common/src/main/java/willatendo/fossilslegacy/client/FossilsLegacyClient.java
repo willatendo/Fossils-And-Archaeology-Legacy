@@ -26,8 +26,6 @@ import willatendo.simplelibrary.client.event.registry.ModelRegister;
 public class FossilsLegacyClient {
     public static void signSheets() {
         FossilsLegacyWoodTypes.register(FossilsLegacyWoodTypes.LEPIDODENDRON);
-
-        BuiltInAnimationTypes.init();
     }
 
     public static void keyMappingEvent(KeyMappingRegister keyMappingRegister) {

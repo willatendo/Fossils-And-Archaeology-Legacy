@@ -10,7 +10,7 @@ public enum ArchaeologyBookCategory implements StringRepresentable {
     public static final StringRepresentable.EnumCodec<ArchaeologyBookCategory> CODEC = StringRepresentable.fromEnum(ArchaeologyBookCategory::values);
     private final String name;
 
-    private ArchaeologyBookCategory(String name) {
+    ArchaeologyBookCategory(String name) {
         this.name = name;
     }
 

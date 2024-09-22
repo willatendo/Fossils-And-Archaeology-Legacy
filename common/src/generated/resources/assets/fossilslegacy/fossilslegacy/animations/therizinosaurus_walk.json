@@ -1,0 +1,8 @@
+{
+  "type": "built_in",
+  "id": "fossilslegacy:therizinosaurus_walk",
+  "parts": [
+    "right_thigh",
+    "left_thigh"
+  ]
+}

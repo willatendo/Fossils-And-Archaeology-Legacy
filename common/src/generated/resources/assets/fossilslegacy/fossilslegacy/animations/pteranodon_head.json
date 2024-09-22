@@ -1,0 +1,10 @@
+{
+  "type": "built_in",
+  "id": "fossilslegacy:pteranodon_head",
+  "parts": [
+    "crown",
+    "upper_mouth",
+    "lower_mouth",
+    "head"
+  ]
+}

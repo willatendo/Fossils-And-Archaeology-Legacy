@@ -1,0 +1,17 @@
+{
+  "type": "built_in",
+  "id": "fossilslegacy:legacy_triceratops_walk",
+  "parts": [
+    "lower_body",
+    "back",
+    "tail",
+    "right_front_thigh",
+    "right_front_leg",
+    "left_front_thigh",
+    "left_front_leg",
+    "right_back_thigh",
+    "right_back_leg",
+    "left_back_thigh",
+    "left_back_leg"
+  ]
+}

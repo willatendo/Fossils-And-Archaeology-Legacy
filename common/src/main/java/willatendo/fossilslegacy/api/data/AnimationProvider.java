@@ -11,12 +11,15 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import org.apache.commons.compress.utils.Lists;
+import willatendo.fossilslegacy.api.client.BuiltInAnimationType;
 
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public abstract class AnimationProvider implements DataProvider {
+    private final Map<ResourceLocation, AnimationDefinition> jsonAnimations = Maps.newHashMap();
+    private final Map<BuiltInAnimationType, String[]> builtInAnimations = Maps.newHashMap();
     private final PackOutput packOutput;
     private final String modId;
 
@@ -25,16 +28,23 @@ public abstract class AnimationProvider implements DataProvider {
         this.modId = modId;
     }
 
-    protected abstract void getAll(Map<ResourceLocation, AnimationDefinition> animationDefinitions);
+    protected void addAnimation(ResourceLocation resourceLocation, AnimationDefinition animationDefinition) {
+        this.jsonAnimations.put(resourceLocation, animationDefinition);
+    }
 
+    protected void addBuiltIn(BuiltInAnimationType builtInAnimationType, String... parts) {
+        this.builtInAnimations.put(builtInAnimationType, parts);
+    }
+
+    protected abstract void getAll();
 
     @Override
     public CompletableFuture<?> run(CachedOutput cachedOutput) {
-        Map<ResourceLocation, AnimationDefinition> animationDefinitions = Maps.newHashMap();
-        this.getAll(animationDefinitions);
+        this.getAll();
         List<CompletableFuture<?>> completableFutures = Lists.newArrayList();
-        animationDefinitions.forEach((resourceLocation, animationDefinition) -> {
+        this.jsonAnimations.forEach((resourceLocation, animationDefinition) -> {
             JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("type", "json");
             jsonObject.addProperty("id", resourceLocation.toString());
             jsonObject.addProperty("length", animationDefinition.lengthInSeconds());
             jsonObject.addProperty("looping", animationDefinition.looping());
@@ -63,6 +73,16 @@ public abstract class AnimationProvider implements DataProvider {
                 animations.add(animation);
             });
             jsonObject.add("animations", animations);
+            completableFutures.add(DataProvider.saveStable(cachedOutput, jsonObject, this.packOutput.getOutputFolder(PackOutput.Target.RESOURCE_PACK).resolve(this.modId).resolve("fossilslegacy").resolve("animations").resolve(resourceLocation.getPath() + ".json")));
+        });
+        this.builtInAnimations.forEach((builtInAnimations, parts) -> {
+            ResourceLocation resourceLocation = builtInAnimations.getId();
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("type", "built_in");
+            jsonObject.addProperty("id", resourceLocation.toString());
+            JsonArray partsArray = new JsonArray();
+            List.of(parts).forEach(partsArray::add);
+            jsonObject.add("parts", partsArray);
             completableFutures.add(DataProvider.saveStable(cachedOutput, jsonObject, this.packOutput.getOutputFolder(PackOutput.Target.RESOURCE_PACK).resolve(this.modId).resolve("fossilslegacy").resolve("animations").resolve(resourceLocation.getPath() + ".json")));
         });
 

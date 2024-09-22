@@ -8,7 +8,7 @@ public enum AnalyzationBookCategory implements StringRepresentable {
     public static final StringRepresentable.EnumCodec<AnalyzationBookCategory> CODEC = StringRepresentable.fromEnum(AnalyzationBookCategory::values);
     private final String name;
 
-    private AnalyzationBookCategory(String name) {
+    AnalyzationBookCategory(String name) {
         this.name = name;
     }
 
