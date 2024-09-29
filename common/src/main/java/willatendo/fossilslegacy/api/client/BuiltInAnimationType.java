@@ -8,6 +8,8 @@ import willatendo.fossilslegacy.server.entity.Dinosaur;
 public interface BuiltInAnimationType {
     ResourceLocation getId();
 
+    String[] loadParts();
+
     boolean canUse(Dinosaur dinosaur);
 
     void setupAnim(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw);

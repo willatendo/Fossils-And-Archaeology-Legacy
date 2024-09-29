@@ -1,4 +1,4 @@
-// 1.21	2024-09-14T14:57:55.6585454	Recipes
+// 1.21.1	2024-09-29T10:30:10.0957869	Recipes
 0ed98d717097975a11c79f9fff8bf82b0607422e data/fossilslegacy/advancement/recipes/building_blocks/analyzer.json
 2524602d938a5c655495c128507574dbef42c140 data/fossilslegacy/advancement/recipes/building_blocks/archaeology_workbench.json
 84f06f624bf05340d48034deaa1bba87adda3d20 data/fossilslegacy/advancement/recipes/building_blocks/black_cultivator.json
@@ -337,7 +337,7 @@ cd2344102c8e19dac0db00fea55c8ed3ab7f7db9 data/fossilslegacy/recipe/feather_outpu
 62969fa44b9a9dec97c835965a786be3487d5d58 data/fossilslegacy/recipe/feeder.json
 553bd4a5ee1c1bc00939ae7597c6878f31b5d870 data/fossilslegacy/recipe/fossil_outputs.json
 2645945ed8352d692f3b242bf58b0d9a5a8bd385 data/fossilslegacy/recipe/fox_embryo_syringe.json
-a17c48908634df9d9b77ff7cb1c55ec0fbbc13cc data/fossilslegacy/recipe/froglights_outputs.json
+7ca1e1e155d7d89f185b536afb66118815129fa8 data/fossilslegacy/recipe/froglights_outputs.json
 622b27585bfd4ff570e1254144c4ddc7bc04a68c data/fossilslegacy/recipe/frogspawn.json
 36f86a0689efc3a3a2686a98c2f5bcb9ee3167f3 data/fossilslegacy/recipe/frozen_meat_outputs.json
 4275c1fc8503f382abd3eadc1d876440618054d0 data/fossilslegacy/recipe/futabasaurus_egg.json
@@ -465,6 +465,6 @@ f620d2e38f92d00d9a1ffb91a0f0a3211811c86d data/fossilslegacy/recipe/white_cultiva
 7da6fcf6802acaa3f9948ae1fc9e6b17992ab03f data/fossilslegacy/recipe/white_cultivator_from_colored_glass.json
 b90dc6c1ce005498389e182e4d1fa06278e80372 data/fossilslegacy/recipe/wolf_embryo_syringe.json
 26091bb4e2bf47487c81709b8f640370275c5550 data/fossilslegacy/recipe/wooden_javelin_repair.json
-112a04bf507ecc4193ee7830ec669a368f4819d4 data/fossilslegacy/recipe/wool_outputs.json
+b55f49edcd4e2f7746dd8abe4a6d105de06b0ace data/fossilslegacy/recipe/wool_outputs.json
 dd1d09a32d589261013b691b40ef7a312d864d09 data/fossilslegacy/recipe/yellow_cultivator.json
 0a7e1410a54459ec08a8c481ecc822d4597d4207 data/fossilslegacy/recipe/yellow_cultivator_from_colored_glass.json

@@ -8,11 +8,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import willatendo.fossilslegacy.server.ConfigHelper;
-import willatendo.fossilslegacy.server.entity.Dinosaur;
+import willatendo.fossilslegacy.server.config.FossilsLegacyConfig;
 import willatendo.fossilslegacy.server.entity.util.interfaces.GrowingEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.TameAccessor;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class BlockBreakRule {
     private final Animal animal;
@@ -28,7 +26,7 @@ public class BlockBreakRule {
     }
 
     public boolean canUse() {
-        if (!ConfigHelper.willAnimalsBreakBlocks()) {
+        if (!FossilsLegacyConfig.willAnimalsBreakBlocks()) {
             return false;
         } else if (this.animal instanceof GrowingEntity growningEntity) {
             if (growningEntity.getGrowthStage() >= this.minimumAge) {

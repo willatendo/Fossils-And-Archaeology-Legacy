@@ -72,7 +72,8 @@ public class Therizinosaurus extends Dinosaur implements DinopediaInformation, C
 
     @Override
     public float getBoundingBoxGrowth() {
-        return 0.35F;
+        CoatType coatType = this.getCoatType().value();
+        return coatType.boundingBoxInfo().boundingBoxGrowth();
     }
 
     @Override

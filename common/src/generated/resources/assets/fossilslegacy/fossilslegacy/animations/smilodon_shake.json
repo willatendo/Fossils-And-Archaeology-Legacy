@@ -1,19 +1,5 @@
 {
   "type": "built_in",
   "id": "fossilslegacy:smilodon_shake",
-  "parts": [
-    "head",
-    "right_ear",
-    "left_ear",
-    "left_tooth_bottom",
-    "left_tooth_top",
-    "right_tooth_bottom",
-    "right_tooth_top",
-    "snout",
-    "jaw",
-    "nose",
-    "body",
-    "back",
-    "tail"
-  ]
+  "parts": []
 }

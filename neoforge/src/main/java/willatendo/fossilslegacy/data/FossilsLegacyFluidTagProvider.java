@@ -16,6 +16,6 @@ public class FossilsLegacyFluidTagProvider extends FluidTagsProvider {
 
     @Override
     protected void addTags(Provider provider) {
-        this.tag(FossilsLegacyFluidTags.PERMAFROST_FREEZABLE).add(Fluids.WATER);
+        this.tag(FossilsLegacyFluidTags.PERMAFROST_FREEZABLE).add(Fluids.WATER, Fluids.FLOWING_WATER);
     }
 }

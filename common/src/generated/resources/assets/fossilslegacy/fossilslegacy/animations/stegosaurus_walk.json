@@ -1,21 +1,5 @@
 {
   "type": "built_in",
   "id": "fossilslegacy:stegosaurus_walk",
-  "parts": [
-    "tail_1",
-    "tail_2",
-    "tail_3",
-    "left_front_leg",
-    "right_front_leg",
-    "left_front_foot",
-    "right_front_foot",
-    "left_back_leg",
-    "right_back_leg",
-    "left_back_foot",
-    "right_back_foot",
-    "back_plates_1",
-    "back_plates_2",
-    "back_plates_3",
-    "thagomizer"
-  ]
+  "parts": []
 }

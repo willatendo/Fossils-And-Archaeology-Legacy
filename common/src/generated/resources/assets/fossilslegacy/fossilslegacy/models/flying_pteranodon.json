@@ -1,6 +1,24 @@
 {
   "animations": {
-    "fly": "fossilslegacy:pteranodon_fly"
+    "fly": {
+      "id": "fossilslegacy:pteranodon_fly",
+      "load_parts": [
+        "right_wing_1",
+        "left_wing_1",
+        "right_wing_2",
+        "left_wing_2",
+        "body",
+        "neck_1",
+        "neck_2",
+        "tail",
+        "crown",
+        "head",
+        "upper_mouth",
+        "lower_mouth",
+        "right_leg",
+        "left_leg"
+      ]
+    }
   },
   "elements": [
     {
@@ -16,6 +34,7 @@
           "z_origin": -1.0
         }
       ],
+      "elements": [],
       "id": "neck_2",
       "poses": {
         "x": 0.0,
@@ -37,6 +56,7 @@
           "z_origin": -1.0
         }
       ],
+      "elements": [],
       "id": "neck_1",
       "poses": {
         "x": 0.0,
@@ -58,6 +78,7 @@
           "z_origin": -2.0
         }
       ],
+      "elements": [],
       "id": "left_leg",
       "poses": {
         "x": 0.0,
@@ -79,6 +100,7 @@
           "z_origin": -1.0
         }
       ],
+      "elements": [],
       "id": "right_wing_1",
       "poses": {
         "x": 0.0,
@@ -101,6 +123,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "tail",
       "poses": {
         "x": 0.0,
@@ -122,6 +145,7 @@
           "z_origin": -4.0
         }
       ],
+      "elements": [],
       "id": "right_wing_2",
       "poses": {
         "x": 0.0,
@@ -145,6 +169,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "left_wing_1",
       "poses": {
         "x": 0.0,
@@ -168,6 +193,7 @@
           "z_origin": 3.0
         }
       ],
+      "elements": [],
       "id": "left_wing_2",
       "poses": {
         "x": 0.0,
@@ -189,6 +215,7 @@
           "z_origin": -2.0
         }
       ],
+      "elements": [],
       "id": "body",
       "poses": {
         "x": 0.0,
@@ -210,6 +237,7 @@
           "z_origin": -21.0
         }
       ],
+      "elements": [],
       "id": "upper_mouth",
       "poses": {
         "x": 0.0,
@@ -230,6 +258,7 @@
           "z_origin": -1.0
         }
       ],
+      "elements": [],
       "id": "head",
       "poses": {
         "x": 0.0,
@@ -251,6 +280,7 @@
           "z_origin": -2.0
         }
       ],
+      "elements": [],
       "id": "right_leg",
       "poses": {
         "x": 0.0,
@@ -272,6 +302,7 @@
           "z_origin": -20.0
         }
       ],
+      "elements": [],
       "id": "lower_mouth",
       "poses": {
         "x": 0.0,
@@ -293,6 +324,7 @@
           "z_origin": -9.0
         }
       ],
+      "elements": [],
       "id": "crown",
       "poses": {
         "x": 0.0,
@@ -302,7 +334,7 @@
       }
     }
   ],
-  "model_layer_location": "fossilslegacy:flying_pteranodon",
+  "model_id": "fossilslegacy:flying_pteranodon",
   "texture_height": 32,
   "texture_width": 64
 }

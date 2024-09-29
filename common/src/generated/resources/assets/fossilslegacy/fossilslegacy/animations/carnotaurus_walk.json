@@ -1,8 +1,5 @@
 {
   "type": "built_in",
   "id": "fossilslegacy:carnotaurus_walk",
-  "parts": [
-    "right_thigh",
-    "left_thigh"
-  ]
+  "parts": []
 }

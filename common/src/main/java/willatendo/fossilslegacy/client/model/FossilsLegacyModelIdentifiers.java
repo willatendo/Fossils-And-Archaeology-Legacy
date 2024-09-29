@@ -3,14 +3,6 @@ package willatendo.fossilslegacy.client.model;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.world.entity.Entity;
 import willatendo.fossilslegacy.api.client.ModelIdentifierRegistry;
-import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
-import willatendo.fossilslegacy.client.model.dinosaur.*;
-import willatendo.fossilslegacy.client.model.dinosaur.legacy.*;
-import willatendo.fossilslegacy.client.model.dinosaur.legacy.pteranodon.FlyingPteranodonModel;
-import willatendo.fossilslegacy.client.model.dinosaur.legacy.pteranodon.GroundPteranodonModel;
-import willatendo.fossilslegacy.client.model.dinosaur.legacy.pteranodon.LandingPteranodonModel;
-import willatendo.fossilslegacy.client.model.dinosaur.legacy.tyrannosaurus.KnockedOutTyrannosaurusModel;
-import willatendo.fossilslegacy.client.model.dinosaur.legacy.tyrannosaurus.TyrannosaurusModel;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FossilsLegacyModelIdentifiers {

@@ -82,7 +82,8 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
 
     @Override
     public float getBoundingBoxGrowth() {
-        return this.getCoatType().value().boundingBoxInfo().boundingBoxGrowth();
+        CoatType coatType = this.getCoatType().value();
+        return coatType.boundingBoxInfo().boundingBoxGrowth();
     }
 
     @Override

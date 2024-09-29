@@ -73,7 +73,8 @@ public class Compsognathus extends Dinosaur implements DinopediaInformation, Coa
 
     @Override
     public float getBoundingBoxGrowth() {
-        return 1.0F;
+        CoatType coatType = this.getCoatType().value();
+        return coatType.boundingBoxInfo().boundingBoxGrowth();
     }
 
     @Override

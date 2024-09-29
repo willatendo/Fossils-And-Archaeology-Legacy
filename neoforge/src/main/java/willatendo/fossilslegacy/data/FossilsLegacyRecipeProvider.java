@@ -308,8 +308,10 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
 
     public void simpleAnalyzation(TagKey<Item> input, String name, Item... dnas) {
         List<AnalyzerResult> analyzerResults = new ArrayList<>();
-        for (Item dna : dnas) {
-            analyzerResults.add(new AnalyzerResult(dna, 100 / dnas.length));
+        if (dnas.length > 1) {
+            for (Item dna : dnas) {
+                analyzerResults.add(new AnalyzerResult(dna, 100 / dnas.length));
+            }
         }
         this.analyzation(AnalyzationBookCategory.MISC, input, name, dnas[0], 100 / dnas.length, 100, analyzerResults.toArray(AnalyzerResult[]::new));
     }

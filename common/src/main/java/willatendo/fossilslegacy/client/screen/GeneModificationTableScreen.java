@@ -3,7 +3,9 @@ package willatendo.fossilslegacy.client.screen;
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.ChatFormatting;
+import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -15,6 +17,7 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -106,7 +109,7 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
                     RenderSystem.setShaderColor(red, green, blue, 1.0F);
                     guiGraphics.blitSprite(GENE_SPRITE, this.leftPos + 42, this.topPos + 61, 22, 8);
                     RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-                    guiGraphics.drawString(this.font, selectedCoatType.displayInfo().name(), this.leftPos + 8, this.topPos + 74, 0xC9C9C9, false);
+                    this.renderScrollingString(guiGraphics, selectedCoatType.displayInfo().name(), this.leftPos + 8, this.topPos + 74, 0xC9C9C9);
                     guiGraphics.drawCenteredString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.coat_type.location", this.selection + 1, this.size), this.leftPos + 53, this.topPos + 47, 0xC9C9C9);
                 } else {
                     guiGraphics.drawCenteredString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.coat_type.none", this.selection + 1, this.size), this.leftPos + 53, this.topPos + 47, 0xC9C9C9);
@@ -185,6 +188,33 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
         guiGraphics.drawString(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, 0x404040, false);
     }
 
+    protected void renderScrollingString(GuiGraphics guiGraphics, Component component, int x, int y, int color) {
+        GeneModificationTableScreen.renderScrollingString(guiGraphics, this.font, component, x, y, x + 158, y + 7, color);
+    }
+
+    protected static void renderScrollingString(GuiGraphics pGuiGraphics, Font font, Component component, int xMin, int yMin, int xMax, int yMax, int color) {
+        GeneModificationTableScreen.renderScrollingString(pGuiGraphics, font, component, (xMin + xMax) / 2, xMin, yMin, xMax, yMax, color);
+    }
+
+    protected static void renderScrollingString(GuiGraphics guiGraphics, Font font, Component component, int centerX, int xMin, int yMin, int xMax, int pMaxY, int color) {
+        int width = font.width(component);
+        int y = (yMin + pMaxY - 9) / 2 + 1;
+        int xDiffetrence = xMax - xMin;
+        int widthMinusY;
+        if (width > xDiffetrence) {
+            widthMinusY = width - xDiffetrence;
+            double time = (double) Util.getMillis() / 1000.0;
+            double scaled = Math.max((double) widthMinusY * 0.5, 3.0);
+            double change = Math.sin(1.5707963267948966 * Math.cos(6.283185307179586 * time / scaled)) / 2.0 + 0.5;
+            double xPos = Mth.lerp(change, 0.0, (double) widthMinusY);
+            guiGraphics.enableScissor(xMin, yMin, xMax, pMaxY);
+            guiGraphics.drawString(font, component, xMin - (int) xPos, y, color);
+            guiGraphics.disableScissor();
+        } else {
+            widthMinusY = Mth.clamp(centerX, xMin + width / 2, xMax - width / 2);
+            guiGraphics.drawCenteredString(font, component, widthMinusY, y, color);
+        }
+    }
 
     public static void renderEntityInInventoryFollowsMouse(GuiGraphics guiGraphics, int left, int top, int right, int bottom, int scale, float displayScale, float yOffset, float mouseX, float mouseY, LivingEntity livingEntity) {
         float x = (left + right) / 2.0F;

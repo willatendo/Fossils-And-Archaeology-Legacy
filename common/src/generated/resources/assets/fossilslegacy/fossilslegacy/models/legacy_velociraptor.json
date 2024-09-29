@@ -1,6 +1,24 @@
 {
   "animations": {
-    "walk": "fossilslegacy:legacy_velociraptor_walk"
+    "walk": {
+      "id": "fossilslegacy:legacy_velociraptor_walk",
+      "load_parts": [
+        "right_thigh",
+        "left_thigh",
+        "right_leg",
+        "left_leg",
+        "right_foot",
+        "left_foot",
+        "right_hook_1",
+        "left_hook_1",
+        "right_hook_2",
+        "left_hook_2",
+        "right_bicep",
+        "left_bicep",
+        "right_hand",
+        "left_hand"
+      ]
+    }
   },
   "elements": [
     {
@@ -16,6 +34,7 @@
           "z_origin": -5.0
         }
       ],
+      "elements": [],
       "id": "jaw",
       "poses": {
         "x": 0.0,
@@ -36,6 +55,7 @@
           "z_origin": -7.0
         }
       ],
+      "elements": [],
       "id": "left_leg",
       "poses": {
         "x": 4.0,
@@ -57,6 +77,7 @@
           "z_origin": 6.0
         }
       ],
+      "elements": [],
       "id": "tail",
       "poses": {
         "x": 0.0,
@@ -78,6 +99,7 @@
           "z_origin": -2.0
         }
       ],
+      "elements": [],
       "id": "left_thigh",
       "poses": {
         "x": 4.0,
@@ -98,6 +120,7 @@
           "z_origin": -3.0
         }
       ],
+      "elements": [],
       "id": "left_foot",
       "poses": {
         "x": 4.0,
@@ -118,6 +141,7 @@
           "z_origin": -4.0
         }
       ],
+      "elements": [],
       "id": "left_hand",
       "poses": {
         "x": 3.0,
@@ -139,6 +163,7 @@
           "z_origin": -6.0
         }
       ],
+      "elements": [],
       "id": "neck",
       "poses": {
         "x": 0.0,
@@ -160,6 +185,7 @@
           "z_origin": -6.0
         }
       ],
+      "elements": [],
       "id": "body",
       "poses": {
         "x": -1.0,
@@ -180,6 +206,7 @@
           "z_origin": -2.0
         }
       ],
+      "elements": [],
       "id": "right_thigh",
       "poses": {
         "x": -4.0,
@@ -200,6 +227,7 @@
           "z_origin": -8.0
         }
       ],
+      "elements": [],
       "id": "head",
       "poses": {
         "x": 0.0,
@@ -221,6 +249,7 @@
           "z_origin": -3.0
         }
       ],
+      "elements": [],
       "id": "right_foot",
       "poses": {
         "x": -4.0,
@@ -241,6 +270,7 @@
           "z_origin": -5.0
         }
       ],
+      "elements": [],
       "id": "upper_body",
       "poses": {
         "x": 0.0,
@@ -262,6 +292,7 @@
           "z_origin": 3.0
         }
       ],
+      "elements": [],
       "id": "left_hook_1",
       "poses": {
         "x": 4.0,
@@ -283,6 +314,7 @@
           "z_origin": -7.0
         }
       ],
+      "elements": [],
       "id": "right_leg",
       "poses": {
         "x": -4.0,
@@ -304,6 +336,7 @@
           "z_origin": -4.0
         }
       ],
+      "elements": [],
       "id": "right_hand",
       "poses": {
         "x": -3.0,
@@ -325,6 +358,7 @@
           "z_origin": 5.0
         }
       ],
+      "elements": [],
       "id": "left_hook_2",
       "poses": {
         "x": 4.0,
@@ -346,6 +380,7 @@
           "z_origin": -1.0
         }
       ],
+      "elements": [],
       "id": "left_bicep",
       "poses": {
         "x": 3.0,
@@ -366,6 +401,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "lower_body",
       "poses": {
         "x": 0.0,
@@ -387,6 +423,7 @@
           "z_origin": 5.0
         }
       ],
+      "elements": [],
       "id": "right_hook_2",
       "poses": {
         "x": -4.0,
@@ -408,6 +445,7 @@
           "z_origin": -6.0
         }
       ],
+      "elements": [],
       "id": "snout",
       "poses": {
         "x": 0.0,
@@ -429,6 +467,7 @@
           "z_origin": 3.0
         }
       ],
+      "elements": [],
       "id": "right_hook_1",
       "poses": {
         "x": -4.0,
@@ -450,6 +489,7 @@
           "z_origin": -1.0
         }
       ],
+      "elements": [],
       "id": "right_bicep",
       "poses": {
         "x": -3.0,
@@ -458,7 +498,7 @@
       }
     }
   ],
-  "model_layer_location": "fossilslegacy:legacy_velociraptor",
+  "model_id": "fossilslegacy:legacy_velociraptor",
   "texture_height": 32,
   "texture_width": 64
 }

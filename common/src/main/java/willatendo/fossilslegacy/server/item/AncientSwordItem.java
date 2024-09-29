@@ -31,7 +31,7 @@ public class AncientSwordItem extends SwordItem {
             }
             Level level = victim.level();
             LightningBolt lightningBolt;
-            if (user.getItemBySlot(EquipmentSlot.HEAD).is(FossilsLegacyItemTags.PIGLIN_TAMING_ARMOUR) && user.getItemBySlot(EquipmentSlot.CHEST).is(FossilsLegacyItemTags.PIGLIN_TAMING_ARMOUR) && user.getItemBySlot(EquipmentSlot.LEGS).is(FossilsLegacyItemTags.PIGLIN_TAMING_ARMOUR) && user.getItemBySlot(EquipmentSlot.FEET).is(FossilsLegacyItemTags.PIGLIN_TAMING_ARMOUR)) {
+            if (user.getItemBySlot(EquipmentSlot.HEAD).is(FossilsLegacyItemTags.PIGLIN_TAMING_ARMOR) && user.getItemBySlot(EquipmentSlot.CHEST).is(FossilsLegacyItemTags.PIGLIN_TAMING_ARMOR) && user.getItemBySlot(EquipmentSlot.LEGS).is(FossilsLegacyItemTags.PIGLIN_TAMING_ARMOR) && user.getItemBySlot(EquipmentSlot.FEET).is(FossilsLegacyItemTags.PIGLIN_TAMING_ARMOR)) {
                 lightningBolt = FossilsLegacyEntityTypes.ANCIENT_LIGHTNING_BOLT.get().create(level);
                 ((AncientLightningBolt) lightningBolt).tame(player);
             } else {

@@ -116,7 +116,8 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 
     @Override
     public float getBoundingBoxGrowth() {
-        return 0.2F;
+        CoatType coatType = this.getCoatType().value();
+        return coatType.boundingBoxInfo().boundingBoxGrowth();
     }
 
     @Override

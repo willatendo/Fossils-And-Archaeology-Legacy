@@ -29,31 +29,31 @@ public abstract class EntityModelProvider implements DataProvider {
     }
 
     protected void add(String id, LayerDefinition layerDefinition, String... headPieces) {
-        this.models.add(new ModelHolder(this.mod(id), layerDefinition, Map.of(), headPieces));
+        this.models.add(new ModelHolder(this.mod(id), layerDefinition, Map.of(), Map.of(), headPieces));
     }
 
     protected void add(String id, LayerDefinition layerDefinition, String animationName, BuiltInAnimationType animations, String... headPieces) {
-        this.add(id, layerDefinition, animationName, animations.getId(), headPieces);
+        this.models.add(new ModelHolder(this.mod(id), layerDefinition, Map.of(), Map.of(animationName, animations), headPieces));
     }
 
     protected void add(String id, LayerDefinition layerDefinition, String animationName1, BuiltInAnimationType animation1, String animationName2, BuiltInAnimationType animation2, String... headPieces) {
-        this.models.add(new ModelHolder(this.mod(id), layerDefinition, Map.of(animationName1, animation1.getId(), animationName2, animation2.getId()), headPieces));
+        this.models.add(new ModelHolder(this.mod(id), layerDefinition, Map.of(), Map.of(animationName1, animation1, animationName2, animation2), headPieces));
     }
 
     protected void add(String id, LayerDefinition layerDefinition, String animationName1, BuiltInAnimationType animation1, String animationName2, BuiltInAnimationType animation2, String animationName3, BuiltInAnimationType animation3, String... headPieces) {
-        this.models.add(new ModelHolder(this.mod(id), layerDefinition, Map.of(animationName1, animation1.getId(), animationName2, animation2.getId(), animationName3, animation3.getId()), headPieces));
+        this.models.add(new ModelHolder(this.mod(id), layerDefinition, Map.of(), Map.of(animationName1, animation1, animationName2, animation2, animationName3, animation3), headPieces));
     }
 
     protected void add(String id, LayerDefinition layerDefinition, String animationName1, BuiltInAnimationType animation1, String animationName2, BuiltInAnimationType animation2, String animationName3, BuiltInAnimationType animation3, String animationName4, BuiltInAnimationType animation4, String... headPieces) {
-        this.models.add(new ModelHolder(this.mod(id), layerDefinition, Map.of(animationName1, animation1.getId(), animationName2, animation2.getId(), animationName3, animation3.getId(), animationName4, animation4.getId()), headPieces));
+        this.models.add(new ModelHolder(this.mod(id), layerDefinition, Map.of(), Map.of(animationName1, animation1, animationName2, animation2, animationName3, animation3, animationName4, animation4), headPieces));
     }
 
     protected void add(String id, LayerDefinition layerDefinition, String animationName, ResourceLocation animation, String... headPieces) {
-        this.models.add(new ModelHolder(this.mod(id), layerDefinition, Map.of(animationName, animation), headPieces));
+        this.models.add(new ModelHolder(this.mod(id), layerDefinition, Map.of(animationName, animation), Map.of(), headPieces));
     }
 
     protected void add(String id, LayerDefinition layerDefinition, String animationName1, ResourceLocation animation1, String animationName2, ResourceLocation animation2, String... headPieces) {
-        this.models.add(new ModelHolder(this.mod(id), layerDefinition, Map.of(animationName1, animation1, animationName2, animation2), headPieces));
+        this.models.add(new ModelHolder(this.mod(id), layerDefinition, Map.of(animationName1, animation1, animationName2, animation2), Map.of(), headPieces));
     }
 
     protected abstract void getAll();
@@ -75,8 +75,16 @@ public abstract class EntityModelProvider implements DataProvider {
             model.animations().forEach((animationName, animation) -> {
                 animations.addProperty(animationName, animation.toString());
             });
+            model.builtInAnimations.forEach((animationName, builtInAnimationType) -> {
+                JsonObject animationObject = new JsonObject();
+                animationObject.addProperty("id", builtInAnimationType.getId().toString());
+                JsonArray loadParts = new JsonArray();
+                List.of(builtInAnimationType.loadParts()).forEach(loadParts::add);
+                animationObject.add("load_parts", loadParts);
+                animations.add(animationName, animationObject);
+            });
             jsonObject.add("animations", animations);
-            jsonObject.addProperty("model_layer_location", id.toString());
+            jsonObject.addProperty("model_id", id.toString());
             if (model.headPieces().length > 0) {
                 JsonArray headPieces = new JsonArray();
                 for (String headPiece : model.headPieces()) {
@@ -86,52 +94,27 @@ public abstract class EntityModelProvider implements DataProvider {
             }
             jsonObject.addProperty("texture_height", layerDefinition.material.yTexSize);
             jsonObject.addProperty("texture_width", layerDefinition.material.xTexSize);
-            JsonArray elements = new JsonArray();
-            PartDefinition root = layerDefinition.mesh.getRoot();
-            for (Map.Entry<String, PartDefinition> entry1 : root.children.entrySet()) {
-                PartDefinition partDefinition1 = entry1.getValue();
-                this.createEntry(elements, null, partDefinition1, entry1.getKey());
-                for (Map.Entry<String, PartDefinition> children1 : partDefinition1.children.entrySet()) {
-                    PartDefinition partDefinition2 = children1.getValue();
-                    this.createEntry(elements, entry1.getKey(), partDefinition2, children1.getKey());
-                    for (Map.Entry<String, PartDefinition> children2 : partDefinition2.children.entrySet()) {
-                        PartDefinition partDefinition3 = children2.getValue();
-                        this.createEntry(elements, children1.getKey(), partDefinition3, children2.getKey());
-                        for (Map.Entry<String, PartDefinition> children3 : partDefinition3.children.entrySet()) {
-                            PartDefinition partDefinition4 = children3.getValue();
-                            this.createEntry(elements, children2.getKey(), partDefinition4, children3.getKey());
-                            for (Map.Entry<String, PartDefinition> children4 : partDefinition4.children.entrySet()) {
-                                PartDefinition partDefinition5 = children4.getValue();
-                                this.createEntry(elements, children3.getKey(), partDefinition5, children4.getKey());
-                                for (Map.Entry<String, PartDefinition> children5 : partDefinition5.children.entrySet()) {
-                                    PartDefinition partDefinition6 = children5.getValue();
-                                    this.createEntry(elements, children4.getKey(), partDefinition6, children5.getKey());
-                                    for (Map.Entry<String, PartDefinition> children6 : partDefinition6.children.entrySet()) {
-                                        PartDefinition partDefinition7 = children6.getValue();
-                                        this.createEntry(elements, children5.getKey(), partDefinition7, children6.getKey());
-                                        for (Map.Entry<String, PartDefinition> children7 : partDefinition7.children.entrySet()) {
-                                            PartDefinition partDefinition8 = children7.getValue();
-                                            this.createEntry(elements, children6.getKey(), partDefinition8, children7.getKey());
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            jsonObject.add("elements", elements);
+            JsonArray elementsArray = new JsonArray();
+            this.createAllElements(elementsArray, layerDefinition.mesh.getRoot());
+            jsonObject.add("elements", elementsArray);
             completableFutures.add(DataProvider.saveStable(cachedOutput, jsonObject, this.packOutput.getOutputFolder(PackOutput.Target.RESOURCE_PACK).resolve(this.modId).resolve("fossilslegacy").resolve("models").resolve(id.getPath() + ".json")));
         });
         return CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new));
     }
 
-    private void createEntry(JsonArray elements, String parent, PartDefinition partDefinition, String id) {
-        JsonObject element = new JsonObject();
-        element.addProperty("id", id);
-        if (parent != null) {
-            element.addProperty("parent", parent);
-        }
+    private void createAllElements(JsonArray elementsArray, PartDefinition root) {
+        root.children.forEach((name, partDefinition) -> {
+            JsonObject elementObject = this.createElement(partDefinition, name);
+            JsonArray childrenElementsArray = new JsonArray();
+            this.createAllElements(childrenElementsArray, partDefinition);
+            elementObject.add("elements", childrenElementsArray);
+            elementsArray.add(elementObject);
+        });
+    }
+
+    private JsonObject createElement(PartDefinition partDefinition, String id) {
+        JsonObject elementObject = new JsonObject();
+        elementObject.addProperty("id", id);
         List<CubeDefinition> cubeDefinitions = partDefinition.cubes;
         JsonArray boxes = new JsonArray();
         for (CubeDefinition cubeDefinition : cubeDefinitions) {
@@ -149,7 +132,7 @@ public abstract class EntityModelProvider implements DataProvider {
             }
             boxes.add(box);
         }
-        element.add("boxes", boxes);
+        elementObject.add("boxes", boxes);
         JsonObject poses = new JsonObject();
         PartPose partPose = partDefinition.partPose;
         poses.addProperty("x", partPose.x);
@@ -164,8 +147,8 @@ public abstract class EntityModelProvider implements DataProvider {
         if (partPose.zRot != 0.0F) {
             poses.addProperty("z_rot", partPose.zRot);
         }
-        element.add("poses", poses);
-        elements.add(element);
+        elementObject.add("poses", poses);
+        return elementObject;
     }
 
     @Override
@@ -173,6 +156,6 @@ public abstract class EntityModelProvider implements DataProvider {
         return "Entity Models: " + this.modId;
     }
 
-    private record ModelHolder(ResourceLocation id, LayerDefinition layerDefinition, Map<String, ResourceLocation> animations, String... headPieces) {
+    private record ModelHolder(ResourceLocation id, LayerDefinition layerDefinition, Map<String, ResourceLocation> animations, Map<String, BuiltInAnimationType> builtInAnimations, String... headPieces) {
     }
 }

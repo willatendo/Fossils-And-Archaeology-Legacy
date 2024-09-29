@@ -34,11 +34,4 @@ public interface FossilsModloaderHelper {
     RecipeBookType createRecipeBookType(String name);
 
     RecipeBookCategories createRecipeBookCategory(String name, ItemStack... icons);
-
-    // Config
-    boolean willAnimalsStarve();
-
-    boolean willAnimalsBreakBlocks();
-
-    boolean willAnimalsGrow();
 }

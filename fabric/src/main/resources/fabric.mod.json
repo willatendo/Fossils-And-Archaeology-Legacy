@@ -25,9 +25,6 @@
     "jei_mod_plugin": [
       "willatendo.fossilslegacy.server.jei.FossilsLegacyJEI"
     ],
-    "modmenu": [
-      "willatendo.fossilslegacy.client.FossilsLegacyModMenu"
-    ],
     "simplelibrary:enum_initializer": [
       "willatendo.fossilslegacy.FossilsLegacyEnumExtenders"
     ]

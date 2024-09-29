@@ -6,11 +6,14 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.FastColor;
 import willatendo.fossilslegacy.api.client.ModelIdentifierRegistry;
+import willatendo.fossilslegacy.client.model.json.JsonModel;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CoatTypeEntity;
+import willatendo.fossilslegacy.server.entity.util.interfaces.WetFurEntity;
 
 import java.util.Map;
 import java.util.Optional;
@@ -35,7 +38,7 @@ public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends Mo
 
     private EntityModel<T> getModel(ResourceLocation id) {
         if (this.hasModel(id)) {
-            return this.models.getOrDefault(id, this.models.values().stream().toList().get(0));
+            return this.models.getOrDefault(id, this.models.values().stream().toList().getFirst());
         } else if (JsonModelLoader.isJsonModel(id)) {
             return JsonModelLoader.getModel(id);
         } else {
@@ -65,7 +68,24 @@ public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends Mo
             this.setModel(this.getModel(coatType.models().model()));
         }
 
+        if (dinosaur instanceof WetFurEntity wetFurEntity) {
+            if (wetFurEntity.isWet()) {
+                if (this.model instanceof JsonModel<T> jsonModel) {
+                    float f = wetFurEntity.getWetShade(partialTicks);
+                    jsonModel.setColor(FastColor.ARGB32.colorFromFloat(1.0F, f, f, f));
+                }
+            }
+        }
+
         super.render(dinosaur, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
+
+        if (dinosaur instanceof WetFurEntity wetFurEntity) {
+            if (wetFurEntity.isWet()) {
+                if (this.model instanceof JsonModel<T> jsonModel) {
+                    jsonModel.setColor(-1);
+                }
+            }
+        }
     }
 
     protected Optional<ResourceLocation> getAdditionalTexture(T mob, CoatType coatType) {

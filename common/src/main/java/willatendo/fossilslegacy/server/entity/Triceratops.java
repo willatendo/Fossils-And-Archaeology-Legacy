@@ -80,7 +80,8 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Ridea
 
     @Override
     public float getBoundingBoxGrowth() {
-        return 0.35F;
+        CoatType coatType = this.getCoatType().value();
+        return coatType.boundingBoxInfo().boundingBoxGrowth();
     }
 
     @Override

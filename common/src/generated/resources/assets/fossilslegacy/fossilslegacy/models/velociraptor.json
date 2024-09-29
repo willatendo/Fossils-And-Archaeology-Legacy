@@ -76,6 +76,7 @@
           "z_origin": 1.5
         }
       ],
+      "elements": [],
       "id": "head",
       "poses": {
         "x": 0.0,
@@ -126,6 +127,7 @@
           "z_origin": 0.25
         }
       ],
+      "elements": [],
       "id": "left_leg",
       "poses": {
         "x": 2.625,
@@ -156,6 +158,7 @@
           "z_origin": -1.25
         }
       ],
+      "elements": [],
       "id": "right_arm",
       "poses": {
         "x": -2.0,
@@ -206,6 +209,7 @@
           "z_origin": -1.75
         }
       ],
+      "elements": [],
       "id": "right_leg",
       "poses": {
         "x": -2.625,
@@ -236,6 +240,7 @@
           "z_origin": -0.25
         }
       ],
+      "elements": [],
       "id": "left_arm",
       "poses": {
         "x": 2.0,
@@ -276,6 +281,7 @@
           "z_origin": 10.1667
         }
       ],
+      "elements": [],
       "id": "tail",
       "poses": {
         "x": 0.0,
@@ -306,6 +312,7 @@
           "z_origin": -9.0
         }
       ],
+      "elements": [],
       "id": "body",
       "poses": {
         "x": 0.0,
@@ -317,7 +324,7 @@
   "head_pieces": [
     "head"
   ],
-  "model_layer_location": "fossilslegacy:velociraptor",
+  "model_id": "fossilslegacy:velociraptor",
   "texture_height": 64,
   "texture_width": 64
 }

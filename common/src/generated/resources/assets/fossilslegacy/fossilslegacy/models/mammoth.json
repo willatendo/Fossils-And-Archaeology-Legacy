@@ -1,6 +1,16 @@
 {
   "animations": {
-    "walk": "fossilslegacy:mammoth_walk"
+    "walk": {
+      "id": "fossilslegacy:mammoth_walk",
+      "load_parts": [
+        "right_arm",
+        "left_arm",
+        "right_leg",
+        "left_leg",
+        "nose_top",
+        "nose_bottom"
+      ]
+    }
   },
   "elements": [
     {
@@ -16,6 +26,7 @@
           "z_origin": -1.0
         }
       ],
+      "elements": [],
       "id": "right_arm",
       "poses": {
         "x": -1.5,
@@ -36,6 +47,7 @@
           "z_origin": -1.0
         }
       ],
+      "elements": [],
       "id": "left_leg",
       "poses": {
         "x": -1.5,
@@ -56,6 +68,7 @@
           "z_origin": -2.5
         }
       ],
+      "elements": [],
       "id": "hair_tuff_1",
       "poses": {
         "x": 0.0,
@@ -77,6 +90,7 @@
           "z_origin": -2.5
         }
       ],
+      "elements": [],
       "id": "hair_tuff_2",
       "poses": {
         "x": 0.0,
@@ -98,6 +112,7 @@
           "z_origin": -3.5
         }
       ],
+      "elements": [],
       "id": "nose_top",
       "poses": {
         "x": 0.0,
@@ -119,6 +134,7 @@
           "z_origin": -9.5
         }
       ],
+      "elements": [],
       "id": "left_tooth",
       "poses": {
         "x": 0.0,
@@ -140,6 +156,7 @@
           "z_origin": 3.0
         }
       ],
+      "elements": [],
       "id": "back",
       "poses": {
         "x": 0.0,
@@ -160,6 +177,7 @@
           "z_origin": -3.0
         }
       ],
+      "elements": [],
       "id": "body",
       "poses": {
         "x": 0.0,
@@ -180,6 +198,7 @@
           "z_origin": -3.5
         }
       ],
+      "elements": [],
       "id": "head",
       "poses": {
         "x": 0.0,
@@ -200,6 +219,7 @@
           "z_origin": -4.0
         }
       ],
+      "elements": [],
       "id": "hair",
       "poses": {
         "x": 0.0,
@@ -220,6 +240,7 @@
           "z_origin": 0.5
         }
       ],
+      "elements": [],
       "id": "front_hair",
       "poses": {
         "x": 0.0,
@@ -240,6 +261,7 @@
           "z_origin": 3.0
         }
       ],
+      "elements": [],
       "id": "back_hair",
       "poses": {
         "x": 0.0,
@@ -260,6 +282,7 @@
           "z_origin": -1.0
         }
       ],
+      "elements": [],
       "id": "left_arm",
       "poses": {
         "x": 1.5,
@@ -280,6 +303,7 @@
           "z_origin": -1.0
         }
       ],
+      "elements": [],
       "id": "right_leg",
       "poses": {
         "x": 1.5,
@@ -300,6 +324,7 @@
           "z_origin": -1.5
         }
       ],
+      "elements": [],
       "id": "nose_bottom",
       "poses": {
         "x": 0.0,
@@ -321,6 +346,7 @@
           "z_origin": -9.5
         }
       ],
+      "elements": [],
       "id": "right_tooth",
       "poses": {
         "x": 0.0,
@@ -330,7 +356,7 @@
       }
     }
   ],
-  "model_layer_location": "fossilslegacy:mammoth",
+  "model_id": "fossilslegacy:mammoth",
   "texture_height": 32,
   "texture_width": 64
 }

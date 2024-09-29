@@ -1,12 +1,5 @@
 {
   "type": "built_in",
   "id": "fossilslegacy:dilophosaurus_walk",
-  "parts": [
-    "right_thigh",
-    "right_leg",
-    "right_foot",
-    "left_thigh",
-    "left_leg",
-    "left_foot"
-  ]
+  "parts": []
 }

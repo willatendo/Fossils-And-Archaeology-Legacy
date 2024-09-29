@@ -86,7 +86,8 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, CoatType
 
     @Override
     public float getBoundingBoxGrowth() {
-        return 0.0F;
+        CoatType coatType = this.getCoatType().value();
+        return coatType.boundingBoxInfo().boundingBoxGrowth();
     }
 
     @Override
@@ -206,6 +207,7 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, CoatType
         this.shakeAnimO = 0.0F;
     }
 
+    @Override
     public boolean isWet() {
         return this.isWet;
     }
@@ -214,8 +216,8 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, CoatType
         return this.isShaking;
     }
 
-    public float getWetShade(float time) {
-        return Math.min(0.5F + Mth.lerp(time, this.shakeAnimO, this.shakeAnim) / 2.0F * 0.5F, 1.0F);
+    public float getWetShade(float partialTicks) {
+        return Math.min(0.5F + Mth.lerp(partialTicks, this.shakeAnimO, this.shakeAnim) / 2.0F * 0.5F, 1.0F);
     }
 
     @Override

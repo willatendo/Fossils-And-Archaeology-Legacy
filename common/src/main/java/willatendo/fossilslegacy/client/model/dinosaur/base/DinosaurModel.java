@@ -22,7 +22,7 @@ public abstract class DinosaurModel<T extends Dinosaur> extends HierarchicalMode
     public abstract void setupAnim(T dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch);
 
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int red, int green, int blue) {
-        this.root.render(poseStack, vertexConsumer, red, green, blue);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
+        this.root.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
     }
 }

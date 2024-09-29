@@ -73,7 +73,8 @@ public class Carnotaurus extends Dinosaur implements DinopediaInformation, CoatT
 
     @Override
     public float getBoundingBoxGrowth() {
-        return 0.35F;
+        CoatType coatType = this.getCoatType().value();
+        return coatType.boundingBoxInfo().boundingBoxGrowth();
     }
 
     @Override

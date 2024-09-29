@@ -58,18 +58,6 @@ public class AnimationUtils {
         AnimationUtils.setYRot(jsonModel.get("tail_2_spike"), (float) (Mth.cos(limbSwing / (1.919107651F * 1)) * -0.174532925199433 * limbSwingAmount + 0));
     }
 
-    protected static void pteranodonWalkAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        AnimationUtils.setXRot(jsonModel.get("right_leg"), Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount - 0.271F);
-        AnimationUtils.setXRot(jsonModel.get("left_leg"), Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount - 0.271F);
-    }
-
-    protected static void pteranodonHeadAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        AnimationUtils.setYRot(jsonModel.get("crown"), -netHeadYaw / 57.29578F);
-        AnimationUtils.setYRot(jsonModel.get("upper_mouth"), -netHeadYaw / 57.29578F);
-        AnimationUtils.setYRot(jsonModel.get("lower_mouth"), -netHeadYaw / 57.29578F);
-        AnimationUtils.setYRot(jsonModel.get("head"), -netHeadYaw / 57.29578F);
-    }
-
     protected static void pteranodonFlyingAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
         if (dinosaur instanceof FlyingDinosaur flyingDinosaur) {
             float airPitch = (float) -(flyingDinosaur.getAirPitch() * (Math.PI / 180.0F));
@@ -106,6 +94,18 @@ public class AnimationUtils {
             AnimationUtils.setZRot(jsonModel.get("left_leg"), airAngle);
             AnimationUtils.setZRot(jsonModel.get("right_leg"), airAngle);
         }
+    }
+
+    protected static void pteranodonHeadAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
+        AnimationUtils.setYRot(jsonModel.get("crown"), -netHeadYaw / 57.29578F);
+        AnimationUtils.setYRot(jsonModel.get("upper_mouth"), -netHeadYaw / 57.29578F);
+        AnimationUtils.setYRot(jsonModel.get("lower_mouth"), -netHeadYaw / 57.29578F);
+        AnimationUtils.setYRot(jsonModel.get("head"), -netHeadYaw / 57.29578F);
+    }
+
+    protected static void pteranodonWalkAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
+        AnimationUtils.setXRot(jsonModel.get("right_leg"), Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount - 0.271F);
+        AnimationUtils.setXRot(jsonModel.get("left_leg"), Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount - 0.271F);
     }
 
     protected static void stegosaurusWalkAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
@@ -207,7 +207,7 @@ public class AnimationUtils {
         AnimationUtils.setXRot(jsonModel.get("nose_bottom"), -0.5986789F);
     }
 
-    protected static void smilodonShakeAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float partialTick) {
+    protected static void smilodonShakeModelPrep(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float partialTick) {
         if (dinosaur instanceof ShakingEntity shakingEntity) {
             float headAngle = shakingEntity.getHeadRollAngle(partialTick) + shakingEntity.getBodyRollAngle(partialTick, 0.0F);
             AnimationUtils.setZRot(jsonModel.get("head"), headAngle);
@@ -226,25 +226,27 @@ public class AnimationUtils {
         }
     }
 
-    protected static void smilodonSitAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        AnimationUtils.setPos(jsonModel.get("body"), 0.0F, 17.0F, 0.0F);
-        AnimationUtils.setXRot(jsonModel.get("body"), -0.314F);
-        AnimationUtils.setYRot(jsonModel.get("body"), 0.0F);
-        AnimationUtils.setPos(jsonModel.get("back"), 0.0F, 20.0F, -1.0F);
-        AnimationUtils.setXRot(jsonModel.get("back"), -0.7853982F);
-        AnimationUtils.setPos(jsonModel.get("tail"), 0.0F, 23.0F, 4.5F);
-        AnimationUtils.setPos(jsonModel.get("left_front_leg"), -1.5F, 25.0F, 1.0F);
-        AnimationUtils.setXRot(jsonModel.get("left_front_leg"), 4.712389F);
-        AnimationUtils.setPos(jsonModel.get("left_back_leg"), 1.5F, 25.0F, 1.0F);
-        AnimationUtils.setXRot(jsonModel.get("left_back_leg"), 4.712389F);
-        AnimationUtils.setXRot(jsonModel.get("right_front_leg"), 5.811947F);
-        AnimationUtils.setPos(jsonModel.get("right_front_leg"), -1.5F, 20.0F, -2.0F);
-        AnimationUtils.setXRot(jsonModel.get("right_back_leg"), 5.811947F);
-        AnimationUtils.setPos(jsonModel.get("right_back_leg"), 1.5F, 20.0F, -2.0F);
+    protected static void smilodonSitModelPrep(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
+        if (dinosaur.isOrderedToSit()) {
+            AnimationUtils.setPos(jsonModel.get("body"), 0.0F, 17.0F, 0.0F);
+            AnimationUtils.setXRot(jsonModel.get("body"), -0.314F);
+            AnimationUtils.setYRot(jsonModel.get("body"), 0.0F);
+            AnimationUtils.setPos(jsonModel.get("back"), 0.0F, 20.0F, -1.0F);
+            AnimationUtils.setXRot(jsonModel.get("back"), -0.7853982F);
+            AnimationUtils.setPos(jsonModel.get("tail"), 0.0F, 23.0F, 4.5F);
+            AnimationUtils.setPos(jsonModel.get("left_front_leg"), -1.5F, 25.0F, 1.0F);
+            AnimationUtils.setXRot(jsonModel.get("left_front_leg"), 4.712389F);
+            AnimationUtils.setPos(jsonModel.get("left_back_leg"), 1.5F, 25.0F, 1.0F);
+            AnimationUtils.setXRot(jsonModel.get("left_back_leg"), 4.712389F);
+            AnimationUtils.setXRot(jsonModel.get("right_front_leg"), 5.811947F);
+            AnimationUtils.setPos(jsonModel.get("right_front_leg"), -1.5F, 20.0F, -2.0F);
+            AnimationUtils.setXRot(jsonModel.get("right_back_leg"), 5.811947F);
+            AnimationUtils.setPos(jsonModel.get("right_back_leg"), 1.5F, 20.0F, -2.0F);
+        }
     }
 
     protected static void smilodonTailAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        AnimationUtils.setYRot(jsonModel.get("tail"), Mth.cos(limbSwing * 0.6662f) * 1.4f * limbSwingAmount);
+        AnimationUtils.setYRot(jsonModel.get("tail"), Mth.cos(limbSwing * 0.6662f) * 1.4F * limbSwingAmount);
     }
 
     protected static void smilodonWalkAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {

@@ -1,6 +1,16 @@
 {
   "animations": {
-    "walk": "fossilslegacy:dilophosaurus_walk"
+    "walk": {
+      "id": "fossilslegacy:dilophosaurus_walk",
+      "load_parts": [
+        "right_thigh",
+        "right_leg",
+        "right_foot",
+        "left_thigh",
+        "left_leg",
+        "left_foot"
+      ]
+    }
   },
   "elements": [
     {
@@ -16,6 +26,7 @@
           "z_origin": -11.0
         }
       ],
+      "elements": [],
       "id": "jaw",
       "poses": {
         "x": 0.0,
@@ -36,6 +47,7 @@
           "z_origin": 2.0
         }
       ],
+      "elements": [],
       "id": "left_leg",
       "poses": {
         "x": -4.0,
@@ -57,6 +69,7 @@
           "z_origin": -2.0
         }
       ],
+      "elements": [],
       "id": "right_biceps",
       "poses": {
         "x": 3.0,
@@ -77,6 +90,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "right_arm",
       "poses": {
         "x": 4.0,
@@ -98,6 +112,7 @@
           "z_origin": -2.0
         }
       ],
+      "elements": [],
       "id": "left_biceps",
       "poses": {
         "x": -3.0,
@@ -118,6 +133,7 @@
           "z_origin": -10.0
         }
       ],
+      "elements": [],
       "id": "crest_right",
       "poses": {
         "x": 0.0,
@@ -138,6 +154,7 @@
           "z_origin": -2.5
         }
       ],
+      "elements": [],
       "id": "left_thigh",
       "poses": {
         "x": -4.0,
@@ -158,6 +175,7 @@
           "z_origin": -3.0
         }
       ],
+      "elements": [],
       "id": "left_foot",
       "poses": {
         "x": -4.0,
@@ -178,6 +196,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "spike_left",
       "poses": {
         "x": 3.0,
@@ -199,6 +218,7 @@
           "z_origin": -10.0
         }
       ],
+      "elements": [],
       "id": "crest_left",
       "poses": {
         "x": 0.0,
@@ -219,6 +239,7 @@
           "z_origin": -7.0
         }
       ],
+      "elements": [],
       "id": "neck",
       "poses": {
         "x": 0.0,
@@ -240,6 +261,7 @@
           "z_origin": -2.5
         }
       ],
+      "elements": [],
       "id": "right_thigh",
       "poses": {
         "x": 4.0,
@@ -260,6 +282,7 @@
           "z_origin": -6.0
         }
       ],
+      "elements": [],
       "id": "head",
       "poses": {
         "x": 0.0,
@@ -280,6 +303,7 @@
           "z_origin": -3.0
         }
       ],
+      "elements": [],
       "id": "right_foot",
       "poses": {
         "x": 4.0,
@@ -300,6 +324,7 @@
           "z_origin": -6.5
         }
       ],
+      "elements": [],
       "id": "upper_body",
       "poses": {
         "x": 0.0,
@@ -321,6 +346,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "spike_right",
       "poses": {
         "x": -3.0,
@@ -342,6 +368,7 @@
           "z_origin": 2.0
         }
       ],
+      "elements": [],
       "id": "right_leg",
       "poses": {
         "x": 4.0,
@@ -363,6 +390,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "left_arm",
       "poses": {
         "x": -4.0,
@@ -384,6 +412,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "tail_base",
       "poses": {
         "x": 0.0,
@@ -404,6 +433,7 @@
           "z_origin": -4.5
         }
       ],
+      "elements": [],
       "id": "lower_body",
       "poses": {
         "x": 0.0,
@@ -424,6 +454,7 @@
           "z_origin": -12.0
         }
       ],
+      "elements": [],
       "id": "snout",
       "poses": {
         "x": 0.0,
@@ -444,6 +475,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "tail_end",
       "poses": {
         "x": 0.0,
@@ -464,6 +496,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "hood_right",
       "poses": {
         "x": 0.0,
@@ -486,6 +519,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "hood_left",
       "poses": {
         "x": 0.0,
@@ -495,7 +529,7 @@
       }
     }
   ],
-  "model_layer_location": "fossilslegacy:dilophosaurus",
+  "model_id": "fossilslegacy:dilophosaurus",
   "texture_height": 32,
   "texture_width": 64
 }

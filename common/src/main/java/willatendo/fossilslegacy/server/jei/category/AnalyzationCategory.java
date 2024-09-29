@@ -70,8 +70,11 @@ public class AnalyzationCategory implements IRecipeCategory<RecipeHolder<Analyza
         iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 1, 1).addIngredients(analyzationRecipe.getIngredients().get(0));
         List<ItemStack> outputs = new ArrayList<>();
         analyzationRecipe.getResults().forEach(analyzationOutputs -> outputs.add(analyzationOutputs.getResult()));
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT, 95, 5).addItemStacks(outputs).addTooltipCallback((iRecipeSlotView, tooltip) -> {
-            tooltip.add(Component.literal(analyzationRecipe.getWeight(iRecipeSlotView.getDisplayedItemStack().get()) + "%").withStyle(ChatFormatting.GRAY));
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT, 95, 5).addItemStacks(outputs).addRichTooltipCallback((iRecipeSlotView, tooltip) -> {
+            int weight = analyzationRecipe.getWeight(iRecipeSlotView.getDisplayedItemStack().get());
+            if (weight > 0) {
+                tooltip.add(Component.literal(weight + "%").withStyle(ChatFormatting.GRAY));
+            }
         });
     }
 

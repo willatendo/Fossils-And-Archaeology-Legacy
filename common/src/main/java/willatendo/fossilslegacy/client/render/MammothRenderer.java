@@ -2,14 +2,9 @@ package willatendo.fossilslegacy.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
-import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
-import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
-import willatendo.fossilslegacy.client.model.dinosaur.legacy.MammothModel;
-import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.Mammoth;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.Optional;
 

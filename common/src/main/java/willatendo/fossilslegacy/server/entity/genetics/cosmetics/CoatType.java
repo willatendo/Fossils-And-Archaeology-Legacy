@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.server.entity.genetics.cosmetics;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.advancements.Criterion;
 import net.minecraft.core.Holder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -13,6 +14,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ExtraCodecs;
 import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 public record CoatType(DisplayInfo displayInfo, Models models, Textures textures, BoundingBoxInfo boundingBoxInfo, AgeScaleInfo ageScaleInfo) {

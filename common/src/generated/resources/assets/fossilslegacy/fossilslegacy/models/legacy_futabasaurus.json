@@ -14,6 +14,7 @@
           "z_origin": -6.0
         }
       ],
+      "elements": [],
       "id": "neck_2",
       "poses": {
         "x": 0.0,
@@ -35,6 +36,7 @@
           "z_origin": -5.0
         }
       ],
+      "elements": [],
       "id": "neck_3",
       "poses": {
         "x": 0.0,
@@ -56,6 +58,7 @@
           "z_origin": -4.0
         }
       ],
+      "elements": [],
       "id": "front_left_flipper",
       "poses": {
         "x": 3.0,
@@ -78,6 +81,7 @@
           "z_origin": -4.0
         }
       ],
+      "elements": [],
       "id": "neck_1",
       "poses": {
         "x": 0.0,
@@ -99,6 +103,7 @@
           "z_origin": -5.0
         }
       ],
+      "elements": [],
       "id": "neck_4",
       "poses": {
         "x": 0.0,
@@ -120,6 +125,7 @@
           "z_origin": -4.0
         }
       ],
+      "elements": [],
       "id": "body",
       "poses": {
         "x": 0.0,
@@ -140,6 +146,7 @@
           "z_origin": -3.0
         }
       ],
+      "elements": [],
       "id": "back_left_flipper",
       "poses": {
         "x": 3.0,
@@ -162,6 +169,7 @@
           "z_origin": -6.0
         }
       ],
+      "elements": [],
       "id": "head",
       "poses": {
         "x": 0.0,
@@ -183,6 +191,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "back_right_flipper",
       "poses": {
         "x": -3.0,
@@ -205,6 +214,7 @@
           "z_origin": 2.0
         }
       ],
+      "elements": [],
       "id": "tail_1",
       "poses": {
         "x": 0.0,
@@ -226,6 +236,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "tail_2",
       "poses": {
         "x": 0.0,
@@ -247,6 +258,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "front_right_flipper",
       "poses": {
         "x": -3.0,
@@ -269,6 +281,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "tail_3",
       "poses": {
         "x": 0.0,
@@ -278,7 +291,7 @@
       }
     }
   ],
-  "model_layer_location": "fossilslegacy:legacy_futabasaurus",
+  "model_id": "fossilslegacy:legacy_futabasaurus",
   "texture_height": 32,
   "texture_width": 64
 }

@@ -1,6 +1,25 @@
 {
   "animations": {
-    "walk": "fossilslegacy:stegosaurus_walk"
+    "walk": {
+      "id": "fossilslegacy:stegosaurus_walk",
+      "load_parts": [
+        "tail_1",
+        "tail_2",
+        "tail_3",
+        "right_front_leg",
+        "left_front_leg",
+        "right_front_foot",
+        "left_front_foot",
+        "right_back_leg",
+        "left_back_leg",
+        "right_back_foot",
+        "left_back_foot",
+        "back_plates_1",
+        "back_plates_2",
+        "back_plates_3",
+        "thagomizer"
+      ]
+    }
   },
   "elements": [
     {
@@ -16,6 +35,7 @@
           "z_origin": -2.0
         }
       ],
+      "elements": [],
       "id": "right_front_leg",
       "poses": {
         "x": 4.0,
@@ -36,6 +56,7 @@
           "z_origin": -4.0
         }
       ],
+      "elements": [],
       "id": "right_back_foot",
       "poses": {
         "x": 4.0,
@@ -57,6 +78,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "body",
       "poses": {
         "x": 0.0,
@@ -77,6 +99,7 @@
           "z_origin": -2.0
         }
       ],
+      "elements": [],
       "id": "left_front_leg",
       "poses": {
         "x": -2.0,
@@ -97,6 +120,7 @@
           "z_origin": -4.0
         }
       ],
+      "elements": [],
       "id": "left_front_foot",
       "poses": {
         "x": -2.0,
@@ -118,6 +142,7 @@
           "z_origin": -3.0
         }
       ],
+      "elements": [],
       "id": "back_plates_3",
       "poses": {
         "x": 0.0,
@@ -139,6 +164,7 @@
           "z_origin": 2.0
         }
       ],
+      "elements": [],
       "id": "back_plates_2",
       "poses": {
         "x": 0.0,
@@ -159,6 +185,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "thagomizer",
       "poses": {
         "x": 0.0,
@@ -179,6 +206,7 @@
           "z_origin": -4.0
         }
       ],
+      "elements": [],
       "id": "left_back_foot",
       "poses": {
         "x": -2.0,
@@ -200,6 +228,7 @@
           "z_origin": -8.0
         }
       ],
+      "elements": [],
       "id": "back_body",
       "poses": {
         "x": 0.0,
@@ -221,6 +250,7 @@
           "z_origin": -2.0
         }
       ],
+      "elements": [],
       "id": "left_back_leg",
       "poses": {
         "x": -2.0,
@@ -241,6 +271,7 @@
           "z_origin": -4.0
         }
       ],
+      "elements": [],
       "id": "right_front_foot",
       "poses": {
         "x": 4.0,
@@ -262,6 +293,7 @@
           "z_origin": 2.0
         }
       ],
+      "elements": [],
       "id": "tail_1",
       "poses": {
         "x": 0.0,
@@ -282,6 +314,7 @@
           "z_origin": 4.5
         }
       ],
+      "elements": [],
       "id": "tail_2",
       "poses": {
         "x": 0.0,
@@ -302,6 +335,7 @@
           "z_origin": -2.0
         }
       ],
+      "elements": [],
       "id": "right_back_leg",
       "poses": {
         "x": 4.0,
@@ -322,6 +356,7 @@
           "z_origin": 8.0
         }
       ],
+      "elements": [],
       "id": "back_plates_1",
       "poses": {
         "x": 0.0,
@@ -342,6 +377,7 @@
           "z_origin": 7.5
         }
       ],
+      "elements": [],
       "id": "tail_3",
       "poses": {
         "x": 0.0,
@@ -362,6 +398,7 @@
           "z_origin": -4.0
         }
       ],
+      "elements": [],
       "id": "front_body",
       "poses": {
         "x": 0.0,
@@ -371,7 +408,7 @@
       }
     }
   ],
-  "model_layer_location": "fossilslegacy:stegosaurus",
+  "model_id": "fossilslegacy:stegosaurus",
   "texture_height": 32,
   "texture_width": 64
 }

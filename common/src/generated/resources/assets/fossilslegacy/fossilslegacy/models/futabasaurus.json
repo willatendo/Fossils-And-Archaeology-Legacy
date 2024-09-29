@@ -17,6 +17,7 @@
           "z_origin": -2.0
         }
       ],
+      "elements": [],
       "id": "right_arm",
       "poses": {
         "x": -4.0,
@@ -37,6 +38,7 @@
           "z_origin": -2.0
         }
       ],
+      "elements": [],
       "id": "left_leg",
       "poses": {
         "x": 4.0,
@@ -57,6 +59,7 @@
           "z_origin": -2.0
         }
       ],
+      "elements": [],
       "id": "left_arm",
       "poses": {
         "x": 4.0,
@@ -77,6 +80,7 @@
           "z_origin": -2.0
         }
       ],
+      "elements": [],
       "id": "right_leg",
       "poses": {
         "x": -4.0,
@@ -107,6 +111,7 @@
           "z_origin": -6.0
         }
       ],
+      "elements": [],
       "id": "tail",
       "poses": {
         "x": 0.0,
@@ -127,53 +132,56 @@
           "z_origin": -10.0
         }
       ],
+      "elements": [
+        {
+          "boxes": [
+            {
+              "texture_x_offset": 0,
+              "texture_y_offset": 0,
+              "x_dimension": 4.0,
+              "x_origin": -2.0,
+              "y_dimension": 3.0,
+              "y_origin": -1.5,
+              "z_dimension": 16.0,
+              "z_origin": -16.0
+            }
+          ],
+          "elements": [
+            {
+              "boxes": [
+                {
+                  "texture_x_offset": 32,
+                  "texture_y_offset": 15,
+                  "x_dimension": 6.0,
+                  "x_origin": -3.0,
+                  "y_dimension": 5.0,
+                  "y_origin": -2.5,
+                  "z_dimension": 8.0,
+                  "z_origin": -8.0
+                }
+              ],
+              "elements": [],
+              "id": "head",
+              "poses": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -16.0
+              }
+            }
+          ],
+          "id": "middle_neck",
+          "poses": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": -10.0
+          }
+        }
+      ],
       "id": "neck",
       "poses": {
         "x": 0.0,
         "y": 20.5,
         "z": -6.0
-      }
-    },
-    {
-      "parent": "neck",
-      "boxes": [
-        {
-          "texture_x_offset": 0,
-          "texture_y_offset": 0,
-          "x_dimension": 4.0,
-          "x_origin": -2.0,
-          "y_dimension": 3.0,
-          "y_origin": -1.5,
-          "z_dimension": 16.0,
-          "z_origin": -16.0
-        }
-      ],
-      "id": "middle_neck",
-      "poses": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": -10.0
-      }
-    },
-    {
-      "parent": "middle_neck",
-      "boxes": [
-        {
-          "texture_x_offset": 32,
-          "texture_y_offset": 15,
-          "x_dimension": 6.0,
-          "x_origin": -3.0,
-          "y_dimension": 5.0,
-          "y_origin": -2.5,
-          "z_dimension": 8.0,
-          "z_origin": -8.0
-        }
-      ],
-      "id": "head",
-      "poses": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": -16.0
       }
     },
     {
@@ -189,6 +197,7 @@
           "z_origin": -6.0
         }
       ],
+      "elements": [],
       "id": "body",
       "poses": {
         "x": 0.0,
@@ -202,7 +211,7 @@
     "middle_neck",
     "head"
   ],
-  "model_layer_location": "fossilslegacy:futabasaurus",
+  "model_id": "fossilslegacy:futabasaurus",
   "texture_height": 64,
   "texture_width": 64
 }

@@ -4,6 +4,7 @@ import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.FossilsLegacyCreativeModeTabs;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntityTypes;
+import willatendo.fossilslegacy.server.config.FossilsLegacyConfig;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import willatendo.fossilslegacy.server.dimension.FossilsLegacyBiomeSources;
 import willatendo.fossilslegacy.server.entity.*;
@@ -25,6 +26,8 @@ import willatendo.simplelibrary.server.event.registry.SimpleRegistryRegister;
 
 public final class FossilsLegacyMod {
     public static void onInitialize(SimpleRegistryRegister simpleRegistryRegister) {
+        FossilsLegacyConfig.init();
+
         FossilsLegacyBuiltInRegistries.init();
         CommandType.register();
 

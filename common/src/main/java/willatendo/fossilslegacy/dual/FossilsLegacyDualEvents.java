@@ -1,6 +1,6 @@
 package willatendo.fossilslegacy.dual;
 
-import willatendo.fossilslegacy.client.model.json.JsonAnimationLoader;
+import willatendo.fossilslegacy.client.animation.json.JsonAnimationLoader;
 import willatendo.fossilslegacy.client.model.json.JsonLayerDefinitionResourceManager;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;

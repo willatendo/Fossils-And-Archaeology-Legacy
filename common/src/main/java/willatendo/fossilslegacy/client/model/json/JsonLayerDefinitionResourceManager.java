@@ -24,6 +24,6 @@ public class JsonLayerDefinitionResourceManager implements ResourceManagerReload
 
     @Override
     public void onResourceManagerReload(ResourceManager resourceManager) {
-        JsonModelLoader.getModels().forEach((modelLayerLocation, layerDefinition) -> this.modelParts.put(modelLayerLocation, layerDefinition));
+        this.modelParts.putAll(JsonModelLoader.getModels());
     }
 }

@@ -16,7 +16,6 @@ import willatendo.fossilslegacy.FossilsLegacyForgeMod;
 import willatendo.fossilslegacy.network.ForgePacketHelper;
 import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
-import willatendo.fossilslegacy.server.config.FossilsLegacyConfig;
 import willatendo.fossilslegacy.server.item.ForgeDinosaurSpawnEggItem;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.fossilslegacy.server.utils.Platform;
@@ -57,20 +56,5 @@ public class FossilsForgeHelper implements FossilsModloaderHelper {
     @Override
     public RecipeBookCategories createRecipeBookCategory(String name, ItemStack... icons) {
         return RecipeBookCategories.create(FossilsLegacyUtils.ID + name, icons);
-    }
-
-    @Override
-    public boolean willAnimalsStarve() {
-        return FossilsLegacyConfig.COMMON_CONFIG.willAnimalsStarve();
-    }
-
-    @Override
-    public boolean willAnimalsBreakBlocks() {
-        return FossilsLegacyConfig.COMMON_CONFIG.willAnimalsStarve();
-    }
-
-    @Override
-    public boolean willAnimalsGrow() {
-        return FossilsLegacyConfig.COMMON_CONFIG.willAnimalsGrow();
     }
 }

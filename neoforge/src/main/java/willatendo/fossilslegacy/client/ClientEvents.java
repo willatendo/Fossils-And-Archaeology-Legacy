@@ -9,6 +9,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
+import willatendo.fossilslegacy.client.screen.SkullOverlayScreen;
 import willatendo.fossilslegacy.dual.FossilsLegacyDualEvents;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.inventory.FossilsLegacyRecipeBookTypes;

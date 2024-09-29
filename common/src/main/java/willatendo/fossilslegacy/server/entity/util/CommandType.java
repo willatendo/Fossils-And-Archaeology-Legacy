@@ -51,7 +51,7 @@ public record CommandType(String name, int id) implements StringRepresentable {
     }
 
     public static CommandType getNext(CommandType commandType) {
-        if (commandType.id() + 1 < STRING_TO_COMMAND.size() - 1) {
+        if (commandType.id() + 1 < STRING_TO_COMMAND.size()) {
             return INTEGER_TO_COMMAND.get(commandType.id() + 1);
         } else {
             return INTEGER_TO_COMMAND.get(0);
@@ -71,8 +71,6 @@ public record CommandType(String name, int id) implements StringRepresentable {
         FOLLOW = CommandType.register("follow", id++);
         STAY = CommandType.register("stay", id++);
         FREE_MOVE = CommandType.register("free_move", id++);
-        // To Do: Event?
-        FossilsLegacyUtils.LOGGER.info("Registered {} CommandTypes", id);
     }
 
     private static CommandType register(String name, int id) {

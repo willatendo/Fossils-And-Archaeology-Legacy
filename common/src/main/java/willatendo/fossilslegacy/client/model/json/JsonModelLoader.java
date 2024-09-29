@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -27,93 +28,62 @@ import java.util.Optional;
 
 public class JsonModelLoader extends SimpleJsonResourceReloadListener {
     public static final JsonModelLoader INSTANCE = new JsonModelLoader();
-    private static final Map<ResourceLocation, AnimationHolder> ANIMATIONS = Maps.newHashMap();
-    private static final Map<ModelLayerLocation, LayerDefinition> MODELS = Maps.newHashMap();
-    private static final Map<ResourceLocation, List<String>> HEADS = Maps.newHashMap();
+    private static final Map<ResourceLocation, JsonModelElement> JSON_MODELS = Maps.newHashMap();
 
     public static boolean isJsonModel(ResourceLocation id) {
-        return MODELS.keySet().stream().map(ModelLayerLocation::getModel).toList().contains(id);
+        return JSON_MODELS.containsKey(id);
     }
 
-    public static Optional<AnimationHolder> getAnimations(ResourceLocation id) {
-        AnimationHolder animationHolder = ANIMATIONS.get(id);
-        return animationHolder == null ? Optional.empty() : Optional.of(animationHolder);
+    protected static Map<ModelLayerLocation, LayerDefinition> getModels() {
+        Map<ModelLayerLocation, LayerDefinition> models = Maps.newHashMap();
+        JSON_MODELS.forEach((resourceLocation, jsonModelElement) -> models.put(new ModelLayerLocation(resourceLocation, "main"), jsonModelElement.layerDefinition()));
+        return models;
     }
 
-    public static List<ModelPart> getHead(ResourceLocation id, ModelPart root) {
-        List<String> headPieces = HEADS.getOrDefault(id, List.of());
-        List<ModelPart> modelParts = Lists.newArrayList();
-        headPieces.forEach(string -> {
-            if (!root.children.containsKey(string)) {
-                for (ModelPart part1 : root.children.values()) {
-                    if (part1.children.containsKey(string)) {
-                        modelParts.add(part1.getChild(string));
-                    } else {
-                        for (ModelPart part2 : root.children.values()) {
-                            if (part2.children.containsKey(string)) {
-                                modelParts.add(part2.getChild(string));
-                            } else {
-                                for (ModelPart part3 : root.children.values()) {
-                                    if (part3.children.containsKey(string)) {
-                                        modelParts.add(part3.getChild(string));
-                                    } else {
-                                        for (ModelPart part4 : root.children.values()) {
-                                            if (part4.children.containsKey(string)) {
-                                                modelParts.add(part4.getChild(string));
-                                            } else {
-                                                for (ModelPart part5 : root.children.values()) {
-                                                    if (part5.children.containsKey(string)) {
-                                                        modelParts.add(part5.getChild(string));
-                                                    } else {
-                                                        for (ModelPart part6 : root.children.values()) {
-                                                            if (part6.children.containsKey(string)) {
-                                                                modelParts.add(part6.getChild(string));
-                                                            } else {
-                                                                for (ModelPart part7 : root.children.values()) {
-                                                                    if (part7.children.containsKey(string)) {
-                                                                        modelParts.add(part7.getChild(string));
-                                                                    } else {
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+    protected static Optional<AnimationHolder> getAnimations(ResourceLocation id) {
+        return JSON_MODELS.get(id).animationHolder();
+    }
+
+    protected static List<String> getLoadParts(ResourceLocation id) {
+        return JSON_MODELS.get(id).loadParts();
+    }
+
+    protected static List<ModelPart> getHeadPieces(ResourceLocation id, ModelPart root) {
+        Optional<List<String>> optionalHeadPieces = JSON_MODELS.get(id).headPieces();
+        if (optionalHeadPieces.isPresent()) {
+            List<String> headPieces = optionalHeadPieces.get();
+            List<ModelPart> modelParts = Lists.newArrayList();
+            for (String headPiece : headPieces) {
+                for (ModelPart modelPart : root.getAllParts().toList()) {
+                    if (modelPart.hasChild(headPiece)) {
+                        modelParts.add(modelPart.getChild(headPiece));
+                        break;
                     }
                 }
-            } else {
-                modelParts.add(root.getChild(string));
             }
-        });
-        return modelParts;
+            return modelParts;
+        } else {
+            return List.of();
+        }
     }
 
     public static EntityModel getModel(ResourceLocation id) {
-        return new JsonModel(id, JsonLayerDefinitionResourceManager.INSTANCE.bakeLayer(new ModelLayerLocation(id, "main")));
+        return new JsonModel(id, JSON_MODELS.get(id).colored(), JsonLayerDefinitionResourceManager.INSTANCE.bakeLayer(new ModelLayerLocation(id, "main")));
     }
 
     private JsonModelLoader() {
         super(new Gson(), "fossilslegacy/models");
     }
 
-    public static Map<ModelLayerLocation, LayerDefinition> getModels() {
-        return MODELS;
-    }
-
     @Override
     protected void apply(Map<ResourceLocation, JsonElement> jsons, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
-        MODELS.clear();
+        JSON_MODELS.clear();
+
         for (Map.Entry<ResourceLocation, JsonElement> entry : jsons.entrySet()) {
             try {
                 this.load(entry.getValue().getAsJsonObject());
             } catch (Exception e) {
-                FossilsLegacyUtils.LOGGER.error("Failed to load json models! {}", e);
+                FossilsLegacyUtils.LOGGER.error("Failed to load json models! {}", entry.getKey(), e);
             }
         }
     }
@@ -121,184 +91,159 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
     private void load(JsonObject jsonObject) {
         MeshDefinition meshDefinition = new MeshDefinition();
         PartDefinition root = meshDefinition.getRoot();
-        ResourceLocation resourceLocation = this.parse(jsonObject, "model_layer_location");
-        ModelLayerLocation modelLayerLocation = new ModelLayerLocation(resourceLocation, "main");
-        String headPiecesName = "head_pieces";
-        Optional<List<String>> savedHeadPieces = Optional.empty();
-        if (jsonObject.has(headPiecesName)) {
-            JsonArray headPieces = jsonObject.getAsJsonArray(headPiecesName);
+
+        ResourceLocation resourceLocation = this.parse(jsonObject, "model_id");
+        List<String> loadParts = Lists.newArrayList();
+
+        String varHeadPieces = "head_pieces";
+        Optional<List<String>> headPieces = Optional.empty();
+        if (jsonObject.has(varHeadPieces)) {
+            JsonArray headPiecesArray = jsonObject.getAsJsonArray(varHeadPieces);
             List<String> pieces = Lists.newArrayList();
-            headPieces.asList().forEach(jsonElement -> {
-                pieces.add(jsonElement.getAsString());
-            });
-            savedHeadPieces = Optional.of(pieces);
+            headPiecesArray.asList().forEach(jsonElement -> pieces.add(jsonElement.getAsString()));
+            headPieces = Optional.of(pieces);
         }
 
-        savedHeadPieces.ifPresent(strings -> HEADS.put(resourceLocation, strings));
+        String varAnimations = "animations";
+        Optional<AnimationHolder> animationHolder = Optional.empty();
+        if (jsonObject.has(varAnimations)) {
+            JsonObject animationsObject = GsonHelper.getAsJsonObject(jsonObject, varAnimations);
 
-        if (jsonObject.has("animations")) {
-            JsonObject animations = GsonHelper.getAsJsonObject(jsonObject, "animations");
-            String walk = "walk";
-            String swim = "swim";
-            String fly = "fly";
-            String floatDown = "float_down";
-            String head = "head";
-            Optional<ResourceLocation> walkAnimation = Optional.empty();
-            if (animations.has(walk)) {
-                walkAnimation = Optional.of(this.parse(animations, walk));
-            }
-            Optional<ResourceLocation> swimAnimation = Optional.empty();
-            if (animations.has(swim)) {
-                swimAnimation = Optional.of(this.parse(animations, swim));
-            }
-            Optional<ResourceLocation> flyAnimation = Optional.empty();
-            if (animations.has(fly)) {
-                flyAnimation = Optional.of(this.parse(animations, fly));
-            }
-            Optional<ResourceLocation> floatDownAnimation = Optional.empty();
-            if (animations.has(floatDown)) {
-                floatDownAnimation = Optional.of(this.parse(animations, floatDown));
-            }
-            Optional<ResourceLocation> headAnimation = Optional.empty();
-            if (animations.has(head)) {
-                headAnimation = Optional.of(this.parse(animations, head));
-            }
+            Pair<Optional<ResourceLocation>, List<String>> walkAnimation = this.parseAnimation(animationsObject, "walk");
+            Pair<Optional<ResourceLocation>, List<String>> swimAnimation = this.parseAnimation(animationsObject, "swim");
+            Pair<Optional<ResourceLocation>, List<String>> flyAnimation = this.parseAnimation(animationsObject, "fly");
+            Pair<Optional<ResourceLocation>, List<String>> floatDownAnimation = this.parseAnimation(animationsObject, "float_down");
+            Pair<Optional<ResourceLocation>, List<String>> headAnimation = this.parseAnimation(animationsObject, "head");
+            Pair<Optional<ResourceLocation>, List<String>> shakeAnimation = this.parseAnimation(animationsObject, "shake");
+            Pair<Optional<ResourceLocation>, List<String>> sitAnimation = this.parseAnimation(animationsObject, "sit");
+            Pair<Optional<ResourceLocation>, List<String>> tailAnimation = this.parseAnimation(animationsObject, "tail");
 
-            ANIMATIONS.put(resourceLocation, new AnimationHolder(walkAnimation, swimAnimation, flyAnimation, floatDownAnimation, headAnimation));
+            this.loadPartsFrom(walkAnimation, loadParts);
+            this.loadPartsFrom(swimAnimation, loadParts);
+            this.loadPartsFrom(flyAnimation, loadParts);
+            this.loadPartsFrom(floatDownAnimation, loadParts);
+            this.loadPartsFrom(headAnimation, loadParts);
+            this.loadPartsFrom(shakeAnimation, loadParts);
+            this.loadPartsFrom(sitAnimation, loadParts);
+            this.loadPartsFrom(tailAnimation, loadParts);
+
+            animationHolder = Optional.of(new AnimationHolder(walkAnimation.getFirst(), swimAnimation.getFirst(), flyAnimation.getFirst(), floatDownAnimation.getFirst(), headAnimation.getFirst(), shakeAnimation.getFirst(), sitAnimation.getFirst(), tailAnimation.getFirst()));
         }
 
         int textureHeight = GsonHelper.getAsInt(jsonObject, "texture_height");
         int textureWidth = GsonHelper.getAsInt(jsonObject, "texture_width");
-        JsonArray elements = GsonHelper.getAsJsonArray(jsonObject, "elements");
-        for (JsonElement jsonElement : elements.asList()) {
-            JsonObject element = jsonElement.getAsJsonObject();
-            String id = GsonHelper.getAsString(element, "id");
-            String parentName = "parent";
-            String parent = null;
-            if (element.has(parentName)) {
-                parent = GsonHelper.getAsString(element, parentName);
+        JsonArray elementsArray = GsonHelper.getAsJsonArray(jsonObject, "elements");
+        elementsArray.asList().forEach(jsonElement -> {
+            this.loadElement(jsonElement.getAsJsonObject(), root);
+        });
+        boolean colored = false;
+        if (jsonObject.has("colored")) {
+            colored = GsonHelper.getAsBoolean(jsonObject, "colored");
+        }
+        JSON_MODELS.put(resourceLocation, new JsonModelElement(LayerDefinition.create(meshDefinition, textureWidth, textureHeight), animationHolder, loadParts, headPieces, colored));
+    }
+
+    private void loadElement(JsonObject elementObject, PartDefinition root) {
+        String elementId = GsonHelper.getAsString(elementObject, "id");
+        List<Box> boxList = Lists.newArrayList();
+        JsonArray boxesArray = GsonHelper.getAsJsonArray(elementObject, "boxes");
+        for (JsonElement boxElement : boxesArray.asList()) {
+            JsonObject boxObject = boxElement.getAsJsonObject();
+            int textureXOffset = GsonHelper.getAsInt(boxObject, "texture_x_offset");
+            int textureYOffset = GsonHelper.getAsInt(boxObject, "texture_y_offset");
+            float xOrigin = GsonHelper.getAsFloat(boxObject, "x_origin");
+            float yOrigin = GsonHelper.getAsFloat(boxObject, "y_origin");
+            float zOrigin = GsonHelper.getAsFloat(boxObject, "z_origin");
+            float xDimension = GsonHelper.getAsFloat(boxObject, "x_dimension");
+            float yDimension = GsonHelper.getAsFloat(boxObject, "y_dimension");
+            float zDimension = GsonHelper.getAsFloat(boxObject, "z_dimension");
+
+            String varMirror = "mirror";
+            Optional<Boolean> mirror = Optional.empty();
+            if (boxObject.has(varMirror)) {
+                mirror = Optional.of(GsonHelper.getAsBoolean(boxObject, varMirror));
             }
-            List<Box> boxList = Lists.newArrayList();
-            JsonArray boxes = GsonHelper.getAsJsonArray(element, "boxes");
-            for (JsonElement boxElement : boxes.asList()) {
-                JsonObject box = boxElement.getAsJsonObject();
-                int xOffset = GsonHelper.getAsInt(box, "texture_x_offset");
-                int yOffset = GsonHelper.getAsInt(box, "texture_y_offset");
-                float xOrigin = GsonHelper.getAsFloat(box, "x_origin");
-                float yOrigin = GsonHelper.getAsFloat(box, "y_origin");
-                float zOrigin = GsonHelper.getAsFloat(box, "z_origin");
-                float xDimension = GsonHelper.getAsFloat(box, "x_dimension");
-                float yDimension = GsonHelper.getAsFloat(box, "y_dimension");
-                float zDimension = GsonHelper.getAsFloat(box, "z_dimension");
-                Optional<Boolean> mirror = Optional.empty();
-                if (box.has("mirror")) {
-                    mirror = Optional.of(GsonHelper.getAsBoolean(box, "mirror"));
-                }
-                boxList.add(new Box(xOffset, yOffset, xOrigin, yOrigin, zOrigin, xDimension, yDimension, zDimension, mirror));
+
+            boxList.add(new Box(textureXOffset, textureYOffset, xOrigin, yOrigin, zOrigin, xDimension, yDimension, zDimension, mirror));
+        }
+
+        JsonObject posesObject = elementObject.getAsJsonObject("poses");
+        float x = GsonHelper.getAsFloat(posesObject, "x");
+        float y = GsonHelper.getAsFloat(posesObject, "y");
+        float z = GsonHelper.getAsFloat(posesObject, "z");
+
+        String varXRot = "x_rot";
+        String varYRot = "y_rot";
+        String varZRot = "z_rot";
+        boolean hasXRot = posesObject.has(varXRot);
+        boolean hasYRot = posesObject.has(varYRot);
+        boolean hasZRot = posesObject.has(varZRot);
+        boolean hasRot = hasXRot || hasYRot || hasZRot;
+        float xRot = 0.0F;
+        float yRot = 0.0F;
+        float zRot = 0.0F;
+        if (hasXRot) {
+            xRot = GsonHelper.getAsFloat(posesObject, varXRot);
+        }
+        if (hasYRot) {
+            yRot = GsonHelper.getAsFloat(posesObject, varYRot);
+        }
+        if (hasZRot) {
+            zRot = GsonHelper.getAsFloat(posesObject, varZRot);
+        }
+
+        CubeListBuilder cubeListBuilder = CubeListBuilder.create();
+        boxList.forEach(box -> {
+            cubeListBuilder.texOffs(box.xOffset(), box.yOffset()).addBox(box.xOrigin(), box.yOrigin(), box.zOrigin(), box.xDimension(), box.yDimension(), box.zDimension());
+            if (box.mirror().isPresent()) {
+                cubeListBuilder.mirror(box.mirror().get());
             }
-            JsonObject poses = element.getAsJsonObject("poses");
-            float x = GsonHelper.getAsFloat(poses, "x");
-            float y = GsonHelper.getAsFloat(poses, "y");
-            float z = GsonHelper.getAsFloat(poses, "z");
-            boolean hasXRot = poses.has("x_rot");
-            boolean hasYRot = poses.has("y_rot");
-            boolean hasZRot = poses.has("z_rot");
-            boolean hasRot = hasXRot || hasYRot || hasZRot;
-            float xRot = 0.0F;
-            float yRot = 0.0F;
-            float zRot = 0.0F;
-            if (hasXRot) {
-                xRot = GsonHelper.getAsFloat(poses, "x_rot");
-            }
-            if (hasYRot) {
-                yRot = GsonHelper.getAsFloat(poses, "y_rot");
-            }
-            if (hasZRot) {
-                zRot = GsonHelper.getAsFloat(poses, "z_rot");
-            }
-            CubeListBuilder cubeListBuilder = CubeListBuilder.create();
-            boxList.forEach(box -> {
-                cubeListBuilder.texOffs(box.xOffset(), box.yOffset()).addBox(box.xOrigin(), box.yOrigin(), box.zOrigin(), box.xDimension(), box.yDimension(), box.zDimension());
-                if (box.mirror().isPresent()) {
-                    cubeListBuilder.mirror(box.mirror().get());
-                }
+        });
+        PartDefinition newRoot = root.addOrReplaceChild(elementId, cubeListBuilder, hasRot ? PartPose.offsetAndRotation(x, y, z, xRot, yRot, zRot) : PartPose.offset(x, y, z));
+
+        String varElements = "elements";
+        if (elementObject.has(varElements)) {
+            JsonArray elementsArray = GsonHelper.getAsJsonArray(elementObject, varElements);
+            elementsArray.asList().forEach(elementsArray1 -> {
+                this.loadElement(elementsArray1.getAsJsonObject(), newRoot);
             });
-            this.getPartToAddTo(root, parent).addOrReplaceChild(id, cubeListBuilder, hasRot ? PartPose.offsetAndRotation(x, y, z, xRot, yRot, zRot) : PartPose.offset(x, y, z));
         }
-
-        MODELS.put(modelLayerLocation, LayerDefinition.create(meshDefinition, textureWidth, textureHeight));
     }
 
-    private PartDefinition getPartToAddTo(PartDefinition root, String parent) {
-        return parent != null ? this.getFromParent(root, parent) : root;
-    }
-
-    private PartDefinition getFromParent(PartDefinition root, String parent) {
-        if (root.children.containsKey(parent)) {
-            return root.getChild(parent);
-        } else {
-            for (PartDefinition child1 : root.children.values()) {
-                if (child1.children.containsKey(parent)) {
-                    return child1.getChild(parent);
-                } else {
-                    for (PartDefinition child2 : child1.children.values()) {
-                        if (child2.children.containsKey(parent)) {
-                            return child2.getChild(parent);
-                        } else {
-                            for (PartDefinition child3 : child2.children.values()) {
-                                if (child3.children.containsKey(parent)) {
-                                    return child3.getChild(parent);
-                                } else {
-                                    for (PartDefinition child4 : child3.children.values()) {
-                                        if (child4.children.containsKey(parent)) {
-                                            return child4.getChild(parent);
-                                        } else {
-                                            for (PartDefinition child5 : child4.children.values()) {
-                                                if (child5.children.containsKey(parent)) {
-                                                    return child5.getChild(parent);
-                                                } else {
-                                                    for (PartDefinition child6 : child5.children.values()) {
-                                                        if (child6.children.containsKey(parent)) {
-                                                            return child6.getChild(parent);
-                                                        } else {
-                                                            for (PartDefinition child7 : child6.children.values()) {
-                                                                if (child7.children.containsKey(parent)) {
-                                                                    return child7.getChild(parent);
-                                                                } else {
-                                                                    for (PartDefinition child8 : child7.children.values()) {
-                                                                        if (child8.children.containsKey(parent)) {
-                                                                            return child8.getChild(parent);
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+    private Pair<Optional<ResourceLocation>, List<String>> parseAnimation(JsonObject animationsObject, String varIn) {
+        Optional<ResourceLocation> id = Optional.empty();
+        List<String> loadParts = Lists.newArrayList();
+        if (animationsObject.has(varIn)) {
+            if (GsonHelper.isObjectNode(animationsObject, varIn)) {
+                JsonObject animationObject = GsonHelper.getAsJsonObject(animationsObject, varIn);
+                id = Optional.of(this.parse(animationObject, "id"));
+                JsonArray loadPartsArray = GsonHelper.getAsJsonArray(animationObject, "load_parts");
+                loadPartsArray.forEach(jsonElement -> loadParts.add(jsonElement.getAsString()));
+            } else {
+                id = Optional.of(this.parse(animationsObject, varIn));
             }
-            FossilsLegacyUtils.LOGGER.error("Has a child that is more that 8 children deep!");
-            return null;
         }
+        return Pair.of(id, loadParts);
+    }
+
+    private void loadPartsFrom(Pair<Optional<ResourceLocation>, List<String>> animations, List<String> loadParts) {
+        animations.getSecond().forEach(loadPart -> {
+            if (!loadParts.contains(loadPart)) {
+                loadParts.add(loadPart);
+            }
+        });
     }
 
     private ResourceLocation parse(JsonObject jsonObject, String memberName) {
         return ResourceLocation.parse(GsonHelper.getAsString(jsonObject, memberName));
     }
 
+    private record JsonModelElement(LayerDefinition layerDefinition, Optional<AnimationHolder> animationHolder, List<String> loadParts, Optional<List<String>> headPieces, boolean colored) {
+    }
+
     private record Box(int xOffset, int yOffset, float xOrigin, float yOrigin, float zOrigin, float xDimension, float yDimension, float zDimension, Optional<Boolean> mirror) {
     }
 
-    private record Element(String parent, CubeListBuilder cubeListBuilder, PartPose partPose) {
-    }
-
-    public record AnimationHolder(Optional<ResourceLocation> walkAnimation, Optional<ResourceLocation> swimAnimation, Optional<ResourceLocation> flyAnimation, Optional<ResourceLocation> floatAnimation, Optional<ResourceLocation> headAnimation) {
+    public record AnimationHolder(Optional<ResourceLocation> walkAnimation, Optional<ResourceLocation> swimAnimation, Optional<ResourceLocation> flyAnimation, Optional<ResourceLocation> floatAnimation, Optional<ResourceLocation> headAnimation, Optional<ResourceLocation> shakeAnimation, Optional<ResourceLocation> sitAnimation, Optional<ResourceLocation> tailAnimation) {
     }
 }

@@ -26,6 +26,7 @@
           "z_origin": 1.0
         }
       ],
+      "elements": [],
       "id": "bb_main",
       "poses": {
         "x": 0.0,
@@ -56,6 +57,7 @@
           "z_origin": -2.0
         }
       ],
+      "elements": [],
       "id": "right_arm",
       "poses": {
         "x": -4.0,
@@ -86,6 +88,7 @@
           "z_origin": -2.0
         }
       ],
+      "elements": [],
       "id": "left_leg",
       "poses": {
         "x": 2.0,
@@ -116,6 +119,7 @@
           "z_origin": -2.0
         }
       ],
+      "elements": [],
       "id": "left_arm",
       "poses": {
         "x": 4.0,
@@ -146,6 +150,7 @@
           "z_origin": -2.0
         }
       ],
+      "elements": [],
       "id": "right_leg",
       "poses": {
         "x": -2.0,
@@ -186,6 +191,7 @@
           "z_origin": 5.0
         }
       ],
+      "elements": [],
       "id": "tail",
       "poses": {
         "x": 0.0,
@@ -216,49 +222,51 @@
           "z_origin": -3.0
         }
       ],
+      "elements": [
+        {
+          "boxes": [
+            {
+              "texture_x_offset": 34,
+              "texture_y_offset": 0,
+              "x_dimension": 4.0,
+              "x_origin": -2.0,
+              "y_dimension": 4.0,
+              "y_origin": -1.0,
+              "z_dimension": 8.0,
+              "z_origin": -8.0
+            },
+            {
+              "texture_x_offset": 25,
+              "texture_y_offset": 0,
+              "x_dimension": 4.0,
+              "x_origin": -2.0,
+              "y_dimension": 3.0,
+              "y_origin": -4.0,
+              "z_dimension": 4.0,
+              "z_origin": -4.0
+            }
+          ],
+          "elements": [],
+          "id": "head",
+          "poses": {
+            "x": 0.0,
+            "y": -13.0,
+            "z": -3.0
+          }
+        }
+      ],
       "id": "neck",
       "poses": {
         "x": 0.0,
         "y": 7.0,
         "z": -8.0
       }
-    },
-    {
-      "parent": "neck",
-      "boxes": [
-        {
-          "texture_x_offset": 34,
-          "texture_y_offset": 0,
-          "x_dimension": 4.0,
-          "x_origin": -2.0,
-          "y_dimension": 4.0,
-          "y_origin": -1.0,
-          "z_dimension": 8.0,
-          "z_origin": -8.0
-        },
-        {
-          "texture_x_offset": 25,
-          "texture_y_offset": 0,
-          "x_dimension": 4.0,
-          "x_origin": -2.0,
-          "y_dimension": 3.0,
-          "y_origin": -4.0,
-          "z_dimension": 4.0,
-          "z_origin": -4.0
-        }
-      ],
-      "id": "head",
-      "poses": {
-        "x": 0.0,
-        "y": -13.0,
-        "z": -3.0
-      }
     }
   ],
   "head_pieces": [
     "neck"
   ],
-  "model_layer_location": "fossilslegacy:brachiosaurus",
+  "model_id": "fossilslegacy:brachiosaurus",
   "texture_height": 128,
   "texture_width": 128
 }

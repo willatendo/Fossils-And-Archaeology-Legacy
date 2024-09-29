@@ -22,7 +22,27 @@ public class FossilsLegacyAnimationProvider extends AnimationProvider {
         this.addAnimation(FossilsLegacyUtils.resource("triceratops_walk"), TriceratopsAnimations.TRICERATOPS_WALK);
         this.addAnimation(FossilsLegacyUtils.resource("velociraptor_walk"), VelociraptorAnimations.VELOCIRAPTOR_WALK);
 
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_BRACHIOSAURUS_WALK, "front_left_thigh", "front_left_calf", "front_right_thigh", "front_right_calf", "back_left_thigh", "back_left_calf", "back_right_thigh", "back_right_calf");
+        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_BRACHIOSAURUS_WALK);
+        this.addBuiltIn(BuiltInAnimationTypes.CARNOTAURUS_WALK);
+        this.addBuiltIn(BuiltInAnimationTypes.CRYOLOPHOSAURUS_WALK);
+        this.addBuiltIn(BuiltInAnimationTypes.DILOPHOSAURUS_WALK);
+        this.addBuiltIn(BuiltInAnimationTypes.MOSASAURUS_SWIM);
+        this.addBuiltIn(BuiltInAnimationTypes.PTERANODON_HEAD);
+        this.addBuiltIn(BuiltInAnimationTypes.PTERANODON_WALK);
+        this.addBuiltIn(BuiltInAnimationTypes.PTERANODON_FLY);
+        this.addBuiltIn(BuiltInAnimationTypes.STEGOSAURUS_WALK);
+        this.addBuiltIn(BuiltInAnimationTypes.THERIZINOSAURUS_WALK);
+        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_TRICERATOPS_WALK);
+        this.addBuiltIn(BuiltInAnimationTypes.TYRANNOSAURUS_HEAD);
+        this.addBuiltIn(BuiltInAnimationTypes.TYRANNOSAURUS_WALK);
+        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_VELOCIRAPTOR_WALK);
+        this.addBuiltIn(BuiltInAnimationTypes.MAMMOTH_WALK);
+        this.addBuiltIn(BuiltInAnimationTypes.SMILODON_SHAKE);
+        this.addBuiltIn(BuiltInAnimationTypes.SMILODON_SIT);
+        this.addBuiltIn(BuiltInAnimationTypes.SMILODON_TAIL);
+        this.addBuiltIn(BuiltInAnimationTypes.SMILODON_WALK);
+
+        /*this.addBuiltIn(BuiltInAnimationTypes.LEGACY_BRACHIOSAURUS_WALK, "front_left_thigh", "front_left_calf", "front_right_thigh", "front_right_calf", "back_left_thigh", "back_left_calf", "back_right_thigh", "back_right_calf");
         this.addBuiltIn(BuiltInAnimationTypes.CARNOTAURUS_WALK, "right_thigh", "left_thigh");
         this.addBuiltIn(BuiltInAnimationTypes.CRYOLOPHOSAURUS_WALK, "right_thigh", "left_thigh");
         this.addBuiltIn(BuiltInAnimationTypes.DILOPHOSAURUS_WALK, "right_thigh", "right_leg", "right_foot", "left_thigh", "left_leg", "left_foot");
@@ -40,6 +60,6 @@ public class FossilsLegacyAnimationProvider extends AnimationProvider {
         this.addBuiltIn(BuiltInAnimationTypes.SMILODON_SHAKE, "head", "right_ear", "left_ear", "left_tooth_bottom", "left_tooth_top", "right_tooth_bottom", "right_tooth_top", "snout", "jaw", "nose", "body", "back", "tail");
         this.addBuiltIn(BuiltInAnimationTypes.SMILODON_SIT, "body", "back", "tail", "left_front_leg", "left_back_leg", "right_front_leg", "right_back_leg");
         this.addBuiltIn(BuiltInAnimationTypes.SMILODON_TAIL, "tail");
-        this.addBuiltIn(BuiltInAnimationTypes.SMILODON_WALK, "body", "back", "tail", "left_front_leg", "left_back_leg", "right_front_leg", "right_back_leg");
+        this.addBuiltIn(BuiltInAnimationTypes.SMILODON_WALK, "body", "back", "tail", "left_front_leg", "left_back_leg", "right_front_leg", "right_back_leg");*/
     }
 }

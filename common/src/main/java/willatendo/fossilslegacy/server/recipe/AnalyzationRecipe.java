@@ -74,7 +74,7 @@ public class AnalyzationRecipe implements Recipe<AnalyzerInput> {
     }
 
     public int getWeight(ItemStack itemStack) {
-        return this.resultsAndWeight.get(itemStack);
+        return this.resultsAndWeight.getOrDefault(itemStack, 0);
     }
 
     @Override

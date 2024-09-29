@@ -1,9 +1,12 @@
-31/9/2024
+5/10/2024
 - Futabasaurus Now Articulates Entire Neck
 - Brachiosaurus Adult Now Has Double-Sized Texture
 - Tamed Tyrannosaurus No Longer Breaks Blocks
 - Replaced Nether Coin With Ice Age Coin
 - Stone Tablets Are Now Data-Driven
+- Brachiosaurus Now Walks Slower
+- "NoAI" Tagged Dinosaurs No Longer Tick As Much
+- Renamed "#fossilslegacy:piglin_taming_helmets" to "#fossilslegacy:piglin_taming_armor"
 - (Fabric) Fixed Server Crash
 - Fixed Placing Stone Tables
 - Fixed Cannibalism
@@ -11,12 +14,58 @@
 - Fixed Frozen Meat's Attack Damage
 - Fixed Bucket Pickup On Mod Cauldron
 - Fixed Dilophosaurus's Venom Being White/Blue
+- Fixed "animalsBreakBlocks" Config Option Not Working Properly
+- Fixed Some Analyzer Recipes Having Multiple Outputs With The Same Item And Weight
 - Added Updated Triceratops Model
 - Added "Anu Totem" Stone Tablet
 - Added Coat-Types; Data-Driven Cosmetics For Dinosaurs
 - Added Gene Modification Table
 - Added Data-Driven Models
 - Added Data-Driven Animations
+- Added Flowing Water To "#fossilslegacy:permafrost_freezable" Tag
+- Added All Broken Javelins To "#fossilslegacy:repair_when_broken_in_archaeology_table" Tag
+- Added All Swords To "#minecraft:swords" Tag
+- Added All Pickaxes To "#minecraft:cluster_max_harvestables" Tag
+- Added All Pickaxes To "#minecraft:pickaxes" Tag
+- Added All Pickaxes To "#c:tools/mining_tool" Tag
+- Added All Shovels To "#minecraft:shovels" Tag
+- Added All Axes To "#minecraft:axes" Tag
+- Added All Hoes To "#minecraft:hoes" Tag
+- Added All Pickaxes, All Axes, All Shovels, And All Hoes To "#minecraft:enchantable/mining" Tag
+- Added All Swords To "#minecraft:enchantable/fire_aspect" Tag
+- Added All Swords To "#minecraft:enchantable/sword" Tag
+- Added All Shovels and All Axes To "#minecraft:enchantable/sharp_weapon" Tag
+- Added All Shovels and All Axes To "#minecraft:enchantable/weapon" Tag
+- Added All Shovels and All Axes To "#c:tools/melee_weapon" Tag
+- Added All Shovels and All Axes To "#minecraft:breaks_decorated_pots" Tag
+- Added All Helmets To "#minecraft:head_armor" Tag
+- Added All Helmets To "#minecraft:enchantable/head_armor" Tag
+- Added All Chestplates To "#minecraft:chest_armor" Tag
+- Added All Chestplates To "#minecraft:enchantable/chest_armor" Tag
+- Added All Leggings To "#minecraft:leg_armor" Tag
+- Added All Leggings To "#minecraft:enchantable/leg_armor" Tag
+- Added All Boots To "#minecraft:foot_armor" Tag
+- Added All Boots To "#minecraft:enchantable/foot_armor" Tag
+- Added All Armor To "#minecraft:enchantable/armor" Tag
+- Added All Armor To "#minecraft:enchantable/equippable" Tag
+- Added All Armor To "#minecraft:trimmable_armor" Tag
+- Added Scarab Gem To "#c:gems"/"#forge:gems" Tag
+- Added All Tools and Armor To "#minecraft:enchantable/duribility" Tag
+- Added All Tools and Armor To "#minecraft:enchantable/mining_loot" Tag
+- Added All Tools and Armor To "#minecraft:enchantable/vanishing" Tag
+- Added All Tools and Armor To "#c:enchantables"/"#forge:enchantables" Tag
+- Added All Javelins To "#c:tools/ranged_weapon" Tag
+- Added All Tools To "#c:tools"/"#forge:tools" Tag
+- Added Fossil To "#c:bones"/"#forge:bones" Tag
+- Added All Foods To "#c:foods" Tag
+- Added All Eggs To "#c:eggs" Tag
+- Added All Boats To "#minecraft:boats" Tag
+- Added Jurassic Fern Spores To "#c:seeds"/"#forge:seeds" Tag
+- Added All Bucket Foods To "#c:buckets" Tag
+- Added All Meat To "#minecraft:meats" Tag
+- Added All Raw Meat To "#c:raw_meat" Tag
+- Added Raw Chicken Soup Bucket To "#c:foods/food_poisoning" Tag
+- Added Therizinosaurs Claws To "#c:shears"/"#forge:shears" Tag
 - Removed Client Config As It Is No Longer Necessary
 12/9/2024
 - (Fabric) Fixed Crash

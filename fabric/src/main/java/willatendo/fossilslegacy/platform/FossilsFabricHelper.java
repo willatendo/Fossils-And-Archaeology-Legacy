@@ -18,7 +18,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
-import willatendo.fossilslegacy.server.config.FabricConfigHelper;
 import willatendo.fossilslegacy.server.item.DinosaurSpawnEggItem;
 import willatendo.fossilslegacy.server.utils.Platform;
 import willatendo.simplelibrary.client.util.FabricClientUtils;
@@ -67,20 +66,5 @@ public class FossilsFabricHelper implements FossilsModloaderHelper {
     @Override
     public RecipeBookCategories createRecipeBookCategory(String name, ItemStack... icons) {
         return FabricClientUtils.createRecipeBookCategory(name);
-    }
-
-    @Override
-    public boolean willAnimalsStarve() {
-        return FabricConfigHelper.willAnimalsStarve();
-    }
-
-    @Override
-    public boolean willAnimalsBreakBlocks() {
-        return FabricConfigHelper.willAnimalsBreakBlocks();
-    }
-
-    @Override
-    public boolean willAnimalsGrow() {
-        return FabricConfigHelper.willAnimalsGrow();
     }
 }

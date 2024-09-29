@@ -1,10 +1,14 @@
 package willatendo.fossilslegacy.client.model.json;
 
 import com.google.common.collect.Maps;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.api.client.BuiltInAnimationType;
+import willatendo.fossilslegacy.client.animation.json.JsonAnimationLoader;
 import willatendo.fossilslegacy.client.model.dinosaur.base.DinosaurModel;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.util.interfaces.FloatDownEntity;
@@ -13,20 +17,30 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class JsonModel extends DinosaurModel<Dinosaur> {
+public class JsonModel<T extends Dinosaur> extends DinosaurModel<T> {
     private final Optional<JsonModelLoader.AnimationHolder> animationHolder;
     private final List<ModelPart> headPieces;
     private final Map<String, ModelPart> loadedParts = Maps.newHashMap();
+    private final boolean colored;
+    private int color = -1;
 
-    public JsonModel(ResourceLocation id, ModelPart root) {
+    public JsonModel(ResourceLocation id, boolean colored, ModelPart root) {
         super(root);
         this.animationHolder = JsonModelLoader.getAnimations(id);
-        this.headPieces = JsonModelLoader.getHead(id, root);
-        if (JsonAnimationLoader.hasBuiltInParts(id)) {
-            for (String part : JsonAnimationLoader.getBuiltInParts(id)) {
-                this.loadedParts.put(part, root.getChild(part));
+        this.headPieces = JsonModelLoader.getHeadPieces(id, root);
+        JsonModelLoader.getLoadParts(id).forEach(part -> {
+            for (ModelPart modelPart : root.getAllParts().toList()) {
+                if (modelPart.hasChild(part)) {
+                    this.loadedParts.put(part, modelPart.getChild(part));
+                    break;
+                }
             }
-        }
+        });
+        this.colored = colored;
+    }
+
+    public void setColor(int pColor) {
+        this.color = pColor;
     }
 
     public ModelPart get(String name) {
@@ -48,6 +62,30 @@ public class JsonModel extends DinosaurModel<Dinosaur> {
             if (animationHolder.walkAnimation().isPresent()) {
                 if (JsonAnimationLoader.isBuiltIn(animationHolder.walkAnimation().get())) {
                     BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animationHolder.walkAnimation().get());
+                    if (builtInAnimationType.canUse(dinosaur)) {
+                        builtInAnimationType.prepareMobModel(dinosaur, this, limbSwing, limbSwingAmount, partialTick);
+                    }
+                }
+            }
+            if (animationHolder.tailAnimation().isPresent()) {
+                if (JsonAnimationLoader.isBuiltIn(animationHolder.sitAnimation().get())) {
+                    BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animationHolder.tailAnimation().get());
+                    if (builtInAnimationType.canUse(dinosaur)) {
+                        builtInAnimationType.prepareMobModel(dinosaur, this, limbSwing, limbSwingAmount, partialTick);
+                    }
+                }
+            }
+            if (animationHolder.sitAnimation().isPresent()) {
+                if (JsonAnimationLoader.isBuiltIn(animationHolder.sitAnimation().get())) {
+                    BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animationHolder.sitAnimation().get());
+                    if (builtInAnimationType.canUse(dinosaur)) {
+                        builtInAnimationType.prepareMobModel(dinosaur, this, limbSwing, limbSwingAmount, partialTick);
+                    }
+                }
+            }
+            if (animationHolder.shakeAnimation().isPresent()) {
+                if (JsonAnimationLoader.isBuiltIn(animationHolder.shakeAnimation().get())) {
+                    BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animationHolder.shakeAnimation().get());
                     if (builtInAnimationType.canUse(dinosaur)) {
                         builtInAnimationType.prepareMobModel(dinosaur, this, limbSwing, limbSwingAmount, partialTick);
                     }
@@ -121,6 +159,15 @@ public class JsonModel extends DinosaurModel<Dinosaur> {
                 modelPart.yRot = netHeadYaw * 0.017453292F;
                 modelPart.xRot = headPitch * 0.017453292F;
             }
+        }
+    }
+
+    @Override
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
+        if (this.colored) {
+            this.root().render(poseStack, vertexConsumer, packedLight, packedOverlay, FastColor.ARGB32.multiply(color, this.color));
+        } else {
+            super.renderToBuffer(poseStack, vertexConsumer, packedLight, packedOverlay, color);
         }
     }
 }

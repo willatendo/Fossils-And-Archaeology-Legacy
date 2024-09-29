@@ -103,7 +103,8 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
 
     @Override
     public float getBoundingBoxGrowth() {
-        return 3.5F;
+        CoatType coatType = this.getCoatType().value();
+        return coatType.boundingBoxInfo().boundingBoxGrowth();
     }
 
     @Override

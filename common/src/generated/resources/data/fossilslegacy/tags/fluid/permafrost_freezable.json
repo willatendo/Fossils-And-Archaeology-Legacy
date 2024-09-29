@@ -1,5 +1,6 @@
 {
   "values": [
-    "minecraft:water"
+    "minecraft:water",
+    "minecraft:flowing_water"
   ]
 }

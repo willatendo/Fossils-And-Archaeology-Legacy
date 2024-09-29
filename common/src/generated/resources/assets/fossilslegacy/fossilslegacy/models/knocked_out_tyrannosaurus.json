@@ -14,6 +14,7 @@
           "z_origin": -10.0
         }
       ],
+      "elements": [],
       "id": "jaw",
       "poses": {
         "x": 2.0,
@@ -34,6 +35,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "left_leg",
       "poses": {
         "x": 4.0,
@@ -55,6 +57,7 @@
           "z_origin": -3.0
         }
       ],
+      "elements": [],
       "id": "right_arm",
       "poses": {
         "x": -2.0,
@@ -76,6 +79,7 @@
           "z_origin": -4.0
         }
       ],
+      "elements": [],
       "id": "left_thigh",
       "poses": {
         "x": 2.0,
@@ -96,6 +100,7 @@
           "z_origin": -6.0
         }
       ],
+      "elements": [],
       "id": "left_foot",
       "poses": {
         "x": 6.0,
@@ -116,6 +121,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "tail_mid",
       "poses": {
         "x": 2.0,
@@ -138,6 +144,7 @@
           "z_origin": -6.0
         }
       ],
+      "elements": [],
       "id": "neck",
       "poses": {
         "x": 1.0,
@@ -158,6 +165,7 @@
           "z_origin": -10.0
         }
       ],
+      "elements": [],
       "id": "body",
       "poses": {
         "x": 0.0,
@@ -179,6 +187,7 @@
           "z_origin": -4.0
         }
       ],
+      "elements": [],
       "id": "right_thigh",
       "poses": {
         "x": -2.0,
@@ -199,6 +208,7 @@
           "z_origin": -6.0
         }
       ],
+      "elements": [],
       "id": "head",
       "poses": {
         "x": 0.0,
@@ -220,6 +230,7 @@
           "z_origin": -6.0
         }
       ],
+      "elements": [],
       "id": "right_foot",
       "poses": {
         "x": -6.0,
@@ -240,6 +251,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "right_leg",
       "poses": {
         "x": -4.0,
@@ -261,6 +273,7 @@
           "z_origin": -3.0
         }
       ],
+      "elements": [],
       "id": "left_arm",
       "poses": {
         "x": 2.0,
@@ -282,6 +295,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "tail_base",
       "poses": {
         "x": 0.0,
@@ -304,6 +318,7 @@
           "z_origin": -11.0
         }
       ],
+      "elements": [],
       "id": "snout",
       "poses": {
         "x": 1.0,
@@ -324,6 +339,7 @@
           "z_origin": 0.0
         }
       ],
+      "elements": [],
       "id": "tail_end",
       "poses": {
         "x": 12.0,
@@ -333,7 +349,7 @@
       }
     }
   ],
-  "model_layer_location": "fossilslegacy:knocked_out_tyrannosaurus",
+  "model_id": "fossilslegacy:knocked_out_tyrannosaurus",
   "texture_height": 32,
   "texture_width": 64
 }

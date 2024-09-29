@@ -39,7 +39,7 @@ public class FossilsLegacyEntityModelProvider extends EntityModelProvider {
         this.add("velociraptor", VelociraptorModel.createBodyLayer(), "walk", this.mod("velociraptor_walk"), "head");
         this.add("legacy_velociraptor", LegacyVelociraptorModel.createBodyLayer(), "walk", BuiltInAnimationTypes.LEGACY_VELOCIRAPTOR_WALK);
         this.add("dodo", DodoModel.createBodyLayer(), "walk", this.mod("dodo_walk"), "float_down", this.mod("dodo_float_down"), "head");
-        this.add("smilodon", SmilodonModel.createBodyLayer(), "walk", BuiltInAnimationTypes.SMILODON_WALK, "sit", BuiltInAnimationTypes.SMILODON_SIT, "shake", BuiltInAnimationTypes.SMILODON_SHAKE, "tail", BuiltInAnimationTypes.SMILODON_TAIL, "head", "right_ear", "left_ear", "nose", "snout", "jaw", "right_tooth_top", "right_tooth_bottom", "left_tooth_top", "left_tooth_bottom");
+        this.add("smilodon", SmilodonModel.createBodyLayer(), "walk", BuiltInAnimationTypes.SMILODON_WALK, "sit", BuiltInAnimationTypes.SMILODON_SIT, "shake", BuiltInAnimationTypes.SMILODON_SHAKE, "tail", BuiltInAnimationTypes.SMILODON_TAIL);
         this.add("mammoth", MammothModel.createBodyLayer(), "walk", BuiltInAnimationTypes.MAMMOTH_WALK);
     }
 }

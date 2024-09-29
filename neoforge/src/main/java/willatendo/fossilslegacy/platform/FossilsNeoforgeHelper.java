@@ -58,19 +58,4 @@ public class FossilsNeoforgeHelper implements FossilsModloaderHelper {
     public RecipeBookCategories createRecipeBookCategory(String name, ItemStack... icons) {
         return RecipeBookCategories.valueOf(FossilsLegacyUtils.ID + name);
     }
-
-    @Override
-    public boolean willAnimalsStarve() {
-        return FossilsLegacyConfig.COMMON_CONFIG.willAnimalsStarve();
-    }
-
-    @Override
-    public boolean willAnimalsBreakBlocks() {
-        return FossilsLegacyConfig.COMMON_CONFIG.willAnimalsStarve();
-    }
-
-    @Override
-    public boolean willAnimalsGrow() {
-        return FossilsLegacyConfig.COMMON_CONFIG.willAnimalsGrow();
-    }
 }

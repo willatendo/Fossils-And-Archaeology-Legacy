@@ -81,7 +81,8 @@ public class Dodo extends Dinosaur implements DinopediaInformation, CoatTypeEnti
 
     @Override
     public float getBoundingBoxGrowth() {
-        return 1.0F;
+        CoatType coatType = this.getCoatType().value();
+        return coatType.boundingBoxInfo().boundingBoxGrowth();
     }
 
     @Override

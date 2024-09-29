@@ -1,12 +1,5 @@
 {
   "type": "built_in",
   "id": "fossilslegacy:mammoth_walk",
-  "parts": [
-    "right_arm",
-    "left_arm",
-    "right_leg",
-    "left_leg",
-    "nose_top",
-    "nose_bottom"
-  ]
+  "parts": []
 }

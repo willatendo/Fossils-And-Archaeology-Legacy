@@ -1,20 +1,5 @@
 {
   "type": "built_in",
   "id": "fossilslegacy:legacy_velociraptor_walk",
-  "parts": [
-    "left_thigh",
-    "right_leg",
-    "right_foot",
-    "right_hook_1",
-    "right_hook_2",
-    "right_thigh",
-    "left_leg",
-    "left_foot",
-    "left_hook_1",
-    "left_hook_2",
-    "right_bicep",
-    "right_hand",
-    "left_bicep",
-    "left_hand"
-  ]
+  "parts": []
 }

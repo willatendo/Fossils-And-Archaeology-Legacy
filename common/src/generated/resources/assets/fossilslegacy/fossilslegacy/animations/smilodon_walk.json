@@ -1,13 +1,5 @@
 {
   "type": "built_in",
   "id": "fossilslegacy:smilodon_walk",
-  "parts": [
-    "body",
-    "back",
-    "tail",
-    "left_front_leg",
-    "left_back_leg",
-    "right_front_leg",
-    "right_back_leg"
-  ]
+  "parts": []
 }

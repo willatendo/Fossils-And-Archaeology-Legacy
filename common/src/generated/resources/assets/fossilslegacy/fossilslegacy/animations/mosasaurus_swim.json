@@ -1,16 +1,5 @@
 {
   "type": "built_in",
   "id": "fossilslegacy:mosasaurus_swim",
-  "parts": [
-    "body",
-    "tail_1",
-    "tail_2",
-    "tail_3",
-    "right_front_flipper",
-    "left_front_flipper",
-    "right_back_flipper",
-    "left_back_flipper",
-    "tail_2_spike",
-    "tail_3_spike"
-  ]
+  "parts": []
 }
