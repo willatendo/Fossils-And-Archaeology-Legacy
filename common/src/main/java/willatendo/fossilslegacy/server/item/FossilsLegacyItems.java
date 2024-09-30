@@ -44,6 +44,8 @@ public class FossilsLegacyItems {
     public static final SimpleHolder<DNAItem> PACHYCEPHALOSAURUS_DNA = ITEMS.register("pachycephalosaurus_dna", () -> new DNAItem(new Item.Properties(), FossilsLegacyCoatTypeTags.PACHYCEPHALOSAURUS, () -> FossilsLegacyEntityTypes.PACHYCEPHALOSAURUS.get()));
     public static final SimpleHolder<DNAItem> COMPSOGNATHUS_DNA = ITEMS.register("compsognathus_dna", () -> new DNAItem(new Item.Properties(), FossilsLegacyCoatTypeTags.COMPSOGNATHUS, () -> FossilsLegacyEntityTypes.COMPSOGNATHUS.get()));
     public static final SimpleHolder<Item> PETRIFIED_LEPIDODENDRON_SAPLING = ITEMS.register("petrified_lepidodendron_sapling", () -> new Item(new Item.Properties()));
+    public static final SimpleHolder<Item> PETRIFIED_SIGILLARIA_SAPLING = ITEMS.register("petrified_sigillaria_sapling", () -> new Item(new Item.Properties()));
+    public static final SimpleHolder<Item> PETRIFIED_CALAMITES_SAPLING = ITEMS.register("petrified_calamites_sapling", () -> new Item(new Item.Properties()));
     public static final SimpleHolder<EggItem> TRICERATOPS_EGG = ITEMS.register("triceratops_egg", () -> new EggItem(FossilsLegacyEggVariants.TRICERATOPS, FossilsLegacyCoatTypeTags.NON_LEGACY_TRICERATOPS, new Item.Properties().stacksTo(1)));
     public static final SimpleHolder<EggItem> VELOCIRAPTOR_EGG = ITEMS.register("velociraptor_egg", () -> new VelociraptorEggItem(FossilsLegacyEggVariants.VELOCIRAPTOR, new Item.Properties().stacksTo(1)));
     public static final SimpleHolder<EggItem> TYRANNOSAURUS_EGG = ITEMS.register("tyrannosaurus_egg", () -> new EggItem(FossilsLegacyEggVariants.TYRANNOSAURUS, FossilsLegacyCoatTypeTags.TYRANNOSAURUS, new Item.Properties().stacksTo(1)));
@@ -231,9 +233,19 @@ public class FossilsLegacyItems {
     public static SimpleHolder<SignItem> LEPIDODENDRON_SIGN;
     public static SimpleHolder<HangingSignItem> LEPIDODENDRON_HANGING_SIGN;
     public static SimpleHolder<DoubleHighBlockItem> LEPIDODENDRON_DOOR;
+    public static SimpleHolder<SignItem> SIGILLARIA_SIGN;
+    public static SimpleHolder<HangingSignItem> SIGILLARIA_HANGING_SIGN;
+    public static SimpleHolder<DoubleHighBlockItem> SIGILLARIA_DOOR;
+    public static SimpleHolder<SignItem> CALAMITES_SIGN;
+    public static SimpleHolder<HangingSignItem> CALAMITES_HANGING_SIGN;
+    public static SimpleHolder<DoubleHighBlockItem> CALAMITES_DOOR;
 
     public static final SimpleHolder<SimpleBoatItem> LEPIDODENDRON_BOAT = ITEMS.register("lepidodendron_boat", () -> new SimpleBoatItem(false, FossilsLegacyBoatTypes.LEPIDODENDRON, new Item.Properties().stacksTo(1)));
     public static final SimpleHolder<SimpleBoatItem> LEPIDODENDRON_CHEST_BOAT = ITEMS.register("lepidodendron_chest_boat", () -> new SimpleBoatItem(true, FossilsLegacyBoatTypes.LEPIDODENDRON, new Item.Properties().stacksTo(1)));
+    public static final SimpleHolder<SimpleBoatItem> SIGILLARIA_BOAT = ITEMS.register("sigillaria_boat", () -> new SimpleBoatItem(false, FossilsLegacyBoatTypes.SIGILLARIA, new Item.Properties().stacksTo(1)));
+    public static final SimpleHolder<SimpleBoatItem> SIGILLARIA_CHEST_BOAT = ITEMS.register("sigillaria_chest_boat", () -> new SimpleBoatItem(true, FossilsLegacyBoatTypes.SIGILLARIA, new Item.Properties().stacksTo(1)));
+    public static final SimpleHolder<SimpleBoatItem> CALAMITES_BOAT = ITEMS.register("calamites_boat", () -> new SimpleBoatItem(false, FossilsLegacyBoatTypes.SIGILLARIA, new Item.Properties().stacksTo(1)));
+    public static final SimpleHolder<SimpleBoatItem> CALAMITES_CHEST_BOAT = ITEMS.register("calamites_chest_boat", () -> new SimpleBoatItem(true, FossilsLegacyBoatTypes.SIGILLARIA, new Item.Properties().stacksTo(1)));
 
     public static SimpleHolder<DebugItem> DEBUG_MAX_HUNGER;
     public static SimpleHolder<DebugItem> DEBUG_MAX_HEALTH;
@@ -257,6 +269,36 @@ public class FossilsLegacyItems {
     public static final ResourceKey<Item> POTTED_LEPIDODENDRON_SAPLING = FossilsLegacyItems.blockReference("potted_lepidodendron_sapling");
     public static final ResourceKey<Item> LEPIDODENDRON_BUTTON = FossilsLegacyItems.blockReference("lepidodendron_button");
     public static final ResourceKey<Item> LEPIDODENDRON_SLAB = FossilsLegacyItems.blockReference("lepidodendron_slab");
+    public static final ResourceKey<Item> SIGILLARIA_PLANKS = FossilsLegacyItems.blockReference("sigillaria_planks");
+    public static final ResourceKey<Item> SIGILLARIA_SAPLING = FossilsLegacyItems.blockReference("sigillaria_sapling");
+    public static final ResourceKey<Item> SIGILLARIA_LOG = FossilsLegacyItems.blockReference("sigillaria_log");
+    public static final ResourceKey<Item> STRIPPED_SIGILLARIA_LOG = FossilsLegacyItems.blockReference("stripped_sigillaria_log");
+    public static final ResourceKey<Item> SIGILLARIA_WOOD = FossilsLegacyItems.blockReference("sigillaria_wood");
+    public static final ResourceKey<Item> STRIPPED_SIGILLARIA_WOOD = FossilsLegacyItems.blockReference("stripped_sigillaria_wood");
+    public static final ResourceKey<Item> SIGILLARIA_LEAVES = FossilsLegacyItems.blockReference("sigillaria_leaves");
+    public static final ResourceKey<Item> SIGILLARIA_STAIRS = FossilsLegacyItems.blockReference("sigillaria_stairs");
+    public static final ResourceKey<Item> SIGILLARIA_PRESSURE_PLATE = FossilsLegacyItems.blockReference("sigillaria_pressure_plate");
+    public static final ResourceKey<Item> SIGILLARIA_FENCE = FossilsLegacyItems.blockReference("sigillaria_fence");
+    public static final ResourceKey<Item> SIGILLARIA_TRAPDOOR = FossilsLegacyItems.blockReference("sigillaria_trapdoor");
+    public static final ResourceKey<Item> SIGILLARIA_FENCE_GATE = FossilsLegacyItems.blockReference("sigillaria_fence_gate");
+    public static final ResourceKey<Item> POTTED_SIGILLARIA_SAPLING = FossilsLegacyItems.blockReference("potted_sigillaria_sapling");
+    public static final ResourceKey<Item> SIGILLARIA_BUTTON = FossilsLegacyItems.blockReference("sigillaria_button");
+    public static final ResourceKey<Item> SIGILLARIA_SLAB = FossilsLegacyItems.blockReference("sigillaria_slab");
+    public static final ResourceKey<Item> CALAMITES_PLANKS = FossilsLegacyItems.blockReference("calamites_planks");
+    public static final ResourceKey<Item> CALAMITES_SAPLING = FossilsLegacyItems.blockReference("calamites_sapling");
+    public static final ResourceKey<Item> CALAMITES_LOG = FossilsLegacyItems.blockReference("calamites_log");
+    public static final ResourceKey<Item> STRIPPED_CALAMITES_LOG = FossilsLegacyItems.blockReference("stripped_calamites_log");
+    public static final ResourceKey<Item> CALAMITES_WOOD = FossilsLegacyItems.blockReference("calamites_wood");
+    public static final ResourceKey<Item> STRIPPED_CALAMITES_WOOD = FossilsLegacyItems.blockReference("stripped_calamites_wood");
+    public static final ResourceKey<Item> CALAMITES_LEAVES = FossilsLegacyItems.blockReference("calamites_leaves");
+    public static final ResourceKey<Item> CALAMITES_STAIRS = FossilsLegacyItems.blockReference("calamites_stairs");
+    public static final ResourceKey<Item> CALAMITES_PRESSURE_PLATE = FossilsLegacyItems.blockReference("calamites_pressure_plate");
+    public static final ResourceKey<Item> CALAMITES_FENCE = FossilsLegacyItems.blockReference("calamites_fence");
+    public static final ResourceKey<Item> CALAMITES_TRAPDOOR = FossilsLegacyItems.blockReference("calamites_trapdoor");
+    public static final ResourceKey<Item> CALAMITES_FENCE_GATE = FossilsLegacyItems.blockReference("calamites_fence_gate");
+    public static final ResourceKey<Item> POTTED_CALAMITES_SSAPLING = FossilsLegacyItems.blockReference("potted_calamites_sapling");
+    public static final ResourceKey<Item> CALAMITES_BUTTON = FossilsLegacyItems.blockReference("calamites_button");
+    public static final ResourceKey<Item> CALAMITES_SLAB = FossilsLegacyItems.blockReference("calamites_slab");
 
     private static ResourceKey<Item> blockReference(String id) {
         return ResourceKey.create(Registries.ITEM, FossilsLegacyUtils.resource(id));
@@ -271,11 +313,17 @@ public class FossilsLegacyItems {
         DEBUG_TAME = ITEMS.register("debug_tame", DebugItem::debugTame);
         DEBUG_CHANGE_GENETICS = ITEMS.register("debug_change_genetics", DebugItem::debugChangeGenetics);
 
-        SimpleUtils.registerAllItems(ITEMS, FossilsLegacyBlocks.BLOCKS, FossilsLegacyBlocks.GENE_MODIFICATION_TABLE, FossilsLegacyBlocks.AXOLOTLSPAWN, FossilsLegacyBlocks.RAW_CHICKEN_SOUP_CAULDRON, FossilsLegacyBlocks.COOKED_CHICKEN_SOUP_CAULDRON, FossilsLegacyBlocks.RAW_BERRY_MEDLEY_CAULDRON, FossilsLegacyBlocks.COOKED_BERRY_MEDLEY_CAULDRON, FossilsLegacyBlocks.LEPIDODENDRON_SIGN, FossilsLegacyBlocks.LEPIDODENDRON_WALL_SIGN, FossilsLegacyBlocks.LEPIDODENDRON_HANGING_SIGN, FossilsLegacyBlocks.LEPIDODENDRON_WALL_HANGING_SIGN, FossilsLegacyBlocks.LEPIDODENDRON_DOOR, FossilsLegacyBlocks.POTTED_LEPIDODENDRON_SAPLING);
+        SimpleUtils.registerAllItems(ITEMS, FossilsLegacyBlocks.BLOCKS, FossilsLegacyBlocks.GENE_MODIFICATION_TABLE, FossilsLegacyBlocks.AXOLOTLSPAWN, FossilsLegacyBlocks.RAW_CHICKEN_SOUP_CAULDRON, FossilsLegacyBlocks.COOKED_CHICKEN_SOUP_CAULDRON, FossilsLegacyBlocks.RAW_BERRY_MEDLEY_CAULDRON, FossilsLegacyBlocks.COOKED_BERRY_MEDLEY_CAULDRON, FossilsLegacyBlocks.LEPIDODENDRON_SIGN, FossilsLegacyBlocks.LEPIDODENDRON_WALL_SIGN, FossilsLegacyBlocks.LEPIDODENDRON_HANGING_SIGN, FossilsLegacyBlocks.LEPIDODENDRON_WALL_HANGING_SIGN, FossilsLegacyBlocks.LEPIDODENDRON_DOOR, FossilsLegacyBlocks.POTTED_LEPIDODENDRON_SAPLING, FossilsLegacyBlocks.SIGILLARIA_SIGN, FossilsLegacyBlocks.SIGILLARIA_WALL_SIGN, FossilsLegacyBlocks.SIGILLARIA_HANGING_SIGN, FossilsLegacyBlocks.SIGILLARIA_WALL_HANGING_SIGN, FossilsLegacyBlocks.SIGILLARIA_DOOR, FossilsLegacyBlocks.POTTED_SIGILLARIA_SAPLING, FossilsLegacyBlocks.CALAMITES_SIGN, FossilsLegacyBlocks.CALAMITES_WALL_SIGN, FossilsLegacyBlocks.CALAMITES_HANGING_SIGN, FossilsLegacyBlocks.CALAMITES_WALL_HANGING_SIGN, FossilsLegacyBlocks.CALAMITES_DOOR, FossilsLegacyBlocks.POTTED_CALAMITES_SAPLING);
         ITEMS.register("gene_modification_table", () -> new BlockItem(FossilsLegacyBlocks.GENE_MODIFICATION_TABLE.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
         AXOLOTLSPAWN = ITEMS.register("axolotlspawn", () -> new PlaceOnWaterBlockItem(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), new Item.Properties()));
         LEPIDODENDRON_SIGN = ITEMS.register("lepidodendron_sign", () -> new SignItem(new Item.Properties().stacksTo(16), FossilsLegacyBlocks.LEPIDODENDRON_SIGN.get(), FossilsLegacyBlocks.LEPIDODENDRON_WALL_SIGN.get()));
         LEPIDODENDRON_HANGING_SIGN = ITEMS.register("lepidodendron_hanging_sign", () -> new HangingSignItem(FossilsLegacyBlocks.LEPIDODENDRON_HANGING_SIGN.get(), FossilsLegacyBlocks.LEPIDODENDRON_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
         LEPIDODENDRON_DOOR = ITEMS.register("lepidodendron_door", () -> new DoubleHighBlockItem(FossilsLegacyBlocks.LEPIDODENDRON_DOOR.get(), new Item.Properties()));
+        SIGILLARIA_SIGN = ITEMS.register("sigillaria_sign", () -> new SignItem(new Item.Properties().stacksTo(16), FossilsLegacyBlocks.SIGILLARIA_SIGN.get(), FossilsLegacyBlocks.SIGILLARIA_WALL_SIGN.get()));
+        SIGILLARIA_HANGING_SIGN = ITEMS.register("sigillaria_hanging_sign", () -> new HangingSignItem(FossilsLegacyBlocks.SIGILLARIA_HANGING_SIGN.get(), FossilsLegacyBlocks.SIGILLARIA_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
+        SIGILLARIA_DOOR = ITEMS.register("sigillaria_door", () -> new DoubleHighBlockItem(FossilsLegacyBlocks.SIGILLARIA_DOOR.get(), new Item.Properties()));
+        CALAMITES_SIGN = ITEMS.register("calamites_sign", () -> new SignItem(new Item.Properties().stacksTo(16), FossilsLegacyBlocks.CALAMITES_SIGN.get(), FossilsLegacyBlocks.CALAMITES_WALL_SIGN.get()));
+        CALAMITES_HANGING_SIGN = ITEMS.register("calamites_hanging_sign", () -> new HangingSignItem(FossilsLegacyBlocks.CALAMITES_HANGING_SIGN.get(), FossilsLegacyBlocks.CALAMITES_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
+        CALAMITES_DOOR = ITEMS.register("calamites_door", () -> new DoubleHighBlockItem(FossilsLegacyBlocks.CALAMITES_DOOR.get(), new Item.Properties()));
     }
 }

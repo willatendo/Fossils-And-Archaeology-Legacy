@@ -44,7 +44,6 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
     private static final EntityDataAccessor<Integer> HUNGER = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
     protected static final EntityDataAccessor<Optional<UUID>> OWNER = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.OPTIONAL_UUID);
     protected int internalClock = 0;
-    protected boolean updatedDimensions = false;
 
     public Dinosaur(EntityType<? extends Dinosaur> entityType, Level level) {
         super(entityType, level);
@@ -114,14 +113,6 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 
     @Override
     public void tick() {
-        if (!this.updatedDimensions && this instanceof CoatTypeEntity coatTypeEntity) {
-            CoatType coatType = coatTypeEntity.getCoatType().value();
-            this.dimensions = this.type.dimensions = EntityDimensions.fixed(coatType.boundingBoxInfo().boundingBoxWidth() + (this.getBoundingBoxGrowth() * this.getGrowthStage()), coatType.boundingBoxInfo().boundingBoxHeight() + (this.getBoundingBoxGrowth() * this.getGrowthStage()));
-            this.eyeHeight = this.dimensions.eyeHeight();
-
-            this.updatedDimensions = true;
-        }
-
         if (!this.isNoAi()) {
             if (this.internalClock == Level.TICKS_PER_DAY) {
                 this.internalClock = 0;
@@ -267,16 +258,6 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
     }
 
     @Override
-    protected EntityDimensions getDefaultDimensions(Pose pose) {
-        if (this instanceof CoatTypeEntity coatTypeEntity) {
-            CoatType coatType = coatTypeEntity.getCoatType().value();
-            return this.dimensions = this.type.dimensions = EntityDimensions.fixed(coatType.boundingBoxInfo().boundingBoxWidth() + (this.getBoundingBoxGrowth() * this.getGrowthStage()), coatType.boundingBoxInfo().boundingBoxHeight() + (this.getBoundingBoxGrowth() * this.getGrowthStage()));
-        } else {
-            return this.dimensions = this.type.dimensions = super.getDefaultDimensions(pose);
-        }
-    }
-
-    @Override
     public void refreshDimensions() {
         double x = this.getX();
         double y = this.getY();
@@ -315,7 +296,6 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 
     @Override
     public void setGrowthStage(int growthStage) {
-        this.updatedDimensions = false;
         this.entityData.set(GROWTH_STAGE, growthStage);
     }
 
@@ -399,10 +379,6 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
         compoundTag.putInt("Hunger", this.getHunger());
         compoundTag.putInt("GrowthStage", this.getGrowthStage());
         compoundTag.putInt("InternalClock", this.internalClock);
-
-        compoundTag.putFloat("BoundingBoxWidth", this.dimensions.width());
-        compoundTag.putFloat("BoundingBoxHeight", this.dimensions.height());
-        compoundTag.putBoolean("BoundingBoxFixed", this.dimensions.fixed());
     }
 
     @Override
@@ -429,12 +405,6 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
         this.setHunger(compoundTag.getInt("Hunger"));
         this.setGrowthStage(compoundTag.getInt("GrowthStage"));
         this.internalClock = compoundTag.getInt("InternalClock");
-
-        float width = compoundTag.getFloat("BoundingBoxWidth");
-        float height = compoundTag.getFloat("BoundingBoxHeight");
-        boolean fixed = compoundTag.getBoolean("BoundingBoxFixed");
-        this.dimensions = fixed ? EntityDimensions.fixed(width, height) : EntityDimensions.scalable(width, height);
-        this.type.dimensions = fixed ? EntityDimensions.fixed(width, height) : EntityDimensions.scalable(width, height);
     }
 
     @Override

@@ -8,7 +8,9 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FossilsLegacyWoodTypes {
+    public static final WoodType CALAMITES = register("calamites", FossilsLegacyBlockSetTypes.SIGILLARIA);
     public static final WoodType LEPIDODENDRON = register("lepidodendron", FossilsLegacyBlockSetTypes.LEPIDODENDRON);
+    public static final WoodType SIGILLARIA = register("sigillaria", FossilsLegacyBlockSetTypes.SIGILLARIA);
 
     public static WoodType register(String id, BlockSetType blockSetType) {
         return WoodType.register(new WoodType(FossilsLegacyUtils.ID + ":" + id, blockSetType));

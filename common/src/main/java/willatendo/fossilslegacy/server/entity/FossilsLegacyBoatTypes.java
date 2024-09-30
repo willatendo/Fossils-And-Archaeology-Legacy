@@ -12,4 +12,5 @@ public class FossilsLegacyBoatTypes {
     public static final SimpleRegistry<BoatType> BOAT_TYPES = SimpleRegistry.create(SimpleRegistries.BOAT_TYPES, FossilsLegacyUtils.ID);
 
     public static final SimpleHolder<BoatType> LEPIDODENDRON = BOAT_TYPES.register("lepidodendron", () -> new BoatType("lepidodendron", FossilsLegacyItems.LEPIDODENDRON_BOAT, FossilsLegacyItems.LEPIDODENDRON_CHEST_BOAT, FossilsLegacyBlocks.LEPIDODENDRON_PLANKS));
+    public static final SimpleHolder<BoatType> SIGILLARIA = BOAT_TYPES.register("sigillaria", () -> new BoatType("sigillaria", FossilsLegacyItems.SIGILLARIA_BOAT, FossilsLegacyItems.SIGILLARIA_CHEST_BOAT, FossilsLegacyBlocks.SIGILLARIA_PLANKS));
 }

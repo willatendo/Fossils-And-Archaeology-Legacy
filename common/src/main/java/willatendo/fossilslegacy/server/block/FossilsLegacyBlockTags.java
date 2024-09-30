@@ -15,5 +15,7 @@ public class FossilsLegacyBlockTags {
     public static final TagKey<Block> JURASSIC_FERN_PLANTABLE_ON = BLOCK_TAGS.register("jurassic_fern_plantable_on");
     public static final TagKey<Block> LEPIDODENDRON_LOGS = BLOCK_TAGS.register("lepidodendron_logs");
     public static final TagKey<Block> PERMAFROST_FROSTABLE = BLOCK_TAGS.register("permafrost_frostable");
+    public static final TagKey<Block> SIGILLARIA_LOGS = BLOCK_TAGS.register("sigillaria_logs");
+    public static final TagKey<Block> CALAMITES_LOGS = BLOCK_TAGS.register("calamites_logs");
     public static final TagKey<Block> TYRANNOSAURUS_UNBREAKABLES = BLOCK_TAGS.register("tyrannosaurus_unbreakables");
 }

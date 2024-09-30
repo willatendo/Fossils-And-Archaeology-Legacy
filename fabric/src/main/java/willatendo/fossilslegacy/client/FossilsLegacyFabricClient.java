@@ -6,17 +6,10 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.color.block.BlockColors;
-import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.stats.RecipeBookSettings;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.RecipeBookType;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.level.FoliageColor;
-import net.minecraft.world.level.block.state.BlockState;
 import willatendo.fossilslegacy.network.ServerboundSinkPacket;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.Futabasaurus;
@@ -25,10 +18,7 @@ import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
 import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
 import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
 import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
-import willatendo.simplelibrary.client.event.registry.FabricKeyMappingRegister;
-import willatendo.simplelibrary.client.event.registry.FabricMenuScreenRegister;
-import willatendo.simplelibrary.client.event.registry.FabricModelLayerRegister;
-import willatendo.simplelibrary.client.event.registry.FabricModelRegister;
+import willatendo.simplelibrary.client.event.registry.*;
 import willatendo.simplelibrary.server.util.RecipeBookRegistry;
 
 import java.util.List;
@@ -43,13 +33,12 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.LEPIDODENDRON_DOOR.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.LEPIDODENDRON_TRAPDOOR.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.POTTED_LEPIDODENDRON_SAPLING.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.SIGILLARIA_SAPLING.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.SIGILLARIA_LEAVES.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.POTTED_SIGILLARIA_SAPLING.get(), RenderType.cutout());
 
-        ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> {
-            BlockState blockState = ((BlockItem) itemStack.getItem()).getBlock().defaultBlockState();
-            BlockColors blockColors = Minecraft.getInstance().getBlockColors();
-            return blockColors.getColor(blockState, null, null, tintIndex);
-        }, FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get());
-        ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, tintIndex) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getAverageFoliageColor(blockAndTintGetter, blockPos) : FoliageColor.getDefaultColor(), FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get());
+        FossilsLegacyClient.itemColorRegistry(new FabricItemColorRegister());
+        FossilsLegacyClient.blockColorRegistry(new FabricBlockColorRegister());
 
         FossilsLegacyClient.signSheets();
 

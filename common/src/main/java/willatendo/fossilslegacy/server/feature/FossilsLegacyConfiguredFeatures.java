@@ -30,8 +30,12 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlac
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
+import willatendo.fossilslegacy.server.feature.foliageplacer.BranchedFoliagePlacer;
 import willatendo.fossilslegacy.server.feature.foliageplacer.LepidodendronFoliagePlacer;
+import willatendo.fossilslegacy.server.feature.foliageplacer.SigillariaFoliagePlacer;
 import willatendo.fossilslegacy.server.feature.trunkplacer.ForkedThickTrunkPlacer;
+import willatendo.fossilslegacy.server.feature.trunkplacer.SigillariaTrunkPlacer;
+import willatendo.fossilslegacy.server.feature.trunkplacer.StraightBranchingTrunkPlacer;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
@@ -43,7 +47,9 @@ public class FossilsLegacyConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_PERMAFROST = create("ore_permafrost");
 
     // Trees
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CALAMITES = create("calamites");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LEPIDODENDRON = create("lepidodendron");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SIGILLARIA = create("sigillaria");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> PREHISTORIC_OAK = create("prehistoric_oak");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PREHISTORIC_BIRCH = create("prehistoric_birch");
@@ -63,8 +69,17 @@ public class FossilsLegacyConfiguredFeatures {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, FossilsLegacyUtils.resource(name));
     }
 
+    private static TreeConfiguration.TreeConfigurationBuilder createCalamites() {
+        return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(FossilsLegacyBlocks.CALAMITES_LOG.get()), new StraightBranchingTrunkPlacer(9, 3, 6), BlockStateProvider.simple(FossilsLegacyBlocks.CALAMITES_LEAVES.get()), new BranchedFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines();
+    }
+
+
     private static TreeConfiguration.TreeConfigurationBuilder createLepidodendron() {
         return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get()), new ForkedThickTrunkPlacer(8, 2, 0), BlockStateProvider.simple(FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get()), new LepidodendronFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines();
+    }
+
+    private static TreeConfiguration.TreeConfigurationBuilder createSigillaria() {
+        return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(FossilsLegacyBlocks.SIGILLARIA_LOG.get()), new SigillariaTrunkPlacer(9, 3, 5), BlockStateProvider.simple(FossilsLegacyBlocks.SIGILLARIA_LEAVES.get()), new SigillariaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines();
     }
 
     private static TreeConfiguration.TreeConfigurationBuilder createPrehistoricOak() {
@@ -96,7 +111,9 @@ public class FossilsLegacyConfiguredFeatures {
         FeatureUtils.register(bootstrapContext, ORE_PERMAFROST, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), FossilsLegacyBlocks.PERMAFROST.get().defaultBlockState())), 8, 0.0F));
 
         // Trees
+        FeatureUtils.register(bootstrapContext, CALAMITES, Feature.TREE, createCalamites().build());
         FeatureUtils.register(bootstrapContext, LEPIDODENDRON, Feature.TREE, createLepidodendron().build());
+        FeatureUtils.register(bootstrapContext, SIGILLARIA, Feature.TREE, createSigillaria().build());
 
         FeatureUtils.register(bootstrapContext, PREHISTORIC_OAK, Feature.TREE, createPrehistoricOak().build());
         FeatureUtils.register(bootstrapContext, PREHISTORIC_BIRCH, Feature.TREE, createPrehistoricBirch().build());

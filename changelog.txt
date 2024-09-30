@@ -1,4 +1,5 @@
 5/10/2024
+- Forge Is Now Supported
 - Futabasaurus Now Articulates Entire Neck
 - Brachiosaurus Adult Now Has Double-Sized Texture
 - Tamed Tyrannosaurus No Longer Breaks Blocks
@@ -7,6 +8,7 @@
 - Brachiosaurus Now Walks Slower
 - "NoAI" Tagged Dinosaurs No Longer Tick As Much
 - Renamed "#fossilslegacy:piglin_taming_helmets" to "#fossilslegacy:piglin_taming_armor"
+- Trimed Ancient and Scarab Gem Armors Now Show Trims
 - (Fabric) Fixed Server Crash
 - Fixed Placing Stone Tables
 - Fixed Cannibalism
@@ -16,6 +18,7 @@
 - Fixed Dilophosaurus's Venom Being White/Blue
 - Fixed "animalsBreakBlocks" Config Option Not Working Properly
 - Fixed Some Analyzer Recipes Having Multiple Outputs With The Same Item And Weight
+- (Fabric) Fixed Composter Not Working For Lepidodendron Saplings and Lepidodendron Leaves
 - Added Updated Triceratops Model
 - Added "Anu Totem" Stone Tablet
 - Added Coat-Types; Data-Driven Cosmetics For Dinosaurs
@@ -66,6 +69,46 @@
 - Added All Raw Meat To "#c:raw_meat" Tag
 - Added Raw Chicken Soup Bucket To "#c:foods/food_poisoning" Tag
 - Added Therizinosaurs Claws To "#c:shears"/"#forge:shears" Tag
+- Added Sigillaria Planks
+- Added Sigillaria Log
+- Added Stripped Sigillaria Log
+- Added Sigillaria Wood
+- Added Stripped Sigillaria Wood
+- Added Sigillaria Leaves
+- Added Sigillaria Stairs
+- Added Sigillaria Sign
+- Added Sigillaria Door
+- Added Sigillaria Hanging Sign
+- Added Sigillaria Pressure Plate
+- Added Sigillaria Fence
+- Added Sigillaria Trapdoor
+- Added Sigillaria Fence Gate
+- Added Potted Sigillaria Sapling
+- Added Sigillaria Button
+- Added Sigillaria Slab
+- Added Sigillaria Boat
+- Added Sigillaria Boat with Chest
+- Added Sigillaria Tree
+- Added Calamites Planks
+- Added Calamites Log
+- Added Stripped Calamites Log
+- Added Calamites Wood
+- Added Stripped Calamites Wood
+- Added Calamites Leaves
+- Added Calamites Stairs
+- Added Calamites Sign
+- Added Calamites Door
+- Added Calamites Hanging Sign
+- Added Calamites Pressure Plate
+- Added Calamites Fence
+- Added Calamites Trapdoor
+- Added Calamites Fence Gate
+- Added Potted Calamites Sapling
+- Added Calamites Button
+- Added Calamites Slab
+- Added Calamites Boat
+- Added Calamites Boat with Chest
+- Added Calamites Tree
 - Removed Client Config As It Is No Longer Necessary
 12/9/2024
 - (Fabric) Fixed Crash

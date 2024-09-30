@@ -1,11 +1,9 @@
 package willatendo.fossilslegacy.data;
 
-import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -21,7 +19,6 @@ import java.util.concurrent.CompletableFuture;
 
 public class FossilsLegacyItemTagProvider extends ItemTagsProvider {
     private static final TagRegister<Item> COMMON_TAGS = TagRegister.create(Registries.ITEM, "c");
-    private static final TagRegister<Item> FORGE_TAGS = TagRegister.create(Registries.ITEM, "forge");
     private static final TagKey<Item> ENCHANTABLES = COMMON_TAGS.register("enchantables");
     private static final TagKey<Item> FOODS = COMMON_TAGS.register("foods");
     private static final TagKey<Item> RANGED_WEAPONS = COMMON_TAGS.register("tools/ranged_weapon");
@@ -29,18 +26,14 @@ public class FossilsLegacyItemTagProvider extends ItemTagsProvider {
     private static final TagKey<Item> FOOD_POISONING_FOODS = COMMON_TAGS.register("foods/food_poisoning");
     private static final TagKey<Item> MINING_TOOLS = COMMON_TAGS.register("tools/mining_tool");
     private static final TagKey<Item> MELEE_WEAPONS = COMMON_TAGS.register("tools/melee_weapon");
-    private static final Pair<TagKey<Item>, TagKey<Item>> EGGS = FossilsLegacyItemTagProvider.createC("eggs");
-    private static final Pair<TagKey<Item>, TagKey<Item>> BUCKETS = FossilsLegacyItemTagProvider.createC("buckets");
-    private static final Pair<TagKey<Item>, TagKey<Item>> GEMS = FossilsLegacyItemTagProvider.createC("gems");
-    private static final Pair<TagKey<Item>, TagKey<Item>> TOOLS = FossilsLegacyItemTagProvider.createC("tools");
-    private static final Pair<TagKey<Item>, TagKey<Item>> BONES = FossilsLegacyItemTagProvider.createC("bones");
-    private static final Pair<TagKey<Item>, TagKey<Item>> SEEDS = FossilsLegacyItemTagProvider.createC("seeds");
-    private static final Pair<TagKey<Item>, TagKey<Item>> SHEARS = FossilsLegacyItemTagProvider.createC("shears");
-    private static final Pair<TagKey<Item>, TagKey<Item>> FENCE_GATES_WOODEN = FossilsLegacyItemTagProvider.createC("fence_gates/wooden");
-
-    private static Pair<TagKey<Item>, TagKey<Item>> createC(String name) {
-        return Pair.of(COMMON_TAGS.register(name), FORGE_TAGS.register(name));
-    }
+    private static final TagKey<Item> EGGS = COMMON_TAGS.register("eggs");
+    private static final TagKey<Item> BUCKETS = COMMON_TAGS.register("buckets");
+    private static final TagKey<Item> GEMS = COMMON_TAGS.register("gems");
+    private static final TagKey<Item> TOOLS = COMMON_TAGS.register("tools");
+    private static final TagKey<Item> BONES = COMMON_TAGS.register("bones");
+    private static final TagKey<Item> SEEDS = COMMON_TAGS.register("seeds");
+    private static final TagKey<Item> SHEARS = COMMON_TAGS.register("shears");
+    private static final TagKey<Item> FENCE_GATES_WOODEN = COMMON_TAGS.register("fence_gates/wooden");
 
     public FossilsLegacyItemTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, CompletableFuture<TagLookup<Block>> blockTags, String modId, ExistingFileHelper existingFileHelper) {
         super(packOutput, provider, blockTags, modId, existingFileHelper);
@@ -48,31 +41,31 @@ public class FossilsLegacyItemTagProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(Provider provider) {
-        this.tag(ItemTags.PLANKS).add(FossilsLegacyItems.LEPIDODENDRON_PLANKS);
-        this.tag(ItemTags.WOODEN_BUTTONS).add(FossilsLegacyItems.LEPIDODENDRON_BUTTON);
-        this.tag(ItemTags.WOODEN_DOORS).add(FossilsLegacyItems.LEPIDODENDRON_DOOR.get());
-        this.tag(ItemTags.WOODEN_STAIRS).add(FossilsLegacyItems.LEPIDODENDRON_STAIRS);
-        this.tag(ItemTags.WOODEN_SLABS).add(FossilsLegacyItems.LEPIDODENDRON_SLAB);
-        this.tag(ItemTags.WOODEN_FENCES).add(FossilsLegacyItems.LEPIDODENDRON_FENCE);
-        this.tag(FossilsLegacyItemTagProvider.FENCE_GATES_WOODEN, FossilsLegacyItems.LEPIDODENDRON_FENCE_GATE);
-        this.tag(ItemTags.SAPLINGS).add(FossilsLegacyItems.LEPIDODENDRON_SAPLING);
-        this.tag(ItemTags.LOGS_THAT_BURN).addTags(FossilsLegacyItemTags.LEPIDODENDRON_LOGS);
-        this.tag(ItemTags.WOODEN_PRESSURE_PLATES).add(FossilsLegacyItems.LEPIDODENDRON_PRESSURE_PLATE);
-        this.tag(ItemTags.LEAVES).add(FossilsLegacyItems.LEPIDODENDRON_LEAVES);
-        this.tag(ItemTags.WOODEN_TRAPDOORS).add(FossilsLegacyItems.LEPIDODENDRON_TRAPDOOR);
-        this.tag(ItemTags.SIGNS).add(FossilsLegacyItems.LEPIDODENDRON_SIGN.get());
-        this.tag(ItemTags.HANGING_SIGNS).add(FossilsLegacyItems.LEPIDODENDRON_HANGING_SIGN.get());
-        this.tag(ItemTags.FENCE_GATES).add(FossilsLegacyItems.LEPIDODENDRON_FENCE_GATE);
-        this.tag(ItemTags.BOATS).add(FossilsLegacyItems.LEPIDODENDRON_BOAT.get(), FossilsLegacyItems.LEPIDODENDRON_CHEST_BOAT.get());
+        this.tag(ItemTags.PLANKS).add(FossilsLegacyItems.LEPIDODENDRON_PLANKS, FossilsLegacyItems.SIGILLARIA_PLANKS, FossilsLegacyItems.CALAMITES_PLANKS);
+        this.tag(ItemTags.WOODEN_BUTTONS).add(FossilsLegacyItems.LEPIDODENDRON_BUTTON, FossilsLegacyItems.SIGILLARIA_BUTTON, FossilsLegacyItems.CALAMITES_BUTTON);
+        this.tag(ItemTags.WOODEN_DOORS).add(FossilsLegacyItems.LEPIDODENDRON_DOOR.get(), FossilsLegacyItems.SIGILLARIA_DOOR.get(), FossilsLegacyItems.CALAMITES_DOOR.get());
+        this.tag(ItemTags.WOODEN_STAIRS).add(FossilsLegacyItems.LEPIDODENDRON_STAIRS, FossilsLegacyItems.SIGILLARIA_STAIRS, FossilsLegacyItems.CALAMITES_STAIRS);
+        this.tag(ItemTags.WOODEN_SLABS).add(FossilsLegacyItems.LEPIDODENDRON_SLAB, FossilsLegacyItems.SIGILLARIA_SLAB, FossilsLegacyItems.CALAMITES_SLAB);
+        this.tag(ItemTags.WOODEN_FENCES).add(FossilsLegacyItems.LEPIDODENDRON_FENCE, FossilsLegacyItems.SIGILLARIA_FENCE, FossilsLegacyItems.CALAMITES_FENCE);
+        this.tag(FossilsLegacyItemTagProvider.FENCE_GATES_WOODEN).add(FossilsLegacyItems.LEPIDODENDRON_FENCE_GATE, FossilsLegacyItems.SIGILLARIA_FENCE_GATE, FossilsLegacyItems.CALAMITES_FENCE_GATE);
+        this.tag(ItemTags.SAPLINGS).add(FossilsLegacyItems.LEPIDODENDRON_SAPLING, FossilsLegacyItems.SIGILLARIA_SAPLING, FossilsLegacyItems.CALAMITES_SAPLING);
+        this.tag(ItemTags.LOGS_THAT_BURN).addTags(FossilsLegacyItemTags.LEPIDODENDRON_LOGS, FossilsLegacyItemTags.SIGILLARIA_LOGS, FossilsLegacyItemTags.CALAMITES_LOGS);
+        this.tag(ItemTags.WOODEN_PRESSURE_PLATES).add(FossilsLegacyItems.LEPIDODENDRON_PRESSURE_PLATE, FossilsLegacyItems.SIGILLARIA_PRESSURE_PLATE, FossilsLegacyItems.CALAMITES_PRESSURE_PLATE);
+        this.tag(ItemTags.LEAVES).add(FossilsLegacyItems.LEPIDODENDRON_LEAVES, FossilsLegacyItems.SIGILLARIA_LEAVES, FossilsLegacyItems.CALAMITES_LEAVES);
+        this.tag(ItemTags.WOODEN_TRAPDOORS).add(FossilsLegacyItems.LEPIDODENDRON_TRAPDOOR, FossilsLegacyItems.SIGILLARIA_TRAPDOOR, FossilsLegacyItems.CALAMITES_TRAPDOOR);
+        this.tag(ItemTags.SIGNS).add(FossilsLegacyItems.LEPIDODENDRON_SIGN.get(), FossilsLegacyItems.SIGILLARIA_SIGN.get(), FossilsLegacyItems.CALAMITES_SIGN.get());
+        this.tag(ItemTags.HANGING_SIGNS).add(FossilsLegacyItems.LEPIDODENDRON_HANGING_SIGN.get(), FossilsLegacyItems.SIGILLARIA_HANGING_SIGN.get(), FossilsLegacyItems.CALAMITES_HANGING_SIGN.get());
+        this.tag(ItemTags.FENCE_GATES).add(FossilsLegacyItems.LEPIDODENDRON_FENCE_GATE, FossilsLegacyItems.SIGILLARIA_FENCE_GATE, FossilsLegacyItems.CALAMITES_FENCE_GATE);
+        this.tag(ItemTags.BOATS).add(FossilsLegacyItems.LEPIDODENDRON_BOAT.get(), FossilsLegacyItems.LEPIDODENDRON_CHEST_BOAT.get(), FossilsLegacyItems.SIGILLARIA_BOAT.get(), FossilsLegacyItems.SIGILLARIA_CHEST_BOAT.get(), FossilsLegacyItems.CALAMITES_BOAT.get(), FossilsLegacyItems.CALAMITES_CHEST_BOAT.get());
 
         this.tagEquipment(FossilsLegacyItems.SCARAB_GEM_SWORD.get(), FossilsLegacyItems.SCARAB_GEM_PICKAXE.get(), FossilsLegacyItems.SCARAB_GEM_AXE.get(), FossilsLegacyItems.SCARAB_GEM_SHOVEL.get(), FossilsLegacyItems.SCARAB_GEM_HOE.get(), FossilsLegacyItems.SCARAB_GEM_HELMET.get(), FossilsLegacyItems.SCARAB_GEM_CHESTPLATE.get(), FossilsLegacyItems.SCARAB_GEM_LEGGINGS.get(), FossilsLegacyItems.SCARAB_GEM_BOOTS.get());
         this.tagEquipment(FossilsLegacyItems.ANCIENT_SWORD.get(), FossilsLegacyItems.ANCIENT_PICKAXE.get(), FossilsLegacyItems.ANCIENT_AXE.get(), FossilsLegacyItems.ANCIENT_SHOVEL.get(), FossilsLegacyItems.ANCIENT_HOE.get(), FossilsLegacyItems.ANCIENT_HELMET.get(), FossilsLegacyItems.ANCIENT_CHESTPLATE.get(), FossilsLegacyItems.ANCIENT_LEGGINGS.get(), FossilsLegacyItems.ANCIENT_BOOTS.get());
-        this.tag(FossilsLegacyItemTagProvider.BUCKETS, FossilsLegacyItems.RAW_BERRY_MEDLEY_BUCKET.get(), FossilsLegacyItems.COOKED_BERRY_MEDLEY_BUCKET.get(), FossilsLegacyItems.RAW_CHICKEN_SOUP_BUCKET.get(), FossilsLegacyItems.COOKED_CHICKEN_SOUP_BUCKET.get());
-        this.tag(FossilsLegacyItemTagProvider.SEEDS, FossilsLegacyItems.JURASSIC_FERN_SPORES.get());
-        this.tag(FossilsLegacyItemTagProvider.SHEARS, FossilsLegacyItems.THERIZINOSAURUS_CLAWS.get());
-        this.tag(FossilsLegacyItemTagProvider.EGGS, FossilsLegacyItemTags.CAKE_EGGS);
-        this.tag(FossilsLegacyItemTagProvider.GEMS, FossilsLegacyItems.SCARAB_GEM.get());
-        this.tag(FossilsLegacyItemTagProvider.BONES, FossilsLegacyItems.FOSSIL.get());
+        this.tag(FossilsLegacyItemTagProvider.BUCKETS).add(FossilsLegacyItems.RAW_BERRY_MEDLEY_BUCKET.get(), FossilsLegacyItems.COOKED_BERRY_MEDLEY_BUCKET.get(), FossilsLegacyItems.RAW_CHICKEN_SOUP_BUCKET.get(), FossilsLegacyItems.COOKED_CHICKEN_SOUP_BUCKET.get());
+        this.tag(FossilsLegacyItemTagProvider.SEEDS).add(FossilsLegacyItems.JURASSIC_FERN_SPORES.get());
+        this.tag(FossilsLegacyItemTagProvider.SHEARS).add(FossilsLegacyItems.THERIZINOSAURUS_CLAWS.get());
+        this.tag(FossilsLegacyItemTagProvider.EGGS).addTags(FossilsLegacyItemTags.CAKE_EGGS);
+        this.tag(FossilsLegacyItemTagProvider.GEMS).add(FossilsLegacyItems.SCARAB_GEM.get());
+        this.tag(FossilsLegacyItemTagProvider.BONES).add(FossilsLegacyItems.FOSSIL.get());
         this.tag(FossilsLegacyItemTagProvider.RANGED_WEAPONS).add(FossilsLegacyItems.WOODEN_JAVELIN.get(), FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get(), FossilsLegacyItems.STONE_JAVELIN.get(), FossilsLegacyItems.BROKEN_STONE_JAVELIN.get(), FossilsLegacyItems.GOLDEN_JAVELIN.get(), FossilsLegacyItems.BROKEN_GOLDEN_JAVELIN.get(), FossilsLegacyItems.IRON_JAVELIN.get(), FossilsLegacyItems.BROKEN_IRON_JAVELIN.get(), FossilsLegacyItems.DIAMOND_JAVELIN.get(), FossilsLegacyItems.BROKEN_DIAMOND_JAVELIN.get(), FossilsLegacyItems.NETHERITE_JAVELIN.get(), FossilsLegacyItems.BROKEN_NETHERITE_JAVELIN.get(), FossilsLegacyItems.SCARAB_GEM_JAVELIN.get(), FossilsLegacyItems.BROKEN_SCARAB_GEM_JAVELIN.get());
         this.tag(ItemTags.DURABILITY_ENCHANTABLE).add(FossilsLegacyItems.WOODEN_JAVELIN.get(), FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get(), FossilsLegacyItems.STONE_JAVELIN.get(), FossilsLegacyItems.BROKEN_STONE_JAVELIN.get(), FossilsLegacyItems.GOLDEN_JAVELIN.get(), FossilsLegacyItems.BROKEN_GOLDEN_JAVELIN.get(), FossilsLegacyItems.IRON_JAVELIN.get(), FossilsLegacyItems.BROKEN_IRON_JAVELIN.get(), FossilsLegacyItems.DIAMOND_JAVELIN.get(), FossilsLegacyItems.BROKEN_DIAMOND_JAVELIN.get(), FossilsLegacyItems.NETHERITE_JAVELIN.get(), FossilsLegacyItems.BROKEN_NETHERITE_JAVELIN.get(), FossilsLegacyItems.SCARAB_GEM_JAVELIN.get(), FossilsLegacyItems.BROKEN_SCARAB_GEM_JAVELIN.get());
         this.tag(ItemTags.VANISHING_ENCHANTABLE).add(FossilsLegacyItems.WOODEN_JAVELIN.get(), FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get(), FossilsLegacyItems.STONE_JAVELIN.get(), FossilsLegacyItems.BROKEN_STONE_JAVELIN.get(), FossilsLegacyItems.GOLDEN_JAVELIN.get(), FossilsLegacyItems.BROKEN_GOLDEN_JAVELIN.get(), FossilsLegacyItems.IRON_JAVELIN.get(), FossilsLegacyItems.BROKEN_IRON_JAVELIN.get(), FossilsLegacyItems.DIAMOND_JAVELIN.get(), FossilsLegacyItems.BROKEN_DIAMOND_JAVELIN.get(), FossilsLegacyItems.NETHERITE_JAVELIN.get(), FossilsLegacyItems.BROKEN_NETHERITE_JAVELIN.get(), FossilsLegacyItems.SCARAB_GEM_JAVELIN.get(), FossilsLegacyItems.BROKEN_SCARAB_GEM_JAVELIN.get());
@@ -83,6 +76,8 @@ public class FossilsLegacyItemTagProvider extends ItemTagsProvider {
         this.tag(FossilsLegacyItemTagProvider.FOOD_POISONING_FOODS).add(FossilsLegacyItems.RAW_CHICKEN_SOUP_BUCKET.get());
 
         this.copy(FossilsLegacyBlockTags.LEPIDODENDRON_LOGS, FossilsLegacyItemTags.LEPIDODENDRON_LOGS);
+        this.copy(FossilsLegacyBlockTags.SIGILLARIA_LOGS, FossilsLegacyItemTags.SIGILLARIA_LOGS);
+        this.copy(FossilsLegacyBlockTags.CALAMITES_LOGS, FossilsLegacyItemTags.CALAMITES_LOGS);
         this.tag(FossilsLegacyItemTags.BRACHIOSAURUS_COMMANDABLES).add(Items.STICK);
         this.tag(FossilsLegacyItemTags.CAKE_EGGS).add(FossilsLegacyItems.TRICERATOPS_EGG.get(), FossilsLegacyItems.VELOCIRAPTOR_EGG.get(), FossilsLegacyItems.TYRANNOSAURUS_EGG.get(), FossilsLegacyItems.PTERANODON_EGG.get(), FossilsLegacyItems.FUTABASAURUS_EGG.get(), FossilsLegacyItems.MOSASAURUS_EGG.get(), FossilsLegacyItems.STEGOSAURUS_EGG.get(), FossilsLegacyItems.DILOPHOSAURUS_EGG.get(), FossilsLegacyItems.BRACHIOSAURUS_EGG.get());
         this.tag(FossilsLegacyItemTags.CARNOTAURUS_COMMANDABLES).add(Items.BONE);
@@ -104,23 +99,8 @@ public class FossilsLegacyItemTagProvider extends ItemTagsProvider {
         this.tag(FossilsLegacyItemTags.REPAIR_WHEN_BROKEN_IN_ARCHAEOLOGY_TABLE).add(FossilsLegacyItems.SCARAB_GEM_AXE.get(), FossilsLegacyItems.SCARAB_GEM_HOE.get(), FossilsLegacyItems.SCARAB_GEM_PICKAXE.get(), FossilsLegacyItems.SCARAB_GEM_SHOVEL.get(), FossilsLegacyItems.SCARAB_GEM_SWORD.get(), FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get(), FossilsLegacyItems.BROKEN_STONE_JAVELIN.get(), FossilsLegacyItems.BROKEN_IRON_JAVELIN.get(), FossilsLegacyItems.BROKEN_GOLDEN_JAVELIN.get(), FossilsLegacyItems.BROKEN_DIAMOND_JAVELIN.get(), FossilsLegacyItems.BROKEN_NETHERITE_JAVELIN.get(), FossilsLegacyItems.BROKEN_SCARAB_GEM_JAVELIN.get());
     }
 
-    private void tag(Pair<TagKey<Item>, TagKey<Item>> tagKey, Item... items) {
-        this.tag(tagKey.getFirst()).add(items);
-        this.tag(tagKey.getSecond()).add(items);
-    }
-
-    private void tag(Pair<TagKey<Item>, TagKey<Item>> tagKey, ResourceKey<Item>... items) {
-        this.tag(tagKey.getFirst()).add(items);
-        this.tag(tagKey.getSecond()).add(items);
-    }
-
-    private void tag(Pair<TagKey<Item>, TagKey<Item>> tagKey, TagKey<Item> itemsTag) {
-        this.tag(tagKey.getFirst()).addTag(itemsTag);
-        this.tag(tagKey.getSecond()).addTag(itemsTag);
-    }
-
     private void tagEquipment(Item sword, Item pickaxe, Item axe, Item shovel, Item hoe, Item helmet, Item chestplate, Item leggings, Item boots) {
-        this.tag(FossilsLegacyItemTagProvider.TOOLS, sword, pickaxe, axe, shovel, hoe);
+        this.tag(FossilsLegacyItemTagProvider.TOOLS).add(sword, pickaxe, axe, shovel, hoe);
         this.tag(FossilsLegacyItemTagProvider.ENCHANTABLES).add(sword, pickaxe, axe, shovel, hoe, helmet, chestplate, leggings, boots);
         this.tag(ItemTags.ARMOR_ENCHANTABLE).add(helmet, chestplate, leggings, boots);
         this.tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(helmet, chestplate, leggings, boots);

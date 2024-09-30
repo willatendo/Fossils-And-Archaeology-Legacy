@@ -122,6 +122,40 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyBlocks.LEPIDODENDRON_FENCE_GATE.get());
         this.add(FossilsLegacyBlocks.LEPIDODENDRON_BUTTON.get());
         this.add(FossilsLegacyBlocks.LEPIDODENDRON_SLAB.get());
+        this.add(FossilsLegacyBlocks.SIGILLARIA_PLANKS.get());
+        this.add(FossilsLegacyBlocks.SIGILLARIA_SAPLING.get());
+        this.add(FossilsLegacyBlocks.SIGILLARIA_LOG.get());
+        this.add(FossilsLegacyBlocks.STRIPPED_SIGILLARIA_LOG.get());
+        this.add(FossilsLegacyBlocks.SIGILLARIA_WOOD.get());
+        this.add(FossilsLegacyBlocks.STRIPPED_SIGILLARIA_WOOD.get());
+        this.add(FossilsLegacyBlocks.SIGILLARIA_LEAVES.get());
+        this.add(FossilsLegacyBlocks.SIGILLARIA_STAIRS.get());
+        this.add(FossilsLegacyBlocks.SIGILLARIA_SIGN.get());
+        this.add(FossilsLegacyBlocks.SIGILLARIA_DOOR.get());
+        this.add(FossilsLegacyBlocks.SIGILLARIA_HANGING_SIGN.get());
+        this.add(FossilsLegacyBlocks.SIGILLARIA_PRESSURE_PLATE.get());
+        this.add(FossilsLegacyBlocks.SIGILLARIA_FENCE.get());
+        this.add(FossilsLegacyBlocks.SIGILLARIA_TRAPDOOR.get());
+        this.add(FossilsLegacyBlocks.SIGILLARIA_FENCE_GATE.get());
+        this.add(FossilsLegacyBlocks.SIGILLARIA_BUTTON.get());
+        this.add(FossilsLegacyBlocks.SIGILLARIA_SLAB.get());
+        this.add(FossilsLegacyBlocks.CALAMITES_PLANKS.get());
+        this.add(FossilsLegacyBlocks.CALAMITES_SAPLING.get());
+        this.add(FossilsLegacyBlocks.CALAMITES_LOG.get());
+        this.add(FossilsLegacyBlocks.STRIPPED_CALAMITES_LOG.get());
+        this.add(FossilsLegacyBlocks.CALAMITES_WOOD.get());
+        this.add(FossilsLegacyBlocks.STRIPPED_CALAMITES_WOOD.get());
+        this.add(FossilsLegacyBlocks.CALAMITES_LEAVES.get());
+        this.add(FossilsLegacyBlocks.CALAMITES_STAIRS.get());
+        this.add(FossilsLegacyBlocks.CALAMITES_SIGN.get());
+        this.add(FossilsLegacyBlocks.CALAMITES_DOOR.get());
+        this.add(FossilsLegacyBlocks.CALAMITES_HANGING_SIGN.get());
+        this.add(FossilsLegacyBlocks.CALAMITES_PRESSURE_PLATE.get());
+        this.add(FossilsLegacyBlocks.CALAMITES_FENCE.get());
+        this.add(FossilsLegacyBlocks.CALAMITES_TRAPDOOR.get());
+        this.add(FossilsLegacyBlocks.CALAMITES_FENCE_GATE.get());
+        this.add(FossilsLegacyBlocks.CALAMITES_BUTTON.get());
+        this.add(FossilsLegacyBlocks.CALAMITES_SLAB.get());
 
         // Biomes
         this.add("biome.fossilslegacy.prehistoric_ocean", "Prehistoric Ocean");
@@ -321,6 +355,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.COMPSOGNATHUS_DNA.get(), "Compsognathus DNA");
         this.add("item.fossilslegacy.dna.coat_type", "Coat Type: %s");
         this.add(FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get());
+        this.add(FossilsLegacyItems.PETRIFIED_SIGILLARIA_SAPLING.get());
+        this.add(FossilsLegacyItems.PETRIFIED_CALAMITES_SAPLING.get());
         this.add(FossilsLegacyItems.TRICERATOPS_EGG.get());
         this.add(FossilsLegacyItems.VELOCIRAPTOR_EGG.get());
         this.add(FossilsLegacyItems.TYRANNOSAURUS_EGG.get());
@@ -518,6 +554,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 
         this.add(FossilsLegacyItems.LEPIDODENDRON_BOAT.get());
         this.add(FossilsLegacyItems.LEPIDODENDRON_CHEST_BOAT.get(), "Lepidodendron Boat with Chest");
+        this.add(FossilsLegacyItems.SIGILLARIA_BOAT.get());
+        this.add(FossilsLegacyItems.SIGILLARIA_CHEST_BOAT.get(), "Sigillaria Boat with Chest");
 
         this.add(FossilsLegacyItems.DEBUG_MAX_HUNGER.get(), "Debug Item");
         this.add(FossilsLegacyItems.DEBUG_MAX_HEALTH.get(), "Debug Item");

@@ -29,25 +29,10 @@ public class ModEvents {
         BasicEvents.attributeEvent(new FabricAttributeRegister());
         BasicEvents.spawnPlacementEvent(new FabricSpawnPlacementRegister());
         BasicEvents.newDynamicRegistryEvent(new FabricDynamicRegistryRegister());
-
-        ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.JURASSIC_FERN.get(), 0.65F);
-        ComposterBlock.COMPOSTABLES.put(FossilsLegacyItems.JURASSIC_FERN_SPORES.get(), 0.65F);
+        BasicEvents.compostablesSetup();
 
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FossilsLegacyPlacedFeatures.ORE_FOSSIL);
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FossilsLegacyPlacedFeatures.ORE_PERMAFROST);
         BiomeModifications.addSpawn(BiomeSelectors.tag(BiomeTags.HAS_OCEAN_RUIN_WARM), MobCategory.WATER_AMBIENT, FossilsLegacyEntityTypes.NAUTILUS.get(), 1, 1, 1);
-    }
-
-    public static void addToCreativeModeTabs() {
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.OP_BLOCKS).register(fabricItemGroupEntries -> {
-            if (fabricItemGroupEntries.shouldShowOpRestrictedItems()) {
-                fabricItemGroupEntries.accept(FossilsLegacyItems.DEBUG_MAX_HUNGER.get());
-                fabricItemGroupEntries.accept(FossilsLegacyItems.DEBUG_MAX_HEALTH.get());
-                fabricItemGroupEntries.accept(FossilsLegacyItems.DEBUG_FULL_GROWN.get());
-                fabricItemGroupEntries.accept(FossilsLegacyItems.DEBUG_BABY.get());
-                fabricItemGroupEntries.accept(FossilsLegacyItems.DEBUG_TAME.get());
-                fabricItemGroupEntries.accept(FossilsLegacyItems.DEBUG_CHANGE_GENETICS.get());
-            }
-        });
     }
 }

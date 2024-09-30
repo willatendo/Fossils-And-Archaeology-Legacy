@@ -1,0 +1,11 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "plant",
+  "ingredient": {
+    "item": "fossilslegacy:petrified_sigillaria_sapling"
+  },
+  "result": {
+    "id": "fossilslegacy:sigillaria_sapling"
+  },
+  "time": 6000
+}

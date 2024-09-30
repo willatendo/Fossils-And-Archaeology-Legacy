@@ -48,6 +48,18 @@ minecraft {
                 }
             }
         }
+
+        data {
+            workingDirectory file('runs/data')
+            ideaModule "${rootProject.name}.${project.name}.main"
+            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file("${project(':common').projectDir.path}/src/generated/resources/").getAbsolutePath()
+            taskName 'Data'
+            mods {
+                modDataRun {
+                    source sourceSets.main
+                }
+            }
+        }
     }
 }
 
@@ -59,17 +71,15 @@ dependencies {
     implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
 
     implementation("simplelibrary:simplelibrary-forge:${simple_library_version}")
-    jarJar(group: 'simplelibrary', name: 'simplelibrary-forge', version: "[${simple_library_version},4.0.0)")
+    jarJar("simplelibrary:simplelibrary-forge:${simple_library_version}") {
+        jarJar.ranged(it, "[${simple_library_version},4.0.0)")
+    }
 
     implementation("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            fg.component(it)
-        }
-    }
+reobf {
+    jarJar {}
 }
 
 sourceSets.each {

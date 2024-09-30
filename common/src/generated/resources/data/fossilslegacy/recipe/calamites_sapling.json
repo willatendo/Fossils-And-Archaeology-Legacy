@@ -1,0 +1,11 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "plant",
+  "ingredient": {
+    "item": "fossilslegacy:petrified_calamites_sapling"
+  },
+  "result": {
+    "id": "fossilslegacy:calamites_sapling"
+  },
+  "time": 6000
+}

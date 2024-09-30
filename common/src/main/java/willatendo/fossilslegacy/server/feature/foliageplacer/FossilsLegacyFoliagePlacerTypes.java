@@ -9,5 +9,7 @@ import willatendo.simplelibrary.server.registry.SimpleRegistry;
 public class FossilsLegacyFoliagePlacerTypes {
     public static final SimpleRegistry<FoliagePlacerType<?>> FOLIAGE_PLACER_TYPES = SimpleRegistry.create(Registries.FOLIAGE_PLACER_TYPE, FossilsLegacyUtils.ID);
 
+    public static final SimpleHolder<FoliagePlacerType<BranchedFoliagePlacer>> BRANCHED_FOLIAGE_PLACER = FOLIAGE_PLACER_TYPES.register("branched_foliage_placer", () -> new FoliagePlacerType(BranchedFoliagePlacer.CODEC));
     public static final SimpleHolder<FoliagePlacerType<LepidodendronFoliagePlacer>> LEPIDODENDRON_FOLIAGE_PLACER = FOLIAGE_PLACER_TYPES.register("lepidodendron_foliage_placer", () -> new FoliagePlacerType(LepidodendronFoliagePlacer.CODEC));
+    public static final SimpleHolder<FoliagePlacerType<SigillariaFoliagePlacer>> SIGILLARIA_FOLIAGE_PLACER = FOLIAGE_PLACER_TYPES.register("sigillaria_foliage_placer", () -> new FoliagePlacerType(SigillariaFoliagePlacer.CODEC));
 }

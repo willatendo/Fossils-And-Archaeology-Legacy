@@ -10,4 +10,6 @@ public class FossilsLegacyTrunkPlacerTypes {
     public static final SimpleRegistry<TrunkPlacerType<?>> TRUNK_PLACER_TYPES = SimpleRegistry.create(Registries.TRUNK_PLACER_TYPE, FossilsLegacyUtils.ID);
 
     public static final SimpleHolder<TrunkPlacerType<ForkedThickTrunkPlacer>> FORKED_THICK_TRUNK_PLACER = TRUNK_PLACER_TYPES.register("forked_thick_trunk_placer", () -> new TrunkPlacerType(ForkedThickTrunkPlacer.CODEC));
+    public static final SimpleHolder<TrunkPlacerType<SigillariaTrunkPlacer>> SIGILLARIA_TRUNK_PLACER = TRUNK_PLACER_TYPES.register("sigillaria_trunk_placer", () -> new TrunkPlacerType(SigillariaTrunkPlacer.CODEC));
+    public static final SimpleHolder<TrunkPlacerType<SigillariaTrunkPlacer>> STRAIGHT_BRANCHING_TRUNK_PLACER = TRUNK_PLACER_TYPES.register("straight_branching_trunk_placer", () -> new TrunkPlacerType(StraightBranchingTrunkPlacer.CODEC));
 }

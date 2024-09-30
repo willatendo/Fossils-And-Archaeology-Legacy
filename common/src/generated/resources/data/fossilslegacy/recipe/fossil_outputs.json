@@ -21,7 +21,19 @@
       "result": {
         "id": "fossilslegacy:petrified_lepidodendron_sapling"
       },
-      "weight": 20
+      "weight": 10
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:petrified_sigillaria_sapling"
+      },
+      "weight": 10
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:petrified_calamites_sapling"
+      },
+      "weight": 10
     },
     {
       "result": {

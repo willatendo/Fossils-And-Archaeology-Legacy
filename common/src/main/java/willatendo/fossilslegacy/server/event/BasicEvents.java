@@ -18,6 +18,7 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -34,7 +35,11 @@ import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.event.modification.CreativeModeTabModification;
+import willatendo.simplelibrary.server.event.modification.FlammablesModification;
+import willatendo.simplelibrary.server.event.modification.StrippablesModification;
 import willatendo.simplelibrary.server.event.registry.*;
+
+import java.util.HashMap;
 
 public class BasicEvents {
     public static void commonSetup() {
@@ -86,20 +91,54 @@ public class BasicEvents {
         });
 
         AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
-        AxeItem.STRIPPABLES.put(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get(), FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_LOG.get());
-        AxeItem.STRIPPABLES.put(FossilsLegacyBlocks.LEPIDODENDRON_WOOD.get(), FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_WOOD.get());
+        StrippablesModification.register(FossilsLegacyBlocks.CALAMITES_LOG.get(), FossilsLegacyBlocks.STRIPPED_CALAMITES_LOG.get());
+        StrippablesModification.register(FossilsLegacyBlocks.CALAMITES_WOOD.get(), FossilsLegacyBlocks.STRIPPED_CALAMITES_WOOD.get());
+        StrippablesModification.register(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get(), FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_LOG.get());
+        StrippablesModification.register(FossilsLegacyBlocks.LEPIDODENDRON_WOOD.get(), FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_WOOD.get());
+        StrippablesModification.register(FossilsLegacyBlocks.SIGILLARIA_LOG.get(), FossilsLegacyBlocks.STRIPPED_SIGILLARIA_LOG.get());
+        StrippablesModification.register(FossilsLegacyBlocks.SIGILLARIA_WOOD.get(), FossilsLegacyBlocks.STRIPPED_SIGILLARIA_WOOD.get());
 
-        FireBlock fireblock = (FireBlock) Blocks.FIRE;
-        fireblock.setFlammable(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get(), 5, 20);
-        fireblock.setFlammable(FossilsLegacyBlocks.LEPIDODENDRON_SLAB.get(), 5, 20);
-        fireblock.setFlammable(FossilsLegacyBlocks.LEPIDODENDRON_FENCE_GATE.get(), 5, 20);
-        fireblock.setFlammable(FossilsLegacyBlocks.LEPIDODENDRON_FENCE.get(), 5, 20);
-        fireblock.setFlammable(FossilsLegacyBlocks.LEPIDODENDRON_STAIRS.get(), 5, 20);
-        fireblock.setFlammable(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get(), 5, 5);
-        fireblock.setFlammable(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_LOG.get(), 5, 5);
-        fireblock.setFlammable(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_WOOD.get(), 5, 5);
-        fireblock.setFlammable(FossilsLegacyBlocks.LEPIDODENDRON_WOOD.get(), 5, 5);
-        fireblock.setFlammable(FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get(), 30, 60);
+        FlammablesModification.register(FossilsLegacyBlocks.CALAMITES_PLANKS.get(), 5, 20);
+        FlammablesModification.register(FossilsLegacyBlocks.CALAMITES_SLAB.get(), 5, 20);
+        FlammablesModification.register(FossilsLegacyBlocks.CALAMITES_FENCE_GATE.get(), 5, 20);
+        FlammablesModification.register(FossilsLegacyBlocks.CALAMITES_FENCE.get(), 5, 20);
+        FlammablesModification.register(FossilsLegacyBlocks.CALAMITES_STAIRS.get(), 5, 20);
+        FlammablesModification.register(FossilsLegacyBlocks.CALAMITES_LOG.get(), 5, 5);
+        FlammablesModification.register(FossilsLegacyBlocks.STRIPPED_CALAMITES_LOG.get(), 5, 5);
+        FlammablesModification.register(FossilsLegacyBlocks.STRIPPED_CALAMITES_WOOD.get(), 5, 5);
+        FlammablesModification.register(FossilsLegacyBlocks.CALAMITES_WOOD.get(), 5, 5);
+        FlammablesModification.register(FossilsLegacyBlocks.CALAMITES_LEAVES.get(), 30, 60);
+        FlammablesModification.register(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get(), 5, 20);
+        FlammablesModification.register(FossilsLegacyBlocks.LEPIDODENDRON_SLAB.get(), 5, 20);
+        FlammablesModification.register(FossilsLegacyBlocks.LEPIDODENDRON_FENCE_GATE.get(), 5, 20);
+        FlammablesModification.register(FossilsLegacyBlocks.LEPIDODENDRON_FENCE.get(), 5, 20);
+        FlammablesModification.register(FossilsLegacyBlocks.LEPIDODENDRON_STAIRS.get(), 5, 20);
+        FlammablesModification.register(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get(), 5, 5);
+        FlammablesModification.register(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_LOG.get(), 5, 5);
+        FlammablesModification.register(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_WOOD.get(), 5, 5);
+        FlammablesModification.register(FossilsLegacyBlocks.LEPIDODENDRON_WOOD.get(), 5, 5);
+        FlammablesModification.register(FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get(), 30, 60);
+        FlammablesModification.register(FossilsLegacyBlocks.SIGILLARIA_PLANKS.get(), 5, 20);
+        FlammablesModification.register(FossilsLegacyBlocks.SIGILLARIA_SLAB.get(), 5, 20);
+        FlammablesModification.register(FossilsLegacyBlocks.SIGILLARIA_FENCE_GATE.get(), 5, 20);
+        FlammablesModification.register(FossilsLegacyBlocks.SIGILLARIA_FENCE.get(), 5, 20);
+        FlammablesModification.register(FossilsLegacyBlocks.SIGILLARIA_STAIRS.get(), 5, 20);
+        FlammablesModification.register(FossilsLegacyBlocks.SIGILLARIA_LOG.get(), 5, 5);
+        FlammablesModification.register(FossilsLegacyBlocks.STRIPPED_SIGILLARIA_LOG.get(), 5, 5);
+        FlammablesModification.register(FossilsLegacyBlocks.STRIPPED_SIGILLARIA_WOOD.get(), 5, 5);
+        FlammablesModification.register(FossilsLegacyBlocks.SIGILLARIA_WOOD.get(), 5, 5);
+        FlammablesModification.register(FossilsLegacyBlocks.SIGILLARIA_LEAVES.get(), 30, 60);
+    }
+
+    public static void compostablesSetup() {
+        ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.JURASSIC_FERN.get(), 0.65F);
+        ComposterBlock.COMPOSTABLES.put(FossilsLegacyItems.JURASSIC_FERN_SPORES.get(), 0.65F);
+        ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get(), 0.3F);
+        ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get(), 0.3F);
+        ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.SIGILLARIA_LEAVES.get(), 0.3F);
+        ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.SIGILLARIA_SAPLING.get(), 0.3F);
+        ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.CALAMITES_LEAVES.get(), 0.3F);
+        ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.CALAMITES_SAPLING.get(), 0.3F);
     }
 
     public static void buildCreativeModeTabEvent(CreativeModeTabModification creativeModeTabModification) {

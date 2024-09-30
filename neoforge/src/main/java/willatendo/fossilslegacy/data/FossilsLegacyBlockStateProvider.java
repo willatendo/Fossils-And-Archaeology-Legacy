@@ -71,6 +71,42 @@ public class FossilsLegacyBlockStateProvider extends BlockStateProvider {
         this.simpleBlock(FossilsLegacyBlocks.POTTED_LEPIDODENDRON_SAPLING.get(), this.models().withExistingParent("potted_lepidodendron_sapling", this.mcLoc("block/flower_pot_cross")).texture("plant", this.modLoc("block/lepidodendron_sapling")).renderType("cutout"));
         this.buttonBlock(FossilsLegacyBlocks.LEPIDODENDRON_BUTTON.get(), this.modLoc("block/lepidodendron_planks"));
         this.slabBlock(FossilsLegacyBlocks.LEPIDODENDRON_SLAB.get(), this.modLoc("block/lepidodendron_planks"), this.modLoc("block/lepidodendron_planks"));
+        this.simpleBlock(FossilsLegacyBlocks.SIGILLARIA_PLANKS.get());
+        this.simpleBlock(FossilsLegacyBlocks.SIGILLARIA_SAPLING.get(), this.models().cross("sigillaria_sapling", this.modLoc("block/sigillaria_sapling")).renderType("cutout"));
+        this.logBlock(FossilsLegacyBlocks.SIGILLARIA_LOG.get());
+        this.logBlock(FossilsLegacyBlocks.STRIPPED_SIGILLARIA_LOG.get());
+        this.woodBlock(FossilsLegacyBlocks.SIGILLARIA_WOOD.get(), this.modLoc("block/sigillaria_log"));
+        this.woodBlock(FossilsLegacyBlocks.STRIPPED_SIGILLARIA_WOOD.get(), this.modLoc("block/stripped_sigillaria_log"));
+        this.simpleBlock(FossilsLegacyBlocks.SIGILLARIA_LEAVES.get(), this.models().withExistingParent("sigillaria_leaves", this.mcLoc("block/leaves")).texture("all", this.modLoc("block/sigillaria_leaves")).renderType("cutout"));
+        this.stairsBlock(FossilsLegacyBlocks.SIGILLARIA_STAIRS.get(), this.modLoc("block/sigillaria_planks"));
+        this.signBlock(FossilsLegacyBlocks.SIGILLARIA_SIGN.get(), FossilsLegacyBlocks.SIGILLARIA_WALL_SIGN.get(), this.modLoc("block/sigillaria_planks"));
+        this.doorBlock(FossilsLegacyBlocks.SIGILLARIA_DOOR.get(), this.modLoc("block/sigillaria_door_bottom"), this.modLoc("block/sigillaria_door_top"));
+        this.hangingSignBlock(FossilsLegacyBlocks.SIGILLARIA_HANGING_SIGN.get(), FossilsLegacyBlocks.SIGILLARIA_WALL_HANGING_SIGN.get(), this.modLoc("block/stripped_sigillaria_log"));
+        this.pressurePlateBlock(FossilsLegacyBlocks.SIGILLARIA_PRESSURE_PLATE.get(), this.modLoc("block/sigillaria_planks"));
+        this.fenceBlock(FossilsLegacyBlocks.SIGILLARIA_FENCE.get(), this.modLoc("block/sigillaria_planks"));
+        this.trapdoorBlock(FossilsLegacyBlocks.SIGILLARIA_TRAPDOOR.get(), this.modLoc("block/sigillaria_trapdoor"), true);
+        this.fenceGateBlock(FossilsLegacyBlocks.SIGILLARIA_FENCE_GATE.get(), this.modLoc("block/sigillaria_planks"));
+        this.simpleBlock(FossilsLegacyBlocks.POTTED_SIGILLARIA_SAPLING.get(), this.models().withExistingParent("potted_sigillaria_sapling", this.mcLoc("block/flower_pot_cross")).texture("plant", this.modLoc("block/sigillaria_sapling")).renderType("cutout"));
+        this.buttonBlock(FossilsLegacyBlocks.SIGILLARIA_BUTTON.get(), this.modLoc("block/sigillaria_planks"));
+        this.slabBlock(FossilsLegacyBlocks.SIGILLARIA_SLAB.get(), this.modLoc("block/sigillaria_planks"), this.modLoc("block/sigillaria_planks"));
+        this.simpleBlock(FossilsLegacyBlocks.CALAMITES_PLANKS.get());
+        this.simpleBlock(FossilsLegacyBlocks.CALAMITES_SAPLING.get(), this.models().cross("calamites_sapling", this.modLoc("block/calamites_sapling")).renderType("cutout"));
+        this.logBlock(FossilsLegacyBlocks.CALAMITES_LOG.get());
+        this.logBlock(FossilsLegacyBlocks.STRIPPED_CALAMITES_LOG.get());
+        this.woodBlock(FossilsLegacyBlocks.CALAMITES_WOOD.get(), this.modLoc("block/calamites_log"));
+        this.woodBlock(FossilsLegacyBlocks.STRIPPED_CALAMITES_WOOD.get(), this.modLoc("block/stripped_calamites_log"));
+        this.simpleBlock(FossilsLegacyBlocks.CALAMITES_LEAVES.get(), this.models().withExistingParent("calamites_leaves", this.mcLoc("block/leaves")).texture("all", this.modLoc("block/calamites_leaves")).renderType("cutout"));
+        this.stairsBlock(FossilsLegacyBlocks.CALAMITES_STAIRS.get(), this.modLoc("block/calamites_planks"));
+        this.signBlock(FossilsLegacyBlocks.CALAMITES_SIGN.get(), FossilsLegacyBlocks.CALAMITES_WALL_SIGN.get(), this.modLoc("block/calamites_planks"));
+        this.doorBlock(FossilsLegacyBlocks.CALAMITES_DOOR.get(), this.modLoc("block/calamites_door_bottom"), this.modLoc("block/calamites_door_top"));
+        this.hangingSignBlock(FossilsLegacyBlocks.CALAMITES_HANGING_SIGN.get(), FossilsLegacyBlocks.CALAMITES_WALL_HANGING_SIGN.get(), this.modLoc("block/stripped_calamites_log"));
+        this.pressurePlateBlock(FossilsLegacyBlocks.CALAMITES_PRESSURE_PLATE.get(), this.modLoc("block/calamites_planks"));
+        this.fenceBlock(FossilsLegacyBlocks.CALAMITES_FENCE.get(), this.modLoc("block/calamites_planks"));
+        this.trapdoorBlock(FossilsLegacyBlocks.CALAMITES_TRAPDOOR.get(), this.modLoc("block/calamites_trapdoor"), true);
+        this.fenceGateBlock(FossilsLegacyBlocks.CALAMITES_FENCE_GATE.get(), this.modLoc("block/calamites_planks"));
+        this.simpleBlock(FossilsLegacyBlocks.POTTED_CALAMITES_SAPLING.get(), this.models().withExistingParent("potted_calamites_sapling", this.mcLoc("block/flower_pot_cross")).texture("plant", this.modLoc("block/calamites_sapling")).renderType("cutout"));
+        this.buttonBlock(FossilsLegacyBlocks.CALAMITES_BUTTON.get(), this.modLoc("block/calamites_planks"));
+        this.slabBlock(FossilsLegacyBlocks.CALAMITES_SLAB.get(), this.modLoc("block/calamites_planks"), this.modLoc("block/calamites_planks"));
     }
 
     private void cultivator(Block block, String color) {

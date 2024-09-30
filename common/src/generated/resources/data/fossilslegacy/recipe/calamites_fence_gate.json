@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "wooden_fence_gate",
+  "key": {
+    "#": {
+      "item": "fossilslegacy:calamites_planks"
+    },
+    "$": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "$#$",
+    "$#$"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:calamites_fence_gate"
+  }
+}

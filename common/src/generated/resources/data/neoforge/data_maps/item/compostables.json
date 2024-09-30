@@ -1,5 +1,11 @@
 {
   "values": {
+    "fossilslegacy:calamites_leaves": {
+      "chance": 0.3
+    },
+    "fossilslegacy:calamites_sapling": {
+      "chance": 0.3
+    },
     "fossilslegacy:jurassic_fern": {
       "chance": 0.65
     },
@@ -10,6 +16,12 @@
       "chance": 0.3
     },
     "fossilslegacy:lepidodendron_sapling": {
+      "chance": 0.3
+    },
+    "fossilslegacy:sigillaria_leaves": {
+      "chance": 0.3
+    },
+    "fossilslegacy:sigillaria_sapling": {
       "chance": 0.3
     }
   }

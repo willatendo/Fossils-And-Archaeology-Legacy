@@ -25,7 +25,9 @@ public class FossilsLegacyPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ORE_PERMAFROST = create("ore_permafrost");
 
     //Trees
+    public static final ResourceKey<PlacedFeature> CALAMITES_CHECKED = create("calamites_checked");
     public static final ResourceKey<PlacedFeature> LEPIDODENDRON_CHECKED = create("lepidodendron_checked");
+    public static final ResourceKey<PlacedFeature> SIGILLARIA_CHECKED = create("sigillaria_checked");
 
     public static final ResourceKey<PlacedFeature> PREHISTORIC_OAK_CHECKED = create("prehistoric_oak_checked");
     public static final ResourceKey<PlacedFeature> PREHISTORIC_BIRCH_CHECKED = create("prehistoric_birch_checked");
@@ -74,7 +76,9 @@ public class FossilsLegacyPlacedFeatures {
         PlacementUtils.register(bootstrapContext, ORE_PERMAFROST, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.ORE_PERMAFROST), FossilsLegacyPlacedFeatures.commonOrePlacement(25, HeightRangePlacement.triangle(VerticalAnchor.absolute(25), VerticalAnchor.absolute(256))));
 
         // Trees
+        PlacementUtils.register(bootstrapContext, CALAMITES_CHECKED, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.CALAMITES), List.of(PlacementUtils.filteredByBlockSurvival(FossilsLegacyBlocks.CALAMITES_SAPLING.get())));
         PlacementUtils.register(bootstrapContext, LEPIDODENDRON_CHECKED, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.LEPIDODENDRON), List.of(PlacementUtils.filteredByBlockSurvival(FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get())));
+        PlacementUtils.register(bootstrapContext, SIGILLARIA_CHECKED, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.SIGILLARIA), List.of(PlacementUtils.filteredByBlockSurvival(FossilsLegacyBlocks.SIGILLARIA_SAPLING.get())));
 
         PlacementUtils.register(bootstrapContext, PREHISTORIC_OAK_CHECKED, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.PREHISTORIC_OAK), List.of(PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING)));
         PlacementUtils.register(bootstrapContext, PREHISTORIC_BIRCH_CHECKED, configuredFeatures.getOrThrow(FossilsLegacyConfiguredFeatures.PREHISTORIC_BIRCH), List.of(PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING)));

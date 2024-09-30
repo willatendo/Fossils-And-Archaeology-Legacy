@@ -13,28 +13,36 @@ import willatendo.fossilslegacy.client.model.fossils.legacy.PteranodonSkeletonMo
 import willatendo.fossilslegacy.client.model.fossils.legacy.TriceratopsSkeletonModel;
 import willatendo.fossilslegacy.client.render.*;
 import willatendo.fossilslegacy.client.screen.*;
+import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.block.FossilsLegacyWoodTypes;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntityTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenuTypes;
-import willatendo.simplelibrary.client.event.registry.KeyMappingRegister;
-import willatendo.simplelibrary.client.event.registry.MenuScreenRegister;
-import willatendo.simplelibrary.client.event.registry.ModelLayerRegister;
-import willatendo.simplelibrary.client.event.registry.ModelRegister;
+import willatendo.simplelibrary.client.event.registry.*;
 
 public class FossilsLegacyClient {
     public static void signSheets() {
+        FossilsLegacyWoodTypes.register(FossilsLegacyWoodTypes.CALAMITES);
         FossilsLegacyWoodTypes.register(FossilsLegacyWoodTypes.LEPIDODENDRON);
+        FossilsLegacyWoodTypes.register(FossilsLegacyWoodTypes.SIGILLARIA);
     }
 
-    public static void keyMappingEvent(KeyMappingRegister keyMappingRegister) {
+    public static void itemColorRegistry(ItemColorRegistry itemColorRegistry) {
+        itemColorRegistry.registerLeavesColor(FossilsLegacyBlocks.CALAMITES_LEAVES.get(), FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get(), FossilsLegacyBlocks.SIGILLARIA_LEAVES.get());
+    }
+
+    public static void blockColorRegistry(BlockColorRegistry blockColorRegistry) {
+        blockColorRegistry.registerLeavesColor(FossilsLegacyBlocks.CALAMITES_LEAVES.get(), FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get(), FossilsLegacyBlocks.SIGILLARIA_LEAVES.get());
+    }
+
+    public static void keyMappingEvent(KeyMappingRegistry keyMappingRegister) {
         keyMappingRegister.register(FossilsLegacyKeys.SINK);
         keyMappingRegister.register(FossilsLegacyKeys.NAVIGATE_LEFT);
         keyMappingRegister.register(FossilsLegacyKeys.NAVIGATE_RIGHT);
         keyMappingRegister.register(FossilsLegacyKeys.APPLY_GENE);
     }
 
-    public static void modelEvent(ModelRegister modelRegister) {
+    public static void modelEvent(ModelRegistry modelRegister) {
         FossilsLegacyModelIdentifiers.init();
 
         modelRegister.register(FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), BrachiosaurusRenderer::new);
@@ -90,32 +98,7 @@ public class FossilsLegacyClient {
         modelRegister.register(FossilsLegacyBlockEntityTypes.LEPIDODENDRON_HANGING_SIGN.get(), HangingSignRenderer::new);
     }
 
-    public static void modelLayerEvent(ModelLayerRegister modelLayerRegister) {
-        /*modelLayerRegister.register(FossilsLegacyModelLayers.BRACHIOSAURUS.getFirst(), BrachiosaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.BRACHIOSAURUS.getSecond(), LegacyBrachiosaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.CARNOTAURUS, CarnotaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.COMPSOGNATHUS, CompsognathusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.CRYOLOPHOSAURUS, CryolophosaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.DILOPHOSAURUS, DilophosaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.DODO, DodoModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.FUTABASAURUS.getFirst(), FutabasaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.FUTABASAURUS.getSecond(), LegacyFutabasaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.MAMMOTH, MammothModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.MOSASAURUS, MosasaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.PACHYCEPHALOSAURUS, PachycephalosaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.PTERANODON_GROUND, GroundPteranodonModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.PTERANODON_FLYING, FlyingPteranodonModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.PTERANODON_LANDING, LandingPteranodonModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.SMILODON, SmilodonModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.STEGOSAURUS, StegosaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.THERIZINOSAURUS, TherizinosaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.TRICERATOPS.getFirst(), TriceratopsModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.TRICERATOPS.getSecond(), LegacyTriceratopsModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.TYRANNOSAURUS, TyrannosaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.TYRANNOSAURUS_KNOCKED_OUT, KnockedOutTyrannosaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.VELOCIRAPTOR.getFirst(), VelociraptorModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.VELOCIRAPTOR.getSecond(), LegacyVelociraptorModel::createBodyLayer);*/
-
+    public static void modelLayerEvent(ModelLayerRegistry modelLayerRegister) {
         modelLayerRegister.register(FossilsLegacyModelLayers.ANU, AnuModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.BRACHIOSAURUS_SKELETON.getFirst(), BrachiosaurusSkeletonModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.BRACHIOSAURUS_SKELETON.getSecond(), LegacyBrachiosaurusSkeletonModel::createBodyLayer);
@@ -132,7 +115,7 @@ public class FossilsLegacyClient {
         modelLayerRegister.register(FossilsLegacyModelLayers.TIME_MACHINE_CLOCK, TimeMachineClockModel::createBodyLayer);
     }
 
-    public static void menuScreenEvent(MenuScreenRegister menuScreenRegister) {
+    public static void menuScreenEvent(MenuScreenRegistry menuScreenRegister) {
         menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.ANALYZER.get(), AnalyzerScreen::new);
         menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.ARCHAEOLOGY_WORKBENCH.get(), ArchaeologyWorkbenchScreen::new);
         menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.CULTIVATOR.get(), CultivatorScreen::new);

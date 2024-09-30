@@ -1,9 +1,5 @@
 package willatendo.fossilslegacy.client;
 
-import net.minecraft.client.renderer.BiomeColors;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.level.FoliageColor;
-import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -11,17 +7,13 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
 import willatendo.fossilslegacy.client.screen.SkullOverlayScreen;
 import willatendo.fossilslegacy.dual.FossilsLegacyDualEvents;
-import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.inventory.FossilsLegacyRecipeBookTypes;
 import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
 import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
 import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
 import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.client.event.registry.NeoforgeKeyMappingRegister;
-import willatendo.simplelibrary.client.event.registry.NeoforgeMenuScreenRegister;
-import willatendo.simplelibrary.client.event.registry.NeoforgeModelLayerRegister;
-import willatendo.simplelibrary.client.event.registry.NeoforgeModelRegister;
+import willatendo.simplelibrary.client.event.registry.*;
 import willatendo.simplelibrary.server.event.registry.NeoforgeClientReloadListenerRegister;
 
 import java.util.List;
@@ -109,14 +101,11 @@ public class ClientEvents {
 
     @SubscribeEvent
     public static void registerColorHandlersEvent_Item(RegisterColorHandlersEvent.Item event) {
-        event.register((itemStack, tintIndex) -> {
-            BlockState blockState = ((BlockItem) itemStack.getItem()).getBlock().defaultBlockState();
-            return event.getBlockColors().getColor(blockState, null, null, tintIndex);
-        }, FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get());
+        FossilsLegacyClient.itemColorRegistry(new NeoforgeItemColorRegister(event));
     }
 
     @SubscribeEvent
     public static void registerColorHandlersEvent_Block(RegisterColorHandlersEvent.Block event) {
-        event.register((blockState, blockAndTintGetter, blockPos, tintIndex) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getAverageFoliageColor(blockAndTintGetter, blockPos) : FoliageColor.getDefaultColor(), FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get());
+        FossilsLegacyClient.blockColorRegistry(new NeoforgeBlockColorRegister(event));
     }
 }

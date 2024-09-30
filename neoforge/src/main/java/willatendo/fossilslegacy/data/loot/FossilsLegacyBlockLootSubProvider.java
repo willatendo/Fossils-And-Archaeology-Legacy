@@ -20,8 +20,8 @@ public class FossilsLegacyBlockLootSubProvider extends SimpleBlockLootSubProvide
 
     @Override
     public void generate() {
-        this.add(FossilsLegacyBlocks.FOSSIL_ORE.get(), block -> this.createFossilOreLootTable(block));
-        this.add(FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get(), block -> this.createFossilOreLootTable(block));
+        this.add(FossilsLegacyBlocks.FOSSIL_ORE.get(), this::createFossilOreLootTable);
+        this.add(FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get(), this::createFossilOreLootTable);
         this.dropSelf(FossilsLegacyBlocks.SKULL_BLOCK.get());
         this.dropSelf(FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get());
         this.dropSelf(FossilsLegacyBlocks.ANALYZER.get());
@@ -63,7 +63,7 @@ public class FossilsLegacyBlockLootSubProvider extends SimpleBlockLootSubProvide
         this.add(FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get(), block -> this.createLeavesDrops(block, FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_STAIRS.get());
         this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_SIGN.get());
-        this.add(FossilsLegacyBlocks.LEPIDODENDRON_DOOR.get(), block -> this.createDoorTable(block));
+        this.add(FossilsLegacyBlocks.LEPIDODENDRON_DOOR.get(), this::createDoorTable);
         this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_HANGING_SIGN.get());
         this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_PRESSURE_PLATE.get());
         this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_FENCE.get());
@@ -71,7 +71,43 @@ public class FossilsLegacyBlockLootSubProvider extends SimpleBlockLootSubProvide
         this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_FENCE_GATE.get());
         this.dropPottedContents(FossilsLegacyBlocks.POTTED_LEPIDODENDRON_SAPLING.get());
         this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_BUTTON.get());
-        this.add(FossilsLegacyBlocks.LEPIDODENDRON_SLAB.get(), block -> this.createSlabItemTable(block));
+        this.add(FossilsLegacyBlocks.LEPIDODENDRON_SLAB.get(), this::createSlabItemTable);
+        this.dropSelf(FossilsLegacyBlocks.SIGILLARIA_PLANKS.get());
+        this.dropSelf(FossilsLegacyBlocks.SIGILLARIA_SAPLING.get());
+        this.dropSelf(FossilsLegacyBlocks.SIGILLARIA_LOG.get());
+        this.dropSelf(FossilsLegacyBlocks.STRIPPED_SIGILLARIA_LOG.get());
+        this.dropSelf(FossilsLegacyBlocks.SIGILLARIA_WOOD.get());
+        this.dropSelf(FossilsLegacyBlocks.STRIPPED_SIGILLARIA_WOOD.get());
+        this.add(FossilsLegacyBlocks.SIGILLARIA_LEAVES.get(), block -> this.createLeavesDrops(block, FossilsLegacyBlocks.SIGILLARIA_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        this.dropSelf(FossilsLegacyBlocks.SIGILLARIA_STAIRS.get());
+        this.dropSelf(FossilsLegacyBlocks.SIGILLARIA_SIGN.get());
+        this.add(FossilsLegacyBlocks.SIGILLARIA_DOOR.get(), this::createDoorTable);
+        this.dropSelf(FossilsLegacyBlocks.SIGILLARIA_HANGING_SIGN.get());
+        this.dropSelf(FossilsLegacyBlocks.SIGILLARIA_PRESSURE_PLATE.get());
+        this.dropSelf(FossilsLegacyBlocks.SIGILLARIA_FENCE.get());
+        this.dropSelf(FossilsLegacyBlocks.SIGILLARIA_TRAPDOOR.get());
+        this.dropSelf(FossilsLegacyBlocks.SIGILLARIA_FENCE_GATE.get());
+        this.dropPottedContents(FossilsLegacyBlocks.POTTED_SIGILLARIA_SAPLING.get());
+        this.dropSelf(FossilsLegacyBlocks.SIGILLARIA_BUTTON.get());
+        this.add(FossilsLegacyBlocks.SIGILLARIA_SLAB.get(), this::createSlabItemTable);
+        this.dropSelf(FossilsLegacyBlocks.CALAMITES_PLANKS.get());
+        this.dropSelf(FossilsLegacyBlocks.CALAMITES_SAPLING.get());
+        this.dropSelf(FossilsLegacyBlocks.CALAMITES_LOG.get());
+        this.dropSelf(FossilsLegacyBlocks.STRIPPED_CALAMITES_LOG.get());
+        this.dropSelf(FossilsLegacyBlocks.CALAMITES_WOOD.get());
+        this.dropSelf(FossilsLegacyBlocks.STRIPPED_CALAMITES_WOOD.get());
+        this.add(FossilsLegacyBlocks.CALAMITES_LEAVES.get(), block -> this.createLeavesDrops(block, FossilsLegacyBlocks.CALAMITES_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        this.dropSelf(FossilsLegacyBlocks.CALAMITES_STAIRS.get());
+        this.dropSelf(FossilsLegacyBlocks.CALAMITES_SIGN.get());
+        this.add(FossilsLegacyBlocks.CALAMITES_DOOR.get(), this::createDoorTable);
+        this.dropSelf(FossilsLegacyBlocks.CALAMITES_HANGING_SIGN.get());
+        this.dropSelf(FossilsLegacyBlocks.CALAMITES_PRESSURE_PLATE.get());
+        this.dropSelf(FossilsLegacyBlocks.CALAMITES_FENCE.get());
+        this.dropSelf(FossilsLegacyBlocks.CALAMITES_TRAPDOOR.get());
+        this.dropSelf(FossilsLegacyBlocks.CALAMITES_FENCE_GATE.get());
+        this.dropPottedContents(FossilsLegacyBlocks.POTTED_CALAMITES_SAPLING.get());
+        this.dropSelf(FossilsLegacyBlocks.CALAMITES_BUTTON.get());
+        this.add(FossilsLegacyBlocks.CALAMITES_SLAB.get(), this::createSlabItemTable);
     }
 
     protected LootTable.Builder createFossilOreLootTable(Block block) {

@@ -2,6 +2,8 @@ package willatendo.fossilslegacy.data;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
@@ -35,6 +37,8 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.PACHYCEPHALOSAURUS_DNA.get());
         this.basicItem(FossilsLegacyItems.COMPSOGNATHUS_DNA.get());
         this.basicItem(FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get());
+        this.basicItem(FossilsLegacyItems.PETRIFIED_SIGILLARIA_SAPLING.get());
+        this.basicItem(FossilsLegacyItems.PETRIFIED_CALAMITES_SAPLING.get());
         this.basicItem(FossilsLegacyItems.TRICERATOPS_EGG.get());
         this.basicItem(FossilsLegacyItems.VELOCIRAPTOR_EGG.get());
         this.basicItem(FossilsLegacyItems.TYRANNOSAURUS_EGG.get());
@@ -166,19 +170,19 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.handheldItem(FossilsLegacyItems.ANCIENT_PICKAXE.get());
         this.handheldItem(FossilsLegacyItems.ANCIENT_AXE.get());
         this.handheldItem(FossilsLegacyItems.ANCIENT_HOE.get());
-        this.basicItem(FossilsLegacyItems.ANCIENT_HELMET.get());
-        this.basicItem(FossilsLegacyItems.ANCIENT_CHESTPLATE.get());
-        this.basicItem(FossilsLegacyItems.ANCIENT_LEGGINGS.get());
-        this.basicItem(FossilsLegacyItems.ANCIENT_BOOTS.get());
+        this.armorItem(FossilsLegacyItems.ANCIENT_HELMET.get(), "helmet");
+        this.armorItem(FossilsLegacyItems.ANCIENT_CHESTPLATE.get(), "chestplate");
+        this.armorItem(FossilsLegacyItems.ANCIENT_LEGGINGS.get(), "leggings");
+        this.armorItem(FossilsLegacyItems.ANCIENT_BOOTS.get(), "boots");
         this.handheldItem(FossilsLegacyItems.SCARAB_GEM_SWORD.get());
         this.handheldItem(FossilsLegacyItems.SCARAB_GEM_SHOVEL.get());
         this.handheldItem(FossilsLegacyItems.SCARAB_GEM_PICKAXE.get());
         this.handheldItem(FossilsLegacyItems.SCARAB_GEM_AXE.get());
         this.handheldItem(FossilsLegacyItems.SCARAB_GEM_HOE.get());
-        this.basicItem(FossilsLegacyItems.SCARAB_GEM_HELMET.get());
-        this.basicItem(FossilsLegacyItems.SCARAB_GEM_CHESTPLATE.get());
-        this.basicItem(FossilsLegacyItems.SCARAB_GEM_LEGGINGS.get());
-        this.basicItem(FossilsLegacyItems.SCARAB_GEM_BOOTS.get());
+        this.armorItem(FossilsLegacyItems.SCARAB_GEM_HELMET.get(), "helmet");
+        this.armorItem(FossilsLegacyItems.SCARAB_GEM_CHESTPLATE.get(), "chestplate");
+        this.armorItem(FossilsLegacyItems.SCARAB_GEM_LEGGINGS.get(), "leggings");
+        this.armorItem(FossilsLegacyItems.SCARAB_GEM_BOOTS.get(), "boots");
         this.basicItem(FossilsLegacyItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get());
         this.basicItem(FossilsLegacyItems.WOODEN_JAVELIN.get());
         this.basicItem(FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get(), this.modLoc("item/wooden_javelin"));
@@ -219,6 +223,8 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.spawnEggItem(FossilsLegacyItems.DODO_SPAWN_EGG.get());
         this.basicItem(FossilsLegacyItems.LEPIDODENDRON_BOAT.get());
         this.basicItem(FossilsLegacyItems.LEPIDODENDRON_CHEST_BOAT.get());
+        this.basicItem(FossilsLegacyItems.SIGILLARIA_BOAT.get());
+        this.basicItem(FossilsLegacyItems.SIGILLARIA_CHEST_BOAT.get());
 
         this.basicItem(FossilsLegacyItems.OVERWORLD_COIN.get());
         this.basicItem(FossilsLegacyItems.ICE_AGE_COIN.get());
@@ -278,9 +284,49 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicBlock(FossilsLegacyBlocks.LEPIDODENDRON_FENCE_GATE.get());
         this.basicBlock(FossilsLegacyBlocks.LEPIDODENDRON_BUTTON.get(), "lepidodendron_button_inventory");
         this.basicBlock(FossilsLegacyBlocks.LEPIDODENDRON_SLAB.get());
+        this.basicBlock(FossilsLegacyBlocks.SIGILLARIA_PLANKS.get());
+        this.basicItem(FossilsLegacyBlocks.SIGILLARIA_SAPLING.getId(), this.modLoc("block/sigillaria_sapling"));
+        this.basicBlock(FossilsLegacyBlocks.SIGILLARIA_LOG.get());
+        this.basicBlock(FossilsLegacyBlocks.STRIPPED_SIGILLARIA_LOG.get());
+        this.basicBlock(FossilsLegacyBlocks.SIGILLARIA_WOOD.get());
+        this.basicBlock(FossilsLegacyBlocks.STRIPPED_SIGILLARIA_WOOD.get());
+        this.basicBlock(FossilsLegacyBlocks.SIGILLARIA_LEAVES.get());
+        this.basicBlock(FossilsLegacyBlocks.SIGILLARIA_STAIRS.get());
+        this.basicItem(FossilsLegacyItems.SIGILLARIA_SIGN.get());
+        this.basicItem(FossilsLegacyItems.SIGILLARIA_DOOR.get());
+        this.basicItem(FossilsLegacyItems.SIGILLARIA_HANGING_SIGN.get());
+        this.basicBlock(FossilsLegacyBlocks.SIGILLARIA_PRESSURE_PLATE.get());
+        this.basicBlock(FossilsLegacyBlocks.SIGILLARIA_FENCE.get(), "sigillaria_fence_inventory");
+        this.basicBlock(FossilsLegacyBlocks.SIGILLARIA_TRAPDOOR.get(), "sigillaria_trapdoor_bottom");
+        this.basicBlock(FossilsLegacyBlocks.SIGILLARIA_FENCE_GATE.get());
+        this.basicBlock(FossilsLegacyBlocks.SIGILLARIA_BUTTON.get(), "sigillaria_button_inventory");
+        this.basicBlock(FossilsLegacyBlocks.SIGILLARIA_SLAB.get());
+        this.basicBlock(FossilsLegacyBlocks.CALAMITES_PLANKS.get());
+        this.basicItem(FossilsLegacyBlocks.CALAMITES_SAPLING.getId(), this.modLoc("block/calamites_sapling"));
+        this.basicBlock(FossilsLegacyBlocks.CALAMITES_LOG.get());
+        this.basicBlock(FossilsLegacyBlocks.STRIPPED_CALAMITES_LOG.get());
+        this.basicBlock(FossilsLegacyBlocks.CALAMITES_WOOD.get());
+        this.basicBlock(FossilsLegacyBlocks.STRIPPED_CALAMITES_WOOD.get());
+        this.basicBlock(FossilsLegacyBlocks.CALAMITES_LEAVES.get());
+        this.basicBlock(FossilsLegacyBlocks.CALAMITES_STAIRS.get());
+        this.basicItem(FossilsLegacyItems.CALAMITES_SIGN.get());
+        this.basicItem(FossilsLegacyItems.CALAMITES_DOOR.get());
+        this.basicItem(FossilsLegacyItems.CALAMITES_HANGING_SIGN.get());
+        this.basicBlock(FossilsLegacyBlocks.CALAMITES_PRESSURE_PLATE.get());
+        this.basicBlock(FossilsLegacyBlocks.CALAMITES_FENCE.get(), "calamites_fence_inventory");
+        this.basicBlock(FossilsLegacyBlocks.CALAMITES_TRAPDOOR.get(), "calamites_trapdoor_bottom");
+        this.basicBlock(FossilsLegacyBlocks.CALAMITES_FENCE_GATE.get());
+        this.basicBlock(FossilsLegacyBlocks.CALAMITES_BUTTON.get(), "calamites_button_inventory");
+        this.basicBlock(FossilsLegacyBlocks.CALAMITES_SLAB.get());
     }
 
     public void basicBlock(Block block, String blockModel) {
-        ((ItemModelBuilder) this.getBuilder(BuiltInRegistries.BLOCK.getKey(block).getPath())).parent(new ModelFile.UncheckedModelFile(this.modLoc("block/" + blockModel)));
+        this.getBuilder(BuiltInRegistries.BLOCK.getKey(block).getPath()).parent(new ModelFile.UncheckedModelFile(this.modLoc("block/" + blockModel)));
+    }
+
+    private void armorItem(Item item, String type) {
+        ResourceLocation id = BuiltInRegistries.ITEM.getKey(item);
+        String name = id.getPath();
+        this.basicItem(item).override().model(this.withExistingParent(name + "_quartz_trim", this.mcLoc("generated")).texture("layer0", ResourceLocation.fromNamespaceAndPath(id.getNamespace(), "item/" + name)).texture("layer1", this.mcLoc("trims/items/" + type + "_trim_quartz"))).predicate(this.mcLoc("trim_type"), 0.1F).end().override().model(this.withExistingParent(name + "_iron_darker_trim", this.mcLoc("generated")).texture("layer0", ResourceLocation.fromNamespaceAndPath(id.getNamespace(), "item/" + name)).texture("layer1", this.mcLoc("trims/items/" + type + "_trim_iron_darker"))).predicate(this.mcLoc("trim_type"), 0.2F).end().override().model(this.withExistingParent(name + "_netherite_trim", this.mcLoc("generated")).texture("layer0", ResourceLocation.fromNamespaceAndPath(id.getNamespace(), "item/" + name)).texture("layer1", this.mcLoc("trims/items/" + type + "_trim_netherite"))).predicate(this.mcLoc("trim_type"), 0.3F).end().override().model(this.withExistingParent(name + "_redstone_trim", this.mcLoc("generated")).texture("layer0", ResourceLocation.fromNamespaceAndPath(id.getNamespace(), "item/" + name)).texture("layer1", this.mcLoc("trims/items/" + type + "_trim_redstone"))).predicate(this.mcLoc("trim_type"), 0.4F).end().override().model(this.withExistingParent(name + "_copper_trim", this.mcLoc("generated")).texture("layer0", ResourceLocation.fromNamespaceAndPath(id.getNamespace(), "item/" + name)).texture("layer1", this.mcLoc("trims/items/" + type + "_trim_copper"))).predicate(this.mcLoc("trim_type"), 0.5F).end().override().model(this.withExistingParent(name + "_gold_trim", this.mcLoc("generated")).texture("layer0", ResourceLocation.fromNamespaceAndPath(id.getNamespace(), "item/" + name)).texture("layer1", this.mcLoc("trims/items/" + type + "_trim_gold"))).predicate(this.mcLoc("trim_type"), 0.6F).end().override().model(this.withExistingParent(name + "_emerald_trim", this.mcLoc("generated")).texture("layer0", ResourceLocation.fromNamespaceAndPath(id.getNamespace(), "item/" + name)).texture("layer1", this.mcLoc("trims/items/" + type + "_trim_emerald"))).predicate(this.mcLoc("trim_type"), 0.7F).end().override().model(this.withExistingParent(name + "_diamond_trim", this.mcLoc("generated")).texture("layer0", ResourceLocation.fromNamespaceAndPath(id.getNamespace(), "item/" + name)).texture("layer1", this.mcLoc("trims/items/" + type + "_trim_diamond"))).predicate(this.mcLoc("trim_type"), 0.8F).end().override().model(this.withExistingParent(name + "_lapis_trim", this.mcLoc("generated")).texture("layer0", ResourceLocation.fromNamespaceAndPath(id.getNamespace(), "item/" + name)).texture("layer1", this.mcLoc("trims/items/" + type + "_trim_lapis"))).predicate(this.mcLoc("trim_type"), 0.9F).end().override().model(this.withExistingParent(name + "_amethyst_trim", this.mcLoc("generated")).texture("layer0", ResourceLocation.fromNamespaceAndPath(id.getNamespace(), "item/" + name)).texture("layer1", this.mcLoc("trims/items/" + type + "_trim_amethyst"))).predicate(this.mcLoc("trim_type"), 1.0F).end();
     }
 }

@@ -11,6 +11,7 @@ public class FossilsLegacyItemTags {
 
     public static final TagKey<Item> BRACHIOSAURUS_COMMANDABLES = ITEM_TAGS.register("brachiosaurus_commandables");
     public static final TagKey<Item> CAKE_EGGS = ITEM_TAGS.register("cake_eggs");
+    public static final TagKey<Item> CALAMITES_LOGS = ITEM_TAGS.register("calamites_logs");
     public static final TagKey<Item> CARNOTAURUS_COMMANDABLES = ITEM_TAGS.register("carnotaurus_commandables");
     public static final TagKey<Item> COMPSOGNATHUS_COMMANDABLES = ITEM_TAGS.register("compsognathus_commandables");
     public static final TagKey<Item> CRYOLOPHOSAURUS_COMMANDABLES = ITEM_TAGS.register("cryolophosaurus_commandables");
@@ -24,6 +25,7 @@ public class FossilsLegacyItemTags {
     public static final TagKey<Item> PIGLIN_TAMING_ARMOR = ITEM_TAGS.register("piglin_taming_armor");
     public static final TagKey<Item> PTERANODON_COMMANDABLES = ITEM_TAGS.register("pteranodon_commandables");
     public static final TagKey<Item> REPAIR_WHEN_BROKEN_IN_ARCHAEOLOGY_TABLE = ITEM_TAGS.register("repair_when_broken_in_archaeology_table");
+    public static final TagKey<Item> SIGILLARIA_LOGS = ITEM_TAGS.register("sigillaria_logs");
     public static final TagKey<Item> STEGOSAURUS_COMMANDABLES = ITEM_TAGS.register("stegosaurus_commandables");
     public static final TagKey<Item> TRICERATOPS_COMMANDABLES = ITEM_TAGS.register("triceratops_commandables");
     public static final TagKey<Item> THERIZINOSAURUS_COMMANDABLES = ITEM_TAGS.register("therizinosaurus_commandables");

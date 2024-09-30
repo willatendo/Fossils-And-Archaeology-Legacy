@@ -17,10 +17,7 @@ import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
 import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
 import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.client.event.registry.ForgeKeyMappingRegister;
-import willatendo.simplelibrary.client.event.registry.ForgeMenuScreenRegister;
-import willatendo.simplelibrary.client.event.registry.ForgeModelLayerRegister;
-import willatendo.simplelibrary.client.event.registry.ForgeModelRegister;
+import willatendo.simplelibrary.client.event.registry.*;
 import willatendo.simplelibrary.server.event.registry.ForgeClientReloadListenerRegister;
 
 import java.util.List;
@@ -103,16 +100,11 @@ public class ClientEvents {
 
     @SubscribeEvent
     public static void registerColorHandlersEvent_Item(RegisterColorHandlersEvent.Item event) {
-        event.register((itemStack, tintIndex) -> {
-            BlockState blockState = ((BlockItem) itemStack.getItem()).getBlock().defaultBlockState();
-            return event.getBlockColors().getColor(blockState, null, null, tintIndex);
-        }, FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get());
+        FossilsLegacyClient.itemColorRegistry(new ForgeItemColorRegister(event));
     }
 
     @SubscribeEvent
     public static void registerColorHandlersEvent_Block(RegisterColorHandlersEvent.Block event) {
-        event.register((blockState, blockAndTintGetter, blockPos, tintIndex) -> {
-            return blockAndTintGetter != null && blockPos != null ? BiomeColors.getAverageFoliageColor(blockAndTintGetter, blockPos) : FoliageColor.getDefaultColor();
-        }, FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get());
+        FossilsLegacyClient.blockColorRegistry(new ForgeBlockColorRegister(event));
     }
 }
