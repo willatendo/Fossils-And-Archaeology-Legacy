@@ -1,0 +1,159 @@
+{
+  "animations": {
+    "walk": "fossilslegacy:moa_walk"
+  },
+  "elements": [
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 0,
+          "x_dimension": 8.0,
+          "x_origin": -4.0,
+          "y_dimension": 8.0,
+          "y_origin": -17.0,
+          "z_dimension": 9.0,
+          "z_origin": -5.0
+        },
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 17,
+          "x_dimension": 6.0,
+          "x_origin": -3.0,
+          "y_dimension": 8.0,
+          "y_origin": -16.0,
+          "z_dimension": 6.0,
+          "z_origin": 3.0
+        }
+      ],
+      "elements": [],
+      "id": "bb_main",
+      "poses": {
+        "x": 0.0,
+        "y": 24.0,
+        "z": 0.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 34,
+          "texture_y_offset": 0,
+          "x_dimension": 2.0,
+          "x_origin": -1.0,
+          "y_dimension": 4.0,
+          "y_origin": -1.0,
+          "z_dimension": 3.0,
+          "z_origin": -1.5
+        },
+        {
+          "texture_x_offset": 16,
+          "texture_y_offset": 31,
+          "x_dimension": 2.0,
+          "x_origin": -1.0,
+          "y_dimension": 5.0,
+          "y_origin": 3.0,
+          "z_dimension": 2.0,
+          "z_origin": -0.5
+        }
+      ],
+      "elements": [],
+      "id": "left_leg",
+      "poses": {
+        "x": 2.0,
+        "y": 16.0,
+        "z": 1.5
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 34,
+          "texture_y_offset": 19,
+          "x_dimension": 2.0,
+          "x_origin": -2.0,
+          "y_dimension": 5.0,
+          "y_origin": 3.0,
+          "z_dimension": 2.0,
+          "z_origin": -0.5
+        },
+        {
+          "texture_x_offset": 34,
+          "texture_y_offset": 7,
+          "x_dimension": 2.0,
+          "x_origin": -2.0,
+          "y_dimension": 4.0,
+          "y_origin": -1.0,
+          "z_dimension": 3.0,
+          "z_origin": -1.5
+        }
+      ],
+      "elements": [],
+      "id": "right_leg",
+      "poses": {
+        "x": -1.0,
+        "y": 16.0,
+        "z": 1.5
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 24,
+          "texture_y_offset": 17,
+          "x_dimension": 2.0,
+          "x_origin": -1.0,
+          "y_dimension": 15.0,
+          "y_origin": -13.0,
+          "z_dimension": 3.0,
+          "z_origin": -2.5
+        }
+      ],
+      "elements": [
+        {
+          "boxes": [
+            {
+              "texture_x_offset": 0,
+              "texture_y_offset": 31,
+              "x_dimension": 4.0,
+              "x_origin": -2.0,
+              "y_dimension": 4.0,
+              "y_origin": -3.0,
+              "z_dimension": 4.0,
+              "z_origin": -3.25
+            },
+            {
+              "texture_x_offset": 34,
+              "texture_y_offset": 14,
+              "x_dimension": 2.0,
+              "x_origin": -1.0,
+              "y_dimension": 2.0,
+              "y_origin": -2.0,
+              "z_dimension": 3.0,
+              "z_origin": -6.25
+            }
+          ],
+          "elements": [],
+          "id": "head",
+          "poses": {
+            "x": 0.0,
+            "y": -12.0,
+            "z": -1.25
+          }
+        }
+      ],
+      "id": "neck",
+      "poses": {
+        "x": 0.0,
+        "y": 9.0,
+        "z": -4.5
+      }
+    }
+  ],
+  "head_pieces": [
+    "neck"
+  ],
+  "model_id": "fossilslegacy:moa",
+  "texture_height": 64,
+  "texture_width": 64
+}

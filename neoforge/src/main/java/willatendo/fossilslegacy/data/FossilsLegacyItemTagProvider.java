@@ -106,7 +106,7 @@ public class FossilsLegacyItemTagProvider extends ItemTagsProvider {
         this.tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(helmet, chestplate, leggings, boots);
         this.tag(ItemTags.TRIMMABLE_ARMOR).add(helmet, chestplate, leggings, boots);
         this.tag(ItemTags.MINING_ENCHANTABLE).add(sword, pickaxe, axe, shovel, hoe);
-        this.tag(ItemTags.MINING_LOOT_ENCHANTABLE).add(sword, pickaxe, axe, shovel, hoe, helmet, chestplate, leggings, boots);
+        this.tag(ItemTags.MINING_LOOT_ENCHANTABLE).add(pickaxe, axe, shovel, hoe);
         this.tag(ItemTags.VANISHING_ENCHANTABLE).add(sword, pickaxe, axe, shovel, hoe, helmet, chestplate, leggings, boots);
         this.tag(ItemTags.DURABILITY_ENCHANTABLE).add(sword, pickaxe, axe, shovel, hoe, helmet, chestplate, leggings, boots);
         this.tag(ItemTags.SHARP_WEAPON_ENCHANTABLE).add(sword, axe);
@@ -115,7 +115,7 @@ public class FossilsLegacyItemTagProvider extends ItemTagsProvider {
         this.tag(ItemTags.WEAPON_ENCHANTABLE).add(sword, axe);
         this.tag(ItemTags.FIRE_ASPECT_ENCHANTABLE).add(sword);
         this.tag(ItemTags.SWORDS).add(sword);
-        this.tag(ItemTags.SWORD_ENCHANTABLE).add(helmet);
+        this.tag(ItemTags.SWORD_ENCHANTABLE).add(sword);
         this.tag(ItemTags.PICKAXES).add(pickaxe);
         this.tag(FossilsLegacyItemTagProvider.MINING_TOOLS).add(pickaxe);
         this.tag(ItemTags.CLUSTER_MAX_HARVESTABLES).add(pickaxe);

@@ -5,7 +5,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
@@ -128,6 +127,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.SMILODON_DNA.get());
         this.basicItem(FossilsLegacyItems.MAMMOTH_DNA.get());
         this.basicItem(FossilsLegacyItems.DODO_DNA.get());
+        this.basicItem(FossilsLegacyItems.MOA_DNA.get());
         this.basicItem(FossilsLegacyItems.ARMADILLO_EMBRYO_SYRINGE.get());
         this.basicItem(FossilsLegacyItems.CAT_EMBRYO_SYRINGE.get());
         this.basicItem(FossilsLegacyItems.INCUBATED_CHICKEN_EGG.get());
@@ -150,7 +150,9 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.SMILODON_EMBRYO_SYRINGE.get());
         this.basicItem(FossilsLegacyItems.MAMMOTH_EMBRYO_SYRINGE.get());
         this.basicItem(FossilsLegacyItems.INCUBATED_DODO_EGG.get());
+        this.basicItem(FossilsLegacyItems.INCUBATED_MOA_EGG.get());
         this.basicItem(FossilsLegacyItems.DODO_EGG.get());
+        this.basicItem(FossilsLegacyItems.MOA_EGG.get());
         this.basicItem(FossilsLegacyItems.MAGIC_CONCH.get());
         this.basicItem(FossilsLegacyItems.JURASSIC_FERN_SPORES.get());
         this.basicItem(FossilsLegacyItems.RELIC_SCRAP.get());
@@ -221,10 +223,13 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.spawnEggItem(FossilsLegacyItems.PACHYCEPHALOSAURUS_SPAWN_EGG.get());
         this.spawnEggItem(FossilsLegacyItems.COMPSOGNATHUS_SPAWN_EGG.get());
         this.spawnEggItem(FossilsLegacyItems.DODO_SPAWN_EGG.get());
+        this.spawnEggItem(FossilsLegacyItems.MOA_SPAWN_EGG.get());
         this.basicItem(FossilsLegacyItems.LEPIDODENDRON_BOAT.get());
         this.basicItem(FossilsLegacyItems.LEPIDODENDRON_CHEST_BOAT.get());
         this.basicItem(FossilsLegacyItems.SIGILLARIA_BOAT.get());
         this.basicItem(FossilsLegacyItems.SIGILLARIA_CHEST_BOAT.get());
+        this.basicItem(FossilsLegacyItems.CALAMITES_BOAT.get());
+        this.basicItem(FossilsLegacyItems.CALAMITES_CHEST_BOAT.get());
 
         this.basicItem(FossilsLegacyItems.OVERWORLD_COIN.get());
         this.basicItem(FossilsLegacyItems.ICE_AGE_COIN.get());

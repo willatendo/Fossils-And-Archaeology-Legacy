@@ -1,13 +1,18 @@
 package willatendo.fossilslegacy.data;
 
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.TagKey;
 import willatendo.fossilslegacy.server.FossilsLegacyCreativeModeTabs;
+import willatendo.fossilslegacy.server.biomes.FossilsLegacyBiomeTags;
+import willatendo.fossilslegacy.server.block.FossilsLegacyBlockTags;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
-import willatendo.fossilslegacy.server.entity.Anu;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
-import willatendo.fossilslegacy.server.entity.TamedZombifiedPiglin;
+import willatendo.fossilslegacy.server.entity.*;
+import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.entity.genetics.cosmetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakerType;
+import willatendo.fossilslegacy.server.fluid.FossilsLegacyFluidTags;
+import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.simplelibrary.data.SimpleLanguageProvider;
 
@@ -179,6 +184,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("coatType.fossilslegacy.dodo", "Dodo (2024)");
         this.add("coatType.fossilslegacy.futabasaurus", "Futabasaurus (2024)");
         this.add("coatType.fossilslegacy.mammoth", "Mammoth (2011)");
+        this.add("coatType.fossilslegacy.moa", "Moa (2024)");
         this.add("coatType.fossilslegacy.mosasaurus", "Mosasaurus (2011)");
         this.add("coatType.fossilslegacy.pachycephalosaurus", "Pachycephalosaurus (2024)");
         this.add("coatType.fossilslegacy.pteranodon", "Pteranodon (2011)");
@@ -266,6 +272,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyEntityTypes.COMPSOGNATHUS.get());
         this.add(FossilsLegacyEntityTypes.DILOPHOSAURUS.get());
         this.add(FossilsLegacyEntityTypes.DODO.get());
+        this.add(FossilsLegacyEntityTypes.MOA.get());
         this.add(FossilsLegacyEntityTypes.MAMMOTH.get());
         this.add(FossilsLegacyEntityTypes.MOSASAURUS.get());
         this.add(FossilsLegacyEntityTypes.NAUTILUS.get());
@@ -390,6 +397,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.RAW_PACHYCEPHALOSAURUS.get());
         this.add(FossilsLegacyItems.RAW_COMPSOGNATHUS.get());
         this.add(FossilsLegacyItems.RAW_DODO.get());
+        this.add(FossilsLegacyItems.RAW_MOA.get());
         this.add(FossilsLegacyItems.COOKED_TRICERATOPS.get());
         this.add(FossilsLegacyItems.COOKED_VELOCIRAPTOR.get());
         this.add(FossilsLegacyItems.COOKED_TYRANNOSAURUS.get());
@@ -408,6 +416,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.COOKED_PACHYCEPHALOSAURUS.get());
         this.add(FossilsLegacyItems.COOKED_COMPSOGNATHUS.get());
         this.add(FossilsLegacyItems.COOKED_DODO.get());
+        this.add(FossilsLegacyItems.COOKED_MOA.get());
         this.add(FossilsLegacyItems.TYRANNOSAURUS_TOOTH.get());
         this.add(FossilsLegacyItems.TOOTH_DAGGER.get());
         this.add(FossilsLegacyItems.THERIZINOSAURUS_CLAWS.get());
@@ -449,6 +458,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.SMILODON_DNA.get(), "Smilodon DNA");
         this.add(FossilsLegacyItems.MAMMOTH_DNA.get(), "Mammoth DNA");
         this.add(FossilsLegacyItems.DODO_DNA.get(), "Dodo DNA");
+        this.add(FossilsLegacyItems.MOA_DNA.get(), "Moa DNA");
         this.add(FossilsLegacyItems.ARMADILLO_EMBRYO_SYRINGE.get());
         this.add(FossilsLegacyItems.CAT_EMBRYO_SYRINGE.get());
         this.add(FossilsLegacyItems.INCUBATED_CHICKEN_EGG.get());
@@ -472,6 +482,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.MAMMOTH_EMBRYO_SYRINGE.get());
         this.add(FossilsLegacyItems.INCUBATED_DODO_EGG.get());
         this.add(FossilsLegacyItems.DODO_EGG.get());
+        this.add(FossilsLegacyItems.INCUBATED_MOA_EGG.get());
+        this.add(FossilsLegacyItems.MOA_EGG.get());
         this.add(FossilsLegacyItems.JURASSIC_FERN_SPORES.get());
         this.add(FossilsLegacyItems.RELIC_SCRAP.get());
         this.add(FossilsLegacyItems.STONE_TABLET.get());
@@ -541,6 +553,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.PACHYCEPHALOSAURUS_SPAWN_EGG.get());
         this.add(FossilsLegacyItems.COMPSOGNATHUS_SPAWN_EGG.get());
         this.add(FossilsLegacyItems.DODO_SPAWN_EGG.get());
+        this.add(FossilsLegacyItems.MOA_SPAWN_EGG.get());
         this.add("item.fossilslegacy.dinosaur_spawn_egg.desc", "Crouch to spawn baby");
 
         this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.applies_to", "Netherite Equipment");
@@ -556,6 +569,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.LEPIDODENDRON_CHEST_BOAT.get(), "Lepidodendron Boat with Chest");
         this.add(FossilsLegacyItems.SIGILLARIA_BOAT.get());
         this.add(FossilsLegacyItems.SIGILLARIA_CHEST_BOAT.get(), "Sigillaria Boat with Chest");
+        this.add(FossilsLegacyItems.CALAMITES_BOAT.get());
+        this.add(FossilsLegacyItems.CALAMITES_CHEST_BOAT.get(), "Calamites Boat with Chest");
 
         this.add(FossilsLegacyItems.DEBUG_MAX_HUNGER.get(), "Debug Item");
         this.add(FossilsLegacyItems.DEBUG_MAX_HEALTH.get(), "Debug Item");
@@ -707,6 +722,73 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("subtitles.entity.velociraptor.attack", "Velociraptor attacks");
         this.add("subtitles.entity.velociraptor.hurt", "Velociraptor hurts");
         this.add("subtitles.entity.velociraptor.death", "Velociraptor dies");
+
+        // Tags
+        this.add(FossilsLegacyBiomeTags.HAS_ACADEMY, "Has Academy");
+        this.add(FossilsLegacyBiomeTags.HAS_WEAPON_SHOP, "Has Weapon Shop");
+
+        this.add(FossilsLegacyBlockTags.EATABLE_FERN, "Eatable Fern");
+        this.add(FossilsLegacyBlockTags.EATABLE_LEAVES, "Eatable Leaves");
+        this.add(FossilsLegacyBlockTags.FEEDER, "Feeder");
+        this.add(FossilsLegacyBlockTags.JURASSIC_FERN_PLANTABLE_ON, "Jurassic Fern Plantable On");
+        this.add(FossilsLegacyBlockTags.LEPIDODENDRON_LOGS, "Lepidodendron Logs");
+        this.add(FossilsLegacyBlockTags.PERMAFROST_FROSTABLE, "Permafrost Frostable");
+        this.add(FossilsLegacyBlockTags.SIGILLARIA_LOGS, "Sigillaria Logs");
+        this.add(FossilsLegacyBlockTags.CALAMITES_LOGS, "Calamites Logs");
+        this.add(FossilsLegacyBlockTags.TYRANNOSAURUS_UNBREAKABLES, "Tyrannosaurus Unbreakables");
+
+        this.add(FossilsLegacyCoatTypeTags.BRACHIOSAURUS, "Brachiosaurus");
+        this.add(FossilsLegacyCoatTypeTags.CARNOTAURUS, "Carnotaurus");
+        this.add(FossilsLegacyCoatTypeTags.COMPSOGNATHUS, "Compsognathus");
+        this.add(FossilsLegacyCoatTypeTags.CRYOLOPHOSAURUS, "Cryolophosaurus");
+        this.add(FossilsLegacyCoatTypeTags.DILOPHOSAURUS, "Dilophosaurus");
+        this.add(FossilsLegacyCoatTypeTags.DODO, "Dodo");
+        this.add(FossilsLegacyCoatTypeTags.FUTABASAURUS, "Futabasaurus");
+        this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_FUTABASAURUS, "Non-Legacy Futabasaurus");
+        this.add(FossilsLegacyCoatTypeTags.MOA, "Moa");
+        this.add(FossilsLegacyCoatTypeTags.MAMMOTH, "Mammoth");
+        this.add(FossilsLegacyCoatTypeTags.MOSASAURUS, "Mosasaurus");
+        this.add(FossilsLegacyCoatTypeTags.PACHYCEPHALOSAURUS, "Pachycephalosaurus");
+        this.add(FossilsLegacyCoatTypeTags.PTERANODON, "Pteranodon");
+        this.add(FossilsLegacyCoatTypeTags.SMILODON, "Smilodon");
+        this.add(FossilsLegacyCoatTypeTags.STEGOSAURUS, "Stegosaurus");
+        this.add(FossilsLegacyCoatTypeTags.THERIZINOSAURUS, "Therizinosaurus");
+        this.add(FossilsLegacyCoatTypeTags.TRICERATOPS, "Triceratops");
+        this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_TRICERATOPS, "Non-Legacy Triceratops");
+        this.add(FossilsLegacyCoatTypeTags.TYRANNOSAURUS, "Tyrannosaurus");
+        this.add(FossilsLegacyCoatTypeTags.VELOCIRAPTOR, "Velociraptor");
+        this.add(FossilsLegacyCoatTypeTags.LEGACY_VELOCIRAPTOR, "Legacy Velociraptor");
+        this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_VELOCIRAPTOR, "Non-Legacy Velociraptor");
+
+        this.add(FossilsLegacyDamgeTypeTags.TYRANNOSAURUS_IMMUNE, "Tyrannosaurus Immune");
+
+        this.add(FossilsLegacyFluidTags.PERMAFROST_FREEZABLE, "Permaforst Freezable");
+
+        this.add(FossilsLegacyFossilVariantTags.PLACEABLE_FROM_FOSSIL, "Placeable from Fossil");
+
+        this.add(FossilsLegacyItemTags.BRACHIOSAURUS_COMMANDABLES, "Brachiosaurus Commandables");
+        this.add(FossilsLegacyItemTags.CAKE_EGGS, "Cake Eggs");
+        this.add(FossilsLegacyItemTags.CALAMITES_LOGS, "Calamites Logs");
+        this.add(FossilsLegacyItemTags.CARNOTAURUS_COMMANDABLES, "Canotaurus Commandables");
+        this.add(FossilsLegacyItemTags.COMPSOGNATHUS_COMMANDABLES, "Compsognathus Commandables");
+        this.add(FossilsLegacyItemTags.CRYOLOPHOSAURUS_COMMANDABLES, "Cryolophosaurus Commandables");
+        this.add(FossilsLegacyItemTags.DILOPHOSAURUS_COMMANDABLES, "Dilophosaurus Commandables");
+        this.add(FossilsLegacyItemTags.DNA, "DNA");
+        this.add(FossilsLegacyItemTags.DRUM_INSTRUMENT, "Drum Instrument");
+        this.add(FossilsLegacyItemTags.FROGLIGHTS, "Froglights");
+        this.add(FossilsLegacyItemTags.LEPIDODENDRON_LOGS, "Lepidodendron Logs");
+        this.add(FossilsLegacyItemTags.MAMMOTH_COMMANDABLES, "Mammoth Commandables");
+        this.add(FossilsLegacyItemTags.PACHYCEPHALOSAURUS_COMMANDABLES, "Pachycephalosaurus Commandables");
+        this.add(FossilsLegacyItemTags.PIGLIN_TAMING_ARMOR, "Piglin Taming Armor");
+        this.add(FossilsLegacyItemTags.PTERANODON_COMMANDABLES, "Pteranodon Commandables");
+        this.add(FossilsLegacyItemTags.REPAIR_WHEN_BROKEN_IN_ARCHAEOLOGY_TABLE, "Repair When Broken In Archaeology Table");
+        this.add(FossilsLegacyItemTags.SIGILLARIA_LOGS, "Sigillaria Logs");
+        this.add(FossilsLegacyItemTags.STEGOSAURUS_COMMANDABLES, "Stegosaurus Commandables");
+        this.add(FossilsLegacyItemTags.TRICERATOPS_COMMANDABLES, "Triceratops Commandables");
+        this.add(FossilsLegacyItemTags.THERIZINOSAURUS_COMMANDABLES, "Therizinosaurus Commandables");
+        this.add(FossilsLegacyItemTags.TYRANNOSAURUS_COMMANDABLES, "Tyrannosaurus Commandables");
+
+        this.add(FossilsLegacyStoneTabletVariantTags.PLACEABLE, "Placeable");
 
         // Upgrades
         this.add("upgrade.fossilslegacy.scarab_gem_upgrade", "Scarab Gem Upgrade");

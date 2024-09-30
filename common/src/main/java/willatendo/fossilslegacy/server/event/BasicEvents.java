@@ -17,10 +17,8 @@ import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.Heightmap;
 import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
@@ -38,8 +36,6 @@ import willatendo.simplelibrary.server.event.modification.CreativeModeTabModific
 import willatendo.simplelibrary.server.event.modification.FlammablesModification;
 import willatendo.simplelibrary.server.event.modification.StrippablesModification;
 import willatendo.simplelibrary.server.event.registry.*;
-
-import java.util.HashMap;
 
 public class BasicEvents {
     public static void commonSetup() {
@@ -173,6 +169,7 @@ public class BasicEvents {
         attributeRegister.register(FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get(), Cryolophosaurus.cryolophosaurusAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), Dilophosaurus.dilophosaurusAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.DODO.get(), Dodo.dodoAttributes());
+        attributeRegister.register(FossilsLegacyEntityTypes.MOA.get(), Moa.moaAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.EGG.get(), Egg.eggAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.FAILURESAURUS.get(), Failuresaurus.createAttributes().build());
         attributeRegister.register(FossilsLegacyEntityTypes.FOSSIL.get(), Fossil.fossilAttributes());

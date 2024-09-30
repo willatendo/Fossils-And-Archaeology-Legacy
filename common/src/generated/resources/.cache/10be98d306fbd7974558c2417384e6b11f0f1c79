@@ -1,4 +1,4 @@
-// 1.21.1	2024-09-29T22:23:48.2903189	Item Models: fossilslegacy
+// 1.21.1	2024-09-30T15:54:02.3019543	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 1f02e6db84914fc2677089f5e420f925ba109484 assets/fossilslegacy/models/item/ancient_axe.json
 e6aea94981911965db91c7f52bfa4555de4d4182 assets/fossilslegacy/models/item/ancient_axe_artifact.json
@@ -78,7 +78,9 @@ aef823fbce5a3596646be60e2f4cb76c59e115de assets/fossilslegacy/models/item/broken
 bd165c5894dc19f85abaab92be30b71091296b42 assets/fossilslegacy/models/item/broken_stone_javelin.json
 2684b0bd2bf79b2674e3d359d5269ea104b43651 assets/fossilslegacy/models/item/broken_wooden_javelin.json
 7cb50e820655b77ccb88f660a7a41f25a82a07a4 assets/fossilslegacy/models/item/brown_cultivator.json
+8f75e10878f6def561891bab76744aa091cc2f9c assets/fossilslegacy/models/item/calamites_boat.json
 09f806f87abc3ff959c709c874b780b18c07add9 assets/fossilslegacy/models/item/calamites_button.json
+b983885069bec3086a9ec1a75986308b7f18870d assets/fossilslegacy/models/item/calamites_chest_boat.json
 64ed5508fd25794d615ce01c2d82a94c942a5aba assets/fossilslegacy/models/item/calamites_door.json
 15424ce6927602103e3aac44f3233ef1b6fa8864 assets/fossilslegacy/models/item/calamites_fence.json
 1b6252902c84721a277a77bf08c041fbc576686f assets/fossilslegacy/models/item/calamites_fence_gate.json
@@ -171,6 +173,7 @@ b129a66d694f99b0036e6b1ca5739f9c78bc6ccd assets/fossilslegacy/models/item/iced_s
 518125d72ae3795cebc61998bbdf396270f6bc85 assets/fossilslegacy/models/item/ice_age_coin.json
 66b2c1ee205734c236ccf2bf64ff55892d9837d1 assets/fossilslegacy/models/item/incubated_chicken_egg.json
 03a8de5e09482ea8bdc1d9a4473a2a5e7c8f1983 assets/fossilslegacy/models/item/incubated_dodo_egg.json
+5c7deea1d118aab814f0a5ed9f2818f9deab5257 assets/fossilslegacy/models/item/incubated_moa_egg.json
 f30c5b45dc420042b9e1f02a40ece73cf79ff3c8 assets/fossilslegacy/models/item/incubated_parrot_egg.json
 af856b5ca7c3419f2ed44336db2cab4db0e1c970 assets/fossilslegacy/models/item/iron_javelin.json
 331458055b6b1bea96500d4333d8916ad6c932fb assets/fossilslegacy/models/item/jurassic_fern.json
@@ -202,6 +205,9 @@ ef314aa4dcf53fa5168a31539a4d5612d870f62a assets/fossilslegacy/models/item/magent
 a244c695d320bc49c62adfbf6d7a08c04ad1a1cc assets/fossilslegacy/models/item/mammoth_dna.json
 cb0981d8cceb62c4b3dae4d87956682f4f8cb56a assets/fossilslegacy/models/item/mammoth_embryo_syringe.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/mammoth_spawn_egg.json
+d1551157c9db419c1d9c19c9e74728a026e21a1f assets/fossilslegacy/models/item/moa_dna.json
+89c5529cb1dd856bfed899811b65b83aef1bffab assets/fossilslegacy/models/item/moa_egg.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/moa_spawn_egg.json
 7bfb4de72287d0dc6f99559fdad772150042f527 assets/fossilslegacy/models/item/mosasaurus_dna.json
 24b6ebdd88427cbbb79dd3e70c43a84545b1f84d assets/fossilslegacy/models/item/mosasaurus_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/mosasaurus_spawn_egg.json

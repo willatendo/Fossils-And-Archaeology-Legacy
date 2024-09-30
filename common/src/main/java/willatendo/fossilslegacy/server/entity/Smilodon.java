@@ -76,7 +76,7 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, CoatType
 
     @Override
     public int getMaxGrowthStage() {
-        return 1;
+        return 8;
     }
 
     @Override
@@ -305,10 +305,5 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, CoatType
     @Override
     public CommandingType commandItems() {
         return CommandingType.hand();
-    }
-
-    @Override
-    public boolean isBaby() {
-        return this.getGrowthStage() == 0;
     }
 }

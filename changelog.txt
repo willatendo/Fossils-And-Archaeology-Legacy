@@ -9,6 +9,9 @@
 - "NoAI" Tagged Dinosaurs No Longer Tick As Much
 - Renamed "#fossilslegacy:piglin_taming_helmets" to "#fossilslegacy:piglin_taming_armor"
 - Trimed Ancient and Scarab Gem Armors Now Show Trims
+- Mammoth Now Grows In Stages
+- Smilodon Now Grows In Stages
+- Dodo Now Grows In Stages
 - (Fabric) Fixed Server Crash
 - Fixed Placing Stone Tables
 - Fixed Cannibalism

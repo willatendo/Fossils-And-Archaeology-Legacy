@@ -47,6 +47,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.TYRANNOSAURUS_DNA.get());
         output.accept(FossilsLegacyItems.VELOCIRAPTOR_DNA.get());
         output.accept(FossilsLegacyItems.DODO_DNA.get());
+        output.accept(FossilsLegacyItems.MOA_DNA.get());
         output.accept(FossilsLegacyItems.MAMMOTH_DNA.get());
         output.accept(FossilsLegacyItems.SMILODON_DNA.get());
         output.accept(FossilsLegacyItems.ARMADILLO_DNA.get());
@@ -86,6 +87,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.TYRANNOSAURUS_EGG.get());
         output.accept(FossilsLegacyItems.VELOCIRAPTOR_EGG.get());
         output.accept(FossilsLegacyItems.INCUBATED_DODO_EGG.get());
+        output.accept(FossilsLegacyItems.INCUBATED_MOA_EGG.get());
         output.accept(FossilsLegacyItems.MAMMOTH_EMBRYO_SYRINGE.get());
         output.accept(FossilsLegacyItems.SMILODON_EMBRYO_SYRINGE.get());
         output.accept(FossilsLegacyItems.ARMADILLO_EMBRYO_SYRINGE.get());
@@ -138,9 +140,11 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.COOKED_TYRANNOSAURUS.get());
         output.accept(FossilsLegacyItems.COOKED_VELOCIRAPTOR.get());
         output.accept(FossilsLegacyItems.RAW_DODO.get());
+        output.accept(FossilsLegacyItems.RAW_MOA.get());
         output.accept(FossilsLegacyItems.RAW_MAMMOTH.get());
         output.accept(FossilsLegacyItems.RAW_SMILODON.get());
         output.accept(FossilsLegacyItems.COOKED_DODO.get());
+        output.accept(FossilsLegacyItems.COOKED_MOA.get());
         output.accept(FossilsLegacyItems.COOKED_MAMMOTH.get());
         output.accept(FossilsLegacyItems.COOKED_SMILODON.get());
         output.accept(FossilsLegacyItems.NAUTILUS.get());
@@ -175,6 +179,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.ICE_AGE_COIN.get());
         output.accept(FossilsLegacyItems.PREHISTORIC_COIN.get());
         output.accept(FossilsLegacyItems.DODO_EGG.get());
+        output.accept(FossilsLegacyItems.MOA_EGG.get());
         output.accept(FossilsLegacyItems.THERIZINOSAURUS_CLAWS.get());
         output.accept(FossilsLegacyItems.TYRANNOSAURUS_TOOTH.get());
         output.accept(FossilsLegacyItems.DINOPEDIA.get());
@@ -300,6 +305,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.CRYOLOPHOSAURUS_SPAWN_EGG.get());
         output.accept(FossilsLegacyItems.DILOPHOSAURUS_SPAWN_EGG.get());
         output.accept(FossilsLegacyItems.DODO_SPAWN_EGG.get());
+        output.accept(FossilsLegacyItems.MOA_SPAWN_EGG.get());
         output.accept(FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get());
         output.accept(FossilsLegacyItems.FUTABASAURUS_SPAWN_EGG.get());
         output.accept(FossilsLegacyItems.MAMMOTH_SPAWN_EGG.get());

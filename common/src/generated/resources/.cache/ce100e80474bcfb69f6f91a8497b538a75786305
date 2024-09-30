@@ -1,4 +1,4 @@
-// 1.21.1	2024-09-28T11:53:59.3135806	Animations: fossilslegacy
+// 1.21.1	2024-09-30T15:02:54.4149728	Animations: fossilslegacy
 19b0ebf48e5a64e43ca454dc1e07617f3009c50d assets/fossilslegacy/fossilslegacy/animations/brachiosaurus_walk.json
 2e813d7a79cc14b990d0b216341592ee543d1bf5 assets/fossilslegacy/fossilslegacy/animations/carnotaurus_walk.json
 52a5e859e7ee59acf00ce7764b7f05aba8758d67 assets/fossilslegacy/fossilslegacy/animations/compsognathus_walk.json
@@ -12,6 +12,7 @@ c85a28f69507e5f8d5e41f7950dff7044aa284ed assets/fossilslegacy/fossilslegacy/anim
 4149e5de04671055680bdd4c1c02540f76e193b8 assets/fossilslegacy/fossilslegacy/animations/legacy_triceratops_walk.json
 572d2994ebf7feadf074eeb65c8bbca646b82874 assets/fossilslegacy/fossilslegacy/animations/legacy_velociraptor_walk.json
 f1538cbbc57b8d84c21abd03c12cd8c32800a597 assets/fossilslegacy/fossilslegacy/animations/mammoth_walk.json
+9d05d2f7f7361a046ff0c6470834a7c999f883a3 assets/fossilslegacy/fossilslegacy/animations/moa_walk.json
 ff3f497d7af3e8a156d8d261e56e40880cecb878 assets/fossilslegacy/fossilslegacy/animations/mosasaurus_swim.json
 64a88086c485869316a27670405f928a5a000d4b assets/fossilslegacy/fossilslegacy/animations/pachycephalosaurus_walk.json
 44e91314468155da410b9ff1f650843590779476 assets/fossilslegacy/fossilslegacy/animations/pteranodon_fly.json

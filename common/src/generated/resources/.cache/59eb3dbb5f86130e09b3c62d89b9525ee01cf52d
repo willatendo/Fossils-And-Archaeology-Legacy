@@ -1,4 +1,4 @@
-// 1.21.1	2024-09-29T16:55:43.6324893	Loot Tables
+// 1.21.1	2024-09-30T15:42:20.9689412	Loot Tables
 5fcf811a958fcf132678d4423a7472c475c2b8ca data/fossilslegacy/loot_table/blocks/analyzer.json
 8bfc811efa599c9be09afe46481ec9ebbf5f3a33 data/fossilslegacy/loot_table/blocks/archaeology_workbench.json
 e4c3f2afd7c71b1d42778ff89f2ddfe5a03122da data/fossilslegacy/loot_table/blocks/axolotlspawn.json
@@ -116,6 +116,7 @@ c178a5fb631636511d09143718aa8ceb3d22e18d data/fossilslegacy/loot_table/entities/
 a117ca2df6a362329aa123559019a5a60af648a2 data/fossilslegacy/loot_table/entities/failuresaurus.json
 52b4a73e2194093143860400f1a4cc386251bd15 data/fossilslegacy/loot_table/entities/futabasaurus.json
 dd94adc1b0d1ca14003b08d07bf445df9e564962 data/fossilslegacy/loot_table/entities/mammoth.json
+998b4ba550667d9bfe04c9d821584d487463f439 data/fossilslegacy/loot_table/entities/moa.json
 a2ceaa20d4303304854ab6da1257d764a62503a0 data/fossilslegacy/loot_table/entities/mosasaurus.json
 3581d3409c523471d2ffc83c6d40ca12182193fc data/fossilslegacy/loot_table/entities/nautilus.json
 b542d8001be88145895bd6b2ba818c16cbfd3756 data/fossilslegacy/loot_table/entities/pachycephalosaurus.json

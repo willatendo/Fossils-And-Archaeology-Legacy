@@ -48,6 +48,7 @@ public class FossilsLegacyClient {
         modelRegister.register(FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), BrachiosaurusRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), DilophosaurusRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.DODO.get(), DodoRenderer::new);
+        modelRegister.register(FossilsLegacyEntityTypes.MOA.get(), MoaRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.MAMMOTH.get(), MammothRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.MOSASAURUS.get(), MosasaurusRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.NAUTILUS.get(), NautilusRenderer::new);

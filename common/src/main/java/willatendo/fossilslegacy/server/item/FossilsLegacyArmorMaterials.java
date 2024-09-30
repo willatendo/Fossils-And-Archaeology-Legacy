@@ -26,7 +26,7 @@ public class FossilsLegacyArmorMaterials {
         types.put(ArmorItem.Type.CHESTPLATE, 6);
         types.put(ArmorItem.Type.HELMET, 2);
         types.put(Type.BODY, 5);
-    }), 9, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, null);
+    }), 9, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> Ingredient.of());
     public static final SimpleHolder<ArmorMaterial> SCARAB_GEM = register("scarab_gem", Util.make(new EnumMap(ArmorItem.Type.class), (types) -> {
         types.put(ArmorItem.Type.BOOTS, 3);
         types.put(ArmorItem.Type.LEGGINGS, 6);

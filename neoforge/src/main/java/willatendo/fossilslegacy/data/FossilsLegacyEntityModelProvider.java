@@ -10,6 +10,7 @@ import willatendo.fossilslegacy.client.model.dinosaur.legacy.pteranodon.GroundPt
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.pteranodon.LandingPteranodonModel;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.tyrannosaurus.KnockedOutTyrannosaurusModel;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.tyrannosaurus.TyrannosaurusModel;
+import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FossilsLegacyEntityModelProvider extends EntityModelProvider {
     public FossilsLegacyEntityModelProvider(PackOutput packOutput, String modId) {
@@ -25,6 +26,7 @@ public class FossilsLegacyEntityModelProvider extends EntityModelProvider {
         this.add("dilophosaurus", DilophosaurusModel.createBodyLayer(), "walk", BuiltInAnimationTypes.DILOPHOSAURUS_WALK);
         this.add("futabasaurus", FutabasaurusModel.createBodyLayer(), "walk", this.mod("futabasaurus_walk"), "swim", this.mod("futabasaurus_swim"), "neck", "middle_neck", "head");
         this.add("legacy_futabasaurus", LegacyFutabasaurusModel.createBodyLayer());
+        this.add("moa", MoaModel.createBodyLayer(), "walk", this.mod("moa_walk"), "neck");
         this.add("mosasaurus", MosasaurusModel.createBodyLayer(), "walk", BuiltInAnimationTypes.MOSASAURUS_SWIM, "swim", BuiltInAnimationTypes.MOSASAURUS_SWIM);
         this.add("pachycephalosaurus", PachycephalosaurusModel.createBodyLayer(), "walk", this.mod("pachycephalosaurus_walk"), "head");
         this.add("pteranodon", GroundPteranodonModel.createBodyLayer(), "walk", BuiltInAnimationTypes.PTERANODON_WALK, "head", BuiltInAnimationTypes.PTERANODON_HEAD);

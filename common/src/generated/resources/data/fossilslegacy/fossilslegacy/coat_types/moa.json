@@ -1,6 +1,6 @@
 {
   "age_scale_info": {
-    "age_scale": 0.071428575,
+    "age_scale": 0.25,
     "base_scale_height": 0.5,
     "base_scale_width": 0.5
   },
@@ -10,20 +10,20 @@
     "bounding_box_width": 0.5
   },
   "display_info": {
-    "color": 5921370,
+    "color": 3484183,
     "display_scale": 2.0,
     "display_y_offset": -0.25,
     "name": {
-      "translate": "coatType.fossilslegacy.dodo"
+      "translate": "coatType.fossilslegacy.moa"
     },
     "pattern": {
-      "translate": "pattern.fossilslegacy.domestic_pigeon"
+      "translate": "pattern.fossilslegacy.american_bison"
     }
   },
   "models": {
-    "model": "fossilslegacy:dodo"
+    "model": "fossilslegacy:moa"
   },
   "textures": {
-    "texture": "fossilslegacy:textures/entity/dodo/dodo.png"
+    "texture": "fossilslegacy:textures/entity/moa/moa.png"
   }
 }

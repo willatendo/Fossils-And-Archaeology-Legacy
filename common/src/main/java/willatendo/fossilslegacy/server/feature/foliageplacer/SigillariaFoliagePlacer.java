@@ -10,7 +10,6 @@ import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
-import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 
 public class SigillariaFoliagePlacer extends FoliagePlacer {
     public static final MapCodec<SigillariaFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(instance -> foliagePlacerParts(instance).apply(instance, SigillariaFoliagePlacer::new));

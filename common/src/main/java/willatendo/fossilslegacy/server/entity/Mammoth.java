@@ -43,6 +43,7 @@ import willatendo.fossilslegacy.server.entity.goal.DinoEatFromFeederGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoTemptGoal;
+import willatendo.fossilslegacy.server.entity.util.DinoUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
@@ -68,7 +69,7 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
 
     @Override
     public float maxUpStep() {
-        return this.getGrowthStage() == 0 ? 1.0F : 1.5F;
+        return DinoUtils.getStepHeights(8, 0.5F, 1.5F)[this.getGrowthStage()];
     }
 
     @Override
@@ -98,7 +99,7 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
 
     @Override
     public int getMaxGrowthStage() {
-        return 1;
+        return 8;
     }
 
     @Override
@@ -110,6 +111,18 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
     @Override
     public Diet getDiet() {
         return Diet.herbivore();
+    }
+
+    @Override
+    public float renderScaleWidth() {
+        CoatType coatType = this.getCoatType().value();
+        return coatType.ageScaleInfo().baseScaleWidth() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
+    }
+
+    @Override
+    public float renderScaleHeight() {
+        CoatType coatType = this.getCoatType().value();
+        return coatType.ageScaleInfo().baseScaleHeight() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
     }
 
     public int getSwingTick() {
@@ -396,10 +409,5 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
             }
         }
         return information;
-    }
-
-    @Override
-    public boolean isBaby() {
-        return this.getGrowthStage() == 0;
     }
 }

@@ -1,4 +1,4 @@
-// 1.21.1	2024-09-28T12:20:26.9439186	Entity Models: fossilslegacy
+// 1.21.1	2024-09-30T15:03:40.7303447	Entity Models: fossilslegacy
 49307161a066031c581831ea60e4c040087090dc assets/fossilslegacy/fossilslegacy/models/brachiosaurus.json
 4b5d259c270cf625b171dcce90e28f1b918afa59 assets/fossilslegacy/fossilslegacy/models/carnotaurus.json
 83a9a08d939ed2dbd74605c8d40b7d531609c3b2 assets/fossilslegacy/fossilslegacy/models/compsognathus.json
@@ -14,6 +14,7 @@ fc08d8bd139b8f3c9d4768f53fe81b4385e176f6 assets/fossilslegacy/fossilslegacy/mode
 b2d30b589c49c848f73161ec8ed100c7e9328000 assets/fossilslegacy/fossilslegacy/models/legacy_triceratops.json
 320014d0f77c6fed5cff7ec2b45b56511642de95 assets/fossilslegacy/fossilslegacy/models/legacy_velociraptor.json
 39215098264366d464981087472069c65531cd76 assets/fossilslegacy/fossilslegacy/models/mammoth.json
+f75738b3597ce5b3d2f6ab4ca2f8d405b25efbf0 assets/fossilslegacy/fossilslegacy/models/moa.json
 d335ec9e8904014560e469f729db078950ff15f6 assets/fossilslegacy/fossilslegacy/models/mosasaurus.json
 55689c08d0e3f8bdced28633e81c28a22b614d5d assets/fossilslegacy/fossilslegacy/models/pachycephalosaurus.json
 8975b767e1d9f3b00a8eac03f5c0968d549e8454 assets/fossilslegacy/fossilslegacy/models/pteranodon.json

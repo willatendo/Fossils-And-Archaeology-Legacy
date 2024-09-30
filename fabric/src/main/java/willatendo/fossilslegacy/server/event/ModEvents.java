@@ -2,17 +2,12 @@ package willatendo.fossilslegacy.server.event;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
 import willatendo.fossilslegacy.dual.FossilsLegacyDualEvents;
-import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.feature.FossilsLegacyPlacedFeatures;
-import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.simplelibrary.server.event.modification.FabricCreativeModeTabModification;
 import willatendo.simplelibrary.server.event.registry.*;
 

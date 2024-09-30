@@ -12,7 +12,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -28,7 +27,10 @@ import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.entity.genetics.cosmetics.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
-import willatendo.fossilslegacy.server.entity.util.interfaces.*;
+import willatendo.fossilslegacy.server.entity.util.interfaces.CoatTypeEntity;
+import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
+import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
+import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -36,27 +38,16 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dodo extends Dinosaur implements DinopediaInformation, CoatTypeEntity, FloatDownEntity {
-    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Dodo.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
-    public final AnimationState fallAnimationState = new AnimationState();
+public class Moa extends Dinosaur implements DinopediaInformation, CoatTypeEntity {
+    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Moa.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
     public int eggTime = this.random.nextInt(6000) + 6000;
 
-    public Dodo(EntityType<? extends Dodo> entityType, Level level) {
+    public Moa(EntityType<? extends Moa> entityType, Level level) {
         super(entityType, level);
     }
 
-    public static AttributeSupplier dodoAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 4.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).build();
-    }
-
-    @Override
-    public AnimationState getFallAnimationState() {
-        return this.fallAnimationState;
-    }
-
-    @Override
-    public boolean tamesOnBirth() {
-        return true;
+    public static AttributeSupplier moaAttributes() {
+        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 15.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).build();
     }
 
     @Override
@@ -66,12 +57,12 @@ public class Dodo extends Dinosaur implements DinopediaInformation, CoatTypeEnti
 
     @Override
     public TagKey<CoatType> getCoatTypes() {
-        return FossilsLegacyCoatTypeTags.DODO;
+        return FossilsLegacyCoatTypeTags.MOA;
     }
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        return FossilsLegacyEntityTypes.DODO.get().create(serverLevel);
+        return FossilsLegacyEntityTypes.MOA.get().create(serverLevel);
     }
 
     @Override
@@ -117,19 +108,10 @@ public class Dodo extends Dinosaur implements DinopediaInformation, CoatTypeEnti
 
         if (!this.level().isClientSide && this.isAlive() && !this.isBaby() && --this.eggTime <= 0) {
             this.playSound(SoundEvents.CHICKEN_EGG, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
-            this.spawnAtLocation(FossilsLegacyItems.DODO_EGG.get());
+            this.spawnAtLocation(FossilsLegacyItems.MOA_EGG.get());
             this.gameEvent(GameEvent.ENTITY_PLACE);
             this.eggTime = this.random.nextInt(6000) + 6000;
         }
-    }
-
-    @Override
-    public void tick() {
-        if (this.level().isClientSide()) {
-            this.fallAnimationState.animateWhen(!this.onGround(), this.tickCount);
-        }
-
-        super.tick();
     }
 
     @Override
@@ -172,7 +154,6 @@ public class Dodo extends Dinosaur implements DinopediaInformation, CoatTypeEnti
     protected void playStepSound(BlockPos blockPos, BlockState blockState) {
         this.playSound(FossilsLegacySoundEvents.DODO_STEP.get(), 0.15F, 1.0F);
     }
-
 
     @Override
     public Holder<CoatType> getCoatType() {
