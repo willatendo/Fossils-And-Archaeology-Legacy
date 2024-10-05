@@ -50,6 +50,11 @@ public class Carnotaurus extends Dinosaur implements DinopediaInformation, CoatT
     }
 
     @Override
+    protected Component getTypeName() {
+        return this.getOverridenName(super.getTypeName());
+    }
+
+    @Override
     public float maxUpStep() {
         return DinoUtils.getStepHeights(8, 1.0F, 2.0F)[this.getGrowthStage()];
     }
@@ -130,17 +135,17 @@ public class Carnotaurus extends Dinosaur implements DinopediaInformation, CoatT
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return FossilsLegacySoundEvents.CARNOTAURUS_AMBIENT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.CARNOTAURUS_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return FossilsLegacySoundEvents.CARNOTAURUS_HURT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.CARNOTAURUS_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return FossilsLegacySoundEvents.CARNOTAURUS_DEATH.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.CARNOTAURUS_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     @Override

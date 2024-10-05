@@ -58,6 +58,11 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, CoatType
     }
 
     @Override
+    protected Component getTypeName() {
+        return this.getOverridenName(super.getTypeName());
+    }
+
+    @Override
     public float maxUpStep() {
         return 1.0F;
     }
@@ -242,17 +247,17 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, CoatType
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return FossilsLegacySoundEvents.SMILODON_AMBIENT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.SMILODON_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return FossilsLegacySoundEvents.SMILODON_HURT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.SMILODON_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return FossilsLegacySoundEvents.SMILODON_DEATH.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.SMILODON_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     public void setIsInterested(boolean interested) {

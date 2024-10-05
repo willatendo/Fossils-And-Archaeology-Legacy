@@ -52,6 +52,11 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Rid
     }
 
     @Override
+    protected Component getTypeName() {
+        return this.getOverridenName(super.getTypeName());
+    }
+
+    @Override
     public float maxUpStep() {
         return DinoUtils.getStepHeights(36, 1.0F, 5.0F)[this.getGrowthStage()];
     }
@@ -218,17 +223,17 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Rid
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return FossilsLegacySoundEvents.BRACHIOSAURUS_AMBIENT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.BRACHIOSAURUS_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return FossilsLegacySoundEvents.BRACHIOSAURUS_HURT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.BRACHIOSAURUS_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return FossilsLegacySoundEvents.BRACHIOSAURUS_DEATH.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.BRACHIOSAURUS_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     @Override

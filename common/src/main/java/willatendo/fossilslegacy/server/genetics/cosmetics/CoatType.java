@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.server.genetics.cosmetics;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentSerialization;
@@ -10,13 +11,14 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.RegistryFileCodec;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.ExtraCodecs;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 
 import java.util.Optional;
 
-public record CoatType(DisplayInfo displayInfo, Models models, Textures textures, BoundingBoxInfo boundingBoxInfo, AgeScaleInfo ageScaleInfo) {
-    public static final Codec<CoatType> DIRECT_CODEC = RecordCodecBuilder.create(instance -> instance.group(DisplayInfo.CODEC.fieldOf("display_info").forGetter(CoatType::displayInfo), Models.CODEC.fieldOf("models").forGetter(CoatType::models), Textures.CODEC.fieldOf("textures").forGetter(CoatType::textures), BoundingBoxInfo.CODEC.fieldOf("bounding_box_info").forGetter(CoatType::boundingBoxInfo), AgeScaleInfo.CODEC.fieldOf("age_scale_info").forGetter(CoatType::ageScaleInfo)).apply(instance, CoatType::new));
+public record CoatType(DisplayInfo displayInfo, Models models, Textures textures, BoundingBoxInfo boundingBoxInfo, AgeScaleInfo ageScaleInfo, Optional<OverrideInfo> overrideInfo) {
+    public static final Codec<CoatType> DIRECT_CODEC = RecordCodecBuilder.create(instance -> instance.group(DisplayInfo.CODEC.fieldOf("display_info").forGetter(CoatType::displayInfo), Models.CODEC.fieldOf("models").forGetter(CoatType::models), Textures.CODEC.fieldOf("textures").forGetter(CoatType::textures), BoundingBoxInfo.CODEC.fieldOf("bounding_box_info").forGetter(CoatType::boundingBoxInfo), AgeScaleInfo.CODEC.fieldOf("age_scale_info").forGetter(CoatType::ageScaleInfo), OverrideInfo.CODEC.optionalFieldOf("override_info").forGetter(CoatType::overrideInfo)).apply(instance, CoatType::new));
     public static final Codec<Holder<CoatType>> CODEC = RegistryFileCodec.create(FossilsLegacyRegistries.COAT_TYPES, DIRECT_CODEC);
     public static final StreamCodec<RegistryFriendlyByteBuf, Holder<CoatType>> STREAM_CODEC = ByteBufCodecs.holderRegistry(FossilsLegacyRegistries.COAT_TYPES);
 
@@ -38,6 +40,59 @@ public record CoatType(DisplayInfo displayInfo, Models models, Textures textures
 
     public record AgeScaleInfo(float baseScaleWidth, float baseScaleHeight, float ageScale, float shadowSize, float shadowGrowth) {
         public static final Codec<AgeScaleInfo> CODEC = RecordCodecBuilder.create(instance -> instance.group(ExtraCodecs.POSITIVE_FLOAT.fieldOf("base_scale_width").forGetter(AgeScaleInfo::baseScaleWidth), ExtraCodecs.POSITIVE_FLOAT.fieldOf("base_scale_height").forGetter(AgeScaleInfo::baseScaleHeight), ExtraCodecs.POSITIVE_FLOAT.fieldOf("age_scale").forGetter(AgeScaleInfo::ageScale), ExtraCodecs.POSITIVE_FLOAT.fieldOf("shadow_size").forGetter(AgeScaleInfo::shadowSize), ExtraCodecs.POSITIVE_FLOAT.fieldOf("shadow_growth").forGetter(AgeScaleInfo::shadowGrowth)).apply(instance, AgeScaleInfo::new));
+    }
+
+    public record OverrideInfo(Optional<Component> animalName, Optional<ResourceLocation> ambientSound, Optional<ResourceLocation> hurtSound, Optional<ResourceLocation> deathSound) {
+        public static final Codec<OverrideInfo> CODEC = RecordCodecBuilder.create(instance -> instance.group(ComponentSerialization.CODEC.optionalFieldOf("animal_name").forGetter(OverrideInfo::animalName), ResourceLocation.CODEC.optionalFieldOf("ambient_sound").forGetter(OverrideInfo::ambientSound), ResourceLocation.CODEC.optionalFieldOf("hurt_sound").forGetter(OverrideInfo::hurtSound), ResourceLocation.CODEC.optionalFieldOf("death_sound").forGetter(OverrideInfo::deathSound)).apply(instance, OverrideInfo::new));
+
+        public Optional<SoundEvent> getAmbientSound() {
+            return this.ambientSound().map(BuiltInRegistries.SOUND_EVENT::get);
+        }
+
+        public Optional<SoundEvent> getHurtSound() {
+            return this.hurtSound().map(BuiltInRegistries.SOUND_EVENT::get);
+        }
+
+        public Optional<SoundEvent> getDeathSound() {
+            return this.deathSound().map(BuiltInRegistries.SOUND_EVENT::get);
+        }
+
+        public static class Builder {
+            private Optional<Component> animalName = Optional.empty();
+            private Optional<ResourceLocation> ambientSound = Optional.empty();
+            private Optional<ResourceLocation> hurtSound = Optional.empty();
+            private Optional<ResourceLocation> deathSound = Optional.empty();
+
+            public Builder withOverridedName(Component overridedName) {
+                this.animalName = Optional.of(overridedName);
+                return this;
+            }
+
+            public Builder withOverridedAmbientSound(ResourceLocation overridedAmbientSound) {
+                this.ambientSound = Optional.of(overridedAmbientSound);
+                return this;
+            }
+
+            public Builder withOverridedHurtSound(ResourceLocation overridedHurtSound) {
+                this.hurtSound = Optional.of(overridedHurtSound);
+                return this;
+            }
+
+            public Builder withOverridedDeathSound(ResourceLocation overridedDeathSound) {
+                this.deathSound = Optional.of(overridedDeathSound);
+                return this;
+            }
+
+            public OverrideInfo build() {
+                return new OverrideInfo(this.animalName, this.ambientSound, this.hurtSound, this.deathSound);
+            }
+        }
+
+        public enum OverridenSoundType {
+            AMBIENT,
+            HURT,
+            DEATH;
+        }
     }
 
     public static Builder build(Component name, Component pattern, int color, float displayScale, float displayYOffset, ResourceLocation model, ResourceLocation texture, float boundingBoxWidth, float boundingBoxHeight, float boundingBoxGrowth, float baseScaleWidth, float baseScaleHeight, float ageScale, float shadowSize, float shadowGrowth) {
@@ -68,6 +123,7 @@ public record CoatType(DisplayInfo displayInfo, Models models, Textures textures
         private final float ageScale;
         private final float shadowSize;
         private final float shadowGrowth;
+        private Optional<OverrideInfo> overrideInfo = Optional.empty();
 
         private Builder(Component name, Component pattern, int color, float displayScale, float displayYOffset, ResourceLocation model, ResourceLocation texture, float boundingBoxWidth, float boundingBoxHeight, float boundingBoxGrowth, float baseScaleWidth, float baseScaleHeight, float ageScale, float shadowSize, float shadowGrowth) {
             this.name = name;
@@ -124,8 +180,13 @@ public record CoatType(DisplayInfo displayInfo, Models models, Textures textures
             return this;
         }
 
+        public Builder withOverrideInfo(OverrideInfo overrideInfo) {
+            this.overrideInfo = Optional.of(overrideInfo);
+            return this;
+        }
+
         public CoatType build() {
-            return new CoatType(new DisplayInfo(this.name, this.pattern, this.color, this.displayScale, this.displayYOffset), new Models(this.model, this.flyingModel, this.landingModel, this.knockedOutModel), new Textures(this.texture, this.babyTexture, this.shearedTexture, this.aggressiveTexture, this.aggressiveBabyTexture, this.knockedOutTexture), new BoundingBoxInfo(this.boundingBoxWidth, this.boundingBoxHeight, this.boundingBoxGrowth), new AgeScaleInfo(this.baseScaleWidth, this.baseScaleHeight, this.ageScale, this.shadowSize, this.shadowGrowth));
+            return new CoatType(new DisplayInfo(this.name, this.pattern, this.color, this.displayScale, this.displayYOffset), new Models(this.model, this.flyingModel, this.landingModel, this.knockedOutModel), new Textures(this.texture, this.babyTexture, this.shearedTexture, this.aggressiveTexture, this.aggressiveBabyTexture, this.knockedOutTexture), new BoundingBoxInfo(this.boundingBoxWidth, this.boundingBoxHeight, this.boundingBoxGrowth), new AgeScaleInfo(this.baseScaleWidth, this.baseScaleHeight, this.ageScale, this.shadowSize, this.shadowGrowth), this.overrideInfo);
         }
     }
 }

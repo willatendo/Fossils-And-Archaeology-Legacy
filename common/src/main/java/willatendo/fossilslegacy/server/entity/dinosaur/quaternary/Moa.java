@@ -52,6 +52,11 @@ public class Moa extends Dinosaur implements DinopediaInformation, CoatTypeEntit
     }
 
     @Override
+    protected Component getTypeName() {
+        return this.getOverridenName(super.getTypeName());
+    }
+
+    @Override
     public int getMaxHunger() {
         return 100;
     }
@@ -138,17 +143,17 @@ public class Moa extends Dinosaur implements DinopediaInformation, CoatTypeEntit
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return FossilsLegacySoundEvents.MOA_AMBIENT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.MOA_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return FossilsLegacySoundEvents.MOA_HURT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.MOA_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return FossilsLegacySoundEvents.MOA_DEATH.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.MOA_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     @Override

@@ -52,6 +52,11 @@ public class Ankylosaurus extends Dinosaur implements DinopediaInformation, Ride
     }
 
     @Override
+    protected Component getTypeName() {
+        return this.getOverridenName(super.getTypeName());
+    }
+
+    @Override
     public float maxUpStep() {
         return DinoUtils.getStepHeights(8, 0.5F, 1.5F)[this.getGrowthStage()];
     }
@@ -218,17 +223,17 @@ public class Ankylosaurus extends Dinosaur implements DinopediaInformation, Ride
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return FossilsLegacySoundEvents.ANKYLOSAURUS_AMBIENT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.ANKYLOSAURUS_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return FossilsLegacySoundEvents.ANKYLOSAURUS_HURT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.ANKYLOSAURUS_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return FossilsLegacySoundEvents.ANKYLOSAURUS_DEATH.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.ANKYLOSAURUS_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     @Override

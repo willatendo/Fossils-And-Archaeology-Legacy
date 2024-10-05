@@ -49,6 +49,11 @@ public class Compsognathus extends Dinosaur implements DinopediaInformation, Coa
     }
 
     @Override
+    protected Component getTypeName() {
+        return this.getOverridenName(super.getTypeName());
+    }
+
+    @Override
     public float maxUpStep() {
         return DinoUtils.getStepHeights(8, 1.0F, 2.0F)[this.getGrowthStage()];
     }
@@ -130,17 +135,17 @@ public class Compsognathus extends Dinosaur implements DinopediaInformation, Coa
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return FossilsLegacySoundEvents.COMPSOGNATHUS_AMBIENT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.COMPSOGNATHUS_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return FossilsLegacySoundEvents.COMPSOGNATHUS_HURT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.COMPSOGNATHUS_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return FossilsLegacySoundEvents.COMPSOGNATHUS_DEATH.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.COMPSOGNATHUS_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     @Override

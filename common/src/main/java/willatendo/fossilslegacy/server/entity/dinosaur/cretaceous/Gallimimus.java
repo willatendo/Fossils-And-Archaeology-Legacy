@@ -52,6 +52,11 @@ public class Gallimimus extends Dinosaur implements DinopediaInformation, Rideab
     }
 
     @Override
+    protected Component getTypeName() {
+        return this.getOverridenName(super.getTypeName());
+    }
+
+    @Override
     public float maxUpStep() {
         return DinoUtils.getStepHeights(8, 0.5F, 1.5F)[this.getGrowthStage()];
     }
@@ -218,17 +223,17 @@ public class Gallimimus extends Dinosaur implements DinopediaInformation, Rideab
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return FossilsLegacySoundEvents.GALLIMIMUS_AMBIENT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.GALLIMIMUS_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return FossilsLegacySoundEvents.GALLIMIMUS_HURT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.GALLIMIMUS_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return FossilsLegacySoundEvents.GALLIMIMUS_DEATH.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.GALLIMIMUS_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     @Override

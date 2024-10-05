@@ -30,15 +30,15 @@ import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEggVariants;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityDataSerializers;
-import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
-import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
+import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.item.DebugItem;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.ArrayList;
@@ -56,6 +56,11 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
 
     public static AttributeSupplier velociraptorAttributes() {
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.ATTACK_DAMAGE, 6.0D).build();
+    }
+
+    @Override
+    protected Component getTypeName() {
+        return this.getOverridenName(super.getTypeName());
     }
 
     @Override
@@ -164,17 +169,17 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.isTame() ? FossilsLegacySoundEvents.VELOCIRAPTOR_AMBIENT_TAME.get() : FossilsLegacySoundEvents.VELOCIRAPTOR_AMBIENT_WILD.get();
+        return this.isTame() ? this.getOverridenSoundEvent(FossilsLegacySoundEvents.VELOCIRAPTOR_AMBIENT_TAME.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT) : this.getOverridenSoundEvent(FossilsLegacySoundEvents.VELOCIRAPTOR_AMBIENT_WILD.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return FossilsLegacySoundEvents.VELOCIRAPTOR_HURT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.VELOCIRAPTOR_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return FossilsLegacySoundEvents.VELOCIRAPTOR_DEATH.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.VELOCIRAPTOR_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     @Override

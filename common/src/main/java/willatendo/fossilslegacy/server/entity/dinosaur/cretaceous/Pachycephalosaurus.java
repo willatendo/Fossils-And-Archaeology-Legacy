@@ -48,6 +48,11 @@ public class Pachycephalosaurus extends Dinosaur implements DinopediaInformation
     }
 
     @Override
+    protected Component getTypeName() {
+        return this.getOverridenName(super.getTypeName());
+    }
+
+    @Override
     public float maxUpStep() {
         return DinoUtils.getStepHeights(8, 1.0F, 1.5F)[this.getGrowthStage()];
     }
@@ -126,17 +131,17 @@ public class Pachycephalosaurus extends Dinosaur implements DinopediaInformation
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return FossilsLegacySoundEvents.PACHYCEPHALOSAURUS_AMBIENT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.PACHYCEPHALOSAURUS_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return FossilsLegacySoundEvents.PACHYCEPHALOSAURUS_HURT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.PACHYCEPHALOSAURUS_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return FossilsLegacySoundEvents.PACHYCEPHALOSAURUS_DEATH.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.PACHYCEPHALOSAURUS_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     @Override

@@ -48,6 +48,11 @@ public class Stegosaurus extends Dinosaur implements DinopediaInformation, CoatT
     }
 
     @Override
+    protected Component getTypeName() {
+        return this.getOverridenName(super.getTypeName());
+    }
+
+    @Override
     public float maxUpStep() {
         return DinoUtils.getStepHeights(12, 1.0F, 1.5F)[this.getGrowthStage()];
     }
@@ -126,17 +131,17 @@ public class Stegosaurus extends Dinosaur implements DinopediaInformation, CoatT
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return FossilsLegacySoundEvents.STEGOSAURUS_AMBIENT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.STEGOSAURUS_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return FossilsLegacySoundEvents.STEGOSAURUS_HURT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.STEGOSAURUS_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return FossilsLegacySoundEvents.STEGOSAURUS_DEATH.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.STEGOSAURUS_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     @Override

@@ -61,6 +61,11 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
     }
 
     @Override
+    protected Component getTypeName() {
+        return this.getOverridenName(super.getTypeName());
+    }
+
+    @Override
     public float maxUpStep() {
         return DinoUtils.getStepHeights(8, 1.0F, 2.0F)[this.getGrowthStage()];
     }
@@ -321,17 +326,17 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return !this.isKnockedOut() ? FossilsLegacySoundEvents.TYRANNOSAURUS_AMBIENT.get() : null;
+        return !this.isKnockedOut() ? this.getOverridenSoundEvent(FossilsLegacySoundEvents.TYRANNOSAURUS_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT) : super.getAmbientSound();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return !this.isKnockedOut() ? FossilsLegacySoundEvents.TYRANNOSAURUS_HURT.get() : null;
+        return !this.isKnockedOut() ? this.getOverridenSoundEvent(FossilsLegacySoundEvents.TYRANNOSAURUS_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT) : super.getHurtSound(damageSource);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return !this.isKnockedOut() ? FossilsLegacySoundEvents.TYRANNOSAURUS_DEATH.get() : null;
+        return !this.isKnockedOut() ? this.getOverridenSoundEvent(FossilsLegacySoundEvents.TYRANNOSAURUS_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH) : super.getDeathSound();
     }
 
     @Override

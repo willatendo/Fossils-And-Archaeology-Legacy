@@ -53,6 +53,11 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Coa
     }
 
     @Override
+    protected Component getTypeName() {
+        return this.getOverridenName(super.getTypeName());
+    }
+
+    @Override
     public float maxUpStep() {
         return 1.0F;
     }
@@ -145,17 +150,17 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Coa
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.random.nextInt(3) == 0 ? FossilsLegacySoundEvents.DILOPHOSAURUS_CALL.get() : FossilsLegacySoundEvents.DILOPHOSAURUS_AMBIENT.get();
+        return this.random.nextInt(3) == 0 ? this.getOverridenSoundEvent(FossilsLegacySoundEvents.DILOPHOSAURUS_CALL.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT) : this.getOverridenSoundEvent(FossilsLegacySoundEvents.DILOPHOSAURUS_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return FossilsLegacySoundEvents.DILOPHOSAURUS_HURT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.DILOPHOSAURUS_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return FossilsLegacySoundEvents.DILOPHOSAURUS_DEATH.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.DILOPHOSAURUS_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     public boolean isAttacking() {

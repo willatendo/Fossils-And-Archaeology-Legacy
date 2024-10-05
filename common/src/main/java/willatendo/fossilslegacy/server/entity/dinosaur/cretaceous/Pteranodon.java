@@ -29,14 +29,14 @@ import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEggVariants;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityDataSerializers;
-import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
-import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.goal.*;
 import willatendo.fossilslegacy.server.entity.util.DinoUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
-import willatendo.fossilslegacy.server.tags.FossilsLegacyItemTags;
+import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.ArrayList;
@@ -56,6 +56,11 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 
     public static AttributeSupplier pteranodonAttributes() {
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 3.0D).build();
+    }
+
+    @Override
+    protected Component getTypeName() {
+        return this.getOverridenName(super.getTypeName());
     }
 
     @Override
@@ -269,17 +274,17 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return FossilsLegacySoundEvents.PTERANODON_AMBIENT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.PTERANODON_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return FossilsLegacySoundEvents.PTERANODON_HURT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.PTERANODON_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return FossilsLegacySoundEvents.PTERANODON_DEATH.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.PTERANODON_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     @Override

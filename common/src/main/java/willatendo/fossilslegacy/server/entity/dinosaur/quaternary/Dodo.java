@@ -53,6 +53,11 @@ public class Dodo extends Dinosaur implements DinopediaInformation, CoatTypeEnti
     }
 
     @Override
+    protected Component getTypeName() {
+        return this.getOverridenName(super.getTypeName());
+    }
+
+    @Override
     public AnimationState getFallAnimationState() {
         return this.fallAnimationState;
     }
@@ -158,24 +163,23 @@ public class Dodo extends Dinosaur implements DinopediaInformation, CoatTypeEnti
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return FossilsLegacySoundEvents.DODO_AMBIENT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.DODO_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return FossilsLegacySoundEvents.DODO_HURT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.DODO_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return FossilsLegacySoundEvents.DODO_DEATH.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.DODO_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     @Override
     protected void playStepSound(BlockPos blockPos, BlockState blockState) {
         this.playSound(FossilsLegacySoundEvents.DODO_STEP.get(), 0.15F, 1.0F);
     }
-
 
     @Override
     public Holder<CoatType> getCoatType() {

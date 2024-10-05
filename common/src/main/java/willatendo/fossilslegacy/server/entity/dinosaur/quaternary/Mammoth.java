@@ -71,6 +71,11 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
     }
 
     @Override
+    protected Component getTypeName() {
+        return this.getOverridenName(super.getTypeName());
+    }
+
+    @Override
     public float maxUpStep() {
         return DinoUtils.getStepHeights(8, 0.5F, 1.5F)[this.getGrowthStage()];
     }
@@ -289,17 +294,17 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return FossilsLegacySoundEvents.MAMMOTH_AMBIENT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.MAMMOTH_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return FossilsLegacySoundEvents.MAMMOTH_HURT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.MAMMOTH_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return FossilsLegacySoundEvents.MAMMOTH_DEATH.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.MAMMOTH_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     public void setSheared(boolean sheared) {

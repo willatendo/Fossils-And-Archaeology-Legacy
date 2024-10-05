@@ -52,6 +52,11 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Ridea
     }
 
     @Override
+    protected Component getTypeName() {
+        return this.getOverridenName(super.getTypeName());
+    }
+
+    @Override
     public float maxUpStep() {
         return DinoUtils.getStepHeights(12, 1.0F, 1.5F)[this.getGrowthStage()];
     }
@@ -218,17 +223,17 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Ridea
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return FossilsLegacySoundEvents.TRICERATOPS_AMBIENT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.TRICERATOPS_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return FossilsLegacySoundEvents.TRICERATOPS_HURT.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.TRICERATOPS_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return FossilsLegacySoundEvents.TRICERATOPS_DEATH.get();
+        return this.getOverridenSoundEvent(FossilsLegacySoundEvents.TRICERATOPS_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     @Override
