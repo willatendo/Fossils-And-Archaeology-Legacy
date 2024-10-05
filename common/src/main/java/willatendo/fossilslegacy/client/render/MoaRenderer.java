@@ -1,7 +1,7 @@
 package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import willatendo.fossilslegacy.server.entity.Moa;
+import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Moa;
 
 public class MoaRenderer extends CoatTypeMobRenderer<Moa> {
     public MoaRenderer(EntityRendererProvider.Context context) {

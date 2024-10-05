@@ -27,6 +27,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import willatendo.fossilslegacy.server.block.entity.GeneModificationTableBlockEntity;
+import willatendo.fossilslegacy.server.block.properties.FossilsLegacyBlockStateProperties;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class GeneModificationBlock extends Block implements EntityBlock {

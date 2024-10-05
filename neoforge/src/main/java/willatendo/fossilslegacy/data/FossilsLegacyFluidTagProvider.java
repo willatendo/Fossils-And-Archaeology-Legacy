@@ -5,7 +5,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.FluidTagsProvider;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import willatendo.fossilslegacy.server.fluid.FossilsLegacyFluidTags;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyFluidTags;
 
 import java.util.concurrent.CompletableFuture;
 

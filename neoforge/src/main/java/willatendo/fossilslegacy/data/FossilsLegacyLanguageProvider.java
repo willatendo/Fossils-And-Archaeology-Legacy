@@ -1,18 +1,13 @@
 package willatendo.fossilslegacy.data;
 
 import net.minecraft.data.PackOutput;
-import net.minecraft.tags.TagKey;
-import willatendo.fossilslegacy.server.FossilsLegacyCreativeModeTabs;
-import willatendo.fossilslegacy.server.biomes.FossilsLegacyBiomeTags;
-import willatendo.fossilslegacy.server.block.FossilsLegacyBlockTags;
+import willatendo.fossilslegacy.server.item.FossilsLegacyCreativeModeTabs;
+import willatendo.fossilslegacy.server.tags.*;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.*;
-import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
-import willatendo.fossilslegacy.server.entity.genetics.cosmetics.FossilsLegacyCoatTypeTags;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakerType;
-import willatendo.fossilslegacy.server.fluid.FossilsLegacyFluidTags;
-import willatendo.fossilslegacy.server.item.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.simplelibrary.data.SimpleLanguageProvider;
 
@@ -175,6 +170,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("biome.fossilslegacy.prehistoric_beach", "Prehistoric Beach");
 
         // Coat Types
+        this.add("coatType.fossilslegacy.ankylosaurus", "Ankylosaurus (2024)");
         this.add("coatType.fossilslegacy.brachiosaurus", "Brachiosaurus (2024)");
         this.add("coatType.fossilslegacy.green_carnotaurus", "Green Carnotaurus (2011)");
         this.add("coatType.fossilslegacy.red_carnotaurus", "Red Carnotaurus (2011)");
@@ -183,11 +179,13 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("coatType.fossilslegacy.dilophosaurus", "Dilophosaurus (2011)");
         this.add("coatType.fossilslegacy.dodo", "Dodo (2024)");
         this.add("coatType.fossilslegacy.futabasaurus", "Futabasaurus (2024)");
+        this.add("coatType.fossilslegacy.gallimimus", "Gallimimus (2024)");
         this.add("coatType.fossilslegacy.mammoth", "Mammoth (2011)");
         this.add("coatType.fossilslegacy.moa", "Moa (2024)");
         this.add("coatType.fossilslegacy.mosasaurus", "Mosasaurus (2011)");
         this.add("coatType.fossilslegacy.pachycephalosaurus", "Pachycephalosaurus (2024)");
         this.add("coatType.fossilslegacy.pteranodon", "Pteranodon (2011)");
+        this.add("coatType.fossilslegacy.spinosaurus", "Spinosaurus (2024)");
         this.add("coatType.fossilslegacy.stegosaurus", "Stegosaurus (2011)");
         this.add("coatType.fossilslegacy.smilodon", "Smilodon (2011)");
         this.add("coatType.fossilslegacy.feathered_therizinosaurus", "Feathered Therizinosaurus (2011)");
@@ -268,6 +266,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(DinoSituation.TAME_TYRANNOSAURUS_ERROR_HEALTH, "%s must be knocked out to be tamed!");
 
         // Entities
+        this.add(FossilsLegacyEntityTypes.ANKYLOSAURUS.get());
         this.add(FossilsLegacyEntityTypes.BRACHIOSAURUS.get());
         this.add(FossilsLegacyEntityTypes.COMPSOGNATHUS.get());
         this.add(FossilsLegacyEntityTypes.DILOPHOSAURUS.get());
@@ -277,9 +276,11 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyEntityTypes.MOSASAURUS.get());
         this.add(FossilsLegacyEntityTypes.NAUTILUS.get());
         this.add(FossilsLegacyEntityTypes.FUTABASAURUS.get());
+        this.add(FossilsLegacyEntityTypes.GALLIMIMUS.get());
         this.add(FossilsLegacyEntityTypes.PACHYCEPHALOSAURUS.get());
         this.add(FossilsLegacyEntityTypes.PTERANODON.get());
         this.add(FossilsLegacyEntityTypes.SMILODON.get());
+        this.add(FossilsLegacyEntityTypes.SPINOSAURUS.get());
         this.add(FossilsLegacyEntityTypes.STEGOSAURUS.get());
         this.add(FossilsLegacyEntityTypes.TRICERATOPS.get());
         this.add(FossilsLegacyEntityTypes.TYRANNOSAURUS.get());
@@ -360,6 +361,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.THERIZINOSAURUS_DNA.get(), "Therizinosaurus DNA");
         this.add(FossilsLegacyItems.PACHYCEPHALOSAURUS_DNA.get(), "Pachycephalosaurus DNA");
         this.add(FossilsLegacyItems.COMPSOGNATHUS_DNA.get(), "Compsognathus DNA");
+        this.add(FossilsLegacyItems.GALLIMIMUS_DNA.get(), "Gallimimus DNA");
+        this.add(FossilsLegacyItems.SPINOSAURUS_DNA.get(), "Spinosaurus DNA");
+        this.add(FossilsLegacyItems.ANKYLOSAURUS_DNA.get(), "Ankylosaurus DNA");
         this.add("item.fossilslegacy.dna.coat_type", "Coat Type: %s");
         this.add(FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get());
         this.add(FossilsLegacyItems.PETRIFIED_SIGILLARIA_SAPLING.get());
@@ -379,6 +383,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.THERIZINOSAURUS_EGG.get());
         this.add(FossilsLegacyItems.PACHYCEPHALOSAURUS_EGG.get());
         this.add(FossilsLegacyItems.COMPSOGNATHUS_EGG.get());
+        this.add(FossilsLegacyItems.GALLIMIMUS_EGG.get());
+        this.add(FossilsLegacyItems.SPINOSAURUS_EGG.get());
+        this.add(FossilsLegacyItems.ANKYLOSAURUS_EGG.get());
         this.add(FossilsLegacyItems.RAW_TRICERATOPS.get());
         this.add(FossilsLegacyItems.RAW_VELOCIRAPTOR.get());
         this.add(FossilsLegacyItems.RAW_TYRANNOSAURUS.get());
@@ -398,6 +405,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.RAW_COMPSOGNATHUS.get());
         this.add(FossilsLegacyItems.RAW_DODO.get());
         this.add(FossilsLegacyItems.RAW_MOA.get());
+        this.add(FossilsLegacyItems.RAW_GALLIMIMUS.get());
+        this.add(FossilsLegacyItems.RAW_SPINOSAURUS.get());
+        this.add(FossilsLegacyItems.RAW_ANKYLOSAURUS.get());
         this.add(FossilsLegacyItems.COOKED_TRICERATOPS.get());
         this.add(FossilsLegacyItems.COOKED_VELOCIRAPTOR.get());
         this.add(FossilsLegacyItems.COOKED_TYRANNOSAURUS.get());
@@ -417,6 +427,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.COOKED_COMPSOGNATHUS.get());
         this.add(FossilsLegacyItems.COOKED_DODO.get());
         this.add(FossilsLegacyItems.COOKED_MOA.get());
+        this.add(FossilsLegacyItems.COOKED_GALLIMIMUS.get());
+        this.add(FossilsLegacyItems.COOKED_SPINOSAURUS.get());
+        this.add(FossilsLegacyItems.COOKED_ANKYLOSAURUS.get());
         this.add(FossilsLegacyItems.TYRANNOSAURUS_TOOTH.get());
         this.add(FossilsLegacyItems.TOOTH_DAGGER.get());
         this.add(FossilsLegacyItems.THERIZINOSAURUS_CLAWS.get());
@@ -554,6 +567,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.COMPSOGNATHUS_SPAWN_EGG.get());
         this.add(FossilsLegacyItems.DODO_SPAWN_EGG.get());
         this.add(FossilsLegacyItems.MOA_SPAWN_EGG.get());
+        this.add(FossilsLegacyItems.GALLIMIMUS_SPAWN_EGG.get());
+        this.add(FossilsLegacyItems.SPINOSAURUS_SPAWN_EGG.get());
+        this.add(FossilsLegacyItems.ANKYLOSAURUS_SPAWN_EGG.get());
         this.add("item.fossilslegacy.dinosaur_spawn_egg.desc", "Crouch to spawn baby");
 
         this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.applies_to", "Netherite Equipment");
@@ -668,6 +684,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("stone_tablet.fossilslegacy.random", "Random variant");
 
         // Sounds
+        this.add("subtitles.entity.ankylosaurus.ambient", "Ankylosaurus calls");
+        this.add("subtitles.entity.ankylosaurus.hurt", "Ankylosaurus hurts");
+        this.add("subtitles.entity.ankylosaurus.death", "Ankylosaurus dies");
         this.add("subtitles.entity.brachiosaurus.ambient", "Brachiosaurus calls");
         this.add("subtitles.entity.brachiosaurus.hurt", "Brachiosaurus hurts");
         this.add("subtitles.entity.brachiosaurus.death", "Brachiosaurus dies");
@@ -692,9 +711,15 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("subtitles.entity.mammoth.ambient", "Mammoth trumpets");
         this.add("subtitles.entity.mammoth.hurt", "Mammoth hurts");
         this.add("subtitles.entity.mammoth.death", "Mammoth dies");
+        this.add("subtitles.entity.moa.ambient", "Moa calls");
+        this.add("subtitles.entity.moa.hurt", "Moa hurts");
+        this.add("subtitles.entity.moa.death", "Moa dies");
         this.add("subtitles.entity.futabasaurus.ambient", "Futabasaurus chirps");
         this.add("subtitles.entity.futabasaurus.hurt", "Futabasaurus hurts");
         this.add("subtitles.entity.futabasaurus.death", "Futabasaurus dies");
+        this.add("subtitles.entity.gallimimus.ambient", "Gallimimus calls");
+        this.add("subtitles.entity.gallimimus.hurt", "Gallimimus hurts");
+        this.add("subtitles.entity.gallimimus.death", "Gallimimus dies");
         this.add("subtitles.entity.pachycephalosaurus.ambient", "Pachycephalosaurus chirps");
         this.add("subtitles.entity.pachycephalosaurus.hurt", "Pachycephalosaurus hurts");
         this.add("subtitles.entity.pachycephalosaurus.death", "Pachycephalosaurus dies");
@@ -704,6 +729,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("subtitles.entity.smilodon.ambient", "Smilodon roars");
         this.add("subtitles.entity.smilodon.hurt", "Smilodon hurts");
         this.add("subtitles.entity.smilodon.death", "Smilodon dies");
+        this.add("subtitles.entity.spinosaurus.ambient", "Spinosaurus roars");
+        this.add("subtitles.entity.spinosaurus.hurt", "Spinosaurus hurts");
+        this.add("subtitles.entity.spinosaurus.death", "Spinosaurus dies");
         this.add("subtitles.entity.stegosaurus.ambient", "Stegosaurus calls");
         this.add("subtitles.entity.stegosaurus.hurt", "Stegosaurus hurts");
         this.add("subtitles.entity.stegosaurus.death", "Stegosaurus dies");
@@ -735,8 +763,10 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyBlockTags.PERMAFROST_FROSTABLE, "Permafrost Frostable");
         this.add(FossilsLegacyBlockTags.SIGILLARIA_LOGS, "Sigillaria Logs");
         this.add(FossilsLegacyBlockTags.CALAMITES_LOGS, "Calamites Logs");
+        this.add(FossilsLegacyBlockTags.SPINOSAURUS_UNBREAKABLES, "Spinosaurus Unbreakables");
         this.add(FossilsLegacyBlockTags.TYRANNOSAURUS_UNBREAKABLES, "Tyrannosaurus Unbreakables");
 
+        this.add(FossilsLegacyCoatTypeTags.ANKYLOSAURUS, "Ankylosaurus");
         this.add(FossilsLegacyCoatTypeTags.BRACHIOSAURUS, "Brachiosaurus");
         this.add(FossilsLegacyCoatTypeTags.CARNOTAURUS, "Carnotaurus");
         this.add(FossilsLegacyCoatTypeTags.COMPSOGNATHUS, "Compsognathus");
@@ -751,6 +781,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyCoatTypeTags.PACHYCEPHALOSAURUS, "Pachycephalosaurus");
         this.add(FossilsLegacyCoatTypeTags.PTERANODON, "Pteranodon");
         this.add(FossilsLegacyCoatTypeTags.SMILODON, "Smilodon");
+        this.add(FossilsLegacyCoatTypeTags.SPINOSAURUS, "Spinosaurus");
         this.add(FossilsLegacyCoatTypeTags.STEGOSAURUS, "Stegosaurus");
         this.add(FossilsLegacyCoatTypeTags.THERIZINOSAURUS, "Therizinosaurus");
         this.add(FossilsLegacyCoatTypeTags.TRICERATOPS, "Triceratops");
@@ -760,12 +791,14 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyCoatTypeTags.LEGACY_VELOCIRAPTOR, "Legacy Velociraptor");
         this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_VELOCIRAPTOR, "Non-Legacy Velociraptor");
 
+        this.add(FossilsLegacyDamgeTypeTags.SPINOSAURUS_IMMUNE, "Spinosaurus Immune");
         this.add(FossilsLegacyDamgeTypeTags.TYRANNOSAURUS_IMMUNE, "Tyrannosaurus Immune");
 
         this.add(FossilsLegacyFluidTags.PERMAFROST_FREEZABLE, "Permaforst Freezable");
 
         this.add(FossilsLegacyFossilVariantTags.PLACEABLE_FROM_FOSSIL, "Placeable from Fossil");
 
+        this.add(FossilsLegacyItemTags.ANKYLOSAURUS_COMMANDABLES, "Ankylosaurus Commandables");
         this.add(FossilsLegacyItemTags.BRACHIOSAURUS_COMMANDABLES, "Brachiosaurus Commandables");
         this.add(FossilsLegacyItemTags.CAKE_EGGS, "Cake Eggs");
         this.add(FossilsLegacyItemTags.CALAMITES_LOGS, "Calamites Logs");
@@ -783,6 +816,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItemTags.PTERANODON_COMMANDABLES, "Pteranodon Commandables");
         this.add(FossilsLegacyItemTags.REPAIR_WHEN_BROKEN_IN_ARCHAEOLOGY_TABLE, "Repair When Broken In Archaeology Table");
         this.add(FossilsLegacyItemTags.SIGILLARIA_LOGS, "Sigillaria Logs");
+        this.add(FossilsLegacyItemTags.SPINOSAURUS_COMMANDABLES, "Spinosaurus Commandables");
         this.add(FossilsLegacyItemTags.STEGOSAURUS_COMMANDABLES, "Stegosaurus Commandables");
         this.add(FossilsLegacyItemTags.TRICERATOPS_COMMANDABLES, "Triceratops Commandables");
         this.add(FossilsLegacyItemTags.THERIZINOSAURUS_COMMANDABLES, "Therizinosaurus Commandables");

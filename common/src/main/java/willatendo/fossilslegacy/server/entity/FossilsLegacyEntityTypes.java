@@ -4,6 +4,9 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.block.Blocks;
+import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.*;
+import willatendo.fossilslegacy.server.entity.dinosaur.jurassic.*;
+import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.*;
 import willatendo.fossilslegacy.server.entity.pregnant.*;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
@@ -36,6 +39,9 @@ public class FossilsLegacyEntityTypes {
     public static final SimpleHolder<EntityType<Compsognathus>> COMPSOGNATHUS = ENTITY_TYPES.register("compsognathus", () -> SimpleUtils.entityTypeBuilder("compsognathus", Compsognathus::new, MobCategory.CREATURE, 0.4F, 0.7F));
     public static final SimpleHolder<EntityType<Dodo>> DODO = ENTITY_TYPES.register("dodo", () -> SimpleUtils.entityTypeBuilder("dodo", Dodo::new, MobCategory.CREATURE, 0.75F, 0.75F));
     public static final SimpleHolder<EntityType<Moa>> MOA = ENTITY_TYPES.register("moa", () -> SimpleUtils.entityTypeBuilder("moa", Moa::new, MobCategory.CREATURE, 0.75F, 0.75F));
+    public static final SimpleHolder<EntityType<Gallimimus>> GALLIMIMUS = ENTITY_TYPES.register("gallimimus", () -> SimpleUtils.entityTypeBuilder("gallimimus", Gallimimus::new, MobCategory.CREATURE, 0.4F, 0.7F));
+    public static final SimpleHolder<EntityType<Spinosaurus>> SPINOSAURUS = ENTITY_TYPES.register("spinosaurus", () -> SimpleUtils.entityTypeBuilder("spinosaurus", Spinosaurus::new, MobCategory.CREATURE, 0.4F, 0.7F));
+    public static final SimpleHolder<EntityType<Ankylosaurus>> ANKYLOSAURUS = ENTITY_TYPES.register("ankylosaurus", () -> SimpleUtils.entityTypeBuilder("ankylosaurus", Ankylosaurus::new, MobCategory.CREATURE, 0.5F, 0.5F));
 
     public static final SimpleHolder<EntityType<Fossil>> FOSSIL = ENTITY_TYPES.register("fossil", () -> SimpleUtils.entityTypeBuilder("fossil", Fossil::new, MobCategory.MISC, 0.5F, 0.5F));
 

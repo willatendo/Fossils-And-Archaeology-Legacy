@@ -14,7 +14,7 @@ import willatendo.fossilslegacy.client.model.fossils.legacy.TriceratopsSkeletonM
 import willatendo.fossilslegacy.client.render.*;
 import willatendo.fossilslegacy.client.screen.*;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
-import willatendo.fossilslegacy.server.block.FossilsLegacyWoodTypes;
+import willatendo.fossilslegacy.server.block.properties.FossilsLegacyWoodTypes;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntityTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenuTypes;
@@ -32,7 +32,7 @@ public class FossilsLegacyClient {
     }
 
     public static void blockColorRegistry(BlockColorRegistry blockColorRegistry) {
-        blockColorRegistry.registerLeavesColor(FossilsLegacyBlocks.CALAMITES_LEAVES.get(), FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get(), FossilsLegacyBlocks.SIGILLARIA_LEAVES.get());
+        blockColorRegistry.registerLeavesColor(FossilsLegacyBlocks.CALAMITES_LEAVES.get(), FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get(), FossilsLegacyBlocks.SIGILLARIA_LEAVES.get(), FossilsLegacyBlocks.JURASSIC_FERN.get());
     }
 
     public static void keyMappingEvent(KeyMappingRegistry keyMappingRegister) {
@@ -45,6 +45,7 @@ public class FossilsLegacyClient {
     public static void modelEvent(ModelRegistry modelRegister) {
         FossilsLegacyModelIdentifiers.init();
 
+        modelRegister.register(FossilsLegacyEntityTypes.ANKYLOSAURUS.get(), AnkylosaurusRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), BrachiosaurusRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), DilophosaurusRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.DODO.get(), DodoRenderer::new);
@@ -53,8 +54,10 @@ public class FossilsLegacyClient {
         modelRegister.register(FossilsLegacyEntityTypes.MOSASAURUS.get(), MosasaurusRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.NAUTILUS.get(), NautilusRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.FUTABASAURUS.get(), FutabasaurusRenderer::new);
+        modelRegister.register(FossilsLegacyEntityTypes.GALLIMIMUS.get(), GallimimusRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.PTERANODON.get(), PteranodonRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.SMILODON.get(), SmilodonRenderer::new);
+        modelRegister.register(FossilsLegacyEntityTypes.SPINOSAURUS.get(), SpinosaurusRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.STEGOSAURUS.get(), StegosaurusRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.TRICERATOPS.get(), TriceratopsRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.TYRANNOSAURUS.get(), TyrannosaurusRenderer::new);

@@ -35,6 +35,9 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.THERIZINOSAURUS_DNA.get());
         this.basicItem(FossilsLegacyItems.PACHYCEPHALOSAURUS_DNA.get());
         this.basicItem(FossilsLegacyItems.COMPSOGNATHUS_DNA.get());
+        this.basicItem(FossilsLegacyItems.GALLIMIMUS_DNA.get());
+        this.basicItem(FossilsLegacyItems.SPINOSAURUS_DNA.get());
+        this.basicItem(FossilsLegacyItems.ANKYLOSAURUS_DNA.get());
         this.basicItem(FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get());
         this.basicItem(FossilsLegacyItems.PETRIFIED_SIGILLARIA_SAPLING.get());
         this.basicItem(FossilsLegacyItems.PETRIFIED_CALAMITES_SAPLING.get());
@@ -53,6 +56,9 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.THERIZINOSAURUS_EGG.get());
         this.basicItem(FossilsLegacyItems.PACHYCEPHALOSAURUS_EGG.get());
         this.basicItem(FossilsLegacyItems.COMPSOGNATHUS_EGG.get());
+        this.basicItem(FossilsLegacyItems.GALLIMIMUS_EGG.get());
+        this.basicItem(FossilsLegacyItems.SPINOSAURUS_EGG.get());
+        this.basicItem(FossilsLegacyItems.ANKYLOSAURUS_EGG.get());
         this.basicItem(FossilsLegacyItems.RAW_TRICERATOPS.get());
         this.basicItem(FossilsLegacyItems.RAW_VELOCIRAPTOR.get());
         this.basicItem(FossilsLegacyItems.RAW_TYRANNOSAURUS.get());
@@ -71,6 +77,10 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.RAW_PACHYCEPHALOSAURUS.get());
         this.basicItem(FossilsLegacyItems.RAW_COMPSOGNATHUS.get());
         this.basicItem(FossilsLegacyItems.RAW_DODO.get());
+        this.basicItem(FossilsLegacyItems.RAW_MOA.get());
+        this.basicItem(FossilsLegacyItems.RAW_GALLIMIMUS.get());
+        this.basicItem(FossilsLegacyItems.RAW_SPINOSAURUS.get());
+        this.basicItem(FossilsLegacyItems.RAW_ANKYLOSAURUS.get());
         this.basicItem(FossilsLegacyItems.COOKED_TRICERATOPS.get());
         this.basicItem(FossilsLegacyItems.COOKED_VELOCIRAPTOR.get());
         this.basicItem(FossilsLegacyItems.COOKED_TYRANNOSAURUS.get());
@@ -89,6 +99,10 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.COOKED_PACHYCEPHALOSAURUS.get());
         this.basicItem(FossilsLegacyItems.COOKED_COMPSOGNATHUS.get());
         this.basicItem(FossilsLegacyItems.COOKED_DODO.get());
+        this.basicItem(FossilsLegacyItems.COOKED_MOA.get());
+        this.basicItem(FossilsLegacyItems.COOKED_GALLIMIMUS.get());
+        this.basicItem(FossilsLegacyItems.COOKED_SPINOSAURUS.get());
+        this.basicItem(FossilsLegacyItems.COOKED_ANKYLOSAURUS.get());
         this.basicItem(FossilsLegacyItems.TYRANNOSAURUS_TOOTH.get());
         this.handheldItem(FossilsLegacyItems.TOOTH_DAGGER.get());
         this.handheldItem(FossilsLegacyItems.THERIZINOSAURUS_CLAWS.get());
@@ -224,6 +238,9 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.spawnEggItem(FossilsLegacyItems.COMPSOGNATHUS_SPAWN_EGG.get());
         this.spawnEggItem(FossilsLegacyItems.DODO_SPAWN_EGG.get());
         this.spawnEggItem(FossilsLegacyItems.MOA_SPAWN_EGG.get());
+        this.spawnEggItem(FossilsLegacyItems.GALLIMIMUS_SPAWN_EGG.get());
+        this.spawnEggItem(FossilsLegacyItems.SPINOSAURUS_SPAWN_EGG.get());
+        this.spawnEggItem(FossilsLegacyItems.ANKYLOSAURUS_SPAWN_EGG.get());
         this.basicItem(FossilsLegacyItems.LEPIDODENDRON_BOAT.get());
         this.basicItem(FossilsLegacyItems.LEPIDODENDRON_CHEST_BOAT.get());
         this.basicItem(FossilsLegacyItems.SIGILLARIA_BOAT.get());

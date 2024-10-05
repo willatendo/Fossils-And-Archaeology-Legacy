@@ -6,7 +6,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import willatendo.fossilslegacy.server.utils.ForgeHandlePacket;
+import willatendo.fossilslegacy.network.util.ForgeHandlePacket;
 
 public record ServerboundApplyGenePacket(BlockPos blockPos, String coatType) implements CustomPacketPayload {
     public static final Type<ServerboundApplyGenePacket> TYPE = new Type<>(BasicPackets.APPLY_GENE);

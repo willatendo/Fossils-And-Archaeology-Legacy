@@ -26,6 +26,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyBlockTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class JurassicFernBlock extends BushBlock implements BonemealableBlock {

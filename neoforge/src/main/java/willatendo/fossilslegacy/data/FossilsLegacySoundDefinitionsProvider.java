@@ -15,6 +15,9 @@ public class FossilsLegacySoundDefinitionsProvider extends SoundDefinitionsProvi
 
     @Override
     public void registerSounds() {
+        this.entity(FossilsLegacySoundEvents.ANKYLOSAURUS_AMBIENT.get(), "ankylosaurus", "ambient", "ankylosaurus_ambient_1", "ankylosaurus_ambient_2");
+        this.entity(FossilsLegacySoundEvents.ANKYLOSAURUS_HURT.get(), "ankylosaurus", "hurt", "ankylosaurus_hurt");
+        this.entity(FossilsLegacySoundEvents.ANKYLOSAURUS_DEATH.get(), "ankylosaurus", "death", "ankylosaurus_death");
         this.entity(FossilsLegacySoundEvents.BRACHIOSAURUS_AMBIENT.get(), "brachiosaurus", "ambient", "brachiosaurus_ambient_1", "brachiosaurus_ambient_2");
         this.entity(FossilsLegacySoundEvents.BRACHIOSAURUS_HURT.get(), "brachiosaurus", "hurt", "brachiosaurus_hurt_1", "brachiosaurus_hurt_2");
         this.entity(FossilsLegacySoundEvents.BRACHIOSAURUS_DEATH.get(), "brachiosaurus", "death", "brachiosaurus_death");
@@ -38,9 +41,15 @@ public class FossilsLegacySoundDefinitionsProvider extends SoundDefinitionsProvi
         this.entity(FossilsLegacySoundEvents.MAMMOTH_AMBIENT.get(), "mammoth", "ambient", "mammoth_ambient");
         this.entity(FossilsLegacySoundEvents.MAMMOTH_HURT.get(), "mammoth", "hurt", "mammoth_hurt");
         this.entity(FossilsLegacySoundEvents.MAMMOTH_DEATH.get(), "mammoth", "death", "mammoth_death");
+        this.entity(FossilsLegacySoundEvents.MOA_AMBIENT.get(), "moa", "ambient", "moa_ambient");
+        this.entity(FossilsLegacySoundEvents.MOA_HURT.get(), "moa", "hurt", "moa_hurt");
+        this.entity(FossilsLegacySoundEvents.MOA_DEATH.get(), "moa", "death", "moa_death");
         this.entity(FossilsLegacySoundEvents.FUTABASAURUS_AMBIENT.get(), "futabasaurus", "ambient", "futabasaurus_ambient");
         this.entity(FossilsLegacySoundEvents.FUTABASAURUS_HURT.get(), "futabasaurus", "hurt", "futabasaurus_hurt");
         this.entity(FossilsLegacySoundEvents.FUTABASAURUS_DEATH.get(), "futabasaurus", "death", "futabasaurus_death");
+        this.entity(FossilsLegacySoundEvents.GALLIMIMUS_AMBIENT.get(), "gallimimus", "ambient", "gallimimus_ambient_1", "gallimimus_ambient_2");
+        this.entity(FossilsLegacySoundEvents.GALLIMIMUS_HURT.get(), "gallimimus", "hurt", "gallimimus_hurt");
+        this.entity(FossilsLegacySoundEvents.GALLIMIMUS_DEATH.get(), "gallimimus", "death", "gallimimus_death");
         this.entity(FossilsLegacySoundEvents.PACHYCEPHALOSAURUS_AMBIENT.get(), "pachycephalosaurus", "ambient", "pachycephalosaurus_ambient_1", "pachycephalosaurus_ambient_2");
         this.entity(FossilsLegacySoundEvents.PACHYCEPHALOSAURUS_HURT.get(), "pachycephalosaurus", "hurt", "pachycephalosaurus_hurt_1", "pachycephalosaurus_hurt_2");
         this.entity(FossilsLegacySoundEvents.PACHYCEPHALOSAURUS_DEATH.get(), "pachycephalosaurus", "death", "pachycephalosaurus_death");
@@ -50,6 +59,9 @@ public class FossilsLegacySoundDefinitionsProvider extends SoundDefinitionsProvi
         this.entity(FossilsLegacySoundEvents.SMILODON_AMBIENT.get(), "smilodon", "ambient", "smilodon_ambient_1", "smilodon_ambient_2", "smilodon_ambient_3");
         this.entity(FossilsLegacySoundEvents.SMILODON_HURT.get(), "smilodon", "hurt", "smilodon_hurt");
         this.entity(FossilsLegacySoundEvents.SMILODON_DEATH.get(), "smilodon", "death", "smilodon_death");
+        this.entity(FossilsLegacySoundEvents.SPINOSAURUS_AMBIENT.get(), "spinosaurus", "ambient", "spinosaurus_ambient_1", "spinosaurus_ambient_2");
+        this.entity(FossilsLegacySoundEvents.SPINOSAURUS_HURT.get(), "spinosaurus", "hurt", "spinosaurus_hurt");
+        this.entity(FossilsLegacySoundEvents.SPINOSAURUS_DEATH.get(), "spinosaurus", "death", "spinosaurus_death");
         this.entity(FossilsLegacySoundEvents.STEGOSAURUS_AMBIENT.get(), "stegosaurus", "ambient", "stegosaurus_ambient_1", "stegosaurus_ambient_2", "stegosaurus_ambient_3");
         this.entity(FossilsLegacySoundEvents.STEGOSAURUS_HURT.get(), "stegosaurus", "hurt", "stegosaurus_hurt");
         this.entity(FossilsLegacySoundEvents.STEGOSAURUS_DEATH.get(), "stegosaurus", "death", "stegosaurus_death");

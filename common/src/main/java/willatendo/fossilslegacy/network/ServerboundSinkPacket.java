@@ -5,7 +5,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import willatendo.fossilslegacy.server.utils.ForgeHandlePacket;
+import willatendo.fossilslegacy.network.util.ForgeHandlePacket;
 
 public record ServerboundSinkPacket(boolean shouldSink) implements CustomPacketPayload {
     public static final CustomPacketPayload.Type<ServerboundSinkPacket> TYPE = new CustomPacketPayload.Type<>(BasicPackets.SINK);

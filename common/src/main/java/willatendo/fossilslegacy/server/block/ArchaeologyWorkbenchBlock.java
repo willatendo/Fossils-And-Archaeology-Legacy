@@ -25,6 +25,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import willatendo.fossilslegacy.server.block.entity.ArchaeologyWorkbenchBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.BlockEntityHelper;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntityTypes;
+import willatendo.fossilslegacy.server.block.properties.FossilsLegacyBlockStateProperties;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class ArchaeologyWorkbenchBlock extends Block implements EntityBlock {

@@ -11,6 +11,25 @@
     ],
     "subtitle": "subtitles.block.drum.triple_hit"
   },
+  "entity.ankylosaurus.ambient": {
+    "sounds": [
+      "fossilslegacy:ankylosaurus_ambient_1",
+      "fossilslegacy:ankylosaurus_ambient_2"
+    ],
+    "subtitle": "subtitles.entity.ankylosaurus.ambient"
+  },
+  "entity.ankylosaurus.death": {
+    "sounds": [
+      "fossilslegacy:ankylosaurus_death"
+    ],
+    "subtitle": "subtitles.entity.ankylosaurus.death"
+  },
+  "entity.ankylosaurus.hurt": {
+    "sounds": [
+      "fossilslegacy:ankylosaurus_hurt"
+    ],
+    "subtitle": "subtitles.entity.ankylosaurus.hurt"
+  },
   "entity.brachiosaurus.ambient": {
     "sounds": [
       "fossilslegacy:brachiosaurus_ambient_1",
@@ -162,6 +181,25 @@
     ],
     "subtitle": "subtitles.entity.futabasaurus.hurt"
   },
+  "entity.gallimimus.ambient": {
+    "sounds": [
+      "fossilslegacy:gallimimus_ambient_1",
+      "fossilslegacy:gallimimus_ambient_2"
+    ],
+    "subtitle": "subtitles.entity.gallimimus.ambient"
+  },
+  "entity.gallimimus.death": {
+    "sounds": [
+      "fossilslegacy:gallimimus_death"
+    ],
+    "subtitle": "subtitles.entity.gallimimus.death"
+  },
+  "entity.gallimimus.hurt": {
+    "sounds": [
+      "fossilslegacy:gallimimus_hurt"
+    ],
+    "subtitle": "subtitles.entity.gallimimus.hurt"
+  },
   "entity.mammoth.ambient": {
     "sounds": [
       "fossilslegacy:mammoth_ambient"
@@ -179,6 +217,24 @@
       "fossilslegacy:mammoth_hurt"
     ],
     "subtitle": "subtitles.entity.mammoth.hurt"
+  },
+  "entity.moa.ambient": {
+    "sounds": [
+      "fossilslegacy:moa_ambient"
+    ],
+    "subtitle": "subtitles.entity.moa.ambient"
+  },
+  "entity.moa.death": {
+    "sounds": [
+      "fossilslegacy:moa_death"
+    ],
+    "subtitle": "subtitles.entity.moa.death"
+  },
+  "entity.moa.hurt": {
+    "sounds": [
+      "fossilslegacy:moa_hurt"
+    ],
+    "subtitle": "subtitles.entity.moa.hurt"
   },
   "entity.pachycephalosaurus.ambient": {
     "sounds": [
@@ -237,6 +293,25 @@
       "fossilslegacy:smilodon_hurt"
     ],
     "subtitle": "subtitles.entity.smilodon.hurt"
+  },
+  "entity.spinosaurus.ambient": {
+    "sounds": [
+      "fossilslegacy:spinosaurus_ambient_1",
+      "fossilslegacy:spinosaurus_ambient_2"
+    ],
+    "subtitle": "subtitles.entity.spinosaurus.ambient"
+  },
+  "entity.spinosaurus.death": {
+    "sounds": [
+      "fossilslegacy:spinosaurus_death"
+    ],
+    "subtitle": "subtitles.entity.spinosaurus.death"
+  },
+  "entity.spinosaurus.hurt": {
+    "sounds": [
+      "fossilslegacy:spinosaurus_hurt"
+    ],
+    "subtitle": "subtitles.entity.spinosaurus.hurt"
   },
   "entity.stegosaurus.ambient": {
     "sounds": [

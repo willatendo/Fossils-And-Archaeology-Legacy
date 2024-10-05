@@ -67,6 +67,12 @@
     },
     {
       "result": {
+        "id": "fossilslegacy:gallimimus_dna"
+      },
+      "weight": 2
+    },
+    {
+      "result": {
         "id": "fossilslegacy:pteranodon_dna"
       },
       "weight": 2
@@ -80,6 +86,12 @@
     {
       "result": {
         "id": "fossilslegacy:triceratops_dna"
+      },
+      "weight": 2
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:ankylosaurus_dna"
       },
       "weight": 2
     },
@@ -122,6 +134,12 @@
     {
       "result": {
         "id": "fossilslegacy:compsognathus_dna"
+      },
+      "weight": 2
+    },
+    {
+      "result": {
+        "id": "fossilslegacy:spinosaurus_dna"
       },
       "weight": 2
     }

@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.SmilodonModel;
-import willatendo.fossilslegacy.server.entity.Smilodon;
+import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Smilodon;
 
 public class SmilodonRenderer extends CoatTypeMobRenderer<Smilodon> {
     public SmilodonRenderer(Context context) {

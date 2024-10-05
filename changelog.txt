@@ -1,4 +1,4 @@
-5/10/2024
+26/10/2024
 - Forge Is Now Supported
 - Futabasaurus Now Articulates Entire Neck
 - Brachiosaurus Adult Now Has Double-Sized Texture
@@ -12,6 +12,7 @@
 - Mammoth Now Grows In Stages
 - Smilodon Now Grows In Stages
 - Dodo Now Grows In Stages
+- Jurassic Fern Now Tints To Biome Leaves Color
 - (Fabric) Fixed Server Crash
 - Fixed Placing Stone Tables
 - Fixed Cannibalism
@@ -22,6 +23,8 @@
 - Fixed "animalsBreakBlocks" Config Option Not Working Properly
 - Fixed Some Analyzer Recipes Having Multiple Outputs With The Same Item And Weight
 - (Fabric) Fixed Composter Not Working For Lepidodendron Saplings and Lepidodendron Leaves
+- Fixed Dodo Meat Not Analyzing To Dodo DNA
+- Fixed Z-Fighting On Velocirator
 - Added Updated Triceratops Model
 - Added "Anu Totem" Stone Tablet
 - Added Coat-Types; Data-Driven Cosmetics For Dinosaurs
@@ -112,6 +115,28 @@
 - Added Calamites Boat
 - Added Calamites Boat with Chest
 - Added Calamites Tree
+- Added Moa
+- Added Moa DNA
+- Added Moa Egg
+- Added Incubated Moa Egg
+- Added Raw Moa
+- Added Cooked Moa
+- Added Gallimimus
+- Added Gallimimus DNA
+- Added Gallimimus Egg
+- Added Raw Gallimimus
+- Added Cooked Gallimimus
+- Added Spinosaurus
+- Added Spinosaurus DNA
+- Added Spinosaurus Egg
+- Added Raw Spinosaurus
+- Added Cooked Spinosaurus
+- Added Ankylosaurus
+- Added Ankylosaurus DNA
+- Added Ankylosaurus Egg
+- Added Raw Ankylosaurus
+- Added Cooked Ankylosaurus
+- Added Data-Driven Skeletons
 - Removed Client Config As It Is No Longer Necessary
 12/9/2024
 - (Fabric) Fixed Crash

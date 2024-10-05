@@ -1,0 +1,16 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "category": "misc",
+  "ingredient": {
+    "item": "fossilslegacy:raw_gallimimus"
+  },
+  "results": [
+    {
+      "result": {
+        "id": "fossilslegacy:gallimimus_dna"
+      },
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

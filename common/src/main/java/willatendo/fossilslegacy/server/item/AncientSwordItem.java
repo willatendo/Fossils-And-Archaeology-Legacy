@@ -17,6 +17,7 @@ import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.AncientLightningBolt;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyItemTags;
 
 public class AncientSwordItem extends SwordItem {
     public AncientSwordItem(Tier tier, Properties properties) {

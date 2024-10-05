@@ -20,12 +20,12 @@ import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.animal.horse.Mule;
 import net.minecraft.world.level.Level;
-import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
-import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
+import willatendo.fossilslegacy.server.core.registry.FossilsLegacyBuiltInRegistries;
+import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyPregnancyTypes;
-import willatendo.fossilslegacy.server.entity.Mammoth;
-import willatendo.fossilslegacy.server.entity.Smilodon;
+import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Mammoth;
+import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Smilodon;
 import willatendo.fossilslegacy.server.entity.pregnant.PregnantSheep;
 import willatendo.fossilslegacy.server.entity.variants.PregnancyType;
 

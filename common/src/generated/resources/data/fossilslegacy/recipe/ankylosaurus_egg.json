@@ -1,0 +1,11 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": {
+    "item": "fossilslegacy:ankylosaurus_dna"
+  },
+  "result": {
+    "id": "fossilslegacy:ankylosaurus_egg"
+  },
+  "time": 6000
+}

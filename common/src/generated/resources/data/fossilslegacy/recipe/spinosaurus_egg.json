@@ -1,0 +1,11 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": {
+    "item": "fossilslegacy:spinosaurus_dna"
+  },
+  "result": {
+    "id": "fossilslegacy:spinosaurus_egg"
+  },
+  "time": 6000
+}

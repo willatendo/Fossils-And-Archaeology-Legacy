@@ -1,27 +1,12 @@
 package willatendo.fossilslegacy.client.model.dinosaur;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.HierarchicalModel;
-import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.util.Mth;
-import willatendo.fossilslegacy.client.animation.PachycephalosaurusAnimations;
-import willatendo.fossilslegacy.server.entity.Dinosaur;
 
-public class PachycephalosaurusModel extends HierarchicalModel<Dinosaur> {
-    private final ModelPart head;
-    private final ModelPart root;
-
-    public PachycephalosaurusModel(ModelPart root) {
-        this.head = root.getChild("head");
-        this.root = root;
-    }
-
+public final class PachycephalosaurusModel {
     public static LayerDefinition createBodyLayer() {
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
@@ -35,27 +20,5 @@ public class PachycephalosaurusModel extends HierarchicalModel<Dinosaur> {
         partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, -14.0F, -4.0F, 6.0F, 8.0F, 8.0F).texOffs(0, 36).addBox(-2.0F, -14.0F, -7.0F, 4.0F, 7.0F, 3.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
 
         return LayerDefinition.create(meshdefinition, 64, 64);
-    }
-
-    @Override
-    public void setupAnim(Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        this.root().getAllParts().forEach(ModelPart::resetPose);
-        netHeadYaw = Mth.clamp(netHeadYaw, -30.0F, 30.0F);
-        headPitch = Mth.clamp(headPitch, -25.0F, 45.0F);
-
-        this.head.yRot = netHeadYaw * 0.017453292F;
-        this.head.xRot = headPitch * 0.017453292F;
-
-        this.animateWalk(PachycephalosaurusAnimations.PACHYCEPHALOSAURUS_WALK, limbSwing, limbSwingAmount, 2.0F, 2.5F);
-    }
-
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int red, int green, int blue) {
-        this.root.render(poseStack, vertexConsumer, red, green, blue);
-    }
-
-    @Override
-    public ModelPart root() {
-        return this.root;
     }
 }

@@ -5,7 +5,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
 import net.minecraft.world.level.biome.Biomes;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import willatendo.fossilslegacy.server.biomes.FossilsLegacyBiomeTags;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyBiomeTags;
 
 import java.util.concurrent.CompletableFuture;
 

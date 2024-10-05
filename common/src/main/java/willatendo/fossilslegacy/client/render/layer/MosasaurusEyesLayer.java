@@ -4,7 +4,7 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.EyesLayer;
-import willatendo.fossilslegacy.server.entity.Mosasaurus;
+import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Mosasaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class MosasaurusEyesLayer extends EyesLayer<Mosasaurus, EntityModel<Mosasaurus>> {

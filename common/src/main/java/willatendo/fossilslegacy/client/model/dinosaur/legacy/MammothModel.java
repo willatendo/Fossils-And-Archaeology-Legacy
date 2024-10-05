@@ -11,7 +11,7 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
-import willatendo.fossilslegacy.server.entity.Mammoth;
+import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Mammoth;
 
 public class MammothModel extends EntityModel<Dinosaur> {
     private final ModelPart root;

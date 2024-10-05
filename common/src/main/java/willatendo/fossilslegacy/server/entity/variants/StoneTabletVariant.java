@@ -10,7 +10,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.RegistryFileCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ExtraCodecs;
-import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
+import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 
 public record StoneTabletVariant(int width, int height, ResourceLocation assetId) {
     public static final Codec<StoneTabletVariant> DIRECT_CODEC = RecordCodecBuilder.create(instance -> instance.group(ExtraCodecs.intRange(1, 16).fieldOf("width").forGetter(StoneTabletVariant::width), ExtraCodecs.intRange(1, 16).fieldOf("height").forGetter(StoneTabletVariant::height), ResourceLocation.CODEC.fieldOf("asset_id").forGetter(StoneTabletVariant::assetId)).apply(instance, StoneTabletVariant::new));

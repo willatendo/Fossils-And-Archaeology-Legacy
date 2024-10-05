@@ -4,7 +4,6 @@
     "fossilslegacy:raw_velociraptor",
     "fossilslegacy:raw_tyrannosaurus",
     "fossilslegacy:raw_pteranodon",
-    "fossilslegacy:nautilus",
     "fossilslegacy:raw_futabasaurus",
     "fossilslegacy:raw_mosasaurus",
     "fossilslegacy:raw_stegosaurus",
@@ -14,6 +13,12 @@
     "fossilslegacy:raw_mammoth",
     "fossilslegacy:raw_carnotaurus",
     "fossilslegacy:raw_cryolophosaurus",
-    "fossilslegacy:raw_therizinosaurus"
+    "fossilslegacy:raw_therizinosaurus",
+    "fossilslegacy:raw_pachycephalosaurus",
+    "fossilslegacy:raw_compsognathus",
+    "fossilslegacy:raw_moa",
+    "fossilslegacy:raw_gallimimus",
+    "fossilslegacy:raw_spinosaurus",
+    "fossilslegacy:raw_ankylosaurus"
   ]
 }

@@ -1,0 +1,16 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "category": "misc",
+  "ingredient": {
+    "item": "fossilslegacy:raw_ankylosaurus"
+  },
+  "results": [
+    {
+      "result": {
+        "id": "fossilslegacy:ankylosaurus_dna"
+      },
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

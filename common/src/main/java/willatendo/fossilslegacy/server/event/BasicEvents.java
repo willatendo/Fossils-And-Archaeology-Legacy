@@ -21,14 +21,18 @@ import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.Heightmap;
-import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
-import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
+import willatendo.fossilslegacy.server.core.registry.FossilsLegacyBuiltInRegistries;
+import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
-import willatendo.fossilslegacy.server.block.FossilsLegacyCauldronInteraction;
+import willatendo.fossilslegacy.server.core.cauldron.FossilsLegacyCauldronInteraction;
 import willatendo.fossilslegacy.server.block.SkullBlock;
-import willatendo.fossilslegacy.server.dispenser.DispenseEntityItemBehavior;
+import willatendo.fossilslegacy.server.core.dispenser.DispenseEntityItemBehavior;
 import willatendo.fossilslegacy.server.entity.*;
-import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.*;
+import willatendo.fossilslegacy.server.entity.dinosaur.jurassic.*;
+import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.*;
+import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
+import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -153,16 +157,17 @@ public class BasicEvents {
     public static void newRegistryEvent(NewRegistryRegister newRegistryRegister) {
         newRegistryRegister.register(FossilsLegacyBuiltInRegistries.EGG_VARIANTS, FossilsLegacyRegistries.EGG_VARIANTS);
         newRegistryRegister.register(FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES, FossilsLegacyRegistries.PREGNANCY_TYPES);
-        newRegistryRegister.register(FossilsLegacyBuiltInRegistries.FOSSIL_VARIANTS, FossilsLegacyRegistries.FOSSIL_VARIANTS);
     }
 
     public static void newDynamicRegistryEvent(DynamicRegistryRegister dynamicRegistryRegister) {
-        dynamicRegistryRegister.register(FossilsLegacyRegistries.STONE_TABLET_VARIANTS, StoneTabletVariant.DIRECT_CODEC);
         dynamicRegistryRegister.register(FossilsLegacyRegistries.COAT_TYPES, CoatType.DIRECT_CODEC);
+        dynamicRegistryRegister.register(FossilsLegacyRegistries.FOSSIL_VARIANTS, FossilVariant.DIRECT_CODEC);
+        dynamicRegistryRegister.register(FossilsLegacyRegistries.STONE_TABLET_VARIANTS, StoneTabletVariant.DIRECT_CODEC);
     }
 
     public static void attributeEvent(AttributeRegister attributeRegister) {
         attributeRegister.register(FossilsLegacyEntityTypes.ANU.get(), Anu.anuAttributes());
+        attributeRegister.register(FossilsLegacyEntityTypes.ANKYLOSAURUS.get(), Ankylosaurus.ankylosaurusAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), Brachiosaurus.brachiosaurusAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.CARNOTAURUS.get(), Carnotaurus.carnotaurusAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.COMPSOGNATHUS.get(), Compsognathus.compsognathusAttributes());
@@ -170,6 +175,7 @@ public class BasicEvents {
         attributeRegister.register(FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), Dilophosaurus.dilophosaurusAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.DODO.get(), Dodo.dodoAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.MOA.get(), Moa.moaAttributes());
+        attributeRegister.register(FossilsLegacyEntityTypes.GALLIMIMUS.get(), Gallimimus.gallimimusAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.EGG.get(), Egg.eggAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.FAILURESAURUS.get(), Failuresaurus.createAttributes().build());
         attributeRegister.register(FossilsLegacyEntityTypes.FOSSIL.get(), Fossil.fossilAttributes());
@@ -199,6 +205,7 @@ public class BasicEvents {
         attributeRegister.register(FossilsLegacyEntityTypes.PREGNANT_WOLF.get(), Wolf.createAttributes().build());
         attributeRegister.register(FossilsLegacyEntityTypes.PTERANODON.get(), Pteranodon.pteranodonAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.SMILODON.get(), Smilodon.smilodonAttributes());
+        attributeRegister.register(FossilsLegacyEntityTypes.SPINOSAURUS.get(), Spinosaurus.spinosaurusAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.STEGOSAURUS.get(), Stegosaurus.stegosaurusAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.TAMED_ZOMBIFIED_PIGLIN.get(), ZombifiedPiglin.createAttributes().build());
         attributeRegister.register(FossilsLegacyEntityTypes.THERIZINOSAURUS.get(), Therizinosaurus.therizinosaurusAttributes());

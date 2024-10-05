@@ -9,7 +9,7 @@ import net.minecraft.world.entity.animal.goat.Goat;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
-import willatendo.fossilslegacy.server.entity.Nautilus;
+import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Nautilus;
 import willatendo.fossilslegacy.server.entity.util.DinoUtils;
 
 public interface Diet {
@@ -107,6 +107,46 @@ public interface Diet {
             @Override
             public Ingredient getTemptFoods() {
                 return DinoUtils.HERBIVORE_FOOD;
+            }
+        };
+    }
+
+    static Diet omnivore() {
+        return new Diet() {
+            @Override
+            public boolean getsFoodFromKill() {
+                return true;
+            }
+
+            @Override
+            public int getItemStackFoodValue(ItemStack itemStack) {
+                int plants = FeederBlockEntity.getPlantsFoodLevel(itemStack);
+                return plants > 0 ? plants : FeederBlockEntity.getMeatFoodLevel(itemStack);
+            }
+
+            @Override
+            public int getEntityFoodValue(Entity entity) {
+                if (entity instanceof Pig) {
+                    return 30;
+                }
+                if (entity instanceof Sheep) {
+                    return 35;
+                }
+                if (entity instanceof Goat) {
+                    return 35;
+                }
+                if (entity instanceof Cow) {
+                    return 50;
+                }
+                if (entity instanceof Chicken) {
+                    return 20;
+                }
+                return 20;
+            }
+
+            @Override
+            public Ingredient getTemptFoods() {
+                return DinoUtils.OMNIVORE_FOOD;
             }
         };
     }

@@ -1,0 +1,10 @@
+{
+  "base_scale": 1.0,
+  "bounding_box_height": 1.0,
+  "bounding_box_width": 1.0,
+  "max_size": 8,
+  "model": "fossilslegacy:pachycephalosaurus",
+  "shadow_size": 0.15,
+  "size_scale": 0.1,
+  "texture": "fossilslegacy:textures/entity/pachycephalosaurus/pachycephalosaurus_skeleton.png"
+}

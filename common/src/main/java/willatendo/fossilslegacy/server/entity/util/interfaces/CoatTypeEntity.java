@@ -6,7 +6,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
-import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 
 public interface CoatTypeEntity {
     MapCodec<Holder<CoatType>> VARIANT_MAP_CODEC = CoatType.CODEC.fieldOf("CoatType");

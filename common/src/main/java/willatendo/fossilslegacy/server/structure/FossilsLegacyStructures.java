@@ -6,7 +6,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.structure.Structure;
-import willatendo.fossilslegacy.server.biomes.FossilsLegacyBiomeTags;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyBiomeTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FossilsLegacyStructures {

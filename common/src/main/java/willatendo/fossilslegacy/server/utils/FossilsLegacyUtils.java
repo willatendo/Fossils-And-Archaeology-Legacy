@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
-public class FossilsLegacyUtils {
+public final class FossilsLegacyUtils {
     public static final String ID = "fossilslegacy";
     public static final Logger LOGGER = LoggerFactory.getLogger(FossilsLegacyUtils.ID);
 

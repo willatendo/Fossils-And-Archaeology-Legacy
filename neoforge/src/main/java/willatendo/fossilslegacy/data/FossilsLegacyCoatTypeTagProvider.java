@@ -3,10 +3,10 @@ package willatendo.fossilslegacy.data;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
-import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
-import willatendo.fossilslegacy.server.entity.genetics.cosmetics.FossilsLegacyCoatTypeTags;
-import willatendo.fossilslegacy.server.entity.genetics.cosmetics.FossilsLegacyCoatTypes;
+import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
+import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
+import willatendo.fossilslegacy.server.genetics.cosmetics.FossilsLegacyCoatTypes;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -17,6 +17,7 @@ public class FossilsLegacyCoatTypeTagProvider extends DataDrivenTagsProvider<Coa
 
     @Override
     protected void addTags(Provider provider) {
+        this.tag(FossilsLegacyCoatTypeTags.ANKYLOSAURUS).add(FossilsLegacyCoatTypes.ANKYLOSAURUS);
         this.tag(FossilsLegacyCoatTypeTags.BRACHIOSAURUS).add(FossilsLegacyCoatTypes.BRACHIOSAURUS, FossilsLegacyCoatTypes.LEGACY_BRACHIOSAURUS);
         this.tag(FossilsLegacyCoatTypeTags.CARNOTAURUS).add(FossilsLegacyCoatTypes.GREEN_CARNOTAURUS, FossilsLegacyCoatTypes.RED_CARNOTAURUS);
         this.tag(FossilsLegacyCoatTypeTags.COMPSOGNATHUS).add(FossilsLegacyCoatTypes.COMPSOGNATHUS);
@@ -25,12 +26,14 @@ public class FossilsLegacyCoatTypeTagProvider extends DataDrivenTagsProvider<Coa
         this.tag(FossilsLegacyCoatTypeTags.DODO).add(FossilsLegacyCoatTypes.DODO);
         this.tag(FossilsLegacyCoatTypeTags.FUTABASAURUS).add(FossilsLegacyCoatTypes.FUTABASAURUS, FossilsLegacyCoatTypes.LEGACY_FUTABASAURUS);
         this.tag(FossilsLegacyCoatTypeTags.NON_LEGACY_FUTABASAURUS).add(FossilsLegacyCoatTypes.FUTABASAURUS);
+        this.tag(FossilsLegacyCoatTypeTags.GALLIMIMUS).add(FossilsLegacyCoatTypes.GALLIMIMUS);
         this.tag(FossilsLegacyCoatTypeTags.MAMMOTH).add(FossilsLegacyCoatTypes.MAMMOTH);
         this.tag(FossilsLegacyCoatTypeTags.MOA).add(FossilsLegacyCoatTypes.MOA);
         this.tag(FossilsLegacyCoatTypeTags.MOSASAURUS).add(FossilsLegacyCoatTypes.MOSASAURUS);
         this.tag(FossilsLegacyCoatTypeTags.PACHYCEPHALOSAURUS).add(FossilsLegacyCoatTypes.PACHYCEPHALOSAURUS);
         this.tag(FossilsLegacyCoatTypeTags.PTERANODON).add(FossilsLegacyCoatTypes.PTERANODON);
         this.tag(FossilsLegacyCoatTypeTags.SMILODON).add(FossilsLegacyCoatTypes.SMILODON);
+        this.tag(FossilsLegacyCoatTypeTags.SPINOSAURUS).add(FossilsLegacyCoatTypes.SPINOSAURUS);
         this.tag(FossilsLegacyCoatTypeTags.STEGOSAURUS).add(FossilsLegacyCoatTypes.STEGOSAURUS);
         this.tag(FossilsLegacyCoatTypeTags.THERIZINOSAURUS).add(FossilsLegacyCoatTypes.FEATHERED_THERIZINOSAURUS, FossilsLegacyCoatTypes.FEATHERLESS_THERIZINOSAURUS);
         this.tag(FossilsLegacyCoatTypeTags.TRICERATOPS).add(FossilsLegacyCoatTypes.BROWN_TRICERATOPS, FossilsLegacyCoatTypes.GREEN_TRICERATOPS, FossilsLegacyCoatTypes.LEGACY_BROWN_TRICERATOPS, FossilsLegacyCoatTypes.LEGACY_GREEN_TRICERATOPS);

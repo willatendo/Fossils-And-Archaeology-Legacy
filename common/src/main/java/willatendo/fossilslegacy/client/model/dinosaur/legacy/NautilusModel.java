@@ -10,7 +10,7 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
-import willatendo.fossilslegacy.server.entity.Nautilus;
+import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Nautilus;
 
 public class NautilusModel extends EntityModel<Nautilus> {
     private final ModelPart root;

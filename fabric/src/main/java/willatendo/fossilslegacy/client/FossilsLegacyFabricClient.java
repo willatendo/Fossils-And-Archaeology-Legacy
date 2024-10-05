@@ -12,7 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.RecipeBookType;
 import willatendo.fossilslegacy.network.ServerboundSinkPacket;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
-import willatendo.fossilslegacy.server.entity.Futabasaurus;
+import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Futabasaurus;
 import willatendo.fossilslegacy.server.inventory.FossilsLegacyRecipeBookTypes;
 import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
 import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;

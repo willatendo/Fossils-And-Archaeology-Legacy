@@ -1,4 +1,4 @@
-// 1.21.1	2024-09-30T15:42:20.9689412	Loot Tables
+// 1.21.1	2024-10-04T18:13:54.4302412	Loot Tables
 5fcf811a958fcf132678d4423a7472c475c2b8ca data/fossilslegacy/loot_table/blocks/analyzer.json
 8bfc811efa599c9be09afe46481ec9ebbf5f3a33 data/fossilslegacy/loot_table/blocks/archaeology_workbench.json
 e4c3f2afd7c71b1d42778ff89f2ddfe5a03122da data/fossilslegacy/loot_table/blocks/axolotlspawn.json
@@ -91,6 +91,7 @@ fd7c37d78f0bb47928f522e2d604ff99fe484550 data/fossilslegacy/loot_table/blocks/st
 db12c3fdf62d3af4db6ec55e7626943e4544faa4 data/fossilslegacy/loot_table/chests/academy_loot.json
 2a88c80c64cbf9e441234c69b98903788a57571d data/fossilslegacy/loot_table/chests/weapon_shop_decoy.json
 56fd519c48bb18a79c7304a00c16a702caae46c6 data/fossilslegacy/loot_table/chests/weapon_shop_loot.json
+8834457284fe88a4bd7bd65cbadb4f01583b743b data/fossilslegacy/loot_table/entities/ankylosaurus.json
 daf13a0fe51fdd4ca048e716129fc627f715b594 data/fossilslegacy/loot_table/entities/anu.json
 1c6e51fcea21ef57825554d22c797ce6f794fda6 data/fossilslegacy/loot_table/entities/brachiosaurus.json
 d10bcd016830ddaecdb55c4318e601a55427e326 data/fossilslegacy/loot_table/entities/carnotaurus.json
@@ -115,6 +116,7 @@ c178a5fb631636511d09143718aa8ceb3d22e18d data/fossilslegacy/loot_table/entities/
 2889f3075888095f956c88afe26590f97a647adc data/fossilslegacy/loot_table/entities/egg/velociraptor.json
 a117ca2df6a362329aa123559019a5a60af648a2 data/fossilslegacy/loot_table/entities/failuresaurus.json
 52b4a73e2194093143860400f1a4cc386251bd15 data/fossilslegacy/loot_table/entities/futabasaurus.json
+ff1349606e67614635fe317e806cb90361ba559e data/fossilslegacy/loot_table/entities/gallimimus.json
 dd94adc1b0d1ca14003b08d07bf445df9e564962 data/fossilslegacy/loot_table/entities/mammoth.json
 998b4ba550667d9bfe04c9d821584d487463f439 data/fossilslegacy/loot_table/entities/moa.json
 a2ceaa20d4303304854ab6da1257d764a62503a0 data/fossilslegacy/loot_table/entities/mosasaurus.json
@@ -157,6 +159,7 @@ e64b6921aa7cd6071eda8464868564b47d9db76e data/fossilslegacy/loot_table/entities/
 1aadba90eff629e1f073886a361663b91e9c522d data/fossilslegacy/loot_table/entities/pregnant_wolf.json
 db6b623b3d9ab025052bd82ea5e7beb326ad01e2 data/fossilslegacy/loot_table/entities/pteranodon.json
 188dba8e86b249933353d35f728f5b7d24634c04 data/fossilslegacy/loot_table/entities/smilodon.json
+ae131316e24c80d113b76f3be87a18ebca932c2b data/fossilslegacy/loot_table/entities/spinosaurus.json
 0c3da96f679fabed7af8ea4614b01d403f74ef78 data/fossilslegacy/loot_table/entities/stegosaurus.json
 4cbe99c7bd35c4188b335f016e0ec983634efa30 data/fossilslegacy/loot_table/entities/tamed_zombified_piglin.json
 b36abe6dc6a61fcaf7e2b404ccf225e09b05d68f data/fossilslegacy/loot_table/entities/therizinosaurus.json

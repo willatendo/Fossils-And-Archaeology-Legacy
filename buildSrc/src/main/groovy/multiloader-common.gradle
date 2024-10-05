@@ -4,7 +4,7 @@ plugins {
 }
 
 base {
-    archivesName = "${mod_id}-${version}"
+    archivesName = "${mod_id}"
 }
 
 java {

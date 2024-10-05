@@ -11,7 +11,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HalfTransparentBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import willatendo.fossilslegacy.server.fluid.FossilsLegacyFluidTags;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyFluidTags;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyBlockTags;
 
 public class PermafrostBlock extends HalfTransparentBlock {
 	public PermafrostBlock(Properties properties) {

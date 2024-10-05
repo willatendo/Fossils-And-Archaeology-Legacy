@@ -12,14 +12,18 @@ public class FossilsLegacyAnimationProvider extends AnimationProvider {
 
     @Override
     protected void getAll() {
+        this.addAnimation(FossilsLegacyUtils.resource("ankylosaurus_walk"), AnkylosaurusAnimations.ANKYLOSAURUS_WALK);
         this.addAnimation(FossilsLegacyUtils.resource("brachiosaurus_walk"), BrachiosaurusAnimations.BRACHIOSAURUS_WALK);
         this.addAnimation(FossilsLegacyUtils.resource("compsognathus_walk"), CompsognathusAnimations.COMPSOGNATHUS_WALK);
         this.addAnimation(FossilsLegacyUtils.resource("dodo_float_down"), DodoAnimations.DODO_FALL);
         this.addAnimation(FossilsLegacyUtils.resource("dodo_walk"), DodoAnimations.DODO_WALK);
         this.addAnimation(FossilsLegacyUtils.resource("futabasaurus_swim"), FutabasaurusAnimations.FUTABASAURUS_SWIM);
         this.addAnimation(FossilsLegacyUtils.resource("futabasaurus_walk"), FutabasaurusAnimations.FUTABASAURUS_WALK);
+        this.addAnimation(FossilsLegacyUtils.resource("gallimimus_walk"), GallimimusAnimations.GALLIMIMUS_WALK);
         this.addAnimation(FossilsLegacyUtils.resource("pachycephalosaurus_walk"), PachycephalosaurusAnimations.PACHYCEPHALOSAURUS_WALK);
         this.addAnimation(FossilsLegacyUtils.resource("moa_walk"), MoaAnimations.MOA_WALK);
+        this.addAnimation(FossilsLegacyUtils.resource("spinosaurus_walk"), SpinosaurusAnimations.SPINOSAURUS_WALK);
+        this.addAnimation(FossilsLegacyUtils.resource("spinosaurus_swim"), SpinosaurusAnimations.SPINOSAURUS_SWIM);
         this.addAnimation(FossilsLegacyUtils.resource("triceratops_walk"), TriceratopsAnimations.TRICERATOPS_WALK);
         this.addAnimation(FossilsLegacyUtils.resource("velociraptor_walk"), VelociraptorAnimations.VELOCIRAPTOR_WALK);
 

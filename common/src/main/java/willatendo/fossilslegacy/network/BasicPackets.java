@@ -9,15 +9,15 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.block.entity.GeneModificationTableBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.TimeMachineBlockEntity;
-import willatendo.fossilslegacy.server.entity.Futabasaurus;
-import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Futabasaurus;
+import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
+import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class BasicPackets {
+public final class BasicPackets {
     public static final ResourceLocation APPLY_GENE = FossilsLegacyUtils.resource("apply_gene");
     public static final ResourceLocation SINK = FossilsLegacyUtils.resource("sink");
     public static final ResourceLocation TIME_MACHINE_UPDATE = FossilsLegacyUtils.resource("time_machine_update");

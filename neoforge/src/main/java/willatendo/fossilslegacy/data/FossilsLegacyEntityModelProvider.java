@@ -10,14 +10,15 @@ import willatendo.fossilslegacy.client.model.dinosaur.legacy.pteranodon.GroundPt
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.pteranodon.LandingPteranodonModel;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.tyrannosaurus.KnockedOutTyrannosaurusModel;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.tyrannosaurus.TyrannosaurusModel;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FossilsLegacyEntityModelProvider extends EntityModelProvider {
     public FossilsLegacyEntityModelProvider(PackOutput packOutput, String modId) {
         super(packOutput, modId);
     }
 
+    @Override
     protected void getAll() {
+        this.add("ankylosaurus", AnkylosaurusModel.createBodyLayer(), "walk", this.mod("ankylosaurus_walk"), "head");
         this.add("brachiosaurus", BrachiosaurusModel.createBodyLayer(), "walk", this.mod("brachiosaurus_walk"), "neck");
         this.add("legacy_brachiosaurus", LegacyBrachiosaurusModel.createBodyLayer(), "walk", BuiltInAnimationTypes.LEGACY_BRACHIOSAURUS_WALK);
         this.add("carnotaurus", CarnotaurusModel.createBodyLayer(), "walk", BuiltInAnimationTypes.CARNOTAURUS_WALK);
@@ -26,6 +27,7 @@ public class FossilsLegacyEntityModelProvider extends EntityModelProvider {
         this.add("dilophosaurus", DilophosaurusModel.createBodyLayer(), "walk", BuiltInAnimationTypes.DILOPHOSAURUS_WALK);
         this.add("futabasaurus", FutabasaurusModel.createBodyLayer(), "walk", this.mod("futabasaurus_walk"), "swim", this.mod("futabasaurus_swim"), "neck", "middle_neck", "head");
         this.add("legacy_futabasaurus", LegacyFutabasaurusModel.createBodyLayer());
+        this.add("gallimimus", GallimimusModel.createBodyLayer(), "walk", this.mod("gallimimus_walk"), "neck");
         this.add("moa", MoaModel.createBodyLayer(), "walk", this.mod("moa_walk"), "neck");
         this.add("mosasaurus", MosasaurusModel.createBodyLayer(), "walk", BuiltInAnimationTypes.MOSASAURUS_SWIM, "swim", BuiltInAnimationTypes.MOSASAURUS_SWIM);
         this.add("pachycephalosaurus", PachycephalosaurusModel.createBodyLayer(), "walk", this.mod("pachycephalosaurus_walk"), "head");
@@ -41,6 +43,7 @@ public class FossilsLegacyEntityModelProvider extends EntityModelProvider {
         this.add("velociraptor", VelociraptorModel.createBodyLayer(), "walk", this.mod("velociraptor_walk"), "head");
         this.add("legacy_velociraptor", LegacyVelociraptorModel.createBodyLayer(), "walk", BuiltInAnimationTypes.LEGACY_VELOCIRAPTOR_WALK);
         this.add("dodo", DodoModel.createBodyLayer(), "walk", this.mod("dodo_walk"), "float_down", this.mod("dodo_float_down"), "head");
+        this.add("spinosaurus", SpinosaurusModel.createBodyLayer(), "walk", this.mod("spinosaurus_walk"), "swim", this.mod("spinosaurus_swim"), "neck");
         this.add("smilodon", SmilodonModel.createBodyLayer(), "walk", BuiltInAnimationTypes.SMILODON_WALK, "sit", BuiltInAnimationTypes.SMILODON_SIT, "shake", BuiltInAnimationTypes.SMILODON_SHAKE, "tail", BuiltInAnimationTypes.SMILODON_TAIL);
         this.add("mammoth", MammothModel.createBodyLayer(), "walk", BuiltInAnimationTypes.MAMMOTH_WALK);
     }

@@ -25,6 +25,12 @@
     },
     {
       "result": {
+        "id": "fossilslegacy:moa_dna"
+      },
+      "weight": 33
+    },
+    {
+      "result": {
         "id": "minecraft:beef"
       },
       "weight": 34

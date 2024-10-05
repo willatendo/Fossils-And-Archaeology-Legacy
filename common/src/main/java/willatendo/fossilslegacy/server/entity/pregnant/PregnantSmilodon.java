@@ -14,7 +14,7 @@ import net.minecraft.world.level.Level;
 import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityDataSerializers;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
-import willatendo.fossilslegacy.server.entity.Smilodon;
+import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Smilodon;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.PregnantAnimal;
 import willatendo.fossilslegacy.server.entity.variants.PregnancyType;

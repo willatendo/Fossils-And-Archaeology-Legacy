@@ -1,8 +1,11 @@
 package willatendo.fossilslegacy.server.entity;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -25,9 +28,10 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
-import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
+import willatendo.fossilslegacy.server.core.registry.FossilsLegacyBuiltInRegistries;
+import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
+import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 
 import java.util.Objects;
@@ -36,6 +40,8 @@ import java.util.Optional;
 public class Fossil extends Mob {
     private static final EntityDataAccessor<Holder<FossilVariant>> FOSSIL_VARIANT = SynchedEntityData.defineId(Fossil.class, FossilsLegacyEntityDataSerializers.FOSSIL_VARIANTS.get());
     private static final EntityDataAccessor<Integer> SIZE = SynchedEntityData.defineId(Fossil.class, EntityDataSerializers.INT);
+    private static MapCodec<Holder<FossilVariant>> VARIANT_MAP_CODEC = FossilVariant.CODEC.fieldOf("FossilVariant");
+    private static Codec<Holder<FossilVariant>> VARIANT_CODEC = VARIANT_MAP_CODEC.codec();
 
     public Fossil(EntityType<? extends Fossil> entityType, Level level) {
         super(entityType, level);
@@ -53,13 +59,7 @@ public class Fossil extends Mob {
     @Override
     public float getScale() {
         FossilVariant fossilVariant = this.getFossilVariant().value();
-        return fossilVariant.fossilScaleFactor().apply(this).x();
-    }
-
-    @Override
-    public EntityDimensions getDefaultDimensions(Pose pose) {
-        FossilVariant fossilVariant = this.getFossilVariant().value();
-        return EntityDimensions.scalable(fossilVariant.boundingBoxWidth(), fossilVariant.boundingBoxHeight());
+        return fossilVariant.baseScale() + (fossilVariant.sizeScale() * this.getSize());
     }
 
     @Override
@@ -93,26 +93,21 @@ public class Fossil extends Mob {
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(FOSSIL_VARIANT, FossilsLegacyBuiltInRegistries.FOSSIL_VARIANTS.getHolderOrThrow(FossilsLegacyFossilVariants.BRACHIOSAURUS.getKey()));
+        builder.define(FOSSIL_VARIANT, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.FOSSIL_VARIANTS).getAny().orElseThrow());
         builder.define(SIZE, 1);
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        compoundTag.putString("Variant", this.getFossilVariant().unwrapKey().orElse(FossilsLegacyFossilVariants.BRACHIOSAURUS.getKey()).location().toString());
+        VARIANT_CODEC.encodeStart(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), this.getFossilVariant()).ifSuccess(tag -> compoundTag.merge((CompoundTag) tag));
         compoundTag.putInt("Size", this.getSize());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        Optional<ResourceKey<FossilVariant>> eggVariant = Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("Variant"))).map((resourceLocation) -> {
-            return ResourceKey.create(FossilsLegacyRegistries.FOSSIL_VARIANTS, resourceLocation);
-        });
-        Registry<FossilVariant> registry = FossilsLegacyBuiltInRegistries.FOSSIL_VARIANTS;
-        Objects.requireNonNull(registry);
-        eggVariant.flatMap(registry::getHolder).ifPresent(this::setFossilVariant);
+        VARIANT_CODEC.parse(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), compoundTag).ifSuccess(this::setFossilVariant);
         this.setSize(compoundTag.getInt("Size"));
     }
 

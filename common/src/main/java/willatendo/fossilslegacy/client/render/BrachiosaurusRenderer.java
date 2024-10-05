@@ -1,7 +1,7 @@
 package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
-import willatendo.fossilslegacy.server.entity.Brachiosaurus;
+import willatendo.fossilslegacy.server.entity.dinosaur.jurassic.Brachiosaurus;
 
 public class BrachiosaurusRenderer extends CoatTypeMobRenderer<Brachiosaurus> {
     public BrachiosaurusRenderer(Context context) {

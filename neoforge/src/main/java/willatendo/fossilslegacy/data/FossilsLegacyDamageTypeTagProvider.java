@@ -5,7 +5,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.DamageTypeTagsProvider;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyDamgeTypeTags;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyDamgeTypeTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -16,6 +16,7 @@ public class FossilsLegacyDamageTypeTagProvider extends DamageTypeTagsProvider {
 
     @Override
     protected void addTags(Provider provider) {
+        this.tag(FossilsLegacyDamgeTypeTags.SPINOSAURUS_IMMUNE).add(DamageTypes.ARROW, DamageTypes.TRIDENT);
         this.tag(FossilsLegacyDamgeTypeTags.TYRANNOSAURUS_IMMUNE).add(DamageTypes.ARROW, DamageTypes.TRIDENT);
     }
 }

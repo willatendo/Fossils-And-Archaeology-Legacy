@@ -6,7 +6,7 @@ import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import willatendo.fossilslegacy.server.block.FossilsLegacyBlockTags;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyBlockTags;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 
 import java.util.EnumSet;

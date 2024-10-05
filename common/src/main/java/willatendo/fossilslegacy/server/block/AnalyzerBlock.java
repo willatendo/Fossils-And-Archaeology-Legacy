@@ -26,6 +26,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import willatendo.fossilslegacy.server.block.entity.AnalyzerBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.BlockEntityHelper;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntityTypes;
+import willatendo.fossilslegacy.server.block.properties.FossilsLegacyBlockStateProperties;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class AnalyzerBlock extends Block implements EntityBlock {

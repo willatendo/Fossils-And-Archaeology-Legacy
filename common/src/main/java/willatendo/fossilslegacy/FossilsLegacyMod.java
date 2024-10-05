@@ -1,17 +1,17 @@
 package willatendo.fossilslegacy;
 
-import willatendo.fossilslegacy.server.FossilsLegacyBuiltInRegistries;
-import willatendo.fossilslegacy.server.FossilsLegacyCreativeModeTabs;
+import willatendo.fossilslegacy.server.biome.FossilsLegacyBiomeSources;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntityTypes;
 import willatendo.fossilslegacy.server.config.FossilsLegacyConfig;
+import willatendo.fossilslegacy.server.core.registry.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
-import willatendo.fossilslegacy.server.dimension.FossilsLegacyBiomeSources;
 import willatendo.fossilslegacy.server.entity.*;
 import willatendo.fossilslegacy.server.entity.util.CommandType;
 import willatendo.fossilslegacy.server.feature.foliageplacer.FossilsLegacyFoliagePlacerTypes;
 import willatendo.fossilslegacy.server.feature.trunkplacer.FossilsLegacyTrunkPlacerTypes;
 import willatendo.fossilslegacy.server.item.FossilsLegacyArmorMaterials;
+import willatendo.fossilslegacy.server.item.FossilsLegacyCreativeModeTabs;
 import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.loot.FossilsLegacyLootPoolEntryTypes;
@@ -41,7 +41,6 @@ public final class FossilsLegacyMod {
         simpleRegistryRegister.register(FossilsLegacyMenuTypes.MENU_TYPES);
         simpleRegistryRegister.register(FossilsLegacyEggVariants.EGG_VARIANTS);
         simpleRegistryRegister.register(FossilsLegacyPregnancyTypes.PREGNANCY_TYPES);
-        simpleRegistryRegister.register(FossilsLegacyFossilVariants.FOSSIL_VARIANTS);
         FossilsLegacyEntityDataSerializers.init();
         simpleRegistryRegister.register(FossilsLegacyEntityTypes.ENTITY_TYPES);
         simpleRegistryRegister.register(FossilsLegacyDataComponents.DATA_COMPONENT_TYPES);

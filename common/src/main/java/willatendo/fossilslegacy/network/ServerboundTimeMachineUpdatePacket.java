@@ -5,7 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import willatendo.fossilslegacy.server.utils.ForgeHandlePacket;
+import willatendo.fossilslegacy.network.util.ForgeHandlePacket;
 
 public record ServerboundTimeMachineUpdatePacket(BlockPos blockPos) implements CustomPacketPayload {
     public static final CustomPacketPayload.Type<ServerboundTimeMachineUpdatePacket> TYPE = new CustomPacketPayload.Type<>(BasicPackets.TIME_MACHINE_UPDATE);

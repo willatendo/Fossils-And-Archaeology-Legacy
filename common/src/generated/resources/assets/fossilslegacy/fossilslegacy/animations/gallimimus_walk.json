@@ -1,0 +1,92 @@
+{
+  "type": "json",
+  "animations": [
+    {
+      "bone": "left_leg",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": -42.5,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.25
+        },
+        {
+          "degree_vec": {
+            "x": 42.5,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.75
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 1.0
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "right_leg",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": 42.5,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.25
+        },
+        {
+          "degree_vec": {
+            "x": -42.5,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 0.75
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "timestamp": 1.0
+        }
+      ],
+      "target": "rotation"
+    }
+  ],
+  "id": "fossilslegacy:gallimimus_walk",
+  "length": 1.0,
+  "looping": true
+}

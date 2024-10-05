@@ -11,6 +11,9 @@ import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
+import willatendo.fossilslegacy.server.biome.FossilsLegacyMultiNoiseBiomeSourceParameterLists;
+import willatendo.fossilslegacy.server.data.worldgen.FossilsLegacyDimensionTypes;
+import willatendo.fossilslegacy.server.level.levelgen.PrehistoricNoiseGeneratorSettings;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FossilsLegacyLevelStems {

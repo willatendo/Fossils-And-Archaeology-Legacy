@@ -33,6 +33,7 @@ public class FossilsLegacyEntityLootSubProvider extends SimpleEntityLootSubProvi
 
     @Override
     public void generate() {
+        this.add(FossilsLegacyEntityTypes.ANKYLOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_ANKYLOSAURUS.get()));
         this.add(FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_BRACHIOSAURUS.get()));
         this.add(FossilsLegacyEntityTypes.CARNOTAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_CARNOTAURUS.get()));
         this.add(FossilsLegacyEntityTypes.COMPSOGNATHUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_COMPSOGNATHUS.get()));
@@ -41,12 +42,14 @@ public class FossilsLegacyEntityLootSubProvider extends SimpleEntityLootSubProvi
         this.add(FossilsLegacyEntityTypes.DODO.get(), this.createDinosaurTable(1.0F, 2.0F, FossilsLegacyItems.RAW_DODO.get()));
         this.add(FossilsLegacyEntityTypes.MOA.get(), this.createDinosaurTable(1.0F, 2.0F, FossilsLegacyItems.RAW_MOA.get()));
         this.add(FossilsLegacyEntityTypes.FUTABASAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_FUTABASAURUS.get()));
+        this.add(FossilsLegacyEntityTypes.GALLIMIMUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_GALLIMIMUS.get()));
         this.add(FossilsLegacyEntityTypes.MAMMOTH.get(), this.createDinosaurTable(0.0F, 3.0F, Items.LEATHER, 1.0F, 3.0F, FossilsLegacyItems.RAW_MAMMOTH.get()));
         this.add(FossilsLegacyEntityTypes.MOSASAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_MOSASAURUS.get()));
         this.add(FossilsLegacyEntityTypes.NAUTILUS.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootOneItemOfManyRandom.lootTableItem(5, new ItemAndChance(FossilsLegacyItems.NAUTILUS_SHELL.get(), 0, 3), new ItemAndChance(FossilsLegacyItems.MAGIC_CONCH.get(), 3, 5)))));
         this.add(FossilsLegacyEntityTypes.PACHYCEPHALOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_PACHYCEPHALOSAURUS.get()));
         this.add(FossilsLegacyEntityTypes.PTERANODON.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_PTERANODON.get()));
         this.add(FossilsLegacyEntityTypes.SMILODON.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_SMILODON.get()));
+        this.add(FossilsLegacyEntityTypes.SPINOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_STEGOSAURUS.get()));
         this.add(FossilsLegacyEntityTypes.STEGOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_STEGOSAURUS.get()));
         this.add(FossilsLegacyEntityTypes.THERIZINOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_THERIZINOSAURUS.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.FEATHER).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 3.0F)))).add(LootItem.lootTableItem(FossilsLegacyItems.THERIZINOSAURUS_CLAWS.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))));
         this.add(FossilsLegacyEntityTypes.TRICERATOPS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_TRICERATOPS.get()));

@@ -1,0 +1,16 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "category": "misc",
+  "ingredient": {
+    "item": "fossilslegacy:raw_moa"
+  },
+  "results": [
+    {
+      "result": {
+        "id": "fossilslegacy:moa_dna"
+      },
+      "weight": 100
+    }
+  ],
+  "time": 100
+}

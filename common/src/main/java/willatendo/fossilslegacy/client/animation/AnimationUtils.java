@@ -12,7 +12,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.ShakingEntity;
 
 import java.util.Map;
 
-public class AnimationUtils {
+public final class AnimationUtils {
     public static final Map<ResourceLocation, BuiltInAnimationType> VALUES = Maps.newHashMap();
 
     protected static void legacyBrachiosaurusWalkAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {

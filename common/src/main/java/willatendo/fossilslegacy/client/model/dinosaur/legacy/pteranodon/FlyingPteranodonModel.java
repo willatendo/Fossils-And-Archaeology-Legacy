@@ -9,7 +9,7 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
-import willatendo.fossilslegacy.server.entity.Pteranodon;
+import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Pteranodon;
 
 public class FlyingPteranodonModel extends AbstractPteranodonModel {
     private final ModelPart root;

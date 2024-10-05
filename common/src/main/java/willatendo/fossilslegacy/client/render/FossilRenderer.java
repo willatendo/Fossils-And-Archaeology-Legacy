@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -15,10 +16,12 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
+import willatendo.fossilslegacy.api.client.ModelIdentifierRegistry;
 import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
 import willatendo.fossilslegacy.client.model.fossils.*;
 import willatendo.fossilslegacy.client.model.fossils.legacy.PteranodonSkeletonModel;
 import willatendo.fossilslegacy.client.model.fossils.legacy.TriceratopsSkeletonModel;
+import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.server.entity.Fossil;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyFossilVariants;
 import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
@@ -27,27 +30,41 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FossilRenderer extends EntityRenderer<Fossil> {
-    private final Map<FossilVariant, AbstractSkeletonModel> models = new HashMap<>();
-
-    private AbstractSkeletonModel model;
+    protected final Map<ResourceLocation, EntityModel> models;
+    private EntityModel<Entity> model;
 
     public FossilRenderer(Context context) {
         super(context);
+        this.models = ModelIdentifierRegistry.registerAllModels(context::bakeLayer);
 
         this.shadowRadius = 0.5F;
+    }
 
-        this.models.put(FossilsLegacyFossilVariants.BRACHIOSAURUS.get(), new BrachiosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.BRACHIOSAURUS_SKELETON.getFirst())));
-        this.models.put(FossilsLegacyFossilVariants.FUTABASAURUS.get(), new FutabasaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.FUTABASAURUS_SKELETON.getFirst())));
-        this.models.put(FossilsLegacyFossilVariants.PTERANODON.get(), new PteranodonSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.PTERANODON_SKELETON)));
-        this.models.put(FossilsLegacyFossilVariants.TRICERATOPS.get(), new TriceratopsSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.TRICERATOPS_SKELETON)));
-        this.models.put(FossilsLegacyFossilVariants.PACHYCEPHALOSAURUS.get(), new PachycephalosaurusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.PACHYCEPHALOSAURUS_SKELETON)));
-        this.models.put(FossilsLegacyFossilVariants.COMPSOGNATHUS.get(), new CompsognathusSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.COMPSOGNATHUS_SKELETON)));
-        this.models.put(FossilsLegacyFossilVariants.VELOCIRAPTOR.get(), new VelociraptorSkeletonModel(context.bakeLayer(FossilsLegacyModelLayers.VELOCIRAPTOR_SKELETON)));
+    private boolean hasModel(ResourceLocation id) {
+        return this.models.keySet().contains(id);
+    }
+
+    private void setModel(EntityModel<Entity> entityModel) {
+        if (this.model != entityModel) {
+            this.model = entityModel;
+        }
+    }
+
+    private EntityModel<Entity> getModel(ResourceLocation id) {
+        if (this.hasModel(id)) {
+            return this.models.getOrDefault(id, this.models.values().stream().toList().getFirst());
+        } else if (JsonModelLoader.isJsonModel(id)) {
+            return JsonModelLoader.getModel(id);
+        } else {
+            return null;
+        }
     }
 
     @Override
     public void render(Fossil fossil, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight) {
-        this.model = this.models.get(fossil.getFossilVariant().value());
+        FossilVariant fossilVariant = fossil.getFossilVariant().value();
+        this.setModel(this.getModel(fossilVariant.model()));
+        this.shadowRadius = fossilVariant.shadowSize();
 
         poseStack.pushPose();
         this.model.riding = fossil.isPassenger();
@@ -171,6 +188,6 @@ public class FossilRenderer extends EntityRenderer<Fossil> {
     @Override
     public ResourceLocation getTextureLocation(Fossil fossil) {
         FossilVariant fossilVariant = fossil.getFossilVariant().value();
-        return fossilVariant.fossilTexture();
+        return fossilVariant.texture();
     }
 }

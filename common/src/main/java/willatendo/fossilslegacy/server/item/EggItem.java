@@ -9,10 +9,10 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import willatendo.fossilslegacy.server.FossilsLegacyRegistries;
+import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.Egg;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
-import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -23,7 +23,7 @@ public class EggItem extends PlaceEntityItem {
     protected final TagKey<CoatType> applicableCoatTypes;
 
     public EggItem(Holder<EggVariant> eggVariant, TagKey<CoatType> applicableCoatTypes, Properties properties) {
-        super(() -> FossilsLegacyEntityTypes.EGG.get(), properties);
+        super(FossilsLegacyEntityTypes.EGG::get, properties);
         this.eggVariant = eggVariant;
         this.applicableCoatTypes = applicableCoatTypes;
         FossilsLegacyItems.EGGS.add(this);

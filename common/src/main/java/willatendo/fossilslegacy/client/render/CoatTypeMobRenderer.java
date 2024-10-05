@@ -11,7 +11,7 @@ import willatendo.fossilslegacy.api.client.ModelIdentifierRegistry;
 import willatendo.fossilslegacy.client.model.json.JsonModel;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
-import willatendo.fossilslegacy.server.entity.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CoatTypeEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.WetFurEntity;
 
@@ -67,10 +67,12 @@ public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends Mo
         } else {
             this.setModel(this.getModel(coatType.models().model()));
         }
+        CoatType.AgeScaleInfo ageScaleInfo = coatType.ageScaleInfo();
+        this.shadowRadius = ageScaleInfo.shadowSize() + (ageScaleInfo.shadowGrowth() * dinosaur.getGrowthStage());
 
         if (dinosaur instanceof WetFurEntity wetFurEntity) {
             if (wetFurEntity.isWet()) {
-                if (this.model instanceof JsonModel<T> jsonModel) {
+                if (this.model instanceof JsonModel jsonModel) {
                     float f = wetFurEntity.getWetShade(partialTicks);
                     jsonModel.setColor(FastColor.ARGB32.colorFromFloat(1.0F, f, f, f));
                 }
@@ -81,7 +83,7 @@ public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends Mo
 
         if (dinosaur instanceof WetFurEntity wetFurEntity) {
             if (wetFurEntity.isWet()) {
-                if (this.model instanceof JsonModel<T> jsonModel) {
+                if (this.model instanceof JsonModel jsonModel) {
                     jsonModel.setColor(-1);
                 }
             }

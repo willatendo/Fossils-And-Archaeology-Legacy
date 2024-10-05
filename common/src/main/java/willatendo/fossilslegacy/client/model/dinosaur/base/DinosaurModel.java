@@ -4,9 +4,9 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;
-import willatendo.fossilslegacy.server.entity.Dinosaur;
+import net.minecraft.world.entity.Entity;
 
-public abstract class DinosaurModel<T extends Dinosaur> extends HierarchicalModel<T> {
+public abstract class DinosaurModel<T extends Entity> extends HierarchicalModel<T> {
     private final ModelPart root;
 
     public DinosaurModel(ModelPart root) {

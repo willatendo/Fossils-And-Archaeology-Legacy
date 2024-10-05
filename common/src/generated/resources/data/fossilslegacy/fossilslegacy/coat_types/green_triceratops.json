@@ -2,7 +2,9 @@
   "age_scale_info": {
     "age_scale": 0.15,
     "base_scale_height": 1.0,
-    "base_scale_width": 1.0
+    "base_scale_width": 1.0,
+    "shadow_growth": 0.1,
+    "shadow_size": 1.0
   },
   "bounding_box_info": {
     "bounding_box_growth": 0.2,

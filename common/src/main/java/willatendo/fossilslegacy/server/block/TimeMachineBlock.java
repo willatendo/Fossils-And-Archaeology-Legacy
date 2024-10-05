@@ -27,7 +27,6 @@ import java.util.List;
 
 public class TimeMachineBlock extends Block implements EntityBlock {
     public static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D);
-    public static final List<BlockPos> PARTICLE_SPAWN_OFFSETS = BlockPos.betweenClosedStream(-2, 0, -2, 2, 1, 2).filter(blockPos -> Math.abs(blockPos.getX()) == 2 || Math.abs(blockPos.getZ()) == 2).map(BlockPos::immutable).toList();
 
     public TimeMachineBlock(Properties properties) {
         super(properties);

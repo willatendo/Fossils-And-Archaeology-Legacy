@@ -1,0 +1,11 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": {
+    "item": "fossilslegacy:gallimimus_dna"
+  },
+  "result": {
+    "id": "fossilslegacy:gallimimus_egg"
+  },
+  "time": 6000
+}

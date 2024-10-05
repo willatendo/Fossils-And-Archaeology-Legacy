@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.NautilusModel;
-import willatendo.fossilslegacy.server.entity.Nautilus;
+import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Nautilus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class NautilusRenderer extends MobRenderer<Nautilus, NautilusModel> {

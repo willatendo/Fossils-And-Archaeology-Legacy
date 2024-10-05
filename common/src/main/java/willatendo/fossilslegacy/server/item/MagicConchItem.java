@@ -15,7 +15,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import willatendo.fossilslegacy.server.entity.Futabasaurus;
+import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Futabasaurus;
 import willatendo.fossilslegacy.server.entity.util.CommandType;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 

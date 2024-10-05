@@ -2,7 +2,7 @@ package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import willatendo.fossilslegacy.client.render.layer.MosasaurusEyesLayer;
-import willatendo.fossilslegacy.server.entity.Mosasaurus;
+import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Mosasaurus;
 
 public class MosasaurusRenderer extends CoatTypeMobRenderer<Mosasaurus> {
     public MosasaurusRenderer(Context context) {

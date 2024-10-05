@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_moa": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:raw_moa"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:raw_moa_outputs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_moa"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:raw_moa_outputs"
+    ]
+  }
+}

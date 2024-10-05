@@ -9,7 +9,7 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.client.model.dinosaur.base.DinosaurModel;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
-import willatendo.fossilslegacy.server.entity.Smilodon;
+import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Smilodon;
 
 public class SmilodonModel<T extends Dinosaur> extends DinosaurModel<T> {
     private float r = 1.0F;
