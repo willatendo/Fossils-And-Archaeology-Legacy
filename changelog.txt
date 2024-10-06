@@ -13,6 +13,7 @@
 - Smilodon Now Grows In Stages
 - Dodo Now Grows In Stages
 - Jurassic Fern Now Tints To Biome Leaves Color
+- Updated Nautilus Model To No Longer Float
 - (Fabric) Fixed Server Crash
 - Fixed Placing Stone Tables
 - Fixed Cannibalism

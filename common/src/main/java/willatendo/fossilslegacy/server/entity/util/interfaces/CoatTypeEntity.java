@@ -13,22 +13,20 @@ import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 
 import java.util.Optional;
 
-public interface CoatTypeEntity {
+public interface CoatTypeEntity extends SimpleRegistryAccessAccessor {
     MapCodec<Holder<CoatType>> VARIANT_MAP_CODEC = CoatType.CODEC.fieldOf("CoatType");
     Codec<Holder<CoatType>> VARIANT_CODEC = VARIANT_MAP_CODEC.codec();
-
-    RegistryAccess registryAccess();
 
     void setCoatType(Holder<CoatType> holder);
 
     Holder<CoatType> getCoatType();
 
     default void addCoatType(CompoundTag compoundTag) {
-        VARIANT_CODEC.encodeStart(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), this.getCoatType()).ifSuccess(tag -> compoundTag.merge((CompoundTag) tag));
+        VARIANT_CODEC.encodeStart(this.getRegistryAccess().createSerializationContext(NbtOps.INSTANCE), this.getCoatType()).ifSuccess(tag -> compoundTag.merge((CompoundTag) tag));
     }
 
     default void readCoatType(CompoundTag compoundTag) {
-        VARIANT_CODEC.parse(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), compoundTag).ifSuccess(this::setCoatType);
+        VARIANT_CODEC.parse(this.getRegistryAccess().createSerializationContext(NbtOps.INSTANCE), compoundTag).ifSuccess(this::setCoatType);
     }
 
     default Component getOverridenName(Component defaultName) {

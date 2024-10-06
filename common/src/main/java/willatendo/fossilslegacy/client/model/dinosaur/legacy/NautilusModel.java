@@ -35,14 +35,14 @@ public class NautilusModel extends EntityModel<Nautilus> {
         MeshDefinition meshDefinition = new MeshDefinition();
         PartDefinition partDefinition = meshDefinition.getRoot();
 
-        partDefinition.addOrReplaceChild("shell", CubeListBuilder.create().texOffs(0, 12).addBox(-2.0F, -5.0F, -5.0F, 4.0F, 10.0F, 10.0F), PartPose.offset(2.0F, 1.0F, 1.0F));
-        partDefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, 1.0F, -7.0F, 6.0F, 6.0F, 6.0F), PartPose.offsetAndRotation(2.0F, 1.0F, 1.0F, -0.8588527F, 0.0F, 0.0F));
-        partDefinition.addOrReplaceChild("tentacle_1", CubeListBuilder.create().texOffs(0, 12).addBox(-1.0F, -1.0F, -2.0F, 1.0F, 8.0F, 1.0F), PartPose.offset(1.0F, 2.0F, -6.0F));
-        partDefinition.addOrReplaceChild("tentacle_2", CubeListBuilder.create().texOffs(0, 12).addBox(-2.0F, 0.0F, -1.0F, 1.0F, 8.0F, 1.0F), PartPose.offset(2.0F, 2.0F, -6.0F));
-        partDefinition.addOrReplaceChild("tentacle_3", CubeListBuilder.create().texOffs(0, 12).addBox(2.0F, 1.0F, 0.0F, 1.0F, 8.0F, 1.0F), PartPose.offset(1.0F, 2.0F, -6.0F));
-        partDefinition.addOrReplaceChild("tentacle_4", CubeListBuilder.create().texOffs(0, 12).addBox(1.0F, 0.0F, -1.0F, 1.0F, 8.0F, 1.0F), PartPose.offset(2.0F, 2.0F, -6.0F));
-        partDefinition.addOrReplaceChild("tentacle_5", CubeListBuilder.create().texOffs(0, 12).addBox(0.0F, -1.0F, -2.0F, 1.0F, 8.0F, 1.0F), PartPose.offset(2.0F, 2.0F, -6.0F));
-        partDefinition.addOrReplaceChild("tentacle_6", CubeListBuilder.create().texOffs(0, 12).addBox(-2.0F, 1.0F, 0.0F, 1.0F, 8.0F, 1.0F), PartPose.offset(2.0F, 2.0F, -6.0F));
+        partDefinition.addOrReplaceChild("shell", CubeListBuilder.create().texOffs(0, 12).addBox(-2.0F, -5.0F, -5.0F, 4.0F, 10.0F, 10.0F), PartPose.offset(0.0F, 19.0F, 0.0F));
+        partDefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, 1.0F, -7.0F, 6.0F, 6.0F, 6.0F), PartPose.offsetAndRotation(0.0F, 19.0F, 0.0F, -0.829F, 0.0F, 0.0F));
+        partDefinition.addOrReplaceChild("tentacle_1", CubeListBuilder.create().texOffs(0, 12).addBox(-1.0F, -3.0F, -3.0F, 1.0F, 8.0F, 1.0F), PartPose.offset(-1.0F, 22.0F, -6.0F));
+        partDefinition.addOrReplaceChild("tentacle_2", CubeListBuilder.create().texOffs(0, 12).addBox(-1.0F, -2.0F, -2.0F, 1.0F, 8.0F, 1.0F), PartPose.offset(-1.0F, 22.0F, -6.0F));
+        partDefinition.addOrReplaceChild("tentacle_3", CubeListBuilder.create().texOffs(0, 12).addBox(2.0F, -1.0F, -1.0F, 1.0F, 8.0F, 1.0F), PartPose.offset(-1.0F, 22.0F, -6.0F));
+        partDefinition.addOrReplaceChild("tentacle_4", CubeListBuilder.create().texOffs(0, 12).addBox(3.0F, -2.0F, -2.0F, 1.0F, 8.0F, 1.0F), PartPose.offset(-2.0F, 22.0F, -6.0F));
+        partDefinition.addOrReplaceChild("tentacle_5", CubeListBuilder.create().texOffs(0, 12).addBox(2.0F, -3.0F, -3.0F, 1.0F, 8.0F, 1.0F), PartPose.offset(-2.0F, 22.0F, -6.0F));
+        partDefinition.addOrReplaceChild("tentacle_6", CubeListBuilder.create().texOffs(0, 12).addBox(0.0F, -1.0F, -1.0F, 1.0F, 8.0F, 1.0F), PartPose.offset(-2.0F, 22.0F, -6.0F));
 
         return LayerDefinition.create(meshDefinition, 64, 32);
     }

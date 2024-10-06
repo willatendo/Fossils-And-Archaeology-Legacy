@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.server.entity;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -37,7 +38,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.Optional;
 import java.util.UUID;
 
-public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnBirth, TameAccessor, PlayerCommandableAccess, HungryAnimal, DaysAlive, GrowingEntity, TamedSpeakingEntity {
+public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnBirth, TameAccessor, PlayerCommandableAccess, HungryAnimal, DaysAlive, GrowingEntity, TamedSpeakingEntity, SimpleRegistryAccessAccessor {
     private static final EntityDataAccessor<String> COMMAND = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.STRING);
     private static final EntityDataAccessor<Integer> DAYS_ALIVE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> GROWTH_STAGE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
@@ -54,6 +55,11 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
     public abstract float getBoundingBoxGrowth();
 
     public abstract Diet getDiet();
+
+    @Override
+    public RegistryAccess getRegistryAccess() {
+        return this.registryAccess();
+    }
 
     @Override
     public Level getLevel() {
