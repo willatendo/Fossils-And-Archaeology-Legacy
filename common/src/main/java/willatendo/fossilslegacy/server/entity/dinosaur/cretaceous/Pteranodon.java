@@ -59,6 +59,26 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
     }
 
     @Override
+    protected EntityDimensions getDefaultDimensions(Pose pose) {
+        CoatType coatType = this.getCoatType().value();
+        CoatType.BoundingBoxInfo boundingBoxInfo = coatType.boundingBoxInfo();
+        EntityDimensions newDimensions = this.dimensions = EntityDimensions.scalable(boundingBoxInfo.boundingBoxWidth() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()), boundingBoxInfo.boundingBoxHeight() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()));
+        if (this.shouldFly() && !this.landing) {
+            return newDimensions.scale(1.0F, 0.5F);
+        }
+        return newDimensions;
+    }
+
+    @Override
+    public void tick() {
+        if (this.dimensions.width() != this.getEntityDimensions(this.getGrowthStage()).width() || this.dimensions.height() != this.getEntityDimensions(this.getGrowthStage()).height()) {
+            this.refreshDimensions();
+        }
+
+        super.tick();
+    }
+
+    @Override
     protected Component getTypeName() {
         return this.getOverridenName(super.getTypeName());
     }
@@ -76,15 +96,6 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
     @Override
     public boolean shouldFly() {
         return !this.onGround() && !this.isInWaterOrBubble() && this.level().getBlockState(this.blockPosition()).isAir();
-    }
-
-    @Override
-    public EntityDimensions getDefaultDimensions(Pose pose) {
-        if (this.shouldFly() && !this.landing) {
-            return super.getDefaultDimensions(pose).scale(1.0F, 0.5F);
-        } else {
-            return super.getDefaultDimensions(pose);
-        }
     }
 
     @Override

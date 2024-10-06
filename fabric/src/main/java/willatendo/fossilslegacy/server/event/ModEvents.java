@@ -15,8 +15,6 @@ public class ModEvents {
     public static void commonSetup() {
         BasicEvents.commonSetup();
 
-        FossilsLegacyDualEvents.clientReloadListenersEvent(new FabricClientReloadListenerRegister());
-
         FabricCreativeModeTabModification fabricCreativeModeTabModification = new FabricCreativeModeTabModification();
         BasicEvents.buildCreativeModeTabEvent(fabricCreativeModeTabModification);
         fabricCreativeModeTabModification.build();

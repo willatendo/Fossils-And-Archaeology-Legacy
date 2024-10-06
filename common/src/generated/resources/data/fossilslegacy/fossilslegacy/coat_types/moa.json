@@ -7,8 +7,8 @@
     "shadow_size": 0.15
   },
   "bounding_box_info": {
-    "bounding_box_growth": 1.0,
-    "bounding_box_height": 0.5,
+    "bounding_box_growth": 0.1,
+    "bounding_box_height": 1.5,
     "bounding_box_width": 0.5
   },
   "display_info": {

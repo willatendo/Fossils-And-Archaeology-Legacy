@@ -35,7 +35,7 @@ public record CoatType(DisplayInfo displayInfo, Models models, Textures textures
     }
 
     public record BoundingBoxInfo(float boundingBoxWidth, float boundingBoxHeight, float boundingBoxGrowth) {
-        public static final Codec<BoundingBoxInfo> CODEC = RecordCodecBuilder.create(instance -> instance.group(ExtraCodecs.POSITIVE_FLOAT.fieldOf("bounding_box_width").forGetter(BoundingBoxInfo::boundingBoxWidth), ExtraCodecs.POSITIVE_FLOAT.fieldOf("bounding_box_height").forGetter(BoundingBoxInfo::boundingBoxWidth), ExtraCodecs.POSITIVE_FLOAT.fieldOf("bounding_box_growth").forGetter(BoundingBoxInfo::boundingBoxGrowth)).apply(instance, BoundingBoxInfo::new));
+        public static final Codec<BoundingBoxInfo> CODEC = RecordCodecBuilder.create(instance -> instance.group(ExtraCodecs.POSITIVE_FLOAT.fieldOf("bounding_box_width").forGetter(BoundingBoxInfo::boundingBoxWidth), ExtraCodecs.POSITIVE_FLOAT.fieldOf("bounding_box_height").forGetter(BoundingBoxInfo::boundingBoxHeight), ExtraCodecs.POSITIVE_FLOAT.fieldOf("bounding_box_growth").forGetter(BoundingBoxInfo::boundingBoxGrowth)).apply(instance, BoundingBoxInfo::new));
     }
 
     public record AgeScaleInfo(float baseScaleWidth, float baseScaleHeight, float ageScale, float shadowSize, float shadowGrowth) {

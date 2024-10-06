@@ -13,7 +13,7 @@ dependencies {
 neoForge {
     version = neoforge_version
 
-    def at = project(':common').file('src/main/resources/META-INF/common_accesstransformer.cfg')
+    def at = file('src/main/resources/META-INF/accesstransformer.cfg')
     if (at.exists()) {
         accessTransformers.add(at.absolutePath)
     }

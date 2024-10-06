@@ -309,8 +309,8 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.CALAMITES_BOAT.get());
         output.accept(FossilsLegacyItems.CALAMITES_CHEST_BOAT.get());
         output.accept(FossilsLegacyBlocks.JURASSIC_FERN.get());
-        output.accept(FossilsLegacyItems.ANU_SPAWN_EGG.get());
         output.accept(FossilsLegacyItems.ANKYLOSAURUS_SPAWN_EGG.get());
+        output.accept(FossilsLegacyItems.ANU_SPAWN_EGG.get());
         output.accept(FossilsLegacyItems.BRACHIOSAURUS_SPAWN_EGG.get());
         output.accept(FossilsLegacyItems.CARNOTAURUS_SPAWN_EGG.get());
         output.accept(FossilsLegacyItems.COMPSOGNATHUS_SPAWN_EGG.get());

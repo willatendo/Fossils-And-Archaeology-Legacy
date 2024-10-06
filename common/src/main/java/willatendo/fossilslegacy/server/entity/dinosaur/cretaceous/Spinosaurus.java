@@ -8,9 +8,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -51,6 +49,13 @@ public class Spinosaurus extends Dinosaur implements DinopediaInformation, CoatT
 
     public static AttributeSupplier spinosaurusAttributes() {
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 200.0F).add(Attributes.MOVEMENT_SPEED, 0.4D).add(Attributes.ATTACK_DAMAGE, 7.0D).build();
+    }
+
+    @Override
+    protected EntityDimensions getDefaultDimensions(Pose pose) {
+        CoatType coatType = this.getCoatType().value();
+        CoatType.BoundingBoxInfo boundingBoxInfo = coatType.boundingBoxInfo();
+        return this.dimensions = EntityDimensions.scalable(boundingBoxInfo.boundingBoxWidth() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()), boundingBoxInfo.boundingBoxHeight() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()));
     }
 
     @Override
@@ -114,6 +119,10 @@ public class Spinosaurus extends Dinosaur implements DinopediaInformation, CoatT
 
     @Override
     public void tick() {
+        if (this.dimensions.width() != this.getEntityDimensions(this.getGrowthStage()).width() || this.dimensions.height() != this.getEntityDimensions(this.getGrowthStage()).height()) {
+            this.refreshDimensions();
+        }
+
         super.tick();
 
         if (this.blockBreakRule.canUse()) {

@@ -61,6 +61,13 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
     }
 
     @Override
+    protected EntityDimensions getDefaultDimensions(Pose pose) {
+        CoatType coatType = this.getCoatType().value();
+        CoatType.BoundingBoxInfo boundingBoxInfo = coatType.boundingBoxInfo();
+        return this.dimensions = EntityDimensions.scalable(boundingBoxInfo.boundingBoxWidth() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()), boundingBoxInfo.boundingBoxHeight() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()));
+    }
+
+    @Override
     protected Component getTypeName() {
         return this.getOverridenName(super.getTypeName());
     }
@@ -126,6 +133,10 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
 
     @Override
     public void tick() {
+        if (this.dimensions.width() != this.getEntityDimensions(this.getGrowthStage()).width() || this.dimensions.height() != this.getEntityDimensions(this.getGrowthStage()).height()) {
+            this.refreshDimensions();
+        }
+
         super.tick();
 
         if (this.blockBreakRule.canUse()) {

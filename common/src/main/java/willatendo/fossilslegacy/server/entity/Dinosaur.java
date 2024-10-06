@@ -70,6 +70,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
         if (MobSpawnType.isSpawner(mobSpawnType) || mobSpawnType == MobSpawnType.COMMAND || mobSpawnType == MobSpawnType.MOB_SUMMONED || mobSpawnType == MobSpawnType.NATURAL || mobSpawnType == MobSpawnType.CHUNK_GENERATION) {
             this.setGrowthStage(this.getMaxGrowthStage());
         }
+        this.refreshDimensions();
         return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData);
     }
 

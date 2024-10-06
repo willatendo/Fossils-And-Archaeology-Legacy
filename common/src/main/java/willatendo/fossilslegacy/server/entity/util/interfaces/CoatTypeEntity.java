@@ -8,6 +8,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.entity.EntityDimensions;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 
 import java.util.Optional;
@@ -15,6 +16,12 @@ import java.util.Optional;
 public interface CoatTypeEntity {
     MapCodec<Holder<CoatType>> VARIANT_MAP_CODEC = CoatType.CODEC.fieldOf("CoatType");
     Codec<Holder<CoatType>> VARIANT_CODEC = VARIANT_MAP_CODEC.codec();
+
+    RegistryAccess registryAccess();
+
+    void setCoatType(Holder<CoatType> holder);
+
+    Holder<CoatType> getCoatType();
 
     default void addCoatType(CompoundTag compoundTag) {
         VARIANT_CODEC.encodeStart(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), this.getCoatType()).ifSuccess(tag -> compoundTag.merge((CompoundTag) tag));
@@ -52,9 +59,9 @@ public interface CoatTypeEntity {
         return defaultSoundEvent;
     }
 
-    RegistryAccess registryAccess();
-
-    void setCoatType(Holder<CoatType> holder);
-
-    Holder<CoatType> getCoatType();
+    default EntityDimensions getEntityDimensions(int growthStage) {
+        CoatType coatType = this.getCoatType().value();
+        CoatType.BoundingBoxInfo boundingBoxInfo = coatType.boundingBoxInfo();
+        return EntityDimensions.scalable(boundingBoxInfo.boundingBoxWidth() + (boundingBoxInfo.boundingBoxGrowth() * growthStage), boundingBoxInfo.boundingBoxHeight() + (boundingBoxInfo.boundingBoxGrowth() * growthStage));
+    }
 }
