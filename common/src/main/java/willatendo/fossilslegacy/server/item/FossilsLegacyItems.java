@@ -268,12 +268,12 @@ public class FossilsLegacyItems {
     public static final SimpleHolder<SimpleBoatItem> CALAMITES_BOAT = ITEMS.register("calamites_boat", () -> new SimpleBoatItem(false, FossilsLegacyBoatTypes.CALAMITES, new Item.Properties().stacksTo(1)));
     public static final SimpleHolder<SimpleBoatItem> CALAMITES_CHEST_BOAT = ITEMS.register("calamites_chest_boat", () -> new SimpleBoatItem(true, FossilsLegacyBoatTypes.CALAMITES, new Item.Properties().stacksTo(1)));
 
-    public static SimpleHolder<DebugItem> DEBUG_MAX_HUNGER;
-    public static SimpleHolder<DebugItem> DEBUG_MAX_HEALTH;
-    public static SimpleHolder<DebugItem> DEBUG_FULL_GROWN;
-    public static SimpleHolder<DebugItem> DEBUG_BABY;
-    public static SimpleHolder<DebugItem> DEBUG_TAME;
-    public static SimpleHolder<DebugItem> DEBUG_CHANGE_GENETICS;
+    public static final SimpleHolder<DebugItem> DEBUG_MAX_HUNGER = ITEMS.register("debug_max_hunger", () -> new DebugItem(DebugItem.debugMaxHunger(), new Item.Properties()));
+    public static final SimpleHolder<DebugItem> DEBUG_MAX_HEALTH = ITEMS.register("debug_max_health", () -> new DebugItem(DebugItem.debugMaxHealth(), new Item.Properties()));
+    public static final SimpleHolder<DebugItem> DEBUG_FULL_GROWN = ITEMS.register("debug_full_grown", () -> new DebugItem(DebugItem.debugFullGrown(), new Item.Properties()));
+    public static final SimpleHolder<DebugItem> DEBUG_BABY = ITEMS.register("debug_baby", () -> new DebugItem(DebugItem.debugBaby(), new Item.Properties()));
+    public static final SimpleHolder<DebugItem> DEBUG_TAME = ITEMS.register("debug_tame", () -> new DebugItem(DebugItem.debugTame(), new Item.Properties()));
+    public static final SimpleHolder<DebugItem> DEBUG_CHANGE_GENETICS = ITEMS.register("debug_change_genetics", () -> new DebugItem(DebugItem.debugChangeGenetics(), new Item.Properties()));
 
     public static final ResourceKey<Item> LEPIDODENDRON_PLANKS = FossilsLegacyItems.blockReference("lepidodendron_planks");
     public static final ResourceKey<Item> LEPIDODENDRON_SAPLING = FossilsLegacyItems.blockReference("lepidodendron_sapling");
@@ -326,14 +326,6 @@ public class FossilsLegacyItems {
     }
 
     static {
-        // Debug
-        DEBUG_MAX_HUNGER = ITEMS.register("debug_max_hunger", DebugItem::debugMaxHunger);
-        DEBUG_MAX_HEALTH = ITEMS.register("debug_max_health", DebugItem::debugMaxHealth);
-        DEBUG_FULL_GROWN = ITEMS.register("debug_full_grown", DebugItem::debugFullGrown);
-        DEBUG_BABY = ITEMS.register("debug_baby", DebugItem::debugBaby);
-        DEBUG_TAME = ITEMS.register("debug_tame", DebugItem::debugTame);
-        DEBUG_CHANGE_GENETICS = ITEMS.register("debug_change_genetics", DebugItem::debugChangeGenetics);
-
         SimpleUtils.registerAllItems(ITEMS, FossilsLegacyBlocks.BLOCKS, FossilsLegacyBlocks.GENE_MODIFICATION_TABLE, FossilsLegacyBlocks.AXOLOTLSPAWN, FossilsLegacyBlocks.RAW_CHICKEN_SOUP_CAULDRON, FossilsLegacyBlocks.COOKED_CHICKEN_SOUP_CAULDRON, FossilsLegacyBlocks.RAW_BERRY_MEDLEY_CAULDRON, FossilsLegacyBlocks.COOKED_BERRY_MEDLEY_CAULDRON, FossilsLegacyBlocks.LEPIDODENDRON_SIGN, FossilsLegacyBlocks.LEPIDODENDRON_WALL_SIGN, FossilsLegacyBlocks.LEPIDODENDRON_HANGING_SIGN, FossilsLegacyBlocks.LEPIDODENDRON_WALL_HANGING_SIGN, FossilsLegacyBlocks.LEPIDODENDRON_DOOR, FossilsLegacyBlocks.POTTED_LEPIDODENDRON_SAPLING, FossilsLegacyBlocks.SIGILLARIA_SIGN, FossilsLegacyBlocks.SIGILLARIA_WALL_SIGN, FossilsLegacyBlocks.SIGILLARIA_HANGING_SIGN, FossilsLegacyBlocks.SIGILLARIA_WALL_HANGING_SIGN, FossilsLegacyBlocks.SIGILLARIA_DOOR, FossilsLegacyBlocks.POTTED_SIGILLARIA_SAPLING, FossilsLegacyBlocks.CALAMITES_SIGN, FossilsLegacyBlocks.CALAMITES_WALL_SIGN, FossilsLegacyBlocks.CALAMITES_HANGING_SIGN, FossilsLegacyBlocks.CALAMITES_WALL_HANGING_SIGN, FossilsLegacyBlocks.CALAMITES_DOOR, FossilsLegacyBlocks.POTTED_CALAMITES_SAPLING);
         ITEMS.register("gene_modification_table", () -> new BlockItem(FossilsLegacyBlocks.GENE_MODIFICATION_TABLE.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
         AXOLOTLSPAWN = ITEMS.register("axolotlspawn", () -> new PlaceOnWaterBlockItem(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), new Item.Properties()));

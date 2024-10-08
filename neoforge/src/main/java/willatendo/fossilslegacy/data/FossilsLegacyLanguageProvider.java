@@ -592,12 +592,12 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.CALAMITES_BOAT.get());
         this.add(FossilsLegacyItems.CALAMITES_CHEST_BOAT.get(), "Calamites Boat with Chest");
 
-        this.add(FossilsLegacyItems.DEBUG_MAX_HUNGER.get(), "Debug Item");
-        this.add(FossilsLegacyItems.DEBUG_MAX_HEALTH.get(), "Debug Item");
-        this.add(FossilsLegacyItems.DEBUG_FULL_GROWN.get(), "Debug Item");
-        this.add(FossilsLegacyItems.DEBUG_BABY.get(), "Debug Item");
-        this.add(FossilsLegacyItems.DEBUG_TAME.get(), "Debug Item");
-        this.add(FossilsLegacyItems.DEBUG_CHANGE_GENETICS.get(), "Debug Item");
+        this.add(FossilsLegacyItems.DEBUG_MAX_HUNGER.get(), "Debug Max Hunder");
+        this.add(FossilsLegacyItems.DEBUG_MAX_HEALTH.get(), "Debug Max Health");
+        this.add(FossilsLegacyItems.DEBUG_FULL_GROWN.get(), "Debug Full Grown");
+        this.add(FossilsLegacyItems.DEBUG_BABY.get(), "Debug Baby");
+        this.add(FossilsLegacyItems.DEBUG_TAME.get(), "Debug Tame");
+        this.add(FossilsLegacyItems.DEBUG_CHANGE_GENETICS.get(), "Debug Change Genetics");
 
         this.add("debugItem.fossilslegacy.type", "Type: %s");
         this.add("debugItem.fossilslegacy.set_max_hunger", "Set Max Hunger");

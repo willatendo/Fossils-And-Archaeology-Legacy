@@ -40,7 +40,7 @@ public class DrumBlock extends Block {
             for (LivingEntity livingEntity : allEntities) {
                 if (livingEntity instanceof CommandableEntity commandableEntity) {
                     if (commandableEntity.willListenToDrum(player, interactionHand)) {
-                        commandableEntity.setCommand(Holder.direct(FossilsLegacyBuiltInRegistries.COMMAND_TYPES.get(FossilsLegacyUtils.resource(blockState.getValue(COMMAND_TYPE_PROPERTY)))));
+                        commandableEntity.setCommand(CommandType.get(blockState.getValue(COMMAND_TYPE_PROPERTY)));
                     }
                 }
             }
@@ -49,7 +49,7 @@ public class DrumBlock extends Block {
                 player.playSound(FossilsLegacySoundEvents.DRUM_TRIPLE_HIT.get());
             }
         } else {
-            level.setBlock(blockPos, FossilsLegacyBlocks.DRUM.get().defaultBlockState().setValue(DrumBlock.COMMAND_TYPE_PROPERTY, CommandType.getNext(blockState.getValue(DrumBlock.COMMAND_TYPE_PROPERTY)).getName()), 3);
+            level.setBlock(blockPos, FossilsLegacyBlocks.DRUM.get().defaultBlockState().setValue(DrumBlock.COMMAND_TYPE_PROPERTY, CommandType.getNext(blockState.getValue(DrumBlock.COMMAND_TYPE_PROPERTY)).value().getName()), 3);
             if (level.isClientSide()) {
                 player.playSound(FossilsLegacySoundEvents.DRUM_HIT.get());
             }

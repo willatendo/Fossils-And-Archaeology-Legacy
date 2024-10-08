@@ -78,6 +78,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
             this.setGrowthStage(this.getMaxGrowthStage());
         }
         this.refreshDimensions();
+        this.setCommand(FossilsLegacyCommandTypes.FREE_MOVE);
         return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData);
     }
 
@@ -231,7 +232,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
             if (this.commandItems().canCommand(player, interactionHand)) {
                 Holder<CommandType> nextCommandType = CommandType.getNext(this.getCommand());
                 this.setCommand(nextCommandType);
-                player.displayClientMessage(FossilsLegacyUtils.translation("command", "command.use", nextCommandType.value().getDescription().getString()), true);
+                player.displayClientMessage(FossilsLegacyUtils.translation("command_type", "command.use", nextCommandType.value().getDescription().getString()), true);
                 return InteractionResult.SUCCESS;
             }
         }

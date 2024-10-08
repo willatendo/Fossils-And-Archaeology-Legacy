@@ -13,6 +13,8 @@ public class FossilsLegacyCommandTypes {
     public static final SimpleHolder<CommandType> FREE_MOVE = FossilsLegacyCommandTypes.register("free_move", 2);
 
     private static SimpleHolder<CommandType> register(String id, int code) {
-        return COMMAND_TYPES.register(id, () -> new CommandType(id, code));
+        var commandType = COMMAND_TYPES.register(id, () -> new CommandType(id, code));
+        CommandType.register(commandType, code, id);
+        return  commandType;
     }
 }

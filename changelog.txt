@@ -16,6 +16,7 @@
 - Updated Nautilus Model To No Longer Float
 - Updated JEI Plugin To New JEI System - Minimal Differences Client-Side
 - Javelin Now Does 2 More Damage
+- Debug Items No Longer All Called "Debug Item" With Type In Description, Now Called It In Name
 - (Fabric) Fixed Server Crash
 - Fixed Placing Stone Tables
 - Fixed Cannibalism

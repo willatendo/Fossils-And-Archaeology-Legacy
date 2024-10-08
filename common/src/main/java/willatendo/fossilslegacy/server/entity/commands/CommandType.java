@@ -16,8 +16,8 @@ import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import java.util.Map;
 
 public final class CommandType {
-    private static final Map<Integer, CommandType> COMMAND_TYPES_BY_CODE = Maps.newHashMap();
-    private static final Map<String, CommandType> COMMAND_TYPES_BY_STRING = Maps.newHashMap();
+    public static final Map<Integer, Holder<CommandType>> COMMAND_TYPES_BY_CODE = Maps.newHashMap();
+    public static final Map<String, Holder<CommandType>> COMMAND_TYPES_BY_STRING = Maps.newHashMap();
 
     public static final Codec<CommandType> DIRECT_CODEC = RecordCodecBuilder.create((instance) -> instance.group(Codec.STRING.fieldOf("name").forGetter(CommandType::getName), Codec.INT.fieldOf("code").forGetter(CommandType::getCode)).apply(instance, CommandType::new));
     public static final Codec<Holder<CommandType>> CODEC = RegistryFileCodec.create(FossilsLegacyRegistries.COMMAND_TYPES, DIRECT_CODEC);
@@ -31,9 +31,6 @@ public final class CommandType {
     public CommandType(String name, int code) {
         this.name = name;
         this.code = code;
-
-        COMMAND_TYPES_BY_CODE.put(code, this);
-        COMMAND_TYPES_BY_STRING.put(name, this);
     }
 
     public String getName() {
@@ -56,15 +53,20 @@ public final class CommandType {
         return Component.translatable(this.getOrCreateDescriptionId());
     }
 
-    public static CommandType getNext(String commandType) {
-        return COMMAND_TYPES_BY_CODE.getOrDefault(COMMAND_TYPES_BY_STRING.get(commandType).getCode() + 1, FossilsLegacyCommandTypes.FOLLOW.get());
+    public static Holder<CommandType> get(String commandType) {
+        return COMMAND_TYPES_BY_CODE.getOrDefault(COMMAND_TYPES_BY_STRING.get(commandType).value().getCode(), FossilsLegacyCommandTypes.FOLLOW);
     }
 
-    public static CommandType getNext(CommandType commandType) {
-        return COMMAND_TYPES_BY_CODE.getOrDefault(commandType.getCode() + 1, FossilsLegacyCommandTypes.FOLLOW.get());
+    public static Holder<CommandType> getNext(String commandType) {
+        return COMMAND_TYPES_BY_CODE.getOrDefault(COMMAND_TYPES_BY_STRING.get(commandType).value().getCode() + 1, FossilsLegacyCommandTypes.FOLLOW);
     }
 
     public static Holder<CommandType> getNext(Holder<CommandType> commandType) {
-        return Holder.direct(COMMAND_TYPES_BY_CODE.getOrDefault(commandType.value().getCode() + 1, FossilsLegacyCommandTypes.FOLLOW.get()));
+        return COMMAND_TYPES_BY_CODE.getOrDefault(commandType.value().getCode() + 1, FossilsLegacyCommandTypes.FOLLOW);
+    }
+
+    public static void register(Holder<CommandType> commandType, int code, String name) {
+        CommandType.COMMAND_TYPES_BY_CODE.put(code, commandType);
+        CommandType.COMMAND_TYPES_BY_STRING.put(name, commandType);
     }
 }
