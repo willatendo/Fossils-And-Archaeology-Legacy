@@ -7,6 +7,7 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
+import mezz.jei.api.recipe.category.AbstractRecipeCategory;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -15,52 +16,25 @@ import net.minecraft.network.chat.Component;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.jei.FossilsLegacyJEIRecipeTypes;
 import willatendo.fossilslegacy.server.jei.FossilsLegacyJEITextures;
+import willatendo.fossilslegacy.server.jei.recipe.BiomatterRecipe;
 import willatendo.fossilslegacy.server.jei.recipe.FeederRecipe;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class FeederCategory implements IRecipeCategory<FeederRecipe> {
-    private final IDrawable background;
-    private final IDrawable slot;
-    private final IDrawable icon;
-
+public final class FeederCategory extends AbstractRecipeCategory<FeederRecipe> {
     public FeederCategory(IGuiHelper guiHelper, FossilsLegacyJEITextures fossilsLegacyJEITextures) {
-        this.background = guiHelper.createBlankDrawable(120, 18);
-        this.slot = guiHelper.getSlotDrawable();
-        this.icon = fossilsLegacyJEITextures.getIconFromItemLike(FossilsLegacyBlocks.FEEDER.get());
-    }
-
-    @Override
-    public RecipeType<FeederRecipe> getRecipeType() {
-        return FossilsLegacyJEIRecipeTypes.FEEDER;
-    }
-
-    @Override
-    public Component getTitle() {
-        return FossilsLegacyUtils.translation("jei", "feeder");
-    }
-
-    @Override
-    public IDrawable getBackground() {
-        return this.background;
-    }
-
-    @Override
-    public IDrawable getIcon() {
-        return this.icon;
+        super(FossilsLegacyJEIRecipeTypes.FEEDER, FossilsLegacyUtils.translation("jei", "feeder"), fossilsLegacyJEITextures.getIconFromItemLike(FossilsLegacyBlocks.FEEDER.get()), 120, 18);
     }
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder iRecipeLayoutBuilder, FeederRecipe feederRecipe, IFocusGroup iFocusGroup) {
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 1, 1).addItemStack(feederRecipe.getItemStack());
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 1, 1).setStandardSlotBackground().addItemStack(feederRecipe.itemStack());
     }
 
     @Override
     public void draw(FeederRecipe feederRecipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        this.slot.draw(guiGraphics);
-
         Minecraft minecraft = Minecraft.getInstance();
         Font font = minecraft.font;
-        int foodColour = feederRecipe.isMeat() ? 0xFF0000 : 0x3B703;
-        guiGraphics.drawString(font, FossilsLegacyUtils.translation("jei", "feeder.food_level", feederRecipe.getFoodLevel()), 24, 5, foodColour);
+        int foodColour = feederRecipe.meat() ? 0xFF0000 : 0x3B703;
+        guiGraphics.drawString(font, FossilsLegacyUtils.translation("jei", "feeder.food_level", feederRecipe.foodLevel()), 24, 5, foodColour);
     }
 }

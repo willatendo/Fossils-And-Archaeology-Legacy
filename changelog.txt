@@ -14,6 +14,8 @@
 - Dodo Now Grows In Stages
 - Jurassic Fern Now Tints To Biome Leaves Color
 - Updated Nautilus Model To No Longer Float
+- Updated JEI Plugin To New JEI System - Minimal Differences Client-Side
+- Javelin Now Does 2 More Damage
 - (Fabric) Fixed Server Crash
 - Fixed Placing Stone Tables
 - Fixed Cannibalism

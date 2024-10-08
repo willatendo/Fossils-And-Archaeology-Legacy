@@ -205,11 +205,11 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("coatType.fossilslegacy.legacy_white_velociraptor", "White Velociraptor (2011)");
 
         // Commands
-        this.add("command.fossilslegacy.follow", "Follow");
-        this.add("command.fossilslegacy.stay", "Stay");
-        this.add("command.fossilslegacy.free_move", "Free Move");
-        this.add("command.fossilslegacy.command.use", "Set to %s");
-        this.add("command.fossilslegacy.magic_conch.use", "Set all plesiosaurs in a 30 block radius to %s.");
+        this.add("command_type.fossilslegacy.follow", "Follow");
+        this.add("command_type.fossilslegacy.stay", "Stay");
+        this.add("command_type.fossilslegacy.free_move", "Free Move");
+        this.add("command_type.fossilslegacy.command.use", "Set to %s");
+        this.add("command_type.fossilslegacy.magic_conch.use", "Set all plesiosaurs in a 30 block radius to %s.");
 
         // Containers
         this.add("container.fossilslegacy.analyzer", "Analyzer");
@@ -219,6 +219,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("container.fossilslegacy.gene_modification_table.apply_gene.tutorial", "Use '%s' to apply gene.");
         this.add("container.fossilslegacy.gene_modification_table.coat_type.location", "%s/%s");
         this.add("container.fossilslegacy.gene_modification_table.coat_type.none", "N/A");
+        this.add("container.fossilslegacy.gene_modification_table.insert_dna", "Insert DNA");
         this.add("container.fossilslegacy.gene_modification_table.navigate_left.tutorial", "Use '%s' to navigate left.");
         this.add("container.fossilslegacy.gene_modification_table.navigate_right.tutorial", "Use '%s' to navigate right.");
         this.add("container.fossilslegacy.feeder", "Feeder");
@@ -343,6 +344,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyEntityTypes.CARNOTAURUS.get());
         this.add(FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get());
         this.add(FossilsLegacyEntityTypes.THERIZINOSAURUS.get());
+
+        // JEI
+        this.add("gui.jei.category.registry.coat_types", "Coat Types");
 
         // Items
         this.add(FossilsLegacyItems.FOSSIL.get());
@@ -573,7 +577,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.dinosaur_spawn_egg.desc", "Crouch to spawn baby");
 
         this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.applies_to", "Netherite Equipment");
-        this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.ingredients", "Scarab Gem");
+        this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.ingredient", "Scarab Gem");
         this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.base_slot_description", "Add netherite weapon or tool");
         this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.additions_slot_description", "Add scarab gem");
 
@@ -612,6 +616,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("jei.fossilslegacy.biomatter.biomatterCount", "Biomatter for %s items");
         this.add("jei.fossilslegacy.feeder", "Feeder");
         this.add("jei.fossilslegacy.feeder.food_level", "Provides %s food");
+        this.add("jei.fossilslegacy.gene_modification", "Gene Modification");
+        this.add("jei.fossilslegacy.gene_modification.coat_type", "Cosmetic");
 
         // Keys
         this.add("key.fossilslegacy.sink", "Sink");
@@ -775,6 +781,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyCoatTypeTags.DODO, "Dodo");
         this.add(FossilsLegacyCoatTypeTags.FUTABASAURUS, "Futabasaurus");
         this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_FUTABASAURUS, "Non-Legacy Futabasaurus");
+        this.add(FossilsLegacyCoatTypeTags.GALLIMIMUS, "Gallimimus");
         this.add(FossilsLegacyCoatTypeTags.MOA, "Moa");
         this.add(FossilsLegacyCoatTypeTags.MAMMOTH, "Mammoth");
         this.add(FossilsLegacyCoatTypeTags.MOSASAURUS, "Mosasaurus");
@@ -809,6 +816,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItemTags.DNA, "DNA");
         this.add(FossilsLegacyItemTags.DRUM_INSTRUMENT, "Drum Instrument");
         this.add(FossilsLegacyItemTags.FROGLIGHTS, "Froglights");
+        this.add(FossilsLegacyItemTags.GALLIMIMUS_COMMANDABLES, "Gallimimus Commandables");
         this.add(FossilsLegacyItemTags.LEPIDODENDRON_LOGS, "Lepidodendron Logs");
         this.add(FossilsLegacyItemTags.MAMMOTH_COMMANDABLES, "Mammoth Commandables");
         this.add(FossilsLegacyItemTags.PACHYCEPHALOSAURUS_COMMANDABLES, "Pachycephalosaurus Commandables");

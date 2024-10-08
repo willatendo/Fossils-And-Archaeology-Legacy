@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.recipe;
 
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingBookCategory;
@@ -7,7 +8,8 @@ import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
-import willatendo.fossilslegacy.server.entity.util.CommandType;
+import willatendo.fossilslegacy.server.entity.commands.CommandType;
+import willatendo.fossilslegacy.server.entity.commands.FossilsLegacyCommandTypes;
 import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.item.MagicConchItem;
@@ -35,7 +37,7 @@ public class MagicConchRecipe extends CustomRecipe {
     @Override
     public ItemStack assemble(CraftingInput craftingInput, HolderLookup.Provider provider) {
         ItemStack itemStack = FossilsLegacyItems.MAGIC_CONCH.get().getDefaultInstance();
-        CommandType nextOrder = CommandType.FOLLOW;
+        Holder<CommandType> nextOrder = FossilsLegacyCommandTypes.FOLLOW;
 
         for (int slot = 0; slot < craftingInput.size(); ++slot) {
             ItemStack itemStackInSlot = craftingInput.getItem(slot);

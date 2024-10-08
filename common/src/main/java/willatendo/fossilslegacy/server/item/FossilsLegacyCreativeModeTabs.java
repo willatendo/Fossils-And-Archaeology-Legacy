@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.server.item;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
@@ -10,11 +11,12 @@ import net.minecraft.resources.RegistryOps;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
+import willatendo.fossilslegacy.server.core.registry.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyStoneTabletVariantTags;
 import willatendo.fossilslegacy.server.entity.StoneTablet;
-import willatendo.fossilslegacy.server.entity.util.CommandType;
+import willatendo.fossilslegacy.server.entity.commands.CommandType;
 import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
@@ -336,9 +338,9 @@ public class FossilsLegacyCreativeModeTabs {
     }).build());
 
     private static void generateMagicConches(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
-        for (CommandType commandType : CommandType.COMMAND_TYPES) {
+        for (CommandType commandType : FossilsLegacyBuiltInRegistries.COMMAND_TYPES) {
             ItemStack itemStack = new ItemStack(FossilsLegacyItems.MAGIC_CONCH.get());
-            MagicConchItem.setOrder(itemStack, commandType);
+            MagicConchItem.setOrder(itemStack, Holder.direct(commandType));
             output.accept(itemStack);
         }
     }

@@ -7,7 +7,8 @@ import willatendo.fossilslegacy.server.config.FossilsLegacyConfig;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.*;
-import willatendo.fossilslegacy.server.entity.util.CommandType;
+import willatendo.fossilslegacy.server.entity.commands.CommandType;
+import willatendo.fossilslegacy.server.entity.commands.FossilsLegacyCommandTypes;
 import willatendo.fossilslegacy.server.feature.foliageplacer.FossilsLegacyFoliagePlacerTypes;
 import willatendo.fossilslegacy.server.feature.trunkplacer.FossilsLegacyTrunkPlacerTypes;
 import willatendo.fossilslegacy.server.item.FossilsLegacyArmorMaterials;
@@ -29,8 +30,8 @@ public final class FossilsLegacyMod {
         FossilsLegacyConfig.init();
 
         FossilsLegacyBuiltInRegistries.init();
-        CommandType.register();
 
+        simpleRegistryRegister.register(FossilsLegacyCommandTypes.COMMAND_TYPES);
         simpleRegistryRegister.register(FossilsLegacyRecipeTypes.RECIPE_TYPES);
         simpleRegistryRegister.register(FossilsLegacyRecipeSerialisers.RECIPE_SERIALIZERS);
         simpleRegistryRegister.register(FossilsLegacySoundEvents.SOUND_EVENTS);

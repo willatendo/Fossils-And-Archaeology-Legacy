@@ -9,6 +9,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class DNAItem extends Item {
+    public static final List<DNAItem> DNA = Lists.newArrayList();
     private final TagKey<CoatType> applicableCoatTypes;
     private final Supplier<EntityType<? extends Mob>> entityType;
 
@@ -23,12 +25,16 @@ public class DNAItem extends Item {
         super(properties);
         this.applicableCoatTypes = applicableCoatTypes;
         this.entityType = entityType;
+
+        DNA.add(this);
     }
 
     public DNAItem(Properties properties, Supplier<EntityType<? extends Mob>> entityType) {
         super(properties);
         this.entityType = entityType;
         this.applicableCoatTypes = null;
+
+        DNA.add(this);
     }
 
     public TagKey<CoatType> getApplicableCoatTypes() {

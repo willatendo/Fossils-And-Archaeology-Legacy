@@ -17,6 +17,7 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -109,10 +110,10 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
                     RenderSystem.setShaderColor(red, green, blue, 1.0F);
                     guiGraphics.blitSprite(GENE_SPRITE, this.leftPos + 42, this.topPos + 61, 22, 8);
                     RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-                    this.renderScrollingString(guiGraphics, selectedCoatType.displayInfo().name(), this.leftPos + 8, this.topPos + 74, 0xC9C9C9);
-                    guiGraphics.drawCenteredString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.coat_type.location", this.selection + 1, this.size), this.leftPos + 53, this.topPos + 47, 0xC9C9C9);
+                    this.renderScrollingString(guiGraphics, selectedCoatType.displayInfo().name(), this.leftPos + 8, this.topPos + 74, 0x404040);
+                    this.drawCenteredStringNoShadow(guiGraphics, this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.coat_type.location", this.selection + 1, this.size), this.leftPos + 53, this.topPos + 47, 0x404040);
                 } else {
-                    guiGraphics.drawCenteredString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.coat_type.none", this.selection + 1, this.size), this.leftPos + 53, this.topPos + 47, 0xC9C9C9);
+                    this.drawCenteredStringNoShadow(guiGraphics, this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.coat_type.none", this.selection + 1, this.size), this.leftPos + 53, this.topPos + 47, 0x404040);
                 }
 
                 EntityType<? extends Mob> entityType = dnaItem.getEntityType().get();
@@ -128,22 +129,24 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
                     CoatType coatType = this.coatTypes[this.selection];
                     coatTypeEntity.setCoatType(Holder.direct(coatType));
                     CoatType.DisplayInfo displayInfo = coatType.displayInfo();
-                    GeneModificationTableScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos + 86, this.topPos + 15, this.leftPos + 131, this.topPos + 53, 16, displayInfo.displayScale(), displayInfo.displayYOffset(), this.xMouse, this.yMouse, mob);
+                    this.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos + 86, this.topPos + 15, this.leftPos + 131, this.topPos + 53, 16, displayInfo.displayScale(), displayInfo.displayYOffset(), this.xMouse, this.yMouse, mob);
                 } else {
-                    GeneModificationTableScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos + 86, this.topPos + 15, this.leftPos + 131, this.topPos + 53, 16, 1.0F, 0.25F, this.xMouse, this.yMouse, mob);
+                    this.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos + 86, this.topPos + 15, this.leftPos + 131, this.topPos + 53, 16, 1.0F, 0.25F, this.xMouse, this.yMouse, mob);
                 }
             }
+
+            guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.navigate_left.tutorial", FossilsLegacyKeys.NAVIGATE_LEFT.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 2, 0xFFFFFF, false);
+            guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.navigate_right.tutorial", FossilsLegacyKeys.NAVIGATE_RIGHT.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 10, 0xFFFFFF, false);
+            guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.apply_gene.tutorial", FossilsLegacyKeys.APPLY_GENE.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 18, 0xFFFFFF, false);
         } else {
             this.coatTypes = new CoatType[0];
             this.size = 0;
             this.selection = 0;
             this.hasSet = false;
 
-            guiGraphics.drawCenteredString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.coat_type.none", this.selection + 1, this.size), this.leftPos + 53, this.topPos + 47, 0xC9C9C9);
+            this.drawCenteredStringNoShadow(guiGraphics, this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.coat_type.none"), this.leftPos + 53, this.topPos + 47, 0x404040);
+            this.renderScrollingString(guiGraphics, FossilsLegacyUtils.translation("container", "gene_modification_table.insert_dna"), this.leftPos + 8, this.topPos + 74, 0x404040);
         }
-        guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.navigate_left.tutorial", FossilsLegacyKeys.NAVIGATE_LEFT.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 2, 0xFFFFFF, false);
-        guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.navigate_right.tutorial", FossilsLegacyKeys.NAVIGATE_RIGHT.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 10, 0xFFFFFF, false);
-        guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.apply_gene.tutorial", FossilsLegacyKeys.APPLY_GENE.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 18, 0xFFFFFF, false);
     }
 
     @Override
@@ -182,21 +185,15 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
         return super.keyPressed(keyCode, scanCode, modifiers);
     }
 
-    @Override
-    protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        guiGraphics.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, 0xC9C9C9, false);
-        guiGraphics.drawString(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, 0x404040, false);
+    private void renderScrollingString(GuiGraphics guiGraphics, Component component, int x, int y, int color) {
+        this.renderScrollingString(guiGraphics, this.font, component, x, y, x + 158, y + 7, color);
     }
 
-    protected void renderScrollingString(GuiGraphics guiGraphics, Component component, int x, int y, int color) {
-        GeneModificationTableScreen.renderScrollingString(guiGraphics, this.font, component, x, y, x + 158, y + 7, color);
+    private void renderScrollingString(GuiGraphics pGuiGraphics, Font font, Component component, int xMin, int yMin, int xMax, int yMax, int color) {
+        this.renderScrollingString(pGuiGraphics, font, component, (xMin + xMax) / 2, xMin, yMin, xMax, yMax, color);
     }
 
-    protected static void renderScrollingString(GuiGraphics pGuiGraphics, Font font, Component component, int xMin, int yMin, int xMax, int yMax, int color) {
-        GeneModificationTableScreen.renderScrollingString(pGuiGraphics, font, component, (xMin + xMax) / 2, xMin, yMin, xMax, yMax, color);
-    }
-
-    protected static void renderScrollingString(GuiGraphics guiGraphics, Font font, Component component, int centerX, int xMin, int yMin, int xMax, int pMaxY, int color) {
+    private void renderScrollingString(GuiGraphics guiGraphics, Font font, Component component, int centerX, int xMin, int yMin, int xMax, int pMaxY, int color) {
         int width = font.width(component);
         int y = (yMin + pMaxY - 9) / 2 + 1;
         int xDiffetrence = xMax - xMin;
@@ -208,15 +205,15 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
             double change = Math.sin(1.5707963267948966 * Math.cos(6.283185307179586 * time / scaled)) / 2.0 + 0.5;
             double xPos = Mth.lerp(change, 0.0, (double) widthMinusY);
             guiGraphics.enableScissor(xMin, yMin, xMax, pMaxY);
-            guiGraphics.drawString(font, component, xMin - (int) xPos, y, color);
+            guiGraphics.drawString(font, component, xMin - (int) xPos, y, color, false);
             guiGraphics.disableScissor();
         } else {
             widthMinusY = Mth.clamp(centerX, xMin + width / 2, xMax - width / 2);
-            guiGraphics.drawCenteredString(font, component, widthMinusY, y, color);
+            this.drawCenteredStringNoShadow(guiGraphics, font, component, widthMinusY, y, color);
         }
     }
 
-    public static void renderEntityInInventoryFollowsMouse(GuiGraphics guiGraphics, int left, int top, int right, int bottom, int scale, float displayScale, float yOffset, float mouseX, float mouseY, LivingEntity livingEntity) {
+    private void renderEntityInInventoryFollowsMouse(GuiGraphics guiGraphics, int left, int top, int right, int bottom, int scale, float displayScale, float yOffset, float mouseX, float mouseY, LivingEntity livingEntity) {
         float x = (left + right) / 2.0F;
         float y = (top + bottom) / 2.0F;
         guiGraphics.enableScissor(left, top, right, bottom);
@@ -248,7 +245,7 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
     }
 
 
-    public static void renderEntityInInventory(GuiGraphics guiGraphics, float x, float y, float scale, float displayScale, Vector3f translate, Quaternionf pose, Quaternionf cameraOrientation, LivingEntity livingEntity) {
+    private void renderEntityInInventory(GuiGraphics guiGraphics, float x, float y, float scale, float displayScale, Vector3f translate, Quaternionf pose, Quaternionf cameraOrientation, LivingEntity livingEntity) {
         guiGraphics.pose().pushPose();
         guiGraphics.pose().translate(x, y, 50.0);
         guiGraphics.pose().scale(displayScale * scale, displayScale * scale, displayScale * -scale);
@@ -268,5 +265,10 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
         entityRenderDispatcher.setRenderShadow(true);
         guiGraphics.pose().popPose();
         Lighting.setupFor3DItems();
+    }
+
+    private void drawCenteredStringNoShadow(GuiGraphics guiGraphics, Font font, Component component, int x, int y, int color) {
+        FormattedCharSequence formattedCharSequence = component.getVisualOrderText();
+        guiGraphics.drawString(font, formattedCharSequence, x - font.width(formattedCharSequence) / 2, y, color, false);
     }
 }

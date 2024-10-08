@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-04T17:49:51.71163	Tags for minecraft:item mod id fossilslegacy
+// 1.21.1	2024-10-07T16:46:30.9291603	Tags for minecraft:item mod id fossilslegacy
 fb61c19eacf262b21d275a4b1dd7da1fd3460ef6 data/c/tags/item/bones.json
 d31244a2a7f7cb4224e5362dca80427850e5daa5 data/c/tags/item/buckets.json
 8773b7b9cd8f313f03d59d28a609bd9f1434b870 data/c/tags/item/eggs.json
@@ -38,17 +38,17 @@ e71ff39a58e6626fffa365ff9e1ee48712eecece data/fossilslegacy/tags/item/spinosauru
 1ad920aa65e2706dabb6265f3b12546ab33e8936 data/fossilslegacy/tags/item/therizinosaurus_commandables.json
 1ad920aa65e2706dabb6265f3b12546ab33e8936 data/fossilslegacy/tags/item/triceratops_commandables.json
 e71ff39a58e6626fffa365ff9e1ee48712eecece data/fossilslegacy/tags/item/tyrannosaurus_commandables.json
-1b7f437b717d46be0517e48d2cd176e90d09c3ba data/minecraft/tags/item/axes.json
+b0df71f7b6d498abdffd45df38af1ec699c76646 data/minecraft/tags/item/axes.json
 7cc5c4d212860ed4bf9a2173ff1acb26c5e6ca49 data/minecraft/tags/item/boats.json
 78b35916f2f78650ea9a23cd8c5c283e8b50f572 data/minecraft/tags/item/breaks_decorated_pots.json
 d9f371647b47a6ec6d81979bc176da9f00511125 data/minecraft/tags/item/chest_armor.json
 fc0f62709299e4c131dfcbfbaa30d360aa0d2120 data/minecraft/tags/item/cluster_max_harvestables.json
 fac6609410e6d6debd00c58047cc7c2aebd1ee60 data/minecraft/tags/item/enchantable/armor.json
-4bedfb7038e650867b2f3ad4847e5e60d4a72475 data/minecraft/tags/item/enchantable/chest_armor.json
+d9f371647b47a6ec6d81979bc176da9f00511125 data/minecraft/tags/item/enchantable/chest_armor.json
 1e5da3be2a2abbfa28e6069b1e99befe88faf416 data/minecraft/tags/item/enchantable/durability.json
 fac6609410e6d6debd00c58047cc7c2aebd1ee60 data/minecraft/tags/item/enchantable/equippable.json
 38007741ad1f5b4031033528e18aa094bb838596 data/minecraft/tags/item/enchantable/fire_aspect.json
-67cf83bacc162fdf2a418cef8c1a6bc8dd6144a8 data/minecraft/tags/item/enchantable/foot_armor.json
+1e05a40ac29437932dd63d74bce694dca1dec1c7 data/minecraft/tags/item/enchantable/foot_armor.json
 4bedfb7038e650867b2f3ad4847e5e60d4a72475 data/minecraft/tags/item/enchantable/head_armor.json
 67cf83bacc162fdf2a418cef8c1a6bc8dd6144a8 data/minecraft/tags/item/enchantable/leg_armor.json
 21fd716704c92101bd22c663fd11842d681b5cb5 data/minecraft/tags/item/enchantable/mining.json
@@ -63,7 +63,7 @@ e22b5154b419cfbe807f46ab59066fd810ea3724 data/minecraft/tags/item/hanging_signs.
 4bedfb7038e650867b2f3ad4847e5e60d4a72475 data/minecraft/tags/item/head_armor.json
 1b7f437b717d46be0517e48d2cd176e90d09c3ba data/minecraft/tags/item/hoes.json
 b16ce44bdd9bc3166b771d29316051f6ef0cb99b data/minecraft/tags/item/leaves.json
-d9f371647b47a6ec6d81979bc176da9f00511125 data/minecraft/tags/item/leg_armor.json
+67cf83bacc162fdf2a418cef8c1a6bc8dd6144a8 data/minecraft/tags/item/leg_armor.json
 55e9144064802c95b8e6cee283f42e6f39559189 data/minecraft/tags/item/logs_that_burn.json
 70284822c9150b34ed81352a321be3a8d0df714b data/minecraft/tags/item/meat.json
 fc0f62709299e4c131dfcbfbaa30d360aa0d2120 data/minecraft/tags/item/pickaxes.json

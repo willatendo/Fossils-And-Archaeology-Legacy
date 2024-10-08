@@ -34,7 +34,7 @@ public class FossilsLegacyCoatTypes {
     public static final ResourceKey<CoatType> SANDY_VELOCIRAPTOR = FossilsLegacyCoatTypes.create("sandy_velociraptor");
     public static final ResourceKey<CoatType> WHITE_VELOCIRAPTOR = FossilsLegacyCoatTypes.create("white_velociraptor");
     public static final ResourceKey<CoatType> LEGACY_BRACHIOSAURUS = FossilsLegacyCoatTypes.create("legacy_brachiosaurus");
-    public static final ResourceKey<CoatType> LEGACY_FUTABASAURUS = FossilsLegacyCoatTypes.create("legacy_mammoth");
+    public static final ResourceKey<CoatType> LEGACY_FUTABASAURUS = FossilsLegacyCoatTypes.create("legacy_futabasaurus");
     public static final ResourceKey<CoatType> LEGACY_GREEN_TRICERATOPS = FossilsLegacyCoatTypes.create("legacy_green_triceratops");
     public static final ResourceKey<CoatType> LEGACY_BROWN_TRICERATOPS = FossilsLegacyCoatTypes.create("legacy_brown_triceratops");
     public static final ResourceKey<CoatType> LEGACY_GREEN_VELOCIRAPTOR = FossilsLegacyCoatTypes.create("legacy_green_velociraptor");

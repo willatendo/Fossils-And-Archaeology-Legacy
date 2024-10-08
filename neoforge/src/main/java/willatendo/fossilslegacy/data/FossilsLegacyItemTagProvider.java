@@ -164,15 +164,15 @@ public class FossilsLegacyItemTagProvider extends ItemTagsProvider {
         this.tag(FossilsLegacyItemTagProvider.MINING_TOOLS).add(pickaxe);
         this.tag(ItemTags.CLUSTER_MAX_HARVESTABLES).add(pickaxe);
         this.tag(ItemTags.SHOVELS).add(shovel);
-        this.tag(ItemTags.AXES).add(hoe);
+        this.tag(ItemTags.AXES).add(axe);
         this.tag(ItemTags.HOES).add(hoe);
         this.tag(ItemTags.HEAD_ARMOR).add(helmet);
         this.tag(ItemTags.HEAD_ARMOR_ENCHANTABLE).add(helmet);
         this.tag(ItemTags.CHEST_ARMOR).add(chestplate);
-        this.tag(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(helmet);
-        this.tag(ItemTags.LEG_ARMOR).add(chestplate);
+        this.tag(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(chestplate);
+        this.tag(ItemTags.LEG_ARMOR).add(leggings);
         this.tag(ItemTags.LEG_ARMOR_ENCHANTABLE).add(leggings);
         this.tag(ItemTags.FOOT_ARMOR).add(boots);
-        this.tag(ItemTags.FOOT_ARMOR_ENCHANTABLE).add(leggings);
+        this.tag(ItemTags.FOOT_ARMOR_ENCHANTABLE).add(boots);
     }
 }

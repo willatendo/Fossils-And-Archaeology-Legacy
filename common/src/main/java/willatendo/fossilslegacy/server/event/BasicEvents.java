@@ -155,6 +155,7 @@ public class BasicEvents {
     }
 
     public static void newRegistryEvent(NewRegistryRegister newRegistryRegister) {
+        newRegistryRegister.register(FossilsLegacyBuiltInRegistries.COMMAND_TYPES, FossilsLegacyRegistries.COMMAND_TYPES);
         newRegistryRegister.register(FossilsLegacyBuiltInRegistries.EGG_VARIANTS, FossilsLegacyRegistries.EGG_VARIANTS);
         newRegistryRegister.register(FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES, FossilsLegacyRegistries.PREGNANCY_TYPES);
     }

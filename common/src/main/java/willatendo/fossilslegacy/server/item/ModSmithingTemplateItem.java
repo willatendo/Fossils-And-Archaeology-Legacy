@@ -14,7 +14,7 @@ public class ModSmithingTemplateItem extends SmithingTemplateItem {
     private static final ChatFormatting DESCRIPTION_FORMAT = ChatFormatting.BLUE;
     private static final Component GEM_UPGRADE = Component.translatable(Util.makeDescriptionId("upgrade", FossilsLegacyUtils.resource("scarab_gem_upgrade"))).withStyle(TITLE_FORMAT);
     private static final Component GEM_UPGRADE_APPLIES_TO = Component.translatable(Util.makeDescriptionId("item", FossilsLegacyUtils.resource("smithing_template.scarab_gem_upgrade.applies_to"))).withStyle(DESCRIPTION_FORMAT);
-    private static final Component GEM_UPGRADE_INGREDIENTS = Component.translatable(Util.makeDescriptionId("item", FossilsLegacyUtils.resource("smithing_template.scarab_gem_upgrade.ingredients"))).withStyle(DESCRIPTION_FORMAT);
+    private static final Component GEM_UPGRADE_INGREDIENTS = Component.translatable(Util.makeDescriptionId("item", FossilsLegacyUtils.resource("smithing_template.scarab_gem_upgrade.ingredient"))).withStyle(DESCRIPTION_FORMAT);
     private static final Component GEM_UPGRADE_BASE_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", FossilsLegacyUtils.resource("smithing_template.scarab_gem_upgrade.base_slot_description")));
     private static final Component GEM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", FossilsLegacyUtils.resource("smithing_template.scarab_gem_upgrade.additions_slot_description")));
     private static final ResourceLocation EMPTY_SLOT_HELMET = FossilsLegacyUtils.mc("item/empty_armor_slot_helmet");
