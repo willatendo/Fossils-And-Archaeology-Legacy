@@ -8,7 +8,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import willatendo.fossilslegacy.server.entity.util.interfaces.HungryAnimal;
+import willatendo.fossilslegacy.server.entity.util.interfaces.HungerAccessor;
 import willatendo.fossilslegacy.server.entity.util.interfaces.PregnantAnimal;
 import willatendo.fossilslegacy.server.entity.util.interfaces.TameAccessor;
 import willatendo.fossilslegacy.server.entity.variants.PregnancyType;
@@ -29,8 +29,8 @@ public class SyringeItem extends Item {
                     PregnantAnimal<?> pregnantAnimal = PregnantAnimal.createFromLiving(livingEntity, player.level());
                     pregnantAnimal.setPregnancyType(this.getPregnancyType());
                     pregnantAnimal.setRemainingPregnancyTime(0);
-                    if (pregnantAnimal instanceof HungryAnimal hungryAnimal) {
-                        hungryAnimal.setHunger(((HungryAnimal) pregnantAnimal).getHunger());
+                    if (pregnantAnimal instanceof HungerAccessor hungerAccessor) {
+                        hungerAccessor.setHunger(((HungerAccessor) pregnantAnimal).getHunger());
                     }
                     if (pregnantAnimal instanceof TameAccessor tameAccessor) {
                         tameAccessor.setOwnerUUID(((TameAccessor) pregnantAnimal).getOwnerUUID());
@@ -44,8 +44,8 @@ public class SyringeItem extends Item {
                 PregnantAnimal<?> pregnantAnimal = PregnantAnimal.createFromLiving(livingEntity, player.level());
                 pregnantAnimal.setPregnancyType(this.getPregnancyType());
                 pregnantAnimal.setRemainingPregnancyTime(0);
-                if (pregnantAnimal instanceof HungryAnimal hungryAnimal) {
-                    hungryAnimal.setHunger(((HungryAnimal) pregnantAnimal).getHunger());
+                if (pregnantAnimal instanceof HungerAccessor hungerAccessor) {
+                    hungerAccessor.setHunger(((HungerAccessor) pregnantAnimal).getHunger());
                 }
                 if (pregnantAnimal instanceof TameAccessor tameAccessor) {
                     tameAccessor.setOwnerUUID(((TameAccessor) pregnantAnimal).getOwnerUUID());

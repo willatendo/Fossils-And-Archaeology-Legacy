@@ -48,7 +48,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur, CoatTypeEntity {
-    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Tyrannosaurus.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
     private static final EntityDataAccessor<Boolean> KNOCKED_OUT = SynchedEntityData.defineId(Tyrannosaurus.class, EntityDataSerializers.BOOLEAN);
     private final BlockBreakRule blockBreakRule = new BlockBreakRule(this, 3, FossilsLegacyBlockTags.TYRANNOSAURUS_UNBREAKABLES);
 
@@ -58,18 +57,6 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
 
     public static AttributeSupplier tyrannosaurusAttributes() {
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 200.0F).add(Attributes.MOVEMENT_SPEED, 0.4D).add(Attributes.ATTACK_DAMAGE, 7.0D).build();
-    }
-
-    @Override
-    protected EntityDimensions getDefaultDimensions(Pose pose) {
-        CoatType coatType = this.getCoatType().value();
-        CoatType.BoundingBoxInfo boundingBoxInfo = coatType.boundingBoxInfo();
-        return this.dimensions = EntityDimensions.scalable(boundingBoxInfo.boundingBoxWidth() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()), boundingBoxInfo.boundingBoxHeight() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()));
-    }
-
-    @Override
-    protected Component getTypeName() {
-        return this.getOverridenName(super.getTypeName());
     }
 
     @Override
@@ -108,12 +95,6 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
     }
 
     @Override
-    public float getBoundingBoxGrowth() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.boundingBoxInfo().boundingBoxGrowth();
-    }
-
-    @Override
     public double getMinHealth() {
         return 15.0F;
     }
@@ -133,10 +114,6 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
 
     @Override
     public void tick() {
-        if (this.dimensions.width() != this.getEntityDimensions(this.getGrowthStage()).width() || this.dimensions.height() != this.getEntityDimensions(this.getGrowthStage()).height()) {
-            this.refreshDimensions();
-        }
-
         super.tick();
 
         if (this.blockBreakRule.canUse()) {
@@ -148,18 +125,6 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
                 this.setKnockedOut(true);
             }
         }
-    }
-
-    @Override
-    public float renderScaleWidth() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.ageScaleInfo().baseScaleWidth() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
-    }
-
-    @Override
-    public float renderScaleHeight() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.ageScaleInfo().baseScaleHeight() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
     }
 
     @Override
@@ -233,7 +198,6 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(COAT_TYPE, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getAny().orElseThrow());
         builder.define(KNOCKED_OUT, false);
     }
 
@@ -350,16 +314,6 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
         return !this.isKnockedOut() ? this.getOverridenSoundEvent(FossilsLegacySoundEvents.TYRANNOSAURUS_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH) : super.getDeathSound();
     }
 
-    @Override
-    public Holder<CoatType> getCoatType() {
-        return this.entityData.get(COAT_TYPE);
-    }
-
-    @Override
-    public void setCoatType(Holder<CoatType> coatTypeHolder) {
-        this.entityData.set(COAT_TYPE, coatTypeHolder);
-    }
-
     public boolean isKnockedOut() {
         return this.entityData.get(KNOCKED_OUT);
     }
@@ -371,14 +325,12 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        this.addCoatType(compoundTag);
         compoundTag.putBoolean("KnockedOut", this.isKnockedOut());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        this.readCoatType(compoundTag);
         this.setKnockedOut(compoundTag.getBoolean("KnockedOut"));
     }
 

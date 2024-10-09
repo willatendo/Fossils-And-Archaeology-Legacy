@@ -40,21 +40,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Therizinosaurus extends Dinosaur implements DinopediaInformation, CoatTypeEntity {
-    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Therizinosaurus.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
-
     public Therizinosaurus(EntityType<? extends Therizinosaurus> entityType, Level level) {
         super(entityType, level);
     }
 
     public static AttributeSupplier therizinosaurusAttributes() {
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 15.0F).add(Attributes.MOVEMENT_SPEED, 0.15D).add(Attributes.ATTACK_DAMAGE, 7.0D).build();
-    }
-
-    @Override
-    protected EntityDimensions getDefaultDimensions(Pose pose) {
-        CoatType coatType = this.getCoatType().value();
-        CoatType.BoundingBoxInfo boundingBoxInfo = coatType.boundingBoxInfo();
-        return this.dimensions = EntityDimensions.scalable(boundingBoxInfo.boundingBoxWidth() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()), boundingBoxInfo.boundingBoxHeight() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()));
     }
 
     @Override
@@ -97,12 +88,6 @@ public class Therizinosaurus extends Dinosaur implements DinopediaInformation, C
     }
 
     @Override
-    public float getBoundingBoxGrowth() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.boundingBoxInfo().boundingBoxGrowth();
-    }
-
-    @Override
     public double getMinHealth() {
         return 10.0F;
     }
@@ -110,18 +95,6 @@ public class Therizinosaurus extends Dinosaur implements DinopediaInformation, C
     @Override
     public Diet getDiet() {
         return Diet.herbivore();
-    }
-
-    @Override
-    public float renderScaleWidth() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.ageScaleInfo().baseScaleWidth() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
-    }
-
-    @Override
-    public float renderScaleHeight() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.ageScaleInfo().baseScaleHeight() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
     }
 
     @Override
@@ -144,12 +117,6 @@ public class Therizinosaurus extends Dinosaur implements DinopediaInformation, C
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        super.defineSynchedData(builder);
-        builder.define(COAT_TYPE, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getAny().orElseThrow());
-    }
-
-    @Override
     protected SoundEvent getAmbientSound() {
         return this.getOverridenSoundEvent(FossilsLegacySoundEvents.THERIZINOSAURUS_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
@@ -162,28 +129,6 @@ public class Therizinosaurus extends Dinosaur implements DinopediaInformation, C
     @Override
     protected SoundEvent getDeathSound() {
         return this.getOverridenSoundEvent(FossilsLegacySoundEvents.THERIZINOSAURUS_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
-    }
-
-    @Override
-    public Holder<CoatType> getCoatType() {
-        return this.entityData.get(COAT_TYPE);
-    }
-
-    @Override
-    public void setCoatType(Holder<CoatType> coatTypeHolder) {
-        this.entityData.set(COAT_TYPE, coatTypeHolder);
-    }
-
-    @Override
-    public void addAdditionalSaveData(CompoundTag compoundTag) {
-        super.addAdditionalSaveData(compoundTag);
-        this.addCoatType(compoundTag);
-    }
-
-    @Override
-    public void readAdditionalSaveData(CompoundTag compoundTag) {
-        super.readAdditionalSaveData(compoundTag);
-        this.readCoatType(compoundTag);
     }
 
     @Override

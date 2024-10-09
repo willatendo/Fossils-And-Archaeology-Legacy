@@ -37,7 +37,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dodo extends Dinosaur implements DinopediaInformation, CoatTypeEntity, FloatDownEntity {
-    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Dodo.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
     public final AnimationState fallAnimationState = new AnimationState();
     public int eggTime = this.random.nextInt(6000) + 6000;
 
@@ -47,18 +46,6 @@ public class Dodo extends Dinosaur implements DinopediaInformation, CoatTypeEnti
 
     public static AttributeSupplier dodoAttributes() {
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 4.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).build();
-    }
-
-    @Override
-    protected EntityDimensions getDefaultDimensions(Pose pose) {
-        CoatType coatType = this.getCoatType().value();
-        CoatType.BoundingBoxInfo boundingBoxInfo = coatType.boundingBoxInfo();
-        return this.dimensions = EntityDimensions.scalable(boundingBoxInfo.boundingBoxWidth() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()), boundingBoxInfo.boundingBoxHeight() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()));
-    }
-
-    @Override
-    protected Component getTypeName() {
-        return this.getOverridenName(super.getTypeName());
     }
 
     @Override
@@ -92,12 +79,6 @@ public class Dodo extends Dinosaur implements DinopediaInformation, CoatTypeEnti
     }
 
     @Override
-    public float getBoundingBoxGrowth() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.boundingBoxInfo().boundingBoxGrowth();
-    }
-
-    @Override
     public double getMinHealth() {
         return 4.0F;
     }
@@ -105,18 +86,6 @@ public class Dodo extends Dinosaur implements DinopediaInformation, CoatTypeEnti
     @Override
     public Diet getDiet() {
         return Diet.herbivore();
-    }
-
-    @Override
-    public float renderScaleWidth() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.ageScaleInfo().baseScaleWidth() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
-    }
-
-    @Override
-    public float renderScaleHeight() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.ageScaleInfo().baseScaleHeight() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
     }
 
     @Override
@@ -164,12 +133,6 @@ public class Dodo extends Dinosaur implements DinopediaInformation, CoatTypeEnti
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        super.defineSynchedData(builder);
-        builder.define(COAT_TYPE, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getAny().orElseThrow());
-    }
-
-    @Override
     protected SoundEvent getAmbientSound() {
         return this.getOverridenSoundEvent(FossilsLegacySoundEvents.DODO_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
@@ -190,26 +153,14 @@ public class Dodo extends Dinosaur implements DinopediaInformation, CoatTypeEnti
     }
 
     @Override
-    public Holder<CoatType> getCoatType() {
-        return this.entityData.get(COAT_TYPE);
-    }
-
-    @Override
-    public void setCoatType(Holder<CoatType> coatTypeHolder) {
-        this.entityData.set(COAT_TYPE, coatTypeHolder);
-    }
-
-    @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        this.addCoatType(compoundTag);
         compoundTag.putInt("EggLayTime", this.eggTime);
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        this.readCoatType(compoundTag);
         if (compoundTag.contains("EggLayTime")) {
             this.eggTime = compoundTag.getInt("EggLayTime");
         }

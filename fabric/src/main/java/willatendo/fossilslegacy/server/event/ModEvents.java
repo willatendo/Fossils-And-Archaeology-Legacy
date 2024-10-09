@@ -5,7 +5,6 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
-import willatendo.fossilslegacy.dual.FossilsLegacyDualEvents;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.feature.FossilsLegacyPlacedFeatures;
 import willatendo.simplelibrary.server.event.modification.FabricCreativeModeTabModification;
@@ -14,6 +13,8 @@ import willatendo.simplelibrary.server.event.registry.*;
 public class ModEvents {
     public static void commonSetup() {
         BasicEvents.commonSetup();
+
+        BasicEvents.registerCommandEvent(new FabricCommandRegister());
 
         FabricCreativeModeTabModification fabricCreativeModeTabModification = new FabricCreativeModeTabModification();
         BasicEvents.buildCreativeModeTabEvent(fabricCreativeModeTabModification);

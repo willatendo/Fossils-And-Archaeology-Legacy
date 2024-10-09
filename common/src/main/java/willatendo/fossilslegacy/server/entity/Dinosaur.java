@@ -5,6 +5,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -29,6 +30,7 @@ import willatendo.fossilslegacy.server.config.FossilsLegacyConfig;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.commands.CommandType;
 import willatendo.fossilslegacy.server.entity.commands.FossilsLegacyCommandTypes;
+import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Ankylosaurus;
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
@@ -39,7 +41,8 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.Optional;
 import java.util.UUID;
 
-public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnBirth, TameAccessor, CommandableEntity, HungryAnimal, DaysAlive, GrowingEntity, TamedSpeakingEntity, SimpleRegistryAccessAccessor {
+public abstract class Dinosaur extends Animal implements CoatTypeEntity, CommandableEntity, DaysAliveAccessor, GrowingEntity, HungerAccessor, OwnableEntity, SimpleRegistryAccessAccessor, TamesOnBirth, TameAccessor, TamedSpeakingEntity {
+    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Dinosaur.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
     private static final EntityDataAccessor<Holder<CommandType>> COMMAND = SynchedEntityData.defineId(Dinosaur.class, FossilsLegacyEntityDataSerializers.COMMAND_TYPES.get());
     private static final EntityDataAccessor<Integer> DAYS_ALIVE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> GROWTH_STAGE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
@@ -53,8 +56,6 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
 
     public abstract TagKey<CoatType> getCoatTypes();
 
-    public abstract float getBoundingBoxGrowth();
-
     public abstract Diet getDiet();
 
     @Override
@@ -65,6 +66,23 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
     @Override
     public Level getLevel() {
         return this.level();
+    }
+
+    @Override
+    protected Component getTypeName() {
+        return this.getOverridenName(super.getTypeName());
+    }
+
+    public float getBoundingBoxGrowth() {
+        CoatType coatType = this.getCoatType().value();
+        return coatType.boundingBoxInfo().boundingBoxGrowth();
+    }
+
+    @Override
+    protected EntityDimensions getDefaultDimensions(Pose pose) {
+        CoatType coatType = this.getCoatType().value();
+        CoatType.BoundingBoxInfo boundingBoxInfo = coatType.boundingBoxInfo();
+        return this.dimensions = EntityDimensions.scalable(boundingBoxInfo.boundingBoxWidth() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()), boundingBoxInfo.boundingBoxHeight() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()));
     }
 
     @Override
@@ -123,6 +141,10 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
     @Override
     public void tick() {
         if (!this.isNoAi()) {
+            if (this.dimensions.width() != this.getEntityDimensions(this.getGrowthStage()).width() || this.dimensions.height() != this.getEntityDimensions(this.getGrowthStage()).height()) {
+                this.refreshDimensions();
+            }
+
             if (this.internalClock == Level.TICKS_PER_DAY) {
                 this.internalClock = 0;
             }
@@ -188,11 +210,13 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
     }
 
     public float renderScaleWidth() {
-        return 1.0F;
+        CoatType coatType = this.getCoatType().value();
+        return coatType.ageScaleInfo().baseScaleWidth() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
     }
 
     public float renderScaleHeight() {
-        return 1.0F;
+        CoatType coatType = this.getCoatType().value();
+        return coatType.ageScaleInfo().baseScaleHeight() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
     }
 
     @Override
@@ -296,6 +320,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
+        builder.define(COAT_TYPE, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getAny().orElseThrow());
         builder.define(COMMAND, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.COMMAND_TYPES).getAny().orElseThrow());
         builder.define(GROWTH_STAGE, 0);
         builder.define(DAYS_ALIVE, 0);
@@ -376,6 +401,17 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
     }
 
     @Override
+    public Holder<CoatType> getCoatType() {
+        return this.entityData.get(COAT_TYPE);
+    }
+
+    @Override
+    public void setCoatType(Holder<CoatType> coatTypeHolder) {
+        this.entityData.set(COAT_TYPE, coatTypeHolder);
+    }
+
+
+    @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
 
@@ -383,6 +419,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
             compoundTag.putUUID("Owner", this.getOwnerUUID());
         }
 
+        this.addCoatType(compoundTag);
         this.addCommandType(compoundTag);
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
         compoundTag.putInt("Hunger", this.getHunger());
@@ -410,6 +447,7 @@ public abstract class Dinosaur extends Animal implements OwnableEntity, TamesOnB
         }
 
         this.readCommandType(compoundTag);
+        super.readAdditionalSaveData(compoundTag);
         this.setDaysAlive(compoundTag.getInt("DaysAlive"));
         this.setHunger(compoundTag.getInt("Hunger"));
         this.setGrowthStage(compoundTag.getInt("GrowthStage"));

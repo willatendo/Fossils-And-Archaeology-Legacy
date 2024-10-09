@@ -1,6 +1,6 @@
 package willatendo.fossilslegacy.server.entity.util.interfaces;
 
-public interface DaysAlive {
+public interface DaysAliveAccessor {
 	void setDaysAlive(int daysAlive);
 
 	int getDaysAlive();

@@ -200,8 +200,8 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth<T> {
         if (replaced instanceof TameAccessor tameAccessor) {
             tameAccessor.setOwnerUUID(((TameAccessor) mob).getOwnerUUID());
         }
-        if (replaced instanceof HungryAnimal hungryAnimal) {
-            hungryAnimal.setHunger(((HungryAnimal) mob).getHunger());
+        if (replaced instanceof HungerAccessor hungerAccessor) {
+            hungerAccessor.setHunger(((HungerAccessor) mob).getHunger());
         }
         this.onRemove(mob, replaced);
     }

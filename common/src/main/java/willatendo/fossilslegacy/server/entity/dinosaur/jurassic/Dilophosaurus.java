@@ -39,7 +39,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dilophosaurus extends Dinosaur implements DinopediaInformation, CoatTypeEntity, RangedAttackMob {
-    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Dilophosaurus.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
     private static final EntityDataAccessor<Boolean> ATTACKING = SynchedEntityData.defineId(Dilophosaurus.class, EntityDataSerializers.BOOLEAN);
 
     public Dilophosaurus(EntityType<? extends Dilophosaurus> entityType, Level level) {
@@ -48,27 +47,6 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Coa
 
     public static AttributeSupplier dilophosaurusAttributes() {
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.ATTACK_DAMAGE, 4.0D).build();
-    }
-
-    @Override
-    protected EntityDimensions getDefaultDimensions(Pose pose) {
-        CoatType coatType = this.getCoatType().value();
-        CoatType.BoundingBoxInfo boundingBoxInfo = coatType.boundingBoxInfo();
-        return this.dimensions = EntityDimensions.scalable(boundingBoxInfo.boundingBoxWidth() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()), boundingBoxInfo.boundingBoxHeight() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()));
-    }
-
-    @Override
-    public void tick() {
-        if (this.dimensions.width() != this.getEntityDimensions(this.getGrowthStage()).width() || this.dimensions.height() != this.getEntityDimensions(this.getGrowthStage()).height()) {
-            this.refreshDimensions();
-        }
-
-        super.tick();
-    }
-
-    @Override
-    protected Component getTypeName() {
-        return this.getOverridenName(super.getTypeName());
     }
 
     @Override
@@ -97,12 +75,6 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Coa
     }
 
     @Override
-    public float getBoundingBoxGrowth() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.boundingBoxInfo().boundingBoxGrowth();
-    }
-
-    @Override
     public double getMinHealth() {
         return 7.0D;
     }
@@ -110,18 +82,6 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Coa
     @Override
     public Diet getDiet() {
         return Diet.carnivore();
-    }
-
-    @Override
-    public float renderScaleWidth() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.ageScaleInfo().baseScaleWidth() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
-    }
-
-    @Override
-    public float renderScaleHeight() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.ageScaleInfo().baseScaleHeight() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
     }
 
     @Override
@@ -146,7 +106,6 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Coa
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(COAT_TYPE, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getAny().orElseThrow());
         builder.define(ATTACKING, false);
     }
 
@@ -186,26 +145,14 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Coa
     }
 
     @Override
-    public Holder<CoatType> getCoatType() {
-        return this.entityData.get(COAT_TYPE);
-    }
-
-    @Override
-    public void setCoatType(Holder<CoatType> coatTypeHolder) {
-        this.entityData.set(COAT_TYPE, coatTypeHolder);
-    }
-
-    @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        this.addCoatType(compoundTag);
         compoundTag.putBoolean("Attacking", this.isAttacking());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        this.readCoatType(compoundTag);
         this.setAttacking(compoundTag.getBoolean("Attacking"));
     }
 

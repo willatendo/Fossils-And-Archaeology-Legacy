@@ -47,10 +47,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Mosasaurus extends Dinosaur implements DinopediaInformation, CoatTypeEntity {
-    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Mosasaurus.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
-    public final float idleSinkSpeed = -0.00375F;
-    public final float activeSinkSpeed = this.idleSinkSpeed * 5.0F;
-
     public Mosasaurus(EntityType<? extends Mosasaurus> entityType, Level level) {
         super(entityType, level);
         this.setPathfindingMalus(PathType.WATER, 0.0F);
@@ -58,27 +54,6 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation, CoatTy
 
     public static AttributeSupplier mosasaurusAttributes() {
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 7.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 6.0D).build();
-    }
-
-    @Override
-    protected EntityDimensions getDefaultDimensions(Pose pose) {
-        CoatType coatType = this.getCoatType().value();
-        CoatType.BoundingBoxInfo boundingBoxInfo = coatType.boundingBoxInfo();
-        return this.dimensions = EntityDimensions.scalable(boundingBoxInfo.boundingBoxWidth() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()), boundingBoxInfo.boundingBoxHeight() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()));
-    }
-
-    @Override
-    public void tick() {
-        if (this.dimensions.width() != this.getEntityDimensions(this.getGrowthStage()).width() || this.dimensions.height() != this.getEntityDimensions(this.getGrowthStage()).height()) {
-            this.refreshDimensions();
-        }
-
-        super.tick();
-    }
-
-    @Override
-    protected Component getTypeName() {
-        return this.getOverridenName(super.getTypeName());
     }
 
     public static boolean checkMosasaurusSpawnRules(EntityType<Mosasaurus> entityType, ServerLevelAccessor serverLevelAccessor, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource) {
@@ -105,13 +80,6 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation, CoatTy
         return 8;
     }
 
-    @Override
-    public float getBoundingBoxGrowth() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.boundingBoxInfo().boundingBoxGrowth();
-    }
-
-    @Override
     public double getMinHealth() {
         return 7.0F;
     }
@@ -119,18 +87,6 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation, CoatTy
     @Override
     public Diet getDiet() {
         return Diet.piscivore();
-    }
-
-    @Override
-    public float renderScaleWidth() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.ageScaleInfo().baseScaleWidth() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
-    }
-
-    @Override
-    public float renderScaleHeight() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.ageScaleInfo().baseScaleHeight() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
     }
 
     @Override
@@ -160,12 +116,6 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation, CoatTy
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        super.defineSynchedData(builder);
-        builder.define(COAT_TYPE, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getAny().orElseThrow());
-    }
-
-    @Override
     public void travel(Vec3 vec3) {
         if (this.isControlledByLocalInstance() && this.isInWater()) {
             this.moveRelative(0.1F, vec3);
@@ -177,28 +127,6 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation, CoatTy
         } else {
             super.travel(vec3);
         }
-    }
-
-    @Override
-    public Holder<CoatType> getCoatType() {
-        return this.entityData.get(COAT_TYPE);
-    }
-
-    @Override
-    public void setCoatType(Holder<CoatType> coatTypeHolder) {
-        this.entityData.set(COAT_TYPE, coatTypeHolder);
-    }
-
-    @Override
-    public void addAdditionalSaveData(CompoundTag compoundTag) {
-        super.addAdditionalSaveData(compoundTag);
-        this.addCoatType(compoundTag);
-    }
-
-    @Override
-    public void readAdditionalSaveData(CompoundTag compoundTag) {
-        super.readAdditionalSaveData(compoundTag);
-        this.readCoatType(compoundTag);
     }
 
     @Override

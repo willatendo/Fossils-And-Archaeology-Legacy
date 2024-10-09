@@ -43,7 +43,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pteranodon extends Dinosaur implements DinopediaInformation, RideableDinosaur, CoatTypeEntity, FlyingDinosaur {
-    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Pteranodon.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
     public float airSpeed = 0.0F;
     public float airAngle = 0.0F;
     public float airPitch = 0.0F;
@@ -67,15 +66,6 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
             return newDimensions.scale(1.0F, 0.5F);
         }
         return newDimensions;
-    }
-
-    @Override
-    public void tick() {
-        if (this.dimensions.width() != this.getEntityDimensions(this.getGrowthStage()).width() || this.dimensions.height() != this.getEntityDimensions(this.getGrowthStage()).height()) {
-            this.refreshDimensions();
-        }
-
-        super.tick();
     }
 
     @Override
@@ -134,26 +124,8 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
     }
 
     @Override
-    public float getBoundingBoxGrowth() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.boundingBoxInfo().boundingBoxGrowth();
-    }
-
-    @Override
     public Diet getDiet() {
         return Diet.piscivore();
-    }
-
-    @Override
-    public float renderScaleWidth() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.ageScaleInfo().baseScaleWidth() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
-    }
-
-    @Override
-    public float renderScaleHeight() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.ageScaleInfo().baseScaleHeight() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
     }
 
     @Override
@@ -178,12 +150,6 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
         this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this));
         this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
-    }
-
-    @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        super.defineSynchedData(builder);
-        builder.define(COAT_TYPE, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getAny().orElseThrow());
     }
 
     @Override
@@ -299,19 +265,8 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
     }
 
     @Override
-    public Holder<CoatType> getCoatType() {
-        return this.entityData.get(COAT_TYPE);
-    }
-
-    @Override
-    public void setCoatType(Holder<CoatType> coatTypeHolder) {
-        this.entityData.set(COAT_TYPE, coatTypeHolder);
-    }
-
-    @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        this.addCoatType(compoundTag);
         compoundTag.putFloat("AirSpeed", this.airSpeed);
         compoundTag.putFloat("AirAngle", this.airAngle);
         compoundTag.putFloat("AirPitch", this.airPitch);
@@ -321,7 +276,6 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        this.readCoatType(compoundTag);
         this.airSpeed = compoundTag.getFloat("AirSpeed");
         this.airAngle = compoundTag.getFloat("AirAngle");
         this.airPitch = compoundTag.getFloat("AirPitch");

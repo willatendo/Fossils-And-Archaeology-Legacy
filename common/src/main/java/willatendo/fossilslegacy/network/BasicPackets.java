@@ -22,6 +22,12 @@ public final class BasicPackets {
     public static final ResourceLocation SINK = FossilsLegacyUtils.resource("sink");
     public static final ResourceLocation TIME_MACHINE_UPDATE = FossilsLegacyUtils.resource("time_machine_update");
 
+    public static final ResourceLocation OPEN_DESIGN_SCREEN = FossilsLegacyUtils.resource("open_design_screen");
+
+    public static void clientboundOpenDesignScreenPacket() {
+        
+    }
+
     public static void serverboundApplyGenePacket(BlockPos blockPos, String coatType, Level level) {
         BlockEntity blockEntity = level.getBlockEntity(blockPos);
         if (blockEntity instanceof GeneModificationTableBlockEntity geneModificationTableBlockEntity) {

@@ -39,35 +39,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Stegosaurus extends Dinosaur implements DinopediaInformation, CoatTypeEntity {
-    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Stegosaurus.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
-
     public Stegosaurus(EntityType<? extends Stegosaurus> entityType, Level level) {
         super(entityType, level);
     }
 
     public static AttributeSupplier stegosaurusAttributes() {
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 10.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 4.0D).build();
-    }
-
-    @Override
-    protected EntityDimensions getDefaultDimensions(Pose pose) {
-        CoatType coatType = this.getCoatType().value();
-        CoatType.BoundingBoxInfo boundingBoxInfo = coatType.boundingBoxInfo();
-        return this.dimensions = EntityDimensions.scalable(boundingBoxInfo.boundingBoxWidth() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()), boundingBoxInfo.boundingBoxHeight() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()));
-    }
-
-    @Override
-    public void tick() {
-        if (this.dimensions.width() != this.getEntityDimensions(this.getGrowthStage()).width() || this.dimensions.height() != this.getEntityDimensions(this.getGrowthStage()).height()) {
-            this.refreshDimensions();
-        }
-
-        super.tick();
-    }
-
-    @Override
-    protected Component getTypeName() {
-        return this.getOverridenName(super.getTypeName());
     }
 
     @Override
@@ -96,12 +73,6 @@ public class Stegosaurus extends Dinosaur implements DinopediaInformation, CoatT
     }
 
     @Override
-    public float getBoundingBoxGrowth() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.boundingBoxInfo().boundingBoxGrowth();
-    }
-
-    @Override
     public double getMinHealth() {
         return 10.0F;
     }
@@ -109,18 +80,6 @@ public class Stegosaurus extends Dinosaur implements DinopediaInformation, CoatT
     @Override
     public Diet getDiet() {
         return Diet.herbivore();
-    }
-
-    @Override
-    public float renderScaleWidth() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.ageScaleInfo().baseScaleWidth() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
-    }
-
-    @Override
-    public float renderScaleHeight() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.ageScaleInfo().baseScaleHeight() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
     }
 
     @Override
@@ -142,12 +101,6 @@ public class Stegosaurus extends Dinosaur implements DinopediaInformation, CoatT
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        super.defineSynchedData(builder);
-        builder.define(COAT_TYPE, this.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getAny().orElseThrow());
-    }
-
-    @Override
     protected SoundEvent getAmbientSound() {
         return this.getOverridenSoundEvent(FossilsLegacySoundEvents.STEGOSAURUS_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
@@ -160,28 +113,6 @@ public class Stegosaurus extends Dinosaur implements DinopediaInformation, CoatT
     @Override
     protected SoundEvent getDeathSound() {
         return this.getOverridenSoundEvent(FossilsLegacySoundEvents.STEGOSAURUS_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
-    }
-
-    @Override
-    public Holder<CoatType> getCoatType() {
-        return this.entityData.get(COAT_TYPE);
-    }
-
-    @Override
-    public void setCoatType(Holder<CoatType> coatTypeHolder) {
-        this.entityData.set(COAT_TYPE, coatTypeHolder);
-    }
-
-    @Override
-    public void addAdditionalSaveData(CompoundTag compoundTag) {
-        super.addAdditionalSaveData(compoundTag);
-        this.addCoatType(compoundTag);
-    }
-
-    @Override
-    public void readAdditionalSaveData(CompoundTag compoundTag) {
-        super.readAdditionalSaveData(compoundTag);
-        this.readCoatType(compoundTag);
     }
 
     @Override

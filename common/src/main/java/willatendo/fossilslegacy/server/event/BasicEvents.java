@@ -1,9 +1,12 @@
 package willatendo.fossilslegacy.server.event;
 
 import com.google.common.collect.Maps;
+import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.OptionalDispenseItemBehavior;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.animal.armadillo.Armadillo;
@@ -40,6 +43,8 @@ import willatendo.simplelibrary.server.event.modification.CreativeModeTabModific
 import willatendo.simplelibrary.server.event.modification.FlammablesModification;
 import willatendo.simplelibrary.server.event.modification.StrippablesModification;
 import willatendo.simplelibrary.server.event.registry.*;
+
+import java.util.List;
 
 public class BasicEvents {
     public static void commonSetup() {
@@ -148,6 +153,19 @@ public class BasicEvents {
         creativeModeTabModification.add(CreativeModeTabs.OP_BLOCKS, FossilsLegacyItems.DEBUG_BABY.get());
         creativeModeTabModification.add(CreativeModeTabs.OP_BLOCKS, FossilsLegacyItems.DEBUG_TAME.get());
         creativeModeTabModification.add(CreativeModeTabs.OP_BLOCKS, FossilsLegacyItems.DEBUG_CHANGE_GENETICS.get());
+    }
+
+    public static void registerCommandEvent(CommandRegister commandRegister) {
+        commandRegister.register((commandDispatcher, commandBuildContext, commandSelection) -> {
+            commandDispatcher.register(Commands.literal("design").executes(context -> {
+                ServerPlayer serverPlayer = context.getSource().getPlayer();
+                if (serverPlayer != null) {
+
+                    serverPlayer.sendSystemMessage(Component.literal("hey"));
+                }
+                return List.of(serverPlayer).size();
+            }));
+        });
     }
 
     public static void resourcePackEvent(ResourcePackRegister resourcePackRegister) {

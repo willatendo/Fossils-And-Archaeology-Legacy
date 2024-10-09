@@ -1,6 +1,6 @@
 package willatendo.fossilslegacy.server.entity.util.interfaces;
 
-public interface HungryAnimal {
+public interface HungerAccessor {
 	void setHunger(int hunger);
 
 	int getHunger();
