@@ -141,6 +141,7 @@
 - Added Raw Ankylosaurus
 - Added Cooked Ankylosaurus
 - Added Data-Driven Skeletons
+- Added "design" Command, Opens Design Screen
 - Removed Client Config As It Is No Longer Necessary
 12/9/2024
 - (Fabric) Fixed Crash
