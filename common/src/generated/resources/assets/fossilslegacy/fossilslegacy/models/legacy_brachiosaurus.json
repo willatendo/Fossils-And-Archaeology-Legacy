@@ -28,7 +28,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "front_right_thigh",
       "poses": {
         "x": 3.0,
@@ -49,7 +48,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "tail_mid",
       "poses": {
         "x": 0.0,
@@ -71,7 +69,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "body",
       "poses": {
         "x": 0.0,
@@ -93,7 +90,6 @@
           "z_origin": -4.0
         }
       ],
-      "elements": [],
       "id": "head",
       "poses": {
         "x": 0.0,
@@ -114,7 +110,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "tail_base",
       "poses": {
         "x": 0.0,
@@ -136,7 +131,6 @@
           "z_origin": -6.5
         }
       ],
-      "elements": [],
       "id": "snout",
       "poses": {
         "x": 0.0,
@@ -158,7 +152,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "front_right_calf",
       "poses": {
         "x": 3.0,
@@ -179,7 +172,6 @@
           "z_origin": -1.0
         }
       ],
-      "elements": [],
       "id": "back_left_calf",
       "poses": {
         "x": -3.0,
@@ -200,7 +192,6 @@
           "z_origin": -5.0
         }
       ],
-      "elements": [],
       "id": "crest",
       "poses": {
         "x": 0.0,
@@ -221,7 +212,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "neck_2",
       "poses": {
         "x": 0.0,
@@ -243,7 +233,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "neck_3",
       "poses": {
         "x": 0.0,
@@ -265,7 +254,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "neck_1",
       "poses": {
         "x": 0.0,
@@ -287,7 +275,6 @@
           "z_origin": 4.0
         }
       ],
-      "elements": [],
       "id": "neck_6",
       "poses": {
         "x": 0.0,
@@ -309,7 +296,6 @@
           "z_origin": 6.0
         }
       ],
-      "elements": [],
       "id": "neck_7",
       "poses": {
         "x": 0.0,
@@ -331,7 +317,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "neck_4",
       "poses": {
         "x": 0.0,
@@ -353,7 +338,6 @@
           "z_origin": 2.0
         }
       ],
-      "elements": [],
       "id": "neck_5",
       "poses": {
         "x": 0.0,
@@ -375,7 +359,6 @@
           "z_origin": -1.0
         }
       ],
-      "elements": [],
       "id": "back_right_calf",
       "poses": {
         "x": 3.0,
@@ -396,7 +379,6 @@
           "z_origin": -0.5
         }
       ],
-      "elements": [],
       "id": "lower_neck_1",
       "poses": {
         "x": 0.0,
@@ -418,7 +400,6 @@
           "z_origin": -0.5
         }
       ],
-      "elements": [],
       "id": "neck_8",
       "poses": {
         "x": 0.0,
@@ -440,7 +421,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "front_left_thigh",
       "poses": {
         "x": -3.0,
@@ -461,7 +441,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "back_right_thigh",
       "poses": {
         "x": 3.0,
@@ -482,7 +461,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "lower_neck_2",
       "poses": {
         "x": 0.0,
@@ -504,7 +482,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "front_left_calf",
       "poses": {
         "x": -3.0,
@@ -525,7 +502,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "lower_body",
       "poses": {
         "x": 0.0,
@@ -547,7 +523,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "tail_end",
       "poses": {
         "x": 0.0,
@@ -569,7 +544,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "back_left_thigh",
       "poses": {
         "x": -3.0,

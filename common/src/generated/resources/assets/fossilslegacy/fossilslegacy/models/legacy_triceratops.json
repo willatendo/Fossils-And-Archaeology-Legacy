@@ -31,7 +31,6 @@
           "z_origin": -6.0
         }
       ],
-      "elements": [],
       "id": "right_front_leg",
       "poses": {
         "x": 0.0,
@@ -53,7 +52,6 @@
           "z_origin": -6.0
         }
       ],
-      "elements": [],
       "id": "right_horn",
       "poses": {
         "x": 0.0,
@@ -75,7 +73,6 @@
           "z_origin": 4.0
         }
       ],
-      "elements": [],
       "id": "tail",
       "poses": {
         "x": 0.0,
@@ -97,7 +94,6 @@
           "z_origin": 3.0
         }
       ],
-      "elements": [],
       "id": "back",
       "poses": {
         "x": 0.0,
@@ -119,7 +115,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "body",
       "poses": {
         "x": 0.0,
@@ -140,7 +135,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "crest_overlay",
       "poses": {
         "x": 0.0,
@@ -162,7 +156,6 @@
           "z_origin": -6.0
         }
       ],
-      "elements": [],
       "id": "left_front_leg",
       "poses": {
         "x": 0.0,
@@ -184,7 +177,6 @@
           "z_origin": -3.0
         }
       ],
-      "elements": [],
       "id": "right_horn_base",
       "poses": {
         "x": 0.0,
@@ -206,7 +198,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "left_front_thigh",
       "poses": {
         "x": 0.0,
@@ -227,7 +218,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "head",
       "poses": {
         "x": 0.0,
@@ -249,7 +239,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "right_back_thigh",
       "poses": {
         "x": 0.0,
@@ -270,7 +259,6 @@
           "z_origin": -3.0
         }
       ],
-      "elements": [],
       "id": "mouth",
       "poses": {
         "x": 0.0,
@@ -292,7 +280,6 @@
           "z_origin": -3.0
         }
       ],
-      "elements": [],
       "id": "nose_horn",
       "poses": {
         "x": 0.0,
@@ -314,7 +301,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "right_front_thigh",
       "poses": {
         "x": 0.0,
@@ -335,7 +321,6 @@
           "z_origin": -3.0
         }
       ],
-      "elements": [],
       "id": "left_horn_base",
       "poses": {
         "x": 0.0,
@@ -357,7 +342,6 @@
           "z_origin": -6.0
         }
       ],
-      "elements": [],
       "id": "left_horn",
       "poses": {
         "x": 0.0,
@@ -379,7 +363,6 @@
           "z_origin": -5.0
         }
       ],
-      "elements": [],
       "id": "left_back_leg",
       "poses": {
         "x": 0.0,
@@ -401,7 +384,6 @@
           "z_origin": -5.0
         }
       ],
-      "elements": [],
       "id": "right_back_leg",
       "poses": {
         "x": 0.0,
@@ -423,7 +405,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "lower_body",
       "poses": {
         "x": 0.0,
@@ -445,7 +426,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "left_back_thigh",
       "poses": {
         "x": 0.0,
@@ -466,7 +446,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "crest",
       "poses": {
         "x": 0.0,

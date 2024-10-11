@@ -30,7 +30,6 @@ import willatendo.fossilslegacy.server.config.FossilsLegacyConfig;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.commands.CommandType;
 import willatendo.fossilslegacy.server.entity.commands.FossilsLegacyCommandTypes;
-import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Ankylosaurus;
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
@@ -446,6 +445,7 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
             }
         }
 
+        this.readCoatType(compoundTag);
         this.readCommandType(compoundTag);
         super.readAdditionalSaveData(compoundTag);
         this.setDaysAlive(compoundTag.getInt("DaysAlive"));

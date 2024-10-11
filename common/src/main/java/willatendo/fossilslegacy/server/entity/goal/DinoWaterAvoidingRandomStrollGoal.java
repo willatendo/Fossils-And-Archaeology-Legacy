@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.server.entity.goal;
 
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
-import willatendo.fossilslegacy.server.entity.commands.CommandType;
 import willatendo.fossilslegacy.server.entity.commands.FossilsLegacyCommandTypes;
 
 public class DinoWaterAvoidingRandomStrollGoal extends WaterAvoidingRandomStrollGoal {

@@ -3,21 +3,13 @@ package willatendo.fossilslegacy.server.jei.ingredient;
 import mezz.jei.api.ingredients.IIngredientHelper;
 import mezz.jei.api.ingredients.IIngredientType;
 import mezz.jei.api.ingredients.subtypes.UidContext;
-import mezz.jei.common.platform.IPlatformItemStackHelper;
-import mezz.jei.common.platform.Services;
-import mezz.jei.common.util.ErrorUtil;
-import mezz.jei.common.util.RegistryUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
-
-import java.util.Optional;
 
 public final class CoatTypeHelper implements IIngredientHelper<CoatType> {
     @Override

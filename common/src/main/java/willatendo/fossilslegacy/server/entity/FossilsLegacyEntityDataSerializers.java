@@ -6,11 +6,11 @@ import net.minecraft.network.syncher.EntityDataSerializer;
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.commands.CommandType;
-import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
 import willatendo.fossilslegacy.server.entity.variants.PregnancyType;
 import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
+import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 
 import java.util.function.Supplier;
 

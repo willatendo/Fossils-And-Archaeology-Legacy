@@ -12,6 +12,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.api.client.BuiltInAnimationType;
+import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 import java.util.List;
@@ -107,7 +108,9 @@ public abstract class EntityModelProvider implements DataProvider {
             JsonObject elementObject = this.createElement(partDefinition, name);
             JsonArray childrenElementsArray = new JsonArray();
             this.createAllElements(childrenElementsArray, partDefinition);
-            elementObject.add("elements", childrenElementsArray);
+            if (!childrenElementsArray.isEmpty()) {
+                elementObject.add("elements", childrenElementsArray);
+            }
             elementsArray.add(elementObject);
         });
     }
@@ -115,9 +118,9 @@ public abstract class EntityModelProvider implements DataProvider {
     private JsonObject createElement(PartDefinition partDefinition, String id) {
         JsonObject elementObject = new JsonObject();
         elementObject.addProperty("id", id);
-        List<CubeDefinition> cubeDefinitions = partDefinition.cubes;
-        JsonArray boxes = new JsonArray();
-        for (CubeDefinition cubeDefinition : cubeDefinitions) {
+        JsonArray boxesArray = new JsonArray();
+        JsonObject poses = new JsonObject();
+        for (CubeDefinition cubeDefinition : partDefinition.cubes) {
             JsonObject box = new JsonObject();
             box.addProperty("texture_x_offset", (int) cubeDefinition.texCoord.u());
             box.addProperty("texture_y_offset", (int) cubeDefinition.texCoord.v());
@@ -130,10 +133,9 @@ public abstract class EntityModelProvider implements DataProvider {
             if (cubeDefinition.mirror) {
                 box.addProperty("mirror", true);
             }
-            boxes.add(box);
+            boxesArray.add(box);
         }
-        elementObject.add("boxes", boxes);
-        JsonObject poses = new JsonObject();
+        elementObject.add("boxes", boxesArray);
         PartPose partPose = partDefinition.partPose;
         poses.addProperty("x", partPose.x);
         poses.addProperty("y", partPose.y);

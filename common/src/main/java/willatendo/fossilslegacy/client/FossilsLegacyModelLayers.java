@@ -4,7 +4,7 @@ import com.mojang.datafixers.util.Pair;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class FossilsLegacyModelLayers {
+public final class FossilsLegacyModelLayers {
     public static final ModelLayerLocation ANU = FossilsLegacyModelLayers.create("anu");
     public static final Pair<ModelLayerLocation, ModelLayerLocation> BRACHIOSAURUS = FossilsLegacyModelLayers.createLegacyPair("brachiosaurus");
     public static final Pair<ModelLayerLocation, ModelLayerLocation> BRACHIOSAURUS_SKELETON = FossilsLegacyModelLayers.createLegacyPair("brachiosaurs_skeleton");

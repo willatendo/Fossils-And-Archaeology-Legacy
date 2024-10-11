@@ -17,7 +17,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "right_arm",
       "poses": {
         "x": -4.0,
@@ -38,7 +37,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "left_leg",
       "poses": {
         "x": 4.0,
@@ -59,7 +57,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "left_arm",
       "poses": {
         "x": 4.0,
@@ -80,7 +77,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "right_leg",
       "poses": {
         "x": -4.0,
@@ -111,7 +107,6 @@
           "z_origin": -6.0
         }
       ],
-      "elements": [],
       "id": "tail",
       "poses": {
         "x": 0.0,
@@ -160,7 +155,6 @@
                   "z_origin": -8.0
                 }
               ],
-              "elements": [],
               "id": "head",
               "poses": {
                 "x": 0.0,
@@ -197,7 +191,6 @@
           "z_origin": -6.0
         }
       ],
-      "elements": [],
       "id": "body",
       "poses": {
         "x": 0.0,

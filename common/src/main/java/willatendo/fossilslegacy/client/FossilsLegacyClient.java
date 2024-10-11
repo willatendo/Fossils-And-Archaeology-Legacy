@@ -14,13 +14,13 @@ import willatendo.fossilslegacy.client.model.fossils.legacy.TriceratopsSkeletonM
 import willatendo.fossilslegacy.client.render.*;
 import willatendo.fossilslegacy.client.screen.*;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
-import willatendo.fossilslegacy.server.block.properties.FossilsLegacyWoodTypes;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntityTypes;
+import willatendo.fossilslegacy.server.block.properties.FossilsLegacyWoodTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenuTypes;
 import willatendo.simplelibrary.client.event.registry.*;
 
-public class FossilsLegacyClient {
+public final class FossilsLegacyClient {
     public static void signSheets() {
         FossilsLegacyWoodTypes.register(FossilsLegacyWoodTypes.CALAMITES);
         FossilsLegacyWoodTypes.register(FossilsLegacyWoodTypes.LEPIDODENDRON);

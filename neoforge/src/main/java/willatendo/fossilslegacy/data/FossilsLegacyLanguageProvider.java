@@ -1,14 +1,15 @@
 package willatendo.fossilslegacy.data;
 
 import net.minecraft.data.PackOutput;
-import willatendo.fossilslegacy.server.item.FossilsLegacyCreativeModeTabs;
-import willatendo.fossilslegacy.server.tags.*;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
-import willatendo.fossilslegacy.server.entity.*;
-import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
+import willatendo.fossilslegacy.server.entity.Anu;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
+import willatendo.fossilslegacy.server.entity.TamedZombifiedPiglin;
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakerType;
+import willatendo.fossilslegacy.server.item.FossilsLegacyCreativeModeTabs;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.tags.*;
 import willatendo.simplelibrary.data.SimpleLanguageProvider;
 
 public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {

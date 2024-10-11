@@ -23,8 +23,6 @@ import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntityType
 import willatendo.fossilslegacy.server.block.entity.TimeMachineBlockEntity;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
-import java.util.List;
-
 public class TimeMachineBlock extends Block implements EntityBlock {
     public static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D);
 

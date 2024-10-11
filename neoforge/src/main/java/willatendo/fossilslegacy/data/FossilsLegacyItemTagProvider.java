@@ -10,9 +10,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyBlockTags;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyItemTags;
-import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.simplelibrary.server.util.TagRegister;
 
 import java.util.Optional;

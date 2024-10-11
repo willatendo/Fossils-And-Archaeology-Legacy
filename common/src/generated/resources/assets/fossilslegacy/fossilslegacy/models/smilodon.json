@@ -63,7 +63,6 @@
           "z_origin": -7.0
         }
       ],
-      "elements": [],
       "id": "nose",
       "poses": {
         "x": 0.0,
@@ -84,7 +83,6 @@
           "z_origin": -3.5
         }
       ],
-      "elements": [],
       "id": "jaw",
       "poses": {
         "x": 0.0,
@@ -106,7 +104,6 @@
           "z_origin": -6.0
         }
       ],
-      "elements": [],
       "id": "left_tooth_bottom",
       "poses": {
         "x": 0.0,
@@ -127,7 +124,6 @@
           "z_origin": -1.0
         }
       ],
-      "elements": [],
       "id": "right_front_leg",
       "poses": {
         "x": -1.5,
@@ -148,7 +144,6 @@
           "z_origin": -0.5
         }
       ],
-      "elements": [],
       "id": "tail",
       "poses": {
         "x": 0.0,
@@ -170,7 +165,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "back",
       "poses": {
         "x": 0.0,
@@ -191,7 +185,6 @@
           "z_origin": -6.0
         }
       ],
-      "elements": [],
       "id": "right_tooth_bottom",
       "poses": {
         "x": 0.0,
@@ -212,7 +205,6 @@
           "z_origin": -3.0
         }
       ],
-      "elements": [],
       "id": "body",
       "poses": {
         "x": 0.0,
@@ -233,7 +225,6 @@
           "z_origin": -3.0
         }
       ],
-      "elements": [],
       "id": "right_ear",
       "poses": {
         "x": 0.0,
@@ -254,7 +245,6 @@
           "z_origin": -1.0
         }
       ],
-      "elements": [],
       "id": "left_front_leg",
       "poses": {
         "x": 1.5,
@@ -275,7 +265,6 @@
           "z_origin": -3.0
         }
       ],
-      "elements": [],
       "id": "left_ear",
       "poses": {
         "x": 0.0,
@@ -296,7 +285,6 @@
           "z_origin": -4.0
         }
       ],
-      "elements": [],
       "id": "head",
       "poses": {
         "x": 0.0,
@@ -317,7 +305,6 @@
           "z_origin": -1.0
         }
       ],
-      "elements": [],
       "id": "left_back_leg",
       "poses": {
         "x": 1.5,
@@ -338,7 +325,6 @@
           "z_origin": -6.0
         }
       ],
-      "elements": [],
       "id": "right_tooth_top",
       "poses": {
         "x": 0.0,
@@ -359,7 +345,6 @@
           "z_origin": -1.0
         }
       ],
-      "elements": [],
       "id": "right_back_leg",
       "poses": {
         "x": -1.5,
@@ -380,7 +365,6 @@
           "z_origin": -7.0
         }
       ],
-      "elements": [],
       "id": "snout",
       "poses": {
         "x": 0.0,
@@ -401,7 +385,6 @@
           "z_origin": -6.0
         }
       ],
-      "elements": [],
       "id": "left_tooth_top",
       "poses": {
         "x": 0.0,

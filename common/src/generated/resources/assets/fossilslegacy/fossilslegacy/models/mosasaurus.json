@@ -45,7 +45,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "left_front_flipper",
       "poses": {
         "x": 5.0,
@@ -69,7 +68,6 @@
           "z_origin": -9.0
         }
       ],
-      "elements": [],
       "id": "upper_teeth",
       "poses": {
         "x": 1.0,
@@ -90,7 +88,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "right_back_flipper",
       "poses": {
         "x": -2.0,
@@ -114,7 +111,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "body",
       "poses": {
         "x": 1.0,
@@ -135,7 +131,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "left_back_flipper",
       "poses": {
         "x": 4.0,
@@ -159,7 +154,6 @@
           "z_origin": -4.0
         }
       ],
-      "elements": [],
       "id": "head",
       "poses": {
         "x": 1.0,
@@ -180,7 +174,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "right_front_flipper",
       "poses": {
         "x": -3.0,
@@ -204,7 +197,6 @@
           "z_origin": -8.0
         }
       ],
-      "elements": [],
       "id": "lower_jaw",
       "poses": {
         "x": 1.0,
@@ -225,7 +217,6 @@
           "z_origin": -9.0
         }
       ],
-      "elements": [],
       "id": "upper_jaw",
       "poses": {
         "x": 1.0,
@@ -246,7 +237,6 @@
           "z_origin": -4.0
         }
       ],
-      "elements": [],
       "id": "tail_1",
       "poses": {
         "x": 1.0,
@@ -267,7 +257,6 @@
           "z_origin": -4.0
         }
       ],
-      "elements": [],
       "id": "tail_2",
       "poses": {
         "x": 1.0,
@@ -288,7 +277,6 @@
           "z_origin": -4.0
         }
       ],
-      "elements": [],
       "id": "tail_2_spike",
       "poses": {
         "x": 1.0,
@@ -309,7 +297,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "tail_3_spike",
       "poses": {
         "x": 1.0,
@@ -330,7 +317,6 @@
           "z_origin": -4.0
         }
       ],
-      "elements": [],
       "id": "tail_3",
       "poses": {
         "x": 1.0,

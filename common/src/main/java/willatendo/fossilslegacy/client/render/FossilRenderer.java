@@ -17,16 +17,10 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
 import willatendo.fossilslegacy.api.client.ModelIdentifierRegistry;
-import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
-import willatendo.fossilslegacy.client.model.fossils.*;
-import willatendo.fossilslegacy.client.model.fossils.legacy.PteranodonSkeletonModel;
-import willatendo.fossilslegacy.client.model.fossils.legacy.TriceratopsSkeletonModel;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.server.entity.Fossil;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyFossilVariants;
 import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class FossilRenderer extends EntityRenderer<Fossil> {

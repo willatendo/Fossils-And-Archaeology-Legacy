@@ -50,7 +50,6 @@
                   "z_origin": -3.0
                 }
               ],
-              "elements": [],
               "id": "left_foot",
               "poses": {
                 "x": -0.2,
@@ -131,7 +130,6 @@
                       "z_origin": 0.0
                     }
                   ],
-                  "elements": [],
                   "id": "left_lower_arm",
                   "poses": {
                     "x": 0.9,
@@ -189,7 +187,6 @@
                           "z_origin": -6.0
                         }
                       ],
-                      "elements": [],
                       "id": "lower_jaw",
                       "poses": {
                         "x": 0.0,
@@ -224,7 +221,6 @@
                               "z_origin": -6.0
                             }
                           ],
-                          "elements": [],
                           "id": "teeth",
                           "poses": {
                             "x": 0.0,
@@ -245,7 +241,6 @@
                               "z_origin": 0.0
                             }
                           ],
-                          "elements": [],
                           "id": "crest",
                           "poses": {
                             "x": 0.0,
@@ -308,7 +303,6 @@
                       "z_origin": 0.0
                     }
                   ],
-                  "elements": [],
                   "id": "right_lower_arm",
                   "poses": {
                     "x": -0.9,
@@ -375,7 +369,6 @@
                       "z_origin": 0.0
                     }
                   ],
-                  "elements": [],
                   "id": "tail_3",
                   "poses": {
                     "x": 0.0,
@@ -452,7 +445,6 @@
                   "z_origin": -3.0
                 }
               ],
-              "elements": [],
               "id": "right_foot",
               "poses": {
                 "x": 0.2,

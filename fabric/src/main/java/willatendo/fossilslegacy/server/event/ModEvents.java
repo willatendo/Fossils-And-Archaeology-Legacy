@@ -8,13 +8,14 @@ import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.feature.FossilsLegacyPlacedFeatures;
 import willatendo.simplelibrary.server.event.modification.FabricCreativeModeTabModification;
-import willatendo.simplelibrary.server.event.registry.*;
+import willatendo.simplelibrary.server.event.registry.FabricAttributeRegister;
+import willatendo.simplelibrary.server.event.registry.FabricDynamicRegistryRegister;
+import willatendo.simplelibrary.server.event.registry.FabricResourcePackRegister;
+import willatendo.simplelibrary.server.event.registry.FabricSpawnPlacementRegister;
 
 public class ModEvents {
     public static void commonSetup() {
         BasicEvents.commonSetup();
-
-        BasicEvents.registerCommandEvent(new FabricCommandRegister());
 
         FabricCreativeModeTabModification fabricCreativeModeTabModification = new FabricCreativeModeTabModification();
         BasicEvents.buildCreativeModeTabEvent(fabricCreativeModeTabModification);

@@ -5,8 +5,8 @@ import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
-import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.genetics.cosmetics.FossilsLegacyCoatTypes;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
 
 import java.util.concurrent.CompletableFuture;
 

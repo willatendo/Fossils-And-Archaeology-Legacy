@@ -14,7 +14,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import willatendo.fossilslegacy.server.jei.*;
+import willatendo.fossilslegacy.server.jei.FossilsLegacyJEIRecipeTypes;
+import willatendo.fossilslegacy.server.jei.FossilsLegacyJEITextures;
 import willatendo.fossilslegacy.server.jei.recipe.BiomatterRecipe;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 

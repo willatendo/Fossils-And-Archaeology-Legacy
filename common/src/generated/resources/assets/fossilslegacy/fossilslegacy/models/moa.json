@@ -26,7 +26,6 @@
           "z_origin": -0.5
         }
       ],
-      "elements": [],
       "id": "left_leg",
       "poses": {
         "x": 2.0,
@@ -57,7 +56,6 @@
           "z_origin": -1.5
         }
       ],
-      "elements": [],
       "id": "right_leg",
       "poses": {
         "x": -1.0,
@@ -102,7 +100,6 @@
               "z_origin": -6.25
             }
           ],
-          "elements": [],
           "id": "head",
           "poses": {
             "x": 0.0,
@@ -161,7 +158,6 @@
           "z_origin": 3.0
         }
       ],
-      "elements": [],
       "id": "body",
       "poses": {
         "x": 0.0,

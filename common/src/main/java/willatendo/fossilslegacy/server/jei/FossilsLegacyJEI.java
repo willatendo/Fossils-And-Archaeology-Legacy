@@ -22,7 +22,10 @@ import willatendo.fossilslegacy.server.jei.ingredient.CoatTypeRenderer;
 import willatendo.fossilslegacy.server.jei.ingredient.FossilsLegacyIngredientTypes;
 import willatendo.fossilslegacy.server.jei.interpreter.MagicConchSubtypeInterpreter;
 import willatendo.fossilslegacy.server.jei.interpreter.StoneTabletSubtypeInterpreter;
-import willatendo.fossilslegacy.server.menu.*;
+import willatendo.fossilslegacy.server.menu.AnalyzerMenu;
+import willatendo.fossilslegacy.server.menu.ArchaeologyWorkbenchMenu;
+import willatendo.fossilslegacy.server.menu.CultivatorMenu;
+import willatendo.fossilslegacy.server.menu.FossilsLegacyMenuTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;

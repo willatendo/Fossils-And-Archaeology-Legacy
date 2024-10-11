@@ -48,14 +48,6 @@ public class JsonModel<T extends Entity> extends DinosaurModel<T> {
         return this.loadedParts.get(name);
     }
 
-    private Optional<ModelPart> set(ModelPart root, String name) {
-        if (root.children.containsKey(name)) {
-            return Optional.of(root.getChild(name));
-        } else {
-            return Optional.empty();
-        }
-    }
-
     @Override
     public void prepareMobModel(Entity entity, float limbSwing, float limbSwingAmount, float partialTick) {
         if (entity instanceof Dinosaur dinosaur) {

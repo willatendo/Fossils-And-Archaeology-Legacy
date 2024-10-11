@@ -35,7 +35,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "right_front_leg",
       "poses": {
         "x": 4.0,
@@ -56,7 +55,6 @@
           "z_origin": -4.0
         }
       ],
-      "elements": [],
       "id": "right_back_foot",
       "poses": {
         "x": 4.0,
@@ -78,7 +76,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "body",
       "poses": {
         "x": 0.0,
@@ -99,7 +96,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "left_front_leg",
       "poses": {
         "x": -2.0,
@@ -120,7 +116,6 @@
           "z_origin": -4.0
         }
       ],
-      "elements": [],
       "id": "left_front_foot",
       "poses": {
         "x": -2.0,
@@ -142,7 +137,6 @@
           "z_origin": -3.0
         }
       ],
-      "elements": [],
       "id": "back_plates_3",
       "poses": {
         "x": 0.0,
@@ -164,7 +158,6 @@
           "z_origin": 2.0
         }
       ],
-      "elements": [],
       "id": "back_plates_2",
       "poses": {
         "x": 0.0,
@@ -185,7 +178,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "thagomizer",
       "poses": {
         "x": 0.0,
@@ -206,7 +198,6 @@
           "z_origin": -4.0
         }
       ],
-      "elements": [],
       "id": "left_back_foot",
       "poses": {
         "x": -2.0,
@@ -228,7 +219,6 @@
           "z_origin": -8.0
         }
       ],
-      "elements": [],
       "id": "back_body",
       "poses": {
         "x": 0.0,
@@ -250,7 +240,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "left_back_leg",
       "poses": {
         "x": -2.0,
@@ -271,7 +260,6 @@
           "z_origin": -4.0
         }
       ],
-      "elements": [],
       "id": "right_front_foot",
       "poses": {
         "x": 4.0,
@@ -293,7 +281,6 @@
           "z_origin": 2.0
         }
       ],
-      "elements": [],
       "id": "tail_1",
       "poses": {
         "x": 0.0,
@@ -314,7 +301,6 @@
           "z_origin": 4.5
         }
       ],
-      "elements": [],
       "id": "tail_2",
       "poses": {
         "x": 0.0,
@@ -335,7 +321,6 @@
           "z_origin": -2.0
         }
       ],
-      "elements": [],
       "id": "right_back_leg",
       "poses": {
         "x": 4.0,
@@ -356,7 +341,6 @@
           "z_origin": 8.0
         }
       ],
-      "elements": [],
       "id": "back_plates_1",
       "poses": {
         "x": 0.0,
@@ -377,7 +361,6 @@
           "z_origin": 7.5
         }
       ],
-      "elements": [],
       "id": "tail_3",
       "poses": {
         "x": 0.0,
@@ -398,7 +381,6 @@
           "z_origin": -4.0
         }
       ],
-      "elements": [],
       "id": "front_body",
       "poses": {
         "x": 0.0,

@@ -22,7 +22,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "jaw",
       "poses": {
         "x": -3.5,
@@ -43,7 +42,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "right_arm",
       "poses": {
         "x": -6.0,
@@ -93,7 +91,6 @@
                   "z_origin": 0.0
                 }
               ],
-              "elements": [],
               "id": "left_foot",
               "poses": {
                 "x": 0.0,
@@ -133,7 +130,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "neck",
       "poses": {
         "x": -3.0,
@@ -183,7 +179,6 @@
                   "z_origin": 0.0
                 }
               ],
-              "elements": [],
               "id": "right_foot",
               "poses": {
                 "x": -1.0,
@@ -223,7 +218,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "head",
       "poses": {
         "x": -4.5,
@@ -244,7 +238,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "upper_body",
       "poses": {
         "x": -4.0,
@@ -266,7 +259,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "left_arm",
       "poses": {
         "x": 3.0,
@@ -288,7 +280,6 @@
           "z_origin": -1.0
         }
       ],
-      "elements": [],
       "id": "tail_1",
       "poses": {
         "x": -4.0,
@@ -310,7 +301,6 @@
           "z_origin": -1.0
         }
       ],
-      "elements": [],
       "id": "tail_2",
       "poses": {
         "x": -3.0,
@@ -331,7 +321,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "teeth",
       "poses": {
         "x": -4.5,
@@ -353,7 +342,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "lower_body",
       "poses": {
         "x": -5.0,
@@ -375,7 +363,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "horn_1",
       "poses": {
         "x": -6.5,
@@ -397,7 +384,6 @@
           "z_origin": -1.0
         }
       ],
-      "elements": [],
       "id": "tail_3",
       "poses": {
         "x": -2.0,
@@ -419,7 +405,6 @@
           "z_origin": 0.0
         }
       ],
-      "elements": [],
       "id": "horn_2",
       "poses": {
         "x": 2.5,

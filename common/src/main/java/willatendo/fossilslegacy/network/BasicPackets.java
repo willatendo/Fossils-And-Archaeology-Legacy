@@ -11,22 +11,16 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import willatendo.fossilslegacy.server.block.entity.GeneModificationTableBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.TimeMachineBlockEntity;
+import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Futabasaurus;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
-import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public final class BasicPackets {
     public static final ResourceLocation APPLY_GENE = FossilsLegacyUtils.resource("apply_gene");
     public static final ResourceLocation SINK = FossilsLegacyUtils.resource("sink");
     public static final ResourceLocation TIME_MACHINE_UPDATE = FossilsLegacyUtils.resource("time_machine_update");
-
-    public static final ResourceLocation OPEN_DESIGN_SCREEN = FossilsLegacyUtils.resource("open_design_screen");
-
-    public static void clientboundOpenDesignScreenPacket() {
-        
-    }
 
     public static void serverboundApplyGenePacket(BlockPos blockPos, String coatType, Level level) {
         BlockEntity blockEntity = level.getBlockEntity(blockPos);

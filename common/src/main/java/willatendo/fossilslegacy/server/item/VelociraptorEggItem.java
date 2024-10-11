@@ -8,10 +8,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.Egg;
-import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
-import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
-import willatendo.fossilslegacy.server.genetics.cosmetics.FossilsLegacyCoatTypes;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
+import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.genetics.cosmetics.FossilsLegacyCoatTypes;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
 
 public class VelociraptorEggItem extends EggItem {
     public VelociraptorEggItem(Holder<EggVariant> eggVariant, Properties properties) {

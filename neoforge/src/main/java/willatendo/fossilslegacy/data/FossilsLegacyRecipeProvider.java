@@ -19,9 +19,9 @@ import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.inventory.AnalyzationBookCategory;
 import willatendo.fossilslegacy.server.inventory.ArchaeologyBookCategory;
 import willatendo.fossilslegacy.server.inventory.CultivationBookCategory;
-import willatendo.fossilslegacy.server.tags.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.recipe.MagicConchRecipe;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyItemTags;
 import willatendo.simplelibrary.data.SimpleRecipeProvider;
 
 import java.util.ArrayList;

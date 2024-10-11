@@ -7,7 +7,7 @@ import net.minecraft.world.item.Items;
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 
-public class FossilsLegacyRecipeBookCategories {
+public final class FossilsLegacyRecipeBookCategories {
     public static final RecipeBookCategories ANALYZATION_SEARCH = FossilsModloaderHelper.INSTANCE.createRecipeBookCategory("analyzation_search", new ItemStack(Items.COMPASS));
     public static final RecipeBookCategories ANALYZATION_MISC = FossilsModloaderHelper.INSTANCE.createRecipeBookCategory("analyzation_misc", new ItemStack(FossilsLegacyItems.VELOCIRAPTOR_DNA.get()));
     public static final RecipeBookCategories ARCHAEOLOGY_WORKBENCH_SEARCH = FossilsModloaderHelper.INSTANCE.createRecipeBookCategory("archaeology_search", new ItemStack(Items.COMPASS));
