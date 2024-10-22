@@ -25,6 +25,17 @@ public class FossilsLegacyMenuTypes {
             return new ArchaeologyWorkbenchMenu(windowId, inventory, blockPos);
         }
     }));
+    public static final SimpleHolder<MenuType<PalaeontologyTableMenu>> PALAEONTOLOGY_TABLE = MENU_TYPES.register("palaeontology_table", () -> SimpleUtils.createMenuType(new ExtendedMenuSupplier<PalaeontologyTableMenu>() {
+        @Override
+        public PalaeontologyTableMenu create(int windowId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
+            return new PalaeontologyTableMenu(windowId, inventory, friendlyByteBuf);
+        }
+
+        @Override
+        public PalaeontologyTableMenu create(int windowId, Inventory inventory, BlockPos blockPos) {
+            return new PalaeontologyTableMenu(windowId, inventory, blockPos);
+        }
+    }));
     public static final SimpleHolder<MenuType<AnalyzerMenu>> ANALYZER = MENU_TYPES.register("analyzer", () -> SimpleUtils.createMenuType(new ExtendedMenuSupplier<AnalyzerMenu>() {
         @Override
         public AnalyzerMenu create(int windowId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
