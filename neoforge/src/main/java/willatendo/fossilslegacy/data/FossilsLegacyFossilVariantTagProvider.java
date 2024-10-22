@@ -17,6 +17,21 @@ public class FossilsLegacyFossilVariantTagProvider extends DataDrivenTagsProvide
 
     @Override
     protected void addTags(Provider provider) {
-        this.tag(FossilsLegacyFossilVariantTags.PLACEABLE_FROM_FOSSIL).add(FossilsLegacyFossilVariants.BRACHIOSAURUS, FossilsLegacyFossilVariants.FUTABASAURUS, FossilsLegacyFossilVariants.PTERANODON, FossilsLegacyFossilVariants.TRICERATOPS, FossilsLegacyFossilVariants.PACHYCEPHALOSAURUS, FossilsLegacyFossilVariants.COMPSOGNATHUS, FossilsLegacyFossilVariants.VELOCIRAPTOR);
+        this.tag(FossilsLegacyFossilVariantTags.PLACEABLE_FROM_FOSSIL)
+                .add(
+                        FossilsLegacyFossilVariants.ANKYLOSAURUS,
+                        FossilsLegacyFossilVariants.BRACHIOSAURUS,
+                        FossilsLegacyFossilVariants.LEGACY_BRACHIOSAURUS,
+                        FossilsLegacyFossilVariants.COMPSOGNATHUS,
+                        FossilsLegacyFossilVariants.CRYOLOPHOSAURUS,
+                        FossilsLegacyFossilVariants.FUTABASAURUS,
+                        FossilsLegacyFossilVariants.LEGACY_FUTABASAURUS,
+                        FossilsLegacyFossilVariants.GALLIMIMUS,
+                        FossilsLegacyFossilVariants.PACHYCEPHALOSAURUS,
+                        FossilsLegacyFossilVariants.PTERANODON,
+                        FossilsLegacyFossilVariants.SPINOSAURUS,
+                        FossilsLegacyFossilVariants.TRICERATOPS,
+                        FossilsLegacyFossilVariants.LEGACY_TRICERATOPS,
+                        FossilsLegacyFossilVariants.VELOCIRAPTOR);
     }
 }

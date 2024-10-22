@@ -12,6 +12,7 @@ import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
+import willatendo.fossilslegacy.server.item.ArticulatedFossilItem;
 import willatendo.fossilslegacy.server.utils.Platform;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 

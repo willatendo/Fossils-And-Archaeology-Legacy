@@ -84,7 +84,7 @@ public class Ankylosaurus extends Dinosaur implements DinopediaInformation, Ride
 
     @Override
     public Diet getDiet() {
-        return Diet.herbivore();
+        return Diet.herbivore(this.level());
     }
 
     @Override

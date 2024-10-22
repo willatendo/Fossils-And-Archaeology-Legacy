@@ -8,8 +8,12 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.block.FeederBlock;
 import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
+import willatendo.fossilslegacy.server.item.feederfood.FeederFood;
+import willatendo.fossilslegacy.server.item.feederfood.FillType;
+import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
 
@@ -19,19 +23,22 @@ public class FeederMenu extends AbstractContainerMenu {
 
     public FeederMenu(int windowId, Inventory inventory, FeederBlockEntity feederBlockEntity) {
         super(FossilsLegacyMenuTypes.FEEDER.get(), windowId);
-        this.containerLevelAccess = ContainerLevelAccess.create(feederBlockEntity.getLevel(), feederBlockEntity.getBlockPos());
+        Level level = feederBlockEntity.getLevel();
+        this.containerLevelAccess = ContainerLevelAccess.create(level, feederBlockEntity.getBlockPos());
         this.feederBlockEntity = feederBlockEntity;
 
         this.addSlot(new Slot(feederBlockEntity, 0, 60, 62) {
             @Override
             public boolean mayPlace(ItemStack itemStack) {
-                return FeederBlockEntity.getMeatFoodLevel(itemStack) > 0;
+                FeederFood feederFood = FeederFood.getFeederFood(level, itemStack);
+                return feederFood != null && feederFood.getFillType() == FillType.MEAT;
             }
         });
         this.addSlot(new Slot(feederBlockEntity, 1, 104, 62) {
             @Override
             public boolean mayPlace(ItemStack itemStack) {
-                return FeederBlockEntity.getPlantsFoodLevel(itemStack) > 0;
+                FeederFood feederFood = FeederFood.getFeederFood(level, itemStack);
+                return feederFood != null && feederFood.getFillType() == FillType.PLANT;
             }
         });
 

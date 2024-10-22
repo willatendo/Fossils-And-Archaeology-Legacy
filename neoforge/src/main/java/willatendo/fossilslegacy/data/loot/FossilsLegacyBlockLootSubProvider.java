@@ -13,7 +13,6 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.data.loot.SimpleBlockLootSubProvider;
 
 public class FossilsLegacyBlockLootSubProvider extends SimpleBlockLootSubProvider {
-
     public FossilsLegacyBlockLootSubProvider(HolderLookup.Provider registries) {
         super(registries, FossilsLegacyUtils.ID);
     }

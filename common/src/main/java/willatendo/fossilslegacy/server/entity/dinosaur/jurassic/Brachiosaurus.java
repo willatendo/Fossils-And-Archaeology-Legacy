@@ -41,7 +41,7 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Rid
     }
 
     public static AttributeSupplier brachiosaurusAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.05D).add(Attributes.ATTACK_DAMAGE, 4.0D).build();
+        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.35D).add(Attributes.ATTACK_DAMAGE, 4.0D).build();
     }
 
     @Override
@@ -81,7 +81,7 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Rid
 
     @Override
     public Diet getDiet() {
-        return Diet.herbivore();
+        return Diet.herbivore(this.level());
     }
 
     @Override

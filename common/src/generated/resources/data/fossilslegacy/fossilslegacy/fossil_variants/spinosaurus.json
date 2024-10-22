@@ -1,0 +1,15 @@
+{
+  "base_scale_height": 0.5,
+  "base_scale_width": 0.5,
+  "bounding_box_growth": 0.4,
+  "bounding_box_height": 0.5,
+  "bounding_box_width": 0.5,
+  "fossil_count": 7,
+  "fossil_groups": [],
+  "max_size": 8,
+  "model": "fossilslegacy:spinosaurus",
+  "shadow_growth": 0.15,
+  "shadow_size": 0.5,
+  "size_scale": 0.5125,
+  "texture": "fossilslegacy:textures/entity/spinosaurus/spinosaurus_skeleton.png"
+}

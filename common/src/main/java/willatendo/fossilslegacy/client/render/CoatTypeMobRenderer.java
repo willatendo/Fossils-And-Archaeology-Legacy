@@ -27,7 +27,7 @@ public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends Mo
     }
 
     private boolean hasModel(ResourceLocation id) {
-        return this.models.keySet().contains(id);
+        return this.models.containsKey(id);
     }
 
     private void setModel(EntityModel<T> entityModel) {
@@ -73,8 +73,8 @@ public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends Mo
         if (dinosaur instanceof WetFurEntity wetFurEntity) {
             if (wetFurEntity.isWet()) {
                 if (this.model instanceof JsonModel jsonModel) {
-                    float f = wetFurEntity.getWetShade(partialTicks);
-                    jsonModel.setColor(FastColor.ARGB32.colorFromFloat(1.0F, f, f, f));
+                    float wetShade = wetFurEntity.getWetShade(partialTicks);
+                    jsonModel.setColor(FastColor.ARGB32.colorFromFloat(1.0F, wetShade, wetShade, wetShade));
                 }
             }
         }

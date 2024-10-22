@@ -102,10 +102,9 @@ public class FossilRenderer extends EntityRenderer<Fossil> {
             }
         }
 
-        scale = fossil.getScale();
-        poseStack.scale(scale, scale, scale);
+        poseStack.scale(fossil.renderScaleWidth(), fossil.renderScaleHeight(), fossil.renderScaleWidth());
         bob = fossil.tickCount + partialTicks;
-        this.setupRotations(fossil, poseStack, bob, yBodyRot, partialTicks, scale);
+        this.setupRotations(fossil, poseStack, bob, yBodyRot, partialTicks);
         poseStack.scale(-1.0F, -1.0F, 1.0F);
         poseStack.translate(0.0F, -1.501F, 0.0F);
         float walkSpeed = 0.0F;
@@ -150,7 +149,7 @@ public class FossilRenderer extends EntityRenderer<Fossil> {
         }
     }
 
-    protected void setupRotations(Fossil fossil, PoseStack poseStack, float bob, float yBodyRot, float partialTicks, float scale) {
+    protected void setupRotations(Fossil fossil, PoseStack poseStack, float bob, float yBodyRot, float partialTicks) {
         if (fossil.isFullyFrozen()) {
             yBodyRot += (float) (Math.cos((double) fossil.tickCount * 3.25) * Math.PI * 0.4000000059604645);
         }
@@ -175,9 +174,9 @@ public class FossilRenderer extends EntityRenderer<Fossil> {
 
     @Override
     protected float getShadowRadius(Fossil fossil) {
-        return fossil.getFossilVariant().value().shadowSize() * fossil.getScale();
+        FossilVariant fossilVariant = fossil.getFossilVariant().value();
+        return fossilVariant.shadowSize() + (fossilVariant.shadowGrowth() * fossil.getSize());
     }
-
 
     @Override
     public ResourceLocation getTextureLocation(Fossil fossil) {

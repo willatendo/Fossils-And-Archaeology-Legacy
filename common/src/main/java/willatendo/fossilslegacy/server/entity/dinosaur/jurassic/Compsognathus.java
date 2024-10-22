@@ -72,7 +72,7 @@ public class Compsognathus extends Dinosaur implements DinopediaInformation, Coa
 
     @Override
     public Diet getDiet() {
-        return Diet.carnivore();
+        return Diet.carnivore(this.level());
     }
 
     @Override

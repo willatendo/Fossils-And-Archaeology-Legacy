@@ -15,7 +15,9 @@ import willatendo.fossilslegacy.server.core.registry.FossilsLegacyBuiltInRegistr
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.StoneTablet;
 import willatendo.fossilslegacy.server.entity.commands.CommandType;
+import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
 import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyFossilVariantTags;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyStoneTabletVariantTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
@@ -27,6 +29,7 @@ import java.util.function.Predicate;
 
 public class FossilsLegacyCreativeModeTabs {
     public static final SimpleRegistry<CreativeModeTab> CREATIVE_MODE_TABS = SimpleRegistry.create(Registries.CREATIVE_MODE_TAB, FossilsLegacyUtils.ID);
+    private static final Comparator<Holder<FossilVariant>> FOSSIL_VARIANT_COMPARATOR = Comparator.comparing(Holder::getRegisteredName, String::compareTo);
     private static final Comparator<Holder<StoneTabletVariant>> STONE_TABLET_COMPARATOR = Comparator.comparing(Holder::value, Comparator.<StoneTabletVariant>comparingInt(stoneTabletVariant -> stoneTabletVariant.height() * stoneTabletVariant.width()).thenComparing(StoneTabletVariant::width));
 
     public static final SimpleHolder<CreativeModeTab> FOSSILS_LEGACY = CREATIVE_MODE_TABS.register("fossils_legacy", () -> SimpleUtils.create(FossilsLegacyUtils.ID, FossilsLegacyUtils.ID, () -> FossilsLegacyItems.FOSSIL.get(), (itemDisplayParameters, output) -> {
@@ -171,11 +174,10 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get());
         output.accept(FossilsLegacyItems.PETRIFIED_SIGILLARIA_SAPLING.get());
         output.accept(FossilsLegacyItems.PETRIFIED_CALAMITES_SAPLING.get());
+        itemDisplayParameters.holders().lookup(FossilsLegacyRegistries.FOSSIL_VARIANTS).ifPresent(registryLookup -> FossilsLegacyCreativeModeTabs.generateArticulatedFossils(output, itemDisplayParameters.holders(), registryLookup, fossilVariantHolder -> fossilVariantHolder.is(FossilsLegacyFossilVariantTags.PLACEABLE_FROM_FOSSIL), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
         output.accept(FossilsLegacyItems.RELIC_SCRAP.get());
         output.accept(FossilsLegacyItems.STONE_TABLET.get());
-        itemDisplayParameters.holders().lookup(FossilsLegacyRegistries.STONE_TABLET_VARIANTS).ifPresent((registryLookup) -> {
-            FossilsLegacyCreativeModeTabs.generatePresetStoneTablets(output, itemDisplayParameters.holders(), registryLookup, stoneTabletVariantHolder -> stoneTabletVariantHolder.is(FossilsLegacyStoneTabletVariantTags.PLACEABLE), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-        });
+        itemDisplayParameters.holders().lookup(FossilsLegacyRegistries.STONE_TABLET_VARIANTS).ifPresent(registryLookup -> FossilsLegacyCreativeModeTabs.generatePresetStoneTablets(output, itemDisplayParameters.holders(), registryLookup, stoneTabletVariantHolder -> stoneTabletVariantHolder.is(FossilsLegacyStoneTabletVariantTags.PLACEABLE), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
         output.accept(FossilsLegacyItems.SCARAB_GEM.get());
         output.accept(FossilsLegacyItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get());
         output.accept(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get());
@@ -344,12 +346,19 @@ public class FossilsLegacyCreativeModeTabs {
         }
     }
 
+    private static void generateArticulatedFossils(CreativeModeTab.Output output, HolderLookup.Provider provider, HolderLookup.RegistryLookup<FossilVariant> registryLookup, Predicate<Holder<FossilVariant>> predicate, CreativeModeTab.TabVisibility tabVisibility) {
+        RegistryOps<Tag> registryOps = provider.createSerializationContext(NbtOps.INSTANCE);
+        registryLookup.listElements().filter(predicate).sorted(FOSSIL_VARIANT_COMPARATOR).forEach(reference -> {
+            ItemStack itemStack = new ItemStack(FossilsLegacyItems.ARTICULATED_FOSSIL.get());
+            itemStack.set(FossilsLegacyDataComponents.FOSSIL_VARIANT.get(), reference);
+            output.accept(itemStack, tabVisibility);
+        });
+    }
+
     private static void generatePresetStoneTablets(CreativeModeTab.Output output, HolderLookup.Provider provider, HolderLookup.RegistryLookup<StoneTabletVariant> registryLookup, Predicate<Holder<StoneTabletVariant>> predicate, CreativeModeTab.TabVisibility tabVisibility) {
         RegistryOps<Tag> registryOps = provider.createSerializationContext(NbtOps.INSTANCE);
         registryLookup.listElements().filter(predicate).sorted(STONE_TABLET_COMPARATOR).forEach(reference -> {
-            CustomData customData = (CustomData.EMPTY.update(registryOps, StoneTablet.VARIANT_MAP_CODEC, reference).getOrThrow()).update((compoundTag) -> {
-                compoundTag.putString("id", "fossilslegacy:stone_tablet");
-            });
+            CustomData customData = CustomData.EMPTY.update(registryOps, StoneTablet.VARIANT_MAP_CODEC, reference).getOrThrow().update(compoundTag -> compoundTag.putString("id", "fossilslegacy:stone_tablet"));
             ItemStack itemStack = new ItemStack(FossilsLegacyItems.STONE_TABLET.get());
             itemStack.set(DataComponents.ENTITY_DATA, customData);
             output.accept(itemStack, tabVisibility);

@@ -35,6 +35,7 @@ import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
 import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.item.feederfood.FeederFood;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.event.modification.CreativeModeTabModification;
 import willatendo.simplelibrary.server.event.modification.FlammablesModification;
@@ -162,6 +163,7 @@ public class BasicEvents {
 
     public static void newDynamicRegistryEvent(DynamicRegistryRegister dynamicRegistryRegister) {
         dynamicRegistryRegister.register(FossilsLegacyRegistries.COAT_TYPES, CoatType.DIRECT_CODEC);
+        dynamicRegistryRegister.register(FossilsLegacyRegistries.FEEDER_FOOD, FeederFood.DIRECT_CODEC);
         dynamicRegistryRegister.register(FossilsLegacyRegistries.FOSSIL_VARIANTS, FossilVariant.DIRECT_CODEC);
         dynamicRegistryRegister.register(FossilsLegacyRegistries.STONE_TABLET_VARIANTS, StoneTabletVariant.DIRECT_CODEC);
     }

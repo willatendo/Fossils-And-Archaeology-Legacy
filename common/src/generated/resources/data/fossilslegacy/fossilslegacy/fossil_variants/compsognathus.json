@@ -1,10 +1,15 @@
 {
-  "base_scale": 0.25,
-  "bounding_box_height": 0.75,
-  "bounding_box_width": 0.75,
+  "base_scale_height": 0.25,
+  "base_scale_width": 0.25,
+  "bounding_box_growth": 0.1,
+  "bounding_box_height": 0.25,
+  "bounding_box_width": 0.25,
+  "fossil_count": 3,
+  "fossil_groups": [],
   "max_size": 8,
   "model": "fossilslegacy:compsognathus",
-  "shadow_size": 0.125,
+  "shadow_growth": 0.025,
+  "shadow_size": 0.25,
   "size_scale": 0.125,
   "texture": "fossilslegacy:textures/entity/compsognathus/compsognathus_skeleton.png"
 }

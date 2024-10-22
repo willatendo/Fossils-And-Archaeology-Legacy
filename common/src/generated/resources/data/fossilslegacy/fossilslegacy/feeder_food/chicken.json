@@ -1,0 +1,8 @@
+{
+  "amount": 30,
+  "fill_type": "meat",
+  "id": "fossilslegacy:chicken",
+  "item_stack": {
+    "id": "minecraft:chicken"
+  }
+}

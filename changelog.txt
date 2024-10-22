@@ -1,7 +1,6 @@
 26/10/2024
 - Forge Is Now Supported
 - Futabasaurus Now Articulates Entire Neck
-- Brachiosaurus Adult Now Has Double-Sized Texture
 - Tamed Tyrannosaurus No Longer Breaks Blocks
 - Replaced Nether Coin With Ice Age Coin
 - Stone Tablets Are Now Data-Driven
@@ -17,6 +16,9 @@
 - Updated JEI Plugin To New JEI System - Minimal Differences Client-Side
 - Javelin Now Does 2 More Damage
 - Debug Items No Longer All Called "Debug Item" With Type In Description, Now Called It In Name
+- Fossils No Longer Drop Things When Killed In Creative Mode
+- Updated Brachiosaurs Model
+- Fossil No Longer Places Fossils
 - (Fabric) Fixed Server Crash
 - Fixed Placing Stone Tables
 - Fixed Cannibalism
@@ -29,6 +31,9 @@
 - (Fabric) Fixed Composter Not Working For Lepidodendron Saplings and Lepidodendron Leaves
 - Fixed Dodo Meat Not Analyzing To Dodo DNA
 - Fixed Z-Fighting On Velocirator
+- Fixed Some Dinosaur Meats Not Working In Feeder
+- (Fabric) Fixed Crash
+- Fixed Dispensor Not Dispensing Things Properly
 - Added Updated Triceratops Model
 - Added "Anu Totem" Stone Tablet
 - Added Coat-Types; Data-Driven Cosmetics For Dinosaurs
@@ -142,6 +147,16 @@
 - Added Cooked Ankylosaurus
 - Added Data-Driven Skeletons
 - Added "design" Command, Opens Design Screen
+- Added Ankylosaurus Skeleton
+- Added Gallimimus Skeleton
+- Added Spinosaurus Skeleton
+- Added Triceratops Skeleton
+- Added Data-Driven Feeder Foods
+- Added "herbivore_foods" Item Tag To Define Items Herbivores Can Eat
+- Added "carnivore_foods" Item Tag To Define Items Carivores Can Eat
+- Added "omnivore_foods" Item Tag To Define Items Omnivores Can Eat
+- Added "piscivore_foods" Item Tag To Define Items Piscivores Can Eat
+- Added Articulated Fossil Item
 - Removed Client Config As It Is No Longer Necessary
 12/9/2024
 - (Fabric) Fixed Crash

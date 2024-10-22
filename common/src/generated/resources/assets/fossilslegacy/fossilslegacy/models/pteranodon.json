@@ -1,21 +1,7 @@
 {
   "animations": {
-    "head": {
-      "id": "fossilslegacy:pteranodon_head",
-      "load_parts": [
-        "crown",
-        "upper_mouth",
-        "lower_mouth",
-        "head"
-      ]
-    },
-    "walk": {
-      "id": "fossilslegacy:pteranodon_walk",
-      "load_parts": [
-        "right_leg",
-        "left_leg"
-      ]
-    }
+    "head": "fossilslegacy:pteranodon_head",
+    "walk": "fossilslegacy:pteranodon_walk"
   },
   "elements": [
     {

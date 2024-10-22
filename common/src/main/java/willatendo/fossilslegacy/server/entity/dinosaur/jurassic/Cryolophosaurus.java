@@ -74,7 +74,7 @@ public class Cryolophosaurus extends Dinosaur implements DinopediaInformation, C
 
     @Override
     public Diet getDiet() {
-        return Diet.carnivore();
+        return Diet.carnivore(this.level());
     }
 
     @Override

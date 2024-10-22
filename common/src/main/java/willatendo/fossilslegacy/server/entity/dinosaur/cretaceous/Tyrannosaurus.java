@@ -99,7 +99,7 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
 
     @Override
     public Diet getDiet() {
-        return Diet.carnivore();
+        return Diet.carnivore(this.level());
     }
 
     @Override

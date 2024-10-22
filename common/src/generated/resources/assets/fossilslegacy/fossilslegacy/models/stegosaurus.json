@@ -1,25 +1,6 @@
 {
   "animations": {
-    "walk": {
-      "id": "fossilslegacy:stegosaurus_walk",
-      "load_parts": [
-        "tail_1",
-        "tail_2",
-        "tail_3",
-        "right_front_leg",
-        "left_front_leg",
-        "right_front_foot",
-        "left_front_foot",
-        "right_back_leg",
-        "left_back_leg",
-        "right_back_foot",
-        "left_back_foot",
-        "back_plates_1",
-        "back_plates_2",
-        "back_plates_3",
-        "thagomizer"
-      ]
-    }
+    "walk": "fossilslegacy:stegosaurus_walk"
   },
   "elements": [
     {

@@ -26,7 +26,7 @@
     "model": "fossilslegacy:triceratops"
   },
   "textures": {
-    "baby_texture": "fossilslegacy:textures/entity/triceratops/brown_baby_triceratops.png",
-    "texture": "fossilslegacy:textures/entity/triceratops/brown_triceratops.png"
+    "baby_texture": "fossilslegacy:textures/entity/triceratops/brown_triceratops_baby.png",
+    "texture": "fossilslegacy:textures/entity/triceratops/brown_triceratops_adult.png"
   }
 }

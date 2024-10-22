@@ -84,7 +84,7 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, CoatType
 
     @Override
     public Diet getDiet() {
-        return Diet.carnivore();
+        return Diet.carnivore(this.level());
     }
 
     @Override

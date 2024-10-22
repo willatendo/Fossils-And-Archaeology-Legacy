@@ -14,30 +14,33 @@ import willatendo.fossilslegacy.server.item.PlaceEntityItem;
 import java.util.function.Consumer;
 
 public class DispenseEntityItemBehavior extends DefaultDispenseItemBehavior {
-	private Consumer<Entity> additionalInfo;
+    private Consumer<Entity> additionalInfo;
 
-	public DispenseEntityItemBehavior(Consumer<Entity> additionalInfo) {
-		this.additionalInfo = additionalInfo;
-	}
+    public DispenseEntityItemBehavior(Consumer<Entity> additionalInfo) {
+        this.additionalInfo = additionalInfo;
+    }
 
-	public DispenseEntityItemBehavior() {
-	}
+    public DispenseEntityItemBehavior() {
+    }
 
-	@Override
-	public ItemStack execute(BlockSource blockSource, ItemStack itemStack) {
-		Direction direction = blockSource.state().getValue(DispenserBlock.FACING);
-		EntityType<?> entityType = ((PlaceEntityItem) itemStack.getItem()).getEntityType().get();
-		try {
-			Entity entity = entityType.spawn(blockSource.level(), itemStack, null, blockSource.pos().relative(direction), MobSpawnType.DISPENSER, direction != Direction.UP, false);
-			if (this.additionalInfo != null) {
-				this.additionalInfo.accept(entity);
-			}
-		} catch (Exception exception) {
-			LOGGER.error("Error while dispensing entity from dispenser at {}", (Object) blockSource.pos(), (Object) exception);
-			return ItemStack.EMPTY;
-		}
-		itemStack.shrink(1);
-		blockSource.level().gameEvent(null, GameEvent.ENTITY_PLACE, blockSource.pos());
-		return itemStack;
-	}
+    @Override
+    public ItemStack execute(BlockSource blockSource, ItemStack itemStack) {
+        Direction direction = blockSource.state().getValue(DispenserBlock.FACING);
+        if (itemStack.getItem() instanceof PlaceEntityItem placeEntityItem) {
+            EntityType entityType = (EntityType) placeEntityItem.getEntityType().get();
+            try {
+                Entity entity = entityType.spawn(blockSource.level(), itemStack, null, blockSource.pos().relative(direction), MobSpawnType.DISPENSER, direction != Direction.UP, false);
+                placeEntityItem.entityModification(itemStack, entity);
+                if (this.additionalInfo != null) {
+                    this.additionalInfo.accept(entity);
+                }
+            } catch (Exception exception) {
+                LOGGER.error("Error while dispensing entity from dispenser at {}", blockSource.pos(), exception);
+                return ItemStack.EMPTY;
+            }
+        }
+        itemStack.shrink(1);
+        blockSource.level().gameEvent(null, GameEvent.ENTITY_PLACE, blockSource.pos());
+        return itemStack;
+    }
 }

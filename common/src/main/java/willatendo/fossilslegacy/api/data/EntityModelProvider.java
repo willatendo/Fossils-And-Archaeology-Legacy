@@ -11,50 +11,23 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import org.apache.commons.compress.utils.Lists;
-import willatendo.fossilslegacy.api.client.BuiltInAnimationType;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public abstract class EntityModelProvider implements DataProvider {
     private final PackOutput packOutput;
     private final String modId;
-    protected final List<ModelHolder> models = Lists.newArrayList();
+    protected final List<EntityModelHolder> models = Lists.newArrayList();
 
     public EntityModelProvider(PackOutput packOutput, String modId) {
         this.packOutput = packOutput;
         this.modId = modId;
     }
 
-    protected void add(String id, LayerDefinition layerDefinition, String... headPieces) {
-        this.models.add(new ModelHolder(this.mod(id), layerDefinition, Map.of(), Map.of(), headPieces));
-    }
-
-    protected void add(String id, LayerDefinition layerDefinition, String animationName, BuiltInAnimationType animations, String... headPieces) {
-        this.models.add(new ModelHolder(this.mod(id), layerDefinition, Map.of(), Map.of(animationName, animations), headPieces));
-    }
-
-    protected void add(String id, LayerDefinition layerDefinition, String animationName1, BuiltInAnimationType animation1, String animationName2, BuiltInAnimationType animation2, String... headPieces) {
-        this.models.add(new ModelHolder(this.mod(id), layerDefinition, Map.of(), Map.of(animationName1, animation1, animationName2, animation2), headPieces));
-    }
-
-    protected void add(String id, LayerDefinition layerDefinition, String animationName1, BuiltInAnimationType animation1, String animationName2, BuiltInAnimationType animation2, String animationName3, BuiltInAnimationType animation3, String... headPieces) {
-        this.models.add(new ModelHolder(this.mod(id), layerDefinition, Map.of(), Map.of(animationName1, animation1, animationName2, animation2, animationName3, animation3), headPieces));
-    }
-
-    protected void add(String id, LayerDefinition layerDefinition, String animationName1, BuiltInAnimationType animation1, String animationName2, BuiltInAnimationType animation2, String animationName3, BuiltInAnimationType animation3, String animationName4, BuiltInAnimationType animation4, String... headPieces) {
-        this.models.add(new ModelHolder(this.mod(id), layerDefinition, Map.of(), Map.of(animationName1, animation1, animationName2, animation2, animationName3, animation3, animationName4, animation4), headPieces));
-    }
-
-    protected void add(String id, LayerDefinition layerDefinition, String animationName, ResourceLocation animation, String... headPieces) {
-        this.models.add(new ModelHolder(this.mod(id), layerDefinition, Map.of(animationName, animation), Map.of(), headPieces));
-    }
-
-    protected void add(String id, LayerDefinition layerDefinition, String animationName1, ResourceLocation animation1, String animationName2, ResourceLocation animation2, String... headPieces) {
-        this.models.add(new ModelHolder(this.mod(id), layerDefinition, Map.of(animationName1, animation1, animationName2, animation2), Map.of(), headPieces));
+    protected void add(EntityModelHolder entityModelHolder) {
+        this.models.add(entityModelHolder);
     }
 
     protected abstract void getAll();
@@ -76,13 +49,8 @@ public abstract class EntityModelProvider implements DataProvider {
             model.animations().forEach((animationName, animation) -> {
                 animations.addProperty(animationName, animation.toString());
             });
-            model.builtInAnimations.forEach((animationName, builtInAnimationType) -> {
-                JsonObject animationObject = new JsonObject();
-                animationObject.addProperty("id", builtInAnimationType.getId().toString());
-                JsonArray loadParts = new JsonArray();
-                List.of(builtInAnimationType.loadParts()).forEach(loadParts::add);
-                animationObject.add("load_parts", loadParts);
-                animations.add(animationName, animationObject);
+            model.builtInAnimations().forEach((animationName, builtInAnimationType) -> {
+                animations.addProperty(animationName, builtInAnimationType.getId().toString());
             });
             jsonObject.add("animations", animations);
             jsonObject.addProperty("model_id", id.toString());
@@ -156,8 +124,5 @@ public abstract class EntityModelProvider implements DataProvider {
     @Override
     public String getName() {
         return "Entity Models: " + this.modId;
-    }
-
-    private record ModelHolder(ResourceLocation id, LayerDefinition layerDefinition, Map<String, ResourceLocation> animations, Map<String, BuiltInAnimationType> builtInAnimations, String... headPieces) {
     }
 }

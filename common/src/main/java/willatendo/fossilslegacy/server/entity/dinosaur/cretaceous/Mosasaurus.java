@@ -84,7 +84,7 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation, CoatTy
 
     @Override
     public Diet getDiet() {
-        return Diet.piscivore();
+        return Diet.piscivore(this.level());
     }
 
     @Override

@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-04T17:49:51.7056247	Item Models: fossilslegacy
+// 1.21.1	2024-10-20T17:11:36.1927151	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 1f02e6db84914fc2677089f5e420f925ba109484 assets/fossilslegacy/models/item/ancient_axe.json
 e6aea94981911965db91c7f52bfa4555de4d4182 assets/fossilslegacy/models/item/ancient_axe_artifact.json
@@ -65,6 +65,7 @@ f217309c3342bd9c0dd280b6d70f8d364312c53b assets/fossilslegacy/models/item/ankylo
 31dd43877df061d9545cec3170428577d29da4ac assets/fossilslegacy/models/item/archaeology_workbench.json
 66546aeec06feb4f29bd0225a050a892a40a92f7 assets/fossilslegacy/models/item/armadillo_dna.json
 fc6c7bcc6e331c00aedd4f1425c3c9ad0f2af20d assets/fossilslegacy/models/item/armadillo_embryo_syringe.json
+3d3e29bbf8162315b349278077b5149c3335493e assets/fossilslegacy/models/item/articulated_fossil.json
 006c6a336c2f50a3ab3877719fd9eab14abc5cad assets/fossilslegacy/models/item/axolotlspawn.json
 1268493f3ef08c709dd6675a0561099019d80ceb assets/fossilslegacy/models/item/axolotl_dna.json
 75711b99966bcb22706ccde91b66cc3e5eb14f53 assets/fossilslegacy/models/item/black_cultivator.json

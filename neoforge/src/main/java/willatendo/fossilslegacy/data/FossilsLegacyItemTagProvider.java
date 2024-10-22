@@ -7,10 +7,12 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.item.feederfood.FillType;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyBlockTags;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyItemTags;
 import willatendo.simplelibrary.server.util.TagRegister;
@@ -74,6 +76,10 @@ public class FossilsLegacyItemTagProvider extends ItemTagsProvider {
         this.tag(ItemTags.WOLF_FOOD).add(FossilsLegacyItems.SIO_CHIU_LE.get());
         this.tag(ItemTags.MEAT).add(FossilsLegacyItems.SIO_CHIU_LE.get());
         this.tag(FossilsLegacyItemTagProvider.FOOD_POISONING_FOODS).add(FossilsLegacyItems.RAW_CHICKEN_SOUP_BUCKET.get());
+        this.tag(FossilsLegacyItemTags.CARNIVORE_FOODS).add(Items.BEEF, Items.COOKED_BEEF, Items.CHICKEN, Items.COOKED_CHICKEN, Items.MUTTON, Items.COOKED_MUTTON, Items.RABBIT, Items.COOKED_RABBIT, Items.PORKCHOP, Items.COOKED_PORKCHOP, Items.COD, Items.COOKED_COD, Items.SALMON, Items.COOKED_SALMON, Items.TROPICAL_FISH, FossilsLegacyItems.RAW_TRICERATOPS.get(), FossilsLegacyItems.RAW_VELOCIRAPTOR.get(), FossilsLegacyItems.RAW_TYRANNOSAURUS.get(), FossilsLegacyItems.RAW_PTERANODON.get(), FossilsLegacyItems.RAW_FUTABASAURUS.get(), FossilsLegacyItems.RAW_MOSASAURUS.get(), FossilsLegacyItems.RAW_STEGOSAURUS.get(), FossilsLegacyItems.RAW_DILOPHOSAURUS.get(), FossilsLegacyItems.RAW_BRACHIOSAURUS.get(), FossilsLegacyItems.RAW_SMILODON.get(), FossilsLegacyItems.RAW_MAMMOTH.get(), FossilsLegacyItems.RAW_CARNOTAURUS.get(), FossilsLegacyItems.RAW_CRYOLOPHOSAURUS.get(), FossilsLegacyItems.RAW_THERIZINOSAURUS.get(), FossilsLegacyItems.RAW_PACHYCEPHALOSAURUS.get(), FossilsLegacyItems.RAW_COMPSOGNATHUS.get(), FossilsLegacyItems.RAW_DODO.get(), FossilsLegacyItems.RAW_MOA.get(), FossilsLegacyItems.RAW_GALLIMIMUS.get(), FossilsLegacyItems.RAW_SPINOSAURUS.get(), FossilsLegacyItems.RAW_ANKYLOSAURUS.get(), FossilsLegacyItems.COOKED_TRICERATOPS.get(), FossilsLegacyItems.COOKED_VELOCIRAPTOR.get(), FossilsLegacyItems.COOKED_TYRANNOSAURUS.get(), FossilsLegacyItems.COOKED_PTERANODON.get(), FossilsLegacyItems.SIO_CHIU_LE.get(), FossilsLegacyItems.COOKED_FUTABASAURUS.get(), FossilsLegacyItems.COOKED_MOSASAURUS.get(), FossilsLegacyItems.COOKED_STEGOSAURUS.get(), FossilsLegacyItems.COOKED_DILOPHOSAURUS.get(), FossilsLegacyItems.COOKED_BRACHIOSAURUS.get(), FossilsLegacyItems.COOKED_SMILODON.get(), FossilsLegacyItems.COOKED_MAMMOTH.get(), FossilsLegacyItems.COOKED_CARNOTAURUS.get(), FossilsLegacyItems.COOKED_CRYOLOPHOSAURUS.get(), FossilsLegacyItems.COOKED_THERIZINOSAURUS.get(), FossilsLegacyItems.COOKED_PACHYCEPHALOSAURUS.get(), FossilsLegacyItems.COOKED_COMPSOGNATHUS.get(), FossilsLegacyItems.COOKED_DODO.get(), FossilsLegacyItems.COOKED_MOA.get(), FossilsLegacyItems.COOKED_GALLIMIMUS.get(), FossilsLegacyItems.COOKED_SPINOSAURUS.get(), FossilsLegacyItems.COOKED_ANKYLOSAURUS.get());
+        this.tag(FossilsLegacyItemTags.HERBIVORE_FOODS).add(Items.APPLE, Items.WHEAT, Items.BREAD, Items.SUGAR_CANE, Items.WHEAT_SEEDS, Items.BEETROOT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.MELON_SLICE, Items.SWEET_BERRIES, Items.GLOW_BERRIES, Items.CARROT, Items.POTATO, Items.BAKED_POTATO, Items.BEETROOT, Items.KELP, FossilsLegacyItems.JURASSIC_FERN_SPORES.get());
+        this.tag(FossilsLegacyItemTags.OMNIVORE_FOODS).addTags(FossilsLegacyItemTags.CARNIVORE_FOODS, FossilsLegacyItemTags.HERBIVORE_FOODS);
+        this.tag(FossilsLegacyItemTags.PISCIVORE_FOODS).add(Items.COD, Items.COOKED_COD, Items.SALMON, Items.COOKED_SALMON, Items.TROPICAL_FISH, FossilsLegacyItems.SIO_CHIU_LE.get(), FossilsLegacyItems.NAUTILUS.get());
 
         this.copy(FossilsLegacyBlockTags.LEPIDODENDRON_LOGS, FossilsLegacyItemTags.LEPIDODENDRON_LOGS);
         this.copy(FossilsLegacyBlockTags.SIGILLARIA_LOGS, FossilsLegacyItemTags.SIGILLARIA_LOGS);

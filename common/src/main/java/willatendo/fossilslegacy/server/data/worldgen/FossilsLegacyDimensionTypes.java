@@ -12,7 +12,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.OptionalLong;
 
 public class FossilsLegacyDimensionTypes {
-    public static final ResourceKey<DimensionType> PREHISTORY = create("prehistory");
+    public static final ResourceKey<DimensionType> PREHISTORY = FossilsLegacyDimensionTypes.create("prehistory");
 
     public static ResourceKey<DimensionType> create(String name) {
         return ResourceKey.create(Registries.DIMENSION_TYPE, FossilsLegacyUtils.resource(name));

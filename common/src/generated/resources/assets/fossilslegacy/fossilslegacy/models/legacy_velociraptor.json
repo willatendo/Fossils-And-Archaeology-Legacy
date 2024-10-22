@@ -1,24 +1,6 @@
 {
   "animations": {
-    "walk": {
-      "id": "fossilslegacy:legacy_velociraptor_walk",
-      "load_parts": [
-        "right_thigh",
-        "left_thigh",
-        "right_leg",
-        "left_leg",
-        "right_foot",
-        "left_foot",
-        "right_hook_1",
-        "left_hook_1",
-        "right_hook_2",
-        "left_hook_2",
-        "right_bicep",
-        "left_bicep",
-        "right_hand",
-        "left_hand"
-      ]
-    }
+    "walk": "fossilslegacy:legacy_velociraptor_walk"
   },
   "elements": [
     {

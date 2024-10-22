@@ -84,7 +84,7 @@ public class Spinosaurus extends Dinosaur implements DinopediaInformation, CoatT
 
     @Override
     public Diet getDiet() {
-        return Diet.piscivore();
+        return Diet.piscivore(this.level());
     }
 
     @Override

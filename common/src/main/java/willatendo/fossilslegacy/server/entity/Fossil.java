@@ -13,8 +13,10 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -25,6 +27,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
+import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 
 public class Fossil extends Mob {
@@ -42,14 +45,24 @@ public class Fossil extends Mob {
     }
 
     @Override
+    protected EntityDimensions getDefaultDimensions(Pose pose) {
+        FossilVariant fossilVariant = this.getFossilVariant().value();
+        return this.dimensions = EntityDimensions.scalable(fossilVariant.boundingBoxWidth() + (fossilVariant.boundingBoxGrowth() * this.getSize()), fossilVariant.boundingBoxHeight() + (fossilVariant.boundingBoxGrowth() * this.getSize()));
+    }
+
+    @Override
     public boolean removeWhenFarAway(double distance) {
         return false;
     }
 
-    @Override
-    public float getScale() {
+    public float renderScaleWidth() {
         FossilVariant fossilVariant = this.getFossilVariant().value();
-        return fossilVariant.baseScale() + (fossilVariant.sizeScale() * this.getSize());
+        return fossilVariant.baseScaleWidth() + (fossilVariant.sizeScale() * (float) this.getSize());
+    }
+
+    public float renderScaleHeight() {
+        FossilVariant fossilVariant = this.getFossilVariant().value();
+        return fossilVariant.baseScaleHeight() + (fossilVariant.sizeScale() * (float) this.getSize());
     }
 
     @Override
@@ -64,6 +77,21 @@ public class Fossil extends Mob {
         double z = this.getZ();
         super.refreshDimensions();
         this.setPos(x, y, z);
+    }
+
+    public EntityDimensions getEntityDimensions(int size) {
+        FossilVariant fossilVariant = this.getFossilVariant().value();
+        return EntityDimensions.scalable(fossilVariant.boundingBoxWidth() + (fossilVariant.boundingBoxGrowth() * size), fossilVariant.boundingBoxHeight() + (fossilVariant.boundingBoxGrowth() * size));
+    }
+
+    @Override
+    public void tick() {
+        if (!this.isNoAi()) {
+            if (this.dimensions.width() != this.getEntityDimensions(this.getSize()).width() || this.dimensions.height() != this.getEntityDimensions(this.getSize()).height()) {
+                this.refreshDimensions();
+            }
+        }
+        super.tick();
     }
 
     @Override
@@ -135,6 +163,7 @@ public class Fossil extends Mob {
 
     public void setSize(int size) {
         this.entityData.set(SIZE, size);
+        this.refreshDimensions();
     }
 
     public int getSize() {
@@ -143,12 +172,14 @@ public class Fossil extends Mob {
 
     @Override
     public boolean hurt(DamageSource damageSource, float damage) {
-        if (this.getSize() > 0) {
-            for (int i = 0; i < this.getSize(); i++) {
-                Block.popResource(this.level(), this.blockPosition(), new ItemStack(Items.BONE));
+        if (!damageSource.isCreativePlayer()) {
+            if (this.getSize() > 0) {
+                for (int i = 0; i < this.getSize(); i++) {
+                    Block.popResource(this.level(), this.blockPosition(), new ItemStack(Items.BONE));
+                }
             }
+            Block.popResource(this.level(), this.blockPosition(), new ItemStack(FossilsLegacyItems.FOSSIL.get()));
         }
-        Block.popResource(this.level(), this.blockPosition(), new ItemStack(FossilsLegacyItems.FOSSIL.get()));
         this.remove(RemovalReason.KILLED);
         return true;
     }

@@ -169,6 +169,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.MOA_EGG.get());
         this.basicItem(FossilsLegacyItems.MAGIC_CONCH.get());
         this.basicItem(FossilsLegacyItems.JURASSIC_FERN_SPORES.get());
+        this.basicItem(FossilsLegacyItems.ARTICULATED_FOSSIL.get());
         this.basicItem(FossilsLegacyItems.RELIC_SCRAP.get());
         this.basicItem(FossilsLegacyItems.STONE_TABLET.get());
         this.handheldItem(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get());

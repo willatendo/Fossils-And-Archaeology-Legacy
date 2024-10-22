@@ -1,13 +1,17 @@
 package willatendo.fossilslegacy.client;
 
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import willatendo.fossilslegacy.client.screen.SkullOverlayScreen;
 import willatendo.fossilslegacy.dual.FossilsLegacyDualEvents;
 import willatendo.fossilslegacy.server.inventory.FossilsLegacyRecipeBookTypes;
+import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
 import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
 import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
@@ -42,35 +46,25 @@ public class ClientEvents {
 
         event.registerRecipeCategoryFinder(FossilsLegacyRecipeTypes.ANALYZATION.get(), recipeHolder -> {
             AnalyzationRecipe analyzationRecipe = (AnalyzationRecipe) recipeHolder.value();
-            switch (analyzationRecipe.analyzationBookCategory) {
-                default:
-                case MISC:
-                    return FossilsLegacyRecipeBookCategories.ANALYZATION_MISC;
-            }
+            return switch (analyzationRecipe.analyzationBookCategory) {
+                default -> FossilsLegacyRecipeBookCategories.ANALYZATION_MISC;
+            };
         });
         event.registerRecipeCategoryFinder(FossilsLegacyRecipeTypes.ARCHAEOLOGY.get(), recipeHolder -> {
             ArchaeologyRecipe archaeologyRecipe = (ArchaeologyRecipe) recipeHolder.value();
-            switch (archaeologyRecipe.archaeologyBookCategory) {
-                case RESTORE:
-                    return FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_RESTORE;
-                case REPAIR:
-                    return FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_REPAIR;
-                default:
-                case MISC:
-                    return FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_MISC;
-            }
+            return switch (archaeologyRecipe.archaeologyBookCategory) {
+                case RESTORE -> FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_RESTORE;
+                case REPAIR -> FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_REPAIR;
+                default -> FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_MISC;
+            };
         });
         event.registerRecipeCategoryFinder(FossilsLegacyRecipeTypes.CULTIVATION.get(), recipeHolder -> {
             CultivationRecipe cultivationRecipe = (CultivationRecipe) recipeHolder.value();
-            switch (cultivationRecipe.cultivationBookCategory) {
-                case EGG:
-                    return FossilsLegacyRecipeBookCategories.CULTIVATION_EGGS;
-                case PLANT:
-                    return FossilsLegacyRecipeBookCategories.CULTIVATION_PLANTS;
-                default:
-                case MISC:
-                    return FossilsLegacyRecipeBookCategories.CULTIVATION_MISC;
-            }
+            return switch (cultivationRecipe.cultivationBookCategory) {
+                case EGG -> FossilsLegacyRecipeBookCategories.CULTIVATION_EGGS;
+                case PLANT -> FossilsLegacyRecipeBookCategories.CULTIVATION_PLANTS;
+                default -> FossilsLegacyRecipeBookCategories.CULTIVATION_MISC;
+            };
         });
     }
 

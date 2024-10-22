@@ -330,6 +330,7 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
     @Override
     public void setGrowthStage(int growthStage) {
         this.entityData.set(GROWTH_STAGE, growthStage);
+        this.refreshDimensions();
     }
 
     @Override

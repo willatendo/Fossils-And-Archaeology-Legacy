@@ -8,9 +8,11 @@ import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.animal.goat.Goat;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
+import net.minecraft.world.level.LevelAccessor;
 import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Nautilus;
 import willatendo.fossilslegacy.server.entity.util.DinoUtils;
+import willatendo.fossilslegacy.server.item.feederfood.FeederFood;
+import willatendo.fossilslegacy.server.item.feederfood.FillType;
 
 public interface Diet {
     boolean getsFoodFromKill();
@@ -21,7 +23,7 @@ public interface Diet {
 
     Ingredient getTemptFoods();
 
-    static Diet piscivore() {
+    static Diet piscivore(LevelAccessor levelAccessor) {
         return new Diet() {
             @Override
             public boolean getsFoodFromKill() {
@@ -30,7 +32,11 @@ public interface Diet {
 
             @Override
             public int getItemStackFoodValue(ItemStack itemStack) {
-                return FeederBlockEntity.getMeatFoodLevel(itemStack);
+                FeederFood feederFood = FeederFood.getFeederFood(levelAccessor, itemStack);
+                if (feederFood != null && feederFood.sameFillType(FillType.MEAT)) {
+                    return feederFood.getAmount();
+                }
+                return 0;
             }
 
             @Override
@@ -48,7 +54,7 @@ public interface Diet {
         };
     }
 
-    static Diet carnivore() {
+    static Diet carnivore(LevelAccessor levelAccessor) {
         return new Diet() {
             @Override
             public boolean getsFoodFromKill() {
@@ -57,7 +63,11 @@ public interface Diet {
 
             @Override
             public int getItemStackFoodValue(ItemStack itemStack) {
-                return FeederBlockEntity.getMeatFoodLevel(itemStack);
+                FeederFood feederFood = FeederFood.getFeederFood(levelAccessor, itemStack);
+                if (feederFood != null && feederFood.sameFillType(FillType.MEAT)) {
+                    return feederFood.getAmount();
+                }
+                return 0;
             }
 
             @Override
@@ -87,7 +97,7 @@ public interface Diet {
         };
     }
 
-    static Diet herbivore() {
+    static Diet herbivore(LevelAccessor levelAccessor) {
         return new Diet() {
             @Override
             public boolean getsFoodFromKill() {
@@ -96,7 +106,11 @@ public interface Diet {
 
             @Override
             public int getItemStackFoodValue(ItemStack itemStack) {
-                return FeederBlockEntity.getPlantsFoodLevel(itemStack);
+                FeederFood feederFood = FeederFood.getFeederFood(levelAccessor, itemStack);
+                if (feederFood != null && feederFood.sameFillType(FillType.PLANT)) {
+                    return feederFood.getAmount();
+                }
+                return 0;
             }
 
             @Override
@@ -111,7 +125,7 @@ public interface Diet {
         };
     }
 
-    static Diet omnivore() {
+    static Diet omnivore(LevelAccessor levelAccessor) {
         return new Diet() {
             @Override
             public boolean getsFoodFromKill() {
@@ -120,8 +134,11 @@ public interface Diet {
 
             @Override
             public int getItemStackFoodValue(ItemStack itemStack) {
-                int plants = FeederBlockEntity.getPlantsFoodLevel(itemStack);
-                return plants > 0 ? plants : FeederBlockEntity.getMeatFoodLevel(itemStack);
+                FeederFood feederFood = FeederFood.getFeederFood(levelAccessor, itemStack);
+                if (feederFood != null) {
+                    return feederFood.getAmount();
+                }
+                return 0;
             }
 
             @Override

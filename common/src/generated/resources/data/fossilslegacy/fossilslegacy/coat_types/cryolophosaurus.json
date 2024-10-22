@@ -26,6 +26,7 @@
     "model": "fossilslegacy:cryolophosaurus"
   },
   "textures": {
-    "texture": "fossilslegacy:textures/entity/cryolophosaurus/cryolophosaurus.png"
+    "baby_texture": "fossilslegacy:textures/entity/cryolophosaurus/cryolophosaurus_baby.png",
+    "texture": "fossilslegacy:textures/entity/cryolophosaurus/cryolophosaurus_adult.png"
   }
 }

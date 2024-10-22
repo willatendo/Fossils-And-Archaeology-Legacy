@@ -1,18 +1,6 @@
 {
   "animations": {
-    "walk": {
-      "id": "fossilslegacy:legacy_brachiosaurus_walk",
-      "load_parts": [
-        "front_right_thigh",
-        "front_right_calf",
-        "front_left_thigh",
-        "front_left_calf",
-        "back_right_thigh",
-        "back_right_calf",
-        "back_left_thigh",
-        "back_left_calf"
-      ]
-    }
+    "walk": "fossilslegacy:legacy_brachiosaurus_walk"
   },
   "elements": [
     {

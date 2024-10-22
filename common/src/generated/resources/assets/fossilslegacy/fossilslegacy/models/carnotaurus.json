@@ -1,12 +1,6 @@
 {
   "animations": {
-    "walk": {
-      "id": "fossilslegacy:carnotaurus_walk",
-      "load_parts": [
-        "right_thigh",
-        "left_thigh"
-      ]
-    }
+    "walk": "fossilslegacy:carnotaurus_walk"
   },
   "elements": [
     {

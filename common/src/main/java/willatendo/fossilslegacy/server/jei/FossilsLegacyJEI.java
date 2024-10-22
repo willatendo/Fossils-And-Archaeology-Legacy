@@ -53,7 +53,7 @@ public final class FossilsLegacyJEI implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration iRecipeCategoryRegistration) {
         IGuiHelper iGuiHelper = iRecipeCategoryRegistration.getJeiHelpers().getGuiHelper();
         FossilsLegacyJEITextures fossilsLegacyJEITextures = new FossilsLegacyJEITextures(iGuiHelper);
-        iRecipeCategoryRegistration.addRecipeCategories(this.archaeologyCategory = new ArchaeologyCategory(iGuiHelper, fossilsLegacyJEITextures), this.cultivationCategory = new CultivationCategory(iGuiHelper, fossilsLegacyJEITextures), this.analyzationCategory = new AnalyzationCategory(iGuiHelper, fossilsLegacyJEITextures), new GeneModificationCategory(iGuiHelper, fossilsLegacyJEITextures), new BiomatterCategory(iGuiHelper, fossilsLegacyJEITextures), new FeederCategory(iGuiHelper, fossilsLegacyJEITextures));
+        iRecipeCategoryRegistration.addRecipeCategories(this.archaeologyCategory = new ArchaeologyCategory(iGuiHelper, fossilsLegacyJEITextures), this.cultivationCategory = new CultivationCategory(iGuiHelper, fossilsLegacyJEITextures), this.analyzationCategory = new AnalyzationCategory(iGuiHelper, fossilsLegacyJEITextures), new GeneModificationCategory(fossilsLegacyJEITextures), new BiomatterCategory(fossilsLegacyJEITextures), new FeederCategory(fossilsLegacyJEITextures), new ArticulatedFossilCategory(fossilsLegacyJEITextures));
     }
 
     @Override
@@ -67,6 +67,7 @@ public final class FossilsLegacyJEI implements IModPlugin {
         iRecipeRegistration.addRecipes(FossilsLegacyJEIRecipeTypes.BIOMATTER, fossilsLegacyRecipes.getBiomatterRecipes());
         iRecipeRegistration.addRecipes(FossilsLegacyJEIRecipeTypes.GENE_MODIFICATION, fossilsLegacyRecipes.getGeneModificationRecipes());
         iRecipeRegistration.addRecipes(FossilsLegacyJEIRecipeTypes.FEEDER, fossilsLegacyRecipes.getFeederRecipes());
+        iRecipeRegistration.addRecipes(FossilsLegacyJEIRecipeTypes.ARTICULATED_FOSSIL, fossilsLegacyRecipes.getArticulatedFossilRecipes());
 
         iRecipeRegistration.addRecipes(RecipeTypes.CRAFTING, fossilsLegacyRecipes.createMagicConchRecipes());
         iRecipeRegistration.addRecipes(RecipeTypes.ANVIL, fossilsLegacyRecipes.createRepairRecipes(iVanillaRecipeFactory));
@@ -110,6 +111,7 @@ public final class FossilsLegacyJEI implements IModPlugin {
         iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.ANALYZER.get()), FossilsLegacyJEIRecipeTypes.ANALYZATION);
         iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.GENE_MODIFICATION_TABLE.get()), FossilsLegacyJEIRecipeTypes.GENE_MODIFICATION);
         iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.FEEDER.get()), FossilsLegacyJEIRecipeTypes.FEEDER);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get()), FossilsLegacyJEIRecipeTypes.ARTICULATED_FOSSIL);
     }
 
     @Override

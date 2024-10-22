@@ -1,0 +1,8 @@
+{
+  "amount": 40,
+  "fill_type": "meat",
+  "id": "fossilslegacy:tropical_fish",
+  "item_stack": {
+    "id": "minecraft:tropical_fish"
+  }
+}

@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.server.block.entity;
 
-import com.google.common.collect.Maps;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -11,21 +10,15 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import willatendo.fossilslegacy.api.item.FeederMeatLevel;
-import willatendo.fossilslegacy.api.item.FeederPlantsLevel;
 import willatendo.fossilslegacy.server.block.FeederBlock;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
-import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.item.feederfood.FeederFood;
 import willatendo.fossilslegacy.server.menu.FeederMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-
-import java.util.Map;
 
 public class FeederBlockEntity extends BaseContainerBlockEntity {
     private NonNullList<ItemStack> itemStacks = NonNullList.withSize(2, ItemStack.EMPTY);
@@ -69,68 +62,6 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
         super(FossilsLegacyBlockEntityTypes.FEEDER.get(), blockPos, blockState);
     }
 
-    public static Map<Item, Integer> getMeatFoodLevel() {
-        Map<Item, Integer> map = Maps.newLinkedHashMap();
-        map.put(Items.BEEF, 40);
-        map.put(Items.COOKED_BEEF, 20);
-        map.put(Items.CHICKEN, 30);
-        map.put(Items.COOKED_CHICKEN, 10);
-        map.put(Items.MUTTON, 30);
-        map.put(Items.COOKED_MUTTON, 10);
-        map.put(Items.RABBIT, 30);
-        map.put(Items.COOKED_RABBIT, 10);
-        map.put(Items.PORKCHOP, 20);
-        map.put(Items.COOKED_PORKCHOP, 30);
-        map.put(Items.COD, 40);
-        map.put(Items.COOKED_COD, 60);
-        map.put(Items.SALMON, 40);
-        map.put(Items.COOKED_SALMON, 60);
-        map.put(Items.TROPICAL_FISH, 40);
-        map.put(FossilsLegacyItems.COOKED_BRACHIOSAURUS.get(), 100);
-        map.put(FossilsLegacyItems.COOKED_DILOPHOSAURUS.get(), 100);
-        map.put(FossilsLegacyItems.COOKED_FUTABASAURUS.get(), 100);
-        map.put(FossilsLegacyItems.COOKED_PTERANODON.get(), 100);
-        map.put(FossilsLegacyItems.COOKED_SMILODON.get(), 100);
-        map.put(FossilsLegacyItems.COOKED_STEGOSAURUS.get(), 100);
-        map.put(FossilsLegacyItems.COOKED_TRICERATOPS.get(), 100);
-        map.put(FossilsLegacyItems.COOKED_TYRANNOSAURUS.get(), 100);
-        map.put(FossilsLegacyItems.COOKED_VELOCIRAPTOR.get(), 100);
-        map.put(FossilsLegacyItems.SIO_CHIU_LE.get(), 100);
-        map.put(FossilsLegacyItems.RAW_BRACHIOSAURUS.get(), 100);
-        map.put(FossilsLegacyItems.RAW_DILOPHOSAURUS.get(), 100);
-        map.put(FossilsLegacyItems.RAW_FUTABASAURUS.get(), 100);
-        map.put(FossilsLegacyItems.RAW_PTERANODON.get(), 100);
-        map.put(FossilsLegacyItems.RAW_SMILODON.get(), 100);
-        map.put(FossilsLegacyItems.RAW_STEGOSAURUS.get(), 100);
-        map.put(FossilsLegacyItems.RAW_TRICERATOPS.get(), 100);
-        map.put(FossilsLegacyItems.RAW_TYRANNOSAURUS.get(), 100);
-        map.put(FossilsLegacyItems.RAW_VELOCIRAPTOR.get(), 100);
-        map.put(FossilsLegacyItems.NAUTILUS.get(), 100);
-        return map;
-    }
-
-    public static Map<Item, Integer> getPlantsFoodLevel() {
-        Map<Item, Integer> map = Maps.newLinkedHashMap();
-        map.put(Items.APPLE, 100);
-        map.put(Items.WHEAT, 40);
-        map.put(Items.BREAD, 120);
-        map.put(Items.SUGAR_CANE, 20);
-        map.put(Items.WHEAT_SEEDS, 20);
-        map.put(Items.BEETROOT_SEEDS, 20);
-        map.put(Items.MELON_SEEDS, 20);
-        map.put(Items.PUMPKIN_SEEDS, 20);
-        map.put(Items.MELON_SLICE, 25);
-        map.put(Items.SWEET_BERRIES, 15);
-        map.put(Items.GLOW_BERRIES, 15);
-        map.put(Items.CARROT, 100);
-        map.put(Items.POTATO, 100);
-        map.put(Items.BAKED_POTATO, 75);
-        map.put(Items.BEETROOT, 25);
-        map.put(Items.KELP, 15);
-        map.put(FossilsLegacyItems.JURASSIC_FERN_SPORES.get(), 50);
-        return map;
-    }
-
     @Override
     protected void loadAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
         super.loadAdditional(compoundTag, provider);
@@ -155,20 +86,22 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
         ItemStack plants = feederBlockEntity.itemStacks.get(1);
 
         if (!meat.isEmpty()) {
-            int meatLevel = feederBlockEntity.getMeatFoodLevel(meat);
-            if (meatLevel > 0) {
-                if (!(meatLevel + feederBlockEntity.meatLevel > feederBlockEntity.maxMeatLevel)) {
-                    feederBlockEntity.meatLevel += feederBlockEntity.getMeatFoodLevel(meat);
+            FeederFood feederFood = FeederFood.getFeederFood(level, meat);
+            if (feederFood != null) {
+                int amount = feederFood.getAmount();
+                if (!(amount + feederBlockEntity.meatLevel > feederBlockEntity.maxMeatLevel)) {
+                    feederBlockEntity.meatLevel += amount;
                     meat.shrink(1);
                     changed = true;
                 }
             }
         }
         if (!plants.isEmpty()) {
-            int plantsLevel = feederBlockEntity.getPlantsFoodLevel(plants);
-            if (plantsLevel > 0) {
-                if (!(plantsLevel + feederBlockEntity.plantsLevel > feederBlockEntity.maxPlantsLevel)) {
-                    feederBlockEntity.plantsLevel += plantsLevel;
+            FeederFood feederFood = FeederFood.getFeederFood(level, plants);
+            if (feederFood != null) {
+                int amount = feederFood.getAmount();
+                if (!(amount + feederBlockEntity.plantsLevel > feederBlockEntity.maxPlantsLevel)) {
+                    feederBlockEntity.plantsLevel += amount;
                     plants.shrink(1);
                     changed = true;
                 }
@@ -200,20 +133,6 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
                 this.plantsLevel--;
             }
         }
-    }
-
-    public static int getMeatFoodLevel(ItemStack itemStack) {
-        if (itemStack.getItem() instanceof FeederMeatLevel feederMeatLevel) {
-            return feederMeatLevel.feederMeatLevel();
-        }
-        return getMeatFoodLevel().getOrDefault(itemStack.getItem(), 0);
-    }
-
-    public static int getPlantsFoodLevel(ItemStack itemStack) {
-        if (itemStack.getItem() instanceof FeederPlantsLevel feederPlantsLevel) {
-            return feederPlantsLevel.feederPlantsLevel();
-        }
-        return getPlantsFoodLevel().getOrDefault(itemStack.getItem(), 0);
     }
 
     @Override

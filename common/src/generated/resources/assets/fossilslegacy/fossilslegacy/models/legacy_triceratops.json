@@ -1,21 +1,6 @@
 {
   "animations": {
-    "walk": {
-      "id": "fossilslegacy:legacy_triceratops_walk",
-      "load_parts": [
-        "lower_body",
-        "back",
-        "tail",
-        "right_front_thigh",
-        "left_front_thigh",
-        "right_front_leg",
-        "left_front_leg",
-        "right_back_thigh",
-        "left_back_thigh",
-        "right_back_leg",
-        "left_back_leg"
-      ]
-    }
+    "walk": "fossilslegacy:legacy_triceratops_walk"
   },
   "elements": [
     {

@@ -1,21 +1,32 @@
 package willatendo.fossilslegacy.client.render.layer;
 
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.EyesLayer;
+import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Mosasaurus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-public class MosasaurusEyesLayer extends EyesLayer<Mosasaurus, EntityModel<Mosasaurus>> {
-    private static final RenderType MOSASAURUS_EYES = RenderType.eyes(FossilsLegacyUtils.resource("textures/entity/mosasaurus/mosasaurus_eyes.png"));
+import java.util.Optional;
+
+public class MosasaurusEyesLayer extends RenderLayer<Mosasaurus, EntityModel<Mosasaurus>> {
 
     public MosasaurusEyesLayer(RenderLayerParent<Mosasaurus, EntityModel<Mosasaurus>> renderLayerParent) {
         super(renderLayerParent);
     }
 
     @Override
-    public RenderType renderType() {
-        return MOSASAURUS_EYES;
+    public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int i, Mosasaurus mosasaurus, float v, float v1, float v2, float v3, float v4, float v5) {
+        Optional<ResourceLocation> optionalEyeLayerTexture = mosasaurus.getCoatType().value().textures().eyeLayerTexture();
+        if (optionalEyeLayerTexture.isPresent()) {
+            VertexConsumer vertexconsumer = multiBufferSource.getBuffer(RenderType.eyes(optionalEyeLayerTexture.get()));
+            this.getParentModel().renderToBuffer(poseStack, vertexconsumer, 15728640, OverlayTexture.NO_OVERLAY);
+        }
     }
 }

@@ -82,7 +82,7 @@ public class Gallimimus extends Dinosaur implements DinopediaInformation, Rideab
 
     @Override
     public Diet getDiet() {
-        return Diet.omnivore();
+        return Diet.omnivore(this.level());
     }
 
     @Override

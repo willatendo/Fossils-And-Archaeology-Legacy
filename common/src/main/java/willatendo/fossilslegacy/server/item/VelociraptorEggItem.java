@@ -19,8 +19,7 @@ public class VelociraptorEggItem extends EggItem {
     }
 
     @Override
-    public void entityModification(ItemStack itemStack, Entity entity) {
-        Egg egg = (Egg) entity;
+    public void entityModification(ItemStack itemStack, Egg egg) {
         egg.setEggVariant(this.eggVariant);
         if (itemStack.has(FossilsLegacyDataComponents.COAT_TYPE.get())) {
             egg.setCoatType(itemStack.get(FossilsLegacyDataComponents.COAT_TYPE.get()));

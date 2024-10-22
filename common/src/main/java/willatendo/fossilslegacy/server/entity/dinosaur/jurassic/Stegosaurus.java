@@ -72,7 +72,7 @@ public class Stegosaurus extends Dinosaur implements DinopediaInformation, CoatT
 
     @Override
     public Diet getDiet() {
-        return Diet.herbivore();
+        return Diet.herbivore(this.level());
     }
 
     @Override

@@ -81,7 +81,7 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Ridea
 
     @Override
     public Diet getDiet() {
-        return Diet.herbivore();
+        return Diet.herbivore(this.level());
     }
 
     @Override

@@ -1,0 +1,8 @@
+{
+  "amount": 60,
+  "fill_type": "meat",
+  "id": "fossilslegacy:cooked_cod",
+  "item_stack": {
+    "id": "minecraft:cooked_cod"
+  }
+}

@@ -1,12 +1,6 @@
 {
   "animations": {
-    "walk": {
-      "id": "fossilslegacy:therizinosaurus_walk",
-      "load_parts": [
-        "right_thigh",
-        "left_thigh"
-      ]
-    }
+    "walk": "fossilslegacy:therizinosaurus_walk"
   },
   "elements": [
     {

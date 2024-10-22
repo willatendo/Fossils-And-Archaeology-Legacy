@@ -16,19 +16,19 @@
     "display_scale": 0.25,
     "display_y_offset": 0.25,
     "name": {
-      "translate": "coatType.fossilslegacy.tyrannosaurus"
+      "translate": "coatType.fossilslegacy.legacy_tyrannosaurus"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.eastern_brown_snake"
     }
   },
   "models": {
-    "knocked_out_model": "fossilslegacy:knocked_out_tyrannosaurus",
-    "model": "fossilslegacy:tyrannosaurus"
+    "knocked_out_model": "fossilslegacy:legacy_knocked_out_tyrannosaurus",
+    "model": "fossilslegacy:legacy_tyrannosaurus"
   },
   "textures": {
-    "aggressive_texture": "fossilslegacy:textures/entity/tyrannosaurus/aggressive_tyrannosaurus.png",
-    "knocked_out_texture": "fossilslegacy:textures/entity/tyrannosaurus/weak_tyrannosaurus.png",
-    "texture": "fossilslegacy:textures/entity/tyrannosaurus/tyrannosaurus.png"
+    "aggressive_texture": "fossilslegacy:textures/entity/tyrannosaurus/legacy/aggressive_tyrannosaurus.png",
+    "knocked_out_texture": "fossilslegacy:textures/entity/tyrannosaurus/legacy/weak_tyrannosaurus.png",
+    "texture": "fossilslegacy:textures/entity/tyrannosaurus/legacy/tyrannosaurus.png"
   }
 }

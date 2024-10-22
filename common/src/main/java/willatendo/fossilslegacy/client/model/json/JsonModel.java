@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.client.model.json;
 
-import com.google.common.collect.Maps;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.geom.ModelPart;
@@ -15,13 +14,12 @@ import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.util.interfaces.FloatDownEntity;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 public class JsonModel<T extends Entity> extends DinosaurModel<T> {
     private final Optional<JsonModelLoader.AnimationHolder> animationHolder;
     private final List<ModelPart> headPieces;
-    private final Map<String, ModelPart> loadedParts = Maps.newHashMap();
+    private final LoadedParts loadedParts;
     private final boolean colored;
     private int color = -1;
 
@@ -29,27 +27,120 @@ public class JsonModel<T extends Entity> extends DinosaurModel<T> {
         super(root);
         this.animationHolder = JsonModelLoader.getAnimations(id);
         this.headPieces = JsonModelLoader.getHeadPieces(id, root);
-        JsonModelLoader.getLoadParts(id).forEach(part -> {
-            for (ModelPart modelPart : root.getAllParts().toList()) {
-                if (modelPart.hasChild(part)) {
-                    this.loadedParts.put(part, modelPart.getChild(part));
-                    break;
-                }
-            }
-        });
+        this.loadedParts = new LoadedParts(JsonModelLoader.getLoadParts(id), root);
         this.colored = colored;
     }
 
-    public void setColor(int pColor) {
-        this.color = pColor;
+    public void setColor(int color) {
+        this.color = color;
     }
 
     public ModelPart get(String name) {
         return this.loadedParts.get(name);
     }
 
+    public float getX(String name) {
+        return this.loadedParts.getX(name);
+    }
+
+    public float getY(String name) {
+        return this.loadedParts.getY(name);
+    }
+
+    public float getZ(String name) {
+        return this.loadedParts.getZ(name);
+    }
+
+    public void setX(String name, float angle) {
+        this.loadedParts.setX(name, angle);
+    }
+
+    public void setY(String name, float angle) {
+        this.loadedParts.setY(name, angle);
+    }
+
+    public void setZ(String name, float angle) {
+        this.loadedParts.setZ(name, angle);
+    }
+
+    public void addX(String name, float angle) {
+        this.loadedParts.addX(name, angle);
+    }
+
+    public void addY(String name, float angle) {
+        this.loadedParts.addY(name, angle);
+    }
+
+    public void addZ(String name, float angle) {
+        this.loadedParts.addZ(name, angle);
+    }
+
+    public void subtractX(String name, float angle) {
+        this.loadedParts.subtractX(name, angle);
+    }
+
+    public void subtractY(String name, float angle) {
+        this.loadedParts.subtractY(name, angle);
+    }
+
+    public void subtractZ(String name, float angle) {
+        this.loadedParts.subtractZ(name, angle);
+    }
+
+    public float getXRot(String name) {
+        return this.loadedParts.getXRot(name);
+    }
+
+    public float getYRot(String name) {
+        return this.loadedParts.getYRot(name);
+    }
+
+    public float getZRot(String name) {
+        return this.loadedParts.getZRot(name);
+    }
+
+    public void setXRot(String name, float angle) {
+        this.loadedParts.setXRot(name, angle);
+    }
+
+    public void setYRot(String name, float angle) {
+        this.loadedParts.setYRot(name, angle);
+    }
+
+    public void setZRot(String name, float angle) {
+        this.loadedParts.setZRot(name, angle);
+    }
+
+    public void addXRot(String name, float angle) {
+        this.loadedParts.addXRot(name, angle);
+    }
+
+    public void addYRot(String name, float angle) {
+        this.loadedParts.addYRot(name, angle);
+    }
+
+    public void addZRot(String name, float angle) {
+        this.loadedParts.addZRot(name, angle);
+    }
+
+    public void subtractXRot(String name, float angle) {
+        this.loadedParts.subtractXRot(name, angle);
+    }
+
+    public void subtractYRot(String name, float angle) {
+        this.loadedParts.subtractYRot(name, angle);
+    }
+
+    public void subtractZRot(String name, float angle) {
+        this.loadedParts.subtractZRot(name, angle);
+    }
+
+    public void setPos(String name, float x, float y, float z) {
+        this.loadedParts.setPos(name, x, y, z);
+    }
+
     @Override
-    public void prepareMobModel(Entity entity, float limbSwing, float limbSwingAmount, float partialTick) {
+    public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTick) {
         if (entity instanceof Dinosaur dinosaur) {
             if (this.animationHolder.isPresent()) {
                 JsonModelLoader.AnimationHolder animationHolder = this.animationHolder.get();
@@ -118,8 +209,6 @@ public class JsonModel<T extends Entity> extends DinosaurModel<T> {
                         if (builtInAnimationType.canUse(dinosaur)) {
                             builtInAnimationType.setupAnim(dinosaur, this, limbSwing, limbSwingAmount, netHeadYaw);
                         }
-                    } else {
-
                     }
                 }
 

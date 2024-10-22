@@ -83,7 +83,7 @@ public class Dodo extends Dinosaur implements DinopediaInformation, CoatTypeEnti
 
     @Override
     public Diet getDiet() {
-        return Diet.herbivore();
+        return Diet.herbivore(this.level());
     }
 
     @Override

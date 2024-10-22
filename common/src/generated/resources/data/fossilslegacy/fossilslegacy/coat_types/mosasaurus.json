@@ -16,16 +16,17 @@
     "display_scale": 0.4,
     "display_y_offset": 0.25,
     "name": {
-      "translate": "coatType.fossilslegacy.mosasaurus"
+      "translate": "coatType.fossilslegacy.legacy_mosasaurus"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.marine_iguana"
     }
   },
   "models": {
-    "model": "fossilslegacy:mosasaurus"
+    "model": "fossilslegacy:legacy_mosasaurus"
   },
   "textures": {
-    "texture": "fossilslegacy:textures/entity/mosasaurus/mosasaurus.png"
+    "eye_layer_texture": "fossilslegacy:textures/entity/mosasaurus/legacy/mosasaurus_eyes.png",
+    "texture": "fossilslegacy:textures/entity/mosasaurus/legacy/mosasaurus.png"
   }
 }

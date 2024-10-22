@@ -1,10 +1,15 @@
 {
-  "base_scale": 0.8,
+  "base_scale_height": 0.8,
+  "base_scale_width": 0.8,
+  "bounding_box_growth": 0.2,
   "bounding_box_height": 0.5,
   "bounding_box_width": 0.5,
+  "fossil_count": 5,
+  "fossil_groups": [],
   "max_size": 8,
   "model": "fossilslegacy:pteranodon",
-  "shadow_size": 0.125,
+  "shadow_growth": 0.075,
+  "shadow_size": 0.5,
   "size_scale": 0.2,
   "texture": "fossilslegacy:textures/entity/pteranodon/pteranodon_skeleton.png"
 }

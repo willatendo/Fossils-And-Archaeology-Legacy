@@ -102,7 +102,7 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
 
     @Override
     public Diet getDiet() {
-        return Diet.herbivore();
+        return Diet.herbivore(this.level());
     }
 
     public int getSwingTick() {

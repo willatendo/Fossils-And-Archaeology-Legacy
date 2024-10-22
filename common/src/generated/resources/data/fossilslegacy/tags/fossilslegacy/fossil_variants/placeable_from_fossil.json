@@ -1,11 +1,18 @@
 {
   "values": [
+    "fossilslegacy:ankylosaurus",
     "fossilslegacy:brachiosaurus",
-    "fossilslegacy:futabasaurus",
-    "fossilslegacy:pteranodon",
-    "fossilslegacy:triceratops",
-    "fossilslegacy:pachycephalosaurus",
+    "fossilslegacy:legacy_brachiosaurus",
     "fossilslegacy:compsognathus",
+    "fossilslegacy:cryolophosaurus",
+    "fossilslegacy:futabasaurus",
+    "fossilslegacy:legacy_futabasaurus",
+    "fossilslegacy:gallimimus",
+    "fossilslegacy:pachycephalosaurus",
+    "fossilslegacy:pteranodon",
+    "fossilslegacy:spinosaurus",
+    "fossilslegacy:triceratops",
+    "fossilslegacy:legacy_triceratops",
     "fossilslegacy:velociraptor"
   ]
 }

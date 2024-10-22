@@ -21,8 +21,5 @@ public class FossilsLegacyData {
         CompletableFuture<HolderLookup.Provider> registries = gatherDataEvent.getLookupProvider();
 
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyForgeBuiltinProvider(packOutput, registries, FossilsLegacyUtils.ID));
-        FossilsLegacyForgeBlockTagProvider fossilsLegacyForgeBlockTagProvider = new FossilsLegacyForgeBlockTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper);
-        dataGenerator.addProvider(gatherDataEvent.includeServer(), fossilsLegacyForgeBlockTagProvider);
-        dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyForgeItemTagProvider(packOutput, registries, fossilsLegacyForgeBlockTagProvider.contentsGetter(), FossilsLegacyUtils.ID, existingFileHelper));
     }
 }

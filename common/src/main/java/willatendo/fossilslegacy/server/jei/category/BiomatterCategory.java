@@ -25,7 +25,7 @@ public final class BiomatterCategory extends AbstractRecipeCategory<BiomatterRec
     private final LoadingCache<Integer, IDrawableAnimated> cachedBiomatter;
     private final IDrawableStatic vatOutline;
 
-    public BiomatterCategory(IGuiHelper guiHelper, FossilsLegacyJEITextures fossilsLegacyJEITextures) {
+    public BiomatterCategory(FossilsLegacyJEITextures fossilsLegacyJEITextures) {
         super(FossilsLegacyJEIRecipeTypes.BIOMATTER, FossilsLegacyUtils.translation("jei", "biomatter"), fossilsLegacyJEITextures.getVatIcon(), BiomatterCategory.getMaxWidth(), 34);
         this.cachedBiomatter = fossilsLegacyJEITextures.createBiomatterBar();
         this.vatOutline = fossilsLegacyJEITextures.getVatOutline();

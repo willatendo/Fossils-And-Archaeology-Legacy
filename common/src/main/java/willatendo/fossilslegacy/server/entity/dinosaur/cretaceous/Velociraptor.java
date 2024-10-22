@@ -87,7 +87,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
 
     @Override
     public Diet getDiet() {
-        return Diet.carnivore();
+        return Diet.carnivore(this.level());
     }
 
     @Override

@@ -12,6 +12,7 @@ import willatendo.fossilslegacy.server.entity.FossilsLegacyBoatTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEggVariants;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyPregnancyTypes;
+import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Nautilus;
 import willatendo.fossilslegacy.server.level.FossilsLegacyLevels;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -27,7 +28,7 @@ public class FossilsLegacyItems {
     public static final SimpleRegistry<Item> ITEMS = SimpleRegistry.create(Registries.ITEM, FossilsLegacyUtils.ID);
     public static final List<EggItem> EGGS = new ArrayList<>();
 
-    public static final SimpleHolder<Item> FOSSIL = ITEMS.register("fossil", () -> new FossilItem(new Item.Properties()));
+    public static final SimpleHolder<Item> FOSSIL = ITEMS.register("fossil", () -> new Item(new Item.Properties()));
     public static final SimpleHolder<DNAItem> TRICERATOPS_DNA = ITEMS.register("triceratops_dna", () -> new DNAItem(new Item.Properties(), FossilsLegacyCoatTypeTags.TRICERATOPS, FossilsLegacyEntityTypes.TRICERATOPS::get));
     public static final SimpleHolder<DNAItem> VELOCIRAPTOR_DNA = ITEMS.register("velociraptor_dna", () -> new DNAItem(new Item.Properties(), FossilsLegacyCoatTypeTags.VELOCIRAPTOR, FossilsLegacyEntityTypes.VELOCIRAPTOR::get));
     public static final SimpleHolder<DNAItem> TYRANNOSAURUS_DNA = ITEMS.register("tyrannosaurus_dna", () -> new DNAItem(new Item.Properties(), FossilsLegacyCoatTypeTags.TYRANNOSAURUS, FossilsLegacyEntityTypes.TYRANNOSAURUS::get));
@@ -53,7 +54,7 @@ public class FossilsLegacyItems {
     public static final SimpleHolder<EggItem> VELOCIRAPTOR_EGG = ITEMS.register("velociraptor_egg", () -> new VelociraptorEggItem(FossilsLegacyEggVariants.VELOCIRAPTOR, new Item.Properties().stacksTo(1)));
     public static final SimpleHolder<EggItem> TYRANNOSAURUS_EGG = ITEMS.register("tyrannosaurus_egg", () -> new EggItem(FossilsLegacyEggVariants.TYRANNOSAURUS, FossilsLegacyCoatTypeTags.TYRANNOSAURUS, new Item.Properties().stacksTo(1)));
     public static final SimpleHolder<EggItem> PTERANODON_EGG = ITEMS.register("pteranodon_egg", () -> new EggItem(FossilsLegacyEggVariants.PTERANODON, FossilsLegacyCoatTypeTags.PTERANODON, new Item.Properties().stacksTo(1)));
-    public static final SimpleHolder<PlaceEntityItem> NAUTILUS_EGGS = ITEMS.register("nautilus_eggs", () -> new PlaceEntityItem(FossilsLegacyEntityTypes.NAUTILUS::get, new Item.Properties().stacksTo(1)));
+    public static final SimpleHolder<PlaceEntityItem<Nautilus>> NAUTILUS_EGGS = ITEMS.register("nautilus_eggs", () -> new PlaceEntityItem<>(FossilsLegacyEntityTypes.NAUTILUS, new Item.Properties().stacksTo(1)));
     public static final SimpleHolder<EggItem> FUTABASAURUS_EGG = ITEMS.register("futabasaurus_egg", () -> new EggItem(FossilsLegacyEggVariants.FUTABASAURUS, FossilsLegacyCoatTypeTags.FUTABASAURUS, new Item.Properties().stacksTo(1)));
     public static final SimpleHolder<EggItem> MOSASAURUS_EGG = ITEMS.register("mosasaurus_egg", () -> new EggItem(FossilsLegacyEggVariants.MOSASAURUS, FossilsLegacyCoatTypeTags.MOSASAURUS, new Item.Properties().stacksTo(1)));
     public static final SimpleHolder<EggItem> STEGOSAURUS_EGG = ITEMS.register("stegosaurus_egg", () -> new EggItem(FossilsLegacyEggVariants.STEGOSAURUS, FossilsLegacyCoatTypeTags.STEGOSAURUS, new Item.Properties().stacksTo(1)));
@@ -71,7 +72,7 @@ public class FossilsLegacyItems {
     public static final SimpleHolder<Item> RAW_VELOCIRAPTOR = ITEMS.register("raw_velociraptor", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_TYRANNOSAURUS = ITEMS.register("raw_tyrannosaurus", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_PTERANODON = ITEMS.register("raw_pteranodon", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));
-    public static final SimpleHolder<PlaceEntityItem> NAUTILUS = ITEMS.register("nautilus", () -> new PlaceEntityItem(FossilsLegacyEntityTypes.NAUTILUS::get, new Item.Properties().stacksTo(1)));
+    public static final SimpleHolder<PlaceEntityItem<Nautilus>> NAUTILUS = ITEMS.register("nautilus", () -> new PlaceEntityItem<>(FossilsLegacyEntityTypes.NAUTILUS, new Item.Properties().stacksTo(1)));
     public static final SimpleHolder<Item> RAW_FUTABASAURUS = ITEMS.register("raw_futabasaurus", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_MOSASAURUS = ITEMS.register("raw_mosasaurus", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_STEGOSAURUS = ITEMS.register("raw_stegosaurus", () -> new Item(new Item.Properties().food(FossilsLegacyFoods.RAW_DINOSAUR_MEAT)));
@@ -177,6 +178,7 @@ public class FossilsLegacyItems {
     public static final SimpleHolder<AnimalEggItem> INCUBATED_MOA_EGG = ITEMS.register("incubated_moa_egg", () -> new AnimalEggItem(FossilsLegacyEntityTypes.MOA::get, true, FossilsLegacyCoatTypeTags.MOA, new Item.Properties().stacksTo(16)));
     public static final SimpleHolder<AnimalEggItem> MOA_EGG = ITEMS.register("moa_egg", () -> new AnimalEggItem(FossilsLegacyEntityTypes.MOA::get, false, FossilsLegacyCoatTypeTags.MOA, new Item.Properties().stacksTo(16)));
     public static final SimpleHolder<ItemNameBlockItem> JURASSIC_FERN_SPORES = ITEMS.register("jurassic_fern_spores", () -> new ItemNameBlockItem(FossilsLegacyBlocks.JURASSIC_FERN.get(), new Item.Properties()));
+    public static final SimpleHolder<ArticulatedFossilItem> ARTICULATED_FOSSIL = ITEMS.register("articulated_fossil", () -> new ArticulatedFossilItem(new Item.Properties().stacksTo(1)));
     public static final SimpleHolder<Item> RELIC_SCRAP = ITEMS.register("relic_scrap", () -> new Item(new Item.Properties()));
     public static final SimpleHolder<StoneTabletItem> STONE_TABLET = ITEMS.register("stone_tablet", () -> new StoneTabletItem(new Item.Properties()));
     public static final SimpleHolder<Item> ANCIENT_SWORD_ARTIFACT = ITEMS.register("ancient_sword_artifact", () -> new Item(new Item.Properties()));

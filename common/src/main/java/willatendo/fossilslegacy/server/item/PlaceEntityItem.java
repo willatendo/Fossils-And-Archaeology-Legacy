@@ -22,15 +22,15 @@ import net.minecraft.world.phys.shapes.Shapes;
 import java.util.Objects;
 import java.util.function.Supplier;
 
-public class PlaceEntityItem extends Item {
-    private final Supplier<EntityType<?>> entityType;
+public class PlaceEntityItem<T extends Entity> extends Item {
+    private final Supplier<EntityType<T>> entityType;
 
-    public PlaceEntityItem(Supplier<EntityType<?>> entityType, Properties properties) {
+    public PlaceEntityItem(Supplier<EntityType<T>> entityType, Properties properties) {
         super(properties);
         this.entityType = entityType;
     }
 
-    public Supplier<EntityType<?>> getEntityType() {
+    public Supplier<EntityType<T>> getEntityType() {
         return this.entityType;
     }
 
@@ -53,7 +53,7 @@ public class PlaceEntityItem extends Item {
 
             if (this.entityType.get() != null) {
                 ServerLevel serverLevel = (ServerLevel) level;
-                Entity entity = this.entityType.get().create(level);
+                T entity = this.entityType.get().create(level);
                 this.entityModification(itemStack, entity);
                 entity.setPos((double) placePos.getX() + 0.5D, placePos.getY() + 1.0D, (double) placePos.getZ() + 0.5D);
                 double yOffset = getYOffset(serverLevel, blockPos, !Objects.equals(blockPos, placePos) && direction == Direction.UP, ((Entity) entity).getBoundingBox());
@@ -82,6 +82,6 @@ public class PlaceEntityItem extends Item {
         return 1.0 + Shapes.collide(Direction.Axis.Y, aABB, iterable, bl ? -2.0 : -1.0);
     }
 
-    public void entityModification(ItemStack itemStack, Entity entity) {
+    public void entityModification(ItemStack itemStack, T entity) {
     }
 }

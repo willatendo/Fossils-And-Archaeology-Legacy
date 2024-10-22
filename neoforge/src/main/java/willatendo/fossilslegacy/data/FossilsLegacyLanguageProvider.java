@@ -193,7 +193,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("coatType.fossilslegacy.featherless_therizinosaurus", "Featherless Therizinosaurus (2011)");
         this.add("coatType.fossilslegacy.brown_triceratops", "Brown Triceratops (2024)");
         this.add("coatType.fossilslegacy.green_triceratops", "Green Triceratops (2024)");
-        this.add("coatType.fossilslegacy.tyrannosaurus", "Tyrannosaurus (2011)");
+        this.add("coatType.fossilslegacy.tyrannosaurus_legacy", "Tyrannosaurus (2011)");
         this.add("coatType.fossilslegacy.green_velociraptor", "Green Velociraptor (2024)");
         this.add("coatType.fossilslegacy.sandy_velociraptor", "Sandy Velociraptor (2024)");
         this.add("coatType.fossilslegacy.white_velociraptor", "White Velociraptor (2024)");
@@ -503,6 +503,21 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.INCUBATED_MOA_EGG.get());
         this.add(FossilsLegacyItems.MOA_EGG.get());
         this.add(FossilsLegacyItems.JURASSIC_FERN_SPORES.get());
+        this.add(FossilsLegacyItems.ARTICULATED_FOSSIL.get());
+        this.add("item.fossilslegacy.articulated_fossil.ankylosaurus", "Articulated Ankylosaurus Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.brachiosaurus", "Articulated Brachiosaurus Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.compsognathus", "Articulated Compsognathus Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.cryolophosaurus", "Articulated Cryolophosaurus Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.futabasaurus", "Articulated Futabasaurus Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.gallimimus", "Articulated Gallimimus Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.legacy_brachiosaurus", "Articulated Legacy Brachiosaurus Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.legacy_futabasaurus", "Articulated Legacy Futabasaurus Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.legacy_triceratops", "Articulated Legacy Triceratops Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.pachycephalosaurus", "Articulated Pachycephalosaurus Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.pteranodon", "Articulated Pteranodon Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.spinosaurus", "Articulated Spinosaurus Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.triceratops", "Articulated Triceratops Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.velociraptor", "Articulated Velociraptor Fossil");
         this.add(FossilsLegacyItems.RELIC_SCRAP.get());
         this.add(FossilsLegacyItems.STONE_TABLET.get());
         this.add(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get());
@@ -593,23 +608,16 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.CALAMITES_BOAT.get());
         this.add(FossilsLegacyItems.CALAMITES_CHEST_BOAT.get(), "Calamites Boat with Chest");
 
-        this.add(FossilsLegacyItems.DEBUG_MAX_HUNGER.get(), "Debug Max Hunder");
+        this.add(FossilsLegacyItems.DEBUG_MAX_HUNGER.get(), "Debug Max Hunger");
         this.add(FossilsLegacyItems.DEBUG_MAX_HEALTH.get(), "Debug Max Health");
         this.add(FossilsLegacyItems.DEBUG_FULL_GROWN.get(), "Debug Full Grown");
         this.add(FossilsLegacyItems.DEBUG_BABY.get(), "Debug Baby");
         this.add(FossilsLegacyItems.DEBUG_TAME.get(), "Debug Tame");
         this.add(FossilsLegacyItems.DEBUG_CHANGE_GENETICS.get(), "Debug Change Genetics");
 
-        this.add("debugItem.fossilslegacy.type", "Type: %s");
-        this.add("debugItem.fossilslegacy.set_max_hunger", "Set Max Hunger");
-        this.add("debugItem.fossilslegacy.set_max_health", "Set Max Health");
-        this.add("debugItem.fossilslegacy.set_full_grown", "Set Full Grown");
-        this.add("debugItem.fossilslegacy.set_baby", "Set Baby");
-        this.add("debugItem.fossilslegacy.set_owner_as_me", "Set Owner As Me");
-        this.add("debugItem.fossilslegacy.change_genetics", "Change Genetics");
-
         // JEI
         this.add("jei.fossilslegacy.archaeology", "Archaeology");
+        this.add("jei.fossilslegacy.articulated_fossil", "Articulated Fossil");
         this.add("jei.fossilslegacy.analyzation", "Analyzation");
         this.add("jei.fossilslegacy.cultivation", "Cultivation");
         this.add("jei.fossilslegacy.biomatter", "Biomatter");
@@ -810,6 +818,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItemTags.BRACHIOSAURUS_COMMANDABLES, "Brachiosaurus Commandables");
         this.add(FossilsLegacyItemTags.CAKE_EGGS, "Cake Eggs");
         this.add(FossilsLegacyItemTags.CALAMITES_LOGS, "Calamites Logs");
+        this.add(FossilsLegacyItemTags.CARNIVORE_FOODS, "Carnivore Foods");
         this.add(FossilsLegacyItemTags.CARNOTAURUS_COMMANDABLES, "Canotaurus Commandables");
         this.add(FossilsLegacyItemTags.COMPSOGNATHUS_COMMANDABLES, "Compsognathus Commandables");
         this.add(FossilsLegacyItemTags.CRYOLOPHOSAURUS_COMMANDABLES, "Cryolophosaurus Commandables");
@@ -818,10 +827,13 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItemTags.DRUM_INSTRUMENT, "Drum Instrument");
         this.add(FossilsLegacyItemTags.FROGLIGHTS, "Froglights");
         this.add(FossilsLegacyItemTags.GALLIMIMUS_COMMANDABLES, "Gallimimus Commandables");
+        this.add(FossilsLegacyItemTags.HERBIVORE_FOODS, "Herbivore Foods");
         this.add(FossilsLegacyItemTags.LEPIDODENDRON_LOGS, "Lepidodendron Logs");
         this.add(FossilsLegacyItemTags.MAMMOTH_COMMANDABLES, "Mammoth Commandables");
+        this.add(FossilsLegacyItemTags.OMNIVORE_FOODS, "Omnivore Foods");
         this.add(FossilsLegacyItemTags.PACHYCEPHALOSAURUS_COMMANDABLES, "Pachycephalosaurus Commandables");
         this.add(FossilsLegacyItemTags.PIGLIN_TAMING_ARMOR, "Piglin Taming Armor");
+        this.add(FossilsLegacyItemTags.PISCIVORE_FOODS, "Piscivore Foods");
         this.add(FossilsLegacyItemTags.PTERANODON_COMMANDABLES, "Pteranodon Commandables");
         this.add(FossilsLegacyItemTags.REPAIR_WHEN_BROKEN_IN_ARCHAEOLOGY_TABLE, "Repair When Broken In Archaeology Table");
         this.add(FossilsLegacyItemTags.SIGILLARIA_LOGS, "Sigillaria Logs");

@@ -97,7 +97,7 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
 
     @Override
     public Diet getDiet() {
-        return Diet.piscivore();
+        return Diet.piscivore(this.level());
     }
 
     @Override

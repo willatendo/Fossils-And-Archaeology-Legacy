@@ -18,7 +18,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
 
-public class EggItem extends PlaceEntityItem {
+public class EggItem extends PlaceEntityItem<Egg> {
     protected final Holder<EggVariant> eggVariant;
     protected final TagKey<CoatType> applicableCoatTypes;
 
@@ -34,8 +34,7 @@ public class EggItem extends PlaceEntityItem {
     }
 
     @Override
-    public void entityModification(ItemStack itemStack, Entity entity) {
-        Egg egg = (Egg) entity;
+    public void entityModification(ItemStack itemStack, Egg egg) {
         egg.setEggVariant(this.eggVariant);
         if (itemStack.has(FossilsLegacyDataComponents.COAT_TYPE.get())) {
             egg.setCoatType(itemStack.get(FossilsLegacyDataComponents.COAT_TYPE.get()));

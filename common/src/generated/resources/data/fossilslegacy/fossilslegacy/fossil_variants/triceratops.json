@@ -1,10 +1,15 @@
 {
-  "base_scale": 1.5,
-  "bounding_box_height": 0.5,
-  "bounding_box_width": 0.5,
+  "base_scale_height": 1.0,
+  "base_scale_width": 1.0,
+  "bounding_box_growth": 0.2,
+  "bounding_box_height": 1.0,
+  "bounding_box_width": 1.0,
+  "fossil_count": 6,
+  "fossil_groups": [],
   "max_size": 12,
-  "model": "fossilslegacy:legacy_triceratops",
-  "shadow_size": 0.15,
-  "size_scale": 0.3,
+  "model": "fossilslegacy:triceratops",
+  "shadow_growth": 0.1,
+  "shadow_size": 1.0,
+  "size_scale": 0.15,
   "texture": "fossilslegacy:textures/entity/triceratops/triceratops_skeleton.png"
 }

@@ -1,26 +1,13 @@
 package willatendo.fossilslegacy.server.entity.util;
 
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
-import org.apache.commons.compress.utils.Lists;
-import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
-import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
-
-import java.util.List;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyItemTags;
 
 public class DinoUtils {
-    public static final Ingredient HERBIVORE_FOOD = Ingredient.of(FeederBlockEntity.getPlantsFoodLevel().keySet().stream().toArray(ItemLike[]::new));
-    public static final Ingredient CARNIVORE_FOOD = Ingredient.of(FeederBlockEntity.getMeatFoodLevel().keySet().stream().toArray(ItemLike[]::new));
-    public static final Ingredient PISCIVORE_FOOD = Ingredient.of(Items.COD, Items.COOKED_COD, Items.SALMON, Items.COOKED_SALMON, Items.TROPICAL_FISH, FossilsLegacyItems.SIO_CHIU_LE.get(), FossilsLegacyItems.NAUTILUS.get());
-    public static final Ingredient OMNIVORE_FOOD = DinoUtils.onivoreFood();
-
-    private static Ingredient onivoreFood() {
-        List<ItemLike> food = Lists.newArrayList();
-        food.addAll(FeederBlockEntity.getPlantsFoodLevel().keySet());
-        food.addAll(FeederBlockEntity.getMeatFoodLevel().keySet());
-        return Ingredient.of(food.stream().toArray(ItemLike[]::new));
-    }
+    public static final Ingredient HERBIVORE_FOOD = Ingredient.of(FossilsLegacyItemTags.HERBIVORE_FOODS);
+    public static final Ingredient CARNIVORE_FOOD = Ingredient.of(FossilsLegacyItemTags.CARNIVORE_FOODS);
+    public static final Ingredient PISCIVORE_FOOD = Ingredient.of(FossilsLegacyItemTags.PISCIVORE_FOODS);
+    public static final Ingredient OMNIVORE_FOOD = Ingredient.of(FossilsLegacyItemTags.OMNIVORE_FOODS);
 
     public static float[] getStepHeights(int growthStages, float minStepHeight, float maxStepHeight) {
         float[] stepHeights = new float[growthStages + 1];

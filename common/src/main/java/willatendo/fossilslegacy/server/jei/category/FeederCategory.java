@@ -16,7 +16,7 @@ import willatendo.fossilslegacy.server.jei.recipe.FeederRecipe;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public final class FeederCategory extends AbstractRecipeCategory<FeederRecipe> {
-    public FeederCategory(IGuiHelper guiHelper, FossilsLegacyJEITextures fossilsLegacyJEITextures) {
+    public FeederCategory(FossilsLegacyJEITextures fossilsLegacyJEITextures) {
         super(FossilsLegacyJEIRecipeTypes.FEEDER, FossilsLegacyUtils.translation("jei", "feeder"), fossilsLegacyJEITextures.getIconFromItemLike(FossilsLegacyBlocks.FEEDER.get()), 120, 18);
     }
 

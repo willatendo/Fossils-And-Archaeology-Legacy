@@ -1,16 +1,6 @@
 {
   "animations": {
-    "walk": {
-      "id": "fossilslegacy:dilophosaurus_walk",
-      "load_parts": [
-        "right_thigh",
-        "right_leg",
-        "right_foot",
-        "left_thigh",
-        "left_leg",
-        "left_foot"
-      ]
-    }
+    "walk": "fossilslegacy:dilophosaurus_walk"
   },
   "elements": [
     {

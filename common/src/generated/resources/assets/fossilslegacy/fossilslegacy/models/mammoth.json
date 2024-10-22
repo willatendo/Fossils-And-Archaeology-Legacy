@@ -1,16 +1,6 @@
 {
   "animations": {
-    "walk": {
-      "id": "fossilslegacy:mammoth_walk",
-      "load_parts": [
-        "right_arm",
-        "left_arm",
-        "right_leg",
-        "left_leg",
-        "nose_top",
-        "nose_bottom"
-      ]
-    }
+    "walk": "fossilslegacy:mammoth_walk"
   },
   "elements": [
     {

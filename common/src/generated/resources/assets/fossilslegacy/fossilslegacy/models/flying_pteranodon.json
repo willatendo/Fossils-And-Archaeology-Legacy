@@ -1,24 +1,6 @@
 {
   "animations": {
-    "fly": {
-      "id": "fossilslegacy:pteranodon_fly",
-      "load_parts": [
-        "right_wing_1",
-        "left_wing_1",
-        "right_wing_2",
-        "left_wing_2",
-        "body",
-        "neck_1",
-        "neck_2",
-        "tail",
-        "crown",
-        "head",
-        "upper_mouth",
-        "lower_mouth",
-        "right_leg",
-        "left_leg"
-      ]
-    }
+    "fly": "fossilslegacy:pteranodon_fly"
   },
   "elements": [
     {

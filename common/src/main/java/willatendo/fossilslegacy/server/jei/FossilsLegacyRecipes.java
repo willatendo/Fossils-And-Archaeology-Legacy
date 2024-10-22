@@ -13,14 +13,17 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.block.entity.CultivatorBlockEntity;
-import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.commands.FossilsLegacyCommandTypes;
+import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.item.DNAItem;
 import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.item.FossilsLegacyTiers;
+import willatendo.fossilslegacy.server.item.feederfood.FeederFood;
+import willatendo.fossilslegacy.server.item.feederfood.FillType;
+import willatendo.fossilslegacy.server.jei.recipe.ArticulatedFossilRecipe;
 import willatendo.fossilslegacy.server.jei.recipe.BiomatterRecipe;
 import willatendo.fossilslegacy.server.jei.recipe.FeederRecipe;
 import willatendo.fossilslegacy.server.jei.recipe.GeneModificationRecipe;
@@ -67,11 +70,9 @@ public final class FossilsLegacyRecipes {
 
     public List<FeederRecipe> getFeederRecipes() {
         List<FeederRecipe> feederRecipes = new ArrayList<>();
-        for (int i = 0; i < FeederBlockEntity.getMeatFoodLevel().size(); i++) {
-            feederRecipes.add(new FeederRecipe(new ItemStack(FeederBlockEntity.getMeatFoodLevel().keySet().stream().toList().get(i)), FeederBlockEntity.getMeatFoodLevel().values().stream().toList().get(i), true));
-        }
-        for (int i = 0; i < FeederBlockEntity.getPlantsFoodLevel().size(); i++) {
-            feederRecipes.add(new FeederRecipe(new ItemStack(FeederBlockEntity.getPlantsFoodLevel().keySet().stream().toList().get(i)), FeederBlockEntity.getPlantsFoodLevel().values().stream().toList().get(i), false));
+        Registry<FeederFood> feederFoodRegistry = this.registryAccess.registryOrThrow(FossilsLegacyRegistries.FEEDER_FOOD);
+        for (FeederFood feederFood : feederFoodRegistry.stream().toList()) {
+            feederRecipes.add(new FeederRecipe(feederFood.getItemStack(), feederFood.getAmount(), feederFood.getFillType() == FillType.MEAT));
         }
         return feederRecipes;
     }
@@ -88,6 +89,15 @@ public final class FossilsLegacyRecipes {
         }
 
         return geneModificationRecipes;
+    }
+
+    public List<ArticulatedFossilRecipe> getArticulatedFossilRecipes() {
+        List<ArticulatedFossilRecipe> articulatedFossilRecipes = new ArrayList<>();
+        Registry<FossilVariant> fossilVariantRegistry = this.registryAccess.registryOrThrow(FossilsLegacyRegistries.FOSSIL_VARIANTS);
+        for (Holder<FossilVariant> fossilVariant : fossilVariantRegistry.holders().toList()) {
+            articulatedFossilRecipes.add(new ArticulatedFossilRecipe(fossilVariant.value().fossilCount(), fossilVariant));
+        }
+        return articulatedFossilRecipes;
     }
 
     public List<RecipeHolder<CraftingRecipe>> createMagicConchRecipes() {

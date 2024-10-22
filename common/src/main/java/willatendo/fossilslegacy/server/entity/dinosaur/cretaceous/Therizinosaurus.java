@@ -87,7 +87,7 @@ public class Therizinosaurus extends Dinosaur implements DinopediaInformation, C
 
     @Override
     public Diet getDiet() {
-        return Diet.herbivore();
+        return Diet.herbivore(this.level());
     }
 
     @Override

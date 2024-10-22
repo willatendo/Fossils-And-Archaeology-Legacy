@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.mojang.datafixers.util.Pair;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -108,33 +107,14 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
         Optional<AnimationHolder> animationHolder = Optional.empty();
         if (jsonObject.has(varAnimations)) {
             JsonObject animationsObject = GsonHelper.getAsJsonObject(jsonObject, varAnimations);
-
-            Pair<Optional<ResourceLocation>, List<String>> walkAnimation = this.parseAnimation(animationsObject, "walk");
-            Pair<Optional<ResourceLocation>, List<String>> swimAnimation = this.parseAnimation(animationsObject, "swim");
-            Pair<Optional<ResourceLocation>, List<String>> flyAnimation = this.parseAnimation(animationsObject, "fly");
-            Pair<Optional<ResourceLocation>, List<String>> floatDownAnimation = this.parseAnimation(animationsObject, "float_down");
-            Pair<Optional<ResourceLocation>, List<String>> headAnimation = this.parseAnimation(animationsObject, "head");
-            Pair<Optional<ResourceLocation>, List<String>> shakeAnimation = this.parseAnimation(animationsObject, "shake");
-            Pair<Optional<ResourceLocation>, List<String>> sitAnimation = this.parseAnimation(animationsObject, "sit");
-            Pair<Optional<ResourceLocation>, List<String>> tailAnimation = this.parseAnimation(animationsObject, "tail");
-
-            this.loadPartsFrom(walkAnimation, loadParts);
-            this.loadPartsFrom(swimAnimation, loadParts);
-            this.loadPartsFrom(flyAnimation, loadParts);
-            this.loadPartsFrom(floatDownAnimation, loadParts);
-            this.loadPartsFrom(headAnimation, loadParts);
-            this.loadPartsFrom(shakeAnimation, loadParts);
-            this.loadPartsFrom(sitAnimation, loadParts);
-            this.loadPartsFrom(tailAnimation, loadParts);
-
-            animationHolder = Optional.of(new AnimationHolder(walkAnimation.getFirst(), swimAnimation.getFirst(), flyAnimation.getFirst(), floatDownAnimation.getFirst(), headAnimation.getFirst(), shakeAnimation.getFirst(), sitAnimation.getFirst(), tailAnimation.getFirst()));
+            animationHolder = Optional.of(new AnimationHolder(this.parseAnimation(animationsObject, "walk"), this.parseAnimation(animationsObject, "swim"), this.parseAnimation(animationsObject, "fly"), this.parseAnimation(animationsObject, "float_down"), this.parseAnimation(animationsObject, "head"), this.parseAnimation(animationsObject, "shake"), this.parseAnimation(animationsObject, "sit"), this.parseAnimation(animationsObject, "tail")));
         }
 
         int textureHeight = GsonHelper.getAsInt(jsonObject, "texture_height");
         int textureWidth = GsonHelper.getAsInt(jsonObject, "texture_width");
         JsonArray elementsArray = GsonHelper.getAsJsonArray(jsonObject, "elements");
         elementsArray.asList().forEach(jsonElement -> {
-            this.loadElement(jsonElement.getAsJsonObject(), root);
+            this.loadElement(jsonElement.getAsJsonObject(), root, loadParts);
         });
         boolean colored = false;
         if (jsonObject.has("colored")) {
@@ -143,7 +123,7 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
         JSON_MODELS.put(resourceLocation, new JsonModelElement(LayerDefinition.create(meshDefinition, textureWidth, textureHeight), animationHolder, loadParts, headPieces, colored));
     }
 
-    private void loadElement(JsonObject elementObject, PartDefinition root) {
+    private void loadElement(JsonObject elementObject, PartDefinition root, List<String> loadParts) {
         String elementId = GsonHelper.getAsString(elementObject, "id");
         List<Box> boxList = Lists.newArrayList();
         JsonArray boxesArray = GsonHelper.getAsJsonArray(elementObject, "boxes");
@@ -199,39 +179,24 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
                 cubeListBuilder.mirror(box.mirror().get());
             }
         });
+        loadParts.add(elementId);
         PartDefinition newRoot = root.addOrReplaceChild(elementId, cubeListBuilder, hasRot ? PartPose.offsetAndRotation(x, y, z, xRot, yRot, zRot) : PartPose.offset(x, y, z));
 
         String varElements = "elements";
         if (elementObject.has(varElements)) {
             JsonArray elementsArray = GsonHelper.getAsJsonArray(elementObject, varElements);
             elementsArray.asList().forEach(elementsArray1 -> {
-                this.loadElement(elementsArray1.getAsJsonObject(), newRoot);
+                this.loadElement(elementsArray1.getAsJsonObject(), newRoot, loadParts);
             });
         }
     }
 
-    private Pair<Optional<ResourceLocation>, List<String>> parseAnimation(JsonObject animationsObject, String varIn) {
+    private Optional<ResourceLocation> parseAnimation(JsonObject animationsObject, String varIn) {
         Optional<ResourceLocation> id = Optional.empty();
-        List<String> loadParts = Lists.newArrayList();
         if (animationsObject.has(varIn)) {
-            if (GsonHelper.isObjectNode(animationsObject, varIn)) {
-                JsonObject animationObject = GsonHelper.getAsJsonObject(animationsObject, varIn);
-                id = Optional.of(this.parse(animationObject, "id"));
-                JsonArray loadPartsArray = GsonHelper.getAsJsonArray(animationObject, "load_parts");
-                loadPartsArray.forEach(jsonElement -> loadParts.add(jsonElement.getAsString()));
-            } else {
-                id = Optional.of(this.parse(animationsObject, varIn));
-            }
+            id = Optional.of(this.parse(animationsObject, varIn));
         }
-        return Pair.of(id, loadParts);
-    }
-
-    private void loadPartsFrom(Pair<Optional<ResourceLocation>, List<String>> animations, List<String> loadParts) {
-        animations.getSecond().forEach(loadPart -> {
-            if (!loadParts.contains(loadPart)) {
-                loadParts.add(loadPart);
-            }
-        });
+        return id;
     }
 
     private ResourceLocation parse(JsonObject jsonObject, String memberName) {

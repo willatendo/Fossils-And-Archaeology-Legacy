@@ -73,7 +73,7 @@ public class Carnotaurus extends Dinosaur implements DinopediaInformation {
 
     @Override
     public Diet getDiet() {
-        return Diet.carnivore();
+        return Diet.carnivore(this.level());
     }
 
     @Override

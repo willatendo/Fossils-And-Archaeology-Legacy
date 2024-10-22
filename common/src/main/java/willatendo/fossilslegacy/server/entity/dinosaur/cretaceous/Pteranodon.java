@@ -121,7 +121,7 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 
     @Override
     public Diet getDiet() {
-        return Diet.piscivore();
+        return Diet.piscivore(this.level());
     }
 
     @Override

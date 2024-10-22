@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.server.jei;
 
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import willatendo.fossilslegacy.server.jei.recipe.ArticulatedFossilRecipe;
 import willatendo.fossilslegacy.server.jei.recipe.BiomatterRecipe;
 import willatendo.fossilslegacy.server.jei.recipe.FeederRecipe;
 import willatendo.fossilslegacy.server.jei.recipe.GeneModificationRecipe;
@@ -18,4 +19,5 @@ public final class FossilsLegacyJEIRecipeTypes {
     public static final RecipeType<GeneModificationRecipe> GENE_MODIFICATION = RecipeType.create(FossilsLegacyUtils.ID, "gene_modification", GeneModificationRecipe.class);
     public static final RecipeType<BiomatterRecipe> BIOMATTER = RecipeType.create(FossilsLegacyUtils.ID, "biomatter_category", BiomatterRecipe.class);
     public static final RecipeType<FeederRecipe> FEEDER = RecipeType.create(FossilsLegacyUtils.ID, "feeder_category", FeederRecipe.class);
+    public static final RecipeType<ArticulatedFossilRecipe> ARTICULATED_FOSSIL = RecipeType.create(FossilsLegacyUtils.ID, "articulated_fossil", ArticulatedFossilRecipe.class);
 }

@@ -21,7 +21,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 public final class GeneModificationCategory extends AbstractRecipeCategory<GeneModificationRecipe> {
     private final IDrawableStatic geneModification;
 
-    public GeneModificationCategory(IGuiHelper guiHelper, FossilsLegacyJEITextures fossilsLegacyJEITextures) {
+    public GeneModificationCategory(FossilsLegacyJEITextures fossilsLegacyJEITextures) {
         super(FossilsLegacyJEIRecipeTypes.GENE_MODIFICATION, FossilsLegacyUtils.translation("jei", "gene_modification"), fossilsLegacyJEITextures.getIconFromItemLike(FossilsLegacyBlocks.GENE_MODIFICATION_TABLE.get()), 101, 32);
         this.geneModification = fossilsLegacyJEITextures.getGeneModification();
     }

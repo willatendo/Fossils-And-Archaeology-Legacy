@@ -1,53 +1,9 @@
 {
   "animations": {
-    "shake": {
-      "id": "fossilslegacy:smilodon_shake",
-      "load_parts": [
-        "head",
-        "right_ear",
-        "left_ear",
-        "right_tooth_bottom",
-        "left_tooth_bottom",
-        "right_tooth_top",
-        "left_tooth_top",
-        "snout",
-        "jaw",
-        "nose",
-        "body",
-        "back",
-        "tail"
-      ]
-    },
-    "sit": {
-      "id": "fossilslegacy:smilodon_sit",
-      "load_parts": [
-        "body",
-        "back",
-        "tail",
-        "right_front_leg",
-        "left_front_leg",
-        "right_back_leg",
-        "left_back_leg"
-      ]
-    },
-    "tail": {
-      "id": "fossilslegacy:smilodon_tail",
-      "load_parts": [
-        "tail"
-      ]
-    },
-    "walk": {
-      "id": "fossilslegacy:smilodon_walk",
-      "load_parts": [
-        "body",
-        "back",
-        "tail",
-        "right_front_leg",
-        "left_front_leg",
-        "right_back_leg",
-        "left_back_leg"
-      ]
-    }
+    "shake": "fossilslegacy:smilodon_shake",
+    "sit": "fossilslegacy:smilodon_sit",
+    "tail": "fossilslegacy:smilodon_tail",
+    "walk": "fossilslegacy:smilodon_walk"
   },
   "elements": [
     {
