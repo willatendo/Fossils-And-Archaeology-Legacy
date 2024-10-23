@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-04T18:13:54.4302412	Loot Tables
+// 1.21.1	2024-10-22T17:32:15.9202412	Loot Tables
 5fcf811a958fcf132678d4423a7472c475c2b8ca data/fossilslegacy/loot_table/blocks/analyzer.json
 8bfc811efa599c9be09afe46481ec9ebbf5f3a33 data/fossilslegacy/loot_table/blocks/archaeology_workbench.json
 e4c3f2afd7c71b1d42778ff89f2ddfe5a03122da data/fossilslegacy/loot_table/blocks/axolotlspawn.json
@@ -52,6 +52,7 @@ a26c2921b6a2b4ebe868f12f57acb7fe9cfd5a43 data/fossilslegacy/loot_table/blocks/li
 a754ec17a31418b2f1f7cb104aca0616a440c799 data/fossilslegacy/loot_table/blocks/lime_cultivator.json
 70a329afcf397301d9a40c182c1fa58b1f2b9780 data/fossilslegacy/loot_table/blocks/magenta_cultivator.json
 3a3e1492f4e525bfa5dc474df716e746ecbf2c68 data/fossilslegacy/loot_table/blocks/orange_cultivator.json
+202f1a6c54c6446bacaee83b6d4dd7d3e263b293 data/fossilslegacy/loot_table/blocks/palaeontology_table.json
 2750113ec8fd41cd07143b57c8051bca5abaa7ad data/fossilslegacy/loot_table/blocks/permafrost.json
 7a95bff6c4bccc1a81ff05b0767b2156640d05bd data/fossilslegacy/loot_table/blocks/pink_cultivator.json
 3dbc0114cba1eeb2a944ec6ead8eb218d226ce5a data/fossilslegacy/loot_table/blocks/potted_calamites_sapling.json

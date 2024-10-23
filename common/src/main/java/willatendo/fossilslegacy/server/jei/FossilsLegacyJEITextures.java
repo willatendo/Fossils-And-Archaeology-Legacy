@@ -26,6 +26,7 @@ public final class FossilsLegacyJEITextures {
     private final IDrawableStatic vat;
     private final IDrawableStatic hammerOutline;
     private final IDrawableStatic hammer;
+    private final IDrawableStatic arrow;
     private final IDrawableStatic geneModification;
 
     public FossilsLegacyJEITextures(IGuiHelper iGuiHelper) {
@@ -43,6 +44,7 @@ public final class FossilsLegacyJEITextures {
         this.vat = this.createIcon("vat", 14, 14);
         this.hammerOutline = this.createIcon("empty_hammer", 14, 14);
         this.hammer = this.createIcon("hammer", 14, 14);
+        this.arrow = this.createIcon("arrow", 22, 15);
         this.geneModification = this.createIcon("gene_modification", 44, 16);
     }
 
@@ -68,6 +70,10 @@ public final class FossilsLegacyJEITextures {
 
     public IDrawableStatic getHammerOutline() {
         return this.hammerOutline;
+    }
+
+    public IDrawableStatic getArrow() {
+        return this.arrow;
     }
 
     public IDrawableStatic getGeneModification() {

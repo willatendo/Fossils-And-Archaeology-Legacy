@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fossilslegacy:archaeology_workbench"
+        "recipe": "fossilslegacy:palaeontology_table"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "fossilslegacy:archaeology_workbench"
+      "fossilslegacy:palaeontology_table"
     ]
   }
 }

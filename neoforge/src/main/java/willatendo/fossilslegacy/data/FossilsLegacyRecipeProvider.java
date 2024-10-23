@@ -5,6 +5,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -61,7 +62,8 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         this.cultivator(FossilsLegacyBlocks.RED_CULTIVATOR.get(), Items.RED_DYE, Blocks.RED_STAINED_GLASS);
         this.cultivator(FossilsLegacyBlocks.BLACK_CULTIVATOR.get(), Items.BLACK_DYE, Blocks.BLACK_STAINED_GLASS);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyBlocks.GENE_MODIFICATION_TABLE.get(), PatternBuilder.builder("#$#", "#&#", "#!#"), IngredientBuilder.build(Items.IRON_INGOT).symbol('#').requires(), IngredientBuilder.build(Blocks.REDSTONE_BLOCK).symbol('$'), IngredientBuilder.build(Items.NETHER_STAR).symbol('&'), IngredientBuilder.build(Items.GOLD_INGOT).symbol('!'));
-        this.shapeless(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get(), IngredientBuilder.build(Items.PAPER), IngredientBuilder.build(Blocks.CRAFTING_TABLE).requires());
+        this.craftingTable(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get(), Items.PAPER);
+        this.craftingTable(FossilsLegacyBlocks.PALAEONTOLOGY_TABLE.get(), FossilsLegacyItems.FOSSIL.get());
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyBlocks.DRUM.get(), PatternBuilder.builder("###", "$%$", "$$$"), IngredientBuilder.build(Items.LEATHER).symbol('#').requires(), IngredientBuilder.build(ItemTags.PLANKS).symbol('$'), IngredientBuilder.build(Items.REDSTONE).symbol('%'));
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyBlocks.FEEDER.get(), PatternBuilder.builder("#$#", "%@!", "!!!"), IngredientBuilder.build(Items.IRON_INGOT).symbol('#'), IngredientBuilder.build(Blocks.GLASS).symbol('$'), IngredientBuilder.build(Blocks.STONE_BUTTON).symbol('%'), IngredientBuilder.build(Items.BUCKET).symbol('@'), IngredientBuilder.build(Blocks.STONE).symbol('!').requires());
         this.shapeless(RecipeCategory.BUILDING_BLOCKS, FossilsLegacyItems.RAW_CHICKEN_SOUP_BUCKET.get(), IngredientBuilder.build(Items.CHICKEN), IngredientBuilder.build(Items.BUCKET).requires());
@@ -81,7 +83,7 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         this.shapeless(RecipeCategory.REDSTONE, "wooden_button", FossilsLegacyBlocks.LEPIDODENDRON_BUTTON.get(), IngredientBuilder.build(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get()));
         this.shaped(RecipeCategory.DECORATIONS, "sign", FossilsLegacyItems.LEPIDODENDRON_SIGN.get(), 3, PatternBuilder.builder("###", "###", " $ "), IngredientBuilder.build(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get()).symbol('#').requires(), IngredientBuilder.build(Items.STICK).symbol('$'));
         this.shaped(RecipeCategory.DECORATIONS, "hanging_sign", FossilsLegacyItems.LEPIDODENDRON_HANGING_SIGN.get(), 6, PatternBuilder.builder("$ $", "###", "###"), IngredientBuilder.build(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_LOG.get()).symbol('#').requires(), IngredientBuilder.build(Items.CHAIN).symbol('$'));
-        this.shaped(RecipeCategory.TRANSPORTATION, "boat", FossilsLegacyItems.LEPIDODENDRON_BOAT.get(), PatternBuilder.builder("# #", "###"), IngredientBuilder.build(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get()).symbol('#'));
+        this.boat(RecipeCategory.TRANSPORTATION, "boat", FossilsLegacyItems.LEPIDODENDRON_BOAT.get(), PatternBuilder.builder("# #", "###"), IngredientBuilder.build(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get()).symbol('#'));
         this.chestBoat(RecipeCategory.TRANSPORTATION, "chest_boat", FossilsLegacyItems.LEPIDODENDRON_CHEST_BOAT.get(), IngredientBuilder.build(FossilsLegacyItems.LEPIDODENDRON_BOAT.get()), IngredientBuilder.build(Items.CHEST));
         this.shaped(RecipeCategory.BUILDING_BLOCKS, "bark", FossilsLegacyBlocks.SIGILLARIA_WOOD.get(), 3, PatternBuilder.builder("##", "##"), IngredientBuilder.build(FossilsLegacyBlocks.SIGILLARIA_LOG.get()).symbol('#'));
         this.shaped(RecipeCategory.BUILDING_BLOCKS, "bark", FossilsLegacyBlocks.STRIPPED_SIGILLARIA_WOOD.get(), 3, PatternBuilder.builder("##", "##"), IngredientBuilder.build(FossilsLegacyBlocks.STRIPPED_SIGILLARIA_LOG.get()).symbol('#'));
@@ -96,7 +98,7 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         this.shapeless(RecipeCategory.REDSTONE, "wooden_button", FossilsLegacyBlocks.SIGILLARIA_BUTTON.get(), IngredientBuilder.build(FossilsLegacyBlocks.SIGILLARIA_PLANKS.get()));
         this.shaped(RecipeCategory.DECORATIONS, "sign", FossilsLegacyItems.SIGILLARIA_SIGN.get(), 3, PatternBuilder.builder("###", "###", " $ "), IngredientBuilder.build(FossilsLegacyBlocks.SIGILLARIA_PLANKS.get()).symbol('#').requires(), IngredientBuilder.build(Items.STICK).symbol('$'));
         this.shaped(RecipeCategory.DECORATIONS, "hanging_sign", FossilsLegacyItems.SIGILLARIA_HANGING_SIGN.get(), 6, PatternBuilder.builder("$ $", "###", "###"), IngredientBuilder.build(FossilsLegacyBlocks.STRIPPED_SIGILLARIA_LOG.get()).symbol('#').requires(), IngredientBuilder.build(Items.CHAIN).symbol('$'));
-        this.shaped(RecipeCategory.TRANSPORTATION, "boat", FossilsLegacyItems.SIGILLARIA_BOAT.get(), PatternBuilder.builder("# #", "###"), IngredientBuilder.build(FossilsLegacyBlocks.SIGILLARIA_PLANKS.get()).symbol('#'));
+        this.boat(RecipeCategory.TRANSPORTATION, "boat", FossilsLegacyItems.SIGILLARIA_BOAT.get(), PatternBuilder.builder("# #", "###"), IngredientBuilder.build(FossilsLegacyBlocks.SIGILLARIA_PLANKS.get()).symbol('#'));
         this.chestBoat(RecipeCategory.TRANSPORTATION, "chest_boat", FossilsLegacyItems.SIGILLARIA_CHEST_BOAT.get(), IngredientBuilder.build(FossilsLegacyItems.SIGILLARIA_BOAT.get()), IngredientBuilder.build(Items.CHEST));
         this.shaped(RecipeCategory.BUILDING_BLOCKS, "bark", FossilsLegacyBlocks.CALAMITES_WOOD.get(), 3, PatternBuilder.builder("##", "##"), IngredientBuilder.build(FossilsLegacyBlocks.CALAMITES_LOG.get()).symbol('#'));
         this.shaped(RecipeCategory.BUILDING_BLOCKS, "bark", FossilsLegacyBlocks.STRIPPED_CALAMITES_WOOD.get(), 3, PatternBuilder.builder("##", "##"), IngredientBuilder.build(FossilsLegacyBlocks.STRIPPED_CALAMITES_LOG.get()).symbol('#'));
@@ -111,7 +113,7 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         this.shapeless(RecipeCategory.REDSTONE, "wooden_button", FossilsLegacyBlocks.CALAMITES_BUTTON.get(), IngredientBuilder.build(FossilsLegacyBlocks.CALAMITES_PLANKS.get()));
         this.shaped(RecipeCategory.DECORATIONS, "sign", FossilsLegacyItems.CALAMITES_SIGN.get(), 3, PatternBuilder.builder("###", "###", " $ "), IngredientBuilder.build(FossilsLegacyBlocks.CALAMITES_PLANKS.get()).symbol('#').requires(), IngredientBuilder.build(Items.STICK).symbol('$'));
         this.shaped(RecipeCategory.DECORATIONS, "hanging_sign", FossilsLegacyItems.CALAMITES_HANGING_SIGN.get(), 6, PatternBuilder.builder("$ $", "###", "###"), IngredientBuilder.build(FossilsLegacyBlocks.STRIPPED_CALAMITES_LOG.get()).symbol('#').requires(), IngredientBuilder.build(Items.CHAIN).symbol('$'));
-        this.shaped(RecipeCategory.TRANSPORTATION, "boat", FossilsLegacyItems.CALAMITES_BOAT.get(), PatternBuilder.builder("# #", "###"), IngredientBuilder.build(FossilsLegacyBlocks.CALAMITES_PLANKS.get()).symbol('#'));
+        this.boat(RecipeCategory.TRANSPORTATION, "boat", FossilsLegacyItems.CALAMITES_BOAT.get(), PatternBuilder.builder("# #", "###"), IngredientBuilder.build(FossilsLegacyBlocks.CALAMITES_PLANKS.get()).symbol('#'));
         this.chestBoat(RecipeCategory.TRANSPORTATION, "chest_boat", FossilsLegacyItems.CALAMITES_CHEST_BOAT.get(), IngredientBuilder.build(FossilsLegacyItems.CALAMITES_BOAT.get()), IngredientBuilder.build(Items.CHEST));
 
         this.special("magic_conch", MagicConchRecipe::new);
@@ -316,6 +318,10 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         this.shaped(this.toName(output) + "_from_colored_glass", RecipeCategory.BUILDING_BLOCKS, "cultivators", output, PatternBuilder.builder("# #", "#%#", "@@@"), IngredientBuilder.build(glass).symbol('#').requires(), IngredientBuilder.build(Items.WATER_BUCKET).symbol('%'), IngredientBuilder.build(Items.IRON_INGOT).symbol('@'));
     }
 
+    public void craftingTable(ItemLike output, ItemLike modifier) {
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, output, PatternBuilder.builder("$$", "##", "##"), IngredientBuilder.build(ItemTags.PLANKS).symbol('#').requires(), IngredientBuilder.build(modifier).symbol('$'));
+    }
+
     public void cultivate(CultivationBookCategory cultivationBookCategory, Item ingredient, ItemLike itemLike, int time) {
         CultivationRecipeBuilder cultivationRecipeBuilder = CultivationRecipeBuilder.recipe(cultivationBookCategory, null, ingredient, itemLike, time).unlockedBy(getHasName(ingredient), has(ingredient));
         this.recipeBuilders.put(this.toName(itemLike), cultivationRecipeBuilder);
@@ -369,6 +375,6 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         this.analyzation(AnalyzationBookCategory.MISC, input, dnas[0], 100 / dnas.length, 100, analyzerResults.toArray(AnalyzerResult[]::new));
     }
 
-    private static final record AnalyzerResult(Item result, int weight) {
+    private record AnalyzerResult(Item result, int weight) {
     }
 }

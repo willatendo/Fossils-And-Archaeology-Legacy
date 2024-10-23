@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-07T21:40:27.2296726	Block States: fossilslegacy
+// 1.21.1	2024-10-22T20:44:58.0891735	Block States: fossilslegacy
 bc40e7fb93a5d1812ca1648e1df89885a48cd95d assets/fossilslegacy/blockstates/analyzer.json
 b35e4eb39636d1687092533caa84ab464fac932a assets/fossilslegacy/blockstates/archaeology_workbench.json
 074a152b0f0df7ebb7a3561ea6a004be578d0644 assets/fossilslegacy/blockstates/axolotlspawn.json
@@ -56,6 +56,7 @@ c96b074678d68a574b7ab9ffbc96cec66c4861e6 assets/fossilslegacy/blockstates/light_
 fc99b35a17548ad476fb5be62137eeeeba9606d0 assets/fossilslegacy/blockstates/lime_cultivator.json
 8812a81ac0399f159fc44792d79027fc3073695b assets/fossilslegacy/blockstates/magenta_cultivator.json
 0a847bd7e684cd61645a7d21531a7f177a6a6f5b assets/fossilslegacy/blockstates/orange_cultivator.json
+ae476defe9b9e49512fe353b23bc72ac2c36e207 assets/fossilslegacy/blockstates/palaeontology_table.json
 14fdb12f5ad9c2175eea0935e51ee4b0f5a1954b assets/fossilslegacy/blockstates/permafrost.json
 4764891a68a216184286306548acc0185694a600 assets/fossilslegacy/blockstates/pink_cultivator.json
 8da0d8dbc3f9947fc63643992f5cee6a37ee87f7 assets/fossilslegacy/blockstates/potted_calamites_sapling.json
@@ -231,6 +232,7 @@ c79dc205e0f2acdb4e3ef7182693c84fbdff30db assets/fossilslegacy/models/block/magen
 a1309fe088d7d129986e37da2d8d9dbcf4a06708 assets/fossilslegacy/models/block/magenta_cultivator_active.json
 245e223425bbedc1e249b56bdca4d1e0a663010a assets/fossilslegacy/models/block/orange_cultivator.json
 bd8eae6f520f4511fa5363b6c57a70d4002836b8 assets/fossilslegacy/models/block/orange_cultivator_active.json
+f19f908a7b32e00a85be627f4b626041792d9bc6 assets/fossilslegacy/models/block/palaeontology_table.json
 219f060a478d38a81fbae53f42c5edbd2721e59b assets/fossilslegacy/models/block/permafrost.json
 847dfa76dde204c260e323f2e016f91467dd74b2 assets/fossilslegacy/models/block/pink_cultivator.json
 8dde0fc02d6b5b843778a3b5fcedbd45aff7f37b assets/fossilslegacy/models/block/pink_cultivator_active.json

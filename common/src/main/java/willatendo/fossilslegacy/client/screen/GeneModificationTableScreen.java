@@ -53,8 +53,8 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
     private int size = 0;
     private boolean hasSet = false;
 
-    public GeneModificationTableScreen(GeneModificationTableMenu geneModifierMenu, Inventory inventory, Component title) {
-        super(geneModifierMenu, inventory, title);
+    public GeneModificationTableScreen(GeneModificationTableMenu geneModificationTableMenu, Inventory inventory, Component title) {
+        super(geneModificationTableMenu, inventory, title);
         this.imageHeight = 187;
         this.inventoryLabelY = 93;
     }

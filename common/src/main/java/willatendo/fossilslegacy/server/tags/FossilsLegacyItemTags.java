@@ -25,6 +25,7 @@ public class FossilsLegacyItemTags {
     public static final TagKey<Item> HERBIVORE_FOODS = ITEM_TAGS.register("herbivore_foods");
     public static final TagKey<Item> LEPIDODENDRON_LOGS = ITEM_TAGS.register("lepidodendron_logs");
     public static final TagKey<Item> MAMMOTH_COMMANDABLES = ITEM_TAGS.register("mammoth_commandables");
+    public static final TagKey<Item> MESOZOIC_FOSSIL = ITEM_TAGS.register("mesozoic_fossil");
     public static final TagKey<Item> OMNIVORE_FOODS = ITEM_TAGS.register("omnivore_foods");
     public static final TagKey<Item> PACHYCEPHALOSAURUS_COMMANDABLES = ITEM_TAGS.register("pachycephalosaurus_commandables");
     public static final TagKey<Item> PIGLIN_TAMING_ARMOR = ITEM_TAGS.register("piglin_taming_armor");

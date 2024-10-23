@@ -97,6 +97,7 @@ public final class FossilsLegacyClient {
         modelRegister.register(FossilsLegacyEntityTypes.FOSSIL.get(), FossilRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.STONE_TABLET.get(), StoneTabletRenderer::new);
 
+        modelRegister.register(FossilsLegacyBlockEntityTypes.PALEONTOLOGY_TABLE.get(), PalaeontologyTableRenderer::new);
         modelRegister.register(FossilsLegacyBlockEntityTypes.TIME_MACHINE.get(), TimeMachineClockRenderer::new);
         modelRegister.register(FossilsLegacyBlockEntityTypes.LEPIDODENDRON_SIGN.get(), SignRenderer::new);
         modelRegister.register(FossilsLegacyBlockEntityTypes.LEPIDODENDRON_HANGING_SIGN.get(), HangingSignRenderer::new);
@@ -124,7 +125,8 @@ public final class FossilsLegacyClient {
         menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.ARCHAEOLOGY_WORKBENCH.get(), ArchaeologyWorkbenchScreen::new);
         menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.CULTIVATOR.get(), CultivatorScreen::new);
         menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.FEEDER.get(), FeederScreen::new);
-        menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.TIME_MACHINE.get(), TimeMachineScreen::new);
         menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.GENE_MODIFICATION.get(), GeneModificationTableScreen::new);
+        menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.PALAEONTOLOGY_TABLE.get(), PalaeontologyTableScreen::new);
+        menuScreenRegister.addMenuScreen(FossilsLegacyMenuTypes.TIME_MACHINE.get(), TimeMachineScreen::new);
     }
 }

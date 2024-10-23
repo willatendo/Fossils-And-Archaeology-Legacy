@@ -249,6 +249,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyBlocks.BLACK_CULTIVATOR.get());
         output.accept(FossilsLegacyBlocks.GENE_MODIFICATION_TABLE.get());
         output.accept(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get());
+        output.accept(FossilsLegacyBlocks.PALAEONTOLOGY_TABLE.get());
         output.accept(FossilsLegacyBlocks.DRUM.get());
         output.accept(FossilsLegacyBlocks.FEEDER.get());
         output.accept(FossilsLegacyBlocks.TIME_MACHINE.get());

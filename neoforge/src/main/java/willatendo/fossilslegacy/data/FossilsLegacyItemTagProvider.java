@@ -80,6 +80,7 @@ public class FossilsLegacyItemTagProvider extends ItemTagsProvider {
         this.tag(FossilsLegacyItemTags.HERBIVORE_FOODS).add(Items.APPLE, Items.WHEAT, Items.BREAD, Items.SUGAR_CANE, Items.WHEAT_SEEDS, Items.BEETROOT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.MELON_SLICE, Items.SWEET_BERRIES, Items.GLOW_BERRIES, Items.CARROT, Items.POTATO, Items.BAKED_POTATO, Items.BEETROOT, Items.KELP, FossilsLegacyItems.JURASSIC_FERN_SPORES.get());
         this.tag(FossilsLegacyItemTags.OMNIVORE_FOODS).addTags(FossilsLegacyItemTags.CARNIVORE_FOODS, FossilsLegacyItemTags.HERBIVORE_FOODS);
         this.tag(FossilsLegacyItemTags.PISCIVORE_FOODS).add(Items.COD, Items.COOKED_COD, Items.SALMON, Items.COOKED_SALMON, Items.TROPICAL_FISH, FossilsLegacyItems.SIO_CHIU_LE.get(), FossilsLegacyItems.NAUTILUS.get());
+        this.tag(FossilsLegacyItemTags.MESOZOIC_FOSSIL).add(FossilsLegacyItems.FOSSIL.get(), Items.BONE);
 
         this.copy(FossilsLegacyBlockTags.LEPIDODENDRON_LOGS, FossilsLegacyItemTags.LEPIDODENDRON_LOGS);
         this.copy(FossilsLegacyBlockTags.SIGILLARIA_LOGS, FossilsLegacyItemTags.SIGILLARIA_LOGS);

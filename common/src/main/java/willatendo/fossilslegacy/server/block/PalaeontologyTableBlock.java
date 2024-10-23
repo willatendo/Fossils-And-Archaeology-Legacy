@@ -11,8 +11,13 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import willatendo.fossilslegacy.server.block.entity.ArchaeologyWorkbenchBlockEntity;
+import willatendo.fossilslegacy.server.block.entity.BlockEntityHelper;
+import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntityTypes;
 import willatendo.fossilslegacy.server.block.entity.PalaeontologyTableBlockEntity;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
@@ -60,6 +65,11 @@ public class PalaeontologyTableBlock extends Block implements EntityBlock {
             }
             return InteractionResult.CONSUME;
         }
+    }
+
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
+        return level.isClientSide() ? null : BlockEntityHelper.createTickerHelper(blockEntityType, FossilsLegacyBlockEntityTypes.PALEONTOLOGY_TABLE.get(), PalaeontologyTableBlockEntity::serverTick);
     }
 
     @Override

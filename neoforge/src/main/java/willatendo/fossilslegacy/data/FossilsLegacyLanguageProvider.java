@@ -94,6 +94,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("block.fossilslegacy.cultivator.shatter", "Warning! Cultivation failure!");
         this.add(FossilsLegacyBlocks.GENE_MODIFICATION_TABLE.get());
         this.add(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get());
+        this.add(FossilsLegacyBlocks.PALAEONTOLOGY_TABLE.get());
         this.add(FossilsLegacyBlocks.JURASSIC_FERN.get());
         this.add(FossilsLegacyBlocks.DRUM.get());
         this.add("block.fossilslegacy.drum.hit", "Set all creatures that are commanded with a %s to %s.");
@@ -831,6 +832,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItemTags.HERBIVORE_FOODS, "Herbivore Foods");
         this.add(FossilsLegacyItemTags.LEPIDODENDRON_LOGS, "Lepidodendron Logs");
         this.add(FossilsLegacyItemTags.MAMMOTH_COMMANDABLES, "Mammoth Commandables");
+        this.add(FossilsLegacyItemTags.MESOZOIC_FOSSIL, "Mesozoic Fossil");
         this.add(FossilsLegacyItemTags.OMNIVORE_FOODS, "Omnivore Foods");
         this.add(FossilsLegacyItemTags.PACHYCEPHALOSAURUS_COMMANDABLES, "Pachycephalosaurus Commandables");
         this.add(FossilsLegacyItemTags.PIGLIN_TAMING_ARMOR, "Piglin Taming Armor");

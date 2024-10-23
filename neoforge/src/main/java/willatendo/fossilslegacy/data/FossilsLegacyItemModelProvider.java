@@ -283,6 +283,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicBlock(FossilsLegacyBlocks.BLACK_CULTIVATOR.get());
         this.basicBlock(FossilsLegacyBlocks.GENE_MODIFICATION_TABLE.get());
         this.basicBlock(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get());
+        this.basicBlock(FossilsLegacyBlocks.PALAEONTOLOGY_TABLE.get());
         this.basicItem(FossilsLegacyBlocks.JURASSIC_FERN.getId(), this.modLoc("block/fern_lower_3"));
         this.basicBlock(FossilsLegacyBlocks.DRUM.get(), "drum_follow");
         this.basicBlock(FossilsLegacyBlocks.FEEDER.get(), "feeder_empty");

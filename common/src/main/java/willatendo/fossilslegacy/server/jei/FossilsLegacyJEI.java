@@ -111,7 +111,7 @@ public final class FossilsLegacyJEI implements IModPlugin {
         iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.ANALYZER.get()), FossilsLegacyJEIRecipeTypes.ANALYZATION);
         iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.GENE_MODIFICATION_TABLE.get()), FossilsLegacyJEIRecipeTypes.GENE_MODIFICATION);
         iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.FEEDER.get()), FossilsLegacyJEIRecipeTypes.FEEDER);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get()), FossilsLegacyJEIRecipeTypes.ARTICULATED_FOSSIL);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.PALAEONTOLOGY_TABLE.get()), FossilsLegacyJEIRecipeTypes.ARTICULATED_FOSSIL);
     }
 
     @Override

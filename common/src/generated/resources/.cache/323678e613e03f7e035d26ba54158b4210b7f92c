@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-19T11:14:04.44792	Tags for minecraft:item mod id fossilslegacy
+// 1.21.1	2024-10-22T18:16:11.3673797	Tags for minecraft:item mod id fossilslegacy
 fb61c19eacf262b21d275a4b1dd7da1fd3460ef6 data/c/tags/item/bones.json
 d31244a2a7f7cb4224e5362dca80427850e5daa5 data/c/tags/item/buckets.json
 8773b7b9cd8f313f03d59d28a609bd9f1434b870 data/c/tags/item/eggs.json
@@ -30,6 +30,7 @@ a24938fa0a7371122d1dedf405eab96f5c45f641 data/fossilslegacy/tags/item/dna.json
 661c2e48a9da842ada19349862b870f42f478b80 data/fossilslegacy/tags/item/herbivore_foods.json
 dad829093473a418f24cdab5a8ffb6116744f27f data/fossilslegacy/tags/item/lepidodendron_logs.json
 1ad920aa65e2706dabb6265f3b12546ab33e8936 data/fossilslegacy/tags/item/mammoth_commandables.json
+f452b144f37d6edea70ada31c49ffdc6e9e47722 data/fossilslegacy/tags/item/mesozoic_fossil.json
 db326b911d785c43db1f6cda0d0c5d51709084fe data/fossilslegacy/tags/item/omnivore_foods.json
 1ad920aa65e2706dabb6265f3b12546ab33e8936 data/fossilslegacy/tags/item/pachycephalosaurus_commandables.json
 6a2ec8a487cf8a17501c5ffe9b096c48e6350237 data/fossilslegacy/tags/item/piglin_taming_armor.json

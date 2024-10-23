@@ -19,6 +19,7 @@
 - Fossils No Longer Drop Things When Killed In Creative Mode
 - Updated Brachiosaurs Model
 - Fossil No Longer Places Fossils
+- Archaeology Workbench Changed Recipe
 - (Fabric) Fixed Server Crash
 - Fixed Placing Stone Tables
 - Fixed Cannibalism
@@ -34,6 +35,7 @@
 - Fixed Some Dinosaur Meats Not Working In Feeder
 - (Fabric) Fixed Crash
 - Fixed Dispensor Not Dispensing Things Properly
+- Fixed Boat Recipes Not Being Unlocked Through Standing In Water
 - Added Updated Triceratops Model
 - Added "Anu Totem" Stone Tablet
 - Added Coat-Types; Data-Driven Cosmetics For Dinosaurs

@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-20T17:11:36.1927151	Item Models: fossilslegacy
+// 1.21.1	2024-10-22T17:32:15.9142394	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 1f02e6db84914fc2677089f5e420f925ba109484 assets/fossilslegacy/models/item/ancient_axe.json
 e6aea94981911965db91c7f52bfa4555de4d4182 assets/fossilslegacy/models/item/ancient_axe_artifact.json
@@ -237,6 +237,7 @@ ecbc1c1361d6b74e2656f68e15b11e0890e99409 assets/fossilslegacy/models/item/orange
 666b06ab7dea545145cfb26323f3cf9fafc4baa8 assets/fossilslegacy/models/item/pachycephalosaurus_dna.json
 831df03e8aa5a5e209fcf402c9be69b8f4b34110 assets/fossilslegacy/models/item/pachycephalosaurus_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/pachycephalosaurus_spawn_egg.json
+bc55afbb1088d8700fa1eb1582e352c5d9776d36 assets/fossilslegacy/models/item/palaeontology_table.json
 d3909062239a16142ba4f1f06487da230d6ec05a assets/fossilslegacy/models/item/panda_dna.json
 91098fcfab0418a3240a9e485c56407676c0efae assets/fossilslegacy/models/item/panda_embryo_syringe.json
 25ddde88c6cb5b4dd7cbad77e79cedb551940a47 assets/fossilslegacy/models/item/parrot_dna.json

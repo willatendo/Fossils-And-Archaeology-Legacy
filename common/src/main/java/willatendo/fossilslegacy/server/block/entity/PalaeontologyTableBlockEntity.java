@@ -1,8 +1,6 @@
 package willatendo.fossilslegacy.server.block.entity;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.NonNullList;
+import net.minecraft.core.*;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.ContainerHelper;
@@ -12,13 +10,23 @@ import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import org.apache.commons.compress.utils.Lists;
+import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
+import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
 import willatendo.fossilslegacy.server.menu.PalaeontologyTableMenu;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+
+import java.util.List;
 
 public class PalaeontologyTableBlockEntity extends BaseContainerBlockEntity implements StackedContentsCompatible {
     protected NonNullList<ItemStack> itemStacks = NonNullList.withSize(10, ItemStack.EMPTY);
+    public final List<FossilVariant> fossilVariants = Lists.newArrayList();
+    public FossilVariant selected = null;
+    private int lastFossilCount = 0;
 
     public PalaeontologyTableBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(FossilsLegacyBlockEntityTypes.PALEONTOLOGY_TABLE.get(), blockPos, blockState);
@@ -29,12 +37,42 @@ public class PalaeontologyTableBlockEntity extends BaseContainerBlockEntity impl
         super.loadAdditional(compoundTag, provider);
         this.itemStacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
         ContainerHelper.loadAllItems(compoundTag, this.itemStacks, provider);
+        this.lastFossilCount = compoundTag.getInt("LastFossilCount");
     }
 
     @Override
     protected void saveAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
         super.saveAdditional(compoundTag, provider);
         ContainerHelper.saveAllItems(compoundTag, this.itemStacks, provider);
+        compoundTag.putInt("LastFossilCount", this.lastFossilCount);
+    }
+
+    public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, PalaeontologyTableBlockEntity palaeontologyTableBlockEntity) {
+        RegistryAccess registryAccess = level.registryAccess();
+        Registry<FossilVariant> fossilVariantRegistry = registryAccess.registryOrThrow(FossilsLegacyRegistries.FOSSIL_VARIANTS);
+        int fossilCount = 0;
+        for (int i = 0; i < palaeontologyTableBlockEntity.getContainerSize(); i++) {
+            if (palaeontologyTableBlockEntity.isFossil(i)) {
+                fossilCount++;
+            }
+        }
+        if (fossilCount != palaeontologyTableBlockEntity.lastFossilCount) {
+            palaeontologyTableBlockEntity.fossilVariants.clear();
+            for (FossilVariant fossilVariant : fossilVariantRegistry.stream().toList()) {
+                if (fossilVariant.fossilCount() == fossilCount) {
+                    if (!palaeontologyTableBlockEntity.fossilVariants.contains(fossilVariant)) {
+                        palaeontologyTableBlockEntity.fossilVariants.add(fossilVariant);
+                    }
+                }
+            }
+        }
+        if (!palaeontologyTableBlockEntity.fossilVariants.isEmpty()) {
+            palaeontologyTableBlockEntity.selected = palaeontologyTableBlockEntity.fossilVariants.getFirst();
+        }
+    }
+
+    private boolean isFossil(int slot) {
+        return this.getItem(slot).is(FossilsLegacyItemTags.MESOZOIC_FOSSIL);
     }
 
     @Override

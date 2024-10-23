@@ -6,6 +6,7 @@
   "bounding_box_width": 0.25,
   "fossil_count": 3,
   "fossil_groups": [],
+  "fossil_ingredient": "fossilslegacy:mesozoic_fossil",
   "max_size": 8,
   "model": "fossilslegacy:compsognathus",
   "shadow_growth": 0.025,
