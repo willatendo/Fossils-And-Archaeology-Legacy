@@ -16,6 +16,8 @@ import willatendo.fossilslegacy.FossilsLegacyForgeMod;
 import willatendo.fossilslegacy.network.ForgePacketHelper;
 import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
+import willatendo.fossilslegacy.server.item.ArticulatedFossilItem;
+import willatendo.fossilslegacy.server.item.ForgeArticulatedFossilItem;
 import willatendo.fossilslegacy.server.item.ForgeDinosaurSpawnEggItem;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.fossilslegacy.server.utils.Platform;
@@ -46,6 +48,11 @@ public class FossilsForgeHelper implements FossilsModloaderHelper {
     @Override
     public SpawnEggItem createDinosaurSpawnEgg(Supplier<EntityType<? extends Mob>> entityType, int primaryColor, int secondaryColor, Item.Properties properties) {
         return new ForgeDinosaurSpawnEggItem(entityType, primaryColor, secondaryColor, properties);
+    }
+
+    @Override
+    public ArticulatedFossilItem getArticulatedFossilItem(Item.Properties properties) {
+        return new ForgeArticulatedFossilItem(properties);
     }
 
     @Override

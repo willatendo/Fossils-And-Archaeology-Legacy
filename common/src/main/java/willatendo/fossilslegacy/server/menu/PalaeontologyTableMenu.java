@@ -1,30 +1,60 @@
 package willatendo.fossilslegacy.server.menu;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
+import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.block.PalaeontologyTableBlock;
-import willatendo.fossilslegacy.server.block.entity.PalaeontologyTableBlockEntity;
+import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
+import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
+import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
+import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.menu.slot.ResultSlot;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyItemTags;
 
+import java.util.List;
+
 public class PalaeontologyTableMenu extends AbstractContainerMenu {
     private final ContainerLevelAccess containerLevelAccess;
-    public final PalaeontologyTableBlockEntity palaeontologyTableBlockEntity;
+    private final List<Holder<FossilVariant>> selectableFossilVariants = Lists.newArrayList();
+    private final Registry<FossilVariant> fossilVariantGetter;
+    private final DataSlot selectedFossilVariantIndex = DataSlot.standalone();
+    private final Container inputContainer;
+    private final Container outputContainer;
+    private final Slot resultSlot;
+    private Runnable slotUpdateListener;
 
-    public PalaeontologyTableMenu(int windowId, Inventory inventory, PalaeontologyTableBlockEntity palaeontologyTableBlockEntity) {
+    public PalaeontologyTableMenu(int windowId, Inventory inventory, ContainerLevelAccess containerLevelAccess) {
         super(FossilsLegacyMenuTypes.PALAEONTOLOGY_TABLE.get(), windowId);
-        this.containerLevelAccess = ContainerLevelAccess.create(palaeontologyTableBlockEntity.getLevel(), palaeontologyTableBlockEntity.getBlockPos());
-        this.palaeontologyTableBlockEntity = palaeontologyTableBlockEntity;
+        this.containerLevelAccess = containerLevelAccess;
+        this.slotUpdateListener = () -> {
+        };
+        this.inputContainer = new SimpleContainer(9) {
+            @Override
+            public void setChanged() {
+                super.setChanged();
+                PalaeontologyTableMenu.this.slotsChanged(this);
+                PalaeontologyTableMenu.this.slotUpdateListener.run();
+            }
+        };
+        this.outputContainer = new SimpleContainer(1) {
+            @Override
+            public void setChanged() {
+                super.setChanged();
+                PalaeontologyTableMenu.this.slotUpdateListener.run();
+            }
+        };
 
         for (int row = 0; row < 3; ++row) {
             for (int column = 0; column < 3; ++column) {
-                this.addSlot(new Slot(palaeontologyTableBlockEntity, column + row * 3, 8 + column * 18, 17 + row * 18) {
+                this.addSlot(new Slot(this.inputContainer, column + row * 3, 8 + column * 18, 17 + row * 18) {
                     @Override
                     public int getMaxStackSize(ItemStack itemStack) {
                         return 1;
@@ -38,7 +68,13 @@ public class PalaeontologyTableMenu extends AbstractContainerMenu {
             }
         }
 
-        this.addSlot(new ResultSlot(inventory.player, palaeontologyTableBlockEntity, 9, 148, 35));
+        this.resultSlot = this.addSlot(new ResultSlot(inventory.player, this.outputContainer, 0, 148, 35) {
+            @Override
+            public void onTake(Player player, ItemStack itemStack) {
+                PalaeontologyTableMenu.this.inputContainer.clearContent();
+                super.onTake(player, itemStack);
+            }
+        });
 
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 9; column++) {
@@ -49,19 +85,96 @@ public class PalaeontologyTableMenu extends AbstractContainerMenu {
         for (int column = 0; column < 9; column++) {
             this.addSlot(new Slot(inventory, column, 8 + column * 18, 142));
         }
-    }
 
-    public PalaeontologyTableMenu(int windowId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
-        this(windowId, inventory, friendlyByteBuf.readBlockPos());
-    }
-
-    public PalaeontologyTableMenu(int windowId, Inventory inventory, BlockPos blockPos) {
-        this(windowId, inventory, (PalaeontologyTableBlockEntity) inventory.player.level().getBlockEntity(blockPos));
+        this.addDataSlot(this.selectedFossilVariantIndex);
+        this.fossilVariantGetter = inventory.player.registryAccess().registryOrThrow(FossilsLegacyRegistries.FOSSIL_VARIANTS);
     }
 
     @Override
     public boolean stillValid(Player player) {
         return this.containerLevelAccess.evaluate((level, blockPos) -> level.getBlockState(blockPos).getBlock() instanceof PalaeontologyTableBlock && player.distanceToSqr((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 0.5D, (double) blockPos.getZ() + 0.5D) <= 64.0D, true);
+    }
+
+    @Override
+    public boolean clickMenuButton(Player player, int id) {
+        if (id >= 0 && id < this.selectableFossilVariants.size()) {
+            this.selectedFossilVariantIndex.set(id);
+            this.setupResultSlot(this.selectableFossilVariants.get(id));
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public List<Holder<FossilVariant>> getSelectableFossilVariants() {
+        return this.selectableFossilVariants;
+    }
+
+    public int getSelectedFossilVariantIndex() {
+        return this.selectedFossilVariantIndex.get();
+    }
+
+    private void createSelectableFossilVariants() {
+        int fossilCount = 0;
+        for (int i = 0; i < this.inputContainer.getContainerSize(); i++) {
+            if (this.inputContainer.getItem(i).is(FossilsLegacyItemTags.MESOZOIC_FOSSIL)) {
+                fossilCount++;
+            }
+        }
+        for (Holder<FossilVariant> fossilVariant : this.fossilVariantGetter.holders().toList()) {
+            if (fossilVariant.value().fossilCount() == fossilCount) {
+                if (!this.selectableFossilVariants.contains(fossilVariant)) {
+                    this.selectableFossilVariants.add(fossilVariant);
+                }
+            }
+        }
+    }
+
+    private boolean isValidPatternIndex(int index) {
+        return index >= 0 && index < this.selectableFossilVariants.size();
+    }
+
+    public void slotsChanged(Container container) {
+        this.selectableFossilVariants.clear();
+        this.createSelectableFossilVariants();
+        if (!this.selectableFossilVariants.isEmpty()) {
+            int selectedFossilVariantIndex = this.selectedFossilVariantIndex.get();
+            boolean isValidIndex = this.isValidPatternIndex(selectedFossilVariantIndex);
+            Holder<FossilVariant> fossilVariantHolder;
+            if (this.selectableFossilVariants.size() == 1) {
+                this.selectedFossilVariantIndex.set(0);
+                fossilVariantHolder = this.selectableFossilVariants.getFirst();
+            } else if (!isValidIndex) {
+                this.selectedFossilVariantIndex.set(-1);
+                fossilVariantHolder = null;
+            } else {
+                Holder<FossilVariant> selectedFossilVariant = this.selectableFossilVariants.get(selectedFossilVariantIndex);
+                int index = this.selectableFossilVariants.indexOf(selectedFossilVariant);
+                if (index != -1) {
+                    fossilVariantHolder = selectedFossilVariant;
+                    this.selectedFossilVariantIndex.set(index);
+                } else {
+                    fossilVariantHolder = null;
+                    this.selectedFossilVariantIndex.set(-1);
+                }
+            }
+
+            if (fossilVariantHolder != null) {
+                this.setupResultSlot(fossilVariantHolder);
+            } else {
+                this.resultSlot.set(ItemStack.EMPTY);
+            }
+
+            this.broadcastChanges();
+        } else {
+            this.resultSlot.set(ItemStack.EMPTY);
+            this.selectableFossilVariants.clear();
+            this.selectedFossilVariantIndex.set(-1);
+        }
+    }
+
+    public void registerUpdateListener(Runnable listener) {
+        this.slotUpdateListener = listener;
     }
 
     @Override
@@ -108,5 +221,23 @@ public class PalaeontologyTableMenu extends AbstractContainerMenu {
         }
 
         return emptyItemStack;
+    }
+
+    @Override
+    public void removed(Player player) {
+        super.removed(player);
+        this.containerLevelAccess.execute((level, blockPos) -> {
+            this.clearContainer(player, this.inputContainer);
+        });
+    }
+
+    private void setupResultSlot(Holder<FossilVariant> fossilVariantHolder) {
+        ItemStack resultItemStack = new ItemStack(FossilsLegacyItems.ARTICULATED_FOSSIL.get());
+
+        resultItemStack.set(FossilsLegacyDataComponents.FOSSIL_VARIANT.get(), fossilVariantHolder);
+
+        if (!ItemStack.matches(resultItemStack, this.resultSlot.getItem())) {
+            this.resultSlot.set(resultItemStack);
+        }
     }
 }

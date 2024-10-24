@@ -313,7 +313,6 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
             this.archaeologyProgress = 0;
             this.setChanged();
         }
-
     }
 
     @Override
@@ -362,7 +361,6 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
         for (ItemStack itemStack : this.itemStacks) {
             stackedContents.accountStack(itemStack);
         }
-
     }
 
     @Override

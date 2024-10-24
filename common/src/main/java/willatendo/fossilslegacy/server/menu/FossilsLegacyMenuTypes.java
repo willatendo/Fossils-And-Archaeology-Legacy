@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.MenuType;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.menu.ExtendedMenuSupplier;
@@ -28,12 +29,12 @@ public class FossilsLegacyMenuTypes {
     public static final SimpleHolder<MenuType<PalaeontologyTableMenu>> PALAEONTOLOGY_TABLE = MENU_TYPES.register("palaeontology_table", () -> SimpleUtils.createMenuType(new ExtendedMenuSupplier<PalaeontologyTableMenu>() {
         @Override
         public PalaeontologyTableMenu create(int windowId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
-            return new PalaeontologyTableMenu(windowId, inventory, friendlyByteBuf);
+            return new PalaeontologyTableMenu(windowId, inventory, ContainerLevelAccess.NULL);
         }
 
         @Override
         public PalaeontologyTableMenu create(int windowId, Inventory inventory, BlockPos blockPos) {
-            return new PalaeontologyTableMenu(windowId, inventory, blockPos);
+            return new PalaeontologyTableMenu(windowId, inventory, ContainerLevelAccess.NULL);
         }
     }));
     public static final SimpleHolder<MenuType<AnalyzerMenu>> ANALYZER = MENU_TYPES.register("analyzer", () -> SimpleUtils.createMenuType(new ExtendedMenuSupplier<AnalyzerMenu>() {

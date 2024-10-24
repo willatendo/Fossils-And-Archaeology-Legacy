@@ -32,6 +32,10 @@ public interface FossilsModloaderHelper {
 
     SpawnEggItem createDinosaurSpawnEgg(Supplier<EntityType<? extends Mob>> entityType, int primaryColor, int secondaryColor, Item.Properties properties);
 
+    default ArticulatedFossilItem getArticulatedFossilItem(Item.Properties properties) {
+        return new ArticulatedFossilItem(properties);
+    }
+
     RecipeBookType createRecipeBookType(String name);
 
     RecipeBookCategories createRecipeBookCategory(String name, ItemStack... icons);

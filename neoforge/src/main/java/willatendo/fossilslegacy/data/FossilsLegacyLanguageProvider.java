@@ -1,12 +1,16 @@
 package willatendo.fossilslegacy.data;
 
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.Anu;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyFossilVariants;
 import willatendo.fossilslegacy.server.entity.TamedZombifiedPiglin;
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakerType;
+import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyCreativeModeTabs;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.tags.*;
@@ -347,6 +351,22 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyEntityTypes.CARNOTAURUS.get());
         this.add(FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get());
         this.add(FossilsLegacyEntityTypes.THERIZINOSAURUS.get());
+
+        // Fossil Variants
+        this.add(FossilsLegacyFossilVariants.ANKYLOSAURUS, "Ankylosaurus");
+        this.add(FossilsLegacyFossilVariants.BRACHIOSAURUS, "Brachiosaurus");
+        this.add(FossilsLegacyFossilVariants.LEGACY_BRACHIOSAURUS, "Legacy Brachiosaurus");
+        this.add(FossilsLegacyFossilVariants.COMPSOGNATHUS, "Compsognathus");
+        this.add(FossilsLegacyFossilVariants.CRYOLOPHOSAURUS, "Cryolophosaurus");
+        this.add(FossilsLegacyFossilVariants.FUTABASAURUS, "Futabasaurus");
+        this.add(FossilsLegacyFossilVariants.LEGACY_FUTABASAURUS, "Legacy Futabasaurus");
+        this.add(FossilsLegacyFossilVariants.GALLIMIMUS, "Gallimimus");
+        this.add(FossilsLegacyFossilVariants.PACHYCEPHALOSAURUS, "Pachycephalosaurus");
+        this.add(FossilsLegacyFossilVariants.PTERANODON, "Pteranodon");
+        this.add(FossilsLegacyFossilVariants.SPINOSAURUS, "Spinosaurus");
+        this.add(FossilsLegacyFossilVariants.TRICERATOPS, "Triceratops");
+        this.add(FossilsLegacyFossilVariants.LEGACY_TRICERATOPS, "Legacy Triceratops");
+        this.add(FossilsLegacyFossilVariants.VELOCIRAPTOR, "Velociraptor");
 
         // JEI
         this.add("gui.jei.category.registry.coat_types", "Coat Types");
@@ -854,5 +874,10 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 
     public void add(SpeakerType<?> speakerType, String translation) {
         this.add(speakerType.getTranslationKey(), translation);
+    }
+
+    public void add(ResourceKey<FossilVariant> fossilVariantResourceKey, String translation) {
+        ResourceLocation id = fossilVariantResourceKey.location();
+        this.add("fossil_variant." + id.getNamespace() + "." + id.getPath(), translation);
     }
 }

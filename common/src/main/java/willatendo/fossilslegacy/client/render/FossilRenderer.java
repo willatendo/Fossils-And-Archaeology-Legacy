@@ -24,18 +24,12 @@ import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
 import java.util.Map;
 
 public class FossilRenderer extends EntityRenderer<Fossil> {
-    protected final Map<ResourceLocation, EntityModel> models;
     private EntityModel<Entity> model;
 
     public FossilRenderer(Context context) {
         super(context);
-        this.models = ModelIdentifierRegistry.registerAllModels(context::bakeLayer);
 
         this.shadowRadius = 0.5F;
-    }
-
-    private boolean hasModel(ResourceLocation id) {
-        return this.models.keySet().contains(id);
     }
 
     private void setModel(EntityModel<Entity> entityModel) {
@@ -45,9 +39,7 @@ public class FossilRenderer extends EntityRenderer<Fossil> {
     }
 
     private EntityModel<Entity> getModel(ResourceLocation id) {
-        if (this.hasModel(id)) {
-            return this.models.getOrDefault(id, this.models.values().stream().toList().getFirst());
-        } else if (JsonModelLoader.isJsonModel(id)) {
+        if (JsonModelLoader.isJsonModel(id)) {
             return JsonModelLoader.getModel(id);
         } else {
             return null;
@@ -65,14 +57,14 @@ public class FossilRenderer extends EntityRenderer<Fossil> {
         this.model.young = fossil.isBaby();
         float yBodyRot = Mth.rotLerp(partialTicks, fossil.yBodyRotO, fossil.yBodyRot);
         float yHeadRot = Mth.rotLerp(partialTicks, fossil.yHeadRotO, fossil.yHeadRot);
-        float $$8 = yHeadRot - yBodyRot;
+        float totalHeadRot = yHeadRot - yBodyRot;
         float scale;
         if (fossil.isPassenger()) {
             Entity entity = fossil.getVehicle();
             if (entity instanceof LivingEntity livingEntity) {
                 yBodyRot = Mth.rotLerp(partialTicks, livingEntity.yBodyRotO, livingEntity.yBodyRot);
-                $$8 = yHeadRot - yBodyRot;
-                scale = Mth.wrapDegrees($$8);
+                totalHeadRot = yHeadRot - yBodyRot;
+                scale = Mth.wrapDegrees(totalHeadRot);
                 if (scale < -85.0F) {
                     scale = -85.0F;
                 }
@@ -86,19 +78,19 @@ public class FossilRenderer extends EntityRenderer<Fossil> {
                     yBodyRot += scale * 0.2F;
                 }
 
-                $$8 = yHeadRot - yBodyRot;
+                totalHeadRot = yHeadRot - yBodyRot;
             }
         }
 
         float xRot = Mth.lerp(partialTicks, fossil.xRotO, fossil.getXRot());
 
-        $$8 = Mth.wrapDegrees($$8);
+        totalHeadRot = Mth.wrapDegrees(totalHeadRot);
         float bob;
         if (fossil.hasPose(Pose.SLEEPING)) {
-            Direction $$12 = fossil.getBedOrientation();
-            if ($$12 != null) {
+            Direction direction = fossil.getBedOrientation();
+            if (direction != null) {
                 bob = fossil.getEyeHeight(Pose.STANDING) - 0.1F;
-                poseStack.translate((float) (-$$12.getStepX()) * bob, 0.0F, (float) (-$$12.getStepZ()) * bob);
+                poseStack.translate((float) (-direction.getStepX()) * bob, 0.0F, (float) (-direction.getStepZ()) * bob);
             }
         }
 
@@ -122,7 +114,7 @@ public class FossilRenderer extends EntityRenderer<Fossil> {
         }
 
         this.model.prepareMobModel(fossil, walkPosition, walkSpeed, partialTicks);
-        this.model.setupAnim(fossil, walkPosition, walkSpeed, bob, $$8, xRot);
+        this.model.setupAnim(fossil, walkPosition, walkSpeed, bob, totalHeadRot, xRot);
         Minecraft minecraft = Minecraft.getInstance();
         boolean isBodyVisible = !fossil.isInvisible();
         boolean isVisible = !isBodyVisible && !fossil.isInvisibleTo(minecraft.player);

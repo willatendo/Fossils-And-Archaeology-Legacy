@@ -19,15 +19,8 @@ import java.util.Map;
 import java.util.Optional;
 
 public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends MobRenderer<T, EntityModel<T>> {
-    protected final Map<ResourceLocation, EntityModel> models;
-
     public CoatTypeMobRenderer(EntityRendererProvider.Context context, float shadowSize) {
         super(context, null, shadowSize);
-        this.models = ModelIdentifierRegistry.registerAllModels(context::bakeLayer);
-    }
-
-    private boolean hasModel(ResourceLocation id) {
-        return this.models.containsKey(id);
     }
 
     private void setModel(EntityModel<T> entityModel) {
@@ -37,9 +30,7 @@ public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends Mo
     }
 
     private EntityModel<T> getModel(ResourceLocation id) {
-        if (this.hasModel(id)) {
-            return this.models.getOrDefault(id, this.models.values().stream().toList().getFirst());
-        } else if (JsonModelLoader.isJsonModel(id)) {
+        if (JsonModelLoader.isJsonModel(id)) {
             return JsonModelLoader.getModel(id);
         } else {
             return null;

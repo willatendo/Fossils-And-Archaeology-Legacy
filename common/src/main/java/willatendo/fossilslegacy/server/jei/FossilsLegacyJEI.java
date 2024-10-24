@@ -20,6 +20,7 @@ import willatendo.fossilslegacy.server.jei.category.*;
 import willatendo.fossilslegacy.server.jei.ingredient.CoatTypeHelper;
 import willatendo.fossilslegacy.server.jei.ingredient.CoatTypeRenderer;
 import willatendo.fossilslegacy.server.jei.ingredient.FossilsLegacyIngredientTypes;
+import willatendo.fossilslegacy.server.jei.interpreter.ArticulatedFossilSubtypeInterpreter;
 import willatendo.fossilslegacy.server.jei.interpreter.MagicConchSubtypeInterpreter;
 import willatendo.fossilslegacy.server.jei.interpreter.StoneTabletSubtypeInterpreter;
 import willatendo.fossilslegacy.server.menu.AnalyzerMenu;
@@ -132,6 +133,7 @@ public final class FossilsLegacyJEI implements IModPlugin {
 
     @Override
     public void registerItemSubtypes(ISubtypeRegistration iSubtypeRegistration) {
+        iSubtypeRegistration.registerSubtypeInterpreter(FossilsLegacyItems.ARTICULATED_FOSSIL.get(), ArticulatedFossilSubtypeInterpreter.INSTANCE);
         iSubtypeRegistration.registerSubtypeInterpreter(FossilsLegacyItems.MAGIC_CONCH.get(), MagicConchSubtypeInterpreter.INSTANCE);
         iSubtypeRegistration.registerSubtypeInterpreter(FossilsLegacyItems.STONE_TABLET.get(), StoneTabletSubtypeInterpreter.INSTANCE);
     }

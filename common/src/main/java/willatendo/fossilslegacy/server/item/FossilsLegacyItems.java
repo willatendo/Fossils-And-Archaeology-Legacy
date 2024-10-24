@@ -178,7 +178,7 @@ public class FossilsLegacyItems {
     public static final SimpleHolder<AnimalEggItem> INCUBATED_MOA_EGG = ITEMS.register("incubated_moa_egg", () -> new AnimalEggItem(FossilsLegacyEntityTypes.MOA::get, true, FossilsLegacyCoatTypeTags.MOA, new Item.Properties().stacksTo(16)));
     public static final SimpleHolder<AnimalEggItem> MOA_EGG = ITEMS.register("moa_egg", () -> new AnimalEggItem(FossilsLegacyEntityTypes.MOA::get, false, FossilsLegacyCoatTypeTags.MOA, new Item.Properties().stacksTo(16)));
     public static final SimpleHolder<ItemNameBlockItem> JURASSIC_FERN_SPORES = ITEMS.register("jurassic_fern_spores", () -> new ItemNameBlockItem(FossilsLegacyBlocks.JURASSIC_FERN.get(), new Item.Properties()));
-    public static final SimpleHolder<ArticulatedFossilItem> ARTICULATED_FOSSIL = ITEMS.register("articulated_fossil", () -> new ArticulatedFossilItem(new Item.Properties().stacksTo(1)));
+    public static final SimpleHolder<ArticulatedFossilItem> ARTICULATED_FOSSIL = ITEMS.register("articulated_fossil", () -> FossilsModloaderHelper.INSTANCE.getArticulatedFossilItem(new Item.Properties().stacksTo(1)));
     public static final SimpleHolder<Item> RELIC_SCRAP = ITEMS.register("relic_scrap", () -> new Item(new Item.Properties()));
     public static final SimpleHolder<StoneTabletItem> STONE_TABLET = ITEMS.register("stone_tablet", () -> new StoneTabletItem(new Item.Properties()));
     public static final SimpleHolder<Item> ANCIENT_SWORD_ARTIFACT = ITEMS.register("ancient_sword_artifact", () -> new Item(new Item.Properties()));

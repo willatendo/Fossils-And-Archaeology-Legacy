@@ -4,13 +4,11 @@ import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.*;
-import willatendo.fossilslegacy.client.model.*;
+import willatendo.fossilslegacy.client.model.AnuModel;
+import willatendo.fossilslegacy.client.model.EggModel;
+import willatendo.fossilslegacy.client.model.FailuresaurusModel;
+import willatendo.fossilslegacy.client.model.TimeMachineClockModel;
 import willatendo.fossilslegacy.client.model.dinosaur.legacy.NautilusModel;
-import willatendo.fossilslegacy.client.model.fossils.*;
-import willatendo.fossilslegacy.client.model.fossils.legacy.LegacyBrachiosaurusSkeletonModel;
-import willatendo.fossilslegacy.client.model.fossils.legacy.LegacyFutabasaurusSkeletonModel;
-import willatendo.fossilslegacy.client.model.fossils.legacy.PteranodonSkeletonModel;
-import willatendo.fossilslegacy.client.model.fossils.legacy.TriceratopsSkeletonModel;
 import willatendo.fossilslegacy.client.render.*;
 import willatendo.fossilslegacy.client.screen.*;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
@@ -43,8 +41,6 @@ public final class FossilsLegacyClient {
     }
 
     public static void modelEvent(ModelRegistry modelRegister) {
-        FossilsLegacyModelIdentifiers.init();
-
         modelRegister.register(FossilsLegacyEntityTypes.ANKYLOSAURUS.get(), AnkylosaurusRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), BrachiosaurusRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), DilophosaurusRenderer::new);
@@ -105,18 +101,9 @@ public final class FossilsLegacyClient {
 
     public static void modelLayerEvent(ModelLayerRegistry modelLayerRegister) {
         modelLayerRegister.register(FossilsLegacyModelLayers.ANU, AnuModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.BRACHIOSAURUS_SKELETON.getFirst(), BrachiosaurusSkeletonModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.BRACHIOSAURUS_SKELETON.getSecond(), LegacyBrachiosaurusSkeletonModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.COMPSOGNATHUS_SKELETON, CompsognathusSkeletonModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.EGG, EggModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.FAILURESAURUS, FailuresaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.FUTABASAURUS_SKELETON.getFirst(), FutabasaurusSkeletonModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.FUTABASAURUS_SKELETON.getSecond(), LegacyFutabasaurusSkeletonModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.NAUTILUS, NautilusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.PACHYCEPHALOSAURUS_SKELETON, PachycephalosaurusSkeletonModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.PTERANODON_SKELETON, PteranodonSkeletonModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.TRICERATOPS_SKELETON, TriceratopsSkeletonModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.VELOCIRAPTOR_SKELETON, VelociraptorSkeletonModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.TIME_MACHINE_CLOCK, TimeMachineClockModel::createBodyLayer);
     }
 

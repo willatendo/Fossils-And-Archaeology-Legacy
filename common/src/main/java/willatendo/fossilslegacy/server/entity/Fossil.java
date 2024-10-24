@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.server.entity;
 
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
@@ -27,14 +26,13 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
-import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 
 public class Fossil extends Mob {
     private static final EntityDataAccessor<Holder<FossilVariant>> FOSSIL_VARIANT = SynchedEntityData.defineId(Fossil.class, FossilsLegacyEntityDataSerializers.FOSSIL_VARIANTS.get());
     private static final EntityDataAccessor<Integer> SIZE = SynchedEntityData.defineId(Fossil.class, EntityDataSerializers.INT);
-    private static MapCodec<Holder<FossilVariant>> VARIANT_MAP_CODEC = FossilVariant.CODEC.fieldOf("FossilVariant");
-    private static Codec<Holder<FossilVariant>> VARIANT_CODEC = VARIANT_MAP_CODEC.codec();
+    private static Codec<Holder<FossilVariant>> VARIANT_CODEC = FossilVariant.VARIANT_MAP_CODEC.codec();
 
     public Fossil(EntityType<? extends Fossil> entityType, Level level) {
         super(entityType, level);
@@ -105,7 +103,9 @@ public class Fossil extends Mob {
 
     @Override
     public ItemStack getPickResult() {
-        return new ItemStack(FossilsLegacyItems.FOSSIL.get());
+        ItemStack itemStack = new ItemStack(FossilsLegacyItems.ARTICULATED_FOSSIL.get());
+        itemStack.set(FossilsLegacyDataComponents.FOSSIL_VARIANT.get(), this.getFossilVariant());
+        return itemStack;
     }
 
     @Override

@@ -4,6 +4,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -169,7 +170,21 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.MOA_EGG.get());
         this.basicItem(FossilsLegacyItems.MAGIC_CONCH.get());
         this.basicItem(FossilsLegacyItems.JURASSIC_FERN_SPORES.get());
-        this.basicItem(FossilsLegacyItems.ARTICULATED_FOSSIL.get());
+        //this.basicItem(FossilsLegacyItems.ARTICULATED_FOSSIL.get());
+        this.getBuilder("articulated_fossil").parent(new ModelFile.UncheckedModelFile("builtin/entity")).texture("particle", this.modLoc("item/articulated_fossil"))
+                .transforms()
+                .transform(ItemDisplayContext.GUI).rotation(30.0F, 135.0F, 0.0F).translation(0.0F,0.0F,0.0F).scale(0.625F, 0.625F, 0.625F)
+                .end()
+                .transform(ItemDisplayContext.GROUND).rotation(0.0F, 0.0F, 0.0F).translation(0.0F,3.0F,0.0F).scale(0.25F, 0.25F, 0.25F)
+                .end()
+                .transform(ItemDisplayContext.HEAD).rotation(0.0F, 180.0F, 0.0F).translation(0.0F,0.0F,0.0F).scale(1.0F, 1.0F, 1.0F)
+                .end()
+                .transform(ItemDisplayContext.FIXED).rotation(0.0F, 0.0F, 0.0F).translation(0.0F,3.0F,0.0F).scale(0.5F, 0.5F, 0.5F)
+                .end()
+                .transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND).rotation(75.0F, 135.0F, 0.0F).translation(0.0F,2.5F,0.0F).scale(0.375F, 0.375F, 0.375F)
+                .end()
+                .transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND).rotation(0.0F, 135.0F, 0.0F).translation(0.0F,0.0F,0.0F).scale(0.4F, 0.4F, 0.4F)
+                .end();
         this.basicItem(FossilsLegacyItems.RELIC_SCRAP.get());
         this.basicItem(FossilsLegacyItems.STONE_TABLET.get());
         this.handheldItem(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get());

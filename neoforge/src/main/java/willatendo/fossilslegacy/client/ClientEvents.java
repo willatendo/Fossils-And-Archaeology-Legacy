@@ -35,6 +35,16 @@ public class ClientEvents {
     }
 
     @SubscribeEvent
+    public static void registerClientExtensionsEvent(RegisterClientExtensionsEvent event) {
+        event.registerItem(new IClientItemExtensions() {
+            @Override
+            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
+                return FossilsLegacyBlockEntityWithoutLevelRenderer.INSTANCE;
+            }
+        }, FossilsLegacyItems.ARTICULATED_FOSSIL.get());
+    }
+
+    @SubscribeEvent
     public static void registerRecipeBookCategoriesEvent(RegisterRecipeBookCategoriesEvent event) {
         event.registerBookCategories(FossilsLegacyRecipeBookTypes.ANALYZER, List.of(FossilsLegacyRecipeBookCategories.ANALYZATION_SEARCH, FossilsLegacyRecipeBookCategories.ANALYZATION_MISC));
         event.registerBookCategories(FossilsLegacyRecipeBookTypes.ARCHAEOLOGY_WORKBENCH, List.of(FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_SEARCH, FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_REPAIR, FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_RESTORE, FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_MISC));
