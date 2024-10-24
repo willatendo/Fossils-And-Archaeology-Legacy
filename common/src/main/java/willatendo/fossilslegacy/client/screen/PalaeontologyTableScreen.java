@@ -13,7 +13,11 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.LoomMenu;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
 import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
+import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
+import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.menu.PalaeontologyTableMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -81,6 +85,9 @@ public class PalaeontologyTableScreen extends AbstractContainerScreen<Palaeontol
 
                     guiGraphics.blitSprite(texture, x, y, 18, 18);
 
+                    ItemStack itemStack = new ItemStack(FossilsLegacyItems.ARTICULATED_FOSSIL.get());
+                    itemStack.set(FossilsLegacyDataComponents.FOSSIL_VARIANT.get(), this.fossilVariants.get(index));
+                    guiGraphics.renderItem(itemStack, x + 1, y + 1);
                 }
             }
         }

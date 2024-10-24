@@ -12,7 +12,7 @@ import java.util.function.Function;
 public enum BuiltInAnimationTypes implements BuiltInAnimationType {
     LEGACY_BRACHIOSAURUS_WALK("legacy_brachiosaurus_walk", dinosaur -> true, AnimationUtils::legacyBrachiosaurusWalkAnimation),
     CARNOTAURUS_WALK("carnotaurus_walk", dinosaur -> true, AnimationUtils::carnotaurusWalkAnimation),
-    CRYOLOPHOSAURUS_WALK("cryolophosaurus_walk", dinosaur -> true, AnimationUtils::cryolophosaurusWalkAnimation),
+    LEGACY_CRYOLOPHOSAURUS_WALK("legacy_cryolophosaurus_walk", dinosaur -> true, AnimationUtils::cryolophosaurusWalkAnimation),
     DILOPHOSAURUS_WALK("dilophosaurus_walk", dinosaur -> true, AnimationUtils::dilophosaurusWalkAnimation),
     MOSASAURUS_SWIM("mosasaurus_swim", dinosaur -> true, AnimationUtils::mosasaurusSwimAnimation),
     PTERANODON_FLY("pteranodon_fly", dinosaur -> dinosaur instanceof FlyingDinosaur, AnimationUtils::pteranodonFlyingAnimation),

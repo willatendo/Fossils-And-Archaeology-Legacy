@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-20T15:39:34.8226773	Entity Models: fossilslegacy
+// 1.21.1	2024-10-24T07:48:48.4060045	Entity Models: fossilslegacy
 1ecd38dff273169b3f31ee5c30b0505792498a48 assets/fossilslegacy/fossilslegacy/models/ankylosaurus.json
 9ff40c71dc49461826e0e307427c82d1de819764 assets/fossilslegacy/fossilslegacy/models/baby_tyrannosaurus.json
 7e4fe5d17ebcbe0e77f6f79eeb301d3ad8bb512c assets/fossilslegacy/fossilslegacy/models/brachiosaurus.json
@@ -13,7 +13,7 @@ d0e1967e836fac9e4b7cbe6c07e14cb24b89a2ae assets/fossilslegacy/fossilslegacy/mode
 c477340eac625b9f3938315b7cec0d72303d3d32 assets/fossilslegacy/fossilslegacy/models/knocked_out_tyrannosaurus.json
 5a10388e7dc144b82c2b331674b574ba3d1a2544 assets/fossilslegacy/fossilslegacy/models/landing_pteranodon.json
 dd83bf1d279c0979873fc478f07fa4ebdccfda01 assets/fossilslegacy/fossilslegacy/models/legacy_brachiosaurus.json
-69bb1754858da079a724eb2de559baeafbe66b1f assets/fossilslegacy/fossilslegacy/models/legacy_cryolophosaurus.json
+e43953737840c460add120afb521183146dd433e assets/fossilslegacy/fossilslegacy/models/legacy_cryolophosaurus.json
 8e998fd2850deedf3c13e9e2763cf86f336e5d17 assets/fossilslegacy/fossilslegacy/models/legacy_futabasaurus.json
 b23081b4c2c20d32de7d8e6ccb8c25eb1bc4489f assets/fossilslegacy/fossilslegacy/models/legacy_knocked_out_tyrannosaurus.json
 7621829719d07ae367b62b1ed1ffb1eca2312a40 assets/fossilslegacy/fossilslegacy/models/legacy_mosasaurus.json

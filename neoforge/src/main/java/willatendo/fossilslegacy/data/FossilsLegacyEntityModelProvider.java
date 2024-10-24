@@ -25,7 +25,7 @@ public class FossilsLegacyEntityModelProvider extends EntityModelProvider {
         this.add(EntityModelHolder.builder(this.mod("carnotaurus"), CarnotaurusModel.createBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.CARNOTAURUS_WALK).build());
         this.add(EntityModelHolder.builder(this.mod("compsognathus"), CompsognathusModel.createBodyLayer()).withAnimation("walk", this.mod("compsognathus_walk")).withHeadPeices("head").build());
         this.add(EntityModelHolder.builder(this.mod("cryolophosaurus"), CryolophosaurusModel.createBodyLayer()).withAnimation("walk", this.mod("cryolophosaurus_walk")).withHeadPeices("neck").build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_cryolophosaurus"), LegacyCryolophosaurusModel.createBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.CRYOLOPHOSAURUS_WALK).build());
+        this.add(EntityModelHolder.builder(this.mod("legacy_cryolophosaurus"), LegacyCryolophosaurusModel.createBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_CRYOLOPHOSAURUS_WALK).build());
         this.add(EntityModelHolder.builder(this.mod("dilophosaurus"), DilophosaurusModel.createBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.DILOPHOSAURUS_WALK).build());
         this.add(EntityModelHolder.builder(this.mod("futabasaurus"), FutabasaurusModel.createBodyLayer()).withAnimation("walk", this.mod("futabasaurus_walk")).withAnimation("swim", this.mod("futabasaurus_swim")).withHeadPeices("neck", "middle_neck", "head").build());
         this.add(EntityModelHolder.builder(this.mod("legacy_futabasaurus"), LegacyFutabasaurusModel.createBodyLayer()).build());

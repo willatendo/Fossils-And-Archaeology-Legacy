@@ -24,9 +24,11 @@ public interface FossilsModloaderHelper {
     // Platform
     Platform getPlatform();
 
-    void sendTimeMachinePacket(BlockPos blockPos);
+    void sendApplyFossilVariantPacket(BlockPos blockPos, String fossilVariant);
 
     void sendApplyGenePacket(BlockPos blockPos, String coatType);
+
+    void sendTimeMachinePacket(BlockPos blockPos);
 
     <T> Supplier<EntityDataSerializer<Holder<T>>> registerDataSerializer(String id, StreamCodec<RegistryFriendlyByteBuf, Holder<T>> streamCodec);
 

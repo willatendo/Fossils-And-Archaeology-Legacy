@@ -14,6 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import willatendo.fossilslegacy.FossilsLegacyForgeMod;
 import willatendo.fossilslegacy.network.ForgePacketHelper;
+import willatendo.fossilslegacy.network.ServerboundApplyFossilVariantPacket;
 import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
 import willatendo.fossilslegacy.server.item.ArticulatedFossilItem;
@@ -31,13 +32,18 @@ public class FossilsForgeHelper implements FossilsModloaderHelper {
     }
 
     @Override
-    public void sendTimeMachinePacket(BlockPos blockPos) {
-        ForgePacketHelper.sendToServer(new ServerboundTimeMachineUpdatePacket(blockPos));
+    public void sendApplyFossilVariantPacket(BlockPos blockPos, String fossilVariant) {
+        ForgePacketHelper.sendToServer(new ServerboundApplyFossilVariantPacket(blockPos, fossilVariant));
     }
 
     @Override
     public void sendApplyGenePacket(BlockPos blockPos, String coatType) {
         ForgePacketHelper.sendToServer(new ServerboundApplyGenePacket(blockPos, coatType));
+    }
+
+    @Override
+    public void sendTimeMachinePacket(BlockPos blockPos) {
+        ForgePacketHelper.sendToServer(new ServerboundTimeMachineUpdatePacket(blockPos));
     }
 
     @Override

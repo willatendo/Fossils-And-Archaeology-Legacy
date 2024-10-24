@@ -5,13 +5,19 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 
 public class FossilsLegacyPackets {
     public static void registerClientToServerPackets() {
+        PayloadTypeRegistry.playC2S().register(ServerboundApplyFossilVariantPacket.TYPE, ServerboundApplyFossilVariantPacket.STREAM_CODEC);
         PayloadTypeRegistry.playC2S().register(ServerboundApplyGenePacket.TYPE, ServerboundApplyGenePacket.STREAM_CODEC);
         PayloadTypeRegistry.playC2S().register(ServerboundSinkPacket.TYPE, ServerboundSinkPacket.STREAM_CODEC);
         PayloadTypeRegistry.playC2S().register(ServerboundTimeMachineUpdatePacket.TYPE, ServerboundTimeMachineUpdatePacket.STREAM_CODEC);
 
+        ServerPlayNetworking.registerGlobalReceiver(ServerboundApplyFossilVariantPacket.TYPE, FossilsLegacyPackets::serverboundApplyFossilVariantPacket);
         ServerPlayNetworking.registerGlobalReceiver(ServerboundApplyGenePacket.TYPE, FossilsLegacyPackets::serverboundApplyGenePacket);
         ServerPlayNetworking.registerGlobalReceiver(ServerboundSinkPacket.TYPE, FossilsLegacyPackets::serverboundSinkPacket);
         ServerPlayNetworking.registerGlobalReceiver(ServerboundTimeMachineUpdatePacket.TYPE, FossilsLegacyPackets::serverboundTimeMachineUpdatePacket);
+    }
+
+    public static void serverboundApplyFossilVariantPacket(ServerboundApplyFossilVariantPacket serverboundApplyFossilVariantPacket, ServerPlayNetworking.Context context) {
+        BasicPackets.serverboundApplyFossilVariantPacket(serverboundApplyFossilVariantPacket.blockPos(), serverboundApplyFossilVariantPacket.fossilVariant(), context.player().serverLevel());
     }
 
     public static void serverboundApplyGenePacket(ServerboundApplyGenePacket serverboundApplyGenePacket, ServerPlayNetworking.Context context) {

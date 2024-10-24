@@ -2,15 +2,18 @@ package willatendo.fossilslegacy.server.menu;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.*;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.DataSlot;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import org.apache.commons.compress.utils.Lists;
+import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.block.PalaeontologyTableBlock;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
@@ -98,8 +101,14 @@ public class PalaeontologyTableMenu extends AbstractContainerMenu {
     @Override
     public boolean clickMenuButton(Player player, int id) {
         if (id >= 0 && id < this.selectableFossilVariants.size()) {
+            Holder<FossilVariant> fossilVariant = this.selectableFossilVariants.get(id);
             this.selectedFossilVariantIndex.set(id);
-            this.setupResultSlot(this.selectableFossilVariants.get(id));
+            this.setupResultSlot(fossilVariant);
+            this.containerLevelAccess.execute((level, blockPos) -> {
+                RegistryAccess registryAccess = level.registryAccess();
+                Registry<FossilVariant> fossilVariantRegistry = registryAccess.registryOrThrow(FossilsLegacyRegistries.FOSSIL_VARIANTS);
+                FossilsModloaderHelper.INSTANCE.sendApplyFossilVariantPacket(blockPos, fossilVariantRegistry.getKey(fossilVariant.value()).toString());
+            });
             return true;
         } else {
             return false;

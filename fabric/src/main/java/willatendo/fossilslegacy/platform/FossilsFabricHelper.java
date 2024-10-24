@@ -16,6 +16,7 @@ import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
+import willatendo.fossilslegacy.network.ServerboundApplyFossilVariantPacket;
 import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
 import willatendo.fossilslegacy.server.item.DinosaurSpawnEggItem;
@@ -32,10 +33,11 @@ public class FossilsFabricHelper implements FossilsModloaderHelper {
     }
 
     @Override
-    public void sendTimeMachinePacket(BlockPos blockPos) {
+    public void sendApplyFossilVariantPacket(BlockPos blockPos, String fossilVariant) {
         FriendlyByteBuf friendlyByteBuf = PacketByteBufs.create();
         friendlyByteBuf.writeBlockPos(blockPos);
-        ClientPlayNetworking.send(new ServerboundTimeMachineUpdatePacket(blockPos));
+        friendlyByteBuf.writeUtf(fossilVariant);
+        ClientPlayNetworking.send(new ServerboundApplyFossilVariantPacket(blockPos, fossilVariant));
     }
 
     @Override
@@ -44,6 +46,13 @@ public class FossilsFabricHelper implements FossilsModloaderHelper {
         friendlyByteBuf.writeBlockPos(blockPos);
         friendlyByteBuf.writeUtf(coatType);
         ClientPlayNetworking.send(new ServerboundApplyGenePacket(blockPos, coatType));
+    }
+
+    @Override
+    public void sendTimeMachinePacket(BlockPos blockPos) {
+        FriendlyByteBuf friendlyByteBuf = PacketByteBufs.create();
+        friendlyByteBuf.writeBlockPos(blockPos);
+        ClientPlayNetworking.send(new ServerboundTimeMachineUpdatePacket(blockPos));
     }
 
     @Override

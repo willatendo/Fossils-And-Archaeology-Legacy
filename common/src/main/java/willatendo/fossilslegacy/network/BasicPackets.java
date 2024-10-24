@@ -10,24 +10,39 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import willatendo.fossilslegacy.server.block.entity.GeneModificationTableBlockEntity;
+import willatendo.fossilslegacy.server.block.entity.PalaeontologyTableBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.TimeMachineBlockEntity;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Futabasaurus;
+import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public final class BasicPackets {
+    public static final ResourceLocation APPLY_FOSSIL_VARIANT = FossilsLegacyUtils.resource("apply_fossil_variant");
     public static final ResourceLocation APPLY_GENE = FossilsLegacyUtils.resource("apply_gene");
     public static final ResourceLocation SINK = FossilsLegacyUtils.resource("sink");
     public static final ResourceLocation TIME_MACHINE_UPDATE = FossilsLegacyUtils.resource("time_machine_update");
+
+    public static void serverboundApplyFossilVariantPacket(BlockPos blockPos, String fossilVariant, Level level) {
+        BlockEntity blockEntity = level.getBlockEntity(blockPos);
+        if (blockEntity instanceof PalaeontologyTableBlockEntity palaeontologyTableBlockEntity) {
+            if (fossilVariant != null) {
+                Registry<FossilVariant> fossilVariantRegistry = level.registryAccess().registryOrThrow(FossilsLegacyRegistries.FOSSIL_VARIANTS);
+                palaeontologyTableBlockEntity.setDisplay(fossilVariantRegistry.getHolder(ResourceLocation.parse(fossilVariant)).get());
+            } else {
+                palaeontologyTableBlockEntity.setDisplay(null);
+            }
+        }
+    }
 
     public static void serverboundApplyGenePacket(BlockPos blockPos, String coatType, Level level) {
         BlockEntity blockEntity = level.getBlockEntity(blockPos);
         if (blockEntity instanceof GeneModificationTableBlockEntity geneModificationTableBlockEntity) {
             ItemStack itemStack = geneModificationTableBlockEntity.getItem(0);
             geneModificationTableBlockEntity.setItem(0, ItemStack.EMPTY);
-            Registry<CoatType> coatTypeRegistry = level.registryAccess().registry(FossilsLegacyRegistries.COAT_TYPES).get();
+            Registry<CoatType> coatTypeRegistry = level.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES);
             Holder.Reference<CoatType> coatTypeHolder = coatTypeRegistry.getHolder(ResourceLocation.parse(coatType)).get();
             itemStack.set(FossilsLegacyDataComponents.COAT_TYPE.get(), coatTypeHolder);
             geneModificationTableBlockEntity.setItem(1, itemStack);
