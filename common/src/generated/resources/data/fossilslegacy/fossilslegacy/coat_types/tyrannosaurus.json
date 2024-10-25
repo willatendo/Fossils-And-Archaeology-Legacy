@@ -16,7 +16,7 @@
     "display_scale": 0.25,
     "display_y_offset": 0.25,
     "name": {
-      "translate": "coatType.fossilslegacy.legacy_tyrannosaurus"
+      "translate": "fossilVariant.fossilslegacy.legacy_tyrannosaurus"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.eastern_brown_snake"

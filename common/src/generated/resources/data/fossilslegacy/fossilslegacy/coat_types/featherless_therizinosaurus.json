@@ -16,7 +16,7 @@
     "display_scale": 0.25,
     "display_y_offset": 0.25,
     "name": {
-      "translate": "coatType.fossilslegacy.featherless_therizinosaurus"
+      "translate": "fossilVariant.fossilslegacy.featherless_therizinosaurus"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.green_tree_python"

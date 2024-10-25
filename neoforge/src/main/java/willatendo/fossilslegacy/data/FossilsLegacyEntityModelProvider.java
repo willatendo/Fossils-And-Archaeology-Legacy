@@ -33,9 +33,10 @@ public class FossilsLegacyEntityModelProvider extends EntityModelProvider {
         this.add(EntityModelHolder.builder(this.mod("moa"), MoaModel.createBodyLayer()).withAnimation("walk", this.mod("moa_walk")).withHeadPeices("neck").build());
         this.add(EntityModelHolder.builder(this.mod("legacy_mosasaurus"), MosasaurusModel.createBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.MOSASAURUS_SWIM).withBuiltInAnimation("swim", BuiltInAnimationTypes.MOSASAURUS_SWIM).build());
         this.add(EntityModelHolder.builder(this.mod("pachycephalosaurus"), PachycephalosaurusModel.createBodyLayer()).withAnimation("walk", this.mod("pachycephalosaurus_walk")).withHeadPeices("head").build());
-        this.add(EntityModelHolder.builder(this.mod("pteranodon"), GroundPteranodonModel.createBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.PTERANODON_WALK).withBuiltInAnimation("head", BuiltInAnimationTypes.PTERANODON_HEAD).build());
-        this.add(EntityModelHolder.builder(this.mod("flying_pteranodon"), FlyingPteranodonModel.createBodyLayer()).withBuiltInAnimation("fly", BuiltInAnimationTypes.PTERANODON_FLY).build());
-        this.add(EntityModelHolder.builder(this.mod("landing_pteranodon"), LandingPteranodonModel.createBodyLayer()).build());
+        this.add(EntityModelHolder.builder(this.mod("pteranodon"), PteranodonModel.createBodyLayer()).withAnimation("walk", this.mod("pteranodon_walk")).withAnimation("fly", this.mod("pteranodon_fly")).withAnimation("land", this.mod("pteranodon_land")).withHeadPeices("head").build());
+        this.add(EntityModelHolder.builder(this.mod("legacy_pteranodon"), GroundPteranodonModel.createBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_PTERANODON_WALK).withBuiltInAnimation("head", BuiltInAnimationTypes.LEGACY_PTERANODON_HEAD).build());
+        this.add(EntityModelHolder.builder(this.mod("legacy_flying_pteranodon"), FlyingPteranodonModel.createBodyLayer()).withBuiltInAnimation("fly", BuiltInAnimationTypes.LEGACY_PTERANODON_FLY).build());
+        this.add(EntityModelHolder.builder(this.mod("legacy_landing_pteranodon"), LandingPteranodonModel.createBodyLayer()).build());
         this.add(EntityModelHolder.builder(this.mod("stegosaurus"), StegosaurusModel.createBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.STEGOSAURUS_WALK).build());
         this.add(EntityModelHolder.builder(this.mod("therizinosaurus"), TherizinosaurusModel.createBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.THERIZINOSAURUS_WALK).build());
         this.add(EntityModelHolder.builder(this.mod("triceratops"), TriceratopsModel.createBodyLayer()).withAnimation("walk", this.mod("triceratops_walk")).withHeadPeices("head").build());

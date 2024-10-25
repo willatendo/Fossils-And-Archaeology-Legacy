@@ -18,8 +18,10 @@
 - Debug Items No Longer All Called "Debug Item" With Type In Description, Now Called It In Name
 - Fossils No Longer Drop Things When Killed In Creative Mode
 - Updated Brachiosaurs Model
+- Updated Cryolophosaurus Model
 - Fossil No Longer Places Fossils
 - Archaeology Workbench Changed Recipe
+- Updated Pteranodon Model
 - (Fabric) Fixed Server Crash
 - Fixed Placing Stone Tables
 - Fixed Cannibalism

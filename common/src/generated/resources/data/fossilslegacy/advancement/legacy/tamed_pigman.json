@@ -7,7 +7,7 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.fossilslegacy.legacy.tamed_pigman.desc"
+      "translate": "advancements.fossilslegacy.legacy.tamed_pigman.description"
     },
     "frame": "goal",
     "hidden": true,

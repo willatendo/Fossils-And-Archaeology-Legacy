@@ -16,7 +16,7 @@
     "display_scale": 0.3,
     "display_y_offset": 0.0,
     "name": {
-      "translate": "coatType.fossilslegacy.stegosaurus"
+      "translate": "fossilVariant.fossilslegacy.stegosaurus"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.green_tree_python"

@@ -16,7 +16,7 @@
     "display_scale": 0.35,
     "display_y_offset": 1.0,
     "name": {
-      "translate": "coatType.fossilslegacy.red_carnotaurus"
+      "translate": "fossilVariant.fossilslegacy.red_carnotaurus"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.northern_cardinal"

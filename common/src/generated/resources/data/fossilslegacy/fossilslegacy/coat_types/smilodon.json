@@ -16,7 +16,7 @@
     "display_scale": 1.0,
     "display_y_offset": -0.5,
     "name": {
-      "translate": "coatType.fossilslegacy.smilodon"
+      "translate": "fossilVariant.fossilslegacy.smilodon"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.tiger"

@@ -44,7 +44,7 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.fossilslegacy.legacy.decked_out.desc"
+      "translate": "advancements.fossilslegacy.legacy.decked_out.description"
     },
     "frame": "goal",
     "hidden": true,

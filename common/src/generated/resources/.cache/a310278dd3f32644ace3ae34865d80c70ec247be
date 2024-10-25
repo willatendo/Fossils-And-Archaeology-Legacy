@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-20T15:39:34.829679	Tags for fossilslegacy:coat_types mod id fossilslegacy
+// 1.21.1	2024-10-24T21:48:39.7406163	Tags for fossilslegacy:coat_types mod id fossilslegacy
 ad3de5537fb8ec2985f54a52bce1424d00d2b568 data/fossilslegacy/tags/fossilslegacy/coat_types/ankylosaurus.json
 4a89352019d0ebcfa8d904f4633809c0489b6ebe data/fossilslegacy/tags/fossilslegacy/coat_types/brachiosaurus.json
 0c3597c442286616ff0209a4a4664281dd0eeb7a data/fossilslegacy/tags/fossilslegacy/coat_types/carnotaurus.json
@@ -16,7 +16,7 @@ f2cb5f68e0d800f04bb54200e56e326853c8f2aa data/fossilslegacy/tags/fossilslegacy/c
 c6b9151964bc893b2c7fa9e675ea7e4c1a86bd55 data/fossilslegacy/tags/fossilslegacy/coat_types/non_legacy_triceratops.json
 d8ce30fb53eee448c941ed141af690fffc75b6c3 data/fossilslegacy/tags/fossilslegacy/coat_types/non_legacy_velociraptor.json
 128dc6396559d883333185ea43d9b06e62683938 data/fossilslegacy/tags/fossilslegacy/coat_types/pachycephalosaurus.json
-78ce48c510100c38379fe7d065e2be6e95375908 data/fossilslegacy/tags/fossilslegacy/coat_types/pteranodon.json
+2f3f43f60c3ba852cc932ea57595a6dad6d06e9d data/fossilslegacy/tags/fossilslegacy/coat_types/pteranodon.json
 850de2e28bc082951f0ce20f76b23f3eaec8db40 data/fossilslegacy/tags/fossilslegacy/coat_types/smilodon.json
 ecef63dcafe540263b084c6435221f79b129b3e4 data/fossilslegacy/tags/fossilslegacy/coat_types/spinosaurus.json
 f29e68e035b2a25a71a37178719f4f80426d6699 data/fossilslegacy/tags/fossilslegacy/coat_types/stegosaurus.json

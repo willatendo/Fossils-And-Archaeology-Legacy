@@ -16,7 +16,7 @@
     "display_scale": 0.25,
     "display_y_offset": 3.0,
     "name": {
-      "translate": "coatType.fossilslegacy.spinosaurus"
+      "translate": "fossilVariant.fossilslegacy.spinosaurus"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.marine_iguana"

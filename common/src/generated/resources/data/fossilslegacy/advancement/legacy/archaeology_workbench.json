@@ -14,7 +14,7 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.fossilslegacy.legacy.archaeology_workbench.desc"
+      "translate": "advancements.fossilslegacy.legacy.archaeology_workbench.description"
     },
     "hidden": true,
     "icon": {

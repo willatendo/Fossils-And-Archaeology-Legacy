@@ -16,7 +16,7 @@
     "display_scale": 0.3,
     "display_y_offset": 0.0,
     "name": {
-      "translate": "coatType.fossilslegacy.ankylosaurus"
+      "translate": "fossilVariant.fossilslegacy.ankylosaurus"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.eastern_brown_snake"

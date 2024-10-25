@@ -362,7 +362,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyFossilVariants.LEGACY_FUTABASAURUS, "Legacy Futabasaurus");
         this.add(FossilsLegacyFossilVariants.GALLIMIMUS, "Gallimimus");
         this.add(FossilsLegacyFossilVariants.PACHYCEPHALOSAURUS, "Pachycephalosaurus");
-        this.add(FossilsLegacyFossilVariants.PTERANODON, "Pteranodon");
+        this.add(FossilsLegacyFossilVariants.LEGACY_PTERANODON, "Pteranodon");
         this.add(FossilsLegacyFossilVariants.SPINOSAURUS, "Spinosaurus");
         this.add(FossilsLegacyFossilVariants.TRICERATOPS, "Triceratops");
         this.add(FossilsLegacyFossilVariants.LEGACY_TRICERATOPS, "Legacy Triceratops");

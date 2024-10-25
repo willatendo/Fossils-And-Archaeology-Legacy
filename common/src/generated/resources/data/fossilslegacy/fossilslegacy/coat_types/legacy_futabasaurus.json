@@ -16,7 +16,7 @@
     "display_scale": 0.3,
     "display_y_offset": 0.25,
     "name": {
-      "translate": "coatType.fossilslegacy.legacy_futabasaurus"
+      "translate": "fossilVariant.fossilslegacy.legacy_futabasaurus"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.broadhead_skink"

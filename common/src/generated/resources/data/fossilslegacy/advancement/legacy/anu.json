@@ -7,7 +7,7 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.fossilslegacy.legacy.anu.desc"
+      "translate": "advancements.fossilslegacy.legacy.anu.description"
     },
     "frame": "goal",
     "hidden": true,

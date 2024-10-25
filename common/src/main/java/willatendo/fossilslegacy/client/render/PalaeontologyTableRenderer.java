@@ -26,8 +26,8 @@ public class PalaeontologyTableRenderer implements BlockEntityRenderer<Palaeonto
 
     @Override
     public void render(PalaeontologyTableBlockEntity palaeontologyTableBlockEntity, float partialTick, PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight, int packedOverlay) {
-        FossilsLegacyUtils.LOGGER.info("HERE!");
         if (palaeontologyTableBlockEntity.getDisplay() != null) {
+            FossilsLegacyUtils.LOGGER.info("HERE!");
             FossilVariant fossilVariant = palaeontologyTableBlockEntity.getDisplay().value();
             Model model = this.getModel(fossilVariant.model());
             if (model != null) {

@@ -16,7 +16,7 @@
     "display_scale": 1.5,
     "display_y_offset": -0.75,
     "name": {
-      "translate": "coatType.fossilslegacy.green_velociraptor"
+      "translate": "fossilVariant.fossilslegacy.green_velociraptor"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.green_tree_python"

@@ -14,7 +14,7 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.fossilslegacy.legacy.ancient_helmet_artifact.desc"
+      "translate": "advancements.fossilslegacy.legacy.ancient_helmet_artifact.description"
     },
     "hidden": true,
     "icon": {

@@ -55,16 +55,33 @@ public abstract class AnimationProvider implements DataProvider {
                 animation.addProperty("target", this.parse(animationChannels.getFirst().target()));
                 JsonArray keyframes = new JsonArray();
                 animationChannels.forEach(animationChannel -> {
+                    AnimationChannel.Target target = animationChannel.target();
                     for (Keyframe keyframe : animationChannel.keyframes()) {
                         JsonObject keyframeObject = new JsonObject();
                         keyframeObject.addProperty("timestamp", keyframe.timestamp());
                         if (keyframe.interpolation() == AnimationChannel.Interpolations.LINEAR) {
                             keyframeObject.addProperty("interpolation", "linear");
-                            JsonObject degreeVec = new JsonObject();
-                            degreeVec.addProperty("x", keyframe.target().x() / 0.017453292F);
-                            degreeVec.addProperty("y", keyframe.target().y() / 0.017453292F);
-                            degreeVec.addProperty("z", keyframe.target().z() / 0.017453292F);
-                            keyframeObject.add("degree_vec", degreeVec);
+                            if (target == AnimationChannel.Targets.ROTATION) {
+                                JsonObject degreeVec = new JsonObject();
+                                degreeVec.addProperty("x", keyframe.target().x() / 0.017453292F);
+                                degreeVec.addProperty("y", keyframe.target().y() / 0.017453292F);
+                                degreeVec.addProperty("z", keyframe.target().z() / 0.017453292F);
+                                keyframeObject.add("degree_vec", degreeVec);
+                            }
+                            if (target == AnimationChannel.Targets.POSITION) {
+                                JsonObject degreeVec = new JsonObject();
+                                degreeVec.addProperty("x", keyframe.target().x());
+                                degreeVec.addProperty("y", -keyframe.target().y());
+                                degreeVec.addProperty("z", keyframe.target().z());
+                                keyframeObject.add("pos_vec", degreeVec);
+                            }
+                            if (target == AnimationChannel.Targets.SCALE) {
+                                JsonObject degreeVec = new JsonObject();
+                                degreeVec.addProperty("x", keyframe.target().x() - 1.0F);
+                                degreeVec.addProperty("y", keyframe.target().y() - 1.0F);
+                                degreeVec.addProperty("z", keyframe.target().z() - 1.0F);
+                                keyframeObject.add("scale_vec", degreeVec);
+                            }
                         }
                         keyframes.add(keyframeObject);
                     }

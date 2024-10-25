@@ -16,7 +16,7 @@
     "display_scale": 1.5,
     "display_y_offset": -0.75,
     "name": {
-      "translate": "coatType.fossilslegacy.white_velociraptor"
+      "translate": "fossilVariant.fossilslegacy.white_velociraptor"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.gray_ratsnake"

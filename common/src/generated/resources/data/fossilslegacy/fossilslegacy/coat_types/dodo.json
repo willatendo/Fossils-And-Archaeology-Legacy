@@ -16,7 +16,7 @@
     "display_scale": 2.0,
     "display_y_offset": -1.0,
     "name": {
-      "translate": "coatType.fossilslegacy.dodo"
+      "translate": "fossilVariant.fossilslegacy.dodo"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.domestic_pigeon"

@@ -16,18 +16,18 @@
     "display_scale": 0.75,
     "display_y_offset": 0.0,
     "name": {
-      "translate": "coatType.fossilslegacy.pteranodon"
+      "translate": "fossilVariant.fossilslegacy.legacy_pteranodon"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.eastern_indigo_snake"
     }
   },
   "models": {
-    "flying_model": "fossilslegacy:flying_pteranodon",
-    "landing_model": "fossilslegacy:landing_pteranodon",
-    "model": "fossilslegacy:pteranodon"
+    "flying_model": "fossilslegacy:legacy_flying_pteranodon",
+    "landing_model": "fossilslegacy:legacy_landing_pteranodon",
+    "model": "fossilslegacy:legacy_pteranodon"
   },
   "textures": {
-    "texture": "fossilslegacy:textures/entity/pteranodon/pteranodon.png"
+    "texture": "fossilslegacy:textures/entity/pteranodon/legacy/pteranodon.png"
   }
 }

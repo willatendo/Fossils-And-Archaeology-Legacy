@@ -16,7 +16,7 @@
     "display_scale": 1.0,
     "display_y_offset": 0.25,
     "name": {
-      "translate": "coatType.fossilslegacy.dilophosaurus"
+      "translate": "fossilVariant.fossilslegacy.dilophosaurus"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.inland_taipan"

@@ -16,7 +16,7 @@
     "display_scale": 0.45,
     "display_y_offset": 1.0,
     "name": {
-      "translate": "coatType.fossilslegacy.moa"
+      "translate": "fossilVariant.fossilslegacy.moa"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.american_bison"
