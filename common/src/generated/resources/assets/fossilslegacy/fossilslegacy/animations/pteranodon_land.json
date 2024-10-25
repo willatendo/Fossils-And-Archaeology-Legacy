@@ -11,10 +11,10 @@
             "z": 80.0
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.0
         }
-      ],
-      "target": "rotation"
+      ]
     },
     {
       "bone": "left_wing",
@@ -26,10 +26,10 @@
             "z": -80.0
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.0
         }
-      ],
-      "target": "rotation"
+      ]
     },
     {
       "bone": "neck",
@@ -41,10 +41,10 @@
             "z": 0.0
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.0
         }
-      ],
-      "target": "rotation"
+      ]
     },
     {
       "bone": "right_wing_tip",
@@ -56,10 +56,10 @@
             "z": 0.0
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.0
         }
-      ],
-      "target": "rotation"
+      ]
     },
     {
       "bone": "left_wing_tip",
@@ -71,10 +71,10 @@
             "z": 0.0
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.0
         }
-      ],
-      "target": "rotation"
+      ]
     }
   ],
   "id": "fossilslegacy:pteranodon_land",

@@ -19,7 +19,7 @@ import java.util.concurrent.CompletableFuture;
 
 public abstract class AnimationProvider implements DataProvider {
     private final Map<ResourceLocation, AnimationDefinition> jsonAnimations = Maps.newHashMap();
-    private final Map<BuiltInAnimationType, String[]> builtInAnimations = Maps.newHashMap();
+    private final List<BuiltInAnimationType> builtInAnimations = Lists.newArrayList();
     private final PackOutput packOutput;
     private final String modId;
 
@@ -32,8 +32,8 @@ public abstract class AnimationProvider implements DataProvider {
         this.jsonAnimations.put(resourceLocation, animationDefinition);
     }
 
-    protected void addBuiltIn(BuiltInAnimationType builtInAnimationType, String... parts) {
-        this.builtInAnimations.put(builtInAnimationType, parts);
+    protected void addBuiltIn(BuiltInAnimationType builtInAnimationType) {
+        this.builtInAnimations.add(builtInAnimationType);
     }
 
     protected abstract void getAll();
@@ -52,12 +52,12 @@ public abstract class AnimationProvider implements DataProvider {
             animationDefinition.boneAnimations().forEach((bone, animationChannels) -> {
                 JsonObject animation = new JsonObject();
                 animation.addProperty("bone", bone);
-                animation.addProperty("target", this.parse(animationChannels.getFirst().target()));
                 JsonArray keyframes = new JsonArray();
                 animationChannels.forEach(animationChannel -> {
                     AnimationChannel.Target target = animationChannel.target();
                     for (Keyframe keyframe : animationChannel.keyframes()) {
                         JsonObject keyframeObject = new JsonObject();
+                        keyframeObject.addProperty("target", this.parse(target));
                         keyframeObject.addProperty("timestamp", keyframe.timestamp());
                         if (keyframe.interpolation() == AnimationChannel.Interpolations.LINEAR) {
                             keyframeObject.addProperty("interpolation", "linear");
@@ -69,18 +69,18 @@ public abstract class AnimationProvider implements DataProvider {
                                 keyframeObject.add("degree_vec", degreeVec);
                             }
                             if (target == AnimationChannel.Targets.POSITION) {
-                                JsonObject degreeVec = new JsonObject();
-                                degreeVec.addProperty("x", keyframe.target().x());
-                                degreeVec.addProperty("y", -keyframe.target().y());
-                                degreeVec.addProperty("z", keyframe.target().z());
-                                keyframeObject.add("pos_vec", degreeVec);
+                                JsonObject posVec = new JsonObject();
+                                posVec.addProperty("x", keyframe.target().x());
+                                posVec.addProperty("y", -keyframe.target().y());
+                                posVec.addProperty("z", keyframe.target().z());
+                                keyframeObject.add("pos_vec", posVec);
                             }
                             if (target == AnimationChannel.Targets.SCALE) {
-                                JsonObject degreeVec = new JsonObject();
-                                degreeVec.addProperty("x", keyframe.target().x() - 1.0F);
-                                degreeVec.addProperty("y", keyframe.target().y() - 1.0F);
-                                degreeVec.addProperty("z", keyframe.target().z() - 1.0F);
-                                keyframeObject.add("scale_vec", degreeVec);
+                                JsonObject scaleVec = new JsonObject();
+                                scaleVec.addProperty("x", keyframe.target().x() + 1.0F);
+                                scaleVec.addProperty("y", keyframe.target().y() + 1.0F);
+                                scaleVec.addProperty("z", keyframe.target().z() + 1.0F);
+                                keyframeObject.add("scale_vec", scaleVec);
                             }
                         }
                         keyframes.add(keyframeObject);
@@ -92,14 +92,11 @@ public abstract class AnimationProvider implements DataProvider {
             jsonObject.add("animations", animations);
             completableFutures.add(DataProvider.saveStable(cachedOutput, jsonObject, this.packOutput.getOutputFolder(PackOutput.Target.RESOURCE_PACK).resolve(this.modId).resolve("fossilslegacy").resolve("animations").resolve(resourceLocation.getPath() + ".json")));
         });
-        this.builtInAnimations.forEach((builtInAnimations, parts) -> {
+        this.builtInAnimations.forEach((builtInAnimations) -> {
             ResourceLocation resourceLocation = builtInAnimations.getId();
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("type", "built_in");
             jsonObject.addProperty("id", resourceLocation.toString());
-            JsonArray partsArray = new JsonArray();
-            List.of(parts).forEach(partsArray::add);
-            jsonObject.add("parts", partsArray);
             completableFutures.add(DataProvider.saveStable(cachedOutput, jsonObject, this.packOutput.getOutputFolder(PackOutput.Target.RESOURCE_PACK).resolve(this.modId).resolve("fossilslegacy").resolve("animations").resolve(resourceLocation.getPath() + ".json")));
         });
 

@@ -11,6 +11,7 @@
             "z": 90.0
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.0
         },
         {
@@ -20,6 +21,7 @@
             "z": 137.5
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.0417
         },
         {
@@ -29,6 +31,7 @@
             "z": 47.5
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.125
         },
         {
@@ -38,10 +41,10 @@
             "z": 90.0
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.1667
         }
-      ],
-      "target": "rotation"
+      ]
     },
     {
       "bone": "left_arm",
@@ -53,6 +56,7 @@
             "z": -90.0
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.0
         },
         {
@@ -62,6 +66,7 @@
             "z": -137.5
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.0417
         },
         {
@@ -71,6 +76,7 @@
             "z": -47.5
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.125
         },
         {
@@ -80,10 +86,10 @@
             "z": -90.0
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.1667
         }
-      ],
-      "target": "rotation"
+      ]
     }
   ],
   "id": "fossilslegacy:dodo_float_down",

@@ -362,7 +362,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyFossilVariants.LEGACY_FUTABASAURUS, "Legacy Futabasaurus");
         this.add(FossilsLegacyFossilVariants.GALLIMIMUS, "Gallimimus");
         this.add(FossilsLegacyFossilVariants.PACHYCEPHALOSAURUS, "Pachycephalosaurus");
-        this.add(FossilsLegacyFossilVariants.LEGACY_PTERANODON, "Pteranodon");
+        this.add(FossilsLegacyFossilVariants.PTERANODON, "Pteranodon");
+        this.add(FossilsLegacyFossilVariants.LEGACY_PTERANODON, "Legacy Pteranodon");
         this.add(FossilsLegacyFossilVariants.SPINOSAURUS, "Spinosaurus");
         this.add(FossilsLegacyFossilVariants.TRICERATOPS, "Triceratops");
         this.add(FossilsLegacyFossilVariants.LEGACY_TRICERATOPS, "Legacy Triceratops");
@@ -528,17 +529,18 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.ARTICULATED_FOSSIL.get());
         this.add("item.fossilslegacy.articulated_fossil.ankylosaurus", "Articulated Ankylosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.brachiosaurus", "Articulated Brachiosaurus Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.legacy_brachiosaurus", "Articulated Legacy Brachiosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.compsognathus", "Articulated Compsognathus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.cryolophosaurus", "Articulated Cryolophosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.futabasaurus", "Articulated Futabasaurus Fossil");
-        this.add("item.fossilslegacy.articulated_fossil.gallimimus", "Articulated Gallimimus Fossil");
-        this.add("item.fossilslegacy.articulated_fossil.legacy_brachiosaurus", "Articulated Legacy Brachiosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.legacy_futabasaurus", "Articulated Legacy Futabasaurus Fossil");
-        this.add("item.fossilslegacy.articulated_fossil.legacy_triceratops", "Articulated Legacy Triceratops Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.gallimimus", "Articulated Gallimimus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.pachycephalosaurus", "Articulated Pachycephalosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.pteranodon", "Articulated Pteranodon Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.legacy_pteranodon", "Articulated Legacy Pteranodon Fossil");
         this.add("item.fossilslegacy.articulated_fossil.spinosaurus", "Articulated Spinosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.triceratops", "Articulated Triceratops Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.legacy_triceratops", "Articulated Legacy Triceratops Fossil");
         this.add("item.fossilslegacy.articulated_fossil.velociraptor", "Articulated Velociraptor Fossil");
         this.add(FossilsLegacyItems.RELIC_SCRAP.get());
         this.add(FossilsLegacyItems.STONE_TABLET.get());
@@ -805,9 +807,11 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 
         this.add(FossilsLegacyCoatTypeTags.ANKYLOSAURUS, "Ankylosaurus");
         this.add(FossilsLegacyCoatTypeTags.BRACHIOSAURUS, "Brachiosaurus");
+        this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_BRACHIOSAURUS, "Non-Legacy Brachiosaurus");
         this.add(FossilsLegacyCoatTypeTags.CARNOTAURUS, "Carnotaurus");
         this.add(FossilsLegacyCoatTypeTags.COMPSOGNATHUS, "Compsognathus");
         this.add(FossilsLegacyCoatTypeTags.CRYOLOPHOSAURUS, "Cryolophosaurus");
+        this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_CRYOLOPHOSAURUS, "Non-Legacy Cryolophosaurus");
         this.add(FossilsLegacyCoatTypeTags.DILOPHOSAURUS, "Dilophosaurus");
         this.add(FossilsLegacyCoatTypeTags.DODO, "Dodo");
         this.add(FossilsLegacyCoatTypeTags.FUTABASAURUS, "Futabasaurus");
@@ -818,6 +822,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyCoatTypeTags.MOSASAURUS, "Mosasaurus");
         this.add(FossilsLegacyCoatTypeTags.PACHYCEPHALOSAURUS, "Pachycephalosaurus");
         this.add(FossilsLegacyCoatTypeTags.PTERANODON, "Pteranodon");
+        this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_PTERANODON, "Non-Legacy Pteranodon");
         this.add(FossilsLegacyCoatTypeTags.SMILODON, "Smilodon");
         this.add(FossilsLegacyCoatTypeTags.SPINOSAURUS, "Spinosaurus");
         this.add(FossilsLegacyCoatTypeTags.STEGOSAURUS, "Stegosaurus");

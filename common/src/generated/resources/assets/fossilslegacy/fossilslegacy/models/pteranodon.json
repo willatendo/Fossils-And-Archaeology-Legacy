@@ -1,6 +1,9 @@
 {
   "animations": {
-    "fly": "fossilslegacy:pteranodon_fly",
+    "fly": [
+      "fossilslegacy:pteranodon_fly",
+      "fossilslegacy:pteranodon_body_fly"
+    ],
     "land": "fossilslegacy:pteranodon_land",
     "walk": "fossilslegacy:pteranodon_walk"
   },

@@ -11,6 +11,7 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import org.apache.commons.compress.utils.Lists;
+import willatendo.fossilslegacy.api.client.BuiltInAnimationType;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 import java.util.List;
@@ -45,14 +46,30 @@ public abstract class EntityModelProvider implements DataProvider {
             ResourceLocation id = model.id();
             LayerDefinition layerDefinition = model.layerDefinition();
             JsonObject jsonObject = new JsonObject();
-            JsonObject animations = new JsonObject();
-            model.animations().forEach((animationName, animation) -> {
-                animations.addProperty(animationName, animation.toString());
+            JsonObject animationsObject = new JsonObject();
+            model.animations().forEach((animationName, animations) -> {
+                if (animations.length > 1) {
+                    JsonArray animationsArray = new JsonArray();
+                    for (ResourceLocation animation : animations) {
+                        animationsArray.add(animation.toString());
+                    }
+                    animationsObject.add(animationName, animationsArray);
+                } else {
+                    animationsObject.addProperty(animationName, animations[0].toString());
+                }
             });
-            model.builtInAnimations().forEach((animationName, builtInAnimationType) -> {
-                animations.addProperty(animationName, builtInAnimationType.getId().toString());
+            model.builtInAnimations().forEach((animationName, builtInAnimationTypes) -> {
+                if (builtInAnimationTypes.length > 1) {
+                    JsonArray animationsArray = new JsonArray();
+                    for (BuiltInAnimationType builtInAnimationType : builtInAnimationTypes) {
+                        animationsArray.add(builtInAnimationType.getId().toString());
+                    }
+                    animationsObject.add(animationName, animationsArray);
+                } else {
+                    animationsObject.addProperty(animationName, builtInAnimationTypes[0].getId().toString());
+                }
             });
-            jsonObject.add("animations", animations);
+            jsonObject.add("animations", animationsObject);
             jsonObject.addProperty("model_id", id.toString());
             if (model.headPieces().length > 0) {
                 JsonArray headPieces = new JsonArray();

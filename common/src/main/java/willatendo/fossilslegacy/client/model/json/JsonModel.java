@@ -8,10 +8,12 @@ import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import willatendo.fossilslegacy.api.client.BuiltInAnimationType;
+import willatendo.fossilslegacy.client.animation.BuiltInAnimationTypes;
 import willatendo.fossilslegacy.client.animation.json.JsonAnimationLoader;
 import willatendo.fossilslegacy.client.model.dinosaur.base.DinosaurModel;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.util.interfaces.FloatDownEntity;
+import willatendo.fossilslegacy.server.entity.util.interfaces.FlyingDinosaur;
 
 import java.util.List;
 import java.util.Optional;
@@ -144,35 +146,43 @@ public class JsonModel<T extends Entity> extends DinosaurModel<T> {
         if (entity instanceof Dinosaur dinosaur) {
             if (this.animationHolder.isPresent()) {
                 JsonModelLoader.AnimationHolder animationHolder = this.animationHolder.get();
-                if (animationHolder.walkAnimation().isPresent()) {
-                    if (JsonAnimationLoader.isBuiltIn(animationHolder.walkAnimation().get())) {
-                        BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animationHolder.walkAnimation().get());
-                        if (builtInAnimationType.canUse(dinosaur)) {
-                            builtInAnimationType.prepareMobModel(dinosaur, this, limbSwing, limbSwingAmount, partialTick);
+                if (animationHolder.hasWalkAnimations()) {
+                    for (ResourceLocation animation : animationHolder.walkAnimation()) {
+                        if (JsonAnimationLoader.isBuiltIn(animation)) {
+                            BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
+                            if (builtInAnimationType.canUse(dinosaur)) {
+                                builtInAnimationType.prepareMobModel(dinosaur, this, limbSwing, limbSwingAmount, partialTick);
+                            }
                         }
                     }
                 }
-                if (animationHolder.tailAnimation().isPresent()) {
-                    if (JsonAnimationLoader.isBuiltIn(animationHolder.sitAnimation().get())) {
-                        BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animationHolder.tailAnimation().get());
-                        if (builtInAnimationType.canUse(dinosaur)) {
-                            builtInAnimationType.prepareMobModel(dinosaur, this, limbSwing, limbSwingAmount, partialTick);
+                if (animationHolder.hasTailAnimations()) {
+                    for (ResourceLocation animation : animationHolder.tailAnimation()) {
+                        if (JsonAnimationLoader.isBuiltIn(animation)) {
+                            BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
+                            if (builtInAnimationType.canUse(dinosaur)) {
+                                builtInAnimationType.prepareMobModel(dinosaur, this, limbSwing, limbSwingAmount, partialTick);
+                            }
                         }
                     }
                 }
-                if (animationHolder.sitAnimation().isPresent()) {
-                    if (JsonAnimationLoader.isBuiltIn(animationHolder.sitAnimation().get())) {
-                        BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animationHolder.sitAnimation().get());
-                        if (builtInAnimationType.canUse(dinosaur)) {
-                            builtInAnimationType.prepareMobModel(dinosaur, this, limbSwing, limbSwingAmount, partialTick);
+                if (animationHolder.hasSitAnimations()) {
+                    for (ResourceLocation animation : animationHolder.sitAnimation()) {
+                        if (JsonAnimationLoader.isBuiltIn(animation)) {
+                            BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
+                            if (builtInAnimationType.canUse(dinosaur)) {
+                                builtInAnimationType.prepareMobModel(dinosaur, this, limbSwing, limbSwingAmount, partialTick);
+                            }
                         }
                     }
                 }
-                if (animationHolder.shakeAnimation().isPresent()) {
-                    if (JsonAnimationLoader.isBuiltIn(animationHolder.shakeAnimation().get())) {
-                        BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animationHolder.shakeAnimation().get());
-                        if (builtInAnimationType.canUse(dinosaur)) {
-                            builtInAnimationType.prepareMobModel(dinosaur, this, limbSwing, limbSwingAmount, partialTick);
+                if (animationHolder.hasShakeAnimations()) {
+                    for (ResourceLocation animation : animationHolder.shakeAnimation()) {
+                        if (JsonAnimationLoader.isBuiltIn(animation)) {
+                            BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
+                            if (builtInAnimationType.canUse(dinosaur)) {
+                                builtInAnimationType.prepareMobModel(dinosaur, this, limbSwing, limbSwingAmount, partialTick);
+                            }
                         }
                     }
                 }
@@ -187,63 +197,108 @@ public class JsonModel<T extends Entity> extends DinosaurModel<T> {
         if (entity instanceof Dinosaur dinosaur) {
             if (this.animationHolder.isPresent()) {
                 JsonModelLoader.AnimationHolder animationHolder = this.animationHolder.get();
-                if (animationHolder.headAnimation().isPresent()) {
-                    if (JsonAnimationLoader.isBuiltIn(animationHolder.headAnimation().get())) {
-                        BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animationHolder.headAnimation().get());
-                        if (builtInAnimationType.canUse(dinosaur)) {
-                            builtInAnimationType.setupAnim(dinosaur, this, limbSwing, limbSwingAmount, netHeadYaw);
+                if (animationHolder.hasHeadAnimations()) {
+                    for (ResourceLocation animation : animationHolder.headAnimation()) {
+                        if (JsonAnimationLoader.isBuiltIn(animation)) {
+                            BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
+                            if (builtInAnimationType.canUse(dinosaur)) {
+                                builtInAnimationType.setupAnim(dinosaur, this, limbSwing, limbSwingAmount, netHeadYaw);
+                            }
                         }
                     }
                 } else {
-                    netHeadYaw = Mth.clamp(netHeadYaw, -30.0F, 30.0F);
-                    headPitch = Mth.clamp(headPitch, -25.0F, 45.0F);
-                    for (ModelPart modelPart : this.headPieces) {
-                        modelPart.yRot = netHeadYaw * 0.017453292F;
-                        modelPart.xRot = headPitch * 0.017453292F;
-                    }
-                }
-
-                if (animationHolder.flyAnimation().isPresent()) {
-                    if (JsonAnimationLoader.isBuiltIn(animationHolder.flyAnimation().get())) {
-                        BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animationHolder.flyAnimation().get());
-                        if (builtInAnimationType.canUse(dinosaur)) {
-                            builtInAnimationType.setupAnim(dinosaur, this, limbSwing, limbSwingAmount, netHeadYaw);
-                        }
-                    }
-                }
-
-                if (animationHolder.swimAnimation().isPresent() && dinosaur.isInWaterOrBubble()) {
-                    if (JsonAnimationLoader.isBuiltIn(animationHolder.swimAnimation().get())) {
-                        BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animationHolder.swimAnimation().get());
-                        if (builtInAnimationType.canUse(dinosaur)) {
-                            builtInAnimationType.setupAnim(dinosaur, this, limbSwing, limbSwingAmount, netHeadYaw);
+                    if (dinosaur instanceof FlyingDinosaur flyingDinosaur) {
+                        if (!flyingDinosaur.shouldFly() && !flyingDinosaur.shouldLand()) {
+                            this.standardHead(netHeadYaw, headPitch);
                         }
                     } else {
-                        animationHolder.swimAnimation().ifPresent(resourceLocation -> this.animateWalk(JsonAnimationLoader.getAnimation(resourceLocation), limbSwing, limbSwingAmount, 2.0F, 2.5F));
+                        this.standardHead(netHeadYaw, headPitch);
                     }
-                } else {
-                    if (animationHolder.walkAnimation().isPresent()) {
-                        if (JsonAnimationLoader.isBuiltIn(animationHolder.walkAnimation().get())) {
-                            BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animationHolder.walkAnimation().get());
+                }
+
+                if (animationHolder.hasFlyAnimations()) {
+                    for (ResourceLocation animation : animationHolder.flyAnimation()) {
+                        if (JsonAnimationLoader.isBuiltIn(animation)) {
+                            BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
                             if (builtInAnimationType.canUse(dinosaur)) {
                                 builtInAnimationType.setupAnim(dinosaur, this, limbSwing, limbSwingAmount, netHeadYaw);
                             }
                         } else {
-                            animationHolder.walkAnimation().ifPresent(resourceLocation -> this.animateWalk(JsonAnimationLoader.getAnimation(resourceLocation), limbSwing, limbSwingAmount, 2.0F, 2.5F));
+                            if (dinosaur instanceof FlyingDinosaur flyingDinosaur) {
+                                this.animate(flyingDinosaur.getFlyingAnimationState(), JsonAnimationLoader.getAnimation(animation), ageInTicks);
+                            }
+                        }
+                    }
+                }
+
+                if (dinosaur instanceof FlyingDinosaur flyingDinosaur) {
+                    if (animationHolder.hasLandAnimations()) {
+                        for (ResourceLocation animation : animationHolder.landAnimation()) {
+                            this.animate(flyingDinosaur.getLandingAnimationState(), JsonAnimationLoader.getAnimation(animation), ageInTicks);
+                        }
+                    }
+                }
+
+                if (animationHolder.hasSwimAnimations() && dinosaur.isInWaterOrBubble()) {
+                    for (ResourceLocation animation : animationHolder.swimAnimation()) {
+                        if (JsonAnimationLoader.isBuiltIn(animation)) {
+                            BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
+                            if (builtInAnimationType.canUse(dinosaur)) {
+                                builtInAnimationType.setupAnim(dinosaur, this, limbSwing, limbSwingAmount, netHeadYaw);
+                            }
+                        } else {
+                            this.animateWalk(JsonAnimationLoader.getAnimation(animation), limbSwing, limbSwingAmount, 2.0F, 2.5F);
+                        }
+                    }
+                } else {
+                    if (animationHolder.hasWalkAnimations()) {
+                        if (dinosaur instanceof FlyingDinosaur flyingDinosaur) {
+                            if (!flyingDinosaur.shouldFly() && !flyingDinosaur.shouldLand()) {
+                                this.animateWalk(animationHolder, dinosaur, limbSwing, limbSwingAmount, netHeadYaw);
+                            }
+                        } else {
+                            this.animateWalk(animationHolder, dinosaur, limbSwing, limbSwingAmount, netHeadYaw);
                         }
                     }
                 }
 
                 if (dinosaur instanceof FloatDownEntity floatDownEntity) {
-                    animationHolder.floatAnimation().ifPresent(resourceLocation -> this.animate(floatDownEntity.getFallAnimationState(), JsonAnimationLoader.getAnimation(resourceLocation), ageInTicks));
+                    if (animationHolder.hasFloatAnimations()) {
+                        for (ResourceLocation animation : animationHolder.floatAnimation()) {
+                            this.animate(floatDownEntity.getFallAnimationState(), JsonAnimationLoader.getAnimation(animation), ageInTicks);
+                        }
+                    }
                 }
             } else {
-                netHeadYaw = Mth.clamp(netHeadYaw, -30.0F, 30.0F);
-                headPitch = Mth.clamp(headPitch, -25.0F, 45.0F);
-                for (ModelPart modelPart : this.headPieces) {
-                    modelPart.yRot = netHeadYaw * 0.017453292F;
-                    modelPart.xRot = headPitch * 0.017453292F;
+                if (dinosaur instanceof FlyingDinosaur flyingDinosaur) {
+                    if (!flyingDinosaur.shouldFly() && !flyingDinosaur.shouldLand()) {
+                        this.standardHead(netHeadYaw, headPitch);
+                    }
+                } else {
+                    this.standardHead(netHeadYaw, headPitch);
                 }
+            }
+        }
+    }
+
+    private void standardHead(float netHeadYaw, float headPitch) {
+        netHeadYaw = Mth.clamp(netHeadYaw, -30.0F, 30.0F);
+        headPitch = Mth.clamp(headPitch, -25.0F, 45.0F);
+        for (ModelPart modelPart : this.headPieces) {
+            modelPart.yRot = netHeadYaw * 0.017453292F;
+            modelPart.xRot = headPitch * 0.017453292F;
+        }
+    }
+
+    private void animateWalk(JsonModelLoader.AnimationHolder animationHolder, Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float netHeadYaw) {
+        for (ResourceLocation animation : animationHolder.walkAnimation()) {
+            if (JsonAnimationLoader.isBuiltIn(animation)) {
+                BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
+                if (builtInAnimationType.canUse(dinosaur)) {
+                    builtInAnimationType.setupAnim(dinosaur, this, limbSwing, limbSwingAmount, netHeadYaw);
+                }
+            } else {
+                this.animateWalk(JsonAnimationLoader.getAnimation(animation), limbSwing, limbSwingAmount, 2.0F, 2.5F);
             }
         }
     }

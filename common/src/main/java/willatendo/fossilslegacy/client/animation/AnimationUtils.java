@@ -5,7 +5,6 @@ import willatendo.fossilslegacy.client.model.json.JsonModel;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.util.interfaces.FlyingDinosaur;
 import willatendo.fossilslegacy.server.entity.util.interfaces.ShakingEntity;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public final class AnimationUtils {
     protected static void legacyBrachiosaurusWalkAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
@@ -53,6 +52,19 @@ public final class AnimationUtils {
 
     protected static void pteranodonFlyingAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
         if (dinosaur instanceof FlyingDinosaur flyingDinosaur) {
+            if (flyingDinosaur.shouldFly() && !flyingDinosaur.shouldLand()) {
+                float airPitch = (float) -(flyingDinosaur.getAirPitch() * (Math.PI / 180.0F));
+                float airAngle = (float) -(flyingDinosaur.getAirAngle() * (Math.PI / 180.0F));
+
+                jsonModel.setPos("root", 0, 4, 3);
+                jsonModel.setXRot("root", airPitch);
+                jsonModel.setZRot("root", airAngle);
+            }
+        }
+    }
+
+    protected static void legacyPteranodonFlyingAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
+        if (dinosaur instanceof FlyingDinosaur flyingDinosaur) {
             float airPitch = (float) -(flyingDinosaur.getAirPitch() * (Math.PI / 180.0F));
             float airAngle = (float) -(flyingDinosaur.getAirAngle() * (Math.PI / 180.0F));
 
@@ -89,14 +101,14 @@ public final class AnimationUtils {
         }
     }
 
-    protected static void pteranodonHeadAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
+    protected static void legacyPteranodonHeadAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
         jsonModel.setYRot("crown", -netHeadYaw / 57.29578F);
         jsonModel.setYRot("upper_mouth", -netHeadYaw / 57.29578F);
         jsonModel.setYRot("lower_mouth", -netHeadYaw / 57.29578F);
         jsonModel.setYRot("head", -netHeadYaw / 57.29578F);
     }
 
-    protected static void pteranodonWalkAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
+    protected static void legacyPteranodonWalkAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
         jsonModel.setXRot("right_leg", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount - 0.271F);
         jsonModel.setXRot("left_leg", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount - 0.271F);
     }

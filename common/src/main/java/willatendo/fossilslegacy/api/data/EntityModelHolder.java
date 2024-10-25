@@ -9,7 +9,7 @@ import willatendo.fossilslegacy.api.client.BuiltInAnimationType;
 import java.util.List;
 import java.util.Map;
 
-public record EntityModelHolder(ResourceLocation id, LayerDefinition layerDefinition, Map<String, ResourceLocation> animations, Map<String, BuiltInAnimationType> builtInAnimations, String... headPieces) {
+public record EntityModelHolder(ResourceLocation id, LayerDefinition layerDefinition, Map<String, ResourceLocation[]> animations, Map<String, BuiltInAnimationType[]> builtInAnimations, String... headPieces) {
 
     public static Builder builder(ResourceLocation id, LayerDefinition layerDefinition) {
         return new Builder(id, layerDefinition);
@@ -18,8 +18,8 @@ public record EntityModelHolder(ResourceLocation id, LayerDefinition layerDefini
     public static class Builder {
         private final ResourceLocation id;
         private final LayerDefinition layerDefinition;
-        private final Map<String, ResourceLocation> animations = Maps.newHashMap();
-        private final Map<String, BuiltInAnimationType> builtInAnimations = Maps.newHashMap();
+        private final Map<String, ResourceLocation[]> animations = Maps.newHashMap();
+        private final Map<String, BuiltInAnimationType[]> builtInAnimations = Maps.newHashMap();
         private final List<String> headPieces = Lists.newArrayList();
 
         protected Builder(ResourceLocation id, LayerDefinition layerDefinition) {
@@ -27,12 +27,12 @@ public record EntityModelHolder(ResourceLocation id, LayerDefinition layerDefini
             this.layerDefinition = layerDefinition;
         }
 
-        public Builder withAnimation(String type, ResourceLocation id) {
+        public Builder withAnimation(String type, ResourceLocation... id) {
             this.animations.put(type, id);
             return this;
         }
 
-        public Builder withBuiltInAnimation(String type, BuiltInAnimationType id) {
+        public Builder withBuiltInAnimation(String type, BuiltInAnimationType... id) {
             this.builtInAnimations.put(type, id);
             return this;
         }

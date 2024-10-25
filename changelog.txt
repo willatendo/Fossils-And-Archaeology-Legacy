@@ -22,6 +22,7 @@
 - Fossil No Longer Places Fossils
 - Archaeology Workbench Changed Recipe
 - Updated Pteranodon Model
+- Pteranodon flying is more stable
 - (Fabric) Fixed Server Crash
 - Fixed Placing Stone Tables
 - Fixed Cannibalism
@@ -38,6 +39,7 @@
 - (Fabric) Fixed Crash
 - Fixed Dispensor Not Dispensing Things Properly
 - Fixed Boat Recipes Not Being Unlocked Through Standing In Water
+- Fixed Pteranodon With "NoAI" Tag Not Having No AI
 - Added Updated Triceratops Model
 - Added "Anu Totem" Stone Tablet
 - Added Coat-Types; Data-Driven Cosmetics For Dinosaurs

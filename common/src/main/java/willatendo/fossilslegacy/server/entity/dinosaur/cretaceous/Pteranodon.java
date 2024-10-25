@@ -39,6 +39,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pteranodon extends Dinosaur implements DinopediaInformation, RideableDinosaur, CoatTypeEntity, FlyingDinosaur {
+    public final AnimationState flyAnimationState = new AnimationState();
+    public final AnimationState landAnimationState = new AnimationState();
     public float airSpeed = 0.0F;
     public float airAngle = 0.0F;
     public float airPitch = 0.0F;
@@ -81,7 +83,22 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 
     @Override
     public boolean shouldFly() {
-        return !this.onGround() && !this.isInWaterOrBubble() && this.level().getBlockState(this.blockPosition()).isAir();
+        return !this.onGround() && !this.isInWaterOrBubble() && ((this.level().getBlockState(this.blockPosition().below()).isAir() && this.position().y - this.blockPosition().getY() < 0.5F) || (this.level().getBlockState(this.blockPosition()).isAir() && this.position().y - this.blockPosition().getY() > 0.5F));
+    }
+
+    @Override
+    public boolean shouldLand() {
+        return this.landing;
+    }
+
+    @Override
+    public AnimationState getFlyingAnimationState() {
+        return this.flyAnimationState;
+    }
+
+    @Override
+    public AnimationState getLandingAnimationState() {
+        return this.landAnimationState;
     }
 
     @Override
@@ -122,6 +139,16 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
     @Override
     public Diet getDiet() {
         return Diet.piscivore(this.level());
+    }
+
+    @Override
+    public void tick() {
+        if (this.level().isClientSide()) {
+            this.flyAnimationState.animateWhen(this.shouldFly() && !this.landing, this.tickCount);
+            this.landAnimationState.animateWhen(this.landing, this.tickCount);
+        }
+
+        super.tick();
     }
 
     @Override
@@ -205,12 +232,12 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 
     @Override
     public boolean isNoGravity() {
-        return this.hasControllingPassenger();
+        return this.hasControllingPassenger() && this.shouldFly();
     }
 
     @Override
     public boolean isNoAi() {
-        return this.hasControllingPassenger();
+        return (this.hasControllingPassenger() && this.shouldFly()) || super.isNoAi();
     }
 
     @Override

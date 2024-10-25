@@ -19,9 +19,11 @@ public class FossilsLegacyCoatTypeTagProvider extends DataDrivenTagsProvider<Coa
     protected void addTags(Provider provider) {
         this.tag(FossilsLegacyCoatTypeTags.ANKYLOSAURUS).add(FossilsLegacyCoatTypes.ANKYLOSAURUS);
         this.tag(FossilsLegacyCoatTypeTags.BRACHIOSAURUS).add(FossilsLegacyCoatTypes.BRACHIOSAURUS, FossilsLegacyCoatTypes.LEGACY_BRACHIOSAURUS);
+        this.tag(FossilsLegacyCoatTypeTags.NON_LEGACY_BRACHIOSAURUS).add(FossilsLegacyCoatTypes.BRACHIOSAURUS);
         this.tag(FossilsLegacyCoatTypeTags.CARNOTAURUS).add(FossilsLegacyCoatTypes.GREEN_CARNOTAURUS, FossilsLegacyCoatTypes.RED_CARNOTAURUS);
         this.tag(FossilsLegacyCoatTypeTags.COMPSOGNATHUS).add(FossilsLegacyCoatTypes.COMPSOGNATHUS);
         this.tag(FossilsLegacyCoatTypeTags.CRYOLOPHOSAURUS).add(FossilsLegacyCoatTypes.CRYOLOPHOSAURUS, FossilsLegacyCoatTypes.LEGACY_CRYOLOPHOSAURUS);
+        this.tag(FossilsLegacyCoatTypeTags.NON_LEGACY_CRYOLOPHOSAURUS).add(FossilsLegacyCoatTypes.CRYOLOPHOSAURUS);
         this.tag(FossilsLegacyCoatTypeTags.DILOPHOSAURUS).add(FossilsLegacyCoatTypes.DILOPHOSAURUS);
         this.tag(FossilsLegacyCoatTypeTags.DODO).add(FossilsLegacyCoatTypes.DODO);
         this.tag(FossilsLegacyCoatTypeTags.FUTABASAURUS).add(FossilsLegacyCoatTypes.FUTABASAURUS, FossilsLegacyCoatTypes.LEGACY_FUTABASAURUS);
@@ -31,7 +33,8 @@ public class FossilsLegacyCoatTypeTagProvider extends DataDrivenTagsProvider<Coa
         this.tag(FossilsLegacyCoatTypeTags.MOA).add(FossilsLegacyCoatTypes.MOA);
         this.tag(FossilsLegacyCoatTypeTags.MOSASAURUS).add(FossilsLegacyCoatTypes.LEGACY_MOSASAURUS);
         this.tag(FossilsLegacyCoatTypeTags.PACHYCEPHALOSAURUS).add(FossilsLegacyCoatTypes.PACHYCEPHALOSAURUS);
-        this.tag(FossilsLegacyCoatTypeTags.PTERANODON).add(FossilsLegacyCoatTypes.LEGACY_PTERANODON);
+        this.tag(FossilsLegacyCoatTypeTags.PTERANODON).add(FossilsLegacyCoatTypes.PTERANODON, FossilsLegacyCoatTypes.LEGACY_PTERANODON);
+        this.tag(FossilsLegacyCoatTypeTags.NON_LEGACY_PTERANODON).add(FossilsLegacyCoatTypes.PTERANODON);
         this.tag(FossilsLegacyCoatTypeTags.SMILODON).add(FossilsLegacyCoatTypes.SMILODON);
         this.tag(FossilsLegacyCoatTypeTags.SPINOSAURUS).add(FossilsLegacyCoatTypes.SPINOSAURUS);
         this.tag(FossilsLegacyCoatTypeTags.STEGOSAURUS).add(FossilsLegacyCoatTypes.STEGOSAURUS);

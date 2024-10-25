@@ -11,7 +11,7 @@ public class LoadedParts {
     private final ModelPart[] modelParts;
 
     public LoadedParts(List<String> names, ModelPart root) {
-        this.modelParts = new ModelPart[names.size()];
+        this.modelParts = new ModelPart[names.size() + 1];
         int i = 0;
         for (String name : names) {
             for (ModelPart modelPart : root.getAllParts().toList()) {
@@ -23,6 +23,8 @@ public class LoadedParts {
                 }
             }
         }
+        this.modelParts[i] = root;
+        this.identifiers.put("root", i);
     }
 
     public ModelPart get(String name) {

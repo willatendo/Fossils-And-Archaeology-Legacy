@@ -7,7 +7,6 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
-import willatendo.fossilslegacy.api.client.ModelIdentifierRegistry;
 import willatendo.fossilslegacy.client.model.json.JsonModel;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
@@ -15,7 +14,6 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.CoatTypeEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.WetFurEntity;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 
-import java.util.Map;
 import java.util.Optional;
 
 public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends MobRenderer<T, EntityModel<T>> {

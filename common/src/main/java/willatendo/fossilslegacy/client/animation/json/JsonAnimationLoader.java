@@ -14,6 +14,7 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.util.profiling.ProfilerFiller;
+import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.api.client.BuiltInAnimationType;
 import willatendo.fossilslegacy.client.animation.BuiltInAnimationTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -71,9 +72,10 @@ public class JsonAnimationLoader extends SimpleJsonResourceReloadListener {
             for (JsonElement animationElement : animations.asList()) {
                 JsonObject animation = animationElement.getAsJsonObject();
                 String bone = GsonHelper.getAsString(animation, "bone");
-                String target = GsonHelper.getAsString(animation, "target");
                 JsonArray keyframe = GsonHelper.getAsJsonArray(animation, "keyframes");
-                Keyframe[] keyframes = new Keyframe[keyframe.size()];
+                List<Keyframe> rotationKeyframes = Lists.newArrayList();
+                List<Keyframe> positionKeyframes = Lists.newArrayList();
+                List<Keyframe> scaleKeyframes = Lists.newArrayList();
                 List<JsonElement> keyframeElements = keyframe.asList();
                 for (int i = 0; i < keyframeElements.size(); i++) {
                     JsonElement keyframeElement = keyframeElements.get(i);
@@ -91,39 +93,37 @@ public class JsonAnimationLoader extends SimpleJsonResourceReloadListener {
                         float x = GsonHelper.getAsFloat(degreeVecObject, "x");
                         float y = GsonHelper.getAsFloat(degreeVecObject, "y");
                         float z = GsonHelper.getAsFloat(degreeVecObject, "z");
-                        keyframes[i] = new Keyframe(timestamp, KeyframeAnimations.degreeVec(x, y, z), this.parseInterpolations(interpolation));
+                        rotationKeyframes.add(new Keyframe(timestamp, KeyframeAnimations.degreeVec(x, y, z), this.parseInterpolations(interpolation)));
                     }
                     if (isPosVec) {
                         JsonObject posVecObject = GsonHelper.getAsJsonObject(keyframeObject, posVec);
                         float x = GsonHelper.getAsFloat(posVecObject, "x");
                         float y = GsonHelper.getAsFloat(posVecObject, "y");
                         float z = GsonHelper.getAsFloat(posVecObject, "z");
-                        keyframes[i] = new Keyframe(timestamp, KeyframeAnimations.posVec(x, y, z), this.parseInterpolations(interpolation));
+                        positionKeyframes.add(new Keyframe(timestamp, KeyframeAnimations.posVec(x, y, z), this.parseInterpolations(interpolation)));
                     }
                     if (isScaleVec) {
                         JsonObject scaleVecObject = GsonHelper.getAsJsonObject(keyframeObject, scaleVec);
                         float x = GsonHelper.getAsFloat(scaleVecObject, "x");
                         float y = GsonHelper.getAsFloat(scaleVecObject, "y");
                         float z = GsonHelper.getAsFloat(scaleVecObject, "z");
-                        keyframes[i] = new Keyframe(timestamp, KeyframeAnimations.scaleVec(x, y, z), this.parseInterpolations(interpolation));
+                        scaleKeyframes.add(new Keyframe(timestamp, KeyframeAnimations.scaleVec(x, y, z), this.parseInterpolations(interpolation)));
                     }
                 }
-                builder.addAnimation(bone, new AnimationChannel(this.parseTarget(target), keyframes));
+                if (!rotationKeyframes.isEmpty()) {
+                    builder.addAnimation(bone, new AnimationChannel(AnimationChannel.Targets.ROTATION, rotationKeyframes.toArray(Keyframe[]::new)));
+                }
+                if (!positionKeyframes.isEmpty()) {
+                    builder.addAnimation(bone, new AnimationChannel(AnimationChannel.Targets.POSITION, positionKeyframes.toArray(Keyframe[]::new)));
+                }
+                if (!scaleKeyframes.isEmpty()) {
+                    builder.addAnimation(bone, new AnimationChannel(AnimationChannel.Targets.SCALE, scaleKeyframes.toArray(Keyframe[]::new)));
+                }
             }
 
             ANIMATIONS.put(id, builder.build());
         } else if (type.equals("built_in")) {
             BUILT_IN_ANIMATIONS.put(id, BuiltInAnimationType.get(id));
-        }
-    }
-
-    private AnimationChannel.Target parseTarget(String in) {
-        if (in == "position") {
-            return AnimationChannel.Targets.POSITION;
-        } else if (in == "scale") {
-            return AnimationChannel.Targets.SCALE;
-        } else {
-            return AnimationChannel.Targets.ROTATION;
         }
     }
 

@@ -11,6 +11,7 @@
             "y": 0.0,
             "z": 2.0
           },
+          "target": "position",
           "timestamp": 0.0
         },
         {
@@ -20,10 +21,10 @@
             "z": 0.0
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.0
         }
-      ],
-      "target": "position"
+      ]
     },
     {
       "bone": "left_leg",
@@ -35,10 +36,10 @@
             "z": 0.0
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.0
         }
-      ],
-      "target": "rotation"
+      ]
     },
     {
       "bone": "right_leg",
@@ -50,10 +51,10 @@
             "z": 0.0
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.0
         }
-      ],
-      "target": "rotation"
+      ]
     },
     {
       "bone": "right_wing",
@@ -65,6 +66,7 @@
             "y": -1.0,
             "z": -3.0
           },
+          "target": "position",
           "timestamp": 0.0
         },
         {
@@ -74,6 +76,7 @@
             "z": 60.000004
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.0
         },
         {
@@ -83,6 +86,7 @@
             "z": 32.5
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.25
         },
         {
@@ -92,25 +96,8 @@
             "z": 87.5
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.75
-        },
-        {
-          "degree_vec": {
-            "x": 0.0,
-            "y": 0.0,
-            "z": 32.5
-          },
-          "interpolation": "linear",
-          "timestamp": 1.25
-        },
-        {
-          "degree_vec": {
-            "x": 0.0,
-            "y": 0.0,
-            "z": 87.5
-          },
-          "interpolation": "linear",
-          "timestamp": 1.75
         },
         {
           "degree_vec": {
@@ -119,10 +106,10 @@
             "z": 60.000004
           },
           "interpolation": "linear",
-          "timestamp": 2.0
+          "target": "rotation",
+          "timestamp": 1.0
         }
-      ],
-      "target": "position"
+      ]
     },
     {
       "bone": "left_wing",
@@ -134,6 +121,7 @@
             "y": -1.0,
             "z": -3.0
           },
+          "target": "position",
           "timestamp": 0.0
         },
         {
@@ -143,6 +131,7 @@
             "z": -60.000004
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.0
         },
         {
@@ -152,6 +141,7 @@
             "z": -32.5
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.25
         },
         {
@@ -161,25 +151,8 @@
             "z": -87.5
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.75
-        },
-        {
-          "degree_vec": {
-            "x": 0.0,
-            "y": 0.0,
-            "z": -32.5
-          },
-          "interpolation": "linear",
-          "timestamp": 1.25
-        },
-        {
-          "degree_vec": {
-            "x": 0.0,
-            "y": 0.0,
-            "z": -87.5
-          },
-          "interpolation": "linear",
-          "timestamp": 1.75
         },
         {
           "degree_vec": {
@@ -188,10 +161,10 @@
             "z": -60.000004
           },
           "interpolation": "linear",
-          "timestamp": 2.0
+          "target": "rotation",
+          "timestamp": 1.0
         }
-      ],
-      "target": "position"
+      ]
     },
     {
       "bone": "neck",
@@ -203,6 +176,7 @@
             "y": -2.0,
             "z": -4.0
           },
+          "target": "position",
           "timestamp": 0.0
         },
         {
@@ -212,10 +186,10 @@
             "z": 0.0
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.0
         }
-      ],
-      "target": "position"
+      ]
     },
     {
       "bone": "body",
@@ -227,10 +201,10 @@
             "z": 0.0
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.0
         }
-      ],
-      "target": "rotation"
+      ]
     },
     {
       "bone": "right_wing_tip",
@@ -242,6 +216,7 @@
             "z": 0.0
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.0
         },
         {
@@ -251,6 +226,7 @@
             "z": 0.0
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.25
         },
         {
@@ -260,25 +236,8 @@
             "z": 0.0
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.75
-        },
-        {
-          "degree_vec": {
-            "x": 0.0,
-            "y": -152.5,
-            "z": 0.0
-          },
-          "interpolation": "linear",
-          "timestamp": 1.25
-        },
-        {
-          "degree_vec": {
-            "x": 0.0,
-            "y": -87.5,
-            "z": 0.0
-          },
-          "interpolation": "linear",
-          "timestamp": 1.75
         },
         {
           "degree_vec": {
@@ -287,10 +246,10 @@
             "z": 0.0
           },
           "interpolation": "linear",
-          "timestamp": 2.0
+          "target": "rotation",
+          "timestamp": 1.0
         }
-      ],
-      "target": "rotation"
+      ]
     },
     {
       "bone": "left_wing_tip",
@@ -302,6 +261,7 @@
             "z": 0.0
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.0
         },
         {
@@ -311,6 +271,7 @@
             "z": 0.0
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.25
         },
         {
@@ -320,25 +281,8 @@
             "z": 0.0
           },
           "interpolation": "linear",
+          "target": "rotation",
           "timestamp": 0.75
-        },
-        {
-          "degree_vec": {
-            "x": 0.0,
-            "y": 152.5,
-            "z": 0.0
-          },
-          "interpolation": "linear",
-          "timestamp": 1.25
-        },
-        {
-          "degree_vec": {
-            "x": 0.0,
-            "y": 87.5,
-            "z": 0.0
-          },
-          "interpolation": "linear",
-          "timestamp": 1.75
         },
         {
           "degree_vec": {
@@ -347,13 +291,13 @@
             "z": 0.0
           },
           "interpolation": "linear",
-          "timestamp": 2.0
+          "target": "rotation",
+          "timestamp": 1.0
         }
-      ],
-      "target": "rotation"
+      ]
     }
   ],
   "id": "fossilslegacy:pteranodon_fly",
-  "length": 2.0,
+  "length": 1.0,
   "looping": true
 }

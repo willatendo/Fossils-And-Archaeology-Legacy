@@ -107,7 +107,7 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
         Optional<AnimationHolder> animationHolder = Optional.empty();
         if (jsonObject.has(varAnimations)) {
             JsonObject animationsObject = GsonHelper.getAsJsonObject(jsonObject, varAnimations);
-            animationHolder = Optional.of(new AnimationHolder(this.parseAnimation(animationsObject, "walk"), this.parseAnimation(animationsObject, "swim"), this.parseAnimation(animationsObject, "fly"), this.parseAnimation(animationsObject, "float_down"), this.parseAnimation(animationsObject, "head"), this.parseAnimation(animationsObject, "shake"), this.parseAnimation(animationsObject, "sit"), this.parseAnimation(animationsObject, "tail")));
+            animationHolder = Optional.of(new AnimationHolder(this.parseAnimation(animationsObject, "walk"), this.parseAnimation(animationsObject, "swim"), this.parseAnimation(animationsObject, "fly"), this.parseAnimation(animationsObject, "float_down"), this.parseAnimation(animationsObject, "head"), this.parseAnimation(animationsObject, "shake"), this.parseAnimation(animationsObject, "sit"), this.parseAnimation(animationsObject, "tail"), this.parseAnimation(animationsObject, "land")));
         }
 
         int textureHeight = GsonHelper.getAsInt(jsonObject, "texture_height");
@@ -191,12 +191,17 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
         }
     }
 
-    private Optional<ResourceLocation> parseAnimation(JsonObject animationsObject, String varIn) {
-        Optional<ResourceLocation> id = Optional.empty();
+    private ResourceLocation[] parseAnimation(JsonObject animationsObject, String varIn) {
+        List<ResourceLocation> animations = Lists.newArrayList();
         if (animationsObject.has(varIn)) {
-            id = Optional.of(this.parse(animationsObject, varIn));
+            if (GsonHelper.isArrayNode(animationsObject, varIn)) {
+                JsonArray animationsArray = GsonHelper.getAsJsonArray(animationsObject, varIn);
+                animationsArray.forEach(jsonElement -> animations.add(ResourceLocation.parse(jsonElement.getAsString())));
+            } else {
+                animations.add(this.parse(animationsObject, varIn));
+            }
         }
-        return id;
+        return animations.isEmpty() ? new ResourceLocation[]{} : animations.toArray(ResourceLocation[]::new);
     }
 
     private ResourceLocation parse(JsonObject jsonObject, String memberName) {
@@ -209,6 +214,41 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
     private record Box(int xOffset, int yOffset, float xOrigin, float yOrigin, float zOrigin, float xDimension, float yDimension, float zDimension, Optional<Boolean> mirror) {
     }
 
-    public record AnimationHolder(Optional<ResourceLocation> walkAnimation, Optional<ResourceLocation> swimAnimation, Optional<ResourceLocation> flyAnimation, Optional<ResourceLocation> floatAnimation, Optional<ResourceLocation> headAnimation, Optional<ResourceLocation> shakeAnimation, Optional<ResourceLocation> sitAnimation, Optional<ResourceLocation> tailAnimation) {
+    public record AnimationHolder(ResourceLocation[] walkAnimation, ResourceLocation[] swimAnimation, ResourceLocation[] flyAnimation, ResourceLocation[] floatAnimation, ResourceLocation[] headAnimation, ResourceLocation[] shakeAnimation, ResourceLocation[] sitAnimation, ResourceLocation[] tailAnimation, ResourceLocation[] landAnimation) {
+        public boolean hasWalkAnimations() {
+            return this.walkAnimation().length > 0;
+        }
+
+        public boolean hasSwimAnimations() {
+            return this.swimAnimation().length > 0;
+        }
+
+        public boolean hasFlyAnimations() {
+            return this.flyAnimation().length > 0;
+        }
+
+        public boolean hasFloatAnimations() {
+            return this.floatAnimation().length > 0;
+        }
+
+        public boolean hasHeadAnimations() {
+            return this.headAnimation().length > 0;
+        }
+
+        public boolean hasShakeAnimations() {
+            return this.shakeAnimation().length > 0;
+        }
+
+        public boolean hasSitAnimations() {
+            return this.sitAnimation().length > 0;
+        }
+
+        public boolean hasTailAnimations() {
+            return this.tailAnimation().length > 0;
+        }
+
+        public boolean hasLandAnimations() {
+            return this.landAnimation().length > 0;
+        }
     }
 }

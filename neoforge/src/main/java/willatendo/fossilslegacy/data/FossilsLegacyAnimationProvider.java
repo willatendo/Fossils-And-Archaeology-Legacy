@@ -36,6 +36,7 @@ public class FossilsLegacyAnimationProvider extends AnimationProvider {
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_CRYOLOPHOSAURUS_WALK);
         this.addBuiltIn(BuiltInAnimationTypes.DILOPHOSAURUS_WALK);
         this.addBuiltIn(BuiltInAnimationTypes.MOSASAURUS_SWIM);
+        this.addBuiltIn(BuiltInAnimationTypes.PTERANODON_BODY_FLY);
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_PTERANODON_HEAD);
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_PTERANODON_WALK);
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_PTERANODON_FLY);
