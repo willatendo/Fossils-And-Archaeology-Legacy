@@ -21,7 +21,7 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.fossilslegacy.legacy.stone_tablet.description"
+      "translate": "advancements.fossilslegacy.legacy.stone_tablet.desc"
     },
     "hidden": true,
     "icon": {

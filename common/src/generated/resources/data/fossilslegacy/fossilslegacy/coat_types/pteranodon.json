@@ -16,7 +16,7 @@
     "display_scale": 0.75,
     "display_y_offset": 0.0,
     "name": {
-      "translate": "fossilVariant.fossilslegacy.pteranodon"
+      "translate": "coat_type.fossilslegacy.pteranodon"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.eastern_indigo_snake"

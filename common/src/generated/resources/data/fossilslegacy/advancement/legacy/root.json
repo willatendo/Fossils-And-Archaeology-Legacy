@@ -8,7 +8,7 @@
     "announce_to_chat": false,
     "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
     "description": {
-      "translate": "advancements.fossilslegacy.legacy.root.description"
+      "translate": "advancements.fossilslegacy.legacy.root.desc"
     },
     "icon": {
       "count": 1,

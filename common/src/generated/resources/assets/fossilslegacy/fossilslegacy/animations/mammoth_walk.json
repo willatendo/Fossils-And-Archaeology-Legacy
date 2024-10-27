@@ -1,4 +1,278 @@
 {
-  "type": "built_in",
-  "id": "fossilslegacy:mammoth_walk"
+  "type": "json",
+  "animations": [
+    {
+      "bone": "right_arm",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": 27.5,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.25
+        },
+        {
+          "degree_vec": {
+            "x": -27.5,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.75
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 1.0
+        }
+      ]
+    },
+    {
+      "bone": "left_leg",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": 27.5,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.25
+        },
+        {
+          "degree_vec": {
+            "x": -27.5,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.75
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 1.0
+        }
+      ]
+    },
+    {
+      "bone": "right_leg",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": -27.5,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.25
+        },
+        {
+          "degree_vec": {
+            "x": 27.5,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.75
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 1.0
+        }
+      ]
+    },
+    {
+      "bone": "left_arm",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": -27.5,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.25
+        },
+        {
+          "degree_vec": {
+            "x": 27.5,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.75
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 1.0
+        }
+      ]
+    },
+    {
+      "bone": "trunk_end",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": 5.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.25
+        },
+        {
+          "degree_vec": {
+            "x": -5.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.75
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 1.0
+        }
+      ]
+    },
+    {
+      "bone": "trunk",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": 2.5,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.25
+        },
+        {
+          "degree_vec": {
+            "x": -2.5,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.75
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 1.0
+        }
+      ]
+    }
+  ],
+  "id": "fossilslegacy:mammoth_walk",
+  "length": 1.0,
+  "looping": true
 }

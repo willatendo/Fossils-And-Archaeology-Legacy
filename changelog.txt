@@ -364,7 +364,7 @@
 - Fixed DataFixer Spam On Fabric
 - Fixed Advancement Typos
 - Fixed Forge Pregnancy Type Registry
-- Fixed Logger Spam While Ridding willatendo.fossilslegacy.client.model.dinosaur.FutabasaurusModel
+- Fixed Logger Spam While Ridding willatendo.fossilslegacy.client.model.dinosaur.FutabasaurusModels
 - Fixed Some Server Issues -> Still Untested And Unsupported
 - Fixed Skeletons Disappearing
 - Fixed Cryolophosaurus Egg Picking Carnotaurus Egg
@@ -373,8 +373,8 @@
 - Fixed Therizinosaurus Egg Not Dropping
 - Fixed Academy Holes Occasionally Creating Illegal Blocks
 - Fixed Analyzer
-- Fixed willatendo.fossilslegacy.client.model.dinosaur.FutabasaurusModel Speed In Water
-- Fixed willatendo.fossilslegacy.client.model.dinosaur.FutabasaurusModel's Rocking Head
+- Fixed willatendo.fossilslegacy.client.model.dinosaur.FutabasaurusModels Speed In Water
+- Fixed willatendo.fossilslegacy.client.model.dinosaur.FutabasaurusModels's Rocking Head
 - Fixed Crash When Using Syringes
 - Fixed Crash With Animals Hunting
 - Fixed Spelling Errors
@@ -559,7 +559,7 @@ Experimental:
 - Added Tyrannosaurus
 - Added Pterandon
 - Added Nautilus
-- Added willatendo.fossilslegacy.client.model.dinosaur.FutabasaurusModel
+- Added willatendo.fossilslegacy.client.model.dinosaur.FutabasaurusModels
 - Added Mosasaurus
 - Added Stegosaurus
 - Added Dilophosaurus

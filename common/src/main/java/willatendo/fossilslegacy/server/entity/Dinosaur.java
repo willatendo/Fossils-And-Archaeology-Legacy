@@ -79,9 +79,7 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
 
     @Override
     protected EntityDimensions getDefaultDimensions(Pose pose) {
-        CoatType coatType = this.getCoatType().value();
-        CoatType.BoundingBoxInfo boundingBoxInfo = coatType.boundingBoxInfo();
-        return this.dimensions = EntityDimensions.scalable(boundingBoxInfo.boundingBoxWidth() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()), boundingBoxInfo.boundingBoxHeight() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()));
+        return this.dimensions = this.getEntityDimensions(this.getGrowthStage());
     }
 
     @Override

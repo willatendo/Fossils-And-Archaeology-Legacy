@@ -8,7 +8,7 @@ import willatendo.fossilslegacy.client.model.AnuModel;
 import willatendo.fossilslegacy.client.model.EggModel;
 import willatendo.fossilslegacy.client.model.FailuresaurusModel;
 import willatendo.fossilslegacy.client.model.TimeMachineClockModel;
-import willatendo.fossilslegacy.client.model.dinosaur.legacy.NautilusModel;
+import willatendo.fossilslegacy.client.model.dinosaur.NautilusModel;
 import willatendo.fossilslegacy.client.render.*;
 import willatendo.fossilslegacy.client.screen.*;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
@@ -93,7 +93,6 @@ public final class FossilsLegacyClient {
         modelRegister.register(FossilsLegacyEntityTypes.FOSSIL.get(), FossilRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.STONE_TABLET.get(), StoneTabletRenderer::new);
 
-        modelRegister.register(FossilsLegacyBlockEntityTypes.PALEONTOLOGY_TABLE.get(), PalaeontologyTableRenderer::new);
         modelRegister.register(FossilsLegacyBlockEntityTypes.TIME_MACHINE.get(), TimeMachineClockRenderer::new);
         modelRegister.register(FossilsLegacyBlockEntityTypes.LEPIDODENDRON_SIGN.get(), SignRenderer::new);
         modelRegister.register(FossilsLegacyBlockEntityTypes.LEPIDODENDRON_HANGING_SIGN.get(), HangingSignRenderer::new);

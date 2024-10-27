@@ -3,7 +3,8 @@ package willatendo.fossilslegacy.client.render;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
-import willatendo.fossilslegacy.client.model.dinosaur.legacy.SmilodonModel;
+import net.minecraft.util.FastColor;
+import willatendo.fossilslegacy.client.model.json.JsonModel;
 import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Smilodon;
 
 public class SmilodonRenderer extends CoatTypeMobRenderer<Smilodon> {
@@ -14,9 +15,11 @@ public class SmilodonRenderer extends CoatTypeMobRenderer<Smilodon> {
     @Override
     public void render(Smilodon smilodon, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
         if (smilodon.isWet()) {
-            float f = smilodon.getWetShade(packedOverlay);
-            if (this.model instanceof SmilodonModel<Smilodon> smilodonModel) {
-                smilodonModel.setColor(f, f, f);
+            float wetShade = smilodon.getWetShade(packedOverlay);
+            if (this.model instanceof JsonModel jsonModel) {
+                if (jsonModel.isColored()) {
+                    jsonModel.setColor(FastColor.ARGB32.colorFromFloat(1.0F, wetShade, wetShade, wetShade));
+                }
             }
         }
 

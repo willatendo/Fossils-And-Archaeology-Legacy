@@ -14,7 +14,7 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.fossilslegacy.legacy.fossil.description"
+      "translate": "advancements.fossilslegacy.legacy.fossil.desc"
     },
     "hidden": true,
     "icon": {

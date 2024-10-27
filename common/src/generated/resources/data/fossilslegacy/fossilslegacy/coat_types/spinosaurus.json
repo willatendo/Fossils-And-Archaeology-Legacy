@@ -16,7 +16,7 @@
     "display_scale": 0.25,
     "display_y_offset": 3.0,
     "name": {
-      "translate": "fossilVariant.fossilslegacy.spinosaurus"
+      "translate": "coat_type.fossilslegacy.spinosaurus"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.marine_iguana"
@@ -26,6 +26,7 @@
     "model": "fossilslegacy:spinosaurus"
   },
   "textures": {
+    "baby_texture": "fossilslegacy:textures/entity/spinosaurus/spinosaurus_baby.png",
     "texture": "fossilslegacy:textures/entity/spinosaurus/spinosaurus_adult.png"
   }
 }

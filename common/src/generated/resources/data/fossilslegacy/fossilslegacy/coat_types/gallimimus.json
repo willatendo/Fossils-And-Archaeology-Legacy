@@ -16,7 +16,7 @@
     "display_scale": 0.4,
     "display_y_offset": 1.5,
     "name": {
-      "translate": "fossilVariant.fossilslegacy.gallimimus"
+      "translate": "coat_type.fossilslegacy.gallimimus"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.broadhead_skink"

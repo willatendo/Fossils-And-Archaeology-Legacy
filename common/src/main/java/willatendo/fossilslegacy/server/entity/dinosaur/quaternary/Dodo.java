@@ -104,10 +104,6 @@ public class Dodo extends Dinosaur implements DinopediaInformation, CoatTypeEnti
 
     @Override
     public void tick() {
-        if (this.dimensions.width() != this.getEntityDimensions(this.getGrowthStage()).width() || this.dimensions.height() != this.getEntityDimensions(this.getGrowthStage()).height()) {
-            this.refreshDimensions();
-        }
-
         if (this.level().isClientSide()) {
             this.fallAnimationState.animateWhen(!this.onGround(), this.tickCount);
         }

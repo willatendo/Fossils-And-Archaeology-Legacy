@@ -4,7 +4,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
-import willatendo.fossilslegacy.client.model.dinosaur.legacy.NautilusModel;
+import willatendo.fossilslegacy.client.model.dinosaur.NautilusModel;
 import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Nautilus;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 

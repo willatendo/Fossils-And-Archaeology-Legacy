@@ -16,7 +16,7 @@
     "display_scale": 0.4,
     "display_y_offset": 0.25,
     "name": {
-      "translate": "fossilVariant.fossilslegacy.legacy_mosasaurus"
+      "translate": "coat_type.fossilslegacy.legacy_mosasaurus"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.marine_iguana"

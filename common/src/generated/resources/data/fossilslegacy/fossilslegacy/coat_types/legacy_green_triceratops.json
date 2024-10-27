@@ -16,7 +16,7 @@
     "display_scale": 0.4,
     "display_y_offset": 0.0,
     "name": {
-      "translate": "fossilVariant.fossilslegacy.legacy_green_triceratops"
+      "translate": "coat_type.fossilslegacy.legacy_green_triceratops"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.green_tree_python"

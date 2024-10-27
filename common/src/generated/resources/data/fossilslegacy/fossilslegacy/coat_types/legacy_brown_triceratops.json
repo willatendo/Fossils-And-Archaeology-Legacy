@@ -16,7 +16,7 @@
     "display_scale": 0.4,
     "display_y_offset": 0.0,
     "name": {
-      "translate": "fossilVariant.fossilslegacy.legacy_brown_triceratops"
+      "translate": "coat_type.fossilslegacy.legacy_brown_triceratops"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.eastern_brown_snake"

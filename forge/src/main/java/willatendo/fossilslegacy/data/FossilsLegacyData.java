@@ -17,7 +17,6 @@ public class FossilsLegacyData {
     public static void gatherDataEvent(GatherDataEvent gatherDataEvent) {
         DataGenerator dataGenerator = gatherDataEvent.getGenerator();
         PackOutput packOutput = dataGenerator.getPackOutput();
-        ExistingFileHelper existingFileHelper = gatherDataEvent.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> registries = gatherDataEvent.getLookupProvider();
 
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyForgeBuiltinProvider(packOutput, registries, FossilsLegacyUtils.ID));

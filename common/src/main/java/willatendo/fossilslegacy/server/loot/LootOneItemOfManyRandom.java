@@ -22,9 +22,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class LootOneItemOfManyRandom extends LootPoolSingletonContainer {
-    public static final MapCodec<LootOneItemOfManyRandom> CODEC = RecordCodecBuilder.mapCodec(instance -> {
-        return instance.group(Codec.INT.fieldOf("max_weight").orElse(100).forGetter(lootOneItemOfManyRandom -> lootOneItemOfManyRandom.maxWeight), Codec.list(ItemAndChance.CODEC).fieldOf("results").forGetter(lootOneItemOfManyRandom -> lootOneItemOfManyRandom.itemAndChances)).and(LootItem.singletonFields(instance)).apply(instance, LootOneItemOfManyRandom::new);
-    });
+    public static final MapCodec<LootOneItemOfManyRandom> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(Codec.INT.fieldOf("max_weight").orElse(100).forGetter(lootOneItemOfManyRandom -> lootOneItemOfManyRandom.maxWeight), Codec.list(ItemAndChance.CODEC).fieldOf("results").forGetter(lootOneItemOfManyRandom -> lootOneItemOfManyRandom.itemAndChances)).and(LootItem.singletonFields(instance)).apply(instance, LootOneItemOfManyRandom::new));
     private final List<ItemAndChance> itemAndChances;
     private final int maxWeight;
 
@@ -58,7 +56,7 @@ public class LootOneItemOfManyRandom extends LootPoolSingletonContainer {
         return LootItem.simpleBuilder((i, j, list, list2) -> new LootOneItemOfManyRandom(maxWeight, SimpleUtils.toList(itemAndChances), i, j, list, list2));
     }
 
-    public static record ItemAndChance(Holder<Item> item, int lowWeight, int highWeight) {
+    public record ItemAndChance(Holder<Item> item, int lowWeight, int highWeight) {
         public ItemAndChance(ItemLike itemLike, int lowWeight, int highWeight) {
             this(itemLike.asItem().builtInRegistryHolder(), lowWeight, highWeight);
         }

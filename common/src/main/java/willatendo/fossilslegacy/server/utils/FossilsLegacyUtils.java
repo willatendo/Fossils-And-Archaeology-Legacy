@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public final class FossilsLegacyUtils {
+    public static final String PERSISTED_NBT_TAG = "PlayerPersisted";
     public static final String ID = "fossilslegacy";
     public static final Logger LOGGER = LoggerFactory.getLogger(FossilsLegacyUtils.ID);
 

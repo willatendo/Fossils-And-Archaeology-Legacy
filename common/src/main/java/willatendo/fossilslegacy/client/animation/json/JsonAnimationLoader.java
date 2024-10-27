@@ -22,7 +22,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.List;
 import java.util.Map;
 
-public class JsonAnimationLoader extends SimpleJsonResourceReloadListener {
+public final class JsonAnimationLoader extends SimpleJsonResourceReloadListener {
     public static final JsonAnimationLoader INSTANCE = new JsonAnimationLoader();
     private static final Map<ResourceLocation, AnimationDefinition> ANIMATIONS = Maps.newHashMap();
     private static final Map<ResourceLocation, BuiltInAnimationType> BUILT_IN_ANIMATIONS = Maps.newHashMap();

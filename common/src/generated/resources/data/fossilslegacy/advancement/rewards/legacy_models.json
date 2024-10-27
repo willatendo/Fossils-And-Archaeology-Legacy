@@ -1,0 +1,25 @@
+{
+  "parent": "fossilslegacy:rewards/root",
+  "criteria": {
+    "killed_anu": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "fossilslegacy:anu"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "requirements": [
+    [
+      "killed_anu"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

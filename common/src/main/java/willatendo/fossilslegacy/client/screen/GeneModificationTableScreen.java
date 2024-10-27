@@ -9,6 +9,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -29,6 +30,7 @@ import org.apache.commons.compress.utils.Lists;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import willatendo.fossilslegacy.client.FossilsLegacyKeys;
+import willatendo.fossilslegacy.client.PlayerUnlockedCoatTypesHelper;
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
@@ -73,6 +75,8 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
         RenderSystem.setShaderTexture(0, TEXTURE);
         guiGraphics.blit(TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
         Slot slot = this.menu.slots.get(0);
+        LocalPlayer localPlayer = Minecraft.getInstance().player;
+        List<Holder<CoatType>> unlockedCoatTypes = PlayerUnlockedCoatTypesHelper.getUnlocked(localPlayer);
         if (slot.hasItem()) {
             ItemStack itemStack = slot.getItem();
             if (itemStack.getItem() instanceof DNAItem dnaItem) {
@@ -83,9 +87,24 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
                 if (applicableCoatTypes != null) {
                     HolderGetter<CoatType> coatTypeHolderGetter = registryAccess.asGetterLookup().lookup(FossilsLegacyRegistries.COAT_TYPES).get();
                     HolderSet.Named<CoatType> namedHolderSet = coatTypeHolderGetter.get(applicableCoatTypes).get();
-                    this.coatTypes = new CoatType[this.size = namedHolderSet.size()];
-                    for (int i = 0; i < this.coatTypes.length; i++) {
-                        this.coatTypes[i] = namedHolderSet.get(i).value();
+                    boolean unlockedAny = false;
+                    for (Holder<CoatType> coatTypeHolder : namedHolderSet) {
+                        if (unlockedCoatTypes.contains(coatTypeHolder)) {
+                            unlockedAny = true;
+                            break;
+                        }
+                    }
+                    if (unlockedAny) {
+                        this.coatTypes = new CoatType[this.size = namedHolderSet.size()];
+                        for (int i = 0; i < this.coatTypes.length; i++) {
+                            Holder<CoatType> coatTypeHolder = namedHolderSet.get(i);
+                            if (unlockedCoatTypes.contains(coatTypeHolder)) {
+                                this.coatTypes[i] = coatTypeHolder.value();
+                            }
+                        }
+                    } else {
+                        this.coatTypes = new CoatType[0];
+                        this.size = 0;
                     }
                 } else {
                     this.coatTypes = new CoatType[0];

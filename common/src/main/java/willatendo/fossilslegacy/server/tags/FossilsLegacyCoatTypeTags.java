@@ -13,6 +13,7 @@ public class FossilsLegacyCoatTypeTags {
     public static final TagKey<CoatType> BRACHIOSAURUS = COAT_TYPE_TAGS.register("brachiosaurus");
     public static final TagKey<CoatType> NON_LEGACY_BRACHIOSAURUS = COAT_TYPE_TAGS.register("non_legacy/brachiosaurus");
     public static final TagKey<CoatType> CARNOTAURUS = COAT_TYPE_TAGS.register("carnotaurus");
+    public static final TagKey<CoatType> NON_LEGACY_CARNOTAURUS = COAT_TYPE_TAGS.register("non_legacy/carnotaurus");
     public static final TagKey<CoatType> COMPSOGNATHUS = COAT_TYPE_TAGS.register("compsognathus");
     public static final TagKey<CoatType> CRYOLOPHOSAURUS = COAT_TYPE_TAGS.register("cryolophosaurus");
     public static final TagKey<CoatType> NON_LEGACY_CRYOLOPHOSAURUS = COAT_TYPE_TAGS.register("non_legacy/cryolophosaurus");
@@ -21,13 +22,16 @@ public class FossilsLegacyCoatTypeTags {
     public static final TagKey<CoatType> FUTABASAURUS = COAT_TYPE_TAGS.register("futabasaurus");
     public static final TagKey<CoatType> NON_LEGACY_FUTABASAURUS = COAT_TYPE_TAGS.register("non_legacy/futabasaurus");
     public static final TagKey<CoatType> GALLIMIMUS = COAT_TYPE_TAGS.register("gallimimus");
+    public static final TagKey<CoatType> LEGACY = COAT_TYPE_TAGS.register("legacy");
     public static final TagKey<CoatType> MAMMOTH = COAT_TYPE_TAGS.register("mammoth");
+    public static final TagKey<CoatType> NON_LEGACY_MAMMOTH = COAT_TYPE_TAGS.register("non_legacy/mammoth");
     public static final TagKey<CoatType> MOA = COAT_TYPE_TAGS.register("moa");
     public static final TagKey<CoatType> MOSASAURUS = COAT_TYPE_TAGS.register("mosasaurus");
     public static final TagKey<CoatType> PACHYCEPHALOSAURUS = COAT_TYPE_TAGS.register("pachycephalosaurus");
     public static final TagKey<CoatType> PTERANODON = COAT_TYPE_TAGS.register("pteranodon");
     public static final TagKey<CoatType> NON_LEGACY_PTERANODON = COAT_TYPE_TAGS.register("non_legacy/pteranodon");
     public static final TagKey<CoatType> SMILODON = COAT_TYPE_TAGS.register("smilodon");
+    public static final TagKey<CoatType> NON_LEGACY_SMILODON = COAT_TYPE_TAGS.register("non_legacy/smilodon");
     public static final TagKey<CoatType> SPINOSAURUS = COAT_TYPE_TAGS.register("spinosaurus");
     public static final TagKey<CoatType> STEGOSAURUS = COAT_TYPE_TAGS.register("stegosaurus");
     public static final TagKey<CoatType> THERIZINOSAURUS = COAT_TYPE_TAGS.register("therizinosaurus");

@@ -16,7 +16,7 @@
     "display_scale": 0.75,
     "display_y_offset": -0.2,
     "name": {
-      "translate": "fossilVariant.fossilslegacy.cryolophosaurus"
+      "translate": "coat_type.fossilslegacy.cryolophosaurus"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.blue_iguana"

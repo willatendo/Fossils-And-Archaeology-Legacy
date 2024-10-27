@@ -37,6 +37,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import willatendo.fossilslegacy.client.PlayerUnlockedCoatTypesHelper;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakerType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakingEntity;
@@ -57,6 +58,14 @@ public class Anu extends Zombie implements SpeakingEntity {
 
     public static AttributeSupplier anuAttributes() {
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 100.0D).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 4.0D).add(Attributes.SPAWN_REINFORCEMENTS_CHANCE, 0.0D).build();
+    }
+
+    @Override
+    public void die(DamageSource damageSource) {
+        if (damageSource.getEntity() instanceof Player player) {
+            PlayerUnlockedCoatTypesHelper.grantAllLegacyCoatTypes(player);
+        }
+        super.die(damageSource);
     }
 
     @Override
@@ -423,7 +432,7 @@ public class Anu extends Zombie implements SpeakingEntity {
         }
     }
 
-    public static enum AnuSpeaker implements SpeakerType<Anu> {
+    public enum AnuSpeaker implements SpeakerType<Anu> {
         GREETINGS("greetings"),
         HAND_ATTACKED("weak_attacked"),
         THREATEN("threating"),
@@ -440,12 +449,12 @@ public class Anu extends Zombie implements SpeakingEntity {
         private Function<Player, Component> message;
         private final String translationKey;
 
-        private AnuSpeaker(Function<Player, Component> message, String translationKey) {
+        AnuSpeaker(Function<Player, Component> message, String translationKey) {
             this.message = message;
             this.translationKey = translationKey;
         }
 
-        private AnuSpeaker(String id) {
+        AnuSpeaker(String id) {
             this(player -> Anu.AnuSpeaker.basicSpeach(id), "entity.fossilslegacy.anu.speech." + id);
         }
 

@@ -14,7 +14,7 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.fossilslegacy.legacy.prehistoric_coin.description"
+      "translate": "advancements.fossilslegacy.legacy.prehistoric_coin.desc"
     },
     "hidden": true,
     "icon": {

@@ -42,15 +42,6 @@ public class Therizinosaurus extends Dinosaur implements DinopediaInformation, C
     }
 
     @Override
-    public void tick() {
-        if (this.dimensions.width() != this.getEntityDimensions(this.getGrowthStage()).width() || this.dimensions.height() != this.getEntityDimensions(this.getGrowthStage()).height()) {
-            this.refreshDimensions();
-        }
-
-        super.tick();
-    }
-
-    @Override
     protected Component getTypeName() {
         return this.getOverridenName(super.getTypeName());
     }

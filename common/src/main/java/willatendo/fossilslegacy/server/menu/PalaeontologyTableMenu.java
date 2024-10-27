@@ -20,7 +20,6 @@ import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
 import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.menu.slot.ResultSlot;
-import willatendo.fossilslegacy.server.tags.FossilsLegacyItemTags;
 
 import java.util.List;
 
@@ -62,11 +61,6 @@ public class PalaeontologyTableMenu extends AbstractContainerMenu {
                     public int getMaxStackSize(ItemStack itemStack) {
                         return 1;
                     }
-
-                    @Override
-                    public boolean mayPlace(ItemStack itemStack) {
-                        return itemStack.is(FossilsLegacyItemTags.MESOZOIC_FOSSIL);
-                    }
                 });
             }
         }
@@ -104,11 +98,6 @@ public class PalaeontologyTableMenu extends AbstractContainerMenu {
             Holder<FossilVariant> fossilVariant = this.selectableFossilVariants.get(id);
             this.selectedFossilVariantIndex.set(id);
             this.setupResultSlot(fossilVariant);
-            this.containerLevelAccess.execute((level, blockPos) -> {
-                RegistryAccess registryAccess = level.registryAccess();
-                Registry<FossilVariant> fossilVariantRegistry = registryAccess.registryOrThrow(FossilsLegacyRegistries.FOSSIL_VARIANTS);
-                FossilsModloaderHelper.INSTANCE.sendApplyFossilVariantPacket(blockPos, fossilVariantRegistry.getKey(fossilVariant.value()).toString());
-            });
             return true;
         } else {
             return false;
@@ -124,13 +113,15 @@ public class PalaeontologyTableMenu extends AbstractContainerMenu {
     }
 
     private void createSelectableFossilVariants() {
-        int fossilCount = 0;
-        for (int i = 0; i < this.inputContainer.getContainerSize(); i++) {
-            if (this.inputContainer.getItem(i).is(FossilsLegacyItemTags.MESOZOIC_FOSSIL)) {
-                fossilCount++;
-            }
-        }
         for (Holder<FossilVariant> fossilVariant : this.fossilVariantGetter.holders().toList()) {
+            int fossilCount = 0;
+            for (int i = 0; i < this.inputContainer.getContainerSize(); i++) {
+                if (this.inputContainer.getItem(i).is(fossilVariant.value().fossilIngredient())) {
+                    fossilCount++;
+                } else if (!this.inputContainer.getItem(i).isEmpty()) {
+                    return;
+                }
+            }
             if (fossilVariant.value().fossilCount() == fossilCount) {
                 if (!this.selectableFossilVariants.contains(fossilVariant)) {
                     this.selectableFossilVariants.add(fossilVariant);

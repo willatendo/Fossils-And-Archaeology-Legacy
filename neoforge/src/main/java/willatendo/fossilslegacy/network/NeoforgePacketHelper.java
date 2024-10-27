@@ -4,9 +4,9 @@ import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 public class NeoforgePacketHelper {
-    public static void handleApplyFossilVariantPacket(ServerboundApplyFossilVariantPacket serverboundApplyFossilVariantPacket, IPayloadContext iPayloadContext) {
+    public static void handleAlertUnlockedCoatTypes(ClientboundAlertUnlockedCoatTypesPacket clientboundAlertUnlockedCoatTypesPacket, IPayloadContext iPayloadContext) {
         iPayloadContext.enqueueWork(() -> {
-            BasicPackets.serverboundApplyFossilVariantPacket(serverboundApplyFossilVariantPacket.blockPos(), serverboundApplyFossilVariantPacket.fossilVariant(), iPayloadContext.player().level());
+            BasicPackets.clientboundAlertUnlockedCoatTypes(clientboundAlertUnlockedCoatTypesPacket.coatTypes(), iPayloadContext.player().level());
         });
     }
 

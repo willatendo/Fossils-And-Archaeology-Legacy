@@ -125,10 +125,6 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
 
     @Override
     public void tick() {
-        if (this.dimensions.width() != this.getEntityDimensions(this.getGrowthStage()).width() || this.dimensions.height() != this.getEntityDimensions(this.getGrowthStage()).height()) {
-            this.refreshDimensions();
-        }
-
         super.tick();
 
         if (this.swingTick > 0) {

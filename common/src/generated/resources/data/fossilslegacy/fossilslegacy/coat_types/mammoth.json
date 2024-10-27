@@ -1,6 +1,6 @@
 {
   "age_scale_info": {
-    "age_scale": 0.625,
+    "age_scale": 0.4,
     "base_scale_height": 1.0,
     "base_scale_width": 1.0,
     "shadow_growth": 0.15,
@@ -16,7 +16,7 @@
     "display_scale": 0.4,
     "display_y_offset": 0.0,
     "name": {
-      "translate": "fossilVariant.fossilslegacy.mammoth"
+      "translate": "coat_type.fossilslegacy.mammoth"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.american_bison"
@@ -26,8 +26,8 @@
     "model": "fossilslegacy:mammoth"
   },
   "textures": {
-    "baby_texture": "fossilslegacy:textures/entity/mammoth/baby_mammoth.png",
+    "baby_texture": "fossilslegacy:textures/entity/mammoth/mammoth_baby.png",
     "sheared_texture": "fossilslegacy:textures/entity/mammoth/sheared_mammoth.png",
-    "texture": "fossilslegacy:textures/entity/mammoth/mammoth.png"
+    "texture": "fossilslegacy:textures/entity/mammoth/mammoth_adult.png"
   }
 }

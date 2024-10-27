@@ -14,7 +14,7 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.fossilslegacy.legacy.ancient_sword_artifact.description"
+      "translate": "advancements.fossilslegacy.legacy.ancient_sword_artifact.desc"
     },
     "hidden": true,
     "icon": {

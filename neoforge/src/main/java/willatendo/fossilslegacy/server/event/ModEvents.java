@@ -27,7 +27,8 @@ public class ModEvents {
     public static void registerPayloadHandlersEvent(RegisterPayloadHandlersEvent event) {
         PayloadRegistrar payloadRegistrar = event.registrar(FossilsLegacyUtils.ID).versioned("1.0.0").optional();
 
-        payloadRegistrar.playToServer(ServerboundApplyFossilVariantPacket.TYPE, ServerboundApplyFossilVariantPacket.STREAM_CODEC, NeoforgePacketHelper::handleApplyFossilVariantPacket);
+        payloadRegistrar.playToClient(ClientboundAlertUnlockedCoatTypesPacket.TYPE, ClientboundAlertUnlockedCoatTypesPacket.STREAM_CODEC, NeoforgePacketHelper::handleAlertUnlockedCoatTypes);
+
         payloadRegistrar.playToServer(ServerboundApplyGenePacket.TYPE, ServerboundApplyGenePacket.STREAM_CODEC, NeoforgePacketHelper::handleApplyGenePacket);
         payloadRegistrar.playToServer(ServerboundSinkPacket.TYPE, ServerboundSinkPacket.STREAM_CODEC, NeoforgePacketHelper::handleSinkPacket);
         payloadRegistrar.playToServer(ServerboundTimeMachineUpdatePacket.TYPE, ServerboundTimeMachineUpdatePacket.STREAM_CODEC, NeoforgePacketHelper::handleTimeMachineUpdatePacket);

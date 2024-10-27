@@ -10,7 +10,7 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.fossilslegacy.legacy.time_machine.description"
+      "translate": "advancements.fossilslegacy.legacy.time_machine.desc"
     },
     "frame": "goal",
     "hidden": true,

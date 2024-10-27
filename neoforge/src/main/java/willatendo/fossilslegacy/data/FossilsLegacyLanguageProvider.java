@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.data;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.Anu;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
@@ -11,12 +10,19 @@ import willatendo.fossilslegacy.server.entity.TamedZombifiedPiglin;
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakerType;
 import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
+import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.genetics.cosmetics.FossilsLegacyCoatTypes;
 import willatendo.fossilslegacy.server.item.FossilsLegacyCreativeModeTabs;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.tags.*;
 import willatendo.simplelibrary.data.SimpleLanguageProvider;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
+    protected final Map<String, String> translations = new TreeMap();
+
     public FossilsLegacyLanguageProvider(PackOutput packOutput, String modId, String local) {
         super(packOutput, modId, local);
     }
@@ -25,53 +31,41 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
     protected void addTranslations() {
         // Advancements
         this.add("advancements.fossilslegacy.legacy.root.title", "The Legacy");
-        this.add("advancements.fossilslegacy.legacy.root.description", "Play the Fossils and Archaeology: Legacy!");
+        this.add("advancements.fossilslegacy.legacy.root.desc", "Play the Fossils and Archaeology: Legacy!");
         this.add("advancements.fossilslegacy.legacy.fossil.title", "Fossils!");
-        this.add("advancements.fossilslegacy.legacy.fossil.description", "Acquire a fossil!");
+        this.add("advancements.fossilslegacy.legacy.fossil.desc", "Acquire a fossil!");
         this.add("advancements.fossilslegacy.legacy.analyzer.title", "Analyzer!");
-        this.add("advancements.fossilslegacy.legacy.analyzer.description", "Acquire an analyzer!");
+        this.add("advancements.fossilslegacy.legacy.analyzer.desc", "Acquire an analyzer!");
         this.add("advancements.fossilslegacy.legacy.relic_scrap.title", "Old News");
-        this.add("advancements.fossilslegacy.legacy.relic_scrap.description", "Acquire a relic scrap!");
+        this.add("advancements.fossilslegacy.legacy.relic_scrap.desc", "Acquire a relic scrap!");
         this.add("advancements.fossilslegacy.legacy.ancient_sword_artifact.title", "Once Feared");
-        this.add("advancements.fossilslegacy.legacy.ancient_sword_artifact.description", "Acquire an ancient sword artifact!");
+        this.add("advancements.fossilslegacy.legacy.ancient_sword_artifact.desc", "Acquire an ancient sword artifact!");
         this.add("advancements.fossilslegacy.legacy.ancient_sword.title", "1.21 Gigawatts!");
-        this.add("advancements.fossilslegacy.legacy.ancient_sword.description", "Repair an ancient sword!");
+        this.add("advancements.fossilslegacy.legacy.ancient_sword.desc", "Repair an ancient sword!");
         this.add("advancements.fossilslegacy.legacy.pigman.title", "From the Dead!");
-        this.add("advancements.fossilslegacy.legacy.pigman.description", "Spawn a piglin!");
+        this.add("advancements.fossilslegacy.legacy.pigman.desc", "Spawn a piglin!");
         this.add("advancements.fossilslegacy.legacy.ancient_helmet_artifact.title", "Black Magic");
-        this.add("advancements.fossilslegacy.legacy.ancient_helmet_artifact.description", "Acquire an ancient helmet artifact!");
+        this.add("advancements.fossilslegacy.legacy.ancient_helmet_artifact.desc", "Acquire an ancient helmet artifact!");
         this.add("advancements.fossilslegacy.legacy.fixed_ancient_armor.title", "Nether Connections");
-        this.add("advancements.fossilslegacy.legacy.fixed_ancient_armor.description", "Repair a piece of ancient armor!");
+        this.add("advancements.fossilslegacy.legacy.fixed_ancient_armor.desc", "Repair a piece of ancient armor!");
         this.add("advancements.fossilslegacy.legacy.decked_out.title", "Decked Out!");
-        this.add("advancements.fossilslegacy.legacy.decked_out.description", "Have a complete set of ancient armor!");
+        this.add("advancements.fossilslegacy.legacy.decked_out.desc", "Have a complete set of ancient armor!");
         this.add("advancements.fossilslegacy.legacy.tamed_pigman.title", "Till Death I'm To Serve You!");
-        this.add("advancements.fossilslegacy.legacy.tamed_pigman.description", "Spawn a tamed piglin!");
+        this.add("advancements.fossilslegacy.legacy.tamed_pigman.desc", "Spawn a tamed piglin!");
         this.add("advancements.fossilslegacy.legacy.archaeology_workbench.title", "An Archaeologist's Table!");
-        this.add("advancements.fossilslegacy.legacy.archaeology_workbench.description", "Make a archaeology workbench!");
+        this.add("advancements.fossilslegacy.legacy.archaeology_workbench.desc", "Make a archaeology workbench!");
         this.add("advancements.fossilslegacy.legacy.stone_tablet.title", "An Old Story");
-        this.add("advancements.fossilslegacy.legacy.stone_tablet.description", "Place a stone tablet!");
+        this.add("advancements.fossilslegacy.legacy.stone_tablet.desc", "Place a stone tablet!");
         this.add("advancements.fossilslegacy.legacy.skull_block.title", "Spooky Skeletons!");
-        this.add("advancements.fossilslegacy.legacy.skull_block.description", "Or...Maybe just their skulls?");
+        this.add("advancements.fossilslegacy.legacy.skull_block.desc", "Or...Maybe just their skulls?");
         this.add("advancements.fossilslegacy.legacy.anu.title", "The Master!");
-        this.add("advancements.fossilslegacy.legacy.anu.description", "Summon Anu, the master of the zombified piglins!");
+        this.add("advancements.fossilslegacy.legacy.anu.desc", "Summon Anu, the master of the zombified piglins!");
         this.add("advancements.fossilslegacy.legacy.prehistoric_coin.title", "Ticket to the Past!");
-        this.add("advancements.fossilslegacy.legacy.prehistoric_coin.description", "Acquire a prehistoric coin!");
+        this.add("advancements.fossilslegacy.legacy.prehistoric_coin.desc", "Acquire a prehistoric coin!");
         this.add("advancements.fossilslegacy.legacy.overworld_coin.title", "Back to the Future!");
-        this.add("advancements.fossilslegacy.legacy.overworld_coin.description", "Acquire an overworld coin!");
+        this.add("advancements.fossilslegacy.legacy.overworld_coin.desc", "Acquire an overworld coin!");
         this.add("advancements.fossilslegacy.legacy.time_machine.title", "Time Traveller!");
-        this.add("advancements.fossilslegacy.legacy.time_machine.description", "Travel to the past (without art theft)!");
-
-        // Cloth-Config
-        this.add("text.autoconfig.fossilslegacy.title", "Fossils and Archaeology Legacy");
-
-        this.add("text.autoconfig.fossilslegacy.category.client", "Client Options");
-        this.add("text.autoconfig.fossilslegacy.option.client.featheredDinosaurs", "Feathered Dinosaurs");
-        this.add("text.autoconfig.fossilslegacy.option.client.legacyModels", "Legacy Models");
-
-        this.add("text.autoconfig.fossilslegacy.category.common", "Common Options");
-        this.add("text.autoconfig.fossilslegacy.option.common.animalsStarve", "Animals Starve");
-        this.add("text.autoconfig.fossilslegacy.option.common.animalsBreakBlocks", "Animals Break Blocks");
-        this.add("text.autoconfig.fossilslegacy.option.common.animalsGrow", "Animals Grow");
+        this.add("advancements.fossilslegacy.legacy.time_machine.desc", "Travel to the past (without art theft)!");
 
         // Blocks
         this.add(FossilsLegacyBlocks.FOSSIL_ORE.get());
@@ -174,6 +168,49 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("biome.fossilslegacy.prehistoric_taiga", "Prehistoric Taiga");
         this.add("biome.fossilslegacy.prehistoric_swamp", "Prehistoric Swamp");
         this.add("biome.fossilslegacy.prehistoric_beach", "Prehistoric Beach");
+
+        // Coat Types
+        this.addCoatType(FossilsLegacyCoatTypes.ANKYLOSAURUS, "Ankylosaurus (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.BRACHIOSAURUS, "Brachiosaurus (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.COMPSOGNATHUS, "Compsognathus (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.CRYOLOPHOSAURUS, "Cryolophosaurus (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.DODO, "Dodo (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.FUTABASAURUS, "Futabasaurus (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.GALLIMIMUS, "Gallimimus (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.MAMMOTH, "Mammoth (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.MOA, "Moa (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.PACHYCEPHALOSAURUS, "Pachycephalosaurus (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.PTERANODON, "Pteranodon (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.SMILODON, "Smilodon 2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.SPINOSAURUS, "Spinosaurus (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.GREEN_TRICERATOPS, "Green Triceratops (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.BROWN_TRICERATOPS, "Brown Triceratops (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.GREEN_VELOCIRAPTOR, "Green Velociraptor (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.SANDY_VELOCIRAPTOR, "Sandy Velociraptor (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.WHITE_VELOCIRAPTOR, "White Velociraptor (2024)");
+
+        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_BRACHIOSAURUS, "Brachiosaurus (2011)");
+        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_GREEN_CARNOTAURUS, "Green Carnotaurus (2011)");
+        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_RED_CARNOTAURUS, "Red Carnotaurus (2011)");
+        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_CRYOLOPHOSAURUS, "Cryolophosaurus (2011)");
+        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_DILOPHOSAURUS, "Dilophosaurus (2011)");
+        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_FUTABASAURUS, "Futabasaurus (2011)");
+        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_MAMMOTH, "Mammoth (2011)");
+        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_MOSASAURUS, "Mosausaurus (2011)");
+        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_PTERANODON, "Pteranodon (2011)");
+        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_SMILODON, "Smilodon (2011)");
+        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_STEGOSAURUS, "Stegosaurus (2011)");
+        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_FEATHERED_THERIZINOSAURUS, "Featherless Therizinosaurus (2011)");
+        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_FEATHERLESS_THERIZINOSAURUS, "Featherless Therizinosaurus (2011)");
+        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_GREEN_TRICERATOPS, "Green Triceratops (2011)");
+        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_BROWN_TRICERATOPS, "Brown Triceratops (2011)");
+        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_TYRANNOSAURUS, "Tyrannosaurus (2011)");
+        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_GREEN_VELOCIRAPTOR, "Green Velociraptor (2011)");
+        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_SANDY_VELOCIRAPTOR, "Sandy Velociraptor (2011)");
+        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_WHITE_VELOCIRAPTOR, "White Velociraptor (2011)");
+
+        this.add("coat_type.toast.title", "New Genetic Material Unlocked");
+        this.add("coat_type.toast.description", "...");
 
         // Coat Types
         this.add("fossilVariant.fossilslegacy.ankylosaurus", "Ankylosaurus (2024)");
@@ -353,21 +390,22 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyEntityTypes.THERIZINOSAURUS.get());
 
         // Fossil Variants
-        this.add(FossilsLegacyFossilVariants.ANKYLOSAURUS, "Ankylosaurus");
-        this.add(FossilsLegacyFossilVariants.BRACHIOSAURUS, "Brachiosaurus");
-        this.add(FossilsLegacyFossilVariants.LEGACY_BRACHIOSAURUS, "Legacy Brachiosaurus");
-        this.add(FossilsLegacyFossilVariants.COMPSOGNATHUS, "Compsognathus");
-        this.add(FossilsLegacyFossilVariants.CRYOLOPHOSAURUS, "Cryolophosaurus");
-        this.add(FossilsLegacyFossilVariants.FUTABASAURUS, "Futabasaurus");
-        this.add(FossilsLegacyFossilVariants.LEGACY_FUTABASAURUS, "Legacy Futabasaurus");
-        this.add(FossilsLegacyFossilVariants.GALLIMIMUS, "Gallimimus");
-        this.add(FossilsLegacyFossilVariants.PACHYCEPHALOSAURUS, "Pachycephalosaurus");
-        this.add(FossilsLegacyFossilVariants.PTERANODON, "Pteranodon");
-        this.add(FossilsLegacyFossilVariants.LEGACY_PTERANODON, "Legacy Pteranodon");
-        this.add(FossilsLegacyFossilVariants.SPINOSAURUS, "Spinosaurus");
-        this.add(FossilsLegacyFossilVariants.TRICERATOPS, "Triceratops");
-        this.add(FossilsLegacyFossilVariants.LEGACY_TRICERATOPS, "Legacy Triceratops");
-        this.add(FossilsLegacyFossilVariants.VELOCIRAPTOR, "Velociraptor");
+        this.addFossilVariant(FossilsLegacyFossilVariants.ANKYLOSAURUS, "Ankylosaurus");
+        this.addFossilVariant(FossilsLegacyFossilVariants.BRACHIOSAURUS, "Brachiosaurus");
+        this.addFossilVariant(FossilsLegacyFossilVariants.LEGACY_BRACHIOSAURUS, "Legacy Brachiosaurus");
+        this.addFossilVariant(FossilsLegacyFossilVariants.CARNOTAURUS, "Carnotaurus");
+        this.addFossilVariant(FossilsLegacyFossilVariants.COMPSOGNATHUS, "Compsognathus");
+        this.addFossilVariant(FossilsLegacyFossilVariants.CRYOLOPHOSAURUS, "Cryolophosaurus");
+        this.addFossilVariant(FossilsLegacyFossilVariants.FUTABASAURUS, "Futabasaurus");
+        this.addFossilVariant(FossilsLegacyFossilVariants.LEGACY_FUTABASAURUS, "Legacy Futabasaurus");
+        this.addFossilVariant(FossilsLegacyFossilVariants.GALLIMIMUS, "Gallimimus");
+        this.addFossilVariant(FossilsLegacyFossilVariants.PACHYCEPHALOSAURUS, "Pachycephalosaurus");
+        this.addFossilVariant(FossilsLegacyFossilVariants.PTERANODON, "Pteranodon");
+        this.addFossilVariant(FossilsLegacyFossilVariants.LEGACY_PTERANODON, "Legacy Pteranodon");
+        this.addFossilVariant(FossilsLegacyFossilVariants.SPINOSAURUS, "Spinosaurus");
+        this.addFossilVariant(FossilsLegacyFossilVariants.TRICERATOPS, "Triceratops");
+        this.addFossilVariant(FossilsLegacyFossilVariants.LEGACY_TRICERATOPS, "Legacy Triceratops");
+        this.addFossilVariant(FossilsLegacyFossilVariants.VELOCIRAPTOR, "Velociraptor");
 
         // JEI
         this.add("gui.jei.category.registry.coat_types", "Coat Types");
@@ -530,6 +568,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.articulated_fossil.ankylosaurus", "Articulated Ankylosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.brachiosaurus", "Articulated Brachiosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.legacy_brachiosaurus", "Articulated Legacy Brachiosaurus Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.carnotaurus", "Articulated Carnotaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.compsognathus", "Articulated Compsognathus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.cryolophosaurus", "Articulated Cryolophosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.futabasaurus", "Articulated Futabasaurus Fossil");
@@ -819,11 +858,13 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyCoatTypeTags.GALLIMIMUS, "Gallimimus");
         this.add(FossilsLegacyCoatTypeTags.MOA, "Moa");
         this.add(FossilsLegacyCoatTypeTags.MAMMOTH, "Mammoth");
+        this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_MAMMOTH, "Non-Legacy Mammoth");
         this.add(FossilsLegacyCoatTypeTags.MOSASAURUS, "Mosasaurus");
         this.add(FossilsLegacyCoatTypeTags.PACHYCEPHALOSAURUS, "Pachycephalosaurus");
         this.add(FossilsLegacyCoatTypeTags.PTERANODON, "Pteranodon");
         this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_PTERANODON, "Non-Legacy Pteranodon");
         this.add(FossilsLegacyCoatTypeTags.SMILODON, "Smilodon");
+        this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_SMILODON, "Non-Legacy Smilodon");
         this.add(FossilsLegacyCoatTypeTags.SPINOSAURUS, "Spinosaurus");
         this.add(FossilsLegacyCoatTypeTags.STEGOSAURUS, "Stegosaurus");
         this.add(FossilsLegacyCoatTypeTags.THERIZINOSAURUS, "Therizinosaurus");
@@ -881,8 +922,19 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(speakerType.getTranslationKey(), translation);
     }
 
-    public void add(ResourceKey<FossilVariant> fossilVariantResourceKey, String translation) {
-        ResourceLocation id = fossilVariantResourceKey.location();
-        this.add("fossil_variant." + id.getNamespace() + "." + id.getPath(), translation);
+    public void addFossilVariant(ResourceKey<FossilVariant> fossilVariantResourceKey, String translation) {
+        this.add(fossilVariantResourceKey.location().toLanguageKey("fossil_variant"), translation);
+    }
+
+    public void addCoatType(ResourceKey<CoatType> coatTypeResourceKey, String translation) {
+        this.add(coatTypeResourceKey.location().toLanguageKey("coat_type"), translation);
+    }
+
+    @Override
+    public void add(String key, String value) {
+        super.add(key, value);
+        if (this.translations.put(key, value) != null) {
+            throw new IllegalStateException("Duplicate translation key " + key);
+        }
     }
 }

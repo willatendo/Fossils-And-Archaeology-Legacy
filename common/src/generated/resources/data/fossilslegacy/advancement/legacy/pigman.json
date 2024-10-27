@@ -7,7 +7,7 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.fossilslegacy.legacy.pigman.description"
+      "translate": "advancements.fossilslegacy.legacy.pigman.desc"
     },
     "hidden": true,
     "icon": {

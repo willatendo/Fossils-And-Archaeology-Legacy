@@ -44,7 +44,7 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.fossilslegacy.legacy.fixed_ancient_armor.description"
+      "translate": "advancements.fossilslegacy.legacy.fixed_ancient_armor.desc"
     },
     "hidden": true,
     "icon": {

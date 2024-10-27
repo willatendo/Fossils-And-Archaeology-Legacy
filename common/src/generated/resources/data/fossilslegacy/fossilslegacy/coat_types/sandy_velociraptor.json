@@ -16,7 +16,7 @@
     "display_scale": 1.5,
     "display_y_offset": -0.75,
     "name": {
-      "translate": "fossilVariant.fossilslegacy.sandy_velociraptor"
+      "translate": "coat_type.fossilslegacy.sandy_velociraptor"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.eastern_brown_snake"
@@ -26,7 +26,7 @@
     "model": "fossilslegacy:velociraptor"
   },
   "textures": {
-    "baby_texture": "fossilslegacy:textures/entity/velociraptor/sandy_baby_velociraptor.png",
-    "texture": "fossilslegacy:textures/entity/velociraptor/sandy_velociraptor.png"
+    "baby_texture": "fossilslegacy:textures/entity/velociraptor/sandy_velociraptor_baby.png",
+    "texture": "fossilslegacy:textures/entity/velociraptor/sandy_velociraptor_adult.png"
   }
 }

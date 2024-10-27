@@ -16,7 +16,7 @@
     "display_scale": 1.0,
     "display_y_offset": -0.75,
     "name": {
-      "translate": "fossilVariant.fossilslegacy.legacy_white_velociraptor"
+      "translate": "coat_type.fossilslegacy.legacy_white_velociraptor"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.gray_ratsnake"
@@ -26,7 +26,7 @@
     "model": "fossilslegacy:legacy_velociraptor"
   },
   "textures": {
-    "baby_texture": "fossilslegacy:textures/entity/velociraptor/legacy/white_baby_velociraptor.png",
-    "texture": "fossilslegacy:textures/entity/velociraptor/legacy/white_velociraptor.png"
+    "baby_texture": "fossilslegacy:textures/entity/velociraptor/legacy/white_velociraptor_baby.png",
+    "texture": "fossilslegacy:textures/entity/velociraptor/legacy/white_velociraptor_adult.png"
   }
 }

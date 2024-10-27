@@ -3,31 +3,8 @@ package willatendo.fossilslegacy.client.animation;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.client.model.json.JsonModel;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
-import willatendo.fossilslegacy.server.entity.util.interfaces.FlyingDinosaur;
-import willatendo.fossilslegacy.server.entity.util.interfaces.ShakingEntity;
 
 public final class AnimationUtils {
-    protected static void legacyBrachiosaurusWalkAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        jsonModel.setXRot("front_left_thigh", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("front_left_calf", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("front_right_thigh", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("front_right_calf", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("back_left_thigh", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("back_left_calf", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("back_right_thigh", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("back_right_calf", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
-    }
-
-    protected static void carnotaurusWalkAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        jsonModel.setXRot("right_thigh", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("left_thigh", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount);
-    }
-
-    protected static void cryolophosaurusWalkAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        jsonModel.setXRot("right_thigh", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("left_thigh", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount);
-    }
-
     protected static void dilophosaurusWalkAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
         jsonModel.setXRot("right_thigh", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
         jsonModel.setXRot("left_leg", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount - 0.372F);
@@ -48,69 +25,6 @@ public final class AnimationUtils {
         jsonModel.setYRot("left_back_flipper", (float) (Mth.cos(limbSwing / (1.919107651F * 3)) * 0.174532925199433 * limbSwingAmount + 0.872664625997165));
         jsonModel.setYRot("tail_3_spike", (float) (Mth.cos(limbSwing / (1.919107651F * 1)) * 0.174532925199433 * limbSwingAmount + 0));
         jsonModel.setYRot("tail_2_spike", (float) (Mth.cos(limbSwing / (1.919107651F * 1)) * -0.174532925199433 * limbSwingAmount + 0));
-    }
-
-    protected static void pteranodonFlyingAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        if (dinosaur instanceof FlyingDinosaur flyingDinosaur) {
-            if (flyingDinosaur.shouldFly() && !flyingDinosaur.shouldLand()) {
-                float airPitch = (float) -(flyingDinosaur.getAirPitch() * (Math.PI / 180.0F));
-                float airAngle = (float) -(flyingDinosaur.getAirAngle() * (Math.PI / 180.0F));
-
-                jsonModel.setPos("root", 0, 4, 3);
-                jsonModel.setXRot("root", airPitch);
-                jsonModel.setZRot("root", airAngle);
-            }
-        }
-    }
-
-    protected static void legacyPteranodonFlyingAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        if (dinosaur instanceof FlyingDinosaur flyingDinosaur) {
-            float airPitch = (float) -(flyingDinosaur.getAirPitch() * (Math.PI / 180.0F));
-            float airAngle = (float) -(flyingDinosaur.getAirAngle() * (Math.PI / 180.0F));
-
-            jsonModel.setXRot("left_wing_1", -1.570796F + airPitch);
-            jsonModel.setXRot("left_wing_1", -1.570796F + airPitch);
-            jsonModel.setXRot("left_wing_2", 1.570796F + airPitch);
-            jsonModel.setXRot("right_wing_1", 1.570796F - airPitch);
-            jsonModel.setXRot("right_wing_2", -1.570796F - airPitch);
-            jsonModel.setXRot("body", 1.570796F + airPitch);
-            jsonModel.setXRot("neck_1", 1.570796F + airPitch);
-            jsonModel.setXRot("neck_2", 1.570796F + airPitch);
-            jsonModel.setXRot("tail", 1.570796F + airPitch);
-            jsonModel.setXRot("crown", 0.4859298F + airPitch);
-            jsonModel.setXRot("head", 1.570796F + airPitch);
-            jsonModel.setXRot("upper_mouth", airPitch);
-            jsonModel.setXRot("lower_mouth", 0.1356083F + airPitch);
-            jsonModel.setXRot("left_leg", 1.570796F + airPitch);
-            jsonModel.setXRot("right_leg", 1.570796F + airPitch);
-
-            jsonModel.setZRot("body", airAngle);
-            jsonModel.setZRot("neck_1", airAngle);
-            jsonModel.setZRot("neck_2", airAngle);
-            jsonModel.setZRot("left_wing_1", 2.792527F + airAngle);
-            jsonModel.setZRot("left_wing_2", airAngle);
-            jsonModel.setZRot("right_wing_1", -2.792527F + airAngle);
-            jsonModel.setZRot("right_wing_2", airAngle);
-            jsonModel.setZRot("tail", airAngle);
-            jsonModel.setZRot("crown", airAngle);
-            jsonModel.setZRot("head", airAngle);
-            jsonModel.setZRot("upper_mouth", airAngle);
-            jsonModel.setZRot("lower_mouth", airAngle);
-            jsonModel.setZRot("left_leg", airAngle);
-            jsonModel.setZRot("right_leg", airAngle);
-        }
-    }
-
-    protected static void legacyPteranodonHeadAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        jsonModel.setYRot("crown", -netHeadYaw / 57.29578F);
-        jsonModel.setYRot("upper_mouth", -netHeadYaw / 57.29578F);
-        jsonModel.setYRot("lower_mouth", -netHeadYaw / 57.29578F);
-        jsonModel.setYRot("head", -netHeadYaw / 57.29578F);
-    }
-
-    protected static void legacyPteranodonWalkAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        jsonModel.setXRot("right_leg", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount - 0.271F);
-        jsonModel.setXRot("left_leg", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount - 0.271F);
     }
 
     protected static void stegosaurusWalkAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
@@ -141,28 +55,6 @@ public final class AnimationUtils {
         jsonModel.setXRot("left_thigh", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount);
     }
 
-    protected static void legacyTriceratopsWalkAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        jsonModel.setYRot("lower_body", Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.174532925199433F * limbSwingAmount);
-        jsonModel.setYRot("back", Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.261799387799149F * limbSwingAmount);
-        jsonModel.setYRot("tail", Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.349065850398866F * limbSwingAmount);
-        jsonModel.setXRot("right_front_thigh", Mth.cos(limbSwing / (1.919107651F * 0.5F)) * -0.174532925199433F * limbSwingAmount);
-        jsonModel.setYRot("right_front_thigh", Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.0872664625997165F * limbSwingAmount);
-        jsonModel.setXRot("right_front_leg", Mth.cos(limbSwing / (1.919107651F * 0.5F)) * -0.174532925199433F * limbSwingAmount + 0.994460983870151F);
-        jsonModel.setYRot("right_front_leg", Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.0872664625997165F * limbSwingAmount);
-        jsonModel.setXRot("left_front_thigh", Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.174532925199433F * limbSwingAmount);
-        jsonModel.setYRot("left_front_thigh", Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.0872664625997165F * limbSwingAmount);
-        jsonModel.setXRot("left_front_leg", Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.174532925199433F * limbSwingAmount + 0.994460983870151F);
-        jsonModel.setYRot("left_front_leg", Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.0872664625997165F * limbSwingAmount);
-        jsonModel.setXRot("right_back_thigh", Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.174532925199433F * limbSwingAmount);
-        jsonModel.setYRot("right_back_thigh", Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.0872664625997165F * limbSwingAmount);
-        jsonModel.setXRot("right_back_leg", Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.174532925199433F * limbSwingAmount + 0.994460983870151F);
-        jsonModel.setYRot("right_back_leg", Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.0872664625997165F * limbSwingAmount);
-        jsonModel.setXRot("left_back_thigh", Mth.cos(limbSwing / (1.919107651F * 0.5F)) * -0.174532925199433F * limbSwingAmount);
-        jsonModel.setYRot("left_back_thigh", Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.0872664625997165F * limbSwingAmount);
-        jsonModel.setXRot("left_back_leg", Mth.cos(limbSwing / (1.919107651F * 0.5F)) * -0.174532925199433F * limbSwingAmount + 0.994460983870151F);
-        jsonModel.setYRot("left_back_leg", Mth.cos(limbSwing / (1.919107651F * 0.5F)) * 0.0872664625997165F * limbSwingAmount);
-    }
-
     protected static void tyrannosaurusHeadAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
         jsonModel.setYRot("head", -netHeadYaw / 57.29578F);
         jsonModel.setYRot("snout", -netHeadYaw / 57.29578F);
@@ -184,91 +76,6 @@ public final class AnimationUtils {
     }
 
     protected static void tyrannosaurusWalkModelPrep(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float partialTick) {
-    }
-
-    protected static void legacyVelociraptorWalkAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        jsonModel.setXRot("left_thigh", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("right_leg", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount + 0.9948377F);
-        jsonModel.setXRot("right_foot", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("right_hook_1", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount - 0.8726646F);
-        jsonModel.setXRot("right_hook_2", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount - 2.617994F);
-        jsonModel.setXRot("right_thigh", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("left_leg", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount + 0.9948377F);
-        jsonModel.setXRot("left_foot", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("left_hook_1", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount - 0.8726646F);
-        jsonModel.setXRot("left_hook_2", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount - 2.617994F);
-        jsonModel.setXRot("right_bicep", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("right_hand", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount + 0.994461F);
-        jsonModel.setXRot("left_bicep", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("left_hand", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount + 0.994461F);
-    }
-
-    protected static void mammothWalkAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        jsonModel.setXRot("right_arm", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("left_arm", Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("right_leg", Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("left_leg", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("nose_top", -0.1897142F);
-        jsonModel.setXRot("nose_bottom", -0.5986789F);
-    }
-
-    protected static void smilodonShakeModelPrep(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float partialTick) {
-        if (dinosaur instanceof ShakingEntity shakingEntity) {
-            float headAngle = shakingEntity.getHeadRollAngle(partialTick) + shakingEntity.getBodyRollAngle(partialTick, 0.0F);
-            jsonModel.setZRot("head", headAngle);
-            jsonModel.setZRot("right_ear", headAngle);
-            jsonModel.setZRot("left_ear", headAngle);
-            jsonModel.setZRot("left_tooth_bottom", headAngle);
-            jsonModel.setZRot("left_tooth_top", headAngle);
-            jsonModel.setZRot("right_tooth_bottom", headAngle);
-            jsonModel.setZRot("right_tooth_top", headAngle);
-            jsonModel.setZRot("snout", headAngle);
-            jsonModel.setZRot("jaw", headAngle);
-            jsonModel.setZRot("nose", headAngle);
-            jsonModel.setZRot("body", shakingEntity.getBodyRollAngle(partialTick, -0.08F));
-            jsonModel.setZRot("back", shakingEntity.getBodyRollAngle(partialTick, -0.16F));
-            jsonModel.setZRot("tail", shakingEntity.getBodyRollAngle(partialTick, -0.2F));
-        }
-    }
-
-    protected static void smilodonSitModelPrep(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        if (dinosaur.isOrderedToSit()) {
-            jsonModel.setPos("body", 0.0F, 17.0F, 0.0F);
-            jsonModel.setXRot("body", -0.314F);
-            jsonModel.setYRot("body", 0.0F);
-            jsonModel.setPos("back", 0.0F, 20.0F, -1.0F);
-            jsonModel.setXRot("back", -0.7853982F);
-            jsonModel.setPos("tail", 0.0F, 23.0F, 4.5F);
-            jsonModel.setPos("left_front_leg", -1.5F, 25.0F, 1.0F);
-            jsonModel.setXRot("left_front_leg", 4.712389F);
-            jsonModel.setPos("left_back_leg", 1.5F, 25.0F, 1.0F);
-            jsonModel.setXRot("left_back_leg", 4.712389F);
-            jsonModel.setXRot("right_front_leg", 5.811947F);
-            jsonModel.setPos("right_front_leg", -1.5F, 20.0F, -2.0F);
-            jsonModel.setXRot("right_back_leg", 5.811947F);
-            jsonModel.setPos("right_back_leg", 1.5F, 20.0F, -2.0F);
-        }
-    }
-
-    protected static void smilodonTailAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        jsonModel.setYRot("tail", Mth.cos(limbSwing * 0.6662f) * 1.4F * limbSwingAmount);
-    }
-
-    protected static void smilodonWalkAnimation(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        jsonModel.setPos("body", 0.0F, 15.0F, 0.0F);
-        jsonModel.setPos("back", 0.0F, 16.0F, 1.0F);
-        jsonModel.setXRot("back", 0.0F);
-        jsonModel.setXRot("body", 0.0F);
-
-        jsonModel.setPos("tail", 0.0F, 14.0F, 6.5F);
-        jsonModel.setPos("left_front_leg", -1.5F, 19.0F, 6.0F);
-        jsonModel.setPos("left_back_leg", 1.5F, 19.0F, 6.0F);
-        jsonModel.setPos("right_front_leg", -1.5F, 19.0F, -2.0F);
-        jsonModel.setPos("right_back_leg", 1.5F, 19.0F, -2.0F);
-        jsonModel.setXRot("left_front_leg", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("left_back_leg", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("right_front_leg", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("right_back_leg", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
     }
 
     private static void tyrannosaurusRunPose(JsonModel jsonModel) {

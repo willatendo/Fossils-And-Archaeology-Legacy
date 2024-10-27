@@ -16,7 +16,7 @@
     "display_scale": 0.7,
     "display_y_offset": 0.0,
     "name": {
-      "translate": "fossilVariant.fossilslegacy.pachycephalosaurus"
+      "translate": "coat_type.fossilslegacy.pachycephalosaurus"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.broadhead_skink"
@@ -26,7 +26,7 @@
     "model": "fossilslegacy:pachycephalosaurus"
   },
   "textures": {
-    "baby_texture": "fossilslegacy:textures/entity/pachycephalosaurus/baby_pachycephalosaurus.png",
-    "texture": "fossilslegacy:textures/entity/pachycephalosaurus/pachycephalosaurus.png"
+    "baby_texture": "fossilslegacy:textures/entity/pachycephalosaurus/pachycephalosaurus_baby.png",
+    "texture": "fossilslegacy:textures/entity/pachycephalosaurus/pachycephalosaurus_adult.png"
   }
 }

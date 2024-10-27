@@ -8,9 +8,8 @@ import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import willatendo.fossilslegacy.api.client.BuiltInAnimationType;
-import willatendo.fossilslegacy.client.animation.BuiltInAnimationTypes;
 import willatendo.fossilslegacy.client.animation.json.JsonAnimationLoader;
-import willatendo.fossilslegacy.client.model.dinosaur.base.DinosaurModel;
+import willatendo.fossilslegacy.client.model.dinosaur.DinosaurModel;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.util.interfaces.FloatDownEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.FlyingDinosaur;
@@ -31,6 +30,10 @@ public class JsonModel<T extends Entity> extends DinosaurModel<T> {
         this.headPieces = JsonModelLoader.getHeadPieces(id, root);
         this.loadedParts = new LoadedParts(JsonModelLoader.getLoadParts(id), root);
         this.colored = colored;
+    }
+
+    public boolean isColored() {
+        return this.colored;
     }
 
     public void setColor(int color) {

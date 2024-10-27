@@ -1,13 +1,13 @@
 {
   "age_scale_info": {
     "age_scale": 0.14285715,
-    "base_scale_height": 1.0,
-    "base_scale_width": 1.0,
+    "base_scale_height": 0.8,
+    "base_scale_width": 0.8,
     "shadow_growth": 0.05,
     "shadow_size": 0.5
   },
   "bounding_box_info": {
-    "bounding_box_growth": 0.05,
+    "bounding_box_growth": 0.1,
     "bounding_box_height": 0.75,
     "bounding_box_width": 0.75
   },
@@ -16,7 +16,7 @@
     "display_scale": 1.0,
     "display_y_offset": -0.5,
     "name": {
-      "translate": "fossilVariant.fossilslegacy.smilodon"
+      "translate": "coat_type.fossilslegacy.smilodon"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.tiger"
@@ -26,7 +26,7 @@
     "model": "fossilslegacy:smilodon"
   },
   "textures": {
-    "baby_texture": "fossilslegacy:textures/entity/smilodon/baby_smilodon.png",
-    "texture": "fossilslegacy:textures/entity/smilodon/smilodon.png"
+    "baby_texture": "fossilslegacy:textures/entity/smilodon/smilodon_baby.png",
+    "texture": "fossilslegacy:textures/entity/smilodon/smilodon_adult.png"
   }
 }
