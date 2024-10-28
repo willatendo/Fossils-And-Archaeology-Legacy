@@ -1,6 +1,6 @@
 {
   "animations": {
-    "walk": "fossilslegacy:stegosaurus_walk"
+    "walk": "fossilslegacy:legacy_stegosaurus_walk"
   },
   "elements": [
     {

@@ -1,9 +1,6 @@
 package willatendo.fossilslegacy.server.block.entity;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.NonNullList;
+import net.minecraft.core.*;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.ContainerHelper;
@@ -20,10 +17,10 @@ import willatendo.fossilslegacy.server.menu.GeneModificationTableMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class GeneModificationTableBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, StackedContentsCompatible {
-    private static final int[] SLOTS_FOR_UP = new int[]{0};
-    private static final int[] SLOTS_FOR_DOWN = new int[]{1};
-    private static final int[] SLOTS_FOR_SIDES = SLOTS_FOR_UP;
-    protected NonNullList<ItemStack> itemStacks = NonNullList.withSize(2, ItemStack.EMPTY);
+    private static final int[] SLOTS_FOR_UP = {0};
+    private static final int[] SLOTS_FOR_DOWN = {1};
+    private static final int[] SLOTS_FOR_SIDES = {2, 3, 4};
+    protected NonNullList<ItemStack> itemStacks = NonNullList.withSize(5, ItemStack.EMPTY);
 
     public GeneModificationTableBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(FossilsLegacyBlockEntityTypes.GENE_MODIFICATION_TABLE.get(), blockPos, blockState);

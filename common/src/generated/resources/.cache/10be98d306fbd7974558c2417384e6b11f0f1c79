@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-23T21:53:23.1051708	Item Models: fossilslegacy
+// 1.21.1	2024-10-27T15:17:11.5105949	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 1f02e6db84914fc2677089f5e420f925ba109484 assets/fossilslegacy/models/item/ancient_axe.json
 e6aea94981911965db91c7f52bfa4555de4d4182 assets/fossilslegacy/models/item/ancient_axe_artifact.json
@@ -189,6 +189,7 @@ f30c5b45dc420042b9e1f02a40ece73cf79ff3c8 assets/fossilslegacy/models/item/incuba
 af856b5ca7c3419f2ed44336db2cab4db0e1c970 assets/fossilslegacy/models/item/iron_javelin.json
 331458055b6b1bea96500d4333d8916ad6c932fb assets/fossilslegacy/models/item/jurassic_fern.json
 414f64f70498022da0a80f12b50b1e39b177161a assets/fossilslegacy/models/item/jurassic_fern_spores.json
+24de29905f62919d8471dbb478e87da773977d36 assets/fossilslegacy/models/item/legacy_genetic_code.json
 4576e3ab7f7d389e306ecff0188b7db8363c8b3c assets/fossilslegacy/models/item/lepidodendron_boat.json
 87175ff4865d0a9f7b2966d300c20a3ff0ef4650 assets/fossilslegacy/models/item/lepidodendron_button.json
 3d2d9611fddd7b2f73d7c68f2a54e8981a802a6a assets/fossilslegacy/models/item/lepidodendron_chest_boat.json

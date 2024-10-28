@@ -177,14 +177,17 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.addCoatType(FossilsLegacyCoatTypes.DODO, "Dodo (2024)");
         this.addCoatType(FossilsLegacyCoatTypes.FUTABASAURUS, "Futabasaurus (2024)");
         this.addCoatType(FossilsLegacyCoatTypes.GALLIMIMUS, "Gallimimus (2024)");
-        this.addCoatType(FossilsLegacyCoatTypes.MAMMOTH, "Mammoth (2024)");
         this.addCoatType(FossilsLegacyCoatTypes.MOA, "Moa (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.MAMMOTH, "Mammoth (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.MOSASAURUS, "Mosasaurus (2024)");
         this.addCoatType(FossilsLegacyCoatTypes.PACHYCEPHALOSAURUS, "Pachycephalosaurus (2024)");
         this.addCoatType(FossilsLegacyCoatTypes.PTERANODON, "Pteranodon (2024)");
         this.addCoatType(FossilsLegacyCoatTypes.SMILODON, "Smilodon 2024)");
         this.addCoatType(FossilsLegacyCoatTypes.SPINOSAURUS, "Spinosaurus (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.STEGOSAURUS, "Stegosaurus (2024)");
         this.addCoatType(FossilsLegacyCoatTypes.GREEN_TRICERATOPS, "Green Triceratops (2024)");
         this.addCoatType(FossilsLegacyCoatTypes.BROWN_TRICERATOPS, "Brown Triceratops (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.TYRANNOSAURUS, "Tyrannosaurus (2024)");
         this.addCoatType(FossilsLegacyCoatTypes.GREEN_VELOCIRAPTOR, "Green Velociraptor (2024)");
         this.addCoatType(FossilsLegacyCoatTypes.SANDY_VELOCIRAPTOR, "Sandy Velociraptor (2024)");
         this.addCoatType(FossilsLegacyCoatTypes.WHITE_VELOCIRAPTOR, "White Velociraptor (2024)");
@@ -262,6 +265,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("container.fossilslegacy.gene_modification_table.apply_gene.tutorial", "Use '%s' to apply gene.");
         this.add("container.fossilslegacy.gene_modification_table.coat_type.location", "%s/%s");
         this.add("container.fossilslegacy.gene_modification_table.coat_type.none", "N/A");
+        this.add("container.fossilslegacy.gene_modification_table.coat_type.no_genome_applicable", "No Applicable Genome");
         this.add("container.fossilslegacy.gene_modification_table.insert_dna", "Insert DNA");
         this.add("container.fossilslegacy.gene_modification_table.navigate_left.tutorial", "Use '%s' to navigate left.");
         this.add("container.fossilslegacy.gene_modification_table.navigate_right.tutorial", "Use '%s' to navigate right.");
@@ -403,6 +407,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.addFossilVariant(FossilsLegacyFossilVariants.PTERANODON, "Pteranodon");
         this.addFossilVariant(FossilsLegacyFossilVariants.LEGACY_PTERANODON, "Legacy Pteranodon");
         this.addFossilVariant(FossilsLegacyFossilVariants.SPINOSAURUS, "Spinosaurus");
+        this.addFossilVariant(FossilsLegacyFossilVariants.STEGOSAURUS, "Stegosaurus");
         this.addFossilVariant(FossilsLegacyFossilVariants.TRICERATOPS, "Triceratops");
         this.addFossilVariant(FossilsLegacyFossilVariants.LEGACY_TRICERATOPS, "Legacy Triceratops");
         this.addFossilVariant(FossilsLegacyFossilVariants.VELOCIRAPTOR, "Velociraptor");
@@ -507,6 +512,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.COOKED_BERRY_MEDLEY_BUCKET.get(), "Bucket of Cooked Berry Medley");
         this.add(FossilsLegacyItems.CHICKEN_ESSENCE_BOTTLE.get());
         this.add(FossilsLegacyItems.ROMANTIC_CONCOCTION_BOTTLE.get());
+        this.add(FossilsLegacyItems.LEGACY_GENETIC_CODE.get());
         this.add(FossilsLegacyItems.NAUTILUS_SHELL.get());
         this.add(FossilsLegacyItems.MAGIC_CONCH.get());
         this.add("item.fossilslegacy.magic_conch.desc", "%s");
@@ -578,6 +584,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.articulated_fossil.pteranodon", "Articulated Pteranodon Fossil");
         this.add("item.fossilslegacy.articulated_fossil.legacy_pteranodon", "Articulated Legacy Pteranodon Fossil");
         this.add("item.fossilslegacy.articulated_fossil.spinosaurus", "Articulated Spinosaurus Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.stegosaurus", "Articulated Stegosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.triceratops", "Articulated Triceratops Fossil");
         this.add("item.fossilslegacy.articulated_fossil.legacy_triceratops", "Articulated Legacy Triceratops Fossil");
         this.add("item.fossilslegacy.articulated_fossil.velociraptor", "Articulated Velociraptor Fossil");
@@ -690,6 +697,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("jei.fossilslegacy.feeder.food_level", "Provides %s food");
         this.add("jei.fossilslegacy.gene_modification", "Gene Modification");
         this.add("jei.fossilslegacy.gene_modification.coat_type", "Cosmetic");
+        this.add("jei.fossilslegacy.gene_modification.use_genetic_code", "Unlocks %s Coat Types");
 
         // Keys
         this.add("key.fossilslegacy.sink", "Sink");
@@ -856,6 +864,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyCoatTypeTags.FUTABASAURUS, "Futabasaurus");
         this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_FUTABASAURUS, "Non-Legacy Futabasaurus");
         this.add(FossilsLegacyCoatTypeTags.GALLIMIMUS, "Gallimimus");
+        this.add(FossilsLegacyCoatTypeTags.LEGACY, "Legacy");
         this.add(FossilsLegacyCoatTypeTags.MOA, "Moa");
         this.add(FossilsLegacyCoatTypeTags.MAMMOTH, "Mammoth");
         this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_MAMMOTH, "Non-Legacy Mammoth");

@@ -13,20 +13,25 @@
   },
   "display_info": {
     "color": 881478,
-    "display_scale": 0.4,
+    "display_scale": 0.3,
     "display_y_offset": 0.25,
     "name": {
-      "translate": "coat_type.fossilslegacy.legacy_mosasaurus"
+      "translate": "coat_type.fossilslegacy.mosasaurus"
     },
     "pattern": {
       "translate": "pattern.fossilslegacy.marine_iguana"
     }
   },
   "models": {
-    "model": "fossilslegacy:legacy_mosasaurus"
+    "model": "fossilslegacy:mosasaurus"
   },
-  "textures": {
-    "eye_layer_texture": "fossilslegacy:textures/entity/mosasaurus/legacy/mosasaurus_eyes.png",
-    "texture": "fossilslegacy:textures/entity/mosasaurus/legacy/mosasaurus.png"
-  }
+  "patterns": [
+    {
+      "pattern_type": "dominant",
+      "textures": {
+        "eye_layer_texture": "fossilslegacy:textures/entity/mosasaurus/mosasaurus_eyes.png",
+        "texture": "fossilslegacy:textures/entity/mosasaurus/mosasaurus.png"
+      }
+    }
+  ]
 }

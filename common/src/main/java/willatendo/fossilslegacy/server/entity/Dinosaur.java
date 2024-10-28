@@ -33,6 +33,7 @@ import willatendo.fossilslegacy.server.entity.commands.FossilsLegacyCommandTypes
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
+import willatendo.fossilslegacy.server.genetics.PatternType;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -408,7 +409,6 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
         this.entityData.set(COAT_TYPE, coatTypeHolder);
     }
 
-
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
@@ -464,6 +464,9 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
         if (this.getEggVariant() != null) {
             Egg egg = FossilsLegacyEntityTypes.EGG.get().create(serverLevel);
             egg.setEggVariant(this.getEggVariant());
+            if (this.getCoatType() != null) {
+                egg.setCoatType(this.getCoatType());
+            }
             if (egg != null) {
                 UUID uuid = this.getOwnerUUID();
                 if (uuid != null) {

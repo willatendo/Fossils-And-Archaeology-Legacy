@@ -1,7 +1,7 @@
 {
   "animations": {
-    "head": "fossilslegacy:tyrannosaurus_head",
-    "walk": "fossilslegacy:tyrannosaurus_walk"
+    "head": "fossilslegacy:legacy_tyrannosaurus_head",
+    "walk": "fossilslegacy:legacy_tyrannosaurus_walk"
   },
   "elements": [
     {

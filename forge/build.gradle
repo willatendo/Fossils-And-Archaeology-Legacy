@@ -1,10 +1,15 @@
 plugins {
     id 'multiloader-loader'
     id 'net.minecraftforge.gradle' version '[6.0.24,6.2)'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
 }
 
 base {
     archivesName = "${mod_id}-${version}"
+}
+
+mixin {
+    config("${mod_id}.mixins.json")
 }
 
 jarJar.enable()

@@ -14,7 +14,7 @@
   "display_info": {
     "color": 4007680,
     "display_scale": 0.4,
-    "display_y_offset": 0.0,
+    "display_y_offset": 1.0,
     "name": {
       "translate": "coat_type.fossilslegacy.mammoth"
     },
@@ -25,9 +25,14 @@
   "models": {
     "model": "fossilslegacy:mammoth"
   },
-  "textures": {
-    "baby_texture": "fossilslegacy:textures/entity/mammoth/mammoth_baby.png",
-    "sheared_texture": "fossilslegacy:textures/entity/mammoth/sheared_mammoth.png",
-    "texture": "fossilslegacy:textures/entity/mammoth/mammoth_adult.png"
-  }
+  "patterns": [
+    {
+      "pattern_type": "dominant",
+      "textures": {
+        "baby_texture": "fossilslegacy:textures/entity/mammoth/mammoth_baby.png",
+        "sheared_texture": "fossilslegacy:textures/entity/mammoth/sheared_mammoth.png",
+        "texture": "fossilslegacy:textures/entity/mammoth/mammoth_adult.png"
+      }
+    }
+  ]
 }

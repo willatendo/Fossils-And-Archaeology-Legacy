@@ -27,6 +27,7 @@ public class FossilsLegacyCoatTypeTags {
     public static final TagKey<CoatType> NON_LEGACY_MAMMOTH = COAT_TYPE_TAGS.register("non_legacy/mammoth");
     public static final TagKey<CoatType> MOA = COAT_TYPE_TAGS.register("moa");
     public static final TagKey<CoatType> MOSASAURUS = COAT_TYPE_TAGS.register("mosasaurus");
+    public static final TagKey<CoatType> NON_LEGACY_MOSASAURUS = COAT_TYPE_TAGS.register("non_legacy/mosasaurus");
     public static final TagKey<CoatType> PACHYCEPHALOSAURUS = COAT_TYPE_TAGS.register("pachycephalosaurus");
     public static final TagKey<CoatType> PTERANODON = COAT_TYPE_TAGS.register("pteranodon");
     public static final TagKey<CoatType> NON_LEGACY_PTERANODON = COAT_TYPE_TAGS.register("non_legacy/pteranodon");
@@ -34,10 +35,12 @@ public class FossilsLegacyCoatTypeTags {
     public static final TagKey<CoatType> NON_LEGACY_SMILODON = COAT_TYPE_TAGS.register("non_legacy/smilodon");
     public static final TagKey<CoatType> SPINOSAURUS = COAT_TYPE_TAGS.register("spinosaurus");
     public static final TagKey<CoatType> STEGOSAURUS = COAT_TYPE_TAGS.register("stegosaurus");
+    public static final TagKey<CoatType> NON_LEGACY_STEGOSAURUS = COAT_TYPE_TAGS.register("non_legacy/stegosaurus");
     public static final TagKey<CoatType> THERIZINOSAURUS = COAT_TYPE_TAGS.register("therizinosaurus");
     public static final TagKey<CoatType> TRICERATOPS = COAT_TYPE_TAGS.register("triceratops");
     public static final TagKey<CoatType> NON_LEGACY_TRICERATOPS = COAT_TYPE_TAGS.register("non_legacy/triceratops");
     public static final TagKey<CoatType> TYRANNOSAURUS = COAT_TYPE_TAGS.register("tyrannosaurus");
+    public static final TagKey<CoatType> NON_LEGACY_TYRANNOSAURUS = COAT_TYPE_TAGS.register("non_legacy/tyrannosaurus");
     public static final TagKey<CoatType> VELOCIRAPTOR = COAT_TYPE_TAGS.register("velociraptor");
     public static final TagKey<CoatType> LEGACY_VELOCIRAPTOR = COAT_TYPE_TAGS.register("legacy_velociraptor");
     public static final TagKey<CoatType> NON_LEGACY_VELOCIRAPTOR = COAT_TYPE_TAGS.register("non_legacy/velociraptor");

@@ -6,5 +6,5 @@ import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 
 import java.util.List;
 
-public record GeneModificationRecipe(Component type, List<CoatType> coatTypes, Ingredient ingredient) {
+public record GeneModificationRecipe(Component type, List<CoatType> coatTypes, Ingredient ingredient, boolean hasLegacy) {
 }

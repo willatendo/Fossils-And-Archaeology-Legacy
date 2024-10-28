@@ -1,7 +1,7 @@
 {
   "animations": {
-    "swim": "fossilslegacy:mosasaurus_swim",
-    "walk": "fossilslegacy:mosasaurus_swim"
+    "swim": "fossilslegacy:legacy_mosasaurus_swim",
+    "walk": "fossilslegacy:legacy_mosasaurus_swim"
   },
   "elements": [
     {

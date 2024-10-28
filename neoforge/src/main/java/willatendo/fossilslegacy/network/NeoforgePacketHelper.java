@@ -6,7 +6,7 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 public class NeoforgePacketHelper {
     public static void handleAlertUnlockedCoatTypes(ClientboundAlertUnlockedCoatTypesPacket clientboundAlertUnlockedCoatTypesPacket, IPayloadContext iPayloadContext) {
         iPayloadContext.enqueueWork(() -> {
-            BasicPackets.clientboundAlertUnlockedCoatTypes(clientboundAlertUnlockedCoatTypesPacket.coatTypes(), iPayloadContext.player().level());
+            BasicPackets.clientboundAlertUnlockedCoatTypes(clientboundAlertUnlockedCoatTypesPacket.coatTypes(), iPayloadContext.player(), iPayloadContext.player().level());
         });
     }
 

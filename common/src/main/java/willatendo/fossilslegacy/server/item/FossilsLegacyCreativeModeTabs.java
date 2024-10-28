@@ -170,6 +170,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.COOKED_BERRY_MEDLEY_BUCKET.get());
         output.accept(FossilsLegacyItems.CHICKEN_ESSENCE_BOTTLE.get());
         output.accept(FossilsLegacyItems.ROMANTIC_CONCOCTION_BOTTLE.get());
+        output.accept(FossilsLegacyItems.LEGACY_GENETIC_CODE.get());
         output.accept(FossilsLegacyItems.JURASSIC_FERN_SPORES.get());
         output.accept(FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get());
         output.accept(FossilsLegacyItems.PETRIFIED_SIGILLARIA_SAPLING.get());

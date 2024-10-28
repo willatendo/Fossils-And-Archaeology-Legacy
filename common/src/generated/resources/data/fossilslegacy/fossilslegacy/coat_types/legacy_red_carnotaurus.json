@@ -25,7 +25,12 @@
   "models": {
     "model": "fossilslegacy:legacy_carnotaurus"
   },
-  "textures": {
-    "texture": "fossilslegacy:textures/entity/carnotaurus/legacy/red_carnotaurus.png"
-  }
+  "patterns": [
+    {
+      "pattern_type": "dominant",
+      "textures": {
+        "texture": "fossilslegacy:textures/entity/carnotaurus/legacy/red_carnotaurus.png"
+      }
+    }
+  ]
 }

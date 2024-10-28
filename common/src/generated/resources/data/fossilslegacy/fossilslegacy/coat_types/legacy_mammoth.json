@@ -25,9 +25,14 @@
   "models": {
     "model": "fossilslegacy:legacy_mammoth"
   },
-  "textures": {
-    "baby_texture": "fossilslegacy:textures/entity/mammoth/legacy/mammoth_baby.png",
-    "sheared_texture": "fossilslegacy:textures/entity/mammoth/legacy/sheared_mammoth.png",
-    "texture": "fossilslegacy:textures/entity/mammoth/legacy/mammoth_adult.png"
-  }
+  "patterns": [
+    {
+      "pattern_type": "dominant",
+      "textures": {
+        "baby_texture": "fossilslegacy:textures/entity/mammoth/legacy/mammoth_baby.png",
+        "sheared_texture": "fossilslegacy:textures/entity/mammoth/legacy/sheared_mammoth.png",
+        "texture": "fossilslegacy:textures/entity/mammoth/legacy/mammoth_adult.png"
+      }
+    }
+  ]
 }

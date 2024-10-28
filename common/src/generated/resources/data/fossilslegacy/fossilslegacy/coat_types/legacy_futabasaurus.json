@@ -25,7 +25,12 @@
   "models": {
     "model": "fossilslegacy:legacy_futabasaurus"
   },
-  "textures": {
-    "texture": "fossilslegacy:textures/entity/futabasaurus/legacy/futabasaurus.png"
-  }
+  "patterns": [
+    {
+      "pattern_type": "dominant",
+      "textures": {
+        "texture": "fossilslegacy:textures/entity/futabasaurus/legacy/futabasaurus.png"
+      }
+    }
+  ]
 }

@@ -51,16 +51,6 @@ public class FossilsForgeHelper implements FossilsModloaderHelper {
     }
 
     @Override
-    public CompoundTag getPlayerData(Player player) {
-        return player.getPersistentData();
-    }
-
-    @Override
-    public void setPlayerData(CompoundTag compoundTag, CompoundTag data) {
-        compoundTag.put(FossilsLegacyUtils.PERSISTED_NBT_TAG, data);
-    }
-
-    @Override
     public <T> Supplier<EntityDataSerializer<Holder<T>>> registerDataSerializer(String id, StreamCodec<RegistryFriendlyByteBuf, Holder<T>> streamCodec) {
         return FossilsLegacyForgeMod.ENTITY_DATA_SERIALIZER.register(id, () -> EntityDataSerializer.forValueType(streamCodec));
     }

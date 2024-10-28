@@ -25,8 +25,13 @@
   "models": {
     "model": "fossilslegacy:cryolophosaurus"
   },
-  "textures": {
-    "baby_texture": "fossilslegacy:textures/entity/cryolophosaurus/cryolophosaurus_baby.png",
-    "texture": "fossilslegacy:textures/entity/cryolophosaurus/cryolophosaurus_adult.png"
-  }
+  "patterns": [
+    {
+      "pattern_type": "dominant",
+      "textures": {
+        "baby_texture": "fossilslegacy:textures/entity/cryolophosaurus/cryolophosaurus_baby.png",
+        "texture": "fossilslegacy:textures/entity/cryolophosaurus/cryolophosaurus_adult.png"
+      }
+    }
+  ]
 }

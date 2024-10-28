@@ -27,7 +27,12 @@
     "landing_model": "fossilslegacy:legacy_landing_pteranodon",
     "model": "fossilslegacy:legacy_pteranodon"
   },
-  "textures": {
-    "texture": "fossilslegacy:textures/entity/pteranodon/legacy/pteranodon.png"
-  }
+  "patterns": [
+    {
+      "pattern_type": "dominant",
+      "textures": {
+        "texture": "fossilslegacy:textures/entity/pteranodon/legacy/pteranodon.png"
+      }
+    }
+  ]
 }

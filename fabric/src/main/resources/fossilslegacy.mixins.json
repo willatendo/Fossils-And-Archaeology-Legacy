@@ -4,8 +4,7 @@
   "package": "willatendo.fossilslegacy.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "LightningBoltMixin",
-    "EntityMixin"
+    "LightningBoltMixin"
   ],
   "client": [
     "client.GuiMixin",

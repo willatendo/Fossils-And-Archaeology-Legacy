@@ -25,7 +25,12 @@
   "models": {
     "model": "fossilslegacy:compsognathus"
   },
-  "textures": {
-    "texture": "fossilslegacy:textures/entity/compsognathus/compsognathus.png"
-  }
+  "patterns": [
+    {
+      "pattern_type": "dominant",
+      "textures": {
+        "texture": "fossilslegacy:textures/entity/compsognathus/compsognathus.png"
+      }
+    }
+  ]
 }

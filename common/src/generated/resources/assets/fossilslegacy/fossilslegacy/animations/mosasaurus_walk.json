@@ -1,0 +1,188 @@
+{
+  "type": "json",
+  "animations": [
+    {
+      "bone": "right_front_flipper",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": -90.0,
+            "z": 40.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.5
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": -90.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.625
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 1.0
+        }
+      ]
+    },
+    {
+      "bone": "left_front_flipper",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 90.0,
+            "z": -40.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.5
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 90.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.625
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 1.0
+        }
+      ]
+    },
+    {
+      "bone": "right_back_flipper",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": -90.0,
+            "z": 40.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.5
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": -90.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.625
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 1.0
+        }
+      ]
+    },
+    {
+      "bone": "left_back_flipper",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 90.0,
+            "z": -40.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.5
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 90.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.625
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 1.0
+        }
+      ]
+    }
+  ],
+  "id": "fossilslegacy:mosasaurus_walk",
+  "length": 1.0,
+  "looping": false
+}

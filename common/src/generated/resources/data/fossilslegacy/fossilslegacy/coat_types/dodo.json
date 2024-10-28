@@ -25,7 +25,12 @@
   "models": {
     "model": "fossilslegacy:dodo"
   },
-  "textures": {
-    "texture": "fossilslegacy:textures/entity/dodo/dodo.png"
-  }
+  "patterns": [
+    {
+      "pattern_type": "dominant",
+      "textures": {
+        "texture": "fossilslegacy:textures/entity/dodo/dodo.png"
+      }
+    }
+  ]
 }

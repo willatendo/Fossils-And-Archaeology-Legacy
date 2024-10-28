@@ -25,8 +25,13 @@
   "models": {
     "model": "fossilslegacy:legacy_dilophosaurus"
   },
-  "textures": {
-    "aggressive_texture": "fossilslegacy:textures/entity/dilophosaurus/dilophosaurus_aggressive.png",
-    "texture": "fossilslegacy:textures/entity/dilophosaurus/dilophosaurus.png"
-  }
+  "patterns": [
+    {
+      "pattern_type": "dominant",
+      "textures": {
+        "aggressive_texture": "fossilslegacy:textures/entity/dilophosaurus/dilophosaurus_aggressive.png",
+        "texture": "fossilslegacy:textures/entity/dilophosaurus/dilophosaurus.png"
+      }
+    }
+  ]
 }

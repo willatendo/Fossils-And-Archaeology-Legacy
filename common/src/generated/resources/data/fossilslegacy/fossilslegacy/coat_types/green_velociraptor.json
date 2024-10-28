@@ -25,8 +25,13 @@
   "models": {
     "model": "fossilslegacy:velociraptor"
   },
-  "textures": {
-    "baby_texture": "fossilslegacy:textures/entity/velociraptor/green_velociraptor_baby.png",
-    "texture": "fossilslegacy:textures/entity/velociraptor/green_velociraptor_adult.png"
-  }
+  "patterns": [
+    {
+      "pattern_type": "dominant",
+      "textures": {
+        "baby_texture": "fossilslegacy:textures/entity/velociraptor/green_velociraptor_baby.png",
+        "texture": "fossilslegacy:textures/entity/velociraptor/green_velociraptor_adult.png"
+      }
+    }
+  ]
 }

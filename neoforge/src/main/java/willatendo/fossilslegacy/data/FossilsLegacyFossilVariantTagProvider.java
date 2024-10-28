@@ -32,6 +32,7 @@ public class FossilsLegacyFossilVariantTagProvider extends DataDrivenTagsProvide
                         FossilsLegacyFossilVariants.PTERANODON,
                         FossilsLegacyFossilVariants.LEGACY_PTERANODON,
                         FossilsLegacyFossilVariants.SPINOSAURUS,
+                        FossilsLegacyFossilVariants.STEGOSAURUS,
                         FossilsLegacyFossilVariants.TRICERATOPS,
                         FossilsLegacyFossilVariants.LEGACY_TRICERATOPS,
                         FossilsLegacyFossilVariants.VELOCIRAPTOR);

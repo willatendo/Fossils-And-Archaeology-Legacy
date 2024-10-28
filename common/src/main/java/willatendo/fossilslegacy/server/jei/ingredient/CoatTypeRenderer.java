@@ -16,7 +16,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
 
-public class CoatTypeRenderer implements IIngredientRenderer<CoatType> {
+public final class CoatTypeRenderer implements IIngredientRenderer<CoatType> {
     private final ResourceLocation geneSprite;
     private final int width;
     private final int height;

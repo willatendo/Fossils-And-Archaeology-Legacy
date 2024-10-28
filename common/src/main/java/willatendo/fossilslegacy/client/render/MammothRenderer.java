@@ -14,6 +14,6 @@ public class MammothRenderer extends CoatTypeMobRenderer<Mammoth> {
 
     @Override
     protected Optional<ResourceLocation> getAdditionalTexture(Mammoth mammoth, CoatType coatType) {
-        return mammoth.isSheared() ? coatType.textures().shearedTexture() : Optional.empty();
+        return mammoth.isSheared() ? coatType.patterns().getFirst().textures().shearedTexture() : Optional.empty();
     }
 }

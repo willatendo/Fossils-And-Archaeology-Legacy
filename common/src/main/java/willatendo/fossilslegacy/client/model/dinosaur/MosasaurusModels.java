@@ -7,7 +7,23 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 
 public final class MosasaurusModels {
-    public static LayerDefinition createLegacyMosausarusBodyLayer() {
+    public static LayerDefinition createMosasaurusBodyLayer() {
+        MeshDefinition meshDefinition = new MeshDefinition();
+        PartDefinition partDefinition = meshDefinition.getRoot();
+
+        partDefinition.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(36, 35).addBox(-3.0F, -3.0F, 0.0F, 6.0F, 7.0F, 7.0F).texOffs(38, 0).addBox(-2.0F, 2.0F, 5.0F, 4.0F, 5.0F, 9.0F).texOffs(0, 51).addBox(-2.0F, -6.0F, 5.0F, 4.0F, 8.0F, 5.0F), PartPose.offset(0.0F, 16.0F, 9.0F));
+        partDefinition.addOrReplaceChild("left_front_flipper", CubeListBuilder.create().texOffs(52, 49).addBox(0.0F, -2.0F, -1.0F, 2.0F, 5.0F, 7.0F), PartPose.offset(5.0F, 21.0F, -7.0F));
+        partDefinition.addOrReplaceChild("right_front_flipper", CubeListBuilder.create().texOffs(18, 58).addBox(-2.0F, -2.0F, -1.0F, 2.0F, 5.0F, 7.0F), PartPose.offset(-5.0F, 21.0F, -7.0F));
+        partDefinition.addOrReplaceChild("left_back_flipper", CubeListBuilder.create().texOffs(62, 35).addBox(-1.0F, -2.0F, -1.0F, 2.0F, 4.0F, 6.0F), PartPose.offset(5.0F, 21.0F, 5.0F));
+        partDefinition.addOrReplaceChild("right_back_flipper", CubeListBuilder.create().texOffs(0, 64).addBox(-1.0F, -2.0F, -1.0F, 2.0F, 4.0F, 6.0F), PartPose.offset(-5.0F, 21.0F, 5.0F));
+        PartDefinition head = partDefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(36, 20).addBox(-4.0F, -4.0F, -7.0F, 8.0F, 8.0F, 7.0F).texOffs(0, 40).addBox(-3.0F, -3.0F, -14.0F, 6.0F, 4.0F, 7.0F).texOffs(56, 61).addBox(-2.0F, 1.0F, -13.0F, 4.0F, 1.0F, 6.0F), PartPose.offset(0.0F, 18.0F, -10.0F));
+        head.addOrReplaceChild("jaw", CubeListBuilder.create().texOffs(26, 49).addBox(-3.0F, -1.0F, -7.0F, 6.0F, 2.0F, 7.0F).texOffs(36, 61).addBox(-2.0F, -2.0F, -6.0F, 4.0F, 1.0F, 6.0F), PartPose.offset(0.0F, 2.0F, -7.0F));
+        partDefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-5.0F, -11.0F, -10.0F, 10.0F, 11.0F, 9.0F).texOffs(0, 20).addBox(-4.0F, -11.0F, -1.0F, 8.0F, 10.0F, 10.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
+
+        return LayerDefinition.create(meshDefinition, 128, 128);
+    }
+
+    public static LayerDefinition createLegacyMosasaurusBodyLayer() {
         MeshDefinition meshDefinition = new MeshDefinition();
         PartDefinition partDefinition = meshDefinition.getRoot();
 

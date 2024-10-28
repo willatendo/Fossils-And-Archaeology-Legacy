@@ -6,7 +6,6 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -15,7 +14,6 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -23,9 +21,7 @@ import net.minecraft.world.item.SpawnEggItem;
 import willatendo.fossilslegacy.network.ClientboundAlertUnlockedCoatTypesPacket;
 import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
-import willatendo.fossilslegacy.server.entity.PersistentDataEntity;
 import willatendo.fossilslegacy.server.item.DinosaurSpawnEggItem;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.fossilslegacy.server.utils.Platform;
 import willatendo.simplelibrary.client.util.FabricClientUtils;
 import willatendo.simplelibrary.server.util.FabricUtils;
@@ -63,18 +59,8 @@ public class FossilsFabricHelper implements FossilsModloaderHelper {
     }
 
     @Override
-    public CompoundTag getPlayerData(Player player) {
-        return ((PersistentDataEntity) player).getPersistentData();
-    }
-
-    @Override
-    public void setPlayerData(CompoundTag compoundTag, CompoundTag data) {
-        compoundTag.put(FossilsLegacyUtils.ID + "." + FossilsLegacyUtils.PERSISTED_NBT_TAG, data);
-    }
-
-    @Override
     public <T> Supplier<EntityDataSerializer<Holder<T>>> registerDataSerializer(String id, StreamCodec<RegistryFriendlyByteBuf, Holder<T>> streamCodec) {
-        EntityDataSerializer entityDataSerializer = EntityDataSerializer.forValueType(streamCodec);
+        EntityDataSerializer<Holder<T>> entityDataSerializer = EntityDataSerializer.forValueType(streamCodec);
         EntityDataSerializers.registerSerializer(entityDataSerializer);
         return () -> entityDataSerializer;
     }

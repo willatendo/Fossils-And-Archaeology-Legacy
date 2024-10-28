@@ -8,6 +8,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -30,7 +31,7 @@ public final class BasicPackets {
     public static final ResourceLocation SINK = FossilsLegacyUtils.resource("sink");
     public static final ResourceLocation TIME_MACHINE_UPDATE = FossilsLegacyUtils.resource("time_machine_update");
 
-    public static void clientboundAlertUnlockedCoatTypes(List<String> coatTypes, Level level) {
+    public static void clientboundAlertUnlockedCoatTypes(List<String> coatTypes, Player player, Level level) {
         Registry<CoatType> coatTypeRegistry = level.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES);
         List<Holder<CoatType>> coatTypeHolders = Lists.newArrayList();
         coatTypes.forEach(coatType -> coatTypeHolders.add(coatTypeRegistry.getHolder(ResourceLocation.parse(coatType)).get()));

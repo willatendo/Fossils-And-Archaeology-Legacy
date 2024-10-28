@@ -22,7 +22,7 @@ public class FossilsLegacyPackets {
     }
 
     public static void clientboundAlertUnlockedCoatTypes(ClientboundAlertUnlockedCoatTypesPacket clientboundAlertUnlockedCoatTypesPacket, ClientPlayNetworking.Context context) {
-        BasicPackets.clientboundAlertUnlockedCoatTypes(clientboundAlertUnlockedCoatTypesPacket.coatTypes(), context.player().level());
+        BasicPackets.clientboundAlertUnlockedCoatTypes(clientboundAlertUnlockedCoatTypesPacket.coatTypes(), context.player(), context.player().level());
     }
 
     public static void serverboundApplyGenePacket(ServerboundApplyGenePacket serverboundApplyGenePacket, ServerPlayNetworking.Context context) {

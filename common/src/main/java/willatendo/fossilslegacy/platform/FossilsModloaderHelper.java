@@ -36,10 +36,6 @@ public interface FossilsModloaderHelper {
 
     void sendTimeMachinePacket(BlockPos blockPos);
 
-    CompoundTag getPlayerData(Player player);
-
-    void setPlayerData(CompoundTag compoundTag, CompoundTag data);
-
     <T> Supplier<EntityDataSerializer<Holder<T>>> registerDataSerializer(String id, StreamCodec<RegistryFriendlyByteBuf, Holder<T>> streamCodec);
 
     SpawnEggItem createDinosaurSpawnEgg(Supplier<EntityType<? extends Mob>> entityType, int primaryColor, int secondaryColor, Item.Properties properties);

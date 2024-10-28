@@ -21,6 +21,6 @@ public class TyrannosaurusRenderer extends CoatTypeMobRenderer<Tyrannosaurus> {
 
     @Override
     protected Optional<ResourceLocation> getAdditionalTexture(Tyrannosaurus tyrannosaurus, CoatType coatType) {
-        return tyrannosaurus.isKnockedOut() ? coatType.textures().knockedOutTexture() : (!tyrannosaurus.isBaby() && !tyrannosaurus.isTame()) ? coatType.textures().aggressiveTexture() : Optional.empty();
+        return tyrannosaurus.isKnockedOut() ? coatType.patterns().getFirst().textures().knockedOutTexture() : (!tyrannosaurus.isBaby() && !tyrannosaurus.isTame()) ? coatType.patterns().getFirst().textures().aggressiveTexture() : Optional.empty();
     }
 }

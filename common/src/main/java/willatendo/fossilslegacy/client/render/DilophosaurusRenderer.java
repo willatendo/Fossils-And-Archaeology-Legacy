@@ -14,6 +14,6 @@ public class DilophosaurusRenderer extends CoatTypeMobRenderer<Dilophosaurus> {
 
     @Override
     protected Optional<ResourceLocation> getAdditionalTexture(Dilophosaurus dilophosaurus, CoatType coatType) {
-        return dilophosaurus.isAttacking() ? (dilophosaurus.isBaby() && coatType.textures().aggressiveBabyTexture().isPresent()) ? coatType.textures().aggressiveBabyTexture() : coatType.textures().aggressiveTexture() : Optional.empty();
+        return dilophosaurus.isAttacking() ? (dilophosaurus.isBaby() && coatType.patterns().getFirst().textures().aggressiveBabyTexture().isPresent()) ? coatType.patterns().getFirst().textures().aggressiveBabyTexture() : coatType.patterns().getFirst().textures().aggressiveTexture() : Optional.empty();
     }
 }

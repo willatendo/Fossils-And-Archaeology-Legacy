@@ -26,9 +26,14 @@
     "knocked_out_model": "fossilslegacy:legacy_knocked_out_tyrannosaurus",
     "model": "fossilslegacy:legacy_tyrannosaurus"
   },
-  "textures": {
-    "aggressive_texture": "fossilslegacy:textures/entity/tyrannosaurus/legacy/tyrannosaurus_aggressive.png",
-    "knocked_out_texture": "fossilslegacy:textures/entity/tyrannosaurus/legacy/tyrannosaurus_weak.png",
-    "texture": "fossilslegacy:textures/entity/tyrannosaurus/legacy/tyrannosaurus.png"
-  }
+  "patterns": [
+    {
+      "pattern_type": "dominant",
+      "textures": {
+        "aggressive_texture": "fossilslegacy:textures/entity/tyrannosaurus/legacy/tyrannosaurus_aggressive.png",
+        "knocked_out_texture": "fossilslegacy:textures/entity/tyrannosaurus/legacy/tyrannosaurus_weak.png",
+        "texture": "fossilslegacy:textures/entity/tyrannosaurus/legacy/tyrannosaurus.png"
+      }
+    }
+  ]
 }

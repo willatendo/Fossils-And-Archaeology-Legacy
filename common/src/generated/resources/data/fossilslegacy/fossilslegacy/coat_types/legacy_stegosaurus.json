@@ -25,8 +25,13 @@
   "models": {
     "model": "fossilslegacy:legacy_stegosaurus"
   },
-  "textures": {
-    "baby_texture": "fossilslegacy:textures/entity/stegosaurus/stegosaurus_baby.png",
-    "texture": "fossilslegacy:textures/entity/stegosaurus/stegosaurus_adult.png"
-  }
+  "patterns": [
+    {
+      "pattern_type": "dominant",
+      "textures": {
+        "baby_texture": "fossilslegacy:textures/entity/stegosaurus/legacy/stegosaurus_baby.png",
+        "texture": "fossilslegacy:textures/entity/stegosaurus/legacy/stegosaurus_adult.png"
+      }
+    }
+  ]
 }

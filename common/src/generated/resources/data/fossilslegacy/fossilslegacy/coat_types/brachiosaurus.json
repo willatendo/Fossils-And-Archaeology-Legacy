@@ -25,8 +25,13 @@
   "models": {
     "model": "fossilslegacy:brachiosaurus"
   },
-  "textures": {
-    "baby_texture": "fossilslegacy:textures/entity/brachiosaurus/brachiosaurus_baby.png",
-    "texture": "fossilslegacy:textures/entity/brachiosaurus/brachiosaurus_adult.png"
-  }
+  "patterns": [
+    {
+      "pattern_type": "dominant",
+      "textures": {
+        "baby_texture": "fossilslegacy:textures/entity/brachiosaurus/brachiosaurus_baby.png",
+        "texture": "fossilslegacy:textures/entity/brachiosaurus/brachiosaurus_adult.png"
+      }
+    }
+  ]
 }

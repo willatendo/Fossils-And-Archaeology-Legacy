@@ -25,8 +25,13 @@
   "models": {
     "model": "fossilslegacy:pteranodon"
   },
-  "textures": {
-    "baby_texture": "fossilslegacy:textures/entity/pteranodon/pteranodon_baby.png",
-    "texture": "fossilslegacy:textures/entity/pteranodon/pteranodon_adult.png"
-  }
+  "patterns": [
+    {
+      "pattern_type": "dominant",
+      "textures": {
+        "baby_texture": "fossilslegacy:textures/entity/pteranodon/pteranodon_baby.png",
+        "texture": "fossilslegacy:textures/entity/pteranodon/pteranodon_adult.png"
+      }
+    }
+  ]
 }

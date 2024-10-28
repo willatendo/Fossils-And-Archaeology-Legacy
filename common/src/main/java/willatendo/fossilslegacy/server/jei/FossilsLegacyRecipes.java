@@ -5,12 +5,10 @@ import mezz.jei.api.recipe.vanilla.IJeiAnvilRecipe;
 import mezz.jei.api.recipe.vanilla.IVanillaRecipeFactory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.Holder;
-import net.minecraft.core.NonNullList;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
 import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.block.entity.CultivatorBlockEntity;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
@@ -31,6 +29,7 @@ import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
 import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
 import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
 import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.ArrayList;
@@ -83,8 +82,15 @@ public final class FossilsLegacyRecipes {
 
         for (DNAItem dnaItem : DNAItem.DNA) {
             if (dnaItem.getApplicableCoatTypes() != null) {
-                List<CoatType> coatTypes = registry.getTag(dnaItem.getApplicableCoatTypes()).get().stream().map(Holder::value).toList();
-                geneModificationRecipes.add(new GeneModificationRecipe(FossilsLegacyUtils.translation("jei", "gene_modification.coat_type"), coatTypes, Ingredient.of(dnaItem)));
+                List<Holder<CoatType>> coatTypes = registry.getTag(dnaItem.getApplicableCoatTypes()).get().stream().toList();
+                boolean hasLegacy = false;
+                for (Holder<CoatType> coatTypeHolder : coatTypes) {
+                    if (coatTypeHolder.is(FossilsLegacyCoatTypeTags.LEGACY)) {
+                        hasLegacy = true;
+                        break;
+                    }
+                }
+                geneModificationRecipes.add(new GeneModificationRecipe(FossilsLegacyUtils.translation("jei", "gene_modification.coat_type"), coatTypes.stream().map(Holder::value).toList(), Ingredient.of(dnaItem), hasLegacy));
             }
         }
 

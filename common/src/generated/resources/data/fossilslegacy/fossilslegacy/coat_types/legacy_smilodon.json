@@ -25,8 +25,13 @@
   "models": {
     "model": "fossilslegacy:legacy_smilodon"
   },
-  "textures": {
-    "baby_texture": "fossilslegacy:textures/entity/smilodon/legacy/smilodon_baby.png",
-    "texture": "fossilslegacy:textures/entity/smilodon/legacy/smilodon_adult.png"
-  }
+  "patterns": [
+    {
+      "pattern_type": "dominant",
+      "textures": {
+        "baby_texture": "fossilslegacy:textures/entity/smilodon/legacy/smilodon_baby.png",
+        "texture": "fossilslegacy:textures/entity/smilodon/legacy/smilodon_adult.png"
+      }
+    }
+  ]
 }

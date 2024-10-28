@@ -24,6 +24,7 @@ public class FossilsLegacyFossilVariants {
     public static final ResourceKey<FossilVariant> PTERANODON = FossilsLegacyFossilVariants.create("pteranodon");
     public static final ResourceKey<FossilVariant> LEGACY_PTERANODON = FossilsLegacyFossilVariants.create("legacy_pteranodon");
     public static final ResourceKey<FossilVariant> SPINOSAURUS = FossilsLegacyFossilVariants.create("spinosaurus");
+    public static final ResourceKey<FossilVariant> STEGOSAURUS = FossilsLegacyFossilVariants.create("stegosaurus");
     public static final ResourceKey<FossilVariant> TRICERATOPS = FossilsLegacyFossilVariants.create("triceratops");
     public static final ResourceKey<FossilVariant> LEGACY_TRICERATOPS = FossilsLegacyFossilVariants.create("legacy_triceratops");
     public static final ResourceKey<FossilVariant> VELOCIRAPTOR = FossilsLegacyFossilVariants.create("velociraptor");
@@ -58,7 +59,8 @@ public class FossilsLegacyFossilVariants {
         FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, PTERANODON, 8, "pteranodon", FossilsLegacyUtils.resource("pteranodon"), 5, List.of(), 0.5F, 0.5F, 0.2F, 0.8F, 0.8F, 0.2F, 0.5F, 0.075F);
         FossilsLegacyFossilVariants.registerLegacyMesozoic(bootstrapContext, LEGACY_PTERANODON, 8, "pteranodon", FossilsLegacyUtils.resource("legacy_pteranodon"), 5, List.of(), 0.5F, 0.5F, 0.2F, 0.8F, 0.8F, 0.2F, 0.5F, 0.075F);
         FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, SPINOSAURUS, 8, "spinosaurus", FossilsLegacyUtils.resource("spinosaurus"), 7, List.of(), 0.5F, 0.5F, 0.4F, 0.5F, 0.5F, 0.5125F, 0.5F, 0.15F);
-        FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, TRICERATOPS, 12, "triceratops", FossilsLegacyUtils.resource("triceratops"), 6, List.of(), 1.0F, 1.0F, 0.2F, 1.0F, 1.0F, 0.15F, 1.0F, 0.1F);
+        FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, STEGOSAURUS, 12, "stegosaurus", FossilsLegacyUtils.resource("stegosaurus"), 7, List.of(), 0.5F, 0.5F, 0.4F, 0.5F, 0.5F, 0.5125F, 0.5F, 0.15F);
+        FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, TRICERATOPS, 12, "triceratops", FossilsLegacyUtils.resource("triceratops"), 6, List.of(), 0.75F, 0.75F, 0.2F, 1.5F, 1.5F, 0.3F, 1.0F, 0.1F);
         FossilsLegacyFossilVariants.registerLegacyMesozoic(bootstrapContext, LEGACY_TRICERATOPS, 12, "triceratops", FossilsLegacyUtils.resource("legacy_triceratops"), 6, List.of(), 0.75F, 0.75F, 0.15F, 1.5F, 1.5F, 0.3F, 1.0F, 0.1F);
         FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, VELOCIRAPTOR, 8, "velociraptor", FossilsLegacyUtils.resource("velociraptor"), 3, List.of(), 0.2F, 0.4F, 0.05F, 0.5F, 0.5F, 0.1F, 0.5F, 0.025F);
     }

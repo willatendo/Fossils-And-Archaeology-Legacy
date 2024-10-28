@@ -36,6 +36,6 @@ public record ClientboundAlertUnlockedCoatTypesPacket(List<String> coatTypes) im
     }
 
     public static void handle(ForgeHandlePacket forgeHandlePacket, ClientboundAlertUnlockedCoatTypesPacket clientboundAlertUnlockedCoatTypesPacket) {
-        BasicPackets.clientboundAlertUnlockedCoatTypes(clientboundAlertUnlockedCoatTypesPacket.coatTypes(), forgeHandlePacket.getServerPlayer().level());
+        BasicPackets.clientboundAlertUnlockedCoatTypes(clientboundAlertUnlockedCoatTypesPacket.coatTypes(), forgeHandlePacket.getServerPlayer(), forgeHandlePacket.getServerPlayer().level());
     }
 }

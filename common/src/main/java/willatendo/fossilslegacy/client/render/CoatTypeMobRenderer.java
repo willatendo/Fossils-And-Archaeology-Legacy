@@ -86,6 +86,6 @@ public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends Mo
     @Override
     public ResourceLocation getTextureLocation(T mob) {
         CoatType coatType = mob.getCoatType().value();
-        return this.getAdditionalTexture(mob, coatType).isPresent() ? this.getAdditionalTexture(mob, coatType).get() : mob.isBaby() ? coatType.textures().babyTexture().isPresent() ? coatType.textures().babyTexture().get() : coatType.textures().texture() : coatType.textures().texture();
+        return this.getAdditionalTexture(mob, coatType).isPresent() ? this.getAdditionalTexture(mob, coatType).get() : mob.isBaby() ? coatType.patterns().getFirst().textures().babyTexture().isPresent() ? coatType.patterns().getFirst().textures().babyTexture().get() : coatType.patterns().getFirst().textures().texture() : coatType.patterns().getFirst().textures().texture();
     }
 }

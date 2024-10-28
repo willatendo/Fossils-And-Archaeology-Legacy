@@ -1,6 +1,8 @@
 package willatendo.fossilslegacy.server.entity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -37,10 +39,13 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.client.PlayerUnlockedCoatTypesHelper;
+import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
+import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakerType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakingEntity;
+import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
@@ -63,7 +68,11 @@ public class Anu extends Zombie implements SpeakingEntity {
     @Override
     public void die(DamageSource damageSource) {
         if (damageSource.getEntity() instanceof Player player) {
-            PlayerUnlockedCoatTypesHelper.grantAllLegacyCoatTypes(player);
+            Registry<CoatType> coatTypeRegistry = this.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES);
+            List<String> coatTypes = coatTypeRegistry.getTag(FossilsLegacyCoatTypeTags.LEGACY).get().stream().map(Holder::getRegisteredName).toList();
+            if (player instanceof ServerPlayer serverPlayer) {
+                FossilsModloaderHelper.INSTANCE.sendAlertUnlockedCoatTypesPacket(serverPlayer, coatTypes);
+            }
         }
         super.die(damageSource);
     }

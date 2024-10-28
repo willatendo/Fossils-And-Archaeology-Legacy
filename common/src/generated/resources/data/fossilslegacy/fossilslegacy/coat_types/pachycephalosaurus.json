@@ -25,8 +25,13 @@
   "models": {
     "model": "fossilslegacy:pachycephalosaurus"
   },
-  "textures": {
-    "baby_texture": "fossilslegacy:textures/entity/pachycephalosaurus/pachycephalosaurus_baby.png",
-    "texture": "fossilslegacy:textures/entity/pachycephalosaurus/pachycephalosaurus_adult.png"
-  }
+  "patterns": [
+    {
+      "pattern_type": "dominant",
+      "textures": {
+        "baby_texture": "fossilslegacy:textures/entity/pachycephalosaurus/pachycephalosaurus_baby.png",
+        "texture": "fossilslegacy:textures/entity/pachycephalosaurus/pachycephalosaurus_adult.png"
+      }
+    }
+  ]
 }
