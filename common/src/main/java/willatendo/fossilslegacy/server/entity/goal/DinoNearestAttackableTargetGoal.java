@@ -14,13 +14,4 @@ public class DinoNearestAttackableTargetGoal<T extends LivingEntity> extends Nea
         super(dinosaur, (Class<T>) LivingEntity.class, 10, mustSee, false, livingEntity -> livingEntity.getType().is(targets));
         this.dinosaur = dinosaur;
     }
-
-    @Override
-    public boolean canUse() {
-        boolean canUse = super.canUse();
-        if (canUse && this.target.getType() == this.dinosaur.getType()) {
-            return false;
-        }
-        return canUse;
-    }
 }

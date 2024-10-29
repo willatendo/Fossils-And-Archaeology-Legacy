@@ -868,6 +868,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyCoatTypeTags.CRYOLOPHOSAURUS, "Cryolophosaurus");
         this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_CRYOLOPHOSAURUS, "Non-Legacy Cryolophosaurus");
         this.add(FossilsLegacyCoatTypeTags.DILOPHOSAURUS, "Dilophosaurus");
+        this.add(FossilsLegacyCoatTypeTags.DIMETRODON, "Dimetrodon");
         this.add(FossilsLegacyCoatTypeTags.DODO, "Dodo");
         this.add(FossilsLegacyCoatTypeTags.FUTABASAURUS, "Futabasaurus");
         this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_FUTABASAURUS, "Non-Legacy Futabasaurus");

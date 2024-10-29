@@ -43,7 +43,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Velociraptor extends Dinosaur implements DinopediaInformation, HighlyIntelligent, CoatTypeEntity {
+public class Velociraptor extends Dinosaur implements DinopediaInformation, HighlyIntelligent {
     private static final EntityDataAccessor<Boolean> LEARNED_CHESTS = SynchedEntityData.defineId(Velociraptor.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<ItemStack> HELD_ITEM = SynchedEntityData.defineId(Velociraptor.class, EntityDataSerializers.ITEM_STACK);
 

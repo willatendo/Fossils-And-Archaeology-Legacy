@@ -34,7 +34,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dodo extends Dinosaur implements DinopediaInformation, CoatTypeEntity, FloatDownEntity {
+public class Dodo extends Dinosaur implements DinopediaInformation, FloatDownEntity {
     public final AnimationState fallAnimationState = new AnimationState();
     public int eggTime = this.random.nextInt(6000) + 6000;
 

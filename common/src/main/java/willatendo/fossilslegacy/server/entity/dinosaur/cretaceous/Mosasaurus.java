@@ -36,12 +36,13 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformati
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyEntityTypeTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mosasaurus extends Dinosaur implements DinopediaInformation, CoatTypeEntity {
+public class Mosasaurus extends Dinosaur implements DinopediaInformation {
     public Mosasaurus(EntityType<? extends Mosasaurus> entityType, Level level) {
         super(entityType, level);
         this.setPathfindingMalus(PathType.WATER, 0.0F);
@@ -108,7 +109,7 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation, CoatTy
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this));
-        this.targetSelector.addGoal(3, new DinoNearestAttackableTargetGoal<>(this, null, true));
+        this.targetSelector.addGoal(3, new DinoNearestAttackableTargetGoal<>(this, FossilsLegacyEntityTypeTags.MOSASAURUS_VICTIMS, true));
     }
 
     @Override

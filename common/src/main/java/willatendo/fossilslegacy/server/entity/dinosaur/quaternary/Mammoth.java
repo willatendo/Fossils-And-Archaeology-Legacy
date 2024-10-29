@@ -51,7 +51,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mammoth extends Dinosaur implements DinopediaInformation, RideableDinosaur, Shearable, CoatTypeEntity {
+public class Mammoth extends Dinosaur implements DinopediaInformation, RideableDinosaur, Shearable {
     private static final EntityDataAccessor<Boolean> IS_SHEARED = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.BOOLEAN);
     private int eatAnimationTick;
     private int swingTick;

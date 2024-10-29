@@ -18,6 +18,7 @@ public class FossilsLegacyItemTags {
     public static final TagKey<Item> COMPSOGNATHUS_COMMANDABLES = ITEM_TAGS.register("compsognathus_commandables");
     public static final TagKey<Item> CRYOLOPHOSAURUS_COMMANDABLES = ITEM_TAGS.register("cryolophosaurus_commandables");
     public static final TagKey<Item> DILOPHOSAURUS_COMMANDABLES = ITEM_TAGS.register("dilophosaurus_commandables");
+    public static final TagKey<Item> DIMETRODON_COMMANDABLES = ITEM_TAGS.register("dimetrodon_commandables");
     public static final TagKey<Item> DNA = ITEM_TAGS.register("dna");
     public static final TagKey<Item> DRUM_INSTRUMENT = ITEM_TAGS.register("drum_instrument");
     public static final TagKey<Item> FROGLIGHTS = ITEM_TAGS.register("froglights");

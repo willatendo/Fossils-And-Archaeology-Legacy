@@ -32,7 +32,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Therizinosaurus extends Dinosaur implements DinopediaInformation, CoatTypeEntity {
+public class Therizinosaurus extends Dinosaur implements DinopediaInformation {
     public Therizinosaurus(EntityType<? extends Therizinosaurus> entityType, Level level) {
         super(entityType, level);
     }

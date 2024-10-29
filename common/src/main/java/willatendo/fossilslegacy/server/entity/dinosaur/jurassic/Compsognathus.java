@@ -32,7 +32,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Compsognathus extends Dinosaur implements DinopediaInformation, CoatTypeEntity {
+public class Compsognathus extends Dinosaur implements DinopediaInformation {
     public Compsognathus(EntityType<? extends Compsognathus> entityType, Level level) {
         super(entityType, level);
     }

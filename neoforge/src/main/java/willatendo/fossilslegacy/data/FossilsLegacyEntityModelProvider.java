@@ -22,6 +22,7 @@ public class FossilsLegacyEntityModelProvider extends EntityModelProvider {
         this.add(EntityModelHolder.builder(this.mod("cryolophosaurus"), CryolophosaurusModels.createCryolophosaurusBodyLayer()).withAnimation("walk", this.mod("cryolophosaurus_walk")).withHeadPeices("neck").build());
         this.add(EntityModelHolder.builder(this.mod("legacy_cryolophosaurus"), CryolophosaurusModels.createLegacyCryolophosaurusBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_CRYOLOPHOSAURUS_WALK).build());
         this.add(EntityModelHolder.builder(this.mod("legacy_dilophosaurus"), DilophosaurusModels.createLegacyDilophosaurusBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_DILOPHOSAURUS_WALK).build());
+        this.add(EntityModelHolder.builder(this.mod("dimetrodon"), DimetrodonModels.createDimetrodonBodyLayer()).build());
         this.add(EntityModelHolder.builder(this.mod("futabasaurus"), FutabasaurusModels.createFutabasaurusBodyLayer()).withAnimation("walk", this.mod("futabasaurus_walk")).withAnimation("swim", this.mod("futabasaurus_swim")).withHeadPeices("neck", "middle_neck", "head").build());
         this.add(EntityModelHolder.builder(this.mod("legacy_futabasaurus"), FutabasaurusModels.createLegacyFutabasaurusBodyLayer()).build());
         this.add(EntityModelHolder.builder(this.mod("gallimimus"), GallimimusModels.createGallimimusBodyLayer()).withAnimation("walk", this.mod("gallimimus_walk")).withHeadPeices("neck").build());

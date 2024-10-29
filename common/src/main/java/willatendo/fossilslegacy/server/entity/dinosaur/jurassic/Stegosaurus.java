@@ -31,7 +31,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Stegosaurus extends Dinosaur implements DinopediaInformation, CoatTypeEntity {
+public class Stegosaurus extends Dinosaur implements DinopediaInformation {
     public Stegosaurus(EntityType<? extends Stegosaurus> entityType, Level level) {
         super(entityType, level);
     }

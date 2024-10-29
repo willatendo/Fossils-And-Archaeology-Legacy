@@ -34,7 +34,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Moa extends Dinosaur implements DinopediaInformation, CoatTypeEntity {
+public class Moa extends Dinosaur implements DinopediaInformation {
     public int eggTime = this.random.nextInt(6000) + 6000;
 
     public Moa(EntityType<? extends Moa> entityType, Level level) {
@@ -78,10 +78,6 @@ public class Moa extends Dinosaur implements DinopediaInformation, CoatTypeEntit
     @Override
     public void aiStep() {
         super.aiStep();
-        Vec3 vec3 = this.getDeltaMovement();
-        if (!this.onGround() && vec3.y < 0.0) {
-            this.setDeltaMovement(vec3.multiply(1.0, 0.6, 1.0));
-        }
 
         if (!this.level().isClientSide && this.isAlive() && !this.isBaby() && --this.eggTime <= 0) {
             this.playSound(SoundEvents.CHICKEN_EGG, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);

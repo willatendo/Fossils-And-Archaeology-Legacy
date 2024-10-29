@@ -35,7 +35,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Triceratops extends Dinosaur implements DinopediaInformation, RideableDinosaur, CoatTypeEntity {
+public class Triceratops extends Dinosaur implements DinopediaInformation, RideableDinosaur {
     public Triceratops(EntityType<? extends Triceratops> entityType, Level level) {
         super(entityType, level);
     }

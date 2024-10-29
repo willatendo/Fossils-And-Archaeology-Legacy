@@ -35,7 +35,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Gallimimus extends Dinosaur implements DinopediaInformation, RideableDinosaur, CoatTypeEntity {
+public class Gallimimus extends Dinosaur implements DinopediaInformation, RideableDinosaur {
     public Gallimimus(EntityType<? extends Gallimimus> entityType, Level level) {
         super(entityType, level);
     }

@@ -27,6 +27,7 @@ public class FossilsLegacyCoatTypeTagProvider extends DataDrivenTagsProvider<Coa
         this.tag(FossilsLegacyCoatTypeTags.NON_LEGACY_CRYOLOPHOSAURUS).add(FossilsLegacyCoatTypes.CRYOLOPHOSAURUS);
         this.tag(FossilsLegacyCoatTypeTags.DILOPHOSAURUS).add(FossilsLegacyCoatTypes.LEGACY_DILOPHOSAURUS);
         this.tag(FossilsLegacyCoatTypeTags.DODO).add(FossilsLegacyCoatTypes.DODO);
+        this.tag(FossilsLegacyCoatTypeTags.DIMETRODON).add(FossilsLegacyCoatTypes.DIMETRODON);
         this.tag(FossilsLegacyCoatTypeTags.FUTABASAURUS).add(FossilsLegacyCoatTypes.FUTABASAURUS, FossilsLegacyCoatTypes.LEGACY_FUTABASAURUS);
         this.tag(FossilsLegacyCoatTypeTags.NON_LEGACY_FUTABASAURUS).add(FossilsLegacyCoatTypes.FUTABASAURUS);
         this.tag(FossilsLegacyCoatTypeTags.GALLIMIMUS).add(FossilsLegacyCoatTypes.GALLIMIMUS);

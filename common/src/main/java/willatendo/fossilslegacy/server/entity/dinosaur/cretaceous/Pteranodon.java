@@ -38,7 +38,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pteranodon extends Dinosaur implements DinopediaInformation, RideableDinosaur, CoatTypeEntity, FlyingDinosaur {
+public class Pteranodon extends Dinosaur implements DinopediaInformation, RideableDinosaur, FlyingDinosaur {
     public final AnimationState flyAnimationState = new AnimationState();
     public final AnimationState landAnimationState = new AnimationState();
     public float airSpeed = 0.0F;

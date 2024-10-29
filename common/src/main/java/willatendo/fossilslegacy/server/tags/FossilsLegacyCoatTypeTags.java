@@ -18,6 +18,7 @@ public class FossilsLegacyCoatTypeTags {
     public static final TagKey<CoatType> CRYOLOPHOSAURUS = COAT_TYPE_TAGS.register("cryolophosaurus");
     public static final TagKey<CoatType> NON_LEGACY_CRYOLOPHOSAURUS = COAT_TYPE_TAGS.register("non_legacy/cryolophosaurus");
     public static final TagKey<CoatType> DILOPHOSAURUS = COAT_TYPE_TAGS.register("dilophosaurus");
+    public static final TagKey<CoatType> DIMETRODON = COAT_TYPE_TAGS.register("dimetrodon");
     public static final TagKey<CoatType> DODO = COAT_TYPE_TAGS.register("dodo");
     public static final TagKey<CoatType> FUTABASAURUS = COAT_TYPE_TAGS.register("futabasaurus");
     public static final TagKey<CoatType> NON_LEGACY_FUTABASAURUS = COAT_TYPE_TAGS.register("non_legacy/futabasaurus");

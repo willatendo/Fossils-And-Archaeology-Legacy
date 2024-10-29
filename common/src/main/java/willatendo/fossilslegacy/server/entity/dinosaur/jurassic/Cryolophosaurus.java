@@ -34,7 +34,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cryolophosaurus extends Dinosaur implements DinopediaInformation, CoatTypeEntity {
+public class Cryolophosaurus extends Dinosaur implements DinopediaInformation {
     public Cryolophosaurus(EntityType<? extends Cryolophosaurus> entityType, Level level) {
         super(entityType, level);
     }

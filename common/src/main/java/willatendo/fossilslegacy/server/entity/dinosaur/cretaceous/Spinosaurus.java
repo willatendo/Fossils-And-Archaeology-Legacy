@@ -33,7 +33,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Spinosaurus extends Dinosaur implements DinopediaInformation, CoatTypeEntity {
+public class Spinosaurus extends Dinosaur implements DinopediaInformation {
     private final BlockBreakRule blockBreakRule = new BlockBreakRule(this, 3, FossilsLegacyBlockTags.SPINOSAURUS_UNBREAKABLES);
 
     public Spinosaurus(EntityType<? extends Spinosaurus> entityType, Level level) {

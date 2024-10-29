@@ -39,7 +39,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dilophosaurus extends Dinosaur implements DinopediaInformation, CoatTypeEntity, RangedAttackMob {
+public class Dilophosaurus extends Dinosaur implements DinopediaInformation, RangedAttackMob {
     private static final EntityDataAccessor<Boolean> ATTACKING = SynchedEntityData.defineId(Dilophosaurus.class, EntityDataSerializers.BOOLEAN);
 
     public Dilophosaurus(EntityType<? extends Dilophosaurus> entityType, Level level) {

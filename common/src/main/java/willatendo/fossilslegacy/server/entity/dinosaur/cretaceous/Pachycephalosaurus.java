@@ -31,7 +31,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pachycephalosaurus extends Dinosaur implements DinopediaInformation, CoatTypeEntity {
+public class Pachycephalosaurus extends Dinosaur implements DinopediaInformation {
     public Pachycephalosaurus(EntityType<? extends Pachycephalosaurus> entityType, Level level) {
         super(entityType, level);
     }

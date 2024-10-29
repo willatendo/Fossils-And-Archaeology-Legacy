@@ -42,7 +42,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur, CoatTypeEntity {
+public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur {
     private static final EntityDataAccessor<Boolean> KNOCKED_OUT = SynchedEntityData.defineId(Tyrannosaurus.class, EntityDataSerializers.BOOLEAN);
     private final BlockBreakRule blockBreakRule = new BlockBreakRule(this, 3, FossilsLegacyBlockTags.TYRANNOSAURUS_UNBREAKABLES);
 

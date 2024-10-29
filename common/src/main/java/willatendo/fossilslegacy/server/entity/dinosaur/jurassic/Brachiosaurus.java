@@ -35,7 +35,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Brachiosaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur, CoatTypeEntity {
+public class Brachiosaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur {
     public Brachiosaurus(EntityType<? extends Brachiosaurus> entityType, Level level) {
         super(entityType, level);
     }

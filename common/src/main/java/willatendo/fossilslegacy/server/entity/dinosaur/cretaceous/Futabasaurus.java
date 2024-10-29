@@ -43,7 +43,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Futabasaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur, CoatTypeEntity {
+public class Futabasaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur {
     private static final EntityDataAccessor<Boolean> SHOULD_SINK = SynchedEntityData.defineId(Futabasaurus.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> DIVE_POSE = SynchedEntityData.defineId(Futabasaurus.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Float> TARGET_Y = SynchedEntityData.defineId(Futabasaurus.class, EntityDataSerializers.FLOAT);

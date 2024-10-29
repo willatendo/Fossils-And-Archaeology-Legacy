@@ -35,7 +35,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Smilodon extends Dinosaur implements DinopediaInformation, CoatTypeEntity, ShakingEntity {
+public class Smilodon extends Dinosaur implements DinopediaInformation, ShakingEntity {
     private static final EntityDataAccessor<Boolean> DATA_INTERESTED_ID = SynchedEntityData.defineId(Smilodon.class, EntityDataSerializers.BOOLEAN);
     private boolean isWet;
     private boolean isShaking;
