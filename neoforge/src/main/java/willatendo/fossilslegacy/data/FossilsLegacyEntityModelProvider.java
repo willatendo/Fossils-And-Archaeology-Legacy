@@ -35,10 +35,12 @@ public class FossilsLegacyEntityModelProvider extends EntityModelProvider {
         this.add(EntityModelHolder.builder(this.mod("legacy_landing_pteranodon"), PteranodonModels.createLegacyLandingPteranodonBodyLayer()).build());
         this.add(EntityModelHolder.builder(this.mod("stegosaurus"), StegosaurusModels.createStegosaurusBodyLayer()).withAnimation("walk", this.mod("stegosaurus_walk")).build());
         this.add(EntityModelHolder.builder(this.mod("legacy_stegosaurus"), StegosaurusModels.createLegacyStegosaurusBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_STEGOSAURUS_WALK).build());
+        this.add(EntityModelHolder.builder(this.mod("therizinosaurus"), TherizinosaurusModels.createTherizinosaurusBodyLayer()).withAnimation("walk", this.mod("therizinosaurus_walk")).build());
         this.add(EntityModelHolder.builder(this.mod("legacy_therizinosaurus"), TherizinosaurusModels.createLegacyTherizinosaurusBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_THERIZINOSAURUS_WALK).build());
         this.add(EntityModelHolder.builder(this.mod("triceratops"), TriceratopsModels.createTriceratopsBodyLayer()).withAnimation("walk", this.mod("triceratops_walk")).withHeadPeices("head").build());
         this.add(EntityModelHolder.builder(this.mod("legacy_triceratops"), TriceratopsModels.createLegacyTriceratopsBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_TRICERATOPS_WALK).build());
         this.add(EntityModelHolder.builder(this.mod("tyrannosaurus"), TyrannosaurusModels.createTyrannosaurusBodyLayer()).withAnimation("walk", this.mod("tyrannosaurus_walk")).build());
+        this.add(EntityModelHolder.builder(this.mod("knocked_out_tyrannosaurus"), TyrannosaurusModels.createKnockedOutTyrannosaurusBodyLayer()).build());
         this.add(EntityModelHolder.builder(this.mod("legacy_tyrannosaurus"), TyrannosaurusModels.createLegacyTyrannosaurusBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_TYRANNOSAURUS_WALK).withBuiltInAnimation("head", BuiltInAnimationTypes.LEGACY_TYRANNOSAURUS_HEAD).build());
         this.add(EntityModelHolder.builder(this.mod("legacy_knocked_out_tyrannosaurus"), TyrannosaurusModels.createLegacyKnockedOutTyrannosaurusBodyLayer()).build());
         this.add(EntityModelHolder.builder(this.mod("velociraptor"), VelociraptorModels.createVelociraptorBodyLayer()).withAnimation("walk", this.mod("velociraptor_walk")).withHeadPeices("head").build());

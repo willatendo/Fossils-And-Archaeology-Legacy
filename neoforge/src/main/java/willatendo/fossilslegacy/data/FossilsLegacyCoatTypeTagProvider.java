@@ -44,7 +44,8 @@ public class FossilsLegacyCoatTypeTagProvider extends DataDrivenTagsProvider<Coa
         this.tag(FossilsLegacyCoatTypeTags.SPINOSAURUS).add(FossilsLegacyCoatTypes.SPINOSAURUS);
         this.tag(FossilsLegacyCoatTypeTags.STEGOSAURUS).add(FossilsLegacyCoatTypes.STEGOSAURUS, FossilsLegacyCoatTypes.LEGACY_STEGOSAURUS);
         this.tag(FossilsLegacyCoatTypeTags.NON_LEGACY_STEGOSAURUS).add(FossilsLegacyCoatTypes.STEGOSAURUS);
-        this.tag(FossilsLegacyCoatTypeTags.THERIZINOSAURUS).add(FossilsLegacyCoatTypes.LEGACY_FEATHERED_THERIZINOSAURUS, FossilsLegacyCoatTypes.LEGACY_FEATHERLESS_THERIZINOSAURUS);
+        this.tag(FossilsLegacyCoatTypeTags.THERIZINOSAURUS).add(FossilsLegacyCoatTypes.THERIZINOSAURUS, FossilsLegacyCoatTypes.LEGACY_FEATHERED_THERIZINOSAURUS, FossilsLegacyCoatTypes.LEGACY_FEATHERLESS_THERIZINOSAURUS);
+        this.tag(FossilsLegacyCoatTypeTags.NON_LEGACY_THERIZINOSAURUS).add(FossilsLegacyCoatTypes.THERIZINOSAURUS);
         this.tag(FossilsLegacyCoatTypeTags.TRICERATOPS).add(FossilsLegacyCoatTypes.BROWN_TRICERATOPS, FossilsLegacyCoatTypes.GREEN_TRICERATOPS, FossilsLegacyCoatTypes.LEGACY_BROWN_TRICERATOPS, FossilsLegacyCoatTypes.LEGACY_GREEN_TRICERATOPS);
         this.tag(FossilsLegacyCoatTypeTags.NON_LEGACY_TRICERATOPS).add(FossilsLegacyCoatTypes.BROWN_TRICERATOPS, FossilsLegacyCoatTypes.GREEN_TRICERATOPS);
         this.tag(FossilsLegacyCoatTypeTags.TYRANNOSAURUS).add(FossilsLegacyCoatTypes.TYRANNOSAURUS, FossilsLegacyCoatTypes.LEGACY_TYRANNOSAURUS);

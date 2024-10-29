@@ -7,7 +7,7 @@
     "shadow_size": 0.75
   },
   "bounding_box_info": {
-    "bounding_box_growth": 0.4,
+    "bounding_box_growth": 0.6,
     "bounding_box_height": 0.5,
     "bounding_box_width": 0.5
   },
@@ -23,7 +23,7 @@
     }
   },
   "models": {
-    "knocked_out_model": "fossilslegacy:legacy_knocked_out_tyrannosaurus",
+    "knocked_out_model": "fossilslegacy:knocked_out_tyrannosaurus",
     "model": "fossilslegacy:tyrannosaurus"
   },
   "patterns": [

@@ -29,7 +29,7 @@
     {
       "pattern_type": "dominant",
       "textures": {
-        "texture": "fossilslegacy:textures/entity/therizinosaurus/feathered_therizinosaurus.png"
+        "texture": "fossilslegacy:textures/entity/therizinosaurus/legacy/therizinosaurus_feathered.png"
       }
     }
   ]

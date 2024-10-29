@@ -28,10 +28,7 @@ import net.minecraft.world.phys.Vec3;
 import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEggVariants;
-import willatendo.fossilslegacy.server.entity.goal.DinoEatFromFeederGoal;
-import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
-import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
-import willatendo.fossilslegacy.server.entity.goal.DinoTemptGoal;
+import willatendo.fossilslegacy.server.entity.goal.*;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CoatTypeEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
@@ -111,6 +108,7 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation, CoatTy
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this));
+        this.targetSelector.addGoal(3, new DinoNearestAttackableTargetGoal<>(this, null, true));
     }
 
     @Override

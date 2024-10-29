@@ -2,6 +2,8 @@ package willatendo.fossilslegacy.data;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.Anu;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
@@ -185,6 +187,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.addCoatType(FossilsLegacyCoatTypes.SMILODON, "Smilodon 2024)");
         this.addCoatType(FossilsLegacyCoatTypes.SPINOSAURUS, "Spinosaurus (2024)");
         this.addCoatType(FossilsLegacyCoatTypes.STEGOSAURUS, "Stegosaurus (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.THERIZINOSAURUS, "Therizinosaurus (2024)");
         this.addCoatType(FossilsLegacyCoatTypes.GREEN_TRICERATOPS, "Green Triceratops (2024)");
         this.addCoatType(FossilsLegacyCoatTypes.BROWN_TRICERATOPS, "Brown Triceratops (2024)");
         this.addCoatType(FossilsLegacyCoatTypes.TYRANNOSAURUS, "Tyrannosaurus (2024)");
@@ -408,8 +411,10 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.addFossilVariant(FossilsLegacyFossilVariants.LEGACY_PTERANODON, "Legacy Pteranodon");
         this.addFossilVariant(FossilsLegacyFossilVariants.SPINOSAURUS, "Spinosaurus");
         this.addFossilVariant(FossilsLegacyFossilVariants.STEGOSAURUS, "Stegosaurus");
+        this.addFossilVariant(FossilsLegacyFossilVariants.THERIZINOSAURUS, "Therizinosaurus");
         this.addFossilVariant(FossilsLegacyFossilVariants.TRICERATOPS, "Triceratops");
         this.addFossilVariant(FossilsLegacyFossilVariants.LEGACY_TRICERATOPS, "Legacy Triceratops");
+        this.addFossilVariant(FossilsLegacyFossilVariants.TYRANNOSAURUS, "Tyrannosaurus");
         this.addFossilVariant(FossilsLegacyFossilVariants.VELOCIRAPTOR, "Velociraptor");
 
         // JEI
@@ -585,8 +590,10 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.articulated_fossil.legacy_pteranodon", "Articulated Legacy Pteranodon Fossil");
         this.add("item.fossilslegacy.articulated_fossil.spinosaurus", "Articulated Spinosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.stegosaurus", "Articulated Stegosaurus Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.therizinosaurus", "Articulated Therizinosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.triceratops", "Articulated Triceratops Fossil");
         this.add("item.fossilslegacy.articulated_fossil.legacy_triceratops", "Articulated Legacy Triceratops Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.tyrannosaurus", "Articulated Tyrannosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.velociraptor", "Articulated Velociraptor Fossil");
         this.add(FossilsLegacyItems.RELIC_SCRAP.get());
         this.add(FossilsLegacyItems.STONE_TABLET.get());
@@ -856,6 +863,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyCoatTypeTags.BRACHIOSAURUS, "Brachiosaurus");
         this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_BRACHIOSAURUS, "Non-Legacy Brachiosaurus");
         this.add(FossilsLegacyCoatTypeTags.CARNOTAURUS, "Carnotaurus");
+        this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_CARNOTAURUS, "Non-Legacy Carnotaurus");
         this.add(FossilsLegacyCoatTypeTags.COMPSOGNATHUS, "Compsognathus");
         this.add(FossilsLegacyCoatTypeTags.CRYOLOPHOSAURUS, "Cryolophosaurus");
         this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_CRYOLOPHOSAURUS, "Non-Legacy Cryolophosaurus");
@@ -869,6 +877,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyCoatTypeTags.MAMMOTH, "Mammoth");
         this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_MAMMOTH, "Non-Legacy Mammoth");
         this.add(FossilsLegacyCoatTypeTags.MOSASAURUS, "Mosasaurus");
+        this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_MOSASAURUS, "Non-Legacy Mosasaurus");
         this.add(FossilsLegacyCoatTypeTags.PACHYCEPHALOSAURUS, "Pachycephalosaurus");
         this.add(FossilsLegacyCoatTypeTags.PTERANODON, "Pteranodon");
         this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_PTERANODON, "Non-Legacy Pteranodon");
@@ -876,16 +885,28 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_SMILODON, "Non-Legacy Smilodon");
         this.add(FossilsLegacyCoatTypeTags.SPINOSAURUS, "Spinosaurus");
         this.add(FossilsLegacyCoatTypeTags.STEGOSAURUS, "Stegosaurus");
+        this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_STEGOSAURUS, "Non-Legacy Stegosaurus");
         this.add(FossilsLegacyCoatTypeTags.THERIZINOSAURUS, "Therizinosaurus");
+        this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_THERIZINOSAURUS, "Non-Legacy Therizinosaurus");
         this.add(FossilsLegacyCoatTypeTags.TRICERATOPS, "Triceratops");
         this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_TRICERATOPS, "Non-Legacy Triceratops");
         this.add(FossilsLegacyCoatTypeTags.TYRANNOSAURUS, "Tyrannosaurus");
+        this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_TYRANNOSAURUS, "Non-Legacy Tyrannosaurus");
         this.add(FossilsLegacyCoatTypeTags.VELOCIRAPTOR, "Velociraptor");
         this.add(FossilsLegacyCoatTypeTags.LEGACY_VELOCIRAPTOR, "Legacy Velociraptor");
         this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_VELOCIRAPTOR, "Non-Legacy Velociraptor");
 
         this.add(FossilsLegacyDamgeTypeTags.SPINOSAURUS_IMMUNE, "Spinosaurus Immune");
         this.add(FossilsLegacyDamgeTypeTags.TYRANNOSAURUS_IMMUNE, "Tyrannosaurus Immune");
+
+        this.add(FossilsLegacyEntityTypeTags.CARNOTAURUS_VICTIMS, "Carnotaurus");
+        this.add(FossilsLegacyEntityTypeTags.COMPSOGNATHUS_VICTIMS, "Compsognathus");
+        this.add(FossilsLegacyEntityTypeTags.CRYOLOPHOSAURUS_VICTIMS, "Cryolophosaurus");
+        this.add(FossilsLegacyEntityTypeTags.DILOPHOSAURUS_VICTIMS, "Dilophosaurus");
+        this.add(FossilsLegacyEntityTypeTags.MOSASAURUS_VICTIMS, "Mosasaurus");
+        this.add(FossilsLegacyEntityTypeTags.SPINOSAURUS_VICTIMS, "Spinosaurs");
+        this.add(FossilsLegacyEntityTypeTags.TYRANNOSAURUS_VICTIMS, "Tyrannosaurus");
+        this.add(FossilsLegacyEntityTypeTags.VELOCIRAPTOR_VICTIMS, "Velociraptor");
 
         this.add(FossilsLegacyFluidTags.PERMAFROST_FREEZABLE, "Permaforst Freezable");
 

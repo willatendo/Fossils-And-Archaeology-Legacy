@@ -33,8 +33,10 @@ public class FossilsLegacyFossilVariantTagProvider extends DataDrivenTagsProvide
                         FossilsLegacyFossilVariants.LEGACY_PTERANODON,
                         FossilsLegacyFossilVariants.SPINOSAURUS,
                         FossilsLegacyFossilVariants.STEGOSAURUS,
+                        FossilsLegacyFossilVariants.THERIZINOSAURUS,
                         FossilsLegacyFossilVariants.TRICERATOPS,
                         FossilsLegacyFossilVariants.LEGACY_TRICERATOPS,
+                        FossilsLegacyFossilVariants.TYRANNOSAURUS,
                         FossilsLegacyFossilVariants.VELOCIRAPTOR);
     }
 }

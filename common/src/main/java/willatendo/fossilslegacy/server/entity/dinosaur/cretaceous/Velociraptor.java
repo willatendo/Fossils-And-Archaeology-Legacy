@@ -37,6 +37,7 @@ import willatendo.fossilslegacy.server.item.DebugItem;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyEntityTypeTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.ArrayList;
@@ -110,7 +111,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
         this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this));
         this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
-        this.targetSelector.addGoal(4, new DinoNearestAttackableTargetGoal<>(this, LivingEntity.class, true));
+        this.targetSelector.addGoal(4, new DinoNearestAttackableTargetGoal<>(this, FossilsLegacyEntityTypeTags.VELOCIRAPTOR_VICTIMS, true));
     }
 
     @Override

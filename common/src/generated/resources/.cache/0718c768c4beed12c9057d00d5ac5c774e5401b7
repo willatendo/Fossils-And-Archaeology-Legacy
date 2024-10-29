@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-28T08:06:03.6673254	Entity Models: fossilslegacy
+// 1.21.1	2024-10-28T17:45:09.2837975	Entity Models: fossilslegacy
 1ecd38dff273169b3f31ee5c30b0505792498a48 assets/fossilslegacy/fossilslegacy/models/ankylosaurus.json
 7e4fe5d17ebcbe0e77f6f79eeb301d3ad8bb512c assets/fossilslegacy/fossilslegacy/models/brachiosaurus.json
 107c5bfbb64857d1e2f0a20637f0425c98465d2c assets/fossilslegacy/fossilslegacy/models/carnotaurus.json
@@ -7,6 +7,7 @@ d0e1967e836fac9e4b7cbe6c07e14cb24b89a2ae assets/fossilslegacy/fossilslegacy/mode
 315971ae094fb8b9e3db3fc6f59b8896769af6ac assets/fossilslegacy/fossilslegacy/models/dodo.json
 8bdb88de6dcc1f27dc45c73bb739e933e545f271 assets/fossilslegacy/fossilslegacy/models/futabasaurus.json
 0c4226c4f0caa32069a5398930fec56f5befd1db assets/fossilslegacy/fossilslegacy/models/gallimimus.json
+66bfe26dc01fad4ca8ffe1395e38efc25693cdaf assets/fossilslegacy/fossilslegacy/models/knocked_out_tyrannosaurus.json
 dd83bf1d279c0979873fc478f07fa4ebdccfda01 assets/fossilslegacy/fossilslegacy/models/legacy_brachiosaurus.json
 5dac1555aec4fa2b4cc31c60298d61c67f43b5b1 assets/fossilslegacy/fossilslegacy/models/legacy_carnotaurus.json
 e43953737840c460add120afb521183146dd433e assets/fossilslegacy/fossilslegacy/models/legacy_cryolophosaurus.json
@@ -32,6 +33,7 @@ c91b17c661f270fd40fbf57d1c3dc085f61cd1d1 assets/fossilslegacy/fossilslegacy/mode
 bc3a11e1076f4b4d30d1415f472beb7314b877a4 assets/fossilslegacy/fossilslegacy/models/smilodon.json
 4534406b37f55d6860a8f0455a2483947f41a43a assets/fossilslegacy/fossilslegacy/models/spinosaurus.json
 21cf5f620109af9994f75462cf380608cd488c09 assets/fossilslegacy/fossilslegacy/models/stegosaurus.json
+9f4035046ff47a56878c874d3ccb9242dff5760b assets/fossilslegacy/fossilslegacy/models/therizinosaurus.json
 62eb3b508dc3b9a1f624f726c89860b73f0f22b1 assets/fossilslegacy/fossilslegacy/models/triceratops.json
 145de5ede183dc20f2afab1569e68fba149936f5 assets/fossilslegacy/fossilslegacy/models/tyrannosaurus.json
 0178354f29acb910a29fbc9360cc43494a290619 assets/fossilslegacy/fossilslegacy/models/velociraptor.json

@@ -36,10 +36,7 @@ import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
-import willatendo.fossilslegacy.server.tags.FossilsLegacyBlockTags;
-import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
-import willatendo.fossilslegacy.server.tags.FossilsLegacyDamgeTypeTags;
-import willatendo.fossilslegacy.server.tags.FossilsLegacyItemTags;
+import willatendo.fossilslegacy.server.tags.*;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.ArrayList;
@@ -190,7 +187,7 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
         this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this));
         this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
-        this.targetSelector.addGoal(4, new DinoNearestAttackableTargetGoal<>(this, LivingEntity.class, true));
+        this.targetSelector.addGoal(4, new DinoNearestAttackableTargetGoal<>(this, FossilsLegacyEntityTypeTags.TYRANNOSAURUS_VICTIMS, true));
     }
 
     @Override

@@ -37,6 +37,7 @@ public class FossilsLegacyCoatTypeTags {
     public static final TagKey<CoatType> STEGOSAURUS = COAT_TYPE_TAGS.register("stegosaurus");
     public static final TagKey<CoatType> NON_LEGACY_STEGOSAURUS = COAT_TYPE_TAGS.register("non_legacy/stegosaurus");
     public static final TagKey<CoatType> THERIZINOSAURUS = COAT_TYPE_TAGS.register("therizinosaurus");
+    public static final TagKey<CoatType> NON_LEGACY_THERIZINOSAURUS = COAT_TYPE_TAGS.register("non_legacy/therizinosaurus");
     public static final TagKey<CoatType> TRICERATOPS = COAT_TYPE_TAGS.register("triceratops");
     public static final TagKey<CoatType> NON_LEGACY_TRICERATOPS = COAT_TYPE_TAGS.register("non_legacy/triceratops");
     public static final TagKey<CoatType> TYRANNOSAURUS = COAT_TYPE_TAGS.register("tyrannosaurus");

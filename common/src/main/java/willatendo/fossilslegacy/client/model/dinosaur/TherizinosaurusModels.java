@@ -7,6 +7,22 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 
 public final class TherizinosaurusModels {
+    public static LayerDefinition createTherizinosaurusBodyLayer() {
+        MeshDefinition meshDefinition = new MeshDefinition();
+        PartDefinition partDefinition = meshDefinition.getRoot();
+
+        partDefinition.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(24, 54).addBox(-1.0F, 4.0F, 0.0F, 2.0F, 5.0F, 3.0F).texOffs(46, 24).addBox(-1.0F, 9.0F, -2.0F, 3.0F, 2.0F, 5.0F).texOffs(26, 20).addBox(-2.0F, -4.0F, -3.0F, 4.0F, 8.0F, 6.0F), PartPose.offset(4.0F, 13.0F, -1.0F));
+        partDefinition.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(50, 0).addBox(-2.0F, 9.0F, -2.0F, 3.0F, 2.0F, 5.0F).texOffs(30, 0).addBox(-2.0F, -4.0F, -3.0F, 4.0F, 8.0F, 6.0F).texOffs(34, 55).addBox(-1.0F, 4.0F, 0.0F, 2.0F, 5.0F, 3.0F), PartPose.offset(-4.0F, 13.0F, -1.0F));
+        partDefinition.addOrReplaceChild("left_arm", CubeListBuilder.create().texOffs(54, 55).addBox(-1.0F, 3.0F, -1.0F, 2.0F, 5.0F, 3.0F).texOffs(22, 40).addBox(0.0F, 8.0F, 1.0F, 1.0F, 4.0F, 1.0F).texOffs(34, 14).addBox(0.0F, 6.0F, -2.0F, 1.0F, 5.0F, 1.0F).texOffs(42, 14).addBox(0.0F, 8.0F, -0.5F, 1.0F, 4.0F, 1.0F).texOffs(12, 53).addBox(-1.0F, -2.0F, -2.0F, 2.0F, 5.0F, 4.0F), PartPose.offset(3.0F, 6.0F, -9.0F));
+        partDefinition.addOrReplaceChild("right_arm", CubeListBuilder.create().texOffs(0, 53).addBox(-1.0F, -2.0F, -1.5F, 2.0F, 5.0F, 4.0F).texOffs(44, 55).addBox(-1.0F, 3.0F, -0.5F, 2.0F, 5.0F, 3.0F).texOffs(30, 14).addBox(-1.0F, 6.0F, -1.5F, 1.0F, 5.0F, 1.0F).texOffs(38, 14).addBox(-1.0F, 8.0F, 1.5F, 1.0F, 4.0F, 1.0F).texOffs(18, 40).addBox(-1.0F, 8.0F, 0.0F, 1.0F, 4.0F, 1.0F), PartPose.offset(-3.0F, 6.0F, -9.5F));
+        PartDefinition neck = partDefinition.addOrReplaceChild("neck", CubeListBuilder.create().texOffs(26, 34).addBox(-1.0F, -11.0F, -3.0F, 2.0F, 15.0F, 5.0F), PartPose.offset(0.0F, 4.0F, -9.0F));
+        neck.addOrReplaceChild("head", CubeListBuilder.create().texOffs(50, 7).addBox(-1.0F, -2.0F, -8.0F, 2.0F, 3.0F, 4.0F).texOffs(40, 34).addBox(-2.0F, -4.0F, -4.0F, 4.0F, 5.0F, 5.0F), PartPose.offset(0.0F, -9.0F, 0.0F));
+        partDefinition.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(40, 44).addBox(-2.0F, 0.0F, 3.0F, 4.0F, 7.0F, 4.0F).texOffs(46, 14).addBox(-1.0F, 3.0F, 7.0F, 2.0F, 4.0F, 6.0F).texOffs(0, 40).addBox(-3.0F, -4.0F, 0.0F, 6.0F, 10.0F, 3.0F), PartPose.offset(0.0F, 11.0F, 3.0F));
+        partDefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, -19.0F, -6.0F, 6.0F, 11.0F, 9.0F).texOffs(0, 20).addBox(-2.0F, -23.0F, -11.0F, 4.0F, 11.0F, 9.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
+
+        return LayerDefinition.create(meshDefinition, 128, 128);
+    }
+
     public static LayerDefinition createLegacyTherizinosaurusBodyLayer() {
         MeshDefinition meshDefinition = new MeshDefinition();
         PartDefinition partDefinition = meshDefinition.getRoot();
