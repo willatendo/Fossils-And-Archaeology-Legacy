@@ -30,6 +30,7 @@
 - Updated Tyrannosaurus Model
 - Updated Therizinosaurus Model
 - Carnivourus Dinosaurs Now Use Tags To Target Animals; Fixes Cannibalism And Other Attacks
+- Updated Goal Order: Dinosaurs Will Not Fight Back More Than Before
 - (Fabric) Fixed Server Crash
 - Fixed Placing Stone Tables
 - Fixed Cannibalism
@@ -169,7 +170,12 @@
 - Added "carnivore_foods" Item Tag To Define Items Carivores Can Eat
 - Added "omnivore_foods" Item Tag To Define Items Omnivores Can Eat
 - Added "piscivore_foods" Item Tag To Define Items Piscivores Can Eat
-- Added Articulated Fossil Item
+- Added Articulated Fossil Item; Automatically Creates One For All Skeletons
+- Added Dimetrodon
+- Added Dimetrodon DNA
+- Added Dimetrodon Egg
+- Added Raw Dimetrodon
+- Added Cooked Dimetrodon
 - Removed Client Config As It Is No Longer Necessary
 12/9/2024
 - (Fabric) Fixed Crash

@@ -13,6 +13,7 @@ public class FossilsLegacyEntityTypeTags {
     public static final TagKey<EntityType<?>> COMPSOGNATHUS_VICTIMS = ENTITY_TYPE_TAGS.register("victims/compsognathus");
     public static final TagKey<EntityType<?>> CRYOLOPHOSAURUS_VICTIMS = ENTITY_TYPE_TAGS.register("victims/cryolophosaurus");
     public static final TagKey<EntityType<?>> DILOPHOSAURUS_VICTIMS = ENTITY_TYPE_TAGS.register("victims/dilophosaurus");
+    public static final TagKey<EntityType<?>> DIMETRODON_VICTIMS = ENTITY_TYPE_TAGS.register("victims/dimetrodon");
     public static final TagKey<EntityType<?>> MOSASAURUS_VICTIMS = ENTITY_TYPE_TAGS.register("victims/mosasaurus");
     public static final TagKey<EntityType<?>> SPINOSAURUS_VICTIMS = ENTITY_TYPE_TAGS.register("victims/spinosaurus");
     public static final TagKey<EntityType<?>> TYRANNOSAURUS_VICTIMS = ENTITY_TYPE_TAGS.register("victims/tyrannosaurus");

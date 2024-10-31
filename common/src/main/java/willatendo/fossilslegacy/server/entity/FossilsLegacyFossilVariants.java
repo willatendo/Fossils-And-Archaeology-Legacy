@@ -17,6 +17,7 @@ public class FossilsLegacyFossilVariants {
     public static final ResourceKey<FossilVariant> CARNOTAURUS = FossilsLegacyFossilVariants.create("carnotaurus");
     public static final ResourceKey<FossilVariant> COMPSOGNATHUS = FossilsLegacyFossilVariants.create("compsognathus");
     public static final ResourceKey<FossilVariant> CRYOLOPHOSAURUS = FossilsLegacyFossilVariants.create("cryolophosaurus");
+    public static final ResourceKey<FossilVariant> DIMETRODON = FossilsLegacyFossilVariants.create("dimetrodon");
     public static final ResourceKey<FossilVariant> FUTABASAURUS = FossilsLegacyFossilVariants.create("futabasaurus");
     public static final ResourceKey<FossilVariant> LEGACY_FUTABASAURUS = FossilsLegacyFossilVariants.create("legacy_futabasaurus");
     public static final ResourceKey<FossilVariant> GALLIMIMUS = FossilsLegacyFossilVariants.create("gallimimus");
@@ -52,8 +53,9 @@ public class FossilsLegacyFossilVariants {
         FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, BRACHIOSAURUS, 36, "brachiosaurus", FossilsLegacyUtils.resource("brachiosaurus"), 9, 1.75F, 2.5F, 0.3F, 1.5F, 1.5F, 0.3F, 1.0F, 0.15F);
         FossilsLegacyFossilVariants.registerLegacyMesozoic(bootstrapContext, LEGACY_BRACHIOSAURUS, 36, "brachiosaurus", FossilsLegacyUtils.resource("legacy_brachiosaurus"), 9, 1.75F, 2.5F, 0.3F, 1.5F, 1.5F, 0.3F, 0.15F, 0.1F);
         FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, CARNOTAURUS, 8, "carnotaurus", FossilsLegacyUtils.resource("carnotaurus"), 7, 0.5F, 0.5F, 0.35F, 0.5F, 0.5F, 0.4F, 0.75F, 0.1F);
-        FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, COMPSOGNATHUS, 8, "compsognathus", FossilsLegacyUtils.resource("compsognathus"), 3, 0.5F, 0.5F, 0.35F, 0.5F, 0.5F, 0.4F, 0.75F, 0.1F);
+        FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, COMPSOGNATHUS, 8, "compsognathus", FossilsLegacyUtils.resource("compsognathus"), 3, 0.25F, 0.25F, 0.1F, 0.25F, 0.25F, 0.125F, 0.25F, 0.025F);
         FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, CRYOLOPHOSAURUS, 8, "cryolophosaurus", FossilsLegacyUtils.resource("cryolophosaurus"), 5, 0.35F, 0.35F, 0.2F, 0.25F, 0.25F, 0.2F, 0.15F, 0.1F);
+        FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, DIMETRODON, 12, "dimetrodon", FossilsLegacyUtils.resource("dimetrodon"), 5, 0.5F, 0.5F, 0.05F, 0.5F, 0.5F, 0.075F, 0.15F, 0.05F);
         FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, FUTABASAURUS, 12, "futabasaurus", FossilsLegacyUtils.resource("futabasaurus"), 5, 2.0F, 0.75F, 0.25F, 1.5F, 1.5F, 0.3F, 1.0F, 0.15F);
         FossilsLegacyFossilVariants.registerLegacyMesozoic(bootstrapContext, LEGACY_FUTABASAURUS, 12, "futabasaurus", FossilsLegacyUtils.resource("legacy_futabasaurus"), 5, 2.0F, 0.75F, 0.25F, 1.5F, 1.5F, 0.3F, 1.0F, 0.15F);
         FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, GALLIMIMUS, 8, "gallimimus", FossilsLegacyUtils.resource("gallimimus"), 5, 0.7F, 0.7F, 0.25F, 0.75F, 0.75F, 0.2F, 1.0F, 0.1F);
@@ -63,7 +65,7 @@ public class FossilsLegacyFossilVariants {
         FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, SPINOSAURUS, 8, "spinosaurus", FossilsLegacyUtils.resource("spinosaurus"), 7, 0.5F, 0.5F, 0.4F, 0.5F, 0.5F, 0.5125F, 0.5F, 0.15F);
         FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, STEGOSAURUS, 12, "stegosaurus", FossilsLegacyUtils.resource("stegosaurus"), 6, 0.5F, 0.5F, 0.4F, 0.5F, 0.5F, 0.5125F, 0.5F, 0.15F);
         FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, THERIZINOSAURUS, 10, "therizinosaurus", FossilsLegacyUtils.resource("therizinosaurus"), 6, 0.5F, 0.5F, 0.35F, 0.5F, 0.5F, 0.25F, 0.75F, 0.1F);
-        FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, TRICERATOPS, 12, "triceratops", FossilsLegacyUtils.resource("triceratops"), 6, 0.75F, 0.75F, 0.2F, 1.5F, 1.5F, 0.3F, 1.0F, 0.1F);
+        FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, TRICERATOPS, 12, "triceratops", FossilsLegacyUtils.resource("triceratops"), 6, 1.0F, 1.0F, 0.2F, 1.0F, 1.0F, 0.15F, 1.0F, 0.1F);
         FossilsLegacyFossilVariants.registerLegacyMesozoic(bootstrapContext, LEGACY_TRICERATOPS, 12, "triceratops", FossilsLegacyUtils.resource("legacy_triceratops"), 6, 0.75F, 0.75F, 0.15F, 1.5F, 1.5F, 0.3F, 1.0F, 0.1F);
         FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, TYRANNOSAURUS, 8, "tyrannosaurus", FossilsLegacyUtils.resource("tyrannosaurus"), 7, 0.5F, 0.5F, 0.6F, 0.5F, 0.5F, 0.5125F, 0.75F, 0.15F);
         FossilsLegacyFossilVariants.registerMesozoic(bootstrapContext, VELOCIRAPTOR, 8, "velociraptor", FossilsLegacyUtils.resource("velociraptor"), 3, 0.2F, 0.4F, 0.05F, 0.5F, 0.5F, 0.1F, 0.5F, 0.025F);

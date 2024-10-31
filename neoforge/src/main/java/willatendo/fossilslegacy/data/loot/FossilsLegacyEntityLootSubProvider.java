@@ -39,6 +39,7 @@ public class FossilsLegacyEntityLootSubProvider extends SimpleEntityLootSubProvi
         this.add(FossilsLegacyEntityTypes.COMPSOGNATHUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_COMPSOGNATHUS.get()));
         this.add(FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_CRYOLOPHOSAURUS.get()));
         this.add(FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_DILOPHOSAURUS.get()));
+        this.add(FossilsLegacyEntityTypes.DIMETRODON.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_DIMETRODON.get()));
         this.add(FossilsLegacyEntityTypes.DODO.get(), this.createDinosaurTable(1.0F, 2.0F, FossilsLegacyItems.RAW_DODO.get()));
         this.add(FossilsLegacyEntityTypes.MOA.get(), this.createDinosaurTable(1.0F, 2.0F, FossilsLegacyItems.RAW_MOA.get()));
         this.add(FossilsLegacyEntityTypes.FUTABASAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FossilsLegacyItems.RAW_FUTABASAURUS.get()));

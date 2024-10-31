@@ -23,7 +23,7 @@ public class FossilsLegacyEggVariants {
     public static final SimpleHolder<EggVariant> COMPSOGNATHUS = register("compsognathus", FossilsLegacyEntityTypes.COMPSOGNATHUS::get, FossilsLegacyItems.COMPSOGNATHUS_EGG::get);
     public static final SimpleHolder<EggVariant> CRYOLOPHOSAURUS = register("cryolophosaurus", FossilsLegacyEntityTypes.CRYOLOPHOSAURUS::get, FossilsLegacyItems.CRYOLOPHOSAURUS_EGG::get);
     public static final SimpleHolder<EggVariant> DILOPHOSAURUS = register("dilophosaurus", FossilsLegacyEntityTypes.DILOPHOSAURUS::get, FossilsLegacyItems.DILOPHOSAURUS_EGG::get);
-    public static final SimpleHolder<EggVariant> DIMETRODON = register("dimetrodon", FossilsLegacyEntityTypes.DILOPHOSAURUS::get, FossilsLegacyItems.DILOPHOSAURUS_EGG::get);
+    public static final SimpleHolder<EggVariant> DIMETRODON = register("dimetrodon", FossilsLegacyEntityTypes.DIMETRODON::get, FossilsLegacyItems.DIMETRODON_EGG::get);
     public static final SimpleHolder<EggVariant> FUTABASAURUS = register("futabasaurus", FossilsLegacyEntityTypes.FUTABASAURUS::get, FossilsLegacyItems.FUTABASAURUS_EGG::get);
     public static final SimpleHolder<EggVariant> GALLIMIMUS = register("gallimimus", FossilsLegacyEntityTypes.GALLIMIMUS::get, FossilsLegacyItems.GALLIMIMUS_EGG::get);
     public static final SimpleHolder<EggVariant> MOSASAURUS = register("mosasaurus", true, Entity::isInWaterOrBubble, FossilsLegacyEntityTypes.MOSASAURUS::get, FossilsLegacyItems.MOSASAURUS_EGG::get);

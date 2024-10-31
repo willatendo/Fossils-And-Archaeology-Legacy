@@ -322,6 +322,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyEntityTypes.BRACHIOSAURUS.get());
         this.add(FossilsLegacyEntityTypes.COMPSOGNATHUS.get());
         this.add(FossilsLegacyEntityTypes.DILOPHOSAURUS.get());
+        this.add(FossilsLegacyEntityTypes.DIMETRODON.get());
         this.add(FossilsLegacyEntityTypes.DODO.get());
         this.add(FossilsLegacyEntityTypes.MOA.get());
         this.add(FossilsLegacyEntityTypes.MAMMOTH.get());
@@ -403,6 +404,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.addFossilVariant(FossilsLegacyFossilVariants.CARNOTAURUS, "Carnotaurus");
         this.addFossilVariant(FossilsLegacyFossilVariants.COMPSOGNATHUS, "Compsognathus");
         this.addFossilVariant(FossilsLegacyFossilVariants.CRYOLOPHOSAURUS, "Cryolophosaurus");
+        this.addFossilVariant(FossilsLegacyFossilVariants.DIMETRODON, "Dimetrodon");
         this.addFossilVariant(FossilsLegacyFossilVariants.FUTABASAURUS, "Futabasaurus");
         this.addFossilVariant(FossilsLegacyFossilVariants.LEGACY_FUTABASAURUS, "Legacy Futabasaurus");
         this.addFossilVariant(FossilsLegacyFossilVariants.GALLIMIMUS, "Gallimimus");
@@ -440,6 +442,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.GALLIMIMUS_DNA.get(), "Gallimimus DNA");
         this.add(FossilsLegacyItems.SPINOSAURUS_DNA.get(), "Spinosaurus DNA");
         this.add(FossilsLegacyItems.ANKYLOSAURUS_DNA.get(), "Ankylosaurus DNA");
+        this.add(FossilsLegacyItems.DIMETRODON_DNA.get(), "Dimetrodon DNA");
         this.add("item.fossilslegacy.dna.coat_type", "Coat Type: %s");
         this.add(FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get());
         this.add(FossilsLegacyItems.PETRIFIED_SIGILLARIA_SAPLING.get());
@@ -462,6 +465,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.GALLIMIMUS_EGG.get());
         this.add(FossilsLegacyItems.SPINOSAURUS_EGG.get());
         this.add(FossilsLegacyItems.ANKYLOSAURUS_EGG.get());
+        this.add(FossilsLegacyItems.DIMETRODON_EGG.get());
         this.add(FossilsLegacyItems.RAW_TRICERATOPS.get());
         this.add(FossilsLegacyItems.RAW_VELOCIRAPTOR.get());
         this.add(FossilsLegacyItems.RAW_TYRANNOSAURUS.get());
@@ -484,6 +488,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.RAW_GALLIMIMUS.get());
         this.add(FossilsLegacyItems.RAW_SPINOSAURUS.get());
         this.add(FossilsLegacyItems.RAW_ANKYLOSAURUS.get());
+        this.add(FossilsLegacyItems.RAW_DIMETRODON.get());
         this.add(FossilsLegacyItems.COOKED_TRICERATOPS.get());
         this.add(FossilsLegacyItems.COOKED_VELOCIRAPTOR.get());
         this.add(FossilsLegacyItems.COOKED_TYRANNOSAURUS.get());
@@ -506,6 +511,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.COOKED_GALLIMIMUS.get());
         this.add(FossilsLegacyItems.COOKED_SPINOSAURUS.get());
         this.add(FossilsLegacyItems.COOKED_ANKYLOSAURUS.get());
+        this.add(FossilsLegacyItems.COOKED_DIMETRODON.get());
         this.add(FossilsLegacyItems.TYRANNOSAURUS_TOOTH.get());
         this.add(FossilsLegacyItems.TOOTH_DAGGER.get());
         this.add(FossilsLegacyItems.THERIZINOSAURUS_CLAWS.get());
@@ -582,6 +588,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.articulated_fossil.carnotaurus", "Articulated Carnotaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.compsognathus", "Articulated Compsognathus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.cryolophosaurus", "Articulated Cryolophosaurus Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.dimetrodon", "Articulated Dimetrodon Fossil");
         this.add("item.fossilslegacy.articulated_fossil.futabasaurus", "Articulated Futabasaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.legacy_futabasaurus", "Articulated Legacy Futabasaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.gallimimus", "Articulated Gallimimus Fossil");
@@ -667,6 +674,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.GALLIMIMUS_SPAWN_EGG.get());
         this.add(FossilsLegacyItems.SPINOSAURUS_SPAWN_EGG.get());
         this.add(FossilsLegacyItems.ANKYLOSAURUS_SPAWN_EGG.get());
+        this.add(FossilsLegacyItems.DIMETRODON_SPAWN_EGG.get());
         this.add("item.fossilslegacy.dinosaur_spawn_egg.desc", "Crouch to spawn baby");
 
         this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.applies_to", "Netherite Equipment");

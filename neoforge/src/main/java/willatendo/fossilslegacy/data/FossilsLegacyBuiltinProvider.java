@@ -4,7 +4,6 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.RegistrySetBuilder;
-import net.minecraft.core.RegistrySetBuilder.RegistryBootstrap;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -33,6 +32,8 @@ import willatendo.fossilslegacy.server.item.feederfood.FossilsLegacyFeederFoods;
 import willatendo.fossilslegacy.server.level.levelgen.PrehistoricNoiseGeneratorSettings;
 import willatendo.fossilslegacy.server.structure.FossilsLegacyStructureSets;
 import willatendo.fossilslegacy.server.structure.FossilsLegacyStructures;
+import willatendo.fossilslegacy.server.structure.pool.FossilsLegacyPools;
+import willatendo.fossilslegacy.server.structure.processor.FossilsLegacyProcessorLists;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyStoneTabletVariants;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -40,7 +41,7 @@ import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
 
 public class FossilsLegacyBuiltinProvider extends DatapackBuiltinEntriesProvider {
-    private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder().add(Registries.CONFIGURED_FEATURE, FossilsLegacyConfiguredFeatures::bootstrap).add(Registries.PLACED_FEATURE, FossilsLegacyPlacedFeatures::bootstrap).add(Registries.DAMAGE_TYPE, FossilsLegacyDamageTypes::bootstrap).add(Registries.STRUCTURE, FossilsLegacyStructures::bootstrap).add(Registries.STRUCTURE_SET, FossilsLegacyStructureSets::bootstrap).add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, FossilsLegacyBuiltinProvider::bootstrap).add(Registries.BIOME, FossilsLegacyBiomes::bootstrap).add(Registries.MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST, FossilsLegacyMultiNoiseBiomeSourceParameterLists::bootstrap).add(Registries.NOISE_SETTINGS, PrehistoricNoiseGeneratorSettings::bootstrap).add(Registries.DIMENSION_TYPE, FossilsLegacyDimensionTypes::bootstrap).add(Registries.LEVEL_STEM, FossilsLegacyLevelStems::bootstrap).add(FossilsLegacyRegistries.STONE_TABLET_VARIANTS, FossilsLegacyStoneTabletVariants::bootstrap).add(FossilsLegacyRegistries.COAT_TYPES, FossilsLegacyCoatTypes::bootstrap).add(FossilsLegacyRegistries.FOSSIL_VARIANTS, FossilsLegacyFossilVariants::bootstrap).add(FossilsLegacyRegistries.FEEDER_FOOD, FossilsLegacyFeederFoods::bootstrap);
+    private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder().add(Registries.CONFIGURED_FEATURE, FossilsLegacyConfiguredFeatures::bootstrap).add(Registries.PLACED_FEATURE, FossilsLegacyPlacedFeatures::bootstrap).add(Registries.DAMAGE_TYPE, FossilsLegacyDamageTypes::bootstrap).add(Registries.STRUCTURE, FossilsLegacyStructures::bootstrap).add(Registries.STRUCTURE_SET, FossilsLegacyStructureSets::bootstrap).add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, FossilsLegacyBuiltinProvider::bootstrap).add(Registries.BIOME, FossilsLegacyBiomes::bootstrap).add(Registries.MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST, FossilsLegacyMultiNoiseBiomeSourceParameterLists::bootstrap).add(Registries.NOISE_SETTINGS, PrehistoricNoiseGeneratorSettings::bootstrap).add(Registries.DIMENSION_TYPE, FossilsLegacyDimensionTypes::bootstrap).add(Registries.LEVEL_STEM, FossilsLegacyLevelStems::bootstrap).add(FossilsLegacyRegistries.STONE_TABLET_VARIANTS, FossilsLegacyStoneTabletVariants::bootstrap).add(FossilsLegacyRegistries.COAT_TYPES, FossilsLegacyCoatTypes::bootstrap).add(FossilsLegacyRegistries.FOSSIL_VARIANTS, FossilsLegacyFossilVariants::bootstrap).add(FossilsLegacyRegistries.FEEDER_FOOD, FossilsLegacyFeederFoods::bootstrap).add(Registries.TEMPLATE_POOL, FossilsLegacyPools::bootstrap).add(Registries.PROCESSOR_LIST, FossilsLegacyProcessorLists::bootstrap);
 
     public FossilsLegacyBuiltinProvider(PackOutput packOutput, CompletableFuture<Provider> registries, String modId) {
         super(packOutput, registries, BUILDER, Collections.singleton(modId));

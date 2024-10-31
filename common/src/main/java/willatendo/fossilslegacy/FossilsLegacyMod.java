@@ -21,6 +21,8 @@ import willatendo.fossilslegacy.server.recipe.serialiser.FossilsLegacyRecipeSeri
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.structure.FossilsLegacyStructureTypes;
 import willatendo.fossilslegacy.server.structure.piece.FossilsLegacyStructurePeices;
+import willatendo.fossilslegacy.server.structure.processor.FossilsLegacyStructureProcessorType;
+import willatendo.fossilslegacy.server.structure.processor.rule.FossilsLegacyRuleTestTypes;
 import willatendo.simplelibrary.server.SimpleBuiltInRegistries;
 import willatendo.simplelibrary.server.event.registry.SimpleRegistryRegister;
 
@@ -48,6 +50,8 @@ public final class FossilsLegacyMod {
         simpleRegistryRegister.register(FossilsLegacyItems.ITEMS);
         simpleRegistryRegister.register(FossilsLegacyCreativeModeTabs.CREATIVE_MODE_TABS);
         simpleRegistryRegister.register(FossilsLegacyLootPoolEntryTypes.LOOT_POOL_ENTRY_TYPES);
+        simpleRegistryRegister.register(FossilsLegacyRuleTestTypes.RULE_TEST_TYPES);
+        simpleRegistryRegister.register(FossilsLegacyStructureProcessorType.STRUCTURE_PROCESSOR_TYPES);
         simpleRegistryRegister.register(FossilsLegacyStructurePeices.STRUCTURE_PIECE_TYPE);
         simpleRegistryRegister.register(FossilsLegacyStructureTypes.STRUCTURE_TYPE);
         simpleRegistryRegister.register(FossilsLegacyCriteriaTriggers.TRIGGER_TYPES);

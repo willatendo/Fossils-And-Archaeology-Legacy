@@ -36,6 +36,7 @@
     "fossilslegacy:raw_gallimimus",
     "fossilslegacy:raw_spinosaurus",
     "fossilslegacy:raw_ankylosaurus",
+    "fossilslegacy:raw_dimetrodon",
     "fossilslegacy:cooked_triceratops",
     "fossilslegacy:cooked_velociraptor",
     "fossilslegacy:cooked_tyrannosaurus",
@@ -57,6 +58,7 @@
     "fossilslegacy:cooked_moa",
     "fossilslegacy:cooked_gallimimus",
     "fossilslegacy:cooked_spinosaurus",
-    "fossilslegacy:cooked_ankylosaurus"
+    "fossilslegacy:cooked_ankylosaurus",
+    "fossilslegacy:cooked_dimetrodon"
   ]
 }

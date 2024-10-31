@@ -1,0 +1,188 @@
+{
+  "type": "json",
+  "animations": [
+    {
+      "bone": "right_front_leg",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": 30.000002,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.25
+        },
+        {
+          "degree_vec": {
+            "x": -30.000002,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.75
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 1.0
+        }
+      ]
+    },
+    {
+      "bone": "left_back_leg",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": 30.000002,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.25
+        },
+        {
+          "degree_vec": {
+            "x": -30.000002,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.75
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 1.0
+        }
+      ]
+    },
+    {
+      "bone": "right_back_leg",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": -30.000002,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.25
+        },
+        {
+          "degree_vec": {
+            "x": 30.000002,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.75
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 1.0
+        }
+      ]
+    },
+    {
+      "bone": "left_front_leg",
+      "keyframes": [
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": -30.000002,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.25
+        },
+        {
+          "degree_vec": {
+            "x": 30.000002,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.75
+        },
+        {
+          "degree_vec": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 1.0
+        }
+      ]
+    }
+  ],
+  "id": "fossilslegacy:dimetrodon_walk",
+  "length": 1.0,
+  "looping": true
+}

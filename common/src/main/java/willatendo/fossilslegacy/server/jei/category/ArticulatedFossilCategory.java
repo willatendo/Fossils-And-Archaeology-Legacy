@@ -28,6 +28,7 @@ public final class ArticulatedFossilCategory extends AbstractRecipeCategory<Arti
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder iRecipeLayoutBuilder, ArticulatedFossilRecipe articulatedFossilRecipe, IFocusGroup iFocusGroup) {
+        iRecipeLayoutBuilder.setShapeless();
         for (int width = 0; width < 3; width++) {
             for (int height = 0; height < 3; height++) {
                 int index = width + (height * 3);

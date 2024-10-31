@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-27T15:17:11.5105949	Item Models: fossilslegacy
+// 1.21.1	2024-10-30T16:59:19.5990628	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 1f02e6db84914fc2677089f5e420f925ba109484 assets/fossilslegacy/models/item/ancient_axe.json
 e6aea94981911965db91c7f52bfa4555de4d4182 assets/fossilslegacy/models/item/ancient_axe_artifact.json
@@ -117,6 +117,7 @@ ef3ba7e8c10d7b40b3d38ce4079d8bd10e4b301d assets/fossilslegacy/models/item/cooked
 3bf2a3c1e9616f808ea94c31379b64409e22e8ed assets/fossilslegacy/models/item/cooked_compsognathus.json
 f1a40ff332bc68fd484ada1eb4c97814d69b7a4b assets/fossilslegacy/models/item/cooked_cryolophosaurus.json
 1357b10ff17c62ef648d0a7e8a268f6bb09aa073 assets/fossilslegacy/models/item/cooked_dilophosaurus.json
+7c64f2813fbef976062ace1d8b986f410817ff30 assets/fossilslegacy/models/item/cooked_dimetrodon.json
 0d802ad0e3c17e4fc363778ba2239255014db092 assets/fossilslegacy/models/item/cooked_dodo.json
 181fd025d81e2aa1f86fbabcedd4ada27940b677 assets/fossilslegacy/models/item/cooked_futabasaurus.json
 cfd083efdaccf193ae6677439d513aa884f29bf9 assets/fossilslegacy/models/item/cooked_gallimimus.json
@@ -149,6 +150,9 @@ e75e615632547f36471929d1b9aef3f04ad45a30 assets/fossilslegacy/models/item/deepsl
 74b19b3ed45f9b1f7d7f4b0c6e0d379e00fa82c4 assets/fossilslegacy/models/item/dilophosaurus_dna.json
 8d95bd4bf545fbe761254b3ae61eb721da97d9dc assets/fossilslegacy/models/item/dilophosaurus_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/dilophosaurus_spawn_egg.json
+b69bee6c2dabb1917a94944b9566b7685281ad48 assets/fossilslegacy/models/item/dimetrodon_dna.json
+a4b56e48f5b2de581f16f6d6f537954d094c5041 assets/fossilslegacy/models/item/dimetrodon_egg.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/dimetrodon_spawn_egg.json
 34928848d1e2b07f6cceb6629cf5a9d368cd1557 assets/fossilslegacy/models/item/dinopedia.json
 d3b4935285224cc9bf36c88cbeb69c60e0de9bc8 assets/fossilslegacy/models/item/dodo_dna.json
 a730a2e87558eae94e57e7d2ba3453e913aee58b assets/fossilslegacy/models/item/dodo_egg.json
@@ -266,6 +270,7 @@ a83d220d9b56729085f254318b321a35e6be60d2 assets/fossilslegacy/models/item/raw_ch
 b1ced92ee7cc85a1ee6ccd2c9443a47daa24b6e1 assets/fossilslegacy/models/item/raw_compsognathus.json
 ee7fa7f44844e6365a9fda27f01656f0cd77b70a assets/fossilslegacy/models/item/raw_cryolophosaurus.json
 e4fa186c347c19e100e7891133096f6a73f46ed8 assets/fossilslegacy/models/item/raw_dilophosaurus.json
+2329fdf9fafe2abc5806551dc22a648ea89bf4ff assets/fossilslegacy/models/item/raw_dimetrodon.json
 6685d38057869c9d0aedc310227609dab043c980 assets/fossilslegacy/models/item/raw_dodo.json
 be3f0c7a460329015fc52387c8d85fca93ab57b4 assets/fossilslegacy/models/item/raw_futabasaurus.json
 ce055035b95e26b6d28cbd0d093b23b118989e02 assets/fossilslegacy/models/item/raw_gallimimus.json

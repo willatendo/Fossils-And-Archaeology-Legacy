@@ -1,11 +1,12 @@
-// 1.21.1	2024-10-28T18:52:57.722326	Tags for minecraft:entity_type mod id fossilslegacy
-867ebac6d848c0ea30bc80c94754863aa263c948 data/fossilslegacy/tags/entity_type/victims/carnotaurus.json
+// 1.21.1	2024-10-30T07:52:02.6301325	Tags for minecraft:entity_type mod id fossilslegacy
+6502e39bd9290f842f8aae9542df2d54ad22429c data/fossilslegacy/tags/entity_type/victims/carnotaurus.json
 a85935e7fe31e95c3f4dad3adaaf05c7fcb0ca38 data/fossilslegacy/tags/entity_type/victims/compsognathus.json
-7cd4684154cf0842013ec5fa5df410a05de793f0 data/fossilslegacy/tags/entity_type/victims/cryolophosaurus.json
-901c5d3199734a588ff7fd5ced89ec753047c351 data/fossilslegacy/tags/entity_type/victims/dilophosaurus.json
-e7b2db48c86b5d0fba23b00b09b8c41adf383adc data/fossilslegacy/tags/entity_type/victims/mosasaurus.json
-066f8447dab7f86aa3aacb16b1d36d69ec629c01 data/fossilslegacy/tags/entity_type/victims/spinosaurus.json
-e9c8d28b384c8e2db1afd49800390f21de2a29f5 data/fossilslegacy/tags/entity_type/victims/tyrannosaurus.json
-295d45e9f27db59339b81e912717471bfd7ddbe9 data/fossilslegacy/tags/entity_type/victims/velociraptor.json
+81a8ed5d891d4a2e979c2b92a9c2937872270e0c data/fossilslegacy/tags/entity_type/victims/cryolophosaurus.json
+178dc206e5d4994add05f5d39b6a2275dc7234dc data/fossilslegacy/tags/entity_type/victims/dilophosaurus.json
+758d1d5c3ae9add307bd7c4586aede4d8f3a8f9c data/fossilslegacy/tags/entity_type/victims/dimetrodon.json
+b9fef40eedf9bc2b5e462a22db1d5ef1eaf91efa data/fossilslegacy/tags/entity_type/victims/mosasaurus.json
+ee82dbf12ee12398c5f13ab1a3665e13ecd53ec8 data/fossilslegacy/tags/entity_type/victims/spinosaurus.json
+1ee212641f3b348500092f942b6cd0511651a87d data/fossilslegacy/tags/entity_type/victims/tyrannosaurus.json
+4c29efb7671c424349d8eda0a17724ae73bded23 data/fossilslegacy/tags/entity_type/victims/velociraptor.json
 23bcaf8d8d9a24661354b3fb8a81eb38e06fad23 data/minecraft/tags/entity_type/can_breathe_under_water.json
 933cd6ccd542959d505b7c6f647d6c867a439408 data/minecraft/tags/entity_type/fall_damage_immune.json

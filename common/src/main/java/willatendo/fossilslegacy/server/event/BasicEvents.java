@@ -29,6 +29,7 @@ import willatendo.fossilslegacy.server.core.registry.FossilsLegacyBuiltInRegistr
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.*;
 import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.*;
+import willatendo.fossilslegacy.server.entity.dinosaur.guadalupian.Dimetrodon;
 import willatendo.fossilslegacy.server.entity.dinosaur.jurassic.*;
 import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.*;
 import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
@@ -176,6 +177,7 @@ public class BasicEvents {
         attributeRegister.register(FossilsLegacyEntityTypes.COMPSOGNATHUS.get(), Compsognathus.compsognathusAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get(), Cryolophosaurus.cryolophosaurusAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.DILOPHOSAURUS.get(), Dilophosaurus.dilophosaurusAttributes());
+        attributeRegister.register(FossilsLegacyEntityTypes.DIMETRODON.get(), Dimetrodon.dimetrodonAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.DODO.get(), Dodo.dodoAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.MOA.get(), Moa.moaAttributes());
         attributeRegister.register(FossilsLegacyEntityTypes.GALLIMIMUS.get(), Gallimimus.gallimimusAttributes());

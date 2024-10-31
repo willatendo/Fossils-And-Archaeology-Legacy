@@ -1,0 +1,225 @@
+{
+  "animations": {
+    "walk": "fossilslegacy:dimetrodon_walk"
+  },
+  "elements": [
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 44,
+          "texture_y_offset": 11,
+          "x_dimension": 3.0,
+          "x_origin": -1.5,
+          "y_dimension": 4.0,
+          "y_origin": -2.0,
+          "z_dimension": 6.0,
+          "z_origin": -10.0
+        },
+        {
+          "texture_x_offset": 44,
+          "texture_y_offset": 54,
+          "x_dimension": 1.0,
+          "x_origin": -0.5,
+          "y_dimension": 1.0,
+          "y_origin": 2.0,
+          "z_dimension": 4.0,
+          "z_origin": -9.0
+        },
+        {
+          "texture_x_offset": 18,
+          "texture_y_offset": 46,
+          "x_dimension": 3.0,
+          "x_origin": -1.5,
+          "y_dimension": 5.0,
+          "y_origin": -2.0,
+          "z_dimension": 4.0,
+          "z_origin": -4.0
+        }
+      ],
+      "elements": [
+        {
+          "boxes": [
+            {
+              "texture_x_offset": 0,
+              "texture_y_offset": 46,
+              "x_dimension": 3.0,
+              "x_origin": -1.5,
+              "y_dimension": 1.0,
+              "y_origin": 0.0,
+              "z_dimension": 6.0,
+              "z_origin": -6.0
+            }
+          ],
+          "id": "jaw",
+          "poses": {
+            "x": 0.0,
+            "y": 2.0,
+            "z": -4.0
+          }
+        }
+      ],
+      "id": "head",
+      "poses": {
+        "x": 0.0,
+        "y": 16.0,
+        "z": -7.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 53,
+          "x_dimension": 3.0,
+          "x_origin": -1.0,
+          "y_dimension": 5.0,
+          "y_origin": -2.0,
+          "z_dimension": 3.0,
+          "z_origin": -1.0
+        }
+      ],
+      "id": "right_front_leg",
+      "poses": {
+        "x": -4.0,
+        "y": 21.0,
+        "z": -5.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 44,
+          "texture_y_offset": 46,
+          "x_dimension": 3.0,
+          "x_origin": -2.0,
+          "y_dimension": 5.0,
+          "y_origin": -2.0,
+          "z_dimension": 3.0,
+          "z_origin": -1.0
+        }
+      ],
+      "id": "left_back_leg",
+      "poses": {
+        "x": 4.0,
+        "y": 21.0,
+        "z": 4.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 32,
+          "texture_y_offset": 54,
+          "x_dimension": 3.0,
+          "x_origin": -1.0,
+          "y_dimension": 5.0,
+          "y_origin": -2.0,
+          "z_dimension": 3.0,
+          "z_origin": -1.0
+        }
+      ],
+      "id": "right_back_leg",
+      "poses": {
+        "x": -4.0,
+        "y": 21.0,
+        "z": 4.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 0,
+          "x_dimension": 8.0,
+          "x_origin": -1.0,
+          "y_dimension": 7.0,
+          "y_origin": 11.0,
+          "z_dimension": 14.0,
+          "z_origin": -7.0
+        },
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 21,
+          "x_dimension": 2.0,
+          "x_origin": 2.0,
+          "y_dimension": 11.0,
+          "y_origin": 0.0,
+          "z_dimension": 14.0,
+          "z_origin": -7.0
+        },
+        {
+          "texture_x_offset": 32,
+          "texture_y_offset": 34,
+          "x_dimension": 2.0,
+          "x_origin": 2.0,
+          "y_dimension": 2.0,
+          "y_origin": -2.0,
+          "z_dimension": 10.0,
+          "z_origin": -5.0
+        }
+      ],
+      "id": "body",
+      "poses": {
+        "x": -3.0,
+        "y": 4.0,
+        "z": 0.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 32,
+          "texture_y_offset": 46,
+          "x_dimension": 3.0,
+          "x_origin": -2.0,
+          "y_dimension": 5.0,
+          "y_origin": -2.0,
+          "z_dimension": 3.0,
+          "z_origin": -1.0
+        }
+      ],
+      "id": "left_front_leg",
+      "poses": {
+        "x": 4.0,
+        "y": 21.0,
+        "z": -5.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 32,
+          "texture_y_offset": 21,
+          "x_dimension": 4.0,
+          "x_origin": 1.0,
+          "y_dimension": 5.0,
+          "y_origin": -2.0,
+          "z_dimension": 8.0,
+          "z_origin": 0.0
+        },
+        {
+          "texture_x_offset": 44,
+          "texture_y_offset": 0,
+          "x_dimension": 2.0,
+          "x_origin": 2.0,
+          "y_dimension": 3.0,
+          "y_origin": 0.0,
+          "z_dimension": 8.0,
+          "z_origin": 8.0
+        }
+      ],
+      "id": "leg",
+      "poses": {
+        "x": -3.0,
+        "y": 19.0,
+        "z": 7.0
+      }
+    }
+  ],
+  "head_pieces": [
+    "head"
+  ],
+  "model_id": "fossilslegacy:dimetrodon",
+  "texture_height": 64,
+  "texture_width": 64
+}

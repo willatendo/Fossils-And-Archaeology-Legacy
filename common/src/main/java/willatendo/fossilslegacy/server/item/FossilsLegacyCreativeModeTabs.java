@@ -41,6 +41,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.COMPSOGNATHUS_DNA.get());
         output.accept(FossilsLegacyItems.CRYOLOPHOSAURUS_DNA.get());
         output.accept(FossilsLegacyItems.DILOPHOSAURUS_DNA.get());
+        output.accept(FossilsLegacyItems.DIMETRODON_DNA.get());
         output.accept(FossilsLegacyItems.FUTABASAURUS_DNA.get());
         output.accept(FossilsLegacyItems.GALLIMIMUS_DNA.get());
         output.accept(FossilsLegacyItems.MOSASAURUS_DNA.get());
@@ -84,6 +85,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.COMPSOGNATHUS_EGG.get());
         output.accept(FossilsLegacyItems.CRYOLOPHOSAURUS_EGG.get());
         output.accept(FossilsLegacyItems.DILOPHOSAURUS_EGG.get());
+        output.accept(FossilsLegacyItems.DIMETRODON_EGG.get());
         output.accept(FossilsLegacyItems.FUTABASAURUS_EGG.get());
         output.accept(FossilsLegacyItems.GALLIMIMUS_EGG.get());
         output.accept(FossilsLegacyItems.MOSASAURUS_EGG.get());
@@ -126,6 +128,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.RAW_COMPSOGNATHUS.get());
         output.accept(FossilsLegacyItems.RAW_CRYOLOPHOSAURUS.get());
         output.accept(FossilsLegacyItems.RAW_DILOPHOSAURUS.get());
+        output.accept(FossilsLegacyItems.RAW_DIMETRODON.get());
         output.accept(FossilsLegacyItems.RAW_FUTABASAURUS.get());
         output.accept(FossilsLegacyItems.RAW_GALLIMIMUS.get());
         output.accept(FossilsLegacyItems.RAW_MOSASAURUS.get());
@@ -143,6 +146,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.COOKED_COMPSOGNATHUS.get());
         output.accept(FossilsLegacyItems.COOKED_CRYOLOPHOSAURUS.get());
         output.accept(FossilsLegacyItems.COOKED_DILOPHOSAURUS.get());
+        output.accept(FossilsLegacyItems.COOKED_DIMETRODON.get());
         output.accept(FossilsLegacyItems.COOKED_FUTABASAURUS.get());
         output.accept(FossilsLegacyItems.COOKED_GALLIMIMUS.get());
         output.accept(FossilsLegacyItems.COOKED_MOSASAURUS.get());
@@ -321,6 +325,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.COMPSOGNATHUS_SPAWN_EGG.get());
         output.accept(FossilsLegacyItems.CRYOLOPHOSAURUS_SPAWN_EGG.get());
         output.accept(FossilsLegacyItems.DILOPHOSAURUS_SPAWN_EGG.get());
+        output.accept(FossilsLegacyItems.DIMETRODON_SPAWN_EGG.get());
         output.accept(FossilsLegacyItems.DODO_SPAWN_EGG.get());
         output.accept(FossilsLegacyItems.FAILURESAURUS_SPAWN_EGG.get());
         output.accept(FossilsLegacyItems.FUTABASAURUS_SPAWN_EGG.get());

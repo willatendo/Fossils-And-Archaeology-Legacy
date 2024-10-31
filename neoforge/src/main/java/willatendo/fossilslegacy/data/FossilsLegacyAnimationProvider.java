@@ -17,6 +17,7 @@ public class FossilsLegacyAnimationProvider extends AnimationProvider {
         this.addAnimation(FossilsLegacyUtils.resource("carnotaurus_walk"), CarnotaurusAnimations.CARNOTAURUS_WALK);
         this.addAnimation(FossilsLegacyUtils.resource("compsognathus_walk"), CompsognathusAnimations.COMPSOGNATHUS_WALK);
         this.addAnimation(FossilsLegacyUtils.resource("cryolophosaurus_walk"), CrolophosaurusAnimations.CRYOLOPHOSAURUS_WALK);
+        this.addAnimation(FossilsLegacyUtils.resource("dimetrodon_walk"), DimetrodonAnimations.DIMETRODON_WALK);
         this.addAnimation(FossilsLegacyUtils.resource("dodo_float_down"), DodoAnimations.DODO_FALL);
         this.addAnimation(FossilsLegacyUtils.resource("dodo_walk"), DodoAnimations.DODO_WALK);
         this.addAnimation(FossilsLegacyUtils.resource("futabasaurus_swim"), FutabasaurusAnimations.FUTABASAURUS_SWIM);

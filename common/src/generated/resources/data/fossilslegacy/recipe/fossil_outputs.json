@@ -97,6 +97,12 @@
     },
     {
       "result": {
+        "id": "fossilslegacy:dimetrodon_dna"
+      },
+      "weight": 2
+    },
+    {
+      "result": {
         "id": "fossilslegacy:tyrannosaurus_dna"
       },
       "weight": 2

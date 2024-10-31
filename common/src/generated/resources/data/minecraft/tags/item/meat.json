@@ -40,6 +40,8 @@
     "fossilslegacy:raw_spinosaurus",
     "fossilslegacy:cooked_spinosaurus",
     "fossilslegacy:raw_ankylosaurus",
-    "fossilslegacy:cooked_ankylosaurus"
+    "fossilslegacy:cooked_ankylosaurus",
+    "fossilslegacy:raw_dimetrodon",
+    "fossilslegacy:cooked_dimetrodon"
   ]
 }

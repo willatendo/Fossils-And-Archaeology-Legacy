@@ -5,6 +5,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.block.Blocks;
 import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.*;
+import willatendo.fossilslegacy.server.entity.dinosaur.guadalupian.Dimetrodon;
 import willatendo.fossilslegacy.server.entity.dinosaur.jurassic.*;
 import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.*;
 import willatendo.fossilslegacy.server.entity.pregnant.*;
@@ -22,6 +23,7 @@ public class FossilsLegacyEntityTypes {
 
     public static final SimpleHolder<EntityType<Brachiosaurus>> BRACHIOSAURUS = ENTITY_TYPES.register("brachiosaurus", () -> SimpleUtils.entityTypeBuilder("brachiosaurus", Brachiosaurus::new, MobCategory.CREATURE, 1.0F, 1.5F));
     public static final SimpleHolder<EntityType<Dilophosaurus>> DILOPHOSAURUS = ENTITY_TYPES.register("dilophosaurus", () -> SimpleUtils.entityTypeBuilder("dilophosaurus", Dilophosaurus::new, MobCategory.CREATURE, 0.5F, 0.5F));
+    public static final SimpleHolder<EntityType<Dimetrodon>> DIMETRODON = ENTITY_TYPES.register("dimetrodon", () -> SimpleUtils.entityTypeBuilder("dimetrodon", Dimetrodon::new, MobCategory.CREATURE, 0.5F, 0.5F));
     public static final SimpleHolder<EntityType<Mammoth>> MAMMOTH = ENTITY_TYPES.register("mammoth", () -> SimpleUtils.entityTypeBuilder("mammoth", Mammoth::new, MobCategory.CREATURE, 1.0F, 1.0F));
     public static final SimpleHolder<EntityType<Mosasaurus>> MOSASAURUS = ENTITY_TYPES.register("mosasaurus", () -> SimpleUtils.entityTypeBuilder("mosasaurus", Mosasaurus::new, MobCategory.WATER_CREATURE, 0.5F, 0.5F));
     public static final SimpleHolder<EntityType<Nautilus>> NAUTILUS = ENTITY_TYPES.register("nautilus", () -> SimpleUtils.entityTypeBuilder("nautilus", Nautilus::new, MobCategory.WATER_AMBIENT, 1.0F, 0.75F));

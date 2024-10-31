@@ -45,6 +45,7 @@ public class FossilsLegacyFeederFoods {
     public static final ResourceKey<FeederFood> RAW_GALLIMIMUS = FossilsLegacyFeederFoods.create("raw_gallimimus");
     public static final ResourceKey<FeederFood> RAW_SPINOSAURUS = FossilsLegacyFeederFoods.create("raw_spinosaurus");
     public static final ResourceKey<FeederFood> RAW_ANKYLOSAURUS = FossilsLegacyFeederFoods.create("raw_ankylosaurus");
+    public static final ResourceKey<FeederFood> RAW_DIMETRODON = FossilsLegacyFeederFoods.create("raw_dimetrodon");
     public static final ResourceKey<FeederFood> COOKED_TRICERATOPS = FossilsLegacyFeederFoods.create("cooked_triceratops");
     public static final ResourceKey<FeederFood> COOKED_VELOCIRAPTOR = FossilsLegacyFeederFoods.create("cooked_velociraptor");
     public static final ResourceKey<FeederFood> COOKED_TYRANNOSAURUS = FossilsLegacyFeederFoods.create("cooked_tyrannosaurus");
@@ -67,6 +68,7 @@ public class FossilsLegacyFeederFoods {
     public static final ResourceKey<FeederFood> COOKED_GALLIMIMUS = FossilsLegacyFeederFoods.create("cooked_gallimimus");
     public static final ResourceKey<FeederFood> COOKED_SPINOSAURUS = FossilsLegacyFeederFoods.create("cooked_spinosaurus");
     public static final ResourceKey<FeederFood> COOKED_ANKYLOSAURUS = FossilsLegacyFeederFoods.create("cooked_ankylosaurus");
+    public static final ResourceKey<FeederFood> COOKED_DIMETRODON = FossilsLegacyFeederFoods.create("cooked_dimetrodon");
     public static final ResourceKey<FeederFood> APPLE = FossilsLegacyFeederFoods.create("apple");
     public static final ResourceKey<FeederFood> WHEAT = FossilsLegacyFeederFoods.create("wheat");
     public static final ResourceKey<FeederFood> BREAD = FossilsLegacyFeederFoods.create("bread");
@@ -130,6 +132,7 @@ public class FossilsLegacyFeederFoods {
         register(bootstrapContext, RAW_GALLIMIMUS, new ItemStack(FossilsLegacyItems.RAW_GALLIMIMUS.get()), 100, FillType.MEAT);
         register(bootstrapContext, RAW_SPINOSAURUS, new ItemStack(FossilsLegacyItems.RAW_SPINOSAURUS.get()), 100, FillType.MEAT);
         register(bootstrapContext, RAW_ANKYLOSAURUS, new ItemStack(FossilsLegacyItems.RAW_ANKYLOSAURUS.get()), 100, FillType.MEAT);
+        register(bootstrapContext, RAW_DIMETRODON, new ItemStack(FossilsLegacyItems.RAW_DIMETRODON.get()), 100, FillType.MEAT);
         register(bootstrapContext, COOKED_TRICERATOPS, new ItemStack(FossilsLegacyItems.COOKED_TRICERATOPS.get()), 100, FillType.MEAT);
         register(bootstrapContext, COOKED_VELOCIRAPTOR, new ItemStack(FossilsLegacyItems.COOKED_VELOCIRAPTOR.get()), 100, FillType.MEAT);
         register(bootstrapContext, COOKED_TYRANNOSAURUS, new ItemStack(FossilsLegacyItems.COOKED_TYRANNOSAURUS.get()), 100, FillType.MEAT);
@@ -152,6 +155,7 @@ public class FossilsLegacyFeederFoods {
         register(bootstrapContext, COOKED_GALLIMIMUS, new ItemStack(FossilsLegacyItems.COOKED_GALLIMIMUS.get()), 100, FillType.MEAT);
         register(bootstrapContext, COOKED_SPINOSAURUS, new ItemStack(FossilsLegacyItems.COOKED_SPINOSAURUS.get()), 100, FillType.MEAT);
         register(bootstrapContext, COOKED_ANKYLOSAURUS, new ItemStack(FossilsLegacyItems.COOKED_ANKYLOSAURUS.get()), 100, FillType.MEAT);
+        register(bootstrapContext, COOKED_DIMETRODON, new ItemStack(FossilsLegacyItems.COOKED_DIMETRODON.get()), 100, FillType.MEAT);
 
         register(bootstrapContext, APPLE, new ItemStack(Items.APPLE), 100, FillType.PLANT);
         register(bootstrapContext, WHEAT, new ItemStack(Items.WHEAT), 40, FillType.PLANT);

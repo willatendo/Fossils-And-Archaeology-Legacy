@@ -25,6 +25,7 @@ public class FossilsLegacyFossilVariantTagProvider extends DataDrivenTagsProvide
                         FossilsLegacyFossilVariants.CARNOTAURUS,
                         FossilsLegacyFossilVariants.COMPSOGNATHUS,
                         FossilsLegacyFossilVariants.CRYOLOPHOSAURUS,
+                        FossilsLegacyFossilVariants.DIMETRODON,
                         FossilsLegacyFossilVariants.FUTABASAURUS,
                         FossilsLegacyFossilVariants.LEGACY_FUTABASAURUS,
                         FossilsLegacyFossilVariants.GALLIMIMUS,
