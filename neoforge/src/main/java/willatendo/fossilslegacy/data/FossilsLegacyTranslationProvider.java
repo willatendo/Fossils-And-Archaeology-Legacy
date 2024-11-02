@@ -7,20 +7,13 @@ import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.util.GsonHelper;
-import net.neoforged.fml.loading.FMLPaths;
 import org.apache.commons.compress.utils.Lists;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 public class FossilsLegacyTranslationProvider implements DataProvider {

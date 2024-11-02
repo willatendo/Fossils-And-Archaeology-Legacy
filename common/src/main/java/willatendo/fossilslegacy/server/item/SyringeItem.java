@@ -1,6 +1,10 @@
 package willatendo.fossilslegacy.server.item;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.network.chat.Component;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.AgeableMob;
@@ -8,17 +12,38 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.util.interfaces.HungerAccessor;
 import willatendo.fossilslegacy.server.entity.util.interfaces.PregnantAnimal;
 import willatendo.fossilslegacy.server.entity.util.interfaces.TameAccessor;
 import willatendo.fossilslegacy.server.entity.variants.PregnancyType;
+import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+
+import java.util.List;
 
 public class SyringeItem extends Item {
     private final Holder<PregnancyType> pregnancyType;
+    protected final TagKey<CoatType> applicableCoatTypes;
 
-    public SyringeItem(Holder<PregnancyType> pregnancyType, Properties properties) {
+    public SyringeItem(Holder<PregnancyType> pregnancyType, TagKey<CoatType> applicableCoatTypes, Properties properties) {
         super(properties);
         this.pregnancyType = pregnancyType;
+        this.applicableCoatTypes = applicableCoatTypes;
+    }
+
+    public SyringeItem(Holder<PregnancyType> pregnancyType, Properties properties) {
+        this(pregnancyType, null, properties);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> components, TooltipFlag tooltipFlag) {
+        if (itemStack.has(FossilsLegacyDataComponents.COAT_TYPE.get())) {
+            Holder<CoatType> holder = itemStack.get(FossilsLegacyDataComponents.COAT_TYPE.get());
+            components.add(FossilsLegacyUtils.translation("item", "dna.coat_type", holder.value().displayInfo().name()).withStyle(ChatFormatting.GRAY));
+        }
+        super.appendHoverText(itemStack, tooltipContext, components, tooltipFlag);
     }
 
     @Override
@@ -28,6 +53,10 @@ public class SyringeItem extends Item {
                 if (!ageableMob.isBaby()) {
                     PregnantAnimal<?> pregnantAnimal = PregnantAnimal.createFromLiving(livingEntity, player.level());
                     pregnantAnimal.setPregnancyType(this.getPregnancyType());
+                    if (this.applicableCoatTypes != null) {
+                        Registry<CoatType> coatTypeRegistry = pregnantAnimal.getLevel().registryAccess().registry(FossilsLegacyRegistries.COAT_TYPES).get();
+                        pregnantAnimal.setOffspringCoatType(coatTypeRegistry.getTag(this.applicableCoatTypes).get().getRandomElement(pregnantAnimal.getLevel().getRandom()).get());
+                    }
                     pregnantAnimal.setRemainingPregnancyTime(0);
                     if (pregnantAnimal instanceof HungerAccessor hungerAccessor) {
                         hungerAccessor.setHunger(((HungerAccessor) pregnantAnimal).getHunger());

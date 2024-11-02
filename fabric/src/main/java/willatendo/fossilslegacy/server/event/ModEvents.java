@@ -2,26 +2,16 @@ package willatendo.fossilslegacy.server.event;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
-import org.apache.commons.compress.utils.Lists;
-import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.feature.FossilsLegacyPlacedFeatures;
-import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
-import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
 import willatendo.simplelibrary.server.event.modification.FabricCreativeModeTabModification;
 import willatendo.simplelibrary.server.event.registry.FabricAttributeRegister;
 import willatendo.simplelibrary.server.event.registry.FabricDynamicRegistryRegister;
 import willatendo.simplelibrary.server.event.registry.FabricResourcePackRegister;
 import willatendo.simplelibrary.server.event.registry.FabricSpawnPlacementRegister;
-
-import java.util.List;
 
 public class ModEvents {
     public static void commonSetup() {

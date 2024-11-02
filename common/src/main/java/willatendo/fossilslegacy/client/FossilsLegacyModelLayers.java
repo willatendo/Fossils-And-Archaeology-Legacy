@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.client;
 
-import com.mojang.datafixers.util.Pair;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 

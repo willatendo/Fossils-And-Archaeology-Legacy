@@ -1,17 +1,13 @@
 package willatendo.fossilslegacy.server.structure.processor;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.templatesystem.*;
+import willatendo.fossilslegacy.server.structure.processor.hole.RelicHoleList;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 public class HolesProcessor extends StructureProcessor {
@@ -22,23 +18,19 @@ public class HolesProcessor extends StructureProcessor {
         this.rules = ImmutableList.copyOf(rules);
     }
 
-    @Nullable
     @Override
-    public StructureTemplate.StructureBlockInfo processBlock(LevelReader levelReader, BlockPos offsetBlockPos, BlockPos blockPos, StructureTemplate.StructureBlockInfo structureBlockInfo, StructureTemplate.StructureBlockInfo relativeStructureBlockInfo, StructurePlaceSettings structurePlaceSettings) {
-        RandomSource randomSource = RandomSource.create(Mth.getSeed(relativeStructureBlockInfo.pos()));
-        BlockState blockState = levelReader.getBlockState(relativeStructureBlockInfo.pos());
-        UnmodifiableIterator<ProcessorRule> processorRules = this.rules.iterator();
-
-        ProcessorRule processorRule;
-        do {
-            if (!processorRules.hasNext()) {
-                return relativeStructureBlockInfo;
+    public List<StructureTemplate.StructureBlockInfo> finalizeProcessing(ServerLevelAccessor serverLevelAccessor, BlockPos offsetBlockPos, BlockPos blockPos, List<StructureTemplate.StructureBlockInfo> structureBlockInfos, List<StructureTemplate.StructureBlockInfo> processedStructureBlockInfos, StructurePlaceSettings structurePlaceSettings) {
+        if (!structureBlockInfos.isEmpty()) {
+            List<BlockPos> blockPoses = structureBlockInfos.stream().map(StructureTemplate.StructureBlockInfo::pos).toList();
+            RelicHoleList relicHoleList = new RelicHoleList(serverLevelAccessor.getRandom(), blockPoses, 5, 3);
+            for (int i = 0; i < processedStructureBlockInfos.size(); i++) {
+                StructureTemplate.StructureBlockInfo structureBlockInfo = processedStructureBlockInfos.get(i);
+                if (relicHoleList.isHole(structureBlockInfo.pos())) {
+                    processedStructureBlockInfos.set(i, new StructureTemplate.StructureBlockInfo(structureBlockInfo.pos(), Blocks.AIR.defaultBlockState(), structureBlockInfo.nbt()));
+                }
             }
-
-            processorRule = processorRules.next();
-        } while (!processorRule.test(relativeStructureBlockInfo.state(), blockState, structureBlockInfo.pos(), relativeStructureBlockInfo.pos(), blockPos, randomSource));
-
-        return new StructureTemplate.StructureBlockInfo(relativeStructureBlockInfo.pos(), Blocks.AIR.defaultBlockState(), relativeStructureBlockInfo.nbt());
+        }
+        return processedStructureBlockInfos;
     }
 
     @Override

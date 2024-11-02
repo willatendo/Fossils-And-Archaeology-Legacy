@@ -13,7 +13,6 @@ import willatendo.fossilslegacy.server.block.FeederBlock;
 import willatendo.fossilslegacy.server.block.entity.FeederBlockEntity;
 import willatendo.fossilslegacy.server.item.feederfood.FeederFood;
 import willatendo.fossilslegacy.server.item.feederfood.FillType;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
 

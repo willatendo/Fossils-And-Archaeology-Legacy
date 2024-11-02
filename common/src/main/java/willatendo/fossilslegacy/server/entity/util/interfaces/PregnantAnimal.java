@@ -1,8 +1,11 @@
 package willatendo.fossilslegacy.server.entity.util.interfaces;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
@@ -28,11 +31,15 @@ import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Mammoth;
 import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Smilodon;
 import willatendo.fossilslegacy.server.entity.pregnant.PregnantSheep;
 import willatendo.fossilslegacy.server.entity.variants.PregnancyType;
+import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 
 import java.util.Objects;
 import java.util.Optional;
 
-public interface PregnantAnimal<T extends Entity> extends TicksToBirth<T> {
+public interface PregnantAnimal<T extends Entity> extends TicksToBirth<T>, SimpleLevelAccessor {
+    MapCodec<Holder<CoatType>> VARIANT_MAP_CODEC = CoatType.CODEC.fieldOf("OffspringCoatType");
+    Codec<Holder<CoatType>> VARIANT_CODEC = VARIANT_MAP_CODEC.codec();
+
     int getRemainingPregnancyTime();
 
     void setRemainingPregnancyTime(int remainingPregnancyTime);
@@ -50,6 +57,10 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth<T> {
     Holder<PregnancyType> getPregnancyType();
 
     void setPregnancyType(Holder<PregnancyType> pregnancyType);
+
+    Holder<CoatType> getOffspringCoatType();
+
+    void setOffspringCoatType(Holder<CoatType> coatTypeHolder);
 
     T getBaseEntity(Level level);
 
@@ -210,16 +221,34 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth<T> {
         builder.define(pregnancy, FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES.getHolderOrThrow(FossilsLegacyPregnancyTypes.CAT.getKey()));
     }
 
+    default void defineCoatTypeData(EntityDataAccessor<Holder<CoatType>> pregnancy, SynchedEntityData.Builder builder) {
+        builder.define(pregnancy, this.getLevel().registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getAny().orElseThrow());
+    }
+
+    default void addRemainingPregnancyTime(CompoundTag compoundTag) {
+        compoundTag.putInt("PregnancyTime", this.getRemainingTime());
+    }
+
+    default void readRemainingPregnancyTime(CompoundTag compoundTag) {
+        this.setRemainingPregnancyTime(compoundTag.getInt("PregnancyTime"));
+    }
+
     default void addPregnancyData(CompoundTag compoundTag) {
         compoundTag.putString("Variant", this.getPregnancyType().unwrapKey().orElse(FossilsLegacyPregnancyTypes.CAT.getKey()).location().toString());
     }
 
     default void readPregnancyData(CompoundTag compoundTag) {
-        Optional<ResourceKey<PregnancyType>> eggVariant = Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("Variant"))).map((resourceLocation) -> {
-            return ResourceKey.create(FossilsLegacyRegistries.PREGNANCY_TYPES, resourceLocation);
-        });
+        Optional<ResourceKey<PregnancyType>> eggVariant = Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("Variant"))).map((resourceLocation) -> ResourceKey.create(FossilsLegacyRegistries.PREGNANCY_TYPES, resourceLocation));
         Registry<PregnancyType> registry = FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES;
         Objects.requireNonNull(registry);
         eggVariant.flatMap(registry::getHolder).ifPresent(this::setPregnancyType);
+    }
+
+    default void addCoatTypeData(CompoundTag compoundTag) {
+        VARIANT_CODEC.encodeStart(this.getLevel().registryAccess().createSerializationContext(NbtOps.INSTANCE), this.getOffspringCoatType()).ifSuccess(tag -> compoundTag.merge((CompoundTag) tag));
+    }
+
+    default void readCoatTypeData(CompoundTag compoundTag) {
+        VARIANT_CODEC.parse(this.getLevel().registryAccess().createSerializationContext(NbtOps.INSTANCE), compoundTag).ifSuccess(this::setOffspringCoatType);
     }
 }

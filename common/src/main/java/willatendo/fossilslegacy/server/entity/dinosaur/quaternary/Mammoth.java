@@ -41,7 +41,10 @@ import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoOwnerHurtTargetGoal;
 import willatendo.fossilslegacy.server.entity.goal.DinoTemptGoal;
 import willatendo.fossilslegacy.server.entity.util.DinoUtils;
-import willatendo.fossilslegacy.server.entity.util.interfaces.*;
+import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
+import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
+import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
+import willatendo.fossilslegacy.server.entity.util.interfaces.RideableDinosaur;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
@@ -87,7 +90,9 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        return FossilsLegacyEntityTypes.MAMMOTH.get().create(serverLevel);
+        Mammoth mammoth = FossilsLegacyEntityTypes.MAMMOTH.get().create(serverLevel);
+        mammoth.setCoatType(this.getCoatType());
+        return mammoth;
     }
 
     @Override

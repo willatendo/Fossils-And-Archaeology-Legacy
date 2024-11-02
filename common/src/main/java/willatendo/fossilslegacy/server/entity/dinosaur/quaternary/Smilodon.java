@@ -26,7 +26,10 @@ import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.entity.goal.*;
-import willatendo.fossilslegacy.server.entity.util.interfaces.*;
+import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
+import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
+import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
+import willatendo.fossilslegacy.server.entity.util.interfaces.ShakingEntity;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
@@ -69,7 +72,9 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, ShakingE
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        return FossilsLegacyEntityTypes.SMILODON.get().create(serverLevel);
+        Smilodon smilodon = FossilsLegacyEntityTypes.SMILODON.get().create(serverLevel);
+        smilodon.setCoatType(this.getCoatType());
+        return smilodon;
     }
 
     @Override

@@ -24,7 +24,10 @@ import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.entity.goal.*;
-import willatendo.fossilslegacy.server.entity.util.interfaces.*;
+import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
+import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
+import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
+import willatendo.fossilslegacy.server.entity.util.interfaces.FloatDownEntity;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
@@ -68,7 +71,9 @@ public class Dodo extends Dinosaur implements DinopediaInformation, FloatDownEnt
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        return FossilsLegacyEntityTypes.DODO.get().create(serverLevel);
+        Dodo dodo = FossilsLegacyEntityTypes.DODO.get().create(serverLevel);
+        dodo.setCoatType(this.getCoatType());
+        return dodo;
     }
 
     @Override

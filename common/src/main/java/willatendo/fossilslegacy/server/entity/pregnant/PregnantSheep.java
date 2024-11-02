@@ -8,6 +8,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -15,15 +16,18 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityDataSerializers;
+import willatendo.fossilslegacy.server.entity.util.interfaces.CoatTypeEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.PregnantAnimal;
 import willatendo.fossilslegacy.server.entity.variants.PregnancyType;
+import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PregnantSheep extends Sheep implements DinopediaInformation, PregnantAnimal<Sheep> {
+    private static final EntityDataAccessor<Holder<CoatType>> OFFSPRING_COAT_TYPE = SynchedEntityData.defineId(PregnantSheep.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
     private static final EntityDataAccessor<Integer> PREGNANCY_TIME = SynchedEntityData.defineId(PregnantSheep.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Holder<PregnancyType>> PREGNANCY = SynchedEntityData.defineId(PregnantSheep.class, FossilsLegacyEntityDataSerializers.PREGNANCY_TYPES.get());
 
@@ -42,6 +46,11 @@ public class PregnantSheep extends Sheep implements DinopediaInformation, Pregna
     }
 
     @Override
+    public Level getLevel() {
+        return this.level();
+    }
+
+    @Override
     public List<Component> info(Player player) {
         ArrayList<Component> information = Lists.newArrayList();
         information.add(this.getDisplayName());
@@ -54,15 +63,17 @@ public class PregnantSheep extends Sheep implements DinopediaInformation, Pregna
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        compoundTag.putInt("PregnancyTime", this.getRemainingPregnancyTime());
+        this.addRemainingPregnancyTime(compoundTag);
         this.addPregnancyData(compoundTag);
+        this.addCoatTypeData(compoundTag);
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        this.setRemainingPregnancyTime(compoundTag.getInt("PregnancyTime"));
+        this.readRemainingPregnancyTime(compoundTag);
         this.readPregnancyData(compoundTag);
+        this.readCoatTypeData(compoundTag);
     }
 
     @Override
@@ -72,8 +83,16 @@ public class PregnantSheep extends Sheep implements DinopediaInformation, Pregna
     }
 
     @Override
+    public void onEntityTicksComplete(Mob mob, Entity offspring, Level level) {
+        if (offspring instanceof CoatTypeEntity coatTypeEntity) {
+            coatTypeEntity.setCoatType(this.getOffspringCoatType());
+        }
+    }
+
+    @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
+        this.defineCoatTypeData(OFFSPRING_COAT_TYPE, builder);
         this.definePregnancyData(PREGNANCY, builder);
         builder.define(PREGNANCY_TIME, 0);
     }
@@ -96,6 +115,16 @@ public class PregnantSheep extends Sheep implements DinopediaInformation, Pregna
     @Override
     public void setPregnancyType(Holder<PregnancyType> pregnancyType) {
         this.entityData.set(PREGNANCY, pregnancyType);
+    }
+
+    @Override
+    public Holder<CoatType> getOffspringCoatType() {
+        return this.entityData.get(OFFSPRING_COAT_TYPE);
+    }
+
+    @Override
+    public void setOffspringCoatType(Holder<CoatType> coatTypeHolder) {
+        this.entityData.set(OFFSPRING_COAT_TYPE, coatTypeHolder);
     }
 
     @Override

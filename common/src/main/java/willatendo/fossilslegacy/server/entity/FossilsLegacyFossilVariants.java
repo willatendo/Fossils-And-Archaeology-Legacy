@@ -8,8 +8,6 @@ import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyItemTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-import java.util.List;
-
 public class FossilsLegacyFossilVariants {
     public static final ResourceKey<FossilVariant> ANKYLOSAURUS = FossilsLegacyFossilVariants.create("ankylosaurus");
     public static final ResourceKey<FossilVariant> BRACHIOSAURUS = FossilsLegacyFossilVariants.create("brachiosaurus");

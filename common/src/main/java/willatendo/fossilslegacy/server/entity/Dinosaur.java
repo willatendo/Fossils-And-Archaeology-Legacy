@@ -33,7 +33,6 @@ import willatendo.fossilslegacy.server.entity.commands.FossilsLegacyCommandTypes
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
-import willatendo.fossilslegacy.server.genetics.PatternType;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -399,12 +398,10 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
         this.entityData.set(COMMAND, commandType);
     }
 
-    @Override
     public Holder<CoatType> getCoatType() {
         return this.entityData.get(COAT_TYPE);
     }
 
-    @Override
     public void setCoatType(Holder<CoatType> coatTypeHolder) {
         this.entityData.set(COAT_TYPE, coatTypeHolder);
     }
