@@ -97,13 +97,13 @@
     "axolotls": [],
     "creature": [
       {
-        "type": "fossilslegacy:triceratops",
+        "type": "fossilslegacy:stegosaurus",
         "maxCount": 6,
         "minCount": 2,
         "weight": 1
       },
       {
-        "type": "fossilslegacy:stegosaurus",
+        "type": "fossilslegacy:triceratops",
         "maxCount": 6,
         "minCount": 2,
         "weight": 1

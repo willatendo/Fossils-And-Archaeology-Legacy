@@ -135,6 +135,25 @@
     ],
     "subtitle": "subtitles.entity.dilophosaurus.hurt"
   },
+  "entity.dimetrodon.ambient": {
+    "sounds": [
+      "fossilslegacy:dimetrodon_ambient"
+    ],
+    "subtitle": "subtitles.entity.dimetrodon.ambient"
+  },
+  "entity.dimetrodon.death": {
+    "sounds": [
+      "fossilslegacy:dimetrodon_death"
+    ],
+    "subtitle": "subtitles.entity.dimetrodon.death"
+  },
+  "entity.dimetrodon.hurt": {
+    "sounds": [
+      "fossilslegacy:dimetrodon_hurt_1",
+      "fossilslegacy:dimetrodon_hurt_2"
+    ],
+    "subtitle": "subtitles.entity.dimetrodon.hurt"
+  },
   "entity.dodo.ambient": {
     "sounds": [
       "fossilslegacy:dodo_ambient_1",

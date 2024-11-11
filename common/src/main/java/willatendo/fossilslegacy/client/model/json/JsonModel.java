@@ -11,8 +11,10 @@ import willatendo.fossilslegacy.api.client.BuiltInAnimationType;
 import willatendo.fossilslegacy.client.animation.json.JsonAnimationLoader;
 import willatendo.fossilslegacy.client.model.dinosaur.DinosaurModel;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
+import willatendo.fossilslegacy.server.entity.util.interfaces.AnimatedSittingEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.FloatDownEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.FlyingDinosaur;
+import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
 import java.util.Optional;
@@ -262,6 +264,17 @@ public class JsonModel<T extends Entity> extends DinosaurModel<T> {
                         } else {
                             this.animateWalk(animationHolder, dinosaur, limbSwing, limbSwingAmount, netHeadYaw);
                         }
+                    }
+                }
+
+                if (dinosaur instanceof AnimatedSittingEntity animatedSittingEntity) {
+                    if (animationHolder.hasSitAnimations()) {
+                        for (ResourceLocation animation : animationHolder.sitAnimation()) {
+                            if (!JsonAnimationLoader.isBuiltIn(animation)) {
+                                this.animate(animatedSittingEntity.getSitAnimationState(), JsonAnimationLoader.getAnimation(animation), ageInTicks);
+                            }
+                        }
+
                     }
                 }
 

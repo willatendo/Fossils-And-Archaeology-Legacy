@@ -50,6 +50,7 @@
 - Fixed Pteranodon With "NoAI" Tag Not Having No AI
 - Fixed Academies Sometimes Half-Generating
 - Fixed Pregnant Animals Not Saving Pregnancy Time
+- Fixed Animals In Prehistoric Dimension Not Spawning On Sand/Other Blocks
 - Added Updated Triceratops Model
 - Added "Anu Totem" Stone Tablet
 - Added Coat-Types; Data-Driven Cosmetics For Dinosaurs

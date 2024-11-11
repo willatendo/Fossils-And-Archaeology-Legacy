@@ -29,8 +29,8 @@
     {
       "pattern_type": "dominant",
       "textures": {
-        "aggressive_texture": "fossilslegacy:textures/entity/dilophosaurus/dilophosaurus_aggressive.png",
-        "texture": "fossilslegacy:textures/entity/dilophosaurus/dilophosaurus.png"
+        "aggressive_texture": "fossilslegacy:textures/entity/dilophosaurus/legacy/dilophosaurus_aggressive.png",
+        "texture": "fossilslegacy:textures/entity/dilophosaurus/legacy/dilophosaurus.png"
       }
     }
   ]

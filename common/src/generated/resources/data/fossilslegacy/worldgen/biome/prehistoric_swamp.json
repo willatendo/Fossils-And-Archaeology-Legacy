@@ -102,15 +102,21 @@
     "axolotls": [],
     "creature": [
       {
+        "type": "fossilslegacy:stegosaurus",
+        "maxCount": 6,
+        "minCount": 2,
+        "weight": 1
+      },
+      {
         "type": "fossilslegacy:triceratops",
         "maxCount": 6,
         "minCount": 2,
         "weight": 1
       },
       {
-        "type": "fossilslegacy:stegosaurus",
-        "maxCount": 6,
-        "minCount": 2,
+        "type": "fossilslegacy:spinosaurus",
+        "maxCount": 1,
+        "minCount": 1,
         "weight": 1
       }
     ],

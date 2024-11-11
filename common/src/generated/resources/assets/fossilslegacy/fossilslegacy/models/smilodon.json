@@ -1,5 +1,6 @@
 {
   "animations": {
+    "sit": "fossilslegacy:smilodon_sit",
     "walk": "fossilslegacy:smilodon_walk"
   },
   "elements": [
@@ -229,30 +230,30 @@
       "boxes": [
         {
           "texture_x_offset": 0,
-          "texture_y_offset": 0,
-          "x_dimension": 10.0,
-          "x_origin": -5.0,
-          "y_dimension": 8.0,
-          "y_origin": -14.0,
-          "z_dimension": 7.0,
-          "z_origin": -5.0
-        },
-        {
-          "texture_x_offset": 0,
           "texture_y_offset": 15,
           "x_dimension": 8.0,
           "x_origin": -4.0,
           "y_dimension": 7.0,
-          "y_origin": -13.0,
+          "y_origin": -3.25,
           "z_dimension": 8.0,
-          "z_origin": 2.0
+          "z_origin": -0.25
+        },
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 0,
+          "x_dimension": 10.0,
+          "x_origin": -5.0,
+          "y_dimension": 8.0,
+          "y_origin": -4.25,
+          "z_dimension": 7.0,
+          "z_origin": -7.25
         }
       ],
       "id": "body",
       "poses": {
         "x": 0.0,
-        "y": 24.0,
-        "z": 0.0
+        "y": 14.25,
+        "z": 2.25
       }
     }
   ],

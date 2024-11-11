@@ -18,7 +18,7 @@ public final class SmilodonModels {
         partDefinition.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(24, 41).addBox(-1.0F, -1.0F, -1.0F, 2.0F, 5.0F, 2.0F), PartPose.offset(0.0F, 14.0F, 11.0F));
         PartDefinition neck = partDefinition.addOrReplaceChild("neck", CubeListBuilder.create().texOffs(24, 30).addBox(-3.0F, -4.0F, -2.0F, 4.0F, 7.0F, 4.0F), PartPose.offset(1.0F, 13.0F, -5.0F));
         neck.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 30).addBox(-5.0F, -3.0F, -5.0F, 6.0F, 6.0F, 6.0F).texOffs(34, 9).addBox(-4.0F, -1.0F, -8.0F, 4.0F, 3.0F, 3.0F).texOffs(0, 42).addBox(-3.0F, 2.0F, -8.0F, 2.0F, 1.0F, 3.0F).texOffs(16, 42).addBox(-5.0F, -4.0F, -2.0F, 1.0F, 1.0F, 2.0F).texOffs(32, 24).addBox(-1.0F, 2.0F, -8.0F, 1.0F, 2.0F, 2.0F).texOffs(32, 41).addBox(-4.0F, 2.0F, -8.0F, 1.0F, 2.0F, 2.0F).texOffs(38, 42).addBox(-4.0F, 4.0F, -8.0F, 1.0F, 1.0F, 2.0F).texOffs(44, 15).addBox(-1.0F, 4.0F, -8.0F, 1.0F, 1.0F, 2.0F).texOffs(10, 42).addBox(0.0F, -4.0F, -2.0F, 1.0F, 1.0F, 2.0F), PartPose.offset(1.0F, -2.0F, -2.0F));
-        partDefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-5.0F, -14.0F, -5.0F, 10.0F, 8.0F, 7.0F).texOffs(0, 15).addBox(-4.0F, -13.0F, 2.0F, 8.0F, 7.0F, 8.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
+        partDefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 15).addBox(-4.0F, -3.25F, -0.25F, 8.0F, 7.0F, 8.0F).texOffs(0, 0).addBox(-5.0F, -4.25F, -7.25F, 10.0F, 8.0F, 7.0F), PartPose.offset(0.0F, 14.25F, 2.25F));
 
         return LayerDefinition.create(meshDefinition, 64, 64);
     }

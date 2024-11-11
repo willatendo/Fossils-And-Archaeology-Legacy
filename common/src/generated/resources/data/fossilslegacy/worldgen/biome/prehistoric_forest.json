@@ -95,7 +95,13 @@
     "axolotls": [],
     "creature": [
       {
-        "type": "fossilslegacy:therizinosaurus",
+        "type": "fossilslegacy:carnotaurus",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 1
+      },
+      {
+        "type": "fossilslegacy:pachycephalosaurus",
         "maxCount": 2,
         "minCount": 1,
         "weight": 1
@@ -107,7 +113,7 @@
         "weight": 1
       },
       {
-        "type": "fossilslegacy:carnotaurus",
+        "type": "fossilslegacy:therizinosaurus",
         "maxCount": 2,
         "minCount": 1,
         "weight": 1

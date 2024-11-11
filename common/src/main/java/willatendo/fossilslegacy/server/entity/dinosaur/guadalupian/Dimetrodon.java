@@ -2,7 +2,9 @@ package willatendo.fossilslegacy.server.entity.dinosaur.guadalupian;
 
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -12,6 +14,7 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.apache.commons.compress.utils.Lists;
+import org.jetbrains.annotations.Nullable;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEggVariants;
 import willatendo.fossilslegacy.server.entity.goal.*;
@@ -21,6 +24,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyEntityTypeTags;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyItemTags;
@@ -71,6 +75,22 @@ public class Dimetrodon extends Dinosaur implements DinopediaInformation {
         this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this));
         this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
         this.targetSelector.addGoal(4, new DinoNearestAttackableTargetGoal<>(this, FossilsLegacyEntityTypeTags.DIMETRODON_VICTIMS, true));
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return FossilsLegacySoundEvents.DIMETRODON_AMBIENT.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return FossilsLegacySoundEvents.DIMETRODON_HURT.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return FossilsLegacySoundEvents.DIMETRODON_DEATH.get();
     }
 
     @Override

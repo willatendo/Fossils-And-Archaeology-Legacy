@@ -92,9 +92,11 @@ public class FossilsLegacyBiomes {
 
     public static Biome plains(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
         MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
-        mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.TRICERATOPS.get(), 1, 2, 6));
-        mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.STEGOSAURUS.get(), 1, 2, 6));
+        mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.ANKYLOSAURUS.get(), 1, 2, 6));
         mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.BRACHIOSAURUS.get(), 1, 1, 2));
+        mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.PACHYCEPHALOSAURUS.get(), 1, 1, 2));
+        mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.STEGOSAURUS.get(), 1, 2, 6));
+        mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.TRICERATOPS.get(), 1, 2, 6));
         mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.TYRANNOSAURUS.get(), 1, 1, 1));
         BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder(placedFeatures, configuredWorldCarvers);
         globalPrehistoricGeneration(biomeGenerationSettings);
@@ -113,9 +115,10 @@ public class FossilsLegacyBiomes {
 
     public static Biome forest(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
         MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
-        mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.THERIZINOSAURUS.get(), 1, 1, 2));
-        mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.STEGOSAURUS.get(), 1, 2, 6));
         mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.CARNOTAURUS.get(), 1, 1, 2));
+        mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.PACHYCEPHALOSAURUS.get(), 1, 1, 2));
+        mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.STEGOSAURUS.get(), 1, 2, 6));
+        mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.THERIZINOSAURUS.get(), 1, 1, 2));
         BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder(placedFeatures, configuredWorldCarvers);
         globalPrehistoricGeneration(biomeGenerationSettings);
         BiomeDefaultFeatures.addForestFlowers(biomeGenerationSettings);
@@ -136,6 +139,7 @@ public class FossilsLegacyBiomes {
 
     public static Biome desert(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
         MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
+        mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.GALLIMIMUS.get(), 1, 4, 7));
         mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.TRICERATOPS.get(), 1, 2, 6));
         mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.VELOCIRAPTOR.get(), 1, 4, 7));
         BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder(placedFeatures, configuredWorldCarvers);
@@ -154,8 +158,8 @@ public class FossilsLegacyBiomes {
 
     private static Biome jungle(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
         MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
-        mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.TRICERATOPS.get(), 1, 2, 6));
         mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.STEGOSAURUS.get(), 1, 2, 6));
+        mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.TRICERATOPS.get(), 1, 2, 6));
         BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder(placedFeatures, configuredWorldCarvers);
         globalPrehistoricGeneration(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultOres(biomeGenerationSettings);
@@ -194,8 +198,8 @@ public class FossilsLegacyBiomes {
 
     public static Biome taiga(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
         MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
-        mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.STEGOSAURUS.get(), 1, 2, 6));
         mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get(), 1, 2, 2));
+        mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.STEGOSAURUS.get(), 1, 2, 6));
         BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder(placedFeatures, configuredWorldCarvers);
         globalPrehistoricGeneration(biomeGenerationSettings);
         BiomeDefaultFeatures.addFerns(biomeGenerationSettings);
@@ -212,8 +216,9 @@ public class FossilsLegacyBiomes {
 
     public static Biome swamp(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
         MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
-        mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.TRICERATOPS.get(), 1, 2, 6));
         mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.STEGOSAURUS.get(), 1, 2, 6));
+        mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.TRICERATOPS.get(), 1, 2, 6));
+        mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FossilsLegacyEntityTypes.SPINOSAURUS.get(), 1, 1, 1));
         BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder(placedFeatures, configuredWorldCarvers);
         BiomeDefaultFeatures.addFossilDecoration(biomeGenerationSettings);
         globalPrehistoricGeneration(biomeGenerationSettings);

@@ -1,12 +1,15 @@
 package willatendo.fossilslegacy.server.structure.processor;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.templatesystem.*;
-import willatendo.fossilslegacy.server.structure.processor.hole.RelicHoleList;
 
 import java.util.List;
 
@@ -19,18 +22,21 @@ public class HolesProcessor extends StructureProcessor {
     }
 
     @Override
-    public List<StructureTemplate.StructureBlockInfo> finalizeProcessing(ServerLevelAccessor serverLevelAccessor, BlockPos offsetBlockPos, BlockPos blockPos, List<StructureTemplate.StructureBlockInfo> structureBlockInfos, List<StructureTemplate.StructureBlockInfo> processedStructureBlockInfos, StructurePlaceSettings structurePlaceSettings) {
-        if (!structureBlockInfos.isEmpty()) {
-            List<BlockPos> blockPoses = structureBlockInfos.stream().map(StructureTemplate.StructureBlockInfo::pos).toList();
-            RelicHoleList relicHoleList = new RelicHoleList(serverLevelAccessor.getRandom(), blockPoses, 5, 3);
-            for (int i = 0; i < processedStructureBlockInfos.size(); i++) {
-                StructureTemplate.StructureBlockInfo structureBlockInfo = processedStructureBlockInfos.get(i);
-                if (relicHoleList.isHole(structureBlockInfo.pos())) {
-                    processedStructureBlockInfos.set(i, new StructureTemplate.StructureBlockInfo(structureBlockInfo.pos(), Blocks.AIR.defaultBlockState(), structureBlockInfo.nbt()));
-                }
+    public StructureTemplate.StructureBlockInfo processBlock(LevelReader levelReader, BlockPos offsetBlockPos, BlockPos blockPos, StructureTemplate.StructureBlockInfo structureBlockInfo, StructureTemplate.StructureBlockInfo relativeStructureBlockInfo, StructurePlaceSettings structurePlaceSettings) {
+        RandomSource randomsource = RandomSource.create(Mth.getSeed(relativeStructureBlockInfo.pos()));
+        BlockState blockstate = levelReader.getBlockState(relativeStructureBlockInfo.pos());
+        UnmodifiableIterator<ProcessorRule> iterator = this.rules.iterator();
+
+        ProcessorRule processorRule;
+        do {
+            if (!iterator.hasNext()) {
+                return relativeStructureBlockInfo;
             }
-        }
-        return processedStructureBlockInfos;
+
+            processorRule = iterator.next();
+        } while (!processorRule.test(relativeStructureBlockInfo.state(), blockstate, structureBlockInfo.pos(), relativeStructureBlockInfo.pos(), blockPos, randomsource));
+
+        return new StructureTemplate.StructureBlockInfo(relativeStructureBlockInfo.pos(), Blocks.AIR.defaultBlockState(), processorRule.getOutputTag(randomsource, relativeStructureBlockInfo.nbt()));
     }
 
     @Override

@@ -174,6 +174,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.addCoatType(FossilsLegacyCoatTypes.BRACHIOSAURUS, "Brachiosaurus (2024)");
         this.addCoatType(FossilsLegacyCoatTypes.COMPSOGNATHUS, "Compsognathus (2024)");
         this.addCoatType(FossilsLegacyCoatTypes.CRYOLOPHOSAURUS, "Cryolophosaurus (2024)");
+        this.addCoatType(FossilsLegacyCoatTypes.DILOPHOSAURUS, "Dilophosaurus (2024)");
         this.addCoatType(FossilsLegacyCoatTypes.DODO, "Dodo (2024)");
         this.addCoatType(FossilsLegacyCoatTypes.FUTABASAURUS, "Futabasaurus (2024)");
         this.addCoatType(FossilsLegacyCoatTypes.GALLIMIMUS, "Gallimimus (2024)");
@@ -200,7 +201,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.addCoatType(FossilsLegacyCoatTypes.LEGACY_DILOPHOSAURUS, "Dilophosaurus (2011)");
         this.addCoatType(FossilsLegacyCoatTypes.LEGACY_FUTABASAURUS, "Futabasaurus (2011)");
         this.addCoatType(FossilsLegacyCoatTypes.LEGACY_MAMMOTH, "Mammoth (2011)");
-        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_MOSASAURUS, "Mosausaurus (2011)");
+        this.addCoatType(FossilsLegacyCoatTypes.LEGACY_MOSASAURUS, "Mosasaurus (2011)");
         this.addCoatType(FossilsLegacyCoatTypes.LEGACY_PTERANODON, "Pteranodon (2011)");
         this.addCoatType(FossilsLegacyCoatTypes.LEGACY_SMILODON, "Smilodon (2011)");
         this.addCoatType(FossilsLegacyCoatTypes.LEGACY_STEGOSAURUS, "Stegosaurus (2011)");
@@ -402,6 +403,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.addFossilVariant(FossilsLegacyFossilVariants.CARNOTAURUS, "Carnotaurus");
         this.addFossilVariant(FossilsLegacyFossilVariants.COMPSOGNATHUS, "Compsognathus");
         this.addFossilVariant(FossilsLegacyFossilVariants.CRYOLOPHOSAURUS, "Cryolophosaurus");
+        this.addFossilVariant(FossilsLegacyFossilVariants.DILOPHOSAURUS, "Dilophosaurus");
         this.addFossilVariant(FossilsLegacyFossilVariants.DIMETRODON, "Dimetrodon");
         this.addFossilVariant(FossilsLegacyFossilVariants.FUTABASAURUS, "Futabasaurus");
         this.addFossilVariant(FossilsLegacyFossilVariants.LEGACY_FUTABASAURUS, "Legacy Futabasaurus");
@@ -419,6 +421,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 
         // JEI
         this.add("gui.jei.category.registry.coat_types", "Coat Types");
+        this.add("gui.jei.category.tagInformation.coat_types", "Coat Types");
 
         // Items
         this.add(FossilsLegacyItems.FOSSIL.get());
@@ -586,6 +589,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.articulated_fossil.carnotaurus", "Articulated Carnotaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.compsognathus", "Articulated Compsognathus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.cryolophosaurus", "Articulated Cryolophosaurus Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.dilophosaurus", "Articulated Dilophosaursu Fossil");
         this.add("item.fossilslegacy.articulated_fossil.dimetrodon", "Articulated Dimetrodon Fossil");
         this.add("item.fossilslegacy.articulated_fossil.futabasaurus", "Articulated Futabasaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.legacy_futabasaurus", "Articulated Legacy Futabasaurus Fossil");
@@ -802,6 +806,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("subtitles.entity.dilophosaurus.call", "Dilophosaurus calls");
         this.add("subtitles.entity.dilophosaurus.hurt", "Dilophosaurus hurts");
         this.add("subtitles.entity.dilophosaurus.death", "Dilophosaurus dies");
+        this.add("subtitles.entity.dimetrodon.ambient", "Dimetrodon hisses");
+        this.add("subtitles.entity.dimetrodon.hurt", "Dimetrodon hurts");
+        this.add("subtitles.entity.dimetrodon.death", "Dimetrodon dies");
         this.add("subtitles.entity.dodo.ambient", "Dodo hoots");
         this.add("subtitles.entity.dodo.hurt", "Dodo hurts");
         this.add("subtitles.entity.dodo.death", "Dodo dies");

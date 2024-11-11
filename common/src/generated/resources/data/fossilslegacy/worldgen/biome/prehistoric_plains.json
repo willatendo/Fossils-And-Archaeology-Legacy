@@ -89,9 +89,21 @@
     "axolotls": [],
     "creature": [
       {
-        "type": "fossilslegacy:triceratops",
+        "type": "fossilslegacy:ankylosaurus",
         "maxCount": 6,
         "minCount": 2,
+        "weight": 1
+      },
+      {
+        "type": "fossilslegacy:brachiosaurus",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 1
+      },
+      {
+        "type": "fossilslegacy:pachycephalosaurus",
+        "maxCount": 2,
+        "minCount": 1,
         "weight": 1
       },
       {
@@ -101,9 +113,9 @@
         "weight": 1
       },
       {
-        "type": "fossilslegacy:brachiosaurus",
-        "maxCount": 2,
-        "minCount": 1,
+        "type": "fossilslegacy:triceratops",
+        "maxCount": 6,
+        "minCount": 2,
         "weight": 1
       },
       {

@@ -7,6 +7,22 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 
 public final class DilophosaurusModels {
+    public static LayerDefinition createDilophosaurusBodyLayer() {
+        MeshDefinition meshdefinition = new MeshDefinition();
+        PartDefinition partdefinition = meshdefinition.getRoot();
+
+        partdefinition.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(22, 29).addBox(-2.0F, -2.0F, 0.0F, 4.0F, 5.0F, 6.0F).texOffs(22, 17).addBox(-1.0F, -2.0F, 6.0F, 2.0F, 3.0F, 9.0F), PartPose.offset(0.0F, 11.0F, 5.0F));
+        partdefinition.addOrReplaceChild("left_arm", CubeListBuilder.create().texOffs(14, 52).addBox(-1.0F, -1.0F, -1.0F, 2.0F, 6.0F, 2.0F), PartPose.offset(2.0F, 13.0F, -8.0F));
+        partdefinition.addOrReplaceChild("right_arm", CubeListBuilder.create().texOffs(22, 52).addBox(-1.0F, -1.0F, -1.0F, 2.0F, 6.0F, 2.0F), PartPose.offset(-2.0F, 13.0F, -8.0F));
+        partdefinition.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(48, 0).addBox(-1.0F, 8.0F, -2.0F, 3.0F, 2.0F, 5.0F).texOffs(46, 52).addBox(-1.0F, 4.0F, 1.0F, 2.0F, 4.0F, 2.0F).texOffs(30, 0).addBox(-1.0F, -3.0F, -3.0F, 3.0F, 7.0F, 6.0F), PartPose.offset(3.0F, 14.0F, 1.0F));
+        partdefinition.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(44, 21).addBox(-2.0F, 8.0F, -2.0F, 3.0F, 2.0F, 5.0F).texOffs(48, 7).addBox(-1.0F, 4.0F, 1.0F, 2.0F, 4.0F, 2.0F).texOffs(0, 30).addBox(-2.0F, -3.0F, -3.0F, 3.0F, 7.0F, 6.0F), PartPose.offset(-3.0F, 14.0F, 1.0F));
+        PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 43).addBox(0.0F, -5.0F, -2.0F, 4.0F, 5.0F, 4.0F).texOffs(42, 29).addBox(0.0F, -5.0F, -11.0F, 4.0F, 3.0F, 6.0F).texOffs(0, 52).addBox(0.0F, -5.0F, -5.0F, 4.0F, 5.0F, 3.0F).texOffs(30, 52).addBox(-4.0F, -6.0F, -2.0F, 4.0F, 7.0F, 0.0F).texOffs(38, 52).addBox(4.0F, -6.0F, -2.0F, 4.0F, 7.0F, 0.0F).texOffs(18, 40).addBox(3.0F, -8.0F, -11.0F, 0.0F, 3.0F, 9.0F).texOffs(36, 40).addBox(1.0F, -8.0F, -11.0F, 0.0F, 3.0F, 9.0F), PartPose.offset(-2.0F, 9.0F, -9.0F));
+        head.addOrReplaceChild("jaw", CubeListBuilder.create().texOffs(44, 13).addBox(-2.0F, 0.0F, -6.0F, 4.0F, 2.0F, 6.0F), PartPose.offset(2.0F, -2.0F, -5.0F));
+        partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, -15.0F, -4.0F, 6.0F, 8.0F, 9.0F).texOffs(0, 17).addBox(-2.0F, -15.0F, -11.0F, 4.0F, 6.0F, 7.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
+
+        return LayerDefinition.create(meshdefinition, 64, 64);
+    }
+
     public static LayerDefinition createLegacyDilophosaurusBodyLayer() {
         MeshDefinition meshDefinition = new MeshDefinition();
         PartDefinition partDefinition = meshDefinition.getRoot();

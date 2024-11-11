@@ -17,27 +17,6 @@ public class FossilsLegacyFossilVariantTagProvider extends DataDrivenTagsProvide
 
     @Override
     protected void addTags(Provider provider) {
-        this.tag(FossilsLegacyFossilVariantTags.PLACEABLE_FROM_FOSSIL)
-                .add(
-                        FossilsLegacyFossilVariants.ANKYLOSAURUS,
-                        FossilsLegacyFossilVariants.BRACHIOSAURUS,
-                        FossilsLegacyFossilVariants.LEGACY_BRACHIOSAURUS,
-                        FossilsLegacyFossilVariants.CARNOTAURUS,
-                        FossilsLegacyFossilVariants.COMPSOGNATHUS,
-                        FossilsLegacyFossilVariants.CRYOLOPHOSAURUS,
-                        FossilsLegacyFossilVariants.DIMETRODON,
-                        FossilsLegacyFossilVariants.FUTABASAURUS,
-                        FossilsLegacyFossilVariants.LEGACY_FUTABASAURUS,
-                        FossilsLegacyFossilVariants.GALLIMIMUS,
-                        FossilsLegacyFossilVariants.PACHYCEPHALOSAURUS,
-                        FossilsLegacyFossilVariants.PTERANODON,
-                        FossilsLegacyFossilVariants.LEGACY_PTERANODON,
-                        FossilsLegacyFossilVariants.SPINOSAURUS,
-                        FossilsLegacyFossilVariants.STEGOSAURUS,
-                        FossilsLegacyFossilVariants.THERIZINOSAURUS,
-                        FossilsLegacyFossilVariants.TRICERATOPS,
-                        FossilsLegacyFossilVariants.LEGACY_TRICERATOPS,
-                        FossilsLegacyFossilVariants.TYRANNOSAURUS,
-                        FossilsLegacyFossilVariants.VELOCIRAPTOR);
+        this.tag(FossilsLegacyFossilVariantTags.PLACEABLE_FROM_FOSSIL).add(FossilsLegacyFossilVariants.ANKYLOSAURUS, FossilsLegacyFossilVariants.BRACHIOSAURUS, FossilsLegacyFossilVariants.LEGACY_BRACHIOSAURUS, FossilsLegacyFossilVariants.CARNOTAURUS, FossilsLegacyFossilVariants.COMPSOGNATHUS, FossilsLegacyFossilVariants.CRYOLOPHOSAURUS, FossilsLegacyFossilVariants.DILOPHOSAURUS, FossilsLegacyFossilVariants.DIMETRODON, FossilsLegacyFossilVariants.FUTABASAURUS, FossilsLegacyFossilVariants.LEGACY_FUTABASAURUS, FossilsLegacyFossilVariants.GALLIMIMUS, FossilsLegacyFossilVariants.PACHYCEPHALOSAURUS, FossilsLegacyFossilVariants.PTERANODON, FossilsLegacyFossilVariants.LEGACY_PTERANODON, FossilsLegacyFossilVariants.SPINOSAURUS, FossilsLegacyFossilVariants.STEGOSAURUS, FossilsLegacyFossilVariants.THERIZINOSAURUS, FossilsLegacyFossilVariants.TRICERATOPS, FossilsLegacyFossilVariants.LEGACY_TRICERATOPS, FossilsLegacyFossilVariants.TYRANNOSAURUS, FossilsLegacyFossilVariants.VELOCIRAPTOR);
     }
 }

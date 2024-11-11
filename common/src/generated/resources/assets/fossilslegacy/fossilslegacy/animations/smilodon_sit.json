@@ -1,0 +1,123 @@
+{
+  "type": "json",
+  "animations": [
+    {
+      "bone": "left_leg",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "pos_vec": {
+            "x": -1.0,
+            "y": -4.5,
+            "z": -6.0
+          },
+          "target": "position",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": -90.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.0
+        }
+      ]
+    },
+    {
+      "bone": "right_leg",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "pos_vec": {
+            "x": 1.0,
+            "y": -4.5,
+            "z": -6.0
+          },
+          "target": "position",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": -90.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.0
+        }
+      ]
+    },
+    {
+      "bone": "tail",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "pos_vec": {
+            "x": 0.0,
+            "y": -8.0,
+            "z": -3.0
+          },
+          "target": "position",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": 70.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.0
+        }
+      ]
+    },
+    {
+      "bone": "body",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "pos_vec": {
+            "x": 0.0,
+            "y": -3.0,
+            "z": -1.0
+          },
+          "target": "position",
+          "timestamp": 0.0
+        },
+        {
+          "degree_vec": {
+            "x": -45.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "interpolation": "linear",
+          "target": "rotation",
+          "timestamp": 0.0
+        }
+      ]
+    },
+    {
+      "bone": "neck",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "pos_vec": {
+            "x": 0.0,
+            "y": 1.0,
+            "z": 2.0
+          },
+          "target": "position",
+          "timestamp": 0.0
+        }
+      ]
+    }
+  ],
+  "id": "fossilslegacy:smilodon_sit",
+  "length": 0.0,
+  "looping": false
+}

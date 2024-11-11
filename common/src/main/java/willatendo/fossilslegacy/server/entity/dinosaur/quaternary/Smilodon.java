@@ -12,6 +12,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -25,11 +26,9 @@ import net.minecraft.world.phys.Vec3;
 import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
+import willatendo.fossilslegacy.server.entity.commands.FossilsLegacyCommandTypes;
 import willatendo.fossilslegacy.server.entity.goal.*;
-import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
-import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
-import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
-import willatendo.fossilslegacy.server.entity.util.interfaces.ShakingEntity;
+import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
@@ -38,8 +37,9 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Smilodon extends Dinosaur implements DinopediaInformation, ShakingEntity {
+public class Smilodon extends Dinosaur implements DinopediaInformation, ShakingEntity, AnimatedSittingEntity {
     private static final EntityDataAccessor<Boolean> DATA_INTERESTED_ID = SynchedEntityData.defineId(Smilodon.class, EntityDataSerializers.BOOLEAN);
+    public final AnimationState sitAnimationState = new AnimationState();
     private boolean isWet;
     private boolean isShaking;
     private float interestedAngle;
@@ -53,6 +53,11 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, ShakingE
 
     public static AttributeSupplier smilodonAttributes() {
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.23D).add(Attributes.ATTACK_DAMAGE, 5.0D).build();
+    }
+
+    @Override
+    public AnimationState getSitAnimationState() {
+        return this.sitAnimationState;
     }
 
     @Override
@@ -130,6 +135,10 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, ShakingE
 
     @Override
     public void tick() {
+        if (this.level().isClientSide()) {
+            this.sitAnimationState.animateWhen(this.isOrderedToSit(), this.tickCount);
+        }
+
         super.tick();
 
         if (!this.isAlive()) {

@@ -28,6 +28,9 @@ public class FossilsLegacySoundEvents {
     public static final SimpleHolder<SoundEvent> DILOPHOSAURUS_CALL = SOUND_EVENTS.register("entity.dilophosaurus.call", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.dilophosaurus.call")));
     public static final SimpleHolder<SoundEvent> DILOPHOSAURUS_HURT = SOUND_EVENTS.register("entity.dilophosaurus.hurt", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.dilophosaurus.hurt")));
     public static final SimpleHolder<SoundEvent> DILOPHOSAURUS_DEATH = SOUND_EVENTS.register("entity.dilophosaurus.death", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.dilophosaurus.death")));
+    public static final SimpleHolder<SoundEvent> DIMETRODON_AMBIENT = SOUND_EVENTS.register("entity.dimetrodon.ambient", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.dimetrodon.ambient")));
+    public static final SimpleHolder<SoundEvent> DIMETRODON_HURT = SOUND_EVENTS.register("entity.dimetrodon.hurt", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.dimetrodon.hurt")));
+    public static final SimpleHolder<SoundEvent> DIMETRODON_DEATH = SOUND_EVENTS.register("entity.dimetrodon.death", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.dimetrodon.death")));
     public static final SimpleHolder<SoundEvent> DODO_AMBIENT = SOUND_EVENTS.register("entity.dodo.ambient", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.dodo.ambient")));
     public static final SimpleHolder<SoundEvent> DODO_HURT = SOUND_EVENTS.register("entity.dodo.hurt", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.dodo.hurt")));
     public static final SimpleHolder<SoundEvent> DODO_DEATH = SOUND_EVENTS.register("entity.dodo.death", () -> SoundEvent.createVariableRangeEvent(FossilsLegacyUtils.resource("entity.dodo.death")));

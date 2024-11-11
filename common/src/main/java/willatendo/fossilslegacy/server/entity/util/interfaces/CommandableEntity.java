@@ -21,7 +21,7 @@ public interface CommandableEntity extends SimpleRegistryAccessAccessor {
     CommandingType commandItems();
 
     default boolean isOrderedToSit() {
-        return this.getCommand().is(FossilsLegacyCommandTypes.STAY);
+        return this.getCommand().is(FossilsLegacyCommandTypes.STAY.getKey());
     }
 
     default boolean willListenToDrum(Player player, InteractionHand interactionHand) {

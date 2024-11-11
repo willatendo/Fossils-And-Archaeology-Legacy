@@ -34,6 +34,9 @@ public class FossilsLegacySoundDefinitionsProvider extends SoundDefinitionsProvi
         this.entity(FossilsLegacySoundEvents.DILOPHOSAURUS_CALL.get(), "dilophosaurus", "call", "dilophosaurus_call_1", "dilophosaurus_call_2");
         this.entity(FossilsLegacySoundEvents.DILOPHOSAURUS_HURT.get(), "dilophosaurus", "hurt", "dilophosaurus_hurt");
         this.entity(FossilsLegacySoundEvents.DILOPHOSAURUS_DEATH.get(), "dilophosaurus", "death", "dilophosaurus_death");
+        this.entity(FossilsLegacySoundEvents.DIMETRODON_AMBIENT.get(), "dimetrodon", "ambient", "dimetrodon_ambient");
+        this.entity(FossilsLegacySoundEvents.DIMETRODON_HURT.get(), "dimetrodon", "hurt", "dimetrodon_hurt_1", "dimetrodon_hurt_2");
+        this.entity(FossilsLegacySoundEvents.DIMETRODON_DEATH.get(), "dimetrodon", "death", "dimetrodon_death");
         this.entity(FossilsLegacySoundEvents.DODO_AMBIENT.get(), "dodo", "ambient", "dodo_ambient_1", "dodo_ambient_2", "dodo_ambient_3");
         this.entity(FossilsLegacySoundEvents.DODO_HURT.get(), "dodo", "hurt", "dodo_hurt_1", "dodo_hurt_2");
         this.entity(FossilsLegacySoundEvents.DODO_DEATH.get(), "dodo", "death", "dodo_death");
