@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-30T07:35:51.8842604	Loot Tables
+// 1.21.1	2024-11-13T02:15:27.5853679	Loot Tables
 5fcf811a958fcf132678d4423a7472c475c2b8ca data/fossilslegacy/loot_table/blocks/analyzer.json
 8bfc811efa599c9be09afe46481ec9ebbf5f3a33 data/fossilslegacy/loot_table/blocks/archaeology_workbench.json
 e4c3f2afd7c71b1d42778ff89f2ddfe5a03122da data/fossilslegacy/loot_table/blocks/axolotlspawn.json
@@ -51,6 +51,7 @@ dffc83d9904afa6fea52afc3c780dd71f4a99a29 data/fossilslegacy/loot_table/blocks/li
 a26c2921b6a2b4ebe868f12f57acb7fe9cfd5a43 data/fossilslegacy/loot_table/blocks/light_gray_cultivator.json
 a754ec17a31418b2f1f7cb104aca0616a440c799 data/fossilslegacy/loot_table/blocks/lime_cultivator.json
 70a329afcf397301d9a40c182c1fa58b1f2b9780 data/fossilslegacy/loot_table/blocks/magenta_cultivator.json
+b643f517fcdf526135f9ffa7e10ed712079972f3 data/fossilslegacy/loot_table/blocks/mayan_vase.json
 3a3e1492f4e525bfa5dc474df716e746ecbf2c68 data/fossilslegacy/loot_table/blocks/orange_cultivator.json
 202f1a6c54c6446bacaee83b6d4dd7d3e263b293 data/fossilslegacy/loot_table/blocks/palaeontology_table.json
 2750113ec8fd41cd07143b57c8051bca5abaa7ad data/fossilslegacy/loot_table/blocks/permafrost.json
@@ -90,6 +91,8 @@ fd7c37d78f0bb47928f522e2d604ff99fe484550 data/fossilslegacy/loot_table/blocks/st
 2b4fd7e536a5eb5042c10fe54432be5eaf746b01 data/fossilslegacy/loot_table/blocks/yellow_cultivator.json
 6092aafe4bca6a32828a100accc015b5725a7d51 data/fossilslegacy/loot_table/chests/academy_disc.json
 db12c3fdf62d3af4db6ec55e7626943e4544faa4 data/fossilslegacy/loot_table/chests/academy_loot.json
+85218f111335f1a93fae7072691b44a449b5e539 data/fossilslegacy/loot_table/chests/mayan_loot.json
+57b6d6e7d77690ca3e015f4fdf4fecb7352f8cce data/fossilslegacy/loot_table/chests/mayan_treasure.json
 2a88c80c64cbf9e441234c69b98903788a57571d data/fossilslegacy/loot_table/chests/weapon_shop_decoy.json
 56fd519c48bb18a79c7304a00c16a702caae46c6 data/fossilslegacy/loot_table/chests/weapon_shop_loot.json
 8834457284fe88a4bd7bd65cbadb4f01583b743b data/fossilslegacy/loot_table/entities/ankylosaurus.json

@@ -105,6 +105,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyBlocks.COOKED_CHICKEN_SOUP_CAULDRON.get());
         this.add(FossilsLegacyBlocks.RAW_BERRY_MEDLEY_CAULDRON.get());
         this.add(FossilsLegacyBlocks.COOKED_BERRY_MEDLEY_CAULDRON.get());
+        this.add(FossilsLegacyBlocks.MAYAN_VASE.get());
         this.add(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get());
         this.add(FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get());
         this.add(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get());
@@ -396,6 +397,14 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyEntityTypes.CRYOLOPHOSAURUS.get());
         this.add(FossilsLegacyEntityTypes.THERIZINOSAURUS.get());
 
+        this.add("entity.minecraft.villager.fossilslegacy.archaeologist", "Archaeologist");
+        this.add("entity.minecraft.archaeologist", "Archaeologist");
+        this.add("entity.minecraft.villager.fossilslegacy.palaeontologist", "Palaentologist");
+        this.add("entity.minecraft.palaeontologist", "Palaentologist");
+
+        // Filled Maps
+        this.add("filled_map.mayan_temple", "Mayan Explorer Map");
+
         // Fossil Variants
         this.addFossilVariant(FossilsLegacyFossilVariants.ANKYLOSAURUS, "Ankylosaurus");
         this.addFossilVariant(FossilsLegacyFossilVariants.BRACHIOSAURUS, "Brachiosaurus");
@@ -616,6 +625,10 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.ANCIENT_LEGGINGS_ARTIFACT.get());
         this.add(FossilsLegacyItems.ANCIENT_BOOTS_ARTIFACT.get());
         this.add(FossilsLegacyItems.SCARAB_GEM.get());
+        this.add(FossilsLegacyItems.JADE.get());
+        this.add(FossilsLegacyItems.JADE_OCELOT.get());
+        this.add(FossilsLegacyItems.JADE_VILLAGER.get());
+        this.add(FossilsLegacyItems.CODEX.get());
         this.add(FossilsLegacyItems.ANCIENT_SWORD.get());
         this.add(FossilsLegacyItems.ANCIENT_SHOVEL.get());
         this.add(FossilsLegacyItems.ANCIENT_PICKAXE.get());
@@ -859,6 +872,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 
         // Tags
         this.add(FossilsLegacyBiomeTags.HAS_ACADEMY, "Has Academy");
+        this.add(FossilsLegacyBiomeTags.HAS_MAYAN_TEMPLE, "Has Mayan Temple");
+        this.add(FossilsLegacyBiomeTags.HAS_MOAI, "Has Moai");
+        this.add(FossilsLegacyBiomeTags.HAS_TOTEM_POLE, "Has Totem Pole");
         this.add(FossilsLegacyBiomeTags.HAS_WEAPON_SHOP, "Has Weapon Shop");
 
         this.add(FossilsLegacyBlockTags.EATABLE_FERN, "Eatable Fern");

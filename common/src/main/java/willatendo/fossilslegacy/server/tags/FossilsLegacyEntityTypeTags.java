@@ -7,7 +7,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.util.TagRegister;
 
 public class FossilsLegacyEntityTypeTags {
-    public static final TagRegister<EntityType<?>> ENTITY_TYPE_TAGS = TagRegister.create(Registries.ENTITY_TYPE, FossilsLegacyUtils.ID);
+    private static final TagRegister<EntityType<?>> ENTITY_TYPE_TAGS = TagRegister.create(Registries.ENTITY_TYPE, FossilsLegacyUtils.ID);
 
     public static final TagKey<EntityType<?>> CARNOTAURUS_VICTIMS = ENTITY_TYPE_TAGS.register("victims/carnotaurus");
     public static final TagKey<EntityType<?>> COMPSOGNATHUS_VICTIMS = ENTITY_TYPE_TAGS.register("victims/compsognathus");

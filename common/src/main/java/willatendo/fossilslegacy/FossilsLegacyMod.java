@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy;
 
+import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.biome.FossilsLegacyBiomeSources;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntityTypes;
@@ -8,12 +9,10 @@ import willatendo.fossilslegacy.server.core.registry.FossilsLegacyBuiltInRegistr
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.*;
 import willatendo.fossilslegacy.server.entity.commands.FossilsLegacyCommandTypes;
+import willatendo.fossilslegacy.server.entity.poi.FossilsLegacyPoiTypes;
 import willatendo.fossilslegacy.server.feature.foliageplacer.FossilsLegacyFoliagePlacerTypes;
 import willatendo.fossilslegacy.server.feature.trunkplacer.FossilsLegacyTrunkPlacerTypes;
-import willatendo.fossilslegacy.server.item.FossilsLegacyArmorMaterials;
-import willatendo.fossilslegacy.server.item.FossilsLegacyCreativeModeTabs;
-import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
-import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.item.*;
 import willatendo.fossilslegacy.server.loot.FossilsLegacyLootPoolEntryTypes;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenuTypes;
 import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
@@ -23,6 +22,7 @@ import willatendo.fossilslegacy.server.structure.FossilsLegacyStructureTypes;
 import willatendo.fossilslegacy.server.structure.piece.FossilsLegacyStructurePeices;
 import willatendo.fossilslegacy.server.structure.processor.FossilsLegacyStructureProcessorType;
 import willatendo.fossilslegacy.server.structure.processor.rule.FossilsLegacyRuleTestTypes;
+import willatendo.fossilslegacy.server.utils.Platform;
 import willatendo.simplelibrary.server.SimpleBuiltInRegistries;
 import willatendo.simplelibrary.server.event.registry.SimpleRegistryRegister;
 
@@ -44,9 +44,14 @@ public final class FossilsLegacyMod {
         simpleRegistryRegister.register(FossilsLegacyEggVariants.EGG_VARIANTS);
         simpleRegistryRegister.register(FossilsLegacyPregnancyTypes.PREGNANCY_TYPES);
         FossilsLegacyEntityDataSerializers.init();
+        if (FossilsModloaderHelper.INSTANCE.getPlatform() != Platform.FABRIC) {
+            simpleRegistryRegister.register(FossilsLegacyPoiTypes.POI_TYPES);
+        }
+        simpleRegistryRegister.register(FossilsLegacyVillagerProfessions.VILLAGER_PROFESSIONS);
         simpleRegistryRegister.register(FossilsLegacyEntityTypes.ENTITY_TYPES);
         simpleRegistryRegister.register(FossilsLegacyDataComponents.DATA_COMPONENT_TYPES);
         simpleRegistryRegister.register(FossilsLegacyArmorMaterials.ARMOR_MATERIALS);
+        simpleRegistryRegister.register(FossilsLegacyMapDecorationTypes.MAP_DECORATION_TYPES);
         simpleRegistryRegister.register(FossilsLegacyItems.ITEMS);
         simpleRegistryRegister.register(FossilsLegacyCreativeModeTabs.CREATIVE_MODE_TABS);
         simpleRegistryRegister.register(FossilsLegacyLootPoolEntryTypes.LOOT_POOL_ENTRY_TYPES);

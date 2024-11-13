@@ -1,0 +1,9 @@
+{
+  "parent": "fossilslegacy:block/template_vase",
+  "textures": {
+    "bottom": "fossilslegacy:block/mayan_pot_bottom",
+    "inside": "fossilslegacy:block/mayan_pot_inside",
+    "side": "fossilslegacy:block/mayan_pot_side",
+    "top": "fossilslegacy:block/mayan_pot_top"
+  }
+}

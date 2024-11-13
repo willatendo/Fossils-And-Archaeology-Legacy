@@ -196,6 +196,10 @@ public class FossilsLegacyItems {
     public static final SimpleHolder<Item> ANCIENT_LEGGINGS_ARTIFACT = ITEMS.register("ancient_leggings_artifact", () -> new Item(new Item.Properties()));
     public static final SimpleHolder<Item> ANCIENT_BOOTS_ARTIFACT = ITEMS.register("ancient_boots_artifact", () -> new Item(new Item.Properties()));
     public static final SimpleHolder<Item> SCARAB_GEM = ITEMS.register("scarab_gem", () -> new Item(new Item.Properties()));
+    public static final SimpleHolder<Item> JADE = ITEMS.register("jade", () -> new Item(new Item.Properties()));
+    public static final SimpleHolder<Item> JADE_OCELOT = ITEMS.register("jade_ocelot", () -> new Item(new Item.Properties()));
+    public static final SimpleHolder<Item> JADE_VILLAGER = ITEMS.register("jade_villager", () -> new Item(new Item.Properties()));
+    public static final SimpleHolder<Item> CODEX = ITEMS.register("codex", () -> new Item(new Item.Properties()));
     public static final SimpleHolder<CoinItem> OVERWORLD_COIN = ITEMS.register("overworld_coin", () -> new CoinItem(Level.OVERWORLD, new Item.Properties()));
     public static final SimpleHolder<CoinItem> ICE_AGE_COIN = ITEMS.register("ice_age_coin", () -> new CoinItem(Level.NETHER, new Item.Properties()));
     public static final SimpleHolder<CoinItem> PREHISTORIC_COIN = ITEMS.register("prehistoric_coin", () -> new CoinItem(FossilsLegacyLevels.PREHISTORY, new Item.Properties()));

@@ -54,6 +54,7 @@ public class FossilsLegacyBlockLootSubProvider extends SimpleBlockLootSubProvide
         this.dropOther(FossilsLegacyBlocks.COOKED_CHICKEN_SOUP_CAULDRON.get(), Blocks.CAULDRON);
         this.dropOther(FossilsLegacyBlocks.RAW_BERRY_MEDLEY_CAULDRON.get(), Blocks.CAULDRON);
         this.dropOther(FossilsLegacyBlocks.COOKED_BERRY_MEDLEY_CAULDRON.get(), Blocks.CAULDRON);
+        this.dropSelf(FossilsLegacyBlocks.MAYAN_VASE.get());
         this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get());
         this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get());
         this.dropSelf(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get());

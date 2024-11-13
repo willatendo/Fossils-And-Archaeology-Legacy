@@ -20,7 +20,7 @@ public final class PteranodonAnimations {
                 float airPitch = (float) -(flyingDinosaur.getAirPitch() * (Math.PI / 180.0F));
                 float airAngle = (float) -(flyingDinosaur.getAirAngle() * (Math.PI / 180.0F));
 
-                jsonModel.setPos("root", 0, 2, -5);
+                jsonModel.setPos("root", 0.0F, 2.0F, 1.0F);
                 jsonModel.setXRot("root", airPitch);
                 jsonModel.setZRot("root", airAngle);
             }

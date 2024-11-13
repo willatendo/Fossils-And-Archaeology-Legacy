@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-30T16:57:33.6358257	Tags for minecraft:item mod id fossilslegacy
+// 1.21.1	2024-11-12T16:51:10.170081	Tags for minecraft:item mod id fossilslegacy
 fb61c19eacf262b21d275a4b1dd7da1fd3460ef6 data/c/tags/item/bones.json
 d31244a2a7f7cb4224e5362dca80427850e5daa5 data/c/tags/item/buckets.json
 8773b7b9cd8f313f03d59d28a609bd9f1434b870 data/c/tags/item/eggs.json
@@ -7,7 +7,7 @@ a02da92027664f91d61ec2f9fc49b8b4e6e0de12 data/c/tags/item/fence_gates/wooden.jso
 3785b2fa0f916c275563ea684c17b460a947b742 data/c/tags/item/foods.json
 ac39565003d3d0c0fb56f5e9a7359a23c67d8dba data/c/tags/item/foods/food_poisoning.json
 17f45bace1a76a3326e806ca618e8670018c8bf0 data/c/tags/item/foods/raw_meat.json
-de2270928560d90749e940855dd531b036c79510 data/c/tags/item/gems.json
+42b1f3f1d41a30d5638f799c098714b5d31d9ad3 data/c/tags/item/gems.json
 aa34483b746b46676616729e9ad487424b47af84 data/c/tags/item/seeds.json
 361888d5f870633bf3815eaaa14c28e67d7c9db3 data/c/tags/item/shears.json
 21fd716704c92101bd22c663fd11842d681b5cb5 data/c/tags/item/tools.json

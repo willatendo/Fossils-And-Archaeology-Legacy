@@ -7,7 +7,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.util.TagRegister;
 
 public class FossilsLegacyItemTags {
-    public static final TagRegister<Item> ITEM_TAGS = TagRegister.create(Registries.ITEM, FossilsLegacyUtils.ID);
+    private static final TagRegister<Item> ITEM_TAGS = TagRegister.create(Registries.ITEM, FossilsLegacyUtils.ID);
 
     public static final TagKey<Item> ANKYLOSAURUS_COMMANDABLES = ITEM_TAGS.register("ankylosaurus_commandables");
     public static final TagKey<Item> BRACHIOSAURUS_COMMANDABLES = ITEM_TAGS.register("brachiosaurus_commandables");

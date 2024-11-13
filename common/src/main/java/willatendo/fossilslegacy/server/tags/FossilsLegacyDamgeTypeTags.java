@@ -7,7 +7,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.util.TagRegister;
 
 public class FossilsLegacyDamgeTypeTags {
-    public static final TagRegister<DamageType> DAMAGE_TYPE_TAGS = TagRegister.create(Registries.DAMAGE_TYPE, FossilsLegacyUtils.ID);
+    private static final TagRegister<DamageType> DAMAGE_TYPE_TAGS = TagRegister.create(Registries.DAMAGE_TYPE, FossilsLegacyUtils.ID);
 
     public static final TagKey<DamageType> SPINOSAURUS_IMMUNE = DAMAGE_TYPE_TAGS.register("spinosaurus_immune");
     public static final TagKey<DamageType> TYRANNOSAURUS_IMMUNE = DAMAGE_TYPE_TAGS.register("tyrannosaurus_immune");

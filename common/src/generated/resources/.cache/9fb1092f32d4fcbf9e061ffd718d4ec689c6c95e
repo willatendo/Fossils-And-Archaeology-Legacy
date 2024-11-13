@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-30T16:54:02.4938877	Recipes
+// 1.21.1	2024-11-13T02:20:34.3205303	Recipes
 0ed98d717097975a11c79f9fff8bf82b0607422e data/fossilslegacy/advancement/recipes/building_blocks/analyzer.json
 911d03e6796758a3c9971e061330917222a1beec data/fossilslegacy/advancement/recipes/building_blocks/archaeology_workbench.json
 84f06f624bf05340d48034deaa1bba87adda3d20 data/fossilslegacy/advancement/recipes/building_blocks/black_cultivator.json
@@ -67,6 +67,7 @@ e321ba8c4e6aab60982e29822804a73bf5731c13 data/fossilslegacy/advancement/recipes/
 36346945c7c2a537389b1ac41cff21739669b458 data/fossilslegacy/advancement/recipes/decorations/lepidodendron_fence.json
 337f33947f9237dedc2e89d284d4b1835d667d66 data/fossilslegacy/advancement/recipes/decorations/lepidodendron_hanging_sign.json
 5b57b88a956d7d205f5b53982dda23fad7f31b78 data/fossilslegacy/advancement/recipes/decorations/lepidodendron_sign.json
+caa3860d7b4bda653207ec9a708b86b3be9a00c8 data/fossilslegacy/advancement/recipes/decorations/mayan_vase.json
 10a2ef694f1a612664fce9e3002976ee76ca4db9 data/fossilslegacy/advancement/recipes/decorations/sigillaria_fence.json
 2c9f38c5f2104bb813a80fee7b6c57581f09d6ab data/fossilslegacy/advancement/recipes/decorations/sigillaria_hanging_sign.json
 89e63c587354edcfcba7520b708e541a32c5f6b6 data/fossilslegacy/advancement/recipes/decorations/sigillaria_sign.json
@@ -473,6 +474,7 @@ df913f993b08aed643ca3e26e9a78ba91f549b1f data/fossilslegacy/recipe/llama_embryo_
 020daa976bed6501af82303005a476595e3e6c5f data/fossilslegacy/recipe/magenta_cultivator_from_colored_glass.json
 be97c4980dc0a9b440f8ea8ef4f104fe21106c67 data/fossilslegacy/recipe/magic_conch.json
 bf8e036f76a53bb1e8a0bf8d49791c24e3d312c9 data/fossilslegacy/recipe/mammoth_embryo_syringe.json
+add387b885174184b8b528a09c9ec0e99631603c data/fossilslegacy/recipe/mayan_vase.json
 1f058b3232f071e2725b597201366ea2821e73a2 data/fossilslegacy/recipe/moa_egg.json
 2d9ddc4d7d5667d135087628518bf13bf20dba41 data/fossilslegacy/recipe/mosasaurus_egg.json
 bc67889b8168e42e0e2503db1ac34d7c3ca90c2b data/fossilslegacy/recipe/mule_embryo_syringe.json

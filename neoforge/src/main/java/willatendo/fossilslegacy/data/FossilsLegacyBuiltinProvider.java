@@ -34,7 +34,7 @@ import willatendo.fossilslegacy.server.structure.FossilsLegacyStructureSets;
 import willatendo.fossilslegacy.server.structure.FossilsLegacyStructures;
 import willatendo.fossilslegacy.server.structure.pool.FossilsLegacyPools;
 import willatendo.fossilslegacy.server.structure.processor.FossilsLegacyProcessorLists;
-import willatendo.fossilslegacy.server.tags.FossilsLegacyStoneTabletVariants;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyStoneTabletVariants;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.Collections;

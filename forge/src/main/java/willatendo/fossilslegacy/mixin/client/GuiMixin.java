@@ -23,6 +23,7 @@ public abstract class GuiMixin {
     @Inject(method = "renderCameraOverlays", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Inventory;getArmor(I)Lnet/minecraft/world/item/ItemStack;"), cancellable = true)
     private void fossil_renderSkullOverlay(GuiGraphics guiGraphics, DeltaTracker deltaTracker, CallbackInfo callbackInfo) {
         ItemStack itemStack = this.minecraft.player.getInventory().getArmor(3);
+        FossilsLegacyUtils.LOGGER.info("Hello");
 
         RenderTextureOverlayAccessor renderTextureOverlayAccessor = (RenderTextureOverlayAccessor) this;
         if (itemStack.is(FossilsLegacyBlocks.SKULL_BLOCK.get().asItem())) {

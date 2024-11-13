@@ -189,6 +189,10 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.ANCIENT_LEGGINGS_ARTIFACT.get());
         this.basicItem(FossilsLegacyItems.ANCIENT_BOOTS_ARTIFACT.get());
         this.basicItem(FossilsLegacyItems.SCARAB_GEM.get());
+        this.basicItem(FossilsLegacyItems.JADE.get());
+        this.basicItem(FossilsLegacyItems.JADE_OCELOT.get());
+        this.basicItem(FossilsLegacyItems.JADE_VILLAGER.get());
+        this.basicItem(FossilsLegacyItems.CODEX.get());
         this.handheldItem(FossilsLegacyItems.ANCIENT_SWORD.get());
         this.handheldItem(FossilsLegacyItems.ANCIENT_SHOVEL.get());
         this.handheldItem(FossilsLegacyItems.ANCIENT_PICKAXE.get());
@@ -299,6 +303,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicBlock(FossilsLegacyBlocks.ICED_STONE.get());
         this.basicItem(FossilsLegacyItems.AXOLOTLSPAWN.get(), this.modLoc("block/axolotlspawn"));
         this.basicBlock(FossilsLegacyBlocks.TIME_MACHINE.get());
+        this.basicBlock(FossilsLegacyBlocks.MAYAN_VASE.get());
         this.basicBlock(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get());
         this.basicItem(FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.getId(), this.modLoc("block/lepidodendron_sapling"));
         this.basicBlock(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get());

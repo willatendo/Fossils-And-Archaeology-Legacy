@@ -3,7 +3,6 @@ package willatendo.fossilslegacy.data;
 import net.minecraft.DetectedVersion;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.metadata.PackMetadataGenerator;
@@ -21,7 +20,9 @@ import willatendo.fossilslegacy.data.advancement.RewardsAdvancementGenerator;
 import willatendo.fossilslegacy.data.loot.FossilsLegacyBlockLootSubProvider;
 import willatendo.fossilslegacy.data.loot.FossilsLegacyChestLootSubProvider;
 import willatendo.fossilslegacy.data.loot.FossilsLegacyEntityLootSubProvider;
+import willatendo.fossilslegacy.data.tag.*;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.data.ResourcePackGenerator;
 import willatendo.simplelibrary.data.SimpleLootTableProvider;
 
 import java.util.List;
@@ -61,25 +62,12 @@ public class FossilsLegacyData {
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyFossilVariantTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper));
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyStoneTabletVariantTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper));
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyCoatTypeTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper));
+        dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyPOITypeTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper));
+        dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyStructureTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper));
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new PackMetadataGenerator(packOutput).add(PackMetadataSection.TYPE, new PackMetadataSection(FossilsLegacyUtils.translation("resourcePack", "description"), DetectedVersion.BUILT_IN.getPackVersion(PackType.CLIENT_RESOURCES), Optional.empty())));
 
         ResourceLocation legacyPack = FossilsLegacyUtils.resource("fa_legacy_textures");
-        FossilsLegacyData.PackGenerator legacyPackGenerator = new FossilsLegacyData.PackGenerator(dataGenerator, true, legacyPack.toString(), new PackOutput(dataGenerator.getPackOutput().getOutputFolder().resolve("resourcepacks").resolve(legacyPack.getPath())));
+        ResourcePackGenerator legacyPackGenerator = new ResourcePackGenerator(dataGenerator, true, legacyPack.toString(), new PackOutput(dataGenerator.getPackOutput().getOutputFolder().resolve("resourcepacks").resolve(legacyPack.getPath())));
         legacyPackGenerator.addProvider(legacyPackOutput -> new PackMetadataGenerator(legacyPackOutput).add(PackMetadataSection.TYPE, new PackMetadataSection(FossilsLegacyUtils.translation("resourcePack", "fa_legacy_textures.description"), DetectedVersion.BUILT_IN.getPackVersion(PackType.CLIENT_RESOURCES), Optional.empty())));
-    }
-
-    private record PackGenerator(DataGenerator dataGenerator, boolean toRun, String providerPrefix, PackOutput packOutput) {
-        public <T extends DataProvider> T addProvider(DataProvider.Factory<T> factory) {
-            T dataProvider = factory.create(this.packOutput);
-            String name = this.providerPrefix + "/" + dataProvider.getName();
-            if (!this.dataGenerator.allProviderIds.add(name)) {
-                throw new IllegalStateException("Duplicate provider: " + name);
-            } else {
-                if (this.toRun) {
-                    this.dataGenerator.providersToRun.put(name, dataProvider);
-                }
-                return dataProvider;
-            }
-        }
     }
 }

@@ -9,12 +9,14 @@ import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityStruckByLightningEvent;
+import net.neoforged.neoforge.event.village.VillagerTradesEvent;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.AncientLightningBolt;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.entity.TamedZombifiedPiglin;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.server.event.modification.NeoforgeVillagerTradeModification;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME, modid = FossilsLegacyUtils.ID)
 public class ForgeServerEvents {
@@ -38,5 +40,10 @@ public class ForgeServerEvents {
                 pig.discard();
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void villagerTradesEvent(VillagerTradesEvent event) {
+        BasicEvents.villagerTradesEvent(new NeoforgeVillagerTradeModification(event));
     }
 }

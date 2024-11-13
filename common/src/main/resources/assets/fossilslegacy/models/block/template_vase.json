@@ -1,0 +1,66 @@
+{
+	"parent": "block/cube_all",
+	"textures": {
+		"0": "fossilslegacy:block/mayan_pot_bottom",
+		"1": "fossilslegacy:block/mayan_pot_side",
+		"2": "fossilslegacy:block/mayan_pot_top",
+		"3": "fossilslegacy:block/mayan_pot_inside",
+		"particle": "#side"
+	},
+	"elements": [
+		{
+			"from": [3, 0, 3],
+			"to": [13, 2, 13],
+			"faces": {
+				"north": {"uv": [0, 10, 10, 12], "texture": "#side"},
+				"east": {"uv": [0, 10, 10, 12], "texture": "#side"},
+				"south": {"uv": [0, 10, 10, 12], "texture": "#side"},
+				"west": {"uv": [0, 10, 10, 12], "texture": "#side"},
+				"up": {"uv": [0, 0, 10, 10], "texture": "#bottom"},
+				"down": {"uv": [0, 0, 10, 10], "texture": "#bottom"}
+			}
+		},
+		{
+			"from": [3, 2, 3],
+			"to": [13, 12, 5],
+			"faces": {
+				"north": {"uv": [0, 0, 10, 10], "texture": "#side"},
+				"east": {"uv": [8, 0, 10, 10], "texture": "#side"},
+				"south": {"uv": [0, 0, 10, 10], "texture": "#inside"},
+				"west": {"uv": [0, 0, 2, 10], "texture": "#side"},
+				"up": {"uv": [0, 0, 10, 2], "texture": "#top"}
+			}
+		},
+		{
+			"from": [3, 2, 11],
+			"to": [13, 12, 13],
+			"faces": {
+				"north": {"uv": [0, 0, 10, 10], "texture": "#inside"},
+				"east": {"uv": [0, 0, 2, 10], "texture": "#side"},
+				"south": {"uv": [0, 0, 10, 10], "texture": "#side"},
+				"west": {"uv": [8, 0, 10, 10], "texture": "#side"},
+				"up": {"uv": [0, 8, 10, 10], "texture": "#top"}
+			}
+		},
+		{
+			"from": [11, 2, 5],
+			"to": [13, 12, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [3, 2, 9]},
+			"faces": {
+				"east": {"uv": [2, 0, 8, 10], "texture": "#side"},
+				"west": {"uv": [2, 0, 8, 10], "texture": "#inside"},
+				"up": {"uv": [8, 2, 10, 8], "texture": "#top"}
+			}
+		},
+		{
+			"from": [3, 2, 5],
+			"to": [5, 12, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [-5, 2, 9]},
+			"faces": {
+				"east": {"uv": [2, 0, 8, 10], "texture": "#inside"},
+				"west": {"uv": [2, 0, 8, 10], "texture": "#side"},
+				"up": {"uv": [0, 2, 2, 8], "texture": "#top"}
+			}
+		}
+	]
+}

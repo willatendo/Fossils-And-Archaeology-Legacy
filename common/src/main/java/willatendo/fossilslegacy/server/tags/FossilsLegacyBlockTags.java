@@ -7,7 +7,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.util.TagRegister;
 
 public class FossilsLegacyBlockTags {
-    public static final TagRegister<Block> BLOCK_TAGS = TagRegister.create(Registries.BLOCK, FossilsLegacyUtils.ID);
+    private static final TagRegister<Block> BLOCK_TAGS = TagRegister.create(Registries.BLOCK, FossilsLegacyUtils.ID);
 
     public static final TagKey<Block> ANKYLOSAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/ankylosaurus");
     public static final TagKey<Block> BRACHIOSAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/brachiosaurus");

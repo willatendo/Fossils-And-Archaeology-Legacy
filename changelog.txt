@@ -1,5 +1,4 @@
 26/10/2024
-- Forge Is Now Supported
 - Futabasaurus Now Articulates Entire Neck
 - Tamed Tyrannosaurus No Longer Breaks Blocks
 - Replaced Nether Coin With Ice Age Coin
@@ -51,6 +50,8 @@
 - Fixed Academies Sometimes Half-Generating
 - Fixed Pregnant Animals Not Saving Pregnancy Time
 - Fixed Animals In Prehistoric Dimension Not Spawning On Sand/Other Blocks
+- Fixed Pteranodon Not Landing When Hitting Water
+- Fixed Pteranodon Staying Still After Logging Off
 - Added Updated Triceratops Model
 - Added "Anu Totem" Stone Tablet
 - Added Coat-Types; Data-Driven Cosmetics For Dinosaurs
@@ -179,6 +180,18 @@
 - Added Dimetrodon Egg
 - Added Raw Dimetrodon
 - Added Cooked Dimetrodon
+- Added Totem Poles Based On Tlingit Culture
+- Added Easter Island Moais
+- Added Small Mayan Temple
+- Added Jade
+- Added Jade Ocelot
+- Added Jade Villager
+- Added Archaeologist Villager
+- Added Palaeontologist Villager
+- Added Mayan Temple Map
+- Added Mayan City
+- Added Codex
+- Added Mayan Vase
 - Removed Client Config As It Is No Longer Necessary
 12/9/2024
 - (Fabric) Fixed Crash

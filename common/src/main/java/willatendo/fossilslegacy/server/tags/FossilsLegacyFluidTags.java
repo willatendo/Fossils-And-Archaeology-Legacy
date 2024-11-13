@@ -7,7 +7,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.util.TagRegister;
 
 public class FossilsLegacyFluidTags {
-    public static final TagRegister<Fluid> FLUID_TAGS = TagRegister.create(Registries.FLUID, FossilsLegacyUtils.ID);
+    private static final TagRegister<Fluid> FLUID_TAGS = TagRegister.create(Registries.FLUID, FossilsLegacyUtils.ID);
 
     public static final TagKey<Fluid> PERMAFROST_FREEZABLE = FLUID_TAGS.register("permafrost_freezable");
 }

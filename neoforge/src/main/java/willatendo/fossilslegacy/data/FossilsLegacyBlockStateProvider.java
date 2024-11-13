@@ -54,6 +54,7 @@ public class FossilsLegacyBlockStateProvider extends BlockStateProvider {
         this.cauldron(FossilsLegacyBlocks.COOKED_CHICKEN_SOUP_CAULDRON.get(), "cooked_chicken_soup");
         this.cauldron(FossilsLegacyBlocks.RAW_BERRY_MEDLEY_CAULDRON.get(), "raw_berry_medley");
         this.cauldron(FossilsLegacyBlocks.COOKED_BERRY_MEDLEY_CAULDRON.get(), "cooked_berry_medley");
+        this.simpleBlock(FossilsLegacyBlocks.MAYAN_VASE.get(), this.models().withExistingParent("mayan_vase", this.modLoc("block/template_vase")).texture("bottom", this.modLoc("block/mayan_pot_bottom")).texture("inside", this.modLoc("block/mayan_pot_inside")).texture("side", this.modLoc("block/mayan_pot_side")).texture("top", this.modLoc("block/mayan_pot_top")));
         this.simpleBlock(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get());
         this.simpleBlock(FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get(), this.models().cross("lepidodendron_sapling", this.modLoc("block/lepidodendron_sapling")).renderType("cutout"));
         this.logBlock(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get());

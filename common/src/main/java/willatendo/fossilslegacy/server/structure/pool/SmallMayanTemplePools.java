@@ -1,0 +1,27 @@
+package willatendo.fossilslegacy.server.structure.pool;
+
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.Pools;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
+import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
+import willatendo.fossilslegacy.server.structure.processor.FossilsLegacyProcessorLists;
+
+public class SmallMayanTemplePools {
+    public static final ResourceKey<StructureTemplatePool> START = FossilsLegacyPools.createKey("small_mayan_temple/starts");
+
+    public static void bootstrap(BootstrapContext<StructureTemplatePool> bootstrapContext) {
+        HolderGetter<StructureTemplatePool> structureTemplatePoolHolderGetter = bootstrapContext.lookup(Registries.TEMPLATE_POOL);
+        HolderGetter<StructureProcessorList> structureProcessorListHolderGetter = bootstrapContext.lookup(Registries.PROCESSOR_LIST);
+        Holder<StructureTemplatePool> empty = structureTemplatePoolHolderGetter.getOrThrow(Pools.EMPTY);
+        Holder<StructureProcessorList> mayanTempleDegradation = structureProcessorListHolderGetter.getOrThrow(FossilsLegacyProcessorLists.MAYAN_TEMPLE_DEGRADATION);
+        bootstrapContext.register(START, new StructureTemplatePool(empty, ImmutableList.of(Pair.of(FossilsLegacyPools.legacy("small_mayan_temple/small_mayan_temple", mayanTempleDegradation), 1)), StructureTemplatePool.Projection.RIGID));
+        FossilsLegacyPools.register(bootstrapContext, "small_mayan_temple/loot", new StructureTemplatePool(empty, ImmutableList.of(Pair.of(StructurePoolElement.empty(), 22), Pair.of(FossilsLegacyPools.legacy("small_mayan_temple/small_mayan_loot_pot"), 1)), StructureTemplatePool.Projection.RIGID));
+    }
+}

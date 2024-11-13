@@ -8,6 +8,7 @@ import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.feature.FossilsLegacyPlacedFeatures;
 import willatendo.simplelibrary.server.event.modification.FabricCreativeModeTabModification;
+import willatendo.simplelibrary.server.event.modification.FabricVillagerTradeModification;
 import willatendo.simplelibrary.server.event.registry.FabricAttributeRegister;
 import willatendo.simplelibrary.server.event.registry.FabricDynamicRegistryRegister;
 import willatendo.simplelibrary.server.event.registry.FabricResourcePackRegister;
@@ -20,6 +21,7 @@ public class ModEvents {
         FabricCreativeModeTabModification fabricCreativeModeTabModification = new FabricCreativeModeTabModification();
         BasicEvents.buildCreativeModeTabEvent(fabricCreativeModeTabModification);
         fabricCreativeModeTabModification.build();
+        BasicEvents.villagerTradesEvent(new FabricVillagerTradeModification());
         BasicEvents.resourcePackEvent(new FabricResourcePackRegister());
         BasicEvents.attributeEvent(new FabricAttributeRegister());
         BasicEvents.spawnPlacementEvent(new FabricSpawnPlacementRegister());

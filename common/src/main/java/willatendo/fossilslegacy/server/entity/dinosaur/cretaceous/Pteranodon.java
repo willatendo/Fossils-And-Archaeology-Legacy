@@ -143,6 +143,7 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 
     @Override
     public void tick() {
+        this.handleRiding();
         if (this.level().isClientSide()) {
             this.flyAnimationState.animateWhen(this.shouldFly() && !this.landing, this.tickCount);
             this.landAnimationState.animateWhen(this.landing, this.tickCount);
@@ -153,7 +154,6 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 
     @Override
     public void aiStep() {
-        this.handleRiding();
         super.aiStep();
     }
 
@@ -348,31 +348,23 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
                     this.airPitch = 0.0F;
                 }
                 this.addYRot(-(localPlayer.xxa * 5.0F));
-                for (; this.getYRot() < -180F; this.addYRot(360.0F)) {
-                }
-                for (; this.getYRot() >= 180F; this.addYRot(-360.0F)) {
-                }
             } else {
                 this.airAngle -= localPlayer.xxa;
-                if (this.airAngle > 30F) {
-                    this.airAngle = 30F;
+                if (this.airAngle > 30.0F) {
+                    this.airAngle = 30.0F;
                 }
-                if (this.airAngle < -30F) {
-                    this.airAngle = -30F;
+                if (this.airAngle < -30.0F) {
+                    this.airAngle = -30.0F;
                 }
-                if (Math.abs(this.airAngle) > 10) {
-                    this.addYRot(this.airAngle > 0 ? 1 : -1);
-                }
-                for (; this.getYRot() < -180F; this.addYRot(360.0F)) {
-                }
-                for (; this.getYRot() >= 180F; this.addYRot(-360.0F)) {
+                if (Math.abs(this.airAngle) > 10.0F) {
+                    this.addYRot(this.airAngle > 0.0F ? 1.0F : -1.0F);
                 }
                 if (this.landing) {
-                    this.airPitch = 0;
+                    this.airPitch = 0.0F;
                     if (!this.verticalCollision) {
                         this.yya = -0.2F;
                     } else {
-                        this.yya = 0;
+                        this.yya = 0.0F;
                     }
                     Vec3 moveDirection = new Vec3(this.xxa, this.yya, this.zza);
                     this.moveRelative(this.airSpeed, moveDirection);
@@ -402,7 +394,7 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
                         this.airPitch = -60.0F;
                     }
                     float yPitch = (float) (this.airPitch * (Math.PI / 180));
-                    if (this.lastAirPitch >= airPitch) {
+                    if (this.lastAirPitch >= this.airPitch) {
                         double speedOffset = Math.cos(yPitch);
                         if (yPitch < 0) {
                             speedOffset += 1;
@@ -420,7 +412,7 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
     }
 
     public void handleLanding() {
-        if (this.hasControllingPassenger() && !this.verticalCollision && !this.onGround()) {
+        if (this.hasControllingPassenger() && !this.verticalCollision && !this.onGround() && !this.isInWaterOrBubble()) {
             if (!this.landing) {
                 if (this.airPitch > 60) {
                     this.landing = true;

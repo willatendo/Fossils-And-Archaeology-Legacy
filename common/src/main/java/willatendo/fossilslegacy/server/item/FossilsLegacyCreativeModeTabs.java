@@ -185,6 +185,10 @@ public class FossilsLegacyCreativeModeTabs {
         itemDisplayParameters.holders().lookup(FossilsLegacyRegistries.STONE_TABLET_VARIANTS).ifPresent(registryLookup -> FossilsLegacyCreativeModeTabs.generatePresetStoneTablets(output, itemDisplayParameters.holders(), registryLookup, stoneTabletVariantHolder -> stoneTabletVariantHolder.is(FossilsLegacyStoneTabletVariantTags.PLACEABLE), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
         output.accept(FossilsLegacyItems.SCARAB_GEM.get());
         output.accept(FossilsLegacyItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get());
+        output.accept(FossilsLegacyItems.JADE.get());
+        output.accept(FossilsLegacyItems.JADE_OCELOT.get());
+        output.accept(FossilsLegacyItems.JADE_VILLAGER.get());
+        output.accept(FossilsLegacyItems.CODEX.get());
         output.accept(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get());
         output.accept(FossilsLegacyItems.ANCIENT_SHOVEL_ARTIFACT.get());
         output.accept(FossilsLegacyItems.ANCIENT_PICKAXE_ARTIFACT.get());
@@ -260,6 +264,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyBlocks.TIME_MACHINE.get());
         output.accept(FossilsLegacyBlocks.SKULL_BLOCK.get());
         output.accept(FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get());
+        output.accept(FossilsLegacyBlocks.MAYAN_VASE.get());
         output.accept(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get());
         output.accept(FossilsLegacyBlocks.LEPIDODENDRON_WOOD.get());
         output.accept(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_LOG.get());

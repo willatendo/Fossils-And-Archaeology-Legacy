@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-30T16:59:19.5990628	Item Models: fossilslegacy
+// 1.21.1	2024-11-13T02:18:51.9763167	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 1f02e6db84914fc2677089f5e420f925ba109484 assets/fossilslegacy/models/item/ancient_axe.json
 e6aea94981911965db91c7f52bfa4555de4d4182 assets/fossilslegacy/models/item/ancient_axe_artifact.json
@@ -106,6 +106,7 @@ c49ff29f2e7d91eb662a1227bed47245ec0441e2 assets/fossilslegacy/models/item/cat_dn
 45a36ff25fe82c32cbb851b6e1c8ffbcea34a859 assets/fossilslegacy/models/item/cat_embryo_syringe.json
 d57479b1d2eb4ed09fcb1564a0578e325421d04c assets/fossilslegacy/models/item/chicken_dna.json
 8a81c49ffd3b21d1093eb4447366c220b6d2cbae assets/fossilslegacy/models/item/chicken_essence_bottle.json
+e7d7a868fec96a0a510225502546045e0d0d3ca4 assets/fossilslegacy/models/item/codex.json
 c0b6dd348fd975e5061c12d626761ef717f9e83c assets/fossilslegacy/models/item/compsognathus_dna.json
 799f270bec4fffe45a2daec04803a8fd0a0e8bdc assets/fossilslegacy/models/item/compsognathus_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/compsognathus_spawn_egg.json
@@ -191,6 +192,9 @@ b129a66d694f99b0036e6b1ca5739f9c78bc6ccd assets/fossilslegacy/models/item/iced_s
 5c7deea1d118aab814f0a5ed9f2818f9deab5257 assets/fossilslegacy/models/item/incubated_moa_egg.json
 f30c5b45dc420042b9e1f02a40ece73cf79ff3c8 assets/fossilslegacy/models/item/incubated_parrot_egg.json
 af856b5ca7c3419f2ed44336db2cab4db0e1c970 assets/fossilslegacy/models/item/iron_javelin.json
+7e0dae0b27ce0ce8a49fbfaecbddd21baadd269a assets/fossilslegacy/models/item/jade.json
+6653cad573e447a9b36bf0fb953a8cf8211e6d07 assets/fossilslegacy/models/item/jade_ocelot.json
+ff15f7d36f351fbe77306d1f824ee4101e750a9d assets/fossilslegacy/models/item/jade_villager.json
 331458055b6b1bea96500d4333d8916ad6c932fb assets/fossilslegacy/models/item/jurassic_fern.json
 414f64f70498022da0a80f12b50b1e39b177161a assets/fossilslegacy/models/item/jurassic_fern_spores.json
 24de29905f62919d8471dbb478e87da773977d36 assets/fossilslegacy/models/item/legacy_genetic_code.json
@@ -221,6 +225,7 @@ ef314aa4dcf53fa5168a31539a4d5612d870f62a assets/fossilslegacy/models/item/magent
 a244c695d320bc49c62adfbf6d7a08c04ad1a1cc assets/fossilslegacy/models/item/mammoth_dna.json
 cb0981d8cceb62c4b3dae4d87956682f4f8cb56a assets/fossilslegacy/models/item/mammoth_embryo_syringe.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/mammoth_spawn_egg.json
+b954f0a11a140437ca18b396894f80481b565cff assets/fossilslegacy/models/item/mayan_vase.json
 d1551157c9db419c1d9c19c9e74728a026e21a1f assets/fossilslegacy/models/item/moa_dna.json
 89c5529cb1dd856bfed899811b65b83aef1bffab assets/fossilslegacy/models/item/moa_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/moa_spawn_egg.json

@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-22T20:44:58.0891735	Block States: fossilslegacy
+// 1.21.1	2024-11-13T02:15:27.5894407	Block States: fossilslegacy
 bc40e7fb93a5d1812ca1648e1df89885a48cd95d assets/fossilslegacy/blockstates/analyzer.json
 b35e4eb39636d1687092533caa84ab464fac932a assets/fossilslegacy/blockstates/archaeology_workbench.json
 074a152b0f0df7ebb7a3561ea6a004be578d0644 assets/fossilslegacy/blockstates/axolotlspawn.json
@@ -55,6 +55,7 @@ c96b074678d68a574b7ab9ffbc96cec66c4861e6 assets/fossilslegacy/blockstates/light_
 63da3cf4234abce5377e4d96da6c5969651dd299 assets/fossilslegacy/blockstates/light_gray_cultivator.json
 fc99b35a17548ad476fb5be62137eeeeba9606d0 assets/fossilslegacy/blockstates/lime_cultivator.json
 8812a81ac0399f159fc44792d79027fc3073695b assets/fossilslegacy/blockstates/magenta_cultivator.json
+8d4e6ca609d4030525ff7625e4aa1d43389e941b assets/fossilslegacy/blockstates/mayan_vase.json
 0a847bd7e684cd61645a7d21531a7f177a6a6f5b assets/fossilslegacy/blockstates/orange_cultivator.json
 ae476defe9b9e49512fe353b23bc72ac2c36e207 assets/fossilslegacy/blockstates/palaeontology_table.json
 14fdb12f5ad9c2175eea0935e51ee4b0f5a1954b assets/fossilslegacy/blockstates/permafrost.json
@@ -230,6 +231,7 @@ c84853832044c4b6b69e5cf4ee777fa82cbfcda2 assets/fossilslegacy/models/block/light
 649477d6cb2f0d3fef7d6110c611140da4ea5f56 assets/fossilslegacy/models/block/lime_cultivator_active.json
 c79dc205e0f2acdb4e3ef7182693c84fbdff30db assets/fossilslegacy/models/block/magenta_cultivator.json
 a1309fe088d7d129986e37da2d8d9dbcf4a06708 assets/fossilslegacy/models/block/magenta_cultivator_active.json
+b986fcdf40bfc685626199349aea57e8f40977f6 assets/fossilslegacy/models/block/mayan_vase.json
 245e223425bbedc1e249b56bdca4d1e0a663010a assets/fossilslegacy/models/block/orange_cultivator.json
 bd8eae6f520f4511fa5363b6c57a70d4002836b8 assets/fossilslegacy/models/block/orange_cultivator_active.json
 f19f908a7b32e00a85be627f4b626041792d9bc6 assets/fossilslegacy/models/block/palaeontology_table.json

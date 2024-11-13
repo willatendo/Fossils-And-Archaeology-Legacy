@@ -1,3 +1,6 @@
-// 1.21.1	2024-09-28T11:53:59.3115799	Tags for minecraft:worldgen/biome mod id fossilslegacy
+// 1.21.1	2024-11-12T17:07:31.1894167	Tags for minecraft:worldgen/biome mod id fossilslegacy
 8948b6af9c9e7dcdc8024e226a24627b8e535d2d data/fossilslegacy/tags/worldgen/biome/has_structure/academy.json
+1505832e2c5cce98d18f5100da3a5072dfae4d4a data/fossilslegacy/tags/worldgen/biome/has_structure/mayan_temple.json
+208ad58db65540373e309e41d4444b16f2e8a713 data/fossilslegacy/tags/worldgen/biome/has_structure/moai.json
+239ff8935a419a785b22a049878c6d41a6ff74c2 data/fossilslegacy/tags/worldgen/biome/has_structure/totem_pole.json
 fd075402c01685df49dffaca501a70696a4fde0d data/fossilslegacy/tags/worldgen/biome/has_structure/weapon_shop.json

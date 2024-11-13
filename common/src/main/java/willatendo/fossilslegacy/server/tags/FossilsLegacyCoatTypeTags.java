@@ -7,7 +7,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.util.TagRegister;
 
 public class FossilsLegacyCoatTypeTags {
-    public static final TagRegister<CoatType> COAT_TYPE_TAGS = TagRegister.create(FossilsLegacyRegistries.COAT_TYPES, FossilsLegacyUtils.ID);
+    private static final TagRegister<CoatType> COAT_TYPE_TAGS = TagRegister.create(FossilsLegacyRegistries.COAT_TYPES, FossilsLegacyUtils.ID);
 
     public static final TagKey<CoatType> ANKYLOSAURUS = COAT_TYPE_TAGS.register("ankylosaurus");
     public static final TagKey<CoatType> BRACHIOSAURUS = COAT_TYPE_TAGS.register("brachiosaurus");
