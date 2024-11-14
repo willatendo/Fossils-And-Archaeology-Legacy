@@ -36,6 +36,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("advancements.fossilslegacy.legacy.fossil.desc", "Acquire a fossil!");
         this.add("advancements.fossilslegacy.legacy.analyzer.title", "Analyzer!");
         this.add("advancements.fossilslegacy.legacy.analyzer.desc", "Acquire an analyzer!");
+        this.add("advancements.fossilslegacy.legacy.palaeontology_table.title", "A Palaeontologist's Table!");
+        this.add("advancements.fossilslegacy.legacy.palaeontology_table.desc", "Make a palaeontology table!");
         this.add("advancements.fossilslegacy.legacy.relic_scrap.title", "Old News");
         this.add("advancements.fossilslegacy.legacy.relic_scrap.desc", "Acquire a relic scrap!");
         this.add("advancements.fossilslegacy.legacy.ancient_sword_artifact.title", "Once Feared");
@@ -106,6 +108,9 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyBlocks.RAW_BERRY_MEDLEY_CAULDRON.get());
         this.add(FossilsLegacyBlocks.COOKED_BERRY_MEDLEY_CAULDRON.get());
         this.add(FossilsLegacyBlocks.MAYAN_VASE.get());
+        this.add(FossilsLegacyBlocks.MAYAN_JADE_VASE.get());
+        this.add(FossilsLegacyBlocks.MAYAN_OCELOT_VASE.get());
+        this.add(FossilsLegacyBlocks.MAYAN_VILLAGER_VASE.get());
         this.add(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get());
         this.add(FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get());
         this.add(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get());

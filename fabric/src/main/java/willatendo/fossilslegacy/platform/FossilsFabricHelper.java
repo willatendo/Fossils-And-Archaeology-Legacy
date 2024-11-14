@@ -7,6 +7,9 @@ import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper
 import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -20,6 +23,7 @@ import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.level.saveddata.maps.MapDecorationType;
 import willatendo.fossilslegacy.network.ClientboundAlertUnlockedCoatTypesPacket;
 import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
@@ -31,6 +35,7 @@ import willatendo.simplelibrary.server.registry.SimpleRegistry;
 import willatendo.simplelibrary.server.util.FabricUtils;
 
 import java.util.List;
+import java.util.Map;
 import java.util.function.Supplier;
 
 public class FossilsFabricHelper implements FossilsModloaderHelper {
@@ -72,6 +77,11 @@ public class FossilsFabricHelper implements FossilsModloaderHelper {
     @Override
     public void registerPOI(SimpleRegistry<PoiType> simpleRegistry, String id, Supplier<PoiType> poiType) {
         PointOfInterestHelper.register(FossilsLegacyUtils.resource(id), poiType.get().maxTickets(), poiType.get().validRange(), poiType.get().matchingStates());
+    }
+
+    @Override
+    public <T extends MapDecorationType> Holder<T> registerMapDecorationType(String id, Supplier<MapDecorationType> mapDecorationType) {
+        return (Holder<T>) Registry.registerForHolder(BuiltInRegistries.MAP_DECORATION_TYPE, FossilsLegacyUtils.resource(id), mapDecorationType.get());
     }
 
     @Override

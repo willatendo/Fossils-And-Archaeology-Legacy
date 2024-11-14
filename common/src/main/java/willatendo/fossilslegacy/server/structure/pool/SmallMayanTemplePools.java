@@ -22,6 +22,6 @@ public class SmallMayanTemplePools {
         Holder<StructureTemplatePool> empty = structureTemplatePoolHolderGetter.getOrThrow(Pools.EMPTY);
         Holder<StructureProcessorList> mayanTempleDegradation = structureProcessorListHolderGetter.getOrThrow(FossilsLegacyProcessorLists.MAYAN_TEMPLE_DEGRADATION);
         bootstrapContext.register(START, new StructureTemplatePool(empty, ImmutableList.of(Pair.of(FossilsLegacyPools.legacy("small_mayan_temple/small_mayan_temple", mayanTempleDegradation), 1)), StructureTemplatePool.Projection.RIGID));
-        FossilsLegacyPools.register(bootstrapContext, "small_mayan_temple/loot", new StructureTemplatePool(empty, ImmutableList.of(Pair.of(StructurePoolElement.empty(), 22), Pair.of(FossilsLegacyPools.legacy("small_mayan_temple/small_mayan_loot_pot"), 1)), StructureTemplatePool.Projection.RIGID));
+        FossilsLegacyPools.register(bootstrapContext, "small_mayan_temple/loot", new StructureTemplatePool(empty, ImmutableList.of(Pair.of(StructurePoolElement.empty(), 10), Pair.of(FossilsLegacyPools.legacy("small_mayan_temple/loot/small_mayan_loot_vase_blank"), 7), Pair.of(FossilsLegacyPools.legacy("small_mayan_temple/loot/small_mayan_loot_vase_jade"), 7), Pair.of(FossilsLegacyPools.legacy("small_mayan_temple/loot/small_mayan_loot_vase_ocelot"), 7), Pair.of(FossilsLegacyPools.legacy("small_mayan_temple/loot/small_mayan_loot_vase_villager"), 7)), StructureTemplatePool.Projection.RIGID));
     }
 }

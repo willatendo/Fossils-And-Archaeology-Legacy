@@ -51,7 +51,7 @@ public final class FossilsLegacyMod {
         simpleRegistryRegister.register(FossilsLegacyEntityTypes.ENTITY_TYPES);
         simpleRegistryRegister.register(FossilsLegacyDataComponents.DATA_COMPONENT_TYPES);
         simpleRegistryRegister.register(FossilsLegacyArmorMaterials.ARMOR_MATERIALS);
-        simpleRegistryRegister.register(FossilsLegacyMapDecorationTypes.MAP_DECORATION_TYPES);
+        FossilsLegacyMapDecorationTypes.init();
         simpleRegistryRegister.register(FossilsLegacyItems.ITEMS);
         simpleRegistryRegister.register(FossilsLegacyCreativeModeTabs.CREATIVE_MODE_TABS);
         simpleRegistryRegister.register(FossilsLegacyLootPoolEntryTypes.LOOT_POOL_ENTRY_TYPES);

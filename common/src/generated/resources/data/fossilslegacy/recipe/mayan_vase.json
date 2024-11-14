@@ -4,15 +4,12 @@
   "key": {
     "#": {
       "item": "minecraft:brick"
-    },
-    "$": {
-      "item": "fossilslegacy:jade"
     }
   },
   "pattern": [
+    "###",
     "# #",
-    "# #",
-    "#$#"
+    "###"
   ],
   "result": {
     "count": 1,

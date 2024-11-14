@@ -1,4 +1,4 @@
-// 1.21.1	2024-11-13T01:28:03.7600255	Registries
+// 1.21.1	2024-11-13T15:28:52.9146929	Registries
 532001524c06f9b4a4565f8b548bb4a8de84ba73 data/fossilslegacy/damage_type/animal_starve.json
 272b73d0ec6656b7beba50d287714cb055cc1dce data/fossilslegacy/damage_type/dilophosaurus_envenomation.json
 4ae015db008fd712ad0ea6d05b72ca0170963bf0 data/fossilslegacy/damage_type/javelin.json
@@ -261,7 +261,7 @@ ddc2025c1d843ac90b962745c7dc4ad83fa2c588 data/fossilslegacy/worldgen/template_po
 46ffa42b4399cba4c0e3e3baf72495b23cf195e7 data/fossilslegacy/worldgen/template_pool/mayan_city/treasure.json
 b09b43b336ff1142a9a4ad507196a644e8747eee data/fossilslegacy/worldgen/template_pool/moai/head.json
 30be28f0983c36c8a18f2abad0349751f3ab346e data/fossilslegacy/worldgen/template_pool/moai/starts.json
-8d6695f886c43287ee8d555215215b2b581d183c data/fossilslegacy/worldgen/template_pool/small_mayan_temple/loot.json
+a54bfedd7695e73dfe81d7b57c33e489b50fb645 data/fossilslegacy/worldgen/template_pool/small_mayan_temple/loot.json
 6808a654e6c61a6cf5d7e482abfdaf62ce05bf86 data/fossilslegacy/worldgen/template_pool/small_mayan_temple/starts.json
 c09b5b61b487837fa651531a490ae6c6c8cd931f data/fossilslegacy/worldgen/template_pool/totem_pole/head/birch.json
 2b29c22fe3e788db74bed6bab56fc90a1164fce9 data/fossilslegacy/worldgen/template_pool/totem_pole/head/oak.json

@@ -95,8 +95,9 @@ public final class FossilsLegacyClient {
         modelRegister.register(FossilsLegacyEntityTypes.STONE_TABLET.get(), StoneTabletRenderer::new);
 
         modelRegister.register(FossilsLegacyBlockEntityTypes.TIME_MACHINE.get(), TimeMachineClockRenderer::new);
-        modelRegister.register(FossilsLegacyBlockEntityTypes.LEPIDODENDRON_SIGN.get(), SignRenderer::new);
-        modelRegister.register(FossilsLegacyBlockEntityTypes.LEPIDODENDRON_HANGING_SIGN.get(), HangingSignRenderer::new);
+        modelRegister.register(FossilsLegacyBlockEntityTypes.VASE.get(), VaseRenderer::new);
+        modelRegister.register(FossilsLegacyBlockEntityTypes.FOSSILS_SIGN.get(), SignRenderer::new);
+        modelRegister.register(FossilsLegacyBlockEntityTypes.FOSSILS_HANGING_SIGN.get(), HangingSignRenderer::new);
     }
 
     public static void modelLayerEvent(ModelLayerRegistry modelLayerRegister) {

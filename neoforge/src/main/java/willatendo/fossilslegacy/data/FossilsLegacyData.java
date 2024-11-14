@@ -16,10 +16,10 @@ import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import willatendo.fossilslegacy.data.advancement.LegacyAdvancementGenerator;
-import willatendo.fossilslegacy.data.advancement.RewardsAdvancementGenerator;
 import willatendo.fossilslegacy.data.loot.FossilsLegacyBlockLootSubProvider;
 import willatendo.fossilslegacy.data.loot.FossilsLegacyChestLootSubProvider;
 import willatendo.fossilslegacy.data.loot.FossilsLegacyEntityLootSubProvider;
+import willatendo.fossilslegacy.data.loot.FossilsLegacyGiftLootSubProvider;
 import willatendo.fossilslegacy.data.tag.*;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.data.ResourcePackGenerator;
@@ -48,8 +48,8 @@ public class FossilsLegacyData {
         dataGenerator.addProvider(gatherDataEvent.includeClient(), new FossilsLegacyAnimationProvider(packOutput, FossilsLegacyUtils.ID));
 
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyRecipeProvider(packOutput, registries, FossilsLegacyUtils.ID));
-        dataGenerator.addProvider(gatherDataEvent.includeServer(), new AdvancementProvider(packOutput, registries, existingFileHelper, List.of(new LegacyAdvancementGenerator(), new RewardsAdvancementGenerator())));
-        dataGenerator.addProvider(gatherDataEvent.includeServer(), new SimpleLootTableProvider(packOutput, registries, new LootTableProvider.SubProviderEntry(FossilsLegacyBlockLootSubProvider::new, LootContextParamSets.BLOCK), new LootTableProvider.SubProviderEntry(FossilsLegacyEntityLootSubProvider::new, LootContextParamSets.ENTITY), new LootTableProvider.SubProviderEntry(FossilsLegacyChestLootSubProvider::new, LootContextParamSets.CHEST)));
+        dataGenerator.addProvider(gatherDataEvent.includeServer(), new AdvancementProvider(packOutput, registries, existingFileHelper, List.of(new LegacyAdvancementGenerator())));
+        dataGenerator.addProvider(gatherDataEvent.includeServer(), new SimpleLootTableProvider(packOutput, registries, new LootTableProvider.SubProviderEntry(FossilsLegacyBlockLootSubProvider::new, LootContextParamSets.BLOCK), new LootTableProvider.SubProviderEntry(FossilsLegacyEntityLootSubProvider::new, LootContextParamSets.ENTITY), new LootTableProvider.SubProviderEntry(FossilsLegacyChestLootSubProvider::new, LootContextParamSets.CHEST), new LootTableProvider.SubProviderEntry(FossilsLegacyGiftLootSubProvider::new, LootContextParamSets.GIFT)));
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyBuiltinProvider(packOutput, registries, FossilsLegacyUtils.ID));
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyDataMapProvider(packOutput, registries));
         FossilsLegacyBlockTagProvider fossilsLegacyBlockTagProvider = new FossilsLegacyBlockTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper);

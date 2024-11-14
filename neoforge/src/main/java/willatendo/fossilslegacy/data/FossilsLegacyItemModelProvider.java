@@ -304,6 +304,9 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.AXOLOTLSPAWN.get(), this.modLoc("block/axolotlspawn"));
         this.basicBlock(FossilsLegacyBlocks.TIME_MACHINE.get());
         this.basicBlock(FossilsLegacyBlocks.MAYAN_VASE.get());
+        this.basicBlock(FossilsLegacyBlocks.MAYAN_JADE_VASE.get());
+        this.basicBlock(FossilsLegacyBlocks.MAYAN_OCELOT_VASE.get());
+        this.basicBlock(FossilsLegacyBlocks.MAYAN_VILLAGER_VASE.get());
         this.basicBlock(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get());
         this.basicItem(FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.getId(), this.modLoc("block/lepidodendron_sapling"));
         this.basicBlock(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get());

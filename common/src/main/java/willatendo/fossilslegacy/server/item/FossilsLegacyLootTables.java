@@ -45,6 +45,9 @@ public class FossilsLegacyLootTables {
     public static final ResourceKey<LootTable> PREGNANT_SHEEP_RED = FossilsLegacyLootTables.create("entities/pregnant_sheep/red");
     public static final ResourceKey<LootTable> PREGNANT_SHEEP_BLACK = FossilsLegacyLootTables.create("entities/pregnant_sheep/black");
 
+    public static final ResourceKey<LootTable> ARCHAEOLOGIST_GIFT = FossilsLegacyLootTables.create("gameplay/hero_of_the_village/archaeologist_gift");
+    public static final ResourceKey<LootTable> PALAEONTOLOGIST_GIFT = FossilsLegacyLootTables.create("gameplay/hero_of_the_village/palaeontologist_gift");
+
     public static ResourceKey<LootTable> create(String name) {
         return ResourceKey.create(Registries.LOOT_TABLE, FossilsLegacyUtils.resource(name));
     }

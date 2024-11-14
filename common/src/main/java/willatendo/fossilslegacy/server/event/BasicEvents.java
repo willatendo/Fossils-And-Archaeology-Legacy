@@ -161,49 +161,8 @@ public class BasicEvents {
     }
 
     public static void villagerTradesEvent(VillagerTradeModification villagerTradeModification) {
-        villagerTradeModification.add(FossilsLegacyVillagerProfessions.ARCHAEOLOGIST.get(),
-                List.of(
-                        new VillagerTrades.EmeraldForItems(FossilsLegacyItems.RELIC_SCRAP.get(), 5, 16, 2),
-                        new VillagerTrades.EmeraldForItems(FossilsLegacyItems.JADE.get(), 6, 8, 2, 10)
-                ),
-                List.of(
-                        new VillagerTrades.EmeraldForItems(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get(), 1, 8, 6, 15),
-                        new VillagerTrades.EmeraldForItems(FossilsLegacyItems.ANCIENT_AXE_ARTIFACT.get(), 1, 8, 6, 15),
-                        new VillagerTrades.EmeraldForItems(FossilsLegacyItems.ANCIENT_PICKAXE_ARTIFACT.get(), 1, 8, 6, 15),
-                        new VillagerTrades.EmeraldForItems(FossilsLegacyItems.ANCIENT_HOE_ARTIFACT.get(), 1, 8, 6, 15),
-                        new VillagerTrades.EmeraldForItems(FossilsLegacyItems.ANCIENT_SHOVEL_ARTIFACT.get(), 1, 8, 6, 15),
-                        new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.STONE_TABLET.get(), 10, 2, 6),
-                        new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.WOODEN_JAVELIN.get(), 5, 1, 6),
-                        new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.STONE_JAVELIN.get(), 10, 1, 6),
-                        new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.IRON_JAVELIN.get(), 15, 1, 6)
-                ),
-                List.of(
-                        new VillagerTrades.EmeraldForItems(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get(), 1, 8, 6, 15),
-                        new VillagerTrades.EmeraldForItems(FossilsLegacyItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 1, 8, 6, 15),
-                        new VillagerTrades.EmeraldForItems(FossilsLegacyItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 1, 8, 6, 15),
-                        new VillagerTrades.EmeraldForItems(FossilsLegacyItems.ANCIENT_BOOTS_ARTIFACT.get(), 1, 8, 6, 15),
-                        new VillagerTrades.EmeraldForItems(FossilsLegacyItems.JADE_VILLAGER.get(), 1, 4, 6, 25),
-                        new VillagerTrades.EmeraldForItems(FossilsLegacyItems.JADE_OCELOT.get(), 1, 4, 6, 25)
-                ),
-                List.of(
-                        new VillagerTrades.EmeraldForItems(FossilsLegacyItems.SCARAB_GEM_JAVELIN.get(), 1, 2, 12, 30),
-                        new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.GOLDEN_JAVELIN.get(), 20, 1, 12),
-                        new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.DIAMOND_JAVELIN.get(), 30, 1, 12)
-                ),
-                List.of(
-                        new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), 30, 1, 12),
-                        new VillagerTrades.EmeraldForItems(FossilsLegacyItems.CODEX.get(), 1, 2, 6, 30),
-                        new VillagerTrades.TreasureMapForEmeralds(20, FossilsLegacyStructureTags.MAYAN_TEMPLE,"filled_map.mayan_temple", FossilsLegacyMapDecorationTypes.MAYAN_TEMPLE, 12, 10)
-                ));
-        villagerTradeModification.add(FossilsLegacyVillagerProfessions.PALAEONTOLOGIST.get(),
-                List.of(
-                        new VillagerTrades.EmeraldForItems(FossilsLegacyItems.FOSSIL.get(), 5, 16, 2),
-                        new VillagerTrades.EmeraldForItems(FossilsLegacyItems.FROZEN_MEAT.get(), 5, 16, 2)
-                ),
-                List.of(),
-                List.of(),
-                List.of(),
-                List.of());
+        villagerTradeModification.add(FossilsLegacyVillagerProfessions.ARCHAEOLOGIST.get(), List.of(new VillagerTrades.EmeraldForItems(FossilsLegacyItems.RELIC_SCRAP.get(), 5, 16, 2), new VillagerTrades.EmeraldForItems(FossilsLegacyItems.JADE.get(), 6, 8, 2, 10)), List.of(new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_SWORD.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_AXE_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_AXE.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_PICKAXE_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_PICKAXE.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_HOE_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_HOE.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_SHOVEL_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_SHOVEL.get(), 1, 8, 6, 15), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.STONE_TABLET.get(), 10, 2, 6), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.WOODEN_JAVELIN.get(), 5, 1, 6), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.STONE_JAVELIN.get(), 10, 1, 6), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.IRON_JAVELIN.get(), 15, 1, 6)), List.of(new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_HELMET.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_CHESTPLATE.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_LEGGINGS.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_BOOTS_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_BOOTS.get(), 1, 8, 6, 15), new VillagerTrades.EmeraldForItems(FossilsLegacyItems.JADE_VILLAGER.get(), 1, 4, 6, 25), new VillagerTrades.EmeraldForItems(FossilsLegacyItems.JADE_OCELOT.get(), 1, 4, 6, 25)), List.of(new VillagerTrades.EmeraldForItems(FossilsLegacyItems.SCARAB_GEM_JAVELIN.get(), 1, 2, 12, 30), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.GOLDEN_JAVELIN.get(), 20, 1, 12), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.DIAMOND_JAVELIN.get(), 30, 1, 12)), List.of(new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), 30, 1, 12), new VillagerTrades.EmeraldForItems(FossilsLegacyItems.CODEX.get(), 1, 2, 6, 30), new VillagerTrades.TreasureMapForEmeralds(20, FossilsLegacyStructureTags.MAYAN_TEMPLE, "filled_map.mayan_temple", FossilsLegacyMapDecorationTypes.MAYAN_TEMPLE, 12, 10)));
+        villagerTradeModification.add(FossilsLegacyVillagerProfessions.PALAEONTOLOGIST.get(), List.of(new VillagerTrades.EmeraldForItems(FossilsLegacyItems.FOSSIL.get(), 5, 16, 2), new VillagerTrades.EmeraldForItems(FossilsLegacyItems.FROZEN_MEAT.get(), 5, 16, 2)), List.of(new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.DINOPEDIA.get(), 10, 1, 4, 4), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.THERIZINOSAURUS_CLAWS.get(), 25, 1, 16, 2), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.TYRANNOSAURUS_TOOTH.get(), 30, 1, 16, 2), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.NAUTILUS_SHELL.get(), 10, 1, 16, 2)), List.of(new VillagerTrades.ItemsAndEmeraldsToItems(new ItemStack(FossilsLegacyBlocks.FOSSIL_ORE.get()).getItem(), 1, 10, new ItemStack(FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get()).getItem(), 1, 8, 3, 15), new VillagerTrades.EmeraldForItems(new ItemStack(FossilsLegacyBlocks.SKULL_BLOCK.get()).getItem(), 10, 16, 3), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get(), 20, 1, 1, 2)), List.of(new VillagerTrades.EmeraldForItems(FossilsLegacyItems.JURASSIC_FERN_SPORES.get(), 3, 8, 6), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.PETRIFIED_CALAMITES_SAPLING.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.PETRIFIED_SIGILLARIA_SAPLING.get(), 20, 1, 4, 12)), List.of(new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.LEGACY_GENETIC_CODE.get(), 30, 1, 12)));
     }
 
     public static void resourcePackEvent(ResourcePackRegister resourcePackRegister) {

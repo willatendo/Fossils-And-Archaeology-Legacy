@@ -14,6 +14,7 @@ import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.level.saveddata.maps.MapDecorationType;
 import willatendo.fossilslegacy.server.item.ArticulatedFossilItem;
 import willatendo.fossilslegacy.server.utils.Platform;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
@@ -39,6 +40,8 @@ public interface FossilsModloaderHelper {
     default void registerPOI(SimpleRegistry<PoiType> simpleRegistry, String id, Supplier<PoiType> poiType) {
         simpleRegistry.register(id, poiType);
     }
+
+    <T extends MapDecorationType> Holder<T> registerMapDecorationType(String id, Supplier<MapDecorationType> mapDecorationType);
 
     SpawnEggItem createDinosaurSpawnEgg(Supplier<EntityType<? extends Mob>> entityType, int primaryColor, int secondaryColor, Item.Properties properties);
 

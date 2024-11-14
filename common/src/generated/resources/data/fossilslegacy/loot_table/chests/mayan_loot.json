@@ -28,6 +28,11 @@
           "type": "minecraft:item",
           "name": "minecraft:bone",
           "weight": 30
+        },
+        {
+          "type": "minecraft:item",
+          "name": "fossilslegacy:scarab_gem_javelin",
+          "weight": 30
         }
       ],
       "rolls": 1.0

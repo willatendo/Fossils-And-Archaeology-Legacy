@@ -6,6 +6,9 @@ import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementType;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
@@ -14,16 +17,18 @@ import willatendo.fossilslegacy.server.criteria.SummonAnuTrigger;
 import willatendo.fossilslegacy.server.criteria.TameZombifiedPigmanTrigger;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.level.FossilsLegacyLevels;
+import willatendo.fossilslegacy.server.structure.FossilsLegacyStructures;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.function.Consumer;
 
 public class LegacyAdvancementGenerator implements AdvancementProvider.AdvancementGenerator {
     @Override
-    public void generate(HolderLookup.Provider provider, Consumer<AdvancementHolder> advancementHolderConsumer, ExistingFileHelper existingFileHelper) {
+    public void generate(HolderLookup.Provider registries, Consumer<AdvancementHolder> advancementHolderConsumer, ExistingFileHelper existingFileHelper) {
         AdvancementHolder legacyRoot = Advancement.Builder.advancement().display(FossilsLegacyBlocks.FOSSIL_ORE.get(), FossilsLegacyUtils.translation("advancements", "legacy.root.title"), FossilsLegacyUtils.translation("advancements", "legacy.root.desc"), FossilsLegacyUtils.mc("textures/gui/advancements/backgrounds/stone.png"), AdvancementType.TASK, false, false, false).addCriterion("ticks", PlayerTrigger.TriggerInstance.tick()).save(advancementHolderConsumer, FossilsLegacyUtils.resource("legacy/root").toString());
         AdvancementHolder fossils = Advancement.Builder.advancement().parent(legacyRoot).display(FossilsLegacyItems.FOSSIL.get(), FossilsLegacyUtils.translation("advancements", "legacy.fossil.title"), FossilsLegacyUtils.translation("advancements", "legacy.fossil.desc"), null, AdvancementType.TASK, true, true, true).addCriterion("has_fossil", InventoryChangeTrigger.TriggerInstance.hasItems(FossilsLegacyItems.FOSSIL.get())).save(advancementHolderConsumer, FossilsLegacyUtils.resource("legacy/fossil").toString());
         Advancement.Builder.advancement().parent(fossils).display(FossilsLegacyBlocks.ANALYZER.get(), FossilsLegacyUtils.translation("advancements", "legacy.analyzer.title"), FossilsLegacyUtils.translation("advancements", "legacy.analyzer.desc"), null, AdvancementType.TASK, true, true, true).addCriterion("has_analyzer", InventoryChangeTrigger.TriggerInstance.hasItems(FossilsLegacyBlocks.ANALYZER.get())).save(advancementHolderConsumer, FossilsLegacyUtils.resource("legacy/analyzer").toString());
+        Advancement.Builder.advancement().parent(fossils).display(FossilsLegacyBlocks.PALAEONTOLOGY_TABLE.get(), FossilsLegacyUtils.translation("advancements", "legacy.palaeontology_table.title"), FossilsLegacyUtils.translation("advancements", "legacy.palaeontology_table.desc"), null, AdvancementType.TASK, true, true, true).addCriterion("has_palaeontology_table", InventoryChangeTrigger.TriggerInstance.hasItems(FossilsLegacyBlocks.PALAEONTOLOGY_TABLE.get())).save(advancementHolderConsumer, FossilsLegacyUtils.resource("legacy/palaeontology_table").toString());
         AdvancementHolder relicScraps = Advancement.Builder.advancement().parent(legacyRoot).display(FossilsLegacyItems.RELIC_SCRAP.get(), FossilsLegacyUtils.translation("advancements", "legacy.relic_scrap.title"), FossilsLegacyUtils.translation("advancements", "legacy.relic_scrap.desc"), null, AdvancementType.TASK, true, true, true).addCriterion("has_relic_scrap", InventoryChangeTrigger.TriggerInstance.hasItems(FossilsLegacyItems.RELIC_SCRAP.get())).save(advancementHolderConsumer, FossilsLegacyUtils.resource("legacy/relic_scrap").toString());
         AdvancementHolder ancientSwordArtifact = Advancement.Builder.advancement().parent(relicScraps).display(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get(), FossilsLegacyUtils.translation("advancements", "legacy.ancient_sword_artifact.title"), FossilsLegacyUtils.translation("advancements", "legacy.ancient_sword_artifact.desc"), null, AdvancementType.TASK, true, true, true).addCriterion("has_sword_artifact", InventoryChangeTrigger.TriggerInstance.hasItems(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get())).save(advancementHolderConsumer, FossilsLegacyUtils.resource("legacy/sword_artifact").toString());
         AdvancementHolder ancientSword = Advancement.Builder.advancement().parent(ancientSwordArtifact).display(FossilsLegacyItems.ANCIENT_SWORD.get(), FossilsLegacyUtils.translation("advancements", "legacy.ancient_sword.title"), FossilsLegacyUtils.translation("advancements", "legacy.ancient_sword.desc"), null, AdvancementType.TASK, true, true, true).addCriterion("has_ancient_sword", InventoryChangeTrigger.TriggerInstance.hasItems(FossilsLegacyItems.ANCIENT_SWORD.get())).save(advancementHolderConsumer, FossilsLegacyUtils.resource("legacy/ancient_sword").toString());

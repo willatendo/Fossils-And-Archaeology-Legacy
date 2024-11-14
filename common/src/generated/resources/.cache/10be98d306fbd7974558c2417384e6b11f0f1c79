@@ -1,4 +1,4 @@
-// 1.21.1	2024-11-13T02:18:51.9763167	Item Models: fossilslegacy
+// 1.21.1	2024-11-13T15:04:06.2850093	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 1f02e6db84914fc2677089f5e420f925ba109484 assets/fossilslegacy/models/item/ancient_axe.json
 e6aea94981911965db91c7f52bfa4555de4d4182 assets/fossilslegacy/models/item/ancient_axe_artifact.json
@@ -225,7 +225,10 @@ ef314aa4dcf53fa5168a31539a4d5612d870f62a assets/fossilslegacy/models/item/magent
 a244c695d320bc49c62adfbf6d7a08c04ad1a1cc assets/fossilslegacy/models/item/mammoth_dna.json
 cb0981d8cceb62c4b3dae4d87956682f4f8cb56a assets/fossilslegacy/models/item/mammoth_embryo_syringe.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/mammoth_spawn_egg.json
+2c1bb330135fb220a46d4c1a07648bcfdfa72c85 assets/fossilslegacy/models/item/mayan_jade_vase.json
+cb37998481e42ba55722b7b9db19ce1e4aeffe49 assets/fossilslegacy/models/item/mayan_ocelot_vase.json
 b954f0a11a140437ca18b396894f80481b565cff assets/fossilslegacy/models/item/mayan_vase.json
+b9ee0f3f54e1729d6d7f60bb12a952c4f946748b assets/fossilslegacy/models/item/mayan_villager_vase.json
 d1551157c9db419c1d9c19c9e74728a026e21a1f assets/fossilslegacy/models/item/moa_dna.json
 89c5529cb1dd856bfed899811b65b83aef1bffab assets/fossilslegacy/models/item/moa_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/moa_spawn_egg.json

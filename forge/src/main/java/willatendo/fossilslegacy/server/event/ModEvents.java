@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.event;
 
+import net.minecraft.world.entity.ai.behavior.GiveGiftToHero;
 import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -11,6 +12,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.DataPackRegistryEvent;
 import net.minecraftforge.registries.NewRegistryEvent;
 import willatendo.fossilslegacy.network.ForgePacketHelper;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyVillagerProfessions;
+import willatendo.fossilslegacy.server.item.FossilsLegacyLootTables;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.event.modification.ForgeCreativeModeTabModification;
 import willatendo.simplelibrary.server.event.modification.ForgeVillagerTradeModification;
@@ -23,6 +26,9 @@ public class ModEvents {
         BasicEvents.commonSetup();
         event.enqueueWork(ForgePacketHelper::register);
         BasicEvents.compostablesSetup();
+
+        GiveGiftToHero.GIFTS.put(FossilsLegacyVillagerProfessions.ARCHAEOLOGIST.get(), FossilsLegacyLootTables.ARCHAEOLOGIST_GIFT);
+        GiveGiftToHero.GIFTS.put(FossilsLegacyVillagerProfessions.PALAEONTOLOGIST.get(), FossilsLegacyLootTables.PALAEONTOLOGIST_GIFT);
     }
 
     @SubscribeEvent

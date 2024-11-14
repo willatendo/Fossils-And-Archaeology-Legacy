@@ -5,13 +5,13 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.HangingSignBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class LepidodendronHangingSignBlockEntity extends HangingSignBlockEntity {
-    public LepidodendronHangingSignBlockEntity(BlockPos blockPos, BlockState blockState) {
+public class FossilsHangingSignBlockEntity extends HangingSignBlockEntity {
+    public FossilsHangingSignBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(blockPos, blockState);
     }
 
     @Override
     public BlockEntityType<?> getType() {
-        return FossilsLegacyBlockEntityTypes.LEPIDODENDRON_HANGING_SIGN.get();
+        return FossilsLegacyBlockEntityTypes.FOSSILS_HANGING_SIGN.get();
     }
 }

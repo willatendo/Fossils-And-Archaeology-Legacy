@@ -265,6 +265,9 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyBlocks.SKULL_BLOCK.get());
         output.accept(FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get());
         output.accept(FossilsLegacyBlocks.MAYAN_VASE.get());
+        output.accept(FossilsLegacyBlocks.MAYAN_JADE_VASE.get());
+        output.accept(FossilsLegacyBlocks.MAYAN_OCELOT_VASE.get());
+        output.accept(FossilsLegacyBlocks.MAYAN_VILLAGER_VASE.get());
         output.accept(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get());
         output.accept(FossilsLegacyBlocks.LEPIDODENDRON_WOOD.get());
         output.accept(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_LOG.get());

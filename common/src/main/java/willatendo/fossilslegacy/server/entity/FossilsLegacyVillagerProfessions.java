@@ -18,9 +18,7 @@ public class FossilsLegacyVillagerProfessions {
     public static final SimpleHolder<VillagerProfession> ARCHAEOLOGIST = FossilsLegacyVillagerProfessions.register("archaeologist", FossilsLegacyPoiTypes.ARCHAEOLOGIST, SoundEvents.VILLAGER_WORK_CARTOGRAPHER);
     public static final SimpleHolder<VillagerProfession> PALAEONTOLOGIST = FossilsLegacyVillagerProfessions.register("palaeontologist", FossilsLegacyPoiTypes.PALAEONTOLOGIST, SoundEvents.VILLAGER_WORK_CARTOGRAPHER);
 
-
     private static SimpleHolder<VillagerProfession> register(String id, ResourceKey<PoiType> jobSite, SoundEvent workSound) {
         return VILLAGER_PROFESSIONS.register(id, () -> new VillagerProfession(id, heldJobSite -> heldJobSite.is(jobSite), acquirableJobSite -> acquirableJobSite.is(jobSite), ImmutableSet.of(), ImmutableSet.of(), workSound));
     }
-
 }

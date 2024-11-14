@@ -3,15 +3,35 @@
   "pools": [
     {
       "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
-        }
-      ],
       "entries": [
         {
-          "type": "minecraft:item",
-          "name": "fossilslegacy:mayan_vase"
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "block": "fossilslegacy:mayan_vase",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "cracked": "true"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "add": false,
+                  "count": 8.0,
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:brick"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "fossilslegacy:mayan_vase"
+            }
+          ]
         }
       ],
       "rolls": 1.0

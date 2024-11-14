@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:brick"
+    },
+    "$": {
+      "item": "fossilslegacy:jade_ocelot"
+    }
+  },
+  "pattern": [
+    "#$#",
+    "$ $",
+    "#$#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:mayan_ocelot_vase"
+  }
+}

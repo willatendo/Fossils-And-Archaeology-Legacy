@@ -54,7 +54,10 @@ public class FossilsLegacyBlockStateProvider extends BlockStateProvider {
         this.cauldron(FossilsLegacyBlocks.COOKED_CHICKEN_SOUP_CAULDRON.get(), "cooked_chicken_soup");
         this.cauldron(FossilsLegacyBlocks.RAW_BERRY_MEDLEY_CAULDRON.get(), "raw_berry_medley");
         this.cauldron(FossilsLegacyBlocks.COOKED_BERRY_MEDLEY_CAULDRON.get(), "cooked_berry_medley");
-        this.simpleBlock(FossilsLegacyBlocks.MAYAN_VASE.get(), this.models().withExistingParent("mayan_vase", this.modLoc("block/template_vase")).texture("bottom", this.modLoc("block/mayan_pot_bottom")).texture("inside", this.modLoc("block/mayan_pot_inside")).texture("side", this.modLoc("block/mayan_pot_side")).texture("top", this.modLoc("block/mayan_pot_top")));
+        this.mayanVase(FossilsLegacyBlocks.MAYAN_VASE.get(), "mayan_pot_side");
+        this.mayanVase(FossilsLegacyBlocks.MAYAN_JADE_VASE.get(), "mayan_pot_side_jade");
+        this.mayanVase(FossilsLegacyBlocks.MAYAN_OCELOT_VASE.get(), "mayan_pot_side_ocelot");
+        this.mayanVase(FossilsLegacyBlocks.MAYAN_VILLAGER_VASE.get(), "mayan_pot_side_villager");
         this.simpleBlock(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get());
         this.simpleBlock(FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get(), this.models().cross("lepidodendron_sapling", this.modLoc("block/lepidodendron_sapling")).renderType("cutout"));
         this.logBlock(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get());
@@ -120,6 +123,11 @@ public class FossilsLegacyBlockStateProvider extends BlockStateProvider {
         for (int level = 1; level < 9; level++) {
             partialBlockstate.with(SoupCauldronBlock.LEVEL, level).addModels(new ConfiguredModel(this.models().withExistingParent(BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + level, this.modLoc("block/template_soup_cauldron_" + level)).texture("content", this.modLoc("block/" + liquid))));
         }
+    }
+
+    private void mayanVase(Block block, String sideTexture) {
+        String name = this.name(block);
+        this.simpleBlock(block, this.models().withExistingParent(name, this.modLoc("block/template_vase")).texture("bottom", this.modLoc("block/mayan_pot_bottom")).texture("inside", this.modLoc("block/mayan_pot_inside")).texture("side", this.modLoc("block/" + sideTexture)).texture("top", this.modLoc("block/mayan_pot_top")));
     }
 
     public void woodBlock(RotatedPillarBlock block, ResourceLocation texture) {

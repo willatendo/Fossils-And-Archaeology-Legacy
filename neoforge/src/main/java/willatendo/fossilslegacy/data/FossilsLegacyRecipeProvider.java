@@ -114,7 +114,10 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         this.shaped(RecipeCategory.DECORATIONS, "hanging_sign", FossilsLegacyItems.CALAMITES_HANGING_SIGN.get(), 6, PatternBuilder.builder("$ $", "###", "###"), IngredientBuilder.build(FossilsLegacyBlocks.STRIPPED_CALAMITES_LOG.get()).symbol('#').requires(), IngredientBuilder.build(Items.CHAIN).symbol('$'));
         this.boat(RecipeCategory.TRANSPORTATION, "boat", FossilsLegacyItems.CALAMITES_BOAT.get(), PatternBuilder.builder("# #", "###"), IngredientBuilder.build(FossilsLegacyBlocks.CALAMITES_PLANKS.get()).symbol('#'));
         this.chestBoat(RecipeCategory.TRANSPORTATION, "chest_boat", FossilsLegacyItems.CALAMITES_CHEST_BOAT.get(), IngredientBuilder.build(FossilsLegacyItems.CALAMITES_BOAT.get()), IngredientBuilder.build(Items.CHEST));
-        this.shaped(RecipeCategory.DECORATIONS, FossilsLegacyBlocks.MAYAN_VASE.get(), PatternBuilder.builder("# #", "# #", "#$#"), IngredientBuilder.build(Items.BRICK).symbol('#').requires(), IngredientBuilder.build(FossilsLegacyItems.JADE.get()).symbol('$'));
+        this.shaped(RecipeCategory.DECORATIONS, FossilsLegacyBlocks.MAYAN_VASE.get(), PatternBuilder.builder("###", "# #", "###"), IngredientBuilder.build(Items.BRICK).symbol('#').requires());
+        this.shaped(RecipeCategory.DECORATIONS, FossilsLegacyBlocks.MAYAN_JADE_VASE.get(), PatternBuilder.builder("#$#", "$ $", "#$#"), IngredientBuilder.build(Items.BRICK).symbol('#').requires(), IngredientBuilder.build(FossilsLegacyItems.JADE.get()).symbol('$'));
+        this.shaped(RecipeCategory.DECORATIONS, FossilsLegacyBlocks.MAYAN_OCELOT_VASE.get(), PatternBuilder.builder("#$#", "$ $", "#$#"), IngredientBuilder.build(Items.BRICK).symbol('#').requires(), IngredientBuilder.build(FossilsLegacyItems.JADE_OCELOT.get()).symbol('$'));
+        this.shaped(RecipeCategory.DECORATIONS, FossilsLegacyBlocks.MAYAN_VILLAGER_VASE.get(), PatternBuilder.builder("#$#", "$ $", "#$#"), IngredientBuilder.build(Items.BRICK).symbol('#').requires(), IngredientBuilder.build(FossilsLegacyItems.JADE_VILLAGER.get()).symbol('$'));
 
         this.special("magic_conch", MagicConchRecipe::new);
 
