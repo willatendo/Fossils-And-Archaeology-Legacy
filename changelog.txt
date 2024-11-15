@@ -52,6 +52,7 @@
 - Fixed Animals In Prehistoric Dimension Not Spawning On Sand/Other Blocks
 - Fixed Pteranodon Not Landing When Hitting Water
 - Fixed Pteranodon Staying Still After Logging Off
+- Fixed Pteranodon Wing
 - Added Updated Triceratops Model
 - Added "Anu Totem" Stone Tablet
 - Added Coat-Types; Data-Driven Cosmetics For Dinosaurs

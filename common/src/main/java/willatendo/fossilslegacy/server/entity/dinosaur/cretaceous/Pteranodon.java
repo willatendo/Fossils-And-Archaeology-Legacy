@@ -6,6 +6,9 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.server.level.ServerEntity;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
@@ -288,24 +291,6 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag compoundTag) {
-        super.addAdditionalSaveData(compoundTag);
-        compoundTag.putFloat("AirSpeed", this.airSpeed);
-        compoundTag.putFloat("AirAngle", this.airAngle);
-        compoundTag.putFloat("AirPitch", this.airPitch);
-        compoundTag.putBoolean("IsLanding", this.landing);
-    }
-
-    @Override
-    public void readAdditionalSaveData(CompoundTag compoundTag) {
-        super.readAdditionalSaveData(compoundTag);
-        this.airSpeed = compoundTag.getFloat("AirSpeed");
-        this.airAngle = compoundTag.getFloat("AirAngle");
-        this.airPitch = compoundTag.getFloat("AirPitch");
-        this.landing = compoundTag.getBoolean("IsLanding");
-    }
-
-    @Override
     public List<Component> info(Player player) {
         ArrayList<Component> information = Lists.newArrayList();
         if (this.isTame() && this.isOwnedBy(player)) {
@@ -369,14 +354,14 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
                     Vec3 moveDirection = new Vec3(this.xxa, this.yya, this.zza);
                     this.moveRelative(this.airSpeed, moveDirection);
                 } else {
-                    if ((this.horizontalCollision || this.verticalCollision) && this.airSpeed != 0) {
+                    if ((this.horizontalCollision || this.verticalCollision) && this.airSpeed != 0.0F) {
                         this.airSpeed = 0.0F;
                         Vec3 noDirection = new Vec3(0.0F, 0.0F, 0.0F);
                         this.moveRelative(this.airSpeed, noDirection);
                         return;
                     }
-                    if (this.airSpeed == 0 && this.zza != 0) {
-                        this.airSpeed = (this.zza * this.getSpeed()) * 2;
+                    if (this.airSpeed == 0) {
+                        this.airSpeed = 0.15F;
                     }
                     this.airAngle -= localPlayer.xxa;
                     if (this.airAngle > 30.0F) {
@@ -406,6 +391,7 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
                         }
                     }
                     this.lastAirPitch = this.airPitch;
+                    FossilsLegacyUtils.LOGGER.info("HEY, {} {} {}", this.airSpeed, this.zza, this.getSpeed());
                 }
             }
         }
