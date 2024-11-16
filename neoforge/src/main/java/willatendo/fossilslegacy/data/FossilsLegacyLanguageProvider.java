@@ -111,6 +111,15 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyBlocks.MAYAN_JADE_VASE.get());
         this.add(FossilsLegacyBlocks.MAYAN_OCELOT_VASE.get());
         this.add(FossilsLegacyBlocks.MAYAN_VILLAGER_VASE.get());
+        this.add(FossilsLegacyBlocks.IRON_LLAMA_STATUE.get());
+        this.add(FossilsLegacyBlocks.COPPER_LLAMA_STATUE.get());
+        this.add(FossilsLegacyBlocks.EXPOSED_COPPER_LLAMA_STATUE.get());
+        this.add(FossilsLegacyBlocks.WEATHERED_COPPER_LLAMA_STATUE.get());
+        this.add(FossilsLegacyBlocks.OXIDIZED_COPPER_LLAMA_STATUE.get());
+        this.add(FossilsLegacyBlocks.WAXED_COPPER_LLAMA_STATUE.get());
+        this.add(FossilsLegacyBlocks.WAXED_EXPOSED_COPPER_LLAMA_STATUE.get());
+        this.add(FossilsLegacyBlocks.WAXED_WEATHERED_COPPER_LLAMA_STATUE.get());
+        this.add(FossilsLegacyBlocks.WAXED_OXIDIZED_COPPER_LLAMA_STATUE.get());
         this.add(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get());
         this.add(FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get());
         this.add(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get());
@@ -634,6 +643,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.JADE_OCELOT.get());
         this.add(FossilsLegacyItems.JADE_VILLAGER.get());
         this.add(FossilsLegacyItems.CODEX.get());
+        this.add(FossilsLegacyItems.QUIPU.get());
         this.add(FossilsLegacyItems.ANCIENT_SWORD.get());
         this.add(FossilsLegacyItems.ANCIENT_SHOVEL.get());
         this.add(FossilsLegacyItems.ANCIENT_PICKAXE.get());

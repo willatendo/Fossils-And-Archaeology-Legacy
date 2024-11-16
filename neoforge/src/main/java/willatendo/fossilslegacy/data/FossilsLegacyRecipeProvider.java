@@ -118,6 +118,7 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         this.shaped(RecipeCategory.DECORATIONS, FossilsLegacyBlocks.MAYAN_JADE_VASE.get(), PatternBuilder.builder("#$#", "$ $", "#$#"), IngredientBuilder.build(Items.BRICK).symbol('#').requires(), IngredientBuilder.build(FossilsLegacyItems.JADE.get()).symbol('$'));
         this.shaped(RecipeCategory.DECORATIONS, FossilsLegacyBlocks.MAYAN_OCELOT_VASE.get(), PatternBuilder.builder("#$#", "$ $", "#$#"), IngredientBuilder.build(Items.BRICK).symbol('#').requires(), IngredientBuilder.build(FossilsLegacyItems.JADE_OCELOT.get()).symbol('$'));
         this.shaped(RecipeCategory.DECORATIONS, FossilsLegacyBlocks.MAYAN_VILLAGER_VASE.get(), PatternBuilder.builder("#$#", "$ $", "#$#"), IngredientBuilder.build(Items.BRICK).symbol('#').requires(), IngredientBuilder.build(FossilsLegacyItems.JADE_VILLAGER.get()).symbol('$'));
+        ;
 
         this.special("magic_conch", MagicConchRecipe::new);
 
@@ -285,12 +286,11 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
 
         String[] patterns = patternBuilder.getPattern();
 
-        for (int i = 0; i < patterns.length; ++i) {
-            shapedRecipeBuilder.pattern(patterns[i]);
+        for (String pattern : patterns) {
+            shapedRecipeBuilder.pattern(pattern);
         }
 
-        for (int i = 0; i < ingredientBuilders.length; ++i) {
-            IngredientBuilder ingredientBuilder = ingredientBuilders[i];
+        for (IngredientBuilder ingredientBuilder : ingredientBuilders) {
             Ingredient ingredient = ingredientBuilder.getIngredient();
             char symbol = ingredientBuilder.getSymbol();
             shapedRecipeBuilder.define(symbol, ingredient);
@@ -317,6 +317,10 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         }
 
         this.recipeBuilders.put(this.toName(output), shapelessRecipeBuilder);
+    }
+
+    public void waxCopper(ItemLike in, ItemLike out) {
+        this.shapeless(RecipeCategory.DECORATIONS, out, IngredientBuilder.build(in), IngredientBuilder.build(Items.HONEYCOMB));
     }
 
     public void cultivator(ItemLike output, ItemLike dye, ItemLike glass) {

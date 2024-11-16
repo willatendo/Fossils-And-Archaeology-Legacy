@@ -4,11 +4,7 @@ import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.server.level.ServerEntity;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
@@ -153,11 +149,6 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
         }
 
         super.tick();
-    }
-
-    @Override
-    public void aiStep() {
-        super.aiStep();
     }
 
     @Override
@@ -320,6 +311,12 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
     }
 
     private void handleRiding() {
+        if (this.isInWaterOrBubble()) {
+            if (this.landing) {
+                this.landing = false;
+            }
+            return;
+        }
         if (this.hasControllingPassenger() && this.getControllingPassenger() instanceof LocalPlayer localPlayer) {
             this.handleLanding();
             if (!this.shouldFly()) {
@@ -334,6 +331,9 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
                 }
                 this.addYRot(-(localPlayer.xxa * 5.0F));
             } else {
+                if (this.zza == 0.0F) {
+                    this.zza = 0.2F;
+                }
                 this.airAngle -= localPlayer.xxa;
                 if (this.airAngle > 30.0F) {
                     this.airAngle = 30.0F;
@@ -391,7 +391,6 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
                         }
                     }
                     this.lastAirPitch = this.airPitch;
-                    FossilsLegacyUtils.LOGGER.info("HEY, {} {} {}", this.airSpeed, this.zza, this.getSpeed());
                 }
             }
         }

@@ -1,0 +1,7 @@
+{
+  "parent": "fossilslegacy:block/template_llama",
+  "textures": {
+    "particle": "minecraft:block/copper_block",
+    "texture": "fossilslegacy:block/copper_llama_statue"
+  }
+}

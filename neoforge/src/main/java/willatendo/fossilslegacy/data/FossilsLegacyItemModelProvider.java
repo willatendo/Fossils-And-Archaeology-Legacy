@@ -193,6 +193,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.JADE_OCELOT.get());
         this.basicItem(FossilsLegacyItems.JADE_VILLAGER.get());
         this.basicItem(FossilsLegacyItems.CODEX.get());
+        this.basicItem(FossilsLegacyItems.QUIPU.get());
         this.handheldItem(FossilsLegacyItems.ANCIENT_SWORD.get());
         this.handheldItem(FossilsLegacyItems.ANCIENT_SHOVEL.get());
         this.handheldItem(FossilsLegacyItems.ANCIENT_PICKAXE.get());
@@ -307,6 +308,15 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicBlock(FossilsLegacyBlocks.MAYAN_JADE_VASE.get());
         this.basicBlock(FossilsLegacyBlocks.MAYAN_OCELOT_VASE.get());
         this.basicBlock(FossilsLegacyBlocks.MAYAN_VILLAGER_VASE.get());
+        this.basicBlock(FossilsLegacyBlocks.IRON_LLAMA_STATUE.get());
+        this.basicBlock(FossilsLegacyBlocks.COPPER_LLAMA_STATUE.get());
+        this.basicBlock(FossilsLegacyBlocks.EXPOSED_COPPER_LLAMA_STATUE.get());
+        this.basicBlock(FossilsLegacyBlocks.WEATHERED_COPPER_LLAMA_STATUE.get());
+        this.basicBlock(FossilsLegacyBlocks.OXIDIZED_COPPER_LLAMA_STATUE.get());
+        this.basicBlock(FossilsLegacyBlocks.WAXED_COPPER_LLAMA_STATUE.get());
+        this.basicBlock(FossilsLegacyBlocks.WAXED_EXPOSED_COPPER_LLAMA_STATUE.get());
+        this.basicBlock(FossilsLegacyBlocks.WAXED_WEATHERED_COPPER_LLAMA_STATUE.get());
+        this.basicBlock(FossilsLegacyBlocks.WAXED_OXIDIZED_COPPER_LLAMA_STATUE.get());
         this.basicBlock(FossilsLegacyBlocks.LEPIDODENDRON_PLANKS.get());
         this.basicItem(FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.getId(), this.modLoc("block/lepidodendron_sapling"));
         this.basicBlock(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get());

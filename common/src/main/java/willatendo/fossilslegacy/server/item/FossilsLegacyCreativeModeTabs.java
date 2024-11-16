@@ -189,6 +189,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.JADE_OCELOT.get());
         output.accept(FossilsLegacyItems.JADE_VILLAGER.get());
         output.accept(FossilsLegacyItems.CODEX.get());
+        output.accept(FossilsLegacyItems.QUIPU.get());
         output.accept(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get());
         output.accept(FossilsLegacyItems.ANCIENT_SHOVEL_ARTIFACT.get());
         output.accept(FossilsLegacyItems.ANCIENT_PICKAXE_ARTIFACT.get());
@@ -268,6 +269,15 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyBlocks.MAYAN_JADE_VASE.get());
         output.accept(FossilsLegacyBlocks.MAYAN_OCELOT_VASE.get());
         output.accept(FossilsLegacyBlocks.MAYAN_VILLAGER_VASE.get());
+        output.accept(FossilsLegacyBlocks.IRON_LLAMA_STATUE.get());
+        output.accept(FossilsLegacyBlocks.COPPER_LLAMA_STATUE.get());
+        output.accept(FossilsLegacyBlocks.EXPOSED_COPPER_LLAMA_STATUE.get());
+        output.accept(FossilsLegacyBlocks.WEATHERED_COPPER_LLAMA_STATUE.get());
+        output.accept(FossilsLegacyBlocks.OXIDIZED_COPPER_LLAMA_STATUE.get());
+        output.accept(FossilsLegacyBlocks.WAXED_COPPER_LLAMA_STATUE.get());
+        output.accept(FossilsLegacyBlocks.WAXED_EXPOSED_COPPER_LLAMA_STATUE.get());
+        output.accept(FossilsLegacyBlocks.WAXED_WEATHERED_COPPER_LLAMA_STATUE.get());
+        output.accept(FossilsLegacyBlocks.WAXED_OXIDIZED_COPPER_LLAMA_STATUE.get());
         output.accept(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get());
         output.accept(FossilsLegacyBlocks.LEPIDODENDRON_WOOD.get());
         output.accept(FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_LOG.get());
