@@ -1,5 +1,5 @@
-26/10/2024
-- Futabasaurus Now Articulates Entire Neck
+16/11/2024
+- Non-Legacy Futabasaurus Now Articulates Entire Neck
 - Tamed Tyrannosaurus No Longer Breaks Blocks
 - Replaced Nether Coin With Ice Age Coin
 - Stone Tablets Are Now Data-Driven
@@ -196,6 +196,16 @@
 - Added "A Palaeontologist's Table" Advancement
 - Added Quipu
 - Added Iron Llama Statue
+- Added Copper Llama Statue
+- Added Exposed Copper Llama Statue
+- Added Weathered Copper Llama Statue
+- Added Oxidized Copper Llama Statue
+- Added Waxed Copper Llama Statue
+- Added Waxed Exposed Copper Llama Statue
+- Added Waxed Weathered Copper Llama Statue
+- Added Waxed Oxidized Copper Llama Statue
+- Added Machu Piccu
+- Added Lab
 - Removed Client Config As It Is No Longer Necessary
 12/9/2024
 - (Fabric) Fixed Crash

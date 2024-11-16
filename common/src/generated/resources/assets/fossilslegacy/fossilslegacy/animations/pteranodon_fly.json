@@ -167,6 +167,21 @@
       ]
     },
     {
+      "bone": "whole",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "pos_vec": {
+            "x": 0.0,
+            "y": -2.0,
+            "z": 2.0
+          },
+          "target": "position",
+          "timestamp": 0.0
+        }
+      ]
+    },
+    {
       "bone": "neck",
       "keyframes": [
         {

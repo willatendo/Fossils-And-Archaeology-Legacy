@@ -11,8 +11,9 @@ import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import willatendo.fossilslegacy.server.block.*;
+import willatendo.simplelibrary.data.SimpleBlockStateProvider;
 
-public class FossilsLegacyBlockStateProvider extends BlockStateProvider {
+public class FossilsLegacyBlockStateProvider extends SimpleBlockStateProvider {
     public FossilsLegacyBlockStateProvider(PackOutput packOutput, String modId, ExistingFileHelper existingFileHelper) {
         super(packOutput, modId, existingFileHelper);
     }
@@ -141,36 +142,5 @@ public class FossilsLegacyBlockStateProvider extends BlockStateProvider {
 
     public void woodBlock(RotatedPillarBlock block, ResourceLocation texture) {
         this.axisBlock(block, texture, texture);
-    }
-
-    public void hangingSignBlock(CeilingHangingSignBlock ceilingHangingSignBlock, WallHangingSignBlock wallHangingSignBlock, ResourceLocation texture) {
-        ModelFile sign = this.models().sign(this.name(ceilingHangingSignBlock), texture);
-        this.hangingSignBlock(ceilingHangingSignBlock, wallHangingSignBlock, sign);
-    }
-
-    public void hangingSignBlock(CeilingHangingSignBlock ceilingHangingSignBlock, WallHangingSignBlock wallHangingSignBlock, ModelFile sign) {
-        this.simpleBlock(ceilingHangingSignBlock, sign);
-        this.simpleBlock(wallHangingSignBlock, sign);
-    }
-
-    public void fenceBlock(FenceBlock block, ResourceLocation texture) {
-        String baseName = this.key(block).toString();
-        this.fourWayBlock(block, this.models().fencePost(baseName + "_post", texture), this.models().fenceSide(baseName + "_side", texture));
-        this.models().fenceInventory(baseName + "_inventory", texture);
-    }
-
-    public void buttonBlock(ButtonBlock block, ResourceLocation texture) {
-        ModelFile button = this.models().button(this.name(block), texture);
-        ModelFile buttonPressed = this.models().buttonPressed(this.name(block) + "_pressed", texture);
-        this.buttonBlock(block, button, buttonPressed);
-        this.models().buttonInventory(this.name(block) + "_inventory", texture);
-    }
-
-    private String name(Block block) {
-        return this.key(block).getPath();
-    }
-
-    private ResourceLocation key(Block block) {
-        return BuiltInRegistries.BLOCK.getKey(block);
     }
 }

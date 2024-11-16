@@ -118,7 +118,12 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         this.shaped(RecipeCategory.DECORATIONS, FossilsLegacyBlocks.MAYAN_JADE_VASE.get(), PatternBuilder.builder("#$#", "$ $", "#$#"), IngredientBuilder.build(Items.BRICK).symbol('#').requires(), IngredientBuilder.build(FossilsLegacyItems.JADE.get()).symbol('$'));
         this.shaped(RecipeCategory.DECORATIONS, FossilsLegacyBlocks.MAYAN_OCELOT_VASE.get(), PatternBuilder.builder("#$#", "$ $", "#$#"), IngredientBuilder.build(Items.BRICK).symbol('#').requires(), IngredientBuilder.build(FossilsLegacyItems.JADE_OCELOT.get()).symbol('$'));
         this.shaped(RecipeCategory.DECORATIONS, FossilsLegacyBlocks.MAYAN_VILLAGER_VASE.get(), PatternBuilder.builder("#$#", "$ $", "#$#"), IngredientBuilder.build(Items.BRICK).symbol('#').requires(), IngredientBuilder.build(FossilsLegacyItems.JADE_VILLAGER.get()).symbol('$'));
-        ;
+        this.llama(Items.IRON_INGOT, FossilsLegacyBlocks.IRON_LLAMA_STATUE.get());
+        this.llama(Items.COPPER_INGOT, FossilsLegacyBlocks.COPPER_LLAMA_STATUE.get());
+        this.waxCopper(FossilsLegacyBlocks.COPPER_LLAMA_STATUE.get(), FossilsLegacyBlocks.WAXED_COPPER_LLAMA_STATUE.get());
+        this.waxCopper(FossilsLegacyBlocks.EXPOSED_COPPER_LLAMA_STATUE.get(), FossilsLegacyBlocks.WAXED_EXPOSED_COPPER_LLAMA_STATUE.get());
+        this.waxCopper(FossilsLegacyBlocks.WEATHERED_COPPER_LLAMA_STATUE.get(), FossilsLegacyBlocks.WAXED_WEATHERED_COPPER_LLAMA_STATUE.get());
+        this.waxCopper(FossilsLegacyBlocks.OXIDIZED_COPPER_LLAMA_STATUE.get(), FossilsLegacyBlocks.WAXED_OXIDIZED_COPPER_LLAMA_STATUE.get());
 
         this.special("magic_conch", MagicConchRecipe::new);
 
@@ -319,8 +324,12 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         this.recipeBuilders.put(this.toName(output), shapelessRecipeBuilder);
     }
 
-    public void waxCopper(ItemLike in, ItemLike out) {
-        this.shapeless(RecipeCategory.DECORATIONS, out, IngredientBuilder.build(in), IngredientBuilder.build(Items.HONEYCOMB));
+    public void llama(ItemLike ingredient, ItemLike output) {
+        this.shaped(RecipeCategory.DECORATIONS, output, PatternBuilder.builder("#  ", "###", "# #"), IngredientBuilder.build(ingredient).symbol('#').requires());
+    }
+
+    public void waxCopper(ItemLike nonWaxed, ItemLike waxed) {
+        this.shapeless(UnlockMethod.CRAFT, RecipeCategory.DECORATIONS, waxed, IngredientBuilder.build(nonWaxed), IngredientBuilder.build(Items.HONEYCOMB));
     }
 
     public void cultivator(ItemLike output, ItemLike dye, ItemLike glass) {

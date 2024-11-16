@@ -8,10 +8,15 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 public class FossilsLegacyLootTables {
     public static final ResourceKey<LootTable> ACADEMY_LOOT = FossilsLegacyLootTables.create("chests/academy_loot");
     public static final ResourceKey<LootTable> ACADEMY_DISC = FossilsLegacyLootTables.create("chests/academy_disc");
+    public static final ResourceKey<LootTable> LAB_DNA_LOOT = FossilsLegacyLootTables.create("chests/lab_loot/dna");
+    public static final ResourceKey<LootTable> LAB_FOSSIL_LOOT = FossilsLegacyLootTables.create("chests/lab_loot/fossil");
+    public static final ResourceKey<LootTable> LAB_FAILED_EXPERIMENT_LOOT = FossilsLegacyLootTables.create("chests/lab_loot/failed_experiment");
     public static final ResourceKey<LootTable> MAYAN_LOOT = FossilsLegacyLootTables.create("chests/mayan_loot");
     public static final ResourceKey<LootTable> MAYAN_TREASURE = FossilsLegacyLootTables.create("chests/mayan_treasure");
     public static final ResourceKey<LootTable> WEAPON_SHOP_DECOY = FossilsLegacyLootTables.create("chests/weapon_shop_decoy");
     public static final ResourceKey<LootTable> WEAPON_SHOP_LOOT = FossilsLegacyLootTables.create("chests/weapon_shop_loot");
+
+    public static final ResourceKey<LootTable> INCA_LOOT = FossilsLegacyLootTables.create("archaeology/inca_loot");
 
     public static final ResourceKey<LootTable> BRACHIOSAURUS_EGG = FossilsLegacyLootTables.create("entities/egg/brachiosaurus");
     public static final ResourceKey<LootTable> DILOPHOSAURUS_EGG = FossilsLegacyLootTables.create("entities/egg/dilophosaurus");

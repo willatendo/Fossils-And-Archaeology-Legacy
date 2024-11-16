@@ -7,22 +7,34 @@ import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
-import net.neoforged.neoforge.event.village.VillagerTradesEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import willatendo.fossilslegacy.network.*;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.server.event.modification.NeoforgeCreativeModeTabModification;
-import willatendo.simplelibrary.server.event.modification.NeoforgeVillagerTradeModification;
+import willatendo.simplelibrary.server.event.modification.*;
 import willatendo.simplelibrary.server.event.registry.*;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID)
 public class ModEvents {
+    public static final NeoforgeCompostablesModification NEOFORGE_COMPOSTABLES_MODIFICATION = new NeoforgeCompostablesModification();
+    public static final NeoforgeHeroOfTheVillageGiftModification NEOFORGE_HERO_OF_THE_VILLAGE_GIFT_MODIFICATION = new NeoforgeHeroOfTheVillageGiftModification();
+    public static final NeoforgeOxidationModification NEOFORGE_OXIDATION_MODIFICATION = new NeoforgeOxidationModification();
+    public static final NeoforgeWaxableModification NEOFORGE_WAXABLE_MODIFICATION = new NeoforgeWaxableModification();
+
     @SubscribeEvent
     public static void fmlCommonSetupEvent(FMLCommonSetupEvent event) {
         BasicEvents.commonSetup();
+        BasicEvents.strippablesSetup(new NeoforgeStrippablesModification());
+        ModEvents.setupDataMaps();
+    }
+
+    public static void setupDataMaps() {
+        BasicEvents.compostablesSetup(NEOFORGE_COMPOSTABLES_MODIFICATION);
+        BasicEvents.heroOfTheVillageGiftSetup(NEOFORGE_HERO_OF_THE_VILLAGE_GIFT_MODIFICATION);
+        BasicEvents.oxidationSetup(NEOFORGE_OXIDATION_MODIFICATION);
+        BasicEvents.waxableSetup(NEOFORGE_WAXABLE_MODIFICATION);
     }
 
     @SubscribeEvent

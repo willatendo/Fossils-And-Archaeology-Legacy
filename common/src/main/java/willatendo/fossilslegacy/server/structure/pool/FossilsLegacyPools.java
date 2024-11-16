@@ -31,6 +31,8 @@ public class FossilsLegacyPools {
 
     public static void bootstrap(BootstrapContext<StructureTemplatePool> bootstrapContext) {
         AcademyPools.bootstrap(bootstrapContext);
+        LabPools.bootstrap(bootstrapContext);
+        MachuPicchuPools.bootstrap(bootstrapContext);
         MayanCityPools.bootstrap(bootstrapContext);
         SmallMayanTemplePools.bootstrap(bootstrapContext);
         MoaiPools.bootstrap(bootstrapContext);

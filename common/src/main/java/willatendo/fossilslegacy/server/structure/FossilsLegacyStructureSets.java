@@ -12,6 +12,8 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FossilsLegacyStructureSets {
     public static final ResourceKey<StructureSet> ACADEMY = FossilsLegacyStructureSets.create("academy");
+    public static final ResourceKey<StructureSet> LAB = FossilsLegacyStructureSets.create("lab");
+    public static final ResourceKey<StructureSet> MACHU_PICCHU = FossilsLegacyStructureSets.create("machu_picchu");
     public static final ResourceKey<StructureSet> MAYAN_CITY = FossilsLegacyStructureSets.create("mayan_city");
     public static final ResourceKey<StructureSet> SMALL_MAYAN_TEMPLE = FossilsLegacyStructureSets.create("small_mayan_temple");
     public static final ResourceKey<StructureSet> MOAI = FossilsLegacyStructureSets.create("moai");
@@ -25,6 +27,8 @@ public class FossilsLegacyStructureSets {
     public static void bootstrap(BootstrapContext<StructureSet> bootstrapContext) {
         HolderGetter<Structure> structures = bootstrapContext.lookup(Registries.STRUCTURE);
         bootstrapContext.register(ACADEMY, new StructureSet(structures.getOrThrow(FossilsLegacyStructures.ACADEMY), new RandomSpreadStructurePlacement(32, 8, RandomSpreadType.LINEAR, 1476272410)));
+        bootstrapContext.register(LAB, new StructureSet(structures.getOrThrow(FossilsLegacyStructures.LAB), new RandomSpreadStructurePlacement(64, 16, RandomSpreadType.LINEAR, 1476272417)));
+        bootstrapContext.register(MACHU_PICCHU, new StructureSet(structures.getOrThrow(FossilsLegacyStructures.MACHU_PICCHU), new RandomSpreadStructurePlacement(32, 8, RandomSpreadType.LINEAR, 1476272416)));
         bootstrapContext.register(MAYAN_CITY, new StructureSet(structures.getOrThrow(FossilsLegacyStructures.MAYAN_CITY), new RandomSpreadStructurePlacement(32, 8, RandomSpreadType.LINEAR, 1476272415)));
         bootstrapContext.register(SMALL_MAYAN_TEMPLE, new StructureSet(structures.getOrThrow(FossilsLegacyStructures.SMALL_MAYAN_TEMPLE), new RandomSpreadStructurePlacement(32, 8, RandomSpreadType.LINEAR, 1476272414)));
         bootstrapContext.register(MOAI, new StructureSet(structures.getOrThrow(FossilsLegacyStructures.MOAI), new RandomSpreadStructurePlacement(16, 4, RandomSpreadType.LINEAR, 1476272413)));

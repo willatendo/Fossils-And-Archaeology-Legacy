@@ -21,6 +21,8 @@ import java.util.Optional;
 
 public class FossilsLegacyStructures {
     public static final ResourceKey<Structure> ACADEMY = create("academy");
+    public static final ResourceKey<Structure> LAB = create("lab");
+    public static final ResourceKey<Structure> MACHU_PICCHU = create("machu_picchu");
     public static final ResourceKey<Structure> MAYAN_CITY = create("mayan_city");
     public static final ResourceKey<Structure> SMALL_MAYAN_TEMPLE = create("small_mayan_temple");
     public static final ResourceKey<Structure> MOAI = create("moai");
@@ -35,6 +37,8 @@ public class FossilsLegacyStructures {
         HolderGetter<Biome> biomes = bootstrapContext.lookup(Registries.BIOME);
         HolderGetter<StructureTemplatePool> structureTemplatePools = bootstrapContext.lookup(Registries.TEMPLATE_POOL);
         bootstrapContext.register(ACADEMY, new JigsawStructure(new Structure.StructureSettings.Builder(biomes.getOrThrow(FossilsLegacyBiomeTags.HAS_ACADEMY)).terrainAdapation(TerrainAdjustment.BEARD_THIN).build(), structureTemplatePools.getOrThrow(AcademyPools.START), 7, ConstantHeight.of(VerticalAnchor.absolute(0)), false, Heightmap.Types.WORLD_SURFACE_WG));
+        bootstrapContext.register(LAB, new JigsawStructure(new Structure.StructureSettings.Builder(biomes.getOrThrow(FossilsLegacyBiomeTags.HAS_LAB)).terrainAdapation(TerrainAdjustment.BEARD_THIN).build(), structureTemplatePools.getOrThrow(LabPools.START), 7, ConstantHeight.of(VerticalAnchor.absolute(0)), false, Heightmap.Types.WORLD_SURFACE_WG));
+        bootstrapContext.register(MACHU_PICCHU, new JigsawStructure(new Structure.StructureSettings.Builder(biomes.getOrThrow(FossilsLegacyBiomeTags.HAS_MACHU_PICCHU)).terrainAdapation(TerrainAdjustment.BEARD_THIN).build(), structureTemplatePools.getOrThrow(MachuPicchuPools.START), Optional.empty(), 7, ConstantHeight.of(VerticalAnchor.absolute(0)), false, Optional.of(Heightmap.Types.WORLD_SURFACE_WG), 116, List.of(), JigsawStructure.DEFAULT_DIMENSION_PADDING, JigsawStructure.DEFAULT_LIQUID_SETTINGS));
         bootstrapContext.register(MAYAN_CITY, new JigsawStructure(new Structure.StructureSettings.Builder(biomes.getOrThrow(FossilsLegacyBiomeTags.HAS_MAYAN_TEMPLE)).terrainAdapation(TerrainAdjustment.BEARD_THIN).build(), structureTemplatePools.getOrThrow(MayanCityPools.START), Optional.empty(), 7, ConstantHeight.of(VerticalAnchor.absolute(0)), false, Optional.of(Heightmap.Types.WORLD_SURFACE_WG), 116, List.of(), JigsawStructure.DEFAULT_DIMENSION_PADDING, JigsawStructure.DEFAULT_LIQUID_SETTINGS));
         bootstrapContext.register(SMALL_MAYAN_TEMPLE, new JigsawStructure(new Structure.StructureSettings.Builder(biomes.getOrThrow(FossilsLegacyBiomeTags.HAS_MAYAN_TEMPLE)).terrainAdapation(TerrainAdjustment.BEARD_THIN).build(), structureTemplatePools.getOrThrow(SmallMayanTemplePools.START), 7, ConstantHeight.of(VerticalAnchor.absolute(0)), false, Heightmap.Types.WORLD_SURFACE_WG));
         bootstrapContext.register(MOAI, new JigsawStructure(new Structure.StructureSettings.Builder(biomes.getOrThrow(FossilsLegacyBiomeTags.HAS_MOAI)).terrainAdapation(TerrainAdjustment.BEARD_THIN).build(), structureTemplatePools.getOrThrow(MoaiPools.START), 7, ConstantHeight.of(VerticalAnchor.absolute(0)), false, Heightmap.Types.WORLD_SURFACE_WG));

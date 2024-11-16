@@ -5,7 +5,6 @@ import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
-import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -15,8 +14,7 @@ import willatendo.fossilslegacy.network.ForgePacketHelper;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyVillagerProfessions;
 import willatendo.fossilslegacy.server.item.FossilsLegacyLootTables;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.server.event.modification.ForgeCreativeModeTabModification;
-import willatendo.simplelibrary.server.event.modification.ForgeVillagerTradeModification;
+import willatendo.simplelibrary.server.event.modification.*;
 import willatendo.simplelibrary.server.event.registry.*;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID)
@@ -25,7 +23,11 @@ public class ModEvents {
     public static void fmlCommonSetupEvent(FMLCommonSetupEvent event) {
         BasicEvents.commonSetup();
         event.enqueueWork(ForgePacketHelper::register);
-        BasicEvents.compostablesSetup();
+        BasicEvents.strippablesSetup(new ForgeStrippablesModification());
+        BasicEvents.compostablesSetup(new ForgeCompostablesModification());
+        BasicEvents.heroOfTheVillageGiftSetup(new ForgeHeroOfTheVillageGiftModification());
+        BasicEvents.oxidationSetup(new ForgeOxidationModification());
+        BasicEvents.waxableSetup(new ForgeWaxableModification());
 
         GiveGiftToHero.GIFTS.put(FossilsLegacyVillagerProfessions.ARCHAEOLOGIST.get(), FossilsLegacyLootTables.ARCHAEOLOGIST_GIFT);
         GiveGiftToHero.GIFTS.put(FossilsLegacyVillagerProfessions.PALAEONTOLOGIST.get(), FossilsLegacyLootTables.PALAEONTOLOGIST_GIFT);

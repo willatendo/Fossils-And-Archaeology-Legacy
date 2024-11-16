@@ -417,7 +417,10 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("entity.minecraft.palaeontologist", "Palaentologist");
 
         // Filled Maps
+        this.add("filled_map.academy", "Academy Explorer Map");
+        this.add("filled_map.machu_picchu", "Machu Picchu Explorer Map");
         this.add("filled_map.mayan_temple", "Mayan Explorer Map");
+        this.add("filled_map.weapon_shop", "Weapon Shop Explorer Map");
 
         // Fossil Variants
         this.addFossilVariant(FossilsLegacyFossilVariants.ANKYLOSAURUS, "Ankylosaurus");
@@ -887,6 +890,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 
         // Tags
         this.add(FossilsLegacyBiomeTags.HAS_ACADEMY, "Has Academy");
+        this.add(FossilsLegacyBiomeTags.HAS_LAB, "Has Lab");
+        this.add(FossilsLegacyBiomeTags.HAS_MACHU_PICCHU, "Has Machu Picchu");
         this.add(FossilsLegacyBiomeTags.HAS_MAYAN_TEMPLE, "Has Mayan Temple");
         this.add(FossilsLegacyBiomeTags.HAS_MOAI, "Has Moai");
         this.add(FossilsLegacyBiomeTags.HAS_TOTEM_POLE, "Has Totem Pole");
@@ -988,6 +993,11 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItemTags.TYRANNOSAURUS_COMMANDABLES, "Tyrannosaurus Commandables");
 
         this.add(FossilsLegacyStoneTabletVariantTags.PLACEABLE, "Placeable");
+
+        this.add(FossilsLegacyStructureTags.ACADEMY, "Academy");
+        this.add(FossilsLegacyStructureTags.MACHU_PICCHU, "Machu Picchu");
+        this.add(FossilsLegacyStructureTags.MAYAN_TEMPLE, "Mayan Temple");
+        this.add(FossilsLegacyStructureTags.WEAPON_SHOP, "Weapon Shop");
 
         // Upgrades
         this.add("upgrade.fossilslegacy.scarab_gem_upgrade", "Scarab Gem Upgrade");

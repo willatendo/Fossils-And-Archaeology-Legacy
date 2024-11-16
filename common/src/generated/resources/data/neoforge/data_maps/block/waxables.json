@@ -1,0 +1,16 @@
+{
+  "values": {
+    "fossilslegacy:copper_llama_statue": {
+      "waxed": "fossilslegacy:waxed_copper_llama_statue"
+    },
+    "fossilslegacy:exposed_copper_llama_statue": {
+      "waxed": "fossilslegacy:waxed_exposed_copper_llama_statue"
+    },
+    "fossilslegacy:oxidized_copper_llama_statue": {
+      "waxed": "fossilslegacy:waxed_oxidized_copper_llama_statue"
+    },
+    "fossilslegacy:weathered_copper_llama_statue": {
+      "waxed": "fossilslegacy:waxed_weathered_copper_llama_statue"
+    }
+  }
+}

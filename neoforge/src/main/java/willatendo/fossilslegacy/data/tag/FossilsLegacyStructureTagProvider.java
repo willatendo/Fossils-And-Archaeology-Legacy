@@ -17,6 +17,9 @@ public class FossilsLegacyStructureTagProvider extends DataDrivenTagsProvider<St
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        this.tag(FossilsLegacyStructureTags.MAYAN_TEMPLE).add(FossilsLegacyStructures.SMALL_MAYAN_TEMPLE);
+        this.tag(FossilsLegacyStructureTags.ACADEMY).add(FossilsLegacyStructures.ACADEMY);
+        this.tag(FossilsLegacyStructureTags.MACHU_PICCHU).add(FossilsLegacyStructures.MACHU_PICCHU);
+        this.tag(FossilsLegacyStructureTags.MAYAN_TEMPLE).add(FossilsLegacyStructures.SMALL_MAYAN_TEMPLE, FossilsLegacyStructures.MAYAN_CITY);
+        this.tag(FossilsLegacyStructureTags.WEAPON_SHOP).add(FossilsLegacyStructures.WEAPON_SHOP);
     }
 }

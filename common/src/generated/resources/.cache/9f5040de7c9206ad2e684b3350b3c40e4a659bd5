@@ -1,5 +1,7 @@
-// 1.21.1	2024-11-12T17:07:31.1894167	Tags for minecraft:worldgen/biome mod id fossilslegacy
+// 1.21.1	2024-11-16T14:59:11.5094715	Tags for minecraft:worldgen/biome mod id fossilslegacy
 8948b6af9c9e7dcdc8024e226a24627b8e535d2d data/fossilslegacy/tags/worldgen/biome/has_structure/academy.json
+9664a9340a8487cc9fd728e77b0944f555a243b3 data/fossilslegacy/tags/worldgen/biome/has_structure/lab.json
+2ea2f6b4e52c4ebdcb58dd12967cff289aefa815 data/fossilslegacy/tags/worldgen/biome/has_structure/machu_picchu.json
 1505832e2c5cce98d18f5100da3a5072dfae4d4a data/fossilslegacy/tags/worldgen/biome/has_structure/mayan_temple.json
 208ad58db65540373e309e41d4444b16f2e8a713 data/fossilslegacy/tags/worldgen/biome/has_structure/moai.json
 239ff8935a419a785b22a049878c6d41a6ff74c2 data/fossilslegacy/tags/worldgen/biome/has_structure/totem_pole.json

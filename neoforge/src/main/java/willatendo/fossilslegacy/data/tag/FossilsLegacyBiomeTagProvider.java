@@ -17,6 +17,8 @@ public class FossilsLegacyBiomeTagProvider extends BiomeTagsProvider {
     @Override
     protected void addTags(Provider provider) {
         this.tag(FossilsLegacyBiomeTags.HAS_ACADEMY).add(Biomes.JUNGLE, Biomes.DESERT, Biomes.PLAINS);
+        this.tag(FossilsLegacyBiomeTags.HAS_LAB).add(Biomes.FOREST, Biomes.FLOWER_FOREST, Biomes.PLAINS);
+        this.tag(FossilsLegacyBiomeTags.HAS_MACHU_PICCHU).add(Biomes.MEADOW);
         this.tag(FossilsLegacyBiomeTags.HAS_MAYAN_TEMPLE).add(Biomes.SPARSE_JUNGLE);
         this.tag(FossilsLegacyBiomeTags.HAS_MOAI).add(Biomes.BEACH);
         this.tag(FossilsLegacyBiomeTags.HAS_TOTEM_POLE).add(Biomes.OLD_GROWTH_PINE_TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA);

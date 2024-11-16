@@ -1,2 +1,5 @@
-// 1.21.1	2024-11-12T19:21:24.7859986	Tags for minecraft:worldgen/structure mod id fossilslegacy
-335eace54063f172a5e871963a86b84d7fcda1af data/fossilslegacy/tags/worldgen/structure/mayan_temple.json
+// 1.21.1	2024-11-16T13:33:15.9135578	Tags for minecraft:worldgen/structure mod id fossilslegacy
+d14bf0fcbc3d7a94bb29887943dd7f869828836e data/fossilslegacy/tags/worldgen/structure/academy.json
+2a0836d238f9f4280a55eb2b1d351c65134502eb data/fossilslegacy/tags/worldgen/structure/machu_picchu.json
+7ef555114a60d91b72b7223bc5fe07c404d6350e data/fossilslegacy/tags/worldgen/structure/mayan_temple.json
+ac556309e43b30d385971e5b1612c16c5e2a50ad data/fossilslegacy/tags/worldgen/structure/weapon_shop.json

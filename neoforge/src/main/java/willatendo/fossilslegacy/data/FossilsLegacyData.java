@@ -16,13 +16,12 @@ import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import willatendo.fossilslegacy.data.advancement.LegacyAdvancementGenerator;
-import willatendo.fossilslegacy.data.loot.FossilsLegacyBlockLootSubProvider;
-import willatendo.fossilslegacy.data.loot.FossilsLegacyChestLootSubProvider;
-import willatendo.fossilslegacy.data.loot.FossilsLegacyEntityLootSubProvider;
-import willatendo.fossilslegacy.data.loot.FossilsLegacyGiftLootSubProvider;
+import willatendo.fossilslegacy.data.loot.*;
 import willatendo.fossilslegacy.data.tag.*;
+import willatendo.fossilslegacy.server.event.ModEvents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.data.ResourcePackGenerator;
+import willatendo.simplelibrary.data.SimpleDataMapProvider;
 import willatendo.simplelibrary.data.SimpleLootTableProvider;
 
 import java.util.List;
@@ -33,6 +32,8 @@ import java.util.concurrent.CompletableFuture;
 public class FossilsLegacyData {
     @SubscribeEvent
     public static void gatherDataEvent(GatherDataEvent gatherDataEvent) {
+        ModEvents.setupDataMaps();
+
         DataGenerator dataGenerator = gatherDataEvent.getGenerator();
         PackOutput packOutput = dataGenerator.getPackOutput();
         ExistingFileHelper existingFileHelper = gatherDataEvent.getExistingFileHelper();
@@ -49,9 +50,10 @@ public class FossilsLegacyData {
 
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyRecipeProvider(packOutput, registries, FossilsLegacyUtils.ID));
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new AdvancementProvider(packOutput, registries, existingFileHelper, List.of(new LegacyAdvancementGenerator())));
-        dataGenerator.addProvider(gatherDataEvent.includeServer(), new SimpleLootTableProvider(packOutput, registries, new LootTableProvider.SubProviderEntry(FossilsLegacyBlockLootSubProvider::new, LootContextParamSets.BLOCK), new LootTableProvider.SubProviderEntry(FossilsLegacyEntityLootSubProvider::new, LootContextParamSets.ENTITY), new LootTableProvider.SubProviderEntry(FossilsLegacyChestLootSubProvider::new, LootContextParamSets.CHEST), new LootTableProvider.SubProviderEntry(FossilsLegacyGiftLootSubProvider::new, LootContextParamSets.GIFT)));
+        dataGenerator.addProvider(gatherDataEvent.includeServer(), new SimpleLootTableProvider(packOutput, registries, new LootTableProvider.SubProviderEntry(FossilsLegacyBlockLootSubProvider::new, LootContextParamSets.BLOCK), new LootTableProvider.SubProviderEntry(FossilsLegacyEntityLootSubProvider::new, LootContextParamSets.ENTITY), new LootTableProvider.SubProviderEntry(FossilsLegacyChestLootSubProvider::new, LootContextParamSets.CHEST), new LootTableProvider.SubProviderEntry(FossilsLegacyGiftLootSubProvider::new, LootContextParamSets.GIFT), new LootTableProvider.SubProviderEntry(FossilsLegacyArchaeologyLootSubProvider::new, LootContextParamSets.ARCHAEOLOGY)));
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyBuiltinProvider(packOutput, registries, FossilsLegacyUtils.ID));
-        dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyDataMapProvider(packOutput, registries));
+        //dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyDataMapProvider(packOutput, registries));
+        dataGenerator.addProvider(gatherDataEvent.includeServer(), new SimpleDataMapProvider(packOutput, registries, ModEvents.NEOFORGE_COMPOSTABLES_MODIFICATION, ModEvents.NEOFORGE_HERO_OF_THE_VILLAGE_GIFT_MODIFICATION, ModEvents.NEOFORGE_OXIDATION_MODIFICATION, ModEvents.NEOFORGE_WAXABLE_MODIFICATION));
         FossilsLegacyBlockTagProvider fossilsLegacyBlockTagProvider = new FossilsLegacyBlockTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper);
         dataGenerator.addProvider(gatherDataEvent.includeServer(), fossilsLegacyBlockTagProvider);
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyItemTagProvider(packOutput, registries, fossilsLegacyBlockTagProvider.contentsGetter(), FossilsLegacyUtils.ID, existingFileHelper));

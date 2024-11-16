@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.OptionalDispenseItemBehavior;
 import net.minecraft.world.entity.SpawnPlacementTypes;
+import net.minecraft.world.entity.ai.behavior.GiveGiftToHero;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.animal.armadillo.Armadillo;
 import net.minecraft.world.entity.animal.goat.Goat;
@@ -38,15 +39,13 @@ import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
 import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.item.FossilsLegacyLootTables;
 import willatendo.fossilslegacy.server.item.FossilsLegacyMapDecorationTypes;
 import willatendo.fossilslegacy.server.item.feederfood.FeederFood;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyBlockTags;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyStructureTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.simplelibrary.server.event.modification.CreativeModeTabModification;
-import willatendo.simplelibrary.server.event.modification.FlammablesModification;
-import willatendo.simplelibrary.server.event.modification.StrippablesModification;
-import willatendo.simplelibrary.server.event.modification.VillagerTradeModification;
+import willatendo.simplelibrary.server.event.modification.*;
 import willatendo.simplelibrary.server.event.registry.*;
 
 import java.util.List;
@@ -100,14 +99,6 @@ public class BasicEvents {
             }
         });
 
-        AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
-        StrippablesModification.register(FossilsLegacyBlocks.CALAMITES_LOG.get(), FossilsLegacyBlocks.STRIPPED_CALAMITES_LOG.get());
-        StrippablesModification.register(FossilsLegacyBlocks.CALAMITES_WOOD.get(), FossilsLegacyBlocks.STRIPPED_CALAMITES_WOOD.get());
-        StrippablesModification.register(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get(), FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_LOG.get());
-        StrippablesModification.register(FossilsLegacyBlocks.LEPIDODENDRON_WOOD.get(), FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_WOOD.get());
-        StrippablesModification.register(FossilsLegacyBlocks.SIGILLARIA_LOG.get(), FossilsLegacyBlocks.STRIPPED_SIGILLARIA_LOG.get());
-        StrippablesModification.register(FossilsLegacyBlocks.SIGILLARIA_WOOD.get(), FossilsLegacyBlocks.STRIPPED_SIGILLARIA_WOOD.get());
-
         FlammablesModification.register(FossilsLegacyBlocks.CALAMITES_PLANKS.get(), 5, 20);
         FlammablesModification.register(FossilsLegacyBlocks.CALAMITES_SLAB.get(), 5, 20);
         FlammablesModification.register(FossilsLegacyBlocks.CALAMITES_FENCE_GATE.get(), 5, 20);
@@ -140,15 +131,25 @@ public class BasicEvents {
         FlammablesModification.register(FossilsLegacyBlocks.SIGILLARIA_LEAVES.get(), 30, 60);
     }
 
-    public static void compostablesSetup() {
-        ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.JURASSIC_FERN.get(), 0.65F);
-        ComposterBlock.COMPOSTABLES.put(FossilsLegacyItems.JURASSIC_FERN_SPORES.get(), 0.65F);
-        ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get(), 0.3F);
-        ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get(), 0.3F);
-        ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.SIGILLARIA_LEAVES.get(), 0.3F);
-        ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.SIGILLARIA_SAPLING.get(), 0.3F);
-        ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.CALAMITES_LEAVES.get(), 0.3F);
-        ComposterBlock.COMPOSTABLES.put(FossilsLegacyBlocks.CALAMITES_SAPLING.get(), 0.3F);
+    public static void compostablesSetup(CompostablesModification compostablesModification) {
+        compostablesModification.add(FossilsLegacyBlocks.JURASSIC_FERN.get(), 0.65F);
+        compostablesModification.add(FossilsLegacyItems.JURASSIC_FERN_SPORES.get(), 0.65F);
+        compostablesModification.add(FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get(), 0.3F);
+        compostablesModification.add(FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get(), 0.3F);
+        compostablesModification.add(FossilsLegacyBlocks.SIGILLARIA_LEAVES.get(), 0.3F);
+        compostablesModification.add(FossilsLegacyBlocks.SIGILLARIA_SAPLING.get(), 0.3F);
+        compostablesModification.add(FossilsLegacyBlocks.CALAMITES_LEAVES.get(), 0.3F);
+        compostablesModification.add(FossilsLegacyBlocks.CALAMITES_SAPLING.get(), 0.3F);
+    }
+
+    public static void strippablesSetup(StrippablesModification strippablesModification) {
+        AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
+        strippablesModification.register(FossilsLegacyBlocks.CALAMITES_LOG.get(), FossilsLegacyBlocks.STRIPPED_CALAMITES_LOG.get());
+        strippablesModification.register(FossilsLegacyBlocks.CALAMITES_WOOD.get(), FossilsLegacyBlocks.STRIPPED_CALAMITES_WOOD.get());
+        strippablesModification.register(FossilsLegacyBlocks.LEPIDODENDRON_LOG.get(), FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_LOG.get());
+        strippablesModification.register(FossilsLegacyBlocks.LEPIDODENDRON_WOOD.get(), FossilsLegacyBlocks.STRIPPED_LEPIDODENDRON_WOOD.get());
+        strippablesModification.register(FossilsLegacyBlocks.SIGILLARIA_LOG.get(), FossilsLegacyBlocks.STRIPPED_SIGILLARIA_LOG.get());
+        strippablesModification.register(FossilsLegacyBlocks.SIGILLARIA_WOOD.get(), FossilsLegacyBlocks.STRIPPED_SIGILLARIA_WOOD.get());
     }
 
     public static void buildCreativeModeTabEvent(CreativeModeTabModification creativeModeTabModification) {
@@ -161,8 +162,34 @@ public class BasicEvents {
     }
 
     public static void villagerTradesEvent(VillagerTradeModification villagerTradeModification) {
-        villagerTradeModification.add(FossilsLegacyVillagerProfessions.ARCHAEOLOGIST.get(), List.of(new VillagerTrades.EmeraldForItems(FossilsLegacyItems.RELIC_SCRAP.get(), 5, 16, 2), new VillagerTrades.EmeraldForItems(FossilsLegacyItems.JADE.get(), 6, 8, 2, 10)), List.of(new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_SWORD.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_AXE_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_AXE.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_PICKAXE_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_PICKAXE.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_HOE_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_HOE.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_SHOVEL_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_SHOVEL.get(), 1, 8, 6, 15), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.STONE_TABLET.get(), 10, 2, 6), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.WOODEN_JAVELIN.get(), 5, 1, 6), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.STONE_JAVELIN.get(), 10, 1, 6), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.IRON_JAVELIN.get(), 15, 1, 6)), List.of(new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_HELMET.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_CHESTPLATE.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_LEGGINGS.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_BOOTS_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_BOOTS.get(), 1, 8, 6, 15), new VillagerTrades.EmeraldForItems(FossilsLegacyItems.JADE_VILLAGER.get(), 1, 4, 6, 25), new VillagerTrades.EmeraldForItems(FossilsLegacyItems.JADE_OCELOT.get(), 1, 4, 6, 25)), List.of(new VillagerTrades.EmeraldForItems(FossilsLegacyItems.SCARAB_GEM_JAVELIN.get(), 1, 2, 12, 30), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.GOLDEN_JAVELIN.get(), 20, 1, 12), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.DIAMOND_JAVELIN.get(), 30, 1, 12)), List.of(new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), 30, 1, 12), new VillagerTrades.EmeraldForItems(FossilsLegacyItems.CODEX.get(), 1, 2, 6, 30), new VillagerTrades.EmeraldForItems(FossilsLegacyItems.QUIPU.get(), 1, 2, 6, 30), new VillagerTrades.TreasureMapForEmeralds(20, FossilsLegacyStructureTags.MAYAN_TEMPLE, "filled_map.mayan_temple", FossilsLegacyMapDecorationTypes.MAYAN_TEMPLE, 12, 10)));
+        villagerTradeModification.add(FossilsLegacyVillagerProfessions.ARCHAEOLOGIST.get(),
+                List.of(new VillagerTrades.EmeraldForItems(FossilsLegacyItems.RELIC_SCRAP.get(), 5, 16, 2), new VillagerTrades.EmeraldForItems(FossilsLegacyItems.JADE.get(), 6, 8, 2, 10)),
+                List.of(new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_SWORD.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_AXE_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_AXE.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_PICKAXE_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_PICKAXE.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_HOE_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_HOE.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_SHOVEL_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_SHOVEL.get(), 1, 8, 6, 15), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.STONE_TABLET.get(), 10, 2, 6), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.WOODEN_JAVELIN.get(), 5, 1, 6), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.STONE_JAVELIN.get(), 10, 1, 6), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.IRON_JAVELIN.get(), 15, 1, 6)),
+                List.of(new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_HELMET.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_CHESTPLATE.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_LEGGINGS.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FossilsLegacyItems.ANCIENT_BOOTS_ARTIFACT.get(), 1, 30, FossilsLegacyItems.ANCIENT_BOOTS.get(), 1, 8, 6, 15), new VillagerTrades.EmeraldForItems(FossilsLegacyItems.JADE_VILLAGER.get(), 1, 4, 6, 25), new VillagerTrades.EmeraldForItems(FossilsLegacyItems.JADE_OCELOT.get(), 1, 4, 6, 25)),
+                List.of(new VillagerTrades.EmeraldForItems(FossilsLegacyItems.SCARAB_GEM_JAVELIN.get(), 1, 2, 12, 30), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.GOLDEN_JAVELIN.get(), 20, 1, 12), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.DIAMOND_JAVELIN.get(), 30, 1, 12)), List.of(new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), 30, 1, 12), new VillagerTrades.EmeraldForItems(FossilsLegacyItems.CODEX.get(), 1, 2, 6, 30), new VillagerTrades.EmeraldForItems(FossilsLegacyItems.QUIPU.get(), 1, 2, 6, 30),
+                        new VillagerTrades.TreasureMapForEmeralds(20, FossilsLegacyStructureTags.ACADEMY, "filled_map.academy", FossilsLegacyMapDecorationTypes.ACADEMY, 12, 10),
+                        new VillagerTrades.TreasureMapForEmeralds(20, FossilsLegacyStructureTags.MACHU_PICCHU, "filled_map.machu_picchu", FossilsLegacyMapDecorationTypes.MACHU_PICCHU, 12, 10),
+                        new VillagerTrades.TreasureMapForEmeralds(20, FossilsLegacyStructureTags.MAYAN_TEMPLE, "filled_map.mayan_temple", FossilsLegacyMapDecorationTypes.MAYAN_TEMPLE, 12, 10),
+                        new VillagerTrades.TreasureMapForEmeralds(20, FossilsLegacyStructureTags.WEAPON_SHOP, "filled_map.weapon_shop", FossilsLegacyMapDecorationTypes.WEAPON_SHOP, 12, 10)));
         villagerTradeModification.add(FossilsLegacyVillagerProfessions.PALAEONTOLOGIST.get(), List.of(new VillagerTrades.EmeraldForItems(FossilsLegacyItems.FOSSIL.get(), 5, 16, 2), new VillagerTrades.EmeraldForItems(FossilsLegacyItems.FROZEN_MEAT.get(), 5, 16, 2)), List.of(new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.DINOPEDIA.get(), 10, 1, 4, 4), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.THERIZINOSAURUS_CLAWS.get(), 25, 1, 16, 2), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.TYRANNOSAURUS_TOOTH.get(), 30, 1, 16, 2), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.NAUTILUS_SHELL.get(), 10, 1, 16, 2)), List.of(new VillagerTrades.ItemsAndEmeraldsToItems(new ItemStack(FossilsLegacyBlocks.FOSSIL_ORE.get()).getItem(), 1, 10, new ItemStack(FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get()).getItem(), 1, 8, 3, 15), new VillagerTrades.EmeraldForItems(new ItemStack(FossilsLegacyBlocks.SKULL_BLOCK.get()).getItem(), 10, 16, 3), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get(), 20, 1, 1, 2)), List.of(new VillagerTrades.EmeraldForItems(FossilsLegacyItems.JURASSIC_FERN_SPORES.get(), 3, 8, 6), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.PETRIFIED_CALAMITES_SAPLING.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.PETRIFIED_SIGILLARIA_SAPLING.get(), 20, 1, 4, 12)), List.of(new VillagerTrades.ItemsForEmeralds(FossilsLegacyItems.LEGACY_GENETIC_CODE.get(), 30, 1, 12)));
+    }
+
+    public static void heroOfTheVillageGiftSetup(HeroOfTheVillageGiftModification heroOfTheVillageGiftModification) {
+        heroOfTheVillageGiftModification.add(FossilsLegacyVillagerProfessions.ARCHAEOLOGIST, FossilsLegacyLootTables.ARCHAEOLOGIST_GIFT);
+        heroOfTheVillageGiftModification.add(FossilsLegacyVillagerProfessions.PALAEONTOLOGIST, FossilsLegacyLootTables.PALAEONTOLOGIST_GIFT);
+    }
+
+    public static void oxidationSetup(OxidationModification oxidationModification) {
+        oxidationModification.add(FossilsLegacyBlocks.COPPER_LLAMA_STATUE.get(), FossilsLegacyBlocks.EXPOSED_COPPER_LLAMA_STATUE.get());
+        oxidationModification.add(FossilsLegacyBlocks.EXPOSED_COPPER_LLAMA_STATUE.get(), FossilsLegacyBlocks.WEATHERED_COPPER_LLAMA_STATUE.get());
+        oxidationModification.add(FossilsLegacyBlocks.WEATHERED_COPPER_LLAMA_STATUE.get(), FossilsLegacyBlocks.OXIDIZED_COPPER_LLAMA_STATUE.get());
+    }
+
+    public static void waxableSetup(WaxableModification waxableModification) {
+        waxableModification.add(FossilsLegacyBlocks.COPPER_LLAMA_STATUE.get(), FossilsLegacyBlocks.WAXED_COPPER_LLAMA_STATUE.get());
+        waxableModification.add(FossilsLegacyBlocks.EXPOSED_COPPER_LLAMA_STATUE.get(), FossilsLegacyBlocks.WAXED_EXPOSED_COPPER_LLAMA_STATUE.get());
+        waxableModification.add(FossilsLegacyBlocks.WEATHERED_COPPER_LLAMA_STATUE.get(), FossilsLegacyBlocks.WAXED_WEATHERED_COPPER_LLAMA_STATUE.get());
+        waxableModification.add(FossilsLegacyBlocks.OXIDIZED_COPPER_LLAMA_STATUE.get(), FossilsLegacyBlocks.WAXED_OXIDIZED_COPPER_LLAMA_STATUE.get());
     }
 
     public static void resourcePackEvent(ResourcePackRegister resourcePackRegister) {

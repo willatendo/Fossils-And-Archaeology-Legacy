@@ -5,7 +5,7 @@ plugins {
 
 dependencies {
     implementation "simplelibrary:simplelibrary-neoforge:${simple_library_version}"
-    jarJar(group: 'simplelibrary', name: 'simplelibrary-neoforge', version: "[${simple_library_version},4.0.0)")
+    jarJar(group: 'simplelibrary', name: 'simplelibrary-neoforge', version: "[${simple_library_version},5.0.0)")
 
     implementation "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 }
