@@ -224,9 +224,6 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.addCoatType(FossilsLegacyCoatTypes.LEGACY_SANDY_VELOCIRAPTOR, "Sandy Velociraptor (2011)");
         this.addCoatType(FossilsLegacyCoatTypes.LEGACY_WHITE_VELOCIRAPTOR, "White Velociraptor (2011)");
 
-        this.add("coat_type.toast.title", "New Genetic Material Unlocked");
-        this.add("coat_type.toast.description", "...");
-
         // Coat Types
         this.add("fossilVariant.fossilslegacy.ankylosaurus", "Ankylosaurus (2024)");
         this.add("fossilVariant.fossilslegacy.brachiosaurus", "Brachiosaurus (2024)");
