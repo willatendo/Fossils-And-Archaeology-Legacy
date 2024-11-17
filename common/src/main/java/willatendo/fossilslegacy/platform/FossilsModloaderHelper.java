@@ -6,7 +6,6 @@ import net.minecraft.core.Holder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.syncher.EntityDataSerializer;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
@@ -20,7 +19,6 @@ import willatendo.fossilslegacy.server.utils.Platform;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
-import java.util.List;
 import java.util.function.Supplier;
 
 public interface FossilsModloaderHelper {
@@ -28,8 +26,6 @@ public interface FossilsModloaderHelper {
 
     // Platform
     Platform getPlatform();
-
-    void sendAlertUnlockedCoatTypesPacket(ServerPlayer serverPlayer, List<String> coatTypes);
 
     void sendApplyGenePacket(BlockPos blockPos, String coatType);
 

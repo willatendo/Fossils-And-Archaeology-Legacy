@@ -11,7 +11,10 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
-import willatendo.fossilslegacy.network.*;
+import willatendo.fossilslegacy.network.NeoforgePacketHelper;
+import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
+import willatendo.fossilslegacy.network.ServerboundSinkPacket;
+import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.event.modification.*;
 import willatendo.simplelibrary.server.event.registry.*;
@@ -40,8 +43,6 @@ public class ModEvents {
     @SubscribeEvent
     public static void registerPayloadHandlersEvent(RegisterPayloadHandlersEvent event) {
         PayloadRegistrar payloadRegistrar = event.registrar(FossilsLegacyUtils.ID).versioned("1.0.0").optional();
-
-        payloadRegistrar.playToClient(ClientboundAlertUnlockedCoatTypesPacket.TYPE, ClientboundAlertUnlockedCoatTypesPacket.STREAM_CODEC, NeoforgePacketHelper::handleAlertUnlockedCoatTypes);
 
         payloadRegistrar.playToServer(ServerboundApplyGenePacket.TYPE, ServerboundApplyGenePacket.STREAM_CODEC, NeoforgePacketHelper::handleApplyGenePacket);
         payloadRegistrar.playToServer(ServerboundSinkPacket.TYPE, ServerboundSinkPacket.STREAM_CODEC, NeoforgePacketHelper::handleSinkPacket);

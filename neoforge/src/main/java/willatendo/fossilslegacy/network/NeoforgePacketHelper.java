@@ -4,12 +4,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 public class NeoforgePacketHelper {
-    public static void handleAlertUnlockedCoatTypes(ClientboundAlertUnlockedCoatTypesPacket clientboundAlertUnlockedCoatTypesPacket, IPayloadContext iPayloadContext) {
-        iPayloadContext.enqueueWork(() -> {
-            BasicPackets.clientboundAlertUnlockedCoatTypes(clientboundAlertUnlockedCoatTypesPacket.coatTypes(), iPayloadContext.player(), iPayloadContext.player().level());
-        });
-    }
-
     public static void handleApplyGenePacket(ServerboundApplyGenePacket serverboundApplyGenePacket, IPayloadContext iPayloadContext) {
         iPayloadContext.enqueueWork(() -> {
             BasicPackets.serverboundApplyGenePacket(serverboundApplyGenePacket.blockPos(), serverboundApplyGenePacket.coatType(), iPayloadContext.player().level());

@@ -34,10 +34,10 @@ public final class FossilsLegacyClient {
     }
 
     public static void keyMappingEvent(KeyMappingRegistry keyMappingRegister) {
-        keyMappingRegister.register(FossilsLegacyKeys.SINK);
+        keyMappingRegister.register(FossilsLegacyKeys.APPLY_GENE);
         keyMappingRegister.register(FossilsLegacyKeys.NAVIGATE_LEFT);
         keyMappingRegister.register(FossilsLegacyKeys.NAVIGATE_RIGHT);
-        keyMappingRegister.register(FossilsLegacyKeys.APPLY_GENE);
+        keyMappingRegister.register(FossilsLegacyKeys.SINK);
     }
 
     public static void modelEvent(ModelRegistry modelRegister) {

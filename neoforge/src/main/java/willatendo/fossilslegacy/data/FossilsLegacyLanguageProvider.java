@@ -224,7 +224,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.addCoatType(FossilsLegacyCoatTypes.LEGACY_SANDY_VELOCIRAPTOR, "Sandy Velociraptor (2011)");
         this.addCoatType(FossilsLegacyCoatTypes.LEGACY_WHITE_VELOCIRAPTOR, "White Velociraptor (2011)");
 
-        // Coat Types
+        // Fossils Variant
         this.add("fossilVariant.fossilslegacy.ankylosaurus", "Ankylosaurus (2024)");
         this.add("fossilVariant.fossilslegacy.brachiosaurus", "Brachiosaurus (2024)");
         this.add("fossilVariant.fossilslegacy.green_carnotaurus", "Green Carnotaurus (2011)");
@@ -740,9 +740,10 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("jei.fossilslegacy.gene_modification.use_genetic_code", "Unlocks %s Coat Types");
 
         // Keys
-        this.add("key.fossilslegacy.sink", "Sink");
+        this.add("key.fossilslegacy.apply_gene", "Apply Gene");
         this.add("key.fossilslegacy.navigate_left", "Navigate Left");
         this.add("key.fossilslegacy.navigate_right", "Navigate Right");
+        this.add("key.fossilslegacy.sink", "Sink");
 
         // Patterns
         this.add("pattern.fossilslegacy.american_bison", "American Bison");

@@ -111,7 +111,7 @@ public class Stegosaurus extends Dinosaur implements DinopediaInformation {
         ArrayList<Component> information = Lists.newArrayList();
         if (this.isTame() && this.isOwnedBy(player)) {
             information.add(this.getDisplayName());
-            information.add(FossilsLegacyUtils.translation("dinopedia", "owner", this.getOwner() != null ? this.getOwner().getDisplayName().getString() : FossilsLegacyUtils.translation("encyclopedia", "wild").getString()));
+            information.add(FossilsLegacyUtils.translation("dinopedia", "owner", this.getOwner() != null ? this.getOwner().getDisplayName().getString() : FossilsLegacyUtils.translation("dinopedia", "wild").getString()));
             information.add(FossilsLegacyUtils.translation("dinopedia", "age", this.getDaysAlive()));
             information.add(FossilsLegacyUtils.translation("dinopedia", "health", (int) this.getHealth(), (int) this.getMaxHealth()));
             information.add(FossilsLegacyUtils.translation("dinopedia", "hunger", this.getHunger(), this.getMaxHunger()));

@@ -6,7 +6,6 @@ import net.minecraft.core.Holder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.syncher.EntityDataSerializer;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.inventory.RecipeBookType;
@@ -15,7 +14,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.saveddata.maps.MapDecorationType;
 import willatendo.fossilslegacy.FossilsLegacyForgeMod;
-import willatendo.fossilslegacy.network.ClientboundAlertUnlockedCoatTypesPacket;
 import willatendo.fossilslegacy.network.ForgePacketHelper;
 import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
@@ -25,18 +23,12 @@ import willatendo.fossilslegacy.server.item.ForgeDinosaurSpawnEggItem;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.fossilslegacy.server.utils.Platform;
 
-import java.util.List;
 import java.util.function.Supplier;
 
 public class FossilsForgeHelper implements FossilsModloaderHelper {
     @Override
     public Platform getPlatform() {
         return Platform.FORGE;
-    }
-
-    @Override
-    public void sendAlertUnlockedCoatTypesPacket(ServerPlayer serverPlayer, List<String> coatTypes) {
-        ForgePacketHelper.sendToClient(new ClientboundAlertUnlockedCoatTypesPacket(coatTypes));
     }
 
     @Override

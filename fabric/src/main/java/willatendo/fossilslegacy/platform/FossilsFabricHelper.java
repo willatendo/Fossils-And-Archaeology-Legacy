@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.platform;
 
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.core.BlockPos;
@@ -14,7 +13,6 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
@@ -23,7 +21,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.saveddata.maps.MapDecorationType;
-import willatendo.fossilslegacy.network.ClientboundAlertUnlockedCoatTypesPacket;
 import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
 import willatendo.fossilslegacy.server.item.DinosaurSpawnEggItem;
@@ -33,21 +30,12 @@ import willatendo.simplelibrary.client.util.FabricClientUtils;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 import willatendo.simplelibrary.server.util.FabricUtils;
 
-import java.util.List;
 import java.util.function.Supplier;
 
 public class FossilsFabricHelper implements FossilsModloaderHelper {
     @Override
     public Platform getPlatform() {
         return Platform.FABRIC;
-    }
-
-    @Override
-    public void sendAlertUnlockedCoatTypesPacket(ServerPlayer serverPlayer, List<String> coatTypes) {
-        FriendlyByteBuf friendlyByteBuf = PacketByteBufs.create();
-        friendlyByteBuf.writeInt(coatTypes.size());
-        coatTypes.forEach(friendlyByteBuf::writeUtf);
-        ServerPlayNetworking.send(serverPlayer, new ClientboundAlertUnlockedCoatTypesPacket(coatTypes));
     }
 
     @Override

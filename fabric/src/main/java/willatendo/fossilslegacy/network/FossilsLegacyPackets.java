@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.network;
 
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 
@@ -13,16 +12,6 @@ public class FossilsLegacyPackets {
         ServerPlayNetworking.registerGlobalReceiver(ServerboundApplyGenePacket.TYPE, FossilsLegacyPackets::serverboundApplyGenePacket);
         ServerPlayNetworking.registerGlobalReceiver(ServerboundSinkPacket.TYPE, FossilsLegacyPackets::serverboundSinkPacket);
         ServerPlayNetworking.registerGlobalReceiver(ServerboundTimeMachineUpdatePacket.TYPE, FossilsLegacyPackets::serverboundTimeMachineUpdatePacket);
-    }
-
-    public static void registerServerToClientPackets() {
-        PayloadTypeRegistry.playS2C().register(ClientboundAlertUnlockedCoatTypesPacket.TYPE, ClientboundAlertUnlockedCoatTypesPacket.STREAM_CODEC);
-
-        ClientPlayNetworking.registerGlobalReceiver(ClientboundAlertUnlockedCoatTypesPacket.TYPE, FossilsLegacyPackets::clientboundAlertUnlockedCoatTypes);
-    }
-
-    public static void clientboundAlertUnlockedCoatTypes(ClientboundAlertUnlockedCoatTypesPacket clientboundAlertUnlockedCoatTypesPacket, ClientPlayNetworking.Context context) {
-        BasicPackets.clientboundAlertUnlockedCoatTypes(clientboundAlertUnlockedCoatTypesPacket.coatTypes(), context.player(), context.player().level());
     }
 
     public static void serverboundApplyGenePacket(ServerboundApplyGenePacket serverboundApplyGenePacket, ServerPlayNetworking.Context context) {
