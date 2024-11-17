@@ -5,6 +5,7 @@
     "tail": "fossilslegacy:legacy_smilodon_tail",
     "walk": "fossilslegacy:legacy_smilodon_walk"
   },
+  "colored": true,
   "elements": [
     {
       "boxes": [
@@ -350,6 +351,7 @@
     }
   ],
   "model_id": "fossilslegacy:legacy_smilodon",
+  "override_reset": true,
   "texture_height": 32,
   "texture_width": 64
 }

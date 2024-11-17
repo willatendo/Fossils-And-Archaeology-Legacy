@@ -67,7 +67,8 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
     }
 
     public static EntityModel getModel(ResourceLocation id) {
-        return new JsonModel(id, JSON_MODELS.get(id).colored(), JsonLayerDefinitionResourceManager.INSTANCE.bakeLayer(new ModelLayerLocation(id, "main")));
+        JsonModelElement jsonModelElement = JSON_MODELS.get(id);
+        return new JsonModel<>(id, jsonModelElement.colored(), jsonModelElement.overrideReset(), JsonLayerDefinitionResourceManager.INSTANCE.bakeLayer(new ModelLayerLocation(id, "main")));
     }
 
     private JsonModelLoader() {
@@ -107,6 +108,7 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
         Optional<AnimationHolder> animationHolder = Optional.empty();
         if (jsonObject.has(varAnimations)) {
             JsonObject animationsObject = GsonHelper.getAsJsonObject(jsonObject, varAnimations);
+
             animationHolder = Optional.of(new AnimationHolder(this.parseAnimation(animationsObject, "walk"), this.parseAnimation(animationsObject, "swim"), this.parseAnimation(animationsObject, "fly"), this.parseAnimation(animationsObject, "float_down"), this.parseAnimation(animationsObject, "head"), this.parseAnimation(animationsObject, "shake"), this.parseAnimation(animationsObject, "sit"), this.parseAnimation(animationsObject, "tail"), this.parseAnimation(animationsObject, "land")));
         }
 
@@ -120,7 +122,11 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
         if (jsonObject.has("colored")) {
             colored = GsonHelper.getAsBoolean(jsonObject, "colored");
         }
-        JSON_MODELS.put(resourceLocation, new JsonModelElement(LayerDefinition.create(meshDefinition, textureWidth, textureHeight), animationHolder, loadParts, headPieces, colored));
+        boolean overrideReset = false;
+        if (jsonObject.has("override_reset")) {
+            overrideReset = GsonHelper.getAsBoolean(jsonObject, "override_reset");
+        }
+        JSON_MODELS.put(resourceLocation, new JsonModelElement(LayerDefinition.create(meshDefinition, textureWidth, textureHeight), animationHolder, loadParts, headPieces, colored, overrideReset));
     }
 
     private void loadElement(JsonObject elementObject, PartDefinition root, List<String> loadParts) {
@@ -208,7 +214,7 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
         return ResourceLocation.parse(GsonHelper.getAsString(jsonObject, memberName));
     }
 
-    private record JsonModelElement(LayerDefinition layerDefinition, Optional<AnimationHolder> animationHolder, List<String> loadParts, Optional<List<String>> headPieces, boolean colored) {
+    private record JsonModelElement(LayerDefinition layerDefinition, Optional<AnimationHolder> animationHolder, List<String> loadParts, Optional<List<String>> headPieces, boolean colored, boolean overrideReset) {
     }
 
     private record Box(int xOffset, int yOffset, float xOrigin, float yOrigin, float zOrigin, float xDimension, float yDimension, float zDimension, Optional<Boolean> mirror) {

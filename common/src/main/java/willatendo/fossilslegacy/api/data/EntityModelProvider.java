@@ -83,6 +83,12 @@ public abstract class EntityModelProvider implements DataProvider {
             JsonArray elementsArray = new JsonArray();
             this.createAllElements(elementsArray, layerDefinition.mesh.getRoot());
             jsonObject.add("elements", elementsArray);
+            if (model.colored()) {
+                jsonObject.addProperty("colored", true);
+            }
+            if (model.overrideReset()) {
+                jsonObject.addProperty("override_reset", true);
+            }
             completableFutures.add(DataProvider.saveStable(cachedOutput, jsonObject, this.packOutput.getOutputFolder(PackOutput.Target.RESOURCE_PACK).resolve(this.modId).resolve("fossilslegacy").resolve("models").resolve(id.getPath() + ".json")));
         });
         return CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new));

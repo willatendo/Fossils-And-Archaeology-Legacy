@@ -24,6 +24,7 @@ public final class TyrannosaursAnimations {
         jsonModel.setXRot("right_thigh", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount);
         jsonModel.setXRot("left_leg", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount - 0.6108652F);
         jsonModel.setXRot("left_foot", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount);
+
         if (Math.abs(jsonModel.getXRot("right_thigh")) >= 0.174532F) {
             TyrannosaursAnimations.legacyTyrannosaurusRunPose(jsonModel);
         } else {
@@ -31,14 +32,11 @@ public final class TyrannosaursAnimations {
         }
     }
 
-    static void legacyTyrannosaurusWalkModelPrep(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float partialTick) {
-    }
-
-    static void legacyTyrannosaurusRunPose(JsonModel jsonModel) {
+    private static void legacyTyrannosaurusRunPose(JsonModel jsonModel) {
         TyrannosaursAnimations.legacyTyrannosaurusRunPose(jsonModel, 20.0F);
     }
 
-    static void legacyTyrannosaurusRunPose(JsonModel jsonModel, float moves) {
+    private static void legacyTyrannosaurusRunPose(JsonModel jsonModel, float moves) {
         if (jsonModel.getY("body") > 7) {
             jsonModel.subtractY("body", 2.0F / moves);
         } else {
@@ -160,11 +158,11 @@ public final class TyrannosaursAnimations {
         }
     }
 
-    static void legacyTyrannosaurusStandPose(JsonModel jsonModel) {
+    private static void legacyTyrannosaurusStandPose(JsonModel jsonModel) {
         TyrannosaursAnimations.legacyTyrannosaurusStandPose(jsonModel, 20.0F);
     }
 
-    static void legacyTyrannosaurusStandPose(JsonModel jsonModel, float moves) {
+    private static void legacyTyrannosaurusStandPose(JsonModel jsonModel, float moves) {
         if (jsonModel.getY("body") < 9) {
             jsonModel.addY("body", 2.0F / moves);
         } else {

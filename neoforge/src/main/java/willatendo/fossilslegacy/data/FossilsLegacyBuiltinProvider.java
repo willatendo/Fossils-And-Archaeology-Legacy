@@ -25,6 +25,7 @@ import willatendo.fossilslegacy.server.dimension.FossilsLegacyLevelStems;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyDamageTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyFossilVariants;
+import willatendo.fossilslegacy.server.entity.FossilsLegacyStoneTabletVariants;
 import willatendo.fossilslegacy.server.feature.FossilsLegacyConfiguredFeatures;
 import willatendo.fossilslegacy.server.feature.FossilsLegacyPlacedFeatures;
 import willatendo.fossilslegacy.server.genetics.cosmetics.FossilsLegacyCoatTypes;
@@ -34,7 +35,6 @@ import willatendo.fossilslegacy.server.structure.FossilsLegacyStructureSets;
 import willatendo.fossilslegacy.server.structure.FossilsLegacyStructures;
 import willatendo.fossilslegacy.server.structure.pool.FossilsLegacyPools;
 import willatendo.fossilslegacy.server.structure.processor.FossilsLegacyProcessorLists;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyStoneTabletVariants;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.Collections;

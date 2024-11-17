@@ -318,6 +318,7 @@
     "head"
   ],
   "model_id": "fossilslegacy:velociraptor",
+  "override_reset": true,
   "texture_height": 64,
   "texture_width": 64
 }

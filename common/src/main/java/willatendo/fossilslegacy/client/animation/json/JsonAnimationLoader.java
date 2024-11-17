@@ -21,6 +21,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public final class JsonAnimationLoader extends SimpleJsonResourceReloadListener {
     public static final JsonAnimationLoader INSTANCE = new JsonAnimationLoader();
@@ -77,8 +78,7 @@ public final class JsonAnimationLoader extends SimpleJsonResourceReloadListener 
                 List<Keyframe> positionKeyframes = Lists.newArrayList();
                 List<Keyframe> scaleKeyframes = Lists.newArrayList();
                 List<JsonElement> keyframeElements = keyframe.asList();
-                for (int i = 0; i < keyframeElements.size(); i++) {
-                    JsonElement keyframeElement = keyframeElements.get(i);
+                for (JsonElement keyframeElement : keyframeElements) {
                     JsonObject keyframeObject = keyframeElement.getAsJsonObject();
                     float timestamp = GsonHelper.getAsFloat(keyframeObject, "timestamp");
                     String interpolation = GsonHelper.getAsString(keyframeObject, "interpolation");
@@ -128,7 +128,7 @@ public final class JsonAnimationLoader extends SimpleJsonResourceReloadListener 
     }
 
     private AnimationChannel.Interpolation parseInterpolations(String in) {
-        if (in == "catmullrom") {
+        if (Objects.equals(in, "catmullrom")) {
             return AnimationChannel.Interpolations.CATMULLROM;
         } else {
             return AnimationChannel.Interpolations.LINEAR;

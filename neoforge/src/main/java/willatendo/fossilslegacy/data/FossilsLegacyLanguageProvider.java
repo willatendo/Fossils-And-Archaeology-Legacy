@@ -17,12 +17,7 @@ import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.tags.*;
 import willatendo.simplelibrary.data.SimpleLanguageProvider;
 
-import java.util.Map;
-import java.util.TreeMap;
-
 public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
-    protected final Map<String, String> translations = new TreeMap();
-
     public FossilsLegacyLanguageProvider(PackOutput packOutput, String modId, String local) {
         super(packOutput, modId, local);
     }
@@ -1013,13 +1008,5 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 
     public void addCoatType(ResourceKey<CoatType> coatTypeResourceKey, String translation) {
         this.add(coatTypeResourceKey.location().toLanguageKey("coat_type"), translation);
-    }
-
-    @Override
-    public void add(String key, String value) {
-        super.add(key, value);
-        if (this.translations.put(key, value) != null) {
-            throw new IllegalStateException("Duplicate translation key " + key);
-        }
     }
 }

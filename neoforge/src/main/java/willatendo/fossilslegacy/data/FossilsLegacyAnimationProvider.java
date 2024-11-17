@@ -42,12 +42,14 @@ public class FossilsLegacyAnimationProvider extends AnimationProvider {
         this.addAnimation(FossilsLegacyUtils.resource("tyrannosaurus_walk"), TyrannosaursAnimations.TYRANNOSAURUS_WALK);
         this.addAnimation(FossilsLegacyUtils.resource("velociraptor_walk"), VelociraptorAnimations.VELOCIRAPTOR_WALK);
 
+        this.addBuiltIn(BuiltInAnimationTypes.PTERANODON_BODY_FLY);
+
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_BRACHIOSAURUS_WALK);
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_CARNOTAURUS_WALK);
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_CRYOLOPHOSAURUS_WALK);
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_DILOPHOSAURUS_WALK);
+        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_FUTABASAURUS_SWIM);
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_MOSASAURUS_SWIM);
-        this.addBuiltIn(BuiltInAnimationTypes.PTERANODON_BODY_FLY);
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_PTERANODON_HEAD);
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_PTERANODON_WALK);
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_PTERANODON_FLY);

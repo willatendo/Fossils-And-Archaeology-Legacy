@@ -1,5 +1,7 @@
 {
-  "animations": {},
+  "animations": {
+    "walk": "fossilslegacy:legacy_futabasaurus_swim"
+  },
   "elements": [
     {
       "boxes": [
@@ -279,6 +281,7 @@
     }
   ],
   "model_id": "fossilslegacy:legacy_futabasaurus",
+  "override_reset": true,
   "texture_height": 32,
   "texture_width": 64
 }

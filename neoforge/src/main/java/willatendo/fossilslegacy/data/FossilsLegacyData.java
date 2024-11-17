@@ -44,7 +44,6 @@ public class FossilsLegacyData {
         dataGenerator.addProvider(gatherDataEvent.includeClient(), new FossilsLegacySoundDefinitionsProvider(packOutput, FossilsLegacyUtils.ID, existingFileHelper));
         FossilsLegacyLanguageProvider fossilsLegacyLanguageProvider = new FossilsLegacyLanguageProvider(packOutput, FossilsLegacyUtils.ID, "en_us");
         dataGenerator.addProvider(gatherDataEvent.includeClient(), fossilsLegacyLanguageProvider);
-        dataGenerator.addProvider(gatherDataEvent.includeClient(), new FossilsLegacyTranslationProvider(fossilsLegacyLanguageProvider, packOutput, FossilsLegacyUtils.ID, "fr_fr", "pt_br"));
         dataGenerator.addProvider(gatherDataEvent.includeClient(), new FossilsLegacyEntityModelProvider(packOutput, FossilsLegacyUtils.ID));
         dataGenerator.addProvider(gatherDataEvent.includeClient(), new FossilsLegacyAnimationProvider(packOutput, FossilsLegacyUtils.ID));
 

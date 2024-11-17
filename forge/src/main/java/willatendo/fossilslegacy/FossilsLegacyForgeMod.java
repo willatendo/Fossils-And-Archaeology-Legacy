@@ -5,7 +5,6 @@ import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.world.level.saveddata.maps.MapDecorationType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;

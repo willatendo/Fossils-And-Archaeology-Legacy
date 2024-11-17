@@ -336,6 +336,7 @@
     }
   ],
   "model_id": "fossilslegacy:legacy_tyrannosaurus",
+  "override_reset": true,
   "texture_height": 32,
   "texture_width": 64
 }
