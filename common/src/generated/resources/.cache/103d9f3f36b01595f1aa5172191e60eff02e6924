@@ -1,4 +1,4 @@
-// 1.21.1	2024-11-16T15:06:38.3042308	Registries
+// 1.21.1	2024-11-19T07:54:56.7315661	Registries
 532001524c06f9b4a4565f8b548bb4a8de84ba73 data/fossilslegacy/damage_type/animal_starve.json
 272b73d0ec6656b7beba50d287714cb055cc1dce data/fossilslegacy/damage_type/dilophosaurus_envenomation.json
 4ae015db008fd712ad0ea6d05b72ca0170963bf0 data/fossilslegacy/damage_type/javelin.json
@@ -219,7 +219,7 @@ c138603979dddfb0c841a1abdae34a6935f8d88f data/fossilslegacy/worldgen/placed_feat
 7c6f37972a894f0dfb30b459e118280004592232 data/fossilslegacy/worldgen/placed_feature/trees_prehistoric_swamp.json
 480694625b15492d9393deac00f7656d011a7d7f data/fossilslegacy/worldgen/placed_feature/trees_prehistoric_taiga.json
 6b94b3f9619269dc4ba153477ae8e5ebf04460ab data/fossilslegacy/worldgen/placed_feature/trees_prehistoric_water.json
-4149cc6a82bb25657ec76d20e82e7308ab6698aa data/fossilslegacy/worldgen/processor_list/holes.json
+6b82ccad2f48b15fc0a2af4dd22b9d171b8369c5 data/fossilslegacy/worldgen/processor_list/holes.json
 08fefd8e556896b048adb6fd7ea3b4db48234af1 data/fossilslegacy/worldgen/processor_list/machu_picchu_house_degradation.json
 2a48df3439600a9488d2d6b5c12a0152d40e2485 data/fossilslegacy/worldgen/processor_list/machu_picchu_road.json
 c71105d7fa82457181835465f7762c46c9310c7e data/fossilslegacy/worldgen/processor_list/mayan_temple_degradation.json

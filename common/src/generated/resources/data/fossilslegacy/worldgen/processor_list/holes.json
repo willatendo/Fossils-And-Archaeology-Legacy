@@ -2,20 +2,18 @@
   "processors": [
     {
       "processor_type": "fossilslegacy:holes_processor",
-      "rules": [
-        {
-          "input_predicate": {
-            "predicate_type": "fossilslegacy:random_block_test",
-            "probability": 0.1
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:air"
-          }
+      "rule": {
+        "input_predicate": {
+          "predicate_type": "fossilslegacy:random_block_test",
+          "probability": 0.001
+        },
+        "location_predicate": {
+          "predicate_type": "minecraft:always_true"
+        },
+        "output_state": {
+          "Name": "minecraft:air"
         }
-      ]
+      }
     }
   ]
 }
