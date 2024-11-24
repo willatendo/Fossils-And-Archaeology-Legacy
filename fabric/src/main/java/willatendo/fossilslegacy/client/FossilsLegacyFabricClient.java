@@ -42,8 +42,6 @@ import java.util.concurrent.Executor;
 public class FossilsLegacyFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        FossilsLegacyPackets.registerServerToClientPackets();
-
         ResourceManagerHelper resourceManagerHelper = ResourceManagerHelper.get(PackType.CLIENT_RESOURCES);
         resourceManagerHelper.registerReloadListener(new IdentifiableResourceReloadListener() {
             @Override

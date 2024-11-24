@@ -4,7 +4,6 @@ import net.minecraft.world.entity.ai.behavior.GiveGiftToHero;
 import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -15,7 +14,10 @@ import willatendo.fossilslegacy.server.entity.FossilsLegacyVillagerProfessions;
 import willatendo.fossilslegacy.server.item.FossilsLegacyLootTables;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.event.modification.*;
-import willatendo.simplelibrary.server.event.registry.*;
+import willatendo.simplelibrary.server.event.registry.ForgeAttributeRegister;
+import willatendo.simplelibrary.server.event.registry.ForgeDynamicRegistryRegister;
+import willatendo.simplelibrary.server.event.registry.ForgeNewRegistryRegister;
+import willatendo.simplelibrary.server.event.registry.ForgeResourcePackRegister;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID)
 public class ModEvents {
@@ -56,10 +58,5 @@ public class ModEvents {
     @SubscribeEvent
     public static void entityAttributeCreationEvent(EntityAttributeCreationEvent event) {
         BasicEvents.attributeEvent(new ForgeAttributeRegister(event));
-    }
-
-    @SubscribeEvent
-    public static void spawnPlacementRegisterEvent(SpawnPlacementRegisterEvent event) {
-        BasicEvents.spawnPlacementEvent(new ForgeSpawnPlacementRegister(event));
     }
 }

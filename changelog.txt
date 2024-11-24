@@ -206,6 +206,11 @@
 - Added Waxed Oxidized Copper Llama Statue
 - Added Machu Piccu
 - Added Lab
+- Added "Dig Site" House to Plains Village
+- Added "Dig Site" House to Desert Village
+- Added "Dig Site" House to Savanna Village
+- Added "Dig Site" House to Snowy Village
+- Added "Dig Site" House to Taiga Village
 - Removed Client Config As It Is No Longer Necessary
 12/9/2024
 - (Fabric) Fixed Crash

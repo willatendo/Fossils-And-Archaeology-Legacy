@@ -7,6 +7,7 @@ import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
+import net.minecraftforge.event.server.ServerAboutToStartEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -16,6 +17,7 @@ import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.entity.TamedZombifiedPiglin;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.simplelibrary.server.event.modification.ForgeStructurePoolModification;
 import willatendo.simplelibrary.server.event.modification.ForgeVillagerTradeModification;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE, modid = FossilsLegacyUtils.ID)
@@ -45,5 +47,10 @@ public class ForgeServerEvents {
     @SubscribeEvent
     public static void villagerTradesEvent(VillagerTradesEvent event) {
         BasicEvents.villagerTradesEvent(new ForgeVillagerTradeModification(event));
+    }
+
+    @SubscribeEvent
+    public static void serverAboutToStartEvent(ServerAboutToStartEvent event) {
+        BasicEvents.structurePoolModification(new ForgeStructurePoolModification(event));
     }
 }

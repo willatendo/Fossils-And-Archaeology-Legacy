@@ -16,6 +16,8 @@ public class FossilsLegacyLootTables {
     public static final ResourceKey<LootTable> WEAPON_SHOP_DECOY = FossilsLegacyLootTables.create("chests/weapon_shop_decoy");
     public static final ResourceKey<LootTable> WEAPON_SHOP_LOOT = FossilsLegacyLootTables.create("chests/weapon_shop_loot");
 
+    public static final ResourceKey<LootTable> VILLAGE_ARCHAEOLOGIST_HUT = FossilsLegacyLootTables.create("chests/village/village_archaeologist_hut");
+
     public static final ResourceKey<LootTable> INCA_LOOT = FossilsLegacyLootTables.create("archaeology/inca_loot");
 
     public static final ResourceKey<LootTable> BRACHIOSAURUS_EGG = FossilsLegacyLootTables.create("entities/egg/brachiosaurus");

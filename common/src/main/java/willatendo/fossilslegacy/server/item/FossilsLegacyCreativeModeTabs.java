@@ -35,13 +35,13 @@ public class FossilsLegacyCreativeModeTabs {
     public static final SimpleHolder<CreativeModeTab> FOSSILS_LEGACY = CREATIVE_MODE_TABS.register("fossils_legacy", () -> SimpleUtils.create(FossilsLegacyUtils.ID, FossilsLegacyUtils.ID, () -> FossilsLegacyItems.FOSSIL.get(), (itemDisplayParameters, output) -> {
         output.accept(FossilsLegacyItems.FOSSIL.get());
         output.accept(FossilsLegacyItems.FROZEN_MEAT.get());
+        output.accept(FossilsLegacyItems.DIMETRODON_DNA.get());
         output.accept(FossilsLegacyItems.ANKYLOSAURUS_DNA.get());
         output.accept(FossilsLegacyItems.BRACHIOSAURUS_DNA.get());
         output.accept(FossilsLegacyItems.CARNOTAURUS_DNA.get());
         output.accept(FossilsLegacyItems.COMPSOGNATHUS_DNA.get());
         output.accept(FossilsLegacyItems.CRYOLOPHOSAURUS_DNA.get());
         output.accept(FossilsLegacyItems.DILOPHOSAURUS_DNA.get());
-        output.accept(FossilsLegacyItems.DIMETRODON_DNA.get());
         output.accept(FossilsLegacyItems.FUTABASAURUS_DNA.get());
         output.accept(FossilsLegacyItems.GALLIMIMUS_DNA.get());
         output.accept(FossilsLegacyItems.MOSASAURUS_DNA.get());
