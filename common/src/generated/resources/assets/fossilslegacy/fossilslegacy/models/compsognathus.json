@@ -1,4 +1,5 @@
 {
+  "type": "json",
   "animations": {
     "walk": "fossilslegacy:compsognathus_walk"
   },

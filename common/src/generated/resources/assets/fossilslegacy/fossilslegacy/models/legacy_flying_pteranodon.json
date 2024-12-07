@@ -1,4 +1,5 @@
 {
+  "type": "json",
   "animations": {
     "fly": "fossilslegacy:legacy_pteranodon_fly"
   },

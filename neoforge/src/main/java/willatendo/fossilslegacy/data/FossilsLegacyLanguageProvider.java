@@ -745,6 +745,8 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("key.fossilslegacy.navigate_right", "Navigate Right");
         this.add("key.fossilslegacy.sink", "Sink");
 
+        this.add("key.categories.fossilslegacy.dinosaur_ridding", "Dinosaur Ridding");
+
         // Patterns
         this.add("pattern.fossilslegacy.american_bison", "American Bison");
         this.add("pattern.fossilslegacy.blue_iguana", "Blue Iguana");

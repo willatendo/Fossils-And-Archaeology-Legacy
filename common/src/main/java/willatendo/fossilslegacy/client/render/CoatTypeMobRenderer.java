@@ -27,16 +27,18 @@ public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends Mo
         }
     }
 
-    private EntityModel<T> getModel(ResourceLocation id) {
+    private EntityModel<T> getModel(T dinosaur, ResourceLocation id) {
         if (JsonModelLoader.isJsonModel(id)) {
             return JsonModelLoader.getModel(id);
+        } else if (JsonModelLoader.isBuiltInModel(id)) {
+            return JsonModelLoader.getBuiltInModel(id);
         } else {
             return null;
         }
     }
 
-    protected Optional<EntityModel<T>> additionalModel(Optional<ResourceLocation> additionalModel, CoatType.Models models) {
-        return additionalModel.isPresent() ? Optional.of(this.getModel(additionalModel.get())) : Optional.of(this.getModel(models.model()));
+    protected Optional<EntityModel<T>> additionalModel(T dinosaur, Optional<ResourceLocation> additionalModel, CoatType.Models models) {
+        return additionalModel.isPresent() ? Optional.of(this.getModel(dinosaur, additionalModel.get())) : Optional.of(this.getModel(dinosaur, models.model()));
     }
 
     @Override
@@ -54,7 +56,7 @@ public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends Mo
         if (this.getAdditionalModel(dinosaur, coatType).isPresent()) {
             this.setModel(this.getAdditionalModel(dinosaur, coatType).get());
         } else {
-            this.setModel(this.getModel(coatType.models().model()));
+            this.setModel(this.getModel(dinosaur, coatType.models().model()));
         }
         CoatType.AgeScaleInfo ageScaleInfo = coatType.ageScaleInfo();
         this.shadowRadius = ageScaleInfo.shadowSize() + (ageScaleInfo.shadowGrowth() * dinosaur.getGrowthStage());

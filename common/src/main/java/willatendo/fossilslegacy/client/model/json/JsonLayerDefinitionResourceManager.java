@@ -14,7 +14,7 @@ public class JsonLayerDefinitionResourceManager implements ResourceManagerReload
     public static final JsonLayerDefinitionResourceManager INSTANCE = new JsonLayerDefinitionResourceManager();
 
     public ModelPart bakeLayer(ModelLayerLocation modelLayerLocation) {
-        LayerDefinition layerdefinition = modelParts.get(modelLayerLocation);
+        LayerDefinition layerdefinition = this.modelParts.get(modelLayerLocation);
         if (layerdefinition == null) {
             throw new IllegalArgumentException("No model for layer " + modelLayerLocation);
         } else {
@@ -25,5 +25,6 @@ public class JsonLayerDefinitionResourceManager implements ResourceManagerReload
     @Override
     public void onResourceManagerReload(ResourceManager resourceManager) {
         this.modelParts.putAll(JsonModelLoader.getModels());
+        this.modelParts.putAll(JsonModelLoader.getBuiltInModels());
     }
 }

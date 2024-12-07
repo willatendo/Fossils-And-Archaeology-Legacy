@@ -1,4 +1,5 @@
 {
+  "type": "json",
   "animations": {
     "float_down": "fossilslegacy:dodo_float_down",
     "walk": "fossilslegacy:dodo_walk"

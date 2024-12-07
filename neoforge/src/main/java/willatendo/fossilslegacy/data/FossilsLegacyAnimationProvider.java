@@ -48,7 +48,6 @@ public class FossilsLegacyAnimationProvider extends AnimationProvider {
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_CARNOTAURUS_WALK);
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_CRYOLOPHOSAURUS_WALK);
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_DILOPHOSAURUS_WALK);
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_FUTABASAURUS_SWIM);
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_MOSASAURUS_SWIM);
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_PTERANODON_HEAD);
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_PTERANODON_WALK);
@@ -56,9 +55,6 @@ public class FossilsLegacyAnimationProvider extends AnimationProvider {
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_STEGOSAURUS_WALK);
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_THERIZINOSAURUS_WALK);
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_TRICERATOPS_WALK);
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_TYRANNOSAURUS_HEAD);
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_TYRANNOSAURUS_WALK);
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_VELOCIRAPTOR_WALK);
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_MAMMOTH_WALK);
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_SMILODON_SHAKE);
         this.addBuiltIn(BuiltInAnimationTypes.LEGACY_SMILODON_SIT);

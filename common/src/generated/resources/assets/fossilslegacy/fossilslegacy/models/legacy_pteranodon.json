@@ -1,4 +1,5 @@
 {
+  "type": "json",
   "animations": {
     "head": "fossilslegacy:legacy_pteranodon_head",
     "walk": "fossilslegacy:legacy_pteranodon_walk"

@@ -30,6 +30,7 @@
 - Updated Therizinosaurus Model
 - Carnivourus Dinosaurs Now Use Tags To Target Animals; Fixes Cannibalism And Other Attacks
 - Updated Goal Order: Dinosaurs Will Not Fight Back More Than Before
+- Moved "Sink" Key To "Dinosaur Ridding" Category
 - (Fabric) Fixed Server Crash
 - Fixed Placing Stone Tables
 - Fixed Cannibalism
@@ -212,6 +213,7 @@
 - Added "Dig Site" House to Snowy Village
 - Added "Dig Site" House to Taiga Village
 - Removed Client Config As It Is No Longer Necessary
+- Removed Academy Holes Temporarily
 12/9/2024
 - (Fabric) Fixed Crash
 19/8/2024

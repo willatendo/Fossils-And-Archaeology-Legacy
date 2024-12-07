@@ -1,4 +1,5 @@
 {
+  "type": "json",
   "animations": {
     "walk": "fossilslegacy:gallimimus_walk"
   },

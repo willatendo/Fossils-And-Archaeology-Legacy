@@ -1,4 +1,5 @@
 {
+  "type": "json",
   "animations": {
     "swim": "fossilslegacy:spinosaurus_swim",
     "walk": "fossilslegacy:spinosaurus_walk"

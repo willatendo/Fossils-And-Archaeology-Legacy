@@ -19,6 +19,12 @@ import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.util.profiling.ProfilerFiller;
 import org.apache.commons.compress.utils.Lists;
+import willatendo.fossilslegacy.client.model.LegacyFutabasaurusModel;
+import willatendo.fossilslegacy.client.model.LegacyTyrannosaurusModel;
+import willatendo.fossilslegacy.client.model.LegacyVelociraptorModel;
+import willatendo.fossilslegacy.client.model.dinosaur.FutabasaurusModels;
+import willatendo.fossilslegacy.client.model.dinosaur.TyrannosaurusModels;
+import willatendo.fossilslegacy.client.model.dinosaur.VelociraptorModels;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
@@ -28,15 +34,28 @@ import java.util.Optional;
 public class JsonModelLoader extends SimpleJsonResourceReloadListener {
     public static final JsonModelLoader INSTANCE = new JsonModelLoader();
     private static final Map<ResourceLocation, JsonModelElement> JSON_MODELS = Maps.newHashMap();
+    private static final List<ResourceLocation> BUILTIN_MODELS = Lists.newArrayList();
+
+    private static final ResourceLocation LEGACY_FUTABASAURUS = FossilsLegacyUtils.resource("legacy_futabasaurus");
+    private static final ResourceLocation LEGACY_TYRANNOSAURUS = FossilsLegacyUtils.resource("legacy_tyrannosaurus");
+    private static final ResourceLocation LEGACY_VELOCIRAPTOR = FossilsLegacyUtils.resource("legacy_velociraptor");
 
     public static boolean isJsonModel(ResourceLocation id) {
         return JSON_MODELS.containsKey(id);
+    }
+
+    public static boolean isBuiltInModel(ResourceLocation id) {
+        return BUILTIN_MODELS.contains(id);
     }
 
     protected static Map<ModelLayerLocation, LayerDefinition> getModels() {
         Map<ModelLayerLocation, LayerDefinition> models = Maps.newHashMap();
         JSON_MODELS.forEach((resourceLocation, jsonModelElement) -> models.put(new ModelLayerLocation(resourceLocation, "main"), jsonModelElement.layerDefinition()));
         return models;
+    }
+
+    protected static Map<ModelLayerLocation, LayerDefinition> getBuiltInModels() {
+        return Map.of(new ModelLayerLocation(JsonModelLoader.LEGACY_FUTABASAURUS, "main"), FutabasaurusModels.createLegacyFutabasaurusBodyLayer(), new ModelLayerLocation(JsonModelLoader.LEGACY_TYRANNOSAURUS, "main"), TyrannosaurusModels.createLegacyTyrannosaurusBodyLayer(), new ModelLayerLocation(JsonModelLoader.LEGACY_VELOCIRAPTOR, "main"), VelociraptorModels.createLegacyVelociraptorBodyLayer());
     }
 
     protected static Optional<AnimationHolder> getAnimations(ResourceLocation id) {
@@ -71,6 +90,18 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
         return new JsonModel<>(id, jsonModelElement.colored(), jsonModelElement.overrideReset(), JsonLayerDefinitionResourceManager.INSTANCE.bakeLayer(new ModelLayerLocation(id, "main")));
     }
 
+    public static EntityModel getBuiltInModel(ResourceLocation id) {
+        if (id.toString().equals(JsonModelLoader.LEGACY_TYRANNOSAURUS.toString())) {
+            return new LegacyTyrannosaurusModel(JsonLayerDefinitionResourceManager.INSTANCE.bakeLayer(new ModelLayerLocation(id, "main")));
+        } else if (id.toString().equals(JsonModelLoader.LEGACY_VELOCIRAPTOR.toString())) {
+            return new LegacyVelociraptorModel(JsonLayerDefinitionResourceManager.INSTANCE.bakeLayer(new ModelLayerLocation(id, "main")));
+        } else if (id.toString().equals(JsonModelLoader.LEGACY_FUTABASAURUS.toString())) {
+            return new LegacyFutabasaurusModel(JsonLayerDefinitionResourceManager.INSTANCE.bakeLayer(new ModelLayerLocation(id, "main")));
+        } else {
+            return null;
+        }
+    }
+
     private JsonModelLoader() {
         super(new Gson(), "fossilslegacy/models");
     }
@@ -89,44 +120,52 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
     }
 
     private void load(JsonObject jsonObject) {
-        MeshDefinition meshDefinition = new MeshDefinition();
-        PartDefinition root = meshDefinition.getRoot();
+        MeshDefinition meshDefinition = null;
+        if (GsonHelper.getAsString(jsonObject, "type").equals("json")) {
+            meshDefinition = new MeshDefinition();
+            PartDefinition root = meshDefinition.getRoot();
 
-        ResourceLocation resourceLocation = this.parse(jsonObject, "model_id");
-        List<String> loadParts = Lists.newArrayList();
+            ResourceLocation resourceLocation = this.parse(jsonObject, "model_id");
+            List<String> loadParts = Lists.newArrayList();
 
-        String varHeadPieces = "head_pieces";
-        Optional<List<String>> headPieces = Optional.empty();
-        if (jsonObject.has(varHeadPieces)) {
-            JsonArray headPiecesArray = jsonObject.getAsJsonArray(varHeadPieces);
-            List<String> pieces = Lists.newArrayList();
-            headPiecesArray.asList().forEach(jsonElement -> pieces.add(jsonElement.getAsString()));
-            headPieces = Optional.of(pieces);
+            String varHeadPieces = "head_pieces";
+            Optional<List<String>> headPieces = Optional.empty();
+            if (jsonObject.has(varHeadPieces)) {
+                JsonArray headPiecesArray = jsonObject.getAsJsonArray(varHeadPieces);
+                List<String> pieces = Lists.newArrayList();
+                headPiecesArray.asList().forEach(jsonElement -> pieces.add(jsonElement.getAsString()));
+                headPieces = Optional.of(pieces);
+            }
+
+            String varAnimations = "animations";
+            Optional<AnimationHolder> animationHolder = Optional.empty();
+            if (jsonObject.has(varAnimations)) {
+                JsonObject animationsObject = GsonHelper.getAsJsonObject(jsonObject, varAnimations);
+
+                animationHolder = Optional.of(new AnimationHolder(this.parseAnimation(animationsObject, "walk"), this.parseAnimation(animationsObject, "swim"), this.parseAnimation(animationsObject, "fly"), this.parseAnimation(animationsObject, "float_down"), this.parseAnimation(animationsObject, "head"), this.parseAnimation(animationsObject, "shake"), this.parseAnimation(animationsObject, "sit"), this.parseAnimation(animationsObject, "tail"), this.parseAnimation(animationsObject, "land")));
+            }
+
+            int textureHeight = GsonHelper.getAsInt(jsonObject, "texture_height");
+            int textureWidth = GsonHelper.getAsInt(jsonObject, "texture_width");
+            JsonArray elementsArray = GsonHelper.getAsJsonArray(jsonObject, "elements");
+            elementsArray.asList().forEach(jsonElement -> {
+                this.loadElement(jsonElement.getAsJsonObject(), root, loadParts);
+            });
+            boolean colored = false;
+            if (jsonObject.has("colored")) {
+                colored = GsonHelper.getAsBoolean(jsonObject, "colored");
+            }
+            boolean overrideReset = false;
+            if (jsonObject.has("override_reset")) {
+                overrideReset = GsonHelper.getAsBoolean(jsonObject, "override_reset");
+            }
+            JSON_MODELS.put(resourceLocation, new JsonModelElement(LayerDefinition.create(meshDefinition, textureWidth, textureHeight), animationHolder, loadParts, headPieces, colored, overrideReset));
+        } else if (GsonHelper.getAsString(jsonObject, "type").equals("built_in")) {
+            ResourceLocation resourceLocation = this.parse(jsonObject, "model_id");
+            BUILTIN_MODELS.add(resourceLocation);
+        } else {
+            FossilsLegacyUtils.LOGGER.error("Could not find the type of {}, skipping for safety!", jsonObject);
         }
-
-        String varAnimations = "animations";
-        Optional<AnimationHolder> animationHolder = Optional.empty();
-        if (jsonObject.has(varAnimations)) {
-            JsonObject animationsObject = GsonHelper.getAsJsonObject(jsonObject, varAnimations);
-
-            animationHolder = Optional.of(new AnimationHolder(this.parseAnimation(animationsObject, "walk"), this.parseAnimation(animationsObject, "swim"), this.parseAnimation(animationsObject, "fly"), this.parseAnimation(animationsObject, "float_down"), this.parseAnimation(animationsObject, "head"), this.parseAnimation(animationsObject, "shake"), this.parseAnimation(animationsObject, "sit"), this.parseAnimation(animationsObject, "tail"), this.parseAnimation(animationsObject, "land")));
-        }
-
-        int textureHeight = GsonHelper.getAsInt(jsonObject, "texture_height");
-        int textureWidth = GsonHelper.getAsInt(jsonObject, "texture_width");
-        JsonArray elementsArray = GsonHelper.getAsJsonArray(jsonObject, "elements");
-        elementsArray.asList().forEach(jsonElement -> {
-            this.loadElement(jsonElement.getAsJsonObject(), root, loadParts);
-        });
-        boolean colored = false;
-        if (jsonObject.has("colored")) {
-            colored = GsonHelper.getAsBoolean(jsonObject, "colored");
-        }
-        boolean overrideReset = false;
-        if (jsonObject.has("override_reset")) {
-            overrideReset = GsonHelper.getAsBoolean(jsonObject, "override_reset");
-        }
-        JSON_MODELS.put(resourceLocation, new JsonModelElement(LayerDefinition.create(meshDefinition, textureWidth, textureHeight), animationHolder, loadParts, headPieces, colored, overrideReset));
     }
 
     private void loadElement(JsonObject elementObject, PartDefinition root, List<String> loadParts) {

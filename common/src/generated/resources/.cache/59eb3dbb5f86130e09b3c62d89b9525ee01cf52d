@@ -1,4 +1,4 @@
-// 1.21.1	2024-11-16T15:18:28.7895563	Loot Tables
+// 1.21.1	2024-11-30T16:01:36.4680837	Loot Tables
 6b196aa6cdadbe968410835a209fed7ad992066f data/fossilslegacy/loot_table/archaeology/inca_loot.json
 5fcf811a958fcf132678d4423a7472c475c2b8ca data/fossilslegacy/loot_table/blocks/analyzer.json
 8bfc811efa599c9be09afe46481ec9ebbf5f3a33 data/fossilslegacy/loot_table/blocks/archaeology_workbench.json
@@ -107,8 +107,9 @@ db12c3fdf62d3af4db6ec55e7626943e4544faa4 data/fossilslegacy/loot_table/chests/ac
 8ae0de33cdeff1cb04f5846e2ab179c1d3f0e5ca data/fossilslegacy/loot_table/chests/lab_loot/dna.json
 d7989550b74a25cdfbe32dfd8d0e2a0958322fc4 data/fossilslegacy/loot_table/chests/lab_loot/failed_experiment.json
 f95c18e4416f259acf1419d9a5350dcda45fa98e data/fossilslegacy/loot_table/chests/lab_loot/fossil.json
-c1d274c8c12ae6b34f54774130d1bcbcd9b21590 data/fossilslegacy/loot_table/chests/mayan_loot.json
+88a81171c39b2bcfe42edbfccc33e71ccd7823df data/fossilslegacy/loot_table/chests/mayan_loot.json
 57b6d6e7d77690ca3e015f4fdf4fecb7352f8cce data/fossilslegacy/loot_table/chests/mayan_treasure.json
+333313efde2aa5dc2f635bc654985e327168da58 data/fossilslegacy/loot_table/chests/village/village_archaeologist_hut.json
 2a88c80c64cbf9e441234c69b98903788a57571d data/fossilslegacy/loot_table/chests/weapon_shop_decoy.json
 56fd519c48bb18a79c7304a00c16a702caae46c6 data/fossilslegacy/loot_table/chests/weapon_shop_loot.json
 8834457284fe88a4bd7bd65cbadb4f01583b743b data/fossilslegacy/loot_table/entities/ankylosaurus.json

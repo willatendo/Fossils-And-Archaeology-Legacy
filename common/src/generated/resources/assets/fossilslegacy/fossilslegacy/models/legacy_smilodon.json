@@ -1,4 +1,5 @@
 {
+  "type": "json",
   "animations": {
     "shake": "fossilslegacy:legacy_smilodon_shake",
     "sit": "fossilslegacy:legacy_smilodon_sit",

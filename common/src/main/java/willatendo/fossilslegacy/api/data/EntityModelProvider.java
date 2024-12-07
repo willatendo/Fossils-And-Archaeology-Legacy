@@ -20,7 +20,8 @@ import java.util.concurrent.CompletableFuture;
 public abstract class EntityModelProvider implements DataProvider {
     private final PackOutput packOutput;
     private final String modId;
-    protected final List<EntityModelHolder> models = Lists.newArrayList();
+    protected final List<EntityModelHolder> jsonModels = Lists.newArrayList();
+    protected final List<ResourceLocation> builtInModels = Lists.newArrayList();
 
     public EntityModelProvider(PackOutput packOutput, String modId) {
         this.packOutput = packOutput;
@@ -28,7 +29,11 @@ public abstract class EntityModelProvider implements DataProvider {
     }
 
     protected void add(EntityModelHolder entityModelHolder) {
-        this.models.add(entityModelHolder);
+        this.jsonModels.add(entityModelHolder);
+    }
+
+    protected void addBuiltIn(ResourceLocation id) {
+        this.builtInModels.add(id);
     }
 
     protected abstract void getAll();
@@ -39,13 +44,15 @@ public abstract class EntityModelProvider implements DataProvider {
 
     @Override
     public CompletableFuture<?> run(CachedOutput cachedOutput) {
-        this.models.clear();
+        this.jsonModels.clear();
+        this.builtInModels.clear();
         this.getAll();
         List<CompletableFuture<?>> completableFutures = Lists.newArrayList();
-        this.models.forEach(model -> {
+        this.jsonModels.forEach(model -> {
             ResourceLocation id = model.id();
             LayerDefinition layerDefinition = model.layerDefinition();
             JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("type", "json");
             JsonObject animationsObject = new JsonObject();
             model.animations().forEach((animationName, animations) -> {
                 if (animations.length > 1) {
@@ -90,6 +97,12 @@ public abstract class EntityModelProvider implements DataProvider {
                 jsonObject.addProperty("override_reset", true);
             }
             completableFutures.add(DataProvider.saveStable(cachedOutput, jsonObject, this.packOutput.getOutputFolder(PackOutput.Target.RESOURCE_PACK).resolve(this.modId).resolve("fossilslegacy").resolve("models").resolve(id.getPath() + ".json")));
+        });
+        this.builtInModels.forEach(resourceLocation -> {
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("type", "built_in");
+            jsonObject.addProperty("model_id", resourceLocation.toString());
+            completableFutures.add(DataProvider.saveStable(cachedOutput, jsonObject, this.packOutput.getOutputFolder(PackOutput.Target.RESOURCE_PACK).resolve(this.modId).resolve("fossilslegacy").resolve("models").resolve(resourceLocation.getPath() + ".json")));
         });
         return CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new));
     }

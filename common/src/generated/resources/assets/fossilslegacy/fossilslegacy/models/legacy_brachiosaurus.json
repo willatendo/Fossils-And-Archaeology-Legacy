@@ -1,4 +1,5 @@
 {
+  "type": "json",
   "animations": {
     "walk": "fossilslegacy:legacy_brachiosaurus_walk"
   },
