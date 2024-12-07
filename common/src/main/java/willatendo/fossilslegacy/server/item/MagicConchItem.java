@@ -16,8 +16,10 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.commands.CommandType;
 import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Futabasaurus;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyEntityTypeTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
@@ -39,20 +41,20 @@ public class MagicConchItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
         ItemStack itemStack = player.getItemInHand(interactionHand);
         if (MagicConchItem.getOrder(itemStack) != null) {
-            player.getCooldowns().addCooldown(this, 10);
-
-            for (Futabasaurus futabasaurus : level.getEntitiesOfClass(Futabasaurus.class, new AABB(player.blockPosition()).inflate(30.0D))) {
-                if (futabasaurus.isOwnedBy(player)) {
+            List<Dinosaur> dinosaurs = level.getEntitiesOfClass(Dinosaur.class, new AABB(player.blockPosition()).inflate(30.0D)).stream().filter(livingEntity -> livingEntity.getType().is(FossilsLegacyEntityTypeTags.MAGIC_CONCH_COMMANDABLE)).toList();
+            for (Dinosaur dinosaur : dinosaurs) {
+                if (dinosaur.isOwnedBy(player)) {
                     if (level.isClientSide()) {
-                        level.addParticle(ParticleTypes.NOTE, futabasaurus.getBlockX(), futabasaurus.getBlockY() + 1.2D, futabasaurus.getBlockZ(), 0.0D, 0.0D, 0.0D);
+                        level.addParticle(ParticleTypes.NOTE, dinosaur.getBlockX(), dinosaur.getBlockY() + 1.2D, dinosaur.getBlockZ(), 0.0D, 0.0D, 0.0D);
                     }
-                    futabasaurus.setCommand(MagicConchItem.getOrder(itemStack));
+                    dinosaur.setCommand(MagicConchItem.getOrder(itemStack));
                 }
             }
 
             player.startUsingItem(interactionHand);
-            player.sendSystemMessage(FossilsLegacyUtils.translation("command_type", "magic_conch.use", MagicConchItem.getOrder(itemStack).value().getDescription()));
+            player.displayClientMessage(FossilsLegacyUtils.translation("command_type", "magic_conch.use", MagicConchItem.getOrder(itemStack).value().getDescription()), true);
             player.awardStat(Stats.ITEM_USED.get(this));
+            player.getCooldowns().addCooldown(this, 10);
         }
         return InteractionResultHolder.consume(itemStack);
     }

@@ -31,6 +31,7 @@
 - Carnivourus Dinosaurs Now Use Tags To Target Animals; Fixes Cannibalism And Other Attacks
 - Updated Goal Order: Dinosaurs Will Not Fight Back More Than Before
 - Moved "Sink" Key To "Dinosaur Ridding" Category
+- Magic Conch Uses Entity Type Tag Instead Of Only Futabasaurus
 - (Fabric) Fixed Server Crash
 - Fixed Placing Stone Tables
 - Fixed Cannibalism
@@ -54,6 +55,7 @@
 - Fixed Pteranodon Not Landing When Hitting Water
 - Fixed Pteranodon Staying Still After Logging Off
 - Fixed Pteranodon Wing
+- Fixed Magic Conch Message Using Plesiosaurus
 - Added Updated Triceratops Model
 - Added "Anu Totem" Stone Tablet
 - Added Coat-Types; Data-Driven Cosmetics For Dinosaurs

@@ -364,15 +364,14 @@ public class FossilsLegacyCreativeModeTabs {
     }).build());
 
     private static void generateMagicConches(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
-        for (CommandType commandType : FossilsLegacyBuiltInRegistries.COMMAND_TYPES) {
+        for (Holder.Reference<CommandType> commandType : FossilsLegacyBuiltInRegistries.COMMAND_TYPES.holders().toList()) {
             ItemStack itemStack = new ItemStack(FossilsLegacyItems.MAGIC_CONCH.get());
-            MagicConchItem.setOrder(itemStack, Holder.direct(commandType));
+            MagicConchItem.setOrder(itemStack, commandType);
             output.accept(itemStack);
         }
     }
 
     private static void generateArticulatedFossils(CreativeModeTab.Output output, HolderLookup.Provider provider, HolderLookup.RegistryLookup<FossilVariant> registryLookup, Predicate<Holder<FossilVariant>> predicate, CreativeModeTab.TabVisibility tabVisibility) {
-        RegistryOps<Tag> registryOps = provider.createSerializationContext(NbtOps.INSTANCE);
         registryLookup.listElements().filter(predicate).sorted(FOSSIL_VARIANT_COMPARATOR).forEach(reference -> {
             ItemStack itemStack = new ItemStack(FossilsLegacyItems.ARTICULATED_FOSSIL.get());
             itemStack.set(FossilsLegacyDataComponents.FOSSIL_VARIANT.get(), reference);

@@ -546,7 +546,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.NAUTILUS_SHELL.get());
         this.add(FossilsLegacyItems.MAGIC_CONCH.get());
         this.add("item.fossilslegacy.magic_conch.desc", "%s");
-        this.add("item.fossilslegacy.magic_conch.use", "Set all Plesiosaurs in a 30-Block Area to %s");
+        this.add("item.fossilslegacy.magic_conch.use", "Set all commanded with a magic conch in a 30-Block Area to %s");
         this.add(FossilsLegacyItems.FROZEN_MEAT.get());
         this.add(FossilsLegacyItems.BROKEN_FROZEN_MEAT.get(), "Frozen Meat");
         this.add(FossilsLegacyItems.ARMADILLO_DNA.get(), "Armadillo DNA");

@@ -78,13 +78,13 @@ public class LegacyVelociraptorModel extends EntityModel<Velociraptor> {
         this.leftBicep.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
         this.leftHand.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount + 0.994461F;
 
-        if (Math.abs(this.leftThigh.xRot) >= 0.174532F) {
+        if (Math.abs(this.rightThigh.xRot) >= 0.174532F) {
             this.tailUpper();
         } else {
             this.tailLower();
         }
 
-        if (Math.abs(this.leftThigh.xRot) >= 0.174532F) {
+        if (Math.abs(this.rightThigh.xRot) >= 0.174532F) {
             this.headLower();
         } else {
             this.headUpper();
