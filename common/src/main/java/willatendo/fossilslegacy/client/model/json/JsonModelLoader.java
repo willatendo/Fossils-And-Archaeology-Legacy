@@ -19,12 +19,13 @@ import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.util.profiling.ProfilerFiller;
 import org.apache.commons.compress.utils.Lists;
-import willatendo.fossilslegacy.client.model.LegacyFutabasaurusModel;
-import willatendo.fossilslegacy.client.model.LegacyTyrannosaurusModel;
-import willatendo.fossilslegacy.client.model.LegacyVelociraptorModel;
 import willatendo.fossilslegacy.client.model.dinosaur.FutabasaurusModels;
 import willatendo.fossilslegacy.client.model.dinosaur.TyrannosaurusModels;
 import willatendo.fossilslegacy.client.model.dinosaur.VelociraptorModels;
+import willatendo.fossilslegacy.client.model.legacy.LegacyFutabasaurusModel;
+import willatendo.fossilslegacy.client.model.legacy.LegacyTyrannosaurusModel;
+import willatendo.fossilslegacy.client.model.legacy.LegacyVelociraptorModel;
+import willatendo.fossilslegacy.client.model.legacy.fossil.LegacyFossilModel;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
@@ -36,10 +37,14 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
     private static final Map<ResourceLocation, JsonModelElement> JSON_MODELS = Maps.newHashMap();
     private static final List<ResourceLocation> BUILTIN_MODELS = Lists.newArrayList();
     private static final Map<ResourceLocation, EntityModel> SAVED_MODELS = Maps.newHashMap();
+    private static final Map<ResourceLocation, EntityModel> SAVED_SKELETONS = Maps.newHashMap();
 
     private static final ResourceLocation LEGACY_FUTABASAURUS = FossilsLegacyUtils.resource("legacy_futabasaurus");
+    private static final ResourceLocation LEGACY_FUTABASAURUS_FOSSIL = FossilsLegacyUtils.resource("legacy_futabasaurus_fossil");
     private static final ResourceLocation LEGACY_TYRANNOSAURUS = FossilsLegacyUtils.resource("legacy_tyrannosaurus");
+    private static final ResourceLocation LEGACY_TYRANNOSAURUS_FOSSIL = FossilsLegacyUtils.resource("legacy_tyrannosaurus_fossil");
     private static final ResourceLocation LEGACY_VELOCIRAPTOR = FossilsLegacyUtils.resource("legacy_velociraptor");
+    private static final ResourceLocation LEGACY_VELOCIRAPTOR_FOSSIL = FossilsLegacyUtils.resource("legacy_velociraptor_fossil");
 
     public static boolean isJsonModel(ResourceLocation id) {
         return JSON_MODELS.containsKey(id);
@@ -56,7 +61,7 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
     }
 
     protected static Map<ModelLayerLocation, LayerDefinition> getBuiltInModels() {
-        return Map.of(new ModelLayerLocation(JsonModelLoader.LEGACY_FUTABASAURUS, "main"), FutabasaurusModels.createLegacyFutabasaurusBodyLayer(), new ModelLayerLocation(JsonModelLoader.LEGACY_TYRANNOSAURUS, "main"), TyrannosaurusModels.createLegacyTyrannosaurusBodyLayer(), new ModelLayerLocation(JsonModelLoader.LEGACY_VELOCIRAPTOR, "main"), VelociraptorModels.createLegacyVelociraptorBodyLayer());
+        return Map.of(new ModelLayerLocation(JsonModelLoader.LEGACY_FUTABASAURUS, "main"), FutabasaurusModels.createLegacyFutabasaurusBodyLayer(), new ModelLayerLocation(JsonModelLoader.LEGACY_FUTABASAURUS_FOSSIL, "main"), FutabasaurusModels.createLegacyFutabasaurusBodyLayer(), new ModelLayerLocation(JsonModelLoader.LEGACY_TYRANNOSAURUS, "main"), TyrannosaurusModels.createLegacyTyrannosaurusBodyLayer(), new ModelLayerLocation(JsonModelLoader.LEGACY_TYRANNOSAURUS_FOSSIL, "main"), TyrannosaurusModels.createLegacyTyrannosaurusBodyLayer(), new ModelLayerLocation(JsonModelLoader.LEGACY_VELOCIRAPTOR, "main"), VelociraptorModels.createLegacyVelociraptorBodyLayer(), new ModelLayerLocation(JsonModelLoader.LEGACY_VELOCIRAPTOR_FOSSIL, "main"), VelociraptorModels.createLegacyVelociraptorBodyLayer());
     }
 
     protected static Optional<AnimationHolder> getAnimations(ResourceLocation id) {
@@ -91,13 +96,13 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
         return new JsonModel<>(id, jsonModelElement.colored(), jsonModelElement.overrideReset(), JsonLayerDefinitionResourceManager.INSTANCE.bakeLayer(new ModelLayerLocation(id, "main")));
     }
 
-    public static EntityModel getBuiltInModel(ResourceLocation id) {
+    public static EntityModel getBuiltInModel(ResourceLocation id, boolean fossil) {
         if (!SAVED_MODELS.containsKey(id)) {
-            JsonModelLoader.registerBuiltInModel(LEGACY_FUTABASAURUS, LegacyFutabasaurusModel::new);
-            JsonModelLoader.registerBuiltInModel(LEGACY_TYRANNOSAURUS, LegacyTyrannosaurusModel::new);
-            JsonModelLoader.registerBuiltInModel(LEGACY_VELOCIRAPTOR, LegacyVelociraptorModel::new);
+            JsonModelLoader.registerBuiltInModel(LEGACY_FUTABASAURUS, LegacyFutabasaurusModel::new, LegacyFossilModel::new);
+            JsonModelLoader.registerBuiltInModel(LEGACY_TYRANNOSAURUS, LegacyTyrannosaurusModel::new, LegacyFossilModel::new);
+            JsonModelLoader.registerBuiltInModel(LEGACY_VELOCIRAPTOR, LegacyVelociraptorModel::new, LegacyFossilModel::new);
         }
-        return SAVED_MODELS.get(id);
+        return fossil ? SAVED_SKELETONS.get(id) : SAVED_MODELS.get(id);
     }
 
     private JsonModelLoader() {
@@ -117,8 +122,9 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
         }
     }
 
-    private static void registerBuiltInModel(ResourceLocation resourceLocation, EntityModelSupplier entityModelSupplier) {
+    private static void registerBuiltInModel(ResourceLocation resourceLocation, EntityModelSupplier entityModelSupplier, EntityModelSupplier fossilModelSupplier) {
         SAVED_MODELS.put(resourceLocation, entityModelSupplier.create(JsonLayerDefinitionResourceManager.INSTANCE.bakeLayer(new ModelLayerLocation(resourceLocation, "main"))));
+        SAVED_SKELETONS.put(resourceLocation, fossilModelSupplier.create(JsonLayerDefinitionResourceManager.INSTANCE.bakeLayer(new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(resourceLocation.getNamespace(), resourceLocation.getPath() + "_fossil"), "main"))));
     }
 
     private void load(JsonObject jsonObject) {

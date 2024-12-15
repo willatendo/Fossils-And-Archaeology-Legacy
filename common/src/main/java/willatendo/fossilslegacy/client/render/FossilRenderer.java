@@ -39,7 +39,7 @@ public class FossilRenderer extends EntityRenderer<Fossil> {
         if (JsonModelLoader.isJsonModel(id)) {
             return JsonModelLoader.getModel(id);
         } else if (JsonModelLoader.isBuiltInModel(id)) {
-            return JsonModelLoader.getBuiltInModel(id);
+            return JsonModelLoader.getBuiltInModel(id, true);
         } else {
             return null;
         }

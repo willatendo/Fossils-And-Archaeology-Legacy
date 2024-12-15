@@ -36,6 +36,14 @@ public final class FossilsLegacyBlockEntityWithoutLevelRenderer extends BlockEnt
                     JsonModelLoader.getModel(model).renderToBuffer(poseStack, multiBufferSource.getBuffer(RenderType.entityCutoutNoCull(fossilVariant.texture())), packedLight, packedOverlay);
                     poseStack.popPose();
                 }
+
+                if (JsonModelLoader.isBuiltInModel(model)) {
+                    poseStack.pushPose();
+                    poseStack.scale(-0.5F, -0.5F, 0.5F);
+                    poseStack.translate(-1.0F, -1.501F, 1.0F);
+                    JsonModelLoader.getBuiltInModel(model, true).renderToBuffer(poseStack, multiBufferSource.getBuffer(RenderType.entityCutoutNoCull(fossilVariant.texture())), packedLight, packedOverlay);
+                    poseStack.popPose();
+                }
             }
         }
     }

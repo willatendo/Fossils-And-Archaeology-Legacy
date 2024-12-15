@@ -31,7 +31,7 @@ public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends Mo
         if (JsonModelLoader.isJsonModel(id)) {
             return JsonModelLoader.getModel(id);
         } else if (JsonModelLoader.isBuiltInModel(id)) {
-            return JsonModelLoader.getBuiltInModel(id);
+            return JsonModelLoader.getBuiltInModel(id, false);
         } else {
             return null;
         }
