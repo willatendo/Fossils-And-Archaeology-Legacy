@@ -16,23 +16,23 @@
         },
         {
           "degree_vec": {
-            "x": -25.0,
+            "x": -35.0,
             "y": 0.0,
             "z": 0.0
           },
           "interpolation": "linear",
           "target": "rotation",
-          "timestamp": 0.25
+          "timestamp": 0.5
         },
         {
           "degree_vec": {
-            "x": 25.0,
+            "x": 35.0,
             "y": 0.0,
             "z": 0.0
           },
           "interpolation": "linear",
           "target": "rotation",
-          "timestamp": 0.75
+          "timestamp": 1.5
         },
         {
           "degree_vec": {
@@ -42,7 +42,7 @@
           },
           "interpolation": "linear",
           "target": "rotation",
-          "timestamp": 1.0
+          "timestamp": 2.0
         }
       ]
     },
@@ -61,23 +61,23 @@
         },
         {
           "degree_vec": {
-            "x": 25.0,
+            "x": 35.0,
             "y": 0.0,
             "z": 0.0
           },
           "interpolation": "linear",
           "target": "rotation",
-          "timestamp": 0.25
+          "timestamp": 0.5
         },
         {
           "degree_vec": {
-            "x": -25.0,
+            "x": -35.0,
             "y": 0.0,
             "z": 0.0
           },
           "interpolation": "linear",
           "target": "rotation",
-          "timestamp": 0.75
+          "timestamp": 1.5
         },
         {
           "degree_vec": {
@@ -87,12 +87,12 @@
           },
           "interpolation": "linear",
           "target": "rotation",
-          "timestamp": 1.0
+          "timestamp": 2.0
         }
       ]
     }
   ],
   "id": "fossilslegacy:tyrannosaurus_walk",
-  "length": 1.0,
+  "length": 2.0,
   "looping": true
 }

@@ -10,7 +10,7 @@
           "x_dimension": 3.0,
           "x_origin": -2.0,
           "y_dimension": 2.0,
-          "y_origin": 9.0,
+          "y_origin": 10.0,
           "z_dimension": 5.0,
           "z_origin": -2.0
         },
@@ -20,7 +20,7 @@
           "x_dimension": 2.0,
           "x_origin": -2.0,
           "y_dimension": 4.0,
-          "y_origin": 5.0,
+          "y_origin": 6.0,
           "z_dimension": 2.0,
           "z_origin": 1.0
         },
@@ -30,7 +30,7 @@
           "x_dimension": 4.0,
           "x_origin": -2.0,
           "y_dimension": 9.0,
-          "y_origin": -4.0,
+          "y_origin": -3.0,
           "z_dimension": 6.0,
           "z_origin": -3.0
         }

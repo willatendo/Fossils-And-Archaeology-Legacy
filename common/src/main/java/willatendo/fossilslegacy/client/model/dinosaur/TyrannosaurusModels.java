@@ -28,7 +28,8 @@ public final class TyrannosaurusModels {
         PartDefinition partDefinition = meshDefinition.getRoot();
 
         partDefinition.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(0, 34).addBox(-3.0F, 4.0F, 0.0F, 6.0F, 7.0F, 7.0F).texOffs(0, 19).addBox(-2.0F, 4.0F, 7.0F, 4.0F, 4.0F, 11.0F), PartPose.offset(0.0F, 10.0F, 8.0F));
-        partDefinition.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(56, 14).addBox(-2.0F, 9.0F, -2.0F, 3.0F, 2.0F, 5.0F).texOffs(56, 28).addBox(-2.0F, 5.0F, 1.0F, 2.0F, 4.0F, 2.0F).texOffs(46, 34).addBox(-2.0F, -4.0F, -3.0F, 4.0F, 9.0F, 6.0F), PartPose.offsetAndRotation(6.0F, 21.0F, 4.0F, -1.5708F, 0.0F, 0.0F));
+
+        partDefinition.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(56, 14).addBox(-2.0F, 10.0F, -2.0F, 3.0F, 2.0F, 5.0F).texOffs(56, 28).addBox(-2.0F, 6.0F, 1.0F, 2.0F, 4.0F, 2.0F).texOffs(46, 34).addBox(-2.0F, -3.0F, -3.0F, 4.0F, 9.0F, 6.0F), PartPose.offsetAndRotation(6.0F, 21.0F, 4.0F, -1.5708F, 0.0F, 0.0F));
         partDefinition.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(0, 48).addBox(-2.0F, -4.0F, -3.0F, 4.0F, 9.0F, 6.0F).texOffs(60, 0).addBox(0.0F, 5.0F, 1.0F, 2.0F, 4.0F, 2.0F).texOffs(56, 21).addBox(-1.0F, 9.0F, -2.0F, 3.0F, 2.0F, 5.0F), PartPose.offsetAndRotation(-6.0F, 21.0F, 3.0F, -1.5708F, 0.0F, 0.0F));
         partDefinition.addOrReplaceChild("left_arm", CubeListBuilder.create().texOffs(34, 14).addBox(-1.0F, 6.0F, -1.0F, 2.0F, 3.0F, 2.0F), PartPose.offset(3.0F, 14.0F, -6.0F));
         partDefinition.addOrReplaceChild("right_arm", CubeListBuilder.create().texOffs(42, 14).addBox(-1.0F, 6.0F, -1.0F, 2.0F, 3.0F, 2.0F), PartPose.offset(-3.0F, 14.0F, -6.0F));

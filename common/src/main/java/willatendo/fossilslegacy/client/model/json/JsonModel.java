@@ -11,6 +11,7 @@ import willatendo.fossilslegacy.api.client.BuiltInAnimationType;
 import willatendo.fossilslegacy.client.animation.json.JsonAnimationLoader;
 import willatendo.fossilslegacy.client.model.dinosaur.DinosaurModel;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
+import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Tyrannosaurus;
 import willatendo.fossilslegacy.server.entity.util.interfaces.AnimatedSittingEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.FloatDownEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.FlyingDinosaur;
@@ -198,6 +199,11 @@ public class JsonModel<T extends LivingEntity> extends DinosaurModel<T> {
 
     @Override
     public void setupAnim(LivingEntity livingEntity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+        if (livingEntity instanceof Tyrannosaurus tyrannosaurus) {
+            if (tyrannosaurus.isKnockedOut()) {
+                return;
+            }
+        }
         if (livingEntity instanceof Dinosaur dinosaur) {
             if (!this.overrideReset) {
                 this.root().getAllParts().forEach(ModelPart::resetPose);

@@ -45,7 +45,7 @@ public class FossilsLegacyEntityModelProvider extends EntityModelProvider {
         this.add(EntityModelHolder.builder(this.mod("knocked_out_tyrannosaurus"), TyrannosaurusModels.createKnockedOutTyrannosaurusBodyLayer()).withHeadPeices("neck").build());
         this.addBuiltIn(this.mod("legacy_tyrannosaurus"));
         this.add(EntityModelHolder.builder(this.mod("legacy_knocked_out_tyrannosaurus"), TyrannosaurusModels.createLegacyKnockedOutTyrannosaurusBodyLayer()).build());
-        this.add(EntityModelHolder.builder(this.mod("velociraptor"), VelociraptorModels.createVelociraptorBodyLayer()).withAnimation("walk", this.mod("velociraptor_walk")).withHeadPeices("head").overrideReset().build());
+        this.add(EntityModelHolder.builder(this.mod("velociraptor"), VelociraptorModels.createVelociraptorBodyLayer()).withAnimation("walk", this.mod("velociraptor_walk")).withHeadPeices("head").build());
         this.addBuiltIn(this.mod("legacy_velociraptor"));
         this.add(EntityModelHolder.builder(this.mod("dodo"), DodoModels.createDodoBodyLayer()).withAnimation("walk", this.mod("dodo_walk")).withAnimation("float_down", this.mod("dodo_float_down")).withHeadPeices("head").build());
         this.add(EntityModelHolder.builder(this.mod("spinosaurus"), SpinosaurusModels.createSpinosaurusBodyLayer()).withAnimation("walk", this.mod("spinosaurus_walk")).withAnimation("swim", this.mod("spinosaurus_swim")).withHeadPeices("neck").build());

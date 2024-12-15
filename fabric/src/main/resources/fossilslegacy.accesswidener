@@ -55,5 +55,8 @@ accessible field net/minecraft/client/model/geom/builders/CubeDefinition grow Ln
 accessible field net/minecraft/client/model/geom/builders/CubeDefinition mirror Z
 accessible field net/minecraft/client/model/geom/ModelPart children Ljava/util/Map;
 accessible field net/minecraft/world/entity/ai/behavior/GiveGiftToHero GIFTS Ljava/util/Map;
+accessible field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool rawTemplates Ljava/util/List;
+mutable field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool rawTemplates Ljava/util/List;
+accessible field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool templates Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
 
 accessible field net/minecraft/client/ClientRecipeBook collectionsByTab Ljava/util/Map;
