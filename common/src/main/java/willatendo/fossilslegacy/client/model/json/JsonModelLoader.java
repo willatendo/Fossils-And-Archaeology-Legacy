@@ -35,6 +35,7 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
     public static final JsonModelLoader INSTANCE = new JsonModelLoader();
     private static final Map<ResourceLocation, JsonModelElement> JSON_MODELS = Maps.newHashMap();
     private static final List<ResourceLocation> BUILTIN_MODELS = Lists.newArrayList();
+    private static final Map<ResourceLocation, EntityModel> SAVED_MODELS = Maps.newHashMap();
 
     private static final ResourceLocation LEGACY_FUTABASAURUS = FossilsLegacyUtils.resource("legacy_futabasaurus");
     private static final ResourceLocation LEGACY_TYRANNOSAURUS = FossilsLegacyUtils.resource("legacy_tyrannosaurus");
@@ -91,15 +92,12 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
     }
 
     public static EntityModel getBuiltInModel(ResourceLocation id) {
-        if (id.toString().equals(JsonModelLoader.LEGACY_TYRANNOSAURUS.toString())) {
-            return new LegacyTyrannosaurusModel(JsonLayerDefinitionResourceManager.INSTANCE.bakeLayer(new ModelLayerLocation(id, "main")));
-        } else if (id.toString().equals(JsonModelLoader.LEGACY_VELOCIRAPTOR.toString())) {
-            return new LegacyVelociraptorModel(JsonLayerDefinitionResourceManager.INSTANCE.bakeLayer(new ModelLayerLocation(id, "main")));
-        } else if (id.toString().equals(JsonModelLoader.LEGACY_FUTABASAURUS.toString())) {
-            return new LegacyFutabasaurusModel(JsonLayerDefinitionResourceManager.INSTANCE.bakeLayer(new ModelLayerLocation(id, "main")));
-        } else {
-            return null;
+        if (!SAVED_MODELS.containsKey(id)) {
+            JsonModelLoader.registerBuiltInModel(LEGACY_FUTABASAURUS, LegacyFutabasaurusModel::new);
+            JsonModelLoader.registerBuiltInModel(LEGACY_TYRANNOSAURUS, LegacyTyrannosaurusModel::new);
+            JsonModelLoader.registerBuiltInModel(LEGACY_VELOCIRAPTOR, LegacyVelociraptorModel::new);
         }
+        return SAVED_MODELS.get(id);
     }
 
     private JsonModelLoader() {
@@ -117,6 +115,10 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
                 FossilsLegacyUtils.LOGGER.error("Failed to load json models! {}", entry.getKey(), e);
             }
         }
+    }
+
+    private static void registerBuiltInModel(ResourceLocation resourceLocation, EntityModelSupplier entityModelSupplier) {
+        SAVED_MODELS.put(resourceLocation, entityModelSupplier.create(JsonLayerDefinitionResourceManager.INSTANCE.bakeLayer(new ModelLayerLocation(resourceLocation, "main"))));
     }
 
     private void load(JsonObject jsonObject) {
@@ -251,6 +253,11 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener {
 
     private ResourceLocation parse(JsonObject jsonObject, String memberName) {
         return ResourceLocation.parse(GsonHelper.getAsString(jsonObject, memberName));
+    }
+
+    @FunctionalInterface
+    private interface EntityModelSupplier {
+        EntityModel create(ModelPart root);
     }
 
     private record JsonModelElement(LayerDefinition layerDefinition, Optional<AnimationHolder> animationHolder, List<String> loadParts, Optional<List<String>> headPieces, boolean colored, boolean overrideReset) {
