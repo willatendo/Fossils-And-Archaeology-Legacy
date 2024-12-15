@@ -1,4 +1,6 @@
-15/12/2024
+15/12/2024 B
+- Fixed Skeleton Crash
+15/12/2024 A
 - Non-Legacy Futabasaurus Now Articulates Entire Neck
 - Tamed Tyrannosaurus No Longer Breaks Blocks
 - Replaced Nether Coin With Ice Age Coin
