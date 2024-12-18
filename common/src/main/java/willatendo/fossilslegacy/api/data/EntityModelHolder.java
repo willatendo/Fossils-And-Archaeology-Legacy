@@ -1,9 +1,9 @@
 package willatendo.fossilslegacy.api.data;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.resources.ResourceLocation;
-import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.api.client.BuiltInAnimationType;
 
 import java.util.List;

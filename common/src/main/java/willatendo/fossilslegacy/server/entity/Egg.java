@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.entity;
 
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Holder;
@@ -23,7 +24,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootTable;
-import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CoatTypeEntity;

@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.api.data;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -10,7 +11,6 @@ import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.api.client.BuiltInAnimationType;
 
 import java.util.List;

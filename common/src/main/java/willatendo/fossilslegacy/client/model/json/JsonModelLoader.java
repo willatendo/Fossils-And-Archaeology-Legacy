@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.client.model.json;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -18,7 +19,6 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.util.profiling.ProfilerFiller;
-import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.client.model.dinosaur.FutabasaurusModels;
 import willatendo.fossilslegacy.client.model.dinosaur.TyrannosaurusModels;
 import willatendo.fossilslegacy.client.model.dinosaur.VelociraptorModels;

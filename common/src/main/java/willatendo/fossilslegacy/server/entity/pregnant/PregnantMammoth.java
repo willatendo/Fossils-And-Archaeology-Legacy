@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.entity.pregnant;
 
+import com.google.common.collect.Lists;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -12,7 +13,6 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityDataSerializers;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
 import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Mammoth;

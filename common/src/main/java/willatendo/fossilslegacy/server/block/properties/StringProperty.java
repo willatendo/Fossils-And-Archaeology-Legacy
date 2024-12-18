@@ -1,7 +1,7 @@
 package willatendo.fossilslegacy.server.block.properties;
 
+import com.google.common.collect.Lists;
 import net.minecraft.world.level.block.state.properties.Property;
-import org.apache.commons.compress.utils.Lists;
 
 import java.util.Collection;
 import java.util.List;
