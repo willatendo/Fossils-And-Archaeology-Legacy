@@ -11,8 +11,8 @@ import willatendo.simplelibrary.server.registry.SimpleRegistry;
 public class FossilsLegacyRecipeSerialisers {
     public static final SimpleRegistry<RecipeSerializer<?>> RECIPE_SERIALIZERS = SimpleRegistry.create(Registries.RECIPE_SERIALIZER, FossilsLegacyUtils.ID);
 
-    public static final SimpleHolder<AnalyzationRecipeSerialiser> ANALYZATION = RECIPE_SERIALIZERS.register("analyzation", () -> new AnalyzationRecipeSerialiser());
-    public static final SimpleHolder<ArchaeologyRecipeSerialiser> ARCHAEOLOGY = RECIPE_SERIALIZERS.register("archaeology", () -> new ArchaeologyRecipeSerialiser());
-    public static final SimpleHolder<CultivationRecipeSerialiser> CULTIVATION = RECIPE_SERIALIZERS.register("cultivation", () -> new CultivationRecipeSerialiser());
+    public static final SimpleHolder<AnalyzationRecipeSerialiser> ANALYZATION = RECIPE_SERIALIZERS.register("analyzation", AnalyzationRecipeSerialiser::new);
+    public static final SimpleHolder<ArchaeologyRecipeSerialiser> ARCHAEOLOGY = RECIPE_SERIALIZERS.register("archaeology", ArchaeologyRecipeSerialiser::new);
+    public static final SimpleHolder<CultivationRecipeSerialiser> CULTIVATION = RECIPE_SERIALIZERS.register("cultivation", CultivationRecipeSerialiser::new);
     public static final SimpleHolder<RecipeSerializer<MagicConchRecipe>> MAGIC_CONCH = RECIPE_SERIALIZERS.register("magic_conch", () -> new SimpleCraftingRecipeSerializer<>(MagicConchRecipe::new));
 }
