@@ -68,7 +68,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyBlocks.FOSSIL_ORE.get());
         this.add(FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get());
         this.add(FossilsLegacyBlocks.SKULL_BLOCK.get());
-        this.add(FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get());
+        this.add(FossilsLegacyBlocks.SKULL_LANTERN_BLOCK.get());
         this.add(FossilsLegacyBlocks.ANALYZER.get());
         this.add(FossilsLegacyBlocks.WHITE_CULTIVATOR.get());
         this.add(FossilsLegacyBlocks.ORANGE_CULTIVATOR.get());
@@ -607,7 +607,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.articulated_fossil.carnotaurus", "Articulated Carnotaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.compsognathus", "Articulated Compsognathus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.cryolophosaurus", "Articulated Cryolophosaurus Fossil");
-        this.add("item.fossilslegacy.articulated_fossil.dilophosaurus", "Articulated Dilophosaursu Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.dilophosaurus", "Articulated Dilophosaurs Fossil");
         this.add("item.fossilslegacy.articulated_fossil.dimetrodon", "Articulated Dimetrodon Fossil");
         this.add("item.fossilslegacy.articulated_fossil.futabasaurus", "Articulated Futabasaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.legacy_futabasaurus", "Articulated Legacy Futabasaurus Fossil");

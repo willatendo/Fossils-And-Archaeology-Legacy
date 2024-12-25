@@ -1,4 +1,4 @@
-// 1.21.1	2024-11-15T17:57:11.3345423	Block States: fossilslegacy
+// 1.21.1	2024-12-25T15:50:59.6516988	Block States: fossilslegacy
 bc40e7fb93a5d1812ca1648e1df89885a48cd95d assets/fossilslegacy/blockstates/analyzer.json
 b35e4eb39636d1687092533caa84ab464fac932a assets/fossilslegacy/blockstates/archaeology_workbench.json
 074a152b0f0df7ebb7a3561ea6a004be578d0644 assets/fossilslegacy/blockstates/axolotlspawn.json
@@ -92,7 +92,7 @@ d34544421439f42e12cde2c35464df17953c25f0 assets/fossilslegacy/blockstates/sigill
 d34544421439f42e12cde2c35464df17953c25f0 assets/fossilslegacy/blockstates/sigillaria_wall_sign.json
 8397b4aa91c97e5edbc439b8d00924bcbe5c3022 assets/fossilslegacy/blockstates/sigillaria_wood.json
 bec29ea7b9ebe8be0a4ebc956a1ee9ffc7eab6ed assets/fossilslegacy/blockstates/skull_block.json
-ed31951b501aa2ee0ecf441c1d9c83207ffc29b9 assets/fossilslegacy/blockstates/skull_lanturn_block.json
+ed31951b501aa2ee0ecf441c1d9c83207ffc29b9 assets/fossilslegacy/blockstates/skull_lantern_block.json
 518f2c460ba4a61ae1d66e762a9b5265d980db7a assets/fossilslegacy/blockstates/stripped_calamites_log.json
 7467f820c9672b5e3a0da87c0d3b7ee729c555bd assets/fossilslegacy/blockstates/stripped_calamites_wood.json
 ba0bbeab098776710feefb122ab46a048edfb67a assets/fossilslegacy/blockstates/stripped_lepidodendron_log.json

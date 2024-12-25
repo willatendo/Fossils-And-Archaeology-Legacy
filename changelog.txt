@@ -1,3 +1,7 @@
+25/12/2024
+- Fixed Spelling Mistake In Articulated Dilophosaurus Fossil
+- Fixed Alphabetic Order In Creative Mode Tab (Mammoth Before Moa)
+- Fixed Spelling Mistake In Skull Lantern
 17/12/2024
 - Fixed Server Crash
 15/12/2024 C

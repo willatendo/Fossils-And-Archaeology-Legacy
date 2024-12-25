@@ -32,7 +32,7 @@ import java.util.function.Predicate;
 public class GenericSkullBlock extends Block {
     private BlockPattern anuBase;
     private BlockPattern anuFull;
-    private static final Predicate<BlockState> SKULLS_PREDICATE = blockState -> blockState != null && (blockState.is(FossilsLegacyBlocks.SKULL_BLOCK.get()) || blockState.is(FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get()));
+    private static final Predicate<BlockState> SKULLS_PREDICATE = blockState -> blockState != null && (blockState.is(FossilsLegacyBlocks.SKULL_BLOCK.get()) || blockState.is(FossilsLegacyBlocks.SKULL_LANTERN_BLOCK.get()));
 
     public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
 

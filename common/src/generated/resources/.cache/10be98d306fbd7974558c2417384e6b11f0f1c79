@@ -1,4 +1,4 @@
-// 1.21.1	2024-11-15T17:16:55.876841	Item Models: fossilslegacy
+// 1.21.1	2024-12-25T15:50:59.6447988	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 1f02e6db84914fc2677089f5e420f925ba109484 assets/fossilslegacy/models/item/ancient_axe.json
 e6aea94981911965db91c7f52bfa4555de4d4182 assets/fossilslegacy/models/item/ancient_axe_artifact.json
@@ -375,7 +375,7 @@ ccd796291cecc561613840ac3d58517721fba749 assets/fossilslegacy/models/item/sigill
 7d5130696765ca36b6df8d8ef54339667f26ca07 assets/fossilslegacy/models/item/sigillaria_wood.json
 4703b74b31b538fbc5dfbb12e4c6c39f2e6ec396 assets/fossilslegacy/models/item/sio_chiu_le.json
 05c7b1ae27ab572c9d9f1e6a7e431bca225f3841 assets/fossilslegacy/models/item/skull_block.json
-9e42f12af89f112896e75788a999108dc171c4a6 assets/fossilslegacy/models/item/skull_lanturn_block.json
+7fa1c50ab2d5704f408bb49ad22f1b2264d18a09 assets/fossilslegacy/models/item/skull_lantern_block.json
 d49730b24fb6933446cfef28d365de0cb00f9dee assets/fossilslegacy/models/item/skull_stick.json
 2fcef83cf7b4a3a60f34ba62b17b910f646e5404 assets/fossilslegacy/models/item/smilodon_dna.json
 9010d69ccd1b83e6ffe53fd2525abbe02ba971c9 assets/fossilslegacy/models/item/smilodon_embryo_syringe.json

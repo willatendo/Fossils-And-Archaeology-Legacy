@@ -76,12 +76,12 @@ public class BasicEvents {
                 return itemStack;
             }
         });
-        DispenserBlock.registerBehavior(FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get(), new OptionalDispenseItemBehavior() {
+        DispenserBlock.registerBehavior(FossilsLegacyBlocks.SKULL_LANTERN_BLOCK.get(), new OptionalDispenseItemBehavior() {
             @Override
             protected ItemStack execute(BlockSource blockSource, ItemStack itemStack) {
                 Level level = blockSource.level();
                 BlockPos blockPos = blockSource.pos().relative(blockSource.state().getValue(DispenserBlock.FACING));
-                SkullBlock skullBlock = (SkullBlock) FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get();
+                SkullBlock skullBlock = (SkullBlock) FossilsLegacyBlocks.SKULL_LANTERN_BLOCK.get();
                 if (level.isEmptyBlock(blockPos) && skullBlock.canSpawnAnu(level, blockPos)) {
                     if (!level.isClientSide()) {
                         level.setBlock(blockPos, skullBlock.defaultBlockState(), 3);

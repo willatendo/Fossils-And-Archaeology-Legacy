@@ -54,8 +54,8 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.TYRANNOSAURUS_DNA.get());
         output.accept(FossilsLegacyItems.VELOCIRAPTOR_DNA.get());
         output.accept(FossilsLegacyItems.DODO_DNA.get());
-        output.accept(FossilsLegacyItems.MOA_DNA.get());
         output.accept(FossilsLegacyItems.MAMMOTH_DNA.get());
+        output.accept(FossilsLegacyItems.MOA_DNA.get());
         output.accept(FossilsLegacyItems.SMILODON_DNA.get());
         output.accept(FossilsLegacyItems.ARMADILLO_DNA.get());
         output.accept(FossilsLegacyItems.AXOLOTL_DNA.get());
@@ -159,12 +159,12 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.COOKED_TYRANNOSAURUS.get());
         output.accept(FossilsLegacyItems.COOKED_VELOCIRAPTOR.get());
         output.accept(FossilsLegacyItems.RAW_DODO.get());
-        output.accept(FossilsLegacyItems.RAW_MOA.get());
         output.accept(FossilsLegacyItems.RAW_MAMMOTH.get());
+        output.accept(FossilsLegacyItems.RAW_MOA.get());
         output.accept(FossilsLegacyItems.RAW_SMILODON.get());
         output.accept(FossilsLegacyItems.COOKED_DODO.get());
-        output.accept(FossilsLegacyItems.COOKED_MOA.get());
         output.accept(FossilsLegacyItems.COOKED_MAMMOTH.get());
+        output.accept(FossilsLegacyItems.COOKED_MOA.get());
         output.accept(FossilsLegacyItems.COOKED_SMILODON.get());
         output.accept(FossilsLegacyItems.NAUTILUS.get());
         output.accept(FossilsLegacyItems.SIO_CHIU_LE.get());
@@ -264,7 +264,7 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyBlocks.FEEDER.get());
         output.accept(FossilsLegacyBlocks.TIME_MACHINE.get());
         output.accept(FossilsLegacyBlocks.SKULL_BLOCK.get());
-        output.accept(FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get());
+        output.accept(FossilsLegacyBlocks.SKULL_LANTERN_BLOCK.get());
         output.accept(FossilsLegacyBlocks.MAYAN_VASE.get());
         output.accept(FossilsLegacyBlocks.MAYAN_JADE_VASE.get());
         output.accept(FossilsLegacyBlocks.MAYAN_OCELOT_VASE.get());

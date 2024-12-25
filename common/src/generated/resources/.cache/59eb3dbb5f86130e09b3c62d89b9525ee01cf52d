@@ -1,4 +1,4 @@
-// 1.21.1	2024-11-30T16:01:36.4680837	Loot Tables
+// 1.21.1	2024-12-25T15:50:59.6496976	Loot Tables
 6b196aa6cdadbe968410835a209fed7ad992066f data/fossilslegacy/loot_table/archaeology/inca_loot.json
 5fcf811a958fcf132678d4423a7472c475c2b8ca data/fossilslegacy/loot_table/blocks/analyzer.json
 8bfc811efa599c9be09afe46481ec9ebbf5f3a33 data/fossilslegacy/loot_table/blocks/archaeology_workbench.json
@@ -87,7 +87,7 @@ b1bad03dd072ac19efab5f29c12c7a11cfd98526 data/fossilslegacy/loot_table/blocks/si
 962d965ab4edce9a7c2250831aa3904d66f5f317 data/fossilslegacy/loot_table/blocks/sigillaria_trapdoor.json
 660d58359817b64ee4aa65656bd2713015fee570 data/fossilslegacy/loot_table/blocks/sigillaria_wood.json
 1b62268c527ff2a1349e69338648bc024fd7c6f0 data/fossilslegacy/loot_table/blocks/skull_block.json
-6dcb7ba1b23d490dd16821a944b59fb103e294bf data/fossilslegacy/loot_table/blocks/skull_lanturn_block.json
+f046dab5c8ee66beb58c7a1d19ab61ed957e2109 data/fossilslegacy/loot_table/blocks/skull_lantern_block.json
 0a96c619de2cf60ab91a0ac28409fb3cd762e0b5 data/fossilslegacy/loot_table/blocks/stripped_calamites_log.json
 fd96102a85e17819bb1942643bebb2d79396a5aa data/fossilslegacy/loot_table/blocks/stripped_calamites_wood.json
 246fa2d723af0f9c8c0837a0b02222e4570c26f1 data/fossilslegacy/loot_table/blocks/stripped_lepidodendron_log.json

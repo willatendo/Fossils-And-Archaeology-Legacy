@@ -29,7 +29,7 @@ public class FossilsLegacyBlockLootSubProvider extends SimpleBlockLootSubProvide
         this.add(FossilsLegacyBlocks.FOSSIL_ORE.get(), this::createFossilOreLootTable);
         this.add(FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get(), this::createFossilOreLootTable);
         this.dropSelf(FossilsLegacyBlocks.SKULL_BLOCK.get());
-        this.dropSelf(FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get());
+        this.dropSelf(FossilsLegacyBlocks.SKULL_LANTERN_BLOCK.get());
         this.dropSelf(FossilsLegacyBlocks.ANALYZER.get());
         this.dropSelf(FossilsLegacyBlocks.WHITE_CULTIVATOR.get());
         this.dropSelf(FossilsLegacyBlocks.ORANGE_CULTIVATOR.get());

@@ -272,7 +272,7 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicBlock(FossilsLegacyBlocks.FOSSIL_ORE.get());
         this.basicBlock(FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get());
         this.basicBlock(FossilsLegacyBlocks.SKULL_BLOCK.get());
-        this.basicBlock(FossilsLegacyBlocks.SKULL_LANTURN_BLOCK.get());
+        this.basicBlock(FossilsLegacyBlocks.SKULL_LANTERN_BLOCK.get());
         this.basicBlock(FossilsLegacyBlocks.ANALYZER.get());
         this.basicBlock(FossilsLegacyBlocks.WHITE_CULTIVATOR.get());
         this.basicBlock(FossilsLegacyBlocks.ORANGE_CULTIVATOR.get());

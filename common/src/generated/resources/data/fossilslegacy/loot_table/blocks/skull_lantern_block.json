@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "fossilslegacy:skull_lanturn_block"
+          "name": "fossilslegacy:skull_lantern_block"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "fossilslegacy:blocks/skull_lanturn_block"
+  "random_sequence": "fossilslegacy:blocks/skull_lantern_block"
 }

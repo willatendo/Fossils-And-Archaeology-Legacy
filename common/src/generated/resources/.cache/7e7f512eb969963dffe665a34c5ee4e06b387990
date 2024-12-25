@@ -1,4 +1,4 @@
-// 1.21.1	2024-11-10T20:04:28.8238136	Tags for minecraft:block mod id fossilslegacy
+// 1.21.1	2024-12-25T15:50:59.6547011	Tags for minecraft:block mod id fossilslegacy
 80e160a91f3744e8cb737cde249c3d4059ae1424 data/fossilslegacy/tags/block/calamites_logs.json
 1127f77eb8cace8c1b282963c96612fe0637c879 data/fossilslegacy/tags/block/eatable_fern.json
 a4e8097fff07f9a74259d6b5dd583f3437ff28a2 data/fossilslegacy/tags/block/eatable_leaves.json
@@ -35,7 +35,7 @@ a02da92027664f91d61ec2f9fc49b8b4e6e0de12 data/minecraft/tags/block/fence_gates.j
 b16ce44bdd9bc3166b771d29316051f6ef0cb99b data/minecraft/tags/block/leaves.json
 55e9144064802c95b8e6cee283f42e6f39559189 data/minecraft/tags/block/logs_that_burn.json
 0bef666cba447311041eae96b3fdaaca3e545696 data/minecraft/tags/block/mineable/axe.json
-fcc5c70ac33619b543677070a21aeae08cdc10ea data/minecraft/tags/block/mineable/pickaxe.json
+4a208367b9a5ce2b714ccce024b002b262ed415c data/minecraft/tags/block/mineable/pickaxe.json
 8dd9337b2a202f40f3cb253ecea1f5a37ccc12ba data/minecraft/tags/block/mineable/shovel.json
 b618667772fbc412a6446fad6a3619c27d66d734 data/minecraft/tags/block/needs_iron_tool.json
 55e9144064802c95b8e6cee283f42e6f39559189 data/minecraft/tags/block/overworld_natural_logs.json
