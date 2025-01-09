@@ -12,6 +12,7 @@ import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.saveddata.maps.MapDecorationType;
 import willatendo.fossilslegacy.FossilsLegacyForgeMod;
 import willatendo.fossilslegacy.network.ForgePacketHelper;
@@ -59,6 +60,11 @@ public class FossilsForgeHelper implements FossilsModloaderHelper {
     @Override
     public ArticulatedFossilItem getArticulatedFossilItem(Item.Properties properties) {
         return new ForgeArticulatedFossilItem(properties);
+    }
+
+    @Override
+    public GameRules.Key<GameRules.BooleanValue> createBooleanGameRule(String name, GameRules.Category category, boolean defaultValue) {
+        return GameRules.register(name, category, GameRules.BooleanValue.create(defaultValue));
     }
 
     @Override

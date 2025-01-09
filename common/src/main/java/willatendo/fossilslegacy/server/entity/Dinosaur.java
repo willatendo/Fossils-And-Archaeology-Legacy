@@ -30,7 +30,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.config.FossilsLegacyConfig;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.commands.CommandType;
 import willatendo.fossilslegacy.server.entity.commands.FossilsLegacyCommandTypes;
@@ -39,6 +38,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.level.FossilsLegacyGameRules;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.Optional;
@@ -161,7 +161,7 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
         super.tick();
 
         if (!this.isNoAi()) {
-            if (FossilsLegacyConfig.willAnimalsGrow()) {
+            if (this.level() instanceof ServerLevel && this.level().getGameRules().getBoolean(FossilsLegacyGameRules.RULE_DOANIMALGROWTH)) {
                 if (this.getGrowthStage() < this.getMaxGrowthStage()) {
                     if (this.internalClock % Level.TICKS_PER_DAY == 0) {
                         if (this.hasSpace()) {
@@ -178,7 +178,7 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
                 this.setDaysAlive(this.getDaysAlive() + 1);
             }
 
-            if (FossilsLegacyConfig.willAnimalsStarve()) {
+            if (this.level() instanceof ServerLevel && this.level().getGameRules().getBoolean(FossilsLegacyGameRules.RULE_DOANIMALHUNGER)) {
                 if (this.level().getDifficulty() != Difficulty.PEACEFUL) {
                     if (this.internalClock % 300 == 0) {
                         this.decreaseHunger();

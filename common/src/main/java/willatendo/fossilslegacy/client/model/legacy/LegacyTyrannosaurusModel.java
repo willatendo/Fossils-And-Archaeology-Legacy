@@ -6,7 +6,6 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Tyrannosaurus;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class LegacyTyrannosaurusModel extends EntityModel<Tyrannosaurus> {
     private final ModelPart root;
@@ -65,7 +64,6 @@ public class LegacyTyrannosaurusModel extends EntityModel<Tyrannosaurus> {
         this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount - 0.6108652F;
         this.leftFoot.xRot = Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount;
 
-        FossilsLegacyUtils.LOGGER.info("Rot: {}", this.rightThigh.xRot);
         if (Math.abs(this.rightThigh.xRot) >= 0.174532F) {
             this.runPose();
         } else {

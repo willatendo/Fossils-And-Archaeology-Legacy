@@ -13,6 +13,7 @@ import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.saveddata.maps.MapDecorationType;
 import willatendo.fossilslegacy.server.item.ArticulatedFossilItem;
 import willatendo.fossilslegacy.server.utils.Platform;
@@ -44,6 +45,8 @@ public interface FossilsModloaderHelper {
     default ArticulatedFossilItem getArticulatedFossilItem(Item.Properties properties) {
         return new ArticulatedFossilItem(properties);
     }
+
+    GameRules.Key<GameRules.BooleanValue> createBooleanGameRule(String name, GameRules.Category category, boolean defaultValue);
 
     RecipeBookType createRecipeBookType(String name);
 

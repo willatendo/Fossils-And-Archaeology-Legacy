@@ -1,6 +1,8 @@
 package willatendo.fossilslegacy.server.entity.util;
 
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.animal.Animal;
@@ -8,9 +10,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import willatendo.fossilslegacy.server.config.FossilsLegacyConfig;
 import willatendo.fossilslegacy.server.entity.util.interfaces.GrowingEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.TameAccessor;
+import willatendo.fossilslegacy.server.level.FossilsLegacyGameRules;
 
 public class BlockBreakRule {
     private final Animal animal;
@@ -26,21 +28,17 @@ public class BlockBreakRule {
     }
 
     public boolean canUse() {
-        if (!FossilsLegacyConfig.willAnimalsBreakBlocks()) {
-            return false;
-        } else if (this.animal instanceof GrowingEntity growningEntity) {
-            if (growningEntity.getGrowthStage() >= this.minimumAge) {
-                if (this.animal instanceof TameAccessor tameAccessor) {
-                    return !tameAccessor.isTame();
-                } else {
+        if (this.level instanceof ServerLevel) {
+            if (this.level.getGameRules().getBoolean(FossilsLegacyGameRules.RULE_DOANIMALBLOCKBREAKING) && this.animal instanceof GrowingEntity growningEntity) {
+                if (growningEntity.getGrowthStage() >= this.minimumAge) {
+                    if (this.animal instanceof TameAccessor tameAccessor) {
+                        return !tameAccessor.isTame();
+                    }
                     return true;
                 }
-            } else {
-                return false;
             }
-        } else {
-            return true;
         }
+        return false;
     }
 
     public void tick() {

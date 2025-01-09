@@ -1,7 +1,12 @@
-25/12/2024
+8/1/2025
+- Added "doAnimalBlockBreaking" Game Rule
+- Added "doAnimalHunger" Game Rule
+- Added "doAnimalGrowth" Game Rule
 - Fixed Spelling Mistake In Articulated Dilophosaurus Fossil
 - Fixed Alphabetic Order In Creative Mode Tab (Mammoth Before Moa)
 - Fixed Spelling Mistake In Skull Lantern
+- Fixed Tyrannosaurus Log Spam
+- Removed Config
 17/12/2024
 - Fixed Server Crash
 15/12/2024 C

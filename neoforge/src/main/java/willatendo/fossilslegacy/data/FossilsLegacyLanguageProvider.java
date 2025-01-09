@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.data;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.GameRules;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.entity.Anu;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
@@ -14,6 +15,7 @@ import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.genetics.cosmetics.FossilsLegacyCoatTypes;
 import willatendo.fossilslegacy.server.item.FossilsLegacyCreativeModeTabs;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.level.FossilsLegacyGameRules;
 import willatendo.fossilslegacy.server.tags.*;
 import willatendo.simplelibrary.data.SimpleLanguageProvider;
 
@@ -436,6 +438,11 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.addFossilVariant(FossilsLegacyFossilVariants.LEGACY_TRICERATOPS, "Legacy Triceratops");
         this.addFossilVariant(FossilsLegacyFossilVariants.TYRANNOSAURUS, "Tyrannosaurus");
         this.addFossilVariant(FossilsLegacyFossilVariants.VELOCIRAPTOR, "Velociraptor");
+
+        // Game Rules
+        this.add(FossilsLegacyGameRules.RULE_DOANIMALBLOCKBREAKING, "Do animals break blocks");
+        this.add(FossilsLegacyGameRules.RULE_DOANIMALHUNGER, "Do animals get hungry");
+        this.add(FossilsLegacyGameRules.RULE_DOANIMALGROWTH, "Do animals grow");
 
         // JEI
         this.add("gui.jei.category.registry.coat_types", "Coat Types");
@@ -996,6 +1003,10 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
 
         // Upgrades
         this.add("upgrade.fossilslegacy.scarab_gem_upgrade", "Scarab Gem Upgrade");
+    }
+
+    public void add(GameRules.Key<?> key, String translation) {
+        this.add("gamerule." + key.getId(), translation);
     }
 
     public void add(SpeakerType<?> speakerType, String translation) {

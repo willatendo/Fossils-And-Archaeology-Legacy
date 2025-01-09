@@ -4,7 +4,6 @@ import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.biome.FossilsLegacyBiomeSources;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntityTypes;
-import willatendo.fossilslegacy.server.config.FossilsLegacyConfig;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.*;
@@ -13,6 +12,7 @@ import willatendo.fossilslegacy.server.entity.poi.FossilsLegacyPoiTypes;
 import willatendo.fossilslegacy.server.feature.foliageplacer.FossilsLegacyFoliagePlacerTypes;
 import willatendo.fossilslegacy.server.feature.trunkplacer.FossilsLegacyTrunkPlacerTypes;
 import willatendo.fossilslegacy.server.item.*;
+import willatendo.fossilslegacy.server.level.FossilsLegacyGameRules;
 import willatendo.fossilslegacy.server.loot.FossilsLegacyLootPoolEntryTypes;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenuTypes;
 import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
@@ -28,8 +28,6 @@ import willatendo.simplelibrary.server.event.registry.SimpleRegistryRegister;
 
 public final class FossilsLegacyMod {
     public static void onInitialize(SimpleRegistryRegister simpleRegistryRegister) {
-        FossilsLegacyConfig.init();
-
         FossilsLegacyBuiltInRegistries.init();
 
         simpleRegistryRegister.register(FossilsLegacyCommandTypes.COMMAND_TYPES);
@@ -63,5 +61,6 @@ public final class FossilsLegacyMod {
         FossilsLegacyBiomeSources.init();
         SimpleBuiltInRegistries.init();
         simpleRegistryRegister.register(FossilsLegacyBoatTypes.BOAT_TYPES);
+        FossilsLegacyGameRules.init();
     }
 }
