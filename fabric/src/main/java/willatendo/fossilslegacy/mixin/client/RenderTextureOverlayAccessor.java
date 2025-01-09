@@ -9,5 +9,5 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(Gui.class)
 public interface RenderTextureOverlayAccessor {
     @Invoker("renderTextureOverlay")
-    public abstract void fossil_renderTextureOverlay(GuiGraphics guiGraphics, ResourceLocation texture, float alpha);
+    void fossil_renderTextureOverlay(GuiGraphics guiGraphics, ResourceLocation texture, float alpha);
 }
