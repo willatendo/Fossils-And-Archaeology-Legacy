@@ -12,6 +12,7 @@ import willatendo.fossilslegacy.server.entity.poi.FossilsLegacyPoiTypes;
 import willatendo.fossilslegacy.server.feature.foliageplacer.FossilsLegacyFoliagePlacerTypes;
 import willatendo.fossilslegacy.server.feature.trunkplacer.FossilsLegacyTrunkPlacerTypes;
 import willatendo.fossilslegacy.server.item.*;
+import willatendo.fossilslegacy.server.item.dinopedia.line.FossilsLegacyDinopediaLineTypes;
 import willatendo.fossilslegacy.server.level.FossilsLegacyGameRules;
 import willatendo.fossilslegacy.server.loot.FossilsLegacyLootPoolEntryTypes;
 import willatendo.fossilslegacy.server.menu.FossilsLegacyMenuTypes;
@@ -49,6 +50,7 @@ public final class FossilsLegacyMod {
         simpleRegistryRegister.register(FossilsLegacyEntityTypes.ENTITY_TYPES);
         simpleRegistryRegister.register(FossilsLegacyDataComponents.DATA_COMPONENT_TYPES);
         simpleRegistryRegister.register(FossilsLegacyArmorMaterials.ARMOR_MATERIALS);
+        simpleRegistryRegister.register(FossilsLegacyDinopediaLineTypes.DINOPEDIA_LINE_TYPES);
         FossilsLegacyMapDecorationTypes.init();
         simpleRegistryRegister.register(FossilsLegacyItems.ITEMS);
         simpleRegistryRegister.register(FossilsLegacyCreativeModeTabs.CREATIVE_MODE_TABS);

@@ -1,19 +1,23 @@
 package willatendo.fossilslegacy.server.entity.dinosaur.quaternary;
 
-import com.google.common.collect.Lists;
+import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.FastColor;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -26,11 +30,15 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.DismountHelper;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.crafting.CraftingInput;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -47,18 +55,54 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformati
 import willatendo.fossilslegacy.server.entity.util.interfaces.RideableDinosaur;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.item.dinopedia.DinopediaType;
+import willatendo.fossilslegacy.server.item.dinopedia.FossilsLegacyDinopediaTypes;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.Nullable;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Mammoth extends Dinosaur implements DinopediaInformation, RideableDinosaur, Shearable {
+    private static final EntityDataAccessor<Integer> WOOL_COLOR = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> IS_SHEARED = SynchedEntityData.defineId(Mammoth.class, EntityDataSerializers.BOOLEAN);
+    private static final Map<DyeColor, ItemLike> ITEM_BY_DYE = Util.make(new EnumMap<>(DyeColor.class), map -> {
+        map.put(DyeColor.WHITE, Blocks.WHITE_WOOL);
+        map.put(DyeColor.ORANGE, Blocks.ORANGE_WOOL);
+        map.put(DyeColor.MAGENTA, Blocks.MAGENTA_WOOL);
+        map.put(DyeColor.LIGHT_BLUE, Blocks.LIGHT_BLUE_WOOL);
+        map.put(DyeColor.YELLOW, Blocks.YELLOW_WOOL);
+        map.put(DyeColor.LIME, Blocks.LIME_WOOL);
+        map.put(DyeColor.PINK, Blocks.PINK_WOOL);
+        map.put(DyeColor.GRAY, Blocks.GRAY_WOOL);
+        map.put(DyeColor.LIGHT_GRAY, Blocks.LIGHT_GRAY_WOOL);
+        map.put(DyeColor.CYAN, Blocks.CYAN_WOOL);
+        map.put(DyeColor.PURPLE, Blocks.PURPLE_WOOL);
+        map.put(DyeColor.BLUE, Blocks.BLUE_WOOL);
+        map.put(DyeColor.BROWN, Blocks.BROWN_WOOL);
+        map.put(DyeColor.GREEN, Blocks.GREEN_WOOL);
+        map.put(DyeColor.RED, Blocks.RED_WOOL);
+        map.put(DyeColor.BLACK, Blocks.BLACK_WOOL);
+    });
+    private static final Map<DyeColor, Integer> COLOR_BY_DYE = new HashMap<>(Arrays.stream(DyeColor.values()).collect(Collectors.toMap((dyeColor) -> dyeColor, Mammoth::createSheepColor)));
     private int eatAnimationTick;
     private int swingTick;
     private EatBlockGoal eatBlockGoal;
+
+    private static int createSheepColor(DyeColor dyeColor) {
+        if (dyeColor == DyeColor.WHITE) {
+            return -1644826;
+        } else {
+            int i = dyeColor.getTextureDiffuseColor();
+            float f = 0.75F;
+            return FastColor.ARGB32.color(255, Mth.floor((float) FastColor.ARGB32.red(i) * 0.75F), Mth.floor((float) FastColor.ARGB32.green(i) * 0.75F), Mth.floor((float) FastColor.ARGB32.blue(i) * 0.75F));
+        }
+    }
+
+    public static int getColor(DyeColor dyeColor) {
+        return COLOR_BY_DYE.get(dyeColor);
+    }
 
     public Mammoth(EntityType<? extends Mammoth> entityType, Level level) {
         super(entityType, level);
@@ -92,6 +136,7 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
         Mammoth mammoth = FossilsLegacyEntityTypes.MAMMOTH.get().create(serverLevel);
         mammoth.setCoatType(this.getCoatType());
+        mammoth.setColor(this.getOffspringColor(this, (Mammoth) ageableMob));
         return mammoth;
     }
 
@@ -167,6 +212,7 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
+        builder.define(WOOL_COLOR, 0);
         builder.define(IS_SHEARED, false);
     }
 
@@ -174,7 +220,7 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
     public InteractionResult interactAt(Player player, Vec3 vec3, InteractionHand interactionHand) {
         ItemStack itemStack = player.getItemInHand(interactionHand);
         if (itemStack.is(Items.SHEARS) || itemStack.is(FossilsLegacyItems.TOOTH_DAGGER.get())) {
-            if (!this.level().isClientSide && this.readyForShearing()) {
+            if (!this.level().isClientSide() && this.readyForShearing()) {
                 this.shear(SoundSource.PLAYERS);
                 this.gameEvent(GameEvent.SHEAR, player);
                 itemStack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
@@ -182,9 +228,22 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
             }
             return InteractionResult.CONSUME;
         }
+        if (itemStack.getItem() instanceof DyeItem dyeItem) {
+            if (this.isAlive() && this.getColor() != dyeItem.getDyeColor()) {
+                this.level().playSound(player, this, SoundEvents.DYE_USE, SoundSource.PLAYERS, 1.0F, 1.0F);
+                if (!player.level().isClientSide()) {
+                    this.setColor(dyeItem.getDyeColor());
+                    if (!player.isCreative()) {
+                        itemStack.shrink(1);
+                    }
+                }
+
+                return InteractionResult.sidedSuccess(player.level().isClientSide());
+            }
+        }
         if (itemStack.isEmpty() && !this.commandItems().canCommandWithItem(itemStack)) {
             if (!this.hasPassenger(this) && this.getGrowthStage() >= this.getMinRideableAge() && this.isTame()) {
-                if (!this.level().isClientSide) {
+                if (!this.level().isClientSide()) {
                     player.startRiding(this);
                 }
                 return InteractionResult.SUCCESS;
@@ -276,6 +335,14 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
         return this.getOverridenSoundEvent(FossilsLegacySoundEvents.MAMMOTH_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
+    public void setColor(DyeColor dyeColor) {
+        this.entityData.set(WOOL_COLOR, dyeColor.getId());
+    }
+
+    public DyeColor getColor() {
+        return DyeColor.byId(this.entityData.get(WOOL_COLOR));
+    }
+
     public void setSheared(boolean sheared) {
         this.entityData.set(IS_SHEARED, sheared);
     }
@@ -287,13 +354,15 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        compoundTag.putBoolean("IsSheared", this.isSheared());
+        compoundTag.putBoolean("Sheared", this.isSheared());
+        compoundTag.putInt("Color", this.getColor().getId());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        this.setSheared(compoundTag.getBoolean("IsSheared"));
+        this.setSheared(compoundTag.getBoolean("Sheared"));
+        this.setColor(DyeColor.byId(compoundTag.getInt("Color")));
     }
 
     private float getAttackDamage() {
@@ -347,31 +416,38 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
             int amount = 1 + this.random.nextInt(20);
 
             for (int i = 0; i < amount; ++i) {
-                this.spawnAtLocation(new ItemStack(Items.BROWN_WOOL), 1);
+                this.spawnAtLocation(new ItemStack(ITEM_BY_DYE.get(this.getColor())), 1);
             }
         }
     }
 
+    private DyeColor getOffspringColor(Mammoth father, Mammoth mother) {
+        DyeColor fatherDyeColor = father.getColor();
+        DyeColor motherDyeColor = mother.getColor();
+        CraftingInput craftinginput = makeCraftInput(fatherDyeColor, motherDyeColor);
+        Optional<Item> item = this.level().getRecipeManager().getRecipeFor(RecipeType.CRAFTING, craftinginput, this.level()).map((craftingRecipe) -> craftingRecipe.value().assemble(craftinginput, this.level().registryAccess())).map(ItemStack::getItem);
+        Objects.requireNonNull(DyeItem.class);
+        item = item.filter(DyeItem.class::isInstance);
+        Objects.requireNonNull(DyeItem.class);
+        return item.map(DyeItem.class::cast).map(DyeItem::getDyeColor).orElseGet(() -> this.level().random.nextBoolean() ? fatherDyeColor : motherDyeColor);
+    }
+
+    private static CraftingInput makeCraftInput(DyeColor dyeColor1, DyeColor dyeColor2) {
+        return CraftingInput.of(2, 1, List.of(new ItemStack(DyeItem.byColor(dyeColor1)), new ItemStack(DyeItem.byColor(dyeColor2))));
+    }
+
     @Override
-    public List<Component> info(Player player) {
-        ArrayList<Component> information = Lists.newArrayList();
-        if (this.isTame() && this.isOwnedBy(player)) {
-            information.add(this.getDisplayName());
-            information.add(FossilsLegacyUtils.translation("dinopedia", "owner", this.getOwner() != null ? this.getOwner().getDisplayName().getString() : FossilsLegacyUtils.translation("dinopedia", "wild").getString()));
-            information.add(FossilsLegacyUtils.translation("dinopedia", "age", this.getDaysAlive()));
-            information.add(FossilsLegacyUtils.translation("dinopedia", "health", (int) this.getHealth(), (int) this.getMaxHealth()));
-            information.add(FossilsLegacyUtils.translation("dinopedia", "hunger", this.getHunger(), this.getMaxHunger()));
-            if (!this.isBaby()) {
-                information.add(FossilsLegacyUtils.translation("dinopedia", "rideable"));
-            }
-        } else {
-            information.add(this.getDisplayName());
-            if (this.isTame()) {
-                information.add(FossilsLegacyUtils.translation("dinopedia", "not_owner"));
-            } else {
-                information.add(FossilsLegacyUtils.translation("dinopedia", "wild"));
-            }
-        }
-        return information;
+    public Optional<ResourceKey<DinopediaType>> getDinopediaType() {
+        return Optional.of(FossilsLegacyDinopediaTypes.MAMMOTH);
+    }
+
+    public static DyeColor getRandomMammothColor(RandomSource random) {
+        return random.nextInt(500) == 0 ? DyeColor.PINK : random.nextInt(10) == 0 ? DyeColor.BLACK : DyeColor.BROWN;
+    }
+
+    @Nullable
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnGroupData) {
+        this.setColor(Mammoth.getRandomMammothColor(level.getRandom()));
+        return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
     }
 }

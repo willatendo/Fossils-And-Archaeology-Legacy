@@ -13,7 +13,7 @@ public class PteranodonRenderer extends CoatTypeMobRenderer<Pteranodon> {
     }
 
     @Override
-    protected Optional<EntityModel<Pteranodon>> getAdditionalModel(Pteranodon pteranodon, CoatType coatType) {
+    public Optional<EntityModel<Pteranodon>> getAdditionalModel(Pteranodon pteranodon, CoatType coatType) {
         CoatType.Models models = coatType.models();
         return pteranodon.landing ? this.additionalModel(pteranodon, models.landingModel(), models) : pteranodon.shouldFly() ? this.additionalModel(pteranodon, models.flyingModel(), models) : Optional.empty();
     }

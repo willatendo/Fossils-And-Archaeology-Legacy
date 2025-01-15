@@ -3,7 +3,7 @@
   "textures": {
     "down": "fossilslegacy:block/skull",
     "east": "fossilslegacy:block/skull_crack",
-    "north": "fossilslegacy:block/skull_lanturn_front",
+    "north": "fossilslegacy:block/skull_lantern_front",
     "particle": "fossilslegacy:block/skull_crack",
     "south": "fossilslegacy:block/skull_crack",
     "up": "fossilslegacy:block/skull",

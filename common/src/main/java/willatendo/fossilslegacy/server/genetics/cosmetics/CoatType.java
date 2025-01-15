@@ -44,6 +44,8 @@ public record CoatType(DisplayInfo displayInfo, Models models, List<Pattern> pat
             private final ResourceLocation texture;
             private final PatternType patternType;
             private Optional<ResourceLocation> babyTexture = Optional.empty();
+            private Optional<ResourceLocation> furTexture = Optional.empty();
+            private Optional<ResourceLocation> babyFurTexture = Optional.empty();
             private Optional<ResourceLocation> shearedTexture = Optional.empty();
             private Optional<ResourceLocation> aggressiveTexture = Optional.empty();
             private Optional<ResourceLocation> aggressiveBabyTexture = Optional.empty();
@@ -57,6 +59,16 @@ public record CoatType(DisplayInfo displayInfo, Models models, List<Pattern> pat
 
             public CoatType.Pattern.Builder withBabyTexture(ResourceLocation babyTexture) {
                 this.babyTexture = Optional.of(babyTexture);
+                return this;
+            }
+
+            public CoatType.Pattern.Builder withFurTexture(ResourceLocation furTexture) {
+                this.furTexture = Optional.of(furTexture);
+                return this;
+            }
+
+            public CoatType.Pattern.Builder withBabyFurTexture(ResourceLocation babyFurTexture) {
+                this.babyFurTexture = Optional.of(babyFurTexture);
                 return this;
             }
 
@@ -87,13 +99,13 @@ public record CoatType(DisplayInfo displayInfo, Models models, List<Pattern> pat
             }
 
             public Pattern build() {
-                return new Pattern(new Textures(this.texture, this.babyTexture, this.shearedTexture, this.aggressiveTexture, this.aggressiveBabyTexture, this.knockedOutTexture, this.eyeLayerTexture), this.patternType);
+                return new Pattern(new Textures(this.texture, this.babyTexture, this.furTexture, this.babyFurTexture, this.shearedTexture, this.aggressiveTexture, this.aggressiveBabyTexture, this.knockedOutTexture, this.eyeLayerTexture), this.patternType);
             }
         }
     }
 
-    public record Textures(ResourceLocation texture, Optional<ResourceLocation> babyTexture, Optional<ResourceLocation> shearedTexture, Optional<ResourceLocation> aggressiveTexture, Optional<ResourceLocation> aggressiveBabyTexture, Optional<ResourceLocation> knockedOutTexture, Optional<ResourceLocation> eyeLayerTexture) {
-        public static final Codec<Textures> CODEC = RecordCodecBuilder.create(instance -> instance.group(ResourceLocation.CODEC.fieldOf("texture").forGetter(Textures::texture), ResourceLocation.CODEC.optionalFieldOf("baby_texture").forGetter(Textures::babyTexture), ResourceLocation.CODEC.optionalFieldOf("sheared_texture").forGetter(Textures::shearedTexture), ResourceLocation.CODEC.optionalFieldOf("aggressive_texture").forGetter(Textures::aggressiveTexture), ResourceLocation.CODEC.optionalFieldOf("aggressive_baby_texture").forGetter(Textures::aggressiveBabyTexture), ResourceLocation.CODEC.optionalFieldOf("knocked_out_texture").forGetter(Textures::knockedOutTexture), ResourceLocation.CODEC.optionalFieldOf("eye_layer_texture").forGetter(Textures::eyeLayerTexture)).apply(instance, Textures::new));
+    public record Textures(ResourceLocation texture, Optional<ResourceLocation> babyTexture, Optional<ResourceLocation> furTexture, Optional<ResourceLocation> babyFurTexture, Optional<ResourceLocation> shearedTexture, Optional<ResourceLocation> aggressiveTexture, Optional<ResourceLocation> aggressiveBabyTexture, Optional<ResourceLocation> knockedOutTexture, Optional<ResourceLocation> eyeLayerTexture) {
+        public static final Codec<Textures> CODEC = RecordCodecBuilder.create(instance -> instance.group(ResourceLocation.CODEC.fieldOf("texture").forGetter(Textures::texture), ResourceLocation.CODEC.optionalFieldOf("baby_texture").forGetter(Textures::babyTexture), ResourceLocation.CODEC.optionalFieldOf("fur_texture").forGetter(Textures::furTexture), ResourceLocation.CODEC.optionalFieldOf("baby_fur_texture").forGetter(Textures::babyFurTexture), ResourceLocation.CODEC.optionalFieldOf("sheared_texture").forGetter(Textures::shearedTexture), ResourceLocation.CODEC.optionalFieldOf("aggressive_texture").forGetter(Textures::aggressiveTexture), ResourceLocation.CODEC.optionalFieldOf("aggressive_baby_texture").forGetter(Textures::aggressiveBabyTexture), ResourceLocation.CODEC.optionalFieldOf("knocked_out_texture").forGetter(Textures::knockedOutTexture), ResourceLocation.CODEC.optionalFieldOf("eye_layer_texture").forGetter(Textures::eyeLayerTexture)).apply(instance, Textures::new));
     }
 
     public record BoundingBoxInfo(float boundingBoxWidth, float boundingBoxHeight, float boundingBoxGrowth) {

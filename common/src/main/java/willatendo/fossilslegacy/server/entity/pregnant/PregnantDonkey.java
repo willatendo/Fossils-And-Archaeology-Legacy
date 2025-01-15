@@ -9,14 +9,12 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.horse.Donkey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityDataSerializers;
-import willatendo.fossilslegacy.server.entity.util.interfaces.CoatTypeEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.PregnantAnimal;
 import willatendo.fossilslegacy.server.entity.variants.PregnancyType;
@@ -80,13 +78,6 @@ public class PregnantDonkey extends Donkey implements DinopediaInformation, Preg
     public void tick() {
         super.tick();
         this.birthTick(this, this.level());
-    }
-
-    @Override
-    public void onEntityTicksComplete(Mob mob, Entity offspring, Level level) {
-        if (offspring instanceof CoatTypeEntity coatTypeEntity) {
-            coatTypeEntity.setCoatType(this.getOffspringCoatType());
-        }
     }
 
     @Override

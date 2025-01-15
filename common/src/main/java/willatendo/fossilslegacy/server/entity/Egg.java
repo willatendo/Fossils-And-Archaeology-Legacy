@@ -26,7 +26,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootTable;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyBuiltInRegistries;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
-import willatendo.fossilslegacy.server.entity.util.interfaces.CoatTypeEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.TicksToBirth;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
@@ -78,13 +77,6 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
     @Override
     public ItemStack getPickResult() {
         return this.getEggVariant().value().pick().get().getDefaultInstance();
-    }
-
-    @Override
-    public void onEntityTicksComplete(Mob mob, Entity offspring, Level level) {
-        if (offspring instanceof CoatTypeEntity coatTypeEntity) {
-            coatTypeEntity.setCoatType(this.getCoatType());
-        }
     }
 
     @Override

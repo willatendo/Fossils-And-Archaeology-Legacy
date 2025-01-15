@@ -36,7 +36,7 @@ import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import java.util.Objects;
 import java.util.Optional;
 
-public interface PregnantAnimal<T extends Entity> extends TicksToBirth<T>, SimpleLevelAccessor {
+public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLevelAccessor {
     MapCodec<Holder<CoatType>> VARIANT_MAP_CODEC = CoatType.CODEC.fieldOf("OffspringCoatType");
     Codec<Holder<CoatType>> VARIANT_CODEC = VARIANT_MAP_CODEC.codec();
 
@@ -205,6 +205,7 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth<T>, Simpl
 
     @Override
     default void onEntityTicksComplete(Mob mob, Entity offspring, Level level) {
+        TicksToBirth.super.onEntityTicksComplete(mob, offspring, level);
         Entity replaced = this.getBaseEntity(level);
         replaced.moveTo(mob.getX(), mob.getY(), mob.getZ(), mob.getYRot(), mob.getXRot());
         level.addFreshEntity(replaced);

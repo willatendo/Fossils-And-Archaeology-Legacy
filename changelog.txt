@@ -1,11 +1,57 @@
-8/1/2025
-- Added "doAnimalBlockBreaking" Game Rule
-- Added "doAnimalHunger" Game Rule
-- Added "doAnimalGrowth" Game Rule
+12/1/2024 1.4.5
+- Fixed Spinosaurs Always "Rideable" In Dinopedia
+- Added Dinopedia Screen
+- Added Data-Driven Dinopedia Entries
+12/1/2025 1.4.4
+- "#fossilslegacy:ankylosaurus_commandables" Now "#fossilslegacy:commandables/ankylosaurus"
+- "#fossilslegacy:brachiosaurus_commandables" Now "#fossilslegacy:commandables/brachiosaurus"
+- "#fossilslegacy:carnotaurus_commandables" Now "#fossilslegacy:commandables/carnotaurus"
+- "#fossilslegacy:compsognathus_commandables" Now "#fossilslegacy:commandables/compsognathus"
+- "#fossilslegacy:cryolophosaurus_commandables" Now "#fossilslegacy:commandables/cryolophosaurus"
+- "#fossilslegacy:dilophosaurus_commandables" Now "#fossilslegacy:commandables/dilophosaurus"
+- "#fossilslegacy:dimetrodon_commandables" Now "#fossilslegacy:commandables/dimetrodon"
+- "#fossilslegacy:gallimimus_commandables" Now "#fossilslegacy:commandables/gallimimus"
+- "#fossilslegacy:mammoth_commandables" Now "#fossilslegacy:commandables/mammoth"
+- "#fossilslegacy:pachycephalosaurus_commandables" Now "#fossilslegacy:commandables/pachycephalosaurus"
+- "#fossilslegacy:pteranodon_commandables" Now "#fossilslegacy:commandables/pteranodon"
+- "#fossilslegacy:spinosaurus_commandables" Now "#fossilslegacy:commandables/spinosaurus"
+- "#fossilslegacy:stegosaurus_commandables" Now "#fossilslegacy:commandables/stegosaurus"
+- "#fossilslegacy:triceratops_commandables" Now "#fossilslegacy:commandables/triceratops"
+- "#fossilslegacy:therizinosaurus_commandables" Now "#fossilslegacy:commandables/therizinosaurus"
+- "#fossilslegacy:tyrannosaurus_commandables" Now "#fossilslegacy:commandables/tyrannosaurus"
 - Fixed Spelling Mistake In Articulated Dilophosaurus Fossil
 - Fixed Alphabetic Order In Creative Mode Tab (Mammoth Before Moa)
 - Fixed Spelling Mistake In Skull Lantern
 - Fixed Tyrannosaurus Log Spam
+- Fixed Therizinosaurus Claws Being In Tag "#c:shears" Now "#c:shear"
+- Fixed "#fossilslegacy:commandable/dimetrodon" Not Having A Translated String
+- Fixed "#fossilslegacy:victims/dimetrodon" Not Having A Translated String
+- Fixed "#fossilslegacy:commandable/magic_conch" Not Having A Translated String
+- Fixed "#fossilslegacy:non_legacy/dilophosaurus" Not Having A Translated String
+- Fixed "#fossilslegacy:spawnable/ankylosaurus" Not Having A Translated String
+- Fixed "#fossilslegacy:spawnable/brachiosaurus" Not Having A Translated String
+- Fixed "#fossilslegacy:spawnable/carnotaurus" Not Having A Translated String
+- Fixed "#fossilslegacy:spawnable/compsognathus" Not Having A Translated String
+- Fixed "#fossilslegacy:spawnable/cryolophosaurus" Not Having A Translated String
+- Fixed "#fossilslegacy:spawnable/dilophosaurus" Not Having A Translated String
+- Fixed "#fossilslegacy:spawnable/dimetrodon" Not Having A Translated String
+- Fixed "#fossilslegacy:spawnable/dodo" Not Having A Translated String
+- Fixed "#fossilslegacy:spawnable/gallimimus" Not Having A Translated String
+- Fixed "#fossilslegacy:spawnable/mammoth" Not Having A Translated String
+- Fixed "#fossilslegacy:spawnable/moa" Not Having A Translated String
+- Fixed "#fossilslegacy:spawnable/pachycephalosaurus" Not Having A Translated String
+- Fixed "#fossilslegacy:spawnable/pteranodon" Not Having A Translated String
+- Fixed "#fossilslegacy:spawnable/smilodon" Not Having A Translated String
+- Fixed "#fossilslegacy:spawnable/spinosaurus" Not Having A Translated String
+- Fixed "#fossilslegacy:spawnable/stegosaurus" Not Having A Translated String
+- Fixed "#fossilslegacy:spawnable/therizinosaurus" Not Having A Translated String
+- Fixed "#fossilslegacy:spawnable/triceratops" Not Having A Translated String
+- Fixed "#fossilslegacy:spawnable/tyrannosaurus" Not Having A Translated String
+- Fixed "#fossilslegacy:spawnable/velociraptor" Not Having A Translated String
+- (Fabric) Fixed Player Data Not Loading On Servers
+- Added "doAnimalBlockBreaking" Game Rule
+- Added "doAnimalHunger" Game Rule
+- Added "doAnimalGrowth" Game Rule
 - Removed Config
 17/12/2024
 - Fixed Server Crash

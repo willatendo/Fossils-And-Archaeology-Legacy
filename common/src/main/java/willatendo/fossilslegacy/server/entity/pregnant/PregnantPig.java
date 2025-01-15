@@ -82,12 +82,6 @@ public class PregnantPig extends Pig implements DinopediaInformation, PregnantAn
         this.birthTick(this, this.level());
     }
 
-    @Override
-    public void onEntityTicksComplete(Mob mob, Entity offspring, Level level) {
-        if (offspring instanceof CoatTypeEntity coatTypeEntity) {
-            coatTypeEntity.setCoatType(this.getOffspringCoatType());
-        }
-    }
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {

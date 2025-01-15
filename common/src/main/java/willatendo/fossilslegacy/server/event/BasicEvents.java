@@ -38,6 +38,8 @@ import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
 import willatendo.fossilslegacy.server.item.FossilsLegacyLootTables;
 import willatendo.fossilslegacy.server.item.FossilsLegacyMapDecorationTypes;
+import willatendo.fossilslegacy.server.item.dinopedia.DinopediaEntry;
+import willatendo.fossilslegacy.server.item.dinopedia.DinopediaType;
 import willatendo.fossilslegacy.server.item.feederfood.FeederFood;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyBlockTags;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyStructureTags;
@@ -187,12 +189,15 @@ public class BasicEvents {
 
     public static void newRegistryEvent(NewRegistryRegister newRegistryRegister) {
         newRegistryRegister.register(FossilsLegacyBuiltInRegistries.COMMAND_TYPES, FossilsLegacyRegistries.COMMAND_TYPES);
+        newRegistryRegister.register(FossilsLegacyBuiltInRegistries.DINOPEDIA_LINE_TYPES, FossilsLegacyRegistries.DINOPEDIA_LINE_TYPE);
         newRegistryRegister.register(FossilsLegacyBuiltInRegistries.EGG_VARIANTS, FossilsLegacyRegistries.EGG_VARIANTS);
         newRegistryRegister.register(FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES, FossilsLegacyRegistries.PREGNANCY_TYPES);
     }
 
     public static void newDynamicRegistryEvent(DynamicRegistryRegister dynamicRegistryRegister) {
         dynamicRegistryRegister.register(FossilsLegacyRegistries.COAT_TYPES, CoatType.DIRECT_CODEC);
+        dynamicRegistryRegister.register(FossilsLegacyRegistries.DINOPEDIA_ENTRY, DinopediaEntry.CODEC);
+        dynamicRegistryRegister.register(FossilsLegacyRegistries.DINOPEDIA_TYPE, DinopediaType.CODEC);
         dynamicRegistryRegister.register(FossilsLegacyRegistries.FEEDER_FOOD, FeederFood.DIRECT_CODEC);
         dynamicRegistryRegister.register(FossilsLegacyRegistries.FOSSIL_VARIANTS, FossilVariant.DIRECT_CODEC);
         dynamicRegistryRegister.register(FossilsLegacyRegistries.STONE_TABLET_VARIANTS, StoneTabletVariant.DIRECT_CODEC);

@@ -899,16 +899,36 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyBiomeTags.HAS_TOTEM_POLE, "Has Totem Pole");
         this.add(FossilsLegacyBiomeTags.HAS_WEAPON_SHOP, "Has Weapon Shop");
 
+        this.add(FossilsLegacyBlockTags.ANKYLOSAURUS_SPAWNABLE, "Ankylosaurus Spawnable");
+        this.add(FossilsLegacyBlockTags.BRACHIOSAURUS_SPAWNABLE, "Brachiosaurus Spawnable");
+        this.add(FossilsLegacyBlockTags.CALAMITES_LOGS, "Calamites Logs");
+        this.add(FossilsLegacyBlockTags.CARNOTAURUS_SPAWNABLE, "Carnotaurus Spawnable");
+        this.add(FossilsLegacyBlockTags.COMPSOGNATHUS_SPAWNABLE, "Compsognathus Spawnable");
+        this.add(FossilsLegacyBlockTags.CRYOLOPHOSAURUS_SPAWNABLE, "Cryolophosaurus Spawnable");
+        this.add(FossilsLegacyBlockTags.DILOPHOSAURUS_SPAWNABLE, "Dilophosaurus Spawnable");
+        this.add(FossilsLegacyBlockTags.DIMETRODON_SPAWNABLE, "Dimetrodon Spawnable");
+        this.add(FossilsLegacyBlockTags.DODO_SPAWNABLE, "Dodo Spawnable");
         this.add(FossilsLegacyBlockTags.EATABLE_FERN, "Eatable Fern");
         this.add(FossilsLegacyBlockTags.EATABLE_LEAVES, "Eatable Leaves");
         this.add(FossilsLegacyBlockTags.FEEDER, "Feeder");
+        this.add(FossilsLegacyBlockTags.GALLIMIMUS_SPAWNABLE, "Gallimimus Spawnable");
         this.add(FossilsLegacyBlockTags.JURASSIC_FERN_PLANTABLE_ON, "Jurassic Fern Plantable On");
         this.add(FossilsLegacyBlockTags.LEPIDODENDRON_LOGS, "Lepidodendron Logs");
+        this.add(FossilsLegacyBlockTags.MAMMOTH_SPAWNABLE, "Mammoth Spawnable");
+        this.add(FossilsLegacyBlockTags.MOA_SPAWNABLE, "Moa Spawnable");
+        this.add(FossilsLegacyBlockTags.PACHYCEPHALOSAURUS_SPAWNABLE, "Pachycephalosaurus Spawnable");
         this.add(FossilsLegacyBlockTags.PERMAFROST_FROSTABLE, "Permafrost Frostable");
+        this.add(FossilsLegacyBlockTags.PTERANODON_SPAWNABLE, "Pteranodon Spawnable");
         this.add(FossilsLegacyBlockTags.SIGILLARIA_LOGS, "Sigillaria Logs");
-        this.add(FossilsLegacyBlockTags.CALAMITES_LOGS, "Calamites Logs");
+        this.add(FossilsLegacyBlockTags.SMILODON_SPAWNABLE, "Smilodon Spawnable");
+        this.add(FossilsLegacyBlockTags.SPINOSAURUS_SPAWNABLE, "Spinosaurus Spawnable");
         this.add(FossilsLegacyBlockTags.SPINOSAURUS_UNBREAKABLES, "Spinosaurus Unbreakables");
+        this.add(FossilsLegacyBlockTags.STEGOSAURUS_SPAWNABLE, "Stegosaurus Spawnable");
+        this.add(FossilsLegacyBlockTags.THERIZINOSAURUS_SPAWNABLE, "Therizinosaurus Spawnable");
+        this.add(FossilsLegacyBlockTags.TRICERATOPS_SPAWNABLE, "Triceratops Spawnable");
+        this.add(FossilsLegacyBlockTags.TYRANNOSAURUS_SPAWNABLE, "Tyrannosaurus Spawnable");
         this.add(FossilsLegacyBlockTags.TYRANNOSAURUS_UNBREAKABLES, "Tyrannosaurus Unbreakables");
+        this.add(FossilsLegacyBlockTags.VELOCIRAPTOR_SPAWNABLE, "Velociraptor Spawnable");
 
         this.add(FossilsLegacyCoatTypeTags.ANKYLOSAURUS, "Ankylosaurus");
         this.add(FossilsLegacyCoatTypeTags.BRACHIOSAURUS, "Brachiosaurus");
@@ -919,15 +939,16 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyCoatTypeTags.CRYOLOPHOSAURUS, "Cryolophosaurus");
         this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_CRYOLOPHOSAURUS, "Non-Legacy Cryolophosaurus");
         this.add(FossilsLegacyCoatTypeTags.DILOPHOSAURUS, "Dilophosaurus");
+        this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_DILOPHOSAURUS, "Non-Legacy Dilophosaurus");
         this.add(FossilsLegacyCoatTypeTags.DIMETRODON, "Dimetrodon");
         this.add(FossilsLegacyCoatTypeTags.DODO, "Dodo");
         this.add(FossilsLegacyCoatTypeTags.FUTABASAURUS, "Futabasaurus");
         this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_FUTABASAURUS, "Non-Legacy Futabasaurus");
         this.add(FossilsLegacyCoatTypeTags.GALLIMIMUS, "Gallimimus");
         this.add(FossilsLegacyCoatTypeTags.LEGACY, "Legacy");
-        this.add(FossilsLegacyCoatTypeTags.MOA, "Moa");
         this.add(FossilsLegacyCoatTypeTags.MAMMOTH, "Mammoth");
         this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_MAMMOTH, "Non-Legacy Mammoth");
+        this.add(FossilsLegacyCoatTypeTags.MOA, "Moa");
         this.add(FossilsLegacyCoatTypeTags.MOSASAURUS, "Mosasaurus");
         this.add(FossilsLegacyCoatTypeTags.NON_LEGACY_MOSASAURUS, "Non-Legacy Mosasaurus");
         this.add(FossilsLegacyCoatTypeTags.PACHYCEPHALOSAURUS, "Pachycephalosaurus");
@@ -951,14 +972,16 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyDamgeTypeTags.SPINOSAURUS_IMMUNE, "Spinosaurus Immune");
         this.add(FossilsLegacyDamgeTypeTags.TYRANNOSAURUS_IMMUNE, "Tyrannosaurus Immune");
 
-        this.add(FossilsLegacyEntityTypeTags.CARNOTAURUS_VICTIMS, "Carnotaurus");
-        this.add(FossilsLegacyEntityTypeTags.COMPSOGNATHUS_VICTIMS, "Compsognathus");
-        this.add(FossilsLegacyEntityTypeTags.CRYOLOPHOSAURUS_VICTIMS, "Cryolophosaurus");
-        this.add(FossilsLegacyEntityTypeTags.DILOPHOSAURUS_VICTIMS, "Dilophosaurus");
-        this.add(FossilsLegacyEntityTypeTags.MOSASAURUS_VICTIMS, "Mosasaurus");
-        this.add(FossilsLegacyEntityTypeTags.SPINOSAURUS_VICTIMS, "Spinosaurs");
-        this.add(FossilsLegacyEntityTypeTags.TYRANNOSAURUS_VICTIMS, "Tyrannosaurus");
-        this.add(FossilsLegacyEntityTypeTags.VELOCIRAPTOR_VICTIMS, "Velociraptor");
+        this.add(FossilsLegacyEntityTypeTags.CARNOTAURUS_VICTIMS, "Carnotaurus Victims");
+        this.add(FossilsLegacyEntityTypeTags.COMPSOGNATHUS_VICTIMS, "Compsognathus Victims");
+        this.add(FossilsLegacyEntityTypeTags.CRYOLOPHOSAURUS_VICTIMS, "Cryolophosaurus Victims");
+        this.add(FossilsLegacyEntityTypeTags.DILOPHOSAURUS_VICTIMS, "Dilophosaurus Victims");
+        this.add(FossilsLegacyEntityTypeTags.DIMETRODON_VICTIMS, "Dimetrodon Victims");
+        this.add(FossilsLegacyEntityTypeTags.MAGIC_CONCH_COMMANDABLE, "Magic Conch Commandables");
+        this.add(FossilsLegacyEntityTypeTags.MOSASAURUS_VICTIMS, "Mosasaurus Victims");
+        this.add(FossilsLegacyEntityTypeTags.SPINOSAURUS_VICTIMS, "Spinosaurs Victims");
+        this.add(FossilsLegacyEntityTypeTags.TYRANNOSAURUS_VICTIMS, "Tyrannosaurus Victims");
+        this.add(FossilsLegacyEntityTypeTags.VELOCIRAPTOR_VICTIMS, "Velociraptor Victims");
 
         this.add(FossilsLegacyFluidTags.PERMAFROST_FREEZABLE, "Permaforst Freezable");
 
@@ -973,6 +996,7 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItemTags.COMPSOGNATHUS_COMMANDABLES, "Compsognathus Commandables");
         this.add(FossilsLegacyItemTags.CRYOLOPHOSAURUS_COMMANDABLES, "Cryolophosaurus Commandables");
         this.add(FossilsLegacyItemTags.DILOPHOSAURUS_COMMANDABLES, "Dilophosaurus Commandables");
+        this.add(FossilsLegacyItemTags.DIMETRODON_COMMANDABLES, "Dimetrodon Commandables");
         this.add(FossilsLegacyItemTags.DNA, "DNA");
         this.add(FossilsLegacyItemTags.DRUM_INSTRUMENT, "Drum Instrument");
         this.add(FossilsLegacyItemTags.FROGLIGHTS, "Froglights");

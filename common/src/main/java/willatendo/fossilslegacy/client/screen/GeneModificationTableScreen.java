@@ -5,6 +5,7 @@ import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -147,9 +148,9 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
                     CoatType coatType = this.coatTypes[this.selection];
                     dinosaur.setCoatType(Holder.direct(coatType));
                     CoatType.DisplayInfo displayInfo = coatType.displayInfo();
-                    this.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos + 86, this.topPos + 15, this.leftPos + 131, this.topPos + 53, 16, displayInfo.displayScale(), displayInfo.displayYOffset(), this.xMouse, this.yMouse, mob);
+                    GeneModificationTableScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos + 86, this.topPos + 15, this.leftPos + 131, this.topPos + 53, 16, displayInfo.displayScale(), displayInfo.displayYOffset(), this.xMouse, this.yMouse, mob);
                 } else if (!(mob instanceof Dinosaur)) {
-                    this.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos + 86, this.topPos + 15, this.leftPos + 131, this.topPos + 53, 16, 1.0F, 0.25F, this.xMouse, this.yMouse, mob);
+                    GeneModificationTableScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos + 86, this.topPos + 15, this.leftPos + 131, this.topPos + 53, 16, 1.0F, 0.25F, this.xMouse, this.yMouse, mob);
                 }
             }
             if (this.coatTypes.length > 0) {
@@ -234,7 +235,7 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
         }
     }
 
-    private void renderEntityInInventoryFollowsMouse(GuiGraphics guiGraphics, int left, int top, int right, int bottom, int scale, float displayScale, float yOffset, float mouseX, float mouseY, LivingEntity livingEntity) {
+    public static void renderEntityInInventoryFollowsMouse(GuiGraphics guiGraphics, int left, int top, int right, int bottom, int scale, float displayScale, float yOffset, float mouseX, float mouseY, LivingEntity livingEntity) {
         float x = (left + right) / 2.0F;
         float y = (top + bottom) / 2.0F;
         guiGraphics.enableScissor(left, top, right, bottom);
@@ -256,7 +257,7 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
         float entityScale = livingEntity.getScale();
         Vector3f vector3f = new Vector3f(0.0F, livingEntity.getBbHeight() / 2.0F + yOffset * entityScale, 0.0F);
         float normalizedScale = (float) scale / entityScale;
-        renderEntityInInventory(guiGraphics, x, y, normalizedScale, displayScale, vector3f, zRotation, xRotation, livingEntity);
+        GeneModificationTableScreen.renderEntityInInventory(guiGraphics, x, y, normalizedScale, displayScale, vector3f, zRotation, xRotation, livingEntity);
         livingEntity.yBodyRot = yBodyRot;
         livingEntity.setYRot(yRot);
         livingEntity.setXRot(xRot);
@@ -266,14 +267,14 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
     }
 
 
-    private void renderEntityInInventory(GuiGraphics guiGraphics, float x, float y, float scale, float displayScale, Vector3f translate, Quaternionf pose, Quaternionf cameraOrientation, LivingEntity livingEntity) {
+    public static void renderEntityInInventory(GuiGraphics guiGraphics, float x, float y, float scale, float displayScale, Vector3f translate, Quaternionf pose, Quaternionf cameraOrientation, LivingEntity livingEntity) {
         guiGraphics.pose().pushPose();
         guiGraphics.pose().translate(x, y, 50.0);
         guiGraphics.pose().scale(displayScale * scale, displayScale * scale, displayScale * -scale);
         guiGraphics.pose().translate(translate.x, translate.y, translate.z);
         guiGraphics.pose().mulPose(pose);
         Lighting.setupForEntityInInventory();
-        EntityRenderDispatcher entityRenderDispatcher = this.minecraft.getEntityRenderDispatcher();
+        EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
         if (cameraOrientation != null) {
             entityRenderDispatcher.overrideCameraOrientation(cameraOrientation.conjugate(new Quaternionf()).rotateY(3.1415927F));
         }

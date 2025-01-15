@@ -1,12 +1,11 @@
 package willatendo.fossilslegacy.server.entity.dinosaur.jurassic;
 
-import com.google.common.collect.Lists;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
@@ -29,14 +28,14 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.item.dinopedia.DinopediaType;
+import willatendo.fossilslegacy.server.item.dinopedia.FossilsLegacyDinopediaTypes;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyEntityTypeTags;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyItemTags;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 public class Dilophosaurus extends Dinosaur implements DinopediaInformation, RangedAttackMob {
     private static final EntityDataAccessor<Boolean> ATTACKING = SynchedEntityData.defineId(Dilophosaurus.class, EntityDataSerializers.BOOLEAN);
@@ -157,23 +156,8 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
     }
 
     @Override
-    public List<Component> info(Player player) {
-        ArrayList<Component> information = Lists.newArrayList();
-        if (this.isTame() && this.isOwnedBy(player)) {
-            information.add(this.getDisplayName());
-            information.add(FossilsLegacyUtils.translation("dinopedia", "owner", this.getOwner() != null ? this.getOwner().getDisplayName().getString() : FossilsLegacyUtils.translation("dinopedia", "wild").getString()));
-            information.add(FossilsLegacyUtils.translation("dinopedia", "age", this.getDaysAlive()));
-            information.add(FossilsLegacyUtils.translation("dinopedia", "health", (int) this.getHealth(), (int) this.getMaxHealth()));
-            information.add(FossilsLegacyUtils.translation("dinopedia", "hunger", this.getHunger(), this.getMaxHunger()));
-        } else {
-            information.add(this.getDisplayName());
-            if (this.isTame()) {
-                information.add(FossilsLegacyUtils.translation("dinopedia", "not_owner"));
-            } else {
-                information.add(FossilsLegacyUtils.translation("dinopedia", "wild"));
-            }
-        }
-        return information;
+    public Optional<ResourceKey<DinopediaType>> getDinopediaType() {
+        return Optional.of(FossilsLegacyDinopediaTypes.DILOPHOSAURUS);
     }
 
     @Override

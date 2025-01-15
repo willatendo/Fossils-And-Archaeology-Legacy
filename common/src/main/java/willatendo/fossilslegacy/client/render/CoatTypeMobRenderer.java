@@ -27,7 +27,7 @@ public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends Mo
         }
     }
 
-    private EntityModel<T> getModel(T dinosaur, ResourceLocation id) {
+    public EntityModel<T> getModel(T dinosaur, ResourceLocation id) {
         if (JsonModelLoader.isJsonModel(id)) {
             return JsonModelLoader.getModel(id);
         } else if (JsonModelLoader.isBuiltInModel(id)) {
@@ -46,7 +46,7 @@ public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity> extends Mo
         poseStack.scale(dinosaur.renderScaleWidth(), dinosaur.renderScaleHeight(), dinosaur.renderScaleWidth());
     }
 
-    protected Optional<EntityModel<T>> getAdditionalModel(T mob, CoatType coatType) {
+    public Optional<EntityModel<T>> getAdditionalModel(T mob, CoatType coatType) {
         return Optional.empty();
     }
 

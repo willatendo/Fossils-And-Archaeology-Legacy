@@ -1,8 +1,7 @@
 package willatendo.fossilslegacy.server.entity.dinosaur.quaternary;
 
-import com.google.common.collect.Lists;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -25,12 +24,12 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.item.dinopedia.DinopediaType;
+import willatendo.fossilslegacy.server.item.dinopedia.FossilsLegacyDinopediaTypes;
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 public class Moa extends Dinosaur implements DinopediaInformation {
     public int eggTime = this.random.nextInt(6000) + 6000;
@@ -131,23 +130,8 @@ public class Moa extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
-    public List<Component> info(Player player) {
-        ArrayList<Component> information = Lists.newArrayList();
-        if (this.isTame() && this.isOwnedBy(player)) {
-            information.add(this.getDisplayName());
-            information.add(FossilsLegacyUtils.translation("dinopedia", "owner", this.getOwner() != null ? this.getOwner().getDisplayName().getString() : FossilsLegacyUtils.translation("dinopedia", "wild").getString()));
-            information.add(FossilsLegacyUtils.translation("dinopedia", "age", this.getDaysAlive()));
-            information.add(FossilsLegacyUtils.translation("dinopedia", "health", (int) this.getHealth(), (int) this.getMaxHealth()));
-            information.add(FossilsLegacyUtils.translation("dinopedia", "hunger", this.getHunger(), this.getMaxHunger()));
-        } else {
-            information.add(this.getDisplayName());
-            if (this.isTame()) {
-                information.add(FossilsLegacyUtils.translation("dinopedia", "not_owner"));
-            } else {
-                information.add(FossilsLegacyUtils.translation("dinopedia", "wild"));
-            }
-        }
-        return information;
+    public Optional<ResourceKey<DinopediaType>> getDinopediaType() {
+        return Optional.of(FossilsLegacyDinopediaTypes.MOA);
     }
 
     @Override
