@@ -12,9 +12,11 @@ import willatendo.fossilslegacy.server.item.dinopedia.DinopediaEntry;
 import willatendo.fossilslegacy.server.item.dinopedia.DinopediaType;
 import willatendo.fossilslegacy.server.item.dinopedia.line.DinopediaLineType;
 import willatendo.fossilslegacy.server.item.feederfood.FeederFood;
+import willatendo.fossilslegacy.server.recipe.AnalyzerResult;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FossilsLegacyRegistries {
+    public static final ResourceKey<Registry<AnalyzerResult>> ANALYZER_RESULT = ResourceKey.createRegistryKey(FossilsLegacyUtils.resource("analyzer_result"));
     public static final ResourceKey<Registry<CoatType>> COAT_TYPES = ResourceKey.createRegistryKey(FossilsLegacyUtils.resource("coat_types"));
     public static final ResourceKey<Registry<CommandType>> COMMAND_TYPES = ResourceKey.createRegistryKey(FossilsLegacyUtils.resource("command_type"));
     public static final ResourceKey<Registry<DinopediaEntry>> DINOPEDIA_ENTRY = ResourceKey.createRegistryKey(FossilsLegacyUtils.resource("dinopedia_entry"));

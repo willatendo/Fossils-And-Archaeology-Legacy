@@ -63,6 +63,7 @@ public class FossilsLegacyData {
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyCoatTypeTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper));
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyPOITypeTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper));
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyStructureTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper));
+        dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyAnalyzerResultTagProvider(packOutput, registries, FossilsLegacyUtils.ID, existingFileHelper));
         dataGenerator.addProvider(gatherDataEvent.includeServer(), new PackMetadataGenerator(packOutput).add(PackMetadataSection.TYPE, new PackMetadataSection(FossilsLegacyUtils.translation("resourcePack", "description"), DetectedVersion.BUILT_IN.getPackVersion(PackType.CLIENT_RESOURCES), Optional.empty())));
 
         ResourceLocation legacyPack = FossilsLegacyUtils.resource("fa_legacy_textures");

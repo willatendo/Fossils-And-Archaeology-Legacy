@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public record DinopediaEntry(List<DinopediaLine> line, boolean drawEntity, boolean centerText) {
-    public static final Codec<DinopediaEntry> CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.list(DinopediaLine.CODEC).fieldOf("line").forGetter(DinopediaEntry::line), Codec.BOOL.optionalFieldOf("draw_entity", false).forGetter(DinopediaEntry::drawEntity), Codec.BOOL.optionalFieldOf("center_text", false).forGetter(DinopediaEntry::centerText)).apply(instance, DinopediaEntry::new));
+    public static final Codec<DinopediaEntry> DIRECT_CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.list(DinopediaLine.CODEC).fieldOf("line").forGetter(DinopediaEntry::line), Codec.BOOL.optionalFieldOf("draw_entity", false).forGetter(DinopediaEntry::drawEntity), Codec.BOOL.optionalFieldOf("center_text", false).forGetter(DinopediaEntry::centerText)).apply(instance, DinopediaEntry::new));
 
     public List<Component> getText(Dinosaur dinosaur, Player player) {
         ArrayList<Component> text = new ArrayList<>();

@@ -41,6 +41,7 @@ import willatendo.fossilslegacy.server.item.FossilsLegacyMapDecorationTypes;
 import willatendo.fossilslegacy.server.item.dinopedia.DinopediaEntry;
 import willatendo.fossilslegacy.server.item.dinopedia.DinopediaType;
 import willatendo.fossilslegacy.server.item.feederfood.FeederFood;
+import willatendo.fossilslegacy.server.recipe.AnalyzerResult;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyBlockTags;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyStructureTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -195,9 +196,10 @@ public class BasicEvents {
     }
 
     public static void newDynamicRegistryEvent(DynamicRegistryRegister dynamicRegistryRegister) {
+        dynamicRegistryRegister.register(FossilsLegacyRegistries.ANALYZER_RESULT, AnalyzerResult.DIRECT_CODEC);
         dynamicRegistryRegister.register(FossilsLegacyRegistries.COAT_TYPES, CoatType.DIRECT_CODEC);
-        dynamicRegistryRegister.register(FossilsLegacyRegistries.DINOPEDIA_ENTRY, DinopediaEntry.CODEC);
-        dynamicRegistryRegister.register(FossilsLegacyRegistries.DINOPEDIA_TYPE, DinopediaType.CODEC);
+        dynamicRegistryRegister.register(FossilsLegacyRegistries.DINOPEDIA_ENTRY, DinopediaEntry.DIRECT_CODEC);
+        dynamicRegistryRegister.register(FossilsLegacyRegistries.DINOPEDIA_TYPE, DinopediaType.DIRECT_CODEC);
         dynamicRegistryRegister.register(FossilsLegacyRegistries.FEEDER_FOOD, FeederFood.DIRECT_CODEC);
         dynamicRegistryRegister.register(FossilsLegacyRegistries.FOSSIL_VARIANTS, FossilVariant.DIRECT_CODEC);
         dynamicRegistryRegister.register(FossilsLegacyRegistries.STONE_TABLET_VARIANTS, StoneTabletVariant.DIRECT_CODEC);
