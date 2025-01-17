@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "minecraft:axolotl_bucket"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:axolotl_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/axolotl_bucket",
   "time": 100
 }

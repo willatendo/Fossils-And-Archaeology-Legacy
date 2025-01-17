@@ -4,13 +4,6 @@
   "ingredient": {
     "tag": "minecraft:wool"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:sheep_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/wool",
   "time": 100
 }

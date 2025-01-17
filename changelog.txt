@@ -2,6 +2,7 @@
 - Fixed Spinosaurs Always "Rideable" In Dinopedia
 - Added Dinopedia Screen
 - Added Data-Driven Dinopedia Entries
+- Added Seperate Data-Driven Analyzer Results (No Longer Override Recipes!)
 12/1/2025 1.4.4
 - "#fossilslegacy:ankylosaurus_commandables" Now "#fossilslegacy:commandables/ankylosaurus"
 - "#fossilslegacy:brachiosaurus_commandables" Now "#fossilslegacy:commandables/brachiosaurus"

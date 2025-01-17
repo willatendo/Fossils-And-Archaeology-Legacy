@@ -10,19 +10,24 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
-import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
+import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.jei.FossilsLegacyJEIRecipeTypes;
 import willatendo.fossilslegacy.server.jei.FossilsLegacyJEITextures;
 import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
+import willatendo.fossilslegacy.server.recipe.AnalyzerResult;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public final class AnalyzationCategory extends AbstractRecipeCategory<RecipeHolder<AnalyzationRecipe>> {
     private final LoadingCache<Integer, IDrawableAnimated> cachedArrows;
@@ -46,14 +51,18 @@ public final class AnalyzationCategory extends AbstractRecipeCategory<RecipeHold
                 }
             }
         }
+
+        Registry<AnalyzerResult> analyzerResultRegistry = Minecraft.getInstance().level.registryAccess().registryOrThrow(FossilsLegacyRegistries.ANALYZER_RESULT);
+        Map<ItemStack, AnalyzerResult> map = new HashMap<>();
+        List<AnalyzerResult> analyzerResults = new ArrayList<>();
         List<ItemStack> outputs = new ArrayList<>();
-        analyzationRecipe.getResults().forEach(analyzationOutputs -> outputs.add(analyzationOutputs.getResult()));
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT, 95, 5).setOutputSlotBackground().addItemStacks(outputs).addRichTooltipCallback((iRecipeSlotView, tooltip) -> {
-            int weight = analyzationRecipe.getWeight(iRecipeSlotView.getDisplayedItemStack().get());
-            if (weight > 0) {
-                tooltip.add(Component.literal(weight + "%").withStyle(ChatFormatting.GRAY));
-            }
+        analyzerResultRegistry.getTag(analyzationRecipe.results).get().forEach(analyzerResultHolder -> analyzerResults.add(analyzerResultHolder.value()));
+        analyzerResults.forEach(analyzerResult -> {
+            ItemStack outputStack = analyzerResult.output();
+            outputs.add(outputStack);
+            map.put(outputStack, analyzerResult);
         });
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT, 95, 5).setOutputSlotBackground().addItemStacks(outputs);
         for (int x = 0; x < 3; x++) {
             iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.RENDER_ONLY, 91 + (x * 18), 37).setStandardSlotBackground();
         }

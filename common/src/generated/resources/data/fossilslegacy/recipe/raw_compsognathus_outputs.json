@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "fossilslegacy:raw_compsognathus"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:compsognathus_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/raw_compsognathus_meat",
   "time": 100
 }

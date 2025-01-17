@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "minecraft:goat_horn"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:goat_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/goat_horn",
   "time": 100
 }

@@ -2,17 +2,19 @@ package willatendo.fossilslegacy.client.screen.recipebook;
 
 import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
+import net.minecraft.core.Holder;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
+import willatendo.fossilslegacy.server.recipe.AnalyzerResult;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class AnalyzerRecipeBookComponent extends RecipeBookComponent {
     private static final WidgetSprites FILTER_SPRITES = new WidgetSprites(FossilsLegacyUtils.resource("recipe_book/analyzer_filter_enabled"), FossilsLegacyUtils.resource("recipe_book/analyzer_filter_disabled"), FossilsLegacyUtils.resource("recipe_book/analyzer_filter_enabled_highlighted"), FossilsLegacyUtils.resource("recipe_book/analyzer_filter_disabled_highlighted"));
@@ -32,7 +34,7 @@ public class AnalyzerRecipeBookComponent extends RecipeBookComponent {
 
     @Override
     public void setupGhostRecipe(RecipeHolder<?> recipeHolder, List<Slot> slots) {
-        Ingredient results = Ingredient.of(((AnalyzationRecipe) recipeHolder.value()).results.stream().map(analyzationOutputs -> analyzationOutputs.getResult()).collect(Collectors.toList()).toArray(ItemStack[]::new));
+        Ingredient results = Ingredient.of(this.minecraft.level.registryAccess().registryOrThrow(FossilsLegacyRegistries.ANALYZER_RESULT).getTag(((AnalyzationRecipe) recipeHolder.value()).results).get().stream().map(Holder::value).map(AnalyzerResult::output).toList().toArray(ItemStack[]::new));
         this.ghostRecipe.setRecipe(recipeHolder);
         this.ghostRecipe.addIngredient(results, slots.get(9).x, slots.get(9).y);
         NonNullList<Ingredient> ingredients = recipeHolder.value().getIngredients();

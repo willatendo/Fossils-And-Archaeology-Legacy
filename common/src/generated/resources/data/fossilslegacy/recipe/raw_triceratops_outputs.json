@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "fossilslegacy:raw_triceratops"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:triceratops_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/raw_triceratops_meat",
   "time": 100
 }

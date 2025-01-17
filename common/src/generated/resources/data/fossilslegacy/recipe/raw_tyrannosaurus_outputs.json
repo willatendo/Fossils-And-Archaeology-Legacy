@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "fossilslegacy:raw_tyrannosaurus"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:tyrannosaurus_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/raw_tyrannosaurus_meat",
   "time": 100
 }

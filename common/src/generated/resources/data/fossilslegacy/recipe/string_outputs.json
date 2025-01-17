@@ -4,31 +4,6 @@
   "ingredient": {
     "item": "minecraft:string"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:cat_dna"
-      },
-      "weight": 33
-    },
-    {
-      "result": {
-        "id": "fossilslegacy:cat_dna"
-      },
-      "weight": 33
-    },
-    {
-      "result": {
-        "id": "fossilslegacy:ocelot_dna"
-      },
-      "weight": 33
-    },
-    {
-      "result": {
-        "id": "fossilslegacy:fox_dna"
-      },
-      "weight": 33
-    }
-  ],
+  "results": "fossilslegacy:results/string",
   "time": 100
 }

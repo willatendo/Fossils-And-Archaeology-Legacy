@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "fossilslegacy:raw_dilophosaurus"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:dilophosaurus_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/raw_dilophosaurus_meat",
   "time": 100
 }

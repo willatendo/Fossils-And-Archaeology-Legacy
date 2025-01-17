@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "minecraft:bamboo"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:panda_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/panda_dna",
   "time": 100
 }

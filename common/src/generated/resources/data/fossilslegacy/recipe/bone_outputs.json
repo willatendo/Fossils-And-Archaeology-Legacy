@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "minecraft:bone"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:wolf_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/bone",
   "time": 100
 }

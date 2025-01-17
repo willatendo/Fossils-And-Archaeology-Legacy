@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "fossilslegacy:raw_mosasaurus"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:mosasaurus_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/raw_mosasaurus_meat",
   "time": 100
 }

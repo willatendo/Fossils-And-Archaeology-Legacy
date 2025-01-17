@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "minecraft:chicken"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:chicken_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/chicken",
   "time": 100
 }

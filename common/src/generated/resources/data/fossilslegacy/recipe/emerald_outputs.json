@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "minecraft:emerald"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:fox_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/emerald",
   "time": 100
 }

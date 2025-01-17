@@ -4,13 +4,6 @@
   "ingredient": {
     "tag": "fossilslegacy:froglights"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:frog_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/froglight",
   "time": 100
 }

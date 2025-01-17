@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "fossilslegacy:raw_mammoth"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:mammoth_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/raw_mammoth_meat",
   "time": 100
 }

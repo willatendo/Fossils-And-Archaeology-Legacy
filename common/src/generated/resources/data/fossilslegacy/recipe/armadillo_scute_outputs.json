@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "minecraft:armadillo_scute"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:armadillo_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/armadilo_scute",
   "time": 100
 }

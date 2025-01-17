@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "minecraft:slime_ball"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:panda_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/slimeb_ball",
   "time": 100
 }

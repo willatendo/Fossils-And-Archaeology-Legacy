@@ -4,43 +4,6 @@
   "ingredient": {
     "item": "minecraft:leather"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:cow_dna"
-      },
-      "weight": 20
-    },
-    {
-      "result": {
-        "id": "fossilslegacy:cow_dna"
-      },
-      "weight": 20
-    },
-    {
-      "result": {
-        "id": "fossilslegacy:llama_dna"
-      },
-      "weight": 20
-    },
-    {
-      "result": {
-        "id": "fossilslegacy:horse_dna"
-      },
-      "weight": 20
-    },
-    {
-      "result": {
-        "id": "fossilslegacy:donkey_dna"
-      },
-      "weight": 20
-    },
-    {
-      "result": {
-        "id": "fossilslegacy:mule_dna"
-      },
-      "weight": 20
-    }
-  ],
+  "results": "fossilslegacy:results/leather",
   "time": 100
 }

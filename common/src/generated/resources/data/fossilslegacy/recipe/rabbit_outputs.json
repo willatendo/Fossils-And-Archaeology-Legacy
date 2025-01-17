@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "minecraft:rabbit"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:rabbit_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/raw_rabbit",
   "time": 100
 }

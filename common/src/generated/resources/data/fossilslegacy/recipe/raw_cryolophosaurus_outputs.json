@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "fossilslegacy:raw_cryolophosaurus"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:cryolophosaurus_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/raw_cryolophosaurus_meat",
   "time": 100
 }

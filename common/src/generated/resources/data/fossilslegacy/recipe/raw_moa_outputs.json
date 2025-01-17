@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "fossilslegacy:raw_moa"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:moa_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/raw_moa_meat",
   "time": 100
 }

@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "fossilslegacy:raw_stegosaurus"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:stegosaurus_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/raw_stegosaurus_meat",
   "time": 100
 }

@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "fossilslegacy:raw_pachycephalosaurus"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:pachycephalosaurus_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/raw_pachycephalosaurus_meat",
   "time": 100
 }

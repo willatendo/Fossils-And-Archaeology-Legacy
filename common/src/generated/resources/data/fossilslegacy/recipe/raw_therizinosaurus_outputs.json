@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "fossilslegacy:raw_therizinosaurus"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:therizinosaurus_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/raw_therizinosaurus_meat",
   "time": 100
 }

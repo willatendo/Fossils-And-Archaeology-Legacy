@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "minecraft:salmon"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:polar_bear_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/salmon",
   "time": 100
 }

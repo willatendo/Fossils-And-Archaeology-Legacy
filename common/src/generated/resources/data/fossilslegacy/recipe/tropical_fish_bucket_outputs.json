@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "minecraft:tropical_fish_bucket"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:axolotl_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/tropical_fish_bucket",
   "time": 100
 }

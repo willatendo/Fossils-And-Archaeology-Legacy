@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "fossilslegacy:raw_ankylosaurus"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:ankylosaurus_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/raw_ankylosaurus_meat",
   "time": 100
 }

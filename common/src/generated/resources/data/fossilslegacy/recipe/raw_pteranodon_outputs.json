@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "fossilslegacy:raw_pteranodon"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:pteranodon_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/raw_pteranodon_meat",
   "time": 100
 }

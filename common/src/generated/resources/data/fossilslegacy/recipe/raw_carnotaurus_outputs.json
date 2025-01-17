@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "fossilslegacy:raw_carnotaurus"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:carnotaurus_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/raw_carnotaurus_meat",
   "time": 100
 }

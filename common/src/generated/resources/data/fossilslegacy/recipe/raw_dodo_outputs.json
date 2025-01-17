@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "fossilslegacy:raw_dodo"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:dodo_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/raw_dodo_meat",
   "time": 100
 }

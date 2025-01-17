@@ -20,12 +20,12 @@ import willatendo.fossilslegacy.server.inventory.AnalyzationBookCategory;
 import willatendo.fossilslegacy.server.inventory.ArchaeologyBookCategory;
 import willatendo.fossilslegacy.server.inventory.CultivationBookCategory;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.recipe.AnalyzerResult;
 import willatendo.fossilslegacy.server.recipe.MagicConchRecipe;
+import willatendo.fossilslegacy.server.tags.FossilsLegacyAnalyzerResultTags;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyItemTags;
 import willatendo.simplelibrary.data.SimpleRecipeProvider;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
@@ -235,51 +235,51 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         this.archaeology(ArchaeologyBookCategory.REPAIR, "stone_javelin_repair", FossilsLegacyItems.BROKEN_STONE_JAVELIN.get(), FossilsLegacyItems.STONE_JAVELIN.get(), 3000);
         this.archaeology(ArchaeologyBookCategory.REPAIR, "wooden_javelin_repair", FossilsLegacyItems.BROKEN_WOODEN_JAVELIN.get(), FossilsLegacyItems.WOODEN_JAVELIN.get(), 3000);
 
-        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.FOSSIL.get(), Items.BONE_MEAL, 60, 100, new AnalyzerResult(FossilsLegacyItems.JURASSIC_FERN_SPORES.get(), 20), new AnalyzerResult(FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get(), 10), new AnalyzerResult(FossilsLegacyItems.PETRIFIED_SIGILLARIA_SAPLING.get(), 10), new AnalyzerResult(FossilsLegacyItems.PETRIFIED_CALAMITES_SAPLING.get(), 10), new AnalyzerResult(FossilsLegacyItems.BRACHIOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.DILOPHOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.MOSASAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.NAUTILUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.FUTABASAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.GALLIMIMUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.PTERANODON_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.STEGOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.TRICERATOPS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.ANKYLOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.DIMETRODON_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.TYRANNOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.VELOCIRAPTOR_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.CARNOTAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.CRYOLOPHOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.THERIZINOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.PACHYCEPHALOSAURUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.COMPSOGNATHUS_DNA.get(), 2), new AnalyzerResult(FossilsLegacyItems.SPINOSAURUS_DNA.get(), 2));
-        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RELIC_SCRAP.get(), Blocks.GRAVEL, 40, 100, new AnalyzerResult(FossilsLegacyItems.STONE_TABLET.get(), 30), new AnalyzerResult(Items.FLINT, 20), new AnalyzerResult(FossilsLegacyItems.ANCIENT_SWORD_ARTIFACT.get(), 5), new AnalyzerResult(FossilsLegacyItems.ANCIENT_SHOVEL_ARTIFACT.get(), 5), new AnalyzerResult(FossilsLegacyItems.ANCIENT_PICKAXE_ARTIFACT.get(), 5), new AnalyzerResult(FossilsLegacyItems.ANCIENT_AXE_ARTIFACT.get(), 5), new AnalyzerResult(FossilsLegacyItems.ANCIENT_HOE_ARTIFACT.get(), 5), new AnalyzerResult(FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get(), 5), new AnalyzerResult(FossilsLegacyItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 5), new AnalyzerResult(FossilsLegacyItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 5), new AnalyzerResult(FossilsLegacyItems.ANCIENT_BOOTS_ARTIFACT.get(), 5), new AnalyzerResult(FossilsLegacyItems.PREHISTORIC_COIN.get(), 1));
-        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.FROZEN_MEAT.get(), FossilsLegacyItems.SMILODON_DNA.get(), 33, 100, new AnalyzerResult(FossilsLegacyItems.MAMMOTH_DNA.get(), 33), new AnalyzerResult(FossilsLegacyItems.DODO_DNA.get(), 33), new AnalyzerResult(FossilsLegacyItems.MOA_DNA.get(), 33), new AnalyzerResult(Items.BEEF, 34));
-        this.simpleAnalyzation(Items.AXOLOTL_BUCKET, FossilsLegacyItems.AXOLOTL_DNA.get());
-        this.simpleAnalyzation(Items.TROPICAL_FISH_BUCKET, FossilsLegacyItems.AXOLOTL_DNA.get());
-        this.simpleAnalyzation(Items.PORKCHOP, FossilsLegacyItems.PIG_DNA.get());
-        this.simpleAnalyzation(Items.BEEF, FossilsLegacyItems.COW_DNA.get());
-        this.simpleAnalyzation(Items.CHICKEN, FossilsLegacyItems.CHICKEN_DNA.get());
-        this.simpleAnalyzation(Items.FEATHER, FossilsLegacyItems.CHICKEN_DNA.get(), FossilsLegacyItems.PARROT_DNA.get());
-        this.simpleAnalyzation(Items.BAMBOO, FossilsLegacyItems.PANDA_DNA.get());
-        this.simpleAnalyzation(Items.SLIME_BALL, FossilsLegacyItems.PANDA_DNA.get());
-        this.simpleAnalyzation(Items.MUTTON, FossilsLegacyItems.SHEEP_DNA.get());
-        this.simpleAnalyzation(Items.RABBIT, FossilsLegacyItems.RABBIT_DNA.get());
-        this.simpleAnalyzation(Items.BONE, FossilsLegacyItems.WOLF_DNA.get());
-        this.simpleAnalyzation(Items.EMERALD, FossilsLegacyItems.FOX_DNA.get());
-        this.simpleAnalyzation(Items.GOAT_HORN, FossilsLegacyItems.GOAT_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItemTags.FROGLIGHTS, "froglights_outputs", FossilsLegacyItems.FROG_DNA.get());
-        this.simpleAnalyzation(Items.LEATHER, FossilsLegacyItems.COW_DNA.get(), FossilsLegacyItems.LLAMA_DNA.get(), FossilsLegacyItems.HORSE_DNA.get(), FossilsLegacyItems.DONKEY_DNA.get(), FossilsLegacyItems.MULE_DNA.get());
-        this.simpleAnalyzation(Items.STRING, FossilsLegacyItems.CAT_DNA.get(), FossilsLegacyItems.OCELOT_DNA.get(), FossilsLegacyItems.FOX_DNA.get());
-        this.simpleAnalyzation(Items.COD, FossilsLegacyItems.POLAR_BEAR_DNA.get(), FossilsLegacyItems.DOLPHIN_DNA.get());
-        this.simpleAnalyzation(Items.SALMON, FossilsLegacyItems.POLAR_BEAR_DNA.get());
-        this.simpleAnalyzation(ItemTags.WOOL, "wool_outputs", FossilsLegacyItems.SHEEP_DNA.get());
-        this.simpleAnalyzation(Items.ARMADILLO_SCUTE, FossilsLegacyItems.ARMADILLO_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_BRACHIOSAURUS.get(), FossilsLegacyItems.BRACHIOSAURUS_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_DILOPHOSAURUS.get(), FossilsLegacyItems.DILOPHOSAURUS_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_MAMMOTH.get(), FossilsLegacyItems.MAMMOTH_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_MOSASAURUS.get(), FossilsLegacyItems.MOSASAURUS_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_FUTABASAURUS.get(), FossilsLegacyItems.FUTABASAURUS_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_PTERANODON.get(), FossilsLegacyItems.PTERANODON_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_SMILODON.get(), FossilsLegacyItems.SMILODON_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_STEGOSAURUS.get(), FossilsLegacyItems.STEGOSAURUS_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_TRICERATOPS.get(), FossilsLegacyItems.TRICERATOPS_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_TYRANNOSAURUS.get(), FossilsLegacyItems.TYRANNOSAURUS_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_VELOCIRAPTOR.get(), FossilsLegacyItems.VELOCIRAPTOR_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_CARNOTAURUS.get(), FossilsLegacyItems.CARNOTAURUS_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_CRYOLOPHOSAURUS.get(), FossilsLegacyItems.CRYOLOPHOSAURUS_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_THERIZINOSAURUS.get(), FossilsLegacyItems.THERIZINOSAURUS_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_PACHYCEPHALOSAURUS.get(), FossilsLegacyItems.PACHYCEPHALOSAURUS_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_COMPSOGNATHUS.get(), FossilsLegacyItems.COMPSOGNATHUS_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_DODO.get(), FossilsLegacyItems.DODO_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_MOA.get(), FossilsLegacyItems.MOA_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_GALLIMIMUS.get(), FossilsLegacyItems.GALLIMIMUS_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_SPINOSAURUS.get(), FossilsLegacyItems.SPINOSAURUS_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_ANKYLOSAURUS.get(), FossilsLegacyItems.ANKYLOSAURUS_DNA.get());
-        this.simpleAnalyzation(FossilsLegacyItems.RAW_DIMETRODON.get(), FossilsLegacyItems.DIMETRODON_DNA.get());
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.FOSSIL.get(), FossilsLegacyAnalyzerResultTags.FOSSIL_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RELIC_SCRAP.get(), FossilsLegacyAnalyzerResultTags.RELIC_SCRAP_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.FROZEN_MEAT.get(), FossilsLegacyAnalyzerResultTags.FROZEN_MEAT_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, Items.AXOLOTL_BUCKET, FossilsLegacyAnalyzerResultTags.AXOLOTL_BUCKET_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, Items.TROPICAL_FISH_BUCKET, FossilsLegacyAnalyzerResultTags.TROPICAL_FISH_BUCKET_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, Items.PORKCHOP, FossilsLegacyAnalyzerResultTags.PORKCHOP_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, Items.BEEF, FossilsLegacyAnalyzerResultTags.BEEF_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, Items.CHICKEN, FossilsLegacyAnalyzerResultTags.CHICKEN_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, Items.FEATHER, FossilsLegacyAnalyzerResultTags.FEATHER_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, Items.BAMBOO, FossilsLegacyAnalyzerResultTags.BAMBOO_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, Items.SLIME_BALL, FossilsLegacyAnalyzerResultTags.SLIME_BALL_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, Items.MUTTON, FossilsLegacyAnalyzerResultTags.MUTTON_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, Items.RABBIT, FossilsLegacyAnalyzerResultTags.RAW_RABBIT_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, Items.BONE, FossilsLegacyAnalyzerResultTags.BONE_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, Items.EMERALD, FossilsLegacyAnalyzerResultTags.EMERALD_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, Items.GOAT_HORN, FossilsLegacyAnalyzerResultTags.GOAT_HORN_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItemTags.FROGLIGHTS, "froglights_outputs", FossilsLegacyAnalyzerResultTags.FROGLIGHT_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, Items.LEATHER, FossilsLegacyAnalyzerResultTags.LEATHER_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, Items.STRING, FossilsLegacyAnalyzerResultTags.STRING_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, Items.COD, FossilsLegacyAnalyzerResultTags.COD_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, Items.SALMON, FossilsLegacyAnalyzerResultTags.SALMON_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, ItemTags.WOOL, "wool_outputs", FossilsLegacyAnalyzerResultTags.WOOL_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, Items.ARMADILLO_SCUTE, FossilsLegacyAnalyzerResultTags.ARMADILLO_SCUTE_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_BRACHIOSAURUS.get(), FossilsLegacyAnalyzerResultTags.RAW_BRACHIOSAURUS_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_DILOPHOSAURUS.get(), FossilsLegacyAnalyzerResultTags.RAW_DILOPHOSAURUS_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_MAMMOTH.get(), FossilsLegacyAnalyzerResultTags.RAW_MAMMOTH_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_MOSASAURUS.get(), FossilsLegacyAnalyzerResultTags.RAW_MOSASAURUS_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_FUTABASAURUS.get(), FossilsLegacyAnalyzerResultTags.RAW_FUTABASAURUS_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_PTERANODON.get(), FossilsLegacyAnalyzerResultTags.RAW_PTERANODON_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_SMILODON.get(), FossilsLegacyAnalyzerResultTags.RAW_SMILODON_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_STEGOSAURUS.get(), FossilsLegacyAnalyzerResultTags.RAW_STEGOSAURUS_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_TRICERATOPS.get(), FossilsLegacyAnalyzerResultTags.RAW_TRICERATOPS_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_TYRANNOSAURUS.get(), FossilsLegacyAnalyzerResultTags.RAW_TYRANNOSAURUS_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_VELOCIRAPTOR.get(), FossilsLegacyAnalyzerResultTags.RAW_VELOCIRAPTOR_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_CARNOTAURUS.get(), FossilsLegacyAnalyzerResultTags.RAW_CARNOTAURUS_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_CRYOLOPHOSAURUS.get(), FossilsLegacyAnalyzerResultTags.RAW_CRYOLOPHOSAURUS_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_THERIZINOSAURUS.get(), FossilsLegacyAnalyzerResultTags.RAW_THERIZINOSAURUS_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_PACHYCEPHALOSAURUS.get(), FossilsLegacyAnalyzerResultTags.RAW_PACHYCEPHALOSAURUS_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_COMPSOGNATHUS.get(), FossilsLegacyAnalyzerResultTags.RAW_COMPSOGNATHUS_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_DODO.get(), FossilsLegacyAnalyzerResultTags.RAW_DODO_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_MOA.get(), FossilsLegacyAnalyzerResultTags.RAW_MOA_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_GALLIMIMUS.get(), FossilsLegacyAnalyzerResultTags.RAW_GALLIMIMUS_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_SPINOSAURUS.get(), FossilsLegacyAnalyzerResultTags.RAW_SPINOSAURUS_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_ANKYLOSAURUS.get(), FossilsLegacyAnalyzerResultTags.RAW_ANKYLOSAURUS_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.MISC, FossilsLegacyItems.RAW_DIMETRODON.get(), FossilsLegacyAnalyzerResultTags.RAW_DIMETRODON_RESULTS, 100);
     }
 
     public void boat(RecipeCategory recipeCategory, String group, ItemLike output, PatternBuilder patternBuilder, IngredientBuilder... ingredientBuilders) {
@@ -356,44 +356,11 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         this.recipeBuilders.put(this.toName(itemLike), archaeologyRecipeBuilder);
     }
 
-    public void analyzation(AnalyzationBookCategory analyzationBookCategory, ItemLike ingredient, ItemLike result, int weight, int time, AnalyzerResult... analyzerResults) {
-        AnalyzationRecipeBuilder analyzationRecipeBuilder = AnalyzationRecipeBuilder.recipe(analyzationBookCategory, ingredient, result, weight, time).unlockedBy(getHasName(ingredient), has(ingredient));
-        for (AnalyzerResult analyzerResult : analyzerResults) {
-            analyzationRecipeBuilder.addResult(analyzerResult.result(), analyzerResult.weight());
-        }
-        this.recipeBuilders.put(this.toName(ingredient) + "_outputs", analyzationRecipeBuilder);
+    public void analyzation(AnalyzationBookCategory analyzationBookCategory, ItemLike ingredient, TagKey<AnalyzerResult> results, int time) {
+        this.recipeBuilders.put(this.toName(ingredient) + "_outputs", AnalyzationRecipeBuilder.recipe(analyzationBookCategory, Ingredient.of(ingredient), results, time).unlockedBy(getHasName(ingredient), has(ingredient)));
     }
 
-    public void analyzation(AnalyzationBookCategory analyzationBookCategory, TagKey<Item> itemTagKey, String name, ItemLike result, int weight, int time, AnalyzerResult... analyzerResults) {
-        AnalyzationRecipeBuilder analyzationRecipeBuilder = AnalyzationRecipeBuilder.recipe(analyzationBookCategory, itemTagKey, result, weight, time).unlockedBy("has_" + itemTagKey.location().getPath(), has(itemTagKey));
-        for (AnalyzerResult analyzerResult : analyzerResults) {
-            analyzationRecipeBuilder.addResult(analyzerResult.result(), analyzerResult.weight());
-        }
-        this.recipeBuilders.put(name, analyzationRecipeBuilder);
-    }
-
-    public void simpleAnalyzation(ItemLike input, Item dna) {
-        this.analyzation(AnalyzationBookCategory.MISC, input, dna, 100, 100);
-    }
-
-    public void simpleAnalyzation(TagKey<Item> input, String name, Item... dnas) {
-        List<AnalyzerResult> analyzerResults = new ArrayList<>();
-        if (dnas.length > 1) {
-            for (Item dna : dnas) {
-                analyzerResults.add(new AnalyzerResult(dna, 100 / dnas.length));
-            }
-        }
-        this.analyzation(AnalyzationBookCategory.MISC, input, name, dnas[0], 100 / dnas.length, 100, analyzerResults.toArray(AnalyzerResult[]::new));
-    }
-
-    public void simpleAnalyzation(ItemLike input, Item... dnas) {
-        List<AnalyzerResult> analyzerResults = new ArrayList<>();
-        for (Item dna : dnas) {
-            analyzerResults.add(new AnalyzerResult(dna, 100 / dnas.length));
-        }
-        this.analyzation(AnalyzationBookCategory.MISC, input, dnas[0], 100 / dnas.length, 100, analyzerResults.toArray(AnalyzerResult[]::new));
-    }
-
-    private record AnalyzerResult(Item result, int weight) {
+    public void analyzation(AnalyzationBookCategory analyzationBookCategory, TagKey<Item> itemTagKey, String name, TagKey<AnalyzerResult> results, int time) {
+        this.recipeBuilders.put(name, AnalyzationRecipeBuilder.recipe(analyzationBookCategory, Ingredient.of(itemTagKey), results, time).unlockedBy("has_" + itemTagKey.location().getPath(), has(itemTagKey)));
     }
 }

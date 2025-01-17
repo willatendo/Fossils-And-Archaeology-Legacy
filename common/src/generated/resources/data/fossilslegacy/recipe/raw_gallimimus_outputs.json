@@ -4,13 +4,6 @@
   "ingredient": {
     "item": "fossilslegacy:raw_gallimimus"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:gallimimus_dna"
-      },
-      "weight": 100
-    }
-  ],
+  "results": "fossilslegacy:results/raw_gallimimus_meat",
   "time": 100
 }

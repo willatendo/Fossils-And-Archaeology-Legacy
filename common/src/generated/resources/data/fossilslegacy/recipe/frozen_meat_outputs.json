@@ -4,37 +4,6 @@
   "ingredient": {
     "item": "fossilslegacy:frozen_meat"
   },
-  "results": [
-    {
-      "result": {
-        "id": "fossilslegacy:smilodon_dna"
-      },
-      "weight": 33
-    },
-    {
-      "result": {
-        "id": "fossilslegacy:mammoth_dna"
-      },
-      "weight": 33
-    },
-    {
-      "result": {
-        "id": "fossilslegacy:dodo_dna"
-      },
-      "weight": 33
-    },
-    {
-      "result": {
-        "id": "fossilslegacy:moa_dna"
-      },
-      "weight": 33
-    },
-    {
-      "result": {
-        "id": "minecraft:beef"
-      },
-      "weight": 34
-    }
-  ],
+  "results": "fossilslegacy:results/frozen_meat",
   "time": 100
 }
