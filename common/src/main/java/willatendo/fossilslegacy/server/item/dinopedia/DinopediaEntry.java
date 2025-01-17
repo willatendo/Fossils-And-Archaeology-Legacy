@@ -8,6 +8,7 @@ import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.item.dinopedia.line.BuiltInDinopediaLines;
 import willatendo.fossilslegacy.server.item.dinopedia.line.CustomDinopediaLine;
 import willatendo.fossilslegacy.server.item.dinopedia.line.DinopediaLine;
+import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +19,7 @@ public record DinopediaEntry(List<DinopediaLine> line, boolean drawEntity, boole
 
     public List<Component> getText(Dinosaur dinosaur, Player player) {
         ArrayList<Component> text = new ArrayList<>();
-        this.line.forEach(builtInDinopediaLines -> builtInDinopediaLines.addText(text, dinosaur, player));
+        this.line.forEach(dinopediaLine -> dinopediaLine.addText(text, dinosaur, player));
         return text;
     }
 
@@ -40,9 +41,13 @@ public record DinopediaEntry(List<DinopediaLine> line, boolean drawEntity, boole
         }
 
         public Builder addText(Component... lines) {
+            return this.addText(DinopediaEntityPredicate.Builder.always(), lines);
+        }
+
+        public Builder addText(DinopediaEntityPredicate dinopediaEntityPredicate, Component... lines) {
             List<CustomDinopediaLine> customDinopediaLines = new ArrayList<>();
             for (Component text : lines) {
-                customDinopediaLines.add(new CustomDinopediaLine(text));
+                customDinopediaLines.add(new CustomDinopediaLine(text, dinopediaEntityPredicate));
             }
             this.text.addAll(customDinopediaLines);
             return this;

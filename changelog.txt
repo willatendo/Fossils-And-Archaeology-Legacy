@@ -1,5 +1,7 @@
 12/1/2024 1.4.5
+- Mammoth Fur Can Now Be Dyed Colours (Default Is Brown (9/10), Black (1/10), And Rarely Pink (1/500))
 - Fixed Spinosaurs Always "Rideable" In Dinopedia
+- Fixed Gene Modification Table Screen's Spots For Extra Genetic Code Being Flipped
 - Added Dinopedia Screen
 - Added Data-Driven Dinopedia Entries
 - Added Seperate Data-Driven Analyzer Results (No Longer Override Recipes!)

@@ -96,7 +96,7 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
         if (this instanceof CoatTypeEntity coatTypeEntity) {
             Registry<CoatType> coatType = serverLevelAccessor.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES);
             coatTypeEntity.setCoatType(coatType.getTag(this.getCoatTypes()).get().getRandomElement(this.getRandom()).get());
-            
+
         }
         this.setHunger(this.getMaxHunger());
         if (MobSpawnType.isSpawner(mobSpawnType) || mobSpawnType == MobSpawnType.COMMAND || mobSpawnType == MobSpawnType.MOB_SUMMONED || mobSpawnType == MobSpawnType.NATURAL || mobSpawnType == MobSpawnType.CHUNK_GENERATION) {
