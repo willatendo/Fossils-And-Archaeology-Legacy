@@ -60,7 +60,6 @@ import willatendo.fossilslegacy.server.item.dinopedia.FossilsLegacyDinopediaType
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
 
-import javax.annotation.Nullable;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -445,9 +444,8 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
         return random.nextInt(500) == 0 ? DyeColor.PINK : random.nextInt(10) == 0 ? DyeColor.BLACK : DyeColor.BROWN;
     }
 
-    @Nullable
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnGroupData) {
-        this.setColor(Mammoth.getRandomMammothColor(level.getRandom()));
-        return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData) {
+        this.setColor(Mammoth.getRandomMammothColor(serverLevelAccessor.getRandom()));
+        return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData);
     }
 }
