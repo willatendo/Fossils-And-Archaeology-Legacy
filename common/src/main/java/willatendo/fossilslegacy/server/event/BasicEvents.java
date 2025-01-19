@@ -57,7 +57,7 @@ public class BasicEvents {
         FossilsLegacyItems.EGGS.forEach(eggItem -> DispenserBlock.registerBehavior(eggItem, new DispenseEntityItemBehavior(entity -> ((Egg) entity).setEggVariant(eggItem.getEggVariant()))));
         DispenserBlock.registerBehavior(FossilsLegacyItems.NAUTILUS_EGGS.get(), new DispenseEntityItemBehavior());
         DispenserBlock.registerBehavior(FossilsLegacyItems.NAUTILUS.get(), new DispenseEntityItemBehavior());
-        DispenserBlock.registerBehavior(FossilsLegacyItems.FOSSIL.get(), new DispenseEntityItemBehavior());
+        DispenserBlock.registerBehavior(FossilsLegacyItems.ARTICULATED_FOSSIL.get(), new DispenseEntityItemBehavior());
         DispenserBlock.registerProjectileBehavior(FossilsLegacyItems.INCUBATED_CHICKEN_EGG.get());
         DispenserBlock.registerProjectileBehavior(FossilsLegacyItems.INCUBATED_PARROT_EGG.get());
         DispenserBlock.registerBehavior(FossilsLegacyBlocks.SKULL_BLOCK.get(), new OptionalDispenseItemBehavior() {

@@ -1,4 +1,60 @@
-12/1/2024 1.4.5
+19/1/2024 1.4.7
+- Updated Fossil Texture
+- Updated Frozen Meat Texture
+- Updated Raw Ankylosaurus Texture
+- Updated Cooked Ankylosaurus Texture
+- Updated Raw Brachiosaurus Texture
+- Updated Cooked Brachiosaurus Texture
+- Updated Raw Carnotaurus Texture
+- Updated Cooked Carnotaurus Texture
+- Updated Raw Compsognathus Texture
+- Updated Cooked Compsognathus Texture
+- Updated Raw Cryolophosaurus Texture
+- Updated Cooked Cryolophosaurus Texture
+- Updated Raw Dilophosaurus Texture
+- Updated Cooked Dilophosaurus Texture
+- Updated Raw Dimetrodon Texture
+- Updated Cooked Dimetrodon Texture
+- Updated Raw Futabasaurus Texture
+- Updated Cooked Futabasaurus Texture
+- Updated Raw Gallimimus Texture
+- Updated Cooked Gallimimus Texture
+- Updated Cooked Mammoth Texture
+- Updated Raw Moa Texture
+- Updated Cooked Moa Texture
+- Updated Raw Mosasaurus Texture
+- Updated Cooked Mosasaurus Texture
+- Updated Raw Pachycephalosaurus Texture
+- Updated Cooked Pachycephalosaurus Texture
+- Updated Raw Pteranodon Texture
+- Updated Cooked Pteranodon Texture
+- Updated Raw Smilodon Texture
+- Updated Cooked Smilodon Texture
+- Updated Raw Spinosaurus Texture
+- Updated Cooked Spinosaurus Texture
+- Updated Raw Stegosaurus Texture
+- Updated Cooked Stegosaurus Texture
+- Updated Raw Therizinosaurus Texture
+- Updated Cooked Therizinosaurus Texture
+- Updated Raw Triceratops Texture
+- Updated Cooked Triceratops Texture
+- Updated Raw Tyrannosaurus Texture
+- Updated Cooked Tyrannosaurus Texture
+- Updated Raw Velociraptor Texture
+- Updated Cooked Velociraptor Texture
+- Updated Nautilus Texture
+- Updated Nautilus Shell Texture
+- Updated Sio-Chiu-Le Texture
+- Updated Tyrannosaurus Tooth Texture
+- Updated Tooth Dagger Texture
+- Updated Jurassic Fern Spores
+- All Meats Are Now Sorted Alphabetically In Creative Tab, Raw Then Cooked
+- Fixed And Updated Legacy Textures
+- Fixed Incorrect Jurassic Fern Texture
+- Fixed Dimetrodon DNA Texture
+17/1/2024 1.4.6
+- Fixed Fossils Dispensing And Disappearing
+17/1/2024 1.4.5
 - Mammoth Fur Can Now Be Dyed Colours (Default Is Brown (9/10), Black (1/10), And Rarely Pink (1/500))
 - Fixed Spinosaurs Always "Rideable" In Dinopedia
 - Fixed Gene Modification Table Screen's Spots For Extra Genetic Code Being Flipped

@@ -3,6 +3,6 @@
   "render_type": "minecraft:cutout",
   "textures": {
     "crop": "fossilslegacy:block/jurassic_fern_colored_upper_4",
-    "crop_leaves": "fossilslegacy:block/jurassic_fern_leaves_lower_0"
+    "crop_leaves": "fossilslegacy:block/jurassic_fern_leaves_upper_4"
   }
 }

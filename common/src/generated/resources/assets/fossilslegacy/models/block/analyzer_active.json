@@ -5,7 +5,7 @@
     "east": "fossilslegacy:block/analyzer_side",
     "north": "fossilslegacy:block/analyzer_front_on",
     "particle": "fossilslegacy:block/analyzer_side",
-    "south": "fossilslegacy:block/analyzer_side",
+    "south": "fossilslegacy:block/analyzer_back",
     "up": "fossilslegacy:block/analyzer_top",
     "west": "fossilslegacy:block/analyzer_side"
   }
