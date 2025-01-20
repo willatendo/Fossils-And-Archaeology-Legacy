@@ -91,6 +91,11 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
 
         BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.JURASSIC_FERN.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.CALAMITES_SAPLING.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.CALAMITES_LEAVES.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.CALAMITES_DOOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.CALAMITES_TRAPDOOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.POTTED_CALAMITES_SAPLING.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.LEPIDODENDRON_DOOR.get(), RenderType.cutout());
@@ -98,7 +103,10 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.POTTED_LEPIDODENDRON_SAPLING.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.SIGILLARIA_SAPLING.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.SIGILLARIA_LEAVES.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.SIGILLARIA_DOOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.SIGILLARIA_TRAPDOOR.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.POTTED_SIGILLARIA_SAPLING.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.WHITE_CULTIVATOR.get(), RenderType.cutout());
 
         FossilsLegacyClient.itemColorRegistry(new FabricItemColorRegister());
         FossilsLegacyClient.blockColorRegistry(new FabricBlockColorRegister());

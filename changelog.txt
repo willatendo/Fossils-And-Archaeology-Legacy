@@ -52,6 +52,8 @@
 - Fixed And Updated Legacy Textures
 - Fixed Incorrect Jurassic Fern Texture
 - Fixed Dimetrodon DNA Texture
+- (Fabric) Fixed Transparent Textures
+- Added New Cultivator
 17/1/2024 1.4.6
 - Fixed Fossils Dispensing And Disappearing
 17/1/2024 1.4.5

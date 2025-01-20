@@ -1,12 +1,8 @@
 {
-  "parent": "minecraft:block/cube",
+  "parent": "fossilslegacy:block/template_cultivator_active",
+  "render_type": "minecraft:translucent",
   "textures": {
-    "down": "fossilslegacy:block/cultivator_bottom",
-    "east": "fossilslegacy:block/white_cultivator_side_on",
-    "north": "fossilslegacy:block/white_cultivator_side_on",
-    "particle": "fossilslegacy:block/white_cultivator_side_on",
-    "south": "fossilslegacy:block/white_cultivator_side_on",
-    "up": "fossilslegacy:block/white_cultivator_top",
-    "west": "fossilslegacy:block/white_cultivator_side_on"
+    "side": "fossilslegacy:block/white_cultivator_side",
+    "top": "fossilslegacy:block/white_cultivator_top"
   }
 }

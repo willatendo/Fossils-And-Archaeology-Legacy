@@ -295,7 +295,7 @@ public class AnuModel extends AgeableListModel<Anu> implements ArmedModel, Heade
         modelPart.yRot = (right ? -30.0f : 30.0F) * ((float) Math.PI / 180) + Mth.clamp(this.head.yRot, -0.5235988F, 0.5235988F);
     }
 
-    protected void setupAttackAnimation(Anu anu, float f) {
+    protected void setupAttackAnimation(Anu anu, float speed) {
         if (this.attackTime <= 0.0F) {
             return;
         }
@@ -339,15 +339,6 @@ public class AnuModel extends AgeableListModel<Anu> implements ArmedModel, Heade
         return -65.0F * f + f * f;
     }
 
-    public void setAllVisible(boolean visible) {
-        this.head.visible = visible;
-        this.body.visible = visible;
-        this.rightArm.visible = visible;
-        this.leftArm.visible = visible;
-        this.rightLeg.visible = visible;
-        this.leftLeg.visible = visible;
-    }
-
     @Override
     public void translateToHand(HumanoidArm humanoidArm, PoseStack poseStack) {
         this.getArm(humanoidArm).translateAndRotate(poseStack);
@@ -370,7 +361,7 @@ public class AnuModel extends AgeableListModel<Anu> implements ArmedModel, Heade
         return anu.swingingArm == InteractionHand.MAIN_HAND ? humanoidArm : humanoidArm.getOpposite();
     }
 
-    public static enum ArmPose {
+    public enum ArmPose {
         EMPTY(false),
         ITEM(false),
         BLOCK(false),
@@ -384,12 +375,8 @@ public class AnuModel extends AgeableListModel<Anu> implements ArmedModel, Heade
 
         private final boolean twoHanded;
 
-        private ArmPose(boolean bl) {
+        ArmPose(boolean bl) {
             this.twoHanded = bl;
-        }
-
-        public boolean isTwoHanded() {
-            return this.twoHanded;
         }
     }
 }

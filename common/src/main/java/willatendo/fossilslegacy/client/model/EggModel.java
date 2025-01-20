@@ -29,7 +29,7 @@ public class EggModel extends EntityModel<Egg> {
     }
 
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int red, int green, int blue) {
-        this.root.render(poseStack, vertexConsumer, red, green, blue);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
+        this.root.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
     }
 }

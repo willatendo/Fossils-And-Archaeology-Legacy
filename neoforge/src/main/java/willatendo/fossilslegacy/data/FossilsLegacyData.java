@@ -69,5 +69,6 @@ public class FossilsLegacyData {
         ResourceLocation legacyPack = FossilsLegacyUtils.resource("fa_legacy_textures");
         ResourcePackGenerator legacyPackGenerator = new ResourcePackGenerator(dataGenerator, true, legacyPack.toString(), new PackOutput(dataGenerator.getPackOutput().getOutputFolder().resolve("resourcepacks").resolve(legacyPack.getPath())));
         legacyPackGenerator.addProvider(legacyPackOutput -> new PackMetadataGenerator(legacyPackOutput).add(PackMetadataSection.TYPE, new PackMetadataSection(FossilsLegacyUtils.translation("resourcePack", "fa_legacy_textures.description"), DetectedVersion.BUILT_IN.getPackVersion(PackType.CLIENT_RESOURCES), Optional.empty())));
+        legacyPackGenerator.addProvider(legacyPackOutput -> new FossilsLegacyLegacyTexturesBlockStateProvider(legacyPackOutput, FossilsLegacyUtils.ID, existingFileHelper));
     }
 }

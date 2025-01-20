@@ -3,10 +3,10 @@ package willatendo.fossilslegacy.data;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -125,7 +125,13 @@ public class FossilsLegacyBlockStateProvider extends SimpleBlockStateProvider {
     }
 
     private void cultivator(Block block, String color) {
-        this.getVariantBuilder(block).partialState().with(CultivatorBlock.ACTIVE, false).addModels(new ConfiguredModel(this.models().cube(color + "_cultivator", this.modLoc("block/cultivator_bottom"), this.modLoc("block/" + color + "_cultivator_top"), this.modLoc("block/" + color + "_cultivator_side_off"), this.modLoc("block/" + color + "_cultivator_side_off"), this.modLoc("block/" + color + "_cultivator_side_off"), this.modLoc("block/" + color + "_cultivator_side_off")).texture("particle", this.modLoc("block/" + color + "_cultivator_side_off")))).partialState().with(CultivatorBlock.ACTIVE, true).addModels(new ConfiguredModel(this.models().cube(color + "_cultivator_active", this.modLoc("block/cultivator_bottom"), this.modLoc("block/" + color + "_cultivator_top"), this.modLoc("block/" + color + "_cultivator_side_on"), this.modLoc("block/" + color + "_cultivator_side_on"), this.modLoc("block/" + color + "_cultivator_side_on"), this.modLoc("block/" + color + "_cultivator_side_on")).texture("particle", this.modLoc("block/" + color + "_cultivator_side_on"))));
+        this.getVariantBuilder(block).forAllStates(blockState -> ConfiguredModel.builder().modelFile(this.model(blockState.getValue(CultivatorBlock.ACTIVE), color)).build());
+    }
+
+    private BlockModelBuilder model(boolean active, String color) {
+        String name = active ? color + "_cultivator_active" : color + "_cultivator";
+        String parent = active ? "block/template_cultivator_active" : "block/template_cultivator";
+        return this.models().withExistingParent(name, this.modLoc(parent)).texture("side", this.modLoc("block/" + color + "_cultivator_side")).texture("top", this.modLoc("block/" + color + "_cultivator_top")).renderType("translucent");
     }
 
     private void cauldron(Block block, String liquid) {

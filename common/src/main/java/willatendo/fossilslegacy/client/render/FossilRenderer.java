@@ -121,8 +121,8 @@ public class FossilRenderer extends EntityRenderer<Fossil> {
         RenderType renderType = this.getRenderType(fossil, isBodyVisible, isVisible, isGlowing);
         if (renderType != null) {
             VertexConsumer vertexConsumer = multiBufferSource.getBuffer(renderType);
-            int overlayCoords = OverlayTexture.pack(OverlayTexture.u(0.0F), OverlayTexture.v(fossil.hurtTime > 0 || fossil.deathTime > 0));
-            this.model.renderToBuffer(poseStack, vertexConsumer, packedLight, overlayCoords, isVisible ? 654311423 : -1);
+            int packedOverlay = OverlayTexture.pack(OverlayTexture.u(0.0F), OverlayTexture.v(fossil.hurtTime > 0 || fossil.deathTime > 0));
+            this.model.renderToBuffer(poseStack, vertexConsumer, packedLight, packedOverlay, isVisible ? 654311423 : -1);
         }
 
         poseStack.popPose();

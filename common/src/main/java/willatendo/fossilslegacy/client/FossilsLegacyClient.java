@@ -1,13 +1,11 @@
 package willatendo.fossilslegacy.client;
 
 import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.*;
-import willatendo.fossilslegacy.client.model.AnuModel;
-import willatendo.fossilslegacy.client.model.EggModel;
-import willatendo.fossilslegacy.client.model.FailuresaurusModel;
-import willatendo.fossilslegacy.client.model.TimeMachineClockModel;
+import willatendo.fossilslegacy.client.model.*;
 import willatendo.fossilslegacy.client.model.dinosaur.NautilusModel;
 import willatendo.fossilslegacy.client.render.*;
 import willatendo.fossilslegacy.client.screen.*;
@@ -31,6 +29,7 @@ public final class FossilsLegacyClient {
 
     public static void blockColorRegistry(BlockColorRegistry blockColorRegistry) {
         blockColorRegistry.registerLeavesColor(FossilsLegacyBlocks.CALAMITES_LEAVES.get(), FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get(), FossilsLegacyBlocks.SIGILLARIA_LEAVES.get(), FossilsLegacyBlocks.JURASSIC_FERN.get());
+        blockColorRegistry.registerBlockColor((blockState, blockAndTintGetter, blockPos, tintIndex) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getAverageWaterColor(blockAndTintGetter, blockPos) : -1, FossilsLegacyBlocks.WHITE_CULTIVATOR.get(), FossilsLegacyBlocks.ORANGE_CULTIVATOR.get(), FossilsLegacyBlocks.MAGENTA_CULTIVATOR.get(), FossilsLegacyBlocks.LIGHT_BLUE_CULTIVATOR.get(), FossilsLegacyBlocks.YELLOW_CULTIVATOR.get(), FossilsLegacyBlocks.LIME_CULTIVATOR.get(), FossilsLegacyBlocks.PINK_CULTIVATOR.get(), FossilsLegacyBlocks.GRAY_CULTIVATOR.get(), FossilsLegacyBlocks.LIGHT_GRAY_CULTIVATOR.get(), FossilsLegacyBlocks.CYAN_CULTIVATOR.get(), FossilsLegacyBlocks.PURPLE_CULTIVATOR.get(), FossilsLegacyBlocks.BLUE_CULTIVATOR.get(), FossilsLegacyBlocks.BROWN_CULTIVATOR.get(), FossilsLegacyBlocks.GREEN_CULTIVATOR.get(), FossilsLegacyBlocks.RED_CULTIVATOR.get(), FossilsLegacyBlocks.BLACK_CULTIVATOR.get());
     }
 
     public static void keyMappingEvent(KeyMappingRegistry keyMappingRegister) {
@@ -94,16 +93,18 @@ public final class FossilsLegacyClient {
         modelRegister.register(FossilsLegacyEntityTypes.FOSSIL.get(), FossilRenderer::new);
         modelRegister.register(FossilsLegacyEntityTypes.STONE_TABLET.get(), StoneTabletRenderer::new);
 
-        modelRegister.register(FossilsLegacyBlockEntityTypes.TIME_MACHINE.get(), TimeMachineClockRenderer::new);
-        modelRegister.register(FossilsLegacyBlockEntityTypes.VASE.get(), VaseRenderer::new);
+        modelRegister.register(FossilsLegacyBlockEntityTypes.CULTIVATOR.get(), CultivatorBlockEntityRenderer::new);
         modelRegister.register(FossilsLegacyBlockEntityTypes.FOSSILS_SIGN.get(), SignRenderer::new);
         modelRegister.register(FossilsLegacyBlockEntityTypes.FOSSILS_HANGING_SIGN.get(), HangingSignRenderer::new);
+        modelRegister.register(FossilsLegacyBlockEntityTypes.TIME_MACHINE.get(), TimeMachineClockRenderer::new);
+        modelRegister.register(FossilsLegacyBlockEntityTypes.VASE.get(), VaseRenderer::new);
     }
 
     public static void modelLayerEvent(ModelLayerRegistry modelLayerRegister) {
         modelLayerRegister.register(FossilsLegacyModelLayers.ANU, AnuModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.EGG, EggModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.FAILURESAURUS, FailuresaurusModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.FETUS, FetusModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.NAUTILUS, NautilusModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.TIME_MACHINE_CLOCK, TimeMachineClockModel::createBodyLayer);
     }

@@ -5,6 +5,9 @@ import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.*;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.ContainerHelper;
@@ -28,6 +31,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
 import willatendo.fossilslegacy.server.block.CultivatorBlock;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
@@ -49,6 +53,10 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
     public int onDuration;
     public int cultivationProgress;
     public int cultivationTotalTime;
+    public int time;
+    public float rot;
+    public float oRot;
+    public float tRot;
     public final ContainerData containerData = new ContainerData() {
         @Override
         public int get(int slot) {
@@ -95,7 +103,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
     };
 
     private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-    private final CachedCheck<SingleRecipeInput, CultivationRecipe> recipeCheck = RecipeManager.createCheck(FossilsLegacyRecipeTypes.CULTIVATION.get());
+    public final CachedCheck<SingleRecipeInput, CultivationRecipe> recipeCheck = RecipeManager.createCheck(FossilsLegacyRecipeTypes.CULTIVATION.get());
 
     private final DyeColor dyeColor;
 
@@ -203,6 +211,38 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
             usedRecipes.putInt(recipeId.toString(), recipe);
         });
         compoundTag.put("RecipesUsed", usedRecipes);
+    }
+
+    public static void clientTick(Level level, BlockPos blockPos, BlockState blockState, CultivatorBlockEntity cultivatorBlockEntity) {
+        cultivatorBlockEntity.oRot = cultivatorBlockEntity.rot;
+        cultivatorBlockEntity.tRot += 0.02F;
+
+        while (cultivatorBlockEntity.rot >= 3.1415927F) {
+            cultivatorBlockEntity.rot -= 6.2831855F;
+        }
+
+        while (cultivatorBlockEntity.rot < -3.1415927F) {
+            cultivatorBlockEntity.rot += 6.2831855F;
+        }
+
+        while (cultivatorBlockEntity.tRot >= 3.1415927F) {
+            cultivatorBlockEntity.tRot -= 6.2831855F;
+        }
+
+        while (cultivatorBlockEntity.tRot < -3.1415927F) {
+            cultivatorBlockEntity.tRot += 6.2831855F;
+        }
+
+        float f2;
+        for (f2 = cultivatorBlockEntity.tRot - cultivatorBlockEntity.rot; f2 >= 3.1415927F; f2 -= 6.2831855F) {
+        }
+
+        while (f2 < -3.1415927F) {
+            f2 += 6.2831855F;
+        }
+
+        cultivatorBlockEntity.rot += f2 * 0.4F;
+        ++cultivatorBlockEntity.time;
     }
 
     public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, CultivatorBlockEntity cultivatorBlockEntity) {
@@ -322,7 +362,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         if (itemStack.isEmpty()) {
             return 0;
         } else {
-            return this.getOnTimeMap().getOrDefault(itemStack.getItem(), 0);
+            return CultivatorBlockEntity.getOnTimeMap().getOrDefault(itemStack.getItem(), 0);
         }
     }
 
@@ -446,7 +486,6 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         for (ItemStack itemStack : this.itemStacks) {
             stackedContents.accountStack(itemStack);
         }
-
     }
 
     @Override
@@ -467,5 +506,18 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
     @Override
     protected AbstractContainerMenu createMenu(int windowId, Inventory inventory) {
         return new CultivatorMenu(windowId, inventory, this);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider provider) {
+        CompoundTag compoundTag = new CompoundTag();
+        compoundTag.putInt("CultivationTime", this.cultivationProgress);
+        return compoundTag;
+    }
+
+    @Nullable
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
     }
 }

@@ -114,7 +114,7 @@ public class CultivatorBlock extends Block implements EntityBlock {
 
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide() ? null : BlockEntityHelper.createTickerHelper(blockEntityType, FossilsLegacyBlockEntityTypes.CULTIVATOR.get(), CultivatorBlockEntity::serverTick);
+        return level.isClientSide() ? BlockEntityHelper.createTickerHelper(blockEntityType, FossilsLegacyBlockEntityTypes.CULTIVATOR.get(), CultivatorBlockEntity::clientTick) : BlockEntityHelper.createTickerHelper(blockEntityType, FossilsLegacyBlockEntityTypes.CULTIVATOR.get(), CultivatorBlockEntity::serverTick);
     }
 
     @Override
