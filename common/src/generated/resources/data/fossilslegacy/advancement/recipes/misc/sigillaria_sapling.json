@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_petrified_sigillaria_sapling": {
+    "has_sigillaria_dna": {
       "conditions": {
         "items": [
           {
-            "items": "fossilslegacy:petrified_sigillaria_sapling"
+            "items": "fossilslegacy:sigillaria_dna"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_petrified_sigillaria_sapling"
+      "has_sigillaria_dna"
     ]
   ],
   "rewards": {

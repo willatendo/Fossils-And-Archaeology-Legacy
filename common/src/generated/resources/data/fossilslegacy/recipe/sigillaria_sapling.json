@@ -2,7 +2,7 @@
   "type": "fossilslegacy:cultivation",
   "category": "plant",
   "ingredient": {
-    "item": "fossilslegacy:petrified_sigillaria_sapling"
+    "item": "fossilslegacy:sigillaria_dna"
   },
   "result": {
     "id": "fossilslegacy:sigillaria_sapling"

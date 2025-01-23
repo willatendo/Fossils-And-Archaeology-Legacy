@@ -36,9 +36,10 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.SPINOSAURUS_DNA.get());
         this.basicItem(FossilsLegacyItems.ANKYLOSAURUS_DNA.get());
         this.basicItem(FossilsLegacyItems.DIMETRODON_DNA.get());
-        this.basicItem(FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get());
-        this.basicItem(FossilsLegacyItems.PETRIFIED_SIGILLARIA_SAPLING.get());
-        this.basicItem(FossilsLegacyItems.PETRIFIED_CALAMITES_SAPLING.get());
+        this.basicItem(FossilsLegacyItems.JURASSIC_FERN_DNA.get());
+        this.basicItem(FossilsLegacyItems.LEPIDODENDRON_DNA.get());
+        this.basicItem(FossilsLegacyItems.SIGILLARIA_DNA.get());
+        this.basicItem(FossilsLegacyItems.CALAMITES_DNA.get());
         this.basicItem(FossilsLegacyItems.TRICERATOPS_EGG.get());
         this.basicItem(FossilsLegacyItems.VELOCIRAPTOR_EGG.get());
         this.basicItem(FossilsLegacyItems.TYRANNOSAURUS_EGG.get());
@@ -262,15 +263,15 @@ public class FossilsLegacyItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FossilsLegacyItems.ICE_AGE_COIN.get());
         this.basicItem(FossilsLegacyItems.PREHISTORIC_COIN.get());
 
-        this.handheldItem(FossilsLegacyItems.DEBUG_MAX_HUNGER.get(), FossilsLegacyUtils.mc("item/bone"));
-        this.handheldItem(FossilsLegacyItems.DEBUG_MAX_HEALTH.get(), FossilsLegacyUtils.mc("item/bone"));
-        this.handheldItem(FossilsLegacyItems.DEBUG_FULL_GROWN.get(), FossilsLegacyUtils.mc("item/bone"));
-        this.handheldItem(FossilsLegacyItems.DEBUG_BABY.get(), FossilsLegacyUtils.mc("item/bone"));
-        this.handheldItem(FossilsLegacyItems.DEBUG_TAME.get(), FossilsLegacyUtils.mc("item/bone"));
-        this.handheldItem(FossilsLegacyItems.DEBUG_CHANGE_GENETICS.get(), FossilsLegacyUtils.mc("item/bone"));
+        this.handheldItem(FossilsLegacyItems.DEBUG_MAX_HUNGER.get(), this.mcLoc("item/bone"));
+        this.handheldItem(FossilsLegacyItems.DEBUG_MAX_HEALTH.get(), this.mcLoc("item/bone"));
+        this.handheldItem(FossilsLegacyItems.DEBUG_FULL_GROWN.get(), this.mcLoc("item/bone"));
+        this.handheldItem(FossilsLegacyItems.DEBUG_BABY.get(), this.mcLoc("item/bone"));
+        this.handheldItem(FossilsLegacyItems.DEBUG_TAME.get(), this.mcLoc("item/bone"));
+        this.handheldItem(FossilsLegacyItems.DEBUG_CHANGE_GENETICS.get(), this.mcLoc("item/bone"));
 
-        this.basicBlock(FossilsLegacyBlocks.FOSSIL_ORE.get());
-        this.basicBlock(FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get());
+        this.basicBlock(FossilsLegacyBlocks.FOSSIL_ORE.get(), "tyrannosaurus_skull_fossil_ore");
+        this.basicBlock(FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get(), "deepslate_shells_fossil_ore");
         this.basicBlock(FossilsLegacyBlocks.SKULL_BLOCK.get());
         this.basicBlock(FossilsLegacyBlocks.SKULL_LANTERN_BLOCK.get());
         this.basicBlock(FossilsLegacyBlocks.ANALYZER.get());

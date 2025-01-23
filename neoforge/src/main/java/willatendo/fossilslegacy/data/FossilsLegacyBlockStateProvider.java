@@ -20,8 +20,8 @@ public class FossilsLegacyBlockStateProvider extends SimpleBlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        this.simpleBlock(FossilsLegacyBlocks.FOSSIL_ORE.get());
-        this.simpleBlock(FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get());
+        this.fossil(FossilsLegacyBlocks.FOSSIL_ORE.get(), false);
+        this.fossil(FossilsLegacyBlocks.DEEPSLATE_FOSSIL_ORE.get(), true);
         this.horizontalBlock(FossilsLegacyBlocks.SKULL_BLOCK.get(), blockState -> this.models().cube("skull_block", this.modLoc("block/skull"), this.modLoc("block/skull"), this.modLoc("block/skull_front"), this.modLoc("block/skull_crack"), this.modLoc("block/skull_crack"), this.modLoc("block/skull_crack")).texture("particle", this.modLoc("block/skull_crack")));
         this.horizontalBlock(FossilsLegacyBlocks.SKULL_LANTERN_BLOCK.get(), blockState -> this.models().cube("skull_lantern_block", this.modLoc("block/skull"), this.modLoc("block/skull"), this.modLoc("block/skull_lantern_front"), this.modLoc("block/skull_crack"), this.modLoc("block/skull_crack"), this.modLoc("block/skull_crack")).texture("particle", this.modLoc("block/skull_crack")));
         this.horizontalBlock(FossilsLegacyBlocks.ANALYZER.get(), blockState -> this.models().cube("analyzer" + (blockState.getValue(AnalyzerBlock.ACTIVE) ? "_active" : ""), this.modLoc("block/analyzer_top"), this.modLoc("block/analyzer_top"), this.modLoc("block/analyzer_front_" + (blockState.getValue(AnalyzerBlock.ACTIVE) ? "on" : "off")), this.modLoc("block/analyzer_back"), this.modLoc("block/analyzer_side"), this.modLoc("block/analyzer_side")).texture("particle", this.modLoc("block/analyzer_side")));
@@ -122,6 +122,16 @@ public class FossilsLegacyBlockStateProvider extends SimpleBlockStateProvider {
         this.simpleBlock(FossilsLegacyBlocks.POTTED_CALAMITES_SAPLING.get(), this.models().withExistingParent("potted_calamites_sapling", this.mcLoc("block/flower_pot_cross")).texture("plant", this.modLoc("block/calamites_sapling")).renderType("cutout"));
         this.buttonBlock(FossilsLegacyBlocks.CALAMITES_BUTTON.get(), this.modLoc("block/calamites_planks"));
         this.slabBlock(FossilsLegacyBlocks.CALAMITES_SLAB.get(), this.modLoc("block/calamites_planks"), this.modLoc("block/calamites_planks"));
+    }
+
+    private void fossil(Block block, boolean deepslate) {
+        ConfiguredModel[] configuredModels;
+        if (deepslate) {
+            configuredModels = new ConfiguredModel[]{new ConfiguredModel(this.models().cubeAll("deepslate_shells_fossil_ore", this.modLoc("block/deepslate_shells_fossil_ore"))), new ConfiguredModel(this.models().cubeAll("deepslate_anomalocaris_fossil_ore", this.modLoc("block/deepslate_anomalocaris_fossil_ore"))), new ConfiguredModel(this.models().cubeAll("deepslate_trilobite_fossil_ore", this.modLoc("block/deepslate_trilobite_fossil_ore")))};
+        } else {
+            configuredModels = new ConfiguredModel[]{new ConfiguredModel(this.models().cubeAll("shells_fossil_ore", this.modLoc("block/shells_fossil_ore"))), new ConfiguredModel(this.models().cubeAll("raptor_leg_fossil_ore", this.modLoc("block/raptor_leg_fossil_ore"))), new ConfiguredModel(this.models().cubeAll("tyrannosaurus_skull_fossil_ore", this.modLoc("block/tyrannosaurus_skull_fossil_ore")))};
+        }
+        this.simpleBlock(block, configuredModels);
     }
 
     private void cultivator(Block block, String color) {

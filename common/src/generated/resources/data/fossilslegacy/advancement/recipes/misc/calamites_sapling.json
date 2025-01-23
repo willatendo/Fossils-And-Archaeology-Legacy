@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_petrified_calamites_sapling": {
+    "has_calamites_dna": {
       "conditions": {
         "items": [
           {
-            "items": "fossilslegacy:petrified_calamites_sapling"
+            "items": "fossilslegacy:calamites_dna"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_petrified_calamites_sapling"
+      "has_calamites_dna"
     ]
   ],
   "rewards": {

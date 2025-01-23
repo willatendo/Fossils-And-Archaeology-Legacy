@@ -1,7 +1,5 @@
 package willatendo.fossilslegacy.client;
 
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.util.Pair;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -13,10 +11,8 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.stats.RecipeBookSettings;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.RecipeBookType;
 import willatendo.fossilslegacy.client.animation.json.JsonAnimationLoader;
 import willatendo.fossilslegacy.client.model.json.JsonLayerDefinitionResourceManager;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
@@ -106,7 +102,22 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.SIGILLARIA_DOOR.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.SIGILLARIA_TRAPDOOR.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.POTTED_SIGILLARIA_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.WHITE_CULTIVATOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.WHITE_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.ORANGE_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.MAGENTA_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.LIGHT_BLUE_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.YELLOW_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.LIME_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.PINK_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.GRAY_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.LIGHT_GRAY_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.CYAN_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.PURPLE_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.BLUE_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.BROWN_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.GREEN_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.RED_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.BLACK_CULTIVATOR.get(), RenderType.translucent());
 
         FossilsLegacyClient.itemColorRegistry(new FabricItemColorRegister());
         FossilsLegacyClient.blockColorRegistry(new FabricBlockColorRegister());

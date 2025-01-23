@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_jurassic_fern_dna": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:jurassic_fern_dna"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:jurassic_fern_spores"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_jurassic_fern_dna"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:jurassic_fern_spores"
+    ]
+  }
+}

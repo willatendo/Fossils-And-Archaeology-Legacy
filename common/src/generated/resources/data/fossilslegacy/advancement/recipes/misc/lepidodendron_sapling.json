@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_petrified_lepidodendron_sapling": {
+    "has_lepidodendron_dna": {
       "conditions": {
         "items": [
           {
-            "items": "fossilslegacy:petrified_lepidodendron_sapling"
+            "items": "fossilslegacy:lepidodendron_dna"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_petrified_lepidodendron_sapling"
+      "has_lepidodendron_dna"
     ]
   ],
   "rewards": {

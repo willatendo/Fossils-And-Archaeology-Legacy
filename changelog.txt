@@ -47,13 +47,32 @@
 - Updated Sio-Chiu-Le Texture
 - Updated Tyrannosaurus Tooth Texture
 - Updated Tooth Dagger Texture
-- Updated Jurassic Fern Spores
+- Updated Jurassic Fern Spores Texture
+- Updated Chicken Essence Bottle Texture
+- Updated Romantic Concoction Bottle Texture
+- Updated Dinopedia Texture
+- Updated Dinopedia Texture
+- Updated Dinopedia Texture
+- Updated Logo
 - All Meats Are Now Sorted Alphabetically In Creative Tab, Raw Then Cooked
+- Added Calamites Saplings Now Made From Calamites DNA
+- Added Lepidodendron Saplings Now Made From Lepidodendron DNA
+- Added Sigillaria Now Made From Sigillaria DNA
+- Added Jurassic Fern Spores Now Made From Jurassic Fern DNA
+- Added Calamites DNA
+- Added Lepidodendron DNA
+- Added Sigillaria DNA
+- Added Jurassic Fern DNA
 - Fixed And Updated Legacy Textures
 - Fixed Incorrect Jurassic Fern Texture
 - Fixed Dimetrodon DNA Texture
 - (Fabric) Fixed Transparent Textures
-- Added New Cultivator
+- (Fabric) Fixed Palaeontology Screen
+- Fixed Dinosaur-Related Crash
+- Added New Cultivator Model
+- Removed Petrified Calamites Sapling
+- Removed Petrified Lepidodendron Sapling
+- Removed Petrified Sigillaria Sapling
 17/1/2024 1.4.6
 - Fixed Fossils Dispensing And Disappearing
 17/1/2024 1.4.5

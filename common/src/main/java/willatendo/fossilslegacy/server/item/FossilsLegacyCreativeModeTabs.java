@@ -175,10 +175,11 @@ public class FossilsLegacyCreativeModeTabs {
         output.accept(FossilsLegacyItems.COOKED_BERRY_MEDLEY_BUCKET.get());
         output.accept(FossilsLegacyItems.ROMANTIC_CONCOCTION_BOTTLE.get());
         output.accept(FossilsLegacyItems.LEGACY_GENETIC_CODE.get());
+        output.accept(FossilsLegacyItems.JURASSIC_FERN_DNA.get());
+        output.accept(FossilsLegacyItems.LEPIDODENDRON_DNA.get());
+        output.accept(FossilsLegacyItems.SIGILLARIA_DNA.get());
+        output.accept(FossilsLegacyItems.CALAMITES_DNA.get());
         output.accept(FossilsLegacyItems.JURASSIC_FERN_SPORES.get());
-        output.accept(FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get());
-        output.accept(FossilsLegacyItems.PETRIFIED_SIGILLARIA_SAPLING.get());
-        output.accept(FossilsLegacyItems.PETRIFIED_CALAMITES_SAPLING.get());
         itemDisplayParameters.holders().lookup(FossilsLegacyRegistries.FOSSIL_VARIANTS).ifPresent(registryLookup -> FossilsLegacyCreativeModeTabs.generateArticulatedFossils(output, itemDisplayParameters.holders(), registryLookup, fossilVariantHolder -> fossilVariantHolder.is(FossilsLegacyFossilVariantTags.PLACEABLE_FROM_FOSSIL), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
         output.accept(FossilsLegacyItems.RELIC_SCRAP.get());
         output.accept(FossilsLegacyItems.STONE_TABLET.get());

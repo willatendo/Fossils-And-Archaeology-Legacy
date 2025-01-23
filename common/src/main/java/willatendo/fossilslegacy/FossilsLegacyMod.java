@@ -2,6 +2,7 @@ package willatendo.fossilslegacy;
 
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.biome.FossilsLegacyBiomeSources;
+import willatendo.fossilslegacy.server.block.FossilsLegacyBlockTypes;
 import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
 import willatendo.fossilslegacy.server.block.entity.FossilsLegacyBlockEntityTypes;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyBuiltInRegistries;
@@ -38,6 +39,7 @@ public final class FossilsLegacyMod {
         simpleRegistryRegister.register(FossilsLegacyTrunkPlacerTypes.TRUNK_PLACER_TYPES);
         simpleRegistryRegister.register(FossilsLegacyFoliagePlacerTypes.FOLIAGE_PLACER_TYPES);
         simpleRegistryRegister.register(FossilsLegacyBlocks.BLOCKS);
+        simpleRegistryRegister.register(FossilsLegacyBlockTypes.BLOCK_TYPES);
         simpleRegistryRegister.register(FossilsLegacyBlockEntityTypes.BLOCK_ENTITY_TYPES);
         simpleRegistryRegister.register(FossilsLegacyMenuTypes.MENU_TYPES);
         simpleRegistryRegister.register(FossilsLegacyEggVariants.EGG_VARIANTS);

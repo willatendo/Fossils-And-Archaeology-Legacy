@@ -1,7 +1,15 @@
 {
   "variants": {
-    "": {
-      "model": "fossilslegacy:block/fossil_ore"
-    }
+    "": [
+      {
+        "model": "fossilslegacy:block/shells_fossil_ore"
+      },
+      {
+        "model": "fossilslegacy:block/raptor_leg_fossil_ore"
+      },
+      {
+        "model": "fossilslegacy:block/tyrannosaurus_skull_fossil_ore"
+      }
+    ]
   }
 }

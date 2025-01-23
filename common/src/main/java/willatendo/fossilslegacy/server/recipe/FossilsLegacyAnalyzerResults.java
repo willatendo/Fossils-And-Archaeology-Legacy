@@ -73,10 +73,10 @@ public class FossilsLegacyAnalyzerResults {
 
     public static void bootstrap(BootstrapContext<AnalyzerResult> bootstrapContext) {
         FossilsLegacyAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(Items.BONE_MEAL), 60);
-        FossilsLegacyAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FossilsLegacyItems.JURASSIC_FERN_SPORES.get()), 20);
-        FossilsLegacyAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get()), 10);
-        FossilsLegacyAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FossilsLegacyItems.PETRIFIED_SIGILLARIA_SAPLING.get()), 10);
-        FossilsLegacyAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FossilsLegacyItems.PETRIFIED_CALAMITES_SAPLING.get()), 10);
+        FossilsLegacyAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FossilsLegacyItems.JURASSIC_FERN_DNA.get()), 20);
+        FossilsLegacyAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FossilsLegacyItems.LEPIDODENDRON_DNA.get()), 10);
+        FossilsLegacyAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FossilsLegacyItems.SIGILLARIA_DNA.get()), 10);
+        FossilsLegacyAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FossilsLegacyItems.CALAMITES_DNA.get()), 10);
         FossilsLegacyAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FossilsLegacyItems.BRACHIOSAURUS_DNA.get()), 2);
         FossilsLegacyAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FossilsLegacyItems.DILOPHOSAURUS_DNA.get()), 2);
         FossilsLegacyAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FossilsLegacyItems.MOSASAURUS_DNA.get()), 2);

@@ -209,9 +209,10 @@ public class FossilsLegacyRecipeProvider extends SimpleRecipeProvider {
         this.cultivate(CultivationBookCategory.EGG, FossilsLegacyItems.SPINOSAURUS_DNA.get(), FossilsLegacyItems.SPINOSAURUS_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FossilsLegacyItems.ANKYLOSAURUS_DNA.get(), FossilsLegacyItems.ANKYLOSAURUS_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FossilsLegacyItems.DIMETRODON_DNA.get(), FossilsLegacyItems.DIMETRODON_EGG.get(), 6000);
-        this.cultivate(CultivationBookCategory.PLANT, FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get(), FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get(), 6000);
-        this.cultivate(CultivationBookCategory.PLANT, FossilsLegacyItems.PETRIFIED_SIGILLARIA_SAPLING.get(), FossilsLegacyBlocks.SIGILLARIA_SAPLING.get(), 6000);
-        this.cultivate(CultivationBookCategory.PLANT, FossilsLegacyItems.PETRIFIED_CALAMITES_SAPLING.get(), FossilsLegacyBlocks.CALAMITES_SAPLING.get(), 6000);
+        this.cultivate(CultivationBookCategory.PLANT, FossilsLegacyItems.JURASSIC_FERN_DNA.get(), FossilsLegacyItems.JURASSIC_FERN_SPORES.get(), 6000);
+        this.cultivate(CultivationBookCategory.PLANT, FossilsLegacyItems.LEPIDODENDRON_DNA.get(), FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get(), 6000);
+        this.cultivate(CultivationBookCategory.PLANT, FossilsLegacyItems.SIGILLARIA_DNA.get(), FossilsLegacyBlocks.SIGILLARIA_SAPLING.get(), 6000);
+        this.cultivate(CultivationBookCategory.PLANT, FossilsLegacyItems.CALAMITES_DNA.get(), FossilsLegacyBlocks.CALAMITES_SAPLING.get(), 6000);
 
         this.archaeology(ArchaeologyBookCategory.RESTORE, FossilsLegacyItems.ANCIENT_HELMET_ARTIFACT.get(), FossilsLegacyItems.ANCIENT_HELMET.get(), 3000);
         this.archaeology(ArchaeologyBookCategory.RESTORE, FossilsLegacyItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), FossilsLegacyItems.ANCIENT_CHESTPLATE.get(), 3000);

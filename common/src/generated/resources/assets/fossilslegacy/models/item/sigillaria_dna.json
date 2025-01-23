@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "fossilslegacy:item/petrified_calamites_sapling"
+    "layer0": "fossilslegacy:item/sigillaria_dna"
   }
 }

@@ -71,8 +71,8 @@ public class FeederBlock extends Block implements EntityBlock {
             return InteractionResult.SUCCESS;
         } else {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
-            if (blockEntity instanceof FeederBlockEntity && player instanceof ServerPlayer serverPlayer) {
-                SimpleUtils.openContainer(blockEntity, blockPos, serverPlayer);
+            if (blockEntity instanceof FeederBlockEntity feederBlockEntity && player instanceof ServerPlayer serverPlayer) {
+                SimpleUtils.openContainer(feederBlockEntity, blockPos, serverPlayer);
             }
             return InteractionResult.CONSUME;
         }

@@ -470,9 +470,10 @@ public class FossilsLegacyLanguageProvider extends SimpleLanguageProvider {
         this.add(FossilsLegacyItems.ANKYLOSAURUS_DNA.get(), "Ankylosaurus DNA");
         this.add(FossilsLegacyItems.DIMETRODON_DNA.get(), "Dimetrodon DNA");
         this.add("item.fossilslegacy.dna.coat_type", "Coat Type: %s");
-        this.add(FossilsLegacyItems.PETRIFIED_LEPIDODENDRON_SAPLING.get());
-        this.add(FossilsLegacyItems.PETRIFIED_SIGILLARIA_SAPLING.get());
-        this.add(FossilsLegacyItems.PETRIFIED_CALAMITES_SAPLING.get());
+        this.add(FossilsLegacyItems.JURASSIC_FERN_DNA.get());
+        this.add(FossilsLegacyItems.LEPIDODENDRON_DNA.get());
+        this.add(FossilsLegacyItems.SIGILLARIA_DNA.get());
+        this.add(FossilsLegacyItems.CALAMITES_DNA.get());
         this.add(FossilsLegacyItems.TRICERATOPS_EGG.get());
         this.add(FossilsLegacyItems.VELOCIRAPTOR_EGG.get());
         this.add(FossilsLegacyItems.TYRANNOSAURUS_EGG.get());

@@ -69,8 +69,8 @@ public class TimeMachineBlock extends Block implements EntityBlock {
             return InteractionResult.SUCCESS;
         } else {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
-            if (blockEntity instanceof TimeMachineBlockEntity && player instanceof ServerPlayer serverPlayer) {
-                SimpleUtils.openContainer(blockEntity, blockPos, serverPlayer);
+            if (blockEntity instanceof TimeMachineBlockEntity timeMachineBlockEntity && player instanceof ServerPlayer serverPlayer) {
+                SimpleUtils.openContainer(timeMachineBlockEntity, blockPos, serverPlayer);
             }
             return InteractionResult.CONSUME;
         }

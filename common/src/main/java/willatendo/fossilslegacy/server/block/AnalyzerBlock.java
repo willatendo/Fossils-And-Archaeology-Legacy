@@ -77,8 +77,8 @@ public class AnalyzerBlock extends Block implements EntityBlock {
             return InteractionResult.SUCCESS;
         } else {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
-            if (blockEntity instanceof AnalyzerBlockEntity && player instanceof ServerPlayer serverPlayer) {
-                SimpleUtils.openContainer(blockEntity, blockPos, serverPlayer);
+            if (blockEntity instanceof AnalyzerBlockEntity analyzerBlockEntity && player instanceof ServerPlayer serverPlayer) {
+                SimpleUtils.openContainer(analyzerBlockEntity, blockPos, serverPlayer);
             }
             return InteractionResult.CONSUME;
         }

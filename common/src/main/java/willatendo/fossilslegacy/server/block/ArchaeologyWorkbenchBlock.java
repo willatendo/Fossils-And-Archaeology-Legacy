@@ -76,8 +76,8 @@ public class ArchaeologyWorkbenchBlock extends Block implements EntityBlock {
             return InteractionResult.SUCCESS;
         } else {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
-            if (blockEntity instanceof ArchaeologyWorkbenchBlockEntity && player instanceof ServerPlayer serverPlayer) {
-                SimpleUtils.openContainer(blockEntity, blockPos, serverPlayer);
+            if (blockEntity instanceof ArchaeologyWorkbenchBlockEntity archaeologyWorkbenchBlockEntity && player instanceof ServerPlayer serverPlayer) {
+                SimpleUtils.openContainer(archaeologyWorkbenchBlockEntity, blockPos, serverPlayer);
             }
             return InteractionResult.CONSUME;
         }

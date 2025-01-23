@@ -105,8 +105,8 @@ public class CultivatorBlock extends Block implements EntityBlock {
             return InteractionResult.SUCCESS;
         } else {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
-            if (blockEntity instanceof CultivatorBlockEntity && player instanceof ServerPlayer serverPlayer) {
-                SimpleUtils.openContainer(blockEntity, blockPos, serverPlayer);
+            if (blockEntity instanceof CultivatorBlockEntity cultivatorBlockEntity && player instanceof ServerPlayer serverPlayer) {
+                SimpleUtils.openContainer(cultivatorBlockEntity, blockPos, serverPlayer);
             }
             return InteractionResult.CONSUME;
         }
