@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
@@ -20,10 +21,13 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.PregnantAnimal;
 import willatendo.fossilslegacy.server.entity.variants.PregnancyType;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.item.dinopedia.DinopediaType;
+import willatendo.fossilslegacy.server.item.dinopedia.FossilsLegacyDinopediaTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class PregnantSmilodon extends Smilodon implements DinopediaInformation, PregnantAnimal<Smilodon> {
     private static final EntityDataAccessor<Holder<CoatType>> OFFSPRING_COAT_TYPE = SynchedEntityData.defineId(PregnantSmilodon.class, FossilsLegacyEntityDataSerializers.COAT_TYPES.get());
@@ -50,13 +54,23 @@ public class PregnantSmilodon extends Smilodon implements DinopediaInformation, 
     }
 
     @Override
-    public List<Component> info(Player player) {
-        ArrayList<Component> information = Lists.newArrayList();
-        information.add(this.getDisplayName());
-        information.add(FossilsLegacyUtils.translation("dinopedia", "health", (int) this.getHealth(), (int) this.getMaxHealth()));
-        information.add(FossilsLegacyUtils.translation("dinopedia", "pregnancy_time", (int) Math.floor((((float) this.getRemainingTime()) / this.maxTime()) * 100) + "%"));
-        information.add(FossilsLegacyUtils.translation("dinopedia", "embryo", this.getPregnancyType().value().getDescription().getString()));
-        return information;
+    public Component getPregnantDisplayName() {
+        return this.getDisplayName();
+    }
+
+    @Override
+    public float getPregnantHealth() {
+        return this.getHealth();
+    }
+
+    @Override
+    public float getPregnantMaxHealth() {
+        return this.getMaxHealth();
+    }
+
+    @Override
+    public Optional<ResourceKey<DinopediaType>> getDinopediaType() {
+        return Optional.of(FossilsLegacyDinopediaTypes.PREGNANT_ANIMAL);
     }
 
     @Override

@@ -106,35 +106,35 @@ public class DinopediaScreen extends Screen {
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         super.render(guiGraphics, mouseX, mouseY, partialTick);
 
-        DinopediaEntry dinopediaEntry = this.dinopediaEntries.get(this.index);
-        int leftPos = (this.width - 192) / 2;
-        int topPos = (this.height / 2) - (182 / 2);
+        if (!this.dinopediaEntries.isEmpty()) {
+            DinopediaEntry dinopediaEntry = this.dinopediaEntries.get(this.index);
+            int leftPos = (this.width - 192) / 2;
+            int topPos = (this.height / 2) - (182 / 2);
 
-        int textStart = 20;
+            int textStart = 20;
 
-        if (dinopediaEntry.drawEntity()) {
-            textStart = 90;
-            this.livingEntity.tickCount = this.player.tickCount;
-            GeneModificationTableScreen.renderEntityInInventoryFollowsMouse(guiGraphics, leftPos + 20, topPos + 15, leftPos + 172, topPos + 80, 16, 1.0F, 0.25F, mouseX, mouseY, this.livingEntity);
-        }
-
-        List<Component> components = new ArrayList<>();
-        if (this.dinopediaInformation.getDinopediaType().isPresent()) {
-            if (this.dinopediaInformation instanceof Entity entity) {
-                components = dinopediaEntry.getText(entity, this.player);
-            }
-        } else {
-            components = this.dinopediaInformation.info(this.player);
-        }
-
-        if (!components.isEmpty()) {
-            boolean displayName = dinopediaEntry.line().contains(BuiltInDinopediaLines.DISPLAY_NAME);
-            if (displayName) {
-                this.drawCenteredStringMinusShadow(guiGraphics, this.font, components.getFirst(), leftPos, topPos + textStart, 0, dinopediaEntry.centerText());
+            if (dinopediaEntry.drawEntity()) {
+                textStart = 90;
+                this.livingEntity.tickCount = this.player.tickCount;
+                GeneModificationTableScreen.renderEntityInInventoryFollowsMouse(guiGraphics, leftPos + 20, topPos + 15, leftPos + 172, topPos + 80, 16, 1.0F, 0.25F, mouseX, mouseY, this.livingEntity);
             }
 
-            for (int i = displayName ? 1 : 0; i < components.size(); i++) {
-                this.drawCenteredStringMinusShadow(guiGraphics, this.font, components.get(i), leftPos, topPos + textStart + (displayName ? 10 : 0) + (i * 10), 0, dinopediaEntry.centerText());
+            List<Component> components = new ArrayList<>();
+            if (this.dinopediaInformation.getDinopediaType().isPresent()) {
+                if (this.dinopediaInformation instanceof Entity entity) {
+                    components = dinopediaEntry.getText(entity, this.player);
+                }
+            }
+
+            if (!components.isEmpty()) {
+                boolean displayName = dinopediaEntry.line().contains(BuiltInDinopediaLines.DISPLAY_NAME);
+                if (displayName) {
+                    this.drawCenteredStringMinusShadow(guiGraphics, this.font, components.getFirst(), leftPos, topPos + textStart, 0, dinopediaEntry.centerText());
+                }
+
+                for (int i = displayName ? 1 : 0; i < components.size(); i++) {
+                    this.drawCenteredStringMinusShadow(guiGraphics, this.font, components.get(i), leftPos, topPos + textStart + (displayName ? 10 : 0) + (i * 10), 0, dinopediaEntry.centerText());
+                }
             }
         }
     }

@@ -1,0 +1,22 @@
+{
+  "center_text": true,
+  "draw_entity": true,
+  "line": [
+    {
+      "type": "fossilslegacy:built_in",
+      "name": "pregnant_display_name"
+    },
+    {
+      "type": "fossilslegacy:built_in",
+      "name": "pregnant_health"
+    },
+    {
+      "type": "fossilslegacy:built_in",
+      "name": "pregnancy_time"
+    },
+    {
+      "type": "fossilslegacy:built_in",
+      "name": "pregnancy_type"
+    }
+  ]
+}

@@ -23,6 +23,7 @@ public class FossilsLegacyDinopediaTypes {
     public static final ResourceKey<DinopediaType> MOA = FossilsLegacyDinopediaTypes.create("moa");
     public static final ResourceKey<DinopediaType> MOSASAURUS = FossilsLegacyDinopediaTypes.create("mosasaurus");
     public static final ResourceKey<DinopediaType> PACHYCEPHALOSAURUS = FossilsLegacyDinopediaTypes.create("pachycephalosaurus");
+    public static final ResourceKey<DinopediaType> PREGNANT_ANIMAL = FossilsLegacyDinopediaTypes.create("pregnant_animal");
     public static final ResourceKey<DinopediaType> PTERANODON = FossilsLegacyDinopediaTypes.create("pteranodon");
     public static final ResourceKey<DinopediaType> SMILODON = FossilsLegacyDinopediaTypes.create("smilodon");
     public static final ResourceKey<DinopediaType> SPINOSAURUS = FossilsLegacyDinopediaTypes.create("spinosaurus");
@@ -56,6 +57,7 @@ public class FossilsLegacyDinopediaTypes {
         FossilsLegacyDinopediaTypes.register(bootstrapContext, MOA, FossilsLegacyDinopediaEntries.MOA_DATA);
         FossilsLegacyDinopediaTypes.register(bootstrapContext, MOSASAURUS, FossilsLegacyDinopediaEntries.MOSASAURUS_DATA);
         FossilsLegacyDinopediaTypes.register(bootstrapContext, PACHYCEPHALOSAURUS, FossilsLegacyDinopediaEntries.PACHYCEPHALOSAURUS_DATA);
+        FossilsLegacyDinopediaTypes.register(bootstrapContext, PREGNANT_ANIMAL, FossilsLegacyDinopediaEntries.PREGNANCY_DATA);
         FossilsLegacyDinopediaTypes.register(bootstrapContext, PTERANODON, FossilsLegacyDinopediaEntries.PTERANODON_DATA);
         FossilsLegacyDinopediaTypes.register(bootstrapContext, SMILODON, FossilsLegacyDinopediaEntries.SMILODON_DATA);
         FossilsLegacyDinopediaTypes.register(bootstrapContext, SPINOSAURUS, FossilsLegacyDinopediaEntries.SPINOSAURUS_DATA);

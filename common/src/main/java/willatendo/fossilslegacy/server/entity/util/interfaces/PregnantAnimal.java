@@ -6,6 +6,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
@@ -63,6 +64,12 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLe
     void setOffspringCoatType(Holder<CoatType> coatTypeHolder);
 
     T getBaseEntity(Level level);
+
+    Component getPregnantDisplayName();
+
+    float getPregnantHealth();
+
+    float getPregnantMaxHealth();
 
     @Override
     default int maxTime() {
