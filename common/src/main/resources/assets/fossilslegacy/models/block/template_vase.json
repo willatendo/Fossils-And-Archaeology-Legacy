@@ -1,10 +1,10 @@
 {
 	"parent": "block/cube_all",
 	"textures": {
-		"0": "fossilslegacy:block/mayan_pot_bottom",
-		"1": "fossilslegacy:block/mayan_pot_side",
-		"2": "fossilslegacy:block/mayan_pot_top",
-		"3": "fossilslegacy:block/mayan_pot_inside",
+		"bottom": "fossilslegacy:block/mayan_pot_bottom",
+		"side": "fossilslegacy:block/mayan_pot_side",
+		"top": "fossilslegacy:block/mayan_pot_top",
+		"inside": "fossilslegacy:block/mayan_pot_inside",
 		"particle": "#side"
 	},
 	"elements": [

@@ -3,12 +3,11 @@ package willatendo.fossilslegacy.server.item.dinopedia;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.item.dinopedia.line.BuiltInDinopediaLines;
 import willatendo.fossilslegacy.server.item.dinopedia.line.CustomDinopediaLine;
 import willatendo.fossilslegacy.server.item.dinopedia.line.DinopediaLine;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,9 +16,9 @@ import java.util.List;
 public record DinopediaEntry(List<DinopediaLine> line, boolean drawEntity, boolean centerText) {
     public static final Codec<DinopediaEntry> DIRECT_CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.list(DinopediaLine.CODEC).fieldOf("line").forGetter(DinopediaEntry::line), Codec.BOOL.optionalFieldOf("draw_entity", false).forGetter(DinopediaEntry::drawEntity), Codec.BOOL.optionalFieldOf("center_text", false).forGetter(DinopediaEntry::centerText)).apply(instance, DinopediaEntry::new));
 
-    public List<Component> getText(Dinosaur dinosaur, Player player) {
+    public List<Component> getText(Entity entity, Player player) {
         ArrayList<Component> text = new ArrayList<>();
-        this.line.forEach(dinopediaLine -> dinopediaLine.addText(text, dinosaur, player));
+        this.line.forEach(dinopediaLine -> dinopediaLine.addText(text, entity, player));
         return text;
     }
 

@@ -16,6 +16,7 @@ public class FossilsLegacyDinopediaTypes {
     public static final ResourceKey<DinopediaType> DILOPHOSAURUS = FossilsLegacyDinopediaTypes.create("dilophosaurus");
     public static final ResourceKey<DinopediaType> DIMETRODON = FossilsLegacyDinopediaTypes.create("dimetrodon");
     public static final ResourceKey<DinopediaType> DODO = FossilsLegacyDinopediaTypes.create("dodo");
+    public static final ResourceKey<DinopediaType> EGG = FossilsLegacyDinopediaTypes.create("egg");
     public static final ResourceKey<DinopediaType> FUTABASAURUS = FossilsLegacyDinopediaTypes.create("futabasaurus");
     public static final ResourceKey<DinopediaType> GALLIMIMUS = FossilsLegacyDinopediaTypes.create("gallimimus");
     public static final ResourceKey<DinopediaType> MAMMOTH = FossilsLegacyDinopediaTypes.create("mammoth");
@@ -48,6 +49,7 @@ public class FossilsLegacyDinopediaTypes {
         FossilsLegacyDinopediaTypes.register(bootstrapContext, DILOPHOSAURUS, FossilsLegacyDinopediaEntries.DILOPHOSAURUS_DATA);
         FossilsLegacyDinopediaTypes.register(bootstrapContext, DIMETRODON, FossilsLegacyDinopediaEntries.DIMETRODON_DATA);
         FossilsLegacyDinopediaTypes.register(bootstrapContext, DODO, FossilsLegacyDinopediaEntries.DODO_DATA);
+        FossilsLegacyDinopediaTypes.register(bootstrapContext, EGG, FossilsLegacyDinopediaEntries.EGG_DATA);
         FossilsLegacyDinopediaTypes.register(bootstrapContext, FUTABASAURUS, FossilsLegacyDinopediaEntries.FUTABASAURUS_DATA);
         FossilsLegacyDinopediaTypes.register(bootstrapContext, GALLIMIMUS, FossilsLegacyDinopediaEntries.GALLIMIMUS_DATA);
         FossilsLegacyDinopediaTypes.register(bootstrapContext, MAMMOTH, FossilsLegacyDinopediaEntries.MAMMOTH_DATA);

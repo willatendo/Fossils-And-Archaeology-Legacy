@@ -512,6 +512,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
     public CompoundTag getUpdateTag(HolderLookup.Provider provider) {
         CompoundTag compoundTag = new CompoundTag();
         compoundTag.putInt("CultivationTime", this.cultivationProgress);
+        ContainerHelper.saveAllItems(compoundTag, this.itemStacks, true, provider);
         return compoundTag;
     }
 

@@ -2,9 +2,9 @@ package willatendo.fossilslegacy.server.item.dinopedia.line;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyBuiltInRegistries;
-import willatendo.fossilslegacy.server.entity.Dinosaur;
 
 import java.util.List;
 
@@ -13,5 +13,5 @@ public interface DinopediaLine {
 
     DinopediaLineType<?> type();
 
-    void addText(List<Component> text, Dinosaur dinosaur, Player player);
+    void addText(List<Component> text, Entity entity, Player player);
 }

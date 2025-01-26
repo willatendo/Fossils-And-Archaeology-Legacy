@@ -1,6 +1,45 @@
 19/1/2024 1.4.7
 - Updated Fossil Texture
 - Updated Frozen Meat Texture
+- Updated Ankylosaurus Egg Texture
+- Updated Brachiosaurus Egg Texture
+- Updated Carnotaurus Egg Texture
+- Updated Compsognathus Egg Texture
+- Updated Cryolophosaurus Egg Texture
+- Updated Dilophosaurus Egg Texture
+- Updated Dimetrodon Egg Texture
+- Updated Futabasaurus Egg Texture
+- Updated Gallimimus Egg Texture
+- Updated Mosasaurus Egg Texture
+- Updated Pachycephalosaurus Egg Texture
+- Updated Pteranodon Egg Texture
+- Updated Spinosaurus Egg Texture
+- Updated Stegosaurus Egg Texture
+- Updated Therizinosaurus Egg Texture
+- Updated Triceratops Egg Texture
+- Updated Tyrannosaurus Egg Texture
+- Updated Velociraptor Egg Texture
+- Updated Incubated Dodo Egg Texture
+- Updated Incubated Moa Egg Texture
+- Updated Mammoth Embryo Syringe Texture
+- Updated Smilodon Embryo Syringe Texture
+- Updated Armadillo Embryo Syringe Texture
+- Updated Cat Embryo Syringe Texture
+- Updated Cow Embryo Syringe Texture
+- Updated Dolphin Embryo Syringe Texture
+- Updated Donkey Embryo Syringe Texture
+- Updated Fox Embryo Syringe Texture
+- Updated Goat Embryo Syringe Texture
+- Updated Horse Embryo Syringe Texture
+- Updated Llama Embryo Syringe Texture
+- Updated Mule Embryo Syringe Texture
+- Updated Ocelot Embryo Syringe Texture
+- Updated Panda Embryo Syringe Texture
+- Updated Pig Embryo Syringe Texture
+- Updated Polar Bear Embryo Syringe Texture
+- Updated Rabbit Embryo Syringe Texture
+- Updated Sheep Embryo Syringe Texture
+- Updated Wolf Embryo Syringe Texture
 - Updated Raw Ankylosaurus Texture
 - Updated Cooked Ankylosaurus Texture
 - Updated Raw Brachiosaurus Texture
@@ -24,6 +63,8 @@
 - Updated Cooked Moa Texture
 - Updated Raw Mosasaurus Texture
 - Updated Cooked Mosasaurus Texture
+- Updated Nautilus Texture
+- Updated Sio-Chiu-Le Texture
 - Updated Raw Pachycephalosaurus Texture
 - Updated Cooked Pachycephalosaurus Texture
 - Updated Raw Pteranodon Texture
@@ -42,19 +83,90 @@
 - Updated Cooked Tyrannosaurus Texture
 - Updated Raw Velociraptor Texture
 - Updated Cooked Velociraptor Texture
-- Updated Nautilus Texture
-- Updated Nautilus Shell Texture
-- Updated Sio-Chiu-Le Texture
-- Updated Tyrannosaurus Tooth Texture
-- Updated Tooth Dagger Texture
-- Updated Jurassic Fern Spores Texture
+- Updated Bucket of Raw Chicken Soup Texture
+- Updated Bucket of Cooked Chicken Soup Texture
 - Updated Chicken Essence Bottle Texture
+- Updated Bucket of Raw Berry Medley Texture
+- Updated Bucket of Cooked Berry Medley Texture
 - Updated Romantic Concoction Bottle Texture
+- Updated Legacy Genetic Code Texture
+- Updated Jurassic Fern Spores Texture
+- Updated Relic Scrap Texture
+- Updated Stone Tablet Texture
+- Updated Scarab Gem Texture
+- Updated Jade Texture
+- Updated Jade Ocelot Texture
+- Updated Jade Villager Texture
+- Updated Ancient Sword Artifact Texture
+- Updated Ancient Shovel Artifact Texture
+- Updated Ancient Pickaxe Artifact Texture
+- Updated Ancient Axe Artifact Texture
+- Updated Ancient Hoe Artifact Texture
+- Updated Ancient Helmet Artifact Texture
+- Updated Ancient Chestplate Artifact Texture
+- Updated Ancient Leggings Artifact Texture
+- Updated Ancient Boots Artifact Texture
+- Updated Overworld Coin Texture
+- Updated Ice Age Coin Texture
+- Updated Prehistoric Coin Texture
+- Updated Dodo Egg Texture
+- Updated Moa Egg Texture
+- Updated Therizinosaurus Claws Texture
+- Updated Tyrannosaurus Tooth Texture
 - Updated Dinopedia Texture
-- Updated Dinopedia Texture
-- Updated Dinopedia Texture
+- Updated Nautilus Shell Texture
+- Updated Skull Stick Texture
+- Updated Magic Conch Texture
+- Updated Tooth Dagger Texture
+- Updated Ancient Sword Texture
+- Updated Ancient Shovel Texture
+- Updated Ancient Pickaxe Texture
+- Updated Ancient Axe Texture
+- Updated Ancient Hoe Texture
+- Updated Ancient Helmet Texture
+- Updated Ancient Chestplate Texture
+- Updated Ancient Leggings Texture
+- Updated Ancient Boots Texture
+- Updated Scarab Gem Sword Sword Texture
+- Updated Scarab Gem Sword Shovel Texture
+- Updated Scarab Gem Sword Pickaxe Texture
+- Updated Scarab Gem Sword Axe Texture
+- Updated Scarab Gem Sword Hoe Texture
+- Updated Scarab Gem Sword Helmet Texture
+- Updated Scarab Gem Sword Chestplate Texture
+- Updated Scarab Gem Sword Leggings Texture
+- Updated Scarab Gem Sword Boots Texture
+- Updated Wooden Javelin Texture
+- Updated Stone Javelin Texture
+- Updated Iron Javelin Texture
+- Updated Golden Javelin Texture
+- Updated Diamond Javelin Texture
+- Updated Netherite Javelin Texture
+- Updated Scarab Gem Javelin Texture
+- Updated Fossil Ore Texture
+- Updated Deepslate Fossil Ore Texture
+- Updated Permafrost Texture
+- Updated Iced Stone Texture
+- Updated Analyzer Texture
+- Updated Gene Modification Table Texture
+- Updated Archaeology Workbench Texture
+- Updated Palaeontology Table Texture
+- Updated Drum Texture
+- Updated Feeder Texture
+- Updated Time Machine Texture
+- Updated Skull Block Texture
+- Updated Skull Lantern Block Texture
+- Updated Mayan Vase Texture
+- Updated Mayan Jade Vase Texture
+- Updated Mayan Ocelot Vase Texture
+- Updated Mayan Villager Vase Texture
 - Updated Logo
 - All Meats Are Now Sorted Alphabetically In Creative Tab, Raw Then Cooked
+- Skull Blocks Now Use Bone Sounds
+- Skull Lanterns Now Use Bone Sounds
+- Time Machine Now Dragon Immune
+- Time Machine Now Wither Immune
+- Archaeology Workbench Now Has Books On Front And Back
 - Added Calamites Saplings Now Made From Calamites DNA
 - Added Lepidodendron Saplings Now Made From Lepidodendron DNA
 - Added Sigillaria Now Made From Sigillaria DNA
@@ -69,6 +181,8 @@
 - (Fabric) Fixed Transparent Textures
 - (Fabric) Fixed Palaeontology Screen
 - Fixed Dinosaur-Related Crash
+- Fixed Fossil Shadows
+- Fixed Untranslated String In Time Machine
 - Added New Cultivator Model
 - Removed Petrified Calamites Sapling
 - Removed Petrified Lepidodendron Sapling

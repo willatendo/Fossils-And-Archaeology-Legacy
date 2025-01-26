@@ -9,6 +9,7 @@ import net.minecraft.client.gui.screens.inventory.PageButton;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
@@ -119,8 +120,8 @@ public class DinopediaScreen extends Screen {
 
         List<Component> components = new ArrayList<>();
         if (this.dinopediaInformation.getDinopediaType().isPresent()) {
-            if (this.dinopediaInformation instanceof Dinosaur dinosaur) {
-                components = dinopediaEntry.getText(dinosaur, this.player);
+            if (this.dinopediaInformation instanceof Entity entity) {
+                components = dinopediaEntry.getText(entity, this.player);
             }
         } else {
             components = this.dinopediaInformation.info(this.player);

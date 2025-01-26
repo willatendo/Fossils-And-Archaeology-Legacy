@@ -101,11 +101,13 @@ public final class FossilsLegacyClient {
     }
 
     public static void modelLayerEvent(ModelLayerRegistry modelLayerRegister) {
+        modelLayerRegister.register(FossilsLegacyModelLayers.ANIMAL_FETUS, AnimalFetusModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.ANU, AnuModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.EGG, EggModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.REGULAR_EGG, EggModel::createRegularBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.SMALL_EGG, EggModel::createSmallBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.FAILURESAURUS, FailuresaurusModel::createBodyLayer);
-        modelLayerRegister.register(FossilsLegacyModelLayers.FETUS, FetusModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.NAUTILUS, NautilusModel::createBodyLayer);
+        modelLayerRegister.register(FossilsLegacyModelLayers.PLANT_EMBRYO, PlantEmbryoModel::createBodyLayer);
         modelLayerRegister.register(FossilsLegacyModelLayers.TIME_MACHINE_CLOCK, TimeMachineClockModel::createBodyLayer);
     }
 

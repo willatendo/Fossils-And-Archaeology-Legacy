@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.server.entity.util;
 
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;

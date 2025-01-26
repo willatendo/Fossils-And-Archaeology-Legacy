@@ -15,13 +15,22 @@ public class EggModel extends EntityModel<Egg> {
         this.root = root;
     }
 
-    public static LayerDefinition createBodyLayer() {
+    public static LayerDefinition createRegularBodyLayer() {
         MeshDefinition meshDefinition = new MeshDefinition();
         PartDefinition partDefinition = meshDefinition.getRoot();
 
-        partDefinition.addOrReplaceChild("root", CubeListBuilder.create().texOffs(15, 13).addBox(-2.75F, -1.0F, -2.5F, 5.0F, 1.0F, 5.0F, new CubeDeformation(0.0F)).texOffs(0, 11).addBox(-2.75F, -8.0F, -2.5F, 5.0F, 2.0F, 5.0F, new CubeDeformation(0.0F)).texOffs(0, 0).addBox(-3.25F, -6.0F, -3.0F, 6.0F, 5.0F, 6.0F, new CubeDeformation(0.0F)).texOffs(0, 18).addBox(-1.75F, -9.0F, -1.5F, 3.0F, 2.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
+        partDefinition.addOrReplaceChild("root", CubeListBuilder.create().texOffs(0, 18).addBox(-2.5F, -1.0F, -2.5F, 5.0F, 1.0F, 5.0F).texOffs(0, 0).addBox(-3.0F, -6.0F, -3.0F, 6.0F, 5.0F, 6.0F).texOffs(0, 11).addBox(-2.5F, -8.0F, -2.5F, 5.0F, 2.0F, 5.0F).texOffs(20, 11).addBox(-1.5F, -9.0F, -1.5F, 3.0F, 1.0F, 3.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
 
-        return LayerDefinition.create(meshDefinition, 64, 64);
+        return LayerDefinition.create(meshDefinition, 32, 32);
+    }
+
+    public static LayerDefinition createSmallBodyLayer() {
+        MeshDefinition meshDefinition = new MeshDefinition();
+        PartDefinition partDefinition = meshDefinition.getRoot();
+
+        partDefinition.addOrReplaceChild("root", CubeListBuilder.create().texOffs(0, 0).addBox(-2.0F, -5.0F, -2.0F, 4.0F, 4.0F, 4.0F).texOffs(0, 8).addBox(-1.5F, -1.0F, -1.5F, 3.0F, 1.0F, 3.0F).texOffs(0, 12).addBox(-1.5F, -6.0F, -1.5F, 3.0F, 1.0F, 3.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
+
+        return LayerDefinition.create(meshDefinition, 16, 16);
     }
 
     @Override

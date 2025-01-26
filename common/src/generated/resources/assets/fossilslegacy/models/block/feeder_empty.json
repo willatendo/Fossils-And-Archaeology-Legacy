@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube",
   "textures": {
-    "down": "minecraft:block/iron_block",
+    "down": "minecraft:block/smooth_stone",
     "east": "fossilslegacy:block/feeder_side",
     "north": "fossilslegacy:block/feeder_front",
     "particle": "fossilslegacy:block/feeder_side",

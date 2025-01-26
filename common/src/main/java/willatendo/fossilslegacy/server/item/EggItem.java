@@ -15,9 +15,11 @@ import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EggItem extends PlaceEntityItem<Egg> {
+    public static final List<EggItem> EGGS = new ArrayList<>();
     protected final Holder<EggVariant> eggVariant;
     protected final TagKey<CoatType> applicableCoatTypes;
 
@@ -25,7 +27,7 @@ public class EggItem extends PlaceEntityItem<Egg> {
         super(FossilsLegacyEntityTypes.EGG::get, properties);
         this.eggVariant = eggVariant;
         this.applicableCoatTypes = applicableCoatTypes;
-        FossilsLegacyItems.EGGS.add(this);
+        EggItem.EGGS.add(this);
     }
 
     public Holder<EggVariant> getEggVariant() {

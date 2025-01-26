@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "down": "fossilslegacy:block/cultivator_bottom",
+    "east": "fossilslegacy:block/pink_cultivator_side_on",
+    "north": "fossilslegacy:block/pink_cultivator_side_on",
+    "particle": "fossilslegacy:block/pink_cultivator_side_on",
+    "south": "fossilslegacy:block/pink_cultivator_side_on",
+    "up": "fossilslegacy:block/pink_cultivator_top",
+    "west": "fossilslegacy:block/pink_cultivator_side_on"
+  }
+}

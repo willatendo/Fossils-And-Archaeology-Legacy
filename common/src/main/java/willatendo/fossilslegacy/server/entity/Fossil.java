@@ -82,6 +82,12 @@ public class Fossil extends Mob {
         return EntityDimensions.scalable(fossilVariant.boundingBoxWidth() + (fossilVariant.boundingBoxGrowth() * size), fossilVariant.boundingBoxHeight() + (fossilVariant.boundingBoxGrowth() * size));
     }
 
+
+    @Override
+    public boolean isBaby() {
+        return this.getSize() < this.getFossilVariant().value().maxSize() / 2;
+    }
+
     @Override
     public void tick() {
         if (!this.isNoAi()) {

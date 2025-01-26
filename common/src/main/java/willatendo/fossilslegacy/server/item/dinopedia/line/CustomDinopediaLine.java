@@ -4,8 +4,8 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentSerialization;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.item.dinopedia.DinopediaEntityPredicate;
 
 import java.util.List;
@@ -19,8 +19,8 @@ public record CustomDinopediaLine(Component text, DinopediaEntityPredicate canDi
     }
 
     @Override
-    public void addText(List<Component> text, Dinosaur dinosaur, Player player) {
-        if (this.canDisplay.matches(player, dinosaur)) {
+    public void addText(List<Component> text, Entity entity, Player player) {
+        if (this.canDisplay.matches(player, entity)) {
             text.add(this.text);
         }
     }

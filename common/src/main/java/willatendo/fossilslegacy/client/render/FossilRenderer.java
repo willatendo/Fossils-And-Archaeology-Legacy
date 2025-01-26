@@ -25,8 +25,6 @@ public class FossilRenderer extends EntityRenderer<Fossil> {
 
     public FossilRenderer(Context context) {
         super(context);
-
-        this.shadowRadius = 0.5F;
     }
 
     private void setModel(EntityModel<Entity> entityModel) {
@@ -49,7 +47,7 @@ public class FossilRenderer extends EntityRenderer<Fossil> {
     public void render(Fossil fossil, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight) {
         FossilVariant fossilVariant = fossil.getFossilVariant().value();
         this.setModel(this.getModel(fossilVariant.model()));
-        this.shadowRadius = fossilVariant.shadowSize();
+        this.shadowRadius = fossilVariant.shadowSize() + (fossilVariant.shadowGrowth() * fossil.getSize());
 
         poseStack.pushPose();
         this.model.riding = fossil.isPassenger();
@@ -165,8 +163,7 @@ public class FossilRenderer extends EntityRenderer<Fossil> {
 
     @Override
     protected float getShadowRadius(Fossil fossil) {
-        FossilVariant fossilVariant = fossil.getFossilVariant().value();
-        return fossilVariant.shadowSize() + (fossilVariant.shadowGrowth() * fossil.getSize());
+        return super.getShadowRadius(fossil) * fossil.getAgeScale();
     }
 
     @Override

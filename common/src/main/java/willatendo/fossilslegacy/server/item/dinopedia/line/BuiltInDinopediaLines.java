@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
+import willatendo.fossilslegacy.server.entity.Egg;
 import willatendo.fossilslegacy.server.entity.util.interfaces.RideableDinosaur;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -17,33 +18,65 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class BuiltInDinopediaLines implements DinopediaLine {
-    public static final BuiltInDinopediaLines DISPLAY_NAME = BuiltInDinopediaLines.create("display_name", Entity::getDisplayName, BuiltInDinopediaLines::alwaysTrue);
-    public static final BuiltInDinopediaLines OWNER = BuiltInDinopediaLines.create("owner", dinosaur -> FossilsLegacyUtils.translation("dinopedia", "owner", dinosaur.getOwner() != null ? dinosaur.getOwner().getDisplayName().getString() : FossilsLegacyUtils.translation("dinopedia", "wild").getString()), BuiltInDinopediaLines::ownerCondition);
-    public static final BuiltInDinopediaLines AGE = BuiltInDinopediaLines.create("age", dinosaur -> FossilsLegacyUtils.translation("dinopedia", "age", dinosaur.getDaysAlive()), BuiltInDinopediaLines::ownerCondition);
-    public static final BuiltInDinopediaLines HEALTH = BuiltInDinopediaLines.create("health", dinosaur -> FossilsLegacyUtils.translation("dinopedia", "health", (int) dinosaur.getHealth(), (int) dinosaur.getMaxHealth()), BuiltInDinopediaLines::ownerCondition);
-    public static final BuiltInDinopediaLines HUNGER = BuiltInDinopediaLines.create("hunger", dinosaur -> FossilsLegacyUtils.translation("dinopedia", "hunger", dinosaur.getHunger(), dinosaur.getMaxHunger()), BuiltInDinopediaLines::ownerCondition);
-    public static final BuiltInDinopediaLines RIDEABLE = BuiltInDinopediaLines.create("rideable", dinosaur -> FossilsLegacyUtils.translation("dinopedia", "rideable"), (dinosaur, player) -> BuiltInDinopediaLines.ownerCondition(dinosaur, player, dinosaur instanceof RideableDinosaur rideableDinosaur && dinosaur.getAge() >= rideableDinosaur.getMinRideableAge()));
-    public static final BuiltInDinopediaLines ABLE_TO_FLY = BuiltInDinopediaLines.create("able_to_fly", dinosaur -> FossilsLegacyUtils.translation("dinopedia", "able_to_fly"), (dinosaur, player) -> BuiltInDinopediaLines.ownerCondition(dinosaur, player, dinosaur instanceof RideableDinosaur rideableDinosaur && dinosaur.getAge() >= rideableDinosaur.getMinRideableAge()));
-    public static final BuiltInDinopediaLines DANGEROUS = BuiltInDinopediaLines.create("dangerous", dinosaur -> FossilsLegacyUtils.translation("dinopedia", "dangerous"), (dinosaur, player) -> dinosaur.getAge() > 3);
-    public static final BuiltInDinopediaLines NOT_OWNER = BuiltInDinopediaLines.create("not_owner", dinosaur -> FossilsLegacyUtils.translation("dinopedia", "not_owner"), (dinosaur, player) -> dinosaur.isTame() && !dinosaur.isOwnedBy(player));
-    public static final BuiltInDinopediaLines WILD = BuiltInDinopediaLines.create("wild", dinosaur -> FossilsLegacyUtils.translation("dinopedia", "wild"), (dinosaur, player) -> !dinosaur.isTame());
+    public static final BuiltInDinopediaLines DISPLAY_NAME = BuiltInDinopediaLines.createDinosaur("display_name", Entity::getDisplayName, BuiltInDinopediaLines::alwaysTrue);
+    public static final BuiltInDinopediaLines OWNER = BuiltInDinopediaLines.createDinosaur("owner", dinosaur -> FossilsLegacyUtils.translation("dinopedia", "owner", dinosaur.getOwner() != null ? dinosaur.getOwner().getDisplayName().getString() : FossilsLegacyUtils.translation("dinopedia", "wild").getString()), BuiltInDinopediaLines::ownerCondition);
+    public static final BuiltInDinopediaLines AGE = BuiltInDinopediaLines.createDinosaur("age", dinosaur -> FossilsLegacyUtils.translation("dinopedia", "age", dinosaur.getDaysAlive()), BuiltInDinopediaLines::ownerCondition);
+    public static final BuiltInDinopediaLines HEALTH = BuiltInDinopediaLines.createDinosaur("health", dinosaur -> FossilsLegacyUtils.translation("dinopedia", "health", (int) dinosaur.getHealth(), (int) dinosaur.getMaxHealth()), BuiltInDinopediaLines::ownerCondition);
+    public static final BuiltInDinopediaLines HUNGER = BuiltInDinopediaLines.createDinosaur("hunger", dinosaur -> FossilsLegacyUtils.translation("dinopedia", "hunger", dinosaur.getHunger(), dinosaur.getMaxHunger()), BuiltInDinopediaLines::ownerCondition);
+    public static final BuiltInDinopediaLines RIDEABLE = BuiltInDinopediaLines.createDinosaur("rideable", dinosaur -> FossilsLegacyUtils.translation("dinopedia", "rideable"), (dinosaur, player) -> BuiltInDinopediaLines.ownerCondition(dinosaur, player, dinosaur instanceof RideableDinosaur rideableDinosaur && dinosaur.getAge() >= rideableDinosaur.getMinRideableAge()));
+    public static final BuiltInDinopediaLines ABLE_TO_FLY = BuiltInDinopediaLines.createDinosaur("able_to_fly", dinosaur -> FossilsLegacyUtils.translation("dinopedia", "able_to_fly"), (dinosaur, player) -> BuiltInDinopediaLines.ownerCondition(dinosaur, player, dinosaur instanceof RideableDinosaur rideableDinosaur && dinosaur.getAge() >= rideableDinosaur.getMinRideableAge()));
+    public static final BuiltInDinopediaLines DANGEROUS = BuiltInDinopediaLines.createDinosaur("dangerous", dinosaur -> FossilsLegacyUtils.translation("dinopedia", "dangerous"), (dinosaur, player) -> dinosaur.getAge() > 3);
+    public static final BuiltInDinopediaLines NOT_OWNER = BuiltInDinopediaLines.createDinosaur("not_owner", dinosaur -> FossilsLegacyUtils.translation("dinopedia", "not_owner"), (dinosaur, player) -> dinosaur.isTame() && !dinosaur.isOwnedBy(player));
+    public static final BuiltInDinopediaLines WILD = BuiltInDinopediaLines.createDinosaur("wild", dinosaur -> FossilsLegacyUtils.translation("dinopedia", "wild"), (dinosaur, player) -> !dinosaur.isTame());
+    public static final BuiltInDinopediaLines EGG_DISPLAY_NAME = BuiltInDinopediaLines.createEgg("egg_display_name", dinosaur -> FossilsLegacyUtils.translation("dinopedia", "egg", dinosaur.getEggVariant().value().entityType().get().getDescription().getString()), BuiltInDinopediaLines::alwaysTrue);
+    public static final BuiltInDinopediaLines REMAINING_TIME = BuiltInDinopediaLines.createEgg("remaining_time", egg -> FossilsLegacyUtils.translation("dinopedia", "remaining_time", (int) Math.floor((((float) egg.getRemainingTime()) / egg.maxTime()) * 100) + "%"), BuiltInDinopediaLines::alwaysTrue);
+    public static final BuiltInDinopediaLines STATUS = BuiltInDinopediaLines.createEgg("status", dinosaur -> FossilsLegacyUtils.translation("dinopedia", "status", dinosaur.getEggVariant().value().getTemperature(dinosaur)), BuiltInDinopediaLines::alwaysTrue);
 
     public static Map<String, BuiltInDinopediaLines> BY_NAME;
 
     public static final MapCodec<BuiltInDinopediaLines> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(Codec.STRING.fieldOf("name").forGetter(builtInDinopediaLines -> builtInDinopediaLines.name)).apply(instance, BY_NAME::get));
 
-    public static BuiltInDinopediaLines create(String name, Function<Dinosaur, Component> line, BiFunction<Dinosaur, Player, Boolean> condition) {
-        BuiltInDinopediaLines builtInDinopediaLines = new BuiltInDinopediaLines(name) {
+    public static BuiltInDinopediaLines createDinosaur(String name, Function<Dinosaur, Component> line, BiFunction<Dinosaur, Player, Boolean> condition) {
+        return BuiltInDinopediaLines.register(name, new BuiltInDinopediaLines(name) {
             @Override
-            public boolean canUseLine(Dinosaur dinosaur, Player player) {
-                return condition.apply(dinosaur, player);
+            public boolean canUseLine(Entity entity, Player player) {
+                if (entity instanceof Dinosaur dinosaur) {
+                    return condition.apply(dinosaur, player);
+                }
+                return false;
             }
 
             @Override
-            public Component getLine(Dinosaur dinosaur) {
-                return line.apply(dinosaur);
+            public Component getLine(Entity entity) {
+                if (entity instanceof Dinosaur dinosaur) {
+                    return line.apply(dinosaur);
+                }
+                return Component.empty();
             }
-        };
+        });
+    }
+
+    public static BuiltInDinopediaLines createEgg(String name, Function<Egg, Component> line, BiFunction<Egg, Player, Boolean> condition) {
+        return BuiltInDinopediaLines.register(name, new BuiltInDinopediaLines(name) {
+            @Override
+            public boolean canUseLine(Entity entity, Player player) {
+                if (entity instanceof Egg egg) {
+                    return condition.apply(egg, player);
+                }
+                return false;
+            }
+
+            @Override
+            public Component getLine(Entity entity) {
+                if (entity instanceof Egg egg) {
+                    return line.apply(egg);
+                }
+                return Component.empty();
+            }
+        });
+    }
+
+    public static <T extends Entity> BuiltInDinopediaLines register(String name, BuiltInDinopediaLines builtInDinopediaLines) {
         if (BuiltInDinopediaLines.BY_NAME == null) {
             BuiltInDinopediaLines.BY_NAME = new HashMap<>();
         }
@@ -57,11 +90,11 @@ public class BuiltInDinopediaLines implements DinopediaLine {
         this.name = name;
     }
 
-    public boolean canUseLine(Dinosaur dinosaur, Player player) {
+    public boolean canUseLine(Entity entity, Player player) {
         return false;
     }
 
-    public Component getLine(Dinosaur dinosaur) {
+    public Component getLine(Entity entity) {
         return Component.empty();
     }
 
@@ -71,13 +104,13 @@ public class BuiltInDinopediaLines implements DinopediaLine {
     }
 
     @Override
-    public void addText(List<Component> text, Dinosaur dinosaur, Player player) {
-        if (this.canUseLine(dinosaur, player)) {
-            text.add(this.getLine(dinosaur));
+    public void addText(List<Component> text, Entity entity, Player player) {
+        if (this.canUseLine(entity, player)) {
+            text.add(this.getLine(entity));
         }
     }
 
-    private static boolean alwaysTrue(Dinosaur dinosaur, Player player) {
+    private static boolean alwaysTrue(Entity dinosaur, Player player) {
         return true;
     }
 

@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "down": "fossilslegacy:block/cultivator_bottom",
+    "east": "fossilslegacy:block/cyan_cultivator_side_off",
+    "north": "fossilslegacy:block/cyan_cultivator_side_off",
+    "particle": "fossilslegacy:block/cyan_cultivator_side_off",
+    "south": "fossilslegacy:block/cyan_cultivator_side_off",
+    "up": "fossilslegacy:block/cyan_cultivator_top",
+    "west": "fossilslegacy:block/cyan_cultivator_side_off"
+  }
+}

@@ -34,6 +34,7 @@ import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
 import willatendo.fossilslegacy.server.entity.Dinosaur;
 import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Pteranodon;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.item.AnimalDNAItem;
 import willatendo.fossilslegacy.server.item.DNAItem;
 import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
 import willatendo.fossilslegacy.server.menu.GeneModificationTableMenu;
@@ -77,10 +78,10 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
         Slot slot = this.menu.slots.get(0);
         if (slot.hasItem()) {
             ItemStack itemStack = slot.getItem();
-            if (itemStack.getItem() instanceof DNAItem dnaItem) {
+            if (itemStack.getItem() instanceof AnimalDNAItem animalDNAItem) {
                 ClientLevel clientLevel = this.minecraft.level;
                 RegistryAccess registryAccess = clientLevel.registryAccess();
-                TagKey<CoatType> applicableCoatTypes = dnaItem.getApplicableCoatTypes();
+                TagKey<CoatType> applicableCoatTypes = animalDNAItem.getApplicableCoatTypes();
 
                 if (applicableCoatTypes != null) {
                     HolderGetter<CoatType> coatTypeHolderGetter = registryAccess.asGetterLookup().lookup(FossilsLegacyRegistries.COAT_TYPES).get();
@@ -135,7 +136,7 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
                     this.drawCenteredStringNoShadow(guiGraphics, this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.coat_type.none", this.selection + 1, this.size), this.leftPos + 53, this.topPos + 47, 0x404040);
                 }
 
-                EntityType<? extends Mob> entityType = dnaItem.getEntityType().get();
+                EntityType<? extends Mob> entityType = animalDNAItem.getEntityType().get();
                 Mob mob = entityType.create(clientLevel);
                 mob.tickCount = this.minecraft.player.tickCount;
                 if (mob instanceof Dinosaur dinosaur) {

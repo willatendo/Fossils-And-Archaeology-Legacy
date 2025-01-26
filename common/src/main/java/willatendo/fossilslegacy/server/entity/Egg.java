@@ -1,13 +1,11 @@
 package willatendo.fossilslegacy.server.entity;
 
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -30,9 +28,13 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformati
 import willatendo.fossilslegacy.server.entity.util.interfaces.TicksToBirth;
 import willatendo.fossilslegacy.server.entity.variants.EggVariant;
 import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.item.dinopedia.DinopediaType;
+import willatendo.fossilslegacy.server.item.dinopedia.FossilsLegacyDinopediaTypes;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-import java.util.*;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
 
 public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
     private static final EntityDataAccessor<Holder<EggVariant>> EGG_VARIANT = SynchedEntityData.defineId(Egg.class, FossilsLegacyEntityDataSerializers.EGG_VARIANTS.get());
@@ -224,12 +226,8 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
     }
 
     @Override
-    public List<Component> info(Player player) {
-        ArrayList<Component> information = Lists.newArrayList();
-        information.add(FossilsLegacyUtils.translation("dinopedia", "egg", this.getEggVariant().value().entityType().get().getDescription().getString()));
-        information.add(FossilsLegacyUtils.translation("dinopedia", "remaining_time", (int) Math.floor((((float) this.getRemainingTime()) / this.maxTime()) * 100) + "%"));
-        information.add(FossilsLegacyUtils.translation("dinopedia", "status", this.getEggVariant().value().getTemperature(this)));
-        return information;
+    public Optional<ResourceKey<DinopediaType>> getDinopediaType() {
+        return Optional.of(FossilsLegacyDinopediaTypes.EGG);
     }
 
     @Override

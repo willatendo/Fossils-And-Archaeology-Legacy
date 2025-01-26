@@ -1,4 +1,4 @@
-// 1.21.1	2024-12-25T15:50:59.6547011	Tags for minecraft:block mod id fossilslegacy
+// 1.21.1	2025-01-24T16:59:22.2146153	Tags for minecraft:block mod id fossilslegacy
 80e160a91f3744e8cb737cde249c3d4059ae1424 data/fossilslegacy/tags/block/calamites_logs.json
 1127f77eb8cace8c1b282963c96612fe0637c879 data/fossilslegacy/tags/block/eatable_fern.json
 a4e8097fff07f9a74259d6b5dd583f3437ff28a2 data/fossilslegacy/tags/block/eatable_leaves.json
@@ -30,6 +30,7 @@ ff9b281b9a16648420ec54ace1183217c76bfa6c data/fossilslegacy/tags/block/spawnable
 7b64ecbd6f910336a3048eee60e5fbe365fe3f35 data/fossilslegacy/tags/block/unbreakable/tyrannosaurus.json
 57fe9124af5de4665b02ab20ef7879f32d8f2642 data/minecraft/tags/block/cauldrons.json
 e22b5154b419cfbe807f46ab59066fd810ea3724 data/minecraft/tags/block/ceiling_hanging_signs.json
+797196f5504d9af5bc7da7298bfd4afe793f7450 data/minecraft/tags/block/dragon_immune.json
 a02da92027664f91d61ec2f9fc49b8b4e6e0de12 data/minecraft/tags/block/fence_gates.json
 92e3a2a67fbbd9ca8fee46b0e5e0c780b9d86df6 data/minecraft/tags/block/flower_pots.json
 b16ce44bdd9bc3166b771d29316051f6ef0cb99b data/minecraft/tags/block/leaves.json
@@ -44,6 +45,7 @@ dbe2d29a9e3977878a18d220330468942b1cc6f7 data/minecraft/tags/block/planks.json
 d62cfadf78e321c2f7edb58813da58048c0dde0b data/minecraft/tags/block/standing_signs.json
 753ee65a44a28d305c4db1f73082e8c58da28646 data/minecraft/tags/block/wall_hanging_signs.json
 b33832d11c34c793b5b003aebee0c4b445dd18c1 data/minecraft/tags/block/wall_signs.json
+797196f5504d9af5bc7da7298bfd4afe793f7450 data/minecraft/tags/block/wither_immune.json
 73aa6d1c258ea345c1f98fea92a77e0d563a7174 data/minecraft/tags/block/wooden_buttons.json
 44d95e5f2d45fbbbfad0e1aa0a7af6112a1cffda data/minecraft/tags/block/wooden_doors.json
 f9b65df79677868fbe01f889476d3e5eefed0f8f data/minecraft/tags/block/wooden_fences.json

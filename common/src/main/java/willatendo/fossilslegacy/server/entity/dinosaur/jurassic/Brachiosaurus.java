@@ -1,10 +1,8 @@
 package willatendo.fossilslegacy.server.entity.dinosaur.jurassic;
 
-import com.google.common.collect.Lists;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
@@ -36,10 +34,7 @@ import willatendo.fossilslegacy.server.item.dinopedia.FossilsLegacyDinopediaType
 import willatendo.fossilslegacy.server.sound.FossilsLegacySoundEvents;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
 import willatendo.fossilslegacy.server.tags.FossilsLegacyItemTags;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class Brachiosaurus extends Dinosaur implements DinopediaInformation, RideableDinosaur {

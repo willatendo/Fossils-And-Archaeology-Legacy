@@ -5,7 +5,7 @@
     "east": "fossilslegacy:block/archaeology_workbench_side",
     "north": "fossilslegacy:block/archaeology_workbench_books",
     "particle": "fossilslegacy:block/archaeology_workbench_side",
-    "south": "fossilslegacy:block/archaeology_workbench_side",
+    "south": "fossilslegacy:block/archaeology_workbench_books",
     "up": "fossilslegacy:block/archaeology_workbench_top_on",
     "west": "fossilslegacy:block/archaeology_workbench_side"
   }

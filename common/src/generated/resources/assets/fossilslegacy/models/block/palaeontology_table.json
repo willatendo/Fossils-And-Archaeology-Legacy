@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "bottom": "fossilslegacy:block/palaeontology_table_bottom",
+    "bottom": "fossilslegacy:block/lepidodendron_planks",
     "particle": "fossilslegacy:block/palaeontology_table_side",
     "side": "fossilslegacy:block/palaeontology_table_side",
     "top": "fossilslegacy:block/palaeontology_table_top"

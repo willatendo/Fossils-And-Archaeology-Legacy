@@ -13,7 +13,7 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-public record EggVariant(ResourceLocation texture, boolean wet, Function<Egg, Boolean> incubate, ResourceKey<LootTable> lootTable, Supplier<EntityType> entityType, Supplier<Item> pick) {
+public record EggVariant(EggSize eggSize, ResourceLocation texture, boolean wet, Function<Egg, Boolean> incubate, ResourceKey<LootTable> lootTable, Supplier<EntityType> entityType, Supplier<Item> pick) {
     public Component getTemperature(Egg egg) {
         if (this.wet) {
             return this.shouldIncubate(egg) ? FossilsLegacyUtils.translation("dinopedia", "wet") : FossilsLegacyUtils.translation("dinopedia", "dry");
@@ -28,5 +28,10 @@ public record EggVariant(ResourceLocation texture, boolean wet, Function<Egg, Bo
 
     public static boolean isWarm(Egg egg) {
         return egg.level().getBrightness(LightLayer.BLOCK, egg.blockPosition()) > 10.0F;
+    }
+
+    public enum EggSize {
+        SMALL,
+        REGULAR;
     }
 }
