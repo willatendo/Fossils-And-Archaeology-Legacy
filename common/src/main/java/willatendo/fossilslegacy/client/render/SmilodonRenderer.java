@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.util.FastColor;
 import willatendo.fossilslegacy.client.model.json.JsonModel;
-import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Smilodon;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Smilodon;
 
 public class SmilodonRenderer extends CoatTypeMobRenderer<Smilodon> {
     public SmilodonRenderer(Context context) {

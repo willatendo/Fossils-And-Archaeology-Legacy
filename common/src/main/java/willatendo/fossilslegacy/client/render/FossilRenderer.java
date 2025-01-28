@@ -17,8 +17,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
-import willatendo.fossilslegacy.server.entity.Fossil;
-import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
+import willatendo.fossilslegacy.server.entity.entities.Fossil;
+import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 
 public class FossilRenderer extends EntityRenderer<Fossil> {
     private EntityModel<Entity> model;

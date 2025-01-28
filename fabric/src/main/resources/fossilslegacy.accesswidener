@@ -36,6 +36,8 @@ accessible field net/minecraft/world/level/levelgen/NoiseSettings OVERWORLD_NOIS
 accessible field net/minecraft/client/gui/GuiGraphics minecraft Lnet/minecraft/client/Minecraft;
 accessible field net/minecraft/world/item/AxeItem STRIPPABLES Ljava/util/Map;
 mutable field net/minecraft/world/item/AxeItem STRIPPABLES Ljava/util/Map;
+accessible field net/minecraft/world/item/HoeItem TILLABLES Ljava/util/Map;
+mutable field net/minecraft/world/item/HoeItem TILLABLES Ljava/util/Map;
 accessible field net/minecraft/world/entity/vehicle/Boat lastYd D
 accessible field net/minecraft/world/entity/vehicle/Boat status Lnet/minecraft/world/entity/vehicle/Boat$Status;
 accessible field net/minecraft/stats/RecipeBookSettings TAG_FIELDS Ljava/util/Map;

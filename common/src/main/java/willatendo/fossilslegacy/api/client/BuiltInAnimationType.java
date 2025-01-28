@@ -3,7 +3,7 @@ package willatendo.fossilslegacy.api.client;
 import com.google.common.collect.Maps;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.model.json.JsonModel;
-import willatendo.fossilslegacy.server.entity.Dinosaur;
+import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 
 import java.util.Map;
 

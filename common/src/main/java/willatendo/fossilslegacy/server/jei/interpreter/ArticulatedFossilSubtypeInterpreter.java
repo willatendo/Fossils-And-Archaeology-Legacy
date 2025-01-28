@@ -5,15 +5,15 @@ import mezz.jei.api.ingredients.subtypes.UidContext;
 import net.minecraft.core.Holder;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
-import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
-import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
+import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
+import willatendo.fossilslegacy.server.item.FADataComponents;
 
 public final class ArticulatedFossilSubtypeInterpreter implements ISubtypeInterpreter<ItemStack> {
     public static final ArticulatedFossilSubtypeInterpreter INSTANCE = new ArticulatedFossilSubtypeInterpreter();
 
     @Override
     public @Nullable Object getSubtypeData(ItemStack itemStack, UidContext uidContext) {
-        FossilVariant fossilVariant = itemStack.get(FossilsLegacyDataComponents.FOSSIL_VARIANT.get()).value();
+        FossilVariant fossilVariant = itemStack.get(FADataComponents.FOSSIL_VARIANT.get()).value();
         if (fossilVariant == null) {
             return null;
         }
@@ -29,7 +29,7 @@ public final class ArticulatedFossilSubtypeInterpreter implements ISubtypeInterp
         if (itemStack.getComponentsPatch().isEmpty()) {
             return "";
         }
-        Holder<FossilVariant> fossilVariantHolder = itemStack.get(FossilsLegacyDataComponents.FOSSIL_VARIANT.get());
+        Holder<FossilVariant> fossilVariantHolder = itemStack.get(FADataComponents.FOSSIL_VARIANT.get());
         return fossilVariantHolder != null ? fossilVariantHolder.getRegisteredName() : "";
     }
 }

@@ -10,20 +10,20 @@ import mezz.jei.api.recipe.category.AbstractRecipeCategory;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
-import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
-import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
-import willatendo.fossilslegacy.server.jei.FossilsLegacyJEIRecipeTypes;
-import willatendo.fossilslegacy.server.jei.FossilsLegacyJEITextures;
+import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.item.FADataComponents;
+import willatendo.fossilslegacy.server.item.FAItems;
+import willatendo.fossilslegacy.server.jei.FAJEIRecipeTypes;
+import willatendo.fossilslegacy.server.jei.FAJEITextures;
 import willatendo.fossilslegacy.server.jei.recipe.ArticulatedFossilRecipe;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public final class ArticulatedFossilCategory extends AbstractRecipeCategory<ArticulatedFossilRecipe> {
     private final IDrawable arrowOutline;
 
-    public ArticulatedFossilCategory(FossilsLegacyJEITextures fossilsLegacyJEITextures) {
-        super(FossilsLegacyJEIRecipeTypes.ARTICULATED_FOSSIL, FossilsLegacyUtils.translation("jei", "articulated_fossil"), fossilsLegacyJEITextures.getIconFromItemLike(FossilsLegacyBlocks.PALAEONTOLOGY_TABLE.get()), 116, 54);
-        this.arrowOutline = fossilsLegacyJEITextures.getArrow();
+    public ArticulatedFossilCategory(FAJEITextures FAJEITextures) {
+        super(FAJEIRecipeTypes.ARTICULATED_FOSSIL, FossilsLegacyUtils.translation("jei", "articulated_fossil"), FAJEITextures.getIconFromItemLike(FABlocks.PALAEONTOLOGY_TABLE.get()), 116, 54);
+        this.arrowOutline = FAJEITextures.getArrow();
     }
 
     @Override
@@ -39,8 +39,8 @@ public final class ArticulatedFossilCategory extends AbstractRecipeCategory<Arti
             }
         }
 
-        ItemStack output = new ItemStack(FossilsLegacyItems.ARTICULATED_FOSSIL.get());
-        output.set(FossilsLegacyDataComponents.FOSSIL_VARIANT.get(), articulatedFossilRecipe.fossilVariant());
+        ItemStack output = new ItemStack(FAItems.ARTICULATED_FOSSIL.get());
+        output.set(FADataComponents.FOSSIL_VARIANT.get(), articulatedFossilRecipe.fossilVariant());
         iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT, 95, 19).setOutputSlotBackground().addItemStack(output);
     }
 

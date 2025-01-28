@@ -1,10 +1,11 @@
-// 1.21.1	2025-01-24T16:59:22.2146153	Tags for minecraft:block mod id fossilslegacy
+// 1.21.1	2025-01-26T14:41:05.481439	Tags for minecraft:block mod id fossilslegacy
 80e160a91f3744e8cb737cde249c3d4059ae1424 data/fossilslegacy/tags/block/calamites_logs.json
 1127f77eb8cace8c1b282963c96612fe0637c879 data/fossilslegacy/tags/block/eatable_fern.json
 a4e8097fff07f9a74259d6b5dd583f3437ff28a2 data/fossilslegacy/tags/block/eatable_leaves.json
 0f106f9e05249330533937bf2686b4fc3f66c407 data/fossilslegacy/tags/block/feeder.json
 69c396cb051bbe9a130e6979b67065e5041b179d data/fossilslegacy/tags/block/jurassic_fern_plantable_on.json
 dad829093473a418f24cdab5a8ffb6116744f27f data/fossilslegacy/tags/block/lepidodendron_logs.json
+b58b977b8e0a5206e75d748704411629e8e9e896 data/fossilslegacy/tags/block/mineable/ancient_hoe.json
 9e5b271f0c7ec4847dded614168452fd660518de data/fossilslegacy/tags/block/permafrost_frostable.json
 f7230fc0dcd04034cf98f0304755274776cb4ce1 data/fossilslegacy/tags/block/sigillaria_logs.json
 ff9b281b9a16648420ec54ace1183217c76bfa6c data/fossilslegacy/tags/block/spawnable/ankylosaurus.json

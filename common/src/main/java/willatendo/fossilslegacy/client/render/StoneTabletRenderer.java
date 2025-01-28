@@ -16,8 +16,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;
-import willatendo.fossilslegacy.server.entity.StoneTablet;
-import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
+import willatendo.fossilslegacy.server.entity.entities.StoneTablet;
+import willatendo.fossilslegacy.server.stone_tablet_variant.StoneTabletVariant;
 
 public class StoneTabletRenderer extends EntityRenderer<StoneTablet> {
     public StoneTabletRenderer(Context context) {

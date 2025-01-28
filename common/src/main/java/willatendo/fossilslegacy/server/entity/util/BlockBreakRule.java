@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import willatendo.fossilslegacy.server.entity.util.interfaces.GrowingEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.TameAccessor;
-import willatendo.fossilslegacy.server.level.FossilsLegacyGameRules;
+import willatendo.fossilslegacy.server.level.FAGameRules;
 
 public class BlockBreakRule {
     private final Animal animal;
@@ -28,7 +28,7 @@ public class BlockBreakRule {
 
     public boolean canUse() {
         if (this.level instanceof ServerLevel) {
-            if (this.level.getGameRules().getBoolean(FossilsLegacyGameRules.RULE_DOANIMALBLOCKBREAKING) && this.animal instanceof GrowingEntity growningEntity) {
+            if (this.level.getGameRules().getBoolean(FAGameRules.RULE_DOANIMALBLOCKBREAKING) && this.animal instanceof GrowingEntity growningEntity) {
                 if (growningEntity.getGrowthStage() >= this.minimumAge) {
                     if (this.animal instanceof TameAccessor tameAccessor) {
                         return !tameAccessor.isTame();

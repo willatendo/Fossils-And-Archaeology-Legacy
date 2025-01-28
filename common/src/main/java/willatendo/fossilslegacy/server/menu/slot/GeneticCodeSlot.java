@@ -3,7 +3,7 @@ package willatendo.fossilslegacy.server.menu.slot;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import willatendo.fossilslegacy.server.item.GeneticCodeItem;
+import willatendo.fossilslegacy.server.item.items.GeneticCodeItem;
 
 public class GeneticCodeSlot extends Slot {
     public GeneticCodeSlot(Container container, int slot, int x, int y) {

@@ -4,16 +4,16 @@ import mezz.jei.api.ingredients.subtypes.ISubtypeInterpreter;
 import mezz.jei.api.ingredients.subtypes.UidContext;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
-import willatendo.fossilslegacy.server.entity.commands.CommandType;
-import willatendo.fossilslegacy.server.entity.commands.FossilsLegacyCommandTypes;
-import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
+import willatendo.fossilslegacy.server.command_type.CommandType;
+import willatendo.fossilslegacy.server.command_type.FACommandTypes;
+import willatendo.fossilslegacy.server.item.FADataComponents;
 
 public final class MagicConchSubtypeInterpreter implements ISubtypeInterpreter<ItemStack> {
     public static final MagicConchSubtypeInterpreter INSTANCE = new MagicConchSubtypeInterpreter();
 
     @Override
     public @Nullable Object getSubtypeData(ItemStack itemStack, UidContext uidContext) {
-        CommandType commandType = itemStack.get(FossilsLegacyDataComponents.COMMAND_TYPE.get()).value();
+        CommandType commandType = itemStack.get(FADataComponents.COMMAND_TYPE.get()).value();
         if (commandType == null) {
             return null;
         }
@@ -29,6 +29,6 @@ public final class MagicConchSubtypeInterpreter implements ISubtypeInterpreter<I
         if (itemStack.getComponentsPatch().isEmpty()) {
             return "";
         }
-        return itemStack.getOrDefault(FossilsLegacyDataComponents.COMMAND_TYPE.get(), FossilsLegacyCommandTypes.FREE_MOVE).getRegisteredName();
+        return itemStack.getOrDefault(FADataComponents.COMMAND_TYPE.get(), FACommandTypes.FREE_MOVE).getRegisteredName();
     }
 }

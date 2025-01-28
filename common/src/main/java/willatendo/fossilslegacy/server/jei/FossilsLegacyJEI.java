@@ -13,20 +13,20 @@ import willatendo.fossilslegacy.client.screen.AnalyzerScreen;
 import willatendo.fossilslegacy.client.screen.ArchaeologyWorkbenchScreen;
 import willatendo.fossilslegacy.client.screen.CultivatorScreen;
 import willatendo.fossilslegacy.client.screen.GeneModificationTableScreen;
-import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
-import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
-import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.jei.category.*;
 import willatendo.fossilslegacy.server.jei.ingredient.CoatTypeHelper;
 import willatendo.fossilslegacy.server.jei.ingredient.CoatTypeRenderer;
-import willatendo.fossilslegacy.server.jei.ingredient.FossilsLegacyIngredientTypes;
+import willatendo.fossilslegacy.server.jei.ingredient.FAIngredientTypes;
 import willatendo.fossilslegacy.server.jei.interpreter.ArticulatedFossilSubtypeInterpreter;
 import willatendo.fossilslegacy.server.jei.interpreter.MagicConchSubtypeInterpreter;
 import willatendo.fossilslegacy.server.jei.interpreter.StoneTabletSubtypeInterpreter;
-import willatendo.fossilslegacy.server.menu.AnalyzerMenu;
-import willatendo.fossilslegacy.server.menu.ArchaeologyWorkbenchMenu;
-import willatendo.fossilslegacy.server.menu.CultivatorMenu;
-import willatendo.fossilslegacy.server.menu.FossilsLegacyMenuTypes;
+import willatendo.fossilslegacy.server.menu.FAMenuTypes;
+import willatendo.fossilslegacy.server.menu.menus.AnalyzerMenu;
+import willatendo.fossilslegacy.server.menu.menus.ArchaeologyWorkbenchMenu;
+import willatendo.fossilslegacy.server.menu.menus.CultivatorMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
@@ -47,94 +47,97 @@ public final class FossilsLegacyJEI implements IModPlugin {
     public void registerIngredients(IModIngredientRegistration iModIngredientRegistration) {
         List<CoatType> coatTypes = Lists.newArrayList();
 
-        iModIngredientRegistration.register(FossilsLegacyIngredientTypes.COAT_TYPE, coatTypes, new CoatTypeHelper(), new CoatTypeRenderer("small_gene", 16, 16), CoatType.DIRECT_CODEC);
+        iModIngredientRegistration.register(FAIngredientTypes.COAT_TYPE, coatTypes, new CoatTypeHelper(), new CoatTypeRenderer("small_gene", 16, 16), CoatType.DIRECT_CODEC);
     }
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration iRecipeCategoryRegistration) {
         IGuiHelper iGuiHelper = iRecipeCategoryRegistration.getJeiHelpers().getGuiHelper();
-        FossilsLegacyJEITextures fossilsLegacyJEITextures = new FossilsLegacyJEITextures(iGuiHelper);
-        iRecipeCategoryRegistration.addRecipeCategories(this.archaeologyCategory = new ArchaeologyCategory(iGuiHelper, fossilsLegacyJEITextures), this.cultivationCategory = new CultivationCategory(iGuiHelper, fossilsLegacyJEITextures), this.analyzationCategory = new AnalyzationCategory(iGuiHelper, fossilsLegacyJEITextures), new GeneModificationCategory(fossilsLegacyJEITextures), new BiomatterCategory(fossilsLegacyJEITextures), new FeederCategory(fossilsLegacyJEITextures), new ArticulatedFossilCategory(fossilsLegacyJEITextures));
+        FAJEITextures FAJEITextures = new FAJEITextures(iGuiHelper);
+        iRecipeCategoryRegistration.addRecipeCategories(this.analyzationCategory = new AnalyzationCategory(iGuiHelper, FAJEITextures), new AncientAxeBonusCategory(iGuiHelper), this.archaeologyCategory = new ArchaeologyCategory(iGuiHelper, FAJEITextures), new ArticulatedFossilCategory(FAJEITextures), new BiomatterCategory(FAJEITextures), this.cultivationCategory = new CultivationCategory(iGuiHelper, FAJEITextures), new FeederCategory(FAJEITextures), new GeneModificationCategory(FAJEITextures), new InformationCategory(FAJEITextures), new JewelRecoveryCategory(iGuiHelper));
     }
 
     @Override
     public void registerRecipes(IRecipeRegistration iRecipeRegistration) {
         IVanillaRecipeFactory iVanillaRecipeFactory = iRecipeRegistration.getVanillaRecipeFactory();
-        FossilsLegacyRecipes fossilsLegacyRecipes = new FossilsLegacyRecipes();
+        FARecipes FARecipes = new FARecipes();
 
-        iRecipeRegistration.addRecipes(FossilsLegacyJEIRecipeTypes.ARCHAEOLOGY, fossilsLegacyRecipes.getArchaeologyRecipes(this.archaeologyCategory));
-        iRecipeRegistration.addRecipes(FossilsLegacyJEIRecipeTypes.CULTIVATION, fossilsLegacyRecipes.getCultivationRecipes(this.cultivationCategory));
-        iRecipeRegistration.addRecipes(FossilsLegacyJEIRecipeTypes.ANALYZATION, fossilsLegacyRecipes.getAnalyzationRecipes(this.analyzationCategory));
-        iRecipeRegistration.addRecipes(FossilsLegacyJEIRecipeTypes.BIOMATTER, fossilsLegacyRecipes.getBiomatterRecipes());
-        iRecipeRegistration.addRecipes(FossilsLegacyJEIRecipeTypes.GENE_MODIFICATION, fossilsLegacyRecipes.getGeneModificationRecipes());
-        iRecipeRegistration.addRecipes(FossilsLegacyJEIRecipeTypes.FEEDER, fossilsLegacyRecipes.getFeederRecipes());
-        iRecipeRegistration.addRecipes(FossilsLegacyJEIRecipeTypes.ARTICULATED_FOSSIL, fossilsLegacyRecipes.getArticulatedFossilRecipes());
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.ANALYZATION, FARecipes.getAnalyzationRecipes(this.analyzationCategory));
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.ANCIENT_AXE_BONUS, FARecipes.getAncientAxeBonusRecipes());
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.ARCHAEOLOGY, FARecipes.getArchaeologyRecipes(this.archaeologyCategory));
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.ARTICULATED_FOSSIL, FARecipes.getArticulatedFossilRecipes());
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.BIOMATTER, FARecipes.getBiomatterRecipes());
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.CULTIVATION, FARecipes.getCultivationRecipes(this.cultivationCategory));
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.FEEDER, FARecipes.getFeederRecipes());
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.GENE_MODIFICATION, FARecipes.getGeneModificationRecipes());
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.INFORMATION, FARecipes.getInformationRecipes());
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.JEWEL_RECOVERY, FARecipes.getJewelRecoveryRecipes());
 
-        iRecipeRegistration.addRecipes(RecipeTypes.CRAFTING, fossilsLegacyRecipes.createMagicConchRecipes());
-        iRecipeRegistration.addRecipes(RecipeTypes.ANVIL, fossilsLegacyRecipes.createRepairRecipes(iVanillaRecipeFactory));
+        iRecipeRegistration.addRecipes(RecipeTypes.CRAFTING, FARecipes.createMagicConchRecipes());
+        iRecipeRegistration.addRecipes(RecipeTypes.ANVIL, FARecipes.createRepairRecipes(iVanillaRecipeFactory));
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration iRecipeCatalystRegistration) {
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get()), FossilsLegacyJEIRecipeTypes.ARCHAEOLOGY);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.WHITE_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.CULTIVATION);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.WHITE_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.BIOMATTER);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.ORANGE_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.CULTIVATION);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.ORANGE_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.BIOMATTER);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.MAGENTA_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.CULTIVATION);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.MAGENTA_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.BIOMATTER);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.LIGHT_BLUE_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.CULTIVATION);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.LIGHT_BLUE_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.BIOMATTER);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.YELLOW_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.CULTIVATION);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.YELLOW_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.BIOMATTER);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.LIME_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.CULTIVATION);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.LIME_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.BIOMATTER);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.PINK_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.CULTIVATION);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.PINK_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.BIOMATTER);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.GRAY_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.CULTIVATION);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.GRAY_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.BIOMATTER);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.LIGHT_GRAY_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.CULTIVATION);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.LIGHT_GRAY_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.BIOMATTER);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.CYAN_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.CULTIVATION);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.CYAN_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.BIOMATTER);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.PURPLE_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.CULTIVATION);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.PURPLE_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.BIOMATTER);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.BLUE_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.CULTIVATION);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.BLUE_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.BIOMATTER);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.BROWN_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.CULTIVATION);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.BROWN_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.BIOMATTER);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.GREEN_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.CULTIVATION);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.GREEN_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.BIOMATTER);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.RED_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.CULTIVATION);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.RED_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.BIOMATTER);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.BLACK_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.CULTIVATION);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.BLACK_CULTIVATOR.get()), FossilsLegacyJEIRecipeTypes.BIOMATTER);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.ANALYZER.get()), FossilsLegacyJEIRecipeTypes.ANALYZATION);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.GENE_MODIFICATION_TABLE.get()), FossilsLegacyJEIRecipeTypes.GENE_MODIFICATION);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.FEEDER.get()), FossilsLegacyJEIRecipeTypes.FEEDER);
-        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FossilsLegacyBlocks.PALAEONTOLOGY_TABLE.get()), FossilsLegacyJEIRecipeTypes.ARTICULATED_FOSSIL);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.ARCHAEOLOGY_WORKBENCH.get()), FAJEIRecipeTypes.ARCHAEOLOGY);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.ARCHAEOLOGY_WORKBENCH.get()), FAJEIRecipeTypes.INFORMATION);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.WHITE_CULTIVATOR.get()), FAJEIRecipeTypes.CULTIVATION);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.WHITE_CULTIVATOR.get()), FAJEIRecipeTypes.BIOMATTER);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.ORANGE_CULTIVATOR.get()), FAJEIRecipeTypes.CULTIVATION);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.ORANGE_CULTIVATOR.get()), FAJEIRecipeTypes.BIOMATTER);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.MAGENTA_CULTIVATOR.get()), FAJEIRecipeTypes.CULTIVATION);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.MAGENTA_CULTIVATOR.get()), FAJEIRecipeTypes.BIOMATTER);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.LIGHT_BLUE_CULTIVATOR.get()), FAJEIRecipeTypes.CULTIVATION);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.LIGHT_BLUE_CULTIVATOR.get()), FAJEIRecipeTypes.BIOMATTER);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.YELLOW_CULTIVATOR.get()), FAJEIRecipeTypes.CULTIVATION);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.YELLOW_CULTIVATOR.get()), FAJEIRecipeTypes.BIOMATTER);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.LIME_CULTIVATOR.get()), FAJEIRecipeTypes.CULTIVATION);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.LIME_CULTIVATOR.get()), FAJEIRecipeTypes.BIOMATTER);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.PINK_CULTIVATOR.get()), FAJEIRecipeTypes.CULTIVATION);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.PINK_CULTIVATOR.get()), FAJEIRecipeTypes.BIOMATTER);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.GRAY_CULTIVATOR.get()), FAJEIRecipeTypes.CULTIVATION);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.GRAY_CULTIVATOR.get()), FAJEIRecipeTypes.BIOMATTER);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.LIGHT_GRAY_CULTIVATOR.get()), FAJEIRecipeTypes.CULTIVATION);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.LIGHT_GRAY_CULTIVATOR.get()), FAJEIRecipeTypes.BIOMATTER);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.CYAN_CULTIVATOR.get()), FAJEIRecipeTypes.CULTIVATION);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.CYAN_CULTIVATOR.get()), FAJEIRecipeTypes.BIOMATTER);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.PURPLE_CULTIVATOR.get()), FAJEIRecipeTypes.CULTIVATION);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.PURPLE_CULTIVATOR.get()), FAJEIRecipeTypes.BIOMATTER);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.BLUE_CULTIVATOR.get()), FAJEIRecipeTypes.CULTIVATION);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.BLUE_CULTIVATOR.get()), FAJEIRecipeTypes.BIOMATTER);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.BROWN_CULTIVATOR.get()), FAJEIRecipeTypes.CULTIVATION);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.BROWN_CULTIVATOR.get()), FAJEIRecipeTypes.BIOMATTER);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.GREEN_CULTIVATOR.get()), FAJEIRecipeTypes.CULTIVATION);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.GREEN_CULTIVATOR.get()), FAJEIRecipeTypes.BIOMATTER);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.RED_CULTIVATOR.get()), FAJEIRecipeTypes.CULTIVATION);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.RED_CULTIVATOR.get()), FAJEIRecipeTypes.BIOMATTER);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.BLACK_CULTIVATOR.get()), FAJEIRecipeTypes.CULTIVATION);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.BLACK_CULTIVATOR.get()), FAJEIRecipeTypes.BIOMATTER);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.ANALYZER.get()), FAJEIRecipeTypes.ANALYZATION);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.GENE_MODIFICATION_TABLE.get()), FAJEIRecipeTypes.GENE_MODIFICATION);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.FEEDER.get()), FAJEIRecipeTypes.FEEDER);
+        iRecipeCatalystRegistration.addRecipeCatalyst(new ItemStack(FABlocks.PALAEONTOLOGY_TABLE.get()), FAJEIRecipeTypes.ARTICULATED_FOSSIL);
     }
 
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration iGuiHandlerRegistration) {
-        iGuiHandlerRegistration.addRecipeClickArea(ArchaeologyWorkbenchScreen.class, 76, 21, 24, 14, FossilsLegacyJEIRecipeTypes.ARCHAEOLOGY);
-        iGuiHandlerRegistration.addRecipeClickArea(CultivatorScreen.class, 76, 21, 24, 14, FossilsLegacyJEIRecipeTypes.CULTIVATION);
-        iGuiHandlerRegistration.addRecipeClickArea(CultivatorScreen.class, 76, 21, 24, 14, FossilsLegacyJEIRecipeTypes.BIOMATTER);
-        iGuiHandlerRegistration.addRecipeClickArea(AnalyzerScreen.class, 68, 39, 21, 9, FossilsLegacyJEIRecipeTypes.ANALYZATION);
-        iGuiHandlerRegistration.addRecipeClickArea(GeneModificationTableScreen.class, 60, 74, 54, 8, FossilsLegacyJEIRecipeTypes.GENE_MODIFICATION);
+        iGuiHandlerRegistration.addRecipeClickArea(ArchaeologyWorkbenchScreen.class, 76, 21, 24, 14, FAJEIRecipeTypes.ARCHAEOLOGY);
+        iGuiHandlerRegistration.addRecipeClickArea(CultivatorScreen.class, 76, 21, 24, 14, FAJEIRecipeTypes.CULTIVATION);
+        iGuiHandlerRegistration.addRecipeClickArea(AnalyzerScreen.class, 68, 39, 21, 9, FAJEIRecipeTypes.ANALYZATION);
+        iGuiHandlerRegistration.addRecipeClickArea(GeneModificationTableScreen.class, 60, 74, 54, 8, FAJEIRecipeTypes.GENE_MODIFICATION);
     }
 
     @Override
     public void registerRecipeTransferHandlers(IRecipeTransferRegistration iRecipeTransferRegistration) {
-        iRecipeTransferRegistration.addRecipeTransferHandler(ArchaeologyWorkbenchMenu.class, FossilsLegacyMenuTypes.ARCHAEOLOGY_WORKBENCH.get(), FossilsLegacyJEIRecipeTypes.ARCHAEOLOGY, 0, 1, 3, 36);
-        iRecipeTransferRegistration.addRecipeTransferHandler(CultivatorMenu.class, FossilsLegacyMenuTypes.CULTIVATOR.get(), FossilsLegacyJEIRecipeTypes.CULTIVATION, 0, 1, 3, 36);
-        iRecipeTransferRegistration.addRecipeTransferHandler(AnalyzerMenu.class, FossilsLegacyMenuTypes.ANALYZER.get(), FossilsLegacyJEIRecipeTypes.ANALYZATION, 0, 9, 10, 36);
+        iRecipeTransferRegistration.addRecipeTransferHandler(ArchaeologyWorkbenchMenu.class, FAMenuTypes.ARCHAEOLOGY_WORKBENCH.get(), FAJEIRecipeTypes.ARCHAEOLOGY, 0, 1, 3, 36);
+        iRecipeTransferRegistration.addRecipeTransferHandler(CultivatorMenu.class, FAMenuTypes.CULTIVATOR.get(), FAJEIRecipeTypes.CULTIVATION, 0, 1, 3, 36);
+        iRecipeTransferRegistration.addRecipeTransferHandler(AnalyzerMenu.class, FAMenuTypes.ANALYZER.get(), FAJEIRecipeTypes.ANALYZATION, 0, 9, 10, 36);
     }
 
     @Override
     public void registerItemSubtypes(ISubtypeRegistration iSubtypeRegistration) {
-        iSubtypeRegistration.registerSubtypeInterpreter(FossilsLegacyItems.ARTICULATED_FOSSIL.get(), ArticulatedFossilSubtypeInterpreter.INSTANCE);
-        iSubtypeRegistration.registerSubtypeInterpreter(FossilsLegacyItems.MAGIC_CONCH.get(), MagicConchSubtypeInterpreter.INSTANCE);
-        iSubtypeRegistration.registerSubtypeInterpreter(FossilsLegacyItems.STONE_TABLET.get(), StoneTabletSubtypeInterpreter.INSTANCE);
+        iSubtypeRegistration.registerSubtypeInterpreter(FAItems.ARTICULATED_FOSSIL.get(), ArticulatedFossilSubtypeInterpreter.INSTANCE);
+        iSubtypeRegistration.registerSubtypeInterpreter(FAItems.MAGIC_CONCH.get(), MagicConchSubtypeInterpreter.INSTANCE);
+        iSubtypeRegistration.registerSubtypeInterpreter(FAItems.STONE_TABLET.get(), StoneTabletSubtypeInterpreter.INSTANCE);
     }
 }

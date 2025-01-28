@@ -7,8 +7,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
-import willatendo.fossilslegacy.server.block.entity.TimeMachineBlockEntity;
-import willatendo.fossilslegacy.server.menu.TimeMachineMenu;
+import willatendo.fossilslegacy.server.block.entity.entities.TimeMachineBlockEntity;
+import willatendo.fossilslegacy.server.menu.menus.TimeMachineMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class TimeMachineScreen extends AbstractContainerScreen<TimeMachineMenu> {

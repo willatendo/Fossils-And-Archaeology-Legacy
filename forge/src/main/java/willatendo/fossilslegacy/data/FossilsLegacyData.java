@@ -18,6 +18,6 @@ public class FossilsLegacyData {
         PackOutput packOutput = dataGenerator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> registries = gatherDataEvent.getLookupProvider();
 
-        dataGenerator.addProvider(gatherDataEvent.includeServer(), new FossilsLegacyForgeBuiltinProvider(packOutput, registries, FossilsLegacyUtils.ID));
+        dataGenerator.addProvider(gatherDataEvent.includeServer(), new FAForgeBuiltinProvider(packOutput, registries, FossilsLegacyUtils.ID));
     }
 }

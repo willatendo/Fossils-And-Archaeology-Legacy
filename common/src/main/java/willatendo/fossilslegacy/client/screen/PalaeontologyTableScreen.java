@@ -13,10 +13,10 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
-import willatendo.fossilslegacy.server.entity.variants.FossilVariant;
-import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
-import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
-import willatendo.fossilslegacy.server.menu.PalaeontologyTableMenu;
+import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
+import willatendo.fossilslegacy.server.item.FADataComponents;
+import willatendo.fossilslegacy.server.item.FAItems;
+import willatendo.fossilslegacy.server.menu.menus.PalaeontologyTableMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
@@ -83,8 +83,8 @@ public class PalaeontologyTableScreen extends AbstractContainerScreen<Palaeontol
 
                     guiGraphics.blitSprite(texture, x, y, 18, 18);
 
-                    ItemStack itemStack = new ItemStack(FossilsLegacyItems.ARTICULATED_FOSSIL.get());
-                    itemStack.set(FossilsLegacyDataComponents.FOSSIL_VARIANT.get(), this.fossilVariants.get(index));
+                    ItemStack itemStack = new ItemStack(FAItems.ARTICULATED_FOSSIL.get());
+                    itemStack.set(FADataComponents.FOSSIL_VARIANT.get(), this.fossilVariants.get(index));
                     guiGraphics.renderItem(itemStack, x + 1, y + 1);
                 }
             }

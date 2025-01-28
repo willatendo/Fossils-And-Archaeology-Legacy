@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import willatendo.fossilslegacy.client.model.AnuModel;
-import willatendo.fossilslegacy.server.entity.Anu;
+import willatendo.fossilslegacy.server.entity.entities.Anu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class AnuOverlayLayer extends RenderLayer<Anu, AnuModel> {

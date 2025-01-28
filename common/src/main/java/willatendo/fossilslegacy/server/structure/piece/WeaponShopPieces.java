@@ -20,6 +20,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnorePr
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
+import willatendo.fossilslegacy.server.structure.FAStructurePeices;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class WeaponShopPieces {
@@ -31,11 +32,11 @@ public class WeaponShopPieces {
 
     public static class WeaponShopPiece extends TemplateStructurePiece {
         public WeaponShopPiece(StructureTemplateManager struxtureTemplateManager, ResourceLocation structureLocation, BlockPos blockPos, Rotation rotation) {
-            super(FossilsLegacyStructurePeices.WEAPON_SHOP.get(), 0, struxtureTemplateManager, structureLocation, structureLocation.toString(), makeSettings(rotation, structureLocation), blockPos);
+            super(FAStructurePeices.WEAPON_SHOP.get(), 0, struxtureTemplateManager, structureLocation, structureLocation.toString(), makeSettings(rotation, structureLocation), blockPos);
         }
 
         public WeaponShopPiece(StructureTemplateManager struxtureTemplateManager, CompoundTag compoundTag) {
-            super(FossilsLegacyStructurePeices.WEAPON_SHOP.get(), compoundTag, struxtureTemplateManager, (structureLocation) -> {
+            super(FAStructurePeices.WEAPON_SHOP.get(), compoundTag, struxtureTemplateManager, (structureLocation) -> {
                 return makeSettings(Rotation.valueOf(compoundTag.getString("Rot")), structureLocation);
             });
         }

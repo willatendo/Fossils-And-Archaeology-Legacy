@@ -1,7 +1,7 @@
 package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
-import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Futabasaurus;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
 
 public class FutabasaurusRenderer extends CoatTypeMobRenderer<Futabasaurus> {
     public FutabasaurusRenderer(Context context) {

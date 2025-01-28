@@ -11,7 +11,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import willatendo.fossilslegacy.server.entity.DilophosaurusVenom;
+import willatendo.fossilslegacy.server.entity.entities.DilophosaurusVenom;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class DilophosaurusVenomRenderer extends EntityRenderer<DilophosaurusVenom> {

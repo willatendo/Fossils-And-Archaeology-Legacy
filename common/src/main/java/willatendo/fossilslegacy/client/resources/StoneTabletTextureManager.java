@@ -4,7 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.resources.TextureAtlasHolder;
-import willatendo.fossilslegacy.server.entity.variants.StoneTabletVariant;
+import willatendo.fossilslegacy.server.stone_tablet_variant.StoneTabletVariant;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class StoneTabletTextureManager extends TextureAtlasHolder {

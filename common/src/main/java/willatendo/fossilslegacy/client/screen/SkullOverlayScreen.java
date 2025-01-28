@@ -6,7 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.LayeredDraw;
 import net.minecraft.world.item.ItemStack;
-import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
+import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class SkullOverlayScreen implements LayeredDraw.Layer {
@@ -14,7 +14,7 @@ public class SkullOverlayScreen implements LayeredDraw.Layer {
     public void render(GuiGraphics guiGraphics, DeltaTracker deltaTracker) {
         Minecraft minecraft = Minecraft.getInstance();
         ItemStack itemstack = minecraft.player.getInventory().getArmor(3);
-        if (itemstack.is(FossilsLegacyBlocks.SKULL_BLOCK.get().asItem())) {
+        if (itemstack.is(FABlocks.SKULL_BLOCK.get().asItem())) {
             if (minecraft.options.getCameraType().isFirstPerson() && !itemstack.isEmpty() && !minecraft.player.isScoping()) {
                 RenderSystem.disableDepthTest();
                 RenderSystem.depthMask(false);

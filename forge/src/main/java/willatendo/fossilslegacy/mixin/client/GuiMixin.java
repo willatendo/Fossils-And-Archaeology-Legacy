@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
+import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 @Mixin(Gui.class)
@@ -26,7 +26,7 @@ public abstract class GuiMixin {
         FossilsLegacyUtils.LOGGER.info("Hello");
 
         RenderTextureOverlayAccessor renderTextureOverlayAccessor = (RenderTextureOverlayAccessor) this;
-        if (itemStack.is(FossilsLegacyBlocks.SKULL_BLOCK.get().asItem())) {
+        if (itemStack.is(FABlocks.SKULL_BLOCK.get().asItem())) {
             renderTextureOverlayAccessor.fossil_renderTextureOverlay(guiGraphics, FossilsLegacyUtils.resource("textures/misc/skullblur.png"), 1.0F);
         }
     }

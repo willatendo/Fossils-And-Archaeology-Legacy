@@ -6,10 +6,10 @@ import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
 import net.minecraft.client.renderer.entity.layers.ElytraLayer;
 import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
 import net.minecraft.resources.ResourceLocation;
-import willatendo.fossilslegacy.client.FossilsLegacyModelLayers;
+import willatendo.fossilslegacy.client.FAModelLayers;
 import willatendo.fossilslegacy.client.model.AnuModel;
 import willatendo.fossilslegacy.client.render.layer.AnuOverlayLayer;
-import willatendo.fossilslegacy.server.entity.Anu;
+import willatendo.fossilslegacy.server.entity.entities.Anu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class AnuRenderer extends MobRenderer<Anu, AnuModel> {
@@ -17,7 +17,7 @@ public class AnuRenderer extends MobRenderer<Anu, AnuModel> {
     public static final ResourceLocation CHARGING = FossilsLegacyUtils.resource("textures/entity/anu/anu_charging.png");
 
     public AnuRenderer(Context context) {
-        super(context, new AnuModel(context.bakeLayer(FossilsLegacyModelLayers.ANU)), 0.3F);
+        super(context, new AnuModel(context.bakeLayer(FAModelLayers.ANU)), 0.3F);
         this.addLayer(new CustomHeadLayer(this, context.getModelSet(), 1.0F, 1.0F, 1.0F, context.getItemInHandRenderer()));
         this.addLayer(new ElytraLayer(this, context.getModelSet()));
         this.addLayer(new ItemInHandLayer(this, context.getItemInHandRenderer()));

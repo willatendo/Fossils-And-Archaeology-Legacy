@@ -11,11 +11,11 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityStruckByLightningEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.event.village.VillagerTradesEvent;
-import willatendo.fossilslegacy.server.criteria.FossilsLegacyCriteriaTriggers;
-import willatendo.fossilslegacy.server.entity.AncientLightningBolt;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
-import willatendo.fossilslegacy.server.entity.TamedZombifiedPiglin;
-import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
+import willatendo.fossilslegacy.server.criteria.FLCriteriaTriggers;
+import willatendo.fossilslegacy.server.entity.FAEntityTypes;
+import willatendo.fossilslegacy.server.entity.entities.AncientLightningBolt;
+import willatendo.fossilslegacy.server.entity.entities.TamedZombifiedPiglin;
+import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.server.event.modification.NeoforgeStructurePoolModification;
 import willatendo.simplelibrary.server.event.modification.NeoforgeVillagerTradeModification;
@@ -28,16 +28,16 @@ public class ForgeServerEvents {
             if (event.getEntity() instanceof Pig pig) {
                 event.setCanceled(true);
                 Level level = ancientLightningBolt.level();
-                TamedZombifiedPiglin tamedZombifiedPiglin = FossilsLegacyEntityTypes.TAMED_ZOMBIFIED_PIGLIN.get().create(level);
+                TamedZombifiedPiglin tamedZombifiedPiglin = FAEntityTypes.TAMED_ZOMBIFIED_PIGLIN.get().create(level);
                 Player player = (Player) ancientLightningBolt.getOwner();
                 tamedZombifiedPiglin.tame(player);
-                tamedZombifiedPiglin.setItemInHand(InteractionHand.MAIN_HAND, FossilsLegacyItems.ANCIENT_SWORD.get().getDefaultInstance());
-                tamedZombifiedPiglin.setItemSlot(EquipmentSlot.HEAD, FossilsLegacyItems.ANCIENT_HELMET.get().getDefaultInstance());
+                tamedZombifiedPiglin.setItemInHand(InteractionHand.MAIN_HAND, FAItems.ANCIENT_SWORD.get().getDefaultInstance());
+                tamedZombifiedPiglin.setItemSlot(EquipmentSlot.HEAD, FAItems.ANCIENT_HELMET.get().getDefaultInstance());
                 tamedZombifiedPiglin.moveTo(pig.getX(), pig.getY(), pig.getZ());
                 tamedZombifiedPiglin.setHealth(tamedZombifiedPiglin.getMaxHealth());
                 level.addFreshEntity(tamedZombifiedPiglin);
                 if (player instanceof ServerPlayer serverPlayer) {
-                    FossilsLegacyCriteriaTriggers.TAME_ZOMBIFIED_PIGMAN.get().trigger(serverPlayer, tamedZombifiedPiglin);
+                    FLCriteriaTriggers.TAME_ZOMBIFIED_PIGMAN.get().trigger(serverPlayer, tamedZombifiedPiglin);
                 }
                 pig.discard();
             }

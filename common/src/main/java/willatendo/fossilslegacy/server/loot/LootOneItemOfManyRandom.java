@@ -14,8 +14,8 @@ import net.minecraft.world.level.storage.loot.entries.LootPoolEntryType;
 import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import willatendo.fossilslegacy.server.core.registry.FossilsLegacyBuiltInRegistries;
-import willatendo.fossilslegacy.server.item.MagicConchItem;
+import willatendo.fossilslegacy.server.item.items.MagicConchItem;
+import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 import java.util.List;
@@ -39,7 +39,7 @@ public class LootOneItemOfManyRandom extends LootPoolSingletonContainer {
             if (itemAndChance.lowWeight() <= random && random < itemAndChance.highWeight()) {
                 ItemStack itemStack = new ItemStack(itemAndChance.item());
                 if (itemStack.getItem() instanceof MagicConchItem) {
-                    MagicConchItem.setOrder(itemStack, FossilsLegacyBuiltInRegistries.COMMAND_TYPES.getRandom(lootContext.getRandom()).get());
+                    MagicConchItem.setOrder(itemStack, FABuiltInRegistries.COMMAND_TYPES.getRandom(lootContext.getRandom()).get());
                 }
                 consumer.accept(itemStack);
                 break;
@@ -49,7 +49,7 @@ public class LootOneItemOfManyRandom extends LootPoolSingletonContainer {
 
     @Override
     public LootPoolEntryType getType() {
-        return FossilsLegacyLootPoolEntryTypes.LOOT_ONE_ITEM_OF_MANY_RANDOM.get();
+        return FALootPoolEntryTypes.LOOT_ONE_ITEM_OF_MANY_RANDOM.get();
     }
 
     public static LootPoolSingletonContainer.Builder<?> lootTableItem(int maxWeight, ItemAndChance... itemAndChances) {

@@ -20,6 +20,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnorePr
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
+import willatendo.fossilslegacy.server.structure.FAStructurePeices;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class AcademyPieces {
@@ -31,11 +32,11 @@ public class AcademyPieces {
 
     public static class AcademyStructurePiece extends TemplateStructurePiece {
         public AcademyStructurePiece(StructureTemplateManager struxtureTemplateManager, ResourceLocation structureLocation, BlockPos blockPos, Rotation rotation) {
-            super(FossilsLegacyStructurePeices.ACADEMY.get(), 0, struxtureTemplateManager, structureLocation, structureLocation.toString(), makeSettings(rotation, structureLocation), blockPos);
+            super(FAStructurePeices.ACADEMY.get(), 0, struxtureTemplateManager, structureLocation, structureLocation.toString(), makeSettings(rotation, structureLocation), blockPos);
         }
 
         public AcademyStructurePiece(StructureTemplateManager struxtureTemplateManager, CompoundTag compoundTag) {
-            super(FossilsLegacyStructurePeices.ACADEMY.get(), compoundTag, struxtureTemplateManager, structureLocation -> makeSettings(Rotation.valueOf(compoundTag.getString("Rot")), structureLocation));
+            super(FAStructurePeices.ACADEMY.get(), compoundTag, struxtureTemplateManager, structureLocation -> makeSettings(Rotation.valueOf(compoundTag.getString("Rot")), structureLocation));
         }
 
         private static StructurePlaceSettings makeSettings(Rotation rotation, ResourceLocation structureLocation) {

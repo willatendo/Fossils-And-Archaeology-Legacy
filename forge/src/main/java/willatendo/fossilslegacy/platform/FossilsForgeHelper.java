@@ -18,9 +18,9 @@ import willatendo.fossilslegacy.FossilsLegacyForgeMod;
 import willatendo.fossilslegacy.network.ForgePacketHelper;
 import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
-import willatendo.fossilslegacy.server.item.ArticulatedFossilItem;
 import willatendo.fossilslegacy.server.item.ForgeArticulatedFossilItem;
 import willatendo.fossilslegacy.server.item.ForgeDinosaurSpawnEggItem;
+import willatendo.fossilslegacy.server.item.items.ArticulatedFossilItem;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.fossilslegacy.server.utils.Platform;
 

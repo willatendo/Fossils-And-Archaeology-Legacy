@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
+import willatendo.fossilslegacy.server.feature.FAFoliagePlacerTypes;
 
 public class BranchedFoliagePlacer extends FoliagePlacer {
     public static final MapCodec<BranchedFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(instance -> foliagePlacerParts(instance).apply(instance, BranchedFoliagePlacer::new));
@@ -21,7 +22,7 @@ public class BranchedFoliagePlacer extends FoliagePlacer {
 
     @Override
     protected FoliagePlacerType<?> type() {
-        return FossilsLegacyFoliagePlacerTypes.BRANCHED_FOLIAGE_PLACER.get();
+        return FAFoliagePlacerTypes.BRANCHED_FOLIAGE_PLACER.get();
     }
 
     @Override

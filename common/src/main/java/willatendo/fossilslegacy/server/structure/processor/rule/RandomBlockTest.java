@@ -7,6 +7,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTestType;
+import willatendo.fossilslegacy.server.structure.FARuleTestTypes;
 
 public class RandomBlockTest extends RuleTest {
     public static final MapCodec<RandomBlockTest> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(Codec.FLOAT.fieldOf("probability").forGetter(randomBlockTest -> randomBlockTest.probability)).apply(instance, RandomBlockTest::new));
@@ -23,6 +24,6 @@ public class RandomBlockTest extends RuleTest {
 
     @Override
     protected RuleTestType<?> getType() {
-        return FossilsLegacyRuleTestTypes.RANDOM_BLOCK_TEST.get();
+        return FARuleTestTypes.RANDOM_BLOCK_TEST.get();
     }
 }

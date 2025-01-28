@@ -13,8 +13,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import willatendo.fossilslegacy.server.inventory.CultivationBookCategory;
-import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
+import willatendo.fossilslegacy.server.menu.categories.CultivationBookCategory;
+import willatendo.fossilslegacy.server.recipe.recipes.CultivationRecipe;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

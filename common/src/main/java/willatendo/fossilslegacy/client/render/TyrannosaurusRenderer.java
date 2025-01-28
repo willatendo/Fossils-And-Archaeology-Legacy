@@ -3,8 +3,8 @@ package willatendo.fossilslegacy.client.render;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
-import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Tyrannosaurus;
-import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Tyrannosaurus;
 
 import java.util.Optional;
 

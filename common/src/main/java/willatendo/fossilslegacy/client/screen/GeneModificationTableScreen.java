@@ -28,17 +28,16 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
-import willatendo.fossilslegacy.client.FossilsLegacyKeys;
+import willatendo.fossilslegacy.client.FAKeys;
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
-import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
-import willatendo.fossilslegacy.server.entity.Dinosaur;
-import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Pteranodon;
-import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
-import willatendo.fossilslegacy.server.item.AnimalDNAItem;
-import willatendo.fossilslegacy.server.item.DNAItem;
-import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
-import willatendo.fossilslegacy.server.menu.GeneModificationTableMenu;
-import willatendo.fossilslegacy.server.tags.FossilsLegacyCoatTypeTags;
+import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Pteranodon;
+import willatendo.fossilslegacy.server.item.FADataComponents;
+import willatendo.fossilslegacy.server.item.items.AnimalDNAItem;
+import willatendo.fossilslegacy.server.menu.menus.GeneModificationTableMenu;
+import willatendo.fossilslegacy.server.registry.FARegistries;
+import willatendo.fossilslegacy.server.tags.FACoatTypeTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
@@ -84,14 +83,14 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
                 TagKey<CoatType> applicableCoatTypes = animalDNAItem.getApplicableCoatTypes();
 
                 if (applicableCoatTypes != null) {
-                    HolderGetter<CoatType> coatTypeHolderGetter = registryAccess.asGetterLookup().lookup(FossilsLegacyRegistries.COAT_TYPES).get();
+                    HolderGetter<CoatType> coatTypeHolderGetter = registryAccess.asGetterLookup().lookup(FARegistries.COAT_TYPES).get();
                     HolderSet.Named<CoatType> namedHolderSet = coatTypeHolderGetter.get(applicableCoatTypes).get();
                     List<Holder<CoatType>> filteredHolderSet = Lists.newArrayList();
                     if (this.getMenu().hasExtraGeneticCode()) {
                         filteredHolderSet.addAll(namedHolderSet.stream().toList());
                     } else {
                         List<Holder<CoatType>> withoutCoatTypes = Lists.newArrayList(namedHolderSet.stream().iterator());
-                        withoutCoatTypes.removeAll(coatTypeHolderGetter.get(FossilsLegacyCoatTypeTags.LEGACY).get().stream().toList());
+                        withoutCoatTypes.removeAll(coatTypeHolderGetter.get(FACoatTypeTags.LEGACY).get().stream().toList());
                         filteredHolderSet.addAll(withoutCoatTypes);
                     }
                     if (!filteredHolderSet.isEmpty()) {
@@ -109,9 +108,9 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
                     this.size = 0;
                 }
 
-                if (itemStack.has(FossilsLegacyDataComponents.COAT_TYPE.get()) && !this.hasSet) {
+                if (itemStack.has(FADataComponents.COAT_TYPE.get()) && !this.hasSet) {
                     for (int i = 0; i < this.coatTypes.length; i++) {
-                        if (this.coatTypes[i] == itemStack.get(FossilsLegacyDataComponents.COAT_TYPE.get()).value()) {
+                        if (this.coatTypes[i] == itemStack.get(FADataComponents.COAT_TYPE.get()).value()) {
                             this.selection = i;
                             this.hasSet = true;
                             break;
@@ -155,9 +154,9 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
                 }
             }
             if (this.coatTypes.length > 0) {
-                guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.navigate_left.tutorial", FossilsLegacyKeys.NAVIGATE_LEFT.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 2, 0xFFFFFF, false);
-                guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.navigate_right.tutorial", FossilsLegacyKeys.NAVIGATE_RIGHT.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 10, 0xFFFFFF, false);
-                guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.apply_gene.tutorial", FossilsLegacyKeys.APPLY_GENE.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 18, 0xFFFFFF, false);
+                guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.navigate_left.tutorial", FAKeys.NAVIGATE_LEFT.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 2, 0xFFFFFF, false);
+                guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.navigate_right.tutorial", FAKeys.NAVIGATE_RIGHT.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 10, 0xFFFFFF, false);
+                guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.apply_gene.tutorial", FAKeys.APPLY_GENE.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 18, 0xFFFFFF, false);
             } else {
                 this.renderScrollingString(guiGraphics, FossilsLegacyUtils.translation("container", "gene_modification_table.coat_type.no_genome_applicable"), this.leftPos + 8, this.topPos + 74, 0x404040);
             }
@@ -179,7 +178,7 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
             List<Component> tooltip = Lists.newArrayList();
             tooltip.add(this.coatTypes[this.selection].displayInfo().pattern());
             if (this.minecraft.options.advancedItemTooltips) {
-                tooltip.add(Component.literal(this.minecraft.level.registryAccess().registry(FossilsLegacyRegistries.COAT_TYPES).get().getKey(this.coatTypes[this.selection]).toString()).withStyle(ChatFormatting.DARK_GRAY));
+                tooltip.add(Component.literal(this.minecraft.level.registryAccess().registry(FARegistries.COAT_TYPES).get().getKey(this.coatTypes[this.selection]).toString()).withStyle(ChatFormatting.DARK_GRAY));
             }
             guiGraphics.renderTooltip(this.font, tooltip, Optional.empty(), x, y);
         }
@@ -187,21 +186,21 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
 
     @Override
     public boolean keyReleased(int keyCode, int scanCode, int modifiers) {
-        if (FossilsLegacyKeys.NAVIGATE_LEFT.matches(keyCode, scanCode)) {
+        if (FAKeys.NAVIGATE_LEFT.matches(keyCode, scanCode)) {
             if (this.selection != 0) {
                 this.selection--;
                 return true;
             }
         }
-        if (FossilsLegacyKeys.NAVIGATE_RIGHT.matches(keyCode, scanCode)) {
+        if (FAKeys.NAVIGATE_RIGHT.matches(keyCode, scanCode)) {
             if (this.selection != this.size - 1) {
                 this.selection++;
                 return true;
             }
         }
-        if (FossilsLegacyKeys.APPLY_GENE.matches(keyCode, scanCode)) {
+        if (FAKeys.APPLY_GENE.matches(keyCode, scanCode)) {
             if (this.size > 0) {
-                FossilsModloaderHelper.INSTANCE.sendApplyGenePacket(this.menu.geneModificationTableBlockEntity.getBlockPos(), this.minecraft.level.registryAccess().registry(FossilsLegacyRegistries.COAT_TYPES).get().getKey(this.coatTypes[this.selection]).toString());
+                FossilsModloaderHelper.INSTANCE.sendApplyGenePacket(this.menu.geneModificationTableBlockEntity.getBlockPos(), this.minecraft.level.registryAccess().registry(FARegistries.COAT_TYPES).get().getKey(this.coatTypes[this.selection]).toString());
                 return true;
             }
         }

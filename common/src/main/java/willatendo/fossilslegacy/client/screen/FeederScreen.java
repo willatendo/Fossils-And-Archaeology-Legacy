@@ -6,7 +6,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import willatendo.fossilslegacy.server.menu.FeederMenu;
+import willatendo.fossilslegacy.server.menu.menus.FeederMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class FeederScreen extends AbstractContainerScreen<FeederMenu> {

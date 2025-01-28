@@ -11,9 +11,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
-import willatendo.fossilslegacy.server.inventory.AnalyzationBookCategory;
-import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
-import willatendo.fossilslegacy.server.recipe.AnalyzerResult;
+import willatendo.fossilslegacy.server.analyzer_result.AnalyzerResult;
+import willatendo.fossilslegacy.server.menu.categories.AnalyzationBookCategory;
+import willatendo.fossilslegacy.server.recipe.recipes.AnalyzationRecipe;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

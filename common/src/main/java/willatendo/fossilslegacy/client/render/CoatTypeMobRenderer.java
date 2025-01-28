@@ -9,10 +9,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import willatendo.fossilslegacy.client.model.json.JsonModel;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
-import willatendo.fossilslegacy.server.entity.Dinosaur;
+import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CoatTypeEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.WetFurEntity;
-import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
 
 import java.util.Optional;
 

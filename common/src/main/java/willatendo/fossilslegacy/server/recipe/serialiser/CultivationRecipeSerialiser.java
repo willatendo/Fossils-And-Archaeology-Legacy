@@ -8,8 +8,8 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import willatendo.fossilslegacy.server.inventory.CultivationBookCategory;
-import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
+import willatendo.fossilslegacy.server.menu.categories.CultivationBookCategory;
+import willatendo.fossilslegacy.server.recipe.recipes.CultivationRecipe;
 
 public class CultivationRecipeSerialiser implements RecipeSerializer<CultivationRecipe> {
     private static final MapCodec<CultivationRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(CultivationBookCategory.CODEC.fieldOf("category").forGetter(cultivationRecipe -> cultivationRecipe.cultivationBookCategory), Codec.STRING.optionalFieldOf("group", "").forGetter(cultivationRecipe -> cultivationRecipe.group), Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(archaeologyRecipe -> archaeologyRecipe.ingredient), ItemStack.STRICT_SINGLE_ITEM_CODEC.fieldOf("result").forGetter(archaeologyRecipe -> archaeologyRecipe.result), Codec.INT.fieldOf("time").orElse(6000).forGetter(archaeologyRecipe -> archaeologyRecipe.time)).apply(instance, CultivationRecipe::new));

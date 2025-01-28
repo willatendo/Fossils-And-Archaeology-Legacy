@@ -12,7 +12,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.Slot;
 import willatendo.fossilslegacy.client.screen.recipebook.AnalyzerRecipeBookComponent;
-import willatendo.fossilslegacy.server.menu.AnalyzerMenu;
+import willatendo.fossilslegacy.server.menu.menus.AnalyzerMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class AnalyzerScreen extends AbstractContainerScreen<AnalyzerMenu> implements RecipeUpdateListener {

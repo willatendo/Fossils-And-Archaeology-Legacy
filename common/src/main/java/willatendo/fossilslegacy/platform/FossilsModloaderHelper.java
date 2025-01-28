@@ -15,7 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.saveddata.maps.MapDecorationType;
-import willatendo.fossilslegacy.server.item.ArticulatedFossilItem;
+import willatendo.fossilslegacy.server.item.items.ArticulatedFossilItem;
 import willatendo.fossilslegacy.server.utils.Platform;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 import willatendo.simplelibrary.server.util.SimpleUtils;

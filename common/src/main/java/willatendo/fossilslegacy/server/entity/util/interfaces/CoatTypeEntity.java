@@ -7,8 +7,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityDimensions;
-import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
-import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 
 import java.util.Optional;
 
@@ -22,7 +22,7 @@ public interface CoatTypeEntity extends SimpleRegistryAccessAccessor {
     }
 
     default void readCoatType(CompoundTag compoundTag) {
-        Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("CoatType"))).map(id -> ResourceKey.create(FossilsLegacyRegistries.COAT_TYPES, id)).flatMap(resourceKey -> this.getRegistryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getHolder(resourceKey)).ifPresent(this::setCoatType);
+        Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("CoatType"))).map(id -> ResourceKey.create(FARegistries.COAT_TYPES, id)).flatMap(resourceKey -> this.getRegistryAccess().registryOrThrow(FARegistries.COAT_TYPES).getHolder(resourceKey)).ifPresent(this::setCoatType);
     }
 
     default Component getOverridenName(Component defaultName) {

@@ -3,7 +3,7 @@ package willatendo.fossilslegacy.client.animation;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.api.client.BuiltInAnimationType;
 import willatendo.fossilslegacy.client.model.json.JsonModel;
-import willatendo.fossilslegacy.server.entity.Dinosaur;
+import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.entity.util.interfaces.FlyingDinosaur;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 

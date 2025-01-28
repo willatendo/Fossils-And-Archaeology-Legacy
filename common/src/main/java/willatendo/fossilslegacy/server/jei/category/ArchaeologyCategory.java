@@ -15,11 +15,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
-import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
-import willatendo.fossilslegacy.server.jei.FossilsLegacyJEIRecipeTypes;
-import willatendo.fossilslegacy.server.jei.FossilsLegacyJEITextures;
+import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.jei.FAJEIRecipeTypes;
+import willatendo.fossilslegacy.server.jei.FAJEITextures;
 import willatendo.fossilslegacy.server.jei.RecipeUtil;
-import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
+import willatendo.fossilslegacy.server.recipe.recipes.ArchaeologyRecipe;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public final class ArchaeologyCategory extends AbstractRecipeCategory<RecipeHolder<ArchaeologyRecipe>> {
@@ -28,12 +28,12 @@ public final class ArchaeologyCategory extends AbstractRecipeCategory<RecipeHold
     private final IDrawableAnimated animatedHammer;
     private final IDrawable hammerOutline;
 
-    public ArchaeologyCategory(IGuiHelper guiHelper, FossilsLegacyJEITextures fossilsLegacyJEITextures) {
-        super(FossilsLegacyJEIRecipeTypes.ARCHAEOLOGY, FossilsLegacyUtils.translation("jei", "archaeology"), guiHelper.createDrawableItemLike(FossilsLegacyBlocks.ARCHAEOLOGY_WORKBENCH.get()), 88, 56);
-        this.cachedArrows = fossilsLegacyJEITextures.createArchaeologyBar();
-        this.arrowOutline = fossilsLegacyJEITextures.getArchaeologyArrow();
-        this.animatedHammer = fossilsLegacyJEITextures.createHammer();
-        this.hammerOutline = fossilsLegacyJEITextures.getHammerOutline();
+    public ArchaeologyCategory(IGuiHelper guiHelper, FAJEITextures FAJEITextures) {
+        super(FAJEIRecipeTypes.ARCHAEOLOGY, FossilsLegacyUtils.translation("jei", "archaeology"), guiHelper.createDrawableItemLike(FABlocks.ARCHAEOLOGY_WORKBENCH.get()), 88, 56);
+        this.cachedArrows = FAJEITextures.createArchaeologyBar();
+        this.arrowOutline = FAJEITextures.getArchaeologyArrow();
+        this.animatedHammer = FAJEITextures.createHammer();
+        this.hammerOutline = FAJEITextures.getHammerOutline();
     }
 
     @Override

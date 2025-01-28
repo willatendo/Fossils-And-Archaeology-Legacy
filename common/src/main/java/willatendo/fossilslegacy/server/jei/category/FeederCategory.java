@@ -8,15 +8,15 @@ import mezz.jei.api.recipe.category.AbstractRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
-import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
-import willatendo.fossilslegacy.server.jei.FossilsLegacyJEIRecipeTypes;
-import willatendo.fossilslegacy.server.jei.FossilsLegacyJEITextures;
+import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.jei.FAJEIRecipeTypes;
+import willatendo.fossilslegacy.server.jei.FAJEITextures;
 import willatendo.fossilslegacy.server.jei.recipe.FeederRecipe;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public final class FeederCategory extends AbstractRecipeCategory<FeederRecipe> {
-    public FeederCategory(FossilsLegacyJEITextures fossilsLegacyJEITextures) {
-        super(FossilsLegacyJEIRecipeTypes.FEEDER, FossilsLegacyUtils.translation("jei", "feeder"), fossilsLegacyJEITextures.getIconFromItemLike(FossilsLegacyBlocks.FEEDER.get()), 120, 18);
+    public FeederCategory(FAJEITextures FAJEITextures) {
+        super(FAJEIRecipeTypes.FEEDER, FossilsLegacyUtils.translation("jei", "feeder"), FAJEITextures.getIconFromItemLike(FABlocks.FEEDER.get()), 120, 18);
     }
 
     @Override

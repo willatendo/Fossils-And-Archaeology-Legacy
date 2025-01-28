@@ -1,0 +1,8 @@
+{
+  "input": "minecraft:mangrove_log",
+  "max_drop": 3,
+  "min_drop": 1,
+  "output": {
+    "id": "minecraft:mangrove_planks"
+  }
+}

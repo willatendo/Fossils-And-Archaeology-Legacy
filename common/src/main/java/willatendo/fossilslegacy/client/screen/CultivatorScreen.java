@@ -13,7 +13,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.Slot;
 import willatendo.fossilslegacy.client.screen.recipebook.CultivatorRecipeBookComponent;
-import willatendo.fossilslegacy.server.menu.CultivatorMenu;
+import willatendo.fossilslegacy.server.menu.menus.CultivatorMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class CultivatorScreen extends AbstractContainerScreen<CultivatorMenu> implements RecipeUpdateListener {

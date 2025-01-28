@@ -8,8 +8,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.world.item.DyeColor;
 import willatendo.fossilslegacy.client.render.CoatTypeMobRenderer;
-import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Mammoth;
-import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Mammoth;
 
 public class MammothFurLayer extends RenderLayer<Mammoth, EntityModel<Mammoth>> {
     private EntityModel<Mammoth> model;

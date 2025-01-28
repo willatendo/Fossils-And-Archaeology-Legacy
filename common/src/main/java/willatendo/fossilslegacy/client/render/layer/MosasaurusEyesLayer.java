@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
-import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Mosasaurus;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Mosasaurus;
 
 import java.util.Optional;
 

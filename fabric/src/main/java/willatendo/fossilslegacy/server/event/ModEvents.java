@@ -6,8 +6,8 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
-import willatendo.fossilslegacy.server.feature.FossilsLegacyPlacedFeatures;
+import willatendo.fossilslegacy.server.entity.FAEntityTypes;
+import willatendo.fossilslegacy.server.feature.FAPlacedFeatures;
 import willatendo.simplelibrary.server.event.modification.*;
 import willatendo.simplelibrary.server.event.registry.FabricAttributeRegister;
 import willatendo.simplelibrary.server.event.registry.FabricDynamicRegistryRegister;
@@ -32,9 +32,9 @@ public class ModEvents {
         BasicEvents.oxidationSetup(new FabricOxidationModification());
         BasicEvents.waxableSetup(new FabricWaxableModification());
 
-        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FossilsLegacyPlacedFeatures.ORE_FOSSIL);
-        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FossilsLegacyPlacedFeatures.ORE_PERMAFROST);
-        BiomeModifications.addSpawn(BiomeSelectors.tag(BiomeTags.HAS_OCEAN_RUIN_WARM), MobCategory.WATER_AMBIENT, FossilsLegacyEntityTypes.NAUTILUS.get(), 1, 1, 1);
+        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FAPlacedFeatures.ORE_FOSSIL);
+        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FAPlacedFeatures.ORE_PERMAFROST);
+        BiomeModifications.addSpawn(BiomeSelectors.tag(BiomeTags.HAS_OCEAN_RUIN_WARM), MobCategory.WATER_AMBIENT, FAEntityTypes.NAUTILUS.get(), 1, 1, 1);
 
         ServerLifecycleEvents.SERVER_STARTING.register(server -> BasicEvents.structurePoolModification(new FabricStructurePoolModification(server)));
     }

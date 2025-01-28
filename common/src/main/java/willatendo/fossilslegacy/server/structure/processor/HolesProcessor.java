@@ -13,6 +13,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlac
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
+import willatendo.fossilslegacy.server.structure.FAStructureProcessorType;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
@@ -64,6 +65,6 @@ public class HolesProcessor extends StructureProcessor {
 
     @Override
     protected StructureProcessorType<?> getType() {
-        return FossilsLegacyStructureProcessorType.HOLES_PROCESSOR.get();
+        return FAStructureProcessorType.HOLES_PROCESSOR.get();
     }
 }

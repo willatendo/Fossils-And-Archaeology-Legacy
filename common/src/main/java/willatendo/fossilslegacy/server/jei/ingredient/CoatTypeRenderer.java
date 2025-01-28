@@ -10,8 +10,8 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.TooltipFlag;
-import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
-import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.List;
@@ -52,7 +52,7 @@ public final class CoatTypeRenderer implements IIngredientRenderer<CoatType> {
         tooltip.add(coatType.displayInfo().pattern());
         Minecraft minecraft = Minecraft.getInstance();
         if (tooltipFlag.isAdvanced()) {
-            tooltip.add(Component.literal(minecraft.level.registryAccess().registry(FossilsLegacyRegistries.COAT_TYPES).get().getKey(coatType).toString()).withStyle(ChatFormatting.DARK_GRAY));
+            tooltip.add(Component.literal(minecraft.level.registryAccess().registry(FARegistries.COAT_TYPES).get().getKey(coatType).toString()).withStyle(ChatFormatting.DARK_GRAY));
         }
         return tooltip;
     }
@@ -63,7 +63,7 @@ public final class CoatTypeRenderer implements IIngredientRenderer<CoatType> {
         iTooltipBuilder.add(coatType.displayInfo().pattern());
         Minecraft minecraft = Minecraft.getInstance();
         if (tooltipFlag.isAdvanced()) {
-            iTooltipBuilder.add(Component.literal(minecraft.level.registryAccess().registry(FossilsLegacyRegistries.COAT_TYPES).get().getKey(coatType).toString()).withStyle(ChatFormatting.DARK_GRAY));
+            iTooltipBuilder.add(Component.literal(minecraft.level.registryAccess().registry(FARegistries.COAT_TYPES).get().getKey(coatType).toString()).withStyle(ChatFormatting.DARK_GRAY));
         }
     }
 

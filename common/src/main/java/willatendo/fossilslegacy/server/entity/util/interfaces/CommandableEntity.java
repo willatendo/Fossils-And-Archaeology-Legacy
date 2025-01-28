@@ -7,8 +7,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
-import willatendo.fossilslegacy.server.entity.commands.CommandType;
-import willatendo.fossilslegacy.server.entity.commands.FossilsLegacyCommandTypes;
+import willatendo.fossilslegacy.server.command_type.CommandType;
+import willatendo.fossilslegacy.server.command_type.FACommandTypes;
 
 public interface CommandableEntity extends SimpleRegistryAccessAccessor {
     MapCodec<Holder<CommandType>> VARIANT_MAP_CODEC = CommandType.CODEC.fieldOf("CommandType");
@@ -21,7 +21,7 @@ public interface CommandableEntity extends SimpleRegistryAccessAccessor {
     CommandingType commandItems();
 
     default boolean isOrderedToSit() {
-        return this.getCommand().is(FossilsLegacyCommandTypes.STAY.getKey());
+        return this.getCommand().is(FACommandTypes.STAY.getKey());
     }
 
     default boolean willListenToDrum(Player player, InteractionHand interactionHand) {

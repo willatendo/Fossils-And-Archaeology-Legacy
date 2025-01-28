@@ -5,7 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.util.Mth;
-import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Futabasaurus;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
 
 public class LegacyFutabasaurusModel extends EntityModel<Futabasaurus> {
     private final ModelPart root;

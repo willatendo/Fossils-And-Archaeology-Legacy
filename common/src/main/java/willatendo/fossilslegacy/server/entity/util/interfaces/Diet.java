@@ -9,10 +9,9 @@ import net.minecraft.world.entity.animal.goat.Goat;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.LevelAccessor;
-import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Nautilus;
-import willatendo.fossilslegacy.server.entity.util.DinoUtils;
-import willatendo.fossilslegacy.server.item.feederfood.FeederFood;
-import willatendo.fossilslegacy.server.item.feederfood.FillType;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Nautilus;
+import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
+import willatendo.fossilslegacy.server.feeder_food.FeederFood;
 
 public interface Diet {
     boolean getsFoodFromKill();
@@ -33,7 +32,7 @@ public interface Diet {
             @Override
             public int getItemStackFoodValue(ItemStack itemStack) {
                 FeederFood feederFood = FeederFood.getFeederFood(levelAccessor, itemStack);
-                if (feederFood != null && feederFood.sameFillType(FillType.MEAT)) {
+                if (feederFood != null && feederFood.sameFillType(FeederFood.FillType.MEAT)) {
                     return feederFood.getAmount();
                 }
                 return 0;
@@ -49,7 +48,7 @@ public interface Diet {
 
             @Override
             public Ingredient getTemptFoods() {
-                return DinoUtils.PISCIVORE_FOOD;
+                return DinosaurUtils.PISCIVORE_FOOD;
             }
         };
     }
@@ -64,7 +63,7 @@ public interface Diet {
             @Override
             public int getItemStackFoodValue(ItemStack itemStack) {
                 FeederFood feederFood = FeederFood.getFeederFood(levelAccessor, itemStack);
-                if (feederFood != null && feederFood.sameFillType(FillType.MEAT)) {
+                if (feederFood != null && feederFood.sameFillType(FeederFood.FillType.MEAT)) {
                     return feederFood.getAmount();
                 }
                 return 0;
@@ -92,7 +91,7 @@ public interface Diet {
 
             @Override
             public Ingredient getTemptFoods() {
-                return DinoUtils.CARNIVORE_FOOD;
+                return DinosaurUtils.CARNIVORE_FOOD;
             }
         };
     }
@@ -107,7 +106,7 @@ public interface Diet {
             @Override
             public int getItemStackFoodValue(ItemStack itemStack) {
                 FeederFood feederFood = FeederFood.getFeederFood(levelAccessor, itemStack);
-                if (feederFood != null && feederFood.sameFillType(FillType.PLANT)) {
+                if (feederFood != null && feederFood.sameFillType(FeederFood.FillType.PLANT)) {
                     return feederFood.getAmount();
                 }
                 return 0;
@@ -120,7 +119,7 @@ public interface Diet {
 
             @Override
             public Ingredient getTemptFoods() {
-                return DinoUtils.HERBIVORE_FOOD;
+                return DinosaurUtils.HERBIVORE_FOOD;
             }
         };
     }
@@ -163,7 +162,7 @@ public interface Diet {
 
             @Override
             public Ingredient getTemptFoods() {
-                return DinoUtils.OMNIVORE_FOOD;
+                return DinosaurUtils.OMNIVORE_FOOD;
             }
         };
     }

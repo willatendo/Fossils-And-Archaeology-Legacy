@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import willatendo.fossilslegacy.server.block.entity.VaseBlockEntity;
+import willatendo.fossilslegacy.server.block.entity.entities.VaseBlockEntity;
 
 public class VaseRenderer implements BlockEntityRenderer<VaseBlockEntity> {
     private final ItemRenderer itemRenderer;

@@ -24,15 +24,15 @@ import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.animal.horse.Mule;
 import net.minecraft.world.level.Level;
-import willatendo.fossilslegacy.server.core.registry.FossilsLegacyBuiltInRegistries;
-import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyEntityTypes;
-import willatendo.fossilslegacy.server.entity.FossilsLegacyPregnancyTypes;
-import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Mammoth;
-import willatendo.fossilslegacy.server.entity.dinosaur.quaternary.Smilodon;
-import willatendo.fossilslegacy.server.entity.pregnant.PregnantSheep;
-import willatendo.fossilslegacy.server.entity.variants.PregnancyType;
-import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.entity.FAEntityTypes;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Mammoth;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Smilodon;
+import willatendo.fossilslegacy.server.entity.entities.pregnant.PregnantSheep;
+import willatendo.fossilslegacy.server.pregnancy_types.FAPregnancyTypes;
+import willatendo.fossilslegacy.server.pregnancy_types.PregnancyType;
+import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -133,10 +133,10 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLe
             finalEntity = (T) EntityType.WOLF.create(level);
         }
         if (livingEntity instanceof Mammoth) {
-            finalEntity = (T) FossilsLegacyEntityTypes.MAMMOTH.get().create(level);
+            finalEntity = (T) FAEntityTypes.MAMMOTH.get().create(level);
         }
         if (livingEntity instanceof Smilodon) {
-            finalEntity = (T) FossilsLegacyEntityTypes.SMILODON.get().create(level);
+            finalEntity = (T) FAEntityTypes.SMILODON.get().create(level);
         }
         return finalEntity;
     }
@@ -145,62 +145,62 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLe
         livingEntity.remove(RemovalReason.DISCARDED);
         Entity toCreate = null;
         if (livingEntity instanceof Armadillo) {
-            toCreate = FossilsLegacyEntityTypes.PREGNANT_ARMADILLO.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_ARMADILLO.get().create(level);
         }
         if (livingEntity instanceof Cat) {
-            toCreate = FossilsLegacyEntityTypes.PREGNANT_CAT.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_CAT.get().create(level);
         }
         if (livingEntity instanceof Cow) {
-            toCreate = FossilsLegacyEntityTypes.PREGNANT_COW.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_COW.get().create(level);
         }
         if (livingEntity instanceof Dolphin) {
-            toCreate = FossilsLegacyEntityTypes.PREGNANT_DOLPHIN.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_DOLPHIN.get().create(level);
         }
         if (livingEntity instanceof Donkey) {
-            toCreate = FossilsLegacyEntityTypes.PREGNANT_DONKEY.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_DONKEY.get().create(level);
         }
         if (livingEntity instanceof Fox) {
-            toCreate = FossilsLegacyEntityTypes.PREGNANT_FOX.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_FOX.get().create(level);
         }
         if (livingEntity instanceof Goat) {
-            toCreate = FossilsLegacyEntityTypes.PREGNANT_GOAT.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_GOAT.get().create(level);
         }
         if (livingEntity instanceof Horse) {
-            toCreate = FossilsLegacyEntityTypes.PREGNANT_HORSE.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_HORSE.get().create(level);
         }
         if (livingEntity instanceof Llama) {
-            toCreate = FossilsLegacyEntityTypes.PREGNANT_LLAMA.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_LLAMA.get().create(level);
         }
         if (livingEntity instanceof Mule) {
-            toCreate = FossilsLegacyEntityTypes.PREGNANT_MULE.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_MULE.get().create(level);
         }
         if (livingEntity instanceof Ocelot) {
-            toCreate = FossilsLegacyEntityTypes.PREGNANT_OCELOT.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_OCELOT.get().create(level);
         }
         if (livingEntity instanceof Panda) {
-            toCreate = FossilsLegacyEntityTypes.PREGNANT_PANDA.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_PANDA.get().create(level);
         }
         if (livingEntity instanceof Pig) {
-            toCreate = FossilsLegacyEntityTypes.PREGNANT_PIG.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_PIG.get().create(level);
         }
         if (livingEntity instanceof PolarBear) {
-            toCreate = FossilsLegacyEntityTypes.PREGNANT_POLAR_BEAR.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_POLAR_BEAR.get().create(level);
         }
         if (livingEntity instanceof Rabbit) {
-            toCreate = FossilsLegacyEntityTypes.PREGNANT_RABBIT.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_RABBIT.get().create(level);
         }
         if (livingEntity instanceof Sheep sheep) {
-            toCreate = FossilsLegacyEntityTypes.PREGNANT_SHEEP.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_SHEEP.get().create(level);
             ((PregnantSheep) toCreate).setColor(sheep.getColor());
         }
         if (livingEntity instanceof Wolf) {
-            toCreate = FossilsLegacyEntityTypes.PREGNANT_WOLF.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_WOLF.get().create(level);
         }
         if (livingEntity instanceof Mammoth) {
-            toCreate = FossilsLegacyEntityTypes.PREGNANT_MAMMOTH.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_MAMMOTH.get().create(level);
         }
         if (livingEntity instanceof Smilodon) {
-            toCreate = FossilsLegacyEntityTypes.PREGNANT_SMILODON.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_SMILODON.get().create(level);
         }
         toCreate.moveTo(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), livingEntity.getYRot(), livingEntity.getXRot());
         level.addFreshEntity(toCreate);
@@ -226,11 +226,11 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLe
     }
 
     default void definePregnancyData(EntityDataAccessor<Holder<PregnancyType>> pregnancy, SynchedEntityData.Builder builder) {
-        builder.define(pregnancy, FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES.getHolderOrThrow(FossilsLegacyPregnancyTypes.CAT.getKey()));
+        builder.define(pregnancy, FABuiltInRegistries.PREGNANCY_TYPES.getHolderOrThrow(FAPregnancyTypes.CAT.getKey()));
     }
 
     default void defineCoatTypeData(EntityDataAccessor<Holder<CoatType>> pregnancy, SynchedEntityData.Builder builder) {
-        builder.define(pregnancy, this.getLevel().registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getAny().orElseThrow());
+        builder.define(pregnancy, this.getLevel().registryAccess().registryOrThrow(FARegistries.COAT_TYPES).getAny().orElseThrow());
     }
 
     default void addRemainingPregnancyTime(CompoundTag compoundTag) {
@@ -242,12 +242,12 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLe
     }
 
     default void addPregnancyData(CompoundTag compoundTag) {
-        compoundTag.putString("Variant", this.getPregnancyType().unwrapKey().orElse(FossilsLegacyPregnancyTypes.CAT.getKey()).location().toString());
+        compoundTag.putString("Variant", this.getPregnancyType().unwrapKey().orElse(FAPregnancyTypes.CAT.getKey()).location().toString());
     }
 
     default void readPregnancyData(CompoundTag compoundTag) {
-        Optional<ResourceKey<PregnancyType>> eggVariant = Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("Variant"))).map((resourceLocation) -> ResourceKey.create(FossilsLegacyRegistries.PREGNANCY_TYPES, resourceLocation));
-        Registry<PregnancyType> registry = FossilsLegacyBuiltInRegistries.PREGNANCY_TYPES;
+        Optional<ResourceKey<PregnancyType>> eggVariant = Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("Variant"))).map((resourceLocation) -> ResourceKey.create(FARegistries.PREGNANCY_TYPES, resourceLocation));
+        Registry<PregnancyType> registry = FABuiltInRegistries.PREGNANCY_TYPES;
         Objects.requireNonNull(registry);
         eggVariant.flatMap(registry::getHolder).ifPresent(this::setPregnancyType);
     }

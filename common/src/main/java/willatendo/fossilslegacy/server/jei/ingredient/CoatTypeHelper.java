@@ -8,13 +8,13 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
-import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
-import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
+import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 
 public final class CoatTypeHelper implements IIngredientHelper<CoatType> {
     @Override
     public IIngredientType<CoatType> getIngredientType() {
-        return FossilsLegacyIngredientTypes.COAT_TYPE;
+        return FAIngredientTypes.COAT_TYPE;
     }
 
     @Override
@@ -27,13 +27,13 @@ public final class CoatTypeHelper implements IIngredientHelper<CoatType> {
         Minecraft minecraft = Minecraft.getInstance();
         ClientLevel clientLevel = minecraft.level;
         RegistryAccess registryAccess = clientLevel.registryAccess();
-        return registryAccess.registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getKey(coatType).toString();
+        return registryAccess.registryOrThrow(FARegistries.COAT_TYPES).getKey(coatType).toString();
     }
 
     @Override
     public String getDisplayModId(CoatType coatType) {
         Minecraft minecraft = Minecraft.getInstance();
-        return minecraft.level.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getKey(coatType).getNamespace();
+        return minecraft.level.registryAccess().registryOrThrow(FARegistries.COAT_TYPES).getKey(coatType).getNamespace();
     }
 
     @Override
@@ -46,7 +46,7 @@ public final class CoatTypeHelper implements IIngredientHelper<CoatType> {
         Minecraft minecraft = Minecraft.getInstance();
         ClientLevel clientLevel = minecraft.level;
         RegistryAccess registryAccess = clientLevel.registryAccess();
-        return registryAccess.registryOrThrow(FossilsLegacyRegistries.COAT_TYPES).getKey(coatType);
+        return registryAccess.registryOrThrow(FARegistries.COAT_TYPES).getKey(coatType);
     }
 
     @Override

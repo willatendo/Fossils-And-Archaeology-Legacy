@@ -18,14 +18,14 @@ import willatendo.fossilslegacy.client.model.json.JsonLayerDefinitionResourceMan
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;
 import willatendo.fossilslegacy.network.ServerboundSinkPacket;
-import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
-import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Futabasaurus;
-import willatendo.fossilslegacy.server.inventory.FossilsLegacyRecipeBookTypes;
-import willatendo.fossilslegacy.server.item.FossilsLegacyItems;
-import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
-import willatendo.fossilslegacy.server.recipe.ArchaeologyRecipe;
-import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
-import willatendo.fossilslegacy.server.recipe.FossilsLegacyRecipeTypes;
+import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
+import willatendo.fossilslegacy.server.item.FAItems;
+import willatendo.fossilslegacy.server.menu.FARecipeBookTypes;
+import willatendo.fossilslegacy.server.recipe.FARecipeTypes;
+import willatendo.fossilslegacy.server.recipe.recipes.AnalyzationRecipe;
+import willatendo.fossilslegacy.server.recipe.recipes.ArchaeologyRecipe;
+import willatendo.fossilslegacy.server.recipe.recipes.CultivationRecipe;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import willatendo.simplelibrary.client.event.registry.*;
 import willatendo.simplelibrary.server.util.RecipeBookRegistry;
@@ -83,41 +83,41 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
             }
         });
 
-        BuiltinItemRendererRegistry.INSTANCE.register(FossilsLegacyItems.ARTICULATED_FOSSIL.get(), FossilsLegacyBlockEntityWithoutLevelRenderer.INSTANCE::renderByItem);
+        BuiltinItemRendererRegistry.INSTANCE.register(FAItems.ARTICULATED_FOSSIL.get(), FABlockEntityWithoutLevelRenderer.INSTANCE::renderByItem);
 
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.JURASSIC_FERN.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.AXOLOTLSPAWN.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.CALAMITES_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.CALAMITES_LEAVES.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.CALAMITES_DOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.CALAMITES_TRAPDOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.POTTED_CALAMITES_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.LEPIDODENDRON_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.LEPIDODENDRON_LEAVES.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.LEPIDODENDRON_DOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.LEPIDODENDRON_TRAPDOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.POTTED_LEPIDODENDRON_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.SIGILLARIA_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.SIGILLARIA_LEAVES.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.SIGILLARIA_DOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.SIGILLARIA_TRAPDOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.POTTED_SIGILLARIA_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.WHITE_CULTIVATOR.get(), RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.ORANGE_CULTIVATOR.get(), RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.MAGENTA_CULTIVATOR.get(), RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.LIGHT_BLUE_CULTIVATOR.get(), RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.YELLOW_CULTIVATOR.get(), RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.LIME_CULTIVATOR.get(), RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.PINK_CULTIVATOR.get(), RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.GRAY_CULTIVATOR.get(), RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.LIGHT_GRAY_CULTIVATOR.get(), RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.CYAN_CULTIVATOR.get(), RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.PURPLE_CULTIVATOR.get(), RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.BLUE_CULTIVATOR.get(), RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.BROWN_CULTIVATOR.get(), RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.GREEN_CULTIVATOR.get(), RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.RED_CULTIVATOR.get(), RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(FossilsLegacyBlocks.BLACK_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.JURASSIC_FERN.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.AXOLOTLSPAWN.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.CALAMITES_SAPLING.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.CALAMITES_LEAVES.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.CALAMITES_DOOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.CALAMITES_TRAPDOOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.POTTED_CALAMITES_SAPLING.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.LEPIDODENDRON_SAPLING.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.LEPIDODENDRON_LEAVES.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.LEPIDODENDRON_DOOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.LEPIDODENDRON_TRAPDOOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.POTTED_LEPIDODENDRON_SAPLING.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.SIGILLARIA_SAPLING.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.SIGILLARIA_LEAVES.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.SIGILLARIA_DOOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.SIGILLARIA_TRAPDOOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.POTTED_SIGILLARIA_SAPLING.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.WHITE_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ORANGE_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.MAGENTA_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.LIGHT_BLUE_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.YELLOW_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.LIME_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.PINK_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.GRAY_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.LIGHT_GRAY_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.CYAN_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.PURPLE_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.BLUE_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.BROWN_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.GREEN_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.RED_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.BLACK_CULTIVATOR.get(), RenderType.translucent());
 
         FossilsLegacyClient.itemColorRegistry(new FabricItemColorRegister());
         FossilsLegacyClient.blockColorRegistry(new FabricBlockColorRegister());
@@ -137,10 +137,10 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
             if (player != null) {
                 if (player.isPassenger()) {
                     if (player.getVehicle() instanceof Futabasaurus) {
-                        if (FossilsLegacyKeys.SINK.isDown()) {
+                        if (FAKeys.SINK.isDown()) {
                             ClientPlayNetworking.send(new ServerboundSinkPacket(true));
                         }
-                        if (!FossilsLegacyKeys.SINK.consumeClick()) {
+                        if (!FAKeys.SINK.consumeClick()) {
                             ClientPlayNetworking.send(new ServerboundSinkPacket(false));
                         }
                     }
@@ -148,44 +148,44 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
             }
         });
 
-        RecipeBookRegistry.registerBookCategories(FossilsLegacyRecipeBookTypes.ANALYZER, List.of(FossilsLegacyRecipeBookCategories.ANALYZATION_SEARCH, FossilsLegacyRecipeBookCategories.ANALYZATION_MISC));
-        RecipeBookRegistry.registerBookCategories(FossilsLegacyRecipeBookTypes.ARCHAEOLOGY_WORKBENCH, List.of(FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_SEARCH, FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_REPAIR, FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_RESTORE, FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_MISC));
-        RecipeBookRegistry.registerBookCategories(FossilsLegacyRecipeBookTypes.CULTIVATOR, List.of(FossilsLegacyRecipeBookCategories.CULTIVATION_SEARCH, FossilsLegacyRecipeBookCategories.CULTIVATION_EGGS, FossilsLegacyRecipeBookCategories.CULTIVATION_PLANTS, FossilsLegacyRecipeBookCategories.CULTIVATION_MISC));
+        RecipeBookRegistry.registerBookCategories(FARecipeBookTypes.ANALYZER, List.of(FARecipeBookCategories.ANALYZATION_SEARCH, FARecipeBookCategories.ANALYZATION_MISC));
+        RecipeBookRegistry.registerBookCategories(FARecipeBookTypes.ARCHAEOLOGY_WORKBENCH, List.of(FARecipeBookCategories.ARCHAEOLOGY_WORKBENCH_SEARCH, FARecipeBookCategories.ARCHAEOLOGY_WORKBENCH_REPAIR, FARecipeBookCategories.ARCHAEOLOGY_WORKBENCH_RESTORE, FARecipeBookCategories.ARCHAEOLOGY_WORKBENCH_MISC));
+        RecipeBookRegistry.registerBookCategories(FARecipeBookTypes.CULTIVATOR, List.of(FARecipeBookCategories.CULTIVATION_SEARCH, FARecipeBookCategories.CULTIVATION_EGGS, FARecipeBookCategories.CULTIVATION_PLANTS, FARecipeBookCategories.CULTIVATION_MISC));
 
-        RecipeBookRegistry.registerAggregateCategory(FossilsLegacyRecipeBookCategories.ANALYZATION_SEARCH, List.of(FossilsLegacyRecipeBookCategories.ANALYZATION_MISC));
-        RecipeBookRegistry.registerAggregateCategory(FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_SEARCH, List.of(FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_RESTORE, FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_REPAIR, FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_MISC));
-        RecipeBookRegistry.registerAggregateCategory(FossilsLegacyRecipeBookCategories.CULTIVATION_SEARCH, List.of(FossilsLegacyRecipeBookCategories.CULTIVATION_EGGS, FossilsLegacyRecipeBookCategories.CULTIVATION_PLANTS, FossilsLegacyRecipeBookCategories.CULTIVATION_MISC));
+        RecipeBookRegistry.registerAggregateCategory(FARecipeBookCategories.ANALYZATION_SEARCH, List.of(FARecipeBookCategories.ANALYZATION_MISC));
+        RecipeBookRegistry.registerAggregateCategory(FARecipeBookCategories.ARCHAEOLOGY_WORKBENCH_SEARCH, List.of(FARecipeBookCategories.ARCHAEOLOGY_WORKBENCH_RESTORE, FARecipeBookCategories.ARCHAEOLOGY_WORKBENCH_REPAIR, FARecipeBookCategories.ARCHAEOLOGY_WORKBENCH_MISC));
+        RecipeBookRegistry.registerAggregateCategory(FARecipeBookCategories.CULTIVATION_SEARCH, List.of(FARecipeBookCategories.CULTIVATION_EGGS, FARecipeBookCategories.CULTIVATION_PLANTS, FARecipeBookCategories.CULTIVATION_MISC));
 
-        RecipeBookRegistry.registerRecipeCategoryFinder(FossilsLegacyRecipeTypes.ANALYZATION.get(), recipeHolder -> {
+        RecipeBookRegistry.registerRecipeCategoryFinder(FARecipeTypes.ANALYZATION.get(), recipeHolder -> {
             AnalyzationRecipe analyzationRecipe = (AnalyzationRecipe) recipeHolder.value();
             switch (analyzationRecipe.analyzationBookCategory) {
                 default:
                 case MISC:
-                    return FossilsLegacyRecipeBookCategories.ANALYZATION_MISC;
+                    return FARecipeBookCategories.ANALYZATION_MISC;
             }
         });
-        RecipeBookRegistry.registerRecipeCategoryFinder(FossilsLegacyRecipeTypes.ARCHAEOLOGY.get(), recipeHolder -> {
+        RecipeBookRegistry.registerRecipeCategoryFinder(FARecipeTypes.ARCHAEOLOGY.get(), recipeHolder -> {
             ArchaeologyRecipe archaeologyRecipe = (ArchaeologyRecipe) recipeHolder.value();
             switch (archaeologyRecipe.archaeologyBookCategory) {
                 case RESTORE:
-                    return FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_RESTORE;
+                    return FARecipeBookCategories.ARCHAEOLOGY_WORKBENCH_RESTORE;
                 case REPAIR:
-                    return FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_REPAIR;
+                    return FARecipeBookCategories.ARCHAEOLOGY_WORKBENCH_REPAIR;
                 default:
                 case MISC:
-                    return FossilsLegacyRecipeBookCategories.ARCHAEOLOGY_WORKBENCH_MISC;
+                    return FARecipeBookCategories.ARCHAEOLOGY_WORKBENCH_MISC;
             }
         });
-        RecipeBookRegistry.registerRecipeCategoryFinder(FossilsLegacyRecipeTypes.CULTIVATION.get(), recipeHolder -> {
+        RecipeBookRegistry.registerRecipeCategoryFinder(FARecipeTypes.CULTIVATION.get(), recipeHolder -> {
             CultivationRecipe cultivationRecipe = (CultivationRecipe) recipeHolder.value();
             switch (cultivationRecipe.cultivationBookCategory) {
                 case EGG:
-                    return FossilsLegacyRecipeBookCategories.CULTIVATION_EGGS;
+                    return FARecipeBookCategories.CULTIVATION_EGGS;
                 case PLANT:
-                    return FossilsLegacyRecipeBookCategories.CULTIVATION_PLANTS;
+                    return FARecipeBookCategories.CULTIVATION_PLANTS;
                 default:
                 case MISC:
-                    return FossilsLegacyRecipeBookCategories.CULTIVATION_MISC;
+                    return FARecipeBookCategories.CULTIVATION_MISC;
             }
         });
     }

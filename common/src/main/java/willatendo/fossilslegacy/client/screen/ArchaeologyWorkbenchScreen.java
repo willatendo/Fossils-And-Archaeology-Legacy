@@ -13,7 +13,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.Slot;
 import willatendo.fossilslegacy.client.screen.recipebook.ArchaeologyWorkbenchRecipeBookComponent;
-import willatendo.fossilslegacy.server.menu.ArchaeologyWorkbenchMenu;
+import willatendo.fossilslegacy.server.menu.menus.ArchaeologyWorkbenchMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public class ArchaeologyWorkbenchScreen extends AbstractContainerScreen<ArchaeologyWorkbenchMenu> implements RecipeUpdateListener {

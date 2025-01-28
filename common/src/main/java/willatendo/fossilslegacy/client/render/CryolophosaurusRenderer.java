@@ -1,7 +1,7 @@
 package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import willatendo.fossilslegacy.server.entity.dinosaur.jurassic.Cryolophosaurus;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.jurassic.Cryolophosaurus;
 
 public class CryolophosaurusRenderer extends CoatTypeMobRenderer<Cryolophosaurus> {
     public CryolophosaurusRenderer(EntityRendererProvider.Context context) {

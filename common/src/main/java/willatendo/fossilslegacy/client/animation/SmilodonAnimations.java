@@ -6,7 +6,7 @@ import net.minecraft.client.animation.Keyframe;
 import net.minecraft.client.animation.KeyframeAnimations;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.client.model.json.JsonModel;
-import willatendo.fossilslegacy.server.entity.Dinosaur;
+import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.entity.util.interfaces.ShakingEntity;
 
 public final class SmilodonAnimations {

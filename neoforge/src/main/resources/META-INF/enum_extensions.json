@@ -23,7 +23,7 @@
       "name": "fossilslegacyarchaeology_search",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
-        "class": "willatendo/fossilslegacy/server/FossilsLegacyNeoforgeEnumParameters",
+        "class": "willatendo/fossilslegacy/server/FANeoforgeEnumParameters",
         "method": "getArchaeologySearchParameters"
       }
     },
@@ -32,7 +32,7 @@
       "name": "fossilslegacyarchaeology_restore",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
-        "class": "willatendo/fossilslegacy/server/FossilsLegacyNeoforgeEnumParameters",
+        "class": "willatendo/fossilslegacy/server/FANeoforgeEnumParameters",
         "method": "getArchaeologyRestoreParameters"
       }
     },
@@ -41,7 +41,7 @@
       "name": "fossilslegacyarchaeology_repair",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
-        "class": "willatendo/fossilslegacy/server/FossilsLegacyNeoforgeEnumParameters",
+        "class": "willatendo/fossilslegacy/server/FANeoforgeEnumParameters",
         "method": "getArchaeologyRepairParameters"
       }
     },
@@ -50,7 +50,7 @@
       "name": "fossilslegacyarchaeology_misc",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
-        "class": "willatendo/fossilslegacy/server/FossilsLegacyNeoforgeEnumParameters",
+        "class": "willatendo/fossilslegacy/server/FANeoforgeEnumParameters",
         "method": "getArchaeologyMiscParameters"
       }
     },
@@ -59,7 +59,7 @@
       "name": "fossilslegacycultivation_search",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
-        "class": "willatendo/fossilslegacy/server/FossilsLegacyNeoforgeEnumParameters",
+        "class": "willatendo/fossilslegacy/server/FANeoforgeEnumParameters",
         "method": "getCultivationSearchParameters"
       }
     },
@@ -68,7 +68,7 @@
       "name": "fossilslegacycultivation_eggs",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
-        "class": "willatendo/fossilslegacy/server/FossilsLegacyNeoforgeEnumParameters",
+        "class": "willatendo/fossilslegacy/server/FANeoforgeEnumParameters",
         "method": "getCultivationEggParameters"
       }
     },
@@ -77,7 +77,7 @@
       "name": "fossilslegacycultivation_plants",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
-        "class": "willatendo/fossilslegacy/server/FossilsLegacyNeoforgeEnumParameters",
+        "class": "willatendo/fossilslegacy/server/FANeoforgeEnumParameters",
         "method": "getCultivationPlantParameters"
       }
     },
@@ -86,7 +86,7 @@
       "name": "fossilslegacycultivation_misc",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
-        "class": "willatendo/fossilslegacy/server/FossilsLegacyNeoforgeEnumParameters",
+        "class": "willatendo/fossilslegacy/server/FANeoforgeEnumParameters",
         "method": "getCultivationMiscParameters"
       }
     },
@@ -95,7 +95,7 @@
       "name": "fossilslegacyanalyzation_search",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
-        "class": "willatendo/fossilslegacy/server/FossilsLegacyNeoforgeEnumParameters",
+        "class": "willatendo/fossilslegacy/server/FANeoforgeEnumParameters",
         "method": "getAnalyzationSearchParameters"
       }
     },
@@ -104,7 +104,7 @@
       "name": "fossilslegacyanalyzation_misc",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
-        "class": "willatendo/fossilslegacy/server/FossilsLegacyNeoforgeEnumParameters",
+        "class": "willatendo/fossilslegacy/server/FANeoforgeEnumParameters",
         "method": "getAnalyzationMiscParameters"
       }
     }

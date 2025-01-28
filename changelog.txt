@@ -167,6 +167,12 @@
 - Time Machine Now Dragon Immune
 - Time Machine Now Wither Immune
 - Archaeology Workbench Now Has Books On Front And Back
+- Ancient Shovel Now Has 1/5 Chance Of Doubling Valid Drop
+- Ancient Pickaxe Now Has 1/5 Chance Of Dropping A Jewel (Data-Driven)
+- Ancient Axe Now Has 1/5 Chance Of "Crafting" A Drop (Data-Driven)
+- Ancient Hoe Now Can Left-Click On Crops To Harvest, Doubling Yield
+- Cultivator Fuels Now Data-Driven
+- Archaeology Table Fuels Now Data-Driven
 - Added Calamites Saplings Now Made From Calamites DNA
 - Added Lepidodendron Saplings Now Made From Lepidodendron DNA
 - Added Sigillaria Now Made From Sigillaria DNA
@@ -175,6 +181,13 @@
 - Added Lepidodendron DNA
 - Added Sigillaria DNA
 - Added Jurassic Fern DNA
+- Added "Interactions with Analyzer" Statistic
+- Added "Interactions with Archaeology Workbench" Statistic
+- Added "Interactions with Cultivator" Statistic
+- Added "Interactions with Feeder" Statistic
+- Added "Interactions with Gene Modification Table" Statistic
+- Added "Interactions with Palaeontology Table" Statistic
+- Added JEI For Archaeology Table Fuels
 - Fixed And Updated Legacy Textures
 - Fixed Incorrect Jurassic Fern Texture
 - Fixed Dimetrodon DNA Texture
@@ -183,6 +196,32 @@
 - Fixed Dinosaur-Related Crash
 - Fixed Fossil Shadows
 - Fixed Untranslated String In Time Machine
+- Fixed Some Item's Statistics Not Working
+- Fixed Bucket of Raw Berry Medley Not Working As Cultivator Fuel
+- Fixed Ankylosaurus Egg Not Working As Cultivator Fuel
+- Fixed Carnotaurus Egg Not Working As Cultivator Fuel
+- Fixed Compsognathus Egg Not Working As Cultivator Fuel
+- Fixed Cryolophosaurus Egg Not Working As Cultivator Fuel
+- Fixed Dimetrodon Egg Not Working As Cultivator Fuel
+- Fixed Dodo Egg Not Working As Cultivator Fuel
+- Fixed Gallimimus Egg Not Working As Cultivator Fuel
+- Fixed Incubated Dodo Egg Not Working As Cultivator Fuel
+- Fixed Incubated Moa Egg Not Working As Cultivator Fuel
+- Fixed Moa Egg Not Working As Cultivator Fuel
+- Fixed Pachycephalosaurus Egg Not Working As Cultivator Fuel
+- Fixed Spinosaurus Egg Not Working As Cultivator Fuel
+- Fixed Therizinosaurus Egg Not Working As Cultivator
+- Fixed Raw Ankylosaurus Not Working As Cultivator Fuel
+- Fixed Raw Carnotaurus Not Working As Cultivator Fuel
+- Fixed Raw Compsognathus Not Working As Cultivator Fuel
+- Fixed Raw Cryolophosaurus Not Working As Cultivator Fuel
+- Fixed Raw Dimetrodon Not Working As Cultivator Fuel
+- Fixed Raw Dodo Not Working As Cultivator Fuel
+- Fixed Raw Gallimimus Not Working As Cultivator Fuel
+- Fixed Raw Moa Not Working As Cultivator Fuel
+- Fixed Raw Pachycephalosaurus Not Working As Cultivator Fuel
+- Fixed Raw Spinosaurus Not Working As Cultivator Fuel
+- Fixed Raw Therizinosaurus Not Working As Cultivator Fuel
 - Added New Cultivator Model
 - Removed Petrified Calamites Sapling
 - Removed Petrified Lepidodendron Sapling
@@ -866,7 +905,7 @@ Experimental:
 - Added Tyrannosaurus
 - Added Pterandon
 - Added Nautilus
-- Added willatendo.fossilslegacy.client.model.dinosaur.FutabasaurusModels
+- Added Futabasaurus
 - Added Mosasaurus
 - Added Stegosaurus
 - Added Dilophosaurus

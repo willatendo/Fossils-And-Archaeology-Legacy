@@ -11,6 +11,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.TreeConfigurati
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
+import willatendo.fossilslegacy.server.feature.FATrunkPlacerTypes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class ForkedThickTrunkPlacer extends TrunkPlacer {
 
     @Override
     protected TrunkPlacerType<?> type() {
-        return FossilsLegacyTrunkPlacerTypes.FORKED_THICK_TRUNK_PLACER.get();
+        return FATrunkPlacerTypes.FORKED_THICK_TRUNK_PLACER.get();
     }
 
     @Override

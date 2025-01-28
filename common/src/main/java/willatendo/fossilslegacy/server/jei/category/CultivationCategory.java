@@ -13,11 +13,11 @@ import mezz.jei.api.recipe.category.AbstractRecipeCategory;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.crafting.RecipeHolder;
-import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
-import willatendo.fossilslegacy.server.jei.FossilsLegacyJEIRecipeTypes;
-import willatendo.fossilslegacy.server.jei.FossilsLegacyJEITextures;
+import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.jei.FAJEIRecipeTypes;
+import willatendo.fossilslegacy.server.jei.FAJEITextures;
 import willatendo.fossilslegacy.server.jei.RecipeUtil;
-import willatendo.fossilslegacy.server.recipe.CultivationRecipe;
+import willatendo.fossilslegacy.server.recipe.recipes.CultivationRecipe;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public final class CultivationCategory extends AbstractRecipeCategory<RecipeHolder<CultivationRecipe>> {
@@ -26,12 +26,12 @@ public final class CultivationCategory extends AbstractRecipeCategory<RecipeHold
     private final IDrawableAnimated animatedVat;
     private final IDrawable vatOutline;
 
-    public CultivationCategory(IGuiHelper guiHelper, FossilsLegacyJEITextures fossilsLegacyJEITextures) {
-        super(FossilsLegacyJEIRecipeTypes.CULTIVATION, FossilsLegacyUtils.translation("jei", "cultivation"), guiHelper.createDrawableItemLike(FossilsLegacyBlocks.LIME_CULTIVATOR.get()), 88, 56);
-        this.cachedArrows = fossilsLegacyJEITextures.createCultivationBar();
-        this.arrowOutline = fossilsLegacyJEITextures.getCultivationArrow();
-        this.animatedVat = fossilsLegacyJEITextures.createVat();
-        this.vatOutline = fossilsLegacyJEITextures.getVatOutline();
+    public CultivationCategory(IGuiHelper guiHelper, FAJEITextures FAJEITextures) {
+        super(FAJEIRecipeTypes.CULTIVATION, FossilsLegacyUtils.translation("jei", "cultivation"), guiHelper.createDrawableItemLike(FABlocks.LIME_CULTIVATOR.get()), 88, 56);
+        this.cachedArrows = FAJEITextures.createCultivationBar();
+        this.arrowOutline = FAJEITextures.getCultivationArrow();
+        this.animatedVat = FAJEITextures.createVat();
+        this.vatOutline = FAJEITextures.getVatOutline();
     }
 
     @Override

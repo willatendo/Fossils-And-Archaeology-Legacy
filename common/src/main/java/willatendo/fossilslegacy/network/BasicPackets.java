@@ -9,12 +9,12 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import willatendo.fossilslegacy.server.block.entity.GeneModificationTableBlockEntity;
-import willatendo.fossilslegacy.server.block.entity.TimeMachineBlockEntity;
-import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
-import willatendo.fossilslegacy.server.entity.dinosaur.cretaceous.Futabasaurus;
-import willatendo.fossilslegacy.server.genetics.cosmetics.CoatType;
-import willatendo.fossilslegacy.server.item.FossilsLegacyDataComponents;
+import willatendo.fossilslegacy.server.block.entity.entities.GeneModificationTableBlockEntity;
+import willatendo.fossilslegacy.server.block.entity.entities.TimeMachineBlockEntity;
+import willatendo.fossilslegacy.server.registry.FARegistries;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
+import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 public final class BasicPackets {
@@ -27,9 +27,9 @@ public final class BasicPackets {
         if (blockEntity instanceof GeneModificationTableBlockEntity geneModificationTableBlockEntity) {
             ItemStack itemStack = geneModificationTableBlockEntity.getItem(0);
             geneModificationTableBlockEntity.setItem(0, ItemStack.EMPTY);
-            Registry<CoatType> coatTypeRegistry = level.registryAccess().registryOrThrow(FossilsLegacyRegistries.COAT_TYPES);
+            Registry<CoatType> coatTypeRegistry = level.registryAccess().registryOrThrow(FARegistries.COAT_TYPES);
             Holder.Reference<CoatType> coatTypeHolder = coatTypeRegistry.getHolder(ResourceLocation.parse(coatType)).get();
-            itemStack.set(FossilsLegacyDataComponents.COAT_TYPE.get(), coatTypeHolder);
+            itemStack.set(FADataComponents.COAT_TYPE.get(), coatTypeHolder);
             geneModificationTableBlockEntity.setItem(1, itemStack);
         }
     }

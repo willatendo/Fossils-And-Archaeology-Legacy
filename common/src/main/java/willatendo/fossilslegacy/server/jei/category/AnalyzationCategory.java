@@ -16,12 +16,12 @@ import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
-import willatendo.fossilslegacy.server.block.FossilsLegacyBlocks;
-import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
-import willatendo.fossilslegacy.server.jei.FossilsLegacyJEIRecipeTypes;
-import willatendo.fossilslegacy.server.jei.FossilsLegacyJEITextures;
-import willatendo.fossilslegacy.server.recipe.AnalyzationRecipe;
-import willatendo.fossilslegacy.server.recipe.AnalyzerResult;
+import willatendo.fossilslegacy.server.analyzer_result.AnalyzerResult;
+import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.jei.FAJEIRecipeTypes;
+import willatendo.fossilslegacy.server.jei.FAJEITextures;
+import willatendo.fossilslegacy.server.recipe.recipes.AnalyzationRecipe;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.ArrayList;
@@ -33,10 +33,10 @@ public final class AnalyzationCategory extends AbstractRecipeCategory<RecipeHold
     private final LoadingCache<Integer, IDrawableAnimated> cachedArrows;
     private final IDrawable arrowOutline;
 
-    public AnalyzationCategory(IGuiHelper guiHelper, FossilsLegacyJEITextures fossilsLegacyJEITextures) {
-        super(FossilsLegacyJEIRecipeTypes.ANALYZATION, FossilsLegacyUtils.translation("jei", "analyzation"), guiHelper.createDrawableItemLike(FossilsLegacyBlocks.ANALYZER.get()), 144, 54);
-        this.cachedArrows = fossilsLegacyJEITextures.createAnalyzationBar();
-        this.arrowOutline = fossilsLegacyJEITextures.getAnalyzationArrow();
+    public AnalyzationCategory(IGuiHelper guiHelper, FAJEITextures FAJEITextures) {
+        super(FAJEIRecipeTypes.ANALYZATION, FossilsLegacyUtils.translation("jei", "analyzation"), guiHelper.createDrawableItemLike(FABlocks.ANALYZER.get()), 144, 54);
+        this.cachedArrows = FAJEITextures.createAnalyzationBar();
+        this.arrowOutline = FAJEITextures.getAnalyzationArrow();
     }
 
     @Override
@@ -52,7 +52,7 @@ public final class AnalyzationCategory extends AbstractRecipeCategory<RecipeHold
             }
         }
 
-        Registry<AnalyzerResult> analyzerResultRegistry = Minecraft.getInstance().level.registryAccess().registryOrThrow(FossilsLegacyRegistries.ANALYZER_RESULT);
+        Registry<AnalyzerResult> analyzerResultRegistry = Minecraft.getInstance().level.registryAccess().registryOrThrow(FARegistries.ANALYZER_RESULT);
         Map<ItemStack, AnalyzerResult> map = new HashMap<>();
         List<AnalyzerResult> analyzerResults = new ArrayList<>();
         List<ItemStack> outputs = new ArrayList<>();

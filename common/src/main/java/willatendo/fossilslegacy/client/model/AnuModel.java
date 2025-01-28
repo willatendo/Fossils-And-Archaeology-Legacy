@@ -16,7 +16,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.HumanoidArm;
-import willatendo.fossilslegacy.server.entity.Anu;
+import willatendo.fossilslegacy.server.entity.entities.Anu;
 
 public class AnuModel extends AgeableListModel<Anu> implements ArmedModel, HeadedModel {
     public final ModelPart root;

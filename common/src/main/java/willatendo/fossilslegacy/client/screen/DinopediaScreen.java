@@ -12,11 +12,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import willatendo.fossilslegacy.server.core.registry.FossilsLegacyRegistries;
-import willatendo.fossilslegacy.server.entity.Dinosaur;
+import willatendo.fossilslegacy.server.dinopedia_entry.DinopediaEntry;
+import willatendo.fossilslegacy.server.dinopedia_entry.line.BuiltInDinopediaLines;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
-import willatendo.fossilslegacy.server.item.dinopedia.DinopediaEntry;
-import willatendo.fossilslegacy.server.item.dinopedia.line.BuiltInDinopediaLines;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +34,7 @@ public class DinopediaScreen extends Screen {
         super(GameNarrator.NO_TITLE);
         RegistryAccess registryAccess = Minecraft.getInstance().level.registryAccess();
         if (dinopediaInformation.getDinopediaType().isPresent()) {
-            this.dinopediaEntries = registryAccess.registryOrThrow(FossilsLegacyRegistries.DINOPEDIA_TYPE).get(dinopediaInformation.getDinopediaType().get()).dinopediaEntries().stream().map(dinopediaEntry -> registryAccess.registryOrThrow(FossilsLegacyRegistries.DINOPEDIA_ENTRY).get(dinopediaEntry)).toList();
+            this.dinopediaEntries = registryAccess.registryOrThrow(FARegistries.DINOPEDIA_TYPE).get(dinopediaInformation.getDinopediaType().get()).dinopediaEntries().stream().map(dinopediaEntry -> registryAccess.registryOrThrow(FARegistries.DINOPEDIA_ENTRY).get(dinopediaEntry)).toList();
         } else {
             this.dinopediaEntries = List.of();
         }

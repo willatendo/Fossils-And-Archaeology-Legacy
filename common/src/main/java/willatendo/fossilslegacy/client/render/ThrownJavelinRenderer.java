@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
-import willatendo.fossilslegacy.server.entity.ThrownJavelin;
+import willatendo.fossilslegacy.server.entity.entities.ThrownJavelin;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
 import java.util.Map;

@@ -16,10 +16,10 @@ public class ClientForgeEvents {
     public static void inputEvent_key(InputEvent.Key event) {
         Minecraft minecraft = Minecraft.getInstance();
         if (minecraft.player != null) {
-            if (FossilsLegacyKeys.SINK.isDown()) {
+            if (FAKeys.SINK.isDown()) {
                 ForgePacketHelper.sendToServer(new ServerboundSinkPacket(true));
             }
-            if (!FossilsLegacyKeys.SINK.consumeClick()) {
+            if (!FAKeys.SINK.consumeClick()) {
                 ForgePacketHelper.sendToServer(new ServerboundSinkPacket(false));
             }
         }
