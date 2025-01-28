@@ -1,8 +1,7 @@
 {
-  "amount": 50,
-  "fill_type": "plant",
-  "id": "fossilslegacy:jurassic_fern_spores",
-  "item_stack": {
-    "id": "fossilslegacy:jurassic_fern_spores"
-  }
+  "fill_type": {
+    "fill_amount": 50,
+    "fill_type": "plant"
+  },
+  "item": "fossilslegacy:jurassic_fern_spores"
 }

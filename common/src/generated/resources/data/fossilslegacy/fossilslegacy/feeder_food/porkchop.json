@@ -1,8 +1,7 @@
 {
-  "amount": 20,
-  "fill_type": "meat",
-  "id": "fossilslegacy:porkchop",
-  "item_stack": {
-    "id": "minecraft:porkchop"
-  }
+  "fill_type": {
+    "fill_amount": 20,
+    "fill_type": "meat"
+  },
+  "item": "minecraft:porkchop"
 }

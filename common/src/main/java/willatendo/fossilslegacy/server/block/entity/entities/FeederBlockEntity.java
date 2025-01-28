@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.server.block.entity.entities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.ContainerHelper;
@@ -10,6 +11,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
@@ -20,6 +22,8 @@ import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.feeder_food.FeederFood;
 import willatendo.fossilslegacy.server.menu.menus.FeederMenu;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+
+import java.util.Map;
 
 public class FeederBlockEntity extends BaseContainerBlockEntity {
     private NonNullList<ItemStack> itemStacks = NonNullList.withSize(2, ItemStack.EMPTY);
@@ -85,11 +89,12 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
         boolean changed = false;
         ItemStack meat = feederBlockEntity.itemStacks.get(0);
         ItemStack plants = feederBlockEntity.itemStacks.get(1);
+        Map<Item, FeederFood.FeederInfo> map = FeederFood.getFeederFood(level.registryAccess());
 
         if (!meat.isEmpty()) {
-            FeederFood feederFood = FeederFood.getFeederFood(level, meat);
-            if (feederFood != null) {
-                int amount = feederFood.getAmount();
+            FeederFood.FeederInfo feederInfo = map.getOrDefault(meat.getItem(), null);
+            if (feederInfo != null) {
+                int amount = feederInfo.fillAmount();
                 if (!(amount + feederBlockEntity.meatLevel > feederBlockEntity.maxMeatLevel)) {
                     feederBlockEntity.meatLevel += amount;
                     meat.shrink(1);
@@ -98,9 +103,9 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
             }
         }
         if (!plants.isEmpty()) {
-            FeederFood feederFood = FeederFood.getFeederFood(level, plants);
-            if (feederFood != null) {
-                int amount = feederFood.getAmount();
+            FeederFood.FeederInfo feederInfo = map.getOrDefault(plants.getItem(), null);
+            if (feederInfo != null) {
+                int amount = feederInfo.fillAmount();
                 if (!(amount + feederBlockEntity.plantsLevel > feederBlockEntity.maxPlantsLevel)) {
                     feederBlockEntity.plantsLevel += amount;
                     plants.shrink(1);

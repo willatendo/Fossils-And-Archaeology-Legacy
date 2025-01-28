@@ -33,11 +33,6 @@ import java.util.List;
 
 @JeiPlugin
 public final class FossilsLegacyJEI implements IModPlugin {
-    // JEI Constants
-    private ArchaeologyCategory archaeologyCategory;
-    private CultivationCategory cultivationCategory;
-    private AnalyzationCategory analyzationCategory;
-
     @Override
     public ResourceLocation getPluginUid() {
         return FossilsLegacyUtils.resource("fossils_legacy_jei");
@@ -54,7 +49,17 @@ public final class FossilsLegacyJEI implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration iRecipeCategoryRegistration) {
         IGuiHelper iGuiHelper = iRecipeCategoryRegistration.getJeiHelpers().getGuiHelper();
         FAJEITextures FAJEITextures = new FAJEITextures(iGuiHelper);
-        iRecipeCategoryRegistration.addRecipeCategories(this.analyzationCategory = new AnalyzationCategory(iGuiHelper, FAJEITextures), new AncientAxeBonusCategory(iGuiHelper), this.archaeologyCategory = new ArchaeologyCategory(iGuiHelper, FAJEITextures), new ArticulatedFossilCategory(FAJEITextures), new BiomatterCategory(FAJEITextures), this.cultivationCategory = new CultivationCategory(iGuiHelper, FAJEITextures), new FeederCategory(FAJEITextures), new GeneModificationCategory(FAJEITextures), new InformationCategory(FAJEITextures), new JewelRecoveryCategory(iGuiHelper));
+        iRecipeCategoryRegistration.addRecipeCategories(
+                new AnalyzationCategory(iGuiHelper, FAJEITextures),
+                new AncientAxeBonusCategory(iGuiHelper),
+                new ArchaeologyCategory(iGuiHelper, FAJEITextures),
+                new ArticulatedFossilCategory(FAJEITextures),
+                new BiomatterCategory(FAJEITextures),
+                new CultivationCategory(iGuiHelper, FAJEITextures),
+                new FeederCategory(FAJEITextures),
+                new GeneModificationCategory(FAJEITextures),
+                new InformationCategory(FAJEITextures),
+                new JewelRecoveryCategory(iGuiHelper));
     }
 
     @Override
@@ -62,12 +67,12 @@ public final class FossilsLegacyJEI implements IModPlugin {
         IVanillaRecipeFactory iVanillaRecipeFactory = iRecipeRegistration.getVanillaRecipeFactory();
         FARecipes FARecipes = new FARecipes();
 
-        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.ANALYZATION, FARecipes.getAnalyzationRecipes(this.analyzationCategory));
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.ANALYZATION, FARecipes.getAnalyzationRecipes());
         iRecipeRegistration.addRecipes(FAJEIRecipeTypes.ANCIENT_AXE_BONUS, FARecipes.getAncientAxeBonusRecipes());
-        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.ARCHAEOLOGY, FARecipes.getArchaeologyRecipes(this.archaeologyCategory));
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.ARCHAEOLOGY, FARecipes.getArchaeologyRecipes());
         iRecipeRegistration.addRecipes(FAJEIRecipeTypes.ARTICULATED_FOSSIL, FARecipes.getArticulatedFossilRecipes());
         iRecipeRegistration.addRecipes(FAJEIRecipeTypes.BIOMATTER, FARecipes.getBiomatterRecipes());
-        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.CULTIVATION, FARecipes.getCultivationRecipes(this.cultivationCategory));
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.CULTIVATION, FARecipes.getCultivationRecipes());
         iRecipeRegistration.addRecipes(FAJEIRecipeTypes.FEEDER, FARecipes.getFeederRecipes());
         iRecipeRegistration.addRecipes(FAJEIRecipeTypes.GENE_MODIFICATION, FARecipes.getGeneModificationRecipes());
         iRecipeRegistration.addRecipes(FAJEIRecipeTypes.INFORMATION, FARecipes.getInformationRecipes());

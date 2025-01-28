@@ -194,19 +194,19 @@ public class FAItemModelProvider extends SimpleItemModelProvider {
         this.handheldItem(FAItems.ANCIENT_PICKAXE.get());
         this.handheldItem(FAItems.ANCIENT_AXE.get());
         this.handheldItem(FAItems.ANCIENT_HOE.get());
-        this.armorItem(FAItems.ANCIENT_HELMET.get(), "helmet");
-        this.armorItem(FAItems.ANCIENT_CHESTPLATE.get(), "chestplate");
-        this.armorItem(FAItems.ANCIENT_LEGGINGS.get(), "leggings");
-        this.armorItem(FAItems.ANCIENT_BOOTS.get(), "boots");
+        this.armorItem(FAItems.ANCIENT_HELMET.get());
+        this.armorItem(FAItems.ANCIENT_CHESTPLATE.get());
+        this.armorItem(FAItems.ANCIENT_LEGGINGS.get());
+        this.armorItem(FAItems.ANCIENT_BOOTS.get());
         this.handheldItem(FAItems.SCARAB_GEM_SWORD.get());
         this.handheldItem(FAItems.SCARAB_GEM_SHOVEL.get());
         this.handheldItem(FAItems.SCARAB_GEM_PICKAXE.get());
         this.handheldItem(FAItems.SCARAB_GEM_AXE.get());
         this.handheldItem(FAItems.SCARAB_GEM_HOE.get());
-        this.armorItem(FAItems.SCARAB_GEM_HELMET.get(), "helmet");
-        this.armorItem(FAItems.SCARAB_GEM_CHESTPLATE.get(), "chestplate");
-        this.armorItem(FAItems.SCARAB_GEM_LEGGINGS.get(), "leggings");
-        this.armorItem(FAItems.SCARAB_GEM_BOOTS.get(), "boots");
+        this.armorItem(FAItems.SCARAB_GEM_HELMET.get());
+        this.armorItem(FAItems.SCARAB_GEM_CHESTPLATE.get());
+        this.armorItem(FAItems.SCARAB_GEM_LEGGINGS.get());
+        this.armorItem(FAItems.SCARAB_GEM_BOOTS.get());
         this.basicItem(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get());
         this.basicItem(FAItems.WOODEN_JAVELIN.get());
         this.basicItem(FAItems.BROKEN_WOODEN_JAVELIN.get(), this.modLoc("item/wooden_javelin"));
@@ -268,8 +268,8 @@ public class FAItemModelProvider extends SimpleItemModelProvider {
         this.handheldItem(FAItems.DEBUG_TAME.get(), this.mcLoc("item/bone"));
         this.handheldItem(FAItems.DEBUG_CHANGE_GENETICS.get(), this.mcLoc("item/bone"));
 
-        this.basicBlock(FABlocks.FOSSIL_ORE.get(), "tyrannosaurus_skull_fossil_ore");
-        this.basicBlock(FABlocks.DEEPSLATE_FOSSIL_ORE.get(), "deepslate_shells_fossil_ore");
+        this.basicBlock(FABlocks.FOSSIL_ORE.get(), this.modLoc("block/tyrannosaurus_skull_fossil_ore"));
+        this.basicBlock(FABlocks.DEEPSLATE_FOSSIL_ORE.get(), this.modLoc("block/deepslate_shells_fossil_ore"));
         this.basicBlock(FABlocks.SKULL_BLOCK.get());
         this.basicBlock(FABlocks.SKULL_LANTERN_BLOCK.get());
         this.basicBlock(FABlocks.ANALYZER.get());
@@ -293,8 +293,8 @@ public class FAItemModelProvider extends SimpleItemModelProvider {
         this.basicBlock(FABlocks.ARCHAEOLOGY_WORKBENCH.get());
         this.basicBlock(FABlocks.PALAEONTOLOGY_TABLE.get());
         this.basicItem(FABlocks.JURASSIC_FERN.getId(), this.modLoc("block/fern_lower_3"));
-        this.basicBlock(FABlocks.DRUM.get(), "drum_follow");
-        this.basicBlock(FABlocks.FEEDER.get(), "feeder_empty");
+        this.basicBlock(FABlocks.DRUM.get(), this.modLoc("block/drum_follow"));
+        this.basicBlock(FABlocks.FEEDER.get(), this.modLoc("block/feeder_empty"));
         this.basicBlock(FABlocks.PERMAFROST.get());
         this.basicBlock(FABlocks.ICED_STONE.get());
         this.basicItem(FAItems.AXOLOTLSPAWN.get(), this.modLoc("block/axolotlspawn"));
@@ -324,10 +324,10 @@ public class FAItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FAItems.LEPIDODENDRON_DOOR.get());
         this.basicItem(FAItems.LEPIDODENDRON_HANGING_SIGN.get());
         this.basicBlock(FABlocks.LEPIDODENDRON_PRESSURE_PLATE.get());
-        this.basicBlock(FABlocks.LEPIDODENDRON_FENCE.get(), "lepidodendron_fence_inventory");
-        this.basicBlock(FABlocks.LEPIDODENDRON_TRAPDOOR.get(), "lepidodendron_trapdoor_bottom");
+        this.basicBlock(FABlocks.LEPIDODENDRON_FENCE.get(), this.modLoc("block/lepidodendron_fence_inventory"));
+        this.basicBlock(FABlocks.LEPIDODENDRON_TRAPDOOR.get(), this.modLoc("block/lepidodendron_trapdoor_bottom"));
         this.basicBlock(FABlocks.LEPIDODENDRON_FENCE_GATE.get());
-        this.basicBlock(FABlocks.LEPIDODENDRON_BUTTON.get(), "lepidodendron_button_inventory");
+        this.basicBlock(FABlocks.LEPIDODENDRON_BUTTON.get(), this.modLoc("block/lepidodendron_button_inventory"));
         this.basicBlock(FABlocks.LEPIDODENDRON_SLAB.get());
         this.basicBlock(FABlocks.SIGILLARIA_PLANKS.get());
         this.basicItem(FABlocks.SIGILLARIA_SAPLING.getId(), this.modLoc("block/sigillaria_sapling"));
@@ -341,10 +341,10 @@ public class FAItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FAItems.SIGILLARIA_DOOR.get());
         this.basicItem(FAItems.SIGILLARIA_HANGING_SIGN.get());
         this.basicBlock(FABlocks.SIGILLARIA_PRESSURE_PLATE.get());
-        this.basicBlock(FABlocks.SIGILLARIA_FENCE.get(), "sigillaria_fence_inventory");
-        this.basicBlock(FABlocks.SIGILLARIA_TRAPDOOR.get(), "sigillaria_trapdoor_bottom");
+        this.basicBlock(FABlocks.SIGILLARIA_FENCE.get(), this.modLoc("block/sigillaria_fence_inventory"));
+        this.basicBlock(FABlocks.SIGILLARIA_TRAPDOOR.get(), this.modLoc("block/sigillaria_trapdoor_bottom"));
         this.basicBlock(FABlocks.SIGILLARIA_FENCE_GATE.get());
-        this.basicBlock(FABlocks.SIGILLARIA_BUTTON.get(), "sigillaria_button_inventory");
+        this.basicBlock(FABlocks.SIGILLARIA_BUTTON.get(), this.modLoc("block/sigillaria_button_inventory"));
         this.basicBlock(FABlocks.SIGILLARIA_SLAB.get());
         this.basicBlock(FABlocks.CALAMITES_PLANKS.get());
         this.basicItem(FABlocks.CALAMITES_SAPLING.getId(), this.modLoc("block/calamites_sapling"));
@@ -358,10 +358,10 @@ public class FAItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FAItems.CALAMITES_DOOR.get());
         this.basicItem(FAItems.CALAMITES_HANGING_SIGN.get());
         this.basicBlock(FABlocks.CALAMITES_PRESSURE_PLATE.get());
-        this.basicBlock(FABlocks.CALAMITES_FENCE.get(), "calamites_fence_inventory");
-        this.basicBlock(FABlocks.CALAMITES_TRAPDOOR.get(), "calamites_trapdoor_bottom");
+        this.basicBlock(FABlocks.CALAMITES_FENCE.get(), this.modLoc("block/calamites_fence_inventory"));
+        this.basicBlock(FABlocks.CALAMITES_TRAPDOOR.get(), this.modLoc("block/calamites_trapdoor_bottom"));
         this.basicBlock(FABlocks.CALAMITES_FENCE_GATE.get());
-        this.basicBlock(FABlocks.CALAMITES_BUTTON.get(), "calamites_button_inventory");
+        this.basicBlock(FABlocks.CALAMITES_BUTTON.get(), this.modLoc("block/calamites_button_inventory"));
         this.basicBlock(FABlocks.CALAMITES_SLAB.get());
     }
 }

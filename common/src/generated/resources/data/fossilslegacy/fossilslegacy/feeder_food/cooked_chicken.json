@@ -1,8 +1,7 @@
 {
-  "amount": 10,
-  "fill_type": "meat",
-  "id": "fossilslegacy:cooked_chicken",
-  "item_stack": {
-    "id": "minecraft:cooked_chicken"
-  }
+  "fill_type": {
+    "fill_amount": 10,
+    "fill_type": "meat"
+  },
+  "item": "minecraft:cooked_chicken"
 }

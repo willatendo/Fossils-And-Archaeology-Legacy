@@ -1,8 +1,7 @@
 {
-  "amount": 100,
-  "fill_type": "meat",
-  "id": "fossilslegacy:raw_ankylosaurus",
-  "item_stack": {
-    "id": "fossilslegacy:raw_ankylosaurus"
-  }
+  "fill_type": {
+    "fill_amount": 100,
+    "fill_type": "meat"
+  },
+  "item": "fossilslegacy:raw_ankylosaurus"
 }

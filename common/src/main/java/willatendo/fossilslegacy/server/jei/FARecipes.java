@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.server.jei;
 
 import com.google.common.collect.Lists;
-import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.api.recipe.vanilla.IJeiAnvilRecipe;
 import mezz.jei.api.recipe.vanilla.IVanillaRecipeFactory;
 import net.minecraft.client.Minecraft;
@@ -51,7 +50,7 @@ public final class FARecipes {
         this.registryAccess = clientLevel.registryAccess();
     }
 
-    public List<RecipeHolder<AnalyzationRecipe>> getAnalyzationRecipes(IRecipeCategory<RecipeHolder<AnalyzationRecipe>> analyzationCategory) {
+    public List<RecipeHolder<AnalyzationRecipe>> getAnalyzationRecipes() {
         return recipeManager.getAllRecipesFor(FARecipeTypes.ANALYZATION.get());
     }
 
@@ -61,7 +60,7 @@ public final class FARecipes {
         return ancientAxeBonuses;
     }
 
-    public List<RecipeHolder<ArchaeologyRecipe>> getArchaeologyRecipes(IRecipeCategory<RecipeHolder<ArchaeologyRecipe>> archaeologyCategory) {
+    public List<RecipeHolder<ArchaeologyRecipe>> getArchaeologyRecipes() {
         return recipeManager.getAllRecipesFor(FARecipeTypes.ARCHAEOLOGY.get());
     }
 
@@ -77,15 +76,13 @@ public final class FARecipes {
         return fuelRecipes;
     }
 
-    public List<RecipeHolder<CultivationRecipe>> getCultivationRecipes(IRecipeCategory<RecipeHolder<CultivationRecipe>> cultivationCategory) {
+    public List<RecipeHolder<CultivationRecipe>> getCultivationRecipes() {
         return recipeManager.getAllRecipesFor(FARecipeTypes.CULTIVATION.get());
     }
 
-    public List<FeederRecipe> getFeederRecipes() {
-        List<FeederRecipe> feederRecipes = new ArrayList<>();
-        this.registryAccess.registryOrThrow(FARegistries.FEEDER_FOOD).forEach(feederFood -> {
-            feederRecipes.add(new FeederRecipe(feederFood.getItemStack(), feederFood.getAmount(), feederFood.getFillType() == FeederFood.FillType.MEAT));
-        });
+    public List<FeederFood> getFeederRecipes() {
+        List<FeederFood> feederRecipes = new ArrayList<>();
+        this.registryAccess.registryOrThrow(FARegistries.FEEDER_FOOD).forEach(feederRecipes::add);
         return feederRecipes;
     }
 

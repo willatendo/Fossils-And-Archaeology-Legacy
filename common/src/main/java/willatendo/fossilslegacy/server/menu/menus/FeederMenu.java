@@ -1,6 +1,7 @@
 package willatendo.fossilslegacy.server.menu.menus;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -25,19 +26,20 @@ public class FeederMenu extends AbstractContainerMenu {
         Level level = feederBlockEntity.getLevel();
         this.containerLevelAccess = ContainerLevelAccess.create(level, feederBlockEntity.getBlockPos());
         this.feederBlockEntity = feederBlockEntity;
+        RegistryAccess registryAccess = level.registryAccess();
 
         this.addSlot(new Slot(feederBlockEntity, 0, 60, 62) {
             @Override
             public boolean mayPlace(ItemStack itemStack) {
-                FeederFood feederFood = FeederFood.getFeederFood(level, itemStack);
-                return feederFood != null && feederFood.getFillType() == FeederFood.FillType.MEAT;
+                FeederFood.FeederInfo feederInfo = FeederFood.getFeederFood(registryAccess).getOrDefault(itemStack.getItem(), null);
+                return feederInfo != null && feederInfo.fillType() == FeederFood.FillType.MEAT;
             }
         });
         this.addSlot(new Slot(feederBlockEntity, 1, 104, 62) {
             @Override
             public boolean mayPlace(ItemStack itemStack) {
-                FeederFood feederFood = FeederFood.getFeederFood(level, itemStack);
-                return feederFood != null && feederFood.getFillType() == FeederFood.FillType.PLANT;
+                FeederFood.FeederInfo feederInfo = FeederFood.getFeederFood(registryAccess).getOrDefault(itemStack.getItem(), null);
+                return feederInfo != null && feederInfo.fillType() == FeederFood.FillType.PLANT;
             }
         });
 

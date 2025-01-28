@@ -8,7 +8,7 @@
       }
     },
     {
-      "model": "fossilslegacy:item/ancient_helmet_iron_darker_trim",
+      "model": "fossilslegacy:item/ancient_helmet_iron_trim",
       "predicate": {
         "minecraft:trim_type": 0.2
       }

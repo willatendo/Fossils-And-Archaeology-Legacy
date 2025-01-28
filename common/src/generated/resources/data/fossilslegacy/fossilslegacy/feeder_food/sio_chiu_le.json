@@ -1,8 +1,7 @@
 {
-  "amount": 100,
-  "fill_type": "meat",
-  "id": "fossilslegacy:sio_chiu_le",
-  "item_stack": {
-    "id": "fossilslegacy:sio_chiu_le"
-  }
+  "fill_type": {
+    "fill_amount": 100,
+    "fill_type": "meat"
+  },
+  "item": "fossilslegacy:sio_chiu_le"
 }

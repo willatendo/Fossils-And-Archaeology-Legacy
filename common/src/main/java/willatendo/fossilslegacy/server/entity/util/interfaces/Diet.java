@@ -22,6 +22,10 @@ public interface Diet {
 
     Ingredient getTemptFoods();
 
+    default FeederFood.FeederInfo getFeederInfo(LevelAccessor levelAccessor, ItemStack itemStack) {
+        return FeederFood.getFeederFood(levelAccessor.registryAccess()).getOrDefault(itemStack.getItem(), null);
+    }
+
     static Diet piscivore(LevelAccessor levelAccessor) {
         return new Diet() {
             @Override
@@ -31,9 +35,9 @@ public interface Diet {
 
             @Override
             public int getItemStackFoodValue(ItemStack itemStack) {
-                FeederFood feederFood = FeederFood.getFeederFood(levelAccessor, itemStack);
-                if (feederFood != null && feederFood.sameFillType(FeederFood.FillType.MEAT)) {
-                    return feederFood.getAmount();
+                FeederFood.FeederInfo feederInfo = this.getFeederInfo(levelAccessor, itemStack);
+                if (feederInfo != null && feederInfo.sameFillType(FeederFood.FillType.MEAT)) {
+                    return feederInfo.fillAmount();
                 }
                 return 0;
             }
@@ -62,9 +66,9 @@ public interface Diet {
 
             @Override
             public int getItemStackFoodValue(ItemStack itemStack) {
-                FeederFood feederFood = FeederFood.getFeederFood(levelAccessor, itemStack);
-                if (feederFood != null && feederFood.sameFillType(FeederFood.FillType.MEAT)) {
-                    return feederFood.getAmount();
+                FeederFood.FeederInfo feederInfo = this.getFeederInfo(levelAccessor, itemStack);
+                if (feederInfo != null && feederInfo.sameFillType(FeederFood.FillType.MEAT)) {
+                    return feederInfo.fillAmount();
                 }
                 return 0;
             }
@@ -105,9 +109,9 @@ public interface Diet {
 
             @Override
             public int getItemStackFoodValue(ItemStack itemStack) {
-                FeederFood feederFood = FeederFood.getFeederFood(levelAccessor, itemStack);
-                if (feederFood != null && feederFood.sameFillType(FeederFood.FillType.PLANT)) {
-                    return feederFood.getAmount();
+                FeederFood.FeederInfo feederInfo = this.getFeederInfo(levelAccessor, itemStack);
+                if (feederInfo != null && feederInfo.sameFillType(FeederFood.FillType.PLANT)) {
+                    return feederInfo.fillAmount();
                 }
                 return 0;
             }
@@ -133,9 +137,9 @@ public interface Diet {
 
             @Override
             public int getItemStackFoodValue(ItemStack itemStack) {
-                FeederFood feederFood = FeederFood.getFeederFood(levelAccessor, itemStack);
-                if (feederFood != null) {
-                    return feederFood.getAmount();
+                FeederFood.FeederInfo feederInfo = this.getFeederInfo(levelAccessor, itemStack);
+                if (feederInfo != null) {
+                    return feederInfo.fillAmount();
                 }
                 return 0;
             }

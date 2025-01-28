@@ -1,70 +1,46 @@
 package willatendo.fossilslegacy.server.feeder_food;
 
-import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Registry;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.LevelAccessor;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 
-public class FeederFood {
-    public static final Codec<FeederFood> CODEC = RecordCodecBuilder.create(instance -> instance.group(ResourceLocation.CODEC.fieldOf("id").forGetter(FeederFood::getId), ItemStack.STRICT_SINGLE_ITEM_CODEC.fieldOf("item_stack").forGetter(FeederFood::getItemStack), ExtraCodecs.POSITIVE_INT.fieldOf("amount").forGetter(FeederFood::getAmount), FillType.CODEC.fieldOf("fill_type").forGetter(FeederFood::getFillType)).apply(instance, FeederFood::new));
-    public static final Map<Item, ResourceLocation> ITEM_TO_ID = Maps.newHashMap();
-    private final ResourceLocation id;
-    private final ItemStack itemStack;
-    private final int amount;
-    private final FillType fillType;
+public record FeederFood(ResourceLocation item, FeederInfo feederInfo) {
+    public static final Codec<FeederFood> CODEC = RecordCodecBuilder.create(instance -> instance.group(ResourceLocation.CODEC.fieldOf("item").forGetter(FeederFood::item), FeederFood.FeederInfo.CODEC.fieldOf("fill_type").forGetter(FeederFood::feederInfo)).apply(instance, FeederFood::new));
 
-    public FeederFood(ResourceLocation id, ItemStack itemStack, int amount, FillType fillType) {
-        this.id = id;
-        this.itemStack = itemStack;
-        this.amount = amount;
-        this.fillType = fillType;
-
-        ITEM_TO_ID.put(itemStack.getItem(), id);
+    public Item getItem() {
+        return BuiltInRegistries.ITEM.get(this.item);
     }
 
-    public ResourceLocation getId() {
-        return this.id;
+    public static Map<Item, FeederFood.FeederInfo> getFeederFood(RegistryAccess registryAccess) {
+        return registryAccess.registryOrThrow(FARegistries.FEEDER_FOOD).stream().collect(Collectors.toMap(feederFood -> BuiltInRegistries.ITEM.get(feederFood.item()), feederFood -> feederFood.feederInfo()));
     }
 
-    public ItemStack getItemStack() {
-        return this.itemStack;
-    }
+    public record FeederInfo(int fillAmount, FeederFood.FillType fillType) {
+        public static final Codec<FeederFood.FeederInfo> CODEC = RecordCodecBuilder.create(instance -> instance.group(ExtraCodecs.POSITIVE_INT.fieldOf("fill_amount").forGetter(FeederFood.FeederInfo::fillAmount), FeederFood.FillType.CODEC.fieldOf("fill_type").forGetter(FeederFood.FeederInfo::fillType)).apply(instance, FeederFood.FeederInfo::new));
 
-    public int getAmount() {
-        return this.amount;
-    }
-
-    public FillType getFillType() {
-        return this.fillType;
-    }
-
-    public boolean sameFillType(FillType fillType) {
-        return this.fillType == fillType;
-    }
-
-
-    public static FeederFood getFeederFood(LevelAccessor levelAccessor, ItemStack itemStack) {
-        Registry<FeederFood> feederFoodRegistry = levelAccessor.registryAccess().registryOrThrow(FARegistries.FEEDER_FOOD);
-        if (ITEM_TO_ID.containsKey(itemStack.getItem())) {
-            return feederFoodRegistry.get(ITEM_TO_ID.get(itemStack.getItem()));
+        public boolean sameFillType(FillType fillType) {
+            return this.fillType == fillType;
         }
-        return null;
+
+        public boolean isMeat() {
+            return this.fillType == FillType.MEAT;
+        }
     }
 
     public enum FillType implements StringRepresentable {
         PLANT("plant"),
         MEAT("meat");
 
-        public static final Codec<FeederFood.FillType> CODEC = StringRepresentable.fromEnum(FeederFood.FillType::values);
+        public static final Codec<FillType> CODEC = StringRepresentable.fromEnum(FeederFood.FillType::values);
         private final String name;
 
         FillType(String name) {

@@ -1,8 +1,7 @@
 {
-  "amount": 40,
-  "fill_type": "meat",
-  "id": "fossilslegacy:beef",
-  "item_stack": {
-    "id": "minecraft:beef"
-  }
+  "fill_type": {
+    "fill_amount": 40,
+    "fill_type": "meat"
+  },
+  "item": "minecraft:beef"
 }
