@@ -118,7 +118,7 @@ public final class FAItems {
     public static final SimpleHolder<Item> TYRANNOSAURUS_TOOTH = ITEMS.register("tyrannosaurus_tooth", () -> new Item(new Item.Properties()));
     public static final SimpleHolder<ToothDaggerItem> TOOTH_DAGGER = ITEMS.register("tooth_dagger", () -> new ToothDaggerItem(FATiers.DAGGER, new Item.Properties().attributes(SwordItem.createAttributes(FATiers.DAGGER, 3, -2.4F))));
     public static final SimpleHolder<Item> SKULL_STICK = ITEMS.register("skull_stick", () -> new Item(new Item.Properties().stacksTo(1)));
-    public static final SimpleHolder<TherizinosaurusClawsItem> THERIZINOSAURUS_CLAWS = ITEMS.register("therizinosaurus_claws", () -> new TherizinosaurusClawsItem(FATiers.DAGGER, new Item.Properties().attributes(TherizinosaurusClawsItem.createAttributes(FATiers.DAGGER, 0, -3.0F))));
+    public static final SimpleHolder<TherizinosaurusClawsItem> THERIZINOSAURUS_CLAWS = ITEMS.register("therizinosaurus_claws", () -> new TherizinosaurusClawsItem(FATiers.DAGGER, new Item.Properties().attributes(TherizinosaurusClawsItem.createAttributes(FATiers.DAGGER, 7, -3.5F))));
     public static final SimpleHolder<DinopediaItem> DINOPEDIA = ITEMS.register("dinopedia", () -> new DinopediaItem(new Item.Properties().stacksTo(1)));
     public static final SimpleHolder<BucketFoodItem> RAW_CHICKEN_SOUP_BUCKET = ITEMS.register("raw_chicken_soup_bucket", () -> new BucketFoodItem(new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET).food(FAFoods.RAW_CHICKEN_SOUP)));
     public static final SimpleHolder<BucketFoodItem> RAW_BERRY_MEDLEY_BUCKET = ITEMS.register("raw_berry_medley_bucket", () -> new BucketFoodItem(new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET).food(FAFoods.RAW_BERRY_MEDLEY_BUCKET)));

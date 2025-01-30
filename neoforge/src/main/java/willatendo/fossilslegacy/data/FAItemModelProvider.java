@@ -106,7 +106,7 @@ public class FAItemModelProvider extends SimpleItemModelProvider {
         this.basicItem(FAItems.COOKED_DIMETRODON.get());
         this.basicItem(FAItems.TYRANNOSAURUS_TOOTH.get());
         this.handheldItem(FAItems.TOOTH_DAGGER.get());
-        this.handheldItem(FAItems.THERIZINOSAURUS_CLAWS.get());
+        this.getBuilder("therizinosaurus_claws_gui").parent(new ModelFile.UncheckedModelFile(this.mcLoc("item/generated"))).texture("layer0", this.modLoc("item/therizinosaurus_claws"));
         this.handheldItem(FAItems.SKULL_STICK.get());
         this.basicItem(FAItems.DINOPEDIA.get());
         this.basicItem(FAItems.RAW_CHICKEN_SOUP_BUCKET.get());

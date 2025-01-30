@@ -61,6 +61,7 @@ public class FAItemTagProvider extends ItemTagsProvider {
         this.tag(FAItemTags.OMNIVORE_FOODS).addTags(FAItemTags.CARNIVORE_FOODS, FAItemTags.HERBIVORE_FOODS);
         this.tag(FAItemTags.PISCIVORE_FOODS).add(Items.COD, Items.COOKED_COD, Items.SALMON, Items.COOKED_SALMON, Items.TROPICAL_FISH, FAItems.SIO_CHIU_LE.get(), FAItems.NAUTILUS.get());
         this.tag(FAItemTags.MESOZOIC_FOSSIL).add(FAItems.FOSSIL.get());
+        this.tag(ItemTags.SWORD_ENCHANTABLE).add(FAItems.THERIZINOSAURUS_CLAWS.get());
 
         this.copy(FABlockTags.LEPIDODENDRON_LOGS, FAItemTags.LEPIDODENDRON_LOGS);
         this.copy(FABlockTags.SIGILLARIA_LOGS, FAItemTags.SIGILLARIA_LOGS);

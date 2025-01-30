@@ -173,6 +173,10 @@
 - Ancient Hoe Now Can Left-Click On Crops To Harvest, Doubling Yield
 - Cultivator Fuels Now Data-Driven
 - Archaeology Table Fuels Now Data-Driven
+- Therizinosaurus Claws Now Have 3d Model When Held
+- Therizinosaurus Claws Now Has Sword-Like Features
+- Therizinosaurus Claws Now Has 9 Attack Damange And -3.5 Recharge Speed
+- Therizinosaurus Claws Now Have Sweeping Attacks
 - Added Calamites Saplings Now Made From Calamites DNA
 - Added Lepidodendron Saplings Now Made From Lepidodendron DNA
 - Added Sigillaria Now Made From Sigillaria DNA

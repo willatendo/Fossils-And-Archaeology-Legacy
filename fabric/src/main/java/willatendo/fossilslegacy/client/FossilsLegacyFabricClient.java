@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.client;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
@@ -16,6 +17,7 @@ import net.minecraft.world.entity.player.Player;
 import willatendo.fossilslegacy.client.animation.json.JsonAnimationLoader;
 import willatendo.fossilslegacy.client.model.json.JsonLayerDefinitionResourceManager;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
+import willatendo.fossilslegacy.client.render.TridentLikeItemRenderer;
 import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;
 import willatendo.fossilslegacy.network.ServerboundSinkPacket;
 import willatendo.fossilslegacy.server.block.FABlocks;
@@ -35,6 +37,9 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 
 public class FossilsLegacyFabricClient implements ClientModInitializer {
+    public static final ResourceLocation THERIZINOSAURUS_2D = FossilsLegacyUtils.resource("item/therizinosaurus_claws_gui");
+    public static final ResourceLocation THERIZINOSAURUS_3D = FossilsLegacyUtils.resource("item/therizinosaurus_claws_in_hand");
+
     @Override
     public void onInitializeClient() {
         ResourceManagerHelper resourceManagerHelper = ResourceManagerHelper.get(PackType.CLIENT_RESOURCES);
@@ -83,7 +88,11 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
             }
         });
 
+
+        ModelLoadingPlugin.register(context -> context.addModels(FossilsLegacyFabricClient.THERIZINOSAURUS_2D, FossilsLegacyFabricClient.THERIZINOSAURUS_3D));
+
         BuiltinItemRendererRegistry.INSTANCE.register(FAItems.ARTICULATED_FOSSIL.get(), FABlockEntityWithoutLevelRenderer.INSTANCE::renderByItem);
+        BuiltinItemRendererRegistry.INSTANCE.register(FAItems.THERIZINOSAURUS_CLAWS.get(), new TridentLikeItemRenderer(FossilsLegacyFabricClient.THERIZINOSAURUS_2D, FossilsLegacyFabricClient.THERIZINOSAURUS_3D));
 
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.JURASSIC_FERN.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.AXOLOTLSPAWN.get(), RenderType.cutout());

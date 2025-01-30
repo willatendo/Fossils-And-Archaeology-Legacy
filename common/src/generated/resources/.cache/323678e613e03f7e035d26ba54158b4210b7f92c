@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-11T10:29:30.2142204	Tags for minecraft:item mod id fossilslegacy
+// 1.21.1	2025-01-29T19:46:13.3649678	Tags for minecraft:item mod id fossilslegacy
 fb61c19eacf262b21d275a4b1dd7da1fd3460ef6 data/c/tags/item/bones.json
 d31244a2a7f7cb4224e5362dca80427850e5daa5 data/c/tags/item/buckets.json
 8773b7b9cd8f313f03d59d28a609bd9f1434b870 data/c/tags/item/eggs.json
@@ -60,7 +60,7 @@ fac6609410e6d6debd00c58047cc7c2aebd1ee60 data/minecraft/tags/item/enchantable/eq
 21fd716704c92101bd22c663fd11842d681b5cb5 data/minecraft/tags/item/enchantable/mining.json
 d9abfffaaf2c6380dc58dc969563ba9e91965b1f data/minecraft/tags/item/enchantable/mining_loot.json
 78b35916f2f78650ea9a23cd8c5c283e8b50f572 data/minecraft/tags/item/enchantable/sharp_weapon.json
-38007741ad1f5b4031033528e18aa094bb838596 data/minecraft/tags/item/enchantable/sword.json
+c7661727917b7f8e5a91b93e732cd5362068794b data/minecraft/tags/item/enchantable/sword.json
 1e5da3be2a2abbfa28e6069b1e99befe88faf416 data/minecraft/tags/item/enchantable/vanishing.json
 78b35916f2f78650ea9a23cd8c5c283e8b50f572 data/minecraft/tags/item/enchantable/weapon.json
 a02da92027664f91d61ec2f9fc49b8b4e6e0de12 data/minecraft/tags/item/fence_gates.json

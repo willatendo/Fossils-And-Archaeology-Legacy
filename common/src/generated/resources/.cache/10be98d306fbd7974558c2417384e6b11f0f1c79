@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-28T11:46:13.1736682	Item Models: fossilslegacy
+// 1.21.1	2025-01-29T07:53:29.4143642	Item Models: fossilslegacy
 b451bc87d28bf27f77fe8f4d73bbf76022118639 assets/fossilslegacy/models/item/analyzer.json
 1f02e6db84914fc2677089f5e420f925ba109484 assets/fossilslegacy/models/item/ancient_axe.json
 e6aea94981911965db91c7f52bfa4555de4d4182 assets/fossilslegacy/models/item/ancient_axe_artifact.json
@@ -395,7 +395,7 @@ b4f2282487e4f9f6a6c50eaaa85a56db40b2b12a assets/fossilslegacy/models/item/stripp
 34c7f2cb6accada8130f55e52566b13c01a89b42 assets/fossilslegacy/models/item/stripped_lepidodendron_wood.json
 9239aaa6c0d5af73f88fbe817114f385f0bd20f7 assets/fossilslegacy/models/item/stripped_sigillaria_log.json
 0cee033216e66c9a2e1d943c5b619fa1df8f0bb5 assets/fossilslegacy/models/item/stripped_sigillaria_wood.json
-cd65c4fdb760e3669eee925addde3a48e07f5dbe assets/fossilslegacy/models/item/therizinosaurus_claws.json
+db88c0f3a5f57a7ef2b566e85c1dc8b767fa5fb3 assets/fossilslegacy/models/item/therizinosaurus_claws_gui.json
 8707b9c70efdf1937c558e67223839a39ae8181a assets/fossilslegacy/models/item/therizinosaurus_dna.json
 4ca2d6809e7fccf100dd634cdd697ba9f2e1340e assets/fossilslegacy/models/item/therizinosaurus_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/fossilslegacy/models/item/therizinosaurus_spawn_egg.json
