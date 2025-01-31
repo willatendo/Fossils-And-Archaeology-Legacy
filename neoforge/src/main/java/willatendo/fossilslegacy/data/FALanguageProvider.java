@@ -3,7 +3,9 @@ package willatendo.fossilslegacy.data;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.GameRules;
+import willatendo.fossilslegacy.server.analyzer_result.AnalyzerResult;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.coat_type.FACoatTypes;
@@ -908,6 +910,52 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("subtitles.entity.velociraptor.death", "Velociraptor dies");
 
         // Tags
+        this.add(FAAnalyzerResultTags.FOSSIL_RESULTS, "Fossil Results");
+        this.add(FAAnalyzerResultTags.RELIC_SCRAP_RESULTS, "Relic Scrap Results");
+        this.add(FAAnalyzerResultTags.FROZEN_MEAT_RESULTS, "Frozen Meat Results");
+        this.add(FAAnalyzerResultTags.AXOLOTL_BUCKET_RESULTS, "Axolotl Bucket Results");
+        this.add(FAAnalyzerResultTags.TROPICAL_FISH_BUCKET_RESULTS, "Tropical Fish Bucket Results");
+        this.add(FAAnalyzerResultTags.PORKCHOP_RESULTS, "Porkchop Results");
+        this.add(FAAnalyzerResultTags.BEEF_RESULTS, "Beef Results");
+        this.add(FAAnalyzerResultTags.CHICKEN_RESULTS, "Chicken Results");
+        this.add(FAAnalyzerResultTags.FEATHER_RESULTS, "Feather Results");
+        this.add(FAAnalyzerResultTags.BAMBOO_RESULTS, "Bamboo Results");
+        this.add(FAAnalyzerResultTags.SLIME_BALL_RESULTS, "Slime Ball Results");
+        this.add(FAAnalyzerResultTags.MUTTON_RESULTS, "Mutton Results");
+        this.add(FAAnalyzerResultTags.RAW_RABBIT_RESULTS, "Raw Rabbit Results");
+        this.add(FAAnalyzerResultTags.BONE_RESULTS, "Bone Results");
+        this.add(FAAnalyzerResultTags.EMERALD_RESULTS, "Emerald Results");
+        this.add(FAAnalyzerResultTags.GOAT_HORN_RESULTS, "Goat Horn Results");
+        this.add(FAAnalyzerResultTags.FROGLIGHT_RESULTS, "Froglight Results");
+        this.add(FAAnalyzerResultTags.LEATHER_RESULTS, "Leather Results");
+        this.add(FAAnalyzerResultTags.STRING_RESULTS, "String Results");
+        this.add(FAAnalyzerResultTags.COD_RESULTS, "Cod Results");
+        this.add(FAAnalyzerResultTags.SALMON_RESULTS, "Salmon Results");
+        this.add(FAAnalyzerResultTags.WOOL_RESULTS, "Wool Results");
+        this.add(FAAnalyzerResultTags.ARMADILLO_SCUTE_RESULTS, "Armadillo Scute Results");
+        this.add(FAAnalyzerResultTags.RAW_BRACHIOSAURUS_RESULTS, "Raw Brachiosaurus Results");
+        this.add(FAAnalyzerResultTags.RAW_DILOPHOSAURUS_RESULTS, "Raw Dimetrodon Results");
+        this.add(FAAnalyzerResultTags.RAW_MAMMOTH_RESULTS, "Raw Mammoth Results");
+        this.add(FAAnalyzerResultTags.RAW_MOSASAURUS_RESULTS, "Raw Mosasaurus Results");
+        this.add(FAAnalyzerResultTags.RAW_FUTABASAURUS_RESULTS, "Raw Futabasaurus Results");
+        this.add(FAAnalyzerResultTags.RAW_PTERANODON_RESULTS, "Raw Pteranodon Results");
+        this.add(FAAnalyzerResultTags.RAW_SMILODON_RESULTS, "Raw Smilodon Results");
+        this.add(FAAnalyzerResultTags.RAW_STEGOSAURUS_RESULTS, "Raw Stegosaurus Results");
+        this.add(FAAnalyzerResultTags.RAW_TRICERATOPS_RESULTS, "Raw Triceratops Results");
+        this.add(FAAnalyzerResultTags.RAW_TYRANNOSAURUS_RESULTS, "Raw Tyrannosaurus Results");
+        this.add(FAAnalyzerResultTags.RAW_VELOCIRAPTOR_RESULTS, "Raw Velociraptor Results");
+        this.add(FAAnalyzerResultTags.RAW_CARNOTAURUS_RESULTS, "Raw Carnotaurus Results");
+        this.add(FAAnalyzerResultTags.RAW_CRYOLOPHOSAURUS_RESULTS, "Raw Cryolophosaurus Results");
+        this.add(FAAnalyzerResultTags.RAW_THERIZINOSAURUS_RESULTS, "Raw Therizinosaurus Results");
+        this.add(FAAnalyzerResultTags.RAW_PACHYCEPHALOSAURUS_RESULTS, "Raw Pachycephalosaurus Results");
+        this.add(FAAnalyzerResultTags.RAW_COMPSOGNATHUS_RESULTS, "Raw Compsognathus Results");
+        this.add(FAAnalyzerResultTags.RAW_DODO_RESULTS, "Raw Dodo Results");
+        this.add(FAAnalyzerResultTags.RAW_MOA_RESULTS, "Raw Moa Results");
+        this.add(FAAnalyzerResultTags.RAW_GALLIMIMUS_RESULTS, "Raw Gallimimus Results");
+        this.add(FAAnalyzerResultTags.RAW_SPINOSAURUS_RESULTS, "Raw Spinosaurus Results");
+        this.add(FAAnalyzerResultTags.RAW_ANKYLOSAURUS_RESULTS, "Raw Ankylosaurus Results");
+        this.add(FAAnalyzerResultTags.RAW_DIMETRODON_RESULTS, "Raw Dimetrodon Results");
+
         this.add(FABiomeTags.HAS_ACADEMY, "Has Academy");
         this.add(FABiomeTags.HAS_LAB, "Has Lab");
         this.add(FABiomeTags.HAS_MACHU_PICCHU, "Has Machu Picchu");
@@ -1003,6 +1051,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAFluidTags.PERMAFROST_FREEZABLE, "Permaforst Freezable");
 
         this.add(FAFossilVariantTags.PLACEABLE_FROM_FOSSIL, "Placeable from Fossil");
+
+        this.add(FAFuelEntryTags.ARCHAEOLOGY_WORKBENCH, "Archaeology Workbench Fuels");
+        this.add(FAFuelEntryTags.CULTIVATOR, "Cultivator Fuels");
 
         this.add(FAItemTags.ANKYLOSAURUS_COMMANDABLES, "Ankylosaurus Commandables");
         this.add(FAItemTags.BRACHIOSAURUS_COMMANDABLES, "Brachiosaurus Commandables");

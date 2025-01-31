@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -37,8 +38,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 
 public class FossilsLegacyFabricClient implements ClientModInitializer {
-    public static final ResourceLocation THERIZINOSAURUS_2D = FossilsLegacyUtils.resource("item/therizinosaurus_claws_gui");
-    public static final ResourceLocation THERIZINOSAURUS_3D = FossilsLegacyUtils.resource("item/therizinosaurus_claws_in_hand");
+    public static final ModelResourceLocation THERIZINOSAURUS_2D = new ModelResourceLocation(FossilsLegacyUtils.resource("item/therizinosaurus_claws_gui"), "fabric_resource");
+    public static final ModelResourceLocation THERIZINOSAURUS_3D = new ModelResourceLocation(FossilsLegacyUtils.resource("item/therizinosaurus_claws_in_hand"), "fabric_resource");
 
     @Override
     public void onInitializeClient() {
@@ -89,7 +90,7 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         });
 
 
-        ModelLoadingPlugin.register(context -> context.addModels(FossilsLegacyFabricClient.THERIZINOSAURUS_2D, FossilsLegacyFabricClient.THERIZINOSAURUS_3D));
+        ModelLoadingPlugin.register(context -> context.addModels(FossilsLegacyFabricClient.THERIZINOSAURUS_2D.id(), FossilsLegacyFabricClient.THERIZINOSAURUS_3D.id()));
 
         BuiltinItemRendererRegistry.INSTANCE.register(FAItems.ARTICULATED_FOSSIL.get(), FABlockEntityWithoutLevelRenderer.INSTANCE::renderByItem);
         BuiltinItemRendererRegistry.INSTANCE.register(FAItems.THERIZINOSAURUS_CLAWS.get(), new TridentLikeItemRenderer(FossilsLegacyFabricClient.THERIZINOSAURUS_2D, FossilsLegacyFabricClient.THERIZINOSAURUS_3D));

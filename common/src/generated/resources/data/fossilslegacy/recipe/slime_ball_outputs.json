@@ -4,6 +4,6 @@
   "ingredient": {
     "item": "minecraft:slime_ball"
   },
-  "results": "fossilslegacy:results/slimeb_ball",
+  "results": "fossilslegacy:results/slime_ball",
   "time": 100
 }

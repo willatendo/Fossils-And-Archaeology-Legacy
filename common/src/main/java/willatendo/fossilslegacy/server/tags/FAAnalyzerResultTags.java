@@ -18,8 +18,8 @@ public class FAAnalyzerResultTags {
     public static final TagKey<AnalyzerResult> BEEF_RESULTS = ANALYZER_RESULT_TAGS.register("results/beef");
     public static final TagKey<AnalyzerResult> CHICKEN_RESULTS = ANALYZER_RESULT_TAGS.register("results/chicken");
     public static final TagKey<AnalyzerResult> FEATHER_RESULTS = ANALYZER_RESULT_TAGS.register("results/feather");
-    public static final TagKey<AnalyzerResult> BAMBOO_RESULTS = ANALYZER_RESULT_TAGS.register("results/panda_dna");
-    public static final TagKey<AnalyzerResult> SLIME_BALL_RESULTS = ANALYZER_RESULT_TAGS.register("results/slimeb_ball");
+    public static final TagKey<AnalyzerResult> BAMBOO_RESULTS = ANALYZER_RESULT_TAGS.register("results/bamboo");
+    public static final TagKey<AnalyzerResult> SLIME_BALL_RESULTS = ANALYZER_RESULT_TAGS.register("results/slime_ball");
     public static final TagKey<AnalyzerResult> MUTTON_RESULTS = ANALYZER_RESULT_TAGS.register("results/mutton");
     public static final TagKey<AnalyzerResult> RAW_RABBIT_RESULTS = ANALYZER_RESULT_TAGS.register("results/raw_rabbit");
     public static final TagKey<AnalyzerResult> BONE_RESULTS = ANALYZER_RESULT_TAGS.register("results/bone");

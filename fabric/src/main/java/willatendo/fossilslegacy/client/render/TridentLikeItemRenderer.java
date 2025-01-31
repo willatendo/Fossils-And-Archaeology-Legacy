@@ -10,16 +10,18 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelManager;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import willatendo.fossilslegacy.mixin.client.ModelManagerAccessor;
 
-public class TridentLikeItemRenderer implements BuiltinItemRendererRegistry.DynamicItemRenderer {
-    private final ResourceLocation model3d;
-    private final ResourceLocation model2d;
+import java.util.Map;
 
-    public TridentLikeItemRenderer(ResourceLocation model2d, ResourceLocation model3d) {
+public class TridentLikeItemRenderer implements BuiltinItemRendererRegistry.DynamicItemRenderer {
+    private final ModelResourceLocation model3d;
+    private final ModelResourceLocation model2d;
+
+    public TridentLikeItemRenderer(ModelResourceLocation model2d, ModelResourceLocation model3d) {
         this.model2d = model2d;
         this.model3d = model3d;
     }
@@ -34,10 +36,11 @@ public class TridentLikeItemRenderer implements BuiltinItemRendererRegistry.Dyna
 
             BakedModel model;
             ModelManager modelManager = itemRenderer.getItemModelShaper().getModelManager();
+            Map<ModelResourceLocation, BakedModel> bakedRegistry = ((ModelManagerAccessor) modelManager).getBakedRegistry();
             if (gui) {
-                model = ((ModelManagerAccessor) modelManager).getBakedRegistry().getOrDefault(this.model2d, modelManager.getMissingModel());
+                model = bakedRegistry.getOrDefault(this.model2d, modelManager.getMissingModel());
             } else {
-                model = ((ModelManagerAccessor) modelManager).getBakedRegistry().getOrDefault(this.model3d, modelManager.getMissingModel());
+                model = bakedRegistry.getOrDefault(this.model3d, modelManager.getMissingModel());
             }
             RenderType renderType = ItemBlockRenderTypes.getRenderType(itemStack, true);
             VertexConsumer vertexconsumer = ItemRenderer.getFoilBufferDirect(multiBufferSource, renderType, true, itemStack.hasFoil());
