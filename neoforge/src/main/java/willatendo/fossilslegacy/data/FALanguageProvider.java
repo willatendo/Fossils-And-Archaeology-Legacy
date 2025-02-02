@@ -3,9 +3,7 @@ package willatendo.fossilslegacy.data;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.GameRules;
-import willatendo.fossilslegacy.server.analyzer_result.AnalyzerResult;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.coat_type.FACoatTypes;
@@ -18,6 +16,7 @@ import willatendo.fossilslegacy.server.fossil_variant.FAFossilVariants;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 import willatendo.fossilslegacy.server.item.FACreativeModeTabs;
 import willatendo.fossilslegacy.server.item.FAItems;
+import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
 import willatendo.fossilslegacy.server.level.FAGameRules;
 import willatendo.fossilslegacy.server.stats.FAStats;
 import willatendo.fossilslegacy.server.tags.*;
@@ -290,7 +289,10 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("container.fossilslegacy.time_machine.start", "Start");
 
         // Creative Mode Tab
-        this.add(FACreativeModeTabs.FOSSILS_LEGACY.get(), "F/A: Legacy");
+        this.add(FACreativeModeTabs.FA_BLOCKS.get(), "F/A: Blocks");
+        this.add(FACreativeModeTabs.FA_ARCHAEOLOGY_ITEMS.get(), "F/A: Archaeology Items");
+        this.add(FACreativeModeTabs.FA_PALAEONTOLOGY_ITEMS.get(), "F/A: Palaeontology Items");
+        this.add(FACreativeModeTabs.FA_OTHER_ITEMS.get(), "F/A: Other Items");
 
         // Deaths
         this.add("death.attack.dinosaur_starve", "%1$s starved to death");
@@ -737,6 +739,26 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.DEBUG_TAME.get(), "Debug Tame");
         this.add(FAItems.DEBUG_CHANGE_GENETICS.get(), "Debug Change Genetics");
 
+        this.add("item.fossilslegacy.dna.era", "Era: %s");
+        this.add("item.fossilslegacy.dna.period", "Period: %s");
+
+        this.add(GeologicalTimeScale.Era.CENOZOIC, "Cenozoic");
+        this.add(GeologicalTimeScale.Era.MESOZOIC, "Mesozoic");
+        this.add(GeologicalTimeScale.Era.PALEOZOIC, "Paleozoic");
+
+        this.add(GeologicalTimeScale.Period.QUATERNARY, "Quaternary");
+        this.add(GeologicalTimeScale.Period.NEOGENE, "Neogene");
+        this.add(GeologicalTimeScale.Period.PALEOGENE, "Paleogene");
+        this.add(GeologicalTimeScale.Period.CRETACEOUS, "Cretaceous");
+        this.add(GeologicalTimeScale.Period.JURASSIC, "Jurassic");
+        this.add(GeologicalTimeScale.Period.TRIASSIC, "Triassic");
+        this.add(GeologicalTimeScale.Period.PERMIAN, "Permian");
+        this.add(GeologicalTimeScale.Period.CARBONIFEROUS, "Carboniferous");
+        this.add(GeologicalTimeScale.Period.DEVONIAN, "Devonian");
+        this.add(GeologicalTimeScale.Period.SILURIAN, "Silurian");
+        this.add(GeologicalTimeScale.Period.ORDOVICIAN, "Ordovician");
+        this.add(GeologicalTimeScale.Period.CAMBRIAN, "Cambrian");
+
         // JEI
         this.add("jei.fossilslegacy.analyzation", "Analyzation");
         this.add("jei.fossilslegacy.ancient_axe_bonus", "Ancient Axe Bonus");
@@ -1115,5 +1137,13 @@ public class FALanguageProvider extends SimpleLanguageProvider {
 
     public void addStat(ResourceLocation stat, String name) {
         this.add("stat." + stat.getNamespace() + "." + stat.getPath(), name);
+    }
+
+    public void add(GeologicalTimeScale.Era era, String name) {
+        this.add("item.fossilslegacy.dna.era." + era.getName(), name);
+    }
+
+    public void add(GeologicalTimeScale.Period period, String name) {
+        this.add("item.fossilslegacy.dna.period." + period.getName(), name);
     }
 }

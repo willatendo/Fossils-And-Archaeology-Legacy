@@ -1,7 +1,10 @@
 package willatendo.fossilslegacy.server.item.items;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Position;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -15,27 +18,44 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileItem;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.entity.entities.ThrownAnimalEgg;
+import willatendo.fossilslegacy.server.item.FADataComponents;
+import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
 import willatendo.fossilslegacy.server.registry.FARegistries;
+import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 public class AnimalEggItem extends Item implements ProjectileItem {
     private final Supplier<EntityType<? extends Animal>> animal;
+    private final GeologicalTimeScale.Period period;
     private final boolean incubated;
     private TagKey<CoatType> coatTypes;
 
-    public AnimalEggItem(Supplier<EntityType<? extends Animal>> animal, boolean incubated, Properties properties) {
+    public AnimalEggItem(GeologicalTimeScale.Period period, Supplier<EntityType<? extends Animal>> animal, boolean incubated, Properties properties) {
         super(properties);
+        this.period = period;
         this.animal = animal;
         this.incubated = incubated;
     }
 
-    public AnimalEggItem(Supplier<EntityType<? extends Animal>> animal, boolean incubated, TagKey<CoatType> coatTypes, Properties properties) {
-        this(animal, incubated, properties);
+    public AnimalEggItem(GeologicalTimeScale.Period period, Supplier<EntityType<? extends Animal>> animal, boolean incubated, TagKey<CoatType> coatTypes, Properties properties) {
+        this(period, animal, incubated, properties);
         this.coatTypes = coatTypes;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        this.period.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
+        if (itemStack.has(FADataComponents.COAT_TYPE.get())) {
+            Holder<CoatType> holder = itemStack.get(FADataComponents.COAT_TYPE.get());
+            tooltipComponents.add(FossilsLegacyUtils.translation("item", "dna.coat_type", holder.value().displayInfo().name()).withStyle(ChatFormatting.GRAY));
+        }
+        super.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
     }
 
     @Override

@@ -13,6 +13,7 @@ import willatendo.fossilslegacy.server.egg_variant.EggVariant;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Egg;
 import willatendo.fossilslegacy.server.item.FADataComponents;
+import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -21,11 +22,13 @@ import java.util.List;
 
 public class EggItem extends PlaceEntityItem<Egg> {
     public static final List<EggItem> EGGS = new ArrayList<>();
+    private final GeologicalTimeScale.Period period;
     protected final Holder<EggVariant> eggVariant;
     protected final TagKey<CoatType> applicableCoatTypes;
 
-    public EggItem(Holder<EggVariant> eggVariant, TagKey<CoatType> applicableCoatTypes, Properties properties) {
+    public EggItem(GeologicalTimeScale.Period period, Holder<EggVariant> eggVariant, TagKey<CoatType> applicableCoatTypes, Properties properties) {
         super(FAEntityTypes.EGG::get, properties);
+        this.period = period;
         this.eggVariant = eggVariant;
         this.applicableCoatTypes = applicableCoatTypes;
         EggItem.EGGS.add(this);
@@ -48,11 +51,12 @@ public class EggItem extends PlaceEntityItem<Egg> {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> components, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        this.period.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
         if (itemStack.has(FADataComponents.COAT_TYPE.get())) {
             Holder<CoatType> holder = itemStack.get(FADataComponents.COAT_TYPE.get());
-            components.add(FossilsLegacyUtils.translation("item", "dna.coat_type", holder.value().displayInfo().name()).withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(FossilsLegacyUtils.translation("item", "dna.coat_type", holder.value().displayInfo().name()).withStyle(ChatFormatting.GRAY));
         }
-        super.appendHoverText(itemStack, tooltipContext, components, tooltipFlag);
+        super.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
     }
 }

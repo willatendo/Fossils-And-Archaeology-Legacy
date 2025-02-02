@@ -49,37 +49,27 @@ public final class FossilsLegacyJEI implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration iRecipeCategoryRegistration) {
         IGuiHelper iGuiHelper = iRecipeCategoryRegistration.getJeiHelpers().getGuiHelper();
         FAJEITextures FAJEITextures = new FAJEITextures(iGuiHelper);
-        iRecipeCategoryRegistration.addRecipeCategories(
-                new AnalyzationCategory(iGuiHelper, FAJEITextures),
-                new AncientAxeBonusCategory(iGuiHelper),
-                new ArchaeologyCategory(iGuiHelper, FAJEITextures),
-                new ArticulatedFossilCategory(FAJEITextures),
-                new BiomatterCategory(FAJEITextures),
-                new CultivationCategory(iGuiHelper, FAJEITextures),
-                new FeederCategory(FAJEITextures),
-                new GeneModificationCategory(FAJEITextures),
-                new InformationCategory(FAJEITextures),
-                new JewelRecoveryCategory(iGuiHelper));
+        iRecipeCategoryRegistration.addRecipeCategories(new AnalyzationCategory(iGuiHelper, FAJEITextures), new AncientAxeBonusCategory(iGuiHelper), new ArchaeologyCategory(iGuiHelper, FAJEITextures), new ArticulatedFossilCategory(FAJEITextures), new BiomatterCategory(FAJEITextures), new CultivationCategory(iGuiHelper, FAJEITextures), new FeederCategory(FAJEITextures), new GeneModificationCategory(FAJEITextures), new InformationCategory(FAJEITextures), new JewelRecoveryCategory(iGuiHelper));
     }
 
     @Override
     public void registerRecipes(IRecipeRegistration iRecipeRegistration) {
         IVanillaRecipeFactory iVanillaRecipeFactory = iRecipeRegistration.getVanillaRecipeFactory();
-        FARecipes FARecipes = new FARecipes();
+        FARecipes faRecipes = new FARecipes();
 
-        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.ANALYZATION, FARecipes.getAnalyzationRecipes());
-        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.ANCIENT_AXE_BONUS, FARecipes.getAncientAxeBonusRecipes());
-        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.ARCHAEOLOGY, FARecipes.getArchaeologyRecipes());
-        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.ARTICULATED_FOSSIL, FARecipes.getArticulatedFossilRecipes());
-        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.BIOMATTER, FARecipes.getBiomatterRecipes());
-        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.CULTIVATION, FARecipes.getCultivationRecipes());
-        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.FEEDER, FARecipes.getFeederRecipes());
-        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.GENE_MODIFICATION, FARecipes.getGeneModificationRecipes());
-        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.INFORMATION, FARecipes.getInformationRecipes());
-        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.JEWEL_RECOVERY, FARecipes.getJewelRecoveryRecipes());
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.ANALYZATION, faRecipes.getAnalyzationRecipes());
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.ANCIENT_AXE_BONUS, faRecipes.getAncientAxeBonusRecipes());
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.ARCHAEOLOGY, faRecipes.getArchaeologyRecipes());
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.ARTICULATED_FOSSIL, faRecipes.getArticulatedFossilRecipes());
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.BIOMATTER, faRecipes.getBiomatterRecipes());
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.CULTIVATION, faRecipes.getCultivationRecipes());
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.FEEDER, faRecipes.getFeederRecipes());
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.GENE_MODIFICATION, faRecipes.getGeneModificationRecipes());
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.INFORMATION, faRecipes.getInformationRecipes());
+        iRecipeRegistration.addRecipes(FAJEIRecipeTypes.JEWEL_RECOVERY, faRecipes.getJewelRecoveryRecipes());
 
-        iRecipeRegistration.addRecipes(RecipeTypes.CRAFTING, FARecipes.createMagicConchRecipes());
-        iRecipeRegistration.addRecipes(RecipeTypes.ANVIL, FARecipes.createRepairRecipes(iVanillaRecipeFactory));
+        iRecipeRegistration.addRecipes(RecipeTypes.CRAFTING, faRecipes.createMagicConchRecipes());
+        iRecipeRegistration.addRecipes(RecipeTypes.ANVIL, faRecipes.createRepairRecipes(iVanillaRecipeFactory));
     }
 
     @Override

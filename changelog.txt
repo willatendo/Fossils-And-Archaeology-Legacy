@@ -177,6 +177,7 @@
 - Therizinosaurus Claws Now Has Sword-Like Features
 - Therizinosaurus Claws Now Has 9 Attack Damange And -3.5 Recharge Speed
 - Therizinosaurus Claws Now Have Sweeping Attacks
+- DNA, Egg, Embryo Syringe, And Other Entity-Placing Items Display Period And Era They Come From
 - Added Calamites Saplings Now Made From Calamites DNA
 - Added Lepidodendron Saplings Now Made From Lepidodendron DNA
 - Added Sigillaria Now Made From Sigillaria DNA
@@ -226,6 +227,8 @@
 - Fixed Raw Pachycephalosaurus Not Working As Cultivator Fuel
 - Fixed Raw Spinosaurus Not Working As Cultivator Fuel
 - Fixed Raw Therizinosaurus Not Working As Cultivator Fuel
+- Fixed Eggs Not Displaying Coat Type If Has One
+- Fixed Articulated Fossils Dropping Fossils Instead Of Correct Articulated Fossil
 - Added New Cultivator Model
 - Removed Petrified Calamites Sapling
 - Removed Petrified Lepidodendron Sapling

@@ -19,6 +19,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.HungerAccessor;
 import willatendo.fossilslegacy.server.entity.util.interfaces.PregnantAnimal;
 import willatendo.fossilslegacy.server.entity.util.interfaces.TameAccessor;
 import willatendo.fossilslegacy.server.item.FADataComponents;
+import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
 import willatendo.fossilslegacy.server.pregnancy_types.PregnancyType;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -26,26 +27,29 @@ import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 import java.util.List;
 
 public class SyringeItem extends Item {
+    private final GeologicalTimeScale.Period period;
     private final Holder<PregnancyType> pregnancyType;
     protected final TagKey<CoatType> applicableCoatTypes;
 
-    public SyringeItem(Holder<PregnancyType> pregnancyType, TagKey<CoatType> applicableCoatTypes, Properties properties) {
+    public SyringeItem(GeologicalTimeScale.Period period, Holder<PregnancyType> pregnancyType, TagKey<CoatType> applicableCoatTypes, Properties properties) {
         super(properties);
+        this.period = period;
         this.pregnancyType = pregnancyType;
         this.applicableCoatTypes = applicableCoatTypes;
     }
 
-    public SyringeItem(Holder<PregnancyType> pregnancyType, Properties properties) {
-        this(pregnancyType, null, properties);
+    public SyringeItem(GeologicalTimeScale.Period period, Holder<PregnancyType> pregnancyType, Properties properties) {
+        this(period, pregnancyType, null, properties);
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> components, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        this.period.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
         if (itemStack.has(FADataComponents.COAT_TYPE.get())) {
             Holder<CoatType> holder = itemStack.get(FADataComponents.COAT_TYPE.get());
-            components.add(FossilsLegacyUtils.translation("item", "dna.coat_type", holder.value().displayInfo().name()).withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(FossilsLegacyUtils.translation("item", "dna.coat_type", holder.value().displayInfo().name()).withStyle(ChatFormatting.GRAY));
         }
-        super.appendHoverText(itemStack, tooltipContext, components, tooltipFlag);
+        super.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
     }
 
     @Override

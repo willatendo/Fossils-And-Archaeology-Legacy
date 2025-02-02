@@ -185,7 +185,9 @@ public class Fossil extends Mob {
                     Block.popResource(this.level(), this.blockPosition(), new ItemStack(Items.BONE));
                 }
             }
-            Block.popResource(this.level(), this.blockPosition(), new ItemStack(FAItems.FOSSIL.get()));
+            ItemStack articulatedFossil = new ItemStack(FAItems.ARTICULATED_FOSSIL.get());
+            articulatedFossil.set(FADataComponents.FOSSIL_VARIANT.get(), this.getFossilVariant());
+            Block.popResource(this.level(), this.blockPosition(), articulatedFossil);
         }
         this.remove(RemovalReason.KILLED);
         return true;
