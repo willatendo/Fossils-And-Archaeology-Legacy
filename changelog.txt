@@ -1,4 +1,6 @@
-19/1/2024 1.4.7
+2/2/2024b 1.4.8
+- Fixed Server Crash
+2/2/2024a 1.4.7
 - Updated Fossil Texture
 - Updated Frozen Meat Texture
 - Updated Ankylosaurus Egg Texture
