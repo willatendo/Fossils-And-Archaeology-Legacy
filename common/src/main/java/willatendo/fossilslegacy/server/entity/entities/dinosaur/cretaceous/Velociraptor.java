@@ -6,6 +6,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
@@ -128,7 +129,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
             if (itemStack.isEmpty() && this.getHeldItem() != ItemStack.EMPTY) {
                 player.setItemInHand(interactionHand, this.getHeldItem());
                 this.setHeldItem(ItemStack.EMPTY);
-                return InteractionResult.sidedSuccess(player.level().isClientSide());
+                return InteractionResult.SUCCESS;
             } else {
                 return InteractionResult.PASS;
             }
@@ -206,8 +207,9 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
         return CommandingType.hand();
     }
 
+
     @Override
-    public boolean hurt(DamageSource damageSource, float damage) {
+    public boolean hurtServer(ServerLevel serverLevel, DamageSource damageSource, float damage) {
         if (this.isTame()) {
             if (damageSource.getEntity() instanceof Player player) {
                 if (this.isOwnedBy(player)) {
@@ -216,6 +218,6 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
                 }
             }
         }
-        return super.hurt(damageSource, damage);
+        return super.hurtServer(serverLevel, damageSource, damage);
     }
 }

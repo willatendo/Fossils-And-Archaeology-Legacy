@@ -24,7 +24,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.shapes.Shapes;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 import java.util.Objects;
@@ -36,7 +36,7 @@ public class DinosaurSpawnEggItem extends SpawnEggItem {
 
     @Override
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
-        list.add(FossilsLegacyUtils.translation("item", "dinosaur_spawn_egg.desc").withStyle(ChatFormatting.GRAY));
+        list.add(FAUtils.translation("item", "dinosaur_spawn_egg.desc").withStyle(ChatFormatting.GRAY));
         super.appendHoverText(itemStack, tooltipContext, list, tooltipFlag);
     }
 

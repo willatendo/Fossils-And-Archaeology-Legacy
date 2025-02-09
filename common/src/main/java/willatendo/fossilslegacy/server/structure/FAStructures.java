@@ -15,7 +15,7 @@ import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
 import willatendo.fossilslegacy.server.structure.pool.*;
 import willatendo.fossilslegacy.server.structure.structures.WeaponShopStructure;
 import willatendo.fossilslegacy.server.tags.FABiomeTags;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,7 +31,7 @@ public final class FAStructures {
     public static final ResourceKey<Structure> WEAPON_SHOP = create("weapon_shop");
 
     public static ResourceKey<Structure> create(String name) {
-        return ResourceKey.create(Registries.STRUCTURE, FossilsLegacyUtils.resource(name));
+        return ResourceKey.create(Registries.STRUCTURE, FAUtils.resource(name));
     }
 
     public static void bootstrap(BootstrapContext<Structure> bootstrapContext) {

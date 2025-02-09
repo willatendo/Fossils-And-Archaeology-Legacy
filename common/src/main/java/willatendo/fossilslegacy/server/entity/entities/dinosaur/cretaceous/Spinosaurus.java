@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous;
 
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
@@ -82,11 +83,11 @@ public class Spinosaurus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
-    public boolean hurt(DamageSource damageSource, float hearts) {
+    public boolean hurtServer(ServerLevel serverLevel, DamageSource damageSource, float hearts) {
         if (damageSource.is(FADamageTypeTags.SPINOSAURUS_IMMUNE)) {
             return false;
         }
-        return super.hurt(damageSource, hearts);
+        return super.hurtServer(serverLevel, damageSource, hearts);
     }
 
     @Override

@@ -179,7 +179,6 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Rid
                 }
 
                 this.calculateEntityAnimation(false);
-                this.tryCheckInsideBlocks();
             } else {
                 super.travel(vec3);
             }

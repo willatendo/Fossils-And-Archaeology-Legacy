@@ -2,10 +2,12 @@ package willatendo.fossilslegacy.server.menu.menus;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.recipebook.ServerPlaceRecipe;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.StackedContents;
+import net.minecraft.world.entity.player.StackedItemContents;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -19,11 +21,12 @@ import willatendo.fossilslegacy.server.menu.FARecipeBookTypes;
 import willatendo.fossilslegacy.server.menu.slot.FuelSlot;
 import willatendo.fossilslegacy.server.menu.slot.ResultSlot;
 import willatendo.fossilslegacy.server.recipe.recipes.ArchaeologyRecipe;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FAFuelEntryTags;
 
 import java.util.List;
 
-public class ArchaeologyWorkbenchMenu extends RecipeBookMenu<SingleRecipeInput, ArchaeologyRecipe> {
+public class ArchaeologyWorkbenchMenu extends RecipeBookMenu {
     private final ContainerLevelAccess containerLevelAccess;
     private final Level level;
     public final ArchaeologyWorkbenchBlockEntity archaeologyWorkbenchBlockEntity;
@@ -60,41 +63,10 @@ public class ArchaeologyWorkbenchMenu extends RecipeBookMenu<SingleRecipeInput, 
     }
 
     @Override
-    public void fillCraftSlotsStackedContents(StackedContents stackedContents) {
+    public void fillCraftSlotsStackedContents(StackedItemContents stackedItemContents) {
         if (this.archaeologyWorkbenchBlockEntity instanceof StackedContentsCompatible stackedContentsCompatible) {
-            stackedContentsCompatible.fillStackedContents(stackedContents);
+            stackedContentsCompatible.fillStackedContents(stackedItemContents);
         }
-    }
-
-    @Override
-    public void clearCraftingContent() {
-        this.getSlot(0).set(ItemStack.EMPTY);
-        this.getSlot(2).set(ItemStack.EMPTY);
-    }
-
-    @Override
-    public boolean recipeMatches(RecipeHolder<ArchaeologyRecipe> recipeHolder) {
-        return recipeHolder.value().matches(new SingleRecipeInput(this.archaeologyWorkbenchBlockEntity.getItem(0)), this.level);
-    }
-
-    @Override
-    public int getResultSlotIndex() {
-        return 2;
-    }
-
-    @Override
-    public int getGridWidth() {
-        return 1;
-    }
-
-    @Override
-    public int getGridHeight() {
-        return 1;
-    }
-
-    @Override
-    public int getSize() {
-        return 3;
     }
 
     @Override
@@ -119,7 +91,7 @@ public class ArchaeologyWorkbenchMenu extends RecipeBookMenu<SingleRecipeInput, 
                     return ItemStack.EMPTY;
                 }
             } else {
-                if (FuelEntry.getFuel(this.level.registryAccess(), FAFuelEntryTags.ARCHAEOLOGY_WORKBENCH).getOrDefault(itemStackInSlot.getItem(), 0) > 0) {
+                if (FuelEntry.getFuel(this.level.holderLookup(FARegistries.FUEL_ENTRY), FAFuelEntryTags.ARCHAEOLOGY_WORKBENCH).getOrDefault(itemStackInSlot.getItem(), 0) > 0) {
                     this.moveItemStackTo(itemStackInSlot, 1, playerInventoryStartIndex, false);
                     return ItemStack.EMPTY;
                 } else if (!this.moveItemStackTo(itemStackInSlot, 0, playerInventoryStartIndex, false)) {
@@ -163,12 +135,29 @@ public class ArchaeologyWorkbenchMenu extends RecipeBookMenu<SingleRecipeInput, 
     }
 
     @Override
-    public RecipeBookType getRecipeBookType() {
-        return FARecipeBookTypes.ARCHAEOLOGY_WORKBENCH;
+    public RecipeBookMenu.PostPlaceAction handlePlacement(boolean useMaxItems, boolean isCreative, RecipeHolder<?> recipeHolder, ServerLevel serverLevel, Inventory inventory) {
+        List<Slot> list = List.of(this.getSlot(0), this.getSlot(2));
+        RecipeHolder<ArchaeologyRecipe> recipe = (RecipeHolder<ArchaeologyRecipe>) recipeHolder;
+        return ServerPlaceRecipe.placeRecipe(new ServerPlaceRecipe.CraftingMenuAccess<>() {
+            @Override
+            public void fillCraftSlotsStackedContents(StackedItemContents stackedItemContents) {
+                ArchaeologyWorkbenchMenu.this.fillCraftSlotsStackedContents(stackedItemContents);
+            }
+
+            @Override
+            public void clearCraftingContent() {
+                list.forEach(slot -> slot.set(ItemStack.EMPTY));
+            }
+
+            @Override
+            public boolean recipeMatches(RecipeHolder<ArchaeologyRecipe> recipe) {
+                return recipe.value().matches(new SingleRecipeInput(ArchaeologyWorkbenchMenu.this.archaeologyWorkbenchBlockEntity.getItem(0)), serverLevel);
+            }
+        }, 1, 1, List.of(this.getSlot(0)), list, inventory, recipe, useMaxItems, isCreative);
     }
 
     @Override
-    public boolean shouldMoveToInventory(int slotIndex) {
-        return slotIndex != 1;
+    public RecipeBookType getRecipeBookType() {
+        return FARecipeBookTypes.ARCHAEOLOGY_WORKBENCH;
     }
 }

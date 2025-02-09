@@ -1,7 +1,5 @@
 package willatendo.fossilslegacy.client.model;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -9,13 +7,11 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.client.renderer.RenderType;
 
 public class TimeMachineClockModel extends Model {
-    private final ModelPart root;
     private final ModelPart arm1;
     private final ModelPart arm2;
 
     public TimeMachineClockModel(ModelPart root) {
-        super(RenderType::entityTranslucent);
-        this.root = root;
+        super(root, RenderType::entityTranslucent);
         ModelPart face = root.getChild("face");
         this.arm1 = face.getChild("arm_1");
         this.arm2 = face.getChild("arm_2");
@@ -32,11 +28,6 @@ public class TimeMachineClockModel extends Model {
         face.addOrReplaceChild("arm_2", CubeListBuilder.create().texOffs(16, 14).addBox(-0.5F, -3.0F, -0.7F, 1.0F, 3.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offset(-0.5F, -1.5F, 0.25F));
 
         return LayerDefinition.create(meshdefinition, 32, 32);
-    }
-
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
-        this.root.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
     }
 
     public void setTime(float hourAngle, float minuteAngle) {

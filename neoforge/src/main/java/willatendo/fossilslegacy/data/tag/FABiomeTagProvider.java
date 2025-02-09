@@ -4,14 +4,13 @@ import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
 import net.minecraft.world.level.biome.Biomes;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import willatendo.fossilslegacy.server.tags.FABiomeTags;
 
 import java.util.concurrent.CompletableFuture;
 
 public class FABiomeTagProvider extends BiomeTagsProvider {
-    public FABiomeTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId, ExistingFileHelper existingFileHelper) {
-        super(packOutput, provider, modId, existingFileHelper);
+    public FABiomeTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId) {
+        super(packOutput, provider, modId);
     }
 
     @Override

@@ -2,7 +2,7 @@ package willatendo.fossilslegacy.server.item.items;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.TagKey;
@@ -22,7 +22,7 @@ import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
 import willatendo.fossilslegacy.server.pregnancy_types.PregnancyType;
 import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 
@@ -47,7 +47,7 @@ public class SyringeItem extends Item {
         this.period.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
         if (itemStack.has(FADataComponents.COAT_TYPE.get())) {
             Holder<CoatType> holder = itemStack.get(FADataComponents.COAT_TYPE.get());
-            tooltipComponents.add(FossilsLegacyUtils.translation("item", "dna.coat_type", holder.value().displayInfo().name()).withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(FAUtils.translation("item", "dna.coat_type", holder.value().displayInfo().name()).withStyle(ChatFormatting.GRAY));
         }
         super.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
     }
@@ -60,8 +60,8 @@ public class SyringeItem extends Item {
                     PregnantAnimal<?> pregnantAnimal = PregnantAnimal.createFromLiving(livingEntity, player.level());
                     pregnantAnimal.setPregnancyType(this.getPregnancyType());
                     if (this.applicableCoatTypes != null) {
-                        Registry<CoatType> coatTypeRegistry = pregnantAnimal.getLevel().registryAccess().registry(FARegistries.COAT_TYPES).get();
-                        pregnantAnimal.setOffspringCoatType(coatTypeRegistry.getTag(this.applicableCoatTypes).get().getRandomElement(pregnantAnimal.getLevel().getRandom()).get());
+                        HolderGetter<CoatType> coatTypeRegistry = pregnantAnimal.getLevel().holderLookup(FARegistries.COAT_TYPES);
+                        pregnantAnimal.setOffspringCoatType(coatTypeRegistry.getOrThrow(this.applicableCoatTypes).getRandomElement(pregnantAnimal.getLevel().getRandom()).get());
                     }
                     pregnantAnimal.setRemainingPregnancyTime(0);
                     if (pregnantAnimal instanceof HungerAccessor hungerAccessor) {
@@ -72,7 +72,7 @@ public class SyringeItem extends Item {
                     }
                     itemStack.shrink(1);
                     player.awardStat(Stats.ITEM_USED.get(this));
-                    return InteractionResult.sidedSuccess(player.level().isClientSide());
+                    return InteractionResult.SUCCESS;
                 } else {
                     return InteractionResult.PASS;
                 }
@@ -87,7 +87,7 @@ public class SyringeItem extends Item {
                     tameAccessor.setOwnerUUID(((TameAccessor) pregnantAnimal).getOwnerUUID());
                 }
                 itemStack.shrink(1);
-                return InteractionResult.sidedSuccess(player.level().isClientSide());
+                return InteractionResult.SUCCESS;
             }
         }
         return super.interactLivingEntity(itemStack, player, livingEntity, interactionHand);

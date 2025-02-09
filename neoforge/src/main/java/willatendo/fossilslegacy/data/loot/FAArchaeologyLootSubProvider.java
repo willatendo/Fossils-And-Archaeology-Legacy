@@ -15,7 +15,7 @@ import willatendo.fossilslegacy.server.item.FALootTables;
 import java.util.function.BiConsumer;
 
 public class FAArchaeologyLootSubProvider implements LootTableSubProvider {
-    public FAArchaeologyLootSubProvider(HolderLookup.Provider registries) {
+    public FAArchaeologyLootSubProvider(HolderLookup.Provider provider) {
     }
 
     @Override

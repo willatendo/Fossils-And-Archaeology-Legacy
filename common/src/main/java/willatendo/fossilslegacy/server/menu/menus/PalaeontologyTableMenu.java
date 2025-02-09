@@ -1,7 +1,9 @@
 package willatendo.fossilslegacy.server.menu.menus;
 
 import com.google.common.collect.Lists;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -25,7 +27,7 @@ import java.util.List;
 public class PalaeontologyTableMenu extends AbstractContainerMenu {
     private final ContainerLevelAccess containerLevelAccess;
     private final List<Holder<FossilVariant>> selectableFossilVariants = Lists.newArrayList();
-    private final Registry<FossilVariant> fossilVariantGetter;
+    private final HolderLookup<FossilVariant> fossilVariantGetter;
     private final DataSlot selectedFossilVariantIndex = DataSlot.standalone();
     private final Container inputContainer;
     private final Container outputContainer;
@@ -83,7 +85,11 @@ public class PalaeontologyTableMenu extends AbstractContainerMenu {
         }
 
         this.addDataSlot(this.selectedFossilVariantIndex);
-        this.fossilVariantGetter = inventory.player.registryAccess().registryOrThrow(FARegistries.FOSSIL_VARIANTS);
+        this.fossilVariantGetter = inventory.player.level().holderLookup(FARegistries.FOSSIL_VARIANTS);
+    }
+
+    public PalaeontologyTableMenu(int windowId, Inventory inventory) {
+        this(windowId, inventory, ContainerLevelAccess.NULL);
     }
 
     @Override
@@ -112,7 +118,7 @@ public class PalaeontologyTableMenu extends AbstractContainerMenu {
     }
 
     private void createSelectableFossilVariants() {
-        for (Holder<FossilVariant> fossilVariant : this.fossilVariantGetter.holders().toList()) {
+        for (Holder<FossilVariant> fossilVariant : this.fossilVariantGetter.listElements().toList()) {
             int fossilCount = 0;
             for (int i = 0; i < this.inputContainer.getContainerSize(); i++) {
                 if (this.inputContainer.getItem(i).is(fossilVariant.value().fossilIngredient())) {

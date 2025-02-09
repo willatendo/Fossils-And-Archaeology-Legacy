@@ -8,10 +8,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -70,7 +67,7 @@ public class Dodo extends Dinosaur implements DinopediaInformation, FloatDownEnt
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        Dodo dodo = FAEntityTypes.DODO.get().create(serverLevel);
+        Dodo dodo = FAEntityTypes.DODO.get().create(serverLevel, EntitySpawnReason.BREEDING);
         dodo.setCoatType(this.getCoatType());
         return dodo;
     }
@@ -98,9 +95,9 @@ public class Dodo extends Dinosaur implements DinopediaInformation, FloatDownEnt
             this.setDeltaMovement(vec3.multiply(1.0, 0.6, 1.0));
         }
 
-        if (!this.level().isClientSide && this.isAlive() && !this.isBaby() && --this.eggTime <= 0) {
+        if (this.level() instanceof ServerLevel serverLevel && this.isAlive() && !this.isBaby() && --this.eggTime <= 0) {
             this.playSound(SoundEvents.CHICKEN_EGG, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
-            this.spawnAtLocation(FAItems.DODO_EGG.get());
+            this.spawnAtLocation(serverLevel, FAItems.DODO_EGG.get());
             this.gameEvent(GameEvent.ENTITY_PLACE);
             this.eggTime = this.random.nextInt(6000) + 6000;
         }

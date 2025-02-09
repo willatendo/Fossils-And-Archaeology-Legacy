@@ -3,26 +3,29 @@ package willatendo.fossilslegacy.server.block.entity.entities;
 import com.google.common.collect.Maps;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.*;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.StackedContents;
+import net.minecraft.world.entity.player.StackedItemContents;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.RecipeCraftingHolder;
 import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeManager.CachedCheck;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import willatendo.fossilslegacy.server.block.blocks.ArchaeologyWorkbenchBlock;
@@ -32,9 +35,10 @@ import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.menu.menus.ArchaeologyWorkbenchMenu;
 import willatendo.fossilslegacy.server.recipe.FARecipeTypes;
 import willatendo.fossilslegacy.server.recipe.recipes.ArchaeologyRecipe;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FAFuelEntryTags;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -84,7 +88,7 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
             return 4;
         }
     };
-    private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
+    private final Object2IntOpenHashMap<ResourceKey<Recipe<?>>> recipesUsed = new Object2IntOpenHashMap<>();
     private final CachedCheck<SingleRecipeInput, ArchaeologyRecipe> recipeCheck = RecipeManager.createCheck(FARecipeTypes.ARCHAEOLOGY.get());
 
     public static Map<Item, Integer> getOnTimeMap() {
@@ -112,7 +116,7 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
         this.onDuration = this.getOnDuration(this.itemStacks.get(1));
         CompoundTag usedRecipes = compoundTag.getCompound("RecipesUsed");
         for (String recipes : usedRecipes.getAllKeys()) {
-            this.recipesUsed.put(ResourceLocation.parse(recipes), usedRecipes.getInt(recipes));
+            this.recipesUsed.put(ResourceKey.create(Registries.RECIPE, ResourceLocation.parse(recipes)), usedRecipes.getInt(recipes));
         }
     }
 
@@ -130,7 +134,7 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
         compoundTag.put("RecipesUsed", usedRecipes);
     }
 
-    public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, ArchaeologyWorkbenchBlockEntity archaeologyWorkbenchBlockEntity) {
+    public static void serverTick(ServerLevel serverLevel, BlockPos blockPos, BlockState blockState, ArchaeologyWorkbenchBlockEntity archaeologyWorkbenchBlockEntity) {
         boolean isOn = archaeologyWorkbenchBlockEntity.isOn();
         boolean changed = false;
         if (archaeologyWorkbenchBlockEntity.isOn()) {
@@ -148,34 +152,38 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
 
                 RecipeHolder<ArchaeologyRecipe> recipe;
                 if (hasInput) {
-                    recipe = archaeologyWorkbenchBlockEntity.recipeCheck.getRecipeFor(new SingleRecipeInput(archaeologyWorkbenchBlockEntity.itemStacks.get(0)), level).orElse(null);
+                    recipe = archaeologyWorkbenchBlockEntity.recipeCheck.getRecipeFor(new SingleRecipeInput(archaeologyWorkbenchBlockEntity.itemStacks.get(0)), serverLevel).orElse(null);
                 } else {
                     recipe = null;
                 }
 
                 int maxStackSize = archaeologyWorkbenchBlockEntity.getMaxStackSize();
-                if (!archaeologyWorkbenchBlockEntity.isOn() && archaeologyWorkbenchBlockEntity.canFix(level.registryAccess(), recipe, archaeologyWorkbenchBlockEntity.itemStacks, maxStackSize)) {
+                if (!archaeologyWorkbenchBlockEntity.isOn() && archaeologyWorkbenchBlockEntity.canFix(serverLevel.registryAccess(), recipe, archaeologyWorkbenchBlockEntity.itemStacks, maxStackSize)) {
                     archaeologyWorkbenchBlockEntity.onTime = archaeologyWorkbenchBlockEntity.getOnDuration(fuel);
                     archaeologyWorkbenchBlockEntity.onDuration = archaeologyWorkbenchBlockEntity.onTime;
                     if (archaeologyWorkbenchBlockEntity.isOn()) {
                         changed = true;
-                        if (hasFuel) {
-                            Item fuelItem = fuel.getItem();
-                            fuel.shrink(1);
-                            if (fuel.isEmpty()) {
-                                Item craftingRemainder = fuelItem.getCraftingRemainingItem();
-                                archaeologyWorkbenchBlockEntity.itemStacks.set(1, craftingRemainder == null ? ItemStack.EMPTY : new ItemStack(craftingRemainder));
+                        ItemStack craftingRemainder = fuel.getItem().getCraftingRemainder();
+                        if (fuel.isEmpty()) {
+                            if (!craftingRemainder.isEmpty()) {
+                                archaeologyWorkbenchBlockEntity.itemStacks.set(1, craftingRemainder);
+                            } else if (hasFuel) {
+                                Item item = fuel.getItem();
+                                fuel.shrink(1);
+                                if (fuel.isEmpty()) {
+                                    archaeologyWorkbenchBlockEntity.itemStacks.set(1, item.getCraftingRemainder());
+                                }
                             }
                         }
                     }
                 }
 
-                if (archaeologyWorkbenchBlockEntity.isOn() && archaeologyWorkbenchBlockEntity.canFix(level.registryAccess(), recipe, archaeologyWorkbenchBlockEntity.itemStacks, maxStackSize)) {
+                if (archaeologyWorkbenchBlockEntity.isOn() && archaeologyWorkbenchBlockEntity.canFix(serverLevel.registryAccess(), recipe, archaeologyWorkbenchBlockEntity.itemStacks, maxStackSize)) {
                     ++archaeologyWorkbenchBlockEntity.archaeologyProgress;
                     if (archaeologyWorkbenchBlockEntity.archaeologyProgress == archaeologyWorkbenchBlockEntity.archaeologyTotalTime) {
                         archaeologyWorkbenchBlockEntity.archaeologyProgress = 0;
-                        archaeologyWorkbenchBlockEntity.archaeologyTotalTime = getTotalArchaeologyTime(level, archaeologyWorkbenchBlockEntity);
-                        if (archaeologyWorkbenchBlockEntity.fix(level.registryAccess(), recipe, archaeologyWorkbenchBlockEntity.itemStacks, maxStackSize)) {
+                        archaeologyWorkbenchBlockEntity.archaeologyTotalTime = getTotalArchaeologyTime(serverLevel, archaeologyWorkbenchBlockEntity);
+                        if (archaeologyWorkbenchBlockEntity.fix(serverLevel.registryAccess(), recipe, archaeologyWorkbenchBlockEntity.itemStacks, maxStackSize)) {
                             archaeologyWorkbenchBlockEntity.setRecipeUsed(recipe);
                         }
 
@@ -192,11 +200,11 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
         if (isOn != archaeologyWorkbenchBlockEntity.isOn()) {
             changed = true;
             blockState = blockState.setValue(ArchaeologyWorkbenchBlock.ACTIVE, Boolean.valueOf(archaeologyWorkbenchBlockEntity.isOn()));
-            level.setBlock(blockPos, blockState, 3);
+            serverLevel.setBlock(blockPos, blockState, 3);
         }
 
         if (changed) {
-            setChanged(level, blockPos, blockState);
+            setChanged(serverLevel, blockPos, blockState);
         }
     }
 
@@ -244,12 +252,12 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
         if (itemStack.isEmpty()) {
             return 0;
         } else {
-            return FuelEntry.getFuel(this.level.registryAccess(), FAFuelEntryTags.ARCHAEOLOGY_WORKBENCH).getOrDefault(itemStack.getItem(), 0);
+            return FuelEntry.getFuel(this.level.holderLookup(FARegistries.FUEL_ENTRY), FAFuelEntryTags.ARCHAEOLOGY_WORKBENCH).getOrDefault(itemStack.getItem(), 0);
         }
     }
 
-    private static int getTotalArchaeologyTime(Level p_222693_, ArchaeologyWorkbenchBlockEntity archaeologyWorkbenchBlockEntity) {
-        return archaeologyWorkbenchBlockEntity.recipeCheck.getRecipeFor(new SingleRecipeInput(archaeologyWorkbenchBlockEntity.getItem(0)), p_222693_).map(recipeHolder -> recipeHolder.value().getTime()).orElse(3000);
+    private static int getTotalArchaeologyTime(ServerLevel serverLevel, ArchaeologyWorkbenchBlockEntity archaeologyWorkbenchBlockEntity) {
+        return archaeologyWorkbenchBlockEntity.recipeCheck.getRecipeFor(new SingleRecipeInput(archaeologyWorkbenchBlockEntity.getItem(0)), serverLevel).map(recipeHolder -> recipeHolder.value().getTime()).orElse(3000);
     }
 
     @Override
@@ -312,9 +320,11 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
         }
 
         if (slot == 0 && !flag) {
-            this.archaeologyTotalTime = getTotalArchaeologyTime(this.level, this);
-            this.archaeologyProgress = 0;
-            this.setChanged();
+            if (this.level instanceof ServerLevel serverLevel) {
+                this.archaeologyTotalTime = getTotalArchaeologyTime(serverLevel, this);
+                this.archaeologyProgress = 0;
+                this.setChanged();
+            }
         }
     }
 
@@ -346,7 +356,7 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
     @Override
     public void setRecipeUsed(RecipeHolder<?> recipe) {
         if (recipe != null) {
-            ResourceLocation recipeId = recipe.id();
+            ResourceKey<Recipe<?>> recipeId = recipe.id();
             this.recipesUsed.addTo(recipeId, 1);
         }
     }
@@ -360,15 +370,15 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
     }
 
     @Override
-    public void fillStackedContents(StackedContents stackedContents) {
+    public void fillStackedContents(StackedItemContents stackedItemContents) {
         for (ItemStack itemStack : this.itemStacks) {
-            stackedContents.accountStack(itemStack);
+            stackedItemContents.accountStack(itemStack);
         }
     }
 
     @Override
     protected Component getDefaultName() {
-        return FossilsLegacyUtils.translation("container", "archaeology_workbench");
+        return FAUtils.translation("container", "archaeology_workbench");
     }
 
     @Override

@@ -11,7 +11,7 @@ import net.minecraft.world.item.TooltipFlag;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -45,7 +45,7 @@ public class AnimalDNAItem extends DNAItem {
         super.appendHoverText(itemStack, tooltipContext, components, tooltipFlag);
         if (itemStack.has(FADataComponents.COAT_TYPE.get())) {
             Holder<CoatType> holder = itemStack.get(FADataComponents.COAT_TYPE.get());
-            components.add(FossilsLegacyUtils.translation("item", "dna.coat_type", holder.value().displayInfo().name()).withStyle(ChatFormatting.GRAY));
+            components.add(FAUtils.translation("item", "dna.coat_type", holder.value().displayInfo().name()).withStyle(ChatFormatting.GRAY));
         }
     }
 }

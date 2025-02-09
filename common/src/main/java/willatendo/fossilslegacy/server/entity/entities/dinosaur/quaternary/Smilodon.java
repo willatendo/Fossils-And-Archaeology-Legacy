@@ -11,10 +11,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -75,7 +72,7 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, ShakingE
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        Smilodon smilodon = FAEntityTypes.SMILODON.get().create(serverLevel);
+        Smilodon smilodon = FAEntityTypes.SMILODON.get().create(serverLevel, EntitySpawnReason.BREEDING);
         smilodon.setCoatType(this.getCoatType());
         return smilodon;
     }
@@ -170,7 +167,7 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, ShakingE
                 for (int j = 0; j < i; ++j) {
                     float g = (this.random.nextFloat() * 2.0f - 1.0f) * this.getBbWidth() * 0.5f;
                     float h = (this.random.nextFloat() * 2.0f - 1.0f) * this.getBbWidth() * 0.5f;
-                    ((Level) this.level()).addParticle(ParticleTypes.SPLASH, this.getX() + (double) g, f + 0.8f, this.getZ() + (double) h, vec3.x, vec3.y, vec3.z);
+                    this.level().addParticle(ParticleTypes.SPLASH, this.getX() + (double) g, f + 0.8f, this.getZ() + (double) h, vec3.x, vec3.y, vec3.z);
                 }
             }
         }
@@ -212,21 +209,20 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, ShakingE
         return Math.min(0.5F + Mth.lerp(partialTicks, this.shakeAnimO, this.shakeAnim) / 2.0F * 0.5F, 1.0F);
     }
 
-    @Override
-    public float getHeadRollAngle(float f) {
-        return Mth.lerp(f, this.interestedAngleO, this.interestedAngle) * 0.15f * (float) Math.PI;
+    public float getInterestedAngle() {
+        return this.interestedAngle;
     }
 
-    @Override
-    public float getBodyRollAngle(float ageInTicks, float max) {
-        float f = (Mth.lerp(ageInTicks, this.shakeAnimO, this.shakeAnim) + max) / 1.8F;
-        if (f < 0.0F) {
-            f = 0.0F;
-        } else if (f > 1.0F) {
-            f = 1.0F;
-        }
+    public float getInterestedAngleO() {
+        return this.interestedAngleO;
+    }
 
-        return Mth.sin(f * (float) Math.PI) * Mth.sin(f * (float) Math.PI * 11.0F) * 0.15F * (float) Math.PI;
+    public float shakeAnim() {
+        return this.shakeAnim;
+    }
+
+    public float shakeAnim0() {
+        return this.shakeAnimO;
     }
 
     @Override

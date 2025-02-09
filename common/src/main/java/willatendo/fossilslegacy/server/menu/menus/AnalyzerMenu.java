@@ -2,9 +2,11 @@ package willatendo.fossilslegacy.server.menu.menus;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.recipebook.ServerPlaceRecipe;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.StackedContents;
+import net.minecraft.world.entity.player.StackedItemContents;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -19,7 +21,7 @@ import willatendo.fossilslegacy.server.recipe.recipes.AnalyzationRecipe;
 
 import java.util.List;
 
-public class AnalyzerMenu extends RecipeBookMenu<AnalyzerRecipeInput, AnalyzationRecipe> {
+public class AnalyzerMenu extends RecipeBookMenu {
     private final ContainerLevelAccess containerLevelAccess;
     private final Level level;
     public final AnalyzerBlockEntity analyzerBlockEntity;
@@ -63,43 +65,11 @@ public class AnalyzerMenu extends RecipeBookMenu<AnalyzerRecipeInput, Analyzatio
     }
 
     @Override
-    public void fillCraftSlotsStackedContents(StackedContents stackedContents) {
+    public void fillCraftSlotsStackedContents(StackedItemContents stackedItemContents) {
         if (this.analyzerBlockEntity instanceof StackedContentsCompatible stackedContentsCompatible) {
-            stackedContentsCompatible.fillStackedContents(stackedContents);
+            stackedContentsCompatible.fillStackedContents(stackedItemContents);
         }
     }
-
-    @Override
-    public void clearCraftingContent() {
-        this.getSlot(0).set(ItemStack.EMPTY);
-        this.getSlot(2).set(ItemStack.EMPTY);
-    }
-
-    @Override
-    public boolean recipeMatches(RecipeHolder<AnalyzationRecipe> recipeHolder) {
-        return recipeHolder.value().matches(new AnalyzerRecipeInput(this.analyzerBlockEntity.getItem(0), this.analyzerBlockEntity.getItemStacks()), this.level);
-    }
-
-    @Override
-    public int getResultSlotIndex() {
-        return 2;
-    }
-
-    @Override
-    public int getGridWidth() {
-        return 1;
-    }
-
-    @Override
-    public int getGridHeight() {
-        return 1;
-    }
-
-    @Override
-    public int getSize() {
-        return 3;
-    }
-
 
     @Override
     public boolean stillValid(Player player) {
@@ -153,12 +123,29 @@ public class AnalyzerMenu extends RecipeBookMenu<AnalyzerRecipeInput, Analyzatio
     }
 
     @Override
-    public RecipeBookType getRecipeBookType() {
-        return FARecipeBookTypes.ANALYZER;
+    public RecipeBookMenu.PostPlaceAction handlePlacement(boolean useMaxItems, boolean isCreative, RecipeHolder<?> recipeHolder, ServerLevel serverLevel, Inventory inventory) {
+        List<Slot> list = List.of(this.getSlot(0), this.getSlot(9));
+        RecipeHolder<AnalyzationRecipe> recipe = (RecipeHolder<AnalyzationRecipe>) recipeHolder;
+        return ServerPlaceRecipe.placeRecipe(new ServerPlaceRecipe.CraftingMenuAccess<>() {
+            @Override
+            public void fillCraftSlotsStackedContents(StackedItemContents stackedItemContents) {
+                AnalyzerMenu.this.fillCraftSlotsStackedContents(stackedItemContents);
+            }
+
+            @Override
+            public void clearCraftingContent() {
+                list.forEach(slot -> slot.set(ItemStack.EMPTY));
+            }
+
+            @Override
+            public boolean recipeMatches(RecipeHolder<AnalyzationRecipe> recipe) {
+                return recipe.value().matches(new AnalyzerRecipeInput(AnalyzerMenu.this.analyzerBlockEntity.getItem(0), AnalyzerMenu.this.getItems()), serverLevel);
+            }
+        }, 1, 1, List.of(this.getSlot(0)), list, inventory, recipe, useMaxItems, isCreative);
     }
 
     @Override
-    public boolean shouldMoveToInventory(int slotIndex) {
-        return slotIndex != 1;
+    public RecipeBookType getRecipeBookType() {
+        return FARecipeBookTypes.ANALYZER;
     }
 }

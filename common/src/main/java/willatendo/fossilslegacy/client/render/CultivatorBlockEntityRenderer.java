@@ -15,11 +15,11 @@ import willatendo.fossilslegacy.client.model.PlantEmbryoModel;
 import willatendo.fossilslegacy.server.block.blocks.CultivatorBlock;
 import willatendo.fossilslegacy.server.block.entity.entities.CultivatorBlockEntity;
 import willatendo.fossilslegacy.server.item.items.DNAItem;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public class CultivatorBlockEntityRenderer implements BlockEntityRenderer<CultivatorBlockEntity> {
-    private static final ResourceLocation ANIMAL_FETUS_TEXTURE = FossilsLegacyUtils.resource("textures/entity/animal_fetus.png");
-    private static final ResourceLocation PLANT_EMBRYO_TEXTURE = FossilsLegacyUtils.resource("textures/entity/plant_embryo.png");
+    private static final ResourceLocation ANIMAL_FETUS_TEXTURE = FAUtils.resource("textures/entity/animal_fetus.png");
+    private static final ResourceLocation PLANT_EMBRYO_TEXTURE = FAUtils.resource("textures/entity/plant_embryo.png");
     private final AnimalFetusModel animalFetusModel;
     private final PlantEmbryoModel plantEmbryoModel;
 

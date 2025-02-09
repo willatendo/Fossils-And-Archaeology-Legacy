@@ -29,7 +29,7 @@ import willatendo.fossilslegacy.server.recipe.FARecipeTypes;
 import willatendo.fossilslegacy.server.recipe.recipes.AnalyzationRecipe;
 import willatendo.fossilslegacy.server.recipe.recipes.ArchaeologyRecipe;
 import willatendo.fossilslegacy.server.recipe.recipes.CultivationRecipe;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.client.event.registry.*;
 import willatendo.simplelibrary.server.util.RecipeBookRegistry;
 
@@ -38,8 +38,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 
 public class FossilsLegacyFabricClient implements ClientModInitializer {
-    public static final ModelResourceLocation THERIZINOSAURUS_2D = new ModelResourceLocation(FossilsLegacyUtils.resource("item/therizinosaurus_claws_gui"), "fabric_resource");
-    public static final ModelResourceLocation THERIZINOSAURUS_3D = new ModelResourceLocation(FossilsLegacyUtils.resource("item/therizinosaurus_claws_in_hand"), "fabric_resource");
+    public static final ModelResourceLocation THERIZINOSAURUS_2D = new ModelResourceLocation(FAUtils.resource("item/therizinosaurus_claws_gui"), "fabric_resource");
+    public static final ModelResourceLocation THERIZINOSAURUS_3D = new ModelResourceLocation(FAUtils.resource("item/therizinosaurus_claws_in_hand"), "fabric_resource");
 
     @Override
     public void onInitializeClient() {
@@ -47,7 +47,7 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         resourceManagerHelper.registerReloadListener(new IdentifiableResourceReloadListener() {
             @Override
             public ResourceLocation getFabricId() {
-                return FossilsLegacyUtils.resource("stone_table_texture_manager");
+                return FAUtils.resource("stone_table_texture_manager");
             }
 
             @Override
@@ -58,7 +58,7 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         resourceManagerHelper.registerReloadListener(new IdentifiableResourceReloadListener() {
             @Override
             public ResourceLocation getFabricId() {
-                return FossilsLegacyUtils.resource("json_models_loader");
+                return FAUtils.resource("json_models_loader");
             }
 
             @Override
@@ -69,7 +69,7 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         resourceManagerHelper.registerReloadListener(new IdentifiableResourceReloadListener() {
             @Override
             public ResourceLocation getFabricId() {
-                return FossilsLegacyUtils.resource("json_animations_loader");
+                return FAUtils.resource("json_animations_loader");
             }
 
             @Override
@@ -80,7 +80,7 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         resourceManagerHelper.registerReloadListener(new IdentifiableResourceReloadListener() {
             @Override
             public ResourceLocation getFabricId() {
-                return FossilsLegacyUtils.resource("json_layers_loader");
+                return FAUtils.resource("json_layers_loader");
             }
 
             @Override

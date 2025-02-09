@@ -2,15 +2,14 @@ package willatendo.fossilslegacy.data;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.sounds.SoundEvent;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.common.data.SoundDefinition;
 import net.neoforged.neoforge.common.data.SoundDefinitionsProvider;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public class FASoundDefinitionsProvider extends SoundDefinitionsProvider {
-    public FASoundDefinitionsProvider(PackOutput packOutput, String modId, ExistingFileHelper existingFileHelper) {
-        super(packOutput, modId, existingFileHelper);
+    public FASoundDefinitionsProvider(PackOutput packOutput, String modId) {
+        super(packOutput, modId);
     }
 
     @Override
@@ -40,7 +39,7 @@ public class FASoundDefinitionsProvider extends SoundDefinitionsProvider {
         this.entity(FASoundEvents.DODO_AMBIENT.get(), "dodo", "ambient", "dodo_ambient_1", "dodo_ambient_2", "dodo_ambient_3");
         this.entity(FASoundEvents.DODO_HURT.get(), "dodo", "hurt", "dodo_hurt_1", "dodo_hurt_2");
         this.entity(FASoundEvents.DODO_DEATH.get(), "dodo", "death", "dodo_death");
-        this.add(FASoundEvents.DODO_STEP.get(), SoundDefinition.definition().subtitle("subtitles.block.generic.footsteps").with(SoundDefinition.Sound.sound(FossilsLegacyUtils.resource("dodo_step"), SoundDefinition.SoundType.SOUND)));
+        this.add(FASoundEvents.DODO_STEP.get(), SoundDefinition.definition().subtitle("subtitles.block.generic.footsteps").with(SoundDefinition.Sound.sound(FAUtils.resource("dodo_step"), SoundDefinition.SoundType.SOUND)));
         this.entity(FASoundEvents.MAMMOTH_AMBIENT.get(), "mammoth", "ambient", "mammoth_ambient");
         this.entity(FASoundEvents.MAMMOTH_HURT.get(), "mammoth", "hurt", "mammoth_hurt");
         this.entity(FASoundEvents.MAMMOTH_DEATH.get(), "mammoth", "death", "mammoth_death");
@@ -91,7 +90,7 @@ public class FASoundDefinitionsProvider extends SoundDefinitionsProvider {
     private void add(SoundEvent soundEvent, String base, String type, String event, String... sounds) {
         SoundDefinition soundDefinition = SoundDefinition.definition().subtitle("subtitles." + type + "." + base + "." + event);
         for (String sound : sounds) {
-            soundDefinition.with(SoundDefinition.Sound.sound(FossilsLegacyUtils.resource(sound), SoundDefinition.SoundType.SOUND));
+            soundDefinition.with(SoundDefinition.Sound.sound(FAUtils.resource(sound), SoundDefinition.SoundType.SOUND));
         }
         this.add(soundEvent, soundDefinition);
     }
@@ -106,6 +105,6 @@ public class FASoundDefinitionsProvider extends SoundDefinitionsProvider {
 
     @Override
     public String getName() {
-        return "fossilslegacy: Sound Defs";
+        return "F/A: Sound Defs";
     }
 }

@@ -1,17 +1,20 @@
 package willatendo.fossilslegacy.server.entity.util.interfaces;
 
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.animal.goat.Goat;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.LevelAccessor;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Nautilus;
 import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.feeder_food.FeederFood;
+import willatendo.fossilslegacy.server.tags.FAItemTags;
 
 public interface Diet {
     boolean getsFoodFromKill();
@@ -20,7 +23,7 @@ public interface Diet {
 
     int getEntityFoodValue(Entity entity);
 
-    Ingredient getTemptFoods();
+    TagKey<Item> getTemptFoods();
 
     default FeederFood.FeederInfo getFeederInfo(LevelAccessor levelAccessor, ItemStack itemStack) {
         return FeederFood.getFeederFood(levelAccessor.registryAccess()).getOrDefault(itemStack.getItem(), null);
@@ -51,8 +54,8 @@ public interface Diet {
             }
 
             @Override
-            public Ingredient getTemptFoods() {
-                return DinosaurUtils.PISCIVORE_FOOD;
+            public TagKey<Item> getTemptFoods() {
+                return FAItemTags.PISCIVORE_FOODS;
             }
         };
     }
@@ -94,8 +97,8 @@ public interface Diet {
             }
 
             @Override
-            public Ingredient getTemptFoods() {
-                return DinosaurUtils.CARNIVORE_FOOD;
+            public TagKey<Item> getTemptFoods() {
+                return FAItemTags.CARNIVORE_FOODS;
             }
         };
     }
@@ -122,8 +125,8 @@ public interface Diet {
             }
 
             @Override
-            public Ingredient getTemptFoods() {
-                return DinosaurUtils.HERBIVORE_FOOD;
+            public TagKey<Item> getTemptFoods() {
+                return FAItemTags.HERBIVORE_FOODS;
             }
         };
     }
@@ -165,8 +168,8 @@ public interface Diet {
             }
 
             @Override
-            public Ingredient getTemptFoods() {
-                return DinosaurUtils.OMNIVORE_FOOD;
+            public TagKey<Item> getTemptFoods() {
+                return FAItemTags.OMNIVORE_FOODS;
             }
         };
     }

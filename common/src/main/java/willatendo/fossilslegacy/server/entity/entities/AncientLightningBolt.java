@@ -5,7 +5,10 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.players.OldUsersConverter;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LightningBolt;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
@@ -83,21 +86,5 @@ public class AncientLightningBolt extends LightningBolt implements OwnableEntity
         } else {
             this.entityData.set(FLAGS, (byte) (b0 & -5));
         }
-    }
-
-    @Override
-    public boolean isAlliedTo(Entity entity) {
-        if (this.isTame()) {
-            LivingEntity owner = this.getOwner();
-            if (entity == owner) {
-                return true;
-            }
-
-            if (owner != null) {
-                return owner.isAlliedTo(entity);
-            }
-        }
-
-        return super.isAlliedTo(entity);
     }
 }

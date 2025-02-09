@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 
@@ -23,17 +24,17 @@ public class ModelIdentifierRegistry {
         return maps;
     }
 
-    public static <T extends Entity> ModelProvider<T> getModel(ResourceLocation id) {
+    public static <T extends EntityRenderState> ModelProvider<T> getModel(ResourceLocation id) {
         return (ModelProvider<T>) ENTITY_MODELS.get(id);
     }
 
-    public static <T extends Entity> void register(ResourceLocation id, ModelProvider<T> modelProvider, ModelLayerLocation modelLayerLocation) {
+    public static <T extends EntityRenderState> void register(ResourceLocation id, ModelProvider<T> modelProvider, ModelLayerLocation modelLayerLocation) {
         ENTITY_MODELS.put(id, modelProvider);
         MODEL_LAYERS.put(id, modelLayerLocation);
     }
 
     @FunctionalInterface
-    public interface ModelProvider<T extends Entity> {
+    public interface ModelProvider<T extends EntityRenderState> {
         EntityModel<T> create(ModelPart root);
     }
 }

@@ -12,13 +12,13 @@ import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 import willatendo.fossilslegacy.server.biome.FAMultiNoiseBiomeSourceParameterLists;
 import willatendo.fossilslegacy.server.level.prehistoric.PrehistoricNoiseGeneratorSettings;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FALevelStems {
     public static final ResourceKey<LevelStem> PREHISTORY = create("prehistory");
 
     public static ResourceKey<LevelStem> create(String name) {
-        return ResourceKey.create(Registries.LEVEL_STEM, FossilsLegacyUtils.resource(name));
+        return ResourceKey.create(Registries.LEVEL_STEM, FAUtils.resource(name));
     }
 
     public static void bootstrap(BootstrapContext<LevelStem> bootstrapContext) {

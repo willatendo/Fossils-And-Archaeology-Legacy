@@ -5,6 +5,7 @@ import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
@@ -17,15 +18,15 @@ import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.menu.menus.PalaeontologyTableMenu;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 
 public class PalaeontologyTableScreen extends AbstractContainerScreen<PalaeontologyTableMenu> {
-    private static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/gui/container/palaeontology_table.png");
-    private static final ResourceLocation FOSSIL_VARIANT_HIGHLIGHTED_SPRITE = FossilsLegacyUtils.resource("container/palaeontology_table/fossil_variant_highlighted");
-    private static final ResourceLocation FOSSIL_VARIANT_SELECTED_SPRITE = FossilsLegacyUtils.resource("container/palaeontology_table/fossil_variant_selected");
-    private static final ResourceLocation FOSSIL_VARIANT_SPRITE = FossilsLegacyUtils.resource("container/palaeontology_table/fossil_variant");
+    private static final ResourceLocation TEXTURE = FAUtils.resource("textures/gui/container/palaeontology_table.png");
+    private static final ResourceLocation FOSSIL_VARIANT_HIGHLIGHTED_SPRITE = FAUtils.resource("container/palaeontology_table/fossil_variant_highlighted");
+    private static final ResourceLocation FOSSIL_VARIANT_SELECTED_SPRITE = FAUtils.resource("container/palaeontology_table/fossil_variant_selected");
+    private static final ResourceLocation FOSSIL_VARIANT_SPRITE = FAUtils.resource("container/palaeontology_table/fossil_variant");
     private static final ResourceLocation SCROLLER_SPRITE = ResourceLocation.withDefaultNamespace("container/loom/scroller");
     private static final ResourceLocation SCROLLER_DISABLED_SPRITE = ResourceLocation.withDefaultNamespace("container/loom/scroller_disabled");
     private final List<Holder<FossilVariant>> fossilVariants = this.menu.getSelectableFossilVariants();
@@ -52,9 +53,9 @@ public class PalaeontologyTableScreen extends AbstractContainerScreen<Palaeontol
     protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int mouseX, int mouseY) {
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, TEXTURE);
-        guiGraphics.blit(TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
+        guiGraphics.blit(RenderType::guiTextured, TEXTURE, this.leftPos, this.topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
 
-        guiGraphics.blitSprite(!this.fossilVariants.isEmpty() ? SCROLLER_SPRITE : SCROLLER_DISABLED_SPRITE, this.leftPos + 124, this.topPos + 16 + (int) (41.0F * this.scrollOffs), 12, 15);
+        guiGraphics.blitSprite(RenderType::guiTextured, !this.fossilVariants.isEmpty() ? SCROLLER_SPRITE : SCROLLER_DISABLED_SPRITE, this.leftPos + 124, this.topPos + 16 + (int) (41.0F * this.scrollOffs), 12, 15);
 
         if (!this.fossilVariants.isEmpty()) {
             int leftPos = this.leftPos + 67;
@@ -81,7 +82,7 @@ public class PalaeontologyTableScreen extends AbstractContainerScreen<Palaeontol
                         texture = FOSSIL_VARIANT_SPRITE;
                     }
 
-                    guiGraphics.blitSprite(texture, x, y, 18, 18);
+                    guiGraphics.blitSprite(RenderType::guiTextured, texture, x, y, 18, 18);
 
                     ItemStack itemStack = new ItemStack(FAItems.ARTICULATED_FOSSIL.get());
                     itemStack.set(FADataComponents.FOSSIL_VARIANT.get(), this.fossilVariants.get(index));

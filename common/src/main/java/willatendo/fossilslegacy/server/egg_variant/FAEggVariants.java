@@ -8,7 +8,7 @@ import willatendo.fossilslegacy.server.entity.entities.Egg;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.item.FALootTables;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
@@ -16,7 +16,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public final class FAEggVariants {
-    public static final SimpleRegistry<EggVariant> EGG_VARIANTS = SimpleRegistry.create(FARegistries.EGG_VARIANTS, FossilsLegacyUtils.ID);
+    public static final SimpleRegistry<EggVariant> EGG_VARIANTS = SimpleRegistry.create(FARegistries.EGG_VARIANTS, FAUtils.ID);
 
     public static final SimpleHolder<EggVariant> ANKYLOSAURUS = register("ankylosaurus", FAEntityTypes.ANKYLOSAURUS::get, FAItems.ANKYLOSAURUS_EGG::get);
     public static final SimpleHolder<EggVariant> BRACHIOSAURUS = register("brachiosaurus", FAEntityTypes.BRACHIOSAURUS::get, FAItems.BRACHIOSAURUS_EGG::get);
@@ -46,6 +46,6 @@ public final class FAEggVariants {
     }
 
     public static SimpleHolder<EggVariant> register(String id, EggVariant.EggSize eggSize, boolean wet, Function<Egg, Boolean> incubate, Supplier<EntityType> entityType, Supplier<Item> pick) {
-        return EGG_VARIANTS.register(id, () -> new EggVariant(eggSize, FossilsLegacyUtils.resource("textures/entity/egg/" + id + ".png"), wet, incubate, FALootTables.create("entities/egg/" + id), entityType, pick));
+        return EGG_VARIANTS.register(id, () -> new EggVariant(eggSize, FAUtils.resource("textures/entity/egg/" + id + ".png"), wet, incubate, FALootTables.create("entities/egg/" + id), entityType, pick));
     }
 }

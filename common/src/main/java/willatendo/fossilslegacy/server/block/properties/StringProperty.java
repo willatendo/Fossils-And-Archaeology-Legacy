@@ -1,18 +1,20 @@
 package willatendo.fossilslegacy.server.block.properties;
 
-import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import net.minecraft.world.level.block.state.properties.Property;
 
-import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class StringProperty extends Property<String> {
-    private final List<String> values = Lists.newArrayList();
+    private final Map<String, Integer> values = Maps.newHashMap();
 
     private StringProperty(String name, String... values) {
         super(name, String.class);
-        this.values.addAll(List.of(values));
+        for (int i = 0; i < values.length; i++) {
+            this.values.put(values[i], i);
+        }
     }
 
     public static StringProperty create(String name, String... values) {
@@ -20,8 +22,8 @@ public class StringProperty extends Property<String> {
     }
 
     @Override
-    public Collection<String> getPossibleValues() {
-        return this.values;
+    public List<String> getPossibleValues() {
+        return this.values.keySet().stream().toList();
     }
 
     @Override
@@ -32,5 +34,10 @@ public class StringProperty extends Property<String> {
     @Override
     public Optional<String> getValue(String string) {
         return Optional.of(string);
+    }
+
+    @Override
+    public int getInternalIndex(String s) {
+        return this.values.get(s);
     }
 }

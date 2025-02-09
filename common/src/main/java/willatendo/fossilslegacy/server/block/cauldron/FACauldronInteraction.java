@@ -7,7 +7,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -51,7 +51,7 @@ public class FACauldronInteraction {
                 level.gameEvent(null, GameEvent.FLUID_PICKUP, blockPos);
             }
 
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.SUCCESS;
         });
         cookedChickenSoup.put(Items.BUCKET, (blockState, level, blockPos, player, interactionHand, itemStack) -> FACauldronInteraction.fillBucket(blockState, level, blockPos, player, interactionHand, itemStack, new ItemStack(FAItems.COOKED_CHICKEN_SOUP_BUCKET.get()), passBlockState -> passBlockState.getValue(SoupCauldronBlock.LEVEL) == 8, SoundEvents.BUCKET_FILL));
         FACauldronInteraction.defaultFill(cookedChickenSoup);
@@ -70,7 +70,7 @@ public class FACauldronInteraction {
                 level.gameEvent(null, GameEvent.FLUID_PICKUP, blockPos);
             }
 
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.SUCCESS;
         });
         cookedBerryMedley.put(Items.BUCKET, (blockState, level, blockPos, player, interactionHand, itemStack) -> FACauldronInteraction.fillBucket(blockState, level, blockPos, player, interactionHand, itemStack, new ItemStack(FAItems.COOKED_BERRY_MEDLEY_BUCKET.get()), passBlockState -> passBlockState.getValue(SoupCauldronBlock.LEVEL) == 8, SoundEvents.BUCKET_FILL));
         FACauldronInteraction.defaultFill(cookedBerryMedley);
@@ -80,9 +80,9 @@ public class FACauldronInteraction {
         FACauldronInteraction.modFill(CauldronInteraction.POWDER_SNOW.map());
     }
 
-    private static ItemInteractionResult fillBucket(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, ItemStack emptyItemStack, ItemStack filledItemStack, Predicate<BlockState> blockStatePredicate, SoundEvent fillSound) {
+    private static InteractionResult fillBucket(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, ItemStack emptyItemStack, ItemStack filledItemStack, Predicate<BlockState> blockStatePredicate, SoundEvent fillSound) {
         if (!blockStatePredicate.test(blockState)) {
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+            return InteractionResult.TRY_WITH_EMPTY_HAND;
         } else {
             if (!level.isClientSide) {
                 Item item = emptyItemStack.getItem();
@@ -94,7 +94,7 @@ public class FACauldronInteraction {
                 level.gameEvent(null, GameEvent.FLUID_PICKUP, blockPos);
             }
 
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.SUCCESS;
         }
     }
 

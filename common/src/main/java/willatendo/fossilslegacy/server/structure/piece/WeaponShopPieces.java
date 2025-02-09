@@ -21,10 +21,10 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlac
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 import willatendo.fossilslegacy.server.structure.FAStructurePeices;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public class WeaponShopPieces {
-    public static final ResourceLocation STRUCTURE_LOCATION = FossilsLegacyUtils.resource("weapon_shop");
+    public static final ResourceLocation STRUCTURE_LOCATION = FAUtils.resource("weapon_shop");
 
     public static void addPieces(StructureTemplateManager struxtureTemplateManager, BlockPos blockPos, Rotation rotation, StructurePieceAccessor structurePieceAccessor, RandomSource randomSource) {
         structurePieceAccessor.addPiece(new WeaponShopPieces.WeaponShopPiece(struxtureTemplateManager, STRUCTURE_LOCATION, blockPos, rotation));

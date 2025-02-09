@@ -8,12 +8,12 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.biome.MultiNoiseBiomeSourceParameterList;
 import willatendo.fossilslegacy.server.biome.builder.PrehistoricBiomeBuilder;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.function.Function;
 
 public final class FABiomeSources {
-    protected static final ResourceLocation PREHISTORIC_ID = FossilsLegacyUtils.resource("prehistoric");
+    protected static final ResourceLocation PREHISTORIC_ID = FAUtils.resource("prehistoric");
     public static final MultiNoiseBiomeSourceParameterList.Preset PREHISTORIC = new MultiNoiseBiomeSourceParameterList.Preset(PREHISTORIC_ID, new MultiNoiseBiomeSourceParameterList.Preset.SourceProvider() {
         @Override
         public <T> Climate.ParameterList<T> apply(Function<ResourceKey<Biome>, T> biome) {

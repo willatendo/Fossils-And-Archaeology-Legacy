@@ -7,10 +7,10 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import willatendo.fossilslegacy.network.ServerboundSinkPacket;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME, modid = FossilsLegacyUtils.ID, value = Dist.CLIENT)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME, modid = FAUtils.ID, value = Dist.CLIENT)
 public class ClientForgeEvents {
     @SubscribeEvent
     public static void inputEvent_key(InputEvent.Key event) {

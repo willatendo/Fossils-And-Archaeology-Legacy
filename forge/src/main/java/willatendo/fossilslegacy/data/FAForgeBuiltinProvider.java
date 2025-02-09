@@ -19,7 +19,7 @@ import net.minecraftforge.common.world.ForgeBiomeModifiers;
 import net.minecraftforge.registries.ForgeRegistries;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.feature.FAPlacedFeatures;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
@@ -43,6 +43,6 @@ public class FAForgeBuiltinProvider extends DatapackBuiltinEntriesProvider {
     }
 
     public static ResourceKey<BiomeModifier> createBiomeModifier(String name) {
-        return ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, FossilsLegacyUtils.resource(name));
+        return ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, FAUtils.resource(name));
     }
 }

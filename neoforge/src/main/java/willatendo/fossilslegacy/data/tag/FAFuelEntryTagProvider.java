@@ -2,7 +2,7 @@ package willatendo.fossilslegacy.data.tag;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.minecraft.data.tags.TagsProvider;
 import willatendo.fossilslegacy.server.fuel.FAFuelEntries;
 import willatendo.fossilslegacy.server.fuel.FuelEntry;
 import willatendo.fossilslegacy.server.registry.FARegistries;
@@ -10,9 +10,9 @@ import willatendo.fossilslegacy.server.tags.FAFuelEntryTags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class FAFuelEntryTagProvider extends DataDrivenTagsProvider<FuelEntry> {
-    public FAFuelEntryTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId, ExistingFileHelper existingFileHelper) {
-        super(packOutput, FARegistries.FUEL_ENTRY, provider, modId, existingFileHelper);
+public class FAFuelEntryTagProvider extends TagsProvider<FuelEntry> {
+    public FAFuelEntryTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId) {
+        super(packOutput, FARegistries.FUEL_ENTRY, provider, modId);
     }
 
     @Override

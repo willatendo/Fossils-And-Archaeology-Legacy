@@ -4,7 +4,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.damagesource.DamageType;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FADamageTypes {
     public static final ResourceKey<DamageType> ANIMAL_STARVE = create("animal_starve");
@@ -12,7 +12,7 @@ public final class FADamageTypes {
     public static final ResourceKey<DamageType> JAVELIN = create("javelin");
 
     public static ResourceKey<DamageType> create(String name) {
-        return ResourceKey.create(Registries.DAMAGE_TYPE, FossilsLegacyUtils.resource(name));
+        return ResourceKey.create(Registries.DAMAGE_TYPE, FAUtils.resource(name));
     }
 
     public static void bootstrap(BootstrapContext<DamageType> bootstrapContext) {

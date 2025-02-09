@@ -12,14 +12,14 @@ import net.minecraftforge.registries.NewRegistryEvent;
 import willatendo.fossilslegacy.network.ForgePacketHelper;
 import willatendo.fossilslegacy.server.entity.FAVillagerProfessions;
 import willatendo.fossilslegacy.server.item.FALootTables;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.event.modification.*;
 import willatendo.simplelibrary.server.event.registry.ForgeAttributeRegister;
 import willatendo.simplelibrary.server.event.registry.ForgeDynamicRegistryRegister;
 import willatendo.simplelibrary.server.event.registry.ForgeNewRegistryRegister;
 import willatendo.simplelibrary.server.event.registry.ForgeResourcePackRegister;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID)
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = FAUtils.ID)
 public class ModEvents {
     @SubscribeEvent
     public static void fmlCommonSetupEvent(FMLCommonSetupEvent event) {

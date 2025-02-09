@@ -1,352 +1,121 @@
 package willatendo.fossilslegacy.client.model.json;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.geom.ModelPart;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.CubeListBuilder;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.FastColor;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.LivingEntity;
-import willatendo.fossilslegacy.api.client.BuiltInAnimationType;
-import willatendo.fossilslegacy.client.animation.json.JsonAnimationLoader;
-import willatendo.fossilslegacy.client.model.dinosaur.DinosaurModel;
-import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
-import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Tyrannosaurus;
-import willatendo.fossilslegacy.server.entity.util.interfaces.AnimatedSittingEntity;
-import willatendo.fossilslegacy.server.entity.util.interfaces.FloatDownEntity;
-import willatendo.fossilslegacy.server.entity.util.interfaces.FlyingDinosaur;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class JsonModel<T extends LivingEntity> extends DinosaurModel<T> {
-    private final Optional<JsonModelLoader.AnimationHolder> animationHolder;
-    private final List<ModelPart> headPieces;
-    private final LoadedParts loadedParts;
-    private final boolean colored;
-    private final boolean overrideReset;
-    private int color = -1;
+public record JsonModel(JsonModel.Animations animations, List<JsonModel.Element> elements, Optional<List<String>> headPieces, ResourceLocation modelId, Optional<Boolean> overrideReset, int textureHeight, int textureWidth) {
+    public static final Codec<JsonModel> CODEC = RecordCodecBuilder.create(instance -> instance.group(JsonModel.Animations.CODEC.fieldOf("animations").forGetter(JsonModel::animations), Codec.list(JsonModel.Element.CODEC).fieldOf("elements").forGetter(JsonModel::elements), Codec.list(Codec.STRING).optionalFieldOf("head_pieces").forGetter(JsonModel::headPieces), ResourceLocation.CODEC.fieldOf("model_id").forGetter(JsonModel::modelId), Codec.BOOL.optionalFieldOf("override_reset").forGetter(JsonModel::overrideReset), Codec.INT.fieldOf("texture_height").forGetter(JsonModel::textureHeight), Codec.INT.fieldOf("texture_width").forGetter(JsonModel::textureWidth)).apply(instance, JsonModel::new));
 
-    public JsonModel(ResourceLocation id, boolean colored, boolean overrideReset, ModelPart root) {
-        super(root);
-        this.animationHolder = JsonModelLoader.getAnimations(id);
-        this.headPieces = JsonModelLoader.getHeadPieces(id, root);
-        this.loadedParts = new LoadedParts(JsonModelLoader.getLoadParts(id), root);
-        this.colored = colored;
-        this.overrideReset = overrideReset;
+    public boolean isOverrideReset() {
+        return this.overrideReset().orElse(false);
     }
 
-    public boolean isColored() {
-        return this.colored;
+    public LayerDefinition createModel() {
+        MeshDefinition meshDefinition = new MeshDefinition();
+        PartDefinition root = meshDefinition.getRoot();
+        this.elements.forEach(element -> this.loadElement(element, root));
+        return LayerDefinition.create(meshDefinition, this.textureWidth(), this.textureHeight());
     }
 
-    public void setColor(int color) {
-        this.color = color;
-    }
-
-    public ModelPart get(String name) {
-        return this.loadedParts.get(name);
-    }
-
-    public float getX(String name) {
-        return this.loadedParts.getX(name);
-    }
-
-    public float getY(String name) {
-        return this.loadedParts.getY(name);
-    }
-
-    public float getZ(String name) {
-        return this.loadedParts.getZ(name);
-    }
-
-    public void setX(String name, float angle) {
-        this.loadedParts.setX(name, angle);
-    }
-
-    public void setY(String name, float angle) {
-        this.loadedParts.setY(name, angle);
-    }
-
-    public void setZ(String name, float angle) {
-        this.loadedParts.setZ(name, angle);
-    }
-
-    public void addX(String name, float angle) {
-        this.loadedParts.addX(name, angle);
-    }
-
-    public void addY(String name, float angle) {
-        this.loadedParts.addY(name, angle);
-    }
-
-    public void addZ(String name, float angle) {
-        this.loadedParts.addZ(name, angle);
-    }
-
-    public void subtractX(String name, float angle) {
-        this.loadedParts.subtractX(name, angle);
-    }
-
-    public void subtractY(String name, float angle) {
-        this.loadedParts.subtractY(name, angle);
-    }
-
-    public void subtractZ(String name, float angle) {
-        this.loadedParts.subtractZ(name, angle);
-    }
-
-    public float getXRot(String name) {
-        return this.loadedParts.getXRot(name);
-    }
-
-    public float getYRot(String name) {
-        return this.loadedParts.getYRot(name);
-    }
-
-    public float getZRot(String name) {
-        return this.loadedParts.getZRot(name);
-    }
-
-    public void setXRot(String name, float angle) {
-        this.loadedParts.setXRot(name, angle);
-    }
-
-    public void setYRot(String name, float angle) {
-        this.loadedParts.setYRot(name, angle);
-    }
-
-    public void setZRot(String name, float angle) {
-        this.loadedParts.setZRot(name, angle);
-    }
-
-    public void addXRot(String name, float angle) {
-        this.loadedParts.addXRot(name, angle);
-    }
-
-    public void addYRot(String name, float angle) {
-        this.loadedParts.addYRot(name, angle);
-    }
-
-    public void addZRot(String name, float angle) {
-        this.loadedParts.addZRot(name, angle);
-    }
-
-    public void subtractXRot(String name, float angle) {
-        this.loadedParts.subtractXRot(name, angle);
-    }
-
-    public void subtractYRot(String name, float angle) {
-        this.loadedParts.subtractYRot(name, angle);
-    }
-
-    public void subtractZRot(String name, float angle) {
-        this.loadedParts.subtractZRot(name, angle);
-    }
-
-    public void setPos(String name, float x, float y, float z) {
-        this.loadedParts.setPos(name, x, y, z);
-    }
-
-    @Override
-    public void prepareMobModel(T livingEntity, float limbSwing, float limbSwingAmount, float partialTick) {
-        if (livingEntity instanceof Dinosaur dinosaur) {
-            if (this.animationHolder.isPresent()) {
-                JsonModelLoader.AnimationHolder animationHolder = this.animationHolder.get();
-                if (animationHolder.hasWalkAnimations()) {
-                    for (ResourceLocation animation : animationHolder.walkAnimation()) {
-                        if (JsonAnimationLoader.isBuiltIn(animation)) {
-                            BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
-                            if (builtInAnimationType.canUse(dinosaur)) {
-                                builtInAnimationType.prepareMobModel(dinosaur, this, limbSwing, limbSwingAmount, partialTick);
-                            }
-                        }
-                    }
-                }
-                if (animationHolder.hasTailAnimations()) {
-                    for (ResourceLocation animation : animationHolder.tailAnimation()) {
-                        if (JsonAnimationLoader.isBuiltIn(animation)) {
-                            BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
-                            if (builtInAnimationType.canUse(dinosaur)) {
-                                builtInAnimationType.prepareMobModel(dinosaur, this, limbSwing, limbSwingAmount, partialTick);
-                            }
-                        }
-                    }
-                }
-                if (animationHolder.hasSitAnimations()) {
-                    for (ResourceLocation animation : animationHolder.sitAnimation()) {
-                        if (JsonAnimationLoader.isBuiltIn(animation)) {
-                            BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
-                            if (builtInAnimationType.canUse(dinosaur)) {
-                                builtInAnimationType.prepareMobModel(dinosaur, this, limbSwing, limbSwingAmount, partialTick);
-                            }
-                        }
-                    }
-                }
-                if (animationHolder.hasShakeAnimations()) {
-                    for (ResourceLocation animation : animationHolder.shakeAnimation()) {
-                        if (JsonAnimationLoader.isBuiltIn(animation)) {
-                            BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
-                            if (builtInAnimationType.canUse(dinosaur)) {
-                                builtInAnimationType.prepareMobModel(dinosaur, this, limbSwing, limbSwingAmount, partialTick);
-                            }
-                        }
-                    }
-                }
+    private void loadElement(JsonModel.Element element, PartDefinition parent) {
+        CubeListBuilder cubeListBuilder = CubeListBuilder.create();
+        element.boxes().forEach(box -> {
+            cubeListBuilder.texOffs(box.textureXOffset(), box.textureYOffset()).addBox(box.xOrigin(), box.yOrigin(), box.zOrigin(), box.xDimension(), box.yDimension(), box.zDimension());
+            if (box.isMirrored()) {
+                cubeListBuilder.mirror();
             }
+        });
+        PartDefinition partDefinition = parent.addOrReplaceChild(element.id(), cubeListBuilder, element.pose().toPartPose());
+        if (element.hasChild()) {
+            element.elements.get().forEach(subElement -> this.loadSubElement(subElement, partDefinition));
         }
     }
 
-    @Override
-    public void setupAnim(LivingEntity livingEntity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        if (livingEntity instanceof Tyrannosaurus tyrannosaurus) {
-            if (tyrannosaurus.isKnockedOut()) {
-                return;
+    private void loadSubElement(JsonModel.SubElement subElement, PartDefinition parent) {
+        CubeListBuilder cubeListBuilder = CubeListBuilder.create();
+        subElement.boxes().forEach(box -> {
+            cubeListBuilder.texOffs(box.textureXOffset(), box.textureYOffset()).addBox(box.xOrigin(), box.yOrigin(), box.zOrigin(), box.xDimension(), box.yDimension(), box.zDimension());
+            if (box.isMirrored()) {
+                cubeListBuilder.mirror();
             }
-        }
-        if (livingEntity instanceof Dinosaur dinosaur) {
-            if (!this.overrideReset) {
-                this.root().getAllParts().forEach(ModelPart::resetPose);
-
-                if (this.animationHolder.isPresent()) {
-                    JsonModelLoader.AnimationHolder animationHolder = this.animationHolder.get();
-
-                    if (!animationHolder.hasSitAnimations() || !dinosaur.isOrderedToSit()) {
-                        if (animationHolder.hasHeadAnimations()) {
-                            for (ResourceLocation animation : animationHolder.headAnimation()) {
-                                if (JsonAnimationLoader.isBuiltIn(animation)) {
-                                    BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
-                                    if (builtInAnimationType.canUse(dinosaur)) {
-                                        builtInAnimationType.setupAnim(dinosaur, this, limbSwing, limbSwingAmount, netHeadYaw);
-                                    }
-                                }
-                            }
-                        } else {
-                            if (dinosaur instanceof FlyingDinosaur flyingDinosaur) {
-                                if (!flyingDinosaur.shouldFly() && !flyingDinosaur.shouldLand()) {
-                                    this.standardHead(netHeadYaw, headPitch);
-                                }
-                            } else {
-                                this.standardHead(netHeadYaw, headPitch);
-                            }
-                        }
-
-                        if (animationHolder.hasFlyAnimations()) {
-                            for (ResourceLocation animation : animationHolder.flyAnimation()) {
-                                if (JsonAnimationLoader.isBuiltIn(animation)) {
-                                    BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
-                                    if (builtInAnimationType.canUse(dinosaur)) {
-                                        builtInAnimationType.setupAnim(dinosaur, this, limbSwing, limbSwingAmount, netHeadYaw);
-                                    }
-                                } else {
-                                    if (dinosaur instanceof FlyingDinosaur flyingDinosaur) {
-                                        this.animate(flyingDinosaur.getFlyingAnimationState(), JsonAnimationLoader.getAnimation(animation), ageInTicks);
-                                    }
-                                }
-                            }
-                        }
-
-                        if (dinosaur instanceof FlyingDinosaur flyingDinosaur) {
-                            if (animationHolder.hasLandAnimations()) {
-                                for (ResourceLocation animation : animationHolder.landAnimation()) {
-                                    this.animate(flyingDinosaur.getLandingAnimationState(), JsonAnimationLoader.getAnimation(animation), ageInTicks);
-                                }
-                            }
-                        }
-
-                        if (animationHolder.hasSwimAnimations() && dinosaur.isInWaterOrBubble()) {
-                            for (ResourceLocation animation : animationHolder.swimAnimation()) {
-                                if (JsonAnimationLoader.isBuiltIn(animation)) {
-                                    BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
-                                    if (builtInAnimationType.canUse(dinosaur)) {
-                                        builtInAnimationType.setupAnim(dinosaur, this, limbSwing, limbSwingAmount, netHeadYaw);
-                                    }
-                                } else {
-                                    this.animateWalk(JsonAnimationLoader.getAnimation(animation), limbSwing, limbSwingAmount, 2.0F, 2.5F);
-                                }
-                            }
-                        } else {
-                            if (animationHolder.hasWalkAnimations()) {
-                                if (dinosaur instanceof FlyingDinosaur flyingDinosaur) {
-                                    if (!flyingDinosaur.shouldFly() && !flyingDinosaur.shouldLand()) {
-                                        this.animateWalk(animationHolder, dinosaur, limbSwing, limbSwingAmount, netHeadYaw);
-                                    }
-                                } else {
-                                    this.animateWalk(animationHolder, dinosaur, limbSwing, limbSwingAmount, netHeadYaw);
-                                }
-                            }
-                        }
-
-                        if (dinosaur instanceof AnimatedSittingEntity animatedSittingEntity) {
-                            if (animationHolder.hasSitAnimations()) {
-                                for (ResourceLocation animation : animationHolder.sitAnimation()) {
-                                    if (!JsonAnimationLoader.isBuiltIn(animation)) {
-                                        this.animate(animatedSittingEntity.getSitAnimationState(), JsonAnimationLoader.getAnimation(animation), ageInTicks);
-                                    }
-                                }
-
-                            }
-                        }
-
-                        if (dinosaur instanceof FloatDownEntity floatDownEntity) {
-                            if (animationHolder.hasFloatAnimations()) {
-                                for (ResourceLocation animation : animationHolder.floatAnimation()) {
-                                    this.animate(floatDownEntity.getFallAnimationState(), JsonAnimationLoader.getAnimation(animation), ageInTicks);
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    if (dinosaur instanceof FlyingDinosaur flyingDinosaur) {
-                        if (!flyingDinosaur.shouldFly() && !flyingDinosaur.shouldLand()) {
-                            this.standardHead(netHeadYaw, headPitch);
-                        }
-                    } else {
-                        this.standardHead(netHeadYaw, headPitch);
-                    }
-                }
-            } else if (this.animationHolder.isPresent()) {
-                JsonModelLoader.AnimationHolder animationHolder = this.animationHolder.get();
-                for (ResourceLocation animation : animationHolder.walkAnimation()) {
-                    if (JsonAnimationLoader.isBuiltIn(animation)) {
-                        BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
-                        if (builtInAnimationType.canUse(dinosaur)) {
-                            builtInAnimationType.setupAnim(dinosaur, this, limbSwing, limbSwingAmount, netHeadYaw);
-                        }
-                    }
-                }
-            }
+        });
+        PartDefinition partDefinition = parent.addOrReplaceChild(subElement.id(), cubeListBuilder, subElement.pose().toPartPose());
+        if (subElement.hasChild()) {
+            subElement.elements.get().forEach(element -> this.loadElement(element, partDefinition));
         }
     }
 
-    private void standardHead(float netHeadYaw, float headPitch) {
-        netHeadYaw = Mth.clamp(netHeadYaw, -30.0F, 30.0F);
-        headPitch = Mth.clamp(headPitch, -25.0F, 45.0F);
-        for (ModelPart modelPart : this.headPieces) {
-            modelPart.yRot = netHeadYaw * 0.017453292F;
-            modelPart.xRot = headPitch * 0.017453292F;
+    public List<String> getLoadParts() {
+        List<String> loadParts = new ArrayList<>();
+        this.elements().forEach(element -> this.getLoadParts(element, loadParts));
+        return loadParts;
+    }
+
+    private void getLoadParts(JsonModel.Element element, List<String> loadParts) {
+        loadParts.add(element.id());
+        if (element.hasChild()) {
+            element.elements().get().forEach(subElement -> this.getLoadParts(subElement, loadParts));
         }
     }
 
-    private void animateWalk(JsonModelLoader.AnimationHolder animationHolder, Dinosaur dinosaur, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        for (ResourceLocation animation : animationHolder.walkAnimation()) {
-            if (JsonAnimationLoader.isBuiltIn(animation)) {
-                BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
-                if (builtInAnimationType.canUse(dinosaur)) {
-                    builtInAnimationType.setupAnim(dinosaur, this, limbSwing, limbSwingAmount, netHeadYaw);
-                }
-            } else {
-                this.animateWalk(JsonAnimationLoader.getAnimation(animation), limbSwing, limbSwingAmount, 2.0F, 2.5F);
-            }
+    private void getLoadParts(JsonModel.SubElement subElement, List<String> loadParts) {
+        loadParts.add(subElement.id());
+        if (subElement.hasChild()) {
+            subElement.elements().get().forEach(element -> this.getLoadParts(element, loadParts));
         }
     }
 
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
-        if (this.colored) {
-            this.root().render(poseStack, vertexConsumer, packedLight, packedOverlay, FastColor.ARGB32.multiply(color, this.color));
-        } else {
-            super.renderToBuffer(poseStack, vertexConsumer, packedLight, packedOverlay, color);
+    public record Animations(Optional<List<ResourceLocation>> walkAnimation, Optional<List<ResourceLocation>> swimAnimation, Optional<List<ResourceLocation>> flyAnimation, Optional<List<ResourceLocation>> floatDownAnimation, Optional<List<ResourceLocation>> headAnimation, Optional<List<ResourceLocation>> shakeAnimation, Optional<List<ResourceLocation>> sitAnimation, Optional<List<ResourceLocation>> tailAnimation, Optional<List<ResourceLocation>> landAnimation) {
+        public static final Codec<JsonModel.Animations> CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.list(ResourceLocation.CODEC).optionalFieldOf("walk").forGetter(Animations::walkAnimation), Codec.list(ResourceLocation.CODEC).optionalFieldOf("swim").forGetter(Animations::swimAnimation), Codec.list(ResourceLocation.CODEC).optionalFieldOf("fly").forGetter(Animations::flyAnimation), Codec.list(ResourceLocation.CODEC).optionalFieldOf("float_down").forGetter(Animations::floatDownAnimation), Codec.list(ResourceLocation.CODEC).optionalFieldOf("head").forGetter(Animations::headAnimation), Codec.list(ResourceLocation.CODEC).optionalFieldOf("shake").forGetter(Animations::shakeAnimation), Codec.list(ResourceLocation.CODEC).optionalFieldOf("sit").forGetter(Animations::sitAnimation), Codec.list(ResourceLocation.CODEC).optionalFieldOf("tail").forGetter(Animations::tailAnimation), Codec.list(ResourceLocation.CODEC).optionalFieldOf("land").forGetter(Animations::landAnimation)).apply(instance, JsonModel.Animations::new));
+
+        public AnimationHolder toAnimationHolder() {
+            return new AnimationHolder(this.walkAnimation().orElse(List.of()), this.swimAnimation().orElse(List.of()), this.flyAnimation().orElse(List.of()), this.floatDownAnimation().orElse(List.of()), this.headAnimation().orElse(List.of()), this.shakeAnimation().orElse(List.of()), this.sitAnimation().orElse(List.of()), this.tailAnimation().orElse(List.of()), this.landAnimation().orElse(List.of()));
+        }
+    }
+
+    public record Element(List<JsonModel.Box> boxes, String id, JsonModel.Pose pose, Optional<List<SubElement>> elements) {
+        public static final Codec<JsonModel.Element> CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.list(JsonModel.Box.CODEC).fieldOf("boxes").forGetter(JsonModel.Element::boxes), Codec.STRING.fieldOf("id").forGetter(JsonModel.Element::id), JsonModel.Pose.CODEC.fieldOf("poses").forGetter(JsonModel.Element::pose), Codec.list(JsonModel.SubElement.CODEC).optionalFieldOf("elements").forGetter(JsonModel.Element::elements)).apply(instance, JsonModel.Element::new));
+
+        public boolean hasChild() {
+            return this.elements().isPresent() && !this.elements().get().isEmpty();
+        }
+    }
+
+    public record SubElement(List<JsonModel.Box> boxes, String id, JsonModel.Pose pose, Optional<List<Element>> elements) {
+        public static final Codec<JsonModel.SubElement> CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.list(JsonModel.Box.CODEC).fieldOf("boxes").forGetter(JsonModel.SubElement::boxes), Codec.STRING.fieldOf("id").forGetter(JsonModel.SubElement::id), JsonModel.Pose.CODEC.fieldOf("poses").forGetter(JsonModel.SubElement::pose), Codec.list(JsonModel.Element.CODEC).optionalFieldOf("elements").forGetter(JsonModel.SubElement::elements)).apply(instance, JsonModel.SubElement::new));
+
+        public boolean hasChild() {
+            return this.elements().isPresent() && !this.elements().get().isEmpty();
+        }
+    }
+
+    public record Box(int textureXOffset, int textureYOffset, int xDimension, int xOrigin, int yDimension, int yOrigin, int zDimension, int zOrigin, Optional<Boolean> mirror) {
+        public static final Codec<JsonModel.Box> CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.INT.fieldOf("texture_x_offset").forGetter(JsonModel.Box::textureXOffset), Codec.INT.fieldOf("texture_y_offset").forGetter(JsonModel.Box::textureYOffset), Codec.INT.fieldOf("x_dimension").forGetter(JsonModel.Box::xDimension), Codec.INT.fieldOf("x_origin").forGetter(JsonModel.Box::xOrigin), Codec.INT.fieldOf("y_dimension").forGetter(JsonModel.Box::yDimension), Codec.INT.fieldOf("y_origin").forGetter(JsonModel.Box::yOrigin), Codec.INT.fieldOf("z_dimension").forGetter(JsonModel.Box::zDimension), Codec.INT.fieldOf("z_origin").forGetter(JsonModel.Box::zOrigin), Codec.BOOL.optionalFieldOf("mirror").forGetter(JsonModel.Box::mirror)).apply(instance, JsonModel.Box::new));
+
+        public boolean isMirrored() {
+            return this.mirror().orElse(false);
+        }
+    }
+
+    public record Pose(float x, float y, float z, Optional<Float> xRot, Optional<Float> yRot, Optional<Float> zRot) {
+        public static final Codec<JsonModel.Pose> CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.FLOAT.fieldOf("x").forGetter(JsonModel.Pose::x), Codec.FLOAT.fieldOf("y").forGetter(JsonModel.Pose::y), Codec.FLOAT.fieldOf("z").forGetter(JsonModel.Pose::z), Codec.FLOAT.optionalFieldOf("x_rot").forGetter(JsonModel.Pose::xRot), Codec.FLOAT.optionalFieldOf("y_rot").forGetter(JsonModel.Pose::yRot), Codec.FLOAT.optionalFieldOf("z_rot").forGetter(JsonModel.Pose::zRot)).apply(instance, JsonModel.Pose::new));
+
+        public boolean hasRot() {
+            return this.xRot().isPresent() || this.yRot().isPresent() || this.zRot().isPresent();
+        }
+
+        public PartPose toPartPose() {
+            return this.hasRot() ? PartPose.offsetAndRotation(this.x(), this.y(), this.z(), this.xRot().orElse(0.0F), this.yRot().orElse(0.0F), this.zRot().orElse(0.0F)) : PartPose.offset(this.x(), this.y(), this.z());
         }
     }
 }

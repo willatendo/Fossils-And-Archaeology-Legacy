@@ -9,7 +9,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.tags.FABlockTags;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
@@ -18,8 +17,8 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class FAItemTagProvider extends ItemTagsProvider {
-    public FAItemTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, CompletableFuture<TagLookup<Block>> blockTags, String modId, ExistingFileHelper existingFileHelper) {
-        super(packOutput, provider, blockTags, modId, existingFileHelper);
+    public FAItemTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, CompletableFuture<TagLookup<Block>> blockTags, String modId) {
+        super(packOutput, provider, blockTags, modId);
     }
 
     @Override
@@ -95,6 +94,7 @@ public class FAItemTagProvider extends ItemTagsProvider {
         this.tag(FAItemTags.PIGLIN_TAMING_ARMOR).add(FAItems.ANCIENT_HELMET.get(), FAItems.ANCIENT_CHESTPLATE.get(), FAItems.ANCIENT_LEGGINGS.get(), FAItems.ANCIENT_BOOTS.get());
 
         this.tag(FAItemTags.REPAIR_WHEN_BROKEN_IN_ARCHAEOLOGY_TABLE).add(FAItems.SCARAB_GEM_AXE.get(), FAItems.SCARAB_GEM_HOE.get(), FAItems.SCARAB_GEM_PICKAXE.get(), FAItems.SCARAB_GEM_SHOVEL.get(), FAItems.SCARAB_GEM_SWORD.get(), FAItems.BROKEN_WOODEN_JAVELIN.get(), FAItems.BROKEN_STONE_JAVELIN.get(), FAItems.BROKEN_IRON_JAVELIN.get(), FAItems.BROKEN_GOLDEN_JAVELIN.get(), FAItems.BROKEN_DIAMOND_JAVELIN.get(), FAItems.BROKEN_NETHERITE_JAVELIN.get(), FAItems.BROKEN_SCARAB_GEM_JAVELIN.get());
+        this.tag(FAItemTags.SCARAB_GEM_TOOL_MATERIALS).add(FAItems.SCARAB_GEM.get());
     }
 
     private void cenozoicTags(Item rawMeat, Item cookedMeat, Item dna, TagKey<Item> commandables, Item... commandableItems) {

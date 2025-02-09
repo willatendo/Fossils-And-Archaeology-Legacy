@@ -7,7 +7,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -15,8 +15,8 @@ import willatendo.fossilslegacy.server.ancient_axe_bonus.AncientAxeBonus;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 
 public class AncientAxeItem extends AxeItem {
-    public AncientAxeItem(Tier tier, Properties properties) {
-        super(tier, properties);
+    public AncientAxeItem(ToolMaterial toolMaterial, float attackDamage, float attackSpeed, Properties properties) {
+        super(toolMaterial, attackDamage, attackSpeed, properties);
     }
 
     @Override
@@ -24,7 +24,7 @@ public class AncientAxeItem extends AxeItem {
         if (!level.isClientSide()) {
             RandomSource randomSource = level.getRandom();
             if (randomSource.nextInt(5) == 0) {
-                Registry<AncientAxeBonus> registry = level.registryAccess().registryOrThrow(FARegistries.ANCIENT_AXE_BONUS);
+                Registry<AncientAxeBonus> registry = level.registryAccess().lookupOrThrow(FARegistries.ANCIENT_AXE_BONUS);
                 registry.forEach(ancientAxeCrafting -> {
                     if (ancientAxeCrafting.input().equals(BuiltInRegistries.BLOCK.getKey(blockState.getBlock()))) {
                         ItemStack output = ancientAxeCrafting.output();

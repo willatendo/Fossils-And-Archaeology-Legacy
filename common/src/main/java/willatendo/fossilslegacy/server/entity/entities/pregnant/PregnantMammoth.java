@@ -8,6 +8,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -125,11 +126,11 @@ public class PregnantMammoth extends Mammoth implements DinopediaInformation, Pr
 
     @Override
     public Entity getOffspring(Level level) {
-        return this.getPregnancyType().value().entityType().get().create(level);
+        return this.getPregnancyType().value().entityType().get().create(level, EntitySpawnReason.BREEDING);
     }
 
     @Override
     public Mammoth getBaseEntity(Level level) {
-        return FAEntityTypes.MAMMOTH.get().create(level);
+        return FAEntityTypes.MAMMOTH.get().create(level, EntitySpawnReason.BREEDING);
     }
 }

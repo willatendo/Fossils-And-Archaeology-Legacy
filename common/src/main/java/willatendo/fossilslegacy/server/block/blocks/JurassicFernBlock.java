@@ -28,7 +28,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.tags.FABlockTags;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public class JurassicFernBlock extends BushBlock implements BonemealableBlock {
     public static final MapCodec<JurassicFernBlock> CODEC = Block.simpleCodec(JurassicFernBlock::new);
@@ -56,8 +56,8 @@ public class JurassicFernBlock extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    public ItemStack getCloneItemStack(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
-        return BuiltInRegistries.ITEM.get(FossilsLegacyUtils.resource("jurassic_fern")).getDefaultInstance();
+    public ItemStack getCloneItemStack(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean includeData) {
+        return new ItemStack(BuiltInRegistries.ITEM.getValue(FAUtils.resource("jurassic_fern")));
     }
 
     @Override
@@ -201,7 +201,7 @@ public class JurassicFernBlock extends BushBlock implements BonemealableBlock {
                 this.spread(blockState, blockPos, serverLevel, randomSource);
             }
         } else {
-            popResource(serverLevel, blockPos, new ItemStack(BuiltInRegistries.ITEM.get(FossilsLegacyUtils.resource("jurassic_fern"))));
+            popResource(serverLevel, blockPos, new ItemStack(BuiltInRegistries.ITEM.getValue(FAUtils.resource("jurassic_fern"))));
         }
     }
 

@@ -1,6 +1,7 @@
 package willatendo.fossilslegacy.server.block.blocks;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Containers;
@@ -20,7 +21,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.block.entity.entities.ArchaeologyWorkbenchBlockEntity;
@@ -28,7 +29,7 @@ import willatendo.fossilslegacy.server.block.properties.FABlockStateProperties;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class ArchaeologyWorkbenchBlock extends Block implements EntityBlock {
-    public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty ACTIVE = FABlockStateProperties.ACTIVE;
 
     public ArchaeologyWorkbenchBlock(Properties properties) {
@@ -82,9 +83,16 @@ public class ArchaeologyWorkbenchBlock extends Block implements EntityBlock {
         }
     }
 
+
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide() ? null : SimpleUtils.createTickerHelper(blockEntityType, FABlockEntityTypes.ARCHAEOLOGY_WORKBENCH.get(), ArchaeologyWorkbenchBlockEntity::serverTick);
+        BlockEntityTicker<T> blockEntityTicker = null;
+        if (level instanceof ServerLevel serverlevel) {
+            blockEntityTicker = SimpleUtils.createTickerHelper(blockEntityType, FABlockEntityTypes.ARCHAEOLOGY_WORKBENCH.get(), (levelIn, blockPosIn, blockStateIn, archaeologyWorkbenchBlockEntityIn) -> {
+                ArchaeologyWorkbenchBlockEntity.serverTick(serverlevel, blockPosIn, blockStateIn, archaeologyWorkbenchBlockEntityIn);
+            });
+        }
+        return blockEntityTicker;
     }
 
     @Override

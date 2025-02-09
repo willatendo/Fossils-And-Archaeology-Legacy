@@ -10,34 +10,41 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
+import willatendo.fossilslegacy.client.state.DilophosaurusVenomRenderState;
 import willatendo.fossilslegacy.server.entity.entities.DilophosaurusVenom;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
-public class DilophosaurusVenomRenderer extends EntityRenderer<DilophosaurusVenom> {
-    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/dilophosaurus/venom.png");
-    private final LlamaSpitModel<DilophosaurusVenom> model;
+public class DilophosaurusVenomRenderer extends EntityRenderer<DilophosaurusVenom, DilophosaurusVenomRenderState> {
+    public static final ResourceLocation TEXTURE = FAUtils.resource("textures/entity/dilophosaurus/venom.png");
+    private final LlamaSpitModel model;
 
     public DilophosaurusVenomRenderer(Context context) {
         super(context);
-        this.model = new LlamaSpitModel<>(context.bakeLayer(ModelLayers.LLAMA_SPIT));
+        this.model = new LlamaSpitModel(context.bakeLayer(ModelLayers.LLAMA_SPIT));
     }
 
     @Override
-    public void render(DilophosaurusVenom dilophosaurusVenom, float packedLight, float packedOverlay, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
+    public void render(DilophosaurusVenomRenderState dilophosaurusVenomRenderState, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
         poseStack.pushPose();
         poseStack.translate(0.0F, 0.15F, 0.0F);
-        poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(packedOverlay, dilophosaurusVenom.yRotO, dilophosaurusVenom.getYRot()) - 90.0F));
-        poseStack.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(packedOverlay, dilophosaurusVenom.xRotO, dilophosaurusVenom.getXRot())));
-        this.model.setupAnim(dilophosaurusVenom, packedOverlay, 0.0F, -0.1F, 0.0F, 0.0F);
+        poseStack.mulPose(Axis.YP.rotationDegrees(dilophosaurusVenomRenderState.yRot - 90.0F));
+        poseStack.mulPose(Axis.ZP.rotationDegrees(dilophosaurusVenomRenderState.xRot));
+        this.model.setupAnim(dilophosaurusVenomRenderState);
         VertexConsumer vertexConsumer = multiBufferSource.getBuffer(this.model.renderType(TEXTURE));
         this.model.renderToBuffer(poseStack, vertexConsumer, partialTicks, OverlayTexture.NO_OVERLAY);
         poseStack.popPose();
-        super.render(dilophosaurusVenom, packedLight, packedOverlay, poseStack, multiBufferSource, partialTicks);
+        super.render(dilophosaurusVenomRenderState, poseStack, multiBufferSource, partialTicks);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(DilophosaurusVenom p_115371_) {
-        return TEXTURE;
+    public DilophosaurusVenomRenderState createRenderState() {
+        return new DilophosaurusVenomRenderState();
+    }
+
+    @Override
+    public void extractRenderState(DilophosaurusVenom dilophosaurusVenom, DilophosaurusVenomRenderState dilophosaurusVenomRenderState, float partialTicks) {
+        super.extractRenderState(dilophosaurusVenom, dilophosaurusVenomRenderState, partialTicks);
+        dilophosaurusVenomRenderState.xRot = dilophosaurusVenom.getXRot(partialTicks);
+        dilophosaurusVenomRenderState.yRot = dilophosaurusVenom.getYRot(partialTicks);
     }
 }

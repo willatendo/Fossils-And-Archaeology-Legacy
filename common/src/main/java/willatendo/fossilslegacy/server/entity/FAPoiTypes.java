@@ -8,19 +8,19 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.block.FABlocks;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 import java.util.Set;
 
 public class FAPoiTypes {
-    public static final SimpleRegistry<PoiType> POI_TYPES = SimpleRegistry.create(Registries.POINT_OF_INTEREST_TYPE, FossilsLegacyUtils.ID);
+    public static final SimpleRegistry<PoiType> POI_TYPES = SimpleRegistry.create(Registries.POINT_OF_INTEREST_TYPE, FAUtils.ID);
 
     public static final ResourceKey<PoiType> ARCHAEOLOGIST = FAPoiTypes.create("archaeologist");
     public static final ResourceKey<PoiType> PALAEONTOLOGIST = FAPoiTypes.create("palaeontologist");
 
     private static ResourceKey<PoiType> create(String id) {
-        return ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, FossilsLegacyUtils.resource(id));
+        return ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, FAUtils.resource(id));
     }
 
     private static Set<BlockState> getBlockStates(Block block) {

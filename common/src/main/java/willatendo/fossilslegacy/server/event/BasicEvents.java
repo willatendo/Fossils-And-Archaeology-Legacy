@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.server.event;
 import com.google.common.collect.Maps;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.dispenser.BlockSource;
+import net.minecraft.core.dispenser.BoatDispenseItemBehavior;
 import net.minecraft.core.dispenser.OptionalDispenseItemBehavior;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.SpawnPlacementTypes;
@@ -55,7 +56,7 @@ import willatendo.fossilslegacy.server.stats.FAStats;
 import willatendo.fossilslegacy.server.stone_tablet_variant.StoneTabletVariant;
 import willatendo.fossilslegacy.server.tags.FABlockTags;
 import willatendo.fossilslegacy.server.tags.FAStructureTags;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.event.modification.*;
 import willatendo.simplelibrary.server.event.registry.*;
 
@@ -109,6 +110,12 @@ public final class BasicEvents {
                 return itemStack;
             }
         });
+        DispenserBlock.registerBehavior(FAItems.CALAMITES_BOAT.get(), new BoatDispenseItemBehavior(FAEntityTypes.CALAMITES_BOAT.get()));
+        DispenserBlock.registerBehavior(FAItems.LEPIDODENDRON_BOAT.get(), new BoatDispenseItemBehavior(FAEntityTypes.LEPIDODENDRON_BOAT.get()));
+        DispenserBlock.registerBehavior(FAItems.SIGILLARIA_BOAT.get(), new BoatDispenseItemBehavior(FAEntityTypes.SIGILLARIA_BOAT.get()));
+        DispenserBlock.registerBehavior(FAItems.CALAMITES_CHEST_BOAT.get(), new BoatDispenseItemBehavior(FAEntityTypes.CALAMITES_CHEST_BOAT.get()));
+        DispenserBlock.registerBehavior(FAItems.LEPIDODENDRON_CHEST_BOAT.get(), new BoatDispenseItemBehavior(FAEntityTypes.LEPIDODENDRON_CHEST_BOAT.get()));
+        DispenserBlock.registerBehavior(FAItems.SIGILLARIA_CHEST_BOAT.get(), new BoatDispenseItemBehavior(FAEntityTypes.SIGILLARIA_CHEST_BOAT.get()));
 
         FlammablesModification.register(FABlocks.CALAMITES_PLANKS.get(), 5, 20);
         FlammablesModification.register(FABlocks.CALAMITES_SLAB.get(), 5, 20);
@@ -198,7 +205,7 @@ public final class BasicEvents {
     }
 
     public static void resourcePackEvent(ResourcePackRegister resourcePackRegister) {
-        resourcePackRegister.register(FossilsLegacyUtils.ID, "fa_legacy_textures");
+        resourcePackRegister.register(FAUtils.ID, "fa_legacy_textures");
     }
 
     public static void newRegistryEvent(NewRegistryRegister newRegistryRegister) {
@@ -206,6 +213,7 @@ public final class BasicEvents {
         newRegistryRegister.register(FABuiltInRegistries.DINOPEDIA_LINE_TYPES, FARegistries.DINOPEDIA_LINE_TYPE);
         newRegistryRegister.register(FABuiltInRegistries.EGG_VARIANTS, FARegistries.EGG_VARIANTS);
         newRegistryRegister.register(FABuiltInRegistries.PREGNANCY_TYPES, FARegistries.PREGNANCY_TYPES);
+        newRegistryRegister.register(FABuiltInRegistries.JSON_MODEL_TYPES, FARegistries.JSON_MODEL_TYPE);
     }
 
     public static void newDynamicRegistryEvent(DynamicRegistryRegister dynamicRegistryRegister) {

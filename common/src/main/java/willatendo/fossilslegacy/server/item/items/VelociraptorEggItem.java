@@ -27,13 +27,13 @@ public class VelociraptorEggItem extends EggItem {
         } else {
             Level level = egg.level();
             Holder<Biome> biome = level.getBiome(egg.blockPosition());
-            Registry<CoatType> coatTypeRegistry = level.registryAccess().registry(FARegistries.COAT_TYPES).get();
-            if (biome.value().coldEnoughToSnow(egg.blockPosition())) {
-                egg.setCoatType(coatTypeRegistry.getHolder(FACoatTypes.WHITE_VELOCIRAPTOR).get());
+            Registry<CoatType> coatTypeRegistry = level.registryAccess().lookupOrThrow(FARegistries.COAT_TYPES);
+            if (biome.value().coldEnoughToSnow(egg.blockPosition(), level.getSeaLevel())) {
+                egg.setCoatType(coatTypeRegistry.get(FACoatTypes.WHITE_VELOCIRAPTOR).get());
             } else if (biome.value().getBaseTemperature() >= 2.0F) {
-                egg.setCoatType(coatTypeRegistry.getHolder(FACoatTypes.SANDY_VELOCIRAPTOR).get());
+                egg.setCoatType(coatTypeRegistry.get(FACoatTypes.SANDY_VELOCIRAPTOR).get());
             } else {
-                egg.setCoatType(coatTypeRegistry.getHolder(FACoatTypes.GREEN_VELOCIRAPTOR).get());
+                egg.setCoatType(coatTypeRegistry.get(FACoatTypes.GREEN_VELOCIRAPTOR).get());
             }
         }
     }

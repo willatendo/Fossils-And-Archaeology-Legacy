@@ -8,6 +8,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -54,7 +55,7 @@ public class Moa extends Dinosaur implements DinopediaInformation {
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        Moa moa = FAEntityTypes.MOA.get().create(serverLevel);
+        Moa moa = FAEntityTypes.MOA.get().create(serverLevel, EntitySpawnReason.BREEDING);
         moa.setCoatType(this.getCoatType());
         return moa;
     }
@@ -78,9 +79,9 @@ public class Moa extends Dinosaur implements DinopediaInformation {
     public void aiStep() {
         super.aiStep();
 
-        if (!this.level().isClientSide && this.isAlive() && !this.isBaby() && --this.eggTime <= 0) {
+        if (this.level() instanceof ServerLevel serverLevel && this.isAlive() && !this.isBaby() && --this.eggTime <= 0) {
             this.playSound(SoundEvents.CHICKEN_EGG, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
-            this.spawnAtLocation(FAItems.MOA_EGG.get());
+            this.spawnAtLocation(serverLevel, FAItems.MOA_EGG.get());
             this.gameEvent(GameEvent.ENTITY_PLACE);
             this.eggTime = this.random.nextInt(6000) + 6000;
         }

@@ -5,7 +5,7 @@ import net.minecraft.client.resources.model.Material;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FAWoodTypes {
     public static final WoodType CALAMITES = register("calamites", FABlockSetTypes.SIGILLARIA);
@@ -13,7 +13,7 @@ public final class FAWoodTypes {
     public static final WoodType SIGILLARIA = register("sigillaria", FABlockSetTypes.SIGILLARIA);
 
     public static WoodType register(String id, BlockSetType blockSetType) {
-        return WoodType.register(new WoodType(FossilsLegacyUtils.ID + ":" + id, blockSetType));
+        return WoodType.register(new WoodType(FAUtils.ID + ":" + id, blockSetType));
     }
 
     public static void register(WoodType woodType) {

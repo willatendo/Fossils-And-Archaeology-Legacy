@@ -21,7 +21,7 @@ public class ChickenEssanceBottleItem extends DrinkingGlassBottleItem {
                 growingEntity.setGrowthStage(growingEntity.getGrowthStage() + 1);
                 livingEntity.setHealth((float) (livingEntity.getHealth() + growingEntity.getMinHealth()));
                 ItemUtils.createFilledResult(itemStack, player, Items.GLASS_BOTTLE.getDefaultInstance());
-                return InteractionResult.sidedSuccess(player.level().isClientSide());
+                return InteractionResult.SUCCESS;
             }
         }
 

@@ -2,7 +2,7 @@ package willatendo.fossilslegacy.server.block.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -20,7 +20,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.CommandableEntity;
 import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 
@@ -33,9 +33,9 @@ public class DrumBlock extends Block {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+    protected InteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
         if (itemStack.is(FAItemTags.DRUM_INSTRUMENT)) {
-            CommandType currentCommandType = FABuiltInRegistries.COMMAND_TYPES.get(FossilsLegacyUtils.resource(blockState.getValue(DrumBlock.COMMAND_TYPE_PROPERTY)));
+            CommandType currentCommandType = FABuiltInRegistries.COMMAND_TYPES.getValue(FAUtils.resource(blockState.getValue(DrumBlock.COMMAND_TYPE_PROPERTY)));
             List<LivingEntity> allEntities = level.getEntitiesOfClass(LivingEntity.class, new AABB(blockPos).inflate(30.0D));
             for (LivingEntity livingEntity : allEntities) {
                 if (livingEntity instanceof CommandableEntity commandableEntity) {
@@ -44,7 +44,7 @@ public class DrumBlock extends Block {
                     }
                 }
             }
-            player.displayClientMessage(FossilsLegacyUtils.translation("block", "drum.hit", itemStack.getHoverName(), currentCommandType.getDescription()), true);
+            player.displayClientMessage(FAUtils.translation("block", "drum.hit", itemStack.getHoverName(), currentCommandType.getDescription()), true);
             if (level.isClientSide()) {
                 player.playSound(FASoundEvents.DRUM_TRIPLE_HIT.get());
             }
@@ -54,7 +54,7 @@ public class DrumBlock extends Block {
                 player.playSound(FASoundEvents.DRUM_HIT.get());
             }
         }
-        return ItemInteractionResult.SUCCESS;
+        return InteractionResult.SUCCESS;
     }
 
     @Override

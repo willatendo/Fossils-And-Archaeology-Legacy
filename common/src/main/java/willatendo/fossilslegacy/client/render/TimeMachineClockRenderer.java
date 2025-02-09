@@ -12,12 +12,12 @@ import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.client.FAModelLayers;
 import willatendo.fossilslegacy.client.model.TimeMachineClockModel;
 import willatendo.fossilslegacy.server.block.entity.entities.TimeMachineBlockEntity;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.Calendar;
 
 public class TimeMachineClockRenderer implements BlockEntityRenderer<TimeMachineBlockEntity> {
-    public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/time_machine_clock.png");
+    public static final ResourceLocation TEXTURE = FAUtils.resource("textures/entity/time_machine_clock.png");
     private final TimeMachineClockModel timeMachineClockModel;
 
     private int updateTick = 0;

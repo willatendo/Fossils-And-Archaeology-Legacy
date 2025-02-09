@@ -8,12 +8,16 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.OldUsersConverter;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.TargetGoal;
@@ -35,7 +39,7 @@ import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import willatendo.fossilslegacy.server.criteria.FLCriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakerType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakingEntity;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.EnumSet;
 import java.util.Optional;
@@ -57,8 +61,10 @@ public class TamedZombifiedPiglin extends ZombifiedPiglin implements OwnableEnti
 
         if (this.getOwner() != null) {
             if (this.getOwner().isDeadOrDying()) {
-                this.sendMessageToPlayer(TamedZombifiedPiglin.TamedZombifiedPiglinSpeaker.SACRIFICE, (Player) this.getOwner());
-                this.discard();
+                if (this.getOwner() instanceof ServerPlayer serverPlayer) {
+                    this.sendMessageToPlayer(TamedZombifiedPiglin.TamedZombifiedPiglinSpeaker.SACRIFICE, serverPlayer);
+                    this.discard();
+                }
             }
         }
     }
@@ -208,29 +214,13 @@ public class TamedZombifiedPiglin extends ZombifiedPiglin implements OwnableEnti
     }
 
     @Override
-    public boolean isAlliedTo(Entity entity) {
-        if (this.isTame()) {
-            LivingEntity owner = this.getOwner();
-            if (entity == owner) {
-                return true;
-            }
-
-            if (owner != null) {
-                return owner.isAlliedTo(entity);
-            }
-        }
-
-        return super.isAlliedTo(entity);
-    }
-
-    @Override
     public void die(DamageSource damageSource) {
         Component deathMessage = this.getCombatTracker().getDeathMessage();
         super.die(damageSource);
 
         if (this.dead) {
-            if (!this.level().isClientSide() && this.level().getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES) && this.getOwner() instanceof ServerPlayer) {
-                this.getOwner().sendSystemMessage(deathMessage);
+            if (this.level() instanceof ServerLevel serverLevel && serverLevel.getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES) && this.getOwner() instanceof ServerPlayer serverPlayer) {
+                serverPlayer.sendSystemMessage(deathMessage);
             }
         }
     }
@@ -268,7 +258,7 @@ public class TamedZombifiedPiglin extends ZombifiedPiglin implements OwnableEnti
             this.canFly = canFly;
             this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
             if (!(zombifiedPigman.getNavigation() instanceof GroundPathNavigation) && !(zombifiedPigman.getNavigation() instanceof FlyingPathNavigation)) {
-                throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
+                throw new IllegalArgumentException("Unsupported mob jsonModelType for FollowOwnerGoal");
             }
         }
 
@@ -479,11 +469,11 @@ public class TamedZombifiedPiglin extends ZombifiedPiglin implements OwnableEnti
         }
 
         protected static Component basicSpeach(String id) {
-            return FossilsLegacyUtils.translation("entity", "zombified_piglin.speach." + id);
+            return FAUtils.translation("entity", "zombified_piglin.speach." + id);
         }
 
         protected static Component basicSpeach(String id, Object... args) {
-            return FossilsLegacyUtils.translation("entity", "zombified_piglin.speach." + id, args);
+            return FAUtils.translation("entity", "zombified_piglin.speach." + id, args);
         }
 
         @Override

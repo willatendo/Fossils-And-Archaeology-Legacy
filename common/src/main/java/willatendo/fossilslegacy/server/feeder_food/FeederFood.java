@@ -17,11 +17,11 @@ public record FeederFood(ResourceLocation item, FeederInfo feederInfo) {
     public static final Codec<FeederFood> CODEC = RecordCodecBuilder.create(instance -> instance.group(ResourceLocation.CODEC.fieldOf("item").forGetter(FeederFood::item), FeederFood.FeederInfo.CODEC.fieldOf("fill_type").forGetter(FeederFood::feederInfo)).apply(instance, FeederFood::new));
 
     public Item getItem() {
-        return BuiltInRegistries.ITEM.get(this.item);
+        return BuiltInRegistries.ITEM.getValue(this.item);
     }
 
     public static Map<Item, FeederFood.FeederInfo> getFeederFood(RegistryAccess registryAccess) {
-        return registryAccess.registryOrThrow(FARegistries.FEEDER_FOOD).stream().collect(Collectors.toMap(feederFood -> BuiltInRegistries.ITEM.get(feederFood.item()), feederFood -> feederFood.feederInfo()));
+        return registryAccess.lookupOrThrow(FARegistries.FEEDER_FOOD).stream().collect(Collectors.toMap(feederFood -> BuiltInRegistries.ITEM.getValue(feederFood.item()), FeederFood::feederInfo));
     }
 
     public record FeederInfo(int fillAmount, FeederFood.FillType fillType) {

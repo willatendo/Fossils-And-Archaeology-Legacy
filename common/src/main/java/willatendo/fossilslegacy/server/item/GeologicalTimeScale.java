@@ -5,7 +5,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public final class GeologicalTimeScale {
 
         @Override
         public void appendHoverText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-            tooltipComponents.add(FossilsLegacyUtils.translation("item", "dna.era", FossilsLegacyUtils.translation("item", "dna.era." + this.name).withStyle(this.chatFormatting)).withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(FAUtils.translation("item", "dna.era", FAUtils.translation("item", "dna.era." + this.name).withStyle(this.chatFormatting)).withStyle(ChatFormatting.GRAY));
         }
     }
 
@@ -68,7 +68,7 @@ public final class GeologicalTimeScale {
         @Override
         public void appendHoverText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
             this.era.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
-            tooltipComponents.add(FossilsLegacyUtils.translation("item", "dna.period", FossilsLegacyUtils.translation("item", "dna.period." + this.name).withColor(this.color)).withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(FAUtils.translation("item", "dna.period", FAUtils.translation("item", "dna.period." + this.name).withColor(this.color)).withStyle(ChatFormatting.GRAY));
         }
     }
 }

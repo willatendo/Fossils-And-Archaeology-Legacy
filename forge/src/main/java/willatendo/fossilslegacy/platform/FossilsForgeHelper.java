@@ -1,17 +1,12 @@
 package willatendo.fossilslegacy.platform;
 
-import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.syncher.EntityDataSerializer;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.saveddata.maps.MapDecorationType;
 import willatendo.fossilslegacy.FossilsLegacyForgeMod;
@@ -19,19 +14,12 @@ import willatendo.fossilslegacy.network.ForgePacketHelper;
 import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
 import willatendo.fossilslegacy.server.item.ForgeArticulatedFossilItem;
-import willatendo.fossilslegacy.server.item.ForgeDinosaurSpawnEggItem;
 import willatendo.fossilslegacy.server.item.items.ArticulatedFossilItem;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
-import willatendo.fossilslegacy.server.utils.Platform;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.function.Supplier;
 
 public class FossilsForgeHelper implements FossilsModloaderHelper {
-    @Override
-    public Platform getPlatform() {
-        return Platform.FORGE;
-    }
-
     @Override
     public void sendApplyGenePacket(BlockPos blockPos, String coatType) {
         ForgePacketHelper.sendToServer(new ServerboundApplyGenePacket(blockPos, coatType));
@@ -53,11 +41,6 @@ public class FossilsForgeHelper implements FossilsModloaderHelper {
     }
 
     @Override
-    public SpawnEggItem createDinosaurSpawnEgg(Supplier<EntityType<? extends Mob>> entityType, int primaryColor, int secondaryColor, Item.Properties properties) {
-        return new ForgeDinosaurSpawnEggItem(entityType, primaryColor, secondaryColor, properties);
-    }
-
-    @Override
     public ArticulatedFossilItem getArticulatedFossilItem(Item.Properties properties) {
         return new ForgeArticulatedFossilItem(properties);
     }
@@ -69,11 +52,6 @@ public class FossilsForgeHelper implements FossilsModloaderHelper {
 
     @Override
     public RecipeBookType createRecipeBookType(String name) {
-        return RecipeBookType.create(FossilsLegacyUtils.ID + name);
-    }
-
-    @Override
-    public RecipeBookCategories createRecipeBookCategory(String name, ItemStack... icons) {
-        return RecipeBookCategories.create(FossilsLegacyUtils.ID + name, icons);
+        return RecipeBookType.create(FAUtils.ID + name);
     }
 }

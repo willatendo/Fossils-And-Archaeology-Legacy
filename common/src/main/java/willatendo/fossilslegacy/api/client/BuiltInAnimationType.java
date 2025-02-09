@@ -2,8 +2,8 @@ package willatendo.fossilslegacy.api.client;
 
 import com.google.common.collect.Maps;
 import net.minecraft.resources.ResourceLocation;
-import willatendo.fossilslegacy.client.model.json.JsonModel;
-import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
+import willatendo.fossilslegacy.client.model.json.JsonTypeModel;
+import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 
 import java.util.Map;
 
@@ -12,11 +12,9 @@ public interface BuiltInAnimationType {
 
     ResourceLocation getId();
 
-    boolean canUse(Dinosaur dinosaur);
+    boolean canUse(DinosaurRenderState dinosaurRenderState);
 
-    void setupAnim(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw);
-
-    void prepareMobModel(Dinosaur dinosaur, JsonModel jsonModel, float limbSwing, float limbSwingAmount, float partialTick);
+    void setupAnim(DinosaurRenderState dinosaurRenderState, JsonTypeModel jsonTypeModel, float limbSwing, float limbSwingAmount, float netHeadYaw);
 
     static BuiltInAnimationType get(ResourceLocation id) {
         return BuiltInAnimationType.VALUES.get(id);

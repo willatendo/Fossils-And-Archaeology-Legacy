@@ -8,7 +8,7 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureSet;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStructurePlacement;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FAStructureSets {
     public static final ResourceKey<StructureSet> ACADEMY = FAStructureSets.create("academy");
@@ -21,7 +21,7 @@ public final class FAStructureSets {
     public static final ResourceKey<StructureSet> WEAPON_SHOP = FAStructureSets.create("weapon_shop");
 
     public static ResourceKey<StructureSet> create(String name) {
-        return ResourceKey.create(Registries.STRUCTURE_SET, FossilsLegacyUtils.resource(name));
+        return ResourceKey.create(Registries.STRUCTURE_SET, FAUtils.resource(name));
     }
 
     public static void bootstrap(BootstrapContext<StructureSet> bootstrapContext) {

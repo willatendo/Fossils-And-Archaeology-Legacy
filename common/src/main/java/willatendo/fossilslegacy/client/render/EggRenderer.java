@@ -7,10 +7,11 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FAModelLayers;
 import willatendo.fossilslegacy.client.model.EggModel;
+import willatendo.fossilslegacy.client.state.EggRenderState;
 import willatendo.fossilslegacy.server.egg_variant.EggVariant;
 import willatendo.fossilslegacy.server.entity.entities.Egg;
 
-public class EggRenderer extends MobRenderer<Egg, EggModel> {
+public class EggRenderer extends MobRenderer<Egg, EggRenderState, EggModel> {
     private final EggModel regularEggModel;
     private final EggModel smallEggModel;
 
@@ -21,17 +22,28 @@ public class EggRenderer extends MobRenderer<Egg, EggModel> {
     }
 
     @Override
-    public void render(Egg egg, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight) {
-        if (egg.getEggVariant().value().eggSize() == EggVariant.EggSize.SMALL) {
+    public void extractRenderState(Egg egg, EggRenderState eggRenderState, float partialTicks) {
+        super.extractRenderState(egg, eggRenderState, partialTicks);
+        eggRenderState.variant = egg.getEggVariant();
+    }
+
+    @Override
+    public EggRenderState createRenderState() {
+        return new EggRenderState();
+    }
+
+    @Override
+    public void render(EggRenderState eggRenderState, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
+        if (eggRenderState.variant.value().eggSize() == EggVariant.EggSize.SMALL) {
             this.model = this.smallEggModel;
         } else {
             this.model = this.regularEggModel;
         }
-        super.render(egg, entityYaw, partialTicks, poseStack, multiBufferSource, packedLight);
+        super.render(eggRenderState, poseStack, multiBufferSource, partialTicks);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(Egg egg) {
-        return egg.getEggVariant().value().texture();
+    public ResourceLocation getTextureLocation(EggRenderState eggRenderState) {
+        return eggRenderState.variant.value().texture();
     }
 }

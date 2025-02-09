@@ -8,14 +8,14 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.event.registry.ForgeSimpleRegistryRegister;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
-@Mod(FossilsLegacyUtils.ID)
+@Mod(FAUtils.ID)
 public class FossilsLegacyForgeMod {
-    public static final SimpleRegistry<EntityDataSerializer<?>> ENTITY_DATA_SERIALIZER = SimpleRegistry.create(ForgeRegistries.Keys.ENTITY_DATA_SERIALIZERS, FossilsLegacyUtils.ID);
-    public static final DeferredRegister<MapDecorationType> MAP_DECORATION_TYPES = DeferredRegister.create(Registries.MAP_DECORATION_TYPE, FossilsLegacyUtils.ID);
+    public static final SimpleRegistry<EntityDataSerializer<?>> ENTITY_DATA_SERIALIZER = SimpleRegistry.create(ForgeRegistries.Keys.ENTITY_DATA_SERIALIZERS, FAUtils.ID);
+    public static final DeferredRegister<MapDecorationType> MAP_DECORATION_TYPES = DeferredRegister.create(Registries.MAP_DECORATION_TYPE, FAUtils.ID);
 
     public FossilsLegacyForgeMod() {
         IEventBus iEventBus = FMLJavaModLoadingContext.get().getModEventBus();

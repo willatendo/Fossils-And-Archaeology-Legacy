@@ -2,7 +2,7 @@ package willatendo.fossilslegacy.data.tag;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.minecraft.data.tags.TagsProvider;
 import willatendo.fossilslegacy.server.fossil_variant.FAFossilVariants;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 import willatendo.fossilslegacy.server.registry.FARegistries;
@@ -10,9 +10,9 @@ import willatendo.fossilslegacy.server.tags.FAFossilVariantTags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class FAFossilVariantTagProvider extends DataDrivenTagsProvider<FossilVariant> {
-    public FAFossilVariantTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId, ExistingFileHelper existingFileHelper) {
-        super(packOutput, FARegistries.FOSSIL_VARIANTS, provider, modId, existingFileHelper);
+public class FAFossilVariantTagProvider extends TagsProvider<FossilVariant> {
+    public FAFossilVariantTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId) {
+        super(packOutput, FARegistries.FOSSIL_VARIANTS, provider, modId);
     }
 
     @Override

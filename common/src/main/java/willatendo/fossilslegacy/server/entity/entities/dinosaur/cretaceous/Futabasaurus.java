@@ -58,7 +58,7 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 16.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 3.0D).build();
     }
 
-    public static boolean checkFutabasaurusSpawnRules(EntityType<Futabasaurus> entityType, ServerLevelAccessor serverLevelAccessor, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource) {
+    public static boolean checkFutabasaurusSpawnRules(EntityType<Futabasaurus> entityType, ServerLevelAccessor serverLevelAccessor, EntitySpawnReason entitySpawnReason, BlockPos blockPos, RandomSource randomSource) {
         return blockPos.getY() >= (serverLevelAccessor.getSeaLevel() - 13) && blockPos.getY() <= serverLevelAccessor.getSeaLevel() && serverLevelAccessor.getFluidState(blockPos.below()).is(FluidTags.WATER) && serverLevelAccessor.getBlockState(blockPos.above()).is(Blocks.WATER);
     }
 
@@ -202,7 +202,6 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
                 }
 
                 this.calculateEntityAnimation(false);
-                this.tryCheckInsideBlocks();
             } else {
                 super.travel(vec3);
             }

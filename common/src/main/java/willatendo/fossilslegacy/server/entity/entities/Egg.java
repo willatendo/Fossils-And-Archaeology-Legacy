@@ -12,6 +12,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.OldUsersConverter;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -21,7 +22,6 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.loot.LootTable;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
@@ -32,7 +32,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformati
 import willatendo.fossilslegacy.server.entity.util.interfaces.TicksToBirth;
 import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -56,16 +56,11 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
     }
 
     @Override
-    protected void dropExperience(Entity entity) {
+    protected void dropExperience(ServerLevel serverLevel, Entity entity) {
     }
 
     @Override
     public void knockback(double xVelc, double yVelc, double zVelc) {
-    }
-
-    @Override
-    protected ResourceKey<LootTable> getDefaultLootTable() {
-        return this.getEggVariant().value().lootTable();
     }
 
     @Override
@@ -92,10 +87,12 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
         if (this.getRemainingTime() < -500) {
             Player player = this.level().getNearestPlayer(this, 25.0D);
             if (player != null) {
-                if (this.getEggVariant().value().wet()) {
-                    player.sendSystemMessage(FossilsLegacyUtils.translation("entity", "egg.died.dry"));
-                } else {
-                    player.sendSystemMessage(FossilsLegacyUtils.translation("entity", "egg.died"));
+                if (player instanceof ServerPlayer serverPlayer) {
+                    if (this.getEggVariant().value().wet()) {
+                        serverPlayer.sendSystemMessage(FAUtils.translation("entity", "egg.died.dry"));
+                    } else {
+                        serverPlayer.sendSystemMessage(FAUtils.translation("entity", "egg.died"));
+                    }
                 }
                 this.discard();
             }
@@ -113,8 +110,8 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(EGG_VARIANT, FABuiltInRegistries.EGG_VARIANTS.getHolderOrThrow(FAEggVariants.TRICERATOPS.getKey()));
-        builder.define(COAT_TYPE, this.registryAccess().registryOrThrow(FARegistries.COAT_TYPES).getAny().orElseThrow());
+        builder.define(EGG_VARIANT, FABuiltInRegistries.EGG_VARIANTS.getOrThrow(FAEggVariants.TRICERATOPS.getKey()));
+        builder.define(COAT_TYPE, this.registryAccess().lookupOrThrow(FARegistries.COAT_TYPES).getAny().orElseThrow());
         builder.define(REMAINING_TIME, 0);
         builder.define(WARM, false);
         builder.define(OWNER, Optional.empty());
@@ -156,7 +153,7 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
         Optional<ResourceKey<EggVariant>> eggVariant = Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("Variant"))).map(resourceLocation -> ResourceKey.create(FARegistries.EGG_VARIANTS, resourceLocation));
         Registry<EggVariant> registry = FABuiltInRegistries.EGG_VARIANTS;
         Objects.requireNonNull(registry);
-        eggVariant.flatMap(registry::getHolder).ifPresent(this::setEggVariant);
+        eggVariant.flatMap(registry::get).ifPresent(this::setEggVariant);
         VARIANT_CODEC.parse(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), compoundTag).ifSuccess(this::setCoatType);
         this.setRemainingTime(compoundTag.getInt("RemainingTime"));
         this.setWarm(compoundTag.getBoolean("Warm"));
@@ -169,7 +166,7 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 
     @Override
     public Entity getOffspring(Level level) {
-        return this.getEggVariant().value().entityType().get().create(level);
+        return this.getEggVariant().value().entityType().get().create(level, EntitySpawnReason.BREEDING);
     }
 
     @Override

@@ -17,7 +17,7 @@ import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.feature.PrehistoricBiomeFeatures;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FABiomes {
     private static final Music NORMAL_MUSIC = null;
@@ -34,7 +34,7 @@ public final class FABiomes {
     public static final ResourceKey<Biome> PREHISTORIC_BEACH = register("prehistoric_beach");
 
     private static ResourceKey<Biome> register(String name) {
-        return ResourceKey.create(Registries.BIOME, FossilsLegacyUtils.resource(name));
+        return ResourceKey.create(Registries.BIOME, FAUtils.resource(name));
     }
 
     static int calculateSkyColor(float temperature) {
@@ -79,7 +79,6 @@ public final class FABiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeGenerationSettings);
         biomeGenerationSettings.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, deep ? AquaticPlacements.SEAGRASS_DEEP : AquaticPlacements.SEAGRASS_NORMAL);
-        BiomeDefaultFeatures.addDefaultSeagrass(biomeGenerationSettings);
         BiomeDefaultFeatures.addColdOceanExtraVegetation(biomeGenerationSettings);
         return biomeGenerationSettings;
     }

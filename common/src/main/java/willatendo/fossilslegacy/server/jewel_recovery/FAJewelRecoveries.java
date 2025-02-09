@@ -9,13 +9,13 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 
 public final class FAJewelRecoveries {
     private static ResourceKey<JewelRecovery> create(String name) {
-        return ResourceKey.create(FARegistries.JEWEL_RECOVERY, FossilsLegacyUtils.resource(name));
+        return ResourceKey.create(FARegistries.JEWEL_RECOVERY, FAUtils.resource(name));
     }
 
     private static void register(BootstrapContext<JewelRecovery> bootstrapContext, Block input, JewelRecovery.JewelEntry... jewelEntries) {

@@ -6,11 +6,11 @@ import net.minecraft.data.PackOutput;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.concurrent.CompletableFuture;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID)
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = FAUtils.ID)
 public class FossilsLegacyData {
     @SubscribeEvent
     public static void gatherDataEvent(GatherDataEvent gatherDataEvent) {
@@ -18,6 +18,6 @@ public class FossilsLegacyData {
         PackOutput packOutput = dataGenerator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> registries = gatherDataEvent.getLookupProvider();
 
-        dataGenerator.addProvider(gatherDataEvent.includeServer(), new FAForgeBuiltinProvider(packOutput, registries, FossilsLegacyUtils.ID));
+        dataGenerator.addProvider(gatherDataEvent.includeServer(), new FAForgeBuiltinProvider(packOutput, registries, FAUtils.ID));
     }
 }

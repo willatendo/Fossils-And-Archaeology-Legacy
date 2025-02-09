@@ -11,11 +11,8 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.Entity.RemovalReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.animal.armadillo.Armadillo;
 import net.minecraft.world.entity.animal.goat.Goat;
@@ -82,61 +79,61 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLe
             return null;
         }
         if (livingEntity instanceof Armadillo) {
-            finalEntity = (T) EntityType.ARMADILLO.create(level);
+            finalEntity = (T) EntityType.ARMADILLO.create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Cat) {
-            finalEntity = (T) EntityType.CAT.create(level);
+            finalEntity = (T) EntityType.CAT.create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Cow) {
-            finalEntity = (T) EntityType.COW.create(level);
+            finalEntity = (T) EntityType.COW.create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Dolphin) {
-            finalEntity = (T) EntityType.DOLPHIN.create(level);
+            finalEntity = (T) EntityType.DOLPHIN.create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Donkey) {
-            finalEntity = (T) EntityType.DONKEY.create(level);
+            finalEntity = (T) EntityType.DONKEY.create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Fox) {
-            finalEntity = (T) EntityType.FOX.create(level);
+            finalEntity = (T) EntityType.FOX.create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Goat) {
-            finalEntity = (T) EntityType.GOAT.create(level);
+            finalEntity = (T) EntityType.GOAT.create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Horse) {
-            finalEntity = (T) EntityType.HORSE.create(level);
+            finalEntity = (T) EntityType.HORSE.create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Llama) {
-            finalEntity = (T) EntityType.LLAMA.create(level);
+            finalEntity = (T) EntityType.LLAMA.create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Mule) {
-            finalEntity = (T) EntityType.MULE.create(level);
+            finalEntity = (T) EntityType.MULE.create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Ocelot) {
-            finalEntity = (T) EntityType.OCELOT.create(level);
+            finalEntity = (T) EntityType.OCELOT.create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Panda) {
-            finalEntity = (T) EntityType.PANDA.create(level);
+            finalEntity = (T) EntityType.PANDA.create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Pig) {
-            finalEntity = (T) EntityType.PIG.create(level);
+            finalEntity = (T) EntityType.PIG.create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof PolarBear) {
-            finalEntity = (T) EntityType.POLAR_BEAR.create(level);
+            finalEntity = (T) EntityType.POLAR_BEAR.create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Rabbit) {
-            finalEntity = (T) EntityType.RABBIT.create(level);
+            finalEntity = (T) EntityType.RABBIT.create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Sheep) {
-            finalEntity = (T) EntityType.SHEEP.create(level);
+            finalEntity = (T) EntityType.SHEEP.create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Wolf) {
-            finalEntity = (T) EntityType.WOLF.create(level);
+            finalEntity = (T) EntityType.WOLF.create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Mammoth) {
-            finalEntity = (T) FAEntityTypes.MAMMOTH.get().create(level);
+            finalEntity = (T) FAEntityTypes.MAMMOTH.get().create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Smilodon) {
-            finalEntity = (T) FAEntityTypes.SMILODON.get().create(level);
+            finalEntity = (T) FAEntityTypes.SMILODON.get().create(level, EntitySpawnReason.BREEDING);
         }
         return finalEntity;
     }
@@ -145,62 +142,62 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLe
         livingEntity.remove(RemovalReason.DISCARDED);
         Entity toCreate = null;
         if (livingEntity instanceof Armadillo) {
-            toCreate = FAEntityTypes.PREGNANT_ARMADILLO.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_ARMADILLO.get().create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Cat) {
-            toCreate = FAEntityTypes.PREGNANT_CAT.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_CAT.get().create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Cow) {
-            toCreate = FAEntityTypes.PREGNANT_COW.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_COW.get().create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Dolphin) {
-            toCreate = FAEntityTypes.PREGNANT_DOLPHIN.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_DOLPHIN.get().create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Donkey) {
-            toCreate = FAEntityTypes.PREGNANT_DONKEY.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_DONKEY.get().create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Fox) {
-            toCreate = FAEntityTypes.PREGNANT_FOX.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_FOX.get().create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Goat) {
-            toCreate = FAEntityTypes.PREGNANT_GOAT.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_GOAT.get().create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Horse) {
-            toCreate = FAEntityTypes.PREGNANT_HORSE.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_HORSE.get().create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Llama) {
-            toCreate = FAEntityTypes.PREGNANT_LLAMA.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_LLAMA.get().create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Mule) {
-            toCreate = FAEntityTypes.PREGNANT_MULE.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_MULE.get().create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Ocelot) {
-            toCreate = FAEntityTypes.PREGNANT_OCELOT.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_OCELOT.get().create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Panda) {
-            toCreate = FAEntityTypes.PREGNANT_PANDA.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_PANDA.get().create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Pig) {
-            toCreate = FAEntityTypes.PREGNANT_PIG.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_PIG.get().create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof PolarBear) {
-            toCreate = FAEntityTypes.PREGNANT_POLAR_BEAR.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_POLAR_BEAR.get().create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Rabbit) {
-            toCreate = FAEntityTypes.PREGNANT_RABBIT.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_RABBIT.get().create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Sheep sheep) {
-            toCreate = FAEntityTypes.PREGNANT_SHEEP.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_SHEEP.get().create(level, EntitySpawnReason.BREEDING);
             ((PregnantSheep) toCreate).setColor(sheep.getColor());
         }
         if (livingEntity instanceof Wolf) {
-            toCreate = FAEntityTypes.PREGNANT_WOLF.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_WOLF.get().create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Mammoth) {
-            toCreate = FAEntityTypes.PREGNANT_MAMMOTH.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_MAMMOTH.get().create(level, EntitySpawnReason.BREEDING);
         }
         if (livingEntity instanceof Smilodon) {
-            toCreate = FAEntityTypes.PREGNANT_SMILODON.get().create(level);
+            toCreate = FAEntityTypes.PREGNANT_SMILODON.get().create(level, EntitySpawnReason.BREEDING);
         }
         toCreate.moveTo(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), livingEntity.getYRot(), livingEntity.getXRot());
         level.addFreshEntity(toCreate);
@@ -226,11 +223,11 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLe
     }
 
     default void definePregnancyData(EntityDataAccessor<Holder<PregnancyType>> pregnancy, SynchedEntityData.Builder builder) {
-        builder.define(pregnancy, FABuiltInRegistries.PREGNANCY_TYPES.getHolderOrThrow(FAPregnancyTypes.CAT.getKey()));
+        builder.define(pregnancy, FABuiltInRegistries.PREGNANCY_TYPES.getOrThrow(FAPregnancyTypes.CAT.getKey()));
     }
 
     default void defineCoatTypeData(EntityDataAccessor<Holder<CoatType>> pregnancy, SynchedEntityData.Builder builder) {
-        builder.define(pregnancy, this.getLevel().registryAccess().registryOrThrow(FARegistries.COAT_TYPES).getAny().orElseThrow());
+        builder.define(pregnancy, this.getLevel().registryAccess().lookupOrThrow(FARegistries.COAT_TYPES).getAny().orElseThrow());
     }
 
     default void addRemainingPregnancyTime(CompoundTag compoundTag) {
@@ -249,7 +246,7 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLe
         Optional<ResourceKey<PregnancyType>> eggVariant = Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("Variant"))).map((resourceLocation) -> ResourceKey.create(FARegistries.PREGNANCY_TYPES, resourceLocation));
         Registry<PregnancyType> registry = FABuiltInRegistries.PREGNANCY_TYPES;
         Objects.requireNonNull(registry);
-        eggVariant.flatMap(registry::getHolder).ifPresent(this::setPregnancyType);
+        eggVariant.flatMap(registry::get).ifPresent(this::setPregnancyType);
     }
 
     default void addCoatTypeData(CompoundTag compoundTag) {

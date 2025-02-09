@@ -21,14 +21,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.block.entity.entities.FeederBlockEntity;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class FeederBlock extends Block implements EntityBlock {
-    public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty HAS_FOOD = BooleanProperty.create("has_food");
 
     public FeederBlock(Properties properties) {
@@ -79,7 +79,13 @@ public class FeederBlock extends Block implements EntityBlock {
 
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide() ? null : SimpleUtils.createTickerHelper(blockEntityType, FABlockEntityTypes.FEEDER.get(), FeederBlockEntity::serverTick);
+        BlockEntityTicker<T> blockEntityTicker = null;
+        if (level instanceof ServerLevel serverlevel) {
+            blockEntityTicker = SimpleUtils.createTickerHelper(blockEntityType, FABlockEntityTypes.FEEDER.get(), (levelIn, blockPosIn, blockStateIn, analyzerBlockEntityIn) -> {
+                FeederBlockEntity.serverTick(serverlevel, blockPosIn, blockStateIn, analyzerBlockEntityIn);
+            });
+        }
+        return blockEntityTicker;
     }
 
     @Override

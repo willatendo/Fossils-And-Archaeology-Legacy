@@ -10,10 +10,10 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -22,7 +22,8 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.DecoratedPotBlockEntity;
@@ -61,12 +62,11 @@ public class MayanVaseBlock extends BaseEntityBlock implements SimpleWaterlogged
     }
 
     @Override
-    protected BlockState updateShape(BlockState blockState, Direction direction, BlockState neighborBlockState, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos neighborBlockPos) {
+    protected BlockState updateShape(BlockState blockState, LevelReader levelReader, ScheduledTickAccess scheduledTickAccess, BlockPos blockPos, Direction direction, BlockPos neighborBlockPos, BlockState neighborBlockState, RandomSource randomSource) {
         if (blockState.getValue(WATERLOGGED)) {
-            levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
+            scheduledTickAccess.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelReader));
         }
-
-        return super.updateShape(blockState, direction, neighborBlockState, levelAccessor, blockPos, neighborBlockPos);
+        return super.updateShape(blockState, levelReader, scheduledTickAccess, blockPos, direction, neighborBlockPos, neighborBlockState, randomSource);
     }
 
     @Override
@@ -76,15 +76,15 @@ public class MayanVaseBlock extends BaseEntityBlock implements SimpleWaterlogged
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+    protected InteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
         BlockEntity blockEntity = level.getBlockEntity(blockPos);
         if (blockEntity instanceof VaseBlockEntity vaseBlockEntity) {
             if (level.isClientSide) {
-                return ItemInteractionResult.CONSUME;
+                return InteractionResult.SUCCESS;
             } else {
                 ItemStack itemStackInside = vaseBlockEntity.getTheItem();
                 if (itemStack.isEmpty() || !itemStackInside.isEmpty() && (!ItemStack.isSameItemSameComponents(itemStackInside, itemStack) || itemStackInside.getCount() >= itemStackInside.getMaxStackSize())) {
-                    return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+                    return InteractionResult.TRY_WITH_EMPTY_HAND;
                 } else {
                     player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
                     ItemStack consumedItemStack = itemStack.consumeAndReturn(1, player);
@@ -106,21 +106,21 @@ public class MayanVaseBlock extends BaseEntityBlock implements SimpleWaterlogged
 
                     vaseBlockEntity.setChanged();
                     level.gameEvent(player, GameEvent.BLOCK_CHANGE, blockPos);
-                    return ItemInteractionResult.SUCCESS;
+                    return InteractionResult.SUCCESS;
                 }
             }
         } else {
-            return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
+            return InteractionResult.PASS;
         }
     }
 
     @Override
-    protected InteractionResult useWithoutItem(BlockState p_316866_, Level p_316544_, BlockPos p_316541_, Player p_316732_, BlockHitResult p_316860_) {
-        BlockEntity var7 = p_316544_.getBlockEntity(p_316541_);
-        if (var7 instanceof DecoratedPotBlockEntity decoratedpotblockentity) {
-            p_316544_.playSound((Player) null, p_316541_, SoundEvents.DECORATED_POT_INSERT_FAIL, SoundSource.BLOCKS, 1.0F, 1.0F);
-            decoratedpotblockentity.wobble(DecoratedPotBlockEntity.WobbleStyle.NEGATIVE);
-            p_316544_.gameEvent(p_316732_, GameEvent.BLOCK_CHANGE, p_316541_);
+    protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
+        BlockEntity var7 = level.getBlockEntity(blockPos);
+        if (var7 instanceof VaseBlockEntity vaseBlockEntity) {
+            level.playSound(null, blockPos, SoundEvents.DECORATED_POT_INSERT_FAIL, SoundSource.BLOCKS, 1.0F, 1.0F);
+            vaseBlockEntity.wobble(DecoratedPotBlockEntity.WobbleStyle.NEGATIVE);
+            level.gameEvent(player, GameEvent.BLOCK_CHANGE, blockPos);
             return InteractionResult.SUCCESS;
         } else {
             return InteractionResult.PASS;
@@ -128,7 +128,7 @@ public class MayanVaseBlock extends BaseEntityBlock implements SimpleWaterlogged
     }
 
     @Override
-    protected boolean isPathfindable(BlockState p_276295_, PathComputationType p_276303_) {
+    protected boolean isPathfindable(BlockState blockState, PathComputationType pathComputationType) {
         return false;
     }
 
@@ -179,7 +179,7 @@ public class MayanVaseBlock extends BaseEntityBlock implements SimpleWaterlogged
     @Override
     protected void onProjectileHit(Level level, BlockState blockState, BlockHitResult blockHitResult, Projectile projectile) {
         BlockPos blockPos = blockHitResult.getBlockPos();
-        if (!level.isClientSide && projectile.mayInteract(level, blockPos) && projectile.mayBreak(level)) {
+        if (level instanceof ServerLevel serverLevel && projectile.mayInteract(serverLevel, blockPos) && projectile.mayBreak(serverLevel)) {
             level.setBlock(blockPos, blockState.setValue(CRACKED, true), 4);
             level.destroyBlock(blockPos, true, projectile);
         }

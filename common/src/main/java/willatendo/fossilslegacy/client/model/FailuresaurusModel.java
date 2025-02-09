@@ -1,20 +1,18 @@
 package willatendo.fossilslegacy.client.model;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.server.entity.entities.Failuresaurus;
 
-public class FailuresaurusModel extends EntityModel<Failuresaurus> {
-    private final ModelPart root;
+public class FailuresaurusModel extends EntityModel<LivingEntityRenderState> {
     private final ModelPart head;
 
     public FailuresaurusModel(ModelPart root) {
-        this.root = root;
+        super(root);
         this.head = root.getChild("head");
     }
 
@@ -28,21 +26,18 @@ public class FailuresaurusModel extends EntityModel<Failuresaurus> {
         return LayerDefinition.create(meshDefinition, 64, 32);
     }
 
-    @Override
-    public void setupAnim(Failuresaurus failuresaurus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        this.applyHeadRotation(failuresaurus, netHeadYaw, headPitch, ageInTicks);
-    }
-
-    private void applyHeadRotation(Failuresaurus failuresaurus, float x, float y, float z) {
-        x = Mth.clamp(x, -30.0F, 30.0F);
-        y = Mth.clamp(y, -25.0F, 45.0F);
-
-        this.head.yRot = x * ((float) Math.PI / 180F);
-        this.head.xRot = y * ((float) Math.PI / 180F);
-    }
 
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
-        this.root.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
+    public void setupAnim(LivingEntityRenderState livingEntityRenderState) {
+        super.setupAnim(livingEntityRenderState);
+        this.applyHeadRotation(livingEntityRenderState.yRot, livingEntityRenderState.xRot);
+    }
+
+    private void applyHeadRotation(float yRot, float xRot) {
+        yRot = Mth.clamp(yRot, -30.0F, 30.0F);
+        xRot = Mth.clamp(xRot, -25.0F, 45.0F);
+
+        this.head.yRot = yRot * ((float) Math.PI / 180F);
+        this.head.xRot = xRot * ((float) Math.PI / 180F);
     }
 }

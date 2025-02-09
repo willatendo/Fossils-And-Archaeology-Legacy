@@ -120,15 +120,15 @@ public record CoatType(DisplayInfo displayInfo, Models models, List<Pattern> pat
         public static final Codec<OverrideInfo> CODEC = RecordCodecBuilder.create(instance -> instance.group(ComponentSerialization.CODEC.optionalFieldOf("animal_name").forGetter(OverrideInfo::animalName), ResourceLocation.CODEC.optionalFieldOf("ambient_sound").forGetter(OverrideInfo::ambientSound), ResourceLocation.CODEC.optionalFieldOf("hurt_sound").forGetter(OverrideInfo::hurtSound), ResourceLocation.CODEC.optionalFieldOf("death_sound").forGetter(OverrideInfo::deathSound)).apply(instance, OverrideInfo::new));
 
         public Optional<SoundEvent> getAmbientSound() {
-            return this.ambientSound().map(BuiltInRegistries.SOUND_EVENT::get);
+            return this.ambientSound().map(BuiltInRegistries.SOUND_EVENT::getValue);
         }
 
         public Optional<SoundEvent> getHurtSound() {
-            return this.hurtSound().map(BuiltInRegistries.SOUND_EVENT::get);
+            return this.hurtSound().map(BuiltInRegistries.SOUND_EVENT::getValue);
         }
 
         public Optional<SoundEvent> getDeathSound() {
-            return this.deathSound().map(BuiltInRegistries.SOUND_EVENT::get);
+            return this.deathSound().map(BuiltInRegistries.SOUND_EVENT::getValue);
         }
 
         public static CoatType.OverrideInfo.Builder builder() {

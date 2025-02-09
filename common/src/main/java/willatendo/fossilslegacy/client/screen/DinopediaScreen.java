@@ -6,6 +6,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.PageButton;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -34,7 +35,7 @@ public class DinopediaScreen extends Screen {
         super(GameNarrator.NO_TITLE);
         RegistryAccess registryAccess = Minecraft.getInstance().level.registryAccess();
         if (dinopediaInformation.getDinopediaType().isPresent()) {
-            this.dinopediaEntries = registryAccess.registryOrThrow(FARegistries.DINOPEDIA_TYPE).get(dinopediaInformation.getDinopediaType().get()).dinopediaEntries().stream().map(dinopediaEntry -> registryAccess.registryOrThrow(FARegistries.DINOPEDIA_ENTRY).get(dinopediaEntry)).toList();
+            this.dinopediaEntries = registryAccess.lookupOrThrow(FARegistries.DINOPEDIA_TYPE).getValue(dinopediaInformation.getDinopediaType().get()).dinopediaEntries().stream().map(dinopediaEntry -> registryAccess.lookupOrThrow(FARegistries.DINOPEDIA_ENTRY).getValue(dinopediaEntry)).toList();
         } else {
             this.dinopediaEntries = List.of();
         }
@@ -149,6 +150,6 @@ public class DinopediaScreen extends Screen {
     @Override
     public void renderBackground(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         this.renderTransparentBackground(guiGraphics);
-        guiGraphics.blit(BOOK_LOCATION, (this.width - 192) / 2, (this.height / 2) - (182 / 2), 0, 0, 192, 192);
+        guiGraphics.blit(RenderType::guiTextured, BOOK_LOCATION, (this.width - 192) / 2, (this.height / 2) - (182 / 2), 0.0F, 0.0F, 192, 192, 256, 256);
     }
 }

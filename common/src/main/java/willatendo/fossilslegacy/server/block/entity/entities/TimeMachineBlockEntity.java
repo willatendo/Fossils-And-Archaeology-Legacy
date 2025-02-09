@@ -17,24 +17,26 @@ import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.StackedContents;
+import net.minecraft.world.entity.player.StackedItemContents;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Portal;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.portal.DimensionTransition;
+import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.item.items.CoinItem;
 import willatendo.fossilslegacy.server.menu.menus.TimeMachineMenu;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 
@@ -101,23 +103,24 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
         compoundTag.putInt("ChargeLevel", this.chargeLevel);
     }
 
-    public void timeTravel() {
+    public void timeTravel(BlockPos blockPos) {
         this.setChargeLevel(0);
-        List<Player> players = level.getEntitiesOfClass(Player.class, new AABB(this.getBlockPos()).inflate(7.0D));
+        List<Player> players = this.level.getEntitiesOfClass(Player.class, new AABB(this.getBlockPos()).inflate(7.0D));
         players.forEach(player -> {
-            if (level instanceof ServerLevel serverLevel) {
+            if (this.level instanceof ServerLevel serverLevel) {
                 MinecraftServer minecraftServer = serverLevel.getServer();
                 ResourceKey<Level> destinedLevel = ((CoinItem) this.itemStacks.get(0).getItem()).getDestinedLevel();
-                ResourceKey<Level> blockEntityLevel = level.dimension();
+                ResourceKey<Level> blockEntityLevel = this.level.dimension();
                 if (destinedLevel != blockEntityLevel) {
                     double x = player.position().x();
                     double z = player.position().z();
                     double y = serverLevel.getHeight(Heightmap.Types.WORLD_SURFACE, (int) x, (int) z);
                     double finalY = y > -64.0D ? y : 70;
-                    level.playSound(player, this.getBlockPos(), SoundEvents.PORTAL_TRAVEL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                    player.changeDimension(new DimensionTransition(minecraftServer.getLevel(destinedLevel), new Vec3(x, finalY, z), Vec3.ZERO, player.getYRot(), player.getXRot(), false, DimensionTransition.PLAY_PORTAL_SOUND.then(new DimensionTransition.PostDimensionTransition() {
+                    this.level.playSound(player, this.getBlockPos(), SoundEvents.PORTAL_TRAVEL, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    player.setAsInsidePortal(new Portal() {
+                        @Nullable
                         @Override
-                        public void onTransition(Entity entity) {
+                        public TeleportTransition getPortalDestination(ServerLevel serverLevel, Entity entity, BlockPos blockPos) {
                             Level level = entity.level();
                             if (!level.getBlockState(TimeMachineBlockEntity.this.getBlockPos()).is(FABlocks.TIME_MACHINE.get())) {
                                 level.setBlock(TimeMachineBlockEntity.this.getBlockPos(), FABlocks.TIME_MACHINE.get().defaultBlockState(), 3);
@@ -126,8 +129,9 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
                             if (blockEntity instanceof TimeMachineBlockEntity timeMachineBlockEntity) {
                                 timeMachineBlockEntity.setItem(0, new ItemStack(CoinItem.ITEM_MAP.get(level.dimension())));
                             }
+                            return new TeleportTransition(serverLevel, new Vec3(x, finalY, z), Vec3.ZERO, 0.0F, 0.0F, TeleportTransition.PLAY_PORTAL_SOUND.then(TeleportTransition.PLACE_PORTAL_TICKET));
                         }
-                    })));
+                    }, blockPos);
                 }
             }
         });
@@ -260,15 +264,15 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
     }
 
     @Override
-    public void fillStackedContents(StackedContents stackedContents) {
+    public void fillStackedContents(StackedItemContents stackedItemContents) {
         for (ItemStack itemStack : this.itemStacks) {
-            stackedContents.accountStack(itemStack);
+            stackedItemContents.accountStack(itemStack);
         }
     }
 
     @Override
     protected Component getDefaultName() {
-        return FossilsLegacyUtils.translation("container", "time_machine");
+        return FAUtils.translation("container", "time_machine");
     }
 
     @Override

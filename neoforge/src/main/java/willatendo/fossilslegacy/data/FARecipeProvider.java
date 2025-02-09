@@ -1,16 +1,17 @@
 package willatendo.fossilslegacy.data;
 
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import willatendo.fossilslegacy.data.recipe.AnalyzationRecipeBuilder;
 import willatendo.fossilslegacy.data.recipe.ArchaeologyRecipeBuilder;
@@ -24,26 +25,33 @@ import willatendo.fossilslegacy.server.menu.categories.CultivationBookCategory;
 import willatendo.fossilslegacy.server.recipe.recipes.MagicConchRecipe;
 import willatendo.fossilslegacy.server.tags.FAAnalyzerResultTags;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
-import willatendo.simplelibrary.data.SimpleRecipeProvider;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.concurrent.CompletableFuture;
 
-public class FARecipeProvider extends SimpleRecipeProvider {
-    public FARecipeProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> registries, String modId) {
-        super(packOutput, registries, modId);
+public class FARecipeProvider extends RecipeProvider {
+    private final HolderGetter<Item> items;
+
+    protected FARecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
+        super(provider, recipeOutput);
+        this.items = provider.lookupOrThrow(Registries.ITEM);
+    }
+
+    private String name(String id) {
+        return FAUtils.ID + ":" + id;
     }
 
     @Override
-    public void addRecipes() {
-        this.shaped("cake_from_eggs", RecipeCategory.FOOD, Items.CAKE, PatternBuilder.builder("###", "$%$", "&&&"), IngredientBuilder.build(Items.MILK_BUCKET).symbol('#'), IngredientBuilder.build(Items.SUGAR).symbol('$'), IngredientBuilder.build(FAItemTags.CAKE_EGGS).requires(FAItemTags.CAKE_EGGS, "has_egg").symbol('%'), IngredientBuilder.build(Items.WHEAT).symbol('&'));
-        this.shaped(RecipeCategory.FOOD, FAItems.CHICKEN_ESSENCE_BOTTLE.get(), 8, PatternBuilder.builder("###", "#$#", "###"), IngredientBuilder.build(Items.GLASS_BOTTLE).symbol('#'), IngredientBuilder.build(FAItems.COOKED_CHICKEN_SOUP_BUCKET.get()).requires().symbol('$'));
-        this.shapeless(RecipeCategory.FOOD, FAItems.RAW_BERRY_MEDLEY_BUCKET.get(), IngredientBuilder.build(Items.BUCKET).requires(), IngredientBuilder.build(Items.SWEET_BERRIES, 4), IngredientBuilder.build(Items.CARROT), IngredientBuilder.build(Items.POTATO), IngredientBuilder.build(Items.BEEF), IngredientBuilder.build(Items.PORKCHOP));
-        this.shaped(RecipeCategory.FOOD, FAItems.ROMANTIC_CONCOCTION_BOTTLE.get(), 8, PatternBuilder.builder("###", "#$#", "###"), IngredientBuilder.build(Items.GLASS_BOTTLE).symbol('#'), IngredientBuilder.build(FAItems.COOKED_BERRY_MEDLEY_BUCKET.get()).symbol('$').requires());
-        this.shapeless(RecipeCategory.BUILDING_BLOCKS, FABlocks.SKULL_LANTERN_BLOCK.get(), IngredientBuilder.build(FABlocks.SKULL_BLOCK.get()).requires(), IngredientBuilder.build(Items.TORCH));
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, FAItems.SKULL_STICK.get(), PatternBuilder.builder("#", "$"), IngredientBuilder.build(FABlocks.SKULL_BLOCK.get()).symbol('#').requires(), IngredientBuilder.build(Items.STICK).symbol('$'));
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, FAItems.TOOTH_DAGGER.get(), PatternBuilder.builder("#", "$"), IngredientBuilder.build(FAItems.TYRANNOSAURUS_TOOTH.get()).symbol('#').requires(), IngredientBuilder.build(Items.STICK).symbol('$'));
-        this.shapeless(RecipeCategory.TOOLS, FAItems.DINOPEDIA.get(), IngredientBuilder.build(Items.BOOK), IngredientBuilder.build(FAItemTags.DNA).requires(FAItemTags.DNA, "has_dna"));
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.ANALYZER.get(), PatternBuilder.builder("#%#", "#$#"), IngredientBuilder.build(Items.IRON_INGOT).symbol('#'), IngredientBuilder.build(FAItems.RELIC_SCRAP.get()).symbol('%'), IngredientBuilder.build(FAItems.FOSSIL.get()).symbol('$').requires());
+    protected void buildRecipes() {
+        this.shaped(RecipeCategory.FOOD, Items.CAKE).pattern("###").pattern("$%$").pattern("&&&").define('#', Items.MILK_BUCKET).define('$', Items.SUGAR).define('%', this.tag(FAItemTags.CAKE_EGGS)).define('&', Items.WHEAT).unlockedBy("has_egg", has(FAItemTags.CAKE_EGGS)).save(this.output, this.name("cake_from_eggs"));
+        this.shaped(RecipeCategory.FOOD, FAItems.CHICKEN_ESSENCE_BOTTLE.get(), 8).pattern("###").pattern("#$#").pattern("###").define('#', Items.GLASS_BOTTLE).define('$', FAItems.COOKED_CHICKEN_SOUP_BUCKET.get()).unlockedBy(getHasName(FAItems.COOKED_CHICKEN_SOUP_BUCKET.get()), has(FAItems.COOKED_CHICKEN_SOUP_BUCKET.get()));
+        this.shapeless(RecipeCategory.FOOD, FAItems.RAW_BERRY_MEDLEY_BUCKET.get()).requires(Items.BUCKET).requires(Items.SWEET_BERRIES, 4).requires(Items.CARROT).requires(Items.POTATO).requires(Items.BEEF).requires(Items.PORKCHOP).unlockedBy(getHasName(Items.BUCKET), has(Items.BUCKET)).save(this.output);
+        this.shaped(RecipeCategory.FOOD, FAItems.ROMANTIC_CONCOCTION_BOTTLE.get(), 8).pattern("###").pattern("#$#").pattern("###").define('#', Items.GLASS_BOTTLE).define('$', FAItems.COOKED_BERRY_MEDLEY_BUCKET.get()).unlockedBy(getHasName(FAItems.COOKED_BERRY_MEDLEY_BUCKET.get()), has(FAItems.COOKED_BERRY_MEDLEY_BUCKET.get())).save(this.output);
+        this.shapeless(RecipeCategory.BUILDING_BLOCKS, FABlocks.SKULL_LANTERN_BLOCK.get()).requires(FABlocks.SKULL_BLOCK.get()).requires(Items.TORCH).unlockedBy(getHasName(FABlocks.SKULL_BLOCK.get()), has(FABlocks.SKULL_BLOCK.get())).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FAItems.SKULL_STICK.get()).pattern("#").pattern("$").define('#', FABlocks.SKULL_BLOCK.get()).define('$', Items.STICK).unlockedBy(getHasName(FABlocks.SKULL_BLOCK.get()), has(FABlocks.SKULL_BLOCK.get())).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FAItems.TOOTH_DAGGER.get()).pattern("#").pattern("$").define('#', FAItems.TYRANNOSAURUS_TOOTH.get()).define('$', Items.STICK).unlockedBy(getHasName(FAItems.TYRANNOSAURUS_TOOTH.get()), has(FAItems.TYRANNOSAURUS_TOOTH.get())).save(this.output);
+        this.shapeless(RecipeCategory.TOOLS, FAItems.DINOPEDIA.get()).requires(Items.BOOK).requires(this.tag(FAItemTags.DNA)).unlockedBy("has_dna", has(FAItemTags.DNA)).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.ANALYZER.get()).pattern("#%#").pattern("#$#").define('#', Items.IRON_INGOT).define('%', FAItems.RELIC_SCRAP.get()).define('$', FAItems.FOSSIL.get()).unlockedBy(getHasName(FAItems.FOSSIL.get()), has(FAItems.FOSSIL.get())).save(this.output);
         this.cultivator(FABlocks.WHITE_CULTIVATOR.get(), Items.WHITE_DYE, Blocks.WHITE_STAINED_GLASS);
         this.cultivator(FABlocks.ORANGE_CULTIVATOR.get(), Items.ORANGE_DYE, Blocks.ORANGE_STAINED_GLASS);
         this.cultivator(FABlocks.MAGENTA_CULTIVATOR.get(), Items.MAGENTA_DYE, Blocks.MAGENTA_STAINED_GLASS);
@@ -60,64 +68,23 @@ public class FARecipeProvider extends SimpleRecipeProvider {
         this.cultivator(FABlocks.GREEN_CULTIVATOR.get(), Items.GREEN_DYE, Blocks.GREEN_STAINED_GLASS);
         this.cultivator(FABlocks.RED_CULTIVATOR.get(), Items.RED_DYE, Blocks.RED_STAINED_GLASS);
         this.cultivator(FABlocks.BLACK_CULTIVATOR.get(), Items.BLACK_DYE, Blocks.BLACK_STAINED_GLASS);
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.GENE_MODIFICATION_TABLE.get(), PatternBuilder.builder("#$#", "#&#", "#!#"), IngredientBuilder.build(Items.IRON_INGOT).symbol('#').requires(), IngredientBuilder.build(Blocks.REDSTONE_BLOCK).symbol('$'), IngredientBuilder.build(Items.NETHER_STAR).symbol('&'), IngredientBuilder.build(Items.GOLD_INGOT).symbol('!'));
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.GENE_MODIFICATION_TABLE.get()).pattern("#$#").pattern("#&#").pattern("#!#").define('#', Items.IRON_INGOT).define('$', Blocks.REDSTONE_BLOCK).define('&', Items.NETHER_STAR).define('!', Items.GOLD_INGOT).unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT)).save(this.output);
         this.craftingTable(FABlocks.ARCHAEOLOGY_WORKBENCH.get(), Items.PAPER);
         this.craftingTable(FABlocks.PALAEONTOLOGY_TABLE.get(), FAItems.FOSSIL.get());
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DRUM.get(), PatternBuilder.builder("###", "$%$", "$$$"), IngredientBuilder.build(Items.LEATHER).symbol('#').requires(), IngredientBuilder.build(ItemTags.PLANKS).symbol('$'), IngredientBuilder.build(Items.REDSTONE).symbol('%'));
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.FEEDER.get(), PatternBuilder.builder("#$#", "%@!", "!!!"), IngredientBuilder.build(Items.IRON_INGOT).symbol('#'), IngredientBuilder.build(Blocks.GLASS).symbol('$'), IngredientBuilder.build(Blocks.STONE_BUTTON).symbol('%'), IngredientBuilder.build(Items.BUCKET).symbol('@'), IngredientBuilder.build(Blocks.STONE).symbol('!').requires());
-        this.shapeless(RecipeCategory.BUILDING_BLOCKS, FAItems.RAW_CHICKEN_SOUP_BUCKET.get(), IngredientBuilder.build(Items.CHICKEN), IngredientBuilder.build(Items.BUCKET).requires());
-        this.shapeless("skull_bonemeal", RecipeCategory.MISC, Items.BONE_MEAL, 5, IngredientBuilder.build(FABlocks.SKULL_BLOCK.get()));
-        this.shapeless(RecipeCategory.MISC, FAItems.OVERWORLD_COIN.get(), IngredientBuilder.build(FAItems.PREHISTORIC_COIN.get()).requires());
-        this.shapeless(RecipeCategory.MISC, FAItems.PREHISTORIC_COIN.get(), IngredientBuilder.build(FAItems.OVERWORLD_COIN.get()).requires());
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, "bark", FABlocks.LEPIDODENDRON_WOOD.get(), 3, PatternBuilder.builder("##", "##"), IngredientBuilder.build(FABlocks.LEPIDODENDRON_LOG.get()).symbol('#'));
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, "bark", FABlocks.STRIPPED_LEPIDODENDRON_WOOD.get(), 3, PatternBuilder.builder("##", "##"), IngredientBuilder.build(FABlocks.STRIPPED_LEPIDODENDRON_LOG.get()).symbol('#'));
-        this.shapeless(RecipeCategory.BUILDING_BLOCKS, "planks", FABlocks.LEPIDODENDRON_PLANKS.get(), 4, IngredientBuilder.build(FAItemTags.LEPIDODENDRON_LOGS));
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, "wooden_stairs", FABlocks.LEPIDODENDRON_STAIRS.get(), 4, PatternBuilder.builder("#  ", "## ", "###"), IngredientBuilder.build(FABlocks.LEPIDODENDRON_PLANKS.get()).symbol('#'));
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, "wooden_slab", FABlocks.LEPIDODENDRON_SLAB.get(), 6, PatternBuilder.builder("###"), IngredientBuilder.build(FABlocks.LEPIDODENDRON_PLANKS.get()).symbol('#'));
-        this.shaped(RecipeCategory.DECORATIONS, "wooden_fence", FABlocks.LEPIDODENDRON_FENCE.get(), 3, PatternBuilder.builder("#$#", "#$#"), IngredientBuilder.build(FABlocks.LEPIDODENDRON_PLANKS.get()).symbol('#').requires(), IngredientBuilder.build(Items.STICK).symbol('$'));
-        this.shaped(RecipeCategory.REDSTONE, "wooden_fence_gate", FABlocks.LEPIDODENDRON_FENCE_GATE.get(), PatternBuilder.builder("$#$", "$#$"), IngredientBuilder.build(FABlocks.LEPIDODENDRON_PLANKS.get()).symbol('#').requires(), IngredientBuilder.build(Items.STICK).symbol('$'));
-        this.shaped(RecipeCategory.REDSTONE, "wooden_door", FABlocks.LEPIDODENDRON_DOOR.get(), 3, PatternBuilder.builder("##", "##", "##"), IngredientBuilder.build(FABlocks.LEPIDODENDRON_PLANKS.get()).symbol('#'));
-        this.shaped(RecipeCategory.REDSTONE, "wooden_trapdoor", FABlocks.LEPIDODENDRON_TRAPDOOR.get(), 2, PatternBuilder.builder("##", "##"), IngredientBuilder.build(FABlocks.LEPIDODENDRON_PLANKS.get()).symbol('#'));
-        this.shaped(RecipeCategory.REDSTONE, "wooden_pressure_plate", FABlocks.LEPIDODENDRON_PRESSURE_PLATE.get(), PatternBuilder.builder("##"), IngredientBuilder.build(FABlocks.LEPIDODENDRON_PLANKS.get()).symbol('#'));
-        this.shapeless(RecipeCategory.REDSTONE, "wooden_button", FABlocks.LEPIDODENDRON_BUTTON.get(), IngredientBuilder.build(FABlocks.LEPIDODENDRON_PLANKS.get()));
-        this.shaped(RecipeCategory.DECORATIONS, "sign", FAItems.LEPIDODENDRON_SIGN.get(), 3, PatternBuilder.builder("###", "###", " $ "), IngredientBuilder.build(FABlocks.LEPIDODENDRON_PLANKS.get()).symbol('#').requires(), IngredientBuilder.build(Items.STICK).symbol('$'));
-        this.shaped(RecipeCategory.DECORATIONS, "hanging_sign", FAItems.LEPIDODENDRON_HANGING_SIGN.get(), 6, PatternBuilder.builder("$ $", "###", "###"), IngredientBuilder.build(FABlocks.STRIPPED_LEPIDODENDRON_LOG.get()).symbol('#').requires(), IngredientBuilder.build(Items.CHAIN).symbol('$'));
-        this.boat(RecipeCategory.TRANSPORTATION, "boat", FAItems.LEPIDODENDRON_BOAT.get(), PatternBuilder.builder("# #", "###"), IngredientBuilder.build(FABlocks.LEPIDODENDRON_PLANKS.get()).symbol('#'));
-        this.chestBoat(RecipeCategory.TRANSPORTATION, "chest_boat", FAItems.LEPIDODENDRON_CHEST_BOAT.get(), IngredientBuilder.build(FAItems.LEPIDODENDRON_BOAT.get()), IngredientBuilder.build(Items.CHEST));
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, "bark", FABlocks.SIGILLARIA_WOOD.get(), 3, PatternBuilder.builder("##", "##"), IngredientBuilder.build(FABlocks.SIGILLARIA_LOG.get()).symbol('#'));
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, "bark", FABlocks.STRIPPED_SIGILLARIA_WOOD.get(), 3, PatternBuilder.builder("##", "##"), IngredientBuilder.build(FABlocks.STRIPPED_SIGILLARIA_LOG.get()).symbol('#'));
-        this.shapeless(RecipeCategory.BUILDING_BLOCKS, "planks", FABlocks.SIGILLARIA_PLANKS.get(), 4, IngredientBuilder.build(FAItemTags.SIGILLARIA_LOGS));
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, "wooden_stairs", FABlocks.SIGILLARIA_STAIRS.get(), 4, PatternBuilder.builder("#  ", "## ", "###"), IngredientBuilder.build(FABlocks.SIGILLARIA_PLANKS.get()).symbol('#'));
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, "wooden_slab", FABlocks.SIGILLARIA_SLAB.get(), 6, PatternBuilder.builder("###"), IngredientBuilder.build(FABlocks.SIGILLARIA_PLANKS.get()).symbol('#'));
-        this.shaped(RecipeCategory.DECORATIONS, "wooden_fence", FABlocks.SIGILLARIA_FENCE.get(), 3, PatternBuilder.builder("#$#", "#$#"), IngredientBuilder.build(FABlocks.SIGILLARIA_PLANKS.get()).symbol('#').requires(), IngredientBuilder.build(Items.STICK).symbol('$'));
-        this.shaped(RecipeCategory.REDSTONE, "wooden_fence_gate", FABlocks.SIGILLARIA_FENCE_GATE.get(), PatternBuilder.builder("$#$", "$#$"), IngredientBuilder.build(FABlocks.SIGILLARIA_PLANKS.get()).symbol('#').requires(), IngredientBuilder.build(Items.STICK).symbol('$'));
-        this.shaped(RecipeCategory.REDSTONE, "wooden_door", FABlocks.SIGILLARIA_DOOR.get(), 3, PatternBuilder.builder("##", "##", "##"), IngredientBuilder.build(FABlocks.SIGILLARIA_PLANKS.get()).symbol('#'));
-        this.shaped(RecipeCategory.REDSTONE, "wooden_trapdoor", FABlocks.SIGILLARIA_TRAPDOOR.get(), 2, PatternBuilder.builder("##", "##"), IngredientBuilder.build(FABlocks.SIGILLARIA_PLANKS.get()).symbol('#'));
-        this.shaped(RecipeCategory.REDSTONE, "wooden_pressure_plate", FABlocks.SIGILLARIA_PRESSURE_PLATE.get(), PatternBuilder.builder("##"), IngredientBuilder.build(FABlocks.SIGILLARIA_PLANKS.get()).symbol('#'));
-        this.shapeless(RecipeCategory.REDSTONE, "wooden_button", FABlocks.SIGILLARIA_BUTTON.get(), IngredientBuilder.build(FABlocks.SIGILLARIA_PLANKS.get()));
-        this.shaped(RecipeCategory.DECORATIONS, "sign", FAItems.SIGILLARIA_SIGN.get(), 3, PatternBuilder.builder("###", "###", " $ "), IngredientBuilder.build(FABlocks.SIGILLARIA_PLANKS.get()).symbol('#').requires(), IngredientBuilder.build(Items.STICK).symbol('$'));
-        this.shaped(RecipeCategory.DECORATIONS, "hanging_sign", FAItems.SIGILLARIA_HANGING_SIGN.get(), 6, PatternBuilder.builder("$ $", "###", "###"), IngredientBuilder.build(FABlocks.STRIPPED_SIGILLARIA_LOG.get()).symbol('#').requires(), IngredientBuilder.build(Items.CHAIN).symbol('$'));
-        this.boat(RecipeCategory.TRANSPORTATION, "boat", FAItems.SIGILLARIA_BOAT.get(), PatternBuilder.builder("# #", "###"), IngredientBuilder.build(FABlocks.SIGILLARIA_PLANKS.get()).symbol('#'));
-        this.chestBoat(RecipeCategory.TRANSPORTATION, "chest_boat", FAItems.SIGILLARIA_CHEST_BOAT.get(), IngredientBuilder.build(FAItems.SIGILLARIA_BOAT.get()), IngredientBuilder.build(Items.CHEST));
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, "bark", FABlocks.CALAMITES_WOOD.get(), 3, PatternBuilder.builder("##", "##"), IngredientBuilder.build(FABlocks.CALAMITES_LOG.get()).symbol('#'));
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, "bark", FABlocks.STRIPPED_CALAMITES_WOOD.get(), 3, PatternBuilder.builder("##", "##"), IngredientBuilder.build(FABlocks.STRIPPED_CALAMITES_LOG.get()).symbol('#'));
-        this.shapeless(RecipeCategory.BUILDING_BLOCKS, "planks", FABlocks.CALAMITES_PLANKS.get(), 4, IngredientBuilder.build(FAItemTags.CALAMITES_LOGS));
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, "wooden_stairs", FABlocks.CALAMITES_STAIRS.get(), 4, PatternBuilder.builder("#  ", "## ", "###"), IngredientBuilder.build(FABlocks.CALAMITES_PLANKS.get()).symbol('#'));
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, "wooden_slab", FABlocks.CALAMITES_SLAB.get(), 6, PatternBuilder.builder("###"), IngredientBuilder.build(FABlocks.CALAMITES_PLANKS.get()).symbol('#'));
-        this.shaped(RecipeCategory.DECORATIONS, "wooden_fence", FABlocks.CALAMITES_FENCE.get(), 3, PatternBuilder.builder("#$#", "#$#"), IngredientBuilder.build(FABlocks.CALAMITES_PLANKS.get()).symbol('#').requires(), IngredientBuilder.build(Items.STICK).symbol('$'));
-        this.shaped(RecipeCategory.REDSTONE, "wooden_fence_gate", FABlocks.CALAMITES_FENCE_GATE.get(), PatternBuilder.builder("$#$", "$#$"), IngredientBuilder.build(FABlocks.CALAMITES_PLANKS.get()).symbol('#').requires(), IngredientBuilder.build(Items.STICK).symbol('$'));
-        this.shaped(RecipeCategory.REDSTONE, "wooden_door", FABlocks.CALAMITES_DOOR.get(), 3, PatternBuilder.builder("##", "##", "##"), IngredientBuilder.build(FABlocks.CALAMITES_PLANKS.get()).symbol('#'));
-        this.shaped(RecipeCategory.REDSTONE, "wooden_trapdoor", FABlocks.CALAMITES_TRAPDOOR.get(), 2, PatternBuilder.builder("##", "##"), IngredientBuilder.build(FABlocks.CALAMITES_PLANKS.get()).symbol('#'));
-        this.shaped(RecipeCategory.REDSTONE, "wooden_pressure_plate", FABlocks.CALAMITES_PRESSURE_PLATE.get(), PatternBuilder.builder("##"), IngredientBuilder.build(FABlocks.CALAMITES_PLANKS.get()).symbol('#'));
-        this.shapeless(RecipeCategory.REDSTONE, "wooden_button", FABlocks.CALAMITES_BUTTON.get(), IngredientBuilder.build(FABlocks.CALAMITES_PLANKS.get()));
-        this.shaped(RecipeCategory.DECORATIONS, "sign", FAItems.CALAMITES_SIGN.get(), 3, PatternBuilder.builder("###", "###", " $ "), IngredientBuilder.build(FABlocks.CALAMITES_PLANKS.get()).symbol('#').requires(), IngredientBuilder.build(Items.STICK).symbol('$'));
-        this.shaped(RecipeCategory.DECORATIONS, "hanging_sign", FAItems.CALAMITES_HANGING_SIGN.get(), 6, PatternBuilder.builder("$ $", "###", "###"), IngredientBuilder.build(FABlocks.STRIPPED_CALAMITES_LOG.get()).symbol('#').requires(), IngredientBuilder.build(Items.CHAIN).symbol('$'));
-        this.boat(RecipeCategory.TRANSPORTATION, "boat", FAItems.CALAMITES_BOAT.get(), PatternBuilder.builder("# #", "###"), IngredientBuilder.build(FABlocks.CALAMITES_PLANKS.get()).symbol('#'));
-        this.chestBoat(RecipeCategory.TRANSPORTATION, "chest_boat", FAItems.CALAMITES_CHEST_BOAT.get(), IngredientBuilder.build(FAItems.CALAMITES_BOAT.get()), IngredientBuilder.build(Items.CHEST));
-        this.shaped(RecipeCategory.DECORATIONS, FABlocks.MAYAN_VASE.get(), PatternBuilder.builder("###", "# #", "###"), IngredientBuilder.build(Items.BRICK).symbol('#').requires());
-        this.shaped(RecipeCategory.DECORATIONS, FABlocks.MAYAN_JADE_VASE.get(), PatternBuilder.builder("#$#", "$ $", "#$#"), IngredientBuilder.build(Items.BRICK).symbol('#').requires(), IngredientBuilder.build(FAItems.JADE.get()).symbol('$'));
-        this.shaped(RecipeCategory.DECORATIONS, FABlocks.MAYAN_OCELOT_VASE.get(), PatternBuilder.builder("#$#", "$ $", "#$#"), IngredientBuilder.build(Items.BRICK).symbol('#').requires(), IngredientBuilder.build(FAItems.JADE_OCELOT.get()).symbol('$'));
-        this.shaped(RecipeCategory.DECORATIONS, FABlocks.MAYAN_VILLAGER_VASE.get(), PatternBuilder.builder("#$#", "$ $", "#$#"), IngredientBuilder.build(Items.BRICK).symbol('#').requires(), IngredientBuilder.build(FAItems.JADE_VILLAGER.get()).symbol('$'));
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DRUM.get()).pattern("###").pattern("$%$").pattern("$$$").define('#', Items.LEATHER).define('$', this.tag(ItemTags.PLANKS)).define('%', Items.REDSTONE).unlockedBy(getHasName(Items.LEATHER), has(Items.LEATHER)).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.FEEDER.get()).pattern("#$#").pattern("%@!").pattern("!!!").define('#', Items.IRON_INGOT).define('$', Blocks.GLASS).define('%', Blocks.STONE_BUTTON).define('@', Items.BUCKET).define('!', Blocks.STONE).unlockedBy(getHasName(Blocks.STONE), has(Blocks.STONE)).save(this.output);
+        ;
+        this.shapeless(RecipeCategory.BUILDING_BLOCKS, FAItems.RAW_CHICKEN_SOUP_BUCKET.get()).requires(Items.CHICKEN).requires(Items.BUCKET).unlockedBy(getHasName(Items.BUCKET), has(Items.BUCKET)).save(this.output);
+        this.shapeless(RecipeCategory.MISC, Items.BONE_MEAL, 5).requires(FABlocks.SKULL_BLOCK.get()).unlockedBy(getHasName(FABlocks.SKULL_BLOCK.get()), has(FABlocks.SKULL_BLOCK.get())).save(this.output, FAUtils.ID + ":skull_bonemeal");
+        this.shapeless(RecipeCategory.MISC, FAItems.OVERWORLD_COIN.get()).requires(FAItems.PREHISTORIC_COIN.get()).unlockedBy(getHasName(FAItems.OVERWORLD_COIN.get()), has(FAItems.OVERWORLD_COIN.get())).save(this.output);
+        this.shapeless(RecipeCategory.MISC, FAItems.PREHISTORIC_COIN.get()).requires(FAItems.OVERWORLD_COIN.get()).unlockedBy(getHasName(FAItems.PREHISTORIC_COIN.get()), has(FAItems.PREHISTORIC_COIN.get())).save(this.output);
+        this.woodType(FABlocks.LEPIDODENDRON_LOG.get(), FABlocks.STRIPPED_LEPIDODENDRON_LOG.get(), FABlocks.LEPIDODENDRON_WOOD.get(), FABlocks.STRIPPED_LEPIDODENDRON_WOOD.get(), FAItemTags.LEPIDODENDRON_LOGS, FABlocks.LEPIDODENDRON_PLANKS.get(), FABlocks.LEPIDODENDRON_STAIRS.get(), FABlocks.LEPIDODENDRON_SLAB.get(), FABlocks.LEPIDODENDRON_FENCE.get(), FABlocks.LEPIDODENDRON_FENCE_GATE.get(), FABlocks.LEPIDODENDRON_DOOR.get(), FABlocks.LEPIDODENDRON_TRAPDOOR.get(), FABlocks.LEPIDODENDRON_PRESSURE_PLATE.get(), FABlocks.LEPIDODENDRON_BUTTON.get(), FAItems.LEPIDODENDRON_SIGN.get(), FAItems.LEPIDODENDRON_HANGING_SIGN.get(), FAItems.LEPIDODENDRON_BOAT.get(), FAItems.LEPIDODENDRON_CHEST_BOAT.get());
+        this.woodType(FABlocks.SIGILLARIA_LOG.get(), FABlocks.STRIPPED_SIGILLARIA_LOG.get(), FABlocks.SIGILLARIA_WOOD.get(), FABlocks.STRIPPED_SIGILLARIA_WOOD.get(), FAItemTags.SIGILLARIA_LOGS, FABlocks.SIGILLARIA_PLANKS.get(), FABlocks.SIGILLARIA_STAIRS.get(), FABlocks.SIGILLARIA_SLAB.get(), FABlocks.SIGILLARIA_FENCE.get(), FABlocks.SIGILLARIA_FENCE_GATE.get(), FABlocks.SIGILLARIA_DOOR.get(), FABlocks.SIGILLARIA_TRAPDOOR.get(), FABlocks.SIGILLARIA_PRESSURE_PLATE.get(), FABlocks.SIGILLARIA_BUTTON.get(), FAItems.SIGILLARIA_SIGN.get(), FAItems.SIGILLARIA_HANGING_SIGN.get(), FAItems.SIGILLARIA_BOAT.get(), FAItems.SIGILLARIA_CHEST_BOAT.get());
+        this.woodType(FABlocks.CALAMITES_LOG.get(), FABlocks.STRIPPED_CALAMITES_LOG.get(), FABlocks.CALAMITES_WOOD.get(), FABlocks.STRIPPED_CALAMITES_WOOD.get(), FAItemTags.CALAMITES_LOGS, FABlocks.CALAMITES_PLANKS.get(), FABlocks.CALAMITES_STAIRS.get(), FABlocks.CALAMITES_SLAB.get(), FABlocks.CALAMITES_FENCE.get(), FABlocks.CALAMITES_FENCE_GATE.get(), FABlocks.CALAMITES_DOOR.get(), FABlocks.CALAMITES_TRAPDOOR.get(), FABlocks.CALAMITES_PRESSURE_PLATE.get(), FABlocks.CALAMITES_BUTTON.get(), FAItems.CALAMITES_SIGN.get(), FAItems.CALAMITES_HANGING_SIGN.get(), FAItems.CALAMITES_BOAT.get(), FAItems.CALAMITES_CHEST_BOAT.get());
+        this.shaped(RecipeCategory.DECORATIONS, FABlocks.MAYAN_VASE.get()).pattern("###").pattern("# #").pattern("###").define('#', Items.BRICK).unlockedBy(getHasName(Items.BRICK), has(Items.BRICK)).save(this.output);
+        this.shaped(RecipeCategory.DECORATIONS, FABlocks.MAYAN_JADE_VASE.get()).pattern("#$#").pattern("$ $").pattern("#$#").define('#', Items.BRICK).define('$', FAItems.JADE.get()).unlockedBy(getHasName(Items.BRICK), has(Items.BRICK)).save(this.output);
+        this.shaped(RecipeCategory.DECORATIONS, FABlocks.MAYAN_OCELOT_VASE.get()).pattern("#$#").pattern("$ $").pattern("#$#").define('#', Items.BRICK).define('$', FAItems.JADE_OCELOT.get()).unlockedBy(getHasName(Items.BRICK), has(Items.BRICK)).save(this.output);
+        this.shaped(RecipeCategory.DECORATIONS, FABlocks.MAYAN_VILLAGER_VASE.get()).pattern("#$#").pattern("$ $").pattern("#$#").define('#', Items.BRICK).define('$', FAItems.JADE_VILLAGER.get()).unlockedBy(getHasName(Items.BRICK), has(Items.BRICK)).save(this.output);
         this.llama(Items.IRON_INGOT, FABlocks.IRON_LLAMA_STATUE.get());
         this.llama(Items.COPPER_INGOT, FABlocks.COPPER_LLAMA_STATUE.get());
         this.waxCopper(FABlocks.COPPER_LLAMA_STATUE.get(), FABlocks.WAXED_COPPER_LLAMA_STATUE.get());
@@ -125,45 +92,45 @@ public class FARecipeProvider extends SimpleRecipeProvider {
         this.waxCopper(FABlocks.WEATHERED_COPPER_LLAMA_STATUE.get(), FABlocks.WAXED_WEATHERED_COPPER_LLAMA_STATUE.get());
         this.waxCopper(FABlocks.OXIDIZED_COPPER_LLAMA_STATUE.get(), FABlocks.WAXED_OXIDIZED_COPPER_LLAMA_STATUE.get());
 
-        this.special("magic_conch", MagicConchRecipe::new);
+        SpecialRecipeBuilder.special(MagicConchRecipe::new).save(this.output, "magic_conch");
 
         this.copySmithingTemplate(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), Blocks.STONE_BRICKS);
 
-        this.food(FAItems.COOKED_TRICERATOPS.get(), FAItems.RAW_TRICERATOPS.get(), 0.35F);
-        this.food(FAItems.COOKED_VELOCIRAPTOR.get(), FAItems.RAW_VELOCIRAPTOR.get(), 0.35F);
-        this.food(FAItems.COOKED_TYRANNOSAURUS.get(), FAItems.RAW_TYRANNOSAURUS.get(), 0.35F);
-        this.food(FAItems.COOKED_PTERANODON.get(), FAItems.RAW_PTERANODON.get(), 0.35F);
-        this.food(FAItems.SIO_CHIU_LE.get(), FAItems.NAUTILUS.get(), 0.35F);
-        this.food(FAItems.COOKED_FUTABASAURUS.get(), FAItems.RAW_FUTABASAURUS.get(), 0.35F);
-        this.food(FAItems.COOKED_MOSASAURUS.get(), FAItems.RAW_MOSASAURUS.get(), 0.35F);
-        this.food(FAItems.COOKED_STEGOSAURUS.get(), FAItems.RAW_STEGOSAURUS.get(), 0.35F);
-        this.food(FAItems.COOKED_DILOPHOSAURUS.get(), FAItems.RAW_DILOPHOSAURUS.get(), 0.35F);
-        this.food(FAItems.COOKED_BRACHIOSAURUS.get(), FAItems.RAW_BRACHIOSAURUS.get(), 0.35F);
-        this.food(FAItems.COOKED_SMILODON.get(), FAItems.RAW_SMILODON.get(), 0.35F);
-        this.food(FAItems.COOKED_MAMMOTH.get(), FAItems.RAW_MAMMOTH.get(), 0.35F);
-        this.food(FAItems.COOKED_CHICKEN_SOUP_BUCKET.get(), FAItems.RAW_CHICKEN_SOUP_BUCKET.get(), 0.35F);
-        this.food(FAItems.COOKED_BERRY_MEDLEY_BUCKET.get(), FAItems.RAW_BERRY_MEDLEY_BUCKET.get(), 0.35F);
-        this.food(FAItems.COOKED_CARNOTAURUS.get(), FAItems.RAW_CARNOTAURUS.get(), 0.35F);
-        this.food(FAItems.COOKED_CRYOLOPHOSAURUS.get(), FAItems.RAW_CRYOLOPHOSAURUS.get(), 0.35F);
-        this.food(FAItems.COOKED_THERIZINOSAURUS.get(), FAItems.RAW_THERIZINOSAURUS.get(), 0.35F);
-        this.food(FAItems.COOKED_PACHYCEPHALOSAURUS.get(), FAItems.RAW_PACHYCEPHALOSAURUS.get(), 0.35F);
-        this.food(FAItems.COOKED_COMPSOGNATHUS.get(), FAItems.RAW_COMPSOGNATHUS.get(), 0.35F);
-        this.food(FAItems.COOKED_DODO.get(), FAItems.RAW_DODO.get(), 0.35F);
-        this.food(FAItems.COOKED_MOA.get(), FAItems.RAW_MOA.get(), 0.35F);
-        this.food(FAItems.COOKED_GALLIMIMUS.get(), FAItems.RAW_GALLIMIMUS.get(), 0.35F);
-        this.food(FAItems.COOKED_SPINOSAURUS.get(), FAItems.RAW_SPINOSAURUS.get(), 0.35F);
-        this.food(FAItems.COOKED_ANKYLOSAURUS.get(), FAItems.RAW_ANKYLOSAURUS.get(), 0.35F);
-        this.food(FAItems.COOKED_DIMETRODON.get(), FAItems.RAW_DIMETRODON.get(), 0.35F);
+        this.food(FAItems.COOKED_TRICERATOPS.get(), FAItems.RAW_TRICERATOPS.get());
+        this.food(FAItems.COOKED_VELOCIRAPTOR.get(), FAItems.RAW_VELOCIRAPTOR.get());
+        this.food(FAItems.COOKED_TYRANNOSAURUS.get(), FAItems.RAW_TYRANNOSAURUS.get());
+        this.food(FAItems.COOKED_PTERANODON.get(), FAItems.RAW_PTERANODON.get());
+        this.food(FAItems.SIO_CHIU_LE.get(), FAItems.NAUTILUS.get());
+        this.food(FAItems.COOKED_FUTABASAURUS.get(), FAItems.RAW_FUTABASAURUS.get());
+        this.food(FAItems.COOKED_MOSASAURUS.get(), FAItems.RAW_MOSASAURUS.get());
+        this.food(FAItems.COOKED_STEGOSAURUS.get(), FAItems.RAW_STEGOSAURUS.get());
+        this.food(FAItems.COOKED_DILOPHOSAURUS.get(), FAItems.RAW_DILOPHOSAURUS.get());
+        this.food(FAItems.COOKED_BRACHIOSAURUS.get(), FAItems.RAW_BRACHIOSAURUS.get());
+        this.food(FAItems.COOKED_SMILODON.get(), FAItems.RAW_SMILODON.get());
+        this.food(FAItems.COOKED_MAMMOTH.get(), FAItems.RAW_MAMMOTH.get());
+        this.food(FAItems.COOKED_CHICKEN_SOUP_BUCKET.get(), FAItems.RAW_CHICKEN_SOUP_BUCKET.get());
+        this.food(FAItems.COOKED_BERRY_MEDLEY_BUCKET.get(), FAItems.RAW_BERRY_MEDLEY_BUCKET.get());
+        this.food(FAItems.COOKED_CARNOTAURUS.get(), FAItems.RAW_CARNOTAURUS.get());
+        this.food(FAItems.COOKED_CRYOLOPHOSAURUS.get(), FAItems.RAW_CRYOLOPHOSAURUS.get());
+        this.food(FAItems.COOKED_THERIZINOSAURUS.get(), FAItems.RAW_THERIZINOSAURUS.get());
+        this.food(FAItems.COOKED_PACHYCEPHALOSAURUS.get(), FAItems.RAW_PACHYCEPHALOSAURUS.get());
+        this.food(FAItems.COOKED_COMPSOGNATHUS.get(), FAItems.RAW_COMPSOGNATHUS.get());
+        this.food(FAItems.COOKED_DODO.get(), FAItems.RAW_DODO.get());
+        this.food(FAItems.COOKED_MOA.get(), FAItems.RAW_MOA.get());
+        this.food(FAItems.COOKED_GALLIMIMUS.get(), FAItems.RAW_GALLIMIMUS.get());
+        this.food(FAItems.COOKED_SPINOSAURUS.get(), FAItems.RAW_SPINOSAURUS.get());
+        this.food(FAItems.COOKED_ANKYLOSAURUS.get(), FAItems.RAW_ANKYLOSAURUS.get());
+        this.food(FAItems.COOKED_DIMETRODON.get(), FAItems.RAW_DIMETRODON.get());
 
-        this.smithing(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), Items.NETHERITE_SWORD, FAItems.SCARAB_GEM.get(), FAItems.SCARAB_GEM_SWORD.get(), RecipeCategory.COMBAT);
-        this.smithing(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), Items.NETHERITE_SHOVEL, FAItems.SCARAB_GEM.get(), FAItems.SCARAB_GEM_SHOVEL.get(), RecipeCategory.TOOLS);
-        this.smithing(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), Items.NETHERITE_PICKAXE, FAItems.SCARAB_GEM.get(), FAItems.SCARAB_GEM_PICKAXE.get(), RecipeCategory.TOOLS);
-        this.smithing(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), Items.NETHERITE_AXE, FAItems.SCARAB_GEM.get(), FAItems.SCARAB_GEM_AXE.get(), RecipeCategory.TOOLS);
-        this.smithing(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), Items.NETHERITE_HOE, FAItems.SCARAB_GEM.get(), FAItems.SCARAB_GEM_HOE.get(), RecipeCategory.TOOLS);
-        this.smithing(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), Items.NETHERITE_HELMET, FAItems.SCARAB_GEM.get(), FAItems.SCARAB_GEM_HELMET.get(), RecipeCategory.COMBAT);
-        this.smithing(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), Items.NETHERITE_CHESTPLATE, FAItems.SCARAB_GEM.get(), FAItems.SCARAB_GEM_CHESTPLATE.get(), RecipeCategory.COMBAT);
-        this.smithing(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), Items.NETHERITE_LEGGINGS, FAItems.SCARAB_GEM.get(), FAItems.SCARAB_GEM_LEGGINGS.get(), RecipeCategory.COMBAT);
-        this.smithing(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), Items.NETHERITE_BOOTS, FAItems.SCARAB_GEM.get(), FAItems.SCARAB_GEM_BOOTS.get(), RecipeCategory.COMBAT);
+        this.scarabGemSmithing(Items.NETHERITE_SWORD, RecipeCategory.COMBAT, FAItems.SCARAB_GEM_SWORD.get());
+        this.scarabGemSmithing(Items.NETHERITE_SHOVEL, RecipeCategory.TOOLS, FAItems.SCARAB_GEM_SHOVEL.get());
+        this.scarabGemSmithing(Items.NETHERITE_PICKAXE, RecipeCategory.TOOLS, FAItems.SCARAB_GEM_PICKAXE.get());
+        this.scarabGemSmithing(Items.NETHERITE_AXE, RecipeCategory.TOOLS, FAItems.SCARAB_GEM_AXE.get());
+        this.scarabGemSmithing(Items.NETHERITE_HOE, RecipeCategory.TOOLS, FAItems.SCARAB_GEM_HOE.get());
+        this.scarabGemSmithing(Items.NETHERITE_HELMET, RecipeCategory.COMBAT, FAItems.SCARAB_GEM_HELMET.get());
+        this.scarabGemSmithing(Items.NETHERITE_CHESTPLATE, RecipeCategory.COMBAT, FAItems.SCARAB_GEM_CHESTPLATE.get());
+        this.scarabGemSmithing(Items.NETHERITE_LEGGINGS, RecipeCategory.COMBAT, FAItems.SCARAB_GEM_LEGGINGS.get());
+        this.scarabGemSmithing(Items.NETHERITE_BOOTS, RecipeCategory.COMBAT, FAItems.SCARAB_GEM_BOOTS.get());
 
         this.cultivate(CultivationBookCategory.EGG, FAItems.TRICERATOPS_DNA.get(), FAItems.TRICERATOPS_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.VELOCIRAPTOR_DNA.get(), FAItems.VELOCIRAPTOR_EGG.get(), 6000);
@@ -283,85 +250,84 @@ public class FARecipeProvider extends SimpleRecipeProvider {
         this.analyzation(AnalyzationBookCategory.MISC, FAItems.RAW_DIMETRODON.get(), FAAnalyzerResultTags.RAW_DIMETRODON_RESULTS, 100);
     }
 
-    public void boat(RecipeCategory recipeCategory, String group, ItemLike output, PatternBuilder patternBuilder, IngredientBuilder... ingredientBuilders) {
-        ShapedRecipeBuilder shapedRecipeBuilder = ShapedRecipeBuilder.shaped(recipeCategory, output);
-
-        if (group != null) {
-            shapedRecipeBuilder.group(group);
-        }
-
-        String[] patterns = patternBuilder.getPattern();
-
-        for (String pattern : patterns) {
-            shapedRecipeBuilder.pattern(pattern);
-        }
-
-        for (IngredientBuilder ingredientBuilder : ingredientBuilders) {
-            Ingredient ingredient = ingredientBuilder.getIngredient();
-            char symbol = ingredientBuilder.getSymbol();
-            shapedRecipeBuilder.define(symbol, ingredient);
-            shapedRecipeBuilder.unlockedBy("in_water", insideOf(Blocks.WATER));
-        }
-
-        this.recipeBuilders.put(this.toName(output), shapedRecipeBuilder);
+    public void woodType(Block log, Block strippedLog, Block wood, Block strippedWood, TagKey<Item> logs, Block planks, Block stairs, Block slab, Block fence, Block fenceGate, Block door, Block trapdoor, Block pressurePlate, Block button, Item sign, Item hangingSign, Item boat, Item chestBoat) {
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, wood, 3).group("bark").pattern("##").pattern("##").define('#', log).unlockedBy(getHasName(log), has(log)).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, strippedWood, 3).group("bark").pattern("##").pattern("##").define('#', strippedLog).unlockedBy(getHasName(strippedLog), has(strippedLog)).save(this.output);
+        this.shapeless(RecipeCategory.BUILDING_BLOCKS, planks, 4).group("planks").requires(logs).unlockedBy("has_log", has(logs)).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, stairs, 4).group("wooden_stairs").pattern("#  ").pattern("## ").pattern("###").define('#', planks).unlockedBy(getHasName(planks), has(planks)).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, slab, 6).group("wooden_slab").pattern("###").define('#', planks).unlockedBy(getHasName(planks), has(planks)).save(this.output);
+        this.shaped(RecipeCategory.DECORATIONS, fence, 3).group("wooden_fence").pattern("#$#").pattern("#$#").define('#', planks).define('$', Items.STICK).unlockedBy(getHasName(planks), has(planks)).save(this.output);
+        this.shaped(RecipeCategory.REDSTONE, fenceGate).group("wooden_fence_gate").pattern("$#$").pattern("$#$").define('#', planks).define('$', Items.STICK).unlockedBy(getHasName(planks), has(planks)).save(this.output);
+        this.shaped(RecipeCategory.REDSTONE, door, 3).group("wooden_door").pattern("##").pattern("##").pattern("##").define('#', planks).unlockedBy(getHasName(planks), has(planks)).save(this.output);
+        this.shaped(RecipeCategory.REDSTONE, trapdoor, 2).group("wooden_trapdoor").pattern("###").pattern("###").define('#', planks).unlockedBy(getHasName(planks), has(planks)).save(this.output);
+        this.shaped(RecipeCategory.REDSTONE, pressurePlate).group("wooden_pressure_plate").pattern("##").define('#', planks).unlockedBy(getHasName(planks), has(planks)).save(this.output);
+        this.shapeless(RecipeCategory.REDSTONE, button).group("wooden_button").requires(planks).unlockedBy(getHasName(planks), has(planks)).save(this.output);
+        this.shaped(RecipeCategory.REDSTONE, sign, 3).group("sign").pattern("###").pattern("###").pattern(" $ ").define('#', planks).define('$', Items.STICK).unlockedBy(getHasName(planks), has(planks)).save(this.output);
+        this.shaped(RecipeCategory.REDSTONE, hangingSign, 6).group("hanging_sign").pattern("$ $").pattern("###").pattern("###").define('#', strippedLog).define('$', Blocks.CHAIN).unlockedBy(getHasName(strippedLog), has(strippedLog)).save(this.output);
+        this.shaped(RecipeCategory.TRANSPORTATION, boat).group("boat").pattern("# #").pattern("###").define('#', planks).save(this.output);
+        this.shapeless(RecipeCategory.TRANSPORTATION, chestBoat).group("chest_boat").requires(boat).requires(Items.CHEST);
     }
 
-    public void chestBoat(RecipeCategory recipeCategory, String group, ItemLike output, IngredientBuilder... ingredientBuilders) {
-        ShapelessRecipeBuilder shapelessRecipeBuilder = ShapelessRecipeBuilder.shapeless(recipeCategory, output);
+    protected void food(Item raw, Item cooked) {
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(raw), RecipeCategory.FOOD, cooked, 0.35F, 200).unlockedBy(getHasName(raw), has(raw)).save(this.output);
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(raw), RecipeCategory.FOOD, cooked, 0.35F, 100).unlockedBy(getHasName(raw), has(raw)).save(this.output, FAUtils.ID + ":" + getItemName(cooked) + "_from_smoking");
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(raw), RecipeCategory.FOOD, cooked, 0.35F, 600).unlockedBy(getHasName(raw), has(raw)).save(this.output, FAUtils.ID + ":" + getItemName(cooked) + "_from_campfire_cooking");
+    }
 
-        if (group != null) {
-            shapelessRecipeBuilder.group(group);
-        }
-
-        IngredientBuilder[] ingridentBuilders = ingredientBuilders;
-        for (int i = 0; i < ingredientBuilders.length; ++i) {
-            IngredientBuilder ingredientBuilder = ingridentBuilders[i];
-            Ingredient ingredient = ingredientBuilder.getIngredient();
-            int count = ingredientBuilder.getCount();
-            shapelessRecipeBuilder.requires(ingredient, count);
-            shapelessRecipeBuilder.unlockedBy("has_boat", has(ItemTags.BOATS));
-        }
-
-        this.recipeBuilders.put(this.toName(output), shapelessRecipeBuilder);
+    protected void scarabGemSmithing(Item ingredientItem, RecipeCategory category, Item resultItem) {
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(ingredientItem), this.tag(FAItemTags.SCARAB_GEM_TOOL_MATERIALS), category, resultItem).unlocks("has_scarab_gem", this.has(FAItemTags.SCARAB_GEM_TOOL_MATERIALS)).save(this.output, getItemName(resultItem) + "_smithing");
     }
 
     public void llama(ItemLike ingredient, ItemLike output) {
-        this.shaped(RecipeCategory.DECORATIONS, output, PatternBuilder.builder("#  ", "###", "# #"), IngredientBuilder.build(ingredient).symbol('#').requires());
+        this.shaped(RecipeCategory.DECORATIONS, output).group("llama").pattern("#  ").pattern("###").pattern("# #").define('#', ingredient).unlockedBy(getHasName(ingredient), has(ingredient)).save(this.output);
     }
 
     public void waxCopper(ItemLike nonWaxed, ItemLike waxed) {
-        this.shapeless(UnlockMethod.CRAFT, RecipeCategory.DECORATIONS, waxed, IngredientBuilder.build(nonWaxed), IngredientBuilder.build(Items.HONEYCOMB));
+        this.shapeless(RecipeCategory.DECORATIONS, waxed).group("waxed_llama").requires(nonWaxed).requires(Items.HONEYCOMB).unlockedBy(getHasName(nonWaxed), has(nonWaxed)).save(this.output);
     }
 
     public void cultivator(ItemLike output, ItemLike dye, ItemLike glass) {
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, "cultivators", output, PatternBuilder.builder("#$#", "#%#", "@@@"), IngredientBuilder.build(Blocks.GLASS).symbol('#').requires(), IngredientBuilder.build(dye).symbol('$'), IngredientBuilder.build(Items.WATER_BUCKET).symbol('%'), IngredientBuilder.build(Items.IRON_INGOT).symbol('@'));
-        this.shaped(this.toName(output) + "_from_colored_glass", RecipeCategory.BUILDING_BLOCKS, "cultivators", output, PatternBuilder.builder("# #", "#%#", "@@@"), IngredientBuilder.build(glass).symbol('#').requires(), IngredientBuilder.build(Items.WATER_BUCKET).symbol('%'), IngredientBuilder.build(Items.IRON_INGOT).symbol('@'));
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, output).group("cultivators").pattern("#$#").pattern("#%#").pattern("@@@").define('#', Blocks.GLASS).define('$', dye).define('%', Items.WATER_BUCKET).define('@', Items.IRON_INGOT).unlockedBy(getHasName(Items.WATER_BUCKET), has(Items.WATER_BUCKET)).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, output).group("cultivators").pattern("# #").pattern("#%#").pattern("@@@").define('#', glass).define('%', Items.WATER_BUCKET).define('@', Items.IRON_INGOT).unlockedBy(getHasName(Items.WATER_BUCKET), has(Items.WATER_BUCKET)).save(this.output);
     }
 
     public void craftingTable(ItemLike output, ItemLike modifier) {
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, output, PatternBuilder.builder("$$", "##", "##"), IngredientBuilder.build(ItemTags.PLANKS).symbol('#').requires(), IngredientBuilder.build(modifier).symbol('$'));
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, output).pattern("$$").pattern("##").pattern("##").define('#', this.tag(ItemTags.PLANKS)).define('$', modifier).unlockedBy(getHasName(modifier), has(modifier)).save(this.output);
     }
 
     public void cultivate(CultivationBookCategory cultivationBookCategory, Item ingredient, ItemLike itemLike, int time) {
-        CultivationRecipeBuilder cultivationRecipeBuilder = CultivationRecipeBuilder.recipe(cultivationBookCategory, null, ingredient, itemLike, time).unlockedBy(getHasName(ingredient), has(ingredient));
-        this.recipeBuilders.put(this.toName(itemLike), cultivationRecipeBuilder);
+        CultivationRecipeBuilder.recipe(cultivationBookCategory, null, ingredient, itemLike, time).unlockedBy(getHasName(ingredient), has(ingredient)).save(this.output);
     }
 
     public void archaeology(ArchaeologyBookCategory archaeologyBookCategory, String name, Item ingredient, ItemLike itemLike, int time) {
-        ArchaeologyRecipeBuilder archaeologyRecipeBuilder = ArchaeologyRecipeBuilder.recipe(archaeologyBookCategory, ingredient, itemLike, time).unlockedBy(getHasName(ingredient), has(ingredient));
-        this.recipeBuilders.put(name, archaeologyRecipeBuilder);
+        ArchaeologyRecipeBuilder.recipe(archaeologyBookCategory, ingredient, itemLike, time).unlockedBy(getHasName(ingredient), has(ingredient)).save(this.output, FAUtils.ID + ":" + name);
     }
 
     public void archaeology(ArchaeologyBookCategory archaeologyBookCategory, Item ingredient, ItemLike itemLike, int time) {
-        ArchaeologyRecipeBuilder archaeologyRecipeBuilder = ArchaeologyRecipeBuilder.recipe(archaeologyBookCategory, ingredient, itemLike, time).unlockedBy(getHasName(ingredient), has(ingredient));
-        this.recipeBuilders.put(this.toName(itemLike), archaeologyRecipeBuilder);
+        ArchaeologyRecipeBuilder.recipe(archaeologyBookCategory, ingredient, itemLike, time).unlockedBy(getHasName(ingredient), has(ingredient)).save(this.output);
     }
 
     public void analyzation(AnalyzationBookCategory analyzationBookCategory, ItemLike ingredient, TagKey<AnalyzerResult> results, int time) {
-        this.recipeBuilders.put(this.toName(ingredient) + "_outputs", AnalyzationRecipeBuilder.recipe(analyzationBookCategory, Ingredient.of(ingredient), results, time).unlockedBy(getHasName(ingredient), has(ingredient)));
+        AnalyzationRecipeBuilder.recipe(analyzationBookCategory, Ingredient.of(ingredient), results, time).unlockedBy(getHasName(ingredient), has(ingredient)).save(this.output, FAUtils.ID + ":" + getItemName(ingredient) + "_outputs");
     }
 
     public void analyzation(AnalyzationBookCategory analyzationBookCategory, TagKey<Item> itemTagKey, String name, TagKey<AnalyzerResult> results, int time) {
-        this.recipeBuilders.put(name, AnalyzationRecipeBuilder.recipe(analyzationBookCategory, Ingredient.of(itemTagKey), results, time).unlockedBy("has_" + itemTagKey.location().getPath(), has(itemTagKey)));
+        AnalyzationRecipeBuilder.recipe(analyzationBookCategory, this.tag(itemTagKey), results, time).unlockedBy("has_" + itemTagKey.location().getPath(), has(itemTagKey)).save(this.output, FAUtils.ID + ":" + name);
+    }
+
+    public static class Runner extends RecipeProvider.Runner {
+        public Runner(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> registries) {
+            super(packOutput, registries);
+        }
+
+        @Override
+        protected RecipeProvider createRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
+            return new FARecipeProvider(provider, recipeOutput);
+        }
+
+        @Override
+        public String getName() {
+            return "F/A Recipes";
+        }
     }
 }

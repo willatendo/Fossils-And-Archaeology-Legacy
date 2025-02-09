@@ -1,10 +1,15 @@
 package willatendo.fossilslegacy.client;
 
+import net.minecraft.client.model.BoatModel;
+import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.*;
+import net.minecraft.world.entity.animal.horse.Donkey;
+import net.minecraft.world.entity.animal.horse.Mule;
 import willatendo.fossilslegacy.client.model.*;
 import willatendo.fossilslegacy.client.model.dinosaur.NautilusModel;
 import willatendo.fossilslegacy.client.render.*;
@@ -23,13 +28,8 @@ public final class FossilsLegacyClient {
         FAWoodTypes.register(FAWoodTypes.SIGILLARIA);
     }
 
-    public static void itemColorRegistry(ItemColorRegistry itemColorRegistry) {
-        itemColorRegistry.registerLeavesColor(FABlocks.CALAMITES_LEAVES.get(), FABlocks.LEPIDODENDRON_LEAVES.get(), FABlocks.SIGILLARIA_LEAVES.get());
-    }
-
     public static void blockColorRegistry(BlockColorRegistry blockColorRegistry) {
         blockColorRegistry.registerLeavesColor(FABlocks.CALAMITES_LEAVES.get(), FABlocks.LEPIDODENDRON_LEAVES.get(), FABlocks.SIGILLARIA_LEAVES.get(), FABlocks.JURASSIC_FERN.get());
-        //blockColorRegistry.registerBlockColor((blockState, blockAndTintGetter, blockPos, tintIndex) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getAverageWaterColor(blockAndTintGetter, blockPos) : -1, FABlocks.WHITE_CULTIVATOR.get(), FABlocks.ORANGE_CULTIVATOR.get(), FABlocks.MAGENTA_CULTIVATOR.get(), FABlocks.LIGHT_BLUE_CULTIVATOR.get(), FABlocks.YELLOW_CULTIVATOR.get(), FABlocks.LIME_CULTIVATOR.get(), FABlocks.PINK_CULTIVATOR.get(), FABlocks.GRAY_CULTIVATOR.get(), FABlocks.LIGHT_GRAY_CULTIVATOR.get(), FABlocks.CYAN_CULTIVATOR.get(), FABlocks.PURPLE_CULTIVATOR.get(), FABlocks.BLUE_CULTIVATOR.get(), FABlocks.BROWN_CULTIVATOR.get(), FABlocks.GREEN_CULTIVATOR.get(), FABlocks.RED_CULTIVATOR.get(), FABlocks.BLACK_CULTIVATOR.get());
     }
 
     public static void keyMappingEvent(KeyMappingRegistry keyMappingRegister) {
@@ -66,18 +66,18 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.EGG.get(), EggRenderer::new);
         modelRegister.register(FAEntityTypes.ANU.get(), AnuRenderer::new);
         modelRegister.register(FAEntityTypes.FAILURESAURUS.get(), FailuresaurusRenderer::new);
-        modelRegister.register(FAEntityTypes.TAMED_ZOMBIFIED_PIGLIN.get(), context -> new TamedZombifiedPiglinRenderer(context, ModelLayers.ZOMBIFIED_PIGLIN, ModelLayers.ZOMBIFIED_PIGLIN_INNER_ARMOR, ModelLayers.ZOMBIFIED_PIGLIN_OUTER_ARMOR, true));
+        modelRegister.register(FAEntityTypes.TAMED_ZOMBIFIED_PIGLIN.get(), context -> new TamedZombifiedPiglinRenderer(context, ModelLayers.ZOMBIFIED_PIGLIN, ModelLayers.ZOMBIFIED_PIGLIN_BABY, ModelLayers.ZOMBIFIED_PIGLIN_INNER_ARMOR, ModelLayers.ZOMBIFIED_PIGLIN_OUTER_ARMOR, ModelLayers.ZOMBIFIED_PIGLIN_BABY_INNER_ARMOR, ModelLayers.ZOMBIFIED_PIGLIN_BABY_OUTER_ARMOR));
         modelRegister.register(FAEntityTypes.PREGNANT_ARMADILLO.get(), ArmadilloRenderer::new);
         modelRegister.register(FAEntityTypes.PREGNANT_CAT.get(), CatRenderer::new);
         modelRegister.register(FAEntityTypes.PREGNANT_COW.get(), CowRenderer::new);
         modelRegister.register(FAEntityTypes.PREGNANT_DOLPHIN.get(), DolphinRenderer::new);
-        modelRegister.register(FAEntityTypes.PREGNANT_DONKEY.get(), context -> new ChestedHorseRenderer<>(context, 0.87F, ModelLayers.DONKEY));
+        modelRegister.register(FAEntityTypes.PREGNANT_DONKEY.get(), context -> new DonkeyRenderer<Donkey>(context, ModelLayers.DONKEY, ModelLayers.DONKEY_BABY, false));
         modelRegister.register(FAEntityTypes.PREGNANT_FOX.get(), FoxRenderer::new);
         modelRegister.register(FAEntityTypes.PREGNANT_GOAT.get(), GoatRenderer::new);
         modelRegister.register(FAEntityTypes.PREGNANT_HORSE.get(), HorseRenderer::new);
-        modelRegister.register(FAEntityTypes.PREGNANT_LLAMA.get(), context -> new LlamaRenderer(context, ModelLayers.LLAMA));
+        modelRegister.register(FAEntityTypes.PREGNANT_LLAMA.get(), context -> new LlamaRenderer(context, ModelLayers.LLAMA, ModelLayers.LLAMA_BABY));
         modelRegister.register(FAEntityTypes.PREGNANT_MAMMOTH.get(), MammothRenderer::new);
-        modelRegister.register(FAEntityTypes.PREGNANT_MULE.get(), context -> new ChestedHorseRenderer<>(context, 0.92F, ModelLayers.MULE));
+        modelRegister.register(FAEntityTypes.PREGNANT_MULE.get(), context -> new DonkeyRenderer<Mule>(context, ModelLayers.MULE, ModelLayers.MULE_BABY, true));
         modelRegister.register(FAEntityTypes.PREGNANT_OCELOT.get(), OcelotRenderer::new);
         modelRegister.register(FAEntityTypes.PREGNANT_PANDA.get(), PandaRenderer::new);
         modelRegister.register(FAEntityTypes.PREGNANT_PIG.get(), PigRenderer::new);
@@ -93,6 +93,13 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.FOSSIL.get(), FossilRenderer::new);
         modelRegister.register(FAEntityTypes.STONE_TABLET.get(), StoneTabletRenderer::new);
 
+        modelRegister.register(FAEntityTypes.CALAMITES_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.CALAMITES_BOAT));
+        modelRegister.register(FAEntityTypes.LEPIDODENDRON_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.LEPIDODENDRON_BOAT));
+        modelRegister.register(FAEntityTypes.SIGILLARIA_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.SIGILLARIA_BOAT));
+        modelRegister.register(FAEntityTypes.CALAMITES_CHEST_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.CALAMITES_CHEST_BOAT));
+        modelRegister.register(FAEntityTypes.LEPIDODENDRON_CHEST_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.LEPIDODENDRON_CHEST_BOAT));
+        modelRegister.register(FAEntityTypes.SIGILLARIA_CHEST_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.SIGILLARIA_CHEST_BOAT));
+
         modelRegister.register(FABlockEntityTypes.CULTIVATOR.get(), CultivatorBlockEntityRenderer::new);
         modelRegister.register(FABlockEntityTypes.FOSSILS_SIGN.get(), SignRenderer::new);
         modelRegister.register(FABlockEntityTypes.FOSSILS_HANGING_SIGN.get(), HangingSignRenderer::new);
@@ -102,13 +109,21 @@ public final class FossilsLegacyClient {
 
     public static void modelLayerEvent(ModelLayerRegistry modelLayerRegister) {
         modelLayerRegister.register(FAModelLayers.ANIMAL_FETUS, AnimalFetusModel::createBodyLayer);
-        modelLayerRegister.register(FAModelLayers.ANU, AnuModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.ANU, () -> LayerDefinition.create(PlayerModel.createMesh(CubeDeformation.NONE, false), 64, 32));
         modelLayerRegister.register(FAModelLayers.REGULAR_EGG, EggModel::createRegularBodyLayer);
         modelLayerRegister.register(FAModelLayers.SMALL_EGG, EggModel::createSmallBodyLayer);
         modelLayerRegister.register(FAModelLayers.FAILURESAURUS, FailuresaurusModel::createBodyLayer);
         modelLayerRegister.register(FAModelLayers.NAUTILUS, NautilusModel::createBodyLayer);
         modelLayerRegister.register(FAModelLayers.PLANT_EMBRYO, PlantEmbryoModel::createBodyLayer);
         modelLayerRegister.register(FAModelLayers.TIME_MACHINE_CLOCK, TimeMachineClockModel::createBodyLayer);
+        LayerDefinition boatModel = BoatModel.createBoatModel();
+        LayerDefinition chestBoatModel = BoatModel.createChestBoatModel();
+        modelLayerRegister.register(FAModelLayers.CALAMITES_BOAT, () -> boatModel);
+        modelLayerRegister.register(FAModelLayers.LEPIDODENDRON_BOAT, () -> boatModel);
+        modelLayerRegister.register(FAModelLayers.SIGILLARIA_BOAT, () -> boatModel);
+        modelLayerRegister.register(FAModelLayers.CALAMITES_CHEST_BOAT, () -> chestBoatModel);
+        modelLayerRegister.register(FAModelLayers.LEPIDODENDRON_CHEST_BOAT, () -> chestBoatModel);
+        modelLayerRegister.register(FAModelLayers.SIGILLARIA_CHEST_BOAT, () -> chestBoatModel);
     }
 
     public static void menuScreenEvent(MenuScreenRegistry menuScreenRegister) {

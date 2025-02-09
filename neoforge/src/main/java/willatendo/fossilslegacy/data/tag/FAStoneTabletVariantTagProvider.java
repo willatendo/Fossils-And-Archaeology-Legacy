@@ -2,7 +2,7 @@ package willatendo.fossilslegacy.data.tag;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.minecraft.data.tags.TagsProvider;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.stone_tablet_variant.FAStoneTabletVariants;
 import willatendo.fossilslegacy.server.stone_tablet_variant.StoneTabletVariant;
@@ -10,9 +10,9 @@ import willatendo.fossilslegacy.server.tags.FAStoneTabletVariantTags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class FAStoneTabletVariantTagProvider extends DataDrivenTagsProvider<StoneTabletVariant> {
-    public FAStoneTabletVariantTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId, ExistingFileHelper existingFileHelper) {
-        super(packOutput, FARegistries.STONE_TABLET_VARIANTS, provider, modId, existingFileHelper);
+public class FAStoneTabletVariantTagProvider extends TagsProvider<StoneTabletVariant> {
+    public FAStoneTabletVariantTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId) {
+        super(packOutput, FARegistries.STONE_TABLET_VARIANTS, provider, modId);
     }
 
     @Override

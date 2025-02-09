@@ -2,7 +2,7 @@ package willatendo.fossilslegacy.server.item.items;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ItemStack;
@@ -15,7 +15,7 @@ import willatendo.fossilslegacy.server.entity.entities.Egg;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
 import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,8 +45,8 @@ public class EggItem extends PlaceEntityItem<Egg> {
             egg.setCoatType(itemStack.get(FADataComponents.COAT_TYPE.get()));
         } else {
             Level level = egg.level();
-            Registry<CoatType> coatTypeRegistry = level.registryAccess().registry(FARegistries.COAT_TYPES).get();
-            egg.setCoatType(coatTypeRegistry.getTag(this.applicableCoatTypes).get().getRandomElement(egg.getRandom()).get());
+            HolderLookup<CoatType> coatTypeRegistry = level.holderLookup(FARegistries.COAT_TYPES);
+            egg.setCoatType(coatTypeRegistry.getOrThrow(this.applicableCoatTypes).getRandomElement(egg.getRandom()).get());
         }
     }
 
@@ -55,7 +55,7 @@ public class EggItem extends PlaceEntityItem<Egg> {
         this.period.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
         if (itemStack.has(FADataComponents.COAT_TYPE.get())) {
             Holder<CoatType> holder = itemStack.get(FADataComponents.COAT_TYPE.get());
-            tooltipComponents.add(FossilsLegacyUtils.translation("item", "dna.coat_type", holder.value().displayInfo().name()).withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(FAUtils.translation("item", "dna.coat_type", holder.value().displayInfo().name()).withStyle(ChatFormatting.GRAY));
         }
         super.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
     }

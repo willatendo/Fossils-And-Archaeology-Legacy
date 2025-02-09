@@ -3,17 +3,18 @@ package willatendo.fossilslegacy.client.screen;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.block.entity.entities.TimeMachineBlockEntity;
 import willatendo.fossilslegacy.server.menu.menus.TimeMachineMenu;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public class TimeMachineScreen extends AbstractContainerScreen<TimeMachineMenu> {
-    private static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/gui/container/time_machine.png");
-    private static final ResourceLocation CLOCK_SPRITE = FossilsLegacyUtils.resource("container/time_machine/clock");
+    private static final ResourceLocation TEXTURE = FAUtils.resource("textures/gui/container/time_machine.png");
+    private static final ResourceLocation CLOCK_SPRITE = FAUtils.resource("container/time_machine/clock");
 
     public TimeMachineScreen(TimeMachineMenu timeMachineMenu, Inventory inventory, Component component) {
         super(timeMachineMenu, inventory, component);
@@ -22,7 +23,7 @@ public class TimeMachineScreen extends AbstractContainerScreen<TimeMachineMenu> 
     @Override
     protected void init() {
         super.init();
-        this.addRenderableWidget(TimeMachineButton.create(FossilsLegacyUtils.translation("container", "time_machine.start"), button -> {
+        this.addRenderableWidget(TimeMachineButton.create(FAUtils.translation("container", "time_machine.start"), button -> {
             if (this.menu.getSlot(0).hasItem() && this.menu.isCharged()) {
                 FossilsModloaderHelper.INSTANCE.sendTimeMachinePacket(this.menu.timeMachineBlockEntity.getBlockPos());
             }
@@ -41,10 +42,10 @@ public class TimeMachineScreen extends AbstractContainerScreen<TimeMachineMenu> 
         RenderSystem.setShaderTexture(0, TEXTURE);
         int leftPos = this.leftPos;
         int topPos = this.topPos;
-        guiGraphics.blit(TEXTURE, leftPos, topPos, 0, 0, this.imageWidth, this.imageHeight);
+        guiGraphics.blit(RenderType::guiTextured, TEXTURE, leftPos, topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
         float charge = ((float) (TimeMachineBlockEntity.MAX_CHARGE - this.menu.getChargeLevel())) / (float) TimeMachineBlockEntity.MAX_CHARGE;
         int height = (int) (charge * (float) 75.0F);
-        guiGraphics.blitSprite(CLOCK_SPRITE, 76, 76, 0, 0, leftPos + 50, topPos + 6, 75, height);
+        guiGraphics.blitSprite(RenderType::guiTextured, CLOCK_SPRITE, 76, 76, 0, 0, leftPos + 50, topPos + 6, 75, height);
     }
 
     @Override

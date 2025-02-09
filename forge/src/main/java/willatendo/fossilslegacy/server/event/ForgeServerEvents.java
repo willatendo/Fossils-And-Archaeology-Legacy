@@ -16,11 +16,11 @@ import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.AncientLightningBolt;
 import willatendo.fossilslegacy.server.entity.entities.TamedZombifiedPiglin;
 import willatendo.fossilslegacy.server.item.FAItems;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.event.modification.ForgeStructurePoolModification;
 import willatendo.simplelibrary.server.event.modification.ForgeVillagerTradeModification;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE, modid = FossilsLegacyUtils.ID)
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE, modid = FAUtils.ID)
 public class ForgeServerEvents {
     @SubscribeEvent
     public static void entityStruckByLightningEvent(EntityStruckByLightningEvent event) {

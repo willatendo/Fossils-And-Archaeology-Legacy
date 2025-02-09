@@ -6,12 +6,12 @@ import willatendo.fossilslegacy.server.criteria.criterias.AnuOnEarthTrigger;
 import willatendo.fossilslegacy.server.criteria.criterias.CreateZombifiedPigmanTrigger;
 import willatendo.fossilslegacy.server.criteria.criterias.SummonAnuTrigger;
 import willatendo.fossilslegacy.server.criteria.criterias.TameZombifiedPigmanTrigger;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 public final class FLCriteriaTriggers {
-    public static final SimpleRegistry<CriterionTrigger<?>> TRIGGER_TYPES = SimpleRegistry.create(Registries.TRIGGER_TYPE, FossilsLegacyUtils.ID);
+    public static final SimpleRegistry<CriterionTrigger<?>> TRIGGER_TYPES = SimpleRegistry.create(Registries.TRIGGER_TYPE, FAUtils.ID);
 
     public static final SimpleHolder<AnuOnEarthTrigger> ANU_ON_EARTH = TRIGGER_TYPES.register("anu_on_earth", () -> new AnuOnEarthTrigger());
     public static final SimpleHolder<CreateZombifiedPigmanTrigger> CREATE_ZOMBIFIED_PIGMAN = TRIGGER_TYPES.register("create_zombified_pigman", () -> new CreateZombifiedPigmanTrigger());

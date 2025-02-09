@@ -179,7 +179,6 @@ public class Ankylosaurus extends Dinosaur implements DinopediaInformation, Ride
                 }
 
                 this.calculateEntityAnimation(false);
-                this.tryCheckInsideBlocks();
             } else {
                 super.travel(vec3);
             }

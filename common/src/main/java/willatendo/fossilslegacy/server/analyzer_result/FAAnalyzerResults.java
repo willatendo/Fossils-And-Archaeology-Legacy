@@ -8,7 +8,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.item.FAItems;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +58,7 @@ public final class FAAnalyzerResults {
     public static final ResourceKey<AnalyzerResult> DIMETRODON_DNA = FAAnalyzerResults.create("dimetrodon_dna");
 
     private static ResourceKey<AnalyzerResult> create(String name) {
-        return ResourceKey.create(FARegistries.ANALYZER_RESULT, FossilsLegacyUtils.resource(name));
+        return ResourceKey.create(FARegistries.ANALYZER_RESULT, FAUtils.resource(name));
     }
 
     private static void register(BootstrapContext<AnalyzerResult> bootstrapContext, List<ResourceKey<AnalyzerResult>> results, String path, ItemStack result, int weight) {

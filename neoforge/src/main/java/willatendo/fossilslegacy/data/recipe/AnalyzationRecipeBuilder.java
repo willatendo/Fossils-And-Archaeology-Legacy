@@ -7,10 +7,11 @@ import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import willatendo.fossilslegacy.server.analyzer_result.AnalyzerResult;
 import willatendo.fossilslegacy.server.menu.categories.AnalyzationBookCategory;
 import willatendo.fossilslegacy.server.recipe.recipes.AnalyzationRecipe;
@@ -56,16 +57,17 @@ public class AnalyzationRecipeBuilder implements RecipeBuilder {
     }
 
     @Override
-    public void save(RecipeOutput recipeOutput, ResourceLocation recipeId) {
+    public void save(RecipeOutput recipeOutput, ResourceKey<Recipe<?>> recipeId) {
         this.ensureValid(recipeId);
         Advancement.Builder builder = recipeOutput.advancement().addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId)).rewards(AdvancementRewards.Builder.recipe(recipeId)).requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(builder::addCriterion);
-        recipeOutput.accept(recipeId, new AnalyzationRecipe(this.analyzationBookCategory, Objects.requireNonNullElse(this.group, ""), this.ingredient, this.results, this.time), builder.build(recipeId.withPrefix("recipes/misc/")));
+        recipeOutput.accept(recipeId, new AnalyzationRecipe(this.analyzationBookCategory, Objects.requireNonNullElse(this.group, ""), this.ingredient, this.results, this.time), builder.build(recipeId.location().withPrefix("recipes/misc/")));
+
     }
 
-    private void ensureValid(ResourceLocation recipeId) {
+    private void ensureValid(ResourceKey<Recipe<?>> recipeId) {
         if (this.criteria.isEmpty()) {
-            throw new IllegalStateException("No way of obtaining recipe " + recipeId);
+            throw new IllegalStateException("No way of obtaining recipe " + recipeId.location());
         }
     }
 }

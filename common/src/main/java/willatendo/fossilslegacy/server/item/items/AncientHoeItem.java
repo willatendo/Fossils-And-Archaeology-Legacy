@@ -11,7 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -23,8 +23,8 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class AncientHoeItem extends DiggerItem {
-    public AncientHoeItem(Tier tier, Properties properties) {
-        super(tier, FABlockTags.MINEABLE_WITH_ANCIENT_HOE, properties);
+    public AncientHoeItem(ToolMaterial tier, float attackDamage, float attackSpeed, Properties properties) {
+        super(tier, FABlockTags.MINEABLE_WITH_ANCIENT_HOE, attackDamage, attackSpeed, properties);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class AncientHoeItem extends DiggerItem {
                     level.playLocalSound(blockPos, blockState.getSoundType().getBreakSound(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
                     level.setBlock(blockPos, blockState.setValue(CropBlock.AGE, 0), 3);
                     itemStack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
-                    return InteractionResult.sidedSuccess(level.isClientSide());
+                    return InteractionResult.SUCCESS;
                 }
             }
 
@@ -60,7 +60,7 @@ public class AncientHoeItem extends DiggerItem {
                     }
                 }
 
-                return InteractionResult.sidedSuccess(level.isClientSide);
+                return InteractionResult.SUCCESS;
             } else {
                 return InteractionResult.PASS;
             }

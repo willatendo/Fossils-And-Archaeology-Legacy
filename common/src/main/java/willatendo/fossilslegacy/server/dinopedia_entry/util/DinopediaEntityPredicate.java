@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.server.dinopedia_entry.util;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.advancements.critereon.*;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.entity.Entity;
@@ -102,13 +103,13 @@ public record DinopediaEntityPredicate(boolean always, Optional<EntityTypePredic
             return new DinopediaEntityPredicate.Builder();
         }
 
-        public DinopediaEntityPredicate.Builder of(EntityType<?> entityType) {
-            this.entityType = Optional.of(EntityTypePredicate.of(entityType));
+        public DinopediaEntityPredicate.Builder of(HolderGetter<EntityType<?>> holderGetter, EntityType<?> entityType) {
+            this.entityType = Optional.of(EntityTypePredicate.of(holderGetter, entityType));
             return this;
         }
 
-        public DinopediaEntityPredicate.Builder of(TagKey<EntityType<?>> entityTypeTag) {
-            this.entityType = Optional.of(EntityTypePredicate.of(entityTypeTag));
+        public DinopediaEntityPredicate.Builder of(HolderGetter<EntityType<?>> holderGetter, TagKey<EntityType<?>> entityTypeTag) {
+            this.entityType = Optional.of(EntityTypePredicate.of(holderGetter, entityTypeTag));
             return this;
         }
 

@@ -40,7 +40,7 @@ import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.criteria.FLCriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakerType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakingEntity;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 import java.util.function.Function;
@@ -104,8 +104,8 @@ public class Anu extends Zombie implements SpeakingEntity {
     }
 
     @Override
-    protected void customServerAiStep() {
-        super.customServerAiStep();
+    protected void customServerAiStep(ServerLevel serverLevel) {
+        super.customServerAiStep(serverLevel);
         this.anuBossEvent.setProgress(this.getHealth() / this.getMaxHealth());
     }
 
@@ -231,16 +231,16 @@ public class Anu extends Zombie implements SpeakingEntity {
         if (this.getTarget() == null) {
             return;
         }
-        if (this.getTarget() instanceof Player player) {
-            this.sendMessageToPlayer(Anu.AnuSpeaker.SUMMON_ZOMBIFIED_PIGLINS, player);
+        if (this.getTarget() instanceof ServerPlayer serverPlayer) {
+            this.sendMessageToPlayer(Anu.AnuSpeaker.SUMMON_ZOMBIFIED_PIGLINS, serverPlayer);
         }
         for (int j = 0; j < zombifiedPiglins.size(); j++) {
             Entity entity = zombifiedPiglins.get(j);
             if (entity instanceof TamedZombifiedPiglin tamedZombifiedPiglin) {
                 if ((tamedZombifiedPiglin).getTarget() == null) {
                     tamedZombifiedPiglin.setTarget(this.getTarget());
-                    if (this.getTarget() instanceof Player player) {
-                        tamedZombifiedPiglin.sendMessageToPlayer(TamedZombifiedPiglin.TamedZombifiedPiglinSpeaker.ANU_SUMMON, player);
+                    if (this.getTarget() instanceof ServerPlayer serverPlayer) {
+                        tamedZombifiedPiglin.sendMessageToPlayer(TamedZombifiedPiglin.TamedZombifiedPiglinSpeaker.ANU_SUMMON, serverPlayer);
                     }
                 }
             }
@@ -248,8 +248,8 @@ public class Anu extends Zombie implements SpeakingEntity {
     }
 
     private void turnPigsIntoZombifiedPiglins(List<Pig> pigs) {
-        if (this.getTarget() instanceof Player player) {
-            this.sendMessageToPlayer(Anu.AnuSpeaker.SUMMON_PIGS, player);
+        if (this.getTarget() instanceof ServerPlayer serverPlayer) {
+            this.sendMessageToPlayer(Anu.AnuSpeaker.SUMMON_PIGS, serverPlayer);
         }
         for (int j = 0; j < pigs.size(); j++) {
             Pig pig = pigs.get(j);
@@ -262,8 +262,8 @@ public class Anu extends Zombie implements SpeakingEntity {
     public void qiShock() {
         List<LivingEntity> livingEntities = this.level().getEntitiesOfClass(LivingEntity.class, new AABB(this.getX(), this.getY(), this.getZ(), this.getX() + 1.0D, this.getY() + 1.0D, this.getZ() + 1.0D).inflate(32D, 4D, 32D));
         if (!livingEntities.isEmpty()) {
-            if (this.getTarget() instanceof Player player) {
-                this.sendMessageToPlayer(Anu.AnuSpeaker.QI_SHOCK, player);
+            if (this.getTarget() instanceof ServerPlayer serverPlayer) {
+                this.sendMessageToPlayer(Anu.AnuSpeaker.QI_SHOCK, serverPlayer);
             }
             this.level().playLocalSound(this, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.HOSTILE, 6.0F, (1.0F + (this.getRandom().nextFloat() - this.getRandom().nextFloat()) * 0.2F) * 0.7F);
             this.level().addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
@@ -287,57 +287,58 @@ public class Anu extends Zombie implements SpeakingEntity {
     }
 
     @Override
-    public boolean hurt(DamageSource damageSource, float damage) {
+    public boolean hurtServer(ServerLevel serverLevel, DamageSource damageSource, float damage) {
         Entity attacker = damageSource.getEntity();
-        if (attacker instanceof Player player) {
+        if (attacker instanceof ServerPlayer serverPlayer) {
             if (damage > 0.0F) {
-                ItemStack itemInMainHand = player.getMainHandItem();
+                ItemStack itemInMainHand = serverPlayer.getMainHandItem();
                 if (itemInMainHand.isEmpty()) {
                     if (this.getAttackMode() != 0) {
-                        this.sendMessageToPlayer(AnuSpeaker.HAND_ATTACKED, player);
+                        this.sendMessageToPlayer(AnuSpeaker.HAND_ATTACKED, serverPlayer);
                         this.setAttackMode(0);
-                        return super.hurt(damageSource, damage);
+                        return super.hurtServer(serverLevel, damageSource, damage);
                     }
                 } else {
                     if (itemInMainHand.getItem() instanceof SwordItem && this.getAttackMode() != 0) {
-                        this.sendMessageToPlayer(AnuSpeaker.THREATEN, player);
+                        this.sendMessageToPlayer(AnuSpeaker.THREATEN, serverPlayer);
                         this.setAttackMode(0);
-                        return super.hurt(damageSource, damage);
+                        return super.hurtServer(serverLevel, damageSource, damage);
                     }
                     if (damageSource.is(DamageTypes.ARROW) && this.getAttackMode() != 1) {
-                        this.sendMessageToPlayer(AnuSpeaker.BOW_ATTACKED, player);
+                        this.sendMessageToPlayer(AnuSpeaker.BOW_ATTACKED, serverPlayer);
                         this.setAttackMode(1);
-                        return super.hurt(damageSource, damage);
+                        return super.hurtServer(serverLevel, damageSource, damage);
                     }
                     if (!(itemInMainHand.getItem() instanceof BowItem) && !(itemInMainHand.getItem() instanceof SwordItem)) {
                         double playerDistance = Math.sqrt(this.distanceToSqr(this.level().getNearestPlayer(this, 24.0D)));
                         if (playerDistance > 6 && this.getAttackMode() != 1) {
                             if (this.level().dimension() == Level.NETHER) {
-                                this.sendMessageToPlayer(AnuSpeaker.LEARNED_HERE, player);
+                                this.sendMessageToPlayer(AnuSpeaker.LEARNED_HERE, serverPlayer);
                             } else {
-                                this.sendMessageToPlayer(AnuSpeaker.LEARNED_THERE, player);
+                                this.sendMessageToPlayer(AnuSpeaker.LEARNED_THERE, serverPlayer);
                             }
+
                             this.setAttackMode(1);
-                            return super.hurt(damageSource, damage);
+                            return super.hurtServer(serverLevel, damageSource, damage);
                         }
 
                         if (playerDistance < 6 && this.getAttackMode() != 0) {
-                            this.sendMessageToPlayer(AnuSpeaker.GENERIC_RANGED_ATTACKED, player);
+                            this.sendMessageToPlayer(AnuSpeaker.GENERIC_RANGED_ATTACKED, serverPlayer);
                             this.setAttackMode(0);
-                            return super.hurt(damageSource, damage);
+                            return super.hurtServer(serverLevel, damageSource, damage);
                         }
                     }
                 }
             } else {
                 if (this.getAttackMode() != 1) {
-                    this.sendMessageToPlayer(AnuSpeaker.GENERIC_MELEE_ATTACKED, player);
+                    this.sendMessageToPlayer(AnuSpeaker.GENERIC_MELEE_ATTACKED, serverPlayer);
                     this.setAttackMode(1);
-                    return super.hurt(damageSource, damage);
+                    return super.hurtServer(serverLevel, damageSource, damage);
                 }
             }
 
         }
-        return super.hurt(damageSource, damage);
+        return super.hurtServer(serverLevel, damageSource, damage);
     }
 
     @Override
@@ -412,8 +413,8 @@ public class Anu extends Zombie implements SpeakingEntity {
                     level.addFreshEntity(largeFireball);
                     this.chargeTime = -40;
 
-                    if (target instanceof Player player) {
-                        this.anu.sendMessageToPlayer(AnuSpeaker.RAIN_FIRE, player);
+                    if (target instanceof ServerPlayer serverPlayer) {
+                        this.anu.sendMessageToPlayer(AnuSpeaker.RAIN_FIRE, serverPlayer);
                     }
                 }
             } else if (this.chargeTime > 0) {
@@ -455,11 +456,11 @@ public class Anu extends Zombie implements SpeakingEntity {
         }
 
         protected static Component basicSpeach(String id) {
-            return FossilsLegacyUtils.translation("entity", "anu.speach." + id);
+            return FAUtils.translation("entity", "anu.speach." + id);
         }
 
         protected static Component basicSpeach(String id, Object... args) {
-            return FossilsLegacyUtils.translation("entity", "anu.speach." + id, args);
+            return FAUtils.translation("entity", "anu.speach." + id, args);
         }
 
         @Override

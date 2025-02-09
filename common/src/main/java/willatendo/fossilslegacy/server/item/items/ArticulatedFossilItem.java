@@ -38,7 +38,7 @@ public class ArticulatedFossilItem extends PlaceEntityItem<Fossil> {
             fossil.setFossilVariant(itemStack.get(FADataComponents.FOSSIL_VARIANT.get()));
         } else {
             List<Holder<FossilVariant>> fossilVariants = new ArrayList<>();
-            level.registryAccess().registryOrThrow(FARegistries.FOSSIL_VARIANTS).getTagOrEmpty(FAFossilVariantTags.PLACEABLE_FROM_FOSSIL).forEach(fossilVariants::add);
+            level.registryAccess().lookupOrThrow(FARegistries.FOSSIL_VARIANTS).getTagOrEmpty(FAFossilVariantTags.PLACEABLE_FROM_FOSSIL).forEach(fossilVariants::add);
             Optional<Holder<FossilVariant>> optional = Util.getRandomSafe(fossilVariants, fossil.level().getRandom());
             fossil.setFossilVariant(optional.get());
         }

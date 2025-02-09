@@ -8,6 +8,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.item.ItemStack;
@@ -130,11 +131,11 @@ public class PregnantPig extends Pig implements DinopediaInformation, PregnantAn
 
     @Override
     public Entity getOffspring(Level level) {
-        return this.getPregnancyType().value().entityType().get().create(level);
+        return this.getPregnancyType().value().entityType().get().create(level, EntitySpawnReason.BREEDING);
     }
 
     @Override
     public Pig getBaseEntity(Level level) {
-        return EntityType.PIG.create(level);
+        return EntityType.PIG.create(level, EntitySpawnReason.BREEDING);
     }
 }

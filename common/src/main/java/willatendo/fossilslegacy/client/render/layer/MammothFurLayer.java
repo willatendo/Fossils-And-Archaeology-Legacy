@@ -5,44 +5,47 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.FastColor;
+import net.minecraft.util.ARGB;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.item.DyeColor;
 import willatendo.fossilslegacy.client.render.CoatTypeMobRenderer;
+import willatendo.fossilslegacy.client.state.MammothRenderState;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Mammoth;
 
-public class MammothFurLayer extends RenderLayer<Mammoth, EntityModel<Mammoth>> {
-    private EntityModel<Mammoth> model;
-    private CoatTypeMobRenderer<Mammoth> coatTypeMobRenderer;
+public class MammothFurLayer extends RenderLayer<MammothRenderState, EntityModel<MammothRenderState>> {
+    private EntityModel<MammothRenderState> model;
+    private CoatTypeMobRenderer<Mammoth, MammothRenderState> coatTypeMobRenderer;
 
-    public MammothFurLayer(CoatTypeMobRenderer<Mammoth> coatTypeMobRenderer) {
+    public MammothFurLayer(CoatTypeMobRenderer<Mammoth, MammothRenderState> coatTypeMobRenderer) {
         super(coatTypeMobRenderer);
         this.coatTypeMobRenderer = coatTypeMobRenderer;
     }
 
-    private void setModel(EntityModel<Mammoth> entityModel) {
+    private void setModel(EntityModel<MammothRenderState> entityModel) {
         if (this.model != entityModel) {
             this.model = entityModel;
         }
     }
 
     @Override
-    public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight, Mammoth mammoth, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-        CoatType coatType = mammoth.getCoatType().value();
-        if (this.coatTypeMobRenderer.getAdditionalModel(mammoth, coatType).isPresent()) {
-            this.setModel(this.coatTypeMobRenderer.getAdditionalModel(mammoth, coatType).get());
+    public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int partialticks, MammothRenderState mammothRenderState, float packedLight, float packedOverlay) {
+        CoatType coatType = mammothRenderState.coatType.value();
+        if (this.coatTypeMobRenderer.getAdditionalModel(mammothRenderState, coatType).isPresent()) {
+            this.setModel(this.coatTypeMobRenderer.getAdditionalModel(mammothRenderState, coatType).get());
         } else {
-            this.setModel(this.coatTypeMobRenderer.getModel(mammoth, coatType.models().model()));
+            this.setModel(this.coatTypeMobRenderer.getModel(coatType.models().model()));
         }
         CoatType.Textures textures = coatType.patterns().getFirst().textures();
         if (textures.furTexture().isPresent()) {
             ResourceLocation texture = textures.furTexture().get();
-            if (mammoth.isSheared()) {
+            if (mammothRenderState.isSheared) {
                 if (textures.shearedTexture().isPresent()) {
                     texture = textures.shearedTexture().get();
                 }
             } else {
-                if (mammoth.isBaby()) {
+                if (mammothRenderState.isBaby) {
                     if (textures.babyFurTexture().isPresent()) {
                         texture = textures.babyFurTexture().get();
                     }
@@ -50,20 +53,21 @@ public class MammothFurLayer extends RenderLayer<Mammoth, EntityModel<Mammoth>> 
             }
 
             int color;
-            if (mammoth.hasCustomName() && "jeb_".equals(mammoth.getName().getString())) {
-                int tickCount = mammoth.tickCount / 25 + mammoth.getId();
-                int dyeColors = DyeColor.values().length;
-                int dyeColorForTick = tickCount % dyeColors;
-                int nextDyeColorForTick = (tickCount + 1) % dyeColors;
-                float delta = ((float) (mammoth.tickCount % 25) + partialTicks) / 25.0F;
-                int min = Mammoth.getColor(DyeColor.byId(dyeColorForTick));
-                int max = Mammoth.getColor(DyeColor.byId(nextDyeColorForTick));
-                color = FastColor.ARGB32.lerp(delta, min, max);
+            if (mammothRenderState.customName != null && "jeb_".equals(mammothRenderState.customName.getString())) {
+                int ageInTicks = Mth.floor(mammothRenderState.ageInTicks);
+                int offset = ageInTicks / 25 + mammothRenderState.id;
+                int colors = DyeColor.values().length;
+                int minColor = offset % colors;
+                int maxColor = (offset + 1) % colors;
+                float delta = ((float) (ageInTicks % 25) + Mth.frac(mammothRenderState.ageInTicks)) / 25.0F;
+                int min = Sheep.getColor(DyeColor.byId(minColor));
+                int max = Sheep.getColor(DyeColor.byId(maxColor));
+                color = ARGB.lerp(delta, min, max);
             } else {
-                color = Mammoth.getColor(mammoth.getColor());
+                color = Mammoth.getColor(mammothRenderState.woolColor);
             }
 
-            RenderLayer.coloredCutoutModelCopyLayerRender(this.getParentModel(), this.model, texture, poseStack, multiBufferSource, packedLight, mammoth, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, partialTicks, color);
+            RenderLayer.coloredCutoutModelCopyLayerRender(this.getParentModel(), texture, poseStack, multiBufferSource, partialticks, mammothRenderState, color);
         }
     }
 }

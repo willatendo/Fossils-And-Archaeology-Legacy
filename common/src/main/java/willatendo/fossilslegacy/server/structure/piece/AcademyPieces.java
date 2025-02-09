@@ -21,10 +21,10 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlac
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 import willatendo.fossilslegacy.server.structure.FAStructurePeices;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public class AcademyPieces {
-    public static final ResourceLocation STRUCTURE_LOCATION = FossilsLegacyUtils.resource("academy");
+    public static final ResourceLocation STRUCTURE_LOCATION = FAUtils.resource("academy");
 
     public static void addPieces(StructureTemplateManager struxtureTemplateManager, BlockPos blockPos, Rotation rotation, StructurePieceAccessor structurePieceAccessor, RandomSource randomSource) {
         structurePieceAccessor.addPiece(new AcademyPieces.AcademyStructurePiece(struxtureTemplateManager, STRUCTURE_LOCATION, blockPos, rotation));

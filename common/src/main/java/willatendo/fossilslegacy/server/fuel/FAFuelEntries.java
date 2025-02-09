@@ -8,7 +8,7 @@ import net.minecraft.world.item.Items;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public class FAFuelEntries {
     public static final ResourceKey<FuelEntry> FOSSIL = FAFuelEntries.create("fossil");
@@ -78,7 +78,7 @@ public class FAFuelEntries {
     public static final ResourceKey<FuelEntry> RELIC_SCRAP = FAFuelEntries.create("relic_scrap");
 
     private static ResourceKey<FuelEntry> create(String name) {
-        return ResourceKey.create(FARegistries.FUEL_ENTRY, FossilsLegacyUtils.resource(name));
+        return ResourceKey.create(FARegistries.FUEL_ENTRY, FAUtils.resource(name));
     }
 
     private static void register(BootstrapContext<FuelEntry> bootstrapContext, ResourceKey<FuelEntry> resourceKey, Item fuel, int time) {

@@ -3,9 +3,9 @@ package willatendo.fossilslegacy.server.block.entity.entities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -13,7 +13,6 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import willatendo.fossilslegacy.server.block.blocks.FeederBlock;
@@ -21,7 +20,7 @@ import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.feeder_food.FeederFood;
 import willatendo.fossilslegacy.server.menu.menus.FeederMenu;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.Map;
 
@@ -84,12 +83,12 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
         ContainerHelper.saveAllItems(compoundTag, this.itemStacks, provider);
     }
 
-    public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, FeederBlockEntity feederBlockEntity) {
+    public static void serverTick(ServerLevel serverLevel, BlockPos blockPos, BlockState blockState, FeederBlockEntity feederBlockEntity) {
         boolean hasFood = (feederBlockEntity.meatLevel > 0 || feederBlockEntity.plantsLevel > 0);
         boolean changed = false;
         ItemStack meat = feederBlockEntity.itemStacks.get(0);
         ItemStack plants = feederBlockEntity.itemStacks.get(1);
-        Map<Item, FeederFood.FeederInfo> map = FeederFood.getFeederFood(level.registryAccess());
+        Map<Item, FeederFood.FeederInfo> map = FeederFood.getFeederFood(serverLevel.registryAccess());
 
         if (!meat.isEmpty()) {
             FeederFood.FeederInfo feederInfo = map.getOrDefault(meat.getItem(), null);
@@ -115,15 +114,15 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
         }
 
         if (hasFood) {
-            level.setBlock(blockPos, blockState.setValue(FeederBlock.HAS_FOOD, true), 3);
+            serverLevel.setBlock(blockPos, blockState.setValue(FeederBlock.HAS_FOOD, true), 3);
             changed = true;
         } else {
-            level.setBlock(blockPos, blockState.setValue(FeederBlock.HAS_FOOD, false), 3);
+            serverLevel.setBlock(blockPos, blockState.setValue(FeederBlock.HAS_FOOD, false), 3);
             changed = true;
         }
 
         if (changed) {
-            setChanged(level, blockPos, blockState);
+            setChanged(serverLevel, blockPos, blockState);
         }
     }
 
@@ -202,7 +201,7 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
 
     @Override
     protected Component getDefaultName() {
-        return FossilsLegacyUtils.translation("container", "feeder");
+        return FAUtils.translation("container", "feeder");
     }
 
     @Override

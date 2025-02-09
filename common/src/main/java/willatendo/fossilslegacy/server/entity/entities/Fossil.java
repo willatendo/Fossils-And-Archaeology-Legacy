@@ -7,6 +7,7 @@ import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
@@ -118,7 +119,7 @@ public class Fossil extends Mob {
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(FOSSIL_VARIANT, this.registryAccess().registryOrThrow(FARegistries.FOSSIL_VARIANTS).getAny().orElseThrow());
+        builder.define(FOSSIL_VARIANT, this.registryAccess().lookupOrThrow(FARegistries.FOSSIL_VARIANTS).getAny().orElseThrow());
         builder.define(SIZE, 1);
     }
 
@@ -178,7 +179,7 @@ public class Fossil extends Mob {
     }
 
     @Override
-    public boolean hurt(DamageSource damageSource, float damage) {
+    public boolean hurtServer(ServerLevel serverLevel, DamageSource damageSource, float damage) {
         if (!damageSource.isCreativePlayer()) {
             if (this.getSize() > 0) {
                 for (int i = 0; i < this.getSize(); i++) {

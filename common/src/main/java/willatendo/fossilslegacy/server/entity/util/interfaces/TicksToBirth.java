@@ -3,8 +3,8 @@ package willatendo.fossilslegacy.server.entity.util.interfaces;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Entity.RemovalReason;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -21,7 +21,7 @@ public interface TicksToBirth {
 
     default void onEntityTicksComplete(Mob mob, Entity offspring, Level level) {
         if (level instanceof ServerLevel serverLevel && offspring instanceof Mob mobOffspring) {
-            mobOffspring.finalizeSpawn(serverLevel, level.getCurrentDifficultyAt(mob.blockPosition()), MobSpawnType.BREEDING, null);
+            mobOffspring.finalizeSpawn(serverLevel, level.getCurrentDifficultyAt(mob.blockPosition()), EntitySpawnReason.BREEDING, null);
         }
     }
 

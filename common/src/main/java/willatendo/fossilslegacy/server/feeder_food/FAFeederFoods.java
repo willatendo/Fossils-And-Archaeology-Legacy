@@ -4,11 +4,10 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.item.FAItems;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FAFeederFoods {
     public static final ResourceKey<FeederFood> BEEF = FAFeederFoods.create("beef");
@@ -90,7 +89,7 @@ public final class FAFeederFoods {
     public static final ResourceKey<FeederFood> JURASSIC_FERN_SPORES = FAFeederFoods.create("jurassic_fern_spores");
 
     public static ResourceKey<FeederFood> create(String name) {
-        return ResourceKey.create(FARegistries.FEEDER_FOOD, FossilsLegacyUtils.resource(name));
+        return ResourceKey.create(FARegistries.FEEDER_FOOD, FAUtils.resource(name));
     }
 
     private static void register(BootstrapContext<FeederFood> bootstrapContext, ResourceKey<FeederFood> resourceKey, Item item, int fillAmount, FeederFood.FillType fillType) {

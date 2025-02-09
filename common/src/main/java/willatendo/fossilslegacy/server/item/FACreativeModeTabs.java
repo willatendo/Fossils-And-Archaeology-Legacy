@@ -15,12 +15,11 @@ import willatendo.fossilslegacy.server.command_type.CommandType;
 import willatendo.fossilslegacy.server.entity.entities.StoneTablet;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 import willatendo.fossilslegacy.server.item.items.MagicConchItem;
-import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.stone_tablet_variant.StoneTabletVariant;
 import willatendo.fossilslegacy.server.tags.FAFossilVariantTags;
 import willatendo.fossilslegacy.server.tags.FAStoneTabletVariantTags;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 import willatendo.simplelibrary.server.util.SimpleUtils;
@@ -29,11 +28,11 @@ import java.util.Comparator;
 import java.util.function.Predicate;
 
 public final class FACreativeModeTabs {
-    public static final SimpleRegistry<CreativeModeTab> CREATIVE_MODE_TABS = SimpleRegistry.create(Registries.CREATIVE_MODE_TAB, FossilsLegacyUtils.ID);
+    public static final SimpleRegistry<CreativeModeTab> CREATIVE_MODE_TABS = SimpleRegistry.create(Registries.CREATIVE_MODE_TAB, FAUtils.ID);
     private static final Comparator<Holder<FossilVariant>> FOSSIL_VARIANT_COMPARATOR = Comparator.comparing(Holder::getRegisteredName, String::compareTo);
     private static final Comparator<Holder<StoneTabletVariant>> STONE_TABLET_COMPARATOR = Comparator.comparing(Holder::value, Comparator.<StoneTabletVariant>comparingInt(stoneTabletVariant -> stoneTabletVariant.height() * stoneTabletVariant.width()).thenComparing(StoneTabletVariant::width));
 
-    public static final SimpleHolder<CreativeModeTab> FA_BLOCKS = CREATIVE_MODE_TABS.register("fa_blocks", () -> SimpleUtils.create(FossilsLegacyUtils.ID, "fa_blocks", () -> FABlocks.ANALYZER.get().asItem(), (itemDisplayParameters, output) -> {
+    public static final SimpleHolder<CreativeModeTab> FA_BLOCKS = CREATIVE_MODE_TABS.register("fa_blocks", () -> SimpleUtils.create(FAUtils.ID, "fa_blocks", () -> FABlocks.ANALYZER.get().asItem(), (itemDisplayParameters, output) -> {
         output.accept(FABlocks.ANALYZER.get());
         output.accept(FABlocks.WHITE_CULTIVATOR.get());
         output.accept(FABlocks.ORANGE_CULTIVATOR.get());
@@ -135,7 +134,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.CALAMITES_CHEST_BOAT.get());
         output.accept(FABlocks.JURASSIC_FERN.get());
     }).build());
-    public static final SimpleHolder<CreativeModeTab> FA_ARCHAEOLOGY_ITEMS = CREATIVE_MODE_TABS.register("fa_archaeology_items", () -> SimpleUtils.create(FossilsLegacyUtils.ID, "fa_archaeology_items", FAItems.SCARAB_GEM::get, (itemDisplayParameters, output) -> {
+    public static final SimpleHolder<CreativeModeTab> FA_ARCHAEOLOGY_ITEMS = CREATIVE_MODE_TABS.register("fa_archaeology_items", () -> SimpleUtils.create(FAUtils.ID, "fa_archaeology_items", FAItems.SCARAB_GEM::get, (itemDisplayParameters, output) -> {
         output.accept(FAItems.RELIC_SCRAP.get());
         output.accept(FAItems.SCARAB_GEM.get());
         output.accept(FAItems.JADE.get());
@@ -184,7 +183,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.NETHERITE_JAVELIN.get());
         output.accept(FAItems.SCARAB_GEM_JAVELIN.get());
     }).build());
-    public static final SimpleHolder<CreativeModeTab> FA_PALAEONTOLOGY_ITEMS = CREATIVE_MODE_TABS.register("fa_palaeontology_items", () -> SimpleUtils.create(FossilsLegacyUtils.ID, "fa_palaeontology_items", FAItems.TRICERATOPS_EGG::get, (itemDisplayParameters, output) -> {
+    public static final SimpleHolder<CreativeModeTab> FA_PALAEONTOLOGY_ITEMS = CREATIVE_MODE_TABS.register("fa_palaeontology_items", () -> SimpleUtils.create(FAUtils.ID, "fa_palaeontology_items", FAItems.TRICERATOPS_EGG::get, (itemDisplayParameters, output) -> {
         output.accept(FAItems.DIMETRODON_DNA.get());
         output.accept(FAItems.ANKYLOSAURUS_DNA.get());
         output.accept(FAItems.BRACHIOSAURUS_DNA.get());
@@ -329,7 +328,7 @@ public final class FACreativeModeTabs {
         output.accept(FABlocks.SIGILLARIA_SAPLING.get());
         output.accept(FABlocks.CALAMITES_SAPLING.get());
     }).build());
-    public static final SimpleHolder<CreativeModeTab> FA_OTHER_ITEMS = CREATIVE_MODE_TABS.register("fa_other_items", () -> SimpleUtils.create(FossilsLegacyUtils.ID, "fa_other_items", FAItems.FOSSIL::get, (itemDisplayParameters, output) -> {
+    public static final SimpleHolder<CreativeModeTab> FA_OTHER_ITEMS = CREATIVE_MODE_TABS.register("fa_other_items", () -> SimpleUtils.create(FAUtils.ID, "fa_other_items", FAItems.FOSSIL::get, (itemDisplayParameters, output) -> {
         output.accept(FAItems.FOSSIL.get());
         output.accept(FAItems.FROZEN_MEAT.get());
         output.accept(FAItems.DINOPEDIA.get());
@@ -344,9 +343,9 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.TOOTH_DAGGER.get());
         output.accept(FAItems.SKULL_STICK.get());
         output.accept(FAItems.NAUTILUS_SHELL.get());
-        FACreativeModeTabs.generateMagicConches(itemDisplayParameters, output);
+        itemDisplayParameters.holders().lookup(FARegistries.COMMAND_TYPES).ifPresent(registryLookup -> FACreativeModeTabs.generateMagicConches(output, registryLookup));
         output.accept(FAItems.LEGACY_GENETIC_CODE.get());
-        itemDisplayParameters.holders().lookup(FARegistries.FOSSIL_VARIANTS).ifPresent(registryLookup -> FACreativeModeTabs.generateArticulatedFossils(output, itemDisplayParameters.holders(), registryLookup, fossilVariantHolder -> fossilVariantHolder.is(FAFossilVariantTags.PLACEABLE_FROM_FOSSIL), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
+        itemDisplayParameters.holders().lookup(FARegistries.FOSSIL_VARIANTS).ifPresent(registryLookup -> FACreativeModeTabs.generateArticulatedFossils(output, registryLookup, fossilVariantHolder -> fossilVariantHolder.is(FAFossilVariantTags.PLACEABLE_FROM_FOSSIL), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
         output.accept(FAItems.ANKYLOSAURUS_SPAWN_EGG.get());
         output.accept(FAItems.ANU_SPAWN_EGG.get());
         output.accept(FAItems.BRACHIOSAURUS_SPAWN_EGG.get());
@@ -374,15 +373,15 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.VELOCIRAPTOR_SPAWN_EGG.get());
     }).build());
 
-    private static void generateMagicConches(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
-        for (Holder.Reference<CommandType> commandType : FABuiltInRegistries.COMMAND_TYPES.holders().toList()) {
+    private static void generateMagicConches(CreativeModeTab.Output output, HolderLookup.RegistryLookup<CommandType> registryLookup) {
+        for (Holder.Reference<CommandType> commandType : registryLookup.listElements().toList()) {
             ItemStack itemStack = new ItemStack(FAItems.MAGIC_CONCH.get());
             MagicConchItem.setOrder(itemStack, commandType);
             output.accept(itemStack);
         }
     }
 
-    private static void generateArticulatedFossils(CreativeModeTab.Output output, HolderLookup.Provider provider, HolderLookup.RegistryLookup<FossilVariant> registryLookup, Predicate<Holder<FossilVariant>> predicate, CreativeModeTab.TabVisibility tabVisibility) {
+    private static void generateArticulatedFossils(CreativeModeTab.Output output, HolderLookup.RegistryLookup<FossilVariant> registryLookup, Predicate<Holder<FossilVariant>> predicate, CreativeModeTab.TabVisibility tabVisibility) {
         registryLookup.listElements().filter(predicate).sorted(FOSSIL_VARIANT_COMPARATOR).forEach(reference -> {
             ItemStack itemStack = new ItemStack(FAItems.ARTICULATED_FOSSIL.get());
             itemStack.set(FADataComponents.FOSSIL_VARIANT.get(), reference);

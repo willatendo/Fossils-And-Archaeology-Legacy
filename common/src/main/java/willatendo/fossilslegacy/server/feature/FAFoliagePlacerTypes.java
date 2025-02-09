@@ -5,12 +5,12 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerTy
 import willatendo.fossilslegacy.server.feature.foliageplacer.BranchedFoliagePlacer;
 import willatendo.fossilslegacy.server.feature.foliageplacer.LepidodendronFoliagePlacer;
 import willatendo.fossilslegacy.server.feature.foliageplacer.SigillariaFoliagePlacer;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 public final class FAFoliagePlacerTypes {
-    public static final SimpleRegistry<FoliagePlacerType<?>> FOLIAGE_PLACER_TYPES = SimpleRegistry.create(Registries.FOLIAGE_PLACER_TYPE, FossilsLegacyUtils.ID);
+    public static final SimpleRegistry<FoliagePlacerType<?>> FOLIAGE_PLACER_TYPES = SimpleRegistry.create(Registries.FOLIAGE_PLACER_TYPE, FAUtils.ID);
 
     public static final SimpleHolder<FoliagePlacerType<BranchedFoliagePlacer>> BRANCHED_FOLIAGE_PLACER = FOLIAGE_PLACER_TYPES.register("branched_foliage_placer", () -> new FoliagePlacerType(BranchedFoliagePlacer.CODEC));
     public static final SimpleHolder<FoliagePlacerType<LepidodendronFoliagePlacer>> LEPIDODENDRON_FOLIAGE_PLACER = FOLIAGE_PLACER_TYPES.register("lepidodendron_foliage_placer", () -> new FoliagePlacerType(LepidodendronFoliagePlacer.CODEC));

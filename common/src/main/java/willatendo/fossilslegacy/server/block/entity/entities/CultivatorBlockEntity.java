@@ -3,18 +3,21 @@ package willatendo.fossilslegacy.server.block.entity.entities;
 import com.google.common.collect.Maps;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.*;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.StackedContents;
+import net.minecraft.world.entity.player.StackedItemContents;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.RecipeCraftingHolder;
@@ -23,6 +26,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeManager.CachedCheck;
@@ -41,8 +45,9 @@ import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.menu.menus.CultivatorMenu;
 import willatendo.fossilslegacy.server.recipe.FARecipeTypes;
 import willatendo.fossilslegacy.server.recipe.recipes.CultivationRecipe;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FAFuelEntryTags;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -105,7 +110,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         }
     };
 
-    private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
+    private final Object2IntOpenHashMap<ResourceKey<Recipe<?>>> recipesUsed = new Object2IntOpenHashMap<>();
     public final CachedCheck<SingleRecipeInput, CultivationRecipe> recipeCheck = RecipeManager.createCheck(FARecipeTypes.CULTIVATION.get());
 
     private final DyeColor dyeColor;
@@ -198,7 +203,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         this.onDuration = this.getOnDuration(this.itemStacks.get(1));
         CompoundTag usedRecipes = compoundTag.getCompound("RecipesUsed");
         for (String recipes : usedRecipes.getAllKeys()) {
-            this.recipesUsed.put(ResourceLocation.parse(recipes), usedRecipes.getInt(recipes));
+            this.recipesUsed.put(ResourceKey.create(Registries.RECIPE, ResourceLocation.parse(recipes)), usedRecipes.getInt(recipes));
         }
     }
 
@@ -248,7 +253,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         ++cultivatorBlockEntity.time;
     }
 
-    public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, CultivatorBlockEntity cultivatorBlockEntity) {
+    public static void serverTick(ServerLevel serverLevel, BlockPos blockPos, BlockState blockState, CultivatorBlockEntity cultivatorBlockEntity) {
         boolean isOn = cultivatorBlockEntity.isOn();
         boolean changed = false;
         if (cultivatorBlockEntity.isOn()) {
@@ -261,34 +266,38 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         if (cultivatorBlockEntity.isOn() || hasFuel && hasInput) {
             RecipeHolder<CultivationRecipe> recipe;
             if (hasInput) {
-                recipe = cultivatorBlockEntity.recipeCheck.getRecipeFor(new SingleRecipeInput(cultivatorBlockEntity.itemStacks.get(0)), level).orElse(null);
+                recipe = cultivatorBlockEntity.recipeCheck.getRecipeFor(new SingleRecipeInput(cultivatorBlockEntity.itemStacks.get(0)), serverLevel).orElse(null);
             } else {
                 recipe = null;
             }
 
             int maxStackSize = cultivatorBlockEntity.getMaxStackSize();
-            if (!cultivatorBlockEntity.isOn() && cultivatorBlockEntity.canCultivate(level.registryAccess(), recipe, cultivatorBlockEntity.itemStacks, maxStackSize)) {
+            if (!cultivatorBlockEntity.isOn() && cultivatorBlockEntity.canCultivate(serverLevel.registryAccess(), recipe, cultivatorBlockEntity.itemStacks, maxStackSize)) {
                 cultivatorBlockEntity.onTime = cultivatorBlockEntity.getOnDuration(fuel);
                 cultivatorBlockEntity.onDuration = cultivatorBlockEntity.onTime;
                 if (cultivatorBlockEntity.isOn()) {
                     changed = true;
-                    if (hasFuel) {
-                        Item fuelItem = fuel.getItem();
-                        fuel.shrink(1);
-                        if (fuel.isEmpty()) {
-                            Item craftingRemainder = fuelItem.getCraftingRemainingItem();
-                            cultivatorBlockEntity.itemStacks.set(1, craftingRemainder == null ? ItemStack.EMPTY : new ItemStack(craftingRemainder));
+                    ItemStack craftingRemainder = fuel.getItem().getCraftingRemainder();
+                    if (fuel.isEmpty()) {
+                        if (!craftingRemainder.isEmpty()) {
+                            cultivatorBlockEntity.itemStacks.set(1, craftingRemainder);
+                        } else if (hasFuel) {
+                            Item item = fuel.getItem();
+                            fuel.shrink(1);
+                            if (fuel.isEmpty()) {
+                                cultivatorBlockEntity.itemStacks.set(1, item.getCraftingRemainder());
+                            }
                         }
                     }
                 }
             }
 
-            if (cultivatorBlockEntity.isOn() && cultivatorBlockEntity.canCultivate(level.registryAccess(), recipe, cultivatorBlockEntity.itemStacks, maxStackSize)) {
+            if (cultivatorBlockEntity.isOn() && cultivatorBlockEntity.canCultivate(serverLevel.registryAccess(), recipe, cultivatorBlockEntity.itemStacks, maxStackSize)) {
                 ++cultivatorBlockEntity.cultivationProgress;
                 if (cultivatorBlockEntity.cultivationProgress == cultivatorBlockEntity.cultivationTotalTime) {
                     cultivatorBlockEntity.cultivationProgress = 0;
-                    cultivatorBlockEntity.cultivationTotalTime = getTotalCultivationTime(level, cultivatorBlockEntity);
-                    if (cultivatorBlockEntity.cultivate(level.registryAccess(), recipe, cultivatorBlockEntity.itemStacks, maxStackSize)) {
+                    cultivatorBlockEntity.cultivationTotalTime = getTotalCultivationTime(serverLevel, cultivatorBlockEntity);
+                    if (cultivatorBlockEntity.cultivate(serverLevel.registryAccess(), recipe, cultivatorBlockEntity.itemStacks, maxStackSize)) {
                         cultivatorBlockEntity.setRecipeUsed(recipe);
                     }
 
@@ -301,20 +310,20 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
             cultivatorBlockEntity.cultivationProgress = Mth.clamp(cultivatorBlockEntity.cultivationProgress - 2, 0, cultivatorBlockEntity.cultivationTotalTime);
         }
 
-        if (cultivatorBlockEntity.onTime == (cultivatorBlockEntity.getTotalCultivationTime(level, cultivatorBlockEntity) / 2) + 1) {
+        if (cultivatorBlockEntity.onTime == (cultivatorBlockEntity.getTotalCultivationTime(serverLevel, cultivatorBlockEntity) / 2) + 1) {
             if (cultivatorBlockEntity.level.getRandom().nextInt(100) <= 30) {
-                ((CultivatorBlock) CultivatorBlockEntity.getDyeToBlockMap().get(cultivatorBlockEntity.dyeColor)).shatter(level, blockPos, cultivatorBlockEntity);
+                ((CultivatorBlock) CultivatorBlockEntity.getDyeToBlockMap().get(cultivatorBlockEntity.dyeColor)).shatter(serverLevel, blockPos, cultivatorBlockEntity);
             }
         }
 
         if (isOn != cultivatorBlockEntity.isOn()) {
             changed = true;
             blockState = blockState.setValue(CultivatorBlock.ACTIVE, Boolean.valueOf(cultivatorBlockEntity.isOn()));
-            level.setBlock(blockPos, blockState, 3);
+            serverLevel.setBlock(blockPos, blockState, 3);
         }
 
         if (changed) {
-            setChanged(level, blockPos, blockState);
+            setChanged(serverLevel, blockPos, blockState);
         }
     }
 
@@ -365,12 +374,12 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         if (itemStack.isEmpty()) {
             return 0;
         } else {
-            return FuelEntry.getFuel(this.level.registryAccess(), FAFuelEntryTags.CULTIVATOR).getOrDefault(itemStack.getItem(), 0);
+            return FuelEntry.getFuel(this.level.holderLookup(FARegistries.FUEL_ENTRY), FAFuelEntryTags.CULTIVATOR).getOrDefault(itemStack.getItem(), 0);
         }
     }
 
-    private static int getTotalCultivationTime(Level level, CultivatorBlockEntity cultivatorBlockEntity) {
-        return cultivatorBlockEntity.recipeCheck.getRecipeFor(new SingleRecipeInput(cultivatorBlockEntity.getItem(0)), level).map(recipeHolder -> recipeHolder.value().getTime()).orElse(6000);
+    private static int getTotalCultivationTime(ServerLevel serverLevel, CultivatorBlockEntity cultivatorBlockEntity) {
+        return cultivatorBlockEntity.recipeCheck.getRecipeFor(new SingleRecipeInput(cultivatorBlockEntity.getItem(0)), serverLevel).map(recipeHolder -> recipeHolder.value().getTime()).orElse(6000);
     }
 
     @Override
@@ -436,11 +445,12 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         }
 
         if (slot == 0 && !flag) {
-            this.cultivationTotalTime = getTotalCultivationTime(this.level, this);
-            this.cultivationProgress = 0;
-            this.setChanged();
+            if (this.level instanceof ServerLevel serverLevel) {
+                this.cultivationTotalTime = getTotalCultivationTime(serverLevel, this);
+                this.cultivationProgress = 0;
+                this.setChanged();
+            }
         }
-
     }
 
     @Override
@@ -471,7 +481,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
     @Override
     public void setRecipeUsed(RecipeHolder<?> recipeHolder) {
         if (recipeHolder != null) {
-            ResourceLocation recipeId = recipeHolder.id();
+            ResourceKey<Recipe<?>> recipeId = recipeHolder.id();
             this.recipesUsed.addTo(recipeId, 1);
         }
     }
@@ -485,15 +495,15 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
     }
 
     @Override
-    public void fillStackedContents(StackedContents stackedContents) {
+    public void fillStackedContents(StackedItemContents stackedItemContents) {
         for (ItemStack itemStack : this.itemStacks) {
-            stackedContents.accountStack(itemStack);
+            stackedItemContents.accountStack(itemStack);
         }
     }
 
     @Override
     protected Component getDefaultName() {
-        return FossilsLegacyUtils.translation("container", "cultivator");
+        return FAUtils.translation("container", "cultivator");
     }
 
     @Override

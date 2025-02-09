@@ -7,7 +7,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.LayeredDraw;
 import net.minecraft.world.item.ItemStack;
 import willatendo.fossilslegacy.server.block.FABlocks;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public class SkullOverlayScreen implements LayeredDraw.Layer {
     @Override
@@ -20,7 +20,7 @@ public class SkullOverlayScreen implements LayeredDraw.Layer {
                 RenderSystem.depthMask(false);
                 RenderSystem.enableBlend();
                 guiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
-                guiGraphics.blit(FossilsLegacyUtils.resource("textures/misc/skullblur.png"), 0, 0, -90, 0.0F, 0.0F, guiGraphics.guiWidth(), guiGraphics.guiHeight(), guiGraphics.guiWidth(), guiGraphics.guiHeight());
+                guiGraphics.blit(FAUtils.resource("textures/misc/skullblur.png"), 0, 0, -90, 0.0F, 0.0F, guiGraphics.guiWidth(), guiGraphics.guiHeight(), guiGraphics.guiWidth(), guiGraphics.guiHeight());
                 RenderSystem.disableBlend();
                 RenderSystem.depthMask(true);
                 RenderSystem.enableDepthTest();

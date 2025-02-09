@@ -10,7 +10,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
@@ -25,7 +25,7 @@ import willatendo.fossilslegacy.server.entity.entities.ThrownAnimalEgg;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
 import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -53,17 +53,17 @@ public class AnimalEggItem extends Item implements ProjectileItem {
         this.period.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
         if (itemStack.has(FADataComponents.COAT_TYPE.get())) {
             Holder<CoatType> holder = itemStack.get(FADataComponents.COAT_TYPE.get());
-            tooltipComponents.add(FossilsLegacyUtils.translation("item", "dna.coat_type", holder.value().displayInfo().name()).withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(FAUtils.translation("item", "dna.coat_type", holder.value().displayInfo().name()).withStyle(ChatFormatting.GRAY));
         }
         super.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
+    public InteractionResult use(Level level, Player player, InteractionHand interactionHand) {
         ItemStack itemStack = player.getItemInHand(interactionHand);
         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.EGG_THROW, SoundSource.PLAYERS, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
         if (!level.isClientSide) {
-            ThrownAnimalEgg thrownAnimalEgg = new ThrownAnimalEgg(level, player, this.animal.get(), this.incubated);
+            ThrownAnimalEgg thrownAnimalEgg = new ThrownAnimalEgg(level, player, this.animal.get(), this.incubated, player.getItemInHand(interactionHand));
             if (this.coatTypes != null) {
                 thrownAnimalEgg.setCoatType(level.registryAccess().lookup(FARegistries.COAT_TYPES).get().get(this.coatTypes).get().getRandomElement(level.getRandom()).get().value());
             }
@@ -75,13 +75,11 @@ public class AnimalEggItem extends Item implements ProjectileItem {
         player.awardStat(Stats.ITEM_USED.get(this));
         itemStack.consume(1, player);
 
-        return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide());
+        return InteractionResult.SUCCESS;
     }
 
     @Override
     public Projectile asProjectile(Level level, Position position, ItemStack itemStack, Direction direction) {
-        ThrownAnimalEgg thrownIncubatedEgg = new ThrownAnimalEgg(level, position.x(), position.y(), position.z(), this.animal.get(), this.incubated);
-        thrownIncubatedEgg.setItem(itemStack);
-        return thrownIncubatedEgg;
+        return new ThrownAnimalEgg(level, position.x(), position.y(), position.z(), this.animal.get(), this.incubated, itemStack);
     }
 }

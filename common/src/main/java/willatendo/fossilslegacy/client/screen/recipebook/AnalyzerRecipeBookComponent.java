@@ -1,23 +1,29 @@
 package willatendo.fossilslegacy.client.screen.recipebook;
 
 import net.minecraft.client.gui.components.WidgetSprites;
+import net.minecraft.client.gui.screens.recipebook.GhostSlots;
 import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
-import net.minecraft.core.Holder;
-import net.minecraft.core.NonNullList;
+import net.minecraft.client.gui.screens.recipebook.RecipeCollection;
+import net.minecraft.network.chat.Component;
+import net.minecraft.util.context.ContextMap;
+import net.minecraft.world.entity.player.StackedItemContents;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import willatendo.fossilslegacy.server.analyzer_result.AnalyzerResult;
-import willatendo.fossilslegacy.server.recipe.recipes.AnalyzationRecipe;
-import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import net.minecraft.world.item.crafting.display.FurnaceRecipeDisplay;
+import net.minecraft.world.item.crafting.display.RecipeDisplay;
+import willatendo.fossilslegacy.server.menu.menus.AnalyzerMenu;
+import willatendo.fossilslegacy.server.recipe.display.AnalyzationRecipeDisplay;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
-import java.util.Iterator;
 import java.util.List;
 
-public class AnalyzerRecipeBookComponent extends RecipeBookComponent {
-    private static final WidgetSprites FILTER_SPRITES = new WidgetSprites(FossilsLegacyUtils.resource("recipe_book/analyzer_filter_enabled"), FossilsLegacyUtils.resource("recipe_book/analyzer_filter_disabled"), FossilsLegacyUtils.resource("recipe_book/analyzer_filter_enabled_highlighted"), FossilsLegacyUtils.resource("recipe_book/analyzer_filter_disabled_highlighted"));
+public class AnalyzerRecipeBookComponent extends RecipeBookComponent<AnalyzerMenu> {
+    private static final WidgetSprites FILTER_SPRITES = new WidgetSprites(FAUtils.resource("recipe_book/analyzer_filter_enabled"), FAUtils.resource("recipe_book/analyzer_filter_disabled"), FAUtils.resource("recipe_book/analyzer_filter_enabled_highlighted"), FAUtils.resource("recipe_book/analyzer_filter_disabled_highlighted"));
+    private final Component recipeFilterName;
+
+    public AnalyzerRecipeBookComponent(AnalyzerMenu analyzerMenu, Component recipeFilterName, List<RecipeBookComponent.TabInfo> tabInfos) {
+        super(analyzerMenu, tabInfos);
+        this.recipeFilterName = recipeFilterName;
+    }
 
     @Override
     protected void initFilterButtonTextures() {
@@ -25,29 +31,31 @@ public class AnalyzerRecipeBookComponent extends RecipeBookComponent {
     }
 
     @Override
-    public void slotClicked(Slot slot) {
-        super.slotClicked(slot);
-        if (slot != null && slot.index < this.menu.getSize()) {
-            this.ghostRecipe.clear();
+    protected boolean isCraftingSlot(Slot slot) {
+        boolean craftingSlot;
+        switch (slot.index) {
+            case 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 -> craftingSlot = true;
+            default -> craftingSlot = false;
+        }
+
+        return craftingSlot;
+    }
+
+    @Override
+    protected Component getRecipeFilterName() {
+        return this.recipeFilterName;
+    }
+
+    @Override
+    protected void fillGhostRecipe(GhostSlots ghostSlots, RecipeDisplay recipeDisplay, ContextMap contextMap) {
+        ghostSlots.setResult(this.menu.slots.get(10), contextMap, recipeDisplay.result());
+        if (recipeDisplay instanceof FurnaceRecipeDisplay furnacerecipedisplay) {
+            ghostSlots.setInput(this.menu.slots.get(0), contextMap, furnacerecipedisplay.ingredient());
         }
     }
 
     @Override
-    public void setupGhostRecipe(RecipeHolder<?> recipeHolder, List<Slot> slots) {
-        Ingredient results = Ingredient.of(this.minecraft.level.registryAccess().registryOrThrow(FARegistries.ANALYZER_RESULT).getTag(((AnalyzationRecipe) recipeHolder.value()).results).get().stream().map(Holder::value).map(AnalyzerResult::output).toList().toArray(ItemStack[]::new));
-        this.ghostRecipe.setRecipe(recipeHolder);
-        this.ghostRecipe.addIngredient(results, slots.get(9).x, slots.get(9).y);
-        NonNullList<Ingredient> ingredients = recipeHolder.value().getIngredients();
-        Iterator<Ingredient> ingredientIterator = ingredients.iterator();
-        for (int i = 0; i < 2; ++i) {
-            if (!ingredientIterator.hasNext()) {
-                return;
-            }
-            Ingredient ingredient = ingredientIterator.next();
-            if (!ingredient.isEmpty()) {
-                Slot slot = slots.get(i);
-                this.ghostRecipe.addIngredient(ingredient, slot.x, slot.y);
-            }
-        }
+    protected void selectMatchingRecipes(RecipeCollection recipeCollection, StackedItemContents stackedItemContents) {
+        recipeCollection.selectRecipes(stackedItemContents, recipeDisplay -> recipeDisplay instanceof AnalyzationRecipeDisplay);
     }
 }

@@ -7,7 +7,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.level.dimension.DimensionType;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.OptionalLong;
 
@@ -15,7 +15,7 @@ public final class FADimensionTypes {
     public static final ResourceKey<DimensionType> PREHISTORY = FADimensionTypes.create("prehistory");
 
     public static ResourceKey<DimensionType> create(String name) {
-        return ResourceKey.create(Registries.DIMENSION_TYPE, FossilsLegacyUtils.resource(name));
+        return ResourceKey.create(Registries.DIMENSION_TYPE, FAUtils.resource(name));
     }
 
     public static void bootstrap(BootstrapContext<DimensionType> bootstrapContext) {

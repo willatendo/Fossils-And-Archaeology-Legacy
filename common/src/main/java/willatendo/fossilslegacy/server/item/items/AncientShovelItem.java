@@ -4,14 +4,14 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShovelItem;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class AncientShovelItem extends ShovelItem {
-    public AncientShovelItem(Tier tier, Properties properties) {
-        super(tier, properties);
+    public AncientShovelItem(ToolMaterial toolMaterial, float attackDamage, float attackSpeed, Properties properties) {
+        super(toolMaterial, attackDamage, attackSpeed, properties);
     }
 
     @Override

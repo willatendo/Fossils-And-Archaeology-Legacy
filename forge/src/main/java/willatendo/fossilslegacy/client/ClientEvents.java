@@ -11,13 +11,13 @@ import willatendo.fossilslegacy.server.recipe.FARecipeTypes;
 import willatendo.fossilslegacy.server.recipe.recipes.AnalyzationRecipe;
 import willatendo.fossilslegacy.server.recipe.recipes.ArchaeologyRecipe;
 import willatendo.fossilslegacy.server.recipe.recipes.CultivationRecipe;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.client.event.registry.*;
 import willatendo.simplelibrary.server.event.registry.ForgeClientReloadListenerRegister;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = FAUtils.ID, value = Dist.CLIENT)
 public class ClientEvents {
     @SubscribeEvent
     public static void fmlClientSetupEvent(FMLClientSetupEvent event) {

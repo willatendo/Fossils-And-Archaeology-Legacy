@@ -15,20 +15,20 @@ import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.item.FADataComponents;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class BasicPackets {
-    public static final ResourceLocation APPLY_GENE = FossilsLegacyUtils.resource("apply_gene");
-    public static final ResourceLocation SINK = FossilsLegacyUtils.resource("sink");
-    public static final ResourceLocation TIME_MACHINE_UPDATE = FossilsLegacyUtils.resource("time_machine_update");
+    public static final ResourceLocation APPLY_GENE = FAUtils.resource("apply_gene");
+    public static final ResourceLocation SINK = FAUtils.resource("sink");
+    public static final ResourceLocation TIME_MACHINE_UPDATE = FAUtils.resource("time_machine_update");
 
     public static void serverboundApplyGenePacket(BlockPos blockPos, String coatType, Level level) {
         BlockEntity blockEntity = level.getBlockEntity(blockPos);
         if (blockEntity instanceof GeneModificationTableBlockEntity geneModificationTableBlockEntity) {
             ItemStack itemStack = geneModificationTableBlockEntity.getItem(0);
             geneModificationTableBlockEntity.setItem(0, ItemStack.EMPTY);
-            Registry<CoatType> coatTypeRegistry = level.registryAccess().registryOrThrow(FARegistries.COAT_TYPES);
-            Holder.Reference<CoatType> coatTypeHolder = coatTypeRegistry.getHolder(ResourceLocation.parse(coatType)).get();
+            Registry<CoatType> coatTypeRegistry = level.registryAccess().lookupOrThrow(FARegistries.COAT_TYPES);
+            Holder.Reference<CoatType> coatTypeHolder = coatTypeRegistry.get(ResourceLocation.parse(coatType)).get();
             itemStack.set(FADataComponents.COAT_TYPE.get(), coatTypeHolder);
             geneModificationTableBlockEntity.setItem(1, itemStack);
         }
@@ -37,7 +37,7 @@ public final class BasicPackets {
     public static void serverboundTimeMachineUpdatePacket(BlockPos blockPos, Level level) {
         BlockEntity blockEntity = level.getBlockEntity(blockPos);
         if (blockEntity instanceof TimeMachineBlockEntity timeMachineBlockEntity) {
-            timeMachineBlockEntity.timeTravel();
+            timeMachineBlockEntity.timeTravel(blockPos);
         }
     }
 

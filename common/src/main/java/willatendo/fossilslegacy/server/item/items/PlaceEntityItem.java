@@ -8,9 +8,9 @@ import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -74,7 +74,7 @@ public class PlaceEntityItem<T extends Entity> extends Item {
             if (this.entityType.get() != null) {
                 ServerLevel serverLevel = (ServerLevel) level;
                 Player player = useOnContext.getPlayer();
-                T entity = this.entityType.get().create(level);
+                T entity = this.entityType.get().create(level, EntitySpawnReason.SPAWN_ITEM_USE);
                 this.entityModification(itemStack, entity);
                 entity.setPos((double) placePos.getX() + 0.5D, placePos.getY() + 1.0D, (double) placePos.getZ() + 0.5D);
                 double yOffset = getYOffset(serverLevel, blockPos, !Objects.equals(blockPos, placePos) && direction == Direction.UP, ((Entity) entity).getBoundingBox());
@@ -82,7 +82,7 @@ public class PlaceEntityItem<T extends Entity> extends Item {
                 if (entity instanceof Mob mob) {
                     mob.yHeadRot = mob.getYRot();
                     mob.yBodyRot = mob.getYRot();
-                    mob.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(mob.blockPosition()), MobSpawnType.SPAWN_EGG, null);
+                    mob.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(mob.blockPosition()), EntitySpawnReason.SPAWN_ITEM_USE, null);
                     mob.playAmbientSound();
                 }
                 level.addFreshEntity(entity);

@@ -1,19 +1,6 @@
 package willatendo.fossilslegacy.data;
 
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
-import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
-import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import willatendo.fossilslegacy.server.block.FABlocks;
-import willatendo.fossilslegacy.server.block.blocks.*;
-import willatendo.simplelibrary.data.SimpleBlockStateProvider;
-
+/*
 public class FABlockStateProvider extends SimpleBlockStateProvider {
     public FABlockStateProvider(PackOutput packOutput, String modId, ExistingFileHelper existingFileHelper) {
         super(packOutput, modId, existingFileHelper);
@@ -69,61 +56,7 @@ public class FABlockStateProvider extends SimpleBlockStateProvider {
         this.horizontalBlock(FABlocks.WAXED_EXPOSED_COPPER_LLAMA_STATUE.get(), this.models().withExistingParent("waxed_exposed_copper_llama_statue", this.modLoc("block/template_llama")).texture("texture", this.modLoc("block/exposed_copper_llama_statue")).texture("particle", this.mcLoc("block/exposed_copper")));
         this.horizontalBlock(FABlocks.WAXED_WEATHERED_COPPER_LLAMA_STATUE.get(), this.models().withExistingParent("waxed_weathered_copper_llama_statue", this.modLoc("block/template_llama")).texture("texture", this.modLoc("block/weathered_copper_llama_statue")).texture("particle", this.mcLoc("block/weathered_copper")));
         this.horizontalBlock(FABlocks.WAXED_OXIDIZED_COPPER_LLAMA_STATUE.get(), this.models().withExistingParent("waxed_oxidized_copper_llama_statue", this.modLoc("block/template_llama")).texture("texture", this.modLoc("block/oxidized_copper_llama_statue")).texture("particle", this.mcLoc("block/oxidized_copper")));
-        this.simpleBlock(FABlocks.LEPIDODENDRON_PLANKS.get());
-        this.simpleBlock(FABlocks.LEPIDODENDRON_SAPLING.get(), this.models().cross("lepidodendron_sapling", this.modLoc("block/lepidodendron_sapling")).renderType("cutout"));
-        this.logBlock(FABlocks.LEPIDODENDRON_LOG.get());
-        this.logBlock(FABlocks.STRIPPED_LEPIDODENDRON_LOG.get());
-        this.woodBlock(FABlocks.LEPIDODENDRON_WOOD.get(), this.modLoc("block/lepidodendron_log"));
-        this.woodBlock(FABlocks.STRIPPED_LEPIDODENDRON_WOOD.get(), this.modLoc("block/stripped_lepidodendron_log"));
-        this.simpleBlock(FABlocks.LEPIDODENDRON_LEAVES.get(), this.models().withExistingParent("lepidodendron_leaves", this.mcLoc("block/leaves")).texture("all", this.modLoc("block/lepidodendron_leaves")).renderType("cutout"));
-        this.stairsBlock(FABlocks.LEPIDODENDRON_STAIRS.get(), this.modLoc("block/lepidodendron_planks"));
-        this.signBlock(FABlocks.LEPIDODENDRON_SIGN.get(), FABlocks.LEPIDODENDRON_WALL_SIGN.get(), this.modLoc("block/lepidodendron_planks"));
-        this.doorBlockWithRenderType(FABlocks.LEPIDODENDRON_DOOR.get(), this.modLoc("block/lepidodendron_door_bottom"), this.modLoc("block/lepidodendron_door_top"), "cutout");
-        this.hangingSignBlock(FABlocks.LEPIDODENDRON_HANGING_SIGN.get(), FABlocks.LEPIDODENDRON_WALL_HANGING_SIGN.get(), this.modLoc("block/stripped_lepidodendron_log"));
-        this.pressurePlateBlock(FABlocks.LEPIDODENDRON_PRESSURE_PLATE.get(), this.modLoc("block/lepidodendron_planks"));
-        this.fenceBlock(FABlocks.LEPIDODENDRON_FENCE.get(), this.modLoc("block/lepidodendron_planks"));
-        this.trapdoorBlockWithRenderType(FABlocks.LEPIDODENDRON_TRAPDOOR.get(), this.modLoc("block/lepidodendron_trapdoor"), true, "cutout");
-        this.fenceGateBlock(FABlocks.LEPIDODENDRON_FENCE_GATE.get(), this.modLoc("block/lepidodendron_planks"));
-        this.simpleBlock(FABlocks.POTTED_LEPIDODENDRON_SAPLING.get(), this.models().withExistingParent("potted_lepidodendron_sapling", this.mcLoc("block/flower_pot_cross")).texture("plant", this.modLoc("block/lepidodendron_sapling")).renderType("cutout"));
-        this.buttonBlock(FABlocks.LEPIDODENDRON_BUTTON.get(), this.modLoc("block/lepidodendron_planks"));
-        this.slabBlock(FABlocks.LEPIDODENDRON_SLAB.get(), this.modLoc("block/lepidodendron_planks"), this.modLoc("block/lepidodendron_planks"));
-        this.simpleBlock(FABlocks.SIGILLARIA_PLANKS.get());
-        this.simpleBlock(FABlocks.SIGILLARIA_SAPLING.get(), this.models().cross("sigillaria_sapling", this.modLoc("block/sigillaria_sapling")).renderType("cutout"));
-        this.logBlock(FABlocks.SIGILLARIA_LOG.get());
-        this.logBlock(FABlocks.STRIPPED_SIGILLARIA_LOG.get());
-        this.woodBlock(FABlocks.SIGILLARIA_WOOD.get(), this.modLoc("block/sigillaria_log"));
-        this.woodBlock(FABlocks.STRIPPED_SIGILLARIA_WOOD.get(), this.modLoc("block/stripped_sigillaria_log"));
-        this.simpleBlock(FABlocks.SIGILLARIA_LEAVES.get(), this.models().withExistingParent("sigillaria_leaves", this.mcLoc("block/leaves")).texture("all", this.modLoc("block/sigillaria_leaves")).renderType("cutout"));
-        this.stairsBlock(FABlocks.SIGILLARIA_STAIRS.get(), this.modLoc("block/sigillaria_planks"));
-        this.signBlock(FABlocks.SIGILLARIA_SIGN.get(), FABlocks.SIGILLARIA_WALL_SIGN.get(), this.modLoc("block/sigillaria_planks"));
-        this.doorBlock(FABlocks.SIGILLARIA_DOOR.get(), this.modLoc("block/sigillaria_door_bottom"), this.modLoc("block/sigillaria_door_top"));
-        this.hangingSignBlock(FABlocks.SIGILLARIA_HANGING_SIGN.get(), FABlocks.SIGILLARIA_WALL_HANGING_SIGN.get(), this.modLoc("block/stripped_sigillaria_log"));
-        this.pressurePlateBlock(FABlocks.SIGILLARIA_PRESSURE_PLATE.get(), this.modLoc("block/sigillaria_planks"));
-        this.fenceBlock(FABlocks.SIGILLARIA_FENCE.get(), this.modLoc("block/sigillaria_planks"));
-        this.trapdoorBlock(FABlocks.SIGILLARIA_TRAPDOOR.get(), this.modLoc("block/sigillaria_trapdoor"), true);
-        this.fenceGateBlock(FABlocks.SIGILLARIA_FENCE_GATE.get(), this.modLoc("block/sigillaria_planks"));
-        this.simpleBlock(FABlocks.POTTED_SIGILLARIA_SAPLING.get(), this.models().withExistingParent("potted_sigillaria_sapling", this.mcLoc("block/flower_pot_cross")).texture("plant", this.modLoc("block/sigillaria_sapling")).renderType("cutout"));
-        this.buttonBlock(FABlocks.SIGILLARIA_BUTTON.get(), this.modLoc("block/sigillaria_planks"));
-        this.slabBlock(FABlocks.SIGILLARIA_SLAB.get(), this.modLoc("block/sigillaria_planks"), this.modLoc("block/sigillaria_planks"));
-        this.simpleBlock(FABlocks.CALAMITES_PLANKS.get());
-        this.simpleBlock(FABlocks.CALAMITES_SAPLING.get(), this.models().cross("calamites_sapling", this.modLoc("block/calamites_sapling")).renderType("cutout"));
-        this.logBlock(FABlocks.CALAMITES_LOG.get());
-        this.logBlock(FABlocks.STRIPPED_CALAMITES_LOG.get());
-        this.woodBlock(FABlocks.CALAMITES_WOOD.get(), this.modLoc("block/calamites_log"));
-        this.woodBlock(FABlocks.STRIPPED_CALAMITES_WOOD.get(), this.modLoc("block/stripped_calamites_log"));
-        this.simpleBlock(FABlocks.CALAMITES_LEAVES.get(), this.models().withExistingParent("calamites_leaves", this.mcLoc("block/leaves")).texture("all", this.modLoc("block/calamites_leaves")).renderType("cutout"));
-        this.stairsBlock(FABlocks.CALAMITES_STAIRS.get(), this.modLoc("block/calamites_planks"));
-        this.signBlock(FABlocks.CALAMITES_SIGN.get(), FABlocks.CALAMITES_WALL_SIGN.get(), this.modLoc("block/calamites_planks"));
-        this.doorBlock(FABlocks.CALAMITES_DOOR.get(), this.modLoc("block/calamites_door_bottom"), this.modLoc("block/calamites_door_top"));
-        this.hangingSignBlock(FABlocks.CALAMITES_HANGING_SIGN.get(), FABlocks.CALAMITES_WALL_HANGING_SIGN.get(), this.modLoc("block/stripped_calamites_log"));
-        this.pressurePlateBlock(FABlocks.CALAMITES_PRESSURE_PLATE.get(), this.modLoc("block/calamites_planks"));
-        this.fenceBlock(FABlocks.CALAMITES_FENCE.get(), this.modLoc("block/calamites_planks"));
-        this.trapdoorBlock(FABlocks.CALAMITES_TRAPDOOR.get(), this.modLoc("block/calamites_trapdoor"), true);
-        this.fenceGateBlock(FABlocks.CALAMITES_FENCE_GATE.get(), this.modLoc("block/calamites_planks"));
-        this.simpleBlock(FABlocks.POTTED_CALAMITES_SAPLING.get(), this.models().withExistingParent("potted_calamites_sapling", this.mcLoc("block/flower_pot_cross")).texture("plant", this.modLoc("block/calamites_sapling")).renderType("cutout"));
-        this.buttonBlock(FABlocks.CALAMITES_BUTTON.get(), this.modLoc("block/calamites_planks"));
-        this.slabBlock(FABlocks.CALAMITES_SLAB.get(), this.modLoc("block/calamites_planks"), this.modLoc("block/calamites_planks"));
-    }
+       }
 
     private void fossil(Block block, boolean deepslate) {
         ConfiguredModel[] configuredModels;
@@ -161,3 +94,4 @@ public class FABlockStateProvider extends SimpleBlockStateProvider {
         this.axisBlock(block, texture, texture);
     }
 }
+*/

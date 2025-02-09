@@ -4,8 +4,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -29,7 +29,7 @@ public class DispenseEntityItemBehavior extends DefaultDispenseItemBehavior {
         if (itemStack.getItem() instanceof PlaceEntityItem placeEntityItem) {
             EntityType entityType = (EntityType) placeEntityItem.getEntityType().get();
             try {
-                Entity entity = entityType.spawn(blockSource.level(), itemStack, null, blockSource.pos().relative(direction), MobSpawnType.DISPENSER, direction != Direction.UP, false);
+                Entity entity = entityType.spawn(blockSource.level(), itemStack, null, blockSource.pos().relative(direction), EntitySpawnReason.DISPENSER, direction != Direction.UP, false);
                 placeEntityItem.entityModification(itemStack, entity);
                 if (this.additionalInfo != null) {
                     this.additionalInfo.accept(entity);

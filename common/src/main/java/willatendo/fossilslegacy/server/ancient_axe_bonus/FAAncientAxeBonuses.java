@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FAAncientAxeBonuses {
     public static final ResourceKey<AncientAxeBonus> OAK_LOG_TO_OAK_PLANKS = FAAncientAxeBonuses.create("oak_log_to_oak_planks");
@@ -26,7 +26,7 @@ public final class FAAncientAxeBonuses {
     public static final ResourceKey<AncientAxeBonus> SIGILLARIA_LOG_TO_SIGILLARIA_PLANKS = FAAncientAxeBonuses.create("sigillaria_log_to_sigillaria_planks");
 
     private static ResourceKey<AncientAxeBonus> create(String name) {
-        return ResourceKey.create(FARegistries.ANCIENT_AXE_BONUS, FossilsLegacyUtils.resource(name));
+        return ResourceKey.create(FARegistries.ANCIENT_AXE_BONUS, FAUtils.resource(name));
     }
 
     private static void register(BootstrapContext<AncientAxeBonus> bootstrapContext, ResourceKey<AncientAxeBonus> resourceKey, Block input, ItemStack output, int minDrop, int maxDrop) {

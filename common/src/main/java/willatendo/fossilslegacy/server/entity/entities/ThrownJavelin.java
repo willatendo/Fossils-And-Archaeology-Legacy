@@ -11,21 +11,17 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LightningBolt;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.entity.FADamageTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.item.FAItems;
-import willatendo.fossilslegacy.server.item.FATiers;
+import willatendo.fossilslegacy.server.item.FAToolMaterials;
 
 public class ThrownJavelin extends AbstractArrow {
     private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(ThrownJavelin.class, EntityDataSerializers.INT);
@@ -74,29 +70,29 @@ public class ThrownJavelin extends AbstractArrow {
         this.entityData.set(DATA_VARIANT_ID, variant);
     }
 
-    public void setVariant(Tier tier) {
-        if (tier == Tiers.WOOD) {
+    public void setVariant(ToolMaterial tier) {
+        if (tier == ToolMaterial.WOOD) {
             this.setVariant(0);
         }
-        if (tier == Tiers.STONE) {
+        if (tier == ToolMaterial.STONE) {
             this.setVariant(1);
         }
-        if (tier == Tiers.IRON) {
+        if (tier == ToolMaterial.IRON) {
             this.setVariant(2);
         }
-        if (tier == Tiers.GOLD) {
+        if (tier == ToolMaterial.GOLD) {
             this.setVariant(3);
         }
-        if (tier == Tiers.DIAMOND) {
+        if (tier == ToolMaterial.DIAMOND) {
             this.setVariant(4);
         }
-        if (tier == Tiers.NETHERITE) {
+        if (tier == ToolMaterial.NETHERITE) {
             this.setVariant(5);
         }
-        if (tier == FATiers.SCARAB_GEM) {
+        if (tier == FAToolMaterials.SCARAB_GEM) {
             this.setVariant(6);
         }
-        this.damage = 6.0F + tier.getAttackDamageBonus();
+        this.damage = 6.0F + tier.attackDamageBonus();
     }
 
     public int getVariant() {
@@ -112,9 +108,9 @@ public class ThrownJavelin extends AbstractArrow {
     protected void onHitEntity(EntityHitResult entityHitResult) {
         Entity entity = entityHitResult.getEntity();
         Entity owner = this.getOwner();
-        DamageSource damageSource = new DamageSource(this.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(FADamageTypes.JAVELIN));
+        DamageSource damageSource = new DamageSource(this.level().registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE).getOrThrow(FADamageTypes.JAVELIN));
         SoundEvent soundevent = SoundEvents.ARROW_HIT;
-        if (entity.hurt(damageSource, this.damage)) {
+        if (entity.hurtOrSimulate(damageSource, this.damage)) {
             if (entity.getType() == EntityType.ENDERMAN) {
                 return;
             }
@@ -129,7 +125,7 @@ public class ThrownJavelin extends AbstractArrow {
         if (this.level() instanceof ServerLevel && this.getVariant() == 6) {
             BlockPos blockpos = entity.blockPosition();
             if (this.level().canSeeSky(blockpos)) {
-                LightningBolt lightningbolt = EntityType.LIGHTNING_BOLT.create(this.level());
+                LightningBolt lightningbolt = EntityType.LIGHTNING_BOLT.create(this.level(), EntitySpawnReason.EVENT);
                 if (lightningbolt != null) {
                     lightningbolt.moveTo(Vec3.atBottomCenterOf(blockpos));
                     lightningbolt.setCause(owner instanceof ServerPlayer ? (ServerPlayer) owner : null);

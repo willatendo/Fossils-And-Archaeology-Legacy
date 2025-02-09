@@ -25,7 +25,7 @@ public class DinopediaItem extends Item {
             if (player.level().isClientSide()) {
                 ClientPlayerScreens.openDinopediaScreen(player, livingEntity, dinopediaInformation);
                 player.awardStat(Stats.ITEM_USED.get(this));
-                return InteractionResult.sidedSuccess(player.level().isClientSide());
+                return InteractionResult.SUCCESS;
             }
         }
 

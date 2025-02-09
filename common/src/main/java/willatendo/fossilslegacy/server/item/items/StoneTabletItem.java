@@ -18,13 +18,13 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import willatendo.fossilslegacy.server.entity.entities.StoneTablet;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 import java.util.Optional;
 
 public class StoneTabletItem extends Item {
-    private static final Component TOOLTIP_RANDOM_VARIANT = FossilsLegacyUtils.translation("stone_tablet", "random").withStyle(ChatFormatting.GRAY);
+    private static final Component TOOLTIP_RANDOM_VARIANT = FAUtils.translation("stone_tablet", "random").withStyle(ChatFormatting.GRAY);
 
     public StoneTabletItem(Properties properties) {
         super(properties);
@@ -61,7 +61,7 @@ public class StoneTabletItem extends Item {
                     }
 
                     itemStack.shrink(1);
-                    return InteractionResult.sidedSuccess(level.isClientSide);
+                    return InteractionResult.SUCCESS;
                 } else {
                     return InteractionResult.CONSUME;
                 }

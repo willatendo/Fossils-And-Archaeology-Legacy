@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.RandomizableContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.DecoratedPotBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.ticks.ContainerSingleItem;
@@ -123,5 +124,12 @@ public class VaseBlockEntity extends BlockEntity implements RandomizableContaine
     private void markUpdated() {
         this.setChanged();
         this.getLevel().sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), 3);
+    }
+
+    public void wobble(DecoratedPotBlockEntity.WobbleStyle wobbleStyle) {
+        if (this.level != null && !this.level.isClientSide()) {
+            this.level.blockEvent(this.getBlockPos(), this.getBlockState().getBlock(), 1, wobbleStyle.ordinal());
+        }
+
     }
 }

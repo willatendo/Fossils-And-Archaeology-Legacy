@@ -8,6 +8,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -30,7 +31,7 @@ import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.block.entity.entities.CultivatorBlockEntity;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.stats.FAStats;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class CultivatorBlock extends Block implements EntityBlock {
@@ -49,7 +50,9 @@ public class CultivatorBlock extends Block implements EntityBlock {
         level.playLocalSound(blockPos, SoundEvents.GLASS_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F, false);
 
         for (Player player : level.players()) {
-            player.sendSystemMessage(FossilsLegacyUtils.translation("block", "cultivator.shatter"));
+            if (player instanceof ServerPlayer serverPlayer) {
+                serverPlayer.sendSystemMessage(FAUtils.translation("block", "cultivator.shatter"));
+            }
         }
 
         popResource(level, blockPos, new ItemStack(Items.IRON_INGOT, 3));
@@ -58,13 +61,13 @@ public class CultivatorBlock extends Block implements EntityBlock {
         int chance = level.getRandom().nextInt(100);
         LivingEntity monster = null;
         if (chance <= 5) {
-            monster = EntityType.CREEPER.create(level);
+            monster = EntityType.CREEPER.create(level, EntitySpawnReason.TRIGGERED);
         }
         if (chance > 5 && chance < 10) {
-            monster = EntityType.ZOMBIFIED_PIGLIN.create(level);
+            monster = EntityType.ZOMBIFIED_PIGLIN.create(level, EntitySpawnReason.TRIGGERED);
         }
         if (chance >= 10) {
-            monster = FAEntityTypes.FAILURESAURUS.get().create(level);
+            monster = FAEntityTypes.FAILURESAURUS.get().create(level, EntitySpawnReason.TRIGGERED);
         }
 
         monster.moveTo(blockPos, level.getRandom().nextFloat() * 360F, 0.0F);
@@ -115,7 +118,17 @@ public class CultivatorBlock extends Block implements EntityBlock {
 
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide() ? SimpleUtils.createTickerHelper(blockEntityType, FABlockEntityTypes.CULTIVATOR.get(), CultivatorBlockEntity::clientTick) : SimpleUtils.createTickerHelper(blockEntityType, FABlockEntityTypes.CULTIVATOR.get(), CultivatorBlockEntity::serverTick);
+        BlockEntityTicker<T> blockEntityTicker = null;
+        if (level instanceof ServerLevel serverlevel) {
+            blockEntityTicker = SimpleUtils.createTickerHelper(blockEntityType, FABlockEntityTypes.CULTIVATOR.get(), (levelIn, blockPosIn, blockStateIn, cultivatorBlockEntityIn) -> {
+                CultivatorBlockEntity.serverTick(serverlevel, blockPosIn, blockStateIn, cultivatorBlockEntityIn);
+            });
+        } else {
+            blockEntityTicker = SimpleUtils.createTickerHelper(blockEntityType, FABlockEntityTypes.CULTIVATOR.get(), (levelIn, blockPosIn, blockStateIn, cultivatorBlockEntityIn) -> {
+                CultivatorBlockEntity.clientTick(level, blockPosIn, blockStateIn, cultivatorBlockEntityIn);
+            });
+        }
+        return blockEntityTicker;
     }
 
     @Override

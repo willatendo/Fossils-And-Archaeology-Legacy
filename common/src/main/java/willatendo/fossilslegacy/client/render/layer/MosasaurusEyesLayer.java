@@ -9,19 +9,18 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
-import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Mosasaurus;
+import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 
 import java.util.Optional;
 
-public class MosasaurusEyesLayer extends RenderLayer<Mosasaurus, EntityModel<Mosasaurus>> {
-
-    public MosasaurusEyesLayer(RenderLayerParent<Mosasaurus, EntityModel<Mosasaurus>> renderLayerParent) {
+public class MosasaurusEyesLayer extends RenderLayer<DinosaurRenderState, EntityModel<DinosaurRenderState>> {
+    public MosasaurusEyesLayer(RenderLayerParent<DinosaurRenderState, EntityModel<DinosaurRenderState>> renderLayerParent) {
         super(renderLayerParent);
     }
 
     @Override
-    public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int i, Mosasaurus mosasaurus, float v, float v1, float v2, float v3, float v4, float v5) {
-        Optional<ResourceLocation> optionalEyeLayerTexture = mosasaurus.getCoatType().value().patterns().getFirst().textures().eyeLayerTexture();
+    public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks, DinosaurRenderState dinosaurRenderState, float packedLight, float packedOverlay) {
+        Optional<ResourceLocation> optionalEyeLayerTexture = dinosaurRenderState.coatType.value().patterns().getFirst().textures().eyeLayerTexture();
         if (optionalEyeLayerTexture.isPresent()) {
             VertexConsumer vertexconsumer = multiBufferSource.getBuffer(RenderType.eyes(optionalEyeLayerTexture.get()));
             this.getParentModel().renderToBuffer(poseStack, vertexconsumer, 15728640, OverlayTexture.NO_OVERLAY);

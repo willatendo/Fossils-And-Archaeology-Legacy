@@ -7,12 +7,12 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.entity.npc.VillagerProfession;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 public final class FAVillagerProfessions {
-    public static final SimpleRegistry<VillagerProfession> VILLAGER_PROFESSIONS = SimpleRegistry.create(Registries.VILLAGER_PROFESSION, FossilsLegacyUtils.ID);
+    public static final SimpleRegistry<VillagerProfession> VILLAGER_PROFESSIONS = SimpleRegistry.create(Registries.VILLAGER_PROFESSION, FAUtils.ID);
 
     public static final SimpleHolder<VillagerProfession> ARCHAEOLOGIST = FAVillagerProfessions.register("archaeologist", FAPoiTypes.ARCHAEOLOGIST, SoundEvents.VILLAGER_WORK_CARTOGRAPHER);
     public static final SimpleHolder<VillagerProfession> PALAEONTOLOGIST = FAVillagerProfessions.register("palaeontologist", FAPoiTypes.PALAEONTOLOGIST, SoundEvents.VILLAGER_WORK_CARTOGRAPHER);

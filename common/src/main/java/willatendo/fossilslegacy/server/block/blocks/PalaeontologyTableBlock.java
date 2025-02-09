@@ -13,11 +13,11 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import willatendo.fossilslegacy.server.menu.menus.PalaeontologyTableMenu;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class PalaeontologyTableBlock extends Block {
-    private static final Component CONTAINER_TITLE = FossilsLegacyUtils.translation("container", "palaeontology_table");
+    private static final Component CONTAINER_TITLE = FAUtils.translation("container", "palaeontology_table");
 
     public PalaeontologyTableBlock(Properties properties) {
         super(properties);

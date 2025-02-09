@@ -6,8 +6,6 @@ plugins {
 dependencies {
     implementation "simplelibrary:simplelibrary-neoforge:${simple_library_version}"
     jarJar(group: 'simplelibrary', name: 'simplelibrary-neoforge', version: "[${simple_library_version},5.0.0)")
-
-    implementation "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 }
 
 neoForge {
@@ -31,8 +29,8 @@ neoForge {
         client {
             client()
         }
-        data {
-            data()
+        data  {
+            clientData()
 
             programArguments.addAll '--mod', project.mod_id, '--all', '--output', file("${project(':common').getDependencyProject().projectDir.path}/src/generated/resources/").getAbsolutePath(), '--existing', file("${project(':common').getDependencyProject().projectDir.path}/src/main/resources/").getAbsolutePath()
         }

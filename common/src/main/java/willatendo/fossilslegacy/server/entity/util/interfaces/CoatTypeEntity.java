@@ -22,7 +22,7 @@ public interface CoatTypeEntity extends SimpleRegistryAccessAccessor {
     }
 
     default void readCoatType(CompoundTag compoundTag) {
-        Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("CoatType"))).map(id -> ResourceKey.create(FARegistries.COAT_TYPES, id)).flatMap(resourceKey -> this.getRegistryAccess().registryOrThrow(FARegistries.COAT_TYPES).getHolder(resourceKey)).ifPresent(this::setCoatType);
+        Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("CoatType"))).map(id -> ResourceKey.create(FARegistries.COAT_TYPES, id)).flatMap(resourceKey -> this.getRegistryAccess().lookupOrThrow(FARegistries.COAT_TYPES).get(resourceKey)).ifPresent(this::setCoatType);
     }
 
     default Component getOverridenName(Component defaultName) {

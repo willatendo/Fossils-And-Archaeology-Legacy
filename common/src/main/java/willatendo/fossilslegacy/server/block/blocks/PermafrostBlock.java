@@ -22,7 +22,7 @@ public class PermafrostBlock extends HalfTransparentBlock {
 
     @Override
     public void playerDestroy(Level level, Player player, BlockPos blockPos, BlockState blockState, BlockEntity blockEntity, ItemStack itemStack) {
-        if (level.getBrightness(LightLayer.BLOCK, blockPos) > 11 - blockState.getLightBlock(level, blockPos) || level.dimensionType().ultraWarm()) {
+        if (level.getBrightness(LightLayer.BLOCK, blockPos) > 11 - blockState.getLightBlock() || level.dimensionType().ultraWarm()) {
             super.playerDestroy(level, player, blockPos, blockState, blockEntity, itemStack);
         }
         for (int targetX = -1; targetX <= 1; targetX++) {
@@ -42,13 +42,13 @@ public class PermafrostBlock extends HalfTransparentBlock {
 
     @Override
     public void randomTick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
-        if (serverLevel.getBrightness(LightLayer.BLOCK, blockPos) > 11 - blockState.getLightBlock(serverLevel, blockPos)) {
+        if (serverLevel.getBrightness(LightLayer.BLOCK, blockPos) > 11 - blockState.getLightBlock()) {
             this.melt(blockState, serverLevel, blockPos);
         }
     }
 
     protected void melt(BlockState blockState, Level level, BlockPos blockPos) {
         level.setBlockAndUpdate(blockPos, Blocks.DIRT.defaultBlockState());
-        level.neighborChanged(blockPos, Blocks.DIRT, blockPos);
+        level.neighborChanged(blockPos, Blocks.DIRT, null);
     }
 }

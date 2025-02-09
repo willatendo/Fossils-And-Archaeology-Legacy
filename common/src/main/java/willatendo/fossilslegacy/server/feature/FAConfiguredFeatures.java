@@ -36,7 +36,7 @@ import willatendo.fossilslegacy.server.feature.foliageplacer.SigillariaFoliagePl
 import willatendo.fossilslegacy.server.feature.trunkplacer.ForkedThickTrunkPlacer;
 import willatendo.fossilslegacy.server.feature.trunkplacer.SigillariaTrunkPlacer;
 import willatendo.fossilslegacy.server.feature.trunkplacer.StraightBranchingTrunkPlacer;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 import java.util.OptionalInt;
@@ -66,7 +66,7 @@ public final class FAConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_PREHISTORIC_JUNGLE = create("trees_prehistoric_jungle");
 
     public static ResourceKey<ConfiguredFeature<?, ?>> create(String name) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, FossilsLegacyUtils.resource(name));
+        return ResourceKey.create(Registries.CONFIGURED_FEATURE, FAUtils.resource(name));
     }
 
     private static TreeConfiguration.TreeConfigurationBuilder createCalamites() {

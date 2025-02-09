@@ -5,7 +5,7 @@ import net.minecraft.resources.ResourceKey;
 import willatendo.fossilslegacy.server.dinopedia_entry.DinopediaEntry;
 import willatendo.fossilslegacy.server.dinopedia_entry.FADinopediaEntries;
 import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.Arrays;
 
@@ -36,7 +36,7 @@ public final class FADinopediaTypes {
     public static final ResourceKey<DinopediaType> VELOCIRAPTOR = FADinopediaTypes.create("velociraptor");
 
     private static ResourceKey<DinopediaType> create(String name) {
-        return ResourceKey.create(FARegistries.DINOPEDIA_TYPE, FossilsLegacyUtils.resource(name));
+        return ResourceKey.create(FARegistries.DINOPEDIA_TYPE, FAUtils.resource(name));
     }
 
     private static void register(BootstrapContext<DinopediaType> bootstrapContext, ResourceKey<DinopediaType> resourceKey, ResourceKey<DinopediaEntry>... dinopediaEntries) {

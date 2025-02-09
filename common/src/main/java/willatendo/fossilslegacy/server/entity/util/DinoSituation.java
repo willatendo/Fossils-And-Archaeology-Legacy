@@ -5,7 +5,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakerType;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public enum DinoSituation implements SpeakerType<Dinosaur> {
     HUNGRY("hungry"),
@@ -32,7 +32,7 @@ public enum DinoSituation implements SpeakerType<Dinosaur> {
     }
 
     protected static Function<Dinosaur, Component> basicSpeach(String id) {
-        return dinosaur -> FossilsLegacyUtils.translation("dinosaur", "speech." + id, dinosaur.getDisplayName());
+        return dinosaur -> FAUtils.translation("dinosaur", "speech." + id, dinosaur.getDisplayName());
     }
 
     public String getTranslationKey() {

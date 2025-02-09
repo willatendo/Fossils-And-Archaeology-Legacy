@@ -3,15 +3,12 @@ package willatendo.fossilslegacy.server.item.items;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LightningBolt;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.criteria.FLCriteriaTriggers;
@@ -20,8 +17,8 @@ import willatendo.fossilslegacy.server.entity.entities.AncientLightningBolt;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
 
 public class AncientSwordItem extends SwordItem {
-    public AncientSwordItem(Tier tier, Properties properties) {
-        super(tier, properties);
+    public AncientSwordItem(ToolMaterial tier, float attackDamage, float attackSpeed, Properties properties) {
+        super(tier, attackDamage, attackSpeed, properties);
     }
 
     @Override
@@ -33,10 +30,10 @@ public class AncientSwordItem extends SwordItem {
             Level level = victim.level();
             LightningBolt lightningBolt;
             if (user.getItemBySlot(EquipmentSlot.HEAD).is(FAItemTags.PIGLIN_TAMING_ARMOR) && user.getItemBySlot(EquipmentSlot.CHEST).is(FAItemTags.PIGLIN_TAMING_ARMOR) && user.getItemBySlot(EquipmentSlot.LEGS).is(FAItemTags.PIGLIN_TAMING_ARMOR) && user.getItemBySlot(EquipmentSlot.FEET).is(FAItemTags.PIGLIN_TAMING_ARMOR)) {
-                lightningBolt = FAEntityTypes.ANCIENT_LIGHTNING_BOLT.get().create(level);
+                lightningBolt = FAEntityTypes.ANCIENT_LIGHTNING_BOLT.get().create(level, EntitySpawnReason.TRIGGERED);
                 ((AncientLightningBolt) lightningBolt).tame(player);
             } else {
-                lightningBolt = EntityType.LIGHTNING_BOLT.create(level);
+                lightningBolt = EntityType.LIGHTNING_BOLT.create(level, EntitySpawnReason.TRIGGERED);
             }
             lightningBolt.moveTo(Vec3.atBottomCenterOf(victim.blockPosition()));
             level.addFreshEntity(lightningBolt);

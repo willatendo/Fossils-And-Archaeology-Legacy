@@ -3,11 +3,11 @@ package willatendo.fossilslegacy.server.tags;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.util.TagRegister;
 
 public class FAEntityTypeTags {
-    private static final TagRegister<EntityType<?>> ENTITY_TYPE_TAGS = TagRegister.create(Registries.ENTITY_TYPE, FossilsLegacyUtils.ID);
+    private static final TagRegister<EntityType<?>> ENTITY_TYPE_TAGS = TagRegister.create(Registries.ENTITY_TYPE, FAUtils.ID);
 
     public static final TagKey<EntityType<?>> CARNOTAURUS_VICTIMS = ENTITY_TYPE_TAGS.register("victims/carnotaurus");
     public static final TagKey<EntityType<?>> COMPSOGNATHUS_VICTIMS = ENTITY_TYPE_TAGS.register("victims/compsognathus");

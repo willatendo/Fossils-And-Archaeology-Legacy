@@ -20,7 +20,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -31,7 +31,7 @@ import willatendo.fossilslegacy.server.block.properties.FABlockStateProperties;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class GeneModificationBlock extends Block implements EntityBlock {
-    public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty ACTIVE = FABlockStateProperties.ACTIVE;
     public static final VoxelShape SHAPE = Shapes.join(Block.box(0, 0, 0, 16, 5, 16), Block.box(2, 5, 2, 14, 12, 14), BooleanOp.OR);
 

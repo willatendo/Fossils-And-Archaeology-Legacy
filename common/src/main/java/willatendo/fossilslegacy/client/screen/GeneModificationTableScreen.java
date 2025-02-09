@@ -10,16 +10,17 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -38,14 +39,14 @@ import willatendo.fossilslegacy.server.item.items.AnimalDNAItem;
 import willatendo.fossilslegacy.server.menu.menus.GeneModificationTableMenu;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FACoatTypeTags;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 import java.util.Optional;
 
 public class GeneModificationTableScreen extends AbstractContainerScreen<GeneModificationTableMenu> {
-    private static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/gui/container/gene_modification_table.png");
-    private static final ResourceLocation GENE_SPRITE = FossilsLegacyUtils.resource("container/gene_modification_table/gene");
+    private static final ResourceLocation TEXTURE = FAUtils.resource("textures/gui/container/gene_modification_table.png");
+    private static final ResourceLocation GENE_SPRITE = FAUtils.resource("container/gene_modification_table/gene");
 
     private float xMouse;
     private float yMouse;
@@ -73,17 +74,16 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
     protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int x, int y) {
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, TEXTURE);
-        guiGraphics.blit(TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
+        guiGraphics.blit(RenderType::guiTextured, TEXTURE, this.leftPos, this.topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
         Slot slot = this.menu.slots.get(0);
         if (slot.hasItem()) {
             ItemStack itemStack = slot.getItem();
             if (itemStack.getItem() instanceof AnimalDNAItem animalDNAItem) {
                 ClientLevel clientLevel = this.minecraft.level;
-                RegistryAccess registryAccess = clientLevel.registryAccess();
                 TagKey<CoatType> applicableCoatTypes = animalDNAItem.getApplicableCoatTypes();
 
                 if (applicableCoatTypes != null) {
-                    HolderGetter<CoatType> coatTypeHolderGetter = registryAccess.asGetterLookup().lookup(FARegistries.COAT_TYPES).get();
+                    HolderGetter<CoatType> coatTypeHolderGetter = clientLevel.holderLookup(FARegistries.COAT_TYPES);
                     HolderSet.Named<CoatType> namedHolderSet = coatTypeHolderGetter.get(applicableCoatTypes).get();
                     List<Holder<CoatType>> filteredHolderSet = Lists.newArrayList();
                     if (this.getMenu().hasExtraGeneticCode()) {
@@ -127,16 +127,16 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
                     float green = ((selectedCoatType.displayInfo().color() & 0xFF00) >> 8) / 255.0F;
                     float blue = (selectedCoatType.displayInfo().color() & 0xFF) / 255.0F;
                     RenderSystem.setShaderColor(red, green, blue, 1.0F);
-                    guiGraphics.blitSprite(GENE_SPRITE, this.leftPos + 42, this.topPos + 61, 22, 8);
+                    guiGraphics.blitSprite(RenderType::guiTextured, GENE_SPRITE, this.leftPos + 42, this.topPos + 61, 22, 8);
                     RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
                     this.renderScrollingString(guiGraphics, selectedCoatType.displayInfo().name(), this.leftPos + 8, this.topPos + 74, 0x404040);
-                    this.drawCenteredStringNoShadow(guiGraphics, this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.coat_type.location", this.selection + 1, this.size), this.leftPos + 53, this.topPos + 47, 0x404040);
+                    this.drawCenteredStringNoShadow(guiGraphics, this.font, FAUtils.translation("container", "gene_modification_table.coat_type.location", this.selection + 1, this.size), this.leftPos + 53, this.topPos + 47, 0x404040);
                 } else {
-                    this.drawCenteredStringNoShadow(guiGraphics, this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.coat_type.none", this.selection + 1, this.size), this.leftPos + 53, this.topPos + 47, 0x404040);
+                    this.drawCenteredStringNoShadow(guiGraphics, this.font, FAUtils.translation("container", "gene_modification_table.coat_type.none", this.selection + 1, this.size), this.leftPos + 53, this.topPos + 47, 0x404040);
                 }
 
                 EntityType<? extends Mob> entityType = animalDNAItem.getEntityType().get();
-                Mob mob = entityType.create(clientLevel);
+                Mob mob = entityType.create(clientLevel, EntitySpawnReason.LOAD);
                 mob.tickCount = this.minecraft.player.tickCount;
                 if (mob instanceof Dinosaur dinosaur) {
                     dinosaur.setGrowthStage(dinosaur.getMaxGrowthStage());
@@ -154,11 +154,11 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
                 }
             }
             if (this.coatTypes.length > 0) {
-                guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.navigate_left.tutorial", FAKeys.NAVIGATE_LEFT.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 2, 0xFFFFFF, false);
-                guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.navigate_right.tutorial", FAKeys.NAVIGATE_RIGHT.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 10, 0xFFFFFF, false);
-                guiGraphics.drawString(this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.apply_gene.tutorial", FAKeys.APPLY_GENE.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 18, 0xFFFFFF, false);
+                guiGraphics.drawString(this.font, FAUtils.translation("container", "gene_modification_table.navigate_left.tutorial", FAKeys.NAVIGATE_LEFT.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 2, 0xFFFFFF, false);
+                guiGraphics.drawString(this.font, FAUtils.translation("container", "gene_modification_table.navigate_right.tutorial", FAKeys.NAVIGATE_RIGHT.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 10, 0xFFFFFF, false);
+                guiGraphics.drawString(this.font, FAUtils.translation("container", "gene_modification_table.apply_gene.tutorial", FAKeys.APPLY_GENE.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 18, 0xFFFFFF, false);
             } else {
-                this.renderScrollingString(guiGraphics, FossilsLegacyUtils.translation("container", "gene_modification_table.coat_type.no_genome_applicable"), this.leftPos + 8, this.topPos + 74, 0x404040);
+                this.renderScrollingString(guiGraphics, FAUtils.translation("container", "gene_modification_table.coat_type.no_genome_applicable"), this.leftPos + 8, this.topPos + 74, 0x404040);
             }
         } else {
             this.coatTypes = new CoatType[0];
@@ -166,8 +166,8 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
             this.selection = 0;
             this.hasSet = false;
 
-            this.drawCenteredStringNoShadow(guiGraphics, this.font, FossilsLegacyUtils.translation("container", "gene_modification_table.coat_type.none"), this.leftPos + 53, this.topPos + 47, 0x404040);
-            this.renderScrollingString(guiGraphics, FossilsLegacyUtils.translation("container", "gene_modification_table.insert_dna"), this.leftPos + 8, this.topPos + 74, 0x404040);
+            this.drawCenteredStringNoShadow(guiGraphics, this.font, FAUtils.translation("container", "gene_modification_table.coat_type.none"), this.leftPos + 53, this.topPos + 47, 0x404040);
+            this.renderScrollingString(guiGraphics, FAUtils.translation("container", "gene_modification_table.insert_dna"), this.leftPos + 8, this.topPos + 74, 0x404040);
         }
     }
 
@@ -178,7 +178,7 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
             List<Component> tooltip = Lists.newArrayList();
             tooltip.add(this.coatTypes[this.selection].displayInfo().pattern());
             if (this.minecraft.options.advancedItemTooltips) {
-                tooltip.add(Component.literal(this.minecraft.level.registryAccess().registry(FARegistries.COAT_TYPES).get().getKey(this.coatTypes[this.selection]).toString()).withStyle(ChatFormatting.DARK_GRAY));
+                tooltip.add(Component.literal(this.minecraft.level.registryAccess().lookupOrThrow(FARegistries.COAT_TYPES).getKey(this.coatTypes[this.selection]).toString()).withStyle(ChatFormatting.DARK_GRAY));
             }
             guiGraphics.renderTooltip(this.font, tooltip, Optional.empty(), x, y);
         }
@@ -200,7 +200,7 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
         }
         if (FAKeys.APPLY_GENE.matches(keyCode, scanCode)) {
             if (this.size > 0) {
-                FossilsModloaderHelper.INSTANCE.sendApplyGenePacket(this.menu.geneModificationTableBlockEntity.getBlockPos(), this.minecraft.level.registryAccess().registry(FARegistries.COAT_TYPES).get().getKey(this.coatTypes[this.selection]).toString());
+                FossilsModloaderHelper.INSTANCE.sendApplyGenePacket(this.menu.geneModificationTableBlockEntity.getBlockPos(), this.minecraft.level.registryAccess().lookupOrThrow(FARegistries.COAT_TYPES).getKey(this.coatTypes[this.selection]).toString());
                 return true;
             }
         }
@@ -280,8 +280,8 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
         }
 
         entityRenderDispatcher.setRenderShadow(false);
-        RenderSystem.runAsFancy(() -> {
-            entityRenderDispatcher.render(livingEntity, 0.0, 0.0, 0.0, 0.0F, 1.0F, guiGraphics.pose(), guiGraphics.bufferSource(), 15728880);
+        guiGraphics.drawSpecial(multiBufferSource -> {
+            entityRenderDispatcher.render(livingEntity, 0.0, 0.0, 0.0, 1.0F, guiGraphics.pose(), multiBufferSource, 15728880);
         });
         guiGraphics.flush();
         entityRenderDispatcher.setRenderShadow(true);

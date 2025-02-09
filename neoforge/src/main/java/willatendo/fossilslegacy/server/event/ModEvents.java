@@ -15,11 +15,11 @@ import willatendo.fossilslegacy.network.NeoforgePacketHelper;
 import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
 import willatendo.fossilslegacy.network.ServerboundSinkPacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.event.modification.*;
 import willatendo.simplelibrary.server.event.registry.*;
 
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = FossilsLegacyUtils.ID)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = FAUtils.ID)
 public class ModEvents {
     public static final NeoforgeCompostablesModification NEOFORGE_COMPOSTABLES_MODIFICATION = new NeoforgeCompostablesModification();
     public static final NeoforgeHeroOfTheVillageGiftModification NEOFORGE_HERO_OF_THE_VILLAGE_GIFT_MODIFICATION = new NeoforgeHeroOfTheVillageGiftModification();
@@ -42,7 +42,7 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void registerPayloadHandlersEvent(RegisterPayloadHandlersEvent event) {
-        PayloadRegistrar payloadRegistrar = event.registrar(FossilsLegacyUtils.ID).versioned("1.0.0").optional();
+        PayloadRegistrar payloadRegistrar = event.registrar(FAUtils.ID).versioned("1.0.0").optional();
 
         payloadRegistrar.playToServer(ServerboundApplyGenePacket.TYPE, ServerboundApplyGenePacket.STREAM_CODEC, NeoforgePacketHelper::handleApplyGenePacket);
         payloadRegistrar.playToServer(ServerboundSinkPacket.TYPE, ServerboundSinkPacket.STREAM_CODEC, NeoforgePacketHelper::handleSinkPacket);

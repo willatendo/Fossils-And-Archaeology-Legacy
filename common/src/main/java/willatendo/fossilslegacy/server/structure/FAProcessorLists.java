@@ -10,7 +10,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.*;
 import net.minecraft.world.level.levelgen.structure.templatesystem.rule.blockentity.AppendLoot;
 import willatendo.fossilslegacy.server.item.FALootTables;
 import willatendo.fossilslegacy.server.structure.processor.HolesProcessor;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class FAProcessorLists {
     public static final ResourceKey<StructureProcessorList> MOAI_DEGRADATION = FAProcessorLists.createKey("moai_degradation");
 
     private static ResourceKey<StructureProcessorList> createKey(String name) {
-        return ResourceKey.create(Registries.PROCESSOR_LIST, FossilsLegacyUtils.resource(name));
+        return ResourceKey.create(Registries.PROCESSOR_LIST, FAUtils.resource(name));
     }
 
     private static void register(BootstrapContext<StructureProcessorList> bootstrapContext, ResourceKey<StructureProcessorList> resourceKey, List<StructureProcessor> structureProcessors) {

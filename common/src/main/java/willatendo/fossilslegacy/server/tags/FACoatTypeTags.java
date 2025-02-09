@@ -3,11 +3,11 @@ package willatendo.fossilslegacy.server.tags;
 import net.minecraft.tags.TagKey;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.util.TagRegister;
 
 public class FACoatTypeTags {
-    private static final TagRegister<CoatType> COAT_TYPE_TAGS = TagRegister.create(FARegistries.COAT_TYPES, FossilsLegacyUtils.ID);
+    private static final TagRegister<CoatType> COAT_TYPE_TAGS = TagRegister.create(FARegistries.COAT_TYPES, FAUtils.ID);
 
     public static final TagKey<CoatType> ANKYLOSAURUS = COAT_TYPE_TAGS.register("ankylosaurus");
     public static final TagKey<CoatType> BRACHIOSAURUS = COAT_TYPE_TAGS.register("brachiosaurus");

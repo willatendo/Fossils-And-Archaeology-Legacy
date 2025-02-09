@@ -1,12 +1,12 @@
 package willatendo.fossilslegacy.server.command_type;
 
 import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 public final class FACommandTypes {
-    public static final SimpleRegistry<CommandType> COMMAND_TYPES = SimpleRegistry.create(FARegistries.COMMAND_TYPES, FossilsLegacyUtils.ID);
+    public static final SimpleRegistry<CommandType> COMMAND_TYPES = SimpleRegistry.create(FARegistries.COMMAND_TYPES, FAUtils.ID);
 
     public static final SimpleHolder<CommandType> FOLLOW = FACommandTypes.register("follow", 0);
     public static final SimpleHolder<CommandType> STAY = FACommandTypes.register("stay", 1);

@@ -10,19 +10,19 @@ import net.minecraft.world.level.block.HalfTransparentBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class IcedStoneBlock extends HalfTransparentBlock {
-	public IcedStoneBlock(Properties properties) {
-		super(properties);
-	}
+    public IcedStoneBlock(Properties properties) {
+        super(properties);
+    }
 
-	@Override
-	public void randomTick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
-		if (serverLevel.getBrightness(LightLayer.BLOCK, blockPos) > 11 - blockState.getLightBlock(serverLevel, blockPos)) {
-			this.melt(blockState, serverLevel, blockPos);
-		}
-	}
+    @Override
+    public void randomTick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
+        if (serverLevel.getBrightness(LightLayer.BLOCK, blockPos) > 11 - blockState.getLightBlock()) {
+            this.melt(blockState, serverLevel, blockPos);
+        }
+    }
 
-	protected void melt(BlockState blockState, Level level, BlockPos blockPos) {
-		level.setBlockAndUpdate(blockPos, Blocks.STONE.defaultBlockState());
-		level.neighborChanged(blockPos, Blocks.STONE, blockPos);
-	}
+    protected void melt(BlockState blockState, Level level, BlockPos blockPos) {
+        level.setBlockAndUpdate(blockPos, Blocks.STONE.defaultBlockState());
+        level.neighborChanged(blockPos, Blocks.STONE, null);
+    }
 }

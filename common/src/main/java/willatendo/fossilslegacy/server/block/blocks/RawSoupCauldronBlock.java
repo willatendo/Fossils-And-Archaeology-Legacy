@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.server.block.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.cauldron.CauldronInteraction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -20,7 +21,13 @@ public class RawSoupCauldronBlock extends SoupCauldronBlock implements EntityBlo
 
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide() ? null : SimpleUtils.createTickerHelper(blockEntityType, FABlockEntityTypes.RAW_SOUP.get(), RawSoupBlockEntity::serverTick);
+        BlockEntityTicker<T> blockEntityTicker = null;
+        if (level instanceof ServerLevel serverlevel) {
+            blockEntityTicker = SimpleUtils.createTickerHelper(blockEntityType, FABlockEntityTypes.RAW_SOUP.get(), (levelIn, blockPosIn, blockStateIn, analyzerBlockEntityIn) -> {
+                RawSoupBlockEntity.serverTick(serverlevel, blockPosIn, blockStateIn, analyzerBlockEntityIn);
+            });
+        }
+        return blockEntityTicker;
     }
 
     @Nullable

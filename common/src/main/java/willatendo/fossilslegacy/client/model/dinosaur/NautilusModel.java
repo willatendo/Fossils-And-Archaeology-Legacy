@@ -1,7 +1,5 @@
 package willatendo.fossilslegacy.client.model.dinosaur;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -9,11 +7,10 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Mth;
-import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Nautilus;
 
-public class NautilusModel extends EntityModel<Nautilus> {
-    private final ModelPart root;
+public class NautilusModel extends EntityModel<LivingEntityRenderState> {
     private final ModelPart tentacle1;
     private final ModelPart tentacle2;
     private final ModelPart tentacle3;
@@ -22,7 +19,7 @@ public class NautilusModel extends EntityModel<Nautilus> {
     private final ModelPart tentacle6;
 
     public NautilusModel(ModelPart root) {
-        this.root = root;
+        super(root);
         this.tentacle1 = root.getChild("tentacle_1");
         this.tentacle2 = root.getChild("tentacle_2");
         this.tentacle3 = root.getChild("tentacle_3");
@@ -48,17 +45,13 @@ public class NautilusModel extends EntityModel<Nautilus> {
     }
 
     @Override
-    public void setupAnim(Nautilus nautilus, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        this.tentacle1.xRot = 0.2F * Mth.sin(ageInTicks * 0.3F + (float) 1) + 0.4F;
-        this.tentacle2.xRot = 0.2F * Mth.sin(ageInTicks * 0.3F + (float) 2) + 0.4F;
-        this.tentacle3.xRot = 0.2F * Mth.sin(ageInTicks * 0.3F + (float) 3) + 0.4F;
-        this.tentacle4.xRot = 0.2F * Mth.sin(ageInTicks * 0.3F + (float) 4) + 0.4F;
-        this.tentacle5.xRot = 0.2F * Mth.sin(ageInTicks * 0.3F + (float) 5) + 0.4F;
-        this.tentacle6.xRot = 0.2F * Mth.sin(ageInTicks * 0.3F + (float) 6) + 0.4F;
-    }
-
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int red, int green, int blue) {
-        this.root.render(poseStack, vertexConsumer, red, green, blue);
+    public void setupAnim(LivingEntityRenderState livingEntityRenderState) {
+        super.setupAnim(livingEntityRenderState);
+        this.tentacle1.xRot = 0.2F * Mth.sin(livingEntityRenderState.ageInTicks * 0.3F + (float) 1) + 0.4F;
+        this.tentacle2.xRot = 0.2F * Mth.sin(livingEntityRenderState.ageInTicks * 0.3F + (float) 2) + 0.4F;
+        this.tentacle3.xRot = 0.2F * Mth.sin(livingEntityRenderState.ageInTicks * 0.3F + (float) 3) + 0.4F;
+        this.tentacle4.xRot = 0.2F * Mth.sin(livingEntityRenderState.ageInTicks * 0.3F + (float) 4) + 0.4F;
+        this.tentacle5.xRot = 0.2F * Mth.sin(livingEntityRenderState.ageInTicks * 0.3F + (float) 5) + 0.4F;
+        this.tentacle6.xRot = 0.2F * Mth.sin(livingEntityRenderState.ageInTicks * 0.3F + (float) 6) + 0.4F;
     }
 }

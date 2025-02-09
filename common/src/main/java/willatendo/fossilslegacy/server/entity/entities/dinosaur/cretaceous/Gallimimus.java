@@ -181,7 +181,6 @@ public class Gallimimus extends Dinosaur implements DinopediaInformation, Rideab
                 }
 
                 this.calculateEntityAnimation(false);
-                this.tryCheckInsideBlocks();
             } else {
                 super.travel(vec3);
             }

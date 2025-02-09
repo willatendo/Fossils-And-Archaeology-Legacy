@@ -3,11 +3,11 @@ package willatendo.fossilslegacy.server.tags;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.util.TagRegister;
 
 public class FABlockTags {
-    private static final TagRegister<Block> BLOCK_TAGS = TagRegister.create(Registries.BLOCK, FossilsLegacyUtils.ID);
+    private static final TagRegister<Block> BLOCK_TAGS = TagRegister.create(Registries.BLOCK, FAUtils.ID);
 
     public static final TagKey<Block> ANKYLOSAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/ankylosaurus");
     public static final TagKey<Block> BRACHIOSAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/brachiosaurus");

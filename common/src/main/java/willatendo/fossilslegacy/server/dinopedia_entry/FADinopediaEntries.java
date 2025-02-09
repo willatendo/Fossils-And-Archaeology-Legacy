@@ -4,7 +4,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.dinopedia_entry.line.BuiltInDinopediaLines;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FADinopediaEntries {
     public static final ResourceKey<DinopediaEntry> ANKYLOSAURUS_DATA = FADinopediaEntries.create("ankylosaurus_data");
@@ -33,7 +33,7 @@ public final class FADinopediaEntries {
     public static final ResourceKey<DinopediaEntry> VELOCIRAPTOR_DATA = FADinopediaEntries.create("velociraptor_data");
 
     private static ResourceKey<DinopediaEntry> create(String name) {
-        return ResourceKey.create(FARegistries.DINOPEDIA_ENTRY, FossilsLegacyUtils.resource(name));
+        return ResourceKey.create(FARegistries.DINOPEDIA_ENTRY, FAUtils.resource(name));
     }
 
     private static void register(BootstrapContext<DinopediaEntry> bootstrapContext, ResourceKey<DinopediaEntry> resourceKey, DinopediaEntry.Builder dinopediaEntry) {

@@ -5,15 +5,14 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.tags.FABlockTags;
 
 import java.util.concurrent.CompletableFuture;
 
 public class FABlockTagProvider extends BlockTagsProvider {
-    public FABlockTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId, ExistingFileHelper existingFileHelper) {
-        super(packOutput, provider, modId, existingFileHelper);
+    public FABlockTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId) {
+        super(packOutput, provider, modId);
     }
 
     @Override

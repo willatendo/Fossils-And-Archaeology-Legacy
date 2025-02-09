@@ -7,14 +7,14 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.event.registry.NeoforgeSimpleRegistryRegister;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
-@Mod(FossilsLegacyUtils.ID)
+@Mod(FAUtils.ID)
 public class FossilsLegacyNeoforgeMod {
-    public static final SimpleRegistry<EntityDataSerializer<?>> ENTITY_DATA_SERIALIZER = SimpleRegistry.create(NeoForgeRegistries.Keys.ENTITY_DATA_SERIALIZERS, FossilsLegacyUtils.ID);
-    public static final DeferredRegister<MapDecorationType> MAP_DECORATION_TYPES = DeferredRegister.create(Registries.MAP_DECORATION_TYPE, FossilsLegacyUtils.ID);
+    public static final SimpleRegistry<EntityDataSerializer<?>> ENTITY_DATA_SERIALIZER = SimpleRegistry.create(NeoForgeRegistries.Keys.ENTITY_DATA_SERIALIZERS, FAUtils.ID);
+    public static final DeferredRegister<MapDecorationType> MAP_DECORATION_TYPES = DeferredRegister.create(Registries.MAP_DECORATION_TYPE, FAUtils.ID);
 
     public FossilsLegacyNeoforgeMod(IEventBus iEventBus) {
         NeoforgeSimpleRegistryRegister neoforgeSimpleRegistryRegister = new NeoforgeSimpleRegistryRegister(iEventBus);

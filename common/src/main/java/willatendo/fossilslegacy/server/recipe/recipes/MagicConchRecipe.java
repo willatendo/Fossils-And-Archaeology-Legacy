@@ -52,12 +52,7 @@ public class MagicConchRecipe extends CustomRecipe {
     }
 
     @Override
-    public boolean canCraftInDimensions(int x, int y) {
-        return x * y == 1;
-    }
-
-    @Override
-    public RecipeSerializer<?> getSerializer() {
+    public RecipeSerializer<? extends CustomRecipe> getSerializer() {
         return FARecipeSerialisers.MAGIC_CONCH.get();
     }
 }

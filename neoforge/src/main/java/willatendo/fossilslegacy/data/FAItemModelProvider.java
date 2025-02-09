@@ -1,14 +1,7 @@
 package willatendo.fossilslegacy.data;
 
-import net.minecraft.data.PackOutput;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import willatendo.fossilslegacy.server.block.FABlocks;
-import willatendo.fossilslegacy.server.item.FAItems;
-import willatendo.simplelibrary.data.SimpleItemModelProvider;
-
-public class FAItemModelProvider extends SimpleItemModelProvider {
+/*
+public class FAItemModelProvider extends ItemModelGenerators {
     public FAItemModelProvider(PackOutput packOutput, String modId, ExistingFileHelper existingFileHelper) {
         super(packOutput, modId, existingFileHelper);
     }
@@ -365,3 +358,4 @@ public class FAItemModelProvider extends SimpleItemModelProvider {
         this.basicBlock(FABlocks.CALAMITES_SLAB.get());
     }
 }
+*/

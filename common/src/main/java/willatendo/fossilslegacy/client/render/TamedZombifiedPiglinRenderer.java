@@ -1,40 +1,32 @@
 package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.model.HumanoidArmorModel;
-import net.minecraft.client.model.PiglinModel;
-import net.minecraft.client.model.geom.EntityModelSet;
+import net.minecraft.client.model.ZombifiedPiglinModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
+import net.minecraft.client.renderer.entity.PiglinRenderer;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
+import net.minecraft.client.renderer.entity.state.ZombifiedPiglinRenderState;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
-public class TamedZombifiedPiglinRenderer extends HumanoidMobRenderer<Mob, PiglinModel<Mob>> {
-	private static final ResourceLocation TEXTURES = FossilsLegacyUtils.mc("textures/entity/piglin/zombified_piglin.png");
+public class TamedZombifiedPiglinRenderer extends HumanoidMobRenderer<Mob, ZombifiedPiglinRenderState, ZombifiedPiglinModel> {
+    private static final ResourceLocation TEXTURE = FAUtils.mc("textures/entity/piglin/zombified_piglin.png");
 
-	public TamedZombifiedPiglinRenderer(EntityRendererProvider.Context context, ModelLayerLocation modelLayerLocation, ModelLayerLocation modelLayerLocation2, ModelLayerLocation modelLayerLocation3, boolean bl) {
-		super(context, TamedZombifiedPiglinRenderer.createModel(context.getModelSet(), modelLayerLocation, bl), 0.5f, 1.0019531f, 1.0f, 1.0019531f);
-		this.addLayer(new HumanoidArmorLayer(this, new HumanoidArmorModel(context.bakeLayer(modelLayerLocation2)), new HumanoidArmorModel(context.bakeLayer(modelLayerLocation3)), context.getModelManager()));
-	}
+    public TamedZombifiedPiglinRenderer(EntityRendererProvider.Context context, ModelLayerLocation adultModel, ModelLayerLocation babyModel, ModelLayerLocation innerArmorLayer, ModelLayerLocation outerArmorLayer, ModelLayerLocation innerArmorBaby, ModelLayerLocation outerArmorBaby) {
+        super(context, new ZombifiedPiglinModel(context.bakeLayer(adultModel)), new ZombifiedPiglinModel(context.bakeLayer(babyModel)), 0.5F, PiglinRenderer.PIGLIN_CUSTOM_HEAD_TRANSFORMS);
+        this.addLayer(new HumanoidArmorLayer(this, new HumanoidArmorModel(context.bakeLayer(innerArmorLayer)), new HumanoidArmorModel(context.bakeLayer(outerArmorLayer)), new HumanoidArmorModel(context.bakeLayer(innerArmorBaby)), new HumanoidArmorModel(context.bakeLayer(innerArmorBaby)), context.getEquipmentRenderer()));
+    }
 
-	private static PiglinModel<Mob> createModel(EntityModelSet entityModelSet, ModelLayerLocation modelLayerLocation, boolean bl) {
-		PiglinModel<Mob> piglinModel = new PiglinModel<Mob>(entityModelSet.bakeLayer(modelLayerLocation));
-		if (bl) {
-			piglinModel.rightEar.visible = false;
-		}
-		return piglinModel;
-	}
+    @Override
+    public ResourceLocation getTextureLocation(ZombifiedPiglinRenderState zombifiedPiglinRenderState) {
+        return TEXTURE;
+    }
 
-	@Override
-	public ResourceLocation getTextureLocation(Mob mob) {
-		return TEXTURES;
-	}
-
-	@Override
-	protected boolean isShaking(Mob mob) {
-		return super.isShaking(mob) || mob instanceof AbstractPiglin && ((AbstractPiglin) mob).isConverting();
-	}
+    @Override
+    public ZombifiedPiglinRenderState createRenderState() {
+        return new ZombifiedPiglinRenderState();
+    }
 }

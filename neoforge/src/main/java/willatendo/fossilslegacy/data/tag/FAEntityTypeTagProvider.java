@@ -6,21 +6,23 @@ import net.minecraft.data.tags.EntityTypeTagsProvider;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.Tags;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.tags.FAEntityTypeTags;
 
 import java.util.concurrent.CompletableFuture;
 
 public class FAEntityTypeTagProvider extends EntityTypeTagsProvider {
-    public FAEntityTypeTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId, ExistingFileHelper existingFileHelper) {
-        super(packOutput, provider, modId, existingFileHelper);
+    public FAEntityTypeTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId) {
+        super(packOutput, provider, modId);
     }
 
     @Override
     protected void addTags(Provider provider) {
+        this.tag(EntityTypeTags.BOAT).add(FAEntityTypes.CALAMITES_BOAT.get(), FAEntityTypes.LEPIDODENDRON_BOAT.get(), FAEntityTypes.SIGILLARIA_BOAT.get());
         this.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(FAEntityTypes.DODO.get(), FAEntityTypes.PTERANODON.get());
         this.tag(EntityTypeTags.CAN_BREATHE_UNDER_WATER).add(FAEntityTypes.MOSASAURUS.get(), FAEntityTypes.FUTABASAURUS.get(), FAEntityTypes.SPINOSAURUS.get());
+        this.tag(Tags.EntityTypes.BOATS).add(FAEntityTypes.CALAMITES_CHEST_BOAT.get(), FAEntityTypes.LEPIDODENDRON_CHEST_BOAT.get(), FAEntityTypes.SIGILLARIA_CHEST_BOAT.get());
 
         this.carnivoreFood(FAEntityTypeTags.CARNOTAURUS_VICTIMS, FAEntityTypes.ANKYLOSAURUS.get(), FAEntityTypes.BRACHIOSAURUS.get(), FAEntityTypes.COMPSOGNATHUS.get(), FAEntityTypes.CRYOLOPHOSAURUS.get(), FAEntityTypes.DILOPHOSAURUS.get(), FAEntityTypes.DIMETRODON.get(), FAEntityTypes.DODO.get(), FAEntityTypes.FUTABASAURUS.get(), FAEntityTypes.GALLIMIMUS.get(), FAEntityTypes.MAMMOTH.get(), FAEntityTypes.MOA.get(), FAEntityTypes.MOSASAURUS.get(), FAEntityTypes.NAUTILUS.get(), FAEntityTypes.PACHYCEPHALOSAURUS.get(), FAEntityTypes.PTERANODON.get(), FAEntityTypes.SMILODON.get(), FAEntityTypes.SPINOSAURUS.get(), FAEntityTypes.STEGOSAURUS.get(), FAEntityTypes.THERIZINOSAURUS.get(), FAEntityTypes.TRICERATOPS.get(), FAEntityTypes.TYRANNOSAURUS.get(), FAEntityTypes.VELOCIRAPTOR.get());
         this.tag(FAEntityTypeTags.COMPSOGNATHUS_VICTIMS).add(EntityType.CHICKEN, EntityType.PARROT, EntityType.PLAYER, FAEntityTypes.DODO.get());

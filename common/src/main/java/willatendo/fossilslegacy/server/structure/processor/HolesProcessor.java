@@ -14,7 +14,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProc
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import willatendo.fossilslegacy.server.structure.FAStructureProcessorType;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -41,7 +41,7 @@ public class HolesProcessor extends StructureProcessor {
                             BlockState blockStateAt = serverLevelAccessor.getBlockState(mutableBlockPos);
                             if (serverLevelAccessor.getBlockState(mutableBlockPos).is(BlockTags.DOORS)) {
                                 DoubleBlockHalf doubleBlockHalf = blockStateAt.getValue(DoorBlock.HALF);
-                                FossilsLegacyUtils.LOGGER.info("Door {} {} @ {}", blockPosAt, blockStateAt, doubleBlockHalf);
+                                FAUtils.LOGGER.info("Door {} {} @ {}", blockPosAt, blockStateAt, doubleBlockHalf);
                                 switch (doubleBlockHalf) {
                                     case UPPER ->
                                             structureBlockInfos.put(mutableBlockPos.below(), new StructureTemplate.StructureBlockInfo(mutableBlockPos.below(), this.holeFiller, new CompoundTag()));

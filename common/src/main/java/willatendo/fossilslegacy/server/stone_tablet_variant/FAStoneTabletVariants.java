@@ -3,7 +3,7 @@ package willatendo.fossilslegacy.server.stone_tablet_variant;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FAStoneTabletVariants {
     public static final ResourceKey<StoneTabletVariant> LIGHTING = FAStoneTabletVariants.create("lighting");
@@ -29,7 +29,7 @@ public final class FAStoneTabletVariants {
     public static final ResourceKey<StoneTabletVariant> ANU_TOTEM = FAStoneTabletVariants.create("anu_totem");
 
     private static ResourceKey<StoneTabletVariant> create(String name) {
-        return ResourceKey.create(FARegistries.STONE_TABLET_VARIANTS, FossilsLegacyUtils.resource(name));
+        return ResourceKey.create(FARegistries.STONE_TABLET_VARIANTS, FAUtils.resource(name));
     }
 
     private static void register(BootstrapContext<StoneTabletVariant> bootstrapContext, ResourceKey<StoneTabletVariant> resourceKey, int width, int height) {

@@ -2,7 +2,7 @@ package willatendo.fossilslegacy.server.entity.entities;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
@@ -42,7 +42,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.level.FAGameRules;
 import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -60,8 +60,8 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
         super(entityType, level);
     }
 
-    public static boolean checkDinosaurSpawnRules(EntityType<? extends Dinosaur> dinosaur, LevelAccessor levelAccessor, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource, TagKey<Block> spawnableBlocks) {
-        boolean flag = MobSpawnType.ignoresLightRequirements(mobSpawnType) || Animal.isBrightEnoughToSpawn(levelAccessor, blockPos);
+    public static boolean checkDinosaurSpawnRules(EntityType<? extends Dinosaur> dinosaur, LevelAccessor levelAccessor, EntitySpawnReason entitySpawnReason, BlockPos blockPos, RandomSource randomSource, TagKey<Block> spawnableBlocks) {
+        boolean flag = EntitySpawnReason.ignoresLightRequirements(entitySpawnReason) || Animal.isBrightEnoughToSpawn(levelAccessor, blockPos);
         return levelAccessor.getBlockState(blockPos.below()).is(spawnableBlocks) && flag;
     }
 
@@ -95,16 +95,16 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
     }
 
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData) {
-        Registry<CoatType> coatType = serverLevelAccessor.registryAccess().registryOrThrow(FARegistries.COAT_TYPES);
-        this.setCoatType(coatType.getTag(this.getCoatTypes()).get().getRandomElement(this.getRandom()).get());
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, EntitySpawnReason entitySpawnReason, SpawnGroupData spawnGroupData) {
+        HolderLookup<CoatType> coatType = serverLevelAccessor.holderLookup(FARegistries.COAT_TYPES);
+        this.setCoatType(coatType.getOrThrow(this.getCoatTypes()).getRandomElement(this.getRandom()).get());
         this.setHunger(this.getMaxHunger());
-        if (MobSpawnType.isSpawner(mobSpawnType) || mobSpawnType == MobSpawnType.COMMAND || mobSpawnType == MobSpawnType.MOB_SUMMONED || mobSpawnType == MobSpawnType.NATURAL || mobSpawnType == MobSpawnType.CHUNK_GENERATION) {
+        if (EntitySpawnReason.isSpawner(entitySpawnReason) || entitySpawnReason == EntitySpawnReason.COMMAND || entitySpawnReason == EntitySpawnReason.MOB_SUMMONED || entitySpawnReason == EntitySpawnReason.NATURAL || entitySpawnReason == EntitySpawnReason.CHUNK_GENERATION) {
             this.setGrowthStage(this.getMaxGrowthStage());
         }
         this.refreshDimensions();
         this.setCommand(FACommandTypes.FREE_MOVE);
-        return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData);
+        return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, entitySpawnReason, spawnGroupData);
     }
 
     @Override
@@ -162,7 +162,7 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
         super.tick();
 
         if (!this.isNoAi()) {
-            if (this.level() instanceof ServerLevel && this.level().getGameRules().getBoolean(FAGameRules.RULE_DOANIMALGROWTH)) {
+            if (this.level() instanceof ServerLevel serverLevel && serverLevel.getGameRules().getBoolean(FAGameRules.RULE_DOANIMALGROWTH)) {
                 if (this.getGrowthStage() < this.getMaxGrowthStage()) {
                     if (this.internalClock % Level.TICKS_PER_DAY == 0) {
                         if (this.hasSpace()) {
@@ -179,7 +179,7 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
                 this.setDaysAlive(this.getDaysAlive() + 1);
             }
 
-            if (this.level() instanceof ServerLevel && this.level().getGameRules().getBoolean(FAGameRules.RULE_DOANIMALHUNGER)) {
+            if (this.level() instanceof ServerLevel serverLevel && serverLevel.getGameRules().getBoolean(FAGameRules.RULE_DOANIMALHUNGER)) {
                 if (this.level().getDifficulty() != Difficulty.PEACEFUL) {
                     if (this.internalClock % 300 == 0) {
                         this.decreaseHunger();
@@ -198,7 +198,7 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
                         if (this.internalClock % 100 == 0) {
                             this.sendMessageToOwnerOrElseAll(DinoSituation.STARVE);
                         }
-                        this.hurt(new DamageSource(this.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(FADamageTypes.ANIMAL_STARVE)), 20.0F);
+                        this.hurt(new DamageSource(this.level().registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE).getOrThrow(FADamageTypes.ANIMAL_STARVE)), 20.0F);
                     }
                 }
             }
@@ -228,8 +228,8 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
 
     @Override
     public void die(DamageSource damageSource) {
-        if (!this.level().isClientSide && this.level().getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES) && this.getOwner() instanceof ServerPlayer) {
-            this.getOwner().sendSystemMessage(this.getCombatTracker().getDeathMessage());
+        if (this.level() instanceof ServerLevel serverLevel && serverLevel.getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES) && this.getOwner() instanceof ServerPlayer serverPlayer) {
+            serverPlayer.sendSystemMessage(this.getCombatTracker().getDeathMessage());
         }
         super.die(damageSource);
     }
@@ -263,7 +263,7 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
             if (this.commandItems().canCommand(player, interactionHand)) {
                 Holder<CommandType> nextCommandType = CommandType.getNext(this.getCommand());
                 this.setCommand(nextCommandType);
-                player.displayClientMessage(FossilsLegacyUtils.translation("command_type", "command.use", nextCommandType.value().getDescription().getString()), true);
+                player.displayClientMessage(FAUtils.translation("command_type", "command.use", nextCommandType.value().getDescription().getString()), true);
                 return InteractionResult.SUCCESS;
             }
         }
@@ -279,7 +279,9 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
                     this.setInLove(player);
                     return InteractionResult.SUCCESS;
                 } else {
-                    this.sendMessageToPlayer(DinoSituation.FULL, player);
+                    if (player instanceof ServerPlayer serverPlayer) {
+                        this.sendMessageToPlayer(DinoSituation.FULL, serverPlayer);
+                    }
                 }
             }
             itemStack.shrink(1);
@@ -327,8 +329,8 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(COAT_TYPE, this.registryAccess().registryOrThrow(FARegistries.COAT_TYPES).getAny().orElseThrow());
-        builder.define(COMMAND, this.registryAccess().registryOrThrow(FARegistries.COMMAND_TYPES).getAny().orElseThrow());
+        builder.define(COAT_TYPE, this.registryAccess().lookupOrThrow(FARegistries.COAT_TYPES).getAny().orElseThrow());
+        builder.define(COMMAND, this.registryAccess().lookupOrThrow(FARegistries.COMMAND_TYPES).getAny().orElseThrow());
         builder.define(GROWTH_STAGE, 0);
         builder.define(DAYS_ALIVE, 0);
         builder.define(HUNGER, this.getMaxHunger());
@@ -469,7 +471,7 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
         if (this.getEggVariant() != null) {
-            Egg egg = FAEntityTypes.EGG.get().create(serverLevel);
+            Egg egg = FAEntityTypes.EGG.get().create(serverLevel, EntitySpawnReason.BREEDING);
             egg.setEggVariant(this.getEggVariant());
             if (this.getCoatType() != null) {
                 egg.setCoatType(this.getCoatType());

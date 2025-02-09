@@ -7,20 +7,20 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import willatendo.fossilslegacy.server.command_type.CommandType;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.tags.FAEntityTypeTags;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 
@@ -32,13 +32,13 @@ public class MagicConchItem extends Item {
     @Override
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> components, TooltipFlag tooltipFlag) {
         if (MagicConchItem.getOrder(itemStack) != null) {
-            components.add(FossilsLegacyUtils.translation("item", BuiltInRegistries.ITEM.getKey(this).getPath() + ".desc", MagicConchItem.getOrder(itemStack).value().getDescription()).withStyle(ChatFormatting.GRAY));
+            components.add(FAUtils.translation("item", BuiltInRegistries.ITEM.getKey(this).getPath() + ".desc", MagicConchItem.getOrder(itemStack).value().getDescription()).withStyle(ChatFormatting.GRAY));
         }
         super.appendHoverText(itemStack, tooltipContext, components, tooltipFlag);
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
+    public InteractionResult use(Level level, Player player, InteractionHand interactionHand) {
         ItemStack itemStack = player.getItemInHand(interactionHand);
         if (MagicConchItem.getOrder(itemStack) != null) {
             List<Dinosaur> dinosaurs = level.getEntitiesOfClass(Dinosaur.class, new AABB(player.blockPosition()).inflate(30.0D)).stream().filter(livingEntity -> livingEntity.getType().is(FAEntityTypeTags.MAGIC_CONCH_COMMANDABLE)).toList();
@@ -52,11 +52,11 @@ public class MagicConchItem extends Item {
             }
 
             player.startUsingItem(interactionHand);
-            player.displayClientMessage(FossilsLegacyUtils.translation("command_type", "magic_conch.use", MagicConchItem.getOrder(itemStack).value().getDescription()), true);
+            player.displayClientMessage(FAUtils.translation("command_type", "magic_conch.use", MagicConchItem.getOrder(itemStack).value().getDescription()), true);
             player.awardStat(Stats.ITEM_USED.get(this));
-            player.getCooldowns().addCooldown(this, 10);
+            player.getCooldowns().addCooldown(itemStack, 10);
         }
-        return InteractionResultHolder.consume(itemStack);
+        return InteractionResult.CONSUME;
     }
 
     @Override
@@ -65,8 +65,8 @@ public class MagicConchItem extends Item {
     }
 
     @Override
-    public UseAnim getUseAnimation(ItemStack itemStack) {
-        return UseAnim.TOOT_HORN;
+    public ItemUseAnimation getUseAnimation(ItemStack itemStack) {
+        return ItemUseAnimation.TOOT_HORN;
     }
 
     public static Holder<CommandType> getOrder(ItemStack itemStack) {

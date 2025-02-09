@@ -6,12 +6,12 @@ import willatendo.fossilslegacy.server.dinopedia_entry.line.CustomDinopediaLine;
 import willatendo.fossilslegacy.server.dinopedia_entry.line.DinopediaLine;
 import willatendo.fossilslegacy.server.dinopedia_entry.line.DinopediaLineType;
 import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 public final class FADinopediaLineTypes {
-    public static final SimpleRegistry<DinopediaLineType<?>> DINOPEDIA_LINE_TYPES = SimpleRegistry.create(FARegistries.DINOPEDIA_LINE_TYPE, FossilsLegacyUtils.ID);
+    public static final SimpleRegistry<DinopediaLineType<?>> DINOPEDIA_LINE_TYPES = SimpleRegistry.create(FARegistries.DINOPEDIA_LINE_TYPE, FAUtils.ID);
 
     public static final SimpleHolder<DinopediaLineType<BuiltInDinopediaLines>> BUILT_IN = FADinopediaLineTypes.register("built_in", BuiltInDinopediaLines.CODEC);
     public static final SimpleHolder<DinopediaLineType<CustomDinopediaLine>> CUSTOM = FADinopediaLineTypes.register("custom", CustomDinopediaLine.CODEC);

@@ -3,12 +3,12 @@ package willatendo.fossilslegacy.server.pregnancy_types;
 import net.minecraft.world.entity.EntityType;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 public final class FAPregnancyTypes {
-    public static final SimpleRegistry<PregnancyType> PREGNANCY_TYPES = SimpleRegistry.create(FARegistries.PREGNANCY_TYPES, FossilsLegacyUtils.ID);
+    public static final SimpleRegistry<PregnancyType> PREGNANCY_TYPES = SimpleRegistry.create(FARegistries.PREGNANCY_TYPES, FAUtils.ID);
 
     public static final SimpleHolder<PregnancyType> ARMADILLO = PREGNANCY_TYPES.register("armadillo", () -> new PregnancyType(() -> EntityType.ARMADILLO));
     public static final SimpleHolder<PregnancyType> CAT = PREGNANCY_TYPES.register("cat", () -> new PregnancyType(() -> EntityType.CAT));

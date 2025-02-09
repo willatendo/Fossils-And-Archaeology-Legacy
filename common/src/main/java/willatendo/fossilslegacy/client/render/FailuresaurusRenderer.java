@@ -2,21 +2,27 @@ package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FAModelLayers;
 import willatendo.fossilslegacy.client.model.FailuresaurusModel;
 import willatendo.fossilslegacy.server.entity.entities.Failuresaurus;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
-public class FailuresaurusRenderer extends MobRenderer<Failuresaurus, FailuresaurusModel> {
-	public static final ResourceLocation TEXTURE = FossilsLegacyUtils.resource("textures/entity/failuresaurus.png");
+public class FailuresaurusRenderer extends MobRenderer<Failuresaurus, LivingEntityRenderState, FailuresaurusModel> {
+    public static final ResourceLocation TEXTURE = FAUtils.resource("textures/entity/failuresaurus.png");
 
-	public FailuresaurusRenderer(Context context) {
-		super(context, new FailuresaurusModel(context.bakeLayer(FAModelLayers.FAILURESAURUS)), 0.5F);
-	}
+    public FailuresaurusRenderer(Context context) {
+        super(context, new FailuresaurusModel(context.bakeLayer(FAModelLayers.FAILURESAURUS)), 0.5F);
+    }
 
-	@Override
-	public ResourceLocation getTextureLocation(Failuresaurus failuresaurus) {
-		return TEXTURE;
-	}
+    @Override
+    public LivingEntityRenderState createRenderState() {
+        return new LivingEntityRenderState();
+    }
+
+    @Override
+    public ResourceLocation getTextureLocation(LivingEntityRenderState livingEntityRenderState) {
+        return TEXTURE;
+    }
 }

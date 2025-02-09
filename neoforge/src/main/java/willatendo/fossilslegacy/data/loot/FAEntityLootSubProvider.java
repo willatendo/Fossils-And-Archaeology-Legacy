@@ -1,34 +1,47 @@
 package willatendo.fossilslegacy.data.loot;
 
+import net.minecraft.advancements.critereon.EntityPredicate;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 import net.minecraft.world.level.storage.loot.functions.EnchantedCountIncreaseFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.functions.SmeltItemFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemKilledByPlayerCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWithEnchantedBonusCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.criteria.critereon.EggPredicate;
+import willatendo.fossilslegacy.server.criteria.critereon.MammothPredicate;
+import willatendo.fossilslegacy.server.egg_variant.EggVariant;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.item.FALootTables;
 import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom;
 import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom.ItemAndChance;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.data.loot.SimpleEntityLootSubProvider;
 
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Optional;
 
 public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
     public FAEntityLootSubProvider(HolderLookup.Provider registries) {
-        super(registries, FossilsLegacyUtils.ID);
+        super(registries, FAUtils.ID);
     }
 
     @Override
@@ -57,21 +70,7 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
         this.add(FAEntityTypes.TYRANNOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_TYRANNOSAURUS.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.TYRANNOSAURUS_TOOTH.get()))));
         this.add(FAEntityTypes.VELOCIRAPTOR.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_VELOCIRAPTOR.get()));
 
-        this.add(FAEntityTypes.EGG.get(), LootTable.lootTable());
-        this.add(FAEntityTypes.EGG.get(), FALootTables.BRACHIOSAURUS_EGG, this.createEggTable(FAItems.BRACHIOSAURUS_EGG.get()));
-        this.add(FAEntityTypes.EGG.get(), FALootTables.CARNOTAURUS_EGG, this.createEggTable(FAItems.CARNOTAURUS_EGG.get()));
-        this.add(FAEntityTypes.EGG.get(), FALootTables.COMPSOGNATHUS_EGG, this.createEggTable(FAItems.COMPSOGNATHUS_EGG.get()));
-        this.add(FAEntityTypes.EGG.get(), FALootTables.CRYOLOPHOSAURUS_EGG, this.createEggTable(FAItems.CRYOLOPHOSAURUS_EGG.get()));
-        this.add(FAEntityTypes.EGG.get(), FALootTables.DILOPHOSAURUS_EGG, this.createEggTable(FAItems.DILOPHOSAURUS_EGG.get()));
-        this.add(FAEntityTypes.EGG.get(), FALootTables.FUTABASAURUS_EGG, this.createEggTable(FAItems.FUTABASAURUS_EGG.get()));
-        this.add(FAEntityTypes.EGG.get(), FALootTables.MOSASAURUS_EGG, this.createEggTable(FAItems.MOSASAURUS_EGG.get()));
-        this.add(FAEntityTypes.EGG.get(), FALootTables.PACHYCEPHALOSAURUS_EGG, this.createEggTable(FAItems.PACHYCEPHALOSAURUS_EGG.get()));
-        this.add(FAEntityTypes.EGG.get(), FALootTables.PTERANODON_EGG, this.createEggTable(FAItems.PTERANODON_EGG.get()));
-        this.add(FAEntityTypes.EGG.get(), FALootTables.STEGOSAURUS_EGG, this.createEggTable(FAItems.STEGOSAURUS_EGG.get()));
-        this.add(FAEntityTypes.EGG.get(), FALootTables.THERIZINOSAURUS_EGG, this.createEggTable(FAItems.THERIZINOSAURUS_EGG.get()));
-        this.add(FAEntityTypes.EGG.get(), FALootTables.TRICERATOPS_EGG, this.createEggTable(FAItems.TRICERATOPS_EGG.get()));
-        this.add(FAEntityTypes.EGG.get(), FALootTables.TYRANNOSAURUS_EGG, this.createEggTable(FAItems.TYRANNOSAURUS_EGG.get()));
-        this.add(FAEntityTypes.EGG.get(), FALootTables.VELOCIRAPTOR_EGG, this.createEggTable(FAItems.VELOCIRAPTOR_EGG.get()));
+        this.add(FAEntityTypes.EGG.get(), LootTable.lootTable().withPool(FAEntityLootSubProvider.createEggDispatchPool(FALootTables.EGG_BY_DYE)));
 
         this.add(FAEntityTypes.PREGNANT_ARMADILLO.get(), LootTable.lootTable());
         this.add(FAEntityTypes.PREGNANT_CAT.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.STRING).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))))));
@@ -89,23 +88,7 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
         this.add(FAEntityTypes.PREGNANT_PIG.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.PORKCHOP).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))))));
         this.add(FAEntityTypes.PREGNANT_POLAR_BEAR.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.COD).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())).setWeight(3).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))).add(LootItem.lootTableItem(Items.SALMON).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))))));
         this.add(FAEntityTypes.PREGNANT_RABBIT.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.RABBIT_HIDE).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F))).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.RABBIT).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.RABBIT_FOOT)).when(LootItemKilledByPlayerCondition.killedByPlayer()).when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(this.registries, 0.1F, 0.03F))));
-        this.add(FAEntityTypes.PREGNANT_SHEEP.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.MUTTON).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))))));
-        this.add(FAEntityTypes.PREGNANT_SHEEP.get(), FALootTables.PREGNANT_SHEEP_BLACK, this.createPregnantSheepTable(Blocks.BLACK_WOOL));
-        this.add(FAEntityTypes.PREGNANT_SHEEP.get(), FALootTables.PREGNANT_SHEEP_BLUE, this.createPregnantSheepTable(Blocks.BLUE_WOOL));
-        this.add(FAEntityTypes.PREGNANT_SHEEP.get(), FALootTables.PREGNANT_SHEEP_BROWN, this.createPregnantSheepTable(Blocks.BROWN_WOOL));
-        this.add(FAEntityTypes.PREGNANT_SHEEP.get(), FALootTables.PREGNANT_SHEEP_CYAN, this.createPregnantSheepTable(Blocks.CYAN_WOOL));
-        this.add(FAEntityTypes.PREGNANT_SHEEP.get(), FALootTables.PREGNANT_SHEEP_GRAY, this.createPregnantSheepTable(Blocks.GRAY_WOOL));
-        this.add(FAEntityTypes.PREGNANT_SHEEP.get(), FALootTables.PREGNANT_SHEEP_GREEN, this.createPregnantSheepTable(Blocks.GREEN_WOOL));
-        this.add(FAEntityTypes.PREGNANT_SHEEP.get(), FALootTables.PREGNANT_SHEEP_LIGHT_BLUE, this.createPregnantSheepTable(Blocks.LIGHT_BLUE_WOOL));
-        this.add(FAEntityTypes.PREGNANT_SHEEP.get(), FALootTables.PREGNANT_SHEEP_LIGHT_GRAY, this.createPregnantSheepTable(Blocks.LIGHT_GRAY_WOOL));
-        this.add(FAEntityTypes.PREGNANT_SHEEP.get(), FALootTables.PREGNANT_SHEEP_LIME, this.createPregnantSheepTable(Blocks.LIME_WOOL));
-        this.add(FAEntityTypes.PREGNANT_SHEEP.get(), FALootTables.PREGNANT_SHEEP_MAGENTA, this.createPregnantSheepTable(Blocks.MAGENTA_WOOL));
-        this.add(FAEntityTypes.PREGNANT_SHEEP.get(), FALootTables.PREGNANT_SHEEP_ORANGE, this.createPregnantSheepTable(Blocks.ORANGE_WOOL));
-        this.add(FAEntityTypes.PREGNANT_SHEEP.get(), FALootTables.PREGNANT_SHEEP_PINK, this.createPregnantSheepTable(Blocks.PINK_WOOL));
-        this.add(FAEntityTypes.PREGNANT_SHEEP.get(), FALootTables.PREGNANT_SHEEP_PURPLE, this.createPregnantSheepTable(Blocks.PURPLE_WOOL));
-        this.add(FAEntityTypes.PREGNANT_SHEEP.get(), FALootTables.PREGNANT_SHEEP_RED, this.createPregnantSheepTable(Blocks.RED_WOOL));
-        this.add(FAEntityTypes.PREGNANT_SHEEP.get(), FALootTables.PREGNANT_SHEEP_WHITE, this.createPregnantSheepTable(Blocks.WHITE_WOOL));
-        this.add(FAEntityTypes.PREGNANT_SHEEP.get(), FALootTables.PREGNANT_SHEEP_YELLOW, this.createPregnantSheepTable(Blocks.YELLOW_WOOL));
+        this.add(FAEntityTypes.PREGNANT_SHEEP.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.MUTTON).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))))).withPool(FAEntityLootSubProvider.createSheepDispatchPool(BuiltInLootTables.SHEEP_BY_DYE)));
         this.add(FAEntityTypes.PREGNANT_SMILODON.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_SMILODON.get()));
         this.add(FAEntityTypes.PREGNANT_WOLF.get(), LootTable.lootTable());
 
@@ -131,11 +114,26 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
         return builder;
     }
 
-    protected LootTable.Builder createPregnantSheepTable(ItemLike itemLike) {
-        return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(itemLike))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(NestedLootTable.lootTableReference(FAEntityTypes.PREGNANT_SHEEP.get().getDefaultLootTable())));
+    public static LootPool.Builder createMammothDispatchPool(Map<DyeColor, ResourceKey<LootTable>> lootTables) {
+        AlternativesEntry.Builder builder = AlternativesEntry.alternatives();
+
+        Map.Entry<DyeColor, ResourceKey<LootTable>> entry;
+        for (Iterator<Map.Entry<DyeColor, ResourceKey<LootTable>>> entries = lootTables.entrySet().iterator(); entries.hasNext(); builder = builder.otherwise(NestedLootTable.lootTableReference(entry.getValue()).when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().subPredicate(MammothPredicate.hasWool(entry.getKey())))))) {
+            entry = entries.next();
+        }
+
+        return LootPool.lootPool().add(builder);
     }
 
-    protected LootTable.Builder createEggTable(ItemLike itemLike) {
-        return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(itemLike)));
+
+    public static LootPool.Builder createEggDispatchPool(Map<Holder<EggVariant>, ResourceKey<LootTable>> lootTables) {
+        AlternativesEntry.Builder builder = AlternativesEntry.alternatives();
+
+        Map.Entry<Holder<EggVariant>, ResourceKey<LootTable>> entry;
+        for (Iterator<Map.Entry<Holder<EggVariant>, ResourceKey<LootTable>>> iterator = lootTables.entrySet().iterator(); iterator.hasNext(); builder = builder.otherwise(NestedLootTable.lootTableReference(entry.getValue()).when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().subPredicate(EggPredicate.isEggVariant(entry.getKey())))))) {
+            entry = iterator.next();
+        }
+
+        return LootPool.lootPool().add(builder);
     }
 }

@@ -13,7 +13,7 @@ import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 import willatendo.fossilslegacy.server.block.FABlocks;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 
@@ -44,7 +44,7 @@ public final class FAPlacedFeatures {
     public static final ResourceKey<PlacedFeature> TREES_PREHISTORIC_JUNGLE = create("trees_prehistoric_jungle");
 
     public static ResourceKey<PlacedFeature> create(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, FossilsLegacyUtils.resource(name));
+        return ResourceKey.create(Registries.PLACED_FEATURE, FAUtils.resource(name));
     }
 
     public static List<PlacementModifier> orePlacement(PlacementModifier placementModifier, PlacementModifier placementModifier2) {

@@ -156,7 +156,7 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, DinosaurUtils.PISCIVORE_FOOD, false));
+        this.goalSelector.addGoal(3, new DinoTemptGoal(this, 1.1D, false));
         this.goalSelector.addGoal(4, new DinoBabyFollowParentGoal(this, 1.1D));
         this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));
         this.goalSelector.addGoal(6, new DinoWaterAvoidingRandomStrollGoal(this, 1.0D));
@@ -256,7 +256,6 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
                     }
 
                     this.calculateEntityAnimation(false);
-                    this.tryCheckInsideBlocks();
                 } else {
                     super.travel(vec3);
                 }

@@ -49,7 +49,7 @@ public class Nautilus extends WaterAnimal {
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).build();
     }
 
-    public static boolean checkNautilusSpawnRules(EntityType<Nautilus> entityType, ServerLevelAccessor serverLevelAccessor, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource) {
+    public static boolean checkNautilusSpawnRules(EntityType<Nautilus> entityType, ServerLevelAccessor serverLevelAccessor, EntitySpawnReason mobSpawnType, BlockPos blockPos, RandomSource randomSource) {
         return blockPos.getY() >= (serverLevelAccessor.getSeaLevel() - 13) && blockPos.getY() <= serverLevelAccessor.getSeaLevel() && serverLevelAccessor.getFluidState(blockPos.below()).is(FluidTags.WATER) && serverLevelAccessor.getBlockState(blockPos.above()).is(Blocks.WATER);
     }
 
@@ -59,7 +59,7 @@ public class Nautilus extends WaterAnimal {
         if (itemStack.isEmpty()) {
             player.addItem(new ItemStack(FAItems.NAUTILUS.get()));
             this.discard();
-            return InteractionResult.sidedSuccess(this.level().isClientSide());
+            return InteractionResult.SUCCESS;
         }
         return super.interactAt(player, vec3, interactionHand);
     }

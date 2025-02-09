@@ -180,7 +180,6 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Ridea
                 }
 
                 this.calculateEntityAnimation(false);
-                this.tryCheckInsideBlocks();
             } else {
                 super.travel(vec3);
             }

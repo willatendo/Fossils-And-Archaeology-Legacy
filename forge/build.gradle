@@ -76,8 +76,6 @@ dependencies {
     jarJar("simplelibrary:simplelibrary-forge:${simple_library_version}") {
         jarJar.ranged(it, "[${simple_library_version},5.0.0)")
     }
-
-    implementation("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 }
 
 reobf {

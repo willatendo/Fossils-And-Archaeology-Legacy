@@ -19,8 +19,6 @@ dependencies {
     compileOnly group: 'org.spongepowered', name: 'mixin', version: '0.8.5'
 
     compileOnly "simplelibrary:simplelibrary-common:${simple_library_version}"
-
-    compileOnly "mezz.jei:jei-${minecraft_version}-common:${jei_version}"
 }
 
 configurations {

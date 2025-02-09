@@ -15,7 +15,7 @@ public record JewelRecovery(ResourceLocation block, List<JewelEntry> jewelEntrie
     public static final Codec<JewelRecovery> CODEC = RecordCodecBuilder.create(instance -> instance.group(ResourceLocation.CODEC.fieldOf("block").forGetter(JewelRecovery::block), Codec.list(JewelRecovery.JewelEntry.CODEC).fieldOf("entries").forGetter(JewelRecovery::jewelEntries)).apply(instance, JewelRecovery::new));
 
     public Block getBlock() {
-        return BuiltInRegistries.BLOCK.get(this.block);
+        return BuiltInRegistries.BLOCK.getValue(this.block);
     }
 
     public List<ItemStack> outputs() {

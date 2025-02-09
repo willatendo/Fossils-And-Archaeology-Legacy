@@ -1,7 +1,5 @@
 package willatendo.fossilslegacy.client.model;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -9,13 +7,11 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import willatendo.fossilslegacy.server.entity.entities.Egg;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 
-public class EggModel extends EntityModel<Egg> {
-    private final ModelPart root;
-
+public class EggModel extends EntityModel<LivingEntityRenderState> {
     public EggModel(ModelPart root) {
-        this.root = root;
+        super(root);
     }
 
     public static LayerDefinition createRegularBodyLayer() {
@@ -34,14 +30,5 @@ public class EggModel extends EntityModel<Egg> {
         partDefinition.addOrReplaceChild("root", CubeListBuilder.create().texOffs(0, 0).addBox(-2.0F, -5.0F, -2.0F, 4.0F, 4.0F, 4.0F).texOffs(0, 8).addBox(-1.5F, -1.0F, -1.5F, 3.0F, 1.0F, 3.0F).texOffs(0, 12).addBox(-1.5F, -6.0F, -1.5F, 3.0F, 1.0F, 3.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
 
         return LayerDefinition.create(meshDefinition, 16, 16);
-    }
-
-    @Override
-    public void setupAnim(Egg egg, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-    }
-
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
-        this.root.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
     }
 }

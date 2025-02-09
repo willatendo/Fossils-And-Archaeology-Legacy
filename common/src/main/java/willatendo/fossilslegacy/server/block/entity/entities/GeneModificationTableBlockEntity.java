@@ -10,7 +10,7 @@ import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.StackedContents;
+import net.minecraft.world.entity.player.StackedItemContents;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.ItemStack;
@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.menu.menus.GeneModificationTableMenu;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public class GeneModificationTableBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, StackedContentsCompatible {
     private static final int[] SLOTS_FOR_UP = {0};
@@ -132,15 +132,15 @@ public class GeneModificationTableBlockEntity extends BaseContainerBlockEntity i
     }
 
     @Override
-    public void fillStackedContents(StackedContents stackedContents) {
+    public void fillStackedContents(StackedItemContents stackedItemContents) {
         for (ItemStack itemStack : this.itemStacks) {
-            stackedContents.accountStack(itemStack);
+            stackedItemContents.accountStack(itemStack);
         }
     }
 
     @Override
     protected Component getDefaultName() {
-        return FossilsLegacyUtils.translation("container", "gene_modification_table");
+        return FAUtils.translation("container", "gene_modification_table");
     }
 
     @Override

@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -21,7 +22,7 @@ import net.minecraft.world.level.block.state.pattern.BlockPattern;
 import net.minecraft.world.level.block.state.pattern.BlockPatternBuilder;
 import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import org.jetbrains.annotations.Nullable;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.criteria.FLCriteriaTriggers;
@@ -35,7 +36,7 @@ public class GenericSkullBlock extends Block {
     private BlockPattern anuFull;
     private static final Predicate<BlockState> SKULLS_PREDICATE = blockState -> blockState != null && (blockState.is(FABlocks.SKULL_BLOCK.get()) || blockState.is(FABlocks.SKULL_LANTERN_BLOCK.get()));
 
-    public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
 
     public GenericSkullBlock(Properties properties) {
         super(properties);
@@ -70,7 +71,7 @@ public class GenericSkullBlock extends Block {
     private void trySpawnAnu(Level level, BlockPos blockPos) {
         BlockPattern.BlockPatternMatch blockPatternMatch = this.getOrCreateAnuFull().find(level, blockPos);
         if (blockPatternMatch != null) {
-            Anu anu = FAEntityTypes.ANU.get().create(level);
+            Anu anu = FAEntityTypes.ANU.get().create(level, EntitySpawnReason.TRIGGERED);
             if (anu != null) {
                 spawnAnuInWorld(level, blockPatternMatch, anu, blockPatternMatch.getBlock(0, 2, 0).getPos());
             }

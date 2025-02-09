@@ -5,24 +5,27 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.StackedContents;
+import net.minecraft.world.entity.player.StackedItemContents;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.RecipeCraftingHolder;
 import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeManager.CachedCheck;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import willatendo.fossilslegacy.server.block.blocks.AnalyzerBlock;
@@ -31,7 +34,7 @@ import willatendo.fossilslegacy.server.block.entity.crafting.AnalyzerRecipeInput
 import willatendo.fossilslegacy.server.menu.menus.AnalyzerMenu;
 import willatendo.fossilslegacy.server.recipe.FARecipeTypes;
 import willatendo.fossilslegacy.server.recipe.recipes.AnalyzationRecipe;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 
@@ -73,7 +76,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
             return 3;
         }
     };
-    private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
+    private final Object2IntOpenHashMap<ResourceKey<Recipe<?>>> recipesUsed = new Object2IntOpenHashMap<>();
     private final CachedCheck<AnalyzerRecipeInput, AnalyzationRecipe> recipeCheck = RecipeManager.createCheck(FARecipeTypes.ANALYZATION.get());
 
     public AnalyzerBlockEntity(BlockPos blockPos, BlockState blockState) {
@@ -94,7 +97,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
         this.analyzationTotalTime = compoundTag.getInt("AnalyzationTimeTotal");
         CompoundTag usedRecipes = compoundTag.getCompound("RecipesUsed");
         for (String recipes : usedRecipes.getAllKeys()) {
-            this.recipesUsed.put(ResourceLocation.parse(recipes), usedRecipes.getInt(recipes));
+            this.recipesUsed.put(ResourceKey.create(Registries.RECIPE, ResourceLocation.parse(recipes)), usedRecipes.getInt(recipes));
         }
     }
 
@@ -112,7 +115,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
         compoundTag.put("RecipesUsed", usedRecipes);
     }
 
-    public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, AnalyzerBlockEntity analyzerBlockEntity) {
+    public static void serverTick(ServerLevel serverLevel, BlockPos blockPos, BlockState blockState, AnalyzerBlockEntity analyzerBlockEntity) {
         boolean isOn = analyzerBlockEntity.isOn();
         boolean changed = false;
         if (analyzerBlockEntity.isOn()) {
@@ -125,14 +128,14 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
                 if (analyzerBlockEntity.isOn() || hasInput) {
                     RecipeHolder<AnalyzationRecipe> recipe;
                     if (hasInput) {
-                        recipe = analyzerBlockEntity.recipeCheck.getRecipeFor(new AnalyzerRecipeInput(analyzerBlockEntity.itemStacks.get(inputSlot), analyzerBlockEntity.itemStacks), level).orElse(null);
+                        recipe = analyzerBlockEntity.recipeCheck.getRecipeFor(new AnalyzerRecipeInput(analyzerBlockEntity.itemStacks.get(inputSlot), analyzerBlockEntity.itemStacks), serverLevel).orElse(null);
                     } else {
                         recipe = null;
                     }
 
                     if (recipe != null) {
                         int maxStackSize = analyzerBlockEntity.getMaxStackSize();
-                        ItemStack outputStack = recipe.value().assemble(new AnalyzerRecipeInput(analyzerBlockEntity.itemStacks.get(inputSlot), analyzerBlockEntity.itemStacks), level.registryAccess());
+                        ItemStack outputStack = recipe.value().assemble(new AnalyzerRecipeInput(analyzerBlockEntity.itemStacks.get(inputSlot), analyzerBlockEntity.itemStacks), serverLevel.registryAccess());
                         for (int outputSlot = 9; outputSlot < 13; outputSlot++) {
                             if (analyzerBlockEntity.canAnalyze(outputSlot, inputSlot, outputStack, analyzerBlockEntity.itemStacks, maxStackSize)) {
                                 if (!analyzerBlockEntity.isOn()) {
@@ -146,7 +149,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
                                     analyzerBlockEntity.analyzationProgress++;
                                     if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
                                         analyzerBlockEntity.analyzationProgress = 0;
-                                        analyzerBlockEntity.analyzationTotalTime = getTotalAnalyzationTime(inputSlot, level, analyzerBlockEntity);
+                                        analyzerBlockEntity.analyzationTotalTime = getTotalAnalyzationTime(inputSlot, serverLevel, analyzerBlockEntity);
                                         if (analyzerBlockEntity.analyze(outputSlot, inputSlot, outputStack, analyzerBlockEntity.itemStacks, maxStackSize)) {
                                             analyzerBlockEntity.setRecipeUsed(recipe);
                                         }
@@ -168,11 +171,11 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
         if (isOn != analyzerBlockEntity.isOn()) {
             changed = true;
             blockState = blockState.setValue(AnalyzerBlock.ACTIVE, Boolean.valueOf(analyzerBlockEntity.isOn()));
-            level.setBlock(blockPos, blockState, 3);
+            serverLevel.setBlock(blockPos, blockState, 3);
         }
 
         if (changed) {
-            setChanged(level, blockPos, blockState);
+            setChanged(serverLevel, blockPos, blockState);
         }
     }
 
@@ -214,8 +217,8 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
         }
     }
 
-    private static int getTotalAnalyzationTime(int inputSlot, Level level, AnalyzerBlockEntity analyzerBlockEntity) {
-        return analyzerBlockEntity.recipeCheck.getRecipeFor(new AnalyzerRecipeInput(analyzerBlockEntity.itemStacks.get(inputSlot), analyzerBlockEntity.itemStacks), level).map(recipeHolder -> recipeHolder.value().getTime()).orElse(100);
+    private static int getTotalAnalyzationTime(int inputSlot, ServerLevel serverLevel, AnalyzerBlockEntity analyzerBlockEntity) {
+        return analyzerBlockEntity.recipeCheck.getRecipeFor(new AnalyzerRecipeInput(analyzerBlockEntity.itemStacks.get(inputSlot), analyzerBlockEntity.itemStacks), serverLevel).map(recipeHolder -> recipeHolder.value().getTime()).orElse(100);
     }
 
     @Override
@@ -313,7 +316,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
     @Override
     public void setRecipeUsed(RecipeHolder<?> recipeHolder) {
         if (recipeHolder != null) {
-            ResourceLocation recipeId = recipeHolder.id();
+            ResourceKey<Recipe<?>> recipeId = recipeHolder.id();
             this.recipesUsed.addTo(recipeId, 1);
         }
     }
@@ -324,15 +327,15 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
     }
 
     @Override
-    public void fillStackedContents(StackedContents stackedContents) {
+    public void fillStackedContents(StackedItemContents stackedItemContents) {
         for (ItemStack itemStack : this.itemStacks) {
-            stackedContents.accountStack(itemStack);
+            stackedItemContents.accountStack(itemStack);
         }
     }
 
     @Override
     protected Component getDefaultName() {
-        return FossilsLegacyUtils.translation("container", "analyzer");
+        return FAUtils.translation("container", "analyzer");
     }
 
     @Override

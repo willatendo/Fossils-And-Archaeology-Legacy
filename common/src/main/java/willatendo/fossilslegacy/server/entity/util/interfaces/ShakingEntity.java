@@ -1,7 +1,11 @@
 package willatendo.fossilslegacy.server.entity.util.interfaces;
 
 public interface ShakingEntity extends WetFurEntity {
-    float getHeadRollAngle(float f);
+    float getInterestedAngle();
 
-    float getBodyRollAngle(float ageInTicks, float max);
+    float getInterestedAngleO();
+
+    float shakeAnim();
+
+    float shakeAnim0();
 }

@@ -7,6 +7,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Animal;
@@ -14,6 +15,7 @@ import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.entity.animal.Parrot;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -34,14 +36,14 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile {
         this.incubated = false;
     }
 
-    public ThrownAnimalEgg(Level level, LivingEntity livingEntity, EntityType<? extends Animal> animal, boolean incubated) {
-        super(FAEntityTypes.THROWN_INCUBATED_EGG.get(), livingEntity, level);
+    public ThrownAnimalEgg(Level level, LivingEntity livingEntity, EntityType<? extends Animal> animal, boolean incubated, ItemStack itemStack) {
+        super(FAEntityTypes.THROWN_INCUBATED_EGG.get(), livingEntity, level, itemStack);
         this.animal = animal;
         this.incubated = incubated;
     }
 
-    public ThrownAnimalEgg(Level level, double x, double y, double z, EntityType<? extends Animal> animal, boolean incubated) {
-        super(FAEntityTypes.THROWN_INCUBATED_EGG.get(), x, y, z, level);
+    public ThrownAnimalEgg(Level level, double x, double y, double z, EntityType<? extends Animal> animal, boolean incubated, ItemStack itemStack) {
+        super(FAEntityTypes.THROWN_INCUBATED_EGG.get(), x, y, z, level, itemStack);
         this.animal = animal;
         this.incubated = incubated;
     }
@@ -68,17 +70,17 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile {
     @Override
     protected void onHit(HitResult hitResult) {
         super.onHit(hitResult);
-        boolean shouldHatch = this.incubated ? true : this.random.nextInt(8) == 0;
 
-        if (shouldHatch) {
-            if (!this.level().isClientSide()) {
+
+        if (!this.level().isClientSide()) {
+            if (this.incubated || this.random.nextInt(8) == 0) {
                 int i = 1;
                 if (this.random.nextInt(32) == 0) {
                     i = 4;
                 }
 
                 for (int animals = 0; animals < i; ++animals) {
-                    Animal animalToSpawn = this.animal.create(this.level());
+                    Animal animalToSpawn = this.animal.create(this.level(), EntitySpawnReason.TRIGGERED);
                     if (animalToSpawn instanceof CoatTypeEntity coatTypeEntity && this.coatType != null) {
                         coatTypeEntity.setCoatType(Holder.direct(coatType));
                     }
@@ -94,10 +96,10 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile {
                     animalToSpawn.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
                     this.level().addFreshEntity(animalToSpawn);
                 }
-
-                this.level().broadcastEntityEvent(this, (byte) 3);
-                this.discard();
             }
+
+            this.level().broadcastEntityEvent(this, (byte) 3);
+            this.discard();
         }
     }
 
@@ -107,17 +109,17 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile {
         compoundTag.putString("EntityType", BuiltInRegistries.ENTITY_TYPE.getKey(this.animal).toString());
         compoundTag.putBoolean("Incubated", this.incubated);
         if (this.coatType != null) {
-            compoundTag.putString("CoatType", this.registryAccess().registry(FARegistries.COAT_TYPES).get().getKey(this.coatType).toString());
+            compoundTag.putString("CoatType", this.registryAccess().lookupOrThrow(FARegistries.COAT_TYPES).getKey(this.coatType).toString());
         }
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        this.animal = (EntityType<? extends Animal>) BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.parse(compoundTag.getString("EntityType")));
+        this.animal = (EntityType<? extends Animal>) BuiltInRegistries.ENTITY_TYPE.getValue(ResourceLocation.parse(compoundTag.getString("EntityType")));
         this.incubated = compoundTag.getBoolean("Incubated");
         if (compoundTag.contains("CoatType")) {
-            this.coatType = this.registryAccess().registry(FARegistries.COAT_TYPES).get().get(ResourceLocation.parse(compoundTag.getString("CoatType")));
+            this.coatType = this.registryAccess().lookupOrThrow(FARegistries.COAT_TYPES).getValue(ResourceLocation.parse(compoundTag.getString("CoatType")));
         }
     }
 

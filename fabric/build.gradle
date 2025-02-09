@@ -14,11 +14,9 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 
     modApi include("simplelibrary:simplelibrary-fabric:${simple_library_version}")
-    modImplementation include("com.github.Chocohead:Fabric-ASM:v${project.mm_version}") {
+    modImplementation include("com.github.Chocohead:Fabric-ASM:v${mm_version}") {
         exclude(group: "net.fabricmc.fabric-api")
     }
-
-    modImplementation "mezz.jei:jei-${minecraft_version}-fabric:${jei_version}"
 }
 
 sourceSets {

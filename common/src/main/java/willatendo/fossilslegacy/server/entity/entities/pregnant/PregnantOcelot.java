@@ -8,6 +8,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.Ocelot;
 import net.minecraft.world.item.ItemStack;
@@ -129,11 +130,11 @@ public class PregnantOcelot extends Ocelot implements DinopediaInformation, Preg
 
     @Override
     public Entity getOffspring(Level level) {
-        return this.getPregnancyType().value().entityType().get().create(level);
+        return this.getPregnancyType().value().entityType().get().create(level, EntitySpawnReason.BREEDING);
     }
 
     @Override
     public Ocelot getBaseEntity(Level level) {
-        return EntityType.OCELOT.create(level);
+        return EntityType.OCELOT.create(level, EntitySpawnReason.BREEDING);
     }
 }

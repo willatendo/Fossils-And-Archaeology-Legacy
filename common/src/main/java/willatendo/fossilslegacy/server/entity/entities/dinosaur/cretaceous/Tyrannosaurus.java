@@ -8,6 +8,8 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
@@ -102,11 +104,11 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
     }
 
     @Override
-    public boolean hurt(DamageSource damageSource, float hearts) {
+    public boolean hurtServer(ServerLevel serverLevel, DamageSource damageSource, float damage) {
         if (damageSource.is(FADamageTypeTags.TYRANNOSAURUS_IMMUNE)) {
             return false;
         }
-        return super.hurt(damageSource, hearts);
+        return super.hurtServer(serverLevel, damageSource, damage);
     }
 
     @Override
@@ -209,10 +211,12 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
                 this.setOwnerUUID(player.getUUID());
                 return InteractionResult.SUCCESS;
             } else {
-                if (this.getGrowthStage() <= 3) {
-                    this.sendMessageToPlayer(DinoSituation.TAME_TYRANNOSAURUS_ERROR_TOO_YOUNG, player);
-                } else if (!this.isKnockedOut()) {
-                    this.sendMessageToPlayer(DinoSituation.TAME_TYRANNOSAURUS_ERROR_HEALTH, player);
+                if (player instanceof ServerPlayer serverPlayer) {
+                    if (this.getGrowthStage() <= 3) {
+                        this.sendMessageToPlayer(DinoSituation.TAME_TYRANNOSAURUS_ERROR_TOO_YOUNG, serverPlayer);
+                    } else if (!this.isKnockedOut()) {
+                        this.sendMessageToPlayer(DinoSituation.TAME_TYRANNOSAURUS_ERROR_HEALTH, serverPlayer);
+                    }
                 }
             }
         }
@@ -289,7 +293,6 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
                 }
 
                 this.calculateEntityAnimation(false);
-                this.tryCheckInsideBlocks();
             } else {
                 super.travel(vec3);
             }

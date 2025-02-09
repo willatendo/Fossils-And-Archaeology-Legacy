@@ -7,18 +7,22 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.display.RecipeDisplay;
+import net.minecraft.world.item.crafting.display.SlotDisplay;
 import net.minecraft.world.level.Level;
+import willatendo.fossilslegacy.client.FARecipeBookCategories;
 import willatendo.fossilslegacy.server.analyzer_result.AnalyzerResult;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.block.entity.crafting.AnalyzerRecipeInput;
 import willatendo.fossilslegacy.server.menu.categories.AnalyzationBookCategory;
 import willatendo.fossilslegacy.server.recipe.FARecipeSerialisers;
 import willatendo.fossilslegacy.server.recipe.FARecipeTypes;
+import willatendo.fossilslegacy.server.recipe.display.AnalyzationRecipeDisplay;
+import willatendo.fossilslegacy.server.recipe.display.ItemStacksSlotDisplay;
 import willatendo.fossilslegacy.server.registry.FARegistries;
+
+import java.util.List;
 
 public class AnalyzationRecipe implements Recipe<AnalyzerRecipeInput> {
     public final AnalyzationBookCategory analyzationBookCategory;
@@ -58,39 +62,37 @@ public class AnalyzationRecipe implements Recipe<AnalyzerRecipeInput> {
         return weightedRandomList.build().getRandom(RandomSource.create()).get().data().copy();
     }
 
-    @Override
-    public NonNullList<Ingredient> getIngredients() {
-        NonNullList<Ingredient> nonnulllist = NonNullList.create();
-        nonnulllist.add(this.ingredient);
-        return nonnulllist;
-    }
-
-    @Override
-    public boolean canCraftInDimensions(int x, int y) {
-        return true;
-    }
-
-    @Override
-    public ItemStack getResultItem(HolderLookup.Provider provider) {
-        return provider.lookupOrThrow(FARegistries.ANALYZER_RESULT).getOrThrow(this.results).get(0).value().output();
-    }
-
-    @Override
-    public ItemStack getToastSymbol() {
-        return FABlocks.ANALYZER.get().asItem().getDefaultInstance();
-    }
-
     public int getTime() {
         return this.time;
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public RecipeSerializer<? extends Recipe<AnalyzerRecipeInput>> getSerializer() {
         return FARecipeSerialisers.ANALYZATION.get();
     }
 
     @Override
-    public RecipeType<?> getType() {
+    public RecipeType<? extends Recipe<AnalyzerRecipeInput>> getType() {
         return FARecipeTypes.ANALYZATION.get();
+    }
+
+    @Override
+    public PlacementInfo placementInfo() {
+        return PlacementInfo.create(this.ingredient);
+    }
+
+    @Override
+    public List<RecipeDisplay> display() {
+        return List.of(new AnalyzationRecipeDisplay(this.ingredient.display(), new ItemStacksSlotDisplay(this.results), new SlotDisplay.ItemSlotDisplay(FABlocks.ANALYZER.get().asItem()), this.time));
+    }
+
+    @Override
+    public RecipeBookCategory recipeBookCategory() {
+        RecipeBookCategory recipeBookCategory;
+        switch (this.analyzationBookCategory) {
+            case MISC -> recipeBookCategory = FARecipeBookCategories.ANALYZATION_MISC.get();
+            default -> throw new MatchException(null, null);
+        }
+        return recipeBookCategory;
     }
 }

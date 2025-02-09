@@ -41,7 +41,7 @@ import willatendo.fossilslegacy.server.structure.FAStructureSets;
 import willatendo.fossilslegacy.server.structure.FAStructures;
 import willatendo.fossilslegacy.server.structure.FAPools;
 import willatendo.fossilslegacy.server.structure.FAProcessorLists;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
@@ -65,6 +65,6 @@ public class FABuiltinProvider extends DatapackBuiltinEntriesProvider {
     }
 
     public static ResourceKey<BiomeModifier> createBiomeModifier(String name) {
-        return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, FossilsLegacyUtils.resource(name));
+        return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, FAUtils.resource(name));
     }
 }

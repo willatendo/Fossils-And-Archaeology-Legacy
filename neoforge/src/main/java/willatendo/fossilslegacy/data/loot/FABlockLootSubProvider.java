@@ -16,12 +16,12 @@ import willatendo.fossilslegacy.server.block.blocks.MayanVaseBlock;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom;
 import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom.ItemAndChance;
-import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.data.loot.SimpleBlockLootSubProvider;
 
 public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
     public FABlockLootSubProvider(HolderLookup.Provider registries) {
-        super(registries, FossilsLegacyUtils.ID);
+        super(registries, FAUtils.ID);
     }
 
     @Override
