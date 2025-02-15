@@ -21,8 +21,8 @@ public abstract class EntityModelProvider implements DataProvider {
         this.modId = modId;
     }
 
-    protected void add(JsonModel jsonModel) {
-        this.jsonModels.put(jsonModel.modelId(), jsonModel);
+    protected void add(ResourceLocation modelId, JsonModel jsonModel) {
+        this.jsonModels.put(modelId, jsonModel);
     }
 
     protected abstract void getAll();

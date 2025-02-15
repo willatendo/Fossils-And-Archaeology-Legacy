@@ -1,17 +1,16 @@
 package willatendo.fossilslegacy.client.model.dinosaur;
 
-import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.animation.BuiltInAnimationTypes;
 import willatendo.fossilslegacy.client.model.json.JsonModel;
 import willatendo.fossilslegacy.client.model.json.JsonPose;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class VelociraptorModels {
-    public static final JsonModel VELOCIRAPTOR_MODEL = VelociraptorModels.createVelociraptorBodyLayer(FAUtils.resource("velociraptor")).withWalkAnimations(FAUtils.resource("velociraptor_walk")).withHeadPieces("head").build();
-    public static final JsonModel LEGACY_VELOCIRAPTOR_MODEL = VelociraptorModels.createLegacyVelociraptorBodyLayer(FAUtils.resource("legacy_velociraptor")).withWalkAnimations(BuiltInAnimationTypes.LEGACY_VELOCIRAPTOR_WALK.getId()).build();
+    public static final JsonModel VELOCIRAPTOR_MODEL = VelociraptorModels.createVelociraptorBodyLayer().withWalkAnimations(FAUtils.resource("velociraptor_walk")).withHeadPieces("head").build();
+    public static final JsonModel LEGACY_VELOCIRAPTOR_MODEL = VelociraptorModels.createLegacyVelociraptorBodyLayer().withWalkAnimations(BuiltInAnimationTypes.LEGACY_VELOCIRAPTOR_WALK.getId()).build();
 
-    private static JsonModel.Builder createVelociraptorBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 64);
+    private static JsonModel.Builder createVelociraptorBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(64, 64);
 
         builder.addOrReplaceChild("right_leg", elementBuilder -> elementBuilder.addBox(0, 6, -1.375F, 8.625F, -1.75F, 2.0F, 0.0F, 3.0F).addBox(31, 4, -0.375F, 3.625F, 0.25F, 1.0F, 5.0F, 1.0F).addBox(9, 26, -1.375F, -0.375F, -1.75F, 2.0F, 4.0F, 3.0F).addBox(0, 8, 0.625F, 6.625F, -1.75F, 0.0F, 2.0F, 3.0F).build(), JsonPose.offset(-2.625F, 15.375F, -2.25F));
         builder.addOrReplaceChild("left_leg", elementBuilder -> elementBuilder.addBox(19, 26, -0.625F, -0.375F, -1.75F, 2.0F, 4.0F, 3.0F).addBox(0, 10, -0.625F, 6.625F, -1.75F, 0.0F, 2.0F, 3.0F).addBox(0, 3, -0.625F, 8.625F, -1.75F, 2.0F, 0.0F, 3.0F).addBox(29, 27, -0.625F, 3.625F, 0.25F, 1.0F, 5.0F, 1.0F).build(), JsonPose.offset(2.625F, 15.375F, -2.25F));
@@ -24,8 +23,8 @@ public final class VelociraptorModels {
         return builder;
     }
 
-    private static JsonModel.Builder createLegacyVelociraptorBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 32);
+    private static JsonModel.Builder createLegacyVelociraptorBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(64, 32);
 
         builder.addOrReplaceChild("head", elementBuilder -> elementBuilder.addBox(0, 17, -3.0F, -7.0F, -8.0F, 6.0F, 7.0F, 8.0F).build(), JsonPose.offsetAndRotation(0.0F, 5.0F, -3.0F, 0.08726646F, 0.0F, 0.0F));
         builder.addOrReplaceChild("snout", elementBuilder -> elementBuilder.addBox(44, 22, -2.0F, -4.0F, -6.0F, 4.0F, 4.0F, 6.0F).build(), JsonPose.offsetAndRotation(0.0F, 5.0F, -11.0F, 0.08726646F, 0.0F, 0.0F));

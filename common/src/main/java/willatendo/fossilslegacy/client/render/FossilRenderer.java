@@ -2,6 +2,8 @@ package willatendo.fossilslegacy.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Axis;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -9,8 +11,15 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ARGB;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.PlayerModelPart;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.client.state.FossilRenderState;
 import willatendo.fossilslegacy.server.entity.entities.Fossil;
@@ -26,6 +35,8 @@ public class FossilRenderer extends EntityRenderer<Fossil, FossilRenderState> {
     @Override
     public void extractRenderState(Fossil fossil, FossilRenderState fossilRenderState, float partialTick) {
         super.extractRenderState(fossil, fossilRenderState, partialTick);
+        float yHeadRot = Mth.rotLerp(partialTick, fossil.yHeadRotO, fossil.yHeadRot);
+        fossilRenderState.bodyRot = this.solveBodyRot(fossil, yHeadRot, partialTick);
         fossilRenderState.variant = fossil.getFossilVariant();
         fossilRenderState.size = fossil.getSize();
         fossilRenderState.renderScaleWidth = fossil.renderScaleWidth();
@@ -33,6 +44,32 @@ public class FossilRenderer extends EntityRenderer<Fossil, FossilRenderState> {
         Minecraft minecraft = Minecraft.getInstance();
         fossilRenderState.isInvisibleToPlayer = fossil.isInvisible() && fossil.isInvisibleTo(minecraft.player);
         fossilRenderState.appearsGlowing = minecraft.shouldEntityAppearGlowing(fossil);
+        fossilRenderState.isUpsideDown = this.isEntityUpsideDown(fossil);
+    }
+
+    private float solveBodyRot(Fossil fossil, float yHeadRot, float partialTick) {
+        Entity vehicle = fossil.getVehicle();
+        if (vehicle instanceof LivingEntity livingentity) {
+            float bodyRot = Mth.rotLerp(partialTick, livingentity.yBodyRotO, livingentity.yBodyRot);
+            float clamp = Mth.clamp(Mth.wrapDegrees(yHeadRot - bodyRot), -85.0F, 85.0F);
+            bodyRot = yHeadRot - clamp;
+            if (Math.abs(clamp) > 50.0F) {
+                bodyRot += clamp * 0.2F;
+            }
+
+            return bodyRot;
+        } else {
+            return Mth.rotLerp(partialTick, fossil.yBodyRotO, fossil.yBodyRot);
+        }
+    }
+
+    private boolean isEntityUpsideDown(Fossil fossil) {
+        if (fossil.hasCustomName()) {
+            String s = ChatFormatting.stripFormatting(fossil.getName().getString());
+            return "Dinnerbone".equals(s) || "Grumm".equals(s);
+        }
+
+        return false;
     }
 
     @Override
@@ -63,10 +100,10 @@ public class FossilRenderer extends EntityRenderer<Fossil, FossilRenderState> {
         poseStack.pushPose();
 
         poseStack.scale(1.0F, 1.0F, 1.0F);
+        this.setupRotations(fossilRenderState, poseStack, fossilRenderState.bodyRot, 1.0F);
         poseStack.scale(-1.0F, -1.0F, 1.0F);
         poseStack.scale(fossilRenderState.renderScaleWidth, fossilRenderState.renderScaleHeight, fossilRenderState.renderScaleWidth);
         poseStack.translate(0.0F, -1.501F, 0.0F);
-        this.model.setupAnim(fossilRenderState);
         boolean isInvisible = !fossilRenderState.isInvisible;
         boolean visible = !isInvisible && !fossilRenderState.isInvisibleToPlayer;
         RenderType renderType = this.getRenderType(fossilRenderState, isInvisible, visible, fossilRenderState.appearsGlowing);
@@ -89,6 +126,15 @@ public class FossilRenderer extends EntityRenderer<Fossil, FossilRenderState> {
             return this.model.renderType(textureLocation);
         } else {
             return isGlowing ? RenderType.outline(textureLocation) : null;
+        }
+    }
+
+    protected void setupRotations(FossilRenderState fossilRenderState, PoseStack poseStack, float bodyRot, float scale) {
+        poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - bodyRot));
+
+        if (fossilRenderState.isUpsideDown) {
+            poseStack.translate(0.0F, (fossilRenderState.boundingBoxHeight + 0.1F) / scale, 0.0F);
+            poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
         }
     }
 

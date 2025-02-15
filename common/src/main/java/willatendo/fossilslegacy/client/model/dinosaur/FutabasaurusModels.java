@@ -1,19 +1,16 @@
 package willatendo.fossilslegacy.client.model.dinosaur;
 
-import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.animation.BuiltInAnimationTypes;
 import willatendo.fossilslegacy.client.model.json.JsonModel;
 import willatendo.fossilslegacy.client.model.json.JsonPose;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FutabasaurusModels {
-    public static final JsonModel FUTABASAURUS_MODEL = FutabasaurusModels.createFutabasaurusBodyLayer(FAUtils.resource("futabasaurus")).withWalkAnimations(FAUtils.resource("futabasaurus_walk")).withSwimAnimations(FAUtils.resource("futabasaurus_swim")).withHeadPieces("neck", "middle_neck", "head").build();
-    public static final JsonModel LEGACY_FUTABASAURUS_MODEL = FutabasaurusModels.createLegacyFutabasaurusBodyLayer(FAUtils.resource("legacy_futabasaurus")).withWalkAnimations(BuiltInAnimationTypes.LEGACY_FUTABASAURUS_SWIM.getId()).withSwimAnimations(BuiltInAnimationTypes.LEGACY_FUTABASAURUS_SWIM.getId()).build();
-    public static final JsonModel LEGACY_FUTABASAURUS_FOSSIL_MODEL = FutabasaurusModels.createLegacyFutabasaurusBodyLayer(FAUtils.resource("legacy_futabasaurus_fossil")).build();
+    public static final JsonModel FUTABASAURUS_MODEL = FutabasaurusModels.createFutabasaurusBodyLayer().withWalkAnimations(FAUtils.resource("futabasaurus_walk")).withSwimAnimations(FAUtils.resource("futabasaurus_swim")).withHeadPieces("neck", "middle_neck", "head").build();
+    public static final JsonModel LEGACY_FUTABASAURUS_MODEL = FutabasaurusModels.createLegacyFutabasaurusBodyLayer().withWalkAnimations(BuiltInAnimationTypes.LEGACY_FUTABASAURUS_SWIM.getId()).withSwimAnimations(BuiltInAnimationTypes.LEGACY_FUTABASAURUS_SWIM.getId()).build();
 
-
-    private static JsonModel.Builder createFutabasaurusBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 64);
+    private static JsonModel.Builder createFutabasaurusBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(64, 64);
 
         builder.addOrReplaceChild("tail", elementBuilder -> elementBuilder.addBox(35, 33, -3.0F, -6.0F, -11.0F, 6.0F, 5.0F, 5.0F).addBox(0, 0, -2.0F, -5.0F, -6.0F, 4.0F, 3.0F, 4.0F).build(), JsonPose.offset(0.0F, 24.0F, 17.0F));
         builder.addOrReplaceChild("neck", elementBuilder -> elementBuilder.addBox(24, 0, -3.0F, -2.5F, -10.0F, 6.0F, 5.0F, 10.0F).addOrReplaceChild("middle_neck", subElement1Builder -> subElement1Builder.addBox(0, 0, -2.0F, -1.5F, -16.0F, 4.0F, 3.0F, 16.0F).addOrReplaceChild("head", subElement2Builder -> subElement2Builder.addBox(32, 15, -3.0F, -2.5F, -8.0F, 6.0F, 5.0F, 8.0F).build(), JsonPose.offset(0.0F, 0.0F, -16.0F)).build(), JsonPose.offset(0.0F, 0.0F, -10.0F)).build(), JsonPose.offset(0.0F, 20.5F, -6.0F));
@@ -26,8 +23,8 @@ public final class FutabasaurusModels {
         return builder;
     }
 
-    private static JsonModel.Builder createLegacyFutabasaurusBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 32);
+    private static JsonModel.Builder createLegacyFutabasaurusBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(64, 32);
 
         builder.addOrReplaceChild("head", elementBuilder -> elementBuilder.addBox(0, 22, -2.0F, -2.0F, -6.0F, 4.0F, 4.0F, 6.0F).build(), JsonPose.offsetAndRotation(0.0F, 9.0F, -15.0F, 0.49723F, 0.0F, 0.0F));
         builder.addOrReplaceChild("neck_1", elementBuilder -> elementBuilder.addBox(20, 23, -3.0F, 0.0F, -4.0F, 6.0F, 5.0F, 4.0F).build(), JsonPose.offsetAndRotation(0.0F, 17.0F, 0.0F, -0.99446F, 0.0F, 0.0F));

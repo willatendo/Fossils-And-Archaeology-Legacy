@@ -1,17 +1,16 @@
 package willatendo.fossilslegacy.client.model.dinosaur;
 
-import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.animation.BuiltInAnimationTypes;
 import willatendo.fossilslegacy.client.model.json.JsonModel;
 import willatendo.fossilslegacy.client.model.json.JsonPose;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class MosasaurusModels {
-    public static final JsonModel MOSASAURUS_MODEL = MosasaurusModels.createMosasaurusBodyLayer(FAUtils.resource("mosasaurus")).withWalkAnimations(FAUtils.resource("mosasaurus_walk")).withSwimAnimations(FAUtils.resource("mosasaurus_swim")).withHeadPieces("head").build();
-    public static final JsonModel MOSASAURUS_LEGACY_MODEL = MosasaurusModels.createLegacyMosasaurusBodyLayer(FAUtils.resource("legacy_mosasaurus")).withWalkAnimations(BuiltInAnimationTypes.LEGACY_MOSASAURUS_SWIM.getId()).withSwimAnimations(BuiltInAnimationTypes.LEGACY_MOSASAURUS_SWIM.getId()).build();
+    public static final JsonModel MOSASAURUS_MODEL = MosasaurusModels.createMosasaurusBodyLayer().withWalkAnimations(FAUtils.resource("mosasaurus_walk")).withSwimAnimations(FAUtils.resource("mosasaurus_swim")).withHeadPieces("head").build();
+    public static final JsonModel MOSASAURUS_LEGACY_MODEL = MosasaurusModels.createLegacyMosasaurusBodyLayer().withWalkAnimations(BuiltInAnimationTypes.LEGACY_MOSASAURUS_SWIM.getId()).withSwimAnimations(BuiltInAnimationTypes.LEGACY_MOSASAURUS_SWIM.getId()).build();
 
-    private static JsonModel.Builder createMosasaurusBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 128, 128);
+    private static JsonModel.Builder createMosasaurusBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(128, 128);
 
         builder.addOrReplaceChild("tail", elementBuilder -> elementBuilder.addBox(36, 35, -3.0F, -3.0F, 0.0F, 6.0F, 7.0F, 7.0F).addBox(38, 0, -2.0F, 2.0F, 5.0F, 4.0F, 5.0F, 9.0F).addBox(0, 51, -2.0F, -6.0F, 5.0F, 4.0F, 8.0F, 5.0F).build(), JsonPose.offset(0.0F, 16.0F, 9.0F));
         builder.addOrReplaceChild("left_front_flipper", elementBuilder -> elementBuilder.addBox(52, 49, 0.0F, -2.0F, -1.0F, 2.0F, 5.0F, 7.0F).build(), JsonPose.offset(5.0F, 21.0F, -7.0F));
@@ -24,8 +23,8 @@ public final class MosasaurusModels {
         return builder;
     }
 
-    private static JsonModel.Builder createLegacyMosasaurusBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 32);
+    private static JsonModel.Builder createLegacyMosasaurusBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(64, 32);
 
         builder.addOrReplaceChild("head", elementBuilder -> elementBuilder.addBox(0, 24, -3.0F, -2.0F, -4.0F, 6.0F, 4.0F, 4.0F).build(), JsonPose.offset(1.0F, 19.0F, 0.0F));
         builder.addOrReplaceChild("upper_jaw", elementBuilder -> elementBuilder.addBox(17, 22, -2.0F, -1.0F, -9.0F, 4.0F, 1.0F, 5.0F).build(), JsonPose.offset(1.0F, 19.0F, 0.0F));

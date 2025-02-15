@@ -7,11 +7,11 @@ import willatendo.fossilslegacy.client.model.json.JsonPose;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class StegosaurusModels {
-    public static final JsonModel STEGOSAURUS_MODEL = StegosaurusModels.createStegosaurusBodyLayer(FAUtils.resource("stegosaurus")).withWalkAnimations(FAUtils.resource("stegosaurus_walk")).withHeadPieces("head").build();
-    public static final JsonModel LEGACY_STEGOSAURUS_MODEL = StegosaurusModels.createLegacyStegosaurusBodyLayer(FAUtils.resource("legacy_stegosaurus")).withWalkAnimations(BuiltInAnimationTypes.LEGACY_STEGOSAURUS_WALK.getId()).build();
+    public static final JsonModel STEGOSAURUS_MODEL = StegosaurusModels.createStegosaurusBodyLayer().withWalkAnimations(FAUtils.resource("stegosaurus_walk")).withHeadPieces("head").build();
+    public static final JsonModel LEGACY_STEGOSAURUS_MODEL = StegosaurusModels.createLegacyStegosaurusBodyLayer().withWalkAnimations(BuiltInAnimationTypes.LEGACY_STEGOSAURUS_WALK.getId()).build();
 
-    private static JsonModel.Builder createStegosaurusBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 128, 128);
+    private static JsonModel.Builder createStegosaurusBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(128, 128);
 
         builder.addOrReplaceChild("left_leg", elementBuilder -> elementBuilder.addBox(62, 51, -2.0F, -5.0F, -4.0F, 4.0F, 11.0F, 7.0F).addBox(84, 24, -2.0F, 6.0F, 0.0F, 3.0F, 6.0F, 3.0F).build(), JsonPose.offset(6.0F, 12.0F, 3.0F));
         builder.addOrReplaceChild("right_leg", elementBuilder -> elementBuilder.addBox(84, 51, -1.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F).addBox(0, 67, -2.0F, -7.0F, -4.0F, 4.0F, 11.0F, 7.0F).build(), JsonPose.offset(-6.0F, 14.0F, 3.0F));
@@ -24,8 +24,8 @@ public final class StegosaurusModels {
         return builder;
     }
 
-    private static JsonModel.Builder createLegacyStegosaurusBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 32);
+    private static JsonModel.Builder createLegacyStegosaurusBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(64, 32);
 
         builder.addOrReplaceChild("front_body", elementBuilder -> elementBuilder.addBox(46, 14, -2.0F, 2.0F, -4.0F, 5.0F, 5.0F, 4.0F, true).build(), JsonPose.offsetAndRotation(0.0F, 14.0F, -6.0F, 0.1745329F, 0.0F, 0.0F));
         builder.addOrReplaceChild("body", elementBuilder -> elementBuilder.addBox(20, 0, -3.0F, 0.0F, 0.0F, 7.0F, 8.0F, 8.0F, true).build(), JsonPose.offset(0.0F, 14.0F, -6.0F));

@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-public record JsonModel(Optional<JsonModel.Animations> animations, List<JsonElement> jsonElements, Optional<List<String>> headPieces, ResourceLocation modelId, Optional<Boolean> overrideReset, int textureHeight, int textureWidth) {
-    public static final Codec<JsonModel> CODEC = RecordCodecBuilder.create(instance -> instance.group(JsonModel.Animations.CODEC.optionalFieldOf("animations").forGetter(JsonModel::animations), Codec.list(JsonElement.CODEC).fieldOf("elements").forGetter(JsonModel::jsonElements), Codec.list(Codec.STRING).optionalFieldOf("head_pieces").forGetter(JsonModel::headPieces), ResourceLocation.CODEC.fieldOf("model_id").forGetter(JsonModel::modelId), Codec.BOOL.optionalFieldOf("override_reset").forGetter(JsonModel::overrideReset), Codec.INT.fieldOf("texture_height").forGetter(JsonModel::textureHeight), Codec.INT.fieldOf("texture_width").forGetter(JsonModel::textureWidth)).apply(instance, JsonModel::new));
+public record JsonModel(Optional<JsonModel.Animations> animations, List<JsonElement> jsonElements, Optional<List<String>> headPieces, Optional<Boolean> overrideReset, int textureHeight, int textureWidth) {
+    public static final Codec<JsonModel> CODEC = RecordCodecBuilder.create(instance -> instance.group(JsonModel.Animations.CODEC.optionalFieldOf("animations").forGetter(JsonModel::animations), Codec.list(JsonElement.CODEC).fieldOf("elements").forGetter(JsonModel::jsonElements), Codec.list(Codec.STRING).optionalFieldOf("head_pieces").forGetter(JsonModel::headPieces), Codec.BOOL.optionalFieldOf("override_reset").forGetter(JsonModel::overrideReset), Codec.INT.fieldOf("texture_height").forGetter(JsonModel::textureHeight), Codec.INT.fieldOf("texture_width").forGetter(JsonModel::textureWidth)).apply(instance, JsonModel::new));
 
     public boolean isOverrideReset() {
         return this.overrideReset().orElse(false);
@@ -54,8 +54,8 @@ public record JsonModel(Optional<JsonModel.Animations> animations, List<JsonElem
         }
     }
 
-    public static JsonModel.Builder builder(ResourceLocation modelId, int textureWidth, int textureHeight) {
-        return new JsonModel.Builder(modelId, textureWidth, textureHeight);
+    public static JsonModel.Builder builder(int textureWidth, int textureHeight) {
+        return new JsonModel.Builder(textureWidth, textureHeight);
     }
 
     public record Animations(Optional<List<ResourceLocation>> walkAnimations, Optional<List<ResourceLocation>> swimAnimations, Optional<List<ResourceLocation>> flyAnimations, Optional<List<ResourceLocation>> floatDownAnimations, Optional<List<ResourceLocation>> headAnimations, Optional<List<ResourceLocation>> shakeAnimations, Optional<List<ResourceLocation>> sitAnimations, Optional<List<ResourceLocation>> tailAnimations, Optional<List<ResourceLocation>> landAnimations) {
@@ -86,13 +86,11 @@ public record JsonModel(Optional<JsonModel.Animations> animations, List<JsonElem
         private final List<ResourceLocation> tailAnimation = new ArrayList<>();
         private final List<ResourceLocation> landAnimation = new ArrayList<>();
         private final List<String> headPieces = new ArrayList<>();
-        private final ResourceLocation modelId;
         private final int textureWidth;
         private final int textureHeight;
         private boolean overrideReset = false;
 
-        private Builder(ResourceLocation modelId, int textureWidth, int textureHeight) {
-            this.modelId = modelId;
+        private Builder(int textureWidth, int textureHeight) {
             this.textureWidth = textureWidth;
             this.textureHeight = textureHeight;
         }
@@ -164,7 +162,7 @@ public record JsonModel(Optional<JsonModel.Animations> animations, List<JsonElem
 
         public JsonModel build() {
             JsonModel.Animations animations = new JsonModel.Animations(this.walkAnimation.isEmpty() ? Optional.empty() : Optional.of(this.walkAnimation), this.swimAnimation.isEmpty() ? Optional.empty() : Optional.of(this.swimAnimation), this.flyAnimation.isEmpty() ? Optional.empty() : Optional.of(this.flyAnimation), this.floatDownAnimation.isEmpty() ? Optional.empty() : Optional.of(this.floatDownAnimation), this.headAnimation.isEmpty() ? Optional.empty() : Optional.of(this.headAnimation), this.shakeAnimation.isEmpty() ? Optional.empty() : Optional.of(this.shakeAnimation), this.sitAnimation.isEmpty() ? Optional.empty() : Optional.of(this.sitAnimation), this.tailAnimation.isEmpty() ? Optional.empty() : Optional.of(this.tailAnimation), this.landAnimation.isEmpty() ? Optional.empty() : Optional.of(this.landAnimation));
-            return new JsonModel(animations.hasAnimations() ? Optional.of(animations) : Optional.empty(), this.jsonElements, this.headPieces.isEmpty() ? Optional.empty() : Optional.of(this.headPieces), this.modelId, this.overrideReset ? Optional.of(true) : Optional.empty(), this.textureWidth, this.textureHeight);
+            return new JsonModel(animations.hasAnimations() ? Optional.of(animations) : Optional.empty(), this.jsonElements, this.headPieces.isEmpty() ? Optional.empty() : Optional.of(this.headPieces), this.overrideReset ? Optional.of(true) : Optional.empty(), this.textureWidth, this.textureHeight);
         }
     }
 }

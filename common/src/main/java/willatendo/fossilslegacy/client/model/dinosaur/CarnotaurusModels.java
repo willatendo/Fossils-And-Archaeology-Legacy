@@ -7,11 +7,11 @@ import willatendo.fossilslegacy.client.model.json.JsonPose;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class CarnotaurusModels {
-    public static final JsonModel CARNOTAURUS_MODEL = CarnotaurusModels.createCarnotaurusBodyLayer(FAUtils.resource("carnotaurus")).withWalkAnimations(FAUtils.resource("carnotaurus_walk")).withHeadPieces("neck").build();
-    public static final JsonModel LEGACY_CARNOTAURUS_MODEL = CarnotaurusModels.createLegacyCarnotaurusBodyLayer(FAUtils.resource("legacy_carnotaurus")).withWalkAnimations(BuiltInAnimationTypes.LEGACY_CARNOTAURUS_WALK.getId()).build();
+    public static final JsonModel CARNOTAURUS_MODEL = CarnotaurusModels.createCarnotaurusBodyLayer().withWalkAnimations(FAUtils.resource("carnotaurus_walk")).withHeadPieces("neck").build();
+    public static final JsonModel LEGACY_CARNOTAURUS_MODEL = CarnotaurusModels.createLegacyCarnotaurusBodyLayer().withWalkAnimations(BuiltInAnimationTypes.LEGACY_CARNOTAURUS_WALK.getId()).build();
 
-    public static JsonModel.Builder createCarnotaurusBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 64);
+    public static JsonModel.Builder createCarnotaurusBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(64, 64);
 
         builder.addOrReplaceChild("neck", elementBuilder -> elementBuilder.addBox(24, 37, -2.0F, -6.0F, -3.0F, 4.0F, 9.0F, 4.0F).addOrReplaceChild("head", subElementBuilder -> subElementBuilder.addBox(0, 29, -3.0F, -3.0F, -6.0F, 6.0F, 5.0F, 6.0F).addBox(24, 29, -3.0F, 2.0F, -6.0F, 6.0F, 2.0F, 6.0F).addBox(14, 40, -4.0F, -4.0F, -2.0F, 3.0F, 2.0F, 2.0F).addBox(14, 44, 1.0F, -4.0F, -2.0F, 3.0F, 2.0F, 2.0F).build(), JsonPose.offset(0.0F, -3.0F, -3.0F)).build(), JsonPose.offset(0.0F, 12.0F, -7.0F));
         builder.addOrReplaceChild("tail", elementBuilder -> elementBuilder.addBox(30, 0, -1.0F, -3.0F, 8.0F, 2.0F, 4.0F, 8.0F).addBox(26, 15, -2.0F, -3.0F, 0.0F, 4.0F, 6.0F, 8.0F).build(), JsonPose.offset(0.0F, 13.0F, 6.0F));
@@ -24,8 +24,8 @@ public final class CarnotaurusModels {
         return builder;
     }
 
-    public static JsonModel.Builder createLegacyCarnotaurusBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 64);
+    public static JsonModel.Builder createLegacyCarnotaurusBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(64, 64);
 
         builder.addOrReplaceChild("head", elementBuilder -> elementBuilder.addBox(0, 0, 0.0F, 0.0F, 0.0F, 8.0F, 7.0F, 8.0F).build(), JsonPose.offset(-4.5F, 2.5F, -27.0F));
         builder.addOrReplaceChild("horn_1", elementBuilder -> elementBuilder.addBox(24, 0, 0.0F, 0.0F, 0.0F, 3.0F, 2.0F, 2.0F).build(), JsonPose.offsetAndRotation(-6.5F, 1.5F, -23.0F, 0.0F, -0.0F, 0.3490658503988659F));

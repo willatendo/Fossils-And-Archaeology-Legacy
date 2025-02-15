@@ -7,8 +7,10 @@ import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 public class FossilRenderState extends EntityRenderState {
     public Holder<FossilVariant> variant;
     public int size;
+    public float bodyRot;
     public float renderScaleWidth;
     public float renderScaleHeight;
     public boolean isInvisibleToPlayer;
     public boolean appearsGlowing;
+    public boolean isUpsideDown;
 }

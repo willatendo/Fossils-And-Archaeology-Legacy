@@ -6,10 +6,10 @@ import willatendo.fossilslegacy.client.model.json.JsonPose;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class GallimimusModels {
-    public static final JsonModel GALLIMIMUS_MODEL = GallimimusModels.createGallimimusBodyLayer(FAUtils.resource("gallimimus")).withWalkAnimations(FAUtils.resource("gallimimus_walk")).withHeadPieces("neck").build();
+    public static final JsonModel GALLIMIMUS_MODEL = GallimimusModels.createGallimimusBodyLayer().withWalkAnimations(FAUtils.resource("gallimimus_walk")).withHeadPieces("neck").build();
 
-    private static JsonModel.Builder createGallimimusBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 128, 128);
+    private static JsonModel.Builder createGallimimusBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(128, 128);
 
         builder.addOrReplaceChild("left_leg", elementBuilder -> elementBuilder.addBox(36, 49, -2.0F, 11.0F, -1.0F, 3.0F, 2.0F, 4.0F).addBox(28, 41, -2.0F, 1.0F, 1.0F, 2.0F, 10.0F, 2.0F).addBox(40, 0, -3.0F, -3.0F, -3.0F, 4.0F, 7.0F, 5.0F).build(), JsonPose.offset(6.0F, 11.0F, 1.0F));
         builder.addOrReplaceChild("right_leg", elementBuilder -> elementBuilder.addBox(0, 41, -1.0F, -3.0F, -3.0F, 4.0F, 7.0F, 5.0F).addBox(50, 49, 0.0F, 1.0F, 1.0F, 2.0F, 10.0F, 2.0F).addBox(0, 53, -1.0F, 11.0F, -1.0F, 3.0F, 2.0F, 4.0F).build(), JsonPose.offset(-6.0F, 11.0F, 1.0F));

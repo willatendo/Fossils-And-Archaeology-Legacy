@@ -1,17 +1,16 @@
 package willatendo.fossilslegacy.client.model.dinosaur;
 
-import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.animation.BuiltInAnimationTypes;
 import willatendo.fossilslegacy.client.model.json.JsonModel;
 import willatendo.fossilslegacy.client.model.json.JsonPose;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class SmilodonModels {
-    public static final JsonModel SMILODON_MODEL = SmilodonModels.createSmilodonBodyLayer(FAUtils.resource("smilodon")).withWalkAnimations(FAUtils.resource("smilodon_walk")).withSitAnimations(FAUtils.resource("smilodon_sit")).withHeadPieces("neck").build();
-    public static final JsonModel LEGACY_SMILODON_MODEL = SmilodonModels.createLegacySmilodonBodyLayer(FAUtils.resource("legacy_smilodon")).withSitAnimations(BuiltInAnimationTypes.LEGACY_SMILODON_SIT.getId()).withShakeAnimations(BuiltInAnimationTypes.LEGACY_SMILODON_SHAKE.getId()).withTailAnimations(BuiltInAnimationTypes.LEGACY_SMILODON_TAIL.getId()).overrideReset().build();
+    public static final JsonModel SMILODON_MODEL = SmilodonModels.createSmilodonBodyLayer().withWalkAnimations(FAUtils.resource("smilodon_walk")).withSitAnimations(FAUtils.resource("smilodon_sit")).withHeadPieces("neck").build();
+    public static final JsonModel LEGACY_SMILODON_MODEL = SmilodonModels.createLegacySmilodonBodyLayer().withSitAnimations(BuiltInAnimationTypes.LEGACY_SMILODON_SIT.getId()).withShakeAnimations(BuiltInAnimationTypes.LEGACY_SMILODON_SHAKE.getId()).withTailAnimations(BuiltInAnimationTypes.LEGACY_SMILODON_TAIL.getId()).overrideReset().build();
 
-    private static JsonModel.Builder createSmilodonBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 64);
+    private static JsonModel.Builder createSmilodonBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(64, 64);
 
         builder.addOrReplaceChild("left_arm", elementBuilder -> elementBuilder.addBox(32, 15, -1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F).build(), JsonPose.offset(2.5F, 18.0F, -2.5F));
         builder.addOrReplaceChild("right_arm", elementBuilder -> elementBuilder.addBox(34, 0, -1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F).build(), JsonPose.offset(-2.5F, 18.0F, -2.5F));
@@ -24,8 +23,8 @@ public final class SmilodonModels {
         return builder;
     }
 
-    private static JsonModel.Builder createLegacySmilodonBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 32);
+    private static JsonModel.Builder createLegacySmilodonBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(64, 32);
 
         builder.addOrReplaceChild("head", elementBuilder -> elementBuilder.addBox(0, 0, -2.5F, -1.5F, -4.0F, 5.0F, 4.0F, 4.0F, true).build(), JsonPose.offset(0.0F, 15.0F, -3.0F));
         builder.addOrReplaceChild("right_ear", elementBuilder -> elementBuilder.addBox(6, 8, -2.5F, -2.5F, -3.0F, 1.0F, 1.0F, 2.0F, true).build(), JsonPose.offset(0.0F, 15.0F, -3.0F));

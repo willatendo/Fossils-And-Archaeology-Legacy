@@ -1,15 +1,14 @@
 package willatendo.fossilslegacy.client.model.dinosaur;
 
-import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.model.json.JsonModel;
 import willatendo.fossilslegacy.client.model.json.JsonPose;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class DimetrodonModels {
-    public static final JsonModel DIMETRODON_MODEL = DimetrodonModels.createDimetrodonBodyLayer(FAUtils.resource("dimetrodon")).withWalkAnimations(FAUtils.resource("dimetrodon_walk")).withHeadPieces("head").build();
+    public static final JsonModel DIMETRODON_MODEL = DimetrodonModels.createDimetrodonBodyLayer().withWalkAnimations(FAUtils.resource("dimetrodon_walk")).withHeadPieces("head").build();
 
-    private static JsonModel.Builder createDimetrodonBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 64);
+    private static JsonModel.Builder createDimetrodonBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(64, 64);
 
         builder.addOrReplaceChild("leg", elementBuilder -> elementBuilder.addBox(32, 21, 1.0F, -2.0F, 0.0F, 4.0F, 5.0F, 8.0F).addBox(44, 0, 2.0F, 0.0F, 8.0F, 2.0F, 3.0F, 8.0F).build(), JsonPose.offset(-3.0F, 19.0F, 7.0F));
         builder.addOrReplaceChild("body", elementBuilder -> elementBuilder.addBox(0, 0, -1.0F, 11.0F, -7.0F, 8.0F, 7.0F, 14.0F).addBox(0, 21, 2.0F, 0.0F, -7.0F, 2.0F, 11.0F, 14.0F).addBox(32, 34, 2.0F, -2.0F, -5.0F, 2.0F, 2.0F, 10.0F).build(), JsonPose.offset(-3.0F, 4.0F, 0.0F));

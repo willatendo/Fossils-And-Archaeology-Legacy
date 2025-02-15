@@ -1,15 +1,14 @@
 package willatendo.fossilslegacy.client.model.dinosaur;
 
-import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.model.json.JsonModel;
 import willatendo.fossilslegacy.client.model.json.JsonPose;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class CompsognathusModels {
-    public static final JsonModel COMPSOGNATHUS_MODEL = CompsognathusModels.createCompsognathusBodyLayer(FAUtils.resource("compsognathus")).withWalkAnimations(FAUtils.resource("compsognathus_walk")).withHeadPieces("head").build();
+    public static final JsonModel COMPSOGNATHUS_MODEL = CompsognathusModels.createCompsognathusBodyLayer().withWalkAnimations(FAUtils.resource("compsognathus_walk")).withHeadPieces("head").build();
 
-    private static JsonModel.Builder createCompsognathusBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 32, 32);
+    private static JsonModel.Builder createCompsognathusBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(32, 32);
 
         builder.addOrReplaceChild("tail", elementBuilder -> elementBuilder.addBox(0, 0, -1.0F, -2.0F, 4.0F, 2.0F, 2.0F, 8.0F).addBox(12, 0, -1.5F, -2.0F, 0.0F, 3.0F, 3.0F, 4.0F).build(), JsonPose.offset(0.0F, 18.0F, 1.0F));
         builder.addOrReplaceChild("right_leg", elementBuilder -> elementBuilder.addBox(0, 0, -1.0F, -1.0F, -1.0F, 2.0F, 4.0F, 2.0F).addBox(14, 10, 0.0F, 3.0F, 1.0F, 1.0F, 3.0F, 0.0F).addBox(5, 0, 0.0F, 6.0F, 0.0F, 1.0F, 0.0F, 1.0F).build(), JsonPose.offset(-2.0F, 18.0F, -1.0F));

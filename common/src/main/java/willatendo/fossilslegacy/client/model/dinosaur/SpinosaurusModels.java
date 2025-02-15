@@ -1,15 +1,14 @@
 package willatendo.fossilslegacy.client.model.dinosaur;
 
-import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.model.json.JsonModel;
 import willatendo.fossilslegacy.client.model.json.JsonPose;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class SpinosaurusModels {
-    public static final JsonModel SPINOSAURUS_MODEL = SpinosaurusModels.createSpinosaurusBodyLayer(FAUtils.resource("spinosaurus")).withWalkAnimations(FAUtils.resource("spinosaurus_walk")).withSwimAnimations(FAUtils.resource("spinosaurus_swim")).withHeadPieces("neck").build();
+    public static final JsonModel SPINOSAURUS_MODEL = SpinosaurusModels.createSpinosaurusBodyLayer().withWalkAnimations(FAUtils.resource("spinosaurus_walk")).withSwimAnimations(FAUtils.resource("spinosaurus_swim")).withHeadPieces("neck").build();
 
-    private static JsonModel.Builder createSpinosaurusBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 128, 128);
+    private static JsonModel.Builder createSpinosaurusBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(128, 128);
 
         builder.addOrReplaceChild("left_arm", elementBuilder -> elementBuilder.addBox(74, 34, -1.0F, 2.0F, 0.0F, 1.0F, 6.0F, 2.0F).addBox(56, 69, -1.0F, -2.0F, -2.0F, 2.0F, 7.0F, 3.0F).build(), JsonPose.offset(3.0F, 13.0F, -8.0F));
         builder.addOrReplaceChild("right_arm", elementBuilder -> elementBuilder.addBox(66, 69, -1.0F, -2.0F, -2.0F, 2.0F, 7.0F, 3.0F).addBox(74, 42, 0.0F, 2.0F, 0.0F, 1.0F, 6.0F, 2.0F).build(), JsonPose.offset(-3.0F, 13.0F, -8.0F));

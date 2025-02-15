@@ -1,15 +1,14 @@
 package willatendo.fossilslegacy.client.model.dinosaur;
 
-import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.model.json.JsonModel;
 import willatendo.fossilslegacy.client.model.json.JsonPose;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class PachycephalosaurusModels {
-    public static final JsonModel PACHYCEPHALOSAURUS_MODEL = PachycephalosaurusModels.createPachycephalosaurusBodyLayer(FAUtils.resource("pachycephalosaurus")).withWalkAnimations(FAUtils.resource("pachycephalosaurus_walk")).withHeadPieces("head").build();
+    public static final JsonModel PACHYCEPHALOSAURUS_MODEL = PachycephalosaurusModels.createPachycephalosaurusBodyLayer().withWalkAnimations(FAUtils.resource("pachycephalosaurus_walk")).withHeadPieces("head").build();
 
-    private static JsonModel.Builder createPachycephalosaurusBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 64);
+    private static JsonModel.Builder createPachycephalosaurusBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(64, 64);
 
         builder.addOrReplaceChild("tail", elementBuilder -> elementBuilder.addBox(21, 9, -2.0F, -2.0F, 0.0F, 4.0F, 5.0F, 7.0F).addBox(0, 16, -1.0F, -2.0F, 7.0F, 2.0F, 3.0F, 11.0F).build(), JsonPose.offset(0.0F, 12.0F, 4.0F));
         builder.addOrReplaceChild("head", elementBuilder -> elementBuilder.addBox(21, 25, -2.0F, -5.0F, -7.0F, 4.0F, 6.0F, 5.0F).addBox(14, 36, -2.0F, -5.0F, -2.0F, 4.0F, 8.0F, 2.0F).addBox(0, 23, -1.5F, -2.0F, -8.0F, 3.0F, 3.0F, 1.0F).addBox(0, 30, -2.0F, -6.0F, -5.0F, 4.0F, 1.0F, 5.0F).addBox(20, 0, -3.0F, -5.0F, -4.0F, 6.0F, 1.0F, 5.0F).build(), JsonPose.offset(0.0F, 12.0F, -7.0F));

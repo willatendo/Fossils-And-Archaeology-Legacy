@@ -37,7 +37,7 @@ public class AnalyzerScreen extends AbstractRecipeBookScreen<AnalyzerMenu> {
 
     @Override
     protected ScreenPosition getRecipeBookButtonPosition() {
-        return new ScreenPosition(this.leftPos + 20, this.height / 2 - 49);
+        return new ScreenPosition(this.leftPos + 129, this.topPos + 22);
     }
 
     @Override

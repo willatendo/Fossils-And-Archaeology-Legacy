@@ -16,44 +16,12 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:egg",
-                      "variant": "fossilslegacy:brachiosaurus"
+                      "variant": "fossilslegacy:ankylosaurus"
                     }
                   }
                 }
               ],
-              "value": "fossilslegacy:entities/egg/brachiosaurus"
-            },
-            {
-              "type": "minecraft:loot_table",
-              "conditions": [
-                {
-                  "condition": "minecraft:entity_properties",
-                  "entity": "this",
-                  "predicate": {
-                    "type_specific": {
-                      "type": "fossilslegacy:egg",
-                      "variant": "fossilslegacy:futabasaurus"
-                    }
-                  }
-                }
-              ],
-              "value": "fossilslegacy:entities/egg/futabasaurus"
-            },
-            {
-              "type": "minecraft:loot_table",
-              "conditions": [
-                {
-                  "condition": "minecraft:entity_properties",
-                  "entity": "this",
-                  "predicate": {
-                    "type_specific": {
-                      "type": "fossilslegacy:egg",
-                      "variant": "fossilslegacy:tyrannosaurus"
-                    }
-                  }
-                }
-              ],
-              "value": "fossilslegacy:entities/egg/tyrannosaurus"
+              "value": "fossilslegacy:entities/egg/ankylosaurus"
             },
             {
               "type": "minecraft:loot_table",
@@ -80,12 +48,12 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:egg",
-                      "variant": "fossilslegacy:cryolophosaurus"
+                      "variant": "fossilslegacy:brachiosaurus"
                     }
                   }
                 }
               ],
-              "value": "fossilslegacy:entities/egg/cryolophosaurus"
+              "value": "fossilslegacy:entities/egg/brachiosaurus"
             },
             {
               "type": "minecraft:loot_table",
@@ -96,12 +64,12 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:egg",
-                      "variant": "fossilslegacy:triceratops"
+                      "variant": "fossilslegacy:compsognathus"
                     }
                   }
                 }
               ],
-              "value": "fossilslegacy:entities/egg/triceratops"
+              "value": "fossilslegacy:entities/egg/compsognathus"
             },
             {
               "type": "minecraft:loot_table",
@@ -112,12 +80,60 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:egg",
-                      "variant": "fossilslegacy:gallimimus"
+                      "variant": "fossilslegacy:pteranodon"
                     }
                   }
                 }
               ],
-              "value": "fossilslegacy:entities/egg/gallimimus"
+              "value": "fossilslegacy:entities/egg/pteranodon"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:egg",
+                      "variant": "fossilslegacy:spinosaurus"
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:entities/egg/spinosaurus"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:egg",
+                      "variant": "fossilslegacy:mosasaurus"
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:entities/egg/mosasaurus"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:egg",
+                      "variant": "fossilslegacy:tyrannosaurus"
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:entities/egg/tyrannosaurus"
             },
             {
               "type": "minecraft:loot_table",
@@ -160,12 +176,12 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:egg",
-                      "variant": "fossilslegacy:pachycephalosaurus"
+                      "variant": "fossilslegacy:therizinosaurus"
                     }
                   }
                 }
               ],
-              "value": "fossilslegacy:entities/egg/pachycephalosaurus"
+              "value": "fossilslegacy:entities/egg/therizinosaurus"
             },
             {
               "type": "minecraft:loot_table",
@@ -192,6 +208,54 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:egg",
+                      "variant": "fossilslegacy:gallimimus"
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:entities/egg/gallimimus"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:egg",
+                      "variant": "fossilslegacy:cryolophosaurus"
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:entities/egg/cryolophosaurus"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:egg",
+                      "variant": "fossilslegacy:pachycephalosaurus"
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:entities/egg/pachycephalosaurus"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:egg",
                       "variant": "fossilslegacy:dilophosaurus"
                     }
                   }
@@ -208,12 +272,12 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:egg",
-                      "variant": "fossilslegacy:ankylosaurus"
+                      "variant": "fossilslegacy:futabasaurus"
                     }
                   }
                 }
               ],
-              "value": "fossilslegacy:entities/egg/ankylosaurus"
+              "value": "fossilslegacy:entities/egg/futabasaurus"
             },
             {
               "type": "minecraft:loot_table",
@@ -224,76 +288,12 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:egg",
-                      "variant": "fossilslegacy:pteranodon"
+                      "variant": "fossilslegacy:triceratops"
                     }
                   }
                 }
               ],
-              "value": "fossilslegacy:entities/egg/pteranodon"
-            },
-            {
-              "type": "minecraft:loot_table",
-              "conditions": [
-                {
-                  "condition": "minecraft:entity_properties",
-                  "entity": "this",
-                  "predicate": {
-                    "type_specific": {
-                      "type": "fossilslegacy:egg",
-                      "variant": "fossilslegacy:mosasaurus"
-                    }
-                  }
-                }
-              ],
-              "value": "fossilslegacy:entities/egg/mosasaurus"
-            },
-            {
-              "type": "minecraft:loot_table",
-              "conditions": [
-                {
-                  "condition": "minecraft:entity_properties",
-                  "entity": "this",
-                  "predicate": {
-                    "type_specific": {
-                      "type": "fossilslegacy:egg",
-                      "variant": "fossilslegacy:therizinosaurus"
-                    }
-                  }
-                }
-              ],
-              "value": "fossilslegacy:entities/egg/therizinosaurus"
-            },
-            {
-              "type": "minecraft:loot_table",
-              "conditions": [
-                {
-                  "condition": "minecraft:entity_properties",
-                  "entity": "this",
-                  "predicate": {
-                    "type_specific": {
-                      "type": "fossilslegacy:egg",
-                      "variant": "fossilslegacy:spinosaurus"
-                    }
-                  }
-                }
-              ],
-              "value": "fossilslegacy:entities/egg/spinosaurus"
-            },
-            {
-              "type": "minecraft:loot_table",
-              "conditions": [
-                {
-                  "condition": "minecraft:entity_properties",
-                  "entity": "this",
-                  "predicate": {
-                    "type_specific": {
-                      "type": "fossilslegacy:egg",
-                      "variant": "fossilslegacy:compsognathus"
-                    }
-                  }
-                }
-              ],
-              "value": "fossilslegacy:entities/egg/compsognathus"
+              "value": "fossilslegacy:entities/egg/triceratops"
             }
           ]
         }

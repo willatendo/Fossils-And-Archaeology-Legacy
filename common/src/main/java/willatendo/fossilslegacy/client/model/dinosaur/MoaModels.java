@@ -1,15 +1,14 @@
 package willatendo.fossilslegacy.client.model.dinosaur;
 
-import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.model.json.JsonModel;
 import willatendo.fossilslegacy.client.model.json.JsonPose;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class MoaModels {
-    public static final JsonModel MOA_MODEL = MoaModels.createMoaBodyLayer(FAUtils.resource("moa")).withWalkAnimations(FAUtils.resource("moa_walk")).withHeadPieces("neck").build();
+    public static final JsonModel MOA_MODEL = MoaModels.createMoaBodyLayer().withWalkAnimations(FAUtils.resource("moa_walk")).withHeadPieces("neck").build();
 
-    private static JsonModel.Builder createMoaBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 64);
+    private static JsonModel.Builder createMoaBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(64, 64);
 
         builder.addOrReplaceChild("right_leg", elementBuilder -> elementBuilder.addBox(18, 43, -2.0F, 3.0F, -0.5F, 2.0F, 5.0F, 2.0F).addBox(34, 36, -2.0F, -1.0F, -1.5F, 2.0F, 4.0F, 3.0F).build(), JsonPose.offset(-1.0F, 16.0F, 1.5F));
         builder.addOrReplaceChild("left_leg", elementBuilder -> elementBuilder.addBox(24, 36, -1.0F, -1.0F, -1.5F, 2.0F, 4.0F, 3.0F).addBox(10, 42, -1.0F, 3.0F, -0.5F, 2.0F, 5.0F, 2.0F).build(), JsonPose.offset(2.0F, 16.0F, 1.5F));

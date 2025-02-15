@@ -1,17 +1,16 @@
 package willatendo.fossilslegacy.client.model.dinosaur;
 
-import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.animation.BuiltInAnimationTypes;
 import willatendo.fossilslegacy.client.model.json.JsonModel;
 import willatendo.fossilslegacy.client.model.json.JsonPose;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class DilophosaurusModels {
-    public static final JsonModel DILOPHOSAURUS_MODEL = DilophosaurusModels.createDilophosaurusBodyLayer(FAUtils.resource("dilophosaurus")).withWalkAnimations(FAUtils.resource("dilophosaurus_walk")).withHeadPieces("head").build();
-    public static final JsonModel LEGACY_DILOPHOSAURUS_MODEL = DilophosaurusModels.createLegacyDilophosaurusBodyLayer(FAUtils.resource("legacy_dilophosaurus")).withWalkAnimations(BuiltInAnimationTypes.LEGACY_DILOPHOSAURUS_WALK.getId()).build();
+    public static final JsonModel DILOPHOSAURUS_MODEL = DilophosaurusModels.createDilophosaurusBodyLayer().withWalkAnimations(FAUtils.resource("dilophosaurus_walk")).withHeadPieces("head").build();
+    public static final JsonModel LEGACY_DILOPHOSAURUS_MODEL = DilophosaurusModels.createLegacyDilophosaurusBodyLayer().withWalkAnimations(BuiltInAnimationTypes.LEGACY_DILOPHOSAURUS_WALK.getId()).build();
 
-    private static JsonModel.Builder createDilophosaurusBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 64);
+    private static JsonModel.Builder createDilophosaurusBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(64, 64);
 
         builder.addOrReplaceChild("tail", elementBuilder -> elementBuilder.addBox(22, 29, -2.0F, -2.0F, 0.0F, 4.0F, 5.0F, 6.0F).addBox(22, 17, -1.0F, -2.0F, 6.0F, 2.0F, 3.0F, 9.0F).build(), JsonPose.offset(0.0F, 11.0F, 5.0F));
         builder.addOrReplaceChild("left_arm", elementBuilder -> elementBuilder.addBox(14, 52, -1.0F, -1.0F, -1.0F, 2.0F, 6.0F, 2.0F).build(), JsonPose.offset(2.0F, 13.0F, -8.0F));
@@ -24,8 +23,8 @@ public final class DilophosaurusModels {
         return builder;
     }
 
-    private static JsonModel.Builder createLegacyDilophosaurusBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 32);
+    private static JsonModel.Builder createLegacyDilophosaurusBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(64, 32);
 
         builder.addOrReplaceChild("head", elementBuilder -> elementBuilder.addBox(0, 20, -3.0F, 0.0F, -6.0F, 6.0F, 6.0F, 6.0F, true).build(), JsonPose.offset(0.0F, 4.0F, -10.0F));
         builder.addOrReplaceChild("snout", elementBuilder -> elementBuilder.addBox(0, 0, -2.0F, 0.0F, -12.0F, 4.0F, 4.0F, 6.0F, true).build(), JsonPose.offset(0.0F, 4.0F, -10.0F));

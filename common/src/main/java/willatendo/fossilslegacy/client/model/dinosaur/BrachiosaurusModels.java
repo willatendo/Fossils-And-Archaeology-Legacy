@@ -1,17 +1,16 @@
 package willatendo.fossilslegacy.client.model.dinosaur;
 
-import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.animation.BuiltInAnimationTypes;
 import willatendo.fossilslegacy.client.model.json.JsonModel;
 import willatendo.fossilslegacy.client.model.json.JsonPose;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class BrachiosaurusModels {
-    public static final JsonModel BRACHIOSAURUS_MODEL = BrachiosaurusModels.createBrachiosaurusBodyLayer(FAUtils.resource("brachiosaurus")).withWalkAnimations(FAUtils.resource("brachiosaurus_walk")).withHeadPieces("neck").build();
-    public static final JsonModel LEGACY_BRACHIOSAURUS_MODEL = BrachiosaurusModels.createLegacyBrachiosaurusBodyLayer(FAUtils.resource("legacy_brachiosaurus")).withWalkAnimations(BuiltInAnimationTypes.LEGACY_BRACHIOSAURUS_WALK.getId()).build();
+    public static final JsonModel BRACHIOSAURUS_MODEL = BrachiosaurusModels.createBrachiosaurusBodyLayer().withWalkAnimations(FAUtils.resource("brachiosaurus_walk")).withHeadPieces("neck").build();
+    public static final JsonModel LEGACY_BRACHIOSAURUS_MODEL = BrachiosaurusModels.createLegacyBrachiosaurusBodyLayer().withWalkAnimations(BuiltInAnimationTypes.LEGACY_BRACHIOSAURUS_WALK.getId()).build();
 
-    private static JsonModel.Builder createBrachiosaurusBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 128, 128);
+    private static JsonModel.Builder createBrachiosaurusBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(128, 128);
 
         builder.addOrReplaceChild("tail", elementBuilder -> elementBuilder.addBox(0, 51, -3.0F, -3.0F, 0.0F, 6.0F, 5.0F, 6.0F).addBox(30, 21, -2.0F, -2.0F, 6.0F, 4.0F, 4.0F, 10.0F).build(), JsonPose.offset(0.0F, 17.0F, 8.0F));
         builder.addOrReplaceChild("right_arm", elementBuilder -> elementBuilder.addBox(62, 49, -2.0F, 4.0F, -2.0F, 4.0F, 6.0F, 3.0F).addBox(58, 21, -2.0F, -3.0F, -2.0F, 4.0F, 7.0F, 4.0F).build(), JsonPose.offset(-5.0F, 14.0F, -3.0F));
@@ -24,8 +23,8 @@ public final class BrachiosaurusModels {
         return builder;
     }
 
-    private static JsonModel.Builder createLegacyBrachiosaurusBodyLayer(ResourceLocation modelId) {
-        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 32);
+    private static JsonModel.Builder createLegacyBrachiosaurusBodyLayer() {
+        JsonModel.Builder builder = JsonModel.builder(64, 32);
 
         builder.addOrReplaceChild("head", elementBuilder -> elementBuilder.addBox(48, 14, -2.0F, -1.0F, -4.0F, 4.0F, 3.0F, 4.0F, true).build(), JsonPose.offset(0.0F, -6.0F, -10.5F));
         builder.addOrReplaceChild("snout", elementBuilder -> elementBuilder.addBox(50, 8, -1.5F, -1.0F, -6.5F, 3.0F, 2.0F, 4.0F, true).build(), JsonPose.offsetAndRotation(0.0F, -6.0F, -11.0F, 0.2617994F, 0.0F, 0.0F));
