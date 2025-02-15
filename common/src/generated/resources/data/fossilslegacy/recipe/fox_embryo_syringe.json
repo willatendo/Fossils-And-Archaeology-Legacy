@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "egg",
-  "ingredient": {
-    "item": "fossilslegacy:fox_dna"
-  },
+  "ingredient": "fossilslegacy:fox_dna",
   "result": {
     "id": "fossilslegacy:fox_embryo_syringe"
   },

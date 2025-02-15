@@ -35,8 +35,7 @@
                   "condition": "minecraft:survives_explosion"
                 }
               ],
-              "max_weight": 20000,
-              "results": [
+              "fuels": [
                 {
                   "high_weight": 4000,
                   "item": "fossilslegacy:jurassic_fern_spores",
@@ -62,7 +61,8 @@
                   "item": "minecraft:porkchop",
                   "low_weight": 16000
                 }
-              ]
+              ],
+              "max_weight": 20000
             }
           ]
         }

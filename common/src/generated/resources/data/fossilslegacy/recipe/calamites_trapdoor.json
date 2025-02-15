@@ -3,13 +3,11 @@
   "category": "redstone",
   "group": "wooden_trapdoor",
   "key": {
-    "#": {
-      "item": "fossilslegacy:calamites_planks"
-    }
+    "#": "fossilslegacy:calamites_planks"
   },
   "pattern": [
-    "##",
-    "##"
+    "###",
+    "###"
   ],
   "result": {
     "count": 2,

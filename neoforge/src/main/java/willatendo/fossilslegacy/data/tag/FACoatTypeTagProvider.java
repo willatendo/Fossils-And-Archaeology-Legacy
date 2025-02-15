@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.data.tag;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.TagsProvider;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.coat_type.FACoatTypes;
 import willatendo.fossilslegacy.server.registry.FARegistries;
@@ -10,7 +9,7 @@ import willatendo.fossilslegacy.server.tags.FACoatTypeTags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class FACoatTypeTagProvider extends TagsProvider<CoatType> {
+public class FACoatTypeTagProvider extends DataDrivenTagsProvider<CoatType> {
     public FACoatTypeTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId) {
         super(packOutput, FARegistries.COAT_TYPES, provider, modId);
     }

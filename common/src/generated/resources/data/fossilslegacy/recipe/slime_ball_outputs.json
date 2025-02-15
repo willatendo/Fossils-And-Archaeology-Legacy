@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "misc",
-  "ingredient": {
-    "item": "minecraft:slime_ball"
-  },
-  "results": "fossilslegacy:results/slime_ball",
+  "fuels": "fossilslegacy:fuels/slime_ball",
+  "ingredient": "minecraft:slime_ball",
   "time": 100
 }

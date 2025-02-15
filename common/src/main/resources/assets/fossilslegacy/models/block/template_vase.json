@@ -1,8 +1,7 @@
 {
-	"parent": "block/cube_all",
+	"parent": "block/block",
 	"textures": {
 		"bottom": "fossilslegacy:block/mayan_pot_bottom",
-		"side": "fossilslegacy:block/mayan_pot_side",
 		"top": "fossilslegacy:block/mayan_pot_top",
 		"inside": "fossilslegacy:block/mayan_pot_inside",
 		"particle": "#side"

@@ -1,0 +1,23 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "fossilslegacy:item/therizinosaurus_claws"
+        },
+        "when": [
+          "gui",
+          "ground",
+          "fixed"
+        ]
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "fossilslegacy:item/therizinosaurus_claws_in_hand"
+    },
+    "property": "minecraft:display_context"
+  }
+}

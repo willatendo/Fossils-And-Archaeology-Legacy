@@ -1,6 +1,5 @@
 {
   "parent": "minecraft:block/frogspawn",
-  "render_type": "minecraft:cutout",
   "textures": {
     "particle": "fossilslegacy:block/axolotlspawn",
     "texture": "fossilslegacy:block/axolotlspawn"

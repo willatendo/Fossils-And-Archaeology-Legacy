@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "misc",
-  "ingredient": {
-    "item": "fossilslegacy:raw_gallimimus"
-  },
-  "results": "fossilslegacy:results/raw_gallimimus_meat",
+  "fuels": "fossilslegacy:fuels/raw_gallimimus_meat",
+  "ingredient": "fossilslegacy:raw_gallimimus",
   "time": 100
 }

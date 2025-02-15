@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "wooden_fence",
   "key": {
-    "#": {
-      "item": "fossilslegacy:calamites_planks"
-    },
-    "$": {
-      "item": "minecraft:stick"
-    }
+    "#": "fossilslegacy:calamites_planks",
+    "$": "minecraft:stick"
   },
   "pattern": [
     "#$#",

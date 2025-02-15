@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "misc",
-  "ingredient": {
-    "item": "fossilslegacy:raw_brachiosaurus"
-  },
-  "results": "fossilslegacy:results/raw_brachiosaurus_meat",
+  "fuels": "fossilslegacy:fuels/raw_brachiosaurus_meat",
+  "ingredient": "fossilslegacy:raw_brachiosaurus",
   "time": 100
 }

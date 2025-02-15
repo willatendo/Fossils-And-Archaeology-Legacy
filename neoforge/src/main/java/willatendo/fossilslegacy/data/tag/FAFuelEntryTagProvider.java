@@ -10,7 +10,7 @@ import willatendo.fossilslegacy.server.tags.FAFuelEntryTags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class FAFuelEntryTagProvider extends TagsProvider<FuelEntry> {
+public class FAFuelEntryTagProvider extends DataDrivenTagsProvider<FuelEntry> {
     public FAFuelEntryTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId) {
         super(packOutput, FARegistries.FUEL_ENTRY, provider, modId);
     }

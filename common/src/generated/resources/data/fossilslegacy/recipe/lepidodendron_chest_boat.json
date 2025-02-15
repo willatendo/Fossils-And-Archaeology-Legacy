@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "chest_boat",
   "ingredients": [
-    {
-      "item": "fossilslegacy:lepidodendron_boat"
-    },
-    {
-      "item": "minecraft:chest"
-    }
+    "fossilslegacy:lepidodendron_boat",
+    "minecraft:chest"
   ],
   "result": {
     "count": 1,

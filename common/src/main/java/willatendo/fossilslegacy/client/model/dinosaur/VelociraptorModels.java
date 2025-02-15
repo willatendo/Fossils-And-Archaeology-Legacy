@@ -1,54 +1,55 @@
 package willatendo.fossilslegacy.client.model.dinosaur;
 
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.resources.ResourceLocation;
+import willatendo.fossilslegacy.client.animation.BuiltInAnimationTypes;
+import willatendo.fossilslegacy.client.model.json.JsonModel;
+import willatendo.fossilslegacy.client.model.json.JsonPose;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class VelociraptorModels {
-    public static LayerDefinition createVelociraptorBodyLayer() {
-        MeshDefinition meshdefinition = new MeshDefinition();
-        PartDefinition partdefinition = meshdefinition.getRoot();
+    public static final JsonModel VELOCIRAPTOR_MODEL = VelociraptorModels.createVelociraptorBodyLayer(FAUtils.resource("velociraptor")).withWalkAnimations(FAUtils.resource("velociraptor_walk")).withHeadPieces("head").build();
+    public static final JsonModel LEGACY_VELOCIRAPTOR_MODEL = VelociraptorModels.createLegacyVelociraptorBodyLayer(FAUtils.resource("legacy_velociraptor")).withWalkAnimations(BuiltInAnimationTypes.LEGACY_VELOCIRAPTOR_WALK.getId()).build();
 
-        partdefinition.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(0, 6).addBox(-1.375F, 8.625F, -1.75F, 2.0F, 0.0F, 3.0F).texOffs(31, 4).addBox(-0.375F, 3.625F, 0.25F, 1.0F, 5.0F, 1.0F).texOffs(9, 26).addBox(-1.375F, -0.375F, -1.75F, 2.0F, 4.0F, 3.0F).texOffs(0, 8).addBox(0.625F, 6.625F, -1.75F, 0.0F, 2.0F, 3.0F), PartPose.offset(-2.625F, 15.375F, -2.25F));
-        partdefinition.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(19, 26).addBox(-0.625F, -0.375F, -1.75F, 2.0F, 4.0F, 3.0F).texOffs(0, 10).addBox(-0.625F, 6.625F, -1.75F, 0.0F, 2.0F, 3.0F).texOffs(0, 3).addBox(-0.625F, 8.625F, -1.75F, 2.0F, 0.0F, 3.0F).texOffs(29, 27).addBox(-0.625F, 3.625F, 0.25F, 1.0F, 5.0F, 1.0F), PartPose.offset(2.625F, 15.375F, -2.25F));
-        partdefinition.addOrReplaceChild("left_arm", CubeListBuilder.create().texOffs(0, 29).addBox(-0.5F, 0.0F, -1.25F, 1.0F, 2.0F, 2.0F).texOffs(13, 6).addBox(-0.5F, 2.0F, -0.25F, 1.0F, 2.0F, 1.0F), PartPose.offset(2.0F, 16.0F, -6.75F));
-        partdefinition.addOrReplaceChild("right_arm", CubeListBuilder.create().texOffs(16, 26).addBox(-0.5F, 2.0F, -0.25F, 1.0F, 2.0F, 1.0F).texOffs(27, 0).addBox(-0.5F, 0.0F, -1.25F, 1.0F, 2.0F, 2.0F), PartPose.offset(-2.0F, 16.0F, -6.75F));
-        partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(19, 9).addBox(-1.5F, -5.0F, -1.5F, 3.0F, 5.0F, 3.0F).texOffs(17, 19).addBox(-1.5F, -5.0F, -4.5F, 3.0F, 4.0F, 3.0F).texOffs(26, 17).addBox(-1.0F, -4.0F, -7.5F, 2.0F, 2.0F, 3.0F).texOffs(26, 23).addBox(-1.0F, -2.0F, -7.5F, 2.0F, 1.0F, 3.0F).texOffs(0, 0).addBox(-1.5F, -5.0F, 1.5F, 3.0F, 0.0F, 3.0F).texOffs(12, 20).addBox(1.5F, -5.0F, 1.5F, 0.0F, 4.0F, 2.0F).texOffs(14, 9).addBox(-1.5F, -5.0F, 1.5F, 0.0F, 4.0F, 2.0F), PartPose.offset(0.0F, 14.0F, -7.5F));
-        partdefinition.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(17, 2).addBox(-1.5F, 0.1667F, 0.1667F, 3.0F, 3.0F, 4.0F).texOffs(0, 0).addBox(-1.0F, 0.1667F, 4.1667F, 2.0F, 2.0F, 9.0F).texOffs(7, 0).addBox(-2.0F, 0.1667F, 10.1667F, 4.0F, 0.0F, 6.0F), PartPose.offset(0.0F, 13.8333F, -0.1667F));
-        partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 11).addBox(-2.0F, -10.0F, -6.0F, 4.0F, 5.0F, 6.0F).texOffs(0, 22).addBox(-1.5F, -10.0F, -9.0F, 3.0F, 4.0F, 3.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
+    private static JsonModel.Builder createVelociraptorBodyLayer(ResourceLocation modelId) {
+        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 64);
 
-        return LayerDefinition.create(meshdefinition, 64, 64);
+        builder.addOrReplaceChild("right_leg", elementBuilder -> elementBuilder.addBox(0, 6, -1.375F, 8.625F, -1.75F, 2.0F, 0.0F, 3.0F).addBox(31, 4, -0.375F, 3.625F, 0.25F, 1.0F, 5.0F, 1.0F).addBox(9, 26, -1.375F, -0.375F, -1.75F, 2.0F, 4.0F, 3.0F).addBox(0, 8, 0.625F, 6.625F, -1.75F, 0.0F, 2.0F, 3.0F).build(), JsonPose.offset(-2.625F, 15.375F, -2.25F));
+        builder.addOrReplaceChild("left_leg", elementBuilder -> elementBuilder.addBox(19, 26, -0.625F, -0.375F, -1.75F, 2.0F, 4.0F, 3.0F).addBox(0, 10, -0.625F, 6.625F, -1.75F, 0.0F, 2.0F, 3.0F).addBox(0, 3, -0.625F, 8.625F, -1.75F, 2.0F, 0.0F, 3.0F).addBox(29, 27, -0.625F, 3.625F, 0.25F, 1.0F, 5.0F, 1.0F).build(), JsonPose.offset(2.625F, 15.375F, -2.25F));
+        builder.addOrReplaceChild("left_arm", elementBuilder -> elementBuilder.addBox(0, 29, -0.5F, 0.0F, -1.25F, 1.0F, 2.0F, 2.0F).addBox(13, 6, -0.5F, 2.0F, -0.25F, 1.0F, 2.0F, 1.0F).build(), JsonPose.offset(2.0F, 16.0F, -6.75F));
+        builder.addOrReplaceChild("right_arm", elementBuilder -> elementBuilder.addBox(16, 26, -0.5F, 2.0F, -0.25F, 1.0F, 2.0F, 1.0F).addBox(27, 0, -0.5F, 0.0F, -1.25F, 1.0F, 2.0F, 2.0F).build(), JsonPose.offset(-2.0F, 16.0F, -6.75F));
+        builder.addOrReplaceChild("head", elementBuilder -> elementBuilder.addBox(19, 9, -1.5F, -5.0F, -1.5F, 3.0F, 5.0F, 3.0F).addBox(17, 19, -1.5F, -5.0F, -4.5F, 3.0F, 4.0F, 3.0F).addBox(26, 17, -1.0F, -4.0F, -7.5F, 2.0F, 2.0F, 3.0F).addBox(26, 23, -1.0F, -2.0F, -7.5F, 2.0F, 1.0F, 3.0F).addBox(0, 0, -1.5F, -5.0F, 1.5F, 3.0F, 0.0F, 3.0F).addBox(12, 20, 1.5F, -5.0F, 1.5F, 0.0F, 4.0F, 2.0F).addBox(14, 9, -1.5F, -5.0F, 1.5F, 0.0F, 4.0F, 2.0F).build(), JsonPose.offset(0.0F, 14.0F, -7.5F));
+        builder.addOrReplaceChild("tail", elementBuilder -> elementBuilder.addBox(17, 2, -1.5F, 0.1667F, 0.1667F, 3.0F, 3.0F, 4.0F).addBox(0, 0, -1.0F, 0.1667F, 4.1667F, 2.0F, 2.0F, 9.0F).addBox(7, 0, -2.0F, 0.1667F, 10.1667F, 4.0F, 0.0F, 6.0F).build(), JsonPose.offset(0.0F, 13.8333F, -0.1667F));
+        builder.addOrReplaceChild("body", elementBuilder -> elementBuilder.addBox(0, 11, -2.0F, -10.0F, -6.0F, 4.0F, 5.0F, 6.0F).addBox(0, 22, -1.5F, -10.0F, -9.0F, 3.0F, 4.0F, 3.0F).build(), JsonPose.offset(0.0F, 24.0F, 0.0F));
+
+        return builder;
     }
 
-    public static LayerDefinition createLegacyVelociraptorBodyLayer() {
-        MeshDefinition meshDefinition = new MeshDefinition();
-        PartDefinition partDefinition = meshDefinition.getRoot();
+    private static JsonModel.Builder createLegacyVelociraptorBodyLayer(ResourceLocation modelId) {
+        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 32);
 
-        partDefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 17).addBox(-3.0F, -7.0F, -8.0F, 6.0F, 7.0F, 8.0F), PartPose.offsetAndRotation(0.0F, 5.0F, -3.0F, 0.08726646F, 0.0F, 0.0F));
-        partDefinition.addOrReplaceChild("snout", CubeListBuilder.create().texOffs(44, 22).addBox(-2.0F, -4.0F, -6.0F, 4.0F, 4.0F, 6.0F), PartPose.offsetAndRotation(0.0F, 5.0F, -11.0F, 0.08726646F, 0.0F, 0.0F));
-        partDefinition.addOrReplaceChild("jaw", CubeListBuilder.create().texOffs(23, 0).addBox(-2.0F, 0.0F, -5.0F, 4.0F, 1.0F, 6.0F), PartPose.offset(0.0F, 5.0F, -10.0F));
-        partDefinition.addOrReplaceChild("neck", CubeListBuilder.create().texOffs(3, 1).addBox(-2.0F, 0.0F, -6.0F, 4.0F, 4.0F, 6.0F), PartPose.offsetAndRotation(0.0F, 10.0F, -5.0F, -2.094395F, 0.0F, 0.0F));
-        partDefinition.addOrReplaceChild("upper_body", CubeListBuilder.create().texOffs(3, 2).addBox(-3.0F, -6.0F, -5.0F, 6.0F, 6.0F, 6.0F), PartPose.offsetAndRotation(0.0F, 16.0F, -4.0F, -0.5235988F, 0.0F, 0.0F));
-        partDefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, -3.0F, -6.0F, 8.0F, 6.0F, 7.0F), PartPose.offset(-1.0F, 13.0F, 3.0F));
-        partDefinition.addOrReplaceChild("lower_body", CubeListBuilder.create().texOffs(3, 1).addBox(-2.0F, 0.0F, 0.0F, 4.0F, 4.0F, 6.0F), PartPose.offsetAndRotation(0.0F, 10.0F, 4.0F, -0.5235988F, 0.0F, 0.0F));
-        partDefinition.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(20, 11).addBox(-1.0F, 0.0F, 6.0F, 2.0F, 2.0F, 12.0F), PartPose.offsetAndRotation(0.0F, 10.0F, 4.0F, -0.6981317F, 0.0F, 0.0F));
-        partDefinition.addOrReplaceChild("right_thigh", CubeListBuilder.create().texOffs(48, 12).addBox(-3.0F, -1.0F, -2.0F, 3.0F, 5.0F, 5.0F), PartPose.offset(-4.0F, 14.0F, 0.0F));
-        partDefinition.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(14, 8).addBox(-2.0F, 4.0F, -7.0F, 2.0F, 2.0F, 7.0F), PartPose.offsetAndRotation(-4.0F, 14.0F, 0.0F, 0.994461F, 0.0F, 0.0F));
-        partDefinition.addOrReplaceChild("right_foot", CubeListBuilder.create().texOffs(30, 26).addBox(-3.0F, 8.0F, -3.0F, 3.0F, 2.0F, 4.0F), PartPose.offset(-4.0F, 14.0F, 1.0F));
-        partDefinition.addOrReplaceChild("right_hook_1", CubeListBuilder.create().texOffs(32, 7).addBox(-1.0F, 5.0F, 3.0F, 1.0F, 1.0F, 3.0F), PartPose.offsetAndRotation(-4.0F, 14.0F, 0.0F, -0.8726646F, 0.0F, 0.0F));
-        partDefinition.addOrReplaceChild("right_hook_2", CubeListBuilder.create().texOffs(32, 7).addBox(-1.0F, -5.0F, 5.0F, 1.0F, 1.0F, 1.0F), PartPose.offsetAndRotation(-4.0F, 14.0F, 0.0F, -2.6529F, 0.0F, 0.0F));
-        partDefinition.addOrReplaceChild("right_bicep", CubeListBuilder.create().texOffs(43, 11).addBox(-2.0F, -1.0F, -1.0F, 2.0F, 3.0F, 3.0F), PartPose.offset(-3.0F, 12.0F, -6.0F));
-        partDefinition.addOrReplaceChild("right_hand", CubeListBuilder.create().texOffs(20, 18).addBox(-2.0F, 2.0F, -4.0F, 2.0F, 2.0F, 4.0F), PartPose.offsetAndRotation(-3.0F, 12.0F, -6.0F, 0.994461F, 0.0F, 0.0F));
-        partDefinition.addOrReplaceChild("left_thigh", CubeListBuilder.create().texOffs(48, 1).addBox(0.0F, -1.0F, -2.0F, 3.0F, 5.0F, 5.0F), PartPose.offset(4.0F, 14.0F, 0.0F));
-        partDefinition.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(14, 8).addBox(0.0F, 4.0F, -7.0F, 2.0F, 2.0F, 7.0F), PartPose.offsetAndRotation(4.0F, 14.0F, 0.0F, 0.994461F, 0.0F, 0.0F));
-        partDefinition.addOrReplaceChild("left_foot", CubeListBuilder.create().texOffs(30, 26).addBox(0.0F, 8.0F, -3.0F, 3.0F, 2.0F, 4.0F), PartPose.offset(4.0F, 14.0F, 1.0F));
-        partDefinition.addOrReplaceChild("left_hook_1", CubeListBuilder.create().texOffs(32, 7).addBox(0.0F, 5.0F, 3.0F, 1.0F, 1.0F, 3.0F), PartPose.offsetAndRotation(4.0F, 14.0F, 0.0F, -0.8726646F, 0.0F, 0.0F));
-        partDefinition.addOrReplaceChild("left_hook_2", CubeListBuilder.create().texOffs(32, 7).addBox(0.0F, -5.0F, 5.0F, 1.0F, 1.0F, 1.0F), PartPose.offsetAndRotation(4.0F, 14.0F, 0.0F, -2.6529F, 0.0F, 0.0F));
-        partDefinition.addOrReplaceChild("left_bicep", CubeListBuilder.create().texOffs(43, 0).addBox(0.0F, -1.0F, -1.0F, 2.0F, 3.0F, 3.0F), PartPose.offset(3.0F, 12.0F, -6.0F));
-        partDefinition.addOrReplaceChild("left_hand", CubeListBuilder.create().texOffs(20, 18).addBox(0.0F, 2.0F, -4.0F, 2.0F, 2.0F, 4.0F), PartPose.offsetAndRotation(3.0F, 12.0F, -6.0F, 0.994461F, 0.0F, 0.0F));
+        builder.addOrReplaceChild("head", elementBuilder -> elementBuilder.addBox(0, 17, -3.0F, -7.0F, -8.0F, 6.0F, 7.0F, 8.0F).build(), JsonPose.offsetAndRotation(0.0F, 5.0F, -3.0F, 0.08726646F, 0.0F, 0.0F));
+        builder.addOrReplaceChild("snout", elementBuilder -> elementBuilder.addBox(44, 22, -2.0F, -4.0F, -6.0F, 4.0F, 4.0F, 6.0F).build(), JsonPose.offsetAndRotation(0.0F, 5.0F, -11.0F, 0.08726646F, 0.0F, 0.0F));
+        builder.addOrReplaceChild("jaw", elementBuilder -> elementBuilder.addBox(23, 0, -2.0F, 0.0F, -5.0F, 4.0F, 1.0F, 6.0F).build(), JsonPose.offset(0.0F, 5.0F, -10.0F));
+        builder.addOrReplaceChild("neck", elementBuilder -> elementBuilder.addBox(3, 1, -2.0F, 0.0F, -6.0F, 4.0F, 4.0F, 6.0F).build(), JsonPose.offsetAndRotation(0.0F, 10.0F, -5.0F, -2.094395F, 0.0F, 0.0F));
+        builder.addOrReplaceChild("upper_body", elementBuilder -> elementBuilder.addBox(3, 2, -3.0F, -6.0F, -5.0F, 6.0F, 6.0F, 6.0F).build(), JsonPose.offsetAndRotation(0.0F, 16.0F, -4.0F, -0.5235988F, 0.0F, 0.0F));
+        builder.addOrReplaceChild("body", elementBuilder -> elementBuilder.addBox(0, 0, -3.0F, -3.0F, -6.0F, 8.0F, 6.0F, 7.0F).build(), JsonPose.offset(-1.0F, 13.0F, 3.0F));
+        builder.addOrReplaceChild("lower_body", elementBuilder -> elementBuilder.addBox(3, 1, -2.0F, 0.0F, 0.0F, 4.0F, 4.0F, 6.0F).build(), JsonPose.offsetAndRotation(0.0F, 10.0F, 4.0F, -0.5235988F, 0.0F, 0.0F));
+        builder.addOrReplaceChild("tail", elementBuilder -> elementBuilder.addBox(20, 11, -1.0F, 0.0F, 6.0F, 2.0F, 2.0F, 12.0F).build(), JsonPose.offsetAndRotation(0.0F, 10.0F, 4.0F, -0.6981317F, 0.0F, 0.0F));
+        builder.addOrReplaceChild("right_thigh", elementBuilder -> elementBuilder.addBox(48, 12, -3.0F, -1.0F, -2.0F, 3.0F, 5.0F, 5.0F).build(), JsonPose.offset(-4.0F, 14.0F, 0.0F));
+        builder.addOrReplaceChild("right_leg", elementBuilder -> elementBuilder.addBox(14, 8, -2.0F, 4.0F, -7.0F, 2.0F, 2.0F, 7.0F).build(), JsonPose.offsetAndRotation(-4.0F, 14.0F, 0.0F, 0.994461F, 0.0F, 0.0F));
+        builder.addOrReplaceChild("right_foot", elementBuilder -> elementBuilder.addBox(30, 26, -3.0F, 8.0F, -3.0F, 3.0F, 2.0F, 4.0F).build(), JsonPose.offset(-4.0F, 14.0F, 1.0F));
+        builder.addOrReplaceChild("right_hook_1", elementBuilder -> elementBuilder.addBox(32, 7, -1.0F, 5.0F, 3.0F, 1.0F, 1.0F, 3.0F).build(), JsonPose.offsetAndRotation(-4.0F, 14.0F, 0.0F, -0.8726646F, 0.0F, 0.0F));
+        builder.addOrReplaceChild("right_hook_2", elementBuilder -> elementBuilder.addBox(32, 7, -1.0F, -5.0F, 5.0F, 1.0F, 1.0F, 1.0F).build(), JsonPose.offsetAndRotation(-4.0F, 14.0F, 0.0F, -2.6529F, 0.0F, 0.0F));
+        builder.addOrReplaceChild("right_bicep", elementBuilder -> elementBuilder.addBox(43, 11, -2.0F, -1.0F, -1.0F, 2.0F, 3.0F, 3.0F).build(), JsonPose.offset(-3.0F, 12.0F, -6.0F));
+        builder.addOrReplaceChild("right_hand", elementBuilder -> elementBuilder.addBox(20, 18, -2.0F, 2.0F, -4.0F, 2.0F, 2.0F, 4.0F).build(), JsonPose.offsetAndRotation(-3.0F, 12.0F, -6.0F, 0.994461F, 0.0F, 0.0F));
+        builder.addOrReplaceChild("left_thigh", elementBuilder -> elementBuilder.addBox(48, 1, 0.0F, -1.0F, -2.0F, 3.0F, 5.0F, 5.0F).build(), JsonPose.offset(4.0F, 14.0F, 0.0F));
+        builder.addOrReplaceChild("left_leg", elementBuilder -> elementBuilder.addBox(14, 8, 0.0F, 4.0F, -7.0F, 2.0F, 2.0F, 7.0F).build(), JsonPose.offsetAndRotation(4.0F, 14.0F, 0.0F, 0.994461F, 0.0F, 0.0F));
+        builder.addOrReplaceChild("left_foot", elementBuilder -> elementBuilder.addBox(30, 26, 0.0F, 8.0F, -3.0F, 3.0F, 2.0F, 4.0F).build(), JsonPose.offset(4.0F, 14.0F, 1.0F));
+        builder.addOrReplaceChild("left_hook_1", elementBuilder -> elementBuilder.addBox(32, 7, 0.0F, 5.0F, 3.0F, 1.0F, 1.0F, 3.0F).build(), JsonPose.offsetAndRotation(4.0F, 14.0F, 0.0F, -0.8726646F, 0.0F, 0.0F));
+        builder.addOrReplaceChild("left_hook_2", elementBuilder -> elementBuilder.addBox(32, 7, 0.0F, -5.0F, 5.0F, 1.0F, 1.0F, 1.0F).build(), JsonPose.offsetAndRotation(4.0F, 14.0F, 0.0F, -2.6529F, 0.0F, 0.0F));
+        builder.addOrReplaceChild("left_bicep", elementBuilder -> elementBuilder.addBox(43, 0, 0.0F, -1.0F, -1.0F, 2.0F, 3.0F, 3.0F).build(), JsonPose.offset(3.0F, 12.0F, -6.0F));
+        builder.addOrReplaceChild("left_hand", elementBuilder -> elementBuilder.addBox(20, 18, 0.0F, 2.0F, -4.0F, 2.0F, 2.0F, 4.0F).build(), JsonPose.offsetAndRotation(3.0F, 12.0F, -6.0F, 0.994461F, 0.0F, 0.0F));
 
-        return LayerDefinition.create(meshDefinition, 64, 32);
+        return builder;
     }
 }

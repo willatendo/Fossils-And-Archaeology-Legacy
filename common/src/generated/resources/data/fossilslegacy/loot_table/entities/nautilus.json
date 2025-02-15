@@ -6,8 +6,7 @@
       "entries": [
         {
           "type": "fossilslegacy:loot_one_item_of_many_random",
-          "max_weight": 5,
-          "results": [
+          "fuels": [
             {
               "high_weight": 3,
               "item": "fossilslegacy:nautilus_shell",
@@ -18,7 +17,8 @@
               "item": "fossilslegacy:magic_conch",
               "low_weight": 3
             }
-          ]
+          ],
+          "max_weight": 5
         }
       ],
       "rolls": 1.0

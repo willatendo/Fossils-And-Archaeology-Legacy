@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.server.registry;
 
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
-import willatendo.fossilslegacy.server.json_model.JsonModelType;
 import willatendo.fossilslegacy.server.analyzer_result.AnalyzerResult;
 import willatendo.fossilslegacy.server.ancient_axe_bonus.AncientAxeBonus;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
@@ -32,7 +31,6 @@ public final class FARegistries {
     public static final ResourceKey<Registry<FossilVariant>> FOSSIL_VARIANTS = ResourceKey.createRegistryKey(FAUtils.resource("fossil_variants"));
     public static final ResourceKey<Registry<FuelEntry>> FUEL_ENTRY = ResourceKey.createRegistryKey(FAUtils.resource("fuel_entry"));
     public static final ResourceKey<Registry<JewelRecovery>> JEWEL_RECOVERY = ResourceKey.createRegistryKey(FAUtils.resource("jewel_recovery"));
-    public static final ResourceKey<Registry<JsonModelType<?>>> JSON_MODEL_TYPE = ResourceKey.createRegistryKey(FAUtils.resource("json_model_type"));
     public static final ResourceKey<Registry<PregnancyType>> PREGNANCY_TYPES = ResourceKey.createRegistryKey(FAUtils.resource("pregnancy_types"));
     public static final ResourceKey<Registry<StoneTabletVariant>> STONE_TABLET_VARIANTS = ResourceKey.createRegistryKey(FAUtils.resource("stone_tablet_variants"));
 }

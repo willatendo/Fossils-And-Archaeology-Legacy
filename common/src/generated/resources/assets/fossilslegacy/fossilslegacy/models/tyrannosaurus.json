@@ -1,9 +1,43 @@
 {
-  "type": "json",
   "animations": {
-    "walk": "fossilslegacy:tyrannosaurus_walk"
+    "walk": [
+      "fossilslegacy:tyrannosaurus_walk"
+    ]
   },
   "elements": [
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 34,
+          "x_dimension": 6.0,
+          "x_origin": -3.0,
+          "y_dimension": 7.0,
+          "y_origin": -3.0,
+          "z_dimension": 7.0,
+          "z_origin": 0.0
+        },
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 19,
+          "x_dimension": 4.0,
+          "x_origin": -2.0,
+          "y_dimension": 4.0,
+          "y_origin": -3.0,
+          "z_dimension": 11.0,
+          "z_origin": 7.0
+        }
+      ],
+      "id": "tail",
+      "poses": {
+        "x": 0.0,
+        "x_rot": 0.0,
+        "y": 10.0,
+        "y_rot": 0.0,
+        "z": 8.0,
+        "z_rot": 0.0
+      }
+    },
     {
       "boxes": [
         {
@@ -40,28 +74,11 @@
       "id": "left_leg",
       "poses": {
         "x": 4.0,
+        "x_rot": 0.0,
         "y": 13.0,
-        "z": 4.0
-      }
-    },
-    {
-      "boxes": [
-        {
-          "texture_x_offset": 42,
-          "texture_y_offset": 14,
-          "x_dimension": 2.0,
-          "x_origin": -1.0,
-          "y_dimension": 3.0,
-          "y_origin": -1.0,
-          "z_dimension": 2.0,
-          "z_origin": -1.0
-        }
-      ],
-      "id": "right_arm",
-      "poses": {
-        "x": -3.0,
-        "y": 14.0,
-        "z": -6.0
+        "y_rot": 0.0,
+        "z": 4.0,
+        "z_rot": 0.0
       }
     },
     {
@@ -100,8 +117,11 @@
       "id": "right_leg",
       "poses": {
         "x": -4.0,
+        "x_rot": 0.0,
         "y": 13.0,
-        "z": 4.0
+        "y_rot": 0.0,
+        "z": 4.0,
+        "z_rot": 0.0
       }
     },
     {
@@ -120,38 +140,34 @@
       "id": "left_arm",
       "poses": {
         "x": 3.0,
+        "x_rot": 0.0,
         "y": 14.0,
-        "z": -6.0
+        "y_rot": 0.0,
+        "z": -6.0,
+        "z_rot": 0.0
       }
     },
     {
       "boxes": [
         {
-          "texture_x_offset": 0,
-          "texture_y_offset": 34,
-          "x_dimension": 6.0,
-          "x_origin": -3.0,
-          "y_dimension": 7.0,
-          "y_origin": -3.0,
-          "z_dimension": 7.0,
-          "z_origin": 0.0
-        },
-        {
-          "texture_x_offset": 0,
-          "texture_y_offset": 19,
-          "x_dimension": 4.0,
-          "x_origin": -2.0,
-          "y_dimension": 4.0,
-          "y_origin": -3.0,
-          "z_dimension": 11.0,
-          "z_origin": 7.0
+          "texture_x_offset": 42,
+          "texture_y_offset": 14,
+          "x_dimension": 2.0,
+          "x_origin": -1.0,
+          "y_dimension": 3.0,
+          "y_origin": -1.0,
+          "z_dimension": 2.0,
+          "z_origin": -1.0
         }
       ],
-      "id": "tail",
+      "id": "right_arm",
       "poses": {
-        "x": 0.0,
-        "y": 10.0,
-        "z": 8.0
+        "x": -3.0,
+        "x_rot": 0.0,
+        "y": 14.0,
+        "y_rot": 0.0,
+        "z": -6.0,
+        "z_rot": 0.0
       }
     },
     {
@@ -204,16 +220,22 @@
           "id": "head",
           "poses": {
             "x": 0.0,
+            "x_rot": 0.0,
             "y": -5.0,
-            "z": -3.0
+            "y_rot": 0.0,
+            "z": -3.0,
+            "z_rot": 0.0
           }
         }
       ],
       "id": "neck",
       "poses": {
         "x": 0.0,
+        "x_rot": 0.0,
         "y": 11.0,
-        "z": -7.0
+        "y_rot": 0.0,
+        "z": -7.0,
+        "z_rot": 0.0
       }
     },
     {
@@ -242,10 +264,16 @@
       "id": "body",
       "poses": {
         "x": 0.0,
+        "x_rot": 0.0,
         "y": 24.0,
-        "z": 0.0
+        "y_rot": 0.0,
+        "z": 0.0,
+        "z_rot": 0.0
       }
     }
+  ],
+  "head_pieces": [
+    "neck"
   ],
   "model_id": "fossilslegacy:tyrannosaurus",
   "texture_height": 128,

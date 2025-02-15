@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "fossilslegacy:skull_block"
-    }
+    "fossilslegacy:skull_block"
   ],
   "result": {
     "count": 5,

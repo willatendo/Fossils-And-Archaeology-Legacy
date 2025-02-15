@@ -1,11 +1,9 @@
 {
   "type": "minecraft:campfire_cooking",
   "category": "food",
-  "cookingtime": 400,
+  "cookingtime": 600,
   "experience": 0.35,
-  "ingredient": {
-    "item": "fossilslegacy:raw_berry_medley_bucket"
-  },
+  "ingredient": "fossilslegacy:raw_berry_medley_bucket",
   "result": {
     "count": 1,
     "id": "fossilslegacy:cooked_berry_medley_bucket"

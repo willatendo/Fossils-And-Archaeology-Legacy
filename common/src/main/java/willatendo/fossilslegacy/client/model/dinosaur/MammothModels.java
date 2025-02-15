@@ -1,51 +1,48 @@
 package willatendo.fossilslegacy.client.model.dinosaur;
 
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.resources.ResourceLocation;
+import willatendo.fossilslegacy.client.animation.BuiltInAnimationTypes;
+import willatendo.fossilslegacy.client.model.json.JsonModel;
+import willatendo.fossilslegacy.client.model.json.JsonPose;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class MammothModels {
-    public static LayerDefinition createMammothBodyLayer() {
-        MeshDefinition meshDefinition = new MeshDefinition();
-        PartDefinition partDefinition = meshDefinition.getRoot();
+    public static final JsonModel MAMMOTH_MODEL = MammothModels.createMammothBodyLayer(FAUtils.resource("mammoth")).withWalkAnimations(FAUtils.resource("mammoth_walk")).withHeadPieces("head").build();
+    public static final JsonModel LEGACY_MAMMOTH_MODEL = MammothModels.createLegacyMammothBodyLayer(FAUtils.resource("legacy_mammoth")).withWalkAnimations(BuiltInAnimationTypes.LEGACY_MAMMOTH_WALK.getId()).build();
 
-        partDefinition.addOrReplaceChild("left_arm", CubeListBuilder.create().texOffs(12, 48).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 7.0F, 3.0F), PartPose.offset(2.5F, 17.0F, -2.5F));
-        partDefinition.addOrReplaceChild("right_arm", CubeListBuilder.create().texOffs(0, 48).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 7.0F, 3.0F), PartPose.offset(-2.5F, 17.0F, -2.5F));
-        partDefinition.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(52, 15).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F), PartPose.offset(2.0F, 18.0F, 9.5F));
-        partDefinition.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(24, 53).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F), PartPose.offset(-2.0F, 18.0F, 9.5F));
-        PartDefinition head = partDefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(38, 0).addBox(-3.0F, -5.0F, -6.0F, 6.0F, 8.0F, 7.0F).texOffs(38, 25).addBox(3.0F, -5.0F, -1.0F, 5.0F, 7.0F, 0.0F).texOffs(48, 25).addBox(-8.0F, -5.0F, -1.0F, 5.0F, 7.0F, 0.0F).texOffs(48, 54).addBox(2.0F, 1.0F, -5.0F, 2.0F, 7.0F, 2.0F).texOffs(24, 48).addBox(2.0F, 6.0F, -7.0F, 2.0F, 2.0F, 2.0F).texOffs(0, 58).addBox(2.0F, 4.0F, -9.0F, 2.0F, 4.0F, 2.0F).texOffs(56, 54).addBox(-4.0F, 1.0F, -5.0F, 2.0F, 7.0F, 2.0F).texOffs(16, 58).addBox(-4.0F, 6.0F, -7.0F, 2.0F, 2.0F, 2.0F).texOffs(8, 58).addBox(-4.0F, 4.0F, -9.0F, 2.0F, 4.0F, 2.0F), PartPose.offset(0.0F, 10.0F, -5.0F));
-        head.addOrReplaceChild("tuff_1", CubeListBuilder.create().texOffs(32, 43).addBox(0.0F, -1.5F, -3.5F, 0.0F, 3.0F, 7.0F), PartPose.offsetAndRotation(0.0F, -6.5F, -2.5F, 0.0F, 0.7854F, 0.0F));
-        head.addOrReplaceChild("tuff_2", CubeListBuilder.create().texOffs(38, 15).addBox(0.0F, -1.5F, -3.5F, 0.0F, 3.0F, 7.0F), PartPose.offsetAndRotation(0.0F, -6.5F, -2.5F, 0.0F, -0.7854F, 0.0F));
-        PartDefinition trunk = head.addOrReplaceChild("trunk", CubeListBuilder.create().texOffs(36, 54).addBox(-1.5F, -1.5F, -3.0F, 3.0F, 6.0F, 3.0F), PartPose.offset(0.0F, -0.5F, -6.0F));
-        trunk.addOrReplaceChild("trunk_end", CubeListBuilder.create().texOffs(46, 43).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 8.0F, 3.0F), PartPose.offset(0.0F, 4.5F, -1.5F));
-        partDefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 32).addBox(-4.0F, -14.0F, 4.0F, 8.0F, 8.0F, 8.0F).texOffs(0, 0).addBox(-5.0F, -17.0F, -5.0F, 10.0F, 10.0F, 9.0F).texOffs(0, 19).addBox(-5.0F, -7.0F, -5.0F, 10.0F, 4.0F, 9.0F).texOffs(32, 32).addBox(-4.0F, -6.0F, 4.0F, 8.0F, 3.0F, 8.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
+    private static JsonModel.Builder createMammothBodyLayer(ResourceLocation modelId) {
+        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 64);
 
-        return LayerDefinition.create(meshDefinition, 64, 64);
+        builder.addOrReplaceChild("left_arm", elementBuilder -> elementBuilder.addBox(12, 48, -1.5F, 0.0F, -1.5F, 3.0F, 7.0F, 3.0F).build(), JsonPose.offset(2.5F, 17.0F, -2.5F));
+        builder.addOrReplaceChild("right_arm", elementBuilder -> elementBuilder.addBox(0, 48, -1.5F, 0.0F, -1.5F, 3.0F, 7.0F, 3.0F).build(), JsonPose.offset(-2.5F, 17.0F, -2.5F));
+        builder.addOrReplaceChild("left_leg", elementBuilder -> elementBuilder.addBox(52, 15, -1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F).build(), JsonPose.offset(2.0F, 18.0F, 9.5F));
+        builder.addOrReplaceChild("right_leg", elementBuilder -> elementBuilder.addBox(24, 53, -1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F).build(), JsonPose.offset(-2.0F, 18.0F, 9.5F));
+        builder.addOrReplaceChild("head", elementBuilder -> elementBuilder.addBox(38, 0, -3.0F, -5.0F, -6.0F, 6.0F, 8.0F, 7.0F).addBox(38, 25, 3.0F, -5.0F, -1.0F, 5.0F, 7.0F, 0.0F).addBox(48, 25, -8.0F, -5.0F, -1.0F, 5.0F, 7.0F, 0.0F).addBox(48, 54, 2.0F, 1.0F, -5.0F, 2.0F, 7.0F, 2.0F).addBox(24, 48, 2.0F, 6.0F, -7.0F, 2.0F, 2.0F, 2.0F).addBox(0, 58, 2.0F, 4.0F, -9.0F, 2.0F, 4.0F, 2.0F).addBox(56, 54, -4.0F, 1.0F, -5.0F, 2.0F, 7.0F, 2.0F).addBox(16, 58, -4.0F, 6.0F, -7.0F, 2.0F, 2.0F, 2.0F).addBox(8, 58, -4.0F, 4.0F, -9.0F, 2.0F, 4.0F, 2.0F).addOrReplaceChild("tuff_1", subElementBuilder -> subElementBuilder.addBox(32, 43, 0.0F, -1.5F, -3.5F, 0.0F, 3.0F, 7.0F).build(), JsonPose.offsetAndRotation(0.0F, -6.5F, -2.5F, 0.0F, 0.7854F, 0.0F)).addOrReplaceChild("tuff_2", subElementBuilder -> subElementBuilder.addBox(38, 15, 0.0F, -1.5F, -3.5F, 0.0F, 3.0F, 7.0F).build(), JsonPose.offsetAndRotation(0.0F, -6.5F, -2.5F, 0.0F, -0.7854F, 0.0F)).addOrReplaceChild("trunk", subElement1Builder -> subElement1Builder.addBox(36, 54, -1.5F, -1.5F, -3.0F, 3.0F, 6.0F, 3.0F).addOrReplaceChild("trunk_end", subElement2Builder -> subElement2Builder.addBox(46, 43, -1.5F, 0.0F, -1.5F, 3.0F, 8.0F, 3.0F).build(), JsonPose.offset(0.0F, 4.5F, -1.5F)).build(), JsonPose.offset(0.0F, -0.5F, -6.0F)).build(), JsonPose.offset(0.0F, 10.0F, -5.0F));
+        builder.addOrReplaceChild("body", elementBuilder -> elementBuilder.addBox(0, 32, -4.0F, -14.0F, 4.0F, 8.0F, 8.0F, 8.0F).addBox(0, 0, -5.0F, -17.0F, -5.0F, 10.0F, 10.0F, 9.0F).addBox(0, 19, -5.0F, -7.0F, -5.0F, 10.0F, 4.0F, 9.0F).addBox(32, 32, -4.0F, -6.0F, 4.0F, 8.0F, 3.0F, 8.0F).build(), JsonPose.offset(0.0F, 24.0F, 0.0F));
+
+        return builder;
     }
 
-    public static LayerDefinition createLegacyMammothBodyLayer() {
-        MeshDefinition meshDefinition = new MeshDefinition();
-        PartDefinition partDefinition = meshDefinition.getRoot();
+    private static JsonModel.Builder createLegacyMammothBodyLayer(ResourceLocation modelId) {
+        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 32);
 
-        partDefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(46, 11).addBox(-2.0F, -3.0F, -3.5F, 4.0F, 5.0F, 5.0F).mirror(), PartPose.offset(0.0F, 15.5F, -1.5F));
-        partDefinition.addOrReplaceChild("hair", CubeListBuilder.create().texOffs(42, 21).addBox(-2.5F, -4.0F, -4.0F, 5.0F, 5.0F, 6.0F).mirror(), PartPose.offset(0.0F, 15.5F, -1.5F));
-        partDefinition.addOrReplaceChild("hair_tuff_1", CubeListBuilder.create().texOffs(8, 24).addBox(0.0F, -7.0F, -2.5F, 0.0F, 3.0F, 5.0F).mirror(), PartPose.offsetAndRotation(0.0F, 15.5F, -1.5F, 0.0F, 0.7853982F, 0.0F));
-        partDefinition.addOrReplaceChild("hair_tuff_2", CubeListBuilder.create().texOffs(8, 24).addBox(0.0F, -7.0F, -2.5F, 0.0F, 3.0F, 5.0F).mirror(), PartPose.offsetAndRotation(0.0F, 15.5F, -1.5F, 0.0F, -0.7853982F, 0.0F));
-        partDefinition.addOrReplaceChild("front_hair", CubeListBuilder.create().texOffs(0, 0).addBox(-3.5F, -2.5F, 0.5F, 7.0F, 9.0F, 7.0F).mirror(), PartPose.offset(0.0F, 16.0F, -4.0F));
-        partDefinition.addOrReplaceChild("back_hair", CubeListBuilder.create().texOffs(30, 8).addBox(-3.0F, 4.0F, 3.0F, 6.0F, 2.0F, 3.0F).mirror(), PartPose.offset(0.0F, 16.0F, 0.0F));
-        partDefinition.addOrReplaceChild("right_tooth", CubeListBuilder.create().texOffs(30, 5).addBox(0.0F, 1.0F, -9.5F, 0.0F, 7.0F, 8.0F).mirror(), PartPose.offsetAndRotation(0.0F, 15.5F, -1.5F, 0.0F, 0.0F, 0.5235988F));
-        partDefinition.addOrReplaceChild("left_tooth", CubeListBuilder.create().texOffs(30, 5).addBox(0.0F, 1.0F, -9.5F, 0.0F, 7.0F, 8.0F).mirror(), PartPose.offsetAndRotation(0.0F, 15.5F, -1.5F, 0.0F, 0.0F, -0.5235988F));
-        partDefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(18, 20).addBox(-3.0F, -2.0F, -3.0F, 6.0F, 6.0F, 6.0F).mirror(), PartPose.offset(0.0F, 16F, 0.0F));
-        partDefinition.addOrReplaceChild("back", CubeListBuilder.create().texOffs(30, 0).addBox(-3.0F, 0.0F, 3.0F, 6.0F, 4.0F, 3.0F).mirror(), PartPose.offset(0.0F, 16.0F, 0.0F));
-        partDefinition.addOrReplaceChild("nose_top", CubeListBuilder.create().texOffs(0, 21).addBox(-1.0F, 1.0F, -3.5F, 2.0F, 4.0F, 2.0F).mirror(), PartPose.offsetAndRotation(0.0F, 15.5F, -1.5F, -0.1897142F, 0.0F, 0.0F));
-        partDefinition.addOrReplaceChild("nose_bottom", CubeListBuilder.create().texOffs(0, 27).addBox(-1.0F, 5.0F, -1.5F, 2.0F, 3.0F, 2.0F).mirror(), PartPose.offsetAndRotation(0.0F, 15.5F, -1.5F, -0.5986789F, 0.0F, 0.0F));
-        partDefinition.addOrReplaceChild("left_arm", CubeListBuilder.create().texOffs(56, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F).mirror(), PartPose.offset(1.5F, 17.0F, -1.0F));
-        partDefinition.addOrReplaceChild("right_arm", CubeListBuilder.create().texOffs(48, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F).mirror(), PartPose.offset(-1.5F, 17.0F, -1.0F));
-        partDefinition.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(56, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F).mirror(), PartPose.offset(-1.5F, 17.0F, 4.5F));
-        partDefinition.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(48, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F).mirror(), PartPose.offset(1.5F, 17.0F, 4.5F));
+        builder.addOrReplaceChild("head", elementBuilder -> elementBuilder.addBox(46, 11, -2.0F, -3.0F, -3.5F, 4.0F, 5.0F, 5.0F, true).build(), JsonPose.offset(0.0F, 15.5F, -1.5F));
+        builder.addOrReplaceChild("hair", elementBuilder -> elementBuilder.addBox(42, 21, -2.5F, -4.0F, -4.0F, 5.0F, 5.0F, 6.0F, true).build(), JsonPose.offset(0.0F, 15.5F, -1.5F));
+        builder.addOrReplaceChild("hair_tuff_1", elementBuilder -> elementBuilder.addBox(8, 24, 0.0F, -7.0F, -2.5F, 0.0F, 3.0F, 5.0F, true).build(), JsonPose.offsetAndRotation(0.0F, 15.5F, -1.5F, 0.0F, 0.7853982F, 0.0F));
+        builder.addOrReplaceChild("hair_tuff_2", elementBuilder -> elementBuilder.addBox(8, 24, 0.0F, -7.0F, -2.5F, 0.0F, 3.0F, 5.0F, true).build(), JsonPose.offsetAndRotation(0.0F, 15.5F, -1.5F, 0.0F, -0.7853982F, 0.0F));
+        builder.addOrReplaceChild("front_hair", elementBuilder -> elementBuilder.addBox(0, 0, -3.5F, -2.5F, 0.5F, 7.0F, 9.0F, 7.0F, true).build(), JsonPose.offset(0.0F, 16.0F, -4.0F));
+        builder.addOrReplaceChild("back_hair", elementBuilder -> elementBuilder.addBox(30, 8, -3.0F, 4.0F, 3.0F, 6.0F, 2.0F, 3.0F, true).build(), JsonPose.offset(0.0F, 16.0F, 0.0F));
+        builder.addOrReplaceChild("right_tooth", elementBuilder -> elementBuilder.addBox(30, 5, 0.0F, 1.0F, -9.5F, 0.0F, 7.0F, 8.0F, true).build(), JsonPose.offsetAndRotation(0.0F, 15.5F, -1.5F, 0.0F, 0.0F, 0.5235988F));
+        builder.addOrReplaceChild("left_tooth", elementBuilder -> elementBuilder.addBox(30, 5, 0.0F, 1.0F, -9.5F, 0.0F, 7.0F, 8.0F, true).build(), JsonPose.offsetAndRotation(0.0F, 15.5F, -1.5F, 0.0F, 0.0F, -0.5235988F));
+        builder.addOrReplaceChild("body", elementBuilder -> elementBuilder.addBox(18, 20, -3.0F, -2.0F, -3.0F, 6.0F, 6.0F, 6.0F, true).build(), JsonPose.offset(0.0F, 16F, 0.0F));
+        builder.addOrReplaceChild("back", elementBuilder -> elementBuilder.addBox(30, 0, -3.0F, 0.0F, 3.0F, 6.0F, 4.0F, 3.0F, true).build(), JsonPose.offset(0.0F, 16.0F, 0.0F));
+        builder.addOrReplaceChild("nose_top", elementBuilder -> elementBuilder.addBox(0, 21, -1.0F, 1.0F, -3.5F, 2.0F, 4.0F, 2.0F, true).build(), JsonPose.offsetAndRotation(0.0F, 15.5F, -1.5F, -0.1897142F, 0.0F, 0.0F));
+        builder.addOrReplaceChild("nose_bottom", elementBuilder -> elementBuilder.addBox(0, 27, -1.0F, 5.0F, -1.5F, 2.0F, 3.0F, 2.0F, true).build(), JsonPose.offsetAndRotation(0.0F, 15.5F, -1.5F, -0.5986789F, 0.0F, 0.0F));
+        builder.addOrReplaceChild("left_arm", elementBuilder -> elementBuilder.addBox(56, 0, -1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F, true).build(), JsonPose.offset(1.5F, 17.0F, -1.0F));
+        builder.addOrReplaceChild("right_arm", elementBuilder -> elementBuilder.addBox(48, 0, -1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F, true).build(), JsonPose.offset(-1.5F, 17.0F, -1.0F));
+        builder.addOrReplaceChild("left_leg", elementBuilder -> elementBuilder.addBox(56, 0, -1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F, true).build(), JsonPose.offset(-1.5F, 17.0F, 4.5F));
+        builder.addOrReplaceChild("right_leg", elementBuilder -> elementBuilder.addBox(48, 0, -1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F, true).build(), JsonPose.offset(1.5F, 17.0F, 4.5F));
 
-        return LayerDefinition.create(meshDefinition, 64, 32);
+        return builder;
     }
 }

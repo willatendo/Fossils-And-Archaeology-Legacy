@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "egg",
-  "ingredient": {
-    "item": "fossilslegacy:velociraptor_dna"
-  },
+  "ingredient": "fossilslegacy:velociraptor_dna",
   "result": {
     "id": "fossilslegacy:velociraptor_egg"
   },

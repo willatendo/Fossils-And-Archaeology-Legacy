@@ -1,13 +1,12 @@
 {
   "parent": "minecraft:block/cube",
-  "render_type": "minecraft:translucent",
   "textures": {
     "down": "fossilslegacy:block/cultivator_bottom",
     "east": "fossilslegacy:block/lime_cultivator_side_off",
     "north": "fossilslegacy:block/lime_cultivator_side_off",
     "particle": "fossilslegacy:block/lime_cultivator_side_off",
     "south": "fossilslegacy:block/lime_cultivator_side_off",
-    "up": "fossilslegacy:block/lime_cultivator_top",
+    "up": "fossilslegacy:block/lime_cultivator_to",
     "west": "fossilslegacy:block/lime_cultivator_side_off"
   }
 }

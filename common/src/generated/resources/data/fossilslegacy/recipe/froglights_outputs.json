@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "misc",
-  "ingredient": {
-    "tag": "fossilslegacy:froglights"
-  },
-  "results": "fossilslegacy:results/froglight",
+  "fuels": "fossilslegacy:fuels/froglight",
+  "ingredient": "#fossilslegacy:froglights",
   "time": 100
 }

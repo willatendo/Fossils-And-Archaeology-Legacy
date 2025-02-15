@@ -4,6 +4,7 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
+import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.blockstates.Variant;
 import net.minecraft.client.data.models.blockstates.VariantProperties;
 import net.minecraft.client.data.models.model.*;
@@ -14,11 +15,18 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import org.apache.commons.compress.utils.Lists;
+import willatendo.fossilslegacy.client.model.ArticulatedFossilSpecialRenderer;
 import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.block.blocks.DrumBlock;
+import willatendo.fossilslegacy.server.block.blocks.FeederBlock;
+import willatendo.fossilslegacy.server.block.blocks.JurassicFernBlock;
+import willatendo.fossilslegacy.server.block.blocks.SoupCauldronBlock;
+import willatendo.fossilslegacy.server.block.properties.FABlockStateProperties;
 import willatendo.fossilslegacy.server.item.FAEquipmentAssets;
 import willatendo.fossilslegacy.server.item.FAItems;
 
@@ -198,8 +206,7 @@ public class FAModelProvider extends ModelProvider {
         basicItems.add(FAItems.MOA_EGG.get());
         basicItems.add(FAItems.MAGIC_CONCH.get());
         basicItems.add(FAItems.JURASSIC_FERN_SPORES.get());
-        //       this.getBuilder("articulated_fossil").parent(new ModelFile.UncheckedModelFile("builtin/entity")).texture("particle", this.modLoc("item/articulated_fossil")).transforms().transform(ItemDisplayContext.GUI).rotation(30.0F, 135.0F, 0.0F).translation(0.0F, 0.0F, 0.0F).scale(0.625F, 0.625F, 0.625F).end().transform(ItemDisplayContext.GROUND).rotation(0.0F, 0.0F, 0.0F).translation(0.0F, 3.0F, 0.0F).scale(0.25F, 0.25F, 0.25F).end().transform(ItemDisplayContext.HEAD).rotation(0.0F, 180.0F, 0.0F).translation(0.0F, 0.0F, 0.0F).scale(1.0F, 1.0F, 1.0F).end().transform(ItemDisplayContext.FIXED).rotation(0.0F, 0.0F, 0.0F).translation(0.0F, 3.0F, 0.0F).scale(0.5F, 0.5F, 0.5F).end().transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND).rotation(75.0F, 135.0F, 0.0F).translation(0.0F, 2.5F, 0.0F).scale(0.375F, 0.375F, 0.375F).end().transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND).rotation(0.0F, 135.0F, 0.0F).translation(0.0F, 0.0F, 0.0F).scale(0.4F, 0.4F, 0.4F).end();
-        itemModelGenerators.declareCustomModelItem(FAItems.ARTICULATED_FOSSIL.get());
+        itemModelGenerators.itemModelOutput.accept(FAItems.ARTICULATED_FOSSIL.get(), ItemModelUtils.specialModel(FAModelTemplates.TEMPLATE_ARTICULATED_FOSSIL.create(FAItems.ARTICULATED_FOSSIL.get(), new TextureMapping().put(TextureSlot.PARTICLE, this.modLocation("item/articulated_fossil")), itemModelGenerators.modelOutput), new ArticulatedFossilSpecialRenderer.Unbaked()));
         basicItems.add(FAItems.RELIC_SCRAP.get());
         basicItems.add(FAItems.STONE_TABLET.get());
         handheldItems.add(FAItems.ANCIENT_SWORD_ARTIFACT.get());
@@ -224,7 +231,7 @@ public class FAModelProvider extends ModelProvider {
         handheldItems.add(FAItems.ANCIENT_HOE.get());
         armorItems.add(new ArmorItemInfo(FAItems.ANCIENT_HELMET.get(), FAEquipmentAssets.ANCIENT, "helmet"));
         armorItems.add(new ArmorItemInfo(FAItems.ANCIENT_CHESTPLATE.get(), FAEquipmentAssets.ANCIENT, "chestplate"));
-        armorItems.add(new ArmorItemInfo(FAItems.ANCIENT_LEGGINGS.get(), FAEquipmentAssets.ANCIENT, "leggins"));
+        armorItems.add(new ArmorItemInfo(FAItems.ANCIENT_LEGGINGS.get(), FAEquipmentAssets.ANCIENT, "leggings"));
         armorItems.add(new ArmorItemInfo(FAItems.ANCIENT_BOOTS.get(), FAEquipmentAssets.ANCIENT, "boots"));
         handheldItems.add(FAItems.SCARAB_GEM_SWORD.get());
         handheldItems.add(FAItems.SCARAB_GEM_SHOVEL.get());
@@ -233,7 +240,7 @@ public class FAModelProvider extends ModelProvider {
         handheldItems.add(FAItems.SCARAB_GEM_HOE.get());
         armorItems.add(new ArmorItemInfo(FAItems.SCARAB_GEM_HELMET.get(), FAEquipmentAssets.SCARAB_GEM, "helmet"));
         armorItems.add(new ArmorItemInfo(FAItems.SCARAB_GEM_CHESTPLATE.get(), FAEquipmentAssets.SCARAB_GEM, "chestplate"));
-        armorItems.add(new ArmorItemInfo(FAItems.SCARAB_GEM_LEGGINGS.get(), FAEquipmentAssets.SCARAB_GEM, "leggins"));
+        armorItems.add(new ArmorItemInfo(FAItems.SCARAB_GEM_LEGGINGS.get(), FAEquipmentAssets.SCARAB_GEM, "leggings"));
         armorItems.add(new ArmorItemInfo(FAItems.SCARAB_GEM_BOOTS.get(), FAEquipmentAssets.SCARAB_GEM, "boots"));
         basicItems.add(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get());
         basicItems.add(FAItems.WOODEN_JAVELIN.get());
@@ -296,7 +303,7 @@ public class FAModelProvider extends ModelProvider {
 
         this.forAllItems(itemModelGenerators, basicItems, ModelTemplates.FLAT_ITEM);
         this.forAllItems(itemModelGenerators, handheldItems, ModelTemplates.FLAT_HANDHELD_ITEM);
-        texturedItems.forEach(itemInfo -> itemInfo.modelTemplate().create(itemInfo.item(), new TextureMapping().put(TextureSlot.LAYER0, itemInfo.texture()), itemModelGenerators.modelOutput));
+        texturedItems.forEach(itemInfo -> itemModelGenerators.itemModelOutput.accept(itemInfo.item(), ItemModelUtils.plainModel(itemInfo.modelTemplate().create(itemInfo.item(), new TextureMapping().put(TextureSlot.LAYER0, itemInfo.texture()), itemModelGenerators.modelOutput))));
         armorItems.forEach(armorItemInfo -> itemModelGenerators.generateTrimmableItem(armorItemInfo.item(), armorItemInfo.equipmentAsset(), armorItemInfo.name(), false));
         spawnEggItems.forEach(spawnEggItemInfo -> itemModelGenerators.generateSpawnEgg(spawnEggItemInfo.item(), spawnEggItemInfo.primaryColor(), spawnEggItemInfo.secondaryColor()));
     }
@@ -305,7 +312,52 @@ public class FAModelProvider extends ModelProvider {
         FABlockFamilies.getAllFamilies().filter(BlockFamily::shouldGenerateModel).forEach(blockFamily -> blockModelGenerators.family(blockFamily.getBaseBlock()).generateFor(blockFamily));
         this.createFossil(blockModelGenerators, FABlocks.FOSSIL_ORE.get(), false, "shells", "raptor_leg", "tyrannosaurus_skull");
         this.createFossil(blockModelGenerators, FABlocks.DEEPSLATE_FOSSIL_ORE.get(), true, "shells", "anomalocaris", "trilobite");
-
+        this.createSkull(blockModelGenerators, FABlocks.SKULL_BLOCK.get(), this.modLocation("block/skull_front"));
+        this.createSkull(blockModelGenerators, FABlocks.SKULL_LANTERN_BLOCK.get(), this.modLocation("block/skull_lantern_front"));
+        this.createAnalyzer(blockModelGenerators, FABlocks.ANALYZER.get());
+        this.createCultivator(blockModelGenerators, FABlocks.WHITE_CULTIVATOR.get(), "white");
+        this.createCultivator(blockModelGenerators, FABlocks.ORANGE_CULTIVATOR.get(), "orange");
+        this.createCultivator(blockModelGenerators, FABlocks.MAGENTA_CULTIVATOR.get(), "magenta");
+        this.createCultivator(blockModelGenerators, FABlocks.LIGHT_BLUE_CULTIVATOR.get(), "light_blue");
+        this.createCultivator(blockModelGenerators, FABlocks.YELLOW_CULTIVATOR.get(), "yellow");
+        this.createCultivator(blockModelGenerators, FABlocks.LIME_CULTIVATOR.get(), "lime");
+        this.createCultivator(blockModelGenerators, FABlocks.PINK_CULTIVATOR.get(), "pink");
+        this.createCultivator(blockModelGenerators, FABlocks.GRAY_CULTIVATOR.get(), "gray");
+        this.createCultivator(blockModelGenerators, FABlocks.LIGHT_GRAY_CULTIVATOR.get(), "light_gray");
+        this.createCultivator(blockModelGenerators, FABlocks.CYAN_CULTIVATOR.get(), "cyan");
+        this.createCultivator(blockModelGenerators, FABlocks.PURPLE_CULTIVATOR.get(), "purple");
+        this.createCultivator(blockModelGenerators, FABlocks.BLUE_CULTIVATOR.get(), "blue");
+        this.createCultivator(blockModelGenerators, FABlocks.BROWN_CULTIVATOR.get(), "brown");
+        this.createCultivator(blockModelGenerators, FABlocks.GREEN_CULTIVATOR.get(), "green");
+        this.createCultivator(blockModelGenerators, FABlocks.RED_CULTIVATOR.get(), "red");
+        this.createCultivator(blockModelGenerators, FABlocks.BLACK_CULTIVATOR.get(), "black");
+        this.createArchaeologyWorkbench(blockModelGenerators, FABlocks.ARCHAEOLOGY_WORKBENCH.get());
+        this.createPalaeontologyTable(blockModelGenerators, FABlocks.PALAEONTOLOGY_TABLE.get());
+        this.createGeneModificationTable(blockModelGenerators, FABlocks.GENE_MODIFICATION_TABLE.get());
+        this.createJurassicFern(blockModelGenerators, FABlocks.JURASSIC_FERN.get());
+        this.createDrum(blockModelGenerators, FABlocks.DRUM.get());
+        this.createFeeder(blockModelGenerators, FABlocks.FEEDER.get());
+        this.createAxolotlSpawn(blockModelGenerators, FABlocks.AXOLOTLSPAWN.get());
+        this.createTimeMachine(blockModelGenerators, FABlocks.TIME_MACHINE.get());
+        this.createCauldron(blockModelGenerators, FABlocks.RAW_CHICKEN_SOUP_CAULDRON.get(), this.modLocation("block/raw_chicken_soup"));
+        this.createCauldron(blockModelGenerators, FABlocks.COOKED_CHICKEN_SOUP_CAULDRON.get(), this.modLocation("block/cooked_chicken_soup"));
+        this.createCauldron(blockModelGenerators, FABlocks.RAW_BERRY_MEDLEY_CAULDRON.get(), this.modLocation("block/raw_berry_medley"));
+        this.createCauldron(blockModelGenerators, FABlocks.COOKED_BERRY_MEDLEY_CAULDRON.get(), this.modLocation("block/cooked_berry_medley"));
+        this.createBasic(blockModelGenerators, FABlocks.PERMAFROST.get());
+        this.createBasic(blockModelGenerators, FABlocks.ICED_STONE.get());
+        this.createMayanVase(blockModelGenerators, FABlocks.MAYAN_VASE.get(), this.modLocation("block/mayan_pot_side"));
+        this.createMayanVase(blockModelGenerators, FABlocks.MAYAN_JADE_VASE.get(), this.modLocation("block/mayan_pot_side_jade"));
+        this.createMayanVase(blockModelGenerators, FABlocks.MAYAN_OCELOT_VASE.get(), this.modLocation("block/mayan_pot_side_ocelot"));
+        this.createMayanVase(blockModelGenerators, FABlocks.MAYAN_VILLAGER_VASE.get(), this.modLocation("block/mayan_pot_side_villager"));
+        this.createLlamaStatue(blockModelGenerators, FABlocks.IRON_LLAMA_STATUE.get(), this.modLocation("block/iron_llama_statue"), this.mcLocation("block/iron_block"));
+        this.createLlamaStatue(blockModelGenerators, FABlocks.COPPER_LLAMA_STATUE.get(), this.modLocation("block/copper_llama_statue"), this.mcLocation("block/copper_block"));
+        this.createLlamaStatue(blockModelGenerators, FABlocks.EXPOSED_COPPER_LLAMA_STATUE.get(), this.modLocation("block/exposed_copper_llama_statue"), this.mcLocation("block/exposed_copper"));
+        this.createLlamaStatue(blockModelGenerators, FABlocks.WEATHERED_COPPER_LLAMA_STATUE.get(), this.modLocation("block/weathered_copper_llama_statue"), this.mcLocation("block/weathered_copper"));
+        this.createLlamaStatue(blockModelGenerators, FABlocks.OXIDIZED_COPPER_LLAMA_STATUE.get(), this.modLocation("block/oxidized_copper_llama_statue"), this.mcLocation("block/oxidized_copper"));
+        this.createLlamaStatue(blockModelGenerators, FABlocks.WAXED_COPPER_LLAMA_STATUE.get(), this.modLocation("block/copper_llama_statue"), this.mcLocation("block/copper_block"));
+        this.createLlamaStatue(blockModelGenerators, FABlocks.WAXED_EXPOSED_COPPER_LLAMA_STATUE.get(), this.modLocation("block/exposed_copper_llama_statue"), this.mcLocation("block/exposed_copper"));
+        this.createLlamaStatue(blockModelGenerators, FABlocks.WAXED_WEATHERED_COPPER_LLAMA_STATUE.get(), this.modLocation("block/weathered_copper_llama_statue"), this.mcLocation("block/weathered_copper"));
+        this.createLlamaStatue(blockModelGenerators, FABlocks.WAXED_OXIDIZED_COPPER_LLAMA_STATUE.get(), this.modLocation("block/oxidized_copper_llama_statue"), this.mcLocation("block/oxidized_copper"));
         blockModelGenerators.woodProvider(FABlocks.CALAMITES_LOG.get()).logWithHorizontal(FABlocks.CALAMITES_LOG.get()).wood(FABlocks.CALAMITES_WOOD.get());
         blockModelGenerators.woodProvider(FABlocks.STRIPPED_CALAMITES_LOG.get()).logWithHorizontal(FABlocks.STRIPPED_CALAMITES_LOG.get()).wood(FABlocks.STRIPPED_CALAMITES_WOOD.get());
         blockModelGenerators.createHangingSign(FABlocks.STRIPPED_CALAMITES_LOG.get(), FABlocks.CALAMITES_HANGING_SIGN.get(), FABlocks.CALAMITES_WALL_HANGING_SIGN.get());
@@ -329,22 +381,106 @@ public class FAModelProvider extends ModelProvider {
         itemModelGenerators.itemModelOutput.accept(therizinosaursClawItem, ItemModelGenerators.createFlatModelDispatch(flatUnbaked, unbaked3d));
     }
 
+    private void createBasic(BlockModelGenerators blockModelGenerators, Block block) {
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, ModelTemplates.CUBE_ALL.create(block, TextureMapping.cube(block), blockModelGenerators.modelOutput)));
+    }
+
     private void createFossil(BlockModelGenerators blockModelGenerators, Block fossil, boolean deepslate, String... variantNames) {
         List<Variant> variants = Lists.newArrayList();
-        for (String variantName : variantNames) {
+        for (int i = 0; i < variantNames.length; i++) {
+            String variantName = variantNames[i];
             String blockId = BuiltInRegistries.BLOCK.getKey(fossil).getPath();
-            String texturePath = deepslate ? "blocks/deepslate_" + variantName + "_" + blockId.replace("deepslate_", "") : "blocks/" + variantName + "_" + blockId;
-            variants.add(Variant.variant().with(VariantProperties.MODEL, ModelTemplates.CUBE_ALL.create(fossil, TextureMapping.cube(this.modLocation(texturePath)), blockModelGenerators.modelOutput)));
+            String texturePath = deepslate ? "block/deepslate_" + variantName + "_" + blockId.replace("deepslate_", "") : "block/" + variantName + "_" + blockId;
+            ResourceLocation model = ModelTemplates.CUBE_ALL.create(this.modLocation(texturePath), TextureMapping.cube(this.modLocation(texturePath)), blockModelGenerators.modelOutput);
+            variants.add(Variant.variant().with(VariantProperties.MODEL, model));
+            if (i == 0) {
+                blockModelGenerators.registerSimpleItemModel(fossil, model);
+            }
         }
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(fossil, variants.toArray(Variant[]::new)));
     }
 
-    private void createSkull(BlockModelGenerators blockModelGenerators, Block skull) {
+    private void createSkull(BlockModelGenerators blockModelGenerators, Block skull, ResourceLocation frontTexture) {
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(skull, Variant.variant().with(VariantProperties.MODEL, ModelTemplates.CUBE.create(skull, new TextureMapping().put(TextureSlot.DOWN, this.modLocation("block/skull")).put(TextureSlot.EAST, this.modLocation("block/skull_crack")).put(TextureSlot.NORTH, frontTexture).put(TextureSlot.PARTICLE, this.modLocation("block/skull_crack")).put(TextureSlot.SOUTH, this.modLocation("block/skull_crack")).put(TextureSlot.UP, this.modLocation("block/skull")).put(TextureSlot.WEST, this.modLocation("block/skull_crack")), blockModelGenerators.modelOutput))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
+    }
 
+    private void createAnalyzer(BlockModelGenerators blockModelGenerators, Block analyzer) {
+        this.createActiveType(blockModelGenerators, analyzer, ModelTemplates.CUBE.create(analyzer, new TextureMapping().put(TextureSlot.DOWN, this.modLocation("block/analyzer_top")).put(TextureSlot.EAST, this.modLocation("block/analyzer_side")).put(TextureSlot.NORTH, this.modLocation("block/analyzer_front_off")).put(TextureSlot.PARTICLE, this.modLocation("block/analyzer_side")).put(TextureSlot.SOUTH, this.modLocation("block/analyzer_back")).put(TextureSlot.UP, this.modLocation("block/analyzer_top")).put(TextureSlot.WEST, this.modLocation("block/analyzer_side")), blockModelGenerators.modelOutput), ModelTemplates.CUBE.create(ModelLocationUtils.getModelLocation(analyzer).withSuffix("_active"), new TextureMapping().put(TextureSlot.DOWN, this.modLocation("block/analyzer_top")).put(TextureSlot.EAST, this.modLocation("block/analyzer_side")).put(TextureSlot.NORTH, this.modLocation("block/analyzer_front_on")).put(TextureSlot.PARTICLE, this.modLocation("block/analyzer_side")).put(TextureSlot.SOUTH, this.modLocation("block/analyzer_back")).put(TextureSlot.UP, this.modLocation("block/analyzer_top")).put(TextureSlot.WEST, this.modLocation("block/analyzer_side")), blockModelGenerators.modelOutput), FABlockStateProperties.ACTIVE, true);
+    }
+
+    private void createCultivator(BlockModelGenerators blockModelGenerators, Block cultivator, String color) {
+        this.createActiveType(blockModelGenerators, cultivator, FAModelTemplates.TEMPLATE_CULTIVATOR.create(cultivator, new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/" + color + "_cultivator_side")).put(TextureSlot.TOP, this.modLocation("block/" + color + "_cultivator_top")), blockModelGenerators.modelOutput), FAModelTemplates.TEMPLATE_CULTIVATOR_ACTIVE.create(ModelLocationUtils.getModelLocation(cultivator).withSuffix("_active"), new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/" + color + "_cultivator_side")).put(TextureSlot.TOP, this.modLocation("block/" + color + "_cultivator_top")), blockModelGenerators.modelOutput), FABlockStateProperties.ACTIVE, false);
+    }
+
+    private void createArchaeologyWorkbench(BlockModelGenerators blockModelGenerators, Block archeologyWorkbench) {
+        this.createActiveType(blockModelGenerators, archeologyWorkbench, ModelTemplates.CUBE.create(archeologyWorkbench, new TextureMapping().put(TextureSlot.DOWN, this.modLocation("block/archaeology_workbench_bottom")).put(TextureSlot.EAST, this.modLocation("block/archaeology_workbench_side")).put(TextureSlot.NORTH, this.modLocation("block/archaeology_workbench_books")).put(TextureSlot.PARTICLE, this.modLocation("block/archaeology_workbench_side")).put(TextureSlot.SOUTH, this.modLocation("block/archaeology_workbench_books")).put(TextureSlot.UP, this.modLocation("block/archaeology_workbench_top_off")).put(TextureSlot.WEST, this.modLocation("block/archaeology_workbench_side")), blockModelGenerators.modelOutput), ModelTemplates.CUBE.create(ModelLocationUtils.getModelLocation(archeologyWorkbench).withSuffix("_active"), new TextureMapping().put(TextureSlot.DOWN, this.modLocation("block/archaeology_workbench_bottom")).put(TextureSlot.EAST, this.modLocation("block/archaeology_workbench_side")).put(TextureSlot.NORTH, this.modLocation("block/archaeology_workbench_books")).put(TextureSlot.PARTICLE, this.modLocation("block/archaeology_workbench_side")).put(TextureSlot.SOUTH, this.modLocation("block/archaeology_workbench_books")).put(TextureSlot.UP, this.modLocation("block/archaeology_workbench_top_on")).put(TextureSlot.WEST, this.modLocation("block/archaeology_workbench_side")), blockModelGenerators.modelOutput), FABlockStateProperties.ACTIVE, true);
+    }
+
+    private void createPalaeontologyTable(BlockModelGenerators blockModelGenerators, Block palaeontologyTable) {
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(palaeontologyTable, Variant.variant().with(VariantProperties.MODEL, ModelTemplates.CUBE_BOTTOM_TOP.create(palaeontologyTable, new TextureMapping().put(TextureSlot.BOTTOM, this.modLocation("block/lepidodendron_planks")).put(TextureSlot.PARTICLE, this.modLocation("block/palaeontology_table_side")).put(TextureSlot.SIDE, this.modLocation("block/palaeontology_table_side")).put(TextureSlot.TOP, this.modLocation("block/palaeontology_table_top")), blockModelGenerators.modelOutput))));
+    }
+
+    private void createActiveType(BlockModelGenerators blockModelGenerators, Block block, ResourceLocation inactive, ResourceLocation active, BooleanProperty booleanProperty, boolean directional) {
+        MultiVariantGenerator multiVariantGenerator = MultiVariantGenerator.multiVariant(block, Variant.variant()).with(BlockModelGenerators.createBooleanModelDispatch(booleanProperty, active, inactive));
+        if (directional) {
+            multiVariantGenerator.with(BlockModelGenerators.createHorizontalFacingDispatch());
+        }
+        blockModelGenerators.blockStateOutput.accept(multiVariantGenerator);
+    }
+
+    private void createGeneModificationTable(BlockModelGenerators blockModelGenerators, Block geneModificationTable) {
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(geneModificationTable, Variant.variant().with(VariantProperties.MODEL, FAModelTemplates.TEMPLATE_GENE_MODIFICATION_TABLE.create(geneModificationTable, new TextureMapping().put(TextureSlot.FRONT, this.modLocation("block/gene_modification_table_front_off")), blockModelGenerators.modelOutput))));
+    }
+
+    private void createJurassicFern(BlockModelGenerators blockModelGenerators, Block jurassicFern) {
+        blockModelGenerators.registerSimpleItemModel(jurassicFern, ModelTemplates.FLAT_ITEM.create(jurassicFern, new TextureMapping().put(TextureSlot.LAYER0, this.modLocation("block/fern_lower_3")), blockModelGenerators.modelOutput));
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(jurassicFern).with(PropertyDispatch.properties(JurassicFernBlock.HALF, JurassicFernBlock.GROWTH).select(DoubleBlockHalf.LOWER, 0, Variant.variant().with(VariantProperties.MODEL, this.createJurassicFernModel(blockModelGenerators, jurassicFern, DoubleBlockHalf.LOWER, 0))).select(DoubleBlockHalf.LOWER, 1, Variant.variant().with(VariantProperties.MODEL, this.createJurassicFernModel(blockModelGenerators, jurassicFern, DoubleBlockHalf.LOWER, 1))).select(DoubleBlockHalf.LOWER, 2, Variant.variant().with(VariantProperties.MODEL, this.createJurassicFernModel(blockModelGenerators, jurassicFern, DoubleBlockHalf.LOWER, 2))).select(DoubleBlockHalf.LOWER, 3, Variant.variant().with(VariantProperties.MODEL, this.createJurassicFernModel(blockModelGenerators, jurassicFern, DoubleBlockHalf.LOWER, 3))).select(DoubleBlockHalf.LOWER, 4, Variant.variant().with(VariantProperties.MODEL, this.createJurassicFernModel(blockModelGenerators, jurassicFern, DoubleBlockHalf.LOWER, 4))).select(DoubleBlockHalf.LOWER, 5, Variant.variant().with(VariantProperties.MODEL, this.createJurassicFernModel(blockModelGenerators, jurassicFern, DoubleBlockHalf.LOWER, 5))).select(DoubleBlockHalf.UPPER, 0, Variant.variant().with(VariantProperties.MODEL, this.createJurassicFernModel(blockModelGenerators, jurassicFern, DoubleBlockHalf.UPPER, 0))).select(DoubleBlockHalf.UPPER, 1, Variant.variant().with(VariantProperties.MODEL, this.createJurassicFernModel(blockModelGenerators, jurassicFern, DoubleBlockHalf.UPPER, 1))).select(DoubleBlockHalf.UPPER, 2, Variant.variant().with(VariantProperties.MODEL, this.createJurassicFernModel(blockModelGenerators, jurassicFern, DoubleBlockHalf.UPPER, 2))).select(DoubleBlockHalf.UPPER, 3, Variant.variant().with(VariantProperties.MODEL, this.createJurassicFernModel(blockModelGenerators, jurassicFern, DoubleBlockHalf.UPPER, 3))).select(DoubleBlockHalf.UPPER, 4, Variant.variant().with(VariantProperties.MODEL, this.createJurassicFernModel(blockModelGenerators, jurassicFern, DoubleBlockHalf.UPPER, 4))).select(DoubleBlockHalf.UPPER, 5, Variant.variant().with(VariantProperties.MODEL, this.createJurassicFernModel(blockModelGenerators, jurassicFern, DoubleBlockHalf.UPPER, 5)))));
+    }
+
+    private ResourceLocation createJurassicFernModel(BlockModelGenerators blockModelGenerators, Block jurassicFern, DoubleBlockHalf doubleBlockHalf, int growthStage) {
+        int i = (doubleBlockHalf == DoubleBlockHalf.UPPER && growthStage < 4) ? 4 : growthStage;
+        return FAModelTemplates.TEMPLATE_COLORED_CROP.create(ModelLocationUtils.getModelLocation(jurassicFern).withSuffix("_" + doubleBlockHalf.getSerializedName() + "_" + growthStage), new TextureMapping().put(TextureSlot.CROP, this.modLocation("block/jurassic_fern_colored_" + doubleBlockHalf.getSerializedName() + "_" + i)).put(FATextureSlot.CROP_LEAVES, this.modLocation("block/jurassic_fern_leaves_" + doubleBlockHalf.getSerializedName() + "_" + i)), blockModelGenerators.modelOutput);
+    }
+
+    private void createDrum(BlockModelGenerators blockModelGenerators, Block drum) {
+        ResourceLocation followModel = ModelTemplates.CUBE.create(ModelLocationUtils.getModelLocation(drum).withSuffix("_follow"), new TextureMapping().put(TextureSlot.DOWN, this.mcLocation("block/spruce_planks")).put(TextureSlot.EAST, this.modLocation("block/drum_side")).put(TextureSlot.NORTH, this.modLocation("block/drum_side")).put(TextureSlot.PARTICLE, this.modLocation("block/drum_side")).put(TextureSlot.SOUTH, this.modLocation("block/drum_side")).put(TextureSlot.UP, this.modLocation("block/drum_follow")).put(TextureSlot.WEST, this.modLocation("block/drum_side")), blockModelGenerators.modelOutput);
+        blockModelGenerators.registerSimpleItemModel(drum, followModel);
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(drum).with(PropertyDispatch.property(DrumBlock.COMMAND_TYPE_PROPERTY).select("follow", Variant.variant().with(VariantProperties.MODEL, followModel)).select("stay", Variant.variant().with(VariantProperties.MODEL, ModelTemplates.CUBE.create(ModelLocationUtils.getModelLocation(drum).withSuffix("_stay"), new TextureMapping().put(TextureSlot.DOWN, this.mcLocation("block/spruce_planks")).put(TextureSlot.EAST, this.modLocation("block/drum_side")).put(TextureSlot.NORTH, this.modLocation("block/drum_side")).put(TextureSlot.PARTICLE, this.modLocation("block/drum_side")).put(TextureSlot.SOUTH, this.modLocation("block/drum_side")).put(TextureSlot.UP, this.modLocation("block/drum_stay")).put(TextureSlot.WEST, this.modLocation("block/drum_side")), blockModelGenerators.modelOutput))).select("free_move", Variant.variant().with(VariantProperties.MODEL, ModelTemplates.CUBE.create(ModelLocationUtils.getModelLocation(drum).withSuffix("_free_move"), new TextureMapping().put(TextureSlot.DOWN, this.mcLocation("block/spruce_planks")).put(TextureSlot.EAST, this.modLocation("block/drum_side")).put(TextureSlot.NORTH, this.modLocation("block/drum_side")).put(TextureSlot.PARTICLE, this.modLocation("block/drum_side")).put(TextureSlot.SOUTH, this.modLocation("block/drum_side")).put(TextureSlot.UP, this.modLocation("block/drum_free_move")).put(TextureSlot.WEST, this.modLocation("block/drum_side")), blockModelGenerators.modelOutput)))));
+    }
+
+    private void createFeeder(BlockModelGenerators blockModelGenerators, Block feeder) {
+        ResourceLocation emptyModel = ModelTemplates.CUBE.create(ModelLocationUtils.getModelLocation(feeder).withSuffix("_empty"), new TextureMapping().put(TextureSlot.DOWN, this.mcLocation("block/smooth_stone")).put(TextureSlot.EAST, this.modLocation("block/feeder_side")).put(TextureSlot.NORTH, this.modLocation("block/feeder_front")).put(TextureSlot.PARTICLE, this.modLocation("block/feeder_side")).put(TextureSlot.SOUTH, this.modLocation("block/feeder_side")).put(TextureSlot.UP, this.modLocation("block/feeder_top_empty")).put(TextureSlot.WEST, this.modLocation("block/feeder_side")), blockModelGenerators.modelOutput);
+        blockModelGenerators.registerSimpleItemModel(feeder, emptyModel);
+        this.createActiveType(blockModelGenerators, feeder, emptyModel, ModelTemplates.CUBE.create(ModelLocationUtils.getModelLocation(feeder).withSuffix("_full"), new TextureMapping().put(TextureSlot.DOWN, this.mcLocation("block/smooth_stone")).put(TextureSlot.EAST, this.modLocation("block/feeder_side")).put(TextureSlot.NORTH, this.modLocation("block/feeder_front")).put(TextureSlot.PARTICLE, this.modLocation("block/feeder_side")).put(TextureSlot.SOUTH, this.modLocation("block/feeder_side")).put(TextureSlot.UP, this.modLocation("block/feeder_top_empty")).put(TextureSlot.WEST, this.modLocation("block/feeder_side")), blockModelGenerators.modelOutput), FeederBlock.HAS_FOOD, true);
+    }
+
+    private void createAxolotlSpawn(BlockModelGenerators blockModelGenerators, Block axolotlSpawn) {
+        blockModelGenerators.registerSimpleFlatItemModel(axolotlSpawn);
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(axolotlSpawn, FAModelTemplates.FROGSPAWN.create(axolotlSpawn, new TextureMapping().put(TextureSlot.TEXTURE, this.modLocation("block/axolotlspawn")).put(TextureSlot.PARTICLE, this.modLocation("block/axolotlspawn")), blockModelGenerators.modelOutput)));
+    }
+
+    private void createTimeMachine(BlockModelGenerators blockModelGenerators, Block timeMachine) {
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(timeMachine, FAModelTemplates.TEMPLATE_TIME_MACHINE.create(timeMachine, new TextureMapping(), blockModelGenerators.modelOutput)));
+    }
+
+    private void createCauldron(BlockModelGenerators blockModelGenerators, Block cauldron, ResourceLocation texture) {
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(cauldron).with(PropertyDispatch.property(SoupCauldronBlock.LEVEL).select(1, Variant.variant().with(VariantProperties.MODEL, this.createCauldonModel(blockModelGenerators, cauldron, FAModelTemplates.TEMPLATE_SOUP_CAULDRON_1, 1, texture))).select(2, Variant.variant().with(VariantProperties.MODEL, this.createCauldonModel(blockModelGenerators, cauldron, FAModelTemplates.TEMPLATE_SOUP_CAULDRON_2, 2, texture))).select(3, Variant.variant().with(VariantProperties.MODEL, this.createCauldonModel(blockModelGenerators, cauldron, FAModelTemplates.TEMPLATE_SOUP_CAULDRON_3, 3, texture))).select(4, Variant.variant().with(VariantProperties.MODEL, this.createCauldonModel(blockModelGenerators, cauldron, FAModelTemplates.TEMPLATE_SOUP_CAULDRON_4, 4, texture))).select(5, Variant.variant().with(VariantProperties.MODEL, this.createCauldonModel(blockModelGenerators, cauldron, FAModelTemplates.TEMPLATE_SOUP_CAULDRON_5, 5, texture))).select(6, Variant.variant().with(VariantProperties.MODEL, this.createCauldonModel(blockModelGenerators, cauldron, FAModelTemplates.TEMPLATE_SOUP_CAULDRON_6, 6, texture))).select(7, Variant.variant().with(VariantProperties.MODEL, this.createCauldonModel(blockModelGenerators, cauldron, FAModelTemplates.TEMPLATE_SOUP_CAULDRON_7, 7, texture))).select(8, Variant.variant().with(VariantProperties.MODEL, this.createCauldonModel(blockModelGenerators, cauldron, FAModelTemplates.TEMPLATE_SOUP_CAULDRON_8, 8, texture)))));
+    }
+
+    private ResourceLocation createCauldonModel(BlockModelGenerators blockModelGenerators, Block cauldron, ModelTemplate modelTemplate, int i, ResourceLocation texture) {
+        return modelTemplate.create(ModelLocationUtils.getModelLocation(cauldron).withSuffix("_" + i), new TextureMapping().put(TextureSlot.CONTENT, texture), blockModelGenerators.modelOutput);
+    }
+
+    private void createMayanVase(BlockModelGenerators blockModelGenerators, Block mayanVase, ResourceLocation texture) {
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(mayanVase, Variant.variant().with(VariantProperties.MODEL, FAModelTemplates.TEMPLATE_VASE.create(mayanVase, new TextureMapping().put(TextureSlot.SIDE, texture), blockModelGenerators.modelOutput))));
+    }
+
+    private void createLlamaStatue(BlockModelGenerators blockModelGenerators, Block llama, ResourceLocation texture, ResourceLocation particle) {
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(llama, Variant.variant().with(VariantProperties.MODEL, FAModelTemplates.TEMPLATE_LLAMA.create(llama, new TextureMapping().put(TextureSlot.TEXTURE, texture).put(TextureSlot.PARTICLE, particle), blockModelGenerators.modelOutput))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
     }
 
     private void forAllItems(ItemModelGenerators itemModelGenerators, List<Item> items, ModelTemplate modelTemplate) {
-        items.forEach(item -> itemModelGenerators.createFlatItemModel(item, modelTemplate));
+        items.forEach(item -> itemModelGenerators.generateFlatItem(item, modelTemplate));
     }
 
     private record ItemInfo(Item item, ResourceLocation texture, ModelTemplate modelTemplate) {

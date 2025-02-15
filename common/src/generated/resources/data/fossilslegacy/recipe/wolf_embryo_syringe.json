@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "egg",
-  "ingredient": {
-    "item": "fossilslegacy:wolf_dna"
-  },
+  "ingredient": "fossilslegacy:wolf_dna",
   "result": {
     "id": "fossilslegacy:wolf_embryo_syringe"
   },

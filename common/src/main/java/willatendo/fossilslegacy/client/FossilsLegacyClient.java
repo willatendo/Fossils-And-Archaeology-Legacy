@@ -19,6 +19,7 @@ import willatendo.fossilslegacy.server.block.FAWoodTypes;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.menu.FAMenuTypes;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.client.event.registry.*;
 
 public final class FossilsLegacyClient {
@@ -105,6 +106,10 @@ public final class FossilsLegacyClient {
         modelRegister.register(FABlockEntityTypes.FOSSILS_HANGING_SIGN.get(), HangingSignRenderer::new);
         modelRegister.register(FABlockEntityTypes.TIME_MACHINE.get(), TimeMachineClockRenderer::new);
         modelRegister.register(FABlockEntityTypes.VASE.get(), VaseRenderer::new);
+    }
+
+    public static void specialModelsEvent(SpecialRendererRegistry specialRendererRegistry) {
+        specialRendererRegistry.register(FAUtils.resource("articulated_fossil"), ArticulatedFossilSpecialRenderer.Unbaked.MAP_CODEC);
     }
 
     public static void modelLayerEvent(ModelLayerRegistry modelLayerRegister) {

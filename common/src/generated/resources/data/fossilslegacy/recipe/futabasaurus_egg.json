@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "egg",
-  "ingredient": {
-    "item": "fossilslegacy:futabasaurus_dna"
-  },
+  "ingredient": "fossilslegacy:futabasaurus_dna",
   "result": {
     "id": "fossilslegacy:futabasaurus_egg"
   },

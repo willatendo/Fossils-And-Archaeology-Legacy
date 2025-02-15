@@ -16,7 +16,7 @@ public enum BuiltInAnimationTypes implements BuiltInAnimationType {
     LEGACY_CARNOTAURUS_WALK("legacy_carnotaurus_walk", dinosaurRenderState -> true, CarnotaurusAnimations::legacyCarnotaurusWalkAnimation),
     LEGACY_CRYOLOPHOSAURUS_WALK("legacy_cryolophosaurus_walk", dinosaurRenderState -> true, CrolophosaurusAnimations::legacyCryolophosaurusWalkAnimation),
     LEGACY_DILOPHOSAURUS_WALK("legacy_dilophosaurus_walk", dinosaurRenderState -> true, DilophosaurusAnimations::legacyDilophosaurusWalkAnimation),
-    LEGACY_FUTABASAURUS_SWIM("leagacy_futabasaurus_swim", dinosaurRenderState -> true, FutabasaurusAnimations::legacyFutabasaurusSwimAnimation),
+    LEGACY_FUTABASAURUS_SWIM("legacy_futabasaurus_swim", dinosaurRenderState -> true, FutabasaurusAnimations::legacyFutabasaurusSwimAnimation),
     LEGACY_MOSASAURUS_SWIM("legacy_mosasaurus_swim", dinosaurRenderState -> true, MosasaurusAnimations::legacyMosasaurusSwimAnimation),
     LEGACY_PTERANODON_FLY("legacy_pteranodon_fly", dinosaurRenderState -> dinosaurRenderState instanceof PteranodonRenderState, PteranodonAnimations::legacyPteranodonFlyingAnimation),
     LEGACY_PTERANODON_HEAD("legacy_pteranodon_head", dinosaurRenderState -> true, PteranodonAnimations::legacyPteranodonHeadAnimation),

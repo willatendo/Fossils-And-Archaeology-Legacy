@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "misc",
-  "ingredient": {
-    "item": "minecraft:feather"
-  },
-  "results": "fossilslegacy:results/feather",
+  "fuels": "fossilslegacy:fuels/feather",
+  "ingredient": "minecraft:feather",
   "time": 100
 }

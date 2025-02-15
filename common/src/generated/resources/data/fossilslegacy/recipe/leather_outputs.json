@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "misc",
-  "ingredient": {
-    "item": "minecraft:leather"
-  },
-  "results": "fossilslegacy:results/leather",
+  "fuels": "fossilslegacy:fuels/leather",
+  "ingredient": "minecraft:leather",
   "time": 100
 }

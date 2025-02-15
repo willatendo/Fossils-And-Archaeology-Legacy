@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "misc",
-  "ingredient": {
-    "tag": "minecraft:wool"
-  },
-  "results": "fossilslegacy:results/wool",
+  "fuels": "fossilslegacy:fuels/wool",
+  "ingredient": "#minecraft:wool",
   "time": 100
 }

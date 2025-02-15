@@ -25,7 +25,7 @@ import java.util.function.Supplier;
 public final class FAEntityTypes {
     public static final SimpleRegistry<EntityType<?>> ENTITY_TYPES = SimpleRegistry.create(Registries.ENTITY_TYPE, FAUtils.ID);
 
-    public static final SimpleHolder<EntityType<AncientLightningBolt>> ANCIENT_LIGHTNING_BOLT = FAEntityTypes.register("ancient_lightning_bolt", FAEntityTypes.simple(AncientLightningBolt::new, MobCategory.MISC, 0.0F, 0.0F).noSave());
+    public static final SimpleHolder<EntityType<AncientLightningBolt>> ANCIENT_LIGHTNING_BOLT = FAEntityTypes.register("ancient_lightning_bolt", FAEntityTypes.simple(AncientLightningBolt::new, MobCategory.MISC, 0.0F, 0.0F).noSave().noLootTable());
 
     public static final SimpleHolder<EntityType<Brachiosaurus>> BRACHIOSAURUS = FAEntityTypes.register("brachiosaurus", FAEntityTypes.simple(Brachiosaurus::new, MobCategory.CREATURE, 1.0F, 1.5F));
     public static final SimpleHolder<EntityType<Dilophosaurus>> DILOPHOSAURUS = FAEntityTypes.register("dilophosaurus", FAEntityTypes.simple(Dilophosaurus::new, MobCategory.CREATURE, 0.5F, 0.5F));
@@ -51,7 +51,7 @@ public final class FAEntityTypes {
     public static final SimpleHolder<EntityType<Spinosaurus>> SPINOSAURUS = FAEntityTypes.register("spinosaurus", FAEntityTypes.simple(Spinosaurus::new, MobCategory.CREATURE, 0.4F, 0.7F));
     public static final SimpleHolder<EntityType<Ankylosaurus>> ANKYLOSAURUS = FAEntityTypes.register("ankylosaurus", FAEntityTypes.simple(Ankylosaurus::new, MobCategory.CREATURE, 0.5F, 0.5F));
 
-    public static final SimpleHolder<EntityType<Fossil>> FOSSIL = FAEntityTypes.register("fossil", FAEntityTypes.simple(Fossil::new, MobCategory.MISC, 0.5F, 0.5F));
+    public static final SimpleHolder<EntityType<Fossil>> FOSSIL = FAEntityTypes.register("fossil", FAEntityTypes.simple(Fossil::new, MobCategory.MISC, 0.5F, 0.5F).noLootTable());
 
     public static final SimpleHolder<EntityType<Egg>> EGG = FAEntityTypes.register("egg", FAEntityTypes.simple(Egg::new, MobCategory.CREATURE, 0.5F, 0.5F));
 
@@ -79,18 +79,18 @@ public final class FAEntityTypes {
     public static final SimpleHolder<EntityType<TamedZombifiedPiglin>> TAMED_ZOMBIFIED_PIGLIN = FAEntityTypes.register("tamed_zombified_piglin", FAEntityTypes.simple(TamedZombifiedPiglin::new, MobCategory.MONSTER, 0.6F, 1.95F));
     public static final SimpleHolder<EntityType<Failuresaurus>> FAILURESAURUS = FAEntityTypes.register("failuresaurus", FAEntityTypes.simple(Failuresaurus::new, MobCategory.MONSTER, 1.0F, 1.0F));
 
-    public static final SimpleHolder<EntityType<ThrownJavelin>> THROWN_JAVELIN = FAEntityTypes.register("thrown_javelin", FAEntityTypes.simple(ThrownJavelin::new, MobCategory.MISC, 0.5F, 0.5F));
-    public static final SimpleHolder<EntityType<ThrownAnimalEgg>> THROWN_INCUBATED_EGG = FAEntityTypes.register("thrown_incubated_egg", FAEntityTypes.simple(ThrownAnimalEgg::new, MobCategory.MISC, 0.25F, 0.25F));
-    public static final SimpleHolder<EntityType<DilophosaurusVenom>> DILOPHOSAURUS_VENOM = FAEntityTypes.register("dilophosaurus_venom", FAEntityTypes.simple(DilophosaurusVenom::new, MobCategory.MISC, 0.5F, 0.5F));
+    public static final SimpleHolder<EntityType<ThrownJavelin>> THROWN_JAVELIN = FAEntityTypes.register("thrown_javelin", FAEntityTypes.<ThrownJavelin>simple(ThrownJavelin::new, MobCategory.MISC, 0.5F, 0.5F).noLootTable());
+    public static final SimpleHolder<EntityType<ThrownAnimalEgg>> THROWN_INCUBATED_EGG = FAEntityTypes.register("thrown_incubated_egg", FAEntityTypes.<ThrownAnimalEgg>simple(ThrownAnimalEgg::new, MobCategory.MISC, 0.25F, 0.25F).noLootTable());
+    public static final SimpleHolder<EntityType<DilophosaurusVenom>> DILOPHOSAURUS_VENOM = FAEntityTypes.register("dilophosaurus_venom", FAEntityTypes.<DilophosaurusVenom>simple(DilophosaurusVenom::new, MobCategory.MISC, 0.5F, 0.5F).noLootTable());
 
-    public static final SimpleHolder<EntityType<StoneTablet>> STONE_TABLET = FAEntityTypes.register("stone_tablet", FAEntityTypes.simple(StoneTablet::new, MobCategory.MISC, 0.5F, 0.5F));
+    public static final SimpleHolder<EntityType<StoneTablet>> STONE_TABLET = FAEntityTypes.register("stone_tablet", FAEntityTypes.simple(StoneTablet::new, MobCategory.MISC, 0.5F, 0.5F).noLootTable());
 
     public static final SimpleHolder<EntityType<Boat>> CALAMITES_BOAT = FAEntityTypes.registerBoat("calamites_boat", FAItems.CALAMITES_BOAT::get);
-    public static final SimpleHolder<EntityType<Boat>> CALAMITES_CHEST_BOAT = FAEntityTypes.registerBoat("calamites_chest_boat", FAItems.CALAMITES_CHEST_BOAT::get);
+    public static final SimpleHolder<EntityType<ChestBoat>> CALAMITES_CHEST_BOAT = FAEntityTypes.registerChestBoat("calamites_chest_boat", FAItems.CALAMITES_CHEST_BOAT::get);
     public static final SimpleHolder<EntityType<Boat>> LEPIDODENDRON_BOAT = FAEntityTypes.registerBoat("lepidodendron_boat", FAItems.LEPIDODENDRON_BOAT::get);
-    public static final SimpleHolder<EntityType<Boat>> LEPIDODENDRON_CHEST_BOAT = FAEntityTypes.registerBoat("lepidodendron_chest_boat", FAItems.LEPIDODENDRON_CHEST_BOAT::get);
+    public static final SimpleHolder<EntityType<ChestBoat>> LEPIDODENDRON_CHEST_BOAT = FAEntityTypes.registerChestBoat("lepidodendron_chest_boat", FAItems.LEPIDODENDRON_CHEST_BOAT::get);
     public static final SimpleHolder<EntityType<Boat>> SIGILLARIA_BOAT = FAEntityTypes.registerBoat("sigillaria_boat", FAItems.SIGILLARIA_BOAT::get);
-    public static final SimpleHolder<EntityType<Boat>> SIGILLARIA_CHEST_BOAT = FAEntityTypes.registerBoat("sigillaria_chest_boat", FAItems.SIGILLARIA_CHEST_BOAT::get);
+    public static final SimpleHolder<EntityType<ChestBoat>> SIGILLARIA_CHEST_BOAT = FAEntityTypes.registerChestBoat("sigillaria_chest_boat", FAItems.SIGILLARIA_CHEST_BOAT::get);
 
     private static SimpleHolder<EntityType<Boat>> registerBoat(String id, Supplier<Item> boatItem) {
         return FAEntityTypes.register(id, FAEntityTypes.<Boat>simple((entityType, level) -> new Boat(entityType, level, boatItem), MobCategory.MISC, 1.375F, 0.5625F).noLootTable().eyeHeight(0.5625F).clientTrackingRange(10));

@@ -1,7 +1,38 @@
 {
-  "type": "json",
-  "animations": {},
   "elements": [
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 34,
+          "x_dimension": 6.0,
+          "x_origin": -3.0,
+          "y_dimension": 7.0,
+          "y_origin": 4.0,
+          "z_dimension": 7.0,
+          "z_origin": 0.0
+        },
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 19,
+          "x_dimension": 4.0,
+          "x_origin": -2.0,
+          "y_dimension": 4.0,
+          "y_origin": 4.0,
+          "z_dimension": 11.0,
+          "z_origin": 7.0
+        }
+      ],
+      "id": "tail",
+      "poses": {
+        "x": 0.0,
+        "x_rot": 0.0,
+        "y": 10.0,
+        "y_rot": 0.0,
+        "z": 8.0,
+        "z_rot": 0.0
+      }
+    },
     {
       "boxes": [
         {
@@ -40,27 +71,9 @@
         "x": 6.0,
         "x_rot": -1.5708,
         "y": 21.0,
-        "z": 4.0
-      }
-    },
-    {
-      "boxes": [
-        {
-          "texture_x_offset": 42,
-          "texture_y_offset": 14,
-          "x_dimension": 2.0,
-          "x_origin": -1.0,
-          "y_dimension": 3.0,
-          "y_origin": 6.0,
-          "z_dimension": 2.0,
-          "z_origin": -1.0
-        }
-      ],
-      "id": "right_arm",
-      "poses": {
-        "x": -3.0,
-        "y": 14.0,
-        "z": -6.0
+        "y_rot": 0.0,
+        "z": 4.0,
+        "z_rot": 0.0
       }
     },
     {
@@ -101,7 +114,9 @@
         "x": -6.0,
         "x_rot": -1.5708,
         "y": 21.0,
-        "z": 3.0
+        "y_rot": 0.0,
+        "z": 3.0,
+        "z_rot": 0.0
       }
     },
     {
@@ -120,38 +135,34 @@
       "id": "left_arm",
       "poses": {
         "x": 3.0,
+        "x_rot": 0.0,
         "y": 14.0,
-        "z": -6.0
+        "y_rot": 0.0,
+        "z": -6.0,
+        "z_rot": 0.0
       }
     },
     {
       "boxes": [
         {
-          "texture_x_offset": 0,
-          "texture_y_offset": 34,
-          "x_dimension": 6.0,
-          "x_origin": -3.0,
-          "y_dimension": 7.0,
-          "y_origin": 4.0,
-          "z_dimension": 7.0,
-          "z_origin": 0.0
-        },
-        {
-          "texture_x_offset": 0,
-          "texture_y_offset": 19,
-          "x_dimension": 4.0,
-          "x_origin": -2.0,
-          "y_dimension": 4.0,
-          "y_origin": 4.0,
-          "z_dimension": 11.0,
-          "z_origin": 7.0
+          "texture_x_offset": 42,
+          "texture_y_offset": 14,
+          "x_dimension": 2.0,
+          "x_origin": -1.0,
+          "y_dimension": 3.0,
+          "y_origin": 6.0,
+          "z_dimension": 2.0,
+          "z_origin": -1.0
         }
       ],
-      "id": "tail",
+      "id": "right_arm",
       "poses": {
-        "x": 0.0,
-        "y": 10.0,
-        "z": 8.0
+        "x": -3.0,
+        "x_rot": 0.0,
+        "y": 14.0,
+        "y_rot": 0.0,
+        "z": -6.0,
+        "z_rot": 0.0
       }
     },
     {
@@ -206,7 +217,9 @@
             "x": 0.0,
             "x_rot": -1.5708,
             "y": -5.0,
-            "z": -2.0
+            "y_rot": 0.0,
+            "z": -2.0,
+            "z_rot": 0.0
           }
         }
       ],
@@ -215,7 +228,9 @@
         "x": 0.0,
         "x_rot": 1.5708,
         "y": 17.0,
-        "z": -7.0
+        "y_rot": 0.0,
+        "z": -7.0,
+        "z_rot": 0.0
       }
     },
     {
@@ -244,13 +259,13 @@
       "id": "body",
       "poses": {
         "x": 0.0,
+        "x_rot": 0.0,
         "y": 24.0,
-        "z": 0.0
+        "y_rot": 0.0,
+        "z": 0.0,
+        "z_rot": 0.0
       }
     }
-  ],
-  "head_pieces": [
-    "neck"
   ],
   "model_id": "fossilslegacy:knocked_out_tyrannosaurus",
   "texture_height": 128,

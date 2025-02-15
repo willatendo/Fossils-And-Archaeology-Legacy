@@ -1,29 +1,103 @@
 {
-  "type": "json",
   "animations": {
-    "head": "fossilslegacy:legacy_pteranodon_head",
-    "walk": "fossilslegacy:legacy_pteranodon_walk"
+    "head": [
+      "fossilslegacy:legacy_pteranodon_head"
+    ],
+    "walk": [
+      "fossilslegacy:legacy_pteranodon_walk"
+    ]
   },
   "elements": [
     {
       "boxes": [
         {
           "texture_x_offset": 0,
-          "texture_y_offset": 16,
-          "x_dimension": 2.0,
-          "x_origin": -1.0,
-          "y_dimension": 4.0,
-          "y_origin": -2.0,
-          "z_dimension": 2.0,
+          "texture_y_offset": 23,
+          "x_dimension": 4.0,
+          "x_origin": -2.0,
+          "y_dimension": 5.0,
+          "y_origin": -5.0,
+          "z_dimension": 4.0,
           "z_origin": -1.0
         }
       ],
-      "id": "neck_2",
+      "id": "head",
       "poses": {
         "x": 0.0,
-        "x_rot": 1.446489,
+        "x_rot": 1.571,
         "y": 14.0,
-        "z": -3.0
+        "y_rot": 0.0,
+        "z": -4.0,
+        "z_rot": 0.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 16,
+          "texture_y_offset": 22,
+          "x_dimension": 2.0,
+          "x_origin": -1.0,
+          "y_dimension": 4.0,
+          "y_origin": -5.0,
+          "z_dimension": 6.0,
+          "z_origin": -1.0
+        }
+      ],
+      "id": "crown",
+      "poses": {
+        "x": 0.0,
+        "x_rot": 0.698,
+        "y": 14.0,
+        "y_rot": 0.0,
+        "z": -4.0,
+        "z_rot": 0.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 44,
+          "texture_y_offset": 9,
+          "x_dimension": 2.0,
+          "x_origin": -1.0,
+          "y_dimension": 1.0,
+          "y_origin": -1.0,
+          "z_dimension": 8.0,
+          "z_origin": -12.0
+        }
+      ],
+      "id": "lower_mouth",
+      "poses": {
+        "x": 0.0,
+        "x_rot": 0.0,
+        "y": 14.0,
+        "y_rot": 0.0,
+        "z": -4.0,
+        "z_rot": 0.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 44,
+          "texture_y_offset": 0,
+          "x_dimension": 2.0,
+          "x_origin": -1.0,
+          "y_dimension": 1.0,
+          "y_origin": -2.0,
+          "z_dimension": 8.0,
+          "z_origin": -12.0
+        }
+      ],
+      "id": "upper_mouth",
+      "poses": {
+        "x": 0.0,
+        "x_rot": 0.0,
+        "y": 14.0,
+        "y_rot": 0.0,
+        "z": -4.0,
+        "z_rot": 0.0
       }
     },
     {
@@ -44,28 +118,55 @@
         "x": 0.0,
         "x_rot": 1.130069,
         "y": 15.0,
-        "z": 0.0
+        "y_rot": 0.0,
+        "z": 0.0,
+        "z_rot": 0.0
       }
     },
     {
       "boxes": [
         {
-          "texture_x_offset": 40,
-          "texture_y_offset": 0,
-          "x_dimension": 1.0,
-          "x_origin": 0.0,
-          "y_dimension": 3.0,
-          "y_origin": 0.0,
-          "z_dimension": 1.0,
-          "z_origin": 0.0
+          "texture_x_offset": 0,
+          "texture_y_offset": 16,
+          "x_dimension": 2.0,
+          "x_origin": -1.0,
+          "y_dimension": 4.0,
+          "y_origin": -2.0,
+          "z_dimension": 2.0,
+          "z_origin": -1.0
         }
       ],
-      "id": "left_leg",
+      "id": "neck_2",
       "poses": {
-        "x": 1.0,
-        "x_rot": -0.2712166,
-        "y": 22.0,
-        "z": 2.0
+        "x": 0.0,
+        "x_rot": 1.446489,
+        "y": 14.0,
+        "y_rot": 0.0,
+        "z": -3.0,
+        "z_rot": 0.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 0,
+          "x_dimension": 4.0,
+          "x_origin": -2.0,
+          "y_dimension": 7.0,
+          "y_origin": -3.0,
+          "z_dimension": 4.0,
+          "z_origin": -2.0
+        }
+      ],
+      "id": "body",
+      "poses": {
+        "x": 0.0,
+        "x_rot": 0.587636,
+        "y": 18.0,
+        "y_rot": 0.0,
+        "z": 2.0,
+        "z_rot": 0.0
       }
     },
     {
@@ -89,27 +190,6 @@
         "y_rot": 2.269,
         "z": 1.0,
         "z_rot": -0.524
-      }
-    },
-    {
-      "boxes": [
-        {
-          "texture_x_offset": 0,
-          "texture_y_offset": 11,
-          "x_dimension": 4.0,
-          "x_origin": -2.0,
-          "y_dimension": 3.0,
-          "y_origin": 0.0,
-          "z_dimension": 2.0,
-          "z_origin": -2.0
-        }
-      ],
-      "id": "tail",
-      "poses": {
-        "x": 0.0,
-        "x_rot": 0.2260139,
-        "y": 20.0,
-        "z": 5.0
       }
     },
     {
@@ -184,68 +264,6 @@
     {
       "boxes": [
         {
-          "texture_x_offset": 0,
-          "texture_y_offset": 0,
-          "x_dimension": 4.0,
-          "x_origin": -2.0,
-          "y_dimension": 7.0,
-          "y_origin": -3.0,
-          "z_dimension": 4.0,
-          "z_origin": -2.0
-        }
-      ],
-      "id": "body",
-      "poses": {
-        "x": 0.0,
-        "x_rot": 0.587636,
-        "y": 18.0,
-        "z": 2.0
-      }
-    },
-    {
-      "boxes": [
-        {
-          "texture_x_offset": 44,
-          "texture_y_offset": 0,
-          "x_dimension": 2.0,
-          "x_origin": -1.0,
-          "y_dimension": 1.0,
-          "y_origin": -2.0,
-          "z_dimension": 8.0,
-          "z_origin": -12.0
-        }
-      ],
-      "id": "upper_mouth",
-      "poses": {
-        "x": 0.0,
-        "y": 14.0,
-        "z": -4.0
-      }
-    },
-    {
-      "boxes": [
-        {
-          "texture_x_offset": 0,
-          "texture_y_offset": 23,
-          "x_dimension": 4.0,
-          "x_origin": -2.0,
-          "y_dimension": 5.0,
-          "y_origin": -5.0,
-          "z_dimension": 4.0,
-          "z_origin": -1.0
-        }
-      ],
-      "id": "head",
-      "poses": {
-        "x": 0.0,
-        "x_rot": 1.571,
-        "y": 14.0,
-        "z": -4.0
-      }
-    },
-    {
-      "boxes": [
-        {
           "texture_x_offset": 40,
           "texture_y_offset": 4,
           "x_dimension": 1.0,
@@ -261,52 +279,59 @@
         "x": -1.0,
         "x_rot": -0.2712166,
         "y": 22.0,
-        "z": 2.0
+        "y_rot": 0.0,
+        "z": 2.0,
+        "z_rot": 0.0
       }
     },
     {
       "boxes": [
         {
-          "texture_x_offset": 44,
-          "texture_y_offset": 9,
-          "x_dimension": 2.0,
-          "x_origin": -1.0,
-          "y_dimension": 1.0,
-          "y_origin": -1.0,
-          "z_dimension": 8.0,
-          "z_origin": -12.0
+          "texture_x_offset": 40,
+          "texture_y_offset": 0,
+          "x_dimension": 1.0,
+          "x_origin": 0.0,
+          "y_dimension": 3.0,
+          "y_origin": 0.0,
+          "z_dimension": 1.0,
+          "z_origin": 0.0
         }
       ],
-      "id": "lower_mouth",
+      "id": "left_leg",
       "poses": {
-        "x": 0.0,
-        "y": 14.0,
-        "z": -4.0
+        "x": 1.0,
+        "x_rot": -0.2712166,
+        "y": 22.0,
+        "y_rot": 0.0,
+        "z": 2.0,
+        "z_rot": 0.0
       }
     },
     {
       "boxes": [
         {
-          "texture_x_offset": 16,
-          "texture_y_offset": 22,
-          "x_dimension": 2.0,
-          "x_origin": -1.0,
-          "y_dimension": 4.0,
-          "y_origin": -5.0,
-          "z_dimension": 6.0,
-          "z_origin": -1.0
+          "texture_x_offset": 0,
+          "texture_y_offset": 11,
+          "x_dimension": 4.0,
+          "x_origin": -2.0,
+          "y_dimension": 3.0,
+          "y_origin": 0.0,
+          "z_dimension": 2.0,
+          "z_origin": -2.0
         }
       ],
-      "id": "crown",
+      "id": "tail",
       "poses": {
         "x": 0.0,
-        "x_rot": 0.698,
-        "y": 14.0,
-        "z": -4.0
+        "x_rot": 0.2260139,
+        "y": 20.0,
+        "y_rot": 0.0,
+        "z": 5.0,
+        "z_rot": 0.0
       }
     }
   ],
   "model_id": "fossilslegacy:legacy_pteranodon",
-  "texture_height": 32,
-  "texture_width": 64
+  "texture_height": 64,
+  "texture_width": 32
 }

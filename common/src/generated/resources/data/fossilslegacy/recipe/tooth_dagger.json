@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "fossilslegacy:tyrannosaurus_tooth"
-    },
-    "$": {
-      "item": "minecraft:stick"
-    }
+    "#": "fossilslegacy:tyrannosaurus_tooth",
+    "$": "minecraft:stick"
   },
   "pattern": [
     "#",

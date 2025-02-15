@@ -29,13 +29,14 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.block.entity.entities.CultivatorBlockEntity;
+import willatendo.fossilslegacy.server.block.properties.FABlockStateProperties;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.stats.FAStats;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class CultivatorBlock extends Block implements EntityBlock {
-    public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
+    public static final BooleanProperty ACTIVE = FABlockStateProperties.ACTIVE;
     private final DyeColor dyeColor;
 
     public CultivatorBlock(DyeColor dyeColor, Properties properties) {

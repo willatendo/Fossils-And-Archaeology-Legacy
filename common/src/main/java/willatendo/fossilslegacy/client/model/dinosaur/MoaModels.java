@@ -1,22 +1,21 @@
 package willatendo.fossilslegacy.client.model.dinosaur;
 
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.resources.ResourceLocation;
+import willatendo.fossilslegacy.client.model.json.JsonModel;
+import willatendo.fossilslegacy.client.model.json.JsonPose;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class MoaModels {
-    public static LayerDefinition createMoaBodyLayer() {
-        MeshDefinition meshdefinition = new MeshDefinition();
-        PartDefinition partdefinition = meshdefinition.getRoot();
+    public static final JsonModel MOA_MODEL = MoaModels.createMoaBodyLayer(FAUtils.resource("moa")).withWalkAnimations(FAUtils.resource("moa_walk")).withHeadPieces("neck").build();
 
-        partdefinition.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(18, 43).addBox(-2.0F, 3.0F, -0.5F, 2.0F, 5.0F, 2.0F).texOffs(34, 36).addBox(-2.0F, -1.0F, -1.5F, 2.0F, 4.0F, 3.0F), PartPose.offset(-1.0F, 16.0F, 1.5F));
-        partdefinition.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(24, 36).addBox(-1.0F, -1.0F, -1.5F, 2.0F, 4.0F, 3.0F).texOffs(10, 42).addBox(-1.0F, 3.0F, -0.5F, 2.0F, 5.0F, 2.0F), PartPose.offset(2.0F, 16.0F, 1.5F));
-        PartDefinition neck = partdefinition.addOrReplaceChild("neck", CubeListBuilder.create().texOffs(34, 0).addBox(-1.0F, -13.0F, -2.5F, 2.0F, 15.0F, 3.0F), PartPose.offset(0.0F, 9.0F, -4.5F));
-        neck.addOrReplaceChild("head", CubeListBuilder.create().texOffs(34, 18).addBox(-2.0F, -3.0F, -3.25F, 4.0F, 4.0F, 4.0F).texOffs(0, 42).addBox(-1.0F, -2.0F, -6.25F, 2.0F, 2.0F, 3.0F), PartPose.offset(0.0F, -12.0F, -1.25F));
-        partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 17).addBox(-4.0F, -9.0F, -5.0F, 8.0F, 2.0F, 9.0F).texOffs(0, 28).addBox(-3.0F, -16.0F, 3.0F, 6.0F, 8.0F, 6.0F).texOffs(0, 0).addBox(-4.0F, -17.0F, -5.0F, 8.0F, 8.0F, 9.0F).texOffs(24, 28).addBox(-3.0F, -8.0F, 3.0F, 6.0F, 2.0F, 6.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
+    private static JsonModel.Builder createMoaBodyLayer(ResourceLocation modelId) {
+        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 64);
 
-        return LayerDefinition.create(meshdefinition, 64, 64);
+        builder.addOrReplaceChild("right_leg", elementBuilder -> elementBuilder.addBox(18, 43, -2.0F, 3.0F, -0.5F, 2.0F, 5.0F, 2.0F).addBox(34, 36, -2.0F, -1.0F, -1.5F, 2.0F, 4.0F, 3.0F).build(), JsonPose.offset(-1.0F, 16.0F, 1.5F));
+        builder.addOrReplaceChild("left_leg", elementBuilder -> elementBuilder.addBox(24, 36, -1.0F, -1.0F, -1.5F, 2.0F, 4.0F, 3.0F).addBox(10, 42, -1.0F, 3.0F, -0.5F, 2.0F, 5.0F, 2.0F).build(), JsonPose.offset(2.0F, 16.0F, 1.5F));
+        builder.addOrReplaceChild("neck", elementBuilder -> elementBuilder.addBox(34, 0, -1.0F, -13.0F, -2.5F, 2.0F, 15.0F, 3.0F).addOrReplaceChild("head", subElementBuilder -> subElementBuilder.addBox(34, 18, -2.0F, -3.0F, -3.25F, 4.0F, 4.0F, 4.0F).addBox(0, 42, -1.0F, -2.0F, -6.25F, 2.0F, 2.0F, 3.0F).build(), JsonPose.offset(0.0F, -12.0F, -1.25F)).build(), JsonPose.offset(0.0F, 9.0F, -4.5F));
+        builder.addOrReplaceChild("body", elementBuilder -> elementBuilder.addBox(0, 17, -4.0F, -9.0F, -5.0F, 8.0F, 2.0F, 9.0F).addBox(0, 28, -3.0F, -16.0F, 3.0F, 6.0F, 8.0F, 6.0F).addBox(0, 0, -4.0F, -17.0F, -5.0F, 8.0F, 8.0F, 9.0F).addBox(24, 28, -3.0F, -8.0F, 3.0F, 6.0F, 2.0F, 6.0F).build(), JsonPose.offset(0.0F, 24.0F, 0.0F));
+
+        return builder;
     }
 }

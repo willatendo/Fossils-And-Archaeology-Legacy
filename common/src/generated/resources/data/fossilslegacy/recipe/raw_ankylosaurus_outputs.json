@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "misc",
-  "ingredient": {
-    "item": "fossilslegacy:raw_ankylosaurus"
-  },
-  "results": "fossilslegacy:results/raw_ankylosaurus_meat",
+  "fuels": "fossilslegacy:fuels/raw_ankylosaurus_meat",
+  "ingredient": "fossilslegacy:raw_ankylosaurus",
   "time": 100
 }

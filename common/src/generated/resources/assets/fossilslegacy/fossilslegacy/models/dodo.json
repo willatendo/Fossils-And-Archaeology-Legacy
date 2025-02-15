@@ -1,38 +1,44 @@
 {
-  "type": "json",
   "animations": {
-    "float_down": "fossilslegacy:dodo_float_down",
-    "walk": "fossilslegacy:dodo_walk"
+    "float_down": [
+      "fossilslegacy:dodo_float_down"
+    ],
+    "walk": [
+      "fossilslegacy:dodo_walk"
+    ]
   },
   "elements": [
     {
       "boxes": [
         {
           "texture_x_offset": 0,
-          "texture_y_offset": 16,
-          "x_dimension": 4.0,
-          "x_origin": -2.0,
+          "texture_y_offset": 0,
+          "x_dimension": 8.0,
+          "x_origin": -4.0,
           "y_dimension": 8.0,
-          "y_origin": -6.0,
-          "z_dimension": 4.0,
-          "z_origin": -2.0
+          "y_origin": -4.0,
+          "z_dimension": 8.0,
+          "z_origin": -12.0
         },
         {
-          "texture_x_offset": 16,
-          "texture_y_offset": 16,
-          "x_dimension": 2.0,
-          "x_origin": -1.0,
-          "y_dimension": 3.0,
+          "texture_x_offset": 24,
+          "texture_y_offset": 0,
+          "x_dimension": 4.0,
+          "x_origin": -2.0,
+          "y_dimension": 5.0,
           "y_origin": -5.0,
-          "z_dimension": 5.0,
-          "z_origin": -7.0
+          "z_dimension": 3.0,
+          "z_origin": -5.0
         }
       ],
-      "id": "head",
+      "id": "body",
       "poses": {
         "x": 0.0,
-        "y": 15.0,
-        "z": -4.0
+        "x_rot": 0.0,
+        "y": 17.0,
+        "y_rot": 0.0,
+        "z": 8.0,
+        "z_rot": 0.0
       }
     },
     {
@@ -61,28 +67,11 @@
       "id": "left_leg",
       "poses": {
         "x": 1.0,
+        "x_rot": 0.0,
         "y": 21.0,
-        "z": 1.0
-      }
-    },
-    {
-      "boxes": [
-        {
-          "texture_x_offset": 12,
-          "texture_y_offset": 24,
-          "x_dimension": 1.0,
-          "x_origin": -1.0,
-          "y_dimension": 3.0,
-          "y_origin": 0.0,
-          "z_dimension": 4.0,
-          "z_origin": -1.0
-        }
-      ],
-      "id": "right_arm",
-      "poses": {
-        "x": -4.0,
-        "y": 15.0,
-        "z": -2.0
+        "y_rot": 0.0,
+        "z": 1.0,
+        "z_rot": 0.0
       }
     },
     {
@@ -111,8 +100,44 @@
       "id": "right_leg",
       "poses": {
         "x": -1.0,
+        "x_rot": 0.0,
         "y": 21.0,
-        "z": 1.0
+        "y_rot": 0.0,
+        "z": 1.0,
+        "z_rot": 0.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 16,
+          "x_dimension": 4.0,
+          "x_origin": -2.0,
+          "y_dimension": 8.0,
+          "y_origin": -6.0,
+          "z_dimension": 4.0,
+          "z_origin": -2.0
+        },
+        {
+          "texture_x_offset": 16,
+          "texture_y_offset": 16,
+          "x_dimension": 2.0,
+          "x_origin": -1.0,
+          "y_dimension": 3.0,
+          "y_origin": -5.0,
+          "z_dimension": 5.0,
+          "z_origin": -7.0
+        }
+      ],
+      "id": "head",
+      "poses": {
+        "x": 0.0,
+        "x_rot": 0.0,
+        "y": 15.0,
+        "y_rot": 0.0,
+        "z": -4.0,
+        "z_rot": 0.0
       }
     },
     {
@@ -131,38 +156,34 @@
       "id": "left_arm",
       "poses": {
         "x": 4.0,
+        "x_rot": 0.0,
         "y": 15.0,
-        "z": -2.0
+        "y_rot": 0.0,
+        "z": -2.0,
+        "z_rot": 0.0
       }
     },
     {
       "boxes": [
         {
-          "texture_x_offset": 0,
-          "texture_y_offset": 0,
-          "x_dimension": 8.0,
-          "x_origin": -4.0,
-          "y_dimension": 8.0,
-          "y_origin": -4.0,
-          "z_dimension": 8.0,
-          "z_origin": -12.0
-        },
-        {
-          "texture_x_offset": 24,
-          "texture_y_offset": 0,
-          "x_dimension": 4.0,
-          "x_origin": -2.0,
-          "y_dimension": 5.0,
-          "y_origin": -5.0,
-          "z_dimension": 3.0,
-          "z_origin": -5.0
+          "texture_x_offset": 12,
+          "texture_y_offset": 24,
+          "x_dimension": 1.0,
+          "x_origin": -1.0,
+          "y_dimension": 3.0,
+          "y_origin": 0.0,
+          "z_dimension": 4.0,
+          "z_origin": -1.0
         }
       ],
-      "id": "body",
+      "id": "right_arm",
       "poses": {
-        "x": 0.0,
-        "y": 17.0,
-        "z": 8.0
+        "x": -4.0,
+        "x_rot": 0.0,
+        "y": 15.0,
+        "y_rot": 0.0,
+        "z": -2.0,
+        "z_rot": 0.0
       }
     }
   ],

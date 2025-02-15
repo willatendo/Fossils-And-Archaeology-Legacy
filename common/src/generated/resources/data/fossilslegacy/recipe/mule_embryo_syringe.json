@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "egg",
-  "ingredient": {
-    "item": "fossilslegacy:mule_dna"
-  },
+  "ingredient": "fossilslegacy:mule_dna",
   "result": {
     "id": "fossilslegacy:mule_embryo_syringe"
   },

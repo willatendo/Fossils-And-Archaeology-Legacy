@@ -1,9 +1,7 @@
 package willatendo.fossilslegacy.data;
 
 import net.minecraft.data.PackOutput;
-import willatendo.fossilslegacy.api.data.EntityModelHolder;
 import willatendo.fossilslegacy.api.data.EntityModelProvider;
-import willatendo.fossilslegacy.client.animation.BuiltInAnimationTypes;
 import willatendo.fossilslegacy.client.model.dinosaur.*;
 
 public class FAEntityModelProvider extends EntityModelProvider {
@@ -13,48 +11,44 @@ public class FAEntityModelProvider extends EntityModelProvider {
 
     @Override
     protected void getAll() {
-        this.add(EntityModelHolder.builder(this.mod("ankylosaurus"), AnkylosaurusModels.createAnkylosaurusBodyLayer()).withAnimation("walk", this.mod("ankylosaurus_walk")).withHeadPeices("head").build());
-        this.add(EntityModelHolder.builder(this.mod("brachiosaurus"), BrachiosaurusModels.createBrachiosaurusBodyLayer()).withAnimation("walk", this.mod("brachiosaurus_walk")).withHeadPeices("neck").build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_brachiosaurus"), BrachiosaurusModels.createLegacyBrachiosaurusBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_BRACHIOSAURUS_WALK).build());
-        this.add(EntityModelHolder.builder(this.mod("carnotaurus"), CarnotaurusModels.createCarnotaurusBodyLayer()).withAnimation("walk", this.mod("carnotaurus_walk")).withHeadPeices("neck").build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_carnotaurus"), CarnotaurusModels.createLegacyCarnotaurusBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_CARNOTAURUS_WALK).build());
-        this.add(EntityModelHolder.builder(this.mod("compsognathus"), CompsognathusModels.createCompsognathusBodyLayer()).withAnimation("walk", this.mod("compsognathus_walk")).withHeadPeices("head").build());
-        this.add(EntityModelHolder.builder(this.mod("cryolophosaurus"), CryolophosaurusModels.createCryolophosaurusBodyLayer()).withAnimation("walk", this.mod("cryolophosaurus_walk")).withHeadPeices("neck").build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_cryolophosaurus"), CryolophosaurusModels.createLegacyCryolophosaurusBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_CRYOLOPHOSAURUS_WALK).build());
-        this.add(EntityModelHolder.builder(this.mod("dilophosaurus"), DilophosaurusModels.createDilophosaurusBodyLayer()).withAnimation("walk", this.mod("dilophosaurus_walk")).withHeadPeices("head").build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_dilophosaurus"), DilophosaurusModels.createLegacyDilophosaurusBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_DILOPHOSAURUS_WALK).build());
-        this.add(EntityModelHolder.builder(this.mod("dimetrodon"), DimetrodonModels.createDimetrodonBodyLayer()).withAnimation("walk", this.mod("dimetrodon_walk")).withHeadPeices("head").build());
-        this.add(EntityModelHolder.builder(this.mod("futabasaurus"), FutabasaurusModels.createFutabasaurusBodyLayer()).withAnimation("walk", this.mod("futabasaurus_walk")).withAnimation("swim", this.mod("futabasaurus_swim")).withHeadPeices("neck", "middle_neck", "head").build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_futabasaurus"), FutabasaurusModels.createLegacyFutabasaurusBodyLayer()).build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_futabasaurus_fossil"), FutabasaurusModels.createLegacyFutabasaurusBodyLayer()).build());
-        this.add(EntityModelHolder.builder(this.mod("gallimimus"), GallimimusModels.createGallimimusBodyLayer()).withAnimation("walk", this.mod("gallimimus_walk")).withHeadPeices("neck").build());
-        this.add(EntityModelHolder.builder(this.mod("moa"), MoaModels.createMoaBodyLayer()).withAnimation("walk", this.mod("moa_walk")).withHeadPeices("neck").build());
-        this.add(EntityModelHolder.builder(this.mod("mosasaurus"), MosasaurusModels.createMosasaurusBodyLayer()).withAnimation("walk", this.mod("mosasaurus_walk")).withAnimation("swim", this.mod("mosasaurus_swim")).withHeadPeices("head").build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_mosasaurus"), MosasaurusModels.createLegacyMosasaurusBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_MOSASAURUS_SWIM).withBuiltInAnimation("swim", BuiltInAnimationTypes.LEGACY_MOSASAURUS_SWIM).build());
-        this.add(EntityModelHolder.builder(this.mod("pachycephalosaurus"), PachycephalosaurusModels.createPachycephalosaurusBodyLayer()).withAnimation("walk", this.mod("pachycephalosaurus_walk")).withHeadPeices("head").build());
-        this.add(EntityModelHolder.builder(this.mod("pteranodon"), PteranodonModels.createPteranodonBodyLayer()).withAnimation("walk", this.mod("pteranodon_walk")).withAnimation("fly", this.mod("pteranodon_fly"), BuiltInAnimationTypes.PTERANODON_BODY_FLY.getId()).withAnimation("land", this.mod("pteranodon_land")).withHeadPeices("head").build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_pteranodon"), PteranodonModels.createLegacyPteranodonBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_PTERANODON_WALK).withBuiltInAnimation("head", BuiltInAnimationTypes.LEGACY_PTERANODON_HEAD).build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_flying_pteranodon"), PteranodonModels.createLegacyFlyingPteranodonBodyLayer()).withBuiltInAnimation("fly", BuiltInAnimationTypes.LEGACY_PTERANODON_FLY).build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_landing_pteranodon"), PteranodonModels.createLegacyLandingPteranodonBodyLayer()).build());
-        this.add(EntityModelHolder.builder(this.mod("stegosaurus"), StegosaurusModels.createStegosaurusBodyLayer()).withAnimation("walk", this.mod("stegosaurus_walk")).withHeadPeices("head").build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_stegosaurus"), StegosaurusModels.createLegacyStegosaurusBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_STEGOSAURUS_WALK).build());
-        this.add(EntityModelHolder.builder(this.mod("therizinosaurus"), TherizinosaurusModels.createTherizinosaurusBodyLayer()).withAnimation("walk", this.mod("therizinosaurus_walk")).withHeadPeices("neck").build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_therizinosaurus"), TherizinosaurusModels.createLegacyTherizinosaurusBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_THERIZINOSAURUS_WALK).build());
-        this.add(EntityModelHolder.builder(this.mod("triceratops"), TriceratopsModels.createTriceratopsBodyLayer()).withAnimation("walk", this.mod("triceratops_walk")).withHeadPeices("head").build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_triceratops"), TriceratopsModels.createLegacyTriceratopsBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_TRICERATOPS_WALK).build());
-        this.add(EntityModelHolder.builder(this.mod("tyrannosaurus"), TyrannosaurusModels.createTyrannosaurusBodyLayer()).withAnimation("walk", this.mod("tyrannosaurus_walk")).build());
-        this.add(EntityModelHolder.builder(this.mod("knocked_out_tyrannosaurus"), TyrannosaurusModels.createKnockedOutTyrannosaurusBodyLayer()).withHeadPeices("neck").build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_tyrannosaurus"), TyrannosaurusModels.createLegacyTyrannosaurusBodyLayer()).build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_tyrannosaurus_fossil"), TyrannosaurusModels.createLegacyTyrannosaurusBodyLayer()).build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_knocked_out_tyrannosaurus"), TyrannosaurusModels.createLegacyKnockedOutTyrannosaurusBodyLayer()).build());
-        this.add(EntityModelHolder.builder(this.mod("velociraptor"), VelociraptorModels.createVelociraptorBodyLayer()).withAnimation("walk", this.mod("velociraptor_walk")).withHeadPeices("head").build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_velociraptor"), VelociraptorModels.createLegacyVelociraptorBodyLayer()).build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_velociraptor_fossil"), VelociraptorModels.createLegacyVelociraptorBodyLayer()).build());
-        this.add(EntityModelHolder.builder(this.mod("dodo"), DodoModels.createDodoBodyLayer()).withAnimation("walk", this.mod("dodo_walk")).withAnimation("float_down", this.mod("dodo_float_down")).withHeadPeices("head").build());
-        this.add(EntityModelHolder.builder(this.mod("spinosaurus"), SpinosaurusModels.createSpinosaurusBodyLayer()).withAnimation("walk", this.mod("spinosaurus_walk")).withAnimation("swim", this.mod("spinosaurus_swim")).withHeadPeices("neck").build());
-        this.add(EntityModelHolder.builder(this.mod("smilodon"), SmilodonModels.createSmilodonBodyLayer()).withAnimation("walk", this.mod("smilodon_walk")).withAnimation("sit", this.mod("smilodon_sit")).withHeadPeices("neck").build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_smilodon"), SmilodonModels.createLegacySmilodonBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_SMILODON_WALK).withBuiltInAnimation("sit", BuiltInAnimationTypes.LEGACY_SMILODON_SIT).withBuiltInAnimation("shake", BuiltInAnimationTypes.LEGACY_SMILODON_SHAKE).withBuiltInAnimation("tail", BuiltInAnimationTypes.LEGACY_SMILODON_TAIL).overrideReset().build());
-        this.add(EntityModelHolder.builder(this.mod("mammoth"), MammothModels.createMammothBodyLayer()).withAnimation("walk", this.mod("mammoth_walk")).withHeadPeices("head").build());
-        this.add(EntityModelHolder.builder(this.mod("legacy_mammoth"), MammothModels.createLegacyMammothBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_MAMMOTH_WALK).build());
+        this.add(AnkylosaurusModels.ANKYLOSAURUS_MODEL);
+        this.add(BrachiosaurusModels.BRACHIOSAURUS_MODEL);
+        this.add(BrachiosaurusModels.LEGACY_BRACHIOSAURUS_MODEL);
+        this.add(CarnotaurusModels.CARNOTAURUS_MODEL);
+        this.add(CarnotaurusModels.LEGACY_CARNOTAURUS_MODEL);
+        this.add(CompsognathusModels.COMPSOGNATHUS_MODEL);
+        this.add(CryolophosaurusModels.CRYOLOPHOSAURUS_MODEL);
+        this.add(CryolophosaurusModels.LEGACY_CRYOLOPHOSAURUS_MODEL);
+        this.add(DilophosaurusModels.DILOPHOSAURUS_MODEL);
+        this.add(DilophosaurusModels.LEGACY_DILOPHOSAURUS_MODEL);
+        this.add(DimetrodonModels.DIMETRODON_MODEL);
+        this.add(DodoModels.DODO_MODEL);
+        this.add(FutabasaurusModels.FUTABASAURUS_MODEL);
+        this.add(FutabasaurusModels.LEGACY_FUTABASAURUS_MODEL);
+        this.add(FutabasaurusModels.LEGACY_FUTABASAURUS_FOSSIL_MODEL);
+        this.add(GallimimusModels.GALLIMIMUS_MODEL);
+        this.add(MammothModels.MAMMOTH_MODEL);
+        this.add(MammothModels.LEGACY_MAMMOTH_MODEL);
+        this.add(MoaModels.MOA_MODEL);
+        this.add(MosasaurusModels.MOSASAURUS_MODEL);
+        this.add(MosasaurusModels.MOSASAURUS_LEGACY_MODEL);
+        this.add(PachycephalosaurusModels.PACHYCEPHALOSAURUS_MODEL);
+        this.add(PteranodonModels.PTERANODON_MODEL);
+        this.add(PteranodonModels.LEGACY_PTERANODON_MODEL);
+        this.add(PteranodonModels.LEGACY_FLYING_PTERANODON_MODEL);
+        this.add(PteranodonModels.LEGACY_LANDING_PTERANODON_MODEL);
+        this.add(SmilodonModels.SMILODON_MODEL);
+        this.add(SmilodonModels.LEGACY_SMILODON_MODEL);
+        this.add(SpinosaurusModels.SPINOSAURUS_MODEL);
+        this.add(StegosaurusModels.STEGOSAURUS_MODEL);
+        this.add(StegosaurusModels.LEGACY_STEGOSAURUS_MODEL);
+        this.add(TherizinosaurusModels.THERIZINOSAURUS_MODEL);
+        this.add(TherizinosaurusModels.LEGACY_THERIZINOSAURUS_MODEL);
+        this.add(TyrannosaurusModels.TYRANNOSAURUS_MODEL);
+        this.add(TyrannosaurusModels.KNOCKED_OUT_TYRANNOSAURUS_MODEL);
+        this.add(TyrannosaurusModels.LEGACY_TYRANNOSAURUS_MODEL);
+        this.add(TyrannosaurusModels.LEGACY_KNOCKED_OUT_TYRANNOSAURUS_MODEL);
+        this.add(VelociraptorModels.VELOCIRAPTOR_MODEL);
+        this.add(VelociraptorModels.LEGACY_VELOCIRAPTOR_MODEL);
     }
 }

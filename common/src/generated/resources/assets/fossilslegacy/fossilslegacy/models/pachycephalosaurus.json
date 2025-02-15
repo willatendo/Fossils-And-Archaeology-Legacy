@@ -1,9 +1,43 @@
 {
-  "type": "json",
   "animations": {
-    "walk": "fossilslegacy:pachycephalosaurus_walk"
+    "walk": [
+      "fossilslegacy:pachycephalosaurus_walk"
+    ]
   },
   "elements": [
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 21,
+          "texture_y_offset": 9,
+          "x_dimension": 4.0,
+          "x_origin": -2.0,
+          "y_dimension": 5.0,
+          "y_origin": -2.0,
+          "z_dimension": 7.0,
+          "z_origin": 0.0
+        },
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 16,
+          "x_dimension": 2.0,
+          "x_origin": -1.0,
+          "y_dimension": 3.0,
+          "y_origin": -2.0,
+          "z_dimension": 11.0,
+          "z_origin": 7.0
+        }
+      ],
+      "id": "tail",
+      "poses": {
+        "x": 0.0,
+        "x_rot": 0.0,
+        "y": 12.0,
+        "y_rot": 0.0,
+        "z": 4.0,
+        "z_rot": 0.0
+      }
+    },
     {
       "boxes": [
         {
@@ -60,8 +94,11 @@
       "id": "head",
       "poses": {
         "x": 0.0,
+        "x_rot": 0.0,
         "y": 12.0,
-        "z": -7.0
+        "y_rot": 0.0,
+        "z": -7.0,
+        "z_rot": 0.0
       }
     },
     {
@@ -100,38 +137,11 @@
       "id": "left_leg",
       "poses": {
         "x": 3.0,
+        "x_rot": 0.0,
         "y": 15.0,
-        "z": 1.0
-      }
-    },
-    {
-      "boxes": [
-        {
-          "texture_x_offset": 13,
-          "texture_y_offset": 30,
-          "x_dimension": 2.0,
-          "x_origin": -2.0,
-          "y_dimension": 3.0,
-          "y_origin": 3.0,
-          "z_dimension": 2.0,
-          "z_origin": -1.0
-        },
-        {
-          "texture_x_offset": 0,
-          "texture_y_offset": 16,
-          "x_dimension": 2.0,
-          "x_origin": -2.0,
-          "y_dimension": 4.0,
-          "y_origin": -1.0,
-          "z_dimension": 3.0,
-          "z_origin": -2.0
-        }
-      ],
-      "id": "right_arm",
-      "poses": {
-        "x": -2.0,
-        "y": 15.0,
-        "z": -5.0
+        "y_rot": 0.0,
+        "z": 1.0,
+        "z_rot": 0.0
       }
     },
     {
@@ -170,8 +180,11 @@
       "id": "right_leg",
       "poses": {
         "x": -3.0,
+        "x_rot": 0.0,
         "y": 15.0,
-        "z": 1.0
+        "y_rot": 0.0,
+        "z": 1.0,
+        "z_rot": 0.0
       }
     },
     {
@@ -200,38 +213,44 @@
       "id": "left_arm",
       "poses": {
         "x": 2.0,
+        "x_rot": 0.0,
         "y": 15.0,
-        "z": -5.0
+        "y_rot": 0.0,
+        "z": -5.0,
+        "z_rot": 0.0
       }
     },
     {
       "boxes": [
         {
-          "texture_x_offset": 21,
-          "texture_y_offset": 9,
-          "x_dimension": 4.0,
+          "texture_x_offset": 13,
+          "texture_y_offset": 30,
+          "x_dimension": 2.0,
           "x_origin": -2.0,
-          "y_dimension": 5.0,
-          "y_origin": -2.0,
-          "z_dimension": 7.0,
-          "z_origin": 0.0
+          "y_dimension": 3.0,
+          "y_origin": 3.0,
+          "z_dimension": 2.0,
+          "z_origin": -1.0
         },
         {
           "texture_x_offset": 0,
           "texture_y_offset": 16,
           "x_dimension": 2.0,
-          "x_origin": -1.0,
-          "y_dimension": 3.0,
-          "y_origin": -2.0,
-          "z_dimension": 11.0,
-          "z_origin": 7.0
+          "x_origin": -2.0,
+          "y_dimension": 4.0,
+          "y_origin": -1.0,
+          "z_dimension": 3.0,
+          "z_origin": -2.0
         }
       ],
-      "id": "tail",
+      "id": "right_arm",
       "poses": {
-        "x": 0.0,
-        "y": 12.0,
-        "z": 4.0
+        "x": -2.0,
+        "x_rot": 0.0,
+        "y": 15.0,
+        "y_rot": 0.0,
+        "z": -5.0,
+        "z_rot": 0.0
       }
     },
     {
@@ -260,8 +279,11 @@
       "id": "body",
       "poses": {
         "x": 0.0,
+        "x_rot": 0.0,
         "y": 24.0,
-        "z": 0.0
+        "y_rot": 0.0,
+        "z": 0.0,
+        "z_rot": 0.0
       }
     }
   ],

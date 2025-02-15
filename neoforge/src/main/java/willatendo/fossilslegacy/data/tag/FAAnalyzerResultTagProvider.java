@@ -11,7 +11,7 @@ import willatendo.fossilslegacy.server.tags.FAAnalyzerResultTags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class FAAnalyzerResultTagProvider extends TagsProvider<AnalyzerResult> {
+public class FAAnalyzerResultTagProvider extends DataDrivenTagsProvider<AnalyzerResult> {
     public FAAnalyzerResultTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId) {
         super(packOutput, FARegistries.ANALYZER_RESULT, provider, modId);
     }

@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "plant",
-  "ingredient": {
-    "item": "fossilslegacy:lepidodendron_dna"
-  },
+  "ingredient": "fossilslegacy:lepidodendron_dna",
   "result": {
     "id": "fossilslegacy:lepidodendron_sapling"
   },

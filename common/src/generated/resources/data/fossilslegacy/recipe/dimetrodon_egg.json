@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "egg",
-  "ingredient": {
-    "item": "fossilslegacy:dimetrodon_dna"
-  },
+  "ingredient": "fossilslegacy:dimetrodon_dna",
   "result": {
     "id": "fossilslegacy:dimetrodon_egg"
   },

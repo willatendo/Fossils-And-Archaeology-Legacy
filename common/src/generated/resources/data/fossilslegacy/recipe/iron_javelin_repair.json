@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:archaeology",
   "category": "repair",
-  "ingredient": {
-    "item": "fossilslegacy:broken_iron_javelin"
-  },
+  "ingredient": "fossilslegacy:broken_iron_javelin",
   "result": {
     "id": "fossilslegacy:iron_javelin"
   },

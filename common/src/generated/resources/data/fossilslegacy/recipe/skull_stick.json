@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "fossilslegacy:skull_block"
-    },
-    "$": {
-      "item": "minecraft:stick"
-    }
+    "#": "fossilslegacy:skull_block",
+    "$": "minecraft:stick"
   },
   "pattern": [
     "#",

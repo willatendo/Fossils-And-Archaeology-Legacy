@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "misc",
-  "ingredient": {
-    "item": "fossilslegacy:raw_pteranodon"
-  },
-  "results": "fossilslegacy:results/raw_pteranodon_meat",
+  "fuels": "fossilslegacy:fuels/raw_pteranodon_meat",
+  "ingredient": "fossilslegacy:raw_pteranodon",
   "time": 100
 }

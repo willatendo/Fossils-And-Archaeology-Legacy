@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 public record JsonAnimation(List<Animation> animations, ResourceLocation id, float length, Optional<Boolean> loops) {
-    public static final Codec<JsonAnimation> CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.list(JsonAnimation.Animation.CODEC).fieldOf("animations").forGetter(JsonAnimation::animations), ResourceLocation.CODEC.fieldOf("id").forGetter(JsonAnimation::id), Codec.FLOAT.fieldOf("length").forGetter(JsonAnimation::length), Codec.BOOL.optionalFieldOf("length").forGetter(JsonAnimation::loops)).apply(instance, JsonAnimation::new));
+    public static final Codec<JsonAnimation> CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.list(JsonAnimation.Animation.CODEC).fieldOf("animations").forGetter(JsonAnimation::animations), ResourceLocation.CODEC.fieldOf("id").forGetter(JsonAnimation::id), Codec.FLOAT.fieldOf("length").forGetter(JsonAnimation::length), Codec.BOOL.optionalFieldOf("looping").forGetter(JsonAnimation::loops)).apply(instance, JsonAnimation::new));
 
     public boolean looping() {
         return this.loops.orElse(false);

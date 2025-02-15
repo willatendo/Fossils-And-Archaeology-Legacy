@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "egg",
-  "ingredient": {
-    "item": "fossilslegacy:chicken_dna"
-  },
+  "ingredient": "fossilslegacy:chicken_dna",
   "result": {
     "id": "fossilslegacy:incubated_chicken_egg"
   },

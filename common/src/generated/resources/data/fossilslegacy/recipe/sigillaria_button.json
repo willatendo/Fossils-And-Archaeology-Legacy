@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "wooden_button",
   "ingredients": [
-    {
-      "item": "fossilslegacy:sigillaria_planks"
-    }
+    "fossilslegacy:sigillaria_planks"
   ],
   "result": {
     "count": 1,

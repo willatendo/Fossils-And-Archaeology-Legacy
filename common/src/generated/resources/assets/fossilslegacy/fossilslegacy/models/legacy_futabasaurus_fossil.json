@@ -1,4 +1,306 @@
 {
-  "type": "built_in",
-  "model_id": "fossilslegacy:legacy_futabasaurus_fossil"
+  "elements": [
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 22,
+          "x_dimension": 4.0,
+          "x_origin": -2.0,
+          "y_dimension": 4.0,
+          "y_origin": -2.0,
+          "z_dimension": 6.0,
+          "z_origin": -6.0
+        }
+      ],
+      "id": "head",
+      "poses": {
+        "x": 0.0,
+        "x_rot": 0.49723,
+        "y": 9.0,
+        "y_rot": 0.0,
+        "z": -15.0,
+        "z_rot": 0.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 20,
+          "texture_y_offset": 23,
+          "x_dimension": 6.0,
+          "x_origin": -3.0,
+          "y_dimension": 5.0,
+          "y_origin": 0.0,
+          "z_dimension": 4.0,
+          "z_origin": -4.0
+        }
+      ],
+      "id": "neck_1",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -0.99446,
+        "y": 17.0,
+        "y_rot": 0.0,
+        "z": 0.0,
+        "z_rot": 0.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 47,
+          "texture_y_offset": 23,
+          "x_dimension": 4.0,
+          "x_origin": -2.0,
+          "y_dimension": 4.0,
+          "y_origin": -2.0,
+          "z_dimension": 5.0,
+          "z_origin": -6.0
+        }
+      ],
+      "id": "neck_2",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -0.88974,
+        "y": 16.0,
+        "y_rot": 0.0,
+        "z": -4.0,
+        "z_rot": 0.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 35,
+          "texture_y_offset": 3,
+          "x_dimension": 2.0,
+          "x_origin": -1.0,
+          "y_dimension": 3.0,
+          "y_origin": -2.0,
+          "z_dimension": 5.0,
+          "z_origin": -5.0
+        }
+      ],
+      "id": "neck_3",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -0.58764,
+        "y": 12.73333,
+        "y_rot": 0.0,
+        "z": -8.0,
+        "z_rot": 0.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 35,
+          "texture_y_offset": 3,
+          "x_dimension": 2.0,
+          "x_origin": -1.0,
+          "y_dimension": 3.0,
+          "y_origin": -2.0,
+          "z_dimension": 5.0,
+          "z_origin": -5.0
+        }
+      ],
+      "id": "neck_4",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -0.13561,
+        "y": 10.0,
+        "y_rot": 0.0,
+        "z": -11.0,
+        "z_rot": 0.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 0,
+          "x_dimension": 8.0,
+          "x_origin": -4.0,
+          "y_dimension": 6.0,
+          "y_origin": -4.0,
+          "z_dimension": 8.0,
+          "z_origin": -4.0
+        }
+      ],
+      "id": "body",
+      "poses": {
+        "x": 0.0,
+        "x_rot": 0.0,
+        "y": 20.0,
+        "y_rot": 0.0,
+        "z": 0.0,
+        "z_rot": 0.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 44,
+          "texture_y_offset": 13,
+          "x_dimension": 6.0,
+          "x_origin": 0.0,
+          "y_dimension": 1.0,
+          "y_origin": 0.0,
+          "z_dimension": 4.0,
+          "z_origin": 0.0
+        }
+      ],
+      "id": "front_right_flipper",
+      "poses": {
+        "x": -3.0,
+        "x_rot": -0.5236,
+        "y": 21.0,
+        "y_rot": -2.35619,
+        "z": -3.0,
+        "z_rot": 0.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 44,
+          "texture_y_offset": 18,
+          "x_dimension": 6.0,
+          "x_origin": 0.0,
+          "y_dimension": 1.0,
+          "y_origin": 0.0,
+          "z_dimension": 4.0,
+          "z_origin": -4.0
+        }
+      ],
+      "id": "front_left_flipper",
+      "poses": {
+        "x": 3.0,
+        "x_rot": 0.5236,
+        "y": 21.0,
+        "y_rot": -0.7854,
+        "z": -3.0,
+        "z_rot": 0.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 48,
+          "texture_y_offset": 0,
+          "x_dimension": 5.0,
+          "x_origin": 0.0,
+          "y_dimension": 1.0,
+          "y_origin": 0.0,
+          "z_dimension": 3.0,
+          "z_origin": 0.0
+        }
+      ],
+      "id": "back_right_flipper",
+      "poses": {
+        "x": -3.0,
+        "x_rot": -0.5236,
+        "y": 21.0,
+        "y_rot": -2.0944,
+        "z": 4.0,
+        "z_rot": 0.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 48,
+          "texture_y_offset": 4,
+          "x_dimension": 5.0,
+          "x_origin": 0.0,
+          "y_dimension": 1.0,
+          "y_origin": 0.0,
+          "z_dimension": 3.0,
+          "z_origin": -3.0
+        }
+      ],
+      "id": "back_left_flipper",
+      "poses": {
+        "x": 3.0,
+        "x_rot": 0.5236,
+        "y": 21.0,
+        "y_rot": -1.0472,
+        "z": 4.0,
+        "z_rot": 0.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 14,
+          "x_dimension": 6.0,
+          "x_origin": -3.0,
+          "y_dimension": 5.0,
+          "y_origin": -5.0,
+          "z_dimension": 3.0,
+          "z_origin": 2.0
+        }
+      ],
+      "id": "tail_1",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -0.45203,
+        "y": 20.0,
+        "y_rot": 0.0,
+        "z": 0.0,
+        "z_rot": 0.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 18,
+          "texture_y_offset": 14,
+          "x_dimension": 4.0,
+          "x_origin": -2.0,
+          "y_dimension": 3.0,
+          "y_origin": -2.0,
+          "z_dimension": 6.0,
+          "z_origin": 0.0
+        }
+      ],
+      "id": "tail_2",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -0.27122,
+        "y": 20.0,
+        "y_rot": 0.0,
+        "z": 5.0,
+        "z_rot": 0.0
+      }
+    },
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 24,
+          "texture_y_offset": 0,
+          "x_dimension": 2.0,
+          "x_origin": -1.0,
+          "y_dimension": 2.0,
+          "y_origin": -1.0,
+          "z_dimension": 6.0,
+          "z_origin": 0.0
+        }
+      ],
+      "id": "tail_3",
+      "poses": {
+        "x": 0.0,
+        "x_rot": -0.18081,
+        "y": 21.0,
+        "y_rot": 0.0,
+        "z": 11.0,
+        "z_rot": 0.0
+      }
+    }
+  ],
+  "model_id": "fossilslegacy:legacy_futabasaurus_fossil",
+  "texture_height": 64,
+  "texture_width": 32
 }

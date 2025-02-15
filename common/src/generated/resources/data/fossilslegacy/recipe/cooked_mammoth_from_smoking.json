@@ -3,9 +3,7 @@
   "category": "food",
   "cookingtime": 100,
   "experience": 0.35,
-  "ingredient": {
-    "item": "fossilslegacy:raw_mammoth"
-  },
+  "ingredient": "fossilslegacy:raw_mammoth",
   "result": {
     "count": 1,
     "id": "fossilslegacy:cooked_mammoth"

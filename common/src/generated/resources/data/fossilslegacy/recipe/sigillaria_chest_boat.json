@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "chest_boat",
   "ingredients": [
-    {
-      "item": "fossilslegacy:sigillaria_boat"
-    },
-    {
-      "item": "minecraft:chest"
-    }
+    "fossilslegacy:sigillaria_boat",
+    "minecraft:chest"
   ],
   "result": {
     "count": 1,

@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "boat",
   "key": {
-    "#": {
-      "item": "fossilslegacy:lepidodendron_planks"
-    }
+    "#": "fossilslegacy:lepidodendron_planks"
   },
   "pattern": [
     "# #",

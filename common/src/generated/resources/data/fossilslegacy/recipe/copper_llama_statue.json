@@ -1,10 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "group": "llama",
   "key": {
-    "#": {
-      "item": "minecraft:copper_ingot"
-    }
+    "#": "minecraft:copper_ingot"
   },
   "pattern": [
     "#  ",

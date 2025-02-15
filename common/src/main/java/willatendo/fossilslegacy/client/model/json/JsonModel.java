@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.client.model.json;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
@@ -12,9 +11,10 @@ import net.minecraft.resources.ResourceLocation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
-public record JsonModel(JsonModel.Animations animations, List<JsonModel.Element> elements, Optional<List<String>> headPieces, ResourceLocation modelId, Optional<Boolean> overrideReset, int textureHeight, int textureWidth) {
-    public static final Codec<JsonModel> CODEC = RecordCodecBuilder.create(instance -> instance.group(JsonModel.Animations.CODEC.fieldOf("animations").forGetter(JsonModel::animations), Codec.list(JsonModel.Element.CODEC).fieldOf("elements").forGetter(JsonModel::elements), Codec.list(Codec.STRING).optionalFieldOf("head_pieces").forGetter(JsonModel::headPieces), ResourceLocation.CODEC.fieldOf("model_id").forGetter(JsonModel::modelId), Codec.BOOL.optionalFieldOf("override_reset").forGetter(JsonModel::overrideReset), Codec.INT.fieldOf("texture_height").forGetter(JsonModel::textureHeight), Codec.INT.fieldOf("texture_width").forGetter(JsonModel::textureWidth)).apply(instance, JsonModel::new));
+public record JsonModel(Optional<JsonModel.Animations> animations, List<JsonElement> jsonElements, Optional<List<String>> headPieces, ResourceLocation modelId, Optional<Boolean> overrideReset, int textureHeight, int textureWidth) {
+    public static final Codec<JsonModel> CODEC = RecordCodecBuilder.create(instance -> instance.group(JsonModel.Animations.CODEC.optionalFieldOf("animations").forGetter(JsonModel::animations), Codec.list(JsonElement.CODEC).fieldOf("elements").forGetter(JsonModel::jsonElements), Codec.list(Codec.STRING).optionalFieldOf("head_pieces").forGetter(JsonModel::headPieces), ResourceLocation.CODEC.fieldOf("model_id").forGetter(JsonModel::modelId), Codec.BOOL.optionalFieldOf("override_reset").forGetter(JsonModel::overrideReset), Codec.INT.fieldOf("texture_height").forGetter(JsonModel::textureHeight), Codec.INT.fieldOf("texture_width").forGetter(JsonModel::textureWidth)).apply(instance, JsonModel::new));
 
     public boolean isOverrideReset() {
         return this.overrideReset().orElse(false);
@@ -23,11 +23,11 @@ public record JsonModel(JsonModel.Animations animations, List<JsonModel.Element>
     public LayerDefinition createModel() {
         MeshDefinition meshDefinition = new MeshDefinition();
         PartDefinition root = meshDefinition.getRoot();
-        this.elements.forEach(element -> this.loadElement(element, root));
+        this.jsonElements().forEach(element -> this.loadElement(element, root));
         return LayerDefinition.create(meshDefinition, this.textureWidth(), this.textureHeight());
     }
 
-    private void loadElement(JsonModel.Element element, PartDefinition parent) {
+    private void loadElement(JsonElement element, PartDefinition parent) {
         CubeListBuilder cubeListBuilder = CubeListBuilder.create();
         element.boxes().forEach(box -> {
             cubeListBuilder.texOffs(box.textureXOffset(), box.textureYOffset()).addBox(box.xOrigin(), box.yOrigin(), box.zOrigin(), box.xDimension(), box.yDimension(), box.zDimension());
@@ -35,87 +35,136 @@ public record JsonModel(JsonModel.Animations animations, List<JsonModel.Element>
                 cubeListBuilder.mirror();
             }
         });
-        PartDefinition partDefinition = parent.addOrReplaceChild(element.id(), cubeListBuilder, element.pose().toPartPose());
+        PartDefinition partDefinition = parent.addOrReplaceChild(element.id(), cubeListBuilder, element.jsonPose().toPartPose());
         if (element.hasChild()) {
-            element.elements.get().forEach(subElement -> this.loadSubElement(subElement, partDefinition));
-        }
-    }
-
-    private void loadSubElement(JsonModel.SubElement subElement, PartDefinition parent) {
-        CubeListBuilder cubeListBuilder = CubeListBuilder.create();
-        subElement.boxes().forEach(box -> {
-            cubeListBuilder.texOffs(box.textureXOffset(), box.textureYOffset()).addBox(box.xOrigin(), box.yOrigin(), box.zOrigin(), box.xDimension(), box.yDimension(), box.zDimension());
-            if (box.isMirrored()) {
-                cubeListBuilder.mirror();
-            }
-        });
-        PartDefinition partDefinition = parent.addOrReplaceChild(subElement.id(), cubeListBuilder, subElement.pose().toPartPose());
-        if (subElement.hasChild()) {
-            subElement.elements.get().forEach(element -> this.loadElement(element, partDefinition));
+            element.jsonElements().get().forEach(child -> this.loadElement(child, partDefinition));
         }
     }
 
     public List<String> getLoadParts() {
         List<String> loadParts = new ArrayList<>();
-        this.elements().forEach(element -> this.getLoadParts(element, loadParts));
+        this.jsonElements().forEach(jsonElement -> this.getLoadParts(jsonElement, loadParts));
         return loadParts;
     }
 
-    private void getLoadParts(JsonModel.Element element, List<String> loadParts) {
-        loadParts.add(element.id());
-        if (element.hasChild()) {
-            element.elements().get().forEach(subElement -> this.getLoadParts(subElement, loadParts));
+    private void getLoadParts(JsonElement jsonElement, List<String> loadParts) {
+        loadParts.add(jsonElement.id());
+        if (jsonElement.hasChild()) {
+            jsonElement.jsonElements().get().forEach(child -> this.getLoadParts(child, loadParts));
         }
     }
 
-    private void getLoadParts(JsonModel.SubElement subElement, List<String> loadParts) {
-        loadParts.add(subElement.id());
-        if (subElement.hasChild()) {
-            subElement.elements().get().forEach(element -> this.getLoadParts(element, loadParts));
-        }
+    public static JsonModel.Builder builder(ResourceLocation modelId, int textureWidth, int textureHeight) {
+        return new JsonModel.Builder(modelId, textureWidth, textureHeight);
     }
 
-    public record Animations(Optional<List<ResourceLocation>> walkAnimation, Optional<List<ResourceLocation>> swimAnimation, Optional<List<ResourceLocation>> flyAnimation, Optional<List<ResourceLocation>> floatDownAnimation, Optional<List<ResourceLocation>> headAnimation, Optional<List<ResourceLocation>> shakeAnimation, Optional<List<ResourceLocation>> sitAnimation, Optional<List<ResourceLocation>> tailAnimation, Optional<List<ResourceLocation>> landAnimation) {
-        public static final Codec<JsonModel.Animations> CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.list(ResourceLocation.CODEC).optionalFieldOf("walk").forGetter(Animations::walkAnimation), Codec.list(ResourceLocation.CODEC).optionalFieldOf("swim").forGetter(Animations::swimAnimation), Codec.list(ResourceLocation.CODEC).optionalFieldOf("fly").forGetter(Animations::flyAnimation), Codec.list(ResourceLocation.CODEC).optionalFieldOf("float_down").forGetter(Animations::floatDownAnimation), Codec.list(ResourceLocation.CODEC).optionalFieldOf("head").forGetter(Animations::headAnimation), Codec.list(ResourceLocation.CODEC).optionalFieldOf("shake").forGetter(Animations::shakeAnimation), Codec.list(ResourceLocation.CODEC).optionalFieldOf("sit").forGetter(Animations::sitAnimation), Codec.list(ResourceLocation.CODEC).optionalFieldOf("tail").forGetter(Animations::tailAnimation), Codec.list(ResourceLocation.CODEC).optionalFieldOf("land").forGetter(Animations::landAnimation)).apply(instance, JsonModel.Animations::new));
+    public record Animations(Optional<List<ResourceLocation>> walkAnimations, Optional<List<ResourceLocation>> swimAnimations, Optional<List<ResourceLocation>> flyAnimations, Optional<List<ResourceLocation>> floatDownAnimations, Optional<List<ResourceLocation>> headAnimations, Optional<List<ResourceLocation>> shakeAnimations, Optional<List<ResourceLocation>> sitAnimations, Optional<List<ResourceLocation>> tailAnimations, Optional<List<ResourceLocation>> landAnimations) {
+        public static final Codec<JsonModel.Animations> CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.list(ResourceLocation.CODEC).optionalFieldOf("walk").forGetter(Animations::walkAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("swim").forGetter(Animations::swimAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("fly").forGetter(Animations::flyAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("float_down").forGetter(Animations::floatDownAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("head").forGetter(Animations::headAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("shake").forGetter(Animations::shakeAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("sit").forGetter(Animations::sitAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("tail").forGetter(Animations::tailAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("land").forGetter(Animations::landAnimations)).apply(instance, JsonModel.Animations::new));
+
+        public boolean hasAnimations() {
+            return this.hasAnimation(this.walkAnimations) || this.hasAnimation(this.swimAnimations) || this.hasAnimation(this.flyAnimations) || this.hasAnimation(this.floatDownAnimations) || this.hasAnimation(this.headAnimations) || this.hasAnimation(this.shakeAnimations) || this.hasAnimation(this.sitAnimations) || this.hasAnimation(this.tailAnimations) || this.hasAnimation(this.landAnimations);
+        }
+
+        private boolean hasAnimation(Optional<List<ResourceLocation>> animations) {
+            return animations.isPresent() && !animations.get().isEmpty();
+        }
 
         public AnimationHolder toAnimationHolder() {
-            return new AnimationHolder(this.walkAnimation().orElse(List.of()), this.swimAnimation().orElse(List.of()), this.flyAnimation().orElse(List.of()), this.floatDownAnimation().orElse(List.of()), this.headAnimation().orElse(List.of()), this.shakeAnimation().orElse(List.of()), this.sitAnimation().orElse(List.of()), this.tailAnimation().orElse(List.of()), this.landAnimation().orElse(List.of()));
+            return new AnimationHolder(this.walkAnimations().orElse(List.of()), this.swimAnimations().orElse(List.of()), this.flyAnimations().orElse(List.of()), this.floatDownAnimations().orElse(List.of()), this.headAnimations().orElse(List.of()), this.shakeAnimations().orElse(List.of()), this.sitAnimations().orElse(List.of()), this.tailAnimations().orElse(List.of()), this.landAnimations().orElse(List.of()));
         }
     }
 
-    public record Element(List<JsonModel.Box> boxes, String id, JsonModel.Pose pose, Optional<List<SubElement>> elements) {
-        public static final Codec<JsonModel.Element> CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.list(JsonModel.Box.CODEC).fieldOf("boxes").forGetter(JsonModel.Element::boxes), Codec.STRING.fieldOf("id").forGetter(JsonModel.Element::id), JsonModel.Pose.CODEC.fieldOf("poses").forGetter(JsonModel.Element::pose), Codec.list(JsonModel.SubElement.CODEC).optionalFieldOf("elements").forGetter(JsonModel.Element::elements)).apply(instance, JsonModel.Element::new));
+    public static final class Builder {
+        private final List<JsonElement> jsonElements = new ArrayList<>();
+        private final List<ResourceLocation> walkAnimation = new ArrayList<>();
+        private final List<ResourceLocation> swimAnimation = new ArrayList<>();
+        private final List<ResourceLocation> flyAnimation = new ArrayList<>();
+        private final List<ResourceLocation> floatDownAnimation = new ArrayList<>();
+        private final List<ResourceLocation> headAnimation = new ArrayList<>();
+        private final List<ResourceLocation> shakeAnimation = new ArrayList<>();
+        private final List<ResourceLocation> sitAnimation = new ArrayList<>();
+        private final List<ResourceLocation> tailAnimation = new ArrayList<>();
+        private final List<ResourceLocation> landAnimation = new ArrayList<>();
+        private final List<String> headPieces = new ArrayList<>();
+        private final ResourceLocation modelId;
+        private final int textureWidth;
+        private final int textureHeight;
+        private boolean overrideReset = false;
 
-        public boolean hasChild() {
-            return this.elements().isPresent() && !this.elements().get().isEmpty();
-        }
-    }
-
-    public record SubElement(List<JsonModel.Box> boxes, String id, JsonModel.Pose pose, Optional<List<Element>> elements) {
-        public static final Codec<JsonModel.SubElement> CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.list(JsonModel.Box.CODEC).fieldOf("boxes").forGetter(JsonModel.SubElement::boxes), Codec.STRING.fieldOf("id").forGetter(JsonModel.SubElement::id), JsonModel.Pose.CODEC.fieldOf("poses").forGetter(JsonModel.SubElement::pose), Codec.list(JsonModel.Element.CODEC).optionalFieldOf("elements").forGetter(JsonModel.SubElement::elements)).apply(instance, JsonModel.SubElement::new));
-
-        public boolean hasChild() {
-            return this.elements().isPresent() && !this.elements().get().isEmpty();
-        }
-    }
-
-    public record Box(int textureXOffset, int textureYOffset, int xDimension, int xOrigin, int yDimension, int yOrigin, int zDimension, int zOrigin, Optional<Boolean> mirror) {
-        public static final Codec<JsonModel.Box> CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.INT.fieldOf("texture_x_offset").forGetter(JsonModel.Box::textureXOffset), Codec.INT.fieldOf("texture_y_offset").forGetter(JsonModel.Box::textureYOffset), Codec.INT.fieldOf("x_dimension").forGetter(JsonModel.Box::xDimension), Codec.INT.fieldOf("x_origin").forGetter(JsonModel.Box::xOrigin), Codec.INT.fieldOf("y_dimension").forGetter(JsonModel.Box::yDimension), Codec.INT.fieldOf("y_origin").forGetter(JsonModel.Box::yOrigin), Codec.INT.fieldOf("z_dimension").forGetter(JsonModel.Box::zDimension), Codec.INT.fieldOf("z_origin").forGetter(JsonModel.Box::zOrigin), Codec.BOOL.optionalFieldOf("mirror").forGetter(JsonModel.Box::mirror)).apply(instance, JsonModel.Box::new));
-
-        public boolean isMirrored() {
-            return this.mirror().orElse(false);
-        }
-    }
-
-    public record Pose(float x, float y, float z, Optional<Float> xRot, Optional<Float> yRot, Optional<Float> zRot) {
-        public static final Codec<JsonModel.Pose> CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.FLOAT.fieldOf("x").forGetter(JsonModel.Pose::x), Codec.FLOAT.fieldOf("y").forGetter(JsonModel.Pose::y), Codec.FLOAT.fieldOf("z").forGetter(JsonModel.Pose::z), Codec.FLOAT.optionalFieldOf("x_rot").forGetter(JsonModel.Pose::xRot), Codec.FLOAT.optionalFieldOf("y_rot").forGetter(JsonModel.Pose::yRot), Codec.FLOAT.optionalFieldOf("z_rot").forGetter(JsonModel.Pose::zRot)).apply(instance, JsonModel.Pose::new));
-
-        public boolean hasRot() {
-            return this.xRot().isPresent() || this.yRot().isPresent() || this.zRot().isPresent();
+        private Builder(ResourceLocation modelId, int textureWidth, int textureHeight) {
+            this.modelId = modelId;
+            this.textureWidth = textureWidth;
+            this.textureHeight = textureHeight;
         }
 
-        public PartPose toPartPose() {
-            return this.hasRot() ? PartPose.offsetAndRotation(this.x(), this.y(), this.z(), this.xRot().orElse(0.0F), this.yRot().orElse(0.0F), this.zRot().orElse(0.0F)) : PartPose.offset(this.x(), this.y(), this.z());
+        public Builder withElement(JsonElement jsonElement) {
+            this.jsonElements.add(jsonElement);
+            return this;
+        }
+
+        public Builder addOrReplaceChild(String name, Function<JsonElement.Builder, JsonElement> jsonElement, JsonPose jsonPose) {
+            this.jsonElements.add(jsonElement.apply(JsonElement.builder(name, jsonPose)));
+            return this;
+        }
+
+        public Builder withWalkAnimations(ResourceLocation... animations) {
+            this.walkAnimation.addAll(List.of(animations));
+            return this;
+        }
+
+        public Builder withSwimAnimations(ResourceLocation... animations) {
+            this.swimAnimation.addAll(List.of(animations));
+            return this;
+        }
+
+        public Builder withFlyAnimations(ResourceLocation... animations) {
+            this.flyAnimation.addAll(List.of(animations));
+            return this;
+        }
+
+        public Builder withFloatDownAnimations(ResourceLocation... animations) {
+            this.floatDownAnimation.addAll(List.of(animations));
+            return this;
+        }
+
+        public Builder withHeadAnimations(ResourceLocation... animations) {
+            this.headAnimation.addAll(List.of(animations));
+            return this;
+        }
+
+        public Builder withShakeAnimations(ResourceLocation... animations) {
+            this.shakeAnimation.addAll(List.of(animations));
+            return this;
+        }
+
+        public Builder withSitAnimations(ResourceLocation... animations) {
+            this.sitAnimation.addAll(List.of(animations));
+            return this;
+        }
+
+        public Builder withTailAnimations(ResourceLocation... animations) {
+            this.tailAnimation.addAll(List.of(animations));
+            return this;
+        }
+
+        public Builder withLandAnimations(ResourceLocation... animations) {
+            this.landAnimation.addAll(List.of(animations));
+            return this;
+        }
+
+        public Builder withHeadPieces(String... headPiece) {
+            this.headPieces.addAll(List.of(headPiece));
+            return this;
+        }
+
+        public Builder overrideReset() {
+            this.overrideReset = true;
+            return this;
+        }
+
+        public JsonModel build() {
+            JsonModel.Animations animations = new JsonModel.Animations(this.walkAnimation.isEmpty() ? Optional.empty() : Optional.of(this.walkAnimation), this.swimAnimation.isEmpty() ? Optional.empty() : Optional.of(this.swimAnimation), this.flyAnimation.isEmpty() ? Optional.empty() : Optional.of(this.flyAnimation), this.floatDownAnimation.isEmpty() ? Optional.empty() : Optional.of(this.floatDownAnimation), this.headAnimation.isEmpty() ? Optional.empty() : Optional.of(this.headAnimation), this.shakeAnimation.isEmpty() ? Optional.empty() : Optional.of(this.shakeAnimation), this.sitAnimation.isEmpty() ? Optional.empty() : Optional.of(this.sitAnimation), this.tailAnimation.isEmpty() ? Optional.empty() : Optional.of(this.tailAnimation), this.landAnimation.isEmpty() ? Optional.empty() : Optional.of(this.landAnimation));
+            return new JsonModel(animations.hasAnimations() ? Optional.of(animations) : Optional.empty(), this.jsonElements, this.headPieces.isEmpty() ? Optional.empty() : Optional.of(this.headPieces), this.modelId, this.overrideReset ? Optional.of(true) : Optional.empty(), this.textureWidth, this.textureHeight);
         }
     }
 }

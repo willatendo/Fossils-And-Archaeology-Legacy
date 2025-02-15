@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "egg",
-  "ingredient": {
-    "item": "fossilslegacy:horse_dna"
-  },
+  "ingredient": "fossilslegacy:horse_dna",
   "result": {
     "id": "fossilslegacy:horse_embryo_syringe"
   },

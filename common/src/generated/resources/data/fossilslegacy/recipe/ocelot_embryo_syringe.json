@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "egg",
-  "ingredient": {
-    "item": "fossilslegacy:ocelot_dna"
-  },
+  "ingredient": "fossilslegacy:ocelot_dna",
   "result": {
     "id": "fossilslegacy:ocelot_embryo_syringe"
   },

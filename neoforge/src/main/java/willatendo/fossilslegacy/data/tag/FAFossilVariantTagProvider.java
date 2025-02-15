@@ -10,7 +10,7 @@ import willatendo.fossilslegacy.server.tags.FAFossilVariantTags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class FAFossilVariantTagProvider extends TagsProvider<FossilVariant> {
+public class FAFossilVariantTagProvider extends DataDrivenTagsProvider<FossilVariant> {
     public FAFossilVariantTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId) {
         super(packOutput, FARegistries.FOSSIL_VARIANTS, provider, modId);
     }

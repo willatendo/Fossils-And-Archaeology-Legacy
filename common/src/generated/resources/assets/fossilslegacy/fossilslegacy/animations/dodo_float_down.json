@@ -1,95 +1,88 @@
 {
-  "type": "json",
   "animations": [
     {
       "bone": "right_arm",
       "keyframes": [
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
             "x": 0.0,
             "y": 0.0,
             "z": 90.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 0.0
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 0.0417,
+          "vector": {
             "x": 0.0,
             "y": 0.0,
             "z": 137.5
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 0.0417
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 0.125,
+          "vector": {
             "x": 0.0,
             "y": 0.0,
             "z": 47.5
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 0.125
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 0.1667,
+          "vector": {
             "x": 0.0,
             "y": 0.0,
             "z": 90.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 0.1667
+          }
         }
-      ]
+      ],
+      "target": "rotation"
     },
     {
       "bone": "left_arm",
       "keyframes": [
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
             "x": 0.0,
             "y": 0.0,
             "z": -90.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 0.0
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 0.0417,
+          "vector": {
             "x": 0.0,
             "y": 0.0,
             "z": -137.5
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 0.0417
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 0.125,
+          "vector": {
             "x": 0.0,
             "y": 0.0,
             "z": -47.5
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 0.125
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 0.1667,
+          "vector": {
             "x": 0.0,
             "y": 0.0,
             "z": -90.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 0.1667
+          }
         }
-      ]
+      ],
+      "target": "rotation"
     }
   ],
   "id": "fossilslegacy:dodo_float_down",

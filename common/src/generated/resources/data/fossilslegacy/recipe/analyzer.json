@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "minecraft:iron_ingot"
-    },
-    "$": {
-      "item": "fossilslegacy:fossil"
-    },
-    "%": {
-      "item": "fossilslegacy:relic_scrap"
-    }
+    "#": "minecraft:iron_ingot",
+    "$": "fossilslegacy:fossil",
+    "%": "fossilslegacy:relic_scrap"
   },
   "pattern": [
     "#%#",

@@ -1,6 +1,5 @@
 {
   "parent": "minecraft:block/leaves",
-  "render_type": "minecraft:cutout",
   "textures": {
     "all": "fossilslegacy:block/lepidodendron_leaves"
   }

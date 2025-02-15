@@ -213,7 +213,6 @@ public final class BasicEvents {
         newRegistryRegister.register(FABuiltInRegistries.DINOPEDIA_LINE_TYPES, FARegistries.DINOPEDIA_LINE_TYPE);
         newRegistryRegister.register(FABuiltInRegistries.EGG_VARIANTS, FARegistries.EGG_VARIANTS);
         newRegistryRegister.register(FABuiltInRegistries.PREGNANCY_TYPES, FARegistries.PREGNANCY_TYPES);
-        newRegistryRegister.register(FABuiltInRegistries.JSON_MODEL_TYPES, FARegistries.JSON_MODEL_TYPE);
     }
 
     public static void newDynamicRegistryEvent(DynamicRegistryRegister dynamicRegistryRegister) {

@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "plant",
-  "ingredient": {
-    "item": "fossilslegacy:sigillaria_dna"
-  },
+  "ingredient": "fossilslegacy:sigillaria_dna",
   "result": {
     "id": "fossilslegacy:sigillaria_sapling"
   },

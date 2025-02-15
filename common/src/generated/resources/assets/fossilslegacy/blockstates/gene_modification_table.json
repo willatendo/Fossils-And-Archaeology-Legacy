@@ -1,34 +1,7 @@
 {
   "variants": {
-    "active=false,facing=east": {
-      "model": "fossilslegacy:block/gene_modification_table",
-      "y": 90
-    },
-    "active=false,facing=north": {
+    "": {
       "model": "fossilslegacy:block/gene_modification_table"
-    },
-    "active=false,facing=south": {
-      "model": "fossilslegacy:block/gene_modification_table",
-      "y": 180
-    },
-    "active=false,facing=west": {
-      "model": "fossilslegacy:block/gene_modification_table",
-      "y": 270
-    },
-    "active=true,facing=east": {
-      "model": "fossilslegacy:block/gene_modification_table",
-      "y": 90
-    },
-    "active=true,facing=north": {
-      "model": "fossilslegacy:block/gene_modification_table"
-    },
-    "active=true,facing=south": {
-      "model": "fossilslegacy:block/gene_modification_table",
-      "y": 180
-    },
-    "active=true,facing=west": {
-      "model": "fossilslegacy:block/gene_modification_table",
-      "y": 270
     }
   }
 }

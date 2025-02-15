@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "misc",
-  "ingredient": {
-    "item": "fossilslegacy:raw_cryolophosaurus"
-  },
-  "results": "fossilslegacy:results/raw_cryolophosaurus_meat",
+  "fuels": "fossilslegacy:fuels/raw_cryolophosaurus_meat",
+  "ingredient": "fossilslegacy:raw_cryolophosaurus",
   "time": 100
 }

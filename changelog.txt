@@ -9,6 +9,7 @@
 - Fixed Dimetrodon Egg Not Droping Egg
 - Fixed Gallimimus Egg Not Droping Egg
 - Fixed Spinosaurus Egg Not Droping Egg
+- Fixed Tyrannosaurus Head Not Moving
 2/2/2025b 1.4.8
 - Fixed Server Crash
 2/2/2025a 1.4.7

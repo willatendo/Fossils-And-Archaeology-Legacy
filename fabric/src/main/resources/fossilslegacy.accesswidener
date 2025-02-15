@@ -31,6 +31,9 @@ accessible method net/minecraft/world/level/block/DoorBlock <init> (Lnet/minecra
 accessible method net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType <init> (Lcom/mojang/serialization/MapCodec;)V
 accessible method net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacerType <init> (Lcom/mojang/serialization/MapCodec;)V
 accessible method net/minecraft/client/renderer/entity/ItemRenderer renderModelLists (Lnet/minecraft/client/resources/model/BakedModel;Lnet/minecraft/world/item/ItemStack;IILcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;)V
+accessible method net/minecraft/client/gui/screens/recipebook/GhostSlots setResult (Lnet/minecraft/world/inventory/Slot;Lnet/minecraft/util/context/ContextMap;Lnet/minecraft/world/item/crafting/display/SlotDisplay;)V
+accessible method net/minecraft/client/gui/screens/recipebook/GhostSlots setInput (Lnet/minecraft/world/inventory/Slot;Lnet/minecraft/util/context/ContextMap;Lnet/minecraft/world/item/crafting/display/SlotDisplay;)V
+accessible method net/minecraft/world/level/block/entity/BlockEntityType <init> (Lnet/minecraft/world/level/block/entity/BlockEntityType$BlockEntitySupplier;Ljava/util/Set;)V
 
 accessible field net/minecraft/world/level/biome/MultiNoiseBiomeSourceParameterList$Preset BY_NAME Ljava/util/Map;
 accessible field net/minecraft/world/level/levelgen/NoiseSettings OVERWORLD_NOISE_SETTINGS Lnet/minecraft/world/level/levelgen/NoiseSettings;
@@ -63,3 +66,12 @@ mutable field net/minecraft/world/level/levelgen/structure/pools/StructureTempla
 accessible field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool templates Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
 
 accessible field net/minecraft/client/ClientRecipeBook collectionsByTab Ljava/util/Map;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_HELMET Lnet/minecraft/resources/ResourceLocation;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_CHESTPLATE Lnet/minecraft/resources/ResourceLocation;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_LEGGINGS Lnet/minecraft/resources/ResourceLocation;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_BOOTS Lnet/minecraft/resources/ResourceLocation;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_HOE Lnet/minecraft/resources/ResourceLocation;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_AXE Lnet/minecraft/resources/ResourceLocation;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_SWORD Lnet/minecraft/resources/ResourceLocation;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_SHOVEL Lnet/minecraft/resources/ResourceLocation;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_PICKAXE Lnet/minecraft/resources/ResourceLocation;

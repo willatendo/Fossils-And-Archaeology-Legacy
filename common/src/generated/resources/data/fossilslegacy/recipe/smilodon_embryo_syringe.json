@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "egg",
-  "ingredient": {
-    "item": "fossilslegacy:smilodon_dna"
-  },
+  "ingredient": "fossilslegacy:smilodon_dna",
   "result": {
     "id": "fossilslegacy:smilodon_embryo_syringe"
   },

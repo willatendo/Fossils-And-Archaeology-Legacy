@@ -1,5 +1,5 @@
 {
-	"parent": "block/cube_all",
+	"parent": "block/block",
 	"textures": {
 		"bottom": "fossilslegacy:block/time_machine_bottom",
 		"side": "fossilslegacy:block/time_machine_side",

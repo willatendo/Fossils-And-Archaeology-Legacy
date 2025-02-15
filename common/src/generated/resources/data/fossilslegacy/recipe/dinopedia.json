@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "equipment",
   "ingredients": [
-    {
-      "item": "minecraft:book"
-    },
-    {
-      "tag": "fossilslegacy:dna"
-    }
+    "minecraft:book",
+    "#fossilslegacy:dna"
   ],
   "result": {
     "count": 1,

@@ -1,5 +1,5 @@
 {
-	"parent": "block/cube_all",
+	"parent": "block/block",
 	"textures": {
 		"side": "fossilslegacy:block/gene_modification_table_side",
 		"base": "fossilslegacy:block/gene_modification_table_base_end",

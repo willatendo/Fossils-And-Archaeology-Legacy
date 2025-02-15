@@ -1,47 +1,47 @@
 package willatendo.fossilslegacy.client.model.dinosaur;
 
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.resources.ResourceLocation;
+import willatendo.fossilslegacy.client.animation.BuiltInAnimationTypes;
+import willatendo.fossilslegacy.client.model.json.JsonModel;
+import willatendo.fossilslegacy.client.model.json.JsonPose;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class MosasaurusModels {
-    public static LayerDefinition createMosasaurusBodyLayer() {
-        MeshDefinition meshDefinition = new MeshDefinition();
-        PartDefinition partDefinition = meshDefinition.getRoot();
+    public static final JsonModel MOSASAURUS_MODEL = MosasaurusModels.createMosasaurusBodyLayer(FAUtils.resource("mosasaurus")).withWalkAnimations(FAUtils.resource("mosasaurus_walk")).withSwimAnimations(FAUtils.resource("mosasaurus_swim")).withHeadPieces("head").build();
+    public static final JsonModel MOSASAURUS_LEGACY_MODEL = MosasaurusModels.createLegacyMosasaurusBodyLayer(FAUtils.resource("legacy_mosasaurus")).withWalkAnimations(BuiltInAnimationTypes.LEGACY_MOSASAURUS_SWIM.getId()).withSwimAnimations(BuiltInAnimationTypes.LEGACY_MOSASAURUS_SWIM.getId()).build();
 
-        partDefinition.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(36, 35).addBox(-3.0F, -3.0F, 0.0F, 6.0F, 7.0F, 7.0F).texOffs(38, 0).addBox(-2.0F, 2.0F, 5.0F, 4.0F, 5.0F, 9.0F).texOffs(0, 51).addBox(-2.0F, -6.0F, 5.0F, 4.0F, 8.0F, 5.0F), PartPose.offset(0.0F, 16.0F, 9.0F));
-        partDefinition.addOrReplaceChild("left_front_flipper", CubeListBuilder.create().texOffs(52, 49).addBox(0.0F, -2.0F, -1.0F, 2.0F, 5.0F, 7.0F), PartPose.offset(5.0F, 21.0F, -7.0F));
-        partDefinition.addOrReplaceChild("right_front_flipper", CubeListBuilder.create().texOffs(18, 58).addBox(-2.0F, -2.0F, -1.0F, 2.0F, 5.0F, 7.0F), PartPose.offset(-5.0F, 21.0F, -7.0F));
-        partDefinition.addOrReplaceChild("left_back_flipper", CubeListBuilder.create().texOffs(62, 35).addBox(-1.0F, -2.0F, -1.0F, 2.0F, 4.0F, 6.0F), PartPose.offset(5.0F, 21.0F, 5.0F));
-        partDefinition.addOrReplaceChild("right_back_flipper", CubeListBuilder.create().texOffs(0, 64).addBox(-1.0F, -2.0F, -1.0F, 2.0F, 4.0F, 6.0F), PartPose.offset(-5.0F, 21.0F, 5.0F));
-        PartDefinition head = partDefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(36, 20).addBox(-4.0F, -4.0F, -7.0F, 8.0F, 8.0F, 7.0F).texOffs(0, 40).addBox(-3.0F, -3.0F, -14.0F, 6.0F, 4.0F, 7.0F).texOffs(56, 61).addBox(-2.0F, 1.0F, -13.0F, 4.0F, 1.0F, 6.0F), PartPose.offset(0.0F, 18.0F, -10.0F));
-        head.addOrReplaceChild("jaw", CubeListBuilder.create().texOffs(26, 49).addBox(-3.0F, -1.0F, -7.0F, 6.0F, 2.0F, 7.0F).texOffs(36, 61).addBox(-2.0F, -2.0F, -6.0F, 4.0F, 1.0F, 6.0F), PartPose.offset(0.0F, 2.0F, -7.0F));
-        partDefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-5.0F, -11.0F, -10.0F, 10.0F, 11.0F, 9.0F).texOffs(0, 20).addBox(-4.0F, -11.0F, -1.0F, 8.0F, 10.0F, 10.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
+    private static JsonModel.Builder createMosasaurusBodyLayer(ResourceLocation modelId) {
+        JsonModel.Builder builder = JsonModel.builder(modelId, 128, 128);
 
-        return LayerDefinition.create(meshDefinition, 128, 128);
+        builder.addOrReplaceChild("tail", elementBuilder -> elementBuilder.addBox(36, 35, -3.0F, -3.0F, 0.0F, 6.0F, 7.0F, 7.0F).addBox(38, 0, -2.0F, 2.0F, 5.0F, 4.0F, 5.0F, 9.0F).addBox(0, 51, -2.0F, -6.0F, 5.0F, 4.0F, 8.0F, 5.0F).build(), JsonPose.offset(0.0F, 16.0F, 9.0F));
+        builder.addOrReplaceChild("left_front_flipper", elementBuilder -> elementBuilder.addBox(52, 49, 0.0F, -2.0F, -1.0F, 2.0F, 5.0F, 7.0F).build(), JsonPose.offset(5.0F, 21.0F, -7.0F));
+        builder.addOrReplaceChild("right_front_flipper", elementBuilder -> elementBuilder.addBox(18, 58, -2.0F, -2.0F, -1.0F, 2.0F, 5.0F, 7.0F).build(), JsonPose.offset(-5.0F, 21.0F, -7.0F));
+        builder.addOrReplaceChild("left_back_flipper", elementBuilder -> elementBuilder.addBox(62, 35, -1.0F, -2.0F, -1.0F, 2.0F, 4.0F, 6.0F).build(), JsonPose.offset(5.0F, 21.0F, 5.0F));
+        builder.addOrReplaceChild("right_back_flipper", elementBuilder -> elementBuilder.addBox(0, 64, -1.0F, -2.0F, -1.0F, 2.0F, 4.0F, 6.0F).build(), JsonPose.offset(-5.0F, 21.0F, 5.0F));
+        builder.addOrReplaceChild("head", elementBuilder -> elementBuilder.addBox(36, 20, -4.0F, -4.0F, -7.0F, 8.0F, 8.0F, 7.0F).addBox(0, 40, -3.0F, -3.0F, -14.0F, 6.0F, 4.0F, 7.0F).addBox(56, 61, -2.0F, 1.0F, -13.0F, 4.0F, 1.0F, 6.0F).addOrReplaceChild("jaw", subElementBuilder -> subElementBuilder.addBox(26, 49, -3.0F, -1.0F, -7.0F, 6.0F, 2.0F, 7.0F).addBox(36, 61, -2.0F, -2.0F, -6.0F, 4.0F, 1.0F, 6.0F).build(), JsonPose.offset(0.0F, 2.0F, -7.0F)).build(), JsonPose.offset(0.0F, 18.0F, -10.0F));
+        builder.addOrReplaceChild("body", elementBuilder -> elementBuilder.addBox(0, 0, -5.0F, -11.0F, -10.0F, 10.0F, 11.0F, 9.0F).addBox(0, 20, -4.0F, -11.0F, -1.0F, 8.0F, 10.0F, 10.0F).build(), JsonPose.offset(0.0F, 24.0F, 0.0F));
+
+        return builder;
     }
 
-    public static LayerDefinition createLegacyMosasaurusBodyLayer() {
-        MeshDefinition meshDefinition = new MeshDefinition();
-        PartDefinition partDefinition = meshDefinition.getRoot();
+    private static JsonModel.Builder createLegacyMosasaurusBodyLayer(ResourceLocation modelId) {
+        JsonModel.Builder builder = JsonModel.builder(modelId, 64, 32);
 
-        partDefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 24).addBox(-3.0F, -2.0F, -4.0F, 6.0F, 4.0F, 4.0F), PartPose.offset(1.0F, 19.0F, 0.0F));
-        partDefinition.addOrReplaceChild("upper_jaw", CubeListBuilder.create().texOffs(17, 22).addBox(-2.0F, -1.0F, -9.0F, 4.0F, 1.0F, 5.0F), PartPose.offset(1.0F, 19.0F, 0.0F));
-        partDefinition.addOrReplaceChild("upper_teeth", CubeListBuilder.create().texOffs(0, 16).addBox(-2.0F, 0.0F, -9.0F, 4.0F, 2.F, 6.0F), PartPose.offset(1.0F, 19.0F, 0.0F));
-        partDefinition.addOrReplaceChild("lower_jaw", CubeListBuilder.create().texOffs(0, 7).addBox(-1.0F, 0.0F, -8.0F, 2.0F, 2.0F, 6.0F), PartPose.offset(1.0F, 19.0F, 0.0F));
-        partDefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(32, 0).addBox(-4.0F, 0.0F, 0.0F, 8.0F, 6.0F, 8.0F), PartPose.offset(1.0F, 16.0F, 0.0F));
-        partDefinition.addOrReplaceChild("right_front_flipper", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, 0.0F, 0.0F, 4.0F, 1.0F, 6.0F), PartPose.offsetAndRotation(-3.0F, 20.0F, 0.0F, -0.34907F, -1.0472F, -0.43633F));
-        partDefinition.addOrReplaceChild("left_front_flipper", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, 0.0F, 0.0F, 4.0F, 1.0F, 6.0F), PartPose.offsetAndRotation(5.0F, 20.0F, 0.0F, -0.34907F, 1.0472F, 0.43633F));
-        partDefinition.addOrReplaceChild("right_back_flipper", CubeListBuilder.create().texOffs(20, 1).addBox(-3.0F, 0.0F, 0.0F, 3.0F, 1.0F, 5.0F), PartPose.offsetAndRotation(-2.0F, 20.0F, 7.0F, -0.34907F, -0.87266F, -0.43633F));
-        partDefinition.addOrReplaceChild("left_back_flipper", CubeListBuilder.create().texOffs(20, 1).addBox(0.0F, 0.0F, 0.0F, 3.0F, 1.0F, 5.0F), PartPose.offsetAndRotation(4.0F, 20.0F, 7.0F, -0.34907F, 0.87266F, 0.43633F));
-        partDefinition.addOrReplaceChild("tail_1", CubeListBuilder.create().texOffs(35, 14).addBox(-3.0F, -2.0F, -4.0F, 6.0F, 4.0F, 6.0F), PartPose.offset(1.0F, 19.0F, 11.0F));
-        partDefinition.addOrReplaceChild("tail_2", CubeListBuilder.create().texOffs(36, 24).addBox(-2.0F, -1.0F, -4.0F, 4.0F, 2.0F, 6.0F), PartPose.offset(1.0F, 19.0F, 16.0F));
-        partDefinition.addOrReplaceChild("tail_2_spike", CubeListBuilder.create().texOffs(26, 22).addBox(0.0F, -3.0F, -4.0F, 1.0F, 2.0F, 6.0F), PartPose.offset(1.0F, 19.0F, 16.0F));
-        partDefinition.addOrReplaceChild("tail_3", CubeListBuilder.create().texOffs(16, 8).addBox(-1.0F, -1.0F, -4.0F, 2.0F, 2.0F, 6.0F), PartPose.offset(1.0F, 19.0F, 21.0F));
-        partDefinition.addOrReplaceChild("tail_3_spike", CubeListBuilder.create().texOffs(26, 23).addBox(0.0F, -2.0F, -2.0F, 1.0F, 2.0F, 5.0F), PartPose.offset(1.0F, 19.0F, 20.0F));
+        builder.addOrReplaceChild("head", elementBuilder -> elementBuilder.addBox(0, 24, -3.0F, -2.0F, -4.0F, 6.0F, 4.0F, 4.0F).build(), JsonPose.offset(1.0F, 19.0F, 0.0F));
+        builder.addOrReplaceChild("upper_jaw", elementBuilder -> elementBuilder.addBox(17, 22, -2.0F, -1.0F, -9.0F, 4.0F, 1.0F, 5.0F).build(), JsonPose.offset(1.0F, 19.0F, 0.0F));
+        builder.addOrReplaceChild("upper_teeth", elementBuilder -> elementBuilder.addBox(0, 16, -2.0F, 0.0F, -9.0F, 4.0F, 2.F, 6.0F).build(), JsonPose.offset(1.0F, 19.0F, 0.0F));
+        builder.addOrReplaceChild("lower_jaw", elementBuilder -> elementBuilder.addBox(0, 7, -1.0F, 0.0F, -8.0F, 2.0F, 2.0F, 6.0F).build(), JsonPose.offset(1.0F, 19.0F, 0.0F));
+        builder.addOrReplaceChild("body", elementBuilder -> elementBuilder.addBox(32, 0, -4.0F, 0.0F, 0.0F, 8.0F, 6.0F, 8.0F).build(), JsonPose.offset(1.0F, 16.0F, 0.0F));
+        builder.addOrReplaceChild("right_front_flipper", elementBuilder -> elementBuilder.addBox(0, 0, -4.0F, 0.0F, 0.0F, 4.0F, 1.0F, 6.0F).build(), JsonPose.offsetAndRotation(-3.0F, 20.0F, 0.0F, -0.34907F, -1.0472F, -0.43633F));
+        builder.addOrReplaceChild("left_front_flipper", elementBuilder -> elementBuilder.addBox(0, 0, 0.0F, 0.0F, 0.0F, 4.0F, 1.0F, 6.0F).build(), JsonPose.offsetAndRotation(5.0F, 20.0F, 0.0F, -0.34907F, 1.0472F, 0.43633F));
+        builder.addOrReplaceChild("right_back_flipper", elementBuilder -> elementBuilder.addBox(20, 1, -3.0F, 0.0F, 0.0F, 3.0F, 1.0F, 5.0F).build(), JsonPose.offsetAndRotation(-2.0F, 20.0F, 7.0F, -0.34907F, -0.87266F, -0.43633F));
+        builder.addOrReplaceChild("left_back_flipper", elementBuilder -> elementBuilder.addBox(20, 1, 0.0F, 0.0F, 0.0F, 3.0F, 1.0F, 5.0F).build(), JsonPose.offsetAndRotation(4.0F, 20.0F, 7.0F, -0.34907F, 0.87266F, 0.43633F));
+        builder.addOrReplaceChild("tail_1", elementBuilder -> elementBuilder.addBox(35, 14, -3.0F, -2.0F, -4.0F, 6.0F, 4.0F, 6.0F).build(), JsonPose.offset(1.0F, 19.0F, 11.0F));
+        builder.addOrReplaceChild("tail_2", elementBuilder -> elementBuilder.addBox(36, 24, -2.0F, -1.0F, -4.0F, 4.0F, 2.0F, 6.0F).build(), JsonPose.offset(1.0F, 19.0F, 16.0F));
+        builder.addOrReplaceChild("tail_2_spike", elementBuilder -> elementBuilder.addBox(26, 22, 0.0F, -3.0F, -4.0F, 1.0F, 2.0F, 6.0F).build(), JsonPose.offset(1.0F, 19.0F, 16.0F));
+        builder.addOrReplaceChild("tail_3", elementBuilder -> elementBuilder.addBox(16, 8, -1.0F, -1.0F, -4.0F, 2.0F, 2.0F, 6.0F).build(), JsonPose.offset(1.0F, 19.0F, 21.0F));
+        builder.addOrReplaceChild("tail_3_spike", elementBuilder -> elementBuilder.addBox(26, 23, 0.0F, -2.0F, -2.0F, 1.0F, 2.0F, 5.0F).build(), JsonPose.offset(1.0F, 19.0F, 20.0F));
 
-        return LayerDefinition.create(meshDefinition, 64, 32);
+        return builder;
     }
 }

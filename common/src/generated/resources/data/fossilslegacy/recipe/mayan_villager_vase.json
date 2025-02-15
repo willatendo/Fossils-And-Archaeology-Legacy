@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "minecraft:brick"
-    },
-    "$": {
-      "item": "fossilslegacy:jade_villager"
-    }
+    "#": "minecraft:brick",
+    "$": "fossilslegacy:jade_villager"
   },
   "pattern": [
     "#$#",

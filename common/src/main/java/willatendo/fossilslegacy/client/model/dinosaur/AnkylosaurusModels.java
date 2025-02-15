@@ -1,24 +1,24 @@
 package willatendo.fossilslegacy.client.model.dinosaur;
 
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.resources.ResourceLocation;
+import willatendo.fossilslegacy.client.model.json.JsonModel;
+import willatendo.fossilslegacy.client.model.json.JsonPose;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class AnkylosaurusModels {
-    public static LayerDefinition createAnkylosaurusBodyLayer() {
-        MeshDefinition meshDefinition = new MeshDefinition();
-        PartDefinition partDefinition = meshDefinition.getRoot();
+    public static final JsonModel ANKYLOSAURUS_MODEL = AnkylosaurusModels.createAnkylosaurusBodyLayer(FAUtils.resource("ankylosaurus")).withWalkAnimations(FAUtils.resource("ankylosaurus_walk")).withHeadPieces("head").build();
 
-        partDefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 26).addBox(-4.0F, -4.0F, -8.0F, 8.0F, 7.0F, 8.0F).texOffs(22, 41).addBox(2.0F, 1.0F, -2.0F, 3.0F, 3.0F, 2.0F).texOffs(58, 34).addBox(-5.0F, 1.0F, -2.0F, 3.0F, 3.0F, 2.0F).texOffs(58, 20).addBox(2.0F, -6.0F, -3.0F, 3.0F, 4.0F, 3.0F).texOffs(58, 27).addBox(-5.0F, -6.0F, -3.0F, 3.0F, 4.0F, 3.0F).texOffs(54, 39).addBox(-2.0F, -1.0F, -10.0F, 4.0F, 5.0F, 3.0F), PartPose.offset(0.0F, 16.0F, -9.0F));
-        partDefinition.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(0, 41).addBox(-3.0F, -1.0F, 13.0F, 6.0F, 4.0F, 5.0F).texOffs(32, 39).addBox(-2.0F, -2.0F, 7.0F, 4.0F, 4.0F, 7.0F).texOffs(32, 26).addBox(-3.0F, -3.0F, 0.0F, 6.0F, 6.0F, 7.0F), PartPose.offset(0.0F, 15.0F, 7.0F));
-        partDefinition.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(52, 50).addBox(-2.0F, 2.0F, -2.0F, 3.0F, 5.0F, 4.0F).texOffs(0, 50).addBox(-2.0F, -3.0F, -3.0F, 4.0F, 5.0F, 5.0F), PartPose.offset(6.0F, 17.0F, 4.0F));
-        partDefinition.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(52, 11).addBox(-1.0F, 2.0F, -2.0F, 3.0F, 5.0F, 4.0F).texOffs(18, 50).addBox(-2.0F, -3.0F, -3.0F, 4.0F, 5.0F, 5.0F), PartPose.offset(-6.0F, 17.0F, 4.0F));
-        partDefinition.addOrReplaceChild("left_arm", CubeListBuilder.create().texOffs(36, 50).addBox(8.0F, -2.0F, -2.0F, 4.0F, 7.0F, 4.0F), PartPose.offset(-5.0F, 19.0F, -5.0F));
-        partDefinition.addOrReplaceChild("right_arm", CubeListBuilder.create().texOffs(52, 0).addBox(-2.0F, -2.0F, -2.0F, 4.0F, 7.0F, 4.0F), PartPose.offset(-5.0F, 19.0F, -5.0F));
-        partDefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-5.0F, -13.0F, -9.0F, 10.0F, 10.0F, 16.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
+    public static JsonModel.Builder createAnkylosaurusBodyLayer(ResourceLocation modelId) {
+        JsonModel.Builder builder = JsonModel.builder(modelId, 128, 128);
 
-        return LayerDefinition.create(meshDefinition, 128, 128);
+        builder.addOrReplaceChild("head", elementBuilder -> elementBuilder.addBox(0, 26, -4.0F, -4.0F, -8.0F, 8.0F, 7.0F, 8.0F).addBox(22, 41, 2.0F, 1.0F, -2.0F, 3.0F, 3.0F, 2.0F).addBox(58, 34, -5.0F, 1.0F, -2.0F, 3.0F, 3.0F, 2.0F).addBox(58, 20, 2.0F, -6.0F, -3.0F, 3.0F, 4.0F, 3.0F).addBox(58, 27, -5.0F, -6.0F, -3.0F, 3.0F, 4.0F, 3.0F).addBox(54, 39, -2.0F, -1.0F, -10.0F, 4.0F, 5.0F, 3.0F).build(), JsonPose.offset(0.0F, 16.0F, -9.0F));
+        builder.addOrReplaceChild("tail", elementBuilder -> elementBuilder.addBox(0, 41, -3.0F, -1.0F, 13.0F, 6.0F, 4.0F, 5.0F).addBox(32, 39, -2.0F, -2.0F, 7.0F, 4.0F, 4.0F, 7.0F).addBox(32, 26, -3.0F, -3.0F, 0.0F, 6.0F, 6.0F, 7.0F).build(), JsonPose.offset(0.0F, 15.0F, 7.0F));
+        builder.addOrReplaceChild("left_leg", elementBuilder -> elementBuilder.addBox(52, 50, -2.0F, 2.0F, -2.0F, 3.0F, 5.0F, 4.0F).addBox(0, 50, -2.0F, -3.0F, -3.0F, 4.0F, 5.0F, 5.0F).build(), JsonPose.offset(6.0F, 17.0F, 4.0F));
+        builder.addOrReplaceChild("right_leg", elementBuilder -> elementBuilder.addBox(52, 11, -1.0F, 2.0F, -2.0F, 3.0F, 5.0F, 4.0F).addBox(18, 50, -2.0F, -3.0F, -3.0F, 4.0F, 5.0F, 5.0F).build(), JsonPose.offset(-6.0F, 17.0F, 4.0F));
+        builder.addOrReplaceChild("left_arm", elementBuilder -> elementBuilder.addBox(36, 50, 8.0F, -2.0F, -2.0F, 4.0F, 7.0F, 4.0F).build(), JsonPose.offset(-5.0F, 19.0F, -5.0F));
+        builder.addOrReplaceChild("right_arm", elementBuilder -> elementBuilder.addBox(52, 0, -2.0F, -2.0F, -2.0F, 4.0F, 7.0F, 4.0F).build(), JsonPose.offset(-5.0F, 19.0F, -5.0F));
+        builder.addOrReplaceChild("body", elementBuilder -> elementBuilder.addBox(0, 0, -5.0F, -13.0F, -9.0F, 10.0F, 10.0F, 16.0F).build(), JsonPose.offset(0.0F, 24.0F, 0.0F));
+
+        return builder;
     }
 }

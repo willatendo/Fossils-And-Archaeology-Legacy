@@ -3,9 +3,7 @@
   "category": "food",
   "cookingtime": 100,
   "experience": 0.35,
-  "ingredient": {
-    "item": "fossilslegacy:raw_moa"
-  },
+  "ingredient": "fossilslegacy:raw_moa",
   "result": {
     "count": 1,
     "id": "fossilslegacy:cooked_moa"

@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:archaeology",
   "category": "restore",
-  "ingredient": {
-    "item": "fossilslegacy:ancient_leggings_artifact"
-  },
+  "ingredient": "fossilslegacy:ancient_leggings_artifact",
   "result": {
     "id": "fossilslegacy:ancient_leggings"
   },

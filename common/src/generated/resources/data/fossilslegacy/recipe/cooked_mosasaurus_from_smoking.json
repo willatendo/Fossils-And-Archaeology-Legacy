@@ -3,9 +3,7 @@
   "category": "food",
   "cookingtime": 100,
   "experience": 0.35,
-  "ingredient": {
-    "item": "fossilslegacy:raw_mosasaurus"
-  },
+  "ingredient": "fossilslegacy:raw_mosasaurus",
   "result": {
     "count": 1,
     "id": "fossilslegacy:cooked_mosasaurus"

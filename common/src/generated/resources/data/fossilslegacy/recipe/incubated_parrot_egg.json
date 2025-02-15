@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "egg",
-  "ingredient": {
-    "item": "fossilslegacy:parrot_dna"
-  },
+  "ingredient": "fossilslegacy:parrot_dna",
   "result": {
     "id": "fossilslegacy:incubated_parrot_egg"
   },

@@ -8,9 +8,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.TooltipFlag;
@@ -30,8 +30,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class DinosaurSpawnEggItem extends SpawnEggItem {
-    public DinosaurSpawnEggItem(EntityType<? extends Mob> entityType, int backgroundColor, int highlightColor, Properties properties) {
-        super(entityType, backgroundColor, highlightColor, properties);
+    public DinosaurSpawnEggItem(EntityType<? extends Mob> entityType, Properties properties) {
+        super(entityType, properties);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class DinosaurSpawnEggItem extends SpawnEggItem {
         BlockState blockState = level.getBlockState(blockPos);
         BlockEntity blockEntity = level.getBlockEntity(blockPos);
         if (blockEntity instanceof Spawner spawner) {
-            entityType = this.getType(itemStack);
+            entityType = this.getType(level.registryAccess(), itemStack);
             spawner.setEntityId(entityType, level.getRandom());
             level.sendBlockUpdated(blockPos, blockState, blockState, 3);
             level.gameEvent(useOnContext.getPlayer(), GameEvent.BLOCK_CHANGE, blockPos);
@@ -62,8 +62,8 @@ public class DinosaurSpawnEggItem extends SpawnEggItem {
         }
         ServerLevel serverLevel = (ServerLevel) level;
         BlockPos blockPos2 = blockState.getCollisionShape(level, blockPos).isEmpty() ? blockPos : blockPos.relative(direction);
-        entityType = this.getType(itemStack);
-        Entity entity = entityType.create(level);
+        entityType = this.getType(level.registryAccess(), itemStack);
+        Entity entity = entityType.create(level, EntitySpawnReason.SPAWN_ITEM_USE);
         if (entity instanceof Dinosaur dinosaur) {
             if (!useOnContext.getPlayer().isCrouching()) {
                 dinosaur.setGrowthStage(dinosaur.getMaxGrowthStage());
@@ -77,7 +77,7 @@ public class DinosaurSpawnEggItem extends SpawnEggItem {
         if (entity instanceof Mob mob) {
             mob.yHeadRot = mob.getYRot();
             mob.yBodyRot = mob.getYRot();
-            mob.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(mob.blockPosition()), MobSpawnType.SPAWN_EGG, null);
+            mob.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(mob.blockPosition()), EntitySpawnReason.SPAWN_ITEM_USE, null);
             mob.playAmbientSound();
         }
         level.addFreshEntity(entity);

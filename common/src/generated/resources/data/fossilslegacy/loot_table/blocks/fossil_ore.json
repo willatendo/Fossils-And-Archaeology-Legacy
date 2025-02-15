@@ -35,8 +35,7 @@
                   "condition": "minecraft:survives_explosion"
                 }
               ],
-              "max_weight": 20000,
-              "results": [
+              "fuels": [
                 {
                   "high_weight": 4500,
                   "item": "fossilslegacy:fossil",
@@ -107,7 +106,8 @@
                   "item": "fossilslegacy:scarab_gem",
                   "low_weight": 0
                 }
-              ]
+              ],
+              "max_weight": 20000
             }
           ]
         }

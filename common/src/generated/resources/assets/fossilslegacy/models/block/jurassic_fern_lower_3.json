@@ -1,6 +1,5 @@
 {
   "parent": "fossilslegacy:block/template_colored_crop",
-  "render_type": "minecraft:cutout",
   "textures": {
     "crop": "fossilslegacy:block/jurassic_fern_colored_lower_3",
     "crop_leaves": "fossilslegacy:block/jurassic_fern_leaves_lower_3"

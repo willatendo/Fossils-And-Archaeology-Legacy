@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "chest_boat",
   "ingredients": [
-    {
-      "item": "fossilslegacy:calamites_boat"
-    },
-    {
-      "item": "minecraft:chest"
-    }
+    "fossilslegacy:calamites_boat",
+    "minecraft:chest"
   ],
   "result": {
     "count": 1,

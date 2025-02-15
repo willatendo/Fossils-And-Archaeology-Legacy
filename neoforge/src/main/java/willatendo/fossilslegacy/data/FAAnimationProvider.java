@@ -41,24 +41,5 @@ public class FAAnimationProvider extends AnimationProvider {
         this.addAnimation(FAUtils.resource("triceratops_walk"), TriceratopsAnimations.TRICERATOPS_WALK);
         this.addAnimation(FAUtils.resource("tyrannosaurus_walk"), TyrannosaursAnimations.TYRANNOSAURUS_WALK);
         this.addAnimation(FAUtils.resource("velociraptor_walk"), VelociraptorAnimations.VELOCIRAPTOR_WALK);
-
-        this.addBuiltIn(BuiltInAnimationTypes.PTERANODON_BODY_FLY);
-
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_BRACHIOSAURUS_WALK);
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_CARNOTAURUS_WALK);
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_CRYOLOPHOSAURUS_WALK);
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_DILOPHOSAURUS_WALK);
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_MOSASAURUS_SWIM);
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_PTERANODON_HEAD);
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_PTERANODON_WALK);
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_PTERANODON_FLY);
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_STEGOSAURUS_WALK);
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_THERIZINOSAURUS_WALK);
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_TRICERATOPS_WALK);
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_MAMMOTH_WALK);
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_SMILODON_SHAKE);
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_SMILODON_SIT);
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_SMILODON_TAIL);
-        this.addBuiltIn(BuiltInAnimationTypes.LEGACY_SMILODON_WALK);
     }
 }

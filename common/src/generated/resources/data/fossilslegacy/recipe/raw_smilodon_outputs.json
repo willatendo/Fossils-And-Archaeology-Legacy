@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "misc",
-  "ingredient": {
-    "item": "fossilslegacy:raw_smilodon"
-  },
-  "results": "fossilslegacy:results/raw_smilodon_meat",
+  "fuels": "fossilslegacy:fuels/raw_smilodon_meat",
+  "ingredient": "fossilslegacy:raw_smilodon",
   "time": 100
 }

@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "egg",
-  "ingredient": {
-    "item": "fossilslegacy:brachiosaurus_dna"
-  },
+  "ingredient": "fossilslegacy:brachiosaurus_dna",
   "result": {
     "id": "fossilslegacy:brachiosaurus_egg"
   },

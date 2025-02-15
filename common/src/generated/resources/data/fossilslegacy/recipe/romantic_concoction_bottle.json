@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "minecraft:glass_bottle"
-    },
-    "$": {
-      "item": "fossilslegacy:cooked_berry_medley_bucket"
-    }
+    "#": "minecraft:glass_bottle",
+    "$": "fossilslegacy:cooked_berry_medley_bucket"
   },
   "pattern": [
     "###",

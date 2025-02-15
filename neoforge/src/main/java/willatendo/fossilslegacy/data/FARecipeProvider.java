@@ -5,6 +5,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -73,7 +74,6 @@ public class FARecipeProvider extends RecipeProvider {
         this.craftingTable(FABlocks.PALAEONTOLOGY_TABLE.get(), FAItems.FOSSIL.get());
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DRUM.get()).pattern("###").pattern("$%$").pattern("$$$").define('#', Items.LEATHER).define('$', this.tag(ItemTags.PLANKS)).define('%', Items.REDSTONE).unlockedBy(getHasName(Items.LEATHER), has(Items.LEATHER)).save(this.output);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.FEEDER.get()).pattern("#$#").pattern("%@!").pattern("!!!").define('#', Items.IRON_INGOT).define('$', Blocks.GLASS).define('%', Blocks.STONE_BUTTON).define('@', Items.BUCKET).define('!', Blocks.STONE).unlockedBy(getHasName(Blocks.STONE), has(Blocks.STONE)).save(this.output);
-        ;
         this.shapeless(RecipeCategory.BUILDING_BLOCKS, FAItems.RAW_CHICKEN_SOUP_BUCKET.get()).requires(Items.CHICKEN).requires(Items.BUCKET).unlockedBy(getHasName(Items.BUCKET), has(Items.BUCKET)).save(this.output);
         this.shapeless(RecipeCategory.MISC, Items.BONE_MEAL, 5).requires(FABlocks.SKULL_BLOCK.get()).unlockedBy(getHasName(FABlocks.SKULL_BLOCK.get()), has(FABlocks.SKULL_BLOCK.get())).save(this.output, FAUtils.ID + ":skull_bonemeal");
         this.shapeless(RecipeCategory.MISC, FAItems.OVERWORLD_COIN.get()).requires(FAItems.PREHISTORIC_COIN.get()).unlockedBy(getHasName(FAItems.OVERWORLD_COIN.get()), has(FAItems.OVERWORLD_COIN.get())).save(this.output);
@@ -264,11 +264,11 @@ public class FARecipeProvider extends RecipeProvider {
         this.shapeless(RecipeCategory.REDSTONE, button).group("wooden_button").requires(planks).unlockedBy(getHasName(planks), has(planks)).save(this.output);
         this.shaped(RecipeCategory.REDSTONE, sign, 3).group("sign").pattern("###").pattern("###").pattern(" $ ").define('#', planks).define('$', Items.STICK).unlockedBy(getHasName(planks), has(planks)).save(this.output);
         this.shaped(RecipeCategory.REDSTONE, hangingSign, 6).group("hanging_sign").pattern("$ $").pattern("###").pattern("###").define('#', strippedLog).define('$', Blocks.CHAIN).unlockedBy(getHasName(strippedLog), has(strippedLog)).save(this.output);
-        this.shaped(RecipeCategory.TRANSPORTATION, boat).group("boat").pattern("# #").pattern("###").define('#', planks).save(this.output);
-        this.shapeless(RecipeCategory.TRANSPORTATION, chestBoat).group("chest_boat").requires(boat).requires(Items.CHEST);
+        this.shaped(RecipeCategory.TRANSPORTATION, boat).group("boat").pattern("# #").pattern("###").define('#', planks).unlockedBy("in_water", insideOf(Blocks.WATER)).save(this.output);
+        this.shapeless(RecipeCategory.TRANSPORTATION, chestBoat).group("chest_boat").requires(boat).requires(Items.CHEST).unlockedBy("has_boat", has(ItemTags.BOATS)).save(this.output);
     }
 
-    protected void food(Item raw, Item cooked) {
+    protected void food(Item cooked, Item raw) {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(raw), RecipeCategory.FOOD, cooked, 0.35F, 200).unlockedBy(getHasName(raw), has(raw)).save(this.output);
         SimpleCookingRecipeBuilder.smoking(Ingredient.of(raw), RecipeCategory.FOOD, cooked, 0.35F, 100).unlockedBy(getHasName(raw), has(raw)).save(this.output, FAUtils.ID + ":" + getItemName(cooked) + "_from_smoking");
         SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(raw), RecipeCategory.FOOD, cooked, 0.35F, 600).unlockedBy(getHasName(raw), has(raw)).save(this.output, FAUtils.ID + ":" + getItemName(cooked) + "_from_campfire_cooking");
@@ -288,7 +288,7 @@ public class FARecipeProvider extends RecipeProvider {
 
     public void cultivator(ItemLike output, ItemLike dye, ItemLike glass) {
         this.shaped(RecipeCategory.BUILDING_BLOCKS, output).group("cultivators").pattern("#$#").pattern("#%#").pattern("@@@").define('#', Blocks.GLASS).define('$', dye).define('%', Items.WATER_BUCKET).define('@', Items.IRON_INGOT).unlockedBy(getHasName(Items.WATER_BUCKET), has(Items.WATER_BUCKET)).save(this.output);
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, output).group("cultivators").pattern("# #").pattern("#%#").pattern("@@@").define('#', glass).define('%', Items.WATER_BUCKET).define('@', Items.IRON_INGOT).unlockedBy(getHasName(Items.WATER_BUCKET), has(Items.WATER_BUCKET)).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, output).group("cultivators").pattern("# #").pattern("#%#").pattern("@@@").define('#', glass).define('%', Items.WATER_BUCKET).define('@', Items.IRON_INGOT).unlockedBy(getHasName(Items.WATER_BUCKET), has(Items.WATER_BUCKET)).save(this.output, FAUtils.ID + ":" + getItemName(output) + "_from_dyed_glass");
     }
 
     public void craftingTable(ItemLike output, ItemLike modifier) {
@@ -308,11 +308,11 @@ public class FARecipeProvider extends RecipeProvider {
     }
 
     public void analyzation(AnalyzationBookCategory analyzationBookCategory, ItemLike ingredient, TagKey<AnalyzerResult> results, int time) {
-        AnalyzationRecipeBuilder.recipe(analyzationBookCategory, Ingredient.of(ingredient), results, time).unlockedBy(getHasName(ingredient), has(ingredient)).save(this.output, FAUtils.ID + ":" + getItemName(ingredient) + "_outputs");
+        AnalyzationRecipeBuilder.recipe(analyzationBookCategory, Ingredient.of(ingredient), results, time).unlockedBy(getHasName(ingredient), has(ingredient)).save(this.output, ResourceKey.create(Registries.RECIPE, FAUtils.resource(getItemName(ingredient) + "_outputs")));
     }
 
     public void analyzation(AnalyzationBookCategory analyzationBookCategory, TagKey<Item> itemTagKey, String name, TagKey<AnalyzerResult> results, int time) {
-        AnalyzationRecipeBuilder.recipe(analyzationBookCategory, this.tag(itemTagKey), results, time).unlockedBy("has_" + itemTagKey.location().getPath(), has(itemTagKey)).save(this.output, FAUtils.ID + ":" + name);
+        AnalyzationRecipeBuilder.recipe(analyzationBookCategory, this.tag(itemTagKey), results, time).unlockedBy("has_" + itemTagKey.location().getPath(), has(itemTagKey)).save(this.output, ResourceKey.create(Registries.RECIPE, FAUtils.resource(name)));
     }
 
     public static class Runner extends RecipeProvider.Runner {

@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.event.EventFactory;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.animal.Pig;
@@ -35,10 +36,12 @@ public class ModCallbacks {
             if (lightningBolt instanceof AncientLightningBolt ancientLightningBolt) {
                 if (entity instanceof Pig pig) {
                     Level level = ancientLightningBolt.level();
-                    TamedZombifiedPiglin tamedZombifiedPiglin = FAEntityTypes.TAMED_ZOMBIFIED_PIGLIN.get().create(level);
+                    TamedZombifiedPiglin tamedZombifiedPiglin = FAEntityTypes.TAMED_ZOMBIFIED_PIGLIN.get().create(level, EntitySpawnReason.TRIGGERED);
                     Player player = (Player) ancientLightningBolt.getOwner();
                     tamedZombifiedPiglin.tame(player);
-                    tamedZombifiedPiglin.sendMessageToPlayer(TamedZombifiedPiglin.TamedZombifiedPiglinSpeaker.SUMMON, player);
+                    if (player instanceof ServerPlayer serverPlayer) {
+                        tamedZombifiedPiglin.sendMessageToPlayer(TamedZombifiedPiglin.TamedZombifiedPiglinSpeaker.SUMMON, serverPlayer);
+                    }
                     tamedZombifiedPiglin.setItemInHand(InteractionHand.MAIN_HAND, FAItems.ANCIENT_SWORD.get().getDefaultInstance());
                     tamedZombifiedPiglin.setItemSlot(EquipmentSlot.HEAD, FAItems.ANCIENT_HELMET.get().getDefaultInstance());
                     tamedZombifiedPiglin.moveTo(pig.getX(), pig.getY(), pig.getZ());

@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:archaeology",
   "category": "repair",
-  "ingredient": {
-    "item": "fossilslegacy:broken_netherite_javelin"
-  },
+  "ingredient": "fossilslegacy:broken_netherite_javelin",
   "result": {
     "id": "fossilslegacy:netherite_javelin"
   },

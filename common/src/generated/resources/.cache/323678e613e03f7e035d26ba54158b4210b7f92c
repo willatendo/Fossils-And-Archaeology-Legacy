@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-29T19:46:13.3649678	Tags for minecraft:item mod id fossilslegacy
+// 1.21.4	2025-02-09T18:21:21.5764041	Tags for minecraft:item mod id fossilslegacy
 fb61c19eacf262b21d275a4b1dd7da1fd3460ef6 data/c/tags/item/bones.json
 d31244a2a7f7cb4224e5362dca80427850e5daa5 data/c/tags/item/buckets.json
 8773b7b9cd8f313f03d59d28a609bd9f1434b870 data/c/tags/item/eggs.json
@@ -43,6 +43,7 @@ db326b911d785c43db1f6cda0d0c5d51709084fe data/fossilslegacy/tags/item/omnivore_f
 6a2ec8a487cf8a17501c5ffe9b096c48e6350237 data/fossilslegacy/tags/item/piglin_taming_armor.json
 77b4cf8ac74a61bab607715b78ea1f6556e53268 data/fossilslegacy/tags/item/piscivore_foods.json
 a2af2e36b3b3a506a70a88488ac2b09916eaf346 data/fossilslegacy/tags/item/repair_when_broken_in_archaeology_table.json
+de2270928560d90749e940855dd531b036c79510 data/fossilslegacy/tags/item/scarab_gem_tool_materials.json
 f7230fc0dcd04034cf98f0304755274776cb4ce1 data/fossilslegacy/tags/item/sigillaria_logs.json
 b0df71f7b6d498abdffd45df38af1ec699c76646 data/minecraft/tags/item/axes.json
 7cc5c4d212860ed4bf9a2173ff1acb26c5e6ca49 data/minecraft/tags/item/boats.json

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "cultivators",
+  "key": {
+    "#": "minecraft:light_gray_stained_glass",
+    "%": "minecraft:water_bucket",
+    "@": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    "# #",
+    "#%#",
+    "@@@"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:light_gray_cultivator"
+  }
+}

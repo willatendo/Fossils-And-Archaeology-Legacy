@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:archaeology",
   "category": "restore",
-  "ingredient": {
-    "item": "fossilslegacy:ancient_hoe_artifact"
-  },
+  "ingredient": "fossilslegacy:ancient_hoe_artifact",
   "result": {
     "id": "fossilslegacy:ancient_hoe"
   },

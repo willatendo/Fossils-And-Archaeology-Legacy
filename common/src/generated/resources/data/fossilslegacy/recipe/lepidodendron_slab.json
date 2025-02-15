@@ -3,9 +3,7 @@
   "category": "building",
   "group": "wooden_slab",
   "key": {
-    "#": {
-      "item": "fossilslegacy:lepidodendron_planks"
-    }
+    "#": "fossilslegacy:lepidodendron_planks"
   },
   "pattern": [
     "###"

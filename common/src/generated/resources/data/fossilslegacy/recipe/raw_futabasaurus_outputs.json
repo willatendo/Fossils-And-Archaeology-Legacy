@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "misc",
-  "ingredient": {
-    "item": "fossilslegacy:raw_futabasaurus"
-  },
-  "results": "fossilslegacy:results/raw_futabasaurus_meat",
+  "fuels": "fossilslegacy:fuels/raw_futabasaurus_meat",
+  "ingredient": "fossilslegacy:raw_futabasaurus",
   "time": 100
 }

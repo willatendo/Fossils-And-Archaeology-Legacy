@@ -44,7 +44,6 @@ public abstract class AnimationProvider implements DataProvider {
         List<CompletableFuture<?>> completableFutures = Lists.newArrayList();
         this.jsonAnimations.forEach((resourceLocation, animationDefinition) -> {
             JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("type", "json");
             jsonObject.addProperty("id", resourceLocation.toString());
             jsonObject.addProperty("length", animationDefinition.lengthInSeconds());
             jsonObject.addProperty("looping", animationDefinition.looping());
@@ -55,9 +54,9 @@ public abstract class AnimationProvider implements DataProvider {
                 JsonArray keyframes = new JsonArray();
                 animationChannels.forEach(animationChannel -> {
                     AnimationChannel.Target target = animationChannel.target();
+                    animation.addProperty("target", this.parse(target));
                     for (Keyframe keyframe : animationChannel.keyframes()) {
                         JsonObject keyframeObject = new JsonObject();
-                        keyframeObject.addProperty("target", this.parse(target));
                         keyframeObject.addProperty("timestamp", keyframe.timestamp());
                         if (keyframe.interpolation() == AnimationChannel.Interpolations.LINEAR) {
                             keyframeObject.addProperty("interpolation", "linear");
@@ -66,21 +65,21 @@ public abstract class AnimationProvider implements DataProvider {
                                 degreeVec.addProperty("x", keyframe.target().x() / 0.017453292F);
                                 degreeVec.addProperty("y", keyframe.target().y() / 0.017453292F);
                                 degreeVec.addProperty("z", keyframe.target().z() / 0.017453292F);
-                                keyframeObject.add("degree_vec", degreeVec);
+                                keyframeObject.add("vector", degreeVec);
                             }
                             if (target == AnimationChannel.Targets.POSITION) {
                                 JsonObject posVec = new JsonObject();
                                 posVec.addProperty("x", keyframe.target().x());
                                 posVec.addProperty("y", -keyframe.target().y());
                                 posVec.addProperty("z", keyframe.target().z());
-                                keyframeObject.add("pos_vec", posVec);
+                                keyframeObject.add("vector", posVec);
                             }
                             if (target == AnimationChannel.Targets.SCALE) {
                                 JsonObject scaleVec = new JsonObject();
                                 scaleVec.addProperty("x", keyframe.target().x() + 1.0F);
                                 scaleVec.addProperty("y", keyframe.target().y() + 1.0F);
                                 scaleVec.addProperty("z", keyframe.target().z() + 1.0F);
-                                keyframeObject.add("scale_vec", scaleVec);
+                                keyframeObject.add("vector", scaleVec);
                             }
                         }
                         keyframes.add(keyframeObject);

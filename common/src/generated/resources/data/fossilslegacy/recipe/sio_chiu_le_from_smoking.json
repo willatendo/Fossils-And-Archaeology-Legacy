@@ -3,9 +3,7 @@
   "category": "food",
   "cookingtime": 100,
   "experience": 0.35,
-  "ingredient": {
-    "item": "fossilslegacy:nautilus"
-  },
+  "ingredient": "fossilslegacy:nautilus",
   "result": {
     "count": 1,
     "id": "fossilslegacy:sio_chiu_le"

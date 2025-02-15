@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "egg",
-  "ingredient": {
-    "item": "fossilslegacy:llama_dna"
-  },
+  "ingredient": "fossilslegacy:llama_dna",
   "result": {
     "id": "fossilslegacy:llama_embryo_syringe"
   },

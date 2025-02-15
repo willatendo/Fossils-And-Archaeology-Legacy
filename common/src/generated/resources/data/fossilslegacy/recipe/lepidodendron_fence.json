@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "wooden_fence",
   "key": {
-    "#": {
-      "item": "fossilslegacy:lepidodendron_planks"
-    },
-    "$": {
-      "item": "minecraft:stick"
-    }
+    "#": "fossilslegacy:lepidodendron_planks",
+    "$": "minecraft:stick"
   },
   "pattern": [
     "#$#",

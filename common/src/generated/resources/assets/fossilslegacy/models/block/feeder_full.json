@@ -6,7 +6,7 @@
     "north": "fossilslegacy:block/feeder_front",
     "particle": "fossilslegacy:block/feeder_side",
     "south": "fossilslegacy:block/feeder_side",
-    "up": "fossilslegacy:block/feeder_top_full",
+    "up": "fossilslegacy:block/feeder_top_empty",
     "west": "fossilslegacy:block/feeder_side"
   }
 }

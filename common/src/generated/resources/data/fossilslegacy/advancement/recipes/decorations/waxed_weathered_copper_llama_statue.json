@@ -7,11 +7,11 @@
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_waxed_weathered_copper_llama_statue": {
+    "has_weathered_copper_llama_statue": {
       "conditions": {
         "items": [
           {
-            "items": "fossilslegacy:waxed_weathered_copper_llama_statue"
+            "items": "fossilslegacy:weathered_copper_llama_statue"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_waxed_weathered_copper_llama_statue"
+      "has_weathered_copper_llama_statue"
     ]
   ],
   "rewards": {

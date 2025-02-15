@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "egg",
-  "ingredient": {
-    "item": "fossilslegacy:dolphin_dna"
-  },
+  "ingredient": "fossilslegacy:dolphin_dna",
   "result": {
     "id": "fossilslegacy:dolphin_embryo_syringe"
   },

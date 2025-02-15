@@ -1,24 +1,24 @@
 package willatendo.fossilslegacy.client.model.dinosaur;
 
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.resources.ResourceLocation;
+import willatendo.fossilslegacy.client.model.json.JsonModel;
+import willatendo.fossilslegacy.client.model.json.JsonPose;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class CompsognathusModels {
-    public static LayerDefinition createCompsognathusBodyLayer() {
-        MeshDefinition meshDefinition = new MeshDefinition();
-        PartDefinition partDefinition = meshDefinition.getRoot();
+    public static final JsonModel COMPSOGNATHUS_MODEL = CompsognathusModels.createCompsognathusBodyLayer(FAUtils.resource("compsognathus")).withWalkAnimations(FAUtils.resource("compsognathus_walk")).withHeadPieces("head").build();
 
-        partDefinition.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, -2.0F, 4.0F, 2.0F, 2.0F, 8.0F).texOffs(12, 0).addBox(-1.5F, -2.0F, 0.0F, 3.0F, 3.0F, 4.0F), PartPose.offset(0.0F, 18.0F, 1.0F));
-        partDefinition.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, -1.0F, -1.0F, 2.0F, 4.0F, 2.0F).texOffs(14, 10).addBox(0.0F, 3.0F, 1.0F, 1.0F, 3.0F, 0.0F).texOffs(5, 0).addBox(0.0F, 6.0F, 0.0F, 1.0F, 0.0F, 1.0F), PartPose.offset(-2.0F, 18.0F, -1.0F));
-        partDefinition.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(0, 18).addBox(-1.0F, -1.0F, -1.0F, 2.0F, 4.0F, 2.0F).texOffs(5, 1).addBox(-1.0F, 6.0F, 0.0F, 1.0F, 0.0F, 1.0F).texOffs(12, 10).addBox(-1.0F, 3.0F, 1.0F, 1.0F, 3.0F, 0.0F), PartPose.offset(2.0F, 18.0F, -1.0F));
-        partDefinition.addOrReplaceChild("right_arm", CubeListBuilder.create().texOffs(0, 10).addBox(-0.5F, -0.5F, -0.5F, 1.0F, 3.0F, 1.0F), PartPose.offset(-1.5F, 18.5F, -4.5F));
-        partDefinition.addOrReplaceChild("left_arm", CubeListBuilder.create().texOffs(12, 0).addBox(-0.5F, -0.5F, -0.5F, 1.0F, 3.0F, 1.0F), PartPose.offset(1.5F, 18.5F, -4.5F));
-        partDefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(20, 13).addBox(-1.0F, -3.0F, -1.0F, 2.0F, 3.0F, 2.0F).texOffs(12, 14).addBox(-1.0F, -3.0F, -5.0F, 2.0F, 3.0F, 4.0F), PartPose.offset(0.0F, 16.0F, -5.0F));
-        partDefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 10).addBox(-2.0F, -8.0F, -3.0F, 4.0F, 4.0F, 4.0F).texOffs(17, 7).addBox(-1.0F, -8.0F, -6.0F, 2.0F, 3.0F, 3.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
+    private static JsonModel.Builder createCompsognathusBodyLayer(ResourceLocation modelId) {
+        JsonModel.Builder builder = JsonModel.builder(modelId, 32, 32);
 
-        return LayerDefinition.create(meshDefinition, 32, 32);
+        builder.addOrReplaceChild("tail", elementBuilder -> elementBuilder.addBox(0, 0, -1.0F, -2.0F, 4.0F, 2.0F, 2.0F, 8.0F).addBox(12, 0, -1.5F, -2.0F, 0.0F, 3.0F, 3.0F, 4.0F).build(), JsonPose.offset(0.0F, 18.0F, 1.0F));
+        builder.addOrReplaceChild("right_leg", elementBuilder -> elementBuilder.addBox(0, 0, -1.0F, -1.0F, -1.0F, 2.0F, 4.0F, 2.0F).addBox(14, 10, 0.0F, 3.0F, 1.0F, 1.0F, 3.0F, 0.0F).addBox(5, 0, 0.0F, 6.0F, 0.0F, 1.0F, 0.0F, 1.0F).build(), JsonPose.offset(-2.0F, 18.0F, -1.0F));
+        builder.addOrReplaceChild("left_leg", elementBuilder -> elementBuilder.addBox(0, 18, -1.0F, -1.0F, -1.0F, 2.0F, 4.0F, 2.0F).addBox(5, 1, -1.0F, 6.0F, 0.0F, 1.0F, 0.0F, 1.0F).addBox(12, 10, -1.0F, 3.0F, 1.0F, 1.0F, 3.0F, 0.0F).build(), JsonPose.offset(2.0F, 18.0F, -1.0F));
+        builder.addOrReplaceChild("right_arm", elementBuilder -> elementBuilder.addBox(0, 10, -0.5F, -0.5F, -0.5F, 1.0F, 3.0F, 1.0F).build(), JsonPose.offset(-1.5F, 18.5F, -4.5F));
+        builder.addOrReplaceChild("left_arm", elementBuilder -> elementBuilder.addBox(12, 0, -0.5F, -0.5F, -0.5F, 1.0F, 3.0F, 1.0F).build(), JsonPose.offset(1.5F, 18.5F, -4.5F));
+        builder.addOrReplaceChild("head", elementBuilder -> elementBuilder.addBox(20, 13, -1.0F, -3.0F, -1.0F, 2.0F, 3.0F, 2.0F).addBox(12, 14, -1.0F, -3.0F, -5.0F, 2.0F, 3.0F, 4.0F).build(), JsonPose.offset(0.0F, 16.0F, -5.0F));
+        builder.addOrReplaceChild("body", elementBuilder -> elementBuilder.addBox(0, 10, -2.0F, -8.0F, -3.0F, 4.0F, 4.0F, 4.0F).addBox(17, 7, -1.0F, -8.0F, -6.0F, 2.0F, 3.0F, 3.0F).build(), JsonPose.offset(0.0F, 24.0F, 0.0F));
+
+        return builder;
     }
 }

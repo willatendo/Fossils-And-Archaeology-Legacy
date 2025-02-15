@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "fossilslegacy:stripped_sigillaria_log"
-    }
+    "#": "fossilslegacy:stripped_sigillaria_log"
   },
   "pattern": [
     "##",

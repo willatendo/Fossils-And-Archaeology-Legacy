@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "egg",
-  "ingredient": {
-    "item": "fossilslegacy:dodo_dna"
-  },
+  "ingredient": "fossilslegacy:dodo_dna",
   "result": {
     "id": "fossilslegacy:incubated_dodo_egg"
   },

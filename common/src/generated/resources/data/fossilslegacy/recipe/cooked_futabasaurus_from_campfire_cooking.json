@@ -1,11 +1,9 @@
 {
   "type": "minecraft:campfire_cooking",
   "category": "food",
-  "cookingtime": 400,
+  "cookingtime": 600,
   "experience": 0.35,
-  "ingredient": {
-    "item": "fossilslegacy:raw_futabasaurus"
-  },
+  "ingredient": "fossilslegacy:raw_futabasaurus",
   "result": {
     "count": 1,
     "id": "fossilslegacy:cooked_futabasaurus"

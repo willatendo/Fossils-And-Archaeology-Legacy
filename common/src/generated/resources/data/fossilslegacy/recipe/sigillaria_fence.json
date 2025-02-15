@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "wooden_fence",
   "key": {
-    "#": {
-      "item": "fossilslegacy:sigillaria_planks"
-    },
-    "$": {
-      "item": "minecraft:stick"
-    }
+    "#": "fossilslegacy:sigillaria_planks",
+    "$": "minecraft:stick"
   },
   "pattern": [
     "#$#",

@@ -6,11 +6,6 @@
   "mixins": [
     "LightningBoltMixin"
   ],
-  "client": [
-    "client.GuiMixin",
-    "client.RenderTextureOverlayAccessor",
-    "client.ModelManagerAccessor"
-  ],
   "injectors": {
     "defaultRequire": 1
   }

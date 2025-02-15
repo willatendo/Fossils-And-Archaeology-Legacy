@@ -18,8 +18,13 @@ public class ClientEvents {
     }
 
     @SubscribeEvent
-    public static void registerClientReloadListenersEvent(RegisterClientReloadListenersEvent event) {
+    public static void registerClientReloadListenersEvent(AddClientReloadListenersEvent event) {
         FossilsLegacyDualEvents.clientReloadListenersEvent(new NeoforgeClientReloadListenerRegister(event));
+    }
+
+    @SubscribeEvent
+    public static void specialModelsEvent(RegisterSpecialModelRendererEvent event) {
+        FossilsLegacyClient.specialModelsEvent(new NeoforgeSpecialRendererRegistry(event));
     }
 
     @SubscribeEvent

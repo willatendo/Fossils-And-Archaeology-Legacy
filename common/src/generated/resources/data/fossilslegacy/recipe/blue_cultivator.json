@@ -3,18 +3,10 @@
   "category": "building",
   "group": "cultivators",
   "key": {
-    "#": {
-      "item": "minecraft:glass"
-    },
-    "$": {
-      "item": "minecraft:blue_dye"
-    },
-    "%": {
-      "item": "minecraft:water_bucket"
-    },
-    "@": {
-      "item": "minecraft:iron_ingot"
-    }
+    "#": "minecraft:glass",
+    "$": "minecraft:blue_dye",
+    "%": "minecraft:water_bucket",
+    "@": "minecraft:iron_ingot"
   },
   "pattern": [
     "#$#",

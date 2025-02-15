@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "egg",
-  "ingredient": {
-    "item": "fossilslegacy:stegosaurus_dna"
-  },
+  "ingredient": "fossilslegacy:stegosaurus_dna",
   "result": {
     "id": "fossilslegacy:stegosaurus_egg"
   },

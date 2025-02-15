@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "egg",
-  "ingredient": {
-    "item": "fossilslegacy:panda_dna"
-  },
+  "ingredient": "fossilslegacy:panda_dna",
   "result": {
     "id": "fossilslegacy:panda_embryo_syringe"
   },

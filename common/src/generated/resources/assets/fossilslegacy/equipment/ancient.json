@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "fossilslegacy:ancient"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "fossilslegacy:ancient"
+      }
+    ]
+  }
+}

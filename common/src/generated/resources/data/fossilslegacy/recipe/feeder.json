@@ -2,21 +2,11 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "!": {
-      "item": "minecraft:stone"
-    },
-    "#": {
-      "item": "minecraft:iron_ingot"
-    },
-    "$": {
-      "item": "minecraft:glass"
-    },
-    "%": {
-      "item": "minecraft:stone_button"
-    },
-    "@": {
-      "item": "minecraft:bucket"
-    }
+    "!": "minecraft:stone",
+    "#": "minecraft:iron_ingot",
+    "$": "minecraft:glass",
+    "%": "minecraft:stone_button",
+    "@": "minecraft:bucket"
   },
   "pattern": [
     "#$#",

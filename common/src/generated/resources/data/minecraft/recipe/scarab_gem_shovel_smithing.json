@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#fossilslegacy:scarab_gem_tool_materials",
+  "base": "minecraft:netherite_shovel",
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:scarab_gem_shovel"
+  },
+  "template": "fossilslegacy:scarab_gem_upgrade_smithing_template"
+}

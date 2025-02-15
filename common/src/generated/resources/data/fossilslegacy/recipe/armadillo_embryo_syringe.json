@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "egg",
-  "ingredient": {
-    "item": "fossilslegacy:armadillo_dna"
-  },
+  "ingredient": "fossilslegacy:armadillo_dna",
   "result": {
     "id": "fossilslegacy:armadillo_embryo_syringe"
   },

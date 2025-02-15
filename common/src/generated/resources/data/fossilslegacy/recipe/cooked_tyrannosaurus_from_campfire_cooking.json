@@ -1,11 +1,9 @@
 {
   "type": "minecraft:campfire_cooking",
   "category": "food",
-  "cookingtime": 400,
+  "cookingtime": 600,
   "experience": 0.35,
-  "ingredient": {
-    "item": "fossilslegacy:raw_tyrannosaurus"
-  },
+  "ingredient": "fossilslegacy:raw_tyrannosaurus",
   "result": {
     "count": 1,
     "id": "fossilslegacy:cooked_tyrannosaurus"

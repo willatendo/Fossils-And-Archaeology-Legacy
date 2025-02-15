@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "egg",
-  "ingredient": {
-    "item": "fossilslegacy:mosasaurus_dna"
-  },
+  "ingredient": "fossilslegacy:mosasaurus_dna",
   "result": {
     "id": "fossilslegacy:mosasaurus_egg"
   },

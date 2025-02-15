@@ -47,33 +47,35 @@ public final class FALootTables {
     public static final ResourceKey<LootTable> TRICERATOPS_EGG = FALootTables.create("entities/egg/triceratops");
     public static final ResourceKey<LootTable> TYRANNOSAURUS_EGG = FALootTables.create("entities/egg/tyrannosaurus");
     public static final ResourceKey<LootTable> VELOCIRAPTOR_EGG = FALootTables.create("entities/egg/velociraptor");
-    public static final Map<Holder<EggVariant>, ResourceKey<LootTable>> EGG_BY_DYE = new HashMap<>();
+    public static final Map<ResourceKey<EggVariant>, ResourceKey<LootTable>> LOOT_BY_EGG = new HashMap<>();
 
     public static final ResourceKey<LootTable> SHEAR_MAMMOTH = FALootTables.create("shearing/mammoth");
-    public static final Map<DyeColor, ResourceKey<LootTable>> SHEAR_MAMMOTH_BY_DYE = Util.make(new EnumMap<>(DyeColor.class), enumMap -> makeDyeKeyMap(enumMap, "shearing/mammoth"));
+    public static final ResourceKey<LootTable> SHEAR_PREGNANT_SHEEP = FALootTables.create("shearing/pregnant_sheep");
+    public static final Map<DyeColor, ResourceKey<LootTable>> SHEAR_MAMMOTH_BY_DYE = Util.make(new EnumMap<>(DyeColor.class), enumMap -> FALootTables.makeDyeKeyMap(enumMap, "shearing/mammoth"));
+    public static final Map<DyeColor, ResourceKey<LootTable>> SHEAR_PREGNANT_SHEEP_BY_DYE = Util.make(new EnumMap<>(DyeColor.class), enumMap -> FALootTables.makeDyeKeyMap(enumMap, "shearing/sheep"));
 
     public static final ResourceKey<LootTable> ARCHAEOLOGIST_GIFT = FALootTables.create("gameplay/hero_of_the_village/archaeologist_gift");
     public static final ResourceKey<LootTable> PALAEONTOLOGIST_GIFT = FALootTables.create("gameplay/hero_of_the_village/palaeontologist_gift");
 
     static {
-        EGG_BY_DYE.put(FAEggVariants.ANKYLOSAURUS, FALootTables.ANKYLOSAURUS_EGG);
-        EGG_BY_DYE.put(FAEggVariants.BRACHIOSAURUS, FALootTables.BRACHIOSAURUS_EGG);
-        EGG_BY_DYE.put(FAEggVariants.CARNOTAURUS, FALootTables.CARNOTAURUS_EGG);
-        EGG_BY_DYE.put(FAEggVariants.COMPSOGNATHUS, FALootTables.COMPSOGNATHUS_EGG);
-        EGG_BY_DYE.put(FAEggVariants.CRYOLOPHOSAURUS, FALootTables.CRYOLOPHOSAURUS_EGG);
-        EGG_BY_DYE.put(FAEggVariants.DILOPHOSAURUS, FALootTables.DILOPHOSAURUS_EGG);
-        EGG_BY_DYE.put(FAEggVariants.DIMETRODON, FALootTables.DIMETRODON_EGG);
-        EGG_BY_DYE.put(FAEggVariants.MOSASAURUS, FALootTables.MOSASAURUS_EGG);
-        EGG_BY_DYE.put(FAEggVariants.FUTABASAURUS, FALootTables.FUTABASAURUS_EGG);
-        EGG_BY_DYE.put(FAEggVariants.GALLIMIMUS, FALootTables.GALLIMIMUS_EGG);
-        EGG_BY_DYE.put(FAEggVariants.PACHYCEPHALOSAURUS, FALootTables.PACHYCEPHALOSAURUS_EGG);
-        EGG_BY_DYE.put(FAEggVariants.PTERANODON, FALootTables.PTERANODON_EGG);
-        EGG_BY_DYE.put(FAEggVariants.SPINOSAURUS, FALootTables.SPINOSAURUS_EGG);
-        EGG_BY_DYE.put(FAEggVariants.STEGOSAURUS, FALootTables.STEGOSAURUS_EGG);
-        EGG_BY_DYE.put(FAEggVariants.THERIZINOSAURUS, FALootTables.THERIZINOSAURUS_EGG);
-        EGG_BY_DYE.put(FAEggVariants.TRICERATOPS, FALootTables.TRICERATOPS_EGG);
-        EGG_BY_DYE.put(FAEggVariants.TYRANNOSAURUS, FALootTables.TYRANNOSAURUS_EGG);
-        EGG_BY_DYE.put(FAEggVariants.VELOCIRAPTOR, FALootTables.VELOCIRAPTOR_EGG);
+        LOOT_BY_EGG.put(FAEggVariants.ANKYLOSAURUS.getKey(), FALootTables.ANKYLOSAURUS_EGG);
+        LOOT_BY_EGG.put(FAEggVariants.BRACHIOSAURUS.getKey(), FALootTables.BRACHIOSAURUS_EGG);
+        LOOT_BY_EGG.put(FAEggVariants.CARNOTAURUS.getKey(), FALootTables.CARNOTAURUS_EGG);
+        LOOT_BY_EGG.put(FAEggVariants.COMPSOGNATHUS.getKey(), FALootTables.COMPSOGNATHUS_EGG);
+        LOOT_BY_EGG.put(FAEggVariants.CRYOLOPHOSAURUS.getKey(), FALootTables.CRYOLOPHOSAURUS_EGG);
+        LOOT_BY_EGG.put(FAEggVariants.DILOPHOSAURUS.getKey(), FALootTables.DILOPHOSAURUS_EGG);
+        LOOT_BY_EGG.put(FAEggVariants.DIMETRODON.getKey(), FALootTables.DIMETRODON_EGG);
+        LOOT_BY_EGG.put(FAEggVariants.MOSASAURUS.getKey(), FALootTables.MOSASAURUS_EGG);
+        LOOT_BY_EGG.put(FAEggVariants.FUTABASAURUS.getKey(), FALootTables.FUTABASAURUS_EGG);
+        LOOT_BY_EGG.put(FAEggVariants.GALLIMIMUS.getKey(), FALootTables.GALLIMIMUS_EGG);
+        LOOT_BY_EGG.put(FAEggVariants.PACHYCEPHALOSAURUS.getKey(), FALootTables.PACHYCEPHALOSAURUS_EGG);
+        LOOT_BY_EGG.put(FAEggVariants.PTERANODON.getKey(), FALootTables.PTERANODON_EGG);
+        LOOT_BY_EGG.put(FAEggVariants.SPINOSAURUS.getKey(), FALootTables.SPINOSAURUS_EGG);
+        LOOT_BY_EGG.put(FAEggVariants.STEGOSAURUS.getKey(), FALootTables.STEGOSAURUS_EGG);
+        LOOT_BY_EGG.put(FAEggVariants.THERIZINOSAURUS.getKey(), FALootTables.THERIZINOSAURUS_EGG);
+        LOOT_BY_EGG.put(FAEggVariants.TRICERATOPS.getKey(), FALootTables.TRICERATOPS_EGG);
+        LOOT_BY_EGG.put(FAEggVariants.TYRANNOSAURUS.getKey(), FALootTables.TYRANNOSAURUS_EGG);
+        LOOT_BY_EGG.put(FAEggVariants.VELOCIRAPTOR.getKey(), FALootTables.VELOCIRAPTOR_EGG);
     }
 
     public static ResourceKey<LootTable> create(String name) {

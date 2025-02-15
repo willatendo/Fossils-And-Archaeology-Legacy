@@ -1,230 +1,214 @@
 {
-  "type": "json",
   "animations": [
     {
       "bone": "right_front_flipper",
       "keyframes": [
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
             "x": 0.0,
             "y": 0.0,
             "z": 0.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 0.0
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 1.0,
+          "vector": {
             "x": 0.0,
             "y": -15.000001,
             "z": 0.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 1.0
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 3.0,
+          "vector": {
             "x": 0.0,
             "y": 15.000001,
             "z": 0.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 3.0
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 4.0,
+          "vector": {
             "x": 0.0,
             "y": 0.0,
             "z": 0.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 4.0
+          }
         }
-      ]
+      ],
+      "target": "rotation"
     },
     {
       "bone": "tail",
       "keyframes": [
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
             "x": 0.0,
             "y": 0.0,
             "z": 0.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 0.0
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 1.0,
+          "vector": {
             "x": 0.0,
             "y": 17.5,
             "z": 0.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 1.0
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 3.0,
+          "vector": {
             "x": 0.0,
             "y": -17.5,
             "z": 0.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 3.0
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 4.0,
+          "vector": {
             "x": 0.0,
             "y": 0.0,
             "z": 0.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 4.0
+          }
         }
-      ]
+      ],
+      "target": "rotation"
     },
     {
       "bone": "left_front_flipper",
       "keyframes": [
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
             "x": 0.0,
             "y": 0.0,
             "z": 0.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 0.0
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 1.0,
+          "vector": {
             "x": 0.0,
             "y": 15.000001,
             "z": 0.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 1.0
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 3.0,
+          "vector": {
             "x": 0.0,
             "y": -15.000001,
             "z": 0.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 3.0
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 4.0,
+          "vector": {
             "x": 0.0,
             "y": 0.0,
             "z": 0.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 4.0
+          }
         }
-      ]
+      ],
+      "target": "rotation"
     },
     {
       "bone": "right_back_flipper",
       "keyframes": [
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
             "x": 0.0,
             "y": 0.0,
             "z": 0.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 0.0
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 1.0,
+          "vector": {
             "x": 0.0,
             "y": -15.000001,
             "z": 0.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 1.0
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 3.0,
+          "vector": {
             "x": 0.0,
             "y": 15.000001,
             "z": 0.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 3.0
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 4.0,
+          "vector": {
             "x": 0.0,
             "y": 0.0,
             "z": 0.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 4.0
+          }
         }
-      ]
+      ],
+      "target": "rotation"
     },
     {
       "bone": "left_back_flipper",
       "keyframes": [
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
             "x": 0.0,
             "y": 0.0,
             "z": 0.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 0.0
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 1.0,
+          "vector": {
             "x": 0.0,
             "y": 15.000001,
             "z": 0.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 1.0
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 3.0,
+          "vector": {
             "x": 0.0,
             "y": -15.000001,
             "z": 0.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 3.0
+          }
         },
         {
-          "degree_vec": {
+          "interpolation": "linear",
+          "timestamp": 4.0,
+          "vector": {
             "x": 0.0,
             "y": 0.0,
             "z": 0.0
-          },
-          "interpolation": "linear",
-          "target": "rotation",
-          "timestamp": 4.0
+          }
         }
-      ]
+      ],
+      "target": "rotation"
     }
   ],
   "id": "fossilslegacy:mosasaurus_swim",

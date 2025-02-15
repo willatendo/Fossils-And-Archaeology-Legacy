@@ -1,9 +1,7 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "egg",
-  "ingredient": {
-    "item": "fossilslegacy:carnotaurus_dna"
-  },
+  "ingredient": "fossilslegacy:carnotaurus_dna",
   "result": {
     "id": "fossilslegacy:carnotaurus_egg"
   },

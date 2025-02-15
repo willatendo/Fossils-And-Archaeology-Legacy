@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.client.model.json;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.mojang.serialization.JsonOps;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -12,6 +13,7 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -32,7 +34,8 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener<JsonModel>
     }
 
     protected static AnimationHolder getAnimations(ResourceLocation id) {
-        return JSON_MODELS.get(id).animations().toAnimationHolder();
+        Optional<JsonModel.Animations> animations = JSON_MODELS.get(id).animations();
+        return animations.map(JsonModel.Animations::toAnimationHolder).orElse(null);
     }
 
     protected static List<String> getLoadParts(ResourceLocation id) {
@@ -64,6 +67,13 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener<JsonModel>
 
     private JsonModelLoader() {
         super(JsonModel.CODEC, ASSET_LISTER);
+    }
+
+    @Override
+    protected Map<ResourceLocation, JsonModel> prepare(ResourceManager resourceManager, ProfilerFiller profiler) {
+        Map<ResourceLocation, JsonModel> map = new HashMap<>();
+        scanDirectory(resourceManager, JsonModelLoader.ASSET_LISTER, JsonOps.INSTANCE, JsonModel.CODEC, map);
+        return map;
     }
 
     @Override

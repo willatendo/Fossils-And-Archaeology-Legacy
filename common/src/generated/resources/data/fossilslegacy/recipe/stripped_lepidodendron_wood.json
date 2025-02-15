@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "fossilslegacy:stripped_lepidodendron_log"
-    }
+    "#": "fossilslegacy:stripped_lepidodendron_log"
   },
   "pattern": [
     "##",

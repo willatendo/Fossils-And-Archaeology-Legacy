@@ -2,18 +2,10 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "minecraft:milk_bucket"
-    },
-    "$": {
-      "item": "minecraft:sugar"
-    },
-    "%": {
-      "tag": "fossilslegacy:cake_eggs"
-    },
-    "&": {
-      "item": "minecraft:wheat"
-    }
+    "#": "minecraft:milk_bucket",
+    "$": "minecraft:sugar",
+    "%": "#fossilslegacy:cake_eggs",
+    "&": "minecraft:wheat"
   },
   "pattern": [
     "###",
