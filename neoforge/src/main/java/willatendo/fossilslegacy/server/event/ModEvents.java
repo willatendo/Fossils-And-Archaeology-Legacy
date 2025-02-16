@@ -1,8 +1,10 @@
 package willatendo.fossilslegacy.server.event;
 
+import net.minecraft.world.item.crafting.RecipeBookCategory;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.RegisterRecipeBookSearchCategoriesEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
@@ -11,6 +13,7 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
+import willatendo.fossilslegacy.client.FASearchRecipeBookCategory;
 import willatendo.fossilslegacy.network.NeoforgePacketHelper;
 import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
 import willatendo.fossilslegacy.network.ServerboundSinkPacket;
@@ -77,5 +80,12 @@ public class ModEvents {
     @SubscribeEvent
     public static void spawnPlacementRegisterEvent(RegisterSpawnPlacementsEvent event) {
         BasicEvents.spawnPlacementEvent(new NeoforgeSpawnPlacementRegister(event));
+    }
+
+    @SubscribeEvent
+    public static void registerRecipeBookSearchCategoriesEvent(RegisterRecipeBookSearchCategoriesEvent event) {
+        for (FASearchRecipeBookCategory category : FASearchRecipeBookCategory.values()) {
+            event.register(category, category.includedCategories().toArray(RecipeBookCategory[]::new));
+        }
     }
 }

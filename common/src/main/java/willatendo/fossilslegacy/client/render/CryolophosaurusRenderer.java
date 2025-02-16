@@ -6,6 +6,11 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.jurassic.Cryolop
 
 public class CryolophosaurusRenderer extends CoatTypeMobRenderer<Cryolophosaurus, DinosaurRenderState> {
     public CryolophosaurusRenderer(EntityRendererProvider.Context context) {
-        super(new DinosaurRenderState(), context, 0.15F);
+        super(context, 0.15F);
+    }
+
+    @Override
+    public DinosaurRenderState createRenderState() {
+        return new DinosaurRenderState();
     }
 }

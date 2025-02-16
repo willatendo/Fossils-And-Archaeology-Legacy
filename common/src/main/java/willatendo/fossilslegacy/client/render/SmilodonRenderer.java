@@ -6,6 +6,17 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Smilo
 
 public class SmilodonRenderer extends CoatTypeMobRenderer<Smilodon, SmilodonRenderState> {
     public SmilodonRenderer(Context context) {
-        super(new SmilodonRenderState(), context, 0.3F);
+        super(context, 0.3F);
+    }
+
+    @Override
+    public SmilodonRenderState createRenderState() {
+        return new SmilodonRenderState();
+    }
+
+    @Override
+    public void extractRenderState(Smilodon smilodon, SmilodonRenderState smilodonRenderState, float partialTick) {
+        super.extractRenderState(smilodon, smilodonRenderState, partialTick);
+        smilodonRenderState.sitAnimationState.copyFrom(smilodon.sitAnimationState);
     }
 }

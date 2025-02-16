@@ -7,8 +7,13 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Mammo
 
 public class MammothRenderer extends CoatTypeMobRenderer<Mammoth, MammothRenderState> {
     public MammothRenderer(Context context) {
-        super(new MammothRenderState(), context, 0.3F);
+        super(context, 0.3F);
         this.addLayer(new MammothFurLayer(this));
+    }
+
+    @Override
+    public MammothRenderState createRenderState() {
+        return new MammothRenderState();
     }
 
     @Override

@@ -6,6 +6,11 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.jurassic.Stegosa
 
 public class StegosaurusRenderer extends CoatTypeMobRenderer<Stegosaurus, DinosaurRenderState> {
     public StegosaurusRenderer(Context context) {
-        super(new DinosaurRenderState(), context, 0.15F);
+        super(context, 0.15F);
+    }
+
+    @Override
+    public DinosaurRenderState createRenderState() {
+        return new DinosaurRenderState();
     }
 }

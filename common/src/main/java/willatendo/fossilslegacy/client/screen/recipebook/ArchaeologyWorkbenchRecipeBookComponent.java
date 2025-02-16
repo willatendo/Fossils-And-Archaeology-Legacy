@@ -10,7 +10,6 @@ import net.minecraft.world.entity.player.StackedItemContents;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.crafting.display.RecipeDisplay;
 import willatendo.fossilslegacy.server.menu.menus.ArchaeologyWorkbenchMenu;
-import willatendo.fossilslegacy.server.recipe.display.AnalyzationRecipeDisplay;
 import willatendo.fossilslegacy.server.recipe.display.ArchaeologyRecipeDisplay;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
@@ -60,6 +59,6 @@ public class ArchaeologyWorkbenchRecipeBookComponent extends RecipeBookComponent
 
     @Override
     protected void selectMatchingRecipes(RecipeCollection recipeCollection, StackedItemContents stackedItemContents) {
-        recipeCollection.selectRecipes(stackedItemContents, recipeDisplay -> recipeDisplay instanceof AnalyzationRecipeDisplay);
+        recipeCollection.selectRecipes(stackedItemContents, recipeDisplay -> recipeDisplay instanceof ArchaeologyRecipeDisplay);
     }
 }

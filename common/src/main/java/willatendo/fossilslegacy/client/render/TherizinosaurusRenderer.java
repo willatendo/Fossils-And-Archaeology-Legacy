@@ -6,6 +6,11 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Theri
 
 public class TherizinosaurusRenderer extends CoatTypeMobRenderer<Therizinosaurus, DinosaurRenderState> {
     public TherizinosaurusRenderer(EntityRendererProvider.Context context) {
-        super(new DinosaurRenderState(), context, 0.15F);
+        super(context, 0.15F);
+    }
+
+    @Override
+    public DinosaurRenderState createRenderState() {
+        return new DinosaurRenderState();
     }
 }

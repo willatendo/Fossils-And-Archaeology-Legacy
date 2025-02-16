@@ -6,6 +6,11 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Moa;
 
 public class MoaRenderer extends CoatTypeMobRenderer<Moa, DinosaurRenderState> {
     public MoaRenderer(EntityRendererProvider.Context context) {
-        super(new DinosaurRenderState(), context, 0.5F);
+        super(context, 0.5F);
+    }
+
+    @Override
+    public DinosaurRenderState createRenderState() {
+        return new DinosaurRenderState();
     }
 }

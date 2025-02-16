@@ -2,8 +2,8 @@ package willatendo.fossilslegacy.server.dinopedia_entry;
 
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.dinopedia_entry.line.BuiltInDinopediaLines;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FADinopediaEntries {

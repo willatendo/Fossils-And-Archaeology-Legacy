@@ -5,10 +5,10 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import willatendo.fossilslegacy.server.dinopedia_entry.util.DinopediaEntityPredicate;
 import willatendo.fossilslegacy.server.dinopedia_entry.line.BuiltInDinopediaLines;
 import willatendo.fossilslegacy.server.dinopedia_entry.line.CustomDinopediaLine;
 import willatendo.fossilslegacy.server.dinopedia_entry.line.DinopediaLine;
+import willatendo.fossilslegacy.server.dinopedia_entry.util.DinopediaEntityPredicate;
 
 import java.util.ArrayList;
 import java.util.Arrays;

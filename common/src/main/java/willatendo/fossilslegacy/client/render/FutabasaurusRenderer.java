@@ -7,7 +7,12 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futab
 
 public class FutabasaurusRenderer extends CoatTypeMobRenderer<Futabasaurus, FutabasaurusRenderState> {
     public FutabasaurusRenderer(Context context) {
-        super(new FutabasaurusRenderState(), context, 0.3F);
+        super(context, 0.3F);
+    }
+
+    @Override
+    public FutabasaurusRenderState createRenderState() {
+        return new FutabasaurusRenderState();
     }
 
     @Override

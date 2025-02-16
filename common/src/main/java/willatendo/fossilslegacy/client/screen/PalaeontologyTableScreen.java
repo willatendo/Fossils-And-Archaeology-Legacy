@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.client.screen;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -51,8 +50,6 @@ public class PalaeontologyTableScreen extends AbstractContainerScreen<Palaeontol
 
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int mouseX, int mouseY) {
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.setShaderTexture(0, TEXTURE);
         guiGraphics.blit(RenderType::guiTextured, TEXTURE, this.leftPos, this.topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
 
         guiGraphics.blitSprite(RenderType::guiTextured, !this.fossilVariants.isEmpty() ? SCROLLER_SPRITE : SCROLLER_DISABLED_SPRITE, this.leftPos + 124, this.topPos + 16 + (int) (41.0F * this.scrollOffs), 12, 15);

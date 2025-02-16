@@ -6,6 +6,11 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Trice
 
 public class TriceratopsRenderer extends CoatTypeMobRenderer<Triceratops, DinosaurRenderState> {
     public TriceratopsRenderer(Context context) {
-        super(new DinosaurRenderState(), context, 0.3F);
+        super(context, 0.3F);
+    }
+
+    @Override
+    public DinosaurRenderState createRenderState() {
+        return new DinosaurRenderState();
     }
 }

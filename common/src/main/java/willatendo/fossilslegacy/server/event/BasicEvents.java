@@ -246,7 +246,7 @@ public final class BasicEvents {
         attributeRegister.register(FAEntityTypes.MAMMOTH.get(), Mammoth.mammothAttributes());
         attributeRegister.register(FAEntityTypes.MOSASAURUS.get(), Mosasaurus.mosasaurusAttributes());
         attributeRegister.register(FAEntityTypes.NAUTILUS.get(), Nautilus.nautilusAttributes());
-        attributeRegister.register(FAEntityTypes.FUTABASAURUS.get(), Futabasaurus.plesiosaurusAttributes());
+        attributeRegister.register(FAEntityTypes.FUTABASAURUS.get(), Futabasaurus.futabasaurusAttributes());
         attributeRegister.register(FAEntityTypes.PACHYCEPHALOSAURUS.get(), Pachycephalosaurus.pachycephalosaurusAttributes());
         attributeRegister.register(FAEntityTypes.PREGNANT_ARMADILLO.get(), Armadillo.createAttributes().build());
         attributeRegister.register(FAEntityTypes.PREGNANT_CAT.get(), Cat.createAttributes().build());

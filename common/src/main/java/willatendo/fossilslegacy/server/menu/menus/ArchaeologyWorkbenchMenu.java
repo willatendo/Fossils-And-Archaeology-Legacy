@@ -38,7 +38,7 @@ public class ArchaeologyWorkbenchMenu extends RecipeBookMenu {
         this.archaeologyWorkbenchBlockEntity = archaeologyWorkbenchBlockEntity;
 
         this.addSlot(new Slot(archaeologyWorkbenchBlockEntity, 0, 49, 20));
-        this.addSlot(new FuelSlot(archaeologyWorkbenchBlockEntity, 1, 80, 54, itemStack -> archaeologyWorkbenchBlockEntity.getOnDuration(itemStack) > 0));
+        this.addSlot(new FuelSlot(archaeologyWorkbenchBlockEntity, 1, 80, 54, itemStack -> archaeologyWorkbenchBlockEntity.getOnDuration(inventory.player.registryAccess(), itemStack) > 0));
         this.addSlot(new ResultSlot(inventory.player, archaeologyWorkbenchBlockEntity, 2, 111, 20));
 
         for (int row = 0; row < 3; row++) {

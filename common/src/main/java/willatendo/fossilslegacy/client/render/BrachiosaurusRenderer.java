@@ -6,6 +6,11 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.jurassic.Brachio
 
 public class BrachiosaurusRenderer extends CoatTypeMobRenderer<Brachiosaurus, DinosaurRenderState> {
     public BrachiosaurusRenderer(Context context) {
-        super(new DinosaurRenderState(), context, 0.3F);
+        super(context, 0.3F);
+    }
+
+    @Override
+    public DinosaurRenderState createRenderState() {
+        return new DinosaurRenderState();
     }
 }

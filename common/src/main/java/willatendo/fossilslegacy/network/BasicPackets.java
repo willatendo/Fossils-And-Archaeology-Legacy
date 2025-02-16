@@ -11,10 +11,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import willatendo.fossilslegacy.server.block.entity.entities.GeneModificationTableBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.entities.TimeMachineBlockEntity;
-import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
 import willatendo.fossilslegacy.server.item.FADataComponents;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class BasicPackets {

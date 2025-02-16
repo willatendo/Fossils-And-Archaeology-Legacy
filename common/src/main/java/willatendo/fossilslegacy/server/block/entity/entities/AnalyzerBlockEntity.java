@@ -109,9 +109,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
         compoundTag.putInt("AnalyzationTimeTotal", this.analyzationTotalTime);
         ContainerHelper.saveAllItems(compoundTag, this.itemStacks, provider);
         CompoundTag usedRecipes = new CompoundTag();
-        this.recipesUsed.forEach((recipeId, recipe) -> {
-            usedRecipes.putInt(recipeId.toString(), recipe);
-        });
+        this.recipesUsed.forEach((recipeId, recipe) -> usedRecipes.putInt(recipeId.location().toString(), recipe));
         compoundTag.put("RecipesUsed", usedRecipes);
     }
 

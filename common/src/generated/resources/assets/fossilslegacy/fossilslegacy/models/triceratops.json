@@ -51,6 +51,7 @@
           "z_origin": -2.0
         },
         {
+          "mirror": true,
           "texture_x_offset": 50,
           "texture_y_offset": 49,
           "x_dimension": 3.0,
@@ -61,7 +62,7 @@
           "z_origin": -3.0
         }
       ],
-      "id": "legt_leg",
+      "id": "left_leg",
       "poses": {
         "x": 5.0,
         "x_rot": 0.0,

@@ -7,7 +7,12 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Mosas
 
 public class MosasaurusRenderer extends CoatTypeMobRenderer<Mosasaurus, DinosaurRenderState> {
     public MosasaurusRenderer(Context context) {
-        super(new DinosaurRenderState(), context, 0.3F);
+        super(context, 0.3F);
         this.addLayer(new MosasaurusEyesLayer(this));
+    }
+
+    @Override
+    public DinosaurRenderState createRenderState() {
+        return new DinosaurRenderState();
     }
 }

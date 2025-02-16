@@ -32,12 +32,11 @@ import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class GeneModificationBlock extends Block implements EntityBlock {
     public static final EnumProperty<Direction> HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
-    public static final BooleanProperty ACTIVE = FABlockStateProperties.ACTIVE;
     public static final VoxelShape SHAPE = Shapes.join(Block.box(0, 0, 0, 16, 5, 16), Block.box(2, 5, 2, 14, 12, 14), BooleanOp.OR);
 
     public GeneModificationBlock(Properties properties) {
         super(properties);
-        this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH).setValue(ACTIVE, false);
+        this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH);
     }
 
     @Override
@@ -47,7 +46,7 @@ public class GeneModificationBlock extends Block implements EntityBlock {
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
-        return this.defaultBlockState().setValue(HORIZONTAL_FACING, blockPlaceContext.getHorizontalDirection().getOpposite()).setValue(ACTIVE, false);
+        return this.defaultBlockState().setValue(HORIZONTAL_FACING, blockPlaceContext.getHorizontalDirection().getOpposite());
     }
 
     @Override
@@ -108,7 +107,7 @@ public class GeneModificationBlock extends Block implements EntityBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(HORIZONTAL_FACING, ACTIVE);
+        builder.add(HORIZONTAL_FACING);
         super.createBlockStateDefinition(builder);
     }
 }

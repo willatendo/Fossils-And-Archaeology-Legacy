@@ -3,8 +3,8 @@ package willatendo.fossilslegacy.server.coat_type;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
-import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.entity.genetics.PatternType;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FACoatTypes {

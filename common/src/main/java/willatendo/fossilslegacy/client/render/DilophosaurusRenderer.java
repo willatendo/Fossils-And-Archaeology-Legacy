@@ -10,7 +10,12 @@ import java.util.Optional;
 
 public class DilophosaurusRenderer extends CoatTypeMobRenderer<Dilophosaurus, DinosaurRenderState> {
     public DilophosaurusRenderer(Context context) {
-        super(new DinosaurRenderState(), context, 0.3F);
+        super(context, 0.3F);
+    }
+
+    @Override
+    public DinosaurRenderState createRenderState() {
+        return new DinosaurRenderState();
     }
 
     @Override

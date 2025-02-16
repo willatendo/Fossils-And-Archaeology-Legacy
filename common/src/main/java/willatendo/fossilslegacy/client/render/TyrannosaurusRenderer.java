@@ -11,7 +11,12 @@ import java.util.Optional;
 
 public class TyrannosaurusRenderer extends CoatTypeMobRenderer<Tyrannosaurus, TyrannosaurusRenderState> {
     public TyrannosaurusRenderer(Context context) {
-        super(new TyrannosaurusRenderState(), context, 0.3F);
+        super(context, 0.3F);
+    }
+
+    @Override
+    public TyrannosaurusRenderState createRenderState() {
+        return new TyrannosaurusRenderState();
     }
 
     @Override

@@ -8,7 +8,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.util.context.ContextMap;
 import net.minecraft.world.entity.player.StackedItemContents;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.crafting.display.FurnaceRecipeDisplay;
 import net.minecraft.world.item.crafting.display.RecipeDisplay;
 import willatendo.fossilslegacy.server.menu.menus.AnalyzerMenu;
 import willatendo.fossilslegacy.server.recipe.display.AnalyzationRecipeDisplay;
@@ -48,9 +47,9 @@ public class AnalyzerRecipeBookComponent extends RecipeBookComponent<AnalyzerMen
 
     @Override
     protected void fillGhostRecipe(GhostSlots ghostSlots, RecipeDisplay recipeDisplay, ContextMap contextMap) {
-        ghostSlots.setResult(this.menu.slots.get(10), contextMap, recipeDisplay.result());
-        if (recipeDisplay instanceof FurnaceRecipeDisplay furnacerecipedisplay) {
-            ghostSlots.setInput(this.menu.slots.get(0), contextMap, furnacerecipedisplay.ingredient());
+        ghostSlots.setResult(this.menu.slots.get(9), contextMap, recipeDisplay.result());
+        if (recipeDisplay instanceof AnalyzationRecipeDisplay analyzationRecipeDisplay) {
+            ghostSlots.setInput(this.menu.slots.get(0), contextMap, analyzationRecipeDisplay.ingredient());
         }
     }
 

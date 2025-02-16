@@ -7,6 +7,6 @@ public class PteranodonRenderState extends DinosaurRenderState {
     public boolean shouldLand;
     public float airPitch;
     public float airAngle;
-    public AnimationState flyingAnimationState;
-    public AnimationState landAnimationState;
+    public AnimationState flyingAnimationState = new AnimationState();
+    public AnimationState landAnimationState = new AnimationState();
 }

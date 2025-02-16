@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.client.screen;
 
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.platform.Lighting;
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
@@ -18,6 +17,7 @@ import net.minecraft.core.HolderSet;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.ARGB;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntitySpawnReason;
@@ -27,6 +27,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.Vec3;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import willatendo.fossilslegacy.client.FAKeys;
@@ -72,8 +73,6 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
 
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int x, int y) {
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.setShaderTexture(0, TEXTURE);
         guiGraphics.blit(RenderType::guiTextured, TEXTURE, this.leftPos, this.topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
         Slot slot = this.menu.slots.get(0);
         if (slot.hasItem()) {
@@ -126,9 +125,7 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
                     float red = ((selectedCoatType.displayInfo().color() & 0xFF0000) >> 16) / 255.0F;
                     float green = ((selectedCoatType.displayInfo().color() & 0xFF00) >> 8) / 255.0F;
                     float blue = (selectedCoatType.displayInfo().color() & 0xFF) / 255.0F;
-                    RenderSystem.setShaderColor(red, green, blue, 1.0F);
-                    guiGraphics.blitSprite(RenderType::guiTextured, GENE_SPRITE, this.leftPos + 42, this.topPos + 61, 22, 8);
-                    RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+                    guiGraphics.blitSprite(RenderType::guiTextured, GENE_SPRITE, this.leftPos + 42, this.topPos + 61, 22, 8, ARGB.colorFromFloat(1.0F, red, green, blue));
                     this.renderScrollingString(guiGraphics, selectedCoatType.displayInfo().name(), this.leftPos + 8, this.topPos + 74, 0x404040);
                     this.drawCenteredStringNoShadow(guiGraphics, this.font, FAUtils.translation("container", "gene_modification_table.coat_type.location", this.selection + 1, this.size), this.leftPos + 53, this.topPos + 47, 0x404040);
                 } else {
@@ -225,7 +222,7 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
             double time = (double) Util.getMillis() / 1000.0;
             double scaled = Math.max((double) widthMinusY * 0.5, 3.0);
             double change = Math.sin(1.5707963267948966 * Math.cos(6.283185307179586 * time / scaled)) / 2.0 + 0.5;
-            double xPos = Mth.lerp(change, 0.0, (double) widthMinusY);
+            double xPos = Mth.lerp(change, 0.0, widthMinusY);
             guiGraphics.enableScissor(xMin, yMin, xMax, pMaxY);
             guiGraphics.drawString(font, component, xMin - (int) xPos, y, color, false);
             guiGraphics.disableScissor();
@@ -280,9 +277,7 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
         }
 
         entityRenderDispatcher.setRenderShadow(false);
-        guiGraphics.drawSpecial(multiBufferSource -> {
-            entityRenderDispatcher.render(livingEntity, 0.0, 0.0, 0.0, 1.0F, guiGraphics.pose(), multiBufferSource, 15728880);
-        });
+        guiGraphics.drawSpecial(multiBufferSource -> entityRenderDispatcher.render(livingEntity, 0.0, 0.0, 0.0, 1.0F, guiGraphics.pose(), multiBufferSource, 15728880));
         guiGraphics.flush();
         entityRenderDispatcher.setRenderShadow(true);
         guiGraphics.pose().popPose();

@@ -3,13 +3,11 @@ package willatendo.fossilslegacy.server.fuel;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.HolderGetter;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.item.Item;
-import willatendo.fossilslegacy.server.registry.FARegistries;
 
 import java.util.Map;
 import java.util.stream.Collectors;

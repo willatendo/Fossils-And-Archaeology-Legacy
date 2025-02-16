@@ -6,6 +6,11 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Ankyl
 
 public class AnkylosaurusRenderer extends CoatTypeMobRenderer<Ankylosaurus, DinosaurRenderState> {
     public AnkylosaurusRenderer(EntityRendererProvider.Context context) {
-        super(new DinosaurRenderState(), context, 0.5F);
+        super(context, 0.5F);
+    }
+
+    @Override
+    public DinosaurRenderState createRenderState() {
+        return new DinosaurRenderState();
     }
 }

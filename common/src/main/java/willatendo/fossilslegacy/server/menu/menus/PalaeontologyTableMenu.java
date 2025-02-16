@@ -1,10 +1,8 @@
 package willatendo.fossilslegacy.server.menu.menus;
 
 import com.google.common.collect.Lists;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;

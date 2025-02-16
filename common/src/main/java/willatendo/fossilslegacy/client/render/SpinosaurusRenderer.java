@@ -6,6 +6,11 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Spino
 
 public class SpinosaurusRenderer extends CoatTypeMobRenderer<Spinosaurus, DinosaurRenderState> {
     public SpinosaurusRenderer(EntityRendererProvider.Context context) {
-        super(new DinosaurRenderState(),context, 0.3F);
+        super(context, 0.3F);
+    }
+
+    @Override
+    public DinosaurRenderState createRenderState() {
+        return new DinosaurRenderState();
     }
 }

@@ -1,5 +1,6 @@
 {
   "parent": "fossilslegacy:block/template_cultivator_active",
+  "render_type": "minecraft:translucent",
   "textures": {
     "side": "fossilslegacy:block/lime_cultivator_side",
     "top": "fossilslegacy:block/lime_cultivator_top"

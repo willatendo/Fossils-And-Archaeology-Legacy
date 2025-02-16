@@ -37,10 +37,10 @@ import willatendo.fossilslegacy.server.jewel_recovery.FAJewelRecoveries;
 import willatendo.fossilslegacy.server.level.prehistoric.PrehistoricNoiseGeneratorSettings;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.stone_tablet_variant.FAStoneTabletVariants;
-import willatendo.fossilslegacy.server.structure.FAStructureSets;
-import willatendo.fossilslegacy.server.structure.FAStructures;
 import willatendo.fossilslegacy.server.structure.FAPools;
 import willatendo.fossilslegacy.server.structure.FAProcessorLists;
+import willatendo.fossilslegacy.server.structure.FAStructureSets;
+import willatendo.fossilslegacy.server.structure.FAStructures;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.Collections;

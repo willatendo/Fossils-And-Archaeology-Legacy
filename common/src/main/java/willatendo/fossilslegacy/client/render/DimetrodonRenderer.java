@@ -10,7 +10,12 @@ import java.util.Optional;
 
 public class DimetrodonRenderer extends CoatTypeMobRenderer<Dimetrodon, DinosaurRenderState> {
     public DimetrodonRenderer(EntityRendererProvider.Context context) {
-        super(new DinosaurRenderState(), context, 0.3F);
+        super(context, 0.3F);
+    }
+
+    @Override
+    public DinosaurRenderState createRenderState() {
+        return new DinosaurRenderState();
     }
 
     @Override

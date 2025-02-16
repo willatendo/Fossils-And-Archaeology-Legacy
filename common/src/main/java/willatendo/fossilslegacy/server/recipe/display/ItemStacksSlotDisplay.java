@@ -16,9 +16,9 @@ import willatendo.fossilslegacy.server.registry.FARegistries;
 
 import java.util.stream.Stream;
 
-public record ItemStacksSlotDisplay(TagKey<AnalyzerResult> results) implements SlotDisplay {
-    public static final MapCodec<ItemStacksSlotDisplay> MAP_CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(TagKey.codec(FARegistries.ANALYZER_RESULT).fieldOf("tag").forGetter(ItemStacksSlotDisplay::results)).apply(instance, ItemStacksSlotDisplay::new));
-    public static final StreamCodec<RegistryFriendlyByteBuf, ItemStacksSlotDisplay> STREAM_CODEC = StreamCodec.composite(TagKey.streamCodec(FARegistries.ANALYZER_RESULT), ItemStacksSlotDisplay::results, ItemStacksSlotDisplay::new);
+public record ItemStacksSlotDisplay(TagKey<AnalyzerResult> itemStacks) implements SlotDisplay {
+    public static final MapCodec<ItemStacksSlotDisplay> MAP_CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(TagKey.codec(FARegistries.ANALYZER_RESULT).fieldOf("item_stacks").forGetter(ItemStacksSlotDisplay::itemStacks)).apply(instance, ItemStacksSlotDisplay::new));
+    public static final StreamCodec<RegistryFriendlyByteBuf, ItemStacksSlotDisplay> STREAM_CODEC = StreamCodec.composite(TagKey.streamCodec(FARegistries.ANALYZER_RESULT), ItemStacksSlotDisplay::itemStacks, ItemStacksSlotDisplay::new);
     public static final Type<ItemStacksSlotDisplay> TYPE = new Type<>(ItemStacksSlotDisplay.MAP_CODEC, ItemStacksSlotDisplay.STREAM_CODEC);
 
     @Override
@@ -26,7 +26,7 @@ public record ItemStacksSlotDisplay(TagKey<AnalyzerResult> results) implements S
         if (displayContentsFactory instanceof DisplayContentsFactory.ForStacks<T> forStacks) {
             HolderLookup.Provider provider = contextMap.getOptional(SlotDisplayContext.REGISTRIES);
             if (provider != null) {
-                Stream<ItemStack> results = provider.lookupOrThrow(FARegistries.ANALYZER_RESULT).get(this.results).map(analyzerResult -> analyzerResult.stream().map(analyzerResultHolder -> analyzerResultHolder.value().output())).get();
+                Stream<ItemStack> results = provider.lookupOrThrow(FARegistries.ANALYZER_RESULT).get(this.itemStacks).map(analyzerResult -> analyzerResult.stream().map(analyzerResultHolder -> analyzerResultHolder.value().output())).get();
                 return results.map(forStacks::forStack);
             }
         }

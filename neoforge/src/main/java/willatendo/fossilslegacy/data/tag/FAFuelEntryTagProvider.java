@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.data.tag;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.TagsProvider;
 import willatendo.fossilslegacy.server.fuel.FAFuelEntries;
 import willatendo.fossilslegacy.server.fuel.FuelEntry;
 import willatendo.fossilslegacy.server.registry.FARegistries;

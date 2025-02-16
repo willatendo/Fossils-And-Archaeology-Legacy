@@ -7,7 +7,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.entity.player.StackedItemContents;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
@@ -15,14 +14,12 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.block.blocks.CultivatorBlock;
-import willatendo.fossilslegacy.server.block.entity.crafting.AnalyzerRecipeInput;
 import willatendo.fossilslegacy.server.block.entity.entities.CultivatorBlockEntity;
 import willatendo.fossilslegacy.server.fuel.FuelEntry;
 import willatendo.fossilslegacy.server.menu.FAMenuTypes;
 import willatendo.fossilslegacy.server.menu.FARecipeBookTypes;
 import willatendo.fossilslegacy.server.menu.slot.FuelSlot;
 import willatendo.fossilslegacy.server.menu.slot.ResultSlot;
-import willatendo.fossilslegacy.server.recipe.recipes.AnalyzationRecipe;
 import willatendo.fossilslegacy.server.recipe.recipes.CultivationRecipe;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FAFuelEntryTags;
@@ -41,7 +38,7 @@ public class CultivatorMenu extends RecipeBookMenu {
         this.cultivatorBlockEntity = cultivatorBlockEntity;
 
         this.addSlot(new Slot(cultivatorBlockEntity, 0, 49, 20));
-        this.addSlot(new FuelSlot(cultivatorBlockEntity, 1, 80, 54, itemStack -> cultivatorBlockEntity.getOnDuration(itemStack) > 0));
+        this.addSlot(new FuelSlot(cultivatorBlockEntity, 1, 80, 54, itemStack -> cultivatorBlockEntity.getOnDuration(inventory.player.registryAccess(), itemStack) > 0));
         this.addSlot(new ResultSlot(inventory.player, cultivatorBlockEntity, 2, 111, 20));
 
         for (int row = 0; row < 3; row++) {

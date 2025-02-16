@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
+import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 import willatendo.fossilslegacy.client.state.PteranodonRenderState;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Pteranodon;
@@ -10,7 +11,12 @@ import java.util.Optional;
 
 public class PteranodonRenderer extends CoatTypeMobRenderer<Pteranodon, PteranodonRenderState> {
     public PteranodonRenderer(Context context) {
-        super(new PteranodonRenderState(), context, 0.5F);
+        super(context, 0.5F);
+    }
+
+    @Override
+    public PteranodonRenderState createRenderState() {
+        return new PteranodonRenderState();
     }
 
     @Override

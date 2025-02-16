@@ -5,8 +5,8 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.item.FAItems;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FAFeederFoods {

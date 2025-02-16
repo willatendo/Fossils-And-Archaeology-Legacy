@@ -1,4 +1,4 @@
-// 1.21.4	2025-02-14T18:30:31.6625047	Entity Models: fossilslegacy
+// 1.21.4	2025-02-14T20:52:05.124956	Entity Models: fossilslegacy
 a12e845082d42d128c39632ab235d9fa06d44c55 assets/fossilslegacy/fossilslegacy/models/ankylosaurus.json
 4980d5294f50ff3dd36d8ac4afbb1c8e76cdf688 assets/fossilslegacy/fossilslegacy/models/brachiosaurus.json
 c16354fc12c8f75723bc243ad6529ba020c8dd5f assets/fossilslegacy/fossilslegacy/models/carnotaurus.json
@@ -36,6 +36,6 @@ bf3b960cd954e86a3b6a5659b351a27c6b217e42 assets/fossilslegacy/fossilslegacy/mode
 55ea7ddb6c5b83b2b0a4357096a622dab99bfa9c assets/fossilslegacy/fossilslegacy/models/spinosaurus.json
 fe6cb44aed4208bec1167b3c223d9c3fe460acf1 assets/fossilslegacy/fossilslegacy/models/stegosaurus.json
 152b26a9e1e6cfc09b96110c80db2bcd25a4e2e3 assets/fossilslegacy/fossilslegacy/models/therizinosaurus.json
-1b941a14264bb773cae1258a232053b1e6fa2d6e assets/fossilslegacy/fossilslegacy/models/triceratops.json
+daa1460ded56e1de83687cfec5578c736b89842b assets/fossilslegacy/fossilslegacy/models/triceratops.json
 05f1a993f6fdda18348cd7e7b493d7c2fe2d7a6f assets/fossilslegacy/fossilslegacy/models/tyrannosaurus.json
 5b9e18534419e6035a6285372cc8e4b7cc3ac3f4 assets/fossilslegacy/fossilslegacy/models/velociraptor.json

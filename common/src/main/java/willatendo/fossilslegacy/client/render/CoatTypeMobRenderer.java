@@ -18,12 +18,9 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.WetFurEntity;
 
 import java.util.Optional;
 
-public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity, S extends DinosaurRenderState> extends MobRenderer<T, S, EntityModel<S>> {
-    private final S dinosaurRenderState;
-
-    public CoatTypeMobRenderer(S dinosaurRenderState, EntityRendererProvider.Context context, float shadowSize) {
+public abstract class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity, S extends DinosaurRenderState> extends MobRenderer<T, S, EntityModel<S>> {
+    public CoatTypeMobRenderer(EntityRendererProvider.Context context, float shadowSize) {
         super(context, null, shadowSize);
-        this.dinosaurRenderState = dinosaurRenderState;
     }
 
     public Optional<EntityModel<S>> getAdditionalModel(S dinosaurRenderState, CoatType coatType) {
@@ -112,10 +109,5 @@ public class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity, S extends 
     public ResourceLocation getTextureLocation(S dinosaurRenderState) {
         CoatType coatType = dinosaurRenderState.coatType.value();
         return this.getAdditionalTexture(dinosaurRenderState, coatType).isPresent() ? this.getAdditionalTexture(dinosaurRenderState, coatType).get() : dinosaurRenderState.isBaby ? coatType.patterns().getFirst().textures().babyTexture().isPresent() ? coatType.patterns().getFirst().textures().babyTexture().get() : coatType.patterns().getFirst().textures().texture() : coatType.patterns().getFirst().textures().texture();
-    }
-
-    @Override
-    public S createRenderState() {
-        return this.dinosaurRenderState;
     }
 }

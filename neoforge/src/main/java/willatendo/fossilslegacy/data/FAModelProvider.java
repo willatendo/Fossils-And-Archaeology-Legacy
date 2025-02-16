@@ -429,7 +429,7 @@ public class FAModelProvider extends ModelProvider {
     }
 
     private void createGeneModificationTable(BlockModelGenerators blockModelGenerators, Block geneModificationTable) {
-        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(geneModificationTable, Variant.variant().with(VariantProperties.MODEL, FAModelTemplates.TEMPLATE_GENE_MODIFICATION_TABLE.create(geneModificationTable, new TextureMapping().put(TextureSlot.FRONT, this.modLocation("block/gene_modification_table_front_off")), blockModelGenerators.modelOutput))));
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(geneModificationTable, Variant.variant().with(VariantProperties.MODEL, FAModelTemplates.TEMPLATE_GENE_MODIFICATION_TABLE.create(geneModificationTable, new TextureMapping().put(TextureSlot.FRONT, this.modLocation("block/gene_modification_table_front_off")), blockModelGenerators.modelOutput))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
     }
 
     private void createJurassicFern(BlockModelGenerators blockModelGenerators, Block jurassicFern) {

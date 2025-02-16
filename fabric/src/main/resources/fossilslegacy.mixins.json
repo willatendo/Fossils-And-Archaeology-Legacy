@@ -6,6 +6,9 @@
   "mixins": [
     "LightningBoltMixin"
   ],
+  "client": [
+    "client.ClientRecipeBookMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

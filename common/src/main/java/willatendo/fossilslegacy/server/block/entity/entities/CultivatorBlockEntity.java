@@ -41,7 +41,6 @@ import willatendo.fossilslegacy.server.block.blocks.CultivatorBlock;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.fuel.FuelEntry;
 import willatendo.fossilslegacy.server.item.FADataComponents;
-import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.menu.menus.CultivatorMenu;
 import willatendo.fossilslegacy.server.recipe.FARecipeTypes;
 import willatendo.fossilslegacy.server.recipe.recipes.CultivationRecipe;
@@ -136,49 +135,6 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         return map;
     }
 
-    public static Map<Item, Integer> getOnTimeMap() {
-        Map<Item, Integer> map = Maps.newLinkedHashMap();
-        map.put(FAItems.FOSSIL.get(), 300);
-        map.put(FAItems.RAW_CHICKEN_SOUP_BUCKET.get(), 1000);
-        map.put(FABlocks.AXOLOTLSPAWN.get().asItem(), 12000);
-        map.put(FAItems.BRACHIOSAURUS_EGG.get(), 12000);
-        map.put(FAItems.DILOPHOSAURUS_EGG.get(), 12000);
-        map.put(Items.FROGSPAWN, 12000);
-        map.put(FAItems.INCUBATED_CHICKEN_EGG.get(), 12000);
-        map.put(FAItems.INCUBATED_PARROT_EGG.get(), 12000);
-        map.put(FAItems.MOSASAURUS_EGG.get(), 12000);
-        map.put(FAItems.NAUTILUS_EGGS.get(), 12000);
-        map.put(FAItems.FUTABASAURUS_EGG.get(), 12000);
-        map.put(FAItems.PTERANODON_EGG.get(), 12000);
-        map.put(FAItems.STEGOSAURUS_EGG.get(), 12000);
-        map.put(FAItems.TRICERATOPS_EGG.get(), 12000);
-        map.put(FAItems.TYRANNOSAURUS_EGG.get(), 12000);
-        map.put(FAItems.VELOCIRAPTOR_EGG.get(), 12000);
-        map.put(FAItems.RAW_BRACHIOSAURUS.get(), 12000);
-        map.put(FAItems.RAW_DILOPHOSAURUS.get(), 12000);
-        map.put(FAItems.RAW_MAMMOTH.get(), 12000);
-        map.put(FAItems.RAW_MOSASAURUS.get(), 12000);
-        map.put(FAItems.RAW_FUTABASAURUS.get(), 12000);
-        map.put(FAItems.RAW_PTERANODON.get(), 12000);
-        map.put(FAItems.RAW_SMILODON.get(), 12000);
-        map.put(FAItems.RAW_STEGOSAURUS.get(), 12000);
-        map.put(FAItems.RAW_TRICERATOPS.get(), 12000);
-        map.put(FAItems.RAW_TYRANNOSAURUS.get(), 12000);
-        map.put(FAItems.RAW_VELOCIRAPTOR.get(), 12000);
-        map.put(Items.PORKCHOP, 3000);
-        map.put(Items.COD, 3000);
-        map.put(Items.SALMON, 3000);
-        map.put(Items.TROPICAL_FISH, 3000);
-        map.put(Items.BEEF, 4000);
-        map.put(Items.MUTTON, 3000);
-        map.put(Items.RABBIT, 3000);
-        map.put(Items.CHICKEN, 1500);
-        map.put(Items.EGG, 1000);
-        map.put(Items.SLIME_BALL, 800);
-        map.put(Items.MILK_BUCKET, 6000);
-        return map;
-    }
-
     public CultivatorBlockEntity(BlockPos blockPos, BlockState blockState) {
         this(DyeColor.RED, blockPos, blockState);
     }
@@ -200,7 +156,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         this.onTime = compoundTag.getInt("OnTime");
         this.cultivationProgress = compoundTag.getInt("CultivationTime");
         this.cultivationTotalTime = compoundTag.getInt("CultivationTimeTotal");
-        this.onDuration = this.getOnDuration(this.itemStacks.get(1));
+        this.onDuration = this.getOnDuration(provider, this.itemStacks.get(1));
         CompoundTag usedRecipes = compoundTag.getCompound("RecipesUsed");
         for (String recipes : usedRecipes.getAllKeys()) {
             this.recipesUsed.put(ResourceKey.create(Registries.RECIPE, ResourceLocation.parse(recipes)), usedRecipes.getInt(recipes));
@@ -215,9 +171,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         compoundTag.putInt("CultivationTimeTotal", this.cultivationTotalTime);
         ContainerHelper.saveAllItems(compoundTag, this.itemStacks, provider);
         CompoundTag usedRecipes = new CompoundTag();
-        this.recipesUsed.forEach((recipeId, recipe) -> {
-            usedRecipes.putInt(recipeId.toString(), recipe);
-        });
+        this.recipesUsed.forEach((recipeId, recipe) -> usedRecipes.putInt(recipeId.location().toString(), recipe));
         compoundTag.put("RecipesUsed", usedRecipes);
     }
 
@@ -273,20 +227,18 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
 
             int maxStackSize = cultivatorBlockEntity.getMaxStackSize();
             if (!cultivatorBlockEntity.isOn() && cultivatorBlockEntity.canCultivate(serverLevel.registryAccess(), recipe, cultivatorBlockEntity.itemStacks, maxStackSize)) {
-                cultivatorBlockEntity.onTime = cultivatorBlockEntity.getOnDuration(fuel);
+                cultivatorBlockEntity.onTime = cultivatorBlockEntity.getOnDuration(serverLevel.registryAccess(), fuel);
                 cultivatorBlockEntity.onDuration = cultivatorBlockEntity.onTime;
                 if (cultivatorBlockEntity.isOn()) {
                     changed = true;
                     ItemStack craftingRemainder = fuel.getItem().getCraftingRemainder();
-                    if (fuel.isEmpty()) {
-                        if (!craftingRemainder.isEmpty()) {
-                            cultivatorBlockEntity.itemStacks.set(1, craftingRemainder);
-                        } else if (hasFuel) {
-                            Item item = fuel.getItem();
-                            fuel.shrink(1);
-                            if (fuel.isEmpty()) {
-                                cultivatorBlockEntity.itemStacks.set(1, item.getCraftingRemainder());
-                            }
+                    if (!craftingRemainder.isEmpty()) {
+                        cultivatorBlockEntity.itemStacks.set(1, craftingRemainder);
+                    } else if (hasFuel) {
+                        Item item = fuel.getItem();
+                        fuel.shrink(1);
+                        if (fuel.isEmpty()) {
+                            cultivatorBlockEntity.itemStacks.set(1, item.getCraftingRemainder());
                         }
                     }
                 }
@@ -370,11 +322,11 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         }
     }
 
-    public int getOnDuration(ItemStack itemStack) {
+    public int getOnDuration(HolderLookup.Provider provider, ItemStack itemStack) {
         if (itemStack.isEmpty()) {
             return 0;
         } else {
-            return FuelEntry.getFuel(this.level.holderLookup(FARegistries.FUEL_ENTRY), FAFuelEntryTags.CULTIVATOR).getOrDefault(itemStack.getItem(), 0);
+            return FuelEntry.getFuel(provider.lookupOrThrow(FARegistries.FUEL_ENTRY), FAFuelEntryTags.CULTIVATOR).getOrDefault(itemStack.getItem(), 0);
         }
     }
 
@@ -469,7 +421,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         } else if (slot != 1) {
             return true;
         } else {
-            return this.getOnDuration(itemStack) > 0;
+            return this.getOnDuration(this.level.registryAccess(), itemStack) > 0;
         }
     }
 

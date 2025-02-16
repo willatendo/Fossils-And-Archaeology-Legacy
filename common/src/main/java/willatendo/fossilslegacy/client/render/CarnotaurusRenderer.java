@@ -6,6 +6,11 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Carno
 
 public class CarnotaurusRenderer extends CoatTypeMobRenderer<Carnotaurus, DinosaurRenderState> {
     public CarnotaurusRenderer(EntityRendererProvider.Context context) {
-        super(new DinosaurRenderState(), context, 0.15F);
+        super(context, 0.15F);
+    }
+
+    @Override
+    public DinosaurRenderState createRenderState() {
+        return new DinosaurRenderState();
     }
 }

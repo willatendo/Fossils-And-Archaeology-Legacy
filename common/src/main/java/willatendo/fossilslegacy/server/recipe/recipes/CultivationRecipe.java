@@ -11,7 +11,6 @@ import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.menu.categories.CultivationBookCategory;
 import willatendo.fossilslegacy.server.recipe.FARecipeSerialisers;
 import willatendo.fossilslegacy.server.recipe.FARecipeTypes;
-import willatendo.fossilslegacy.server.recipe.display.ArchaeologyRecipeDisplay;
 import willatendo.fossilslegacy.server.recipe.display.CultivationRecipeDisplay;
 import willatendo.fossilslegacy.server.recipe.display.FuelDisplay;
 import willatendo.fossilslegacy.server.tags.FAFuelEntryTags;

@@ -6,15 +6,12 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.world.inventory.RecipeBookType;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.saveddata.maps.MapDecorationType;
 import willatendo.fossilslegacy.FossilsLegacyForgeMod;
 import willatendo.fossilslegacy.network.ForgePacketHelper;
 import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
-import willatendo.fossilslegacy.server.item.ForgeArticulatedFossilItem;
-import willatendo.fossilslegacy.server.item.items.ArticulatedFossilItem;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.function.Supplier;
@@ -38,11 +35,6 @@ public class FossilsForgeHelper implements FossilsModloaderHelper {
     @Override
     public <T extends MapDecorationType> Holder<T> registerMapDecorationType(String id, Supplier<MapDecorationType> mapDecorationType) {
         return (Holder<T>) FossilsLegacyForgeMod.MAP_DECORATION_TYPES.register(id, mapDecorationType).getHolder().get();
-    }
-
-    @Override
-    public ArticulatedFossilItem getArticulatedFossilItem(Item.Properties properties) {
-        return new ForgeArticulatedFossilItem(properties);
     }
 
     @Override
