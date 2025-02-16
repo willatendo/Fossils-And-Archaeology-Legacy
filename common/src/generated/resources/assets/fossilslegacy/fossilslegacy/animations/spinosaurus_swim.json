@@ -1,5 +1,5 @@
 {
-  "animations": [
+  "animation_channels": [
     {
       "bone": "left_leg",
       "keyframes": [
@@ -127,7 +127,5 @@
       "target": "rotation"
     }
   ],
-  "id": "fossilslegacy:spinosaurus_swim",
-  "length": 1.0,
-  "looping": false
+  "length": 1.0
 }

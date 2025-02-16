@@ -1,9 +1,4 @@
 {
-  "animations": {
-    "walk": [
-      "fossilslegacy:stegosaurus_walk"
-    ]
-  },
   "elements": [
     {
       "boxes": [
@@ -290,6 +285,11 @@
   "head_pieces": [
     "head"
   ],
+  "jsonAnimationChannels": {
+    "walk": [
+      "fossilslegacy:stegosaurus_walk"
+    ]
+  },
   "texture_height": 128,
   "texture_width": 128
 }

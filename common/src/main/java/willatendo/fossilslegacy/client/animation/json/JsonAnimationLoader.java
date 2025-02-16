@@ -17,7 +17,7 @@ import java.util.Map;
 public final class JsonAnimationLoader extends SimpleJsonResourceReloadListener<JsonAnimation> {
     public static final JsonAnimationLoader INSTANCE = new JsonAnimationLoader();
     private static final FileToIdConverter ASSET_LISTER = FileToIdConverter.json("fossilslegacy/animations");
-    private static final Map<ResourceLocation, JsonAnimation> ANIMATIONS = Maps.newHashMap();
+    private static final Map<ResourceLocation, AnimationDefinition> ANIMATIONS = Maps.newHashMap();
 
     private JsonAnimationLoader() {
         super(JsonAnimation.CODEC, ASSET_LISTER);
@@ -32,7 +32,7 @@ public final class JsonAnimationLoader extends SimpleJsonResourceReloadListener<
     }
 
     public static AnimationDefinition getAnimation(ResourceLocation id) {
-        return ANIMATIONS.get(id).toAnimationDefinition();
+        return ANIMATIONS.get(id);
     }
 
     @Override
@@ -45,8 +45,9 @@ public final class JsonAnimationLoader extends SimpleJsonResourceReloadListener<
     @Override
     protected void apply(Map<ResourceLocation, JsonAnimation> jsons, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
         BuiltInAnimationTypes.init();
+
         ANIMATIONS.clear();
 
-        jsons.forEach((resourceLocation, jsonAnimation) -> ANIMATIONS.put(jsonAnimation.id(), jsonAnimation));
+        jsons.forEach((resourceLocation, jsonAnimation) -> ANIMATIONS.put(resourceLocation, jsonAnimation.toAnimationDefinition()));
     }
 }

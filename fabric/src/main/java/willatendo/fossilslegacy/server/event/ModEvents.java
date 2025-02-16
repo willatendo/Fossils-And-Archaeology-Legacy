@@ -8,7 +8,6 @@ import net.minecraft.client.gui.screens.recipebook.RecipeCollection;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.crafting.ExtendedRecipeBookCategory;
-import net.minecraft.world.item.crafting.RecipeBookCategory;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
 import willatendo.fossilslegacy.client.FASearchRecipeBookCategory;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -22,7 +21,6 @@ import willatendo.simplelibrary.server.event.registry.FabricSpawnPlacementRegist
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class ModEvents {
     public static final Map<ExtendedRecipeBookCategory, List<RecipeCollection>> SEARCH_TABS = new HashMap<>();

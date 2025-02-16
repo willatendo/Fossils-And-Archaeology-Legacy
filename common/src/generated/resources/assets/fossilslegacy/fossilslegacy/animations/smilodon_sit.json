@@ -1,5 +1,5 @@
 {
-  "animations": [
+  "animation_channels": [
     {
       "bone": "left_leg",
       "keyframes": [
@@ -11,7 +11,13 @@
             "y": -4.5,
             "z": -6.0
           }
-        },
+        }
+      ],
+      "target": "positiom"
+    },
+    {
+      "bone": "left_leg",
+      "keyframes": [
         {
           "interpolation": "linear",
           "timestamp": 0.0,
@@ -35,7 +41,13 @@
             "y": -4.5,
             "z": -6.0
           }
-        },
+        }
+      ],
+      "target": "positiom"
+    },
+    {
+      "bone": "right_leg",
+      "keyframes": [
         {
           "interpolation": "linear",
           "timestamp": 0.0,
@@ -59,36 +71,18 @@
             "y": -8.0,
             "z": -3.0
           }
-        },
-        {
-          "interpolation": "linear",
-          "timestamp": 0.0,
-          "vector": {
-            "x": 70.0,
-            "y": 0.0,
-            "z": 0.0
-          }
         }
       ],
-      "target": "rotation"
+      "target": "positiom"
     },
     {
-      "bone": "body",
+      "bone": "tail",
       "keyframes": [
         {
           "interpolation": "linear",
           "timestamp": 0.0,
           "vector": {
-            "x": 0.0,
-            "y": -3.0,
-            "z": -1.0
-          }
-        },
-        {
-          "interpolation": "linear",
-          "timestamp": 0.0,
-          "vector": {
-            "x": -45.0,
+            "x": 70.0,
             "y": 0.0,
             "z": 0.0
           }
@@ -109,10 +103,38 @@
           }
         }
       ],
-      "target": "position"
+      "target": "positiom"
+    },
+    {
+      "bone": "body",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": 0.0,
+            "y": -3.0,
+            "z": -1.0
+          }
+        }
+      ],
+      "target": "positiom"
+    },
+    {
+      "bone": "body",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": -45.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        }
+      ],
+      "target": "rotation"
     }
   ],
-  "id": "fossilslegacy:smilodon_sit",
-  "length": 0.0,
-  "looping": false
+  "length": 0.0
 }

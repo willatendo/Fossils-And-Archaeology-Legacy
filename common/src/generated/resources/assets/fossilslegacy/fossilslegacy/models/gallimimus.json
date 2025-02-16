@@ -1,9 +1,4 @@
 {
-  "animations": {
-    "walk": [
-      "fossilslegacy:gallimimus_walk"
-    ]
-  },
   "elements": [
     {
       "boxes": [
@@ -265,6 +260,11 @@
   "head_pieces": [
     "neck"
   ],
+  "jsonAnimationChannels": {
+    "walk": [
+      "fossilslegacy:gallimimus_walk"
+    ]
+  },
   "texture_height": 128,
   "texture_width": 128
 }

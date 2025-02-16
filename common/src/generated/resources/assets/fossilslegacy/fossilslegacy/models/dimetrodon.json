@@ -1,9 +1,4 @@
 {
-  "animations": {
-    "walk": [
-      "fossilslegacy:dimetrodon_walk"
-    ]
-  },
   "elements": [
     {
       "boxes": [
@@ -245,6 +240,11 @@
   "head_pieces": [
     "head"
   ],
+  "jsonAnimationChannels": {
+    "walk": [
+      "fossilslegacy:dimetrodon_walk"
+    ]
+  },
   "texture_height": 64,
   "texture_width": 64
 }

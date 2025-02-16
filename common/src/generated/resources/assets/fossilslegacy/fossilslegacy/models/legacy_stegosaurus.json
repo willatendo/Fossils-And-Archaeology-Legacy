@@ -1,9 +1,4 @@
 {
-  "animations": {
-    "walk": [
-      "fossilslegacy:legacy_stegosaurus_walk"
-    ]
-  },
   "elements": [
     {
       "boxes": [
@@ -438,6 +433,11 @@
       }
     }
   ],
+  "jsonAnimationChannels": {
+    "walk": [
+      "fossilslegacy:legacy_stegosaurus_walk"
+    ]
+  },
   "texture_height": 64,
   "texture_width": 32
 }

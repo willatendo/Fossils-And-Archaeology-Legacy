@@ -1,12 +1,4 @@
 {
-  "animations": {
-    "head": [
-      "fossilslegacy:legacy_pteranodon_head"
-    ],
-    "walk": [
-      "fossilslegacy:legacy_pteranodon_walk"
-    ]
-  },
   "elements": [
     {
       "boxes": [
@@ -331,6 +323,14 @@
       }
     }
   ],
+  "jsonAnimationChannels": {
+    "head": [
+      "fossilslegacy:legacy_pteranodon_head"
+    ],
+    "walk": [
+      "fossilslegacy:legacy_pteranodon_walk"
+    ]
+  },
   "texture_height": 64,
   "texture_width": 32
 }

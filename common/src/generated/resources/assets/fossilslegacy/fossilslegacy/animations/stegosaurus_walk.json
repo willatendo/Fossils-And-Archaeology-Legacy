@@ -1,7 +1,7 @@
 {
-  "animations": [
+  "animation_channels": [
     {
-      "bone": "right_arm",
+      "bone": "left_leg",
       "keyframes": [
         {
           "interpolation": "linear",
@@ -43,7 +43,7 @@
       "target": "rotation"
     },
     {
-      "bone": "left_leg",
+      "bone": "right_leg",
       "keyframes": [
         {
           "interpolation": "linear",
@@ -58,7 +58,7 @@
           "interpolation": "linear",
           "timestamp": 0.25,
           "vector": {
-            "x": -32.5,
+            "x": 32.5,
             "y": 0.0,
             "z": 0.0
           }
@@ -67,7 +67,7 @@
           "interpolation": "linear",
           "timestamp": 0.75,
           "vector": {
-            "x": 32.5,
+            "x": -32.5,
             "y": 0.0,
             "z": 0.0
           }
@@ -127,7 +127,7 @@
       "target": "rotation"
     },
     {
-      "bone": "right_leg",
+      "bone": "right_arm",
       "keyframes": [
         {
           "interpolation": "linear",
@@ -142,7 +142,7 @@
           "interpolation": "linear",
           "timestamp": 0.25,
           "vector": {
-            "x": 32.5,
+            "x": -32.5,
             "y": 0.0,
             "z": 0.0
           }
@@ -151,7 +151,7 @@
           "interpolation": "linear",
           "timestamp": 0.75,
           "vector": {
-            "x": -32.5,
+            "x": 32.5,
             "y": 0.0,
             "z": 0.0
           }
@@ -169,7 +169,6 @@
       "target": "rotation"
     }
   ],
-  "id": "fossilslegacy:stegosaurus_walk",
   "length": 1.0,
   "looping": true
 }

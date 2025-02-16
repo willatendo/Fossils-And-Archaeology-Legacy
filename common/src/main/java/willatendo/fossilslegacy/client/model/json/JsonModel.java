@@ -14,7 +14,7 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public record JsonModel(Optional<JsonModel.Animations> animations, List<JsonElement> jsonElements, Optional<List<String>> headPieces, Optional<Boolean> overrideReset, int textureHeight, int textureWidth) {
-    public static final Codec<JsonModel> CODEC = RecordCodecBuilder.create(instance -> instance.group(JsonModel.Animations.CODEC.optionalFieldOf("animations").forGetter(JsonModel::animations), Codec.list(JsonElement.CODEC).fieldOf("elements").forGetter(JsonModel::jsonElements), Codec.list(Codec.STRING).optionalFieldOf("head_pieces").forGetter(JsonModel::headPieces), Codec.BOOL.optionalFieldOf("override_reset").forGetter(JsonModel::overrideReset), Codec.INT.fieldOf("texture_height").forGetter(JsonModel::textureHeight), Codec.INT.fieldOf("texture_width").forGetter(JsonModel::textureWidth)).apply(instance, JsonModel::new));
+    public static final Codec<JsonModel> CODEC = RecordCodecBuilder.create(instance -> instance.group(JsonModel.Animations.CODEC.optionalFieldOf("jsonAnimationChannels").forGetter(JsonModel::animations), Codec.list(JsonElement.CODEC).fieldOf("elements").forGetter(JsonModel::jsonElements), Codec.list(Codec.STRING).optionalFieldOf("head_pieces").forGetter(JsonModel::headPieces), Codec.BOOL.optionalFieldOf("override_reset").forGetter(JsonModel::overrideReset), Codec.INT.fieldOf("texture_height").forGetter(JsonModel::textureHeight), Codec.INT.fieldOf("texture_width").forGetter(JsonModel::textureWidth)).apply(instance, JsonModel::new));
 
     public boolean isOverrideReset() {
         return this.overrideReset().orElse(false);

@@ -1,7 +1,7 @@
 {
-  "animations": [
+  "animation_channels": [
     {
-      "bone": "left_leg",
+      "bone": "right_wing",
       "keyframes": [
         {
           "interpolation": "linear",
@@ -16,8 +16,8 @@
           "interpolation": "linear",
           "timestamp": 0.25,
           "vector": {
-            "x": -27.5,
-            "y": 0.0,
+            "x": 0.0,
+            "y": -25.0,
             "z": 0.0
           }
         },
@@ -25,8 +25,8 @@
           "interpolation": "linear",
           "timestamp": 0.75,
           "vector": {
-            "x": 27.5,
-            "y": 0.0,
+            "x": 0.0,
+            "y": 25.0,
             "z": 0.0
           }
         },
@@ -85,7 +85,7 @@
       "target": "rotation"
     },
     {
-      "bone": "right_wing",
+      "bone": "left_leg",
       "keyframes": [
         {
           "interpolation": "linear",
@@ -100,8 +100,8 @@
           "interpolation": "linear",
           "timestamp": 0.25,
           "vector": {
-            "x": 0.0,
-            "y": -25.0,
+            "x": -27.5,
+            "y": 0.0,
             "z": 0.0
           }
         },
@@ -109,8 +109,8 @@
           "interpolation": "linear",
           "timestamp": 0.75,
           "vector": {
-            "x": 0.0,
-            "y": 25.0,
+            "x": 27.5,
+            "y": 0.0,
             "z": 0.0
           }
         },
@@ -169,7 +169,6 @@
       "target": "rotation"
     }
   ],
-  "id": "fossilslegacy:pteranodon_walk",
   "length": 1.0,
   "looping": true
 }

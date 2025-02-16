@@ -13,7 +13,6 @@ import net.minecraft.world.item.crafting.display.DisplayContentsFactory;
 import net.minecraft.world.item.crafting.display.SlotDisplay;
 import net.minecraft.world.item.crafting.display.SlotDisplayContext;
 import willatendo.fossilslegacy.server.fuel.FuelEntry;
-import willatendo.fossilslegacy.server.recipe.FASlotDisplays;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 
 import java.util.stream.Stream;

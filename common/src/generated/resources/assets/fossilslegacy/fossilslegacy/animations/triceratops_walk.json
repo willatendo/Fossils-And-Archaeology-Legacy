@@ -1,7 +1,7 @@
 {
-  "animations": [
+  "animation_channels": [
     {
-      "bone": "right_arm",
+      "bone": "right_leg",
       "keyframes": [
         {
           "interpolation": "linear",
@@ -16,7 +16,7 @@
           "interpolation": "linear",
           "timestamp": 0.5,
           "vector": {
-            "x": 20.0,
+            "x": -10.0,
             "y": 0.0,
             "z": 0.0
           }
@@ -25,7 +25,7 @@
           "interpolation": "linear",
           "timestamp": 1.5,
           "vector": {
-            "x": -20.0,
+            "x": 10.0,
             "y": 0.0,
             "z": 0.0
           }
@@ -85,6 +85,48 @@
       "target": "rotation"
     },
     {
+      "bone": "right_arm",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 0.5,
+          "vector": {
+            "x": 20.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 1.5,
+          "vector": {
+            "x": -20.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 2.0,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        }
+      ],
+      "target": "rotation"
+    },
+    {
       "bone": "left_arm",
       "keyframes": [
         {
@@ -125,51 +167,8 @@
         }
       ],
       "target": "rotation"
-    },
-    {
-      "bone": "right_leg",
-      "keyframes": [
-        {
-          "interpolation": "linear",
-          "timestamp": 0.0,
-          "vector": {
-            "x": 0.0,
-            "y": 0.0,
-            "z": 0.0
-          }
-        },
-        {
-          "interpolation": "linear",
-          "timestamp": 0.5,
-          "vector": {
-            "x": -10.0,
-            "y": 0.0,
-            "z": 0.0
-          }
-        },
-        {
-          "interpolation": "linear",
-          "timestamp": 1.5,
-          "vector": {
-            "x": 10.0,
-            "y": 0.0,
-            "z": 0.0
-          }
-        },
-        {
-          "interpolation": "linear",
-          "timestamp": 2.0,
-          "vector": {
-            "x": 0.0,
-            "y": 0.0,
-            "z": 0.0
-          }
-        }
-      ],
-      "target": "rotation"
     }
   ],
-  "id": "fossilslegacy:triceratops_walk",
   "length": 2.0,
   "looping": true
 }

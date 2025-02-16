@@ -1,9 +1,4 @@
 {
-  "animations": {
-    "walk": [
-      "fossilslegacy:carnotaurus_walk"
-    ]
-  },
   "elements": [
     {
       "boxes": [
@@ -285,6 +280,11 @@
   "head_pieces": [
     "neck"
   ],
+  "jsonAnimationChannels": {
+    "walk": [
+      "fossilslegacy:carnotaurus_walk"
+    ]
+  },
   "texture_height": 64,
   "texture_width": 64
 }

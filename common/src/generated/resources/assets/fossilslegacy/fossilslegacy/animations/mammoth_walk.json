@@ -1,7 +1,7 @@
 {
-  "animations": [
+  "animation_channels": [
     {
-      "bone": "right_arm",
+      "bone": "left_leg",
       "keyframes": [
         {
           "interpolation": "linear",
@@ -43,7 +43,49 @@
       "target": "rotation"
     },
     {
-      "bone": "left_leg",
+      "bone": "left_arm",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 0.25,
+          "vector": {
+            "x": -27.5,
+            "y": 0.0,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 0.75,
+          "vector": {
+            "x": 27.5,
+            "y": 0.0,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 1.0,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "right_arm",
       "keyframes": [
         {
           "interpolation": "linear",
@@ -127,7 +169,7 @@
       "target": "rotation"
     },
     {
-      "bone": "left_arm",
+      "bone": "trunk",
       "keyframes": [
         {
           "interpolation": "linear",
@@ -142,7 +184,7 @@
           "interpolation": "linear",
           "timestamp": 0.25,
           "vector": {
-            "x": -27.5,
+            "x": 2.5,
             "y": 0.0,
             "z": 0.0
           }
@@ -151,7 +193,7 @@
           "interpolation": "linear",
           "timestamp": 0.75,
           "vector": {
-            "x": 27.5,
+            "x": -2.5,
             "y": 0.0,
             "z": 0.0
           }
@@ -209,51 +251,8 @@
         }
       ],
       "target": "rotation"
-    },
-    {
-      "bone": "trunk",
-      "keyframes": [
-        {
-          "interpolation": "linear",
-          "timestamp": 0.0,
-          "vector": {
-            "x": 0.0,
-            "y": 0.0,
-            "z": 0.0
-          }
-        },
-        {
-          "interpolation": "linear",
-          "timestamp": 0.25,
-          "vector": {
-            "x": 2.5,
-            "y": 0.0,
-            "z": 0.0
-          }
-        },
-        {
-          "interpolation": "linear",
-          "timestamp": 0.75,
-          "vector": {
-            "x": -2.5,
-            "y": 0.0,
-            "z": 0.0
-          }
-        },
-        {
-          "interpolation": "linear",
-          "timestamp": 1.0,
-          "vector": {
-            "x": 0.0,
-            "y": 0.0,
-            "z": 0.0
-          }
-        }
-      ],
-      "target": "rotation"
     }
   ],
-  "id": "fossilslegacy:mammoth_walk",
   "length": 1.0,
   "looping": true
 }

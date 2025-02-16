@@ -1,9 +1,4 @@
 {
-  "animations": {
-    "walk": [
-      "fossilslegacy:ankylosaurus_walk"
-    ]
-  },
   "elements": [
     {
       "boxes": [
@@ -260,6 +255,11 @@
   "head_pieces": [
     "head"
   ],
+  "jsonAnimationChannels": {
+    "walk": [
+      "fossilslegacy:ankylosaurus_walk"
+    ]
+  },
   "texture_height": 128,
   "texture_width": 128
 }

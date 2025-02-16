@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.mixin.client;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import net.minecraft.client.ClientRecipeBook;
 import net.minecraft.client.gui.screens.recipebook.RecipeCollection;
 import net.minecraft.world.item.crafting.ExtendedRecipeBookCategory;

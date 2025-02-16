@@ -1,35 +1,5 @@
 {
-  "animations": [
-    {
-      "bone": "right_wing",
-      "keyframes": [
-        {
-          "interpolation": "linear",
-          "timestamp": 0.0,
-          "vector": {
-            "x": -60.000004,
-            "y": 40.0,
-            "z": 80.0
-          }
-        }
-      ],
-      "target": "rotation"
-    },
-    {
-      "bone": "left_wing",
-      "keyframes": [
-        {
-          "interpolation": "linear",
-          "timestamp": 0.0,
-          "vector": {
-            "x": -60.000004,
-            "y": -40.0,
-            "z": -80.0
-          }
-        }
-      ],
-      "target": "rotation"
-    },
+  "animation_channels": [
     {
       "bone": "neck",
       "keyframes": [
@@ -40,6 +10,21 @@
             "x": 52.5,
             "y": 0.0,
             "z": 0.0
+          }
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "right_wing",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": -60.0,
+            "y": 40.0,
+            "z": 80.0
           }
         }
       ],
@@ -61,6 +46,21 @@
       "target": "rotation"
     },
     {
+      "bone": "left_wing",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": -60.0,
+            "y": -40.0,
+            "z": -80.0
+          }
+        }
+      ],
+      "target": "rotation"
+    },
+    {
       "bone": "left_wing_tip",
       "keyframes": [
         {
@@ -76,7 +76,6 @@
       "target": "rotation"
     }
   ],
-  "id": "fossilslegacy:pteranodon_land",
   "length": 0.0,
   "looping": true
 }

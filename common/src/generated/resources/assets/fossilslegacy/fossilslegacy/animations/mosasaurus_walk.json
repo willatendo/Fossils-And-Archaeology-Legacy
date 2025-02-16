@@ -1,47 +1,5 @@
 {
-  "animations": [
-    {
-      "bone": "right_front_flipper",
-      "keyframes": [
-        {
-          "interpolation": "linear",
-          "timestamp": 0.0,
-          "vector": {
-            "x": 0.0,
-            "y": 0.0,
-            "z": 0.0
-          }
-        },
-        {
-          "interpolation": "linear",
-          "timestamp": 0.5,
-          "vector": {
-            "x": 0.0,
-            "y": -90.0,
-            "z": 40.0
-          }
-        },
-        {
-          "interpolation": "linear",
-          "timestamp": 0.625,
-          "vector": {
-            "x": 0.0,
-            "y": -90.0,
-            "z": 0.0
-          }
-        },
-        {
-          "interpolation": "linear",
-          "timestamp": 1.0,
-          "vector": {
-            "x": 0.0,
-            "y": 0.0,
-            "z": 0.0
-          }
-        }
-      ],
-      "target": "rotation"
-    },
+  "animation_channels": [
     {
       "bone": "left_front_flipper",
       "keyframes": [
@@ -85,7 +43,7 @@
       "target": "rotation"
     },
     {
-      "bone": "right_back_flipper",
+      "bone": "right_front_flipper",
       "keyframes": [
         {
           "interpolation": "linear",
@@ -167,9 +125,49 @@
         }
       ],
       "target": "rotation"
+    },
+    {
+      "bone": "right_back_flipper",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 0.5,
+          "vector": {
+            "x": 0.0,
+            "y": -90.0,
+            "z": 40.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 0.625,
+          "vector": {
+            "x": 0.0,
+            "y": -90.0,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 1.0,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        }
+      ],
+      "target": "rotation"
     }
   ],
-  "id": "fossilslegacy:mosasaurus_walk",
-  "length": 1.0,
-  "looping": false
+  "length": 1.0
 }

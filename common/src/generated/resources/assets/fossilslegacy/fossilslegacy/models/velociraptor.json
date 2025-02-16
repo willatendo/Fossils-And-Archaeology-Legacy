@@ -1,9 +1,4 @@
 {
-  "animations": {
-    "walk": [
-      "fossilslegacy:velociraptor_walk"
-    ]
-  },
   "elements": [
     {
       "boxes": [
@@ -340,6 +335,11 @@
   "head_pieces": [
     "head"
   ],
+  "jsonAnimationChannels": {
+    "walk": [
+      "fossilslegacy:velociraptor_walk"
+    ]
+  },
   "texture_height": 64,
   "texture_width": 64
 }

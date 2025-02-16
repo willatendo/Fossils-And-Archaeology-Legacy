@@ -1,9 +1,4 @@
 {
-  "animations": {
-    "walk": [
-      "fossilslegacy:mammoth_walk"
-    ]
-  },
   "elements": [
     {
       "boxes": [
@@ -353,6 +348,11 @@
   "head_pieces": [
     "head"
   ],
+  "jsonAnimationChannels": {
+    "walk": [
+      "fossilslegacy:mammoth_walk"
+    ]
+  },
   "texture_height": 64,
   "texture_width": 64
 }

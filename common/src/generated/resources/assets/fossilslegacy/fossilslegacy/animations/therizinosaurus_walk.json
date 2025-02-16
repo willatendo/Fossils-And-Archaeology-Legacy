@@ -1,5 +1,5 @@
 {
-  "animations": [
+  "animation_channels": [
     {
       "bone": "left_leg",
       "keyframes": [
@@ -85,7 +85,6 @@
       "target": "rotation"
     }
   ],
-  "id": "fossilslegacy:therizinosaurus_walk",
   "length": 1.0,
   "looping": true
 }

@@ -1,47 +1,5 @@
 {
-  "animations": [
-    {
-      "bone": "right_front_flipper",
-      "keyframes": [
-        {
-          "interpolation": "linear",
-          "timestamp": 0.0,
-          "vector": {
-            "x": 0.0,
-            "y": 0.0,
-            "z": 0.0
-          }
-        },
-        {
-          "interpolation": "linear",
-          "timestamp": 1.0,
-          "vector": {
-            "x": 0.0,
-            "y": -15.000001,
-            "z": 0.0
-          }
-        },
-        {
-          "interpolation": "linear",
-          "timestamp": 3.0,
-          "vector": {
-            "x": 0.0,
-            "y": 15.000001,
-            "z": 0.0
-          }
-        },
-        {
-          "interpolation": "linear",
-          "timestamp": 4.0,
-          "vector": {
-            "x": 0.0,
-            "y": 0.0,
-            "z": 0.0
-          }
-        }
-      ],
-      "target": "rotation"
-    },
+  "animation_channels": [
     {
       "bone": "tail",
       "keyframes": [
@@ -101,7 +59,7 @@
           "timestamp": 1.0,
           "vector": {
             "x": 0.0,
-            "y": 15.000001,
+            "y": 15.0,
             "z": 0.0
           }
         },
@@ -110,7 +68,7 @@
           "timestamp": 3.0,
           "vector": {
             "x": 0.0,
-            "y": -15.000001,
+            "y": -15.0,
             "z": 0.0
           }
         },
@@ -127,7 +85,7 @@
       "target": "rotation"
     },
     {
-      "bone": "right_back_flipper",
+      "bone": "right_front_flipper",
       "keyframes": [
         {
           "interpolation": "linear",
@@ -143,7 +101,7 @@
           "timestamp": 1.0,
           "vector": {
             "x": 0.0,
-            "y": -15.000001,
+            "y": -15.0,
             "z": 0.0
           }
         },
@@ -152,7 +110,7 @@
           "timestamp": 3.0,
           "vector": {
             "x": 0.0,
-            "y": 15.000001,
+            "y": 15.0,
             "z": 0.0
           }
         },
@@ -185,7 +143,7 @@
           "timestamp": 1.0,
           "vector": {
             "x": 0.0,
-            "y": 15.000001,
+            "y": 15.0,
             "z": 0.0
           }
         },
@@ -194,7 +152,49 @@
           "timestamp": 3.0,
           "vector": {
             "x": 0.0,
-            "y": -15.000001,
+            "y": -15.0,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 4.0,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "right_back_flipper",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 1.0,
+          "vector": {
+            "x": 0.0,
+            "y": -15.0,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 3.0,
+          "vector": {
+            "x": 0.0,
+            "y": 15.0,
             "z": 0.0
           }
         },
@@ -211,7 +211,6 @@
       "target": "rotation"
     }
   ],
-  "id": "fossilslegacy:mosasaurus_swim",
   "length": 4.0,
   "looping": true
 }

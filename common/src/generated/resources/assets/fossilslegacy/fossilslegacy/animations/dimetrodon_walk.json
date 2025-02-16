@@ -1,47 +1,5 @@
 {
-  "animations": [
-    {
-      "bone": "right_front_leg",
-      "keyframes": [
-        {
-          "interpolation": "linear",
-          "timestamp": 0.0,
-          "vector": {
-            "x": 0.0,
-            "y": 0.0,
-            "z": 0.0
-          }
-        },
-        {
-          "interpolation": "linear",
-          "timestamp": 0.25,
-          "vector": {
-            "x": 30.000002,
-            "y": 0.0,
-            "z": 0.0
-          }
-        },
-        {
-          "interpolation": "linear",
-          "timestamp": 0.75,
-          "vector": {
-            "x": -30.000002,
-            "y": 0.0,
-            "z": 0.0
-          }
-        },
-        {
-          "interpolation": "linear",
-          "timestamp": 1.0,
-          "vector": {
-            "x": 0.0,
-            "y": 0.0,
-            "z": 0.0
-          }
-        }
-      ],
-      "target": "rotation"
-    },
+  "animation_channels": [
     {
       "bone": "left_back_leg",
       "keyframes": [
@@ -58,7 +16,7 @@
           "interpolation": "linear",
           "timestamp": 0.25,
           "vector": {
-            "x": 30.000002,
+            "x": 30.0,
             "y": 0.0,
             "z": 0.0
           }
@@ -67,7 +25,7 @@
           "interpolation": "linear",
           "timestamp": 0.75,
           "vector": {
-            "x": -30.000002,
+            "x": -30.0,
             "y": 0.0,
             "z": 0.0
           }
@@ -100,7 +58,7 @@
           "interpolation": "linear",
           "timestamp": 0.25,
           "vector": {
-            "x": -30.000002,
+            "x": -30.0,
             "y": 0.0,
             "z": 0.0
           }
@@ -109,7 +67,7 @@
           "interpolation": "linear",
           "timestamp": 0.75,
           "vector": {
-            "x": 30.000002,
+            "x": 30.0,
             "y": 0.0,
             "z": 0.0
           }
@@ -142,7 +100,7 @@
           "interpolation": "linear",
           "timestamp": 0.25,
           "vector": {
-            "x": -30.000002,
+            "x": -30.0,
             "y": 0.0,
             "z": 0.0
           }
@@ -151,7 +109,49 @@
           "interpolation": "linear",
           "timestamp": 0.75,
           "vector": {
-            "x": 30.000002,
+            "x": 30.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 1.0,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "right_front_leg",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 0.25,
+          "vector": {
+            "x": 30.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 0.75,
+          "vector": {
+            "x": -30.0,
             "y": 0.0,
             "z": 0.0
           }
@@ -169,7 +169,6 @@
       "target": "rotation"
     }
   ],
-  "id": "fossilslegacy:dimetrodon_walk",
   "length": 1.0,
   "looping": true
 }

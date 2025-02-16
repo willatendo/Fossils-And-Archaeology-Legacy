@@ -1,15 +1,13 @@
 package willatendo.fossilslegacy.client.animation;
 
-import net.minecraft.client.animation.AnimationChannel;
-import net.minecraft.client.animation.AnimationDefinition;
-import net.minecraft.client.animation.Keyframe;
-import net.minecraft.client.animation.KeyframeAnimations;
 import net.minecraft.util.Mth;
+import willatendo.fossilslegacy.client.animation.json.JsonAnimation;
+import willatendo.fossilslegacy.client.animation.json.JsonKeyframe;
 import willatendo.fossilslegacy.client.model.json.JsonTypeModel;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 
 public final class TyrannosaursAnimations {
-    public static final AnimationDefinition TYRANNOSAURUS_WALK = AnimationDefinition.Builder.withLength(2f).looping().addAnimation("left_leg", new AnimationChannel(AnimationChannel.Targets.ROTATION, new Keyframe(0f, KeyframeAnimations.degreeVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR), new Keyframe(0.5f, KeyframeAnimations.degreeVec(-35f, 0f, 0f), AnimationChannel.Interpolations.LINEAR), new Keyframe(1.5f, KeyframeAnimations.degreeVec(35f, 0f, 0f), AnimationChannel.Interpolations.LINEAR), new Keyframe(2f, KeyframeAnimations.degreeVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR))).addAnimation("right_leg", new AnimationChannel(AnimationChannel.Targets.ROTATION, new Keyframe(0f, KeyframeAnimations.degreeVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR), new Keyframe(0.5f, KeyframeAnimations.degreeVec(35f, 0f, 0f), AnimationChannel.Interpolations.LINEAR), new Keyframe(1.5f, KeyframeAnimations.degreeVec(-35f, 0f, 0f), AnimationChannel.Interpolations.LINEAR), new Keyframe(2f, KeyframeAnimations.degreeVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR))).build();
+    public static final JsonAnimation TYRANNOSAURUS_WALK = JsonAnimation.builder(2f).looping().addAnimation("left_leg", "rotation", JsonKeyframe.create(0f, 0f, 0f, 0f, "linear"), JsonKeyframe.create(0.5f, -35f, 0f, 0f, "linear"), JsonKeyframe.create(1.5f, 35f, 0f, 0f, "linear"), JsonKeyframe.create(2f, 0f, 0f, 0f, "linear")).addAnimation("right_leg", "rotation", JsonKeyframe.create(0f, 0f, 0f, 0f, "linear"), JsonKeyframe.create(0.5f, 35f, 0f, 0f, "linear"), JsonKeyframe.create(1.5f, -35f, 0f, 0f, "linear"), JsonKeyframe.create(2f, 0f, 0f, 0f, "linear")).build();
 
     static void legacyTyrannosaurusHeadAnimation(DinosaurRenderState dinosaurRenderState, JsonTypeModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
         jsonModel.setYRot("head", -netHeadYaw / 57.29578F);

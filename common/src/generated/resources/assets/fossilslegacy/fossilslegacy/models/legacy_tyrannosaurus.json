@@ -1,12 +1,4 @@
 {
-  "animations": {
-    "head": [
-      "fossilslegacy:legacy_tyrannosaurus_head"
-    ],
-    "walk": [
-      "fossilslegacy:legacy_tyrannosaurus_walk"
-    ]
-  },
   "elements": [
     {
       "boxes": [
@@ -377,6 +369,14 @@
       }
     }
   ],
+  "jsonAnimationChannels": {
+    "head": [
+      "fossilslegacy:legacy_tyrannosaurus_head"
+    ],
+    "walk": [
+      "fossilslegacy:legacy_tyrannosaurus_walk"
+    ]
+  },
   "texture_height": 64,
   "texture_width": 64
 }

@@ -1,47 +1,5 @@
 {
-  "animations": [
-    {
-      "bone": "right_arm",
-      "keyframes": [
-        {
-          "interpolation": "linear",
-          "timestamp": 0.0,
-          "vector": {
-            "x": 0.0,
-            "y": 0.0,
-            "z": 0.0
-          }
-        },
-        {
-          "interpolation": "linear",
-          "timestamp": 0.25,
-          "vector": {
-            "x": 27.5,
-            "y": 0.0,
-            "z": 0.0
-          }
-        },
-        {
-          "interpolation": "linear",
-          "timestamp": 0.75,
-          "vector": {
-            "x": -27.5,
-            "y": 0.0,
-            "z": 0.0
-          }
-        },
-        {
-          "interpolation": "linear",
-          "timestamp": 1.0,
-          "vector": {
-            "x": 0.0,
-            "y": 0.0,
-            "z": 0.0
-          }
-        }
-      ],
-      "target": "rotation"
-    },
+  "animation_channels": [
     {
       "bone": "left_leg",
       "keyframes": [
@@ -68,6 +26,48 @@
           "timestamp": 0.75,
           "vector": {
             "x": -17.5,
+            "y": 0.0,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 1.0,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "right_leg",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 0.25,
+          "vector": {
+            "x": -17.5,
+            "y": 0.0,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 0.75,
+          "vector": {
+            "x": 17.5,
             "y": 0.0,
             "z": 0.0
           }
@@ -127,7 +127,7 @@
       "target": "rotation"
     },
     {
-      "bone": "right_leg",
+      "bone": "right_arm",
       "keyframes": [
         {
           "interpolation": "linear",
@@ -142,7 +142,7 @@
           "interpolation": "linear",
           "timestamp": 0.25,
           "vector": {
-            "x": -17.5,
+            "x": 27.5,
             "y": 0.0,
             "z": 0.0
           }
@@ -151,7 +151,7 @@
           "interpolation": "linear",
           "timestamp": 0.75,
           "vector": {
-            "x": 17.5,
+            "x": -27.5,
             "y": 0.0,
             "z": 0.0
           }
@@ -169,7 +169,6 @@
       "target": "rotation"
     }
   ],
-  "id": "fossilslegacy:ankylosaurus_walk",
   "length": 1.0,
   "looping": true
 }

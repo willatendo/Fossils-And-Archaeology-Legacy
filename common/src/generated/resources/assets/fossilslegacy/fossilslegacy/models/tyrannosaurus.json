@@ -1,9 +1,4 @@
 {
-  "animations": {
-    "walk": [
-      "fossilslegacy:tyrannosaurus_walk"
-    ]
-  },
   "elements": [
     {
       "boxes": [
@@ -275,6 +270,11 @@
   "head_pieces": [
     "neck"
   ],
+  "jsonAnimationChannels": {
+    "walk": [
+      "fossilslegacy:tyrannosaurus_walk"
+    ]
+  },
   "texture_height": 128,
   "texture_width": 128
 }
