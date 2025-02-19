@@ -1,6 +1,6 @@
 {
   "type": "fossilslegacy:analyzation",
-  "category": "misc",
+  "category": "palaeontology",
   "fuels": "fossilslegacy:fuels/raw_moa_meat",
   "ingredient": "fossilslegacy:raw_moa",
   "time": 100

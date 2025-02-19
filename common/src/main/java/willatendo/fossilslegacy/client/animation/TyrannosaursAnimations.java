@@ -9,24 +9,24 @@ import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 public final class TyrannosaursAnimations {
     public static final JsonAnimation TYRANNOSAURUS_WALK = JsonAnimation.builder(2f).looping().addAnimation("left_leg", "rotation", JsonKeyframe.create(0f, 0f, 0f, 0f, "linear"), JsonKeyframe.create(0.5f, -35f, 0f, 0f, "linear"), JsonKeyframe.create(1.5f, 35f, 0f, 0f, "linear"), JsonKeyframe.create(2f, 0f, 0f, 0f, "linear")).addAnimation("right_leg", "rotation", JsonKeyframe.create(0f, 0f, 0f, 0f, "linear"), JsonKeyframe.create(0.5f, 35f, 0f, 0f, "linear"), JsonKeyframe.create(1.5f, -35f, 0f, 0f, "linear"), JsonKeyframe.create(2f, 0f, 0f, 0f, "linear")).build();
 
-    static void legacyTyrannosaurusHeadAnimation(DinosaurRenderState dinosaurRenderState, JsonTypeModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        jsonModel.setYRot("head", -netHeadYaw / 57.29578F);
-        jsonModel.setYRot("snout", -netHeadYaw / 57.29578F);
-        jsonModel.setYRot("jaw", -netHeadYaw / 57.29578F);
+    static void legacyTyrannosaurusHeadAnimation(DinosaurRenderState dinosaurRenderState, JsonTypeModel jsonTypeModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
+        jsonTypeModel.setYRot("head", -netHeadYaw / 57.29578F);
+        jsonTypeModel.setYRot("snout", -netHeadYaw / 57.29578F);
+        jsonTypeModel.setYRot("jaw", -netHeadYaw / 57.29578F);
     }
 
-    static void legacyTyrannosaurusWalkAnimation(DinosaurRenderState dinosaurRenderState, JsonTypeModel jsonModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
-        jsonModel.setXRot("left_thigh", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("right_leg", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount - 0.6108652F);
-        jsonModel.setXRot("right_foot", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("right_thigh", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount);
-        jsonModel.setXRot("left_leg", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount - 0.6108652F);
-        jsonModel.setXRot("left_foot", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount);
+    static void legacyTyrannosaurusWalkAnimation(DinosaurRenderState dinosaurRenderState, JsonTypeModel jsonTypeModel, float limbSwing, float limbSwingAmount, float netHeadYaw) {
+        jsonTypeModel.setXRot("left_thigh", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
+        jsonTypeModel.setXRot("right_leg", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount - 0.6108652F);
+        jsonTypeModel.setXRot("right_foot", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
+        jsonTypeModel.setXRot("right_thigh", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount);
+        jsonTypeModel.setXRot("left_leg", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount - 0.6108652F);
+        jsonTypeModel.setXRot("left_foot", Mth.cos(limbSwing * 0.6662F + 3.141593F) * 1.4F * limbSwingAmount);
 
-        if (Math.abs(jsonModel.getXRot("right_thigh")) >= 0.174532F) {
-            TyrannosaursAnimations.legacyTyrannosaurusRunPose(jsonModel);
+        if (Math.abs(jsonTypeModel.getXRot("right_thigh")) >= 0.174532F) {
+            TyrannosaursAnimations.legacyTyrannosaurusRunPose(jsonTypeModel);
         } else {
-            TyrannosaursAnimations.legacyTyrannosaurusStandPose(jsonModel);
+            TyrannosaursAnimations.legacyTyrannosaurusStandPose(jsonTypeModel);
         }
     }
 
@@ -234,9 +234,9 @@ public final class TyrannosaursAnimations {
         }
 
         if (jsonTypeModel.getZ("tail_end") > 19) {
-            jsonTypeModel.addZ("tail_end", 3.0F / moves);
+            jsonTypeModel.subtractZ("tail_end", 3.0F / moves);
         } else {
-            jsonTypeModel.setX("tail_end", 19);
+            jsonTypeModel.setZ("tail_end", 19);
         }
 
         if (jsonTypeModel.getXRot("tail_end") < -0.3616222F) {

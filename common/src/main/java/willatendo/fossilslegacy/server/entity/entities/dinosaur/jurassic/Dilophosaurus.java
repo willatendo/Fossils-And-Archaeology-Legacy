@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.server.entity.entities.dinosaur.jurassic;
 
-import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -22,10 +21,10 @@ import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
-import willatendo.fossilslegacy.server.egg_variant.EggVariant;
-import willatendo.fossilslegacy.server.egg_variant.FAEggVariants;
+import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.DilophosaurusVenom;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
+import willatendo.fossilslegacy.server.entity.entities.Egg;
 import willatendo.fossilslegacy.server.entity.goals.*;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
@@ -49,6 +48,11 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
     }
 
     @Override
+    public EntityType<Egg> getEggEntityType() {
+        return FAEntityTypes.DILOPHOSAURUS_EGG.get();
+    }
+
+    @Override
     public float maxUpStep() {
         return 1.0F;
     }
@@ -61,11 +65,6 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
     @Override
     public TagKey<CoatType> getCoatTypes() {
         return FACoatTypeTags.DILOPHOSAURUS;
-    }
-
-    @Override
-    public Holder<EggVariant> getEggVariant() {
-        return FAEggVariants.DILOPHOSAURUS;
     }
 
     @Override

@@ -1,6 +1,6 @@
 {
   "type": "fossilslegacy:analyzation",
-  "category": "misc",
+  "category": "palaeontology",
   "fuels": "fossilslegacy:fuels/cod",
   "ingredient": "minecraft:cod",
   "time": 100

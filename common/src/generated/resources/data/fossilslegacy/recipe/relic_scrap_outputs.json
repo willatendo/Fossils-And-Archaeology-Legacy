@@ -1,6 +1,6 @@
 {
   "type": "fossilslegacy:analyzation",
-  "category": "misc",
+  "category": "archaeology",
   "fuels": "fossilslegacy:fuels/relic_scrap",
   "ingredient": "fossilslegacy:relic_scrap",
   "time": 100

@@ -3,14 +3,13 @@ package willatendo.fossilslegacy.server.entity.entities;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.OldUsersConverter;
@@ -20,26 +19,24 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LightLayer;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
-import willatendo.fossilslegacy.server.egg_variant.EggVariant;
-import willatendo.fossilslegacy.server.egg_variant.FAEggVariants;
 import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.TicksToBirth;
-import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
-import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Supplier;
 
-public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
-    private static final EntityDataAccessor<Holder<EggVariant>> EGG_VARIANT = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.EGG_VARIANTS.get());
+public abstract class Egg extends Animal implements TicksToBirth, DinopediaInformation {
     private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.COAT_TYPES.get());
     public static final MapCodec<Holder<CoatType>> VARIANT_MAP_CODEC = CoatType.CODEC.fieldOf("CoatType");
     public static final Codec<Holder<CoatType>> VARIANT_CODEC = VARIANT_MAP_CODEC.codec();
@@ -47,12 +44,81 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
     private static final EntityDataAccessor<Boolean> WARM = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.BOOLEAN);
     protected static final EntityDataAccessor<Optional<UUID>> OWNER = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.OPTIONAL_UUID);
 
-    public Egg(EntityType<? extends Egg> egg, Level level) {
-        super(egg, level);
+    public Egg(EntityType<? extends Egg> entityType, Level level) {
+        super(entityType, level);
+    }
+
+    public static <I extends Item, E extends Entity> Egg createLand(EntityType<? extends Egg> entityType, Level level, Supplier<I> item, Supplier<EntityType<E>> offspring) {
+        return new Egg(entityType, level) {
+            @Override
+            public boolean shouldIncubate() {
+                return this.level().getBrightness(LightLayer.BLOCK, this.blockPosition()) > 10.0F;
+            }
+
+            @Override
+            public boolean isWet() {
+                return false;
+            }
+
+            @Override
+            public ItemStack getPick() {
+                return new ItemStack(item.get());
+            }
+
+            @Override
+            public EntityType<E> getOffspringType() {
+                return offspring.get();
+            }
+        };
+    }
+
+    public static <I extends Item, E extends Entity> Egg createWater(EntityType<? extends Egg> entityType, Level level, Supplier<I> item, Supplier<EntityType<E>> offspring) {
+        return new Egg(entityType, level) {
+            @Override
+            public boolean shouldIncubate() {
+                return this.isInWaterOrBubble();
+            }
+
+            @Override
+            public boolean isWet() {
+                return true;
+            }
+
+            @Override
+            public ItemStack getPick() {
+                return new ItemStack(item.get());
+            }
+
+            @Override
+            public EntityType<E> getOffspringType() {
+                return offspring.get();
+            }
+        };
     }
 
     public static AttributeSupplier eggAttributes() {
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 1.0F).build();
+    }
+
+    public abstract boolean shouldIncubate();
+
+    public abstract boolean isWet();
+
+    public abstract ItemStack getPick();
+
+    public abstract <T extends Entity> EntityType<T> getOffspringType();
+
+    public Component getTemperature() {
+        if (this.isWet()) {
+            return this.shouldIncubate() ? FAUtils.translation("dinopedia", "wet") : FAUtils.translation("dinopedia", "dry");
+        } else {
+            return this.shouldIncubate() ? FAUtils.translation("dinopedia", "warm") : FAUtils.translation("dinopedia", "cold");
+        }
+    }
+
+    @Override
+    public Entity getOffspring(Level level) {
+        return this.getOffspringType().create(level, EntitySpawnReason.BREEDING);
     }
 
     @Override
@@ -75,20 +141,20 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 
     @Override
     public ItemStack getPickResult() {
-        return this.getEggVariant().value().pick().get().getDefaultInstance();
+        return this.getPick();
     }
 
     @Override
     public void tick() {
         super.tick();
 
-        this.setWarm(this.getEggVariant().value().shouldIncubate(this));
+        this.setWarm(this.shouldIncubate());
 
         if (this.getRemainingTime() < -500) {
             Player player = this.level().getNearestPlayer(this, 25.0D);
             if (player != null) {
                 if (player instanceof ServerPlayer serverPlayer) {
-                    if (this.getEggVariant().value().wet()) {
+                    if (this.isWet()) {
                         serverPlayer.sendSystemMessage(FAUtils.translation("entity", "egg.died.dry"));
                     } else {
                         serverPlayer.sendSystemMessage(FAUtils.translation("entity", "egg.died"));
@@ -102,7 +168,7 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
             this.setRemainingTime(this.getRemainingTime() - 1);
         }
 
-        if (this.getEggVariant().value().shouldIncubate(this)) {
+        if (this.shouldIncubate()) {
             this.birthTick(this, this.level(), this.getOwnerUUID() != null ? Optional.of(this.getOwnerUUID()) : Optional.empty());
         }
     }
@@ -110,7 +176,6 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(EGG_VARIANT, FABuiltInRegistries.EGG_VARIANTS.getOrThrow(FAEggVariants.TRICERATOPS.getKey()));
         builder.define(COAT_TYPE, this.registryAccess().lookupOrThrow(FARegistries.COAT_TYPES).getAny().orElseThrow());
         builder.define(REMAINING_TIME, 0);
         builder.define(WARM, false);
@@ -125,7 +190,6 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
             compoundTag.putUUID("Owner", this.getOwnerUUID());
         }
 
-        compoundTag.putString("Variant", this.getEggVariant().unwrapKey().orElse(FAEggVariants.TRICERATOPS.getKey()).location().toString());
         VARIANT_CODEC.encodeStart(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), this.getCoatType()).ifSuccess(tag -> compoundTag.merge((CompoundTag) tag));
         compoundTag.putInt("RemainingTime", this.getRemainingTime());
         compoundTag.putBoolean("Warm", this.isWarm());
@@ -150,10 +214,6 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
             }
         }
 
-        Optional<ResourceKey<EggVariant>> eggVariant = Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("Variant"))).map(resourceLocation -> ResourceKey.create(FARegistries.EGG_VARIANTS, resourceLocation));
-        Registry<EggVariant> registry = FABuiltInRegistries.EGG_VARIANTS;
-        Objects.requireNonNull(registry);
-        eggVariant.flatMap(registry::get).ifPresent(this::setEggVariant);
         VARIANT_CODEC.parse(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), compoundTag).ifSuccess(this::setCoatType);
         this.setRemainingTime(compoundTag.getInt("RemainingTime"));
         this.setWarm(compoundTag.getBoolean("Warm"));
@@ -162,11 +222,6 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
     @Override
     public boolean isFood(ItemStack itemStack) {
         return false;
-    }
-
-    @Override
-    public Entity getOffspring(Level level) {
-        return this.getEggVariant().value().entityType().get().create(level, EntitySpawnReason.BREEDING);
     }
 
     @Override
@@ -185,14 +240,6 @@ public class Egg extends Animal implements TicksToBirth, DinopediaInformation {
 
     public void setWarm(boolean warm) {
         this.entityData.set(WARM, warm);
-    }
-
-    public Holder<EggVariant> getEggVariant() {
-        return this.entityData.get(EGG_VARIANT);
-    }
-
-    public void setEggVariant(Holder<EggVariant> eggVariant) {
-        this.entityData.set(EGG_VARIANT, eggVariant);
     }
 
     public Holder<CoatType> getCoatType() {

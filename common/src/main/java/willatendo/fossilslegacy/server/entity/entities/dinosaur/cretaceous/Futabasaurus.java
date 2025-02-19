@@ -3,7 +3,6 @@ package willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -32,9 +31,9 @@ import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
-import willatendo.fossilslegacy.server.egg_variant.EggVariant;
-import willatendo.fossilslegacy.server.egg_variant.FAEggVariants;
+import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
+import willatendo.fossilslegacy.server.entity.entities.Egg;
 import willatendo.fossilslegacy.server.entity.goals.*;
 import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
@@ -64,6 +63,11 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
     }
 
     @Override
+    public EntityType<Egg> getEggEntityType() {
+        return FAEntityTypes.FUTABASAURUS_EGG.get();
+    }
+
+    @Override
     public float maxUpStep() {
         return DinosaurUtils.getStepHeights(12, 0.5F, 1.0F)[this.getGrowthStage()];
     }
@@ -81,11 +85,6 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
     @Override
     public TagKey<CoatType> getCoatTypes() {
         return FACoatTypeTags.FUTABASAURUS;
-    }
-
-    @Override
-    public Holder<EggVariant> getEggVariant() {
-        return FAEggVariants.FUTABASAURUS;
     }
 
     @Override

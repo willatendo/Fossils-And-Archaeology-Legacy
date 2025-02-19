@@ -22,7 +22,7 @@ public class AnalyzerScreen extends AbstractRecipeBookScreen<AnalyzerMenu> {
     private static final ResourceLocation TEXTURE = FAUtils.resource("textures/gui/container/analyzer.png");
     private static final ResourceLocation ANALYZATION_PROGRESS_SPRITE = FAUtils.resource("container/analyzer/analyzation_progress");
     private static final Component FILTER_NAME = Component.translatable("gui.recipebook.toggleRecipes.analyzable");
-    private static final List<RecipeBookComponent.TabInfo> TABS = List.of(RecipeBookUtils.createSearch(FASearchRecipeBookCategory.ANALYZATION), new RecipeBookComponent.TabInfo(FAItems.VELOCIRAPTOR_DNA.get(), FARecipeBookCategories.ANALYZATION_MISC.get()));
+    private static final List<RecipeBookComponent.TabInfo> TABS = List.of(RecipeBookUtils.createSearch(FASearchRecipeBookCategory.ANALYZATION), new RecipeBookComponent.TabInfo(FAItems.FOSSIL.get(), FARecipeBookCategories.ANALYZATION_PALAEONTOLOGY.get()), new RecipeBookComponent.TabInfo(FAItems.RELIC_SCRAP.get(), FARecipeBookCategories.ANALYZATION_ARCHAEOLOGY.get()), new RecipeBookComponent.TabInfo(FAItems.VELOCIRAPTOR_DNA.get(), FARecipeBookCategories.ANALYZATION_MISC.get()));
 
     public AnalyzerScreen(AnalyzerMenu analyzerMenu, Inventory inventory, Component title) {
         super(analyzerMenu, new AnalyzerRecipeBookComponent(analyzerMenu, FILTER_NAME, TABS), inventory, title);

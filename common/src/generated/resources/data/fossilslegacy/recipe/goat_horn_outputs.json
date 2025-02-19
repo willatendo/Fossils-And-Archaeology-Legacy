@@ -1,6 +1,6 @@
 {
   "type": "fossilslegacy:analyzation",
-  "category": "misc",
+  "category": "palaeontology",
   "fuels": "fossilslegacy:fuels/goat_horn",
   "ingredient": "minecraft:goat_horn",
   "time": 100

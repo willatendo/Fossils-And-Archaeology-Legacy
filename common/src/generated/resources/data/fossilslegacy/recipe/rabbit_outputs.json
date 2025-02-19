@@ -1,6 +1,6 @@
 {
   "type": "fossilslegacy:analyzation",
-  "category": "misc",
+  "category": "palaeontology",
   "fuels": "fossilslegacy:fuels/raw_rabbit",
   "ingredient": "minecraft:rabbit",
   "time": 100

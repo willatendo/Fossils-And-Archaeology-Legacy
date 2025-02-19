@@ -1,6 +1,6 @@
 {
   "type": "fossilslegacy:analyzation",
-  "category": "misc",
+  "category": "palaeontology",
   "fuels": "fossilslegacy:fuels/raw_mosasaurus_meat",
   "ingredient": "fossilslegacy:raw_mosasaurus",
   "time": 100

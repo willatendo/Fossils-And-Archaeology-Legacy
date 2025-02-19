@@ -1,4 +1,4 @@
-// 1.21.4	2025-02-09T18:21:21.5764041	Tags for minecraft:item mod id fossilslegacy
+// 1.21.4	2025-02-19T07:32:23.4204481	Tags for minecraft:item mod id fossilslegacy
 fb61c19eacf262b21d275a4b1dd7da1fd3460ef6 data/c/tags/item/bones.json
 d31244a2a7f7cb4224e5362dca80427850e5daa5 data/c/tags/item/buckets.json
 8773b7b9cd8f313f03d59d28a609bd9f1434b870 data/c/tags/item/eggs.json
@@ -66,6 +66,7 @@ c7661727917b7f8e5a91b93e732cd5362068794b data/minecraft/tags/item/enchantable/sw
 78b35916f2f78650ea9a23cd8c5c283e8b50f572 data/minecraft/tags/item/enchantable/weapon.json
 a02da92027664f91d61ec2f9fc49b8b4e6e0de12 data/minecraft/tags/item/fence_gates.json
 1e05a40ac29437932dd63d74bce694dca1dec1c7 data/minecraft/tags/item/foot_armor.json
+da9b18859d0986e261248bd5865cd099b4d38dab data/minecraft/tags/item/gaze_disguise_equipment.json
 e22b5154b419cfbe807f46ab59066fd810ea3724 data/minecraft/tags/item/hanging_signs.json
 4bedfb7038e650867b2f3ad4847e5e60d4a72475 data/minecraft/tags/item/head_armor.json
 1b7f437b717d46be0517e48d2cd176e90d09c3ba data/minecraft/tags/item/hoes.json

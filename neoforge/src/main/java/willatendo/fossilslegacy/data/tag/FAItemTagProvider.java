@@ -39,6 +39,7 @@ public class FAItemTagProvider extends ItemTagsProvider {
         this.tag(ItemTags.HANGING_SIGNS).add(FAItems.LEPIDODENDRON_HANGING_SIGN.get(), FAItems.SIGILLARIA_HANGING_SIGN.get(), FAItems.CALAMITES_HANGING_SIGN.get());
         this.tag(ItemTags.FENCE_GATES).add(FAItems.LEPIDODENDRON_FENCE_GATE, FAItems.SIGILLARIA_FENCE_GATE, FAItems.CALAMITES_FENCE_GATE);
         this.tag(ItemTags.BOATS).add(FAItems.LEPIDODENDRON_BOAT.get(), FAItems.LEPIDODENDRON_CHEST_BOAT.get(), FAItems.SIGILLARIA_BOAT.get(), FAItems.SIGILLARIA_CHEST_BOAT.get(), FAItems.CALAMITES_BOAT.get(), FAItems.CALAMITES_CHEST_BOAT.get());
+        this.tag(ItemTags.GAZE_DISGUISE_EQUIPMENT).add(FAItems.SKULL_BLOCK.get());
 
         this.tagEquipment(FAItems.SCARAB_GEM_SWORD.get(), FAItems.SCARAB_GEM_PICKAXE.get(), FAItems.SCARAB_GEM_AXE.get(), FAItems.SCARAB_GEM_SHOVEL.get(), FAItems.SCARAB_GEM_HOE.get(), FAItems.SCARAB_GEM_HELMET.get(), FAItems.SCARAB_GEM_CHESTPLATE.get(), FAItems.SCARAB_GEM_LEGGINGS.get(), FAItems.SCARAB_GEM_BOOTS.get());
         this.tagEquipment(FAItems.ANCIENT_SWORD.get(), FAItems.ANCIENT_PICKAXE.get(), FAItems.ANCIENT_AXE.get(), FAItems.ANCIENT_SHOVEL.get(), FAItems.ANCIENT_HOE.get(), FAItems.ANCIENT_HELMET.get(), FAItems.ANCIENT_CHESTPLATE.get(), FAItems.ANCIENT_LEGGINGS.get(), FAItems.ANCIENT_BOOTS.get());

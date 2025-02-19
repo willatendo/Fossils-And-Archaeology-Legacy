@@ -1,6 +1,6 @@
 {
   "type": "fossilslegacy:analyzation",
-  "category": "misc",
+  "category": "palaeontology",
   "fuels": "fossilslegacy:fuels/raw_spinosaurus_meat",
   "ingredient": "fossilslegacy:raw_spinosaurus",
   "time": 100

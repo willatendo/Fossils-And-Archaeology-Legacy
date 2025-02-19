@@ -5,12 +5,11 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
-import willatendo.fossilslegacy.server.egg_variant.EggVariant;
-import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Egg;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
@@ -19,28 +18,22 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 public class EggItem extends PlaceEntityItem<Egg> {
     public static final List<EggItem> EGGS = new ArrayList<>();
     private final GeologicalTimeScale.Period period;
-    protected final Holder<EggVariant> eggVariant;
     protected final TagKey<CoatType> applicableCoatTypes;
 
-    public EggItem(GeologicalTimeScale.Period period, Holder<EggVariant> eggVariant, TagKey<CoatType> applicableCoatTypes, Properties properties) {
-        super(FAEntityTypes.EGG::get, properties);
+    public EggItem(Supplier<EntityType<Egg>> entityType, GeologicalTimeScale.Period period, TagKey<CoatType> applicableCoatTypes, Properties properties) {
+        super(entityType, properties);
         this.period = period;
-        this.eggVariant = eggVariant;
         this.applicableCoatTypes = applicableCoatTypes;
         EggItem.EGGS.add(this);
     }
 
-    public Holder<EggVariant> getEggVariant() {
-        return this.eggVariant;
-    }
-
     @Override
     public void entityModification(ItemStack itemStack, Egg egg) {
-        egg.setEggVariant(this.eggVariant);
         if (itemStack.has(FADataComponents.COAT_TYPE.get())) {
             egg.setCoatType(itemStack.get(FADataComponents.COAT_TYPE.get()));
         } else {

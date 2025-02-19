@@ -66,7 +66,7 @@ public final class BasicEvents {
     public static void commonSetup() {
         FACauldronInteraction.init();
 
-        EggItem.EGGS.forEach(eggItem -> DispenserBlock.registerBehavior(eggItem, new DispenseEntityItemBehavior(entity -> ((Egg) entity).setEggVariant(eggItem.getEggVariant()))));
+        EggItem.EGGS.forEach(eggItem -> DispenserBlock.registerBehavior(eggItem, new DispenseEntityItemBehavior()));
         DispenserBlock.registerBehavior(FAItems.NAUTILUS_EGGS.get(), new DispenseEntityItemBehavior());
         DispenserBlock.registerBehavior(FAItems.NAUTILUS.get(), new DispenseEntityItemBehavior());
         DispenserBlock.registerBehavior(FAItems.ARTICULATED_FOSSIL.get(), new DispenseEntityItemBehavior());
@@ -211,7 +211,6 @@ public final class BasicEvents {
     public static void newRegistryEvent(NewRegistryRegister newRegistryRegister) {
         newRegistryRegister.register(FABuiltInRegistries.COMMAND_TYPES, FARegistries.COMMAND_TYPES);
         newRegistryRegister.register(FABuiltInRegistries.DINOPEDIA_LINE_TYPES, FARegistries.DINOPEDIA_LINE_TYPE);
-        newRegistryRegister.register(FABuiltInRegistries.EGG_VARIANTS, FARegistries.EGG_VARIANTS);
         newRegistryRegister.register(FABuiltInRegistries.PREGNANCY_TYPES, FARegistries.PREGNANCY_TYPES);
     }
 
@@ -240,7 +239,24 @@ public final class BasicEvents {
         attributeRegister.register(FAEntityTypes.DODO.get(), Dodo.dodoAttributes());
         attributeRegister.register(FAEntityTypes.MOA.get(), Moa.moaAttributes());
         attributeRegister.register(FAEntityTypes.GALLIMIMUS.get(), Gallimimus.gallimimusAttributes());
-        attributeRegister.register(FAEntityTypes.EGG.get(), Egg.eggAttributes());
+        attributeRegister.register(FAEntityTypes.ANKYLOSAURUS_EGG.get(), Egg.eggAttributes());
+        attributeRegister.register(FAEntityTypes.BRACHIOSAURUS_EGG.get(), Egg.eggAttributes());
+        attributeRegister.register(FAEntityTypes.CARNOTAURUS_EGG.get(), Egg.eggAttributes());
+        attributeRegister.register(FAEntityTypes.COMPSOGNATHUS_EGG.get(), Egg.eggAttributes());
+        attributeRegister.register(FAEntityTypes.CRYOLOPHOSAURUS_EGG.get(), Egg.eggAttributes());
+        attributeRegister.register(FAEntityTypes.DILOPHOSAURUS_EGG.get(), Egg.eggAttributes());
+        attributeRegister.register(FAEntityTypes.DIMETRODON_EGG.get(), Egg.eggAttributes());
+        attributeRegister.register(FAEntityTypes.FUTABASAURUS_EGG.get(), Egg.eggAttributes());
+        attributeRegister.register(FAEntityTypes.GALLIMIMUS_EGG.get(), Egg.eggAttributes());
+        attributeRegister.register(FAEntityTypes.MOSASAURUS_EGG.get(), Egg.eggAttributes());
+        attributeRegister.register(FAEntityTypes.PACHYCEPHALOSAURUS_EGG.get(), Egg.eggAttributes());
+        attributeRegister.register(FAEntityTypes.PTERANODON_EGG.get(), Egg.eggAttributes());
+        attributeRegister.register(FAEntityTypes.SPINOSAURUS_EGG.get(), Egg.eggAttributes());
+        attributeRegister.register(FAEntityTypes.STEGOSAURUS_EGG.get(), Egg.eggAttributes());
+        attributeRegister.register(FAEntityTypes.THERIZINOSAURUS_EGG.get(), Egg.eggAttributes());
+        attributeRegister.register(FAEntityTypes.TRICERATOPS_EGG.get(), Egg.eggAttributes());
+        attributeRegister.register(FAEntityTypes.TYRANNOSAURUS_EGG.get(), Egg.eggAttributes());
+        attributeRegister.register(FAEntityTypes.VELOCIRAPTOR_EGG.get(), Egg.eggAttributes());
         attributeRegister.register(FAEntityTypes.FAILURESAURUS.get(), Failuresaurus.createAttributes().build());
         attributeRegister.register(FAEntityTypes.FOSSIL.get(), Fossil.fossilAttributes());
         attributeRegister.register(FAEntityTypes.MAMMOTH.get(), Mammoth.mammothAttributes());

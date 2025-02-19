@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
+import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.state.PteranodonRenderState;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Pteranodon;
@@ -30,7 +31,7 @@ public class PteranodonRenderer extends CoatTypeMobRenderer<Pteranodon, Pteranod
     }
 
     @Override
-    public Optional<EntityModel<PteranodonRenderState>> getAdditionalModel(PteranodonRenderState pteranodonRenderState, CoatType coatType) {
+    public Optional<ResourceLocation> getAdditionalModel(PteranodonRenderState pteranodonRenderState, CoatType coatType) {
         CoatType.Models models = coatType.models();
         return pteranodonRenderState.shouldLand ? this.additionalModel(models.landingModel(), models) : pteranodonRenderState.shouldFly ? this.additionalModel(models.flyingModel(), models) : Optional.empty();
     }

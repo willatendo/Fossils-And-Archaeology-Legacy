@@ -1,6 +1,6 @@
 {
   "type": "fossilslegacy:analyzation",
-  "category": "misc",
+  "category": "palaeontology",
   "fuels": "fossilslegacy:fuels/raw_dilophosaurus_meat",
   "ingredient": "fossilslegacy:raw_dilophosaurus",
   "time": 100

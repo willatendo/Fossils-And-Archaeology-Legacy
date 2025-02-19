@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.server.entity.entities.dinosaur.guadalupian;
 
-import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
@@ -17,9 +16,9 @@ import org.jetbrains.annotations.Nullable;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
-import willatendo.fossilslegacy.server.egg_variant.EggVariant;
-import willatendo.fossilslegacy.server.egg_variant.FAEggVariants;
+import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
+import willatendo.fossilslegacy.server.entity.entities.Egg;
 import willatendo.fossilslegacy.server.entity.goals.*;
 import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
@@ -39,6 +38,11 @@ public class Dimetrodon extends Dinosaur implements DinopediaInformation {
 
     public static AttributeSupplier dimetrodonAttributes() {
         return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 10.0F).add(Attributes.MOVEMENT_SPEED, 0.35D).add(Attributes.ATTACK_DAMAGE, 4.0D).build();
+    }
+
+    @Override
+    public EntityType<Egg> getEggEntityType() {
+        return FAEntityTypes.DIMETRODON_EGG.get();
     }
 
     @Override
@@ -95,11 +99,6 @@ public class Dimetrodon extends Dinosaur implements DinopediaInformation {
     @Override
     public TagKey<CoatType> getCoatTypes() {
         return FACoatTypeTags.DIMETRODON;
-    }
-
-    @Override
-    public Holder<EggVariant> getEggVariant() {
-        return FAEggVariants.DIMETRODON;
     }
 
     @Override

@@ -6,11 +6,13 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
@@ -18,13 +20,16 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.Spawner;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.shapes.Shapes;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
@@ -63,20 +68,26 @@ public class DinosaurSpawnEggItem extends SpawnEggItem {
                 itemStack.shrink(1);
                 return InteractionResult.SUCCESS;
             } else {
-                BlockPos blockPosAt;
-                if (blockState.getCollisionShape(level, blockPos).isEmpty()) {
-                    blockPosAt = blockPos;
-                } else {
-                    blockPosAt = blockPos.relative(direction);
-                }
-
+                BlockPos placeBlockPos = blockState.getCollisionShape(level, blockPos).isEmpty() ? blockPos : blockPos.relative(direction);
                 EntityType<?> entityType = this.getType(level.registryAccess(), itemStack);
-                Entity entity = entityType.spawn(serverLevel, itemStack, player, blockPosAt, EntitySpawnReason.SPAWN_ITEM_USE, true, !Objects.equals(blockPos, blockPosAt) && direction == Direction.UP);
+                Entity entity = entityType.create(serverLevel, EntitySpawnReason.SPAWN_ITEM_USE);
                 if (entity instanceof Dinosaur dinosaur) {
                     if (!player.isCrouching()) {
                         dinosaur.setGrowthStage(dinosaur.getMaxGrowthStage());
+                    } else {
+                        dinosaur.setGrowthStage(0);
                     }
                 }
+                entity.setPos((double) placeBlockPos.getX() + 0.5, placeBlockPos.getY(), (double) placeBlockPos.getZ() + 0.5);
+                double yOffset = DinosaurSpawnEggItem.getYOffset(serverLevel, blockPos, !Objects.equals(blockPos, placeBlockPos) && direction == Direction.UP, entity.getBoundingBox());
+                entity.moveTo((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + yOffset, (double) blockPos.getZ() + 0.5D, Mth.wrapDegrees(serverLevel.random.nextFloat() * 360.0f), 0.0f);
+                if (entity instanceof Mob mob) {
+                    mob.yHeadRot = mob.getYRot();
+                    mob.yBodyRot = mob.getYRot();
+                    mob.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(mob.blockPosition()), EntitySpawnReason.SPAWN_ITEM_USE, null);
+                    mob.playAmbientSound();
+                }
+                level.addFreshEntity(entity);
                 if (entity != null) {
                     itemStack.shrink(1);
                     level.gameEvent(player, GameEvent.ENTITY_PLACE, blockPos);
@@ -119,6 +130,15 @@ public class DinosaurSpawnEggItem extends SpawnEggItem {
         } else {
             return InteractionResult.SUCCESS;
         }
+    }
+
+    public static double getYOffset(LevelReader levelReader, BlockPos blockPos, boolean bl, AABB aABB) {
+        AABB aABBAtPos = new AABB(blockPos);
+        if (bl) {
+            aABBAtPos = aABBAtPos.expandTowards(0.0, -1.0, 0.0);
+        }
+        Iterable iterable = levelReader.getCollisions(null, aABBAtPos);
+        return 1.0 + Shapes.collide(Direction.Axis.Y, aABB, iterable, bl ? -2.0 : -1.0);
     }
 
 }

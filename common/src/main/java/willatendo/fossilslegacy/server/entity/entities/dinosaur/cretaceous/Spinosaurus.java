@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous;
 
-import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -17,9 +16,9 @@ import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
-import willatendo.fossilslegacy.server.egg_variant.EggVariant;
-import willatendo.fossilslegacy.server.egg_variant.FAEggVariants;
+import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
+import willatendo.fossilslegacy.server.entity.entities.Egg;
 import willatendo.fossilslegacy.server.entity.goals.*;
 import willatendo.fossilslegacy.server.entity.util.BlockBreakRule;
 import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
@@ -43,6 +42,11 @@ public class Spinosaurus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
+    public EntityType<Egg> getEggEntityType() {
+        return FAEntityTypes.SPINOSAURUS_EGG.get();
+    }
+
+    @Override
     public float maxUpStep() {
         return DinosaurUtils.getStepHeights(8, 1.0F, 2.0F)[this.getGrowthStage()];
     }
@@ -60,11 +64,6 @@ public class Spinosaurus extends Dinosaur implements DinopediaInformation {
     @Override
     public TagKey<CoatType> getCoatTypes() {
         return FACoatTypeTags.SPINOSAURUS;
-    }
-
-    @Override
-    public Holder<EggVariant> getEggVariant() {
-        return FAEggVariants.SPINOSAURUS;
     }
 
     @Override

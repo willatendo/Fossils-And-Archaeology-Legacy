@@ -33,10 +33,8 @@ import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.command_type.CommandType;
 import willatendo.fossilslegacy.server.command_type.FACommandTypes;
-import willatendo.fossilslegacy.server.egg_variant.EggVariant;
 import willatendo.fossilslegacy.server.entity.FADamageTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
-import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.item.FAItems;
@@ -68,6 +66,10 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
     public abstract TagKey<CoatType> getCoatTypes();
 
     public abstract Diet getDiet();
+
+    public EntityType<Egg> getEggEntityType() {
+        return null;
+    }
 
     @Override
     public RegistryAccess getRegistryAccess() {
@@ -113,10 +115,6 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
             this.increaseHunger(this.getDiet().getEntityFoodValue(livingEntity));
         }
         return super.killedEntity(serverLevel, livingEntity);
-    }
-
-    public Holder<EggVariant> getEggVariant() {
-        return null;
     }
 
     public boolean hasSpace() {
@@ -470,9 +468,8 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        if (this.getEggVariant() != null) {
-            Egg egg = FAEntityTypes.EGG.get().create(serverLevel, EntitySpawnReason.BREEDING);
-            egg.setEggVariant(this.getEggVariant());
+        if (this.getEggEntityType() != null) {
+            Egg egg = this.getEggEntityType().create(serverLevel, EntitySpawnReason.BREEDING);
             if (this.getCoatType() != null) {
                 egg.setCoatType(this.getCoatType());
             }

@@ -4,6 +4,7 @@ import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
@@ -22,9 +23,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWit
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import willatendo.fossilslegacy.server.block.FABlocks;
-import willatendo.fossilslegacy.server.criteria.critereon.EggPredicate;
 import willatendo.fossilslegacy.server.criteria.critereon.MammothPredicate;
-import willatendo.fossilslegacy.server.egg_variant.EggVariant;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.item.FALootTables;
@@ -68,7 +67,24 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
         this.add(FAEntityTypes.TYRANNOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_TYRANNOSAURUS.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.TYRANNOSAURUS_TOOTH.get()))));
         this.add(FAEntityTypes.VELOCIRAPTOR.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_VELOCIRAPTOR.get()));
 
-        this.add(FAEntityTypes.EGG.get(), LootTable.lootTable().withPool(FAEntityLootSubProvider.createEggDispatchPool(FALootTables.LOOT_BY_EGG)));
+        this.add(FAEntityTypes.ANKYLOSAURUS_EGG.get(), this.createEggTable(FAItems.ANKYLOSAURUS_EGG.get()));
+        this.add(FAEntityTypes.BRACHIOSAURUS_EGG.get(), this.createEggTable(FAItems.BRACHIOSAURUS_EGG.get()));
+        this.add(FAEntityTypes.CARNOTAURUS_EGG.get(), this.createEggTable(FAItems.CARNOTAURUS_EGG.get()));
+        this.add(FAEntityTypes.COMPSOGNATHUS_EGG.get(), this.createEggTable(FAItems.COMPSOGNATHUS_EGG.get()));
+        this.add(FAEntityTypes.CRYOLOPHOSAURUS_EGG.get(), this.createEggTable(FAItems.CRYOLOPHOSAURUS_EGG.get()));
+        this.add(FAEntityTypes.DILOPHOSAURUS_EGG.get(), this.createEggTable(FAItems.DILOPHOSAURUS_EGG.get()));
+        this.add(FAEntityTypes.DIMETRODON_EGG.get(), this.createEggTable(FAItems.DIMETRODON_EGG.get()));
+        this.add(FAEntityTypes.FUTABASAURUS_EGG.get(), this.createEggTable(FAItems.FUTABASAURUS_EGG.get()));
+        this.add(FAEntityTypes.GALLIMIMUS_EGG.get(), this.createEggTable(FAItems.GALLIMIMUS_EGG.get()));
+        this.add(FAEntityTypes.MOSASAURUS_EGG.get(), this.createEggTable(FAItems.MOSASAURUS_EGG.get()));
+        this.add(FAEntityTypes.PACHYCEPHALOSAURUS_EGG.get(), this.createEggTable(FAItems.PACHYCEPHALOSAURUS_EGG.get()));
+        this.add(FAEntityTypes.PTERANODON_EGG.get(), this.createEggTable(FAItems.PTERANODON_EGG.get()));
+        this.add(FAEntityTypes.SPINOSAURUS_EGG.get(), this.createEggTable(FAItems.SPINOSAURUS_EGG.get()));
+        this.add(FAEntityTypes.STEGOSAURUS_EGG.get(), this.createEggTable(FAItems.STEGOSAURUS_EGG.get()));
+        this.add(FAEntityTypes.THERIZINOSAURUS_EGG.get(), this.createEggTable(FAItems.THERIZINOSAURUS_EGG.get()));
+        this.add(FAEntityTypes.TRICERATOPS_EGG.get(), this.createEggTable(FAItems.TRICERATOPS_EGG.get()));
+        this.add(FAEntityTypes.TYRANNOSAURUS_EGG.get(), this.createEggTable(FAItems.TYRANNOSAURUS_EGG.get()));
+        this.add(FAEntityTypes.VELOCIRAPTOR_EGG.get(), this.createEggTable(FAItems.VELOCIRAPTOR_EGG.get()));
 
         this.add(FAEntityTypes.PREGNANT_ARMADILLO.get(), LootTable.lootTable());
         this.add(FAEntityTypes.PREGNANT_CAT.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.STRING).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))))));
@@ -123,15 +139,7 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
         return LootPool.lootPool().add(builder);
     }
 
-
-    public static LootPool.Builder createEggDispatchPool(Map<ResourceKey<EggVariant>, ResourceKey<LootTable>> lootTables) {
-        AlternativesEntry.Builder builder = AlternativesEntry.alternatives();
-
-        Map.Entry<ResourceKey<EggVariant>, ResourceKey<LootTable>> entry;
-        for (Iterator<Map.Entry<ResourceKey<EggVariant>, ResourceKey<LootTable>>> iterator = lootTables.entrySet().iterator(); iterator.hasNext(); builder = builder.otherwise(NestedLootTable.lootTableReference(entry.getValue()).when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().subPredicate(EggPredicate.isEggVariant(entry.getKey())))))) {
-            entry = iterator.next();
-        }
-
-        return LootPool.lootPool().add(builder);
+    protected LootTable.Builder createEggTable(Item eggItem) {
+        return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(eggItem)));
     }
 }

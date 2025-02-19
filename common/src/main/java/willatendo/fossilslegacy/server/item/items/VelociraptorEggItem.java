@@ -7,7 +7,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.coat_type.FACoatTypes;
-import willatendo.fossilslegacy.server.egg_variant.EggVariant;
+import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Egg;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
@@ -15,13 +15,12 @@ import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FACoatTypeTags;
 
 public class VelociraptorEggItem extends EggItem {
-    public VelociraptorEggItem(GeologicalTimeScale.Period period, Holder<EggVariant> eggVariant, Properties properties) {
-        super(period, eggVariant, FACoatTypeTags.NON_LEGACY_VELOCIRAPTOR, properties);
+    public VelociraptorEggItem(GeologicalTimeScale.Period period, Properties properties) {
+        super(FAEntityTypes.VELOCIRAPTOR_EGG::get, period, FACoatTypeTags.NON_LEGACY_VELOCIRAPTOR, properties);
     }
 
     @Override
     public void entityModification(ItemStack itemStack, Egg egg) {
-        egg.setEggVariant(this.eggVariant);
         if (itemStack.has(FADataComponents.COAT_TYPE.get())) {
             egg.setCoatType(itemStack.get(FADataComponents.COAT_TYPE.get()));
         } else {

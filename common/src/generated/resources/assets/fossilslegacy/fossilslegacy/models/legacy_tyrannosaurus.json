@@ -377,6 +377,6 @@
       "fossilslegacy:legacy_tyrannosaurus_walk"
     ]
   },
-  "texture_height": 64,
+  "texture_height": 32,
   "texture_width": 64
 }

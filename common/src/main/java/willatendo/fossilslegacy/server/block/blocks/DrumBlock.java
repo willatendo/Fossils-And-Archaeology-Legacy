@@ -49,8 +49,9 @@ public class DrumBlock extends Block {
                 player.playSound(FASoundEvents.DRUM_TRIPLE_HIT.get());
             }
         } else {
-            level.setBlock(blockPos, FABlocks.DRUM.get().defaultBlockState().setValue(DrumBlock.COMMAND_TYPE_PROPERTY, CommandType.getNext(blockState.getValue(DrumBlock.COMMAND_TYPE_PROPERTY)).value().getName()), 3);
-            if (level.isClientSide()) {
+            if (!level.isClientSide()) {
+                level.setBlock(blockPos, FABlocks.DRUM.get().defaultBlockState().setValue(DrumBlock.COMMAND_TYPE_PROPERTY, CommandType.getNext(blockState.getValue(DrumBlock.COMMAND_TYPE_PROPERTY)).value().getName()), 3);
+            } else {
                 player.playSound(FASoundEvents.DRUM_HIT.get());
             }
         }

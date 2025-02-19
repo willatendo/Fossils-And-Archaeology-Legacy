@@ -9,7 +9,6 @@ import willatendo.fossilslegacy.server.command_type.FACommandTypes;
 import willatendo.fossilslegacy.server.criteria.FLCriteriaTriggers;
 import willatendo.fossilslegacy.server.criteria.critereon.FAEntitySubPredicates;
 import willatendo.fossilslegacy.server.dinopedia_entry.FADinopediaLineTypes;
-import willatendo.fossilslegacy.server.egg_variant.FAEggVariants;
 import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.FAPoiTypes;
@@ -57,7 +56,6 @@ public final class FossilsLegacyMod {
         simpleRegistryRegister.register(FABlockTypes.BLOCK_TYPES);
         simpleRegistryRegister.register(FABlockEntityTypes.BLOCK_ENTITY_TYPES);
         simpleRegistryRegister.register(FAMenuTypes.MENU_TYPES);
-        simpleRegistryRegister.register(FAEggVariants.EGG_VARIANTS);
         simpleRegistryRegister.register(FAPregnancyTypes.PREGNANCY_TYPES);
         FAEntityDataSerializers.init();
         if (ModloaderHelper.INSTANCE.getPlatform() != Platform.FABRIC) {

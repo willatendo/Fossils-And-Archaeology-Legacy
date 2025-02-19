@@ -15,7 +15,9 @@ import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
+import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
+import willatendo.fossilslegacy.server.entity.entities.Egg;
 import willatendo.fossilslegacy.server.entity.goals.*;
 import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
@@ -35,6 +37,11 @@ public class Compsognathus extends Dinosaur implements DinopediaInformation {
 
     public static AttributeSupplier compsognathusAttributes() {
         return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 3.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 1.0D).build();
+    }
+
+    @Override
+    public EntityType<Egg> getEggEntityType() {
+        return FAEntityTypes.COMPSOGNATHUS_EGG.get();
     }
 
     @Override

@@ -328,6 +328,6 @@
       "fossilslegacy:legacy_pteranodon_fly"
     ]
   },
-  "texture_height": 64,
-  "texture_width": 32
+  "texture_height": 32,
+  "texture_width": 64
 }

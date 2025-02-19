@@ -1,6 +1,6 @@
 {
   "type": "fossilslegacy:analyzation",
-  "category": "misc",
+  "category": "palaeontology",
   "fuels": "fossilslegacy:fuels/raw_stegosaurus_meat",
   "ingredient": "fossilslegacy:raw_stegosaurus",
   "time": 100

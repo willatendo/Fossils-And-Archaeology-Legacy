@@ -17,15 +17,17 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Mammo
 public class MammothFurLayer extends RenderLayer<MammothRenderState, EntityModel<MammothRenderState>> {
     private EntityModel<MammothRenderState> model;
     private CoatTypeMobRenderer<Mammoth, MammothRenderState> coatTypeMobRenderer;
+    private ResourceLocation modelId;
 
     public MammothFurLayer(CoatTypeMobRenderer<Mammoth, MammothRenderState> coatTypeMobRenderer) {
         super(coatTypeMobRenderer);
         this.coatTypeMobRenderer = coatTypeMobRenderer;
     }
 
-    private void setModel(EntityModel<MammothRenderState> entityModel) {
-        if (this.model != entityModel) {
-            this.model = entityModel;
+    private void setModel(ResourceLocation model) {
+        if (this.modelId != model) {
+            this.modelId = model;
+            this.model = this.coatTypeMobRenderer.getModel(model);
         }
     }
 
@@ -35,7 +37,7 @@ public class MammothFurLayer extends RenderLayer<MammothRenderState, EntityModel
         if (this.coatTypeMobRenderer.getAdditionalModel(mammothRenderState, coatType).isPresent()) {
             this.setModel(this.coatTypeMobRenderer.getAdditionalModel(mammothRenderState, coatType).get());
         } else {
-            this.setModel(this.coatTypeMobRenderer.getModel(coatType.models().model()));
+            this.setModel(coatType.models().model());
         }
         CoatType.Textures textures = coatType.patterns().getFirst().textures();
         if (textures.furTexture().isPresent()) {

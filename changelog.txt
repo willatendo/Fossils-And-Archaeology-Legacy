@@ -2,6 +2,9 @@
 - Mammoth Shearing Is Done By Loot Table
 - Cultivator Recipes Now Unlocked By Acquiring Water Buckets
 - Llama Statue Recipes Now In One Group
+- Updated Javelin Models and Textures
+- Updated Skull Overlay
+- Skulls Now Block Enderman and Creaking Vision
 - Fixed Sigillaria Hanging Sign Dropping Lepidodendron Hanging Sign
 - Fixed Tooth Dagger Not Shearing All Shearables
 - Fixed Mayan Vase Not Wobbling
@@ -11,6 +14,9 @@
 - Fixed Spinosaurus Egg Not Droping Egg
 - Fixed Tyrannosaurus Head Not Moving
 - Fixed Fuels Corrupting Block Entity Data
+- Fixed Incubated Moa Egg Recipe
+- Added Archaeology Category For Analyzer Recipe Book
+- Added Palaeontology Category For Analyzer Recipe Book
 2/2/2025b 1.4.8
 - Fixed Server Crash
 2/2/2025a 1.4.7

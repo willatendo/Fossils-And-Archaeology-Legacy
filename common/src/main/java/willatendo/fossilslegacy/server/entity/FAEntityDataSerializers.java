@@ -6,7 +6,6 @@ import net.minecraft.network.syncher.EntityDataSerializer;
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.command_type.CommandType;
-import willatendo.fossilslegacy.server.egg_variant.EggVariant;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 import willatendo.fossilslegacy.server.pregnancy_types.PregnancyType;
 import willatendo.fossilslegacy.server.registry.FARegistries;
@@ -17,7 +16,6 @@ import java.util.function.Supplier;
 public final class FAEntityDataSerializers {
     public static final Supplier<EntityDataSerializer<Holder<CoatType>>> COAT_TYPES = FossilsModloaderHelper.INSTANCE.registerDataSerializer("coat_types", ByteBufCodecs.holderRegistry(FARegistries.COAT_TYPES));
     public static final Supplier<EntityDataSerializer<Holder<CommandType>>> COMMAND_TYPES = FossilsModloaderHelper.INSTANCE.registerDataSerializer("command_types", ByteBufCodecs.holderRegistry(FARegistries.COMMAND_TYPES));
-    public static final Supplier<EntityDataSerializer<Holder<EggVariant>>> EGG_VARIANTS = FossilsModloaderHelper.INSTANCE.registerDataSerializer("egg_variants", ByteBufCodecs.holderRegistry(FARegistries.EGG_VARIANTS));
     public static final Supplier<EntityDataSerializer<Holder<FossilVariant>>> FOSSIL_VARIANTS = FossilsModloaderHelper.INSTANCE.registerDataSerializer("fossil_variants", ByteBufCodecs.holderRegistry(FARegistries.FOSSIL_VARIANTS));
     public static final Supplier<EntityDataSerializer<Holder<PregnancyType>>> PREGNANCY_TYPES = FossilsModloaderHelper.INSTANCE.registerDataSerializer("pregnancy_types", ByteBufCodecs.holderRegistry(FARegistries.PREGNANCY_TYPES));
     public static final Supplier<EntityDataSerializer<Holder<StoneTabletVariant>>> STONE_TABLET_VARIANTS = FossilsModloaderHelper.INSTANCE.registerDataSerializer("stone_tablet_variants", ByteBufCodecs.holderRegistry(FARegistries.STONE_TABLET_VARIANTS));

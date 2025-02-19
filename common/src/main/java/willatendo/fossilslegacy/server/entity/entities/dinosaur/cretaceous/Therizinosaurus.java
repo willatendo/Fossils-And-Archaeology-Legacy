@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous;
 
-import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
@@ -17,9 +16,9 @@ import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
-import willatendo.fossilslegacy.server.egg_variant.EggVariant;
-import willatendo.fossilslegacy.server.egg_variant.FAEggVariants;
+import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
+import willatendo.fossilslegacy.server.entity.entities.Egg;
 import willatendo.fossilslegacy.server.entity.goals.*;
 import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
@@ -41,6 +40,11 @@ public class Therizinosaurus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
+    public EntityType<Egg> getEggEntityType() {
+        return FAEntityTypes.THERIZINOSAURUS_EGG.get();
+    }
+
+    @Override
     protected Component getTypeName() {
         return this.getOverridenName(super.getTypeName());
     }
@@ -58,11 +62,6 @@ public class Therizinosaurus extends Dinosaur implements DinopediaInformation {
     @Override
     public TagKey<CoatType> getCoatTypes() {
         return FACoatTypeTags.THERIZINOSAURUS;
-    }
-
-    @Override
-    public Holder<EggVariant> getEggVariant() {
-        return FAEggVariants.CARNOTAURUS;
     }
 
     @Override

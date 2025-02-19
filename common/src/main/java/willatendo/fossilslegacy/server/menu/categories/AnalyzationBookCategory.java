@@ -10,7 +10,9 @@ import net.minecraft.util.StringRepresentable;
 import java.util.function.IntFunction;
 
 public enum AnalyzationBookCategory implements StringRepresentable {
-    MISC(0, "misc");
+    PALAEONTOLOGY(0, "palaeontology"),
+    ARCHAEOLOGY(1, "archaeology"),
+    MISC(2, "misc");
 
     private static final IntFunction<AnalyzationBookCategory> BY_ID = ByIdMap.continuous(archaeologybookcategory -> archaeologybookcategory.id, AnalyzationBookCategory.values(), ByIdMap.OutOfBoundsStrategy.ZERO);
     public static final Codec<AnalyzationBookCategory> CODEC = StringRepresentable.fromEnum(AnalyzationBookCategory::values);

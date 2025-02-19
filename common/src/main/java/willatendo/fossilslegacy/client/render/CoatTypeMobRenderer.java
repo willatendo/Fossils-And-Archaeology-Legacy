@@ -19,11 +19,13 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.WetFurEntity;
 import java.util.Optional;
 
 public abstract class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity, S extends DinosaurRenderState> extends MobRenderer<T, S, EntityModel<S>> {
+    private ResourceLocation modelId;
+
     public CoatTypeMobRenderer(EntityRendererProvider.Context context, float shadowSize) {
         super(context, null, shadowSize);
     }
 
-    public Optional<EntityModel<S>> getAdditionalModel(S dinosaurRenderState, CoatType coatType) {
+    public Optional<ResourceLocation> getAdditionalModel(S dinosaurRenderState, CoatType coatType) {
         return Optional.empty();
     }
 
@@ -31,9 +33,10 @@ public abstract class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity, S
         return Optional.empty();
     }
 
-    private void setModel(EntityModel<S> entityModel) {
-        if (this.model != entityModel) {
-            this.model = entityModel;
+    private void setModel(ResourceLocation model) {
+        if (this.modelId != model) {
+            this.modelId = model;
+            this.model = this.getModel(model);
         }
     }
 
@@ -90,8 +93,8 @@ public abstract class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity, S
         return ageScaleInfo.shadowSize() + (ageScaleInfo.shadowGrowth() * dinosaurRenderState.growthStage);
     }
 
-    protected Optional<EntityModel<S>> additionalModel(Optional<ResourceLocation> additionalModel, CoatType.Models models) {
-        return additionalModel.isPresent() ? Optional.of(this.getModel(additionalModel.get())) : Optional.of(this.getModel(models.model()));
+    protected Optional<ResourceLocation> additionalModel(Optional<ResourceLocation> additionalModel, CoatType.Models models) {
+        return additionalModel.isPresent() ? Optional.of(additionalModel.get()) : Optional.of(models.model());
     }
 
     @Override
@@ -100,7 +103,7 @@ public abstract class CoatTypeMobRenderer<T extends Dinosaur & CoatTypeEntity, S
         if (this.getAdditionalModel(dinosaurRenderState, coatType).isPresent()) {
             this.setModel(this.getAdditionalModel(dinosaurRenderState, coatType).get());
         } else {
-            this.setModel(this.getModel(coatType.models().model()));
+            this.setModel(coatType.models().model());
         }
         super.render(dinosaurRenderState, poseStack, multiBufferSource, partialTicks);
     }

@@ -1,6 +1,6 @@
 {
   "type": "fossilslegacy:analyzation",
-  "category": "misc",
+  "category": "palaeontology",
   "fuels": "fossilslegacy:fuels/raw_carnotaurus_meat",
   "ingredient": "fossilslegacy:raw_carnotaurus",
   "time": 100

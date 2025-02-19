@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous;
 
-import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -28,9 +27,9 @@ import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
-import willatendo.fossilslegacy.server.egg_variant.EggVariant;
-import willatendo.fossilslegacy.server.egg_variant.FAEggVariants;
+import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
+import willatendo.fossilslegacy.server.entity.entities.Egg;
 import willatendo.fossilslegacy.server.entity.goals.*;
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
@@ -59,6 +58,11 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
     }
 
     @Override
+    public EntityType<Egg> getEggEntityType() {
+        return FAEntityTypes.VELOCIRAPTOR_EGG.get();
+    }
+
+    @Override
     public float maxUpStep() {
         return 1.0F;
     }
@@ -71,11 +75,6 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
     @Override
     public TagKey<CoatType> getCoatTypes() {
         return FACoatTypeTags.VELOCIRAPTOR;
-    }
-
-    @Override
-    public Holder<EggVariant> getEggVariant() {
-        return FAEggVariants.VELOCIRAPTOR;
     }
 
     @Override

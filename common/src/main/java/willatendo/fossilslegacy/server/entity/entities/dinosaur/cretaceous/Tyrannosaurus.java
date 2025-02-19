@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -33,9 +32,9 @@ import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
-import willatendo.fossilslegacy.server.egg_variant.EggVariant;
-import willatendo.fossilslegacy.server.egg_variant.FAEggVariants;
+import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
+import willatendo.fossilslegacy.server.entity.entities.Egg;
 import willatendo.fossilslegacy.server.entity.goals.*;
 import willatendo.fossilslegacy.server.entity.util.BlockBreakRule;
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
@@ -63,6 +62,11 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
     }
 
     @Override
+    public EntityType<Egg> getEggEntityType() {
+        return FAEntityTypes.TYRANNOSAURUS_EGG.get();
+    }
+
+    @Override
     public float maxUpStep() {
         return DinosaurUtils.getStepHeights(8, 1.0F, 2.0F)[this.getGrowthStage()];
     }
@@ -85,11 +89,6 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
     @Override
     public TagKey<CoatType> getCoatTypes() {
         return FACoatTypeTags.TYRANNOSAURUS;
-    }
-
-    @Override
-    public Holder<EggVariant> getEggVariant() {
-        return FAEggVariants.TYRANNOSAURUS;
     }
 
     @Override

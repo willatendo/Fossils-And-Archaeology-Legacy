@@ -1,6 +1,6 @@
 {
   "type": "fossilslegacy:analyzation",
-  "category": "misc",
+  "category": "palaeontology",
   "fuels": "fossilslegacy:fuels/raw_smilodon_meat",
   "ingredient": "fossilslegacy:raw_smilodon",
   "time": 100

@@ -20,7 +20,7 @@ public class TyrannosaurusRenderer extends CoatTypeMobRenderer<Tyrannosaurus, Ty
     }
 
     @Override
-    public Optional<EntityModel<TyrannosaurusRenderState>> getAdditionalModel(TyrannosaurusRenderState tyrannosaurusRenderState, CoatType coatType) {
+    public Optional<ResourceLocation> getAdditionalModel(TyrannosaurusRenderState tyrannosaurusRenderState, CoatType coatType) {
         CoatType.Models models = coatType.models();
         return tyrannosaurusRenderState.knockedOut ? this.additionalModel(models.knockedOutModel(), models) : Optional.empty();
     }

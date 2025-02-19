@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.server.entity.entities.dinosaur.jurassic;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
@@ -26,9 +25,9 @@ import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
-import willatendo.fossilslegacy.server.egg_variant.EggVariant;
-import willatendo.fossilslegacy.server.egg_variant.FAEggVariants;
+import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
+import willatendo.fossilslegacy.server.entity.entities.Egg;
 import willatendo.fossilslegacy.server.entity.goals.*;
 import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
@@ -51,6 +50,11 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Rid
     }
 
     @Override
+    public EntityType<Egg> getEggEntityType() {
+        return FAEntityTypes.BRACHIOSAURUS_EGG.get();
+    }
+
+    @Override
     public float maxUpStep() {
         return DinosaurUtils.getStepHeights(36, 1.0F, 5.0F)[this.getGrowthStage()];
     }
@@ -68,11 +72,6 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Rid
     @Override
     public TagKey<CoatType> getCoatTypes() {
         return FACoatTypeTags.BRACHIOSAURUS;
-    }
-
-    @Override
-    public Holder<EggVariant> getEggVariant() {
-        return FAEggVariants.BRACHIOSAURUS;
     }
 
     @Override

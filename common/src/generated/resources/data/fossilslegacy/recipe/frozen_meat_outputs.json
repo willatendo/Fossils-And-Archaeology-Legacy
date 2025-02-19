@@ -1,6 +1,6 @@
 {
   "type": "fossilslegacy:analyzation",
-  "category": "misc",
+  "category": "palaeontology",
   "fuels": "fossilslegacy:fuels/frozen_meat",
   "ingredient": "fossilslegacy:frozen_meat",
   "time": 100

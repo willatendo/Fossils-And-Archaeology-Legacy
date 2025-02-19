@@ -14,7 +14,7 @@ public class ModSmithingTemplateItem extends SmithingTemplateItem {
     private static final Component GEM_UPGRADE_INGREDIENTS = Component.translatable(Util.makeDescriptionId("item", FAUtils.resource("smithing_template.scarab_gem_upgrade.ingredient"))).withStyle(ChatFormatting.BLUE);
     private static final Component GEM_UPGRADE_BASE_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", FAUtils.resource("smithing_template.scarab_gem_upgrade.base_slot_description")));
     private static final Component GEM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", FAUtils.resource("smithing_template.scarab_gem_upgrade.additions_slot_description")));
-    private static final ResourceLocation EMPTY_SLOT_GEM = FAUtils.resource("item/empty_slot_gem");
+    private static final ResourceLocation EMPTY_SLOT_GEM = FAUtils.resource("container/slot/scarab_gem");
 
     public ModSmithingTemplateItem(Component appliesTo, Component ingredients, Component baseSlotDescription, Component additionsSlotDescription, List<ResourceLocation> baseSlotEmptyIcons, List<ResourceLocation> additionalSlotEmptyIcons, Properties properties) {
         super(appliesTo, ingredients, baseSlotDescription, additionsSlotDescription, baseSlotEmptyIcons, additionalSlotEmptyIcons, properties);

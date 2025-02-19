@@ -10,6 +10,5 @@ import willatendo.simplelibrary.server.registry.SimpleRegistry;
 public class FAEntitySubPredicates {
     public static final SimpleRegistry<MapCodec<? extends EntitySubPredicate>> ENTITY_SUB_PREDICATES = SimpleRegistry.create(Registries.ENTITY_SUB_PREDICATE_TYPE, FAUtils.ID);
 
-    public static final SimpleHolder<MapCodec<EggPredicate>> EGG = ENTITY_SUB_PREDICATES.register("egg", () -> EggPredicate.CODEC);
     public static final SimpleHolder<MapCodec<MammothPredicate>> MAMMOTH = ENTITY_SUB_PREDICATES.register("mammoth", () -> MammothPredicate.CODEC);
 }

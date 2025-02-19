@@ -9,7 +9,6 @@ import willatendo.fossilslegacy.server.command_type.CommandType;
 import willatendo.fossilslegacy.server.dinopedia_entry.DinopediaEntry;
 import willatendo.fossilslegacy.server.dinopedia_entry.line.DinopediaLineType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
-import willatendo.fossilslegacy.server.egg_variant.EggVariant;
 import willatendo.fossilslegacy.server.feeder_food.FeederFood;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 import willatendo.fossilslegacy.server.fuel.FuelEntry;
@@ -26,7 +25,6 @@ public final class FARegistries {
     public static final ResourceKey<Registry<DinopediaEntry>> DINOPEDIA_ENTRY = ResourceKey.createRegistryKey(FAUtils.resource("dinopedia_entry"));
     public static final ResourceKey<Registry<DinopediaType>> DINOPEDIA_TYPE = ResourceKey.createRegistryKey(FAUtils.resource("dinopedia_type"));
     public static final ResourceKey<Registry<DinopediaLineType<?>>> DINOPEDIA_LINE_TYPE = ResourceKey.createRegistryKey(FAUtils.resource("dinopedia_line_type"));
-    public static final ResourceKey<Registry<EggVariant>> EGG_VARIANTS = ResourceKey.createRegistryKey(FAUtils.resource("egg_variants"));
     public static final ResourceKey<Registry<FeederFood>> FEEDER_FOOD = ResourceKey.createRegistryKey(FAUtils.resource("feeder_food"));
     public static final ResourceKey<Registry<FossilVariant>> FOSSIL_VARIANTS = ResourceKey.createRegistryKey(FAUtils.resource("fossil_variants"));
     public static final ResourceKey<Registry<FuelEntry>> FUEL_ENTRY = ResourceKey.createRegistryKey(FAUtils.resource("fuel_entry"));

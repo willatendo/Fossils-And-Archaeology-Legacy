@@ -9,7 +9,7 @@ public final class TyrannosaurusModels {
     public static final JsonModel TYRANNOSAURUS_MODEL = TyrannosaurusModels.createTyrannosaurusBodyLayer().withWalkAnimations(FAUtils.resource("tyrannosaurus_walk")).withHeadPieces("neck").build();
     public static final JsonModel KNOCKED_OUT_TYRANNOSAURUS_MODEL = TyrannosaurusModels.createKnockedOutTyrannosaurusBodyLayer().build();
     public static final JsonModel LEGACY_TYRANNOSAURUS_MODEL = TyrannosaurusModels.createLegacyTyrannosaurusBodyLayer().withWalkAnimations(BuiltInAnimationTypes.LEGACY_TYRANNOSAURUS_WALK.getId()).withHeadAnimations(BuiltInAnimationTypes.LEGACY_TYRANNOSAURUS_HEAD.getId()).build();
-    public static final JsonModel LEGACY_KNOCKED_OUT_TYRANNOSAURUS_MODEL = TyrannosaurusModels.createLegacyTyrannosaurusBodyLayer().build();
+    public static final JsonModel LEGACY_KNOCKED_OUT_TYRANNOSAURUS_MODEL = TyrannosaurusModels.createLegacyKnockedOutTyrannosaurusBodyLayer().build();
 
     private static JsonModel.Builder createTyrannosaurusBodyLayer() {
         JsonModel.Builder builder = JsonModel.builder(128, 128);
@@ -41,7 +41,7 @@ public final class TyrannosaurusModels {
     }
 
     private static JsonModel.Builder createLegacyTyrannosaurusBodyLayer() {
-        JsonModel.Builder builder = JsonModel.builder(64, 64);
+        JsonModel.Builder builder = JsonModel.builder(64, 32);
 
         builder.addOrReplaceChild("head", elementBuilder -> elementBuilder.addBox(0, 16, -4.0F, 0.0F, -6.0F, 8.0F, 8.0F, 6.0F).build(), JsonPose.offsetAndRotation(0.0F, 0.0F, -8.0F, -7.905835E-16F, 0.0F, 0.0F));
         builder.addOrReplaceChild("snout", elementBuilder -> elementBuilder.addBox(34, 18, -4.0F, 1.0F, -11.0F, 6.0F, 6.0F, 8.0F).build(), JsonPose.offset(1.0F, 0.0F, -8.0F));

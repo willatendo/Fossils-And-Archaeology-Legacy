@@ -11,18 +11,7 @@ import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.gameevent.GameEvent;
 import willatendo.fossilslegacy.server.item.items.PlaceEntityItem;
 
-import java.util.function.Consumer;
-
 public class DispenseEntityItemBehavior extends DefaultDispenseItemBehavior {
-    private Consumer<Entity> additionalInfo;
-
-    public DispenseEntityItemBehavior(Consumer<Entity> additionalInfo) {
-        this.additionalInfo = additionalInfo;
-    }
-
-    public DispenseEntityItemBehavior() {
-    }
-
     @Override
     public ItemStack execute(BlockSource blockSource, ItemStack itemStack) {
         Direction direction = blockSource.state().getValue(DispenserBlock.FACING);
@@ -31,9 +20,6 @@ public class DispenseEntityItemBehavior extends DefaultDispenseItemBehavior {
             try {
                 Entity entity = entityType.spawn(blockSource.level(), itemStack, null, blockSource.pos().relative(direction), EntitySpawnReason.DISPENSER, direction != Direction.UP, false);
                 placeEntityItem.entityModification(itemStack, entity);
-                if (this.additionalInfo != null) {
-                    this.additionalInfo.accept(entity);
-                }
             } catch (Exception exception) {
                 LOGGER.error("Error while dispensing entity from dispenser at {}", blockSource.pos(), exception);
                 return ItemStack.EMPTY;
