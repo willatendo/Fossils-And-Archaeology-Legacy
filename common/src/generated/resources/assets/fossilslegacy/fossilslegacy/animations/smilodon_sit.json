@@ -13,7 +13,7 @@
           }
         }
       ],
-      "target": "positiom"
+      "target": "position"
     },
     {
       "bone": "left_leg",
@@ -43,7 +43,7 @@
           }
         }
       ],
-      "target": "positiom"
+      "target": "position"
     },
     {
       "bone": "right_leg",
@@ -73,7 +73,7 @@
           }
         }
       ],
-      "target": "positiom"
+      "target": "position"
     },
     {
       "bone": "tail",
@@ -103,7 +103,7 @@
           }
         }
       ],
-      "target": "positiom"
+      "target": "position"
     },
     {
       "bone": "body",
@@ -118,7 +118,7 @@
           }
         }
       ],
-      "target": "positiom"
+      "target": "position"
     },
     {
       "bone": "body",

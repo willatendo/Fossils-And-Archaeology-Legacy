@@ -3,12 +3,10 @@ package willatendo.fossilslegacy.client;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -17,19 +15,18 @@ import willatendo.fossilslegacy.client.animation.json.JsonAnimationLoader;
 import willatendo.fossilslegacy.client.model.json.JsonLayerDefinitionResourceManager;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;
+import willatendo.fossilslegacy.dual.FossilsLegacyDualEvents;
 import willatendo.fossilslegacy.network.ServerboundSinkPacket;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.client.event.registry.*;
+import willatendo.simplelibrary.server.event.registry.FabricClientReloadListenerRegister;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 
 public class FossilsLegacyFabricClient implements ClientModInitializer {
-    public static final ModelResourceLocation THERIZINOSAURUS_2D = new ModelResourceLocation(FAUtils.resource("item/therizinosaurus_claws_gui"), "fabric_resource");
-    public static final ModelResourceLocation THERIZINOSAURUS_3D = new ModelResourceLocation(FAUtils.resource("item/therizinosaurus_claws_in_hand"), "fabric_resource");
-
     @Override
     public void onInitializeClient() {
         ResourceManagerHelper resourceManagerHelper = ResourceManagerHelper.get(PackType.CLIENT_RESOURCES);
@@ -77,9 +74,6 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
                 return JsonLayerDefinitionResourceManager.INSTANCE.reload(preparationBarrier, resourceManager, backgroundExecutor, gameExecutor);
             }
         });
-
-
-        ModelLoadingPlugin.register(context -> context.addModels(FossilsLegacyFabricClient.THERIZINOSAURUS_2D.id(), FossilsLegacyFabricClient.THERIZINOSAURUS_3D.id()));
 
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.JURASSIC_FERN.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.AXOLOTLSPAWN.get(), RenderType.cutout());

@@ -17,12 +17,15 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 import willatendo.fossilslegacy.data.advancement.LegacyAdvancementGenerator;
 import willatendo.fossilslegacy.data.legacy.FALegacyModelProvider;
 import willatendo.fossilslegacy.data.loot.*;
+import willatendo.fossilslegacy.data.model.FABlockModelGenerator;
+import willatendo.fossilslegacy.data.model.FAItemModelGenerator;
 import willatendo.fossilslegacy.data.tag.*;
 import willatendo.fossilslegacy.server.event.ModEvents;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.data.ResourcePackGenerator;
 import willatendo.simplelibrary.data.SimpleDataMapProvider;
 import willatendo.simplelibrary.data.SimpleLootTableProvider;
+import willatendo.simplelibrary.data.SimpleModelProvider;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,7 +41,7 @@ public class FossilsLegacyData {
         PackOutput packOutput = dataGenerator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> registries = event.getLookupProvider();
 
-        event.addProvider(new FAModelProvider(packOutput, FAUtils.ID));
+        event.addProvider(new SimpleModelProvider(FAItemModelGenerator::new, FABlockModelGenerator::new, packOutput, FAUtils.ID));
         event.addProvider(new FASoundDefinitionsProvider(packOutput, FAUtils.ID));
         event.addProvider(new FALanguageProvider(packOutput, FAUtils.ID, "en_us"));
         event.addProvider(new FAEntityModelProvider(packOutput, FAUtils.ID));

@@ -5,16 +5,19 @@
 - Updated Javelin Models and Textures
 - Updated Skull Overlay
 - Skulls Now Block Enderman and Creaking Vision
+- Cleaned Up en_us.json
 - Fixed Sigillaria Hanging Sign Dropping Lepidodendron Hanging Sign
 - Fixed Tooth Dagger Not Shearing All Shearables
 - Fixed Mayan Vase Not Wobbling
-- Fixed Ankylosaurus Egg Not Droping Egg
-- Fixed Dimetrodon Egg Not Droping Egg
-- Fixed Gallimimus Egg Not Droping Egg
-- Fixed Spinosaurus Egg Not Droping Egg
+- Fixed Ankylosaurus Egg Not Dropping Egg
+- Fixed Dimetrodon Egg Not Dropping Egg
+- Fixed Gallimimus Egg Not Dropping Egg
+- Fixed Spinosaurus Egg Not Dropping Egg
 - Fixed Tyrannosaurus Head Not Moving
 - Fixed Fuels Corrupting Block Entity Data
 - Fixed Incubated Moa Egg Recipe
+- Fixed Coat Types Not Saving Correctly On Animals Spawned By Incubated Eggs
+- Fixed Animals Spawned By Incubated Eggs Not Being Tame When They Should
 - Added Archaeology Category For Analyzer Recipe Book
 - Added Palaeontology Category For Analyzer Recipe Book
 2/2/2025b 1.4.8

@@ -346,6 +346,7 @@ public final class FACreativeModeTabs {
         itemDisplayParameters.holders().lookup(FARegistries.COMMAND_TYPES).ifPresent(registryLookup -> FACreativeModeTabs.generateMagicConches(output, registryLookup));
         output.accept(FAItems.LEGACY_GENETIC_CODE.get());
         itemDisplayParameters.holders().lookup(FARegistries.FOSSIL_VARIANTS).ifPresent(registryLookup -> FACreativeModeTabs.generateArticulatedFossils(output, registryLookup, fossilVariantHolder -> fossilVariantHolder.is(FAFossilVariantTags.PLACEABLE_FROM_FOSSIL), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
+        output.accept(FAItems.JEEP_1993.get());
         output.accept(FAItems.ANKYLOSAURUS_SPAWN_EGG.get());
         output.accept(FAItems.ANU_SPAWN_EGG.get());
         output.accept(FAItems.BRACHIOSAURUS_SPAWN_EGG.get());

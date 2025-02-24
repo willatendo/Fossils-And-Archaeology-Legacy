@@ -1,6 +1,7 @@
 package willatendo.fossilslegacy.mixin.client;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
 import net.minecraft.client.ClientRecipeBook;
 import net.minecraft.client.gui.screens.recipebook.RecipeCollection;
 import net.minecraft.world.item.crafting.ExtendedRecipeBookCategory;
@@ -21,14 +22,14 @@ public class ClientRecipeBookMixin {
     @Shadow
     private Map<ExtendedRecipeBookCategory, List<RecipeCollection>> collectionsByTab;
 
-    @Inject(method = "rebuildCollections", at = @At(value = "RETURN"))
+    @Inject(method = "rebuildCollections", at = @At(value = "INVOKE"))
     private void fossilslegacy_addModCollections(CallbackInfo ci) {
         Map<ExtendedRecipeBookCategory, List<RecipeCollection>> searchTabs = new HashMap<>();
         Map<ExtendedRecipeBookCategory, List<RecipeCollection>> saved = Map.copyOf(this.collectionsByTab);
         for (FASearchRecipeBookCategory faSearchRecipeBookCategory : FASearchRecipeBookCategory.values()) {
             searchTabs.put(faSearchRecipeBookCategory, faSearchRecipeBookCategory.includedCategories().stream().flatMap(recipeBookCategory -> searchTabs.getOrDefault(recipeBookCategory, List.of()).stream()).collect(ImmutableList.toImmutableList()));
         }
-        this.collectionsByTab = new HashMap<>(saved);
+        this.collectionsByTab = Maps.newHashMap(saved);
         this.collectionsByTab.putAll(searchTabs);
         FAUtils.LOGGER.info("{}", this.collectionsByTab);
     }

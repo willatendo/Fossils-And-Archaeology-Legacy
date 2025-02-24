@@ -13,7 +13,7 @@ import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 import java.util.Set;
 
-public class FAPoiTypes {
+public final class FAPoiTypes {
     public static final SimpleRegistry<PoiType> POI_TYPES = SimpleRegistry.create(Registries.POINT_OF_INTEREST_TYPE, FAUtils.ID);
 
     public static final ResourceKey<PoiType> ARCHAEOLOGIST = FAPoiTypes.create("archaeologist");

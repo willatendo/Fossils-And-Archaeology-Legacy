@@ -3,13 +3,11 @@ package willatendo.fossilslegacy.data;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.GameRules;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.coat_type.FACoatTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Anu;
-import willatendo.fossilslegacy.server.entity.entities.Egg;
 import willatendo.fossilslegacy.server.entity.entities.TamedZombifiedPiglin;
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakerType;
@@ -230,41 +228,6 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.addCoatType(FACoatTypes.LEGACY_SANDY_VELOCIRAPTOR, "Sandy Velociraptor (2011)");
         this.addCoatType(FACoatTypes.LEGACY_WHITE_VELOCIRAPTOR, "White Velociraptor (2011)");
 
-        // Fossils Variant
-        this.add("fossilVariant.fossilslegacy.ankylosaurus", "Ankylosaurus (2024)");
-        this.add("fossilVariant.fossilslegacy.brachiosaurus", "Brachiosaurus (2024)");
-        this.add("fossilVariant.fossilslegacy.green_carnotaurus", "Green Carnotaurus (2011)");
-        this.add("fossilVariant.fossilslegacy.red_carnotaurus", "Red Carnotaurus (2011)");
-        this.add("fossilVariant.fossilslegacy.compsognathus", "Compsognathus (2024)");
-        this.add("fossilVariant.fossilslegacy.cryolophosaurus", "Cryolophosaurus (2011)");
-        this.add("fossilVariant.fossilslegacy.dilophosaurus", "Dilophosaurus (2011)");
-        this.add("fossilVariant.fossilslegacy.dodo", "Dodo (2024)");
-        this.add("fossilVariant.fossilslegacy.futabasaurus", "Futabasaurus (2024)");
-        this.add("fossilVariant.fossilslegacy.gallimimus", "Gallimimus (2024)");
-        this.add("fossilVariant.fossilslegacy.mammoth", "Mammoth (2011)");
-        this.add("fossilVariant.fossilslegacy.moa", "Moa (2024)");
-        this.add("fossilVariant.fossilslegacy.mosasaurus", "Mosasaurus (2011)");
-        this.add("fossilVariant.fossilslegacy.pachycephalosaurus", "Pachycephalosaurus (2024)");
-        this.add("fossilVariant.fossilslegacy.pteranodon", "Pteranodon (2011)");
-        this.add("fossilVariant.fossilslegacy.spinosaurus", "Spinosaurus (2024)");
-        this.add("fossilVariant.fossilslegacy.stegosaurus", "Stegosaurus (2011)");
-        this.add("fossilVariant.fossilslegacy.smilodon", "Smilodon (2011)");
-        this.add("fossilVariant.fossilslegacy.feathered_therizinosaurus", "Feathered Therizinosaurus (2011)");
-        this.add("fossilVariant.fossilslegacy.featherless_therizinosaurus", "Featherless Therizinosaurus (2011)");
-        this.add("fossilVariant.fossilslegacy.brown_triceratops", "Brown Triceratops (2024)");
-        this.add("fossilVariant.fossilslegacy.green_triceratops", "Green Triceratops (2024)");
-        this.add("fossilVariant.fossilslegacy.tyrannosaurus_legacy", "Tyrannosaurus (2011)");
-        this.add("fossilVariant.fossilslegacy.green_velociraptor", "Green Velociraptor (2024)");
-        this.add("fossilVariant.fossilslegacy.sandy_velociraptor", "Sandy Velociraptor (2024)");
-        this.add("fossilVariant.fossilslegacy.white_velociraptor", "White Velociraptor (2024)");
-        this.add("fossilVariant.fossilslegacy.legacy_brachiosaurus", "Brachiosaurus (2011)");
-        this.add("fossilVariant.fossilslegacy.legacy_futabasaurus", "Futabasaurus (2011)");
-        this.add("fossilVariant.fossilslegacy.legacy_brown_triceratops", "Brown Triceratops (2011)");
-        this.add("fossilVariant.fossilslegacy.legacy_green_triceratops", "Green Triceratops (2011)");
-        this.add("fossilVariant.fossilslegacy.legacy_green_velociraptor", "Green Velociraptor (2011)");
-        this.add("fossilVariant.fossilslegacy.legacy_sandy_velociraptor", "Sandy Velociraptor (2011)");
-        this.add("fossilVariant.fossilslegacy.legacy_white_velociraptor", "White Velociraptor (2011)");
-
         // Commands
         this.add("command_type.fossilslegacy.follow", "Follow");
         this.add("command_type.fossilslegacy.stay", "Stay");
@@ -289,7 +252,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("container.fossilslegacy.time_machine", "Time Machine");
         this.add("container.fossilslegacy.time_machine.start", "Start");
 
-        // Creative Mode Tab
+        // Creative Mode Tabs
         this.add(FACreativeModeTabs.FA_BLOCKS.get(), "F/A: Blocks");
         this.add(FACreativeModeTabs.FA_ARCHAEOLOGY_ITEMS.get(), "F/A: Archaeology Items");
         this.add(FACreativeModeTabs.FA_PALAEONTOLOGY_ITEMS.get(), "F/A: Palaeontology Items");
@@ -335,7 +298,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         // Entities
         this.add(FAEntityTypes.ANKYLOSAURUS.get());
         this.add(FAEntityTypes.BRACHIOSAURUS.get());
+        this.add(FAEntityTypes.CARNOTAURUS.get());
         this.add(FAEntityTypes.COMPSOGNATHUS.get());
+        this.add(FAEntityTypes.CRYOLOPHOSAURUS.get());
         this.add(FAEntityTypes.DILOPHOSAURUS.get());
         this.add(FAEntityTypes.DIMETRODON.get());
         this.add(FAEntityTypes.DODO.get());
@@ -350,6 +315,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAEntityTypes.SMILODON.get());
         this.add(FAEntityTypes.SPINOSAURUS.get());
         this.add(FAEntityTypes.STEGOSAURUS.get());
+        this.add(FAEntityTypes.THERIZINOSAURUS.get());
         this.add(FAEntityTypes.TRICERATOPS.get());
         this.add(FAEntityTypes.TYRANNOSAURUS.get());
         this.add(FAEntityTypes.VELOCIRAPTOR.get());
@@ -425,9 +391,14 @@ public class FALanguageProvider extends SimpleLanguageProvider {
 
         this.add(FAEntityTypes.STONE_TABLET.get());
 
-        this.add(FAEntityTypes.CARNOTAURUS.get());
-        this.add(FAEntityTypes.CRYOLOPHOSAURUS.get());
-        this.add(FAEntityTypes.THERIZINOSAURUS.get());
+        this.add(FAEntityTypes.JEEP.get());
+
+        this.add(FAEntityTypes.CALAMITES_BOAT.get(), "Calamites Boat");
+        this.add(FAEntityTypes.CALAMITES_CHEST_BOAT.get(), "Calamites Boat with Chest");
+        this.add(FAEntityTypes.LEPIDODENDRON_BOAT.get(), "Calamites Boat");
+        this.add(FAEntityTypes.LEPIDODENDRON_CHEST_BOAT.get(), "Calamites Boat with Chest");
+        this.add(FAEntityTypes.SIGILLARIA_BOAT.get(), "Sigillaria Boat");
+        this.add(FAEntityTypes.SIGILLARIA_CHEST_BOAT.get(), "Sigillaria Boat with Chest");
 
         this.add("entity.minecraft.villager.fossilslegacy.archaeologist", "Archaeologist");
         this.add("entity.minecraft.archaeologist", "Archaeologist");
@@ -704,6 +675,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.BROKEN_NETHERITE_JAVELIN.get(), "Netherite Javelin");
         this.add(FAItems.SCARAB_GEM_JAVELIN.get());
         this.add(FAItems.BROKEN_SCARAB_GEM_JAVELIN.get(), "Scarab Gem Javelin");
+
+        this.add(FAItems.JEEP_1993.get(), "1993 Jeep");
 
         this.add(FAItems.ANU_SPAWN_EGG.get());
 
@@ -1135,10 +1108,6 @@ public class FALanguageProvider extends SimpleLanguageProvider {
 
         // Upgrades
         this.add("upgrade.fossilslegacy.scarab_gem_upgrade", "Scarab Gem Upgrade");
-    }
-
-    public void add(GameRules.Key<?> key, String translation) {
-        this.add("gamerule." + key.getId(), translation);
     }
 
     public void add(SpeakerType<?> speakerType, String translation) {

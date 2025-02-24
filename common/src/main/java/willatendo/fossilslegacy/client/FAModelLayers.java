@@ -9,6 +9,7 @@ public final class FAModelLayers {
     public static final ModelLayerLocation CALAMITES_BOAT = FAModelLayers.create("boat/calamites");
     public static final ModelLayerLocation CALAMITES_CHEST_BOAT = FAModelLayers.create("chest_boat/calamites");
     public static final ModelLayerLocation FAILURESAURUS = FAModelLayers.create("failuresaurus");
+    public static final ModelLayerLocation JEEP = FAModelLayers.create("jeep");
     public static final ModelLayerLocation LEPIDODENDRON_BOAT = FAModelLayers.create("boat/lepidodendron");
     public static final ModelLayerLocation LEPIDODENDRON_CHEST_BOAT = FAModelLayers.create("chest_boat/lepidodendron");
     public static final ModelLayerLocation NAUTILUS = FAModelLayers.create("nautilus");

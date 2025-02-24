@@ -14,6 +14,7 @@ import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Nautilus;
+import willatendo.fossilslegacy.server.entity.entities.vehicle.Jeep;
 import willatendo.fossilslegacy.server.item.items.EggItem;
 import willatendo.fossilslegacy.server.item.items.*;
 import willatendo.fossilslegacy.server.level.FALevels;
@@ -239,6 +240,7 @@ public final class FAItems {
     public static final SimpleHolder<BrokenJavelinItem> BROKEN_NETHERITE_JAVELIN = FAItems.register("broken_netherite_javelin", properties -> new BrokenJavelinItem(ToolMaterial.NETHERITE, properties));
     public static final SimpleHolder<JavelinItem> SCARAB_GEM_JAVELIN = FAItems.register("scarab_gem_javelin", properties -> new JavelinItem(FAToolMaterials.SCARAB_GEM, properties));
     public static final SimpleHolder<BrokenJavelinItem> BROKEN_SCARAB_GEM_JAVELIN = FAItems.register("broken_scarab_gem_javelin", properties -> new BrokenJavelinItem(FAToolMaterials.SCARAB_GEM, properties));
+    public static final SimpleHolder<PlaceEntityItem<Jeep>> JEEP_1993 = FAItems.register("1993_jeep", properties -> new PlaceEntityItem<>(FAEntityTypes.JEEP::get, properties));
     public static final SimpleHolder<SpawnEggItem> ANU_SPAWN_EGG = FAItems.register("anu_spawn_egg", properties -> new SpawnEggItem(FAEntityTypes.ANU.get(), properties));
     public static final SimpleHolder<SpawnEggItem> FAILURESAURUS_SPAWN_EGG = FAItems.register("failuresaurus_spawn_egg", properties -> new SpawnEggItem(FAEntityTypes.FAILURESAURUS.get(), properties));
     public static final SimpleHolder<DinosaurSpawnEggItem> BRACHIOSAURUS_SPAWN_EGG = FAItems.register("brachiosaurus_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.BRACHIOSAURUS.get(), properties));

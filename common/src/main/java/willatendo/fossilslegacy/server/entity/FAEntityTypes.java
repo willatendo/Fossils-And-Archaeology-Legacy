@@ -4,6 +4,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.entity.vehicle.ChestBoat;
@@ -15,6 +16,7 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.guadalupian.Dime
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.jurassic.*;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.*;
 import willatendo.fossilslegacy.server.entity.entities.pregnant.*;
+import willatendo.fossilslegacy.server.entity.entities.vehicle.Jeep;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
@@ -102,12 +104,18 @@ public final class FAEntityTypes {
 
     public static final SimpleHolder<EntityType<StoneTablet>> STONE_TABLET = FAEntityTypes.register("stone_tablet", FAEntityTypes.simple(StoneTablet::new, MobCategory.MISC, 0.5F, 0.5F).noLootTable());
 
+    public static final SimpleHolder<EntityType<Jeep>> JEEP = FAEntityTypes.registerJeep("jeep", FAItems.JEEP_1993::get);
+
     public static final SimpleHolder<EntityType<Boat>> CALAMITES_BOAT = FAEntityTypes.registerBoat("calamites_boat", FAItems.CALAMITES_BOAT::get);
     public static final SimpleHolder<EntityType<ChestBoat>> CALAMITES_CHEST_BOAT = FAEntityTypes.registerChestBoat("calamites_chest_boat", FAItems.CALAMITES_CHEST_BOAT::get);
     public static final SimpleHolder<EntityType<Boat>> LEPIDODENDRON_BOAT = FAEntityTypes.registerBoat("lepidodendron_boat", FAItems.LEPIDODENDRON_BOAT::get);
     public static final SimpleHolder<EntityType<ChestBoat>> LEPIDODENDRON_CHEST_BOAT = FAEntityTypes.registerChestBoat("lepidodendron_chest_boat", FAItems.LEPIDODENDRON_CHEST_BOAT::get);
     public static final SimpleHolder<EntityType<Boat>> SIGILLARIA_BOAT = FAEntityTypes.registerBoat("sigillaria_boat", FAItems.SIGILLARIA_BOAT::get);
     public static final SimpleHolder<EntityType<ChestBoat>> SIGILLARIA_CHEST_BOAT = FAEntityTypes.registerChestBoat("sigillaria_chest_boat", FAItems.SIGILLARIA_CHEST_BOAT::get);
+
+    private static SimpleHolder<EntityType<Jeep>> registerJeep(String id, Supplier<Item> item) {
+        return FAEntityTypes.register(id, FAEntityTypes.<Jeep>simple((entityType, level) -> new Jeep(entityType, level, item), MobCategory.MISC, 2.0F, 2.0F).noLootTable());
+    }
 
     private static SimpleHolder<EntityType<Boat>> registerBoat(String id, Supplier<Item> boatItem) {
         return FAEntityTypes.register(id, FAEntityTypes.<Boat>simple((entityType, level) -> new Boat(entityType, level, boatItem), MobCategory.MISC, 1.375F, 0.5625F).noLootTable().eyeHeight(0.5625F).clientTrackingRange(10));

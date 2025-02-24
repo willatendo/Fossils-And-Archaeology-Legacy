@@ -12,6 +12,7 @@ import net.minecraft.world.entity.animal.horse.Donkey;
 import net.minecraft.world.entity.animal.horse.Mule;
 import willatendo.fossilslegacy.client.model.*;
 import willatendo.fossilslegacy.client.model.dinosaur.NautilusModel;
+import willatendo.fossilslegacy.client.model.vehicle.JeepModel;
 import willatendo.fossilslegacy.client.render.*;
 import willatendo.fossilslegacy.client.screen.*;
 import willatendo.fossilslegacy.server.block.FABlocks;
@@ -110,6 +111,7 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.ANCIENT_LIGHTNING_BOLT.get(), LightningBoltRenderer::new);
         modelRegister.register(FAEntityTypes.FOSSIL.get(), FossilRenderer::new);
         modelRegister.register(FAEntityTypes.STONE_TABLET.get(), StoneTabletRenderer::new);
+        modelRegister.register(FAEntityTypes.JEEP.get(), JeepRenderer::new);
 
         modelRegister.register(FAEntityTypes.CALAMITES_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.CALAMITES_BOAT));
         modelRegister.register(FAEntityTypes.LEPIDODENDRON_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.LEPIDODENDRON_BOAT));
@@ -132,11 +134,12 @@ public final class FossilsLegacyClient {
     public static void modelLayerEvent(ModelLayerRegistry modelLayerRegister) {
         modelLayerRegister.register(FAModelLayers.ANIMAL_FETUS, AnimalFetusModel::createBodyLayer);
         modelLayerRegister.register(FAModelLayers.ANU, () -> LayerDefinition.create(PlayerModel.createMesh(CubeDeformation.NONE, false), 64, 32));
-        modelLayerRegister.register(FAModelLayers.REGULAR_EGG, EggModel::createRegularBodyLayer);
-        modelLayerRegister.register(FAModelLayers.SMALL_EGG, EggModel::createSmallBodyLayer);
         modelLayerRegister.register(FAModelLayers.FAILURESAURUS, FailuresaurusModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.JEEP, JeepModel::createBodyLayer);
         modelLayerRegister.register(FAModelLayers.NAUTILUS, NautilusModel::createBodyLayer);
         modelLayerRegister.register(FAModelLayers.PLANT_EMBRYO, PlantEmbryoModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.REGULAR_EGG, EggModel::createRegularBodyLayer);
+        modelLayerRegister.register(FAModelLayers.SMALL_EGG, EggModel::createSmallBodyLayer);
         modelLayerRegister.register(FAModelLayers.THROWN_JAVELIN, JavelinModel::createBodyLayer);
         modelLayerRegister.register(FAModelLayers.TIME_MACHINE_CLOCK, TimeMachineClockModel::createBodyLayer);
         LayerDefinition boatModel = BoatModel.createBoatModel();
