@@ -14,15 +14,7 @@ import willatendo.simplelibrary.data.model.SimpleItemModelGenerator;
 
 public class FAItemModelGenerator extends SimpleItemModelGenerator {
     public FAItemModelGenerator(ItemModelGenerators itemModelGenerators) {
-        super(itemModelGenerators);
-    }
-
-    private ResourceLocation modLocation(String path) {
-        return FAUtils.resource(path);
-    }
-
-    private ResourceLocation mcLocation(String path) {
-        return FAUtils.mc(path);
+        super(itemModelGenerators, FAUtils.ID);
     }
 
     @Override

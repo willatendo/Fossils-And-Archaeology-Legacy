@@ -1,7 +1,9 @@
 package willatendo.fossilslegacy.client.state;
 
-import net.minecraft.client.renderer.entity.state.ArrowRenderState;
+import net.minecraft.client.renderer.entity.state.EntityRenderState;
 
-public class ThrownJavelinRenderState extends ArrowRenderState {
+public class ThrownJavelinRenderState extends EntityRenderState {
+    public float xRot;
+    public float yRot;
     public int variant;
 }

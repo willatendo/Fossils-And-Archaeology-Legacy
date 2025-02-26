@@ -6,7 +6,7 @@
     "north": "fossilslegacy:block/blue_cultivator_side_off",
     "particle": "fossilslegacy:block/blue_cultivator_side_off",
     "south": "fossilslegacy:block/blue_cultivator_side_off",
-    "up": "fossilslegacy:block/blue_cultivator_to",
+    "up": "fossilslegacy:block/blue_cultivator_top",
     "west": "fossilslegacy:block/blue_cultivator_side_off"
   }
 }

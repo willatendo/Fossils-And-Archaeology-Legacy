@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.server.entity.entities.vehicle;
 
 import com.google.common.collect.Lists;
 import net.minecraft.BlockUtil;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -22,7 +21,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
-import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -137,16 +135,6 @@ public class Jeep extends VehicleEntity {
 
         super.tick();
         this.tickLerp();
-
-        if (this.isControlledByLocalInstance()) {
-            if (this.level().isClientSide()) {
-                this.controlJeep();
-            }
-
-            this.move(MoverType.SELF, this.getDeltaMovement());
-        } else {
-            this.setDeltaMovement(Vec3.ZERO);
-        }
     }
 
     private void tickLerp() {
@@ -161,34 +149,14 @@ public class Jeep extends VehicleEntity {
         return 0.04;
     }
 
-    private void controlJeep() {
-        if (this.isVehicle()) {
-            if (this.hasControllingPassenger() && this.getControllingPassenger() instanceof LocalPlayer localPlayer) {
-                float motion = 0.0F;
-                if (localPlayer.input.keyPresses.left()) {
-                    --this.deltaRotation;
-                }
-
-                if (localPlayer.input.keyPresses.right()) {
-                    ++this.deltaRotation;
-                }
-
-                if (localPlayer.input.keyPresses.right() != localPlayer.input.keyPresses.left() && !localPlayer.input.keyPresses.forward() && !localPlayer.input.keyPresses.backward()) {
-                    motion += 0.005F;
-                }
-
-                this.setYRot(this.getYRot() + this.deltaRotation);
-                if (localPlayer.input.keyPresses.forward()) {
-                    motion += 0.04F;
-                }
-
-                if (localPlayer.input.keyPresses.backward()) {
-                    motion -= 0.005F;
-                }
-
-                this.setDeltaMovement(this.getDeltaMovement().add(Mth.sin(-this.getYRot() * 0.017453292F) * motion, 0.0, Mth.cos(this.getYRot() * 0.017453292F) * motion));
-            }
+    @Nullable
+    @Override
+    public LivingEntity getControllingPassenger() {
+        Entity entity = this.getFirstPassenger();
+        if (entity instanceof Player player) {
+            return player;
         }
+        return super.getControllingPassenger();
     }
 
     @Override

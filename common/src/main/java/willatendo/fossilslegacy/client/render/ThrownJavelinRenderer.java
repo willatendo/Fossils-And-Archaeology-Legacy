@@ -37,14 +37,13 @@ public class ThrownJavelinRenderer extends EntityRenderer<ThrownJavelin, ThrownJ
         thrownJavelinRenderState.variant = thrownJavelin.getVariant();
         thrownJavelinRenderState.xRot = thrownJavelin.getXRot(partialTicks);
         thrownJavelinRenderState.yRot = thrownJavelin.getYRot(partialTicks);
-        thrownJavelinRenderState.shake = (float) thrownJavelin.shakeTime - partialTicks;
     }
 
     @Override
     public void render(ThrownJavelinRenderState thrownJavelinRenderState, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
         poseStack.pushPose();
         poseStack.mulPose(Axis.YP.rotationDegrees(thrownJavelinRenderState.yRot - 90.0F));
-        poseStack.mulPose(Axis.ZP.rotationDegrees(thrownJavelinRenderState.xRot));
+        poseStack.mulPose(Axis.ZP.rotationDegrees(thrownJavelinRenderState.xRot + 90.0F));
         VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entityCutout(this.getTextureLocation(thrownJavelinRenderState)));
         this.javelinModel.setupAnim(thrownJavelinRenderState);
         this.javelinModel.renderToBuffer(poseStack, vertexConsumer, partialTicks, OverlayTexture.NO_OVERLAY);

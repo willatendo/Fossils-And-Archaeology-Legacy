@@ -6,7 +6,7 @@
     "north": "fossilslegacy:block/orange_cultivator_side_off",
     "particle": "fossilslegacy:block/orange_cultivator_side_off",
     "south": "fossilslegacy:block/orange_cultivator_side_off",
-    "up": "fossilslegacy:block/orange_cultivator_to",
+    "up": "fossilslegacy:block/orange_cultivator_top",
     "west": "fossilslegacy:block/orange_cultivator_side_off"
   }
 }

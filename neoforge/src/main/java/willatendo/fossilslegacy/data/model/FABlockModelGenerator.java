@@ -29,15 +29,7 @@ import java.util.List;
 
 public class FABlockModelGenerator extends SimpleBlockModelGenerator {
     public FABlockModelGenerator(BlockModelGenerators blockModelGenerators) {
-        super(blockModelGenerators);
-    }
-
-    private ResourceLocation modLocation(String path) {
-        return FAUtils.resource(path);
-    }
-
-    private ResourceLocation mcLocation(String path) {
-        return FAUtils.mc(path);
+        super(blockModelGenerators, FAUtils.ID);
     }
 
     @Override
