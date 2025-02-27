@@ -1,4 +1,4 @@
-// 1.21.1	2024-12-25T15:50:59.6496976	Loot Tables
+// 1.21.1	2025-02-27T12:05:22.0743758	Loot Tables
 6b196aa6cdadbe968410835a209fed7ad992066f data/fossilslegacy/loot_table/archaeology/inca_loot.json
 5fcf811a958fcf132678d4423a7472c475c2b8ca data/fossilslegacy/loot_table/blocks/analyzer.json
 8bfc811efa599c9be09afe46481ec9ebbf5f3a33 data/fossilslegacy/loot_table/blocks/archaeology_workbench.json
@@ -122,15 +122,19 @@ ca28d9f2b5a2082201be5712df0541b759273230 data/fossilslegacy/loot_table/entities/
 f542381446e485de603b70efcc7089f3de264f7b data/fossilslegacy/loot_table/entities/dimetrodon.json
 e8f25834c82bbce95bbcc8ab96fe014ffa6286a0 data/fossilslegacy/loot_table/entities/dodo.json
 3f9fbebf1e59b2db877ea746639a80514bc1853c data/fossilslegacy/loot_table/entities/egg.json
+ff0fe9163b56ebecca50ee7fa9b3a7952d69c0f2 data/fossilslegacy/loot_table/entities/egg/ankylosaurus.json
 b42cdd3e259e6373322f855817a4c9a8c68b6921 data/fossilslegacy/loot_table/entities/egg/brachiosaurus.json
 532de809360dfb9f15a4f5adf0d59728088ed948 data/fossilslegacy/loot_table/entities/egg/carnotaurus.json
 35db0186e76d5ec395323b1e6bf35fd2cd1f4e12 data/fossilslegacy/loot_table/entities/egg/compsognathus.json
 c4c4f640b045b44090c41a48d68fb17b1e1643f0 data/fossilslegacy/loot_table/entities/egg/cryolophosaurus.json
 cff7827900ed6cdee696758d513686a13e646162 data/fossilslegacy/loot_table/entities/egg/dilophosaurus.json
+62f9d71c929dba782e748b4864ccda4ad12cecc7 data/fossilslegacy/loot_table/entities/egg/dimetrodon.json
 81c06f37081ceb5472deb0bb64e68702e59b12ea data/fossilslegacy/loot_table/entities/egg/futabasaurus.json
+f307847109db68cf1d83b26ad7bd24426b91065a data/fossilslegacy/loot_table/entities/egg/gallimimus.json
 24b0e1ccc995206a0be07890ab65fb2260afaffd data/fossilslegacy/loot_table/entities/egg/mosasaurus.json
 a61e845c65df97c7005fb6b4509d632d3bd719bc data/fossilslegacy/loot_table/entities/egg/pachycephalosaurus.json
 430cd67cf2426019cb557e4f40a2f7a85a32d8b8 data/fossilslegacy/loot_table/entities/egg/pteranodon.json
+d69d8acdf0dfd7bfbbc11c262858376fbaecf9df data/fossilslegacy/loot_table/entities/egg/spinosaurus.json
 0a83a98fe7475631050018792e7d1bb3d04f4d24 data/fossilslegacy/loot_table/entities/egg/stegosaurus.json
 c178a5fb631636511d09143718aa8ceb3d22e18d data/fossilslegacy/loot_table/entities/egg/therizinosaurus.json
 36a10c15d138f13acfd2f6fb9eb2cb7329d45378 data/fossilslegacy/loot_table/entities/egg/triceratops.json
