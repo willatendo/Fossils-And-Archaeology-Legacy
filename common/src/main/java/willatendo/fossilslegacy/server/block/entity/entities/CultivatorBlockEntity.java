@@ -41,6 +41,7 @@ import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.menu.menus.CultivatorMenu;
 import willatendo.fossilslegacy.server.recipe.FARecipeTypes;
 import willatendo.fossilslegacy.server.recipe.recipes.CultivationRecipe;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FAFuelEntryTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -195,7 +196,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         this.onTime = compoundTag.getInt("OnTime");
         this.cultivationProgress = compoundTag.getInt("CultivationTime");
         this.cultivationTotalTime = compoundTag.getInt("CultivationTimeTotal");
-        this.onDuration = this.getOnDuration(this.itemStacks.get(1));
+        this.onDuration = this.getOnDuration(provider, this.itemStacks.get(1));
         CompoundTag usedRecipes = compoundTag.getCompound("RecipesUsed");
         for (String recipes : usedRecipes.getAllKeys()) {
             this.recipesUsed.put(ResourceLocation.parse(recipes), usedRecipes.getInt(recipes));
@@ -268,7 +269,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
 
             int maxStackSize = cultivatorBlockEntity.getMaxStackSize();
             if (!cultivatorBlockEntity.isOn() && cultivatorBlockEntity.canCultivate(level.registryAccess(), recipe, cultivatorBlockEntity.itemStacks, maxStackSize)) {
-                cultivatorBlockEntity.onTime = cultivatorBlockEntity.getOnDuration(fuel);
+                cultivatorBlockEntity.onTime = cultivatorBlockEntity.getOnDuration(level.registryAccess(), fuel);
                 cultivatorBlockEntity.onDuration = cultivatorBlockEntity.onTime;
                 if (cultivatorBlockEntity.isOn()) {
                     changed = true;
@@ -361,11 +362,11 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         }
     }
 
-    public int getOnDuration(ItemStack itemStack) {
+    public int getOnDuration(HolderLookup.Provider provider, ItemStack itemStack) {
         if (itemStack.isEmpty()) {
             return 0;
         } else {
-            return FuelEntry.getFuel(this.level.registryAccess(), FAFuelEntryTags.CULTIVATOR).getOrDefault(itemStack.getItem(), 0);
+            return FuelEntry.getFuel(provider.lookupOrThrow(FARegistries.FUEL_ENTRY), FAFuelEntryTags.CULTIVATOR).getOrDefault(itemStack.getItem(), 0);
         }
     }
 
@@ -459,7 +460,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         } else if (slot != 1) {
             return true;
         } else {
-            return this.getOnDuration(itemStack) > 0;
+            return this.getOnDuration(this.level.registryAccess(), itemStack) > 0;
         }
     }
 

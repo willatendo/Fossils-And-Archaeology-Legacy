@@ -65,7 +65,7 @@ public class AnimalEggItem extends Item implements ProjectileItem {
         if (!level.isClientSide) {
             ThrownAnimalEgg thrownAnimalEgg = new ThrownAnimalEgg(level, player, this.animal.get(), this.incubated);
             if (this.coatTypes != null) {
-                thrownAnimalEgg.setCoatType(level.registryAccess().lookup(FARegistries.COAT_TYPES).get().get(this.coatTypes).get().getRandomElement(level.getRandom()).get().value());
+                thrownAnimalEgg.setCoatType(level.registryAccess().lookup(FARegistries.COAT_TYPES).get().get(this.coatTypes).get().getRandomElement(level.getRandom()).get());
             }
             thrownAnimalEgg.setItem(itemStack);
             thrownAnimalEgg.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);

@@ -58,16 +58,20 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
         this.add(FAEntityTypes.VELOCIRAPTOR.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_VELOCIRAPTOR.get()));
 
         this.add(FAEntityTypes.EGG.get(), LootTable.lootTable());
+        this.add(FAEntityTypes.EGG.get(), FALootTables.ANKYLOSAURUS_EGG, this.createEggTable(FAItems.ANKYLOSAURUS_EGG.get()));
         this.add(FAEntityTypes.EGG.get(), FALootTables.BRACHIOSAURUS_EGG, this.createEggTable(FAItems.BRACHIOSAURUS_EGG.get()));
         this.add(FAEntityTypes.EGG.get(), FALootTables.CARNOTAURUS_EGG, this.createEggTable(FAItems.CARNOTAURUS_EGG.get()));
         this.add(FAEntityTypes.EGG.get(), FALootTables.COMPSOGNATHUS_EGG, this.createEggTable(FAItems.COMPSOGNATHUS_EGG.get()));
         this.add(FAEntityTypes.EGG.get(), FALootTables.CRYOLOPHOSAURUS_EGG, this.createEggTable(FAItems.CRYOLOPHOSAURUS_EGG.get()));
         this.add(FAEntityTypes.EGG.get(), FALootTables.DILOPHOSAURUS_EGG, this.createEggTable(FAItems.DILOPHOSAURUS_EGG.get()));
+        this.add(FAEntityTypes.EGG.get(), FALootTables.DIMETRODON_EGG, this.createEggTable(FAItems.DIMETRODON_EGG.get()));
         this.add(FAEntityTypes.EGG.get(), FALootTables.FUTABASAURUS_EGG, this.createEggTable(FAItems.FUTABASAURUS_EGG.get()));
+        this.add(FAEntityTypes.EGG.get(), FALootTables.GALLIMIMUS_EGG, this.createEggTable(FAItems.GALLIMIMUS_EGG.get()));
         this.add(FAEntityTypes.EGG.get(), FALootTables.MOSASAURUS_EGG, this.createEggTable(FAItems.MOSASAURUS_EGG.get()));
         this.add(FAEntityTypes.EGG.get(), FALootTables.PACHYCEPHALOSAURUS_EGG, this.createEggTable(FAItems.PACHYCEPHALOSAURUS_EGG.get()));
         this.add(FAEntityTypes.EGG.get(), FALootTables.PTERANODON_EGG, this.createEggTable(FAItems.PTERANODON_EGG.get()));
         this.add(FAEntityTypes.EGG.get(), FALootTables.STEGOSAURUS_EGG, this.createEggTable(FAItems.STEGOSAURUS_EGG.get()));
+        this.add(FAEntityTypes.EGG.get(), FALootTables.SPINOSAURUS_EGG, this.createEggTable(FAItems.SPINOSAURUS_EGG.get()));
         this.add(FAEntityTypes.EGG.get(), FALootTables.THERIZINOSAURUS_EGG, this.createEggTable(FAItems.THERIZINOSAURUS_EGG.get()));
         this.add(FAEntityTypes.EGG.get(), FALootTables.TRICERATOPS_EGG, this.createEggTable(FAItems.TRICERATOPS_EGG.get()));
         this.add(FAEntityTypes.EGG.get(), FALootTables.TYRANNOSAURUS_EGG, this.createEggTable(FAItems.TYRANNOSAURUS_EGG.get()));

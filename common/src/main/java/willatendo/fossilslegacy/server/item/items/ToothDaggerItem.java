@@ -8,6 +8,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Shearable;
 import net.minecraft.world.entity.animal.MushroomCow;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.animal.SnowGolem;
@@ -32,26 +33,10 @@ public class ToothDaggerItem extends SwordItem {
         if (livingEntity.level().isClientSide) {
             return InteractionResult.PASS;
         }
-        if (livingEntity instanceof Sheep sheep) {
-            if (sheep.readyForShearing()) {
-                sheep.shear(SoundSource.PLAYERS);
-                sheep.gameEvent(GameEvent.SHEAR, player);
-                itemStack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(livingEntity.getUsedItemHand()));
-                return InteractionResult.SUCCESS;
-            }
-        }
-        if (livingEntity instanceof MushroomCow mushroomCow) {
-            if (mushroomCow.readyForShearing()) {
-                mushroomCow.shear(SoundSource.PLAYERS);
-                mushroomCow.gameEvent(GameEvent.SHEAR, player);
-                itemStack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(livingEntity.getUsedItemHand()));
-                return InteractionResult.SUCCESS;
-            }
-        }
-        if (livingEntity instanceof SnowGolem snowGolem) {
-            if (snowGolem.readyForShearing()) {
-                snowGolem.shear(SoundSource.PLAYERS);
-                snowGolem.gameEvent(GameEvent.SHEAR, player);
+        if (livingEntity instanceof Shearable shearable) {
+            if (shearable.readyForShearing()) {
+                shearable.shear(SoundSource.PLAYERS);
+                livingEntity.gameEvent(GameEvent.SHEAR, player);
                 itemStack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(livingEntity.getUsedItemHand()));
                 return InteractionResult.SUCCESS;
             }

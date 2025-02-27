@@ -115,12 +115,12 @@ public class MayanVaseBlock extends BaseEntityBlock implements SimpleWaterlogged
     }
 
     @Override
-    protected InteractionResult useWithoutItem(BlockState p_316866_, Level p_316544_, BlockPos p_316541_, Player p_316732_, BlockHitResult p_316860_) {
-        BlockEntity var7 = p_316544_.getBlockEntity(p_316541_);
-        if (var7 instanceof DecoratedPotBlockEntity decoratedpotblockentity) {
-            p_316544_.playSound((Player) null, p_316541_, SoundEvents.DECORATED_POT_INSERT_FAIL, SoundSource.BLOCKS, 1.0F, 1.0F);
-            decoratedpotblockentity.wobble(DecoratedPotBlockEntity.WobbleStyle.NEGATIVE);
-            p_316544_.gameEvent(p_316732_, GameEvent.BLOCK_CHANGE, p_316541_);
+    protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
+        BlockEntity blockEntity = level.getBlockEntity(blockPos);
+        if (blockEntity instanceof VaseBlockEntity vaseBlockEntity) {
+            level.playSound(null, blockPos, SoundEvents.DECORATED_POT_INSERT_FAIL, SoundSource.BLOCKS, 1.0F, 1.0F);
+            vaseBlockEntity.wobble(DecoratedPotBlockEntity.WobbleStyle.NEGATIVE);
+            level.gameEvent(player, GameEvent.BLOCK_CHANGE, blockPos);
             return InteractionResult.SUCCESS;
         } else {
             return InteractionResult.PASS;

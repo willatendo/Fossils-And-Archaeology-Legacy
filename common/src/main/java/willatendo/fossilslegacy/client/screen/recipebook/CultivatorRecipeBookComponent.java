@@ -8,6 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import willatendo.fossilslegacy.server.fuel.FuelEntry;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FAFuelEntryTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -40,7 +41,7 @@ public class CultivatorRecipeBookComponent extends RecipeBookComponent {
         Slot fuelSlot = slots.get(1);
         if (fuelSlot.getItem().isEmpty()) {
             if (this.fuels == null) {
-                this.fuels = Ingredient.of(FuelEntry.getFuel(this.minecraft.level.registryAccess(), FAFuelEntryTags.CULTIVATOR).keySet().stream().filter(item -> item.isEnabled(this.minecraft.level.enabledFeatures())).map(ItemStack::new));
+                this.fuels = Ingredient.of(FuelEntry.getFuel(this.minecraft.level.holderLookup(FARegistries.FUEL_ENTRY), FAFuelEntryTags.CULTIVATOR).keySet().stream().filter(item -> item.isEnabled(this.minecraft.level.enabledFeatures())).map(ItemStack::new));
             }
 
             this.ghostRecipe.addIngredient(this.fuels, fuelSlot.x, fuelSlot.y);

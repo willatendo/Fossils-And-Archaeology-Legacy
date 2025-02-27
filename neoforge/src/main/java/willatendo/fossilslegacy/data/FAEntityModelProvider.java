@@ -42,7 +42,7 @@ public class FAEntityModelProvider extends EntityModelProvider {
         this.add(EntityModelHolder.builder(this.mod("legacy_therizinosaurus"), TherizinosaurusModels.createLegacyTherizinosaurusBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_THERIZINOSAURUS_WALK).build());
         this.add(EntityModelHolder.builder(this.mod("triceratops"), TriceratopsModels.createTriceratopsBodyLayer()).withAnimation("walk", this.mod("triceratops_walk")).withHeadPeices("head").build());
         this.add(EntityModelHolder.builder(this.mod("legacy_triceratops"), TriceratopsModels.createLegacyTriceratopsBodyLayer()).withBuiltInAnimation("walk", BuiltInAnimationTypes.LEGACY_TRICERATOPS_WALK).build());
-        this.add(EntityModelHolder.builder(this.mod("tyrannosaurus"), TyrannosaurusModels.createTyrannosaurusBodyLayer()).withAnimation("walk", this.mod("tyrannosaurus_walk")).build());
+        this.add(EntityModelHolder.builder(this.mod("tyrannosaurus"), TyrannosaurusModels.createTyrannosaurusBodyLayer()).withAnimation("walk", this.mod("tyrannosaurus_walk")).withHeadPeices("neck").build());
         this.add(EntityModelHolder.builder(this.mod("knocked_out_tyrannosaurus"), TyrannosaurusModels.createKnockedOutTyrannosaurusBodyLayer()).withHeadPeices("neck").build());
         this.addBuiltIn(this.mod("legacy_tyrannosaurus"));
         this.addBuiltIn(this.mod("legacy_tyrannosaurus_fossil"));

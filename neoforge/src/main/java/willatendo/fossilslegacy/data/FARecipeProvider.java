@@ -204,7 +204,7 @@ public class FARecipeProvider extends SimpleRecipeProvider {
         this.cultivate(CultivationBookCategory.EGG, FAItems.PACHYCEPHALOSAURUS_DNA.get(), FAItems.PACHYCEPHALOSAURUS_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.COMPSOGNATHUS_DNA.get(), FAItems.COMPSOGNATHUS_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.DODO_DNA.get(), FAItems.INCUBATED_DODO_EGG.get(), 6000);
-        this.cultivate(CultivationBookCategory.EGG, FAItems.MOA_DNA.get(), FAItems.MOA_EGG.get(), 6000);
+        this.cultivate(CultivationBookCategory.EGG, FAItems.MOA_DNA.get(), FAItems.INCUBATED_MOA_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.GALLIMIMUS_DNA.get(), FAItems.GALLIMIMUS_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.SPINOSAURUS_DNA.get(), FAItems.SPINOSAURUS_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.ANKYLOSAURUS_DNA.get(), FAItems.ANKYLOSAURUS_EGG.get(), 6000);

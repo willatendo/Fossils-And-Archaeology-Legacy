@@ -10,6 +10,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import willatendo.fossilslegacy.server.block.entity.entities.ArchaeologyWorkbenchBlockEntity;
 import willatendo.fossilslegacy.server.fuel.FAFuelEntries;
 import willatendo.fossilslegacy.server.fuel.FuelEntry;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FAFuelEntryTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
 
@@ -42,7 +43,7 @@ public class ArchaeologyWorkbenchRecipeBookComponent extends RecipeBookComponent
         Slot fuelSlot = slots.get(1);
         if (fuelSlot.getItem().isEmpty()) {
             if (this.fuels == null) {
-                this.fuels = Ingredient.of(FuelEntry.getFuel(this.minecraft.level.registryAccess(), FAFuelEntryTags.ARCHAEOLOGY_WORKBENCH).keySet().stream().filter(item -> item.isEnabled(this.minecraft.level.enabledFeatures())).map(ItemStack::new));
+                this.fuels = Ingredient.of(FuelEntry.getFuel(this.minecraft.level.holderLookup(FARegistries.FUEL_ENTRY), FAFuelEntryTags.ARCHAEOLOGY_WORKBENCH).keySet().stream().filter(item -> item.isEnabled(this.minecraft.level.enabledFeatures())).map(ItemStack::new));
             }
 
             this.ghostRecipe.addIngredient(this.fuels, fuelSlot.x, fuelSlot.y);

@@ -20,12 +20,16 @@ public final class FALootTables {
 
     public static final ResourceKey<LootTable> INCA_LOOT = FALootTables.create("archaeology/inca_loot");
 
+    public static final ResourceKey<LootTable> ANKYLOSAURUS_EGG = FALootTables.create("entities/egg/ankylosaurus");
     public static final ResourceKey<LootTable> BRACHIOSAURUS_EGG = FALootTables.create("entities/egg/brachiosaurus");
     public static final ResourceKey<LootTable> DILOPHOSAURUS_EGG = FALootTables.create("entities/egg/dilophosaurus");
+    public static final ResourceKey<LootTable> DIMETRODON_EGG = FALootTables.create("entities/egg/dimetrodon");
     public static final ResourceKey<LootTable> MOSASAURUS_EGG = FALootTables.create("entities/egg/mosasaurus");
     public static final ResourceKey<LootTable> FUTABASAURUS_EGG = FALootTables.create("entities/egg/futabasaurus");
+    public static final ResourceKey<LootTable> GALLIMIMUS_EGG = FALootTables.create("entities/egg/gallimimus");
     public static final ResourceKey<LootTable> PTERANODON_EGG = FALootTables.create("entities/egg/pteranodon");
     public static final ResourceKey<LootTable> STEGOSAURUS_EGG = FALootTables.create("entities/egg/stegosaurus");
+    public static final ResourceKey<LootTable> SPINOSAURUS_EGG = FALootTables.create("entities/egg/spinosaurus");
     public static final ResourceKey<LootTable> TRICERATOPS_EGG = FALootTables.create("entities/egg/triceratops");
     public static final ResourceKey<LootTable> TYRANNOSAURUS_EGG = FALootTables.create("entities/egg/tyrannosaurus");
     public static final ResourceKey<LootTable> VELOCIRAPTOR_EGG = FALootTables.create("entities/egg/velociraptor");

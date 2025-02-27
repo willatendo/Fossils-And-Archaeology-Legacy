@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.server.entity.entities;
 
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -12,20 +13,23 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.entity.animal.Parrot;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import willatendo.fossilslegacy.server.coat_type.CoatType;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CoatTypeEntity;
+import willatendo.fossilslegacy.server.entity.util.interfaces.TamesOnBirth;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 
-public class ThrownAnimalEgg extends ThrowableItemProjectile {
+public class ThrownAnimalEgg extends ThrowableItemProjectile implements CoatTypeEntity {
     private EntityType<? extends Animal> animal;
-    private CoatType coatType;
+    private Holder<CoatType> coatType;
     private boolean incubated;
 
     public ThrownAnimalEgg(EntityType<? extends ThrownAnimalEgg> entityType, Level level) {
@@ -46,8 +50,14 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile {
         this.incubated = incubated;
     }
 
-    public void setCoatType(CoatType coatType) {
+    @Override
+    public void setCoatType(Holder<CoatType> coatType) {
         this.coatType = coatType;
+    }
+
+    @Override
+    public Holder<CoatType> getCoatType() {
+        return this.coatType;
     }
 
     @Override
@@ -68,10 +78,9 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile {
     @Override
     protected void onHit(HitResult hitResult) {
         super.onHit(hitResult);
-        boolean shouldHatch = this.incubated ? true : this.random.nextInt(8) == 0;
 
-        if (shouldHatch) {
-            if (!this.level().isClientSide()) {
+        if (!this.level().isClientSide()) {
+            if (this.incubated || this.random.nextInt(8) == 0) {
                 int i = 1;
                 if (this.random.nextInt(32) == 0) {
                     i = 4;
@@ -79,11 +88,20 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile {
 
                 for (int animals = 0; animals < i; ++animals) {
                     Animal animalToSpawn = this.animal.create(this.level());
+                    animalToSpawn.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
                     if (animalToSpawn instanceof CoatTypeEntity coatTypeEntity && this.coatType != null) {
-                        coatTypeEntity.setCoatType(Holder.direct(coatType));
+                        coatTypeEntity.setCoatType(this.coatType);
                     }
                     if (animalToSpawn instanceof Dinosaur dinosaur) {
                         dinosaur.setGrowthStage(0);
+                    }
+                    if (animalToSpawn instanceof TamesOnBirth tamesOnBirth) {
+                        if (tamesOnBirth.tamesOnBirth()) {
+                            Player player = this.level().getNearestPlayer(animalToSpawn, 25.0D);
+                            if (player != null) {
+                                tamesOnBirth.setOwnerUUID(player.getUUID());
+                            }
+                        }
                     }
                     if (animalToSpawn instanceof Chicken) {
                         animalToSpawn.setBaby(true);
@@ -91,13 +109,12 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile {
                     if (animalToSpawn instanceof Parrot parrot) {
                         parrot.setVariant(Util.getRandom(Parrot.Variant.values(), this.level().getRandom()));
                     }
-                    animalToSpawn.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
                     this.level().addFreshEntity(animalToSpawn);
                 }
-
-                this.level().broadcastEntityEvent(this, (byte) 3);
-                this.discard();
             }
+
+            this.level().broadcastEntityEvent(this, (byte) 3);
+            this.discard();
         }
     }
 
@@ -107,7 +124,7 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile {
         compoundTag.putString("EntityType", BuiltInRegistries.ENTITY_TYPE.getKey(this.animal).toString());
         compoundTag.putBoolean("Incubated", this.incubated);
         if (this.coatType != null) {
-            compoundTag.putString("CoatType", this.registryAccess().registry(FARegistries.COAT_TYPES).get().getKey(this.coatType).toString());
+            this.addCoatType(compoundTag);
         }
     }
 
@@ -117,12 +134,17 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile {
         this.animal = (EntityType<? extends Animal>) BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.parse(compoundTag.getString("EntityType")));
         this.incubated = compoundTag.getBoolean("Incubated");
         if (compoundTag.contains("CoatType")) {
-            this.coatType = this.registryAccess().registry(FARegistries.COAT_TYPES).get().get(ResourceLocation.parse(compoundTag.getString("CoatType")));
+            this.readCoatType(compoundTag);
         }
     }
 
     @Override
     protected Item getDefaultItem() {
         return FAItems.INCUBATED_CHICKEN_EGG.get();
+    }
+
+    @Override
+    public RegistryAccess getRegistryAccess() {
+        return this.registryAccess();
     }
 }

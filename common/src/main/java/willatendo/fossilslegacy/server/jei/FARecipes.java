@@ -72,7 +72,7 @@ public final class FARecipes {
 
     public List<FuelRecipe> getBiomatterRecipes() {
         List<FuelRecipe> fuelRecipes = new ArrayList<>();
-        FuelEntry.getFuel(this.registryAccess, FAFuelEntryTags.CULTIVATOR).forEach((item, time) -> fuelRecipes.add(new FuelRecipe(new ItemStack(item), time)));
+        FuelEntry.getFuel(this.registryAccess.lookupOrThrow(FARegistries.FUEL_ENTRY), FAFuelEntryTags.CULTIVATOR).forEach((item, time) -> fuelRecipes.add(new FuelRecipe(new ItemStack(item), time)));
         return fuelRecipes;
     }
 
@@ -111,7 +111,7 @@ public final class FARecipes {
 
     public List<FuelRecipe> getInformationRecipes() {
         List<FuelRecipe> fuelRecipes = new ArrayList<>();
-        FuelEntry.getFuel(this.registryAccess, FAFuelEntryTags.ARCHAEOLOGY_WORKBENCH).forEach((item, time) -> fuelRecipes.add(new FuelRecipe(new ItemStack(item), time)));
+        FuelEntry.getFuel(this.registryAccess.lookupOrThrow(FARegistries.FUEL_ENTRY), FAFuelEntryTags.ARCHAEOLOGY_WORKBENCH).forEach((item, time) -> fuelRecipes.add(new FuelRecipe(new ItemStack(item), time)));
         return fuelRecipes;
     }
 

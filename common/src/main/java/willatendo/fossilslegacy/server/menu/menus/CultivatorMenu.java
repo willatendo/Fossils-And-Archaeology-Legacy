@@ -19,6 +19,7 @@ import willatendo.fossilslegacy.server.menu.FARecipeBookTypes;
 import willatendo.fossilslegacy.server.menu.slot.FuelSlot;
 import willatendo.fossilslegacy.server.menu.slot.ResultSlot;
 import willatendo.fossilslegacy.server.recipe.recipes.CultivationRecipe;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FAFuelEntryTags;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public class CultivatorMenu extends RecipeBookMenu<SingleRecipeInput, Cultivatio
         this.cultivatorBlockEntity = cultivatorBlockEntity;
 
         this.addSlot(new Slot(cultivatorBlockEntity, 0, 49, 20));
-        this.addSlot(new FuelSlot(cultivatorBlockEntity, 1, 80, 54, itemStack -> cultivatorBlockEntity.getOnDuration(itemStack) > 0));
+        this.addSlot(new FuelSlot(cultivatorBlockEntity, 1, 80, 54, itemStack -> cultivatorBlockEntity.getOnDuration(inventory.player.registryAccess(), itemStack) > 0));
         this.addSlot(new ResultSlot(inventory.player, cultivatorBlockEntity, 2, 111, 20));
 
         for (int row = 0; row < 3; row++) {
@@ -120,7 +121,7 @@ public class CultivatorMenu extends RecipeBookMenu<SingleRecipeInput, Cultivatio
                     return ItemStack.EMPTY;
                 }
             } else {
-                if (FuelEntry.getFuel(this.level.registryAccess(), FAFuelEntryTags.CULTIVATOR).getOrDefault(itemStackInSlot.getItem(), 0) > 0) {
+                if (FuelEntry.getFuel(this.level.holderLookup(FARegistries.FUEL_ENTRY), FAFuelEntryTags.CULTIVATOR).getOrDefault(itemStackInSlot.getItem(), 0) > 0) {
                     this.moveItemStackTo(itemStackInSlot, 1, playerInventoryStartIndex, false);
                     return ItemStack.EMPTY;
                 } else if (!this.moveItemStackTo(itemStackInSlot, 0, playerInventoryStartIndex, false)) {

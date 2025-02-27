@@ -1,3 +1,16 @@
+27/2/2024 1.4.9
+- Fixed Tooth Dagger Not Shearing All Shearables
+- Fixed Mayan Vase Not Wobbling
+- Fixed Ankylosaurus Egg Not Dropping Egg
+- Fixed Dimetrodon Egg Not Dropping Egg
+- Fixed Gallimimus Egg Not Dropping Egg
+- Fixed Spinosaurus Egg Not Dropping Egg
+- Fixed Tyrannosaurus Head Not Moving
+- Fixed Fuels Corrupting Block Entity Data
+- Fixed Incubated Moa Egg Recipe
+- Fixed Coat Types Not Saving Correctly On Animals Spawned By Incubated Eggs
+- Fixed Animals Spawned By Incubated Eggs Not Being Tame When They Should
+- Fixed Animals Not Saving Important Data When Using Lasso-Like Mods
 2/2/2024b 1.4.8
 - Fixed Server Crash
 2/2/2024a 1.4.7

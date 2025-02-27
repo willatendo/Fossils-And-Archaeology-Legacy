@@ -32,6 +32,7 @@ import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.menu.menus.ArchaeologyWorkbenchMenu;
 import willatendo.fossilslegacy.server.recipe.FARecipeTypes;
 import willatendo.fossilslegacy.server.recipe.recipes.ArchaeologyRecipe;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FAFuelEntryTags;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
 import willatendo.fossilslegacy.server.utils.FossilsLegacyUtils;
@@ -109,7 +110,7 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
         this.onTime = compoundTag.getInt("OnTime");
         this.archaeologyProgress = compoundTag.getInt("ArchaeologyTime");
         this.archaeologyTotalTime = compoundTag.getInt("ArchaeologyTimeTotal");
-        this.onDuration = this.getOnDuration(this.itemStacks.get(1));
+        this.onDuration = this.getOnDuration(provider, this.itemStacks.get(1));
         CompoundTag usedRecipes = compoundTag.getCompound("RecipesUsed");
         for (String recipes : usedRecipes.getAllKeys()) {
             this.recipesUsed.put(ResourceLocation.parse(recipes), usedRecipes.getInt(recipes));
@@ -155,7 +156,7 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
 
                 int maxStackSize = archaeologyWorkbenchBlockEntity.getMaxStackSize();
                 if (!archaeologyWorkbenchBlockEntity.isOn() && archaeologyWorkbenchBlockEntity.canFix(level.registryAccess(), recipe, archaeologyWorkbenchBlockEntity.itemStacks, maxStackSize)) {
-                    archaeologyWorkbenchBlockEntity.onTime = archaeologyWorkbenchBlockEntity.getOnDuration(fuel);
+                    archaeologyWorkbenchBlockEntity.onTime = archaeologyWorkbenchBlockEntity.getOnDuration(level.registryAccess(), fuel);
                     archaeologyWorkbenchBlockEntity.onDuration = archaeologyWorkbenchBlockEntity.onTime;
                     if (archaeologyWorkbenchBlockEntity.isOn()) {
                         changed = true;
@@ -240,11 +241,11 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
         }
     }
 
-    public int getOnDuration(ItemStack itemStack) {
+    public int getOnDuration(HolderLookup.Provider provider, ItemStack itemStack) {
         if (itemStack.isEmpty()) {
             return 0;
         } else {
-            return FuelEntry.getFuel(this.level.registryAccess(), FAFuelEntryTags.ARCHAEOLOGY_WORKBENCH).getOrDefault(itemStack.getItem(), 0);
+            return FuelEntry.getFuel(provider.lookupOrThrow(FARegistries.FUEL_ENTRY), FAFuelEntryTags.ARCHAEOLOGY_WORKBENCH).getOrDefault(itemStack.getItem(), 0);
         }
     }
 
@@ -334,7 +335,7 @@ public class ArchaeologyWorkbenchBlockEntity extends BaseContainerBlockEntity im
         } else if (slot != 1) {
             return true;
         } else {
-            return this.getOnDuration(itemStack) > 0;
+            return this.getOnDuration(this.level.registryAccess(), itemStack) > 0;
         }
     }
 

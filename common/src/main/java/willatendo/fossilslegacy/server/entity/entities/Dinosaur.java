@@ -461,6 +461,38 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
     }
 
     @Override
+    public CompoundTag saveWithoutId(CompoundTag compoundTag) {
+        if (this.getOwnerUUID() != null) {
+            compoundTag.putUUID("Owner", this.getOwnerUUID());
+        }
+
+        this.addCoatType(compoundTag);
+        this.addCommandType(compoundTag);
+        compoundTag.putInt("DaysAlive", this.getDaysAlive());
+        compoundTag.putInt("Hunger", this.getHunger());
+        compoundTag.putInt("GrowthStage", this.getGrowthStage());
+        compoundTag.putInt("InternalClock", this.internalClock);
+
+        return super.saveWithoutId(compoundTag);
+    }
+
+    @Override
+    public boolean save(CompoundTag compoundTag) {
+        if (this.getOwnerUUID() != null) {
+            compoundTag.putUUID("Owner", this.getOwnerUUID());
+        }
+
+        this.addCoatType(compoundTag);
+        this.addCommandType(compoundTag);
+        compoundTag.putInt("DaysAlive", this.getDaysAlive());
+        compoundTag.putInt("Hunger", this.getHunger());
+        compoundTag.putInt("GrowthStage", this.getGrowthStage());
+        compoundTag.putInt("InternalClock", this.internalClock);
+
+        return super.save(compoundTag);
+    }
+
+    @Override
     public void ate() {
         this.setHunger(this.getMaxHunger());
         super.ate();

@@ -19,6 +19,7 @@ import willatendo.fossilslegacy.server.menu.FARecipeBookTypes;
 import willatendo.fossilslegacy.server.menu.slot.FuelSlot;
 import willatendo.fossilslegacy.server.menu.slot.ResultSlot;
 import willatendo.fossilslegacy.server.recipe.recipes.ArchaeologyRecipe;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FAFuelEntryTags;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public class ArchaeologyWorkbenchMenu extends RecipeBookMenu<SingleRecipeInput, 
         this.archaeologyWorkbenchBlockEntity = archaeologyWorkbenchBlockEntity;
 
         this.addSlot(new Slot(archaeologyWorkbenchBlockEntity, 0, 49, 20));
-        this.addSlot(new FuelSlot(archaeologyWorkbenchBlockEntity, 1, 80, 54, itemStack -> archaeologyWorkbenchBlockEntity.getOnDuration(itemStack) > 0));
+        this.addSlot(new FuelSlot(archaeologyWorkbenchBlockEntity, 1, 80, 54, itemStack -> archaeologyWorkbenchBlockEntity.getOnDuration(inventory.player.registryAccess(), itemStack) > 0));
         this.addSlot(new ResultSlot(inventory.player, archaeologyWorkbenchBlockEntity, 2, 111, 20));
 
         for (int row = 0; row < 3; row++) {
@@ -119,7 +120,7 @@ public class ArchaeologyWorkbenchMenu extends RecipeBookMenu<SingleRecipeInput, 
                     return ItemStack.EMPTY;
                 }
             } else {
-                if (FuelEntry.getFuel(this.level.registryAccess(), FAFuelEntryTags.ARCHAEOLOGY_WORKBENCH).getOrDefault(itemStackInSlot.getItem(), 0) > 0) {
+                if (FuelEntry.getFuel(this.level.holderLookup(FARegistries.FUEL_ENTRY), FAFuelEntryTags.ARCHAEOLOGY_WORKBENCH).getOrDefault(itemStackInSlot.getItem(), 0) > 0) {
                     this.moveItemStackTo(itemStackInSlot, 1, playerInventoryStartIndex, false);
                     return ItemStack.EMPTY;
                 } else if (!this.moveItemStackTo(itemStackInSlot, 0, playerInventoryStartIndex, false)) {
