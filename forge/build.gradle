@@ -74,7 +74,7 @@ dependencies {
 
     implementation("simplelibrary:simplelibrary-forge:${simple_library_version}")
     jarJar("simplelibrary:simplelibrary-forge:${simple_library_version}") {
-        jarJar.ranged(it, "[${simple_library_version},5.0.0)")
+        jarJar.ranged(it, "[${simple_library_version},6.0.0)")
     }
 }
 

@@ -30,7 +30,6 @@ accessible method net/minecraft/world/level/block/ButtonBlock <init> (Lnet/minec
 accessible method net/minecraft/world/level/block/DoorBlock <init> (Lnet/minecraft/world/level/block/state/properties/BlockSetType;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
 accessible method net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType <init> (Lcom/mojang/serialization/MapCodec;)V
 accessible method net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacerType <init> (Lcom/mojang/serialization/MapCodec;)V
-accessible method net/minecraft/client/renderer/entity/ItemRenderer renderModelLists (Lnet/minecraft/client/resources/model/BakedModel;Lnet/minecraft/world/item/ItemStack;IILcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;)V
 accessible method net/minecraft/client/gui/screens/recipebook/GhostSlots setResult (Lnet/minecraft/world/inventory/Slot;Lnet/minecraft/util/context/ContextMap;Lnet/minecraft/world/item/crafting/display/SlotDisplay;)V
 accessible method net/minecraft/client/gui/screens/recipebook/GhostSlots setInput (Lnet/minecraft/world/inventory/Slot;Lnet/minecraft/util/context/ContextMap;Lnet/minecraft/world/item/crafting/display/SlotDisplay;)V
 accessible method net/minecraft/world/level/block/entity/BlockEntityType <init> (Lnet/minecraft/world/level/block/entity/BlockEntityType$BlockEntitySupplier;Ljava/util/Set;)V
@@ -42,8 +41,6 @@ accessible field net/minecraft/world/item/AxeItem STRIPPABLES Ljava/util/Map;
 mutable field net/minecraft/world/item/AxeItem STRIPPABLES Ljava/util/Map;
 accessible field net/minecraft/world/item/HoeItem TILLABLES Ljava/util/Map;
 mutable field net/minecraft/world/item/HoeItem TILLABLES Ljava/util/Map;
-accessible field net/minecraft/world/entity/vehicle/Boat lastYd D
-accessible field net/minecraft/world/entity/vehicle/Boat status Lnet/minecraft/world/entity/vehicle/Boat$Status;
 accessible field net/minecraft/stats/RecipeBookSettings TAG_FIELDS Ljava/util/Map;
 mutable field net/minecraft/stats/RecipeBookSettings TAG_FIELDS Ljava/util/Map;
 accessible field net/minecraft/world/entity/Entity dimensions Lnet/minecraft/world/entity/EntityDimensions;

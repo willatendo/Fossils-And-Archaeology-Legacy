@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.server.event;
 
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.entity.player.Player;
@@ -28,7 +29,7 @@ public class ForgeServerEvents {
             if (event.getEntity() instanceof Pig pig) {
                 event.setCanceled(true);
                 Level level = ancientLightningBolt.level();
-                TamedZombifiedPiglin tamedZombifiedPiglin = FAEntityTypes.TAMED_ZOMBIFIED_PIGLIN.get().create(level);
+                TamedZombifiedPiglin tamedZombifiedPiglin = FAEntityTypes.TAMED_ZOMBIFIED_PIGLIN.get().create(level, EntitySpawnReason.EVENT);
                 Player player = (Player) ancientLightningBolt.getOwner();
                 tamedZombifiedPiglin.tame(player);
                 tamedZombifiedPiglin.setItemInHand(InteractionHand.MAIN_HAND, FAItems.ANCIENT_SWORD.get().getDefaultInstance());
