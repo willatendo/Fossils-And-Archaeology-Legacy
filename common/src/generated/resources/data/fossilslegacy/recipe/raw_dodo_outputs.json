@@ -1,7 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "palaeontology",
-  "fuels": "fossilslegacy:fuels/raw_dodo_meat",
+  "fuels": "fossilslegacy:raw_dodo_meat",
   "ingredient": "fossilslegacy:raw_dodo",
   "time": 100
 }

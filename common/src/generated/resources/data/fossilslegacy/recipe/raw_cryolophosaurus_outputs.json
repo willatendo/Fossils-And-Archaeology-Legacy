@@ -1,7 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "palaeontology",
-  "fuels": "fossilslegacy:fuels/raw_cryolophosaurus_meat",
+  "fuels": "fossilslegacy:raw_cryolophosaurus_meat",
   "ingredient": "fossilslegacy:raw_cryolophosaurus",
   "time": 100
 }

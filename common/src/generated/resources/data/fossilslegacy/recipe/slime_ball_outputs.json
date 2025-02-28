@@ -1,7 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "palaeontology",
-  "fuels": "fossilslegacy:fuels/slime_ball",
+  "fuels": "fossilslegacy:slime_ball",
   "ingredient": "minecraft:slime_ball",
   "time": 100
 }

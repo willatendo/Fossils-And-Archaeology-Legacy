@@ -1,7 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "palaeontology",
-  "fuels": "fossilslegacy:fuels/leather",
+  "fuels": "fossilslegacy:leather",
   "ingredient": "minecraft:leather",
   "time": 100
 }

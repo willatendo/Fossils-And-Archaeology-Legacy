@@ -54,6 +54,7 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
         this.add(FAEntityTypes.MOA.get(), this.createDinosaurTable(1.0F, 2.0F, FAItems.RAW_MOA.get()));
         this.add(FAEntityTypes.FUTABASAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_FUTABASAURUS.get()));
         this.add(FAEntityTypes.GALLIMIMUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_GALLIMIMUS.get()));
+        this.add(FAEntityTypes.ICHTHYOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_ICHTHYOSAURUS.get()));
         this.add(FAEntityTypes.MAMMOTH.get(), this.createDinosaurTable(0.0F, 3.0F, Items.LEATHER, 1.0F, 3.0F, FAItems.RAW_MAMMOTH.get()));
         this.add(FAEntityTypes.MOSASAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_MOSASAURUS.get()));
         this.add(FAEntityTypes.NAUTILUS.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootOneItemOfManyRandom.lootTableItem(5, new ItemAndChance(FAItems.NAUTILUS_SHELL.get(), 0, 3), new ItemAndChance(FAItems.MAGIC_CONCH.get(), 3, 5)))));
@@ -76,6 +77,7 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
         this.add(FAEntityTypes.DIMETRODON_EGG.get(), this.createEggTable(FAItems.DIMETRODON_EGG.get()));
         this.add(FAEntityTypes.FUTABASAURUS_EGG.get(), this.createEggTable(FAItems.FUTABASAURUS_EGG.get()));
         this.add(FAEntityTypes.GALLIMIMUS_EGG.get(), this.createEggTable(FAItems.GALLIMIMUS_EGG.get()));
+        this.add(FAEntityTypes.ICHTHYOSAURUS_EGG.get(), this.createEggTable(FAItems.ICHTHYOSAURUS_EGG.get()));
         this.add(FAEntityTypes.MOSASAURUS_EGG.get(), this.createEggTable(FAItems.MOSASAURUS_EGG.get()));
         this.add(FAEntityTypes.PACHYCEPHALOSAURUS_EGG.get(), this.createEggTable(FAItems.PACHYCEPHALOSAURUS_EGG.get()));
         this.add(FAEntityTypes.PTERANODON_EGG.get(), this.createEggTable(FAItems.PTERANODON_EGG.get()));

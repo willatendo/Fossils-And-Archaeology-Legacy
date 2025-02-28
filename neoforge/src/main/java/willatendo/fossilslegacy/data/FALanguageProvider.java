@@ -192,6 +192,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.addCoatType(FACoatTypes.DODO, "Dodo (2024)");
         this.addCoatType(FACoatTypes.FUTABASAURUS, "Futabasaurus (2024)");
         this.addCoatType(FACoatTypes.GALLIMIMUS, "Gallimimus (2024)");
+        this.addCoatType(FACoatTypes.ICHTHYOSAURUS, "Ichthyosaurus (2025)");
         this.addCoatType(FACoatTypes.MOA, "Moa (2024)");
         this.addCoatType(FACoatTypes.MAMMOTH, "Mammoth (2024)");
         this.addCoatType(FACoatTypes.MOSASAURUS, "Mosasaurus (2024)");
@@ -310,6 +311,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAEntityTypes.NAUTILUS.get());
         this.add(FAEntityTypes.FUTABASAURUS.get());
         this.add(FAEntityTypes.GALLIMIMUS.get());
+        this.add(FAEntityTypes.ICHTHYOSAURUS.get());
         this.add(FAEntityTypes.PACHYCEPHALOSAURUS.get());
         this.add(FAEntityTypes.PTERANODON.get());
         this.add(FAEntityTypes.SMILODON.get());
@@ -329,6 +331,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAEntityTypes.DIMETRODON_EGG.get());
         this.add(FAEntityTypes.FUTABASAURUS_EGG.get());
         this.add(FAEntityTypes.GALLIMIMUS_EGG.get());
+        this.add(FAEntityTypes.ICHTHYOSAURUS_EGG.get());
         this.add(FAEntityTypes.MOSASAURUS_EGG.get());
         this.add(FAEntityTypes.PACHYCEPHALOSAURUS_EGG.get());
         this.add(FAEntityTypes.PTERANODON_EGG.get());
@@ -464,6 +467,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.SPINOSAURUS_DNA.get(), "Spinosaurus DNA");
         this.add(FAItems.ANKYLOSAURUS_DNA.get(), "Ankylosaurus DNA");
         this.add(FAItems.DIMETRODON_DNA.get(), "Dimetrodon DNA");
+        this.add(FAItems.ICHTHYOSAURUS_DNA.get(), "Ichthyosaurus DNA");
         this.add("item.fossilslegacy.dna.coat_type", "Coat Type: %s");
         this.add(FAItems.JURASSIC_FERN_DNA.get());
         this.add(FAItems.LEPIDODENDRON_DNA.get());
@@ -488,6 +492,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.SPINOSAURUS_EGG.get());
         this.add(FAItems.ANKYLOSAURUS_EGG.get());
         this.add(FAItems.DIMETRODON_EGG.get());
+        this.add(FAItems.ICHTHYOSAURUS_EGG.get());
         this.add(FAItems.RAW_TRICERATOPS.get());
         this.add(FAItems.RAW_VELOCIRAPTOR.get());
         this.add(FAItems.RAW_TYRANNOSAURUS.get());
@@ -511,6 +516,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.RAW_SPINOSAURUS.get());
         this.add(FAItems.RAW_ANKYLOSAURUS.get());
         this.add(FAItems.RAW_DIMETRODON.get());
+        this.add(FAItems.RAW_ICHTHYOSAURUS.get());
         this.add(FAItems.COOKED_TRICERATOPS.get());
         this.add(FAItems.COOKED_VELOCIRAPTOR.get());
         this.add(FAItems.COOKED_TYRANNOSAURUS.get());
@@ -534,6 +540,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.COOKED_SPINOSAURUS.get());
         this.add(FAItems.COOKED_ANKYLOSAURUS.get());
         this.add(FAItems.COOKED_DIMETRODON.get());
+        this.add(FAItems.COOKED_ICHTHYOSAURUS.get());
         this.add(FAItems.TYRANNOSAURUS_TOOTH.get());
         this.add(FAItems.TOOTH_DAGGER.get());
         this.add(FAItems.THERIZINOSAURUS_CLAWS.get());
@@ -1082,6 +1089,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItemTags.DRUM_INSTRUMENT, "Drum Instrument");
         this.add(FAItemTags.FROGLIGHTS, "Froglights");
         this.add(FAItemTags.GALLIMIMUS_COMMANDABLES, "Gallimimus Commandables");
+        this.add(FAItemTags.ICHTHYOSAURUS_COMMANDABLES, "Ichthyosaurus Commandables");
         this.add(FAItemTags.HERBIVORE_FOODS, "Herbivore Foods");
         this.add(FAItemTags.LEPIDODENDRON_LOGS, "Lepidodendron Logs");
         this.add(FAItemTags.MAMMOTH_COMMANDABLES, "Mammoth Commandables");
@@ -1101,6 +1109,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
 
         this.add(FAStoneTabletVariantTags.PLACEABLE, "Placeable");
 
+        this.add(FAStructureTags.ICHTHYOSAURUS_LOCATED, "Ichthyosaurus Located");
         this.add(FAStructureTags.ACADEMY, "Academy");
         this.add(FAStructureTags.MACHU_PICCHU, "Machu Picchu");
         this.add(FAStructureTags.MAYAN_TEMPLE, "Mayan Temple");

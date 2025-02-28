@@ -14,6 +14,7 @@ public class FAEntityTypeTags {
     public static final TagKey<EntityType<?>> CRYOLOPHOSAURUS_VICTIMS = ENTITY_TYPE_TAGS.register("victims/cryolophosaurus");
     public static final TagKey<EntityType<?>> DILOPHOSAURUS_VICTIMS = ENTITY_TYPE_TAGS.register("victims/dilophosaurus");
     public static final TagKey<EntityType<?>> DIMETRODON_VICTIMS = ENTITY_TYPE_TAGS.register("victims/dimetrodon");
+    public static final TagKey<EntityType<?>> ICTHYOSAURUS_VICTIMS = ENTITY_TYPE_TAGS.register("victims/ichthyosaurus");
     public static final TagKey<EntityType<?>> MAGIC_CONCH_COMMANDABLE = ENTITY_TYPE_TAGS.register("commandable/magic_conch");
     public static final TagKey<EntityType<?>> MOSASAURUS_VICTIMS = ENTITY_TYPE_TAGS.register("victims/mosasaurus");
     public static final TagKey<EntityType<?>> SPINOSAURUS_VICTIMS = ENTITY_TYPE_TAGS.register("victims/spinosaurus");

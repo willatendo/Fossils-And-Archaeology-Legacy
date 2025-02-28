@@ -24,6 +24,7 @@ public class FAFuelEntries {
     public static final ResourceKey<FuelEntry> DIMETRODON_EGG = FAFuelEntries.create("dimetrodon_egg");
     public static final ResourceKey<FuelEntry> FROGSPAWN = FAFuelEntries.create("frogspawn");
     public static final ResourceKey<FuelEntry> GALLIMIMUS_EGG = FAFuelEntries.create("gallimimus_egg");
+    public static final ResourceKey<FuelEntry> ICHTHYOSAURUS_EGG = FAFuelEntries.create("ichthyosaurus_egg");
     public static final ResourceKey<FuelEntry> INCUBATED_CHICKEN_EGG = FAFuelEntries.create("incubated_chicken_egg");
     public static final ResourceKey<FuelEntry> INCUBATED_DODO_EGG = FAFuelEntries.create("incubated_dodo_egg");
     public static final ResourceKey<FuelEntry> INCUBATED_MOA_EGG = FAFuelEntries.create("incubated_moa_egg");
@@ -48,6 +49,7 @@ public class FAFuelEntries {
     public static final ResourceKey<FuelEntry> RAW_DIMETRODON = FAFuelEntries.create("raw_dimetrodon");
     public static final ResourceKey<FuelEntry> RAW_DODO = FAFuelEntries.create("raw_dodo");
     public static final ResourceKey<FuelEntry> RAW_GALLIMIMUS = FAFuelEntries.create("raw_gallimimus");
+    public static final ResourceKey<FuelEntry> RAW_ICHTHYOSAURUS = FAFuelEntries.create("raw_ichthyosaurus");
     public static final ResourceKey<FuelEntry> RAW_MAMMOTH = FAFuelEntries.create("raw_mammoth");
     public static final ResourceKey<FuelEntry> RAW_MOA = FAFuelEntries.create("raw_moa");
     public static final ResourceKey<FuelEntry> RAW_MOSASAURUS = FAFuelEntries.create("raw_mosasaurus");
@@ -98,6 +100,7 @@ public class FAFuelEntries {
         FAFuelEntries.register(bootstrapContext, DILOPHOSAURUS_EGG, FAItems.DILOPHOSAURUS_EGG.get(), 12000);
         FAFuelEntries.register(bootstrapContext, DIMETRODON_EGG, FAItems.DIMETRODON_EGG.get(), 12000);
         FAFuelEntries.register(bootstrapContext, FROGSPAWN, Items.FROGSPAWN, 12000);
+        FAFuelEntries.register(bootstrapContext, ICHTHYOSAURUS_EGG, FAItems.ICHTHYOSAURUS_EGG.get(), 12000);
         FAFuelEntries.register(bootstrapContext, INCUBATED_CHICKEN_EGG, FAItems.INCUBATED_CHICKEN_EGG.get(), 12000);
         FAFuelEntries.register(bootstrapContext, INCUBATED_DODO_EGG, FAItems.INCUBATED_DODO_EGG.get(), 12000);
         FAFuelEntries.register(bootstrapContext, INCUBATED_MOA_EGG, FAItems.INCUBATED_MOA_EGG.get(), 12000);
@@ -123,6 +126,7 @@ public class FAFuelEntries {
         FAFuelEntries.register(bootstrapContext, RAW_DIMETRODON, FAItems.RAW_DIMETRODON.get(), 12000);
         FAFuelEntries.register(bootstrapContext, RAW_DODO, FAItems.RAW_DODO.get(), 12000);
         FAFuelEntries.register(bootstrapContext, RAW_GALLIMIMUS, FAItems.RAW_GALLIMIMUS.get(), 12000);
+        FAFuelEntries.register(bootstrapContext, RAW_ICHTHYOSAURUS, FAItems.RAW_ICHTHYOSAURUS.get(), 12000);
         FAFuelEntries.register(bootstrapContext, RAW_MAMMOTH, FAItems.RAW_MAMMOTH.get(), 12000);
         FAFuelEntries.register(bootstrapContext, RAW_MOA, FAItems.RAW_MOA.get(), 12000);
         FAFuelEntries.register(bootstrapContext, RAW_MOSASAURUS, FAItems.RAW_MOSASAURUS.get(), 12000);

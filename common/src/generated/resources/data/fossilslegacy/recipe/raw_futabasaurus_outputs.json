@@ -1,7 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "palaeontology",
-  "fuels": "fossilslegacy:fuels/raw_futabasaurus_meat",
+  "fuels": "fossilslegacy:raw_futabasaurus_meat",
   "ingredient": "fossilslegacy:raw_futabasaurus",
   "time": 100
 }

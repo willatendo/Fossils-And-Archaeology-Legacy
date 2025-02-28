@@ -39,6 +39,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.SPINOSAURUS_DNA.get());
         this.generatedItem(FAItems.ANKYLOSAURUS_DNA.get());
         this.generatedItem(FAItems.DIMETRODON_DNA.get());
+        this.generatedItem(FAItems.ICHTHYOSAURUS_DNA.get());
         this.generatedItem(FAItems.JURASSIC_FERN_DNA.get());
         this.generatedItem(FAItems.LEPIDODENDRON_DNA.get());
         this.generatedItem(FAItems.SIGILLARIA_DNA.get());
@@ -62,6 +63,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.SPINOSAURUS_EGG.get());
         this.generatedItem(FAItems.ANKYLOSAURUS_EGG.get());
         this.generatedItem(FAItems.DIMETRODON_EGG.get());
+        this.generatedItem(FAItems.ICHTHYOSAURUS_EGG.get());
         this.generatedItem(FAItems.RAW_TRICERATOPS.get());
         this.generatedItem(FAItems.RAW_VELOCIRAPTOR.get());
         this.generatedItem(FAItems.RAW_TYRANNOSAURUS.get());
@@ -85,6 +87,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.RAW_SPINOSAURUS.get());
         this.generatedItem(FAItems.RAW_ANKYLOSAURUS.get());
         this.generatedItem(FAItems.RAW_DIMETRODON.get());
+        this.generatedItem(FAItems.RAW_ICHTHYOSAURUS.get());
         this.generatedItem(FAItems.COOKED_TRICERATOPS.get());
         this.generatedItem(FAItems.COOKED_VELOCIRAPTOR.get());
         this.generatedItem(FAItems.COOKED_TYRANNOSAURUS.get());
@@ -108,6 +111,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.COOKED_SPINOSAURUS.get());
         this.generatedItem(FAItems.COOKED_ANKYLOSAURUS.get());
         this.generatedItem(FAItems.COOKED_DIMETRODON.get());
+        this.generatedItem(FAItems.COOKED_ICHTHYOSAURUS.get());
         this.generatedItem(FAItems.TYRANNOSAURUS_TOOTH.get());
         this.handheldItem(FAItems.TOOTH_DAGGER.get());
         this.generateTherizinosaurusClaw(itemModelGenerators, FAItems.THERIZINOSAURUS_CLAWS.get());

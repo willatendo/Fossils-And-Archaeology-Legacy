@@ -52,6 +52,7 @@ public final class FAEntityTypes {
     public static final SimpleHolder<EntityType<Gallimimus>> GALLIMIMUS = FAEntityTypes.register("gallimimus", FAEntityTypes.simple(Gallimimus::new, MobCategory.CREATURE, 0.4F, 0.7F));
     public static final SimpleHolder<EntityType<Spinosaurus>> SPINOSAURUS = FAEntityTypes.register("spinosaurus", FAEntityTypes.simple(Spinosaurus::new, MobCategory.CREATURE, 0.4F, 0.7F));
     public static final SimpleHolder<EntityType<Ankylosaurus>> ANKYLOSAURUS = FAEntityTypes.register("ankylosaurus", FAEntityTypes.simple(Ankylosaurus::new, MobCategory.CREATURE, 0.5F, 0.5F));
+    public static final SimpleHolder<EntityType<Ichthyosaurus>> ICHTHYOSAURUS = FAEntityTypes.register("ichthyosaurus", FAEntityTypes.simple(Ichthyosaurus::new, MobCategory.WATER_CREATURE, 0.5F, 0.5F));
 
     public static final SimpleHolder<EntityType<Fossil>> FOSSIL = FAEntityTypes.register("fossil", FAEntityTypes.simple(Fossil::new, MobCategory.MISC, 0.5F, 0.5F).noLootTable());
 
@@ -64,6 +65,7 @@ public final class FAEntityTypes {
     public static final SimpleHolder<EntityType<Egg>> DIMETRODON_EGG = FAEntityTypes.registerLandEgg("dimetrodon_egg", FAItems.DIMETRODON_EGG, FAEntityTypes.DIMETRODON);
     public static final SimpleHolder<EntityType<Egg>> FUTABASAURUS_EGG = FAEntityTypes.registerLandEgg("futabasaurus_egg", FAItems.FUTABASAURUS_EGG, FAEntityTypes.FUTABASAURUS);
     public static final SimpleHolder<EntityType<Egg>> GALLIMIMUS_EGG = FAEntityTypes.registerLandEgg("gallimimus_egg", FAItems.GALLIMIMUS_EGG, FAEntityTypes.GALLIMIMUS);
+    public static final SimpleHolder<EntityType<Egg>> ICHTHYOSAURUS_EGG = FAEntityTypes.registerLandEgg("ichthyosaurus_egg", FAItems.ICHTHYOSAURUS_EGG, FAEntityTypes.ICHTHYOSAURUS);
     public static final SimpleHolder<EntityType<Egg>> MOSASAURUS_EGG = FAEntityTypes.registerWaterEgg("mosasaurus_egg", FAItems.MOSASAURUS_EGG, FAEntityTypes.MOSASAURUS);
     public static final SimpleHolder<EntityType<Egg>> PACHYCEPHALOSAURUS_EGG = FAEntityTypes.registerLandEgg("pachycephalosaurus_egg", FAItems.PACHYCEPHALOSAURUS_EGG, FAEntityTypes.PACHYCEPHALOSAURUS);
     public static final SimpleHolder<EntityType<Egg>> PTERANODON_EGG = FAEntityTypes.registerLandEgg("pteranodon_egg", FAItems.PTERANODON_EGG, FAEntityTypes.PTERANODON);

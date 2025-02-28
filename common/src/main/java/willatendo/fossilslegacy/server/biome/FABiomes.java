@@ -86,6 +86,7 @@ public final class FABiomes {
     private static Biome ocean(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers, boolean deep) {
         MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
         mobSpawnSettings.addSpawn(MobCategory.WATER_CREATURE, new MobSpawnSettings.SpawnerData(FAEntityTypes.MOSASAURUS.get(), 1, 1, 1));
+        mobSpawnSettings.addSpawn(MobCategory.WATER_CREATURE, new MobSpawnSettings.SpawnerData(FAEntityTypes.ICHTHYOSAURUS.get(), 2, 2, 5));
         return biome(true, 0.5F, 0.5F, 4159204, 329011, null, null, mobSpawnSettings, baseOceanGeneration(placedFeatures, configuredWorldCarvers, deep), NORMAL_MUSIC);
     }
 

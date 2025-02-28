@@ -53,6 +53,7 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.NAUTILUS.get(), NautilusRenderer::new);
         modelRegister.register(FAEntityTypes.FUTABASAURUS.get(), FutabasaurusRenderer::new);
         modelRegister.register(FAEntityTypes.GALLIMIMUS.get(), GallimimusRenderer::new);
+        modelRegister.register(FAEntityTypes.ICHTHYOSAURUS.get(), IchthyosaurusRenderer::new);
         modelRegister.register(FAEntityTypes.PTERANODON.get(), PteranodonRenderer::new);
         modelRegister.register(FAEntityTypes.SMILODON.get(), SmilodonRenderer::new);
         modelRegister.register(FAEntityTypes.SPINOSAURUS.get(), SpinosaurusRenderer::new);
@@ -74,6 +75,7 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.DIMETRODON_EGG.get(), context -> EggRenderer.regular(context, "dimetrodon"));
         modelRegister.register(FAEntityTypes.FUTABASAURUS_EGG.get(), context -> EggRenderer.regular(context, "futabasaurus"));
         modelRegister.register(FAEntityTypes.GALLIMIMUS_EGG.get(), context -> EggRenderer.regular(context, "gallimimus"));
+        modelRegister.register(FAEntityTypes.ICHTHYOSAURUS_EGG.get(), context -> EggRenderer.regular(context, "ichthyosaurus"));
         modelRegister.register(FAEntityTypes.MOSASAURUS_EGG.get(), context -> EggRenderer.regular(context, "mosasaurus"));
         modelRegister.register(FAEntityTypes.PACHYCEPHALOSAURUS_EGG.get(), context -> EggRenderer.regular(context, "pachycephalosaurus"));
         modelRegister.register(FAEntityTypes.PTERANODON_EGG.get(), context -> EggRenderer.regular(context, "pteranodon"));

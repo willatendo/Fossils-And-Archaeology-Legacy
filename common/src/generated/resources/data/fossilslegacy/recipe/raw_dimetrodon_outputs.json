@@ -1,7 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "palaeontology",
-  "fuels": "fossilslegacy:fuels/raw_dimetrodon_meat",
+  "fuels": "fossilslegacy:raw_dimetrodon_meat",
   "ingredient": "fossilslegacy:raw_dimetrodon",
   "time": 100
 }

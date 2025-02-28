@@ -1,4 +1,4 @@
-// 1.21.4	2025-02-19T07:57:15.0760966	Entity Models: fossilslegacy
+// 1.21.4	2025-02-28T00:22:36.0360032	Entity Models: fossilslegacy
 a7d5ff66005a490120b2492c6fb2a7f90969f42d assets/fossilslegacy/fossilslegacy/models/ankylosaurus.json
 c0cd469b76f9c8391c563fa518b51bb424fdecfc assets/fossilslegacy/fossilslegacy/models/brachiosaurus.json
 e8106d7b2bb859858086e7adf8cae3ce9af958d0 assets/fossilslegacy/fossilslegacy/models/carnotaurus.json
@@ -9,6 +9,7 @@ a71da430d283054b4cb904be62e8a56af18f2b31 assets/fossilslegacy/fossilslegacy/mode
 ae8bcce31f60c3816084fbc97827c278e5461aed assets/fossilslegacy/fossilslegacy/models/dodo.json
 bf99d5fc1761af80a987b16d5a8195b68a26e747 assets/fossilslegacy/fossilslegacy/models/futabasaurus.json
 20b40de87da83bdc516cfcf684be10945ac527c4 assets/fossilslegacy/fossilslegacy/models/gallimimus.json
+3954809e87f029e659094f4ba579567a28b6e8dc assets/fossilslegacy/fossilslegacy/models/ichthyosaurus.json
 4eb5cda495a9e45e1444294b5e7bb608ea0135ae assets/fossilslegacy/fossilslegacy/models/knocked_out_tyrannosaurus.json
 5f220f579cf50f5e70dde0570a96f593bb85299f assets/fossilslegacy/fossilslegacy/models/legacy_brachiosaurus.json
 00e3e514819b79110e542aba25f30c6d5841c63e assets/fossilslegacy/fossilslegacy/models/legacy_carnotaurus.json

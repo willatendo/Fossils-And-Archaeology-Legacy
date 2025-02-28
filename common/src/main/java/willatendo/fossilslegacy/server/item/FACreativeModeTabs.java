@@ -193,6 +193,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.DILOPHOSAURUS_DNA.get());
         output.accept(FAItems.FUTABASAURUS_DNA.get());
         output.accept(FAItems.GALLIMIMUS_DNA.get());
+        output.accept(FAItems.ICHTHYOSAURUS_DNA.get());
         output.accept(FAItems.MOSASAURUS_DNA.get());
         output.accept(FAItems.PACHYCEPHALOSAURUS_DNA.get());
         output.accept(FAItems.PTERANODON_DNA.get());
@@ -237,6 +238,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.DIMETRODON_EGG.get());
         output.accept(FAItems.FUTABASAURUS_EGG.get());
         output.accept(FAItems.GALLIMIMUS_EGG.get());
+        output.accept(FAItems.ICHTHYOSAURUS_EGG.get());
         output.accept(FAItems.MOSASAURUS_EGG.get());
         output.accept(FAItems.PACHYCEPHALOSAURUS_EGG.get());
         output.accept(FAItems.PTERANODON_EGG.get());
@@ -293,6 +295,8 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.COOKED_FUTABASAURUS.get());
         output.accept(FAItems.RAW_GALLIMIMUS.get());
         output.accept(FAItems.COOKED_GALLIMIMUS.get());
+        output.accept(FAItems.RAW_ICHTHYOSAURUS.get());
+        output.accept(FAItems.COOKED_ICHTHYOSAURUS.get());
         output.accept(FAItems.RAW_MAMMOTH.get());
         output.accept(FAItems.COOKED_MAMMOTH.get());
         output.accept(FAItems.RAW_MOA.get());

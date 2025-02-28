@@ -1,7 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "palaeontology",
-  "fuels": "fossilslegacy:fuels/raw_brachiosaurus_meat",
+  "fuels": "fossilslegacy:raw_brachiosaurus_meat",
   "ingredient": "fossilslegacy:raw_brachiosaurus",
   "time": 100
 }

@@ -24,6 +24,7 @@ public class FACoatTypeTags {
     public static final TagKey<CoatType> FUTABASAURUS = COAT_TYPE_TAGS.register("futabasaurus");
     public static final TagKey<CoatType> NON_LEGACY_FUTABASAURUS = COAT_TYPE_TAGS.register("non_legacy/futabasaurus");
     public static final TagKey<CoatType> GALLIMIMUS = COAT_TYPE_TAGS.register("gallimimus");
+    public static final TagKey<CoatType> ICHTHYOSAURUS = COAT_TYPE_TAGS.register("ichthyosaurus");
     public static final TagKey<CoatType> LEGACY = COAT_TYPE_TAGS.register("legacy");
     public static final TagKey<CoatType> MAMMOTH = COAT_TYPE_TAGS.register("mammoth");
     public static final TagKey<CoatType> NON_LEGACY_MAMMOTH = COAT_TYPE_TAGS.register("non_legacy/mammoth");

@@ -1,12 +1,13 @@
-// 1.21.4	2025-02-09T18:21:21.575404	Tags for minecraft:entity_type mod id fossilslegacy
+// 1.21.4	2025-02-28T00:11:15.0747846	Tags for minecraft:entity_type mod id fossilslegacy
 120a533af1b28705bf858f35644eceff5ec078bc data/c/tags/entity_type/boats.json
-257178750d76a6af02f58dea32adccffbde04d5c data/fossilslegacy/tags/entity_type/commandable/magic_conch.json
+fef7515d5792ff50535ab28952c3e28057f1ee3a data/fossilslegacy/tags/entity_type/commandable/magic_conch.json
 6502e39bd9290f842f8aae9542df2d54ad22429c data/fossilslegacy/tags/entity_type/victims/carnotaurus.json
 a85935e7fe31e95c3f4dad3adaaf05c7fcb0ca38 data/fossilslegacy/tags/entity_type/victims/compsognathus.json
 81a8ed5d891d4a2e979c2b92a9c2937872270e0c data/fossilslegacy/tags/entity_type/victims/cryolophosaurus.json
 178dc206e5d4994add05f5d39b6a2275dc7234dc data/fossilslegacy/tags/entity_type/victims/dilophosaurus.json
 758d1d5c3ae9add307bd7c4586aede4d8f3a8f9c data/fossilslegacy/tags/entity_type/victims/dimetrodon.json
-b9fef40eedf9bc2b5e462a22db1d5ef1eaf91efa data/fossilslegacy/tags/entity_type/victims/mosasaurus.json
+54ddda14224b828d5c06f88516df2e43884462ec data/fossilslegacy/tags/entity_type/victims/ichthyosaurus.json
+1d7e01a6496d626c919d3b90c0c386e89bab3536 data/fossilslegacy/tags/entity_type/victims/mosasaurus.json
 ee82dbf12ee12398c5f13ab1a3665e13ecd53ec8 data/fossilslegacy/tags/entity_type/victims/spinosaurus.json
 1ee212641f3b348500092f942b6cd0511651a87d data/fossilslegacy/tags/entity_type/victims/tyrannosaurus.json
 4c29efb7671c424349d8eda0a17724ae73bded23 data/fossilslegacy/tags/entity_type/victims/velociraptor.json

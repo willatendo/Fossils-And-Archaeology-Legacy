@@ -121,6 +121,7 @@ public class FARecipeProvider extends RecipeProvider {
         this.food(FAItems.COOKED_SPINOSAURUS.get(), FAItems.RAW_SPINOSAURUS.get());
         this.food(FAItems.COOKED_ANKYLOSAURUS.get(), FAItems.RAW_ANKYLOSAURUS.get());
         this.food(FAItems.COOKED_DIMETRODON.get(), FAItems.RAW_DIMETRODON.get());
+        this.food(FAItems.COOKED_ICHTHYOSAURUS.get(), FAItems.RAW_ICHTHYOSAURUS.get());
 
         this.scarabGemSmithing(Items.NETHERITE_SWORD, RecipeCategory.COMBAT, FAItems.SCARAB_GEM_SWORD.get());
         this.scarabGemSmithing(Items.NETHERITE_SHOVEL, RecipeCategory.TOOLS, FAItems.SCARAB_GEM_SHOVEL.get());
@@ -176,6 +177,7 @@ public class FARecipeProvider extends RecipeProvider {
         this.cultivate(CultivationBookCategory.EGG, FAItems.SPINOSAURUS_DNA.get(), FAItems.SPINOSAURUS_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.ANKYLOSAURUS_DNA.get(), FAItems.ANKYLOSAURUS_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.DIMETRODON_DNA.get(), FAItems.DIMETRODON_EGG.get(), 6000);
+        this.cultivate(CultivationBookCategory.EGG, FAItems.ICHTHYOSAURUS_DNA.get(), FAItems.ICHTHYOSAURUS_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.PLANT, FAItems.JURASSIC_FERN_DNA.get(), FAItems.JURASSIC_FERN_SPORES.get(), 6000);
         this.cultivate(CultivationBookCategory.PLANT, FAItems.LEPIDODENDRON_DNA.get(), FABlocks.LEPIDODENDRON_SAPLING.get(), 6000);
         this.cultivate(CultivationBookCategory.PLANT, FAItems.SIGILLARIA_DNA.get(), FABlocks.SIGILLARIA_SAPLING.get(), 6000);
@@ -248,6 +250,7 @@ public class FARecipeProvider extends RecipeProvider {
         this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.RAW_SPINOSAURUS.get(), FAAnalyzerResultTags.RAW_SPINOSAURUS_RESULTS, 100);
         this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.RAW_ANKYLOSAURUS.get(), FAAnalyzerResultTags.RAW_ANKYLOSAURUS_RESULTS, 100);
         this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.RAW_DIMETRODON.get(), FAAnalyzerResultTags.RAW_DIMETRODON_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.RAW_ICHTHYOSAURUS.get(), FAAnalyzerResultTags.RAW_ICTHYOSAURUS_RESULTS, 100);
     }
 
     public void woodType(Block log, Block strippedLog, Block wood, Block strippedWood, TagKey<Item> logs, Block planks, Block stairs, Block slab, Block fence, Block fenceGate, Block door, Block trapdoor, Block pressurePlate, Block button, Item sign, Item hangingSign, Item boat, Item chestBoat) {

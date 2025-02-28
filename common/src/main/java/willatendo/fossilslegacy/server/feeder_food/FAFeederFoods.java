@@ -47,6 +47,7 @@ public final class FAFeederFoods {
     public static final ResourceKey<FeederFood> RAW_SPINOSAURUS = FAFeederFoods.create("raw_spinosaurus");
     public static final ResourceKey<FeederFood> RAW_ANKYLOSAURUS = FAFeederFoods.create("raw_ankylosaurus");
     public static final ResourceKey<FeederFood> RAW_DIMETRODON = FAFeederFoods.create("raw_dimetrodon");
+    public static final ResourceKey<FeederFood> RAW_ICHTHYOSAURUS = FAFeederFoods.create("raw_ichthyosaurus");
     public static final ResourceKey<FeederFood> COOKED_TRICERATOPS = FAFeederFoods.create("cooked_triceratops");
     public static final ResourceKey<FeederFood> COOKED_VELOCIRAPTOR = FAFeederFoods.create("cooked_velociraptor");
     public static final ResourceKey<FeederFood> COOKED_TYRANNOSAURUS = FAFeederFoods.create("cooked_tyrannosaurus");
@@ -70,6 +71,7 @@ public final class FAFeederFoods {
     public static final ResourceKey<FeederFood> COOKED_SPINOSAURUS = FAFeederFoods.create("cooked_spinosaurus");
     public static final ResourceKey<FeederFood> COOKED_ANKYLOSAURUS = FAFeederFoods.create("cooked_ankylosaurus");
     public static final ResourceKey<FeederFood> COOKED_DIMETRODON = FAFeederFoods.create("cooked_dimetrodon");
+    public static final ResourceKey<FeederFood> COOKED_ICHTHYOSAURUS = FAFeederFoods.create("cooked_ichthyosaurus");
     public static final ResourceKey<FeederFood> APPLE = FAFeederFoods.create("apple");
     public static final ResourceKey<FeederFood> WHEAT = FAFeederFoods.create("wheat");
     public static final ResourceKey<FeederFood> BREAD = FAFeederFoods.create("bread");
@@ -134,6 +136,7 @@ public final class FAFeederFoods {
         register(bootstrapContext, RAW_SPINOSAURUS, FAItems.RAW_SPINOSAURUS.get(), 100, FeederFood.FillType.MEAT);
         register(bootstrapContext, RAW_ANKYLOSAURUS, FAItems.RAW_ANKYLOSAURUS.get(), 100, FeederFood.FillType.MEAT);
         register(bootstrapContext, RAW_DIMETRODON, FAItems.RAW_DIMETRODON.get(), 100, FeederFood.FillType.MEAT);
+        register(bootstrapContext, RAW_ICHTHYOSAURUS, FAItems.RAW_ICHTHYOSAURUS.get(), 100, FeederFood.FillType.MEAT);
         register(bootstrapContext, COOKED_TRICERATOPS, FAItems.COOKED_TRICERATOPS.get(), 100, FeederFood.FillType.MEAT);
         register(bootstrapContext, COOKED_VELOCIRAPTOR, FAItems.COOKED_VELOCIRAPTOR.get(), 100, FeederFood.FillType.MEAT);
         register(bootstrapContext, COOKED_TYRANNOSAURUS, FAItems.COOKED_TYRANNOSAURUS.get(), 100, FeederFood.FillType.MEAT);
@@ -157,6 +160,7 @@ public final class FAFeederFoods {
         register(bootstrapContext, COOKED_SPINOSAURUS, FAItems.COOKED_SPINOSAURUS.get(), 100, FeederFood.FillType.MEAT);
         register(bootstrapContext, COOKED_ANKYLOSAURUS, FAItems.COOKED_ANKYLOSAURUS.get(), 100, FeederFood.FillType.MEAT);
         register(bootstrapContext, COOKED_DIMETRODON, FAItems.COOKED_DIMETRODON.get(), 100, FeederFood.FillType.MEAT);
+        register(bootstrapContext, COOKED_ICHTHYOSAURUS, FAItems.COOKED_ICHTHYOSAURUS.get(), 100, FeederFood.FillType.MEAT);
 
         register(bootstrapContext, APPLE, Items.APPLE, 100, FeederFood.FillType.PLANT);
         register(bootstrapContext, WHEAT, Items.WHEAT, 40, FeederFood.FillType.PLANT);

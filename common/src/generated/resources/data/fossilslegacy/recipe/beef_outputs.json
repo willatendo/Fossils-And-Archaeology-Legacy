@@ -1,7 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "palaeontology",
-  "fuels": "fossilslegacy:fuels/beef",
+  "fuels": "fossilslegacy:beef",
   "ingredient": "minecraft:beef",
   "time": 100
 }

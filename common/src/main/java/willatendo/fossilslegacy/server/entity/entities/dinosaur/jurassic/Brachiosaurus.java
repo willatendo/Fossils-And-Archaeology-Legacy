@@ -176,7 +176,7 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Rid
 
                 if (this.isControlledByLocalInstance()) {
                     this.setSpeed((float) this.getAttributeValue(Attributes.MOVEMENT_SPEED));
-                    super.travel(new Vec3((double) f, vec3.y, (double) f1));
+                    super.travel(new Vec3(f, vec3.y, f1));
                 } else if (livingEntity instanceof Player) {
                     this.setDeltaMovement(this.getX() - this.xOld, this.getY() - this.yOld, this.getZ() - this.zOld);
                 }

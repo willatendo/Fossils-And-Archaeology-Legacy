@@ -1,7 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "palaeontology",
-  "fuels": "fossilslegacy:fuels/raw_tyrannosaurus_meat",
+  "fuels": "fossilslegacy:raw_tyrannosaurus_meat",
   "ingredient": "fossilslegacy:raw_tyrannosaurus",
   "time": 100
 }

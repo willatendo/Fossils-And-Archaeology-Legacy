@@ -50,6 +50,7 @@ public final class FAItems {
     public static final SimpleHolder<AnimalDNAItem> SPINOSAURUS_DNA = FAItems.register("spinosaurus_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.CRETACEOUS, FAEntityTypes.SPINOSAURUS::get, FACoatTypeTags.SPINOSAURUS, properties));
     public static final SimpleHolder<AnimalDNAItem> ANKYLOSAURUS_DNA = FAItems.register("ankylosaurus_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.CRETACEOUS, FAEntityTypes.ANKYLOSAURUS::get, FACoatTypeTags.ANKYLOSAURUS, properties));
     public static final SimpleHolder<AnimalDNAItem> DIMETRODON_DNA = FAItems.register("dimetrodon_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.PERMIAN, FAEntityTypes.DIMETRODON::get, FACoatTypeTags.DIMETRODON, properties));
+    public static final SimpleHolder<AnimalDNAItem> ICHTHYOSAURUS_DNA = FAItems.register("ichthyosaurus_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.JURASSIC, FAEntityTypes.ICHTHYOSAURUS::get, FACoatTypeTags.ICHTHYOSAURUS, properties));
     public static final SimpleHolder<PlantDNAItem> JURASSIC_FERN_DNA = FAItems.register("jurassic_fern_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.JURASSIC, properties));
     public static final SimpleHolder<PlantDNAItem> LEPIDODENDRON_DNA = FAItems.register("lepidodendron_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.PERMIAN, properties));
     public static final SimpleHolder<PlantDNAItem> SIGILLARIA_DNA = FAItems.register("sigillaria_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.PERMIAN, properties));
@@ -73,6 +74,7 @@ public final class FAItems {
     public static final SimpleHolder<EggItem> SPINOSAURUS_EGG = FAItems.register("spinosaurus_egg", properties -> new EggItem(FAEntityTypes.SPINOSAURUS_EGG::get, GeologicalTimeScale.Period.CRETACEOUS, FACoatTypeTags.SPINOSAURUS, properties.stacksTo(1)));
     public static final SimpleHolder<EggItem> ANKYLOSAURUS_EGG = FAItems.register("ankylosaurus_egg", properties -> new EggItem(FAEntityTypes.ANKYLOSAURUS_EGG::get, GeologicalTimeScale.Period.CRETACEOUS, FACoatTypeTags.ANKYLOSAURUS, properties.stacksTo(1)));
     public static final SimpleHolder<EggItem> DIMETRODON_EGG = FAItems.register("dimetrodon_egg", properties -> new EggItem(FAEntityTypes.DIMETRODON_EGG::get, GeologicalTimeScale.Period.PERMIAN, FACoatTypeTags.DIMETRODON, properties.stacksTo(1)));
+    public static final SimpleHolder<EggItem> ICHTHYOSAURUS_EGG = FAItems.register("ichthyosaurus_egg", properties -> new EggItem(FAEntityTypes.ICHTHYOSAURUS_EGG::get, GeologicalTimeScale.Period.JURASSIC, FACoatTypeTags.ICHTHYOSAURUS, properties.stacksTo(1)));
     public static final SimpleHolder<Item> RAW_TRICERATOPS = FAItems.register("raw_triceratops", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_VELOCIRAPTOR = FAItems.register("raw_velociraptor", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_TYRANNOSAURUS = FAItems.register("raw_tyrannosaurus", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
@@ -96,6 +98,7 @@ public final class FAItems {
     public static final SimpleHolder<Item> RAW_SPINOSAURUS = FAItems.register("raw_spinosaurus", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_ANKYLOSAURUS = FAItems.register("raw_ankylosaurus", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_DIMETRODON = FAItems.register("raw_dimetrodon", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
+    public static final SimpleHolder<Item> RAW_ICHTHYOSAURUS = FAItems.register("raw_ichthyosaurus", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> COOKED_TRICERATOPS = FAItems.register("cooked_triceratops", properties -> new Item(properties.food(FAFoods.COOKED_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> COOKED_VELOCIRAPTOR = FAItems.register("cooked_velociraptor", properties -> new Item(properties.food(FAFoods.COOKED_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> COOKED_TYRANNOSAURUS = FAItems.register("cooked_tyrannosaurus", properties -> new Item(properties.food(FAFoods.COOKED_DINOSAUR_MEAT)));
@@ -119,6 +122,7 @@ public final class FAItems {
     public static final SimpleHolder<Item> COOKED_SPINOSAURUS = FAItems.register("cooked_spinosaurus", properties -> new Item(properties.food(FAFoods.COOKED_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> COOKED_ANKYLOSAURUS = FAItems.register("cooked_ankylosaurus", properties -> new Item(properties.food(FAFoods.COOKED_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> COOKED_DIMETRODON = FAItems.register("cooked_dimetrodon", properties -> new Item(properties.food(FAFoods.COOKED_DINOSAUR_MEAT)));
+    public static final SimpleHolder<Item> COOKED_ICHTHYOSAURUS = FAItems.register("cooked_ichthyosaurus", properties -> new Item(properties.food(FAFoods.COOKED_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> TYRANNOSAURUS_TOOTH = FAItems.register("tyrannosaurus_tooth", Item::new);
     public static final SimpleHolder<ToothDaggerItem> TOOTH_DAGGER = FAItems.register("tooth_dagger", properties -> new ToothDaggerItem(FAToolMaterials.DAGGER, 3, -2.4F, properties));
     public static final SimpleHolder<Item> SKULL_STICK = FAItems.register("skull_stick", properties -> new Item(properties.stacksTo(1)));
