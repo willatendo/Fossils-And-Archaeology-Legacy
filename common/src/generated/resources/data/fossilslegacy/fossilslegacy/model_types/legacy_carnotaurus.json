@@ -12,25 +12,15 @@
     "bounding_box_width": 0.5
   },
   "display_info": {
-    "color": 4739129,
     "display_scale": 0.35,
     "display_y_offset": 1.0,
+    "geneColor": 4739129,
     "model_name": {
-      "translate": "model_type.fossilslegacy.legacy_green_carnotaurus"
+      "translate": "model_type.fossilslegacy.legacy_carnotaurus"
     }
   },
   "models": {
     "model": "fossilslegacy:legacy_carnotaurus"
   },
-  "patterns": [
-    {
-      "pattern_name": {
-        "translate": "pattern.fossilslegacy.green_tree_python"
-      },
-      "pattern_type": "fossilslegacy:basic",
-      "textures": {
-        "base": "fossilslegacy:textures/entity/carnotaurus/legacy/green_carnotaurus.png"
-      }
-    }
-  ]
+  "patterns": "fossilslegacy:carnotaurus_2011"
 }

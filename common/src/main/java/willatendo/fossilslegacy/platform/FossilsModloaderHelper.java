@@ -20,7 +20,7 @@ public interface FossilsModloaderHelper {
     FossilsModloaderHelper INSTANCE = SimpleUtils.loadModloaderHelper(FossilsModloaderHelper.class);
 
     // Platform
-    void sendApplyGenePacket(BlockPos blockPos, String coatType);
+    void sendApplyGenePacket(BlockPos blockPos, String modelType, String pattern);
 
     void sendTimeMachinePacket(BlockPos blockPos);
 

@@ -21,15 +21,17 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
-import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
-import willatendo.fossilslegacy.server.entity.util.interfaces.ModelTypeEntity;
+import willatendo.fossilslegacy.server.entity.util.interfaces.DataDrivenCosmetics;
 import willatendo.fossilslegacy.server.entity.util.interfaces.TamesOnBirth;
 import willatendo.fossilslegacy.server.item.FAItems;
+import willatendo.fossilslegacy.server.model_type.ModelType;
+import willatendo.fossilslegacy.server.pattern.Pattern;
 
-public class ThrownAnimalEgg extends ThrowableItemProjectile implements ModelTypeEntity {
+public class ThrownAnimalEgg extends ThrowableItemProjectile implements DataDrivenCosmetics {
     private EntityType<? extends Animal> animal;
-    private Holder<ModelType> coatType;
+    private Holder<ModelType> modelType;
+    private Holder<Pattern> pattern;
     private boolean incubated;
 
     public ThrownAnimalEgg(EntityType<? extends ThrownAnimalEgg> entityType, Level level) {
@@ -52,12 +54,22 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements ModelTyp
 
     @Override
     public void setModelType(Holder<ModelType> coatType) {
-        this.coatType = coatType;
+        this.modelType = coatType;
     }
 
     @Override
     public Holder<ModelType> getModelType() {
-        return this.coatType;
+        return this.modelType;
+    }
+
+    @Override
+    public void setPattern(Holder<Pattern> pattern) {
+        this.pattern = pattern;
+    }
+
+    @Override
+    public Holder<Pattern> getPattern() {
+        return this.pattern;
     }
 
     @Override
@@ -89,8 +101,9 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements ModelTyp
                 for (int animals = 0; animals < i; ++animals) {
                     Animal animalToSpawn = this.animal.create(this.level(), EntitySpawnReason.TRIGGERED);
                     animalToSpawn.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
-                    if (animalToSpawn instanceof ModelTypeEntity modelTypeEntity && this.coatType != null) {
-                        modelTypeEntity.setModelType(this.coatType);
+                    if (animalToSpawn instanceof DataDrivenCosmetics dataDrivenCosmetics && this.modelType != null && this.pattern != null) {
+                        dataDrivenCosmetics.setModelType(this.modelType);
+                        dataDrivenCosmetics.setPattern(this.pattern);
                     }
                     if (animalToSpawn instanceof Dinosaur dinosaur) {
                         dinosaur.setGrowthStage(0);
@@ -123,8 +136,8 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements ModelTyp
         super.addAdditionalSaveData(compoundTag);
         compoundTag.putString("EntityType", BuiltInRegistries.ENTITY_TYPE.getKey(this.animal).toString());
         compoundTag.putBoolean("Incubated", this.incubated);
-        if (this.coatType != null) {
-            this.addModelType(compoundTag);
+        if (this.modelType != null && this.pattern != null) {
+            this.addCosmeticsData(compoundTag);
         }
     }
 
@@ -133,8 +146,8 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements ModelTyp
         super.readAdditionalSaveData(compoundTag);
         this.animal = (EntityType<? extends Animal>) BuiltInRegistries.ENTITY_TYPE.getValue(ResourceLocation.parse(compoundTag.getString("EntityType")));
         this.incubated = compoundTag.getBoolean("Incubated");
-        if (compoundTag.contains("CoatType")) {
-            this.readModelType(compoundTag);
+        if (compoundTag.contains("model_type") && compoundTag.contains("pattern")) {
+            this.readCosmeticsData(compoundTag);
         }
     }
 

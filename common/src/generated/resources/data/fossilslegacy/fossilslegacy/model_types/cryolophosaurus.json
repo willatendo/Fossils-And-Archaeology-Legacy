@@ -12,9 +12,9 @@
     "bounding_box_width": 0.35
   },
   "display_info": {
-    "color": 4810123,
     "display_scale": 0.75,
     "display_y_offset": -0.2,
+    "geneColor": 4810123,
     "model_name": {
       "translate": "model_type.fossilslegacy.cryolophosaurus"
     }
@@ -22,16 +22,5 @@
   "models": {
     "model": "fossilslegacy:cryolophosaurus"
   },
-  "patterns": [
-    {
-      "pattern_name": {
-        "translate": "pattern.fossilslegacy.blue_iguana"
-      },
-      "pattern_type": "fossilslegacy:basic",
-      "textures": {
-        "baby": "fossilslegacy:textures/entity/cryolophosaurus/cryolophosaurus_baby.png",
-        "base": "fossilslegacy:textures/entity/cryolophosaurus/cryolophosaurus_adult.png"
-      }
-    }
-  ]
+  "patterns": "fossilslegacy:cryolophosaurus_2024"
 }

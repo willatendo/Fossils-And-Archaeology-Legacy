@@ -13,6 +13,7 @@ import willatendo.fossilslegacy.client.render.DataDrivenModelMobRenderer;
 import willatendo.fossilslegacy.client.state.MammothRenderState;
 import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Mammoth;
+import willatendo.fossilslegacy.server.pattern.Pattern;
 
 public class MammothFurLayer extends RenderLayer<MammothRenderState, EntityModel<MammothRenderState>> {
     private EntityModel<MammothRenderState> model;
@@ -39,7 +40,7 @@ public class MammothFurLayer extends RenderLayer<MammothRenderState, EntityModel
         } else {
             this.setModel(modelType.models().model());
         }
-        ModelType.Pattern pattern = modelType.patterns().getFirst();
+        Pattern pattern = mammothRenderState.pattern.value();
         if (pattern.hasFurTexture()) {
             ResourceLocation texture = pattern.getFurTexture();
             if (mammothRenderState.isSheared) {

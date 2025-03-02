@@ -30,7 +30,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.command_type.CommandType;
 import willatendo.fossilslegacy.server.command_type.FACommandTypes;
 import willatendo.fossilslegacy.server.entity.FADamageTypes;
@@ -39,14 +38,17 @@ import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.level.FAGameRules;
+import willatendo.fossilslegacy.server.model_type.ModelType;
+import willatendo.fossilslegacy.server.pattern.Pattern;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.Optional;
 import java.util.UUID;
 
-public abstract class Dinosaur extends Animal implements ModelTypeEntity, CommandableEntity, DaysAliveAccessor, GrowingEntity, HungerAccessor, OwnableEntity, SimpleRegistryAccessAccessor, TamesOnBirth, TameAccessor, TamedSpeakingEntity {
+public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, CommandableEntity, DaysAliveAccessor, GrowingEntity, HungerAccessor, OwnableEntity, SimpleRegistryAccessAccessor, TamesOnBirth, TameAccessor, TamedSpeakingEntity {
     private static final EntityDataAccessor<Holder<ModelType>> MODEL_TYPE = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.MODEL_TYPES.get());
+    private static final EntityDataAccessor<Holder<Pattern>> PATTERN = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.PATTERN.get());
     private static final EntityDataAccessor<Holder<CommandType>> COMMAND = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.COMMAND_TYPES.get());
     private static final EntityDataAccessor<Integer> DAYS_ALIVE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> GROWTH_STAGE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
@@ -328,6 +330,7 @@ public abstract class Dinosaur extends Animal implements ModelTypeEntity, Comman
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
         builder.define(MODEL_TYPE, this.registryAccess().lookupOrThrow(FARegistries.MODEL_TYPES).getAny().orElseThrow());
+        builder.define(PATTERN, this.registryAccess().lookupOrThrow(FARegistries.PATTERN).getAny().orElseThrow());
         builder.define(COMMAND, this.registryAccess().lookupOrThrow(FARegistries.COMMAND_TYPES).getAny().orElseThrow());
         builder.define(GROWTH_STAGE, 0);
         builder.define(DAYS_ALIVE, 0);
@@ -408,12 +411,24 @@ public abstract class Dinosaur extends Animal implements ModelTypeEntity, Comman
         this.entityData.set(COMMAND, commandType);
     }
 
+    @Override
     public Holder<ModelType> getModelType() {
         return this.entityData.get(MODEL_TYPE);
     }
 
-    public void setModelType(Holder<ModelType> coatTypeHolder) {
-        this.entityData.set(MODEL_TYPE, coatTypeHolder);
+    @Override
+    public void setModelType(Holder<ModelType> modelType) {
+        this.entityData.set(MODEL_TYPE, modelType);
+    }
+
+    @Override
+    public Holder<Pattern> getPattern() {
+        return this.entityData.get(PATTERN);
+    }
+
+    @Override
+    public void setPattern(Holder<Pattern> pattern) {
+        this.entityData.set(PATTERN, pattern);
     }
 
     @Override
@@ -424,7 +439,7 @@ public abstract class Dinosaur extends Animal implements ModelTypeEntity, Comman
             compoundTag.putUUID("Owner", this.getOwnerUUID());
         }
 
-        this.addModelType(compoundTag);
+        this.addCosmeticsData(compoundTag);
         this.addCommandType(compoundTag);
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
         compoundTag.putInt("Hunger", this.getHunger());
@@ -451,7 +466,7 @@ public abstract class Dinosaur extends Animal implements ModelTypeEntity, Comman
             }
         }
 
-        this.readModelType(compoundTag);
+        this.readCosmeticsData(compoundTag);
         this.readCommandType(compoundTag);
         super.readAdditionalSaveData(compoundTag);
         this.setDaysAlive(compoundTag.getInt("DaysAlive"));
@@ -466,7 +481,7 @@ public abstract class Dinosaur extends Animal implements ModelTypeEntity, Comman
             compoundTag.putUUID("Owner", this.getOwnerUUID());
         }
 
-        this.addModelType(compoundTag);
+        this.addCosmeticsData(compoundTag);
         this.addCommandType(compoundTag);
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
         compoundTag.putInt("Hunger", this.getHunger());
@@ -482,7 +497,7 @@ public abstract class Dinosaur extends Animal implements ModelTypeEntity, Comman
             compoundTag.putUUID("Owner", this.getOwnerUUID());
         }
 
-        this.addModelType(compoundTag);
+        this.addCosmeticsData(compoundTag);
         this.addCommandType(compoundTag);
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
         compoundTag.putInt("Hunger", this.getHunger());
@@ -503,7 +518,7 @@ public abstract class Dinosaur extends Animal implements ModelTypeEntity, Comman
         if (this.getEggEntityType() != null) {
             Egg egg = this.getEggEntityType().create(serverLevel, EntitySpawnReason.BREEDING);
             if (this.getModelType() != null) {
-                egg.setCoatType(this.getModelType());
+                egg.setModelType(this.getModelType());
             }
             if (egg != null) {
                 UUID uuid = this.getOwnerUUID();

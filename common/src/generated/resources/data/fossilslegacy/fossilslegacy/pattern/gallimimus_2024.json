@@ -1,0 +1,11 @@
+{
+  "gene_color": 16777215,
+  "pattern_name": {
+    "translate": "pattern.fossilslegacy.broadhead_skink"
+  },
+  "pattern_type": "fossilslegacy:basic",
+  "textures": {
+    "baby": "fossilslegacy:textures/entity/gallimimus/gallimimus_baby.png",
+    "base": "fossilslegacy:textures/entity/gallimimus/gallimimus_adult.png"
+  }
+}

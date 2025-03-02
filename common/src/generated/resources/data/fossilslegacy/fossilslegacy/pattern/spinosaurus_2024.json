@@ -1,0 +1,11 @@
+{
+  "gene_color": 16777215,
+  "pattern_name": {
+    "translate": "pattern.fossilslegacy.marine_iguana"
+  },
+  "pattern_type": "fossilslegacy:basic",
+  "textures": {
+    "baby": "fossilslegacy:textures/entity/spinosaurus/spinosaurus_baby.png",
+    "base": "fossilslegacy:textures/entity/spinosaurus/spinosaurus_adult.png"
+  }
+}

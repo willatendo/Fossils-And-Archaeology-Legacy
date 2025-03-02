@@ -1,0 +1,13 @@
+{
+  "gene_color": 16777215,
+  "pattern_name": {
+    "translate": "pattern.fossilslegacy.eastern_brown_snake"
+  },
+  "pattern_type": "fossilslegacy:basic",
+  "textures": {
+    "aggressive": "fossilslegacy:textures/entity/tyrannosaurus/tyrannosaurus_aggressive.png",
+    "baby": "fossilslegacy:textures/entity/tyrannosaurus/tyrannosaurus_baby.png",
+    "base": "fossilslegacy:textures/entity/tyrannosaurus/tyrannosaurus_adult.png",
+    "knocked_out": "fossilslegacy:textures/entity/tyrannosaurus/tyrannosaurus_weak.png"
+  }
+}

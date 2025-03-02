@@ -12,9 +12,9 @@
     "bounding_box_width": 0.5
   },
   "display_info": {
-    "color": 3484183,
     "display_scale": 0.45,
     "display_y_offset": 1.0,
+    "geneColor": 3484183,
     "model_name": {
       "translate": "model_type.fossilslegacy.moa"
     }
@@ -22,15 +22,5 @@
   "models": {
     "model": "fossilslegacy:moa"
   },
-  "patterns": [
-    {
-      "pattern_name": {
-        "translate": "pattern.fossilslegacy.american_bison"
-      },
-      "pattern_type": "fossilslegacy:basic",
-      "textures": {
-        "base": "fossilslegacy:textures/entity/moa/moa.png"
-      }
-    }
-  ]
+  "patterns": "fossilslegacy:moa_2024"
 }

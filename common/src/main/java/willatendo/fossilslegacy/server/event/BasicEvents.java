@@ -50,6 +50,7 @@ import willatendo.fossilslegacy.server.item.FALootTables;
 import willatendo.fossilslegacy.server.item.FAMapDecorationTypes;
 import willatendo.fossilslegacy.server.item.items.EggItem;
 import willatendo.fossilslegacy.server.jewel_recovery.JewelRecovery;
+import willatendo.fossilslegacy.server.pattern.Pattern;
 import willatendo.fossilslegacy.server.pattern_type.PatternType;
 import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 import willatendo.fossilslegacy.server.registry.FARegistries;
@@ -225,6 +226,7 @@ public final class BasicEvents {
         dynamicRegistryRegister.register(FARegistries.FEEDER_FOOD, FeederFood.CODEC);
         dynamicRegistryRegister.register(FARegistries.FOSSIL_VARIANTS, FossilVariant.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.FUEL_ENTRY, FuelEntry.CODEC);
+        dynamicRegistryRegister.register(FARegistries.PATTERN, Pattern.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.PATTERN_TYPES, PatternType.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.JEWEL_RECOVERY, JewelRecovery.CODEC);
         dynamicRegistryRegister.register(FARegistries.STONE_TABLET_VARIANTS, StoneTabletVariant.DIRECT_CODEC);

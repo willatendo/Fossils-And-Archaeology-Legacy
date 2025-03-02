@@ -1,0 +1,10 @@
+{
+  "gene_color": 16777215,
+  "pattern_name": {
+    "translate": "pattern.fossilslegacy.american_bison"
+  },
+  "pattern_type": "fossilslegacy:basic",
+  "textures": {
+    "base": "fossilslegacy:textures/entity/moa/moa.png"
+  }
+}

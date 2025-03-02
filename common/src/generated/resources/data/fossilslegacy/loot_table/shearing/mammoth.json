@@ -16,7 +16,7 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:mammoth",
-                      "color": "white",
+                      "geneColor": "white",
                       "sheared": false
                     }
                   }
@@ -33,7 +33,7 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:mammoth",
-                      "color": "orange",
+                      "geneColor": "orange",
                       "sheared": false
                     }
                   }
@@ -50,7 +50,7 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:mammoth",
-                      "color": "magenta",
+                      "geneColor": "magenta",
                       "sheared": false
                     }
                   }
@@ -67,7 +67,7 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:mammoth",
-                      "color": "light_blue",
+                      "geneColor": "light_blue",
                       "sheared": false
                     }
                   }
@@ -84,7 +84,7 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:mammoth",
-                      "color": "yellow",
+                      "geneColor": "yellow",
                       "sheared": false
                     }
                   }
@@ -101,7 +101,7 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:mammoth",
-                      "color": "lime",
+                      "geneColor": "lime",
                       "sheared": false
                     }
                   }
@@ -118,7 +118,7 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:mammoth",
-                      "color": "pink",
+                      "geneColor": "pink",
                       "sheared": false
                     }
                   }
@@ -135,7 +135,7 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:mammoth",
-                      "color": "gray",
+                      "geneColor": "gray",
                       "sheared": false
                     }
                   }
@@ -152,7 +152,7 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:mammoth",
-                      "color": "light_gray",
+                      "geneColor": "light_gray",
                       "sheared": false
                     }
                   }
@@ -169,7 +169,7 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:mammoth",
-                      "color": "cyan",
+                      "geneColor": "cyan",
                       "sheared": false
                     }
                   }
@@ -186,7 +186,7 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:mammoth",
-                      "color": "purple",
+                      "geneColor": "purple",
                       "sheared": false
                     }
                   }
@@ -203,7 +203,7 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:mammoth",
-                      "color": "blue",
+                      "geneColor": "blue",
                       "sheared": false
                     }
                   }
@@ -220,7 +220,7 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:mammoth",
-                      "color": "brown",
+                      "geneColor": "brown",
                       "sheared": false
                     }
                   }
@@ -237,7 +237,7 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:mammoth",
-                      "color": "green",
+                      "geneColor": "green",
                       "sheared": false
                     }
                   }
@@ -254,7 +254,7 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:mammoth",
-                      "color": "red",
+                      "geneColor": "red",
                       "sheared": false
                     }
                   }
@@ -271,7 +271,7 @@
                   "predicate": {
                     "type_specific": {
                       "type": "fossilslegacy:mammoth",
-                      "color": "black",
+                      "geneColor": "black",
                       "sheared": false
                     }
                   }

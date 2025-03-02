@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.server.model_type;
 
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.Holder;
@@ -13,166 +12,24 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.RegistryFileCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.ExtraCodecs;
-import willatendo.fossilslegacy.server.pattern_type.PatternType;
-import willatendo.fossilslegacy.server.pattern_type.TextureType;
+import willatendo.fossilslegacy.server.pattern.Pattern;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
-public record ModelType(DisplayInfo displayInfo, Models models, List<Pattern> patterns, BoundingBoxInfo boundingBoxInfo, AgeScaleInfo ageScaleInfo, Optional<OverrideInfo> overrideInfo) {
-    public static final Codec<ModelType> DIRECT_CODEC = RecordCodecBuilder.create(instance -> instance.group(DisplayInfo.CODEC.fieldOf("display_info").forGetter(ModelType::displayInfo), Models.CODEC.fieldOf("models").forGetter(ModelType::models), Codec.list(Pattern.CODEC).fieldOf("patterns").forGetter(ModelType::patterns), BoundingBoxInfo.CODEC.fieldOf("bounding_box_info").forGetter(ModelType::boundingBoxInfo), AgeScaleInfo.CODEC.fieldOf("age_scale_info").forGetter(ModelType::ageScaleInfo), OverrideInfo.CODEC.optionalFieldOf("override_info").forGetter(ModelType::overrideInfo)).apply(instance, ModelType::new));
+public record ModelType(DisplayInfo displayInfo, Models models, TagKey<Pattern> patterns, BoundingBoxInfo boundingBoxInfo, AgeScaleInfo ageScaleInfo, Optional<OverrideInfo> overrideInfo) {
+    public static final Codec<ModelType> DIRECT_CODEC = RecordCodecBuilder.create(instance -> instance.group(DisplayInfo.CODEC.fieldOf("display_info").forGetter(ModelType::displayInfo), Models.CODEC.fieldOf("models").forGetter(ModelType::models), TagKey.codec(FARegistries.PATTERN).fieldOf("patterns").forGetter(ModelType::patterns), BoundingBoxInfo.CODEC.fieldOf("bounding_box_info").forGetter(ModelType::boundingBoxInfo), AgeScaleInfo.CODEC.fieldOf("age_scale_info").forGetter(ModelType::ageScaleInfo), OverrideInfo.CODEC.optionalFieldOf("override_info").forGetter(ModelType::overrideInfo)).apply(instance, ModelType::new));
     public static final Codec<Holder<ModelType>> CODEC = RegistryFileCodec.create(FARegistries.MODEL_TYPES, DIRECT_CODEC);
     public static final StreamCodec<RegistryFriendlyByteBuf, Holder<ModelType>> STREAM_CODEC = ByteBufCodecs.holderRegistry(FARegistries.MODEL_TYPES);
 
     public record DisplayInfo(Component modelName, int color, float displayScale, float displayYOffset) {
-        public static final Codec<DisplayInfo> CODEC = RecordCodecBuilder.create(instance -> instance.group(ComponentSerialization.CODEC.fieldOf("model_name").forGetter(DisplayInfo::modelName), ExtraCodecs.POSITIVE_INT.fieldOf("color").forGetter(DisplayInfo::color), ExtraCodecs.POSITIVE_FLOAT.fieldOf("display_scale").forGetter(DisplayInfo::displayScale), Codec.FLOAT.fieldOf("display_y_offset").forGetter(DisplayInfo::displayYOffset)).apply(instance, DisplayInfo::new));
+        public static final Codec<DisplayInfo> CODEC = RecordCodecBuilder.create(instance -> instance.group(ComponentSerialization.CODEC.fieldOf("model_name").forGetter(DisplayInfo::modelName), ExtraCodecs.POSITIVE_INT.fieldOf("geneColor").forGetter(DisplayInfo::color), ExtraCodecs.POSITIVE_FLOAT.fieldOf("display_scale").forGetter(DisplayInfo::displayScale), Codec.FLOAT.fieldOf("display_y_offset").forGetter(DisplayInfo::displayYOffset)).apply(instance, DisplayInfo::new));
     }
 
     public record Models(ResourceLocation model, Optional<ResourceLocation> flyingModel, Optional<ResourceLocation> landingModel, Optional<ResourceLocation> knockedOutModel) {
         public static final Codec<Models> CODEC = RecordCodecBuilder.create(instance -> instance.group(ResourceLocation.CODEC.fieldOf("model").forGetter(Models::model), ResourceLocation.CODEC.optionalFieldOf("flying_model").forGetter(Models::flyingModel), ResourceLocation.CODEC.optionalFieldOf("landing_model").forGetter(Models::landingModel), ResourceLocation.CODEC.optionalFieldOf("knocked_out_model").forGetter(Models::knockedOutModel)).apply(instance, Models::new));
-    }
-
-    public record Pattern(Holder<PatternType> patternType, Map<TextureType, ResourceLocation> textures, Component patternName) {
-        public static final Codec<Pattern> CODEC = RecordCodecBuilder.create(instance -> instance.group(PatternType.CODEC.fieldOf("pattern_type").forGetter(ModelType.Pattern::patternType), Codec.unboundedMap(TextureType.CODEC, ResourceLocation.CODEC).fieldOf("textures").forGetter(ModelType.Pattern::textures), ComponentSerialization.CODEC.fieldOf("pattern_name").forGetter(ModelType.Pattern::patternName)).apply(instance, Pattern::new));
-
-        public ResourceLocation getTexture(TextureType textureType) {
-            return this.textures.get(textureType);
-        }
-
-        public ResourceLocation getTexture() {
-            return this.getTexture(TextureType.BASE);
-        }
-
-        public ResourceLocation getBabyTexture() {
-            return this.getTexture(TextureType.BABY);
-        }
-
-        public ResourceLocation getAggressiveTexture() {
-            return this.getTexture(TextureType.AGGRESSIVE);
-        }
-
-        public ResourceLocation getAggressiveBabyTexture() {
-            return this.getTexture(TextureType.AGGRESSIVE_BABY);
-        }
-
-        public ResourceLocation getKnockedOutTexture() {
-            return this.getTexture(TextureType.KNOCKED_OUT);
-        }
-
-        public ResourceLocation getFurTexture() {
-            return this.getTexture(TextureType.FUR);
-        }
-
-        public ResourceLocation getBabyFurTexture() {
-            return this.getTexture(TextureType.BABY_FUR);
-        }
-
-        public ResourceLocation getShearedTexture() {
-            return this.getTexture(TextureType.SHEARED);
-        }
-
-        public ResourceLocation getEyeTexture() {
-            return this.getTexture(TextureType.EYE);
-        }
-
-        public boolean hasTexture(TextureType textureType) {
-            return this.textures.containsKey(textureType);
-        }
-
-        public boolean hasBabyTexture() {
-            return this.hasTexture(TextureType.BABY);
-        }
-
-        public boolean hasAggressiveBabyTexture() {
-            return this.hasTexture(TextureType.AGGRESSIVE_BABY);
-        }
-
-        public boolean hasAggressiveTexture() {
-            return this.hasTexture(TextureType.AGGRESSIVE);
-        }
-
-        public boolean hasKnockedOutTexture() {
-            return this.hasTexture(TextureType.KNOCKED_OUT);
-        }
-
-        public boolean hasFurTexture() {
-            return this.hasTexture(TextureType.FUR);
-        }
-
-        public boolean hasBabyFurTexture() {
-            return this.hasTexture(TextureType.BABY_FUR);
-        }
-
-        public boolean hasShearedTexture() {
-            return this.hasTexture(TextureType.SHEARED);
-        }
-
-        public boolean hasEyeTexture() {
-            return this.hasTexture(TextureType.EYE);
-        }
-
-        public static Builder builder(ResourceLocation texture, Component name) {
-            return new Builder(texture, name);
-        }
-
-        public static class Builder {
-            private final Map<TextureType, ResourceLocation> textures = new HashMap<>();
-            private final Component patternName;
-
-            private Builder(ResourceLocation baseTexture, Component patternName) {
-                this.textures.put(TextureType.BASE, baseTexture);
-                this.patternName = patternName;
-            }
-
-            public ModelType.Pattern.Builder withBabyTexture(ResourceLocation babyTexture) {
-                this.textures.put(TextureType.BABY, babyTexture);
-                return this;
-            }
-
-            public ModelType.Pattern.Builder withFurTexture(ResourceLocation furTexture) {
-                this.textures.put(TextureType.FUR, furTexture);
-                return this;
-            }
-
-            public ModelType.Pattern.Builder withBabyFurTexture(ResourceLocation babyFurTexture) {
-                this.textures.put(TextureType.BABY_FUR, babyFurTexture);
-                return this;
-            }
-
-            public ModelType.Pattern.Builder withShearedTexture(ResourceLocation shearedTexture) {
-                this.textures.put(TextureType.SHEARED, shearedTexture);
-                return this;
-            }
-
-            public ModelType.Pattern.Builder withAggressiveTexture(ResourceLocation aggressiveTexture) {
-                this.textures.put(TextureType.AGGRESSIVE, aggressiveTexture);
-                return this;
-            }
-
-            public ModelType.Pattern.Builder withAggressiveTexture(ResourceLocation aggressiveTexture, ResourceLocation aggressiveBabyTexture) {
-                this.textures.put(TextureType.AGGRESSIVE, aggressiveTexture);
-                this.textures.put(TextureType.AGGRESSIVE_BABY, aggressiveBabyTexture);
-                return this;
-            }
-
-            public ModelType.Pattern.Builder withKnockedOutTexture(ResourceLocation knockedOutTexture) {
-                this.textures.put(TextureType.KNOCKED_OUT, knockedOutTexture);
-                return this;
-            }
-
-            public ModelType.Pattern.Builder withEyeLayerTexture(ResourceLocation eyeLayerTexture) {
-                this.textures.put(TextureType.EYE, eyeLayerTexture);
-                return this;
-            }
-
-            public Pattern build(Holder<PatternType> patternType) {
-                return new Pattern(patternType, this.textures, this.patternName);
-            }
-        }
     }
 
     public record Textures(ResourceLocation texture, Optional<ResourceLocation> babyTexture, Optional<ResourceLocation> furTexture, Optional<ResourceLocation> babyFurTexture, Optional<ResourceLocation> shearedTexture, Optional<ResourceLocation> aggressiveTexture, Optional<ResourceLocation> aggressiveBabyTexture, Optional<ResourceLocation> knockedOutTexture, Optional<ResourceLocation> eyeLayerTexture) {
@@ -247,8 +104,8 @@ public record ModelType(DisplayInfo displayInfo, Models models, List<Pattern> pa
         }
     }
 
-    public static Builder build(Component name, int color, float displayScale, float displayYOffset, ResourceLocation model, Holder<PatternType> patternType, ModelType.Pattern.Builder basicPattern, float boundingBoxWidth, float boundingBoxHeight, float boundingBoxGrowth, float baseScaleWidth, float baseScaleHeight, float ageScale, float shadowSize, float shadowGrowth) {
-        return new Builder(name, color, displayScale, displayYOffset, model, patternType, basicPattern, boundingBoxWidth, boundingBoxHeight, boundingBoxGrowth, baseScaleWidth, baseScaleHeight, ageScale, shadowSize, shadowGrowth);
+    public static Builder build(Component name, int color, float displayScale, float displayYOffset, ResourceLocation model, TagKey<Pattern> patterns, float boundingBoxWidth, float boundingBoxHeight, float boundingBoxGrowth, float baseScaleWidth, float baseScaleHeight, float ageScale, float shadowSize, float shadowGrowth) {
+        return new Builder(name, color, displayScale, displayYOffset, model, patterns, boundingBoxWidth, boundingBoxHeight, boundingBoxGrowth, baseScaleWidth, baseScaleHeight, ageScale, shadowSize, shadowGrowth);
     }
 
     public static class Builder {
@@ -260,7 +117,7 @@ public record ModelType(DisplayInfo displayInfo, Models models, List<Pattern> pa
         private Optional<ResourceLocation> flyingModel = Optional.empty();
         private Optional<ResourceLocation> landingModel = Optional.empty();
         private Optional<ResourceLocation> knockedOutModel = Optional.empty();
-        private final List<Pattern> patterns = Lists.newArrayList();
+        private final TagKey<Pattern> patterns;
         private final float boundingBoxWidth;
         private final float boundingBoxHeight;
         private final float boundingBoxGrowth;
@@ -271,13 +128,13 @@ public record ModelType(DisplayInfo displayInfo, Models models, List<Pattern> pa
         private final float shadowGrowth;
         private Optional<OverrideInfo> overrideInfo = Optional.empty();
 
-        private Builder(Component name, int color, float displayScale, float displayYOffset, ResourceLocation model, Holder<PatternType> patternType, Pattern.Builder patternBuilder, float boundingBoxWidth, float boundingBoxHeight, float boundingBoxGrowth, float baseScaleWidth, float baseScaleHeight, float ageScale, float shadowSize, float shadowGrowth) {
+        private Builder(Component name, int color, float displayScale, float displayYOffset, ResourceLocation model, TagKey<Pattern> patterns, float boundingBoxWidth, float boundingBoxHeight, float boundingBoxGrowth, float baseScaleWidth, float baseScaleHeight, float ageScale, float shadowSize, float shadowGrowth) {
             this.name = name;
             this.color = color;
             this.displayScale = displayScale;
             this.displayYOffset = displayYOffset;
             this.model = model;
-            this.patterns.add(patternBuilder.build(patternType));
+            this.patterns = patterns;
             this.boundingBoxWidth = boundingBoxWidth;
             this.boundingBoxHeight = boundingBoxHeight;
             this.boundingBoxGrowth = boundingBoxGrowth;
@@ -298,12 +155,6 @@ public record ModelType(DisplayInfo displayInfo, Models models, List<Pattern> pa
             this.knockedOutModel = Optional.of(knockoutModel);
             return this;
         }
-
-        public Builder withPattern(Holder<PatternType> patternType, ModelType.Pattern.Builder builder) {
-            this.patterns.add(builder.build(patternType));
-            return this;
-        }
-
 
         public Builder withOverrideInfo(OverrideInfo overrideInfo) {
             this.overrideInfo = Optional.of(overrideInfo);

@@ -9,16 +9,17 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ARGB;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
-import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.jurassic.Dilophosaurus;
-import willatendo.fossilslegacy.server.entity.util.interfaces.ModelTypeEntity;
+import willatendo.fossilslegacy.server.entity.util.interfaces.DataDrivenCosmetics;
 import willatendo.fossilslegacy.server.entity.util.interfaces.ShakingEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.WetFurEntity;
+import willatendo.fossilslegacy.server.model_type.ModelType;
+import willatendo.fossilslegacy.server.pattern.Pattern;
 
 import java.util.Optional;
 
-public abstract class DataDrivenModelMobRenderer<T extends Dinosaur & ModelTypeEntity, S extends DinosaurRenderState> extends MobRenderer<T, S, EntityModel<S>> {
+public abstract class DataDrivenModelMobRenderer<T extends Dinosaur & DataDrivenCosmetics, S extends DinosaurRenderState> extends MobRenderer<T, S, EntityModel<S>> {
     private ResourceLocation modelId;
 
     public DataDrivenModelMobRenderer(EntityRendererProvider.Context context, float shadowSize) {
@@ -29,7 +30,7 @@ public abstract class DataDrivenModelMobRenderer<T extends Dinosaur & ModelTypeE
         return Optional.empty();
     }
 
-    protected Optional<ResourceLocation> getAdditionalTexture(S dinosaurRenderState, ModelType modelType) {
+    protected Optional<ResourceLocation> getAdditionalTexture(S dinosaurRenderState, Pattern pattern) {
         return Optional.empty();
     }
 
@@ -52,6 +53,7 @@ public abstract class DataDrivenModelMobRenderer<T extends Dinosaur & ModelTypeE
     public void extractRenderState(T dinosaur, S dinosaurRenderState, float partialTick) {
         super.extractRenderState(dinosaur, dinosaurRenderState, partialTick);
         dinosaurRenderState.modelType = dinosaur.getModelType();
+        dinosaurRenderState.pattern = dinosaur.getPattern();
         dinosaurRenderState.growthStage = dinosaur.getGrowthStage();
         dinosaurRenderState.isTame = dinosaur.isTame();
         dinosaurRenderState.isOrderedToSit = dinosaur.isOrderedToSit();
@@ -111,7 +113,7 @@ public abstract class DataDrivenModelMobRenderer<T extends Dinosaur & ModelTypeE
 
     @Override
     public ResourceLocation getTextureLocation(S dinosaurRenderState) {
-        ModelType modelType = dinosaurRenderState.modelType.value();
-        return this.getAdditionalTexture(dinosaurRenderState, modelType).isPresent() ? this.getAdditionalTexture(dinosaurRenderState, modelType).get() : dinosaurRenderState.isBaby ? modelType.patterns().getFirst().hasBabyTexture() ? modelType.patterns().getFirst().getBabyTexture() : modelType.patterns().getFirst().getTexture() : modelType.patterns().getFirst().getTexture();
+        Pattern pattern = dinosaurRenderState.pattern.value();
+        return this.getAdditionalTexture(dinosaurRenderState, pattern).isPresent() ? this.getAdditionalTexture(dinosaurRenderState, pattern).get() : dinosaurRenderState.isBaby ? pattern.hasBabyTexture() ? pattern.getBabyTexture() : pattern.getTexture() : pattern.getTexture();
     }
 }

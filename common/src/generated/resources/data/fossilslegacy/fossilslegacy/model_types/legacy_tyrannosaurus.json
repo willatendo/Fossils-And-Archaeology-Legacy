@@ -12,9 +12,9 @@
     "bounding_box_width": 0.5
   },
   "display_info": {
-    "color": 9535590,
     "display_scale": 0.25,
     "display_y_offset": 0.25,
+    "geneColor": 9535590,
     "model_name": {
       "translate": "model_type.fossilslegacy.legacy_tyrannosaurus"
     }
@@ -23,17 +23,5 @@
     "knocked_out_model": "fossilslegacy:legacy_knocked_out_tyrannosaurus",
     "model": "fossilslegacy:legacy_tyrannosaurus"
   },
-  "patterns": [
-    {
-      "pattern_name": {
-        "translate": "pattern.fossilslegacy.eastern_brown_snake"
-      },
-      "pattern_type": "fossilslegacy:basic",
-      "textures": {
-        "aggressive": "fossilslegacy:textures/entity/tyrannosaurus/legacy/tyrannosaurus_aggressive.png",
-        "base": "fossilslegacy:textures/entity/tyrannosaurus/legacy/tyrannosaurus.png",
-        "knocked_out": "fossilslegacy:textures/entity/tyrannosaurus/legacy/tyrannosaurus_weak.png"
-      }
-    }
-  ]
+  "patterns": "fossilslegacy:tyrannosaurus_2011"
 }

@@ -12,25 +12,15 @@
     "bounding_box_width": 0.5
   },
   "display_info": {
-    "color": 13522205,
     "display_scale": 0.25,
     "display_y_offset": 0.25,
+    "geneColor": 13522205,
     "model_name": {
-      "translate": "model_type.fossilslegacy.legacy_feathered_therizinosaurus"
+      "translate": "model_type.fossilslegacy.legacy_therizinosaurus"
     }
   },
   "models": {
     "model": "fossilslegacy:legacy_therizinosaurus"
   },
-  "patterns": [
-    {
-      "pattern_name": {
-        "translate": "pattern.fossilslegacy.green_parakeet"
-      },
-      "pattern_type": "fossilslegacy:basic",
-      "textures": {
-        "base": "fossilslegacy:textures/entity/therizinosaurus/legacy/therizinosaurus_feathered.png"
-      }
-    }
-  ]
+  "patterns": "fossilslegacy:therizinosaurus_2011"
 }

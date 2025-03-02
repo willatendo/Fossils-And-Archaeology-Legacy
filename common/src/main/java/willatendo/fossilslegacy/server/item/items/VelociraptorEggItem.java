@@ -5,12 +5,14 @@ import net.minecraft.core.Registry;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
-import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.model_type.FAModelTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Egg;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
+import willatendo.fossilslegacy.server.pattern.FAPatterns;
+import willatendo.fossilslegacy.server.pattern.Pattern;
+import willatendo.fossilslegacy.server.pattern_type.PatternType;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 
@@ -22,17 +24,18 @@ public class VelociraptorEggItem extends EggItem {
     @Override
     public void entityModification(ItemStack itemStack, Egg egg) {
         if (itemStack.has(FADataComponents.MODEL_TYPE.get())) {
-            egg.setCoatType(itemStack.get(FADataComponents.MODEL_TYPE.get()));
+            egg.setModelType(itemStack.get(FADataComponents.MODEL_TYPE.get()));
+            egg.setPattern(itemStack.get(FADataComponents.PATTERN.get()));
         } else {
             Level level = egg.level();
             Holder<Biome> biome = level.getBiome(egg.blockPosition());
-            Registry<ModelType> coatTypeRegistry = level.registryAccess().lookupOrThrow(FARegistries.MODEL_TYPES);
+            Registry<Pattern> patternRegistry = level.registryAccess().lookupOrThrow(FARegistries.PATTERN);
             if (biome.value().coldEnoughToSnow(egg.blockPosition(), level.getSeaLevel())) {
-                egg.setCoatType(coatTypeRegistry.get(FAModelTypes.WHITE_VELOCIRAPTOR).get());
+                egg.setPattern(patternRegistry.get(FAPatterns.WHITE_VELOCIRAPTOR_2011).get());
             } else if (biome.value().getBaseTemperature() >= 2.0F) {
-                egg.setCoatType(coatTypeRegistry.get(FAModelTypes.SANDY_VELOCIRAPTOR).get());
+                egg.setPattern(patternRegistry.get(FAPatterns.SANDY_VELOCIRAPTOR_2011).get());
             } else {
-                egg.setCoatType(coatTypeRegistry.get(FAModelTypes.VELOCIRAPTOR).get());
+                egg.setPattern(patternRegistry.get(FAPatterns.GREEN_VELOCIRAPTOR_2011).get());
             }
         }
     }

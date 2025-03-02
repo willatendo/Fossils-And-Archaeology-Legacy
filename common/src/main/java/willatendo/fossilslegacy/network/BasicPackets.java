@@ -14,6 +14,7 @@ import willatendo.fossilslegacy.server.block.entity.entities.TimeMachineBlockEnt
 import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
 import willatendo.fossilslegacy.server.item.FADataComponents;
+import willatendo.fossilslegacy.server.pattern.Pattern;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
@@ -22,14 +23,17 @@ public final class BasicPackets {
     public static final ResourceLocation SINK = FAUtils.resource("sink");
     public static final ResourceLocation TIME_MACHINE_UPDATE = FAUtils.resource("time_machine_update");
 
-    public static void serverboundApplyGenePacket(BlockPos blockPos, String coatType, Level level) {
+    public static void serverboundApplyGenePacket(BlockPos blockPos, String modelType, String pattern, Level level) {
         BlockEntity blockEntity = level.getBlockEntity(blockPos);
         if (blockEntity instanceof GeneModificationTableBlockEntity geneModificationTableBlockEntity) {
             ItemStack itemStack = geneModificationTableBlockEntity.getItem(0);
             geneModificationTableBlockEntity.setItem(0, ItemStack.EMPTY);
-            Registry<ModelType> coatTypeRegistry = level.registryAccess().lookupOrThrow(FARegistries.MODEL_TYPES);
-            Holder.Reference<ModelType> coatTypeHolder = coatTypeRegistry.get(ResourceLocation.parse(coatType)).get();
-            itemStack.set(FADataComponents.MODEL_TYPE.get(), coatTypeHolder);
+            Registry<ModelType> modelTypeRegistry = level.registryAccess().lookupOrThrow(FARegistries.MODEL_TYPES);
+            Registry<Pattern> patternRegistry = level.registryAccess().lookupOrThrow(FARegistries.PATTERN);
+            Holder.Reference<ModelType> modelTypeHolder = modelTypeRegistry.get(ResourceLocation.parse(modelType)).get();
+            Holder.Reference<Pattern> patternHolder = patternRegistry.get(ResourceLocation.parse(pattern)).get();
+            itemStack.set(FADataComponents.MODEL_TYPE.get(), modelTypeHolder);
+            itemStack.set(FADataComponents.PATTERN.get(), patternHolder);
             geneModificationTableBlockEntity.setItem(1, itemStack);
         }
     }

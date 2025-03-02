@@ -12,9 +12,9 @@
     "bounding_box_width": 0.7
   },
   "display_info": {
-    "color": 3685455,
     "display_scale": 0.4,
     "display_y_offset": 1.0,
+    "geneColor": 3685455,
     "model_name": {
       "translate": "model_type.fossilslegacy.ichthyosaurus"
     }
@@ -22,15 +22,5 @@
   "models": {
     "model": "fossilslegacy:ichthyosaurus"
   },
-  "patterns": [
-    {
-      "pattern_name": {
-        "translate": "pattern.fossilslegacy.blue_iguana"
-      },
-      "pattern_type": "fossilslegacy:basic",
-      "textures": {
-        "base": "fossilslegacy:textures/entity/ichthyosaurus/ichthyosaurus.png"
-      }
-    }
-  ]
+  "patterns": "fossilslegacy:ichthyosaurus_2025"
 }

@@ -28,11 +28,12 @@ import java.util.function.Supplier;
 
 public class FossilsFabricHelper implements FossilsModloaderHelper {
     @Override
-    public void sendApplyGenePacket(BlockPos blockPos, String coatType) {
+    public void sendApplyGenePacket(BlockPos blockPos, String modelType, String pattern) {
         FriendlyByteBuf friendlyByteBuf = PacketByteBufs.create();
         friendlyByteBuf.writeBlockPos(blockPos);
-        friendlyByteBuf.writeUtf(coatType);
-        ClientPlayNetworking.send(new ServerboundApplyGenePacket(blockPos, coatType));
+        friendlyByteBuf.writeUtf(modelType);
+        friendlyByteBuf.writeUtf(pattern);
+        ClientPlayNetworking.send(new ServerboundApplyGenePacket(blockPos, modelType, pattern));
     }
 
     @Override

@@ -5,6 +5,7 @@ import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.jurassic.Dilophosaurus;
+import willatendo.fossilslegacy.server.pattern.Pattern;
 
 import java.util.Optional;
 
@@ -19,7 +20,7 @@ public class DilophosaurusRenderer extends DataDrivenModelMobRenderer<Dilophosau
     }
 
     @Override
-    protected Optional<ResourceLocation> getAdditionalTexture(DinosaurRenderState dinosaurRenderState, ModelType modelType) {
-        return dinosaurRenderState.isAttacking ? (dinosaurRenderState.isBaby && modelType.patterns().getFirst().hasAggressiveBabyTexture()) ? Optional.of(modelType.patterns().getFirst().getAggressiveBabyTexture()) : Optional.of(modelType.patterns().getFirst().getAggressiveTexture()) : Optional.empty();
+    protected Optional<ResourceLocation> getAdditionalTexture(DinosaurRenderState dinosaurRenderState, Pattern pattern) {
+        return dinosaurRenderState.isAttacking ? (dinosaurRenderState.isBaby && pattern.hasAggressiveBabyTexture()) ? Optional.of(pattern.getAggressiveBabyTexture()) : Optional.of(pattern.getAggressiveTexture()) : Optional.empty();
     }
 }

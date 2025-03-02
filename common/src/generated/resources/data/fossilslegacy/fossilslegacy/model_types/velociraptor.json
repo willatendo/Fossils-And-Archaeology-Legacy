@@ -12,26 +12,15 @@
     "bounding_box_width": 0.2
   },
   "display_info": {
-    "color": 802636,
     "display_scale": 1.5,
     "display_y_offset": -0.75,
+    "geneColor": 802636,
     "model_name": {
-      "translate": "model_type.fossilslegacy.green_velociraptor"
+      "translate": "model_type.fossilslegacy.velociraptor"
     }
   },
   "models": {
     "model": "fossilslegacy:velociraptor"
   },
-  "patterns": [
-    {
-      "pattern_name": {
-        "translate": "pattern.fossilslegacy.green_tree_python"
-      },
-      "pattern_type": "fossilslegacy:basic",
-      "textures": {
-        "baby": "fossilslegacy:textures/entity/velociraptor/green_velociraptor_baby.png",
-        "base": "fossilslegacy:textures/entity/velociraptor/green_velociraptor_adult.png"
-      }
-    }
-  ]
+  "patterns": "fossilslegacy:velociraptor_2024"
 }

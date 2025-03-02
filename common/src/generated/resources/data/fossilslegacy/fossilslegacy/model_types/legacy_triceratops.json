@@ -12,26 +12,15 @@
     "bounding_box_width": 0.75
   },
   "display_info": {
-    "color": 11988811,
     "display_scale": 0.4,
     "display_y_offset": 0.0,
+    "geneColor": 11988811,
     "model_name": {
-      "translate": "model_type.fossilslegacy.legacy_green_triceratops"
+      "translate": "model_type.fossilslegacy.legacy_triceratops"
     }
   },
   "models": {
     "model": "fossilslegacy:legacy_triceratops"
   },
-  "patterns": [
-    {
-      "pattern_name": {
-        "translate": "pattern.fossilslegacy.green_tree_python"
-      },
-      "pattern_type": "fossilslegacy:basic",
-      "textures": {
-        "baby": "fossilslegacy:textures/entity/triceratops/legacy/green_triceratops_baby.png",
-        "base": "fossilslegacy:textures/entity/triceratops/legacy/green_triceratops_adult.png"
-      }
-    }
-  ]
+  "patterns": "fossilslegacy:triceratops_2011"
 }

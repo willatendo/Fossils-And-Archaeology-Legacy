@@ -1,4 +1,4 @@
-// 1.21.4	2025-02-28T00:11:15.0617818	Loot Tables
+// 1.21.4	2025-03-02T13:55:26.2961175	Loot Tables
 6b196aa6cdadbe968410835a209fed7ad992066f data/fossilslegacy/loot_table/archaeology/inca_loot.json
 5fcf811a958fcf132678d4423a7472c475c2b8ca data/fossilslegacy/loot_table/blocks/analyzer.json
 8bfc811efa599c9be09afe46481ec9ebbf5f3a33 data/fossilslegacy/loot_table/blocks/archaeology_workbench.json
@@ -179,7 +179,7 @@ e5d61317c0bcc1ecdcdc3ce195bef1317098b75d data/fossilslegacy/loot_table/entities/
 97fcc659488318b000821bc2a0e66b5002d47bd6 data/fossilslegacy/loot_table/entities/velociraptor_egg.json
 194127cffac074d7aeed91dc5223e394276730b1 data/fossilslegacy/loot_table/gameplay/hero_of_the_village/archaeologist_gift.json
 05d8c51aef2f9113473c465d6c8c0061f97c1b32 data/fossilslegacy/loot_table/gameplay/hero_of_the_village/palaeontologist_gift.json
-cbf797092345e3648137b9bce0e855775a8715c2 data/fossilslegacy/loot_table/shearing/mammoth.json
+334581ea3c22bb9e4c6fa2ec757954938f0fa1a8 data/fossilslegacy/loot_table/shearing/mammoth.json
 93166b0e38469d63625c00d7e06f5afd94c13b0c data/fossilslegacy/loot_table/shearing/mammoth/black.json
 12b087032b266f8cb64cd0c7182e5bf45d8a4610 data/fossilslegacy/loot_table/shearing/mammoth/blue.json
 d75d6d16455653f78e50125390d71cba2f47dfbc data/fossilslegacy/loot_table/shearing/mammoth/brown.json

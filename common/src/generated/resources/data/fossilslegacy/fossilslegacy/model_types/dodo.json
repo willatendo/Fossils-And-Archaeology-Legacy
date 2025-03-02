@@ -12,9 +12,9 @@
     "bounding_box_width": 0.5
   },
   "display_info": {
-    "color": 5921370,
     "display_scale": 2.0,
     "display_y_offset": -1.0,
+    "geneColor": 5921370,
     "model_name": {
       "translate": "model_type.fossilslegacy.dodo"
     }
@@ -22,15 +22,5 @@
   "models": {
     "model": "fossilslegacy:dodo"
   },
-  "patterns": [
-    {
-      "pattern_name": {
-        "translate": "pattern.fossilslegacy.domestic_pigeon"
-      },
-      "pattern_type": "fossilslegacy:basic",
-      "textures": {
-        "base": "fossilslegacy:textures/entity/dodo/dodo.png"
-      }
-    }
-  ]
+  "patterns": "fossilslegacy:dodo_2024"
 }

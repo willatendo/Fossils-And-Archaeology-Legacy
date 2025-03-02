@@ -5,6 +5,7 @@ import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.state.TyrannosaurusRenderState;
 import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Tyrannosaurus;
+import willatendo.fossilslegacy.server.pattern.Pattern;
 
 import java.util.Optional;
 
@@ -25,7 +26,7 @@ public class TyrannosaurusRenderer extends DataDrivenModelMobRenderer<Tyrannosau
     }
 
     @Override
-    protected Optional<ResourceLocation> getAdditionalTexture(TyrannosaurusRenderState tyrannosaurusRenderState, ModelType modelType) {
-        return (tyrannosaurusRenderState.knockedOut && modelType.patterns().getFirst().hasKnockedOutTexture()) ? Optional.of(modelType.patterns().getFirst().getKnockedOutTexture()) : (!tyrannosaurusRenderState.isBaby && !tyrannosaurusRenderState.isTame && modelType.patterns().getFirst().hasAggressiveTexture()) ? Optional.of(modelType.patterns().getFirst().getAggressiveTexture()) : Optional.empty();
+    protected Optional<ResourceLocation> getAdditionalTexture(TyrannosaurusRenderState tyrannosaurusRenderState, Pattern pattern) {
+        return (tyrannosaurusRenderState.knockedOut && pattern.hasKnockedOutTexture()) ? Optional.of(pattern.getKnockedOutTexture()) : (!tyrannosaurusRenderState.isBaby && !tyrannosaurusRenderState.isTame && pattern.hasAggressiveTexture()) ? Optional.of(pattern.getAggressiveTexture()) : Optional.empty();
     }
 }

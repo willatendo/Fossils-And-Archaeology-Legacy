@@ -2,7 +2,6 @@
   "values": [
     "fossilslegacy:legacy_brachiosaurus",
     "fossilslegacy:legacy_carnotaurus",
-    "fossilslegacy:legacy_red_carnotaurus",
     "fossilslegacy:legacy_cryolophosaurus",
     "fossilslegacy:legacy_dilophosaurus",
     "fossilslegacy:legacy_futabasaurus",
@@ -12,12 +11,8 @@
     "fossilslegacy:legacy_smilodon",
     "fossilslegacy:legacy_stegosaurus",
     "fossilslegacy:legacy_therizinosaurus",
-    "fossilslegacy:legacy_featherless_therizinosaurus",
     "fossilslegacy:legacy_triceratops",
-    "fossilslegacy:legacy_brown_triceratops",
     "fossilslegacy:legacy_tyrannosaurus",
-    "fossilslegacy:legacy_green_velociraptor",
-    "fossilslegacy:legacy_sandy_velociraptor",
-    "fossilslegacy:legacy_white_velociraptor"
+    "fossilslegacy:legacy_velociraptor"
   ]
 }

@@ -12,9 +12,9 @@
     "bounding_box_width": 0.5
   },
   "display_info": {
-    "color": 8150409,
     "display_scale": 0.75,
     "display_y_offset": 0.0,
+    "geneColor": 8150409,
     "model_name": {
       "translate": "model_type.fossilslegacy.pteranodon"
     }
@@ -22,16 +22,5 @@
   "models": {
     "model": "fossilslegacy:pteranodon"
   },
-  "patterns": [
-    {
-      "pattern_name": {
-        "translate": "pattern.fossilslegacy.eastern_indigo_snake"
-      },
-      "pattern_type": "fossilslegacy:basic",
-      "textures": {
-        "baby": "fossilslegacy:textures/entity/pteranodon/pteranodon_baby.png",
-        "base": "fossilslegacy:textures/entity/pteranodon/pteranodon_adult.png"
-      }
-    }
-  ]
+  "patterns": "fossilslegacy:pteranodon_2024"
 }

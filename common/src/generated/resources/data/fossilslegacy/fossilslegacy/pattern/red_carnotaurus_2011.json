@@ -1,0 +1,10 @@
+{
+  "gene_color": 16777215,
+  "pattern_name": {
+    "translate": "pattern.fossilslegacy.northern_cardinal"
+  },
+  "pattern_type": "fossilslegacy:basic",
+  "textures": {
+    "base": "fossilslegacy:textures/entity/carnotaurus/legacy/red_carnotaurus.png"
+  }
+}

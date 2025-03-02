@@ -12,9 +12,9 @@
     "bounding_box_width": 2.0
   },
   "display_info": {
-    "color": 12132864,
     "display_scale": 0.35,
     "display_y_offset": 0.25,
+    "geneColor": 12132864,
     "model_name": {
       "translate": "model_type.fossilslegacy.futabasaurus"
     }
@@ -22,15 +22,5 @@
   "models": {
     "model": "fossilslegacy:futabasaurus"
   },
-  "patterns": [
-    {
-      "pattern_name": {
-        "translate": "pattern.fossilslegacy.broadhead_skink"
-      },
-      "pattern_type": "fossilslegacy:basic",
-      "textures": {
-        "base": "fossilslegacy:textures/entity/futabasaurus/futabasaurus.png"
-      }
-    }
-  ]
+  "patterns": "fossilslegacy:futabasaurus_2024"
 }

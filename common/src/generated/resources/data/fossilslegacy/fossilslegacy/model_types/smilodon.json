@@ -12,9 +12,9 @@
     "bounding_box_width": 0.75
   },
   "display_info": {
-    "color": 15705925,
     "display_scale": 1.0,
     "display_y_offset": -0.5,
+    "geneColor": 15705925,
     "model_name": {
       "translate": "model_type.fossilslegacy.smilodon"
     }
@@ -22,16 +22,5 @@
   "models": {
     "model": "fossilslegacy:smilodon"
   },
-  "patterns": [
-    {
-      "pattern_name": {
-        "translate": "pattern.fossilslegacy.tiger"
-      },
-      "pattern_type": "fossilslegacy:basic",
-      "textures": {
-        "baby": "fossilslegacy:textures/entity/smilodon/smilodon_baby.png",
-        "base": "fossilslegacy:textures/entity/smilodon/smilodon_adult.png"
-      }
-    }
-  ]
+  "patterns": "fossilslegacy:smilodon_2024"
 }

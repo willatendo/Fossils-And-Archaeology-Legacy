@@ -178,7 +178,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        this.addModelType(compoundTag);
+        this.addCosmeticsData(compoundTag);
         compoundTag.putBoolean("LearnedChests", this.hasLearnedChests());
         if (!this.getHeldItem().isEmpty()) {
             compoundTag.put("HeldItem", this.getHeldItem().saveOptional(this.registryAccess()));
@@ -188,7 +188,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        this.readModelType(compoundTag);
+        this.readCosmeticsData(compoundTag);
         this.setLearnedChests(compoundTag.getBoolean("LearnedChests"));
         CompoundTag itemCompoundTag = compoundTag.getCompound("HeldItem");
         if (itemCompoundTag != null && !itemCompoundTag.isEmpty()) {

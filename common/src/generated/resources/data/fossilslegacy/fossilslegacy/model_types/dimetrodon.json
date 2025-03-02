@@ -12,9 +12,9 @@
     "bounding_box_width": 0.5
   },
   "display_info": {
-    "color": 2431522,
     "display_scale": 1.0,
     "display_y_offset": 0.0,
+    "geneColor": 2431522,
     "model_name": {
       "translate": "model_type.fossilslegacy.dimetrodon"
     }
@@ -22,17 +22,5 @@
   "models": {
     "model": "fossilslegacy:dimetrodon"
   },
-  "patterns": [
-    {
-      "pattern_name": {
-        "translate": "pattern.fossilslegacy.eastern_indigo_snake"
-      },
-      "pattern_type": "fossilslegacy:basic",
-      "textures": {
-        "aggressive": "fossilslegacy:textures/entity/dimetrodon/dimetrodon_agressive.png",
-        "baby": "fossilslegacy:textures/entity/dimetrodon/dimetrodon_baby.png",
-        "base": "fossilslegacy:textures/entity/dimetrodon/dimetrodon_adult.png"
-      }
-    }
-  ]
+  "patterns": "fossilslegacy:dimetrodon_2024"
 }

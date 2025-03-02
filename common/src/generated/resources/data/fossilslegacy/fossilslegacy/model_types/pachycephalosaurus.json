@@ -12,9 +12,9 @@
     "bounding_box_width": 0.7
   },
   "display_info": {
-    "color": 12609833,
     "display_scale": 0.7,
     "display_y_offset": 0.0,
+    "geneColor": 12609833,
     "model_name": {
       "translate": "model_type.fossilslegacy.pachycephalosaurus"
     }
@@ -22,16 +22,5 @@
   "models": {
     "model": "fossilslegacy:pachycephalosaurus"
   },
-  "patterns": [
-    {
-      "pattern_name": {
-        "translate": "pattern.fossilslegacy.broadhead_skink"
-      },
-      "pattern_type": "fossilslegacy:basic",
-      "textures": {
-        "baby": "fossilslegacy:textures/entity/pachycephalosaurus/pachycephalosaurus_baby.png",
-        "base": "fossilslegacy:textures/entity/pachycephalosaurus/pachycephalosaurus_adult.png"
-      }
-    }
-  ]
+  "patterns": "fossilslegacy:pachycephalosaurus_2024"
 }

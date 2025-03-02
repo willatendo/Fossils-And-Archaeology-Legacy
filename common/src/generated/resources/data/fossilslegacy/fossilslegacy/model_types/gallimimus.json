@@ -12,9 +12,9 @@
     "bounding_box_width": 0.7
   },
   "display_info": {
-    "color": 7817491,
     "display_scale": 0.4,
     "display_y_offset": 1.5,
+    "geneColor": 7817491,
     "model_name": {
       "translate": "model_type.fossilslegacy.gallimimus"
     }
@@ -22,16 +22,5 @@
   "models": {
     "model": "fossilslegacy:gallimimus"
   },
-  "patterns": [
-    {
-      "pattern_name": {
-        "translate": "pattern.fossilslegacy.broadhead_skink"
-      },
-      "pattern_type": "fossilslegacy:basic",
-      "textures": {
-        "baby": "fossilslegacy:textures/entity/gallimimus/gallimimus_baby.png",
-        "base": "fossilslegacy:textures/entity/gallimimus/gallimimus_adult.png"
-      }
-    }
-  ]
+  "patterns": "fossilslegacy:gallimimus_2024"
 }

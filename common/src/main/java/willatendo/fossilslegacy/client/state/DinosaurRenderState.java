@@ -4,9 +4,11 @@ import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.core.Holder;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.server.model_type.ModelType;
+import willatendo.fossilslegacy.server.pattern.Pattern;
 
 public class DinosaurRenderState extends LivingEntityRenderState {
     public Holder<ModelType> modelType;
+    public Holder<Pattern> pattern;
     public int growthStage;
     public boolean isTame;
     public boolean isOrderedToSit;

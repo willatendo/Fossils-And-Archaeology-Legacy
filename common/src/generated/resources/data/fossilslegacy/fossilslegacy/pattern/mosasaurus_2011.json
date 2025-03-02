@@ -1,0 +1,11 @@
+{
+  "gene_color": 16777215,
+  "pattern_name": {
+    "translate": "pattern.fossilslegacy.marine_iguana"
+  },
+  "pattern_type": "fossilslegacy:basic",
+  "textures": {
+    "base": "fossilslegacy:textures/entity/mosasaurus/legacy/mosasaurus.png",
+    "eye": "fossilslegacy:textures/entity/mosasaurus/legacy/mosasaurus_eyes.png"
+  }
+}

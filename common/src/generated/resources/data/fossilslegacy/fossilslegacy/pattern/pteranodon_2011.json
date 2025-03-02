@@ -1,0 +1,10 @@
+{
+  "gene_color": 16777215,
+  "pattern_name": {
+    "translate": "pattern.fossilslegacy.eastern_indigo_snake"
+  },
+  "pattern_type": "fossilslegacy:basic",
+  "textures": {
+    "base": "fossilslegacy:textures/entity/pteranodon/legacy/pteranodon.png"
+  }
+}

@@ -14,7 +14,7 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Mammo
 import java.util.Optional;
 
 public record MammothPredicate(Optional<Boolean> sheared, Optional<DyeColor> color) implements EntitySubPredicate {
-    public static final MapCodec<MammothPredicate> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(Codec.BOOL.optionalFieldOf("sheared").forGetter(MammothPredicate::sheared), DyeColor.CODEC.optionalFieldOf("color").forGetter(MammothPredicate::color)).apply(instance, MammothPredicate::new));
+    public static final MapCodec<MammothPredicate> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(Codec.BOOL.optionalFieldOf("sheared").forGetter(MammothPredicate::sheared), DyeColor.CODEC.optionalFieldOf("geneColor").forGetter(MammothPredicate::color)).apply(instance, MammothPredicate::new));
 
     @Override
     public MapCodec<MammothPredicate> codec() {

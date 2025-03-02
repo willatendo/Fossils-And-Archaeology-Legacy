@@ -1,0 +1,11 @@
+{
+  "gene_color": 16777215,
+  "pattern_name": {
+    "translate": "pattern.fossilslegacy.inland_taipan"
+  },
+  "pattern_type": "fossilslegacy:basic",
+  "textures": {
+    "aggressive": "fossilslegacy:textures/entity/dilophosaurus/legacy/dilophosaurus_aggressive.png",
+    "base": "fossilslegacy:textures/entity/dilophosaurus/legacy/dilophosaurus.png"
+  }
+}

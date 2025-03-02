@@ -18,8 +18,8 @@ import java.util.function.Supplier;
 
 public class FossilsForgeHelper implements FossilsModloaderHelper {
     @Override
-    public void sendApplyGenePacket(BlockPos blockPos, String coatType) {
-        ForgePacketHelper.sendToServer(new ServerboundApplyGenePacket(blockPos, coatType));
+    public void sendApplyGenePacket(BlockPos blockPos, String modelType, String pattern) {
+        ForgePacketHelper.sendToServer(new ServerboundApplyGenePacket(blockPos, modelType, pattern));
     }
 
     @Override

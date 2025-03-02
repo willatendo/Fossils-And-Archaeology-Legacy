@@ -12,9 +12,9 @@
     "bounding_box_width": 0.5
   },
   "display_info": {
-    "color": 7565130,
     "display_scale": 1.0,
     "display_y_offset": 0.25,
+    "geneColor": 7565130,
     "model_name": {
       "translate": "model_type.fossilslegacy.legacy_dilophosaurus"
     }
@@ -22,16 +22,5 @@
   "models": {
     "model": "fossilslegacy:legacy_dilophosaurus"
   },
-  "patterns": [
-    {
-      "pattern_name": {
-        "translate": "pattern.fossilslegacy.inland_taipan"
-      },
-      "pattern_type": "fossilslegacy:basic",
-      "textures": {
-        "aggressive": "fossilslegacy:textures/entity/dilophosaurus/legacy/dilophosaurus_aggressive.png",
-        "base": "fossilslegacy:textures/entity/dilophosaurus/legacy/dilophosaurus.png"
-      }
-    }
-  ]
+  "patterns": "fossilslegacy:dilophosaurus_2011"
 }

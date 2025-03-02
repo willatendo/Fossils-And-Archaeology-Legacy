@@ -1,10 +1,8 @@
 package willatendo.fossilslegacy.server.entity.entities;
 
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Holder;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -23,12 +21,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
-import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
+import willatendo.fossilslegacy.server.entity.util.interfaces.DataDrivenCosmetics;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.TicksToBirth;
+import willatendo.fossilslegacy.server.model_type.ModelType;
+import willatendo.fossilslegacy.server.pattern.Pattern;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
@@ -36,10 +36,9 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Supplier;
 
-public abstract class Egg extends Animal implements TicksToBirth, DinopediaInformation {
-    private static final EntityDataAccessor<Holder<ModelType>> COAT_TYPE = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.MODEL_TYPES.get());
-    public static final MapCodec<Holder<ModelType>> VARIANT_MAP_CODEC = ModelType.CODEC.fieldOf("CoatType");
-    public static final Codec<Holder<ModelType>> VARIANT_CODEC = VARIANT_MAP_CODEC.codec();
+public abstract class Egg extends Animal implements TicksToBirth, DinopediaInformation, DataDrivenCosmetics {
+    private static final EntityDataAccessor<Holder<ModelType>> MODEL_TYPE = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.MODEL_TYPES.get());
+    private static final EntityDataAccessor<Holder<Pattern>> PATTERN = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.PATTERN.get());
     private static final EntityDataAccessor<Integer> REMAINING_TIME = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> WARM = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.BOOLEAN);
     protected static final EntityDataAccessor<Optional<UUID>> OWNER = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.OPTIONAL_UUID);
@@ -176,7 +175,8 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(COAT_TYPE, this.registryAccess().lookupOrThrow(FARegistries.MODEL_TYPES).getAny().orElseThrow());
+        builder.define(MODEL_TYPE, this.registryAccess().lookupOrThrow(FARegistries.MODEL_TYPES).getAny().orElseThrow());
+        builder.define(PATTERN, this.registryAccess().lookupOrThrow(FARegistries.PATTERN).getAny().orElseThrow());
         builder.define(REMAINING_TIME, 0);
         builder.define(WARM, false);
         builder.define(OWNER, Optional.empty());
@@ -186,11 +186,12 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
 
+        this.addCosmeticsData(compoundTag);
+
         if (this.getOwnerUUID() != null) {
             compoundTag.putUUID("Owner", this.getOwnerUUID());
         }
 
-        VARIANT_CODEC.encodeStart(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), this.getCoatType()).ifSuccess(tag -> compoundTag.merge((CompoundTag) tag));
         compoundTag.putInt("RemainingTime", this.getRemainingTime());
         compoundTag.putBoolean("Warm", this.isWarm());
     }
@@ -198,6 +199,8 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
+
+        this.readCosmeticsData(compoundTag);
 
         UUID uuid;
         if (compoundTag.hasUUID("Owner")) {
@@ -214,9 +217,36 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
             }
         }
 
-        VARIANT_CODEC.parse(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), compoundTag).ifSuccess(this::setCoatType);
         this.setRemainingTime(compoundTag.getInt("RemainingTime"));
         this.setWarm(compoundTag.getBoolean("Warm"));
+    }
+
+    @Override
+    public CompoundTag saveWithoutId(CompoundTag compound) {
+        this.addCosmeticsData(compound);
+
+        if (this.getOwnerUUID() != null) {
+            compound.putUUID("Owner", this.getOwnerUUID());
+        }
+
+        compound.putInt("RemainingTime", this.getRemainingTime());
+        compound.putBoolean("Warm", this.isWarm());
+
+        return super.saveWithoutId(compound);
+    }
+
+    @Override
+    public boolean save(CompoundTag compound) {
+        this.addCosmeticsData(compound);
+
+        if (this.getOwnerUUID() != null) {
+            compound.putUUID("Owner", this.getOwnerUUID());
+        }
+
+        compound.putInt("RemainingTime", this.getRemainingTime());
+        compound.putBoolean("Warm", this.isWarm());
+
+        return super.save(compound);
     }
 
     @Override
@@ -242,12 +272,24 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
         this.entityData.set(WARM, warm);
     }
 
-    public Holder<ModelType> getCoatType() {
-        return this.entityData.get(COAT_TYPE);
+    @Override
+    public Holder<ModelType> getModelType() {
+        return this.entityData.get(MODEL_TYPE);
     }
 
-    public void setCoatType(Holder<ModelType> coatTypeHolder) {
-        this.entityData.set(COAT_TYPE, coatTypeHolder);
+    @Override
+    public void setModelType(Holder<ModelType> modelType) {
+        this.entityData.set(MODEL_TYPE, modelType);
+    }
+
+    @Override
+    public Holder<Pattern> getPattern() {
+        return this.entityData.get(PATTERN);
+    }
+
+    @Override
+    public void setPattern(Holder<Pattern> patternType) {
+        this.entityData.set(PATTERN, patternType);
     }
 
     public boolean isOwnedBy(LivingEntity livingEntity) {
@@ -264,7 +306,7 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
     }
 
     public UUID getOwnerUUID() {
-        return this.entityData.get(OWNER).orElse((UUID) null);
+        return this.entityData.get(OWNER).orElse(null);
     }
 
     public void setOwnerUUID(UUID uuid) {
@@ -279,5 +321,10 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
         return null;
+    }
+
+    @Override
+    public RegistryAccess getRegistryAccess() {
+        return this.registryAccess();
     }
 }

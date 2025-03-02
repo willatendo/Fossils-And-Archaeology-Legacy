@@ -12,9 +12,9 @@
     "bounding_box_width": 0.5
   },
   "display_info": {
-    "color": 881478,
     "display_scale": 0.3,
     "display_y_offset": 0.25,
+    "geneColor": 881478,
     "model_name": {
       "translate": "model_type.fossilslegacy.mosasaurus"
     }
@@ -22,16 +22,5 @@
   "models": {
     "model": "fossilslegacy:mosasaurus"
   },
-  "patterns": [
-    {
-      "pattern_name": {
-        "translate": "pattern.fossilslegacy.marine_iguana"
-      },
-      "pattern_type": "fossilslegacy:basic",
-      "textures": {
-        "base": "fossilslegacy:textures/entity/mosasaurus/mosasaurus.png",
-        "eye": "fossilslegacy:textures/entity/mosasaurus/mosasaurus_eyes.png"
-      }
-    }
-  ]
+  "patterns": "fossilslegacy:mosasaurus_2024"
 }

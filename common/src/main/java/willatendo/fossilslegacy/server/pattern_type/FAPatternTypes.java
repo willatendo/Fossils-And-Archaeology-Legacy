@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.server.pattern_type;
 
-import com.mojang.datafixers.util.Pair;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import willatendo.fossilslegacy.server.entity.genetics.GeneticType;

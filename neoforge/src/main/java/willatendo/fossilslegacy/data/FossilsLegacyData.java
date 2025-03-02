@@ -67,6 +67,7 @@ public class FossilsLegacyData {
         event.addProvider(new FAStructureTagProvider(packOutput, registries, FAUtils.ID));
         event.addProvider(new FAAnalyzerResultTagProvider(packOutput, registries, FAUtils.ID));
         event.addProvider(new FAFuelEntryTagProvider(packOutput, registries, FAUtils.ID));
+        event.addProvider(new FAPatternTagProvider(packOutput, registries, FAUtils.ID));
         event.addProvider(new PackMetadataGenerator(packOutput).add(PackMetadataSection.TYPE, new PackMetadataSection(FAUtils.translation("resourcePack", "description"), DetectedVersion.BUILT_IN.getPackVersion(PackType.CLIENT_RESOURCES), Optional.empty())));
 
         ResourceLocation legacyPack = FAUtils.resource("fa_legacy_textures");

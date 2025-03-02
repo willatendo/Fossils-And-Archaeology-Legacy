@@ -8,10 +8,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
-
-import java.util.Optional;
 
 public class MosasaurusEyesLayer extends RenderLayer<DinosaurRenderState, EntityModel<DinosaurRenderState>> {
     public MosasaurusEyesLayer(RenderLayerParent<DinosaurRenderState, EntityModel<DinosaurRenderState>> renderLayerParent) {
@@ -20,8 +17,8 @@ public class MosasaurusEyesLayer extends RenderLayer<DinosaurRenderState, Entity
 
     @Override
     public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks, DinosaurRenderState dinosaurRenderState, float packedLight, float packedOverlay) {
-        if (dinosaurRenderState.modelType.value().patterns().getFirst().hasEyeTexture()) {
-            VertexConsumer vertexconsumer = multiBufferSource.getBuffer(RenderType.eyes(dinosaurRenderState.modelType.value().patterns().getFirst().getEyeTexture()));
+        if (dinosaurRenderState.pattern.value().hasEyeTexture()) {
+            VertexConsumer vertexconsumer = multiBufferSource.getBuffer(RenderType.eyes(dinosaurRenderState.pattern.value().getEyeTexture()));
             this.getParentModel().renderToBuffer(poseStack, vertexconsumer, 15728640, OverlayTexture.NO_OVERLAY);
         }
     }

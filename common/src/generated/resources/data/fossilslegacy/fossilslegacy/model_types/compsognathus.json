@@ -12,9 +12,9 @@
     "bounding_box_width": 0.25
   },
   "display_info": {
-    "color": 2178336,
     "display_scale": 2.0,
     "display_y_offset": -1.0,
+    "geneColor": 2178336,
     "model_name": {
       "translate": "model_type.fossilslegacy.compsognathus"
     }
@@ -22,15 +22,5 @@
   "models": {
     "model": "fossilslegacy:compsognathus"
   },
-  "patterns": [
-    {
-      "pattern_name": {
-        "translate": "pattern.fossilslegacy.green_tree_python"
-      },
-      "pattern_type": "fossilslegacy:basic",
-      "textures": {
-        "base": "fossilslegacy:textures/entity/compsognathus/compsognathus.png"
-      }
-    }
-  ]
+  "patterns": "fossilslegacy:compsognathus_2024"
 }
