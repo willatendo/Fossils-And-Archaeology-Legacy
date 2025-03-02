@@ -1,4 +1,9 @@
 {
+  "animations": {
+    "walk": [
+      "fossilslegacy:moa_walk"
+    ]
+  },
   "elements": [
     {
       "boxes": [
@@ -181,11 +186,6 @@
   "head_pieces": [
     "neck"
   ],
-  "jsonAnimationChannels": {
-    "walk": [
-      "fossilslegacy:moa_walk"
-    ]
-  },
   "texture_height": 64,
   "texture_width": 64
 }

@@ -3,12 +3,12 @@ package willatendo.fossilslegacy.client.render;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.jurassic.Dilophosaurus;
 
 import java.util.Optional;
 
-public class DilophosaurusRenderer extends CoatTypeMobRenderer<Dilophosaurus, DinosaurRenderState> {
+public class DilophosaurusRenderer extends DataDrivenModelMobRenderer<Dilophosaurus, DinosaurRenderState> {
     public DilophosaurusRenderer(Context context) {
         super(context, 0.3F);
     }
@@ -19,7 +19,7 @@ public class DilophosaurusRenderer extends CoatTypeMobRenderer<Dilophosaurus, Di
     }
 
     @Override
-    protected Optional<ResourceLocation> getAdditionalTexture(DinosaurRenderState dinosaurRenderState, CoatType coatType) {
-        return dinosaurRenderState.isAttacking ? (dinosaurRenderState.isBaby && coatType.patterns().getFirst().textures().aggressiveBabyTexture().isPresent()) ? coatType.patterns().getFirst().textures().aggressiveBabyTexture() : coatType.patterns().getFirst().textures().aggressiveTexture() : Optional.empty();
+    protected Optional<ResourceLocation> getAdditionalTexture(DinosaurRenderState dinosaurRenderState, ModelType modelType) {
+        return dinosaurRenderState.isAttacking ? (dinosaurRenderState.isBaby && modelType.patterns().getFirst().hasAggressiveBabyTexture()) ? Optional.of(modelType.patterns().getFirst().getAggressiveBabyTexture()) : Optional.of(modelType.patterns().getFirst().getAggressiveTexture()) : Optional.empty();
     }
 }

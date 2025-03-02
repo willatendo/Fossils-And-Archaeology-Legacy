@@ -4,39 +4,39 @@
   "line": [
     {
       "type": "fossilslegacy:built_in",
-      "name": "display_name"
+      "modelName": "display_name"
     },
     {
       "type": "fossilslegacy:built_in",
-      "name": "owner"
+      "modelName": "owner"
     },
     {
       "type": "fossilslegacy:built_in",
-      "name": "age"
+      "modelName": "age"
     },
     {
       "type": "fossilslegacy:built_in",
-      "name": "health"
+      "modelName": "health"
     },
     {
       "type": "fossilslegacy:built_in",
-      "name": "hunger"
+      "modelName": "hunger"
     },
     {
       "type": "fossilslegacy:built_in",
-      "name": "rideable"
+      "modelName": "rideable"
     },
     {
       "type": "fossilslegacy:built_in",
-      "name": "able_to_fly"
+      "modelName": "able_to_fly"
     },
     {
       "type": "fossilslegacy:built_in",
-      "name": "not_owner"
+      "modelName": "not_owner"
     },
     {
       "type": "fossilslegacy:built_in",
-      "name": "wild"
+      "modelName": "wild"
     }
   ]
 }

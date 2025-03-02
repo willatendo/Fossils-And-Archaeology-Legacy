@@ -1,4 +1,12 @@
 {
+  "animations": {
+    "swim": [
+      "fossilslegacy:spinosaurus_swim"
+    ],
+    "walk": [
+      "fossilslegacy:spinosaurus_walk"
+    ]
+  },
   "elements": [
     {
       "boxes": [
@@ -415,14 +423,6 @@
   "head_pieces": [
     "neck"
   ],
-  "jsonAnimationChannels": {
-    "swim": [
-      "fossilslegacy:spinosaurus_swim"
-    ],
-    "walk": [
-      "fossilslegacy:spinosaurus_walk"
-    ]
-  },
   "texture_height": 128,
   "texture_width": 128
 }

@@ -21,7 +21,7 @@ import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.animal.horse.Mule;
 import net.minecraft.world.level.Level;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Mammoth;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Smilodon;
@@ -35,8 +35,8 @@ import java.util.Objects;
 import java.util.Optional;
 
 public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLevelAccessor {
-    MapCodec<Holder<CoatType>> VARIANT_MAP_CODEC = CoatType.CODEC.fieldOf("OffspringCoatType");
-    Codec<Holder<CoatType>> VARIANT_CODEC = VARIANT_MAP_CODEC.codec();
+    MapCodec<Holder<ModelType>> VARIANT_MAP_CODEC = ModelType.CODEC.fieldOf("OffspringCoatType");
+    Codec<Holder<ModelType>> VARIANT_CODEC = VARIANT_MAP_CODEC.codec();
 
     int getRemainingPregnancyTime();
 
@@ -56,9 +56,9 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLe
 
     void setPregnancyType(Holder<PregnancyType> pregnancyType);
 
-    Holder<CoatType> getOffspringCoatType();
+    Holder<ModelType> getOffspringCoatType();
 
-    void setOffspringCoatType(Holder<CoatType> coatTypeHolder);
+    void setOffspringCoatType(Holder<ModelType> coatTypeHolder);
 
     T getBaseEntity(Level level);
 
@@ -226,8 +226,8 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLe
         builder.define(pregnancy, FABuiltInRegistries.PREGNANCY_TYPES.getOrThrow(FAPregnancyTypes.CAT.getKey()));
     }
 
-    default void defineCoatTypeData(EntityDataAccessor<Holder<CoatType>> pregnancy, SynchedEntityData.Builder builder) {
-        builder.define(pregnancy, this.getLevel().registryAccess().lookupOrThrow(FARegistries.COAT_TYPES).getAny().orElseThrow());
+    default void defineCoatTypeData(EntityDataAccessor<Holder<ModelType>> pregnancy, SynchedEntityData.Builder builder) {
+        builder.define(pregnancy, this.getLevel().registryAccess().lookupOrThrow(FARegistries.MODEL_TYPES).getAny().orElseThrow());
     }
 
     default void addRemainingPregnancyTime(CompoundTag compoundTag) {

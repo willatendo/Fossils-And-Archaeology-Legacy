@@ -1,4 +1,12 @@
 {
+  "animations": {
+    "swim": [
+      "fossilslegacy:legacy_futabasaurus_swim"
+    ],
+    "walk": [
+      "fossilslegacy:legacy_futabasaurus_swim"
+    ]
+  },
   "elements": [
     {
       "boxes": [
@@ -300,14 +308,7 @@
       }
     }
   ],
-  "jsonAnimationChannels": {
-    "swim": [
-      "fossilslegacy:legacy_futabasaurus_swim"
-    ],
-    "walk": [
-      "fossilslegacy:legacy_futabasaurus_swim"
-    ]
-  },
+  "override_reset": true,
   "texture_height": 32,
   "texture_width": 64
 }

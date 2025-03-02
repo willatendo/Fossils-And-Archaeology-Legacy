@@ -4,12 +4,14 @@ import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.api.client.BuiltInAnimationType;
 import willatendo.fossilslegacy.client.model.json.JsonTypeModel;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
+import willatendo.fossilslegacy.client.state.IchthyosaurusRenderState;
 import willatendo.fossilslegacy.client.state.PteranodonRenderState;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.function.Function;
 
 public enum BuiltInAnimationTypes implements BuiltInAnimationType {
+    ICHTHYOSAUR_BODY_SWIM("ichthyosaur_body_swim", dinosaurRenderState -> dinosaurRenderState instanceof IchthyosaurusRenderState, IchthyosaurAnimations::icthyosaurusSwimAnimation),
     PTERANODON_BODY_FLY("pteranodon_body_fly", dinosaurRenderState -> dinosaurRenderState instanceof PteranodonRenderState, PteranodonAnimations::pteranodonFlyingAnimation),
 
     LEGACY_BRACHIOSAURUS_WALK("legacy_brachiosaurus_walk", dinosaurRenderState -> true, BrachiosaurusAnimations::legacyBrachiosaurusWalkAnimation),
@@ -24,8 +26,8 @@ public enum BuiltInAnimationTypes implements BuiltInAnimationType {
     LEGACY_STEGOSAURUS_WALK("legacy_stegosaurus_walk", dinosaurRenderState -> true, StegosaurusAnimations::legacyStegosaurusWalkAnimation),
     LEGACY_THERIZINOSAURUS_WALK("legacy_therizinosaurus_walk", dinosaurRenderState -> true, TherizinosaurusAnimations::legacyTherizinosaurusWalkAnimation),
     LEGACY_TRICERATOPS_WALK("legacy_triceratops_walk", dinosaurRenderState -> true, TriceratopsAnimations::legacyTriceratopsWalkAnimation),
-    LEGACY_TYRANNOSAURUS_HEAD("legacy_tyrannosaurus_head", dinosaurRenderState -> true, TyrannosaursAnimations::legacyTyrannosaurusHeadAnimation),
-    LEGACY_TYRANNOSAURUS_WALK("legacy_tyrannosaurus_walk", dinosaurRenderState -> true, TyrannosaursAnimations::legacyTyrannosaurusWalkAnimation),
+    LEGACY_TYRANNOSAURUS_HEAD("legacy_tyrannosaurus_head", dinosaurRenderState -> true, TyrannosaurusAnimations::legacyTyrannosaurusHeadAnimation),
+    LEGACY_TYRANNOSAURUS_WALK("legacy_tyrannosaurus_walk", dinosaurRenderState -> true, TyrannosaurusAnimations::legacyTyrannosaurusWalkAnimation),
     LEGACY_VELOCIRAPTOR_WALK("legacy_velociraptor_walk", dinosaurRenderState -> true, VelociraptorAnimations::legacyVelociraptorWalkAnimation),
     LEGACY_MAMMOTH_WALK("legacy_mammoth_walk", dinosaurRenderState -> true, MammothAnimations::legacyMammothWalkAnimation),
     LEGACY_SMILODON_SHAKE("legacy_smilodon_shake", dinosaurRenderState -> true, SmilodonAnimations::legacySmilodonShakeModelPrep),

@@ -1,4 +1,4 @@
-// 1.21.4	2025-02-23T15:31:34.6796873	Animations: fossilslegacy
+// 1.21.4	2025-02-28T01:27:35.960877	Animations: fossilslegacy
 12d556c61498df4a1f4ed58b05e20c069c12ce2c assets/fossilslegacy/fossilslegacy/animations/ankylosaurus_walk.json
 c2cc01b70eb2b66ccc3bc10b8a904ee7503dfb60 assets/fossilslegacy/fossilslegacy/animations/brachiosaurus_walk.json
 7711254ace0dfba01b97eaaf0cc6b42edde23a7a assets/fossilslegacy/fossilslegacy/animations/carnotaurus_walk.json
@@ -11,6 +11,8 @@ a345e326be93b3bde353ef4fa86be0fa52d11db7 assets/fossilslegacy/fossilslegacy/anim
 2b83fd841ae5d5a736cff8d8da3baa4d5e8713af assets/fossilslegacy/fossilslegacy/animations/futabasaurus_swim.json
 55b13246464805a95ad10814b032c6b72446005c assets/fossilslegacy/fossilslegacy/animations/futabasaurus_walk.json
 1f5db95cba525995cb7bba4fe5223efb5b8c671b assets/fossilslegacy/fossilslegacy/animations/gallimimus_walk.json
+3db5f6c9d2d5a6faba68395535286b2a6ac047ae assets/fossilslegacy/fossilslegacy/animations/ichthyosaurus_idle.json
+ab5acca7b5cb72da5003fe4686406672aaf0bf3a assets/fossilslegacy/fossilslegacy/animations/ichthyosaurus_swim.json
 10fee843f9c4369c19a8895082ee7aa5d83a7f1d assets/fossilslegacy/fossilslegacy/animations/mammoth_walk.json
 d561e666752364aaaa6c86fc468ad6d2e865a805 assets/fossilslegacy/fossilslegacy/animations/moa_walk.json
 faafc12c18c6c36c80215ea1a29f80d34d8e9bb6 assets/fossilslegacy/fossilslegacy/animations/mosasaurus_swim.json

@@ -1,4 +1,18 @@
 {
+  "animations": {
+    "shake": [
+      "fossilslegacy:legacy_smilodon_shake"
+    ],
+    "sit": [
+      "fossilslegacy:legacy_smilodon_sit"
+    ],
+    "tail": [
+      "fossilslegacy:legacy_smilodon_tail"
+    ],
+    "walk": [
+      "fossilslegacy:legacy_smilodon_walk"
+    ]
+  },
   "elements": [
     {
       "boxes": [
@@ -406,17 +420,6 @@
       }
     }
   ],
-  "jsonAnimationChannels": {
-    "shake": [
-      "fossilslegacy:legacy_smilodon_shake"
-    ],
-    "sit": [
-      "fossilslegacy:legacy_smilodon_sit"
-    ],
-    "tail": [
-      "fossilslegacy:legacy_smilodon_tail"
-    ]
-  },
   "override_reset": true,
   "texture_height": 32,
   "texture_width": 64

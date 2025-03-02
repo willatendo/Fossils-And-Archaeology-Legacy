@@ -1,0 +1,37 @@
+{
+  "age_scale_info": {
+    "age_scale": 0.2,
+    "base_scale_height": 0.8,
+    "base_scale_width": 0.8,
+    "shadow_growth": 0.075,
+    "shadow_size": 0.5
+  },
+  "bounding_box_info": {
+    "bounding_box_growth": 0.2,
+    "bounding_box_height": 0.5,
+    "bounding_box_width": 0.5
+  },
+  "display_info": {
+    "color": 8150409,
+    "display_scale": 0.75,
+    "display_y_offset": 0.0,
+    "model_name": {
+      "translate": "model_type.fossilslegacy.pteranodon"
+    }
+  },
+  "models": {
+    "model": "fossilslegacy:pteranodon"
+  },
+  "patterns": [
+    {
+      "pattern_name": {
+        "translate": "pattern.fossilslegacy.eastern_indigo_snake"
+      },
+      "pattern_type": "fossilslegacy:basic",
+      "textures": {
+        "baby": "fossilslegacy:textures/entity/pteranodon/pteranodon_baby.png",
+        "base": "fossilslegacy:textures/entity/pteranodon/pteranodon_adult.png"
+      }
+    }
+  ]
+}

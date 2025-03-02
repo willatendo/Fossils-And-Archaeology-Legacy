@@ -1,4 +1,9 @@
 {
+  "animations": {
+    "walk": [
+      "fossilslegacy:compsognathus_walk"
+    ]
+  },
   "elements": [
     {
       "boxes": [
@@ -235,11 +240,6 @@
   "head_pieces": [
     "head"
   ],
-  "jsonAnimationChannels": {
-    "walk": [
-      "fossilslegacy:compsognathus_walk"
-    ]
-  },
   "texture_height": 32,
   "texture_width": 32
 }

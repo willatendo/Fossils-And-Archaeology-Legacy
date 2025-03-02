@@ -7,7 +7,7 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FutabasaurusModels {
     public static final JsonModel FUTABASAURUS_MODEL = FutabasaurusModels.createFutabasaurusBodyLayer().withWalkAnimations(FAUtils.resource("futabasaurus_walk")).withSwimAnimations(FAUtils.resource("futabasaurus_swim")).withHeadPieces("neck", "middle_neck", "head").build();
-    public static final JsonModel LEGACY_FUTABASAURUS_MODEL = FutabasaurusModels.createLegacyFutabasaurusBodyLayer().withWalkAnimations(BuiltInAnimationTypes.LEGACY_FUTABASAURUS_SWIM.getId()).withSwimAnimations(BuiltInAnimationTypes.LEGACY_FUTABASAURUS_SWIM.getId()).build();
+    public static final JsonModel LEGACY_FUTABASAURUS_MODEL = FutabasaurusModels.createLegacyFutabasaurusBodyLayer().withWalkAnimations(BuiltInAnimationTypes.LEGACY_FUTABASAURUS_SWIM.getId()).withSwimAnimations(BuiltInAnimationTypes.LEGACY_FUTABASAURUS_SWIM.getId()).overrideReset().build();
 
     private static JsonModel.Builder createFutabasaurusBodyLayer() {
         JsonModel.Builder builder = JsonModel.builder(64, 64);

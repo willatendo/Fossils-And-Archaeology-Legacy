@@ -1,4 +1,9 @@
 {
+  "animations": {
+    "walk": [
+      "fossilslegacy:therizinosaurus_walk"
+    ]
+  },
   "elements": [
     {
       "boxes": [
@@ -350,11 +355,6 @@
   "head_pieces": [
     "neck"
   ],
-  "jsonAnimationChannels": {
-    "walk": [
-      "fossilslegacy:therizinosaurus_walk"
-    ]
-  },
   "texture_height": 128,
   "texture_width": 128
 }

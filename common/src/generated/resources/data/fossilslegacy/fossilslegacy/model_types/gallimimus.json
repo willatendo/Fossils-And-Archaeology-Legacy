@@ -1,0 +1,37 @@
+{
+  "age_scale_info": {
+    "age_scale": 0.2,
+    "base_scale_height": 0.75,
+    "base_scale_width": 0.75,
+    "shadow_growth": 0.1,
+    "shadow_size": 1.0
+  },
+  "bounding_box_info": {
+    "bounding_box_growth": 0.25,
+    "bounding_box_height": 0.7,
+    "bounding_box_width": 0.7
+  },
+  "display_info": {
+    "color": 7817491,
+    "display_scale": 0.4,
+    "display_y_offset": 1.5,
+    "model_name": {
+      "translate": "model_type.fossilslegacy.gallimimus"
+    }
+  },
+  "models": {
+    "model": "fossilslegacy:gallimimus"
+  },
+  "patterns": [
+    {
+      "pattern_name": {
+        "translate": "pattern.fossilslegacy.broadhead_skink"
+      },
+      "pattern_type": "fossilslegacy:basic",
+      "textures": {
+        "baby": "fossilslegacy:textures/entity/gallimimus/gallimimus_baby.png",
+        "base": "fossilslegacy:textures/entity/gallimimus/gallimimus_adult.png"
+      }
+    }
+  ]
+}

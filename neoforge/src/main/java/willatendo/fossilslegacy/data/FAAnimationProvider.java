@@ -24,6 +24,8 @@ public class FAAnimationProvider extends AnimationProvider {
         this.addAnimation(FAUtils.resource("futabasaurus_swim"), FutabasaurusAnimations.FUTABASAURUS_SWIM);
         this.addAnimation(FAUtils.resource("futabasaurus_walk"), FutabasaurusAnimations.FUTABASAURUS_WALK);
         this.addAnimation(FAUtils.resource("gallimimus_walk"), GallimimusAnimations.GALLIMIMUS_WALK);
+        this.addAnimation(FAUtils.resource("ichthyosaurus_idle"), IchthyosaurAnimations.ICHTHYOSAURUS_IDLE);
+        this.addAnimation(FAUtils.resource("ichthyosaurus_swim"), IchthyosaurAnimations.ICHTHYOSAURUS_SWIM);
         this.addAnimation(FAUtils.resource("pachycephalosaurus_walk"), PachycephalosaurusAnimations.PACHYCEPHALOSAURUS_WALK);
         this.addAnimation(FAUtils.resource("pteranodon_walk"), PteranodonAnimations.PTERANODON_WALK);
         this.addAnimation(FAUtils.resource("pteranodon_fly"), PteranodonAnimations.PTERANODON_FLY);
@@ -39,7 +41,7 @@ public class FAAnimationProvider extends AnimationProvider {
         this.addAnimation(FAUtils.resource("stegosaurus_walk"), StegosaurusAnimations.STEGOSAURUS_WALK);
         this.addAnimation(FAUtils.resource("therizinosaurus_walk"), TherizinosaurusAnimations.THERIZINOSAURUS_WALK);
         this.addAnimation(FAUtils.resource("triceratops_walk"), TriceratopsAnimations.TRICERATOPS_WALK);
-        this.addAnimation(FAUtils.resource("tyrannosaurus_walk"), TyrannosaursAnimations.TYRANNOSAURUS_WALK);
+        this.addAnimation(FAUtils.resource("tyrannosaurus_walk"), TyrannosaurusAnimations.TYRANNOSAURUS_WALK);
         this.addAnimation(FAUtils.resource("velociraptor_walk"), VelociraptorAnimations.VELOCIRAPTOR_WALK);
     }
 }

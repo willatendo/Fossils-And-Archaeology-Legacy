@@ -18,7 +18,7 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -30,7 +30,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
-import willatendo.fossilslegacy.server.tags.FACoatTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 import willatendo.fossilslegacy.server.tags.FAEntityTypeTags;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
 
@@ -63,8 +63,8 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
     }
 
     @Override
-    public TagKey<CoatType> getCoatTypes() {
-        return FACoatTypeTags.DILOPHOSAURUS;
+    public TagKey<ModelType> getCoatTypes() {
+        return FAModelTypeTags.DILOPHOSAURUS;
     }
 
     @Override
@@ -121,17 +121,17 @@ public class Dilophosaurus extends Dinosaur implements DinopediaInformation, Ran
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.random.nextInt(3) == 0 ? this.getOverridenSoundEvent(FASoundEvents.DILOPHOSAURUS_CALL.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT) : this.getOverridenSoundEvent(FASoundEvents.DILOPHOSAURUS_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
+        return this.random.nextInt(3) == 0 ? this.getOverridenSoundEvent(FASoundEvents.DILOPHOSAURUS_CALL.get(), ModelType.OverrideInfo.OverridenSoundType.AMBIENT) : this.getOverridenSoundEvent(FASoundEvents.DILOPHOSAURUS_AMBIENT.get(), ModelType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return this.getOverridenSoundEvent(FASoundEvents.DILOPHOSAURUS_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
+        return this.getOverridenSoundEvent(FASoundEvents.DILOPHOSAURUS_HURT.get(), ModelType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.DILOPHOSAURUS_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
+        return this.getOverridenSoundEvent(FASoundEvents.DILOPHOSAURUS_DEATH.get(), ModelType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     public boolean isAttacking() {

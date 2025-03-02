@@ -1,4 +1,12 @@
 {
+  "animations": {
+    "float_down": [
+      "fossilslegacy:dodo_float_down"
+    ],
+    "walk": [
+      "fossilslegacy:dodo_walk"
+    ]
+  },
   "elements": [
     {
       "boxes": [
@@ -182,14 +190,6 @@
   "head_pieces": [
     "head"
   ],
-  "jsonAnimationChannels": {
-    "float_down": [
-      "fossilslegacy:dodo_float_down"
-    ],
-    "walk": [
-      "fossilslegacy:dodo_walk"
-    ]
-  },
   "texture_height": 64,
   "texture_width": 64
 }

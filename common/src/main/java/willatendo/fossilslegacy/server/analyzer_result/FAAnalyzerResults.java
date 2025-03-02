@@ -56,7 +56,7 @@ public final class FAAnalyzerResults {
     public static final ResourceKey<AnalyzerResult> SPINOSAURUS_DNA = FAAnalyzerResults.create("spinosaurus_dna");
     public static final ResourceKey<AnalyzerResult> ANKYLOSAURUS_DNA = FAAnalyzerResults.create("ankylosaurus_dna");
     public static final ResourceKey<AnalyzerResult> DIMETRODON_DNA = FAAnalyzerResults.create("dimetrodon_dna");
-    public static final ResourceKey<AnalyzerResult> ICTHYOSAURUS_DNA = FAAnalyzerResults.create("icthyosaurus_dna");
+    public static final ResourceKey<AnalyzerResult> ICHTHYOSAURUS_DNA = FAAnalyzerResults.create("ichthyosaurus_dna");
 
     private static ResourceKey<AnalyzerResult> create(String name) {
         return ResourceKey.create(FARegistries.ANALYZER_RESULT, FAUtils.resource(name));
@@ -163,6 +163,6 @@ public final class FAAnalyzerResults {
         FAAnalyzerResults.register(bootstrapContext, SPINOSAURUS_DNA, new ItemStack(FAItems.SPINOSAURUS_DNA.get()), 100);
         FAAnalyzerResults.register(bootstrapContext, ANKYLOSAURUS_DNA, new ItemStack(FAItems.ANKYLOSAURUS_DNA.get()), 100);
         FAAnalyzerResults.register(bootstrapContext, DIMETRODON_DNA, new ItemStack(FAItems.DIMETRODON_DNA.get()), 100);
-        FAAnalyzerResults.register(bootstrapContext, ICTHYOSAURUS_DNA, new ItemStack(FAItems.ICHTHYOSAURUS_DNA.get()), 100);
+        FAAnalyzerResults.register(bootstrapContext, ICHTHYOSAURUS_DNA, new ItemStack(FAItems.ICHTHYOSAURUS_DNA.get()), 100);
     }
 }

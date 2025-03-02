@@ -1,0 +1,37 @@
+{
+  "age_scale_info": {
+    "age_scale": 0.15,
+    "base_scale_height": 0.2,
+    "base_scale_width": 0.2,
+    "shadow_growth": 0.1,
+    "shadow_size": 0.15
+  },
+  "bounding_box_info": {
+    "bounding_box_growth": 0.2,
+    "bounding_box_height": 0.5,
+    "bounding_box_width": 0.5
+  },
+  "display_info": {
+    "color": 7565130,
+    "display_scale": 1.0,
+    "display_y_offset": 0.25,
+    "model_name": {
+      "translate": "model_type.fossilslegacy.legacy_dilophosaurus"
+    }
+  },
+  "models": {
+    "model": "fossilslegacy:legacy_dilophosaurus"
+  },
+  "patterns": [
+    {
+      "pattern_name": {
+        "translate": "pattern.fossilslegacy.inland_taipan"
+      },
+      "pattern_type": "fossilslegacy:basic",
+      "textures": {
+        "aggressive": "fossilslegacy:textures/entity/dilophosaurus/legacy/dilophosaurus_aggressive.png",
+        "base": "fossilslegacy:textures/entity/dilophosaurus/legacy/dilophosaurus.png"
+      }
+    }
+  ]
+}

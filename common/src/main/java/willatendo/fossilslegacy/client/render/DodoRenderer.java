@@ -4,7 +4,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import willatendo.fossilslegacy.client.state.DodoRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Dodo;
 
-public class DodoRenderer extends CoatTypeMobRenderer<Dodo, DodoRenderState> {
+public class DodoRenderer extends DataDrivenModelMobRenderer<Dodo, DodoRenderState> {
     public DodoRenderer(EntityRendererProvider.Context context) {
         super(context, 0.15F);
     }

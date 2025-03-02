@@ -5,6 +5,8 @@ import net.minecraft.resources.ResourceLocation;
 import java.util.List;
 
 public record AnimationHolder(List<ResourceLocation> walkAnimation, List<ResourceLocation> swimAnimation, List<ResourceLocation> flyAnimation, List<ResourceLocation> floatAnimation, List<ResourceLocation> headAnimation, List<ResourceLocation> shakeAnimation, List<ResourceLocation> sitAnimation, List<ResourceLocation> tailAnimation, List<ResourceLocation> landAnimation) {
+    public static final AnimationHolder EMPTY = new AnimationHolder(List.of(), List.of(), List.of(), List.of(), List.of(), List.of(), List.of(), List.of(), List.of());
+
     public boolean hasWalkAnimations() {
         return !this.walkAnimation().isEmpty();
     }

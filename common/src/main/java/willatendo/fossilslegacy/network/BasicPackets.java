@@ -11,7 +11,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import willatendo.fossilslegacy.server.block.entity.entities.GeneModificationTableBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.entities.TimeMachineBlockEntity;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.registry.FARegistries;
@@ -27,9 +27,9 @@ public final class BasicPackets {
         if (blockEntity instanceof GeneModificationTableBlockEntity geneModificationTableBlockEntity) {
             ItemStack itemStack = geneModificationTableBlockEntity.getItem(0);
             geneModificationTableBlockEntity.setItem(0, ItemStack.EMPTY);
-            Registry<CoatType> coatTypeRegistry = level.registryAccess().lookupOrThrow(FARegistries.COAT_TYPES);
-            Holder.Reference<CoatType> coatTypeHolder = coatTypeRegistry.get(ResourceLocation.parse(coatType)).get();
-            itemStack.set(FADataComponents.COAT_TYPE.get(), coatTypeHolder);
+            Registry<ModelType> coatTypeRegistry = level.registryAccess().lookupOrThrow(FARegistries.MODEL_TYPES);
+            Holder.Reference<ModelType> coatTypeHolder = coatTypeRegistry.get(ResourceLocation.parse(coatType)).get();
+            itemStack.set(FADataComponents.MODEL_TYPE.get(), coatTypeHolder);
             geneModificationTableBlockEntity.setItem(1, itemStack);
         }
     }

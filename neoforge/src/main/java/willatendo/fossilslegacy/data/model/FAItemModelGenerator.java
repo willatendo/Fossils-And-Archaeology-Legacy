@@ -40,6 +40,9 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.ANKYLOSAURUS_DNA.get());
         this.generatedItem(FAItems.DIMETRODON_DNA.get());
         this.generatedItem(FAItems.ICHTHYOSAURUS_DNA.get());
+        this.generatedItem(FAItems.DRYOSAURUS_DNA.get());
+        this.generatedItem(FAItems.ELASMOTHERIUM_DNA.get());
+        this.generatedItem(FAItems.BARYONYX_DNA.get());
         this.generatedItem(FAItems.JURASSIC_FERN_DNA.get());
         this.generatedItem(FAItems.LEPIDODENDRON_DNA.get());
         this.generatedItem(FAItems.SIGILLARIA_DNA.get());
@@ -256,6 +259,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.spawnEggItem(FAItems.SPINOSAURUS_SPAWN_EGG.get(), 0x26261d, 0x646552);
         this.spawnEggItem(FAItems.ANKYLOSAURUS_SPAWN_EGG.get(), 0x533a1b, 0x2d200f);
         this.spawnEggItem(FAItems.DIMETRODON_SPAWN_EGG.get(), 0x291e26, 0x4a2125);
+        this.spawnEggItem(FAItems.ICHTHYOSAURUS_SPAWN_EGG.get(), 0x383C4F, 0x8D7E72);
         this.generatedItem(FAItems.LEPIDODENDRON_BOAT.get());
         this.generatedItem(FAItems.LEPIDODENDRON_CHEST_BOAT.get());
         this.generatedItem(FAItems.SIGILLARIA_BOAT.get());

@@ -38,6 +38,8 @@ public final class FossilsLegacyClient {
         keyMappingRegister.register(FAKeys.APPLY_GENE);
         keyMappingRegister.register(FAKeys.NAVIGATE_LEFT);
         keyMappingRegister.register(FAKeys.NAVIGATE_RIGHT);
+        keyMappingRegister.register(FAKeys.NAVIGATE_UP);
+        keyMappingRegister.register(FAKeys.NAVIGATE_DOWN);
         keyMappingRegister.register(FAKeys.SINK);
     }
 

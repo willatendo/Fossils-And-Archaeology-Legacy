@@ -4,8 +4,8 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.server.block.FABlocks;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
-import willatendo.fossilslegacy.server.coat_type.FACoatTypes;
+import willatendo.fossilslegacy.server.model_type.ModelType;
+import willatendo.fossilslegacy.server.model_type.FAModelTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Anu;
 import willatendo.fossilslegacy.server.entity.entities.TamedZombifiedPiglin;
@@ -184,50 +184,50 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("biome.fossilslegacy.prehistoric_beach", "Prehistoric Beach");
 
         // Coat Types
-        this.addCoatType(FACoatTypes.ANKYLOSAURUS, "Ankylosaurus (2024)");
-        this.addCoatType(FACoatTypes.BRACHIOSAURUS, "Brachiosaurus (2024)");
-        this.addCoatType(FACoatTypes.COMPSOGNATHUS, "Compsognathus (2024)");
-        this.addCoatType(FACoatTypes.CRYOLOPHOSAURUS, "Cryolophosaurus (2024)");
-        this.addCoatType(FACoatTypes.DILOPHOSAURUS, "Dilophosaurus (2024)");
-        this.addCoatType(FACoatTypes.DODO, "Dodo (2024)");
-        this.addCoatType(FACoatTypes.FUTABASAURUS, "Futabasaurus (2024)");
-        this.addCoatType(FACoatTypes.GALLIMIMUS, "Gallimimus (2024)");
-        this.addCoatType(FACoatTypes.ICHTHYOSAURUS, "Ichthyosaurus (2025)");
-        this.addCoatType(FACoatTypes.MOA, "Moa (2024)");
-        this.addCoatType(FACoatTypes.MAMMOTH, "Mammoth (2024)");
-        this.addCoatType(FACoatTypes.MOSASAURUS, "Mosasaurus (2024)");
-        this.addCoatType(FACoatTypes.PACHYCEPHALOSAURUS, "Pachycephalosaurus (2024)");
-        this.addCoatType(FACoatTypes.PTERANODON, "Pteranodon (2024)");
-        this.addCoatType(FACoatTypes.SMILODON, "Smilodon 2024)");
-        this.addCoatType(FACoatTypes.SPINOSAURUS, "Spinosaurus (2024)");
-        this.addCoatType(FACoatTypes.STEGOSAURUS, "Stegosaurus (2024)");
-        this.addCoatType(FACoatTypes.THERIZINOSAURUS, "Therizinosaurus (2024)");
-        this.addCoatType(FACoatTypes.GREEN_TRICERATOPS, "Green Triceratops (2024)");
-        this.addCoatType(FACoatTypes.BROWN_TRICERATOPS, "Brown Triceratops (2024)");
-        this.addCoatType(FACoatTypes.TYRANNOSAURUS, "Tyrannosaurus (2024)");
-        this.addCoatType(FACoatTypes.GREEN_VELOCIRAPTOR, "Green Velociraptor (2024)");
-        this.addCoatType(FACoatTypes.SANDY_VELOCIRAPTOR, "Sandy Velociraptor (2024)");
-        this.addCoatType(FACoatTypes.WHITE_VELOCIRAPTOR, "White Velociraptor (2024)");
+        this.addCoatType(FAModelTypes.ANKYLOSAURUS, "Ankylosaurus (2024)");
+        this.addCoatType(FAModelTypes.BRACHIOSAURUS, "Brachiosaurus (2024)");
+        this.addCoatType(FAModelTypes.COMPSOGNATHUS, "Compsognathus (2024)");
+        this.addCoatType(FAModelTypes.CRYOLOPHOSAURUS, "Cryolophosaurus (2024)");
+        this.addCoatType(FAModelTypes.DILOPHOSAURUS, "Dilophosaurus (2024)");
+        this.addCoatType(FAModelTypes.DODO, "Dodo (2024)");
+        this.addCoatType(FAModelTypes.FUTABASAURUS, "Futabasaurus (2024)");
+        this.addCoatType(FAModelTypes.GALLIMIMUS, "Gallimimus (2024)");
+        this.addCoatType(FAModelTypes.ICHTHYOSAURUS, "Ichthyosaurus (2025)");
+        this.addCoatType(FAModelTypes.MOA, "Moa (2024)");
+        this.addCoatType(FAModelTypes.MAMMOTH, "Mammoth (2024)");
+        this.addCoatType(FAModelTypes.MOSASAURUS, "Mosasaurus (2024)");
+        this.addCoatType(FAModelTypes.PACHYCEPHALOSAURUS, "Pachycephalosaurus (2024)");
+        this.addCoatType(FAModelTypes.PTERANODON, "Pteranodon (2024)");
+        this.addCoatType(FAModelTypes.SMILODON, "Smilodon 2024)");
+        this.addCoatType(FAModelTypes.SPINOSAURUS, "Spinosaurus (2024)");
+        this.addCoatType(FAModelTypes.STEGOSAURUS, "Stegosaurus (2024)");
+        this.addCoatType(FAModelTypes.THERIZINOSAURUS, "Therizinosaurus (2024)");
+        this.addCoatType(FAModelTypes.TRICERATOPS, "Triceratops (2024)");
+        this.addCoatType(FAModelTypes.BROWN_TRICERATOPS, "Brown Triceratops (2024)");
+        this.addCoatType(FAModelTypes.TYRANNOSAURUS, "Tyrannosaurus (2024)");
+        this.addCoatType(FAModelTypes.VELOCIRAPTOR, "Velociraptor (2024)");
+        this.addCoatType(FAModelTypes.SANDY_VELOCIRAPTOR, "Sandy Velociraptor (2024)");
+        this.addCoatType(FAModelTypes.WHITE_VELOCIRAPTOR, "White Velociraptor (2024)");
 
-        this.addCoatType(FACoatTypes.LEGACY_BRACHIOSAURUS, "Brachiosaurus (2011)");
-        this.addCoatType(FACoatTypes.LEGACY_GREEN_CARNOTAURUS, "Green Carnotaurus (2011)");
-        this.addCoatType(FACoatTypes.LEGACY_RED_CARNOTAURUS, "Red Carnotaurus (2011)");
-        this.addCoatType(FACoatTypes.LEGACY_CRYOLOPHOSAURUS, "Cryolophosaurus (2011)");
-        this.addCoatType(FACoatTypes.LEGACY_DILOPHOSAURUS, "Dilophosaurus (2011)");
-        this.addCoatType(FACoatTypes.LEGACY_FUTABASAURUS, "Futabasaurus (2011)");
-        this.addCoatType(FACoatTypes.LEGACY_MAMMOTH, "Mammoth (2011)");
-        this.addCoatType(FACoatTypes.LEGACY_MOSASAURUS, "Mosasaurus (2011)");
-        this.addCoatType(FACoatTypes.LEGACY_PTERANODON, "Pteranodon (2011)");
-        this.addCoatType(FACoatTypes.LEGACY_SMILODON, "Smilodon (2011)");
-        this.addCoatType(FACoatTypes.LEGACY_STEGOSAURUS, "Stegosaurus (2011)");
-        this.addCoatType(FACoatTypes.LEGACY_FEATHERED_THERIZINOSAURUS, "Featherless Therizinosaurus (2011)");
-        this.addCoatType(FACoatTypes.LEGACY_FEATHERLESS_THERIZINOSAURUS, "Featherless Therizinosaurus (2011)");
-        this.addCoatType(FACoatTypes.LEGACY_GREEN_TRICERATOPS, "Green Triceratops (2011)");
-        this.addCoatType(FACoatTypes.LEGACY_BROWN_TRICERATOPS, "Brown Triceratops (2011)");
-        this.addCoatType(FACoatTypes.LEGACY_TYRANNOSAURUS, "Tyrannosaurus (2011)");
-        this.addCoatType(FACoatTypes.LEGACY_GREEN_VELOCIRAPTOR, "Green Velociraptor (2011)");
-        this.addCoatType(FACoatTypes.LEGACY_SANDY_VELOCIRAPTOR, "Sandy Velociraptor (2011)");
-        this.addCoatType(FACoatTypes.LEGACY_WHITE_VELOCIRAPTOR, "White Velociraptor (2011)");
+        this.addCoatType(FAModelTypes.LEGACY_BRACHIOSAURUS, "Brachiosaurus (2011)");
+        this.addCoatType(FAModelTypes.LEGACY_CARNOTAURUS, "Carnotaurus (2011)");
+        this.addCoatType(FAModelTypes.LEGACY_RED_CARNOTAURUS, "Red Carnotaurus (2011)");
+        this.addCoatType(FAModelTypes.LEGACY_CRYOLOPHOSAURUS, "Cryolophosaurus (2011)");
+        this.addCoatType(FAModelTypes.LEGACY_DILOPHOSAURUS, "Dilophosaurus (2011)");
+        this.addCoatType(FAModelTypes.LEGACY_FUTABASAURUS, "Futabasaurus (2011)");
+        this.addCoatType(FAModelTypes.LEGACY_MAMMOTH, "Mammoth (2011)");
+        this.addCoatType(FAModelTypes.LEGACY_MOSASAURUS, "Mosasaurus (2011)");
+        this.addCoatType(FAModelTypes.LEGACY_PTERANODON, "Pteranodon (2011)");
+        this.addCoatType(FAModelTypes.LEGACY_SMILODON, "Smilodon (2011)");
+        this.addCoatType(FAModelTypes.LEGACY_STEGOSAURUS, "Stegosaurus (2011)");
+        this.addCoatType(FAModelTypes.LEGACY_THERIZINOSAURUS, "Therizinosaurus (2011)");
+        this.addCoatType(FAModelTypes.LEGACY_FEATHERLESS_THERIZINOSAURUS, "Featherless Therizinosaurus (2011)");
+        this.addCoatType(FAModelTypes.LEGACY_TRICERATOPS, "Triceratops (2011)");
+        this.addCoatType(FAModelTypes.LEGACY_BROWN_TRICERATOPS, "Brown Triceratops (2011)");
+        this.addCoatType(FAModelTypes.LEGACY_TYRANNOSAURUS, "Tyrannosaurus (2011)");
+        this.addCoatType(FAModelTypes.LEGACY_VELOCIRAPTOR, "Velociraptor (2011)");
+        this.addCoatType(FAModelTypes.LEGACY_SANDY_VELOCIRAPTOR, "Sandy Velociraptor (2011)");
+        this.addCoatType(FAModelTypes.LEGACY_WHITE_VELOCIRAPTOR, "White Velociraptor (2011)");
 
         // Commands
         this.add("command_type.fossilslegacy.follow", "Follow");
@@ -468,6 +468,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.ANKYLOSAURUS_DNA.get(), "Ankylosaurus DNA");
         this.add(FAItems.DIMETRODON_DNA.get(), "Dimetrodon DNA");
         this.add(FAItems.ICHTHYOSAURUS_DNA.get(), "Ichthyosaurus DNA");
+        this.add(FAItems.DRYOSAURUS_DNA.get(), "Dryosaurus DNA");
+        this.add(FAItems.ELASMOTHERIUM_DNA.get(), "Elasmotherium DNA");
+        this.add(FAItems.BARYONYX_DNA.get(), "Baryonyx DNA");
         this.add("item.fossilslegacy.dna.coat_type", "Coat Type: %s");
         this.add(FAItems.JURASSIC_FERN_DNA.get());
         this.add(FAItems.LEPIDODENDRON_DNA.get());
@@ -712,6 +715,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.SPINOSAURUS_SPAWN_EGG.get());
         this.add(FAItems.ANKYLOSAURUS_SPAWN_EGG.get());
         this.add(FAItems.DIMETRODON_SPAWN_EGG.get());
+        this.add(FAItems.ICHTHYOSAURUS_SPAWN_EGG.get());
         this.add("item.fossilslegacy.dinosaur_spawn_egg.desc", "Crouch to spawn baby");
 
         this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.applies_to", "Netherite Equipment");
@@ -781,6 +785,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("key.fossilslegacy.apply_gene", "Apply Gene");
         this.add("key.fossilslegacy.navigate_left", "Navigate Left");
         this.add("key.fossilslegacy.navigate_right", "Navigate Right");
+        this.add("key.fossilslegacy.navigate_up", "Navigate Up");
+        this.add("key.fossilslegacy.navigate_down", "Navigate Down");
         this.add("key.fossilslegacy.sink", "Sink");
 
         this.add("key.categories.fossilslegacy.dinosaur_ridding", "Dinosaur Ridding");
@@ -803,7 +809,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         // Resource Packs
         this.add("resourcePack.fossilslegacy.description", "Fossils and Archaeology: Legacy Assets");
         this.add("resourcePack.fossilslegacy.fa_legacy_textures.description", "1.3.2 Assets");
-        this.add("resourcePack.fossilslegacy.fa_legacy_textures.name", "F/A Original Textures");
+        this.add("resourcePack.fossilslegacy.fa_legacy_textures.modelName", "F/A Original Textures");
 
         // Stats
         this.addStat(FAStats.INTERACT_WITH_ANALYZER, "Interactions with Analyzer");
@@ -1015,44 +1021,44 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlockTags.TYRANNOSAURUS_UNBREAKABLES, "Tyrannosaurus Unbreakables");
         this.add(FABlockTags.VELOCIRAPTOR_SPAWNABLE, "Velociraptor Spawnable");
 
-        this.add(FACoatTypeTags.ANKYLOSAURUS, "Ankylosaurus");
-        this.add(FACoatTypeTags.BRACHIOSAURUS, "Brachiosaurus");
-        this.add(FACoatTypeTags.NON_LEGACY_BRACHIOSAURUS, "Non-Legacy Brachiosaurus");
-        this.add(FACoatTypeTags.CARNOTAURUS, "Carnotaurus");
-        this.add(FACoatTypeTags.NON_LEGACY_CARNOTAURUS, "Non-Legacy Carnotaurus");
-        this.add(FACoatTypeTags.COMPSOGNATHUS, "Compsognathus");
-        this.add(FACoatTypeTags.CRYOLOPHOSAURUS, "Cryolophosaurus");
-        this.add(FACoatTypeTags.NON_LEGACY_CRYOLOPHOSAURUS, "Non-Legacy Cryolophosaurus");
-        this.add(FACoatTypeTags.DILOPHOSAURUS, "Dilophosaurus");
-        this.add(FACoatTypeTags.NON_LEGACY_DILOPHOSAURUS, "Non-Legacy Dilophosaurus");
-        this.add(FACoatTypeTags.DIMETRODON, "Dimetrodon");
-        this.add(FACoatTypeTags.DODO, "Dodo");
-        this.add(FACoatTypeTags.FUTABASAURUS, "Futabasaurus");
-        this.add(FACoatTypeTags.NON_LEGACY_FUTABASAURUS, "Non-Legacy Futabasaurus");
-        this.add(FACoatTypeTags.GALLIMIMUS, "Gallimimus");
-        this.add(FACoatTypeTags.LEGACY, "Legacy");
-        this.add(FACoatTypeTags.MAMMOTH, "Mammoth");
-        this.add(FACoatTypeTags.NON_LEGACY_MAMMOTH, "Non-Legacy Mammoth");
-        this.add(FACoatTypeTags.MOA, "Moa");
-        this.add(FACoatTypeTags.MOSASAURUS, "Mosasaurus");
-        this.add(FACoatTypeTags.NON_LEGACY_MOSASAURUS, "Non-Legacy Mosasaurus");
-        this.add(FACoatTypeTags.PACHYCEPHALOSAURUS, "Pachycephalosaurus");
-        this.add(FACoatTypeTags.PTERANODON, "Pteranodon");
-        this.add(FACoatTypeTags.NON_LEGACY_PTERANODON, "Non-Legacy Pteranodon");
-        this.add(FACoatTypeTags.SMILODON, "Smilodon");
-        this.add(FACoatTypeTags.NON_LEGACY_SMILODON, "Non-Legacy Smilodon");
-        this.add(FACoatTypeTags.SPINOSAURUS, "Spinosaurus");
-        this.add(FACoatTypeTags.STEGOSAURUS, "Stegosaurus");
-        this.add(FACoatTypeTags.NON_LEGACY_STEGOSAURUS, "Non-Legacy Stegosaurus");
-        this.add(FACoatTypeTags.THERIZINOSAURUS, "Therizinosaurus");
-        this.add(FACoatTypeTags.NON_LEGACY_THERIZINOSAURUS, "Non-Legacy Therizinosaurus");
-        this.add(FACoatTypeTags.TRICERATOPS, "Triceratops");
-        this.add(FACoatTypeTags.NON_LEGACY_TRICERATOPS, "Non-Legacy Triceratops");
-        this.add(FACoatTypeTags.TYRANNOSAURUS, "Tyrannosaurus");
-        this.add(FACoatTypeTags.NON_LEGACY_TYRANNOSAURUS, "Non-Legacy Tyrannosaurus");
-        this.add(FACoatTypeTags.VELOCIRAPTOR, "Velociraptor");
-        this.add(FACoatTypeTags.LEGACY_VELOCIRAPTOR, "Legacy Velociraptor");
-        this.add(FACoatTypeTags.NON_LEGACY_VELOCIRAPTOR, "Non-Legacy Velociraptor");
+        this.add(FAModelTypeTags.ANKYLOSAURUS, "Ankylosaurus");
+        this.add(FAModelTypeTags.BRACHIOSAURUS, "Brachiosaurus");
+        this.add(FAModelTypeTags.NON_LEGACY_BRACHIOSAURUS, "Non-Legacy Brachiosaurus");
+        this.add(FAModelTypeTags.CARNOTAURUS, "Carnotaurus");
+        this.add(FAModelTypeTags.NON_LEGACY_CARNOTAURUS, "Non-Legacy Carnotaurus");
+        this.add(FAModelTypeTags.COMPSOGNATHUS, "Compsognathus");
+        this.add(FAModelTypeTags.CRYOLOPHOSAURUS, "Cryolophosaurus");
+        this.add(FAModelTypeTags.NON_LEGACY_CRYOLOPHOSAURUS, "Non-Legacy Cryolophosaurus");
+        this.add(FAModelTypeTags.DILOPHOSAURUS, "Dilophosaurus");
+        this.add(FAModelTypeTags.NON_LEGACY_DILOPHOSAURUS, "Non-Legacy Dilophosaurus");
+        this.add(FAModelTypeTags.DIMETRODON, "Dimetrodon");
+        this.add(FAModelTypeTags.DODO, "Dodo");
+        this.add(FAModelTypeTags.FUTABASAURUS, "Futabasaurus");
+        this.add(FAModelTypeTags.NON_LEGACY_FUTABASAURUS, "Non-Legacy Futabasaurus");
+        this.add(FAModelTypeTags.GALLIMIMUS, "Gallimimus");
+        this.add(FAModelTypeTags.LEGACY, "Legacy");
+        this.add(FAModelTypeTags.MAMMOTH, "Mammoth");
+        this.add(FAModelTypeTags.NON_LEGACY_MAMMOTH, "Non-Legacy Mammoth");
+        this.add(FAModelTypeTags.MOA, "Moa");
+        this.add(FAModelTypeTags.MOSASAURUS, "Mosasaurus");
+        this.add(FAModelTypeTags.NON_LEGACY_MOSASAURUS, "Non-Legacy Mosasaurus");
+        this.add(FAModelTypeTags.PACHYCEPHALOSAURUS, "Pachycephalosaurus");
+        this.add(FAModelTypeTags.PTERANODON, "Pteranodon");
+        this.add(FAModelTypeTags.NON_LEGACY_PTERANODON, "Non-Legacy Pteranodon");
+        this.add(FAModelTypeTags.SMILODON, "Smilodon");
+        this.add(FAModelTypeTags.NON_LEGACY_SMILODON, "Non-Legacy Smilodon");
+        this.add(FAModelTypeTags.SPINOSAURUS, "Spinosaurus");
+        this.add(FAModelTypeTags.STEGOSAURUS, "Stegosaurus");
+        this.add(FAModelTypeTags.NON_LEGACY_STEGOSAURUS, "Non-Legacy Stegosaurus");
+        this.add(FAModelTypeTags.THERIZINOSAURUS, "Therizinosaurus");
+        this.add(FAModelTypeTags.NON_LEGACY_THERIZINOSAURUS, "Non-Legacy Therizinosaurus");
+        this.add(FAModelTypeTags.TRICERATOPS, "Triceratops");
+        this.add(FAModelTypeTags.NON_LEGACY_TRICERATOPS, "Non-Legacy Triceratops");
+        this.add(FAModelTypeTags.TYRANNOSAURUS, "Tyrannosaurus");
+        this.add(FAModelTypeTags.NON_LEGACY_TYRANNOSAURUS, "Non-Legacy Tyrannosaurus");
+        this.add(FAModelTypeTags.VELOCIRAPTOR, "Velociraptor");
+        this.add(FAModelTypeTags.LEGACY_VELOCIRAPTOR, "Legacy Velociraptor");
+        this.add(FAModelTypeTags.NON_LEGACY_VELOCIRAPTOR, "Non-Legacy Velociraptor");
 
         this.add(FADamageTypeTags.SPINOSAURUS_IMMUNE, "Spinosaurus Immune");
         this.add(FADamageTypeTags.TYRANNOSAURUS_IMMUNE, "Tyrannosaurus Immune");
@@ -1123,12 +1129,12 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(speakerType.getTranslationKey(), translation);
     }
 
-    public void addFossilVariant(ResourceKey<FossilVariant> fossilVariantResourceKey, String translation) {
-        this.add(fossilVariantResourceKey.location().toLanguageKey("fossil_variant"), translation);
+    public void addFossilVariant(ResourceKey<FossilVariant> fossilVariant, String translation) {
+        this.add(fossilVariant.location().toLanguageKey("fossil_variant"), translation);
     }
 
-    public void addCoatType(ResourceKey<CoatType> coatTypeResourceKey, String translation) {
-        this.add(coatTypeResourceKey.location().toLanguageKey("coat_type"), translation);
+    public void addCoatType(ResourceKey<ModelType> modelType, String translation) {
+        this.add(modelType.location().toLanguageKey("model_type"), translation);
     }
 
     public void addStat(ResourceLocation stat, String name) {

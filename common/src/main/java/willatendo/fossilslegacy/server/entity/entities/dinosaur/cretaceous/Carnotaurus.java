@@ -12,7 +12,7 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -24,7 +24,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
-import willatendo.fossilslegacy.server.tags.FACoatTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 import willatendo.fossilslegacy.server.tags.FAEntityTypeTags;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
 
@@ -55,8 +55,8 @@ public class Carnotaurus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
-    public TagKey<CoatType> getCoatTypes() {
-        return FACoatTypeTags.CARNOTAURUS;
+    public TagKey<ModelType> getCoatTypes() {
+        return FAModelTypeTags.CARNOTAURUS;
     }
 
     @Override
@@ -96,17 +96,17 @@ public class Carnotaurus extends Dinosaur implements DinopediaInformation {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.CARNOTAURUS_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
+        return this.getOverridenSoundEvent(FASoundEvents.CARNOTAURUS_AMBIENT.get(), ModelType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return this.getOverridenSoundEvent(FASoundEvents.CARNOTAURUS_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
+        return this.getOverridenSoundEvent(FASoundEvents.CARNOTAURUS_HURT.get(), ModelType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.CARNOTAURUS_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
+        return this.getOverridenSoundEvent(FASoundEvents.CARNOTAURUS_DEATH.get(), ModelType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     @Override

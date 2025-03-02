@@ -22,7 +22,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -35,7 +35,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.RideableDinosaur;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
-import willatendo.fossilslegacy.server.tags.FACoatTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
 
 import java.util.Optional;
@@ -70,8 +70,8 @@ public class Ankylosaurus extends Dinosaur implements DinopediaInformation, Ride
     }
 
     @Override
-    public TagKey<CoatType> getCoatTypes() {
-        return FACoatTypeTags.ANKYLOSAURUS;
+    public TagKey<ModelType> getCoatTypes() {
+        return FAModelTypeTags.ANKYLOSAURUS;
     }
 
     @Override
@@ -190,17 +190,17 @@ public class Ankylosaurus extends Dinosaur implements DinopediaInformation, Ride
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.ANKYLOSAURUS_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
+        return this.getOverridenSoundEvent(FASoundEvents.ANKYLOSAURUS_AMBIENT.get(), ModelType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return this.getOverridenSoundEvent(FASoundEvents.ANKYLOSAURUS_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
+        return this.getOverridenSoundEvent(FASoundEvents.ANKYLOSAURUS_HURT.get(), ModelType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.ANKYLOSAURUS_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
+        return this.getOverridenSoundEvent(FASoundEvents.ANKYLOSAURUS_DEATH.get(), ModelType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     @Override

@@ -25,13 +25,13 @@ public final class VelociraptorAnimations {
         jsonTypeModel.setXRot("left_bicep", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
         jsonTypeModel.setXRot("left_hand", Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount + 0.994461F);
 
-        if (Math.abs(jsonTypeModel.getXRot("left_thigh")) >= 0.174532F) {
+        if (dinosaurRenderState.isMoving) {
             VelociraptorAnimations.tailUpper(jsonTypeModel);
         } else {
             VelociraptorAnimations.tailLower(jsonTypeModel);
         }
 
-        if (Math.abs(jsonTypeModel.getXRot("left_thigh")) >= 0.174532F) {
+        if (dinosaurRenderState.isMoving) {
             VelociraptorAnimations.headLower(jsonTypeModel);
         } else {
             VelociraptorAnimations.headUpper(jsonTypeModel);

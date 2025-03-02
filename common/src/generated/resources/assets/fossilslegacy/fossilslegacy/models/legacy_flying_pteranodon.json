@@ -1,4 +1,9 @@
 {
+  "animations": {
+    "fly": [
+      "fossilslegacy:legacy_pteranodon_fly"
+    ]
+  },
   "elements": [
     {
       "boxes": [
@@ -323,11 +328,6 @@
       }
     }
   ],
-  "jsonAnimationChannels": {
-    "fly": [
-      "fossilslegacy:legacy_pteranodon_fly"
-    ]
-  },
   "texture_height": 32,
   "texture_width": 64
 }

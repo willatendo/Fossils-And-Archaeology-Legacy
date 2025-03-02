@@ -186,11 +186,13 @@ public final class FACreativeModeTabs {
     public static final SimpleHolder<CreativeModeTab> FA_PALAEONTOLOGY_ITEMS = CREATIVE_MODE_TABS.register("fa_palaeontology_items", () -> SimpleUtils.create(FAUtils.ID, "fa_palaeontology_items", FAItems.TRICERATOPS_EGG::get, (itemDisplayParameters, output) -> {
         output.accept(FAItems.DIMETRODON_DNA.get());
         output.accept(FAItems.ANKYLOSAURUS_DNA.get());
+        output.accept(FAItems.BARYONYX_DNA.get());
         output.accept(FAItems.BRACHIOSAURUS_DNA.get());
         output.accept(FAItems.CARNOTAURUS_DNA.get());
         output.accept(FAItems.COMPSOGNATHUS_DNA.get());
         output.accept(FAItems.CRYOLOPHOSAURUS_DNA.get());
         output.accept(FAItems.DILOPHOSAURUS_DNA.get());
+        output.accept(FAItems.DRYOSAURUS_DNA.get());
         output.accept(FAItems.FUTABASAURUS_DNA.get());
         output.accept(FAItems.GALLIMIMUS_DNA.get());
         output.accept(FAItems.ICHTHYOSAURUS_DNA.get());
@@ -204,6 +206,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.TYRANNOSAURUS_DNA.get());
         output.accept(FAItems.VELOCIRAPTOR_DNA.get());
         output.accept(FAItems.DODO_DNA.get());
+        output.accept(FAItems.ELASMOTHERIUM_DNA.get());
         output.accept(FAItems.MAMMOTH_DNA.get());
         output.accept(FAItems.MOA_DNA.get());
         output.accept(FAItems.SMILODON_DNA.get());
@@ -363,7 +366,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.FAILURESAURUS_SPAWN_EGG.get());
         output.accept(FAItems.FUTABASAURUS_SPAWN_EGG.get());
         output.accept(FAItems.GALLIMIMUS_SPAWN_EGG.get());
-        output.accept(FAItems.MAMMOTH_SPAWN_EGG.get());
+        output.accept(FAItems.ICHTHYOSAURUS_SPAWN_EGG.get());
         output.accept(FAItems.MOA_SPAWN_EGG.get());
         output.accept(FAItems.MOSASAURUS_SPAWN_EGG.get());
         output.accept(FAItems.NAUTILUS_SPAWN_EGG.get());

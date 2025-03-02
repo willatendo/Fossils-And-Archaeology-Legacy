@@ -14,7 +14,7 @@ import net.minecraft.world.entity.animal.horse.Mule;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
@@ -25,7 +25,7 @@ import willatendo.fossilslegacy.server.pregnancy_types.PregnancyType;
 import java.util.Optional;
 
 public class PregnantMule extends Mule implements DinopediaInformation, PregnantAnimal<Mule> {
-    private static final EntityDataAccessor<Holder<CoatType>> OFFSPRING_COAT_TYPE = SynchedEntityData.defineId(PregnantMule.class, FAEntityDataSerializers.COAT_TYPES.get());
+    private static final EntityDataAccessor<Holder<ModelType>> OFFSPRING_COAT_TYPE = SynchedEntityData.defineId(PregnantMule.class, FAEntityDataSerializers.MODEL_TYPES.get());
     private static final EntityDataAccessor<Integer> PREGNANCY_TIME = SynchedEntityData.defineId(PregnantMule.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Holder<PregnancyType>> PREGNANCY = SynchedEntityData.defineId(PregnantMule.class, FAEntityDataSerializers.PREGNANCY_TYPES.get());
 
@@ -119,12 +119,12 @@ public class PregnantMule extends Mule implements DinopediaInformation, Pregnant
     }
 
     @Override
-    public Holder<CoatType> getOffspringCoatType() {
+    public Holder<ModelType> getOffspringCoatType() {
         return this.entityData.get(OFFSPRING_COAT_TYPE);
     }
 
     @Override
-    public void setOffspringCoatType(Holder<CoatType> coatTypeHolder) {
+    public void setOffspringCoatType(Holder<ModelType> coatTypeHolder) {
         this.entityData.set(OFFSPRING_COAT_TYPE, coatTypeHolder);
     }
 

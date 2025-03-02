@@ -21,7 +21,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -33,7 +33,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformati
 import willatendo.fossilslegacy.server.entity.util.interfaces.FloatDownEntity;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
-import willatendo.fossilslegacy.server.tags.FACoatTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 
 import java.util.Optional;
 
@@ -65,14 +65,14 @@ public class Dodo extends Dinosaur implements DinopediaInformation, FloatDownEnt
     }
 
     @Override
-    public TagKey<CoatType> getCoatTypes() {
-        return FACoatTypeTags.DODO;
+    public TagKey<ModelType> getCoatTypes() {
+        return FAModelTypeTags.DODO;
     }
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
         Dodo dodo = FAEntityTypes.DODO.get().create(serverLevel, EntitySpawnReason.BREEDING);
-        dodo.setCoatType(this.getCoatType());
+        dodo.setModelType(this.getModelType());
         return dodo;
     }
 
@@ -132,17 +132,17 @@ public class Dodo extends Dinosaur implements DinopediaInformation, FloatDownEnt
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.DODO_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
+        return this.getOverridenSoundEvent(FASoundEvents.DODO_AMBIENT.get(), ModelType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return this.getOverridenSoundEvent(FASoundEvents.DODO_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
+        return this.getOverridenSoundEvent(FASoundEvents.DODO_HURT.get(), ModelType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.DODO_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
+        return this.getOverridenSoundEvent(FASoundEvents.DODO_DEATH.get(), ModelType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     @Override

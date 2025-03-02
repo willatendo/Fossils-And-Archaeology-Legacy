@@ -35,7 +35,7 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener<JsonModel>
 
     protected static AnimationHolder getAnimations(ResourceLocation id) {
         Optional<JsonModel.Animations> animations = JSON_MODELS.get(id).animations();
-        return animations.map(JsonModel.Animations::toAnimationHolder).orElse(null);
+        return animations.map(JsonModel.Animations::toAnimationHolder).orElse(AnimationHolder.EMPTY);
     }
 
     protected static List<String> getLoadParts(ResourceLocation id) {

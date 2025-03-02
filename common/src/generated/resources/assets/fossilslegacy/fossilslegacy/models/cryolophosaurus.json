@@ -1,4 +1,9 @@
 {
+  "animations": {
+    "walk": [
+      "fossilslegacy:cryolophosaurus_walk"
+    ]
+  },
   "elements": [
     {
       "boxes": [
@@ -270,11 +275,6 @@
   "head_pieces": [
     "neck"
   ],
-  "jsonAnimationChannels": {
-    "walk": [
-      "fossilslegacy:cryolophosaurus_walk"
-    ]
-  },
   "texture_height": 64,
   "texture_width": 64
 }

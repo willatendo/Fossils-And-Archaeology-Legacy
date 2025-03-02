@@ -30,7 +30,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.command_type.CommandType;
 import willatendo.fossilslegacy.server.command_type.FACommandTypes;
 import willatendo.fossilslegacy.server.entity.FADamageTypes;
@@ -45,8 +45,8 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 import java.util.Optional;
 import java.util.UUID;
 
-public abstract class Dinosaur extends Animal implements CoatTypeEntity, CommandableEntity, DaysAliveAccessor, GrowingEntity, HungerAccessor, OwnableEntity, SimpleRegistryAccessAccessor, TamesOnBirth, TameAccessor, TamedSpeakingEntity {
-    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.COAT_TYPES.get());
+public abstract class Dinosaur extends Animal implements ModelTypeEntity, CommandableEntity, DaysAliveAccessor, GrowingEntity, HungerAccessor, OwnableEntity, SimpleRegistryAccessAccessor, TamesOnBirth, TameAccessor, TamedSpeakingEntity {
+    private static final EntityDataAccessor<Holder<ModelType>> MODEL_TYPE = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.MODEL_TYPES.get());
     private static final EntityDataAccessor<Holder<CommandType>> COMMAND = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.COMMAND_TYPES.get());
     private static final EntityDataAccessor<Integer> DAYS_ALIVE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> GROWTH_STAGE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
@@ -63,7 +63,7 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
         return levelAccessor.getBlockState(blockPos.below()).is(spawnableBlocks) && flag;
     }
 
-    public abstract TagKey<CoatType> getCoatTypes();
+    public abstract TagKey<ModelType> getCoatTypes();
 
     public abstract Diet getDiet();
 
@@ -87,8 +87,8 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
     }
 
     public float getBoundingBoxGrowth() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.boundingBoxInfo().boundingBoxGrowth();
+        ModelType modelType = this.getModelType().value();
+        return modelType.boundingBoxInfo().boundingBoxGrowth();
     }
 
     @Override
@@ -98,8 +98,8 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
 
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, EntitySpawnReason entitySpawnReason, SpawnGroupData spawnGroupData) {
-        HolderLookup<CoatType> coatType = serverLevelAccessor.holderLookup(FARegistries.COAT_TYPES);
-        this.setCoatType(coatType.getOrThrow(this.getCoatTypes()).getRandomElement(this.getRandom()).get());
+        HolderLookup<ModelType> coatType = serverLevelAccessor.holderLookup(FARegistries.MODEL_TYPES);
+        this.setModelType(coatType.getOrThrow(this.getCoatTypes()).getRandomElement(this.getRandom()).get());
         this.setHunger(this.getMaxHunger());
         if (EntitySpawnReason.isSpawner(entitySpawnReason) || entitySpawnReason == EntitySpawnReason.COMMAND || entitySpawnReason == EntitySpawnReason.MOB_SUMMONED || entitySpawnReason == EntitySpawnReason.NATURAL || entitySpawnReason == EntitySpawnReason.CHUNK_GENERATION) {
             this.setGrowthStage(this.getMaxGrowthStage());
@@ -215,13 +215,13 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
     }
 
     public float renderScaleWidth() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.ageScaleInfo().baseScaleWidth() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
+        ModelType modelType = this.getModelType().value();
+        return modelType.ageScaleInfo().baseScaleWidth() + (modelType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
     }
 
     public float renderScaleHeight() {
-        CoatType coatType = this.getCoatType().value();
-        return coatType.ageScaleInfo().baseScaleHeight() + (coatType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
+        ModelType modelType = this.getModelType().value();
+        return modelType.ageScaleInfo().baseScaleHeight() + (modelType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
     }
 
     @Override
@@ -327,7 +327,7 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(COAT_TYPE, this.registryAccess().lookupOrThrow(FARegistries.COAT_TYPES).getAny().orElseThrow());
+        builder.define(MODEL_TYPE, this.registryAccess().lookupOrThrow(FARegistries.MODEL_TYPES).getAny().orElseThrow());
         builder.define(COMMAND, this.registryAccess().lookupOrThrow(FARegistries.COMMAND_TYPES).getAny().orElseThrow());
         builder.define(GROWTH_STAGE, 0);
         builder.define(DAYS_ALIVE, 0);
@@ -408,12 +408,12 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
         this.entityData.set(COMMAND, commandType);
     }
 
-    public Holder<CoatType> getCoatType() {
-        return this.entityData.get(COAT_TYPE);
+    public Holder<ModelType> getModelType() {
+        return this.entityData.get(MODEL_TYPE);
     }
 
-    public void setCoatType(Holder<CoatType> coatTypeHolder) {
-        this.entityData.set(COAT_TYPE, coatTypeHolder);
+    public void setModelType(Holder<ModelType> coatTypeHolder) {
+        this.entityData.set(MODEL_TYPE, coatTypeHolder);
     }
 
     @Override
@@ -424,7 +424,7 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
             compoundTag.putUUID("Owner", this.getOwnerUUID());
         }
 
-        this.addCoatType(compoundTag);
+        this.addModelType(compoundTag);
         this.addCommandType(compoundTag);
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
         compoundTag.putInt("Hunger", this.getHunger());
@@ -451,7 +451,7 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
             }
         }
 
-        this.readCoatType(compoundTag);
+        this.readModelType(compoundTag);
         this.readCommandType(compoundTag);
         super.readAdditionalSaveData(compoundTag);
         this.setDaysAlive(compoundTag.getInt("DaysAlive"));
@@ -466,7 +466,7 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
             compoundTag.putUUID("Owner", this.getOwnerUUID());
         }
 
-        this.addCoatType(compoundTag);
+        this.addModelType(compoundTag);
         this.addCommandType(compoundTag);
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
         compoundTag.putInt("Hunger", this.getHunger());
@@ -482,7 +482,7 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
             compoundTag.putUUID("Owner", this.getOwnerUUID());
         }
 
-        this.addCoatType(compoundTag);
+        this.addModelType(compoundTag);
         this.addCommandType(compoundTag);
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
         compoundTag.putInt("Hunger", this.getHunger());
@@ -502,8 +502,8 @@ public abstract class Dinosaur extends Animal implements CoatTypeEntity, Command
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
         if (this.getEggEntityType() != null) {
             Egg egg = this.getEggEntityType().create(serverLevel, EntitySpawnReason.BREEDING);
-            if (this.getCoatType() != null) {
-                egg.setCoatType(this.getCoatType());
+            if (this.getModelType() != null) {
+                egg.setCoatType(this.getModelType());
             }
             if (egg != null) {
                 UUID uuid = this.getOwnerUUID();

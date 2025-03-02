@@ -21,6 +21,7 @@ public final class FADinopediaTypes {
     public static final ResourceKey<DinopediaType> EGG = FADinopediaTypes.create("egg");
     public static final ResourceKey<DinopediaType> FUTABASAURUS = FADinopediaTypes.create("futabasaurus");
     public static final ResourceKey<DinopediaType> GALLIMIMUS = FADinopediaTypes.create("gallimimus");
+    public static final ResourceKey<DinopediaType> ICHTHYOSAURUS = FADinopediaTypes.create("ichthyosaurus");
     public static final ResourceKey<DinopediaType> MAMMOTH = FADinopediaTypes.create("mammoth");
     public static final ResourceKey<DinopediaType> MOA = FADinopediaTypes.create("moa");
     public static final ResourceKey<DinopediaType> MOSASAURUS = FADinopediaTypes.create("mosasaurus");
@@ -55,6 +56,7 @@ public final class FADinopediaTypes {
         FADinopediaTypes.register(bootstrapContext, EGG, FADinopediaEntries.EGG_DATA);
         FADinopediaTypes.register(bootstrapContext, FUTABASAURUS, FADinopediaEntries.FUTABASAURUS_DATA);
         FADinopediaTypes.register(bootstrapContext, GALLIMIMUS, FADinopediaEntries.GALLIMIMUS_DATA);
+        FADinopediaTypes.register(bootstrapContext, ICHTHYOSAURUS, FADinopediaEntries.ICHTHYOSAURUS_DATA);
         FADinopediaTypes.register(bootstrapContext, MAMMOTH, FADinopediaEntries.MAMMOTH_DATA);
         FADinopediaTypes.register(bootstrapContext, MOA, FADinopediaEntries.MOA_DATA);
         FADinopediaTypes.register(bootstrapContext, MOSASAURUS, FADinopediaEntries.MOSASAURUS_DATA);

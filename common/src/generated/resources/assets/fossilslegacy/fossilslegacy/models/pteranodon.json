@@ -1,4 +1,16 @@
 {
+  "animations": {
+    "fly": [
+      "fossilslegacy:pteranodon_fly",
+      "fossilslegacy:pteranodon_body_fly"
+    ],
+    "land": [
+      "fossilslegacy:pteranodon_land"
+    ],
+    "walk": [
+      "fossilslegacy:pteranodon_walk"
+    ]
+  },
   "elements": [
     {
       "boxes": [],
@@ -301,18 +313,6 @@
   "head_pieces": [
     "head"
   ],
-  "jsonAnimationChannels": {
-    "fly": [
-      "fossilslegacy:pteranodon_fly",
-      "fossilslegacy:pteranodon_body_fly"
-    ],
-    "land": [
-      "fossilslegacy:pteranodon_land"
-    ],
-    "walk": [
-      "fossilslegacy:pteranodon_walk"
-    ]
-  },
   "texture_height": 64,
   "texture_width": 64
 }

@@ -1,4 +1,12 @@
 {
+  "animations": {
+    "sit": [
+      "fossilslegacy:smilodon_sit"
+    ],
+    "walk": [
+      "fossilslegacy:smilodon_walk"
+    ]
+  },
   "elements": [
     {
       "boxes": [
@@ -280,14 +288,6 @@
   "head_pieces": [
     "neck"
   ],
-  "jsonAnimationChannels": {
-    "sit": [
-      "fossilslegacy:smilodon_sit"
-    ],
-    "walk": [
-      "fossilslegacy:smilodon_walk"
-    ]
-  },
   "texture_height": 64,
   "texture_width": 64
 }

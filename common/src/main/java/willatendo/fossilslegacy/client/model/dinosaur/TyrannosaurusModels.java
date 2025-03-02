@@ -8,7 +8,7 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 public final class TyrannosaurusModels {
     public static final JsonModel TYRANNOSAURUS_MODEL = TyrannosaurusModels.createTyrannosaurusBodyLayer().withWalkAnimations(FAUtils.resource("tyrannosaurus_walk")).withHeadPieces("neck").build();
     public static final JsonModel KNOCKED_OUT_TYRANNOSAURUS_MODEL = TyrannosaurusModels.createKnockedOutTyrannosaurusBodyLayer().build();
-    public static final JsonModel LEGACY_TYRANNOSAURUS_MODEL = TyrannosaurusModels.createLegacyTyrannosaurusBodyLayer().withWalkAnimations(BuiltInAnimationTypes.LEGACY_TYRANNOSAURUS_WALK.getId()).withHeadAnimations(BuiltInAnimationTypes.LEGACY_TYRANNOSAURUS_HEAD.getId()).build();
+    public static final JsonModel LEGACY_TYRANNOSAURUS_MODEL = TyrannosaurusModels.createLegacyTyrannosaurusBodyLayer().withWalkAnimations(BuiltInAnimationTypes.LEGACY_TYRANNOSAURUS_WALK.getId()).withHeadAnimations(BuiltInAnimationTypes.LEGACY_TYRANNOSAURUS_HEAD.getId()).overrideReset().build();
     public static final JsonModel LEGACY_KNOCKED_OUT_TYRANNOSAURUS_MODEL = TyrannosaurusModels.createLegacyKnockedOutTyrannosaurusBodyLayer().build();
 
     private static JsonModel.Builder createTyrannosaurusBodyLayer() {

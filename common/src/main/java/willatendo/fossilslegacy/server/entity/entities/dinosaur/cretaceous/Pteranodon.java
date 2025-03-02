@@ -22,7 +22,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -32,7 +32,7 @@ import willatendo.fossilslegacy.server.entity.goals.*;
 import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
-import willatendo.fossilslegacy.server.tags.FACoatTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
 
 import java.util.Optional;
@@ -61,8 +61,8 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 
     @Override
     protected EntityDimensions getDefaultDimensions(Pose pose) {
-        CoatType coatType = this.getCoatType().value();
-        CoatType.BoundingBoxInfo boundingBoxInfo = coatType.boundingBoxInfo();
+        ModelType modelType = this.getModelType().value();
+        ModelType.BoundingBoxInfo boundingBoxInfo = modelType.boundingBoxInfo();
         EntityDimensions newDimensions = this.dimensions = EntityDimensions.scalable(boundingBoxInfo.boundingBoxWidth() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()), boundingBoxInfo.boundingBoxHeight() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()));
         if (this.shouldFly() && !this.landing) {
             return newDimensions.scale(1.0F, 0.5F);
@@ -131,8 +131,8 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
     }
 
     @Override
-    public TagKey<CoatType> getCoatTypes() {
-        return FACoatTypeTags.PTERANODON;
+    public TagKey<ModelType> getCoatTypes() {
+        return FAModelTypeTags.PTERANODON;
     }
 
     @Override
@@ -267,17 +267,17 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.PTERANODON_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
+        return this.getOverridenSoundEvent(FASoundEvents.PTERANODON_AMBIENT.get(), ModelType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return this.getOverridenSoundEvent(FASoundEvents.PTERANODON_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
+        return this.getOverridenSoundEvent(FASoundEvents.PTERANODON_HURT.get(), ModelType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.PTERANODON_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
+        return this.getOverridenSoundEvent(FASoundEvents.PTERANODON_DEATH.get(), ModelType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     @Override

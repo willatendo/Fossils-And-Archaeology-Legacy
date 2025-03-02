@@ -305,8 +305,8 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         if (recipeHolder != null && this.canCultivate(registryAccess, recipeHolder, itemStacks, maxStackSize)) {
             ItemStack input = itemStacks.get(0);
             ItemStack output = ((CultivationRecipe) recipeHolder.value()).assemble(new SingleRecipeInput(itemStacks.get(0)), registryAccess);
-            if (input.has(FADataComponents.COAT_TYPE.get())) {
-                output.set(FADataComponents.COAT_TYPE.get(), input.get(FADataComponents.COAT_TYPE.get()));
+            if (input.has(FADataComponents.MODEL_TYPE.get())) {
+                output.set(FADataComponents.MODEL_TYPE.get(), input.get(FADataComponents.MODEL_TYPE.get()));
             }
             ItemStack outputSlot = itemStacks.get(2);
             if (outputSlot.isEmpty()) {

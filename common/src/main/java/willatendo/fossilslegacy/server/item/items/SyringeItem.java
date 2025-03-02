@@ -14,7 +14,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.HungerAccessor;
 import willatendo.fossilslegacy.server.entity.util.interfaces.PregnantAnimal;
 import willatendo.fossilslegacy.server.entity.util.interfaces.TameAccessor;
@@ -29,9 +29,9 @@ import java.util.List;
 public class SyringeItem extends Item {
     private final GeologicalTimeScale.Period period;
     private final Holder<PregnancyType> pregnancyType;
-    protected final TagKey<CoatType> applicableCoatTypes;
+    protected final TagKey<ModelType> applicableCoatTypes;
 
-    public SyringeItem(GeologicalTimeScale.Period period, Holder<PregnancyType> pregnancyType, TagKey<CoatType> applicableCoatTypes, Properties properties) {
+    public SyringeItem(GeologicalTimeScale.Period period, Holder<PregnancyType> pregnancyType, TagKey<ModelType> applicableCoatTypes, Properties properties) {
         super(properties);
         this.period = period;
         this.pregnancyType = pregnancyType;
@@ -45,9 +45,9 @@ public class SyringeItem extends Item {
     @Override
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         this.period.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
-        if (itemStack.has(FADataComponents.COAT_TYPE.get())) {
-            Holder<CoatType> holder = itemStack.get(FADataComponents.COAT_TYPE.get());
-            tooltipComponents.add(FAUtils.translation("item", "dna.coat_type", holder.value().displayInfo().name()).withStyle(ChatFormatting.GRAY));
+        if (itemStack.has(FADataComponents.MODEL_TYPE.get())) {
+            Holder<ModelType> holder = itemStack.get(FADataComponents.MODEL_TYPE.get());
+            tooltipComponents.add(FAUtils.translation("item", "dna.coat_type", holder.value().displayInfo().modelName()).withStyle(ChatFormatting.GRAY));
         }
         super.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
     }
@@ -60,7 +60,7 @@ public class SyringeItem extends Item {
                     PregnantAnimal<?> pregnantAnimal = PregnantAnimal.createFromLiving(livingEntity, player.level());
                     pregnantAnimal.setPregnancyType(this.getPregnancyType());
                     if (this.applicableCoatTypes != null) {
-                        HolderGetter<CoatType> coatTypeRegistry = pregnantAnimal.getLevel().holderLookup(FARegistries.COAT_TYPES);
+                        HolderGetter<ModelType> coatTypeRegistry = pregnantAnimal.getLevel().holderLookup(FARegistries.MODEL_TYPES);
                         pregnantAnimal.setOffspringCoatType(coatTypeRegistry.getOrThrow(this.applicableCoatTypes).getRandomElement(pregnantAnimal.getLevel().getRandom()).get());
                     }
                     pregnantAnimal.setRemainingPregnancyTime(0);

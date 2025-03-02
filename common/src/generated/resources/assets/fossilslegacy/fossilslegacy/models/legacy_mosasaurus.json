@@ -1,4 +1,12 @@
 {
+  "animations": {
+    "swim": [
+      "fossilslegacy:legacy_mosasaurus_swim"
+    ],
+    "walk": [
+      "fossilslegacy:legacy_mosasaurus_swim"
+    ]
+  },
   "elements": [
     {
       "boxes": [
@@ -323,14 +331,6 @@
       }
     }
   ],
-  "jsonAnimationChannels": {
-    "swim": [
-      "fossilslegacy:legacy_mosasaurus_swim"
-    ],
-    "walk": [
-      "fossilslegacy:legacy_mosasaurus_swim"
-    ]
-  },
   "texture_height": 32,
   "texture_width": 64
 }

@@ -1,4 +1,9 @@
 {
+  "animations": {
+    "walk": [
+      "fossilslegacy:legacy_brachiosaurus_walk"
+    ]
+  },
   "elements": [
     {
       "boxes": [
@@ -625,11 +630,6 @@
       }
     }
   ],
-  "jsonAnimationChannels": {
-    "walk": [
-      "fossilslegacy:legacy_brachiosaurus_walk"
-    ]
-  },
   "texture_height": 32,
   "texture_width": 64
 }

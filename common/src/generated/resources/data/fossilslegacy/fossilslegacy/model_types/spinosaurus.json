@@ -1,0 +1,37 @@
+{
+  "age_scale_info": {
+    "age_scale": 0.5125,
+    "base_scale_height": 0.5,
+    "base_scale_width": 0.5,
+    "shadow_growth": 0.15,
+    "shadow_size": 0.5
+  },
+  "bounding_box_info": {
+    "bounding_box_growth": 0.4,
+    "bounding_box_height": 0.5,
+    "bounding_box_width": 0.5
+  },
+  "display_info": {
+    "color": 2500125,
+    "display_scale": 0.25,
+    "display_y_offset": 3.0,
+    "model_name": {
+      "translate": "model_type.fossilslegacy.spinosaurus"
+    }
+  },
+  "models": {
+    "model": "fossilslegacy:spinosaurus"
+  },
+  "patterns": [
+    {
+      "pattern_name": {
+        "translate": "pattern.fossilslegacy.marine_iguana"
+      },
+      "pattern_type": "fossilslegacy:basic",
+      "textures": {
+        "baby": "fossilslegacy:textures/entity/spinosaurus/spinosaurus_baby.png",
+        "base": "fossilslegacy:textures/entity/spinosaurus/spinosaurus_adult.png"
+      }
+    }
+  ]
+}

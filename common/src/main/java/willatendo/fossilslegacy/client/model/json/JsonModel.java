@@ -14,7 +14,7 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public record JsonModel(Optional<JsonModel.Animations> animations, List<JsonElement> jsonElements, Optional<List<String>> headPieces, Optional<Boolean> overrideReset, int textureWidth, int textureHeight) {
-    public static final Codec<JsonModel> CODEC = RecordCodecBuilder.create(instance -> instance.group(JsonModel.Animations.CODEC.optionalFieldOf("jsonAnimationChannels").forGetter(JsonModel::animations), Codec.list(JsonElement.CODEC).fieldOf("elements").forGetter(JsonModel::jsonElements), Codec.list(Codec.STRING).optionalFieldOf("head_pieces").forGetter(JsonModel::headPieces), Codec.BOOL.optionalFieldOf("override_reset").forGetter(JsonModel::overrideReset), Codec.INT.fieldOf("texture_width").forGetter(JsonModel::textureWidth), Codec.INT.fieldOf("texture_height").forGetter(JsonModel::textureHeight)).apply(instance, JsonModel::new));
+    public static final Codec<JsonModel> CODEC = RecordCodecBuilder.create(instance -> instance.group(JsonModel.Animations.CODEC.optionalFieldOf("animations").forGetter(JsonModel::animations), Codec.list(JsonElement.CODEC).fieldOf("elements").forGetter(JsonModel::jsonElements), Codec.list(Codec.STRING).optionalFieldOf("head_pieces").forGetter(JsonModel::headPieces), Codec.BOOL.optionalFieldOf("override_reset").forGetter(JsonModel::overrideReset), Codec.INT.fieldOf("texture_width").forGetter(JsonModel::textureWidth), Codec.INT.fieldOf("texture_height").forGetter(JsonModel::textureHeight)).apply(instance, JsonModel::new));
 
     public boolean isOverrideReset() {
         return this.overrideReset().orElse(false);
@@ -58,8 +58,8 @@ public record JsonModel(Optional<JsonModel.Animations> animations, List<JsonElem
         return new JsonModel.Builder(textureWidth, textureHeight);
     }
 
-    public record Animations(Optional<List<ResourceLocation>> walkAnimations, Optional<List<ResourceLocation>> swimAnimations, Optional<List<ResourceLocation>> flyAnimations, Optional<List<ResourceLocation>> floatDownAnimations, Optional<List<ResourceLocation>> headAnimations, Optional<List<ResourceLocation>> shakeAnimations, Optional<List<ResourceLocation>> sitAnimations, Optional<List<ResourceLocation>> tailAnimations, Optional<List<ResourceLocation>> landAnimations) {
-        public static final Codec<JsonModel.Animations> CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.list(ResourceLocation.CODEC).optionalFieldOf("walk").forGetter(Animations::walkAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("swim").forGetter(Animations::swimAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("fly").forGetter(Animations::flyAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("float_down").forGetter(Animations::floatDownAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("head").forGetter(Animations::headAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("shake").forGetter(Animations::shakeAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("sit").forGetter(Animations::sitAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("tail").forGetter(Animations::tailAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("land").forGetter(Animations::landAnimations)).apply(instance, JsonModel.Animations::new));
+    public record Animations(Optional<List<ResourceLocation>> idleAnimations, Optional<List<ResourceLocation>> walkAnimations, Optional<List<ResourceLocation>> swimAnimations, Optional<List<ResourceLocation>> flyAnimations, Optional<List<ResourceLocation>> floatDownAnimations, Optional<List<ResourceLocation>> headAnimations, Optional<List<ResourceLocation>> shakeAnimations, Optional<List<ResourceLocation>> sitAnimations, Optional<List<ResourceLocation>> tailAnimations, Optional<List<ResourceLocation>> landAnimations) {
+        public static final Codec<JsonModel.Animations> CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.list(ResourceLocation.CODEC).optionalFieldOf("idle").forGetter(Animations::idleAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("walk").forGetter(Animations::walkAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("swim").forGetter(Animations::swimAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("fly").forGetter(Animations::flyAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("float_down").forGetter(Animations::floatDownAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("head").forGetter(Animations::headAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("shake").forGetter(Animations::shakeAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("sit").forGetter(Animations::sitAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("tail").forGetter(Animations::tailAnimations), Codec.list(ResourceLocation.CODEC).optionalFieldOf("land").forGetter(Animations::landAnimations)).apply(instance, JsonModel.Animations::new));
 
         public boolean hasAnimations() {
             return this.hasAnimation(this.walkAnimations) || this.hasAnimation(this.swimAnimations) || this.hasAnimation(this.flyAnimations) || this.hasAnimation(this.floatDownAnimations) || this.hasAnimation(this.headAnimations) || this.hasAnimation(this.shakeAnimations) || this.hasAnimation(this.sitAnimations) || this.hasAnimation(this.tailAnimations) || this.hasAnimation(this.landAnimations);
@@ -76,6 +76,7 @@ public record JsonModel(Optional<JsonModel.Animations> animations, List<JsonElem
 
     public static final class Builder {
         private final List<JsonElement> jsonElements = new ArrayList<>();
+        private final List<ResourceLocation> idleAnimation = new ArrayList<>();
         private final List<ResourceLocation> walkAnimation = new ArrayList<>();
         private final List<ResourceLocation> swimAnimation = new ArrayList<>();
         private final List<ResourceLocation> flyAnimation = new ArrayList<>();
@@ -102,6 +103,11 @@ public record JsonModel(Optional<JsonModel.Animations> animations, List<JsonElem
 
         public Builder addOrReplaceChild(String name, Function<JsonElement.Builder, JsonElement> jsonElement, JsonPose jsonPose) {
             this.jsonElements.add(jsonElement.apply(JsonElement.builder(name, jsonPose)));
+            return this;
+        }
+
+        public Builder withIdleAnimations(ResourceLocation... animations) {
+            this.walkAnimation.addAll(List.of(animations));
             return this;
         }
 
@@ -161,7 +167,7 @@ public record JsonModel(Optional<JsonModel.Animations> animations, List<JsonElem
         }
 
         public JsonModel build() {
-            JsonModel.Animations animations = new JsonModel.Animations(this.walkAnimation.isEmpty() ? Optional.empty() : Optional.of(this.walkAnimation), this.swimAnimation.isEmpty() ? Optional.empty() : Optional.of(this.swimAnimation), this.flyAnimation.isEmpty() ? Optional.empty() : Optional.of(this.flyAnimation), this.floatDownAnimation.isEmpty() ? Optional.empty() : Optional.of(this.floatDownAnimation), this.headAnimation.isEmpty() ? Optional.empty() : Optional.of(this.headAnimation), this.shakeAnimation.isEmpty() ? Optional.empty() : Optional.of(this.shakeAnimation), this.sitAnimation.isEmpty() ? Optional.empty() : Optional.of(this.sitAnimation), this.tailAnimation.isEmpty() ? Optional.empty() : Optional.of(this.tailAnimation), this.landAnimation.isEmpty() ? Optional.empty() : Optional.of(this.landAnimation));
+            JsonModel.Animations animations = new JsonModel.Animations(this.idleAnimation.isEmpty() ? Optional.empty() : Optional.of(this.idleAnimation), this.walkAnimation.isEmpty() ? Optional.empty() : Optional.of(this.walkAnimation), this.swimAnimation.isEmpty() ? Optional.empty() : Optional.of(this.swimAnimation), this.flyAnimation.isEmpty() ? Optional.empty() : Optional.of(this.flyAnimation), this.floatDownAnimation.isEmpty() ? Optional.empty() : Optional.of(this.floatDownAnimation), this.headAnimation.isEmpty() ? Optional.empty() : Optional.of(this.headAnimation), this.shakeAnimation.isEmpty() ? Optional.empty() : Optional.of(this.shakeAnimation), this.sitAnimation.isEmpty() ? Optional.empty() : Optional.of(this.sitAnimation), this.tailAnimation.isEmpty() ? Optional.empty() : Optional.of(this.tailAnimation), this.landAnimation.isEmpty() ? Optional.empty() : Optional.of(this.landAnimation));
             return new JsonModel(animations.hasAnimations() ? Optional.of(animations) : Optional.empty(), this.jsonElements, this.headPieces.isEmpty() ? Optional.empty() : Optional.of(this.headPieces), this.overrideReset ? Optional.of(true) : Optional.empty(), this.textureWidth, this.textureHeight);
         }
     }

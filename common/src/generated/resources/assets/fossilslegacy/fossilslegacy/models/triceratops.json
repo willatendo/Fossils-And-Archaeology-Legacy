@@ -1,4 +1,9 @@
 {
+  "animations": {
+    "walk": [
+      "fossilslegacy:triceratops_walk"
+    ]
+  },
   "elements": [
     {
       "boxes": [
@@ -296,11 +301,6 @@
   "head_pieces": [
     "head"
   ],
-  "jsonAnimationChannels": {
-    "walk": [
-      "fossilslegacy:triceratops_walk"
-    ]
-  },
   "texture_height": 128,
   "texture_width": 128
 }

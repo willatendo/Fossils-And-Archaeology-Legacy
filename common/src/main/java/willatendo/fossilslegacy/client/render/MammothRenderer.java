@@ -5,7 +5,7 @@ import willatendo.fossilslegacy.client.render.layer.MammothFurLayer;
 import willatendo.fossilslegacy.client.state.MammothRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Mammoth;
 
-public class MammothRenderer extends CoatTypeMobRenderer<Mammoth, MammothRenderState> {
+public class MammothRenderer extends DataDrivenModelMobRenderer<Mammoth, MammothRenderState> {
     public MammothRenderer(Context context) {
         super(context, 0.3F);
         this.addLayer(new MammothFurLayer(this));

@@ -7,7 +7,7 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class VelociraptorModels {
     public static final JsonModel VELOCIRAPTOR_MODEL = VelociraptorModels.createVelociraptorBodyLayer().withWalkAnimations(FAUtils.resource("velociraptor_walk")).withHeadPieces("head").build();
-    public static final JsonModel LEGACY_VELOCIRAPTOR_MODEL = VelociraptorModels.createLegacyVelociraptorBodyLayer().withWalkAnimations(BuiltInAnimationTypes.LEGACY_VELOCIRAPTOR_WALK.getId()).build();
+    public static final JsonModel LEGACY_VELOCIRAPTOR_MODEL = VelociraptorModels.createLegacyVelociraptorBodyLayer().withWalkAnimations(BuiltInAnimationTypes.LEGACY_VELOCIRAPTOR_WALK.getId()).overrideReset().build();
 
     private static JsonModel.Builder createVelociraptorBodyLayer() {
         JsonModel.Builder builder = JsonModel.builder(64, 64);

@@ -9,47 +9,47 @@ import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.item.DyeColor;
-import willatendo.fossilslegacy.client.render.CoatTypeMobRenderer;
+import willatendo.fossilslegacy.client.render.DataDrivenModelMobRenderer;
 import willatendo.fossilslegacy.client.state.MammothRenderState;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Mammoth;
 
 public class MammothFurLayer extends RenderLayer<MammothRenderState, EntityModel<MammothRenderState>> {
     private EntityModel<MammothRenderState> model;
-    private CoatTypeMobRenderer<Mammoth, MammothRenderState> coatTypeMobRenderer;
+    private DataDrivenModelMobRenderer<Mammoth, MammothRenderState> dataDrivenModelMobRenderer;
     private ResourceLocation modelId;
 
-    public MammothFurLayer(CoatTypeMobRenderer<Mammoth, MammothRenderState> coatTypeMobRenderer) {
-        super(coatTypeMobRenderer);
-        this.coatTypeMobRenderer = coatTypeMobRenderer;
+    public MammothFurLayer(DataDrivenModelMobRenderer<Mammoth, MammothRenderState> dataDrivenModelMobRenderer) {
+        super(dataDrivenModelMobRenderer);
+        this.dataDrivenModelMobRenderer = dataDrivenModelMobRenderer;
     }
 
     private void setModel(ResourceLocation model) {
         if (this.modelId != model) {
             this.modelId = model;
-            this.model = this.coatTypeMobRenderer.getModel(model);
+            this.model = this.dataDrivenModelMobRenderer.getModel(model);
         }
     }
 
     @Override
     public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int partialticks, MammothRenderState mammothRenderState, float packedLight, float packedOverlay) {
-        CoatType coatType = mammothRenderState.coatType.value();
-        if (this.coatTypeMobRenderer.getAdditionalModel(mammothRenderState, coatType).isPresent()) {
-            this.setModel(this.coatTypeMobRenderer.getAdditionalModel(mammothRenderState, coatType).get());
+        ModelType modelType = mammothRenderState.modelType.value();
+        if (this.dataDrivenModelMobRenderer.getAdditionalModel(mammothRenderState, modelType).isPresent()) {
+            this.setModel(this.dataDrivenModelMobRenderer.getAdditionalModel(mammothRenderState, modelType).get());
         } else {
-            this.setModel(coatType.models().model());
+            this.setModel(modelType.models().model());
         }
-        CoatType.Textures textures = coatType.patterns().getFirst().textures();
-        if (textures.furTexture().isPresent()) {
-            ResourceLocation texture = textures.furTexture().get();
+        ModelType.Pattern pattern = modelType.patterns().getFirst();
+        if (pattern.hasFurTexture()) {
+            ResourceLocation texture = pattern.getFurTexture();
             if (mammothRenderState.isSheared) {
-                if (textures.shearedTexture().isPresent()) {
-                    texture = textures.shearedTexture().get();
+                if (pattern.hasShearedTexture()) {
+                    texture = pattern.getShearedTexture();
                 }
             } else {
                 if (mammothRenderState.isBaby) {
-                    if (textures.babyFurTexture().isPresent()) {
-                        texture = textures.babyFurTexture().get();
+                    if (pattern.hasBabyFurTexture()) {
+                        texture = pattern.getBabyFurTexture();
                     }
                 }
             }

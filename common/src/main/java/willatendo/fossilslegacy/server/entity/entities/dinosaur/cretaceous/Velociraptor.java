@@ -24,7 +24,7 @@ import net.minecraft.world.item.LeadItem;
 import net.minecraft.world.item.NameTagItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -39,7 +39,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.HighlyIntelligent;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.item.items.DebugItem;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
-import willatendo.fossilslegacy.server.tags.FACoatTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 import willatendo.fossilslegacy.server.tags.FAEntityTypeTags;
 
 import java.util.Optional;
@@ -73,8 +73,8 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
     }
 
     @Override
-    public TagKey<CoatType> getCoatTypes() {
-        return FACoatTypeTags.VELOCIRAPTOR;
+    public TagKey<ModelType> getCoatTypes() {
+        return FAModelTypeTags.VELOCIRAPTOR;
     }
 
     @Override
@@ -144,17 +144,17 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.isTame() ? this.getOverridenSoundEvent(FASoundEvents.VELOCIRAPTOR_AMBIENT_TAME.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT) : this.getOverridenSoundEvent(FASoundEvents.VELOCIRAPTOR_AMBIENT_WILD.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
+        return this.isTame() ? this.getOverridenSoundEvent(FASoundEvents.VELOCIRAPTOR_AMBIENT_TAME.get(), ModelType.OverrideInfo.OverridenSoundType.AMBIENT) : this.getOverridenSoundEvent(FASoundEvents.VELOCIRAPTOR_AMBIENT_WILD.get(), ModelType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return this.getOverridenSoundEvent(FASoundEvents.VELOCIRAPTOR_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
+        return this.getOverridenSoundEvent(FASoundEvents.VELOCIRAPTOR_HURT.get(), ModelType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.VELOCIRAPTOR_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
+        return this.getOverridenSoundEvent(FASoundEvents.VELOCIRAPTOR_DEATH.get(), ModelType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     @Override
@@ -178,7 +178,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        this.addCoatType(compoundTag);
+        this.addModelType(compoundTag);
         compoundTag.putBoolean("LearnedChests", this.hasLearnedChests());
         if (!this.getHeldItem().isEmpty()) {
             compoundTag.put("HeldItem", this.getHeldItem().saveOptional(this.registryAccess()));
@@ -188,7 +188,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        this.readCoatType(compoundTag);
+        this.readModelType(compoundTag);
         this.setLearnedChests(compoundTag.getBoolean("LearnedChests"));
         CompoundTag itemCompoundTag = compoundTag.getCompound("HeldItem");
         if (itemCompoundTag != null && !itemCompoundTag.isEmpty()) {

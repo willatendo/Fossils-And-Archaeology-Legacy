@@ -21,16 +21,15 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
-import willatendo.fossilslegacy.server.entity.util.interfaces.CoatTypeEntity;
+import willatendo.fossilslegacy.server.entity.util.interfaces.ModelTypeEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.TamesOnBirth;
 import willatendo.fossilslegacy.server.item.FAItems;
-import willatendo.fossilslegacy.server.registry.FARegistries;
 
-public class ThrownAnimalEgg extends ThrowableItemProjectile implements CoatTypeEntity {
+public class ThrownAnimalEgg extends ThrowableItemProjectile implements ModelTypeEntity {
     private EntityType<? extends Animal> animal;
-    private Holder<CoatType> coatType;
+    private Holder<ModelType> coatType;
     private boolean incubated;
 
     public ThrownAnimalEgg(EntityType<? extends ThrownAnimalEgg> entityType, Level level) {
@@ -52,12 +51,12 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements CoatType
     }
 
     @Override
-    public void setCoatType(Holder<CoatType> coatType) {
+    public void setModelType(Holder<ModelType> coatType) {
         this.coatType = coatType;
     }
 
     @Override
-    public Holder<CoatType> getCoatType() {
+    public Holder<ModelType> getModelType() {
         return this.coatType;
     }
 
@@ -90,8 +89,8 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements CoatType
                 for (int animals = 0; animals < i; ++animals) {
                     Animal animalToSpawn = this.animal.create(this.level(), EntitySpawnReason.TRIGGERED);
                     animalToSpawn.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
-                    if (animalToSpawn instanceof CoatTypeEntity coatTypeEntity && this.coatType != null) {
-                        coatTypeEntity.setCoatType(this.coatType);
+                    if (animalToSpawn instanceof ModelTypeEntity modelTypeEntity && this.coatType != null) {
+                        modelTypeEntity.setModelType(this.coatType);
                     }
                     if (animalToSpawn instanceof Dinosaur dinosaur) {
                         dinosaur.setGrowthStage(0);
@@ -125,7 +124,7 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements CoatType
         compoundTag.putString("EntityType", BuiltInRegistries.ENTITY_TYPE.getKey(this.animal).toString());
         compoundTag.putBoolean("Incubated", this.incubated);
         if (this.coatType != null) {
-            this.addCoatType(compoundTag);
+            this.addModelType(compoundTag);
         }
     }
 
@@ -135,7 +134,7 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements CoatType
         this.animal = (EntityType<? extends Animal>) BuiltInRegistries.ENTITY_TYPE.getValue(ResourceLocation.parse(compoundTag.getString("EntityType")));
         this.incubated = compoundTag.getBoolean("Incubated");
         if (compoundTag.contains("CoatType")) {
-            this.readCoatType(compoundTag);
+            this.readModelType(compoundTag);
         }
     }
 

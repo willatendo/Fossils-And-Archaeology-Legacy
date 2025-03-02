@@ -130,8 +130,6 @@ public class JsonTypeModel extends EntityModel<DinosaurRenderState> {
 
     @Override
     public void setupAnim(DinosaurRenderState dinosaurRenderState) {
-        super.setupAnim(dinosaurRenderState);
-
         if (dinosaurRenderState instanceof TyrannosaurusRenderState tyrannosaurusRenderState) {
             if (tyrannosaurusRenderState.knockedOut) {
                 return;
@@ -139,88 +137,26 @@ public class JsonTypeModel extends EntityModel<DinosaurRenderState> {
         }
 
         if (!this.overrideReset) {
-            this.root().getAllParts().forEach(ModelPart::resetPose);
+            this.resetPose();
+        }
 
-            if (!this.animationHolder.hasSitAnimations() || !dinosaurRenderState.isOrderedToSit) {
-                if (this.animationHolder.hasHeadAnimations()) {
-                    for (ResourceLocation animation : this.animationHolder.headAnimation()) {
-                        if (JsonAnimationLoader.isBuiltIn(animation)) {
-                            BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
-                            if (builtInAnimationType.canUse(dinosaurRenderState)) {
-                                builtInAnimationType.setupAnim(dinosaurRenderState, this, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
-                            }
-                        }
-                    }
-                } else {
-                    if (dinosaurRenderState instanceof PteranodonRenderState pteranodonRenderState) {
-                        if (!pteranodonRenderState.shouldFly && !pteranodonRenderState.shouldLand) {
-                            this.standardHead(pteranodonRenderState.yRot, pteranodonRenderState.xRot);
-                        }
-                    } else {
-                        this.standardHead(dinosaurRenderState.yRot, dinosaurRenderState.xRot);
+        if (dinosaurRenderState instanceof SmilodonRenderState smilodonRenderState) {
+            if (this.animationHolder.hasSitAnimations()) {
+                for (ResourceLocation animation : this.animationHolder.sitAnimation()) {
+                    if (!JsonAnimationLoader.isBuiltIn(animation)) {
+                        this.animate(smilodonRenderState.sitAnimationState, JsonAnimationLoader.getAnimation(animation), dinosaurRenderState.ageInTicks);
                     }
                 }
+            }
+        }
 
-                if (this.animationHolder.hasFlyAnimations()) {
-                    for (ResourceLocation animation : this.animationHolder.flyAnimation()) {
-                        if (JsonAnimationLoader.isBuiltIn(animation)) {
-                            BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
-                            if (builtInAnimationType.canUse(dinosaurRenderState)) {
-                                builtInAnimationType.setupAnim(dinosaurRenderState, this, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
-                            }
-                        } else {
-                            if (dinosaurRenderState instanceof PteranodonRenderState pteranodonRenderState) {
-                                this.animate(pteranodonRenderState.flyingAnimationState, JsonAnimationLoader.getAnimation(animation), pteranodonRenderState.ageInTicks);
-                            }
-                        }
-                    }
-                }
-
-                if (dinosaurRenderState instanceof PteranodonRenderState pteranodonRenderState) {
-                    if (this.animationHolder.hasLandAnimations()) {
-                        for (ResourceLocation animation : this.animationHolder.landAnimation()) {
-                            this.animate(pteranodonRenderState.landAnimationState, JsonAnimationLoader.getAnimation(animation), pteranodonRenderState.ageInTicks);
-                        }
-                    }
-                }
-
-                if (this.animationHolder.hasSwimAnimations() && dinosaurRenderState.inWater) {
-                    for (ResourceLocation animation : this.animationHolder.swimAnimation()) {
-                        if (JsonAnimationLoader.isBuiltIn(animation)) {
-                            BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
-                            if (builtInAnimationType.canUse(dinosaurRenderState)) {
-                                builtInAnimationType.setupAnim(dinosaurRenderState, this, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
-                            }
-                        } else {
-                            this.animateWalk(JsonAnimationLoader.getAnimation(animation), dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, 2.0F, 2.5F);
-                        }
-                    }
-                } else {
-                    if (this.animationHolder.hasWalkAnimations()) {
-                        if (dinosaurRenderState instanceof PteranodonRenderState pteranodonRenderState) {
-                            if (!pteranodonRenderState.shouldFly && !pteranodonRenderState.shouldLand) {
-                                this.animateWalk(this.animationHolder, dinosaurRenderState, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
-                            }
-                        } else {
-                            this.animateWalk(this.animationHolder, dinosaurRenderState, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
-                        }
-                    }
-                }
-
-                if (dinosaurRenderState instanceof SmilodonRenderState smilodonRenderState) {
-                    if (this.animationHolder.hasSitAnimations()) {
-                        for (ResourceLocation animation : this.animationHolder.sitAnimation()) {
-                            if (!JsonAnimationLoader.isBuiltIn(animation)) {
-                                this.animate(smilodonRenderState.sitAnimationState, JsonAnimationLoader.getAnimation(animation), dinosaurRenderState.ageInTicks);
-                            }
-                        }
-                    }
-                }
-
-                if (dinosaurRenderState instanceof DodoRenderState dodoRenderState) {
-                    if (this.animationHolder.hasFloatAnimations()) {
-                        for (ResourceLocation animation : this.animationHolder.floatAnimation()) {
-                            this.animate(dodoRenderState.fallAnimationState, JsonAnimationLoader.getAnimation(animation), dinosaurRenderState.ageInTicks);
+        if (!this.animationHolder.hasSitAnimations() || !dinosaurRenderState.isOrderedToSit) {
+            if (this.animationHolder.hasHeadAnimations()) {
+                for (ResourceLocation animation : this.animationHolder.headAnimation()) {
+                    if (JsonAnimationLoader.isBuiltIn(animation)) {
+                        BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
+                        if (builtInAnimationType.canUse(dinosaurRenderState)) {
+                            builtInAnimationType.setupAnim(dinosaurRenderState, this, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
                         }
                     }
                 }
@@ -233,14 +169,67 @@ public class JsonTypeModel extends EntityModel<DinosaurRenderState> {
                     this.standardHead(dinosaurRenderState.yRot, dinosaurRenderState.xRot);
                 }
             }
-        } else {
-            for (ResourceLocation animation : this.animationHolder.walkAnimation()) {
-                if (JsonAnimationLoader.isBuiltIn(animation)) {
-                    BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
-                    if (builtInAnimationType.canUse(dinosaurRenderState)) {
-                        builtInAnimationType.setupAnim(dinosaurRenderState, this, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
+
+            if (this.animationHolder.hasFlyAnimations()) {
+                for (ResourceLocation animation : this.animationHolder.flyAnimation()) {
+                    if (JsonAnimationLoader.isBuiltIn(animation)) {
+                        BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
+                        if (builtInAnimationType.canUse(dinosaurRenderState)) {
+                            builtInAnimationType.setupAnim(dinosaurRenderState, this, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
+                        }
+                    } else {
+                        if (dinosaurRenderState instanceof PteranodonRenderState pteranodonRenderState) {
+                            this.animate(pteranodonRenderState.flyingAnimationState, JsonAnimationLoader.getAnimation(animation), pteranodonRenderState.ageInTicks);
+                        }
                     }
                 }
+            }
+
+            if (dinosaurRenderState instanceof PteranodonRenderState pteranodonRenderState) {
+                if (this.animationHolder.hasLandAnimations()) {
+                    for (ResourceLocation animation : this.animationHolder.landAnimation()) {
+                        this.animate(pteranodonRenderState.landAnimationState, JsonAnimationLoader.getAnimation(animation), pteranodonRenderState.ageInTicks);
+                    }
+                }
+            }
+
+            if (this.animationHolder.hasSwimAnimations() && dinosaurRenderState.inWater) {
+                for (ResourceLocation animation : this.animationHolder.swimAnimation()) {
+                    if (JsonAnimationLoader.isBuiltIn(animation)) {
+                        BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
+                        if (builtInAnimationType.canUse(dinosaurRenderState)) {
+                            builtInAnimationType.setupAnim(dinosaurRenderState, this, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
+                        }
+                    } else {
+                        this.animateWalk(JsonAnimationLoader.getAnimation(animation), dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, 2.0F, 2.5F);
+                    }
+                }
+            } else {
+                if (this.animationHolder.hasWalkAnimations()) {
+                    if (dinosaurRenderState instanceof PteranodonRenderState pteranodonRenderState) {
+                        if (!pteranodonRenderState.shouldFly && !pteranodonRenderState.shouldLand) {
+                            this.animateWalk(this.animationHolder, dinosaurRenderState, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
+                        }
+                    } else {
+                        this.animateWalk(this.animationHolder, dinosaurRenderState, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
+                    }
+                }
+            }
+
+            if (dinosaurRenderState instanceof DodoRenderState dodoRenderState) {
+                if (this.animationHolder.hasFloatAnimations()) {
+                    for (ResourceLocation animation : this.animationHolder.floatAnimation()) {
+                        this.animate(dodoRenderState.fallAnimationState, JsonAnimationLoader.getAnimation(animation), dinosaurRenderState.ageInTicks);
+                    }
+                }
+            }
+        } else {
+            if (dinosaurRenderState instanceof PteranodonRenderState pteranodonRenderState) {
+                if (!pteranodonRenderState.shouldFly && !pteranodonRenderState.shouldLand) {
+                    this.standardHead(pteranodonRenderState.yRot, pteranodonRenderState.xRot);
+                }
+            } else {
+                this.standardHead(dinosaurRenderState.yRot, dinosaurRenderState.xRot);
             }
         }
     }

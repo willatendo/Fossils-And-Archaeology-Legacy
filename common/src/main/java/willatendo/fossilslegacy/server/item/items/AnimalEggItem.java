@@ -20,7 +20,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.entity.entities.ThrownAnimalEgg;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
@@ -34,7 +34,7 @@ public class AnimalEggItem extends Item implements ProjectileItem {
     private final Supplier<EntityType<? extends Animal>> animal;
     private final GeologicalTimeScale.Period period;
     private final boolean incubated;
-    private TagKey<CoatType> coatTypes;
+    private TagKey<ModelType> coatTypes;
 
     public AnimalEggItem(GeologicalTimeScale.Period period, Supplier<EntityType<? extends Animal>> animal, boolean incubated, Properties properties) {
         super(properties);
@@ -43,7 +43,7 @@ public class AnimalEggItem extends Item implements ProjectileItem {
         this.incubated = incubated;
     }
 
-    public AnimalEggItem(GeologicalTimeScale.Period period, Supplier<EntityType<? extends Animal>> animal, boolean incubated, TagKey<CoatType> coatTypes, Properties properties) {
+    public AnimalEggItem(GeologicalTimeScale.Period period, Supplier<EntityType<? extends Animal>> animal, boolean incubated, TagKey<ModelType> coatTypes, Properties properties) {
         this(period, animal, incubated, properties);
         this.coatTypes = coatTypes;
     }
@@ -51,9 +51,9 @@ public class AnimalEggItem extends Item implements ProjectileItem {
     @Override
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         this.period.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
-        if (itemStack.has(FADataComponents.COAT_TYPE.get())) {
-            Holder<CoatType> holder = itemStack.get(FADataComponents.COAT_TYPE.get());
-            tooltipComponents.add(FAUtils.translation("item", "dna.coat_type", holder.value().displayInfo().name()).withStyle(ChatFormatting.GRAY));
+        if (itemStack.has(FADataComponents.MODEL_TYPE.get())) {
+            Holder<ModelType> holder = itemStack.get(FADataComponents.MODEL_TYPE.get());
+            tooltipComponents.add(FAUtils.translation("item", "dna.coat_type", holder.value().displayInfo().modelName()).withStyle(ChatFormatting.GRAY));
         }
         super.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
     }
@@ -65,7 +65,7 @@ public class AnimalEggItem extends Item implements ProjectileItem {
         if (!level.isClientSide) {
             ThrownAnimalEgg thrownAnimalEgg = new ThrownAnimalEgg(level, player, this.animal.get(), this.incubated, player.getItemInHand(interactionHand));
             if (this.coatTypes != null) {
-                thrownAnimalEgg.setCoatType(level.holderLookup(FARegistries.COAT_TYPES).getOrThrow(this.coatTypes).getRandomElement(level.getRandom()).get());
+                thrownAnimalEgg.setModelType(level.holderLookup(FARegistries.MODEL_TYPES).getOrThrow(this.coatTypes).getRandomElement(level.getRandom()).get());
             }
             thrownAnimalEgg.setItem(itemStack);
             thrownAnimalEgg.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);

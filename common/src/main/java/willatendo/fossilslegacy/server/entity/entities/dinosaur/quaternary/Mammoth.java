@@ -42,7 +42,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -58,7 +58,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformati
 import willatendo.fossilslegacy.server.entity.util.interfaces.RideableDinosaur;
 import willatendo.fossilslegacy.server.item.FALootTables;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
-import willatendo.fossilslegacy.server.tags.FACoatTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -112,14 +112,14 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
     }
 
     @Override
-    public TagKey<CoatType> getCoatTypes() {
-        return FACoatTypeTags.MAMMOTH;
+    public TagKey<ModelType> getCoatTypes() {
+        return FAModelTypeTags.MAMMOTH;
     }
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
         Mammoth mammoth = FAEntityTypes.MAMMOTH.get().create(serverLevel, EntitySpawnReason.BREEDING);
-        mammoth.setCoatType(this.getCoatType());
+        mammoth.setModelType(this.getModelType());
         mammoth.setColor(DyeColor.getMixedColor(serverLevel, this.getColor(), ((Mammoth) ageableMob).getColor()));
         return mammoth;
     }
@@ -307,17 +307,17 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.MAMMOTH_AMBIENT.get(), CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
+        return this.getOverridenSoundEvent(FASoundEvents.MAMMOTH_AMBIENT.get(), ModelType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return this.getOverridenSoundEvent(FASoundEvents.MAMMOTH_HURT.get(), CoatType.OverrideInfo.OverridenSoundType.HURT);
+        return this.getOverridenSoundEvent(FASoundEvents.MAMMOTH_HURT.get(), ModelType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.MAMMOTH_DEATH.get(), CoatType.OverrideInfo.OverridenSoundType.DEATH);
+        return this.getOverridenSoundEvent(FASoundEvents.MAMMOTH_DEATH.get(), ModelType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     public void setColor(DyeColor dyeColor) {

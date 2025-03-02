@@ -1,4 +1,9 @@
 {
+  "animations": {
+    "walk": [
+      "fossilslegacy:dilophosaurus_walk"
+    ]
+  },
   "elements": [
     {
       "boxes": [
@@ -310,11 +315,6 @@
   "head_pieces": [
     "head"
   ],
-  "jsonAnimationChannels": {
-    "walk": [
-      "fossilslegacy:dilophosaurus_walk"
-    ]
-  },
   "texture_height": 64,
   "texture_width": 64
 }

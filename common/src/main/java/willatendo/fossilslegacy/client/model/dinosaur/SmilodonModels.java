@@ -7,7 +7,7 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class SmilodonModels {
     public static final JsonModel SMILODON_MODEL = SmilodonModels.createSmilodonBodyLayer().withWalkAnimations(FAUtils.resource("smilodon_walk")).withSitAnimations(FAUtils.resource("smilodon_sit")).withHeadPieces("neck").build();
-    public static final JsonModel LEGACY_SMILODON_MODEL = SmilodonModels.createLegacySmilodonBodyLayer().withSitAnimations(BuiltInAnimationTypes.LEGACY_SMILODON_SIT.getId()).withShakeAnimations(BuiltInAnimationTypes.LEGACY_SMILODON_SHAKE.getId()).withTailAnimations(BuiltInAnimationTypes.LEGACY_SMILODON_TAIL.getId()).overrideReset().build();
+    public static final JsonModel LEGACY_SMILODON_MODEL = SmilodonModels.createLegacySmilodonBodyLayer().withWalkAnimations(BuiltInAnimationTypes.LEGACY_SMILODON_WALK.getId()).withSitAnimations(BuiltInAnimationTypes.LEGACY_SMILODON_SIT.getId()).withShakeAnimations(BuiltInAnimationTypes.LEGACY_SMILODON_SHAKE.getId()).withTailAnimations(BuiltInAnimationTypes.LEGACY_SMILODON_TAIL.getId()).overrideReset().build();
 
     private static JsonModel.Builder createSmilodonBodyLayer() {
         JsonModel.Builder builder = JsonModel.builder(64, 64);

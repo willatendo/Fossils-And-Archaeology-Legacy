@@ -15,6 +15,7 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -40,13 +41,12 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.entity.entities.Egg;
-import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
 import willatendo.fossilslegacy.server.entity.goals.DinoEatFromFeederGoal;
 import willatendo.fossilslegacy.server.entity.goals.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goals.DinoOwnerHurtTargetGoal;
@@ -54,7 +54,7 @@ import willatendo.fossilslegacy.server.entity.goals.IchthyosaurusJumpGoal;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
-import willatendo.fossilslegacy.server.tags.FACoatTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 import willatendo.fossilslegacy.server.tags.FAStructureTags;
 
 import javax.annotation.Nullable;
@@ -103,8 +103,8 @@ public class Ichthyosaurus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
-    public TagKey<CoatType> getCoatTypes() {
-        return FACoatTypeTags.ICHTHYOSAURUS;
+    public TagKey<ModelType> getCoatTypes() {
+        return FAModelTypeTags.ICHTHYOSAURUS;
     }
 
     @Override
@@ -303,18 +303,25 @@ public class Ichthyosaurus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, EntitySpawnReason entitySpawnReason, SpawnGroupData spawnGroupData) {
+        this.setAirSupply(this.getMaxAirSupply());
+        this.setXRot(0.0F);
+        return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, entitySpawnReason, spawnGroupData);
+    }
+
+    @Override
     protected SoundEvent getAmbientSound() {
-        return this.getOverridenSoundEvent(SoundEvents.DOLPHIN_AMBIENT, CoatType.OverrideInfo.OverridenSoundType.AMBIENT);
+        return this.getOverridenSoundEvent(SoundEvents.DOLPHIN_AMBIENT, ModelType.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return this.getOverridenSoundEvent(SoundEvents.DOLPHIN_HURT, CoatType.OverrideInfo.OverridenSoundType.HURT);
+        return this.getOverridenSoundEvent(SoundEvents.DOLPHIN_HURT, ModelType.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return this.getOverridenSoundEvent(SoundEvents.DOLPHIN_DEATH, CoatType.OverrideInfo.OverridenSoundType.DEATH);
+        return this.getOverridenSoundEvent(SoundEvents.DOLPHIN_DEATH, ModelType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     public void setTreasurePos(BlockPos blockPos) {
@@ -341,28 +348,30 @@ public class Ichthyosaurus extends Dinosaur implements DinopediaInformation {
         this.entityData.set(MOISTNESS_LEVEL, moistnessLevel);
     }
 
-    public void addAdditionalSaveData(CompoundTag compound) {
-        super.addAdditionalSaveData(compound);
-        compound.putInt("TreasurePosX", this.getTreasurePos().getX());
-        compound.putInt("TreasurePosY", this.getTreasurePos().getY());
-        compound.putInt("TreasurePosZ", this.getTreasurePos().getZ());
-        compound.putBoolean("IsFed", this.isFed());
-        compound.putInt("Moistness", this.getMoistnessLevel());
+    @Override
+    public void addAdditionalSaveData(CompoundTag compoundTag) {
+        super.addAdditionalSaveData(compoundTag);
+        compoundTag.putInt("TreasurePosX", this.getTreasurePos().getX());
+        compoundTag.putInt("TreasurePosY", this.getTreasurePos().getY());
+        compoundTag.putInt("TreasurePosZ", this.getTreasurePos().getZ());
+        compoundTag.putBoolean("IsFed", this.isFed());
+        compoundTag.putInt("Moistness", this.getMoistnessLevel());
     }
 
-    public void readAdditionalSaveData(CompoundTag compound) {
-        super.readAdditionalSaveData(compound);
-        int x = compound.getInt("TreasurePosX");
-        int y = compound.getInt("TreasurePosY");
-        int z = compound.getInt("TreasurePosZ");
+    @Override
+    public void readAdditionalSaveData(CompoundTag compoundTag) {
+        super.readAdditionalSaveData(compoundTag);
+        int x = compoundTag.getInt("TreasurePosX");
+        int y = compoundTag.getInt("TreasurePosY");
+        int z = compoundTag.getInt("TreasurePosZ");
         this.setTreasurePos(new BlockPos(x, y, z));
-        this.setFed(compound.getBoolean("IsFed"));
-        this.setMoisntessLevel(compound.getInt("Moistness"));
+        this.setFed(compoundTag.getBoolean("IsFed"));
+        this.setMoisntessLevel(compoundTag.getInt("Moistness"));
     }
 
     @Override
     public Optional<ResourceKey<DinopediaType>> getDinopediaType() {
-        return Optional.of(FADinopediaTypes.BRACHIOSAURUS);
+        return Optional.of(FADinopediaTypes.ICHTHYOSAURUS);
     }
 
     @Override

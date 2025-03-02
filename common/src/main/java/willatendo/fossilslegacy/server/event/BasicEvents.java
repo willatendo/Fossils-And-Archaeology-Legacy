@@ -29,7 +29,7 @@ import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.block.blocks.SkullBlock;
 import willatendo.fossilslegacy.server.block.cauldron.FACauldronInteraction;
 import willatendo.fossilslegacy.server.block.dispenser.DispenseEntityItemBehavior;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_entry.DinopediaEntry;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -50,6 +50,7 @@ import willatendo.fossilslegacy.server.item.FALootTables;
 import willatendo.fossilslegacy.server.item.FAMapDecorationTypes;
 import willatendo.fossilslegacy.server.item.items.EggItem;
 import willatendo.fossilslegacy.server.jewel_recovery.JewelRecovery;
+import willatendo.fossilslegacy.server.pattern_type.PatternType;
 import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.stats.FAStats;
@@ -212,17 +213,19 @@ public final class BasicEvents {
         newRegistryRegister.register(FABuiltInRegistries.COMMAND_TYPES, FARegistries.COMMAND_TYPES);
         newRegistryRegister.register(FABuiltInRegistries.DINOPEDIA_LINE_TYPES, FARegistries.DINOPEDIA_LINE_TYPE);
         newRegistryRegister.register(FABuiltInRegistries.PREGNANCY_TYPES, FARegistries.PREGNANCY_TYPES);
+        newRegistryRegister.register(FABuiltInRegistries.PATTERN_INFORMATION_TYPES, FARegistries.PATTERN_INFORMATION_TYPE);
     }
 
     public static void newDynamicRegistryEvent(DynamicRegistryRegister dynamicRegistryRegister) {
         dynamicRegistryRegister.register(FARegistries.ANALYZER_RESULT, AnalyzerResult.CODEC);
         dynamicRegistryRegister.register(FARegistries.ANCIENT_AXE_BONUS, AncientAxeBonus.CODEC);
-        dynamicRegistryRegister.register(FARegistries.COAT_TYPES, CoatType.DIRECT_CODEC);
+        dynamicRegistryRegister.register(FARegistries.MODEL_TYPES, ModelType.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.DINOPEDIA_ENTRY, DinopediaEntry.CODEC);
         dynamicRegistryRegister.register(FARegistries.DINOPEDIA_TYPE, DinopediaType.CODEC);
         dynamicRegistryRegister.register(FARegistries.FEEDER_FOOD, FeederFood.CODEC);
         dynamicRegistryRegister.register(FARegistries.FOSSIL_VARIANTS, FossilVariant.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.FUEL_ENTRY, FuelEntry.CODEC);
+        dynamicRegistryRegister.register(FARegistries.PATTERN_TYPES, PatternType.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.JEWEL_RECOVERY, JewelRecovery.CODEC);
         dynamicRegistryRegister.register(FARegistries.STONE_TABLET_VARIANTS, StoneTabletVariant.DIRECT_CODEC);
     }

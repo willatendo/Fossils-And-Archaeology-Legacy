@@ -23,7 +23,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
@@ -37,9 +37,9 @@ import java.util.UUID;
 import java.util.function.Supplier;
 
 public abstract class Egg extends Animal implements TicksToBirth, DinopediaInformation {
-    private static final EntityDataAccessor<Holder<CoatType>> COAT_TYPE = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.COAT_TYPES.get());
-    public static final MapCodec<Holder<CoatType>> VARIANT_MAP_CODEC = CoatType.CODEC.fieldOf("CoatType");
-    public static final Codec<Holder<CoatType>> VARIANT_CODEC = VARIANT_MAP_CODEC.codec();
+    private static final EntityDataAccessor<Holder<ModelType>> COAT_TYPE = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.MODEL_TYPES.get());
+    public static final MapCodec<Holder<ModelType>> VARIANT_MAP_CODEC = ModelType.CODEC.fieldOf("CoatType");
+    public static final Codec<Holder<ModelType>> VARIANT_CODEC = VARIANT_MAP_CODEC.codec();
     private static final EntityDataAccessor<Integer> REMAINING_TIME = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> WARM = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.BOOLEAN);
     protected static final EntityDataAccessor<Optional<UUID>> OWNER = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.OPTIONAL_UUID);
@@ -176,7 +176,7 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(COAT_TYPE, this.registryAccess().lookupOrThrow(FARegistries.COAT_TYPES).getAny().orElseThrow());
+        builder.define(COAT_TYPE, this.registryAccess().lookupOrThrow(FARegistries.MODEL_TYPES).getAny().orElseThrow());
         builder.define(REMAINING_TIME, 0);
         builder.define(WARM, false);
         builder.define(OWNER, Optional.empty());
@@ -242,11 +242,11 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
         this.entityData.set(WARM, warm);
     }
 
-    public Holder<CoatType> getCoatType() {
+    public Holder<ModelType> getCoatType() {
         return this.entityData.get(COAT_TYPE);
     }
 
-    public void setCoatType(Holder<CoatType> coatTypeHolder) {
+    public void setCoatType(Holder<ModelType> coatTypeHolder) {
         this.entityData.set(COAT_TYPE, coatTypeHolder);
     }
 

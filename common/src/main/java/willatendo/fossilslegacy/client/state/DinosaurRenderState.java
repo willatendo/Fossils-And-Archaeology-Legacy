@@ -3,10 +3,10 @@ package willatendo.fossilslegacy.client.state;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.core.Holder;
 import net.minecraft.util.Mth;
-import willatendo.fossilslegacy.server.coat_type.CoatType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 
 public class DinosaurRenderState extends LivingEntityRenderState {
-    public Holder<CoatType> coatType;
+    public Holder<ModelType> modelType;
     public int growthStage;
     public boolean isTame;
     public boolean isOrderedToSit;
@@ -20,6 +20,7 @@ public class DinosaurRenderState extends LivingEntityRenderState {
     public float interestedAngleO;
     public float shakeAnim;
     public float shakeAnimO;
+    public boolean isMoving;
 
     public float getHeadRollAngle(float partialTicks) {
         return Mth.lerp(partialTicks, this.interestedAngleO, this.interestedAngle) * 0.15f * (float) Math.PI;
