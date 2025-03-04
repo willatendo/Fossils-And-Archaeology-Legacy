@@ -9,6 +9,8 @@ import willatendo.simplelibrary.server.util.TagRegister;
 public class FAModelTypeTags {
     private static final TagRegister<ModelType> MODEL_TYPE_TAGS = TagRegister.create(FARegistries.MODEL_TYPES, FAUtils.ID);
 
+    public static final TagKey<ModelType> LOCKED = MODEL_TYPE_TAGS.register("locked");
+
     public static final TagKey<ModelType> ANKYLOSAURUS = MODEL_TYPE_TAGS.register("ankylosaurus");
     public static final TagKey<ModelType> BRACHIOSAURUS = MODEL_TYPE_TAGS.register("brachiosaurus");
     public static final TagKey<ModelType> NON_LEGACY_BRACHIOSAURUS = MODEL_TYPE_TAGS.register("non_legacy/brachiosaurus");

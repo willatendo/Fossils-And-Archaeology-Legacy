@@ -32,12 +32,14 @@ import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Pteranodon;
 import willatendo.fossilslegacy.server.item.FADataComponents;
+import willatendo.fossilslegacy.server.item.data_components.GeneticInformation;
 import willatendo.fossilslegacy.server.item.items.AnimalDNAItem;
 import willatendo.fossilslegacy.server.menu.menus.GeneModificationTableMenu;
 import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.pattern.Pattern;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
+import willatendo.fossilslegacy.server.tags.FAPatternTags;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
@@ -46,12 +48,17 @@ import java.util.Optional;
 public class GeneModificationTableScreen extends AbstractContainerScreen<GeneModificationTableMenu> {
     private static final ResourceLocation TEXTURE = FAUtils.resource("textures/gui/container/gene_modification_table.png");
     private static final ResourceLocation GENE_SPRITE = FAUtils.resource("container/gene_modification_table/gene");
+    private static final ResourceLocation GENETIC_CODE_TAB_SPRITE = FAUtils.resource("container/gene_modification_table/genetic_code_tab");
+    private static final ResourceLocation MODEL_TAB_SPRITE = FAUtils.resource("container/gene_modification_table/model_tab");
     private static final ResourceLocation GENE_SLOT_HIGHLIGHT_BACK_SPRITE = FAUtils.resource("container/gene_slot_highlight_back");
+    public static final ResourceLocation EMPTY_SLOT_DNA = FAUtils.resource("container/slot/dna");
+    public static final ResourceLocation EMPTY_SLOT_GENETIC_CODE = FAUtils.resource("container/slot/genetic_code");
+    private static final ResourceLocation EMPTY_SLOT_GENE = FAUtils.resource("container/slot/gene");
 
     private float xMouse;
     private float yMouse;
-    private ModelType[] modelTypes = null;
-    private Pattern[] patterns = null;
+    private Holder<ModelType>[] modelTypes = null;
+    private Holder<Pattern>[] patterns = null;
     private int modelTypeSelection = 0;
     private int patternSelection = 0;
     private int modelTypeLength = 0;
@@ -78,66 +85,82 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int x, int y) {
         guiGraphics.blit(RenderType::guiTextured, TEXTURE, this.leftPos, this.topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
+        guiGraphics.blitSprite(RenderType::guiTextured, GENETIC_CODE_TAB_SPRITE, this.leftPos + 173, this.topPos, 29, 78);
+        guiGraphics.blitSprite(RenderType::guiTextured, MODEL_TAB_SPRITE, this.leftPos - 118, this.topPos, 120, 185);
+        guiGraphics.blitSprite(RenderType::guiTextured, EMPTY_SLOT_GENE, this.leftPos + 44, this.topPos + 58, 26, 12);
+        guiGraphics.blitSprite(RenderType::guiTextured, EMPTY_SLOT_GENE, this.leftPos + 44, this.topPos + 75, 26, 12);
         Slot slot = this.menu.slots.get(0);
         if (slot.hasItem()) {
             ItemStack itemStack = slot.getItem();
             if (itemStack.getItem() instanceof AnimalDNAItem animalDNAItem) {
                 ClientLevel clientLevel = this.minecraft.level;
-                TagKey<ModelType> applicableCoatTypes = animalDNAItem.getApplicableCoatTypes();
+                TagKey<ModelType> applicableModelTypes = animalDNAItem.getApplicableCoatTypes();
 
-                if (applicableCoatTypes != null) {
+                if (applicableModelTypes != null) {
                     HolderGetter<ModelType> modelTypeHolderGetter = clientLevel.holderLookup(FARegistries.MODEL_TYPES);
-                    HolderSet.Named<ModelType> namedHolderSet = modelTypeHolderGetter.get(applicableCoatTypes).get();
+                    HolderSet.Named<ModelType> namedHolderSet = modelTypeHolderGetter.get(applicableModelTypes).get();
                     List<Holder<ModelType>> filteredHolderSet = Lists.newArrayList();
-                    if (this.getMenu().hasExtraGeneticCode()) {
-                        filteredHolderSet.addAll(namedHolderSet.stream().toList());
-                    } else {
-                        List<Holder<ModelType>> withoutModelTypes = Lists.newArrayList(namedHolderSet.stream().iterator());
-                        withoutModelTypes.removeAll(modelTypeHolderGetter.get(FAModelTypeTags.LEGACY).get().stream().toList());
-                        filteredHolderSet.addAll(withoutModelTypes);
+                    filteredHolderSet.addAll(namedHolderSet.stream().filter(modelTypeHolder -> !modelTypeHolder.is(FAModelTypeTags.LOCKED)).toList());
+
+                    for (int i = 0; i < 3; i++) {
+                        if (this.getMenu().hasExtraGeneticCodeInSlot(i)) {
+                            Slot geneticCodeSlot = this.getMenu().getGeneticCodeInSlot(i);
+                            if (geneticCodeSlot.getItem().has(FADataComponents.GENETIC_INFORMATION.get())) {
+                                GeneticInformation geneticInformation = geneticCodeSlot.getItem().get(FADataComponents.GENETIC_INFORMATION.get());
+                                geneticInformation.carriedModelInformation().ifPresent(carriedModelInformation -> filteredHolderSet.addAll(modelTypeHolderGetter.get(carriedModelInformation).get().stream().filter(modelTypeHolder -> modelTypeHolder.is(applicableModelTypes)).toList()));
+                            }
+                        }
                     }
                     if (!filteredHolderSet.isEmpty()) {
-                        this.modelTypes = new ModelType[this.modelTypeLength = filteredHolderSet.size()];
+                        this.modelTypes = new Holder[this.modelTypeLength = filteredHolderSet.size()];
                         for (int i = 0; i < this.modelTypes.length; i++) {
-                            Holder<ModelType> modelTypeHolder = filteredHolderSet.get(i);
-                            this.modelTypes[i] = modelTypeHolder.value();
+                            this.modelTypes[i] = filteredHolderSet.get(i);
                         }
                     } else {
-                        this.modelTypes = new ModelType[0];
+                        this.modelTypes = new Holder[0];
                         this.modelTypeLength = 0;
                     }
                 } else {
-                    this.modelTypes = new ModelType[0];
+                    this.modelTypes = new Holder[0];
                     this.modelTypeLength = 0;
+                }
+
+                if (this.modelTypeLength <= this.modelTypeSelection) {
+                    this.modelTypeSelection = this.modelTypeLength - 1;
                 }
 
                 if (this.modelTypeLength > 0) {
                     HolderGetter<Pattern> patternHolderGetter = clientLevel.holderLookup(FARegistries.PATTERN);
-                    HolderSet.Named<Pattern> namedHolderSet = patternHolderGetter.get(this.modelTypes[this.modelTypeSelection].patterns()).get();
+                    HolderSet.Named<Pattern> namedHolderSet = patternHolderGetter.get(this.modelTypes[this.modelTypeSelection].value().patterns()).get();
                     List<Holder<Pattern>> filteredHolderSet = Lists.newArrayList();
-                    if (this.getMenu().hasExtraGeneticCode()) {
-                        filteredHolderSet.addAll(namedHolderSet.stream().toList());
-                    } else {
-                        List<Holder<Pattern>> withoutPatterns = Lists.newArrayList(namedHolderSet.stream().iterator());
-                        filteredHolderSet.addAll(withoutPatterns);
+                    filteredHolderSet.addAll(namedHolderSet.stream().filter(modelTypeHolder -> !modelTypeHolder.is(FAPatternTags.LOCKED)).toList());
+
+                    for (int i = 0; i < 3; i++) {
+                        if (this.getMenu().hasExtraGeneticCodeInSlot(i)) {
+                            Slot geneticCodeSlot = this.getMenu().getGeneticCodeInSlot(i);
+                            if (geneticCodeSlot.getItem().has(FADataComponents.GENETIC_INFORMATION.get())) {
+                                GeneticInformation geneticInformation = geneticCodeSlot.getItem().get(FADataComponents.GENETIC_INFORMATION.get());
+                                geneticInformation.carriedPatternInformation().ifPresent(carriedPatternInformation -> filteredHolderSet.addAll(patternHolderGetter.get(carriedPatternInformation).get().stream().toList()));
+                            }
+                        }
                     }
                     if (!filteredHolderSet.isEmpty()) {
-                        this.patterns = new Pattern[this.patternLength = filteredHolderSet.size()];
+                        this.patterns = new Holder[this.patternLength = filteredHolderSet.size()];
                         for (int i = 0; i < this.patterns.length; i++) {
-                            this.patterns[i] = filteredHolderSet.get(i).value();
+                            this.patterns[i] = filteredHolderSet.get(i);
                         }
                     } else {
-                        this.patterns = new Pattern[0];
+                        this.patterns = new Holder[0];
                         this.patternLength = 0;
                     }
                 } else {
-                    this.patterns = new Pattern[0];
+                    this.patterns = new Holder[0];
                     this.patternLength = 0;
                 }
 
                 if (itemStack.has(FADataComponents.MODEL_TYPE.get()) && !this.hasSetModelType) {
                     for (int i = 0; i < this.modelTypes.length; i++) {
-                        if (this.modelTypes[i] == itemStack.get(FADataComponents.MODEL_TYPE.get()).value()) {
+                        if (this.modelTypes[i] == itemStack.get(FADataComponents.MODEL_TYPE.get())) {
                             this.modelTypeSelection = i;
                             this.hasSetModelType = true;
                             break;
@@ -147,12 +170,16 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
 
                 if (itemStack.has(FADataComponents.PATTERN.get()) && !this.hasSetPattern) {
                     for (int i = 0; i < this.patterns.length; i++) {
-                        if (this.patterns[i] == itemStack.get(FADataComponents.PATTERN.get()).value()) {
+                        if (this.patterns[i] == itemStack.get(FADataComponents.PATTERN.get())) {
                             this.patternSelection = i;
                             this.hasSetPattern = true;
                             break;
                         }
                     }
+                }
+
+                if (this.patternLength <= this.patternSelection) {
+                    this.patternSelection = this.patternLength - 1;
                 }
 
                 if (this.modelTypes.length > 0 && this.patterns.length > 0) {
@@ -164,16 +191,16 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
                     if (this.modelTypeSelection >= this.modelTypes.length) {
                         this.modelTypeSelection = 0;
                     }
-                    ModelType selectedModelType = this.modelTypes[this.modelTypeSelection];
+                    ModelType selectedModelType = this.modelTypes[this.modelTypeSelection].value();
                     float modelTypeRed = ((selectedModelType.displayInfo().color() & 0xFF0000) >> 16) / 255.0F;
                     float modelTypeGreen = ((selectedModelType.displayInfo().color() & 0xFF00) >> 8) / 255.0F;
                     float modelTypeBlue = (selectedModelType.displayInfo().color() & 0xFF) / 255.0F;
                     guiGraphics.blitSprite(RenderType::guiTextured, GENE_SPRITE, this.leftPos + 46, this.topPos + 60, 22, 8, ARGB.colorFromFloat(1.0F, modelTypeRed, modelTypeGreen, modelTypeBlue));
                     this.drawCenteredStringNoShadow(guiGraphics, this.font, FAUtils.translation("container", "gene_modification_table.coat_type.location", this.modelTypeSelection + 1, this.modelTypeLength), this.leftPos + 120, this.topPos + 60, 0x404040);
-                    Pattern pattern = this.patterns[this.patternSelection];
-                    float patternTypeRed = ((pattern.geneColor() & 0xFF0000) >> 16) / 255.0F;
-                    float patternTypeGreen = ((pattern.geneColor() & 0xFF00) >> 8) / 255.0F;
-                    float patternTypeBlue = (pattern.geneColor() & 0xFF) / 255.0F;
+                    Pattern selectedPattern = this.patterns[this.patternSelection].value();
+                    float patternTypeRed = ((selectedPattern.geneColor() & 0xFF0000) >> 16) / 255.0F;
+                    float patternTypeGreen = ((selectedPattern.geneColor() & 0xFF00) >> 8) / 255.0F;
+                    float patternTypeBlue = (selectedPattern.geneColor() & 0xFF) / 255.0F;
                     guiGraphics.blitSprite(RenderType::guiTextured, GENE_SPRITE, this.leftPos + 46, this.topPos + 77, 22, 8, ARGB.colorFromFloat(1.0F, patternTypeRed, patternTypeGreen, patternTypeBlue));
                     this.drawCenteredStringNoShadow(guiGraphics, this.font, FAUtils.translation("container", "gene_modification_table.coat_type.location", this.patternSelection + 1, this.patternLength), this.leftPos + 120, this.topPos + 77, 0x404040);
                 }
@@ -187,19 +214,23 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
                 if (mob instanceof Pteranodon pteranodon) {
                     pteranodon.setOnGround(true);
                 }
-                if (mob instanceof Dinosaur dinosaur && this.modelTypes.length > 0) {
-                    ModelType modelType = this.modelTypes[this.modelTypeSelection];
-                    dinosaur.setModelType(Holder.direct(modelType));
-                    ModelType.DisplayInfo displayInfo = modelType.displayInfo();
-                    //  GeneModificationTableScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos + 86, this.topPos + 15, this.leftPos + 131, this.topPos + 53, 16, displayInfo.displayScale(), displayInfo.displayYOffset(), this.xMouse, this.yMouse, mob);
+                if (mob instanceof Dinosaur dinosaur && this.modelTypes.length > 0 && this.patterns.length > 0) {
+                    Holder<ModelType> modelType = this.modelTypes[this.modelTypeSelection];
+                    Holder<Pattern> pattern = this.patterns[this.patternSelection];
+                    dinosaur.setModelType(modelType);
+                    dinosaur.setPattern(pattern);
+                    ModelType.DisplayInfo displayInfo = modelType.value().displayInfo();
+                    GeneModificationTableScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos - 112, this.topPos + 17, this.leftPos - 6, this.topPos + 176, 16, displayInfo.displayScale(), displayInfo.displayYOffset(), this.xMouse, this.yMouse, mob);
                 } else if (!(mob instanceof Dinosaur)) {
-                    //  GeneModificationTableScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos + 86, this.topPos + 15, this.leftPos + 131, this.topPos + 53, 16, 1.0F, 0.25F, this.xMouse, this.yMouse, mob);
+                    GeneModificationTableScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos - 112, this.topPos + 17, this.leftPos - 6, this.topPos + 176, 16, 1.0F, 0.25F, this.xMouse, this.yMouse, mob);
                 }
             }
             if (this.modelTypes.length > 0 && this.patterns.length > 0) {
-                guiGraphics.drawString(this.font, FAUtils.translation("container", "gene_modification_table.navigate_left.tutorial", FAKeys.NAVIGATE_LEFT.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 2, 0xFFFFFF, false);
-                guiGraphics.drawString(this.font, FAUtils.translation("container", "gene_modification_table.navigate_right.tutorial", FAKeys.NAVIGATE_RIGHT.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 10, 0xFFFFFF, false);
-                guiGraphics.drawString(this.font, FAUtils.translation("container", "gene_modification_table.apply_gene.tutorial", FAKeys.APPLY_GENE.getDefaultKey().getDisplayName()), this.leftPos, (this.topPos + this.imageHeight) + 18, 0xFFFFFF, false);
+                guiGraphics.drawString(this.font, FAUtils.translation("container", "gene_modification_table.navigate_left.tutorial", FAKeys.NAVIGATE_LEFT.getDefaultKey().getDisplayName()), this.leftPos + this.imageWidth + 2, this.topPos + 80, 0xFFFFFF, false);
+                guiGraphics.drawString(this.font, FAUtils.translation("container", "gene_modification_table.navigate_right.tutorial", FAKeys.NAVIGATE_RIGHT.getDefaultKey().getDisplayName()), this.leftPos + this.imageWidth + 2, this.topPos + 88, 0xFFFFFF, false);
+                guiGraphics.drawString(this.font, FAUtils.translation("container", "gene_modification_table.navigate_up.tutorial", FAKeys.NAVIGATE_UP.getDefaultKey().getDisplayName()), this.leftPos + this.imageWidth + 2, this.topPos + 96, 0xFFFFFF, false);
+                guiGraphics.drawString(this.font, FAUtils.translation("container", "gene_modification_table.navigate_down.tutorial", FAKeys.NAVIGATE_DOWN.getDefaultKey().getDisplayName()), this.leftPos + this.imageWidth + 2, this.topPos + 104, 0xFFFFFF, false);
+                guiGraphics.drawString(this.font, FAUtils.translation("container", "gene_modification_table.apply_gene.tutorial", FAKeys.APPLY_GENE.getDefaultKey().getDisplayName()), this.leftPos + this.imageWidth + 2, this.topPos + 112, 0xFFFFFF, false);
             } else {
                 this.renderScrollingString(guiGraphics, FAUtils.translation("container", "gene_modification_table.coat_type.no_genome_applicable"), this.leftPos + 8, this.topPos + 47, 0x404040);
             }
@@ -210,13 +241,13 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
             this.hasSetModelType = false;
             this.hasSetPattern = false;
 
-            this.renderScrollingString(guiGraphics, FAUtils.translation("container", "gene_modification_table.insert_dna"), this.leftPos + 8, this.topPos + 47, 0x404040);
+            this.renderScrollingString(guiGraphics, FAUtils.translation("container", "gene_modification_table.insert_dna"), this.leftPos - 22, this.topPos + 47, 0x404040);
         }
     }
 
     private void createEmpty() {
-        this.modelTypes = new ModelType[0];
-        this.patterns = new Pattern[0];
+        this.modelTypes = new Holder[0];
+        this.patterns = new Holder[0];
         this.modelTypeLength = 0;
         this.patternLength = 0;
     }
@@ -228,19 +259,19 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
             RegistryAccess registryAccess = this.minecraft.level.registryAccess();
             if (this.modelTypeLength > 0 && (x >= this.leftPos + 44 && x <= this.leftPos + 69) && (y >= this.topPos + 58 && y <= this.topPos + 69)) {
                 List<Component> tooltip = Lists.newArrayList();
-                tooltip.add(this.modelTypes[this.modelTypeSelection].displayInfo().modelName());
+                tooltip.add(this.modelTypes[this.modelTypeSelection].value().displayInfo().modelName());
                 if (this.minecraft.options.advancedItemTooltips) {
                     Registry<ModelType> modelType = registryAccess.lookupOrThrow(FARegistries.MODEL_TYPES);
-                    tooltip.add(Component.literal(modelType.getKey(this.modelTypes[this.modelTypeSelection]).toString()).withStyle(ChatFormatting.DARK_GRAY));
+                    tooltip.add(Component.literal(modelType.getKey(this.modelTypes[this.modelTypeSelection].value()).toString()).withStyle(ChatFormatting.DARK_GRAY));
                 }
                 guiGraphics.renderTooltip(this.font, tooltip, Optional.empty(), x, y);
             }
             if (this.patternLength > 0 && (x >= this.leftPos + 44 && x <= this.leftPos + 69) && (y >= this.topPos + 75 && y <= this.topPos + 86)) {
                 List<Component> tooltip = Lists.newArrayList();
-                tooltip.add(this.patterns[this.patternSelection].patternName());
+                tooltip.add(this.patterns[this.patternSelection].value().patternName());
                 if (this.minecraft.options.advancedItemTooltips) {
                     Registry<Pattern> pattern = registryAccess.lookupOrThrow(FARegistries.PATTERN);
-                    tooltip.add(Component.literal(pattern.getKey(this.patterns[this.patternSelection]).toString()).withStyle(ChatFormatting.DARK_GRAY));
+                    tooltip.add(Component.literal(pattern.getKey(this.patterns[this.patternSelection].value()).toString()).withStyle(ChatFormatting.DARK_GRAY));
                 }
                 guiGraphics.renderTooltip(this.font, tooltip, Optional.empty(), x, y);
             }
@@ -278,7 +309,7 @@ public class GeneModificationTableScreen extends AbstractContainerScreen<GeneMod
         }
         if (FAKeys.APPLY_GENE.matches(keyCode, scanCode)) {
             if (this.modelTypeLength > 0 && this.patternLength > 0) {
-                FossilsModloaderHelper.INSTANCE.sendApplyGenePacket(this.menu.geneModificationTableBlockEntity.getBlockPos(), this.minecraft.level.registryAccess().lookupOrThrow(FARegistries.MODEL_TYPES).getKey(this.modelTypes[this.modelTypeSelection]).toString(), this.minecraft.level.registryAccess().lookupOrThrow(FARegistries.PATTERN).getKey(this.patterns[this.patternSelection]).toString());
+                FossilsModloaderHelper.INSTANCE.sendApplyGenePacket(this.menu.geneModificationTableBlockEntity.getBlockPos(), this.minecraft.level.registryAccess().lookupOrThrow(FARegistries.MODEL_TYPES).getKey(this.modelTypes[this.modelTypeSelection].value()).toString(), this.minecraft.level.registryAccess().lookupOrThrow(FARegistries.PATTERN).getKey(this.patterns[this.patternSelection].value()).toString());
                 return true;
             }
         }

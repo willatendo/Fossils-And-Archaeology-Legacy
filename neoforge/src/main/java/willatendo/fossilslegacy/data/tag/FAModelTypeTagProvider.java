@@ -16,6 +16,8 @@ public class FAModelTypeTagProvider extends DataDrivenTagsProvider<ModelType> {
 
     @Override
     protected void addTags(Provider provider) {
+        this.tag(FAModelTypeTags.LOCKED).addTag(FAModelTypeTags.LEGACY);
+
         this.tag(FAModelTypeTags.ANKYLOSAURUS).add(FAModelTypes.ANKYLOSAURUS);
         this.tag(FAModelTypeTags.BRACHIOSAURUS).add(FAModelTypes.BRACHIOSAURUS, FAModelTypes.LEGACY_BRACHIOSAURUS);
         this.tag(FAModelTypeTags.NON_LEGACY_BRACHIOSAURUS).add(FAModelTypes.BRACHIOSAURUS);

@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-02T14:10:39.421862	Tags for fossilslegacy:model_types mod id fossilslegacy
+// 1.21.4	2025-03-03T21:23:30.2317014	Tags for fossilslegacy:model_types mod id fossilslegacy
 ad3de5537fb8ec2985f54a52bce1424d00d2b568 data/fossilslegacy/tags/fossilslegacy/model_types/ankylosaurus.json
 4a89352019d0ebcfa8d904f4633809c0489b6ebe data/fossilslegacy/tags/fossilslegacy/model_types/brachiosaurus.json
 d4458bd68a54f0e802f1d08cea118b46da31053e data/fossilslegacy/tags/fossilslegacy/model_types/carnotaurus.json
@@ -12,6 +12,7 @@ d1ccf733d6f2bea65b3f4706dd5ebc7040c3a8ac data/fossilslegacy/tags/fossilslegacy/m
 94a48b9e2f81f5b78aff4505d1496a9c32e77cf9 data/fossilslegacy/tags/fossilslegacy/model_types/ichthyosaurus.json
 19965025e925532f07918e52e0f2c724a693c276 data/fossilslegacy/tags/fossilslegacy/model_types/legacy.json
 5c227c9795607b58e38ad87d49b7631c04888bb5 data/fossilslegacy/tags/fossilslegacy/model_types/legacy_velociraptor.json
+e5ba54fa08be21ca72f89e6c47faa6aec413d384 data/fossilslegacy/tags/fossilslegacy/model_types/locked.json
 4907f7f6e635d6ebd04b9b50fc5693e660041560 data/fossilslegacy/tags/fossilslegacy/model_types/mammoth.json
 87bc0e04f9b4ee759b38a9be0ec6a23e57a6edc0 data/fossilslegacy/tags/fossilslegacy/model_types/moa.json
 839d846a93e1b15a9570646de4c1e101024e5326 data/fossilslegacy/tags/fossilslegacy/model_types/mosasaurus.json

@@ -6,6 +6,10 @@
 - Updated Skull Overlay
 - Skulls Now Block Enderman and Creaking Vision
 - Cleaned Up en_us.json
+- Split Coat Types Into Model Types And Patterns
+- Updated Gene Modification Table's GUI
+- Navigate Left Keybind Now Defaults To Left Arrow
+- Navigate Right Keybind Now Defaults To Right Arrow
 - Added Archaeology Category For Analyzer Recipe Book
 - Added Palaeontology Category For Analyzer Recipe Book
 27/2/2024 1.4.9

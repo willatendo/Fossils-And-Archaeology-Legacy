@@ -239,8 +239,10 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("container.fossilslegacy.gene_modification_table.coat_type.none", "N/A");
         this.add("container.fossilslegacy.gene_modification_table.coat_type.no_genome_applicable", "No Applicable Genome");
         this.add("container.fossilslegacy.gene_modification_table.insert_dna", "Insert DNA");
+        this.add("container.fossilslegacy.gene_modification_table.navigate_down.tutorial", "Use '%s' to navigate down.");
         this.add("container.fossilslegacy.gene_modification_table.navigate_left.tutorial", "Use '%s' to navigate left.");
         this.add("container.fossilslegacy.gene_modification_table.navigate_right.tutorial", "Use '%s' to navigate right.");
+        this.add("container.fossilslegacy.gene_modification_table.navigate_up.tutorial", "Use '%s' to navigate up.");
         this.add("container.fossilslegacy.feeder", "Feeder");
         this.add("container.fossilslegacy.palaeontology_table", "Palaeontology Table");
         this.add("container.fossilslegacy.time_machine", "Time Machine");
@@ -464,7 +466,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.DRYOSAURUS_DNA.get(), "Dryosaurus DNA");
         this.add(FAItems.ELASMOTHERIUM_DNA.get(), "Elasmotherium DNA");
         this.add(FAItems.BARYONYX_DNA.get(), "Baryonyx DNA");
-        this.add("item.fossilslegacy.dna.coat_type", "Coat Type: %s");
+        this.add("item.fossilslegacy.dna.model_type", "Model Type: %s");
+        this.add("item.fossilslegacy.dna.pattern", "Pattern: %s");
         this.add(FAItems.JURASSIC_FERN_DNA.get());
         this.add(FAItems.LEPIDODENDRON_DNA.get());
         this.add(FAItems.SIGILLARIA_DNA.get());

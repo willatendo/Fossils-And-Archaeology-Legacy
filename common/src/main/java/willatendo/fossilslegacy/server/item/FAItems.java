@@ -137,7 +137,7 @@ public final class FAItems {
     public static final SimpleHolder<BucketFoodItem> COOKED_BERRY_MEDLEY_BUCKET = FAItems.register("cooked_berry_medley_bucket", properties -> new BucketFoodItem(properties.stacksTo(1).craftRemainder(Items.BUCKET).food(FAFoods.COOKED_BERRY_MEDLEY_BUCKET)));
     public static final SimpleHolder<ChickenEssanceBottleItem> CHICKEN_ESSENCE_BOTTLE = FAItems.register("chicken_essence_bottle", properties -> new ChickenEssanceBottleItem(properties.stacksTo(16).food(FAFoods.CHICKEN_ESSENCE)));
     public static final SimpleHolder<DrinkingGlassBottleItem> ROMANTIC_CONCOCTION_BOTTLE = FAItems.register("romantic_concoction_bottle", properties -> new DrinkingGlassBottleItem(properties.stacksTo(16).food(FAFoods.ROMANTIC_CONCOCTION)));
-    public static final SimpleHolder<GeneticCodeItem> LEGACY_GENETIC_CODE = FAItems.register("legacy_genetic_code", properties -> new GeneticCodeItem(FAModelTypeTags.LEGACY, properties.stacksTo(1).rarity(Rarity.RARE)));
+    public static final SimpleHolder<GeneticCodeItem> LEGACY_GENETIC_CODE = FAItems.register("legacy_genetic_code", properties -> GeneticCodeItem.modelGeneticCode(FAModelTypeTags.LEGACY, properties.stacksTo(1).rarity(Rarity.RARE)));
     public static final SimpleHolder<Item> NAUTILUS_SHELL = FAItems.register("nautilus_shell", properties -> new Item(properties.stacksTo(1)));
     public static final SimpleHolder<MagicConchItem> MAGIC_CONCH = FAItems.register("magic_conch", properties -> new MagicConchItem(properties.stacksTo(1)));
     public static final SimpleHolder<FrozenMeatItem> FROZEN_MEAT = FAItems.register("frozen_meat", properties -> new FrozenMeatItem(FAToolMaterials.ICED_MEAT, 3, -2.4F, properties));

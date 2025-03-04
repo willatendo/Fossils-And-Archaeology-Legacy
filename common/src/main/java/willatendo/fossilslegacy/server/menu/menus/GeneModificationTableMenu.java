@@ -2,12 +2,16 @@ package willatendo.fossilslegacy.server.menu.menus;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.Nullable;
+import willatendo.fossilslegacy.client.screen.GeneModificationTableScreen;
 import willatendo.fossilslegacy.server.block.blocks.GeneModificationBlock;
 import willatendo.fossilslegacy.server.block.entity.entities.GeneModificationTableBlockEntity;
 import willatendo.fossilslegacy.server.item.items.DNAItem;
@@ -39,13 +43,19 @@ public class GeneModificationTableMenu extends AbstractContainerMenu {
             public boolean mayPlace(ItemStack itemStack) {
                 return itemStack.getItem() instanceof DNAItem;
             }
+
+            @Nullable
+            @Override
+            public ResourceLocation getNoItemIcon() {
+                return GeneModificationTableScreen.EMPTY_SLOT_DNA;
+            }
         });
 
         this.addSlot(new ResultSlot(this.player, geneModificationTableBlockEntity, 1, 68, 22));
 
-        this.geneticSlots[0] = this.addSlot(new GeneticCodeSlot(geneModificationTableBlockEntity, 2, 144, 8));
-        this.geneticSlots[1] = this.addSlot(new GeneticCodeSlot(geneModificationTableBlockEntity, 3, 144, 26));
-        this.geneticSlots[2] = this.addSlot(new GeneticCodeSlot(geneModificationTableBlockEntity, 4, 144, 44));
+        this.geneticSlots[0] = this.addSlot(new GeneticCodeSlot(geneModificationTableBlockEntity, 2, 178, 18));
+        this.geneticSlots[1] = this.addSlot(new GeneticCodeSlot(geneModificationTableBlockEntity, 3, 178, 36));
+        this.geneticSlots[2] = this.addSlot(new GeneticCodeSlot(geneModificationTableBlockEntity, 4, 178, 54));
 
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 9; column++) {
@@ -66,12 +76,12 @@ public class GeneModificationTableMenu extends AbstractContainerMenu {
         this(windowId, inventory, (GeneModificationTableBlockEntity) inventory.player.level().getBlockEntity(blockPos));
     }
 
-    public boolean hasExtraGeneticCode() {
-        return this.hasExtraGeneticCodeInSlot(0) || this.hasExtraGeneticCodeInSlot(1) || this.hasExtraGeneticCodeInSlot(2);
+    public boolean hasExtraGeneticCodeInSlot(int slot) {
+        return this.geneticSlots[slot] != null && this.geneticSlots[slot].hasItem();
     }
 
-    private boolean hasExtraGeneticCodeInSlot(int slot) {
-        return this.geneticSlots[slot] != null && this.geneticSlots[slot].hasItem();
+    public Slot getGeneticCodeInSlot(int slot) {
+        return this.geneticSlots[slot];
     }
 
     @Override

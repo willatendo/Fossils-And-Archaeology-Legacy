@@ -1,6 +1,7 @@
 package willatendo.fossilslegacy.server.tags;
 
 import net.minecraft.tags.TagKey;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.pattern.Pattern;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
@@ -8,6 +9,8 @@ import willatendo.simplelibrary.server.util.TagRegister;
 
 public class FAPatternTags {
     private static final TagRegister<Pattern> PATTERN_TAGS = TagRegister.create(FARegistries.PATTERN, FAUtils.ID);
+
+    public static final TagKey<Pattern> LOCKED = PATTERN_TAGS.register("locked");
 
     public static final TagKey<Pattern> ANKYLOSAURUS_2024 = PATTERN_TAGS.register("ankylosaurus_2024");
     public static final TagKey<Pattern> BRACHIOSAURUS_2024 = PATTERN_TAGS.register("brachiosaurus_2024");
