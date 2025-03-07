@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:ankylosaurus"
   },
-  "patterns": "fossilslegacy:ankylosaurus_2024"
+  "patterns": "fossilslegacy:patterns/ankylosaurus_2024",
+  "skins": "fossilslegacy:skins/ankylosaurus_2024"
 }

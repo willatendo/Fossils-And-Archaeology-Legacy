@@ -2,8 +2,8 @@ package willatendo.fossilslegacy.data.tag;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
-import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.model_type.FAModelTypes;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 

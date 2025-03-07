@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:dimetrodon"
   },
-  "patterns": "fossilslegacy:dimetrodon_2024"
+  "patterns": "fossilslegacy:patterns/dimetrodon_2024",
+  "skins": "fossilslegacy:skins/dimetrodon_2024"
 }

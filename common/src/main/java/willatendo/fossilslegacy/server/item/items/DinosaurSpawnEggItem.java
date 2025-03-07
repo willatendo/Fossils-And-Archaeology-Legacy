@@ -78,15 +78,16 @@ public class DinosaurSpawnEggItem extends SpawnEggItem {
                         dinosaur.setGrowthStage(0);
                     }
                 }
-                entity.setPos((double) placeBlockPos.getX() + 0.5, placeBlockPos.getY(), (double) placeBlockPos.getZ() + 0.5);
-                double yOffset = DinosaurSpawnEggItem.getYOffset(serverLevel, blockPos, !Objects.equals(blockPos, placeBlockPos) && direction == Direction.UP, entity.getBoundingBox());
-                entity.moveTo((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + yOffset, (double) blockPos.getZ() + 0.5D, Mth.wrapDegrees(serverLevel.random.nextFloat() * 360.0f), 0.0f);
                 if (entity instanceof Mob mob) {
                     mob.yHeadRot = mob.getYRot();
                     mob.yBodyRot = mob.getYRot();
                     mob.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(mob.blockPosition()), EntitySpawnReason.SPAWN_ITEM_USE, null);
                     mob.playAmbientSound();
                 }
+                entity.setPos((double) placeBlockPos.getX() + 0.5, placeBlockPos.getY(), (double) placeBlockPos.getZ() + 0.5);
+                double yOffset = DinosaurSpawnEggItem.getYOffset(serverLevel, blockPos, !Objects.equals(blockPos, placeBlockPos) && direction == Direction.UP, entity.getBoundingBox());
+                entity.moveTo((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + yOffset, (double) blockPos.getZ() + 0.5D, Mth.wrapDegrees(serverLevel.random.nextFloat() * 360.0f), 0.0f);
+
                 level.addFreshEntity(entity);
                 if (entity != null) {
                     itemStack.shrink(1);

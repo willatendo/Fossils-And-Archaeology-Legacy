@@ -14,12 +14,13 @@ import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
 import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
+import java.util.Optional;
 import java.util.function.Supplier;
 
 public class FossilsNeoforgeHelper implements FossilsModloaderHelper {
     @Override
-    public void sendApplyGenePacket(BlockPos blockPos, String modelType, String pattern) {
-        PacketDistributor.sendToServer(new ServerboundApplyGenePacket(blockPos, modelType, pattern));
+    public void sendApplyGenePacket(BlockPos blockPos, String modelType, String skin, Optional<String> pattern) {
+        PacketDistributor.sendToServer(new ServerboundApplyGenePacket(blockPos, modelType, skin, pattern));
     }
 
     @Override

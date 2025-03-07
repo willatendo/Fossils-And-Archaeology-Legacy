@@ -13,9 +13,8 @@ import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 import willatendo.fossilslegacy.server.fuel.FuelEntry;
 import willatendo.fossilslegacy.server.jewel_recovery.JewelRecovery;
 import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.Pattern;
-import willatendo.fossilslegacy.server.pattern_type.PatternType;
-import willatendo.fossilslegacy.server.pattern_type.information.PatternInformationType;
+import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
+import willatendo.fossilslegacy.server.pattern.information.PatternInformationType;
 import willatendo.fossilslegacy.server.pregnancy_types.PregnancyType;
 import willatendo.fossilslegacy.server.stone_tablet_variant.StoneTabletVariant;
 import willatendo.fossilslegacy.server.utils.FAUtils;
@@ -34,7 +33,6 @@ public final class FARegistries {
     public static final ResourceKey<Registry<ModelType>> MODEL_TYPES = ResourceKey.createRegistryKey(FAUtils.resource("model_types"));
     public static final ResourceKey<Registry<Pattern>> PATTERN = ResourceKey.createRegistryKey(FAUtils.resource("pattern"));
     public static final ResourceKey<Registry<PatternInformationType<?>>> PATTERN_INFORMATION_TYPE = ResourceKey.createRegistryKey(FAUtils.resource("pattern_information_type"));
-    public static final ResourceKey<Registry<PatternType>> PATTERN_TYPES = ResourceKey.createRegistryKey(FAUtils.resource("pattern_types"));
     public static final ResourceKey<Registry<PregnancyType>> PREGNANCY_TYPES = ResourceKey.createRegistryKey(FAUtils.resource("pregnancy_types"));
     public static final ResourceKey<Registry<StoneTabletVariant>> STONE_TABLET_VARIANTS = ResourceKey.createRegistryKey(FAUtils.resource("stone_tablet_variants"));
 }

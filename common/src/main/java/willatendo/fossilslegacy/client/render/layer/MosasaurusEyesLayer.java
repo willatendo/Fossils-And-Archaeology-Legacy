@@ -8,18 +8,27 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import willatendo.fossilslegacy.client.render.DataDrivenModelMobRenderer;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
+import willatendo.fossilslegacy.client.state.MammothRenderState;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Mosasaurus;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Mammoth;
+import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 
 public class MosasaurusEyesLayer extends RenderLayer<DinosaurRenderState, EntityModel<DinosaurRenderState>> {
-    public MosasaurusEyesLayer(RenderLayerParent<DinosaurRenderState, EntityModel<DinosaurRenderState>> renderLayerParent) {
-        super(renderLayerParent);
+    private DataDrivenModelMobRenderer<Mosasaurus, DinosaurRenderState> dataDrivenModelMobRenderer;
+
+    public MosasaurusEyesLayer(DataDrivenModelMobRenderer<Mosasaurus, DinosaurRenderState> dataDrivenModelMobRenderer) {
+        super(dataDrivenModelMobRenderer);
+        this.dataDrivenModelMobRenderer = dataDrivenModelMobRenderer;
     }
 
     @Override
     public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks, DinosaurRenderState dinosaurRenderState, float packedLight, float packedOverlay) {
-        if (dinosaurRenderState.pattern.value().hasEyeTexture()) {
-            VertexConsumer vertexconsumer = multiBufferSource.getBuffer(RenderType.eyes(dinosaurRenderState.pattern.value().getEyeTexture()));
-            this.getParentModel().renderToBuffer(poseStack, vertexconsumer, 15728640, OverlayTexture.NO_OVERLAY);
+        Pattern skin = dinosaurRenderState.skin.value();
+        if (this.dataDrivenModelMobRenderer.hasEyeTexture(skin)) {
+            VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.eyes(this.dataDrivenModelMobRenderer.getEyeTexture(skin)));
+            this.getParentModel().renderToBuffer(poseStack, vertexConsumer, 15728640, OverlayTexture.NO_OVERLAY);
         }
     }
 }

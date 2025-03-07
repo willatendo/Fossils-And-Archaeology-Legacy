@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:legacy_mammoth"
   },
-  "patterns": "fossilslegacy:mammoth_2011"
+  "patterns": "fossilslegacy:patterns/mammoth_2011",
+  "skins": "fossilslegacy:skins/mammoth_2011"
 }

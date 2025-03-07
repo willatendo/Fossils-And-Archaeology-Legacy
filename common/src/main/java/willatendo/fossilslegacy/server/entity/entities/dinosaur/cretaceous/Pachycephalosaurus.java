@@ -11,7 +11,6 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -22,9 +21,10 @@ import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
-import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
+import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 
 import java.util.Optional;
 
@@ -53,7 +53,7 @@ public class Pachycephalosaurus extends Dinosaur implements DinopediaInformation
     }
 
     @Override
-    public TagKey<ModelType> getCoatTypes() {
+    public TagKey<ModelType> getModelTypes() {
         return FAModelTypeTags.PACHYCEPHALOSAURUS;
     }
 

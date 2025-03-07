@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-02T13:55:26.2961175	Loot Tables
+// 1.21.4	2025-03-07T08:32:01.5513689	Loot Tables
 6b196aa6cdadbe968410835a209fed7ad992066f data/fossilslegacy/loot_table/archaeology/inca_loot.json
 5fcf811a958fcf132678d4423a7472c475c2b8ca data/fossilslegacy/loot_table/blocks/analyzer.json
 8bfc811efa599c9be09afe46481ec9ebbf5f3a33 data/fossilslegacy/loot_table/blocks/archaeology_workbench.json
@@ -26,11 +26,11 @@ eca955ecae17d83fe5fffb6fc912d6c5b0d7abc9 data/fossilslegacy/loot_table/blocks/ca
 1ef562e5450dfc715bc1146401f29fa833f4112b data/fossilslegacy/loot_table/blocks/copper_llama_statue.json
 e3aad3f3d4d39f81b296670aae0d98c0f8f8adf9 data/fossilslegacy/loot_table/blocks/cyan_cultivator.json
 50ed177cfe47d170f3f1e2d5bc891c3a3f946d7e data/fossilslegacy/loot_table/blocks/deepslate_fossil_ore.json
+dcf95c66dd11f437aafab0d5b2d252a6f766de37 data/fossilslegacy/loot_table/blocks/dna_recombinator.json
 6da1931da9a56e5e2575fa925a70356f055b9406 data/fossilslegacy/loot_table/blocks/drum.json
 fc5e8b4277b1b2e38b921f4e8eab51edc3163465 data/fossilslegacy/loot_table/blocks/exposed_copper_llama_statue.json
 424d25d17373ea39dd8c45c4d09c0deb2dc93da4 data/fossilslegacy/loot_table/blocks/feeder.json
 b0b1ddb4567604141c5194a45f61ec12fda1a556 data/fossilslegacy/loot_table/blocks/fossil_ore.json
-20251227a387c27096fbe90aec65b5d05f2ee2d9 data/fossilslegacy/loot_table/blocks/gene_modification_table.json
 5a5c0597fe95a5c8e5a9cd38f139d6618ff96702 data/fossilslegacy/loot_table/blocks/gray_cultivator.json
 b6ed5d71db5ec39567c87149215623740fb93db8 data/fossilslegacy/loot_table/blocks/green_cultivator.json
 5a4c71c352394e29742b1e628f81b4f0a0527065 data/fossilslegacy/loot_table/blocks/iced_stone.json

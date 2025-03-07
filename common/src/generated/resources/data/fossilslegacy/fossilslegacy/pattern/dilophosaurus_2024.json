@@ -1,11 +1,14 @@
 {
   "gene_color": 16777215,
-  "pattern_name": {
-    "translate": "pattern.fossilslegacy.inland_taipan"
+  "genetic_type": "dominant",
+  "pattern_information": {
+    "type": "fossilslegacy:package",
+    "textures": {
+      "aggressive": "fossilslegacy:textures/entity/dilophosaurus/aggressive_dilophosaurus_adult.png",
+      "base": "fossilslegacy:textures/entity/dilophosaurus/dilophosaurus_adult.png"
+    }
   },
-  "pattern_type": "fossilslegacy:basic",
-  "textures": {
-    "aggressive": "fossilslegacy:textures/entity/dilophosaurus/aggressive_dilophosaurus_adult.png",
-    "base": "fossilslegacy:textures/entity/dilophosaurus/dilophosaurus_adult.png"
+  "pattern_name": {
+    "translate": "skin.fossilslegacy.inland_taipan"
   }
 }

@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:legacy_carnotaurus"
   },
-  "patterns": "fossilslegacy:carnotaurus_2011"
+  "patterns": "fossilslegacy:patterns/carnotaurus_2011",
+  "skins": "fossilslegacy:skins/carnotaurus_2011"
 }

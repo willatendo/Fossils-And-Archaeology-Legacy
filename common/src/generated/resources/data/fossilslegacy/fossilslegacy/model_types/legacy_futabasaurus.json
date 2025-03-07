@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:legacy_futabasaurus"
   },
-  "patterns": "fossilslegacy:futabasaurus_2011"
+  "patterns": "fossilslegacy:patterns/futabasaurus_2011",
+  "skins": "fossilslegacy:skins/futabasaurus_2011"
 }

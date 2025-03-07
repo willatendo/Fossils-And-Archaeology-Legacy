@@ -23,5 +23,6 @@
     "knocked_out_model": "fossilslegacy:legacy_knocked_out_tyrannosaurus",
     "model": "fossilslegacy:legacy_tyrannosaurus"
   },
-  "patterns": "fossilslegacy:tyrannosaurus_2011"
+  "patterns": "fossilslegacy:patterns/tyrannosaurus_2011",
+  "skins": "fossilslegacy:skins/tyrannosaurus_2011"
 }

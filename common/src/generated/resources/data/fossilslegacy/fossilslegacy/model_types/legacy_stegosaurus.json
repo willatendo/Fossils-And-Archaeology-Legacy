@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:legacy_stegosaurus"
   },
-  "patterns": "fossilslegacy:stegosaurus_2011"
+  "patterns": "fossilslegacy:patterns/stegosaurus_2011",
+  "skins": "fossilslegacy:skins/stegosaurus_2011"
 }

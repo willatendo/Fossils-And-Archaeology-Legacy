@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:moa"
   },
-  "patterns": "fossilslegacy:moa_2024"
+  "patterns": "fossilslegacy:patterns/moa_2024",
+  "skins": "fossilslegacy:skins/moa_2024"
 }

@@ -26,11 +26,12 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.DataDrivenCosmetic
 import willatendo.fossilslegacy.server.entity.util.interfaces.TamesOnBirth;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.Pattern;
+import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 
 public class ThrownAnimalEgg extends ThrowableItemProjectile implements DataDrivenCosmetics {
     private EntityType<? extends Animal> animal;
     private Holder<ModelType> modelType;
+    private Holder<Pattern> skin;
     private Holder<Pattern> pattern;
     private boolean incubated;
 
@@ -60,6 +61,16 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements DataDriv
     @Override
     public Holder<ModelType> getModelType() {
         return this.modelType;
+    }
+
+    @Override
+    public void setSkin(Holder<Pattern> pattern) {
+        this.skin = pattern;
+    }
+
+    @Override
+    public Holder<Pattern> getSkin() {
+        return this.skin;
     }
 
     @Override
@@ -101,9 +112,12 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements DataDriv
                 for (int animals = 0; animals < i; ++animals) {
                     Animal animalToSpawn = this.animal.create(this.level(), EntitySpawnReason.TRIGGERED);
                     animalToSpawn.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
-                    if (animalToSpawn instanceof DataDrivenCosmetics dataDrivenCosmetics && this.modelType != null && this.pattern != null) {
+                    if (animalToSpawn instanceof DataDrivenCosmetics dataDrivenCosmetics && this.modelType != null && this.skin != null) {
                         dataDrivenCosmetics.setModelType(this.modelType);
-                        dataDrivenCosmetics.setPattern(this.pattern);
+                        dataDrivenCosmetics.setSkin(this.skin);
+                        if (this.pattern != null) {
+                            dataDrivenCosmetics.setPattern(this.pattern);
+                        }
                     }
                     if (animalToSpawn instanceof Dinosaur dinosaur) {
                         dinosaur.setGrowthStage(0);
@@ -136,8 +150,12 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements DataDriv
         super.addAdditionalSaveData(compoundTag);
         compoundTag.putString("EntityType", BuiltInRegistries.ENTITY_TYPE.getKey(this.animal).toString());
         compoundTag.putBoolean("Incubated", this.incubated);
-        if (this.modelType != null && this.pattern != null) {
+        if (this.modelType != null && this.skin != null) {
             this.addCosmeticsData(compoundTag);
+        }
+
+        if (this.pattern != null) {
+            this.addPatternData(compoundTag);
         }
     }
 
@@ -146,7 +164,7 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements DataDriv
         super.readAdditionalSaveData(compoundTag);
         this.animal = (EntityType<? extends Animal>) BuiltInRegistries.ENTITY_TYPE.getValue(ResourceLocation.parse(compoundTag.getString("EntityType")));
         this.incubated = compoundTag.getBoolean("Incubated");
-        if (compoundTag.contains("model_type") && compoundTag.contains("pattern")) {
+        if (compoundTag.contains("model_type") && compoundTag.contains("skin")) {
             this.readCosmeticsData(compoundTag);
         }
     }

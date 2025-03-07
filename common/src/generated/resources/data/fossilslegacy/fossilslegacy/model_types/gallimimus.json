@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:gallimimus"
   },
-  "patterns": "fossilslegacy:gallimimus_2024"
+  "patterns": "fossilslegacy:patterns/gallimimus_2024",
+  "skins": "fossilslegacy:skins/gallimimus_2024"
 }

@@ -22,7 +22,7 @@ import willatendo.fossilslegacy.server.item.FAMapDecorationTypes;
 import willatendo.fossilslegacy.server.level.FAGameRules;
 import willatendo.fossilslegacy.server.loot.FALootPoolEntryTypes;
 import willatendo.fossilslegacy.server.menu.FAMenuTypes;
-import willatendo.fossilslegacy.server.pattern_type.FAPatternInformationTypes;
+import willatendo.fossilslegacy.server.pattern.FAPatternInformationTypes;
 import willatendo.fossilslegacy.server.pregnancy_types.FAPregnancyTypes;
 import willatendo.fossilslegacy.server.recipe.FARecipeDisplays;
 import willatendo.fossilslegacy.server.recipe.FARecipeSerialisers;

@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.BoatDispenseItemBehavior;
 import net.minecraft.core.dispenser.OptionalDispenseItemBehavior;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.animal.*;
@@ -29,7 +30,7 @@ import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.block.blocks.SkullBlock;
 import willatendo.fossilslegacy.server.block.cauldron.FACauldronInteraction;
 import willatendo.fossilslegacy.server.block.dispenser.DispenseEntityItemBehavior;
-import willatendo.fossilslegacy.server.model_type.ModelType;
+import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.dinopedia_entry.DinopediaEntry;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -50,8 +51,8 @@ import willatendo.fossilslegacy.server.item.FALootTables;
 import willatendo.fossilslegacy.server.item.FAMapDecorationTypes;
 import willatendo.fossilslegacy.server.item.items.EggItem;
 import willatendo.fossilslegacy.server.jewel_recovery.JewelRecovery;
-import willatendo.fossilslegacy.server.pattern.Pattern;
-import willatendo.fossilslegacy.server.pattern_type.PatternType;
+import willatendo.fossilslegacy.server.model_type.ModelType;
+import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.stats.FAStats;
@@ -227,7 +228,6 @@ public final class BasicEvents {
         dynamicRegistryRegister.register(FARegistries.FOSSIL_VARIANTS, FossilVariant.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.FUEL_ENTRY, FuelEntry.CODEC);
         dynamicRegistryRegister.register(FARegistries.PATTERN, Pattern.DIRECT_CODEC);
-        dynamicRegistryRegister.register(FARegistries.PATTERN_TYPES, PatternType.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.JEWEL_RECOVERY, JewelRecovery.CODEC);
         dynamicRegistryRegister.register(FARegistries.STONE_TABLET_VARIANTS, StoneTabletVariant.DIRECT_CODEC);
     }
@@ -339,5 +339,11 @@ public final class BasicEvents {
         structurePoolModification.add(structurePoolModification.getTemplatePoolRegistry(), structurePoolModification.getProcessorListRegistry(), structurePoolModification.getSnowyPoolLocation(), "fossilslegacy:village/plains/houses/snowy_archaeology_hut", 10);
         structurePoolModification.add(structurePoolModification.getTemplatePoolRegistry(), structurePoolModification.getProcessorListRegistry(), structurePoolModification.getTaigaPoolLocation(), "fossilslegacy:village/taiga/houses/taiga_dig_site", 10);
         structurePoolModification.add(structurePoolModification.getTemplatePoolRegistry(), structurePoolModification.getProcessorListRegistry(), structurePoolModification.getTaigaPoolLocation(), "fossilslegacy:village/plains/houses/taiga_archaeology_hut", 10);
+    }
+
+    public static void idModification(IdModification idModification) {
+        idModification.updateId(BuiltInRegistries.ITEM, FAUtils.resource("gene_modification_table"), FAItems.DNA_RECOMBINATOR::get);
+        idModification.updateId(BuiltInRegistries.BLOCK, FAUtils.resource("gene_modification_table"), FABlocks.DNA_RECOMBINATOR::get);
+        idModification.updateId(BuiltInRegistries.BLOCK_ENTITY_TYPE, FAUtils.resource("gene_modification_table"), FABlockEntityTypes.DNA_RECOMBINATOR::get);
     }
 }

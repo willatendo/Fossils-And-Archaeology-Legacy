@@ -12,6 +12,7 @@ import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
 import willatendo.fossilslegacy.client.FASearchRecipeBookCategory;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.feature.FAPlacedFeatures;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.event.modification.*;
 import willatendo.simplelibrary.server.event.registry.FabricAttributeRegister;
 import willatendo.simplelibrary.server.event.registry.FabricDynamicRegistryRegister;
@@ -41,6 +42,7 @@ public class ModEvents {
         BasicEvents.heroOfTheVillageGiftSetup(new FabricHeroOfTheVillageGiftModification());
         BasicEvents.oxidationSetup(new FabricOxidationModification());
         BasicEvents.waxableSetup(new FabricWaxableModification());
+        BasicEvents.idModification(new FabricIdModification(FAUtils.ID));
         for (FASearchRecipeBookCategory category : FASearchRecipeBookCategory.values()) {
             SEARCH_TABS.put(category, category.includedCategories().stream().flatMap(recipeBookCategory -> SEARCH_TABS.getOrDefault(category, List.of()).stream()).collect(ImmutableList.toImmutableList()));
         }

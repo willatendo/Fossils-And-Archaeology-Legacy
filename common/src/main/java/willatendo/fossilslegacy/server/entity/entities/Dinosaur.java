@@ -39,8 +39,10 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.level.FAGameRules;
 import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.Pattern;
+import willatendo.fossilslegacy.server.pattern.FAPatterns;
+import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 import willatendo.fossilslegacy.server.registry.FARegistries;
+import willatendo.fossilslegacy.server.tags.FAPatternTags;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.Optional;
@@ -48,6 +50,7 @@ import java.util.UUID;
 
 public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, CommandableEntity, DaysAliveAccessor, GrowingEntity, HungerAccessor, OwnableEntity, SimpleRegistryAccessAccessor, TamesOnBirth, TameAccessor, TamedSpeakingEntity {
     private static final EntityDataAccessor<Holder<ModelType>> MODEL_TYPE = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.MODEL_TYPES.get());
+    private static final EntityDataAccessor<Holder<Pattern>> SKIN = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.PATTERN.get());
     private static final EntityDataAccessor<Holder<Pattern>> PATTERN = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.PATTERN.get());
     private static final EntityDataAccessor<Holder<CommandType>> COMMAND = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.COMMAND_TYPES.get());
     private static final EntityDataAccessor<Integer> DAYS_ALIVE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
@@ -65,7 +68,7 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
         return levelAccessor.getBlockState(blockPos.below()).is(spawnableBlocks) && flag;
     }
 
-    public abstract TagKey<ModelType> getCoatTypes();
+    public abstract TagKey<ModelType> getModelTypes();
 
     public abstract Diet getDiet();
 
@@ -100,8 +103,19 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
 
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, EntitySpawnReason entitySpawnReason, SpawnGroupData spawnGroupData) {
-        HolderLookup<ModelType> coatType = serverLevelAccessor.holderLookup(FARegistries.MODEL_TYPES);
-        this.setModelType(coatType.getOrThrow(this.getCoatTypes()).getRandomElement(this.getRandom()).get());
+        HolderLookup<ModelType> modelTypes = serverLevelAccessor.holderLookup(FARegistries.MODEL_TYPES);
+        Holder<ModelType> modelType = modelTypes.getOrThrow(this.getModelTypes()).getRandomElement(this.getRandom()).get();
+        this.setModelType(modelType);
+        HolderLookup<Pattern> patterns = serverLevelAccessor.holderLookup(FARegistries.PATTERN);
+        Holder<Pattern> skin = patterns.getOrThrow(modelType.value().skins()).getRandomElement(this.getRandom()).get();
+        this.setSkin(skin);
+        if (skin.is(FAPatternTags.HAS_PATTERNS) && serverLevelAccessor.getRandom().nextInt(4) == 1) {
+            Holder<Pattern> pattern = patterns.getOrThrow(modelType.value().patterns()).getRandomElement(this.getRandom()).get();
+            this.setPattern(pattern);
+        } else {
+            this.setPattern(patterns.getOrThrow(FAPatterns.BLANK));
+        }
+
         this.setHunger(this.getMaxHunger());
         if (EntitySpawnReason.isSpawner(entitySpawnReason) || entitySpawnReason == EntitySpawnReason.COMMAND || entitySpawnReason == EntitySpawnReason.MOB_SUMMONED || entitySpawnReason == EntitySpawnReason.NATURAL || entitySpawnReason == EntitySpawnReason.CHUNK_GENERATION) {
             this.setGrowthStage(this.getMaxGrowthStage());
@@ -330,7 +344,8 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
         builder.define(MODEL_TYPE, this.registryAccess().lookupOrThrow(FARegistries.MODEL_TYPES).getAny().orElseThrow());
-        builder.define(PATTERN, this.registryAccess().lookupOrThrow(FARegistries.PATTERN).getAny().orElseThrow());
+        builder.define(SKIN, this.registryAccess().lookupOrThrow(FARegistries.PATTERN).getAny().orElseThrow());
+        builder.define(PATTERN, this.registryAccess().lookupOrThrow(FARegistries.PATTERN).getAny().orElse(this.level().holderLookup(FARegistries.PATTERN).getOrThrow(FAPatterns.BLANK)));
         builder.define(COMMAND, this.registryAccess().lookupOrThrow(FARegistries.COMMAND_TYPES).getAny().orElseThrow());
         builder.define(GROWTH_STAGE, 0);
         builder.define(DAYS_ALIVE, 0);
@@ -422,6 +437,16 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
     }
 
     @Override
+    public Holder<Pattern> getSkin() {
+        return this.entityData.get(SKIN);
+    }
+
+    @Override
+    public void setSkin(Holder<Pattern> pattern) {
+        this.entityData.set(SKIN, pattern);
+    }
+
+    @Override
     public Holder<Pattern> getPattern() {
         return this.entityData.get(PATTERN);
     }
@@ -440,6 +465,9 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
         }
 
         this.addCosmeticsData(compoundTag);
+        if (this.getPattern() != null) {
+            this.addPatternData(compoundTag);
+        }
         this.addCommandType(compoundTag);
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
         compoundTag.putInt("Hunger", this.getHunger());
@@ -467,6 +495,9 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
         }
 
         this.readCosmeticsData(compoundTag);
+        if (this.getPattern() != null) {
+            this.addPatternData(compoundTag);
+        }
         this.readCommandType(compoundTag);
         super.readAdditionalSaveData(compoundTag);
         this.setDaysAlive(compoundTag.getInt("DaysAlive"));
@@ -482,6 +513,9 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
         }
 
         this.addCosmeticsData(compoundTag);
+        if (this.getPattern() != null) {
+            this.addPatternData(compoundTag);
+        }
         this.addCommandType(compoundTag);
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
         compoundTag.putInt("Hunger", this.getHunger());

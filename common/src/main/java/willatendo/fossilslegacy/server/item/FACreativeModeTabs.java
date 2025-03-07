@@ -50,7 +50,7 @@ public final class FACreativeModeTabs {
         output.accept(FABlocks.GREEN_CULTIVATOR.get());
         output.accept(FABlocks.RED_CULTIVATOR.get());
         output.accept(FABlocks.BLACK_CULTIVATOR.get());
-        output.accept(FABlocks.GENE_MODIFICATION_TABLE.get());
+        output.accept(FABlocks.DNA_RECOMBINATOR.get());
         output.accept(FABlocks.ARCHAEOLOGY_WORKBENCH.get());
         output.accept(FABlocks.PALAEONTOLOGY_TABLE.get());
         output.accept(FABlocks.DRUM.get());

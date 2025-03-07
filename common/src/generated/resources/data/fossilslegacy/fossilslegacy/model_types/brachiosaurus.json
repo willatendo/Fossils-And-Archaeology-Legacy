@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:brachiosaurus"
   },
-  "patterns": "fossilslegacy:brachiosaurus_2024"
+  "patterns": "fossilslegacy:patterns/brachiosaurus_2024",
+  "skins": "fossilslegacy:skins/brachiosaurus_2024"
 }

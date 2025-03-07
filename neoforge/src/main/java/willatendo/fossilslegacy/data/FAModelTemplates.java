@@ -21,7 +21,7 @@ public class FAModelTemplates {
     public static final ExtendedModelTemplate TEMPLATE_SOUP_CAULDRON_7 = FAModelTemplates.create("template_soup_cauldron_7", TextureSlot.CONTENT).build();
     public static final ExtendedModelTemplate TEMPLATE_SOUP_CAULDRON_8 = FAModelTemplates.create("template_soup_cauldron_8", TextureSlot.CONTENT).build();
     public static final ExtendedModelTemplate TEMPLATE_COLORED_CROP = FAModelTemplates.create("template_colored_crop", TextureSlot.CROP, FATextureSlot.CROP_LEAVES).renderType("cutout").build();
-    public static final ExtendedModelTemplate TEMPLATE_GENE_MODIFICATION_TABLE = FAModelTemplates.create("template_gene_modification_table", TextureSlot.FRONT).build();
+    public static final ExtendedModelTemplate TEMPLATE_DNA_RECOMBINATOR = FAModelTemplates.create("template_dna_recombinator", TextureSlot.FRONT).build();
     public static final ExtendedModelTemplate TEMPLATE_TIME_MACHINE = FAModelTemplates.create("template_time_machine").build();
     public static final ExtendedModelTemplate TEMPLATE_VASE = FAModelTemplates.create("template_vase", TextureSlot.SIDE).build();
     public static final ExtendedModelTemplate TEMPLATE_LLAMA = FAModelTemplates.create("template_llama", TextureSlot.TEXTURE, TextureSlot.PARTICLE).build();

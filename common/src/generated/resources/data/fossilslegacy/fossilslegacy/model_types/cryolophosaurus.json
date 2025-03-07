@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:cryolophosaurus"
   },
-  "patterns": "fossilslegacy:cryolophosaurus_2024"
+  "patterns": "fossilslegacy:patterns/cryolophosaurus_2024",
+  "skins": "fossilslegacy:skins/cryolophosaurus_2024"
 }

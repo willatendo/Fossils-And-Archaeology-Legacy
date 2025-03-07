@@ -15,13 +15,11 @@ import willatendo.fossilslegacy.client.animation.json.JsonAnimationLoader;
 import willatendo.fossilslegacy.client.model.json.JsonLayerDefinitionResourceManager;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;
-import willatendo.fossilslegacy.dual.FossilsLegacyDualEvents;
 import willatendo.fossilslegacy.network.ServerboundSinkPacket;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.client.event.registry.*;
-import willatendo.simplelibrary.server.event.registry.FabricClientReloadListenerRegister;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;

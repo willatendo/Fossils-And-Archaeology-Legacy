@@ -24,5 +24,6 @@
     "landing_model": "fossilslegacy:legacy_landing_pteranodon",
     "model": "fossilslegacy:legacy_pteranodon"
   },
-  "patterns": "fossilslegacy:pteranodon_2011"
+  "patterns": "fossilslegacy:patterns/pteranodon_2011",
+  "skins": "fossilslegacy:skins/pteranodon_2011"
 }

@@ -14,13 +14,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.ExtraCodecs;
-import willatendo.fossilslegacy.server.pattern.Pattern;
+import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 
 import java.util.Optional;
 
-public record ModelType(DisplayInfo displayInfo, Models models, TagKey<Pattern> patterns, BoundingBoxInfo boundingBoxInfo, AgeScaleInfo ageScaleInfo, Optional<OverrideInfo> overrideInfo) {
-    public static final Codec<ModelType> DIRECT_CODEC = RecordCodecBuilder.create(instance -> instance.group(DisplayInfo.CODEC.fieldOf("display_info").forGetter(ModelType::displayInfo), Models.CODEC.fieldOf("models").forGetter(ModelType::models), TagKey.codec(FARegistries.PATTERN).fieldOf("patterns").forGetter(ModelType::patterns), BoundingBoxInfo.CODEC.fieldOf("bounding_box_info").forGetter(ModelType::boundingBoxInfo), AgeScaleInfo.CODEC.fieldOf("age_scale_info").forGetter(ModelType::ageScaleInfo), OverrideInfo.CODEC.optionalFieldOf("override_info").forGetter(ModelType::overrideInfo)).apply(instance, ModelType::new));
+public record ModelType(DisplayInfo displayInfo, Models models, TagKey<Pattern> skins, TagKey<Pattern> patterns, BoundingBoxInfo boundingBoxInfo, AgeScaleInfo ageScaleInfo, Optional<OverrideInfo> overrideInfo) {
+    public static final Codec<ModelType> DIRECT_CODEC = RecordCodecBuilder.create(instance -> instance.group(DisplayInfo.CODEC.fieldOf("display_info").forGetter(ModelType::displayInfo), Models.CODEC.fieldOf("models").forGetter(ModelType::models), TagKey.codec(FARegistries.PATTERN).fieldOf("skins").forGetter(ModelType::skins), TagKey.codec(FARegistries.PATTERN).fieldOf("patterns").forGetter(ModelType::patterns), BoundingBoxInfo.CODEC.fieldOf("bounding_box_info").forGetter(ModelType::boundingBoxInfo), AgeScaleInfo.CODEC.fieldOf("age_scale_info").forGetter(ModelType::ageScaleInfo), OverrideInfo.CODEC.optionalFieldOf("override_info").forGetter(ModelType::overrideInfo)).apply(instance, ModelType::new));
     public static final Codec<Holder<ModelType>> CODEC = RegistryFileCodec.create(FARegistries.MODEL_TYPES, DIRECT_CODEC);
     public static final StreamCodec<RegistryFriendlyByteBuf, Holder<ModelType>> STREAM_CODEC = ByteBufCodecs.holderRegistry(FARegistries.MODEL_TYPES);
 
@@ -104,8 +104,8 @@ public record ModelType(DisplayInfo displayInfo, Models models, TagKey<Pattern> 
         }
     }
 
-    public static Builder build(Component name, int color, float displayScale, float displayYOffset, ResourceLocation model, TagKey<Pattern> patterns, float boundingBoxWidth, float boundingBoxHeight, float boundingBoxGrowth, float baseScaleWidth, float baseScaleHeight, float ageScale, float shadowSize, float shadowGrowth) {
-        return new Builder(name, color, displayScale, displayYOffset, model, patterns, boundingBoxWidth, boundingBoxHeight, boundingBoxGrowth, baseScaleWidth, baseScaleHeight, ageScale, shadowSize, shadowGrowth);
+    public static Builder build(Component name, int color, float displayScale, float displayYOffset, ResourceLocation model, TagKey<Pattern> skins, TagKey<Pattern> patterns, float boundingBoxWidth, float boundingBoxHeight, float boundingBoxGrowth, float baseScaleWidth, float baseScaleHeight, float ageScale, float shadowSize, float shadowGrowth) {
+        return new Builder(name, color, displayScale, displayYOffset, model, skins, patterns, boundingBoxWidth, boundingBoxHeight, boundingBoxGrowth, baseScaleWidth, baseScaleHeight, ageScale, shadowSize, shadowGrowth);
     }
 
     public static class Builder {
@@ -117,6 +117,7 @@ public record ModelType(DisplayInfo displayInfo, Models models, TagKey<Pattern> 
         private Optional<ResourceLocation> flyingModel = Optional.empty();
         private Optional<ResourceLocation> landingModel = Optional.empty();
         private Optional<ResourceLocation> knockedOutModel = Optional.empty();
+        private final TagKey<Pattern> skins;
         private final TagKey<Pattern> patterns;
         private final float boundingBoxWidth;
         private final float boundingBoxHeight;
@@ -128,12 +129,13 @@ public record ModelType(DisplayInfo displayInfo, Models models, TagKey<Pattern> 
         private final float shadowGrowth;
         private Optional<OverrideInfo> overrideInfo = Optional.empty();
 
-        private Builder(Component name, int color, float displayScale, float displayYOffset, ResourceLocation model, TagKey<Pattern> patterns, float boundingBoxWidth, float boundingBoxHeight, float boundingBoxGrowth, float baseScaleWidth, float baseScaleHeight, float ageScale, float shadowSize, float shadowGrowth) {
+        private Builder(Component name, int color, float displayScale, float displayYOffset, ResourceLocation model, TagKey<Pattern> skins, TagKey<Pattern> patterns, float boundingBoxWidth, float boundingBoxHeight, float boundingBoxGrowth, float baseScaleWidth, float baseScaleHeight, float ageScale, float shadowSize, float shadowGrowth) {
             this.name = name;
             this.color = color;
             this.displayScale = displayScale;
             this.displayYOffset = displayYOffset;
             this.model = model;
+            this.skins = skins;
             this.patterns = patterns;
             this.boundingBoxWidth = boundingBoxWidth;
             this.boundingBoxHeight = boundingBoxHeight;
@@ -162,7 +164,7 @@ public record ModelType(DisplayInfo displayInfo, Models models, TagKey<Pattern> 
         }
 
         public ModelType build() {
-            return new ModelType(new DisplayInfo(this.name, this.color, this.displayScale, this.displayYOffset), new Models(this.model, this.flyingModel, this.landingModel, this.knockedOutModel), this.patterns, new BoundingBoxInfo(this.boundingBoxWidth, this.boundingBoxHeight, this.boundingBoxGrowth), new AgeScaleInfo(this.baseScaleWidth, this.baseScaleHeight, this.ageScale, this.shadowSize, this.shadowGrowth), this.overrideInfo);
+            return new ModelType(new DisplayInfo(this.name, this.color, this.displayScale, this.displayYOffset), new Models(this.model, this.flyingModel, this.landingModel, this.knockedOutModel), this.skins, this.patterns, new BoundingBoxInfo(this.boundingBoxWidth, this.boundingBoxHeight, this.boundingBoxGrowth), new AgeScaleInfo(this.baseScaleWidth, this.baseScaleHeight, this.ageScale, this.shadowSize, this.shadowGrowth), this.overrideInfo);
         }
     }
 }

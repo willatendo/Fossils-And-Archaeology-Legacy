@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:dilophosaurus"
   },
-  "patterns": "fossilslegacy:dilophosaurus_2024"
+  "patterns": "fossilslegacy:patterns/dilophosaurus_2024",
+  "skins": "fossilslegacy:skins/dilophosaurus_2024"
 }

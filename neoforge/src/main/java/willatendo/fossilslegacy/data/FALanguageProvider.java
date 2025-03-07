@@ -4,8 +4,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.server.block.FABlocks;
-import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.model_type.FAModelTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Anu;
 import willatendo.fossilslegacy.server.entity.entities.TamedZombifiedPiglin;
@@ -17,7 +15,8 @@ import willatendo.fossilslegacy.server.item.FACreativeModeTabs;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
 import willatendo.fossilslegacy.server.level.FAGameRules;
-import willatendo.fossilslegacy.server.pattern.Pattern;
+import willatendo.fossilslegacy.server.model_type.FAModelTypes;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.stats.FAStats;
 import willatendo.fossilslegacy.server.tags.*;
 import willatendo.simplelibrary.data.SimpleLanguageProvider;
@@ -92,7 +91,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.RED_CULTIVATOR.get());
         this.add(FABlocks.BLACK_CULTIVATOR.get());
         this.add("block.fossilslegacy.cultivator.shatter", "Warning! Cultivation failure!");
-        this.add(FABlocks.GENE_MODIFICATION_TABLE.get());
+        this.add(FABlocks.DNA_RECOMBINATOR.get(), "DNA Recombinator");
         this.add(FABlocks.ARCHAEOLOGY_WORKBENCH.get());
         this.add(FABlocks.PALAEONTOLOGY_TABLE.get());
         this.add(FABlocks.JURASSIC_FERN.get());
@@ -466,8 +465,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.DRYOSAURUS_DNA.get(), "Dryosaurus DNA");
         this.add(FAItems.ELASMOTHERIUM_DNA.get(), "Elasmotherium DNA");
         this.add(FAItems.BARYONYX_DNA.get(), "Baryonyx DNA");
-        this.add("item.fossilslegacy.dna.model_type", "Model Type: %s");
-        this.add("item.fossilslegacy.dna.pattern", "Pattern: %s");
+        this.add("item.fossilslegacy.model_type", "Model Type: %s");
+        this.add("item.fossilslegacy.skin", "Pattern: %s");
         this.add(FAItems.JURASSIC_FERN_DNA.get());
         this.add(FAItems.LEPIDODENDRON_DNA.get());
         this.add(FAItems.SIGILLARIA_DNA.get());
@@ -788,19 +787,23 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("key.categories.fossilslegacy.dinosaur_ridding", "Dinosaur Ridding");
 
         // Patterns
-        this.add("pattern.fossilslegacy.american_bison", "American Bison");
-        this.add("pattern.fossilslegacy.blue_iguana", "Blue Iguana");
-        this.add("pattern.fossilslegacy.broadhead_skink", "Broadhead Skink");
-        this.add("pattern.fossilslegacy.domestic_pigeon", "Domestic Pigeon");
-        this.add("pattern.fossilslegacy.eastern_brown_snake", "Eastern Brown Snake");
-        this.add("pattern.fossilslegacy.eastern_indigo_snake", "Eastern Indigo Snake");
-        this.add("pattern.fossilslegacy.gray_ratsnake", "Gray Ratsnake");
-        this.add("pattern.fossilslegacy.green_parakeet", "Green Parakeet");
-        this.add("pattern.fossilslegacy.green_tree_python", "Green Tree Python");
-        this.add("pattern.fossilslegacy.inland_taipan", "Inland Taipan");
-        this.add("pattern.fossilslegacy.marine_iguana", "Marine Iguana");
-        this.add("pattern.fossilslegacy.northern_cardinal", "Northern Cardinal");
-        this.add("pattern.fossilslegacy.tiger", "Tiger");
+        this.add("skin.fossilslegacy.american_bison", "American Bison");
+        this.add("skin.fossilslegacy.blue_iguana", "Blue Iguana");
+        this.add("skin.fossilslegacy.broadhead_skink", "Broadhead Skink");
+        this.add("skin.fossilslegacy.domestic_pigeon", "Domestic Pigeon");
+        this.add("skin.fossilslegacy.eastern_brown_snake", "Eastern Brown Snake");
+        this.add("skin.fossilslegacy.eastern_indigo_snake", "Eastern Indigo Snake");
+        this.add("skin.fossilslegacy.gray_ratsnake", "Gray Ratsnake");
+        this.add("skin.fossilslegacy.green_parakeet", "Green Parakeet");
+        this.add("skin.fossilslegacy.green_tree_python", "Green Tree Python");
+        this.add("skin.fossilslegacy.inland_taipan", "Inland Taipan");
+        this.add("skin.fossilslegacy.marine_iguana", "Marine Iguana");
+        this.add("skin.fossilslegacy.northern_cardinal", "Northern Cardinal");
+        this.add("skin.fossilslegacy.tiger", "Tiger");
+        this.addSkin("sonoran_desert", "Sonoran Desert");
+        this.addPattern("rana", "Rana");
+
+        this.add("pattern_holder.fossilslegacy.composite", "%s / %s");
 
         // Resource Packs
         this.add("resourcePack.fossilslegacy.description", "Fossils and Archaeology: Legacy Assets");
@@ -1131,6 +1134,10 @@ public class FALanguageProvider extends SimpleLanguageProvider {
 
     public void addModelType(ResourceKey<ModelType> modelType, String translation) {
         this.add(modelType.location().toLanguageKey("model_type"), translation);
+    }
+
+    public void addSkin(String pattern, String translation) {
+        this.add("skin.fossilslegacy." + pattern, translation);
     }
 
     public void addPattern(String pattern, String translation) {

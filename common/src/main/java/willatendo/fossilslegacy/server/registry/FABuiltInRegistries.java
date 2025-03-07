@@ -3,7 +3,7 @@ package willatendo.fossilslegacy.server.registry;
 import net.minecraft.core.Registry;
 import willatendo.fossilslegacy.server.command_type.CommandType;
 import willatendo.fossilslegacy.server.dinopedia_entry.line.DinopediaLineType;
-import willatendo.fossilslegacy.server.pattern_type.information.PatternInformationType;
+import willatendo.fossilslegacy.server.pattern.information.PatternInformationType;
 import willatendo.fossilslegacy.server.pregnancy_types.PregnancyType;
 import willatendo.simplelibrary.server.util.SimpleRegistryBuilder;
 import willatendo.simplelibrary.server.util.SimpleUtils;

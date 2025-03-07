@@ -1,12 +1,15 @@
 {
   "gene_color": 16777215,
-  "pattern_name": {
-    "translate": "pattern.fossilslegacy.eastern_indigo_snake"
+  "genetic_type": "dominant",
+  "pattern_information": {
+    "type": "fossilslegacy:package",
+    "textures": {
+      "aggressive": "fossilslegacy:textures/entity/dimetrodon/dimetrodon_agressive.png",
+      "baby": "fossilslegacy:textures/entity/dimetrodon/dimetrodon_baby.png",
+      "base": "fossilslegacy:textures/entity/dimetrodon/dimetrodon_adult.png"
+    }
   },
-  "pattern_type": "fossilslegacy:basic",
-  "textures": {
-    "aggressive": "fossilslegacy:textures/entity/dimetrodon/dimetrodon_agressive.png",
-    "baby": "fossilslegacy:textures/entity/dimetrodon/dimetrodon_baby.png",
-    "base": "fossilslegacy:textures/entity/dimetrodon/dimetrodon_adult.png"
+  "pattern_name": {
+    "translate": "skin.fossilslegacy.eastern_indigo_snake"
   }
 }

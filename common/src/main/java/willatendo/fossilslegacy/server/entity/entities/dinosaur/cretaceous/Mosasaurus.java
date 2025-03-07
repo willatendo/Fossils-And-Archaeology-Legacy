@@ -25,7 +25,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -35,8 +34,9 @@ import willatendo.fossilslegacy.server.entity.goals.*;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
-import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.tags.FAEntityTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 
 import java.util.Optional;
 
@@ -65,7 +65,7 @@ public class Mosasaurus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
-    public TagKey<ModelType> getCoatTypes() {
+    public TagKey<ModelType> getModelTypes() {
         return FAModelTypeTags.MOSASAURUS;
     }
 

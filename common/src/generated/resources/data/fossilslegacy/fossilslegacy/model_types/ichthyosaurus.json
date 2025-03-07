@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:ichthyosaurus"
   },
-  "patterns": "fossilslegacy:ichthyosaurus_2025"
+  "patterns": "fossilslegacy:patterns/ichthyosaurus_2025",
+  "skins": "fossilslegacy:skins/ichthyosaurus_2025"
 }

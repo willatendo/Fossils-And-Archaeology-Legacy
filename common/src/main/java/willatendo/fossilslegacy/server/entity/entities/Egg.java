@@ -28,7 +28,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.DataDrivenCosmetic
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.TicksToBirth;
 import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.Pattern;
+import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
@@ -38,6 +38,7 @@ import java.util.function.Supplier;
 
 public abstract class Egg extends Animal implements TicksToBirth, DinopediaInformation, DataDrivenCosmetics {
     private static final EntityDataAccessor<Holder<ModelType>> MODEL_TYPE = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.MODEL_TYPES.get());
+    private static final EntityDataAccessor<Holder<Pattern>> SKIN = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.PATTERN.get());
     private static final EntityDataAccessor<Holder<Pattern>> PATTERN = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.PATTERN.get());
     private static final EntityDataAccessor<Integer> REMAINING_TIME = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> WARM = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.BOOLEAN);
@@ -106,6 +107,17 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
     public abstract ItemStack getPick();
 
     public abstract <T extends Entity> EntityType<T> getOffspringType();
+
+    @Override
+    public void onEntityTicksComplete(Mob mob, Entity offspring, Level level) {
+        TicksToBirth.super.onEntityTicksComplete(mob, offspring, level);
+        if (offspring instanceof DataDrivenCosmetics dataDrivenCosmetics) {
+            dataDrivenCosmetics.setSkin(this.getSkin());
+            if (dataDrivenCosmetics.getPattern() != null) {
+                dataDrivenCosmetics.setPattern(this.getPattern());
+            }
+        }
+    }
 
     public Component getTemperature() {
         if (this.isWet()) {
@@ -176,6 +188,7 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
         builder.define(MODEL_TYPE, this.registryAccess().lookupOrThrow(FARegistries.MODEL_TYPES).getAny().orElseThrow());
+        builder.define(SKIN, this.registryAccess().lookupOrThrow(FARegistries.PATTERN).getAny().orElseThrow());
         builder.define(PATTERN, this.registryAccess().lookupOrThrow(FARegistries.PATTERN).getAny().orElseThrow());
         builder.define(REMAINING_TIME, 0);
         builder.define(WARM, false);
@@ -187,6 +200,10 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
         super.addAdditionalSaveData(compoundTag);
 
         this.addCosmeticsData(compoundTag);
+
+        if (this.getPattern() != null) {
+            this.addPatternData(compoundTag);
+        }
 
         if (this.getOwnerUUID() != null) {
             compoundTag.putUUID("Owner", this.getOwnerUUID());
@@ -283,13 +300,23 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
     }
 
     @Override
+    public Holder<Pattern> getSkin() {
+        return this.entityData.get(SKIN);
+    }
+
+    @Override
+    public void setSkin(Holder<Pattern> pattern) {
+        this.entityData.set(SKIN, pattern);
+    }
+
+    @Override
     public Holder<Pattern> getPattern() {
         return this.entityData.get(PATTERN);
     }
 
     @Override
-    public void setPattern(Holder<Pattern> patternType) {
-        this.entityData.set(PATTERN, patternType);
+    public void setPattern(Holder<Pattern> pattern) {
+        this.entityData.set(PATTERN, pattern);
     }
 
     public boolean isOwnedBy(LivingEntity livingEntity) {

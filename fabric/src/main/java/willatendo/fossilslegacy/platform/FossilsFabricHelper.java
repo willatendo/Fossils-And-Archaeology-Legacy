@@ -24,16 +24,13 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 import willatendo.simplelibrary.server.util.FabricUtils;
 
+import java.util.Optional;
 import java.util.function.Supplier;
 
 public class FossilsFabricHelper implements FossilsModloaderHelper {
     @Override
-    public void sendApplyGenePacket(BlockPos blockPos, String modelType, String pattern) {
-        FriendlyByteBuf friendlyByteBuf = PacketByteBufs.create();
-        friendlyByteBuf.writeBlockPos(blockPos);
-        friendlyByteBuf.writeUtf(modelType);
-        friendlyByteBuf.writeUtf(pattern);
-        ClientPlayNetworking.send(new ServerboundApplyGenePacket(blockPos, modelType, pattern));
+    public void sendApplyGenePacket(BlockPos blockPos, String modelType, String skin, Optional<String> pattern) {
+        ClientPlayNetworking.send(new ServerboundApplyGenePacket(blockPos, modelType, skin, pattern));
     }
 
     @Override

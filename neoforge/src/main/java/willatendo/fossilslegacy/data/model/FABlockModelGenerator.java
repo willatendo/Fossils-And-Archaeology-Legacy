@@ -7,7 +7,6 @@ import net.minecraft.client.data.models.blockstates.Variant;
 import net.minecraft.client.data.models.blockstates.VariantProperties;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.BlockFamily;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -58,7 +57,7 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createCultivator(FABlocks.BLACK_CULTIVATOR.get(), "black");
         this.createArchaeologyWorkbench(FABlocks.ARCHAEOLOGY_WORKBENCH.get());
         this.createPalaeontologyTable(FABlocks.PALAEONTOLOGY_TABLE.get());
-        this.createGeneModificationTable(FABlocks.GENE_MODIFICATION_TABLE.get());
+        this.createGeneModificationTable(FABlocks.DNA_RECOMBINATOR.get());
         this.createJurassicFern(FABlocks.JURASSIC_FERN.get());
         this.createDrum(FABlocks.DRUM.get());
         this.createFeeder(FABlocks.FEEDER.get());
@@ -148,7 +147,7 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
     }
 
     private void createGeneModificationTable(Block geneModificationTable) {
-        this.block(MultiVariantGenerator.multiVariant(geneModificationTable, Variant.variant().with(VariantProperties.MODEL, FAModelTemplates.TEMPLATE_GENE_MODIFICATION_TABLE.create(geneModificationTable, new TextureMapping().put(TextureSlot.FRONT, this.modLocation("block/gene_modification_table_front_off")), this.modelOutput))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
+        this.block(MultiVariantGenerator.multiVariant(geneModificationTable, Variant.variant().with(VariantProperties.MODEL, FAModelTemplates.TEMPLATE_DNA_RECOMBINATOR.create(geneModificationTable, new TextureMapping().put(TextureSlot.FRONT, this.modLocation("block/dna_recombinator_front")), this.modelOutput))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
     }
 
     private void createJurassicFern(Block jurassicFern) {

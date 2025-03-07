@@ -29,7 +29,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -44,6 +43,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.RideableDinosaur;
 import willatendo.fossilslegacy.server.item.FAItems;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
 import willatendo.fossilslegacy.server.tags.*;
 
@@ -87,7 +87,7 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
     }
 
     @Override
-    public TagKey<ModelType> getCoatTypes() {
+    public TagKey<ModelType> getModelTypes() {
         return FAModelTypeTags.TYRANNOSAURUS;
     }
 

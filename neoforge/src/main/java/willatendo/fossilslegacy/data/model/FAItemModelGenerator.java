@@ -3,7 +3,6 @@ package willatendo.fossilslegacy.data.model;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.item.ItemModel;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import willatendo.fossilslegacy.client.model.ArticulatedFossilSpecialRenderer;
 import willatendo.fossilslegacy.data.FAModelTemplates;

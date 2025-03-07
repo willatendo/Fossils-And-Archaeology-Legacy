@@ -22,7 +22,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -31,9 +30,10 @@ import willatendo.fossilslegacy.server.entity.entities.Egg;
 import willatendo.fossilslegacy.server.entity.goals.*;
 import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.*;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
-import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
+import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 
 import java.util.Optional;
 
@@ -131,7 +131,7 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
     }
 
     @Override
-    public TagKey<ModelType> getCoatTypes() {
+    public TagKey<ModelType> getModelTypes() {
         return FAModelTypeTags.PTERANODON;
     }
 

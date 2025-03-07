@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:spinosaurus"
   },
-  "patterns": "fossilslegacy:spinosaurus_2024"
+  "patterns": "fossilslegacy:patterns/spinosaurus_2024",
+  "skins": "fossilslegacy:skins/spinosaurus_2024"
 }

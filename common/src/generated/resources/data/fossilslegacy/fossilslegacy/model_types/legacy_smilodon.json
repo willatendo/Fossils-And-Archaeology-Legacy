@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:legacy_smilodon"
   },
-  "patterns": "fossilslegacy:smilodon_2011"
+  "patterns": "fossilslegacy:patterns/smilodon_2011",
+  "skins": "fossilslegacy:skins/smilodon_2011"
 }

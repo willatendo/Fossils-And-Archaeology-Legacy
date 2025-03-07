@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:dodo"
   },
-  "patterns": "fossilslegacy:dodo_2024"
+  "patterns": "fossilslegacy:patterns/dodo_2024",
+  "skins": "fossilslegacy:skins/dodo_2024"
 }

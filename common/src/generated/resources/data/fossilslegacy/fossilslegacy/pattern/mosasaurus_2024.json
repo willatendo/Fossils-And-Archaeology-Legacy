@@ -1,11 +1,14 @@
 {
   "gene_color": 16777215,
-  "pattern_name": {
-    "translate": "pattern.fossilslegacy.marine_iguana"
+  "genetic_type": "dominant",
+  "pattern_information": {
+    "type": "fossilslegacy:package",
+    "textures": {
+      "base": "fossilslegacy:textures/entity/mosasaurus/mosasaurus.png",
+      "eye": "fossilslegacy:textures/entity/mosasaurus/mosasaurus_eyes.png"
+    }
   },
-  "pattern_type": "fossilslegacy:basic",
-  "textures": {
-    "base": "fossilslegacy:textures/entity/mosasaurus/mosasaurus.png",
-    "eye": "fossilslegacy:textures/entity/mosasaurus/mosasaurus_eyes.png"
+  "pattern_name": {
+    "translate": "skin.fossilslegacy.marine_iguana"
   }
 }

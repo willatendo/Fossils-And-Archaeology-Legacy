@@ -7,6 +7,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.DataPackRegistryEvent;
+import net.minecraftforge.registries.IdMappingEvent;
+import net.minecraftforge.registries.MissingMappingsEvent;
 import net.minecraftforge.registries.NewRegistryEvent;
 import willatendo.fossilslegacy.network.ForgePacketHelper;
 import willatendo.fossilslegacy.server.utils.FAUtils;
@@ -52,5 +54,10 @@ public class ModEvents {
     @SubscribeEvent
     public static void entityAttributeCreationEvent(EntityAttributeCreationEvent event) {
         BasicEvents.attributeEvent(new ForgeAttributeRegister(event));
+    }
+
+    @SubscribeEvent
+    public static void event(MissingMappingsEvent event) {
+        BasicEvents.idModification(new ForgeIdModification(FAUtils.ID, event));
     }
 }

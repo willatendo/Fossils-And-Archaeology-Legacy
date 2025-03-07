@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:compsognathus"
   },
-  "patterns": "fossilslegacy:compsognathus_2024"
+  "patterns": "fossilslegacy:patterns/compsognathus_2024",
+  "skins": "fossilslegacy:skins/compsognathus_2024"
 }

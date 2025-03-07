@@ -12,7 +12,6 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.RegistryFileCodec;
 import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.Map;
 

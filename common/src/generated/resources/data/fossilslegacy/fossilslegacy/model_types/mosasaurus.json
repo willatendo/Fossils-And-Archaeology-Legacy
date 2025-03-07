@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:mosasaurus"
   },
-  "patterns": "fossilslegacy:mosasaurus_2024"
+  "patterns": "fossilslegacy:patterns/mosasaurus_2024",
+  "skins": "fossilslegacy:skins/mosasaurus_2024"
 }

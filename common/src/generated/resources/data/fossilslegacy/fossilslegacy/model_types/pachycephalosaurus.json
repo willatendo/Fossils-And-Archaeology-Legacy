@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:pachycephalosaurus"
   },
-  "patterns": "fossilslegacy:pachycephalosaurus_2024"
+  "patterns": "fossilslegacy:patterns/pachycephalosaurus_2024",
+  "skins": "fossilslegacy:skins/pachycephalosaurus_2024"
 }

@@ -3,6 +3,9 @@ package willatendo.fossilslegacy.client.render;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import willatendo.fossilslegacy.client.state.FutabasaurusRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
+import willatendo.fossilslegacy.server.pattern.information.TextureType;
+
+import java.util.List;
 
 public class FutabasaurusRenderer extends DataDrivenModelMobRenderer<Futabasaurus, FutabasaurusRenderState> {
     public FutabasaurusRenderer(Context context) {
@@ -18,5 +21,15 @@ public class FutabasaurusRenderer extends DataDrivenModelMobRenderer<Futabasauru
     public void extractRenderState(Futabasaurus futabasaurus, FutabasaurusRenderState futabasaurusRenderState, float partialTick) {
         super.extractRenderState(futabasaurus, futabasaurusRenderState, partialTick);
         futabasaurusRenderState.divePose = futabasaurus.divePose() && futabasaurus.hasControllingPassenger();
+    }
+
+    @Override
+    public String baseTextureName() {
+        return "futabasaurus";
+    }
+
+    @Override
+    public List<TextureType> requiredTextures() {
+        return List.of(TextureType.BASE);
     }
 }

@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ARGB;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
+import willatendo.fossilslegacy.client.render.layer.PatternLayer;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.jurassic.Dilophosaurus;
@@ -15,8 +16,10 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.DataDrivenCosmetic
 import willatendo.fossilslegacy.server.entity.util.interfaces.ShakingEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.WetFurEntity;
 import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.Pattern;
+import willatendo.fossilslegacy.server.pattern.information.TextureType;
+import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 
+import java.util.List;
 import java.util.Optional;
 
 public abstract class DataDrivenModelMobRenderer<T extends Dinosaur & DataDrivenCosmetics, S extends DinosaurRenderState> extends MobRenderer<T, S, EntityModel<S>> {
@@ -24,7 +27,12 @@ public abstract class DataDrivenModelMobRenderer<T extends Dinosaur & DataDriven
 
     public DataDrivenModelMobRenderer(EntityRendererProvider.Context context, float shadowSize) {
         super(context, null, shadowSize);
+        this.addLayer(new PatternLayer<>(this));
     }
+
+    public abstract String baseTextureName();
+
+    public abstract List<TextureType> requiredTextures();
 
     public Optional<ResourceLocation> getAdditionalModel(S dinosaurRenderState, ModelType modelType) {
         return Optional.empty();
@@ -53,6 +61,7 @@ public abstract class DataDrivenModelMobRenderer<T extends Dinosaur & DataDriven
     public void extractRenderState(T dinosaur, S dinosaurRenderState, float partialTick) {
         super.extractRenderState(dinosaur, dinosaurRenderState, partialTick);
         dinosaurRenderState.modelType = dinosaur.getModelType();
+        dinosaurRenderState.skin = dinosaur.getSkin();
         dinosaurRenderState.pattern = dinosaur.getPattern();
         dinosaurRenderState.growthStage = dinosaur.getGrowthStage();
         dinosaurRenderState.isTame = dinosaur.isTame();
@@ -113,7 +122,75 @@ public abstract class DataDrivenModelMobRenderer<T extends Dinosaur & DataDriven
 
     @Override
     public ResourceLocation getTextureLocation(S dinosaurRenderState) {
-        Pattern pattern = dinosaurRenderState.pattern.value();
-        return this.getAdditionalTexture(dinosaurRenderState, pattern).isPresent() ? this.getAdditionalTexture(dinosaurRenderState, pattern).get() : dinosaurRenderState.isBaby ? pattern.hasBabyTexture() ? pattern.getBabyTexture() : pattern.getTexture() : pattern.getTexture();
+        Pattern skin = dinosaurRenderState.skin.value();
+        return this.getAdditionalTexture(dinosaurRenderState, skin).isPresent() ? this.getAdditionalTexture(dinosaurRenderState, skin).get() : dinosaurRenderState.isBaby ? this.hasBabyTexture(skin) ? this.getBabyTexture(skin) : this.getTexture(skin) : this.getTexture(skin);
+    }
+
+    public ResourceLocation getTexture(Pattern pattern) {
+        return pattern.getTexture(this.baseTextureName(), this.requiredTextures());
+    }
+
+    public ResourceLocation getBabyTexture(Pattern pattern) {
+        return pattern.getBabyTexture(this.baseTextureName(), this.requiredTextures());
+    }
+
+    public ResourceLocation getAggressiveTexture(Pattern pattern) {
+        return pattern.getAggressiveTexture(this.baseTextureName(), this.requiredTextures());
+    }
+
+    public ResourceLocation getAggressiveBabyTexture(Pattern pattern) {
+        return pattern.getAggressiveBabyTexture(this.baseTextureName(), this.requiredTextures());
+    }
+
+    public ResourceLocation getKnockedOutTexture(Pattern pattern) {
+        return pattern.getKnockedOutTexture(this.baseTextureName(), this.requiredTextures());
+    }
+
+    public ResourceLocation getFurTexture(Pattern pattern) {
+        return pattern.getFurTexture(this.baseTextureName(), this.requiredTextures());
+    }
+
+    public ResourceLocation getBabyFurTexture(Pattern pattern) {
+        return pattern.getBabyFurTexture(this.baseTextureName(), this.requiredTextures());
+    }
+
+    public ResourceLocation getShearedTexture(Pattern pattern) {
+        return pattern.getShearedTexture(this.baseTextureName(), this.requiredTextures());
+    }
+
+    public ResourceLocation getEyeTexture(Pattern pattern) {
+        return pattern.getEyeTexture(this.baseTextureName(), this.requiredTextures());
+    }
+
+    public boolean hasBabyTexture(Pattern pattern) {
+        return pattern.hasBabyTexture(this.baseTextureName(), this.requiredTextures());
+    }
+
+    public boolean hasAggressiveBabyTexture(Pattern pattern) {
+        return pattern.hasAggressiveBabyTexture(this.baseTextureName(), this.requiredTextures());
+    }
+
+    public boolean hasAggressiveTexture(Pattern pattern) {
+        return pattern.hasAggressiveTexture(this.baseTextureName(), this.requiredTextures());
+    }
+
+    public boolean hasKnockedOutTexture(Pattern pattern) {
+        return pattern.hasKnockedOutTexture(this.baseTextureName(), this.requiredTextures());
+    }
+
+    public boolean hasFurTexture(Pattern pattern) {
+        return pattern.hasFurTexture(this.baseTextureName(), this.requiredTextures());
+    }
+
+    public boolean hasBabyFurTexture(Pattern pattern) {
+        return pattern.hasBabyFurTexture(this.baseTextureName(), this.requiredTextures());
+    }
+
+    public boolean hasShearedTexture(Pattern pattern) {
+        return pattern.hasShearedTexture(this.baseTextureName(), this.requiredTextures());
+    }
+
+    public boolean hasEyeTexture(Pattern pattern) {
+        return pattern.hasEyeTexture(this.baseTextureName(), this.requiredTextures());
     }
 }

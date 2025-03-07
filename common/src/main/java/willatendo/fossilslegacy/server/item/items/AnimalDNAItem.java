@@ -8,10 +8,10 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
-import willatendo.fossilslegacy.server.pattern.Pattern;
+import willatendo.fossilslegacy.server.model_type.ModelType;
+import willatendo.fossilslegacy.server.pattern.pattern.PatternHolder;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
@@ -42,15 +42,15 @@ public class AnimalDNAItem extends DNAItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> components, TooltipFlag tooltipFlag) {
-        super.appendHoverText(itemStack, tooltipContext, components, tooltipFlag);
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        super.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
         if (itemStack.has(FADataComponents.MODEL_TYPE.get())) {
             Holder<ModelType> holder = itemStack.get(FADataComponents.MODEL_TYPE.get());
-            components.add(FAUtils.translation("item", "dna.model_type", holder.value().displayInfo().modelName()).withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(FAUtils.translation("item", "model_type", holder.value().displayInfo().modelName()).withStyle(ChatFormatting.GRAY));
         }
-        if (itemStack.has(FADataComponents.PATTERN.get())) {
-            Holder<Pattern> holder = itemStack.get(FADataComponents.PATTERN.get());
-            components.add(FAUtils.translation("item", "dna.pattern", holder.value().patternName()).withStyle(ChatFormatting.GRAY));
+        if (itemStack.has(FADataComponents.PATTERN_HOLDER.get())) {
+            PatternHolder patternHolder = itemStack.get(FADataComponents.PATTERN_HOLDER.get());
+            tooltipComponents.add(FAUtils.translation("item", "skin", patternHolder.getDisplayName()).withStyle(ChatFormatting.GRAY));
         }
     }
 }

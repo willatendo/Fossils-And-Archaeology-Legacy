@@ -308,6 +308,9 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
             if (input.has(FADataComponents.MODEL_TYPE.get())) {
                 output.set(FADataComponents.MODEL_TYPE.get(), input.get(FADataComponents.MODEL_TYPE.get()));
             }
+            if (input.has(FADataComponents.PATTERN_HOLDER.get())) {
+                output.set(FADataComponents.PATTERN_HOLDER.get(), input.get(FADataComponents.PATTERN_HOLDER.get()));
+            }
             ItemStack outputSlot = itemStacks.get(2);
             if (outputSlot.isEmpty()) {
                 itemStacks.set(2, output.copy());

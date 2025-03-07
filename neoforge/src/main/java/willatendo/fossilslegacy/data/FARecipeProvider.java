@@ -69,7 +69,7 @@ public class FARecipeProvider extends RecipeProvider {
         this.cultivator(FABlocks.GREEN_CULTIVATOR.get(), Items.GREEN_DYE, Blocks.GREEN_STAINED_GLASS);
         this.cultivator(FABlocks.RED_CULTIVATOR.get(), Items.RED_DYE, Blocks.RED_STAINED_GLASS);
         this.cultivator(FABlocks.BLACK_CULTIVATOR.get(), Items.BLACK_DYE, Blocks.BLACK_STAINED_GLASS);
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.GENE_MODIFICATION_TABLE.get()).pattern("#$#").pattern("#&#").pattern("#!#").define('#', Items.IRON_INGOT).define('$', Blocks.REDSTONE_BLOCK).define('&', Items.NETHER_STAR).define('!', Items.GOLD_INGOT).unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT)).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DNA_RECOMBINATOR.get()).pattern("#$#").pattern("#&#").pattern("#!#").define('#', Items.IRON_INGOT).define('$', Blocks.REDSTONE_BLOCK).define('&', Items.NETHER_STAR).define('!', Items.GOLD_INGOT).unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT)).save(this.output);
         this.craftingTable(FABlocks.ARCHAEOLOGY_WORKBENCH.get(), Items.PAPER);
         this.craftingTable(FABlocks.PALAEONTOLOGY_TABLE.get(), FAItems.FOSSIL.get());
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DRUM.get()).pattern("###").pattern("$%$").pattern("$$$").define('#', Items.LEATHER).define('$', this.tag(ItemTags.PLANKS)).define('%', Items.REDSTONE).unlockedBy(getHasName(Items.LEATHER), has(Items.LEATHER)).save(this.output);

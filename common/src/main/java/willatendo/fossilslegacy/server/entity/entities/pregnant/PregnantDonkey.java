@@ -14,12 +14,12 @@ import net.minecraft.world.entity.animal.horse.Donkey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.PregnantAnimal;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.pregnancy_types.PregnancyType;
 
 import java.util.Optional;

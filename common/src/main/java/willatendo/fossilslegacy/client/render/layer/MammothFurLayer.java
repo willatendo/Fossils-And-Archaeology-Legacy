@@ -11,9 +11,9 @@ import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.item.DyeColor;
 import willatendo.fossilslegacy.client.render.DataDrivenModelMobRenderer;
 import willatendo.fossilslegacy.client.state.MammothRenderState;
-import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Mammoth;
-import willatendo.fossilslegacy.server.pattern.Pattern;
+import willatendo.fossilslegacy.server.model_type.ModelType;
+import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 
 public class MammothFurLayer extends RenderLayer<MammothRenderState, EntityModel<MammothRenderState>> {
     private EntityModel<MammothRenderState> model;
@@ -40,17 +40,17 @@ public class MammothFurLayer extends RenderLayer<MammothRenderState, EntityModel
         } else {
             this.setModel(modelType.models().model());
         }
-        Pattern pattern = mammothRenderState.pattern.value();
-        if (pattern.hasFurTexture()) {
-            ResourceLocation texture = pattern.getFurTexture();
+        Pattern skin = mammothRenderState.skin.value();
+        if (this.dataDrivenModelMobRenderer.hasFurTexture(skin)) {
+            ResourceLocation texture = this.dataDrivenModelMobRenderer.getFurTexture(skin);
             if (mammothRenderState.isSheared) {
-                if (pattern.hasShearedTexture()) {
-                    texture = pattern.getShearedTexture();
+                if (this.dataDrivenModelMobRenderer.hasShearedTexture(skin)) {
+                    texture = this.dataDrivenModelMobRenderer.getShearedTexture(skin);
                 }
             } else {
                 if (mammothRenderState.isBaby) {
-                    if (pattern.hasBabyFurTexture()) {
-                        texture = pattern.getBabyFurTexture();
+                    if (this.dataDrivenModelMobRenderer.hasBabyFurTexture(skin)) {
+                        texture = this.dataDrivenModelMobRenderer.getBabyFurTexture(skin);
                     }
                 }
             }

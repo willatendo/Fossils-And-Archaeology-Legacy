@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:therizinosaurus"
   },
-  "patterns": "fossilslegacy:therizinosaurus_2024"
+  "patterns": "fossilslegacy:patterns/therizinosaurus_2024",
+  "skins": "fossilslegacy:skins/therizinosaurus_2024"
 }

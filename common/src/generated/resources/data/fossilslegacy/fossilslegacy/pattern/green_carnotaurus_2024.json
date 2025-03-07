@@ -1,11 +1,14 @@
 {
   "gene_color": 16777215,
-  "pattern_name": {
-    "translate": "pattern.fossilslegacy.green_tree_python"
+  "genetic_type": "dominant",
+  "pattern_information": {
+    "type": "fossilslegacy:package",
+    "textures": {
+      "baby": "fossilslegacy:textures/entity/carnotaurus/red_carnotaurus_baby.png",
+      "base": "fossilslegacy:textures/entity/carnotaurus/green_carnotaurus_adult.png"
+    }
   },
-  "pattern_type": "fossilslegacy:basic",
-  "textures": {
-    "baby": "fossilslegacy:textures/entity/carnotaurus/red_carnotaurus_baby.png",
-    "base": "fossilslegacy:textures/entity/carnotaurus/green_carnotaurus_adult.png"
+  "pattern_name": {
+    "translate": "skin.fossilslegacy.green_tree_python"
   }
 }

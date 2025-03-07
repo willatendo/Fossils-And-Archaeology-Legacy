@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:pteranodon"
   },
-  "patterns": "fossilslegacy:pteranodon_2024"
+  "patterns": "fossilslegacy:patterns/pteranodon_2024",
+  "skins": "fossilslegacy:skins/pteranodon_2024"
 }

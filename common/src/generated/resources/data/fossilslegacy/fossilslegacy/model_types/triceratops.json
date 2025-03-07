@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:triceratops"
   },
-  "patterns": "fossilslegacy:triceratops_2024"
+  "patterns": "fossilslegacy:patterns/triceratops_2024",
+  "skins": "fossilslegacy:skins/triceratops_2024"
 }

@@ -47,7 +47,7 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.dropSelf(FABlocks.GREEN_CULTIVATOR.get());
         this.dropSelf(FABlocks.RED_CULTIVATOR.get());
         this.dropSelf(FABlocks.BLACK_CULTIVATOR.get());
-        this.dropSelf(FABlocks.GENE_MODIFICATION_TABLE.get());
+        this.dropSelf(FABlocks.DNA_RECOMBINATOR.get());
         this.dropSelf(FABlocks.ARCHAEOLOGY_WORKBENCH.get());
         this.dropSelf(FABlocks.PALAEONTOLOGY_TABLE.get());
         this.add(FABlocks.JURASSIC_FERN.get(), block -> this.createDoublePlantWithSeedDrops(block, FABlocks.JURASSIC_FERN.get()));

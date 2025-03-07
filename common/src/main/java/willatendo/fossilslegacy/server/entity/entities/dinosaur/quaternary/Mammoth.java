@@ -42,7 +42,6 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -57,6 +56,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.RideableDinosaur;
 import willatendo.fossilslegacy.server.item.FALootTables;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
 import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 
@@ -112,7 +112,7 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
     }
 
     @Override
-    public TagKey<ModelType> getCoatTypes() {
+    public TagKey<ModelType> getModelTypes() {
         return FAModelTypeTags.MAMMOTH;
     }
 

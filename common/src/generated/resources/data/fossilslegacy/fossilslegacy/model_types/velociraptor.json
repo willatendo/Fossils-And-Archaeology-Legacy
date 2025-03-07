@@ -22,5 +22,6 @@
   "models": {
     "model": "fossilslegacy:velociraptor"
   },
-  "patterns": "fossilslegacy:velociraptor_2024"
+  "patterns": "fossilslegacy:patterns/velociraptor_2024",
+  "skins": "fossilslegacy:skins/velociraptor_2024"
 }

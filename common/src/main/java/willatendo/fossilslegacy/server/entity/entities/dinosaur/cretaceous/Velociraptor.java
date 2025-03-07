@@ -24,7 +24,6 @@ import net.minecraft.world.item.LeadItem;
 import net.minecraft.world.item.NameTagItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -38,9 +37,10 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformati
 import willatendo.fossilslegacy.server.entity.util.interfaces.HighlyIntelligent;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.item.items.DebugItem;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
-import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 import willatendo.fossilslegacy.server.tags.FAEntityTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 
 import java.util.Optional;
 
@@ -73,7 +73,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
     }
 
     @Override
-    public TagKey<ModelType> getCoatTypes() {
+    public TagKey<ModelType> getModelTypes() {
         return FAModelTypeTags.VELOCIRAPTOR;
     }
 
@@ -178,7 +178,6 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        this.addCosmeticsData(compoundTag);
         compoundTag.putBoolean("LearnedChests", this.hasLearnedChests());
         if (!this.getHeldItem().isEmpty()) {
             compoundTag.put("HeldItem", this.getHeldItem().saveOptional(this.registryAccess()));
@@ -188,7 +187,6 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        this.readCosmeticsData(compoundTag);
         this.setLearnedChests(compoundTag.getBoolean("LearnedChests"));
         CompoundTag itemCompoundTag = compoundTag.getCompound("HeldItem");
         if (itemCompoundTag != null && !itemCompoundTag.isEmpty()) {

@@ -3,6 +3,9 @@ package willatendo.fossilslegacy.client.render;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import willatendo.fossilslegacy.client.state.DodoRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Dodo;
+import willatendo.fossilslegacy.server.pattern.information.TextureType;
+
+import java.util.List;
 
 public class DodoRenderer extends DataDrivenModelMobRenderer<Dodo, DodoRenderState> {
     public DodoRenderer(EntityRendererProvider.Context context) {
@@ -18,5 +21,15 @@ public class DodoRenderer extends DataDrivenModelMobRenderer<Dodo, DodoRenderSta
     public void extractRenderState(Dodo dodo, DodoRenderState dodoRenderState, float partialTick) {
         super.extractRenderState(dodo, dodoRenderState, partialTick);
         dodoRenderState.fallAnimationState.copyFrom(dodo.fallAnimationState);
+    }
+
+    @Override
+    public String baseTextureName() {
+        return "dodo";
+    }
+
+    @Override
+    public List<TextureType> requiredTextures() {
+        return List.of(TextureType.BASE);
     }
 }

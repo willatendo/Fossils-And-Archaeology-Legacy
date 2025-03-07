@@ -14,13 +14,14 @@ import willatendo.fossilslegacy.server.item.items.ArticulatedFossilItem;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
+import java.util.Optional;
 import java.util.function.Supplier;
 
 public interface FossilsModloaderHelper {
     FossilsModloaderHelper INSTANCE = SimpleUtils.loadModloaderHelper(FossilsModloaderHelper.class);
 
     // Platform
-    void sendApplyGenePacket(BlockPos blockPos, String modelType, String pattern);
+    void sendApplyGenePacket(BlockPos blockPos, String modelType, String skin, Optional<String> pattern);
 
     void sendTimeMachinePacket(BlockPos blockPos);
 

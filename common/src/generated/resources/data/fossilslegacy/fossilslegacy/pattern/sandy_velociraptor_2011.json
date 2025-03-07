@@ -1,11 +1,14 @@
 {
   "gene_color": 16777215,
-  "pattern_name": {
-    "translate": "pattern.fossilslegacy.eastern_brown_snake"
+  "genetic_type": "dominant",
+  "pattern_information": {
+    "type": "fossilslegacy:package",
+    "textures": {
+      "baby": "fossilslegacy:textures/entity/velociraptor/legacy/sandy_velociraptor_baby.png",
+      "base": "fossilslegacy:textures/entity/velociraptor/legacy/sandy_velociraptor_adult.png"
+    }
   },
-  "pattern_type": "fossilslegacy:basic",
-  "textures": {
-    "baby": "fossilslegacy:textures/entity/velociraptor/legacy/sandy_velociraptor_baby.png",
-    "base": "fossilslegacy:textures/entity/velociraptor/legacy/sandy_velociraptor_adult.png"
+  "pattern_name": {
+    "translate": "skin.fossilslegacy.eastern_brown_snake"
   }
 }

@@ -28,7 +28,6 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -40,6 +39,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.RideableDinosaur;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
 import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 
@@ -83,7 +83,7 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
     }
 
     @Override
-    public TagKey<ModelType> getCoatTypes() {
+    public TagKey<ModelType> getModelTypes() {
         return FAModelTypeTags.FUTABASAURUS;
     }
 

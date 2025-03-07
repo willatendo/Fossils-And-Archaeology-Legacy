@@ -116,7 +116,7 @@ public class DinopediaScreen extends Screen {
             if (dinopediaEntry.drawEntity()) {
                 textStart = 90;
                 this.livingEntity.tickCount = this.player.tickCount;
-                GeneModificationTableScreen.renderEntityInInventoryFollowsMouse(guiGraphics, leftPos + 20, topPos + 15, leftPos + 172, topPos + 80, 16, 1.0F, 0.25F, mouseX, mouseY, this.livingEntity);
+                DNARecombinatorScreen.renderEntityInInventoryFollowsMouse(guiGraphics, leftPos + 20, topPos + 15, leftPos + 172, topPos + 80, 16, 1.0F, 0.25F, mouseX, mouseY, this.livingEntity);
             }
 
             List<Component> components = new ArrayList<>();

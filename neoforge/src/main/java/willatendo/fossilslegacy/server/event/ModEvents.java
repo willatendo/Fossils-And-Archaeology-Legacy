@@ -34,6 +34,7 @@ public class ModEvents {
         BasicEvents.commonSetup();
         BasicEvents.strippablesSetup(new NeoforgeStrippablesModification());
         ModEvents.setupDataMaps();
+        BasicEvents.idModification(new NeoforgeIdModification(FAUtils.ID, event));
     }
 
     public static void setupDataMaps() {

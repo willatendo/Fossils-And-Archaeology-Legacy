@@ -22,7 +22,7 @@ public final class FAMenuTypes {
     public static final SimpleHolder<MenuType<CultivatorMenu>> CULTIVATOR = FAMenuTypes.register("cultivator", CultivatorMenu::new, CultivatorMenu::new);
     public static final SimpleHolder<MenuType<FeederMenu>> FEEDER = FAMenuTypes.register("feeder", FeederMenu::new, FeederMenu::new);
     public static final SimpleHolder<MenuType<TimeMachineMenu>> TIME_MACHINE = FAMenuTypes.register("time_machine", TimeMachineMenu::new, TimeMachineMenu::new);
-    public static final SimpleHolder<MenuType<GeneModificationTableMenu>> GENE_MODIFICATION = FAMenuTypes.register("gene_modification", GeneModificationTableMenu::new, GeneModificationTableMenu::new);
+    public static final SimpleHolder<MenuType<DNARecombinatorMenu>> GENE_MODIFICATION = FAMenuTypes.register("gene_modification", DNARecombinatorMenu::new, DNARecombinatorMenu::new);
 
     private static <T extends AbstractContainerMenu> SimpleHolder<MenuType<T>> register(String id, CreateSimple<T> createSimple) {
         return MENU_TYPES.register(id, () -> SimpleUtils.createMenuType(new ExtendedMenuSupplier<T>() {

@@ -41,7 +41,6 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -54,6 +53,7 @@ import willatendo.fossilslegacy.server.entity.goals.IchthyosaurusJumpGoal;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
+import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 import willatendo.fossilslegacy.server.tags.FAStructureTags;
 
@@ -103,7 +103,7 @@ public class Ichthyosaurus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
-    public TagKey<ModelType> getCoatTypes() {
+    public TagKey<ModelType> getModelTypes() {
         return FAModelTypeTags.ICHTHYOSAURUS;
     }
 
