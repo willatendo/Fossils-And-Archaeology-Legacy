@@ -1,0 +1,12 @@
+{
+  "gene_color": 4691576,
+  "genetic_type": "dominant",
+  "pattern_information": {
+    "type": "fossilslegacy:composite",
+    "layer": 0,
+    "texture_path": "amazon_rainforest"
+  },
+  "pattern_name": {
+    "translate": "skin.fossilslegacy.amazon_rainforest"
+  }
+}

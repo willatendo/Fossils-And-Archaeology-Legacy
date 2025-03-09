@@ -1,8 +1,10 @@
 {
-  "gene_color": 0,
+  "gene_color": 16777215,
   "genetic_type": "dominant",
   "pattern_information": {
     "type": "fossilslegacy:blank"
   },
-  "pattern_name": ""
+  "pattern_name": {
+    "translate": "pattern.fossilslegacy.blank"
+  }
 }

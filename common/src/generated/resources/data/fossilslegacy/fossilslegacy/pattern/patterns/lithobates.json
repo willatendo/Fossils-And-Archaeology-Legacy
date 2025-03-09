@@ -1,12 +1,12 @@
 {
-  "gene_color": 4729098,
+  "gene_color": 3678731,
   "genetic_type": "dominant",
   "pattern_information": {
     "type": "fossilslegacy:composite",
     "layer": 1,
-    "texture_path": "rana"
+    "texture_path": "lithobates"
   },
   "pattern_name": {
-    "translate": "pattern.fossilslegacy.rana"
+    "translate": "pattern.fossilslegacy.lithobates"
   }
 }

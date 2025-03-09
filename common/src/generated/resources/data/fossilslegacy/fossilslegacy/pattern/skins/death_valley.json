@@ -1,12 +1,12 @@
 {
-  "gene_color": 4729098,
+  "gene_color": 11372561,
   "genetic_type": "dominant",
   "pattern_information": {
     "type": "fossilslegacy:composite",
-    "layer": 1,
-    "texture_path": "rana"
+    "layer": 0,
+    "texture_path": "death_valley"
   },
   "pattern_name": {
-    "translate": "pattern.fossilslegacy.rana"
+    "translate": "skin.fossilslegacy.death_valley"
   }
 }

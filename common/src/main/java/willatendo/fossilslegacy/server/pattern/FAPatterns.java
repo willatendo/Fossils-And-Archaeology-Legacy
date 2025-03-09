@@ -9,10 +9,30 @@ import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FAPatterns {
+    // Skins
+    public static final ResourceKey<Pattern> AMAZON_RAINFOREST = FAPatterns.create("skins/amazon_rainforest");
+    public static final ResourceKey<Pattern> CHAMPLAIN_VALLEY = FAPatterns.create("skins/champlain_valley");
+    public static final ResourceKey<Pattern> DEATH_VALLEY = FAPatterns.create("skins/death_valley");
+    public static final ResourceKey<Pattern> GAMBIA_RIVER_BASIN = FAPatterns.create("skins/gambia_river_basin");
+    public static final ResourceKey<Pattern> GREAT_SANDY_DESERT = FAPatterns.create("skins/great_sandy_desert");
+    public static final ResourceKey<Pattern> LIMPOPO_RIVER = FAPatterns.create("skins/limpopo_river");
+    public static final ResourceKey<Pattern> MANGROVE_FOREST = FAPatterns.create("skins/mangrove_forest");
+    public static final ResourceKey<Pattern> QILIAN_MOUNTAINS = FAPatterns.create("skins/qilian_mountains");
+    public static final ResourceKey<Pattern> SALAR_DEL_HUASCO = FAPatterns.create("skins/salar_del_huasco");
     public static final ResourceKey<Pattern> SONORAN_DESERT = FAPatterns.create("skins/sonoran_desert");
-    public static final ResourceKey<Pattern> RANA = FAPatterns.create("patterns/rana");
-    public static final ResourceKey<Pattern> BLANK = FAPatterns.create("blank");
+    public static final ResourceKey<Pattern> SVALBARD = FAPatterns.create("skins/svalbard");
+    public static final ResourceKey<Pattern> YUKON_RIVER = FAPatterns.create("skins/yukon_river");
 
+    // Patterns
+    public static final ResourceKey<Pattern> BLANK = FAPatterns.create("patterns/blank");
+    public static final ResourceKey<Pattern> CHALCORANA = FAPatterns.create("patterns/chalcorana");
+    public static final ResourceKey<Pattern> LITHOBATES = FAPatterns.create("patterns/lithobates");
+    public static final ResourceKey<Pattern> PAPURANA = FAPatterns.create("patterns/papurana");
+    public static final ResourceKey<Pattern> PELOPHYLAX = FAPatterns.create("patterns/pelophylax");
+    public static final ResourceKey<Pattern> PULCHRANA = FAPatterns.create("patterns/pulchrana");
+    public static final ResourceKey<Pattern> RANA = FAPatterns.create("patterns/rana");
+
+    // Package Skins
     public static final ResourceKey<Pattern> ANKYLOSAURUS_2024 = FAPatterns.create("ankylosaurus_2024");
     public static final ResourceKey<Pattern> BRACHIOSAURUS_2024 = FAPatterns.create("brachiosaurus_2024");
     public static final ResourceKey<Pattern> GREEN_CARNOTAURUS_2024 = FAPatterns.create("green_carnotaurus_2024");
@@ -70,10 +90,27 @@ public final class FAPatterns {
     }
 
     public static void bootstrap(BootstrapContext<Pattern> bootstrapContext) {
+        FAPatterns.register(bootstrapContext, AMAZON_RAINFOREST, Pattern.builder(FAUtils.translation("skin", "amazon_rainforest"), 0x479678, GeneticType.DOMINANT).buildComposite("amazon_rainforest", 0));
+        FAPatterns.register(bootstrapContext, CHAMPLAIN_VALLEY, Pattern.builder(FAUtils.translation("skin", "champlain_valley"), 0x654920, GeneticType.DOMINANT).buildComposite("champlain_valley", 0));
+        FAPatterns.register(bootstrapContext, DEATH_VALLEY, Pattern.builder(FAUtils.translation("skin", "death_valley"), 0xAD8811, GeneticType.DOMINANT).buildComposite("death_valley", 0));
+        FAPatterns.register(bootstrapContext, GAMBIA_RIVER_BASIN, Pattern.builder(FAUtils.translation("skin", "gambia_river_basin"), 0x6C6665, GeneticType.DOMINANT).buildComposite("gambia_river_basin", 0));
+        FAPatterns.register(bootstrapContext, GREAT_SANDY_DESERT, Pattern.builder(FAUtils.translation("skin", "great_sandy_desert"), 0x5E6747, GeneticType.DOMINANT).buildComposite("great_sandy_desert", 0));
+        FAPatterns.register(bootstrapContext, LIMPOPO_RIVER, Pattern.builder(FAUtils.translation("skin", "limpopo_river"), 0x4A331A, GeneticType.DOMINANT).buildComposite("limpopo_river", 0));
+        FAPatterns.register(bootstrapContext, MANGROVE_FOREST, Pattern.builder(FAUtils.translation("skin", "mangrove_forest"), 0x5B753D, GeneticType.DOMINANT).buildComposite("mangrove_forest", 0));
+        FAPatterns.register(bootstrapContext, QILIAN_MOUNTAINS, Pattern.builder(FAUtils.translation("skin", "qilian_mountains"), 0xA9A191, GeneticType.DOMINANT).buildComposite("qilian_mountains", 0));
+        FAPatterns.register(bootstrapContext, SALAR_DEL_HUASCO, Pattern.builder(FAUtils.translation("skin", "salar_del_huasco"), 0x4A4018, GeneticType.DOMINANT).buildComposite("salar_del_huasco", 0));
         FAPatterns.register(bootstrapContext, SONORAN_DESERT, Pattern.builder(FAUtils.translation("skin", "sonoran_desert"), 0xB4813E, GeneticType.DOMINANT).buildComposite("sonoran_desert", 0));
-        FAPatterns.register(bootstrapContext, RANA, Pattern.builder(FAUtils.translation("pattern", "rana"), 0x41722C, GeneticType.DOMINANT).buildComposite("rana", 1));
+        FAPatterns.register(bootstrapContext, SVALBARD, Pattern.builder(FAUtils.translation("skin", "svalbard"), 0x837B53, GeneticType.DOMINANT).buildComposite("svalbard", 0));
+        FAPatterns.register(bootstrapContext, YUKON_RIVER, Pattern.builder(FAUtils.translation("skin", "yukon_river"), 0x88724D, GeneticType.DOMINANT).buildComposite("yukon_river", 0));
 
         FAPatterns.register(bootstrapContext, BLANK, new Pattern());
+        FAPatterns.register(bootstrapContext, CHALCORANA, Pattern.builder(FAUtils.translation("pattern", "chalcorana"), 0x72A03C, GeneticType.DOMINANT).buildComposite("chalcorana", 1));
+        FAPatterns.register(bootstrapContext, LITHOBATES, Pattern.builder(FAUtils.translation("pattern", "lithobates"), 0x38220B, GeneticType.DOMINANT).buildComposite("lithobates", 1));
+        FAPatterns.register(bootstrapContext, PAPURANA, Pattern.builder(FAUtils.translation("pattern", "papurana"), 0xBD5F1C, GeneticType.DOMINANT).buildComposite("papurana", 1));
+        FAPatterns.register(bootstrapContext, PELOPHYLAX, Pattern.builder(FAUtils.translation("pattern", "pelophylax"), 0x45B58F, GeneticType.DOMINANT).buildComposite("pelophylax", 1));
+        FAPatterns.register(bootstrapContext, PULCHRANA, Pattern.builder(FAUtils.translation("pattern", "pulchrana"), 0x241D16, GeneticType.DOMINANT).buildComposite("pulchrana", 1));
+        FAPatterns.register(bootstrapContext, RANA, Pattern.builder(FAUtils.translation("pattern", "rana"), 0x48290A, GeneticType.DOMINANT).buildComposite("rana", 1));
+
         FAPatterns.register(bootstrapContext, ANKYLOSAURUS_2024, Pattern.builder(FAUtils.resource("textures/entity/ankylosaurus/ankylosaurus_adult.png"), Component.translatable("skin.fossilslegacy.eastern_brown_snake"), 0xFFFFFF, GeneticType.DOMINANT).withBabyTexture(FAUtils.resource("textures/entity/ankylosaurus/ankylosaurus_baby.png")).buildPackage());
         FAPatterns.register(bootstrapContext, BRACHIOSAURUS_2024, Pattern.builder(FAUtils.resource("textures/entity/brachiosaurus/brachiosaurus_adult.png"), Component.translatable("skin.fossilslegacy.blue_iguana"), 0xFFFFFF, GeneticType.DOMINANT).withBabyTexture(FAUtils.resource("textures/entity/brachiosaurus/brachiosaurus_baby.png")).buildPackage());
         FAPatterns.register(bootstrapContext, GREEN_CARNOTAURUS_2024, Pattern.builder(FAUtils.resource("textures/entity/carnotaurus/green_carnotaurus_adult.png"), Component.translatable("skin.fossilslegacy.green_tree_python"), 0xFFFFFF, GeneticType.DOMINANT).withBabyTexture(FAUtils.resource("textures/entity/carnotaurus/red_carnotaurus_baby.png")).buildPackage());

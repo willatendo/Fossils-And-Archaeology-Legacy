@@ -16,10 +16,10 @@ public class FAPatternTagProvider extends DataDrivenTagsProvider<Pattern> {
 
     @Override
     protected void addTags(Provider provider) {
-        this.tag(FAPatternTags.HAS_PATTERNS).add(FAPatterns.SONORAN_DESERT);
+        this.tag(FAPatternTags.HAS_PATTERNS).add(FAPatterns.AMAZON_RAINFOREST, FAPatterns.CHAMPLAIN_VALLEY, FAPatterns.DEATH_VALLEY, FAPatterns.GAMBIA_RIVER_BASIN, FAPatterns.GREAT_SANDY_DESERT, FAPatterns.LIMPOPO_RIVER, FAPatterns.MANGROVE_FOREST, FAPatterns.QILIAN_MOUNTAINS, FAPatterns.SALAR_DEL_HUASCO, FAPatterns.SONORAN_DESERT, FAPatterns.SVALBARD, FAPatterns.YUKON_RIVER);
 
-        this.tag(FAPatternTags.ANKYLOSAURUS_2024_SKINS).add(FAPatterns.ANKYLOSAURUS_2024, FAPatterns.SONORAN_DESERT);
-        this.tag(FAPatternTags.ANKYLOSAURUS_2024_PATTERNS).add(FAPatterns.RANA);
+        this.tag(FAPatternTags.ANKYLOSAURUS_2024_SKINS).add(FAPatterns.ANKYLOSAURUS_2024, FAPatterns.AMAZON_RAINFOREST, FAPatterns.CHAMPLAIN_VALLEY, FAPatterns.DEATH_VALLEY, FAPatterns.GAMBIA_RIVER_BASIN, FAPatterns.GREAT_SANDY_DESERT, FAPatterns.LIMPOPO_RIVER, FAPatterns.MANGROVE_FOREST, FAPatterns.QILIAN_MOUNTAINS, FAPatterns.SALAR_DEL_HUASCO, FAPatterns.SONORAN_DESERT, FAPatterns.SVALBARD, FAPatterns.YUKON_RIVER);
+        this.tag(FAPatternTags.ANKYLOSAURUS_2024_PATTERNS).add(FAPatterns.BLANK, FAPatterns.CHALCORANA, FAPatterns.LITHOBATES, FAPatterns.PAPURANA, FAPatterns.PELOPHYLAX, FAPatterns.PULCHRANA, FAPatterns.RANA);
         this.tag(FAPatternTags.BRACHIOSAURUS_2024_SKINS).add(FAPatterns.BRACHIOSAURUS_2024);
         this.tag(FAPatternTags.BRACHIOSAURUS_2024_PATTERNS);
         this.tag(FAPatternTags.BRACHIOSAURUS_2011_SKINS).add(FAPatterns.BRACHIOSAURUS_2011);

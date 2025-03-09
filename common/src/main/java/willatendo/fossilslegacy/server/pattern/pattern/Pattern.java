@@ -17,6 +17,7 @@ import willatendo.fossilslegacy.server.pattern.information.type.BlankPatternInfo
 import willatendo.fossilslegacy.server.pattern.information.type.CompositePatternInformation;
 import willatendo.fossilslegacy.server.pattern.information.type.PackagePatternInformation;
 import willatendo.fossilslegacy.server.registry.FARegistries;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +29,7 @@ public record Pattern(Component patternName, int geneColor, GeneticType geneticT
     public static final StreamCodec<RegistryFriendlyByteBuf, Holder<Pattern>> STREAM_CODEC = ByteBufCodecs.holderRegistry(FARegistries.PATTERN);
 
     public Pattern() {
-        this(Component.empty(), 0x000000, GeneticType.DOMINANT, new BlankPatternInformation());
+        this(FAUtils.translation("pattern", "blank"), 0xFFFFFF, GeneticType.DOMINANT, new BlankPatternInformation());
     }
 
     public ResourceLocation getTexture(TextureType textureType, String textureName, List<TextureType> requiredTextures) {

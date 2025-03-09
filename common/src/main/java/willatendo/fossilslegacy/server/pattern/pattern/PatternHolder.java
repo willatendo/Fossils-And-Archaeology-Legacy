@@ -12,8 +12,12 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 import java.util.Optional;
 
 public record PatternHolder(Holder<Pattern> skin, Optional<Holder<Pattern>> pattern) {
-    public static final Codec<PatternHolder> CODEC = RecordCodecBuilder.create(instance -> instance.group(Pattern.CODEC.fieldOf("skin").forGetter(PatternHolder::skin), Pattern.CODEC.optionalFieldOf("skin").forGetter(PatternHolder::pattern)).apply(instance, PatternHolder::new));
+    public static final Codec<PatternHolder> CODEC = RecordCodecBuilder.create(instance -> instance.group(Pattern.CODEC.fieldOf("skin").forGetter(PatternHolder::skin), Pattern.CODEC.optionalFieldOf("pattern").forGetter(PatternHolder::pattern)).apply(instance, PatternHolder::new));
     public static final StreamCodec<RegistryFriendlyByteBuf, PatternHolder> STREAM_CODEC = StreamCodec.composite(Pattern.STREAM_CODEC, PatternHolder::skin, ByteBufCodecs.optional(Pattern.STREAM_CODEC), PatternHolder::pattern, PatternHolder::new);
+
+    public PatternHolder(Holder<Pattern> skin, Holder<Pattern> pattern) {
+        this(skin, Optional.of(pattern));
+    }
 
     public PatternHolder(Holder<Pattern> skin) {
         this(skin, Optional.empty());
@@ -21,10 +25,6 @@ public record PatternHolder(Holder<Pattern> skin, Optional<Holder<Pattern>> patt
 
     public boolean hasPattern() {
         return this.pattern.isPresent();
-    }
-
-    public int getGeneColor() {
-        return this.hasPattern() ? 0x000000 : this.skin.value().geneColor();
     }
 
     public Component getDisplayName() {

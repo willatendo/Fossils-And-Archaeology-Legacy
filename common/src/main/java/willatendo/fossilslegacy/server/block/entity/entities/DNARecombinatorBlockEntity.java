@@ -140,7 +140,7 @@ public class DNARecombinatorBlockEntity extends BaseContainerBlockEntity impleme
 
     @Override
     protected Component getDefaultName() {
-        return FAUtils.translation("container", "gene_modification_table");
+        return FAUtils.translation("container", "dna_recombinator");
     }
 
     @Override

@@ -1,0 +1,12 @@
+{
+  "gene_color": 4866072,
+  "genetic_type": "dominant",
+  "pattern_information": {
+    "type": "fossilslegacy:composite",
+    "layer": 0,
+    "texture_path": "salar_del_huasco"
+  },
+  "pattern_name": {
+    "translate": "skin.fossilslegacy.salar_del_huasco"
+  }
+}

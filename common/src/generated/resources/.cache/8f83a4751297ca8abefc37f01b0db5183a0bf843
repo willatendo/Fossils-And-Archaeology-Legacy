@@ -1,6 +1,6 @@
-// 1.21.4	2025-03-06T07:59:11.4440858	Tags for fossilslegacy:pattern mod id fossilslegacy
-96c2bc748a9ac926f1e100ce34f7d07efc3f77ff data/fossilslegacy/tags/fossilslegacy/pattern/has_patterns.json
-e826358d8a1da41fa5d4c0155d7c079a642e9a40 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/ankylosaurus_2024.json
+// 1.21.4	2025-03-09T00:09:13.6276738	Tags for fossilslegacy:pattern mod id fossilslegacy
+937df03543bfa48bf7ec15af9c5a7b05909af9a9 data/fossilslegacy/tags/fossilslegacy/pattern/has_patterns.json
+ef52692a198ca41227d838fea99bf06b26463124 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/ankylosaurus_2024.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/brachiosaurus_2011.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/brachiosaurus_2024.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/carnotaurus_2011.json
@@ -37,7 +37,7 @@ e826358d8a1da41fa5d4c0155d7c079a642e9a40 data/fossilslegacy/tags/fossilslegacy/p
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/tyrannosaurus_2024.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/velociraptor_2011.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/velociraptor_2024.json
-9f866b59d62cc96c3b87e0ea98e05c0bd443c022 data/fossilslegacy/tags/fossilslegacy/pattern/skins/ankylosaurus_2024.json
+2c0b63a695a47050f5dde50c391354c9b1919f79 data/fossilslegacy/tags/fossilslegacy/pattern/skins/ankylosaurus_2024.json
 31a5effcaeb034ee906ce61b479f910217705c7b data/fossilslegacy/tags/fossilslegacy/pattern/skins/brachiosaurus_2011.json
 1889c5ff05755b544f275e790a83f7f71fb98423 data/fossilslegacy/tags/fossilslegacy/pattern/skins/brachiosaurus_2024.json
 e8813fcd626681bf479f103096e074ce7a909184 data/fossilslegacy/tags/fossilslegacy/pattern/skins/carnotaurus_2011.json
