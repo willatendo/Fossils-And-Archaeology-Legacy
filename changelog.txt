@@ -1,4 +1,5 @@
 9/2/2025 1.5.0
+- Fixed Mammoth Being Able To Be Ridden At First Growth Stage
 - Mammoth Shearing Is Done By Loot Table
 - Cultivator Recipes Now Unlocked By Acquiring Water Buckets
 - Llama Statue Recipes Now In One Group

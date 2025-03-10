@@ -12,8 +12,8 @@
     "bounding_box_width": 0.7
   },
   "display_info": {
-    "display_scale": 0.4,
-    "display_y_offset": 1.5,
+    "display_scale": 1.75,
+    "display_y_offset": 1.0,
     "geneColor": 7817491,
     "model_name": {
       "translate": "model_type.fossilslegacy.gallimimus"

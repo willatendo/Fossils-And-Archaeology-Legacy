@@ -12,7 +12,7 @@
     "bounding_box_width": 0.5
   },
   "display_info": {
-    "display_scale": 0.4,
+    "display_scale": 1.0,
     "display_y_offset": 0.25,
     "geneColor": 881478,
     "model_name": {

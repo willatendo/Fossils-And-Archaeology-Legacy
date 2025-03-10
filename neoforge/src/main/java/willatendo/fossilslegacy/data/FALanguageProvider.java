@@ -299,11 +299,12 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAEntityTypes.DILOPHOSAURUS.get());
         this.add(FAEntityTypes.DIMETRODON.get());
         this.add(FAEntityTypes.DODO.get());
+        this.add(FAEntityTypes.ELASMOTHERIUM.get());
+        this.add(FAEntityTypes.FUTABASAURUS.get());
         this.add(FAEntityTypes.MOA.get());
         this.add(FAEntityTypes.MAMMOTH.get());
         this.add(FAEntityTypes.MOSASAURUS.get());
         this.add(FAEntityTypes.NAUTILUS.get());
-        this.add(FAEntityTypes.FUTABASAURUS.get());
         this.add(FAEntityTypes.GALLIMIMUS.get());
         this.add(FAEntityTypes.ICHTHYOSAURUS.get());
         this.add(FAEntityTypes.PACHYCEPHALOSAURUS.get());
@@ -344,6 +345,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAEntityTypes.PREGNANT_COW.get(), "Cow");
         this.add(FAEntityTypes.PREGNANT_DOLPHIN.get(), "Dolphin");
         this.add(FAEntityTypes.PREGNANT_DONKEY.get(), "Donkey");
+        this.add(FAEntityTypes.PREGNANT_ELASMOTHERIUM.get(), "Elasmotherium");
         this.add(FAEntityTypes.PREGNANT_FOX.get(), "Fox");
         this.add(FAEntityTypes.PREGNANT_GOAT.get(), "Goat");
         this.add(FAEntityTypes.PREGNANT_HORSE.get(), "Horse");
@@ -1017,6 +1019,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlockTags.DODO_SPAWNABLE, "Dodo Spawnable");
         this.add(FABlockTags.EATABLE_FERN, "Eatable Fern");
         this.add(FABlockTags.EATABLE_LEAVES, "Eatable Leaves");
+        this.add(FABlockTags.ELASMOTHERIUM_SPAWNABLE, "Elasmotherium Spawnable");
         this.add(FABlockTags.FEEDER, "Feeder");
         this.add(FABlockTags.GALLIMIMUS_SPAWNABLE, "Gallimimus Spawnable");
         this.add(FABlockTags.JURASSIC_FERN_PLANTABLE_ON, "Jurassic Fern Plantable On");

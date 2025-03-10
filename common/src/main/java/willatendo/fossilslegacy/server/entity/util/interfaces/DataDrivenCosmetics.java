@@ -29,10 +29,9 @@ public interface DataDrivenCosmetics extends SimpleRegistryAccessAccessor {
     default void addCosmeticsData(CompoundTag compoundTag) {
         this.getModelType().unwrapKey().ifPresent(modelType -> compoundTag.putString("model_type", modelType.location().toString()));
         this.getSkin().unwrapKey().ifPresent(skin -> compoundTag.putString("skin", skin.location().toString()));
-    }
-
-    default void addPatternData(CompoundTag compoundTag) {
-        this.getPattern().unwrapKey().ifPresent(pattern -> compoundTag.putString("pattern", pattern.location().toString()));
+        if (this.getPattern() != null) {
+            this.getPattern().unwrapKey().ifPresent(pattern -> compoundTag.putString("pattern", pattern.location().toString()));
+        }
     }
 
     default void readCosmeticsData(CompoundTag compoundTag) {

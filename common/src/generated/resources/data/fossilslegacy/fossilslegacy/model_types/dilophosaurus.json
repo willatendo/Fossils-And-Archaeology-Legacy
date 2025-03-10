@@ -12,8 +12,8 @@
     "bounding_box_width": 0.5
   },
   "display_info": {
-    "display_scale": 1.0,
-    "display_y_offset": 0.25,
+    "display_scale": 3.0,
+    "display_y_offset": -0.5,
     "geneColor": 7565130,
     "model_name": {
       "translate": "model_type.fossilslegacy.dilophosaurus"

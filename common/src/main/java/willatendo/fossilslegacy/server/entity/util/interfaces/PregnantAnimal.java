@@ -1,11 +1,8 @@
 package willatendo.fossilslegacy.server.entity.util.interfaces;
 
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -26,18 +23,16 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Mammo
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Smilodon;
 import willatendo.fossilslegacy.server.entity.entities.pregnant.PregnantSheep;
 import willatendo.fossilslegacy.server.model_type.ModelType;
+import willatendo.fossilslegacy.server.pattern.FAPatterns;
+import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 import willatendo.fossilslegacy.server.pregnancy_types.FAPregnancyTypes;
 import willatendo.fossilslegacy.server.pregnancy_types.PregnancyType;
 import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 
-import java.util.Objects;
 import java.util.Optional;
 
-public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLevelAccessor {
-    MapCodec<Holder<ModelType>> VARIANT_MAP_CODEC = ModelType.CODEC.fieldOf("OffspringCoatType");
-    Codec<Holder<ModelType>> VARIANT_CODEC = VARIANT_MAP_CODEC.codec();
-
+public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLevelAccessor, SimpleRegistryAccessAccessor {
     int getRemainingPregnancyTime();
 
     void setRemainingPregnancyTime(int remainingPregnancyTime);
@@ -56,9 +51,17 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLe
 
     void setPregnancyType(Holder<PregnancyType> pregnancyType);
 
-    Holder<ModelType> getOffspringCoatType();
+    Holder<ModelType> getOffspringModelType();
 
-    void setOffspringCoatType(Holder<ModelType> coatTypeHolder);
+    void setOffspringModelType(Holder<ModelType> coatTypeHolder);
+
+    void setOffspringSkin(Holder<Pattern> pattern);
+
+    Holder<Pattern> getOffspringSkin();
+
+    void setOffspringPattern(Holder<Pattern> pattern);
+
+    Holder<Pattern> getOffspringPattern();
 
     T getBaseEntity(Level level);
 
@@ -67,6 +70,11 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLe
     float getPregnantHealth();
 
     float getPregnantMaxHealth();
+
+    @Override
+    default RegistryAccess getRegistryAccess() {
+        return this.getLevel().registryAccess();
+    }
 
     @Override
     default int maxTime() {
@@ -222,38 +230,31 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLe
         this.onRemove(mob, replaced);
     }
 
-    default void definePregnancyData(EntityDataAccessor<Holder<PregnancyType>> pregnancy, SynchedEntityData.Builder builder) {
-        builder.define(pregnancy, FABuiltInRegistries.PREGNANCY_TYPES.getOrThrow(FAPregnancyTypes.CAT.getKey()));
-    }
-
-    default void defineCoatTypeData(EntityDataAccessor<Holder<ModelType>> pregnancy, SynchedEntityData.Builder builder) {
-        builder.define(pregnancy, this.getLevel().registryAccess().lookupOrThrow(FARegistries.MODEL_TYPES).getAny().orElseThrow());
-    }
-
-    default void addRemainingPregnancyTime(CompoundTag compoundTag) {
-        compoundTag.putInt("PregnancyTime", this.getRemainingTime());
-    }
-
-    default void readRemainingPregnancyTime(CompoundTag compoundTag) {
-        this.setRemainingPregnancyTime(compoundTag.getInt("PregnancyTime"));
+    default void definePregnancyData(SynchedEntityData.Builder builder, EntityDataAccessor<Integer> pregnancyTime, EntityDataAccessor<Holder<PregnancyType>> pregnancyType, EntityDataAccessor<Holder<ModelType>> modelType, EntityDataAccessor<Holder<Pattern>> skin, EntityDataAccessor<Holder<Pattern>> pattern) {
+        builder.define(pregnancyTime, 0);
+        builder.define(pregnancyType, FABuiltInRegistries.PREGNANCY_TYPES.getOrThrow(FAPregnancyTypes.CAT.getKey()));
+        builder.define(modelType, this.getRegistryAccess().lookupOrThrow(FARegistries.MODEL_TYPES).getAny().orElseThrow());
+        builder.define(skin, this.getRegistryAccess().lookupOrThrow(FARegistries.PATTERN).getAny().orElseThrow());
+        builder.define(pattern, this.getRegistryAccess().lookupOrThrow(FARegistries.PATTERN).getAny().orElse(this.getLevel().holderLookup(FARegistries.PATTERN).getOrThrow(FAPatterns.BLANK)));
     }
 
     default void addPregnancyData(CompoundTag compoundTag) {
-        compoundTag.putString("Variant", this.getPregnancyType().unwrapKey().orElse(FAPregnancyTypes.CAT.getKey()).location().toString());
+        compoundTag.putInt("pregnancy_time", this.getRemainingTime());
+        this.getPregnancyType().unwrapKey().ifPresent(pregnancyType -> compoundTag.putString("pregnancy_type", pregnancyType.location().toString()));
+        this.getOffspringModelType().unwrapKey().ifPresent(modelType -> compoundTag.putString("offspring_model_type", modelType.location().toString()));
+        this.getOffspringSkin().unwrapKey().ifPresent(skin -> compoundTag.putString("offspring_skin", skin.location().toString()));
+        if (this.getOffspringPattern() != null) {
+            this.getOffspringPattern().unwrapKey().ifPresent(pattern -> compoundTag.putString("offspring_pattern", pattern.location().toString()));
+        }
     }
 
     default void readPregnancyData(CompoundTag compoundTag) {
-        Optional<ResourceKey<PregnancyType>> eggVariant = Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("Variant"))).map((resourceLocation) -> ResourceKey.create(FARegistries.PREGNANCY_TYPES, resourceLocation));
-        Registry<PregnancyType> registry = FABuiltInRegistries.PREGNANCY_TYPES;
-        Objects.requireNonNull(registry);
-        eggVariant.flatMap(registry::get).ifPresent(this::setPregnancyType);
-    }
-
-    default void addCoatTypeData(CompoundTag compoundTag) {
-        VARIANT_CODEC.encodeStart(this.getLevel().registryAccess().createSerializationContext(NbtOps.INSTANCE), this.getOffspringCoatType()).ifSuccess(tag -> compoundTag.merge((CompoundTag) tag));
-    }
-
-    default void readCoatTypeData(CompoundTag compoundTag) {
-        VARIANT_CODEC.parse(this.getLevel().registryAccess().createSerializationContext(NbtOps.INSTANCE), compoundTag).ifSuccess(this::setOffspringCoatType);
+        this.setRemainingPregnancyTime(compoundTag.getInt("pregnancy_time"));
+        Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("pregnancy_type"))).map(id -> ResourceKey.create(FARegistries.PREGNANCY_TYPES, id)).flatMap(resourceKey -> this.getRegistryAccess().lookupOrThrow(FARegistries.PREGNANCY_TYPES).get(resourceKey)).ifPresent(this::setPregnancyType);
+        Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("offspring_model_type"))).map(id -> ResourceKey.create(FARegistries.MODEL_TYPES, id)).flatMap(resourceKey -> this.getRegistryAccess().lookupOrThrow(FARegistries.MODEL_TYPES).get(resourceKey)).ifPresent(this::setOffspringModelType);
+        Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("offspring_skin"))).map(id -> ResourceKey.create(FARegistries.PATTERN, id)).flatMap(resourceKey -> this.getRegistryAccess().lookupOrThrow(FARegistries.PATTERN).get(resourceKey)).ifPresent(this::setOffspringSkin);
+        if (compoundTag.contains("offspring_pattern")) {
+            Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("offspring_pattern"))).map(id -> ResourceKey.create(FARegistries.PATTERN, id)).flatMap(resourceKey -> this.getRegistryAccess().lookupOrThrow(FARegistries.PATTERN).get(resourceKey)).ifPresent(this::setOffspringPattern);
+        }
     }
 }

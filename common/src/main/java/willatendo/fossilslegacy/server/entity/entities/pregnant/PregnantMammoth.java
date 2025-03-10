@@ -17,7 +17,6 @@ import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Mammoth;
-import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.PregnantAnimal;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.model_type.ModelType;
@@ -25,7 +24,7 @@ import willatendo.fossilslegacy.server.pregnancy_types.PregnancyType;
 
 import java.util.Optional;
 
-public class PregnantMammoth extends Mammoth implements DinopediaInformation, PregnantAnimal<Mammoth> {
+public class PregnantMammoth extends Mammoth implements PregnantAnimal<Mammoth> {
     private static final EntityDataAccessor<Holder<ModelType>> OFFSPRING_COAT_TYPE = SynchedEntityData.defineId(PregnantMammoth.class, FAEntityDataSerializers.MODEL_TYPES.get());
     private static final EntityDataAccessor<Integer> PREGNANCY_TIME = SynchedEntityData.defineId(PregnantMammoth.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Holder<PregnancyType>> PREGNANCY = SynchedEntityData.defineId(PregnantMammoth.class, FAEntityDataSerializers.PREGNANCY_TYPES.get());
@@ -69,7 +68,7 @@ public class PregnantMammoth extends Mammoth implements DinopediaInformation, Pr
         super.addAdditionalSaveData(compoundTag);
         this.addRemainingPregnancyTime(compoundTag);
         this.addPregnancyData(compoundTag);
-        this.addCoatTypeData(compoundTag);
+        this.addPregnancyData(compoundTag);
     }
 
     @Override
@@ -77,7 +76,23 @@ public class PregnantMammoth extends Mammoth implements DinopediaInformation, Pr
         super.readAdditionalSaveData(compoundTag);
         this.readRemainingPregnancyTime(compoundTag);
         this.readPregnancyData(compoundTag);
-        this.readCoatTypeData(compoundTag);
+        this.readPregnancyData(compoundTag);
+    }
+
+    @Override
+    public boolean save(CompoundTag compoundTag) {
+        this.addRemainingPregnancyTime(compoundTag);
+        this.addPregnancyData(compoundTag);
+        this.addPregnancyData(compoundTag);
+        return super.save(compoundTag);
+    }
+
+    @Override
+    public CompoundTag saveWithoutId(CompoundTag compoundTag) {
+        this.addRemainingPregnancyTime(compoundTag);
+        this.addPregnancyData(compoundTag);
+        this.addPregnancyData(compoundTag);
+        return super.saveWithoutId(compoundTag);
     }
 
     @Override
@@ -115,12 +130,12 @@ public class PregnantMammoth extends Mammoth implements DinopediaInformation, Pr
     }
 
     @Override
-    public Holder<ModelType> getOffspringCoatType() {
+    public Holder<ModelType> getOffspringModelType() {
         return this.entityData.get(OFFSPRING_COAT_TYPE);
     }
 
     @Override
-    public void setOffspringCoatType(Holder<ModelType> coatTypeHolder) {
+    public void setOffspringModelType(Holder<ModelType> coatTypeHolder) {
         this.entityData.set(OFFSPRING_COAT_TYPE, coatTypeHolder);
     }
 

@@ -12,8 +12,8 @@
     "bounding_box_width": 0.5
   },
   "display_info": {
-    "display_scale": 0.25,
-    "display_y_offset": 0.25,
+    "display_scale": 0.75,
+    "display_y_offset": 0.0,
     "geneColor": 9535590,
     "model_name": {
       "translate": "model_type.fossilslegacy.legacy_tyrannosaurus"

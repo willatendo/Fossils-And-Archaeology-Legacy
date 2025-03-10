@@ -52,6 +52,7 @@ public final class FAEntityTypes {
     public static final SimpleHolder<EntityType<Spinosaurus>> SPINOSAURUS = FAEntityTypes.register("spinosaurus", FAEntityTypes.simple(Spinosaurus::new, MobCategory.CREATURE, 0.4F, 0.7F));
     public static final SimpleHolder<EntityType<Ankylosaurus>> ANKYLOSAURUS = FAEntityTypes.register("ankylosaurus", FAEntityTypes.simple(Ankylosaurus::new, MobCategory.CREATURE, 0.5F, 0.5F));
     public static final SimpleHolder<EntityType<Ichthyosaurus>> ICHTHYOSAURUS = FAEntityTypes.register("ichthyosaurus", FAEntityTypes.simple(Ichthyosaurus::new, MobCategory.WATER_CREATURE, 0.5F, 0.5F));
+    public static final SimpleHolder<EntityType<Elasmotherium>> ELASMOTHERIUM = FAEntityTypes.register("elasmotherium", FAEntityTypes.simple(Elasmotherium::new, MobCategory.CREATURE, 1.0F, 1.0F));
 
     public static final SimpleHolder<EntityType<Fossil>> FOSSIL = FAEntityTypes.register("fossil", FAEntityTypes.simple(Fossil::new, MobCategory.MISC, 0.5F, 0.5F).noLootTable());
 
@@ -80,6 +81,7 @@ public final class FAEntityTypes {
     public static final SimpleHolder<EntityType<PregnantCow>> PREGNANT_COW = FAEntityTypes.register("pregnant_cow", FAEntityTypes.simple(PregnantCow::new, MobCategory.CREATURE, 0.9F, 1.4F));
     public static final SimpleHolder<EntityType<PregnantDolphin>> PREGNANT_DOLPHIN = FAEntityTypes.register("pregnant_dolphin", FAEntityTypes.simple(PregnantDolphin::new, MobCategory.WATER_CREATURE, 0.9F, 0.6F));
     public static final SimpleHolder<EntityType<PregnantDonkey>> PREGNANT_DONKEY = FAEntityTypes.register("pregnant_donkey", FAEntityTypes.simple(PregnantDonkey::new, MobCategory.CREATURE, 1.3964844F, 1.5F));
+    public static final SimpleHolder<EntityType<PregnantElasmotherium>> PREGNANT_ELASMOTHERIUM = FAEntityTypes.register("pregnant_elasmotherium", FAEntityTypes.simple(PregnantElasmotherium::new, MobCategory.CREATURE, 1.0F, 1.0F));
     public static final SimpleHolder<EntityType<PregnantFox>> PREGNANT_FOX = FAEntityTypes.register("pregnant_fox", FAEntityTypes.simple(PregnantFox::new, MobCategory.CREATURE, 0.6F, 0.7F));
     public static final SimpleHolder<EntityType<PregnantGoat>> PREGNANT_GOAT = FAEntityTypes.register("pregnant_goat", FAEntityTypes.simple(PregnantGoat::new, MobCategory.CREATURE, 0.9F, 1.3F));
     public static final SimpleHolder<EntityType<PregnantHorse>> PREGNANT_HORSE = FAEntityTypes.register("pregnant_horse", FAEntityTypes.simple(PregnantHorse::new, MobCategory.CREATURE, 1.3964844F, 1.6F));

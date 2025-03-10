@@ -73,7 +73,7 @@ public class PregnantOcelot extends Ocelot implements DinopediaInformation, Preg
         super.addAdditionalSaveData(compoundTag);
         this.addRemainingPregnancyTime(compoundTag);
         this.addPregnancyData(compoundTag);
-        this.addCoatTypeData(compoundTag);
+        this.addPregnancyData(compoundTag);
     }
 
     @Override
@@ -81,7 +81,23 @@ public class PregnantOcelot extends Ocelot implements DinopediaInformation, Preg
         super.readAdditionalSaveData(compoundTag);
         this.readRemainingPregnancyTime(compoundTag);
         this.readPregnancyData(compoundTag);
-        this.readCoatTypeData(compoundTag);
+        this.readPregnancyData(compoundTag);
+    }
+
+    @Override
+    public boolean save(CompoundTag compoundTag) {
+        this.addRemainingPregnancyTime(compoundTag);
+        this.addPregnancyData(compoundTag);
+        this.addPregnancyData(compoundTag);
+        return super.save(compoundTag);
+    }
+
+    @Override
+    public CompoundTag saveWithoutId(CompoundTag compoundTag) {
+        this.addRemainingPregnancyTime(compoundTag);
+        this.addPregnancyData(compoundTag);
+        this.addPregnancyData(compoundTag);
+        return super.saveWithoutId(compoundTag);
     }
 
     @Override
@@ -119,12 +135,12 @@ public class PregnantOcelot extends Ocelot implements DinopediaInformation, Preg
     }
 
     @Override
-    public Holder<ModelType> getOffspringCoatType() {
+    public Holder<ModelType> getOffspringModelType() {
         return this.entityData.get(OFFSPRING_COAT_TYPE);
     }
 
     @Override
-    public void setOffspringCoatType(Holder<ModelType> coatTypeHolder) {
+    public void setOffspringModelType(Holder<ModelType> coatTypeHolder) {
         this.entityData.set(OFFSPRING_COAT_TYPE, coatTypeHolder);
     }
 

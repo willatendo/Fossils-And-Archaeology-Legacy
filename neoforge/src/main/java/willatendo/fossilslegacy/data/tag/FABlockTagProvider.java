@@ -54,6 +54,7 @@ public class FABlockTagProvider extends BlockTagsProvider {
         this.tag(FABlockTags.DODO_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
         this.tag(FABlockTags.EATABLE_FERN).add(FABlocks.JURASSIC_FERN.get());
         this.tag(FABlockTags.EATABLE_LEAVES).addTags(BlockTags.LEAVES);
+        this.tag(FABlockTags.ELASMOTHERIUM_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
         this.tag(FABlockTags.FEEDER).add(FABlocks.FEEDER.get());
         this.tag(FABlockTags.GALLIMIMUS_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON).add(Blocks.SAND);
         this.tag(FABlockTags.JURASSIC_FERN_PLANTABLE_ON).addTag(BlockTags.DIRT);

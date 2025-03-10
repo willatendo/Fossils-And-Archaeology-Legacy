@@ -53,6 +53,7 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.MAMMOTH.get(), MammothRenderer::new);
         modelRegister.register(FAEntityTypes.MOSASAURUS.get(), MosasaurusRenderer::new);
         modelRegister.register(FAEntityTypes.NAUTILUS.get(), NautilusRenderer::new);
+        modelRegister.register(FAEntityTypes.ELASMOTHERIUM.get(), ElasmotheriumRenderer::new);
         modelRegister.register(FAEntityTypes.FUTABASAURUS.get(), FutabasaurusRenderer::new);
         modelRegister.register(FAEntityTypes.GALLIMIMUS.get(), GallimimusRenderer::new);
         modelRegister.register(FAEntityTypes.ICHTHYOSAURUS.get(), IchthyosaurusRenderer::new);
@@ -95,6 +96,7 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.PREGNANT_COW.get(), CowRenderer::new);
         modelRegister.register(FAEntityTypes.PREGNANT_DOLPHIN.get(), DolphinRenderer::new);
         modelRegister.register(FAEntityTypes.PREGNANT_DONKEY.get(), context -> new DonkeyRenderer<Donkey>(context, ModelLayers.DONKEY, ModelLayers.DONKEY_BABY, false));
+        modelRegister.register(FAEntityTypes.PREGNANT_ELASMOTHERIUM.get(), ElasmotheriumRenderer::new);
         modelRegister.register(FAEntityTypes.PREGNANT_FOX.get(), FoxRenderer::new);
         modelRegister.register(FAEntityTypes.PREGNANT_GOAT.get(), GoatRenderer::new);
         modelRegister.register(FAEntityTypes.PREGNANT_HORSE.get(), HorseRenderer::new);

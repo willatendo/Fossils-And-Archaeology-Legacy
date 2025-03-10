@@ -52,7 +52,6 @@ public final class FAItems {
     public static final SimpleHolder<AnimalDNAItem> DIMETRODON_DNA = FAItems.register("dimetrodon_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.PERMIAN, FAEntityTypes.DIMETRODON::get, FAModelTypeTags.DIMETRODON, properties));
     public static final SimpleHolder<AnimalDNAItem> ICHTHYOSAURUS_DNA = FAItems.register("ichthyosaurus_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.JURASSIC, FAEntityTypes.ICHTHYOSAURUS::get, FAModelTypeTags.ICHTHYOSAURUS, properties));
     public static final SimpleHolder<AnimalDNAItem> DRYOSAURUS_DNA = FAItems.register("dryosaurus_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.JURASSIC, FAEntityTypes.ICHTHYOSAURUS::get, FAModelTypeTags.ICHTHYOSAURUS, properties));
-    public static final SimpleHolder<AnimalDNAItem> ELASMOTHERIUM_DNA = FAItems.register("elasmotherium_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.PALEOGENE, FAEntityTypes.ICHTHYOSAURUS::get, FAModelTypeTags.ICHTHYOSAURUS, properties));
     public static final SimpleHolder<AnimalDNAItem> BARYONYX_DNA = FAItems.register("baryonyx_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.CRETACEOUS, FAEntityTypes.ICHTHYOSAURUS::get, FAModelTypeTags.ICHTHYOSAURUS, properties));
     public static final SimpleHolder<PlantDNAItem> JURASSIC_FERN_DNA = FAItems.register("jurassic_fern_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.JURASSIC, properties));
     public static final SimpleHolder<PlantDNAItem> LEPIDODENDRON_DNA = FAItems.register("lepidodendron_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.PERMIAN, properties));
@@ -102,6 +101,7 @@ public final class FAItems {
     public static final SimpleHolder<Item> RAW_ANKYLOSAURUS = FAItems.register("raw_ankylosaurus", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_DIMETRODON = FAItems.register("raw_dimetrodon", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_ICHTHYOSAURUS = FAItems.register("raw_ichthyosaurus", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
+    public static final SimpleHolder<Item> RAW_ELASMOTHERIUM = FAItems.register("raw_elasmotherium", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> COOKED_TRICERATOPS = FAItems.register("cooked_triceratops", properties -> new Item(properties.food(FAFoods.COOKED_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> COOKED_VELOCIRAPTOR = FAItems.register("cooked_velociraptor", properties -> new Item(properties.food(FAFoods.COOKED_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> COOKED_TYRANNOSAURUS = FAItems.register("cooked_tyrannosaurus", properties -> new Item(properties.food(FAFoods.COOKED_DINOSAUR_MEAT)));
@@ -167,6 +167,7 @@ public final class FAItems {
     public static final SimpleHolder<AnimalDNAItem> MAMMOTH_DNA = FAItems.register("mammoth_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.QUATERNARY, FAEntityTypes.MAMMOTH::get, FAModelTypeTags.MAMMOTH, properties));
     public static final SimpleHolder<AnimalDNAItem> DODO_DNA = FAItems.register("dodo_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.QUATERNARY, FAEntityTypes.DODO::get, FAModelTypeTags.DODO, properties));
     public static final SimpleHolder<AnimalDNAItem> MOA_DNA = FAItems.register("moa_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.QUATERNARY, FAEntityTypes.MOA::get, FAModelTypeTags.MOA, properties));
+    public static final SimpleHolder<AnimalDNAItem> ELASMOTHERIUM_DNA = FAItems.register("elasmotherium_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.PALEOGENE, FAEntityTypes.ELASMOTHERIUM::get, FAModelTypeTags.ELASMOTHERIUM, properties));
     public static final SimpleHolder<SyringeItem> ARMADILLO_EMBRYO_SYRINGE = FAItems.register("armadillo_embryo_syringe", properties -> new SyringeItem(GeologicalTimeScale.Period.QUATERNARY, FAPregnancyTypes.ARMADILLO, properties.stacksTo(1)));
     public static final SimpleHolder<SyringeItem> CAT_EMBRYO_SYRINGE = FAItems.register("cat_embryo_syringe", properties -> new SyringeItem(GeologicalTimeScale.Period.QUATERNARY, FAPregnancyTypes.CAT, properties.stacksTo(1)));
     public static final SimpleHolder<AnimalEggItem> INCUBATED_CHICKEN_EGG = FAItems.register("incubated_chicken_egg", properties -> new AnimalEggItem(GeologicalTimeScale.Period.QUATERNARY, () -> EntityType.CHICKEN, true, properties.stacksTo(16)));
@@ -274,6 +275,7 @@ public final class FAItems {
     public static final SimpleHolder<DinosaurSpawnEggItem> ANKYLOSAURUS_SPAWN_EGG = FAItems.register("ankylosaurus_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.ANKYLOSAURUS.get(), properties));
     public static final SimpleHolder<DinosaurSpawnEggItem> DIMETRODON_SPAWN_EGG = FAItems.register("dimetrodon_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.DIMETRODON.get(), properties));
     public static final SimpleHolder<DinosaurSpawnEggItem> ICHTHYOSAURUS_SPAWN_EGG = FAItems.register("ichthyosaurus_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.ICHTHYOSAURUS.get(), properties));
+    public static final SimpleHolder<DinosaurSpawnEggItem> ELASMOTHERIUM_SPAWN_EGG = FAItems.register("elasmotherium_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.ELASMOTHERIUM.get(), properties));
 
     public static final SimpleHolder<BlockItem> SKULL_BLOCK = FAItems.register("skull_block", properties -> new BlockItem(FABlocks.SKULL_BLOCK.get(), properties.useBlockDescriptionPrefix().component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD).setSwappable(false).setCameraOverlay(FAUtils.resource("misc/skullblur")).build())));
     public static final SimpleHolder<BlockItem> DNA_RECOMBINATOR = FAItems.register("dna_recombinator", properties -> new BlockItem(FABlocks.DNA_RECOMBINATOR.get(), properties.rarity(Rarity.UNCOMMON).useBlockDescriptionPrefix()));

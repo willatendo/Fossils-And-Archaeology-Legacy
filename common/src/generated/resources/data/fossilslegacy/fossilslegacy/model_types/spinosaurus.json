@@ -12,8 +12,8 @@
     "bounding_box_width": 0.5
   },
   "display_info": {
-    "display_scale": 0.25,
-    "display_y_offset": 3.0,
+    "display_scale": 0.75,
+    "display_y_offset": 2.0,
     "geneColor": 2500125,
     "model_name": {
       "translate": "model_type.fossilslegacy.spinosaurus"

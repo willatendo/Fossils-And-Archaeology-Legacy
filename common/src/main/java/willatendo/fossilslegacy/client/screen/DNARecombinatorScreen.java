@@ -292,9 +292,9 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
                         dinosaur.setPattern(this.patternRegistry.getOrThrow(FAPatterns.BLANK));
                     }
                     ModelType.DisplayInfo displayInfo = modelType.value().displayInfo();
-                    DNARecombinatorScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos - 112, this.topPos + 17, this.leftPos - 6, this.topPos + 193, 16, displayInfo.displayScale(), displayInfo.displayYOffset(), this.xMouse, this.yMouse, mob);
+                    DNARecombinatorScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos - 110, this.topPos + 17, this.leftPos - 3, this.topPos + 193, 16, displayInfo.displayScale(), displayInfo.displayYOffset(), this.xMouse, this.yMouse, mob);
                 } else if (!(mob instanceof Dinosaur)) {
-                    DNARecombinatorScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos - 112, this.topPos + 17, this.leftPos - 6, this.topPos + 193, 16, 1.0F, 0.25F, this.xMouse, this.yMouse, mob);
+                    DNARecombinatorScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos - 110, this.topPos + 17, this.leftPos - 3, this.topPos + 193, 16, 1.0F, 0.25F, this.xMouse, this.yMouse, mob);
                 }
             }
             if (this.modelTypes.length > 0 && this.skins.length > 0) {
@@ -488,7 +488,7 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
 
     public static void renderEntityInInventory(GuiGraphics guiGraphics, float x, float y, float scale, float displayScale, Vector3f translate, Quaternionf pose, Quaternionf cameraOrientation, LivingEntity livingEntity) {
         guiGraphics.pose().pushPose();
-        guiGraphics.pose().translate(x, y, 50.0);
+        guiGraphics.pose().translate(x, y, 150.0);
         guiGraphics.pose().scale(displayScale * scale, displayScale * scale, displayScale * -scale);
         guiGraphics.pose().translate(translate.x, translate.y, translate.z);
         guiGraphics.pose().mulPose(pose);

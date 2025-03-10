@@ -103,7 +103,7 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
 
     @Override
     public int getMinRideableAge() {
-        return 1;
+        return 4;
     }
 
     @Override

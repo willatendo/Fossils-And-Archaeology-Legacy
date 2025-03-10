@@ -10,45 +10,37 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.animal.armadillo.Armadillo;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
-import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
+import willatendo.fossilslegacy.server.entity.FAEntityTypes;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Elasmotherium;
 import willatendo.fossilslegacy.server.entity.util.interfaces.PregnantAnimal;
+import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 import willatendo.fossilslegacy.server.pregnancy_types.PregnancyType;
 
 import java.util.Optional;
 
-public class PregnantArmadillo extends Armadillo implements PregnantAnimal<Armadillo>, DinopediaInformation {
-    private static final EntityDataAccessor<Integer> PREGNANCY_TIME = SynchedEntityData.defineId(PregnantArmadillo.class, EntityDataSerializers.INT);
-    private static final EntityDataAccessor<Holder<PregnancyType>> PREGNANCY_TYPE = SynchedEntityData.defineId(PregnantArmadillo.class, FAEntityDataSerializers.PREGNANCY_TYPES.get());
-    private static final EntityDataAccessor<Holder<ModelType>> OFFSPRING_MODEL_TYPE = SynchedEntityData.defineId(PregnantArmadillo.class, FAEntityDataSerializers.MODEL_TYPES.get());
-    private static final EntityDataAccessor<Holder<Pattern>> OFFSPRING_SKIN = SynchedEntityData.defineId(PregnantArmadillo.class, FAEntityDataSerializers.PATTERN.get());
-    private static final EntityDataAccessor<Holder<Pattern>> OFFSPRING_PATTERN = SynchedEntityData.defineId(PregnantArmadillo.class, FAEntityDataSerializers.PATTERN.get());
+public class PregnantElasmotherium extends Elasmotherium implements PregnantAnimal<Elasmotherium> {
+    private static final EntityDataAccessor<Holder<ModelType>> OFFSPRING_COAT_TYPE = SynchedEntityData.defineId(PregnantElasmotherium.class, FAEntityDataSerializers.MODEL_TYPES.get());
+    private static final EntityDataAccessor<Integer> PREGNANCY_TIME = SynchedEntityData.defineId(PregnantElasmotherium.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Holder<PregnancyType>> PREGNANCY = SynchedEntityData.defineId(PregnantElasmotherium.class, FAEntityDataSerializers.PREGNANCY_TYPES.get());
 
-    public PregnantArmadillo(EntityType<? extends Armadillo> entityType, Level level) {
+    public PregnantElasmotherium(EntityType<? extends PregnantElasmotherium> entityType, Level level) {
         super(entityType, level);
     }
 
     @Override
     public ItemStack getPickResult() {
-        return Items.ARMADILLO_SPAWN_EGG.getDefaultInstance();
+        return FAItems.ELASMOTHERIUM_SPAWN_EGG.get().getDefaultInstance();
     }
 
     @Override
     public boolean canBreed() {
         return false;
-    }
-
-    @Override
-    public Level getLevel() {
-        return this.level();
     }
 
     @Override
@@ -74,23 +66,31 @@ public class PregnantArmadillo extends Armadillo implements PregnantAnimal<Armad
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
+        this.addRemainingPregnancyTime(compoundTag);
+        this.addPregnancyData(compoundTag);
         this.addPregnancyData(compoundTag);
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
+        this.readRemainingPregnancyTime(compoundTag);
+        this.readPregnancyData(compoundTag);
         this.readPregnancyData(compoundTag);
     }
 
     @Override
     public boolean save(CompoundTag compoundTag) {
+        this.addRemainingPregnancyTime(compoundTag);
+        this.addPregnancyData(compoundTag);
         this.addPregnancyData(compoundTag);
         return super.save(compoundTag);
     }
 
     @Override
     public CompoundTag saveWithoutId(CompoundTag compoundTag) {
+        this.addRemainingPregnancyTime(compoundTag);
+        this.addPregnancyData(compoundTag);
         this.addPregnancyData(compoundTag);
         return super.saveWithoutId(compoundTag);
     }
@@ -104,7 +104,9 @@ public class PregnantArmadillo extends Armadillo implements PregnantAnimal<Armad
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        this.definePregnancyData(builder, PREGNANCY_TIME, PREGNANCY_TYPE, OFFSPRING_MODEL_TYPE, OFFSPRING_SKIN, OFFSPRING_PATTERN);
+        this.defineCoatTypeData(OFFSPRING_COAT_TYPE, builder);
+        this.definePregnancyData(PREGNANCY, builder);
+        builder.define(PREGNANCY_TIME, 0);
     }
 
     @Override
@@ -119,42 +121,22 @@ public class PregnantArmadillo extends Armadillo implements PregnantAnimal<Armad
 
     @Override
     public Holder<PregnancyType> getPregnancyType() {
-        return this.entityData.get(PREGNANCY_TYPE);
+        return this.entityData.get(PREGNANCY);
     }
 
     @Override
     public void setPregnancyType(Holder<PregnancyType> pregnancyType) {
-        this.entityData.set(PREGNANCY_TYPE, pregnancyType);
+        this.entityData.set(PREGNANCY, pregnancyType);
     }
 
     @Override
     public Holder<ModelType> getOffspringModelType() {
-        return this.entityData.get(OFFSPRING_MODEL_TYPE);
+        return this.entityData.get(OFFSPRING_COAT_TYPE);
     }
 
     @Override
     public void setOffspringModelType(Holder<ModelType> coatTypeHolder) {
-        this.entityData.set(OFFSPRING_MODEL_TYPE, coatTypeHolder);
-    }
-
-    @Override
-    public void setOffspringSkin(Holder<Pattern> pattern) {
-        this.entityData.set(OFFSPRING_SKIN, pattern);
-    }
-
-    @Override
-    public Holder<Pattern> getOffspringSkin() {
-        return this.entityData.get(OFFSPRING_SKIN);
-    }
-
-    @Override
-    public void setOffspringPattern(Holder<Pattern> pattern) {
-        this.entityData.set(OFFSPRING_PATTERN, pattern);
-    }
-
-    @Override
-    public Holder<Pattern> getOffspringPattern() {
-        return this.entityData.get(OFFSPRING_PATTERN);
+        this.entityData.set(OFFSPRING_COAT_TYPE, coatTypeHolder);
     }
 
     @Override
@@ -163,7 +145,7 @@ public class PregnantArmadillo extends Armadillo implements PregnantAnimal<Armad
     }
 
     @Override
-    public Armadillo getBaseEntity(Level level) {
-        return EntityType.ARMADILLO.create(level, EntitySpawnReason.BREEDING);
+    public Elasmotherium getBaseEntity(Level level) {
+        return FAEntityTypes.ELASMOTHERIUM.get().create(level, EntitySpawnReason.BREEDING);
     }
 }

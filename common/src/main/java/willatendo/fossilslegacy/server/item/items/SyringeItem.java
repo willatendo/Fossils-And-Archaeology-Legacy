@@ -29,13 +29,13 @@ import java.util.List;
 public class SyringeItem extends Item {
     private final GeologicalTimeScale.Period period;
     private final Holder<PregnancyType> pregnancyType;
-    protected final TagKey<ModelType> applicableCoatTypes;
+    protected final TagKey<ModelType> applicableModelTypes;
 
-    public SyringeItem(GeologicalTimeScale.Period period, Holder<PregnancyType> pregnancyType, TagKey<ModelType> applicableCoatTypes, Properties properties) {
+    public SyringeItem(GeologicalTimeScale.Period period, Holder<PregnancyType> pregnancyType, TagKey<ModelType> applicableModelTypes, Properties properties) {
         super(properties);
         this.period = period;
         this.pregnancyType = pregnancyType;
-        this.applicableCoatTypes = applicableCoatTypes;
+        this.applicableModelTypes = applicableModelTypes;
     }
 
     public SyringeItem(GeologicalTimeScale.Period period, Holder<PregnancyType> pregnancyType, Properties properties) {
@@ -59,9 +59,9 @@ public class SyringeItem extends Item {
                 if (!ageableMob.isBaby()) {
                     PregnantAnimal<?> pregnantAnimal = PregnantAnimal.createFromLiving(livingEntity, player.level());
                     pregnantAnimal.setPregnancyType(this.getPregnancyType());
-                    if (this.applicableCoatTypes != null) {
+                    if (this.applicableModelTypes != null) {
                         HolderGetter<ModelType> coatTypeRegistry = pregnantAnimal.getLevel().holderLookup(FARegistries.MODEL_TYPES);
-                        pregnantAnimal.setOffspringCoatType(coatTypeRegistry.getOrThrow(this.applicableCoatTypes).getRandomElement(pregnantAnimal.getLevel().getRandom()).get());
+                        pregnantAnimal.setOffspringModelType(coatTypeRegistry.getOrThrow(this.applicableModelTypes).getRandomElement(pregnantAnimal.getLevel().getRandom()).get());
                     }
                     pregnantAnimal.setRemainingPregnancyTime(0);
                     if (pregnantAnimal instanceof HungerAccessor hungerAccessor) {
@@ -79,6 +79,10 @@ public class SyringeItem extends Item {
             } else {
                 PregnantAnimal<?> pregnantAnimal = PregnantAnimal.createFromLiving(livingEntity, player.level());
                 pregnantAnimal.setPregnancyType(this.getPregnancyType());
+                if (this.applicableModelTypes != null) {
+                    HolderGetter<ModelType> coatTypeRegistry = pregnantAnimal.getLevel().holderLookup(FARegistries.MODEL_TYPES);
+                    pregnantAnimal.setOffspringModelType(coatTypeRegistry.getOrThrow(this.applicableModelTypes).getRandomElement(pregnantAnimal.getLevel().getRandom()).get());
+                }
                 pregnantAnimal.setRemainingPregnancyTime(0);
                 if (pregnantAnimal instanceof HungerAccessor hungerAccessor) {
                     hungerAccessor.setHunger(((HungerAccessor) pregnantAnimal).getHunger());

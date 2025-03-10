@@ -1,4 +1,4 @@
-// 1.21.4	2025-02-28T16:06:54.9018151	Entity Models: fossilslegacy
+// 1.21.4	2025-03-09T20:30:09.3563157	Entity Models: fossilslegacy
 a12e845082d42d128c39632ab235d9fa06d44c55 assets/fossilslegacy/fossilslegacy/models/ankylosaurus.json
 4980d5294f50ff3dd36d8ac4afbb1c8e76cdf688 assets/fossilslegacy/fossilslegacy/models/brachiosaurus.json
 c16354fc12c8f75723bc243ad6529ba020c8dd5f assets/fossilslegacy/fossilslegacy/models/carnotaurus.json
@@ -7,6 +7,7 @@ c16354fc12c8f75723bc243ad6529ba020c8dd5f assets/fossilslegacy/fossilslegacy/mode
 97394f16b399fec72a1879f064811ddc216e661f assets/fossilslegacy/fossilslegacy/models/dilophosaurus.json
 1461b9677496ae965c4ae5e1b6d215f41dd0ca2f assets/fossilslegacy/fossilslegacy/models/dimetrodon.json
 6c3c0581826f9f0c71dd0064fdcbd44e323123fe assets/fossilslegacy/fossilslegacy/models/dodo.json
+be6bb205059bc86ac2a6d6a891be9c94701342a5 assets/fossilslegacy/fossilslegacy/models/elasmotherium.json
 16f231a12b54380dea2133622dd8cd262937def8 assets/fossilslegacy/fossilslegacy/models/futabasaurus.json
 142ee46d2164f2582780e7f6e3bab8a6897b28f4 assets/fossilslegacy/fossilslegacy/models/gallimimus.json
 3218d29f7c46da0209bc3c5ab242615c9126a32f assets/fossilslegacy/fossilslegacy/models/ichthyosaurus.json

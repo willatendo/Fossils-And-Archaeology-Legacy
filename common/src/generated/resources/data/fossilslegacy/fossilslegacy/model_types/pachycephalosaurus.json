@@ -12,8 +12,8 @@
     "bounding_box_width": 0.7
   },
   "display_info": {
-    "display_scale": 0.7,
-    "display_y_offset": 0.0,
+    "display_scale": 2.25,
+    "display_y_offset": -0.5,
     "geneColor": 12609833,
     "model_name": {
       "translate": "model_type.fossilslegacy.pachycephalosaurus"

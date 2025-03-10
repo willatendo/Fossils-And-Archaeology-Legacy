@@ -465,9 +465,6 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
         }
 
         this.addCosmeticsData(compoundTag);
-        if (this.getPattern() != null) {
-            this.addPatternData(compoundTag);
-        }
         this.addCommandType(compoundTag);
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
         compoundTag.putInt("Hunger", this.getHunger());
@@ -495,9 +492,6 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
         }
 
         this.readCosmeticsData(compoundTag);
-        if (this.getPattern() != null) {
-            this.addPatternData(compoundTag);
-        }
         this.readCommandType(compoundTag);
         super.readAdditionalSaveData(compoundTag);
         this.setDaysAlive(compoundTag.getInt("DaysAlive"));
@@ -513,9 +507,6 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
         }
 
         this.addCosmeticsData(compoundTag);
-        if (this.getPattern() != null) {
-            this.addPatternData(compoundTag);
-        }
         this.addCommandType(compoundTag);
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
         compoundTag.putInt("Hunger", this.getHunger());
