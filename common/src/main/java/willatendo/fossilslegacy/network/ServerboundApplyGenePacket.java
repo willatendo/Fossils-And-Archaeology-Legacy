@@ -8,7 +8,6 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import willatendo.fossilslegacy.network.util.ForgeHandlePacket;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 
 public record ServerboundApplyGenePacket(BlockPos blockPos, String modelType, String skin, Optional<String> pattern) implements CustomPacketPayload {

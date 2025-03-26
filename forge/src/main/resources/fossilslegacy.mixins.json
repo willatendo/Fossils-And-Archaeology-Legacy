@@ -4,10 +4,6 @@
   "package": "willatendo.fossilslegacy.mixin",
   "refmap": "fossilslegacy.refmap.json",
   "compatibilityLevel": "JAVA_21",
-  "client": [
-    "client.GuiMixin",
-    "client.RenderTextureOverlayAccessor"
-  ],
   "injectors": {
     "defaultRequire": 1
   }

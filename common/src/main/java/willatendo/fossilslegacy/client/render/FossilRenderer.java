@@ -91,7 +91,6 @@ public class FossilRenderer extends EntityRenderer<Fossil, FossilRenderState> {
     public void render(FossilRenderState fossilRenderState, PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight) {
         FossilVariant fossilVariant = fossilRenderState.variant.value();
         this.setModel(this.getModel(fossilVariant.model()));
-        this.shadowRadius = fossilVariant.shadowSize() + (fossilVariant.shadowGrowth() * fossilRenderState.size);
 
         poseStack.pushPose();
 
@@ -136,7 +135,8 @@ public class FossilRenderer extends EntityRenderer<Fossil, FossilRenderState> {
 
     @Override
     protected float getShadowRadius(FossilRenderState fossilRenderState) {
-        return super.getShadowRadius(fossilRenderState) * fossilRenderState.size;
+        FossilVariant fossilVariant = fossilRenderState.variant.value();
+        return fossilVariant.shadowSize() + (fossilVariant.shadowGrowth() * fossilRenderState.size);
     }
 
     public ResourceLocation getTextureLocation(FossilRenderState fossilRenderState) {

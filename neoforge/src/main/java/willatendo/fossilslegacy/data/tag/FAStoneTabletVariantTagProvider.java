@@ -11,7 +11,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class FAStoneTabletVariantTagProvider extends DataDrivenTagsProvider<StoneTabletVariant> {
     public FAStoneTabletVariantTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId) {
-        super(packOutput, FARegistries.STONE_TABLET_VARIANTS, provider, modId);
+        super(packOutput, FARegistries.STONE_TABLET_VARIANT, provider, modId);
     }
 
     @Override

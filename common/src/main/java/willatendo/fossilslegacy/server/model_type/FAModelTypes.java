@@ -9,6 +9,7 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FAModelTypes {
     public static final ResourceKey<ModelType> ANKYLOSAURUS = FAModelTypes.create("ankylosaurus");
+    public static final ResourceKey<ModelType> BARYONYX = FAModelTypes.create("baryonyx");
     public static final ResourceKey<ModelType> BRACHIOSAURUS = FAModelTypes.create("brachiosaurus");
     public static final ResourceKey<ModelType> CARNOTAURUS = FAModelTypes.create("carnotaurus");
     public static final ResourceKey<ModelType> COMPSOGNATHUS = FAModelTypes.create("compsognathus");
@@ -16,6 +17,8 @@ public final class FAModelTypes {
     public static final ResourceKey<ModelType> DILOPHOSAURUS = FAModelTypes.create("dilophosaurus");
     public static final ResourceKey<ModelType> DIMETRODON = FAModelTypes.create("dimetrodon");
     public static final ResourceKey<ModelType> DODO = FAModelTypes.create("dodo");
+    public static final ResourceKey<ModelType> DRYOSAURUS = FAModelTypes.create("dryosaurus");
+    public static final ResourceKey<ModelType> ELASMOTHERIUM = FAModelTypes.create("elasmotherium");
     public static final ResourceKey<ModelType> FUTABASAURUS = FAModelTypes.create("futabasaurus");
     public static final ResourceKey<ModelType> GALLIMIMUS = FAModelTypes.create("gallimimus");
     public static final ResourceKey<ModelType> ICHTHYOSAURUS = FAModelTypes.create("ichthyosaurus");
@@ -57,6 +60,7 @@ public final class FAModelTypes {
 
     public static void bootstrap(BootstrapContext<ModelType> bootstrapContext) {
         FAModelTypes.register(bootstrapContext, ANKYLOSAURUS, ModelType.build(Component.translatable("model_type.fossilslegacy.ankylosaurus"), 0x533A1B, 1.0F, 0.0F, FAUtils.resource("ankylosaurus"), FAPatternTags.ANKYLOSAURUS_2024_SKINS, FAPatternTags.ANKYLOSAURUS_2024_PATTERNS, 1.75F, 1.5F, 0.2F, 1.5F, 1.5F, 0.3F, 1.0F, 0.25F).build());
+        FAModelTypes.register(bootstrapContext, BARYONYX, ModelType.build(Component.translatable("model_type.fossilslegacy.baryonyx"), 0x3C3F56, 1.0F, 0.0F, FAUtils.resource("baryonyx"), FAPatternTags.BARYONYX_2025_SKINS, FAPatternTags.BARYONYX_2025_PATTERNS, 0.5F, 0.5F, 0.4F, 0.5F, 0.5F, 0.35F, 0.25F, 0.15F).build());
         FAModelTypes.register(bootstrapContext, BRACHIOSAURUS, ModelType.build(Component.translatable("model_type.fossilslegacy.brachiosaurus"), 0x3C3F56, 0.2F, 15.0F, FAUtils.resource("brachiosaurus"), FAPatternTags.BRACHIOSAURUS_2024_SKINS, FAPatternTags.BRACHIOSAURUS_2024_PATTERNS, 1.75F, 2.5F, 0.3F, 1.5F, 1.5F, 0.4F, 1.0F, 0.15F).build());
         FAModelTypes.register(bootstrapContext, CARNOTAURUS, ModelType.build(Component.translatable("model_type.fossilslegacy.carnotaurus"), 0x485039, 1.0F, 0.0F, FAUtils.resource("carnotaurus"), FAPatternTags.CARNOTAURUS_2024_SKINS, FAPatternTags.CARNOTAURUS_2024_PATTERNS, 0.5F, 0.5F, 0.35F, 0.5F, 0.5F, 0.4F, 0.75F, 0.1F).build());
         FAModelTypes.register(bootstrapContext, COMPSOGNATHUS, ModelType.build(Component.translatable("model_type.fossilslegacy.compsognathus"), 0x213D20, 5.0F, -1.0F, FAUtils.resource("compsognathus"), FAPatternTags.COMPSOGNATHUS_2024_SKINS, FAPatternTags.COMPSOGNATHUS_2024_PATTERNS, 0.25F, 0.25F, 0.1F, 0.25F, 0.25F, 0.125F, 0.25F, 0.025F).build());
@@ -64,6 +68,8 @@ public final class FAModelTypes {
         FAModelTypes.register(bootstrapContext, DILOPHOSAURUS, ModelType.build(Component.translatable("model_type.fossilslegacy.dilophosaurus"), 0x736F4A, 3.0F, -0.5F, FAUtils.resource("dilophosaurus"), FAPatternTags.DILOPHOSAURUS_2024_SKINS, FAPatternTags.DILOPHOSAURUS_2024_PATTERNS, 0.5F, 0.5F, 0.2F, 0.2F, 0.2F, 0.15F, 0.15F, 0.1F).build());
         FAModelTypes.register(bootstrapContext, DIMETRODON, ModelType.build(Component.translatable("model_type.fossilslegacy.dimetrodon"), 0x251A22, 3.0F, -1.25F, FAUtils.resource("dimetrodon"), FAPatternTags.DIMETRODON_2024_SKINS, FAPatternTags.DIMETRODON_2024_PATTERNS, 0.5F, 0.5F, 0.05F, 0.5F, 0.5F, 0.075F, 0.15F, 0.05F).build());
         FAModelTypes.register(bootstrapContext, DODO, ModelType.build(Component.translatable("model_type.fossilslegacy.dodo"), 0x5A5A5A, 5.0F, -1.0F, FAUtils.resource("dodo"), FAPatternTags.DODO_2024_SKINS, FAPatternTags.DODO_2024_PATTERNS, 0.5F, 0.5F, 0.05F, 0.5F, 0.5F, 0.07142857142F, 0.15F, 0.05F).build());
+        FAModelTypes.register(bootstrapContext, DRYOSAURUS, ModelType.build(Component.translatable("model_type.fossilslegacy.dryosaurus"), 0x5A5A5A, 3.0F, -0.75F, FAUtils.resource("dryosaurus"), FAPatternTags.DRYOSAURUS_2025_SKINS, FAPatternTags.DRYOSAURUS_2025_PATTERNS, 0.4F, 0.4F, 0.1F, 0.5F, 0.5F, 0.15F, 0.15F, 0.05F).build());
+        FAModelTypes.register(bootstrapContext, ELASMOTHERIUM, ModelType.build(Component.translatable("model_type.fossilslegacy.elasmotherium"), 0xB92200, 2.0F, -0.5F, FAUtils.resource("elasmotherium"), FAPatternTags.ELASMOTHERIUM_2025_SKINS, FAPatternTags.ELASMOTHERIUM_2025_PATTERNS, 1.0F, 1.0F, 0.15F, 0.8F, 0.8F, 0.15F, 0.5F, 0.15F).build());
         FAModelTypes.register(bootstrapContext, FUTABASAURUS, ModelType.build(Component.translatable("model_type.fossilslegacy.futabasaurus"), 0xB92200, 0.5F, 0.25F, FAUtils.resource("futabasaurus"), FAPatternTags.FUTABASAURUS_2024_SKINS, FAPatternTags.FUTABASAURUS_2024_PATTERNS, 2.0F, 0.75F, 0.25F, 1.5F, 1.5F, 0.3F, 1.0F, 0.15F).build());
         FAModelTypes.register(bootstrapContext, GALLIMIMUS, ModelType.build(Component.translatable("model_type.fossilslegacy.gallimimus"), 0x774913, 1.75F, 1.0F, FAUtils.resource("gallimimus"), FAPatternTags.GALLIMIMUS_2024_SKINS, FAPatternTags.GALLIMIMUS_2024_PATTERNS, 0.7F, 0.7F, 0.25F, 0.75F, 0.75F, 0.2F, 1.0F, 0.1F).build());
         FAModelTypes.register(bootstrapContext, ICHTHYOSAURUS, ModelType.build(Component.translatable("model_type.fossilslegacy.ichthyosaurus"), 0x383C4F, 3.0F, -1.0F, FAUtils.resource("ichthyosaurus"), FAPatternTags.ICHTHYOSAURUS_2025_SKINS, FAPatternTags.ICHTHYOSAURUS_2025_PATTERNS, 0.7F, 0.5F, 0.25F, 0.75F, 0.75F, 0.1F, 0.5F, 0.1F).build());

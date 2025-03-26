@@ -20,6 +20,8 @@ public class FAPatternTagProvider extends DataDrivenTagsProvider<Pattern> {
 
         this.tag(FAPatternTags.ANKYLOSAURUS_2024_SKINS).add(FAPatterns.ANKYLOSAURUS_2024, FAPatterns.AMAZON_RAINFOREST, FAPatterns.CHAMPLAIN_VALLEY, FAPatterns.DEATH_VALLEY, FAPatterns.GAMBIA_RIVER_BASIN, FAPatterns.GREAT_SANDY_DESERT, FAPatterns.LIMPOPO_RIVER, FAPatterns.MANGROVE_FOREST, FAPatterns.QILIAN_MOUNTAINS, FAPatterns.SALAR_DEL_HUASCO, FAPatterns.SONORAN_DESERT, FAPatterns.SVALBARD, FAPatterns.YUKON_RIVER);
         this.tag(FAPatternTags.ANKYLOSAURUS_2024_PATTERNS).add(FAPatterns.BLANK, FAPatterns.CHALCORANA, FAPatterns.LITHOBATES, FAPatterns.PAPURANA, FAPatterns.PELOPHYLAX, FAPatterns.PULCHRANA, FAPatterns.RANA);
+        this.tag(FAPatternTags.BARYONYX_2025_SKINS).add(FAPatterns.BARYONYX_2025);
+        this.tag(FAPatternTags.BARYONYX_2025_PATTERNS);
         this.tag(FAPatternTags.BRACHIOSAURUS_2024_SKINS).add(FAPatterns.BRACHIOSAURUS_2024);
         this.tag(FAPatternTags.BRACHIOSAURUS_2024_PATTERNS);
         this.tag(FAPatternTags.BRACHIOSAURUS_2011_SKINS).add(FAPatterns.BRACHIOSAURUS_2011);
@@ -40,8 +42,12 @@ public class FAPatternTagProvider extends DataDrivenTagsProvider<Pattern> {
         this.tag(FAPatternTags.DILOPHOSAURUS_2011_PATTERNS);
         this.tag(FAPatternTags.DODO_2024_SKINS).add(FAPatterns.DODO_2024);
         this.tag(FAPatternTags.DODO_2024_PATTERNS);
+        this.tag(FAPatternTags.DRYOSAURUS_2025_SKINS).add(FAPatterns.DRYOSAURUS_2025);
+        this.tag(FAPatternTags.DRYOSAURUS_2025_PATTERNS);
         this.tag(FAPatternTags.DIMETRODON_2024_SKINS).add(FAPatterns.DIMETRODON_2024);
         this.tag(FAPatternTags.DIMETRODON_2024_PATTERNS);
+        this.tag(FAPatternTags.ELASMOTHERIUM_2025_SKINS).add(FAPatterns.ELASMOTHERIUM_2025);
+        this.tag(FAPatternTags.ELASMOTHERIUM_2025_PATTERNS);
         this.tag(FAPatternTags.FUTABASAURUS_2024_SKINS).add(FAPatterns.FUTABASAURUS_2024);
         this.tag(FAPatternTags.FUTABASAURUS_2024_PATTERNS);
         this.tag(FAPatternTags.FUTABASAURUS_2011_SKINS).add(FAPatterns.FUTABASAURUS_2011);

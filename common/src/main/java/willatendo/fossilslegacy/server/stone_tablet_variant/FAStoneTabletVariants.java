@@ -29,7 +29,7 @@ public final class FAStoneTabletVariants {
     public static final ResourceKey<StoneTabletVariant> ANU_TOTEM = FAStoneTabletVariants.create("anu_totem");
 
     private static ResourceKey<StoneTabletVariant> create(String name) {
-        return ResourceKey.create(FARegistries.STONE_TABLET_VARIANTS, FAUtils.resource(name));
+        return ResourceKey.create(FARegistries.STONE_TABLET_VARIANT, FAUtils.resource(name));
     }
 
     private static void register(BootstrapContext<StoneTabletVariant> bootstrapContext, ResourceKey<StoneTabletVariant> resourceKey, int width, int height) {

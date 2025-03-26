@@ -74,24 +74,24 @@ public class PregnantArmadillo extends Armadillo implements PregnantAnimal<Armad
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        this.addPregnancyData(compoundTag);
+        this.addPregnancyData(compoundTag, this.registryAccess());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        this.readPregnancyData(compoundTag);
+        this.readPregnancyData(compoundTag, this.registryAccess());
     }
 
     @Override
     public boolean save(CompoundTag compoundTag) {
-        this.addPregnancyData(compoundTag);
+        this.addPregnancyData(compoundTag, this.registryAccess());
         return super.save(compoundTag);
     }
 
     @Override
     public CompoundTag saveWithoutId(CompoundTag compoundTag) {
-        this.addPregnancyData(compoundTag);
+        this.addPregnancyData(compoundTag, this.registryAccess());
         return super.saveWithoutId(compoundTag);
     }
 
@@ -104,7 +104,7 @@ public class PregnantArmadillo extends Armadillo implements PregnantAnimal<Armad
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        this.definePregnancyData(builder, PREGNANCY_TIME, PREGNANCY_TYPE, OFFSPRING_MODEL_TYPE, OFFSPRING_SKIN, OFFSPRING_PATTERN);
+        this.definePregnancyData(builder, this.registryAccess(), PREGNANCY_TIME, PREGNANCY_TYPE, OFFSPRING_MODEL_TYPE, OFFSPRING_SKIN, OFFSPRING_PATTERN);
     }
 
     @Override

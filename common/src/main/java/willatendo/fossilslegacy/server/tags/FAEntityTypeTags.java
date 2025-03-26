@@ -9,6 +9,7 @@ import willatendo.simplelibrary.server.util.TagRegister;
 public class FAEntityTypeTags {
     private static final TagRegister<EntityType<?>> ENTITY_TYPE_TAGS = TagRegister.create(Registries.ENTITY_TYPE, FAUtils.ID);
 
+    public static final TagKey<EntityType<?>> BARYONYX_VICTIMS = ENTITY_TYPE_TAGS.register("victims/baryonyx");
     public static final TagKey<EntityType<?>> CARNOTAURUS_VICTIMS = ENTITY_TYPE_TAGS.register("victims/carnotaurus");
     public static final TagKey<EntityType<?>> COMPSOGNATHUS_VICTIMS = ENTITY_TYPE_TAGS.register("victims/compsognathus");
     public static final TagKey<EntityType<?>> CRYOLOPHOSAURUS_VICTIMS = ENTITY_TYPE_TAGS.register("victims/cryolophosaurus");

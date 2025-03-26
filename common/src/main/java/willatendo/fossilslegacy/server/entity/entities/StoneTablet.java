@@ -49,7 +49,7 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        builder.define(STONE_TABLET_VARIANT, this.registryAccess().lookupOrThrow(FARegistries.STONE_TABLET_VARIANTS).getAny().orElseThrow());
+        builder.define(STONE_TABLET_VARIANT, this.registryAccess().lookupOrThrow(FARegistries.STONE_TABLET_VARIANT).getAny().orElseThrow());
     }
 
     @Override
@@ -72,7 +72,7 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
     public static Optional<StoneTablet> create(Level level, BlockPos blockPos, Direction direction) {
         StoneTablet stoneTablet = new StoneTablet(level, blockPos);
         List<Holder<StoneTabletVariant>> stoneTabletVariants = new ArrayList<>();
-        Iterable<Holder<StoneTabletVariant>> stoneTabletVariantIterable = level.registryAccess().lookupOrThrow(FARegistries.STONE_TABLET_VARIANTS).getTagOrEmpty(FAStoneTabletVariantTags.PLACEABLE);
+        Iterable<Holder<StoneTabletVariant>> stoneTabletVariantIterable = level.registryAccess().lookupOrThrow(FARegistries.STONE_TABLET_VARIANT).getTagOrEmpty(FAStoneTabletVariantTags.PLACEABLE);
         Objects.requireNonNull(stoneTabletVariantIterable);
         stoneTabletVariantIterable.forEach(stoneTabletVariants::add);
         if (stoneTabletVariants.isEmpty()) {
@@ -144,7 +144,7 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
     @Override
     public void dropItem(ServerLevel serverLevel, Entity entity) {
         if (serverLevel.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
-            this.playSound(SoundEvents.PAINTING_BREAK, 1.0F, 1.0F);
+            this.playSound(SoundEvents.STONE_BREAK, 1.0F, 1.0F);
             if (entity instanceof Player player) {
                 if (player.hasInfiniteMaterials()) {
                     return;
@@ -157,7 +157,7 @@ public class StoneTablet extends HangingEntity implements VariantHolder<Holder<S
 
     @Override
     public void playPlacementSound() {
-        this.playSound(SoundEvents.PAINTING_PLACE, 1.0F, 1.0F);
+        this.playSound(SoundEvents.STONE_PLACE, 1.0F, 1.0F);
     }
 
     @Override

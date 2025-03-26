@@ -1,6 +1,7 @@
 package willatendo.fossilslegacy.server.entity.util.interfaces;
 
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -13,7 +14,7 @@ import willatendo.fossilslegacy.server.registry.FARegistries;
 
 import java.util.Optional;
 
-public interface DataDrivenCosmetics extends SimpleRegistryAccessAccessor {
+public interface DataDrivenCosmetics {
     void setModelType(Holder<ModelType> modelType);
 
     Holder<ModelType> getModelType();
@@ -26,7 +27,7 @@ public interface DataDrivenCosmetics extends SimpleRegistryAccessAccessor {
 
     Holder<Pattern> getPattern();
 
-    default void addCosmeticsData(CompoundTag compoundTag) {
+    default void addCosmeticsData(CompoundTag compoundTag, HolderLookup.Provider provider) {
         this.getModelType().unwrapKey().ifPresent(modelType -> compoundTag.putString("model_type", modelType.location().toString()));
         this.getSkin().unwrapKey().ifPresent(skin -> compoundTag.putString("skin", skin.location().toString()));
         if (this.getPattern() != null) {
@@ -34,11 +35,11 @@ public interface DataDrivenCosmetics extends SimpleRegistryAccessAccessor {
         }
     }
 
-    default void readCosmeticsData(CompoundTag compoundTag) {
-        Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("model_type"))).map(id -> ResourceKey.create(FARegistries.MODEL_TYPES, id)).flatMap(resourceKey -> this.getRegistryAccess().lookupOrThrow(FARegistries.MODEL_TYPES).get(resourceKey)).ifPresent(this::setModelType);
-        Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("skin"))).map(id -> ResourceKey.create(FARegistries.PATTERN, id)).flatMap(resourceKey -> this.getRegistryAccess().lookupOrThrow(FARegistries.PATTERN).get(resourceKey)).ifPresent(this::setSkin);
+    default void readCosmeticsData(CompoundTag compoundTag, HolderLookup.Provider provider) {
+        Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("model_type"))).map(id -> ResourceKey.create(FARegistries.MODEL_TYPES, id)).flatMap(resourceKey -> provider.lookupOrThrow(FARegistries.MODEL_TYPES).get(resourceKey)).ifPresent(this::setModelType);
+        Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("skin"))).map(id -> ResourceKey.create(FARegistries.PATTERN, id)).flatMap(resourceKey -> provider.lookupOrThrow(FARegistries.PATTERN).get(resourceKey)).ifPresent(this::setSkin);
         if (compoundTag.contains("pattern")) {
-            Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("pattern"))).map(id -> ResourceKey.create(FARegistries.PATTERN, id)).flatMap(resourceKey -> this.getRegistryAccess().lookupOrThrow(FARegistries.PATTERN).get(resourceKey)).ifPresent(this::setPattern);
+            Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("pattern"))).map(id -> ResourceKey.create(FARegistries.PATTERN, id)).flatMap(resourceKey -> provider.lookupOrThrow(FARegistries.PATTERN).get(resourceKey)).ifPresent(this::setPattern);
         }
     }
 

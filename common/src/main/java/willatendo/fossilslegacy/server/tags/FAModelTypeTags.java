@@ -12,6 +12,7 @@ public class FAModelTypeTags {
     public static final TagKey<ModelType> LOCKED = MODEL_TYPE_TAGS.register("locked");
 
     public static final TagKey<ModelType> ANKYLOSAURUS = MODEL_TYPE_TAGS.register("ankylosaurus");
+    public static final TagKey<ModelType> BARYONYX = MODEL_TYPE_TAGS.register("baryonyx");
     public static final TagKey<ModelType> BRACHIOSAURUS = MODEL_TYPE_TAGS.register("brachiosaurus");
     public static final TagKey<ModelType> NON_LEGACY_BRACHIOSAURUS = MODEL_TYPE_TAGS.register("non_legacy/brachiosaurus");
     public static final TagKey<ModelType> CARNOTAURUS = MODEL_TYPE_TAGS.register("carnotaurus");
@@ -23,6 +24,7 @@ public class FAModelTypeTags {
     public static final TagKey<ModelType> NON_LEGACY_DILOPHOSAURUS = MODEL_TYPE_TAGS.register("non_legacy/dilophosaurus");
     public static final TagKey<ModelType> DIMETRODON = MODEL_TYPE_TAGS.register("dimetrodon");
     public static final TagKey<ModelType> DODO = MODEL_TYPE_TAGS.register("dodo");
+    public static final TagKey<ModelType> DRYOSAURUS = MODEL_TYPE_TAGS.register("dryosaurus");
     public static final TagKey<ModelType> ELASMOTHERIUM = MODEL_TYPE_TAGS.register("elasmotherium");
     public static final TagKey<ModelType> FUTABASAURUS = MODEL_TYPE_TAGS.register("futabasaurus");
     public static final TagKey<ModelType> NON_LEGACY_FUTABASAURUS = MODEL_TYPE_TAGS.register("non_legacy/futabasaurus");

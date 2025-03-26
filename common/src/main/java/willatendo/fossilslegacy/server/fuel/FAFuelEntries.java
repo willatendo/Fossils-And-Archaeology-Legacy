@@ -10,7 +10,7 @@ import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
-public class FAFuelEntries {
+public final class FAFuelEntries {
     public static final ResourceKey<FuelEntry> FOSSIL = FAFuelEntries.create("fossil");
     public static final ResourceKey<FuelEntry> RAW_CHICKEN_SOUP_BUCKET = FAFuelEntries.create("raw_chicken_soup_bucket");
     public static final ResourceKey<FuelEntry> RAW_BERRY_MEDLEY_BUCKET = FAFuelEntries.create("raw_berry_medley_bucket");
@@ -48,6 +48,7 @@ public class FAFuelEntries {
     public static final ResourceKey<FuelEntry> RAW_DILOPHOSAURUS = FAFuelEntries.create("raw_dilophosaurus");
     public static final ResourceKey<FuelEntry> RAW_DIMETRODON = FAFuelEntries.create("raw_dimetrodon");
     public static final ResourceKey<FuelEntry> RAW_DODO = FAFuelEntries.create("raw_dodo");
+    public static final ResourceKey<FuelEntry> RAW_ELASMOTHERIUM = FAFuelEntries.create("raw_elasmotherium");
     public static final ResourceKey<FuelEntry> RAW_GALLIMIMUS = FAFuelEntries.create("raw_gallimimus");
     public static final ResourceKey<FuelEntry> RAW_ICHTHYOSAURUS = FAFuelEntries.create("raw_ichthyosaurus");
     public static final ResourceKey<FuelEntry> RAW_MAMMOTH = FAFuelEntries.create("raw_mammoth");
@@ -125,6 +126,7 @@ public class FAFuelEntries {
         FAFuelEntries.register(bootstrapContext, RAW_DILOPHOSAURUS, FAItems.RAW_DILOPHOSAURUS.get(), 12000);
         FAFuelEntries.register(bootstrapContext, RAW_DIMETRODON, FAItems.RAW_DIMETRODON.get(), 12000);
         FAFuelEntries.register(bootstrapContext, RAW_DODO, FAItems.RAW_DODO.get(), 12000);
+        FAFuelEntries.register(bootstrapContext, RAW_ELASMOTHERIUM, FAItems.RAW_ELASMOTHERIUM.get(), 12000);
         FAFuelEntries.register(bootstrapContext, RAW_GALLIMIMUS, FAItems.RAW_GALLIMIMUS.get(), 12000);
         FAFuelEntries.register(bootstrapContext, RAW_ICHTHYOSAURUS, FAItems.RAW_ICHTHYOSAURUS.get(), 12000);
         FAFuelEntries.register(bootstrapContext, RAW_MAMMOTH, FAItems.RAW_MAMMOTH.get(), 12000);

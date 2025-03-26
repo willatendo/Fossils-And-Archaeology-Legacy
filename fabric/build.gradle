@@ -9,7 +9,7 @@ dependencies {
         officialMojangMappings()
         parchment("org.parchmentmc.data:parchment-${parchment_minecraft}:${parchment_version}@zip")
     }
-	
+
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 
@@ -33,7 +33,7 @@ loom {
     if (aw.exists()) {
         accessWidenerPath.set(aw)
     }
-	
+
     mixin {
         defaultRefmapName.set("${mod_id}.refmap.json")
     }

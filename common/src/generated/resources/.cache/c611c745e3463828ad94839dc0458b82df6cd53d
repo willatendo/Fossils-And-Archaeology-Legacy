@@ -1,5 +1,6 @@
-// 1.21.4	2025-03-03T21:23:30.2317014	Tags for fossilslegacy:model_types mod id fossilslegacy
+// 1.21.4	2025-03-15T17:11:20.8438649	Tags for fossilslegacy:model_types mod id fossilslegacy
 ad3de5537fb8ec2985f54a52bce1424d00d2b568 data/fossilslegacy/tags/fossilslegacy/model_types/ankylosaurus.json
+6ed295c257dc91a75559e05ecc97e0b6d907b581 data/fossilslegacy/tags/fossilslegacy/model_types/baryonyx.json
 4a89352019d0ebcfa8d904f4633809c0489b6ebe data/fossilslegacy/tags/fossilslegacy/model_types/brachiosaurus.json
 d4458bd68a54f0e802f1d08cea118b46da31053e data/fossilslegacy/tags/fossilslegacy/model_types/carnotaurus.json
 84a2d797532aa3f0276efc1d715f605ea6c3a489 data/fossilslegacy/tags/fossilslegacy/model_types/compsognathus.json
@@ -7,6 +8,8 @@ e703675695633ebef88979b07a59352050b76b99 data/fossilslegacy/tags/fossilslegacy/m
 c3ab68c7bf176f2ba9168231d63115de3accf2ee data/fossilslegacy/tags/fossilslegacy/model_types/dilophosaurus.json
 8f64c4f8b4b06b6f7e0c8ed774187c1b25ab5fe3 data/fossilslegacy/tags/fossilslegacy/model_types/dimetrodon.json
 9e34e87836c5647dd1f66961da170886ad71776a data/fossilslegacy/tags/fossilslegacy/model_types/dodo.json
+f73d215e3f1cde52ec14ab4dd544a0be6452c0f8 data/fossilslegacy/tags/fossilslegacy/model_types/dryosaurus.json
+b7f9643651d9391d7fa762dbef4f61c6fa07b7d8 data/fossilslegacy/tags/fossilslegacy/model_types/elasmotherium.json
 d1ccf733d6f2bea65b3f4706dd5ebc7040c3a8ac data/fossilslegacy/tags/fossilslegacy/model_types/futabasaurus.json
 5b1b9ed539a8967fe407b1b7a87ad7df9cbebd6a data/fossilslegacy/tags/fossilslegacy/model_types/gallimimus.json
 94a48b9e2f81f5b78aff4505d1496a9c32e77cf9 data/fossilslegacy/tags/fossilslegacy/model_types/ichthyosaurus.json

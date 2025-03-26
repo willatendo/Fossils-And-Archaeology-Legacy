@@ -57,6 +57,9 @@ public final class FAAnalyzerResults {
     public static final ResourceKey<AnalyzerResult> ANKYLOSAURUS_DNA = FAAnalyzerResults.create("ankylosaurus_dna");
     public static final ResourceKey<AnalyzerResult> DIMETRODON_DNA = FAAnalyzerResults.create("dimetrodon_dna");
     public static final ResourceKey<AnalyzerResult> ICHTHYOSAURUS_DNA = FAAnalyzerResults.create("ichthyosaurus_dna");
+    public static final ResourceKey<AnalyzerResult> ELASMOTHERIUM_DNA = FAAnalyzerResults.create("elasmotherium_dna");
+    public static final ResourceKey<AnalyzerResult> DRYOSAURUS_DNA = FAAnalyzerResults.create("dryosaurus_dna");
+    public static final ResourceKey<AnalyzerResult> BARYONYX_DNA = FAAnalyzerResults.create("baryonyx_dna");
 
     private static ResourceKey<AnalyzerResult> create(String name) {
         return ResourceKey.create(FARegistries.ANALYZER_RESULT, FAUtils.resource(name));
@@ -78,6 +81,7 @@ public final class FAAnalyzerResults {
         FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.LEPIDODENDRON_DNA.get()), 10);
         FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.SIGILLARIA_DNA.get()), 10);
         FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.CALAMITES_DNA.get()), 10);
+        FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.BARYONYX_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.BRACHIOSAURUS_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.DILOPHOSAURUS_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.MOSASAURUS_DNA.get()), 2);
@@ -89,6 +93,7 @@ public final class FAAnalyzerResults {
         FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.TRICERATOPS_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.ANKYLOSAURUS_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.DIMETRODON_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.DRYOSAURUS_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.ICHTHYOSAURUS_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.TYRANNOSAURUS_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.VELOCIRAPTOR_DNA.get()), 2);
@@ -111,11 +116,12 @@ public final class FAAnalyzerResults {
         FAAnalyzerResults.register(bootstrapContext, RELIC_SCRAP_RESULTS, "relic_scarp_results", new ItemStack(FAItems.ANCIENT_LEGGINGS_ARTIFACT.get()), 5);
         FAAnalyzerResults.register(bootstrapContext, RELIC_SCRAP_RESULTS, "relic_scarp_results", new ItemStack(FAItems.ANCIENT_BOOTS_ARTIFACT.get()), 5);
         FAAnalyzerResults.register(bootstrapContext, RELIC_SCRAP_RESULTS, "relic_scarp_results", new ItemStack(FAItems.PREHISTORIC_COIN.get()), 1);
-        FAAnalyzerResults.register(bootstrapContext, FROZEN_MEAT_RESULTS, "relic_scarp_results", new ItemStack(FAItems.SMILODON_DNA.get()), 33);
-        FAAnalyzerResults.register(bootstrapContext, FROZEN_MEAT_RESULTS, "relic_scarp_results", new ItemStack(FAItems.MAMMOTH_DNA.get()), 33);
-        FAAnalyzerResults.register(bootstrapContext, FROZEN_MEAT_RESULTS, "relic_scarp_results", new ItemStack(FAItems.DODO_DNA.get()), 33);
-        FAAnalyzerResults.register(bootstrapContext, FROZEN_MEAT_RESULTS, "relic_scarp_results", new ItemStack(FAItems.MOA_DNA.get()), 33);
-        FAAnalyzerResults.register(bootstrapContext, FROZEN_MEAT_RESULTS, "relic_scarp_results", new ItemStack(Items.BEEF), 33);
+        FAAnalyzerResults.register(bootstrapContext, FROZEN_MEAT_RESULTS, "frozen_meat_results", new ItemStack(FAItems.SMILODON_DNA.get()), 33);
+        FAAnalyzerResults.register(bootstrapContext, FROZEN_MEAT_RESULTS, "frozen_meat_results", new ItemStack(FAItems.MAMMOTH_DNA.get()), 33);
+        FAAnalyzerResults.register(bootstrapContext, FROZEN_MEAT_RESULTS, "frozen_meat_results", new ItemStack(FAItems.DODO_DNA.get()), 33);
+        FAAnalyzerResults.register(bootstrapContext, FROZEN_MEAT_RESULTS, "frozen_meat_results", new ItemStack(FAItems.MOA_DNA.get()), 33);
+        FAAnalyzerResults.register(bootstrapContext, FROZEN_MEAT_RESULTS, "frozen_meat_results", new ItemStack(FAItems.ELASMOTHERIUM_DNA.get()), 33);
+        FAAnalyzerResults.register(bootstrapContext, FROZEN_MEAT_RESULTS, "frozen_meat_results", new ItemStack(Items.BEEF), 33);
         FAAnalyzerResults.register(bootstrapContext, AXOLOTL_DNA, new ItemStack(FAItems.AXOLOTL_DNA.get()), 100);
         FAAnalyzerResults.register(bootstrapContext, PIG_DNA, new ItemStack(FAItems.PIG_DNA.get()), 100);
         FAAnalyzerResults.register(bootstrapContext, COW_DNA, new ItemStack(FAItems.COW_DNA.get()), 100);
@@ -164,5 +170,8 @@ public final class FAAnalyzerResults {
         FAAnalyzerResults.register(bootstrapContext, ANKYLOSAURUS_DNA, new ItemStack(FAItems.ANKYLOSAURUS_DNA.get()), 100);
         FAAnalyzerResults.register(bootstrapContext, DIMETRODON_DNA, new ItemStack(FAItems.DIMETRODON_DNA.get()), 100);
         FAAnalyzerResults.register(bootstrapContext, ICHTHYOSAURUS_DNA, new ItemStack(FAItems.ICHTHYOSAURUS_DNA.get()), 100);
+        FAAnalyzerResults.register(bootstrapContext, ELASMOTHERIUM_DNA, new ItemStack(FAItems.ELASMOTHERIUM_DNA.get()), 100);
+        FAAnalyzerResults.register(bootstrapContext, DRYOSAURUS_DNA, new ItemStack(FAItems.DRYOSAURUS_DNA.get()), 100);
+        FAAnalyzerResults.register(bootstrapContext, BARYONYX_DNA, new ItemStack(FAItems.BARYONYX_DNA.get()), 100);
     }
 }

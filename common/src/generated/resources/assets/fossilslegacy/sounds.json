@@ -30,6 +30,25 @@
     ],
     "subtitle": "subtitles.entity.ankylosaurus.hurt"
   },
+  "entity.baryonyx.ambient": {
+    "sounds": [
+      "fossilslegacy:baryonyx_ambient_1",
+      "fossilslegacy:baryonyx_ambient_2"
+    ],
+    "subtitle": "subtitles.entity.baryonyx.ambient"
+  },
+  "entity.baryonyx.death": {
+    "sounds": [
+      "fossilslegacy:baryonyx_death"
+    ],
+    "subtitle": "subtitles.entity.baryonyx.death"
+  },
+  "entity.baryonyx.hurt": {
+    "sounds": [
+      "fossilslegacy:baryonyx_hurt"
+    ],
+    "subtitle": "subtitles.entity.baryonyx.hurt"
+  },
   "entity.brachiosaurus.ambient": {
     "sounds": [
       "fossilslegacy:brachiosaurus_ambient_1",
@@ -180,6 +199,45 @@
       "fossilslegacy:dodo_step"
     ],
     "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "entity.dryosaurus.ambient": {
+    "sounds": [
+      "fossilslegacy:dryosaurus_ambient_1",
+      "fossilslegacy:dryosaurus_ambient_2"
+    ],
+    "subtitle": "subtitles.entity.dryosaurus.ambient"
+  },
+  "entity.dryosaurus.death": {
+    "sounds": [
+      "fossilslegacy:dryosaurus_death"
+    ],
+    "subtitle": "subtitles.entity.dryosaurus.death"
+  },
+  "entity.dryosaurus.hurt": {
+    "sounds": [
+      "fossilslegacy:dryosaurus_hurt"
+    ],
+    "subtitle": "subtitles.entity.dryosaurus.hurt"
+  },
+  "entity.elasmotherium.ambient": {
+    "sounds": [
+      "fossilslegacy:elasmotherium_ambient_1",
+      "fossilslegacy:elasmotherium_ambient_2"
+    ],
+    "subtitle": "subtitles.entity.elasmotherium.ambient"
+  },
+  "entity.elasmotherium.death": {
+    "sounds": [
+      "fossilslegacy:elasmotherium_death"
+    ],
+    "subtitle": "subtitles.entity.elasmotherium.death"
+  },
+  "entity.elasmotherium.hurt": {
+    "sounds": [
+      "fossilslegacy:elasmotherium_hurt_1",
+      "fossilslegacy:elasmotherium_hurt_2"
+    ],
+    "subtitle": "subtitles.entity.elasmotherium.hurt"
   },
   "entity.futabasaurus.ambient": {
     "sounds": [
@@ -454,5 +512,11 @@
       "fossilslegacy:velociraptor_hurt_3"
     ],
     "subtitle": "subtitles.entity.velociraptor.hurt"
+  },
+  "item.magic_conch.blow": {
+    "sounds": [
+      "fossilslegacy:magic_conch_blow"
+    ],
+    "subtitle": "subtitles.item.magic_conch.blow"
   }
 }

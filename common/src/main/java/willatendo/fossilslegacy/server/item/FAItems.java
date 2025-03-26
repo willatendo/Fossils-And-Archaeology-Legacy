@@ -10,8 +10,11 @@ import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
 import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.block.blocks.DecorationPostBlock;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Nautilus;
 import willatendo.fossilslegacy.server.entity.entities.vehicle.Jeep;
@@ -51,8 +54,8 @@ public final class FAItems {
     public static final SimpleHolder<AnimalDNAItem> ANKYLOSAURUS_DNA = FAItems.register("ankylosaurus_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.CRETACEOUS, FAEntityTypes.ANKYLOSAURUS::get, FAModelTypeTags.ANKYLOSAURUS, properties));
     public static final SimpleHolder<AnimalDNAItem> DIMETRODON_DNA = FAItems.register("dimetrodon_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.PERMIAN, FAEntityTypes.DIMETRODON::get, FAModelTypeTags.DIMETRODON, properties));
     public static final SimpleHolder<AnimalDNAItem> ICHTHYOSAURUS_DNA = FAItems.register("ichthyosaurus_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.JURASSIC, FAEntityTypes.ICHTHYOSAURUS::get, FAModelTypeTags.ICHTHYOSAURUS, properties));
-    public static final SimpleHolder<AnimalDNAItem> DRYOSAURUS_DNA = FAItems.register("dryosaurus_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.JURASSIC, FAEntityTypes.ICHTHYOSAURUS::get, FAModelTypeTags.ICHTHYOSAURUS, properties));
-    public static final SimpleHolder<AnimalDNAItem> BARYONYX_DNA = FAItems.register("baryonyx_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.CRETACEOUS, FAEntityTypes.ICHTHYOSAURUS::get, FAModelTypeTags.ICHTHYOSAURUS, properties));
+    public static final SimpleHolder<AnimalDNAItem> DRYOSAURUS_DNA = FAItems.register("dryosaurus_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.JURASSIC, FAEntityTypes.DRYOSAURUS::get, FAModelTypeTags.DRYOSAURUS, properties));
+    public static final SimpleHolder<AnimalDNAItem> BARYONYX_DNA = FAItems.register("baryonyx_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.CRETACEOUS, FAEntityTypes.BARYONYX::get, FAModelTypeTags.BARYONYX, properties));
     public static final SimpleHolder<PlantDNAItem> JURASSIC_FERN_DNA = FAItems.register("jurassic_fern_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.JURASSIC, properties));
     public static final SimpleHolder<PlantDNAItem> LEPIDODENDRON_DNA = FAItems.register("lepidodendron_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.PERMIAN, properties));
     public static final SimpleHolder<PlantDNAItem> SIGILLARIA_DNA = FAItems.register("sigillaria_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.PERMIAN, properties));
@@ -77,6 +80,8 @@ public final class FAItems {
     public static final SimpleHolder<EggItem> ANKYLOSAURUS_EGG = FAItems.register("ankylosaurus_egg", properties -> new EggItem(FAEntityTypes.ANKYLOSAURUS_EGG::get, GeologicalTimeScale.Period.CRETACEOUS, FAModelTypeTags.ANKYLOSAURUS, properties.stacksTo(1)));
     public static final SimpleHolder<EggItem> DIMETRODON_EGG = FAItems.register("dimetrodon_egg", properties -> new EggItem(FAEntityTypes.DIMETRODON_EGG::get, GeologicalTimeScale.Period.PERMIAN, FAModelTypeTags.DIMETRODON, properties.stacksTo(1)));
     public static final SimpleHolder<EggItem> ICHTHYOSAURUS_EGG = FAItems.register("ichthyosaurus_egg", properties -> new EggItem(FAEntityTypes.ICHTHYOSAURUS_EGG::get, GeologicalTimeScale.Period.JURASSIC, FAModelTypeTags.ICHTHYOSAURUS, properties.stacksTo(1)));
+    public static final SimpleHolder<EggItem> DRYOSAURUS_EGG = FAItems.register("dryosaurus_egg", properties -> new EggItem(FAEntityTypes.DRYOSAURUS_EGG::get, GeologicalTimeScale.Period.JURASSIC, FAModelTypeTags.DRYOSAURUS, properties.stacksTo(1)));
+    public static final SimpleHolder<EggItem> BARYONYX_EGG = FAItems.register("baryonyx_egg", properties -> new EggItem(FAEntityTypes.BARYONYX_EGG::get, GeologicalTimeScale.Period.CRETACEOUS, FAModelTypeTags.BARYONYX, properties.stacksTo(1)));
     public static final SimpleHolder<Item> RAW_TRICERATOPS = FAItems.register("raw_triceratops", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_VELOCIRAPTOR = FAItems.register("raw_velociraptor", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_TYRANNOSAURUS = FAItems.register("raw_tyrannosaurus", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
@@ -102,6 +107,8 @@ public final class FAItems {
     public static final SimpleHolder<Item> RAW_DIMETRODON = FAItems.register("raw_dimetrodon", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_ICHTHYOSAURUS = FAItems.register("raw_ichthyosaurus", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_ELASMOTHERIUM = FAItems.register("raw_elasmotherium", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
+    public static final SimpleHolder<Item> RAW_DRYOSAURUS = FAItems.register("raw_dryosaurus", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
+    public static final SimpleHolder<Item> RAW_BARYONYX = FAItems.register("raw_baryonyx", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> COOKED_TRICERATOPS = FAItems.register("cooked_triceratops", properties -> new Item(properties.food(FAFoods.COOKED_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> COOKED_VELOCIRAPTOR = FAItems.register("cooked_velociraptor", properties -> new Item(properties.food(FAFoods.COOKED_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> COOKED_TYRANNOSAURUS = FAItems.register("cooked_tyrannosaurus", properties -> new Item(properties.food(FAFoods.COOKED_DINOSAUR_MEAT)));
@@ -126,6 +133,9 @@ public final class FAItems {
     public static final SimpleHolder<Item> COOKED_ANKYLOSAURUS = FAItems.register("cooked_ankylosaurus", properties -> new Item(properties.food(FAFoods.COOKED_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> COOKED_DIMETRODON = FAItems.register("cooked_dimetrodon", properties -> new Item(properties.food(FAFoods.COOKED_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> COOKED_ICHTHYOSAURUS = FAItems.register("cooked_ichthyosaurus", properties -> new Item(properties.food(FAFoods.COOKED_DINOSAUR_MEAT)));
+    public static final SimpleHolder<Item> COOKED_DRYOSAURUS = FAItems.register("cooked_dryosaurus", properties -> new Item(properties.food(FAFoods.COOKED_DINOSAUR_MEAT)));
+    public static final SimpleHolder<Item> COOKED_ELASMOTHERIUM = FAItems.register("cooked_elasmotherium", properties -> new Item(properties.food(FAFoods.COOKED_DINOSAUR_MEAT)));
+    public static final SimpleHolder<Item> COOKED_BARYONYX = FAItems.register("cooked_baryonyx", properties -> new Item(properties.food(FAFoods.COOKED_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> TYRANNOSAURUS_TOOTH = FAItems.register("tyrannosaurus_tooth", Item::new);
     public static final SimpleHolder<ToothDaggerItem> TOOTH_DAGGER = FAItems.register("tooth_dagger", properties -> new ToothDaggerItem(FAToolMaterials.DAGGER, 3, -2.4F, properties));
     public static final SimpleHolder<Item> SKULL_STICK = FAItems.register("skull_stick", properties -> new Item(properties.stacksTo(1)));
@@ -189,6 +199,7 @@ public final class FAItems {
     public static final SimpleHolder<SyringeItem> WOLF_EMBRYO_SYRINGE = FAItems.register("wolf_embryo_syringe", properties -> new SyringeItem(GeologicalTimeScale.Period.QUATERNARY, FAPregnancyTypes.WOLF, properties.stacksTo(1)));
     public static final SimpleHolder<SyringeItem> SMILODON_EMBRYO_SYRINGE = FAItems.register("smilodon_embryo_syringe", properties -> new SyringeItem(GeologicalTimeScale.Period.NEOGENE, FAPregnancyTypes.SMILODON, FAModelTypeTags.NON_LEGACY_SMILODON, properties.stacksTo(1)));
     public static final SimpleHolder<SyringeItem> MAMMOTH_EMBRYO_SYRINGE = FAItems.register("mammoth_embryo_syringe", properties -> new SyringeItem(GeologicalTimeScale.Period.QUATERNARY, FAPregnancyTypes.MAMMOTH, FAModelTypeTags.NON_LEGACY_MAMMOTH, properties.stacksTo(1)));
+    public static final SimpleHolder<SyringeItem> ELASMOTHERIUM_EMBRYO_SYRINGE = FAItems.register("elasmotherium_embryo_syringe", properties -> new SyringeItem(GeologicalTimeScale.Period.PALEOGENE, FAPregnancyTypes.ELASMOTHERIUM, FAModelTypeTags.ELASMOTHERIUM, properties.stacksTo(1)));
     public static final SimpleHolder<AnimalEggItem> INCUBATED_DODO_EGG = FAItems.register("incubated_dodo_egg", properties -> new AnimalEggItem(GeologicalTimeScale.Period.QUATERNARY, FAEntityTypes.DODO::get, true, FAModelTypeTags.DODO, properties.stacksTo(16)));
     public static final SimpleHolder<AnimalEggItem> DODO_EGG = FAItems.register("dodo_egg", properties -> new AnimalEggItem(GeologicalTimeScale.Period.QUATERNARY, FAEntityTypes.DODO::get, false, FAModelTypeTags.DODO, properties.stacksTo(16)));
     public static final SimpleHolder<AnimalEggItem> INCUBATED_MOA_EGG = FAItems.register("incubated_moa_egg", properties -> new AnimalEggItem(GeologicalTimeScale.Period.QUATERNARY, FAEntityTypes.MOA::get, true, FAModelTypeTags.MOA, properties.stacksTo(16)));
@@ -196,6 +207,22 @@ public final class FAItems {
     public static final SimpleHolder<BlockItem> JURASSIC_FERN_SPORES = FAItems.register("jurassic_fern_spores", properties -> new BlockItem(FABlocks.JURASSIC_FERN.get(), properties.useItemDescriptionPrefix()));
     public static final SimpleHolder<ArticulatedFossilItem> ARTICULATED_FOSSIL = FAItems.register("articulated_fossil", properties -> FossilsModloaderHelper.INSTANCE.getArticulatedFossilItem(properties.stacksTo(1)));
     public static final SimpleHolder<Item> RELIC_SCRAP = FAItems.register("relic_scrap", Item::new);
+    public static final SimpleHolder<DecorationPlaqueItem> WHITE_DECORATION_PLAQUE = FAItems.register("white_decoration_plaque", properties -> new DecorationPlaqueItem(FABlocks.WHITE_DECORATION_POST.get(), properties));
+    public static final SimpleHolder<DecorationPlaqueItem> ORANGE_DECORATION_PLAQUE = FAItems.register("orange_decoration_plaque", properties -> new DecorationPlaqueItem(FABlocks.ORANGE_DECORATION_POST.get(), properties));
+    public static final SimpleHolder<DecorationPlaqueItem> MAGENTA_DECORATION_PLAQUE = FAItems.register("magenta_decoration_plaque", properties -> new DecorationPlaqueItem(FABlocks.MAGENTA_DECORATION_POST.get(), properties));
+    public static final SimpleHolder<DecorationPlaqueItem> LIGHT_BLUE_DECORATION_PLAQUE = FAItems.register("light_blue_decoration_plaque", properties -> new DecorationPlaqueItem(FABlocks.LIGHT_BLUE_DECORATION_POST.get(), properties));
+    public static final SimpleHolder<DecorationPlaqueItem> YELLOW_DECORATION_PLAQUE = FAItems.register("yellow_decoration_plaque", properties -> new DecorationPlaqueItem(FABlocks.YELLOW_DECORATION_POST.get(), properties));
+    public static final SimpleHolder<DecorationPlaqueItem> LIME_DECORATION_PLAQUE = FAItems.register("lime_decoration_plaque", properties -> new DecorationPlaqueItem(FABlocks.LIME_DECORATION_POST.get(), properties));
+    public static final SimpleHolder<DecorationPlaqueItem> PINK_DECORATION_PLAQUE = FAItems.register("pink_decoration_plaque", properties -> new DecorationPlaqueItem(FABlocks.PINK_DECORATION_POST.get(), properties));
+    public static final SimpleHolder<DecorationPlaqueItem> GRAY_DECORATION_PLAQUE = FAItems.register("gray_decoration_plaque", properties -> new DecorationPlaqueItem(FABlocks.GRAY_DECORATION_POST.get(), properties));
+    public static final SimpleHolder<DecorationPlaqueItem> LIGHT_GRAY_DECORATION_PLAQUE = FAItems.register("light_gray_decoration_plaque", properties -> new DecorationPlaqueItem(FABlocks.LIGHT_GRAY_DECORATION_POST.get(), properties));
+    public static final SimpleHolder<DecorationPlaqueItem> CYAN_DECORATION_PLAQUE = FAItems.register("cyan_decoration_plaque", properties -> new DecorationPlaqueItem(FABlocks.CYAN_DECORATION_POST.get(), properties));
+    public static final SimpleHolder<DecorationPlaqueItem> PURPLE_DECORATION_PLAQUE = FAItems.register("purple_decoration_plaque", properties -> new DecorationPlaqueItem(FABlocks.PURPLE_DECORATION_POST.get(), properties));
+    public static final SimpleHolder<DecorationPlaqueItem> BLUE_DECORATION_PLAQUE = FAItems.register("blue_decoration_plaque", properties -> new DecorationPlaqueItem(FABlocks.BLUE_DECORATION_POST.get(), properties));
+    public static final SimpleHolder<DecorationPlaqueItem> BROWN_DECORATION_PLAQUE = FAItems.register("brown_decoration_plaque", properties -> new DecorationPlaqueItem(FABlocks.BROWN_DECORATION_POST.get(), properties));
+    public static final SimpleHolder<DecorationPlaqueItem> GREEN_DECORATION_PLAQUE = FAItems.register("green_decoration_plaque", properties -> new DecorationPlaqueItem(FABlocks.GREEN_DECORATION_POST.get(), properties));
+    public static final SimpleHolder<DecorationPlaqueItem> RED_DECORATION_PLAQUE = FAItems.register("red_decoration_plaque", properties -> new DecorationPlaqueItem(FABlocks.RED_DECORATION_POST.get(), properties));
+    public static final SimpleHolder<DecorationPlaqueItem> BLACK_DECORATION_PLAQUE = FAItems.register("black_decoration_plaque", properties -> new DecorationPlaqueItem(FABlocks.BLACK_DECORATION_POST.get(), properties));
     public static final SimpleHolder<StoneTabletItem> STONE_TABLET = FAItems.register("stone_tablet", StoneTabletItem::new);
     public static final SimpleHolder<Item> ANCIENT_SWORD_ARTIFACT = FAItems.register("ancient_sword_artifact", Item::new);
     public static final SimpleHolder<Item> ANCIENT_SHOVEL_ARTIFACT = FAItems.register("ancient_shovel_artifact", Item::new);
@@ -276,6 +303,8 @@ public final class FAItems {
     public static final SimpleHolder<DinosaurSpawnEggItem> DIMETRODON_SPAWN_EGG = FAItems.register("dimetrodon_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.DIMETRODON.get(), properties));
     public static final SimpleHolder<DinosaurSpawnEggItem> ICHTHYOSAURUS_SPAWN_EGG = FAItems.register("ichthyosaurus_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.ICHTHYOSAURUS.get(), properties));
     public static final SimpleHolder<DinosaurSpawnEggItem> ELASMOTHERIUM_SPAWN_EGG = FAItems.register("elasmotherium_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.ELASMOTHERIUM.get(), properties));
+    public static final SimpleHolder<DinosaurSpawnEggItem> DRYOSAURUS_SPAWN_EGG = FAItems.register("dryosaurus_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.DRYOSAURUS.get(), properties));
+    public static final SimpleHolder<DinosaurSpawnEggItem> BARYONYX_SPAWN_EGG = FAItems.register("baryonyx_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.BARYONYX.get(), properties));
 
     public static final SimpleHolder<BlockItem> SKULL_BLOCK = FAItems.register("skull_block", properties -> new BlockItem(FABlocks.SKULL_BLOCK.get(), properties.useBlockDescriptionPrefix().component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD).setSwappable(false).setCameraOverlay(FAUtils.resource("misc/skullblur")).build())));
     public static final SimpleHolder<BlockItem> DNA_RECOMBINATOR = FAItems.register("dna_recombinator", properties -> new BlockItem(FABlocks.DNA_RECOMBINATOR.get(), properties.rarity(Rarity.UNCOMMON).useBlockDescriptionPrefix()));
@@ -360,7 +389,7 @@ public final class FAItems {
     }
 
     static {
-        List<SimpleHolder<? extends Block>> exceptions = List.of(FABlocks.SKULL_BLOCK, FABlocks.DNA_RECOMBINATOR, FABlocks.AXOLOTLSPAWN, FABlocks.RAW_CHICKEN_SOUP_CAULDRON, FABlocks.COOKED_CHICKEN_SOUP_CAULDRON, FABlocks.RAW_BERRY_MEDLEY_CAULDRON, FABlocks.COOKED_BERRY_MEDLEY_CAULDRON, FABlocks.LEPIDODENDRON_SIGN, FABlocks.LEPIDODENDRON_WALL_SIGN, FABlocks.LEPIDODENDRON_HANGING_SIGN, FABlocks.LEPIDODENDRON_WALL_HANGING_SIGN, FABlocks.LEPIDODENDRON_DOOR, FABlocks.POTTED_LEPIDODENDRON_SAPLING, FABlocks.SIGILLARIA_SIGN, FABlocks.SIGILLARIA_WALL_SIGN, FABlocks.SIGILLARIA_HANGING_SIGN, FABlocks.SIGILLARIA_WALL_HANGING_SIGN, FABlocks.SIGILLARIA_DOOR, FABlocks.POTTED_SIGILLARIA_SAPLING, FABlocks.CALAMITES_SIGN, FABlocks.CALAMITES_WALL_SIGN, FABlocks.CALAMITES_HANGING_SIGN, FABlocks.CALAMITES_WALL_HANGING_SIGN, FABlocks.CALAMITES_DOOR, FABlocks.POTTED_CALAMITES_SAPLING);
+        List<SimpleHolder<? extends Block>> exceptions = List.of(FABlocks.SKULL_BLOCK, FABlocks.DNA_RECOMBINATOR, FABlocks.AXOLOTLSPAWN, FABlocks.RAW_CHICKEN_SOUP_CAULDRON, FABlocks.COOKED_CHICKEN_SOUP_CAULDRON, FABlocks.RAW_BERRY_MEDLEY_CAULDRON, FABlocks.COOKED_BERRY_MEDLEY_CAULDRON, FABlocks.RED_DECORATION_POST, FABlocks.BLACK_DECORATION_POST, FABlocks.BLUE_DECORATION_POST, FABlocks.BROWN_DECORATION_POST, FABlocks.CYAN_DECORATION_POST, FABlocks.GRAY_DECORATION_POST, FABlocks.GREEN_DECORATION_POST, FABlocks.LIGHT_BLUE_DECORATION_POST, FABlocks.LIGHT_GRAY_DECORATION_POST, FABlocks.LIME_DECORATION_POST, FABlocks.MAGENTA_DECORATION_POST, FABlocks.ORANGE_DECORATION_POST, FABlocks.PINK_DECORATION_POST, FABlocks.PURPLE_DECORATION_POST, FABlocks.WHITE_DECORATION_POST, FABlocks.YELLOW_DECORATION_POST, FABlocks.LEPIDODENDRON_SIGN, FABlocks.LEPIDODENDRON_WALL_SIGN, FABlocks.LEPIDODENDRON_HANGING_SIGN, FABlocks.LEPIDODENDRON_WALL_HANGING_SIGN, FABlocks.LEPIDODENDRON_DOOR, FABlocks.POTTED_LEPIDODENDRON_SAPLING, FABlocks.SIGILLARIA_SIGN, FABlocks.SIGILLARIA_WALL_SIGN, FABlocks.SIGILLARIA_HANGING_SIGN, FABlocks.SIGILLARIA_WALL_HANGING_SIGN, FABlocks.SIGILLARIA_DOOR, FABlocks.POTTED_SIGILLARIA_SAPLING, FABlocks.CALAMITES_SIGN, FABlocks.CALAMITES_WALL_SIGN, FABlocks.CALAMITES_HANGING_SIGN, FABlocks.CALAMITES_WALL_HANGING_SIGN, FABlocks.CALAMITES_DOOR, FABlocks.POTTED_CALAMITES_SAPLING);
         FABlocks.BLOCKS.getEntriesView().stream().filter(simpleHolder -> !exceptions.contains(simpleHolder)).forEach(simpleHolder -> FAItems.register(simpleHolder.getId().getPath(), properties -> new BlockItem(simpleHolder.get(), properties.useBlockDescriptionPrefix())));
     }
 }

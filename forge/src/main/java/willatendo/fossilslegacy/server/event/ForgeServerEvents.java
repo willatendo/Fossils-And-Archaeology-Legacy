@@ -12,12 +12,14 @@ import net.minecraftforge.event.server.ServerAboutToStartEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.MissingMappingsEvent;
 import willatendo.fossilslegacy.server.criteria.FLCriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.AncientLightningBolt;
 import willatendo.fossilslegacy.server.entity.entities.TamedZombifiedPiglin;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.utils.FAUtils;
+import willatendo.simplelibrary.server.event.modification.ForgeIdModification;
 import willatendo.simplelibrary.server.event.modification.ForgeStructurePoolModification;
 import willatendo.simplelibrary.server.event.modification.ForgeVillagerTradeModification;
 
@@ -53,5 +55,10 @@ public class ForgeServerEvents {
     @SubscribeEvent
     public static void serverAboutToStartEvent(ServerAboutToStartEvent event) {
         BasicEvents.structurePoolModification(new ForgeStructurePoolModification(event));
+    }
+
+    @SubscribeEvent
+    public static void event(MissingMappingsEvent event) {
+        BasicEvents.idModification(new ForgeIdModification(FAUtils.ID, event));
     }
 }

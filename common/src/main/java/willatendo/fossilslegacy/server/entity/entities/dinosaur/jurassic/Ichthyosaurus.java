@@ -50,14 +50,13 @@ import willatendo.fossilslegacy.server.entity.goals.DinoEatFromFeederGoal;
 import willatendo.fossilslegacy.server.entity.goals.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goals.DinoOwnerHurtTargetGoal;
 import willatendo.fossilslegacy.server.entity.goals.IchthyosaurusJumpGoal;
+import willatendo.fossilslegacy.server.entity.util.Diet;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
-import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 import willatendo.fossilslegacy.server.tags.FAStructureTags;
 
-import javax.annotation.Nullable;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
@@ -463,7 +462,6 @@ public class Ichthyosaurus extends Dinosaur implements DinopediaInformation {
     static class IchthyosaurusSwimWithPlayerGoal extends Goal {
         private final Ichthyosaurus ichthyosaurus;
         private final double speedModifier;
-        @Nullable
         private Player player;
 
         IchthyosaurusSwimWithPlayerGoal(Ichthyosaurus ichthyosaurus, double speedModifier) {

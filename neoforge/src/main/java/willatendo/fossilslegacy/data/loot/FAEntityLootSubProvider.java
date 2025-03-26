@@ -44,6 +44,7 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
     @Override
     public void generate() {
         this.add(FAEntityTypes.ANKYLOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_ANKYLOSAURUS.get()));
+        this.add(FAEntityTypes.BARYONYX.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_BARYONYX.get()));
         this.add(FAEntityTypes.BRACHIOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_BRACHIOSAURUS.get()));
         this.add(FAEntityTypes.CARNOTAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_CARNOTAURUS.get()));
         this.add(FAEntityTypes.COMPSOGNATHUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_COMPSOGNATHUS.get()));
@@ -51,6 +52,7 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
         this.add(FAEntityTypes.DILOPHOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_DILOPHOSAURUS.get()));
         this.add(FAEntityTypes.DIMETRODON.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_DIMETRODON.get()));
         this.add(FAEntityTypes.DODO.get(), this.createDinosaurTable(1.0F, 2.0F, FAItems.RAW_DODO.get()));
+        this.add(FAEntityTypes.DRYOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_DRYOSAURUS.get()));
         this.add(FAEntityTypes.MOA.get(), this.createDinosaurTable(1.0F, 2.0F, FAItems.RAW_MOA.get()));
         this.add(FAEntityTypes.ELASMOTHERIUM.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_ELASMOTHERIUM.get()));
         this.add(FAEntityTypes.FUTABASAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_FUTABASAURUS.get()));
@@ -70,12 +72,14 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
         this.add(FAEntityTypes.VELOCIRAPTOR.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_VELOCIRAPTOR.get()));
 
         this.add(FAEntityTypes.ANKYLOSAURUS_EGG.get(), this.createEggTable(FAItems.ANKYLOSAURUS_EGG.get()));
+        this.add(FAEntityTypes.BARYONYX_EGG.get(), this.createEggTable(FAItems.BARYONYX_EGG.get()));
         this.add(FAEntityTypes.BRACHIOSAURUS_EGG.get(), this.createEggTable(FAItems.BRACHIOSAURUS_EGG.get()));
         this.add(FAEntityTypes.CARNOTAURUS_EGG.get(), this.createEggTable(FAItems.CARNOTAURUS_EGG.get()));
         this.add(FAEntityTypes.COMPSOGNATHUS_EGG.get(), this.createEggTable(FAItems.COMPSOGNATHUS_EGG.get()));
         this.add(FAEntityTypes.CRYOLOPHOSAURUS_EGG.get(), this.createEggTable(FAItems.CRYOLOPHOSAURUS_EGG.get()));
         this.add(FAEntityTypes.DILOPHOSAURUS_EGG.get(), this.createEggTable(FAItems.DILOPHOSAURUS_EGG.get()));
         this.add(FAEntityTypes.DIMETRODON_EGG.get(), this.createEggTable(FAItems.DIMETRODON_EGG.get()));
+        this.add(FAEntityTypes.DRYOSAURUS_EGG.get(), this.createEggTable(FAItems.DRYOSAURUS_EGG.get()));
         this.add(FAEntityTypes.FUTABASAURUS_EGG.get(), this.createEggTable(FAItems.FUTABASAURUS_EGG.get()));
         this.add(FAEntityTypes.GALLIMIMUS_EGG.get(), this.createEggTable(FAItems.GALLIMIMUS_EGG.get()));
         this.add(FAEntityTypes.ICHTHYOSAURUS_EGG.get(), this.createEggTable(FAItems.ICHTHYOSAURUS_EGG.get()));

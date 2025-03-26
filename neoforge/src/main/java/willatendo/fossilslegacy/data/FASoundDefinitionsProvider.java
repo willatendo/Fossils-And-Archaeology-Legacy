@@ -14,9 +14,15 @@ public class FASoundDefinitionsProvider extends SoundDefinitionsProvider {
 
     @Override
     public void registerSounds() {
+        this.block(FASoundEvents.DRUM_HIT.get(), "drum", "hit", "drum_hit");
+        this.block(FASoundEvents.DRUM_TRIPLE_HIT.get(), "drum", "triple_hit", "drum_triple_hit");
+
         this.entity(FASoundEvents.ANKYLOSAURUS_AMBIENT.get(), "ankylosaurus", "ambient", "ankylosaurus_ambient_1", "ankylosaurus_ambient_2");
         this.entity(FASoundEvents.ANKYLOSAURUS_HURT.get(), "ankylosaurus", "hurt", "ankylosaurus_hurt");
         this.entity(FASoundEvents.ANKYLOSAURUS_DEATH.get(), "ankylosaurus", "death", "ankylosaurus_death");
+        this.entity(FASoundEvents.BARYONYX_AMBIENT.get(), "baryonyx", "ambient", "baryonyx_ambient_1", "baryonyx_ambient_2");
+        this.entity(FASoundEvents.BARYONYX_HURT.get(), "baryonyx", "hurt", "baryonyx_hurt");
+        this.entity(FASoundEvents.BARYONYX_DEATH.get(), "baryonyx", "death", "baryonyx_death");
         this.entity(FASoundEvents.BRACHIOSAURUS_AMBIENT.get(), "brachiosaurus", "ambient", "brachiosaurus_ambient_1", "brachiosaurus_ambient_2");
         this.entity(FASoundEvents.BRACHIOSAURUS_HURT.get(), "brachiosaurus", "hurt", "brachiosaurus_hurt_1", "brachiosaurus_hurt_2");
         this.entity(FASoundEvents.BRACHIOSAURUS_DEATH.get(), "brachiosaurus", "death", "brachiosaurus_death");
@@ -40,6 +46,12 @@ public class FASoundDefinitionsProvider extends SoundDefinitionsProvider {
         this.entity(FASoundEvents.DODO_HURT.get(), "dodo", "hurt", "dodo_hurt_1", "dodo_hurt_2");
         this.entity(FASoundEvents.DODO_DEATH.get(), "dodo", "death", "dodo_death");
         this.add(FASoundEvents.DODO_STEP.get(), SoundDefinition.definition().subtitle("subtitles.block.generic.footsteps").with(SoundDefinition.Sound.sound(FAUtils.resource("dodo_step"), SoundDefinition.SoundType.SOUND)));
+        this.entity(FASoundEvents.DRYOSAURUS_AMBIENT.get(), "dryosaurus", "ambient", "dryosaurus_ambient_1", "dryosaurus_ambient_2");
+        this.entity(FASoundEvents.DRYOSAURUS_HURT.get(), "dryosaurus", "hurt", "dryosaurus_hurt");
+        this.entity(FASoundEvents.DRYOSAURUS_DEATH.get(), "dryosaurus", "death", "dryosaurus_death");
+        this.entity(FASoundEvents.ELASMOTHERIUM_AMBIENT.get(), "elasmotherium", "ambient", "elasmotherium_ambient_1", "elasmotherium_ambient_2");
+        this.entity(FASoundEvents.ELASMOTHERIUM_HURT.get(), "elasmotherium", "hurt", "elasmotherium_hurt_1", "elasmotherium_hurt_2");
+        this.entity(FASoundEvents.ELASMOTHERIUM_DEATH.get(), "elasmotherium", "death", "elasmotherium_death");
         this.entity(FASoundEvents.MAMMOTH_AMBIENT.get(), "mammoth", "ambient", "mammoth_ambient");
         this.entity(FASoundEvents.MAMMOTH_HURT.get(), "mammoth", "hurt", "mammoth_hurt");
         this.entity(FASoundEvents.MAMMOTH_DEATH.get(), "mammoth", "death", "mammoth_death");
@@ -83,8 +95,7 @@ public class FASoundDefinitionsProvider extends SoundDefinitionsProvider {
         this.entity(FASoundEvents.VELOCIRAPTOR_HURT.get(), "velociraptor", "hurt", "velociraptor_hurt_1", "velociraptor_hurt_2", "velociraptor_hurt_3");
         this.entity(FASoundEvents.VELOCIRAPTOR_DEATH.get(), "velociraptor", "death", "velociraptor_death");
 
-        this.block(FASoundEvents.DRUM_HIT.get(), "drum", "hit", "drum_hit");
-        this.block(FASoundEvents.DRUM_TRIPLE_HIT.get(), "drum", "triple_hit", "drum_triple_hit");
+        this.item(FASoundEvents.MAGIC_CONCH_BLOW.get(), "magic_conch", "blow", "magic_conch_blow");
     }
 
     private void add(SoundEvent soundEvent, String base, String type, String event, String... sounds) {
@@ -95,12 +106,16 @@ public class FASoundDefinitionsProvider extends SoundDefinitionsProvider {
         this.add(soundEvent, soundDefinition);
     }
 
+    private void block(SoundEvent soundEvent, String base, String event, String... sounds) {
+        this.add(soundEvent, base, "block", event, sounds);
+    }
+
     private void entity(SoundEvent soundEvent, String base, String event, String... sounds) {
         this.add(soundEvent, base, "entity", event, sounds);
     }
 
-    private void block(SoundEvent soundEvent, String base, String event, String... sounds) {
-        this.add(soundEvent, base, "block", event, sounds);
+    private void item(SoundEvent soundEvent, String base, String event, String... sounds) {
+        this.add(soundEvent, base, "item", event, sounds);
     }
 
     @Override

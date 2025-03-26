@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.server.entity.entities;
 
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -151,11 +150,7 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements DataDriv
         compoundTag.putString("EntityType", BuiltInRegistries.ENTITY_TYPE.getKey(this.animal).toString());
         compoundTag.putBoolean("Incubated", this.incubated);
         if (this.modelType != null && this.skin != null) {
-            this.addCosmeticsData(compoundTag);
-        }
-
-        if (this.pattern != null) {
-            this.addPatternData(compoundTag);
+            this.addCosmeticsData(compoundTag, this.registryAccess());
         }
     }
 
@@ -165,17 +160,12 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements DataDriv
         this.animal = (EntityType<? extends Animal>) BuiltInRegistries.ENTITY_TYPE.getValue(ResourceLocation.parse(compoundTag.getString("EntityType")));
         this.incubated = compoundTag.getBoolean("Incubated");
         if (compoundTag.contains("model_type") && compoundTag.contains("skin")) {
-            this.readCosmeticsData(compoundTag);
+            this.readCosmeticsData(compoundTag, this.registryAccess());
         }
     }
 
     @Override
     protected Item getDefaultItem() {
         return FAItems.INCUBATED_CHICKEN_EGG.get();
-    }
-
-    @Override
-    public RegistryAccess getRegistryAccess() {
-        return this.registryAccess();
     }
 }

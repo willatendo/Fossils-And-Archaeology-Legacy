@@ -1,11 +1,11 @@
 package willatendo.fossilslegacy.server.pattern;
 
 import com.mojang.serialization.MapCodec;
+import willatendo.fossilslegacy.server.pattern.information.PatternInformation;
+import willatendo.fossilslegacy.server.pattern.information.PatternInformationType;
 import willatendo.fossilslegacy.server.pattern.information.type.BlankPatternInformation;
 import willatendo.fossilslegacy.server.pattern.information.type.CompositePatternInformation;
 import willatendo.fossilslegacy.server.pattern.information.type.PackagePatternInformation;
-import willatendo.fossilslegacy.server.pattern.information.PatternInformation;
-import willatendo.fossilslegacy.server.pattern.information.PatternInformationType;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;

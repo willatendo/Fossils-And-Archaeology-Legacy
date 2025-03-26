@@ -9,7 +9,6 @@ import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.GameRules;
-import net.minecraft.world.level.saveddata.maps.MapDecorationType;
 import willatendo.fossilslegacy.server.item.items.ArticulatedFossilItem;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 import willatendo.simplelibrary.server.util.SimpleUtils;
@@ -30,8 +29,6 @@ public interface FossilsModloaderHelper {
     default void registerPOI(SimpleRegistry<PoiType> simpleRegistry, String id, Supplier<PoiType> poiType) {
         simpleRegistry.register(id, poiType);
     }
-
-    <T extends MapDecorationType> Holder<T> registerMapDecorationType(String id, Supplier<MapDecorationType> mapDecorationType);
 
     default ArticulatedFossilItem getArticulatedFossilItem(Item.Properties properties) {
         return new ArticulatedFossilItem(properties);

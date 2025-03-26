@@ -45,10 +45,12 @@ public final class FossilsLegacyClient {
 
     public static void modelEvent(ModelRegistry modelRegister) {
         modelRegister.register(FAEntityTypes.ANKYLOSAURUS.get(), AnkylosaurusRenderer::new);
+        modelRegister.register(FAEntityTypes.BARYONYX.get(), BaryonyxRenderer::new);
         modelRegister.register(FAEntityTypes.BRACHIOSAURUS.get(), BrachiosaurusRenderer::new);
         modelRegister.register(FAEntityTypes.DILOPHOSAURUS.get(), DilophosaurusRenderer::new);
         modelRegister.register(FAEntityTypes.DIMETRODON.get(), DimetrodonRenderer::new);
         modelRegister.register(FAEntityTypes.DODO.get(), DodoRenderer::new);
+        modelRegister.register(FAEntityTypes.DRYOSAURUS.get(), DryosaurusRenderer::new);
         modelRegister.register(FAEntityTypes.MOA.get(), MoaRenderer::new);
         modelRegister.register(FAEntityTypes.MAMMOTH.get(), MammothRenderer::new);
         modelRegister.register(FAEntityTypes.MOSASAURUS.get(), MosasaurusRenderer::new);
@@ -70,12 +72,14 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.PACHYCEPHALOSAURUS.get(), PachycephalosaurusRenderer::new);
         modelRegister.register(FAEntityTypes.COMPSOGNATHUS.get(), CompsognathusRenderer::new);
         modelRegister.register(FAEntityTypes.ANKYLOSAURUS_EGG.get(), context -> EggRenderer.regular(context, "ankylosaurus"));
+        modelRegister.register(FAEntityTypes.BARYONYX_EGG.get(), context -> EggRenderer.regular(context, "baryonyx"));
         modelRegister.register(FAEntityTypes.BRACHIOSAURUS_EGG.get(), context -> EggRenderer.regular(context, "brachiosaurus"));
         modelRegister.register(FAEntityTypes.CARNOTAURUS_EGG.get(), context -> EggRenderer.regular(context, "carnotaurus"));
         modelRegister.register(FAEntityTypes.COMPSOGNATHUS_EGG.get(), context -> EggRenderer.small(context, "compsognathus"));
         modelRegister.register(FAEntityTypes.CRYOLOPHOSAURUS_EGG.get(), context -> EggRenderer.regular(context, "cryolophosaurus"));
         modelRegister.register(FAEntityTypes.DILOPHOSAURUS_EGG.get(), context -> EggRenderer.regular(context, "dilophosaurus"));
         modelRegister.register(FAEntityTypes.DIMETRODON_EGG.get(), context -> EggRenderer.regular(context, "dimetrodon"));
+        modelRegister.register(FAEntityTypes.DRYOSAURUS_EGG.get(), context -> EggRenderer.regular(context, "dryosaurus"));
         modelRegister.register(FAEntityTypes.FUTABASAURUS_EGG.get(), context -> EggRenderer.regular(context, "futabasaurus"));
         modelRegister.register(FAEntityTypes.GALLIMIMUS_EGG.get(), context -> EggRenderer.regular(context, "gallimimus"));
         modelRegister.register(FAEntityTypes.ICHTHYOSAURUS_EGG.get(), context -> EggRenderer.regular(context, "ichthyosaurus"));
@@ -116,6 +120,7 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.DILOPHOSAURUS_VENOM.get(), DilophosaurusVenomRenderer::new);
         modelRegister.register(FAEntityTypes.ANCIENT_LIGHTNING_BOLT.get(), LightningBoltRenderer::new);
         modelRegister.register(FAEntityTypes.FOSSIL.get(), FossilRenderer::new);
+        modelRegister.register(FAEntityTypes.DECORATION_PLAQUE.get(), DecorationPlaqueRenderer::new);
         modelRegister.register(FAEntityTypes.STONE_TABLET.get(), StoneTabletRenderer::new);
         modelRegister.register(FAEntityTypes.JEEP.get(), JeepRenderer::new);
 
@@ -127,6 +132,7 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.SIGILLARIA_CHEST_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.SIGILLARIA_CHEST_BOAT));
 
         modelRegister.register(FABlockEntityTypes.CULTIVATOR.get(), CultivatorBlockEntityRenderer::new);
+        modelRegister.register(FABlockEntityTypes.DECORATION_POST.get(), DecorationPostRenderer::new);
         modelRegister.register(FABlockEntityTypes.FOSSILS_SIGN.get(), SignRenderer::new);
         modelRegister.register(FABlockEntityTypes.FOSSILS_HANGING_SIGN.get(), HangingSignRenderer::new);
         modelRegister.register(FABlockEntityTypes.TIME_MACHINE.get(), TimeMachineClockRenderer::new);

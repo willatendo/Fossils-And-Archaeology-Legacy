@@ -26,7 +26,7 @@ public record ItemStacksSlotDisplay(TagKey<AnalyzerResult> itemStacks) implement
         if (displayContentsFactory instanceof DisplayContentsFactory.ForStacks<T> forStacks) {
             HolderLookup.Provider provider = contextMap.getOptional(SlotDisplayContext.REGISTRIES);
             if (provider != null) {
-                Stream<ItemStack> results = provider.lookupOrThrow(FARegistries.ANALYZER_RESULT).get(this.itemStacks).map(analyzerResult -> analyzerResult.stream().map(analyzerResultHolder -> analyzerResultHolder.value().output())).get();
+                Stream<ItemStack> results = provider.lookupOrThrow(FARegistries.ANALYZER_RESULT).get(this.itemStacks).map(analyzerResult -> analyzerResult.stream().map(analyzerResultHolder -> analyzerResultHolder.value().output())).orElseGet(Stream::of);
                 return results.map(forStacks::forStack);
             }
         }

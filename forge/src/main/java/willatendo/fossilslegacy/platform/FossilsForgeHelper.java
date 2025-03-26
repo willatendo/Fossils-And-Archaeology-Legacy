@@ -7,7 +7,6 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.level.GameRules;
-import net.minecraft.world.level.saveddata.maps.MapDecorationType;
 import willatendo.fossilslegacy.FossilsLegacyForgeMod;
 import willatendo.fossilslegacy.network.ForgePacketHelper;
 import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
@@ -31,11 +30,6 @@ public class FossilsForgeHelper implements FossilsModloaderHelper {
     @Override
     public <T> Supplier<EntityDataSerializer<Holder<T>>> registerDataSerializer(String id, StreamCodec<RegistryFriendlyByteBuf, Holder<T>> streamCodec) {
         return FossilsLegacyForgeMod.ENTITY_DATA_SERIALIZER.register(id, () -> EntityDataSerializer.forValueType(streamCodec));
-    }
-
-    @Override
-    public <T extends MapDecorationType> Holder<T> registerMapDecorationType(String id, Supplier<MapDecorationType> mapDecorationType) {
-        return (Holder<T>) FossilsLegacyForgeMod.MAP_DECORATION_TYPES.register(id, mapDecorationType).getHolder().get();
     }
 
     @Override

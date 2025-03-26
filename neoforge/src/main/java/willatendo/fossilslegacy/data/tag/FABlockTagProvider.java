@@ -44,6 +44,7 @@ public class FABlockTagProvider extends BlockTagsProvider {
         this.tag(BlockTags.WITHER_IMMUNE).add(FABlocks.TIME_MACHINE.get());
 
         this.tag(FABlockTags.ANKYLOSAURUS_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
+        this.tag(FABlockTags.BARYONYX_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
         this.tag(FABlockTags.BRACHIOSAURUS_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
         this.tag(FABlockTags.CALAMITES_LOGS).add(FABlocks.CALAMITES_LOG.get(), FABlocks.CALAMITES_WOOD.get(), FABlocks.STRIPPED_CALAMITES_LOG.get(), FABlocks.STRIPPED_CALAMITES_WOOD.get());
         this.tag(FABlockTags.CARNOTAURUS_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
@@ -52,6 +53,7 @@ public class FABlockTagProvider extends BlockTagsProvider {
         this.tag(FABlockTags.DILOPHOSAURUS_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
         this.tag(FABlockTags.DIMETRODON_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
         this.tag(FABlockTags.DODO_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
+        this.tag(FABlockTags.DRYOSAURUS_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
         this.tag(FABlockTags.EATABLE_FERN).add(FABlocks.JURASSIC_FERN.get());
         this.tag(FABlockTags.EATABLE_LEAVES).addTags(BlockTags.LEAVES);
         this.tag(FABlockTags.ELASMOTHERIUM_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);

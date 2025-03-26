@@ -9,9 +9,15 @@ import willatendo.simplelibrary.server.registry.SimpleRegistry;
 public final class FASoundEvents {
     public static final SimpleRegistry<SoundEvent> SOUND_EVENTS = SimpleRegistry.create(Registries.SOUND_EVENT, FAUtils.ID);
 
+    public static final SimpleHolder<SoundEvent> DRUM_HIT = SOUND_EVENTS.register("block.drum.hit", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("block.drum.hit")));
+    public static final SimpleHolder<SoundEvent> DRUM_TRIPLE_HIT = SOUND_EVENTS.register("block.drum.triple_hit", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("block.drum.triple_hit")));
+
     public static final SimpleHolder<SoundEvent> ANKYLOSAURUS_AMBIENT = SOUND_EVENTS.register("entity.ankylosaurus.ambient", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.ankylosaurus.ambient")));
     public static final SimpleHolder<SoundEvent> ANKYLOSAURUS_HURT = SOUND_EVENTS.register("entity.ankylosaurus.hurt", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.ankylosaurus.hurt")));
     public static final SimpleHolder<SoundEvent> ANKYLOSAURUS_DEATH = SOUND_EVENTS.register("entity.ankylosaurus.death", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.ankylosaurus.death")));
+    public static final SimpleHolder<SoundEvent> BARYONYX_AMBIENT = SOUND_EVENTS.register("entity.baryonyx.ambient", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.baryonyx.ambient")));
+    public static final SimpleHolder<SoundEvent> BARYONYX_HURT = SOUND_EVENTS.register("entity.baryonyx.hurt", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.baryonyx.hurt")));
+    public static final SimpleHolder<SoundEvent> BARYONYX_DEATH = SOUND_EVENTS.register("entity.baryonyx.death", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.baryonyx.death")));
     public static final SimpleHolder<SoundEvent> BRACHIOSAURUS_AMBIENT = SOUND_EVENTS.register("entity.brachiosaurus.ambient", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.brachiosaurus.ambient")));
     public static final SimpleHolder<SoundEvent> BRACHIOSAURUS_HURT = SOUND_EVENTS.register("entity.brachiosaurus.hurt", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.brachiosaurus.hurt")));
     public static final SimpleHolder<SoundEvent> BRACHIOSAURUS_DEATH = SOUND_EVENTS.register("entity.brachiosaurus.death", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.brachiosaurus.death")));
@@ -35,6 +41,12 @@ public final class FASoundEvents {
     public static final SimpleHolder<SoundEvent> DODO_HURT = SOUND_EVENTS.register("entity.dodo.hurt", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.dodo.hurt")));
     public static final SimpleHolder<SoundEvent> DODO_DEATH = SOUND_EVENTS.register("entity.dodo.death", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.dodo.death")));
     public static final SimpleHolder<SoundEvent> DODO_STEP = SOUND_EVENTS.register("entity.dodo.step", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.dodo.step")));
+    public static final SimpleHolder<SoundEvent> DRYOSAURUS_AMBIENT = SOUND_EVENTS.register("entity.dryosaurus.ambient", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.dryosaurus.ambient")));
+    public static final SimpleHolder<SoundEvent> DRYOSAURUS_HURT = SOUND_EVENTS.register("entity.dryosaurus.hurt", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.dryosaurus.hurt")));
+    public static final SimpleHolder<SoundEvent> DRYOSAURUS_DEATH = SOUND_EVENTS.register("entity.dryosaurus.death", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.dryosaurus.death")));
+    public static final SimpleHolder<SoundEvent> ELASMOTHERIUM_AMBIENT = SOUND_EVENTS.register("entity.elasmotherium.ambient", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.elasmotherium.ambient")));
+    public static final SimpleHolder<SoundEvent> ELASMOTHERIUM_HURT = SOUND_EVENTS.register("entity.elasmotherium.hurt", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.elasmotherium.hurt")));
+    public static final SimpleHolder<SoundEvent> ELASMOTHERIUM_DEATH = SOUND_EVENTS.register("entity.elasmotherium.death", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.elasmotherium.death")));
     public static final SimpleHolder<SoundEvent> MAMMOTH_AMBIENT = SOUND_EVENTS.register("entity.mammoth.ambient", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.mammoth.ambient")));
     public static final SimpleHolder<SoundEvent> MAMMOTH_HURT = SOUND_EVENTS.register("entity.mammoth.hurt", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.mammoth.hurt")));
     public static final SimpleHolder<SoundEvent> MAMMOTH_DEATH = SOUND_EVENTS.register("entity.mammoth.death", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.mammoth.death")));
@@ -78,6 +90,5 @@ public final class FASoundEvents {
     public static final SimpleHolder<SoundEvent> VELOCIRAPTOR_HURT = SOUND_EVENTS.register("entity.velociraptor.hurt", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.velociraptor.hurt")));
     public static final SimpleHolder<SoundEvent> VELOCIRAPTOR_DEATH = SOUND_EVENTS.register("entity.velociraptor.death", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.velociraptor.death")));
 
-    public static final SimpleHolder<SoundEvent> DRUM_HIT = SOUND_EVENTS.register("block.drum.hit", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("block.drum.hit")));
-    public static final SimpleHolder<SoundEvent> DRUM_TRIPLE_HIT = SOUND_EVENTS.register("block.drum.triple_hit", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("block.drum.triple_hit")));
+    public static final SimpleHolder<SoundEvent> MAGIC_CONCH_BLOW = SOUND_EVENTS.register("item.magic_conch.blow", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("item.magic_conch.blow")));
 }

@@ -44,6 +44,8 @@
     "fossilslegacy:raw_dimetrodon",
     "fossilslegacy:cooked_dimetrodon",
     "fossilslegacy:raw_ichthyosaurus",
-    "fossilslegacy:cooked_ichthyosaurus"
+    "fossilslegacy:cooked_ichthyosaurus",
+    "fossilslegacy:raw_elasmotherium",
+    "fossilslegacy:cooked_elasmotherium"
   ]
 }

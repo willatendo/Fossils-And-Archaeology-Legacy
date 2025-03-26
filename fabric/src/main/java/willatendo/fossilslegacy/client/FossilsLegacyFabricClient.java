@@ -14,6 +14,7 @@ import net.minecraft.world.entity.player.Player;
 import willatendo.fossilslegacy.client.animation.json.JsonAnimationLoader;
 import willatendo.fossilslegacy.client.model.json.JsonLayerDefinitionResourceManager;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
+import willatendo.fossilslegacy.client.resources.DecorationPlaqueTextureManager;
 import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;
 import willatendo.fossilslegacy.network.ServerboundSinkPacket;
 import willatendo.fossilslegacy.server.block.FABlocks;
@@ -28,6 +29,17 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         ResourceManagerHelper resourceManagerHelper = ResourceManagerHelper.get(PackType.CLIENT_RESOURCES);
+        resourceManagerHelper.registerReloadListener(new IdentifiableResourceReloadListener() {
+            @Override
+            public ResourceLocation getFabricId() {
+                return FAUtils.resource("decoration_plaque_texture_manager");
+            }
+
+            @Override
+            public CompletableFuture<Void> reload(PreparationBarrier preparationBarrier, ResourceManager resourceManager, Executor backgroundExecutor, Executor gameExecutor) {
+                return DecorationPlaqueTextureManager.INSTANCE.reload(preparationBarrier, resourceManager, backgroundExecutor, gameExecutor);
+            }
+        });
         resourceManagerHelper.registerReloadListener(new IdentifiableResourceReloadListener() {
             @Override
             public ResourceLocation getFabricId() {

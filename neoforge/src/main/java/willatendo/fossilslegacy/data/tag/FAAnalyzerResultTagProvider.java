@@ -63,5 +63,8 @@ public class FAAnalyzerResultTagProvider extends DataDrivenTagsProvider<Analyzer
         this.tag(FAAnalyzerResultTags.RAW_ANKYLOSAURUS_RESULTS).add(FAAnalyzerResults.ANKYLOSAURUS_DNA);
         this.tag(FAAnalyzerResultTags.RAW_DIMETRODON_RESULTS).add(FAAnalyzerResults.DIMETRODON_DNA);
         this.tag(FAAnalyzerResultTags.RAW_ICTHYOSAURUS_RESULTS).add(FAAnalyzerResults.ICHTHYOSAURUS_DNA);
+        this.tag(FAAnalyzerResultTags.RAW_ELASMOTHERIUM_RESULTS).add(FAAnalyzerResults.ELASMOTHERIUM_DNA);
+        this.tag(FAAnalyzerResultTags.RAW_DRYOSAURUS_RESULTS).add(FAAnalyzerResults.DRYOSAURUS_DNA);
+        this.tag(FAAnalyzerResultTags.RAW_BARYONYX_RESULTS).add(FAAnalyzerResults.BARYONYX_DNA);
     }
 }

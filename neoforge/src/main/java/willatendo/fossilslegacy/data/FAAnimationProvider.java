@@ -13,6 +13,7 @@ public class FAAnimationProvider extends AnimationProvider {
     @Override
     protected void getAll() {
         this.addAnimation(FAUtils.resource("ankylosaurus_walk"), AnkylosaurusAnimations.ANKYLOSAURUS_WALK);
+        this.addAnimation(FAUtils.resource("baryonyx_walk"), BaryonyxAnimations.BARYONYX_WALK);
         this.addAnimation(FAUtils.resource("brachiosaurus_walk"), BrachiosaurusAnimations.BRACHIOSAURUS_WALK);
         this.addAnimation(FAUtils.resource("carnotaurus_walk"), CarnotaurusAnimations.CARNOTAURUS_WALK);
         this.addAnimation(FAUtils.resource("compsognathus_walk"), CompsognathusAnimations.COMPSOGNATHUS_WALK);
@@ -21,6 +22,8 @@ public class FAAnimationProvider extends AnimationProvider {
         this.addAnimation(FAUtils.resource("dimetrodon_walk"), DimetrodonAnimations.DIMETRODON_WALK);
         this.addAnimation(FAUtils.resource("dodo_float_down"), DodoAnimations.DODO_FALL);
         this.addAnimation(FAUtils.resource("dodo_walk"), DodoAnimations.DODO_WALK);
+        this.addAnimation(FAUtils.resource("dryosaurus_walk"), DryosaurusAnimations.DRYOSAURUS_WALK);
+        this.addAnimation(FAUtils.resource("elasmotherium_walk"), ElasmotheriumAnimations.ELASMOTHERIUM_WALK);
         this.addAnimation(FAUtils.resource("futabasaurus_swim"), FutabasaurusAnimations.FUTABASAURUS_SWIM);
         this.addAnimation(FAUtils.resource("futabasaurus_walk"), FutabasaurusAnimations.FUTABASAURUS_WALK);
         this.addAnimation(FAUtils.resource("gallimimus_walk"), GallimimusAnimations.GALLIMIMUS_WALK);

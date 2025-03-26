@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import willatendo.fossilslegacy.client.render.layer.PatternLayer;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Ankylosaurus;
 import willatendo.fossilslegacy.server.pattern.information.TextureType;

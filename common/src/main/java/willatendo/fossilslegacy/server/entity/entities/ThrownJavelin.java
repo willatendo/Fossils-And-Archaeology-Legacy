@@ -56,6 +56,7 @@ public class ThrownJavelin extends AbstractArrow {
     public boolean save(CompoundTag compoundTag) {
         compoundTag.putFloat("Damage", this.damage);
         compoundTag.putInt("Variant", this.getVariant());
+        compoundTag.put("javelin", this.itemStack.save(this.registryAccess()));
         return super.save(compoundTag);
     }
 
@@ -64,6 +65,7 @@ public class ThrownJavelin extends AbstractArrow {
         super.load(compoundTag);
         this.damage = compoundTag.getFloat("Damage");
         this.setVariant(compoundTag.getInt("Variant"));
+        this.itemStack = ItemStack.parseOptional(this.registryAccess(), compoundTag.getCompound("javelin"));
     }
 
     public void setVariant(int variant) {

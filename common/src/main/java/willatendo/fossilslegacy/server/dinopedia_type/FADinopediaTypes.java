@@ -11,6 +11,7 @@ import java.util.Arrays;
 
 public final class FADinopediaTypes {
     public static final ResourceKey<DinopediaType> ANKYLOSAURUS = FADinopediaTypes.create("ankylosaurus");
+    public static final ResourceKey<DinopediaType> BARYONYX = FADinopediaTypes.create("baryonyx");
     public static final ResourceKey<DinopediaType> BRACHIOSAURUS = FADinopediaTypes.create("brachiosaurus");
     public static final ResourceKey<DinopediaType> CARNOTAURUS = FADinopediaTypes.create("carnotaurus");
     public static final ResourceKey<DinopediaType> COMPSOGNATHUS = FADinopediaTypes.create("compsognathus");
@@ -18,6 +19,7 @@ public final class FADinopediaTypes {
     public static final ResourceKey<DinopediaType> DILOPHOSAURUS = FADinopediaTypes.create("dilophosaurus");
     public static final ResourceKey<DinopediaType> DIMETRODON = FADinopediaTypes.create("dimetrodon");
     public static final ResourceKey<DinopediaType> DODO = FADinopediaTypes.create("dodo");
+    public static final ResourceKey<DinopediaType> DRYOSAURUS = FADinopediaTypes.create("dryosaurus");
     public static final ResourceKey<DinopediaType> EGG = FADinopediaTypes.create("egg");
     public static final ResourceKey<DinopediaType> ELASMOTHERIUM = FADinopediaTypes.create("elasmotherium");
     public static final ResourceKey<DinopediaType> FUTABASAURUS = FADinopediaTypes.create("futabasaurus");
@@ -47,6 +49,7 @@ public final class FADinopediaTypes {
 
     public static void bootstrap(BootstrapContext<DinopediaType> bootstrapContext) {
         FADinopediaTypes.register(bootstrapContext, ANKYLOSAURUS, FADinopediaEntries.ANKYLOSAURUS_DATA);
+        FADinopediaTypes.register(bootstrapContext, BARYONYX, FADinopediaEntries.BARYONYX_DATA);
         FADinopediaTypes.register(bootstrapContext, BRACHIOSAURUS, FADinopediaEntries.BRACHIOSAURUS_DATA);
         FADinopediaTypes.register(bootstrapContext, CARNOTAURUS, FADinopediaEntries.CARNOTAURUS_DATA);
         FADinopediaTypes.register(bootstrapContext, COMPSOGNATHUS, FADinopediaEntries.COMPSOGNATHUS_DATA);
@@ -54,6 +57,7 @@ public final class FADinopediaTypes {
         FADinopediaTypes.register(bootstrapContext, DILOPHOSAURUS, FADinopediaEntries.DILOPHOSAURUS_DATA);
         FADinopediaTypes.register(bootstrapContext, DIMETRODON, FADinopediaEntries.DIMETRODON_DATA);
         FADinopediaTypes.register(bootstrapContext, DODO, FADinopediaEntries.DODO_DATA);
+        FADinopediaTypes.register(bootstrapContext, DRYOSAURUS, FADinopediaEntries.DRYOSAURUS_DATA);
         FADinopediaTypes.register(bootstrapContext, EGG, FADinopediaEntries.EGG_DATA);
         FADinopediaTypes.register(bootstrapContext, ELASMOTHERIUM, FADinopediaEntries.ELASMOTHERIUM_DATA);
         FADinopediaTypes.register(bootstrapContext, FUTABASAURUS, FADinopediaEntries.FUTABASAURUS_DATA);

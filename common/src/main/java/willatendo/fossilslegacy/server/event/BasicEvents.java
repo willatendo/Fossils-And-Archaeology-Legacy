@@ -31,6 +31,7 @@ import willatendo.fossilslegacy.server.block.blocks.SkullBlock;
 import willatendo.fossilslegacy.server.block.cauldron.FACauldronInteraction;
 import willatendo.fossilslegacy.server.block.dispenser.DispenseEntityItemBehavior;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
+import willatendo.fossilslegacy.server.decoration_plaque_type.DecorationPlaqueType;
 import willatendo.fossilslegacy.server.dinopedia_entry.DinopediaEntry;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -214,22 +215,23 @@ public final class BasicEvents {
     public static void newRegistryEvent(NewRegistryRegister newRegistryRegister) {
         newRegistryRegister.register(FABuiltInRegistries.COMMAND_TYPES, FARegistries.COMMAND_TYPES);
         newRegistryRegister.register(FABuiltInRegistries.DINOPEDIA_LINE_TYPES, FARegistries.DINOPEDIA_LINE_TYPE);
-        newRegistryRegister.register(FABuiltInRegistries.PREGNANCY_TYPES, FARegistries.PREGNANCY_TYPES);
+        newRegistryRegister.register(FABuiltInRegistries.PREGNANCY_TYPES, FARegistries.PREGNANCY_TYPE);
         newRegistryRegister.register(FABuiltInRegistries.PATTERN_INFORMATION_TYPES, FARegistries.PATTERN_INFORMATION_TYPE);
     }
 
     public static void newDynamicRegistryEvent(DynamicRegistryRegister dynamicRegistryRegister) {
         dynamicRegistryRegister.register(FARegistries.ANALYZER_RESULT, AnalyzerResult.CODEC);
         dynamicRegistryRegister.register(FARegistries.ANCIENT_AXE_BONUS, AncientAxeBonus.CODEC);
-        dynamicRegistryRegister.register(FARegistries.MODEL_TYPES, ModelType.DIRECT_CODEC);
+        dynamicRegistryRegister.register(FARegistries.DECORATION_PLAQUE_TYPE, DecorationPlaqueType.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.DINOPEDIA_ENTRY, DinopediaEntry.CODEC);
         dynamicRegistryRegister.register(FARegistries.DINOPEDIA_TYPE, DinopediaType.CODEC);
         dynamicRegistryRegister.register(FARegistries.FEEDER_FOOD, FeederFood.CODEC);
         dynamicRegistryRegister.register(FARegistries.FOSSIL_VARIANTS, FossilVariant.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.FUEL_ENTRY, FuelEntry.CODEC);
+        dynamicRegistryRegister.register(FARegistries.MODEL_TYPES, ModelType.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.PATTERN, Pattern.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.JEWEL_RECOVERY, JewelRecovery.CODEC);
-        dynamicRegistryRegister.register(FARegistries.STONE_TABLET_VARIANTS, StoneTabletVariant.DIRECT_CODEC);
+        dynamicRegistryRegister.register(FARegistries.STONE_TABLET_VARIANT, StoneTabletVariant.DIRECT_CODEC);
     }
 
     public static void attributeEvent(AttributeRegister attributeRegister) {
@@ -245,14 +247,18 @@ public final class BasicEvents {
         attributeRegister.register(FAEntityTypes.MOA.get(), Moa.moaAttributes());
         attributeRegister.register(FAEntityTypes.GALLIMIMUS.get(), Gallimimus.gallimimusAttributes());
         attributeRegister.register(FAEntityTypes.ICHTHYOSAURUS.get(), Ichthyosaurus.ichthyosaurusAttributes());
+        attributeRegister.register(FAEntityTypes.DRYOSAURUS.get(), Dryosaurus.dryosaurusAttributes());
+        attributeRegister.register(FAEntityTypes.BARYONYX.get(), Baryonyx.baryonyxAttributes());
+        attributeRegister.register(FAEntityTypes.ELASMOTHERIUM.get(), Elasmotherium.elasmotheriumAttributes());
         attributeRegister.register(FAEntityTypes.ANKYLOSAURUS_EGG.get(), Egg.eggAttributes());
+        attributeRegister.register(FAEntityTypes.BARYONYX_EGG.get(), Egg.eggAttributes());
         attributeRegister.register(FAEntityTypes.BRACHIOSAURUS_EGG.get(), Egg.eggAttributes());
         attributeRegister.register(FAEntityTypes.CARNOTAURUS_EGG.get(), Egg.eggAttributes());
         attributeRegister.register(FAEntityTypes.COMPSOGNATHUS_EGG.get(), Egg.eggAttributes());
         attributeRegister.register(FAEntityTypes.CRYOLOPHOSAURUS_EGG.get(), Egg.eggAttributes());
         attributeRegister.register(FAEntityTypes.DILOPHOSAURUS_EGG.get(), Egg.eggAttributes());
         attributeRegister.register(FAEntityTypes.DIMETRODON_EGG.get(), Egg.eggAttributes());
-        attributeRegister.register(FAEntityTypes.ELASMOTHERIUM.get(), Elasmotherium.elasmotheriumAttributes());
+        attributeRegister.register(FAEntityTypes.DRYOSAURUS_EGG.get(), Egg.eggAttributes());
         attributeRegister.register(FAEntityTypes.FUTABASAURUS_EGG.get(), Egg.eggAttributes());
         attributeRegister.register(FAEntityTypes.GALLIMIMUS_EGG.get(), Egg.eggAttributes());
         attributeRegister.register(FAEntityTypes.ICHTHYOSAURUS_EGG.get(), Egg.eggAttributes());
@@ -305,12 +311,14 @@ public final class BasicEvents {
 
     public static void spawnPlacementEvent(SpawnPlacementRegister spawnPlacementRegister) {
         spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.ANKYLOSAURUS.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource) -> Ankylosaurus.checkDinosaurSpawnRules(entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource, FABlockTags.ANKYLOSAURUS_SPAWNABLE));
+        spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.BARYONYX.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource) -> Ankylosaurus.checkDinosaurSpawnRules(entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource, FABlockTags.BARYONYX_SPAWNABLE));
         spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.BRACHIOSAURUS.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource) -> Brachiosaurus.checkDinosaurSpawnRules(entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource, FABlockTags.BRACHIOSAURUS_SPAWNABLE));
         spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.CARNOTAURUS.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource) -> Carnotaurus.checkDinosaurSpawnRules(entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource, FABlockTags.CARNOTAURUS_SPAWNABLE));
         spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.COMPSOGNATHUS.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource) -> Compsognathus.checkDinosaurSpawnRules(entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource, FABlockTags.COMPSOGNATHUS_SPAWNABLE));
         spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.CRYOLOPHOSAURUS.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource) -> Cryolophosaurus.checkDinosaurSpawnRules(entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource, FABlockTags.CRYOLOPHOSAURUS_SPAWNABLE));
         spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.DILOPHOSAURUS.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource) -> Dilophosaurus.checkDinosaurSpawnRules(entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource, FABlockTags.DILOPHOSAURUS_SPAWNABLE));
         spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.DIMETRODON.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource) -> Dilophosaurus.checkDinosaurSpawnRules(entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource, FABlockTags.DIMETRODON_SPAWNABLE));
+        spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.DRYOSAURUS.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource) -> Dryosaurus.checkDinosaurSpawnRules(entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource, FABlockTags.DRYOSAURUS_SPAWNABLE));
         spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.DODO.get(), SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource) -> Dodo.checkDinosaurSpawnRules(entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource, FABlockTags.DODO_SPAWNABLE));
         spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.ELASMOTHERIUM.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource) -> Elasmotherium.checkDinosaurSpawnRules(entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource, FABlockTags.ELASMOTHERIUM_SPAWNABLE));
         spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.FUTABASAURUS.get(), SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Futabasaurus::checkFutabasaurusSpawnRules);

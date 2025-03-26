@@ -91,6 +91,22 @@ public class FARecipeProvider extends RecipeProvider {
         this.waxCopper(FABlocks.EXPOSED_COPPER_LLAMA_STATUE.get(), FABlocks.WAXED_EXPOSED_COPPER_LLAMA_STATUE.get());
         this.waxCopper(FABlocks.WEATHERED_COPPER_LLAMA_STATUE.get(), FABlocks.WAXED_WEATHERED_COPPER_LLAMA_STATUE.get());
         this.waxCopper(FABlocks.OXIDIZED_COPPER_LLAMA_STATUE.get(), FABlocks.WAXED_OXIDIZED_COPPER_LLAMA_STATUE.get());
+        this.decorationPlaque(Blocks.WHITE_CONCRETE, FAItems.WHITE_DECORATION_PLAQUE.get());
+        this.decorationPlaque(Blocks.ORANGE_CONCRETE, FAItems.ORANGE_DECORATION_PLAQUE.get());
+        this.decorationPlaque(Blocks.MAGENTA_CONCRETE, FAItems.MAGENTA_DECORATION_PLAQUE.get());
+        this.decorationPlaque(Blocks.LIGHT_BLUE_CONCRETE, FAItems.LIGHT_BLUE_DECORATION_PLAQUE.get());
+        this.decorationPlaque(Blocks.YELLOW_CONCRETE, FAItems.YELLOW_DECORATION_PLAQUE.get());
+        this.decorationPlaque(Blocks.LIME_CONCRETE, FAItems.LIME_DECORATION_PLAQUE.get());
+        this.decorationPlaque(Blocks.PINK_CONCRETE, FAItems.PINK_DECORATION_PLAQUE.get());
+        this.decorationPlaque(Blocks.GRAY_CONCRETE, FAItems.GRAY_DECORATION_PLAQUE.get());
+        this.decorationPlaque(Blocks.LIGHT_GRAY_CONCRETE, FAItems.LIGHT_GRAY_DECORATION_PLAQUE.get());
+        this.decorationPlaque(Blocks.CYAN_CONCRETE, FAItems.CYAN_DECORATION_PLAQUE.get());
+        this.decorationPlaque(Blocks.PURPLE_CONCRETE, FAItems.PURPLE_DECORATION_PLAQUE.get());
+        this.decorationPlaque(Blocks.BLUE_CONCRETE, FAItems.BLUE_DECORATION_PLAQUE.get());
+        this.decorationPlaque(Blocks.BROWN_CONCRETE, FAItems.BROWN_DECORATION_PLAQUE.get());
+        this.decorationPlaque(Blocks.GREEN_CONCRETE, FAItems.GREEN_DECORATION_PLAQUE.get());
+        this.decorationPlaque(Blocks.RED_CONCRETE, FAItems.RED_DECORATION_PLAQUE.get());
+        this.decorationPlaque(Blocks.BLACK_CONCRETE, FAItems.BLACK_DECORATION_PLAQUE.get());
 
         SpecialRecipeBuilder.special(MagicConchRecipe::new).save(this.output, "magic_conch");
 
@@ -122,6 +138,9 @@ public class FARecipeProvider extends RecipeProvider {
         this.food(FAItems.COOKED_ANKYLOSAURUS.get(), FAItems.RAW_ANKYLOSAURUS.get());
         this.food(FAItems.COOKED_DIMETRODON.get(), FAItems.RAW_DIMETRODON.get());
         this.food(FAItems.COOKED_ICHTHYOSAURUS.get(), FAItems.RAW_ICHTHYOSAURUS.get());
+        this.food(FAItems.COOKED_ELASMOTHERIUM.get(), FAItems.RAW_ELASMOTHERIUM.get());
+        this.food(FAItems.COOKED_DRYOSAURUS.get(), FAItems.RAW_DRYOSAURUS.get());
+        this.food(FAItems.COOKED_BARYONYX.get(), FAItems.RAW_BARYONYX.get());
 
         this.scarabGemSmithing(Items.NETHERITE_SWORD, RecipeCategory.COMBAT, FAItems.SCARAB_GEM_SWORD.get());
         this.scarabGemSmithing(Items.NETHERITE_SHOVEL, RecipeCategory.TOOLS, FAItems.SCARAB_GEM_SHOVEL.get());
@@ -166,6 +185,7 @@ public class FARecipeProvider extends RecipeProvider {
         this.cultivate(CultivationBookCategory.EGG, FAItems.WOLF_DNA.get(), FAItems.WOLF_EMBRYO_SYRINGE.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.SMILODON_DNA.get(), FAItems.SMILODON_EMBRYO_SYRINGE.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.MAMMOTH_DNA.get(), FAItems.MAMMOTH_EMBRYO_SYRINGE.get(), 6000);
+        this.cultivate(CultivationBookCategory.EGG, FAItems.ELASMOTHERIUM_DNA.get(), FAItems.ELASMOTHERIUM_EMBRYO_SYRINGE.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.CARNOTAURUS_DNA.get(), FAItems.CARNOTAURUS_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.CRYOLOPHOSAURUS_DNA.get(), FAItems.CRYOLOPHOSAURUS_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.THERIZINOSAURUS_DNA.get(), FAItems.THERIZINOSAURUS_EGG.get(), 6000);
@@ -178,6 +198,8 @@ public class FARecipeProvider extends RecipeProvider {
         this.cultivate(CultivationBookCategory.EGG, FAItems.ANKYLOSAURUS_DNA.get(), FAItems.ANKYLOSAURUS_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.DIMETRODON_DNA.get(), FAItems.DIMETRODON_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.ICHTHYOSAURUS_DNA.get(), FAItems.ICHTHYOSAURUS_EGG.get(), 6000);
+        this.cultivate(CultivationBookCategory.EGG, FAItems.DRYOSAURUS_DNA.get(), FAItems.DRYOSAURUS_EGG.get(), 6000);
+        this.cultivate(CultivationBookCategory.EGG, FAItems.BARYONYX_DNA.get(), FAItems.BARYONYX_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.PLANT, FAItems.JURASSIC_FERN_DNA.get(), FAItems.JURASSIC_FERN_SPORES.get(), 6000);
         this.cultivate(CultivationBookCategory.PLANT, FAItems.LEPIDODENDRON_DNA.get(), FABlocks.LEPIDODENDRON_SAPLING.get(), 6000);
         this.cultivate(CultivationBookCategory.PLANT, FAItems.SIGILLARIA_DNA.get(), FABlocks.SIGILLARIA_SAPLING.get(), 6000);
@@ -251,6 +273,9 @@ public class FARecipeProvider extends RecipeProvider {
         this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.RAW_ANKYLOSAURUS.get(), FAAnalyzerResultTags.RAW_ANKYLOSAURUS_RESULTS, 100);
         this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.RAW_DIMETRODON.get(), FAAnalyzerResultTags.RAW_DIMETRODON_RESULTS, 100);
         this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.RAW_ICHTHYOSAURUS.get(), FAAnalyzerResultTags.RAW_ICTHYOSAURUS_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.RAW_ELASMOTHERIUM.get(), FAAnalyzerResultTags.RAW_ELASMOTHERIUM_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.RAW_DRYOSAURUS.get(), FAAnalyzerResultTags.RAW_DRYOSAURUS_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.RAW_BARYONYX.get(), FAAnalyzerResultTags.RAW_BARYONYX_RESULTS, 100);
     }
 
     public void woodType(Block log, Block strippedLog, Block wood, Block strippedWood, TagKey<Item> logs, Block planks, Block stairs, Block slab, Block fence, Block fenceGate, Block door, Block trapdoor, Block pressurePlate, Block button, Item sign, Item hangingSign, Item boat, Item chestBoat) {
@@ -279,6 +304,10 @@ public class FARecipeProvider extends RecipeProvider {
 
     protected void scarabGemSmithing(Item ingredientItem, RecipeCategory category, Item resultItem) {
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(ingredientItem), this.tag(FAItemTags.SCARAB_GEM_TOOL_MATERIALS), category, resultItem).unlocks("has_scarab_gem", this.has(FAItemTags.SCARAB_GEM_TOOL_MATERIALS)).save(this.output, getItemName(resultItem) + "_smithing");
+    }
+
+    public void decorationPlaque(ItemLike concrete, ItemLike output) {
+        this.shaped(RecipeCategory.DECORATIONS, output).group("decoration_plaque").pattern("###").pattern("###").pattern(" $ ").define('#', concrete).define('$', Items.IRON_INGOT).unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT)).save(this.output);
     }
 
     public void llama(ItemLike ingredient, ItemLike output) {

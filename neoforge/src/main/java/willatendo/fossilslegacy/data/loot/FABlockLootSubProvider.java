@@ -14,10 +14,12 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.block.blocks.MayanVaseBlock;
 import willatendo.fossilslegacy.server.item.FAItems;
+import willatendo.fossilslegacy.server.item.items.DecorationPlaqueItem;
 import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom;
 import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom.ItemAndChance;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.data.loot.SimpleBlockLootSubProvider;
+import willatendo.simplelibrary.server.registry.SimpleHolder;
 
 public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
     public FABlockLootSubProvider(HolderLookup.Provider registries) {
@@ -74,6 +76,22 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.dropSelf(FABlocks.WAXED_EXPOSED_COPPER_LLAMA_STATUE.get());
         this.dropSelf(FABlocks.WAXED_WEATHERED_COPPER_LLAMA_STATUE.get());
         this.dropSelf(FABlocks.WAXED_OXIDIZED_COPPER_LLAMA_STATUE.get());
+        this.dropOther(FABlocks.WHITE_DECORATION_POST.get(), FAItems.WHITE_DECORATION_PLAQUE.get());
+        this.dropOther(FABlocks.ORANGE_DECORATION_POST.get(), FAItems.ORANGE_DECORATION_PLAQUE.get());
+        this.dropOther(FABlocks.MAGENTA_DECORATION_POST.get(), FAItems.MAGENTA_DECORATION_PLAQUE.get());
+        this.dropOther(FABlocks.LIGHT_BLUE_DECORATION_POST.get(), FAItems.LIGHT_BLUE_DECORATION_PLAQUE.get());
+        this.dropOther(FABlocks.YELLOW_DECORATION_POST.get(), FAItems.YELLOW_DECORATION_PLAQUE.get());
+        this.dropOther(FABlocks.LIME_DECORATION_POST.get(), FAItems.LIME_DECORATION_PLAQUE.get());
+        this.dropOther(FABlocks.PINK_DECORATION_POST.get(), FAItems.PINK_DECORATION_PLAQUE.get());
+        this.dropOther(FABlocks.GRAY_DECORATION_POST.get(), FAItems.GRAY_DECORATION_PLAQUE.get());
+        this.dropOther(FABlocks.LIGHT_GRAY_DECORATION_POST.get(), FAItems.LIGHT_GRAY_DECORATION_PLAQUE.get());
+        this.dropOther(FABlocks.CYAN_DECORATION_POST.get(), FAItems.CYAN_DECORATION_PLAQUE.get());
+        this.dropOther(FABlocks.PURPLE_DECORATION_POST.get(), FAItems.PURPLE_DECORATION_PLAQUE.get());
+        this.dropOther(FABlocks.BLUE_DECORATION_POST.get(), FAItems.BLUE_DECORATION_PLAQUE.get());
+        this.dropOther(FABlocks.BROWN_DECORATION_POST.get(), FAItems.BROWN_DECORATION_PLAQUE.get());
+        this.dropOther(FABlocks.GREEN_DECORATION_POST.get(), FAItems.GREEN_DECORATION_PLAQUE.get());
+        this.dropOther(FABlocks.RED_DECORATION_POST.get(), FAItems.RED_DECORATION_PLAQUE.get());
+        this.dropOther(FABlocks.BLACK_DECORATION_POST.get(), FAItems.BLACK_DECORATION_PLAQUE.get());
         this.dropSelf(FABlocks.LEPIDODENDRON_PLANKS.get());
         this.dropSelf(FABlocks.LEPIDODENDRON_SAPLING.get());
         this.dropSelf(FABlocks.LEPIDODENDRON_LOG.get());

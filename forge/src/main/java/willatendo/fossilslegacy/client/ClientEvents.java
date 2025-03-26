@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.client;
 
+import net.minecraft.client.renderer.special.SpecialModelRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
@@ -18,7 +19,7 @@ public class ClientEvents {
     @SubscribeEvent
     public static void fmlClientSetupEvent(FMLClientSetupEvent event) {
         FossilsLegacyClient.signSheets();
-        FossilsLegacyClient.specialModelsEvent(new ForgeSpecialRendererRegistry(event));
+        FossilsLegacyClient.specialModelsEvent(SpecialModelRenderers.ID_MAPPER::put);
     }
 
     @SubscribeEvent

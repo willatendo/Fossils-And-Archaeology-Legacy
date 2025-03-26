@@ -1,4 +1,4 @@
-// 1.21.4	2025-02-09T18:21:21.5644016	Tags for minecraft:block mod id fossilslegacy
+// 1.21.4	2025-03-15T17:11:20.8288615	Tags for minecraft:block mod id fossilslegacy
 80e160a91f3744e8cb737cde249c3d4059ae1424 data/fossilslegacy/tags/block/calamites_logs.json
 1127f77eb8cace8c1b282963c96612fe0637c879 data/fossilslegacy/tags/block/eatable_fern.json
 a4e8097fff07f9a74259d6b5dd583f3437ff28a2 data/fossilslegacy/tags/block/eatable_leaves.json
@@ -9,6 +9,7 @@ b58b977b8e0a5206e75d748704411629e8e9e896 data/fossilslegacy/tags/block/mineable/
 9e5b271f0c7ec4847dded614168452fd660518de data/fossilslegacy/tags/block/permafrost_frostable.json
 f7230fc0dcd04034cf98f0304755274776cb4ce1 data/fossilslegacy/tags/block/sigillaria_logs.json
 ff9b281b9a16648420ec54ace1183217c76bfa6c data/fossilslegacy/tags/block/spawnable/ankylosaurus.json
+ff9b281b9a16648420ec54ace1183217c76bfa6c data/fossilslegacy/tags/block/spawnable/baryonyx.json
 ff9b281b9a16648420ec54ace1183217c76bfa6c data/fossilslegacy/tags/block/spawnable/brachiosaurus.json
 ff9b281b9a16648420ec54ace1183217c76bfa6c data/fossilslegacy/tags/block/spawnable/carnotaurus.json
 ff9b281b9a16648420ec54ace1183217c76bfa6c data/fossilslegacy/tags/block/spawnable/compsognathus.json
@@ -16,6 +17,8 @@ ff9b281b9a16648420ec54ace1183217c76bfa6c data/fossilslegacy/tags/block/spawnable
 ff9b281b9a16648420ec54ace1183217c76bfa6c data/fossilslegacy/tags/block/spawnable/dilophosaurus.json
 ff9b281b9a16648420ec54ace1183217c76bfa6c data/fossilslegacy/tags/block/spawnable/dimetrodon.json
 ff9b281b9a16648420ec54ace1183217c76bfa6c data/fossilslegacy/tags/block/spawnable/dodo.json
+ff9b281b9a16648420ec54ace1183217c76bfa6c data/fossilslegacy/tags/block/spawnable/dryosaurus.json
+ff9b281b9a16648420ec54ace1183217c76bfa6c data/fossilslegacy/tags/block/spawnable/elasmotherium.json
 016733e169cf7837e246aca4d63254a603e41f0b data/fossilslegacy/tags/block/spawnable/gallimimus.json
 ff9b281b9a16648420ec54ace1183217c76bfa6c data/fossilslegacy/tags/block/spawnable/mammoth.json
 ff9b281b9a16648420ec54ace1183217c76bfa6c data/fossilslegacy/tags/block/spawnable/moa.json

@@ -11,7 +11,7 @@ import willatendo.simplelibrary.server.util.SimpleUtils;
 public final class FABuiltInRegistries {
     public static final Registry<CommandType> COMMAND_TYPES = SimpleUtils.createRegistry(FARegistries.COMMAND_TYPES, SimpleRegistryBuilder.of().sync());
     public static final Registry<DinopediaLineType<?>> DINOPEDIA_LINE_TYPES = SimpleUtils.createRegistry(FARegistries.DINOPEDIA_LINE_TYPE, SimpleRegistryBuilder.of().sync());
-    public static final Registry<PregnancyType> PREGNANCY_TYPES = SimpleUtils.createRegistry(FARegistries.PREGNANCY_TYPES, SimpleRegistryBuilder.of().sync());
+    public static final Registry<PregnancyType> PREGNANCY_TYPES = SimpleUtils.createRegistry(FARegistries.PREGNANCY_TYPE, SimpleRegistryBuilder.of().sync());
     public static final Registry<PatternInformationType<?>> PATTERN_INFORMATION_TYPES = SimpleUtils.createRegistry(FARegistries.PATTERN_INFORMATION_TYPE, SimpleRegistryBuilder.of().sync());
 
     public static void init() {

@@ -5,6 +5,8 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -15,10 +17,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import willatendo.fossilslegacy.server.command_type.CommandType;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.item.FADataComponents;
+import willatendo.fossilslegacy.server.sound.FASoundEvents;
 import willatendo.fossilslegacy.server.tags.FAEntityTypeTags;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
@@ -40,20 +44,23 @@ public class MagicConchItem extends Item {
     @Override
     public InteractionResult use(Level level, Player player, InteractionHand interactionHand) {
         ItemStack itemStack = player.getItemInHand(interactionHand);
-        if (MagicConchItem.getOrder(itemStack) != null) {
+        Holder<CommandType> commandType = MagicConchItem.getOrder(itemStack);
+        if (commandType != null) {
             List<Dinosaur> dinosaurs = level.getEntitiesOfClass(Dinosaur.class, new AABB(player.blockPosition()).inflate(30.0D)).stream().filter(livingEntity -> livingEntity.getType().is(FAEntityTypeTags.MAGIC_CONCH_COMMANDABLE)).toList();
             for (Dinosaur dinosaur : dinosaurs) {
                 if (dinosaur.isOwnedBy(player)) {
                     if (level.isClientSide()) {
                         level.addParticle(ParticleTypes.NOTE, dinosaur.getBlockX(), dinosaur.getBlockY() + 1.2D, dinosaur.getBlockZ(), 0.0D, 0.0D, 0.0D);
                     }
-                    dinosaur.setCommand(MagicConchItem.getOrder(itemStack));
+                    dinosaur.setCommand(commandType);
                 }
             }
 
             player.startUsingItem(interactionHand);
+            level.playSound(player, player, FASoundEvents.MAGIC_CONCH_BLOW.get(), SoundSource.RECORDS, 1.0F, commandType.value().getPitch());
             player.displayClientMessage(FAUtils.translation("command_type", "magic_conch.use", MagicConchItem.getOrder(itemStack).value().getDescription()), true);
             player.awardStat(Stats.ITEM_USED.get(this));
+            level.gameEvent(GameEvent.INSTRUMENT_PLAY, player.position(), GameEvent.Context.of(player));
             player.getCooldowns().addCooldown(itemStack, 10);
         }
         return InteractionResult.CONSUME;

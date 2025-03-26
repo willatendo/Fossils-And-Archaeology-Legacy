@@ -3,7 +3,6 @@ package willatendo.fossilslegacy.server.entity.entities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -34,6 +33,7 @@ import willatendo.fossilslegacy.server.command_type.CommandType;
 import willatendo.fossilslegacy.server.command_type.FACommandTypes;
 import willatendo.fossilslegacy.server.entity.FADamageTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
+import willatendo.fossilslegacy.server.entity.util.Diet;
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.item.FAItems;
@@ -48,7 +48,7 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 import java.util.Optional;
 import java.util.UUID;
 
-public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, CommandableEntity, DaysAliveAccessor, GrowingEntity, HungerAccessor, OwnableEntity, SimpleRegistryAccessAccessor, TamesOnBirth, TameAccessor, TamedSpeakingEntity {
+public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, CommandableEntity, DaysAliveAccessor, GrowingEntity, HungerAccessor, OwnableEntity, TamesOnBirth, TameAccessor, TamedSpeakingEntity {
     private static final EntityDataAccessor<Holder<ModelType>> MODEL_TYPE = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.MODEL_TYPES.get());
     private static final EntityDataAccessor<Holder<Pattern>> SKIN = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.PATTERN.get());
     private static final EntityDataAccessor<Holder<Pattern>> PATTERN = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.PATTERN.get());
@@ -74,11 +74,6 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
 
     public EntityType<Egg> getEggEntityType() {
         return null;
-    }
-
-    @Override
-    public RegistryAccess getRegistryAccess() {
-        return this.registryAccess();
     }
 
     @Override
@@ -464,8 +459,8 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
             compoundTag.putUUID("Owner", this.getOwnerUUID());
         }
 
-        this.addCosmeticsData(compoundTag);
-        this.addCommandType(compoundTag);
+        this.addCosmeticsData(compoundTag, this.registryAccess());
+        this.addCommandType(compoundTag, this.registryAccess());
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
         compoundTag.putInt("Hunger", this.getHunger());
         compoundTag.putInt("GrowthStage", this.getGrowthStage());
@@ -491,8 +486,8 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
             }
         }
 
-        this.readCosmeticsData(compoundTag);
-        this.readCommandType(compoundTag);
+        this.readCosmeticsData(compoundTag, this.registryAccess());
+        this.readCommandType(compoundTag, this.registryAccess());
         super.readAdditionalSaveData(compoundTag);
         this.setDaysAlive(compoundTag.getInt("DaysAlive"));
         this.setHunger(compoundTag.getInt("Hunger"));
@@ -506,8 +501,8 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
             compoundTag.putUUID("Owner", this.getOwnerUUID());
         }
 
-        this.addCosmeticsData(compoundTag);
-        this.addCommandType(compoundTag);
+        this.addCosmeticsData(compoundTag, this.registryAccess());
+        this.addCommandType(compoundTag, this.registryAccess());
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
         compoundTag.putInt("Hunger", this.getHunger());
         compoundTag.putInt("GrowthStage", this.getGrowthStage());
@@ -522,8 +517,8 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
             compoundTag.putUUID("Owner", this.getOwnerUUID());
         }
 
-        this.addCosmeticsData(compoundTag);
-        this.addCommandType(compoundTag);
+        this.addCosmeticsData(compoundTag, this.registryAccess());
+        this.addCommandType(compoundTag, this.registryAccess());
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
         compoundTag.putInt("Hunger", this.getHunger());
         compoundTag.putInt("GrowthStage", this.getGrowthStage());

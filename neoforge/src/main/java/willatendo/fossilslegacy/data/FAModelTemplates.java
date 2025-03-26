@@ -12,6 +12,7 @@ public class FAModelTemplates {
     public static final ModelTemplate FROGSPAWN = FAModelTemplates.createMC("frogspawn", TextureSlot.TEXTURE, TextureSlot.PARTICLE).extend().renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_CULTIVATOR = FAModelTemplates.create("template_cultivator", TextureSlot.SIDE, TextureSlot.TOP).renderType("translucent").build();
     public static final ExtendedModelTemplate TEMPLATE_CULTIVATOR_ACTIVE = FAModelTemplates.create("template_cultivator_active", TextureSlot.SIDE, TextureSlot.TOP).renderType("translucent").build();
+    public static final ExtendedModelTemplate TEMPLATE_DECORATION_PLAQUE_POST = FAModelTemplates.create("template_decoration_plaque_post", FATextureSlot.POST).build();
     public static final ExtendedModelTemplate TEMPLATE_SOUP_CAULDRON_1 = FAModelTemplates.create("template_soup_cauldron_1", TextureSlot.CONTENT).build();
     public static final ExtendedModelTemplate TEMPLATE_SOUP_CAULDRON_2 = FAModelTemplates.create("template_soup_cauldron_2", TextureSlot.CONTENT).build();
     public static final ExtendedModelTemplate TEMPLATE_SOUP_CAULDRON_3 = FAModelTemplates.create("template_soup_cauldron_3", TextureSlot.CONTENT).build();

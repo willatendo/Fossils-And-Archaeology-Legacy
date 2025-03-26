@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.server.entity.entities;
 
 import net.minecraft.core.Holder;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -199,11 +198,7 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
 
-        this.addCosmeticsData(compoundTag);
-
-        if (this.getPattern() != null) {
-            this.addPatternData(compoundTag);
-        }
+        this.addCosmeticsData(compoundTag, this.registryAccess());
 
         if (this.getOwnerUUID() != null) {
             compoundTag.putUUID("Owner", this.getOwnerUUID());
@@ -217,7 +212,7 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
 
-        this.readCosmeticsData(compoundTag);
+        this.readCosmeticsData(compoundTag, this.registryAccess());
 
         UUID uuid;
         if (compoundTag.hasUUID("Owner")) {
@@ -240,7 +235,7 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
 
     @Override
     public CompoundTag saveWithoutId(CompoundTag compound) {
-        this.addCosmeticsData(compound);
+        this.addCosmeticsData(compound, this.registryAccess());
 
         if (this.getOwnerUUID() != null) {
             compound.putUUID("Owner", this.getOwnerUUID());
@@ -254,7 +249,7 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
 
     @Override
     public boolean save(CompoundTag compound) {
-        this.addCosmeticsData(compound);
+        this.addCosmeticsData(compound, this.registryAccess());
 
         if (this.getOwnerUUID() != null) {
             compound.putUUID("Owner", this.getOwnerUUID());
@@ -348,10 +343,5 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
         return null;
-    }
-
-    @Override
-    public RegistryAccess getRegistryAccess() {
-        return this.registryAccess();
     }
 }

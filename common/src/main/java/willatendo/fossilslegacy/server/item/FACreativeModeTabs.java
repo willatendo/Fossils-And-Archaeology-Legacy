@@ -10,13 +10,17 @@ import net.minecraft.resources.RegistryOps;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.level.block.Blocks;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.command_type.CommandType;
+import willatendo.fossilslegacy.server.decoration_plaque_type.DecorationPlaqueType;
+import willatendo.fossilslegacy.server.entity.entities.DecorationPlaque;
 import willatendo.fossilslegacy.server.entity.entities.StoneTablet;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 import willatendo.fossilslegacy.server.item.items.MagicConchItem;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.stone_tablet_variant.StoneTabletVariant;
+import willatendo.fossilslegacy.server.tags.FADecorationPlaqueTypeTags;
 import willatendo.fossilslegacy.server.tags.FAFossilVariantTags;
 import willatendo.fossilslegacy.server.tags.FAStoneTabletVariantTags;
 import willatendo.fossilslegacy.server.utils.FAUtils;
@@ -30,6 +34,7 @@ import java.util.function.Predicate;
 public final class FACreativeModeTabs {
     public static final SimpleRegistry<CreativeModeTab> CREATIVE_MODE_TABS = SimpleRegistry.create(Registries.CREATIVE_MODE_TAB, FAUtils.ID);
     private static final Comparator<Holder<FossilVariant>> FOSSIL_VARIANT_COMPARATOR = Comparator.comparing(Holder::getRegisteredName, String::compareTo);
+    private static final Comparator<Holder<DecorationPlaqueType>> DECORATION_PLAQUE_COMPARATOR = Comparator.comparing(Holder::value, Comparator.<DecorationPlaqueType>comparingInt(decorationPlaqueType -> decorationPlaqueType.height() * decorationPlaqueType.width()).thenComparing(DecorationPlaqueType::width));
     private static final Comparator<Holder<StoneTabletVariant>> STONE_TABLET_COMPARATOR = Comparator.comparing(Holder::value, Comparator.<StoneTabletVariant>comparingInt(stoneTabletVariant -> stoneTabletVariant.height() * stoneTabletVariant.width()).thenComparing(StoneTabletVariant::width));
 
     public static final SimpleHolder<CreativeModeTab> FA_BLOCKS = CREATIVE_MODE_TABS.register("fa_blocks", () -> SimpleUtils.create(FAUtils.ID, "fa_blocks", () -> FABlocks.ANALYZER.get().asItem(), (itemDisplayParameters, output) -> {
@@ -133,6 +138,22 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.CALAMITES_BOAT.get());
         output.accept(FAItems.CALAMITES_CHEST_BOAT.get());
         output.accept(FABlocks.JURASSIC_FERN.get());
+        output.accept(FAItems.WHITE_DECORATION_PLAQUE.get());
+        output.accept(FAItems.ORANGE_DECORATION_PLAQUE.get());
+        output.accept(FAItems.MAGENTA_DECORATION_PLAQUE.get());
+        output.accept(FAItems.LIGHT_BLUE_DECORATION_PLAQUE.get());
+        output.accept(FAItems.YELLOW_DECORATION_PLAQUE.get());
+        output.accept(FAItems.LIME_DECORATION_PLAQUE.get());
+        output.accept(FAItems.PINK_DECORATION_PLAQUE.get());
+        output.accept(FAItems.GRAY_DECORATION_PLAQUE.get());
+        output.accept(FAItems.LIGHT_GRAY_DECORATION_PLAQUE.get());
+        output.accept(FAItems.CYAN_DECORATION_PLAQUE.get());
+        output.accept(FAItems.PURPLE_DECORATION_PLAQUE.get());
+        output.accept(FAItems.BLUE_DECORATION_PLAQUE.get());
+        output.accept(FAItems.BROWN_DECORATION_PLAQUE.get());
+        output.accept(FAItems.GREEN_DECORATION_PLAQUE.get());
+        output.accept(FAItems.RED_DECORATION_PLAQUE.get());
+        output.accept(FAItems.BLACK_DECORATION_PLAQUE.get());
     }).build());
     public static final SimpleHolder<CreativeModeTab> FA_ARCHAEOLOGY_ITEMS = CREATIVE_MODE_TABS.register("fa_archaeology_items", () -> SimpleUtils.create(FAUtils.ID, "fa_archaeology_items", FAItems.SCARAB_GEM::get, (itemDisplayParameters, output) -> {
         output.accept(FAItems.RELIC_SCRAP.get());
@@ -156,7 +177,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.PREHISTORIC_COIN.get());
         output.accept(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get());
         output.accept(FAItems.STONE_TABLET.get());
-        itemDisplayParameters.holders().lookup(FARegistries.STONE_TABLET_VARIANTS).ifPresent(registryLookup -> FACreativeModeTabs.generateStoneTablets(output, itemDisplayParameters.holders(), registryLookup, stoneTabletVariantHolder -> stoneTabletVariantHolder.is(FAStoneTabletVariantTags.PLACEABLE), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
+        itemDisplayParameters.holders().lookup(FARegistries.STONE_TABLET_VARIANT).ifPresent(registryLookup -> FACreativeModeTabs.generateStoneTablets(output, itemDisplayParameters.holders(), registryLookup, stoneTabletVariantHolder -> stoneTabletVariantHolder.is(FAStoneTabletVariantTags.PLACEABLE), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
         output.accept(FAItems.ANCIENT_SWORD.get());
         output.accept(FAItems.ANCIENT_SHOVEL.get());
         output.accept(FAItems.ANCIENT_PICKAXE.get());
@@ -233,12 +254,14 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.SHEEP_DNA.get());
         output.accept(FAItems.WOLF_DNA.get());
         output.accept(FAItems.ANKYLOSAURUS_EGG.get());
+        output.accept(FAItems.BARYONYX_EGG.get());
         output.accept(FAItems.BRACHIOSAURUS_EGG.get());
         output.accept(FAItems.CARNOTAURUS_EGG.get());
         output.accept(FAItems.COMPSOGNATHUS_EGG.get());
         output.accept(FAItems.CRYOLOPHOSAURUS_EGG.get());
         output.accept(FAItems.DILOPHOSAURUS_EGG.get());
         output.accept(FAItems.DIMETRODON_EGG.get());
+        output.accept(FAItems.DRYOSAURUS_EGG.get());
         output.accept(FAItems.FUTABASAURUS_EGG.get());
         output.accept(FAItems.GALLIMIMUS_EGG.get());
         output.accept(FAItems.ICHTHYOSAURUS_EGG.get());
@@ -253,6 +276,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.VELOCIRAPTOR_EGG.get());
         output.accept(FAItems.INCUBATED_DODO_EGG.get());
         output.accept(FAItems.DODO_EGG.get());
+        output.accept(FAItems.ELASMOTHERIUM_EMBRYO_SYRINGE.get());
         output.accept(FAItems.MAMMOTH_EMBRYO_SYRINGE.get());
         output.accept(FAItems.INCUBATED_MOA_EGG.get());
         output.accept(FAItems.MOA_EGG.get());
@@ -280,6 +304,8 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.WOLF_EMBRYO_SYRINGE.get());
         output.accept(FAItems.RAW_ANKYLOSAURUS.get());
         output.accept(FAItems.COOKED_ANKYLOSAURUS.get());
+        output.accept(FAItems.RAW_BARYONYX.get());
+        output.accept(FAItems.COOKED_BARYONYX.get());
         output.accept(FAItems.RAW_BRACHIOSAURUS.get());
         output.accept(FAItems.COOKED_BRACHIOSAURUS.get());
         output.accept(FAItems.RAW_CARNOTAURUS.get());
@@ -294,6 +320,10 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.COOKED_DIMETRODON.get());
         output.accept(FAItems.RAW_DODO.get());
         output.accept(FAItems.COOKED_DODO.get());
+        output.accept(FAItems.RAW_DRYOSAURUS.get());
+        output.accept(FAItems.COOKED_DRYOSAURUS.get());
+        output.accept(FAItems.RAW_ELASMOTHERIUM.get());
+        output.accept(FAItems.COOKED_ELASMOTHERIUM.get());
         output.accept(FAItems.RAW_FUTABASAURUS.get());
         output.accept(FAItems.COOKED_FUTABASAURUS.get());
         output.accept(FAItems.RAW_GALLIMIMUS.get());
@@ -356,6 +386,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.JEEP_1993.get());
         output.accept(FAItems.ANKYLOSAURUS_SPAWN_EGG.get());
         output.accept(FAItems.ANU_SPAWN_EGG.get());
+        output.accept(FAItems.BARYONYX_SPAWN_EGG.get());
         output.accept(FAItems.BRACHIOSAURUS_SPAWN_EGG.get());
         output.accept(FAItems.CARNOTAURUS_SPAWN_EGG.get());
         output.accept(FAItems.COMPSOGNATHUS_SPAWN_EGG.get());
@@ -363,6 +394,8 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.DILOPHOSAURUS_SPAWN_EGG.get());
         output.accept(FAItems.DIMETRODON_SPAWN_EGG.get());
         output.accept(FAItems.DODO_SPAWN_EGG.get());
+        output.accept(FAItems.DRYOSAURUS_SPAWN_EGG.get());
+        output.accept(FAItems.ELASMOTHERIUM_SPAWN_EGG.get());
         output.accept(FAItems.FAILURESAURUS_SPAWN_EGG.get());
         output.accept(FAItems.FUTABASAURUS_SPAWN_EGG.get());
         output.accept(FAItems.GALLIMIMUS_SPAWN_EGG.get());
@@ -393,6 +426,16 @@ public final class FACreativeModeTabs {
         registryLookup.listElements().filter(predicate).sorted(FOSSIL_VARIANT_COMPARATOR).forEach(reference -> {
             ItemStack itemStack = new ItemStack(FAItems.ARTICULATED_FOSSIL.get());
             itemStack.set(FADataComponents.FOSSIL_VARIANT.get(), reference);
+            output.accept(itemStack, tabVisibility);
+        });
+    }
+
+    private static void generateDecorationPlaques(CreativeModeTab.Output output, HolderLookup.Provider provider, HolderLookup.RegistryLookup<DecorationPlaqueType> registryLookup, Predicate<Holder<DecorationPlaqueType>> predicate, CreativeModeTab.TabVisibility tabVisibility) {
+        RegistryOps<Tag> registryOps = provider.createSerializationContext(NbtOps.INSTANCE);
+        registryLookup.listElements().filter(predicate).sorted(DECORATION_PLAQUE_COMPARATOR).forEach(reference -> {
+            CustomData customData = CustomData.EMPTY.update(registryOps, DecorationPlaque.VARIANT_MAP_CODEC, reference).getOrThrow().update(compoundTag -> compoundTag.putString("id", "fossilslegacy:stone_tablet"));
+            ItemStack itemStack = new ItemStack(FAItems.WHITE_DECORATION_PLAQUE.get());
+            itemStack.set(DataComponents.ENTITY_DATA, customData);
             output.accept(itemStack, tabVisibility);
         });
     }

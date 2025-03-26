@@ -23,6 +23,7 @@ public interface TicksToBirth {
         if (level instanceof ServerLevel serverLevel && offspring instanceof Mob mobOffspring) {
             mobOffspring.finalizeSpawn(serverLevel, level.getCurrentDifficultyAt(mob.blockPosition()), EntitySpawnReason.BREEDING, null);
         }
+        mob.remove(RemovalReason.DISCARDED);
     }
 
     default int maxTime() {
@@ -59,7 +60,6 @@ public interface TicksToBirth {
             }
             this.onEntityTicksComplete(mob, offspring, level);
             level.addFreshEntity(offspring);
-            mob.remove(RemovalReason.DISCARDED);
         } else {
             this.setRemainingTime(this.getRemainingTime() + 1);
         }

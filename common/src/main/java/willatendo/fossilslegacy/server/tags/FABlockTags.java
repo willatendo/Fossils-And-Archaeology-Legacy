@@ -10,6 +10,7 @@ public class FABlockTags {
     private static final TagRegister<Block> BLOCK_TAGS = TagRegister.create(Registries.BLOCK, FAUtils.ID);
 
     public static final TagKey<Block> ANKYLOSAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/ankylosaurus");
+    public static final TagKey<Block> BARYONYX_SPAWNABLE = BLOCK_TAGS.register("spawnable/baryonyx");
     public static final TagKey<Block> BRACHIOSAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/brachiosaurus");
     public static final TagKey<Block> CALAMITES_LOGS = BLOCK_TAGS.register("calamites_logs");
     public static final TagKey<Block> CARNOTAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/carnotaurus");
@@ -18,9 +19,10 @@ public class FABlockTags {
     public static final TagKey<Block> DILOPHOSAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/dilophosaurus");
     public static final TagKey<Block> DIMETRODON_SPAWNABLE = BLOCK_TAGS.register("spawnable/dimetrodon");
     public static final TagKey<Block> DODO_SPAWNABLE = BLOCK_TAGS.register("spawnable/dodo");
+    public static final TagKey<Block> DRYOSAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/dryosaurus");
     public static final TagKey<Block> EATABLE_FERN = BLOCK_TAGS.register("eatable_fern");
     public static final TagKey<Block> EATABLE_LEAVES = BLOCK_TAGS.register("eatable_leaves");
-    public static final TagKey<Block> ELASMOTHERIUM_SPAWNABLE = BLOCK_TAGS.register("spawnable/elasmotherium_spawnable");
+    public static final TagKey<Block> ELASMOTHERIUM_SPAWNABLE = BLOCK_TAGS.register("spawnable/elasmotherium");
     public static final TagKey<Block> FEEDER = BLOCK_TAGS.register("feeder");
     public static final TagKey<Block> GALLIMIMUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/gallimimus");
     public static final TagKey<Block> JURASSIC_FERN_PLANTABLE_ON = BLOCK_TAGS.register("jurassic_fern_plantable_on");

@@ -19,6 +19,7 @@ public class FAModelTypeTagProvider extends DataDrivenTagsProvider<ModelType> {
         this.tag(FAModelTypeTags.LOCKED).addTag(FAModelTypeTags.LEGACY);
 
         this.tag(FAModelTypeTags.ANKYLOSAURUS).add(FAModelTypes.ANKYLOSAURUS);
+        this.tag(FAModelTypeTags.BARYONYX).add(FAModelTypes.BARYONYX);
         this.tag(FAModelTypeTags.BRACHIOSAURUS).add(FAModelTypes.BRACHIOSAURUS, FAModelTypes.LEGACY_BRACHIOSAURUS);
         this.tag(FAModelTypeTags.NON_LEGACY_BRACHIOSAURUS).add(FAModelTypes.BRACHIOSAURUS);
         this.tag(FAModelTypeTags.CARNOTAURUS).add(FAModelTypes.CARNOTAURUS, FAModelTypes.LEGACY_CARNOTAURUS);
@@ -30,6 +31,8 @@ public class FAModelTypeTagProvider extends DataDrivenTagsProvider<ModelType> {
         this.tag(FAModelTypeTags.NON_LEGACY_DILOPHOSAURUS).add(FAModelTypes.DILOPHOSAURUS);
         this.tag(FAModelTypeTags.DODO).add(FAModelTypes.DODO);
         this.tag(FAModelTypeTags.DIMETRODON).add(FAModelTypes.DIMETRODON);
+        this.tag(FAModelTypeTags.DRYOSAURUS).add(FAModelTypes.DRYOSAURUS);
+        this.tag(FAModelTypeTags.ELASMOTHERIUM).add(FAModelTypes.ELASMOTHERIUM);
         this.tag(FAModelTypeTags.FUTABASAURUS).add(FAModelTypes.FUTABASAURUS, FAModelTypes.LEGACY_FUTABASAURUS);
         this.tag(FAModelTypeTags.NON_LEGACY_FUTABASAURUS).add(FAModelTypes.FUTABASAURUS);
         this.tag(FAModelTypeTags.GALLIMIMUS).add(FAModelTypes.GALLIMIMUS);

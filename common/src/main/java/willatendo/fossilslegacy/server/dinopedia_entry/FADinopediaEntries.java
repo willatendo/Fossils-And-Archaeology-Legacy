@@ -8,6 +8,7 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FADinopediaEntries {
     public static final ResourceKey<DinopediaEntry> ANKYLOSAURUS_DATA = FADinopediaEntries.create("ankylosaurus_data");
+    public static final ResourceKey<DinopediaEntry> BARYONYX_DATA = FADinopediaEntries.create("baryonyx_data");
     public static final ResourceKey<DinopediaEntry> BRACHIOSAURUS_DATA = FADinopediaEntries.create("brachiosaurus_data");
     public static final ResourceKey<DinopediaEntry> CARNOTAURUS_DATA = FADinopediaEntries.create("carnotaurus_data");
     public static final ResourceKey<DinopediaEntry> COMPSOGNATHUS_DATA = FADinopediaEntries.create("compsognathus_data");
@@ -15,6 +16,7 @@ public final class FADinopediaEntries {
     public static final ResourceKey<DinopediaEntry> DILOPHOSAURUS_DATA = FADinopediaEntries.create("dilophosaurus_data");
     public static final ResourceKey<DinopediaEntry> DIMETRODON_DATA = FADinopediaEntries.create("dimetrodon_data");
     public static final ResourceKey<DinopediaEntry> DODO_DATA = FADinopediaEntries.create("dodo_data");
+    public static final ResourceKey<DinopediaEntry> DRYOSAURUS_DATA = FADinopediaEntries.create("dryosaurus_data");
     public static final ResourceKey<DinopediaEntry> EGG_DATA = FADinopediaEntries.create("egg_data");
     public static final ResourceKey<DinopediaEntry> ELASMOTHERIUM_DATA = FADinopediaEntries.create("elasmotherium_data");
     public static final ResourceKey<DinopediaEntry> FUTABASAURUS_DATA = FADinopediaEntries.create("futabasaurus_data");
@@ -44,6 +46,7 @@ public final class FADinopediaEntries {
 
     public static void bootstrap(BootstrapContext<DinopediaEntry> bootstrapContext) {
         FADinopediaEntries.register(bootstrapContext, ANKYLOSAURUS_DATA, DinopediaEntry.of().addText(BuiltInDinopediaLines.DISPLAY_NAME, BuiltInDinopediaLines.OWNER, BuiltInDinopediaLines.AGE, BuiltInDinopediaLines.HEALTH, BuiltInDinopediaLines.HUNGER, BuiltInDinopediaLines.RIDEABLE, BuiltInDinopediaLines.NOT_OWNER, BuiltInDinopediaLines.WILD).drawEntity().centerText());
+        FADinopediaEntries.register(bootstrapContext, BARYONYX_DATA, DinopediaEntry.of().addText(BuiltInDinopediaLines.DISPLAY_NAME, BuiltInDinopediaLines.OWNER, BuiltInDinopediaLines.AGE, BuiltInDinopediaLines.HEALTH, BuiltInDinopediaLines.HUNGER, BuiltInDinopediaLines.NOT_OWNER, BuiltInDinopediaLines.WILD).drawEntity().centerText());
         FADinopediaEntries.register(bootstrapContext, BRACHIOSAURUS_DATA, DinopediaEntry.of().addText(BuiltInDinopediaLines.DISPLAY_NAME, BuiltInDinopediaLines.OWNER, BuiltInDinopediaLines.AGE, BuiltInDinopediaLines.HEALTH, BuiltInDinopediaLines.HUNGER, BuiltInDinopediaLines.RIDEABLE, BuiltInDinopediaLines.NOT_OWNER, BuiltInDinopediaLines.WILD).drawEntity().centerText());
         FADinopediaEntries.register(bootstrapContext, CARNOTAURUS_DATA, DinopediaEntry.of().addText(BuiltInDinopediaLines.DISPLAY_NAME, BuiltInDinopediaLines.OWNER, BuiltInDinopediaLines.AGE, BuiltInDinopediaLines.HEALTH, BuiltInDinopediaLines.HUNGER, BuiltInDinopediaLines.NOT_OWNER, BuiltInDinopediaLines.WILD).drawEntity().centerText());
         FADinopediaEntries.register(bootstrapContext, COMPSOGNATHUS_DATA, DinopediaEntry.of().addText(BuiltInDinopediaLines.DISPLAY_NAME, BuiltInDinopediaLines.OWNER, BuiltInDinopediaLines.AGE, BuiltInDinopediaLines.HEALTH, BuiltInDinopediaLines.HUNGER, BuiltInDinopediaLines.NOT_OWNER, BuiltInDinopediaLines.WILD).drawEntity().centerText());
@@ -51,6 +54,7 @@ public final class FADinopediaEntries {
         FADinopediaEntries.register(bootstrapContext, DILOPHOSAURUS_DATA, DinopediaEntry.of().addText(BuiltInDinopediaLines.DISPLAY_NAME, BuiltInDinopediaLines.OWNER, BuiltInDinopediaLines.AGE, BuiltInDinopediaLines.HEALTH, BuiltInDinopediaLines.HUNGER, BuiltInDinopediaLines.NOT_OWNER, BuiltInDinopediaLines.WILD).drawEntity().centerText());
         FADinopediaEntries.register(bootstrapContext, DIMETRODON_DATA, DinopediaEntry.of().addText(BuiltInDinopediaLines.DISPLAY_NAME, BuiltInDinopediaLines.OWNER, BuiltInDinopediaLines.AGE, BuiltInDinopediaLines.HEALTH, BuiltInDinopediaLines.HUNGER, BuiltInDinopediaLines.NOT_OWNER, BuiltInDinopediaLines.WILD).drawEntity().centerText());
         FADinopediaEntries.register(bootstrapContext, DODO_DATA, DinopediaEntry.of().addText(BuiltInDinopediaLines.DISPLAY_NAME, BuiltInDinopediaLines.OWNER, BuiltInDinopediaLines.AGE, BuiltInDinopediaLines.HEALTH, BuiltInDinopediaLines.HUNGER, BuiltInDinopediaLines.NOT_OWNER, BuiltInDinopediaLines.WILD).drawEntity().centerText());
+        FADinopediaEntries.register(bootstrapContext, DRYOSAURUS_DATA, DinopediaEntry.of().addText(BuiltInDinopediaLines.DISPLAY_NAME, BuiltInDinopediaLines.OWNER, BuiltInDinopediaLines.AGE, BuiltInDinopediaLines.HEALTH, BuiltInDinopediaLines.HUNGER, BuiltInDinopediaLines.NOT_OWNER, BuiltInDinopediaLines.WILD).drawEntity().centerText());
         FADinopediaEntries.register(bootstrapContext, EGG_DATA, DinopediaEntry.of().addText(BuiltInDinopediaLines.EGG_DISPLAY_NAME, BuiltInDinopediaLines.REMAINING_TIME, BuiltInDinopediaLines.STATUS).drawEntity().centerText());
         FADinopediaEntries.register(bootstrapContext, ELASMOTHERIUM_DATA, DinopediaEntry.of().addText(BuiltInDinopediaLines.DISPLAY_NAME, BuiltInDinopediaLines.OWNER, BuiltInDinopediaLines.AGE, BuiltInDinopediaLines.HEALTH, BuiltInDinopediaLines.HUNGER, BuiltInDinopediaLines.NOT_OWNER, BuiltInDinopediaLines.WILD).drawEntity().centerText());
         FADinopediaEntries.register(bootstrapContext, FUTABASAURUS_DATA, DinopediaEntry.of().addText(BuiltInDinopediaLines.DISPLAY_NAME, BuiltInDinopediaLines.OWNER, BuiltInDinopediaLines.AGE, BuiltInDinopediaLines.HEALTH, BuiltInDinopediaLines.HUNGER, BuiltInDinopediaLines.RIDEABLE, BuiltInDinopediaLines.NOT_OWNER, BuiltInDinopediaLines.WILD).drawEntity().centerText());

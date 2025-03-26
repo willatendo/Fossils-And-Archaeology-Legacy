@@ -1,9 +1,10 @@
 {
   "values": [
-    "fossilslegacy:relic_scarp_results/smilodon_dna",
-    "fossilslegacy:relic_scarp_results/mammoth_dna",
-    "fossilslegacy:relic_scarp_results/dodo_dna",
-    "fossilslegacy:relic_scarp_results/moa_dna",
-    "fossilslegacy:relic_scarp_results/beef"
+    "fossilslegacy:frozen_meat_results/smilodon_dna",
+    "fossilslegacy:frozen_meat_results/mammoth_dna",
+    "fossilslegacy:frozen_meat_results/dodo_dna",
+    "fossilslegacy:frozen_meat_results/moa_dna",
+    "fossilslegacy:frozen_meat_results/elasmotherium_dna",
+    "fossilslegacy:frozen_meat_results/beef"
   ]
 }

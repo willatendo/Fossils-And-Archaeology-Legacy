@@ -185,11 +185,15 @@ public class FALanguageProvider extends SimpleLanguageProvider {
 
         // Coat Types
         this.addModelType(FAModelTypes.ANKYLOSAURUS, "Ankylosaurus (2024)");
+        this.addModelType(FAModelTypes.BARYONYX, "Baryonyx (2025)");
         this.addModelType(FAModelTypes.BRACHIOSAURUS, "Brachiosaurus (2024)");
+        this.addModelType(FAModelTypes.CARNOTAURUS, "Carnotaurus (2024)");
         this.addModelType(FAModelTypes.COMPSOGNATHUS, "Compsognathus (2024)");
         this.addModelType(FAModelTypes.CRYOLOPHOSAURUS, "Cryolophosaurus (2024)");
         this.addModelType(FAModelTypes.DILOPHOSAURUS, "Dilophosaurus (2024)");
         this.addModelType(FAModelTypes.DODO, "Dodo (2024)");
+        this.addModelType(FAModelTypes.DRYOSAURUS, "Dryosaurus (2025)");
+        this.addModelType(FAModelTypes.ELASMOTHERIUM, "Elasmotherium (2025)");
         this.addModelType(FAModelTypes.FUTABASAURUS, "Futabasaurus (2024)");
         this.addModelType(FAModelTypes.GALLIMIMUS, "Gallimimus (2024)");
         this.addModelType(FAModelTypes.ICHTHYOSAURUS, "Ichthyosaurus (2025)");
@@ -226,7 +230,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("command_type.fossilslegacy.stay", "Stay");
         this.add("command_type.fossilslegacy.free_move", "Free Move");
         this.add("command_type.fossilslegacy.command.use", "Set to %s");
-        this.add("command_type.fossilslegacy.magic_conch.use", "Set all plesiosaurs in a 30 block radius to %s.");
+        this.add("command_type.fossilslegacy.magic_conch.use", "Set all commanded by magic conch in a 30 block radius to %s.");
 
         // Containers
         this.add("container.fossilslegacy.analyzer", "Analyzer");
@@ -292,6 +296,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
 
         // Entities
         this.add(FAEntityTypes.ANKYLOSAURUS.get());
+        this.add(FAEntityTypes.BARYONYX.get());
         this.add(FAEntityTypes.BRACHIOSAURUS.get());
         this.add(FAEntityTypes.CARNOTAURUS.get());
         this.add(FAEntityTypes.COMPSOGNATHUS.get());
@@ -299,6 +304,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAEntityTypes.DILOPHOSAURUS.get());
         this.add(FAEntityTypes.DIMETRODON.get());
         this.add(FAEntityTypes.DODO.get());
+        this.add(FAEntityTypes.DRYOSAURUS.get());
         this.add(FAEntityTypes.ELASMOTHERIUM.get());
         this.add(FAEntityTypes.FUTABASAURUS.get());
         this.add(FAEntityTypes.MOA.get());
@@ -318,12 +324,14 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAEntityTypes.VELOCIRAPTOR.get());
 
         this.add(FAEntityTypes.ANKYLOSAURUS_EGG.get());
+        this.add(FAEntityTypes.BARYONYX_EGG.get());
         this.add(FAEntityTypes.BRACHIOSAURUS_EGG.get());
         this.add(FAEntityTypes.CARNOTAURUS_EGG.get());
         this.add(FAEntityTypes.COMPSOGNATHUS_EGG.get());
         this.add(FAEntityTypes.CRYOLOPHOSAURUS_EGG.get());
         this.add(FAEntityTypes.DILOPHOSAURUS_EGG.get());
         this.add(FAEntityTypes.DIMETRODON_EGG.get());
+        this.add(FAEntityTypes.DRYOSAURUS_EGG.get());
         this.add(FAEntityTypes.FUTABASAURUS_EGG.get());
         this.add(FAEntityTypes.GALLIMIMUS_EGG.get());
         this.add(FAEntityTypes.ICHTHYOSAURUS_EGG.get());
@@ -422,6 +430,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.addFossilVariant(FAFossilVariants.FUTABASAURUS, "Futabasaurus");
         this.addFossilVariant(FAFossilVariants.LEGACY_FUTABASAURUS, "Legacy Futabasaurus");
         this.addFossilVariant(FAFossilVariants.GALLIMIMUS, "Gallimimus");
+        this.addFossilVariant(FAFossilVariants.MOSASAURUS, "Mosasaurus");
         this.addFossilVariant(FAFossilVariants.PACHYCEPHALOSAURUS, "Pachycephalosaurus");
         this.addFossilVariant(FAFossilVariants.PTERANODON, "Pteranodon");
         this.addFossilVariant(FAFossilVariants.LEGACY_PTERANODON, "Legacy Pteranodon");
@@ -493,6 +502,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.ANKYLOSAURUS_EGG.get());
         this.add(FAItems.DIMETRODON_EGG.get());
         this.add(FAItems.ICHTHYOSAURUS_EGG.get());
+        this.add(FAItems.DRYOSAURUS_EGG.get());
+        this.add(FAItems.BARYONYX_EGG.get());
         this.add(FAItems.RAW_TRICERATOPS.get());
         this.add(FAItems.RAW_VELOCIRAPTOR.get());
         this.add(FAItems.RAW_TYRANNOSAURUS.get());
@@ -517,6 +528,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.RAW_ANKYLOSAURUS.get());
         this.add(FAItems.RAW_DIMETRODON.get());
         this.add(FAItems.RAW_ICHTHYOSAURUS.get());
+        this.add(FAItems.RAW_ELASMOTHERIUM.get());
+        this.add(FAItems.RAW_DRYOSAURUS.get());
+        this.add(FAItems.RAW_BARYONYX.get());
         this.add(FAItems.COOKED_TRICERATOPS.get());
         this.add(FAItems.COOKED_VELOCIRAPTOR.get());
         this.add(FAItems.COOKED_TYRANNOSAURUS.get());
@@ -541,6 +555,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.COOKED_ANKYLOSAURUS.get());
         this.add(FAItems.COOKED_DIMETRODON.get());
         this.add(FAItems.COOKED_ICHTHYOSAURUS.get());
+        this.add(FAItems.COOKED_ELASMOTHERIUM.get());
+        this.add(FAItems.COOKED_DRYOSAURUS.get());
+        this.add(FAItems.COOKED_BARYONYX.get());
         this.add(FAItems.TYRANNOSAURUS_TOOTH.get());
         this.add(FAItems.TOOTH_DAGGER.get());
         this.add(FAItems.THERIZINOSAURUS_CLAWS.get());
@@ -605,6 +622,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.WOLF_EMBRYO_SYRINGE.get());
         this.add(FAItems.SMILODON_EMBRYO_SYRINGE.get());
         this.add(FAItems.MAMMOTH_EMBRYO_SYRINGE.get());
+        this.add(FAItems.ELASMOTHERIUM_EMBRYO_SYRINGE.get());
         this.add(FAItems.INCUBATED_DODO_EGG.get());
         this.add(FAItems.DODO_EGG.get());
         this.add(FAItems.INCUBATED_MOA_EGG.get());
@@ -622,6 +640,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.articulated_fossil.futabasaurus", "Articulated Futabasaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.legacy_futabasaurus", "Articulated Legacy Futabasaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.gallimimus", "Articulated Gallimimus Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.mosasaurus", "Articulated Mosasaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.pachycephalosaurus", "Articulated Pachycephalosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.pteranodon", "Articulated Pteranodon Fossil");
         this.add("item.fossilslegacy.articulated_fossil.legacy_pteranodon", "Articulated Legacy Pteranodon Fossil");
@@ -633,6 +652,22 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.articulated_fossil.tyrannosaurus", "Articulated Tyrannosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.velociraptor", "Articulated Velociraptor Fossil");
         this.add(FAItems.RELIC_SCRAP.get());
+        this.add(FAItems.WHITE_DECORATION_PLAQUE.get());
+        this.add(FAItems.ORANGE_DECORATION_PLAQUE.get());
+        this.add(FAItems.MAGENTA_DECORATION_PLAQUE.get());
+        this.add(FAItems.LIGHT_BLUE_DECORATION_PLAQUE.get());
+        this.add(FAItems.YELLOW_DECORATION_PLAQUE.get());
+        this.add(FAItems.LIME_DECORATION_PLAQUE.get());
+        this.add(FAItems.PINK_DECORATION_PLAQUE.get());
+        this.add(FAItems.GRAY_DECORATION_PLAQUE.get());
+        this.add(FAItems.LIGHT_GRAY_DECORATION_PLAQUE.get());
+        this.add(FAItems.CYAN_DECORATION_PLAQUE.get());
+        this.add(FAItems.PURPLE_DECORATION_PLAQUE.get());
+        this.add(FAItems.BLUE_DECORATION_PLAQUE.get());
+        this.add(FAItems.BROWN_DECORATION_PLAQUE.get());
+        this.add(FAItems.GREEN_DECORATION_PLAQUE.get());
+        this.add(FAItems.RED_DECORATION_PLAQUE.get());
+        this.add(FAItems.BLACK_DECORATION_PLAQUE.get());
         this.add(FAItems.STONE_TABLET.get());
         this.add(FAItems.ANCIENT_SWORD_ARTIFACT.get());
         this.add(FAItems.ANCIENT_SHOVEL_ARTIFACT.get());
@@ -713,6 +748,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.ANKYLOSAURUS_SPAWN_EGG.get());
         this.add(FAItems.DIMETRODON_SPAWN_EGG.get());
         this.add(FAItems.ICHTHYOSAURUS_SPAWN_EGG.get());
+        this.add(FAItems.ELASMOTHERIUM_SPAWN_EGG.get());
+        this.add(FAItems.DRYOSAURUS_SPAWN_EGG.get());
+        this.add(FAItems.BARYONYX_SPAWN_EGG.get());
         this.add("item.fossilslegacy.dinosaur_spawn_egg.desc", "Crouch to spawn baby");
 
         this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.applies_to", "Netherite Equipment");
@@ -883,9 +921,15 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("stone_tablet.fossilslegacy.random", "Random variant");
 
         // Sounds
+        this.add("subtitles.block.drum.hit", "Drum hit");
+        this.add("subtitles.block.drum.triple_hit", "Drum triple hit");
+
         this.add("subtitles.entity.ankylosaurus.ambient", "Ankylosaurus calls");
         this.add("subtitles.entity.ankylosaurus.hurt", "Ankylosaurus hurts");
         this.add("subtitles.entity.ankylosaurus.death", "Ankylosaurus dies");
+        this.add("subtitles.entity.baryonyx.ambient", "Baryonyx roars");
+        this.add("subtitles.entity.baryonyx.hurt", "Baryonyx hurts");
+        this.add("subtitles.entity.baryonyx.death", "Baryonyx dies");
         this.add("subtitles.entity.brachiosaurus.ambient", "Brachiosaurus calls");
         this.add("subtitles.entity.brachiosaurus.hurt", "Brachiosaurus hurts");
         this.add("subtitles.entity.brachiosaurus.death", "Brachiosaurus dies");
@@ -908,8 +952,12 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("subtitles.entity.dodo.ambient", "Dodo hoots");
         this.add("subtitles.entity.dodo.hurt", "Dodo hurts");
         this.add("subtitles.entity.dodo.death", "Dodo dies");
-        this.add("subtitles.block.drum.hit", "Drum hit");
-        this.add("subtitles.block.drum.triple_hit", "Drum triple hit");
+        this.add("subtitles.entity.dryosaurus.ambient", "Dryosaurus hoots");
+        this.add("subtitles.entity.dryosaurus.hurt", "Dryosaurus hurts");
+        this.add("subtitles.entity.dryosaurus.death", "Dryosaurus dies");
+        this.add("subtitles.entity.elasmotherium.ambient", "Elasmotherium grunts");
+        this.add("subtitles.entity.elasmotherium.hurt", "Elasmotherium hurts");
+        this.add("subtitles.entity.elasmotherium.death", "Elasmotherium dies");
         this.add("subtitles.entity.mammoth.ambient", "Mammoth trumpets");
         this.add("subtitles.entity.mammoth.hurt", "Mammoth hurts");
         this.add("subtitles.entity.mammoth.death", "Mammoth dies");
@@ -952,6 +1000,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("subtitles.entity.velociraptor.attack", "Velociraptor attacks");
         this.add("subtitles.entity.velociraptor.hurt", "Velociraptor hurts");
         this.add("subtitles.entity.velociraptor.death", "Velociraptor dies");
+
+        this.add("subtitles.item.magic_conch.blow", "Magic conch blow");
 
         // Tags
         this.add(FAAnalyzerResultTags.FOSSIL_RESULTS, "Fossil Results");
@@ -999,6 +1049,10 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAAnalyzerResultTags.RAW_SPINOSAURUS_RESULTS, "Raw Spinosaurus Results");
         this.add(FAAnalyzerResultTags.RAW_ANKYLOSAURUS_RESULTS, "Raw Ankylosaurus Results");
         this.add(FAAnalyzerResultTags.RAW_DIMETRODON_RESULTS, "Raw Dimetrodon Results");
+        this.add(FAAnalyzerResultTags.RAW_ICTHYOSAURUS_RESULTS, "Raw Gallimimus Results");
+        this.add(FAAnalyzerResultTags.RAW_ELASMOTHERIUM_RESULTS, "Raw Elasmotherium Results");
+        this.add(FAAnalyzerResultTags.RAW_DRYOSAURUS_RESULTS, "Raw Dryosaurus Results");
+        this.add(FAAnalyzerResultTags.RAW_BARYONYX_RESULTS, "Raw Baryonyx Results");
 
         this.add(FABiomeTags.HAS_ACADEMY, "Has Academy");
         this.add(FABiomeTags.HAS_LAB, "Has Lab");
@@ -1009,6 +1063,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABiomeTags.HAS_WEAPON_SHOP, "Has Weapon Shop");
 
         this.add(FABlockTags.ANKYLOSAURUS_SPAWNABLE, "Ankylosaurus Spawnable");
+        this.add(FABlockTags.BARYONYX_SPAWNABLE, "Baryonyx Spawnable");
         this.add(FABlockTags.BRACHIOSAURUS_SPAWNABLE, "Brachiosaurus Spawnable");
         this.add(FABlockTags.CALAMITES_LOGS, "Calamites Logs");
         this.add(FABlockTags.CARNOTAURUS_SPAWNABLE, "Carnotaurus Spawnable");
@@ -1017,6 +1072,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlockTags.DILOPHOSAURUS_SPAWNABLE, "Dilophosaurus Spawnable");
         this.add(FABlockTags.DIMETRODON_SPAWNABLE, "Dimetrodon Spawnable");
         this.add(FABlockTags.DODO_SPAWNABLE, "Dodo Spawnable");
+        this.add(FABlockTags.DRYOSAURUS_SPAWNABLE, "Dryosaurus Spawnable");
         this.add(FABlockTags.EATABLE_FERN, "Eatable Fern");
         this.add(FABlockTags.EATABLE_LEAVES, "Eatable Leaves");
         this.add(FABlockTags.ELASMOTHERIUM_SPAWNABLE, "Elasmotherium Spawnable");
@@ -1041,6 +1097,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlockTags.VELOCIRAPTOR_SPAWNABLE, "Velociraptor Spawnable");
 
         this.add(FAModelTypeTags.ANKYLOSAURUS, "Ankylosaurus");
+        this.add(FAModelTypeTags.BARYONYX, "Baryonyx");
         this.add(FAModelTypeTags.BRACHIOSAURUS, "Brachiosaurus");
         this.add(FAModelTypeTags.NON_LEGACY_BRACHIOSAURUS, "Non-Legacy Brachiosaurus");
         this.add(FAModelTypeTags.CARNOTAURUS, "Carnotaurus");
@@ -1052,6 +1109,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAModelTypeTags.NON_LEGACY_DILOPHOSAURUS, "Non-Legacy Dilophosaurus");
         this.add(FAModelTypeTags.DIMETRODON, "Dimetrodon");
         this.add(FAModelTypeTags.DODO, "Dodo");
+        this.add(FAModelTypeTags.DRYOSAURUS, "Dryosaurus");
+        this.add(FAModelTypeTags.ELASMOTHERIUM, "Elasmotherium");
         this.add(FAModelTypeTags.FUTABASAURUS, "Futabasaurus");
         this.add(FAModelTypeTags.NON_LEGACY_FUTABASAURUS, "Non-Legacy Futabasaurus");
         this.add(FAModelTypeTags.GALLIMIMUS, "Gallimimus");
@@ -1082,6 +1141,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FADamageTypeTags.SPINOSAURUS_IMMUNE, "Spinosaurus Immune");
         this.add(FADamageTypeTags.TYRANNOSAURUS_IMMUNE, "Tyrannosaurus Immune");
 
+        this.add(FAEntityTypeTags.BARYONYX_VICTIMS, "Baryonyx Victims");
         this.add(FAEntityTypeTags.CARNOTAURUS_VICTIMS, "Carnotaurus Victims");
         this.add(FAEntityTypeTags.COMPSOGNATHUS_VICTIMS, "Compsognathus Victims");
         this.add(FAEntityTypeTags.CRYOLOPHOSAURUS_VICTIMS, "Cryolophosaurus Victims");
@@ -1101,6 +1161,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAFuelEntryTags.CULTIVATOR, "Cultivator Fuels");
 
         this.add(FAItemTags.ANKYLOSAURUS_COMMANDABLES, "Ankylosaurus Commandables");
+        this.add(FAItemTags.BARYONYX_COMMANDABLES, "Baryonyx Commandables");
         this.add(FAItemTags.BRACHIOSAURUS_COMMANDABLES, "Brachiosaurus Commandables");
         this.add(FAItemTags.CAKE_EGGS, "Cake Eggs");
         this.add(FAItemTags.CALAMITES_LOGS, "Calamites Logs");
@@ -1110,11 +1171,11 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItemTags.CRYOLOPHOSAURUS_COMMANDABLES, "Cryolophosaurus Commandables");
         this.add(FAItemTags.DILOPHOSAURUS_COMMANDABLES, "Dilophosaurus Commandables");
         this.add(FAItemTags.DIMETRODON_COMMANDABLES, "Dimetrodon Commandables");
+        this.add(FAItemTags.DRYOSAURUS_COMMANDABLES, "Dryosaurus Commandables");
         this.add(FAItemTags.DNA, "DNA");
         this.add(FAItemTags.DRUM_INSTRUMENT, "Drum Instrument");
         this.add(FAItemTags.FROGLIGHTS, "Froglights");
         this.add(FAItemTags.GALLIMIMUS_COMMANDABLES, "Gallimimus Commandables");
-        this.add(FAItemTags.ICHTHYOSAURUS_COMMANDABLES, "Ichthyosaurus Commandables");
         this.add(FAItemTags.HERBIVORE_FOODS, "Herbivore Foods");
         this.add(FAItemTags.LEPIDODENDRON_LOGS, "Lepidodendron Logs");
         this.add(FAItemTags.MAMMOTH_COMMANDABLES, "Mammoth Commandables");

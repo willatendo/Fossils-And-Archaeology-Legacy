@@ -19,18 +19,20 @@ public final class CommandType {
     public static final Map<Integer, Holder<CommandType>> COMMAND_TYPES_BY_CODE = Maps.newHashMap();
     public static final Map<String, Holder<CommandType>> COMMAND_TYPES_BY_STRING = Maps.newHashMap();
 
-    public static final Codec<CommandType> DIRECT_CODEC = RecordCodecBuilder.create((instance) -> instance.group(Codec.STRING.fieldOf("modelName").forGetter(CommandType::getName), Codec.INT.fieldOf("code").forGetter(CommandType::getCode)).apply(instance, CommandType::new));
+    public static final Codec<CommandType> DIRECT_CODEC = RecordCodecBuilder.create((instance) -> instance.group(Codec.STRING.fieldOf("modelName").forGetter(CommandType::getName), Codec.INT.fieldOf("code").forGetter(CommandType::getCode), Codec.FLOAT.fieldOf("pitch").forGetter(CommandType::getPitch)).apply(instance, CommandType::new));
     public static final Codec<Holder<CommandType>> CODEC = RegistryFileCodec.create(FARegistries.COMMAND_TYPES, DIRECT_CODEC);
-    public static final StreamCodec<RegistryFriendlyByteBuf, CommandType> DIRECT_STREAM_CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, CommandType::getName, ByteBufCodecs.INT, CommandType::getCode, CommandType::new);
+    public static final StreamCodec<RegistryFriendlyByteBuf, CommandType> DIRECT_STREAM_CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, CommandType::getName, ByteBufCodecs.INT, CommandType::getCode, ByteBufCodecs.FLOAT, CommandType::getPitch, CommandType::new);
     public static final StreamCodec<RegistryFriendlyByteBuf, Holder<CommandType>> STREAM_CODEC = ByteBufCodecs.holder(FARegistries.COMMAND_TYPES, DIRECT_STREAM_CODEC);
 
     private String descriptionId;
     private String name;
     private int code;
+    private float pitch;
 
-    public CommandType(String name, int code) {
+    public CommandType(String name, int code, float pitch) {
         this.name = name;
         this.code = code;
+        this.pitch = pitch;
     }
 
     public String getName() {
@@ -39,6 +41,10 @@ public final class CommandType {
 
     private int getCode() {
         return this.code;
+    }
+
+    public float getPitch() {
+        return pitch;
     }
 
     private String getOrCreateDescriptionId() {

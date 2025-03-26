@@ -62,6 +62,7 @@ public class FossilsLegacyData {
         event.addProvider(new FADamageTypeTagProvider(packOutput, registries, FAUtils.ID));
         event.addProvider(new FAFossilVariantTagProvider(packOutput, registries, FAUtils.ID));
         event.addProvider(new FAStoneTabletVariantTagProvider(packOutput, registries, FAUtils.ID));
+        event.addProvider(new FADecorationPlaqueTypeTagProvider(packOutput, registries, FAUtils.ID));
         event.addProvider(new FAModelTypeTagProvider(packOutput, registries, FAUtils.ID));
         event.addProvider(new FAPOITypeTagProvider(packOutput, registries, FAUtils.ID));
         event.addProvider(new FAStructureTagProvider(packOutput, registries, FAUtils.ID));

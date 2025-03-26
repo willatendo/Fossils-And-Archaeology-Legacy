@@ -14,6 +14,8 @@ public class FAPatternTags {
 
     public static final TagKey<Pattern> ANKYLOSAURUS_2024_SKINS = PATTERN_TAGS.register("skins/ankylosaurus_2024");
     public static final TagKey<Pattern> ANKYLOSAURUS_2024_PATTERNS = PATTERN_TAGS.register("patterns/ankylosaurus_2024");
+    public static final TagKey<Pattern> BARYONYX_2025_SKINS = PATTERN_TAGS.register("skins/baryonyx_2025");
+    public static final TagKey<Pattern> BARYONYX_2025_PATTERNS = PATTERN_TAGS.register("patterns/baryonyx_2025");
     public static final TagKey<Pattern> BRACHIOSAURUS_2024_SKINS = PATTERN_TAGS.register("skins/brachiosaurus_2024");
     public static final TagKey<Pattern> BRACHIOSAURUS_2024_PATTERNS = PATTERN_TAGS.register("patterns/brachiosaurus_2024");
     public static final TagKey<Pattern> BRACHIOSAURUS_2011_SKINS = PATTERN_TAGS.register("skins/brachiosaurus_2011");
@@ -36,6 +38,10 @@ public class FAPatternTags {
     public static final TagKey<Pattern> DIMETRODON_2024_PATTERNS = PATTERN_TAGS.register("patterns/dimetrodon_2024");
     public static final TagKey<Pattern> DODO_2024_SKINS = PATTERN_TAGS.register("skins/dodo_2024");
     public static final TagKey<Pattern> DODO_2024_PATTERNS = PATTERN_TAGS.register("patterns/dodo_2024");
+    public static final TagKey<Pattern> DRYOSAURUS_2025_SKINS = PATTERN_TAGS.register("skins/dryosaurus_2025");
+    public static final TagKey<Pattern> DRYOSAURUS_2025_PATTERNS = PATTERN_TAGS.register("patterns/dryosaurus_2025");
+    public static final TagKey<Pattern> ELASMOTHERIUM_2025_SKINS = PATTERN_TAGS.register("skins/elasmotherium_2025");
+    public static final TagKey<Pattern> ELASMOTHERIUM_2025_PATTERNS = PATTERN_TAGS.register("patterns/elasmotherium_2025");
     public static final TagKey<Pattern> FUTABASAURUS_2024_SKINS = PATTERN_TAGS.register("skins/futabasaurus_2024");
     public static final TagKey<Pattern> FUTABASAURUS_2024_PATTERNS = PATTERN_TAGS.register("patterns/futabasaurus_2024");
     public static final TagKey<Pattern> FUTABASAURUS_2011_SKINS = PATTERN_TAGS.register("skins/futabasaurus_2011");

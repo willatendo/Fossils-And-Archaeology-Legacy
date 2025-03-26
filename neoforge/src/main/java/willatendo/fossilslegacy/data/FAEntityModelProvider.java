@@ -12,6 +12,7 @@ public class FAEntityModelProvider extends EntityModelProvider {
     @Override
     protected void getAll() {
         this.add(this.mod("ankylosaurus"), AnkylosaurusModels.ANKYLOSAURUS_MODEL);
+        this.add(this.mod("baryonyx"), BaryonyxModels.BARYONYX_MODEL);
         this.add(this.mod("brachiosaurus"), BrachiosaurusModels.BRACHIOSAURUS_MODEL);
         this.add(this.mod("legacy_brachiosaurus"), BrachiosaurusModels.LEGACY_BRACHIOSAURUS_MODEL);
         this.add(this.mod("carnotaurus"), CarnotaurusModels.CARNOTAURUS_MODEL);
@@ -23,6 +24,7 @@ public class FAEntityModelProvider extends EntityModelProvider {
         this.add(this.mod("legacy_dilophosaurus"), DilophosaurusModels.LEGACY_DILOPHOSAURUS_MODEL);
         this.add(this.mod("dimetrodon"), DimetrodonModels.DIMETRODON_MODEL);
         this.add(this.mod("dodo"), DodoModels.DODO_MODEL);
+        this.add(this.mod("dryosaurus"), DryosaurusModels.DRYOSAURUS_MODEL);
         this.add(this.mod("elasmotherium"), ElasmotheriumModels.ELASMOTHERIUM_MODEL);
         this.add(this.mod("futabasaurus"), FutabasaurusModels.FUTABASAURUS_MODEL);
         this.add(this.mod("legacy_futabasaurus"), FutabasaurusModels.LEGACY_FUTABASAURUS_MODEL);

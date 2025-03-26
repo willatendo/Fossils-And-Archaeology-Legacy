@@ -67,7 +67,7 @@ public final class FossilsLegacyMod {
         simpleRegistryRegister.register(FADataComponents.DATA_COMPONENT_TYPES);
         simpleRegistryRegister.register(FADinopediaLineTypes.DINOPEDIA_LINE_TYPES);
         simpleRegistryRegister.register(FAPatternInformationTypes.PATTERN_INFORMATION_TYPES);
-        FAMapDecorationTypes.init();
+        simpleRegistryRegister.register(FAMapDecorationTypes.MAP_DECORATION_TYPE);
         simpleRegistryRegister.register(FAItems.ITEMS);
         simpleRegistryRegister.register(FACreativeModeTabs.CREATIVE_MODE_TABS);
         simpleRegistryRegister.register(FALootPoolEntryTypes.LOOT_POOL_ENTRY_TYPES);

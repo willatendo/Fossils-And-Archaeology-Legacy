@@ -1,7 +1,9 @@
 package willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary;
 
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -17,11 +19,12 @@ import willatendo.fossilslegacy.server.entity.goals.DinoEatFromFeederGoal;
 import willatendo.fossilslegacy.server.entity.goals.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goals.DinoOwnerHurtTargetGoal;
 import willatendo.fossilslegacy.server.entity.goals.DinoTemptGoal;
+import willatendo.fossilslegacy.server.entity.util.Diet;
 import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
-import willatendo.fossilslegacy.server.entity.util.interfaces.Diet;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.model_type.ModelType;
+import willatendo.fossilslegacy.server.sound.FASoundEvents;
 import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 
 import java.util.Optional;
@@ -80,6 +83,21 @@ public class Elasmotherium extends Dinosaur implements DinopediaInformation {
         this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this));
         this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
+    }
+
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return this.getOverridenSoundEvent(FASoundEvents.ELASMOTHERIUM_AMBIENT.get(), ModelType.OverrideInfo.OverridenSoundType.AMBIENT);
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return this.getOverridenSoundEvent(FASoundEvents.ELASMOTHERIUM_HURT.get(), ModelType.OverrideInfo.OverridenSoundType.HURT);
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return this.getOverridenSoundEvent(FASoundEvents.ELASMOTHERIUM_DEATH.get(), ModelType.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     @Override

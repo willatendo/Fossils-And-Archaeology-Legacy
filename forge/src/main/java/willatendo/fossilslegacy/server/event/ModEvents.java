@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.event;
 
+import net.minecraft.world.entity.ai.behavior.GiveGiftToHero;
 import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -7,16 +8,19 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.DataPackRegistryEvent;
-import net.minecraftforge.registries.IdMappingEvent;
-import net.minecraftforge.registries.MissingMappingsEvent;
 import net.minecraftforge.registries.NewRegistryEvent;
 import willatendo.fossilslegacy.network.ForgePacketHelper;
 import willatendo.fossilslegacy.server.utils.FAUtils;
-import willatendo.simplelibrary.server.event.modification.*;
+import willatendo.simplelibrary.server.event.modification.ForgeCompostablesModification;
+import willatendo.simplelibrary.server.event.modification.ForgeCreativeModeTabModification;
+import willatendo.simplelibrary.server.event.modification.ForgeHeroOfTheVillageGiftModification;
+import willatendo.simplelibrary.server.event.modification.ForgeStrippablesModification;
 import willatendo.simplelibrary.server.event.registry.ForgeAttributeRegister;
 import willatendo.simplelibrary.server.event.registry.ForgeDynamicRegistryRegister;
 import willatendo.simplelibrary.server.event.registry.ForgeNewRegistryRegister;
 import willatendo.simplelibrary.server.event.registry.ForgeResourcePackRegister;
+
+import java.util.HashMap;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = FAUtils.ID)
 public class ModEvents {
@@ -26,9 +30,10 @@ public class ModEvents {
         event.enqueueWork(ForgePacketHelper::register);
         BasicEvents.strippablesSetup(new ForgeStrippablesModification());
         BasicEvents.compostablesSetup(new ForgeCompostablesModification());
+        GiveGiftToHero.GIFTS = new HashMap<>(GiveGiftToHero.GIFTS);
         BasicEvents.heroOfTheVillageGiftSetup(new ForgeHeroOfTheVillageGiftModification());
-        BasicEvents.oxidationSetup(new ForgeOxidationModification());
-        BasicEvents.waxableSetup(new ForgeWaxableModification());
+        //     BasicEvents.oxidationSetup(new ForgeOxidationModification());
+        //  BasicEvents.waxableSetup(new ForgeWaxableModification());
     }
 
     @SubscribeEvent
@@ -54,10 +59,5 @@ public class ModEvents {
     @SubscribeEvent
     public static void entityAttributeCreationEvent(EntityAttributeCreationEvent event) {
         BasicEvents.attributeEvent(new ForgeAttributeRegister(event));
-    }
-
-    @SubscribeEvent
-    public static void event(MissingMappingsEvent event) {
-        BasicEvents.idModification(new ForgeIdModification(FAUtils.ID, event));
     }
 }
