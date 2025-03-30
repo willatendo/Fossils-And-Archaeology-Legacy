@@ -95,6 +95,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.ARCHAEOLOGY_WORKBENCH.get());
         this.add(FABlocks.PALAEONTOLOGY_TABLE.get());
         this.add(FABlocks.JURASSIC_FERN.get());
+        this.add(FABlocks.SHORT_HORSETAIL.get());
+        this.add(FABlocks.TALL_HORSETAIL.get());
         this.add(FABlocks.DRUM.get());
         this.add("block.fossilslegacy.drum.hit", "Set all creatures that are commanded with a %s to %s.");
         this.add(FABlocks.FEEDER.get());
@@ -170,6 +172,23 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.CALAMITES_FENCE_GATE.get());
         this.add(FABlocks.CALAMITES_BUTTON.get());
         this.add(FABlocks.CALAMITES_SLAB.get());
+        this.add(FABlocks.ARCHAEOPTERIS_PLANKS.get());
+        this.add(FABlocks.ARCHAEOPTERIS_SAPLING.get());
+        this.add(FABlocks.ARCHAEOPTERIS_LOG.get());
+        this.add(FABlocks.STRIPPED_ARCHAEOPTERIS_LOG.get());
+        this.add(FABlocks.ARCHAEOPTERIS_WOOD.get());
+        this.add(FABlocks.STRIPPED_ARCHAEOPTERIS_WOOD.get());
+        this.add(FABlocks.ARCHAEOPTERIS_LEAVES.get());
+        this.add(FABlocks.ARCHAEOPTERIS_STAIRS.get());
+        this.add(FABlocks.ARCHAEOPTERIS_SIGN.get());
+        this.add(FABlocks.ARCHAEOPTERIS_DOOR.get());
+        this.add(FABlocks.ARCHAEOPTERIS_HANGING_SIGN.get());
+        this.add(FABlocks.ARCHAEOPTERIS_PRESSURE_PLATE.get());
+        this.add(FABlocks.ARCHAEOPTERIS_FENCE.get());
+        this.add(FABlocks.ARCHAEOPTERIS_TRAPDOOR.get());
+        this.add(FABlocks.ARCHAEOPTERIS_FENCE_GATE.get());
+        this.add(FABlocks.ARCHAEOPTERIS_BUTTON.get());
+        this.add(FABlocks.ARCHAEOPTERIS_SLAB.get());
 
         // Biomes
         this.add("biome.fossilslegacy.prehistoric_ocean", "Prehistoric Ocean");
@@ -400,6 +419,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
 
         this.add(FAEntityTypes.JEEP.get());
 
+        this.add(FAEntityTypes.ARCHAEOPTERIS_BOAT.get(), "Archaeopteris Boat");
+        this.add(FAEntityTypes.ARCHAEOPTERIS_CHEST_BOAT.get(), "Archaeopteris Boat with Chest");
         this.add(FAEntityTypes.CALAMITES_BOAT.get(), "Calamites Boat");
         this.add(FAEntityTypes.CALAMITES_CHEST_BOAT.get(), "Calamites Boat with Chest");
         this.add(FAEntityTypes.LEPIDODENDRON_BOAT.get(), "Calamites Boat");
@@ -479,9 +500,14 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.model_type", "Model Type: %s");
         this.add("item.fossilslegacy.skin", "Pattern: %s");
         this.add(FAItems.JURASSIC_FERN_DNA.get());
-        this.add(FAItems.LEPIDODENDRON_DNA.get());
-        this.add(FAItems.SIGILLARIA_DNA.get());
-        this.add(FAItems.CALAMITES_DNA.get());
+        this.add(FAItems.LEPIDODENDRON_DNA.get(), "Lepidodendron DNA");
+        this.add(FAItems.SIGILLARIA_DNA.get(), "Sigillaria DNA");
+        this.add(FAItems.CALAMITES_DNA.get(), "Calamites DNA");
+        this.add(FAItems.ARCHAEOPTERIS_DNA.get(), "Archaeopteris DNA");
+        this.add(FAItems.LEPIDODENDRON_CONE.get());
+        this.add(FAItems.SIGILLARIA_SPORE.get());
+        this.add(FAItems.CALAMITES_SPORE.get());
+        this.add(FAItems.ARCHAEOPTERIS_SPORE.get());
         this.add(FAItems.TRICERATOPS_EGG.get());
         this.add(FAItems.VELOCIRAPTOR_EGG.get());
         this.add(FAItems.TYRANNOSAURUS_EGG.get());
@@ -768,6 +794,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.SIGILLARIA_CHEST_BOAT.get(), "Sigillaria Boat with Chest");
         this.add(FAItems.CALAMITES_BOAT.get());
         this.add(FAItems.CALAMITES_CHEST_BOAT.get(), "Calamites Boat with Chest");
+        this.add(FAItems.ARCHAEOPTERIS_BOAT.get());
+        this.add(FAItems.ARCHAEOPTERIS_CHEST_BOAT.get(), "Archaeopteris Boat with Chest");
 
         this.add(FAItems.DEBUG_MAX_HUNGER.get(), "Debug Max Hunger");
         this.add(FAItems.DEBUG_MAX_HEALTH.get(), "Debug Max Health");
@@ -1160,7 +1188,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAFuelEntryTags.ARCHAEOLOGY_WORKBENCH, "Archaeology Workbench Fuels");
         this.add(FAFuelEntryTags.CULTIVATOR, "Cultivator Fuels");
 
+        this.add(FAItemTags.ANCIENT_TOOL_MATERIALS, "Ancient Tool Materials");
         this.add(FAItemTags.ANKYLOSAURUS_COMMANDABLES, "Ankylosaurus Commandables");
+        this.add(FAItemTags.ARCHAEOPTERIS_LOGS, "Archaeopteris Logs");
         this.add(FAItemTags.BARYONYX_COMMANDABLES, "Baryonyx Commandables");
         this.add(FAItemTags.BRACHIOSAURUS_COMMANDABLES, "Brachiosaurus Commandables");
         this.add(FAItemTags.CAKE_EGGS, "Cake Eggs");

@@ -114,6 +114,8 @@ public final class FAEntityTypes {
 
     public static final SimpleHolder<EntityType<Jeep>> JEEP = FAEntityTypes.registerJeep("jeep", FAItems.JEEP_1993::get);
 
+    public static final SimpleHolder<EntityType<Boat>> ARCHAEOPTERIS_BOAT = FAEntityTypes.registerBoat("archaeopteris_boat", FAItems.ARCHAEOPTERIS_BOAT::get);
+    public static final SimpleHolder<EntityType<ChestBoat>> ARCHAEOPTERIS_CHEST_BOAT = FAEntityTypes.registerChestBoat("archaeopteris_chest_boat", FAItems.ARCHAEOPTERIS_CHEST_BOAT::get);
     public static final SimpleHolder<EntityType<Boat>> CALAMITES_BOAT = FAEntityTypes.registerBoat("calamites_boat", FAItems.CALAMITES_BOAT::get);
     public static final SimpleHolder<EntityType<ChestBoat>> CALAMITES_CHEST_BOAT = FAEntityTypes.registerChestBoat("calamites_chest_boat", FAItems.CALAMITES_CHEST_BOAT::get);
     public static final SimpleHolder<EntityType<Boat>> LEPIDODENDRON_BOAT = FAEntityTypes.registerBoat("lepidodendron_boat", FAItems.LEPIDODENDRON_BOAT::get);

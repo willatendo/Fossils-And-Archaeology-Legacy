@@ -1,5 +1,11 @@
 {
   "values": {
+    "fossilslegacy:archaeopteris_leaves": {
+      "chance": 0.3
+    },
+    "fossilslegacy:archaeopteris_sapling": {
+      "chance": 0.3
+    },
     "fossilslegacy:calamites_leaves": {
       "chance": 0.3
     },
@@ -18,11 +24,17 @@
     "fossilslegacy:lepidodendron_sapling": {
       "chance": 0.3
     },
+    "fossilslegacy:short_horsetail": {
+      "chance": 0.5
+    },
     "fossilslegacy:sigillaria_leaves": {
       "chance": 0.3
     },
     "fossilslegacy:sigillaria_sapling": {
       "chance": 0.3
+    },
+    "fossilslegacy:tall_horsetail": {
+      "chance": 0.5
     }
   }
 }

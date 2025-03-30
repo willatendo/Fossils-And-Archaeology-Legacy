@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "fossilslegacy:block/archaeopteris_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "fossilslegacy:block/archaeopteris_wood"
+    },
+    "axis=z": {
+      "model": "fossilslegacy:block/archaeopteris_wood",
+      "x": 90
+    }
+  }
+}

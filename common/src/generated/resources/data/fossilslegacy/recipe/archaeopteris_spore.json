@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "plant",
+  "ingredient": "fossilslegacy:archaeopteris_dna",
+  "result": {
+    "id": "fossilslegacy:archaeopteris_spore"
+  },
+  "time": 6000
+}

@@ -17,10 +17,13 @@
 - Stone Tablets Now Makes Stone Sounds
 - Magic Conch Now Plays Sound When Blown
 - Magic Conch Message No Longer Specifies Plesiosaurs
+- Creative Mode Tabs Are More Alphabetical
 - Adding Pregnant Animals Is Now Easier
 - Added Archaeology Category For Analyzer Recipe Book
 - Added Palaeontology Category For Analyzer Recipe Book
 - Added Mosasaurus Skeleton
+- Added Lepidodendron Cone
+- Added Calamites Spore
 27/2/2024 1.4.9
 - Fixed Tooth Dagger Not Shearing All Shearables
 - Fixed Mayan Vase Not Wobbling

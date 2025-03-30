@@ -11,6 +11,7 @@ public class FAItemTags {
 
     public static final TagKey<Item> ANCIENT_TOOL_MATERIALS = ITEM_TAGS.register("ancient_tool_materials");
     public static final TagKey<Item> ANKYLOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/ankylosaurus");
+    public static final TagKey<Item> ARCHAEOPTERIS_LOGS = ITEM_TAGS.register("archaeopteris_logs");
     public static final TagKey<Item> BARYONYX_COMMANDABLES = ITEM_TAGS.register("commandable/baryonyx");
     public static final TagKey<Item> BRACHIOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/brachiosaurus");
     public static final TagKey<Item> CAKE_EGGS = ITEM_TAGS.register("cake_eggs");

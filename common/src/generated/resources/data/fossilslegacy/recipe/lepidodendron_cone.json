@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "plant",
+  "ingredient": "fossilslegacy:lepidodendron_dna",
+  "result": {
+    "id": "fossilslegacy:lepidodendron_cone"
+  },
+  "time": 6000
+}

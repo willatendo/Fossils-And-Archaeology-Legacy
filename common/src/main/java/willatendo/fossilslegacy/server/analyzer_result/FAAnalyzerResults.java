@@ -81,6 +81,7 @@ public final class FAAnalyzerResults {
         FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.LEPIDODENDRON_DNA.get()), 10);
         FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.SIGILLARIA_DNA.get()), 10);
         FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.CALAMITES_DNA.get()), 10);
+        FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.ARCHAEOPTERIS_DNA.get()), 10);
         FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.BARYONYX_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.BRACHIOSAURUS_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, FOSSIL_RESULTS, "fossil_results", new ItemStack(FAItems.DILOPHOSAURUS_DNA.get()), 2);

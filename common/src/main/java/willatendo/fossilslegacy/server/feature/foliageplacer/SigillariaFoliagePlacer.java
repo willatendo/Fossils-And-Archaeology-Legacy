@@ -13,7 +13,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerTy
 import willatendo.fossilslegacy.server.feature.FAFoliagePlacerTypes;
 
 public class SigillariaFoliagePlacer extends FoliagePlacer {
-    public static final MapCodec<SigillariaFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(instance -> foliagePlacerParts(instance).apply(instance, SigillariaFoliagePlacer::new));
+    public static final MapCodec<SigillariaFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(instance -> SigillariaFoliagePlacer.foliagePlacerParts(instance).apply(instance, SigillariaFoliagePlacer::new));
 
     public SigillariaFoliagePlacer(IntProvider radius, IntProvider offset) {
         super(radius, offset);

@@ -25,13 +25,14 @@ import willatendo.simplelibrary.client.event.registry.*;
 
 public final class FossilsLegacyClient {
     public static void signSheets() {
+        FAWoodTypes.register(FAWoodTypes.ARCHAEOPTERIS);
         FAWoodTypes.register(FAWoodTypes.CALAMITES);
         FAWoodTypes.register(FAWoodTypes.LEPIDODENDRON);
         FAWoodTypes.register(FAWoodTypes.SIGILLARIA);
     }
 
     public static void blockColorRegistry(BlockColorRegistry blockColorRegistry) {
-        blockColorRegistry.registerLeavesColor(FABlocks.CALAMITES_LEAVES.get(), FABlocks.LEPIDODENDRON_LEAVES.get(), FABlocks.SIGILLARIA_LEAVES.get(), FABlocks.JURASSIC_FERN.get());
+        blockColorRegistry.registerLeavesColor(FABlocks.ARCHAEOPTERIS_LEAVES.get(), FABlocks.CALAMITES_LEAVES.get(), FABlocks.LEPIDODENDRON_LEAVES.get(), FABlocks.SIGILLARIA_LEAVES.get(), FABlocks.JURASSIC_FERN.get(), FABlocks.SHORT_HORSETAIL.get(), FABlocks.TALL_HORSETAIL.get());
     }
 
     public static void keyMappingEvent(KeyMappingRegistry keyMappingRegister) {
@@ -124,9 +125,11 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.STONE_TABLET.get(), StoneTabletRenderer::new);
         modelRegister.register(FAEntityTypes.JEEP.get(), JeepRenderer::new);
 
+        modelRegister.register(FAEntityTypes.ARCHAEOPTERIS_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.ARCHAEOPTERIS_BOAT));
         modelRegister.register(FAEntityTypes.CALAMITES_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.CALAMITES_BOAT));
         modelRegister.register(FAEntityTypes.LEPIDODENDRON_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.LEPIDODENDRON_BOAT));
         modelRegister.register(FAEntityTypes.SIGILLARIA_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.SIGILLARIA_BOAT));
+        modelRegister.register(FAEntityTypes.ARCHAEOPTERIS_CHEST_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.ARCHAEOPTERIS_CHEST_BOAT));
         modelRegister.register(FAEntityTypes.CALAMITES_CHEST_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.CALAMITES_CHEST_BOAT));
         modelRegister.register(FAEntityTypes.LEPIDODENDRON_CHEST_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.LEPIDODENDRON_CHEST_BOAT));
         modelRegister.register(FAEntityTypes.SIGILLARIA_CHEST_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.SIGILLARIA_CHEST_BOAT));
@@ -156,9 +159,11 @@ public final class FossilsLegacyClient {
         modelLayerRegister.register(FAModelLayers.TIME_MACHINE_CLOCK, TimeMachineClockModel::createBodyLayer);
         LayerDefinition boatModel = BoatModel.createBoatModel();
         LayerDefinition chestBoatModel = BoatModel.createChestBoatModel();
+        modelLayerRegister.register(FAModelLayers.ARCHAEOPTERIS_BOAT, () -> boatModel);
         modelLayerRegister.register(FAModelLayers.CALAMITES_BOAT, () -> boatModel);
         modelLayerRegister.register(FAModelLayers.LEPIDODENDRON_BOAT, () -> boatModel);
         modelLayerRegister.register(FAModelLayers.SIGILLARIA_BOAT, () -> boatModel);
+        modelLayerRegister.register(FAModelLayers.ARCHAEOPTERIS_CHEST_BOAT, () -> chestBoatModel);
         modelLayerRegister.register(FAModelLayers.CALAMITES_CHEST_BOAT, () -> chestBoatModel);
         modelLayerRegister.register(FAModelLayers.LEPIDODENDRON_CHEST_BOAT, () -> chestBoatModel);
         modelLayerRegister.register(FAModelLayers.SIGILLARIA_CHEST_BOAT, () -> chestBoatModel);

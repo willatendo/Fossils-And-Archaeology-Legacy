@@ -5,6 +5,8 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FAModelLayers {
     public static final ModelLayerLocation ANIMAL_FETUS = FAModelLayers.create("animal_fetus");
+    public static final ModelLayerLocation ARCHAEOPTERIS_BOAT = FAModelLayers.create("boat/archaeopteris");
+    public static final ModelLayerLocation ARCHAEOPTERIS_CHEST_BOAT = FAModelLayers.create("chest_boat/archaeopteris");
     public static final ModelLayerLocation ANU = FAModelLayers.create("anu");
     public static final ModelLayerLocation CALAMITES_BOAT = FAModelLayers.create("boat/calamites");
     public static final ModelLayerLocation CALAMITES_CHEST_BOAT = FAModelLayers.create("chest_boat/calamites");

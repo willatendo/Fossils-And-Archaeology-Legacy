@@ -8,7 +8,8 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FAWoodTypes {
-    public static final WoodType CALAMITES = register("calamites", FABlockSetTypes.SIGILLARIA);
+    public static final WoodType ARCHAEOPTERIS = register("archaeopteris", FABlockSetTypes.ARCHAEOPTERIS);
+    public static final WoodType CALAMITES = register("calamites", FABlockSetTypes.CALAMITES);
     public static final WoodType LEPIDODENDRON = register("lepidodendron", FABlockSetTypes.LEPIDODENDRON);
     public static final WoodType SIGILLARIA = register("sigillaria", FABlockSetTypes.SIGILLARIA);
 

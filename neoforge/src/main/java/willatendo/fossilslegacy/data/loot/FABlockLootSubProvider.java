@@ -14,12 +14,10 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.block.blocks.MayanVaseBlock;
 import willatendo.fossilslegacy.server.item.FAItems;
-import willatendo.fossilslegacy.server.item.items.DecorationPlaqueItem;
 import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom;
 import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom.ItemAndChance;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.data.loot.SimpleBlockLootSubProvider;
-import willatendo.simplelibrary.server.registry.SimpleHolder;
 
 public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
     public FABlockLootSubProvider(HolderLookup.Provider registries) {
@@ -53,6 +51,8 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.dropSelf(FABlocks.ARCHAEOLOGY_WORKBENCH.get());
         this.dropSelf(FABlocks.PALAEONTOLOGY_TABLE.get());
         this.add(FABlocks.JURASSIC_FERN.get(), block -> this.createDoublePlantWithSeedDrops(block, FABlocks.JURASSIC_FERN.get()));
+        this.dropSelf(FABlocks.SHORT_HORSETAIL.get());
+        this.dropSelf(FABlocks.TALL_HORSETAIL.get());
         this.dropSelf(FABlocks.DRUM.get());
         this.dropSelf(FABlocks.FEEDER.get());
         this.add(FABlocks.PERMAFROST.get(), block -> this.createSilkTouchDispatchTable(block, this.applyExplosionCondition(block, LootOneItemOfManyRandom.lootTableItem(20000, new ItemAndChance(FAItems.JURASSIC_FERN_SPORES.get(), 0, 4000), new ItemAndChance(FABlocks.SKULL_BLOCK.get(), 4000, 8000), new ItemAndChance(FAItems.FROZEN_MEAT.get(), 8000, 12000), new ItemAndChance(Items.BEEF, 12000, 16000), new ItemAndChance(Items.PORKCHOP, 16000, 20000)))));
@@ -146,6 +146,24 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.dropPottedContents(FABlocks.POTTED_CALAMITES_SAPLING.get());
         this.dropSelf(FABlocks.CALAMITES_BUTTON.get());
         this.add(FABlocks.CALAMITES_SLAB.get(), this::createSlabItemTable);
+        this.dropSelf(FABlocks.ARCHAEOPTERIS_PLANKS.get());
+        this.dropSelf(FABlocks.ARCHAEOPTERIS_SAPLING.get());
+        this.dropSelf(FABlocks.ARCHAEOPTERIS_LOG.get());
+        this.dropSelf(FABlocks.STRIPPED_ARCHAEOPTERIS_LOG.get());
+        this.dropSelf(FABlocks.ARCHAEOPTERIS_WOOD.get());
+        this.dropSelf(FABlocks.STRIPPED_ARCHAEOPTERIS_WOOD.get());
+        this.add(FABlocks.ARCHAEOPTERIS_LEAVES.get(), block -> this.createLeavesDrops(block, FABlocks.ARCHAEOPTERIS_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        this.dropSelf(FABlocks.ARCHAEOPTERIS_STAIRS.get());
+        this.dropSelf(FABlocks.ARCHAEOPTERIS_SIGN.get());
+        this.add(FABlocks.ARCHAEOPTERIS_DOOR.get(), this::createDoorTable);
+        this.dropSelf(FABlocks.ARCHAEOPTERIS_HANGING_SIGN.get());
+        this.dropSelf(FABlocks.ARCHAEOPTERIS_PRESSURE_PLATE.get());
+        this.dropSelf(FABlocks.ARCHAEOPTERIS_FENCE.get());
+        this.dropSelf(FABlocks.ARCHAEOPTERIS_TRAPDOOR.get());
+        this.dropSelf(FABlocks.ARCHAEOPTERIS_FENCE_GATE.get());
+        this.dropPottedContents(FABlocks.POTTED_ARCHAEOPTERIS_SAPLING.get());
+        this.dropSelf(FABlocks.ARCHAEOPTERIS_BUTTON.get());
+        this.add(FABlocks.ARCHAEOPTERIS_SLAB.get(), this::createSlabItemTable);
     }
 
     protected LootTable.Builder createFossilOreLootTable(Block block) {

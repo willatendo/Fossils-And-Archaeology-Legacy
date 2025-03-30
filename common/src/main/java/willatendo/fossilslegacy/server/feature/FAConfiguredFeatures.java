@@ -30,9 +30,11 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlac
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.feature.foliageplacer.NoLeavesFoliagePlacer;
 import willatendo.fossilslegacy.server.feature.foliageplacer.BranchedFoliagePlacer;
 import willatendo.fossilslegacy.server.feature.foliageplacer.LepidodendronFoliagePlacer;
 import willatendo.fossilslegacy.server.feature.foliageplacer.SigillariaFoliagePlacer;
+import willatendo.fossilslegacy.server.feature.trunkplacer.ArchaeopterisTrunkPlacer;
 import willatendo.fossilslegacy.server.feature.trunkplacer.ForkedThickTrunkPlacer;
 import willatendo.fossilslegacy.server.feature.trunkplacer.SigillariaTrunkPlacer;
 import willatendo.fossilslegacy.server.feature.trunkplacer.StraightBranchingTrunkPlacer;
@@ -47,6 +49,7 @@ public final class FAConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_PERMAFROST = create("ore_permafrost");
 
     // Trees
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ARCHAEOPTERIS = create("archaeopteris");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CALAMITES = create("calamites");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LEPIDODENDRON = create("lepidodendron");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SIGILLARIA = create("sigillaria");
@@ -69,10 +72,13 @@ public final class FAConfiguredFeatures {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, FAUtils.resource(name));
     }
 
+    private static TreeConfiguration.TreeConfigurationBuilder createArchaeopteris() {
+        return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(FABlocks.ARCHAEOPTERIS_LOG.get()), new ArchaeopterisTrunkPlacer(10, 4, 0), BlockStateProvider.simple(FABlocks.ARCHAEOPTERIS_LEAVES.get()), new NoLeavesFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines();
+    }
+
     private static TreeConfiguration.TreeConfigurationBuilder createCalamites() {
         return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(FABlocks.CALAMITES_LOG.get()), new StraightBranchingTrunkPlacer(9, 3, 6), BlockStateProvider.simple(FABlocks.CALAMITES_LEAVES.get()), new BranchedFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines();
     }
-
 
     private static TreeConfiguration.TreeConfigurationBuilder createLepidodendron() {
         return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(FABlocks.LEPIDODENDRON_LOG.get()), new ForkedThickTrunkPlacer(8, 2, 0), BlockStateProvider.simple(FABlocks.LEPIDODENDRON_LEAVES.get()), new LepidodendronFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines();
@@ -94,11 +100,9 @@ public final class FAConfiguredFeatures {
         return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.OAK_LOG), new FancyTrunkPlacer(11, 11, 0), BlockStateProvider.simple(Blocks.OAK_LEAVES), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).ignoreVines();
     }
 
-
     private static TreeConfiguration.TreeConfigurationBuilder createPrehistoricJungleTree() {
         return createStraightBlobTree(Blocks.JUNGLE_LOG, Blocks.JUNGLE_LEAVES, 11, 8, 0, 2);
     }
-
 
     private static TreeConfiguration.TreeConfigurationBuilder createStraightBlobTree(Block log, Block leaves, int baseHeight, int randHeightA, int randHeightB, int radius) {
         return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(log), new StraightTrunkPlacer(baseHeight, randHeightA, randHeightB), BlockStateProvider.simple(leaves), new BlobFoliagePlacer(ConstantInt.of(radius), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1));
@@ -111,9 +115,10 @@ public final class FAConfiguredFeatures {
         FeatureUtils.register(bootstrapContext, ORE_PERMAFROST, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), FABlocks.PERMAFROST.get().defaultBlockState())), 8, 0.0F));
 
         // Trees
-        FeatureUtils.register(bootstrapContext, CALAMITES, Feature.TREE, createCalamites().build());
-        FeatureUtils.register(bootstrapContext, LEPIDODENDRON, Feature.TREE, createLepidodendron().build());
-        FeatureUtils.register(bootstrapContext, SIGILLARIA, Feature.TREE, createSigillaria().build());
+        FeatureUtils.register(bootstrapContext, ARCHAEOPTERIS, Feature.TREE, FAConfiguredFeatures.createArchaeopteris().build());
+        FeatureUtils.register(bootstrapContext, CALAMITES, Feature.TREE, FAConfiguredFeatures.createCalamites().build());
+        FeatureUtils.register(bootstrapContext, LEPIDODENDRON, Feature.TREE, FAConfiguredFeatures.createLepidodendron().build());
+        FeatureUtils.register(bootstrapContext, SIGILLARIA, Feature.TREE, FAConfiguredFeatures.createSigillaria().build());
 
         FeatureUtils.register(bootstrapContext, PREHISTORIC_OAK, Feature.TREE, createPrehistoricOak().build());
         FeatureUtils.register(bootstrapContext, PREHISTORIC_BIRCH, Feature.TREE, createPrehistoricBirch().build());

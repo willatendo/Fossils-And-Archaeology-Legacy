@@ -46,6 +46,11 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.LEPIDODENDRON_DNA.get());
         this.generatedItem(FAItems.SIGILLARIA_DNA.get());
         this.generatedItem(FAItems.CALAMITES_DNA.get());
+        this.generatedItem(FAItems.ARCHAEOPTERIS_DNA.get());
+        this.generatedItem(FAItems.LEPIDODENDRON_CONE.get());
+        this.generatedItem(FAItems.SIGILLARIA_SPORE.get());
+        this.generatedItem(FAItems.CALAMITES_SPORE.get());
+        this.generatedItem(FAItems.ARCHAEOPTERIS_SPORE.get());
         this.generatedItem(FAItems.TRICERATOPS_EGG.get());
         this.generatedItem(FAItems.VELOCIRAPTOR_EGG.get());
         this.generatedItem(FAItems.TYRANNOSAURUS_EGG.get());
@@ -293,6 +298,8 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.SIGILLARIA_CHEST_BOAT.get());
         this.generatedItem(FAItems.CALAMITES_BOAT.get());
         this.generatedItem(FAItems.CALAMITES_CHEST_BOAT.get());
+        this.generatedItem(FAItems.ARCHAEOPTERIS_BOAT.get());
+        this.generatedItem(FAItems.ARCHAEOPTERIS_CHEST_BOAT.get());
 
         this.generatedItem(FAItems.OVERWORLD_COIN.get());
         this.generatedItem(FAItems.ICE_AGE_COIN.get());

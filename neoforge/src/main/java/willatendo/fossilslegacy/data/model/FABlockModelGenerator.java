@@ -1,15 +1,14 @@
 package willatendo.fossilslegacy.data.model;
 
 import net.minecraft.client.data.models.BlockModelGenerators;
-import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
-import net.minecraft.client.data.models.blockstates.PropertyDispatch;
-import net.minecraft.client.data.models.blockstates.Variant;
-import net.minecraft.client.data.models.blockstates.VariantProperties;
+import net.minecraft.client.data.models.blockstates.*;
 import net.minecraft.client.data.models.model.*;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import org.apache.commons.compress.utils.Lists;
@@ -17,12 +16,8 @@ import willatendo.fossilslegacy.data.FABlockFamilies;
 import willatendo.fossilslegacy.data.FAModelTemplates;
 import willatendo.fossilslegacy.data.FATextureSlot;
 import willatendo.fossilslegacy.server.block.FABlocks;
-import willatendo.fossilslegacy.server.block.blocks.DrumBlock;
-import willatendo.fossilslegacy.server.block.blocks.FeederBlock;
-import willatendo.fossilslegacy.server.block.blocks.JurassicFernBlock;
-import willatendo.fossilslegacy.server.block.blocks.SoupCauldronBlock;
+import willatendo.fossilslegacy.server.block.blocks.*;
 import willatendo.fossilslegacy.server.block.properties.FABlockStateProperties;
-import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.data.model.SimpleBlockModelGenerator;
 
@@ -61,6 +56,8 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createPalaeontologyTable(FABlocks.PALAEONTOLOGY_TABLE.get());
         this.createGeneModificationTable(FABlocks.DNA_RECOMBINATOR.get());
         this.createJurassicFern(FABlocks.JURASSIC_FERN.get());
+        this.createHorsetail(FABlocks.SHORT_HORSETAIL.get());
+        this.createTallHorsetail(FABlocks.TALL_HORSETAIL.get());
         this.createDrum(FABlocks.DRUM.get());
         this.createFeeder(FABlocks.FEEDER.get());
         this.createAxolotlSpawn(FABlocks.AXOLOTLSPAWN.get());
@@ -100,6 +97,11 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createDecorationPost(FABlocks.GREEN_DECORATION_POST.get(), Blocks.GREEN_CONCRETE);
         this.createDecorationPost(FABlocks.RED_DECORATION_POST.get(), Blocks.RED_CONCRETE);
         this.createDecorationPost(FABlocks.BLACK_DECORATION_POST.get(), Blocks.BLACK_CONCRETE);
+        this.blockModelGenerators.woodProvider(FABlocks.ARCHAEOPTERIS_LOG.get()).logWithHorizontal(FABlocks.ARCHAEOPTERIS_LOG.get()).wood(FABlocks.ARCHAEOPTERIS_WOOD.get());
+        this.blockModelGenerators.woodProvider(FABlocks.STRIPPED_ARCHAEOPTERIS_LOG.get()).logWithHorizontal(FABlocks.STRIPPED_ARCHAEOPTERIS_LOG.get()).wood(FABlocks.STRIPPED_ARCHAEOPTERIS_WOOD.get());
+        this.blockModelGenerators.createHangingSign(FABlocks.STRIPPED_ARCHAEOPTERIS_LOG.get(), FABlocks.ARCHAEOPTERIS_HANGING_SIGN.get(), FABlocks.ARCHAEOPTERIS_WALL_HANGING_SIGN.get());
+        this.createPlantWithDefaultItem(FABlocks.ARCHAEOPTERIS_SAPLING.get(), FABlocks.POTTED_ARCHAEOPTERIS_SAPLING.get(), SimpleBlockModelGenerator.PlantType.NOT_TINTED);
+        this.createBranch(FABlocks.ARCHAEOPTERIS_LEAVES.get(), FAUtils.resource("block/archaeopteris_leaves"), FAUtils.resource("block/archaeopteris_log"), -12012264);
         this.blockModelGenerators.woodProvider(FABlocks.CALAMITES_LOG.get()).logWithHorizontal(FABlocks.CALAMITES_LOG.get()).wood(FABlocks.CALAMITES_WOOD.get());
         this.blockModelGenerators.woodProvider(FABlocks.STRIPPED_CALAMITES_LOG.get()).logWithHorizontal(FABlocks.STRIPPED_CALAMITES_LOG.get()).wood(FABlocks.STRIPPED_CALAMITES_WOOD.get());
         this.blockModelGenerators.createHangingSign(FABlocks.STRIPPED_CALAMITES_LOG.get(), FABlocks.CALAMITES_HANGING_SIGN.get(), FABlocks.CALAMITES_WALL_HANGING_SIGN.get());
@@ -178,6 +180,171 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         return FAModelTemplates.TEMPLATE_COLORED_CROP.create(ModelLocationUtils.getModelLocation(jurassicFern).withSuffix("_" + doubleBlockHalf.getSerializedName() + "_" + growthStage), new TextureMapping().put(TextureSlot.CROP, this.modLocation("block/jurassic_fern_colored_" + doubleBlockHalf.getSerializedName() + "_" + i)).put(FATextureSlot.CROP_LEAVES, this.modLocation("block/jurassic_fern_leaves_" + doubleBlockHalf.getSerializedName() + "_" + i)), this.modelOutput);
     }
 
+    private void createHorsetail(Block horsetail) {
+        ResourceLocation plant1Texture = this.modLocation("block/horsetail_1");
+        ResourceLocation plant2Texture = this.modLocation("block/horsetail_2");
+        ResourceLocation plant3Texture = this.modLocation("block/horsetail_3");
+        this.blockModelGenerators.registerSimpleTintedItemModel(horsetail, ModelTemplates.FLAT_ITEM.create(horsetail, new TextureMapping().put(TextureSlot.LAYER0, plant2Texture), this.modelOutput), ItemModelUtils.constantTint(-12012264));
+        ResourceLocation plant1Model = FAModelTemplates.TEMPLATE_PLANT_1.create(ModelLocationUtils.getModelLocation(horsetail).withSuffix("_1"), new TextureMapping().put(FATextureSlot.PLANT_1, plant1Texture), this.modelOutput);
+        ResourceLocation plant2Model = FAModelTemplates.TEMPLATE_PLANT_2.create(ModelLocationUtils.getModelLocation(horsetail).withSuffix("_2"), new TextureMapping().put(FATextureSlot.PLANT_1, plant1Texture).put(FATextureSlot.PLANT_2, plant2Texture), this.modelOutput);
+        ResourceLocation plant3Model = FAModelTemplates.TEMPLATE_PLANT_3.create(ModelLocationUtils.getModelLocation(horsetail).withSuffix("_3"), new TextureMapping().put(FATextureSlot.PLANT_1, plant1Texture).put(FATextureSlot.PLANT_2, plant2Texture).put(FATextureSlot.PLANT_3, plant3Texture), this.modelOutput);
+        this.block(MultiPartGenerator.multiPart(horsetail).with(Condition.condition().term(HorsetailBlock.AMOUNT, 1, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), Variant.variant().with(VariantProperties.MODEL, plant1Model)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 1, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), Variant.variant().with(VariantProperties.MODEL, plant1Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 1, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), Variant.variant().with(VariantProperties.MODEL, plant1Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 1, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), Variant.variant().with(VariantProperties.MODEL, plant1Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), Variant.variant().with(VariantProperties.MODEL, plant2Model)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), Variant.variant().with(VariantProperties.MODEL, plant2Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), Variant.variant().with(VariantProperties.MODEL, plant2Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), Variant.variant().with(VariantProperties.MODEL, plant2Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), Variant.variant().with(VariantProperties.MODEL, plant3Model)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), Variant.variant().with(VariantProperties.MODEL, plant3Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), Variant.variant().with(VariantProperties.MODEL, plant3Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), Variant.variant().with(VariantProperties.MODEL, plant3Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)));
+    }
+
+    private void createTallHorsetail(Block tallHorsetail) {
+        ResourceLocation stemTexture = this.modLocation("block/horsetail_stem");
+        ResourceLocation plant1Texture = this.modLocation("block/horsetail_1");
+        ResourceLocation plant2Texture = this.modLocation("block/horsetail_2");
+        ResourceLocation plant3Texture = this.modLocation("block/horsetail_3");
+        this.blockModelGenerators.registerSimpleTintedItemModel(tallHorsetail, ModelTemplates.FLAT_ITEM.create(tallHorsetail, new TextureMapping().put(TextureSlot.LAYER0, plant3Texture), this.modelOutput), ItemModelUtils.constantTint(-12012264));
+        ResourceLocation plant1Model = FAModelTemplates.TEMPLATE_PLANT_1.create(ModelLocationUtils.getModelLocation(tallHorsetail).withSuffix("_1"), new TextureMapping().put(FATextureSlot.PLANT_1, plant1Texture), this.modelOutput);
+        ResourceLocation plant2Model = FAModelTemplates.TEMPLATE_PLANT_2.create(ModelLocationUtils.getModelLocation(tallHorsetail).withSuffix("_2"), new TextureMapping().put(FATextureSlot.PLANT_2, plant2Texture), this.modelOutput);
+        ResourceLocation plant3Model = FAModelTemplates.TEMPLATE_PLANT_3.create(ModelLocationUtils.getModelLocation(tallHorsetail).withSuffix("_3"), new TextureMapping().put(FATextureSlot.PLANT_3, plant3Texture), this.modelOutput);
+        ResourceLocation stem1Model = FAModelTemplates.TEMPLATE_PLANT_1.create(ModelLocationUtils.getModelLocation(tallHorsetail).withSuffix("_stem_1"), new TextureMapping().put(FATextureSlot.PLANT_1, stemTexture), this.modelOutput);
+        ResourceLocation stem2Model = FAModelTemplates.TEMPLATE_PLANT_2.create(ModelLocationUtils.getModelLocation(tallHorsetail).withSuffix("_stem_2"), new TextureMapping().put(FATextureSlot.PLANT_2, stemTexture), this.modelOutput);
+        ResourceLocation stem3Model = FAModelTemplates.TEMPLATE_PLANT_3.create(ModelLocationUtils.getModelLocation(tallHorsetail).withSuffix("_stem_3"), new TextureMapping().put(FATextureSlot.PLANT_3, stemTexture), this.modelOutput);
+        this.block(MultiPartGenerator.multiPart(tallHorsetail)
+                .with(Condition.condition()
+                        .term(HorsetailBlock.AMOUNT, 1, 2, 3)
+                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
+                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
+                        Variant.variant().with(VariantProperties.MODEL, stem1Model))
+                .with(Condition.condition()
+                        .term(HorsetailBlock.AMOUNT, 1, 2, 3)
+                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST)
+                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
+                        Variant.variant().with(VariantProperties.MODEL, stem1Model)
+                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                .with(Condition.condition()
+                        .term(HorsetailBlock.AMOUNT, 1, 2, 3)
+                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH)
+                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
+                        Variant.variant().with(VariantProperties.MODEL, stem1Model)
+                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                .with(Condition.condition()
+                        .term(HorsetailBlock.AMOUNT, 1, 2, 3)
+                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST)
+                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
+                        Variant.variant().with(VariantProperties.MODEL, stem1Model)
+                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+                .with(Condition.condition()
+                        .term(HorsetailBlock.AMOUNT, 2, 3)
+                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
+                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
+                        Variant.variant().with(VariantProperties.MODEL, stem2Model))
+                .with(Condition.condition()
+                        .term(HorsetailBlock.AMOUNT, 2, 3)
+                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST)
+                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
+                        Variant.variant().with(VariantProperties.MODEL, stem2Model)
+                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                .with(Condition.condition()
+                        .term(HorsetailBlock.AMOUNT, 2, 3)
+                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH)
+                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
+                        Variant.variant().with(VariantProperties.MODEL, stem2Model)
+                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                .with(Condition.condition()
+                        .term(HorsetailBlock.AMOUNT, 2, 3)
+                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST)
+                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
+                        Variant.variant().with(VariantProperties.MODEL, stem2Model)
+                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+                .with(Condition.condition()
+                        .term(HorsetailBlock.AMOUNT, 3)
+                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
+                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
+                        Variant.variant().with(VariantProperties.MODEL, stem3Model))
+                .with(Condition.condition()
+                        .term(HorsetailBlock.AMOUNT, 3)
+                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST)
+                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
+                        Variant.variant().with(VariantProperties.MODEL, stem3Model)
+                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                .with(Condition.condition()
+                        .term(HorsetailBlock.AMOUNT, 3)
+                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH)
+                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
+                        Variant.variant().with(VariantProperties.MODEL, stem3Model)
+                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                .with(Condition.condition()
+                        .term(HorsetailBlock.AMOUNT, 3)
+                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST)
+                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
+                        Variant.variant().with(VariantProperties.MODEL, stem3Model)
+                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+                .with(Condition.condition()
+                                .term(HorsetailBlock.AMOUNT, 1, 2, 3)
+                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
+                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
+                        Variant.variant().with(VariantProperties.MODEL, plant1Model))
+                .with(Condition.condition()
+                                .term(HorsetailBlock.AMOUNT, 1, 2, 3)
+                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST)
+                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
+                        Variant.variant().with(VariantProperties.MODEL, plant1Model)
+                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                .with(Condition.condition()
+                                .term(HorsetailBlock.AMOUNT, 1, 2, 3)
+                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH)
+                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
+                        Variant.variant().with(VariantProperties.MODEL, plant1Model)
+                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                .with(Condition.condition()
+                                .term(HorsetailBlock.AMOUNT, 1, 2, 3)
+                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST)
+                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
+                        Variant.variant().with(VariantProperties.MODEL, plant1Model)
+                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+                .with(Condition.condition()
+                                .term(HorsetailBlock.AMOUNT, 2, 3)
+                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
+                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
+                        Variant.variant().with(VariantProperties.MODEL, plant2Model))
+                .with(Condition.condition()
+                                .term(HorsetailBlock.AMOUNT, 2, 3)
+                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST)
+                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
+                        Variant.variant().with(VariantProperties.MODEL, plant2Model)
+                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                .with(Condition.condition()
+                                .term(HorsetailBlock.AMOUNT, 2, 3)
+                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH)
+                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
+                        Variant.variant().with(VariantProperties.MODEL, plant2Model)
+                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                .with(Condition.condition()
+                                .term(HorsetailBlock.AMOUNT, 2, 3)
+                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST)
+                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
+                        Variant.variant().with(VariantProperties.MODEL, plant2Model)
+                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+                .with(Condition.condition()
+                                .term(HorsetailBlock.AMOUNT, 3)
+                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
+                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
+                        Variant.variant().with(VariantProperties.MODEL, plant3Model))
+                .with(Condition.condition()
+                                .term(HorsetailBlock.AMOUNT, 3)
+                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST)
+                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
+                        Variant.variant().with(VariantProperties.MODEL, plant3Model)
+                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                .with(Condition.condition()
+                                .term(HorsetailBlock.AMOUNT, 3)
+                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH)
+                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
+                        Variant.variant().with(VariantProperties.MODEL, plant3Model)
+                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                .with(Condition.condition()
+                                .term(HorsetailBlock.AMOUNT, 3)
+                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST)
+                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
+                        Variant.variant().with(VariantProperties.MODEL, plant3Model)
+                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+        );
+    }
+
     private void createDrum(Block drum) {
         ResourceLocation followModel = ModelTemplates.CUBE.create(ModelLocationUtils.getModelLocation(drum).withSuffix("_follow"), new TextureMapping().put(TextureSlot.DOWN, this.mcLocation("block/spruce_planks")).put(TextureSlot.EAST, this.modLocation("block/drum_side")).put(TextureSlot.NORTH, this.modLocation("block/drum_side")).put(TextureSlot.PARTICLE, this.modLocation("block/drum_side")).put(TextureSlot.SOUTH, this.modLocation("block/drum_side")).put(TextureSlot.UP, this.modLocation("block/drum_follow")).put(TextureSlot.WEST, this.modLocation("block/drum_side")), this.modelOutput);
         this.blockModelGenerators.registerSimpleItemModel(drum, followModel);
@@ -217,5 +384,14 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
 
     private void createDecorationPost(Block decorationPost, Block concrete) {
         this.block(MultiVariantGenerator.multiVariant(decorationPost, Variant.variant().with(VariantProperties.MODEL, FAModelTemplates.TEMPLATE_DECORATION_PLAQUE_POST.create(decorationPost, new TextureMapping().put(FATextureSlot.POST, TextureMapping.getBlockTexture(concrete)), this.modelOutput))));
+    }
+
+    public void createBranch(Block block, ResourceLocation leavesTexture, ResourceLocation logTexture, int tint) {
+        ResourceLocation branch = FAModelTemplates.TEMPLATE_BRANCH.create(block, new TextureMapping().put(FATextureSlot.LEAVES, leavesTexture).put(FATextureSlot.LOG, logTexture), this.modelOutput);
+        ResourceLocation bothBranch = FAModelTemplates.TEMPLATE_BRANCH_DUAL.create(ModelLocationUtils.getModelLocation(block, "_both"), new TextureMapping().put(FATextureSlot.LEAVES, leavesTexture).put(FATextureSlot.LOG, logTexture), this.modelOutput);
+        ResourceLocation highBranch = FAModelTemplates.TEMPLATE_BRANCH_HIGH.create(ModelLocationUtils.getModelLocation(block, "_high"), new TextureMapping().put(FATextureSlot.LEAVES, leavesTexture).put(FATextureSlot.LOG, logTexture), this.modelOutput);
+        ResourceLocation lowBranch = FAModelTemplates.TEMPLATE_BRANCH_LOW.create(ModelLocationUtils.getModelLocation(block, "_low"), new TextureMapping().put(FATextureSlot.LEAVES, leavesTexture).put(FATextureSlot.LOG, logTexture), this.modelOutput);
+        this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block, Variant.variant().with(VariantProperties.MODEL, branch), Variant.variant().with(VariantProperties.MODEL, bothBranch), Variant.variant().with(VariantProperties.MODEL, highBranch), Variant.variant().with(VariantProperties.MODEL, lowBranch)).with(BlockModelGenerators.createHorizontalFacingDispatch()));
+        this.blockModelGenerators.registerSimpleTintedItemModel(block, branch, ItemModelUtils.constantTint(tint));
     }
 }

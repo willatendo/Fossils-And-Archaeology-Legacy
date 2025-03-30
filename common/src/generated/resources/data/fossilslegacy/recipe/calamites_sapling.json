@@ -1,9 +1,0 @@
-{
-  "type": "fossilslegacy:cultivation",
-  "category": "plant",
-  "ingredient": "fossilslegacy:calamites_dna",
-  "result": {
-    "id": "fossilslegacy:calamites_sapling"
-  },
-  "time": 6000
-}

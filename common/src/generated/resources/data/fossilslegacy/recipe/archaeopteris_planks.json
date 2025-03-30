@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    "#fossilslegacy:archaeopteris_logs"
+  ],
+  "result": {
+    "count": 4,
+    "id": "fossilslegacy:archaeopteris_planks"
+  }
+}

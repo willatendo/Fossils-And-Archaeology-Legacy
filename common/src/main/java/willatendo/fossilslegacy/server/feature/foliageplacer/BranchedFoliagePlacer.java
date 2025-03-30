@@ -14,7 +14,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerTy
 import willatendo.fossilslegacy.server.feature.FAFoliagePlacerTypes;
 
 public class BranchedFoliagePlacer extends FoliagePlacer {
-    public static final MapCodec<BranchedFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(instance -> foliagePlacerParts(instance).apply(instance, BranchedFoliagePlacer::new));
+    public static final MapCodec<BranchedFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(instance -> BranchedFoliagePlacer.foliagePlacerParts(instance).apply(instance, BranchedFoliagePlacer::new));
 
     public BranchedFoliagePlacer(IntProvider radius, IntProvider offset) {
         super(radius, offset);

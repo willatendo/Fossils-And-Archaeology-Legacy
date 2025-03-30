@@ -31,10 +31,10 @@ public class ForkedThickTrunkPlacer extends TrunkPlacer {
 
     @Override
     public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader levelSimulatedReader, BiConsumer<BlockPos, BlockState> biConsumer, RandomSource randomSource, int height, BlockPos blockPos, TreeConfiguration treeConfiguration) {
-        setDirtAt(levelSimulatedReader, biConsumer, randomSource, blockPos.below(), treeConfiguration);
+        ForkedThickTrunkPlacer.setDirtAt(levelSimulatedReader, biConsumer, randomSource, blockPos.below(), treeConfiguration);
 
         for (Direction direction : Direction.Plane.HORIZONTAL) {
-            setDirtAt(levelSimulatedReader, biConsumer, randomSource, blockPos.below().relative(direction), treeConfiguration);
+            ForkedThickTrunkPlacer.setDirtAt(levelSimulatedReader, biConsumer, randomSource, blockPos.below().relative(direction), treeConfiguration);
             for (int i = 0; i < height / 5; i++) {
                 this.placeLog(levelSimulatedReader, biConsumer, randomSource, blockPos.above(i).relative(direction), treeConfiguration);
             }

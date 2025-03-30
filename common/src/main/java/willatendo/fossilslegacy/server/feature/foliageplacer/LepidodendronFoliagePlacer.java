@@ -12,7 +12,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerTy
 import willatendo.fossilslegacy.server.feature.FAFoliagePlacerTypes;
 
 public class LepidodendronFoliagePlacer extends FoliagePlacer {
-    public static final MapCodec<LepidodendronFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(instance -> foliagePlacerParts(instance).apply(instance, LepidodendronFoliagePlacer::new));
+    public static final MapCodec<LepidodendronFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(instance -> LepidodendronFoliagePlacer.foliagePlacerParts(instance).apply(instance, LepidodendronFoliagePlacer::new));
 
     public LepidodendronFoliagePlacer(IntProvider radius, IntProvider offset) {
         super(radius, offset);

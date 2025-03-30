@@ -86,7 +86,14 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         });
 
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.JURASSIC_FERN.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.SHORT_HORSETAIL.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.TALL_HORSETAIL.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.AXOLOTLSPAWN.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ARCHAEOPTERIS_SAPLING.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ARCHAEOPTERIS_LEAVES.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ARCHAEOPTERIS_DOOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ARCHAEOPTERIS_TRAPDOOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.POTTED_ARCHAEOPTERIS_SAPLING.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.CALAMITES_SAPLING.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.CALAMITES_LEAVES.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.CALAMITES_DOOR.get(), RenderType.cutout());
