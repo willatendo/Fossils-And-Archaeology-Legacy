@@ -396,6 +396,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.RAW_BERRY_MEDLEY_BUCKET.get());
         output.accept(FAItems.COOKED_BERRY_MEDLEY_BUCKET.get());
         output.accept(FAItems.ROMANTIC_CONCOCTION_BOTTLE.get());
+        output.accept(FAItems.TAR_BUCKET.get());
         output.accept(FAItems.THERIZINOSAURUS_CLAWS.get());
         output.accept(FAItems.TYRANNOSAURUS_TOOTH.get());
         output.accept(FAItems.TOOTH_DAGGER.get());

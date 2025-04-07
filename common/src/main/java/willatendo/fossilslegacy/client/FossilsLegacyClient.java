@@ -8,6 +8,7 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.animal.horse.Donkey;
 import net.minecraft.world.entity.animal.horse.Mule;
 import willatendo.fossilslegacy.client.model.*;
@@ -24,6 +25,9 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.client.event.registry.*;
 
 public final class FossilsLegacyClient {
+    public static final ResourceLocation TAR_STILL = ResourceLocation.withDefaultNamespace("block/bedrock");
+    public static final ResourceLocation TAR_FLOW = ResourceLocation.withDefaultNamespace("block/bedrock");
+
     public static void signSheets() {
         FAWoodTypes.register(FAWoodTypes.ARCHAEOPTERIS);
         FAWoodTypes.register(FAWoodTypes.CALAMITES);

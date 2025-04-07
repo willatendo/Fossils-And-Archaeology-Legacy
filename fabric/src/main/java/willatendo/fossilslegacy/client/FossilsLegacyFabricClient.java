@@ -4,6 +4,9 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandler;
+import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
+import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.client.renderer.RenderType;
@@ -19,6 +22,7 @@ import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;
 import willatendo.fossilslegacy.network.ServerboundSinkPacket;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
+import willatendo.fossilslegacy.server.fluid.FAFluids;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.client.event.registry.*;
 
@@ -139,6 +143,8 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         FossilsLegacyClient.specialModelsEvent(new FabricSpecialRendererRegistry());
 
         FossilsLegacyClient.menuScreenEvent(new FabricMenuScreenRegister());
+
+        FluidRenderHandlerRegistry.INSTANCE.register(FAFluids.TAR.get(), FAFluids.FLOWING_TAR.get(), new SimpleFluidRenderHandler(FossilsLegacyClient.TAR_STILL, FossilsLegacyClient.TAR_FLOW));
 
         ClientTickEvents.END_CLIENT_TICK.register(minecraft -> {
             Player player = minecraft.player;

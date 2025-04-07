@@ -33,6 +33,7 @@ public class FAModelTemplates {
     public static final ExtendedModelTemplate TEMPLATE_TIME_MACHINE = FAModelTemplates.create("template_time_machine").build();
     public static final ExtendedModelTemplate TEMPLATE_VASE = FAModelTemplates.create("template_vase", TextureSlot.SIDE).build();
     public static final ExtendedModelTemplate TEMPLATE_LLAMA = FAModelTemplates.create("template_llama", TextureSlot.TEXTURE, TextureSlot.PARTICLE).build();
+    public static final ExtendedModelTemplate TEMPLATE_LIQUID = FAModelTemplates.create(TextureSlot.PARTICLE).build();
 
     public static final ModelTemplate TEMPLATE_ARTICULATED_FOSSIL = FAModelTemplates.createItem("template_articulated_fossil", TextureSlot.PARTICLE);
 
@@ -42,6 +43,10 @@ public class FAModelTemplates {
 
     public static ExtendedModelTemplateBuilder create(String name, TextureSlot... requiredSlots) {
         return ExtendedModelTemplateBuilder.of(new ModelTemplate(Optional.of(FAUtils.resource("block/" + name)), Optional.empty(), requiredSlots));
+    }
+
+    public static ExtendedModelTemplateBuilder create(TextureSlot... requiredSlots) {
+        return ExtendedModelTemplateBuilder.of(new ModelTemplate(Optional.empty(), Optional.empty(), requiredSlots));
     }
 
     public static ModelTemplate createItem(String name, TextureSlot... requiredSlots) {

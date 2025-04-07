@@ -13,6 +13,7 @@ import net.minecraft.world.level.material.PushReaction;
 import willatendo.fossilslegacy.server.block.blocks.SkullBlock;
 import willatendo.fossilslegacy.server.block.blocks.*;
 import willatendo.fossilslegacy.server.block.cauldron.FACauldronInteraction;
+import willatendo.fossilslegacy.server.fluid.FAFluids;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
@@ -170,6 +171,7 @@ public final class FABlocks {
     public static final SimpleHolder<FlowerPotBlock> POTTED_ARCHAEOPTERIS_SAPLING = FABlocks.register("potted_archaeopteris_sapling", properties -> new FlowerPotBlock(FABlocks.ARCHAEOPTERIS_SAPLING.get(), properties), FABlocks::flowerPotProperties);
     public static final SimpleHolder<ButtonBlock> ARCHAEOPTERIS_BUTTON = FABlocks.register("archaeopteris_button", properties -> new ButtonBlock(FABlockSetTypes.ARCHAEOPTERIS, 30, properties), FABlocks::buttonProperties);
     public static final SimpleHolder<SlabBlock> ARCHAEOPTERIS_SLAB = FABlocks.register("archaeopteris_slab", SlabBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava());
+    public static final SimpleHolder<LiquidBlock> TAR = FABlocks.register("tar", properties -> new LiquidBlock(FAFluids.TAR.get(), properties), () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).replaceable().noCollission().strength(100.0F).pushReaction(PushReaction.DESTROY).noLootTable().liquid().sound(SoundType.EMPTY));
 
     public static BlockBehaviour.Properties flowerPotProperties() {
         return BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY);

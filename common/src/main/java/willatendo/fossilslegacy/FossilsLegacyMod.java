@@ -15,6 +15,7 @@ import willatendo.fossilslegacy.server.entity.FAPoiTypes;
 import willatendo.fossilslegacy.server.entity.FAVillagerProfessions;
 import willatendo.fossilslegacy.server.feature.FAFoliagePlacerTypes;
 import willatendo.fossilslegacy.server.feature.FATrunkPlacerTypes;
+import willatendo.fossilslegacy.server.fluid.FAFluids;
 import willatendo.fossilslegacy.server.item.FACreativeModeTabs;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.FAItems;
@@ -53,6 +54,7 @@ public final class FossilsLegacyMod {
         simpleRegistryRegister.register(FASoundEvents.SOUND_EVENTS);
         simpleRegistryRegister.register(FATrunkPlacerTypes.TRUNK_PLACER_TYPES);
         simpleRegistryRegister.register(FAFoliagePlacerTypes.FOLIAGE_PLACER_TYPES);
+        simpleRegistryRegister.register(FAFluids.FLUIDS);
         simpleRegistryRegister.register(FABlocks.BLOCKS);
         simpleRegistryRegister.register(FABlockTypes.BLOCK_TYPES);
         simpleRegistryRegister.register(FABlockEntityTypes.BLOCK_ENTITY_TYPES);

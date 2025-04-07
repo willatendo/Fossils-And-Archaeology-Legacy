@@ -9,6 +9,7 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FAFossilVariants {
     public static final ResourceKey<FossilVariant> ANKYLOSAURUS = FAFossilVariants.create("ankylosaurus");
+    public static final ResourceKey<FossilVariant> BARYONYX = FAFossilVariants.create("baryonyx");
     public static final ResourceKey<FossilVariant> BRACHIOSAURUS = FAFossilVariants.create("brachiosaurus");
     public static final ResourceKey<FossilVariant> LEGACY_BRACHIOSAURUS = FAFossilVariants.create("legacy_brachiosaurus");
     public static final ResourceKey<FossilVariant> CARNOTAURUS = FAFossilVariants.create("carnotaurus");
@@ -16,9 +17,11 @@ public final class FAFossilVariants {
     public static final ResourceKey<FossilVariant> CRYOLOPHOSAURUS = FAFossilVariants.create("cryolophosaurus");
     public static final ResourceKey<FossilVariant> DILOPHOSAURUS = FAFossilVariants.create("dilophosaurus");
     public static final ResourceKey<FossilVariant> DIMETRODON = FAFossilVariants.create("dimetrodon");
+    public static final ResourceKey<FossilVariant> DRYOSAURUS = FAFossilVariants.create("dryosaurus");
     public static final ResourceKey<FossilVariant> FUTABASAURUS = FAFossilVariants.create("futabasaurus");
     public static final ResourceKey<FossilVariant> LEGACY_FUTABASAURUS = FAFossilVariants.create("legacy_futabasaurus");
     public static final ResourceKey<FossilVariant> GALLIMIMUS = FAFossilVariants.create("gallimimus");
+    public static final ResourceKey<FossilVariant> ICHTHYOSAURUS = FAFossilVariants.create("ichthyosaurus");
     public static final ResourceKey<FossilVariant> MOSASAURUS = FAFossilVariants.create("mosasaurus");
     public static final ResourceKey<FossilVariant> PACHYCEPHALOSAURUS = FAFossilVariants.create("pachycephalosaurus");
     public static final ResourceKey<FossilVariant> PTERANODON = FAFossilVariants.create("pteranodon");
@@ -49,6 +52,7 @@ public final class FAFossilVariants {
 
     public static void bootstrap(BootstrapContext<FossilVariant> bootstrapContext) {
         FAFossilVariants.registerMesozoic(bootstrapContext, ANKYLOSAURUS, 8, "ankylosaurus", FAUtils.resource("ankylosaurus"), 5, 1.75F, 1.5F, 0.2F, 1.5F, 1.5F, 0.3F, 1.0F, 0.25F);
+        FAFossilVariants.registerMesozoic(bootstrapContext, BARYONYX, 8, "baryonyx", FAUtils.resource("baryonyx"), 7, 0.5F, 0.5F, 0.4F, 0.5F, 0.5F, 0.35F, 0.25F, 0.15F);
         FAFossilVariants.registerMesozoic(bootstrapContext, BRACHIOSAURUS, 36, "brachiosaurus", FAUtils.resource("brachiosaurus"), 9, 1.75F, 2.5F, 0.3F, 1.5F, 1.5F, 0.3F, 1.0F, 0.15F);
         FAFossilVariants.registerLegacyMesozoic(bootstrapContext, LEGACY_BRACHIOSAURUS, 36, "brachiosaurus", FAUtils.resource("legacy_brachiosaurus"), 9, 1.75F, 2.5F, 0.3F, 1.5F, 1.5F, 0.3F, 0.15F, 0.1F);
         FAFossilVariants.registerMesozoic(bootstrapContext, CARNOTAURUS, 8, "carnotaurus", FAUtils.resource("carnotaurus"), 7, 0.5F, 0.5F, 0.35F, 0.5F, 0.5F, 0.4F, 0.75F, 0.1F);
@@ -56,9 +60,11 @@ public final class FAFossilVariants {
         FAFossilVariants.registerMesozoic(bootstrapContext, CRYOLOPHOSAURUS, 8, "cryolophosaurus", FAUtils.resource("cryolophosaurus"), 5, 0.35F, 0.35F, 0.2F, 0.25F, 0.25F, 0.2F, 0.15F, 0.1F);
         FAFossilVariants.registerMesozoic(bootstrapContext, DILOPHOSAURUS, 8, "dilophosaurus", FAUtils.resource("dilophosaurus"), 6, 0.5F, 0.5F, 0.2F, 0.2F, 0.2F, 0.15F, 0.15F, 0.1F);
         FAFossilVariants.registerMesozoic(bootstrapContext, DIMETRODON, 12, "dimetrodon", FAUtils.resource("dimetrodon"), 5, 0.5F, 0.5F, 0.05F, 0.5F, 0.5F, 0.075F, 0.15F, 0.05F);
+        FAFossilVariants.registerMesozoic(bootstrapContext, DRYOSAURUS, 8, "dryosaurus", FAUtils.resource("dryosaurus"), 5, 0.4F, 0.4F, 0.1F, 0.5F, 0.5F, 0.15F, 0.15F, 0.05F);
         FAFossilVariants.registerMesozoic(bootstrapContext, FUTABASAURUS, 12, "futabasaurus", FAUtils.resource("futabasaurus"), 5, 2.0F, 0.75F, 0.25F, 1.5F, 1.5F, 0.3F, 1.0F, 0.15F);
         FAFossilVariants.registerLegacyMesozoic(bootstrapContext, LEGACY_FUTABASAURUS, 12, "futabasaurus", FAUtils.resource("legacy_futabasaurus"), 5, 2.0F, 0.75F, 0.25F, 1.5F, 1.5F, 0.3F, 1.0F, 0.15F);
         FAFossilVariants.registerMesozoic(bootstrapContext, GALLIMIMUS, 8, "gallimimus", FAUtils.resource("gallimimus"), 5, 0.7F, 0.7F, 0.25F, 0.75F, 0.75F, 0.2F, 1.0F, 0.1F);
+        FAFossilVariants.registerMesozoic(bootstrapContext, ICHTHYOSAURUS, 8, "ichthyosaurus", FAUtils.resource("ichthyosaurus"), 5, 0.7F, 0.5F, 0.25F, 0.75F, 0.75F, 0.1F, 0.5F, 0.1F);
         FAFossilVariants.registerMesozoic(bootstrapContext, MOSASAURUS, 8, "mosasaurus", FAUtils.resource("mosasaurus"), 6, 0.5F, 0.5F, 0.1F, 0.5F, 0.5F, 0.5125F, 0.5F, 0.1F);
         FAFossilVariants.registerMesozoic(bootstrapContext, PACHYCEPHALOSAURUS, 8, "pachycephalosaurus", FAUtils.resource("pachycephalosaurus"), 5, 0.7F, 0.7F, 0.1F, 1.0F, 1.0F, 0.1F, 0.5F, 0.075F);
         FAFossilVariants.registerMesozoic(bootstrapContext, PTERANODON, 8, "pteranodon", FAUtils.resource("pteranodon"), 5, 0.5F, 0.5F, 0.2F, 0.8F, 0.8F, 0.2F, 0.5F, 0.075F);

@@ -10,4 +10,5 @@ public class FAFluidTags {
     private static final TagRegister<Fluid> FLUID_TAGS = TagRegister.create(Registries.FLUID, FAUtils.ID);
 
     public static final TagKey<Fluid> PERMAFROST_FREEZABLE = FLUID_TAGS.register("permafrost_freezable");
+    public static final TagKey<Fluid> TAR = FLUID_TAGS.register("tar");
 }

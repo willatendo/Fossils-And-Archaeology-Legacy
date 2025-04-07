@@ -1,0 +1,15 @@
+{
+  "base_scale_height": 0.75,
+  "base_scale_width": 0.75,
+  "bounding_box_growth": 0.25,
+  "bounding_box_height": 0.5,
+  "bounding_box_width": 0.7,
+  "fossil_count": 5,
+  "fossil_ingredient": "fossilslegacy:mesozoic_fossil",
+  "max_size": 8,
+  "model": "fossilslegacy:ichthyosaurus",
+  "shadow_growth": 0.1,
+  "shadow_size": 0.5,
+  "size_scale": 0.1,
+  "texture": "fossilslegacy:textures/entity/ichthyosaurus/ichthyosaurus_skeleton.png"
+}

@@ -117,6 +117,7 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.blockModelGenerators.createHangingSign(FABlocks.STRIPPED_SIGILLARIA_LOG.get(), FABlocks.SIGILLARIA_HANGING_SIGN.get(), FABlocks.SIGILLARIA_WALL_HANGING_SIGN.get());
         this.createPlantWithDefaultItem(FABlocks.SIGILLARIA_SAPLING.get(), FABlocks.POTTED_SIGILLARIA_SAPLING.get(), SimpleBlockModelGenerator.PlantType.NOT_TINTED);
         this.blockModelGenerators.createTintedLeaves(FABlocks.SIGILLARIA_LEAVES.get(), TexturedModel.LEAVES, -12012264);
+        this.block(MultiVariantGenerator.multiVariant(FABlocks.TAR.get(), Variant.variant().with(VariantProperties.MODEL, FAModelTemplates.TEMPLATE_LIQUID.create(FABlocks.TAR.get(), new TextureMapping().put(TextureSlot.PARTICLE, this.mcLocation("block/bedrock")), this.modelOutput))));
     }
 
     private void createBasic(Block block) {
@@ -203,146 +204,7 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         ResourceLocation stem1Model = FAModelTemplates.TEMPLATE_PLANT_1.create(ModelLocationUtils.getModelLocation(tallHorsetail).withSuffix("_stem_1"), new TextureMapping().put(FATextureSlot.PLANT_1, stemTexture), this.modelOutput);
         ResourceLocation stem2Model = FAModelTemplates.TEMPLATE_PLANT_2.create(ModelLocationUtils.getModelLocation(tallHorsetail).withSuffix("_stem_2"), new TextureMapping().put(FATextureSlot.PLANT_2, stemTexture), this.modelOutput);
         ResourceLocation stem3Model = FAModelTemplates.TEMPLATE_PLANT_3.create(ModelLocationUtils.getModelLocation(tallHorsetail).withSuffix("_stem_3"), new TextureMapping().put(FATextureSlot.PLANT_3, stemTexture), this.modelOutput);
-        this.block(MultiPartGenerator.multiPart(tallHorsetail)
-                .with(Condition.condition()
-                        .term(HorsetailBlock.AMOUNT, 1, 2, 3)
-                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
-                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
-                        Variant.variant().with(VariantProperties.MODEL, stem1Model))
-                .with(Condition.condition()
-                        .term(HorsetailBlock.AMOUNT, 1, 2, 3)
-                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST)
-                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
-                        Variant.variant().with(VariantProperties.MODEL, stem1Model)
-                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
-                .with(Condition.condition()
-                        .term(HorsetailBlock.AMOUNT, 1, 2, 3)
-                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH)
-                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
-                        Variant.variant().with(VariantProperties.MODEL, stem1Model)
-                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
-                .with(Condition.condition()
-                        .term(HorsetailBlock.AMOUNT, 1, 2, 3)
-                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST)
-                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
-                        Variant.variant().with(VariantProperties.MODEL, stem1Model)
-                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
-                .with(Condition.condition()
-                        .term(HorsetailBlock.AMOUNT, 2, 3)
-                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
-                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
-                        Variant.variant().with(VariantProperties.MODEL, stem2Model))
-                .with(Condition.condition()
-                        .term(HorsetailBlock.AMOUNT, 2, 3)
-                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST)
-                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
-                        Variant.variant().with(VariantProperties.MODEL, stem2Model)
-                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
-                .with(Condition.condition()
-                        .term(HorsetailBlock.AMOUNT, 2, 3)
-                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH)
-                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
-                        Variant.variant().with(VariantProperties.MODEL, stem2Model)
-                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
-                .with(Condition.condition()
-                        .term(HorsetailBlock.AMOUNT, 2, 3)
-                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST)
-                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
-                        Variant.variant().with(VariantProperties.MODEL, stem2Model)
-                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
-                .with(Condition.condition()
-                        .term(HorsetailBlock.AMOUNT, 3)
-                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
-                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
-                        Variant.variant().with(VariantProperties.MODEL, stem3Model))
-                .with(Condition.condition()
-                        .term(HorsetailBlock.AMOUNT, 3)
-                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST)
-                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
-                        Variant.variant().with(VariantProperties.MODEL, stem3Model)
-                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
-                .with(Condition.condition()
-                        .term(HorsetailBlock.AMOUNT, 3)
-                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH)
-                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
-                        Variant.variant().with(VariantProperties.MODEL, stem3Model)
-                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
-                .with(Condition.condition()
-                        .term(HorsetailBlock.AMOUNT, 3)
-                        .term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST)
-                        .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
-                        Variant.variant().with(VariantProperties.MODEL, stem3Model)
-                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
-                .with(Condition.condition()
-                                .term(HorsetailBlock.AMOUNT, 1, 2, 3)
-                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
-                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
-                        Variant.variant().with(VariantProperties.MODEL, plant1Model))
-                .with(Condition.condition()
-                                .term(HorsetailBlock.AMOUNT, 1, 2, 3)
-                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST)
-                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
-                        Variant.variant().with(VariantProperties.MODEL, plant1Model)
-                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
-                .with(Condition.condition()
-                                .term(HorsetailBlock.AMOUNT, 1, 2, 3)
-                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH)
-                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
-                        Variant.variant().with(VariantProperties.MODEL, plant1Model)
-                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
-                .with(Condition.condition()
-                                .term(HorsetailBlock.AMOUNT, 1, 2, 3)
-                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST)
-                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
-                        Variant.variant().with(VariantProperties.MODEL, plant1Model)
-                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
-                .with(Condition.condition()
-                                .term(HorsetailBlock.AMOUNT, 2, 3)
-                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
-                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
-                        Variant.variant().with(VariantProperties.MODEL, plant2Model))
-                .with(Condition.condition()
-                                .term(HorsetailBlock.AMOUNT, 2, 3)
-                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST)
-                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
-                        Variant.variant().with(VariantProperties.MODEL, plant2Model)
-                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
-                .with(Condition.condition()
-                                .term(HorsetailBlock.AMOUNT, 2, 3)
-                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH)
-                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
-                        Variant.variant().with(VariantProperties.MODEL, plant2Model)
-                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
-                .with(Condition.condition()
-                                .term(HorsetailBlock.AMOUNT, 2, 3)
-                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST)
-                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
-                        Variant.variant().with(VariantProperties.MODEL, plant2Model)
-                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
-                .with(Condition.condition()
-                                .term(HorsetailBlock.AMOUNT, 3)
-                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
-                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
-                        Variant.variant().with(VariantProperties.MODEL, plant3Model))
-                .with(Condition.condition()
-                                .term(HorsetailBlock.AMOUNT, 3)
-                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST)
-                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
-                        Variant.variant().with(VariantProperties.MODEL, plant3Model)
-                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
-                .with(Condition.condition()
-                                .term(HorsetailBlock.AMOUNT, 3)
-                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH)
-                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
-                        Variant.variant().with(VariantProperties.MODEL, plant3Model)
-                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
-                .with(Condition.condition()
-                                .term(HorsetailBlock.AMOUNT, 3)
-                                .term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST)
-                                .term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER),
-                        Variant.variant().with(VariantProperties.MODEL, plant3Model)
-                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
-        );
+        this.block(MultiPartGenerator.multiPart(tallHorsetail).with(Condition.condition().term(HorsetailBlock.AMOUNT, 1, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER), Variant.variant().with(VariantProperties.MODEL, stem1Model)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 1, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER), Variant.variant().with(VariantProperties.MODEL, stem1Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 1, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER), Variant.variant().with(VariantProperties.MODEL, stem1Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 1, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER), Variant.variant().with(VariantProperties.MODEL, stem1Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER), Variant.variant().with(VariantProperties.MODEL, stem2Model)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER), Variant.variant().with(VariantProperties.MODEL, stem2Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER), Variant.variant().with(VariantProperties.MODEL, stem2Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER), Variant.variant().with(VariantProperties.MODEL, stem2Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER), Variant.variant().with(VariantProperties.MODEL, stem3Model)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER), Variant.variant().with(VariantProperties.MODEL, stem3Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER), Variant.variant().with(VariantProperties.MODEL, stem3Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER), Variant.variant().with(VariantProperties.MODEL, stem3Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 1, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER), Variant.variant().with(VariantProperties.MODEL, plant1Model)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 1, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER), Variant.variant().with(VariantProperties.MODEL, plant1Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 1, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER), Variant.variant().with(VariantProperties.MODEL, plant1Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 1, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER), Variant.variant().with(VariantProperties.MODEL, plant1Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER), Variant.variant().with(VariantProperties.MODEL, plant2Model)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER), Variant.variant().with(VariantProperties.MODEL, plant2Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER), Variant.variant().with(VariantProperties.MODEL, plant2Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 2, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER), Variant.variant().with(VariantProperties.MODEL, plant2Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER), Variant.variant().with(VariantProperties.MODEL, plant3Model)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER), Variant.variant().with(VariantProperties.MODEL, plant3Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER), Variant.variant().with(VariantProperties.MODEL, plant3Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180)).with(Condition.condition().term(HorsetailBlock.AMOUNT, 3).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST).term(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER), Variant.variant().with(VariantProperties.MODEL, plant3Model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)));
     }
 
     private void createDrum(Block drum) {

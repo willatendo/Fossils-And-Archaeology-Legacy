@@ -441,6 +441,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
 
         // Fossil Variants
         this.addFossilVariant(FAFossilVariants.ANKYLOSAURUS, "Ankylosaurus");
+        this.addFossilVariant(FAFossilVariants.BARYONYX, "Baryonyx");
         this.addFossilVariant(FAFossilVariants.BRACHIOSAURUS, "Brachiosaurus");
         this.addFossilVariant(FAFossilVariants.LEGACY_BRACHIOSAURUS, "Legacy Brachiosaurus");
         this.addFossilVariant(FAFossilVariants.CARNOTAURUS, "Carnotaurus");
@@ -448,9 +449,11 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.addFossilVariant(FAFossilVariants.CRYOLOPHOSAURUS, "Cryolophosaurus");
         this.addFossilVariant(FAFossilVariants.DILOPHOSAURUS, "Dilophosaurus");
         this.addFossilVariant(FAFossilVariants.DIMETRODON, "Dimetrodon");
+        this.addFossilVariant(FAFossilVariants.DRYOSAURUS, "Dryosaurus");
         this.addFossilVariant(FAFossilVariants.FUTABASAURUS, "Futabasaurus");
         this.addFossilVariant(FAFossilVariants.LEGACY_FUTABASAURUS, "Legacy Futabasaurus");
         this.addFossilVariant(FAFossilVariants.GALLIMIMUS, "Gallimimus");
+        this.addFossilVariant(FAFossilVariants.ICHTHYOSAURUS, "Ichthyosaurus");
         this.addFossilVariant(FAFossilVariants.MOSASAURUS, "Mosasaurus");
         this.addFossilVariant(FAFossilVariants.PACHYCEPHALOSAURUS, "Pachycephalosaurus");
         this.addFossilVariant(FAFossilVariants.PTERANODON, "Pteranodon");
@@ -656,6 +659,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.JURASSIC_FERN_SPORES.get());
         this.add(FAItems.ARTICULATED_FOSSIL.get());
         this.add("item.fossilslegacy.articulated_fossil.ankylosaurus", "Articulated Ankylosaurus Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.baryonyx", "Articulated Baryonyx Fossil");
         this.add("item.fossilslegacy.articulated_fossil.brachiosaurus", "Articulated Brachiosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.legacy_brachiosaurus", "Articulated Legacy Brachiosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.carnotaurus", "Articulated Carnotaurus Fossil");
@@ -663,10 +667,11 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.articulated_fossil.cryolophosaurus", "Articulated Cryolophosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.dilophosaurus", "Articulated Dilophosaurs Fossil");
         this.add("item.fossilslegacy.articulated_fossil.dimetrodon", "Articulated Dimetrodon Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.dryosaurus", "Articulated Dryosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.futabasaurus", "Articulated Futabasaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.legacy_futabasaurus", "Articulated Legacy Futabasaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.gallimimus", "Articulated Gallimimus Fossil");
-        this.add("item.fossilslegacy.articulated_fossil.mosasaurus", "Articulated Mosasaurus Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.ichthyosaurus", "Articulated Ichthyosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.pachycephalosaurus", "Articulated Pachycephalosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.pteranodon", "Articulated Pteranodon Fossil");
         this.add("item.fossilslegacy.articulated_fossil.legacy_pteranodon", "Articulated Legacy Pteranodon Fossil");
