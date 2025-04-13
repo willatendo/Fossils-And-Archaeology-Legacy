@@ -4,8 +4,7 @@
   "pattern_information": {
     "type": "fossilslegacy:package",
     "textures": {
-      "baby": "fossilslegacy:textures/entity/cryolophosaurus/cryolophosaurus_baby.png",
-      "base": "fossilslegacy:textures/entity/cryolophosaurus/cryolophosaurus_adult.png"
+      "fossilslegacy:base": "fossilslegacy:textures/entity/cryolophosaurus/cryolophosaurus.png"
     }
   },
   "pattern_name": {

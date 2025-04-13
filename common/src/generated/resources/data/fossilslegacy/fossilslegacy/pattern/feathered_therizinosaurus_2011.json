@@ -4,7 +4,7 @@
   "pattern_information": {
     "type": "fossilslegacy:package",
     "textures": {
-      "base": "fossilslegacy:textures/entity/therizinosaurus/legacy/therizinosaurus_feathered.png"
+      "fossilslegacy:base": "fossilslegacy:textures/entity/therizinosaurus/legacy/therizinosaurus_feathered.png"
     }
   },
   "pattern_name": {

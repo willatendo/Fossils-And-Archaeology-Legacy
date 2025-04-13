@@ -13,6 +13,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
+import net.minecraft.world.flag.FeatureFlag;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.level.GameRules;
 import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;

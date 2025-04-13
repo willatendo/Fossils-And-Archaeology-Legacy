@@ -54,6 +54,7 @@ import willatendo.fossilslegacy.server.item.items.EggItem;
 import willatendo.fossilslegacy.server.jewel_recovery.JewelRecovery;
 import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
+import willatendo.fossilslegacy.server.pattern.texture.Texture;
 import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.stats.FAStats;
@@ -235,6 +236,7 @@ public final class BasicEvents {
         newRegistryRegister.register(FABuiltInRegistries.DINOPEDIA_LINE_TYPES, FARegistries.DINOPEDIA_LINE_TYPE);
         newRegistryRegister.register(FABuiltInRegistries.PREGNANCY_TYPES, FARegistries.PREGNANCY_TYPE);
         newRegistryRegister.register(FABuiltInRegistries.PATTERN_INFORMATION_TYPES, FARegistries.PATTERN_INFORMATION_TYPE);
+        newRegistryRegister.register(FABuiltInRegistries.TEXTURE_TYPES, FARegistries.TEXTURE_TYPE);
     }
 
     public static void newDynamicRegistryEvent(DynamicRegistryRegister dynamicRegistryRegister) {
@@ -250,6 +252,7 @@ public final class BasicEvents {
         dynamicRegistryRegister.register(FARegistries.PATTERN, Pattern.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.JEWEL_RECOVERY, JewelRecovery.CODEC);
         dynamicRegistryRegister.register(FARegistries.STONE_TABLET_VARIANT, StoneTabletVariant.DIRECT_CODEC);
+        dynamicRegistryRegister.register(FARegistries.TEXTURE, Texture.CODEC);
     }
 
     public static void attributeEvent(AttributeRegister attributeRegister) {

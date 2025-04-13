@@ -4,8 +4,8 @@
   "pattern_information": {
     "type": "fossilslegacy:package",
     "textures": {
-      "baby": "fossilslegacy:textures/entity/triceratops/legacy/brown_triceratops_baby.png",
-      "base": "fossilslegacy:textures/entity/triceratops/legacy/brown_triceratops_adult.png"
+      "fossilslegacy:baby": "fossilslegacy:textures/entity/triceratops/legacy/brown_triceratops_baby.png",
+      "fossilslegacy:base": "fossilslegacy:textures/entity/triceratops/legacy/brown_triceratops_adult.png"
     }
   },
   "pattern_name": {

@@ -5,6 +5,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.syncher.EntityDataSerializer;
+import net.minecraft.world.flag.FeatureFlag;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.level.GameRules;
 import net.minecraftforge.fluids.FluidType;

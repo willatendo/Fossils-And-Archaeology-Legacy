@@ -6,7 +6,7 @@ import willatendo.fossilslegacy.client.model.json.JsonPose;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class TriceratopsModels {
-    public static final JsonModel TRICERATOPS_MODEL = TriceratopsModels.createTriceratopsBodyLayer().withWalkAnimations(FAUtils.resource("triceratops_walk")).withHeadPieces("head").build();
+    public static final JsonModel TRICERATOPS_MODEL = TriceratopsModels.createTriceratopsBodyLayer().withWalkAnimations(FAUtils.resource("triceratops_walk")).withSleepAnimations(FAUtils.resource("triceratops_sleep")).withHeadPieces("head").build();
     public static final JsonModel LEGACY_TRICERATOPS_MODEL = TriceratopsModels.createLegacyTriceratopsBodyLayer().withWalkAnimations(BuiltInAnimationTypes.LEGACY_TRICERATOPS_WALK.getId()).build();
 
     private static JsonModel.Builder createTriceratopsBodyLayer() {

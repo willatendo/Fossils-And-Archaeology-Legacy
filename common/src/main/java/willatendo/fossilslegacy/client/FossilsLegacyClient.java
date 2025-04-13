@@ -14,6 +14,7 @@ import net.minecraft.world.entity.animal.horse.Mule;
 import willatendo.fossilslegacy.client.model.*;
 import willatendo.fossilslegacy.client.model.dinosaur.NautilusModel;
 import willatendo.fossilslegacy.client.model.vehicle.JeepModel;
+import willatendo.fossilslegacy.client.particle.Particles;
 import willatendo.fossilslegacy.client.render.*;
 import willatendo.fossilslegacy.client.screen.*;
 import willatendo.fossilslegacy.server.block.FABlocks;
@@ -21,6 +22,7 @@ import willatendo.fossilslegacy.server.block.FAWoodTypes;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.menu.FAMenuTypes;
+import willatendo.fossilslegacy.server.particles.FAParticleTypes;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.client.event.registry.*;
 
@@ -120,6 +122,7 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.PREGNANT_SHEEP.get(), SheepRenderer::new);
         modelRegister.register(FAEntityTypes.PREGNANT_SMILODON.get(), SmilodonRenderer::new);
         modelRegister.register(FAEntityTypes.PREGNANT_WOLF.get(), WolfRenderer::new);
+        modelRegister.register(FAEntityTypes.DART.get(), DartRenderer::new);
         modelRegister.register(FAEntityTypes.THROWN_JAVELIN.get(), ThrownJavelinRenderer::new);
         modelRegister.register(FAEntityTypes.THROWN_INCUBATED_EGG.get(), ThrownItemRenderer::new);
         modelRegister.register(FAEntityTypes.DILOPHOSAURUS_VENOM.get(), DilophosaurusVenomRenderer::new);
@@ -138,6 +141,7 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.LEPIDODENDRON_CHEST_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.LEPIDODENDRON_CHEST_BOAT));
         modelRegister.register(FAEntityTypes.SIGILLARIA_CHEST_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.SIGILLARIA_CHEST_BOAT));
 
+        modelRegister.register(FABlockEntityTypes.CAGE.get(), CageRenderer::new);
         modelRegister.register(FABlockEntityTypes.CULTIVATOR.get(), CultivatorBlockEntityRenderer::new);
         modelRegister.register(FABlockEntityTypes.DECORATION_POST.get(), DecorationPostRenderer::new);
         modelRegister.register(FABlockEntityTypes.FOSSILS_SIGN.get(), SignRenderer::new);
@@ -181,5 +185,11 @@ public final class FossilsLegacyClient {
         menuScreenRegister.addMenuScreen(FAMenuTypes.GENE_MODIFICATION.get(), DNARecombinatorScreen::new);
         menuScreenRegister.addMenuScreen(FAMenuTypes.PALAEONTOLOGY_TABLE.get(), PalaeontologyTableScreen::new);
         menuScreenRegister.addMenuScreen(FAMenuTypes.TIME_MACHINE.get(), TimeMachineScreen::new);
+    }
+
+    public static void particleRegisterEvent(ParticleRegistry particleRegistry) {
+        particleRegistry.registerSprite(FAParticleTypes.DRIPPING_TAR.get(), Particles::createTarHangParticle);
+        particleRegistry.registerSprite(FAParticleTypes.FALLING_TAR.get(), Particles::createTarFallParticle);
+        particleRegistry.registerSprite(FAParticleTypes.LANDING_TAR.get(), Particles::createTarLandParticle);
     }
 }

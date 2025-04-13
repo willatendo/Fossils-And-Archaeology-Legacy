@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FAModelLayers;
 import willatendo.fossilslegacy.client.model.JavelinModel;
 import willatendo.fossilslegacy.client.state.ThrownJavelinRenderState;
-import willatendo.fossilslegacy.server.entity.entities.ThrownJavelin;
+import willatendo.fossilslegacy.server.entity.entities.projectile.ThrownJavelin;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.Map;

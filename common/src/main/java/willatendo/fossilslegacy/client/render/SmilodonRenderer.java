@@ -1,9 +1,11 @@
 package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
+import net.minecraft.resources.ResourceKey;
 import willatendo.fossilslegacy.client.state.SmilodonRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Smilodon;
-import willatendo.fossilslegacy.server.pattern.information.TextureType;
+import willatendo.fossilslegacy.server.pattern.FATextures;
+import willatendo.fossilslegacy.server.pattern.texture.Texture;
 
 import java.util.List;
 
@@ -29,7 +31,7 @@ public class SmilodonRenderer extends DataDrivenModelMobRenderer<Smilodon, Smilo
     }
 
     @Override
-    public List<TextureType> requiredTextures() {
-        return List.of(TextureType.BASE, TextureType.BABY);
+    public List<ResourceKey<Texture>> requiredTextures() {
+        return List.of(FATextures.BASE, FATextures.BABY);
     }
 }

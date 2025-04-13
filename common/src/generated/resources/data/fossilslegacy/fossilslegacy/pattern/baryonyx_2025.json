@@ -4,9 +4,7 @@
   "pattern_information": {
     "type": "fossilslegacy:package",
     "textures": {
-      "aggressive": "fossilslegacy:textures/entity/baryonyx/baryonyx_aggressive.png",
-      "baby": "fossilslegacy:textures/entity/baryonyx/baryonyx_baby.png",
-      "base": "fossilslegacy:textures/entity/baryonyx/baryonyx_adult.png"
+      "fossilslegacy:base": "fossilslegacy:textures/entity/baryonyx/baryonyx.png"
     }
   },
   "pattern_name": {

@@ -3,12 +3,10 @@ package willatendo.fossilslegacy.server.fluid;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
@@ -23,6 +21,7 @@ import net.minecraft.world.level.material.FluidState;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.level.FAGameRules;
+import willatendo.fossilslegacy.server.particles.FAParticleTypes;
 import willatendo.fossilslegacy.server.tags.FAFluidTags;
 
 import java.util.Optional;
@@ -45,14 +44,14 @@ public abstract class TarFluid extends FlowingFluid {
 
     @Override
     public ParticleOptions getDripParticle() {
-        return ParticleTypes.DRIPPING_WATER;
+        return FAParticleTypes.DRIPPING_TAR.get();
     }
 
     @Override
     protected boolean canConvertToSource(ServerLevel serverLevel) {
         return serverLevel.getGameRules().getBoolean(FAGameRules.RULE_TAR_SOURCE_CONVERSION);
     }
-
+    
     @Override
     protected void beforeDestroyingBlock(LevelAccessor levelAccessor, BlockPos blockPos, BlockState blockState) {
         BlockEntity blockEntity = blockState.hasBlockEntity() ? levelAccessor.getBlockEntity(blockPos) : null;
@@ -61,7 +60,7 @@ public abstract class TarFluid extends FlowingFluid {
 
     @Override
     public int getSlopeFindDistance(LevelReader levelReader) {
-        return 4;
+        return 1;
     }
 
     @Override
@@ -76,12 +75,12 @@ public abstract class TarFluid extends FlowingFluid {
 
     @Override
     public int getDropOff(LevelReader levelReader) {
-        return 1;
+        return 7;
     }
 
     @Override
     public int getTickDelay(LevelReader levelReader) {
-        return 5;
+        return 50;
     }
 
     @Override

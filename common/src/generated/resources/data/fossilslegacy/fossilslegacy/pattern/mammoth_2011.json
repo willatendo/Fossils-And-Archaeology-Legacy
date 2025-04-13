@@ -4,11 +4,11 @@
   "pattern_information": {
     "type": "fossilslegacy:package",
     "textures": {
-      "baby": "fossilslegacy:textures/entity/mammoth/legacy/mammoth_baby.png",
-      "baby_fur": "fossilslegacy:textures/entity/mammoth/legacy/mammoth_baby_fur.png",
-      "base": "fossilslegacy:textures/entity/mammoth/legacy/mammoth_adult.png",
-      "fur": "fossilslegacy:textures/entity/mammoth/legacy/mammoth_adult_fur.png",
-      "sheared": "fossilslegacy:textures/entity/mammoth/legacy/mammoth_adult_sheared.png"
+      "fossilslegacy:baby": "fossilslegacy:textures/entity/mammoth/legacy/mammoth_baby.png",
+      "fossilslegacy:baby_fur": "fossilslegacy:textures/entity/mammoth/legacy/mammoth_baby_fur.png",
+      "fossilslegacy:base": "fossilslegacy:textures/entity/mammoth/legacy/mammoth_adult.png",
+      "fossilslegacy:fur": "fossilslegacy:textures/entity/mammoth/legacy/mammoth_adult_fur.png",
+      "fossilslegacy:sheared": "fossilslegacy:textures/entity/mammoth/legacy/mammoth_adult_sheared.png"
     }
   },
   "pattern_name": {

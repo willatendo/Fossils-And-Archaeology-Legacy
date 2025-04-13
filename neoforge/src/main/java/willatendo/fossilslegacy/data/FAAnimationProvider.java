@@ -44,6 +44,7 @@ public class FAAnimationProvider extends AnimationProvider {
         this.addAnimation(FAUtils.resource("stegosaurus_walk"), StegosaurusAnimations.STEGOSAURUS_WALK);
         this.addAnimation(FAUtils.resource("therizinosaurus_walk"), TherizinosaurusAnimations.THERIZINOSAURUS_WALK);
         this.addAnimation(FAUtils.resource("triceratops_walk"), TriceratopsAnimations.TRICERATOPS_WALK);
+        this.addAnimation(FAUtils.resource("triceratops_sleep"), TriceratopsAnimations.TRICERATOPS_SLEEP);
         this.addAnimation(FAUtils.resource("tyrannosaurus_walk"), TyrannosaurusAnimations.TYRANNOSAURUS_WALK);
         this.addAnimation(FAUtils.resource("velociraptor_walk"), VelociraptorAnimations.VELOCIRAPTOR_WALK);
     }

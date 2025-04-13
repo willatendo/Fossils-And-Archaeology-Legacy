@@ -21,6 +21,7 @@ public class FAItemTags {
     public static final TagKey<Item> COMPSOGNATHUS_COMMANDABLES = ITEM_TAGS.register("commandable/compsognathus");
     public static final TagKey<Item> CRYOLOPHOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/cryolophosaurus");
     public static final TagKey<Item> DAGGER_TOOL_MATERIALS = ITEM_TAGS.register("dagger_tool_materials");
+    public static final TagKey<Item> DARTS = ITEM_TAGS.register("darts");
     public static final TagKey<Item> DILOPHOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/dilophosaurus");
     public static final TagKey<Item> DIMETRODON_COMMANDABLES = ITEM_TAGS.register("commandable/dimetrodon");
     public static final TagKey<Item> DNA = ITEM_TAGS.register("dna");

@@ -1,11 +1,13 @@
 package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.state.PteranodonRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Pteranodon;
 import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.information.TextureType;
+import willatendo.fossilslegacy.server.pattern.FATextures;
+import willatendo.fossilslegacy.server.pattern.texture.Texture;
 
 import java.util.List;
 import java.util.Optional;
@@ -43,7 +45,7 @@ public class PteranodonRenderer extends DataDrivenModelMobRenderer<Pteranodon, P
     }
 
     @Override
-    public List<TextureType> requiredTextures() {
-        return List.of(TextureType.BASE, TextureType.BABY);
+    public List<ResourceKey<Texture>> requiredTextures() {
+        return List.of(FATextures.BASE, FATextures.BABY);
     }
 }

@@ -14,6 +14,9 @@ public class DinoWaterAvoidingRandomStrollGoal extends WaterAvoidingRandomStroll
 
     @Override
     public boolean canUse() {
+        if (this.dinosaur.isTranquilized()) {
+            return false;
+        }
         if (this.dinosaur.getCommand().is(FACommandTypes.STAY)) {
             return false;
         } else {
@@ -23,6 +26,9 @@ public class DinoWaterAvoidingRandomStrollGoal extends WaterAvoidingRandomStroll
 
     @Override
     public boolean canContinueToUse() {
+        if (this.dinosaur.isTranquilized()) {
+            return false;
+        }
         if (this.dinosaur.getCommand().is(FACommandTypes.STAY)) {
             return false;
         } else {

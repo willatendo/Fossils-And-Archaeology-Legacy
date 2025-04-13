@@ -27,6 +27,9 @@ public class DinoEatFernsGoal extends Goal {
 
     @Override
     public boolean canUse() {
+        if (this.dinosaur.isTranquilized()) {
+            return false;
+        }
         if (this.dinosaur.getHunger() >= this.hungerLimit) {
             return false;
         } else {

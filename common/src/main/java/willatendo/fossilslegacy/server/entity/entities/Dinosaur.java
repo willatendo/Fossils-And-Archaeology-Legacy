@@ -12,6 +12,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.OldUsersConverter;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
@@ -48,7 +49,7 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 import java.util.Optional;
 import java.util.UUID;
 
-public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, CommandableEntity, DaysAliveAccessor, GrowingEntity, HungerAccessor, OwnableEntity, TamesOnBirth, TameAccessor, TamedSpeakingEntity {
+public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, CommandableEntity, DaysAliveAccessor, GrowingEntity, HungerAccessor, OwnableEntity, TamesOnBirth, TameAccessor, TamedSpeakingEntity, TranquilizableEntity {
     private static final EntityDataAccessor<Holder<ModelType>> MODEL_TYPE = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.MODEL_TYPES.get());
     private static final EntityDataAccessor<Holder<Pattern>> SKIN = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.PATTERN.get());
     private static final EntityDataAccessor<Holder<Pattern>> PATTERN = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.PATTERN.get());
@@ -56,6 +57,8 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
     private static final EntityDataAccessor<Integer> DAYS_ALIVE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> GROWTH_STAGE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> HUNGER = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> TRANQUILIZE_TIME = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Boolean> TRANQUILIZED = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.BOOLEAN);
     protected static final EntityDataAccessor<Optional<UUID>> OWNER = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.OPTIONAL_UUID);
     protected int internalClock = 0;
 
@@ -157,6 +160,8 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
     @Override
     public void tick() {
         if (!this.isNoAi()) {
+            this.tranquilizedTick();
+
             if (this.dimensions.width() != this.getEntityDimensions(this.getGrowthStage()).width() || this.dimensions.height() != this.getEntityDimensions(this.getGrowthStage()).height()) {
                 this.refreshDimensions();
             }
@@ -345,6 +350,8 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
         builder.define(GROWTH_STAGE, 0);
         builder.define(DAYS_ALIVE, 0);
         builder.define(HUNGER, this.getMaxHunger());
+        builder.define(TRANQUILIZE_TIME, 0);
+        builder.define(TRANQUILIZED, false);
         builder.define(OWNER, Optional.empty());
     }
 
@@ -377,6 +384,26 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
     @Override
     public int getHunger() {
         return this.entityData.get(HUNGER);
+    }
+
+    @Override
+    public void setTranquilizeTime(int tranquilizeTime) {
+        this.entityData.set(TRANQUILIZE_TIME, tranquilizeTime);
+    }
+
+    @Override
+    public int getTranquilizeTime() {
+        return this.entityData.get(TRANQUILIZE_TIME);
+    }
+
+    @Override
+    public void setTranquilized(boolean tranquilized) {
+        this.entityData.set(TRANQUILIZED, tranquilized);
+    }
+
+    @Override
+    public boolean isTranquilized() {
+        return this.entityData.get(TRANQUILIZED);
     }
 
     public boolean isOwnedBy(LivingEntity livingEntity) {
@@ -461,6 +488,7 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
 
         this.addCosmeticsData(compoundTag, this.registryAccess());
         this.addCommandType(compoundTag, this.registryAccess());
+        this.addTranquilizeData(compoundTag, this.registryAccess());
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
         compoundTag.putInt("Hunger", this.getHunger());
         compoundTag.putInt("GrowthStage", this.getGrowthStage());
@@ -488,6 +516,7 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
 
         this.readCosmeticsData(compoundTag, this.registryAccess());
         this.readCommandType(compoundTag, this.registryAccess());
+        this.readTranquilizeData(compoundTag, this.registryAccess());
         super.readAdditionalSaveData(compoundTag);
         this.setDaysAlive(compoundTag.getInt("DaysAlive"));
         this.setHunger(compoundTag.getInt("Hunger"));
@@ -503,6 +532,7 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
 
         this.addCosmeticsData(compoundTag, this.registryAccess());
         this.addCommandType(compoundTag, this.registryAccess());
+        this.addTranquilizeData(compoundTag, this.registryAccess());
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
         compoundTag.putInt("Hunger", this.getHunger());
         compoundTag.putInt("GrowthStage", this.getGrowthStage());
@@ -519,6 +549,7 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
 
         this.addCosmeticsData(compoundTag, this.registryAccess());
         this.addCommandType(compoundTag, this.registryAccess());
+        this.addTranquilizeData(compoundTag, this.registryAccess());
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
         compoundTag.putInt("Hunger", this.getHunger());
         compoundTag.putInt("GrowthStage", this.getGrowthStage());
@@ -549,6 +580,13 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
             return egg;
         } else {
             return null;
+        }
+    }
+
+    @Override
+    public void makeSound(SoundEvent soundEvent) {
+        if (!this.isTranquilized()) {
+            super.makeSound(soundEvent);
         }
     }
 }

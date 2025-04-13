@@ -1,7 +1,10 @@
 package willatendo.fossilslegacy.server.pattern.information;
 
 import com.mojang.serialization.Codec;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import willatendo.fossilslegacy.server.pattern.texture.Texture;
 import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 
 import java.util.List;
@@ -12,5 +15,5 @@ public interface PatternInformation {
 
     PatternInformationType<?> type();
 
-    Map<TextureType, ResourceLocation> getTextures(String textureName, List<TextureType> requiredTextures);
+    Map<ResourceKey<Texture>, ResourceLocation> getTextures(Registry<Texture> textureRegistry, String textureName, List<ResourceKey<Texture>> requiredTextures);
 }

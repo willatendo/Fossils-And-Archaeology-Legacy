@@ -1,10 +1,12 @@
 package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
+import net.minecraft.resources.ResourceKey;
 import willatendo.fossilslegacy.client.render.layer.MammothFurLayer;
 import willatendo.fossilslegacy.client.state.MammothRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Mammoth;
-import willatendo.fossilslegacy.server.pattern.information.TextureType;
+import willatendo.fossilslegacy.server.pattern.FATextures;
+import willatendo.fossilslegacy.server.pattern.texture.Texture;
 
 import java.util.List;
 
@@ -33,7 +35,7 @@ public class MammothRenderer extends DataDrivenModelMobRenderer<Mammoth, Mammoth
     }
 
     @Override
-    public List<TextureType> requiredTextures() {
-        return List.of(TextureType.BASE, TextureType.BABY, TextureType.FUR, TextureType.BABY, TextureType.BABY_FUR, TextureType.SHEARED);
+    public List<ResourceKey<Texture>> requiredTextures() {
+        return List.of(FATextures.BASE, FATextures.BABY, FATextures.FUR, FATextures.BABY, FATextures.BABY_FUR, FATextures.SHEARED);
     }
 }

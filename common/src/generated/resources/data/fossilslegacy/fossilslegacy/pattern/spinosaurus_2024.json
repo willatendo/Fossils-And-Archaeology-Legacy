@@ -4,8 +4,8 @@
   "pattern_information": {
     "type": "fossilslegacy:package",
     "textures": {
-      "baby": "fossilslegacy:textures/entity/spinosaurus/spinosaurus_baby.png",
-      "base": "fossilslegacy:textures/entity/spinosaurus/spinosaurus_adult.png"
+      "fossilslegacy:baby": "fossilslegacy:textures/entity/spinosaurus/spinosaurus_baby.png",
+      "fossilslegacy:base": "fossilslegacy:textures/entity/spinosaurus/spinosaurus_adult.png"
     }
   },
   "pattern_name": {

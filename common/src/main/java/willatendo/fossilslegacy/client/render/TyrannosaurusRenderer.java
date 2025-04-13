@@ -1,11 +1,14 @@
 package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.state.TyrannosaurusRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Tyrannosaurus;
 import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.information.TextureType;
+import willatendo.fossilslegacy.server.pattern.FATextures;
+import willatendo.fossilslegacy.server.pattern.texture.Texture;
 import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 
 import java.util.List;
@@ -28,8 +31,8 @@ public class TyrannosaurusRenderer extends DataDrivenModelMobRenderer<Tyrannosau
     }
 
     @Override
-    protected Optional<ResourceLocation> getAdditionalTexture(TyrannosaurusRenderState tyrannosaurusRenderState, Pattern pattern) {
-        return (tyrannosaurusRenderState.knockedOut && this.hasKnockedOutTexture(pattern)) ? Optional.of(this.getKnockedOutTexture(pattern)) : (!tyrannosaurusRenderState.isBaby && !tyrannosaurusRenderState.isTame && this.hasAggressiveTexture(pattern)) ? Optional.of(this.getAggressiveTexture(pattern)) : Optional.empty();
+    protected Optional<ResourceLocation> getAdditionalTexture(Registry<Texture> textureRegistry, TyrannosaurusRenderState tyrannosaurusRenderState, Pattern pattern) {
+        return (tyrannosaurusRenderState.knockedOut && this.hasKnockedOutTexture(textureRegistry, pattern)) ? Optional.of(this.getKnockedOutTexture(textureRegistry, pattern)) : (!tyrannosaurusRenderState.isBaby && !tyrannosaurusRenderState.isTame && this.hasAggressiveTexture(textureRegistry, pattern)) ? Optional.of(this.getAggressiveTexture(textureRegistry, pattern)) : Optional.empty();
     }
 
     @Override
@@ -38,7 +41,7 @@ public class TyrannosaurusRenderer extends DataDrivenModelMobRenderer<Tyrannosau
     }
 
     @Override
-    public List<TextureType> requiredTextures() {
-        return List.of(TextureType.BASE, TextureType.BABY, TextureType.AGGRESSIVE, TextureType.KNOCKED_OUT);
+    public List<ResourceKey<Texture>> requiredTextures() {
+        return List.of(FATextures.BASE, FATextures.BABY, FATextures.AGGRESSIVE, FATextures.KNOCKED_OUT);
     }
 }

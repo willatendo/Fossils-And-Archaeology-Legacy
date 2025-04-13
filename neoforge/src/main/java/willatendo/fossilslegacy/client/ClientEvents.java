@@ -70,4 +70,9 @@ public class ClientEvents {
             }
         }, FAFluidTypes.TAR_TYPE.get());
     }
+
+    @SubscribeEvent
+    public static void registerParticleProvidersEvent(RegisterParticleProvidersEvent event) {
+        FossilsLegacyClient.particleRegisterEvent(new NeoforgeParticleRegistry(event));
+    }
 }

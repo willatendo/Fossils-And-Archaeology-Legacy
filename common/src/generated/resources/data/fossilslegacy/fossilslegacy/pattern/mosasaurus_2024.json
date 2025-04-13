@@ -4,8 +4,8 @@
   "pattern_information": {
     "type": "fossilslegacy:package",
     "textures": {
-      "base": "fossilslegacy:textures/entity/mosasaurus/mosasaurus.png",
-      "eye": "fossilslegacy:textures/entity/mosasaurus/mosasaurus_eyes.png"
+      "fossilslegacy:base": "fossilslegacy:textures/entity/mosasaurus/mosasaurus.png",
+      "fossilslegacy:eye_layer": "fossilslegacy:textures/entity/mosasaurus/mosasaurus_eyes.png"
     }
   },
   "pattern_name": {

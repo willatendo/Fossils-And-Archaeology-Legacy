@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.data;
 
-import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -31,11 +30,8 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 import java.util.concurrent.CompletableFuture;
 
 public class FARecipeProvider extends RecipeProvider {
-    private final HolderGetter<Item> items;
-
     protected FARecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
         super(provider, recipeOutput);
-        this.items = provider.lookupOrThrow(Registries.ITEM);
     }
 
     private String name(String id) {
@@ -108,6 +104,11 @@ public class FARecipeProvider extends RecipeProvider {
         this.decorationPlaque(Blocks.GREEN_CONCRETE, FAItems.GREEN_DECORATION_PLAQUE.get());
         this.decorationPlaque(Blocks.RED_CONCRETE, FAItems.RED_DECORATION_PLAQUE.get());
         this.decorationPlaque(Blocks.BLACK_CONCRETE, FAItems.BLACK_DECORATION_PLAQUE.get());
+        this.shaped(RecipeCategory.TOOLS, FABlocks.SMALL_CAGE.get()).pattern("###").pattern("$$$").pattern("###").define('#', Blocks.STONE_BRICKS).define('$', Blocks.IRON_BARS).unlockedBy(getHasName(Blocks.IRON_BARS), has(Blocks.IRON_BARS)).save(this.output);
+        this.shaped(RecipeCategory.COMBAT, FAItems.RIFLE.get()).pattern("###").pattern(" $%").define('#', Items.IRON_INGOT).define('$', Items.STICK).define('%', ItemTags.PLANKS).unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT)).save(this.output);
+        this.shaped(RecipeCategory.COMBAT, FAItems.GREEN_TRANQUILIZER_DART.get(), 4).pattern("  $").pattern(" # ").pattern("%  ").define('$', Items.FEATHER).define('#', Items.POISONOUS_POTATO).define('%', Items.IRON_INGOT).unlockedBy(getHasName(Items.POISONOUS_POTATO), has(Items.POISONOUS_POTATO)).save(this.output);
+        this.shaped(RecipeCategory.COMBAT, FAItems.RED_TRANQUILIZER_DART.get(), 4).pattern("  $").pattern(" # ").pattern("%  ").define('$', Items.FEATHER).define('#', Items.ROTTEN_FLESH).define('%', Items.IRON_INGOT).unlockedBy(getHasName(Items.ROTTEN_FLESH), has(Items.ROTTEN_FLESH)).save(this.output);
+        this.shaped(RecipeCategory.COMBAT, FAItems.BLUE_TRANQUILIZER_DART.get(), 4).pattern("  $").pattern(" # ").pattern("%  ").define('$', Items.FEATHER).define('#', Items.FERMENTED_SPIDER_EYE).define('%', Items.IRON_INGOT).unlockedBy(getHasName(Items.FERMENTED_SPIDER_EYE), has(Items.FERMENTED_SPIDER_EYE)).save(this.output);
 
         SpecialRecipeBuilder.special(MagicConchRecipe::new).save(this.output, "magic_conch");
 

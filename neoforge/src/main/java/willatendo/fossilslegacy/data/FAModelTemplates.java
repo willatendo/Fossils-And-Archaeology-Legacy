@@ -8,12 +8,13 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.Optional;
 
-public class FAModelTemplates {
+public final class FAModelTemplates {
     public static final ModelTemplate FROGSPAWN = FAModelTemplates.createMC("frogspawn", TextureSlot.TEXTURE, TextureSlot.PARTICLE).extend().renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_BRANCH = FAModelTemplates.create("template_branch", FATextureSlot.LEAVES, FATextureSlot.LOG).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_BRANCH_DUAL = FAModelTemplates.create("template_branch_dual", FATextureSlot.LEAVES, FATextureSlot.LOG).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_BRANCH_HIGH = FAModelTemplates.create("template_branch_high", FATextureSlot.LEAVES, FATextureSlot.LOG).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_BRANCH_LOW = FAModelTemplates.create("template_branch_low", FATextureSlot.LEAVES, FATextureSlot.LOG).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_SMALL_CAGE = FAModelTemplates.create("template_small_cage").renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_CULTIVATOR = FAModelTemplates.create("template_cultivator", TextureSlot.SIDE, TextureSlot.TOP).renderType("translucent").build();
     public static final ExtendedModelTemplate TEMPLATE_CULTIVATOR_ACTIVE = FAModelTemplates.create("template_cultivator_active", TextureSlot.SIDE, TextureSlot.TOP).renderType("translucent").build();
     public static final ExtendedModelTemplate TEMPLATE_DECORATION_PLAQUE_POST = FAModelTemplates.create("template_decoration_plaque_post", FATextureSlot.POST).build();
@@ -36,6 +37,7 @@ public class FAModelTemplates {
     public static final ExtendedModelTemplate TEMPLATE_LIQUID = FAModelTemplates.create(TextureSlot.PARTICLE).build();
 
     public static final ModelTemplate TEMPLATE_ARTICULATED_FOSSIL = FAModelTemplates.createItem("template_articulated_fossil", TextureSlot.PARTICLE);
+    public static final ModelTemplate TEMPLATE_RIFLE = FAModelTemplates.createItem("template_rifle", TextureSlot.TEXTURE);
 
     public static ModelTemplate createMC(String name, TextureSlot... requiredSlots) {
         return new ModelTemplate(Optional.of(FAUtils.mc("block/" + name)), Optional.empty(), requiredSlots);

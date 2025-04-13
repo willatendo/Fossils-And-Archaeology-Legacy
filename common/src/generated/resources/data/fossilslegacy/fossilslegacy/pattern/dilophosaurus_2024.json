@@ -4,8 +4,8 @@
   "pattern_information": {
     "type": "fossilslegacy:package",
     "textures": {
-      "aggressive": "fossilslegacy:textures/entity/dilophosaurus/aggressive_dilophosaurus_adult.png",
-      "base": "fossilslegacy:textures/entity/dilophosaurus/dilophosaurus_adult.png"
+      "fossilslegacy:aggressive": "fossilslegacy:textures/entity/dilophosaurus/aggressive_dilophosaurus.png",
+      "fossilslegacy:base": "fossilslegacy:textures/entity/dilophosaurus/dilophosaurus.png"
     }
   },
   "pattern_name": {

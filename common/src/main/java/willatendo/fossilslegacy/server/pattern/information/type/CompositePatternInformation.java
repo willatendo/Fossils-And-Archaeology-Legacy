@@ -3,11 +3,14 @@ package willatendo.fossilslegacy.server.pattern.information.type;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.server.pattern.FAPatternInformationTypes;
+import willatendo.fossilslegacy.server.pattern.FATextures;
 import willatendo.fossilslegacy.server.pattern.information.PatternInformation;
 import willatendo.fossilslegacy.server.pattern.information.PatternInformationType;
-import willatendo.fossilslegacy.server.pattern.information.TextureType;
+import willatendo.fossilslegacy.server.pattern.texture.Texture;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.HashMap;
@@ -23,12 +26,12 @@ public record CompositePatternInformation(String texturePath, int layer) impleme
     }
 
     @Override
-    public Map<TextureType, ResourceLocation> getTextures(String textureName, List<TextureType> requiredTextures) {
-        Map<TextureType, ResourceLocation> textures = new HashMap<>();
-        for (TextureType textureType : requiredTextures) {
-            String texture = requiredTextures.contains(TextureType.BABY) ? this.texturePath + "_" + textureType.getSuffix() : this.texturePath;
-            textures.put(textureType, FAUtils.resource("textures/entity/" + textureName + "/layer" + this.layer + "/" + texture + ".png"));
-        }
+    public Map<ResourceKey<Texture>, ResourceLocation> getTextures(Registry<Texture> textureRegistry, String textureName, List<ResourceKey<Texture>> requiredTextures) {
+        Map<ResourceKey<Texture>, ResourceLocation> textures = new HashMap<>();
+        requiredTextures.forEach(textureResourceKey -> {
+            String texture = textureRegistry.getValue(textureResourceKey).getTextureName(textureRegistry, this.texturePath, requiredTextures.contains(FATextures.BABY));
+            textures.put(textureResourceKey, FAUtils.resource("textures/entity/" + textureName + "/layer" + this.layer + "/" + texture + ".png"));
+        });
         return textures;
     }
 }

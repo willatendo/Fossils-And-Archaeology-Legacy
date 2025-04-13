@@ -82,6 +82,7 @@ public final class FACreativeModeTabs {
         output.accept(FABlocks.LEPIDODENDRON_WOOD.get());
         output.accept(FABlocks.STRIPPED_LEPIDODENDRON_LOG.get());
         output.accept(FABlocks.STRIPPED_LEPIDODENDRON_WOOD.get());
+        output.accept(FABlocks.SMALL_CAGE.get());
         output.accept(FABlocks.LEPIDODENDRON_PLANKS.get());
         output.accept(FABlocks.LEPIDODENDRON_STAIRS.get());
         output.accept(FABlocks.LEPIDODENDRON_SLAB.get());
@@ -396,6 +397,10 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.RAW_BERRY_MEDLEY_BUCKET.get());
         output.accept(FAItems.COOKED_BERRY_MEDLEY_BUCKET.get());
         output.accept(FAItems.ROMANTIC_CONCOCTION_BOTTLE.get());
+        output.accept(FAItems.RIFLE.get());
+        output.accept(FAItems.GREEN_TRANQUILIZER_DART.get());
+        output.accept(FAItems.RED_TRANQUILIZER_DART.get());
+        output.accept(FAItems.BLUE_TRANQUILIZER_DART.get());
         output.accept(FAItems.TAR_BUCKET.get());
         output.accept(FAItems.THERIZINOSAURUS_CLAWS.get());
         output.accept(FAItems.TYRANNOSAURUS_TOOTH.get());

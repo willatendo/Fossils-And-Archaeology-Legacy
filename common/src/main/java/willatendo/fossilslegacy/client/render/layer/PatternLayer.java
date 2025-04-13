@@ -25,7 +25,7 @@ public class PatternLayer<T extends Dinosaur, S extends DinosaurRenderState> ext
     public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight, DinosaurRenderState dinosaurRenderState, float yRot, float xRot) {
         if (dinosaurRenderState.pattern != null && !dinosaurRenderState.pattern.is(FAPatterns.BLANK)) {
             Pattern pattern = dinosaurRenderState.pattern.value();
-            VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entityCutoutNoCull(this.dataDrivenModelMobRenderer.getTexture(pattern)));
+            VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entityCutoutNoCull(this.dataDrivenModelMobRenderer.getBaseTexture(dinosaurRenderState.textureRegistry, pattern)));
             poseStack.pushPose();
             this.getParentModel().renderToBuffer(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY);
             poseStack.popPose();

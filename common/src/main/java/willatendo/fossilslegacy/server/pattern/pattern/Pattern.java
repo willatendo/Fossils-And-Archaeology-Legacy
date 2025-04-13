@@ -3,19 +3,22 @@ package willatendo.fossilslegacy.server.pattern.pattern;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentSerialization;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.RegistryFileCodec;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.server.entity.genetics.GeneticType;
+import willatendo.fossilslegacy.server.pattern.FATextures;
 import willatendo.fossilslegacy.server.pattern.information.PatternInformation;
-import willatendo.fossilslegacy.server.pattern.information.TextureType;
 import willatendo.fossilslegacy.server.pattern.information.type.BlankPatternInformation;
 import willatendo.fossilslegacy.server.pattern.information.type.CompositePatternInformation;
 import willatendo.fossilslegacy.server.pattern.information.type.PackagePatternInformation;
+import willatendo.fossilslegacy.server.pattern.texture.Texture;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
@@ -32,80 +35,80 @@ public record Pattern(Component patternName, int geneColor, GeneticType geneticT
         this(FAUtils.translation("pattern", "blank"), 0xFFFFFF, GeneticType.DOMINANT, new BlankPatternInformation());
     }
 
-    public ResourceLocation getTexture(TextureType textureType, String textureName, List<TextureType> requiredTextures) {
-        return this.patternInformation().getTextures(textureName, requiredTextures).get(textureType);
+    public ResourceLocation getTexture(Registry<Texture> textureRegistry, ResourceKey<Texture> texture, String textureName, List<ResourceKey<Texture>> requiredTextures) {
+        return this.patternInformation().getTextures(textureRegistry, textureName, requiredTextures).get(texture);
     }
 
-    public ResourceLocation getTexture(String textureName, List<TextureType> requiredTextures) {
-        return this.getTexture(TextureType.BASE, textureName, requiredTextures);
+    public ResourceLocation getTexture(Registry<Texture> textureRegistry, String textureName, List<ResourceKey<Texture>> requiredTextures) {
+        return this.getTexture(textureRegistry, FATextures.BASE, textureName, requiredTextures);
     }
 
-    public ResourceLocation getBabyTexture(String textureName, List<TextureType> requiredTextures) {
-        return this.getTexture(TextureType.BABY, textureName, requiredTextures);
+    public ResourceLocation getBabyTexture(Registry<Texture> textureRegistry, String textureName, List<ResourceKey<Texture>> requiredTextures) {
+        return this.getTexture(textureRegistry, FATextures.BABY, textureName, requiredTextures);
     }
 
-    public ResourceLocation getAggressiveTexture(String textureName, List<TextureType> requiredTextures) {
-        return this.getTexture(TextureType.AGGRESSIVE, textureName, requiredTextures);
+    public ResourceLocation getAggressiveTexture(Registry<Texture> textureRegistry, String textureName, List<ResourceKey<Texture>> requiredTextures) {
+        return this.getTexture(textureRegistry, FATextures.AGGRESSIVE, textureName, requiredTextures);
     }
 
-    public ResourceLocation getAggressiveBabyTexture(String textureName, List<TextureType> requiredTextures) {
-        return this.getTexture(TextureType.AGGRESSIVE_BABY, textureName, requiredTextures);
+    public ResourceLocation getAggressiveBabyTexture(Registry<Texture> textureRegistry, String textureName, List<ResourceKey<Texture>> requiredTextures) {
+        return this.getTexture(textureRegistry, FATextures.AGGRESSIVE_BABY, textureName, requiredTextures);
     }
 
-    public ResourceLocation getKnockedOutTexture(String textureName, List<TextureType> requiredTextures) {
-        return this.getTexture(TextureType.KNOCKED_OUT, textureName, requiredTextures);
+    public ResourceLocation getKnockedOutTexture(Registry<Texture> textureRegistry, String textureName, List<ResourceKey<Texture>> requiredTextures) {
+        return this.getTexture(textureRegistry, FATextures.KNOCKED_OUT, textureName, requiredTextures);
     }
 
-    public ResourceLocation getFurTexture(String textureName, List<TextureType> requiredTextures) {
-        return this.getTexture(TextureType.FUR, textureName, requiredTextures);
+    public ResourceLocation getFurTexture(Registry<Texture> textureRegistry, String textureName, List<ResourceKey<Texture>> requiredTextures) {
+        return this.getTexture(textureRegistry, FATextures.FUR, textureName, requiredTextures);
     }
 
-    public ResourceLocation getBabyFurTexture(String textureName, List<TextureType> requiredTextures) {
-        return this.getTexture(TextureType.BABY_FUR, textureName, requiredTextures);
+    public ResourceLocation getBabyFurTexture(Registry<Texture> textureRegistry, String textureName, List<ResourceKey<Texture>> requiredTextures) {
+        return this.getTexture(textureRegistry, FATextures.BABY_FUR, textureName, requiredTextures);
     }
 
-    public ResourceLocation getShearedTexture(String textureName, List<TextureType> requiredTextures) {
-        return this.getTexture(TextureType.SHEARED, textureName, requiredTextures);
+    public ResourceLocation getShearedTexture(Registry<Texture> textureRegistry, String textureName, List<ResourceKey<Texture>> requiredTextures) {
+        return this.getTexture(textureRegistry, FATextures.SHEARED, textureName, requiredTextures);
     }
 
-    public ResourceLocation getEyeTexture(String textureName, List<TextureType> requiredTextures) {
-        return this.getTexture(TextureType.EYE, textureName, requiredTextures);
+    public ResourceLocation getEyeTexture(Registry<Texture> textureRegistry, String textureName, List<ResourceKey<Texture>> requiredTextures) {
+        return this.getTexture(textureRegistry, FATextures.EYE_LAYER, textureName, requiredTextures);
     }
 
-    public boolean hasTexture(TextureType textureType, String textureName, List<TextureType> requiredTextures) {
-        return this.patternInformation().getTextures(textureName, requiredTextures).containsKey(textureType);
+    public boolean hasTexture(Registry<Texture> textureRegistry, ResourceKey<Texture> texture, String textureName, List<ResourceKey<Texture>> requiredTextures) {
+        return this.patternInformation().getTextures(textureRegistry, textureName, requiredTextures).containsKey(textureRegistry.getValue(texture));
     }
 
-    public boolean hasBabyTexture(String textureName, List<TextureType> requiredTextures) {
-        return this.hasTexture(TextureType.BABY, textureName, requiredTextures);
+    public boolean hasBabyTexture(Registry<Texture> textureRegistry, String textureName, List<ResourceKey<Texture>> requiredTextures) {
+        return this.hasTexture(textureRegistry, FATextures.BABY, textureName, requiredTextures);
     }
 
-    public boolean hasAggressiveBabyTexture(String textureName, List<TextureType> requiredTextures) {
-        return this.hasTexture(TextureType.AGGRESSIVE_BABY, textureName, requiredTextures);
+    public boolean hasAggressiveBabyTexture(Registry<Texture> textureRegistry, String textureName, List<ResourceKey<Texture>> requiredTextures) {
+        return this.hasTexture(textureRegistry, FATextures.AGGRESSIVE_BABY, textureName, requiredTextures);
     }
 
-    public boolean hasAggressiveTexture(String textureName, List<TextureType> requiredTextures) {
-        return this.hasTexture(TextureType.AGGRESSIVE, textureName, requiredTextures);
+    public boolean hasAggressiveTexture(Registry<Texture> textureRegistry, String textureName, List<ResourceKey<Texture>> requiredTextures) {
+        return this.hasTexture(textureRegistry, FATextures.AGGRESSIVE, textureName, requiredTextures);
     }
 
-    public boolean hasKnockedOutTexture(String textureName, List<TextureType> requiredTextures) {
-        return this.hasTexture(TextureType.KNOCKED_OUT, textureName, requiredTextures);
+    public boolean hasKnockedOutTexture(Registry<Texture> textureRegistry, String textureName, List<ResourceKey<Texture>> requiredTextures) {
+        return this.hasTexture(textureRegistry, FATextures.KNOCKED_OUT, textureName, requiredTextures);
     }
 
-    public boolean hasFurTexture(String textureName, List<TextureType> requiredTextures) {
-        return this.hasTexture(TextureType.FUR, textureName, requiredTextures);
+    public boolean hasFurTexture(Registry<Texture> textureRegistry, String textureName, List<ResourceKey<Texture>> requiredTextures) {
+        return this.hasTexture(textureRegistry, FATextures.FUR, textureName, requiredTextures);
     }
 
-    public boolean hasBabyFurTexture(String textureName, List<TextureType> requiredTextures) {
-        return this.hasTexture(TextureType.BABY_FUR, textureName, requiredTextures);
+    public boolean hasBabyFurTexture(Registry<Texture> textureRegistry, String textureName, List<ResourceKey<Texture>> requiredTextures) {
+        return this.hasTexture(textureRegistry, FATextures.BABY_FUR, textureName, requiredTextures);
     }
 
-    public boolean hasShearedTexture(String textureName, List<TextureType> requiredTextures) {
-        return this.hasTexture(TextureType.SHEARED, textureName, requiredTextures);
+    public boolean hasShearedTexture(Registry<Texture> textureRegistry, String textureName, List<ResourceKey<Texture>> requiredTextures) {
+        return this.hasTexture(textureRegistry, FATextures.SHEARED, textureName, requiredTextures);
     }
 
-    public boolean hasEyeTexture(String textureName, List<TextureType> requiredTextures) {
-        return this.hasTexture(TextureType.EYE, textureName, requiredTextures);
+    public boolean hasEyeTexture(Registry<Texture> textureRegistry, String textureName, List<ResourceKey<Texture>> requiredTextures) {
+        return this.hasTexture(textureRegistry, FATextures.EYE_LAYER, textureName, requiredTextures);
     }
 
     public static Pattern.Builder builder(ResourceLocation texture, Component name, int geneColor, GeneticType geneticType) {
@@ -117,7 +120,7 @@ public record Pattern(Component patternName, int geneColor, GeneticType geneticT
     }
 
     public static final class Builder {
-        private final Map<TextureType, ResourceLocation> textures = new HashMap<>();
+        private final Map<ResourceKey<Texture>, ResourceLocation> textures = new HashMap<>();
         private final Component patternName;
         private final int geneColor;
         private final GeneticType geneticType;
@@ -128,49 +131,54 @@ public record Pattern(Component patternName, int geneColor, GeneticType geneticT
             this.geneticType = geneticType;
         }
 
+        public Pattern.Builder withTexture(ResourceKey<Texture> texture, ResourceLocation baseLocation) {
+            this.textures.put(texture, baseLocation);
+            return this;
+        }
+
         Pattern.Builder withBaseTexture(ResourceLocation baseTexture) {
-            this.textures.put(TextureType.BASE, baseTexture);
+            this.withTexture(FATextures.BASE, baseTexture);
             return this;
         }
 
         public Pattern.Builder withBabyTexture(ResourceLocation babyTexture) {
-            this.textures.put(TextureType.BABY, babyTexture);
+            this.textures.put(FATextures.BABY, babyTexture);
             return this;
         }
 
         public Pattern.Builder withFurTexture(ResourceLocation furTexture) {
-            this.textures.put(TextureType.FUR, furTexture);
+            this.textures.put(FATextures.FUR, furTexture);
             return this;
         }
 
         public Pattern.Builder withBabyFurTexture(ResourceLocation babyFurTexture) {
-            this.textures.put(TextureType.BABY_FUR, babyFurTexture);
+            this.textures.put(FATextures.BABY_FUR, babyFurTexture);
             return this;
         }
 
         public Pattern.Builder withShearedTexture(ResourceLocation shearedTexture) {
-            this.textures.put(TextureType.SHEARED, shearedTexture);
+            this.textures.put(FATextures.SHEARED, shearedTexture);
             return this;
         }
 
         public Pattern.Builder withAggressiveTexture(ResourceLocation aggressiveTexture) {
-            this.textures.put(TextureType.AGGRESSIVE, aggressiveTexture);
+            this.textures.put(FATextures.AGGRESSIVE, aggressiveTexture);
             return this;
         }
 
         public Pattern.Builder withAggressiveTexture(ResourceLocation aggressiveTexture, ResourceLocation aggressiveBabyTexture) {
-            this.textures.put(TextureType.AGGRESSIVE, aggressiveTexture);
-            this.textures.put(TextureType.AGGRESSIVE_BABY, aggressiveBabyTexture);
+            this.textures.put(FATextures.AGGRESSIVE, aggressiveTexture);
+            this.textures.put(FATextures.AGGRESSIVE_BABY, aggressiveBabyTexture);
             return this;
         }
 
         public Pattern.Builder withKnockedOutTexture(ResourceLocation knockedOutTexture) {
-            this.textures.put(TextureType.KNOCKED_OUT, knockedOutTexture);
+            this.textures.put(FATextures.KNOCKED_OUT, knockedOutTexture);
             return this;
         }
 
         public Pattern.Builder withEyeLayerTexture(ResourceLocation eyeLayerTexture) {
-            this.textures.put(TextureType.EYE, eyeLayerTexture);
+            this.textures.put(FATextures.EYE_LAYER, eyeLayerTexture);
             return this;
         }
 

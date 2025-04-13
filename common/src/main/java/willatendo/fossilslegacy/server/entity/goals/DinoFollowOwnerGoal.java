@@ -37,6 +37,9 @@ public class DinoFollowOwnerGoal extends Goal {
 
     @Override
     public boolean canUse() {
+        if (this.dinosaur.isTranquilized()) {
+            return false;
+        }
         LivingEntity livingEntity = this.dinosaur.getOwner();
         if (livingEntity == null) {
             return false;

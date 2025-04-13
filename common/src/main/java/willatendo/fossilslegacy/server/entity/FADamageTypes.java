@@ -8,6 +8,7 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FADamageTypes {
     public static final ResourceKey<DamageType> ANIMAL_STARVE = create("animal_starve");
+    public static final ResourceKey<DamageType> DART = create("dart");
     public static final ResourceKey<DamageType> DILOPHOSAURUS_ENVENOMATION = create("dilophosaurus_envenomation");
     public static final ResourceKey<DamageType> JAVELIN = create("javelin");
 
@@ -17,6 +18,7 @@ public final class FADamageTypes {
 
     public static void bootstrap(BootstrapContext<DamageType> bootstrapContext) {
         bootstrapContext.register(ANIMAL_STARVE, new DamageType("animal_starve", 0.1F));
+        bootstrapContext.register(DART, new DamageType("dart", 0.1F));
         bootstrapContext.register(DILOPHOSAURUS_ENVENOMATION, new DamageType("dilophosaurus_envenomation", 0.1F));
         bootstrapContext.register(JAVELIN, new DamageType("javelin", 0.1F));
     }

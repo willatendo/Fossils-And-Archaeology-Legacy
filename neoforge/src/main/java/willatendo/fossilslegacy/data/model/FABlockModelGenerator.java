@@ -97,6 +97,7 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createDecorationPost(FABlocks.GREEN_DECORATION_POST.get(), Blocks.GREEN_CONCRETE);
         this.createDecorationPost(FABlocks.RED_DECORATION_POST.get(), Blocks.RED_CONCRETE);
         this.createDecorationPost(FABlocks.BLACK_DECORATION_POST.get(), Blocks.BLACK_CONCRETE);
+        this.basic(FABlocks.SMALL_CAGE.get(), FAModelTemplates.TEMPLATE_SMALL_CAGE, new TextureMapping());
         this.blockModelGenerators.woodProvider(FABlocks.ARCHAEOPTERIS_LOG.get()).logWithHorizontal(FABlocks.ARCHAEOPTERIS_LOG.get()).wood(FABlocks.ARCHAEOPTERIS_WOOD.get());
         this.blockModelGenerators.woodProvider(FABlocks.STRIPPED_ARCHAEOPTERIS_LOG.get()).logWithHorizontal(FABlocks.STRIPPED_ARCHAEOPTERIS_LOG.get()).wood(FABlocks.STRIPPED_ARCHAEOPTERIS_WOOD.get());
         this.blockModelGenerators.createHangingSign(FABlocks.STRIPPED_ARCHAEOPTERIS_LOG.get(), FABlocks.ARCHAEOPTERIS_HANGING_SIGN.get(), FABlocks.ARCHAEOPTERIS_WALL_HANGING_SIGN.get());
@@ -118,6 +119,10 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createPlantWithDefaultItem(FABlocks.SIGILLARIA_SAPLING.get(), FABlocks.POTTED_SIGILLARIA_SAPLING.get(), SimpleBlockModelGenerator.PlantType.NOT_TINTED);
         this.blockModelGenerators.createTintedLeaves(FABlocks.SIGILLARIA_LEAVES.get(), TexturedModel.LEAVES, -12012264);
         this.block(MultiVariantGenerator.multiVariant(FABlocks.TAR.get(), Variant.variant().with(VariantProperties.MODEL, FAModelTemplates.TEMPLATE_LIQUID.create(FABlocks.TAR.get(), new TextureMapping().put(TextureSlot.PARTICLE, this.mcLocation("block/bedrock")), this.modelOutput))));
+    }
+
+    private void basic(Block block, ModelTemplate modelTemplate, TextureMapping textureMapping) {
+        this.block(BlockModelGenerators.createSimpleBlock(block, modelTemplate.create(block, textureMapping, this.modelOutput)));
     }
 
     private void createBasic(Block block) {

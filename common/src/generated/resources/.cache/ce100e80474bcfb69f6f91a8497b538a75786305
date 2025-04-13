@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-15T17:11:20.8278614	Animations: fossilslegacy
+// 1.21.4	2025-04-12T08:53:49.4321269	Animations: fossilslegacy
 12d556c61498df4a1f4ed58b05e20c069c12ce2c assets/fossilslegacy/fossilslegacy/animations/ankylosaurus_walk.json
 05d46db7fbd61d781f9377952a47e599f2bc1375 assets/fossilslegacy/fossilslegacy/animations/baryonyx_walk.json
 c2cc01b70eb2b66ccc3bc10b8a904ee7503dfb60 assets/fossilslegacy/fossilslegacy/animations/brachiosaurus_walk.json
@@ -30,6 +30,7 @@ d38e03735a75d2d77b7727d35e0b993a121ee8b2 assets/fossilslegacy/fossilslegacy/anim
 dc3fa3ba0c188892aaffcb777fce5c0fab71e5be assets/fossilslegacy/fossilslegacy/animations/spinosaurus_walk.json
 c057c25e16ef44aef0429ef639ce2f06a45ddf94 assets/fossilslegacy/fossilslegacy/animations/stegosaurus_walk.json
 3b73315067a5335e08ff1c518acaecb2069e0f30 assets/fossilslegacy/fossilslegacy/animations/therizinosaurus_walk.json
+afa0430b995651106609dbac443b36d27d56d65d assets/fossilslegacy/fossilslegacy/animations/triceratops_sleep.json
 ec433a83d0e5ada044ed8d16fa66199bca020721 assets/fossilslegacy/fossilslegacy/animations/triceratops_walk.json
 5aaca181b70a13ac6e02b1e70a527e958dec087b assets/fossilslegacy/fossilslegacy/animations/tyrannosaurus_walk.json
 28b3cd30ac6a9c47952f8064011ca99ec1d5d010 assets/fossilslegacy/fossilslegacy/animations/velociraptor_walk.json

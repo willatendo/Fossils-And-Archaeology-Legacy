@@ -1,5 +1,8 @@
 {
   "animations": {
+    "sleep": [
+      "fossilslegacy:triceratops_sleep"
+    ],
     "walk": [
       "fossilslegacy:triceratops_walk"
     ]

@@ -1,0 +1,4 @@
+{
+  "parent": "fossilslegacy:block/template_small_cage",
+  "render_type": "minecraft:cutout"
+}

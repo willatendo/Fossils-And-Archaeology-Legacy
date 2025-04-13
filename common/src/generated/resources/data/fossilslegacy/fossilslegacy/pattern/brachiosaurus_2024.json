@@ -4,8 +4,7 @@
   "pattern_information": {
     "type": "fossilslegacy:package",
     "textures": {
-      "baby": "fossilslegacy:textures/entity/brachiosaurus/brachiosaurus_baby.png",
-      "base": "fossilslegacy:textures/entity/brachiosaurus/brachiosaurus_adult.png"
+      "fossilslegacy:base": "fossilslegacy:textures/entity/brachiosaurus/brachiosaurus.png"
     }
   },
   "pattern_name": {

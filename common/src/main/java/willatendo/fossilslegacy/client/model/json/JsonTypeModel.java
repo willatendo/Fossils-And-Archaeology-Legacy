@@ -130,6 +130,14 @@ public class JsonTypeModel extends EntityModel<DinosaurRenderState> {
 
     @Override
     public void setupAnim(DinosaurRenderState dinosaurRenderState) {
+        if (dinosaurRenderState.isTranquilized && this.animationHolder.hasSleepAnimations()) {
+            this.resetPose();
+            for (ResourceLocation animation : this.animationHolder.sleepAnimation()) {
+                this.applyStatic(JsonAnimationLoader.getAnimation(animation));
+            }
+            return;
+        }
+
         if (dinosaurRenderState instanceof TyrannosaurusRenderState tyrannosaurusRenderState) {
             if (tyrannosaurusRenderState.knockedOut) {
                 return;

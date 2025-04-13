@@ -6,6 +6,7 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
+import net.minecraft.world.flag.FeatureFlag;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.GameRules;
@@ -35,11 +36,11 @@ public interface FossilsModloaderHelper {
         return new ArticulatedFossilItem(properties);
     }
 
-    default TarFluid getFlowingTar( ) {
+    default TarFluid getFlowingTar() {
         return new TarFluid.Flowing();
     }
 
-    default TarFluid getTar( ) {
+    default TarFluid getTar() {
         return new TarFluid.Source();
     }
 

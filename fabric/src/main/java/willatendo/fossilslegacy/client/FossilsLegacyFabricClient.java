@@ -144,6 +144,8 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
 
         FossilsLegacyClient.menuScreenEvent(new FabricMenuScreenRegister());
 
+        FossilsLegacyClient.particleRegisterEvent(new FabricParticleRegistry());
+
         FluidRenderHandlerRegistry.INSTANCE.register(FAFluids.TAR.get(), FAFluids.FLOWING_TAR.get(), new SimpleFluidRenderHandler(FossilsLegacyClient.TAR_STILL, FossilsLegacyClient.TAR_FLOW));
 
         ClientTickEvents.END_CLIENT_TICK.register(minecraft -> {

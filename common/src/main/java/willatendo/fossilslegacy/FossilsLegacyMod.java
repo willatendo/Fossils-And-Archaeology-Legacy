@@ -23,7 +23,9 @@ import willatendo.fossilslegacy.server.item.FAMapDecorationTypes;
 import willatendo.fossilslegacy.server.level.FAGameRules;
 import willatendo.fossilslegacy.server.loot.FALootPoolEntryTypes;
 import willatendo.fossilslegacy.server.menu.FAMenuTypes;
+import willatendo.fossilslegacy.server.particles.FAParticleTypes;
 import willatendo.fossilslegacy.server.pattern.FAPatternInformationTypes;
+import willatendo.fossilslegacy.server.pattern.texture.FATextureTypes;
 import willatendo.fossilslegacy.server.pregnancy_types.FAPregnancyTypes;
 import willatendo.fossilslegacy.server.recipe.FARecipeDisplays;
 import willatendo.fossilslegacy.server.recipe.FARecipeSerialisers;
@@ -44,6 +46,7 @@ public final class FossilsLegacyMod {
     public static void onInitialize(SimpleRegistryRegister simpleRegistryRegister) {
         FABuiltInRegistries.init();
 
+        simpleRegistryRegister.register(FAParticleTypes.PARTICLE_TYPES);
         simpleRegistryRegister.register(FAEntitySubPredicates.ENTITY_SUB_PREDICATES);
         simpleRegistryRegister.register(FARecipeBookCategories.RECIPE_BOOK_CATEGORIES);
         simpleRegistryRegister.register(FACommandTypes.COMMAND_TYPES);
@@ -69,6 +72,7 @@ public final class FossilsLegacyMod {
         simpleRegistryRegister.register(FADataComponents.DATA_COMPONENT_TYPES);
         simpleRegistryRegister.register(FADinopediaLineTypes.DINOPEDIA_LINE_TYPES);
         simpleRegistryRegister.register(FAPatternInformationTypes.PATTERN_INFORMATION_TYPES);
+        simpleRegistryRegister.register(FATextureTypes.TEXTURE_TYPES);
         simpleRegistryRegister.register(FAMapDecorationTypes.MAP_DECORATION_TYPE);
         simpleRegistryRegister.register(FAItems.ITEMS);
         simpleRegistryRegister.register(FACreativeModeTabs.CREATIVE_MODE_TABS);

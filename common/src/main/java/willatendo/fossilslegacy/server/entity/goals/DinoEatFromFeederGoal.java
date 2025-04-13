@@ -33,6 +33,9 @@ public class DinoEatFromFeederGoal extends MoveToBlockGoal {
 
     @Override
     public boolean canUse() {
+        if (this.dinosaur.isTranquilized()) {
+            return false;
+        }
         return this.dinosaur.getHunger() < this.hungerLimit && super.canUse();
     }
 

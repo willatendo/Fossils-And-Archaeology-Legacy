@@ -2,10 +2,7 @@ package willatendo.fossilslegacy.client;
 
 import net.minecraft.client.renderer.special.SpecialModelRenderers;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+import net.minecraftforge.client.event.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -50,5 +47,10 @@ public class ClientEvents {
     @SubscribeEvent
     public static void registerColorHandlersEvent_Block(RegisterColorHandlersEvent.Block event) {
         FossilsLegacyClient.blockColorRegistry(new ForgeBlockColorRegister(event));
+    }
+
+    @SubscribeEvent
+    public static void registerParticleProvidersEvent(RegisterParticleProvidersEvent event) {
+        FossilsLegacyClient.particleRegisterEvent(new ForgeParticleRegistry(event));
     }
 }

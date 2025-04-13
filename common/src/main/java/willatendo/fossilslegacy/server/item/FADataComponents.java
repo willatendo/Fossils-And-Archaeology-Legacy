@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.server.item;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.ItemStack;
 import willatendo.fossilslegacy.server.command_type.CommandType;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 import willatendo.fossilslegacy.server.item.data_components.GeneticInformation;

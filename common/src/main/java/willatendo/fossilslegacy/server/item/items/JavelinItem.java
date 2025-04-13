@@ -13,7 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.Level;
-import willatendo.fossilslegacy.server.entity.entities.ThrownJavelin;
+import willatendo.fossilslegacy.server.entity.entities.projectile.ThrownJavelin;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.item.FAToolMaterials;
 

@@ -121,6 +121,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.WAXED_EXPOSED_COPPER_LLAMA_STATUE.get());
         this.add(FABlocks.WAXED_WEATHERED_COPPER_LLAMA_STATUE.get());
         this.add(FABlocks.WAXED_OXIDIZED_COPPER_LLAMA_STATUE.get());
+        this.add(FABlocks.SMALL_CAGE.get());
+        this.add("block.fossilslegacy.small_cage.desc", "In cage: %s");
         this.add(FABlocks.LEPIDODENDRON_PLANKS.get());
         this.add(FABlocks.LEPIDODENDRON_SAPLING.get());
         this.add(FABlocks.LEPIDODENDRON_LOG.get());
@@ -748,6 +750,11 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.BROKEN_NETHERITE_JAVELIN.get(), "Netherite Javelin");
         this.add(FAItems.SCARAB_GEM_JAVELIN.get());
         this.add(FAItems.BROKEN_SCARAB_GEM_JAVELIN.get(), "Scarab Gem Javelin");
+        this.add(FAItems.RIFLE.get());
+        this.add(FAItems.GREEN_TRANQUILIZER_DART.get());
+        this.add(FAItems.RED_TRANQUILIZER_DART.get());
+        this.add(FAItems.BLUE_TRANQUILIZER_DART.get());
+        this.add(FAItems.TAR_BUCKET.get());
 
         this.add(FAItems.JEEP_1993.get(), "1993 Jeep");
 
@@ -1204,6 +1211,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItemTags.CARNOTAURUS_COMMANDABLES, "Canotaurus Commandables");
         this.add(FAItemTags.COMPSOGNATHUS_COMMANDABLES, "Compsognathus Commandables");
         this.add(FAItemTags.CRYOLOPHOSAURUS_COMMANDABLES, "Cryolophosaurus Commandables");
+        this.add(FAItemTags.DARTS, "Darts");
         this.add(FAItemTags.DILOPHOSAURUS_COMMANDABLES, "Dilophosaurus Commandables");
         this.add(FAItemTags.DIMETRODON_COMMANDABLES, "Dimetrodon Commandables");
         this.add(FAItemTags.DRYOSAURUS_COMMANDABLES, "Dryosaurus Commandables");

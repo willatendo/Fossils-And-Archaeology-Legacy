@@ -15,6 +15,8 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.guadalupian.Dime
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.jurassic.*;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.*;
 import willatendo.fossilslegacy.server.entity.entities.pregnant.*;
+import willatendo.fossilslegacy.server.entity.entities.projectile.Dart;
+import willatendo.fossilslegacy.server.entity.entities.projectile.ThrownJavelin;
 import willatendo.fossilslegacy.server.entity.entities.vehicle.Jeep;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.utils.FAUtils;
@@ -105,6 +107,7 @@ public final class FAEntityTypes {
     public static final SimpleHolder<EntityType<TamedZombifiedPiglin>> TAMED_ZOMBIFIED_PIGLIN = FAEntityTypes.register("tamed_zombified_piglin", FAEntityTypes.simple(TamedZombifiedPiglin::new, MobCategory.MONSTER, 0.6F, 1.95F));
     public static final SimpleHolder<EntityType<Failuresaurus>> FAILURESAURUS = FAEntityTypes.register("failuresaurus", FAEntityTypes.simple(Failuresaurus::new, MobCategory.MONSTER, 1.0F, 1.0F));
 
+    public static final SimpleHolder<EntityType<Dart>> DART = FAEntityTypes.register("dart", FAEntityTypes.<Dart>simple(Dart::new, MobCategory.MISC, 0.5F, 0.5F).noLootTable());
     public static final SimpleHolder<EntityType<ThrownJavelin>> THROWN_JAVELIN = FAEntityTypes.register("thrown_javelin", FAEntityTypes.<ThrownJavelin>simple(ThrownJavelin::new, MobCategory.MISC, 0.5F, 0.5F).noLootTable());
     public static final SimpleHolder<EntityType<ThrownAnimalEgg>> THROWN_INCUBATED_EGG = FAEntityTypes.register("thrown_incubated_egg", FAEntityTypes.<ThrownAnimalEgg>simple(ThrownAnimalEgg::new, MobCategory.MISC, 0.25F, 0.25F).noLootTable());
     public static final SimpleHolder<EntityType<DilophosaurusVenom>> DILOPHOSAURUS_VENOM = FAEntityTypes.register("dilophosaurus_venom", FAEntityTypes.<DilophosaurusVenom>simple(DilophosaurusVenom::new, MobCategory.MISC, 0.5F, 0.5F).noLootTable());

@@ -41,16 +41,16 @@ public class MammothFurLayer extends RenderLayer<MammothRenderState, EntityModel
             this.setModel(modelType.models().model());
         }
         Pattern skin = mammothRenderState.skin.value();
-        if (this.dataDrivenModelMobRenderer.hasFurTexture(skin)) {
-            ResourceLocation texture = this.dataDrivenModelMobRenderer.getFurTexture(skin);
+        if (this.dataDrivenModelMobRenderer.hasFurTexture(mammothRenderState.textureRegistry, skin)) {
+            ResourceLocation texture = this.dataDrivenModelMobRenderer.getFurTexture(mammothRenderState.textureRegistry, skin);
             if (mammothRenderState.isSheared) {
-                if (this.dataDrivenModelMobRenderer.hasShearedTexture(skin)) {
-                    texture = this.dataDrivenModelMobRenderer.getShearedTexture(skin);
+                if (this.dataDrivenModelMobRenderer.hasShearedTexture(mammothRenderState.textureRegistry, skin)) {
+                    texture = this.dataDrivenModelMobRenderer.getShearedTexture(mammothRenderState.textureRegistry, skin);
                 }
             } else {
                 if (mammothRenderState.isBaby) {
-                    if (this.dataDrivenModelMobRenderer.hasBabyFurTexture(skin)) {
-                        texture = this.dataDrivenModelMobRenderer.getBabyFurTexture(skin);
+                    if (this.dataDrivenModelMobRenderer.hasBabyFurTexture(mammothRenderState.textureRegistry, skin)) {
+                        texture = this.dataDrivenModelMobRenderer.getBabyFurTexture(mammothRenderState.textureRegistry, skin);
                     }
                 }
             }

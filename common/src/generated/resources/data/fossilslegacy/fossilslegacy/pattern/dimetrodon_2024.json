@@ -4,9 +4,9 @@
   "pattern_information": {
     "type": "fossilslegacy:package",
     "textures": {
-      "aggressive": "fossilslegacy:textures/entity/dimetrodon/dimetrodon_agressive.png",
-      "baby": "fossilslegacy:textures/entity/dimetrodon/dimetrodon_baby.png",
-      "base": "fossilslegacy:textures/entity/dimetrodon/dimetrodon_adult.png"
+      "fossilslegacy:aggressive": "fossilslegacy:textures/entity/dimetrodon/dimetrodon_agressive.png",
+      "fossilslegacy:baby": "fossilslegacy:textures/entity/dimetrodon/dimetrodon_baby.png",
+      "fossilslegacy:base": "fossilslegacy:textures/entity/dimetrodon/dimetrodon_adult.png"
     }
   },
   "pattern_name": {

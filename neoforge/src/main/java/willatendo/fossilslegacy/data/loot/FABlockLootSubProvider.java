@@ -92,6 +92,7 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.dropOther(FABlocks.GREEN_DECORATION_POST.get(), FAItems.GREEN_DECORATION_PLAQUE.get());
         this.dropOther(FABlocks.RED_DECORATION_POST.get(), FAItems.RED_DECORATION_PLAQUE.get());
         this.dropOther(FABlocks.BLACK_DECORATION_POST.get(), FAItems.BLACK_DECORATION_PLAQUE.get());
+        this.dropSelf(FABlocks.SMALL_CAGE.get());
         this.dropSelf(FABlocks.LEPIDODENDRON_PLANKS.get());
         this.dropSelf(FABlocks.LEPIDODENDRON_SAPLING.get());
         this.dropSelf(FABlocks.LEPIDODENDRON_LOG.get());

@@ -4,10 +4,10 @@
   "pattern_information": {
     "type": "fossilslegacy:package",
     "textures": {
-      "aggressive": "fossilslegacy:textures/entity/tyrannosaurus/tyrannosaurus_aggressive.png",
-      "baby": "fossilslegacy:textures/entity/tyrannosaurus/tyrannosaurus_baby.png",
-      "base": "fossilslegacy:textures/entity/tyrannosaurus/tyrannosaurus_adult.png",
-      "knocked_out": "fossilslegacy:textures/entity/tyrannosaurus/tyrannosaurus_weak.png"
+      "fossilslegacy:aggressive": "fossilslegacy:textures/entity/tyrannosaurus/tyrannosaurus_aggressive.png",
+      "fossilslegacy:baby": "fossilslegacy:textures/entity/tyrannosaurus/tyrannosaurus_baby.png",
+      "fossilslegacy:base": "fossilslegacy:textures/entity/tyrannosaurus/tyrannosaurus_adult.png",
+      "fossilslegacy:knocked_out_baby": "fossilslegacy:textures/entity/tyrannosaurus/tyrannosaurus_weak.png"
     }
   },
   "pattern_name": {

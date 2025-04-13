@@ -23,8 +23,8 @@ public class MosasaurusEyesLayer extends RenderLayer<DinosaurRenderState, Entity
     @Override
     public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks, DinosaurRenderState dinosaurRenderState, float packedLight, float packedOverlay) {
         Pattern skin = dinosaurRenderState.skin.value();
-        if (this.dataDrivenModelMobRenderer.hasEyeTexture(skin)) {
-            VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.eyes(this.dataDrivenModelMobRenderer.getEyeTexture(skin)));
+        if (this.dataDrivenModelMobRenderer.hasEyeTexture(dinosaurRenderState.textureRegistry, skin)) {
+            VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.eyes(this.dataDrivenModelMobRenderer.getEyeTexture(dinosaurRenderState.textureRegistry, skin)));
             this.getParentModel().renderToBuffer(poseStack, vertexConsumer, 15728640, OverlayTexture.NO_OVERLAY);
         }
     }

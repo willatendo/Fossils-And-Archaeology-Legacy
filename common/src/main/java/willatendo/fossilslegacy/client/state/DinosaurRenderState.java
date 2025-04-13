@@ -2,11 +2,14 @@ package willatendo.fossilslegacy.client.state;
 
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
 import net.minecraft.util.Mth;
 import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
+import willatendo.fossilslegacy.server.pattern.texture.Texture;
 
 public class DinosaurRenderState extends LivingEntityRenderState {
+    public Registry<Texture> textureRegistry;
     public Holder<ModelType> modelType;
     public Holder<Pattern> skin;
     public Holder<Pattern> pattern;
@@ -24,6 +27,7 @@ public class DinosaurRenderState extends LivingEntityRenderState {
     public float shakeAnim;
     public float shakeAnimO;
     public boolean isMoving;
+    public boolean isTranquilized;
 
     public float getHeadRollAngle(float partialTicks) {
         return Mth.lerp(partialTicks, this.interestedAngleO, this.interestedAngle) * 0.15f * (float) Math.PI;

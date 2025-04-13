@@ -4,7 +4,7 @@
   "pattern_information": {
     "type": "fossilslegacy:package",
     "textures": {
-      "base": "fossilslegacy:textures/entity/carnotaurus/legacy/green_carnotaurus.png"
+      "fossilslegacy:base": "fossilslegacy:textures/entity/carnotaurus/legacy/green_carnotaurus.png"
     }
   },
   "pattern_name": {

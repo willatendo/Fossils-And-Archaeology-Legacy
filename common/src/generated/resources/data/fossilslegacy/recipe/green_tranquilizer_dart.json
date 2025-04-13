@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:poisonous_potato",
+    "$": "minecraft:feather",
+    "%": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    "  $",
+    " # ",
+    "%  "
+  ],
+  "result": {
+    "count": 4,
+    "id": "fossilslegacy:green_tranquilizer_dart"
+  }
+}

@@ -99,6 +99,8 @@ public class FAItemTagProvider extends ItemTagsProvider {
 
         this.tag(FAItemTags.REPAIR_WHEN_BROKEN_IN_ARCHAEOLOGY_TABLE).add(FAItems.SCARAB_GEM_AXE.get(), FAItems.SCARAB_GEM_HOE.get(), FAItems.SCARAB_GEM_PICKAXE.get(), FAItems.SCARAB_GEM_SHOVEL.get(), FAItems.SCARAB_GEM_SWORD.get(), FAItems.BROKEN_WOODEN_JAVELIN.get(), FAItems.BROKEN_STONE_JAVELIN.get(), FAItems.BROKEN_IRON_JAVELIN.get(), FAItems.BROKEN_GOLDEN_JAVELIN.get(), FAItems.BROKEN_DIAMOND_JAVELIN.get(), FAItems.BROKEN_NETHERITE_JAVELIN.get(), FAItems.BROKEN_SCARAB_GEM_JAVELIN.get());
         this.tag(FAItemTags.SCARAB_GEM_TOOL_MATERIALS).add(FAItems.SCARAB_GEM.get());
+
+        this.tag(FAItemTags.DARTS).add(FAItems.BLUE_TRANQUILIZER_DART.get(), FAItems.GREEN_TRANQUILIZER_DART.get(), FAItems.RED_TRANQUILIZER_DART.get());
     }
 
     private void cenozoicTags(Item rawMeat, Item cookedMeat, Item dna, TagKey<Item> commandables, Item... commandableItems) {
