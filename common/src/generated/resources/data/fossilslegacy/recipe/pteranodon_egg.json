@@ -1,9 +1,0 @@
-{
-  "type": "fossilslegacy:cultivation",
-  "category": "egg",
-  "ingredient": "fossilslegacy:pteranodon_dna",
-  "result": {
-    "id": "fossilslegacy:pteranodon_egg"
-  },
-  "time": 6000
-}

@@ -1,9 +1,0 @@
-{
-  "type": "fossilslegacy:cultivation",
-  "category": "egg",
-  "ingredient": "fossilslegacy:cryolophosaurus_dna",
-  "result": {
-    "id": "fossilslegacy:cryolophosaurus_egg"
-  },
-  "time": 6000
-}

@@ -1,9 +1,0 @@
-{
-  "type": "fossilslegacy:cultivation",
-  "category": "egg",
-  "ingredient": "fossilslegacy:wolf_dna",
-  "result": {
-    "id": "fossilslegacy:wolf_embryo_syringe"
-  },
-  "time": 6000
-}

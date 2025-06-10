@@ -1,6 +1,0 @@
-{
-  "parent": "fossilslegacy:item/template_rifle",
-  "textures": {
-    "texture": "fossilslegacy:item/rifle"
-  }
-}

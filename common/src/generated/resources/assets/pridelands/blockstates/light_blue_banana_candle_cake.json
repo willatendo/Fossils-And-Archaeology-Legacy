@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "pridelands:block/light_blue_banana_candle_cake"
+    },
+    "lit=true": {
+      "model": "pridelands:block/light_blue_banana_candle_cake_lit"
+    }
+  }
+}

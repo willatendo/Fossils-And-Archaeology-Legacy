@@ -1,7 +1,0 @@
-{
-  "type": "fossilslegacy:analyzation",
-  "category": "palaeontology",
-  "fuels": "fossilslegacy:raw_elasmotherium_results",
-  "ingredient": "fossilslegacy:raw_elasmotherium",
-  "time": 100
-}

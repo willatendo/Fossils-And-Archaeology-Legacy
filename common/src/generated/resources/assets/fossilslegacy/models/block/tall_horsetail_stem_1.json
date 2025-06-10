@@ -1,7 +1,0 @@
-{
-  "parent": "fossilslegacy:block/template_plant_1",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "plant_1": "fossilslegacy:block/horsetail_stem"
-  }
-}

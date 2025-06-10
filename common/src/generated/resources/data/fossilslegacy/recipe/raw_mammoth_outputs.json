@@ -1,7 +1,0 @@
-{
-  "type": "fossilslegacy:analyzation",
-  "category": "palaeontology",
-  "fuels": "fossilslegacy:raw_mammoth_result",
-  "ingredient": "fossilslegacy:raw_mammoth",
-  "time": 100
-}

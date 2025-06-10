@@ -1,9 +1,0 @@
-{
-  "type": "fossilslegacy:cultivation",
-  "category": "egg",
-  "ingredient": "fossilslegacy:carnotaurus_dna",
-  "result": {
-    "id": "fossilslegacy:carnotaurus_egg"
-  },
-  "time": 6000
-}

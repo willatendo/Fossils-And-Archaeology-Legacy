@@ -1,9 +1,0 @@
-{
-  "type": "fossilslegacy:archaeology",
-  "category": "restore",
-  "ingredient": "fossilslegacy:ancient_shovel_artifact",
-  "result": {
-    "id": "fossilslegacy:ancient_shovel"
-  },
-  "time": 3000
-}

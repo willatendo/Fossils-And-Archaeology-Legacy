@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "pridelands:pridestone"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pridelands:pridestone_button"
+  }
+}

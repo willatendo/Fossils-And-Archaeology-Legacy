@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "fossilslegacy:block/deepslate_anomalocaris_fossil_ore"
-  }
-}

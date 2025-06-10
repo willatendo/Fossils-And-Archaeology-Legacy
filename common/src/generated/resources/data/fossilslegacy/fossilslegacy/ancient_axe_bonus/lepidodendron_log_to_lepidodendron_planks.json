@@ -1,8 +1,0 @@
-{
-  "input": "fossilslegacy:lepidodendron_log",
-  "max_drop": 3,
-  "min_drop": 1,
-  "output": {
-    "id": "fossilslegacy:lepidodendron_planks"
-  }
-}

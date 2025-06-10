@@ -1,6 +1,0 @@
-{
-  "parent": "fossilslegacy:block/template_decoration_plaque_post",
-  "textures": {
-    "post": "minecraft:block/brown_concrete"
-  }
-}

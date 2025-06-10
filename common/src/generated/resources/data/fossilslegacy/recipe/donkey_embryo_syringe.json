@@ -1,9 +1,0 @@
-{
-  "type": "fossilslegacy:cultivation",
-  "category": "egg",
-  "ingredient": "fossilslegacy:donkey_dna",
-  "result": {
-    "id": "fossilslegacy:donkey_embryo_syringe"
-  },
-  "time": 6000
-}

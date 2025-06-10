@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "pridelands:block/pridestone_bricks",
+    "side": "pridelands:block/pridestone_bricks",
+    "top": "pridelands:block/pridestone_bricks"
+  }
+}

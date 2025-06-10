@@ -1,7 +1,0 @@
-{
-  "type": "fossilslegacy:analyzation",
-  "category": "palaeontology",
-  "fuels": "fossilslegacy:raw_gallimimus_result",
-  "ingredient": "fossilslegacy:raw_gallimimus",
-  "time": 100
-}

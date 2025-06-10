@@ -1,6 +1,0 @@
-{
-  "parent": "fossilslegacy:item/template_articulated_fossil",
-  "textures": {
-    "particle": "fossilslegacy:item/articulated_fossil"
-  }
-}

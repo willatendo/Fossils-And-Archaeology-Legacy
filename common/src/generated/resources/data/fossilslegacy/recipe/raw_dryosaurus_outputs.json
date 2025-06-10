@@ -1,7 +1,0 @@
-{
-  "type": "fossilslegacy:analyzation",
-  "category": "palaeontology",
-  "fuels": "fossilslegacy:raw_dryosaurus_results",
-  "ingredient": "fossilslegacy:raw_dryosaurus",
-  "time": 100
-}

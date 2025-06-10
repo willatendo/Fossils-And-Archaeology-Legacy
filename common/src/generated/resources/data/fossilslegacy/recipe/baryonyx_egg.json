@@ -1,9 +1,0 @@
-{
-  "type": "fossilslegacy:cultivation",
-  "category": "egg",
-  "ingredient": "fossilslegacy:baryonyx_dna",
-  "result": {
-    "id": "fossilslegacy:baryonyx_egg"
-  },
-  "time": 6000
-}

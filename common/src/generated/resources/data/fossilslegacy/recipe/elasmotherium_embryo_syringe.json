@@ -1,9 +1,0 @@
-{
-  "type": "fossilslegacy:cultivation",
-  "category": "egg",
-  "ingredient": "fossilslegacy:elasmotherium_dna",
-  "result": {
-    "id": "fossilslegacy:elasmotherium_embryo_syringe"
-  },
-  "time": 6000
-}

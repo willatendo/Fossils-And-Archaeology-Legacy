@@ -1,7 +1,0 @@
-{
-  "type": "fossilslegacy:analyzation",
-  "category": "palaeontology",
-  "fuels": "fossilslegacy:tropical_fish_bucket",
-  "ingredient": "minecraft:tropical_fish_bucket",
-  "time": 100
-}

@@ -1,9 +1,0 @@
-{
-  "type": "fossilslegacy:archaeology",
-  "category": "restore",
-  "ingredient": "fossilslegacy:ancient_chestplate_artifact",
-  "result": {
-    "id": "fossilslegacy:ancient_chestplate"
-  },
-  "time": 3000
-}

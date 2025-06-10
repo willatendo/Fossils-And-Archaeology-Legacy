@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "pridelands:block/pridestone_brick_slab"
+    },
+    "type=double": {
+      "model": "pridelands:block/pridestone_bricks"
+    },
+    "type=top": {
+      "model": "pridelands:block/pridestone_brick_slab_top"
+    }
+  }
+}

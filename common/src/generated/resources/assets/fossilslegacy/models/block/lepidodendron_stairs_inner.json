@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "fossilslegacy:block/lepidodendron_planks",
-    "side": "fossilslegacy:block/lepidodendron_planks",
-    "top": "fossilslegacy:block/lepidodendron_planks"
-  }
-}

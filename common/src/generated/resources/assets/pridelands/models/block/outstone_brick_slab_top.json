@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "pridelands:block/outstone_bricks",
+    "side": "pridelands:block/outstone_bricks",
+    "top": "pridelands:block/outstone_bricks"
+  }
+}

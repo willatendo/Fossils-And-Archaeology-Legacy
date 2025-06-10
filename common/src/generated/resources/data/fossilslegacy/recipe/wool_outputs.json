@@ -1,7 +1,0 @@
-{
-  "type": "fossilslegacy:analyzation",
-  "category": "palaeontology",
-  "fuels": "fossilslegacy:wool",
-  "ingredient": "#minecraft:wool",
-  "time": 100
-}

@@ -1,0 +1,76 @@
+accessWidener v2 named
+
+accessible class net/minecraft/world/level/block/entity/BlockEntityType$BlockEntitySupplier
+accessible class net/minecraft/client/gui/screens/MenuScreens$ScreenConstructor
+accessible class net/minecraft/world/item/CreativeModeTab$TabVisibility
+accessible class net/minecraft/world/level/biome/MultiNoiseBiomeSourceParameterList$Preset$SourceProvider
+accessible class net/minecraft/world/entity/npc/VillagerTrades$EnchantBookForEmeralds
+accessible class net/minecraft/world/entity/npc/VillagerTrades$EmeraldForItems
+accessible class net/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds
+accessible class net/minecraft/world/entity/npc/VillagerTrades$SuspiciousStewForEmerald
+accessible class net/minecraft/world/entity/npc/VillagerTrades$ItemsAndEmeraldsToItems
+accessible class net/minecraft/world/entity/npc/VillagerTrades$EnchantedItemForEmeralds
+accessible class net/minecraft/world/entity/npc/VillagerTrades$EmeraldsForVillagerTypeItem
+accessible class net/minecraft/world/entity/npc/VillagerTrades$TippedArrowForItemsAndEmeralds
+accessible class net/minecraft/world/entity/npc/VillagerTrades$TreasureMapForEmeralds
+accessible class net/minecraft/world/entity/npc/VillagerTrades$DyedArmorForEmeralds
+
+accessible method net/minecraft/client/gui/screens/MenuScreens register (Lnet/minecraft/world/inventory/MenuType;Lnet/minecraft/client/gui/screens/MenuScreens$ScreenConstructor;)V
+accessible method net/minecraft/client/renderer/blockentity/BlockEntityRenderers register (Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/minecraft/client/renderer/blockentity/BlockEntityRendererProvider;)V
+accessible method net/minecraft/world/level/block/state/BlockBehaviour$Properties <init> ()V
+accessible method net/minecraft/world/level/levelgen/NoiseRouterData overworld (Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;ZZ)Lnet/minecraft/world/level/levelgen/NoiseRouter;
+accessible method net/minecraft/resources/ResourceLocation <init> (Ljava/lang/String;Ljava/lang/String;)V
+accessible method net/minecraft/world/level/block/SaplingBlock <init> (Lnet/minecraft/world/level/block/grower/TreeGrower;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+accessible method net/minecraft/world/level/block/StairBlock <init> (Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+accessible method net/minecraft/world/level/block/state/properties/WoodType register (Lnet/minecraft/world/level/block/state/properties/WoodType;)Lnet/minecraft/world/level/block/state/properties/WoodType;
+accessible method net/minecraft/world/level/block/state/properties/BlockSetType register (Lnet/minecraft/world/level/block/state/properties/BlockSetType;)Lnet/minecraft/world/level/block/state/properties/BlockSetType;
+accessible method net/minecraft/world/level/block/PressurePlateBlock <init> (Lnet/minecraft/world/level/block/state/properties/BlockSetType;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+accessible method net/minecraft/world/level/block/TrapDoorBlock <init> (Lnet/minecraft/world/level/block/state/properties/BlockSetType;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+accessible method net/minecraft/world/level/block/ButtonBlock <init> (Lnet/minecraft/world/level/block/state/properties/BlockSetType;ILnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+accessible method net/minecraft/world/level/block/DoorBlock <init> (Lnet/minecraft/world/level/block/state/properties/BlockSetType;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+accessible method net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType <init> (Lcom/mojang/serialization/MapCodec;)V
+accessible method net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacerType <init> (Lcom/mojang/serialization/MapCodec;)V
+accessible method net/minecraft/client/gui/screens/recipebook/GhostSlots setResult (Lnet/minecraft/world/inventory/Slot;Lnet/minecraft/util/context/ContextMap;Lnet/minecraft/world/item/crafting/display/SlotDisplay;)V
+accessible method net/minecraft/client/gui/screens/recipebook/GhostSlots setInput (Lnet/minecraft/world/inventory/Slot;Lnet/minecraft/util/context/ContextMap;Lnet/minecraft/world/item/crafting/display/SlotDisplay;)V
+accessible method net/minecraft/world/level/block/entity/BlockEntityType <init> (Lnet/minecraft/world/level/block/entity/BlockEntityType$BlockEntitySupplier;Ljava/util/Set;)V
+
+accessible field net/minecraft/world/level/biome/MultiNoiseBiomeSourceParameterList$Preset BY_NAME Ljava/util/Map;
+accessible field net/minecraft/world/level/levelgen/NoiseSettings OVERWORLD_NOISE_SETTINGS Lnet/minecraft/world/level/levelgen/NoiseSettings;
+accessible field net/minecraft/client/gui/GuiGraphics minecraft Lnet/minecraft/client/Minecraft;
+accessible field net/minecraft/world/item/AxeItem STRIPPABLES Ljava/util/Map;
+mutable field net/minecraft/world/item/AxeItem STRIPPABLES Ljava/util/Map;
+accessible field net/minecraft/world/item/HoeItem TILLABLES Ljava/util/Map;
+mutable field net/minecraft/world/item/HoeItem TILLABLES Ljava/util/Map;
+accessible field net/minecraft/stats/RecipeBookSettings TAG_FIELDS Ljava/util/Map;
+mutable field net/minecraft/stats/RecipeBookSettings TAG_FIELDS Ljava/util/Map;
+accessible field net/minecraft/world/entity/Entity dimensions Lnet/minecraft/world/entity/EntityDimensions;
+accessible field net/minecraft/client/model/geom/builders/LayerDefinition mesh Lnet/minecraft/client/model/geom/builders/MeshDefinition;
+accessible field net/minecraft/client/model/geom/builders/LayerDefinition material Lnet/minecraft/client/model/geom/builders/MaterialDefinition;
+accessible field net/minecraft/client/model/geom/builders/MaterialDefinition xTexSize I
+accessible field net/minecraft/client/model/geom/builders/MaterialDefinition yTexSize I
+accessible field net/minecraft/client/model/geom/builders/PartDefinition cubes Ljava/util/List;
+accessible field net/minecraft/client/model/geom/builders/PartDefinition partPose Lnet/minecraft/client/model/geom/PartPose;
+accessible field net/minecraft/client/model/geom/builders/PartDefinition children Ljava/util/Map;
+accessible field net/minecraft/client/model/geom/builders/CubeDefinition origin Lorg/joml/Vector3f;
+accessible field net/minecraft/client/model/geom/builders/CubeDefinition dimensions Lorg/joml/Vector3f;
+accessible field net/minecraft/client/model/geom/builders/CubeDefinition texCoord Lnet/minecraft/client/model/geom/builders/UVPair;
+accessible field net/minecraft/client/model/geom/builders/CubeDefinition grow Lnet/minecraft/client/model/geom/builders/CubeDeformation;
+accessible field net/minecraft/client/model/geom/builders/CubeDefinition mirror Z
+accessible field net/minecraft/client/model/geom/ModelPart children Ljava/util/Map;
+accessible field net/minecraft/world/entity/ai/behavior/GiveGiftToHero GIFTS Ljava/util/Map;
+accessible field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool rawTemplates Ljava/util/List;
+mutable field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool rawTemplates Ljava/util/List;
+accessible field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool templates Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+accessible field net/minecraft/world/flag/FeatureFlagRegistry names Ljava/util/Map;
+mutable field net/minecraft/world/flag/FeatureFlagRegistry names Ljava/util/Map;
+
+accessible field net/minecraft/client/ClientRecipeBook collectionsByTab Ljava/util/Map;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_HELMET Lnet/minecraft/resources/ResourceLocation;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_CHESTPLATE Lnet/minecraft/resources/ResourceLocation;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_LEGGINGS Lnet/minecraft/resources/ResourceLocation;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_BOOTS Lnet/minecraft/resources/ResourceLocation;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_HOE Lnet/minecraft/resources/ResourceLocation;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_AXE Lnet/minecraft/resources/ResourceLocation;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_SWORD Lnet/minecraft/resources/ResourceLocation;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_SHOVEL Lnet/minecraft/resources/ResourceLocation;
+accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_PICKAXE Lnet/minecraft/resources/ResourceLocation;

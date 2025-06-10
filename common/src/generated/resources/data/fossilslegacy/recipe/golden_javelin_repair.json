@@ -1,9 +1,0 @@
-{
-  "type": "fossilslegacy:archaeology",
-  "category": "repair",
-  "ingredient": "fossilslegacy:broken_golden_javelin",
-  "result": {
-    "id": "fossilslegacy:golden_javelin"
-  },
-  "time": 3000
-}

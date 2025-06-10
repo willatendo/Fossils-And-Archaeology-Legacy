@@ -1,7 +1,0 @@
-{
-  "type": "fossilslegacy:analyzation",
-  "category": "palaeontology",
-  "fuels": "fossilslegacy:raw_compsognathus_result",
-  "ingredient": "fossilslegacy:raw_compsognathus",
-  "time": 100
-}

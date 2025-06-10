@@ -1,9 +1,0 @@
-{
-  "type": "fossilslegacy:cultivation",
-  "category": "egg",
-  "ingredient": "fossilslegacy:frog_dna",
-  "result": {
-    "id": "minecraft:frogspawn"
-  },
-  "time": 6000
-}

@@ -1,9 +1,0 @@
-{
-  "type": "fossilslegacy:cultivation",
-  "category": "egg",
-  "ingredient": "fossilslegacy:ocelot_dna",
-  "result": {
-    "id": "fossilslegacy:ocelot_embryo_syringe"
-  },
-  "time": 6000
-}

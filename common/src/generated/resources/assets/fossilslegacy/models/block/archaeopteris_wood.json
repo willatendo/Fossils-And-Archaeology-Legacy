@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "fossilslegacy:block/archaeopteris_log",
-    "side": "fossilslegacy:block/archaeopteris_log"
-  }
-}

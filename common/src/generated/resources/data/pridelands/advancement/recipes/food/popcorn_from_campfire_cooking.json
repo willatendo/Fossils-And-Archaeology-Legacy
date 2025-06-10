@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_corn": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pridelands:corn"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pridelands:popcorn_from_campfire_cooking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_corn"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pridelands:popcorn_from_campfire_cooking"
+    ]
+  }
+}

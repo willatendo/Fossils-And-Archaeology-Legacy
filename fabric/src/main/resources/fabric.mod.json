@@ -4,7 +4,7 @@
   "version": "${version}",
   "name": "${mod_name}",
   "description": "${description}",
-  "accessWidener": "fossilslegacy.accesswidener",
+  "accessWidener": "pridelands.accesswidener",
   "authors": [
     "${mod_author}"
   ],
@@ -17,21 +17,12 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "willatendo.fossilslegacy.FossilsLegacyFabricMod"
+      "willatendo.pridelands.ToThePridelandsFabricMod"
     ],
-    "client": [
-      "willatendo.fossilslegacy.client.FossilsLegacyFabricClient"
-    ],
-    "jei_mod_plugin": [
-      "willatendo.fossilslegacy.server.jei.FossilsLegacyJEI"
-    ],
-    "simplelibrary:enum_initializer": [
-      "willatendo.fossilslegacy.FossilsLegacyEnumExtenders"
+    "client":[
+      "willatendo.pridelands.client.ToThePridelandsFabricClient"
     ]
   },
-  "mixins": [
-    "fossilslegacy.mixins.json"
-  ],
   "depends": {
     "fabricloader": ">=${fabric_loader_version}",
     "minecraft": "~${minecraft_version}",

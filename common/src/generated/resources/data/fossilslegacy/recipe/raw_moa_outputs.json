@@ -1,7 +1,0 @@
-{
-  "type": "fossilslegacy:analyzation",
-  "category": "palaeontology",
-  "fuels": "fossilslegacy:raw_moa_result",
-  "ingredient": "fossilslegacy:raw_moa",
-  "time": 100
-}

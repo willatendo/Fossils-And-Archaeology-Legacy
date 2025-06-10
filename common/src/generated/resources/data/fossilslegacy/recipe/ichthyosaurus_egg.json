@@ -1,9 +1,0 @@
-{
-  "type": "fossilslegacy:cultivation",
-  "category": "egg",
-  "ingredient": "fossilslegacy:ichthyosaurus_dna",
-  "result": {
-    "id": "fossilslegacy:ichthyosaurus_egg"
-  },
-  "time": 6000
-}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "pridelands:outstone_bricks",
+  "result": {
+    "count": 1,
+    "id": "pridelands:outstone_brick_wall"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "pridelands:block/template_bongo",
+  "textures": {
+    "side": "pridelands:block/passion_bongo",
+    "top": "pridelands:block/bongo_top"
+  }
+}

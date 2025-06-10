@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "pridelands:block/rafiki_tree_bark"
+  }
+}

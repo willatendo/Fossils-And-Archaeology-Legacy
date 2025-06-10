@@ -1,7 +1,0 @@
-{
-  "type": "fossilslegacy:analyzation",
-  "category": "palaeontology",
-  "fuels": "fossilslegacy:raw_velociraptor_result",
-  "ingredient": "fossilslegacy:raw_velociraptor",
-  "time": 100
-}

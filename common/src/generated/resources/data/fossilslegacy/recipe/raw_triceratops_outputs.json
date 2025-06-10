@@ -1,7 +1,0 @@
-{
-  "type": "fossilslegacy:analyzation",
-  "category": "palaeontology",
-  "fuels": "fossilslegacy:raw_triceratops_result",
-  "ingredient": "fossilslegacy:raw_triceratops",
-  "time": 100
-}

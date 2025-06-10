@@ -1,9 +1,0 @@
-{
-  "type": "fossilslegacy:archaeology",
-  "category": "restore",
-  "ingredient": "fossilslegacy:ancient_helmet_artifact",
-  "result": {
-    "id": "fossilslegacy:ancient_helmet"
-  },
-  "time": 3000
-}

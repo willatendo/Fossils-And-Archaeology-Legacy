@@ -1,6 +1,0 @@
-{
-  "parent": "fossilslegacy:block/template_vase",
-  "textures": {
-    "side": "fossilslegacy:block/mayan_pot_side_jade"
-  }
-}

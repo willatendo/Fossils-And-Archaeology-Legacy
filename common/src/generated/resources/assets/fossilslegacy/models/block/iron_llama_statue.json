@@ -1,7 +1,0 @@
-{
-  "parent": "fossilslegacy:block/template_llama",
-  "textures": {
-    "particle": "minecraft:block/iron_block",
-    "texture": "fossilslegacy:block/iron_llama_statue"
-  }
-}

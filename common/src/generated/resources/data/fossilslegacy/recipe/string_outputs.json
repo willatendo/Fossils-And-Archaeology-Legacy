@@ -1,7 +1,0 @@
-{
-  "type": "fossilslegacy:analyzation",
-  "category": "palaeontology",
-  "fuels": "fossilslegacy:string",
-  "ingredient": "minecraft:string",
-  "time": 100
-}
