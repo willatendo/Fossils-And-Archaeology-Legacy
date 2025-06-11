@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "pridelands:item/water_pridestone_jar"
+  }
+}

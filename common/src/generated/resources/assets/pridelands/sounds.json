@@ -1,0 +1,8 @@
+{
+  "block.bongo.hit": {
+    "sounds": [
+      "pridelands:bongo_hit"
+    ],
+    "subtitle": "subtitles.block.bongo.hit"
+  }
+}

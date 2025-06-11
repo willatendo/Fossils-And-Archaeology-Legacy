@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "pridelands:block/pridestone",
+    "side": "pridelands:block/pridestone",
+    "top": "pridelands:block/pridestone"
+  }
+}

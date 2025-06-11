@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "pridelands:block/mossy_pridestone_bricks"
+  }
+}

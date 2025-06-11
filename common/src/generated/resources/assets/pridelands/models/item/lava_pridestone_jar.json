@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "pridelands:item/lava_pridestone_jar"
+  }
+}

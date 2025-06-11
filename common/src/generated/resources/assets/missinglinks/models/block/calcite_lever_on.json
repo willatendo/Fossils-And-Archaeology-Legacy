@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/lever_on",
-  "textures": {
-    "base": "minecraft:block/calcite",
-    "lever": "missinglinks:block/calcite_lever",
-    "particle": "minecraft:block/calcite"
-  }
-}

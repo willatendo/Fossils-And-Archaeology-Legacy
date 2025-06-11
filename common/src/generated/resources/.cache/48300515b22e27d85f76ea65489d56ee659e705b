@@ -1,8 +1,0 @@
-// 1.21.4	2025-06-10T21:35:30.1772828	Tags for minecraft:block mod id missinglinks
-f42c3d4b51f889b7559d141839efd3cc279720fa data/minecraft/tags/block/mineable/pickaxe.json
-64f0bc0a8ab200196123be12d009236ec6d91632 data/minecraft/tags/block/slabs.json
-3ee454c61f766c70c457992d0f152862277eff31 data/minecraft/tags/block/stairs.json
-7c312f62dab914aea903597402ca9741d2d3b807 data/minecraft/tags/block/stone_buttons.json
-b7173a0e71558d757170b001d7a5930b2abea9b7 data/minecraft/tags/block/stone_pressure_plates.json
-c15213c6165ffa632226e28afa835d5ee8dc50bc data/minecraft/tags/block/walls.json
-b7173a0e71558d757170b001d7a5930b2abea9b7 data/minecraft/tags/block/wall_post_override.json

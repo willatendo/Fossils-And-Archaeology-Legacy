@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "pridelands:block/pridelands_portal_ns"
+    },
+    "axis=z": {
+      "model": "pridelands:block/pridelands_portal_ew"
+    }
+  }
+}

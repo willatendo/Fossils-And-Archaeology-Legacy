@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "pridelands:block/outstone"
+      },
+      {
+        "model": "pridelands:block/outstone_mirrored"
+      },
+      {
+        "model": "pridelands:block/outstone",
+        "y": 180
+      },
+      {
+        "model": "pridelands:block/outstone_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

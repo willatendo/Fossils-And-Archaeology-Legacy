@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "pridelands:mango",
+    "pridelands:mango",
+    "pridelands:water_pridestone_jar"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pridelands:mango_juice_pridestone_jar"
+  }
+}

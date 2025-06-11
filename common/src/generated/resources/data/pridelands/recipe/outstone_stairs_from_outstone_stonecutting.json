@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "pridelands:outstone",
+  "result": {
+    "count": 1,
+    "id": "pridelands:outstone_stairs"
+  }
+}

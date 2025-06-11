@@ -1,10 +1,6 @@
 {
   "values": [
-    "missinglinks:andesite_button",
-    "missinglinks:cobblestone_button",
-    "missinglinks:diorite_button",
-    "missinglinks:granite_button",
-    "missinglinks:cobbled_deepslate_button",
-    "missinglinks:tuff_button"
+    "pridelands:outstone_button",
+    "pridelands:pridestone_button"
   ]
 }

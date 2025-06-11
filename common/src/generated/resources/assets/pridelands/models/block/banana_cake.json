@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cake",
+  "textures": {
+    "bottom": "pridelands:block/banana_cake_bottom",
+    "particle": "pridelands:block/banana_cake_side",
+    "side": "pridelands:block/banana_cake_side",
+    "top": "pridelands:block/banana_cake_top"
+  }
+}

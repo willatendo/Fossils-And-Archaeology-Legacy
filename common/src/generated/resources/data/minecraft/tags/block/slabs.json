@@ -1,5 +1,9 @@
 {
   "values": [
-    "missinglinks:calcite_slab"
+    "pridelands:outstone_slab",
+    "pridelands:outstone_brick_slab",
+    "pridelands:pridestone_slab",
+    "pridelands:pridestone_brick_slab",
+    "pridelands:mossy_pridestone_brick_slab"
   ]
 }

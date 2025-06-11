@@ -1,0 +1,15 @@
+// 1.21.4	2025-05-01T08:28:08.6794297	Tags for minecraft:block mod id pridelands
+ce8b932b2ec7df1c9116cb69c792b1c347c62a55 data/c/tags/block/stones.json
+697c700f1bdbf5694fbd71db11acf179b013f8ad data/minecraft/tags/block/candle_cakes.json
+fb04b5668f2826748ea3912c7ab838825dcec1ee data/minecraft/tags/block/dragon_immune.json
+9a543d796a140e86c8f8a8f68f71707f45334d93 data/minecraft/tags/block/logs.json
+5f7ba4cace93541f247b5fe4814943468ae3947a data/minecraft/tags/block/mineable/pickaxe.json
+d89238e1d186d9dbdbb2fc71b33fc38c08f787bc data/minecraft/tags/block/portals.json
+8bf54d0c59c894339f6550264785c2816de6a70a data/minecraft/tags/block/slabs.json
+59349aa2dfc8b9343342dfe5dc1517f308c34e53 data/minecraft/tags/block/stairs.json
+67c2424f11d4c7dc3aebbe7b972b0d3b4da60131 data/minecraft/tags/block/stone_buttons.json
+51b4ee6be0aeaf8b98f1f9088058eaec1e085ebb data/minecraft/tags/block/stone_pressure_plates.json
+8f1157fdadf9dd31d203b5061866d84afa482934 data/minecraft/tags/block/walls.json
+ac97a9dda36281a1182521e9f13cc9019cb36c2d data/minecraft/tags/block/wall_post_override.json
+fb04b5668f2826748ea3912c7ab838825dcec1ee data/minecraft/tags/block/wither_immune.json
+6745e8c23bc7400afeda9d7afe2c931984bfc9c3 data/minecraft/tags/block/wool_carpets.json

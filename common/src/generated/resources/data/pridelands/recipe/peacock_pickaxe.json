@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "pridelands:peacock_gem",
+    "$": "minecraft:stick"
+  },
+  "pattern": [
+    "###",
+    " $ ",
+    " $ "
+  ],
+  "result": {
+    "count": 1,
+    "id": "pridelands:peacock_pickaxe"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "pridelands:block/hyena_bone_wall_torch"
+    },
+    "facing=north": {
+      "model": "pridelands:block/hyena_bone_wall_torch",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "pridelands:block/hyena_bone_wall_torch",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "pridelands:block/hyena_bone_wall_torch",
+      "y": 180
+    }
+  }
+}

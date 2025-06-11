@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "pridelands:block/outstone_slab"
+    },
+    "type=double": {
+      "model": "pridelands:block/outstone"
+    },
+    "type=top": {
+      "model": "pridelands:block/outstone_slab_top"
+    }
+  }
+}

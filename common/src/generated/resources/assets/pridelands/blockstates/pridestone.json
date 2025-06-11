@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "pridelands:block/pridestone"
+      },
+      {
+        "model": "pridelands:block/pridestone_mirrored"
+      },
+      {
+        "model": "pridelands:block/pridestone",
+        "y": 180
+      },
+      {
+        "model": "pridelands:block/pridestone_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}
