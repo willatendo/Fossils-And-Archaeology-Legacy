@@ -1,0 +1,8 @@
+{
+  "parent": "fossilslegacy:block/template_cultivator_active",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "side": "fossilslegacy:block/yellow_cultivator_side",
+    "top": "fossilslegacy:block/yellow_cultivator_top"
+  }
+}

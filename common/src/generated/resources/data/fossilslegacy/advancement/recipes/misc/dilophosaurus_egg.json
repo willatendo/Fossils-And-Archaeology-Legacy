@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_dilophosaurus_dna": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:dilophosaurus_dna"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:dilophosaurus_egg"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_dilophosaurus_dna"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:dilophosaurus_egg"
+    ]
+  }
+}

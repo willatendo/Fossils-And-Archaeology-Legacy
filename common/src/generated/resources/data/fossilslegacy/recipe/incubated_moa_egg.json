@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": "fossilslegacy:moa_dna",
+  "result": {
+    "id": "fossilslegacy:incubated_moa_egg"
+  },
+  "time": 6000
+}

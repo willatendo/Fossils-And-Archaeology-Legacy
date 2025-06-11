@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:archaeology",
+  "category": "repair",
+  "ingredient": "fossilslegacy:scarab_gem_axe",
+  "result": {
+    "id": "fossilslegacy:scarab_gem_axe"
+  },
+  "time": 3000
+}

@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:archaeology",
+  "category": "repair",
+  "ingredient": "fossilslegacy:scarab_gem_shovel",
+  "result": {
+    "id": "fossilslegacy:scarab_gem_shovel"
+  },
+  "time": 3000
+}

@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:archaeology",
+  "category": "repair",
+  "ingredient": "fossilslegacy:scarab_gem_hoe",
+  "result": {
+    "id": "fossilslegacy:scarab_gem_hoe"
+  },
+  "time": 3000
+}

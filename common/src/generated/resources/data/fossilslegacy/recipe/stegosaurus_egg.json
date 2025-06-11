@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": "fossilslegacy:stegosaurus_dna",
+  "result": {
+    "id": "fossilslegacy:stegosaurus_egg"
+  },
+  "time": 6000
+}

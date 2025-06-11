@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "plant",
+  "ingredient": "fossilslegacy:jurassic_fern_dna",
+  "result": {
+    "id": "fossilslegacy:jurassic_fern_spores"
+  },
+  "time": 6000
+}

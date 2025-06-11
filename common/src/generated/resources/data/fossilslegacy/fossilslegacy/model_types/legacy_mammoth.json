@@ -1,0 +1,27 @@
+{
+  "age_scale_info": {
+    "age_scale": 0.625,
+    "base_scale_height": 1.0,
+    "base_scale_width": 1.0,
+    "shadow_growth": 0.15,
+    "shadow_size": 0.75
+  },
+  "bounding_box_info": {
+    "bounding_box_growth": 0.5,
+    "bounding_box_height": 0.7,
+    "bounding_box_width": 0.7
+  },
+  "display_info": {
+    "display_scale": 1.25,
+    "display_y_offset": 0.25,
+    "geneColor": 4007680,
+    "model_name": {
+      "translate": "model_type.fossilslegacy.legacy_mammoth"
+    }
+  },
+  "models": {
+    "model": "fossilslegacy:legacy_mammoth"
+  },
+  "patterns": "fossilslegacy:patterns/mammoth_2011",
+  "skins": "fossilslegacy:skins/mammoth_2011"
+}

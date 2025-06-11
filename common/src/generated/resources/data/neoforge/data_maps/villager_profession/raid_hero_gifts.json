@@ -1,0 +1,10 @@
+{
+  "values": {
+    "fossilslegacy:archaeologist": {
+      "loot_table": "fossilslegacy:gameplay/hero_of_the_village/archaeologist_gift"
+    },
+    "fossilslegacy:palaeontologist": {
+      "loot_table": "fossilslegacy:gameplay/hero_of_the_village/palaeontologist_gift"
+    }
+  }
+}

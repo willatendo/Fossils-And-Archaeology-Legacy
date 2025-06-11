@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "plant",
+  "ingredient": "fossilslegacy:sigillaria_dna",
+  "result": {
+    "id": "fossilslegacy:sigillaria_spore"
+  },
+  "time": 6000
+}

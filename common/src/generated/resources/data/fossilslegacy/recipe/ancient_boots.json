@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:archaeology",
+  "category": "restore",
+  "ingredient": "fossilslegacy:ancient_boots_artifact",
+  "result": {
+    "id": "fossilslegacy:ancient_boots"
+  },
+  "time": 3000
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "fossilslegacy:item/scarab_gem_chestplate",
+    "layer1": "minecraft:trims/items/chestplate_trim_netherite"
+  }
+}

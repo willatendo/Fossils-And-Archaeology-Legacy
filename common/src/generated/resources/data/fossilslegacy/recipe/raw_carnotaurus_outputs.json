@@ -1,0 +1,7 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "category": "palaeontology",
+  "fuels": "fossilslegacy:raw_carnotaurus_result",
+  "ingredient": "fossilslegacy:raw_carnotaurus",
+  "time": 100
+}

@@ -1,0 +1,7 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "category": "palaeontology",
+  "fuels": "fossilslegacy:froglight",
+  "ingredient": "#fossilslegacy:froglights",
+  "time": 100
+}

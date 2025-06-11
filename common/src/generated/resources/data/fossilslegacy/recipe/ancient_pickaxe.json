@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:archaeology",
+  "category": "restore",
+  "ingredient": "fossilslegacy:ancient_pickaxe_artifact",
+  "result": {
+    "id": "fossilslegacy:ancient_pickaxe"
+  },
+  "time": 3000
+}

@@ -1,0 +1,9 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "fossilslegacy:item/articulated_fossil",
+    "model": {
+      "type": "fossilslegacy:articulated_fossil"
+    }
+  }
+}

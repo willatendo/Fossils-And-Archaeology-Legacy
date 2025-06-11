@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cat_dna": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:cat_dna"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:cat_embryo_syringe"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cat_dna"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:cat_embryo_syringe"
+    ]
+  }
+}

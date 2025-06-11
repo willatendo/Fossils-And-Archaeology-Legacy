@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "fossilslegacy:block/cyan_cultivator"
+    },
+    "active=true": {
+      "model": "fossilslegacy:block/cyan_cultivator_active"
+    }
+  }
+}

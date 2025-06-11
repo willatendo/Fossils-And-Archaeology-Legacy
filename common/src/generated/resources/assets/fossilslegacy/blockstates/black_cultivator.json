@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "fossilslegacy:block/black_cultivator"
+    },
+    "active=true": {
+      "model": "fossilslegacy:block/black_cultivator_active"
+    }
+  }
+}

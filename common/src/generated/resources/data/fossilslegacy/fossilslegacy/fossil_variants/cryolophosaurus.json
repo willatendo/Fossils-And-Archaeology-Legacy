@@ -1,0 +1,15 @@
+{
+  "base_scale_height": 0.25,
+  "base_scale_width": 0.25,
+  "bounding_box_growth": 0.2,
+  "bounding_box_height": 0.35,
+  "bounding_box_width": 0.35,
+  "fossil_count": 5,
+  "fossil_ingredient": "fossilslegacy:mesozoic_fossil",
+  "max_size": 8,
+  "model": "fossilslegacy:cryolophosaurus",
+  "shadow_growth": 0.1,
+  "shadow_size": 0.15,
+  "size_scale": 0.2,
+  "texture": "fossilslegacy:textures/entity/cryolophosaurus/cryolophosaurus_skeleton.png"
+}

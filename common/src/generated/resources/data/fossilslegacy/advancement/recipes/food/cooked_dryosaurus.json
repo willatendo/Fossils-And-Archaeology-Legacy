@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_dryosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:raw_dryosaurus"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:cooked_dryosaurus"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_dryosaurus"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:cooked_dryosaurus"
+    ]
+  }
+}

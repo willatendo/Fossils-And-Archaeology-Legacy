@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "fossilslegacy:jade",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:item",
+          "name": "fossilslegacy:jade_ocelot",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "name": "fossilslegacy:jade_villager",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:rotten_flesh",
+          "weight": 30
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bone",
+          "weight": 30
+        },
+        {
+          "type": "minecraft:item",
+          "name": "fossilslegacy:scarab_gem_javelin",
+          "weight": 10
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "fossilslegacy:chests/village/village_archaeologist_hut"
+}

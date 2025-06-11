@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "decoration_plaque",
+  "key": {
+    "#": "minecraft:purple_concrete",
+    "$": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    "###",
+    "###",
+    " $ "
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:purple_decoration_plaque"
+  }
+}

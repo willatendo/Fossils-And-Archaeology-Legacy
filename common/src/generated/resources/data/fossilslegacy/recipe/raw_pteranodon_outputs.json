@@ -1,0 +1,7 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "category": "palaeontology",
+  "fuels": "fossilslegacy:raw_pteranodon_result",
+  "ingredient": "fossilslegacy:raw_pteranodon",
+  "time": 100
+}

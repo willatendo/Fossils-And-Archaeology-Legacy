@@ -1,0 +1,6 @@
+{
+  "parent": "fossilslegacy:block/template_soup_cauldron_4",
+  "textures": {
+    "content": "fossilslegacy:block/cooked_chicken_soup"
+  }
+}

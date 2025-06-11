@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "fossilslegacy:item/polar_bear_embryo_syringe"
+  }
+}

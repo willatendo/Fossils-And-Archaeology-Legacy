@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:archaeology",
+  "category": "repair",
+  "ingredient": "fossilslegacy:scarab_gem_sword",
+  "result": {
+    "id": "fossilslegacy:scarab_gem_sword"
+  },
+  "time": 3000
+}

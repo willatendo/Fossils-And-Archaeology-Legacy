@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:archaeology",
+  "category": "restore",
+  "ingredient": "fossilslegacy:ancient_sword_artifact",
+  "result": {
+    "id": "fossilslegacy:ancient_sword"
+  },
+  "time": 3000
+}

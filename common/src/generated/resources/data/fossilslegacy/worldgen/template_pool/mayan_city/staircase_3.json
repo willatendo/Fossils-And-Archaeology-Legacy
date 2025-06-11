@@ -1,0 +1,14 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "fossilslegacy:mayan_city/city_center/staircase/city_center_staircase_3",
+        "processors": "fossilslegacy:mayan_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    }
+  ],
+  "fallback": "minecraft:empty"
+}

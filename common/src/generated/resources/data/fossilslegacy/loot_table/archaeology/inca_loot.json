@@ -1,0 +1,46 @@
+{
+  "type": "minecraft:archaeology",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "fossilslegacy:quipu"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "fossilslegacy:iron_llama_statue"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "fossilslegacy:copper_llama_statue"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "fossilslegacy:exposed_copper_llama_statue"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "fossilslegacy:weathered_copper_llama_statue"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "fossilslegacy:oxidized_copper_llama_statue"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:feather",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:string",
+          "weight": 2
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "fossilslegacy:archaeology/inca_loot"
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "fossilslegacy:legacy/prehistoric_coin",
+  "criteria": {
+    "has_overworld_coin": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:overworld_coin"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.overworld_coin.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:overworld_coin"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.overworld_coin.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_overworld_coin"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

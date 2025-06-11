@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": "fossilslegacy:mosasaurus_dna",
+  "result": {
+    "id": "fossilslegacy:mosasaurus_egg"
+  },
+  "time": 6000
+}

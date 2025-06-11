@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ancient_boots_artifact": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:ancient_boots_artifact"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:ancient_boots"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ancient_boots_artifact"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:ancient_boots"
+    ]
+  }
+}

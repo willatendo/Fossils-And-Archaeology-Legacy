@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": "fossilslegacy:cat_dna",
+  "result": {
+    "id": "fossilslegacy:cat_embryo_syringe"
+  },
+  "time": 6000
+}

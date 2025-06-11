@@ -1,9 +1,27 @@
 {
   "values": [
-    "pridelands:lion",
-    "pridelands:zebra",
-    "pridelands:rhino",
-    "pridelands:outlander",
-    "pridelands:crocodile"
+    "fossilslegacy:raw_triceratops",
+    "fossilslegacy:raw_velociraptor",
+    "fossilslegacy:raw_tyrannosaurus",
+    "fossilslegacy:raw_pteranodon",
+    "fossilslegacy:raw_futabasaurus",
+    "fossilslegacy:raw_mosasaurus",
+    "fossilslegacy:raw_stegosaurus",
+    "fossilslegacy:raw_dilophosaurus",
+    "fossilslegacy:raw_brachiosaurus",
+    "fossilslegacy:raw_smilodon",
+    "fossilslegacy:raw_mammoth",
+    "fossilslegacy:raw_carnotaurus",
+    "fossilslegacy:raw_cryolophosaurus",
+    "fossilslegacy:raw_therizinosaurus",
+    "fossilslegacy:raw_pachycephalosaurus",
+    "fossilslegacy:raw_compsognathus",
+    "fossilslegacy:raw_moa",
+    "fossilslegacy:raw_gallimimus",
+    "fossilslegacy:raw_spinosaurus",
+    "fossilslegacy:raw_ankylosaurus",
+    "fossilslegacy:raw_dimetrodon",
+    "fossilslegacy:raw_ichthyosaurus",
+    "fossilslegacy:raw_elasmotherium"
   ]
 }

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "cultivators",
+  "key": {
+    "#": "minecraft:glass",
+    "$": "minecraft:green_dye",
+    "%": "minecraft:water_bucket",
+    "@": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    "#$#",
+    "#%#",
+    "@@@"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:green_cultivator"
+  }
+}

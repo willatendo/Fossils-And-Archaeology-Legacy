@@ -1,0 +1,6 @@
+{
+  "parent": "fossilslegacy:block/template_dna_recombinator",
+  "textures": {
+    "front": "fossilslegacy:block/dna_recombinator_front"
+  }
+}

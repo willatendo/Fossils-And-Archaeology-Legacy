@@ -1,0 +1,28 @@
+{
+  "parent": "fossilslegacy:legacy/decked_out",
+  "criteria": {
+    "tamed_pigman": {
+      "trigger": "fossilslegacy:tame_zombified_pigman"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.tamed_pigman.desc"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:ancient_helmet"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.tamed_pigman.title"
+    }
+  },
+  "requirements": [
+    [
+      "tamed_pigman"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

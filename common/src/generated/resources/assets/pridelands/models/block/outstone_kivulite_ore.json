@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "pridelands:block/outstone_kivulite_ore"
-  }
-}

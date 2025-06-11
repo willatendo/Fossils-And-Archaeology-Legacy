@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:archaeology",
+  "category": "repair",
+  "ingredient": "fossilslegacy:broken_wooden_javelin",
+  "result": {
+    "id": "fossilslegacy:wooden_javelin"
+  },
+  "time": 3000
+}

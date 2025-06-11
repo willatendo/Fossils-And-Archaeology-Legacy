@@ -1,0 +1,14 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "fossilslegacy:machu_picchu/wall",
+        "processors": "fossilslegacy:machu_picchu_house_degradation",
+        "projection": "terrain_matching"
+      },
+      "weight": 1
+    }
+  ],
+  "fallback": "minecraft:empty"
+}

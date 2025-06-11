@@ -1,0 +1,15 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "fossilslegacy:block/deepslate_shells_fossil_ore"
+      },
+      {
+        "model": "fossilslegacy:block/deepslate_anomalocaris_fossil_ore"
+      },
+      {
+        "model": "fossilslegacy:block/deepslate_trilobite_fossil_ore"
+      }
+    ]
+  }
+}

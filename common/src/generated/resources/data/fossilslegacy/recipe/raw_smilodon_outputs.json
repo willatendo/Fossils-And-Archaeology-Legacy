@@ -1,0 +1,7 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "category": "palaeontology",
+  "fuels": "fossilslegacy:raw_smilodon_result",
+  "ingredient": "fossilslegacy:raw_smilodon",
+  "time": 100
+}

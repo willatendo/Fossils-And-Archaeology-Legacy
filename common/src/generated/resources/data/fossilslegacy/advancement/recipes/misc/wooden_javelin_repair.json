@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_broken_wooden_javelin": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:broken_wooden_javelin"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:wooden_javelin_repair"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_broken_wooden_javelin"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:wooden_javelin_repair"
+    ]
+  }
+}

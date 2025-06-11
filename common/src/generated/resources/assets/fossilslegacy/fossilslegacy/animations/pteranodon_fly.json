@@ -1,0 +1,324 @@
+{
+  "animation_channels": [
+    {
+      "bone": "right_wing",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": 0.0,
+            "y": -1.0,
+            "z": -3.0
+          }
+        }
+      ],
+      "target": "position"
+    },
+    {
+      "bone": "right_wing",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 60.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 0.25,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 32.5
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 0.75,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 87.5
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 1.0,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 60.0
+          }
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "right_wing_tip",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": 0.0,
+            "y": -120.0,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 0.25,
+          "vector": {
+            "x": 0.0,
+            "y": -152.5,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 0.75,
+          "vector": {
+            "x": 0.0,
+            "y": -87.5,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 1.0,
+          "vector": {
+            "x": 0.0,
+            "y": -120.0,
+            "z": 0.0
+          }
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "right_leg",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": 90.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "left_leg",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": 90.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "body",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": 45.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "neck",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": 0.0,
+            "y": -2.0,
+            "z": -4.0
+          }
+        }
+      ],
+      "target": "position"
+    },
+    {
+      "bone": "neck",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": 90.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "left_wing",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": 0.0,
+            "y": -1.0,
+            "z": -3.0
+          }
+        }
+      ],
+      "target": "position"
+    },
+    {
+      "bone": "left_wing",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": -60.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 0.25,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": -32.5
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 0.75,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": -87.5
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 1.0,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": -60.0
+          }
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "left_wing_tip",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": 0.0,
+            "y": 120.0,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 0.25,
+          "vector": {
+            "x": 0.0,
+            "y": 152.5,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 0.75,
+          "vector": {
+            "x": 0.0,
+            "y": 87.5,
+            "z": 0.0
+          }
+        },
+        {
+          "interpolation": "linear",
+          "timestamp": 1.0,
+          "vector": {
+            "x": 0.0,
+            "y": 120.0,
+            "z": 0.0
+          }
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "head",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 2.0
+          }
+        }
+      ],
+      "target": "position"
+    },
+    {
+      "bone": "head",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": -90.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        }
+      ],
+      "target": "rotation"
+    },
+    {
+      "bone": "whole",
+      "keyframes": [
+        {
+          "interpolation": "linear",
+          "timestamp": 0.0,
+          "vector": {
+            "x": 0.0,
+            "y": -2.0,
+            "z": 2.0
+          }
+        }
+      ],
+      "target": "position"
+    }
+  ],
+  "length": 1.0,
+  "looping": true
+}

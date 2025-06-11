@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:therizinosaurus_egg"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_therizinosaurus_dna": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:therizinosaurus_dna"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_therizinosaurus_dna"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:therizinosaurus_egg"
+    ]
+  }
+}

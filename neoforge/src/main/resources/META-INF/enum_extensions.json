@@ -1,0 +1,22 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/world/inventory/RecipeBookType",
+      "name": "fossilslegacyarchaeology_workbench",
+      "constructor": "()V",
+      "parameters": []
+    },
+    {
+      "enum": "net/minecraft/world/inventory/RecipeBookType",
+      "name": "fossilslegacycultivator",
+      "constructor": "()V",
+      "parameters": []
+    },
+    {
+      "enum": "net/minecraft/world/inventory/RecipeBookType",
+      "name": "fossilslegacyanalyzer",
+      "constructor": "()V",
+      "parameters": []
+    }
+  ]
+}

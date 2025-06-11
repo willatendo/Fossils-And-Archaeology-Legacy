@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1476272414,
+    "separation": 8,
+    "spacing": 32
+  },
+  "structures": [
+    {
+      "structure": "fossilslegacy:small_mayan_temple",
+      "weight": 1
+    }
+  ]
+}

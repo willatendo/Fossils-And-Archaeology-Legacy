@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": "fossilslegacy:mammoth_dna",
+  "result": {
+    "id": "fossilslegacy:mammoth_embryo_syringe"
+  },
+  "time": 6000
+}

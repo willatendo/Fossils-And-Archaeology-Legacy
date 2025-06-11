@@ -1,0 +1,50 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "fossilslegacy:machu_picchu/road/road",
+        "processors": "fossilslegacy:machu_picchu_road",
+        "projection": "terrain_matching"
+      },
+      "weight": 10
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "fossilslegacy:machu_picchu/road/road_end",
+        "processors": "fossilslegacy:machu_picchu_road",
+        "projection": "terrain_matching"
+      },
+      "weight": 5
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "fossilslegacy:machu_picchu/road/cross",
+        "processors": "fossilslegacy:machu_picchu_road",
+        "projection": "terrain_matching"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "fossilslegacy:machu_picchu/road/split_road",
+        "processors": "fossilslegacy:machu_picchu_road",
+        "projection": "terrain_matching"
+      },
+      "weight": 3
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "fossilslegacy:machu_picchu/road/road_turn",
+        "processors": "fossilslegacy:machu_picchu_road",
+        "projection": "terrain_matching"
+      },
+      "weight": 3
+    }
+  ],
+  "fallback": "minecraft:empty"
+}

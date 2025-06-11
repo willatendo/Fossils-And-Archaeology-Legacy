@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "pridelands:block/outstone",
-    "side": "pridelands:block/outstone",
-    "top": "pridelands:block/outstone"
-  }
-}

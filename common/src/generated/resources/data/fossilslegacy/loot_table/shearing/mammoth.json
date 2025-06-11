@@ -1,0 +1,289 @@
+{
+  "type": "minecraft:shearing",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:mammoth",
+                      "geneColor": "white",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:shearing/mammoth/white"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:mammoth",
+                      "geneColor": "orange",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:shearing/mammoth/orange"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:mammoth",
+                      "geneColor": "magenta",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:shearing/mammoth/magenta"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:mammoth",
+                      "geneColor": "light_blue",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:shearing/mammoth/light_blue"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:mammoth",
+                      "geneColor": "yellow",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:shearing/mammoth/yellow"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:mammoth",
+                      "geneColor": "lime",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:shearing/mammoth/lime"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:mammoth",
+                      "geneColor": "pink",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:shearing/mammoth/pink"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:mammoth",
+                      "geneColor": "gray",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:shearing/mammoth/gray"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:mammoth",
+                      "geneColor": "light_gray",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:shearing/mammoth/light_gray"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:mammoth",
+                      "geneColor": "cyan",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:shearing/mammoth/cyan"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:mammoth",
+                      "geneColor": "purple",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:shearing/mammoth/purple"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:mammoth",
+                      "geneColor": "blue",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:shearing/mammoth/blue"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:mammoth",
+                      "geneColor": "brown",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:shearing/mammoth/brown"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:mammoth",
+                      "geneColor": "green",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:shearing/mammoth/green"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:mammoth",
+                      "geneColor": "red",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:shearing/mammoth/red"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "type_specific": {
+                      "type": "fossilslegacy:mammoth",
+                      "geneColor": "black",
+                      "sheared": false
+                    }
+                  }
+                }
+              ],
+              "value": "fossilslegacy:shearing/mammoth/black"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "fossilslegacy:shearing/mammoth"
+}

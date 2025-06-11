@@ -1,0 +1,12 @@
+{
+  "gene_color": 12410652,
+  "genetic_type": "dominant",
+  "pattern_information": {
+    "type": "fossilslegacy:composite",
+    "layer": 1,
+    "texture_path": "papurana"
+  },
+  "pattern_name": {
+    "translate": "pattern.fossilslegacy.papurana"
+  }
+}

@@ -25,6 +25,17 @@ pluginManagement {
                 includeGroupAndSubgroups("org.spongepowered")
             }
         }
+        exclusiveContent {
+            forRepository {
+                maven {
+                    name = 'Forge'
+                    url = uri('https://maven.minecraftforge.net')
+                }
+            }
+            filter {
+                includeGroupAndSubgroups('net.minecraftforge')
+            }
+        }
     }
 }
 
@@ -32,7 +43,8 @@ plugins {
     id 'org.gradle.toolchains.foojay-resolver-convention' version '0.8.0'
 }
 
-rootProject.name = 'Missing-Links-2'
+rootProject.name = 'Fossils-And-Archaeology-Legacy'
 include('common')
 include('fabric')
 include('neoforge')
+include('forge')

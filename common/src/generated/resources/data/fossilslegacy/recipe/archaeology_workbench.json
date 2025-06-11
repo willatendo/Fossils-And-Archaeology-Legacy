@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "#minecraft:planks",
+    "$": "minecraft:paper"
+  },
+  "pattern": [
+    "$$",
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:archaeology_workbench"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "center_text": true,
+  "draw_entity": true,
+  "line": [
+    {
+      "type": "fossilslegacy:built_in",
+      "modelName": "egg_display_name"
+    },
+    {
+      "type": "fossilslegacy:built_in",
+      "modelName": "remaining_time"
+    },
+    {
+      "type": "fossilslegacy:built_in",
+      "modelName": "status"
+    }
+  ]
+}

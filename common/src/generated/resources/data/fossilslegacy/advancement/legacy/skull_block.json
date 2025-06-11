@@ -1,0 +1,34 @@
+{
+  "parent": "fossilslegacy:legacy/root",
+  "criteria": {
+    "has_skull_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:skull_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.skull_block.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:skull_block"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.skull_block.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_skull_block"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "fossilslegacy:item/red_decoration_plaque"
+  }
+}

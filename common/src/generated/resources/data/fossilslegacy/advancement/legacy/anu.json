@@ -1,0 +1,28 @@
+{
+  "parent": "fossilslegacy:legacy/skull_block",
+  "criteria": {
+    "summoned_anu": {
+      "trigger": "fossilslegacy:summon_anu"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.anu.desc"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:time_machine"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.anu.title"
+    }
+  },
+  "requirements": [
+    [
+      "summoned_anu"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

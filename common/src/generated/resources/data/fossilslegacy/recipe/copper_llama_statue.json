@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "llama",
+  "key": {
+    "#": "minecraft:copper_ingot"
+  },
+  "pattern": [
+    "#  ",
+    "###",
+    "# #"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:copper_llama_statue"
+  }
+}

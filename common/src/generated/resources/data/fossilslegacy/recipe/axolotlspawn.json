@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": "fossilslegacy:axolotl_dna",
+  "result": {
+    "id": "fossilslegacy:axolotlspawn"
+  },
+  "time": 6000
+}

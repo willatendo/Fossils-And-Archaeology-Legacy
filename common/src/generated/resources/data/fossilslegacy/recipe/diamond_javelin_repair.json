@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:archaeology",
+  "category": "repair",
+  "ingredient": "fossilslegacy:broken_diamond_javelin",
+  "result": {
+    "id": "fossilslegacy:diamond_javelin"
+  },
+  "time": 3000
+}

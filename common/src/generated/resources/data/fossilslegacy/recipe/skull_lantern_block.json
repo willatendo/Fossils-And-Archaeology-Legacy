@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "fossilslegacy:skull_block",
+    "minecraft:torch"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:skull_lantern_block"
+  }
+}

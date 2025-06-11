@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1476272417,
+    "separation": 16,
+    "spacing": 64
+  },
+  "structures": [
+    {
+      "structure": "fossilslegacy:lab",
+      "weight": 1
+    }
+  ]
+}

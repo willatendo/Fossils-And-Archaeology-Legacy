@@ -1,0 +1,31 @@
+{
+  "parent": "fossilslegacy:legacy/prehistoric_coin",
+  "criteria": {
+    "time_travelled": {
+      "conditions": {
+        "to": "fossilslegacy:prehistory"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.time_machine.desc"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:time_machine"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.time_machine.title"
+    }
+  },
+  "requirements": [
+    [
+      "time_travelled"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

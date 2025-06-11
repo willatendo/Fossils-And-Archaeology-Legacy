@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "fossilslegacy:block/calamites_log",
+    "side": "fossilslegacy:block/calamites_log"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": "fossilslegacy:llama_dna",
+  "result": {
+    "id": "fossilslegacy:llama_embryo_syringe"
+  },
+  "time": 6000
+}

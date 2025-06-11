@@ -1,0 +1,50 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "fossilslegacy:mayan_city/road/road_end",
+        "processors": "fossilslegacy:mayan_temple_degradation",
+        "projection": "terrain_matching"
+      },
+      "weight": 5
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "fossilslegacy:mayan_city/road/road",
+        "processors": "fossilslegacy:mayan_temple_degradation",
+        "projection": "terrain_matching"
+      },
+      "weight": 5
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "fossilslegacy:mayan_city/road/cross",
+        "processors": "fossilslegacy:mayan_temple_degradation",
+        "projection": "terrain_matching"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "fossilslegacy:mayan_city/road/split_road",
+        "processors": "fossilslegacy:mayan_temple_degradation",
+        "projection": "terrain_matching"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "fossilslegacy:mayan_city/road/long_road",
+        "processors": "fossilslegacy:mayan_temple_degradation",
+        "projection": "terrain_matching"
+      },
+      "weight": 5
+    }
+  ],
+  "fallback": "minecraft:empty"
+}

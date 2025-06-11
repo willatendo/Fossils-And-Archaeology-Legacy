@@ -1,0 +1,10 @@
+{
+  "processors": [
+    {
+      "hole_fill": {
+        "Name": "minecraft:air"
+      },
+      "processor_type": "fossilslegacy:holes_processor"
+    }
+  ]
+}

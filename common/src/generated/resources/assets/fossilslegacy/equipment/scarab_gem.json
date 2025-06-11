@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "fossilslegacy:scarab_gem"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "fossilslegacy:scarab_gem"
+      }
+    ]
+  }
+}

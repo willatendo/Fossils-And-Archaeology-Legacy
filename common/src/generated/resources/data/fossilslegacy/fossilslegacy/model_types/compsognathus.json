@@ -1,0 +1,27 @@
+{
+  "age_scale_info": {
+    "age_scale": 0.125,
+    "base_scale_height": 0.25,
+    "base_scale_width": 0.25,
+    "shadow_growth": 0.025,
+    "shadow_size": 0.25
+  },
+  "bounding_box_info": {
+    "bounding_box_growth": 0.1,
+    "bounding_box_height": 0.25,
+    "bounding_box_width": 0.25
+  },
+  "display_info": {
+    "display_scale": 5.0,
+    "display_y_offset": -1.0,
+    "geneColor": 2178336,
+    "model_name": {
+      "translate": "model_type.fossilslegacy.compsognathus"
+    }
+  },
+  "models": {
+    "model": "fossilslegacy:compsognathus"
+  },
+  "patterns": "fossilslegacy:patterns/compsognathus_2024",
+  "skins": "fossilslegacy:skins/compsognathus_2024"
+}

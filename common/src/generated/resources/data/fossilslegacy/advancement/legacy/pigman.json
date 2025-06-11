@@ -1,0 +1,27 @@
+{
+  "parent": "fossilslegacy:legacy/ancient_sword",
+  "criteria": {
+    "created_pigman": {
+      "trigger": "fossilslegacy:create_zombified_pigman"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.pigman.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:ancient_sword"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.pigman.title"
+    }
+  },
+  "requirements": [
+    [
+      "created_pigman"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:tyrannosaurus_egg"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tyrannosaurus_dna": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:tyrannosaurus_dna"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tyrannosaurus_dna"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:tyrannosaurus_egg"
+    ]
+  }
+}

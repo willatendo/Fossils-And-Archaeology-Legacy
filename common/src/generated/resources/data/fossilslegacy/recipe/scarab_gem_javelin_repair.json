@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:archaeology",
+  "category": "repair",
+  "ingredient": "fossilslegacy:broken_scarab_gem_javelin",
+  "result": {
+    "id": "fossilslegacy:scarab_gem_javelin"
+  },
+  "time": 3000
+}

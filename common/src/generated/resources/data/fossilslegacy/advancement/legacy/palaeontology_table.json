@@ -1,0 +1,34 @@
+{
+  "parent": "fossilslegacy:legacy/fossil",
+  "criteria": {
+    "has_palaeontology_table": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:palaeontology_table"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.palaeontology_table.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:palaeontology_table"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.palaeontology_table.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_palaeontology_table"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

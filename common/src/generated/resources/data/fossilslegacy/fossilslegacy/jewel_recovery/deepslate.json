@@ -1,0 +1,23 @@
+{
+  "block": "minecraft:deepslate",
+  "entries": [
+    {
+      "jewel": {
+        "id": "minecraft:redstone"
+      },
+      "weight": 8
+    },
+    {
+      "jewel": {
+        "id": "minecraft:emerald"
+      },
+      "weight": 7
+    },
+    {
+      "jewel": {
+        "id": "minecraft:diamond"
+      },
+      "weight": 5
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_ichthyosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:raw_ichthyosaurus"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:raw_ichthyosaurus_outputs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_ichthyosaurus"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:raw_ichthyosaurus_outputs"
+    ]
+  }
+}

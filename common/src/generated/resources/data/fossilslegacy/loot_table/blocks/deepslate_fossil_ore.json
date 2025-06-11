@@ -1,0 +1,119 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "predicates": {
+                      "minecraft:enchantments": [
+                        {
+                          "enchantments": "minecraft:silk_touch",
+                          "levels": {
+                            "min": 1
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "name": "fossilslegacy:deepslate_fossil_ore"
+            },
+            {
+              "type": "fossilslegacy:loot_one_item_of_many_random",
+              "conditions": [
+                {
+                  "condition": "minecraft:survives_explosion"
+                }
+              ],
+              "fuels": [
+                {
+                  "high_weight": 4500,
+                  "item": "fossilslegacy:fossil",
+                  "low_weight": 10
+                },
+                {
+                  "high_weight": 9800,
+                  "item": "fossilslegacy:relic_scrap",
+                  "low_weight": 4500
+                },
+                {
+                  "high_weight": 17800,
+                  "item": "minecraft:bone",
+                  "low_weight": 9800
+                },
+                {
+                  "high_weight": 19800,
+                  "item": "fossilslegacy:skull_block",
+                  "low_weight": 17800
+                },
+                {
+                  "high_weight": 19820,
+                  "item": "fossilslegacy:ancient_sword_artifact",
+                  "low_weight": 19800
+                },
+                {
+                  "high_weight": 19840,
+                  "item": "fossilslegacy:ancient_shovel_artifact",
+                  "low_weight": 19820
+                },
+                {
+                  "high_weight": 19860,
+                  "item": "fossilslegacy:ancient_pickaxe_artifact",
+                  "low_weight": 19840
+                },
+                {
+                  "high_weight": 19880,
+                  "item": "fossilslegacy:ancient_axe_artifact",
+                  "low_weight": 19860
+                },
+                {
+                  "high_weight": 19900,
+                  "item": "fossilslegacy:ancient_hoe_artifact",
+                  "low_weight": 19880
+                },
+                {
+                  "high_weight": 19925,
+                  "item": "fossilslegacy:ancient_helmet_artifact",
+                  "low_weight": 19900
+                },
+                {
+                  "high_weight": 19950,
+                  "item": "fossilslegacy:ancient_chestplate_artifact",
+                  "low_weight": 19925
+                },
+                {
+                  "high_weight": 19975,
+                  "item": "fossilslegacy:ancient_leggings_artifact",
+                  "low_weight": 19950
+                },
+                {
+                  "high_weight": 20000,
+                  "item": "fossilslegacy:ancient_boots_artifact",
+                  "low_weight": 19975
+                },
+                {
+                  "high_weight": 10,
+                  "item": "fossilslegacy:scarab_gem",
+                  "low_weight": 0
+                }
+              ],
+              "max_weight": 20000
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "fossilslegacy:blocks/deepslate_fossil_ore"
+}

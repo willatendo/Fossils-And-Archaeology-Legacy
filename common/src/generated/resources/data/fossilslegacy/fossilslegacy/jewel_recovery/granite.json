@@ -1,0 +1,35 @@
+{
+  "block": "minecraft:granite",
+  "entries": [
+    {
+      "jewel": {
+        "id": "minecraft:raw_iron"
+      },
+      "weight": 25
+    },
+    {
+      "jewel": {
+        "id": "minecraft:raw_gold"
+      },
+      "weight": 20
+    },
+    {
+      "jewel": {
+        "id": "minecraft:redstone"
+      },
+      "weight": 5
+    },
+    {
+      "jewel": {
+        "id": "minecraft:emerald"
+      },
+      "weight": 3
+    },
+    {
+      "jewel": {
+        "id": "minecraft:diamond"
+      },
+      "weight": 1
+    }
+  ]
+}

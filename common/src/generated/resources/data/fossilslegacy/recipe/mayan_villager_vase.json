@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "minecraft:brick",
+    "$": "fossilslegacy:jade_villager"
+  },
+  "pattern": [
+    "#$#",
+    "$ $",
+    "#$#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:mayan_villager_vase"
+  }
+}

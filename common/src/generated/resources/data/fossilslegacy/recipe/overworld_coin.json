@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "fossilslegacy:prehistoric_coin"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:overworld_coin"
+  }
+}

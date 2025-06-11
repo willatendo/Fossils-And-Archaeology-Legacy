@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "waxed_llama",
+  "ingredients": [
+    "fossilslegacy:copper_llama_statue",
+    "minecraft:honeycomb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:waxed_copper_llama_statue"
+  }
+}

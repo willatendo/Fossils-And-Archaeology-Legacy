@@ -12,6 +12,7 @@ displayURL = "${homepage}"
 logoFile = "${mod_id}_icon.png"
 authors = "${mod_author}"
 description = '''${description}'''
+enumExtensions = "META-INF/enum_extensions.json"
 
 [[dependencies.${mod_id}]]
 modId = "neoforge"

@@ -1,0 +1,34 @@
+{
+  "parent": "fossilslegacy:legacy/root",
+  "criteria": {
+    "has_prehistoric_coin": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:prehistoric_coin"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.prehistoric_coin.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:prehistoric_coin"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.prehistoric_coin.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_prehistoric_coin"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,17 @@
+{
+  "gene_color": 16777215,
+  "genetic_type": "dominant",
+  "pattern_information": {
+    "type": "fossilslegacy:package",
+    "textures": {
+      "fossilslegacy:baby": "fossilslegacy:textures/entity/mammoth/mammoth_baby.png",
+      "fossilslegacy:baby_fur": "fossilslegacy:textures/entity/mammoth/mammoth_baby_fur.png",
+      "fossilslegacy:base": "fossilslegacy:textures/entity/mammoth/mammoth_adult.png",
+      "fossilslegacy:fur": "fossilslegacy:textures/entity/mammoth/mammoth_adult_fur.png",
+      "fossilslegacy:sheared": "fossilslegacy:textures/entity/mammoth/mammoth_adult_sheared.png"
+    }
+  },
+  "pattern_name": {
+    "translate": "skin.fossilslegacy.american_bison"
+  }
+}

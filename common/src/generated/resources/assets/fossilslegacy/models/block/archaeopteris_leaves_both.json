@@ -1,0 +1,8 @@
+{
+  "parent": "fossilslegacy:block/template_branch_dual",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "leaves": "fossilslegacy:block/archaeopteris_leaves",
+    "log": "fossilslegacy:block/archaeopteris_log"
+  }
+}

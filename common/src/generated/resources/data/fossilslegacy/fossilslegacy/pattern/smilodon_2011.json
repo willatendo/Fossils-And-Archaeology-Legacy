@@ -1,0 +1,14 @@
+{
+  "gene_color": 16777215,
+  "genetic_type": "dominant",
+  "pattern_information": {
+    "type": "fossilslegacy:package",
+    "textures": {
+      "fossilslegacy:baby": "fossilslegacy:textures/entity/smilodon/legacy/smilodon_baby.png",
+      "fossilslegacy:base": "fossilslegacy:textures/entity/smilodon/legacy/smilodon_adult.png"
+    }
+  },
+  "pattern_name": {
+    "translate": "skin.fossilslegacy.tiger"
+  }
+}

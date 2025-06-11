@@ -1,0 +1,7 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "category": "palaeontology",
+  "fuels": "fossilslegacy:emerald",
+  "ingredient": "minecraft:emerald",
+  "time": 100
+}

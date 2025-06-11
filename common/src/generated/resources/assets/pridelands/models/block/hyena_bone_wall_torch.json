@@ -1,7 +1,0 @@
-{
-  "parent": "pridelands:block/template_wide_wall_torch",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "torch": "pridelands:block/hyena_bone_torch"
-  }
-}

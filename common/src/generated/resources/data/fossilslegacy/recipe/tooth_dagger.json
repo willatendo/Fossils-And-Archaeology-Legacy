@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "fossilslegacy:tyrannosaurus_tooth",
+    "$": "minecraft:stick"
+  },
+  "pattern": [
+    "#",
+    "$"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:tooth_dagger"
+  }
+}
