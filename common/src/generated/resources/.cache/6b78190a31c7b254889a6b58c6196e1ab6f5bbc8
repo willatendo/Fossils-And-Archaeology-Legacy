@@ -1,7 +1,0 @@
-// 1.21.4	2025-04-20T12:52:47.6959931	Tags for minecraft:item mod id pridelands
-91ef329750eac16c7e28008699a24ede31bf6a6b data/c/tags/item/foods/cooked_meat.json
-1e64f1723956c2eeda16ac103f5ff839674da88b data/c/tags/item/foods/fruit.json
-f0aa527b4979b7653ec7cd22a660c1379ead7664 data/c/tags/item/foods/raw_meat.json
-39efe6b5e6da5e57d15a256734e89c905bb249b3 data/minecraft/tags/item/meat.json
-09fc58837af41d433bfcbfa98a457edbf180aa43 data/minecraft/tags/item/pig_food.json
-09fc58837af41d433bfcbfa98a457edbf180aa43 data/minecraft/tags/item/villager_plantable_seeds.json

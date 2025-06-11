@@ -1,6 +1,10 @@
 {
   "values": [
-    "pridelands:outstone_pressure_plate",
-    "pridelands:pridestone_pressure_plate"
+    "missinglinks:andesite_pressure_plate",
+    "missinglinks:cobblestone_pressure_plate",
+    "missinglinks:diorite_pressure_plate",
+    "missinglinks:granite_pressure_plate",
+    "missinglinks:cobbled_deepslate_pressure_plate",
+    "missinglinks:tuff_pressure_plate"
   ]
 }

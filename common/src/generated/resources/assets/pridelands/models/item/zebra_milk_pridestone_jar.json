@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "pridelands:item/zebra_milk_pridestone_jar"
-  }
-}

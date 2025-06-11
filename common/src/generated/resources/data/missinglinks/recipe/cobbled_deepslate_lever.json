@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "minecraft:cobbled_deepslate",
+    "X": "minecraft:stick"
+  },
+  "pattern": [
+    "X",
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "missinglinks:cobbled_deepslate_lever"
+  }
+}

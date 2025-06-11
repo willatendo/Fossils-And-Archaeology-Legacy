@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "minecraft:tuff"
+  ],
+  "result": {
+    "count": 1,
+    "id": "missinglinks:tuff_button"
+  }
+}

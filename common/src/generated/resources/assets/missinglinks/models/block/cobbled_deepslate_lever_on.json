@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/lever_on",
+  "textures": {
+    "base": "minecraft:block/cobbled_deepslate",
+    "lever": "missinglinks:block/cobbled_deepslate_lever",
+    "particle": "minecraft:block/cobbled_deepslate"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "minecraft:granite"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "missinglinks:granite_pressure_plate"
+  }
+}

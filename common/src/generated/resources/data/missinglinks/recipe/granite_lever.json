@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "minecraft:granite",
+    "X": "minecraft:stick"
+  },
+  "pattern": [
+    "X",
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "missinglinks:granite_lever"
+  }
+}

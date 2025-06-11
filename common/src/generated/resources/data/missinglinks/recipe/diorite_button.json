@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "minecraft:diorite"
+  ],
+  "result": {
+    "count": 1,
+    "id": "missinglinks:diorite_button"
+  }
+}

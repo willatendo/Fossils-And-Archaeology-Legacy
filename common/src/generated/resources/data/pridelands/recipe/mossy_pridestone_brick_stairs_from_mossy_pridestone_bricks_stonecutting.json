@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "pridelands:mossy_pridestone_bricks",
-  "result": {
-    "count": 1,
-    "id": "pridelands:mossy_pridestone_brick_stairs"
-  }
-}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "minecraft:granite"
+  ],
+  "result": {
+    "count": 1,
+    "id": "missinglinks:granite_button"
+  }
+}

@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "pridelands:block/rafiki_tree_log_top",
-    "side": "pridelands:block/rafiki_tree_log"
-  }
-}

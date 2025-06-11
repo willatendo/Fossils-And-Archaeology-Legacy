@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "pridelands:item/mango_juice_pridestone_jar"
-  }
-}

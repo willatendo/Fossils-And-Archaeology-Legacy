@@ -17,10 +17,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "willatendo.pridelands.ToThePridelandsFabricMod"
-    ],
-    "client":[
-      "willatendo.pridelands.client.ToThePridelandsFabricClient"
+      "willatendo.missinglinks.MissingLinks2FabricMod"
     ]
   },
   "depends": {

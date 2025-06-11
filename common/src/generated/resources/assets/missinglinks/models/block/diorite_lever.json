@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/lever",
+  "textures": {
+    "base": "minecraft:block/diorite",
+    "lever": "missinglinks:block/diorite_lever",
+    "particle": "minecraft:block/diorite"
+  }
+}

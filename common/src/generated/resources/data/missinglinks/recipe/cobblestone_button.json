@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "minecraft:cobblestone"
+  ],
+  "result": {
+    "count": 1,
+    "id": "missinglinks:cobblestone_button"
+  }
+}

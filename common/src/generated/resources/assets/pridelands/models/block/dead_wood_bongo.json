@@ -1,7 +1,0 @@
-{
-  "parent": "pridelands:block/template_bongo",
-  "textures": {
-    "side": "pridelands:block/dead_wood_bongo",
-    "top": "pridelands:block/bongo_top"
-  }
-}

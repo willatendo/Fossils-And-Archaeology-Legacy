@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "minecraft:diorite"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "missinglinks:diorite_pressure_plate"
+  }
+}

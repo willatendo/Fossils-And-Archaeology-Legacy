@@ -1,7 +1,6 @@
 {
   "values": [
-    "pridelands:outstone_brick_wall",
-    "pridelands:pridestone_brick_wall",
-    "pridelands:mossy_pridestone_brick_wall"
+    "missinglinks:calcite_wall",
+    "missinglinks:stone_wall"
   ]
 }
