@@ -35,6 +35,16 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("advancements.fossilslegacy.legacy.fossil.desc", "Acquire a fossil!");
         this.add("advancements.fossilslegacy.legacy.analyzer.title", "Analyzer!");
         this.add("advancements.fossilslegacy.legacy.analyzer.desc", "Acquire an analyzer!");
+        this.add("advancements.fossilslegacy.legacy.bingo_dino_dna.title", "Bingo! Dino DNA!");
+        this.add("advancements.fossilslegacy.legacy.bingo_dino_dna.desc", "Acquire DNA!");
+        this.add("advancements.fossilslegacy.legacy.sixty_six.title", "Sixty-Six Million Years in the Making!");
+        this.add("advancements.fossilslegacy.legacy.sixty_six.desc", "Acquire an egg!");
+        this.add("advancements.fossilslegacy.legacy.bred_raptors.title", "You Bred Raptors?");
+        this.add("advancements.fossilslegacy.legacy.bred_raptors.desc", "Breed a velociraptor!");
+        this.add("advancements.fossilslegacy.legacy.have_tyrannosaurus.title", "We Have a T-rex!");
+        this.add("advancements.fossilslegacy.legacy.have_tyrannosaurus.desc", "Breed a tyrannosaurus!");
+        this.add("advancements.fossilslegacy.legacy.undoing_mistakes.title", "Undoing Mistakes!");
+        this.add("advancements.fossilslegacy.legacy.undoing_mistakes.desc", "Acquire an embryo syringe to undo mistakes!");
         this.add("advancements.fossilslegacy.legacy.palaeontology_table.title", "A Palaeontologist's Table!");
         this.add("advancements.fossilslegacy.legacy.palaeontology_table.desc", "Make a palaeontology table!");
         this.add("advancements.fossilslegacy.legacy.relic_scrap.title", "Old News");

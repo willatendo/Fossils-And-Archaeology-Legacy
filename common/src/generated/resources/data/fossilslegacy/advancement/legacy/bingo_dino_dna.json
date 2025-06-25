@@ -1,0 +1,34 @@
+{
+  "parent": "fossilslegacy:legacy/analyzer",
+  "criteria": {
+    "has_dna": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#fossilslegacy:dna"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.bingo_dino_dna.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:tyrannosaurus_dna"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.bingo_dino_dna.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_dna"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

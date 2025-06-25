@@ -1,0 +1,34 @@
+{
+  "parent": "fossilslegacy:legacy/bingo_dino_dna",
+  "criteria": {
+    "has_embryo_syringe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#fossilslegacy:embryo_syringes"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.undoing_mistakes.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:mammoth_embryo_syringe"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.undoing_mistakes.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_embryo_syringe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

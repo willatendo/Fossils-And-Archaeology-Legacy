@@ -6,7 +6,6 @@ import willatendo.fossilslegacy.server.pattern.texture.Texture;
 import willatendo.fossilslegacy.server.pattern.texture.TextureAffixType;
 import willatendo.fossilslegacy.server.pattern.texture.type.BasicTexture;
 import willatendo.fossilslegacy.server.pattern.texture.type.EyeTexture;
-import willatendo.fossilslegacy.server.pattern.texture.type.NoneTexture;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 

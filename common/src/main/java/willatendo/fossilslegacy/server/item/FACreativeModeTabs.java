@@ -427,6 +427,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.FUTABASAURUS_SPAWN_EGG.get());
         output.accept(FAItems.GALLIMIMUS_SPAWN_EGG.get());
         output.accept(FAItems.ICHTHYOSAURUS_SPAWN_EGG.get());
+        output.accept(FAItems.MAMMOTH_SPAWN_EGG.get());
         output.accept(FAItems.MOA_SPAWN_EGG.get());
         output.accept(FAItems.MOSASAURUS_SPAWN_EGG.get());
         output.accept(FAItems.NAUTILUS_SPAWN_EGG.get());

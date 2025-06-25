@@ -13,6 +13,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.OldUsersConverter;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
@@ -358,7 +359,9 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
     @Override
     public void setGrowthStage(int growthStage) {
         this.entityData.set(GROWTH_STAGE, growthStage);
+        this.reapplyPosition();
         this.refreshDimensions();
+
     }
 
     @Override
@@ -588,5 +591,10 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
         if (!this.isTranquilized()) {
             super.makeSound(soundEvent);
         }
+    }
+
+    @Override
+    public SoundSource getSoundSource() {
+        return SoundSource.NEUTRAL;
     }
 }

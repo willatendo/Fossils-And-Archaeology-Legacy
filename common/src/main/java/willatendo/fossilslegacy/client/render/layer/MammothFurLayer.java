@@ -33,7 +33,7 @@ public class MammothFurLayer extends RenderLayer<MammothRenderState, EntityModel
     }
 
     @Override
-    public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int partialticks, MammothRenderState mammothRenderState, float packedLight, float packedOverlay) {
+    public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks, MammothRenderState mammothRenderState, float packedLight, float packedOverlay) {
         ModelType modelType = mammothRenderState.modelType.value();
         if (this.dataDrivenModelMobRenderer.getAdditionalModel(mammothRenderState, modelType).isPresent()) {
             this.setModel(this.dataDrivenModelMobRenderer.getAdditionalModel(mammothRenderState, modelType).get());
@@ -70,7 +70,7 @@ public class MammothFurLayer extends RenderLayer<MammothRenderState, EntityModel
                 color = Mammoth.getColor(mammothRenderState.woolColor);
             }
 
-            RenderLayer.coloredCutoutModelCopyLayerRender(this.getParentModel(), texture, poseStack, multiBufferSource, partialticks, mammothRenderState, color);
+            RenderLayer.coloredCutoutModelCopyLayerRender(this.model, texture, poseStack, multiBufferSource, partialTicks, mammothRenderState, color);
         }
     }
 }

@@ -1,0 +1,35 @@
+{
+  "parent": "fossilslegacy:legacy/sixty_six",
+  "criteria": {
+    "has_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:velociraptor_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.bred_raptors.desc"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:velociraptor_egg"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.bred_raptors.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_egg"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

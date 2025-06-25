@@ -24,8 +24,10 @@ public class FAItemTags {
     public static final TagKey<Item> DARTS = ITEM_TAGS.register("darts");
     public static final TagKey<Item> DILOPHOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/dilophosaurus");
     public static final TagKey<Item> DIMETRODON_COMMANDABLES = ITEM_TAGS.register("commandable/dimetrodon");
+    public static final TagKey<Item> DINO_EGGS = ITEM_TAGS.register("dino_eggs");
     public static final TagKey<Item> DNA = ITEM_TAGS.register("dna");
     public static final TagKey<Item> DRUM_INSTRUMENT = ITEM_TAGS.register("drum_instrument");
+    public static final TagKey<Item> EMBRYO_SYRINGES = ITEM_TAGS.register("embryo_syringes");
     public static final TagKey<Item> FROGLIGHTS = ITEM_TAGS.register("froglights");
     public static final TagKey<Item> GALLIMIMUS_COMMANDABLES = ITEM_TAGS.register("commandable/gallimimus");
     public static final TagKey<Item> DRYOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/dryosaurus");
