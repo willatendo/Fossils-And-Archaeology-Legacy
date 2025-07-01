@@ -262,6 +262,12 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.BROKEN_NETHERITE_JAVELIN.get(), this.modLocation("item/netherite_javelin"));
         this.generatedItem(FAItems.SCARAB_GEM_JAVELIN.get());
         this.generatedItem(FAItems.BROKEN_SCARAB_GEM_JAVELIN.get(), this.modLocation("item/scarab_gem_javelin"));
+        this.handheldItem(FAItems.WOODEN_HAMMER.get());
+        this.handheldItem(FAItems.STONE_HAMMER.get());
+        this.handheldItem(FAItems.IRON_HAMMER.get());
+        this.handheldItem(FAItems.GOLDEN_HAMMER.get());
+        this.handheldItem(FAItems.DIAMOND_HAMMER.get());
+        this.handheldItem(FAItems.NETHERITE_HAMMER.get());
         this.item(FAItems.RIFLE.get(), ItemModelUtils.plainModel(FAModelTemplates.TEMPLATE_RIFLE.create(FAItems.RIFLE.get(), new TextureMapping().put(TextureSlot.TEXTURE, this.modLocation("item/rifle")), this.modelOutput)));
         this.generatedItem(FAItems.GREEN_TRANQUILIZER_DART.get());
         this.generatedItem(FAItems.RED_TRANQUILIZER_DART.get());

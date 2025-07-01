@@ -109,6 +109,12 @@ public class FARecipeProvider extends RecipeProvider {
         this.shaped(RecipeCategory.COMBAT, FAItems.GREEN_TRANQUILIZER_DART.get(), 4).pattern("  $").pattern(" # ").pattern("%  ").define('$', Items.FEATHER).define('#', Items.POISONOUS_POTATO).define('%', Items.IRON_INGOT).unlockedBy(getHasName(Items.POISONOUS_POTATO), has(Items.POISONOUS_POTATO)).save(this.output);
         this.shaped(RecipeCategory.COMBAT, FAItems.RED_TRANQUILIZER_DART.get(), 4).pattern("  $").pattern(" # ").pattern("%  ").define('$', Items.FEATHER).define('#', Items.ROTTEN_FLESH).define('%', Items.IRON_INGOT).unlockedBy(getHasName(Items.ROTTEN_FLESH), has(Items.ROTTEN_FLESH)).save(this.output);
         this.shaped(RecipeCategory.COMBAT, FAItems.BLUE_TRANQUILIZER_DART.get(), 4).pattern("  $").pattern(" # ").pattern("%  ").define('$', Items.FEATHER).define('#', Items.FERMENTED_SPIDER_EYE).define('%', Items.IRON_INGOT).unlockedBy(getHasName(Items.FERMENTED_SPIDER_EYE), has(Items.FERMENTED_SPIDER_EYE)).save(this.output);
+        this.hammer(ItemTags.WOODEN_TOOL_MATERIALS, FAItems.WOODEN_HAMMER.get());
+        this.hammer(ItemTags.STONE_TOOL_MATERIALS, FAItems.STONE_HAMMER.get());
+        this.hammer(Items.IRON_INGOT, FAItems.IRON_HAMMER.get());
+        this.hammer(Items.GOLD_INGOT, FAItems.GOLDEN_HAMMER.get());
+        this.hammer(Items.DIAMOND, FAItems.DIAMOND_HAMMER.get());
+        this.netheriteSmithing(FAItems.DIAMOND_HAMMER.get(), RecipeCategory.TOOLS, FAItems.NETHERITE_HAMMER.get());
 
         SpecialRecipeBuilder.special(MagicConchRecipe::new).save(this.output, "magic_conch");
 
@@ -311,6 +317,14 @@ public class FARecipeProvider extends RecipeProvider {
 
     public void decorationPlaque(ItemLike concrete, ItemLike output) {
         this.shaped(RecipeCategory.DECORATIONS, output).group("decoration_plaque").pattern("###").pattern("###").pattern(" $ ").define('#', concrete).define('$', Items.IRON_INGOT).unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT)).save(this.output);
+    }
+
+    public void hammer(TagKey<Item> material, ItemLike output) {
+        this.shaped(RecipeCategory.DECORATIONS, output).pattern("###").pattern("###").pattern(" $ ").define('#', material).define('$', Items.STICK).unlockedBy("has_" + material.location().getPath(), this.has(material)).save(this.output);
+    }
+
+    public void hammer(ItemLike material, ItemLike output) {
+        this.shaped(RecipeCategory.DECORATIONS, output).pattern("###").pattern("###").pattern(" $ ").define('#', material).define('$', Items.STICK).unlockedBy(RecipeProvider.getHasName(material), this.has(material)).save(this.output);
     }
 
     public void llama(ItemLike ingredient, ItemLike output) {

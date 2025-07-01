@@ -3,10 +3,17 @@ package willatendo.fossilslegacy.data.tag;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.block.blocks.CultivatorBlock;
 import willatendo.fossilslegacy.server.tags.FABlockTags;
+import willatendo.simplelibrary.server.registry.SimpleHolder;
+import willatendo.simplelibrary.server.util.SimpleUtils;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -51,6 +58,7 @@ public class FABlockTagProvider extends BlockTagsProvider {
         this.tag(FABlockTags.CARNOTAURUS_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
         this.tag(FABlockTags.COMPSOGNATHUS_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
         this.tag(FABlockTags.CRYOLOPHOSAURUS_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
+        this.tag(FABlockTags.CULTIVATORS).add(FABlocks.WHITE_CULTIVATOR.get(), FABlocks.ORANGE_CULTIVATOR.get(), FABlocks.MAGENTA_CULTIVATOR.get(), FABlocks.LIGHT_BLUE_CULTIVATOR.get(), FABlocks.YELLOW_CULTIVATOR.get(), FABlocks.LIME_CULTIVATOR.get(), FABlocks.PINK_CULTIVATOR.get(), FABlocks.GRAY_CULTIVATOR.get(), FABlocks.LIGHT_GRAY_CULTIVATOR.get(), FABlocks.CYAN_CULTIVATOR.get(), FABlocks.PURPLE_CULTIVATOR.get(), FABlocks.BLUE_CULTIVATOR.get(), FABlocks.BROWN_CULTIVATOR.get(), FABlocks.GREEN_CULTIVATOR.get(), FABlocks.RED_CULTIVATOR.get(), FABlocks.BLACK_CULTIVATOR.get());
         this.tag(FABlockTags.DILOPHOSAURUS_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
         this.tag(FABlockTags.DIMETRODON_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
         this.tag(FABlockTags.DODO_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);

@@ -61,8 +61,8 @@ public class JsonModelLoader extends SimpleJsonResourceReloadListener<JsonModel>
         }
     }
 
-    public static EntityModel getModel(ResourceLocation id) {
-        return new JsonTypeModel(id, JSON_MODELS.get(id).isOverrideReset(), JsonLayerDefinitionResourceManager.INSTANCE.bakeLayer(new ModelLayerLocation(id, "main")));
+    public static JsonTypeModel getModel(ResourceLocation id) {
+        return new JsonTypeModel<>(id, JSON_MODELS.get(id).isOverrideReset(), JsonLayerDefinitionResourceManager.INSTANCE.bakeLayer(new ModelLayerLocation(id, "main")));
     }
 
     private JsonModelLoader() {

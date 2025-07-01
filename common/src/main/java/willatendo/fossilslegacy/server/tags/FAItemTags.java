@@ -20,6 +20,7 @@ public class FAItemTags {
     public static final TagKey<Item> CARNOTAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/carnotaurus");
     public static final TagKey<Item> COMPSOGNATHUS_COMMANDABLES = ITEM_TAGS.register("commandable/compsognathus");
     public static final TagKey<Item> CRYOLOPHOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/cryolophosaurus");
+    public static final TagKey<Item> CULTIVATORS = ITEM_TAGS.register("cultivators");
     public static final TagKey<Item> DAGGER_TOOL_MATERIALS = ITEM_TAGS.register("dagger_tool_materials");
     public static final TagKey<Item> DARTS = ITEM_TAGS.register("darts");
     public static final TagKey<Item> DILOPHOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/dilophosaurus");
@@ -31,6 +32,7 @@ public class FAItemTags {
     public static final TagKey<Item> FROGLIGHTS = ITEM_TAGS.register("froglights");
     public static final TagKey<Item> GALLIMIMUS_COMMANDABLES = ITEM_TAGS.register("commandable/gallimimus");
     public static final TagKey<Item> DRYOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/dryosaurus");
+    public static final TagKey<Item> HAMMERS = ITEM_TAGS.register("hammer");
     public static final TagKey<Item> HERBIVORE_FOODS = ITEM_TAGS.register("herbivore_foods");
     public static final TagKey<Item> ICED_MEAT_TOOL_MATERIALS = ITEM_TAGS.register("iced_meat_tool_materials");
     public static final TagKey<Item> LEPIDODENDRON_LOGS = ITEM_TAGS.register("lepidodendron_logs");

@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
+import willatendo.fossilslegacy.platform.FAModloaderHelper;
 import willatendo.fossilslegacy.server.block.entity.entities.TimeMachineBlockEntity;
 import willatendo.fossilslegacy.server.menu.menus.TimeMachineMenu;
 import willatendo.fossilslegacy.server.utils.FAUtils;
@@ -24,7 +24,7 @@ public class TimeMachineScreen extends AbstractContainerScreen<TimeMachineMenu> 
         super.init();
         this.addRenderableWidget(TimeMachineButton.create(FAUtils.translation("container", "time_machine.start"), button -> {
             if (this.menu.getSlot(0).hasItem() && this.menu.isCharged()) {
-                FossilsModloaderHelper.INSTANCE.sendTimeMachinePacket(this.menu.timeMachineBlockEntity.getBlockPos());
+                FAModloaderHelper.INSTANCE.sendTimeMachinePacket(this.menu.timeMachineBlockEntity.getBlockPos());
             }
         }).bounds(this.leftPos + 131, this.topPos + 18, 34, 14).build());
     }

@@ -4,12 +4,15 @@
   "bounding_box_growth": 0.25,
   "bounding_box_height": 0.75,
   "bounding_box_width": 2.0,
+  "can_articulate": false,
   "fossil_count": 5,
   "fossil_ingredient": "fossilslegacy:mesozoic_fossil",
   "max_size": 12,
   "model": "fossilslegacy:legacy_futabasaurus",
+  "scale": 30.0,
   "shadow_growth": 0.15,
-  "shadow_size": 1.0,
+  "shadow_size": 0.75,
   "size_scale": 0.3,
-  "texture": "fossilslegacy:textures/entity/futabasaurus/legacy/futabasaurus_skeleton.png"
+  "texture": "fossilslegacy:textures/entity/futabasaurus/legacy/futabasaurus_skeleton.png",
+  "y_offset": 0
 }

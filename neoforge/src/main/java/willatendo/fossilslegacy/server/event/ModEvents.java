@@ -14,10 +14,7 @@ import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import willatendo.fossilslegacy.client.FASearchRecipeBookCategory;
-import willatendo.fossilslegacy.network.NeoforgePacketHelper;
-import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
-import willatendo.fossilslegacy.network.ServerboundSinkPacket;
-import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
+import willatendo.fossilslegacy.network.*;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.event.modification.*;
 import willatendo.simplelibrary.server.event.registry.*;
@@ -49,8 +46,12 @@ public class ModEvents {
         PayloadRegistrar payloadRegistrar = event.registrar(FAUtils.ID).versioned("1.0.0").optional();
 
         payloadRegistrar.playToServer(ServerboundApplyGenePacket.TYPE, ServerboundApplyGenePacket.STREAM_CODEC, NeoforgePacketHelper::handleApplyGenePacket);
+        payloadRegistrar.playToServer(ServerboundAddRotationsPacket.TYPE, ServerboundAddRotationsPacket.STREAM_CODEC, NeoforgePacketHelper::handleAddRotationsPacket);
+        payloadRegistrar.playToServer(ServerboundSetRotationsPacket.TYPE, ServerboundSetRotationsPacket.STREAM_CODEC, NeoforgePacketHelper::handleSetRotationsPacket);
         payloadRegistrar.playToServer(ServerboundSinkPacket.TYPE, ServerboundSinkPacket.STREAM_CODEC, NeoforgePacketHelper::handleSinkPacket);
         payloadRegistrar.playToServer(ServerboundTimeMachineUpdatePacket.TYPE, ServerboundTimeMachineUpdatePacket.STREAM_CODEC, NeoforgePacketHelper::handleTimeMachineUpdatePacket);
+
+        payloadRegistrar.playToClient(ClientboundFossilMenuPacket.TYPE, ClientboundFossilMenuPacket.STREAM_CODEC, NeoforgePacketHelper::handleFossilMenuPacket);
     }
 
     @SubscribeEvent

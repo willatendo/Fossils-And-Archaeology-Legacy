@@ -1,0 +1,38 @@
+{
+  "parent": "fossilslegacy:legacy/sixty_six",
+  "criteria": {
+    "has_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:incubated_dodo_egg"
+          },
+          {
+            "items": "fossilslegacy:dodo_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.melon.desc"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:incubated_dodo_egg"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.melon.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_egg"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

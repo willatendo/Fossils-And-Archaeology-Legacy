@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.network;
 
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.ChannelBuilder;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.PacketDistributor;
@@ -11,8 +12,11 @@ public class ForgePacketHelper {
 
     public static void register() {
         INSTANCE.messageBuilder(ServerboundApplyGenePacket.class, NetworkDirection.PLAY_TO_SERVER).encoder(ServerboundApplyGenePacket::encode).decoder(ServerboundApplyGenePacket::decode).consumerMainThread((msg, context) -> ServerboundApplyGenePacket.handle(context::getSender, msg)).add();
+        INSTANCE.messageBuilder(ServerboundAddRotationsPacket.class, NetworkDirection.PLAY_TO_SERVER).encoder(ServerboundAddRotationsPacket::encode).decoder(ServerboundAddRotationsPacket::decode).consumerMainThread((msg, context) -> ServerboundAddRotationsPacket.handle(context::getSender, msg)).add();
         INSTANCE.messageBuilder(ServerboundSinkPacket.class, NetworkDirection.PLAY_TO_SERVER).encoder(ServerboundSinkPacket::encode).decoder(ServerboundSinkPacket::decode).consumerMainThread((msg, context) -> ServerboundSinkPacket.handle(context::getSender, msg)).add();
         INSTANCE.messageBuilder(ServerboundTimeMachineUpdatePacket.class, NetworkDirection.PLAY_TO_SERVER).encoder(ServerboundTimeMachineUpdatePacket::encode).decoder(ServerboundTimeMachineUpdatePacket::decode).consumerMainThread((msg, context) -> ServerboundTimeMachineUpdatePacket.handle(context::getSender, msg)).add();
+
+        INSTANCE.messageBuilder(ClientboundFossilMenuPacket.class, NetworkDirection.PLAY_TO_CLIENT).encoder(ClientboundFossilMenuPacket::encode).decoder(ClientboundFossilMenuPacket::decode).consumerMainThread((msg, context) -> ClientboundFossilMenuPacket.handle(context::getSender, msg)).add();
     }
 
     public static void sendToServer(Object msg) {
@@ -21,5 +25,9 @@ public class ForgePacketHelper {
 
     public static void sendToClient(Object msg) {
         INSTANCE.send(msg, PacketDistributor.ALL.noArg());
+    }
+
+    public static void sendToClient(ServerPlayer serverPlayer, Object msg) {
+        INSTANCE.send(msg, PacketDistributor.PLAYER.with(serverPlayer));
     }
 }

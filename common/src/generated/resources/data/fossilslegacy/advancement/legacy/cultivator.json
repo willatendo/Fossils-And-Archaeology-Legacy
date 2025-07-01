@@ -1,0 +1,34 @@
+{
+  "parent": "fossilslegacy:legacy/fossil",
+  "criteria": {
+    "has_cultivator": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#fossilslegacy:cultivators"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.cultivator.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:lime_cultivator"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.cultivator.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_cultivator"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -4,7 +4,7 @@
     "base_scale_height": 1.5,
     "base_scale_width": 1.5,
     "shadow_growth": 0.25,
-    "shadow_size": 1.0
+    "shadow_size": 0.75
   },
   "bounding_box_info": {
     "bounding_box_growth": 0.2,

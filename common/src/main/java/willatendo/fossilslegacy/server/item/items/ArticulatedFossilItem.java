@@ -1,8 +1,12 @@
 package willatendo.fossilslegacy.server.item.items;
 
 import net.minecraft.Util;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -43,5 +47,15 @@ public class ArticulatedFossilItem extends PlaceEntityItem<Fossil> {
             fossil.setFossilVariant(optional.get());
         }
         fossil.setSize(0);
+    }
+
+    @Override
+    public boolean rotationModification(Player player, BlockPos placePos, double yOffset, RandomSource randomSource, Fossil entity) {
+        if (player.isCrouching()) {
+            return false;
+        } else {
+            entity.moveTo((double) placePos.getX() + 0.5D, (double) placePos.getY() + yOffset, (double) placePos.getZ() + 0.5D, player.getYRot() + 180.0F, 0.0F);
+            return true;
+        }
     }
 }

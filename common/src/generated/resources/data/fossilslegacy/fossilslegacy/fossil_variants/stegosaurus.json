@@ -1,15 +1,18 @@
 {
-  "base_scale_height": 0.5,
-  "base_scale_width": 0.5,
-  "bounding_box_growth": 0.4,
-  "bounding_box_height": 0.5,
-  "bounding_box_width": 0.5,
+  "base_scale_height": 0.8,
+  "base_scale_width": 0.8,
+  "bounding_box_growth": 0.2,
+  "bounding_box_height": 0.75,
+  "bounding_box_width": 0.75,
+  "can_articulate": true,
   "fossil_count": 6,
   "fossil_ingredient": "fossilslegacy:mesozoic_fossil",
   "max_size": 12,
   "model": "fossilslegacy:stegosaurus",
-  "shadow_growth": 0.15,
+  "scale": 25.0,
+  "shadow_growth": 0.1,
   "shadow_size": 0.5,
-  "size_scale": 0.5125,
-  "texture": "fossilslegacy:textures/entity/stegosaurus/stegosaurus_skeleton.png"
+  "size_scale": 0.2,
+  "texture": "fossilslegacy:textures/entity/stegosaurus/stegosaurus_skeleton.png",
+  "y_offset": 0
 }

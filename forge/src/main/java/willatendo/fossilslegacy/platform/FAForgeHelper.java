@@ -1,19 +1,14 @@
 package willatendo.fossilslegacy.platform;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.syncher.EntityDataSerializer;
-import net.minecraft.world.flag.FeatureFlag;
-import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.level.GameRules;
-import net.neoforged.neoforge.fluids.FluidType;
-import net.neoforged.neoforge.network.PacketDistributor;
-import willatendo.fossilslegacy.FossilsLegacyNeoforgeMod;
-import willatendo.fossilslegacy.network.ServerboundApplyGenePacket;
-import willatendo.fossilslegacy.network.ServerboundTimeMachineUpdatePacket;
+import net.minecraftforge.fluids.FluidType;
+import willatendo.fossilslegacy.FossilsLegacyForgeMod;
+import willatendo.fossilslegacy.network.*;
+import willatendo.fossilslegacy.server.entity.util.FossilRotations;
 import willatendo.fossilslegacy.server.fluid.FAFluidTypes;
 import willatendo.fossilslegacy.server.fluid.TarFluid;
 import willatendo.fossilslegacy.server.utils.FAUtils;
@@ -21,20 +16,35 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-public class FossilsNeoforgeHelper implements FossilsModloaderHelper {
+public class FAForgeHelper implements FAModloaderHelper {
     @Override
     public void sendApplyGenePacket(BlockPos blockPos, String modelType, String skin, Optional<String> pattern) {
-        PacketDistributor.sendToServer(new ServerboundApplyGenePacket(blockPos, modelType, skin, pattern));
+        ForgePacketHelper.sendToServer(new ServerboundApplyGenePacket(blockPos, modelType, skin, pattern));
+    }
+
+    @Override
+    public void sendAddRotation(int id, String part, float xRot, float yRot, float zRot) {
+        ForgePacketHelper.sendToServer(new ServerboundAddRotationsPacket(id, part, xRot, yRot, zRot));
+    }
+
+    @Override
+    public void sendSetRotation(int id, String part, float xRot, float yRot, float zRot) {
+        ForgePacketHelper.sendToServer(new ServerboundSetRotationsPacket(id, part, xRot, yRot, zRot));
     }
 
     @Override
     public void sendTimeMachinePacket(BlockPos blockPos) {
-        PacketDistributor.sendToServer(new ServerboundTimeMachineUpdatePacket(blockPos));
+        ForgePacketHelper.sendToServer(new ServerboundTimeMachineUpdatePacket(blockPos));
     }
 
     @Override
-    public <T> Supplier<EntityDataSerializer<Holder<T>>> registerDataSerializer(String id, StreamCodec<RegistryFriendlyByteBuf, Holder<T>> streamCodec) {
-        return FossilsLegacyNeoforgeMod.ENTITY_DATA_SERIALIZER.register(id, () -> EntityDataSerializer.forValueType(streamCodec));
+    public void sendFossilMenuPacket(ServerPlayer serverPlayer, int id, FossilRotations fossilRotations, String fossilVariant) {
+        ForgePacketHelper.sendToClient(serverPlayer, new ClientboundFossilMenuPacket(id, fossilRotations, fossilVariant));
+    }
+
+    @Override
+    public <T> Supplier<EntityDataSerializer<T>> registerDataSerializer(String id, EntityDataSerializer<T> entityDataSerializer) {
+        return FossilsLegacyForgeMod.ENTITY_DATA_SERIALIZER.register(id, () -> entityDataSerializer);
     }
 
     @Override
@@ -64,6 +74,6 @@ public class FossilsNeoforgeHelper implements FossilsModloaderHelper {
 
     @Override
     public RecipeBookType createRecipeBookType(String name) {
-        return RecipeBookType.valueOf(FAUtils.ID + name);
+        return RecipeBookType.create(FAUtils.ID + name);
     }
 }

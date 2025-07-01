@@ -1,0 +1,298 @@
+{
+  "parent": "fossilslegacy:legacy/sixty_six",
+  "criteria": {
+    "ankylosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:ankylosaurus_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "baryonyx": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:baryonyx_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "brachiosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:brachiosaurus_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "carnotaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:carnotaurus_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "compsognathus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:compsognathus_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "cryolophosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:cryolophosaurus_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "dilophosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:dilophosaurus_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "dimetrodon": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:dimetrodon_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "dryosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:dryosaurus_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "futabasaurs": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:futabasaurus_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "gallimimus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:gallimimus_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "ichthyosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:ichthyosaurus_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "mosasaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:mosasaurus_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pachycephalosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:pachycephalosaurus_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pteranodon": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:pteranodon_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "spinosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:spinosaurus_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stegosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:stegosaurus_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "therizinosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:therizinosaurus_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "triceratops": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:triceratops_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "tyrannosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:tyrannosaurus_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "velociraptor": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:velociraptor_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.john_hammond.desc"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:pachycephalosaurus_egg"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.john_hammond.title"
+    }
+  },
+  "requirements": [
+    [
+      "ankylosaurus"
+    ],
+    [
+      "baryonyx"
+    ],
+    [
+      "brachiosaurus"
+    ],
+    [
+      "carnotaurus"
+    ],
+    [
+      "compsognathus"
+    ],
+    [
+      "cryolophosaurus"
+    ],
+    [
+      "dilophosaurus"
+    ],
+    [
+      "dimetrodon"
+    ],
+    [
+      "dryosaurus"
+    ],
+    [
+      "futabasaurs"
+    ],
+    [
+      "gallimimus"
+    ],
+    [
+      "ichthyosaurus"
+    ],
+    [
+      "mosasaurus"
+    ],
+    [
+      "pachycephalosaurus"
+    ],
+    [
+      "pteranodon"
+    ],
+    [
+      "spinosaurus"
+    ],
+    [
+      "stegosaurus"
+    ],
+    [
+      "therizinosaurus"
+    ],
+    [
+      "triceratops"
+    ],
+    [
+      "tyrannosaurus"
+    ],
+    [
+      "velociraptor"
+    ]
+  ],
+  "rewards": {
+    "experience": 2000
+  },
+  "sends_telemetry_event": true
+}

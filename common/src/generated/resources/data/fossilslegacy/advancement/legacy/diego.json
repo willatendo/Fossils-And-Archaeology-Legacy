@@ -1,0 +1,35 @@
+{
+  "parent": "fossilslegacy:legacy/undoing_mistakes",
+  "criteria": {
+    "has_embryo_syringe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:smilodon_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.diego.desc"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:smilodon_embryo_syringe"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.diego.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_embryo_syringe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

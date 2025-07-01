@@ -1,0 +1,35 @@
+{
+  "parent": "fossilslegacy:legacy/undoing_mistakes",
+  "criteria": {
+    "has_embryo_syringe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:elasmotherium_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.walking_with_beasts.desc"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:elasmotherium_embryo_syringe"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.walking_with_beasts.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_embryo_syringe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

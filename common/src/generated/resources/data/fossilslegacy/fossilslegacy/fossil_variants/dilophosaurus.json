@@ -4,12 +4,15 @@
   "bounding_box_growth": 0.2,
   "bounding_box_height": 0.5,
   "bounding_box_width": 0.5,
+  "can_articulate": true,
   "fossil_count": 6,
   "fossil_ingredient": "fossilslegacy:mesozoic_fossil",
   "max_size": 8,
   "model": "fossilslegacy:dilophosaurus",
-  "shadow_growth": 0.1,
+  "scale": 120.0,
+  "shadow_growth": 0.05,
   "shadow_size": 0.15,
   "size_scale": 0.15,
-  "texture": "fossilslegacy:textures/entity/dilophosaurus/dilophosaurus_skeleton.png"
+  "texture": "fossilslegacy:textures/entity/dilophosaurus/dilophosaurus_skeleton.png",
+  "y_offset": 0
 }

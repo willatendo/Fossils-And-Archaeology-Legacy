@@ -6,6 +6,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySpawnReason;
@@ -77,8 +78,11 @@ public class PlaceEntityItem<T extends Entity> extends Item {
                 T entity = this.entityType.get().create(level, EntitySpawnReason.SPAWN_ITEM_USE);
                 this.entityModification(itemStack, entity);
                 entity.setPos((double) placePos.getX() + 0.5D, placePos.getY() + 1.0D, (double) placePos.getZ() + 0.5D);
-                double yOffset = getYOffset(serverLevel, blockPos, !Objects.equals(blockPos, placePos) && direction == Direction.UP, ((Entity) entity).getBoundingBox());
-                entity.moveTo((double) placePos.getX() + 0.5D, (double) placePos.getY() + yOffset, (double) placePos.getZ() + 0.5D, Mth.wrapDegrees(serverLevel.random.nextFloat() * 360.0F), 0.0F);
+                double yOffset = getYOffset(serverLevel, blockPos, !Objects.equals(blockPos, placePos) && direction == Direction.UP, entity.getBoundingBox());
+                RandomSource randomSource = serverLevel.random;
+                if (!this.rotationModification(player, placePos, yOffset, randomSource, entity)) {
+                    entity.moveTo((double) placePos.getX() + 0.5D, (double) placePos.getY() + yOffset, (double) placePos.getZ() + 0.5D, Mth.wrapDegrees(serverLevel.random.nextFloat() * 360.0F), 0.0F);
+                }
                 if (entity instanceof Mob mob) {
                     mob.yHeadRot = mob.getYRot();
                     mob.yBodyRot = mob.getYRot();
@@ -105,5 +109,9 @@ public class PlaceEntityItem<T extends Entity> extends Item {
     }
 
     public void entityModification(ItemStack itemStack, T entity) {
+    }
+
+    public boolean rotationModification(Player player, BlockPos placePos, double yOffset, RandomSource randomSource, T entity) {
+        return false;
     }
 }

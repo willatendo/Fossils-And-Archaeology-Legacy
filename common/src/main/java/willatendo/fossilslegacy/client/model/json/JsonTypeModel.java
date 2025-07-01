@@ -2,15 +2,19 @@ package willatendo.fossilslegacy.client.model.json;
 
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.renderer.entity.state.EntityRenderState;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Display;
 import willatendo.fossilslegacy.api.client.BuiltInAnimationType;
 import willatendo.fossilslegacy.client.animation.json.JsonAnimationLoader;
 import willatendo.fossilslegacy.client.state.*;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 
-public class JsonTypeModel extends EntityModel<DinosaurRenderState> {
+public class JsonTypeModel<R extends EntityRenderState> extends EntityModel<R> {
     private final AnimationHolder animationHolder;
     private final List<ModelPart> headPieces;
     private final LoadedParts loadedParts;
@@ -22,6 +26,10 @@ public class JsonTypeModel extends EntityModel<DinosaurRenderState> {
         this.headPieces = JsonModelLoader.getHeadPieces(id, root);
         this.loadedParts = new LoadedParts(JsonModelLoader.getLoadParts(id), root);
         this.overrideReset = overrideReset;
+    }
+
+    public LoadedParts getLoadedParts() {
+        return this.loadedParts;
     }
 
     public ModelPart get(String name) {
@@ -129,42 +137,106 @@ public class JsonTypeModel extends EntityModel<DinosaurRenderState> {
     }
 
     @Override
-    public void setupAnim(DinosaurRenderState dinosaurRenderState) {
-        if (dinosaurRenderState.isTranquilized && this.animationHolder.hasSleepAnimations()) {
-            this.resetPose();
-            for (ResourceLocation animation : this.animationHolder.sleepAnimation()) {
-                this.applyStatic(JsonAnimationLoader.getAnimation(animation));
-            }
-            return;
-        }
-
-        if (dinosaurRenderState instanceof TyrannosaurusRenderState tyrannosaurusRenderState) {
-            if (tyrannosaurusRenderState.knockedOut) {
+    public void setupAnim(R entityRenderState) {
+        if (entityRenderState instanceof DinosaurRenderState dinosaurRenderState) {
+            if (dinosaurRenderState.isTranquilized && this.animationHolder.hasSleepAnimations()) {
+                this.resetPose();
+                for (ResourceLocation animation : this.animationHolder.sleepAnimation()) {
+                    this.applyStatic(JsonAnimationLoader.getAnimation(animation));
+                }
                 return;
             }
-        }
 
-        if (!this.overrideReset) {
-            this.resetPose();
-        }
+            if (dinosaurRenderState instanceof TyrannosaurusRenderState tyrannosaurusRenderState) {
+                if (tyrannosaurusRenderState.knockedOut) {
+                    return;
+                }
+            }
 
-        if (dinosaurRenderState instanceof SmilodonRenderState smilodonRenderState) {
-            if (this.animationHolder.hasSitAnimations()) {
-                for (ResourceLocation animation : this.animationHolder.sitAnimation()) {
-                    if (!JsonAnimationLoader.isBuiltIn(animation)) {
-                        this.animate(smilodonRenderState.sitAnimationState, JsonAnimationLoader.getAnimation(animation), dinosaurRenderState.ageInTicks);
+            if (!this.overrideReset) {
+                this.resetPose();
+            }
+
+            if (dinosaurRenderState instanceof SmilodonRenderState smilodonRenderState) {
+                if (this.animationHolder.hasSitAnimations()) {
+                    for (ResourceLocation animation : this.animationHolder.sitAnimation()) {
+                        if (!JsonAnimationLoader.isBuiltIn(animation)) {
+                            this.animate(smilodonRenderState.sitAnimationState, JsonAnimationLoader.getAnimation(animation), dinosaurRenderState.ageInTicks);
+                        }
                     }
                 }
             }
-        }
 
-        if (!this.animationHolder.hasSitAnimations() || !dinosaurRenderState.isOrderedToSit) {
-            if (this.animationHolder.hasHeadAnimations()) {
-                for (ResourceLocation animation : this.animationHolder.headAnimation()) {
-                    if (JsonAnimationLoader.isBuiltIn(animation)) {
-                        BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
-                        if (builtInAnimationType.canUse(dinosaurRenderState)) {
-                            builtInAnimationType.setupAnim(dinosaurRenderState, this, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
+            if (!this.animationHolder.hasSitAnimations() || !dinosaurRenderState.isOrderedToSit) {
+                if (this.animationHolder.hasHeadAnimations()) {
+                    for (ResourceLocation animation : this.animationHolder.headAnimation()) {
+                        if (JsonAnimationLoader.isBuiltIn(animation)) {
+                            BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
+                            if (builtInAnimationType.canUse(dinosaurRenderState)) {
+                                builtInAnimationType.setupAnim(dinosaurRenderState, this, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
+                            }
+                        }
+                    }
+                } else {
+                    if (dinosaurRenderState instanceof PteranodonRenderState pteranodonRenderState) {
+                        if (!pteranodonRenderState.shouldFly && !pteranodonRenderState.shouldLand) {
+                            this.standardHead(pteranodonRenderState.yRot, pteranodonRenderState.xRot);
+                        }
+                    } else {
+                        this.standardHead(dinosaurRenderState.yRot, dinosaurRenderState.xRot);
+                    }
+                }
+
+                if (this.animationHolder.hasFlyAnimations()) {
+                    for (ResourceLocation animation : this.animationHolder.flyAnimation()) {
+                        if (JsonAnimationLoader.isBuiltIn(animation)) {
+                            BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
+                            if (builtInAnimationType.canUse(dinosaurRenderState)) {
+                                builtInAnimationType.setupAnim(dinosaurRenderState, this, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
+                            }
+                        } else {
+                            if (dinosaurRenderState instanceof PteranodonRenderState pteranodonRenderState) {
+                                this.animate(pteranodonRenderState.flyingAnimationState, JsonAnimationLoader.getAnimation(animation), pteranodonRenderState.ageInTicks);
+                            }
+                        }
+                    }
+                }
+
+                if (dinosaurRenderState instanceof PteranodonRenderState pteranodonRenderState) {
+                    if (this.animationHolder.hasLandAnimations()) {
+                        for (ResourceLocation animation : this.animationHolder.landAnimation()) {
+                            this.animate(pteranodonRenderState.landAnimationState, JsonAnimationLoader.getAnimation(animation), pteranodonRenderState.ageInTicks);
+                        }
+                    }
+                }
+
+                if (this.animationHolder.hasSwimAnimations() && dinosaurRenderState.inWater) {
+                    for (ResourceLocation animation : this.animationHolder.swimAnimation()) {
+                        if (JsonAnimationLoader.isBuiltIn(animation)) {
+                            BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
+                            if (builtInAnimationType.canUse(dinosaurRenderState)) {
+                                builtInAnimationType.setupAnim(dinosaurRenderState, this, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
+                            }
+                        } else {
+                            this.animateWalk(JsonAnimationLoader.getAnimation(animation), dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, 2.0F, 2.5F);
+                        }
+                    }
+                } else {
+                    if (this.animationHolder.hasWalkAnimations()) {
+                        if (dinosaurRenderState instanceof PteranodonRenderState pteranodonRenderState) {
+                            if (!pteranodonRenderState.shouldFly && !pteranodonRenderState.shouldLand) {
+                                this.animateWalk(this.animationHolder, dinosaurRenderState, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
+                            }
+                        } else {
+                            this.animateWalk(this.animationHolder, dinosaurRenderState, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
+                        }
+                    }
+                }
+
+                if (dinosaurRenderState instanceof DodoRenderState dodoRenderState) {
+                    if (this.animationHolder.hasFloatAnimations()) {
+                        for (ResourceLocation animation : this.animationHolder.floatAnimation()) {
+                            this.animate(dodoRenderState.fallAnimationState, JsonAnimationLoader.getAnimation(animation), dinosaurRenderState.ageInTicks);
                         }
                     }
                 }
@@ -177,68 +249,12 @@ public class JsonTypeModel extends EntityModel<DinosaurRenderState> {
                     this.standardHead(dinosaurRenderState.yRot, dinosaurRenderState.xRot);
                 }
             }
-
-            if (this.animationHolder.hasFlyAnimations()) {
-                for (ResourceLocation animation : this.animationHolder.flyAnimation()) {
-                    if (JsonAnimationLoader.isBuiltIn(animation)) {
-                        BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
-                        if (builtInAnimationType.canUse(dinosaurRenderState)) {
-                            builtInAnimationType.setupAnim(dinosaurRenderState, this, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
-                        }
-                    } else {
-                        if (dinosaurRenderState instanceof PteranodonRenderState pteranodonRenderState) {
-                            this.animate(pteranodonRenderState.flyingAnimationState, JsonAnimationLoader.getAnimation(animation), pteranodonRenderState.ageInTicks);
-                        }
-                    }
-                }
-            }
-
-            if (dinosaurRenderState instanceof PteranodonRenderState pteranodonRenderState) {
-                if (this.animationHolder.hasLandAnimations()) {
-                    for (ResourceLocation animation : this.animationHolder.landAnimation()) {
-                        this.animate(pteranodonRenderState.landAnimationState, JsonAnimationLoader.getAnimation(animation), pteranodonRenderState.ageInTicks);
-                    }
-                }
-            }
-
-            if (this.animationHolder.hasSwimAnimations() && dinosaurRenderState.inWater) {
-                for (ResourceLocation animation : this.animationHolder.swimAnimation()) {
-                    if (JsonAnimationLoader.isBuiltIn(animation)) {
-                        BuiltInAnimationType builtInAnimationType = JsonAnimationLoader.getBuiltIn(animation);
-                        if (builtInAnimationType.canUse(dinosaurRenderState)) {
-                            builtInAnimationType.setupAnim(dinosaurRenderState, this, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
-                        }
-                    } else {
-                        this.animateWalk(JsonAnimationLoader.getAnimation(animation), dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, 2.0F, 2.5F);
-                    }
-                }
-            } else {
-                if (this.animationHolder.hasWalkAnimations()) {
-                    if (dinosaurRenderState instanceof PteranodonRenderState pteranodonRenderState) {
-                        if (!pteranodonRenderState.shouldFly && !pteranodonRenderState.shouldLand) {
-                            this.animateWalk(this.animationHolder, dinosaurRenderState, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
-                        }
-                    } else {
-                        this.animateWalk(this.animationHolder, dinosaurRenderState, dinosaurRenderState.walkAnimationPos, dinosaurRenderState.walkAnimationSpeed, dinosaurRenderState.yRot);
-                    }
-                }
-            }
-
-            if (dinosaurRenderState instanceof DodoRenderState dodoRenderState) {
-                if (this.animationHolder.hasFloatAnimations()) {
-                    for (ResourceLocation animation : this.animationHolder.floatAnimation()) {
-                        this.animate(dodoRenderState.fallAnimationState, JsonAnimationLoader.getAnimation(animation), dinosaurRenderState.ageInTicks);
-                    }
-                }
-            }
-        } else {
-            if (dinosaurRenderState instanceof PteranodonRenderState pteranodonRenderState) {
-                if (!pteranodonRenderState.shouldFly && !pteranodonRenderState.shouldLand) {
-                    this.standardHead(pteranodonRenderState.yRot, pteranodonRenderState.xRot);
-                }
-            } else {
-                this.standardHead(dinosaurRenderState.yRot, dinosaurRenderState.xRot);
-            }
+        } else if (entityRenderState instanceof FossilRenderState fossilRenderState) {
+            fossilRenderState.fossilRotations.forEach((part, rotations) -> {
+                this.setXRot(part, rotations.xRot() * 0.017453292F);
+                this.setYRot(part, rotations.yRot() * 0.017453292F);
+                this.setZRot(part, rotations.zRot() * 0.017453292F);
+            });
         }
     }
 

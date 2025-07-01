@@ -4,12 +4,15 @@
   "bounding_box_growth": 0.1,
   "bounding_box_height": 0.25,
   "bounding_box_width": 0.25,
+  "can_articulate": true,
   "fossil_count": 3,
   "fossil_ingredient": "fossilslegacy:mesozoic_fossil",
   "max_size": 8,
   "model": "fossilslegacy:compsognathus",
+  "scale": 200.0,
   "shadow_growth": 0.025,
-  "shadow_size": 0.25,
+  "shadow_size": 0.05,
   "size_scale": 0.125,
-  "texture": "fossilslegacy:textures/entity/compsognathus/compsognathus_skeleton.png"
+  "texture": "fossilslegacy:textures/entity/compsognathus/compsognathus_skeleton.png",
+  "y_offset": 0
 }

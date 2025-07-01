@@ -1,0 +1,233 @@
+{
+  "parent": "fossilslegacy:legacy/cultivator",
+  "criteria": {
+    "black": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:black_cultivator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "blue": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:blue_cultivator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "brown": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:brown_cultivator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "cyan": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:cyan_cultivator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "gray": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:gray_cultivator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "green": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:green_cultivator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "light_blue": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:light_blue_cultivator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "light_gray": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:light_gray_cultivator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "lime": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:lime_cultivator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "magenta": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:magenta_cultivator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "orange": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:orange_cultivator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pink": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:pink_cultivator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "purple": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:purple_cultivator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "red": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:red_cultivator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "white": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:white_cultivator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "yellow": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:yellow_cultivator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.rainbow.desc"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:pink_cultivator"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.rainbow.title"
+    }
+  },
+  "requirements": [
+    [
+      "white"
+    ],
+    [
+      "orange"
+    ],
+    [
+      "magenta"
+    ],
+    [
+      "light_blue"
+    ],
+    [
+      "yellow"
+    ],
+    [
+      "lime"
+    ],
+    [
+      "pink"
+    ],
+    [
+      "gray"
+    ],
+    [
+      "light_gray"
+    ],
+    [
+      "cyan"
+    ],
+    [
+      "purple"
+    ],
+    [
+      "blue"
+    ],
+    [
+      "brown"
+    ],
+    [
+      "green"
+    ],
+    [
+      "red"
+    ],
+    [
+      "black"
+    ]
+  ],
+  "rewards": {
+    "experience": 20
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "#minecraft:wooden_tool_materials",
+    "$": "minecraft:stick"
+  },
+  "pattern": [
+    "###",
+    "###",
+    " $ "
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:wooden_hammer"
+  }
+}

@@ -1,0 +1,246 @@
+{
+  "parent": "fossilslegacy:legacy/undoing_mistakes",
+  "criteria": {
+    "armadillo": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:armadillo_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "cat": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:cat_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "cow": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:cow_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "dolphin": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:dolphin_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "donkey": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:donkey_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "fox": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:fox_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "goat": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:goat_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "horse": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:horse_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "llama": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:llama_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "mule": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:mule_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "ocelot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:ocelot_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "panda": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:panda_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pig": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:pig_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "polar_bear": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:polar_bear_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "rabbit": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:rabbit_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "sheep": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:sheep_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "wolf": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:wolf_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.dollys_legacy.desc"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:cow_embryo_syringe"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.dollys_legacy.title"
+    }
+  },
+  "requirements": [
+    [
+      "armadillo"
+    ],
+    [
+      "cat"
+    ],
+    [
+      "cow"
+    ],
+    [
+      "dolphin"
+    ],
+    [
+      "donkey"
+    ],
+    [
+      "fox"
+    ],
+    [
+      "goat"
+    ],
+    [
+      "horse"
+    ],
+    [
+      "llama"
+    ],
+    [
+      "mule"
+    ],
+    [
+      "ocelot"
+    ],
+    [
+      "panda"
+    ],
+    [
+      "pig"
+    ],
+    [
+      "polar_bear"
+    ],
+    [
+      "rabbit"
+    ],
+    [
+      "sheep"
+    ],
+    [
+      "wolf"
+    ]
+  ],
+  "rewards": {
+    "experience": 500
+  },
+  "sends_telemetry_event": true
+}

@@ -5,7 +5,6 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -17,12 +16,13 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
+import willatendo.fossilslegacy.client.model.json.JsonTypeModel;
 import willatendo.fossilslegacy.client.state.FossilRenderState;
 import willatendo.fossilslegacy.server.entity.entities.Fossil;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 
 public class FossilRenderer extends EntityRenderer<Fossil, FossilRenderState> {
-    private EntityModel<FossilRenderState> model;
+    private JsonTypeModel<FossilRenderState> model;
 
     public FossilRenderer(Context context) {
         super(context);
@@ -33,6 +33,7 @@ public class FossilRenderer extends EntityRenderer<Fossil, FossilRenderState> {
         super.extractRenderState(fossil, fossilRenderState, partialTick);
         float yHeadRot = Mth.rotLerp(partialTick, fossil.yHeadRotO, fossil.yHeadRot);
         fossilRenderState.bodyRot = this.solveBodyRot(fossil, yHeadRot, partialTick);
+        fossilRenderState.fossilRotations = fossil.getFossilRotations();
         fossilRenderState.variant = fossil.getFossilVariant();
         fossilRenderState.size = fossil.getSize();
         fossilRenderState.renderScaleWidth = fossil.renderScaleWidth();
@@ -73,13 +74,13 @@ public class FossilRenderer extends EntityRenderer<Fossil, FossilRenderState> {
         return new FossilRenderState();
     }
 
-    private void setModel(EntityModel<FossilRenderState> entityModel) {
+    private void setModel(JsonTypeModel<FossilRenderState> entityModel) {
         if (this.model != entityModel) {
             this.model = entityModel;
         }
     }
 
-    private EntityModel<FossilRenderState> getModel(ResourceLocation id) {
+    private JsonTypeModel<FossilRenderState> getModel(ResourceLocation id) {
         if (JsonModelLoader.isJsonModel(id)) {
             return JsonModelLoader.getModel(id);
         } else {
@@ -97,6 +98,7 @@ public class FossilRenderer extends EntityRenderer<Fossil, FossilRenderState> {
         poseStack.scale(1.0F, 1.0F, 1.0F);
         this.setupRotations(fossilRenderState, poseStack, fossilRenderState.bodyRot, 1.0F);
         poseStack.scale(-1.0F, -1.0F, 1.0F);
+        this.model.setupAnim(fossilRenderState);
         poseStack.scale(fossilRenderState.renderScaleWidth, fossilRenderState.renderScaleHeight, fossilRenderState.renderScaleWidth);
         poseStack.translate(0.0F, -1.501F, 0.0F);
         boolean isInvisible = !fossilRenderState.isInvisible;

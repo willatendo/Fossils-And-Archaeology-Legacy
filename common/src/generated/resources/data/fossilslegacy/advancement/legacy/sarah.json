@@ -1,0 +1,35 @@
+{
+  "parent": "fossilslegacy:legacy/sixty_six",
+  "criteria": {
+    "has_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:stegosaurus_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.sarah.desc"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:stegosaurus_egg"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.sarah.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_egg"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

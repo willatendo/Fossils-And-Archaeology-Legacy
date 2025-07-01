@@ -6,7 +6,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
+import willatendo.fossilslegacy.platform.FAModloaderHelper;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
@@ -28,7 +28,7 @@ public final class FAPoiTypes {
     }
 
     static {
-        FossilsModloaderHelper.INSTANCE.registerPOI(POI_TYPES, "archaeologist", () -> new PoiType(FAPoiTypes.getBlockStates(FABlocks.ARCHAEOLOGY_WORKBENCH.get()), 1, 1));
-        FossilsModloaderHelper.INSTANCE.registerPOI(POI_TYPES, "palaeontologist", () -> new PoiType(FAPoiTypes.getBlockStates(FABlocks.PALAEONTOLOGY_TABLE.get()), 1, 1));
+        FAModloaderHelper.INSTANCE.registerPOI(POI_TYPES, "archaeologist", () -> new PoiType(FAPoiTypes.getBlockStates(FABlocks.ARCHAEOLOGY_WORKBENCH.get()), 1, 1));
+        FAModloaderHelper.INSTANCE.registerPOI(POI_TYPES, "palaeontologist", () -> new PoiType(FAPoiTypes.getBlockStates(FABlocks.PALAEONTOLOGY_TABLE.get()), 1, 1));
     }
 }

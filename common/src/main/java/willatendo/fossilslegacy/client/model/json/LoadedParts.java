@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.client.model.json;
 import com.google.common.collect.Maps;
 import net.minecraft.client.model.geom.ModelPart;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +26,14 @@ public class LoadedParts {
         }
         this.modelParts[i] = root;
         this.identifiers.put("root", i);
+    }
+
+    public List<ModelPart> getModelParts() {
+        return Arrays.stream(this.modelParts).toList();
+    }
+
+    public List<String> getNames() {
+        return this.identifiers.keySet().stream().toList();
     }
 
     public ModelPart get(String name) {

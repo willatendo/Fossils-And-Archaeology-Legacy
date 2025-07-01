@@ -28,7 +28,7 @@ import net.minecraft.world.item.ItemStack;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import willatendo.fossilslegacy.client.FAKeys;
-import willatendo.fossilslegacy.platform.FossilsModloaderHelper;
+import willatendo.fossilslegacy.platform.FAModloaderHelper;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Pteranodon;
 import willatendo.fossilslegacy.server.item.FADataComponents;
@@ -407,7 +407,7 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
                 if (this.patternLength > 0 && !this.patterns[this.patternSelection].is(FAPatterns.BLANK)) {
                     pattern = Optional.of(this.patternRegistry.getKey(this.patterns[this.patternSelection].value()).toString());
                 }
-                FossilsModloaderHelper.INSTANCE.sendApplyGenePacket(this.menu.DNARecombinatorBlockEntity.getBlockPos(), this.modelTypeRegistry.getKey(this.modelTypes[this.modelTypeSelection].value()).toString(), this.patternRegistry.getKey(this.skins[this.skinSelection].value()).toString(), pattern);
+                FAModloaderHelper.INSTANCE.sendApplyGenePacket(this.menu.DNARecombinatorBlockEntity.getBlockPos(), this.modelTypeRegistry.getKey(this.modelTypes[this.modelTypeSelection].value()).toString(), this.patternRegistry.getKey(this.skins[this.skinSelection].value()).toString(), pattern);
                 return true;
             }
         }

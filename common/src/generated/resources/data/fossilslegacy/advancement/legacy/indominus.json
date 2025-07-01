@@ -1,0 +1,35 @@
+{
+  "parent": "fossilslegacy:legacy/sixty_six",
+  "criteria": {
+    "has_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:mosasaurus_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.indominus.desc"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:mosasaurus_egg"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.indominus.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_egg"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

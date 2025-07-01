@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.server.tags;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.util.TagRegister;
@@ -17,6 +18,7 @@ public class FABlockTags {
     public static final TagKey<Block> CARNOTAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/carnotaurus");
     public static final TagKey<Block> COMPSOGNATHUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/compsognathus");
     public static final TagKey<Block> CRYOLOPHOSAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/cryolophosaurus");
+    public static final TagKey<Block> CULTIVATORS = BLOCK_TAGS.register("cultivators");
     public static final TagKey<Block> DILOPHOSAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/dilophosaurus");
     public static final TagKey<Block> DIMETRODON_SPAWNABLE = BLOCK_TAGS.register("spawnable/dimetrodon");
     public static final TagKey<Block> DODO_SPAWNABLE = BLOCK_TAGS.register("spawnable/dodo");

@@ -361,7 +361,6 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
         this.entityData.set(GROWTH_STAGE, growthStage);
         this.reapplyPosition();
         this.refreshDimensions();
-
     }
 
     @Override

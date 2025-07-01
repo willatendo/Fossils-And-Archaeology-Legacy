@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "minecraft:gold_ingot",
+    "$": "minecraft:stick"
+  },
+  "pattern": [
+    "###",
+    "###",
+    " $ "
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:golden_hammer"
+  }
+}
