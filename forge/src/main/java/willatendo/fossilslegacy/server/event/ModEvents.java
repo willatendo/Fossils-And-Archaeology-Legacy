@@ -9,16 +9,15 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.DataPackRegistryEvent;
 import net.minecraftforge.registries.NewRegistryEvent;
+import willatendo.fossilslegacy.network.ClientboundPacketRegistry;
 import willatendo.fossilslegacy.network.ForgePacketHelper;
+import willatendo.fossilslegacy.network.ServerboundPacketRegistry;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.event.modification.ForgeCompostablesModification;
 import willatendo.simplelibrary.server.event.modification.ForgeCreativeModeTabModification;
 import willatendo.simplelibrary.server.event.modification.ForgeHeroOfTheVillageGiftModification;
 import willatendo.simplelibrary.server.event.modification.ForgeStrippablesModification;
-import willatendo.simplelibrary.server.event.registry.ForgeAttributeRegister;
-import willatendo.simplelibrary.server.event.registry.ForgeDynamicRegistryRegister;
-import willatendo.simplelibrary.server.event.registry.ForgeNewRegistryRegister;
-import willatendo.simplelibrary.server.event.registry.ForgeResourcePackRegister;
+import willatendo.simplelibrary.server.event.registry.*;
 
 import java.util.HashMap;
 
@@ -27,7 +26,11 @@ public class ModEvents {
     @SubscribeEvent
     public static void fmlCommonSetupEvent(FMLCommonSetupEvent event) {
         BasicEvents.commonSetup();
-        event.enqueueWork(ForgePacketHelper::register);
+        event.enqueueWork(() -> {
+            ForgePacketRegister forgePacketRegister = new ForgePacketRegister(FAUtils.resource("main"));
+            ServerboundPacketRegistry.serverboundPacketSetup(forgePacketRegister);
+            ClientboundPacketRegistry.clientboundPacketSetup(forgePacketRegister);
+        });
         BasicEvents.strippablesSetup(new ForgeStrippablesModification());
         BasicEvents.compostablesSetup(new ForgeCompostablesModification());
         GiveGiftToHero.GIFTS = new HashMap<>(GiveGiftToHero.GIFTS);

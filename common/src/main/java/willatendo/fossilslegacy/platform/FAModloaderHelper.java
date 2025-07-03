@@ -10,6 +10,7 @@ import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.GameRules;
+import willatendo.fossilslegacy.server.entity.util.FossilPositions;
 import willatendo.fossilslegacy.server.entity.util.FossilRotations;
 import willatendo.fossilslegacy.server.fluid.TarFluid;
 import willatendo.fossilslegacy.server.item.items.ArticulatedFossilItem;
@@ -25,13 +26,13 @@ public interface FAModloaderHelper {
     // Platform
     void sendApplyGenePacket(BlockPos blockPos, String modelType, String skin, Optional<String> pattern);
 
-    void sendAddRotation(int id, String part, float xRot, float yRot, float zRot);
-
     void sendSetRotation(int id, String part, float xRot, float yRot, float zRot);
+
+    void sendSetPosition(int id, String part, float x, float y, float z);
 
     void sendTimeMachinePacket(BlockPos blockPos);
 
-    void sendFossilMenuPacket(ServerPlayer serverPlayer, int id, FossilRotations fossilRotations, String fossilVariant);
+    void sendFossilMenuPacket(ServerPlayer serverPlayer, int id, FossilRotations fossilRotations, FossilPositions fossilPositions, String fossilVariant);
 
     default <T> Supplier<EntityDataSerializer<Holder<T>>> registerDataSerializer(String id, StreamCodec<RegistryFriendlyByteBuf, Holder<T>> streamCodec) {
         return this.registerDataSerializer(id, EntityDataSerializer.forValueType(streamCodec));

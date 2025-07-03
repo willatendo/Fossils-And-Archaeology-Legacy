@@ -4,7 +4,6 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandler;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
@@ -19,12 +18,15 @@ import willatendo.fossilslegacy.client.model.json.JsonLayerDefinitionResourceMan
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.client.resources.DecorationPlaqueTextureManager;
 import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;
-import willatendo.fossilslegacy.network.ServerboundSinkPacket;
+import willatendo.fossilslegacy.network.ClientboundPacketRegistry;
+import willatendo.fossilslegacy.network.ServerboundPacketRegistry;
+import willatendo.fossilslegacy.network.serverbound.ServerboundVehicleSinkPacket;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
 import willatendo.fossilslegacy.server.fluid.FAFluids;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.client.event.registry.*;
+import willatendo.simplelibrary.server.event.registry.FabricServerboundPacketRegister;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
@@ -130,6 +132,8 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.RED_CULTIVATOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.BLACK_CULTIVATOR.get(), RenderType.translucent());
 
+        ClientboundPacketRegistry.clientboundPacketSetup(new FabricClientboundPacketRegister());
+
         FossilsLegacyClient.blockColorRegistry(new FabricBlockColorRegister());
 
         FossilsLegacyClient.signSheets();
@@ -154,10 +158,10 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
                 if (player.isPassenger()) {
                     if (player.getVehicle() instanceof Futabasaurus) {
                         if (FAKeys.SINK.isDown()) {
-                            ClientPlayNetworking.send(new ServerboundSinkPacket(true));
+                            ClientPlayNetworking.send(new ServerboundVehicleSinkPacket(true));
                         }
                         if (!FAKeys.SINK.consumeClick()) {
-                            ClientPlayNetworking.send(new ServerboundSinkPacket(false));
+                            ClientPlayNetworking.send(new ServerboundVehicleSinkPacket(false));
                         }
                     }
                 }

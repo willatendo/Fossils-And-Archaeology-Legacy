@@ -255,6 +255,11 @@ public class JsonTypeModel<R extends EntityRenderState> extends EntityModel<R> {
                 this.setYRot(part, rotations.yRot() * 0.017453292F);
                 this.setZRot(part, rotations.zRot() * 0.017453292F);
             });
+            fossilRenderState.fossilPositions.forEach((part, positions) -> {
+                this.setX(part, this.getX(part) + positions.x());
+                this.setY(part, this.getY(part) + positions.y());
+                this.setZ(part, this.getZ(part) + positions.z());
+            });
         }
     }
 

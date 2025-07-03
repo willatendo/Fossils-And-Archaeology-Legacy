@@ -25,4 +25,5 @@ public class FAEquipmentAssetProvider extends EquipmentAssetProvider {
     private EquipmentClientInfo humanoid(String name) {
         return EquipmentClientInfo.builder().addHumanoidLayers(FAUtils.resource(name)).build();
     }
+
 }

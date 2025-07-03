@@ -28,17 +28,18 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.platform.FAModloaderHelper;
 import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
+import willatendo.fossilslegacy.server.entity.util.FossilPositions;
 import willatendo.fossilslegacy.server.entity.util.FossilRotations;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
-import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public class Fossil extends Mob {
     private static final EntityDataAccessor<Holder<FossilVariant>> FOSSIL_VARIANT = SynchedEntityData.defineId(Fossil.class, FAEntityDataSerializers.FOSSIL_VARIANTS.get());
     private static final EntityDataAccessor<FossilRotations> FOSSIL_ROTATIONS = SynchedEntityData.defineId(Fossil.class, FAEntityDataSerializers.FOSSIL_ROTATIONS.get());
+    private static final EntityDataAccessor<FossilPositions> FOSSIL_POSITIONS = SynchedEntityData.defineId(Fossil.class, FAEntityDataSerializers.FOSSIL_POSITIONS.get());
     private static final EntityDataAccessor<Integer> SIZE = SynchedEntityData.defineId(Fossil.class, EntityDataSerializers.INT);
     private static Codec<Holder<FossilVariant>> VARIANT_CODEC = FossilVariant.VARIANT_MAP_CODEC.codec();
 
@@ -127,6 +128,7 @@ public class Fossil extends Mob {
         super.defineSynchedData(builder);
         builder.define(FOSSIL_VARIANT, this.registryAccess().lookupOrThrow(FARegistries.FOSSIL_VARIANTS).getAny().orElseThrow());
         builder.define(FOSSIL_ROTATIONS, new FossilRotations());
+        builder.define(FOSSIL_POSITIONS, new FossilPositions());
         builder.define(SIZE, 1);
     }
 
@@ -135,9 +137,12 @@ public class Fossil extends Mob {
         super.addAdditionalSaveData(compoundTag);
         VARIANT_CODEC.encodeStart(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), this.getFossilVariant()).ifSuccess(tag -> compoundTag.merge((CompoundTag) tag));
         compoundTag.putInt("Size", this.getSize());
-        CompoundTag parts = new CompoundTag();
-        this.getFossilRotations().addAdditionalSaveData(parts);
-        compoundTag.put("parts", parts);
+        CompoundTag partRotations = new CompoundTag();
+        this.getFossilRotations().addAdditionalSaveData(partRotations);
+        compoundTag.put("part_rotations", partRotations);
+        CompoundTag partPositions = new CompoundTag();
+        this.getFossilPositions().addAdditionalSaveData(partPositions);
+        compoundTag.put("part_positions", partPositions);
     }
 
     @Override
@@ -145,7 +150,8 @@ public class Fossil extends Mob {
         super.readAdditionalSaveData(compoundTag);
         VARIANT_CODEC.parse(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), compoundTag).ifSuccess(this::setFossilVariant);
         this.setSize(compoundTag.getInt("Size"));
-        this.setFossilRotations(FossilRotations.readAdditionalSaveData(compoundTag.getCompound("parts")));
+        this.setFossilRotations(FossilRotations.readAdditionalSaveData(compoundTag.getCompound("part_rotations")));
+        this.setFossilPositions(FossilPositions.readAdditionalSaveData(compoundTag.getCompound("part_positions")));
     }
 
     @Override
@@ -161,7 +167,7 @@ public class Fossil extends Mob {
             }
         } else if (itemStack.is(FAItemTags.HAMMERS)) {
             if (player instanceof ServerPlayer serverPlayer) {
-                FAModloaderHelper.INSTANCE.sendFossilMenuPacket(serverPlayer, this.getId(), this.getFossilRotations(), this.level().registryAccess().lookupOrThrow(FARegistries.FOSSIL_VARIANTS).getKey(this.getFossilVariant().value()).toString());
+                FAModloaderHelper.INSTANCE.sendFossilMenuPacket(serverPlayer, this.getId(), this.getFossilRotations(), this.getFossilPositions(), this.level().registryAccess().lookupOrThrow(FARegistries.FOSSIL_VARIANTS).getKey(this.getFossilVariant().value()).toString());
             }
             return InteractionResult.SUCCESS;
         } else if (itemStack.isEmpty()) {
@@ -190,6 +196,14 @@ public class Fossil extends Mob {
 
     public FossilRotations getFossilRotations() {
         return this.entityData.get(FOSSIL_ROTATIONS);
+    }
+
+    public void setFossilPositions(FossilPositions fossilVariant) {
+        this.entityData.set(FOSSIL_POSITIONS, fossilVariant);
+    }
+
+    public FossilPositions getFossilPositions() {
+        return this.entityData.get(FOSSIL_POSITIONS);
     }
 
     public void setSize(int size) {

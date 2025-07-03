@@ -26,7 +26,7 @@ public final class FossilRotations {
     }
 
     public FossilRotations() {
-        this(new HashMap<>());
+        this.rotations = new HashMap<>();
     }
 
     public FossilRotations.Rotations get(String part) {
@@ -44,25 +44,6 @@ public final class FossilRotations {
 
     public int size() {
         return this.rotations.size();
-    }
-
-    public void addRotation(String part, float xRotIn, float yRotIn, float zRotIn) {
-        float xRot = xRotIn / 360;
-        float yRot = yRotIn / 360;
-        float zRot = zRotIn / 360;
-        if (!this.rotations.containsKey(part)) {
-            this.rotations.put(part, new Rotations(xRot, yRot, zRot));
-        } else {
-            Rotations rotations = this.rotations.get(part);
-            float x = rotations.xRot() + xRot;
-            float y = rotations.yRot() + yRot;
-            float z = rotations.zRot() + zRot;
-            if (x == 0 && y == 0 && z == 0) {
-                this.rotations.remove(part);
-            } else {
-                this.rotations.replace(part, new Rotations(x, y, z));
-            }
-        }
     }
 
     public void setRotation(String part, float xRot, float yRot, float zRot) {

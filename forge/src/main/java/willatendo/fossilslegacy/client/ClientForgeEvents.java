@@ -6,7 +6,7 @@ import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import willatendo.fossilslegacy.network.ForgePacketHelper;
-import willatendo.fossilslegacy.network.ServerboundSinkPacket;
+import willatendo.fossilslegacy.network.serverbound.ServerboundVehicleSinkPacket;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 
@@ -17,10 +17,10 @@ public class ClientForgeEvents {
         Minecraft minecraft = Minecraft.getInstance();
         if (minecraft.player != null) {
             if (FAKeys.SINK.isDown()) {
-                ForgePacketHelper.sendToServer(new ServerboundSinkPacket(true));
+                ForgePacketHelper.sendToServer(new ServerboundVehicleSinkPacket(true));
             }
             if (!FAKeys.SINK.consumeClick()) {
-                ForgePacketHelper.sendToServer(new ServerboundSinkPacket(false));
+                ForgePacketHelper.sendToServer(new ServerboundVehicleSinkPacket(false));
             }
         }
     }

@@ -34,6 +34,7 @@ public class FossilRenderer extends EntityRenderer<Fossil, FossilRenderState> {
         float yHeadRot = Mth.rotLerp(partialTick, fossil.yHeadRotO, fossil.yHeadRot);
         fossilRenderState.bodyRot = this.solveBodyRot(fossil, yHeadRot, partialTick);
         fossilRenderState.fossilRotations = fossil.getFossilRotations();
+        fossilRenderState.fossilPositions = fossil.getFossilPositions();
         fossilRenderState.variant = fossil.getFossilVariant();
         fossilRenderState.size = fossil.getSize();
         fossilRenderState.renderScaleWidth = fossil.renderScaleWidth();

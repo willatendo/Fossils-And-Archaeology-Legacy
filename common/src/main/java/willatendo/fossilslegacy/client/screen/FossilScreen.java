@@ -14,7 +14,10 @@ import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ItemStack;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
@@ -22,8 +25,10 @@ import willatendo.fossilslegacy.client.model.json.JsonTypeModel;
 import willatendo.fossilslegacy.platform.FAModloaderHelper;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Fossil;
+import willatendo.fossilslegacy.server.entity.util.FossilPositions;
 import willatendo.fossilslegacy.server.entity.util.FossilRotations;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
+import willatendo.fossilslegacy.server.tags.FAItemTags;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
@@ -34,6 +39,7 @@ public class FossilScreen extends Screen {
     private Fossil fossil;
     private final int id;
     private final FossilRotations fossilRotations;
+    private final FossilPositions fossilPositions;
     private final Holder<FossilVariant> fossilVariant;
     protected int imageWidth = 176;
     protected int imageHeight = 168;
@@ -45,22 +51,59 @@ public class FossilScreen extends Screen {
     private float partXRot;
     private float partYRot;
     private float partZRot;
+    private float partX;
+    private float partY;
+    private float partZ;
     private boolean sliders = true;
     private EditBox xRotEditBox;
     private EditBox yRotEditBox;
     private EditBox zRotEditBox;
+    private boolean shiftDown = false;
+    private boolean controlDown = false;
 
-    public FossilScreen(int id, FossilRotations fossilRotations, Holder<FossilVariant> fossilVariant, Component title) {
+    public FossilScreen(int id, FossilRotations fossilRotations, FossilPositions fossilPositions, Holder<FossilVariant> fossilVariant, Component title) {
         super(title);
         this.id = id;
         this.fossilRotations = fossilRotations;
+        this.fossilPositions = fossilPositions;
         this.fossilVariant = fossilVariant;
+    }
+
+    @Override
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        return switch (keyCode) {
+            case 340, 344 -> {
+                this.shiftDown = true;
+                yield true;
+            }
+            case 341, 345 -> {
+                this.controlDown = true;
+                yield true;
+            }
+            default -> super.keyPressed(keyCode, scanCode, modifiers);
+        };
+    }
+
+    @Override
+    public boolean keyReleased(int keyCode, int scanCode, int modifiers) {
+        return switch (keyCode) {
+            case 340, 344 -> {
+                this.shiftDown = false;
+                yield true;
+            }
+            case 341, 345 -> {
+                this.controlDown = false;
+                yield true;
+            }
+            default -> super.keyReleased(keyCode, scanCode, modifiers);
+        };
     }
 
     @Override
     protected void init() {
         this.fossil = new Fossil(FAEntityTypes.FOSSIL.get(), this.minecraft.level);
         this.fossil.setFossilRotations(this.fossilRotations);
+        this.fossil.setFossilPositions(this.fossilPositions);
         this.fossil.setFossilVariant(this.fossilVariant);
         this.leftPos = (this.width - this.imageWidth) / 2;
         this.topPos = (this.height - this.imageHeight) / 2;
@@ -85,6 +128,16 @@ public class FossilScreen extends Screen {
                         this.partYRot = 0.0F;
                         this.partZRot = 0.0F;
                     }
+                    if (this.fossilPositions.contains(this.part)) {
+                        FossilPositions.Positions positions = this.fossilPositions.get(this.part);
+                        this.partX = positions.x();
+                        this.partY = positions.y();
+                        this.partZ = positions.z();
+                    } else {
+                        this.partX = 0.0F;
+                        this.partY = 0.0F;
+                        this.partZ = 0.0F;
+                    }
                     this.clearWidgets();
                     this.init();
                 }).bounds(this.leftPos - 75 - (x * 80), this.topPos + (y * 25), 75, 20).build());
@@ -98,6 +151,63 @@ public class FossilScreen extends Screen {
             this.init();
         }).bounds(this.leftPos + 173, this.topPos + 17, 20, 20).build());
 
+        Button up = this.addRenderableWidget(Button.builder(Component.literal("\u2191"), button -> {
+            this.partY -= this.amount();
+            this.setPos(this.partX, this.partY, this.partZ);
+            this.clearWidgets();
+            this.init();
+        }).bounds(this.leftPos + 221, this.topPos + 93, 20, 20).build());
+        up.active = this.part != null && canArticulate;
+
+        Button down = this.addRenderableWidget(Button.builder(Component.literal("\u2193"), button -> {
+            this.partY += this.amount();
+            this.setPos(this.partX, this.partY, this.partZ);
+            this.clearWidgets();
+            this.init();
+        }).bounds(this.leftPos + 221, this.topPos + 141, 20, 20).build());
+        down.active = this.part != null && canArticulate;
+
+        Button left = this.addRenderableWidget(Button.builder(Component.literal("\u2190"), button -> {
+            this.partX += this.amount();
+            this.setPos(this.partX, this.partY, this.partZ);
+            this.clearWidgets();
+            this.init();
+        }).bounds(this.leftPos + 197, this.topPos + 117, 20, 20).build());
+        left.active = this.part != null && canArticulate;
+
+        Button right = this.addRenderableWidget(Button.builder(Component.literal("\u2192"), button -> {
+            this.partX -= this.amount();
+            this.setPos(this.partX, this.partY, this.partZ);
+            this.clearWidgets();
+            this.init();
+        }).bounds(this.leftPos + 245, this.topPos + 117, 20, 20).build());
+        right.active = this.part != null && canArticulate;
+
+        Button forward = this.addRenderableWidget(Button.builder(Component.literal("\u25BC"), button -> {
+            this.partZ -= this.amount();
+            this.setPos(this.partX, this.partY, this.partZ);
+            this.clearWidgets();
+            this.init();
+        }).bounds(this.leftPos + 197, this.topPos + 93, 20, 20).build());
+        forward.active = this.part != null && canArticulate;
+
+        Button backward = this.addRenderableWidget(Button.builder(Component.literal("\u25B2"), button -> {
+            this.partZ += this.amount();
+            this.setPos(this.partX, this.partY, this.partZ);
+            this.clearWidgets();
+            this.init();
+        }).bounds(this.leftPos + 245, this.topPos + 93, 20, 20).build());
+        backward.active = this.part != null && canArticulate;
+
+        Button resetPos = this.addRenderableWidget(Button.builder(Component.literal("X"), button -> {
+            this.partX = 0.0F;
+            this.partY = 0.0F;
+            this.partZ = 0.0F;
+            this.setPos(this.partX, this.partY, this.partZ);
+            this.clearWidgets();
+            this.init();
+        }).bounds(this.leftPos + 221, this.topPos + 117, 20, 20).build());
+        resetPos.active = this.part != null && canArticulate;
 
         Button zeroXRot = this.addRenderableWidget(Button.builder(Component.literal("0"), button -> {
             this.partXRot = 0.0F;
@@ -257,6 +367,10 @@ public class FossilScreen extends Screen {
         }
     }
 
+    private float amount() {
+        return this.controlDown && this.shiftDown ? 0.25F : this.shiftDown ? 0.5F : 1.0F;
+    }
+
     @Override
     public void resize(Minecraft minecraft, int width, int height) {
         String xRotText = "";
@@ -290,6 +404,28 @@ public class FossilScreen extends Screen {
             fossil.getFossilRotations().setRotation(this.part, xRot, yRot, zRot);
         }
         this.fossil.getFossilRotations().setRotation(this.part, xRot, yRot, zRot);
+        this.damageHammer();
+    }
+
+    private void setPos(float x, float y, float z) {
+        FAModloaderHelper.INSTANCE.sendSetPosition(this.id, this.part, x, y, z);
+        Entity entity = this.minecraft.level.getEntity(this.id);
+        if (entity instanceof Fossil fossil) {
+            fossil.getFossilPositions().setPosition(this.part, x, y, z);
+        }
+        this.fossil.getFossilPositions().setPosition(this.part, x, y, z);
+        this.damageHammer();
+    }
+
+    private void damageHammer() {
+        if (this.minecraft.player.getRandom().nextInt(3) == 0) {
+            FAUtils.LOGGER.info("damage");
+            ItemStack itemStack = this.minecraft.player.getItemInHand(InteractionHand.MAIN_HAND);
+            if (itemStack.is(FAItemTags.HAMMERS)) {
+                FAUtils.LOGGER.info("is hammer");
+                itemStack.hurtAndBreak(1, this.minecraft.player, EquipmentSlot.MAINHAND);
+            }
+        }
     }
 
     protected boolean isPartialNumber(String value, boolean allowNegative) {
@@ -337,7 +473,7 @@ public class FossilScreen extends Screen {
 
     protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
         guiGraphics.blit(RenderType::guiTextured, TEXTURE, this.leftPos, this.topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-        guiGraphics.blitSprite(RenderType::guiTextured, X_SPOT_SPRITE, this.leftPos + 173, this.topPos, 27, this.imageHeight);
+        guiGraphics.blitSprite(RenderType::guiTextured, X_SPOT_SPRITE, this.leftPos + 173, this.topPos, 99, this.imageHeight);
         InventoryScreen.renderEntityInInventory(guiGraphics, this.leftPos + 88, this.topPos + 78 + this.fossilVariant.value().yOffset(), this.fossilVariant.value().scale(), new Vector3f(), new Quaternionf().rotationXYZ(0.43633232F, 180.0F, (float) Math.PI), null, fossil);
         if (!this.sliders) {
             this.xRotEditBox.render(guiGraphics, mouseX, mouseY, partialTick);

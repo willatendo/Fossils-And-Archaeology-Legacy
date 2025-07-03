@@ -15,6 +15,9 @@ import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import willatendo.fossilslegacy.client.FASearchRecipeBookCategory;
 import willatendo.fossilslegacy.network.*;
+import willatendo.fossilslegacy.network.clientbound.ClientboundFossilScreenPacket;
+import willatendo.fossilslegacy.network.serverbound.*;
+import willatendo.fossilslegacy.network.serverbound.ServerboundStartTimeMachinePacket;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.event.modification.*;
 import willatendo.simplelibrary.server.event.registry.*;
@@ -45,13 +48,13 @@ public class ModEvents {
     public static void registerPayloadHandlersEvent(RegisterPayloadHandlersEvent event) {
         PayloadRegistrar payloadRegistrar = event.registrar(FAUtils.ID).versioned("1.0.0").optional();
 
-        payloadRegistrar.playToServer(ServerboundApplyGenePacket.TYPE, ServerboundApplyGenePacket.STREAM_CODEC, NeoforgePacketHelper::handleApplyGenePacket);
-        payloadRegistrar.playToServer(ServerboundAddRotationsPacket.TYPE, ServerboundAddRotationsPacket.STREAM_CODEC, NeoforgePacketHelper::handleAddRotationsPacket);
-        payloadRegistrar.playToServer(ServerboundSetRotationsPacket.TYPE, ServerboundSetRotationsPacket.STREAM_CODEC, NeoforgePacketHelper::handleSetRotationsPacket);
-        payloadRegistrar.playToServer(ServerboundSinkPacket.TYPE, ServerboundSinkPacket.STREAM_CODEC, NeoforgePacketHelper::handleSinkPacket);
-        payloadRegistrar.playToServer(ServerboundTimeMachineUpdatePacket.TYPE, ServerboundTimeMachineUpdatePacket.STREAM_CODEC, NeoforgePacketHelper::handleTimeMachineUpdatePacket);
+        payloadRegistrar.playToServer(ServerboundSetDNARecombinatorGenePacket.TYPE, ServerboundSetDNARecombinatorGenePacket.STREAM_CODEC, NeoforgePacketHelper::handleApplyGenePacket);
+        payloadRegistrar.playToServer(ServerboundSetFossilPartRotationsPacket.TYPE, ServerboundSetFossilPartRotationsPacket.STREAM_CODEC, NeoforgePacketHelper::handleSetRotationsPacket);
+        payloadRegistrar.playToServer(ServerboundSetFossilPartPositionsPacket.TYPE, ServerboundSetFossilPartPositionsPacket.STREAM_CODEC, NeoforgePacketHelper::handleSetPositionsPacket);
+        payloadRegistrar.playToServer(ServerboundVehicleSinkPacket.TYPE, ServerboundVehicleSinkPacket.STREAM_CODEC, NeoforgePacketHelper::handleSinkPacket);
+        payloadRegistrar.playToServer(ServerboundStartTimeMachinePacket.TYPE, ServerboundStartTimeMachinePacket.STREAM_CODEC, NeoforgePacketHelper::handleTimeMachineUpdatePacket);
 
-        payloadRegistrar.playToClient(ClientboundFossilMenuPacket.TYPE, ClientboundFossilMenuPacket.STREAM_CODEC, NeoforgePacketHelper::handleFossilMenuPacket);
+        payloadRegistrar.playToClient(willatendo.fossilslegacy.network.clientbound.ClientboundFossilScreenPacket.TYPE, ClientboundFossilScreenPacket.STREAM_CODEC, NeoforgePacketHelper::handleFossilMenuPacket);
     }
 
     @SubscribeEvent

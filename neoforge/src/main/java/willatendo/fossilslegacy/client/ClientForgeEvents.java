@@ -6,7 +6,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
-import willatendo.fossilslegacy.network.ServerboundSinkPacket;
+import willatendo.fossilslegacy.network.serverbound.ServerboundVehicleSinkPacket;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 
@@ -17,10 +17,10 @@ public class ClientForgeEvents {
         Minecraft minecraft = Minecraft.getInstance();
         if (minecraft.player != null) {
             if (FAKeys.SINK.isDown()) {
-                PacketDistributor.sendToServer(new ServerboundSinkPacket(true));
+                PacketDistributor.sendToServer(new ServerboundVehicleSinkPacket(true));
             }
             if (!FAKeys.SINK.consumeClick()) {
-                PacketDistributor.sendToServer(new ServerboundSinkPacket(false));
+                PacketDistributor.sendToServer(new ServerboundVehicleSinkPacket(false));
             }
         }
     }

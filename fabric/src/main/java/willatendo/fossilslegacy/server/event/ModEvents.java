@@ -10,14 +10,13 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.crafting.ExtendedRecipeBookCategory;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
 import willatendo.fossilslegacy.client.FASearchRecipeBookCategory;
+import willatendo.fossilslegacy.network.ServerboundPacketRegistry;
+import willatendo.fossilslegacy.network.serverbound.ServerboundPackets;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.feature.FAPlacedFeatures;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.event.modification.*;
-import willatendo.simplelibrary.server.event.registry.FabricAttributeRegister;
-import willatendo.simplelibrary.server.event.registry.FabricDynamicRegistryRegister;
-import willatendo.simplelibrary.server.event.registry.FabricResourcePackRegister;
-import willatendo.simplelibrary.server.event.registry.FabricSpawnPlacementRegister;
+import willatendo.simplelibrary.server.event.registry.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +28,7 @@ public class ModEvents {
     public static void commonSetup() {
         BasicEvents.commonSetup();
 
+        ServerboundPacketRegistry.serverboundPacketSetup(new FabricServerboundPacketRegister());
         FabricCreativeModeTabModification fabricCreativeModeTabModification = new FabricCreativeModeTabModification();
         BasicEvents.buildCreativeModeTabEvent(fabricCreativeModeTabModification);
         fabricCreativeModeTabModification.build();
