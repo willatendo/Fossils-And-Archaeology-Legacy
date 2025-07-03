@@ -4,7 +4,8 @@ import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FAPackets {
-    public static final ResourceLocation CLIENTBOUND_FOSSIL_SCREEN = FAUtils.resource("fossil_screen");
+    public static final ResourceLocation CLIENTBOUND_OPEN_DINOPEDIA_SCREEN = FAUtils.resource("open_dinopedia_screen");
+    public static final ResourceLocation CLIENTBOUND_OPEN_FOSSIL_SCREEN = FAUtils.resource("open_fossil_screen");
 
     public static final ResourceLocation SERVERBOUND_DAMAGE_HAMMER = FAUtils.resource("damage_hammer");
     public static final ResourceLocation SERVERBOUND_SET_FOSSIL_PART_POSITIONS = FAUtils.resource("set_fossil_part_positions");

@@ -4,9 +4,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.GameRules;
@@ -24,15 +26,9 @@ public interface FAModloaderHelper {
     FAModloaderHelper INSTANCE = SimpleUtils.loadModloaderHelper(FAModloaderHelper.class);
 
     // Platform
-    void sendApplyGenePacket(BlockPos blockPos, String modelType, String skin, Optional<String> pattern);
+    void sentToServer(CustomPacketPayload customPacketPayload);
 
-    void sendSetRotation(int id, String part, float xRot, float yRot, float zRot);
-
-    void sendSetPosition(int id, String part, float x, float y, float z);
-
-    void sendTimeMachinePacket(BlockPos blockPos);
-
-    void sendFossilMenuPacket(ServerPlayer serverPlayer, int id, FossilRotations fossilRotations, FossilPositions fossilPositions, String fossilVariant);
+    void sentToClient(ServerPlayer serverPlayer, CustomPacketPayload customPacketPayload);
 
     default <T> Supplier<EntityDataSerializer<Holder<T>>> registerDataSerializer(String id, StreamCodec<RegistryFriendlyByteBuf, Holder<T>> streamCodec) {
         return this.registerDataSerializer(id, EntityDataSerializer.forValueType(streamCodec));

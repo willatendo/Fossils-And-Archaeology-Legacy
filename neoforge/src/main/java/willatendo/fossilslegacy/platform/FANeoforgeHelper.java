@@ -1,6 +1,6 @@
 package willatendo.fossilslegacy.platform;
 
-import net.minecraft.core.BlockPos;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.RecipeBookType;
@@ -8,44 +8,21 @@ import net.minecraft.world.level.GameRules;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.network.PacketDistributor;
 import willatendo.fossilslegacy.FossilsLegacyNeoforgeMod;
-import willatendo.fossilslegacy.network.clientbound.ClientboundFossilScreenPacket;
-import willatendo.fossilslegacy.network.serverbound.ServerboundSetFossilPartPositionsPacket;
-import willatendo.fossilslegacy.network.serverbound.ServerboundSetFossilPartRotationsPacket;
-import willatendo.fossilslegacy.network.serverbound.ServerboundSetDNARecombinatorGenePacket;
-import willatendo.fossilslegacy.network.serverbound.ServerboundStartTimeMachinePacket;
-import willatendo.fossilslegacy.server.entity.util.FossilPositions;
-import willatendo.fossilslegacy.server.entity.util.FossilRotations;
 import willatendo.fossilslegacy.server.fluid.FAFluidTypes;
 import willatendo.fossilslegacy.server.fluid.TarFluid;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
-import java.util.Optional;
 import java.util.function.Supplier;
 
 public class FANeoforgeHelper implements FAModloaderHelper {
     @Override
-    public void sendApplyGenePacket(BlockPos blockPos, String modelType, String skin, Optional<String> pattern) {
-        PacketDistributor.sendToServer(new ServerboundSetDNARecombinatorGenePacket(blockPos, modelType, skin, pattern));
+    public void sentToServer(CustomPacketPayload customPacketPayload) {
+        PacketDistributor.sendToServer(customPacketPayload);
     }
 
     @Override
-    public void sendSetRotation(int id, String part, float xRot, float yRot, float zRot) {
-        PacketDistributor.sendToServer(new ServerboundSetFossilPartRotationsPacket(id, part, xRot, yRot, zRot));
-    }
-
-    @Override
-    public void sendSetPosition(int id, String part, float x, float y, float z) {
-        PacketDistributor.sendToServer(new ServerboundSetFossilPartPositionsPacket(id, part, x, y, z));
-    }
-
-    @Override
-    public void sendTimeMachinePacket(BlockPos blockPos) {
-        PacketDistributor.sendToServer(new ServerboundStartTimeMachinePacket(blockPos));
-    }
-
-    @Override
-    public void sendFossilMenuPacket(ServerPlayer serverPlayer, int id, FossilRotations fossilRotations, FossilPositions fossilPositions, String fossilVariant) {
-        PacketDistributor.sendToPlayer(serverPlayer, new ClientboundFossilScreenPacket(id, fossilRotations, fossilPositions, fossilVariant));
+    public void sentToClient(ServerPlayer serverPlayer, CustomPacketPayload customPacketPayload) {
+        PacketDistributor.sendToPlayer(serverPlayer, customPacketPayload);
     }
 
     @Override

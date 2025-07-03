@@ -22,6 +22,8 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.client.model.json.JsonTypeModel;
+import willatendo.fossilslegacy.network.serverbound.ServerboundSetFossilPartPositionsPacket;
+import willatendo.fossilslegacy.network.serverbound.ServerboundSetFossilPartRotationsPacket;
 import willatendo.fossilslegacy.platform.FAModloaderHelper;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Fossil;
@@ -398,7 +400,7 @@ public class FossilScreen extends Screen {
     }
 
     private void setRot(float xRot, float yRot, float zRot) {
-        FAModloaderHelper.INSTANCE.sendSetRotation(this.id, this.part, xRot, yRot, zRot);
+        FAModloaderHelper.INSTANCE.sentToServer(new ServerboundSetFossilPartRotationsPacket(this.id, this.part, xRot, yRot, zRot));
         Entity entity = this.minecraft.level.getEntity(this.id);
         if (entity instanceof Fossil fossil) {
             fossil.getFossilRotations().setRotation(this.part, xRot, yRot, zRot);
@@ -408,7 +410,7 @@ public class FossilScreen extends Screen {
     }
 
     private void setPos(float x, float y, float z) {
-        FAModloaderHelper.INSTANCE.sendSetPosition(this.id, this.part, x, y, z);
+        FAModloaderHelper.INSTANCE.sentToServer(new ServerboundSetFossilPartPositionsPacket(this.id, this.part, x, y, z));
         Entity entity = this.minecraft.level.getEntity(this.id);
         if (entity instanceof Fossil fossil) {
             fossil.getFossilPositions().setPosition(this.part, x, y, z);

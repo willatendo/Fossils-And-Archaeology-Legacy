@@ -5,7 +5,6 @@ import com.mojang.datafixers.util.Pair;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.stats.RecipeBookSettings;
 import net.minecraft.world.inventory.RecipeBookType;
-import willatendo.fossilslegacy.network.FAPackets;
 import willatendo.fossilslegacy.server.event.ModCallbacks;
 import willatendo.fossilslegacy.server.event.ModEvents;
 import willatendo.fossilslegacy.server.menu.FARecipeBookTypes;
@@ -15,8 +14,6 @@ public class FossilsLegacyFabricMod implements ModInitializer {
     @Override
     public void onInitialize() {
         FossilsLegacyMod.onInitialize(new FabricSimpleRegistryRegister());
-
-        FAPackets.registerClientToServerPackets();
 
         ModCallbacks.callbacks();
         ModEvents.commonSetup();
