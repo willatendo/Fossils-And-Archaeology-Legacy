@@ -36,7 +36,7 @@ import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
-import willatendo.fossilslegacy.server.criteria.FLCriteriaTriggers;
+import willatendo.fossilslegacy.server.criteria.FACriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakerType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakingEntity;
 import willatendo.fossilslegacy.server.utils.FAUtils;
@@ -196,7 +196,7 @@ public class TamedZombifiedPiglin extends ZombifiedPiglin implements OwnableEnti
         this.setTame(true);
         this.setOwnerUUID(player.getUUID());
         if (player instanceof ServerPlayer) {
-            FLCriteriaTriggers.TAME_ZOMBIFIED_PIGMAN.get().trigger((ServerPlayer) player, this);
+            FACriteriaTriggers.TAME_ZOMBIFIED_PIGMAN.get().trigger((ServerPlayer) player, this);
         }
     }
 

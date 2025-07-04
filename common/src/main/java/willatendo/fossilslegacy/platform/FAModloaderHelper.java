@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.platform;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -8,27 +7,23 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.GameRules;
-import willatendo.fossilslegacy.server.entity.util.FossilPositions;
-import willatendo.fossilslegacy.server.entity.util.FossilRotations;
 import willatendo.fossilslegacy.server.fluid.TarFluid;
 import willatendo.fossilslegacy.server.item.items.ArticulatedFossilItem;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
-import java.util.Optional;
 import java.util.function.Supplier;
 
 public interface FAModloaderHelper {
     FAModloaderHelper INSTANCE = SimpleUtils.loadModloaderHelper(FAModloaderHelper.class);
 
     // Platform
-    void sentToServer(CustomPacketPayload customPacketPayload);
+    void sendToServer(CustomPacketPayload customPacketPayload);
 
-    void sentToClient(ServerPlayer serverPlayer, CustomPacketPayload customPacketPayload);
+    void sendToClient(ServerPlayer serverPlayer, CustomPacketPayload customPacketPayload);
 
     default <T> Supplier<EntityDataSerializer<Holder<T>>> registerDataSerializer(String id, StreamCodec<RegistryFriendlyByteBuf, Holder<T>> streamCodec) {
         return this.registerDataSerializer(id, EntityDataSerializer.forValueType(streamCodec));

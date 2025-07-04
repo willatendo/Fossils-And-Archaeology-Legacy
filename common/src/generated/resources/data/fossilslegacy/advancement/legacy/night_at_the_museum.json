@@ -1,0 +1,27 @@
+{
+  "parent": "fossilslegacy:legacy/palaeontology_table",
+  "criteria": {
+    "articulate_fossil": {
+      "trigger": "fossilslegacy:articulate_fossil"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.night_at_the_museum.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:diamond_hammer"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.night_at_the_museum.title"
+    }
+  },
+  "requirements": [
+    [
+      "articulate_fossil"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

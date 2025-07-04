@@ -10,7 +10,7 @@ import net.minecraft.advancements.critereon.SimpleCriterionTrigger;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.level.storage.loot.LootContext;
-import willatendo.fossilslegacy.server.criteria.FLCriteriaTriggers;
+import willatendo.fossilslegacy.server.criteria.FACriteriaTriggers;
 
 import java.util.Optional;
 
@@ -32,11 +32,11 @@ public class CreateZombifiedPigmanTrigger extends SimpleCriterionTrigger<CreateZ
         });
 
         public static Criterion<TriggerInstance> zombifiedPiglin() {
-            return FLCriteriaTriggers.CREATE_ZOMBIFIED_PIGMAN.get().createCriterion(new TriggerInstance(Optional.empty(), Optional.empty()));
+            return FACriteriaTriggers.CREATE_ZOMBIFIED_PIGMAN.get().createCriterion(new TriggerInstance(Optional.empty(), Optional.empty()));
         }
 
         public static Criterion<TriggerInstance> zombifiedPiglin(EntityPredicate.Builder builder) {
-            return FLCriteriaTriggers.CREATE_ZOMBIFIED_PIGMAN.get().createCriterion(new TriggerInstance(Optional.empty(), Optional.of(EntityPredicate.wrap(builder))));
+            return FACriteriaTriggers.CREATE_ZOMBIFIED_PIGMAN.get().createCriterion(new TriggerInstance(Optional.empty(), Optional.of(EntityPredicate.wrap(builder))));
         }
 
         public boolean matches(LootContext lootContext) {

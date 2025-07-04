@@ -408,7 +408,7 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
                 if (this.patternLength > 0 && !this.patterns[this.patternSelection].is(FAPatterns.BLANK)) {
                     pattern = Optional.of(this.patternRegistry.getKey(this.patterns[this.patternSelection].value()).toString());
                 }
-                FAModloaderHelper.INSTANCE.sentToServer(new ServerboundSetDNARecombinatorGenePacket(this.menu.DNARecombinatorBlockEntity.getBlockPos(), this.modelTypeRegistry.getKey(this.modelTypes[this.modelTypeSelection].value()).toString(), this.patternRegistry.getKey(this.skins[this.skinSelection].value()).toString(), pattern));
+                FAModloaderHelper.INSTANCE.sendToServer(new ServerboundSetDNARecombinatorGenePacket(this.menu.DNARecombinatorBlockEntity.getBlockPos(), this.modelTypeRegistry.getKey(this.modelTypes[this.modelTypeSelection].value()).toString(), this.patternRegistry.getKey(this.skins[this.skinSelection].value()).toString(), pattern));
                 return true;
             }
         }

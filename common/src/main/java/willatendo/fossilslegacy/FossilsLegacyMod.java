@@ -6,7 +6,7 @@ import willatendo.fossilslegacy.server.block.FABlockTypes;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.command_type.FACommandTypes;
-import willatendo.fossilslegacy.server.criteria.FLCriteriaTriggers;
+import willatendo.fossilslegacy.server.criteria.FACriteriaTriggers;
 import willatendo.fossilslegacy.server.criteria.critereon.FAEntitySubPredicates;
 import willatendo.fossilslegacy.server.dinopedia_entry.FADinopediaLineTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
@@ -81,7 +81,7 @@ public final class FossilsLegacyMod {
         simpleRegistryRegister.register(FAStructureProcessorType.STRUCTURE_PROCESSOR_TYPES);
         simpleRegistryRegister.register(FAStructurePeices.STRUCTURE_PIECE_TYPE);
         simpleRegistryRegister.register(FAStructureTypes.STRUCTURE_TYPE);
-        simpleRegistryRegister.register(FLCriteriaTriggers.TRIGGER_TYPES);
+        simpleRegistryRegister.register(FACriteriaTriggers.TRIGGER_TYPES);
         simpleRegistryRegister.register(FAStats.STATS);
         FABiomeSources.init();
         FAGameRules.init();

@@ -75,10 +75,14 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("advancements.fossilslegacy.legacy.walking_with_beasts.desc", "Breed an elasmotherium!");
         this.add("advancements.fossilslegacy.legacy.dollys_legacy.title", "Dolly's Legacy!");
         this.add("advancements.fossilslegacy.legacy.dollys_legacy.desc", "Clone one of every non-extinct animal!");
+        this.add("advancements.fossilslegacy.legacy.night_at_the_museum.title", "Night At The Museum!");
+        this.add("advancements.fossilslegacy.legacy.night_at_the_museum.desc", "Articulate an articulated fossil!");
         this.add("advancements.fossilslegacy.legacy.palaeontology_table.title", "A Palaeontologist's Table!");
         this.add("advancements.fossilslegacy.legacy.palaeontology_table.desc", "Make a palaeontology table!");
-        this.add("advancements.fossilslegacy.legacy.collector.title", "Night At the Museum!");
-        this.add("advancements.fossilslegacy.legacy.collector.desc", "Gather one of every articulated skeleton!");
+        this.add("advancements.fossilslegacy.legacy.pyrenean_ibex.title", "From The Pyrenean Ibex To This!");
+        this.add("advancements.fossilslegacy.legacy.pyrenean_ibex.desc", "Clone one of every cenozoic animal!");
+        this.add("advancements.fossilslegacy.legacy.play_god.title", "No, This Is How You Play God!");
+        this.add("advancements.fossilslegacy.legacy.play_god.desc", "Modify genes to express a specific trait!");
         this.add("advancements.fossilslegacy.legacy.relic_scrap.title", "Old News");
         this.add("advancements.fossilslegacy.legacy.relic_scrap.desc", "Acquire a relic scrap!");
         this.add("advancements.fossilslegacy.legacy.ancient_sword_artifact.title", "Once Feared");

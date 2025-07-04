@@ -1,0 +1,27 @@
+{
+  "parent": "fossilslegacy:legacy/fossil",
+  "criteria": {
+    "apply_gene": {
+      "trigger": "fossilslegacy:apply_gene"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.play_god.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:dna_recombinator"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.play_god.title"
+    }
+  },
+  "requirements": [
+    [
+      "apply_gene"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

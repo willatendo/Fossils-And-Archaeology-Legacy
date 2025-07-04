@@ -1,4 +1,4 @@
-// 1.21.4	2025-06-27T17:17:29.5375974	Advancements
+// 1.21.4	2025-07-03T23:49:12.8215483	Advancements
 33e2e87adf5fa02af175151c2a658106b8c185e3 data/fossilslegacy/advancement/legacy/analyzer.json
 7ed9231b5014c83df4dd24827d642afe49f826d3 data/fossilslegacy/advancement/legacy/ancient_sword.json
 b5c9e166630b640692f405c92d2590d188cb4cac data/fossilslegacy/advancement/legacy/anu.json
@@ -20,11 +20,14 @@ d45c0c16a9d6a2e038ee19c5179c14e1c8e7213f data/fossilslegacy/advancement/legacy/i
 61f0a392da8ba67ce2485db4f6af169f3f7545c7 data/fossilslegacy/advancement/legacy/lilac.json
 abe6be794a8c471701fc7a8592755e210750925a data/fossilslegacy/advancement/legacy/manny.json
 dc61c13646e2cbcdd68acf1fc4de6b061fc49aea data/fossilslegacy/advancement/legacy/melon.json
+7f6240e050f508edb06ee3564811adb0a782eb6c data/fossilslegacy/advancement/legacy/night_at_the_museum.json
 513c45365e3fa16c21d6d1db627bb03ea5bcac4f data/fossilslegacy/advancement/legacy/overworld_coin.json
 4e352393e7e3782951b85e6c06731efa0f2dcfb0 data/fossilslegacy/advancement/legacy/palaeontology_table.json
 127284cd5fcf8e6c9916936c6a62f6362f4ae264 data/fossilslegacy/advancement/legacy/pigman.json
+44c8ccd8a88166f02ed07de33abc32ce5ea7296e data/fossilslegacy/advancement/legacy/play_god.json
 e276c5ef92232de16dab16f4ba64cc6de5df1cca data/fossilslegacy/advancement/legacy/prehistoric_coin.json
 d639a7758e5be306bf1d88e8c56c0ab91a4c9225 data/fossilslegacy/advancement/legacy/puppy.json
+201c3955cdff00d08c2012784df8f16b370f430a data/fossilslegacy/advancement/legacy/pyrenean_ibex.json
 1fb3008ae8036e39f6d80f24575595fe134532ca data/fossilslegacy/advancement/legacy/rainbow.json
 3f61f6f6c74c23f8944dc056672338c1b5c6ea5e data/fossilslegacy/advancement/legacy/relic_scrap.json
 7b818a413b8966dfad823d73208eb7dfc8b798d5 data/fossilslegacy/advancement/legacy/root.json

@@ -24,6 +24,7 @@
 - Adding Pregnant Animals Is Now Easier
 - Dinosaur Sounds Are Now Part Of "Neutral" Category
 - Articulated Fossils Now Faces The Player When Placed Without Sneaking
+- Articulated Fossils Can Now Be Articulated Joint-By-Joint Using Hammers
 - Added Archaeology Category For Analyzer Recipe Book
 - Added Palaeontology Category For Analyzer Recipe Book
 - Added Mosasaurus Skeleton
@@ -35,6 +36,12 @@
 - Added "We Have a T-Rex!" Advancement
 - Added "Undoing Mistakes!" Advancement
 - Added "Bingo! Dino DNA!" Advancement
+- Added Wooden Hammer
+- Added Stone Hammer
+- Added Iron Hammer
+- Added Golden Hammer
+- Added Diamond Hammer
+- Added Netherite Hammer
 
 27/2/2024 1.4.9
 - Fixed Tooth Dagger Not Shearing All Shearables

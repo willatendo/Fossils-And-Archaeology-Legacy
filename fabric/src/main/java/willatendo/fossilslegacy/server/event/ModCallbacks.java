@@ -11,7 +11,7 @@ import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import willatendo.fossilslegacy.server.criteria.FLCriteriaTriggers;
+import willatendo.fossilslegacy.server.criteria.FACriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.AncientLightningBolt;
 import willatendo.fossilslegacy.server.entity.entities.TamedZombifiedPiglin;
@@ -48,7 +48,7 @@ public class ModCallbacks {
                     tamedZombifiedPiglin.setHealth(tamedZombifiedPiglin.getMaxHealth());
                     level.addFreshEntity(tamedZombifiedPiglin);
                     if (player instanceof ServerPlayer serverPlayer) {
-                        FLCriteriaTriggers.TAME_ZOMBIFIED_PIGMAN.get().trigger(serverPlayer, tamedZombifiedPiglin);
+                        FACriteriaTriggers.TAME_ZOMBIFIED_PIGMAN.get().trigger(serverPlayer, tamedZombifiedPiglin);
                     }
                     pig.discard();
                     return false;

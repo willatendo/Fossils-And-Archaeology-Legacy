@@ -9,7 +9,7 @@ import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.SimpleCriterionTrigger;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.storage.loot.LootContext;
-import willatendo.fossilslegacy.server.criteria.FLCriteriaTriggers;
+import willatendo.fossilslegacy.server.criteria.FACriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.entities.Anu;
 
 import java.util.Optional;
@@ -31,7 +31,7 @@ public class SummonAnuTrigger extends SimpleCriterionTrigger<SummonAnuTrigger.Tr
         });
 
         public static Criterion<TriggerInstance> summonAnu() {
-            return FLCriteriaTriggers.SUMMON_ANU.get().createCriterion(new TriggerInstance(Optional.empty(), Optional.empty()));
+            return FACriteriaTriggers.SUMMON_ANU.get().createCriterion(new TriggerInstance(Optional.empty(), Optional.empty()));
         }
 
         public boolean matches(LootContext lootContext) {

@@ -16,12 +16,12 @@ import java.util.function.Supplier;
 
 public class FANeoforgeHelper implements FAModloaderHelper {
     @Override
-    public void sentToServer(CustomPacketPayload customPacketPayload) {
+    public void sendToServer(CustomPacketPayload customPacketPayload) {
         PacketDistributor.sendToServer(customPacketPayload);
     }
 
     @Override
-    public void sentToClient(ServerPlayer serverPlayer, CustomPacketPayload customPacketPayload) {
+    public void sendToClient(ServerPlayer serverPlayer, CustomPacketPayload customPacketPayload) {
         PacketDistributor.sendToPlayer(serverPlayer, customPacketPayload);
     }
 

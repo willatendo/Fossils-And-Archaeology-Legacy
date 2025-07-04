@@ -9,7 +9,7 @@ import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.SimpleCriterionTrigger;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.storage.loot.LootContext;
-import willatendo.fossilslegacy.server.criteria.FLCriteriaTriggers;
+import willatendo.fossilslegacy.server.criteria.FACriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.entities.Anu;
 
 import java.util.Optional;
@@ -26,12 +26,10 @@ public class AnuOnEarthTrigger extends SimpleCriterionTrigger<AnuOnEarthTrigger.
     }
 
     public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ContextAwarePredicate> entity) implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<TriggerInstance> CODEC = RecordCodecBuilder.create(triggerInstance -> {
-            return triggerInstance.group(EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(TriggerInstance::player), EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("entity").forGetter(TriggerInstance::entity)).apply(triggerInstance, TriggerInstance::new);
-        });
+        public static final Codec<TriggerInstance> CODEC = RecordCodecBuilder.create(triggerInstance -> triggerInstance.group(EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(TriggerInstance::player), EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("entity").forGetter(TriggerInstance::entity)).apply(triggerInstance, TriggerInstance::new));
 
         public static Criterion<TriggerInstance> anuOnEarth() {
-            return FLCriteriaTriggers.ANU_ON_EARTH.get().createCriterion(new TriggerInstance(Optional.empty(), Optional.empty()));
+            return FACriteriaTriggers.ANU_ON_EARTH.get().createCriterion(new TriggerInstance(Optional.empty(), Optional.empty()));
         }
 
         public boolean matches(LootContext lootContext) {

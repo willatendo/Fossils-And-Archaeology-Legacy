@@ -25,7 +25,7 @@ public class TimeMachineScreen extends AbstractContainerScreen<TimeMachineMenu> 
         super.init();
         this.addRenderableWidget(TimeMachineButton.create(FAUtils.translation("container", "time_machine.start"), button -> {
             if (this.menu.getSlot(0).hasItem() && this.menu.isCharged()) {
-                FAModloaderHelper.INSTANCE.sentToServer(new ServerboundStartTimeMachinePacket(this.menu.timeMachineBlockEntity.getBlockPos()));
+                FAModloaderHelper.INSTANCE.sendToServer(new ServerboundStartTimeMachinePacket(this.menu.timeMachineBlockEntity.getBlockPos()));
             }
         }).bounds(this.leftPos + 131, this.topPos + 18, 34, 14).build());
     }

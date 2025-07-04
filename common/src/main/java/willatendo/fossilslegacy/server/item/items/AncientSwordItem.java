@@ -11,7 +11,7 @@ import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.criteria.FLCriteriaTriggers;
+import willatendo.fossilslegacy.server.criteria.FACriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.AncientLightningBolt;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
@@ -25,7 +25,7 @@ public class AncientSwordItem extends SwordItem {
     public boolean hurtEnemy(ItemStack itemStack, LivingEntity victim, LivingEntity user) {
         if (user instanceof Player player) {
             if (user instanceof ServerPlayer serverPlayer && victim instanceof Pig pig) {
-                FLCriteriaTriggers.CREATE_ZOMBIFIED_PIGMAN.get().trigger(serverPlayer, pig);
+                FACriteriaTriggers.CREATE_ZOMBIFIED_PIGMAN.get().trigger(serverPlayer, pig);
             }
             Level level = victim.level();
             LightningBolt lightningBolt;

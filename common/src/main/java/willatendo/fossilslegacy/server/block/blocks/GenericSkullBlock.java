@@ -25,7 +25,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import org.jetbrains.annotations.Nullable;
 import willatendo.fossilslegacy.server.block.FABlocks;
-import willatendo.fossilslegacy.server.criteria.FLCriteriaTriggers;
+import willatendo.fossilslegacy.server.criteria.FACriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Anu;
 
@@ -85,7 +85,7 @@ public class GenericSkullBlock extends Block {
 
         for (ServerPlayer serverplayer : level.getEntitiesOfClass(ServerPlayer.class, entity.getBoundingBox().inflate(5.0))) {
             CriteriaTriggers.SUMMONED_ENTITY.trigger(serverplayer, entity);
-            FLCriteriaTriggers.SUMMON_ANU.get().trigger(serverplayer, (Anu) entity);
+            FACriteriaTriggers.SUMMON_ANU.get().trigger(serverplayer, (Anu) entity);
         }
 
         updatePatternBlocks(level, blockPatternMatch);

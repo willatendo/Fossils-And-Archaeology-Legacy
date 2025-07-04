@@ -28,6 +28,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.Vec3;
 import willatendo.fossilslegacy.network.clientbound.ClientboundOpenFossilScreenPacket;
 import willatendo.fossilslegacy.platform.FAModloaderHelper;
+import willatendo.fossilslegacy.server.criteria.FACriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
 import willatendo.fossilslegacy.server.entity.util.FossilPositions;
 import willatendo.fossilslegacy.server.entity.util.FossilRotations;
@@ -168,7 +169,8 @@ public class Fossil extends Mob {
             }
         } else if (itemStack.is(FAItemTags.HAMMERS)) {
             if (player instanceof ServerPlayer serverPlayer) {
-                FAModloaderHelper.INSTANCE.sentToClient(serverPlayer, new ClientboundOpenFossilScreenPacket(this.getId(), this.getFossilRotations(), this.getFossilPositions(), this.level().registryAccess().lookupOrThrow(FARegistries.FOSSIL_VARIANTS).getKey(this.getFossilVariant().value()).toString()));
+                FACriteriaTriggers.ARTICULATE_FOSSIL.get().trigger(serverPlayer);
+                FAModloaderHelper.INSTANCE.sendToClient(serverPlayer, new ClientboundOpenFossilScreenPacket(this.getId(), this.getFossilRotations(), this.getFossilPositions(), this.level().registryAccess().lookupOrThrow(FARegistries.FOSSIL_VARIANTS).getKey(this.getFossilVariant().value()).toString()));
             }
             return InteractionResult.SUCCESS;
         } else if (itemStack.isEmpty()) {

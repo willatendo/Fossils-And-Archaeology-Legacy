@@ -1,0 +1,64 @@
+{
+  "parent": "fossilslegacy:legacy/undoing_mistakes",
+  "criteria": {
+    "elasmotherium": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:elasmotherium_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "mammoth": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:mammoth_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "smilodon": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:smilodon_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.pyrenean_ibex.desc"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:mammoth_embryo_syringe"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.pyrenean_ibex.title"
+    }
+  },
+  "requirements": [
+    [
+      "elasmotherium"
+    ],
+    [
+      "mammoth"
+    ],
+    [
+      "smilodon"
+    ]
+  ],
+  "rewards": {
+    "experience": 500
+  },
+  "sends_telemetry_event": true
+}

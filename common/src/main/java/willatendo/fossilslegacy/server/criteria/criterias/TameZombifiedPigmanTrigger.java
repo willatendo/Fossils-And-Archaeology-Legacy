@@ -9,7 +9,7 @@ import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.SimpleCriterionTrigger;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.storage.loot.LootContext;
-import willatendo.fossilslegacy.server.criteria.FLCriteriaTriggers;
+import willatendo.fossilslegacy.server.criteria.FACriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.entities.TamedZombifiedPiglin;
 
 import java.util.Optional;
@@ -30,11 +30,11 @@ public class TameZombifiedPigmanTrigger extends SimpleCriterionTrigger<TameZombi
         public static final Codec<TriggerInstance> CODEC = RecordCodecBuilder.create(triggerInstance -> triggerInstance.group(EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(TriggerInstance::player), EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("entity").forGetter(TriggerInstance::entity)).apply(triggerInstance, TriggerInstance::new));
 
         public static Criterion<TriggerInstance> tamedZombifiedPiglin() {
-            return FLCriteriaTriggers.TAME_ZOMBIFIED_PIGMAN.get().createCriterion(new TriggerInstance(Optional.empty(), Optional.empty()));
+            return FACriteriaTriggers.TAME_ZOMBIFIED_PIGMAN.get().createCriterion(new TriggerInstance(Optional.empty(), Optional.empty()));
         }
 
         public static Criterion<TriggerInstance> tamedZombifiedPiglin(EntityPredicate.Builder builder) {
-            return FLCriteriaTriggers.TAME_ZOMBIFIED_PIGMAN.get().createCriterion(new TriggerInstance(Optional.empty(), Optional.of(EntityPredicate.wrap(builder))));
+            return FACriteriaTriggers.TAME_ZOMBIFIED_PIGMAN.get().createCriterion(new TriggerInstance(Optional.empty(), Optional.of(EntityPredicate.wrap(builder))));
         }
 
         public boolean matches(LootContext lootContext) {

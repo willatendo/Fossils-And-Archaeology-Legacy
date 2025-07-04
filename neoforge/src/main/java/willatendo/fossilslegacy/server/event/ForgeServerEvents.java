@@ -12,7 +12,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityStruckByLightningEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.event.village.VillagerTradesEvent;
-import willatendo.fossilslegacy.server.criteria.FLCriteriaTriggers;
+import willatendo.fossilslegacy.server.criteria.FACriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.AncientLightningBolt;
 import willatendo.fossilslegacy.server.entity.entities.TamedZombifiedPiglin;
@@ -38,7 +38,7 @@ public class ForgeServerEvents {
                 tamedZombifiedPiglin.setHealth(tamedZombifiedPiglin.getMaxHealth());
                 level.addFreshEntity(tamedZombifiedPiglin);
                 if (player instanceof ServerPlayer serverPlayer) {
-                    FLCriteriaTriggers.TAME_ZOMBIFIED_PIGMAN.get().trigger(serverPlayer, tamedZombifiedPiglin);
+                    FACriteriaTriggers.TAME_ZOMBIFIED_PIGMAN.get().trigger(serverPlayer, tamedZombifiedPiglin);
                 }
                 pig.discard();
             }

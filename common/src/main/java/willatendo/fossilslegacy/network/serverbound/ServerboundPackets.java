@@ -13,6 +13,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import willatendo.fossilslegacy.server.block.entity.entities.DNARecombinatorBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.entities.TimeMachineBlockEntity;
+import willatendo.fossilslegacy.server.criteria.FACriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.entities.Fossil;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
 import willatendo.fossilslegacy.server.item.FADataComponents;
@@ -52,6 +53,9 @@ public final class ServerboundPackets {
             itemStack.set(FADataComponents.PATTERN_HOLDER.get(), new PatternHolder(skinHolder, patternHolder));
 
             DNARecombinatorBlockEntity.setItem(1, itemStack);
+            if (player instanceof ServerPlayer serverPlayer) {
+                FACriteriaTriggers.APPLY_GENE.get().trigger(serverPlayer);
+            }
         }
     }
 

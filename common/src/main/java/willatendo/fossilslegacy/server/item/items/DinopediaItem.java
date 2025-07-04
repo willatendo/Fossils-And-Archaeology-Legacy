@@ -21,7 +21,7 @@ public class DinopediaItem extends Item {
     public InteractionResult interactLivingEntity(ItemStack itemStack, Player player, LivingEntity livingEntity, InteractionHand interactionHand) {
         if (livingEntity instanceof DinopediaInformation) {
             if (player instanceof ServerPlayer serverPlayer) {
-                FAModloaderHelper.INSTANCE.sentToClient(serverPlayer, new ClientboundOpenDinopediaScreenPacket(livingEntity.getId()));
+                FAModloaderHelper.INSTANCE.sendToClient(serverPlayer, new ClientboundOpenDinopediaScreenPacket(livingEntity.getId()));
                 return InteractionResult.PASS;
             }
             if (player.level().isClientSide()) {

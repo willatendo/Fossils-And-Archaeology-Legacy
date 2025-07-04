@@ -14,14 +14,12 @@ import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ItemStack;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.client.model.json.JsonTypeModel;
+import willatendo.fossilslegacy.network.serverbound.ServerboundDamageHammerPacket;
 import willatendo.fossilslegacy.network.serverbound.ServerboundSetFossilPartPositionsPacket;
 import willatendo.fossilslegacy.network.serverbound.ServerboundSetFossilPartRotationsPacket;
 import willatendo.fossilslegacy.platform.FAModloaderHelper;
@@ -69,6 +67,14 @@ public class FossilScreen extends Screen {
         this.fossilRotations = fossilRotations;
         this.fossilPositions = fossilPositions;
         this.fossilVariant = fossilVariant;
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        if (!this.minecraft.player.getMainHandItem().is(FAItemTags.HAMMERS)) {
+            this.onClose();
+        }
     }
 
     @Override
@@ -213,7 +219,7 @@ public class FossilScreen extends Screen {
 
         Button zeroXRot = this.addRenderableWidget(Button.builder(Component.literal("0"), button -> {
             this.partXRot = 0.0F;
-            this.setRot(0.0F, 0.0F, 0.0F);
+            this.setRot(this.partXRot, this.partYRot, this.partZRot);
             this.clearWidgets();
             this.init();
         }).bounds(this.leftPos + 173, this.topPos + 93, 20, 20).build());
@@ -221,7 +227,7 @@ public class FossilScreen extends Screen {
 
         Button zeroYRot = this.addRenderableWidget(Button.builder(Component.literal("0"), button -> {
             this.partYRot = 0.0F;
-            this.setRot(0.0F, 0.0F, 0.0F);
+            this.setRot(this.partXRot, this.partYRot, this.partZRot);
             this.clearWidgets();
             this.init();
         }).bounds(this.leftPos + 173, this.topPos + 117, 20, 20).build());
@@ -229,7 +235,7 @@ public class FossilScreen extends Screen {
 
         Button zeroZRot = this.addRenderableWidget(Button.builder(Component.literal("0"), button -> {
             this.partZRot = 0.0F;
-            this.setRot(0.0F, 0.0F, 0.0F);
+            this.setRot(this.partXRot, this.partYRot, this.partZRot);
             this.clearWidgets();
             this.init();
         }).bounds(this.leftPos + 173, this.topPos + 141, 20, 20).build());
@@ -400,7 +406,7 @@ public class FossilScreen extends Screen {
     }
 
     private void setRot(float xRot, float yRot, float zRot) {
-        FAModloaderHelper.INSTANCE.sentToServer(new ServerboundSetFossilPartRotationsPacket(this.id, this.part, xRot, yRot, zRot));
+        FAModloaderHelper.INSTANCE.sendToServer(new ServerboundSetFossilPartRotationsPacket(this.id, this.part, xRot, yRot, zRot));
         Entity entity = this.minecraft.level.getEntity(this.id);
         if (entity instanceof Fossil fossil) {
             fossil.getFossilRotations().setRotation(this.part, xRot, yRot, zRot);
@@ -410,7 +416,7 @@ public class FossilScreen extends Screen {
     }
 
     private void setPos(float x, float y, float z) {
-        FAModloaderHelper.INSTANCE.sentToServer(new ServerboundSetFossilPartPositionsPacket(this.id, this.part, x, y, z));
+        FAModloaderHelper.INSTANCE.sendToServer(new ServerboundSetFossilPartPositionsPacket(this.id, this.part, x, y, z));
         Entity entity = this.minecraft.level.getEntity(this.id);
         if (entity instanceof Fossil fossil) {
             fossil.getFossilPositions().setPosition(this.part, x, y, z);
@@ -420,13 +426,8 @@ public class FossilScreen extends Screen {
     }
 
     private void damageHammer() {
-        if (this.minecraft.player.getRandom().nextInt(3) == 0) {
-            FAUtils.LOGGER.info("damage");
-            ItemStack itemStack = this.minecraft.player.getItemInHand(InteractionHand.MAIN_HAND);
-            if (itemStack.is(FAItemTags.HAMMERS)) {
-                FAUtils.LOGGER.info("is hammer");
-                itemStack.hurtAndBreak(1, this.minecraft.player, EquipmentSlot.MAINHAND);
-            }
+        if (this.minecraft.player.getRandom().nextInt(10) == 0) {
+            FAModloaderHelper.INSTANCE.sendToServer(new ServerboundDamageHammerPacket(this.minecraft.player.getId()));
         }
     }
 

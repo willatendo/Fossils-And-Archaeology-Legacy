@@ -30,12 +30,12 @@ import java.util.function.Supplier;
 
 public class FAFabricHelper implements FAModloaderHelper {
     @Override
-    public void sentToServer(CustomPacketPayload customPacketPayload) {
+    public void sendToServer(CustomPacketPayload customPacketPayload) {
         ClientPlayNetworking.send(customPacketPayload);
     }
 
     @Override
-    public void sentToClient(ServerPlayer serverPlayer, CustomPacketPayload customPacketPayload) {
+    public void sendToClient(ServerPlayer serverPlayer, CustomPacketPayload customPacketPayload) {
         ServerPlayNetworking.send(serverPlayer, customPacketPayload);
     }
 

@@ -37,7 +37,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.criteria.FLCriteriaTriggers;
+import willatendo.fossilslegacy.server.criteria.FACriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakerType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakingEntity;
 import willatendo.fossilslegacy.server.utils.FAUtils;
@@ -145,7 +145,7 @@ public class Anu extends Zombie implements SpeakingEntity {
         if (this.level().dimension() == Level.OVERWORLD) {
             for (Player player : this.level().players()) {
                 if (player instanceof ServerPlayer serverPlayer) {
-                    FLCriteriaTriggers.ANU_ON_EARTH.get().trigger(serverPlayer, this);
+                    FACriteriaTriggers.ANU_ON_EARTH.get().trigger(serverPlayer, this);
                 }
             }
         }
