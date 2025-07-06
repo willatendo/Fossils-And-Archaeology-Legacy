@@ -1,0 +1,40 @@
+{
+  "parent": "fossilslegacy:legacy/relic_scrap",
+  "criteria": {
+    "weapon_shop": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structures": "fossilslegacy:weapon_shop"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.discover_weapon_shop.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:golden_javelin"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.discover_weapon_shop.title"
+    }
+  },
+  "requirements": [
+    [
+      "weapon_shop"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

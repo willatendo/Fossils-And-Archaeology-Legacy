@@ -127,11 +127,6 @@ public class GenericSkullBlock extends Block {
     }
 
     @Override
-    public void setPlacedBy(Level $$0, BlockPos $$1, BlockState $$2, @Nullable LivingEntity $$3, ItemStack $$4) {
-        super.setPlacedBy($$0, $$1, $$2, $$3, $$4);
-    }
-
-    @Override
     public void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState neighbourBlockState, boolean bl) {
         if (!neighbourBlockState.is(blockState.getBlock())) {
             this.trySpawnAnu(level, blockPos);

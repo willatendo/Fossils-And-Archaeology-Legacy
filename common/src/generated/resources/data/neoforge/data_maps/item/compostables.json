@@ -6,17 +6,32 @@
     "fossilslegacy:archaeopteris_sapling": {
       "chance": 0.3
     },
+    "fossilslegacy:archaeopteris_spore": {
+      "chance": 0.35
+    },
     "fossilslegacy:calamites_leaves": {
       "chance": 0.3
     },
     "fossilslegacy:calamites_sapling": {
       "chance": 0.3
     },
+    "fossilslegacy:calamites_spore": {
+      "chance": 0.35
+    },
+    "fossilslegacy:cycad_cone": {
+      "chance": 0.35
+    },
+    "fossilslegacy:horsetail_spore": {
+      "chance": 0.35
+    },
     "fossilslegacy:jurassic_fern": {
       "chance": 0.65
     },
     "fossilslegacy:jurassic_fern_spores": {
-      "chance": 0.65
+      "chance": 0.35
+    },
+    "fossilslegacy:lepidodendron_cone": {
+      "chance": 0.35
     },
     "fossilslegacy:lepidodendron_leaves": {
       "chance": 0.3

@@ -11,6 +11,59 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "fossilslegacy:tall_horsetail",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "half": "lower"
+              }
+            }
+          ],
+          "functions": [
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "block": "fossilslegacy:tall_horsetail",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "amount": "1"
+                  }
+                }
+              ],
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            },
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "block": "fossilslegacy:tall_horsetail",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "amount": "2"
+                  }
+                }
+              ],
+              "count": 2.0,
+              "function": "minecraft:set_count"
+            },
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "block": "fossilslegacy:tall_horsetail",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "amount": "3"
+                  }
+                }
+              ],
+              "count": 3.0,
+              "function": "minecraft:set_count"
+            }
+          ],
           "name": "fossilslegacy:tall_horsetail"
         }
       ],

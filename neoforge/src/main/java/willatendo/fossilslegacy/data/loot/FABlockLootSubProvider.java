@@ -5,19 +5,26 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DoublePlantBlock;
+import net.minecraft.world.level.block.PinkPetalsBlock;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.block.blocks.HorsetailBlock;
 import willatendo.fossilslegacy.server.block.blocks.MayanVaseBlock;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom;
 import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom.ItemAndChance;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.data.loot.SimpleBlockLootSubProvider;
+
+import java.util.stream.IntStream;
 
 public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
     public FABlockLootSubProvider(HolderLookup.Provider registries) {
@@ -51,11 +58,11 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.dropSelf(FABlocks.ARCHAEOLOGY_WORKBENCH.get());
         this.dropSelf(FABlocks.PALAEONTOLOGY_TABLE.get());
         this.add(FABlocks.JURASSIC_FERN.get(), block -> this.createDoublePlantWithSeedDrops(block, FABlocks.JURASSIC_FERN.get()));
-        this.dropSelf(FABlocks.SHORT_HORSETAIL.get());
-        this.dropSelf(FABlocks.TALL_HORSETAIL.get());
+        this.add(FABlocks.SHORT_HORSETAIL.get(), block -> LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(this.applyExplosionDecay(block, LootItem.lootTableItem(block).apply(IntStream.rangeClosed(1, 3).boxed().toList(), integer -> SetItemCountFunction.setCount(ConstantValue.exactly(integer)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(HorsetailBlock.AMOUNT, integer))))))));
+        this.add(FABlocks.TALL_HORSETAIL.get(), block -> LootTable.lootTable().withPool(this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(block).apply(IntStream.rangeClosed(1, 3).boxed().toList(), integer -> SetItemCountFunction.setCount(ConstantValue.exactly(integer)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(HorsetailBlock.AMOUNT, integer)))).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER)))))));
         this.dropSelf(FABlocks.DRUM.get());
         this.dropSelf(FABlocks.FEEDER.get());
-        this.add(FABlocks.PERMAFROST.get(), block -> this.createSilkTouchDispatchTable(block, this.applyExplosionCondition(block, LootOneItemOfManyRandom.lootTableItem(20000, new ItemAndChance(FAItems.JURASSIC_FERN_SPORES.get(), 0, 4000), new ItemAndChance(FABlocks.SKULL_BLOCK.get(), 4000, 8000), new ItemAndChance(FAItems.FROZEN_MEAT.get(), 8000, 12000), new ItemAndChance(Items.BEEF, 12000, 16000), new ItemAndChance(Items.PORKCHOP, 16000, 20000)))));
+        this.add(FABlocks.PERMAFROST.get(), block -> this.createSilkTouchDispatchTable(block, this.applyExplosionCondition(block, LootOneItemOfManyRandom.lootTableItem(20000, new ItemAndChance(FAItems.JURASSIC_FERN_SPORES.get(), 0, 2000), new ItemAndChance(FABlocks.SKULL_BLOCK.get(), 4000, 8000), new ItemAndChance(FAItems.FROZEN_MEAT.get(), 8000, 12000), new ItemAndChance(Items.BEEF, 12000, 16000), new ItemAndChance(Items.PORKCHOP, 16000, 20000)))));
         this.add(FABlocks.ICED_STONE.get(), block -> this.createSingleItemTableWithSilkTouch(block, Blocks.COBBLESTONE));
         this.add(FABlocks.AXOLOTLSPAWN.get(), noDrop());
         this.dropSelf(FABlocks.TIME_MACHINE.get());
@@ -93,6 +100,8 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.dropOther(FABlocks.RED_DECORATION_POST.get(), FAItems.RED_DECORATION_PLAQUE.get());
         this.dropOther(FABlocks.BLACK_DECORATION_POST.get(), FAItems.BLACK_DECORATION_PLAQUE.get());
         this.dropSelf(FABlocks.SMALL_CAGE.get());
+        this.dropSelf(FABlocks.CYCAD_HEAD.get());
+        this.dropSelf(FABlocks.CYCAD_LOG.get());
         this.dropSelf(FABlocks.LEPIDODENDRON_PLANKS.get());
         this.dropSelf(FABlocks.LEPIDODENDRON_SAPLING.get());
         this.dropSelf(FABlocks.LEPIDODENDRON_LOG.get());

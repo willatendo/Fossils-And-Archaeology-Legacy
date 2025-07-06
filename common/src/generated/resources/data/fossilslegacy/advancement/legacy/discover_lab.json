@@ -1,0 +1,40 @@
+{
+  "parent": "fossilslegacy:legacy/relic_scrap",
+  "criteria": {
+    "lab": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structures": "fossilslegacy:lab"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.discover_lab.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "minecraft:polished_tuff"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.discover_lab.title"
+    }
+  },
+  "requirements": [
+    [
+      "lab"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

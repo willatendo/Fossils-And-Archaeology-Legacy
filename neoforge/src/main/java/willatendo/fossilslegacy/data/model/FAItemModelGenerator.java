@@ -42,11 +42,14 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.DRYOSAURUS_DNA.get());
         this.generatedItem(FAItems.ELASMOTHERIUM_DNA.get());
         this.generatedItem(FAItems.BARYONYX_DNA.get());
+        this.generatedItem(FAItems.CYCAD_DNA.get());
+        this.generatedItem(FAItems.HORSETAIL_DNA.get());
         this.generatedItem(FAItems.JURASSIC_FERN_DNA.get());
         this.generatedItem(FAItems.LEPIDODENDRON_DNA.get());
         this.generatedItem(FAItems.SIGILLARIA_DNA.get());
         this.generatedItem(FAItems.CALAMITES_DNA.get());
         this.generatedItem(FAItems.ARCHAEOPTERIS_DNA.get());
+        this.generatedItem(FAItems.CYCAD_CONE.get());
         this.generatedItem(FAItems.LEPIDODENDRON_CONE.get());
         this.generatedItem(FAItems.SIGILLARIA_SPORE.get());
         this.generatedItem(FAItems.CALAMITES_SPORE.get());
@@ -194,6 +197,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.DODO_EGG.get());
         this.generatedItem(FAItems.MOA_EGG.get());
         this.generatedItem(FAItems.MAGIC_CONCH.get());
+        this.generatedItem(FAItems.HORSETAIL_SPORE.get());
         this.generatedItem(FAItems.JURASSIC_FERN_SPORES.get());
         this.item(FAItems.ARTICULATED_FOSSIL.get(), ItemModelUtils.specialModel(FAModelTemplates.TEMPLATE_ARTICULATED_FOSSIL.create(FAItems.ARTICULATED_FOSSIL.get(), new TextureMapping().put(TextureSlot.PARTICLE, this.modLocation("item/articulated_fossil")), itemModelGenerators.modelOutput), new ArticulatedFossilSpecialRenderer.Unbaked()));
         this.generatedItem(FAItems.RELIC_SCRAP.get());

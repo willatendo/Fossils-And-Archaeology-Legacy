@@ -10,13 +10,12 @@ import java.util.Optional;
 
 public final class FAModelTemplates {
     public static final ModelTemplate FROGSPAWN = FAModelTemplates.createMC("frogspawn", TextureSlot.TEXTURE, TextureSlot.PARTICLE).extend().renderType("cutout").build();
-    public static final ExtendedModelTemplate TEMPLATE_BRANCH = FAModelTemplates.create("template_branch", FATextureSlot.LEAVES, FATextureSlot.LOG).renderType("cutout").build();
-    public static final ExtendedModelTemplate TEMPLATE_BRANCH_DUAL = FAModelTemplates.create("template_branch_dual", FATextureSlot.LEAVES, FATextureSlot.LOG).renderType("cutout").build();
-    public static final ExtendedModelTemplate TEMPLATE_BRANCH_HIGH = FAModelTemplates.create("template_branch_high", FATextureSlot.LEAVES, FATextureSlot.LOG).renderType("cutout").build();
-    public static final ExtendedModelTemplate TEMPLATE_BRANCH_LOW = FAModelTemplates.create("template_branch_low", FATextureSlot.LEAVES, FATextureSlot.LOG).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_SMALL_CAGE = FAModelTemplates.create("template_small_cage").renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_CULTIVATOR = FAModelTemplates.create("template_cultivator", TextureSlot.SIDE, TextureSlot.TOP).renderType("translucent").build();
     public static final ExtendedModelTemplate TEMPLATE_CULTIVATOR_ACTIVE = FAModelTemplates.create("template_cultivator_active", TextureSlot.SIDE, TextureSlot.TOP).renderType("translucent").build();
+    public static final ExtendedModelTemplate TEMPLATE_CYCAD_HEAD_CONE = FAModelTemplates.create("template_cycad_head_cone", TextureSlot.SIDE, TextureSlot.TOP, FATextureSlot.HEAD, FATextureSlot.LEAVES).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_CYCAD_HEAD_NO_CONE = FAModelTemplates.create("template_cycad_head_no_cone", TextureSlot.SIDE, TextureSlot.TOP, FATextureSlot.LEAVES).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_CYCAD_LOG = FAModelTemplates.create("template_cycad_log", TextureSlot.SIDE, TextureSlot.TOP).build();
     public static final ExtendedModelTemplate TEMPLATE_DECORATION_PLAQUE_POST = FAModelTemplates.create("template_decoration_plaque_post", FATextureSlot.POST).build();
     public static final ExtendedModelTemplate TEMPLATE_PLANT_1 = FAModelTemplates.create("template_plant_1", FATextureSlot.PLANT_1).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_PLANT_2 = FAModelTemplates.create("template_plant_2", FATextureSlot.PLANT_2).renderType("cutout").build();

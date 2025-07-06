@@ -1,0 +1,34 @@
+{
+  "parent": "fossilslegacy:legacy/discover_machu_picchu",
+  "criteria": {
+    "has_llama": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#fossilslegacy:llama_statues"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.llamas_in_pajamas.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:iron_llama_statue"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.llamas_in_pajamas.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_llama"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

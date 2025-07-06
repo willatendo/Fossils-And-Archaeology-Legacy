@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.server.block.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,6 +22,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import willatendo.fossilslegacy.server.block.FABlocks;
 
 public class TallHorsetailBlock extends HorsetailBlock {
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
@@ -59,8 +61,14 @@ public class TallHorsetailBlock extends HorsetailBlock {
 
     @Override
     public void setPlacedBy(Level level, BlockPos blockPos, BlockState blockState, LivingEntity livingEntity, ItemStack itemStack) {
-        BlockPos aboveBlockPos = blockPos.above();
-        level.setBlock(aboveBlockPos, TallHorsetailBlock.copyWaterloggedFrom(level, aboveBlockPos, blockState.setValue(HALF, DoubleBlockHalf.UPPER)), 3);
+        BlockState placedBlockState = level.getBlockState(blockPos);
+        if (placedBlockState.is(this) && placedBlockState.getValue(HALF) == DoubleBlockHalf.LOWER) {
+            BlockPos aboveBlockPos = blockPos.above();
+            level.setBlock(aboveBlockPos, TallHorsetailBlock.copyWaterloggedFrom(level, aboveBlockPos, blockState.setValue(HALF, DoubleBlockHalf.UPPER)), 3);
+        } else if (placedBlockState.is(this) && placedBlockState.getValue(HALF) == DoubleBlockHalf.UPPER) {
+            BlockPos belowBlockPos = blockPos.below();
+            level.setBlock(belowBlockPos, TallHorsetailBlock.copyWaterloggedFrom(level, belowBlockPos, blockState.setValue(HALF, DoubleBlockHalf.LOWER)), 3);
+        }
     }
 
     @Override
@@ -122,5 +130,16 @@ public class TallHorsetailBlock extends HorsetailBlock {
     @Override
     protected long getSeed(BlockState blockState, BlockPos blockPos) {
         return Mth.getSeed(blockPos.getX(), blockPos.below(blockState.getValue(HALF) == DoubleBlockHalf.LOWER ? 0 : 1).getY(), blockPos.getZ());
+    }
+
+    @Override
+    public void performBonemeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
+        int amount = blockState.getValue(AMOUNT);
+        if (amount < 3 && blockState.getValue(HALF) == DoubleBlockHalf.LOWER) {
+            serverLevel.setBlock(blockPos, blockState.setValue(AMOUNT, amount + 1), 2);
+            serverLevel.setBlock(blockPos.above(), blockState.setValue(TallHorsetailBlock.HALF, DoubleBlockHalf.UPPER).setValue(AMOUNT, amount + 1), 2);
+        } else {
+            Block.popResource(serverLevel, blockPos, new ItemStack(this));
+        }
     }
 }

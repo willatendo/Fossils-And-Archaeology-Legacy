@@ -1,0 +1,34 @@
+{
+  "parent": "fossilslegacy:legacy/discover_mayan_temple",
+  "criteria": {
+    "has_codex": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:codex"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.codex.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:codex"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.codex.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_codex"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

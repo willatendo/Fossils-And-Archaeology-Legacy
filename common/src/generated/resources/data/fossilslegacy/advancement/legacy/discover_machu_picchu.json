@@ -1,0 +1,40 @@
+{
+  "parent": "fossilslegacy:legacy/relic_scrap",
+  "criteria": {
+    "machu_picchu": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structures": "fossilslegacy:machu_picchu"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.discover_machu_picchu.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "minecraft:gravel"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.discover_machu_picchu.title"
+    }
+  },
+  "requirements": [
+    [
+      "machu_picchu"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

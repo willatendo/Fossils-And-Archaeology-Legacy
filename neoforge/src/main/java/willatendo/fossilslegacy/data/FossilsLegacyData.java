@@ -59,7 +59,6 @@ import willatendo.simplelibrary.data.SimpleModelProvider;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = FAUtils.ID)
 public class FossilsLegacyData {
@@ -71,8 +70,6 @@ public class FossilsLegacyData {
 
         DataGenerator dataGenerator = event.getGenerator();
         PackOutput packOutput = dataGenerator.getPackOutput();
-        CompletableFuture<HolderLookup.Provider> registries = event.getLookupProvider();
-
         event.addProvider(new SimpleModelProvider(FAItemModelGenerator::new, FABlockModelGenerator::new, packOutput, FAUtils.ID));
         event.addProvider(new FASoundDefinitionsProvider(packOutput, FAUtils.ID));
         event.addProvider(new FALanguageProvider(packOutput, FAUtils.ID, "en_us"));
@@ -80,10 +77,12 @@ public class FossilsLegacyData {
         event.addProvider(new FAAnimationProvider(packOutput, FAUtils.ID));
         event.addProvider(new FAEquipmentAssetProvider(packOutput));
 
-        FABuiltinProvider FABuiltinProvider = new FABuiltinProvider(packOutput, registries, FAUtils.ID);
-        event.addProvider(FABuiltinProvider);
+        event.createDatapackRegistryObjects(BUILDER);
+
+        CompletableFuture<HolderLookup.Provider> registries = event.getLookupProvider();
+
         event.addProvider(new FARecipeProvider.Runner(packOutput, registries));
-        event.addProvider(new AdvancementProvider(packOutput, registries, List.of(new LegacyAdvancementGenerator(FABuiltinProvider.getRegistryProvider()))));
+        event.addProvider(new AdvancementProvider(packOutput, registries, List.of(new LegacyAdvancementGenerator())));
         event.addProvider(new SimpleLootTableProvider(packOutput, registries, new LootTableProvider.SubProviderEntry(FABlockLootSubProvider::new, LootContextParamSets.BLOCK), new LootTableProvider.SubProviderEntry(FAEntityLootSubProvider::new, LootContextParamSets.ENTITY), new LootTableProvider.SubProviderEntry(FAChestLootSubProvider::new, LootContextParamSets.CHEST), new LootTableProvider.SubProviderEntry(FAGiftLootSubProvider::new, LootContextParamSets.GIFT), new LootTableProvider.SubProviderEntry(FAArchaeologyLootSubProvider::new, LootContextParamSets.ARCHAEOLOGY), new LootTableProvider.SubProviderEntry(FAShearingLootSubProvider::new, LootContextParamSets.SHEARING)));
         event.addProvider(new SimpleDataMapProvider(packOutput, registries, ModEvents.NEOFORGE_COMPOSTABLES_MODIFICATION, ModEvents.NEOFORGE_HERO_OF_THE_VILLAGE_GIFT_MODIFICATION, ModEvents.NEOFORGE_OXIDATION_MODIFICATION, ModEvents.NEOFORGE_WAXABLE_MODIFICATION));
         FABlockTagProvider FABlockTagProvider = new FABlockTagProvider(packOutput, registries, FAUtils.ID);

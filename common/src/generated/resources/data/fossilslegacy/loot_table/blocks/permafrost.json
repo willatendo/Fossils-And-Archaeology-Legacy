@@ -37,7 +37,7 @@
               ],
               "fuels": [
                 {
-                  "high_weight": 4000,
+                  "high_weight": 2000,
                   "item": "fossilslegacy:jurassic_fern_spores",
                   "low_weight": 0
                 },

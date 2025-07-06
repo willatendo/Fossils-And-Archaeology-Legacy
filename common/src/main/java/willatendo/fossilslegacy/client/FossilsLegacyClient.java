@@ -38,7 +38,7 @@ public final class FossilsLegacyClient {
     }
 
     public static void blockColorRegistry(BlockColorRegistry blockColorRegistry) {
-        blockColorRegistry.registerLeavesColor(FABlocks.ARCHAEOPTERIS_LEAVES.get(), FABlocks.CALAMITES_LEAVES.get(), FABlocks.LEPIDODENDRON_LEAVES.get(), FABlocks.SIGILLARIA_LEAVES.get(), FABlocks.JURASSIC_FERN.get(), FABlocks.SHORT_HORSETAIL.get(), FABlocks.TALL_HORSETAIL.get());
+        blockColorRegistry.registerLeavesColor(FABlocks.CYCAD_HEAD.get(), FABlocks.ARCHAEOPTERIS_LEAVES.get(), FABlocks.CALAMITES_LEAVES.get(), FABlocks.LEPIDODENDRON_LEAVES.get(), FABlocks.SIGILLARIA_LEAVES.get(), FABlocks.JURASSIC_FERN.get(), FABlocks.SHORT_HORSETAIL.get(), FABlocks.TALL_HORSETAIL.get());
     }
 
     public static void keyMappingEvent(KeyMappingRegistry keyMappingRegister) {

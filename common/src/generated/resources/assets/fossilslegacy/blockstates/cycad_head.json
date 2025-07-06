@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "has_cone=false": {
+      "model": "fossilslegacy:block/cycad_head_no_cone"
+    },
+    "has_cone=true": {
+      "model": "fossilslegacy:block/cycad_head_cone"
+    }
+  }
+}

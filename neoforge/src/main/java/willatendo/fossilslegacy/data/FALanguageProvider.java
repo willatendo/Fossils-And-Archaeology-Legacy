@@ -103,6 +103,34 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("advancements.fossilslegacy.legacy.archaeology_workbench.desc", "Make a archaeology workbench!");
         this.add("advancements.fossilslegacy.legacy.stone_tablet.title", "An Old Story");
         this.add("advancements.fossilslegacy.legacy.stone_tablet.desc", "Place a stone tablet!");
+        this.add("advancements.fossilslegacy.legacy.discover_academy.title", "A Place of Learning!");
+        this.add("advancements.fossilslegacy.legacy.discover_academy.desc", "Discover an academy!");
+        this.add("advancements.fossilslegacy.legacy.discover_lab.title", "Past Mistakes!");
+        this.add("advancements.fossilslegacy.legacy.discover_lab.desc", "Discover a lab!");
+        this.add("advancements.fossilslegacy.legacy.discover_moai.title", "Legacy of the Rapa Nui!");
+        this.add("advancements.fossilslegacy.legacy.discover_moai.desc", "Discover a mo'ai!");
+        this.add("advancements.fossilslegacy.legacy.discover_machu_picchu.title", "An Abandoned Capitol!");
+        this.add("advancements.fossilslegacy.legacy.discover_machu_picchu.desc", "Discover Machu Picchu!");
+        this.add("advancements.fossilslegacy.legacy.quipu.title", "Tax Records!");
+        this.add("advancements.fossilslegacy.legacy.quipu.desc", "Acquire a quipu!");
+        this.add("advancements.fossilslegacy.legacy.llamas_in_pajamas.title", "Llamas in Pajamas!");
+        this.add("advancements.fossilslegacy.legacy.llamas_in_pajamas.desc", "Acquire a llama statue!");
+        this.add("advancements.fossilslegacy.legacy.llama_obsession.title", "Llama Obsession!");
+        this.add("advancements.fossilslegacy.legacy.llama_obsession.desc", "Aquire all kinds of llama statues!");
+        this.add("advancements.fossilslegacy.legacy.discover_mayan_temple.title", "Ancient Handiwork!");
+        this.add("advancements.fossilslegacy.legacy.discover_mayan_temple.desc", "Discover a Mayan temple!");
+        this.add("advancements.fossilslegacy.legacy.discover_mayan_city.title", "City in the Jungle!");
+        this.add("advancements.fossilslegacy.legacy.discover_mayan_city.desc", "Discover a Mayan city!");
+        this.add("advancements.fossilslegacy.legacy.jade.title", "Jewels!");
+        this.add("advancements.fossilslegacy.legacy.jade.desc", "Acquire a piece of jade!");
+        this.add("advancements.fossilslegacy.legacy.codex.title", "Ancient Stories!");
+        this.add("advancements.fossilslegacy.legacy.codex.desc", "Acquire a codex!");
+        this.add("advancements.fossilslegacy.legacy.all_jade.title", "Three of a Kind!");
+        this.add("advancements.fossilslegacy.legacy.all_jade.desc", "Acquire all types of jade!");
+        this.add("advancements.fossilslegacy.legacy.discover_totem_pole.title", "The Tlingit!");
+        this.add("advancements.fossilslegacy.legacy.discover_totem_pole.desc", "Discover a totem pole!");
+        this.add("advancements.fossilslegacy.legacy.discover_weapon_shop.title", "Craftsmanship!");
+        this.add("advancements.fossilslegacy.legacy.discover_weapon_shop.desc", "Discover a weapon shop!");
         this.add("advancements.fossilslegacy.legacy.skull_block.title", "Spooky Skeletons!");
         this.add("advancements.fossilslegacy.legacy.skull_block.desc", "Or...Maybe just their skulls?");
         this.add("advancements.fossilslegacy.legacy.anu.title", "The Master!");
@@ -169,6 +197,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.WAXED_OXIDIZED_COPPER_LLAMA_STATUE.get());
         this.add(FABlocks.SMALL_CAGE.get());
         this.add("block.fossilslegacy.small_cage.desc", "In cage: %s");
+        this.add(FABlocks.CYCAD_HEAD.get());
+        this.add(FABlocks.CYCAD_LOG.get());
         this.add(FABlocks.LEPIDODENDRON_PLANKS.get());
         this.add(FABlocks.LEPIDODENDRON_SAPLING.get());
         this.add(FABlocks.LEPIDODENDRON_LOG.get());
@@ -563,11 +593,14 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.BARYONYX_DNA.get(), "Baryonyx DNA");
         this.add("item.fossilslegacy.model_type", "Model Type: %s");
         this.add("item.fossilslegacy.skin", "Pattern: %s");
+        this.add(FAItems.CYCAD_DNA.get());
+        this.add(FAItems.HORSETAIL_DNA.get());
         this.add(FAItems.JURASSIC_FERN_DNA.get());
         this.add(FAItems.LEPIDODENDRON_DNA.get(), "Lepidodendron DNA");
         this.add(FAItems.SIGILLARIA_DNA.get(), "Sigillaria DNA");
         this.add(FAItems.CALAMITES_DNA.get(), "Calamites DNA");
         this.add(FAItems.ARCHAEOPTERIS_DNA.get(), "Archaeopteris DNA");
+        this.add(FAItems.CYCAD_CONE.get());
         this.add(FAItems.LEPIDODENDRON_CONE.get());
         this.add(FAItems.SIGILLARIA_SPORE.get());
         this.add(FAItems.CALAMITES_SPORE.get());
@@ -717,6 +750,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.DODO_EGG.get());
         this.add(FAItems.INCUBATED_MOA_EGG.get());
         this.add(FAItems.MOA_EGG.get());
+        this.add(FAItems.HORSETAIL_SPORE.get());
         this.add(FAItems.JURASSIC_FERN_SPORES.get());
         this.add(FAItems.ARTICULATED_FOSSIL.get());
         this.add("item.fossilslegacy.articulated_fossil.ankylosaurus", "Articulated Ankylosaurus Fossil");
@@ -971,7 +1005,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         // Resource Packs
         this.add("resourcePack.fossilslegacy.description", "Fossils and Archaeology: Legacy Assets");
         this.add("resourcePack.fossilslegacy.fa_legacy_textures.description", "1.3.2 Assets");
-        this.add("resourcePack.fossilslegacy.fa_legacy_textures.modelName", "F/A Original Textures");
+        this.add("resourcePack.fossilslegacy.fa_legacy_textures.name", "F/A Original Textures");
 
         // Stats
         this.addStat(FAStats.INTERACT_WITH_ANALYZER, "Interactions with Analyzer");
@@ -1176,6 +1210,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlockTags.COMPSOGNATHUS_SPAWNABLE, "Compsognathus Spawnable");
         this.add(FABlockTags.CRYOLOPHOSAURUS_SPAWNABLE, "Cryolophosaurus Spawnable");
         this.add(FABlockTags.CULTIVATORS, "Cultivators");
+        this.add(FABlockTags.CYCAD_PLANTABLE_ON, "Cycad Plantable On");
         this.add(FABlockTags.DILOPHOSAURUS_SPAWNABLE, "Dilophosaurus Spawnable");
         this.add(FABlockTags.DIMETRODON_SPAWNABLE, "Dimetrodon Spawnable");
         this.add(FABlockTags.DODO_SPAWNABLE, "Dodo Spawnable");
@@ -1186,6 +1221,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlockTags.FEEDER, "Feeder");
         this.add(FABlockTags.GALLIMIMUS_SPAWNABLE, "Gallimimus Spawnable");
         this.add(FABlockTags.JURASSIC_FERN_PLANTABLE_ON, "Jurassic Fern Plantable On");
+        this.add(FABlockTags.LLAMA_STATUES, "Llama Statues");
         this.add(FABlockTags.LEPIDODENDRON_LOGS, "Lepidodendron Logs");
         this.add(FABlockTags.MAMMOTH_SPAWNABLE, "Mammoth Spawnable");
         this.add(FABlockTags.MOA_SPAWNABLE, "Moa Spawnable");
@@ -1289,6 +1325,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItemTags.GALLIMIMUS_COMMANDABLES, "Gallimimus Commandables");
         this.add(FAItemTags.HAMMERS, "Hammers");
         this.add(FAItemTags.HERBIVORE_FOODS, "Herbivore Foods");
+        this.add(FAItemTags.ICED_MEAT_TOOL_MATERIALS, "Iced Meat Tool Materials");
+        this.add(FAItemTags.JADE, "Jade");
+        this.add(FAItemTags.LLAMA_STATUES, "Llama Statues");
         this.add(FAItemTags.LEPIDODENDRON_LOGS, "Lepidodendron Logs");
         this.add(FAItemTags.MAMMOTH_COMMANDABLES, "Mammoth Commandables");
         this.add(FAItemTags.MESOZOIC_FOSSIL, "Mesozoic Fossil");

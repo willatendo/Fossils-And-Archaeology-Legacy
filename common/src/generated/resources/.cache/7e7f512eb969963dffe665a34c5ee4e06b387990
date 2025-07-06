@@ -1,12 +1,14 @@
-// 1.21.4	2025-06-25T20:16:42.4673488	Tags for minecraft:block mod id fossilslegacy
+// 1.21.4	2025-07-06T01:33:57.4651309	Tags for minecraft:block mod id fossilslegacy
 362a23698630e3353e7d1dc805d0198527d13961 data/fossilslegacy/tags/block/archaeopteris_logs.json
 80e160a91f3744e8cb737cde249c3d4059ae1424 data/fossilslegacy/tags/block/calamites_logs.json
 6d54cbbca664f0abe01d1db3507c9916041ea57a data/fossilslegacy/tags/block/cultivators.json
+69c396cb051bbe9a130e6979b67065e5041b179d data/fossilslegacy/tags/block/cycad_plantable_on.json
 bc4a8ba7811a4afa2b37d6ccf9399771edbbaa99 data/fossilslegacy/tags/block/eatable_fern.json
 a4e8097fff07f9a74259d6b5dd583f3437ff28a2 data/fossilslegacy/tags/block/eatable_leaves.json
 0f106f9e05249330533937bf2686b4fc3f66c407 data/fossilslegacy/tags/block/feeder.json
 69c396cb051bbe9a130e6979b67065e5041b179d data/fossilslegacy/tags/block/jurassic_fern_plantable_on.json
 dad829093473a418f24cdab5a8ffb6116744f27f data/fossilslegacy/tags/block/lepidodendron_logs.json
+abd6aa16b137a1347d9621f1fe5cb445cd255d84 data/fossilslegacy/tags/block/llama_statues.json
 b58b977b8e0a5206e75d748704411629e8e9e896 data/fossilslegacy/tags/block/mineable/ancient_hoe.json
 9e5b271f0c7ec4847dded614168452fd660518de data/fossilslegacy/tags/block/permafrost_frostable.json
 f7230fc0dcd04034cf98f0304755274776cb4ce1 data/fossilslegacy/tags/block/sigillaria_logs.json

@@ -21,14 +21,14 @@ import java.util.List;
 import java.util.Optional;
 
 public final class FAStructures {
-    public static final ResourceKey<Structure> ACADEMY = create("academy");
-    public static final ResourceKey<Structure> LAB = create("lab");
-    public static final ResourceKey<Structure> MACHU_PICCHU = create("machu_picchu");
-    public static final ResourceKey<Structure> MAYAN_CITY = create("mayan_city");
-    public static final ResourceKey<Structure> SMALL_MAYAN_TEMPLE = create("small_mayan_temple");
-    public static final ResourceKey<Structure> MOAI = create("moai");
-    public static final ResourceKey<Structure> TOTEM_POLE = create("totem_pole");
-    public static final ResourceKey<Structure> WEAPON_SHOP = create("weapon_shop");
+    public static final ResourceKey<Structure> ACADEMY = FAStructures.create("academy");
+    public static final ResourceKey<Structure> LAB = FAStructures.create("lab");
+    public static final ResourceKey<Structure> MACHU_PICCHU = FAStructures.create("machu_picchu");
+    public static final ResourceKey<Structure> MAYAN_CITY = FAStructures.create("mayan_city");
+    public static final ResourceKey<Structure> SMALL_MAYAN_TEMPLE = FAStructures.create("small_mayan_temple");
+    public static final ResourceKey<Structure> MOAI = FAStructures.create("moai");
+    public static final ResourceKey<Structure> TOTEM_POLE = FAStructures.create("totem_pole");
+    public static final ResourceKey<Structure> WEAPON_SHOP = FAStructures.create("weapon_shop");
 
     public static ResourceKey<Structure> create(String name) {
         return ResourceKey.create(Registries.STRUCTURE, FAUtils.resource(name));

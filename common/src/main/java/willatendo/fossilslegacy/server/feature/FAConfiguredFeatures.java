@@ -73,7 +73,7 @@ public final class FAConfiguredFeatures {
     }
 
     private static TreeConfiguration.TreeConfigurationBuilder createArchaeopteris() {
-        return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(FABlocks.ARCHAEOPTERIS_LOG.get()), new ArchaeopterisTrunkPlacer(10, 4, 0), BlockStateProvider.simple(FABlocks.ARCHAEOPTERIS_LEAVES.get()), new NoLeavesFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines();
+        return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(FABlocks.ARCHAEOPTERIS_LOG.get()), new ArchaeopterisTrunkPlacer(10, 4, 0), BlockStateProvider.simple(FABlocks.ARCHAEOPTERIS_LEAVES.get()), new MegaJungleFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0), 1), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines();
     }
 
     private static TreeConfiguration.TreeConfigurationBuilder createCalamites() {

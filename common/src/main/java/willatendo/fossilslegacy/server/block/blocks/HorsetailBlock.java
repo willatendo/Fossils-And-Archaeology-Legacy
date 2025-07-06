@@ -14,10 +14,12 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import willatendo.fossilslegacy.server.block.FABlocks;
 
 public class HorsetailBlock extends BushBlock implements BonemealableBlock {
     public static final MapCodec<HorsetailBlock> CODEC = Block.simpleCodec(HorsetailBlock::new);
@@ -77,7 +79,13 @@ public class HorsetailBlock extends BushBlock implements BonemealableBlock {
         if (amount < 3) {
             serverLevel.setBlock(blockPos, blockState.setValue(AMOUNT, amount + 1), 2);
         } else {
-            Block.popResource(serverLevel, blockPos, new ItemStack(this));
+            BlockPos aboveBlockPos = blockPos.above();
+            if (serverLevel.getBlockState(aboveBlockPos).isAir() && aboveBlockPos.getY() < serverLevel.getMaxY()) {
+                serverLevel.setBlock(blockPos, FABlocks.TALL_HORSETAIL.get().defaultBlockState().setValue(TallHorsetailBlock.HALF, DoubleBlockHalf.LOWER), 2);
+                serverLevel.setBlock(blockPos.above(), FABlocks.TALL_HORSETAIL.get().defaultBlockState().setValue(TallHorsetailBlock.HALF, DoubleBlockHalf.UPPER), 2);
+            } else {
+                Block.popResource(serverLevel, blockPos, new ItemStack(this));
+            }
         }
     }
 

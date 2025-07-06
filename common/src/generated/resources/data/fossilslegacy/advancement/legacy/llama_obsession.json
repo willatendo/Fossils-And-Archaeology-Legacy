@@ -1,0 +1,142 @@
+{
+  "parent": "fossilslegacy:legacy/llamas_in_pajamas",
+  "criteria": {
+    "copper_llama_statue": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:copper_llama_statue"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "exposed_copper_llama_statue": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:exposed_copper_llama_statue"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "iron_llama_statue": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:iron_llama_statue"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "oxidized_copper_llama_statue": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:oxidized_copper_llama_statue"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "waxed_copper_llama_statue": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:waxed_copper_llama_statue"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "waxed_exposed_copper_llama_statue": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:waxed_exposed_copper_llama_statue"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "waxed_oxidized_copper_llama_statue": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:waxed_oxidized_copper_llama_statue"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "waxed_weathered_copper_llama_statue": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:waxed_weathered_copper_llama_statue"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "weathered_copper_llama_statue": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:weathered_copper_llama_statue"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.llama_obsession.desc"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:copper_llama_statue"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.llama_obsession.title"
+    }
+  },
+  "requirements": [
+    [
+      "iron_llama_statue"
+    ],
+    [
+      "copper_llama_statue"
+    ],
+    [
+      "exposed_copper_llama_statue"
+    ],
+    [
+      "oxidized_copper_llama_statue"
+    ],
+    [
+      "weathered_copper_llama_statue"
+    ],
+    [
+      "waxed_copper_llama_statue"
+    ],
+    [
+      "waxed_exposed_copper_llama_statue"
+    ],
+    [
+      "waxed_oxidized_copper_llama_statue"
+    ],
+    [
+      "waxed_weathered_copper_llama_statue"
+    ]
+  ],
+  "rewards": {
+    "experience": 200
+  },
+  "sends_telemetry_event": true
+}

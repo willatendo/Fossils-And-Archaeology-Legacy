@@ -1,0 +1,34 @@
+{
+  "parent": "fossilslegacy:legacy/discover_mayan_temple",
+  "criteria": {
+    "has_jade": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#fossilslegacy:jade"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.jade.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:jade"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.jade.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_jade"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,5 +1,9 @@
 {
   "values": [
-    "fossilslegacy:jurassic_fern_spores"
+    "fossilslegacy:archaeopteris_spore",
+    "fossilslegacy:calamites_spore",
+    "fossilslegacy:horsetail_spore",
+    "fossilslegacy:jurassic_fern_spores",
+    "fossilslegacy:sigillaria_spore"
   ]
 }

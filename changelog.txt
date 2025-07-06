@@ -25,6 +25,8 @@
 - Dinosaur Sounds Are Now Part Of "Neutral" Category
 - Articulated Fossils Now Faces The Player When Placed Without Sneaking
 - Articulated Fossils Can Now Be Articulated Joint-By-Joint Using Hammers
+- Changed Palaeontologist Trades From DNA To Spores/Cones
+- Reduced Jurassic Fern Spores Chance Of Filling A Composter from 65% to 35%
 - Added Archaeology Category For Analyzer Recipe Book
 - Added Palaeontology Category For Analyzer Recipe Book
 - Added Mosasaurus Skeleton

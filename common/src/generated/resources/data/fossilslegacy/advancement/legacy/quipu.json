@@ -1,0 +1,34 @@
+{
+  "parent": "fossilslegacy:legacy/discover_machu_picchu",
+  "criteria": {
+    "has_quipu": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:quipu"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.quipu.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:quipu"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.quipu.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_quipu"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

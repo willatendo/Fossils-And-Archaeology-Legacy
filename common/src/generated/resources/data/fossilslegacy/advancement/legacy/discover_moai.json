@@ -1,0 +1,40 @@
+{
+  "parent": "fossilslegacy:legacy/relic_scrap",
+  "criteria": {
+    "moai": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structures": "fossilslegacy:moai"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.discover_moai.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "minecraft:stone_bricks"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.discover_moai.title"
+    }
+  },
+  "requirements": [
+    [
+      "moai"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

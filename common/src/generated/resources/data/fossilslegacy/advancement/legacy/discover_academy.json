@@ -1,0 +1,40 @@
+{
+  "parent": "fossilslegacy:legacy/relic_scrap",
+  "criteria": {
+    "academy": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structures": "fossilslegacy:academy"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.discover_academy.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "minecraft:bricks"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.discover_academy.title"
+    }
+  },
+  "requirements": [
+    [
+      "academy"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

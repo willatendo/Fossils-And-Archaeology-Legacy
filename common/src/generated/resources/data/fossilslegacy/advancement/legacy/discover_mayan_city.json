@@ -1,0 +1,40 @@
+{
+  "parent": "fossilslegacy:legacy/discover_mayan_temple",
+  "criteria": {
+    "mayan_city": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structures": "fossilslegacy:mayan_city"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.discover_mayan_city.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "minecraft:cracked_stone_bricks"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.discover_mayan_city.title"
+    }
+  },
+  "requirements": [
+    [
+      "mayan_city"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

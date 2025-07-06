@@ -59,6 +59,7 @@ public class FABlockTagProvider extends BlockTagsProvider {
         this.tag(FABlockTags.COMPSOGNATHUS_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
         this.tag(FABlockTags.CRYOLOPHOSAURUS_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
         this.tag(FABlockTags.CULTIVATORS).add(FABlocks.WHITE_CULTIVATOR.get(), FABlocks.ORANGE_CULTIVATOR.get(), FABlocks.MAGENTA_CULTIVATOR.get(), FABlocks.LIGHT_BLUE_CULTIVATOR.get(), FABlocks.YELLOW_CULTIVATOR.get(), FABlocks.LIME_CULTIVATOR.get(), FABlocks.PINK_CULTIVATOR.get(), FABlocks.GRAY_CULTIVATOR.get(), FABlocks.LIGHT_GRAY_CULTIVATOR.get(), FABlocks.CYAN_CULTIVATOR.get(), FABlocks.PURPLE_CULTIVATOR.get(), FABlocks.BLUE_CULTIVATOR.get(), FABlocks.BROWN_CULTIVATOR.get(), FABlocks.GREEN_CULTIVATOR.get(), FABlocks.RED_CULTIVATOR.get(), FABlocks.BLACK_CULTIVATOR.get());
+        this.tag(FABlockTags.CYCAD_PLANTABLE_ON).addTag(BlockTags.DIRT);
         this.tag(FABlockTags.DILOPHOSAURUS_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
         this.tag(FABlockTags.DIMETRODON_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
         this.tag(FABlockTags.DODO_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
@@ -69,6 +70,7 @@ public class FABlockTagProvider extends BlockTagsProvider {
         this.tag(FABlockTags.FEEDER).add(FABlocks.FEEDER.get());
         this.tag(FABlockTags.GALLIMIMUS_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON).add(Blocks.SAND);
         this.tag(FABlockTags.JURASSIC_FERN_PLANTABLE_ON).addTag(BlockTags.DIRT);
+        this.tag(FABlockTags.LLAMA_STATUES).add(FABlocks.IRON_LLAMA_STATUE.get(), FABlocks.COPPER_LLAMA_STATUE.get(), FABlocks.EXPOSED_COPPER_LLAMA_STATUE.get(), FABlocks.OXIDIZED_COPPER_LLAMA_STATUE.get(), FABlocks.WEATHERED_COPPER_LLAMA_STATUE.get(), FABlocks.WAXED_COPPER_LLAMA_STATUE.get(), FABlocks.WAXED_EXPOSED_COPPER_LLAMA_STATUE.get(), FABlocks.WAXED_OXIDIZED_COPPER_LLAMA_STATUE.get(), FABlocks.WAXED_WEATHERED_COPPER_LLAMA_STATUE.get());
         this.tag(FABlockTags.LEPIDODENDRON_LOGS).add(FABlocks.LEPIDODENDRON_LOG.get(), FABlocks.LEPIDODENDRON_WOOD.get(), FABlocks.STRIPPED_LEPIDODENDRON_LOG.get(), FABlocks.STRIPPED_LEPIDODENDRON_WOOD.get());
         this.tag(FABlockTags.MAMMOTH_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
         this.tag(FABlockTags.MINEABLE_WITH_ANCIENT_HOE).addTags(BlockTags.MINEABLE_WITH_HOE).add(Blocks.WHEAT, Blocks.CARROTS, Blocks.POTATOES, Blocks.BEETROOTS, Blocks.MELON_STEM, Blocks.ATTACHED_MELON_STEM, Blocks.PUMPKIN_STEM, Blocks.ATTACHED_PUMPKIN_STEM, Blocks.PITCHER_CROP, Blocks.TORCHFLOWER_CROP);

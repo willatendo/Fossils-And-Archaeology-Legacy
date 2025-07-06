@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "plant",
+  "ingredient": "fossilslegacy:cycad_dna",
+  "result": {
+    "id": "fossilslegacy:cycad_cone"
+  },
+  "time": 6000
+}

@@ -1,72 +1,7 @@
 {
   "variants": {
-    "facing=east": [
-      {
-        "model": "fossilslegacy:block/archaeopteris_leaves",
-        "y": 90
-      },
-      {
-        "model": "fossilslegacy:block/archaeopteris_leaves_both",
-        "y": 90
-      },
-      {
-        "model": "fossilslegacy:block/archaeopteris_leaves_high",
-        "y": 90
-      },
-      {
-        "model": "fossilslegacy:block/archaeopteris_leaves_low",
-        "y": 90
-      }
-    ],
-    "facing=north": [
-      {
-        "model": "fossilslegacy:block/archaeopteris_leaves"
-      },
-      {
-        "model": "fossilslegacy:block/archaeopteris_leaves_both"
-      },
-      {
-        "model": "fossilslegacy:block/archaeopteris_leaves_high"
-      },
-      {
-        "model": "fossilslegacy:block/archaeopteris_leaves_low"
-      }
-    ],
-    "facing=south": [
-      {
-        "model": "fossilslegacy:block/archaeopteris_leaves",
-        "y": 180
-      },
-      {
-        "model": "fossilslegacy:block/archaeopteris_leaves_both",
-        "y": 180
-      },
-      {
-        "model": "fossilslegacy:block/archaeopteris_leaves_high",
-        "y": 180
-      },
-      {
-        "model": "fossilslegacy:block/archaeopteris_leaves_low",
-        "y": 180
-      }
-    ],
-    "facing=west": [
-      {
-        "model": "fossilslegacy:block/archaeopteris_leaves",
-        "y": 270
-      },
-      {
-        "model": "fossilslegacy:block/archaeopteris_leaves_both",
-        "y": 270
-      },
-      {
-        "model": "fossilslegacy:block/archaeopteris_leaves_high",
-        "y": 270
-      },
-      {
-        "model": "fossilslegacy:block/archaeopteris_leaves_low",
-        "y": 270
-      }
-    ]
+    "": {
+      "model": "fossilslegacy:block/archaeopteris_leaves"
+    }
   }
 }

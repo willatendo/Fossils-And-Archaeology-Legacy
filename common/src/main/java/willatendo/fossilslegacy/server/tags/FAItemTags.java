@@ -35,6 +35,8 @@ public class FAItemTags {
     public static final TagKey<Item> HAMMERS = ITEM_TAGS.register("hammer");
     public static final TagKey<Item> HERBIVORE_FOODS = ITEM_TAGS.register("herbivore_foods");
     public static final TagKey<Item> ICED_MEAT_TOOL_MATERIALS = ITEM_TAGS.register("iced_meat_tool_materials");
+    public static final TagKey<Item> JADE = ITEM_TAGS.register("jade");
+    public static final TagKey<Item> LLAMA_STATUES = ITEM_TAGS.register("llama_statues");
     public static final TagKey<Item> LEPIDODENDRON_LOGS = ITEM_TAGS.register("lepidodendron_logs");
     public static final TagKey<Item> MAMMOTH_COMMANDABLES = ITEM_TAGS.register("commandable/mammoth");
     public static final TagKey<Item> MESOZOIC_FOSSIL = ITEM_TAGS.register("mesozoic_fossil");
