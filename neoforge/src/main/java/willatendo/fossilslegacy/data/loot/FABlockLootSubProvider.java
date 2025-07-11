@@ -18,6 +18,7 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.block.blocks.HorsetailBlock;
 import willatendo.fossilslegacy.server.block.blocks.MayanVaseBlock;
+import willatendo.fossilslegacy.server.block.blocks.MediumCageBlock;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom;
 import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom.ItemAndChance;
@@ -100,6 +101,7 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.dropOther(FABlocks.RED_DECORATION_POST.get(), FAItems.RED_DECORATION_PLAQUE.get());
         this.dropOther(FABlocks.BLACK_DECORATION_POST.get(), FAItems.BLACK_DECORATION_PLAQUE.get());
         this.dropSelf(FABlocks.SMALL_CAGE.get());
+        this.add(FABlocks.MEDIUM_CAGE.get(), block -> LootTable.lootTable().withPool(this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(block).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(MediumCageBlock.HALF, DoubleBlockHalf.LOWER).hasProperty(MediumCageBlock.PART, 1)))))));
         this.dropSelf(FABlocks.CYCAD_HEAD.get());
         this.dropSelf(FABlocks.CYCAD_LOG.get());
         this.dropSelf(FABlocks.LEPIDODENDRON_PLANKS.get());

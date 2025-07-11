@@ -21,6 +21,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -33,6 +34,10 @@ public class Jeep extends VehicleEntity {
     private double lerpZ;
     private double lerpYRot;
     private double lerpXRot;
+    private boolean inputLeft;
+    private boolean inputRight;
+    private boolean inputUp;
+    private boolean inputDown;
     private final Supplier<Item> dropItem;
 
     public Jeep(EntityType<? extends Jeep> entityType, Level level, Supplier<Item> dropItem) {
@@ -93,13 +98,13 @@ public class Jeep extends VehicleEntity {
     }
 
     @Override
-    public void lerpTo(double p_376789_, double p_376649_, double p_376850_, float p_376105_, float p_376936_, int p_376914_) {
-        this.lerpX = p_376789_;
-        this.lerpY = p_376649_;
-        this.lerpZ = p_376850_;
-        this.lerpYRot = (double) p_376105_;
-        this.lerpXRot = (double) p_376936_;
-        this.lerpSteps = p_376914_;
+    public void lerpTo(double x, double y, double z, float yRot, float xRot, int steps) {
+        this.lerpX = x;
+        this.lerpY = y;
+        this.lerpZ = z;
+        this.lerpYRot = (double) yRot;
+        this.lerpXRot = (double) xRot;
+        this.lerpSteps = steps;
     }
 
     @Override
@@ -135,6 +140,45 @@ public class Jeep extends VehicleEntity {
 
         super.tick();
         this.tickLerp();
+
+        if (this.isControlledByLocalInstance()) {
+            if (this.level().isClientSide) {
+                this.controlBoat();
+            }
+
+            this.move(MoverType.SELF, this.getDeltaMovement());
+        } else {
+            this.setDeltaMovement(Vec3.ZERO);
+        }
+    }
+
+    private void controlBoat() {
+        if (this.isVehicle()) {
+            float f = 0.0F;
+            if (this.inputLeft) {
+                --this.deltaRotation;
+            }
+
+            if (this.inputRight) {
+                ++this.deltaRotation;
+            }
+
+            if (this.inputRight != this.inputLeft && !this.inputUp && !this.inputDown) {
+                f += 0.005F;
+            }
+
+            this.setYRot(this.getYRot() + this.deltaRotation);
+            if (this.inputUp) {
+                f += 0.04F;
+                FAUtils.LOGGER.info("Hello");
+            }
+
+            if (this.inputDown) {
+                f -= 0.005F;
+            }
+
+            this.setDeltaMovement(this.getDeltaMovement().add(Mth.sin(-this.getYRot() * 0.017453292F) * f, 0.0, (double) (Mth.cos(this.getYRot() * 0.017453292F) * f)));
+        }
     }
 
     private void tickLerp() {
@@ -204,6 +248,13 @@ public class Jeep extends VehicleEntity {
         }
 
         return super.getDismountLocationForPassenger(livingEntity);
+    }
+
+    public void setInput(boolean left, boolean right, boolean up, boolean down) {
+        this.inputLeft = left;
+        this.inputRight = right;
+        this.inputUp = up;
+        this.inputDown = down;
     }
 
     protected void clampRotation(Entity entity) {

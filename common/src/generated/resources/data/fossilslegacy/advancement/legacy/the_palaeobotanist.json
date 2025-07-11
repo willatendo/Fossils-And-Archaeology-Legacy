@@ -1,0 +1,64 @@
+{
+  "parent": "fossilslegacy:legacy/extinct_since_the_cretaceous",
+  "criteria": {
+    "has_cycad_cone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:cycad_cone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_horsetail_spore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:horsetail_spore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_jurassic_fern_spores": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:jurassic_fern_spores"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.the_palaeobotanist.desc"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:horsetail_spore"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.the_palaeobotanist.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_cycad_cone"
+    ],
+    [
+      "has_horsetail_spore"
+    ],
+    [
+      "has_jurassic_fern_spores"
+    ]
+  ],
+  "rewards": {
+    "experience": 400
+  },
+  "sends_telemetry_event": true
+}

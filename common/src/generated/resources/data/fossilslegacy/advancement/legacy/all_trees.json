@@ -1,0 +1,77 @@
+{
+  "parent": "fossilslegacy:legacy/extinct_since_the_cretaceous",
+  "criteria": {
+    "has_archaeopteris_spore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:archaeopteris_spore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_calamites_spore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:calamites_spore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_lepidodendron_cone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:lepidodendron_cone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sigillaria_spore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:sigillaria_spore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.fossilslegacy.legacy.all_trees.desc"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "fossilslegacy:lepidodendron_cone"
+    },
+    "title": {
+      "translate": "advancements.fossilslegacy.legacy.all_trees.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_archaeopteris_spore"
+    ],
+    [
+      "has_calamites_spore"
+    ],
+    [
+      "has_lepidodendron_cone"
+    ],
+    [
+      "has_sigillaria_spore"
+    ]
+  ],
+  "rewards": {
+    "experience": 400
+  },
+  "sends_telemetry_event": true
+}

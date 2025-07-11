@@ -94,7 +94,9 @@ public class FAItemTagProvider extends ItemTagsProvider {
         this.dinosaurTags(FAItems.RAW_ICHTHYOSAURUS.get(), FAItems.COOKED_ICHTHYOSAURUS.get(), FAItems.ICHTHYOSAURUS_EGG.get(), FAItems.ICHTHYOSAURUS_DNA.get());
         this.cenozoicTags(FAItems.RAW_ELASMOTHERIUM.get(), FAItems.COOKED_ELASMOTHERIUM.get(), FAItems.ELASMOTHERIUM_DNA.get());
         this.tag(FAItemTags.DINO_EGGS).add(FAItems.TRICERATOPS_EGG.get(), FAItems.VELOCIRAPTOR_EGG.get(), FAItems.TYRANNOSAURUS_EGG.get(), FAItems.PTERANODON_EGG.get(), FAItems.NAUTILUS_EGGS.get(), FAItems.FUTABASAURUS_EGG.get(), FAItems.MOSASAURUS_EGG.get(), FAItems.STEGOSAURUS_EGG.get(), FAItems.DILOPHOSAURUS_EGG.get(), FAItems.BRACHIOSAURUS_EGG.get(), FAItems.CARNOTAURUS_EGG.get(), FAItems.CRYOLOPHOSAURUS_EGG.get(), FAItems.THERIZINOSAURUS_EGG.get(), FAItems.PACHYCEPHALOSAURUS_EGG.get(), FAItems.COMPSOGNATHUS_EGG.get(), FAItems.GALLIMIMUS_EGG.get(), FAItems.SPINOSAURUS_EGG.get(), FAItems.ANKYLOSAURUS_EGG.get(), FAItems.DIMETRODON_EGG.get(), FAItems.ICHTHYOSAURUS_EGG.get(), FAItems.DRYOSAURUS_EGG.get(), FAItems.BARYONYX_EGG.get());
-        this.tag(FAItemTags.DNA).add(FAItems.AXOLOTL_DNA.get(), FAItems.BARYONYX_DNA.get(), FAItems.CAT_DNA.get(), FAItems.CHICKEN_DNA.get(), FAItems.COW_DNA.get(), FAItems.DODO_DNA.get(), FAItems.DOLPHIN_DNA.get(), FAItems.DONKEY_DNA.get(), FAItems.DRYOSAURUS_DNA.get(), FAItems.FOX_DNA.get(), FAItems.FROG_DNA.get(), FAItems.GOAT_DNA.get(), FAItems.HORSE_DNA.get(), FAItems.ICHTHYOSAURUS_DNA.get(), FAItems.LLAMA_DNA.get(), FAItems.MULE_DNA.get(), FAItems.NAUTILUS_DNA.get(), FAItems.OCELOT_DNA.get(), FAItems.PANDA_DNA.get(), FAItems.PARROT_DNA.get(), FAItems.PIG_DNA.get(), FAItems.POLAR_BEAR_DNA.get(), FAItems.RABBIT_DNA.get(), FAItems.SHEEP_DNA.get(), FAItems.WOLF_DNA.get());
+        this.tag(FAItemTags.ANIMAL_DNA).add(FAItems.AXOLOTL_DNA.get(), FAItems.BARYONYX_DNA.get(), FAItems.CAT_DNA.get(), FAItems.CHICKEN_DNA.get(), FAItems.COW_DNA.get(), FAItems.DODO_DNA.get(), FAItems.DOLPHIN_DNA.get(), FAItems.DONKEY_DNA.get(), FAItems.DRYOSAURUS_DNA.get(), FAItems.FOX_DNA.get(), FAItems.FROG_DNA.get(), FAItems.GOAT_DNA.get(), FAItems.HORSE_DNA.get(), FAItems.ICHTHYOSAURUS_DNA.get(), FAItems.LLAMA_DNA.get(), FAItems.MULE_DNA.get(), FAItems.NAUTILUS_DNA.get(), FAItems.OCELOT_DNA.get(), FAItems.PANDA_DNA.get(), FAItems.PARROT_DNA.get(), FAItems.PIG_DNA.get(), FAItems.POLAR_BEAR_DNA.get(), FAItems.RABBIT_DNA.get(), FAItems.SHEEP_DNA.get(), FAItems.WOLF_DNA.get());
+        this.tag(FAItemTags.PLANT_DNA).add(FAItems.ARCHAEOPTERIS_DNA.get(), FAItems.CALAMITES_DNA.get(), FAItems.CYCAD_DNA.get(), FAItems.HORSETAIL_DNA.get(), FAItems.JURASSIC_FERN_DNA.get(), FAItems.LEPIDODENDRON_DNA.get(), FAItems.SIGILLARIA_DNA.get());
+        this.tag(FAItemTags.DNA).addTags(FAItemTags.ANIMAL_DNA, FAItemTags.PLANT_DNA);
         this.tag(FAItemTags.EMBRYO_SYRINGES).add(FAItems.ARMADILLO_EMBRYO_SYRINGE.get(), FAItems.CAT_EMBRYO_SYRINGE.get(), FAItems.COW_EMBRYO_SYRINGE.get(), FAItems.DOLPHIN_EMBRYO_SYRINGE.get(), FAItems.DONKEY_EMBRYO_SYRINGE.get(), FAItems.FOX_EMBRYO_SYRINGE.get(), FAItems.GOAT_EMBRYO_SYRINGE.get(), FAItems.HORSE_EMBRYO_SYRINGE.get(), FAItems.LLAMA_EMBRYO_SYRINGE.get(), FAItems.MULE_EMBRYO_SYRINGE.get(), FAItems.OCELOT_EMBRYO_SYRINGE.get(), FAItems.PANDA_EMBRYO_SYRINGE.get(), FAItems.PIG_EMBRYO_SYRINGE.get(), FAItems.POLAR_BEAR_EMBRYO_SYRINGE.get(), FAItems.RABBIT_EMBRYO_SYRINGE.get(), FAItems.SHEEP_EMBRYO_SYRINGE.get(), FAItems.WOLF_EMBRYO_SYRINGE.get(), FAItems.SMILODON_EMBRYO_SYRINGE.get(), FAItems.MAMMOTH_EMBRYO_SYRINGE.get(), FAItems.ELASMOTHERIUM_EMBRYO_SYRINGE.get());
         this.tag(FAItemTags.HAMMERS).add(FAItems.DIAMOND_HAMMER.get(), FAItems.GOLDEN_HAMMER.get(), FAItems.IRON_HAMMER.get(), FAItems.NETHERITE_HAMMER.get(), FAItems.STONE_HAMMER.get(), FAItems.WOODEN_HAMMER.get());
 
@@ -123,7 +125,7 @@ public class FAItemTagProvider extends ItemTagsProvider {
         this.tag(ItemTags.WOLF_FOOD).add(rawMeat, cookedMeat);
         this.tag(ItemTags.MEAT).add(rawMeat, cookedMeat);
         this.tag(Tags.Items.FOODS_RAW_MEAT).add(rawMeat);
-        this.tag(FAItemTags.DNA).add(dna);
+        this.tag(FAItemTags.ANIMAL_DNA).add(dna);
         commandables.ifPresent(itemTagKey -> this.tag(itemTagKey).add(commandableItems));
     }
 
@@ -141,7 +143,7 @@ public class FAItemTagProvider extends ItemTagsProvider {
         this.tag(ItemTags.MEAT).add(rawMeat, cookedMeat);
         this.tag(Tags.Items.FOODS_RAW_MEAT).add(rawMeat);
         this.tag(FAItemTags.CAKE_EGGS).add(egg);
-        this.tag(FAItemTags.DNA).add(dna);
+        this.tag(FAItemTags.ANIMAL_DNA).add(dna);
         commandables.ifPresent(itemTagKey -> this.tag(itemTagKey).add(commandableItems));
     }
 

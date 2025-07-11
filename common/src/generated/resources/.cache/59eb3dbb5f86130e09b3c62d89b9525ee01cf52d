@@ -1,4 +1,4 @@
-// 1.21.4	2025-07-06T01:58:21.2706442	Loot Tables
+// 1.21.4	2025-07-09T18:01:22.9893815	Loot Tables
 6b196aa6cdadbe968410835a209fed7ad992066f data/fossilslegacy/loot_table/archaeology/inca_loot.json
 5fcf811a958fcf132678d4423a7472c475c2b8ca data/fossilslegacy/loot_table/blocks/analyzer.json
 8bfc811efa599c9be09afe46481ec9ebbf5f3a33 data/fossilslegacy/loot_table/blocks/archaeology_workbench.json
@@ -86,6 +86,7 @@ b604a2d7dcf1145f5a18dcb3ea37cab8509453cf data/fossilslegacy/loot_table/blocks/ma
 b487f4fb72bc16667a124bcd1b59de39731d09b6 data/fossilslegacy/loot_table/blocks/mayan_ocelot_vase.json
 434c4cab623ce826bef114f9bcf74a4c23a6f49a data/fossilslegacy/loot_table/blocks/mayan_vase.json
 d1778ab2d592191b2876ab74d6a364d1170b8b3f data/fossilslegacy/loot_table/blocks/mayan_villager_vase.json
+d6c401477dba948602bda9cbc95d41902561b394 data/fossilslegacy/loot_table/blocks/medium_cage.json
 3a3e1492f4e525bfa5dc474df716e746ecbf2c68 data/fossilslegacy/loot_table/blocks/orange_cultivator.json
 53167d31db38b5e6fb615690a8e1f08dfb587147 data/fossilslegacy/loot_table/blocks/orange_decoration_post.json
 afc4b45e7ab2139645764b49539b8c21d47120f3 data/fossilslegacy/loot_table/blocks/oxidized_copper_llama_statue.json

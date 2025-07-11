@@ -32,12 +32,103 @@
 - Added Mosasaurus Skeleton
 - Added Lepidodendron Cone
 - Added Calamites Spore
+- Added Archaeopteris Planks
+- Added Archaeopteris Log
+- Added Stripped Archaeopteris Log
+- Added Archaeopteris Wood
+- Added Stripped Archaeopteris Wood
+- Added Archaeopteris Leaves
+- Added Archaeopteris Stairs
+- Added Archaeopteris Sign
+- Added Archaeopteris Door
+- Added Archaeopteris Hanging Sign
+- Added Archaeopteris Pressure Plate
+- Added Archaeopteris Fence
+- Added Archaeopteris Trapdoor
+- Added Archaeopteris Fence Gate
+- Added Potted Archaeopteris Sapling
+- Added Archaeopteris Button
+- Added Archaeopteris Slab
+- Added Archaeopteris Boat
+- Added Archaeopteris Boat with Chest
+- Added Archaeopteris Tree
+- Added Archaeopteris Spore
+- Added Baryonyx
+- Added Baryonyx DNA
+- Added Baryonyx Egg
+- Added Raw Baryonyx
+- Added Cooked Baryonyx
+- Added Articulated Baryonyx Skeleton
+- Added Baryonyx Spawn Egg
+- Added Dryosaurus
+- Added Dryosaurus DNA
+- Added Dryosaurus Egg
+- Added Raw Dryosaurus
+- Added Cooked Dryosaurus
+- Added Articulated Dryosaurus Skeleton
+- Added Dryosaurus Spawn Egg
+- Added Ichthyosaurus
+- Added Ichthyosaurus DNA
+- Added Ichthyosaurus Egg
+- Added Raw Ichthyosaurus
+- Added Cooked Ichthyosaurus
+- Added Articulated Ichthyosaurus Skeleton
+- Added Ichthyosaurus Spawn Egg
+- Added Elasmotherium
+- Added Elasmotherium DNA
+- Added Elasmotherium Embryo Syringe
+- Added Raw Elasmotherium
+- Added Cooked Elasmotherium
+- Added Elasmotherium Spawn Egg
+- Added Short Horsetail
+- Added Tall Horsetail
+- Added Horsetail DNA
+- Added Horsetail Spore
+- Added Cycad Head
+- Added Cycad Log
+- Added Cycad DNA
+- Added Cycad Cone
 - Added "Bingo! Dino DNA!" Advancement
 - Added "Sixty-Six Million Years in the Making!" Advancement
+- Added "They're Flocking This Way!" Advancement
+- Added "Not On Ingen's List!" Advancement
+- Added "Keep the Lilac Away!" Advancement
+- Added "Wanna Stick, Stupid?" Advancement
+- Added "Hybrid Killer!" Advancement
 - Added "You Bred Raptors?" Advancement
+- Added "Melons, Melons, Melons!" Advancement
 - Added "We Have a T-Rex!" Advancement
+- Added "Now You're John Hammond!" Advancement
+- Added "Welcome To Jurassic Park!" Advancement
+- Added "Sarah, Sarah Harding!" Advancement
 - Added "Undoing Mistakes!" Advancement
-- Added "Bingo! Dino DNA!" Advancement
+- Added "Manny the Mammoth!" Advancement
+- Added "Walking With Beasts!" Advancement
+- Added "From the Pyrenean Ibex to This!" Advancement
+- Added "Dolly's Legacy!" Advancement
+- Added "Diego!" Advancement
+- Added "No, This is How You Play God!" Advancement
+- Added "Cultivator!" Advancement
+- Added "Cultivators of the Wind!" Advancement
+- Added "Night at the Museum!" Advancement
+- Added "Alan, This Species Has Been Extinct Since the Cretaceous!" Advancement
+- Added "All the "Trees""!" Advancement
+- Added "The Palaeobotanist!" Advancement
+- Added "A Place of Learning!" Advancement
+- Added "Legacy of the Rapa Nui!" Advancement
+- Added "Abandoned Capitol!" Advancement
+- Added "Llamas in Pajamas!" Advancement
+- Added "Llama Obsession!" Advancement
+- Added "Tax Records!" Advancement
+- Added "The Tlingit!" Advancement
+- Added "Ancient Handiwork!" Advancement
+- Added "Jewels!" Advancement
+- Added "Three of a Kind!" Advancement
+- Added "Ancient Stories!" Advancement
+- Added "City in the Jungle!" Advancement
+- Added "Past Mistakes!" Advancement
+- Added "Craftsmanship!" Advancement
+- Added "F/A: Palaeobotany Items" Creative Mode Tab
 - Added Wooden Hammer
 - Added Stone Hammer
 - Added Iron Hammer

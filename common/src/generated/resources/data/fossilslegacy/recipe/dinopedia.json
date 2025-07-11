@@ -3,7 +3,7 @@
   "category": "equipment",
   "ingredients": [
     "minecraft:book",
-    "#fossilslegacy:dna"
+    "#fossilslegacy:animal_dna"
   ],
   "result": {
     "count": 1,

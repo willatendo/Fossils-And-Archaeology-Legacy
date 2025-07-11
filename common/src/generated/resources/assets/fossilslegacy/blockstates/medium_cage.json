@@ -1,0 +1,292 @@
+{
+  "variants": {
+    "facing=east,half=lower,open=false,part=1": {
+      "model": "fossilslegacy:block/medium_cage_bottom"
+    },
+    "facing=east,half=lower,open=false,part=2": {
+      "model": "fossilslegacy:block/medium_cage_bottom",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=east,half=lower,open=false,part=3": {
+      "model": "fossilslegacy:block/medium_cage_bottom",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=east,half=lower,open=false,part=4": {
+      "model": "fossilslegacy:block/medium_cage_bottom",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=east,half=lower,open=true,part=1": {
+      "model": "fossilslegacy:block/medium_cage_bottom"
+    },
+    "facing=east,half=lower,open=true,part=2": {
+      "model": "fossilslegacy:block/medium_cage_bottom_open_left",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=east,half=lower,open=true,part=3": {
+      "model": "fossilslegacy:block/medium_cage_bottom",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=east,half=lower,open=true,part=4": {
+      "model": "fossilslegacy:block/medium_cage_bottom_open_right",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=east,half=upper,open=false,part=1": {
+      "model": "fossilslegacy:block/medium_cage_top"
+    },
+    "facing=east,half=upper,open=false,part=2": {
+      "model": "fossilslegacy:block/medium_cage_top",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=east,half=upper,open=false,part=3": {
+      "model": "fossilslegacy:block/medium_cage_top",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=east,half=upper,open=false,part=4": {
+      "model": "fossilslegacy:block/medium_cage_top",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=east,half=upper,open=true,part=1": {
+      "model": "fossilslegacy:block/medium_cage_top"
+    },
+    "facing=east,half=upper,open=true,part=2": {
+      "model": "fossilslegacy:block/medium_cage_top_open_left",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=east,half=upper,open=true,part=3": {
+      "model": "fossilslegacy:block/medium_cage_top",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=east,half=upper,open=true,part=4": {
+      "model": "fossilslegacy:block/medium_cage_top_open_right",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=north,half=lower,open=false,part=1": {
+      "model": "fossilslegacy:block/medium_cage_bottom"
+    },
+    "facing=north,half=lower,open=false,part=2": {
+      "model": "fossilslegacy:block/medium_cage_bottom",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=north,half=lower,open=false,part=3": {
+      "model": "fossilslegacy:block/medium_cage_bottom",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=north,half=lower,open=false,part=4": {
+      "model": "fossilslegacy:block/medium_cage_bottom",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=north,half=lower,open=true,part=1": {
+      "model": "fossilslegacy:block/medium_cage_bottom_open_left"
+    },
+    "facing=north,half=lower,open=true,part=2": {
+      "model": "fossilslegacy:block/medium_cage_bottom_open_right"
+    },
+    "facing=north,half=lower,open=true,part=3": {
+      "model": "fossilslegacy:block/medium_cage_bottom",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=north,half=lower,open=true,part=4": {
+      "model": "fossilslegacy:block/medium_cage_bottom",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=north,half=upper,open=false,part=1": {
+      "model": "fossilslegacy:block/medium_cage_top"
+    },
+    "facing=north,half=upper,open=false,part=2": {
+      "model": "fossilslegacy:block/medium_cage_top",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=north,half=upper,open=false,part=3": {
+      "model": "fossilslegacy:block/medium_cage_top",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=north,half=upper,open=false,part=4": {
+      "model": "fossilslegacy:block/medium_cage_top",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=north,half=upper,open=true,part=1": {
+      "model": "fossilslegacy:block/medium_cage_top_open_left"
+    },
+    "facing=north,half=upper,open=true,part=2": {
+      "model": "fossilslegacy:block/medium_cage_top_open_right"
+    },
+    "facing=north,half=upper,open=true,part=3": {
+      "model": "fossilslegacy:block/medium_cage_top",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=north,half=upper,open=true,part=4": {
+      "model": "fossilslegacy:block/medium_cage_top",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=south,half=lower,open=false,part=1": {
+      "model": "fossilslegacy:block/medium_cage_bottom"
+    },
+    "facing=south,half=lower,open=false,part=2": {
+      "model": "fossilslegacy:block/medium_cage_bottom",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=south,half=lower,open=false,part=3": {
+      "model": "fossilslegacy:block/medium_cage_bottom",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=south,half=lower,open=false,part=4": {
+      "model": "fossilslegacy:block/medium_cage_bottom",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=south,half=lower,open=true,part=1": {
+      "model": "fossilslegacy:block/medium_cage_bottom"
+    },
+    "facing=south,half=lower,open=true,part=2": {
+      "model": "fossilslegacy:block/medium_cage_bottom",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=south,half=lower,open=true,part=3": {
+      "model": "fossilslegacy:block/medium_cage_bottom_open_right",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=south,half=lower,open=true,part=4": {
+      "model": "fossilslegacy:block/medium_cage_bottom_open_left",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=south,half=upper,open=false,part=1": {
+      "model": "fossilslegacy:block/medium_cage_top"
+    },
+    "facing=south,half=upper,open=false,part=2": {
+      "model": "fossilslegacy:block/medium_cage_top",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=south,half=upper,open=false,part=3": {
+      "model": "fossilslegacy:block/medium_cage_top",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=south,half=upper,open=false,part=4": {
+      "model": "fossilslegacy:block/medium_cage_top",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=south,half=upper,open=true,part=1": {
+      "model": "fossilslegacy:block/medium_cage_top"
+    },
+    "facing=south,half=upper,open=true,part=2": {
+      "model": "fossilslegacy:block/medium_cage_top",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=south,half=upper,open=true,part=3": {
+      "model": "fossilslegacy:block/medium_cage_top_open_right",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=south,half=upper,open=true,part=4": {
+      "model": "fossilslegacy:block/medium_cage_top_open_left",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=west,half=lower,open=false,part=1": {
+      "model": "fossilslegacy:block/medium_cage_bottom"
+    },
+    "facing=west,half=lower,open=false,part=2": {
+      "model": "fossilslegacy:block/medium_cage_bottom",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=west,half=lower,open=false,part=3": {
+      "model": "fossilslegacy:block/medium_cage_bottom",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=west,half=lower,open=false,part=4": {
+      "model": "fossilslegacy:block/medium_cage_bottom",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=west,half=lower,open=true,part=1": {
+      "model": "fossilslegacy:block/medium_cage_bottom_open_right",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=west,half=lower,open=true,part=2": {
+      "model": "fossilslegacy:block/medium_cage_bottom",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=west,half=lower,open=true,part=3": {
+      "model": "fossilslegacy:block/medium_cage_bottom_open_left",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=west,half=lower,open=true,part=4": {
+      "model": "fossilslegacy:block/medium_cage_bottom",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=west,half=upper,open=false,part=1": {
+      "model": "fossilslegacy:block/medium_cage_top"
+    },
+    "facing=west,half=upper,open=false,part=2": {
+      "model": "fossilslegacy:block/medium_cage_top",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=west,half=upper,open=false,part=3": {
+      "model": "fossilslegacy:block/medium_cage_top",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=west,half=upper,open=false,part=4": {
+      "model": "fossilslegacy:block/medium_cage_top",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=west,half=upper,open=true,part=1": {
+      "model": "fossilslegacy:block/medium_cage_top_open_right",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=west,half=upper,open=true,part=2": {
+      "model": "fossilslegacy:block/medium_cage_top",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=west,half=upper,open=true,part=3": {
+      "model": "fossilslegacy:block/medium_cage_top_open_left",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=west,half=upper,open=true,part=4": {
+      "model": "fossilslegacy:block/medium_cage_top",
+      "uvlock": true,
+      "y": 180
+    }
+  }
+}

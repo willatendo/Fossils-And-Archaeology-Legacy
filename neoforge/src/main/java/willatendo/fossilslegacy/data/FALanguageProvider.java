@@ -56,7 +56,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("advancements.fossilslegacy.legacy.lilac.title", "Keep the Lilac Away!");
         this.add("advancements.fossilslegacy.legacy.lilac.desc", "Breed a triceratops!");
         this.add("advancements.fossilslegacy.legacy.bingo_dino_dna.title", "Bingo! Dino DNA!");
-        this.add("advancements.fossilslegacy.legacy.bingo_dino_dna.desc", "Acquire DNA!");
+        this.add("advancements.fossilslegacy.legacy.bingo_dino_dna.desc", "Acquire animal DNA!");
         this.add("advancements.fossilslegacy.legacy.sixty_six.title", "Sixty-Six Million Years in the Making!");
         this.add("advancements.fossilslegacy.legacy.sixty_six.desc", "Acquire an egg!");
         this.add("advancements.fossilslegacy.legacy.have_tyrannosaurus.title", "We Have a T-rex!");
@@ -77,11 +77,17 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("advancements.fossilslegacy.legacy.dollys_legacy.desc", "Clone one of every non-extinct animal!");
         this.add("advancements.fossilslegacy.legacy.night_at_the_museum.title", "Night At The Museum!");
         this.add("advancements.fossilslegacy.legacy.night_at_the_museum.desc", "Articulate an articulated fossil!");
+        this.add("advancements.fossilslegacy.legacy.extinct_since_the_cretaceous.title", "Alan, This Species Has Been Extinct Since the Cretaceous!");
+        this.add("advancements.fossilslegacy.legacy.extinct_since_the_cretaceous.desc", "Acquire plant DNA!");
+        this.add("advancements.fossilslegacy.legacy.all_trees.title", "All the \"Trees\"!");
+        this.add("advancements.fossilslegacy.legacy.all_trees.desc", "Clone one of every prehistoric tree!");
+        this.add("advancements.fossilslegacy.legacy.the_palaeobotanist.title", "The Palaeobotanist!");
+        this.add("advancements.fossilslegacy.legacy.the_palaeobotanist.desc", "Clone one of every prehistoric plant!");
         this.add("advancements.fossilslegacy.legacy.palaeontology_table.title", "A Palaeontologist's Table!");
         this.add("advancements.fossilslegacy.legacy.palaeontology_table.desc", "Make a palaeontology table!");
-        this.add("advancements.fossilslegacy.legacy.pyrenean_ibex.title", "From The Pyrenean Ibex To This!");
+        this.add("advancements.fossilslegacy.legacy.pyrenean_ibex.title", "From the Pyrenean Ibex to This!");
         this.add("advancements.fossilslegacy.legacy.pyrenean_ibex.desc", "Clone one of every cenozoic animal!");
-        this.add("advancements.fossilslegacy.legacy.play_god.title", "No, This Is How You Play God!");
+        this.add("advancements.fossilslegacy.legacy.play_god.title", "No, This is How You Play God!");
         this.add("advancements.fossilslegacy.legacy.play_god.desc", "Modify genes to express a specific trait!");
         this.add("advancements.fossilslegacy.legacy.relic_scrap.title", "Old News");
         this.add("advancements.fossilslegacy.legacy.relic_scrap.desc", "Acquire a relic scrap!");
@@ -196,6 +202,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.WAXED_WEATHERED_COPPER_LLAMA_STATUE.get());
         this.add(FABlocks.WAXED_OXIDIZED_COPPER_LLAMA_STATUE.get());
         this.add(FABlocks.SMALL_CAGE.get());
+        this.add(FABlocks.MEDIUM_CAGE.get());
         this.add("block.fossilslegacy.small_cage.desc", "In cage: %s");
         this.add(FABlocks.CYCAD_HEAD.get());
         this.add(FABlocks.CYCAD_LOG.get());
@@ -352,6 +359,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FACreativeModeTabs.FA_BLOCKS.get(), "F/A: Blocks");
         this.add(FACreativeModeTabs.FA_ARCHAEOLOGY_ITEMS.get(), "F/A: Archaeology Items");
         this.add(FACreativeModeTabs.FA_PALAEONTOLOGY_ITEMS.get(), "F/A: Palaeontology Items");
+        this.add(FACreativeModeTabs.FA_PALAEOBOTANY_ITEMS.get(), "F/A: Palaeobotany Items");
         this.add(FACreativeModeTabs.FA_OTHER_ITEMS.get(), "F/A: Other Items");
 
         // Deaths
@@ -1303,6 +1311,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAFuelEntryTags.ARCHAEOLOGY_WORKBENCH, "Archaeology Workbench Fuels");
         this.add(FAFuelEntryTags.CULTIVATOR, "Cultivator Fuels");
 
+        this.add(FAItemTags.ANIMAL_DNA, "Animal DNA");
         this.add(FAItemTags.ANCIENT_TOOL_MATERIALS, "Ancient Tool Materials");
         this.add(FAItemTags.ANKYLOSAURUS_COMMANDABLES, "Ankylosaurus Commandables");
         this.add(FAItemTags.ARCHAEOPTERIS_LOGS, "Archaeopteris Logs");
@@ -1335,6 +1344,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItemTags.PACHYCEPHALOSAURUS_COMMANDABLES, "Pachycephalosaurus Commandables");
         this.add(FAItemTags.PIGLIN_TAMING_ARMOR, "Piglin Taming Armor");
         this.add(FAItemTags.PISCIVORE_FOODS, "Piscivore Foods");
+        this.add(FAItemTags.PLANT_DNA, "Plant DNA");
         this.add(FAItemTags.PTERANODON_COMMANDABLES, "Pteranodon Commandables");
         this.add(FAItemTags.REPAIR_WHEN_BROKEN_IN_ARCHAEOLOGY_TABLE, "Repair When Broken In Archaeology Table");
         this.add(FAItemTags.SIGILLARIA_LOGS, "Sigillaria Logs");

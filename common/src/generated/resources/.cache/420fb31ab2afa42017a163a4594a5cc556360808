@@ -1,4 +1,4 @@
-// 1.21.4	2025-07-06T02:52:41.1866332	F/A Recipes
+// 1.21.4	2025-07-06T23:29:32.1646977	F/A Recipes
 0ed98d717097975a11c79f9fff8bf82b0607422e data/fossilslegacy/advancement/recipes/building_blocks/analyzer.json
 46ebf2fc417b9f49378f97df8d05e3d312b8265e data/fossilslegacy/advancement/recipes/building_blocks/archaeology_workbench.json
 182b5a94eb3047aeed91b539c5b9ee98a09f7db8 data/fossilslegacy/advancement/recipes/building_blocks/archaeopteris_planks.json
@@ -346,7 +346,7 @@ b5c4488bf81bd42815c6772cb600a15678719980 data/fossilslegacy/advancement/recipes/
 9833c208a2f3fb46109de0f62ad045d148e0993e data/fossilslegacy/advancement/recipes/redstone/sigillaria_pressure_plate.json
 89e63c587354edcfcba7520b708e541a32c5f6b6 data/fossilslegacy/advancement/recipes/redstone/sigillaria_sign.json
 f14d12cd8975ad68803544c6b7c96d949799cd53 data/fossilslegacy/advancement/recipes/redstone/sigillaria_trapdoor.json
-c2eeb0c57a42bc1d00c513c772f840661567362a data/fossilslegacy/advancement/recipes/tools/dinopedia.json
+d3c9ddbe4c09f68950fad389687f501d1b0c474b data/fossilslegacy/advancement/recipes/tools/dinopedia.json
 89455b7c2b7a26aef047d0d1c77832d8701affa9 data/fossilslegacy/advancement/recipes/tools/small_cage.json
 1ed558345d35d8fc63e52e1434e5339a903ecfb5 data/fossilslegacy/advancement/recipes/transportation/archaeopteris_boat.json
 3ae349fe34543a3ff6ee6f298ef9606aacfb3253 data/fossilslegacy/advancement/recipes/transportation/archaeopteris_chest_boat.json
@@ -518,7 +518,7 @@ de1e05534318db07d85ceb312014bf09cf10e703 data/fossilslegacy/recipe/diamond_hamme
 8545d5ec008a5a9c520676dc3ff33ae0c84ec158 data/fossilslegacy/recipe/diamond_javelin_repair.json
 4cd9b6fd6d8350aea54081c75d945b350d105e43 data/fossilslegacy/recipe/dilophosaurus_egg.json
 f89688d3573df125d8990df14b384b4a9bf96094 data/fossilslegacy/recipe/dimetrodon_egg.json
-11197e0c5b3bd0d75ace2569974834891be35e82 data/fossilslegacy/recipe/dinopedia.json
+a62fba28a1e980c202b16d63dbb6011b055b4198 data/fossilslegacy/recipe/dinopedia.json
 f95f552cee2e79e33956521a3c0b3fc8be996796 data/fossilslegacy/recipe/dna_recombinator.json
 8393a06ca2adee5089416b8a70b7ce9537bb01b1 data/fossilslegacy/recipe/dolphin_embryo_syringe.json
 dc04087c9e37da002678f7770329ba0f2156ed6a data/fossilslegacy/recipe/donkey_embryo_syringe.json

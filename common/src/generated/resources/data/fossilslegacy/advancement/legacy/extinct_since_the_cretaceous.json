@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#fossilslegacy:animal_dna"
+            "items": "#fossilslegacy:plant_dna"
           }
         ]
       },
@@ -14,15 +14,15 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.fossilslegacy.legacy.bingo_dino_dna.desc"
+      "translate": "advancements.fossilslegacy.legacy.extinct_since_the_cretaceous.desc"
     },
     "hidden": true,
     "icon": {
       "count": 1,
-      "id": "fossilslegacy:tyrannosaurus_dna"
+      "id": "fossilslegacy:jurassic_fern_dna"
     },
     "title": {
-      "translate": "advancements.fossilslegacy.legacy.bingo_dino_dna.title"
+      "translate": "advancements.fossilslegacy.legacy.extinct_since_the_cretaceous.title"
     }
   },
   "requirements": [

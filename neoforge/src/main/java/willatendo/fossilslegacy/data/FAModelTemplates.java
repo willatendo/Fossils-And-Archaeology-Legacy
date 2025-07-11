@@ -10,10 +10,17 @@ import java.util.Optional;
 
 public final class FAModelTemplates {
     public static final ModelTemplate FROGSPAWN = FAModelTemplates.createMC("frogspawn", TextureSlot.TEXTURE, TextureSlot.PARTICLE).extend().renderType("cutout").build();
-    public static final ExtendedModelTemplate TEMPLATE_SMALL_CAGE = FAModelTemplates.create("template_small_cage").renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_CULTIVATOR = FAModelTemplates.create("template_cultivator", TextureSlot.SIDE, TextureSlot.TOP).renderType("translucent").build();
     public static final ExtendedModelTemplate TEMPLATE_CULTIVATOR_ACTIVE = FAModelTemplates.create("template_cultivator_active", TextureSlot.SIDE, TextureSlot.TOP).renderType("translucent").build();
-    public static final ExtendedModelTemplate TEMPLATE_CYCAD_HEAD_CONE = FAModelTemplates.create("template_cycad_head_cone", TextureSlot.SIDE, TextureSlot.TOP, FATextureSlot.HEAD, FATextureSlot.LEAVES).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_SMALL_CAGE = FAModelTemplates.create("template_small_cage").renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_SMALL_CAGE_OPEN = FAModelTemplates.create("template_small_cage_open").renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_MEDIUM_CAGE_BOTTOM = FAModelTemplates.create("template_medium_cage_bottom").renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_MEDIUM_CAGE_BOTTOM_OPEN_RIGHT = FAModelTemplates.create("template_medium_cage_bottom_open_right").renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_MEDIUM_CAGE_BOTTOM_OPEN_LEFT = FAModelTemplates.create("template_medium_cage_bottom_open_left").renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_MEDIUM_CAGE_TOP = FAModelTemplates.create("template_medium_cage_top").renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_MEDIUM_CAGE_TOP_OPEN_LEFT = FAModelTemplates.create("template_medium_cage_top_open_left").renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_MEDIUM_CAGE_TOP_OPEN_RIGHT = FAModelTemplates.create("template_medium_cage_top_open_right").renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_CYCAD_HEAD_CONE = FAModelTemplates.create("template_cycad_head_cone", TextureSlot.SIDE, TextureSlot.TOP, FATextureSlot.LEAVES, FATextureSlot.HEAD).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_CYCAD_HEAD_NO_CONE = FAModelTemplates.create("template_cycad_head_no_cone", TextureSlot.SIDE, TextureSlot.TOP, FATextureSlot.LEAVES).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_CYCAD_LOG = FAModelTemplates.create("template_cycad_log", TextureSlot.SIDE, TextureSlot.TOP).build();
     public static final ExtendedModelTemplate TEMPLATE_DECORATION_PLAQUE_POST = FAModelTemplates.create("template_decoration_plaque_post", FATextureSlot.POST).build();
