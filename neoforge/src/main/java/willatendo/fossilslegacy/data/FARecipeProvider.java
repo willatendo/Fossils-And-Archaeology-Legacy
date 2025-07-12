@@ -48,7 +48,7 @@ public class FARecipeProvider extends RecipeProvider {
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FAItems.SKULL_STICK.get()).pattern("#").pattern("$").define('#', FABlocks.SKULL_BLOCK.get()).define('$', Items.STICK).unlockedBy(getHasName(FABlocks.SKULL_BLOCK.get()), has(FABlocks.SKULL_BLOCK.get())).save(this.output);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FAItems.TOOTH_DAGGER.get()).pattern("#").pattern("$").define('#', FAItems.TYRANNOSAURUS_TOOTH.get()).define('$', Items.STICK).unlockedBy(getHasName(FAItems.TYRANNOSAURUS_TOOTH.get()), has(FAItems.TYRANNOSAURUS_TOOTH.get())).save(this.output);
         this.shapeless(RecipeCategory.TOOLS, FAItems.DINOPEDIA.get()).requires(Items.BOOK).requires(this.tag(FAItemTags.ANIMAL_DNA)).unlockedBy("has_dna", has(FAItemTags.ANIMAL_DNA)).save(this.output);
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.ANALYZER.get()).pattern("#%#").pattern("#$#").define('#', Items.IRON_INGOT).define('%', FAItems.RELIC_SCRAP.get()).define('$', FAItems.FOSSIL.get()).unlockedBy(getHasName(FAItems.FOSSIL.get()), has(FAItems.FOSSIL.get())).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.ANALYZER.get()).pattern("#%#").pattern("#$#").define('#', Items.IRON_INGOT).define('%', FAItems.RELIC_SCRAP.get()).define('$', FAItems.MESOZOIC_FOSSIL.get()).unlockedBy(getHasName(FAItems.MESOZOIC_FOSSIL.get()), has(FAItems.MESOZOIC_FOSSIL.get())).save(this.output);
         this.cultivator(FABlocks.WHITE_CULTIVATOR.get(), Items.WHITE_DYE, Blocks.WHITE_STAINED_GLASS);
         this.cultivator(FABlocks.ORANGE_CULTIVATOR.get(), Items.ORANGE_DYE, Blocks.ORANGE_STAINED_GLASS);
         this.cultivator(FABlocks.MAGENTA_CULTIVATOR.get(), Items.MAGENTA_DYE, Blocks.MAGENTA_STAINED_GLASS);
@@ -67,7 +67,7 @@ public class FARecipeProvider extends RecipeProvider {
         this.cultivator(FABlocks.BLACK_CULTIVATOR.get(), Items.BLACK_DYE, Blocks.BLACK_STAINED_GLASS);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DNA_RECOMBINATOR.get()).pattern("#$#").pattern("#&#").pattern("#!#").define('#', Items.IRON_INGOT).define('$', Blocks.REDSTONE_BLOCK).define('&', Items.NETHER_STAR).define('!', Items.GOLD_INGOT).unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT)).save(this.output);
         this.craftingTable(FABlocks.ARCHAEOLOGY_WORKBENCH.get(), Items.PAPER);
-        this.craftingTable(FABlocks.PALAEONTOLOGY_TABLE.get(), FAItems.FOSSIL.get());
+        this.craftingTable(FABlocks.PALAEONTOLOGY_TABLE.get(), FAItems.MESOZOIC_FOSSIL.get());
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DRUM.get()).pattern("###").pattern("$%$").pattern("$$$").define('#', Items.LEATHER).define('$', this.tag(ItemTags.PLANKS)).define('%', Items.REDSTONE).unlockedBy(getHasName(Items.LEATHER), has(Items.LEATHER)).save(this.output);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.FEEDER.get()).pattern("#$#").pattern("%@!").pattern("!!!").define('#', Items.IRON_INGOT).define('$', Blocks.GLASS).define('%', Blocks.STONE_BUTTON).define('@', Items.BUCKET).define('!', Blocks.STONE).unlockedBy(getHasName(Blocks.STONE), has(Blocks.STONE)).save(this.output);
         this.shapeless(RecipeCategory.BUILDING_BLOCKS, FAItems.RAW_CHICKEN_SOUP_BUCKET.get()).requires(Items.CHICKEN).requires(Items.BUCKET).unlockedBy(getHasName(Items.BUCKET), has(Items.BUCKET)).save(this.output);
@@ -78,6 +78,7 @@ public class FARecipeProvider extends RecipeProvider {
         this.woodType(FABlocks.SIGILLARIA_LOG.get(), FABlocks.STRIPPED_SIGILLARIA_LOG.get(), FABlocks.SIGILLARIA_WOOD.get(), FABlocks.STRIPPED_SIGILLARIA_WOOD.get(), FAItemTags.SIGILLARIA_LOGS, FABlocks.SIGILLARIA_PLANKS.get(), FABlocks.SIGILLARIA_STAIRS.get(), FABlocks.SIGILLARIA_SLAB.get(), FABlocks.SIGILLARIA_FENCE.get(), FABlocks.SIGILLARIA_FENCE_GATE.get(), FABlocks.SIGILLARIA_DOOR.get(), FABlocks.SIGILLARIA_TRAPDOOR.get(), FABlocks.SIGILLARIA_PRESSURE_PLATE.get(), FABlocks.SIGILLARIA_BUTTON.get(), FAItems.SIGILLARIA_SIGN.get(), FAItems.SIGILLARIA_HANGING_SIGN.get(), FAItems.SIGILLARIA_BOAT.get(), FAItems.SIGILLARIA_CHEST_BOAT.get());
         this.woodType(FABlocks.CALAMITES_LOG.get(), FABlocks.STRIPPED_CALAMITES_LOG.get(), FABlocks.CALAMITES_WOOD.get(), FABlocks.STRIPPED_CALAMITES_WOOD.get(), FAItemTags.CALAMITES_LOGS, FABlocks.CALAMITES_PLANKS.get(), FABlocks.CALAMITES_STAIRS.get(), FABlocks.CALAMITES_SLAB.get(), FABlocks.CALAMITES_FENCE.get(), FABlocks.CALAMITES_FENCE_GATE.get(), FABlocks.CALAMITES_DOOR.get(), FABlocks.CALAMITES_TRAPDOOR.get(), FABlocks.CALAMITES_PRESSURE_PLATE.get(), FABlocks.CALAMITES_BUTTON.get(), FAItems.CALAMITES_SIGN.get(), FAItems.CALAMITES_HANGING_SIGN.get(), FAItems.CALAMITES_BOAT.get(), FAItems.CALAMITES_CHEST_BOAT.get());
         this.woodType(FABlocks.ARCHAEOPTERIS_LOG.get(), FABlocks.STRIPPED_ARCHAEOPTERIS_LOG.get(), FABlocks.ARCHAEOPTERIS_WOOD.get(), FABlocks.STRIPPED_ARCHAEOPTERIS_WOOD.get(), FAItemTags.ARCHAEOPTERIS_LOGS, FABlocks.ARCHAEOPTERIS_PLANKS.get(), FABlocks.ARCHAEOPTERIS_STAIRS.get(), FABlocks.ARCHAEOPTERIS_SLAB.get(), FABlocks.ARCHAEOPTERIS_FENCE.get(), FABlocks.ARCHAEOPTERIS_FENCE_GATE.get(), FABlocks.ARCHAEOPTERIS_DOOR.get(), FABlocks.ARCHAEOPTERIS_TRAPDOOR.get(), FABlocks.ARCHAEOPTERIS_PRESSURE_PLATE.get(), FABlocks.ARCHAEOPTERIS_BUTTON.get(), FAItems.ARCHAEOPTERIS_SIGN.get(), FAItems.ARCHAEOPTERIS_HANGING_SIGN.get(), FAItems.ARCHAEOPTERIS_BOAT.get(), FAItems.ARCHAEOPTERIS_CHEST_BOAT.get());
+        this.woodType(FABlocks.GINKGO_LOG.get(), FABlocks.STRIPPED_GINKGO_LOG.get(), FABlocks.GINKGO_WOOD.get(), FABlocks.STRIPPED_GINKGO_WOOD.get(), FAItemTags.GINKGO_LOGS, FABlocks.GINKGO_PLANKS.get(), FABlocks.GINKGO_STAIRS.get(), FABlocks.GINKGO_SLAB.get(), FABlocks.GINKGO_FENCE.get(), FABlocks.GINKGO_FENCE_GATE.get(), FABlocks.GINKGO_DOOR.get(), FABlocks.GINKGO_TRAPDOOR.get(), FABlocks.GINKGO_PRESSURE_PLATE.get(), FABlocks.GINKGO_BUTTON.get(), FAItems.GINKGO_SIGN.get(), FAItems.GINKGO_HANGING_SIGN.get(), FAItems.GINKGO_BOAT.get(), FAItems.GINKGO_CHEST_BOAT.get());
         this.shaped(RecipeCategory.DECORATIONS, FABlocks.MAYAN_VASE.get()).pattern("###").pattern("# #").pattern("###").define('#', Items.BRICK).unlockedBy(getHasName(Items.BRICK), has(Items.BRICK)).save(this.output);
         this.shaped(RecipeCategory.DECORATIONS, FABlocks.MAYAN_JADE_VASE.get()).pattern("#$#").pattern("$ $").pattern("#$#").define('#', Items.BRICK).define('$', FAItems.JADE.get()).unlockedBy(getHasName(Items.BRICK), has(Items.BRICK)).save(this.output);
         this.shaped(RecipeCategory.DECORATIONS, FABlocks.MAYAN_OCELOT_VASE.get()).pattern("#$#").pattern("$ $").pattern("#$#").define('#', Items.BRICK).define('$', FAItems.JADE_OCELOT.get()).unlockedBy(getHasName(Items.BRICK), has(Items.BRICK)).save(this.output);
@@ -215,6 +216,7 @@ public class FARecipeProvider extends RecipeProvider {
         this.cultivate(CultivationBookCategory.PLANT, FAItems.SIGILLARIA_DNA.get(), FAItems.SIGILLARIA_SPORE.get(), 6000);
         this.cultivate(CultivationBookCategory.PLANT, FAItems.CALAMITES_DNA.get(), FAItems.CALAMITES_SPORE.get(), 6000);
         this.cultivate(CultivationBookCategory.PLANT, FAItems.ARCHAEOPTERIS_DNA.get(), FAItems.ARCHAEOPTERIS_SPORE.get(), 6000);
+        this.cultivate(CultivationBookCategory.PLANT, FAItems.GINKGO_DNA.get(), FAItems.GINKGO_SPORE.get(), 6000);
 
         this.archaeology(ArchaeologyBookCategory.RESTORE, FAItems.ANCIENT_HELMET_ARTIFACT.get(), FAItems.ANCIENT_HELMET.get(), 3000);
         this.archaeology(ArchaeologyBookCategory.RESTORE, FAItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), FAItems.ANCIENT_CHESTPLATE.get(), 3000);
@@ -238,7 +240,8 @@ public class FARecipeProvider extends RecipeProvider {
         this.archaeology(ArchaeologyBookCategory.REPAIR, "stone_javelin_repair", FAItems.BROKEN_STONE_JAVELIN.get(), FAItems.STONE_JAVELIN.get(), 3000);
         this.archaeology(ArchaeologyBookCategory.REPAIR, "wooden_javelin_repair", FAItems.BROKEN_WOODEN_JAVELIN.get(), FAItems.WOODEN_JAVELIN.get(), 3000);
 
-        this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.FOSSIL.get(), FAAnalyzerResultTags.FOSSIL_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.MESOZOIC_FOSSIL.get(), FAAnalyzerResultTags.MESOZOIC_FOSSIL_RESULTS, 100);
+        this.analyzation(AnalyzationBookCategory.PALAEOBOTANY, FAItems.PLANT_FOSSIL.get(), FAAnalyzerResultTags.PLANT_FOSSIL_RESULTS, 100);
         this.analyzation(AnalyzationBookCategory.ARCHAEOLOGY, FAItems.RELIC_SCRAP.get(), FAAnalyzerResultTags.RELIC_SCRAP_RESULTS, 100);
         this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.FROZEN_MEAT.get(), FAAnalyzerResultTags.FROZEN_MEAT_RESULTS, 100);
         this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, Items.AXOLOTL_BUCKET, FAAnalyzerResultTags.AXOLOTL_BUCKET_RESULTS, 100);
@@ -359,7 +362,7 @@ public class FARecipeProvider extends RecipeProvider {
     }
 
     public void analyzation(AnalyzationBookCategory analyzationBookCategory, ItemLike ingredient, TagKey<AnalyzerResult> results, int time) {
-        AnalyzationRecipeBuilder.recipe(analyzationBookCategory, Ingredient.of(ingredient), results, time).unlockedBy(getHasName(ingredient), has(ingredient)).save(this.output, ResourceKey.create(Registries.RECIPE, FAUtils.resource(getItemName(ingredient) + "_outputs")));
+        AnalyzationRecipeBuilder.recipe(analyzationBookCategory, Ingredient.of(ingredient), results, time).unlockedBy(getHasName(ingredient), this.has(ingredient)).save(this.output, ResourceKey.create(Registries.RECIPE, FAUtils.resource(getItemName(ingredient) + "_outputs")));
     }
 
     public void analyzation(AnalyzationBookCategory analyzationBookCategory, TagKey<Item> itemTagKey, String name, TagKey<AnalyzerResult> results, int time) {

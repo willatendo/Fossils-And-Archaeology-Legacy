@@ -121,6 +121,8 @@ public final class FAEntityTypes {
     public static final SimpleHolder<EntityType<ChestBoat>> ARCHAEOPTERIS_CHEST_BOAT = FAEntityTypes.registerChestBoat("archaeopteris_chest_boat", FAItems.ARCHAEOPTERIS_CHEST_BOAT::get);
     public static final SimpleHolder<EntityType<Boat>> CALAMITES_BOAT = FAEntityTypes.registerBoat("calamites_boat", FAItems.CALAMITES_BOAT::get);
     public static final SimpleHolder<EntityType<ChestBoat>> CALAMITES_CHEST_BOAT = FAEntityTypes.registerChestBoat("calamites_chest_boat", FAItems.CALAMITES_CHEST_BOAT::get);
+    public static final SimpleHolder<EntityType<Boat>> GINKGO_BOAT = FAEntityTypes.registerBoat("ginkgo_boat", FAItems.GINKGO_BOAT::get);
+    public static final SimpleHolder<EntityType<ChestBoat>> GINKGO_CHEST_BOAT = FAEntityTypes.registerChestBoat("ginkgo_chest_boat", FAItems.GINKGO_CHEST_BOAT::get);
     public static final SimpleHolder<EntityType<Boat>> LEPIDODENDRON_BOAT = FAEntityTypes.registerBoat("lepidodendron_boat", FAItems.LEPIDODENDRON_BOAT::get);
     public static final SimpleHolder<EntityType<ChestBoat>> LEPIDODENDRON_CHEST_BOAT = FAEntityTypes.registerChestBoat("lepidodendron_chest_boat", FAItems.LEPIDODENDRON_CHEST_BOAT::get);
     public static final SimpleHolder<EntityType<Boat>> SIGILLARIA_BOAT = FAEntityTypes.registerBoat("sigillaria_boat", FAItems.SIGILLARIA_BOAT::get);

@@ -1,0 +1,7 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "category": "palaeontology",
+  "fuels": "fossilslegacy:mesozoic_fossil",
+  "ingredient": "fossilslegacy:mesozoic_fossil",
+  "time": 100
+}

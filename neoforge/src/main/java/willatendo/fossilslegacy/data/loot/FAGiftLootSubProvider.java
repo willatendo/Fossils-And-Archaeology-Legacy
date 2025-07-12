@@ -19,6 +19,6 @@ public class FAGiftLootSubProvider implements LootTableSubProvider {
     @Override
     public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> giftLoot) {
         giftLoot.accept(FALootTables.ARCHAEOLOGIST_GIFT, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.ANCIENT_HELMET.get())).add(LootItem.lootTableItem(FAItems.RELIC_SCRAP.get())).add(LootItem.lootTableItem(FAItems.JADE.get())).add(LootItem.lootTableItem(FAItems.JADE_VILLAGER.get()))));
-        giftLoot.accept(FALootTables.PALAEONTOLOGIST_GIFT, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.FOSSIL.get())).add(LootItem.lootTableItem(FAItems.DINOPEDIA.get())).add(LootItem.lootTableItem(FAItems.JURASSIC_FERN_SPORES.get()))));
+        giftLoot.accept(FALootTables.PALAEONTOLOGIST_GIFT, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.MESOZOIC_FOSSIL.get())).add(LootItem.lootTableItem(FAItems.DINOPEDIA.get())).add(LootItem.lootTableItem(FAItems.JURASSIC_FERN_SPORES.get()))));
     }
 }

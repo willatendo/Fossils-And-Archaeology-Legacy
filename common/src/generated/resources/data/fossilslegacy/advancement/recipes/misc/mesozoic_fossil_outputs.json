@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mesozoic_fossil": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:mesozoic_fossil"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:mesozoic_fossil_outputs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_mesozoic_fossil"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:mesozoic_fossil_outputs"
+    ]
+  }
+}

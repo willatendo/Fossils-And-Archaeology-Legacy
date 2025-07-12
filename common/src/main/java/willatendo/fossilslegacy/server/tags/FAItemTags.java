@@ -29,10 +29,11 @@ public class FAItemTags {
     public static final TagKey<Item> DIMETRODON_COMMANDABLES = ITEM_TAGS.register("commandable/dimetrodon");
     public static final TagKey<Item> DINO_EGGS = ITEM_TAGS.register("dino_eggs");
     public static final TagKey<Item> DRUM_INSTRUMENT = ITEM_TAGS.register("drum_instrument");
+    public static final TagKey<Item> DRYOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/dryosaurus");
     public static final TagKey<Item> EMBRYO_SYRINGES = ITEM_TAGS.register("embryo_syringes");
     public static final TagKey<Item> FROGLIGHTS = ITEM_TAGS.register("froglights");
     public static final TagKey<Item> GALLIMIMUS_COMMANDABLES = ITEM_TAGS.register("commandable/gallimimus");
-    public static final TagKey<Item> DRYOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/dryosaurus");
+    public static final TagKey<Item> GINKGO_LOGS = ITEM_TAGS.register("ginkgo_logs");
     public static final TagKey<Item> HAMMERS = ITEM_TAGS.register("hammer");
     public static final TagKey<Item> HERBIVORE_FOODS = ITEM_TAGS.register("herbivore_foods");
     public static final TagKey<Item> ICED_MEAT_TOOL_MATERIALS = ITEM_TAGS.register("iced_meat_tool_materials");

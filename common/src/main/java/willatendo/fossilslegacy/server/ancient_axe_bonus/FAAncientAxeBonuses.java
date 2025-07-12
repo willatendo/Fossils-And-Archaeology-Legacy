@@ -23,6 +23,7 @@ public final class FAAncientAxeBonuses {
     public static final ResourceKey<AncientAxeBonus> CHERRY_LOG_TO_CHERRY_PLANKS = FAAncientAxeBonuses.create("cherry_log_to_cherry_planks");
     public static final ResourceKey<AncientAxeBonus> ARCHAEOPTERIS_LOG_TO_ARCHAEOPTERIS_PLANKS = FAAncientAxeBonuses.create("archaeopteris_log_to_archaeopteris_planks");
     public static final ResourceKey<AncientAxeBonus> CALAMITES_LOG_TO_CALAMITES_PLANKS = FAAncientAxeBonuses.create("calamites_log_to_calamites_planks");
+    public static final ResourceKey<AncientAxeBonus> GINKGO_LOG_TO_GINKGO_PLANKS = FAAncientAxeBonuses.create("ginkgo_log_to_ginkgo_planks");
     public static final ResourceKey<AncientAxeBonus> LEPIDODENDRON_LOG_TO_LEPIDODENDRON_PLANKS = FAAncientAxeBonuses.create("lepidodendron_log_to_lepidodendron_planks");
     public static final ResourceKey<AncientAxeBonus> SIGILLARIA_LOG_TO_SIGILLARIA_PLANKS = FAAncientAxeBonuses.create("sigillaria_log_to_sigillaria_planks");
 
@@ -47,6 +48,7 @@ public final class FAAncientAxeBonuses {
         FAAncientAxeBonuses.register(bootstrapContext, CHERRY_LOG_TO_CHERRY_PLANKS, Blocks.CHERRY_LOG, new ItemStack(Blocks.CHERRY_PLANKS), 1, 3);
         FAAncientAxeBonuses.register(bootstrapContext, ARCHAEOPTERIS_LOG_TO_ARCHAEOPTERIS_PLANKS, FABlocks.ARCHAEOPTERIS_LOG.get(), new ItemStack(FABlocks.ARCHAEOPTERIS_PLANKS.get()), 1, 3);
         FAAncientAxeBonuses.register(bootstrapContext, CALAMITES_LOG_TO_CALAMITES_PLANKS, FABlocks.CALAMITES_LOG.get(), new ItemStack(FABlocks.CALAMITES_PLANKS.get()), 1, 3);
+        FAAncientAxeBonuses.register(bootstrapContext, GINKGO_LOG_TO_GINKGO_PLANKS, FABlocks.GINKGO_LOG.get(), new ItemStack(FABlocks.GINKGO_PLANKS.get()), 1, 3);
         FAAncientAxeBonuses.register(bootstrapContext, LEPIDODENDRON_LOG_TO_LEPIDODENDRON_PLANKS, FABlocks.LEPIDODENDRON_LOG.get(), new ItemStack(FABlocks.LEPIDODENDRON_PLANKS.get()), 1, 3);
         FAAncientAxeBonuses.register(bootstrapContext, SIGILLARIA_LOG_TO_SIGILLARIA_PLANKS, FABlocks.SIGILLARIA_LOG.get(), new ItemStack(FABlocks.SIGILLARIA_PLANKS.get()), 1, 3);
     }

@@ -12,7 +12,8 @@ import java.util.function.IntFunction;
 public enum AnalyzationBookCategory implements StringRepresentable {
     PALAEONTOLOGY(0, "palaeontology"),
     ARCHAEOLOGY(1, "archaeology"),
-    MISC(2, "misc");
+    PALAEOBOTANY(2, "palaeobotany"),
+    MISC(3, "misc");
 
     private static final IntFunction<AnalyzationBookCategory> BY_ID = ByIdMap.continuous(archaeologybookcategory -> archaeologybookcategory.id, AnalyzationBookCategory.values(), ByIdMap.OutOfBoundsStrategy.ZERO);
     public static final Codec<AnalyzationBookCategory> CODEC = StringRepresentable.fromEnum(AnalyzationBookCategory::values);

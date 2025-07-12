@@ -18,7 +18,8 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
 
     @Override
     public void run() {
-        this.generatedItem(FAItems.FOSSIL.get());
+        this.generatedItem(FAItems.MESOZOIC_FOSSIL.get());
+        this.generatedItem(FAItems.PLANT_FOSSIL.get());
         this.generatedItem(FAItems.TRICERATOPS_DNA.get());
         this.generatedItem(FAItems.VELOCIRAPTOR_DNA.get());
         this.generatedItem(FAItems.TYRANNOSAURUS_DNA.get());
@@ -49,11 +50,13 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.SIGILLARIA_DNA.get());
         this.generatedItem(FAItems.CALAMITES_DNA.get());
         this.generatedItem(FAItems.ARCHAEOPTERIS_DNA.get());
+        this.generatedItem(FAItems.GINKGO_DNA.get());
         this.generatedItem(FAItems.CYCAD_CONE.get());
         this.generatedItem(FAItems.LEPIDODENDRON_CONE.get());
         this.generatedItem(FAItems.SIGILLARIA_SPORE.get());
         this.generatedItem(FAItems.CALAMITES_SPORE.get());
         this.generatedItem(FAItems.ARCHAEOPTERIS_SPORE.get());
+        this.generatedItem(FAItems.GINKGO_SPORE.get());
         this.generatedItem(FAItems.TRICERATOPS_EGG.get());
         this.generatedItem(FAItems.VELOCIRAPTOR_EGG.get());
         this.generatedItem(FAItems.TYRANNOSAURUS_EGG.get());
@@ -315,6 +318,8 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.CALAMITES_CHEST_BOAT.get());
         this.generatedItem(FAItems.ARCHAEOPTERIS_BOAT.get());
         this.generatedItem(FAItems.ARCHAEOPTERIS_CHEST_BOAT.get());
+        this.generatedItem(FAItems.GINKGO_BOAT.get());
+        this.generatedItem(FAItems.GINKGO_CHEST_BOAT.get());
 
         this.generatedItem(FAItems.OVERWORLD_COIN.get());
         this.generatedItem(FAItems.ICE_AGE_COIN.get());

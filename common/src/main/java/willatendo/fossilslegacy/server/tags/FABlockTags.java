@@ -29,6 +29,7 @@ public class FABlockTags {
     public static final TagKey<Block> ELASMOTHERIUM_SPAWNABLE = BLOCK_TAGS.register("spawnable/elasmotherium");
     public static final TagKey<Block> FEEDER = BLOCK_TAGS.register("feeder");
     public static final TagKey<Block> GALLIMIMUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/gallimimus");
+    public static final TagKey<Block> GINKGO_LOGS = BLOCK_TAGS.register("ginkgo_logs");
     public static final TagKey<Block> JURASSIC_FERN_PLANTABLE_ON = BLOCK_TAGS.register("jurassic_fern_plantable_on");
     public static final TagKey<Block> LLAMA_STATUES = BLOCK_TAGS.register("llama_statues");
     public static final TagKey<Block> LEPIDODENDRON_LOGS = BLOCK_TAGS.register("lepidodendron_logs");

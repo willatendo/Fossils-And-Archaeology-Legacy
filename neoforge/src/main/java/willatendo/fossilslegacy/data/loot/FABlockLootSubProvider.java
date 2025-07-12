@@ -6,12 +6,10 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoublePlantBlock;
-import net.minecraft.world.level.block.PinkPetalsBlock;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
@@ -176,9 +174,27 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.dropPottedContents(FABlocks.POTTED_ARCHAEOPTERIS_SAPLING.get());
         this.dropSelf(FABlocks.ARCHAEOPTERIS_BUTTON.get());
         this.add(FABlocks.ARCHAEOPTERIS_SLAB.get(), this::createSlabItemTable);
+        this.dropSelf(FABlocks.GINKGO_PLANKS.get());
+        this.dropSelf(FABlocks.GINKGO_SAPLING.get());
+        this.dropSelf(FABlocks.GINKGO_LOG.get());
+        this.dropSelf(FABlocks.STRIPPED_GINKGO_LOG.get());
+        this.dropSelf(FABlocks.GINKGO_WOOD.get());
+        this.dropSelf(FABlocks.STRIPPED_GINKGO_WOOD.get());
+        this.add(FABlocks.GINKGO_LEAVES.get(), block -> this.createLeavesDrops(block, FABlocks.GINKGO_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        this.dropSelf(FABlocks.GINKGO_STAIRS.get());
+        this.dropSelf(FABlocks.GINKGO_SIGN.get());
+        this.add(FABlocks.GINKGO_DOOR.get(), this::createDoorTable);
+        this.dropSelf(FABlocks.GINKGO_HANGING_SIGN.get());
+        this.dropSelf(FABlocks.GINKGO_PRESSURE_PLATE.get());
+        this.dropSelf(FABlocks.GINKGO_FENCE.get());
+        this.dropSelf(FABlocks.GINKGO_TRAPDOOR.get());
+        this.dropSelf(FABlocks.GINKGO_FENCE_GATE.get());
+        this.dropPottedContents(FABlocks.POTTED_GINKGO_SAPLING.get());
+        this.dropSelf(FABlocks.GINKGO_BUTTON.get());
+        this.add(FABlocks.GINKGO_SLAB.get(), this::createSlabItemTable);
     }
 
     protected LootTable.Builder createFossilOreLootTable(Block block) {
-        return createSelfDropDispatchTable(block, this.hasSilkTouch(), this.applyExplosionCondition(block, LootOneItemOfManyRandom.lootTableItem(20000, new ItemAndChance(FAItems.FOSSIL.get(), 10, 4500), new ItemAndChance(FAItems.RELIC_SCRAP.get(), 4500, 9800), new ItemAndChance(Items.BONE, 9800, 17800), new ItemAndChance(FABlocks.SKULL_BLOCK.get(), 17800, 19800), new ItemAndChance(FAItems.ANCIENT_SWORD_ARTIFACT.get(), 19800, 19820), new ItemAndChance(FAItems.ANCIENT_SHOVEL_ARTIFACT.get(), 19820, 19840), new ItemAndChance(FAItems.ANCIENT_PICKAXE_ARTIFACT.get(), 19840, 19860), new ItemAndChance(FAItems.ANCIENT_AXE_ARTIFACT.get(), 19860, 19880), new ItemAndChance(FAItems.ANCIENT_HOE_ARTIFACT.get(), 19880, 19900), new ItemAndChance(FAItems.ANCIENT_HELMET_ARTIFACT.get(), 19900, 19925), new ItemAndChance(FAItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 19925, 19950), new ItemAndChance(FAItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 19950, 19975), new ItemAndChance(FAItems.ANCIENT_BOOTS_ARTIFACT.get(), 19975, 20000), new ItemAndChance(FAItems.SCARAB_GEM.get(), 0, 10))));
+        return createSelfDropDispatchTable(block, this.hasSilkTouch(), this.applyExplosionCondition(block, LootOneItemOfManyRandom.lootTableItem(20000, new ItemAndChance(FAItems.MESOZOIC_FOSSIL.get(), 10, 4500), new ItemAndChance(FAItems.RELIC_SCRAP.get(), 4500, 9800), new ItemAndChance(Items.BONE, 9800, 17800), new ItemAndChance(FABlocks.SKULL_BLOCK.get(), 17800, 19800), new ItemAndChance(FAItems.ANCIENT_SWORD_ARTIFACT.get(), 19800, 19820), new ItemAndChance(FAItems.ANCIENT_SHOVEL_ARTIFACT.get(), 19820, 19840), new ItemAndChance(FAItems.ANCIENT_PICKAXE_ARTIFACT.get(), 19840, 19860), new ItemAndChance(FAItems.ANCIENT_AXE_ARTIFACT.get(), 19860, 19880), new ItemAndChance(FAItems.ANCIENT_HOE_ARTIFACT.get(), 19880, 19900), new ItemAndChance(FAItems.ANCIENT_HELMET_ARTIFACT.get(), 19900, 19925), new ItemAndChance(FAItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 19925, 19950), new ItemAndChance(FAItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 19950, 19975), new ItemAndChance(FAItems.ANCIENT_BOOTS_ARTIFACT.get(), 19975, 20000), new ItemAndChance(FAItems.SCARAB_GEM.get(), 0, 10))));
     }
 }

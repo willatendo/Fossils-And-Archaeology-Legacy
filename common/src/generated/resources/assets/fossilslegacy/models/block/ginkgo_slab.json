@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "fossilslegacy:block/ginkgo_planks",
+    "side": "fossilslegacy:block/ginkgo_planks",
+    "top": "fossilslegacy:block/ginkgo_planks"
+  }
+}

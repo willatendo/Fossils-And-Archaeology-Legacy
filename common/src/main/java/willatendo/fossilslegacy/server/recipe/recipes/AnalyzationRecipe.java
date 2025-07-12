@@ -91,6 +91,7 @@ public class AnalyzationRecipe implements Recipe<AnalyzerRecipeInput> {
         switch (this.analyzationBookCategory) {
             case PALAEONTOLOGY -> recipeBookCategory = FARecipeBookCategories.ANALYZATION_PALAEONTOLOGY.get();
             case ARCHAEOLOGY -> recipeBookCategory = FARecipeBookCategories.ANALYZATION_ARCHAEOLOGY.get();
+            case PALAEOBOTANY -> recipeBookCategory = FARecipeBookCategories.ANALYZATION_PALAEOBOTANY.get();
             case MISC -> recipeBookCategory = FARecipeBookCategories.ANALYZATION_MISC.get();
             default -> throw new MatchException(null, null);
         }

@@ -1,6 +1,7 @@
 {
   "values": [
-    "fossilslegacy:fossil",
+    "fossilslegacy:mesozoic_fossil",
+    "fossilslegacy:plant_fossil",
     "fossilslegacy:raw_chicken_soup_bucket",
     "fossilslegacy:raw_berry_medley_bucket",
     "fossilslegacy:axolotlspawn",
@@ -55,6 +56,7 @@
     "fossilslegacy:raw_triceratops",
     "fossilslegacy:raw_tyrannosaurus",
     "fossilslegacy:raw_velociraptor",
+    "fossilslegacy:frozen_meat",
     "fossilslegacy:porkchop",
     "fossilslegacy:cod",
     "fossilslegacy:salmon",

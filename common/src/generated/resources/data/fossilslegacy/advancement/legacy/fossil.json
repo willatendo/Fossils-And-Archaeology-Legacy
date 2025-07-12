@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "fossilslegacy:fossil"
+            "items": "fossilslegacy:mesozoic_fossil"
           }
         ]
       },
@@ -19,7 +19,7 @@
     "hidden": true,
     "icon": {
       "count": 1,
-      "id": "fossilslegacy:fossil"
+      "id": "fossilslegacy:mesozoic_fossil"
     },
     "title": {
       "translate": "advancements.fossilslegacy.legacy.fossil.title"

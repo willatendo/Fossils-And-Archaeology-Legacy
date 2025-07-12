@@ -11,7 +11,8 @@ import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FAFuelEntries {
-    public static final ResourceKey<FuelEntry> FOSSIL = FAFuelEntries.create("fossil");
+    public static final ResourceKey<FuelEntry> MESOZOIC_FOSSIL = FAFuelEntries.create("mesozoic_fossil");
+    public static final ResourceKey<FuelEntry> PLANT_FOSSIL = FAFuelEntries.create("plant_fossil");
     public static final ResourceKey<FuelEntry> RAW_CHICKEN_SOUP_BUCKET = FAFuelEntries.create("raw_chicken_soup_bucket");
     public static final ResourceKey<FuelEntry> RAW_BERRY_MEDLEY_BUCKET = FAFuelEntries.create("raw_berry_medley_bucket");
     public static final ResourceKey<FuelEntry> AXOLOTLSPAWN = FAFuelEntries.create("axolotlspawn");
@@ -64,6 +65,7 @@ public final class FAFuelEntries {
     public static final ResourceKey<FuelEntry> RAW_TRICERATOPS = FAFuelEntries.create("raw_triceratops");
     public static final ResourceKey<FuelEntry> RAW_TYRANNOSAURUS = FAFuelEntries.create("raw_tyrannosaurus");
     public static final ResourceKey<FuelEntry> RAW_VELOCIRAPTOR = FAFuelEntries.create("raw_velociraptor");
+    public static final ResourceKey<FuelEntry> FROZEN_MEAT = FAFuelEntries.create("frozen_meat");
     public static final ResourceKey<FuelEntry> PORKCHOP = FAFuelEntries.create("porkchop");
     public static final ResourceKey<FuelEntry> COD = FAFuelEntries.create("cod");
     public static final ResourceKey<FuelEntry> SALMON = FAFuelEntries.create("salmon");
@@ -89,7 +91,8 @@ public final class FAFuelEntries {
     }
 
     public static void bootstrap(BootstrapContext<FuelEntry> bootstrapContext) {
-        FAFuelEntries.register(bootstrapContext, FOSSIL, FAItems.FOSSIL.get(), 300);
+        FAFuelEntries.register(bootstrapContext, MESOZOIC_FOSSIL, FAItems.MESOZOIC_FOSSIL.get(), 300);
+        FAFuelEntries.register(bootstrapContext, PLANT_FOSSIL, FAItems.PLANT_FOSSIL.get(), 300);
         FAFuelEntries.register(bootstrapContext, RAW_CHICKEN_SOUP_BUCKET, FAItems.RAW_CHICKEN_SOUP_BUCKET.get(), 1000);
         FAFuelEntries.register(bootstrapContext, RAW_BERRY_MEDLEY_BUCKET, FAItems.RAW_BERRY_MEDLEY_BUCKET.get(), 1000);
         FAFuelEntries.register(bootstrapContext, AXOLOTLSPAWN, FABlocks.AXOLOTLSPAWN.get().asItem(), 12000);
@@ -142,6 +145,7 @@ public final class FAFuelEntries {
         FAFuelEntries.register(bootstrapContext, RAW_TRICERATOPS, FAItems.RAW_TRICERATOPS.get(), 12000);
         FAFuelEntries.register(bootstrapContext, RAW_TYRANNOSAURUS, FAItems.RAW_TYRANNOSAURUS.get(), 12000);
         FAFuelEntries.register(bootstrapContext, RAW_VELOCIRAPTOR, FAItems.RAW_VELOCIRAPTOR.get(), 12000);
+        FAFuelEntries.register(bootstrapContext, FROZEN_MEAT, FAItems.FROZEN_MEAT.get(), 3000);
         FAFuelEntries.register(bootstrapContext, PORKCHOP, Items.PORKCHOP, 3000);
         FAFuelEntries.register(bootstrapContext, COD, Items.COD, 3000);
         FAFuelEntries.register(bootstrapContext, SALMON, Items.SALMON, 3000);

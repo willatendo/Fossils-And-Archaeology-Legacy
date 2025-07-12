@@ -10,7 +10,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "fossilslegacy:fossil",
+          "name": "fossilslegacy:mesozoic_fossil",
           "weight": 20
         },
         {

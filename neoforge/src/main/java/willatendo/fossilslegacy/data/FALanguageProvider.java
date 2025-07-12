@@ -274,6 +274,23 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.ARCHAEOPTERIS_FENCE_GATE.get());
         this.add(FABlocks.ARCHAEOPTERIS_BUTTON.get());
         this.add(FABlocks.ARCHAEOPTERIS_SLAB.get());
+        this.add(FABlocks.GINKGO_PLANKS.get());
+        this.add(FABlocks.GINKGO_SAPLING.get());
+        this.add(FABlocks.GINKGO_LOG.get());
+        this.add(FABlocks.STRIPPED_GINKGO_LOG.get());
+        this.add(FABlocks.GINKGO_WOOD.get());
+        this.add(FABlocks.STRIPPED_GINKGO_WOOD.get());
+        this.add(FABlocks.GINKGO_LEAVES.get());
+        this.add(FABlocks.GINKGO_STAIRS.get());
+        this.add(FABlocks.GINKGO_SIGN.get());
+        this.add(FABlocks.GINKGO_DOOR.get());
+        this.add(FABlocks.GINKGO_HANGING_SIGN.get());
+        this.add(FABlocks.GINKGO_PRESSURE_PLATE.get());
+        this.add(FABlocks.GINKGO_FENCE.get());
+        this.add(FABlocks.GINKGO_TRAPDOOR.get());
+        this.add(FABlocks.GINKGO_FENCE_GATE.get());
+        this.add(FABlocks.GINKGO_BUTTON.get());
+        this.add(FABlocks.GINKGO_SLAB.get());
 
         // Biomes
         this.add("biome.fossilslegacy.prehistoric_ocean", "Prehistoric Ocean");
@@ -522,6 +539,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAEntityTypes.ARCHAEOPTERIS_CHEST_BOAT.get(), "Archaeopteris Boat with Chest");
         this.add(FAEntityTypes.CALAMITES_BOAT.get(), "Calamites Boat");
         this.add(FAEntityTypes.CALAMITES_CHEST_BOAT.get(), "Calamites Boat with Chest");
+        this.add(FAEntityTypes.GINKGO_BOAT.get(), "Ginkgo Boat");
+        this.add(FAEntityTypes.GINKGO_CHEST_BOAT.get(), "Ginkgo Boat with Chest");
         this.add(FAEntityTypes.LEPIDODENDRON_BOAT.get(), "Calamites Boat");
         this.add(FAEntityTypes.LEPIDODENDRON_CHEST_BOAT.get(), "Calamites Boat with Chest");
         this.add(FAEntityTypes.SIGILLARIA_BOAT.get(), "Sigillaria Boat");
@@ -575,7 +594,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("gui.jei.category.tagInformation.coat_types", "Coat Types");
 
         // Items
-        this.add(FAItems.FOSSIL.get());
+        this.add(FAItems.MESOZOIC_FOSSIL.get());
+        this.add(FAItems.PLANT_FOSSIL.get());
         this.add(FAItems.TRICERATOPS_DNA.get(), "Triceratops DNA");
         this.add(FAItems.VELOCIRAPTOR_DNA.get(), "Velociraptor DNA");
         this.add(FAItems.TYRANNOSAURUS_DNA.get(), "Tyrannosaurus DNA");
@@ -608,6 +628,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.SIGILLARIA_DNA.get(), "Sigillaria DNA");
         this.add(FAItems.CALAMITES_DNA.get(), "Calamites DNA");
         this.add(FAItems.ARCHAEOPTERIS_DNA.get(), "Archaeopteris DNA");
+        this.add(FAItems.GINKGO_DNA.get(), "Ginkgo DNA");
         this.add(FAItems.CYCAD_CONE.get());
         this.add(FAItems.LEPIDODENDRON_CONE.get());
         this.add(FAItems.SIGILLARIA_SPORE.get());
@@ -916,6 +937,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.CALAMITES_CHEST_BOAT.get(), "Calamites Boat with Chest");
         this.add(FAItems.ARCHAEOPTERIS_BOAT.get());
         this.add(FAItems.ARCHAEOPTERIS_CHEST_BOAT.get(), "Archaeopteris Boat with Chest");
+        this.add(FAItems.GINKGO_BOAT.get());
+        this.add(FAItems.GINKGO_CHEST_BOAT.get(), "Ginkgo Boat with Chest");
 
         this.add(FAItems.DEBUG_MAX_HUNGER.get(), "Debug Max Hunger");
         this.add(FAItems.DEBUG_MAX_HEALTH.get(), "Debug Max Health");
@@ -1152,7 +1175,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("subtitles.item.magic_conch.blow", "Magic conch blow");
 
         // Tags
-        this.add(FAAnalyzerResultTags.FOSSIL_RESULTS, "Fossil Results");
+        this.add(FAAnalyzerResultTags.MESOZOIC_FOSSIL_RESULTS, "Mesozoic Fossil Results");
+        this.add(FAAnalyzerResultTags.PLANT_FOSSIL_RESULTS, "Plant Fossil Results");
         this.add(FAAnalyzerResultTags.RELIC_SCRAP_RESULTS, "Relic Scrap Results");
         this.add(FAAnalyzerResultTags.FROZEN_MEAT_RESULTS, "Frozen Meat Results");
         this.add(FAAnalyzerResultTags.AXOLOTL_BUCKET_RESULTS, "Axolotl Bucket Results");
@@ -1332,6 +1356,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItemTags.DRUM_INSTRUMENT, "Drum Instrument");
         this.add(FAItemTags.FROGLIGHTS, "Froglights");
         this.add(FAItemTags.GALLIMIMUS_COMMANDABLES, "Gallimimus Commandables");
+        this.add(FAItemTags.GINKGO_LOGS, "Ginkgo Logs");
         this.add(FAItemTags.HAMMERS, "Hammers");
         this.add(FAItemTags.HERBIVORE_FOODS, "Herbivore Foods");
         this.add(FAItemTags.ICED_MEAT_TOOL_MATERIALS, "Iced Meat Tool Materials");

@@ -1,4 +1,4 @@
-// 1.21.4	2025-07-09T16:01:28.4930479	Advancements
+// 1.21.4	2025-07-12T03:36:37.557183	Advancements
 72990a203ca07e691c88e4c1074cb390275b4a6e data/fossilslegacy/advancement/legacy/all_jade.json
 592fe47a56cc9cf16fb5212d8a61eeac4ce96d86 data/fossilslegacy/advancement/legacy/all_trees.json
 33e2e87adf5fa02af175151c2a658106b8c185e3 data/fossilslegacy/advancement/legacy/analyzer.json
@@ -23,7 +23,7 @@ fa907bf04bf35cd8d7e3533f0b45223f6ca177ba data/fossilslegacy/advancement/legacy/d
 4e56484a55e9a76eea99e6ded8c77a57a1d59266 data/fossilslegacy/advancement/legacy/extinct_since_the_cretaceous.json
 e3c3a37253ae96dce8dea2c661aa2516248bb889 data/fossilslegacy/advancement/legacy/fixed_ancient_armor.json
 e0f2a78101a1d4dc284ec6544cb124e16a9ce45a data/fossilslegacy/advancement/legacy/flocking.json
-f4bebb908c1ddaeb9839dfbff12c25199ebf1f7f data/fossilslegacy/advancement/legacy/fossil.json
+e57dc47b8ed44470c2297418a38a5fd721efa936 data/fossilslegacy/advancement/legacy/fossil.json
 08b9820c291aae116bb88b22b23c07eb1be0b249 data/fossilslegacy/advancement/legacy/have_tyrannosaurus.json
 599dfe0b065890bc91ec5d6dc951b0d7276e9ff2 data/fossilslegacy/advancement/legacy/helmet_artifact.json
 d45c0c16a9d6a2e038ee19c5179c14e1c8e7213f data/fossilslegacy/advancement/legacy/indominus.json

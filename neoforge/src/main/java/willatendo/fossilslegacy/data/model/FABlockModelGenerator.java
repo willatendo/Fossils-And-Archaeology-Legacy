@@ -111,6 +111,11 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.blockModelGenerators.createHangingSign(FABlocks.STRIPPED_CALAMITES_LOG.get(), FABlocks.CALAMITES_HANGING_SIGN.get(), FABlocks.CALAMITES_WALL_HANGING_SIGN.get());
         this.createPlantWithDefaultItem(FABlocks.CALAMITES_SAPLING.get(), FABlocks.POTTED_CALAMITES_SAPLING.get(), SimpleBlockModelGenerator.PlantType.NOT_TINTED);
         this.blockModelGenerators.createTintedLeaves(FABlocks.CALAMITES_LEAVES.get(), TexturedModel.LEAVES, -12012264);
+        this.blockModelGenerators.woodProvider(FABlocks.GINKGO_LOG.get()).logWithHorizontal(FABlocks.GINKGO_LOG.get()).wood(FABlocks.GINKGO_WOOD.get());
+        this.blockModelGenerators.woodProvider(FABlocks.STRIPPED_GINKGO_LOG.get()).logWithHorizontal(FABlocks.STRIPPED_GINKGO_LOG.get()).wood(FABlocks.STRIPPED_GINKGO_WOOD.get());
+        this.blockModelGenerators.createHangingSign(FABlocks.STRIPPED_GINKGO_LOG.get(), FABlocks.GINKGO_HANGING_SIGN.get(), FABlocks.GINKGO_WALL_HANGING_SIGN.get());
+        this.createPlantWithDefaultItem(FABlocks.GINKGO_SAPLING.get(), FABlocks.POTTED_GINKGO_SAPLING.get(), SimpleBlockModelGenerator.PlantType.NOT_TINTED);
+        this.blockModelGenerators.createTintedLeaves(FABlocks.GINKGO_LEAVES.get(), TexturedModel.LEAVES, 0xD8C12E);
         this.blockModelGenerators.woodProvider(FABlocks.LEPIDODENDRON_LOG.get()).logWithHorizontal(FABlocks.LEPIDODENDRON_LOG.get()).wood(FABlocks.LEPIDODENDRON_WOOD.get());
         this.blockModelGenerators.woodProvider(FABlocks.STRIPPED_LEPIDODENDRON_LOG.get()).logWithHorizontal(FABlocks.STRIPPED_LEPIDODENDRON_LOG.get()).wood(FABlocks.STRIPPED_LEPIDODENDRON_WOOD.get());
         this.blockModelGenerators.createHangingSign(FABlocks.STRIPPED_LEPIDODENDRON_LOG.get(), FABlocks.LEPIDODENDRON_HANGING_SIGN.get(), FABlocks.LEPIDODENDRON_WALL_HANGING_SIGN.get());

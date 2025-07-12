@@ -27,6 +27,7 @@
 - Articulated Fossils Can Now Be Articulated Joint-By-Joint Using Hammers
 - Changed Palaeontologist Trades From DNA To Spores/Cones
 - Reduced Jurassic Fern Spores Chance Of Filling A Composter from 65% to 35%
+- Fossils Are Now Called Mesozoic Fossils
 - Added Archaeology Category For Analyzer Recipe Book
 - Added Palaeontology Category For Analyzer Recipe Book
 - Added Mosasaurus Skeleton
@@ -135,6 +136,7 @@
 - Added Golden Hammer
 - Added Diamond Hammer
 - Added Netherite Hammer
+- Added Plant Fossil
 
 27/2/2024 1.4.9
 - Fixed Tooth Dagger Not Shearing All Shearables

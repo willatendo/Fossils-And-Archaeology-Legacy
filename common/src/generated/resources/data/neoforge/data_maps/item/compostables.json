@@ -21,6 +21,15 @@
     "fossilslegacy:cycad_cone": {
       "chance": 0.35
     },
+    "fossilslegacy:ginkgo_leaves": {
+      "chance": 0.3
+    },
+    "fossilslegacy:ginkgo_sapling": {
+      "chance": 0.3
+    },
+    "fossilslegacy:ginkgo_spore": {
+      "chance": 0.35
+    },
     "fossilslegacy:horsetail_spore": {
       "chance": 0.35
     },

@@ -11,6 +11,7 @@ public final class FARecipeBookCategories {
 
     public static final SimpleHolder<RecipeBookCategory> ANALYZATION_PALAEONTOLOGY = RECIPE_BOOK_CATEGORIES.register("analyzation_palaeontology", RecipeBookCategory::new);
     public static final SimpleHolder<RecipeBookCategory> ANALYZATION_ARCHAEOLOGY = RECIPE_BOOK_CATEGORIES.register("analyzation_archaeology", RecipeBookCategory::new);
+    public static final SimpleHolder<RecipeBookCategory> ANALYZATION_PALAEOBOTANY = RECIPE_BOOK_CATEGORIES.register("analyzation_palaeobotany", RecipeBookCategory::new);
     public static final SimpleHolder<RecipeBookCategory> ANALYZATION_MISC = RECIPE_BOOK_CATEGORIES.register("analyzation_misc", RecipeBookCategory::new);
     public static final SimpleHolder<RecipeBookCategory> ARCHAEOLOGY_WORKBENCH_RESTORE = RECIPE_BOOK_CATEGORIES.register("archaeology_restore", RecipeBookCategory::new);
     public static final SimpleHolder<RecipeBookCategory> ARCHAEOLOGY_WORKBENCH_REPAIR = RECIPE_BOOK_CATEGORIES.register("archaeology_repair", RecipeBookCategory::new);

@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_fossil": {
+    "has_mesozoic_fossil": {
       "conditions": {
         "items": [
           {
-            "items": "fossilslegacy:fossil"
+            "items": "fossilslegacy:mesozoic_fossil"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_fossil"
+      "has_mesozoic_fossil"
     ]
   ],
   "rewards": {

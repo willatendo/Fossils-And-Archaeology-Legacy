@@ -17,7 +17,8 @@ public class FAAnalyzerResultTagProvider extends DataDrivenTagsProvider<Analyzer
 
     @Override
     protected void addTags(Provider provider) {
-        this.tag(FAAnalyzerResultTags.FOSSIL_RESULTS).add(FAAnalyzerResults.FOSSIL_RESULTS.toArray(ResourceKey[]::new));
+        this.tag(FAAnalyzerResultTags.MESOZOIC_FOSSIL_RESULTS).add(FAAnalyzerResults.MESOZOIC_FOSSIL_RESULTS.toArray(ResourceKey[]::new));
+        this.tag(FAAnalyzerResultTags.PLANT_FOSSIL_RESULTS).add(FAAnalyzerResults.PLANT_FOSSIL_RESULTS.toArray(ResourceKey[]::new));
         this.tag(FAAnalyzerResultTags.RELIC_SCRAP_RESULTS).add(FAAnalyzerResults.RELIC_SCRAP_RESULTS.toArray(ResourceKey[]::new));
         this.tag(FAAnalyzerResultTags.FROZEN_MEAT_RESULTS).add(FAAnalyzerResults.FROZEN_MEAT_RESULTS.toArray(ResourceKey[]::new));
         this.tag(FAAnalyzerResultTags.AXOLOTL_BUCKET_RESULTS).add(FAAnalyzerResults.AXOLOTL_DNA);

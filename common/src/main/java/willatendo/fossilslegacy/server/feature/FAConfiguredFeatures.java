@@ -30,14 +30,8 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlac
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import willatendo.fossilslegacy.server.block.FABlocks;
-import willatendo.fossilslegacy.server.feature.foliageplacer.NoLeavesFoliagePlacer;
-import willatendo.fossilslegacy.server.feature.foliageplacer.BranchedFoliagePlacer;
-import willatendo.fossilslegacy.server.feature.foliageplacer.LepidodendronFoliagePlacer;
-import willatendo.fossilslegacy.server.feature.foliageplacer.SigillariaFoliagePlacer;
-import willatendo.fossilslegacy.server.feature.trunkplacer.ArchaeopterisTrunkPlacer;
-import willatendo.fossilslegacy.server.feature.trunkplacer.ForkedThickTrunkPlacer;
-import willatendo.fossilslegacy.server.feature.trunkplacer.SigillariaTrunkPlacer;
-import willatendo.fossilslegacy.server.feature.trunkplacer.StraightBranchingTrunkPlacer;
+import willatendo.fossilslegacy.server.feature.foliageplacer.*;
+import willatendo.fossilslegacy.server.feature.trunkplacer.*;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
@@ -51,6 +45,7 @@ public final class FAConfiguredFeatures {
     // Trees
     public static final ResourceKey<ConfiguredFeature<?, ?>> ARCHAEOPTERIS = create("archaeopteris");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CALAMITES = create("calamites");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GINKGO = create("ginkgo");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LEPIDODENDRON = create("lepidodendron");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SIGILLARIA = create("sigillaria");
 
@@ -78,6 +73,10 @@ public final class FAConfiguredFeatures {
 
     private static TreeConfiguration.TreeConfigurationBuilder createCalamites() {
         return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(FABlocks.CALAMITES_LOG.get()), new StraightBranchingTrunkPlacer(9, 3, 6), BlockStateProvider.simple(FABlocks.CALAMITES_LEAVES.get()), new BranchedFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines();
+    }
+
+    private static TreeConfiguration.TreeConfigurationBuilder createGinkgo() {
+        return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(FABlocks.GINKGO_LOG.get()), new ThickTrunkPlacer(15, 6, 1), BlockStateProvider.simple(FABlocks.GINKGO_LEAVES.get()), new GinkgoFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0), UniformInt.of(10, 12)), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines();
     }
 
     private static TreeConfiguration.TreeConfigurationBuilder createLepidodendron() {
@@ -117,6 +116,7 @@ public final class FAConfiguredFeatures {
         // Trees
         FeatureUtils.register(bootstrapContext, ARCHAEOPTERIS, Feature.TREE, FAConfiguredFeatures.createArchaeopteris().build());
         FeatureUtils.register(bootstrapContext, CALAMITES, Feature.TREE, FAConfiguredFeatures.createCalamites().build());
+        FeatureUtils.register(bootstrapContext, GINKGO, Feature.TREE, FAConfiguredFeatures.createGinkgo().build());
         FeatureUtils.register(bootstrapContext, LEPIDODENDRON, Feature.TREE, FAConfiguredFeatures.createLepidodendron().build());
         FeatureUtils.register(bootstrapContext, SIGILLARIA, Feature.TREE, FAConfiguredFeatures.createSigillaria().build());
 

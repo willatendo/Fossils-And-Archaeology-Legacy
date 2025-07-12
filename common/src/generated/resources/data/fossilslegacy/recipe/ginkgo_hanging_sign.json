@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "hanging_sign",
+  "key": {
+    "#": "fossilslegacy:stripped_ginkgo_log",
+    "$": "minecraft:chain"
+  },
+  "pattern": [
+    "$ $",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "fossilslegacy:ginkgo_hanging_sign"
+  }
+}

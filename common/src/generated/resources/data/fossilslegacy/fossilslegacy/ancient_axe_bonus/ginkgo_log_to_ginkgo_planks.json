@@ -1,0 +1,8 @@
+{
+  "input": "fossilslegacy:ginkgo_log",
+  "max_drop": 3,
+  "min_drop": 1,
+  "output": {
+    "id": "fossilslegacy:ginkgo_planks"
+  }
+}

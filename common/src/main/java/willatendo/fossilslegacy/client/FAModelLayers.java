@@ -10,6 +10,8 @@ public final class FAModelLayers {
     public static final ModelLayerLocation ANU = FAModelLayers.create("anu");
     public static final ModelLayerLocation CALAMITES_BOAT = FAModelLayers.create("boat/calamites");
     public static final ModelLayerLocation CALAMITES_CHEST_BOAT = FAModelLayers.create("chest_boat/calamites");
+    public static final ModelLayerLocation GINKGO_BOAT = FAModelLayers.create("boat/ginkgo");
+    public static final ModelLayerLocation GINKGO_CHEST_BOAT = FAModelLayers.create("chest_boat/ginkgo");
     public static final ModelLayerLocation FAILURESAURUS = FAModelLayers.create("failuresaurus");
     public static final ModelLayerLocation JEEP = FAModelLayers.create("jeep");
     public static final ModelLayerLocation LEPIDODENDRON_BOAT = FAModelLayers.create("boat/lepidodendron");

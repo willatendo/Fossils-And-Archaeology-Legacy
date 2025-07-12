@@ -1,4 +1,4 @@
-// 1.21.4	2025-07-06T02:52:41.1786315	Tags for fossilslegacy:analyzer_result mod id fossilslegacy
+// 1.21.4	2025-07-12T03:44:36.889342	Tags for fossilslegacy:analyzer_result mod id fossilslegacy
 17897148c4a6ecd2462e295cb12e61fa5d159bbf data/fossilslegacy/tags/fossilslegacy/analyzer_result/armadilo_scute.json
 094cc4209b2fa0e1ae4c2a13d450508122695d46 data/fossilslegacy/tags/fossilslegacy/analyzer_result/axolotl_bucket.json
 a9258c2dba6a92e56d6a1583b0132eb89817bef1 data/fossilslegacy/tags/fossilslegacy/analyzer_result/bamboo.json
@@ -8,12 +8,13 @@ c37e6c5732a153b72ca98614a529721ffec94433 data/fossilslegacy/tags/fossilslegacy/a
 1188c767e51cc675371312bac8551e549790ccda data/fossilslegacy/tags/fossilslegacy/analyzer_result/cod.json
 158345f43d5147837eb9a1a8d32180fb7532d219 data/fossilslegacy/tags/fossilslegacy/analyzer_result/emerald.json
 148bddc0783202ead62e5be50bb08f4636f350a6 data/fossilslegacy/tags/fossilslegacy/analyzer_result/feather.json
-98224e4b54417feea2dc3e4d16af0175db3e8427 data/fossilslegacy/tags/fossilslegacy/analyzer_result/fossil.json
 dad1bfb5adcb08f0abd6c12e14b4084d7b04ac6a data/fossilslegacy/tags/fossilslegacy/analyzer_result/froglight.json
 1c3bf84bb3f00f0fc0dac8f150cce3363a3ab52d data/fossilslegacy/tags/fossilslegacy/analyzer_result/frozen_meat.json
 8927f543100ae55cf71e17233febafcddf865c40 data/fossilslegacy/tags/fossilslegacy/analyzer_result/goat_horn.json
 2dabece2314f822cfe4cb3107b5c05f2d0643277 data/fossilslegacy/tags/fossilslegacy/analyzer_result/leather.json
+e12c98ad8600429ddc310551aec0fd17b0f56e69 data/fossilslegacy/tags/fossilslegacy/analyzer_result/mesozoic_fossil.json
 236bdbce4fadc89624ebc28f9030da6e7d18cc69 data/fossilslegacy/tags/fossilslegacy/analyzer_result/mutton.json
+cf3ec67d5567ac44ef271f12528709c0cd1d78e9 data/fossilslegacy/tags/fossilslegacy/analyzer_result/plant_fossil.json
 5308aaee941b1374a14e5a563470385bd7e6b3a9 data/fossilslegacy/tags/fossilslegacy/analyzer_result/porkchop.json
 be502561c28fd163cd897c1356ca4b1feaa18622 data/fossilslegacy/tags/fossilslegacy/analyzer_result/raw_ankylosaurus_result.json
 0e03ce53201cb732da4df10a828f75475e23d5fe data/fossilslegacy/tags/fossilslegacy/analyzer_result/raw_baryonyx_results.json

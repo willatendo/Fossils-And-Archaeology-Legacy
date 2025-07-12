@@ -117,10 +117,12 @@ public final class BasicEvents {
         });
         DispenserBlock.registerBehavior(FAItems.ARCHAEOPTERIS_BOAT.get(), new BoatDispenseItemBehavior(FAEntityTypes.ARCHAEOPTERIS_BOAT.get()));
         DispenserBlock.registerBehavior(FAItems.CALAMITES_BOAT.get(), new BoatDispenseItemBehavior(FAEntityTypes.CALAMITES_BOAT.get()));
+        DispenserBlock.registerBehavior(FAItems.GINKGO_BOAT.get(), new BoatDispenseItemBehavior(FAEntityTypes.GINKGO_BOAT.get()));
         DispenserBlock.registerBehavior(FAItems.LEPIDODENDRON_BOAT.get(), new BoatDispenseItemBehavior(FAEntityTypes.LEPIDODENDRON_BOAT.get()));
         DispenserBlock.registerBehavior(FAItems.SIGILLARIA_BOAT.get(), new BoatDispenseItemBehavior(FAEntityTypes.SIGILLARIA_BOAT.get()));
         DispenserBlock.registerBehavior(FAItems.ARCHAEOPTERIS_CHEST_BOAT.get(), new BoatDispenseItemBehavior(FAEntityTypes.ARCHAEOPTERIS_CHEST_BOAT.get()));
         DispenserBlock.registerBehavior(FAItems.CALAMITES_CHEST_BOAT.get(), new BoatDispenseItemBehavior(FAEntityTypes.CALAMITES_CHEST_BOAT.get()));
+        DispenserBlock.registerBehavior(FAItems.GINKGO_CHEST_BOAT.get(), new BoatDispenseItemBehavior(FAEntityTypes.GINKGO_CHEST_BOAT.get()));
         DispenserBlock.registerBehavior(FAItems.LEPIDODENDRON_CHEST_BOAT.get(), new BoatDispenseItemBehavior(FAEntityTypes.LEPIDODENDRON_CHEST_BOAT.get()));
         DispenserBlock.registerBehavior(FAItems.SIGILLARIA_CHEST_BOAT.get(), new BoatDispenseItemBehavior(FAEntityTypes.SIGILLARIA_CHEST_BOAT.get()));
 
@@ -144,6 +146,16 @@ public final class BasicEvents {
         FlammablesModification.register(FABlocks.STRIPPED_CALAMITES_WOOD.get(), 5, 5);
         FlammablesModification.register(FABlocks.CALAMITES_WOOD.get(), 5, 5);
         FlammablesModification.register(FABlocks.CALAMITES_LEAVES.get(), 30, 60);
+        FlammablesModification.register(FABlocks.GINKGO_PLANKS.get(), 5, 20);
+        FlammablesModification.register(FABlocks.GINKGO_SLAB.get(), 5, 20);
+        FlammablesModification.register(FABlocks.GINKGO_FENCE_GATE.get(), 5, 20);
+        FlammablesModification.register(FABlocks.GINKGO_FENCE.get(), 5, 20);
+        FlammablesModification.register(FABlocks.GINKGO_STAIRS.get(), 5, 20);
+        FlammablesModification.register(FABlocks.GINKGO_LOG.get(), 5, 5);
+        FlammablesModification.register(FABlocks.STRIPPED_GINKGO_LOG.get(), 5, 5);
+        FlammablesModification.register(FABlocks.STRIPPED_GINKGO_WOOD.get(), 5, 5);
+        FlammablesModification.register(FABlocks.GINKGO_WOOD.get(), 5, 5);
+        FlammablesModification.register(FABlocks.GINKGO_LEAVES.get(), 30, 60);
         FlammablesModification.register(FABlocks.LEPIDODENDRON_PLANKS.get(), 5, 20);
         FlammablesModification.register(FABlocks.LEPIDODENDRON_SLAB.get(), 5, 20);
         FlammablesModification.register(FABlocks.LEPIDODENDRON_FENCE_GATE.get(), 5, 20);
@@ -183,10 +195,13 @@ public final class BasicEvents {
         compostablesModification.add(FAItems.CALAMITES_SPORE.get(), 0.35F);
         compostablesModification.add(FABlocks.CALAMITES_LEAVES.get(), 0.3F);
         compostablesModification.add(FABlocks.CALAMITES_SAPLING.get(), 0.3F);
-        compostablesModification.add(FAItems.CALAMITES_SPORE.get(), 0.35F);
+        compostablesModification.add(FAItems.CYCAD_CONE.get(), 0.35F);
         compostablesModification.add(FABlocks.ARCHAEOPTERIS_LEAVES.get(), 0.3F);
         compostablesModification.add(FABlocks.ARCHAEOPTERIS_SAPLING.get(), 0.3F);
         compostablesModification.add(FAItems.ARCHAEOPTERIS_SPORE.get(), 0.35F);
+        compostablesModification.add(FABlocks.GINKGO_LEAVES.get(), 0.3F);
+        compostablesModification.add(FABlocks.GINKGO_SAPLING.get(), 0.3F);
+        compostablesModification.add(FAItems.GINKGO_SPORE.get(), 0.35F);
     }
 
     public static void strippablesSetup(StrippablesModification strippablesModification) {
@@ -195,6 +210,8 @@ public final class BasicEvents {
         strippablesModification.register(FABlocks.ARCHAEOPTERIS_WOOD.get(), FABlocks.STRIPPED_ARCHAEOPTERIS_WOOD.get());
         strippablesModification.register(FABlocks.CALAMITES_LOG.get(), FABlocks.STRIPPED_CALAMITES_LOG.get());
         strippablesModification.register(FABlocks.CALAMITES_WOOD.get(), FABlocks.STRIPPED_CALAMITES_WOOD.get());
+        strippablesModification.register(FABlocks.GINKGO_LOG.get(), FABlocks.STRIPPED_GINKGO_LOG.get());
+        strippablesModification.register(FABlocks.GINKGO_WOOD.get(), FABlocks.STRIPPED_GINKGO_WOOD.get());
         strippablesModification.register(FABlocks.LEPIDODENDRON_LOG.get(), FABlocks.STRIPPED_LEPIDODENDRON_LOG.get());
         strippablesModification.register(FABlocks.LEPIDODENDRON_WOOD.get(), FABlocks.STRIPPED_LEPIDODENDRON_WOOD.get());
         strippablesModification.register(FABlocks.SIGILLARIA_LOG.get(), FABlocks.STRIPPED_SIGILLARIA_LOG.get());
@@ -212,7 +229,7 @@ public final class BasicEvents {
 
     public static void villagerTradesEvent(VillagerTradeModification villagerTradeModification) {
         villagerTradeModification.add(FAVillagerProfessions.ARCHAEOLOGIST.get(), List.of(new VillagerTrades.EmeraldForItems(FAItems.RELIC_SCRAP.get(), 5, 16, 2), new VillagerTrades.EmeraldForItems(FAItems.JADE.get(), 6, 8, 2, 10)), List.of(new VillagerTrades.ItemsAndEmeraldsToItems(FAItems.ANCIENT_SWORD_ARTIFACT.get(), 1, 30, FAItems.ANCIENT_SWORD.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FAItems.ANCIENT_AXE_ARTIFACT.get(), 1, 30, FAItems.ANCIENT_AXE.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FAItems.ANCIENT_PICKAXE_ARTIFACT.get(), 1, 30, FAItems.ANCIENT_PICKAXE.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FAItems.ANCIENT_HOE_ARTIFACT.get(), 1, 30, FAItems.ANCIENT_HOE.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FAItems.ANCIENT_SHOVEL_ARTIFACT.get(), 1, 30, FAItems.ANCIENT_SHOVEL.get(), 1, 8, 6, 15), new VillagerTrades.ItemsForEmeralds(FAItems.STONE_TABLET.get(), 10, 2, 6), new VillagerTrades.ItemsForEmeralds(FAItems.WOODEN_JAVELIN.get(), 5, 1, 6), new VillagerTrades.ItemsForEmeralds(FAItems.STONE_JAVELIN.get(), 10, 1, 6), new VillagerTrades.ItemsForEmeralds(FAItems.IRON_JAVELIN.get(), 15, 1, 6)), List.of(new VillagerTrades.ItemsAndEmeraldsToItems(FAItems.ANCIENT_HELMET_ARTIFACT.get(), 1, 30, FAItems.ANCIENT_HELMET.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FAItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 1, 30, FAItems.ANCIENT_CHESTPLATE.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FAItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 1, 30, FAItems.ANCIENT_LEGGINGS.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FAItems.ANCIENT_BOOTS_ARTIFACT.get(), 1, 30, FAItems.ANCIENT_BOOTS.get(), 1, 8, 6, 15), new VillagerTrades.EmeraldForItems(FAItems.JADE_VILLAGER.get(), 1, 4, 6, 25), new VillagerTrades.EmeraldForItems(FAItems.JADE_OCELOT.get(), 1, 4, 6, 25)), List.of(new VillagerTrades.EmeraldForItems(FAItems.SCARAB_GEM_JAVELIN.get(), 1, 2, 12, 30), new VillagerTrades.ItemsForEmeralds(FAItems.GOLDEN_JAVELIN.get(), 20, 1, 12), new VillagerTrades.ItemsForEmeralds(FAItems.DIAMOND_JAVELIN.get(), 30, 1, 12)), List.of(new VillagerTrades.ItemsForEmeralds(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), 30, 1, 12), new VillagerTrades.EmeraldForItems(FAItems.CODEX.get(), 1, 2, 6, 30), new VillagerTrades.EmeraldForItems(FAItems.QUIPU.get(), 1, 2, 6, 30), new VillagerTrades.TreasureMapForEmeralds(20, FAStructureTags.ACADEMY, "filled_map.academy", FAMapDecorationTypes.ACADEMY, 12, 10), new VillagerTrades.TreasureMapForEmeralds(20, FAStructureTags.MACHU_PICCHU, "filled_map.machu_picchu", FAMapDecorationTypes.MACHU_PICCHU, 12, 10), new VillagerTrades.TreasureMapForEmeralds(20, FAStructureTags.MAYAN_TEMPLE, "filled_map.mayan_temple", FAMapDecorationTypes.MAYAN_TEMPLE, 12, 10), new VillagerTrades.TreasureMapForEmeralds(20, FAStructureTags.WEAPON_SHOP, "filled_map.weapon_shop", FAMapDecorationTypes.WEAPON_SHOP, 12, 10)));
-        villagerTradeModification.add(FAVillagerProfessions.PALAEONTOLOGIST.get(), List.of(new VillagerTrades.EmeraldForItems(FAItems.FOSSIL.get(), 5, 16, 2), new VillagerTrades.EmeraldForItems(FAItems.FROZEN_MEAT.get(), 5, 16, 2)), List.of(new VillagerTrades.ItemsForEmeralds(FAItems.DINOPEDIA.get(), 10, 1, 4, 4), new VillagerTrades.ItemsForEmeralds(FAItems.THERIZINOSAURUS_CLAWS.get(), 25, 1, 16, 2), new VillagerTrades.ItemsForEmeralds(FAItems.TYRANNOSAURUS_TOOTH.get(), 30, 1, 16, 2), new VillagerTrades.ItemsForEmeralds(FAItems.NAUTILUS_SHELL.get(), 10, 1, 16, 2)), List.of(new VillagerTrades.ItemsAndEmeraldsToItems(new ItemStack(FABlocks.FOSSIL_ORE.get()).getItem(), 1, 10, new ItemStack(FABlocks.DEEPSLATE_FOSSIL_ORE.get()).getItem(), 1, 8, 3, 15), new VillagerTrades.EmeraldForItems(new ItemStack(FABlocks.SKULL_BLOCK.get()).getItem(), 10, 16, 3), new VillagerTrades.ItemsForEmeralds(FAItems.LEPIDODENDRON_DNA.get(), 20, 1, 1, 2)), List.of(new VillagerTrades.EmeraldForItems(FAItems.JURASSIC_FERN_SPORES.get(), 3, 8, 6), new VillagerTrades.EmeraldForItems(FAItems.HORSETAIL_SPORE.get(), 3, 8, 6), new VillagerTrades.ItemsForEmeralds(FAItems.CALAMITES_SPORE.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.ARCHAEOPTERIS_SPORE.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.LEPIDODENDRON_CONE.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.CYCAD_CONE.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.SIGILLARIA_SPORE.get(), 20, 1, 4, 12)), List.of(new VillagerTrades.ItemsForEmeralds(FAItems.LEGACY_GENETIC_CODE.get(), 30, 1, 12)));
+        villagerTradeModification.add(FAVillagerProfessions.PALAEONTOLOGIST.get(), List.of(new VillagerTrades.EmeraldForItems(FAItems.MESOZOIC_FOSSIL.get(), 5, 16, 2), new VillagerTrades.EmeraldForItems(FAItems.FROZEN_MEAT.get(), 5, 16, 2)), List.of(new VillagerTrades.ItemsForEmeralds(FAItems.DINOPEDIA.get(), 10, 1, 4, 4), new VillagerTrades.ItemsForEmeralds(FAItems.THERIZINOSAURUS_CLAWS.get(), 25, 1, 16, 2), new VillagerTrades.ItemsForEmeralds(FAItems.TYRANNOSAURUS_TOOTH.get(), 30, 1, 16, 2), new VillagerTrades.ItemsForEmeralds(FAItems.NAUTILUS_SHELL.get(), 10, 1, 16, 2)), List.of(new VillagerTrades.ItemsAndEmeraldsToItems(new ItemStack(FABlocks.FOSSIL_ORE.get()).getItem(), 1, 10, new ItemStack(FABlocks.DEEPSLATE_FOSSIL_ORE.get()).getItem(), 1, 8, 3, 15), new VillagerTrades.EmeraldForItems(new ItemStack(FABlocks.SKULL_BLOCK.get()).getItem(), 10, 16, 3), new VillagerTrades.ItemsForEmeralds(FAItems.LEPIDODENDRON_DNA.get(), 20, 1, 1, 2)), List.of(new VillagerTrades.EmeraldForItems(FAItems.JURASSIC_FERN_SPORES.get(), 3, 8, 6), new VillagerTrades.EmeraldForItems(FAItems.HORSETAIL_SPORE.get(), 3, 8, 6), new VillagerTrades.ItemsForEmeralds(FAItems.CALAMITES_SPORE.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.ARCHAEOPTERIS_SPORE.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.GINKGO_SPORE.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.LEPIDODENDRON_CONE.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.CYCAD_CONE.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.SIGILLARIA_SPORE.get(), 20, 1, 4, 12)), List.of(new VillagerTrades.ItemsForEmeralds(FAItems.LEGACY_GENETIC_CODE.get(), 30, 1, 12)));
     }
 
     public static void heroOfTheVillageGiftSetup(HeroOfTheVillageGiftModification heroOfTheVillageGiftModification) {
@@ -381,6 +398,7 @@ public final class BasicEvents {
 
     public static void idModification(IdModification idModification) {
         idModification.updateId(BuiltInRegistries.ITEM, FAUtils.resource("gene_modification_table"), FAItems.DNA_RECOMBINATOR::get);
+        idModification.updateId(BuiltInRegistries.ITEM, FAUtils.resource("fossil"), FAItems.MESOZOIC_FOSSIL::get);
         idModification.updateId(BuiltInRegistries.BLOCK, FAUtils.resource("gene_modification_table"), FABlocks.DNA_RECOMBINATOR::get);
         idModification.updateId(BuiltInRegistries.BLOCK_ENTITY_TYPE, FAUtils.resource("gene_modification_table"), FABlockEntityTypes.DNA_RECOMBINATOR::get);
     }

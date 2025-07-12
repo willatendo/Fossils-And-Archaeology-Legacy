@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.server.block.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.commands.SaveOffCommand;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -11,6 +12,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
@@ -24,10 +26,40 @@ import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.BooleanOp;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import willatendo.fossilslegacy.server.block.FABlocks;
 
 public class MediumCageBlock extends Block {
+    public static final VoxelShape BOTTOM = Block.box(0.0F, 0.0F, 0.0F, 16.0F, 2.0F, 16.0F);
+    public static final VoxelShape TOP = Block.box(0.0F, 14.0F, 0.0F, 16.0F, 16.0F, 16.0F);
+    public static final VoxelShape PART_1_BOTTOM = Block.box(0.0F, 2.0F, 0.0F, 2.0F, 16.0F, 2.0F);
+    public static final VoxelShape PART_1_TOP = Block.box(0.0F, 0.0F, 0.0F, 2.0F, 14.0F, 2.0F);
+    public static final VoxelShape PART_2_BOTTOM = Block.box(14.0F, 2.0F, 0.0F, 16.0F, 16.0F, 2.0F);
+    public static final VoxelShape PART_2_TOP = Block.box(14.0F, 0.0F, 0.0F, 16.0F, 14.0F, 2.0F);
+    public static final VoxelShape PART_3_BOTTOM = Block.box(0.0F, 2.0F, 14.0F, 2.0F, 16.0F, 16.0F);
+    public static final VoxelShape PART_3_TOP = Block.box(0.0F, 0.0F, 14.0F, 2.0F, 14.0F, 16.0F);
+    public static final VoxelShape PART_4_BOTTOM = Block.box(14.0F, 2.0F, 14.0F, 16, 16.0F, 16.0F);
+    public static final VoxelShape PART_4_TOP = Block.box(14.0F, 0.0F, 14.0F, 16.0F, 14.0F, 16.0F);
+    public static final VoxelShape NORTH_LEFT_BOTTOM = Block.box(2.0F, 2.0F, 0.0F, 16.0F, 16.0F, 2.0F);
+    public static final VoxelShape NORTH_LEFT_TOP = Block.box(2.0F, 0.0F, 0.0F, 16.0F, 14.0F, 2.0F);
+    public static final VoxelShape NORTH_RIGHT_BOTTOM = Block.box(0.0F, 2.0F, 0.0F, 14.0F, 16.0F, 2.0F);
+    public static final VoxelShape NORTH_RIGHT_TOP = Block.box(0.0F, 0.0F, 0.0F, 14.0F, 14.0F, 2.0F);
+    public static final VoxelShape EAST_LEFT_BOTTOM = Block.box(14.0F, 2.0F, 2.0F, 16.0F, 16.0F, 16.0F);
+    public static final VoxelShape EAST_LEFT_TOP = Block.box(14.0F, 0.0F, 2.0F, 16.0F, 14.0F, 16.0F);
+    public static final VoxelShape EAST_RIGHT_BOTTOM = Block.box(14.0F, 2.0F, 0.0F, 16.0F, 16.0F, 14.0F);
+    public static final VoxelShape EAST_RIGHT_TOP = Block.box(14.0F, 0.0F, 0.0F, 16.0F, 14.0F, 14.0F);
+    public static final VoxelShape SOUTH_LEFT_BOTTOM = Block.box(2.0F, 2.0F, 14.0F, 16.0F, 16.0F, 16.0F);
+    public static final VoxelShape SOUTH_LEFT_TOP = Block.box(2.0F, 0.0F, 14.0F, 16.0F, 14.0F, 16.0F);
+    public static final VoxelShape SOUTH_RIGHT_BOTTOM = Block.box(0.0F, 2.0F, 14.0F, 14.0F, 16.0F, 16.0F);
+    public static final VoxelShape SOUTH_RIGHT_TOP = Block.box(0.0F, 0.0F, 14.0F, 14.0F, 14.0F, 16.0F);
+    public static final VoxelShape WEST_LEFT_BOTTOM = Block.box(0.0F, 2.0F, 0.0F, 2.0F, 16.0F, 14.0F);
+    public static final VoxelShape WEST_LEFT_TOP = Block.box(0.0F, 0.0F, 0.0F, 2.0F, 14.0F, 14.0F);
+    public static final VoxelShape WEST_RIGHT_BOTTOM = Block.box(0.0F, 2.0F, 2.0F, 2.0F, 16.0F, 16.0F);
+    public static final VoxelShape WEST_RIGHT_TOP = Block.box(0.0F, 0.0F, 2.0F, 2.0F, 14.0F, 16.0F);
     public static final EnumProperty<Direction> HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
@@ -37,6 +69,21 @@ public class MediumCageBlock extends Block {
     public MediumCageBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.getStateDefinition().any().setValue(HORIZONTAL_FACING, Direction.NORTH).setValue(OPEN, false).setValue(POWERED, false).setValue(PART, 1).setValue(HALF, DoubleBlockHalf.LOWER));
+    }
+
+    @Override
+    protected VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
+        Direction facing = blockState.getValue(HORIZONTAL_FACING);
+        int part = blockState.getValue(PART);
+        boolean bottom = blockState.getValue(HALF) == DoubleBlockHalf.LOWER;
+        boolean open = blockState.getValue(OPEN);
+        VoxelShape base = bottom ? BOTTOM : TOP;
+        VoxelShape bar = part == 1 ? bottom ? PART_1_BOTTOM : PART_1_TOP : part == 2 ? bottom ? PART_2_BOTTOM : PART_2_TOP : part == 3 ? bottom ? PART_3_BOTTOM : PART_3_TOP : part == 4 ? bottom ? PART_4_BOTTOM : PART_4_TOP : Shapes.block();
+        VoxelShape baseAndBar = Shapes.join(base, bar, BooleanOp.OR);
+        VoxelShape wallNS = part == 1 ? open && facing == Direction.NORTH ? Shapes.empty() : bottom ? NORTH_LEFT_BOTTOM : NORTH_LEFT_TOP : part == 2 ? open && facing == Direction.NORTH ? Shapes.empty() : bottom ? NORTH_RIGHT_BOTTOM : NORTH_RIGHT_TOP : part == 3 ? open && facing == Direction.SOUTH ? Shapes.empty() : bottom ? SOUTH_LEFT_BOTTOM : SOUTH_LEFT_TOP : part == 4 ? open && facing == Direction.SOUTH ? Shapes.empty() : bottom ? SOUTH_RIGHT_BOTTOM : SOUTH_RIGHT_TOP : Shapes.block();
+        VoxelShape wallEW = part == 1 ? open && facing == Direction.WEST ? Shapes.empty() : bottom ? WEST_RIGHT_BOTTOM : WEST_RIGHT_TOP : part == 2 ? open && facing == Direction.EAST ? Shapes.empty() : bottom ? EAST_LEFT_BOTTOM : EAST_LEFT_TOP : part == 3 ? open && facing == Direction.WEST ? Shapes.empty() : bottom ? WEST_LEFT_BOTTOM : WEST_LEFT_TOP : part == 4 ? open && facing == Direction.EAST ? Shapes.empty() : bottom ? EAST_RIGHT_BOTTOM : EAST_RIGHT_TOP : Shapes.block();
+        VoxelShape walls = Shapes.join(wallNS, wallEW, BooleanOp.OR);
+        return Shapes.join(baseAndBar, walls, BooleanOp.OR);
     }
 
     @Override
@@ -173,12 +220,28 @@ public class MediumCageBlock extends Block {
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
-        Direction facing = blockPlaceContext.getPlayer().getDirection();
+        Direction facing = blockPlaceContext.getHorizontalDirection();
         Level level = blockPlaceContext.getLevel();
         BlockPos blockPos = blockPlaceContext.getClickedPos();
         boolean flag = level.hasNeighborSignal(blockPos);
         BlockState blockState = super.getStateForPlacement(blockPlaceContext).setValue(HORIZONTAL_FACING, blockPlaceContext.getHorizontalDirection().getOpposite()).setValue(POWERED, flag).setValue(OPEN, flag);
-        return facing == Direction.NORTH ? blockState.setValue(PART, 4) : facing == Direction.EAST ? blockState.setValue(PART, 3) : facing == Direction.WEST ? blockState.setValue(PART, 2) : blockState;
+        boolean hasRoom =
+                level.isInWorldBounds(blockPos.relative(facing)) &&
+                        level.isInWorldBounds(blockPos.relative(facing.getCounterClockWise())) &&
+                        level.isInWorldBounds(blockPos.relative(facing).relative(facing.getCounterClockWise())) &&
+                        level.isInWorldBounds(blockPos.above()) &&
+                        level.isInWorldBounds(blockPos.above().relative(facing)) &&
+                        level.isInWorldBounds(blockPos.above().relative(facing.getCounterClockWise())) &&
+                        level.isInWorldBounds(blockPos.above().relative(facing).relative(facing.getCounterClockWise()))
+                && level.getBlockState(blockPos.relative(facing)).canBeReplaced()
+                        && level.getBlockState(blockPos.relative(facing.getCounterClockWise())).canBeReplaced()
+                        && level.getBlockState(blockPos.relative(facing).relative(facing.getCounterClockWise())).canBeReplaced()
+                        && level.getBlockState(blockPos.above()).canBeReplaced()
+                        && level.getBlockState(blockPos.above().relative(facing)).canBeReplaced()
+                        && level.getBlockState(blockPos.above().relative(facing.getCounterClockWise())).canBeReplaced()
+                        && level.getBlockState(blockPos.above().relative(facing).relative(facing.getCounterClockWise())).canBeReplaced()
+                ;
+        return !hasRoom ? null : facing == Direction.NORTH ? blockState.setValue(PART, 4) : facing == Direction.EAST ? blockState.setValue(PART, 3) : facing == Direction.WEST ? blockState.setValue(PART, 2) : blockState;
     }
 
     @Override

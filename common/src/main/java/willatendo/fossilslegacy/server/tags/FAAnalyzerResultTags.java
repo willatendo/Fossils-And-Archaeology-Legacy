@@ -9,7 +9,8 @@ import willatendo.simplelibrary.server.util.TagRegister;
 public class FAAnalyzerResultTags {
     private static final TagRegister<AnalyzerResult> ANALYZER_RESULT_TAGS = TagRegister.create(FARegistries.ANALYZER_RESULT, FAUtils.ID);
 
-    public static final TagKey<AnalyzerResult> FOSSIL_RESULTS = ANALYZER_RESULT_TAGS.register("fossil");
+    public static final TagKey<AnalyzerResult> MESOZOIC_FOSSIL_RESULTS = ANALYZER_RESULT_TAGS.register("mesozoic_fossil");
+    public static final TagKey<AnalyzerResult> PLANT_FOSSIL_RESULTS = ANALYZER_RESULT_TAGS.register("plant_fossil");
     public static final TagKey<AnalyzerResult> RELIC_SCRAP_RESULTS = ANALYZER_RESULT_TAGS.register("relic_scrap");
     public static final TagKey<AnalyzerResult> FROZEN_MEAT_RESULTS = ANALYZER_RESULT_TAGS.register("frozen_meat");
     public static final TagKey<AnalyzerResult> AXOLOTL_BUCKET_RESULTS = ANALYZER_RESULT_TAGS.register("axolotl_bucket");

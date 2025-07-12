@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "fossilslegacy:block/ginkgo_slab"
+    },
+    "type=double": {
+      "model": "fossilslegacy:block/ginkgo_planks"
+    },
+    "type=top": {
+      "model": "fossilslegacy:block/ginkgo_slab_top"
+    }
+  }
+}
