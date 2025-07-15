@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "fossilslegacy:block/araucaria_log_top",
+    "side": "fossilslegacy:block/araucaria_log"
+  }
+}

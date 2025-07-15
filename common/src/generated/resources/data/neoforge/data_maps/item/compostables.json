@@ -1,5 +1,14 @@
 {
   "values": {
+    "fossilslegacy:araucaria_cone": {
+      "chance": 0.35
+    },
+    "fossilslegacy:araucaria_leaves": {
+      "chance": 0.3
+    },
+    "fossilslegacy:araucaria_sapling": {
+      "chance": 0.3
+    },
     "fossilslegacy:archaeopteris_leaves": {
       "chance": 0.3
     },
@@ -27,7 +36,7 @@
     "fossilslegacy:ginkgo_sapling": {
       "chance": 0.3
     },
-    "fossilslegacy:ginkgo_spore": {
+    "fossilslegacy:ginkgo_seed": {
       "chance": 0.35
     },
     "fossilslegacy:horsetail_spore": {

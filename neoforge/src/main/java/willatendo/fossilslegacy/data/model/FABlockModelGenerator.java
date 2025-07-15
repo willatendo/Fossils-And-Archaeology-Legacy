@@ -101,6 +101,11 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createMediumCage(FABlocks.MEDIUM_CAGE.get());
         this.createCycadHead(FABlocks.CYCAD_HEAD.get());
         this.createCycadLog(FABlocks.CYCAD_LOG.get());
+        this.blockModelGenerators.woodProvider(FABlocks.ARAUCARIA_LOG.get()).logWithHorizontal(FABlocks.ARAUCARIA_LOG.get()).wood(FABlocks.ARAUCARIA_WOOD.get());
+        this.blockModelGenerators.woodProvider(FABlocks.STRIPPED_ARAUCARIA_LOG.get()).logWithHorizontal(FABlocks.STRIPPED_ARAUCARIA_LOG.get()).wood(FABlocks.STRIPPED_ARAUCARIA_WOOD.get());
+        this.blockModelGenerators.createHangingSign(FABlocks.STRIPPED_ARAUCARIA_LOG.get(), FABlocks.ARAUCARIA_HANGING_SIGN.get(), FABlocks.ARAUCARIA_WALL_HANGING_SIGN.get());
+        this.createPlantWithDefaultItem(FABlocks.ARAUCARIA_SAPLING.get(), FABlocks.POTTED_ARAUCARIA_SAPLING.get(), SimpleBlockModelGenerator.PlantType.NOT_TINTED);
+        this.blockModelGenerators.createTintedLeaves(FABlocks.ARAUCARIA_LEAVES.get(), TexturedModel.LEAVES, -10380959);
         this.blockModelGenerators.woodProvider(FABlocks.ARCHAEOPTERIS_LOG.get()).logWithHorizontal(FABlocks.ARCHAEOPTERIS_LOG.get()).wood(FABlocks.ARCHAEOPTERIS_WOOD.get());
         this.blockModelGenerators.woodProvider(FABlocks.STRIPPED_ARCHAEOPTERIS_LOG.get()).logWithHorizontal(FABlocks.STRIPPED_ARCHAEOPTERIS_LOG.get()).wood(FABlocks.STRIPPED_ARCHAEOPTERIS_WOOD.get());
         this.blockModelGenerators.createHangingSign(FABlocks.STRIPPED_ARCHAEOPTERIS_LOG.get(), FABlocks.ARCHAEOPTERIS_HANGING_SIGN.get(), FABlocks.ARCHAEOPTERIS_WALL_HANGING_SIGN.get());

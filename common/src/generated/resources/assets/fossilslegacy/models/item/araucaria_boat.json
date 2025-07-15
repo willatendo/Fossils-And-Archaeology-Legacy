@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "fossilslegacy:item/ginkgo_spore"
+    "layer0": "fossilslegacy:item/araucaria_boat"
   }
 }

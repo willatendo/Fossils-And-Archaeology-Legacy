@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.Blocks;
 import willatendo.fossilslegacy.server.entity.entities.*;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.*;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.guadalupian.Dimetrodon;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.hybrid.DistortusRex;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.jurassic.*;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.*;
 import willatendo.fossilslegacy.server.entity.entities.pregnant.*;
@@ -33,6 +34,7 @@ public final class FAEntityTypes {
     public static final SimpleHolder<EntityType<Brachiosaurus>> BRACHIOSAURUS = FAEntityTypes.register("brachiosaurus", FAEntityTypes.simple(Brachiosaurus::new, MobCategory.CREATURE, 1.0F, 1.5F));
     public static final SimpleHolder<EntityType<Dilophosaurus>> DILOPHOSAURUS = FAEntityTypes.register("dilophosaurus", FAEntityTypes.simple(Dilophosaurus::new, MobCategory.CREATURE, 0.5F, 0.5F));
     public static final SimpleHolder<EntityType<Dimetrodon>> DIMETRODON = FAEntityTypes.register("dimetrodon", FAEntityTypes.simple(Dimetrodon::new, MobCategory.CREATURE, 0.5F, 0.5F));
+    public static final SimpleHolder<EntityType<DistortusRex>> DISTORTUS_REX = FAEntityTypes.register("distortus_rex", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
     public static final SimpleHolder<EntityType<Mammoth>> MAMMOTH = FAEntityTypes.register("mammoth", FAEntityTypes.simple(Mammoth::new, MobCategory.CREATURE, 1.0F, 1.0F));
     public static final SimpleHolder<EntityType<Mosasaurus>> MOSASAURUS = FAEntityTypes.register("mosasaurus", FAEntityTypes.simple(Mosasaurus::new, MobCategory.WATER_CREATURE, 0.5F, 0.5F));
     public static final SimpleHolder<EntityType<Nautilus>> NAUTILUS = FAEntityTypes.register("nautilus", FAEntityTypes.simple(Nautilus::new, MobCategory.WATER_AMBIENT, 1.0F, 0.75F));
@@ -117,6 +119,8 @@ public final class FAEntityTypes {
 
     public static final SimpleHolder<EntityType<Jeep>> JEEP = FAEntityTypes.registerJeep("jeep", FAItems.JEEP_1993::get);
 
+    public static final SimpleHolder<EntityType<Boat>> ARAUCARIA_BOAT = FAEntityTypes.registerBoat("araucaria_boat", FAItems.ARAUCARIA_BOAT::get);
+    public static final SimpleHolder<EntityType<ChestBoat>> ARAUCARIA_CHEST_BOAT = FAEntityTypes.registerChestBoat("araucaria_chest_boat", FAItems.ARAUCARIA_CHEST_BOAT::get);
     public static final SimpleHolder<EntityType<Boat>> ARCHAEOPTERIS_BOAT = FAEntityTypes.registerBoat("archaeopteris_boat", FAItems.ARCHAEOPTERIS_BOAT::get);
     public static final SimpleHolder<EntityType<ChestBoat>> ARCHAEOPTERIS_CHEST_BOAT = FAEntityTypes.registerChestBoat("archaeopteris_chest_boat", FAItems.ARCHAEOPTERIS_CHEST_BOAT::get);
     public static final SimpleHolder<EntityType<Boat>> CALAMITES_BOAT = FAEntityTypes.registerBoat("calamites_boat", FAItems.CALAMITES_BOAT::get);

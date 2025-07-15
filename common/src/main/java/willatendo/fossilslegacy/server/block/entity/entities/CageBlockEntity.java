@@ -6,14 +6,18 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.Nullable;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
+import willatendo.fossilslegacy.server.item.FADataComponents;
+
+import java.util.UUID;
 
 public class CageBlockEntity extends BlockEntity {
     private static final String ENTITY_DATA = "entity_data";
     private CompoundTag compoundTag;
+    private UUID lock = null;
 
     public CageBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(FABlockEntityTypes.CAGE.get(), blockPos, blockState);
@@ -27,11 +31,26 @@ public class CageBlockEntity extends BlockEntity {
         this.compoundTag = compoundTag;
     }
 
+    public UUID getLock() {
+        return this.lock;
+    }
+
+    public void setLock(UUID lock) {
+        this.lock = lock;
+    }
+
+    public boolean canOpen(ItemStack itemStack) {
+        return lock == null || itemStack.has(FADataComponents.LOCK.get()) && itemStack.get(FADataComponents.LOCK.get()).equals(this.lock);
+    }
+
     @Override
     protected void saveAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
         super.saveAdditional(compoundTag, provider);
         if (compoundTag.contains(ENTITY_DATA)) {
             this.compoundTag = compoundTag.getCompound(ENTITY_DATA);
+        }
+        if (this.lock != null) {
+            compoundTag.putUUID("lock", this.getLock());
         }
     }
 
@@ -41,6 +60,9 @@ public class CageBlockEntity extends BlockEntity {
         if (this.compoundTag != null) {
             compoundTag.put(ENTITY_DATA, this.compoundTag);
         }
+        if (compoundTag.contains("lock")) {
+            this.setLock(compoundTag.getUUID("lock"));
+        }
     }
 
     @Override
@@ -49,10 +71,12 @@ public class CageBlockEntity extends BlockEntity {
         if (this.compoundTag != null) {
             compoundTag.put(ENTITY_DATA, this.compoundTag);
         }
+        if (this.lock != null) {
+            compoundTag.putUUID("lock", this.getLock());
+        }
         return compoundTag;
     }
 
-    @Nullable
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);

@@ -1,6 +1,16 @@
 {
   "parent": "fossilslegacy:legacy/extinct_since_the_cretaceous",
   "criteria": {
+    "has_araucaria_cone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:araucaria_cone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_archaeopteris_spore": {
       "conditions": {
         "items": [
@@ -16,6 +26,16 @@
         "items": [
           {
             "items": "fossilslegacy:calamites_spore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ginkgo_seed": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:ginkgo_seed"
           }
         ]
       },
@@ -58,7 +78,13 @@
   },
   "requirements": [
     [
+      "has_araucaria_cone"
+    ],
+    [
       "has_archaeopteris_spore"
+    ],
+    [
+      "has_ginkgo_seed"
     ],
     [
       "has_calamites_spore"

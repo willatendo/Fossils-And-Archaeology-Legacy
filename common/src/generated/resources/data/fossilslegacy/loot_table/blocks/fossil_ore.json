@@ -37,9 +37,14 @@
               ],
               "fuels": [
                 {
-                  "high_weight": 4500,
+                  "high_weight": 4000,
                   "item": "fossilslegacy:mesozoic_fossil",
                   "low_weight": 10
+                },
+                {
+                  "high_weight": 4500,
+                  "item": "fossilslegacy:mesozoic_fossil",
+                  "low_weight": 4000
                 },
                 {
                   "high_weight": 9800,

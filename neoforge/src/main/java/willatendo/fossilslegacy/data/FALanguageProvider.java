@@ -204,6 +204,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.SMALL_CAGE.get());
         this.add(FABlocks.MEDIUM_CAGE.get());
         this.add("block.fossilslegacy.small_cage.desc", "In cage: %s");
+        this.add("block.fossilslegacy.cage.locked", "Cage is locked!");
+        this.add("block.fossilslegacy.cage.incorrect_key", "Key does not fit!");
         this.add(FABlocks.CYCAD_HEAD.get());
         this.add(FABlocks.CYCAD_LOG.get());
         this.add(FABlocks.LEPIDODENDRON_PLANKS.get());
@@ -291,6 +293,23 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.GINKGO_FENCE_GATE.get());
         this.add(FABlocks.GINKGO_BUTTON.get());
         this.add(FABlocks.GINKGO_SLAB.get());
+        this.add(FABlocks.ARAUCARIA_PLANKS.get());
+        this.add(FABlocks.ARAUCARIA_SAPLING.get());
+        this.add(FABlocks.ARAUCARIA_LOG.get());
+        this.add(FABlocks.STRIPPED_ARAUCARIA_LOG.get());
+        this.add(FABlocks.ARAUCARIA_WOOD.get());
+        this.add(FABlocks.STRIPPED_ARAUCARIA_WOOD.get());
+        this.add(FABlocks.ARAUCARIA_LEAVES.get());
+        this.add(FABlocks.ARAUCARIA_STAIRS.get());
+        this.add(FABlocks.ARAUCARIA_SIGN.get());
+        this.add(FABlocks.ARAUCARIA_DOOR.get());
+        this.add(FABlocks.ARAUCARIA_HANGING_SIGN.get());
+        this.add(FABlocks.ARAUCARIA_PRESSURE_PLATE.get());
+        this.add(FABlocks.ARAUCARIA_FENCE.get());
+        this.add(FABlocks.ARAUCARIA_TRAPDOOR.get());
+        this.add(FABlocks.ARAUCARIA_FENCE_GATE.get());
+        this.add(FABlocks.ARAUCARIA_BUTTON.get());
+        this.add(FABlocks.ARAUCARIA_SLAB.get());
 
         // Biomes
         this.add("biome.fossilslegacy.prehistoric_ocean", "Prehistoric Ocean");
@@ -367,6 +386,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("container.fossilslegacy.dna_recombinator.navigate_left.tutorial", "Use '%s' to navigate left.");
         this.add("container.fossilslegacy.dna_recombinator.navigate_right.tutorial", "Use '%s' to navigate right.");
         this.add("container.fossilslegacy.dna_recombinator.navigate_up.tutorial", "Use '%s' to navigate up.");
+        this.add("container.fossilslegacy.dna_recombinator.tab.cosmetics", "Cosmetics");
+        this.add("container.fossilslegacy.dna_recombinator.tab.attributes", "Attributes");
+        this.add("container.fossilslegacy.dna_recombinator.tab.hybridization", "Hybridization");
         this.add("container.fossilslegacy.feeder", "Feeder");
         this.add("container.fossilslegacy.palaeontology_table", "Palaeontology Table");
         this.add("container.fossilslegacy.time_machine", "Time Machine");
@@ -388,20 +410,23 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         // Dinopedia
         this.add("dinopedia.fossilslegacy.able_to_fly", "Able to Fly");
         this.add("dinopedia.fossilslegacy.age", "Age: %s");
+        this.add("dinopedia.fossilslegacy.caution", "Caution:");
         this.add("dinopedia.fossilslegacy.cold", "Too Cold");
         this.add("dinopedia.fossilslegacy.creature", "Creature: %s");
-        this.add("dinopedia.fossilslegacy.dangerous", "Caution: Dangerous");
+        this.add("dinopedia.fossilslegacy.dangerous", "Dangerous");
         this.add("dinopedia.fossilslegacy.dry", "Too Dry");
         this.add("dinopedia.fossilslegacy.egg", "%s Egg");
         this.add("dinopedia.fossilslegacy.embryo", "Embryo: %s");
         this.add("dinopedia.fossilslegacy.health", "Health: %s / %s");
         this.add("dinopedia.fossilslegacy.hunger", "Hunger: %s / %s");
+        this.add("dinopedia.fossilslegacy.hybrid_dangerous", "Extremely Dangerous");
         this.add("dinopedia.fossilslegacy.not_owner", "You Are Not the Owner");
         this.add("dinopedia.fossilslegacy.owner", "Owner: %s");
         this.add("dinopedia.fossilslegacy.pregnancy_time", "Pregnancy Time: %s");
         this.add("dinopedia.fossilslegacy.remaining_time", "Hatching Time: %s");
         this.add("dinopedia.fossilslegacy.rideable", "Rideable");
         this.add("dinopedia.fossilslegacy.status", "Status: %s");
+        this.add("dinopedia.fossilslegacy.untameable", "Untameable!");
         this.add("dinopedia.fossilslegacy.warm", "Warm");
         this.add("dinopedia.fossilslegacy.wet", "Wet");
         this.add("dinopedia.fossilslegacy.wild", "This Animal is Wild");
@@ -425,6 +450,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAEntityTypes.CRYOLOPHOSAURUS.get());
         this.add(FAEntityTypes.DILOPHOSAURUS.get());
         this.add(FAEntityTypes.DIMETRODON.get());
+        this.add(FAEntityTypes.DISTORTUS_REX.get());
         this.add(FAEntityTypes.DODO.get());
         this.add(FAEntityTypes.DRYOSAURUS.get());
         this.add(FAEntityTypes.ELASMOTHERIUM.get());
@@ -535,6 +561,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
 
         this.add(FAEntityTypes.JEEP.get());
 
+        this.add(FAEntityTypes.ARAUCARIA_BOAT.get(), "Araucaria Boat");
+        this.add(FAEntityTypes.ARAUCARIA_CHEST_BOAT.get(), "Araucaria Boat with Chest");
         this.add(FAEntityTypes.ARCHAEOPTERIS_BOAT.get(), "Archaeopteris Boat");
         this.add(FAEntityTypes.ARCHAEOPTERIS_CHEST_BOAT.get(), "Archaeopteris Boat with Chest");
         this.add(FAEntityTypes.CALAMITES_BOAT.get(), "Calamites Boat");
@@ -629,11 +657,14 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.CALAMITES_DNA.get(), "Calamites DNA");
         this.add(FAItems.ARCHAEOPTERIS_DNA.get(), "Archaeopteris DNA");
         this.add(FAItems.GINKGO_DNA.get(), "Ginkgo DNA");
+        this.add(FAItems.ARAUCARIA_DNA.get(), "Araucaria DNA");
         this.add(FAItems.CYCAD_CONE.get());
         this.add(FAItems.LEPIDODENDRON_CONE.get());
         this.add(FAItems.SIGILLARIA_SPORE.get());
         this.add(FAItems.CALAMITES_SPORE.get());
         this.add(FAItems.ARCHAEOPTERIS_SPORE.get());
+        this.add(FAItems.GINKGO_SEED.get());
+        this.add(FAItems.ARAUCARIA_CONE.get());
         this.add(FAItems.TRICERATOPS_EGG.get());
         this.add(FAItems.VELOCIRAPTOR_EGG.get());
         this.add(FAItems.TYRANNOSAURUS_EGG.get());
@@ -884,6 +915,10 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.RED_TRANQUILIZER_DART.get());
         this.add(FAItems.BLUE_TRANQUILIZER_DART.get());
         this.add(FAItems.TAR_BUCKET.get());
+        this.add(FAItems.IRON_KEY.get());
+        this.add(FAItems.GOLDEN_KEY.get());
+        this.add("item.fossilslegacy.key.bound", "Is Bound");
+        this.add(FAItems.BOLT_CUTTER.get());
 
         this.add(FAItems.JEEP_1993.get(), "1993 Jeep");
 
@@ -918,6 +953,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.ELASMOTHERIUM_SPAWN_EGG.get());
         this.add(FAItems.DRYOSAURUS_SPAWN_EGG.get());
         this.add(FAItems.BARYONYX_SPAWN_EGG.get());
+        this.add(FAItems.DISTORTUS_REX_SPAWN_EGG.get());
         this.add("item.fossilslegacy.dinosaur_spawn_egg.desc", "Crouch to spawn baby");
 
         this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.applies_to", "Netherite Equipment");
@@ -939,6 +975,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.ARCHAEOPTERIS_CHEST_BOAT.get(), "Archaeopteris Boat with Chest");
         this.add(FAItems.GINKGO_BOAT.get());
         this.add(FAItems.GINKGO_CHEST_BOAT.get(), "Ginkgo Boat with Chest");
+        this.add(FAItems.ARAUCARIA_BOAT.get());
+        this.add(FAItems.ARAUCARIA_CHEST_BOAT.get(), "Araucaria Boat with Chest");
 
         this.add(FAItems.DEBUG_MAX_HUNGER.get(), "Debug Max Hunger");
         this.add(FAItems.DEBUG_MAX_HEALTH.get(), "Debug Max Health");
@@ -1283,6 +1321,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAModelTypeTags.DILOPHOSAURUS, "Dilophosaurus");
         this.add(FAModelTypeTags.NON_LEGACY_DILOPHOSAURUS, "Non-Legacy Dilophosaurus");
         this.add(FAModelTypeTags.DIMETRODON, "Dimetrodon");
+        this.add(FAModelTypeTags.DISTORTUS_REX, "Distortus Rex");
         this.add(FAModelTypeTags.DODO, "Dodo");
         this.add(FAModelTypeTags.DRYOSAURUS, "Dryosaurus");
         this.add(FAModelTypeTags.ELASMOTHERIUM, "Elasmotherium");
@@ -1338,6 +1377,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItemTags.ANIMAL_DNA, "Animal DNA");
         this.add(FAItemTags.ANCIENT_TOOL_MATERIALS, "Ancient Tool Materials");
         this.add(FAItemTags.ANKYLOSAURUS_COMMANDABLES, "Ankylosaurus Commandables");
+        this.add(FAItemTags.ARAUCARIA_LOGS, "Araucaria Logs");
         this.add(FAItemTags.ARCHAEOPTERIS_LOGS, "Archaeopteris Logs");
         this.add(FAItemTags.BARYONYX_COMMANDABLES, "Baryonyx Commandables");
         this.add(FAItemTags.BRACHIOSAURUS_COMMANDABLES, "Brachiosaurus Commandables");
@@ -1361,6 +1401,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItemTags.HERBIVORE_FOODS, "Herbivore Foods");
         this.add(FAItemTags.ICED_MEAT_TOOL_MATERIALS, "Iced Meat Tool Materials");
         this.add(FAItemTags.JADE, "Jade");
+        this.add(FAItemTags.KEY, "Key");
         this.add(FAItemTags.LLAMA_STATUES, "Llama Statues");
         this.add(FAItemTags.LEPIDODENDRON_LOGS, "Lepidodendron Logs");
         this.add(FAItemTags.MAMMOTH_COMMANDABLES, "Mammoth Commandables");

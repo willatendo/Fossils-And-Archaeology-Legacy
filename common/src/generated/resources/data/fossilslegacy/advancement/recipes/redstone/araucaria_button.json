@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_ginkgo_dna": {
+    "has_araucaria_planks": {
       "conditions": {
         "items": [
           {
-            "items": "fossilslegacy:ginkgo_dna"
+            "items": "fossilslegacy:araucaria_planks"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fossilslegacy:ginkgo_spore"
+        "recipe": "fossilslegacy:araucaria_button"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_ginkgo_dna"
+      "has_araucaria_planks"
     ]
   ],
   "rewards": {
     "recipes": [
-      "fossilslegacy:ginkgo_spore"
+      "fossilslegacy:araucaria_button"
     ]
   }
 }

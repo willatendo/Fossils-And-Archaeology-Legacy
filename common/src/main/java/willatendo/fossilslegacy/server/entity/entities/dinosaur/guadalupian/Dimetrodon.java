@@ -12,7 +12,6 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -80,7 +79,6 @@ public class Dimetrodon extends Dinosaur implements DinopediaInformation {
         this.targetSelector.addGoal(4, new DinoNearestAttackableTargetGoal<>(this, FAEntityTypeTags.DIMETRODON_VICTIMS, true));
     }
 
-    @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
         return FASoundEvents.DIMETRODON_AMBIENT.get();

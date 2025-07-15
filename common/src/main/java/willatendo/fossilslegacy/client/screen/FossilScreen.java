@@ -19,6 +19,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.client.model.json.JsonTypeModel;
+import willatendo.fossilslegacy.network.NetworkUtils;
 import willatendo.fossilslegacy.network.serverbound.ServerboundDamageHammerPacket;
 import willatendo.fossilslegacy.network.serverbound.ServerboundSetFossilPartPositionsPacket;
 import willatendo.fossilslegacy.network.serverbound.ServerboundSetFossilPartRotationsPacket;
@@ -406,7 +407,7 @@ public class FossilScreen extends Screen {
     }
 
     private void setRot(float xRot, float yRot, float zRot) {
-        FAModloaderHelper.INSTANCE.sendToServer(new ServerboundSetFossilPartRotationsPacket(this.id, this.part, xRot, yRot, zRot));
+        NetworkUtils.sendToServer(new ServerboundSetFossilPartRotationsPacket(this.id, this.part, xRot, yRot, zRot));
         Entity entity = this.minecraft.level.getEntity(this.id);
         if (entity instanceof Fossil fossil) {
             fossil.getFossilRotations().setRotation(this.part, xRot, yRot, zRot);
@@ -416,7 +417,7 @@ public class FossilScreen extends Screen {
     }
 
     private void setPos(float x, float y, float z) {
-        FAModloaderHelper.INSTANCE.sendToServer(new ServerboundSetFossilPartPositionsPacket(this.id, this.part, x, y, z));
+        NetworkUtils.sendToServer(new ServerboundSetFossilPartPositionsPacket(this.id, this.part, x, y, z));
         Entity entity = this.minecraft.level.getEntity(this.id);
         if (entity instanceof Fossil fossil) {
             fossil.getFossilPositions().setPosition(this.part, x, y, z);
@@ -427,7 +428,7 @@ public class FossilScreen extends Screen {
 
     private void damageHammer() {
         if (this.minecraft.player.getRandom().nextInt(10) == 0) {
-            FAModloaderHelper.INSTANCE.sendToServer(new ServerboundDamageHammerPacket(this.minecraft.player.getId()));
+            NetworkUtils.sendToServer(new ServerboundDamageHammerPacket(this.minecraft.player.getId()));
         }
     }
 

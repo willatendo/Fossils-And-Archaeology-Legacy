@@ -23,6 +23,7 @@ public class FAModelTypeTags {
     public static final TagKey<ModelType> DILOPHOSAURUS = MODEL_TYPE_TAGS.register("dilophosaurus");
     public static final TagKey<ModelType> NON_LEGACY_DILOPHOSAURUS = MODEL_TYPE_TAGS.register("non_legacy/dilophosaurus");
     public static final TagKey<ModelType> DIMETRODON = MODEL_TYPE_TAGS.register("dimetrodon");
+    public static final TagKey<ModelType> DISTORTUS_REX = MODEL_TYPE_TAGS.register("distortus_rex");
     public static final TagKey<ModelType> DODO = MODEL_TYPE_TAGS.register("dodo");
     public static final TagKey<ModelType> DRYOSAURUS = MODEL_TYPE_TAGS.register("dryosaurus");
     public static final TagKey<ModelType> ELASMOTHERIUM = MODEL_TYPE_TAGS.register("elasmotherium");

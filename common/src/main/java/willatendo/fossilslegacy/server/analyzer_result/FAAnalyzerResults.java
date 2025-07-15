@@ -109,6 +109,7 @@ public final class FAAnalyzerResults {
         FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(FAItems.CALAMITES_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(FAItems.ARCHAEOPTERIS_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(FAItems.GINKGO_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(FAItems.ARAUCARIA_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, RELIC_SCRAP_RESULTS, "relic_scarp_results", new ItemStack(Blocks.GRAVEL), 40);
         FAAnalyzerResults.register(bootstrapContext, RELIC_SCRAP_RESULTS, "relic_scarp_results", new ItemStack(FAItems.STONE_TABLET.get()), 30);
         FAAnalyzerResults.register(bootstrapContext, RELIC_SCRAP_RESULTS, "relic_scarp_results", new ItemStack(Items.FLINT), 20);

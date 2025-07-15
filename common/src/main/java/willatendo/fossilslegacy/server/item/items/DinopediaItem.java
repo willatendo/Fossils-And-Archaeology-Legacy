@@ -8,6 +8,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import willatendo.fossilslegacy.network.NetworkUtils;
 import willatendo.fossilslegacy.network.clientbound.ClientboundOpenDinopediaScreenPacket;
 import willatendo.fossilslegacy.platform.FAModloaderHelper;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
@@ -21,7 +22,7 @@ public class DinopediaItem extends Item {
     public InteractionResult interactLivingEntity(ItemStack itemStack, Player player, LivingEntity livingEntity, InteractionHand interactionHand) {
         if (livingEntity instanceof DinopediaInformation) {
             if (player instanceof ServerPlayer serverPlayer) {
-                FAModloaderHelper.INSTANCE.sendToClient(serverPlayer, new ClientboundOpenDinopediaScreenPacket(livingEntity.getId()));
+                NetworkUtils.sendToClient(serverPlayer, new ClientboundOpenDinopediaScreenPacket(livingEntity.getId()));
                 return InteractionResult.PASS;
             }
             if (player.level().isClientSide()) {

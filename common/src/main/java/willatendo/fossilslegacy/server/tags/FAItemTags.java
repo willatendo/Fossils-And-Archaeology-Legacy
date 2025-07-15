@@ -12,6 +12,7 @@ public class FAItemTags {
     public static final TagKey<Item> ANIMAL_DNA = ITEM_TAGS.register("animal_dna");
     public static final TagKey<Item> ANCIENT_TOOL_MATERIALS = ITEM_TAGS.register("ancient_tool_materials");
     public static final TagKey<Item> ANKYLOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/ankylosaurus");
+    public static final TagKey<Item> ARAUCARIA_LOGS = ITEM_TAGS.register("araucaria_logs");
     public static final TagKey<Item> ARCHAEOPTERIS_LOGS = ITEM_TAGS.register("archaeopteris_logs");
     public static final TagKey<Item> BARYONYX_COMMANDABLES = ITEM_TAGS.register("commandable/baryonyx");
     public static final TagKey<Item> BRACHIOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/brachiosaurus");
@@ -38,8 +39,9 @@ public class FAItemTags {
     public static final TagKey<Item> HERBIVORE_FOODS = ITEM_TAGS.register("herbivore_foods");
     public static final TagKey<Item> ICED_MEAT_TOOL_MATERIALS = ITEM_TAGS.register("iced_meat_tool_materials");
     public static final TagKey<Item> JADE = ITEM_TAGS.register("jade");
-    public static final TagKey<Item> LLAMA_STATUES = ITEM_TAGS.register("llama_statues");
+    public static final TagKey<Item> KEY = ITEM_TAGS.register("key");
     public static final TagKey<Item> LEPIDODENDRON_LOGS = ITEM_TAGS.register("lepidodendron_logs");
+    public static final TagKey<Item> LLAMA_STATUES = ITEM_TAGS.register("llama_statues");
     public static final TagKey<Item> MAMMOTH_COMMANDABLES = ITEM_TAGS.register("commandable/mammoth");
     public static final TagKey<Item> MESOZOIC_FOSSIL = ITEM_TAGS.register("mesozoic_fossil");
     public static final TagKey<Item> OMNIVORE_FOODS = ITEM_TAGS.register("omnivore_foods");

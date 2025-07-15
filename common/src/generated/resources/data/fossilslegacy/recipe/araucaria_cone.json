@@ -1,9 +1,9 @@
 {
   "type": "fossilslegacy:cultivation",
   "category": "plant",
-  "ingredient": "fossilslegacy:ginkgo_dna",
+  "ingredient": "fossilslegacy:araucaria_dna",
   "result": {
-    "id": "fossilslegacy:ginkgo_spore"
+    "id": "fossilslegacy:araucaria_cone"
   },
   "time": 6000
 }

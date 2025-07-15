@@ -27,8 +27,11 @@ public class BuiltInDinopediaLines implements DinopediaLine {
     public static final BuiltInDinopediaLines HUNGER = BuiltInDinopediaLines.createDinosaur("hunger", dinosaur -> FAUtils.translation("dinopedia", "hunger", dinosaur.getHunger(), dinosaur.getMaxHunger()), BuiltInDinopediaLines::ownerCondition);
     public static final BuiltInDinopediaLines RIDEABLE = BuiltInDinopediaLines.createDinosaur("rideable", dinosaur -> FAUtils.translation("dinopedia", "rideable"), (dinosaur, player) -> BuiltInDinopediaLines.ownerCondition(dinosaur, player, dinosaur instanceof RideableDinosaur rideableDinosaur && dinosaur.getAge() >= rideableDinosaur.getMinRideableAge()));
     public static final BuiltInDinopediaLines ABLE_TO_FLY = BuiltInDinopediaLines.createDinosaur("able_to_fly", dinosaur -> FAUtils.translation("dinopedia", "able_to_fly"), (dinosaur, player) -> BuiltInDinopediaLines.ownerCondition(dinosaur, player, dinosaur instanceof RideableDinosaur rideableDinosaur && dinosaur.getAge() >= rideableDinosaur.getMinRideableAge()));
-    public static final BuiltInDinopediaLines DANGEROUS = BuiltInDinopediaLines.createDinosaur("dangerous", dinosaur -> FAUtils.translation("dinopedia", "dangerous"), (dinosaur, player) -> dinosaur.getAge() > 3);
+    private static final Component CAUTION = FAUtils.translation("dinopedia", "caution");
+    public static final BuiltInDinopediaLines DANGEROUS = BuiltInDinopediaLines.createDinosaurLines("dangerous", dinosaur -> List.of(CAUTION, FAUtils.translation("dinopedia", "dangerous")), (dinosaur, player) -> dinosaur.getGrowthStage() > 3);
+    public static final BuiltInDinopediaLines HYBRID_DANGEROUS = BuiltInDinopediaLines.createDinosaurLines("hybrid_dangerous", dinosaur -> List.of(CAUTION, FAUtils.translation("dinopedia", "hybrid_dangerous")), (dinosaur, player) -> dinosaur.getGrowthStage() > 3);
     public static final BuiltInDinopediaLines NOT_OWNER = BuiltInDinopediaLines.createDinosaur("not_owner", dinosaur -> FAUtils.translation("dinopedia", "not_owner"), (dinosaur, player) -> dinosaur.isTame() && !dinosaur.isOwnedBy(player));
+    public static final BuiltInDinopediaLines UNTAMEABLE = BuiltInDinopediaLines.createDinosaur("untameable", dinosaur -> FAUtils.translation("dinopedia", "untameable"), (dinosaur, player) -> true);
     public static final BuiltInDinopediaLines WILD = BuiltInDinopediaLines.createDinosaur("wild", dinosaur -> FAUtils.translation("dinopedia", "wild"), (dinosaur, player) -> !dinosaur.isTame());
     public static final BuiltInDinopediaLines EGG_DISPLAY_NAME = BuiltInDinopediaLines.createEgg("egg_display_name", egg -> FAUtils.translation("dinopedia", "egg", egg.getOffspringType().getDescription().getString()), BuiltInDinopediaLines::alwaysTrue);
     public static final BuiltInDinopediaLines REMAINING_TIME = BuiltInDinopediaLines.createEgg("remaining_time", egg -> FAUtils.translation("dinopedia", "remaining_time", (int) Math.floor((((float) egg.getRemainingTime()) / egg.maxTime()) * 100) + "%"), BuiltInDinopediaLines::alwaysTrue);
@@ -42,6 +45,26 @@ public class BuiltInDinopediaLines implements DinopediaLine {
 
     public static final MapCodec<BuiltInDinopediaLines> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(Codec.STRING.fieldOf("modelName").forGetter(builtInDinopediaLines -> builtInDinopediaLines.name)).apply(instance, BY_NAME::get));
 
+    public static BuiltInDinopediaLines createDinosaurLines(String name, Function<Dinosaur, List<Component>> line, BiFunction<Dinosaur, Player, Boolean> condition) {
+        return BuiltInDinopediaLines.register(name, new BuiltInDinopediaLines(name) {
+            @Override
+            public boolean canUseLine(Entity entity, Player player) {
+                if (entity instanceof Dinosaur dinosaur) {
+                    return condition.apply(dinosaur, player);
+                }
+                return false;
+            }
+
+            @Override
+            public List<Component> getLine(Entity entity) {
+                if (entity instanceof Dinosaur dinosaur) {
+                    return line.apply(dinosaur);
+                }
+                return super.getLine(entity);
+            }
+        });
+    }
+
     public static BuiltInDinopediaLines createDinosaur(String name, Function<Dinosaur, Component> line, BiFunction<Dinosaur, Player, Boolean> condition) {
         return BuiltInDinopediaLines.register(name, new BuiltInDinopediaLines(name) {
             @Override
@@ -53,11 +76,11 @@ public class BuiltInDinopediaLines implements DinopediaLine {
             }
 
             @Override
-            public Component getLine(Entity entity) {
+            public List<Component> getLine(Entity entity) {
                 if (entity instanceof Dinosaur dinosaur) {
-                    return line.apply(dinosaur);
+                    return List.of(line.apply(dinosaur));
                 }
-                return Component.empty();
+                return super.getLine(entity);
             }
         });
     }
@@ -73,11 +96,11 @@ public class BuiltInDinopediaLines implements DinopediaLine {
             }
 
             @Override
-            public Component getLine(Entity entity) {
+            public List<Component> getLine(Entity entity) {
                 if (entity instanceof Egg egg) {
-                    return line.apply(egg);
+                    return List.of(line.apply(egg));
                 }
-                return Component.empty();
+                return super.getLine(entity);
             }
         });
     }
@@ -93,11 +116,11 @@ public class BuiltInDinopediaLines implements DinopediaLine {
             }
 
             @Override
-            public Component getLine(Entity entity) {
+            public List<Component> getLine(Entity entity) {
                 if (entity instanceof PregnantAnimal<?> pregnantAnimal) {
-                    return line.apply(pregnantAnimal);
+                    return List.of(line.apply(pregnantAnimal));
                 }
-                return Component.empty();
+                return super.getLine(entity);
             }
         });
     }
@@ -120,8 +143,8 @@ public class BuiltInDinopediaLines implements DinopediaLine {
         return false;
     }
 
-    public Component getLine(Entity entity) {
-        return Component.empty();
+    public List<Component> getLine(Entity entity) {
+        return List.of();
     }
 
     @Override
@@ -132,7 +155,7 @@ public class BuiltInDinopediaLines implements DinopediaLine {
     @Override
     public void addText(List<Component> text, Entity entity, Player player) {
         if (this.canUseLine(entity, player)) {
-            text.add(this.getLine(entity));
+            text.addAll(this.getLine(entity));
         }
     }
 

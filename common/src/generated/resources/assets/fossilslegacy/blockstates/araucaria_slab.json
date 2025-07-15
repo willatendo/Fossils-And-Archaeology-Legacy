@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "fossilslegacy:block/araucaria_slab"
+    },
+    "type=double": {
+      "model": "fossilslegacy:block/araucaria_planks"
+    },
+    "type=top": {
+      "model": "fossilslegacy:block/araucaria_slab_top"
+    }
+  }
+}

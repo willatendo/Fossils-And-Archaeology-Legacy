@@ -31,6 +31,7 @@ public class FAModelTypeTagProvider extends DataDrivenTagsProvider<ModelType> {
         this.tag(FAModelTypeTags.NON_LEGACY_DILOPHOSAURUS).add(FAModelTypes.DILOPHOSAURUS);
         this.tag(FAModelTypeTags.DODO).add(FAModelTypes.DODO);
         this.tag(FAModelTypeTags.DIMETRODON).add(FAModelTypes.DIMETRODON);
+        this.tag(FAModelTypeTags.DISTORTUS_REX).add(FAModelTypes.DISTORTUS_REX);
         this.tag(FAModelTypeTags.DRYOSAURUS).add(FAModelTypes.DRYOSAURUS);
         this.tag(FAModelTypeTags.ELASMOTHERIUM).add(FAModelTypes.ELASMOTHERIUM);
         this.tag(FAModelTypeTags.FUTABASAURUS).add(FAModelTypes.FUTABASAURUS, FAModelTypes.LEGACY_FUTABASAURUS);

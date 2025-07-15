@@ -1,9 +1,11 @@
 {
   "values": [
+    "#fossilslegacy:araucaria_logs",
     "#fossilslegacy:archaeopteris_logs",
     "#fossilslegacy:lepidodendron_logs",
     "#fossilslegacy:sigillaria_logs",
     "#fossilslegacy:calamites_logs",
-    "#fossilslegacy:ginkgo_logs"
+    "#fossilslegacy:ginkgo_logs",
+    "#fossilslegacy:araucaria_logs"
   ]
 }

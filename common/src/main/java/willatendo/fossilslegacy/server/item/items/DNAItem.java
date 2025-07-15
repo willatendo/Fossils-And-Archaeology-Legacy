@@ -13,17 +13,27 @@ public class DNAItem extends Item {
     public static final List<DNAItem> DNA = Lists.newArrayList();
     private final GeologicalTimeScale.Period period;
     private final EmbryoType embryoType;
+    private final boolean hasAttributes;
 
-    public DNAItem(GeologicalTimeScale.Period period, EmbryoType embryoType, Properties properties) {
+    public DNAItem(GeologicalTimeScale.Period period, EmbryoType embryoType, boolean hasAttributes, Properties properties) {
         super(properties);
         this.period = period;
         this.embryoType = embryoType;
+        this.hasAttributes = hasAttributes;
 
         DNA.add(this);
     }
 
+    public DNAItem(GeologicalTimeScale.Period period, EmbryoType embryoType, Properties properties) {
+        this(period, embryoType, false, properties);
+    }
+
     public EmbryoType getEmbryoType() {
         return this.embryoType;
+    }
+
+    public boolean hasAttributes() {
+        return this.hasAttributes;
     }
 
     @Override

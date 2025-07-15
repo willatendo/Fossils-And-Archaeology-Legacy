@@ -36,6 +36,8 @@ public class FAPatternTags {
     public static final TagKey<Pattern> DILOPHOSAURUS_2011_PATTERNS = PATTERN_TAGS.register("patterns/dilophosaurus_2011");
     public static final TagKey<Pattern> DIMETRODON_2024_SKINS = PATTERN_TAGS.register("skins/dimetrodon_2024");
     public static final TagKey<Pattern> DIMETRODON_2024_PATTERNS = PATTERN_TAGS.register("patterns/dimetrodon_2024");
+    public static final TagKey<Pattern> DISTORTUS_REX_2025_SKINS = PATTERN_TAGS.register("skins/distortus_rex_2025");
+    public static final TagKey<Pattern> DISTORTUS_REX_2025_PATTERNS = PATTERN_TAGS.register("patterns/distortus_rex_2025");
     public static final TagKey<Pattern> DODO_2024_SKINS = PATTERN_TAGS.register("skins/dodo_2024");
     public static final TagKey<Pattern> DODO_2024_PATTERNS = PATTERN_TAGS.register("patterns/dodo_2024");
     public static final TagKey<Pattern> DRYOSAURUS_2025_SKINS = PATTERN_TAGS.register("skins/dryosaurus_2025");

@@ -1,4 +1,4 @@
-// 1.21.4	2025-07-05T14:29:26.6691284	Tags for fossilslegacy:pattern mod id fossilslegacy
+// 1.21.4	2025-07-15T01:50:05.9838716	Tags for fossilslegacy:pattern mod id fossilslegacy
 937df03543bfa48bf7ec15af9c5a7b05909af9a9 data/fossilslegacy/tags/fossilslegacy/pattern/has_patterns.json
 ef52692a198ca41227d838fea99bf06b26463124 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/ankylosaurus_2024.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/baryonyx_2025.json
@@ -12,6 +12,7 @@ ef52692a198ca41227d838fea99bf06b26463124 data/fossilslegacy/tags/fossilslegacy/p
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/dilophosaurus_2011.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/dilophosaurus_2024.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/dimetrodon_2024.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/distortus_rex_2025.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/dodo_2024.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/dryosaurus_2025.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/elasmotherium_2025.json
@@ -52,6 +53,7 @@ e8813fcd626681bf479f103096e074ce7a909184 data/fossilslegacy/tags/fossilslegacy/p
 7db597ac613df3a24e9c1c6ece5376a0271a3b97 data/fossilslegacy/tags/fossilslegacy/pattern/skins/dilophosaurus_2011.json
 432d4720e265efcaa0c8b34070086e565fa1b245 data/fossilslegacy/tags/fossilslegacy/pattern/skins/dilophosaurus_2024.json
 3f89ffb8dd5edd4889b090fc4151bd738b6f94b7 data/fossilslegacy/tags/fossilslegacy/pattern/skins/dimetrodon_2024.json
+0f10fe2a668005917620a0ef3183e82c540538ae data/fossilslegacy/tags/fossilslegacy/pattern/skins/distortus_rex_2025.json
 178cc0dad0a515e7cec52b88ad4dfcc06e934686 data/fossilslegacy/tags/fossilslegacy/pattern/skins/dodo_2024.json
 85d888159d8b6ae13c4d6833f17eb600e2c11500 data/fossilslegacy/tags/fossilslegacy/pattern/skins/dryosaurus_2025.json
 6457c58acf9667b1a58fe519e7c1331e5caf9537 data/fossilslegacy/tags/fossilslegacy/pattern/skins/elasmotherium_2025.json

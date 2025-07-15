@@ -1,4 +1,4 @@
-// 1.21.4	2025-07-05T14:29:26.6551251	Animations: fossilslegacy
+// 1.21.4	2025-07-15T01:37:26.1671048	Animations: fossilslegacy
 12d556c61498df4a1f4ed58b05e20c069c12ce2c assets/fossilslegacy/fossilslegacy/animations/ankylosaurus_walk.json
 05d46db7fbd61d781f9377952a47e599f2bc1375 assets/fossilslegacy/fossilslegacy/animations/baryonyx_walk.json
 c2cc01b70eb2b66ccc3bc10b8a904ee7503dfb60 assets/fossilslegacy/fossilslegacy/animations/brachiosaurus_walk.json
@@ -7,6 +7,7 @@ d28d1333f739e9cad7923ebcb0efa8f70b080c6a assets/fossilslegacy/fossilslegacy/anim
 6107a50ed8fa164919fd87a95cf34892caa5e880 assets/fossilslegacy/fossilslegacy/animations/cryolophosaurus_walk.json
 aad986c9d24e298587ec25c0ea20b9fe417918bc assets/fossilslegacy/fossilslegacy/animations/dilophosaurus_walk.json
 2ebf9e889270607c9440e13ba9cc52740ae15c30 assets/fossilslegacy/fossilslegacy/animations/dimetrodon_walk.json
+b6c398b1f8a9ef750d6e28a17eae349a895a998c assets/fossilslegacy/fossilslegacy/animations/distortus_rex_walk.json
 b57694c83f4f606eea0064f748287188c739f02a assets/fossilslegacy/fossilslegacy/animations/dodo_float_down.json
 a345e326be93b3bde353ef4fa86be0fa52d11db7 assets/fossilslegacy/fossilslegacy/animations/dodo_walk.json
 6d2f9f11ef79b2627da9b4efe30eba1aaa25d631 assets/fossilslegacy/fossilslegacy/animations/dryosaurus_walk.json

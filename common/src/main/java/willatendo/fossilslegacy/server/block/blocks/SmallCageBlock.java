@@ -4,9 +4,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -22,8 +24,10 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.BlockHitResult;
-import org.jetbrains.annotations.Nullable;
 import willatendo.fossilslegacy.server.block.entity.entities.CageBlockEntity;
+import willatendo.fossilslegacy.server.item.items.BoltCutterItem;
+import willatendo.fossilslegacy.server.tags.FAItemTags;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public class SmallCageBlock extends Block implements EntityBlock {
     public static final EnumProperty<Direction> HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -37,11 +41,23 @@ public class SmallCageBlock extends Block implements EntityBlock {
 
     @Override
     protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
-        blockState = blockState.cycle(OPEN);
-        level.setBlock(blockPos, blockState, 10);
-        this.playSound(player, level, blockPos, blockState.getValue(OPEN));
-        level.gameEvent(player, this.isOpen(blockState) ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, blockPos);
-        return InteractionResult.SUCCESS;
+        ItemStack itemStack = player.getMainHandItem();
+        if (((CageBlockEntity) level.getBlockEntity(blockPos)).canOpen(itemStack)) {
+            blockState = blockState.cycle(OPEN);
+            level.setBlock(blockPos, blockState, 10);
+            this.playSound(player, level, blockPos, blockState.getValue(OPEN));
+            level.gameEvent(player, this.isOpen(blockState) ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, blockPos);
+            player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
+            return InteractionResult.SUCCESS;
+        } else if (itemStack.is(FAItemTags.KEY)) {
+            player.displayClientMessage(FAUtils.translation("block", "cage.incorrect_key"), true);
+            return InteractionResult.SUCCESS;
+        } else if (!(itemStack.getItem() instanceof BoltCutterItem)) {
+            player.displayClientMessage(FAUtils.translation("block", "cage.locked"), true);
+            return InteractionResult.SUCCESS;
+        } else {
+            return super.useWithoutItem(blockState, level, blockPos, player, blockHitResult);
+        }
     }
 
     public boolean isOpen(BlockState blockState) {
@@ -88,7 +104,6 @@ public class SmallCageBlock extends Block implements EntityBlock {
         builder.add(HORIZONTAL_FACING, OPEN, POWERED);
     }
 
-    @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
         return new CageBlockEntity(blockPos, blockState);

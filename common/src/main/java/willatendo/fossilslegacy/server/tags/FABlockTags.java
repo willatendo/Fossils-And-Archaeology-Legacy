@@ -11,6 +11,7 @@ public class FABlockTags {
     private static final TagRegister<Block> BLOCK_TAGS = TagRegister.create(Registries.BLOCK, FAUtils.ID);
 
     public static final TagKey<Block> ANKYLOSAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/ankylosaurus");
+    public static final TagKey<Block> ARAUCARIA_LOGS = BLOCK_TAGS.register("araucaria_logs");
     public static final TagKey<Block> ARCHAEOPTERIS_LOGS = BLOCK_TAGS.register("archaeopteris_logs");
     public static final TagKey<Block> BARYONYX_SPAWNABLE = BLOCK_TAGS.register("spawnable/baryonyx");
     public static final TagKey<Block> BRACHIOSAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/brachiosaurus");

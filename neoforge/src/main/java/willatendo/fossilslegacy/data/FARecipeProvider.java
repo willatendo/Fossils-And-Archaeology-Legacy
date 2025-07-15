@@ -22,6 +22,7 @@ import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.menu.categories.AnalyzationBookCategory;
 import willatendo.fossilslegacy.server.menu.categories.ArchaeologyBookCategory;
 import willatendo.fossilslegacy.server.menu.categories.CultivationBookCategory;
+import willatendo.fossilslegacy.server.recipe.recipes.KeyCloningRecipe;
 import willatendo.fossilslegacy.server.recipe.recipes.MagicConchRecipe;
 import willatendo.fossilslegacy.server.tags.FAAnalyzerResultTags;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
@@ -79,6 +80,7 @@ public class FARecipeProvider extends RecipeProvider {
         this.woodType(FABlocks.CALAMITES_LOG.get(), FABlocks.STRIPPED_CALAMITES_LOG.get(), FABlocks.CALAMITES_WOOD.get(), FABlocks.STRIPPED_CALAMITES_WOOD.get(), FAItemTags.CALAMITES_LOGS, FABlocks.CALAMITES_PLANKS.get(), FABlocks.CALAMITES_STAIRS.get(), FABlocks.CALAMITES_SLAB.get(), FABlocks.CALAMITES_FENCE.get(), FABlocks.CALAMITES_FENCE_GATE.get(), FABlocks.CALAMITES_DOOR.get(), FABlocks.CALAMITES_TRAPDOOR.get(), FABlocks.CALAMITES_PRESSURE_PLATE.get(), FABlocks.CALAMITES_BUTTON.get(), FAItems.CALAMITES_SIGN.get(), FAItems.CALAMITES_HANGING_SIGN.get(), FAItems.CALAMITES_BOAT.get(), FAItems.CALAMITES_CHEST_BOAT.get());
         this.woodType(FABlocks.ARCHAEOPTERIS_LOG.get(), FABlocks.STRIPPED_ARCHAEOPTERIS_LOG.get(), FABlocks.ARCHAEOPTERIS_WOOD.get(), FABlocks.STRIPPED_ARCHAEOPTERIS_WOOD.get(), FAItemTags.ARCHAEOPTERIS_LOGS, FABlocks.ARCHAEOPTERIS_PLANKS.get(), FABlocks.ARCHAEOPTERIS_STAIRS.get(), FABlocks.ARCHAEOPTERIS_SLAB.get(), FABlocks.ARCHAEOPTERIS_FENCE.get(), FABlocks.ARCHAEOPTERIS_FENCE_GATE.get(), FABlocks.ARCHAEOPTERIS_DOOR.get(), FABlocks.ARCHAEOPTERIS_TRAPDOOR.get(), FABlocks.ARCHAEOPTERIS_PRESSURE_PLATE.get(), FABlocks.ARCHAEOPTERIS_BUTTON.get(), FAItems.ARCHAEOPTERIS_SIGN.get(), FAItems.ARCHAEOPTERIS_HANGING_SIGN.get(), FAItems.ARCHAEOPTERIS_BOAT.get(), FAItems.ARCHAEOPTERIS_CHEST_BOAT.get());
         this.woodType(FABlocks.GINKGO_LOG.get(), FABlocks.STRIPPED_GINKGO_LOG.get(), FABlocks.GINKGO_WOOD.get(), FABlocks.STRIPPED_GINKGO_WOOD.get(), FAItemTags.GINKGO_LOGS, FABlocks.GINKGO_PLANKS.get(), FABlocks.GINKGO_STAIRS.get(), FABlocks.GINKGO_SLAB.get(), FABlocks.GINKGO_FENCE.get(), FABlocks.GINKGO_FENCE_GATE.get(), FABlocks.GINKGO_DOOR.get(), FABlocks.GINKGO_TRAPDOOR.get(), FABlocks.GINKGO_PRESSURE_PLATE.get(), FABlocks.GINKGO_BUTTON.get(), FAItems.GINKGO_SIGN.get(), FAItems.GINKGO_HANGING_SIGN.get(), FAItems.GINKGO_BOAT.get(), FAItems.GINKGO_CHEST_BOAT.get());
+        this.woodType(FABlocks.ARAUCARIA_LOG.get(), FABlocks.STRIPPED_ARAUCARIA_LOG.get(), FABlocks.ARAUCARIA_WOOD.get(), FABlocks.STRIPPED_ARAUCARIA_WOOD.get(), FAItemTags.ARAUCARIA_LOGS, FABlocks.ARAUCARIA_PLANKS.get(), FABlocks.ARAUCARIA_STAIRS.get(), FABlocks.ARAUCARIA_SLAB.get(), FABlocks.ARAUCARIA_FENCE.get(), FABlocks.ARAUCARIA_FENCE_GATE.get(), FABlocks.ARAUCARIA_DOOR.get(), FABlocks.ARAUCARIA_TRAPDOOR.get(), FABlocks.ARAUCARIA_PRESSURE_PLATE.get(), FABlocks.ARAUCARIA_BUTTON.get(), FAItems.ARAUCARIA_SIGN.get(), FAItems.ARAUCARIA_HANGING_SIGN.get(), FAItems.ARAUCARIA_BOAT.get(), FAItems.ARAUCARIA_CHEST_BOAT.get());
         this.shaped(RecipeCategory.DECORATIONS, FABlocks.MAYAN_VASE.get()).pattern("###").pattern("# #").pattern("###").define('#', Items.BRICK).unlockedBy(getHasName(Items.BRICK), has(Items.BRICK)).save(this.output);
         this.shaped(RecipeCategory.DECORATIONS, FABlocks.MAYAN_JADE_VASE.get()).pattern("#$#").pattern("$ $").pattern("#$#").define('#', Items.BRICK).define('$', FAItems.JADE.get()).unlockedBy(getHasName(Items.BRICK), has(Items.BRICK)).save(this.output);
         this.shaped(RecipeCategory.DECORATIONS, FABlocks.MAYAN_OCELOT_VASE.get()).pattern("#$#").pattern("$ $").pattern("#$#").define('#', Items.BRICK).define('$', FAItems.JADE_OCELOT.get()).unlockedBy(getHasName(Items.BRICK), has(Items.BRICK)).save(this.output);
@@ -116,8 +118,13 @@ public class FARecipeProvider extends RecipeProvider {
         this.hammer(Items.GOLD_INGOT, FAItems.GOLDEN_HAMMER.get());
         this.hammer(Items.DIAMOND, FAItems.DIAMOND_HAMMER.get());
         this.netheriteSmithing(FAItems.DIAMOND_HAMMER.get(), RecipeCategory.TOOLS, FAItems.NETHERITE_HAMMER.get());
+        this.shaped(RecipeCategory.TOOLS, FAItems.IRON_KEY.get(), 16).pattern("#$$").define('#', Items.IRON_INGOT).define('$', Items.IRON_NUGGET).unlockedBy(getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
+        this.shaped(RecipeCategory.TOOLS, FAItems.GOLDEN_KEY.get(), 16).pattern("#$$").define('#', Items.GOLD_INGOT).define('$', Items.GOLD_NUGGET).unlockedBy(getHasName(Items.GOLD_INGOT), this.has(Items.GOLD_INGOT)).save(this.output);
+        this.shaped(RecipeCategory.TOOLS, FAItems.BOLT_CUTTER.get()).pattern("## ").pattern("###").pattern(" # ").define('#', Items.IRON_INGOT).unlockedBy(getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
 
         SpecialRecipeBuilder.special(MagicConchRecipe::new).save(this.output, "magic_conch");
+        SpecialRecipeBuilder.special(KeyCloningRecipe::new).save(this.output, "key_cloning");
+
 
         this.copySmithingTemplate(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), Blocks.STONE_BRICKS);
 
@@ -216,7 +223,8 @@ public class FARecipeProvider extends RecipeProvider {
         this.cultivate(CultivationBookCategory.PLANT, FAItems.SIGILLARIA_DNA.get(), FAItems.SIGILLARIA_SPORE.get(), 6000);
         this.cultivate(CultivationBookCategory.PLANT, FAItems.CALAMITES_DNA.get(), FAItems.CALAMITES_SPORE.get(), 6000);
         this.cultivate(CultivationBookCategory.PLANT, FAItems.ARCHAEOPTERIS_DNA.get(), FAItems.ARCHAEOPTERIS_SPORE.get(), 6000);
-        this.cultivate(CultivationBookCategory.PLANT, FAItems.GINKGO_DNA.get(), FAItems.GINKGO_SPORE.get(), 6000);
+        this.cultivate(CultivationBookCategory.PLANT, FAItems.GINKGO_DNA.get(), FAItems.GINKGO_SEED.get(), 6000);
+        this.cultivate(CultivationBookCategory.PLANT, FAItems.ARAUCARIA_DNA.get(), FAItems.ARAUCARIA_CONE.get(), 6000);
 
         this.archaeology(ArchaeologyBookCategory.RESTORE, FAItems.ANCIENT_HELMET_ARTIFACT.get(), FAItems.ANCIENT_HELMET.get(), 3000);
         this.archaeology(ArchaeologyBookCategory.RESTORE, FAItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), FAItems.ANCIENT_CHESTPLATE.get(), 3000);

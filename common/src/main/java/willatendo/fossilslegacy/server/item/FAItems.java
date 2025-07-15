@@ -23,6 +23,7 @@ import willatendo.fossilslegacy.server.level.FALevels;
 import willatendo.fossilslegacy.server.pregnancy_types.FAPregnancyTypes;
 import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 import willatendo.fossilslegacy.server.utils.FAUtils;
+import willatendo.simplelibrary.server.registry.ItemRegistry;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
@@ -30,7 +31,7 @@ import java.util.List;
 import java.util.function.Function;
 
 public final class FAItems {
-    public static final SimpleRegistry<Item> ITEMS = SimpleRegistry.create(Registries.ITEM, FAUtils.ID);
+    public static final ItemRegistry ITEMS = SimpleRegistry.createItem(FAUtils.ID);
 
     public static final SimpleHolder<Item> MESOZOIC_FOSSIL = FAItems.register("mesozoic_fossil", Item::new);
     public static final SimpleHolder<Item> PLANT_FOSSIL = FAItems.register("plant_fossil", Item::new);
@@ -64,12 +65,14 @@ public final class FAItems {
     public static final SimpleHolder<PlantDNAItem> CALAMITES_DNA = FAItems.register("calamites_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.PERMIAN, properties));
     public static final SimpleHolder<PlantDNAItem> ARCHAEOPTERIS_DNA = FAItems.register("archaeopteris_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.CARBONIFEROUS, properties));
     public static final SimpleHolder<PlantDNAItem> GINKGO_DNA = FAItems.register("ginkgo_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.QUATERNARY, properties));
+    public static final SimpleHolder<PlantDNAItem> ARAUCARIA_DNA = FAItems.register("araucaria_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.JURASSIC, properties));
     public static final SimpleHolder<SeedItem> CYCAD_CONE = FAItems.register("cycad_cone", properties -> new SeedItem(FABlocks.CYCAD_HEAD.get(), properties.useItemDescriptionPrefix()));
     public static final SimpleHolder<SeedItem> LEPIDODENDRON_CONE = FAItems.register("lepidodendron_cone", properties -> new SeedItem(FABlocks.LEPIDODENDRON_SAPLING.get(), properties.useItemDescriptionPrefix()));
     public static final SimpleHolder<SeedItem> SIGILLARIA_SPORE = FAItems.register("sigillaria_spore", properties -> new SeedItem(FABlocks.SIGILLARIA_SAPLING.get(), properties.useItemDescriptionPrefix()));
     public static final SimpleHolder<SeedItem> CALAMITES_SPORE = FAItems.register("calamites_spore", properties -> new SeedItem(FABlocks.CALAMITES_SAPLING.get(), properties.useItemDescriptionPrefix()));
     public static final SimpleHolder<SeedItem> ARCHAEOPTERIS_SPORE = FAItems.register("archaeopteris_spore", properties -> new SeedItem(FABlocks.ARCHAEOPTERIS_SAPLING.get(), properties));
-    public static final SimpleHolder<SeedItem> GINKGO_SPORE = FAItems.register("ginkgo_spore", properties -> new SeedItem(FABlocks.GINKGO_SAPLING.get(), properties));
+    public static final SimpleHolder<SeedItem> GINKGO_SEED = FAItems.register("ginkgo_seed", properties -> new SeedItem(FABlocks.GINKGO_SAPLING.get(), properties));
+    public static final SimpleHolder<SeedItem> ARAUCARIA_CONE = FAItems.register("araucaria_cone", properties -> new SeedItem(FABlocks.ARAUCARIA_SAPLING.get(), properties));
     public static final SimpleHolder<EggItem> TRICERATOPS_EGG = FAItems.register("triceratops_egg", properties -> new EggItem(FAEntityTypes.TRICERATOPS_EGG::get, GeologicalTimeScale.Period.CRETACEOUS, FAModelTypeTags.NON_LEGACY_TRICERATOPS, properties.stacksTo(1)));
     public static final SimpleHolder<EggItem> VELOCIRAPTOR_EGG = FAItems.register("velociraptor_egg", properties -> new VelociraptorEggItem(GeologicalTimeScale.Period.CRETACEOUS, properties.stacksTo(1)));
     public static final SimpleHolder<EggItem> TYRANNOSAURUS_EGG = FAItems.register("tyrannosaurus_egg", properties -> new EggItem(FAEntityTypes.TYRANNOSAURUS_EGG::get, GeologicalTimeScale.Period.CRETACEOUS, FAModelTypeTags.NON_LEGACY_TYRANNOSAURUS, properties.stacksTo(1)));
@@ -297,6 +300,9 @@ public final class FAItems {
     public static final SimpleHolder<DartItem> RED_TRANQUILIZER_DART = FAItems.register("red_tranquilizer_dart", properties -> new DartItem(Dart.Color.RED, 20000, properties));
     public static final SimpleHolder<DartItem> BLUE_TRANQUILIZER_DART = FAItems.register("blue_tranquilizer_dart", properties -> new DartItem(Dart.Color.BLUE, 50000, properties));
     public static final SimpleHolder<BucketItem> TAR_BUCKET = FAItems.register("tar_bucket", properties -> new BucketItem(FAFluids.TAR.get(), properties));
+    public static final SimpleHolder<KeyItem> IRON_KEY = ITEMS.registerItem("iron_key", KeyItem::new, new Item.Properties().stacksTo(16));
+    public static final SimpleHolder<KeyItem> GOLDEN_KEY = ITEMS.registerItem("golden_key", KeyItem::new, new Item.Properties().stacksTo(16));
+    public static final SimpleHolder<BoltCutterItem> BOLT_CUTTER = ITEMS.registerItem("bolt_cutter", BoltCutterItem::new);
     public static final SimpleHolder<PlaceEntityItem<Jeep>> JEEP_1993 = FAItems.register("1993_jeep", properties -> new PlaceEntityItem<>(FAEntityTypes.JEEP::get, properties));
     public static final SimpleHolder<SpawnEggItem> ANU_SPAWN_EGG = FAItems.register("anu_spawn_egg", properties -> new SpawnEggItem(FAEntityTypes.ANU.get(), properties));
     public static final SimpleHolder<SpawnEggItem> FAILURESAURUS_SPAWN_EGG = FAItems.register("failuresaurus_spawn_egg", properties -> new SpawnEggItem(FAEntityTypes.FAILURESAURUS.get(), properties));
@@ -327,6 +333,7 @@ public final class FAItems {
     public static final SimpleHolder<DinosaurSpawnEggItem> ELASMOTHERIUM_SPAWN_EGG = FAItems.register("elasmotherium_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.ELASMOTHERIUM.get(), properties));
     public static final SimpleHolder<DinosaurSpawnEggItem> DRYOSAURUS_SPAWN_EGG = FAItems.register("dryosaurus_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.DRYOSAURUS.get(), properties));
     public static final SimpleHolder<DinosaurSpawnEggItem> BARYONYX_SPAWN_EGG = FAItems.register("baryonyx_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.BARYONYX.get(), properties));
+    public static final SimpleHolder<DinosaurSpawnEggItem> DISTORTUS_REX_SPAWN_EGG = FAItems.register("distortus_rex_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.DISTORTUS_REX.get(), properties));
 
     public static final SimpleHolder<BlockItem> SKULL_BLOCK = FAItems.register("skull_block", properties -> new BlockItem(FABlocks.SKULL_BLOCK.get(), properties.useBlockDescriptionPrefix().component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD).setSwappable(false).setCameraOverlay(FAUtils.resource("misc/skullblur")).build())));
     public static final SimpleHolder<BlockItem> DNA_RECOMBINATOR = FAItems.register("dna_recombinator", properties -> new BlockItem(FABlocks.DNA_RECOMBINATOR.get(), properties.rarity(Rarity.UNCOMMON).useBlockDescriptionPrefix()));
@@ -347,6 +354,9 @@ public final class FAItems {
     public static final SimpleHolder<SignItem> GINKGO_SIGN = FAItems.register("ginkgo_sign", properties -> new SignItem(FABlocks.GINKGO_SIGN.get(), FABlocks.GINKGO_WALL_SIGN.get(), properties.stacksTo(16).useBlockDescriptionPrefix()));
     public static final SimpleHolder<HangingSignItem> GINKGO_HANGING_SIGN = FAItems.register("ginkgo_hanging_sign", properties -> new HangingSignItem(FABlocks.GINKGO_HANGING_SIGN.get(), FABlocks.GINKGO_WALL_HANGING_SIGN.get(), properties.stacksTo(16).useBlockDescriptionPrefix()));
     public static final SimpleHolder<DoubleHighBlockItem> GINKGO_DOOR = FAItems.register("ginkgo_door", properties -> new DoubleHighBlockItem(FABlocks.GINKGO_DOOR.get(), properties.useBlockDescriptionPrefix()));
+    public static final SimpleHolder<SignItem> ARAUCARIA_SIGN = FAItems.register("araucaria_sign", properties -> new SignItem(FABlocks.ARAUCARIA_SIGN.get(), FABlocks.ARAUCARIA_WALL_SIGN.get(), properties.stacksTo(16).useBlockDescriptionPrefix()));
+    public static final SimpleHolder<HangingSignItem> ARAUCARIA_HANGING_SIGN = FAItems.register("araucaria_hanging_sign", properties -> new HangingSignItem(FABlocks.ARAUCARIA_HANGING_SIGN.get(), FABlocks.ARAUCARIA_WALL_HANGING_SIGN.get(), properties.stacksTo(16).useBlockDescriptionPrefix()));
+    public static final SimpleHolder<DoubleHighBlockItem> ARAUCARIA_DOOR = FAItems.register("araucaria_door", properties -> new DoubleHighBlockItem(FABlocks.ARAUCARIA_DOOR.get(), properties.useBlockDescriptionPrefix()));
 
     public static final SimpleHolder<BoatItem> LEPIDODENDRON_BOAT = FAItems.register("lepidodendron_boat", properties -> new BoatItem(FAEntityTypes.LEPIDODENDRON_BOAT.get(), properties.stacksTo(1)));
     public static final SimpleHolder<BoatItem> LEPIDODENDRON_CHEST_BOAT = FAItems.register("lepidodendron_chest_boat", properties -> new BoatItem(FAEntityTypes.LEPIDODENDRON_CHEST_BOAT.get(), properties.stacksTo(1)));
@@ -358,6 +368,8 @@ public final class FAItems {
     public static final SimpleHolder<BoatItem> ARCHAEOPTERIS_CHEST_BOAT = FAItems.register("archaeopteris_chest_boat", properties -> new BoatItem(FAEntityTypes.ARCHAEOPTERIS_CHEST_BOAT.get(), properties.stacksTo(1)));
     public static final SimpleHolder<BoatItem> GINKGO_BOAT = FAItems.register("ginkgo_boat", properties -> new BoatItem(FAEntityTypes.GINKGO_BOAT.get(), properties.stacksTo(1)));
     public static final SimpleHolder<BoatItem> GINKGO_CHEST_BOAT = FAItems.register("ginkgo_chest_boat", properties -> new BoatItem(FAEntityTypes.GINKGO_CHEST_BOAT.get(), properties.stacksTo(1)));
+    public static final SimpleHolder<BoatItem> ARAUCARIA_BOAT = FAItems.register("araucaria_boat", properties -> new BoatItem(FAEntityTypes.ARAUCARIA_BOAT.get(), properties.stacksTo(1)));
+    public static final SimpleHolder<BoatItem> ARAUCARIA_CHEST_BOAT = FAItems.register("araucaria_chest_boat", properties -> new BoatItem(FAEntityTypes.ARAUCARIA_CHEST_BOAT.get(), properties.stacksTo(1)));
 
     public static final SimpleHolder<DebugItem> DEBUG_MAX_HUNGER = FAItems.register("debug_max_hunger", properties -> new DebugItem(DebugItem.debugMaxHunger(), properties));
     public static final SimpleHolder<DebugItem> DEBUG_MAX_HEALTH = FAItems.register("debug_max_health", properties -> new DebugItem(DebugItem.debugMaxHealth(), properties));
@@ -441,6 +453,21 @@ public final class FAItems {
     public static final ResourceKey<Item> POTTED_GINKGO_SAPLING = FAItems.blockReference("potted_ginkgo_sapling");
     public static final ResourceKey<Item> GINKGO_BUTTON = FAItems.blockReference("ginkgo_button");
     public static final ResourceKey<Item> GINKGO_SLAB = FAItems.blockReference("ginkgo_slab");
+    public static final ResourceKey<Item> ARAUCARIA_PLANKS = FAItems.blockReference("ginkgo_planks");
+    public static final ResourceKey<Item> ARAUCARIA_SAPLING = FAItems.blockReference("ginkgo_sapling");
+    public static final ResourceKey<Item> ARAUCARIA_LOG = FAItems.blockReference("ginkgo_log");
+    public static final ResourceKey<Item> STRIPPED_ARAUCARIA_LOG = FAItems.blockReference("stripped_ginkgo_log");
+    public static final ResourceKey<Item> ARAUCARIA_WOOD = FAItems.blockReference("ginkgo_wood");
+    public static final ResourceKey<Item> STRIPPED_ARAUCARIA_WOOD = FAItems.blockReference("stripped_ginkgo_wood");
+    public static final ResourceKey<Item> ARAUCARIA_LEAVES = FAItems.blockReference("ginkgo_leaves");
+    public static final ResourceKey<Item> ARAUCARIA_STAIRS = FAItems.blockReference("ginkgo_stairs");
+    public static final ResourceKey<Item> ARAUCARIA_PRESSURE_PLATE = FAItems.blockReference("ginkgo_pressure_plate");
+    public static final ResourceKey<Item> ARAUCARIA_FENCE = FAItems.blockReference("ginkgo_fence");
+    public static final ResourceKey<Item> ARAUCARIA_TRAPDOOR = FAItems.blockReference("ginkgo_trapdoor");
+    public static final ResourceKey<Item> ARAUCARIA_FENCE_GATE = FAItems.blockReference("ginkgo_fence_gate");
+    public static final ResourceKey<Item> POTTED_ARAUCARIA_SAPLING = FAItems.blockReference("potted_ginkgo_sapling");
+    public static final ResourceKey<Item> ARAUCARIA_BUTTON = FAItems.blockReference("ginkgo_button");
+    public static final ResourceKey<Item> ARAUCARIA_SLAB = FAItems.blockReference("ginkgo_slab");
     public static final SimpleHolder<DoubleHighBlockItem> TALL_HORSETAIL = FAItems.register("tall_horsetail", properties -> new DoubleHighBlockItem(FABlocks.TALL_HORSETAIL.get(), properties.useBlockDescriptionPrefix()));
 
     private static ResourceKey<Item> blockReference(String id) {
@@ -453,7 +480,7 @@ public final class FAItems {
     }
 
     static {
-        List<SimpleHolder<? extends Block>> exceptions = List.of(FABlocks.SKULL_BLOCK, FABlocks.DNA_RECOMBINATOR, FABlocks.AXOLOTLSPAWN, FABlocks.RAW_CHICKEN_SOUP_CAULDRON, FABlocks.COOKED_CHICKEN_SOUP_CAULDRON, FABlocks.RAW_BERRY_MEDLEY_CAULDRON, FABlocks.COOKED_BERRY_MEDLEY_CAULDRON, FABlocks.RED_DECORATION_POST, FABlocks.BLACK_DECORATION_POST, FABlocks.BLUE_DECORATION_POST, FABlocks.BROWN_DECORATION_POST, FABlocks.CYAN_DECORATION_POST, FABlocks.GRAY_DECORATION_POST, FABlocks.GREEN_DECORATION_POST, FABlocks.LIGHT_BLUE_DECORATION_POST, FABlocks.LIGHT_GRAY_DECORATION_POST, FABlocks.LIME_DECORATION_POST, FABlocks.MAGENTA_DECORATION_POST, FABlocks.ORANGE_DECORATION_POST, FABlocks.PINK_DECORATION_POST, FABlocks.PURPLE_DECORATION_POST, FABlocks.WHITE_DECORATION_POST, FABlocks.YELLOW_DECORATION_POST, FABlocks.LEPIDODENDRON_SIGN, FABlocks.LEPIDODENDRON_WALL_SIGN, FABlocks.LEPIDODENDRON_HANGING_SIGN, FABlocks.LEPIDODENDRON_WALL_HANGING_SIGN, FABlocks.LEPIDODENDRON_DOOR, FABlocks.POTTED_LEPIDODENDRON_SAPLING, FABlocks.SIGILLARIA_SIGN, FABlocks.SIGILLARIA_WALL_SIGN, FABlocks.SIGILLARIA_HANGING_SIGN, FABlocks.SIGILLARIA_WALL_HANGING_SIGN, FABlocks.SIGILLARIA_DOOR, FABlocks.POTTED_SIGILLARIA_SAPLING, FABlocks.CALAMITES_SIGN, FABlocks.CALAMITES_WALL_SIGN, FABlocks.CALAMITES_HANGING_SIGN, FABlocks.CALAMITES_WALL_HANGING_SIGN, FABlocks.CALAMITES_DOOR, FABlocks.POTTED_CALAMITES_SAPLING, FABlocks.ARCHAEOPTERIS_SIGN, FABlocks.ARCHAEOPTERIS_WALL_SIGN, FABlocks.ARCHAEOPTERIS_HANGING_SIGN, FABlocks.ARCHAEOPTERIS_WALL_HANGING_SIGN, FABlocks.ARCHAEOPTERIS_DOOR, FABlocks.POTTED_ARCHAEOPTERIS_SAPLING, FABlocks.GINKGO_SIGN, FABlocks.GINKGO_WALL_SIGN, FABlocks.GINKGO_HANGING_SIGN, FABlocks.GINKGO_WALL_HANGING_SIGN, FABlocks.GINKGO_DOOR, FABlocks.POTTED_GINKGO_SAPLING, FABlocks.TALL_HORSETAIL, FABlocks.TAR, FABlocks.SMALL_CAGE);
+        List<SimpleHolder<? extends Block>> exceptions = List.of(FABlocks.SKULL_BLOCK, FABlocks.DNA_RECOMBINATOR, FABlocks.AXOLOTLSPAWN, FABlocks.RAW_CHICKEN_SOUP_CAULDRON, FABlocks.COOKED_CHICKEN_SOUP_CAULDRON, FABlocks.RAW_BERRY_MEDLEY_CAULDRON, FABlocks.COOKED_BERRY_MEDLEY_CAULDRON, FABlocks.RED_DECORATION_POST, FABlocks.BLACK_DECORATION_POST, FABlocks.BLUE_DECORATION_POST, FABlocks.BROWN_DECORATION_POST, FABlocks.CYAN_DECORATION_POST, FABlocks.GRAY_DECORATION_POST, FABlocks.GREEN_DECORATION_POST, FABlocks.LIGHT_BLUE_DECORATION_POST, FABlocks.LIGHT_GRAY_DECORATION_POST, FABlocks.LIME_DECORATION_POST, FABlocks.MAGENTA_DECORATION_POST, FABlocks.ORANGE_DECORATION_POST, FABlocks.PINK_DECORATION_POST, FABlocks.PURPLE_DECORATION_POST, FABlocks.WHITE_DECORATION_POST, FABlocks.YELLOW_DECORATION_POST, FABlocks.LEPIDODENDRON_SIGN, FABlocks.LEPIDODENDRON_WALL_SIGN, FABlocks.LEPIDODENDRON_HANGING_SIGN, FABlocks.LEPIDODENDRON_WALL_HANGING_SIGN, FABlocks.LEPIDODENDRON_DOOR, FABlocks.POTTED_LEPIDODENDRON_SAPLING, FABlocks.SIGILLARIA_SIGN, FABlocks.SIGILLARIA_WALL_SIGN, FABlocks.SIGILLARIA_HANGING_SIGN, FABlocks.SIGILLARIA_WALL_HANGING_SIGN, FABlocks.SIGILLARIA_DOOR, FABlocks.POTTED_SIGILLARIA_SAPLING, FABlocks.CALAMITES_SIGN, FABlocks.CALAMITES_WALL_SIGN, FABlocks.CALAMITES_HANGING_SIGN, FABlocks.CALAMITES_WALL_HANGING_SIGN, FABlocks.CALAMITES_DOOR, FABlocks.POTTED_CALAMITES_SAPLING, FABlocks.ARCHAEOPTERIS_SIGN, FABlocks.ARCHAEOPTERIS_WALL_SIGN, FABlocks.ARCHAEOPTERIS_HANGING_SIGN, FABlocks.ARCHAEOPTERIS_WALL_HANGING_SIGN, FABlocks.ARCHAEOPTERIS_DOOR, FABlocks.POTTED_ARCHAEOPTERIS_SAPLING, FABlocks.GINKGO_SIGN, FABlocks.GINKGO_WALL_SIGN, FABlocks.GINKGO_HANGING_SIGN, FABlocks.GINKGO_WALL_HANGING_SIGN, FABlocks.GINKGO_DOOR, FABlocks.POTTED_GINKGO_SAPLING, FABlocks.ARAUCARIA_SIGN, FABlocks.ARAUCARIA_WALL_SIGN, FABlocks.ARAUCARIA_HANGING_SIGN, FABlocks.ARAUCARIA_WALL_HANGING_SIGN, FABlocks.ARAUCARIA_DOOR, FABlocks.POTTED_ARAUCARIA_SAPLING, FABlocks.TALL_HORSETAIL, FABlocks.TAR, FABlocks.SMALL_CAGE);
         FABlocks.BLOCKS.getEntriesView().stream().filter(simpleHolder -> !exceptions.contains(simpleHolder)).forEach(simpleHolder -> FAItems.register(simpleHolder.getId().getPath(), properties -> new BlockItem(simpleHolder.get(), properties.useBlockDescriptionPrefix())));
     }
 }

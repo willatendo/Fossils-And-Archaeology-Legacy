@@ -20,6 +20,7 @@ public class FAAnimationProvider extends AnimationProvider {
         this.addAnimation(FAUtils.resource("cryolophosaurus_walk"), CrolophosaurusAnimations.CRYOLOPHOSAURUS_WALK);
         this.addAnimation(FAUtils.resource("dilophosaurus_walk"), DilophosaurusAnimations.DILOPHOSAURUS_WALK);
         this.addAnimation(FAUtils.resource("dimetrodon_walk"), DimetrodonAnimations.DIMETRODON_WALK);
+        this.addAnimation(FAUtils.resource("distortus_rex_walk"), DistortusRexAnimations.DISTORTUS_REX_WALK);
         this.addAnimation(FAUtils.resource("dodo_float_down"), DodoAnimations.DODO_FALL);
         this.addAnimation(FAUtils.resource("dodo_walk"), DodoAnimations.DODO_WALK);
         this.addAnimation(FAUtils.resource("dryosaurus_walk"), DryosaurusAnimations.DRYOSAURUS_WALK);

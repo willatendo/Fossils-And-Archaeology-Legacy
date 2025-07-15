@@ -23,6 +23,7 @@ public class FAEntityModelProvider extends EntityModelProvider {
         this.add(this.mod("dilophosaurus"), DilophosaurusModels.DILOPHOSAURUS_MODEL);
         this.add(this.mod("legacy_dilophosaurus"), DilophosaurusModels.LEGACY_DILOPHOSAURUS_MODEL);
         this.add(this.mod("dimetrodon"), DimetrodonModels.DIMETRODON_MODEL);
+        this.add(this.mod("distortus_rex"), DistortusRexModels.DISTORTUS_REX_MODEL);
         this.add(this.mod("dodo"), DodoModels.DODO_MODEL);
         this.add(this.mod("dryosaurus"), DryosaurusModels.DRYOSAURUS_MODEL);
         this.add(this.mod("elasmotherium"), ElasmotheriumModels.ELASMOTHERIUM_MODEL);

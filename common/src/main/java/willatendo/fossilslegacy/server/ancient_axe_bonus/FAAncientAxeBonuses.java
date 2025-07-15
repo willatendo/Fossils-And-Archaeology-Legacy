@@ -21,6 +21,7 @@ public final class FAAncientAxeBonuses {
     public static final ResourceKey<AncientAxeBonus> WARPED_STEM_TO_WARPED_PLANKS = FAAncientAxeBonuses.create("warped_log_to_warped_planks");
     public static final ResourceKey<AncientAxeBonus> MANGROVE_LOG_TO_MANGROVE_PLANKS = FAAncientAxeBonuses.create("mangrove_log_to_mangrove_planks");
     public static final ResourceKey<AncientAxeBonus> CHERRY_LOG_TO_CHERRY_PLANKS = FAAncientAxeBonuses.create("cherry_log_to_cherry_planks");
+    public static final ResourceKey<AncientAxeBonus> ARAUCARIA_LOG_TO_ARAUCARIA_PLANKS = FAAncientAxeBonuses.create("araucaria_log_to_araucaria_planks");
     public static final ResourceKey<AncientAxeBonus> ARCHAEOPTERIS_LOG_TO_ARCHAEOPTERIS_PLANKS = FAAncientAxeBonuses.create("archaeopteris_log_to_archaeopteris_planks");
     public static final ResourceKey<AncientAxeBonus> CALAMITES_LOG_TO_CALAMITES_PLANKS = FAAncientAxeBonuses.create("calamites_log_to_calamites_planks");
     public static final ResourceKey<AncientAxeBonus> GINKGO_LOG_TO_GINKGO_PLANKS = FAAncientAxeBonuses.create("ginkgo_log_to_ginkgo_planks");
@@ -46,6 +47,7 @@ public final class FAAncientAxeBonuses {
         FAAncientAxeBonuses.register(bootstrapContext, CRIMSON_STEM_TO_CRIMSON_PLANKS, Blocks.CRIMSON_STEM, new ItemStack(Blocks.CRIMSON_PLANKS), 1, 3);
         FAAncientAxeBonuses.register(bootstrapContext, WARPED_STEM_TO_WARPED_PLANKS, Blocks.WARPED_STEM, new ItemStack(Blocks.WARPED_PLANKS), 1, 3);
         FAAncientAxeBonuses.register(bootstrapContext, CHERRY_LOG_TO_CHERRY_PLANKS, Blocks.CHERRY_LOG, new ItemStack(Blocks.CHERRY_PLANKS), 1, 3);
+        FAAncientAxeBonuses.register(bootstrapContext, ARAUCARIA_LOG_TO_ARAUCARIA_PLANKS, FABlocks.ARAUCARIA_LOG.get(), new ItemStack(FABlocks.ARAUCARIA_PLANKS.get()), 1, 3);
         FAAncientAxeBonuses.register(bootstrapContext, ARCHAEOPTERIS_LOG_TO_ARCHAEOPTERIS_PLANKS, FABlocks.ARCHAEOPTERIS_LOG.get(), new ItemStack(FABlocks.ARCHAEOPTERIS_PLANKS.get()), 1, 3);
         FAAncientAxeBonuses.register(bootstrapContext, CALAMITES_LOG_TO_CALAMITES_PLANKS, FABlocks.CALAMITES_LOG.get(), new ItemStack(FABlocks.CALAMITES_PLANKS.get()), 1, 3);
         FAAncientAxeBonuses.register(bootstrapContext, GINKGO_LOG_TO_GINKGO_PLANKS, FABlocks.GINKGO_LOG.get(), new ItemStack(FABlocks.GINKGO_PLANKS.get()), 1, 3);

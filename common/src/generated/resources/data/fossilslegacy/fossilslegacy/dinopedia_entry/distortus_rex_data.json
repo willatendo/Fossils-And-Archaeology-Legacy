@@ -1,0 +1,18 @@
+{
+  "center_text": true,
+  "draw_entity": true,
+  "line": [
+    {
+      "type": "fossilslegacy:built_in",
+      "modelName": "display_name"
+    },
+    {
+      "type": "fossilslegacy:built_in",
+      "modelName": "untameable"
+    },
+    {
+      "type": "fossilslegacy:built_in",
+      "modelName": "hybrid_dangerous"
+    }
+  ]
+}

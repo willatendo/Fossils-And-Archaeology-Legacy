@@ -42,6 +42,7 @@ public final class FAPatterns {
     public static final ResourceKey<Pattern> CRYOLOPHOSAURUS_2024 = FAPatterns.create("cryolophosaurus_2024");
     public static final ResourceKey<Pattern> DILOPHOSAURUS_2024 = FAPatterns.create("dilophosaurus_2024");
     public static final ResourceKey<Pattern> DIMETRODON_2024 = FAPatterns.create("dimetrodon_2024");
+    public static final ResourceKey<Pattern> DISTORTUS_REX_2025 = FAPatterns.create("distortus_rex_2025");
     public static final ResourceKey<Pattern> DODO_2024 = FAPatterns.create("dodo_2024");
     public static final ResourceKey<Pattern> DRYOSAURUS_2025 = FAPatterns.create("dryosaurus_2025");
     public static final ResourceKey<Pattern> ELASMOTHERIUM_2025 = FAPatterns.create("elasmotherium_2025");
@@ -123,6 +124,7 @@ public final class FAPatterns {
         FAPatterns.register(bootstrapContext, CRYOLOPHOSAURUS_2024, Pattern.builder(FAUtils.resource("textures/entity/cryolophosaurus/cryolophosaurus.png"), Component.translatable("skin.fossilslegacy.blue_iguana"), 0xFFFFFF, GeneticType.DOMINANT).buildPackage());
         FAPatterns.register(bootstrapContext, DILOPHOSAURUS_2024, Pattern.builder(FAUtils.resource("textures/entity/dilophosaurus/dilophosaurus.png"), Component.translatable("skin.fossilslegacy.inland_taipan"), 0xFFFFFF, GeneticType.DOMINANT).withAggressiveTexture(FAUtils.resource("textures/entity/dilophosaurus/aggressive_dilophosaurus.png")).buildPackage());
         FAPatterns.register(bootstrapContext, DIMETRODON_2024, Pattern.builder(FAUtils.resource("textures/entity/dimetrodon/dimetrodon_adult.png"), Component.translatable("skin.fossilslegacy.eastern_indigo_snake"), 0xFFFFFF, GeneticType.DOMINANT).withBabyTexture(FAUtils.resource("textures/entity/dimetrodon/dimetrodon_baby.png")).withAggressiveTexture(FAUtils.resource("textures/entity/dimetrodon/dimetrodon_agressive.png")).buildPackage());
+        FAPatterns.register(bootstrapContext, DISTORTUS_REX_2025, Pattern.builder(FAUtils.resource("textures/entity/distortus_rex/distortus_rex.png"), Component.translatable("skin.fossilslegacy.eastern_brown_snake"), 0xFFFFFF, GeneticType.DOMINANT).buildPackage());
         FAPatterns.register(bootstrapContext, DODO_2024, Pattern.builder(FAUtils.resource("textures/entity/dodo/dodo.png"), Component.translatable("skin.fossilslegacy.domestic_pigeon"), 0xFFFFFF, GeneticType.DOMINANT).buildPackage());
         FAPatterns.register(bootstrapContext, DRYOSAURUS_2025, Pattern.builder(FAUtils.resource("textures/entity/dryosaurus/dryosaurus.png"), Component.translatable("skin.fossilslegacy.green_tree_python"), 0xB3C15C, GeneticType.DOMINANT).buildPackage());
         FAPatterns.register(bootstrapContext, ELASMOTHERIUM_2025, Pattern.builder(FAUtils.resource("textures/entity/elasmotherium/elasmotherium.png"), Component.translatable("skin.fossilslegacy.american_bison"), 0xFFFFFF, GeneticType.DOMINANT).buildPackage());

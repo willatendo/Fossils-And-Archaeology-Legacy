@@ -90,6 +90,11 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
         return this.getOverridenName(super.getTypeName());
     }
 
+    @Override
+    public double getEyeY() {
+        return this.getDimensions(this.getPose()).eyeHeight();
+    }
+
     public float getBoundingBoxGrowth() {
         ModelType modelType = this.getModelType().value();
         return modelType.boundingBoxInfo().boundingBoxGrowth();

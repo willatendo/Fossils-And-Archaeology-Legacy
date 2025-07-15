@@ -43,6 +43,7 @@ public final class FAConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_PERMAFROST = create("ore_permafrost");
 
     // Trees
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ARAUCARIA = create("araucaria");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ARCHAEOPTERIS = create("archaeopteris");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CALAMITES = create("calamites");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GINKGO = create("ginkgo");
@@ -65,6 +66,10 @@ public final class FAConfiguredFeatures {
 
     public static ResourceKey<ConfiguredFeature<?, ?>> create(String name) {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, FAUtils.resource(name));
+    }
+
+    private static TreeConfiguration.TreeConfigurationBuilder createAraucaria() {
+        return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(FABlocks.ARAUCARIA_LOG.get()), new StraightTrunkPlacer(10, 6, 0), BlockStateProvider.simple(FABlocks.ARAUCARIA_LEAVES.get()), new MegaJungleFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0), 1), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines();
     }
 
     private static TreeConfiguration.TreeConfigurationBuilder createArchaeopteris() {
@@ -114,6 +119,7 @@ public final class FAConfiguredFeatures {
         FeatureUtils.register(bootstrapContext, ORE_PERMAFROST, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), FABlocks.PERMAFROST.get().defaultBlockState())), 8, 0.0F));
 
         // Trees
+        FeatureUtils.register(bootstrapContext, ARAUCARIA, Feature.TREE, FAConfiguredFeatures.createAraucaria().build());
         FeatureUtils.register(bootstrapContext, ARCHAEOPTERIS, Feature.TREE, FAConfiguredFeatures.createArchaeopteris().build());
         FeatureUtils.register(bootstrapContext, CALAMITES, Feature.TREE, FAConfiguredFeatures.createCalamites().build());
         FeatureUtils.register(bootstrapContext, GINKGO, Feature.TREE, FAConfiguredFeatures.createGinkgo().build());

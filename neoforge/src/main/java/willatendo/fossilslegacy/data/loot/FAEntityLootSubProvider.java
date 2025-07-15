@@ -51,6 +51,7 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
         this.add(FAEntityTypes.CRYOLOPHOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_CRYOLOPHOSAURUS.get()));
         this.add(FAEntityTypes.DILOPHOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_DILOPHOSAURUS.get()));
         this.add(FAEntityTypes.DIMETRODON.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_DIMETRODON.get()));
+        this.add(FAEntityTypes.DISTORTUS_REX.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_TYRANNOSAURUS.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.TYRANNOSAURUS_TOOTH.get()))));
         this.add(FAEntityTypes.DODO.get(), this.createDinosaurTable(1.0F, 2.0F, FAItems.RAW_DODO.get()));
         this.add(FAEntityTypes.DRYOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_DRYOSAURUS.get()));
         this.add(FAEntityTypes.MOA.get(), this.createDinosaurTable(1.0F, 2.0F, FAItems.RAW_MOA.get()));

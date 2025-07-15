@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "plant",
+  "ingredient": "fossilslegacy:ginkgo_dna",
+  "result": {
+    "id": "fossilslegacy:ginkgo_seed"
+  },
+  "time": 6000
+}

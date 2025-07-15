@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.server.block;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 
 public final class FABlockSetTypes {
+    public static final BlockSetType ARAUCARIA = BlockSetType.register(new BlockSetType("araucaria"));
     public static final BlockSetType ARCHAEOPTERIS = BlockSetType.register(new BlockSetType("archaeopteris"));
     public static final BlockSetType CALAMITES = BlockSetType.register(new BlockSetType("calamites"));
     public static final BlockSetType GINKGO = BlockSetType.register(new BlockSetType("gnikgo"));

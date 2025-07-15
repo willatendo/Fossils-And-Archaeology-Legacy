@@ -1,4 +1,4 @@
-// 1.21.4	2025-07-05T14:29:26.659126	Entity Models: fossilslegacy
+// 1.21.4	2025-07-15T01:53:01.9483573	Entity Models: fossilslegacy
 a12e845082d42d128c39632ab235d9fa06d44c55 assets/fossilslegacy/fossilslegacy/models/ankylosaurus.json
 153d21bd00f4a74927d4f46ff0f66cc331b92ae1 assets/fossilslegacy/fossilslegacy/models/baryonyx.json
 4980d5294f50ff3dd36d8ac4afbb1c8e76cdf688 assets/fossilslegacy/fossilslegacy/models/brachiosaurus.json
@@ -7,6 +7,7 @@ c16354fc12c8f75723bc243ad6529ba020c8dd5f assets/fossilslegacy/fossilslegacy/mode
 6f6b4ccbd90c61a1b99e65eec9ec4d02af638e72 assets/fossilslegacy/fossilslegacy/models/cryolophosaurus.json
 97394f16b399fec72a1879f064811ddc216e661f assets/fossilslegacy/fossilslegacy/models/dilophosaurus.json
 1461b9677496ae965c4ae5e1b6d215f41dd0ca2f assets/fossilslegacy/fossilslegacy/models/dimetrodon.json
+4f43f9753a2a92597fa4419a538bcdd16bb488c1 assets/fossilslegacy/fossilslegacy/models/distortus_rex.json
 6c3c0581826f9f0c71dd0064fdcbd44e323123fe assets/fossilslegacy/fossilslegacy/models/dodo.json
 d03471a1d5dc555155f7d435515af7ca71af8f83 assets/fossilslegacy/fossilslegacy/models/dryosaurus.json
 8add95249519493a518ea82578f7fe0f2d7c182b assets/fossilslegacy/fossilslegacy/models/elasmotherium.json

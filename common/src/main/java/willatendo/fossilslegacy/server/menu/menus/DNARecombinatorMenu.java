@@ -24,47 +24,13 @@ public class DNARecombinatorMenu extends AbstractContainerMenu {
     private final ContainerLevelAccess containerLevelAccess;
     public final DNARecombinatorBlockEntity DNARecombinatorBlockEntity;
     public final Player player;
-    private final Slot[] geneticSlots = new Slot[3];
+    public final Slot[] geneticSlots = new Slot[3];
 
     public DNARecombinatorMenu(int windowId, Inventory inventory, DNARecombinatorBlockEntity DNARecombinatorBlockEntity) {
         super(FAMenuTypes.GENE_MODIFICATION.get(), windowId);
         this.containerLevelAccess = ContainerLevelAccess.create(DNARecombinatorBlockEntity.getLevel(), DNARecombinatorBlockEntity.getBlockPos());
         this.DNARecombinatorBlockEntity = DNARecombinatorBlockEntity;
         this.player = inventory.player;
-
-        this.addSlot(new Slot(DNARecombinatorBlockEntity, 0, 8, 22) {
-            @Override
-            public int getMaxStackSize() {
-                return 1;
-            }
-
-            @Override
-            public boolean mayPlace(ItemStack itemStack) {
-                return itemStack.getItem() instanceof DNAItem;
-            }
-
-            @Nullable
-            @Override
-            public ResourceLocation getNoItemIcon() {
-                return DNARecombinatorScreen.EMPTY_SLOT_DNA;
-            }
-        });
-
-        this.addSlot(new ResultSlot(this.player, DNARecombinatorBlockEntity, 1, 68, 22));
-
-        this.geneticSlots[0] = this.addSlot(new GeneticCodeSlot(DNARecombinatorBlockEntity, 2, 178, 18));
-        this.geneticSlots[1] = this.addSlot(new GeneticCodeSlot(DNARecombinatorBlockEntity, 3, 178, 36));
-        this.geneticSlots[2] = this.addSlot(new GeneticCodeSlot(DNARecombinatorBlockEntity, 4, 178, 54));
-
-        for (int row = 0; row < 3; row++) {
-            for (int column = 0; column < 9; column++) {
-                this.addSlot(new Slot(inventory, column + row * 9 + 9, 8 + column * 18, 120 + row * 18));
-            }
-        }
-
-        for (int column = 0; column < 9; column++) {
-            this.addSlot(new Slot(inventory, column, 8 + column * 18, 178));
-        }
     }
 
     public DNARecombinatorMenu(int windowId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
