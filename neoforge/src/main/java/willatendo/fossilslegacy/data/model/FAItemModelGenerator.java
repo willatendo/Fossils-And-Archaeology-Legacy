@@ -3,9 +3,11 @@ package willatendo.fossilslegacy.data.model;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.item.ItemModel;
+import net.minecraft.client.renderer.item.properties.conditional.ConditionalItemModelProperty;
 import net.minecraft.world.item.Item;
 import willatendo.fossilslegacy.client.model.ArticulatedFossilSpecialRenderer;
 import willatendo.fossilslegacy.data.FAModelTemplates;
+import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.FAEquipmentAssets;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.utils.FAUtils;
@@ -52,6 +54,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.ARCHAEOPTERIS_DNA.get());
         this.generatedItem(FAItems.GINKGO_DNA.get());
         this.generatedItem(FAItems.ARAUCARIA_DNA.get());
+        this.generatedItem(FAItems.STORAGE_DISC.get());
         this.generatedItem(FAItems.CYCAD_CONE.get());
         this.generatedItem(FAItems.LEPIDODENDRON_CONE.get());
         this.generatedItem(FAItems.SIGILLARIA_SPORE.get());
@@ -137,7 +140,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.COOKED_BARYONYX.get());
         this.generatedItem(FAItems.TYRANNOSAURUS_TOOTH.get());
         this.handheldItem(FAItems.TOOTH_DAGGER.get());
-        this.generateTherizinosaurusClaw(itemModelGenerators, FAItems.THERIZINOSAURUS_CLAWS.get());
+        this.generateTherizinosaurusClaw(this.itemModelGenerators, FAItems.THERIZINOSAURUS_CLAWS.get());
         this.handheldItem(FAItems.SKULL_STICK.get());
         this.generatedItem(FAItems.DINOPEDIA.get());
         this.generatedItem(FAItems.RAW_CHICKEN_SOUP_BUCKET.get());
@@ -284,6 +287,8 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.IRON_KEY.get());
         this.generatedItem(FAItems.GOLDEN_KEY.get());
         this.generatedItem(FAItems.BOLT_CUTTER.get());
+        this.generateFlare(FAItems.FLARE.get());
+        this.generatedItem(FAItems.FLARE_BODY.get());
         this.generatedItem(FAItems.JEEP_1993.get());
         this.spawnEggItem(FAItems.ANU_SPAWN_EGG.get(), 0x432600, 0xa62c14);
         this.spawnEggItem(FAItems.FAILURESAURUS_SPAWN_EGG.get(), 0x51e6a5, 0x1b5128);
@@ -345,5 +350,9 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         ItemModel.Unbaked model2d = ItemModelUtils.plainModel(itemModelGenerators.createFlatItemModel(therizinosaursClawItem, ModelTemplates.FLAT_ITEM));
         ItemModel.Unbaked model3d = ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(therizinosaursClawItem, "_in_hand"));
         this.item(therizinosaursClawItem, ItemModelGenerators.createFlatModelDispatch(model2d, model3d));
+    }
+
+    private void generateFlare(Item flare) {
+        this.item(flare, ItemModelUtils.conditional(ItemModelUtils.hasComponent(FADataComponents.BURNING.get()), ItemModelUtils.plainModel(this.itemModelGenerators.createFlatItemModel(flare, "_burning", ModelTemplates.FLAT_HANDHELD_ITEM)), ItemModelUtils.plainModel(this.itemModelGenerators.createFlatItemModel(flare, ModelTemplates.FLAT_HANDHELD_ITEM))));
     }
 }

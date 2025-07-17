@@ -45,8 +45,9 @@ public class CultivatorBlock extends Block implements EntityBlock {
         this.stateDefinition.any().setValue(ACTIVE, false);
     }
 
-    public void shatter(Level level, BlockPos blockPos, CultivatorBlockEntity cultivatorBlockEntity) {
-        level.setBlock(blockPos, Blocks.WATER.defaultBlockState(), 3);
+    public static void shatter(Level level, BlockPos blockPos, CultivatorBlockEntity cultivatorBlockEntity) {
+        level.setBlock(blockPos, ShatteredCultivatorBlock.DYE_TO_BLOCK.get(cultivatorBlockEntity.dyeColor).defaultBlockState().setValue(ShatteredCultivatorBlock.WATERLOGGED, true), 3);
+        level.scheduleTick(blockPos, level.getBlockState(blockPos).getBlock(), 1);
         level.removeBlockEntity(blockPos);
         level.playLocalSound(blockPos, SoundEvents.GLASS_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F, false);
 
@@ -56,7 +57,6 @@ public class CultivatorBlock extends Block implements EntityBlock {
             }
         }
 
-        popResource(level, blockPos, new ItemStack(Items.IRON_INGOT, 3));
         Containers.dropContents(level, blockPos, cultivatorBlockEntity);
 
         int chance = level.getRandom().nextInt(100);

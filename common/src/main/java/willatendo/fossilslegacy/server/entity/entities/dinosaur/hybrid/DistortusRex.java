@@ -71,6 +71,7 @@ public class DistortusRex extends Dinosaur implements DinopediaInformation {
 
     @Override
     protected void registerGoals() {
+        this.goalSelector.addGoal(0, new DinoFollowFlareGoal(this));
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(2, new DinoTemptGoal(this, 1.1D, false));

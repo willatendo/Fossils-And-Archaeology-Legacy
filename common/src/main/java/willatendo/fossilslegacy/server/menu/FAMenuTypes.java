@@ -17,4 +17,5 @@ public final class FAMenuTypes {
     public static final SimpleHolder<MenuType<FeederMenu>> FEEDER = MENU_TYPES.registerSimple("feeder", FeederMenu::new, FeederMenu::new);
     public static final SimpleHolder<MenuType<TimeMachineMenu>> TIME_MACHINE = MENU_TYPES.registerSimple("time_machine", TimeMachineMenu::new, TimeMachineMenu::new);
     public static final SimpleHolder<MenuType<DNARecombinatorMenu>> GENE_MODIFICATION = MENU_TYPES.registerSimple("gene_modification", DNARecombinatorMenu::new, DNARecombinatorMenu::new);
+    public static final SimpleHolder<MenuType<DNACoderMenu>> DNA_CODER = MENU_TYPES.registerSimple("dna_coder", DNACoderMenu::new, DNACoderMenu::new);
 }

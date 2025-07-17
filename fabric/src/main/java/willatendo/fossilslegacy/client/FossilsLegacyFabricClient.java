@@ -127,21 +127,37 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.SIGILLARIA_TRAPDOOR.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.POTTED_SIGILLARIA_SAPLING.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.WHITE_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.WHITE_SHATTERED_CULTIVATOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ORANGE_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ORANGE_SHATTERED_CULTIVATOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.MAGENTA_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.MAGENTA_SHATTERED_CULTIVATOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.LIGHT_BLUE_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.LIGHT_BLUE_SHATTERED_CULTIVATOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.YELLOW_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.YELLOW_SHATTERED_CULTIVATOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.LIME_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.LIME_SHATTERED_CULTIVATOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.PINK_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.PINK_SHATTERED_CULTIVATOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.GRAY_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.GRAY_SHATTERED_CULTIVATOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.LIGHT_GRAY_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.LIGHT_GRAY_SHATTERED_CULTIVATOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.CYAN_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.CYAN_SHATTERED_CULTIVATOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.PURPLE_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.PURPLE_SHATTERED_CULTIVATOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.BLUE_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.BLUE_SHATTERED_CULTIVATOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.BROWN_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.BROWN_SHATTERED_CULTIVATOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.GREEN_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.GREEN_SHATTERED_CULTIVATOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.RED_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.RED_SHATTERED_CULTIVATOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.BLACK_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.BLACK_SHATTERED_CULTIVATOR.get(), RenderType.translucent());
 
         ClientboundPacketRegistry.clientboundPacketSetup(new FabricClientboundPacketRegister());
 

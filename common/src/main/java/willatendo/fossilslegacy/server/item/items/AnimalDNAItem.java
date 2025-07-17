@@ -46,11 +46,11 @@ public class AnimalDNAItem extends DNAItem {
         super.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
         if (itemStack.has(FADataComponents.MODEL_TYPE.get())) {
             Holder<ModelType> holder = itemStack.get(FADataComponents.MODEL_TYPE.get());
-            tooltipComponents.add(FAUtils.translation("item", "model_type", holder.value().displayInfo().modelName()).withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(FAUtils.translation("item", "dna.model_type", holder.value().displayInfo().modelName()).withStyle(ChatFormatting.GRAY));
         }
         if (itemStack.has(FADataComponents.PATTERN_HOLDER.get())) {
             PatternHolder patternHolder = itemStack.get(FADataComponents.PATTERN_HOLDER.get());
-            tooltipComponents.add(FAUtils.translation("item", "skin", patternHolder.getDisplayName()).withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(FAUtils.translation("item", "dna.skin", patternHolder.getDisplayName()).withStyle(ChatFormatting.GRAY));
         }
     }
 }

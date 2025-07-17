@@ -112,28 +112,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
     private final Object2IntOpenHashMap<ResourceKey<Recipe<?>>> recipesUsed = new Object2IntOpenHashMap<>();
     public final CachedCheck<SingleRecipeInput, CultivationRecipe> recipeCheck = RecipeManager.createCheck(FARecipeTypes.CULTIVATION.get());
 
-    private final DyeColor dyeColor;
-
-    private static Map<DyeColor, Block> getDyeToBlockMap() {
-        Map<DyeColor, Block> map = Maps.newLinkedHashMap();
-        map.put(DyeColor.WHITE, FABlocks.WHITE_CULTIVATOR.get());
-        map.put(DyeColor.ORANGE, FABlocks.ORANGE_CULTIVATOR.get());
-        map.put(DyeColor.MAGENTA, FABlocks.MAGENTA_CULTIVATOR.get());
-        map.put(DyeColor.LIGHT_BLUE, FABlocks.LIGHT_BLUE_CULTIVATOR.get());
-        map.put(DyeColor.YELLOW, FABlocks.YELLOW_CULTIVATOR.get());
-        map.put(DyeColor.LIME, FABlocks.LIME_CULTIVATOR.get());
-        map.put(DyeColor.PINK, FABlocks.PINK_CULTIVATOR.get());
-        map.put(DyeColor.GRAY, FABlocks.GRAY_CULTIVATOR.get());
-        map.put(DyeColor.LIGHT_GRAY, FABlocks.LIGHT_GRAY_CULTIVATOR.get());
-        map.put(DyeColor.CYAN, FABlocks.CYAN_CULTIVATOR.get());
-        map.put(DyeColor.PURPLE, FABlocks.PURPLE_CULTIVATOR.get());
-        map.put(DyeColor.BLUE, FABlocks.BLUE_CULTIVATOR.get());
-        map.put(DyeColor.BROWN, FABlocks.BROWN_CULTIVATOR.get());
-        map.put(DyeColor.GREEN, FABlocks.GREEN_CULTIVATOR.get());
-        map.put(DyeColor.RED, FABlocks.RED_CULTIVATOR.get());
-        map.put(DyeColor.BLACK, FABlocks.BLACK_CULTIVATOR.get());
-        return map;
-    }
+    public final DyeColor dyeColor;
 
     public CultivatorBlockEntity(BlockPos blockPos, BlockState blockState) {
         this(DyeColor.RED, blockPos, blockState);
@@ -263,8 +242,15 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
         }
 
         if (cultivatorBlockEntity.onTime == (cultivatorBlockEntity.getTotalCultivationTime(serverLevel, cultivatorBlockEntity) / 2) + 1) {
-            if (cultivatorBlockEntity.level.getRandom().nextInt(100) <= 30) {
-                ((CultivatorBlock) CultivatorBlockEntity.getDyeToBlockMap().get(cultivatorBlockEntity.dyeColor)).shatter(serverLevel, blockPos, cultivatorBlockEntity);
+            if (!hasInput) {
+                if (cultivatorBlockEntity.level.getRandom().nextInt(100) <= 30) {
+                    CultivatorBlock.shatter(serverLevel, blockPos, cultivatorBlockEntity);
+                }
+            } else {
+                ItemStack input = cultivatorBlockEntity.itemStacks.get(0);
+                if (cultivatorBlockEntity.level.getRandom().nextInt(100) <= 30) {
+                    CultivatorBlock.shatter(serverLevel, blockPos, cultivatorBlockEntity);
+                }
             }
         }
 
@@ -280,8 +266,11 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
     }
 
     private boolean canCultivate(RegistryAccess registryAccess, RecipeHolder<?> recipeHolder, NonNullList<ItemStack> itemStacks, int maxStackSize) {
-        if (!itemStacks.get(0).isEmpty() && recipeHolder != null) {
-            ItemStack output = ((CultivationRecipe) recipeHolder.value()).assemble(new SingleRecipeInput(itemStacks.get(0)), registryAccess);
+        ItemStack input = itemStacks.get(0);
+        if (input.has(FADataComponents.PURITY.get()) && input.get(FADataComponents.PURITY.get()) < 50) {
+            return false;
+        } else if (!input.isEmpty() && recipeHolder != null) {
+            ItemStack output = ((CultivationRecipe) recipeHolder.value()).assemble(new SingleRecipeInput(input), registryAccess);
             if (output.isEmpty()) {
                 return false;
             } else {

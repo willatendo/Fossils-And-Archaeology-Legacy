@@ -12,6 +12,9 @@ public final class FASoundEvents {
     public static final SimpleHolder<SoundEvent> DRUM_HIT = SOUND_EVENTS.register("block.drum.hit", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("block.drum.hit")));
     public static final SimpleHolder<SoundEvent> DRUM_TRIPLE_HIT = SOUND_EVENTS.register("block.drum.triple_hit", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("block.drum.triple_hit")));
 
+    public static final SimpleHolder<SoundEvent> FLARE_START = SOUND_EVENTS.register("item.flare.start", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("item.flare.start")));
+    public static final SimpleHolder<SoundEvent> FLARE_IGNITE = SOUND_EVENTS.register("item.flare.ignite", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("item.flare.ignite")));
+
     public static final SimpleHolder<SoundEvent> ANKYLOSAURUS_AMBIENT = SOUND_EVENTS.register("entity.ankylosaurus.ambient", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.ankylosaurus.ambient")));
     public static final SimpleHolder<SoundEvent> ANKYLOSAURUS_HURT = SOUND_EVENTS.register("entity.ankylosaurus.hurt", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.ankylosaurus.hurt")));
     public static final SimpleHolder<SoundEvent> ANKYLOSAURUS_DEATH = SOUND_EVENTS.register("entity.ankylosaurus.death", () -> SoundEvent.createVariableRangeEvent(FAUtils.resource("entity.ankylosaurus.death")));

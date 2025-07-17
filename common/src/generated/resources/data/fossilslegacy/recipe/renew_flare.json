@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "minecraft:red_dye",
+    "$": "fossilslegacy:flare_body",
+    "@": "minecraft:gunpowder"
+  },
+  "pattern": [
+    "#@",
+    "$#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:flare"
+  }
+}

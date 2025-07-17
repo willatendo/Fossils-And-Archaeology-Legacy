@@ -1,0 +1,15 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "component": "fossilslegacy:burning",
+    "on_false": {
+      "type": "minecraft:model",
+      "model": "fossilslegacy:item/flare"
+    },
+    "on_true": {
+      "type": "minecraft:model",
+      "model": "fossilslegacy:item/flare_burning"
+    },
+    "property": "minecraft:has_component"
+  }
+}

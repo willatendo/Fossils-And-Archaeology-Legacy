@@ -36,6 +36,7 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createSkull(FABlocks.SKULL_BLOCK.get(), this.modLocation("block/skull_front"));
         this.createSkull(FABlocks.SKULL_LANTERN_BLOCK.get(), this.modLocation("block/skull_lantern_front"));
         this.createAnalyzer(FABlocks.ANALYZER.get());
+        this.createAnalyzer(FABlocks.DNA_CODER.get());
         this.createCultivator(FABlocks.WHITE_CULTIVATOR.get(), "white");
         this.createCultivator(FABlocks.ORANGE_CULTIVATOR.get(), "orange");
         this.createCultivator(FABlocks.MAGENTA_CULTIVATOR.get(), "magenta");
@@ -52,6 +53,22 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createCultivator(FABlocks.GREEN_CULTIVATOR.get(), "green");
         this.createCultivator(FABlocks.RED_CULTIVATOR.get(), "red");
         this.createCultivator(FABlocks.BLACK_CULTIVATOR.get(), "black");
+        this.createShatteredCultivator(FABlocks.WHITE_SHATTERED_CULTIVATOR.get(), "white");
+        this.createShatteredCultivator(FABlocks.ORANGE_SHATTERED_CULTIVATOR.get(), "orange");
+        this.createShatteredCultivator(FABlocks.MAGENTA_SHATTERED_CULTIVATOR.get(), "magenta");
+        this.createShatteredCultivator(FABlocks.LIGHT_BLUE_SHATTERED_CULTIVATOR.get(), "light_blue");
+        this.createShatteredCultivator(FABlocks.YELLOW_SHATTERED_CULTIVATOR.get(), "yellow");
+        this.createShatteredCultivator(FABlocks.LIME_SHATTERED_CULTIVATOR.get(), "lime");
+        this.createShatteredCultivator(FABlocks.PINK_SHATTERED_CULTIVATOR.get(), "pink");
+        this.createShatteredCultivator(FABlocks.GRAY_SHATTERED_CULTIVATOR.get(), "gray");
+        this.createShatteredCultivator(FABlocks.LIGHT_GRAY_SHATTERED_CULTIVATOR.get(), "light_gray");
+        this.createShatteredCultivator(FABlocks.CYAN_SHATTERED_CULTIVATOR.get(), "cyan");
+        this.createShatteredCultivator(FABlocks.PURPLE_SHATTERED_CULTIVATOR.get(), "purple");
+        this.createShatteredCultivator(FABlocks.BLUE_SHATTERED_CULTIVATOR.get(), "blue");
+        this.createShatteredCultivator(FABlocks.BROWN_SHATTERED_CULTIVATOR.get(), "brown");
+        this.createShatteredCultivator(FABlocks.GREEN_SHATTERED_CULTIVATOR.get(), "green");
+        this.createShatteredCultivator(FABlocks.RED_SHATTERED_CULTIVATOR.get(), "red");
+        this.createShatteredCultivator(FABlocks.BLACK_SHATTERED_CULTIVATOR.get(), "black");
         this.createArchaeologyWorkbench(FABlocks.ARCHAEOLOGY_WORKBENCH.get());
         this.createPalaeontologyTable(FABlocks.PALAEONTOLOGY_TABLE.get());
         this.createGeneModificationTable(FABlocks.DNA_RECOMBINATOR.get());
@@ -167,6 +184,11 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
 
     private void createCultivator(Block cultivator, String color) {
         this.createActiveType(cultivator, FAModelTemplates.TEMPLATE_CULTIVATOR.create(cultivator, new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/" + color + "_cultivator_side")).put(TextureSlot.TOP, this.modLocation("block/" + color + "_cultivator_top")), this.modelOutput), FAModelTemplates.TEMPLATE_CULTIVATOR_ACTIVE.create(ModelLocationUtils.getModelLocation(cultivator).withSuffix("_active"), new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/" + color + "_cultivator_side")).put(TextureSlot.TOP, this.modLocation("block/" + color + "_cultivator_top")), this.modelOutput), FABlockStateProperties.ACTIVE, false);
+    }
+
+    private void createShatteredCultivator(Block cultivator, String color) {
+        ResourceLocation model = FAModelTemplates.TEMPLATE_SHATTERED_CULTIVATOR.create(cultivator, new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/" + color + "_shattered_cultivator_side")), this.modelOutput);
+        this.block(MultiVariantGenerator.multiVariant(cultivator, Variant.variant().with(VariantProperties.MODEL, model)));
     }
 
     private void createArchaeologyWorkbench(Block archeologyWorkbench) {

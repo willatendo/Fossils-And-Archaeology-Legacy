@@ -17,6 +17,9 @@ public class FASoundDefinitionsProvider extends SoundDefinitionsProvider {
         this.block(FASoundEvents.DRUM_HIT.get(), "drum", "hit", "drum_hit");
         this.block(FASoundEvents.DRUM_TRIPLE_HIT.get(), "drum", "triple_hit", "drum_triple_hit");
 
+        this.item(FASoundEvents.FLARE_START.get(), "flare", "start", "flare_start");
+        this.item(FASoundEvents.FLARE_IGNITE.get(), "flare", "ignite", "flare_ignite");
+
         this.entity(FASoundEvents.ANKYLOSAURUS_AMBIENT.get(), "ankylosaurus", "ambient", "ankylosaurus_ambient_1", "ankylosaurus_ambient_2");
         this.entity(FASoundEvents.ANKYLOSAURUS_HURT.get(), "ankylosaurus", "hurt", "ankylosaurus_hurt");
         this.entity(FASoundEvents.ANKYLOSAURUS_DEATH.get(), "ankylosaurus", "death", "ankylosaurus_death");

@@ -6,6 +6,7 @@
 - Fixed The Possibility of Impossible Recipes For Articulated Fossils
 - Fixed All Dinosaur And Fossil Shadows
 - Fixed "Caution: Dangerous" Tag In Dinopedia Not Working Properly
+- Fixed Analyzer Not Giving Light Level On When
 - Mammoth Shearing Is Done By Loot Table
 - Cultivator Recipes Now Unlocked By Acquiring Water Buckets
 - Llama Statue Recipes Now In One Group In Recipe Book
@@ -30,6 +31,7 @@
 - Reduced Jurassic Fern Spores Chance Of Filling A Composter from 65% to 35%
 - Fossils Are Now Called Mesozoic Fossils
 - Mesozoic Fossils Now Longer Give Plant DNA (Plant Fossils Replace This Function)
+- DNA Now Has Purity And Modifications That Impact Chance of Successful Incubation
 - Added Archaeology Category For Analyzer Recipe Book
 - Added Palaeontology Category For Analyzer Recipe Book
 - Added Mosasaurus Skeleton
@@ -56,10 +58,31 @@
 - Added Archaeopteris Boat with Chest
 - Added Archaeopteris Tree
 - Added Archaeopteris Spore
+- Added Araucaria Planks
+- Added Araucaria Log
+- Added Stripped Araucaria Log
+- Added Araucaria Wood
+- Added Stripped Araucaria Wood
+- Added Araucaria Leaves
+- Added Araucaria Stairs
+- Added Araucaria Sign
+- Added Araucaria Door
+- Added Araucaria Hanging Sign
+- Added Araucaria Pressure Plate
+- Added Araucaria Fence
+- Added Araucaria Trapdoor
+- Added Araucaria Fence Gate
+- Added Potted Araucaria Sapling
+- Added Araucaria Button
+- Added Araucaria Slab
+- Added Araucaria Boat
+- Added Araucaria Boat with Chest
+- Added Araucaria Tree
+- Added Araucaria Cone
 - Added Baryonyx
 - Added Baryonyx DNA
 - Added Baryonyx Egg
-- Added Raw Baryonyx
+- Added Raw baryonyx
 - Added Cooked Baryonyx
 - Added Articulated Baryonyx Skeleton
 - Added Baryonyx Spawn Egg
@@ -141,6 +164,10 @@
 - Added Plant Fossil
 - Added Iron Key
 - Added Golden Key
+- Added Bolt Cutter
+- Added Flare
+- Added Flare Body
+- Added DNA Coder
 27/2/2024 1.4.9
 - Fixed Tooth Dagger Not Shearing All Shearables
 - Fixed Mayan Vase Not Wobbling

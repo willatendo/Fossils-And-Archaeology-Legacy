@@ -28,11 +28,13 @@ public class AnalyzationRecipe implements Recipe<AnalyzerRecipeInput> {
     public final Ingredient ingredient;
     public final TagKey<AnalyzerResult> results;
     public final int time;
+    public final boolean createsPureDNA;
     public String group;
 
-    public AnalyzationRecipe(AnalyzationBookCategory analyzationBookCategory, String group, Ingredient ingredient, TagKey<AnalyzerResult> results, int time) {
+    public AnalyzationRecipe(AnalyzationBookCategory analyzationBookCategory, String group, boolean createsPureDNA, Ingredient ingredient, TagKey<AnalyzerResult> results, int time) {
         this.analyzationBookCategory = analyzationBookCategory;
         this.group = group;
+        this.createsPureDNA = createsPureDNA;
         this.ingredient = ingredient;
         this.results = results;
         this.time = time;

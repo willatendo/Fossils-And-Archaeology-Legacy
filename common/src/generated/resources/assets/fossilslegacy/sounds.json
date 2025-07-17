@@ -513,6 +513,18 @@
     ],
     "subtitle": "subtitles.entity.velociraptor.hurt"
   },
+  "item.flare.ignite": {
+    "sounds": [
+      "fossilslegacy:flare_ignite"
+    ],
+    "subtitle": "subtitles.item.flare.ignite"
+  },
+  "item.flare.start": {
+    "sounds": [
+      "fossilslegacy:flare_start"
+    ],
+    "subtitle": "subtitles.item.flare.start"
+  },
   "item.magic_conch.blow": {
     "sounds": [
       "fossilslegacy:magic_conch_blow"

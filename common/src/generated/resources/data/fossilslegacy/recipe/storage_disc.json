@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:iron_nugget",
+    "$": "minecraft:iron_ingot",
+    "%": "#minecraft:wool"
+  },
+  "pattern": [
+    "#$#",
+    "$%$",
+    "#$#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:storage_disc"
+  }
+}

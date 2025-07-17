@@ -196,6 +196,7 @@ public final class FossilsLegacyClient {
         menuScreenRegister.addMenuScreen(FAMenuTypes.CULTIVATOR.get(), CultivatorScreen::new);
         menuScreenRegister.addMenuScreen(FAMenuTypes.FEEDER.get(), FeederScreen::new);
         menuScreenRegister.addMenuScreen(FAMenuTypes.GENE_MODIFICATION.get(), DNARecombinatorScreen::new);
+        menuScreenRegister.addMenuScreen(FAMenuTypes.DNA_CODER.get(), DNACoderScreen::new);
         menuScreenRegister.addMenuScreen(FAMenuTypes.PALAEONTOLOGY_TABLE.get(), PalaeontologyTableScreen::new);
         menuScreenRegister.addMenuScreen(FAMenuTypes.TIME_MACHINE.get(), TimeMachineScreen::new);
     }

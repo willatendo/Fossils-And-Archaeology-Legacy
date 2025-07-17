@@ -12,6 +12,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -31,6 +32,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import willatendo.fossilslegacy.server.block.blocks.AnalyzerBlock;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.block.entity.crafting.AnalyzerRecipeInput;
+import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.menu.menus.AnalyzerMenu;
 import willatendo.fossilslegacy.server.recipe.FARecipeTypes;
 import willatendo.fossilslegacy.server.recipe.recipes.AnalyzationRecipe;
@@ -148,7 +150,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
                                     if (analyzerBlockEntity.analyzationProgress == analyzerBlockEntity.analyzationTotalTime) {
                                         analyzerBlockEntity.analyzationProgress = 0;
                                         analyzerBlockEntity.analyzationTotalTime = getTotalAnalyzationTime(inputSlot, serverLevel, analyzerBlockEntity);
-                                        if (analyzerBlockEntity.analyze(outputSlot, inputSlot, outputStack, analyzerBlockEntity.itemStacks, maxStackSize)) {
+                                        if (analyzerBlockEntity.analyze(serverLevel.getRandom(), recipe.value().createsPureDNA, outputSlot, inputSlot, outputStack, analyzerBlockEntity.itemStacks, maxStackSize)) {
                                             analyzerBlockEntity.setRecipeUsed(recipe);
                                         }
 
@@ -198,8 +200,13 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
         }
     }
 
-    private boolean analyze(int slot, int inputSlot, ItemStack output, NonNullList<ItemStack> itemStacks, int maxStackSize) {
+    private boolean analyze(RandomSource randomSource, boolean recipeCreatesPureDNA, int slot, int inputSlot, ItemStack output, NonNullList<ItemStack> itemStacks, int maxStackSize) {
         if (this.canAnalyze(slot, inputSlot, output, itemStacks, maxStackSize)) {
+            if (!recipeCreatesPureDNA) {
+                output.set(FADataComponents.PURITY.get(), randomSource.nextInt(99) + 1);
+            } else {
+                output.set(FADataComponents.PURITY.get(), 100);
+            }
             ItemStack input = itemStacks.get(inputSlot);
             ItemStack outputSlot = itemStacks.get(slot);
             if (outputSlot.isEmpty()) {

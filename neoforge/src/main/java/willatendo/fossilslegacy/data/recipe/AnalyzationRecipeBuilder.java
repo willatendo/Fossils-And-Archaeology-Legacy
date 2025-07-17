@@ -26,6 +26,7 @@ public class AnalyzationRecipeBuilder implements RecipeBuilder {
     private final TagKey<AnalyzerResult> results;
     private final int time;
     private final Map<String, Criterion<?>> criteria = new LinkedHashMap();
+    private boolean createsPureDNA = true;
     private String group;
 
     private AnalyzationRecipeBuilder(AnalyzationBookCategory analyzationBookCategory, Ingredient ingredient, TagKey<AnalyzerResult> results, int time) {
@@ -51,6 +52,11 @@ public class AnalyzationRecipeBuilder implements RecipeBuilder {
         return this;
     }
 
+    public AnalyzationRecipeBuilder doesNotCreatePureDNA() {
+        this.createsPureDNA = false;
+        return this;
+    }
+
     @Override
     public Item getResult() {
         return null;
@@ -61,8 +67,7 @@ public class AnalyzationRecipeBuilder implements RecipeBuilder {
         this.ensureValid(recipeId);
         Advancement.Builder builder = recipeOutput.advancement().addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId)).rewards(AdvancementRewards.Builder.recipe(recipeId)).requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(builder::addCriterion);
-        recipeOutput.accept(recipeId, new AnalyzationRecipe(this.analyzationBookCategory, Objects.requireNonNullElse(this.group, ""), this.ingredient, this.results, this.time), builder.build(recipeId.location().withPrefix("recipes/misc/")));
-
+        recipeOutput.accept(recipeId, new AnalyzationRecipe(this.analyzationBookCategory, Objects.requireNonNullElse(this.group, ""), this.createsPureDNA, this.ingredient, this.results, this.time), builder.build(recipeId.location().withPrefix("recipes/misc/")));
     }
 
     private void ensureValid(ResourceKey<Recipe<?>> recipeId) {

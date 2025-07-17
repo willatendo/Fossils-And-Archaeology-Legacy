@@ -1,6 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "palaeontology",
+  "creates_pure_dna": false,
   "fuels": "fossilslegacy:frozen_meat",
   "ingredient": "fossilslegacy:frozen_meat",
   "time": 100

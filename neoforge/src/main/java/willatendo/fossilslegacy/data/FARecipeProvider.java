@@ -121,6 +121,10 @@ public class FARecipeProvider extends RecipeProvider {
         this.shaped(RecipeCategory.TOOLS, FAItems.IRON_KEY.get(), 16).pattern("#$$").define('#', Items.IRON_INGOT).define('$', Items.IRON_NUGGET).unlockedBy(getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
         this.shaped(RecipeCategory.TOOLS, FAItems.GOLDEN_KEY.get(), 16).pattern("#$$").define('#', Items.GOLD_INGOT).define('$', Items.GOLD_NUGGET).unlockedBy(getHasName(Items.GOLD_INGOT), this.has(Items.GOLD_INGOT)).save(this.output);
         this.shaped(RecipeCategory.TOOLS, FAItems.BOLT_CUTTER.get()).pattern("## ").pattern("###").pattern(" # ").define('#', Items.IRON_INGOT).unlockedBy(getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
+        this.shaped(RecipeCategory.MISC, FAItems.FLARE_BODY.get()).pattern("#$").pattern("$#").define('#', Items.RED_DYE).define('$', Items.IRON_INGOT).unlockedBy(getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
+        this.shaped(RecipeCategory.MISC, FAItems.FLARE.get()).pattern(" #@").pattern("#$#").pattern("$# ").define('#', Items.RED_DYE).define('$', Items.IRON_INGOT).define('@', Items.GUNPOWDER).unlockedBy(getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
+        this.shaped(RecipeCategory.MISC, FAItems.FLARE.get()).pattern("#@").pattern("$#").define('#', Items.RED_DYE).define('$', FAItems.FLARE_BODY.get()).define('@', Items.GUNPOWDER).unlockedBy(getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output, FAUtils.resource("renew_flare").toString());
+        this.shaped(RecipeCategory.TOOLS, FAItems.STORAGE_DISC.get()).pattern("#$#").pattern("$%$").pattern("#$#").define('#', Items.IRON_NUGGET).define('$', Items.IRON_INGOT).define('%', ItemTags.WOOL).unlockedBy(getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
 
         SpecialRecipeBuilder.special(MagicConchRecipe::new).save(this.output, "magic_conch");
         SpecialRecipeBuilder.special(KeyCloningRecipe::new).save(this.output, "key_cloning");
@@ -248,10 +252,10 @@ public class FARecipeProvider extends RecipeProvider {
         this.archaeology(ArchaeologyBookCategory.REPAIR, "stone_javelin_repair", FAItems.BROKEN_STONE_JAVELIN.get(), FAItems.STONE_JAVELIN.get(), 3000);
         this.archaeology(ArchaeologyBookCategory.REPAIR, "wooden_javelin_repair", FAItems.BROKEN_WOODEN_JAVELIN.get(), FAItems.WOODEN_JAVELIN.get(), 3000);
 
-        this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.MESOZOIC_FOSSIL.get(), FAAnalyzerResultTags.MESOZOIC_FOSSIL_RESULTS, 100);
-        this.analyzation(AnalyzationBookCategory.PALAEOBOTANY, FAItems.PLANT_FOSSIL.get(), FAAnalyzerResultTags.PLANT_FOSSIL_RESULTS, 100);
+        this.roughAnalyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.MESOZOIC_FOSSIL.get(), FAAnalyzerResultTags.MESOZOIC_FOSSIL_RESULTS, 100);
+        this.roughAnalyzation(AnalyzationBookCategory.PALAEOBOTANY, FAItems.PLANT_FOSSIL.get(), FAAnalyzerResultTags.PLANT_FOSSIL_RESULTS, 100);
         this.analyzation(AnalyzationBookCategory.ARCHAEOLOGY, FAItems.RELIC_SCRAP.get(), FAAnalyzerResultTags.RELIC_SCRAP_RESULTS, 100);
-        this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.FROZEN_MEAT.get(), FAAnalyzerResultTags.FROZEN_MEAT_RESULTS, 100);
+        this.roughAnalyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.FROZEN_MEAT.get(), FAAnalyzerResultTags.FROZEN_MEAT_RESULTS, 100);
         this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, Items.AXOLOTL_BUCKET, FAAnalyzerResultTags.AXOLOTL_BUCKET_RESULTS, 100);
         this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, Items.TROPICAL_FISH_BUCKET, FAAnalyzerResultTags.TROPICAL_FISH_BUCKET_RESULTS, 100);
         this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, Items.PORKCHOP, FAAnalyzerResultTags.PORKCHOP_RESULTS, 100);
@@ -371,6 +375,10 @@ public class FARecipeProvider extends RecipeProvider {
 
     public void analyzation(AnalyzationBookCategory analyzationBookCategory, ItemLike ingredient, TagKey<AnalyzerResult> results, int time) {
         AnalyzationRecipeBuilder.recipe(analyzationBookCategory, Ingredient.of(ingredient), results, time).unlockedBy(getHasName(ingredient), this.has(ingredient)).save(this.output, ResourceKey.create(Registries.RECIPE, FAUtils.resource(getItemName(ingredient) + "_outputs")));
+    }
+
+    public void roughAnalyzation(AnalyzationBookCategory analyzationBookCategory, ItemLike ingredient, TagKey<AnalyzerResult> results, int time) {
+        AnalyzationRecipeBuilder.recipe(analyzationBookCategory, Ingredient.of(ingredient), results, time).doesNotCreatePureDNA().unlockedBy(getHasName(ingredient), this.has(ingredient)).save(this.output, ResourceKey.create(Registries.RECIPE, FAUtils.resource(getItemName(ingredient) + "_outputs")));
     }
 
     public void analyzation(AnalyzationBookCategory analyzationBookCategory, TagKey<Item> itemTagKey, String name, TagKey<AnalyzerResult> results, int time) {

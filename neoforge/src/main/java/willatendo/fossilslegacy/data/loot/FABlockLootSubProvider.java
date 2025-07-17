@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.data.loot;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoublePlantBlock;
@@ -37,22 +38,39 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.dropSelf(FABlocks.SKULL_BLOCK.get());
         this.dropSelf(FABlocks.SKULL_LANTERN_BLOCK.get());
         this.dropSelf(FABlocks.ANALYZER.get());
+        this.dropSelf(FABlocks.DNA_CODER.get());
         this.dropSelf(FABlocks.WHITE_CULTIVATOR.get());
+        this.createOtherWhenSilkTouch(FABlocks.WHITE_SHATTERED_CULTIVATOR.get(), Items.IRON_INGOT, 3);
         this.dropSelf(FABlocks.ORANGE_CULTIVATOR.get());
+        this.createOtherWhenSilkTouch(FABlocks.ORANGE_SHATTERED_CULTIVATOR.get(), Items.IRON_INGOT, 3);
         this.dropSelf(FABlocks.MAGENTA_CULTIVATOR.get());
+        this.createOtherWhenSilkTouch(FABlocks.MAGENTA_SHATTERED_CULTIVATOR.get(), Items.IRON_INGOT, 3);
         this.dropSelf(FABlocks.LIGHT_BLUE_CULTIVATOR.get());
+        this.createOtherWhenSilkTouch(FABlocks.LIGHT_BLUE_SHATTERED_CULTIVATOR.get(), Items.IRON_INGOT, 3);
         this.dropSelf(FABlocks.YELLOW_CULTIVATOR.get());
+        this.createOtherWhenSilkTouch(FABlocks.YELLOW_SHATTERED_CULTIVATOR.get(), Items.IRON_INGOT, 3);
         this.dropSelf(FABlocks.LIME_CULTIVATOR.get());
+        this.createOtherWhenSilkTouch(FABlocks.LIME_SHATTERED_CULTIVATOR.get(), Items.IRON_INGOT, 3);
         this.dropSelf(FABlocks.PINK_CULTIVATOR.get());
+        this.createOtherWhenSilkTouch(FABlocks.PINK_SHATTERED_CULTIVATOR.get(), Items.IRON_INGOT, 3);
         this.dropSelf(FABlocks.GRAY_CULTIVATOR.get());
+        this.createOtherWhenSilkTouch(FABlocks.GRAY_SHATTERED_CULTIVATOR.get(), Items.IRON_INGOT, 3);
         this.dropSelf(FABlocks.LIGHT_GRAY_CULTIVATOR.get());
+        this.createOtherWhenSilkTouch(FABlocks.LIGHT_GRAY_SHATTERED_CULTIVATOR.get(), Items.IRON_INGOT, 3);
         this.dropSelf(FABlocks.CYAN_CULTIVATOR.get());
+        this.createOtherWhenSilkTouch(FABlocks.CYAN_SHATTERED_CULTIVATOR.get(), Items.IRON_INGOT, 3);
         this.dropSelf(FABlocks.PURPLE_CULTIVATOR.get());
+        this.createOtherWhenSilkTouch(FABlocks.PURPLE_SHATTERED_CULTIVATOR.get(), Items.IRON_INGOT, 3);
         this.dropSelf(FABlocks.BLUE_CULTIVATOR.get());
+        this.createOtherWhenSilkTouch(FABlocks.BLUE_SHATTERED_CULTIVATOR.get(), Items.IRON_INGOT, 3);
         this.dropSelf(FABlocks.BROWN_CULTIVATOR.get());
+        this.createOtherWhenSilkTouch(FABlocks.BROWN_SHATTERED_CULTIVATOR.get(), Items.IRON_INGOT, 3);
         this.dropSelf(FABlocks.GREEN_CULTIVATOR.get());
+        this.createOtherWhenSilkTouch(FABlocks.GREEN_SHATTERED_CULTIVATOR.get(), Items.IRON_INGOT, 3);
         this.dropSelf(FABlocks.RED_CULTIVATOR.get());
+        this.createOtherWhenSilkTouch(FABlocks.RED_SHATTERED_CULTIVATOR.get(), Items.IRON_INGOT, 3);
         this.dropSelf(FABlocks.BLACK_CULTIVATOR.get());
+        this.createOtherWhenSilkTouch(FABlocks.BLACK_SHATTERED_CULTIVATOR.get(), Items.IRON_INGOT, 3);
         this.dropSelf(FABlocks.DNA_RECOMBINATOR.get());
         this.dropSelf(FABlocks.ARCHAEOLOGY_WORKBENCH.get());
         this.dropSelf(FABlocks.PALAEONTOLOGY_TABLE.get());
@@ -214,5 +232,9 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
 
     protected LootTable.Builder createFossilOreLootTable(Block block) {
         return createSelfDropDispatchTable(block, this.hasSilkTouch(), this.applyExplosionCondition(block, LootOneItemOfManyRandom.lootTableItem(20000, new ItemAndChance(FAItems.MESOZOIC_FOSSIL.get(), 10, 4000), new ItemAndChance(FAItems.MESOZOIC_FOSSIL.get(), 4000, 4500), new ItemAndChance(FAItems.RELIC_SCRAP.get(), 4500, 9800), new ItemAndChance(Items.BONE, 9800, 17800), new ItemAndChance(FABlocks.SKULL_BLOCK.get(), 17800, 19800), new ItemAndChance(FAItems.ANCIENT_SWORD_ARTIFACT.get(), 19800, 19820), new ItemAndChance(FAItems.ANCIENT_SHOVEL_ARTIFACT.get(), 19820, 19840), new ItemAndChance(FAItems.ANCIENT_PICKAXE_ARTIFACT.get(), 19840, 19860), new ItemAndChance(FAItems.ANCIENT_AXE_ARTIFACT.get(), 19860, 19880), new ItemAndChance(FAItems.ANCIENT_HOE_ARTIFACT.get(), 19880, 19900), new ItemAndChance(FAItems.ANCIENT_HELMET_ARTIFACT.get(), 19900, 19925), new ItemAndChance(FAItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 19925, 19950), new ItemAndChance(FAItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 19950, 19975), new ItemAndChance(FAItems.ANCIENT_BOOTS_ARTIFACT.get(), 19975, 20000), new ItemAndChance(FAItems.SCARAB_GEM.get(), 0, 10))));
+    }
+
+    protected void createOtherWhenSilkTouch(Block block, ItemLike other, int amount) {
+        this.add(block, this.createSilkTouchDispatchTable(block, this.applyExplosionDecay(block, LootItem.lootTableItem(other).apply(SetItemCountFunction.setCount(ConstantValue.exactly(amount))))));
     }
 }

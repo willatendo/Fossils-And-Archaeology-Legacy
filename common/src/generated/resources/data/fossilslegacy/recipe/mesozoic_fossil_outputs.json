@@ -1,6 +1,7 @@
 {
   "type": "fossilslegacy:analyzation",
   "category": "palaeontology",
+  "creates_pure_dna": false,
   "fuels": "fossilslegacy:mesozoic_fossil",
   "ingredient": "fossilslegacy:mesozoic_fossil",
   "time": 100

@@ -1,0 +1,7 @@
+{
+  "parent": "fossilslegacy:block/template_shattered_cultivator",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "side": "fossilslegacy:block/light_gray_shattered_cultivator_side"
+  }
+}

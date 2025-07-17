@@ -154,22 +154,39 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.SKULL_BLOCK.get());
         this.add(FABlocks.SKULL_LANTERN_BLOCK.get());
         this.add(FABlocks.ANALYZER.get());
+        this.add(FABlocks.DNA_CODER.get());
         this.add(FABlocks.WHITE_CULTIVATOR.get());
+        this.add(FABlocks.WHITE_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.ORANGE_CULTIVATOR.get());
+        this.add(FABlocks.ORANGE_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.MAGENTA_CULTIVATOR.get());
+        this.add(FABlocks.MAGENTA_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.LIGHT_BLUE_CULTIVATOR.get());
+        this.add(FABlocks.LIGHT_BLUE_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.YELLOW_CULTIVATOR.get());
+        this.add(FABlocks.YELLOW_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.LIME_CULTIVATOR.get());
+        this.add(FABlocks.LIME_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.PINK_CULTIVATOR.get());
+        this.add(FABlocks.PINK_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.GRAY_CULTIVATOR.get());
+        this.add(FABlocks.GRAY_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.LIGHT_GRAY_CULTIVATOR.get());
+        this.add(FABlocks.LIGHT_GRAY_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.CYAN_CULTIVATOR.get());
+        this.add(FABlocks.CYAN_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.PURPLE_CULTIVATOR.get());
+        this.add(FABlocks.PURPLE_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.BLUE_CULTIVATOR.get());
+        this.add(FABlocks.BLUE_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.BROWN_CULTIVATOR.get());
+        this.add(FABlocks.BROWN_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.GREEN_CULTIVATOR.get());
+        this.add(FABlocks.GREEN_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.RED_CULTIVATOR.get());
+        this.add(FABlocks.RED_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.BLACK_CULTIVATOR.get());
+        this.add(FABlocks.BLACK_SHATTERED_CULTIVATOR.get());
         this.add("block.fossilslegacy.cultivator.shatter", "Warning! Cultivation failure!");
         this.add(FABlocks.DNA_RECOMBINATOR.get(), "DNA Recombinator");
         this.add(FABlocks.ARCHAEOLOGY_WORKBENCH.get());
@@ -376,6 +393,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("container.fossilslegacy.analyzer", "Analyzer");
         this.add("container.fossilslegacy.archaeology_workbench", "Archaeology Workbench");
         this.add("container.fossilslegacy.cultivator", "Cultivator");
+        this.add("container.fossilslegacy.dna_coder", "DNA Coder");
         this.add("container.fossilslegacy.dna_recombinator", "DNA Recombinator");
         this.add("container.fossilslegacy.dna_recombinator.apply_gene.tutorial", "Use '%s' to apply gene.");
         this.add("container.fossilslegacy.dna_recombinator.navigation", "%s/%s");
@@ -647,8 +665,6 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.DRYOSAURUS_DNA.get(), "Dryosaurus DNA");
         this.add(FAItems.ELASMOTHERIUM_DNA.get(), "Elasmotherium DNA");
         this.add(FAItems.BARYONYX_DNA.get(), "Baryonyx DNA");
-        this.add("item.fossilslegacy.model_type", "Model Type: %s");
-        this.add("item.fossilslegacy.skin", "Pattern: %s");
         this.add(FAItems.CYCAD_DNA.get());
         this.add(FAItems.HORSETAIL_DNA.get());
         this.add(FAItems.JURASSIC_FERN_DNA.get());
@@ -658,6 +674,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.ARCHAEOPTERIS_DNA.get(), "Archaeopteris DNA");
         this.add(FAItems.GINKGO_DNA.get(), "Ginkgo DNA");
         this.add(FAItems.ARAUCARIA_DNA.get(), "Araucaria DNA");
+        this.add(FAItems.STORAGE_DISC.get());
+        this.add("item.fossilslegacy.storage_disc.type", "Type: %s");
         this.add(FAItems.CYCAD_CONE.get());
         this.add(FAItems.LEPIDODENDRON_CONE.get());
         this.add(FAItems.SIGILLARIA_SPORE.get());
@@ -784,6 +802,11 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.MAMMOTH_DNA.get(), "Mammoth DNA");
         this.add(FAItems.DODO_DNA.get(), "Dodo DNA");
         this.add(FAItems.MOA_DNA.get(), "Moa DNA");
+        this.add("item.fossilslegacy.dna.era", "Era: %s");
+        this.add("item.fossilslegacy.dna.period", "Period: %s");
+        this.add("item.fossilslegacy.dna.purity", "Purity: %s");
+        this.add("item.fossilslegacy.dna.model_type", "Model Type: %s");
+        this.add("item.fossilslegacy.dna.skin", "Pattern: %s");
         this.add(FAItems.ARMADILLO_EMBRYO_SYRINGE.get());
         this.add(FAItems.CAT_EMBRYO_SYRINGE.get());
         this.add(FAItems.INCUBATED_CHICKEN_EGG.get());
@@ -919,6 +942,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.GOLDEN_KEY.get());
         this.add("item.fossilslegacy.key.bound", "Is Bound");
         this.add(FAItems.BOLT_CUTTER.get());
+        this.add(FAItems.FLARE.get());
+        this.add(FAItems.FLARE_BODY.get());
 
         this.add(FAItems.JEEP_1993.get(), "1993 Jeep");
 
@@ -984,9 +1009,6 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.DEBUG_BABY.get(), "Debug Baby");
         this.add(FAItems.DEBUG_TAME.get(), "Debug Tame");
         this.add(FAItems.DEBUG_CHANGE_GENETICS.get(), "Debug Change Genetics");
-
-        this.add("item.fossilslegacy.dna.era", "Era: %s");
-        this.add("item.fossilslegacy.dna.period", "Period: %s");
 
         this.add(GeologicalTimeScale.Era.CENOZOIC, "Cenozoic");
         this.add(GeologicalTimeScale.Era.MESOZOIC, "Mesozoic");
@@ -1132,6 +1154,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         // Sounds
         this.add("subtitles.block.drum.hit", "Drum hit");
         this.add("subtitles.block.drum.triple_hit", "Drum triple hit");
+
+        this.add("subtitles.item.flare.start", "Flare strikes");
+        this.add("subtitles.item.flare.ignite", "Flare ignites");
 
         this.add("subtitles.entity.ankylosaurus.ambient", "Ankylosaurus calls");
         this.add("subtitles.entity.ankylosaurus.hurt", "Ankylosaurus hurts");

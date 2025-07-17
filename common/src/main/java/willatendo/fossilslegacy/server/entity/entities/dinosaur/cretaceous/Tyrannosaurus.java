@@ -131,6 +131,7 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
 
     @Override
     protected void registerGoals() {
+        this.goalSelector.addGoal(0, new DinoFollowFlareGoal(this));
         this.goalSelector.addGoal(0, new FloatGoal(this) {
             @Override
             public boolean canUse() {
