@@ -37,13 +37,22 @@ import java.util.List;
 import java.util.Objects;
 
 public class DinosaurSpawnEggItem extends SpawnEggItem {
-    public DinosaurSpawnEggItem(EntityType<? extends Dinosaur> entityType, Properties properties) {
+    private final boolean hasYoung;
+
+    public DinosaurSpawnEggItem(EntityType<? extends Mob> entityType, boolean hasYoung, Properties properties) {
         super(entityType, properties);
+        this.hasYoung = hasYoung;
+    }
+
+    public DinosaurSpawnEggItem(EntityType<? extends Mob> entityType, Properties properties) {
+        this(entityType, false, properties);
     }
 
     @Override
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
-        list.add(FAUtils.translation("item", "dinosaur_spawn_egg.desc").withStyle(ChatFormatting.GRAY));
+        if (this.hasYoung) {
+            list.add(FAUtils.translation("item", "dinosaur_spawn_egg.desc").withStyle(ChatFormatting.GRAY));
+        }
         super.appendHoverText(itemStack, tooltipContext, list, tooltipFlag);
     }
 
@@ -141,5 +150,4 @@ public class DinosaurSpawnEggItem extends SpawnEggItem {
         Iterable iterable = levelReader.getCollisions(null, aABBAtPos);
         return 1.0 + Shapes.collide(Direction.Axis.Y, aABB, iterable, bl ? -2.0 : -1.0);
     }
-
 }

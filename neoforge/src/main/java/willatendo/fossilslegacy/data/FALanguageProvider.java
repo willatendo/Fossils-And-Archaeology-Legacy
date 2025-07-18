@@ -155,6 +155,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.SKULL_LANTERN_BLOCK.get());
         this.add(FABlocks.ANALYZER.get());
         this.add(FABlocks.DNA_CODER.get());
+        this.add(FABlocks.DNA_HYBRIDIZER.get());
         this.add(FABlocks.WHITE_CULTIVATOR.get());
         this.add(FABlocks.WHITE_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.ORANGE_CULTIVATOR.get());
@@ -394,6 +395,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("container.fossilslegacy.archaeology_workbench", "Archaeology Workbench");
         this.add("container.fossilslegacy.cultivator", "Cultivator");
         this.add("container.fossilslegacy.dna_coder", "DNA Coder");
+        this.add("container.fossilslegacy.dna_hybridizer", "DNA Hybridizer");
         this.add("container.fossilslegacy.dna_recombinator", "DNA Recombinator");
         this.add("container.fossilslegacy.dna_recombinator.apply_gene.tutorial", "Use '%s' to apply gene.");
         this.add("container.fossilslegacy.dna_recombinator.navigation", "%s/%s");
@@ -473,6 +475,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAEntityTypes.DRYOSAURUS.get());
         this.add(FAEntityTypes.ELASMOTHERIUM.get());
         this.add(FAEntityTypes.FUTABASAURUS.get());
+        this.add(FAEntityTypes.ISOTELUS.get());
         this.add(FAEntityTypes.MOA.get());
         this.add(FAEntityTypes.MAMMOTH.get());
         this.add(FAEntityTypes.MOSASAURUS.get());
@@ -640,7 +643,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("gui.jei.category.tagInformation.coat_types", "Coat Types");
 
         // Items
+        this.add(FAItems.CENOZOIC_FOSSIL.get());
         this.add(FAItems.MESOZOIC_FOSSIL.get());
+        this.add(FAItems.PALAEOZOIC_FOSSIL.get());
         this.add(FAItems.PLANT_FOSSIL.get());
         this.add(FAItems.TRICERATOPS_DNA.get(), "Triceratops DNA");
         this.add(FAItems.VELOCIRAPTOR_DNA.get(), "Velociraptor DNA");
@@ -676,6 +681,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.ARAUCARIA_DNA.get(), "Araucaria DNA");
         this.add(FAItems.STORAGE_DISC.get());
         this.add("item.fossilslegacy.storage_disc.type", "Type: %s");
+        this.add(FAItems.BLANK_DNA.get());
         this.add(FAItems.CYCAD_CONE.get());
         this.add(FAItems.LEPIDODENDRON_CONE.get());
         this.add(FAItems.SIGILLARIA_SPORE.get());
@@ -975,6 +981,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.ANKYLOSAURUS_SPAWN_EGG.get());
         this.add(FAItems.DIMETRODON_SPAWN_EGG.get());
         this.add(FAItems.ICHTHYOSAURUS_SPAWN_EGG.get());
+        this.add(FAItems.ISOTELUS_SPAWN_EGG.get());
         this.add(FAItems.ELASMOTHERIUM_SPAWN_EGG.get());
         this.add(FAItems.DRYOSAURUS_SPAWN_EGG.get());
         this.add(FAItems.BARYONYX_SPAWN_EGG.get());
@@ -1102,6 +1109,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.addStat(FAStats.INTERACT_WITH_ANALYZER, "Interactions with Analyzer");
         this.addStat(FAStats.INTERACT_WITH_ARCHAEOLOGY_WORKBENCH, "Interactions with Archaeology Workbench");
         this.addStat(FAStats.INTERACT_WITH_CULTIVATOR, "Interactions with Cultivator");
+        this.addStat(FAStats.INTERACT_WITH_DNA_CODER, "Interactions with DNA Coder");
+        this.addStat(FAStats.INTERACT_WITH_DNA_HYBRIDIZER, "Interactions with DNA Hybridizer");
         this.addStat(FAStats.INTERACT_WITH_FEEDER, "Interactions with Feeder");
         this.addStat(FAStats.INTERACT_WITH_GENE_MODIFICATION_TABLE, "Interactions with Gene Modification Table");
         this.addStat(FAStats.INTERACT_WITH_PALAEONTOLOGY_TABLE, "Interactions with Palaeontology Table");

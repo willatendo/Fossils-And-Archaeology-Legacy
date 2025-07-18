@@ -33,7 +33,9 @@ import java.util.function.Function;
 public final class FAItems {
     public static final ItemRegistry ITEMS = SimpleRegistry.createItem(FAUtils.ID);
 
+    public static final SimpleHolder<Item> CENOZOIC_FOSSIL = ITEMS.registerItem("cenozoic_fossil", Item::new);
     public static final SimpleHolder<Item> MESOZOIC_FOSSIL = ITEMS.registerItem("mesozoic_fossil", Item::new);
+    public static final SimpleHolder<Item> PALAEOZOIC_FOSSIL = ITEMS.registerItem("palaeozoic_fossil", Item::new);
     public static final SimpleHolder<Item> PLANT_FOSSIL = ITEMS.registerItem("plant_fossil", Item::new);
     public static final SimpleHolder<Item> BLANK_DNA = ITEMS.registerItem("blank_dna", Item::new);
     public static final SimpleHolder<AnimalDNAItem> TRICERATOPS_DNA = ITEMS.registerItem("triceratops_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.CRETACEOUS, FAEntityTypes.TRICERATOPS::get, FAModelTypeTags.TRICERATOPS, properties));
@@ -338,6 +340,7 @@ public final class FAItems {
     public static final SimpleHolder<DinosaurSpawnEggItem> DRYOSAURUS_SPAWN_EGG = ITEMS.registerItem("dryosaurus_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.DRYOSAURUS.get(), properties));
     public static final SimpleHolder<DinosaurSpawnEggItem> BARYONYX_SPAWN_EGG = ITEMS.registerItem("baryonyx_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.BARYONYX.get(), properties));
     public static final SimpleHolder<DinosaurSpawnEggItem> DISTORTUS_REX_SPAWN_EGG = ITEMS.registerItem("distortus_rex_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.DISTORTUS_REX.get(), properties));
+    public static final SimpleHolder<DinosaurSpawnEggItem> ISOTELUS_SPAWN_EGG = ITEMS.registerItem("isotelus_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.ISOTELUS.get(), false, properties));
 
     public static final SimpleHolder<BlockItem> SKULL_BLOCK = ITEMS.registerItem("skull_block", properties -> new BlockItem(FABlocks.SKULL_BLOCK.get(), properties.useBlockDescriptionPrefix().component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD).setSwappable(false).setCameraOverlay(FAUtils.resource("misc/skullblur")).build())));
     public static final SimpleHolder<BlockItem> DNA_RECOMBINATOR = ITEMS.registerItem("dna_recombinator", properties -> new BlockItem(FABlocks.DNA_RECOMBINATOR.get(), properties.rarity(Rarity.UNCOMMON).useBlockDescriptionPrefix()));

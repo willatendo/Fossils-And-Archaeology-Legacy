@@ -39,6 +39,7 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.dropSelf(FABlocks.SKULL_LANTERN_BLOCK.get());
         this.dropSelf(FABlocks.ANALYZER.get());
         this.dropSelf(FABlocks.DNA_CODER.get());
+        this.dropSelf(FABlocks.DNA_HYBRIDIZER.get());
         this.dropSelf(FABlocks.WHITE_CULTIVATOR.get());
         this.createOtherWhenSilkTouch(FABlocks.WHITE_SHATTERED_CULTIVATOR.get(), Items.IRON_INGOT, 3);
         this.dropSelf(FABlocks.ORANGE_CULTIVATOR.get());

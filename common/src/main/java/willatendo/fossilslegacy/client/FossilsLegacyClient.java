@@ -83,6 +83,7 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.THERIZINOSAURUS.get(), TherizinosaurusRenderer::new);
         modelRegister.register(FAEntityTypes.PACHYCEPHALOSAURUS.get(), PachycephalosaurusRenderer::new);
         modelRegister.register(FAEntityTypes.COMPSOGNATHUS.get(), CompsognathusRenderer::new);
+        modelRegister.register(FAEntityTypes.ISOTELUS.get(), IsotelusRenderer::new);
         modelRegister.register(FAEntityTypes.ANKYLOSAURUS_EGG.get(), context -> EggRenderer.regular(context, "ankylosaurus"));
         modelRegister.register(FAEntityTypes.BARYONYX_EGG.get(), context -> EggRenderer.regular(context, "baryonyx"));
         modelRegister.register(FAEntityTypes.BRACHIOSAURUS_EGG.get(), context -> EggRenderer.regular(context, "brachiosaurus"));
@@ -194,9 +195,10 @@ public final class FossilsLegacyClient {
         menuScreenRegister.addMenuScreen(FAMenuTypes.ANALYZER.get(), AnalyzerScreen::new);
         menuScreenRegister.addMenuScreen(FAMenuTypes.ARCHAEOLOGY_WORKBENCH.get(), ArchaeologyWorkbenchScreen::new);
         menuScreenRegister.addMenuScreen(FAMenuTypes.CULTIVATOR.get(), CultivatorScreen::new);
+        menuScreenRegister.addMenuScreen(FAMenuTypes.DNA_CODER.get(), DNACoderScreen::new);
+        menuScreenRegister.addMenuScreen(FAMenuTypes.DNA_HYBRIDIZER.get(), DNAHybridizerScreen::new);
         menuScreenRegister.addMenuScreen(FAMenuTypes.FEEDER.get(), FeederScreen::new);
         menuScreenRegister.addMenuScreen(FAMenuTypes.GENE_MODIFICATION.get(), DNARecombinatorScreen::new);
-        menuScreenRegister.addMenuScreen(FAMenuTypes.DNA_CODER.get(), DNACoderScreen::new);
         menuScreenRegister.addMenuScreen(FAMenuTypes.PALAEONTOLOGY_TABLE.get(), PalaeontologyTableScreen::new);
         menuScreenRegister.addMenuScreen(FAMenuTypes.TIME_MACHINE.get(), TimeMachineScreen::new);
     }

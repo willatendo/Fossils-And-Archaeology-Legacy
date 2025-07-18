@@ -37,6 +37,7 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createSkull(FABlocks.SKULL_LANTERN_BLOCK.get(), this.modLocation("block/skull_lantern_front"));
         this.createAnalyzer(FABlocks.ANALYZER.get());
         this.createAnalyzer(FABlocks.DNA_CODER.get());
+        this.createDNAHybridizer(FABlocks.DNA_HYBRIDIZER.get());
         this.createCultivator(FABlocks.WHITE_CULTIVATOR.get(), "white");
         this.createCultivator(FABlocks.ORANGE_CULTIVATOR.get(), "orange");
         this.createCultivator(FABlocks.MAGENTA_CULTIVATOR.get(), "magenta");
@@ -180,6 +181,12 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
 
     private void createAnalyzer(Block analyzer) {
         this.createActiveType(analyzer, ModelTemplates.CUBE.create(analyzer, new TextureMapping().put(TextureSlot.DOWN, this.modLocation("block/analyzer_top")).put(TextureSlot.EAST, this.modLocation("block/analyzer_side")).put(TextureSlot.NORTH, this.modLocation("block/analyzer_front_off")).put(TextureSlot.PARTICLE, this.modLocation("block/analyzer_side")).put(TextureSlot.SOUTH, this.modLocation("block/analyzer_back")).put(TextureSlot.UP, this.modLocation("block/analyzer_top")).put(TextureSlot.WEST, this.modLocation("block/analyzer_side")), this.modelOutput), ModelTemplates.CUBE.create(ModelLocationUtils.getModelLocation(analyzer).withSuffix("_active"), new TextureMapping().put(TextureSlot.DOWN, this.modLocation("block/analyzer_top")).put(TextureSlot.EAST, this.modLocation("block/analyzer_side")).put(TextureSlot.NORTH, this.modLocation("block/analyzer_front_on")).put(TextureSlot.PARTICLE, this.modLocation("block/analyzer_side")).put(TextureSlot.SOUTH, this.modLocation("block/analyzer_back")).put(TextureSlot.UP, this.modLocation("block/analyzer_top")).put(TextureSlot.WEST, this.modLocation("block/analyzer_side")), this.modelOutput), FABlockStateProperties.ACTIVE, true);
+    }
+
+    private void createDNAHybridizer(Block dnaHybridizer) {
+        ResourceLocation inactive = FAModelTemplates.TEMPLATE_DNA_HYBRIDIZER.create(dnaHybridizer, new TextureMapping().put(TextureSlot.FRONT, this.modLocation("block/dna_hybridizer_front_off")), this.modelOutput);
+        ResourceLocation active = FAModelTemplates.TEMPLATE_DNA_HYBRIDIZER.createWithSuffix(dnaHybridizer, "_active", new TextureMapping().put(TextureSlot.FRONT, this.modLocation("block/dna_hybridizer_front_on")), this.modelOutput);
+        this.createActiveType(dnaHybridizer, inactive, active, DNAHybridizerBlock.ACTIVE, true);
     }
 
     private void createCultivator(Block cultivator, String color) {

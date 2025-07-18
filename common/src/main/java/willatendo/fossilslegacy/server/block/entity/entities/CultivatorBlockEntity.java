@@ -41,6 +41,7 @@ import willatendo.fossilslegacy.server.block.blocks.CultivatorBlock;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.fuel.FuelEntry;
 import willatendo.fossilslegacy.server.item.FADataComponents;
+import willatendo.fossilslegacy.server.item.items.DNAItem;
 import willatendo.fossilslegacy.server.menu.menus.CultivatorMenu;
 import willatendo.fossilslegacy.server.recipe.FARecipeTypes;
 import willatendo.fossilslegacy.server.recipe.recipes.CultivationRecipe;
@@ -248,7 +249,8 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
                 }
             } else {
                 ItemStack input = cultivatorBlockEntity.itemStacks.get(0);
-                if (cultivatorBlockEntity.level.getRandom().nextInt(100) <= 30) {
+                int chance = input.has(FADataComponents.PURITY.get()) ? input.get(FADataComponents.PURITY.get()) : 30;
+                if (cultivatorBlockEntity.level.getRandom().nextInt(100) <= chance) {
                     CultivatorBlock.shatter(serverLevel, blockPos, cultivatorBlockEntity);
                 }
             }

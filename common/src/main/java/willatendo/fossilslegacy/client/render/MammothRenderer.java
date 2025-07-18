@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceKey;
+import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRenderer;
 import willatendo.fossilslegacy.client.render.layer.MammothFurLayer;
 import willatendo.fossilslegacy.client.state.MammothRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Mammoth;
@@ -10,7 +11,7 @@ import willatendo.fossilslegacy.server.pattern.texture.Texture;
 
 import java.util.List;
 
-public class MammothRenderer extends DataDrivenModelMobRenderer<Mammoth, MammothRenderState> {
+public class MammothRenderer extends DataDrivenModelDinosaurRenderer<Mammoth, MammothRenderState> {
     public MammothRenderer(Context context) {
         super(context, 0.3F);
         this.addLayer(new MammothFurLayer(this));

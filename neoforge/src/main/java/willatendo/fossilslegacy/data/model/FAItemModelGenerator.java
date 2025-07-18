@@ -20,7 +20,9 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
 
     @Override
     public void run() {
+        this.generatedItem(FAItems.CENOZOIC_FOSSIL.get());
         this.generatedItem(FAItems.MESOZOIC_FOSSIL.get());
+        this.generatedItem(FAItems.PALAEOZOIC_FOSSIL.get());
         this.generatedItem(FAItems.PLANT_FOSSIL.get());
         this.generatedItem(FAItems.TRICERATOPS_DNA.get());
         this.generatedItem(FAItems.VELOCIRAPTOR_DNA.get());
@@ -55,6 +57,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.GINKGO_DNA.get());
         this.generatedItem(FAItems.ARAUCARIA_DNA.get());
         this.generatedItem(FAItems.STORAGE_DISC.get());
+        this.generatedItem(FAItems.BLANK_DNA.get());
         this.generatedItem(FAItems.CYCAD_CONE.get());
         this.generatedItem(FAItems.LEPIDODENDRON_CONE.get());
         this.generatedItem(FAItems.SIGILLARIA_SPORE.get());
@@ -320,6 +323,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.spawnEggItem(FAItems.DRYOSAURUS_SPAWN_EGG.get(), 0xE8E4C1, 0xB3C15C);
         this.spawnEggItem(FAItems.BARYONYX_SPAWN_EGG.get(), 0x3F4D71, 0xA79F7E);
         this.spawnEggItem(FAItems.DISTORTUS_REX_SPAWN_EGG.get(), 0x80643A, 0xC5875B);
+        this.spawnEggItem(FAItems.ISOTELUS_SPAWN_EGG.get(), 0x43403B, 0x24211C);
         this.generatedItem(FAItems.TAR_BUCKET.get());
         this.generatedItem(FAItems.LEPIDODENDRON_BOAT.get());
         this.generatedItem(FAItems.LEPIDODENDRON_CHEST_BOAT.get());

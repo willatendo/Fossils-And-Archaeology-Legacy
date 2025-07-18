@@ -39,6 +39,7 @@ public final class FACreativeModeTabs {
     public static final SimpleHolder<CreativeModeTab> FA_BLOCKS = CREATIVE_MODE_TABS.register("fa_blocks", () -> SimpleUtils.create(FAUtils.ID, "fa_blocks", () -> FABlocks.ANALYZER.get().asItem(), (itemDisplayParameters, output) -> {
         output.accept(FABlocks.ANALYZER.get());
         output.accept(FABlocks.DNA_CODER.get());
+        output.accept(FABlocks.DNA_HYBRIDIZER.get());
         output.accept(FABlocks.WHITE_CULTIVATOR.get());
         output.accept(FABlocks.ORANGE_CULTIVATOR.get());
         output.accept(FABlocks.MAGENTA_CULTIVATOR.get());
@@ -576,10 +577,13 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.SIGILLARIA_CHEST_BOAT.get());
     }).build());
     public static final SimpleHolder<CreativeModeTab> FA_OTHER_ITEMS = CREATIVE_MODE_TABS.register("fa_other_items", () -> SimpleUtils.create(FAUtils.ID, "fa_other_items", FAItems.MESOZOIC_FOSSIL::get, (itemDisplayParameters, output) -> {
+        output.accept(FAItems.CENOZOIC_FOSSIL.get());
         output.accept(FAItems.MESOZOIC_FOSSIL.get());
+        output.accept(FAItems.PALAEOZOIC_FOSSIL.get());
         output.accept(FAItems.PLANT_FOSSIL.get());
         output.accept(FAItems.FROZEN_MEAT.get());
         output.accept(FAItems.STORAGE_DISC.get());
+        output.accept(FAItems.BLANK_DNA.get());
         output.accept(FAItems.DINOPEDIA.get());
         output.accept(FAItems.RAW_CHICKEN_SOUP_BUCKET.get());
         output.accept(FAItems.COOKED_CHICKEN_SOUP_BUCKET.get());
@@ -629,6 +633,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.FUTABASAURUS_SPAWN_EGG.get());
         output.accept(FAItems.GALLIMIMUS_SPAWN_EGG.get());
         output.accept(FAItems.ICHTHYOSAURUS_SPAWN_EGG.get());
+        output.accept(FAItems.ISOTELUS_SPAWN_EGG.get());
         output.accept(FAItems.MAMMOTH_SPAWN_EGG.get());
         output.accept(FAItems.MOA_SPAWN_EGG.get());
         output.accept(FAItems.MOSASAURUS_SPAWN_EGG.get());

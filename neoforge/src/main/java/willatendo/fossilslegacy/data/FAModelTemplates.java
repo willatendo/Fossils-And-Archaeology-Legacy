@@ -13,6 +13,7 @@ public final class FAModelTemplates {
     public static final ExtendedModelTemplate TEMPLATE_CULTIVATOR = FAModelTemplates.create("template_cultivator", TextureSlot.SIDE, TextureSlot.TOP).renderType("translucent").build();
     public static final ExtendedModelTemplate TEMPLATE_CULTIVATOR_ACTIVE = FAModelTemplates.create("template_cultivator_active", TextureSlot.SIDE, TextureSlot.TOP).renderType("translucent").build();
     public static final ExtendedModelTemplate TEMPLATE_SHATTERED_CULTIVATOR = FAModelTemplates.create("template_shattered_cultivator", TextureSlot.SIDE).renderType("translucent").build();
+    public static final ExtendedModelTemplate TEMPLATE_DNA_HYBRIDIZER = FAModelTemplates.create("template_dna_hybridizer", TextureSlot.FRONT).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_SMALL_CAGE = FAModelTemplates.create("template_small_cage").renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_SMALL_CAGE_OPEN = FAModelTemplates.create("template_small_cage_open").renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_MEDIUM_CAGE_BOTTOM = FAModelTemplates.create("template_medium_cage_bottom").renderType("cutout").build();

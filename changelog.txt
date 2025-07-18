@@ -168,6 +168,9 @@
 - Added Flare
 - Added Flare Body
 - Added DNA Coder
+- Added DNA Hybridizer
+- Added Cenozoic Fossil
+- Added Palaeozoic Fossil
 27/2/2024 1.4.9
 - Fixed Tooth Dagger Not Shearing All Shearables
 - Fixed Mayan Vase Not Wobbling

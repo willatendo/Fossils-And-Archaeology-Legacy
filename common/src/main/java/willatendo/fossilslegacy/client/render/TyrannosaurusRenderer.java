@@ -4,6 +4,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRenderer;
 import willatendo.fossilslegacy.client.state.TyrannosaurusRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Tyrannosaurus;
 import willatendo.fossilslegacy.server.model_type.ModelType;
@@ -14,7 +15,7 @@ import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 import java.util.List;
 import java.util.Optional;
 
-public class TyrannosaurusRenderer extends DataDrivenModelMobRenderer<Tyrannosaurus, TyrannosaurusRenderState> {
+public class TyrannosaurusRenderer extends DataDrivenModelDinosaurRenderer<Tyrannosaurus, TyrannosaurusRenderState> {
     public TyrannosaurusRenderer(Context context) {
         super(context, 0.3F);
     }

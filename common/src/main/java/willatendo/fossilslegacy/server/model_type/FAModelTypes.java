@@ -23,6 +23,7 @@ public final class FAModelTypes {
     public static final ResourceKey<ModelType> FUTABASAURUS = FAModelTypes.create("futabasaurus");
     public static final ResourceKey<ModelType> GALLIMIMUS = FAModelTypes.create("gallimimus");
     public static final ResourceKey<ModelType> ICHTHYOSAURUS = FAModelTypes.create("ichthyosaurus");
+    public static final ResourceKey<ModelType> ISOTELUS = FAModelTypes.create("isotelus");
     public static final ResourceKey<ModelType> MAMMOTH = FAModelTypes.create("mammoth");
     public static final ResourceKey<ModelType> MOA = FAModelTypes.create("moa");
     public static final ResourceKey<ModelType> MOSASAURUS = FAModelTypes.create("mosasaurus");
@@ -75,6 +76,7 @@ public final class FAModelTypes {
         FAModelTypes.register(bootstrapContext, FUTABASAURUS, ModelType.build(Component.translatable("model_type.fossilslegacy.futabasaurus"), 0xB92200, 0.5F, 0.25F, FAUtils.resource("futabasaurus"), FAPatternTags.FUTABASAURUS_2024_SKINS, FAPatternTags.FUTABASAURUS_2024_PATTERNS, 2.0F, 0.75F, 0.25F, 1.5F, 1.5F, 0.3F, 0.15F, 0.15F).build());
         FAModelTypes.register(bootstrapContext, GALLIMIMUS, ModelType.build(Component.translatable("model_type.fossilslegacy.gallimimus"), 0x774913, 1.75F, 1.0F, FAUtils.resource("gallimimus"), FAPatternTags.GALLIMIMUS_2024_SKINS, FAPatternTags.GALLIMIMUS_2024_PATTERNS, 0.7F, 0.7F, 0.25F, 0.75F, 0.75F, 0.2F, 0.25F, 0.1F).build());
         FAModelTypes.register(bootstrapContext, ICHTHYOSAURUS, ModelType.build(Component.translatable("model_type.fossilslegacy.ichthyosaurus"), 0x383C4F, 3.0F, -1.0F, FAUtils.resource("ichthyosaurus"), FAPatternTags.ICHTHYOSAURUS_2025_SKINS, FAPatternTags.ICHTHYOSAURUS_2025_PATTERNS, 0.7F, 0.5F, 0.25F, 0.75F, 0.75F, 0.1F, 0.35F, 0.1F).build());
+        FAModelTypes.register(bootstrapContext, ISOTELUS, ModelType.build(Component.translatable("model_type.fossilslegacy.isotelus"), 0x43403B, 3.0F, -1.0F, FAUtils.resource("isotelus"), FAPatternTags.ISOTELUS_2025_SKINS, FAPatternTags.ISOTELUS_2025_PATTERNS, 0.5F, 0.5F, 0.0F, 1.0F, 1.0F, 0.0F, 0.25F, 0.0F).build());
         FAModelTypes.register(bootstrapContext, MAMMOTH, ModelType.build(Component.translatable("model_type.fossilslegacy.mammoth"), 0x3D2700, 1.0F, 1.0F, FAUtils.resource("mammoth"), FAPatternTags.MAMMOTH_2024_SKINS, FAPatternTags.MAMMOTH_2024_PATTERNS, 0.7F, 0.7F, 0.5F, 1.0F, 1.0F, 0.4F, 0.75F, 0.15F).build());
         FAModelTypes.register(bootstrapContext, MOSASAURUS, ModelType.build(Component.translatable("model_type.fossilslegacy.mosasaurus"), 0x0D7346, 0.9F, 0.25F, FAUtils.resource("mosasaurus"), FAPatternTags.MOSASAURUS_2024_SKINS, FAPatternTags.MOSASAURUS_2024_PATTERNS, 0.5F, 0.5F, 0.1F, 0.5F, 0.5F, 0.5125F, 0.35F, 0.3F).build());
         FAModelTypes.register(bootstrapContext, MOA, ModelType.build(Component.translatable("model_type.fossilslegacy.moa"), 0x352A17, 2.0F, 1.0F, FAUtils.resource("moa"), FAPatternTags.MOA_2024_SKINS, FAPatternTags.MOA_2024_PATTERNS, 0.5F, 1.5F, 0.1F, 0.5F, 0.5F, 0.25F, 0.15F, 0.1F).build());

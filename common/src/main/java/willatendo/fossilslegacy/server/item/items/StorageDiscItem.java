@@ -62,6 +62,9 @@ public class StorageDiscItem extends Item {
             if (dna.has(FADataComponents.PURITY.get())) {
                 storageDisc.set(FADataComponents.PURITY.get(), dna.get(FADataComponents.PURITY.get()));
             }
+            if (dna.has(FADataComponents.GENETIC_CODE.get())) {
+                storageDisc.set(FADataComponents.GENETIC_CODE.get(), dna.get(FADataComponents.GENETIC_CODE.get()));
+            }
         }
     }
 
@@ -77,6 +80,9 @@ public class StorageDiscItem extends Item {
             }
             if (storageDisc.has(FADataComponents.PURITY.get())) {
                 dna.set(FADataComponents.PURITY.get(), storageDisc.get(FADataComponents.PURITY.get()));
+            }
+            if (storageDisc.has(FADataComponents.GENETIC_CODE.get())) {
+                dna.set(FADataComponents.GENETIC_CODE.get(), storageDisc.get(FADataComponents.GENETIC_CODE.get()));
             }
             return dna;
         }

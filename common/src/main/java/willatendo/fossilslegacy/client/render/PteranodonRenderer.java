@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.client.render;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRenderer;
 import willatendo.fossilslegacy.client.state.PteranodonRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Pteranodon;
 import willatendo.fossilslegacy.server.model_type.ModelType;
@@ -12,7 +13,7 @@ import willatendo.fossilslegacy.server.pattern.texture.Texture;
 import java.util.List;
 import java.util.Optional;
 
-public class PteranodonRenderer extends DataDrivenModelMobRenderer<Pteranodon, PteranodonRenderState> {
+public class PteranodonRenderer extends DataDrivenModelDinosaurRenderer<Pteranodon, PteranodonRenderState> {
     public PteranodonRenderer(Context context) {
         super(context, 0.5F);
     }

@@ -1,4 +1,4 @@
-// 1.21.4	2025-07-17T00:59:44.4411678	F/A Recipes
+// 1.21.4	2025-07-17T15:50:18.2714037	F/A Recipes
 31e2e91a313fe5f464aafc3b2e88e04fad038de0 data/fossilslegacy/advancement/recipes/building_blocks/analyzer.json
 1338707fdaed8d1fba4efb30f42c8d461e296aab data/fossilslegacy/advancement/recipes/building_blocks/araucaria_planks.json
 5db4e734c77296e26a3f8f52f87e7bd6555aac60 data/fossilslegacy/advancement/recipes/building_blocks/araucaria_slab.json
@@ -221,6 +221,7 @@ dde0d74f94a001b8a89d869d0b39038e9778a66a data/fossilslegacy/advancement/recipes/
 470ec318c3edc72c6a1db3ac5a95c963cfd876b9 data/fossilslegacy/advancement/recipes/misc/bamboo_outputs.json
 017bacd2fd3e14a5e542d95c5d3101218d06318a data/fossilslegacy/advancement/recipes/misc/baryonyx_egg.json
 565c8607a964f8054e1dbbe9b0bb5be9f521e18a data/fossilslegacy/advancement/recipes/misc/beef_outputs.json
+867ed8375059a79e0cb9f9d3d8a9ab142b1b463a data/fossilslegacy/advancement/recipes/misc/blank_dna.json
 98a69526adf03a80312e187847ddf60ab730cc9c data/fossilslegacy/advancement/recipes/misc/bone_outputs.json
 4b1fc33827d86cd5395556aa77e8038cd34b1853 data/fossilslegacy/advancement/recipes/misc/brachiosaurus_egg.json
 a852e662a7cc9d1d46ebf7620ca64d45e5e49177 data/fossilslegacy/advancement/recipes/misc/calamites_spore.json
@@ -448,6 +449,7 @@ f15d5cdc47318d51f7cbacb3a02516baa4f6a9bb data/fossilslegacy/recipe/bamboo_output
 d0ee73e82a0a82975fbf640d39cbc943ba54d5cb data/fossilslegacy/recipe/black_cultivator.json
 750842bad8ea5df311e2370df5e015679e779325 data/fossilslegacy/recipe/black_cultivator_from_dyed_glass.json
 56868276fb0acb44b1fff05ff015d52dd65f1942 data/fossilslegacy/recipe/black_decoration_plaque.json
+523ced26dc9a23e6a7dfb849afd69a2c6e389b99 data/fossilslegacy/recipe/blank_dna.json
 8a8503efd52ec807bb829aa66fc34e21d6ab8a2c data/fossilslegacy/recipe/blue_cultivator.json
 c0a6232b13d3f0cef7b01421c971a39a096b7ecb data/fossilslegacy/recipe/blue_cultivator_from_dyed_glass.json
 e15c3b40749ddb33bbfc4a55c7f9ec7ab6e25933 data/fossilslegacy/recipe/blue_decoration_plaque.json

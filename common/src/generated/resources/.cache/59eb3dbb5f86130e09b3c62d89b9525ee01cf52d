@@ -1,4 +1,4 @@
-// 1.21.4	2025-07-17T01:05:52.4037664	Loot Tables
+// 1.21.4	2025-07-18T04:45:05.3835287	Loot Tables
 6b196aa6cdadbe968410835a209fed7ad992066f data/fossilslegacy/loot_table/archaeology/inca_loot.json
 5fcf811a958fcf132678d4423a7472c475c2b8ca data/fossilslegacy/loot_table/blocks/analyzer.json
 5cb02374129bf20a2da69b1d928ab94778ec5ea0 data/fossilslegacy/loot_table/blocks/araucaria_button.json
@@ -67,6 +67,7 @@ e8e937009dc6880a1a98d047ae2f135f1847991a data/fossilslegacy/loot_table/blocks/cy
 9bf52b7e2bdd8116801ca211f1a90c054e6f0a32 data/fossilslegacy/loot_table/blocks/cycad_log.json
 070a2f2f947407c6bdd4e655f75edfcd1d5adc05 data/fossilslegacy/loot_table/blocks/deepslate_fossil_ore.json
 559b083f4953dd3e27c01096919688a6badec7cf data/fossilslegacy/loot_table/blocks/dna_coder.json
+243132b3ab9aa668df769aa3e50c8940c5ffe4e0 data/fossilslegacy/loot_table/blocks/dna_hybridizer.json
 dcf95c66dd11f437aafab0d5b2d252a6f766de37 data/fossilslegacy/loot_table/blocks/dna_recombinator.json
 6da1931da9a56e5e2575fa925a70356f055b9406 data/fossilslegacy/loot_table/blocks/drum.json
 fc5e8b4277b1b2e38b921f4e8eab51edc3163465 data/fossilslegacy/loot_table/blocks/exposed_copper_llama_statue.json
@@ -234,6 +235,7 @@ ff1349606e67614635fe317e806cb90361ba559e data/fossilslegacy/loot_table/entities/
 8006136e260a92561c0e54e6906c321698c8e55e data/fossilslegacy/loot_table/entities/gallimimus_egg.json
 4a623c885f80a31e392e7f23b6e12f8201dd6998 data/fossilslegacy/loot_table/entities/ichthyosaurus.json
 47a82e810357683fec7d28b6c62bce600336adb7 data/fossilslegacy/loot_table/entities/ichthyosaurus_egg.json
+fccb252f83752c8bde128a1a003715c03f6604db data/fossilslegacy/loot_table/entities/isotelus.json
 dd94adc1b0d1ca14003b08d07bf445df9e564962 data/fossilslegacy/loot_table/entities/mammoth.json
 998b4ba550667d9bfe04c9d821584d487463f439 data/fossilslegacy/loot_table/entities/moa.json
 a2ceaa20d4303304854ab6da1257d764a62503a0 data/fossilslegacy/loot_table/entities/mosasaurus.json

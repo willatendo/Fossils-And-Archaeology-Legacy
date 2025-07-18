@@ -33,7 +33,7 @@ public class DNACoderMenu extends AbstractContainerMenu {
         this.addSlot(new Slot(dnaCoderBlockEntity, 0, 56, 17) {
             @Override
             public boolean mayPlace(ItemStack itemStack) {
-                return itemStack.getItem() instanceof DNAItem;
+                return itemStack.getItem() instanceof DNAItem || itemStack.is(FAItems.BLANK_DNA.get());
             }
 
             @Override

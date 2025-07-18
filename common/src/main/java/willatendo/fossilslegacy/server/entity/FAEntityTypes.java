@@ -14,6 +14,8 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.*;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.guadalupian.Dimetrodon;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.hybrid.DistortusRex;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.jurassic.*;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.ordovician.Isotelus;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.ordovician.IsotelusLarva;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.*;
 import willatendo.fossilslegacy.server.entity.entities.pregnant.*;
 import willatendo.fossilslegacy.server.entity.entities.projectile.Dart;
@@ -60,6 +62,8 @@ public final class FAEntityTypes {
     public static final SimpleHolder<EntityType<Elasmotherium>> ELASMOTHERIUM = ENTITY_TYPES.register("elasmotherium", FAEntityTypes.simple(Elasmotherium::new, MobCategory.CREATURE, 1.0F, 1.0F));
     public static final SimpleHolder<EntityType<Dryosaurus>> DRYOSAURUS = ENTITY_TYPES.register("dryosaurus", FAEntityTypes.simple(Dryosaurus::new, MobCategory.CREATURE, 0.5F, 0.5F));
     public static final SimpleHolder<EntityType<Baryonyx>> BARYONYX = ENTITY_TYPES.register("baryonyx", FAEntityTypes.simple(Baryonyx::new, MobCategory.CREATURE, 0.5F, 0.5F));
+    public static final SimpleHolder<EntityType<Isotelus>> ISOTELUS = ENTITY_TYPES.register("isotelus", FAEntityTypes.simple(Isotelus::new, MobCategory.WATER_AMBIENT, 0.5F, 0.5F));
+    public static final SimpleHolder<EntityType<IsotelusLarva>> ISOTELUS_LARVA = ENTITY_TYPES.register("isotelus_larva", FAEntityTypes.simple(IsotelusLarva::new, MobCategory.WATER_AMBIENT, 0.15F, 0.15F));
 
     public static final SimpleHolder<EntityType<Fossil>> FOSSIL = ENTITY_TYPES.register("fossil", FAEntityTypes.simple(Fossil::new, MobCategory.MISC, 0.5F, 0.5F).noLootTable());
 

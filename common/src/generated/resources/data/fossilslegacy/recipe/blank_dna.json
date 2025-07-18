@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "#fossilslegacy:dna",
+    "#minecraft:meat",
+    "#minecraft:meat",
+    "minecraft:rotten_flesh"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:blank_dna"
+  }
+}

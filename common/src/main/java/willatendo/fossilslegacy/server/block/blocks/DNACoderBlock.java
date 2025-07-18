@@ -24,7 +24,6 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
-import willatendo.fossilslegacy.server.block.entity.entities.AnalyzerBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.entities.DNACoderBlockEntity;
 import willatendo.fossilslegacy.server.block.properties.FABlockStateProperties;
 import willatendo.fossilslegacy.server.stats.FAStats;
@@ -36,7 +35,7 @@ public class DNACoderBlock extends Block implements EntityBlock {
 
     public DNACoderBlock(Properties properties) {
         super(properties);
-        this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH).setValue(ACTIVE, false);
+        this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH).setValue(ACTIVE, false));
     }
 
     @Override
@@ -80,7 +79,7 @@ public class DNACoderBlock extends Block implements EntityBlock {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
             if (blockEntity instanceof DNACoderBlockEntity dnaCoderBlockEntity && player instanceof ServerPlayer serverPlayer) {
                 SimpleUtils.openContainer(dnaCoderBlockEntity, blockPos, serverPlayer);
-                player.awardStat(FAStats.INTERACT_WITH_ANALYZER);
+                player.awardStat(FAStats.INTERACT_WITH_DNA_CODER);
             }
             return InteractionResult.CONSUME;
         }

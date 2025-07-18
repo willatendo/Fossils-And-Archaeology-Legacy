@@ -1,0 +1,121 @@
+package willatendo.fossilslegacy.server.entity.entities.dinosaur.ordovician;
+
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.entity.EntitySpawnReason;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.animal.WaterAnimal;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+import org.jetbrains.annotations.Nullable;
+import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
+import willatendo.fossilslegacy.server.entity.util.interfaces.DataDrivenCosmetics;
+import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
+import willatendo.fossilslegacy.server.model_type.ModelType;
+import willatendo.fossilslegacy.server.pattern.FAPatterns;
+import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
+import willatendo.fossilslegacy.server.registry.FARegistries;
+import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
+import willatendo.fossilslegacy.server.tags.FAPatternTags;
+
+public class Isotelus extends WaterAnimal implements DinopediaInformation, DataDrivenCosmetics {
+    private static final EntityDataAccessor<Holder<ModelType>> MODEL_TYPE = SynchedEntityData.defineId(Isotelus.class, FAEntityDataSerializers.MODEL_TYPES.get());
+    private static final EntityDataAccessor<Holder<Pattern>> SKIN = SynchedEntityData.defineId(Isotelus.class, FAEntityDataSerializers.PATTERN.get());
+    private static final EntityDataAccessor<Holder<Pattern>> PATTERN = SynchedEntityData.defineId(Isotelus.class, FAEntityDataSerializers.PATTERN.get());
+
+    public Isotelus(EntityType<? extends Isotelus> entityType, Level level) {
+        super(entityType, level);
+    }
+
+    public static AttributeSupplier isotelusAttributes() {
+        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 5.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.ARMOR, 2.0D).build();
+    }
+
+    @Nullable
+    @Override
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, EntitySpawnReason entitySpawnReason, SpawnGroupData spawnGroupData) {
+        HolderLookup<ModelType> modelTypes = serverLevelAccessor.holderLookup(FARegistries.MODEL_TYPES);
+        Holder<ModelType> modelType = modelTypes.getOrThrow(FAModelTypeTags.ISOTELUS).getRandomElement(this.getRandom()).get();
+        this.setModelType(modelType);
+        HolderLookup<Pattern> patterns = serverLevelAccessor.holderLookup(FARegistries.PATTERN);
+        Holder<Pattern> skin = patterns.getOrThrow(modelType.value().skins()).getRandomElement(this.getRandom()).get();
+        this.setSkin(skin);
+        if (skin.is(FAPatternTags.HAS_PATTERNS) && serverLevelAccessor.getRandom().nextInt(4) == 1) {
+            Holder<Pattern> pattern = patterns.getOrThrow(modelType.value().patterns()).getRandomElement(this.getRandom()).get();
+            this.setPattern(pattern);
+        } else {
+            this.setPattern(patterns.getOrThrow(FAPatterns.BLANK));
+        }
+        return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, entitySpawnReason, spawnGroupData);
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(MODEL_TYPE, this.registryAccess().lookupOrThrow(FARegistries.MODEL_TYPES).getAny().orElseThrow());
+        builder.define(SKIN, this.registryAccess().lookupOrThrow(FARegistries.PATTERN).getAny().orElseThrow());
+        builder.define(PATTERN, this.registryAccess().lookupOrThrow(FARegistries.PATTERN).getAny().orElse(this.level().holderLookup(FARegistries.PATTERN).getOrThrow(FAPatterns.BLANK)));
+    }
+
+    @Override
+    public Holder<ModelType> getModelType() {
+        return this.entityData.get(MODEL_TYPE);
+    }
+
+    @Override
+    public void setModelType(Holder<ModelType> modelType) {
+        this.entityData.set(MODEL_TYPE, modelType);
+    }
+
+    @Override
+    public Holder<Pattern> getSkin() {
+        return this.entityData.get(SKIN);
+    }
+
+    @Override
+    public void setSkin(Holder<Pattern> pattern) {
+        this.entityData.set(SKIN, pattern);
+    }
+
+    @Override
+    public Holder<Pattern> getPattern() {
+        return this.entityData.get(PATTERN);
+    }
+
+    @Override
+    public void setPattern(Holder<Pattern> pattern) {
+        this.entityData.set(PATTERN, pattern);
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag compoundTag) {
+        super.addAdditionalSaveData(compoundTag);
+        this.addCosmeticsData(compoundTag, this.registryAccess());
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag compoundTag) {
+        super.readAdditionalSaveData(compoundTag);
+        this.readCosmeticsData(compoundTag, this.registryAccess());
+    }
+
+    @Override
+    public CompoundTag saveWithoutId(CompoundTag compoundTag) {
+        this.addCosmeticsData(compoundTag, this.registryAccess());
+        return super.saveWithoutId(compoundTag);
+    }
+
+    @Override
+    public boolean save(CompoundTag compoundTag) {
+        this.addCosmeticsData(compoundTag, this.registryAccess());
+        return super.save(compoundTag);
+    }
+}

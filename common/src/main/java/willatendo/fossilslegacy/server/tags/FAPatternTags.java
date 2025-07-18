@@ -52,6 +52,8 @@ public class FAPatternTags {
     public static final TagKey<Pattern> GALLIMIMUS_2024_PATTERNS = PATTERN_TAGS.register("patterns/gallimimus_2024");
     public static final TagKey<Pattern> ICHTHYOSAURUS_2025_SKINS = PATTERN_TAGS.register("skins/ichthyosaurus_2025");
     public static final TagKey<Pattern> ICHTHYOSAURUS_2025_PATTERNS = PATTERN_TAGS.register("patterns/ichthyosaurus_2025");
+    public static final TagKey<Pattern> ISOTELUS_2025_SKINS = PATTERN_TAGS.register("skins/isotelus_2025");
+    public static final TagKey<Pattern> ISOTELUS_2025_PATTERNS = PATTERN_TAGS.register("patterns/isotelus_2025");
     public static final TagKey<Pattern> MAMMOTH_2024_SKINS = PATTERN_TAGS.register("skins/mammoth_2024");
     public static final TagKey<Pattern> MAMMOTH_2024_PATTERNS = PATTERN_TAGS.register("patterns/mammoth_2024");
     public static final TagKey<Pattern> MAMMOTH_2011_SKINS = PATTERN_TAGS.register("skins/mammoth_2011");

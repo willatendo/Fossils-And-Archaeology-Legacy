@@ -1,0 +1,7 @@
+{
+  "parent": "fossilslegacy:block/template_dna_hybridizer",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "front": "fossilslegacy:block/dna_hybridizer_front_on"
+  }
+}

@@ -1,4 +1,4 @@
-package willatendo.fossilslegacy.client.render;
+package willatendo.fossilslegacy.client.render.json;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.EntityModel;
@@ -26,10 +26,10 @@ import willatendo.fossilslegacy.server.registry.FARegistries;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class DataDrivenModelMobRenderer<T extends Dinosaur & DataDrivenCosmetics, S extends DinosaurRenderState> extends MobRenderer<T, S, EntityModel<S>> {
+public abstract class DataDrivenModelDinosaurRenderer<T extends Dinosaur & DataDrivenCosmetics, S extends DinosaurRenderState> extends MobRenderer<T, S, EntityModel<S>> {
     private ResourceLocation modelId;
 
-    public DataDrivenModelMobRenderer(EntityRendererProvider.Context context, float shadowSize) {
+    public DataDrivenModelDinosaurRenderer(EntityRendererProvider.Context context, float shadowSize) {
         super(context, null, shadowSize);
         this.addLayer(new PatternLayer<>(this));
     }

@@ -11,7 +11,9 @@ import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FAFuelEntries {
+    public static final ResourceKey<FuelEntry> CENOZOIC_FOSSIL = FAFuelEntries.create("cenozoic_fossil");
     public static final ResourceKey<FuelEntry> MESOZOIC_FOSSIL = FAFuelEntries.create("mesozoic_fossil");
+    public static final ResourceKey<FuelEntry> PALAEOZOIC_FOSSIL = FAFuelEntries.create("palaeozoic_fossil");
     public static final ResourceKey<FuelEntry> PLANT_FOSSIL = FAFuelEntries.create("plant_fossil");
     public static final ResourceKey<FuelEntry> RAW_CHICKEN_SOUP_BUCKET = FAFuelEntries.create("raw_chicken_soup_bucket");
     public static final ResourceKey<FuelEntry> RAW_BERRY_MEDLEY_BUCKET = FAFuelEntries.create("raw_berry_medley_bucket");
@@ -91,7 +93,9 @@ public final class FAFuelEntries {
     }
 
     public static void bootstrap(BootstrapContext<FuelEntry> bootstrapContext) {
+        FAFuelEntries.register(bootstrapContext, CENOZOIC_FOSSIL, FAItems.CENOZOIC_FOSSIL.get(), 300);
         FAFuelEntries.register(bootstrapContext, MESOZOIC_FOSSIL, FAItems.MESOZOIC_FOSSIL.get(), 300);
+        FAFuelEntries.register(bootstrapContext, PALAEOZOIC_FOSSIL, FAItems.PALAEOZOIC_FOSSIL.get(), 300);
         FAFuelEntries.register(bootstrapContext, PLANT_FOSSIL, FAItems.PLANT_FOSSIL.get(), 300);
         FAFuelEntries.register(bootstrapContext, RAW_CHICKEN_SOUP_BUCKET, FAItems.RAW_CHICKEN_SOUP_BUCKET.get(), 1000);
         FAFuelEntries.register(bootstrapContext, RAW_BERRY_MEDLEY_BUCKET, FAItems.RAW_BERRY_MEDLEY_BUCKET.get(), 1000);

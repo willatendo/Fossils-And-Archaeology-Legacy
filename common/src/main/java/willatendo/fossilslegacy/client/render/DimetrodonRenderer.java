@@ -4,6 +4,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRenderer;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.guadalupian.Dimetrodon;
 import willatendo.fossilslegacy.server.pattern.FATextures;
@@ -13,7 +14,7 @@ import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 import java.util.List;
 import java.util.Optional;
 
-public class DimetrodonRenderer extends DataDrivenModelMobRenderer<Dimetrodon, DinosaurRenderState> {
+public class DimetrodonRenderer extends DataDrivenModelDinosaurRenderer<Dimetrodon, DinosaurRenderState> {
     public DimetrodonRenderer(EntityRendererProvider.Context context) {
         super(context, 0.3F);
     }

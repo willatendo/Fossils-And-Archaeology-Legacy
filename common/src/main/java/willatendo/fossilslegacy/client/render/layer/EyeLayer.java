@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import willatendo.fossilslegacy.client.render.DataDrivenModelMobRenderer;
+import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRenderer;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.pattern.FATextures;
@@ -17,19 +17,19 @@ import willatendo.fossilslegacy.server.pattern.texture.Texture;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public class EyeLayer<T extends Dinosaur, S extends DinosaurRenderState> extends RenderLayer<S, EntityModel<S>> {
-    private final DataDrivenModelMobRenderer<T, S> dataDrivenModelMobRenderer;
+    private final DataDrivenModelDinosaurRenderer<T, S> dataDrivenModelDinosaurRenderer;
     private final boolean hasAggressiveEye;
     private final boolean hasBabyEye;
 
-    public EyeLayer(DataDrivenModelMobRenderer<T, S> dataDrivenModelMobRenderer, boolean hasAggressiveEye, boolean hasBabyEye) {
-        super(dataDrivenModelMobRenderer);
-        this.dataDrivenModelMobRenderer = dataDrivenModelMobRenderer;
+    public EyeLayer(DataDrivenModelDinosaurRenderer<T, S> dataDrivenModelDinosaurRenderer, boolean hasAggressiveEye, boolean hasBabyEye) {
+        super(dataDrivenModelDinosaurRenderer);
+        this.dataDrivenModelDinosaurRenderer = dataDrivenModelDinosaurRenderer;
         this.hasAggressiveEye = hasAggressiveEye;
         this.hasBabyEye = hasBabyEye;
     }
 
-    public EyeLayer(DataDrivenModelMobRenderer<T, S> dataDrivenModelMobRenderer, boolean hasAggressiveEye) {
-        this(dataDrivenModelMobRenderer, hasAggressiveEye, true);
+    public EyeLayer(DataDrivenModelDinosaurRenderer<T, S> dataDrivenModelDinosaurRenderer, boolean hasAggressiveEye) {
+        this(dataDrivenModelDinosaurRenderer, hasAggressiveEye, true);
     }
 
 
@@ -46,7 +46,7 @@ public class EyeLayer<T extends Dinosaur, S extends DinosaurRenderState> extends
             eyeTexture = FATextures.ADULT_EYE;
         }
 
-        ResourceLocation texture = FAUtils.resource("textures/entity/" + dinosaurRenderState.textureRegistry.getValue(eyeTexture).getTextureName(dinosaurRenderState.textureRegistry, this.dataDrivenModelMobRenderer.baseTextureName(), this.hasBabyEye) + ".png");
+        ResourceLocation texture = FAUtils.resource("textures/entity/" + dinosaurRenderState.textureRegistry.getValue(eyeTexture).getTextureName(dinosaurRenderState.textureRegistry, this.dataDrivenModelDinosaurRenderer.baseTextureName(), this.hasBabyEye) + ".png");
         VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entityCutoutNoCull(texture));
         poseStack.pushPose();
         int overlay = LivingEntityRenderer.getOverlayCoords(dinosaurRenderState, 0.0F);

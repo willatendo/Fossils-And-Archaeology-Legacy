@@ -91,7 +91,7 @@ public enum DNARecombinatorMode implements StringRepresentable {
             slotLayout.addSlot(new Slot(inventory, column, 8 + column * 18, 142));
         }
     }, 5, 6, 7, 8, 9, 10),
-    HYBRIDIZATION("hybridization", FAUtils.resource("textures/gui/container/dna_recombinator_hybridization.png"), new ItemStack(FAItems.LEGACY_GENETIC_CODE.get()), (slotLayout, menu, inventory, player, DNARecombinatorBlockEntity) -> {
+    HYBRIDIZATION("hybridization", FAUtils.resource("textures/gui/container/dna_hybridizer.png"), new ItemStack(FAItems.LEGACY_GENETIC_CODE.get()), (slotLayout, menu, inventory, player, DNARecombinatorBlockEntity) -> {
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 9; column++) {
                 slotLayout.addSlot(new Slot(inventory, column + row * 9 + 9, 8 + column * 18, 84 + row * 18));

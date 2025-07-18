@@ -1,6 +1,8 @@
 {
   "values": [
+    "fossilslegacy:cenozoic_fossil",
     "fossilslegacy:mesozoic_fossil",
+    "fossilslegacy:palaeozoic_fossil",
     "fossilslegacy:plant_fossil"
   ]
 }

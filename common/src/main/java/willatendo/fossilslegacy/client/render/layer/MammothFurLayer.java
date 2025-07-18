@@ -9,7 +9,7 @@ import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.item.DyeColor;
-import willatendo.fossilslegacy.client.render.DataDrivenModelMobRenderer;
+import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRenderer;
 import willatendo.fossilslegacy.client.state.MammothRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Mammoth;
 import willatendo.fossilslegacy.server.model_type.ModelType;
@@ -17,40 +17,40 @@ import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 
 public class MammothFurLayer extends RenderLayer<MammothRenderState, EntityModel<MammothRenderState>> {
     private EntityModel<MammothRenderState> model;
-    private DataDrivenModelMobRenderer<Mammoth, MammothRenderState> dataDrivenModelMobRenderer;
+    private DataDrivenModelDinosaurRenderer<Mammoth, MammothRenderState> dataDrivenModelDinosaurRenderer;
     private ResourceLocation modelId;
 
-    public MammothFurLayer(DataDrivenModelMobRenderer<Mammoth, MammothRenderState> dataDrivenModelMobRenderer) {
-        super(dataDrivenModelMobRenderer);
-        this.dataDrivenModelMobRenderer = dataDrivenModelMobRenderer;
+    public MammothFurLayer(DataDrivenModelDinosaurRenderer<Mammoth, MammothRenderState> dataDrivenModelDinosaurRenderer) {
+        super(dataDrivenModelDinosaurRenderer);
+        this.dataDrivenModelDinosaurRenderer = dataDrivenModelDinosaurRenderer;
     }
 
     private void setModel(ResourceLocation model) {
         if (this.modelId != model) {
             this.modelId = model;
-            this.model = this.dataDrivenModelMobRenderer.getModel(model);
+            this.model = this.dataDrivenModelDinosaurRenderer.getModel(model);
         }
     }
 
     @Override
     public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks, MammothRenderState mammothRenderState, float packedLight, float packedOverlay) {
         ModelType modelType = mammothRenderState.modelType.value();
-        if (this.dataDrivenModelMobRenderer.getAdditionalModel(mammothRenderState, modelType).isPresent()) {
-            this.setModel(this.dataDrivenModelMobRenderer.getAdditionalModel(mammothRenderState, modelType).get());
+        if (this.dataDrivenModelDinosaurRenderer.getAdditionalModel(mammothRenderState, modelType).isPresent()) {
+            this.setModel(this.dataDrivenModelDinosaurRenderer.getAdditionalModel(mammothRenderState, modelType).get());
         } else {
             this.setModel(modelType.models().model());
         }
         Pattern skin = mammothRenderState.skin.value();
-        if (this.dataDrivenModelMobRenderer.hasFurTexture(mammothRenderState.textureRegistry, skin)) {
-            ResourceLocation texture = this.dataDrivenModelMobRenderer.getFurTexture(mammothRenderState.textureRegistry, skin);
+        if (this.dataDrivenModelDinosaurRenderer.hasFurTexture(mammothRenderState.textureRegistry, skin)) {
+            ResourceLocation texture = this.dataDrivenModelDinosaurRenderer.getFurTexture(mammothRenderState.textureRegistry, skin);
             if (mammothRenderState.isSheared) {
-                if (this.dataDrivenModelMobRenderer.hasShearedTexture(mammothRenderState.textureRegistry, skin)) {
-                    texture = this.dataDrivenModelMobRenderer.getShearedTexture(mammothRenderState.textureRegistry, skin);
+                if (this.dataDrivenModelDinosaurRenderer.hasShearedTexture(mammothRenderState.textureRegistry, skin)) {
+                    texture = this.dataDrivenModelDinosaurRenderer.getShearedTexture(mammothRenderState.textureRegistry, skin);
                 }
             } else {
                 if (mammothRenderState.isBaby) {
-                    if (this.dataDrivenModelMobRenderer.hasBabyFurTexture(mammothRenderState.textureRegistry, skin)) {
-                        texture = this.dataDrivenModelMobRenderer.getBabyFurTexture(mammothRenderState.textureRegistry, skin);
+                    if (this.dataDrivenModelDinosaurRenderer.hasBabyFurTexture(mammothRenderState.textureRegistry, skin)) {
+                        texture = this.dataDrivenModelDinosaurRenderer.getBabyFurTexture(mammothRenderState.textureRegistry, skin);
                     }
                 }
             }

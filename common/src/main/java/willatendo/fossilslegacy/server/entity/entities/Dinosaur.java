@@ -524,7 +524,6 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
         this.readCosmeticsData(compoundTag, this.registryAccess());
         this.readCommandType(compoundTag, this.registryAccess());
         this.readTranquilizeData(compoundTag, this.registryAccess());
-        super.readAdditionalSaveData(compoundTag);
         this.setDaysAlive(compoundTag.getInt("DaysAlive"));
         this.setHunger(compoundTag.getInt("Hunger"));
         this.setGrowthStage(compoundTag.getInt("GrowthStage"));

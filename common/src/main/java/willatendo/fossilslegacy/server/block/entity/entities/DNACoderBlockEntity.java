@@ -24,7 +24,6 @@ import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import willatendo.fossilslegacy.server.block.blocks.DNACoderBlock;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
-import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.item.items.StorageDiscItem;
 import willatendo.fossilslegacy.server.menu.menus.DNACoderMenu;
@@ -109,19 +108,19 @@ public class DNACoderBlockEntity extends BaseContainerBlockEntity implements Wor
         boolean hasDisc = !dnaCoderBlockEntity.itemStacks.get(1).isEmpty();
         if (dnaCoderBlockEntity.isOn() || hasDisc && hasDNA) {
             int maxStackSize = dnaCoderBlockEntity.getMaxStackSize();
-            if (!dnaCoderBlockEntity.isOn() && dnaCoderBlockEntity.canEncode(dnaCoderBlockEntity.itemStacks, maxStackSize)) {
+            if (!dnaCoderBlockEntity.isOn() && dnaCoderBlockEntity.canCode(dnaCoderBlockEntity.itemStacks, maxStackSize)) {
                 dnaCoderBlockEntity.onTime = 100;
                 if (dnaCoderBlockEntity.isOn()) {
                     changed = true;
                 }
             }
 
-            if (dnaCoderBlockEntity.isOn() && dnaCoderBlockEntity.canEncode(dnaCoderBlockEntity.itemStacks, maxStackSize)) {
+            if (dnaCoderBlockEntity.isOn() && dnaCoderBlockEntity.canCode(dnaCoderBlockEntity.itemStacks, maxStackSize)) {
                 ++dnaCoderBlockEntity.codingProgress;
                 if (dnaCoderBlockEntity.codingProgress == dnaCoderBlockEntity.codingTotalTime) {
                     dnaCoderBlockEntity.codingProgress = 0;
                     dnaCoderBlockEntity.codingTotalTime = 100;
-                    dnaCoderBlockEntity.encode(dnaCoderBlockEntity.itemStacks, maxStackSize);
+                    dnaCoderBlockEntity.code(dnaCoderBlockEntity.itemStacks, maxStackSize);
                     changed = true;
                 }
             } else {
@@ -142,46 +141,76 @@ public class DNACoderBlockEntity extends BaseContainerBlockEntity implements Wor
         }
     }
 
-    private boolean canEncode(NonNullList<ItemStack> itemStacks, int maxStackSize) {
+    private boolean canCode(NonNullList<ItemStack> itemStacks, int maxStackSize) {
         ItemStack dna = itemStacks.get(0);
         ItemStack disc = itemStacks.get(1);
-        if (!dna.isEmpty() && !disc.isEmpty() && !disc.has(DataComponents.CUSTOM_DATA)) {
-            ItemStack output = new ItemStack(FAItems.STORAGE_DISC.get());
-            StorageDiscItem.copyDNA(output, dna);
-            if (output.isEmpty()) {
-                return false;
-            } else {
-                ItemStack outputSlot = itemStacks.get(2);
-                if (outputSlot.isEmpty()) {
-                    return true;
-                } else if (!ItemStack.isSameItem(outputSlot, output)) {
+        if (!dna.isEmpty() && !disc.isEmpty()) {
+            if (!dna.is(FAItems.BLANK_DNA.get()) && !disc.has(DataComponents.CUSTOM_DATA)) {
+                ItemStack output = new ItemStack(FAItems.STORAGE_DISC.get());
+                StorageDiscItem.copyDNA(output, dna);
+                if (output.isEmpty()) {
                     return false;
-                } else if (outputSlot.getCount() + output.getCount() <= maxStackSize && outputSlot.getCount() + output.getCount() <= outputSlot.getMaxStackSize()) {
-                    return true;
                 } else {
-                    return outputSlot.getCount() + output.getCount() <= output.getMaxStackSize();
+                    ItemStack outputSlot = itemStacks.get(2);
+                    if (outputSlot.isEmpty()) {
+                        return true;
+                    } else if (!ItemStack.isSameItem(outputSlot, output)) {
+                        return false;
+                    } else if (outputSlot.getCount() + output.getCount() <= maxStackSize && outputSlot.getCount() + output.getCount() <= outputSlot.getMaxStackSize()) {
+                        return true;
+                    } else {
+                        return outputSlot.getCount() + output.getCount() <= output.getMaxStackSize();
+                    }
+                }
+            } else if (dna.is(FAItems.BLANK_DNA.get()) && disc.has(DataComponents.CUSTOM_DATA)) {
+                ItemStack output = StorageDiscItem.loadDNA(disc);
+                if (output.isEmpty()) {
+                    return false;
+                } else {
+                    ItemStack outputSlot = itemStacks.get(2);
+                    if (outputSlot.isEmpty()) {
+                        return true;
+                    } else if (!ItemStack.isSameItem(outputSlot, output)) {
+                        return false;
+                    } else if (outputSlot.getCount() + output.getCount() <= maxStackSize && outputSlot.getCount() + output.getCount() <= outputSlot.getMaxStackSize()) {
+                        return true;
+                    } else {
+                        return outputSlot.getCount() + output.getCount() <= output.getMaxStackSize();
+                    }
                 }
             }
+            return false;
         } else {
             return false;
         }
     }
 
-    private void encode(NonNullList<ItemStack> itemStacks, int maxStackSize) {
-        if (this.canEncode(itemStacks, maxStackSize)) {
+    private void code(NonNullList<ItemStack> itemStacks, int maxStackSize) {
+        if (this.canCode(itemStacks, maxStackSize)) {
             ItemStack dna = itemStacks.get(0);
             ItemStack disc = itemStacks.get(1);
-            ItemStack output = new ItemStack(FAItems.STORAGE_DISC.get());
-            StorageDiscItem.copyDNA(output, dna);
-            ItemStack outputSlot = itemStacks.get(2);
-            if (outputSlot.isEmpty()) {
-                itemStacks.set(2, output.copy());
-            } else if (outputSlot.is(output.getItem())) {
-                outputSlot.grow(output.getCount());
-            }
+            if (!dna.is(FAItems.BLANK_DNA.get()) && !disc.has(DataComponents.CUSTOM_DATA)) {
+                ItemStack output = new ItemStack(FAItems.STORAGE_DISC.get());
+                StorageDiscItem.copyDNA(output, dna);
+                ItemStack outputSlot = itemStacks.get(2);
+                if (outputSlot.isEmpty()) {
+                    itemStacks.set(2, output.copy());
+                } else if (outputSlot.is(output.getItem())) {
+                    outputSlot.grow(output.getCount());
+                }
 
-            dna.shrink(1);
-            disc.shrink(1);
+                disc.shrink(1);
+            } else if (dna.is(FAItems.BLANK_DNA.get()) && disc.has(DataComponents.CUSTOM_DATA)) {
+                ItemStack output = StorageDiscItem.loadDNA(disc);
+                ItemStack outputSlot = itemStacks.get(2);
+                if (outputSlot.isEmpty()) {
+                    itemStacks.set(2, output.copy());
+                } else if (outputSlot.is(output.getItem())) {
+                    outputSlot.grow(output.getCount());
+                }
+
+                dna.shrink(1);
+            }
         }
     }
 
@@ -244,7 +273,7 @@ public class DNACoderBlockEntity extends BaseContainerBlockEntity implements Wor
             itemStack.setCount(this.getMaxStackSize());
         }
 
-        if ((slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7 || slot == 8) && !flag) {
+        if ((slot == 0 || slot == 1) && !flag) {
             this.codingTotalTime = 100;
             this.codingProgress = 0;
             this.setChanged();
@@ -262,13 +291,14 @@ public class DNACoderBlockEntity extends BaseContainerBlockEntity implements Wor
 
     @Override
     public boolean canPlaceItem(int slot, ItemStack itemStack) {
-        if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7 || slot == 8) {
+        if (slot == 0 || slot == 1) {
             return true;
         } else {
             return false;
         }
     }
 
+    @Override
     public void awardUsedRecipes(Player player, List<ItemStack> itemStacks) {
     }
 
@@ -311,9 +341,5 @@ public class DNACoderBlockEntity extends BaseContainerBlockEntity implements Wor
     @Override
     protected AbstractContainerMenu createMenu(int windowId, Inventory inventory) {
         return new DNACoderMenu(windowId, inventory, this);
-    }
-
-    public NonNullList<ItemStack> getItemStacks() {
-        return this.itemStacks;
     }
 }

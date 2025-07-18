@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceKey;
+import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRenderer;
 import willatendo.fossilslegacy.client.state.SmilodonRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Smilodon;
 import willatendo.fossilslegacy.server.pattern.FATextures;
@@ -9,7 +10,7 @@ import willatendo.fossilslegacy.server.pattern.texture.Texture;
 
 import java.util.List;
 
-public class SmilodonRenderer extends DataDrivenModelMobRenderer<Smilodon, SmilodonRenderState> {
+public class SmilodonRenderer extends DataDrivenModelDinosaurRenderer<Smilodon, SmilodonRenderState> {
     public SmilodonRenderer(Context context) {
         super(context, 0.3F);
     }

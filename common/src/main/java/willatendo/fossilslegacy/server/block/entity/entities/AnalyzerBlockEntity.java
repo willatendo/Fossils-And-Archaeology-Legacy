@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -36,9 +37,11 @@ import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.menu.menus.AnalyzerMenu;
 import willatendo.fossilslegacy.server.recipe.FARecipeTypes;
 import willatendo.fossilslegacy.server.recipe.recipes.AnalyzationRecipe;
+import willatendo.fossilslegacy.server.tags.FAItemTags;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
+import java.util.UUID;
 
 public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, RecipeCraftingHolder, StackedContentsCompatible {
     private static final int[] SLOTS_FOR_UP = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8};
@@ -137,7 +140,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
                         int maxStackSize = analyzerBlockEntity.getMaxStackSize();
                         ItemStack outputStack = recipe.value().assemble(new AnalyzerRecipeInput(analyzerBlockEntity.itemStacks.get(inputSlot), analyzerBlockEntity.itemStacks), serverLevel.registryAccess());
                         for (int outputSlot = 9; outputSlot < 13; outputSlot++) {
-                            if (analyzerBlockEntity.canAnalyze(outputSlot, inputSlot, outputStack, analyzerBlockEntity.itemStacks, maxStackSize)) {
+                            if (analyzerBlockEntity.canAnalyze(serverLevel.getRandom(), recipe.value().createsPureDNA, outputSlot, inputSlot, outputStack, analyzerBlockEntity.itemStacks, maxStackSize)) {
                                 if (!analyzerBlockEntity.isOn()) {
                                     analyzerBlockEntity.onTime = 100;
                                     if (analyzerBlockEntity.isOn()) {
@@ -179,11 +182,20 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
         }
     }
 
-    private boolean canAnalyze(int slot, int inputSlot, ItemStack output, NonNullList<ItemStack> itemStacks, int maxStackSize) {
+    private boolean canAnalyze(RandomSource randomSource, boolean recipeCreatesPureDNA, int slot, int inputSlot, ItemStack output, NonNullList<ItemStack> itemStacks, int maxStackSize) {
         if (!itemStacks.get(inputSlot).isEmpty() && output != null) {
             if (output.isEmpty()) {
                 return false;
             } else {
+                if (output.is(FAItemTags.DNA)) {
+                    if (!recipeCreatesPureDNA) {
+                        output.set(FADataComponents.PURITY.get(), randomSource.nextInt(99) + 1);
+                        output.set(FADataComponents.GENETIC_CODE.get(), UUID.randomUUID());
+                    } else {
+                        output.set(FADataComponents.PURITY.get(), 100);
+                    }
+                }
+
                 ItemStack outputSlot = itemStacks.get(slot);
                 if (outputSlot.isEmpty()) {
                     return true;
@@ -201,11 +213,14 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
     }
 
     private boolean analyze(RandomSource randomSource, boolean recipeCreatesPureDNA, int slot, int inputSlot, ItemStack output, NonNullList<ItemStack> itemStacks, int maxStackSize) {
-        if (this.canAnalyze(slot, inputSlot, output, itemStacks, maxStackSize)) {
-            if (!recipeCreatesPureDNA) {
-                output.set(FADataComponents.PURITY.get(), randomSource.nextInt(99) + 1);
-            } else {
-                output.set(FADataComponents.PURITY.get(), 100);
+        if (this.canAnalyze(randomSource, recipeCreatesPureDNA, slot, inputSlot, output, itemStacks, maxStackSize)) {
+            if (output.is(FAItemTags.DNA)) {
+                if (!recipeCreatesPureDNA) {
+                    output.set(FADataComponents.PURITY.get(), randomSource.nextInt(99) + 1);
+                    output.set(FADataComponents.GENETIC_CODE.get(), UUID.randomUUID());
+                } else {
+                    output.set(FADataComponents.PURITY.get(), 100);
+                }
             }
             ItemStack input = itemStacks.get(inputSlot);
             ItemStack outputSlot = itemStacks.get(slot);

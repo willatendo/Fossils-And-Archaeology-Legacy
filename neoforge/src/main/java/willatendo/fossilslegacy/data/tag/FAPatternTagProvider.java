@@ -58,6 +58,8 @@ public class FAPatternTagProvider extends DataDrivenTagsProvider<Pattern> {
         this.tag(FAPatternTags.GALLIMIMUS_2024_PATTERNS);
         this.tag(FAPatternTags.ICHTHYOSAURUS_2025_SKINS).add(FAPatterns.ICHTHYOSAURUS_2025);
         this.tag(FAPatternTags.ICHTHYOSAURUS_2025_PATTERNS);
+        this.tag(FAPatternTags.ISOTELUS_2025_SKINS).add(FAPatterns.ISOTELUS_2025);
+        this.tag(FAPatternTags.ISOTELUS_2025_PATTERNS);
         this.tag(FAPatternTags.MAMMOTH_2024_SKINS).add(FAPatterns.MAMMOTH_2024);
         this.tag(FAPatternTags.MAMMOTH_2024_PATTERNS);
         this.tag(FAPatternTags.MAMMOTH_2011_SKINS).add(FAPatterns.MAMMOTH_2011);

@@ -11,7 +11,7 @@ import willatendo.fossilslegacy.server.menu.menus.DNACoderMenu;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public class DNACoderScreen extends AbstractContainerScreen<DNACoderMenu> {
-    private static final ResourceLocation ENCODER_TEXTURE = FAUtils.resource("textures/gui/container/dna_encoder.png");
+    private static final ResourceLocation ENCODER_TEXTURE = FAUtils.resource("textures/gui/container/dna_coder.png");
     public static final ResourceLocation EMPTY_SLOT_DISC = FAUtils.resource("container/slot/disc");
     private static final ResourceLocation CODE_PROGRESS_SPRITE = FAUtils.resource("container/dna_coder/code_progress");
 

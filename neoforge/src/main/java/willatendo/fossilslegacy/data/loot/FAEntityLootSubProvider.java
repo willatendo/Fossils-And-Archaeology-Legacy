@@ -59,6 +59,7 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
         this.add(FAEntityTypes.FUTABASAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_FUTABASAURUS.get()));
         this.add(FAEntityTypes.GALLIMIMUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_GALLIMIMUS.get()));
         this.add(FAEntityTypes.ICHTHYOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_ICHTHYOSAURUS.get()));
+        this.add(FAEntityTypes.ISOTELUS.get(), LootTable.lootTable());
         this.add(FAEntityTypes.MAMMOTH.get(), this.createDinosaurTable(0.0F, 3.0F, Items.LEATHER, 1.0F, 3.0F, FAItems.RAW_MAMMOTH.get()));
         this.add(FAEntityTypes.MOSASAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_MOSASAURUS.get()));
         this.add(FAEntityTypes.NAUTILUS.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootOneItemOfManyRandom.lootTableItem(5, new ItemAndChance(FAItems.NAUTILUS_SHELL.get(), 0, 3), new ItemAndChance(FAItems.MAGIC_CONCH.get(), 3, 5)))));
