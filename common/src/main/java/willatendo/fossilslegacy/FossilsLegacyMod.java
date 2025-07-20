@@ -16,6 +16,7 @@ import willatendo.fossilslegacy.server.entity.FAVillagerProfessions;
 import willatendo.fossilslegacy.server.feature.FAFoliagePlacerTypes;
 import willatendo.fossilslegacy.server.feature.FATrunkPlacerTypes;
 import willatendo.fossilslegacy.server.fluid.FAFluids;
+import willatendo.fossilslegacy.server.gene.FAGenes;
 import willatendo.fossilslegacy.server.item.FACreativeModeTabs;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.FAItems;
@@ -74,6 +75,7 @@ public final class FossilsLegacyMod {
         simpleRegistryRegister.register(FAPatternInformationTypes.PATTERN_INFORMATION_TYPES);
         simpleRegistryRegister.register(FATextureTypes.TEXTURE_TYPES);
         simpleRegistryRegister.register(FAMapDecorationTypes.MAP_DECORATION_TYPE);
+        simpleRegistryRegister.register(FAGenes.GENES);
         simpleRegistryRegister.register(FAItems.ITEMS);
         simpleRegistryRegister.register(FACreativeModeTabs.CREATIVE_MODE_TABS);
         simpleRegistryRegister.register(FALootPoolEntryTypes.LOOT_POOL_ENTRY_TYPES);

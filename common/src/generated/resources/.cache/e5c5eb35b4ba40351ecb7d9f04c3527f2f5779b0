@@ -1,4 +1,4 @@
-// 1.21.4	2025-07-12T14:18:26.6652448	Advancements
+// 1.21.4	2025-07-19T00:55:33.40105	Advancements
 72990a203ca07e691c88e4c1074cb390275b4a6e data/fossilslegacy/advancement/legacy/all_jade.json
 d5d7600aa9f8326f8ae7b0d6f872b8ed6b5e69e4 data/fossilslegacy/advancement/legacy/all_trees.json
 33e2e87adf5fa02af175151c2a658106b8c185e3 data/fossilslegacy/advancement/legacy/analyzer.json
@@ -23,7 +23,7 @@ fa907bf04bf35cd8d7e3533f0b45223f6ca177ba data/fossilslegacy/advancement/legacy/d
 4e56484a55e9a76eea99e6ded8c77a57a1d59266 data/fossilslegacy/advancement/legacy/extinct_since_the_cretaceous.json
 e3c3a37253ae96dce8dea2c661aa2516248bb889 data/fossilslegacy/advancement/legacy/fixed_ancient_armor.json
 e0f2a78101a1d4dc284ec6544cb124e16a9ce45a data/fossilslegacy/advancement/legacy/flocking.json
-e57dc47b8ed44470c2297418a38a5fd721efa936 data/fossilslegacy/advancement/legacy/fossil.json
+3f79302a8327a6009a5d18fe3fb1535e1ecfb15a data/fossilslegacy/advancement/legacy/fossil.json
 08b9820c291aae116bb88b22b23c07eb1be0b249 data/fossilslegacy/advancement/legacy/have_tyrannosaurus.json
 599dfe0b065890bc91ec5d6dc951b0d7276e9ff2 data/fossilslegacy/advancement/legacy/helmet_artifact.json
 d45c0c16a9d6a2e038ee19c5179c14e1c8e7213f data/fossilslegacy/advancement/legacy/indominus.json
@@ -46,7 +46,7 @@ d639a7758e5be306bf1d88e8c56c0ab91a4c9225 data/fossilslegacy/advancement/legacy/p
 154f3f22ba668f17087f371ffbe235e7f5a9db66 data/fossilslegacy/advancement/legacy/quipu.json
 1fb3008ae8036e39f6d80f24575595fe134532ca data/fossilslegacy/advancement/legacy/rainbow.json
 3f61f6f6c74c23f8944dc056672338c1b5c6ea5e data/fossilslegacy/advancement/legacy/relic_scrap.json
-7b818a413b8966dfad823d73208eb7dfc8b798d5 data/fossilslegacy/advancement/legacy/root.json
+d056c82cf4f3b719ba5e5616d88844b8fbc359bd data/fossilslegacy/advancement/legacy/root.json
 a71f9c4c8a64c490f2135dafc2286a0f7c8bb7f5 data/fossilslegacy/advancement/legacy/sarah.json
 23384a1020f86b1833b69a3e42a1d36e2c75765a data/fossilslegacy/advancement/legacy/sixty_six.json
 040d40dab92e5f7b06ae2c0eec0c0a7e5f372606 data/fossilslegacy/advancement/legacy/skull_block.json

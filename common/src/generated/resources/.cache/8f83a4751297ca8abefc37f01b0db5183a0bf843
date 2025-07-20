@@ -1,4 +1,4 @@
-// 1.21.4	2025-07-18T04:45:05.3928923	Tags for fossilslegacy:pattern mod id fossilslegacy
+// 1.21.4	2025-07-18T17:38:40.0658342	Tags for fossilslegacy:pattern mod id fossilslegacy
 937df03543bfa48bf7ec15af9c5a7b05909af9a9 data/fossilslegacy/tags/fossilslegacy/pattern/has_patterns.json
 ef52692a198ca41227d838fea99bf06b26463124 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/ankylosaurus_2024.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/baryonyx_2025.json
@@ -21,6 +21,7 @@ ef52692a198ca41227d838fea99bf06b26463124 data/fossilslegacy/tags/fossilslegacy/p
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/gallimimus_2024.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/ichthyosaurus_2025.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/isotelus_2025.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/isotelus_larva_2025.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/mammoth_2011.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/mammoth_2024.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/fossilslegacy/tags/fossilslegacy/pattern/patterns/moa_2024.json
@@ -63,6 +64,7 @@ eb9d8014e1e4ebc7ffbf4ed0f7c0f04747da4f94 data/fossilslegacy/tags/fossilslegacy/p
 5076672eaa4d9793da14bf38f9440ccb72a65ade data/fossilslegacy/tags/fossilslegacy/pattern/skins/gallimimus_2024.json
 77df025371e8a2ad1b8f38cb5e3a31f81a847b41 data/fossilslegacy/tags/fossilslegacy/pattern/skins/ichthyosaurus_2025.json
 5fdad45e46dd11b6279827a501f74a622767e1ea data/fossilslegacy/tags/fossilslegacy/pattern/skins/isotelus_2025.json
+de0802c508210b62fae4af186b118b57cc706937 data/fossilslegacy/tags/fossilslegacy/pattern/skins/isotelus_larva_2025.json
 55bd137d7ae0e04c3689158ca6dbaf1958b51b77 data/fossilslegacy/tags/fossilslegacy/pattern/skins/mammoth_2011.json
 b2f5da5e33ed0d28463c27935b2b2ef80b6de077 data/fossilslegacy/tags/fossilslegacy/pattern/skins/mammoth_2024.json
 63f1bedcfacc18340975085d0517ce190925bee4 data/fossilslegacy/tags/fossilslegacy/pattern/skins/moa_2024.json

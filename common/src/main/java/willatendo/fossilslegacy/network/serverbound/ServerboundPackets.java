@@ -59,15 +59,6 @@ public final class ServerboundPackets {
         }
     }
 
-    public static void serverboundSetDNARecombinatorModePacket(ServerboundSetDNARecombinatorModePacket serverboundSetDNARecombinatorModePacket, Player player) {
-        Level level = player.level();
-        BlockPos blockPos = serverboundSetDNARecombinatorModePacket.blockPos();
-        BlockEntity blockEntity = level.getBlockEntity(blockPos);
-        if (blockEntity instanceof DNARecombinatorBlockEntity DNARecombinatorBlockEntity) {
-            DNARecombinatorBlockEntity.mode = serverboundSetDNARecombinatorModePacket.mode();
-        }
-    }
-
     public static void serverboundSetFossilPartPositionsPacket(ServerboundSetFossilPartPositionsPacket serverboundSetFossilPartPositionsPacket, Player player) {
         Level level = player.level();
         int id = serverboundSetFossilPartPositionsPacket.id();

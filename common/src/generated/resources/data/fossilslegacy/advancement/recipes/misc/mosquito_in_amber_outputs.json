@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mosquito_in_amber": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:mosquito_in_amber"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:mosquito_in_amber_outputs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_mosquito_in_amber"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:mosquito_in_amber_outputs"
+    ]
+  }
+}

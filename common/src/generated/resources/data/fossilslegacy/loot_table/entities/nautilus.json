@@ -5,17 +5,17 @@
       "bonus_rolls": 0.0,
       "entries": [
         {
-          "type": "fossilslegacy:loot_one_item_of_many_random",
+          "type": "fossilslegacy:random_item",
           "fuels": [
             {
-              "high_weight": 3,
-              "item": "fossilslegacy:nautilus_shell",
-              "low_weight": 0
+              "hit_from": 0,
+              "hit_to": 3,
+              "item": "fossilslegacy:nautilus_shell"
             },
             {
-              "high_weight": 5,
-              "item": "fossilslegacy:magic_conch",
-              "low_weight": 3
+              "hit_from": 3,
+              "hit_to": 5,
+              "item": "fossilslegacy:magic_conch"
             }
           ],
           "max_weight": 5

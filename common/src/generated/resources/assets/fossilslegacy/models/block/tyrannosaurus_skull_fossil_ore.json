@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "fossilslegacy:block/tyrannosaurus_skull_fossil_ore"
-  }
-}

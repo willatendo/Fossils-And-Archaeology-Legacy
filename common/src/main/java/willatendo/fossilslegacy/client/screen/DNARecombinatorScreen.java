@@ -8,7 +8,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
@@ -31,18 +30,19 @@ import org.joml.Vector3f;
 import willatendo.fossilslegacy.client.FAKeys;
 import willatendo.fossilslegacy.network.NetworkUtils;
 import willatendo.fossilslegacy.network.serverbound.ServerboundSetDNARecombinatorGenePacket;
-import willatendo.fossilslegacy.network.serverbound.ServerboundSetDNARecombinatorModePacket;
-import willatendo.fossilslegacy.server.block.DNARecombinatorMode;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Pteranodon;
+import willatendo.fossilslegacy.server.gene.FAGenes;
+import willatendo.fossilslegacy.server.gene.Gene;
 import willatendo.fossilslegacy.server.item.FADataComponents;
-import willatendo.fossilslegacy.server.item.data_components.GeneticInformation;
+import willatendo.fossilslegacy.server.item.data_components.CosmeticGeneticInformation;
 import willatendo.fossilslegacy.server.item.items.AnimalDNAItem;
 import willatendo.fossilslegacy.server.menu.menus.DNARecombinatorMenu;
 import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.pattern.FAPatterns;
 import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 import willatendo.fossilslegacy.server.pattern.pattern.PatternHolder;
+import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 import willatendo.fossilslegacy.server.tags.FAPatternTags;
@@ -52,17 +52,16 @@ import java.util.List;
 import java.util.Optional;
 
 public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinatorMenu> {
+    private static final ResourceLocation TEXTURE = FAUtils.resource("textures/gui/container/dna_recombinator.png");
     private static final ResourceLocation GENE_SPRITE = FAUtils.resource("container/dna_recombinator/gene");
+    private static final ResourceLocation STAR_SPRITE = FAUtils.resource("container/dna_recombinator/selected");
     private static final ResourceLocation GENETIC_CODE_TAB_SPRITE = FAUtils.resource("container/dna_recombinator/genetic_code_tab");
     private static final ResourceLocation MODEL_TAB_SPRITE = FAUtils.resource("container/dna_recombinator/model_tab");
     private static final ResourceLocation GENE_SLOT_HIGHLIGHT_BACK_SPRITE = FAUtils.resource("container/gene_slot_highlight_back");
     public static final ResourceLocation EMPTY_SLOT_DNA = FAUtils.resource("container/slot/dna");
     public static final ResourceLocation EMPTY_SLOT_GENETIC_CODE = FAUtils.resource("container/slot/genetic_code");
     private static final ResourceLocation EMPTY_SLOT_GENE = FAUtils.resource("container/slot/gene");
-    private static final ResourceLocation TAB_SELECTED_SPRITE = FAUtils.resource("container/dna_recombinator/tab_top_selected");
-    private static final ResourceLocation TAB_UNSELECTED_SPRITE = FAUtils.resource("container/dna_recombinator/tab_top_unselected");
 
-    private final Inventory inventory;
     private final RegistryAccess registryAccess;
     private final Registry<ModelType> modelTypeRegistry;
     private final Registry<Pattern> patternRegistry;
@@ -71,6 +70,7 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
     private Holder<ModelType>[] modelTypes = null;
     private Holder<Pattern>[] skins = null;
     private Holder<Pattern>[] patterns = null;
+    private int geneSelection = 0;
     private int modelTypeSelection = 0;
     private int skinSelection = 0;
     private int patternSelection = 0;
@@ -81,21 +81,23 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
     private boolean hasSetSkin = false;
     private boolean hasSetPattern = false;
     private int selectedGene = 0;
+    private int attributeSelection = 0;
+    private int attributeLength = 0;
+    private int traitLength = 0;
+    private final int[] traitsForGenes = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+    private int theSelectedSkin = -1;
+    private int theSelectedPattern = -1;
+    private final int[] selectedTraitsForGenes = new int[]{-1, -1, -1, -1, -1, -1, -1, -1};
+    private int healthBonus = 0;
 
     public DNARecombinatorScreen(DNARecombinatorMenu dnaRecombinatorMenu, Inventory inventory, Component title) {
         super(dnaRecombinatorMenu, inventory, title);
-        this.inventory = inventory;
         this.registryAccess = inventory.player.registryAccess();
         this.modelTypeRegistry = this.registryAccess.lookupOrThrow(FARegistries.MODEL_TYPES);
         this.patternRegistry = this.registryAccess.lookupOrThrow(FARegistries.PATTERN);
 
-        if (dnaRecombinatorMenu.DNARecombinatorBlockEntity.mode == DNARecombinatorMode.COSMETICS) {
-            this.imageHeight = 202;
-            this.inventoryLabelY = 109;
-        } else {
-            this.imageHeight = 166;
-            this.inventoryLabelY = this.imageHeight - 94;
-        }
+        this.imageHeight = 219;
+        this.inventoryLabelY = 126;
     }
 
     @Override
@@ -104,110 +106,32 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
         this.yMouse = (float) mouseY;
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
-
-        for (DNARecombinatorMode dnaRecombinatorMode : DNARecombinatorMode.values()) {
-            if (this.checkTabHovering(guiGraphics, dnaRecombinatorMode, mouseX, mouseY)) {
-                break;
-            }
-        }
-    }
-
-    protected void renderTabButton(GuiGraphics guiGraphics, DNARecombinatorMode mode) {
-        boolean selected = mode == this.menu.DNARecombinatorBlockEntity.mode;
-        int leftPos = this.leftPos + (27 * mode.ordinal());
-        int topPos = this.topPos - 28;
-        ResourceLocation sprite = selected ? TAB_SELECTED_SPRITE : TAB_UNSELECTED_SPRITE;
-
-        guiGraphics.blitSprite(RenderType::guiTextured, sprite, leftPos, topPos, 26, 32);
-        guiGraphics.pose().pushPose();
-        guiGraphics.pose().translate(0.0F, 0.0F, 100.0F);
-        leftPos += 5;
-        topPos += 9;
-        ItemStack icon = mode.getIconItem();
-        guiGraphics.renderItem(icon, leftPos, topPos);
-        guiGraphics.renderItemDecorations(this.font, icon, leftPos, topPos);
-        guiGraphics.pose().popPose();
-    }
-
-    protected boolean checkTabClicked(DNARecombinatorMode mode, double relativeMouseX, double relativeMouseY) {
-        int x = 27 * mode.ordinal();
-        int y = -32;
-        return relativeMouseX >= (double) x && relativeMouseX <= (double) (x + 26) && relativeMouseY >= (double) y && relativeMouseY <= (double) (y + 32);
-    }
-
-    protected boolean checkTabHovering(GuiGraphics guiGraphics, DNARecombinatorMode mode, int mouseX, int mouseY) {
-        int x = 27 * mode.ordinal();
-        int y = -32;
-        if (this.isHovering(x + 3, y + 3, 21, 27, mouseX, mouseY)) {
-            guiGraphics.renderTooltip(this.font, mode.getDisplayName(), mouseX, mouseY);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public boolean mouseReleased(double mouseX, double mouseY, int button) {
-        if (button == 0) {
-            double x = mouseX - (double) this.leftPos;
-            double y = mouseY - (double) this.topPos;
-
-            for (DNARecombinatorMode mode : DNARecombinatorMode.values()) {
-                if (this.checkTabClicked(mode, x, y)) {
-                    this.selectTab(mode);
-                    return true;
-                }
-            }
-        }
-
-        return super.mouseReleased(mouseX, mouseY, button);
-    }
-
-    private void selectTab(DNARecombinatorMode mode) {
-        this.menu.DNARecombinatorBlockEntity.mode = mode;
-        NetworkUtils.sendToServer(new ServerboundSetDNARecombinatorModePacket(this.menu.DNARecombinatorBlockEntity.getBlockPos(), mode));
-        if (mode == DNARecombinatorMode.COSMETICS) {
-            this.imageHeight = 202;
-            this.inventoryLabelY = 109;
-        } else {
-            this.imageHeight = 166;
-            this.inventoryLabelY = this.imageHeight - 94;
-        }
-        this.init();
-    }
-
-    @Override
-    protected void init() {
-        super.init();
-        this.menu.slots.clear();
-        this.menu.DNARecombinatorBlockEntity.mode.getSlotConfiguration().addSlots(slot -> {
-            this.menu.slots.add(slot);
-            return slot;
-        }, this.menu, this.inventory, this.inventory.player, this.menu.DNARecombinatorBlockEntity);
     }
 
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int x, int y) {
-        DNARecombinatorMode mode = this.menu.DNARecombinatorBlockEntity.mode;
-
-        for (DNARecombinatorMode dnaRecombinatorMode : DNARecombinatorMode.values()) {
-            if (dnaRecombinatorMode != mode) {
-                this.renderTabButton(guiGraphics, dnaRecombinatorMode);
-            }
-        }
-
-        guiGraphics.blit(RenderType::guiTextured, mode.getBackgroundTexture(), this.leftPos, this.topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-        this.renderTabButton(guiGraphics, mode);
-        if (mode == DNARecombinatorMode.COSMETICS) {
-            guiGraphics.blitSprite(RenderType::guiTextured, GENETIC_CODE_TAB_SPRITE, this.leftPos + 173, this.topPos, 29, 78);
-            guiGraphics.blitSprite(RenderType::guiTextured, MODEL_TAB_SPRITE, this.leftPos - 118, this.topPos, 120, 202);
-            guiGraphics.blitSprite(RenderType::guiTextured, EMPTY_SLOT_GENE, this.leftPos + 44, this.topPos + 58, 26, 12);
-            guiGraphics.blitSprite(RenderType::guiTextured, EMPTY_SLOT_GENE, this.leftPos + 44, this.topPos + 75, 26, 12);
-            Slot slot = this.menu.slots.get(0);
-            if (slot.hasItem()) {
-                ItemStack itemStack = slot.getItem();
-                if (itemStack.getItem() instanceof AnimalDNAItem animalDNAItem) {
-                    ClientLevel clientLevel = this.minecraft.level;
+        guiGraphics.blit(RenderType::guiTextured, TEXTURE, this.leftPos, this.topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
+        guiGraphics.blitSprite(RenderType::guiTextured, GENETIC_CODE_TAB_SPRITE, this.leftPos + 173, this.topPos, 29, 78);
+        guiGraphics.blitSprite(RenderType::guiTextured, MODEL_TAB_SPRITE, this.leftPos - 118, this.topPos, 120, 202);
+        guiGraphics.blitSprite(RenderType::guiTextured, EMPTY_SLOT_GENE, this.leftPos + 44, this.topPos + 58, 26, 12);
+        guiGraphics.blitSprite(RenderType::guiTextured, EMPTY_SLOT_GENE, this.leftPos + 44, this.topPos + 75, 26, 12);
+        Slot slot = this.menu.slots.get(0);
+        if (slot.hasItem()) {
+            ItemStack itemStack = slot.getItem();
+            ClientLevel clientLevel = this.minecraft.level;
+            if (itemStack.getItem() instanceof AnimalDNAItem animalDNAItem) {
+                if (this.selectedGene == 0) {
+                    guiGraphics.blitSprite(RenderType::guiTextured, GENE_SLOT_HIGHLIGHT_BACK_SPRITE, this.leftPos + 44, this.topPos + 58, 26, 12);
+                } else if (this.selectedGene == 1) {
+                    guiGraphics.blitSprite(RenderType::guiTextured, GENE_SLOT_HIGHLIGHT_BACK_SPRITE, this.leftPos + 44, this.topPos + 75, 26, 12);
+                } else if (this.selectedGene == 2) {
+                    guiGraphics.blitSprite(RenderType::guiTextured, GENE_SLOT_HIGHLIGHT_BACK_SPRITE, this.leftPos + 44, this.topPos + 92, 26, 12);
+                } else if (this.selectedGene == 3) {
+                    guiGraphics.blitSprite(RenderType::guiTextured, GENE_SLOT_HIGHLIGHT_BACK_SPRITE, this.leftPos + 44, this.topPos + 109, 26, 12);
+                }
+                this.drawCenteredStringNoShadow(guiGraphics, this.font, FAUtils.translation("container", "dna_recombinator.navigation", this.geneSelection + 1, 2), this.leftPos + 120, this.topPos + 60, 0x404040);
+                guiGraphics.blitSprite(RenderType::guiTextured, GENE_SPRITE, this.leftPos + 46, this.topPos + 60, 22, 8, this.geneSelection == 1 ? ARGB.colorFromFloat(1.0F, 0.87F, 0.47F, 0.12F) : ARGB.colorFromFloat(1.0F, 0.45F, 0.6F, 0.74F));
+                if (this.geneSelection == 0) {
                     TagKey<ModelType> applicableModelTypes = animalDNAItem.getApplicableCoatTypes();
 
                     if (applicableModelTypes != null) {
@@ -219,9 +143,9 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
                         for (int i = 0; i < 3; i++) {
                             if (this.getMenu().hasExtraGeneticCodeInSlot(i)) {
                                 Slot geneticCodeSlot = this.getMenu().getGeneticCodeInSlot(i);
-                                if (geneticCodeSlot.getItem().has(FADataComponents.GENETIC_INFORMATION.get())) {
-                                    GeneticInformation geneticInformation = geneticCodeSlot.getItem().get(FADataComponents.GENETIC_INFORMATION.get());
-                                    geneticInformation.carriedModelInformation().ifPresent(carriedModelInformation -> filteredHolderSet.addAll(modelTypeHolderGetter.get(carriedModelInformation).get().stream().filter(modelTypeHolder -> modelTypeHolder.is(applicableModelTypes)).toList()));
+                                if (geneticCodeSlot.getItem().has(FADataComponents.COSMETIC_GENETIC_INFORMATION.get())) {
+                                    CosmeticGeneticInformation cosmeticGeneticInformation = geneticCodeSlot.getItem().get(FADataComponents.COSMETIC_GENETIC_INFORMATION.get());
+                                    cosmeticGeneticInformation.carriedModelInformation().ifPresent(carriedModelInformation -> filteredHolderSet.addAll(modelTypeHolderGetter.get(carriedModelInformation).get().stream().filter(modelTypeHolder -> modelTypeHolder.is(applicableModelTypes)).toList()));
                                 }
                             }
                         }
@@ -252,9 +176,9 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
                         for (int i = 0; i < 3; i++) {
                             if (this.getMenu().hasExtraGeneticCodeInSlot(i)) {
                                 Slot geneticCodeSlot = this.getMenu().getGeneticCodeInSlot(i);
-                                if (geneticCodeSlot.getItem().has(FADataComponents.GENETIC_INFORMATION.get())) {
-                                    GeneticInformation geneticInformation = geneticCodeSlot.getItem().get(FADataComponents.GENETIC_INFORMATION.get());
-                                    geneticInformation.carriedSkinsInformation().ifPresent(carriedSkinInformation -> filteredSkinsHolderSet.addAll(patternHolderGetter.get(carriedSkinInformation).get().stream().toList()));
+                                if (geneticCodeSlot.getItem().has(FADataComponents.COSMETIC_GENETIC_INFORMATION.get())) {
+                                    CosmeticGeneticInformation cosmeticGeneticInformation = geneticCodeSlot.getItem().get(FADataComponents.COSMETIC_GENETIC_INFORMATION.get());
+                                    cosmeticGeneticInformation.carriedSkinsInformation().ifPresent(carriedSkinInformation -> filteredSkinsHolderSet.addAll(patternHolderGetter.get(carriedSkinInformation).get().stream().toList()));
                                 }
                             }
                         }
@@ -280,9 +204,9 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
                         for (int i = 0; i < 3; i++) {
                             if (this.getMenu().hasExtraGeneticCodeInSlot(i)) {
                                 Slot geneticCodeSlot = this.getMenu().getGeneticCodeInSlot(i);
-                                if (geneticCodeSlot.getItem().has(FADataComponents.GENETIC_INFORMATION.get())) {
-                                    GeneticInformation geneticInformation = geneticCodeSlot.getItem().get(FADataComponents.GENETIC_INFORMATION.get());
-                                    geneticInformation.carriedPatternsInformation().ifPresent(carriedPatternInformation -> filteredPatternsHolderSet.addAll(patternHolderGetter.get(carriedPatternInformation).get().stream().toList()));
+                                if (geneticCodeSlot.getItem().has(FADataComponents.COSMETIC_GENETIC_INFORMATION.get())) {
+                                    CosmeticGeneticInformation cosmeticGeneticInformation = geneticCodeSlot.getItem().get(FADataComponents.COSMETIC_GENETIC_INFORMATION.get());
+                                    cosmeticGeneticInformation.carriedPatternsInformation().ifPresent(carriedPatternInformation -> filteredPatternsHolderSet.addAll(patternHolderGetter.get(carriedPatternInformation).get().stream().toList()));
                                 }
                             }
                         }
@@ -336,18 +260,11 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
                         this.skinSelection = this.skinLength - 1;
                     }
 
-                    if (this.selectedGene == 2 && !this.skins[this.skinSelection].is(FAPatternTags.HAS_PATTERNS)) {
-                        this.selectedGene = 0;
+                    if (this.selectedGene == 3 && !this.skins[this.skinSelection].is(FAPatternTags.HAS_PATTERNS)) {
+                        this.selectedGene = 1;
                     }
 
                     if (this.modelTypes.length > 0 && this.skins.length > 0) {
-                        if (this.selectedGene == 0) {
-                            guiGraphics.blitSprite(RenderType::guiTextured, GENE_SLOT_HIGHLIGHT_BACK_SPRITE, this.leftPos + 44, this.topPos + 58, 26, 12);
-                        } else if (this.selectedGene == 1) {
-                            guiGraphics.blitSprite(RenderType::guiTextured, GENE_SLOT_HIGHLIGHT_BACK_SPRITE, this.leftPos + 44, this.topPos + 75, 26, 12);
-                        } else if (this.selectedGene == 2) {
-                            guiGraphics.blitSprite(RenderType::guiTextured, GENE_SLOT_HIGHLIGHT_BACK_SPRITE, this.leftPos + 44, this.topPos + 92, 26, 12);
-                        }
                         if (this.modelTypeSelection >= this.modelTypes.length) {
                             this.modelTypeSelection = 0;
                         }
@@ -355,71 +272,117 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
                         float modelTypeRed = ((selectedModelType.displayInfo().color() & 0xFF0000) >> 16) / 255.0F;
                         float modelTypeGreen = ((selectedModelType.displayInfo().color() & 0xFF00) >> 8) / 255.0F;
                         float modelTypeBlue = (selectedModelType.displayInfo().color() & 0xFF) / 255.0F;
-                        guiGraphics.blitSprite(RenderType::guiTextured, GENE_SPRITE, this.leftPos + 46, this.topPos + 60, 22, 8, ARGB.colorFromFloat(1.0F, modelTypeRed, modelTypeGreen, modelTypeBlue));
-                        this.drawCenteredStringNoShadow(guiGraphics, this.font, FAUtils.translation("container", "dna_recombinator.navigation", this.modelTypeSelection + 1, this.modelTypeLength), this.leftPos + 120, this.topPos + 60, 0x404040);
+                        guiGraphics.blitSprite(RenderType::guiTextured, GENE_SPRITE, this.leftPos + 46, this.topPos + 77, 22, 8, ARGB.colorFromFloat(1.0F, modelTypeRed, modelTypeGreen, modelTypeBlue));
+                        this.drawCenteredStringNoShadow(guiGraphics, this.font, FAUtils.translation("container", "dna_recombinator.navigation", this.modelTypeSelection + 1, this.modelTypeLength), this.leftPos + 120, this.topPos + 77, 0x404040);
                         Holder<Pattern> skin = this.skins[this.skinSelection];
                         float skinRed = ((skin.value().geneColor() & 0xFF0000) >> 16) / 255.0F;
                         float skinGreen = ((skin.value().geneColor() & 0xFF00) >> 8) / 255.0F;
                         float skinBlue = (skin.value().geneColor() & 0xFF) / 255.0F;
-                        guiGraphics.blitSprite(RenderType::guiTextured, GENE_SPRITE, this.leftPos + 46, this.topPos + 77, 22, 8, ARGB.colorFromFloat(1.0F, skinRed, skinGreen, skinBlue));
-                        this.drawCenteredStringNoShadow(guiGraphics, this.font, FAUtils.translation("container", "dna_recombinator.navigation", this.skinSelection + 1, this.skinLength), this.leftPos + 120, this.topPos + 77, 0x404040);
+                        guiGraphics.blitSprite(RenderType::guiTextured, GENE_SPRITE, this.leftPos + 46, this.topPos + 94, 22, 8, ARGB.colorFromFloat(1.0F, skinRed, skinGreen, skinBlue));
+                        this.drawCenteredStringNoShadow(guiGraphics, this.font, FAUtils.translation("container", "dna_recombinator.navigation", this.skinSelection + 1, this.skinLength), this.leftPos + 120, this.topPos + 94, 0x404040);
                         if (this.patterns.length > 0 && skin.is(FAPatternTags.HAS_PATTERNS)) {
                             Holder<Pattern> pattern = this.patterns[this.patternSelection];
                             float patternRed = ((pattern.value().geneColor() & 0xFF0000) >> 16) / 255.0F;
                             float patternGreen = ((pattern.value().geneColor() & 0xFF00) >> 8) / 255.0F;
                             float patternBlue = (pattern.value().geneColor() & 0xFF) / 255.0F;
-                            guiGraphics.blitSprite(RenderType::guiTextured, GENE_SPRITE, this.leftPos + 46, this.topPos + 94, 22, 8, ARGB.colorFromFloat(1.0F, patternRed, patternGreen, patternBlue));
-                            this.drawCenteredStringNoShadow(guiGraphics, this.font, FAUtils.translation("container", "dna_recombinator.navigation", this.patternSelection + 1, this.patternLength), this.leftPos + 120, this.topPos + 94, 0x404040);
+                            guiGraphics.blitSprite(RenderType::guiTextured, GENE_SPRITE, this.leftPos + 46, this.topPos + 111, 22, 8, ARGB.colorFromFloat(1.0F, patternRed, patternGreen, patternBlue));
+                            this.drawCenteredStringNoShadow(guiGraphics, this.font, FAUtils.translation("container", "dna_recombinator.navigation", this.patternSelection + 1, this.patternLength), this.leftPos + 120, this.topPos + 111, 0x404040);
                         } else {
-                            this.drawCenteredStringNoShadow(guiGraphics, this.font, FAUtils.translation("container", "dna_recombinator.none", this.patternSelection + 1, this.patternLength), this.leftPos + 120, this.topPos + 94, 0x404040);
+                            this.drawCenteredStringNoShadow(guiGraphics, this.font, FAUtils.translation("container", "dna_recombinator.none", this.patternSelection + 1, this.patternLength), this.leftPos + 120, this.topPos + 111, 0x404040);
+                        }
+                        if (this.theSelectedSkin == this.skinSelection) {
+                            guiGraphics.blitSprite(RenderType::guiTextured, STAR_SPRITE, this.leftPos + 47, this.topPos + 95, 7, 8);
+                        }
+                        if (this.theSelectedPattern == this.patternSelection) {
+                            guiGraphics.blitSprite(RenderType::guiTextured, STAR_SPRITE, this.leftPos + 47, this.topPos + 112, 7, 8);
                         }
                     }
-
-                    EntityType<? extends Mob> entityType = animalDNAItem.getEntityType().get();
-                    Mob mob = entityType.create(clientLevel, EntitySpawnReason.LOAD);
-                    mob.tickCount = this.minecraft.player.tickCount;
-                    if (mob instanceof Dinosaur dinosaur) {
-                        dinosaur.setGrowthStage(dinosaur.getMaxGrowthStage());
+                } else if (this.geneSelection == 1) {
+                    int purity = 100;
+                    if (itemStack.has(FADataComponents.PURITY.get())) {
+                        purity = itemStack.get(FADataComponents.PURITY.get());
                     }
-                    if (mob instanceof Pteranodon pteranodon) {
-                        pteranodon.setOnGround(true);
+                    int geneSlots = 8;
+                    if (purity < 60) {
+                        geneSlots = 4;
+                    } else if (purity < 70) {
+                        geneSlots = 5;
+                    } else if (purity < 80) {
+                        geneSlots = 6;
+                    } else if (purity < 90) {
+                        geneSlots = 7;
                     }
-                    if (mob instanceof Dinosaur dinosaur && this.modelTypes.length > 0 && this.skins.length > 0) {
-                        Holder<ModelType> modelType = this.modelTypes[this.modelTypeSelection];
-                        dinosaur.setModelType(modelType);
-                        dinosaur.setSkin(this.skins[this.skinSelection]);
-                        if (this.patterns.length > 0) {
-                            dinosaur.setPattern(this.patterns[this.patternSelection]);
-                        } else {
-                            dinosaur.setPattern(this.patternRegistry.getOrThrow(FAPatterns.BLANK));
-                        }
-                        ModelType.DisplayInfo displayInfo = modelType.value().displayInfo();
-                        DNARecombinatorScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos - 110, this.topPos + 17, this.leftPos - 3, this.topPos + 193, 16, displayInfo.displayScale(), displayInfo.displayYOffset(), this.xMouse, this.yMouse, mob);
-                    } else if (!(mob instanceof Dinosaur)) {
-                        DNARecombinatorScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos - 110, this.topPos + 17, this.leftPos - 3, this.topPos + 193, 16, 1.0F, 0.25F, this.xMouse, this.yMouse, mob);
+                    this.attributeLength = geneSlots;
+                    this.traitLength = FABuiltInRegistries.GENE.size();
+                    int[] slotColors = new int[]{0xDB2020, 0xDF6F1E, 0xDFBA1E, 0x92D82B, 0x1E8D53, 0x2AB9B7, 0x285CAF, 0x2D2DD1};
+                    int slotColor = slotColors[this.attributeSelection];
+                    guiGraphics.blitSprite(RenderType::guiTextured, GENE_SPRITE, this.leftPos + 46, this.topPos + 77, 22, 8, ARGB.colorFromFloat(1.0F, ((slotColor & 0xFF0000) >> 16) / 255.0F, ((slotColor & 0xFF00) >> 8) / 255.0F, (slotColor & 0xFF) / 255.0F));
+                    this.drawCenteredStringNoShadow(guiGraphics, this.font, FAUtils.translation("container", "dna_recombinator.navigation", this.attributeSelection + 1, this.attributeLength), this.leftPos + 120, this.topPos + 77, 0x404040);
+                    Gene gene = FABuiltInRegistries.GENE.get(this.traitsForGenes[this.attributeSelection]).orElseThrow().value();
+                    guiGraphics.blitSprite(RenderType::guiTextured, GENE_SPRITE, this.leftPos + 46, this.topPos + 94, 22, 8, ARGB.colorFromFloat(1.0F, ((gene.color() & 0xFF0000) >> 16) / 255.0F, ((gene.color() & 0xFF00) >> 8) / 255.0F, (gene.color() & 0xFF) / 255.0F));
+                    this.drawCenteredStringNoShadow(guiGraphics, this.font, FAUtils.translation("container", "dna_recombinator.navigation", this.traitsForGenes[this.attributeSelection] + 1, this.traitLength), this.leftPos + 120, this.topPos + 94, 0x404040);
+                    this.drawCenteredStringNoShadow(guiGraphics, this.font, FAUtils.translation("container", "dna_recombinator.none"), this.leftPos + 120, this.topPos + 111, 0x404040);
+                    if (this.selectedTraitsForGenes[this.attributeSelection] == this.traitsForGenes[this.attributeSelection]) {
+                        guiGraphics.blitSprite(RenderType::guiTextured, STAR_SPRITE, this.leftPos + 47, this.topPos + 95, 7, 8);
                     }
                 }
-                if (this.modelTypes.length > 0 && this.skins.length > 0) {
-                    guiGraphics.drawString(this.font, FAUtils.translation("container", "dna_recombinator.navigate_left.tutorial", FAKeys.NAVIGATE_LEFT.getDefaultKey().getDisplayName()), this.leftPos + this.imageWidth + 2, this.topPos + 80, 0xFFFFFF, false);
-                    guiGraphics.drawString(this.font, FAUtils.translation("container", "dna_recombinator.navigate_right.tutorial", FAKeys.NAVIGATE_RIGHT.getDefaultKey().getDisplayName()), this.leftPos + this.imageWidth + 2, this.topPos + 88, 0xFFFFFF, false);
-                    guiGraphics.drawString(this.font, FAUtils.translation("container", "dna_recombinator.navigate_up.tutorial", FAKeys.NAVIGATE_UP.getDefaultKey().getDisplayName()), this.leftPos + this.imageWidth + 2, this.topPos + 96, 0xFFFFFF, false);
-                    guiGraphics.drawString(this.font, FAUtils.translation("container", "dna_recombinator.navigate_down.tutorial", FAKeys.NAVIGATE_DOWN.getDefaultKey().getDisplayName()), this.leftPos + this.imageWidth + 2, this.topPos + 104, 0xFFFFFF, false);
-                    guiGraphics.drawString(this.font, FAUtils.translation("container", "dna_recombinator.apply_gene.tutorial", FAKeys.APPLY_GENE.getDefaultKey().getDisplayName()), this.leftPos + this.imageWidth + 2, this.topPos + 112, 0xFFFFFF, false);
-                } else {
-                    this.renderScrollingString(guiGraphics, FAUtils.translation("container", "dna_recombinator.no_genome_applicable"), this.leftPos + 8, this.topPos + 47, 0x404040);
+                EntityType<? extends Mob> entityType = animalDNAItem.getEntityType().get();
+                Mob mob = entityType.create(clientLevel, EntitySpawnReason.LOAD);
+                mob.tickCount = this.minecraft.player.tickCount;
+                if (mob instanceof Dinosaur dinosaur) {
+                    dinosaur.setGrowthStage(dinosaur.getMaxGrowthStage());
                 }
+                if (mob instanceof Pteranodon pteranodon) {
+                    pteranodon.setOnGround(true);
+                }
+                if (mob instanceof Dinosaur dinosaur && this.modelTypes.length > 0 && this.skins.length > 0) {
+                    Holder<ModelType> modelType = this.modelTypes[this.modelTypeSelection];
+                    dinosaur.setModelType(modelType);
+                    dinosaur.setSkin(this.skins[this.skinSelection]);
+                    if (this.patterns.length > 0) {
+                        dinosaur.setPattern(this.patterns[this.patternSelection]);
+                    } else {
+                        dinosaur.setPattern(this.patternRegistry.getOrThrow(FAPatterns.BLANK));
+                    }
+                    ModelType.DisplayInfo displayInfo = modelType.value().displayInfo();
+                    DNARecombinatorScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos - 110, this.topPos + 17, this.leftPos - 3, this.topPos + 193, 16, displayInfo.displayScale(), displayInfo.displayYOffset(), this.xMouse, this.yMouse, mob);
+                } else if (!(mob instanceof Dinosaur)) {
+                    DNARecombinatorScreen.renderEntityInInventoryFollowsMouse(guiGraphics, this.leftPos - 110, this.topPos + 17, this.leftPos - 3, this.topPos + 193, 16, 1.0F, 0.25F, this.xMouse, this.yMouse, mob);
+                }
+            }
+            if (this.modelTypes.length > 0 && this.skins.length > 0) {
+                guiGraphics.drawString(this.font, FAUtils.translation("container", "dna_recombinator.navigate_left.tutorial", FAKeys.NAVIGATE_LEFT.getDefaultKey().getDisplayName()), this.leftPos + this.imageWidth + 2, this.topPos + 80, 0xFFFFFF, false);
+                guiGraphics.drawString(this.font, FAUtils.translation("container", "dna_recombinator.navigate_right.tutorial", FAKeys.NAVIGATE_RIGHT.getDefaultKey().getDisplayName()), this.leftPos + this.imageWidth + 2, this.topPos + 90, 0xFFFFFF, false);
+                guiGraphics.drawString(this.font, FAUtils.translation("container", "dna_recombinator.navigate_up.tutorial", FAKeys.NAVIGATE_UP.getDefaultKey().getDisplayName()), this.leftPos + this.imageWidth + 2, this.topPos + 100, 0xFFFFFF, false);
+                guiGraphics.drawString(this.font, FAUtils.translation("container", "dna_recombinator.navigate_down.tutorial", FAKeys.NAVIGATE_DOWN.getDefaultKey().getDisplayName()), this.leftPos + this.imageWidth + 2, this.topPos + 110, 0xFFFFFF, false);
+                guiGraphics.drawString(this.font, FAUtils.translation("container", "dna_recombinator.select_attribute.tutorial"), this.leftPos + this.imageWidth + 2, this.topPos + 120, 0xFFFFFF, false);
+                guiGraphics.drawString(this.font, FAUtils.translation("container", "dna_recombinator.apply_genes.tutorial", FAKeys.APPLY_GENE.getDefaultKey().getDisplayName()), this.leftPos + this.imageWidth + 2, this.topPos + 130, 0xFFFFFF, false);
             } else {
-                this.createEmpty();
-                this.modelTypeSelection = 0;
-                this.skinSelection = 0;
-                this.patternSelection = 0;
-                this.hasSetModelType = false;
-                this.hasSetSkin = false;
-                this.hasSetPattern = false;
+                this.renderScrollingString(guiGraphics, FAUtils.translation("container", "dna_recombinator.no_genome_applicable"), this.leftPos + 8, this.topPos + 47, 0x404040);
+            }
+        } else {
+            this.createEmpty();
+            this.modelTypeSelection = 0;
+            this.skinSelection = 0;
+            this.patternSelection = 0;
+            this.hasSetModelType = false;
+            this.hasSetSkin = false;
+            this.hasSetPattern = false;
 
-                this.renderScrollingString(guiGraphics, FAUtils.translation("container", "dna_recombinator.insert_dna"), this.leftPos - 22, this.topPos + 47, 0x404040);
+            this.renderScrollingString(guiGraphics, FAUtils.translation("container", "dna_recombinator.insert_dna"), this.leftPos - 22, this.topPos + 47, 0x404040);
+        }
+
+        for (int i = 0; i < this.selectedTraitsForGenes.length; i++) {
+            int selected = this.selectedTraitsForGenes[i];
+            if (selected >= 0) {
+                this.renderAttributes(guiGraphics, selected);
             }
         }
+    }
+
+    private void renderAttributes(GuiGraphics guiGraphics, int type) {
+        Gene gene = FABuiltInRegistries.GENE.get(type).orElseThrow().value();
+        guiGraphics.blit(RenderType::guiTextured, gene.texture(), this.leftPos - 110 + (gene.height() * 20), this.topPos + 17, 0.0F, 0.0F, 18, 18, 18, 18);
     }
 
     private void createEmpty() {
@@ -435,30 +398,53 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
     protected void renderTooltip(GuiGraphics guiGraphics, int x, int y) {
         super.renderTooltip(guiGraphics, x, y);
         if (this.menu.getCarried().isEmpty()) {
-            if (this.modelTypeLength > 0 && (x >= this.leftPos + 44 && x <= this.leftPos + 69) && (y >= this.topPos + 58 && y <= this.topPos + 69)) {
+            if ((x >= this.leftPos + 44 && x <= this.leftPos + 69) && (y >= this.topPos + 58 && y <= this.topPos + 69)) {
                 List<Component> tooltip = Lists.newArrayList();
-                tooltip.add(this.modelTypes[this.modelTypeSelection].value().displayInfo().modelName());
-                if (this.minecraft.options.advancedItemTooltips) {
-                    tooltip.add(Component.literal(this.modelTypeRegistry.getKey(this.modelTypes[this.modelTypeSelection].value()).toString()).withStyle(ChatFormatting.DARK_GRAY));
+                if (this.geneSelection == 0) {
+                    tooltip.add(FAUtils.translation("container", "dna_recombinator.cosmetics"));
+                } else if (this.geneSelection == 1) {
+                    tooltip.add(FAUtils.translation("container", "dna_recombinator.attributes"));
                 }
                 guiGraphics.renderTooltip(this.font, tooltip, Optional.empty(), x, y);
             }
-            if (this.skinLength > 0 && (x >= this.leftPos + 44 && x <= this.leftPos + 69) && (y >= this.topPos + 75 && y <= this.topPos + 86)) {
+            if (this.modelTypeLength > 0 && (x >= this.leftPos + 44 && x <= this.leftPos + 69) && (y >= this.topPos + 75 && y <= this.topPos + 86)) {
                 List<Component> tooltip = Lists.newArrayList();
-                Pattern skin = this.skins[this.skinSelection].value();
-                tooltip.add(skin.patternName());
-                if (this.minecraft.options.advancedItemTooltips) {
-                    tooltip.add(Component.literal(this.patternRegistry.getKey(skin).toString()).withStyle(ChatFormatting.DARK_GRAY));
-                }
-                guiGraphics.renderTooltip(this.font, tooltip, Optional.empty(), x, y);
-            }
-            if (this.patternLength > 0 && (x >= this.leftPos + 44 && x <= this.leftPos + 69) && (y >= this.topPos + 92 && y <= this.topPos + 103)) {
-                List<Component> tooltip = Lists.newArrayList();
-                Holder<Pattern> pattern = this.patterns[this.patternSelection];
-                if (!pattern.is(FAPatterns.BLANK) || this.skins[this.skinSelection].is(FAPatternTags.HAS_PATTERNS)) {
-                    tooltip.add(pattern.value().patternName());
+                if (this.geneSelection == 0) {
+                    tooltip.add(this.modelTypes[this.modelTypeSelection].value().displayInfo().modelName());
                     if (this.minecraft.options.advancedItemTooltips) {
-                        tooltip.add(Component.literal(this.patternRegistry.getKey(pattern.value()).toString()).withStyle(ChatFormatting.DARK_GRAY));
+                        tooltip.add(Component.literal(this.modelTypeRegistry.getKey(this.modelTypes[this.modelTypeSelection].value()).toString()).withStyle(ChatFormatting.DARK_GRAY));
+                    }
+                } else if (this.geneSelection == 1) {
+                    tooltip.add(FAUtils.translation("container", "dna_recombinator.slot", this.attributeSelection + 1));
+                }
+                guiGraphics.renderTooltip(this.font, tooltip, Optional.empty(), x, y);
+            }
+            if (this.skinLength > 0 && (x >= this.leftPos + 44 && x <= this.leftPos + 69) && (y >= this.topPos + 92 && y <= this.topPos + 103)) {
+                List<Component> tooltip = Lists.newArrayList();
+                if (this.geneSelection == 0) {
+                    Pattern skin = this.skins[this.skinSelection].value();
+                    tooltip.add(skin.patternName());
+                    if (this.minecraft.options.advancedItemTooltips) {
+                        tooltip.add(Component.literal(this.patternRegistry.getKey(skin).toString()).withStyle(ChatFormatting.DARK_GRAY));
+                    }
+                } else if (this.geneSelection == 1) {
+                    Holder<Gene> gene = FABuiltInRegistries.GENE.get(this.traitsForGenes[this.attributeSelection]).get();
+                    tooltip.add(gene.value().getDisplayName());
+                    if (this.minecraft.options.advancedItemTooltips) {
+                        tooltip.add(Component.literal(FABuiltInRegistries.GENE.getKey(gene.value()).toString()).withStyle(ChatFormatting.DARK_GRAY));
+                    }
+                }
+                guiGraphics.renderTooltip(this.font, tooltip, Optional.empty(), x, y);
+            }
+            if (this.patternLength > 0 && (x >= this.leftPos + 44 && x <= this.leftPos + 69) && (y >= this.topPos + 109 && y <= this.topPos + 120)) {
+                List<Component> tooltip = Lists.newArrayList();
+                if (this.geneSelection == 0) {
+                    Holder<Pattern> pattern = this.patterns[this.patternSelection];
+                    if (!pattern.is(FAPatterns.BLANK) || this.skins[this.skinSelection].is(FAPatternTags.HAS_PATTERNS)) {
+                        tooltip.add(pattern.value().patternName());
+                        if (this.minecraft.options.advancedItemTooltips) {
+                            tooltip.add(Component.literal(this.patternRegistry.getKey(pattern.value()).toString()).withStyle(ChatFormatting.DARK_GRAY));
+                        }
                     }
                     guiGraphics.renderTooltip(this.font, tooltip, Optional.empty(), x, y);
                 }
@@ -470,16 +456,35 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
     public boolean keyReleased(int keyCode, int scanCode, int modifiers) {
         if (FAKeys.NAVIGATE_LEFT.matches(keyCode, scanCode)) {
             if (this.selectedGene == 0) {
-                if (this.modelTypeSelection != 0) {
-                    this.modelTypeSelection--;
+                if (this.geneSelection != 0) {
+                    this.geneSelection--;
                     return true;
                 }
             } else if (this.selectedGene == 1) {
-                if (this.skinSelection != 0) {
-                    this.skinSelection--;
-                    return true;
+                if (this.geneSelection == 0) {
+                    if (this.modelTypeSelection != 0) {
+                        this.modelTypeSelection--;
+                        return true;
+                    }
+                } else if (this.geneSelection == 1) {
+                    if (this.attributeSelection != 0) {
+                        this.attributeSelection--;
+                        return true;
+                    }
                 }
-            } else if (this.selectedGene == 2 && this.patternLength > 0) {
+            } else if (this.selectedGene == 2) {
+                if (this.geneSelection == 0) {
+                    if (this.skinSelection != 0) {
+                        this.skinSelection--;
+                        return true;
+                    }
+                } else if (this.geneSelection == 1) {
+                    if (this.traitsForGenes[this.attributeSelection] != 0) {
+                        this.traitsForGenes[this.attributeSelection]--;
+                        return true;
+                    }
+                }
+            } else if (this.selectedGene == 3 && this.patternLength > 0) {
                 if (this.patternSelection != 0) {
                     this.patternSelection--;
                     return true;
@@ -488,16 +493,35 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
         }
         if (FAKeys.NAVIGATE_RIGHT.matches(keyCode, scanCode)) {
             if (this.selectedGene == 0) {
-                if (this.modelTypeSelection != this.modelTypeLength - 1) {
-                    this.modelTypeSelection++;
+                if (this.geneSelection != 1) {
+                    this.geneSelection++;
                     return true;
                 }
             } else if (this.selectedGene == 1) {
-                if (this.skinSelection != this.skinLength - 1) {
-                    this.skinSelection++;
-                    return true;
+                if (this.geneSelection == 0) {
+                    if (this.modelTypeSelection != this.modelTypeLength - 1) {
+                        this.modelTypeSelection++;
+                        return true;
+                    }
+                } else if (this.geneSelection == 1) {
+                    if (this.attributeSelection != this.attributeLength - 1) {
+                        this.attributeSelection++;
+                        return true;
+                    }
                 }
-            } else if (this.selectedGene == 2 && this.patternLength > 0) {
+            } else if (this.selectedGene == 2) {
+                if (this.geneSelection == 0) {
+                    if (this.skinSelection != this.skinLength - 1) {
+                        this.skinSelection++;
+                        return true;
+                    }
+                } else if (this.geneSelection == 1) {
+                    if (this.traitsForGenes[this.attributeSelection] != this.traitLength - 1) {
+                        this.traitsForGenes[this.attributeSelection]++;
+                        return true;
+                    }
+                }
+            } else if (this.selectedGene == 3 && this.patternLength > 0) {
                 if (this.patternSelection != this.patternLength - 1) {
                     this.patternSelection++;
                     return true;
@@ -521,12 +545,44 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
             return true;
         }
         if (FAKeys.NAVIGATE_DOWN.matches(keyCode, keyCode)) {
-            if (this.selectedGene < 3 && (this.selectedGene + 1 != 2 || this.skins[this.skinSelection].is(FAPatternTags.HAS_PATTERNS))) {
+            if (this.selectedGene < 3 && (this.selectedGene + 1 != 3 || this.skins[this.skinSelection].is(FAPatternTags.HAS_PATTERNS))) {
                 this.selectedGene++;
             }
             return true;
         }
         return super.keyPressed(keyCode, scanCode, modifiers);
+    }
+
+    @Override
+    public boolean mouseClicked(double x, double y, int button) {
+        if ((x >= this.leftPos + 44 && x <= this.leftPos + 69) && (y >= this.topPos + 92 && y <= this.topPos + 103)) {
+            if (this.skinLength > 0 && this.geneSelection == 0) {
+                if (this.theSelectedSkin != this.skinSelection) {
+                    this.theSelectedSkin = this.skinSelection;
+                } else {
+                    this.theSelectedSkin = -1;
+                }
+                return true;
+            } else if (this.geneSelection == 1) {
+                if (this.selectedTraitsForGenes[this.attributeSelection] != this.traitsForGenes[this.attributeSelection]) {
+                    this.selectedTraitsForGenes[this.attributeSelection] = this.traitsForGenes[this.attributeSelection];
+                } else {
+                    this.selectedTraitsForGenes[this.attributeSelection] = -1;
+                }
+                return true;
+            }
+        }
+        if (this.patternLength > 0 && (x >= this.leftPos + 44 && x <= this.leftPos + 69) && (y >= this.topPos + 109 && y <= this.topPos + 120)) {
+            if (this.geneSelection == 0) {
+                if (this.theSelectedPattern != this.patternSelection) {
+                    this.theSelectedPattern = this.patternSelection;
+                } else {
+                    this.theSelectedPattern = -1;
+                }
+                return true;
+            }
+        }
+        return super.mouseClicked(x, y, button);
     }
 
     private void renderScrollingString(GuiGraphics guiGraphics, Component component, int x, int y, int color) {

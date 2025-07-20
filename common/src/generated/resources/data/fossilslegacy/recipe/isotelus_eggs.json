@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": "fossilslegacy:isotelus_dna",
+  "result": {
+    "id": "fossilslegacy:isotelus_eggs"
+  },
+  "time": 6000
+}

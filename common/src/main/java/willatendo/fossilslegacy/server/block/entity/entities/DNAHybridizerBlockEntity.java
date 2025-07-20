@@ -150,7 +150,7 @@ public class DNAHybridizerBlockEntity extends BaseContainerBlockEntity implement
             ItemStack output = new ItemStack(dna1.getItem());
             if (dna1.has(FADataComponents.GENETIC_CODE.get()) && dna2.has(FADataComponents.GENETIC_CODE.get())) {
                 UUID geneticCode1 = dna1.get(FADataComponents.GENETIC_CODE.get());
-                UUID geneticCode2 = dna1.get(FADataComponents.GENETIC_CODE.get());
+                UUID geneticCode2 = dna2.get(FADataComponents.GENETIC_CODE.get());
                 if (geneticCode1 == geneticCode2) {
                     return false;
                 }

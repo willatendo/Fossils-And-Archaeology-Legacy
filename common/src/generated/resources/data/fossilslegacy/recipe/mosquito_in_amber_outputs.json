@@ -1,0 +1,8 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "category": "palaeontology",
+  "creates_pure_dna": false,
+  "fuels": "fossilslegacy:mosquito_in_amber_results",
+  "ingredient": "fossilslegacy:mosquito_in_amber",
+  "time": 100
+}

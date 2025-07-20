@@ -84,6 +84,7 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.PACHYCEPHALOSAURUS.get(), PachycephalosaurusRenderer::new);
         modelRegister.register(FAEntityTypes.COMPSOGNATHUS.get(), CompsognathusRenderer::new);
         modelRegister.register(FAEntityTypes.ISOTELUS.get(), IsotelusRenderer::new);
+        modelRegister.register(FAEntityTypes.ISOTELUS_LARVA.get(), IsotelusLarvaRenderer::new);
         modelRegister.register(FAEntityTypes.ANKYLOSAURUS_EGG.get(), context -> EggRenderer.regular(context, "ankylosaurus"));
         modelRegister.register(FAEntityTypes.BARYONYX_EGG.get(), context -> EggRenderer.regular(context, "baryonyx"));
         modelRegister.register(FAEntityTypes.BRACHIOSAURUS_EGG.get(), context -> EggRenderer.regular(context, "brachiosaurus"));

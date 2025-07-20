@@ -13,6 +13,8 @@ import net.minecraft.world.level.block.Block;
 import willatendo.fossilslegacy.platform.FAModloaderHelper;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.ordovician.Isotelus;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.ordovician.IsotelusLarva;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Nautilus;
 import willatendo.fossilslegacy.server.entity.entities.projectile.Dart;
 import willatendo.fossilslegacy.server.entity.entities.vehicle.Jeep;
@@ -37,6 +39,9 @@ public final class FAItems {
     public static final SimpleHolder<Item> MESOZOIC_FOSSIL = ITEMS.registerItem("mesozoic_fossil", Item::new);
     public static final SimpleHolder<Item> PALAEOZOIC_FOSSIL = ITEMS.registerItem("palaeozoic_fossil", Item::new);
     public static final SimpleHolder<Item> PLANT_FOSSIL = ITEMS.registerItem("plant_fossil", Item::new);
+    public static final SimpleHolder<Item> AMBER = ITEMS.registerItem("amber", Item::new);
+    public static final SimpleHolder<Item> MOSQUITO_IN_AMBER = ITEMS.registerItem("mosquito_in_amber", Item::new);
+    public static final SimpleHolder<Item> LEECH_IN_ICE = ITEMS.registerItem("leech_in_ice", Item::new);
     public static final SimpleHolder<Item> BLANK_DNA = ITEMS.registerItem("blank_dna", Item::new);
     public static final SimpleHolder<AnimalDNAItem> TRICERATOPS_DNA = ITEMS.registerItem("triceratops_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.CRETACEOUS, FAEntityTypes.TRICERATOPS::get, FAModelTypeTags.TRICERATOPS, properties));
     public static final SimpleHolder<AnimalDNAItem> VELOCIRAPTOR_DNA = ITEMS.registerItem("velociraptor_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.CRETACEOUS, FAEntityTypes.VELOCIRAPTOR::get, FAModelTypeTags.VELOCIRAPTOR, properties));
@@ -60,6 +65,7 @@ public final class FAItems {
     public static final SimpleHolder<AnimalDNAItem> ICHTHYOSAURUS_DNA = ITEMS.registerItem("ichthyosaurus_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.JURASSIC, FAEntityTypes.ICHTHYOSAURUS::get, FAModelTypeTags.ICHTHYOSAURUS, properties));
     public static final SimpleHolder<AnimalDNAItem> DRYOSAURUS_DNA = ITEMS.registerItem("dryosaurus_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.JURASSIC, FAEntityTypes.DRYOSAURUS::get, FAModelTypeTags.DRYOSAURUS, properties));
     public static final SimpleHolder<AnimalDNAItem> BARYONYX_DNA = ITEMS.registerItem("baryonyx_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.CRETACEOUS, FAEntityTypes.BARYONYX::get, FAModelTypeTags.BARYONYX, properties));
+    public static final SimpleHolder<AnimalDNAItem> ISOTELUS_DNA = ITEMS.registerItem("isotelus_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.ORDOVICIAN, FAEntityTypes.ISOTELUS::get, FAModelTypeTags.ISOTELUS, properties));
     public static final SimpleHolder<PlantDNAItem> CYCAD_DNA = ITEMS.registerItem("cycad_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.QUATERNARY, properties));
     public static final SimpleHolder<PlantDNAItem> HORSETAIL_DNA = ITEMS.registerItem("horsetail_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.QUATERNARY, properties));
     public static final SimpleHolder<PlantDNAItem> JURASSIC_FERN_DNA = ITEMS.registerItem("jurassic_fern_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.JURASSIC, properties));
@@ -99,6 +105,7 @@ public final class FAItems {
     public static final SimpleHolder<EggItem> ICHTHYOSAURUS_EGG = ITEMS.registerItem("ichthyosaurus_egg", properties -> new EggItem(FAEntityTypes.ICHTHYOSAURUS_EGG::get, GeologicalTimeScale.Period.JURASSIC, FAModelTypeTags.ICHTHYOSAURUS, properties.stacksTo(1)));
     public static final SimpleHolder<EggItem> DRYOSAURUS_EGG = ITEMS.registerItem("dryosaurus_egg", properties -> new EggItem(FAEntityTypes.DRYOSAURUS_EGG::get, GeologicalTimeScale.Period.JURASSIC, FAModelTypeTags.DRYOSAURUS, properties.stacksTo(1)));
     public static final SimpleHolder<EggItem> BARYONYX_EGG = ITEMS.registerItem("baryonyx_egg", properties -> new EggItem(FAEntityTypes.BARYONYX_EGG::get, GeologicalTimeScale.Period.CRETACEOUS, FAModelTypeTags.BARYONYX, properties.stacksTo(1)));
+    public static final SimpleHolder<PlaceEntityItem<IsotelusLarva>> ISOTELUS_EGGS = ITEMS.registerItem("isotelus_eggs", properties -> new PlaceEntityItem<>(GeologicalTimeScale.Period.ORDOVICIAN, FAEntityTypes.ISOTELUS_LARVA, properties.stacksTo(1)));
     public static final SimpleHolder<Item> RAW_TRICERATOPS = ITEMS.registerItem("raw_triceratops", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_VELOCIRAPTOR = ITEMS.registerItem("raw_velociraptor", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
     public static final SimpleHolder<Item> RAW_TYRANNOSAURUS = ITEMS.registerItem("raw_tyrannosaurus", properties -> new Item(properties.food(FAFoods.RAW_DINOSAUR_MEAT)));
@@ -341,6 +348,7 @@ public final class FAItems {
     public static final SimpleHolder<DinosaurSpawnEggItem> BARYONYX_SPAWN_EGG = ITEMS.registerItem("baryonyx_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.BARYONYX.get(), properties));
     public static final SimpleHolder<DinosaurSpawnEggItem> DISTORTUS_REX_SPAWN_EGG = ITEMS.registerItem("distortus_rex_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.DISTORTUS_REX.get(), properties));
     public static final SimpleHolder<DinosaurSpawnEggItem> ISOTELUS_SPAWN_EGG = ITEMS.registerItem("isotelus_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.ISOTELUS.get(), false, properties));
+    public static final SimpleHolder<DinosaurSpawnEggItem> ISOTELUS_LARVA_SPAWN_EGG = ITEMS.registerItem("isotelus_larva_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.ISOTELUS_LARVA.get(), false, properties));
 
     public static final SimpleHolder<BlockItem> SKULL_BLOCK = ITEMS.registerItem("skull_block", properties -> new BlockItem(FABlocks.SKULL_BLOCK.get(), properties.useBlockDescriptionPrefix().component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD).setSwappable(false).setCameraOverlay(FAUtils.resource("misc/skullblur")).build())));
     public static final SimpleHolder<BlockItem> DNA_RECOMBINATOR = ITEMS.registerItem("dna_recombinator", properties -> new BlockItem(FABlocks.DNA_RECOMBINATOR.get(), properties.rarity(Rarity.UNCOMMON).useBlockDescriptionPrefix()));

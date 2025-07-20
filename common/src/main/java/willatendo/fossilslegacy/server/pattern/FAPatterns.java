@@ -50,6 +50,7 @@ public final class FAPatterns {
     public static final ResourceKey<Pattern> GALLIMIMUS_2024 = FAPatterns.create("gallimimus_2024");
     public static final ResourceKey<Pattern> ICHTHYOSAURUS_2025 = FAPatterns.create("ichthyosaurus_2025");
     public static final ResourceKey<Pattern> ISOTELUS_2025 = FAPatterns.create("isotelus_2025");
+    public static final ResourceKey<Pattern> ISOTELUS_LARVA_2025 = FAPatterns.create("isotelus_larva_2025");
     public static final ResourceKey<Pattern> MAMMOTH_2024 = FAPatterns.create("mammoth_2024");
     public static final ResourceKey<Pattern> MOA_2024 = FAPatterns.create("moa_2024");
     public static final ResourceKey<Pattern> MOSASAURUS_2024 = FAPatterns.create("mosasaurus_2024");
@@ -132,7 +133,8 @@ public final class FAPatterns {
         FAPatterns.register(bootstrapContext, FUTABASAURUS_2024, Pattern.builder(FAUtils.resource("textures/entity/futabasaurus/futabasaurus.png"), Component.translatable("skin.fossilslegacy.broadhead_skink"), 0xFFFFFF, GeneticType.DOMINANT).buildPackage());
         FAPatterns.register(bootstrapContext, GALLIMIMUS_2024, Pattern.builder(FAUtils.resource("textures/entity/gallimimus/gallimimus_adult.png"), Component.translatable("skin.fossilslegacy.broadhead_skink"), 0xFFFFFF, GeneticType.DOMINANT).withBabyTexture(FAUtils.resource("textures/entity/gallimimus/gallimimus_baby.png")).buildPackage());
         FAPatterns.register(bootstrapContext, ICHTHYOSAURUS_2025, Pattern.builder(FAUtils.resource("textures/entity/ichthyosaurus/ichthyosaurus.png"), Component.translatable("skin.fossilslegacy.blue_iguana"), 0xFFFFFF, GeneticType.DOMINANT).buildPackage());
-        FAPatterns.register(bootstrapContext, ISOTELUS_2025, Pattern.builder(FAUtils.resource("textures/entity/isotelus/isotelus.png"), Component.translatable("skin.fossilslegacy.blue_iguana"), 0xFFFFFF, GeneticType.DOMINANT).buildPackage());
+        FAPatterns.register(bootstrapContext, ISOTELUS_2025, Pattern.builder(FAUtils.resource("textures/entity/isotelus/isotelus.png"), Component.translatable("skin.fossilslegacy.gray_ratsnake"), 0xFFFFFF, GeneticType.DOMINANT).buildPackage());
+        FAPatterns.register(bootstrapContext, ISOTELUS_LARVA_2025, Pattern.builder(FAUtils.resource("textures/entity/isotelus/isotelus_larva.png"), Component.translatable("skin.fossilslegacy.gray_ratsnake"), 0xFFFFFF, GeneticType.DOMINANT).buildPackage());
         FAPatterns.register(bootstrapContext, MAMMOTH_2024, Pattern.builder(FAUtils.resource("textures/entity/mammoth/mammoth_adult.png"), Component.translatable("skin.fossilslegacy.american_bison"), 0xFFFFFF, GeneticType.DOMINANT).withBabyTexture(FAUtils.resource("textures/entity/mammoth/mammoth_baby.png")).withFurTexture(FAUtils.resource("textures/entity/mammoth/mammoth_adult_fur.png")).withBabyFurTexture(FAUtils.resource("textures/entity/mammoth/mammoth_baby_fur.png")).withShearedTexture(FAUtils.resource("textures/entity/mammoth/mammoth_adult_sheared.png")).buildPackage());
         FAPatterns.register(bootstrapContext, MOSASAURUS_2024, Pattern.builder(FAUtils.resource("textures/entity/mosasaurus/mosasaurus.png"), Component.translatable("skin.fossilslegacy.marine_iguana"), 0xFFFFFF, GeneticType.DOMINANT).withEyeLayerTexture(FAUtils.resource("textures/entity/mosasaurus/mosasaurus_eyes.png")).buildPackage());
         FAPatterns.register(bootstrapContext, MOA_2024, Pattern.builder(FAUtils.resource("textures/entity/moa/moa.png"), Component.translatable("skin.fossilslegacy.american_bison"), 0xFFFFFF, GeneticType.DOMINANT).buildPackage());

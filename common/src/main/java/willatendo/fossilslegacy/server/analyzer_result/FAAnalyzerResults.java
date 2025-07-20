@@ -14,7 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class FAAnalyzerResults {
+    public static final List<ResourceKey<AnalyzerResult>> CENOZOIC_FOSSIL_RESULTS = new ArrayList<>();
     public static final List<ResourceKey<AnalyzerResult>> MESOZOIC_FOSSIL_RESULTS = new ArrayList<>();
+    public static final List<ResourceKey<AnalyzerResult>> PALAEOZOIC_FOSSIL_RESULTS = new ArrayList<>();
+    public static final List<ResourceKey<AnalyzerResult>> MOSQUITO_IN_AMBER_RESULTS = new ArrayList<>();
+    public static final List<ResourceKey<AnalyzerResult>> LEECH_IN_ICE_RESULTS = new ArrayList<>();
     public static final List<ResourceKey<AnalyzerResult>> PLANT_FOSSIL_RESULTS = new ArrayList<>();
     public static final List<ResourceKey<AnalyzerResult>> RELIC_SCRAP_RESULTS = new ArrayList<>();
     public static final List<ResourceKey<AnalyzerResult>> FROZEN_MEAT_RESULTS = new ArrayList<>();
@@ -61,6 +65,7 @@ public final class FAAnalyzerResults {
     public static final ResourceKey<AnalyzerResult> ELASMOTHERIUM_DNA = FAAnalyzerResults.create("elasmotherium_dna");
     public static final ResourceKey<AnalyzerResult> DRYOSAURUS_DNA = FAAnalyzerResults.create("dryosaurus_dna");
     public static final ResourceKey<AnalyzerResult> BARYONYX_DNA = FAAnalyzerResults.create("baryonyx_dna");
+    public static final ResourceKey<AnalyzerResult> ISOTELUS_DNA = FAAnalyzerResults.create("isotelus_dna");
 
     private static ResourceKey<AnalyzerResult> create(String name) {
         return ResourceKey.create(FARegistries.ANALYZER_RESULT, FAUtils.resource(name));
@@ -78,28 +83,58 @@ public final class FAAnalyzerResults {
 
     public static void bootstrap(BootstrapContext<AnalyzerResult> bootstrapContext) {
         FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(Items.BONE_MEAL), 60);
+        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.ANKYLOSAURUS_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.BARYONYX_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.BRACHIOSAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.CARNOTAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.COMPSOGNATHUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.CRYOLOPHOSAURUS_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.DILOPHOSAURUS_DNA.get()), 2);
-        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.MOSASAURUS_DNA.get()), 2);
-        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.NAUTILUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.DRYOSAURUS_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.FUTABASAURUS_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.GALLIMIMUS_DNA.get()), 2);
-        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.PTERANODON_DNA.get()), 2);
-        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.STEGOSAURUS_DNA.get()), 2);
-        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.TRICERATOPS_DNA.get()), 2);
-        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.ANKYLOSAURUS_DNA.get()), 2);
-        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.DIMETRODON_DNA.get()), 2);
-        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.DRYOSAURUS_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.ICHTHYOSAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.MOSASAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.NAUTILUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.PACHYCEPHALOSAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.PTERANODON_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.SPINOSAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.STEGOSAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.THERIZINOSAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.TRICERATOPS_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.TYRANNOSAURUS_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.VELOCIRAPTOR_DNA.get()), 2);
-        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.CARNOTAURUS_DNA.get()), 2);
-        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.CRYOLOPHOSAURUS_DNA.get()), 2);
-        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.THERIZINOSAURUS_DNA.get()), 2);
-        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.PACHYCEPHALOSAURUS_DNA.get()), 2);
-        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.COMPSOGNATHUS_DNA.get()), 2);
-        FAAnalyzerResults.register(bootstrapContext, MESOZOIC_FOSSIL_RESULTS, "mesozoic_fossil_results", new ItemStack(FAItems.SPINOSAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, PALAEOZOIC_FOSSIL_RESULTS, "palaeozoic_fossil_results", new ItemStack(Items.BONE_MEAL), 60);
+        FAAnalyzerResults.register(bootstrapContext, PALAEOZOIC_FOSSIL_RESULTS, "palaeozoic_fossil_results", new ItemStack(FAItems.DIMETRODON_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, PALAEOZOIC_FOSSIL_RESULTS, "palaeozoic_fossil_results", new ItemStack(FAItems.ISOTELUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MOSQUITO_IN_AMBER_RESULTS, "mosquito_in_amber_results", new ItemStack(FAItems.AMBER.get()), 10);
+        FAAnalyzerResults.register(bootstrapContext, MOSQUITO_IN_AMBER_RESULTS, "mosquito_in_amber_results", new ItemStack(FAItems.ANKYLOSAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MOSQUITO_IN_AMBER_RESULTS, "mosquito_in_amber_results", new ItemStack(FAItems.BARYONYX_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MOSQUITO_IN_AMBER_RESULTS, "mosquito_in_amber_results", new ItemStack(FAItems.BRACHIOSAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MOSQUITO_IN_AMBER_RESULTS, "mosquito_in_amber_results", new ItemStack(FAItems.CARNOTAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MOSQUITO_IN_AMBER_RESULTS, "mosquito_in_amber_results", new ItemStack(FAItems.COMPSOGNATHUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MOSQUITO_IN_AMBER_RESULTS, "mosquito_in_amber_results", new ItemStack(FAItems.CRYOLOPHOSAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MOSQUITO_IN_AMBER_RESULTS, "mosquito_in_amber_results", new ItemStack(FAItems.DRYOSAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MOSQUITO_IN_AMBER_RESULTS, "mosquito_in_amber_results", new ItemStack(FAItems.GALLIMIMUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MOSQUITO_IN_AMBER_RESULTS, "mosquito_in_amber_results", new ItemStack(FAItems.PACHYCEPHALOSAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MOSQUITO_IN_AMBER_RESULTS, "mosquito_in_amber_results", new ItemStack(FAItems.PTERANODON_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MOSQUITO_IN_AMBER_RESULTS, "mosquito_in_amber_results", new ItemStack(FAItems.SPINOSAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MOSQUITO_IN_AMBER_RESULTS, "mosquito_in_amber_results", new ItemStack(FAItems.STEGOSAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MOSQUITO_IN_AMBER_RESULTS, "mosquito_in_amber_results", new ItemStack(FAItems.THERIZINOSAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MOSQUITO_IN_AMBER_RESULTS, "mosquito_in_amber_results", new ItemStack(FAItems.TRICERATOPS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MOSQUITO_IN_AMBER_RESULTS, "mosquito_in_amber_results", new ItemStack(FAItems.TYRANNOSAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, MOSQUITO_IN_AMBER_RESULTS, "mosquito_in_amber_results", new ItemStack(FAItems.VELOCIRAPTOR_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, LEECH_IN_ICE_RESULTS, "leech_in_ice_results", new ItemStack(Blocks.ICE), 10);
+        FAAnalyzerResults.register(bootstrapContext, LEECH_IN_ICE_RESULTS, "leech_in_ice_results", new ItemStack(FAItems.FUTABASAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, LEECH_IN_ICE_RESULTS, "leech_in_ice_results", new ItemStack(FAItems.ICHTHYOSAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, LEECH_IN_ICE_RESULTS, "leech_in_ice_results", new ItemStack(FAItems.ISOTELUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, LEECH_IN_ICE_RESULTS, "leech_in_ice_results", new ItemStack(FAItems.MOSASAURUS_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, CENOZOIC_FOSSIL_RESULTS, "cenozoic_fossil_results", new ItemStack(Items.BONE_MEAL), 60);
+        FAAnalyzerResults.register(bootstrapContext, CENOZOIC_FOSSIL_RESULTS, "cenozoic_fossil_results", new ItemStack(FAItems.ELASMOTHERIUM_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, CENOZOIC_FOSSIL_RESULTS, "cenozoic_fossil_results", new ItemStack(FAItems.DODO_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, CENOZOIC_FOSSIL_RESULTS, "cenozoic_fossil_results", new ItemStack(FAItems.MAMMOTH_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, CENOZOIC_FOSSIL_RESULTS, "cenozoic_fossil_results", new ItemStack(FAItems.MOA_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, CENOZOIC_FOSSIL_RESULTS, "cenozoic_fossil_results", new ItemStack(FAItems.SMILODON_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(Items.COAL), 60);
         FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(FAItems.CYCAD_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(FAItems.JURASSIC_FERN_DNA.get()), 2);
@@ -180,5 +215,6 @@ public final class FAAnalyzerResults {
         FAAnalyzerResults.register(bootstrapContext, ELASMOTHERIUM_DNA, new ItemStack(FAItems.ELASMOTHERIUM_DNA.get()), 100);
         FAAnalyzerResults.register(bootstrapContext, DRYOSAURUS_DNA, new ItemStack(FAItems.DRYOSAURUS_DNA.get()), 100);
         FAAnalyzerResults.register(bootstrapContext, BARYONYX_DNA, new ItemStack(FAItems.BARYONYX_DNA.get()), 100);
+        FAAnalyzerResults.register(bootstrapContext, ISOTELUS_DNA, new ItemStack(FAItems.ISOTELUS_DNA.get()), 100);
     }
 }

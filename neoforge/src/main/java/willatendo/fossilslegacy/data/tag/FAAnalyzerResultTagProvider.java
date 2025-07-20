@@ -17,7 +17,11 @@ public class FAAnalyzerResultTagProvider extends DataDrivenTagsProvider<Analyzer
 
     @Override
     protected void addTags(Provider provider) {
+        this.tag(FAAnalyzerResultTags.CENOZOIC_FOSSIL_RESULTS).add(FAAnalyzerResults.CENOZOIC_FOSSIL_RESULTS.toArray(ResourceKey[]::new));
         this.tag(FAAnalyzerResultTags.MESOZOIC_FOSSIL_RESULTS).add(FAAnalyzerResults.MESOZOIC_FOSSIL_RESULTS.toArray(ResourceKey[]::new));
+        this.tag(FAAnalyzerResultTags.PALAEOZOIC_FOSSIL_RESULTS).add(FAAnalyzerResults.PALAEOZOIC_FOSSIL_RESULTS.toArray(ResourceKey[]::new));
+        this.tag(FAAnalyzerResultTags.MOSQUITO_IN_AMBER_RESULTS).add(FAAnalyzerResults.MOSQUITO_IN_AMBER_RESULTS.toArray(ResourceKey[]::new));
+        this.tag(FAAnalyzerResultTags.LEECH_IN_ICE_RESULTS).add(FAAnalyzerResults.LEECH_IN_ICE_RESULTS.toArray(ResourceKey[]::new));
         this.tag(FAAnalyzerResultTags.PLANT_FOSSIL_RESULTS).add(FAAnalyzerResults.PLANT_FOSSIL_RESULTS.toArray(ResourceKey[]::new));
         this.tag(FAAnalyzerResultTags.RELIC_SCRAP_RESULTS).add(FAAnalyzerResults.RELIC_SCRAP_RESULTS.toArray(ResourceKey[]::new));
         this.tag(FAAnalyzerResultTags.FROZEN_MEAT_RESULTS).add(FAAnalyzerResults.FROZEN_MEAT_RESULTS.toArray(ResourceKey[]::new));

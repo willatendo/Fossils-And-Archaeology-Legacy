@@ -1,4 +1,4 @@
-// 1.21.4	2025-07-18T04:01:47.2043098	Tags for minecraft:item mod id fossilslegacy
+// 1.21.4	2025-07-19T02:53:58.6591553	Tags for minecraft:item mod id fossilslegacy
 cc1c82adb966f74da9898f8ff3e7ad473be3401f data/c/tags/item/bones.json
 d31244a2a7f7cb4224e5362dca80427850e5daa5 data/c/tags/item/buckets.json
 8773b7b9cd8f313f03d59d28a609bd9f1434b870 data/c/tags/item/eggs.json
@@ -14,7 +14,7 @@ ac39565003d3d0c0fb56f5e9a7359a23c67d8dba data/c/tags/item/foods/food_poisoning.j
 fc0f62709299e4c131dfcbfbaa30d360aa0d2120 data/c/tags/item/tools/mining_tool.json
 0ca4cab18c8e697cdff187f3489e08a2df422a11 data/c/tags/item/tools/ranged_weapon.json
 361888d5f870633bf3815eaaa14c28e67d7c9db3 data/c/tags/item/tools/shear.json
-5ea01db9a5849fc32699fd3daba3848b5e4bfba4 data/fossilslegacy/tags/item/animal_dna.json
+a75ea554119002d76a94a95c05de2c52f929102a data/fossilslegacy/tags/item/animal_dna.json
 8fed1c7774e26d293c99e32105efe5a57c3a9c50 data/fossilslegacy/tags/item/araucaria_logs.json
 362a23698630e3353e7d1dc805d0198527d13961 data/fossilslegacy/tags/item/archaeopteris_logs.json
 09a36530ab315d1fcf7219dea2d86863dca9bdce data/fossilslegacy/tags/item/cake_eggs.json
@@ -39,10 +39,11 @@ e71ff39a58e6626fffa365ff9e1ee48712eecece data/fossilslegacy/tags/item/commandabl
 e71ff39a58e6626fffa365ff9e1ee48712eecece data/fossilslegacy/tags/item/commandable/tyrannosaurus.json
 138ec2ff922580dd084cd402c834b38063afce4d data/fossilslegacy/tags/item/cultivators.json
 cc971faa0f00f993095c0060588d78ae00c5b668 data/fossilslegacy/tags/item/darts.json
-2b9dc5ae7bccb0cf6c954db5a4474de5ac6f8662 data/fossilslegacy/tags/item/dino_eggs.json
+7ca1dc2c1ad73e4bb28964a6bff9a9456dfdd8c4 data/fossilslegacy/tags/item/dino_eggs.json
 e7dc9eccb479fdf49fa7e5f42fa4455af0a10830 data/fossilslegacy/tags/item/dna.json
 4af49eafd9aa56796e5a1d21111579e54b77d394 data/fossilslegacy/tags/item/drum_instrument.json
 2a8fd9d95dfef48df7f33187708335d3d3f93e9e data/fossilslegacy/tags/item/embryo_syringes.json
+ece1fe464f1ad83147253b99fb9cf368290ea3f8 data/fossilslegacy/tags/item/fossils.json
 0d91c860420e5c6d47e16f6376dad63806657b0b data/fossilslegacy/tags/item/froglights.json
 825845803d71c17e3b0b9cafb0e7df950bd7abef data/fossilslegacy/tags/item/ginkgo_logs.json
 ccf86a5c4d3dc683416d936455d4d4147ed1305a data/fossilslegacy/tags/item/hammer.json

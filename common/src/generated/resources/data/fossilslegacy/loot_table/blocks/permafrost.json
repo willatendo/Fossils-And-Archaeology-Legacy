@@ -29,7 +29,7 @@
               "name": "fossilslegacy:permafrost"
             },
             {
-              "type": "fossilslegacy:loot_one_item_of_many_random",
+              "type": "fossilslegacy:random_item",
               "conditions": [
                 {
                   "condition": "minecraft:survives_explosion"
@@ -37,29 +37,29 @@
               ],
               "fuels": [
                 {
-                  "high_weight": 2000,
-                  "item": "fossilslegacy:jurassic_fern_spores",
-                  "low_weight": 0
+                  "hit_from": 0,
+                  "hit_to": 2000,
+                  "item": "fossilslegacy:jurassic_fern_spores"
                 },
                 {
-                  "high_weight": 8000,
-                  "item": "fossilslegacy:skull_block",
-                  "low_weight": 4000
+                  "hit_from": 4000,
+                  "hit_to": 8000,
+                  "item": "fossilslegacy:skull_block"
                 },
                 {
-                  "high_weight": 12000,
-                  "item": "fossilslegacy:frozen_meat",
-                  "low_weight": 8000
+                  "hit_from": 8000,
+                  "hit_to": 12000,
+                  "item": "fossilslegacy:frozen_meat"
                 },
                 {
-                  "high_weight": 16000,
-                  "item": "minecraft:beef",
-                  "low_weight": 12000
+                  "hit_from": 12000,
+                  "hit_to": 16000,
+                  "item": "minecraft:beef"
                 },
                 {
-                  "high_weight": 20000,
-                  "item": "minecraft:porkchop",
-                  "low_weight": 16000
+                  "hit_from": 16000,
+                  "hit_to": 20000,
+                  "item": "minecraft:porkchop"
                 }
               ],
               "max_weight": 20000

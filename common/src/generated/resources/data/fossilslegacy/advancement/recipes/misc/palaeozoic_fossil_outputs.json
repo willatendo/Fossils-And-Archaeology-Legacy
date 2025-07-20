@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_palaeozoic_fossil": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:palaeozoic_fossil"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:palaeozoic_fossil_outputs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_palaeozoic_fossil"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:palaeozoic_fossil_outputs"
+    ]
+  }
+}

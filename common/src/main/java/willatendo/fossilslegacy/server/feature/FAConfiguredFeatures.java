@@ -39,7 +39,9 @@ import java.util.OptionalInt;
 
 public final class FAConfiguredFeatures {
     // Ores
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_FOSSIL = create("ore_fossil");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_CENOZOIC_FOSSIL = create("ore_cenozoic_fossil");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_MESOZOIC_FOSSIL = create("ore_mesozoic_fossil");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_PALAEOZOIC_FOSSIL = create("ore_palaeozoic_fossil");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_PERMAFROST = create("ore_permafrost");
 
     // Trees
@@ -115,7 +117,9 @@ public final class FAConfiguredFeatures {
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> bootstrapContext) {
         HolderGetter<PlacedFeature> placedFeature = bootstrapContext.lookup(Registries.PLACED_FEATURE);
         // Ores
-        FeatureUtils.register(bootstrapContext, ORE_FOSSIL, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), FABlocks.FOSSIL_ORE.get().defaultBlockState()), OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), FABlocks.DEEPSLATE_FOSSIL_ORE.get().defaultBlockState())), 8, 0.0F));
+        FeatureUtils.register(bootstrapContext, ORE_CENOZOIC_FOSSIL, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), FABlocks.CENOZOIC_FOSSIL_ORE.get().defaultBlockState()), OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), FABlocks.DEEPSLATE_CENOZOIC_FOSSIL_ORE.get().defaultBlockState())), 8, 0.0F));
+        FeatureUtils.register(bootstrapContext, ORE_MESOZOIC_FOSSIL, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), FABlocks.MESOZOIC_FOSSIL_ORE.get().defaultBlockState()), OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), FABlocks.DEEPSLATE_MESOZOIC_FOSSIL_ORE.get().defaultBlockState())), 8, 0.0F));
+        FeatureUtils.register(bootstrapContext, ORE_PALAEOZOIC_FOSSIL, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), FABlocks.PALAEOZOIC_FOSSIL_ORE.get().defaultBlockState()), OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), FABlocks.DEEPSLATE_PALAEOZOIC_FOSSIL_ORE.get().defaultBlockState())), 8, 0.0F));
         FeatureUtils.register(bootstrapContext, ORE_PERMAFROST, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), FABlocks.PERMAFROST.get().defaultBlockState())), 8, 0.0F));
 
         // Trees

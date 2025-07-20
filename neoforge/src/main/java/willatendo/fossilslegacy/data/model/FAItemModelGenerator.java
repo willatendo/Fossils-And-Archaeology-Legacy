@@ -24,6 +24,9 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.MESOZOIC_FOSSIL.get());
         this.generatedItem(FAItems.PALAEOZOIC_FOSSIL.get());
         this.generatedItem(FAItems.PLANT_FOSSIL.get());
+        this.generatedItem(FAItems.AMBER.get());
+        this.generatedItem(FAItems.MOSQUITO_IN_AMBER.get());
+        this.generatedItem(FAItems.LEECH_IN_ICE.get());
         this.generatedItem(FAItems.TRICERATOPS_DNA.get());
         this.generatedItem(FAItems.VELOCIRAPTOR_DNA.get());
         this.generatedItem(FAItems.TYRANNOSAURUS_DNA.get());
@@ -47,6 +50,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.DRYOSAURUS_DNA.get());
         this.generatedItem(FAItems.ELASMOTHERIUM_DNA.get());
         this.generatedItem(FAItems.BARYONYX_DNA.get());
+        this.generatedItem(FAItems.ISOTELUS_DNA.get());
         this.generatedItem(FAItems.CYCAD_DNA.get());
         this.generatedItem(FAItems.HORSETAIL_DNA.get());
         this.generatedItem(FAItems.JURASSIC_FERN_DNA.get());
@@ -87,6 +91,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.ICHTHYOSAURUS_EGG.get());
         this.generatedItem(FAItems.DRYOSAURUS_EGG.get());
         this.generatedItem(FAItems.BARYONYX_EGG.get());
+        this.generatedItem(FAItems.ISOTELUS_EGGS.get());
         this.generatedItem(FAItems.RAW_TRICERATOPS.get());
         this.generatedItem(FAItems.RAW_VELOCIRAPTOR.get());
         this.generatedItem(FAItems.RAW_TYRANNOSAURUS.get());
@@ -324,6 +329,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.spawnEggItem(FAItems.BARYONYX_SPAWN_EGG.get(), 0x3F4D71, 0xA79F7E);
         this.spawnEggItem(FAItems.DISTORTUS_REX_SPAWN_EGG.get(), 0x80643A, 0xC5875B);
         this.spawnEggItem(FAItems.ISOTELUS_SPAWN_EGG.get(), 0x43403B, 0x24211C);
+        this.spawnEggItem(FAItems.ISOTELUS_LARVA_SPAWN_EGG.get(), 0xA9892E, 0xDEBF61);
         this.generatedItem(FAItems.TAR_BUCKET.get());
         this.generatedItem(FAItems.LEPIDODENDRON_BOAT.get());
         this.generatedItem(FAItems.LEPIDODENDRON_CHEST_BOAT.get());

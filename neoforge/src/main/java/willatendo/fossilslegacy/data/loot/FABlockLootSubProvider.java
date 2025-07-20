@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.data.loot;
 
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -19,8 +20,8 @@ import willatendo.fossilslegacy.server.block.blocks.HorsetailBlock;
 import willatendo.fossilslegacy.server.block.blocks.MayanVaseBlock;
 import willatendo.fossilslegacy.server.block.blocks.MediumCageBlock;
 import willatendo.fossilslegacy.server.item.FAItems;
-import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom;
-import willatendo.fossilslegacy.server.loot.LootOneItemOfManyRandom.ItemAndChance;
+import willatendo.fossilslegacy.server.loot.LootRandomItem;
+import willatendo.fossilslegacy.server.loot.LootRandomItem.RandomItemEntry;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.data.loot.SimpleBlockLootSubProvider;
 
@@ -33,8 +34,12 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
 
     @Override
     public void generate() {
-        this.add(FABlocks.FOSSIL_ORE.get(), this::createFossilOreLootTable);
-        this.add(FABlocks.DEEPSLATE_FOSSIL_ORE.get(), this::createFossilOreLootTable);
+        this.add(FABlocks.CENOZOIC_FOSSIL_ORE.get(), block -> this.createFossilOreLootTable(block, 100, new RandomItemEntry(FAItems.CENOZOIC_FOSSIL.get(), 0, 30), new RandomItemEntry(Items.BONE, 30, 90), new RandomItemEntry(FABlocks.SKULL_BLOCK.get(), 90, 100)));
+        this.add(FABlocks.MESOZOIC_FOSSIL_ORE.get(), block -> this.createFossilOreLootTable(block, 100, new RandomItemEntry(FAItems.MESOZOIC_FOSSIL.get(), 0, 30), new RandomItemEntry(Items.BONE, 30, 90), new RandomItemEntry(FABlocks.SKULL_BLOCK.get(), 90, 100)));
+        this.add(FABlocks.PALAEOZOIC_FOSSIL_ORE.get(), block -> this.createFossilOreLootTable(block, 100, new RandomItemEntry(FAItems.PALAEOZOIC_FOSSIL.get(), 0, 30), new RandomItemEntry(Items.BONE, 30, 90), new RandomItemEntry(FABlocks.SKULL_BLOCK.get(), 90, 100)));
+        this.add(FABlocks.DEEPSLATE_CENOZOIC_FOSSIL_ORE.get(), block -> this.createFossilOreLootTable(block, 100, new RandomItemEntry(FAItems.CENOZOIC_FOSSIL.get(), 0, 30), new RandomItemEntry(Items.BONE, 30, 90), new RandomItemEntry(FABlocks.SKULL_BLOCK.get(), 90, 100)));
+        this.add(FABlocks.DEEPSLATE_MESOZOIC_FOSSIL_ORE.get(), block -> this.createFossilOreLootTable(block, 100, new RandomItemEntry(FAItems.MESOZOIC_FOSSIL.get(), 0, 30), new RandomItemEntry(Items.BONE, 30, 90), new RandomItemEntry(FABlocks.SKULL_BLOCK.get(), 90, 100)));
+        this.add(FABlocks.DEEPSLATE_PALAEOZOIC_FOSSIL_ORE.get(), block -> this.createFossilOreLootTable(block, 100, new RandomItemEntry(FAItems.PALAEOZOIC_FOSSIL.get(), 0, 30), new RandomItemEntry(Items.BONE, 30, 90), new RandomItemEntry(FABlocks.SKULL_BLOCK.get(), 90, 100)));
         this.dropSelf(FABlocks.SKULL_BLOCK.get());
         this.dropSelf(FABlocks.SKULL_LANTERN_BLOCK.get());
         this.dropSelf(FABlocks.ANALYZER.get());
@@ -80,7 +85,7 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.add(FABlocks.TALL_HORSETAIL.get(), block -> LootTable.lootTable().withPool(this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(block).apply(IntStream.rangeClosed(1, 3).boxed().toList(), integer -> SetItemCountFunction.setCount(ConstantValue.exactly(integer)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(HorsetailBlock.AMOUNT, integer)))).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER)))))));
         this.dropSelf(FABlocks.DRUM.get());
         this.dropSelf(FABlocks.FEEDER.get());
-        this.add(FABlocks.PERMAFROST.get(), block -> this.createSilkTouchDispatchTable(block, this.applyExplosionCondition(block, LootOneItemOfManyRandom.lootTableItem(20000, new ItemAndChance(FAItems.JURASSIC_FERN_SPORES.get(), 0, 2000), new ItemAndChance(FABlocks.SKULL_BLOCK.get(), 4000, 8000), new ItemAndChance(FAItems.FROZEN_MEAT.get(), 8000, 12000), new ItemAndChance(Items.BEEF, 12000, 16000), new ItemAndChance(Items.PORKCHOP, 16000, 20000)))));
+        this.add(FABlocks.PERMAFROST.get(), block -> this.createSilkTouchDispatchTable(block, this.applyExplosionCondition(block, LootRandomItem.randomItem(20000, new RandomItemEntry(FAItems.JURASSIC_FERN_SPORES.get(), 0, 2000), new RandomItemEntry(FABlocks.SKULL_BLOCK.get(), 4000, 8000), new RandomItemEntry(FAItems.FROZEN_MEAT.get(), 8000, 12000), new RandomItemEntry(Items.BEEF, 12000, 16000), new RandomItemEntry(Items.PORKCHOP, 16000, 20000)))));
         this.add(FABlocks.ICED_STONE.get(), block -> this.createSingleItemTableWithSilkTouch(block, Blocks.COBBLESTONE));
         this.add(FABlocks.AXOLOTLSPAWN.get(), noDrop());
         this.dropSelf(FABlocks.TIME_MACHINE.get());
@@ -231,8 +236,8 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.add(FABlocks.ARAUCARIA_SLAB.get(), this::createSlabItemTable);
     }
 
-    protected LootTable.Builder createFossilOreLootTable(Block block) {
-        return createSelfDropDispatchTable(block, this.hasSilkTouch(), this.applyExplosionCondition(block, LootOneItemOfManyRandom.lootTableItem(20000, new ItemAndChance(FAItems.MESOZOIC_FOSSIL.get(), 10, 4000), new ItemAndChance(FAItems.MESOZOIC_FOSSIL.get(), 4000, 4500), new ItemAndChance(FAItems.RELIC_SCRAP.get(), 4500, 9800), new ItemAndChance(Items.BONE, 9800, 17800), new ItemAndChance(FABlocks.SKULL_BLOCK.get(), 17800, 19800), new ItemAndChance(FAItems.ANCIENT_SWORD_ARTIFACT.get(), 19800, 19820), new ItemAndChance(FAItems.ANCIENT_SHOVEL_ARTIFACT.get(), 19820, 19840), new ItemAndChance(FAItems.ANCIENT_PICKAXE_ARTIFACT.get(), 19840, 19860), new ItemAndChance(FAItems.ANCIENT_AXE_ARTIFACT.get(), 19860, 19880), new ItemAndChance(FAItems.ANCIENT_HOE_ARTIFACT.get(), 19880, 19900), new ItemAndChance(FAItems.ANCIENT_HELMET_ARTIFACT.get(), 19900, 19925), new ItemAndChance(FAItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 19925, 19950), new ItemAndChance(FAItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 19950, 19975), new ItemAndChance(FAItems.ANCIENT_BOOTS_ARTIFACT.get(), 19975, 20000), new ItemAndChance(FAItems.SCARAB_GEM.get(), 0, 10))));
+    protected LootTable.Builder createFossilOreLootTable(Block block, int randomRange, RandomItemEntry... randomItemEntries) {
+        return BlockLootSubProvider.createSelfDropDispatchTable(block, this.hasSilkTouch(), this.applyExplosionCondition(block, LootRandomItem.randomItem(randomRange, randomItemEntries)));
     }
 
     protected void createOtherWhenSilkTouch(Block block, ItemLike other, int amount) {

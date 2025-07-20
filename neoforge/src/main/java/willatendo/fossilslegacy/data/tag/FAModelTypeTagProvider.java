@@ -39,6 +39,7 @@ public class FAModelTypeTagProvider extends DataDrivenTagsProvider<ModelType> {
         this.tag(FAModelTypeTags.GALLIMIMUS).add(FAModelTypes.GALLIMIMUS);
         this.tag(FAModelTypeTags.ICHTHYOSAURUS).add(FAModelTypes.ICHTHYOSAURUS);
         this.tag(FAModelTypeTags.ISOTELUS).add(FAModelTypes.ISOTELUS);
+        this.tag(FAModelTypeTags.ISOTELUS_LARVA).add(FAModelTypes.ISOTELUS_LARVA);
         this.tag(FAModelTypeTags.LEGACY).add(FAModelTypes.LEGACY_BRACHIOSAURUS, FAModelTypes.LEGACY_CARNOTAURUS, FAModelTypes.LEGACY_CRYOLOPHOSAURUS, FAModelTypes.LEGACY_DILOPHOSAURUS, FAModelTypes.LEGACY_FUTABASAURUS, FAModelTypes.LEGACY_MAMMOTH, FAModelTypes.LEGACY_MOSASAURUS, FAModelTypes.LEGACY_PTERANODON, FAModelTypes.LEGACY_SMILODON, FAModelTypes.LEGACY_STEGOSAURUS, FAModelTypes.LEGACY_THERIZINOSAURUS, FAModelTypes.LEGACY_TRICERATOPS, FAModelTypes.LEGACY_TYRANNOSAURUS, FAModelTypes.LEGACY_VELOCIRAPTOR);
         this.tag(FAModelTypeTags.MAMMOTH).add(FAModelTypes.MAMMOTH, FAModelTypes.LEGACY_MAMMOTH);
         this.tag(FAModelTypeTags.NON_LEGACY_MAMMOTH).add(FAModelTypes.MAMMOTH);

@@ -9,5 +9,5 @@ import willatendo.simplelibrary.server.registry.SimpleRegistry;
 public final class FALootPoolEntryTypes {
     public static final SimpleRegistry<LootPoolEntryType> LOOT_POOL_ENTRY_TYPES = SimpleRegistry.create(Registries.LOOT_POOL_ENTRY_TYPE, FAUtils.ID);
 
-    public static final SimpleHolder<LootPoolEntryType> LOOT_ONE_ITEM_OF_MANY_RANDOM = LOOT_POOL_ENTRY_TYPES.register("loot_one_item_of_many_random", () -> new LootPoolEntryType(LootOneItemOfManyRandom.CODEC));
+    public static final SimpleHolder<LootPoolEntryType> RANDOM_ITEM = LOOT_POOL_ENTRY_TYPES.register("random_item", () -> new LootPoolEntryType(LootRandomItem.CODEC));
 }

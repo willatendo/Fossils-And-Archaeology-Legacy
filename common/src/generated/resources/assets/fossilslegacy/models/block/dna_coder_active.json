@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:block/cube",
   "textures": {
-    "down": "fossilslegacy:block/analyzer_top",
-    "east": "fossilslegacy:block/analyzer_side",
-    "north": "fossilslegacy:block/analyzer_front_on",
-    "particle": "fossilslegacy:block/analyzer_side",
-    "south": "fossilslegacy:block/analyzer_back",
-    "up": "fossilslegacy:block/analyzer_top",
-    "west": "fossilslegacy:block/analyzer_side"
+    "down": "fossilslegacy:block/dna_coder_top",
+    "east": "fossilslegacy:block/dna_coder_side",
+    "north": "fossilslegacy:block/dna_coder_front_on",
+    "particle": "fossilslegacy:block/dna_coder_side",
+    "south": "fossilslegacy:block/dna_coder_back",
+    "up": "fossilslegacy:block/dna_coder_top",
+    "west": "fossilslegacy:block/dna_coder_side"
   }
 }

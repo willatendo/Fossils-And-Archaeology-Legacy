@@ -9,7 +9,6 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import org.jetbrains.annotations.Nullable;
 import willatendo.fossilslegacy.client.screen.DNARecombinatorScreen;
 import willatendo.fossilslegacy.server.block.blocks.DNARecombinatorBlock;
 import willatendo.fossilslegacy.server.block.entity.entities.DNARecombinatorBlockEntity;
@@ -31,6 +30,31 @@ public class DNARecombinatorMenu extends AbstractContainerMenu {
         this.containerLevelAccess = ContainerLevelAccess.create(DNARecombinatorBlockEntity.getLevel(), DNARecombinatorBlockEntity.getBlockPos());
         this.DNARecombinatorBlockEntity = DNARecombinatorBlockEntity;
         this.player = inventory.player;
+
+        this.addSlot(new Slot(DNARecombinatorBlockEntity, 0, 8, 22) {
+            @Override
+            public int getMaxStackSize() {
+                return 1;
+            }
+
+            @Override
+            public boolean mayPlace(ItemStack itemStack) {
+                return itemStack.getItem() instanceof DNAItem;
+            }
+
+            @Override
+            public ResourceLocation getNoItemIcon() {
+                return DNARecombinatorScreen.EMPTY_SLOT_DNA;
+            }
+        });
+
+        this.addSlot(new ResultSlot(player, DNARecombinatorBlockEntity, 1, 68, 22));
+
+        this.geneticSlots[0] = this.addSlot(new GeneticCodeSlot(DNARecombinatorBlockEntity, 2, 178, 18));
+        this.geneticSlots[1] = this.addSlot(new GeneticCodeSlot(DNARecombinatorBlockEntity, 3, 178, 36));
+        this.geneticSlots[2] = this.addSlot(new GeneticCodeSlot(DNARecombinatorBlockEntity, 4, 178, 54));
+
+        this.addStandardInventorySlots(inventory, 8, 137);
     }
 
     public DNARecombinatorMenu(int windowId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {

@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "fossilslegacy:mesozoic_fossil"
+            "items": "#fossilslegacy:fossils"
           }
         ]
       },

@@ -47,7 +47,9 @@ public class ModEvents {
             SEARCH_TABS.put(category, category.includedCategories().stream().flatMap(recipeBookCategory -> SEARCH_TABS.getOrDefault(category, List.of()).stream()).collect(ImmutableList.toImmutableList()));
         }
 
-        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FAPlacedFeatures.ORE_FOSSIL);
+        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FAPlacedFeatures.ORE_CENOZOIC_FOSSIL);
+        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FAPlacedFeatures.ORE_MESOZOIC_FOSSIL);
+        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FAPlacedFeatures.ORE_PALAEOZOIC_FOSSIL);
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FAPlacedFeatures.ORE_PERMAFROST);
         BiomeModifications.addSpawn(BiomeSelectors.tag(BiomeTags.HAS_OCEAN_RUIN_WARM), MobCategory.WATER_AMBIENT, FAEntityTypes.NAUTILUS.get(), 1, 1, 1);
 

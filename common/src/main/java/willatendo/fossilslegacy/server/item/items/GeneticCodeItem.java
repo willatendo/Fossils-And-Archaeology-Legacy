@@ -3,7 +3,7 @@ package willatendo.fossilslegacy.server.item.items;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import willatendo.fossilslegacy.server.item.FADataComponents;
-import willatendo.fossilslegacy.server.item.data_components.GeneticInformation;
+import willatendo.fossilslegacy.server.item.data_components.CosmeticGeneticInformation;
 import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 
@@ -23,6 +23,6 @@ public class GeneticCodeItem extends Item {
     }
 
     private GeneticCodeItem(Optional<TagKey<ModelType>> carriedModelInformation, Optional<TagKey<Pattern>> carriedSkinInformation, Optional<TagKey<Pattern>> carriedPatternInformation, Properties properties) {
-        super(properties.component(FADataComponents.GENETIC_INFORMATION.get(), new GeneticInformation(carriedModelInformation, carriedSkinInformation, carriedPatternInformation)));
+        super(properties.component(FADataComponents.COSMETIC_GENETIC_INFORMATION.get(), new CosmeticGeneticInformation(carriedModelInformation, carriedSkinInformation, carriedPatternInformation)));
     }
 }

@@ -14,6 +14,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
 import willatendo.fossilslegacy.data.recipe.AnalyzationRecipeBuilder;
 import willatendo.fossilslegacy.data.recipe.ArchaeologyRecipeBuilder;
 import willatendo.fossilslegacy.data.recipe.CultivationRecipeBuilder;
@@ -52,6 +53,8 @@ public class FARecipeProvider extends RecipeProvider {
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FAItems.TOOTH_DAGGER.get()).pattern("#").pattern("$").define('#', FAItems.TYRANNOSAURUS_TOOTH.get()).define('$', Items.STICK).unlockedBy(RecipeProvider.getHasName(FAItems.TYRANNOSAURUS_TOOTH.get()), this.has(FAItems.TYRANNOSAURUS_TOOTH.get())).save(this.output);
         this.shapeless(RecipeCategory.TOOLS, FAItems.DINOPEDIA.get()).requires(Items.BOOK).requires(this.tag(FAItemTags.ANIMAL_DNA)).unlockedBy("has_dna", this.has(FAItemTags.ANIMAL_DNA)).save(this.output);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.ANALYZER.get()).pattern("#%#").pattern("#$#").define('#', Items.IRON_INGOT).define('%', FAItems.RELIC_SCRAP.get()).define('$', FAItems.MESOZOIC_FOSSIL.get()).unlockedBy(RecipeProvider.getHasName(FAItems.MESOZOIC_FOSSIL.get()), this.has(FAItems.MESOZOIC_FOSSIL.get())).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DNA_CODER.get()).pattern("#%#").pattern("#$#").define('#', Items.IRON_INGOT).define('%', Items.DIAMOND).define('$', Items.REDSTONE).unlockedBy(RecipeProvider.getHasName(Items.DIAMOND), this.has(Items.DIAMOND)).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DNA_HYBRIDIZER.get()).pattern("@%@").pattern("###").define('@', Tags.Items.GLASS_BLOCKS).define('#', Items.IRON_INGOT).define('%', Items.GOLD_INGOT).unlockedBy(RecipeProvider.getHasName(Items.GOLD_INGOT), this.has(Items.GOLD_INGOT)).save(this.output);
         this.cultivator(FABlocks.WHITE_CULTIVATOR.get(), Items.WHITE_DYE, Blocks.WHITE_STAINED_GLASS);
         this.cultivator(FABlocks.ORANGE_CULTIVATOR.get(), Items.ORANGE_DYE, Blocks.ORANGE_STAINED_GLASS);
         this.cultivator(FABlocks.MAGENTA_CULTIVATOR.get(), Items.MAGENTA_DYE, Blocks.MAGENTA_STAINED_GLASS);
@@ -223,6 +226,7 @@ public class FARecipeProvider extends RecipeProvider {
         this.cultivate(CultivationBookCategory.EGG, FAItems.ICHTHYOSAURUS_DNA.get(), FAItems.ICHTHYOSAURUS_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.DRYOSAURUS_DNA.get(), FAItems.DRYOSAURUS_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.BARYONYX_DNA.get(), FAItems.BARYONYX_EGG.get(), 6000);
+        this.cultivate(CultivationBookCategory.EGG, FAItems.ISOTELUS_DNA.get(), FAItems.ISOTELUS_EGGS.get(), 6000);
         this.cultivate(CultivationBookCategory.PLANT, FAItems.CYCAD_DNA.get(), FAItems.CYCAD_CONE.get(), 6000);
         this.cultivate(CultivationBookCategory.PLANT, FAItems.HORSETAIL_DNA.get(), FAItems.HORSETAIL_SPORE.get(), 6000);
         this.cultivate(CultivationBookCategory.PLANT, FAItems.JURASSIC_FERN_DNA.get(), FAItems.JURASSIC_FERN_SPORES.get(), 6000);
@@ -255,7 +259,11 @@ public class FARecipeProvider extends RecipeProvider {
         this.archaeology(ArchaeologyBookCategory.REPAIR, "stone_javelin_repair", FAItems.BROKEN_STONE_JAVELIN.get(), FAItems.STONE_JAVELIN.get(), 3000);
         this.archaeology(ArchaeologyBookCategory.REPAIR, "wooden_javelin_repair", FAItems.BROKEN_WOODEN_JAVELIN.get(), FAItems.WOODEN_JAVELIN.get(), 3000);
 
+        this.roughAnalyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.CENOZOIC_FOSSIL.get(), FAAnalyzerResultTags.CENOZOIC_FOSSIL_RESULTS, 100);
         this.roughAnalyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.MESOZOIC_FOSSIL.get(), FAAnalyzerResultTags.MESOZOIC_FOSSIL_RESULTS, 100);
+        this.roughAnalyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.PALAEOZOIC_FOSSIL.get(), FAAnalyzerResultTags.PALAEOZOIC_FOSSIL_RESULTS, 100);
+        this.roughAnalyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.MOSQUITO_IN_AMBER.get(), FAAnalyzerResultTags.MOSQUITO_IN_AMBER_RESULTS, 100);
+        this.roughAnalyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.LEECH_IN_ICE.get(), FAAnalyzerResultTags.LEECH_IN_ICE_RESULTS, 100);
         this.roughAnalyzation(AnalyzationBookCategory.PALAEOBOTANY, FAItems.PLANT_FOSSIL.get(), FAAnalyzerResultTags.PLANT_FOSSIL_RESULTS, 100);
         this.analyzation(AnalyzationBookCategory.ARCHAEOLOGY, FAItems.RELIC_SCRAP.get(), FAAnalyzerResultTags.RELIC_SCRAP_RESULTS, 100);
         this.roughAnalyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.FROZEN_MEAT.get(), FAAnalyzerResultTags.FROZEN_MEAT_RESULTS, 100);

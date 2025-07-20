@@ -31,12 +31,16 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
     @Override
     public void run() {
         this.createBlockFamilies(FABlockFamilies.getAllFamilies());
-        this.createFossil(FABlocks.FOSSIL_ORE.get(), false, "shells", "raptor_leg", "tyrannosaurus_skull");
-        this.createFossil(FABlocks.DEEPSLATE_FOSSIL_ORE.get(), true, "shells", "anomalocaris", "trilobite");
+        this.createTrivialCube(FABlocks.CENOZOIC_FOSSIL_ORE.get());
+        this.createTrivialCube(FABlocks.MESOZOIC_FOSSIL_ORE.get());
+        this.createTrivialCube(FABlocks.PALAEOZOIC_FOSSIL_ORE.get());
+        this.createTrivialCube(FABlocks.DEEPSLATE_CENOZOIC_FOSSIL_ORE.get());
+        this.createTrivialCube(FABlocks.DEEPSLATE_MESOZOIC_FOSSIL_ORE.get());
+        this.createTrivialCube(FABlocks.DEEPSLATE_PALAEOZOIC_FOSSIL_ORE.get());
         this.createSkull(FABlocks.SKULL_BLOCK.get(), this.modLocation("block/skull_front"));
         this.createSkull(FABlocks.SKULL_LANTERN_BLOCK.get(), this.modLocation("block/skull_lantern_front"));
         this.createAnalyzer(FABlocks.ANALYZER.get());
-        this.createAnalyzer(FABlocks.DNA_CODER.get());
+        this.createDNACoder(FABlocks.DNA_CODER.get());
         this.createDNAHybridizer(FABlocks.DNA_HYBRIDIZER.get());
         this.createCultivator(FABlocks.WHITE_CULTIVATOR.get(), "white");
         this.createCultivator(FABlocks.ORANGE_CULTIVATOR.get(), "orange");
@@ -180,7 +184,15 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
     }
 
     private void createAnalyzer(Block analyzer) {
-        this.createActiveType(analyzer, ModelTemplates.CUBE.create(analyzer, new TextureMapping().put(TextureSlot.DOWN, this.modLocation("block/analyzer_top")).put(TextureSlot.EAST, this.modLocation("block/analyzer_side")).put(TextureSlot.NORTH, this.modLocation("block/analyzer_front_off")).put(TextureSlot.PARTICLE, this.modLocation("block/analyzer_side")).put(TextureSlot.SOUTH, this.modLocation("block/analyzer_back")).put(TextureSlot.UP, this.modLocation("block/analyzer_top")).put(TextureSlot.WEST, this.modLocation("block/analyzer_side")), this.modelOutput), ModelTemplates.CUBE.create(ModelLocationUtils.getModelLocation(analyzer).withSuffix("_active"), new TextureMapping().put(TextureSlot.DOWN, this.modLocation("block/analyzer_top")).put(TextureSlot.EAST, this.modLocation("block/analyzer_side")).put(TextureSlot.NORTH, this.modLocation("block/analyzer_front_on")).put(TextureSlot.PARTICLE, this.modLocation("block/analyzer_side")).put(TextureSlot.SOUTH, this.modLocation("block/analyzer_back")).put(TextureSlot.UP, this.modLocation("block/analyzer_top")).put(TextureSlot.WEST, this.modLocation("block/analyzer_side")), this.modelOutput), FABlockStateProperties.ACTIVE, true);
+        ResourceLocation inactive = ModelTemplates.CUBE.create(analyzer, new TextureMapping().put(TextureSlot.DOWN, this.modLocation("block/analyzer_top")).put(TextureSlot.EAST, this.modLocation("block/analyzer_side")).put(TextureSlot.NORTH, this.modLocation("block/analyzer_front_off")).put(TextureSlot.PARTICLE, this.modLocation("block/analyzer_side")).put(TextureSlot.SOUTH, this.modLocation("block/analyzer_back")).put(TextureSlot.UP, this.modLocation("block/analyzer_top")).put(TextureSlot.WEST, this.modLocation("block/analyzer_side")), this.modelOutput);
+        ResourceLocation active = ModelTemplates.CUBE.createWithSuffix(analyzer, "_active", new TextureMapping().put(TextureSlot.DOWN, this.modLocation("block/analyzer_top")).put(TextureSlot.EAST, this.modLocation("block/analyzer_side")).put(TextureSlot.NORTH, this.modLocation("block/analyzer_front_on")).put(TextureSlot.PARTICLE, this.modLocation("block/analyzer_side")).put(TextureSlot.SOUTH, this.modLocation("block/analyzer_back")).put(TextureSlot.UP, this.modLocation("block/analyzer_top")).put(TextureSlot.WEST, this.modLocation("block/analyzer_side")), this.modelOutput);
+        this.createActiveType(analyzer, inactive, active, FABlockStateProperties.ACTIVE, true);
+    }
+
+    private void createDNACoder(Block dnaCoder) {
+        ResourceLocation inactive = ModelTemplates.CUBE.create(dnaCoder, new TextureMapping().put(TextureSlot.DOWN, this.modLocation("block/dna_coder_top")).put(TextureSlot.EAST, this.modLocation("block/dna_coder_side")).put(TextureSlot.NORTH, this.modLocation("block/dna_coder_front_off")).put(TextureSlot.PARTICLE, this.modLocation("block/dna_coder_side")).put(TextureSlot.SOUTH, this.modLocation("block/dna_coder_back")).put(TextureSlot.UP, this.modLocation("block/dna_coder_top")).put(TextureSlot.WEST, this.modLocation("block/dna_coder_side")), this.modelOutput);
+        ResourceLocation active = ModelTemplates.CUBE.createWithSuffix(dnaCoder, "_active", new TextureMapping().put(TextureSlot.DOWN, this.modLocation("block/dna_coder_top")).put(TextureSlot.EAST, this.modLocation("block/dna_coder_side")).put(TextureSlot.NORTH, this.modLocation("block/dna_coder_front_on")).put(TextureSlot.PARTICLE, this.modLocation("block/dna_coder_side")).put(TextureSlot.SOUTH, this.modLocation("block/dna_coder_back")).put(TextureSlot.UP, this.modLocation("block/dna_coder_top")).put(TextureSlot.WEST, this.modLocation("block/dna_coder_side")), this.modelOutput);
+        this.createActiveType(dnaCoder, inactive, active, FABlockStateProperties.ACTIVE, true);
     }
 
     private void createDNAHybridizer(Block dnaHybridizer) {

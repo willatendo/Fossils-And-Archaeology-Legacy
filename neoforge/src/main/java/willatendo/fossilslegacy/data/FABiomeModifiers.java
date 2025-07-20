@@ -21,10 +21,14 @@ public final class FABiomeModifiers {
     public static void bootstrap(BootstrapContext<BiomeModifier> bootstapContext) {
         HolderGetter<Biome> biomes = bootstapContext.lookup(Registries.BIOME);
         HolderGetter<PlacedFeature> placedFeatures = bootstapContext.lookup(Registries.PLACED_FEATURE);
-        HolderSet<PlacedFeature> oreFossil = HolderSet.direct(placedFeatures.getOrThrow(FAPlacedFeatures.ORE_FOSSIL));
+        HolderSet<PlacedFeature> oreCenozoicFossil = HolderSet.direct(placedFeatures.getOrThrow(FAPlacedFeatures.ORE_CENOZOIC_FOSSIL));
+        HolderSet<PlacedFeature> oreMesozoicFossil = HolderSet.direct(placedFeatures.getOrThrow(FAPlacedFeatures.ORE_MESOZOIC_FOSSIL));
+        HolderSet<PlacedFeature> orePalaeozoicFossil = HolderSet.direct(placedFeatures.getOrThrow(FAPlacedFeatures.ORE_PALAEOZOIC_FOSSIL));
         HolderSet<PlacedFeature> orePermafrost = HolderSet.direct(placedFeatures.getOrThrow(FAPlacedFeatures.ORE_PERMAFROST));
         HolderSet<Biome> isOverworld = biomes.getOrThrow(BiomeTags.IS_OVERWORLD);
-        bootstapContext.register(FABiomeModifiers.createBiomeModifier("add_ore_fossil"), new BiomeModifiers.AddFeaturesBiomeModifier(isOverworld, oreFossil, GenerationStep.Decoration.UNDERGROUND_ORES));
+        bootstapContext.register(FABiomeModifiers.createBiomeModifier("add_ore_cenozoic_fossil"), new BiomeModifiers.AddFeaturesBiomeModifier(isOverworld, oreCenozoicFossil, GenerationStep.Decoration.UNDERGROUND_ORES));
+        bootstapContext.register(FABiomeModifiers.createBiomeModifier("add_ore_mesozoic_fossil"), new BiomeModifiers.AddFeaturesBiomeModifier(isOverworld, oreMesozoicFossil, GenerationStep.Decoration.UNDERGROUND_ORES));
+        bootstapContext.register(FABiomeModifiers.createBiomeModifier("add_ore_palaeozoic_fossil"), new BiomeModifiers.AddFeaturesBiomeModifier(isOverworld, orePalaeozoicFossil, GenerationStep.Decoration.UNDERGROUND_ORES));
         bootstapContext.register(FABiomeModifiers.createBiomeModifier("add_ore_permafrost"), new BiomeModifiers.AddFeaturesBiomeModifier(isOverworld, orePermafrost, GenerationStep.Decoration.UNDERGROUND_ORES));
         bootstapContext.register(FABiomeModifiers.createBiomeModifier("add_nautilus_spawn"), BiomeModifiers.AddSpawnsBiomeModifier.singleSpawn(biomes.getOrThrow(BiomeTags.HAS_OCEAN_RUIN_WARM), new MobSpawnSettings.SpawnerData(FAEntityTypes.NAUTILUS.get(), 1, 1, 1)));
     }

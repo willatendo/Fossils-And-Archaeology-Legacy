@@ -93,8 +93,12 @@ public final class FACreativeModeTabs {
         output.accept(FABlocks.WAXED_EXPOSED_COPPER_LLAMA_STATUE.get());
         output.accept(FABlocks.WAXED_WEATHERED_COPPER_LLAMA_STATUE.get());
         output.accept(FABlocks.WAXED_OXIDIZED_COPPER_LLAMA_STATUE.get());
-        output.accept(FABlocks.FOSSIL_ORE.get());
-        output.accept(FABlocks.DEEPSLATE_FOSSIL_ORE.get());
+        output.accept(FABlocks.CENOZOIC_FOSSIL_ORE.get());
+        output.accept(FABlocks.MESOZOIC_FOSSIL_ORE.get());
+        output.accept(FABlocks.PALAEOZOIC_FOSSIL_ORE.get());
+        output.accept(FABlocks.DEEPSLATE_CENOZOIC_FOSSIL_ORE.get());
+        output.accept(FABlocks.DEEPSLATE_MESOZOIC_FOSSIL_ORE.get());
+        output.accept(FABlocks.DEEPSLATE_PALAEOZOIC_FOSSIL_ORE.get());
         output.accept(FABlocks.PERMAFROST.get());
         output.accept(FABlocks.ICED_STONE.get());
         output.accept(FABlocks.SMALL_CAGE.get());
@@ -286,6 +290,7 @@ public final class FACreativeModeTabs {
     }).build());
     public static final SimpleHolder<CreativeModeTab> FA_PALAEONTOLOGY_ITEMS = CREATIVE_MODE_TABS.register("fa_palaeontology_items", () -> SimpleUtils.create(FAUtils.ID, "fa_palaeontology_items", FAItems.TRICERATOPS_EGG::get, (itemDisplayParameters, output) -> {
         DNAItem.addDNAItem(output, FAItems.DIMETRODON_DNA.get());
+        DNAItem.addDNAItem(output, FAItems.ISOTELUS_DNA.get());
         DNAItem.addDNAItem(output, FAItems.ANKYLOSAURUS_DNA.get());
         DNAItem.addDNAItem(output, FAItems.BARYONYX_DNA.get());
         DNAItem.addDNAItem(output, FAItems.BRACHIOSAURUS_DNA.get());
@@ -345,6 +350,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.FUTABASAURUS_EGG.get());
         output.accept(FAItems.GALLIMIMUS_EGG.get());
         output.accept(FAItems.ICHTHYOSAURUS_EGG.get());
+        output.accept(FAItems.ISOTELUS_EGGS.get());
         output.accept(FAItems.MOSASAURUS_EGG.get());
         output.accept(FAItems.PACHYCEPHALOSAURUS_EGG.get());
         output.accept(FAItems.PTERANODON_EGG.get());
@@ -581,6 +587,9 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.MESOZOIC_FOSSIL.get());
         output.accept(FAItems.PALAEOZOIC_FOSSIL.get());
         output.accept(FAItems.PLANT_FOSSIL.get());
+        output.accept(FAItems.AMBER.get());
+        output.accept(FAItems.MOSQUITO_IN_AMBER.get());
+        output.accept(FAItems.LEECH_IN_ICE.get());
         output.accept(FAItems.FROZEN_MEAT.get());
         output.accept(FAItems.STORAGE_DISC.get());
         output.accept(FAItems.BLANK_DNA.get());
@@ -634,6 +643,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.GALLIMIMUS_SPAWN_EGG.get());
         output.accept(FAItems.ICHTHYOSAURUS_SPAWN_EGG.get());
         output.accept(FAItems.ISOTELUS_SPAWN_EGG.get());
+        output.accept(FAItems.ISOTELUS_LARVA_SPAWN_EGG.get());
         output.accept(FAItems.MAMMOTH_SPAWN_EGG.get());
         output.accept(FAItems.MOA_SPAWN_EGG.get());
         output.accept(FAItems.MOSASAURUS_SPAWN_EGG.get());

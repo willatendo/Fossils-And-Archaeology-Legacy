@@ -1,0 +1,8 @@
+{
+  "type": "fossilslegacy:analyzation",
+  "category": "palaeontology",
+  "creates_pure_dna": false,
+  "fuels": "fossilslegacy:cenozoic_fossil_results",
+  "ingredient": "fossilslegacy:cenozoic_fossil",
+  "time": 100
+}

@@ -1,0 +1,49 @@
+{
+  "elements": [
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 0,
+          "x_dimension": 2.0,
+          "x_origin": -1.0,
+          "y_dimension": 2.0,
+          "y_origin": -2.0,
+          "z_dimension": 4.0,
+          "z_origin": -2.0
+        },
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 5,
+          "x_dimension": 0.0,
+          "x_origin": -1.0,
+          "y_dimension": 1.0,
+          "y_origin": -1.0,
+          "z_dimension": 1.0,
+          "z_origin": -3.0
+        },
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 6,
+          "x_dimension": 0.0,
+          "x_origin": 1.0,
+          "y_dimension": 1.0,
+          "y_origin": -1.0,
+          "z_dimension": 1.0,
+          "z_origin": -3.0
+        }
+      ],
+      "id": "body",
+      "poses": {
+        "x": 0.0,
+        "x_rot": 0.0,
+        "y": 24.0,
+        "y_rot": 0.0,
+        "z": 0.0,
+        "z_rot": 0.0
+      }
+    }
+  ],
+  "texture_height": 16,
+  "texture_width": 16
+}

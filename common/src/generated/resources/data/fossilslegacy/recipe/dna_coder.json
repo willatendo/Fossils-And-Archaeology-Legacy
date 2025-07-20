@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "minecraft:iron_ingot",
+    "$": "minecraft:redstone",
+    "%": "minecraft:diamond"
+  },
+  "pattern": [
+    "#%#",
+    "#$#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:dna_coder"
+  }
+}

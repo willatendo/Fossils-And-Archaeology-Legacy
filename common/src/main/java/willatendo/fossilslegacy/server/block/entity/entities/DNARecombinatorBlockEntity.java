@@ -16,17 +16,15 @@ import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import willatendo.fossilslegacy.server.block.DNARecombinatorMode;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.menu.menus.DNARecombinatorMenu;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public class DNARecombinatorBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, StackedContentsCompatible {
-    private static final int[] SLOTS_FOR_UP = {0, 5, 11, 12, 13, 14, 15};
-    private static final int[] SLOTS_FOR_DOWN = {1, 6, 7, 8, 9, 10, 16};
+    private static final int[] SLOTS_FOR_UP = {0};
+    private static final int[] SLOTS_FOR_DOWN = {1};
     private static final int[] SLOTS_FOR_SIDES = {2, 3, 4};
-    protected NonNullList<ItemStack> itemStacks = NonNullList.withSize(17, ItemStack.EMPTY);
-    public DNARecombinatorMode mode = DNARecombinatorMode.COSMETICS;
+    protected NonNullList<ItemStack> itemStacks = NonNullList.withSize(5, ItemStack.EMPTY);
 
     public DNARecombinatorBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(FABlockEntityTypes.DNA_RECOMBINATOR.get(), blockPos, blockState);
@@ -35,7 +33,6 @@ public class DNARecombinatorBlockEntity extends BaseContainerBlockEntity impleme
     @Override
     protected void loadAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
         super.loadAdditional(compoundTag, provider);
-        this.mode = DNARecombinatorMode.load(compoundTag);
         this.itemStacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
         ContainerHelper.loadAllItems(compoundTag, this.itemStacks, provider);
     }
@@ -43,7 +40,6 @@ public class DNARecombinatorBlockEntity extends BaseContainerBlockEntity impleme
     @Override
     protected void saveAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
         super.saveAdditional(compoundTag, provider);
-        this.mode.save(compoundTag);
         ContainerHelper.saveAllItems(compoundTag, this.itemStacks, provider);
     }
 
@@ -58,7 +54,7 @@ public class DNARecombinatorBlockEntity extends BaseContainerBlockEntity impleme
 
     @Override
     public boolean canPlaceItemThroughFace(int slot, ItemStack itemStack, Direction direction) {
-        return this.mode.contains(slot) ? this.canPlaceItem(slot, itemStack) : false;
+        return this.canPlaceItem(slot, itemStack);
     }
 
     @Override

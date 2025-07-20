@@ -1,7 +1,11 @@
 {
   "values": [
-    "fossilslegacy:fossil_ore",
-    "fossilslegacy:deepslate_fossil_ore",
+    "fossilslegacy:cenozoic_fossil_ore",
+    "fossilslegacy:mesozoic_fossil_ore",
+    "fossilslegacy:palaeozoic_fossil_ore",
+    "fossilslegacy:deepslate_cenozoic_fossil_ore",
+    "fossilslegacy:deepslate_mesozoic_fossil_ore",
+    "fossilslegacy:deepslate_palaeozoic_fossil_ore",
     "fossilslegacy:skull_block",
     "fossilslegacy:skull_lantern_block",
     "fossilslegacy:analyzer",

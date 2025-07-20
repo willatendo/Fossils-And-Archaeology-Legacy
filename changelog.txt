@@ -29,9 +29,15 @@
 - Articulated Fossils Can Now Be Articulated Joint-By-Joint Using Hammers
 - Changed Palaeontologist Trades From DNA To Spores/Cones
 - Reduced Jurassic Fern Spores Chance Of Filling A Composter from 65% to 35%
-- Fossils Are Now Called Mesozoic Fossils
+- Fossil Now Called Mesozoic Fossil
 - Mesozoic Fossils Now Longer Give Plant DNA (Plant Fossils Replace This Function)
 - DNA Now Has Purity And Modifications That Impact Chance of Successful Incubation
+- Dimetrodon DNA Now Only Comes From Palaeozoic Fossils
+- Cleaned Up LootOneItemOfManyRandom, Now LootRandomItem, changed some language, may affect data-packs
+- Fossil Ore Now Called Mesozoic Fossil Ore
+- Fossil Ore Now Drops the Following, Drops 30% Mesozoic Fossil, 60% Bone, 10% Skull
+- Deepslate Fossil Ore Now Called Deepslate Mesozoic Fossil Ore
+- Deepslate Fossil Ore Now Drops the Following, Drops 30% Mesozoic Fossil, 60% Bone, 10% Skull
 - Added Archaeology Category For Analyzer Recipe Book
 - Added Palaeontology Category For Analyzer Recipe Book
 - Added Mosasaurus Skeleton
@@ -171,6 +177,10 @@
 - Added DNA Hybridizer
 - Added Cenozoic Fossil
 - Added Palaeozoic Fossil
+- Added Cenozoic Fossil Ore (Drops 30% Cenozoic Fossil, 60% Bone, 10% Skull)
+- Added Palaeozoic Fossil Ore (Drops 30% Palaeozoic Fossil, 60% Bone, 10% Skull)
+- Added Deepslate Cenozoic Fossil Ore (Drops 30% Cenozoic Fossil, 60% Bone, 10% Skull)
+- Added Deepslate Palaeozoic Fossil Ore (Drops 30% Palaeozoic Fossil, 60% Bone, 10% Skull)
 27/2/2024 1.4.9
 - Fixed Tooth Dagger Not Shearing All Shearables
 - Fixed Mayan Vase Not Wobbling

@@ -1,0 +1,64 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "predicates": {
+                      "minecraft:enchantments": [
+                        {
+                          "enchantments": "minecraft:silk_touch",
+                          "levels": {
+                            "min": 1
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "name": "fossilslegacy:deepslate_palaeozoic_fossil_ore"
+            },
+            {
+              "type": "fossilslegacy:random_item",
+              "conditions": [
+                {
+                  "condition": "minecraft:survives_explosion"
+                }
+              ],
+              "fuels": [
+                {
+                  "hit_from": 0,
+                  "hit_to": 30,
+                  "item": "fossilslegacy:palaeozoic_fossil"
+                },
+                {
+                  "hit_from": 30,
+                  "hit_to": 90,
+                  "item": "minecraft:bone"
+                },
+                {
+                  "hit_from": 90,
+                  "hit_to": 100,
+                  "item": "fossilslegacy:skull_block"
+                }
+              ],
+              "max_weight": 100
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "fossilslegacy:blocks/deepslate_palaeozoic_fossil_ore"
+}

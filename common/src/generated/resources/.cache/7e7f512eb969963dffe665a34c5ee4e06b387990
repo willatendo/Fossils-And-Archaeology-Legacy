@@ -1,4 +1,4 @@
-// 1.21.4	2025-07-16T17:02:52.9403725	Tags for minecraft:block mod id fossilslegacy
+// 1.21.4	2025-07-19T00:12:09.2664934	Tags for minecraft:block mod id fossilslegacy
 8fed1c7774e26d293c99e32105efe5a57c3a9c50 data/fossilslegacy/tags/block/araucaria_logs.json
 362a23698630e3353e7d1dc805d0198527d13961 data/fossilslegacy/tags/block/archaeopteris_logs.json
 80e160a91f3744e8cb737cde249c3d4059ae1424 data/fossilslegacy/tags/block/calamites_logs.json
@@ -46,9 +46,9 @@ ff9b281b9a16648420ec54ace1183217c76bfa6c data/fossilslegacy/tags/block/spawnable
 7736f2bff836c94f947b7b2944fbfa73ca843b32 data/minecraft/tags/block/leaves.json
 43c927760a5fde3d1f4c8ed7ece60f4874567eeb data/minecraft/tags/block/logs_that_burn.json
 74ede164910c8de890320e6433f120103f7e2717 data/minecraft/tags/block/mineable/axe.json
-ec94df96772f86ee94a6259f13aeefb96f026635 data/minecraft/tags/block/mineable/pickaxe.json
+849a8e2da5e7995ca03b48850b26edafed729730 data/minecraft/tags/block/mineable/pickaxe.json
 8dd9337b2a202f40f3cb253ecea1f5a37ccc12ba data/minecraft/tags/block/mineable/shovel.json
-b618667772fbc412a6446fad6a3619c27d66d734 data/minecraft/tags/block/needs_iron_tool.json
+61c558a7f59beecc48619a96d55ab0677cc5ed15 data/minecraft/tags/block/needs_iron_tool.json
 43c927760a5fde3d1f4c8ed7ece60f4874567eeb data/minecraft/tags/block/overworld_natural_logs.json
 77ae8a7687f5c89f78e769d74c312316e693de60 data/minecraft/tags/block/planks.json
 79f238eb9bb12a0c08632eaa1452467143f3637e data/minecraft/tags/block/saplings.json

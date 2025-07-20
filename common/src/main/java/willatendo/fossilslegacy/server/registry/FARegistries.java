@@ -12,6 +12,7 @@ import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.feeder_food.FeederFood;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 import willatendo.fossilslegacy.server.fuel.FuelEntry;
+import willatendo.fossilslegacy.server.gene.Gene;
 import willatendo.fossilslegacy.server.jewel_recovery.JewelRecovery;
 import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.pattern.information.PatternInformationType;
@@ -33,6 +34,7 @@ public final class FARegistries {
     public static final ResourceKey<Registry<FeederFood>> FEEDER_FOOD = ResourceKey.createRegistryKey(FAUtils.resource("feeder_food"));
     public static final ResourceKey<Registry<FossilVariant>> FOSSIL_VARIANTS = ResourceKey.createRegistryKey(FAUtils.resource("fossil_variants"));
     public static final ResourceKey<Registry<FuelEntry>> FUEL_ENTRY = ResourceKey.createRegistryKey(FAUtils.resource("fuel_entry"));
+    public static final ResourceKey<Registry<Gene>> GENE = ResourceKey.createRegistryKey(FAUtils.resource("gene"));
     public static final ResourceKey<Registry<JewelRecovery>> JEWEL_RECOVERY = ResourceKey.createRegistryKey(FAUtils.resource("jewel_recovery"));
     public static final ResourceKey<Registry<ModelType>> MODEL_TYPES = ResourceKey.createRegistryKey(FAUtils.resource("model_types"));
     public static final ResourceKey<Registry<Pattern>> PATTERN = ResourceKey.createRegistryKey(FAUtils.resource("pattern"));

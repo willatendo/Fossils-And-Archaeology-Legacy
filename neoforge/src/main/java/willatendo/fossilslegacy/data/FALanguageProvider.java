@@ -11,12 +11,15 @@ import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakerType;
 import willatendo.fossilslegacy.server.fossil_variant.FAFossilVariants;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
+import willatendo.fossilslegacy.server.gene.FAGenes;
+import willatendo.fossilslegacy.server.gene.Gene;
 import willatendo.fossilslegacy.server.item.FACreativeModeTabs;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
 import willatendo.fossilslegacy.server.level.FAGameRules;
 import willatendo.fossilslegacy.server.model_type.FAModelTypes;
 import willatendo.fossilslegacy.server.model_type.ModelType;
+import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 import willatendo.fossilslegacy.server.stats.FAStats;
 import willatendo.fossilslegacy.server.tags.*;
 import willatendo.simplelibrary.data.SimpleLanguageProvider;
@@ -149,8 +152,12 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("advancements.fossilslegacy.legacy.time_machine.desc", "Travel to the past (without art theft)!");
 
         // Blocks
-        this.add(FABlocks.FOSSIL_ORE.get());
-        this.add(FABlocks.DEEPSLATE_FOSSIL_ORE.get());
+        this.add(FABlocks.CENOZOIC_FOSSIL_ORE.get());
+        this.add(FABlocks.MESOZOIC_FOSSIL_ORE.get());
+        this.add(FABlocks.PALAEOZOIC_FOSSIL_ORE.get());
+        this.add(FABlocks.DEEPSLATE_CENOZOIC_FOSSIL_ORE.get());
+        this.add(FABlocks.DEEPSLATE_MESOZOIC_FOSSIL_ORE.get());
+        this.add(FABlocks.DEEPSLATE_PALAEOZOIC_FOSSIL_ORE.get());
         this.add(FABlocks.SKULL_BLOCK.get());
         this.add(FABlocks.SKULL_LANTERN_BLOCK.get());
         this.add(FABlocks.ANALYZER.get());
@@ -397,7 +404,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("container.fossilslegacy.dna_coder", "DNA Coder");
         this.add("container.fossilslegacy.dna_hybridizer", "DNA Hybridizer");
         this.add("container.fossilslegacy.dna_recombinator", "DNA Recombinator");
-        this.add("container.fossilslegacy.dna_recombinator.apply_gene.tutorial", "Use '%s' to apply gene.");
+        this.add("container.fossilslegacy.dna_recombinator.apply_genes.tutorial", "Use '%s' to apply selected genes.");
+        this.add("container.fossilslegacy.dna_recombinator.attributes", "Attribute Genes");
+        this.add("container.fossilslegacy.dna_recombinator.cosmetics", "Cosmetic Genes");
         this.add("container.fossilslegacy.dna_recombinator.navigation", "%s/%s");
         this.add("container.fossilslegacy.dna_recombinator.none", "N/A");
         this.add("container.fossilslegacy.dna_recombinator.no_genome_applicable", "No Applicable Genome");
@@ -406,6 +415,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("container.fossilslegacy.dna_recombinator.navigate_left.tutorial", "Use '%s' to navigate left.");
         this.add("container.fossilslegacy.dna_recombinator.navigate_right.tutorial", "Use '%s' to navigate right.");
         this.add("container.fossilslegacy.dna_recombinator.navigate_up.tutorial", "Use '%s' to navigate up.");
+        this.add("container.fossilslegacy.dna_recombinator.select_attribute.tutorial", "Click on genes to select them.");
+        this.add("container.fossilslegacy.dna_recombinator.slot", "Slot %s");
         this.add("container.fossilslegacy.dna_recombinator.tab.cosmetics", "Cosmetics");
         this.add("container.fossilslegacy.dna_recombinator.tab.attributes", "Attributes");
         this.add("container.fossilslegacy.dna_recombinator.tab.hybridization", "Hybridization");
@@ -476,6 +487,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAEntityTypes.ELASMOTHERIUM.get());
         this.add(FAEntityTypes.FUTABASAURUS.get());
         this.add(FAEntityTypes.ISOTELUS.get());
+        this.add(FAEntityTypes.ISOTELUS_LARVA.get());
         this.add(FAEntityTypes.MOA.get());
         this.add(FAEntityTypes.MAMMOTH.get());
         this.add(FAEntityTypes.MOSASAURUS.get());
@@ -638,6 +650,12 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAGameRules.RULE_DOANIMALHUNGER, "Do animals get hungry");
         this.add(FAGameRules.RULE_DOANIMALGROWTH, "Do animals grow");
 
+        // Genes
+        this.add(FAGenes.ARMOR.get(), "Armor");
+        this.add(FAGenes.ATTACK.get(), "Attack");
+        this.add(FAGenes.HEALTH.get(), "Health");
+        this.add(FAGenes.SPEED.get(), "Speed");
+
         // JEI
         this.add("gui.jei.category.registry.coat_types", "Coat Types");
         this.add("gui.jei.category.tagInformation.coat_types", "Coat Types");
@@ -647,6 +665,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.MESOZOIC_FOSSIL.get());
         this.add(FAItems.PALAEOZOIC_FOSSIL.get());
         this.add(FAItems.PLANT_FOSSIL.get());
+        this.add(FAItems.AMBER.get());
+        this.add(FAItems.MOSQUITO_IN_AMBER.get(), "Mosquito in Amber");
+        this.add(FAItems.LEECH_IN_ICE.get(), "Leech in Ice");
         this.add(FAItems.TRICERATOPS_DNA.get(), "Triceratops DNA");
         this.add(FAItems.VELOCIRAPTOR_DNA.get(), "Velociraptor DNA");
         this.add(FAItems.TYRANNOSAURUS_DNA.get(), "Tyrannosaurus DNA");
@@ -670,6 +691,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.DRYOSAURUS_DNA.get(), "Dryosaurus DNA");
         this.add(FAItems.ELASMOTHERIUM_DNA.get(), "Elasmotherium DNA");
         this.add(FAItems.BARYONYX_DNA.get(), "Baryonyx DNA");
+        this.add(FAItems.ISOTELUS_DNA.get(), "Isotelus DNA");
         this.add(FAItems.CYCAD_DNA.get());
         this.add(FAItems.HORSETAIL_DNA.get());
         this.add(FAItems.JURASSIC_FERN_DNA.get());
@@ -711,6 +733,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.ICHTHYOSAURUS_EGG.get());
         this.add(FAItems.DRYOSAURUS_EGG.get());
         this.add(FAItems.BARYONYX_EGG.get());
+        this.add(FAItems.ISOTELUS_EGGS.get());
         this.add(FAItems.RAW_TRICERATOPS.get());
         this.add(FAItems.RAW_VELOCIRAPTOR.get());
         this.add(FAItems.RAW_TYRANNOSAURUS.get());
@@ -809,6 +832,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.DODO_DNA.get(), "Dodo DNA");
         this.add(FAItems.MOA_DNA.get(), "Moa DNA");
         this.add("item.fossilslegacy.dna.era", "Era: %s");
+        this.add("item.fossilslegacy.dna.genetic_code", "Genetic Code: %s");
         this.add("item.fossilslegacy.dna.period", "Period: %s");
         this.add("item.fossilslegacy.dna.purity", "Purity: %s");
         this.add("item.fossilslegacy.dna.model_type", "Model Type: %s");
@@ -982,6 +1006,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.DIMETRODON_SPAWN_EGG.get());
         this.add(FAItems.ICHTHYOSAURUS_SPAWN_EGG.get());
         this.add(FAItems.ISOTELUS_SPAWN_EGG.get());
+        this.add(FAItems.ISOTELUS_LARVA_SPAWN_EGG.get());
         this.add(FAItems.ELASMOTHERIUM_SPAWN_EGG.get());
         this.add(FAItems.DRYOSAURUS_SPAWN_EGG.get());
         this.add(FAItems.BARYONYX_SPAWN_EGG.get());
@@ -1247,7 +1272,11 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("subtitles.item.magic_conch.blow", "Magic conch blow");
 
         // Tags
+        this.add(FAAnalyzerResultTags.CENOZOIC_FOSSIL_RESULTS, "Cenozoic Fossil Results");
         this.add(FAAnalyzerResultTags.MESOZOIC_FOSSIL_RESULTS, "Mesozoic Fossil Results");
+        this.add(FAAnalyzerResultTags.PALAEOZOIC_FOSSIL_RESULTS, "Palaeozoic Fossil Results");
+        this.add(FAAnalyzerResultTags.MOSQUITO_IN_AMBER_RESULTS, "Mosquito in Amber Results");
+        this.add(FAAnalyzerResultTags.LEECH_IN_ICE_RESULTS, "Leech in Ice Results");
         this.add(FAAnalyzerResultTags.PLANT_FOSSIL_RESULTS, "Plant Fossil Results");
         this.add(FAAnalyzerResultTags.RELIC_SCRAP_RESULTS, "Relic Scrap Results");
         this.add(FAAnalyzerResultTags.FROZEN_MEAT_RESULTS, "Frozen Meat Results");
@@ -1464,6 +1493,10 @@ public class FALanguageProvider extends SimpleLanguageProvider {
 
         // Upgrades
         this.add("upgrade.fossilslegacy.scarab_gem_upgrade", "Scarab Gem Upgrade");
+    }
+
+    public void add(Gene gene, String translation) {
+        this.add(gene.getDescriptionID(), translation);
     }
 
     public void add(SpeakerType<?> speakerType, String translation) {
