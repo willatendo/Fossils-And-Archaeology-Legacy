@@ -46,7 +46,7 @@ public class Ankylosaurus extends Dinosaur implements DinopediaInformation, Ride
     }
 
     public static AttributeSupplier ankylosaurusAttributes() {
-        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 25.0F).add(Attributes.ARMOR, 2.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 4.0D).build();
+        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 3.0F).add(Attributes.ARMOR, 1.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 2.0D).build();
     }
 
     @Override
@@ -56,7 +56,7 @@ public class Ankylosaurus extends Dinosaur implements DinopediaInformation, Ride
 
     @Override
     public float maxUpStep() {
-        return DinosaurUtils.getStepHeights(8, 0.5F, 1.5F)[this.getGrowthStage()];
+        return DinosaurUtils.getStepHeights(this.getMaxGrowthStage(), 0.5F, 1.5F)[this.getGrowthStage()];
     }
 
     @Override
@@ -80,13 +80,13 @@ public class Ankylosaurus extends Dinosaur implements DinopediaInformation, Ride
     }
 
     @Override
-    public double getMinHealth() {
-        return 10.0F;
+    public Diet getDiet() {
+        return Diet.herbivore(this.level());
     }
 
     @Override
-    public Diet getDiet() {
-        return Diet.herbivore(this.level());
+    public float[] healthPerGrowthStage() {
+        return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 3.0F, 30.0F);
     }
 
     @Override

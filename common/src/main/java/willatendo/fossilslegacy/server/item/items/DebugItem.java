@@ -39,14 +39,14 @@ public class DebugItem extends Item {
 
     public static BiFunction<Dinosaur, Player, InteractionResult> debugFullGrown() {
         return (dinosaur, player) -> {
-            dinosaur.setGrowthStage(dinosaur.getMaxGrowthStage());
+            dinosaur.setGrowthStage(dinosaur.getMaxGrowthStage(), true);
             return InteractionResult.SUCCESS;
         };
     }
 
     public static BiFunction<Dinosaur, Player, InteractionResult> debugBaby() {
         return (dinosaur, player) -> {
-            dinosaur.setGrowthStage(0);
+            dinosaur.setGrowthStage(0, true);
             return InteractionResult.SUCCESS;
         };
     }

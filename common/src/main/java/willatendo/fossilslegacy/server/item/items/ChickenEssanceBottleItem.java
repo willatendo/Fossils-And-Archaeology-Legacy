@@ -18,8 +18,7 @@ public class ChickenEssanceBottleItem extends DrinkingGlassBottleItem {
     public InteractionResult interactLivingEntity(ItemStack itemStack, Player player, LivingEntity livingEntity, InteractionHand interactionHand) {
         if (livingEntity instanceof GrowingEntity growingEntity) {
             if (growingEntity.getGrowthStage() < growingEntity.getMaxGrowthStage()) {
-                growingEntity.setGrowthStage(growingEntity.getGrowthStage() + 1);
-                livingEntity.setHealth((float) (livingEntity.getHealth() + growingEntity.getMinHealth()));
+                growingEntity.setGrowthStage(growingEntity.getGrowthStage() + 1, true);
                 ItemUtils.createFilledResult(itemStack, player, Items.GLASS_BOTTLE.getDefaultInstance());
                 return InteractionResult.SUCCESS;
             }

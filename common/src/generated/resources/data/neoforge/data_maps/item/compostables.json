@@ -27,6 +27,9 @@
     "fossilslegacy:calamites_spore": {
       "chance": 0.35
     },
+    "fossilslegacy:cooksonia_spores": {
+      "chance": 0.35
+    },
     "fossilslegacy:cycad_cone": {
       "chance": 0.35
     },

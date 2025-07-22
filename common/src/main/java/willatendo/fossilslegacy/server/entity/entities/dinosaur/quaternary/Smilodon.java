@@ -30,6 +30,7 @@ import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.entity.goals.*;
 import willatendo.fossilslegacy.server.entity.util.Diet;
+import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.AnimatedSittingEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
@@ -55,7 +56,7 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, ShakingE
     }
 
     public static AttributeSupplier smilodonAttributes() {
-        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.23D).add(Attributes.ATTACK_DAMAGE, 5.0D).build();
+        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 5.0F).add(Attributes.MOVEMENT_SPEED, 0.23D).add(Attributes.ATTACK_DAMAGE, 5.0D).build();
     }
 
     @Override
@@ -91,13 +92,13 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, ShakingE
     }
 
     @Override
-    public double getMinHealth() {
-        return 8.0D;
+    public Diet getDiet() {
+        return Diet.carnivore(this.level());
     }
 
     @Override
-    public Diet getDiet() {
-        return Diet.carnivore(this.level());
+    public float[] healthPerGrowthStage() {
+        return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 5.0F, 20.0F);
     }
 
     @Override

@@ -129,6 +129,7 @@ public class FARecipeProvider extends RecipeProvider {
         this.shaped(RecipeCategory.MISC, FAItems.FLARE_BODY.get()).pattern("#$").pattern("$#").define('#', Items.RED_DYE).define('$', Items.IRON_INGOT).unlockedBy(RecipeProvider.getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
         this.shaped(RecipeCategory.MISC, FAItems.FLARE.get()).pattern(" #@").pattern("#$#").pattern("$# ").define('#', Items.RED_DYE).define('$', Items.IRON_INGOT).define('@', Items.GUNPOWDER).unlockedBy(RecipeProvider.getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
         this.shaped(RecipeCategory.MISC, FAItems.FLARE.get()).pattern("#@").pattern("$#").define('#', Items.RED_DYE).define('$', FAItems.FLARE_BODY.get()).define('@', Items.GUNPOWDER).unlockedBy(RecipeProvider.getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output, FAUtils.resource("renew_flare").toString());
+        this.shapeless(RecipeCategory.TOOLS, FAItems.USER_MANUEL.get()).requires(Items.PAPER, 3).requires(Items.STRING).unlockedBy(RecipeProvider.getHasName(Items.STRING), this.has(Items.STRING)).save(this.output);
         this.shaped(RecipeCategory.TOOLS, FAItems.STORAGE_DISC.get()).pattern("#$#").pattern("$%$").pattern("#$#").define('#', Items.IRON_NUGGET).define('$', Items.IRON_INGOT).define('%', ItemTags.WOOL).unlockedBy(RecipeProvider.getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
         this.shapeless(RecipeCategory.MISC, FAItems.BLANK_DNA.get()).requires(FAItemTags.DNA).requires(Ingredient.of(itemRegistries.getOrThrow(ItemTags.MEAT)), 2).requires(Items.ROTTEN_FLESH).unlockedBy(RecipeProvider.getHasName(Items.ROTTEN_FLESH), this.has(Items.ROTTEN_FLESH)).save(this.output);
 
@@ -228,6 +229,7 @@ public class FARecipeProvider extends RecipeProvider {
         this.cultivate(CultivationBookCategory.EGG, FAItems.BARYONYX_DNA.get(), FAItems.BARYONYX_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.ISOTELUS_DNA.get(), FAItems.ISOTELUS_EGGS.get(), 6000);
         this.cultivate(CultivationBookCategory.PLANT, FAItems.CYCAD_DNA.get(), FAItems.CYCAD_CONE.get(), 6000);
+        this.cultivate(CultivationBookCategory.PLANT, FAItems.COOKSONIA_DNA.get(), FAItems.COOKSONIA_SPORES.get(), 6000);
         this.cultivate(CultivationBookCategory.PLANT, FAItems.HORSETAIL_DNA.get(), FAItems.HORSETAIL_SPORE.get(), 6000);
         this.cultivate(CultivationBookCategory.PLANT, FAItems.JURASSIC_FERN_DNA.get(), FAItems.JURASSIC_FERN_SPORES.get(), 6000);
         this.cultivate(CultivationBookCategory.PLANT, FAItems.LEPIDODENDRON_DNA.get(), FAItems.LEPIDODENDRON_CONE.get(), 6000);

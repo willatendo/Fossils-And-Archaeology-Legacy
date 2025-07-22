@@ -48,7 +48,7 @@ public class DNARecombinatorMenu extends AbstractContainerMenu {
             }
         });
 
-        this.addSlot(new ResultSlot(player, DNARecombinatorBlockEntity, 1, 68, 22));
+        this.addSlot(new ResultSlot(this.player, DNARecombinatorBlockEntity, 1, 68, 22));
 
         this.geneticSlots[0] = this.addSlot(new GeneticCodeSlot(DNARecombinatorBlockEntity, 2, 178, 18));
         this.geneticSlots[1] = this.addSlot(new GeneticCodeSlot(DNARecombinatorBlockEntity, 3, 178, 36));

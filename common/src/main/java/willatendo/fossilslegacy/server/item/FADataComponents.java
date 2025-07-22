@@ -10,6 +10,7 @@ import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.Unit;
 import willatendo.fossilslegacy.server.command_type.CommandType;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
+import willatendo.fossilslegacy.server.gene.GeneHolder;
 import willatendo.fossilslegacy.server.item.data_components.CosmeticGeneticInformation;
 import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.pattern.pattern.PatternHolder;
@@ -27,6 +28,7 @@ public final class FADataComponents {
     public static final SimpleHolder<DataComponentType<CosmeticGeneticInformation>> COSMETIC_GENETIC_INFORMATION = DATA_COMPONENT_TYPES.register("cosmetic_genetic_information", () -> DataComponentType.<CosmeticGeneticInformation>builder().persistent(CosmeticGeneticInformation.CODEC).networkSynchronized(CosmeticGeneticInformation.STREAM_CODEC).cacheEncoding().build());
     public static final SimpleHolder<DataComponentType<Holder<FossilVariant>>> FOSSIL_VARIANT = DATA_COMPONENT_TYPES.register("fossil_variant", () -> DataComponentType.<Holder<FossilVariant>>builder().persistent(FossilVariant.CODEC).networkSynchronized(FossilVariant.STREAM_CODEC).cacheEncoding().build());
     public static final SimpleHolder<DataComponentType<UUID>> GENETIC_CODE = DATA_COMPONENT_TYPES.register("genetic_code", () -> DataComponentType.<UUID>builder().persistent(UUIDUtil.CODEC).networkSynchronized(UUIDUtil.STREAM_CODEC).cacheEncoding().build());
+    public static final SimpleHolder<DataComponentType<GeneHolder>> GENE_HOLDER = DATA_COMPONENT_TYPES.register("gene_holder", () -> DataComponentType.<GeneHolder>builder().persistent(GeneHolder.CODEC).networkSynchronized(GeneHolder.STREAM_CODEC).cacheEncoding().build());
     public static final SimpleHolder<DataComponentType<Holder<ModelType>>> MODEL_TYPE = DATA_COMPONENT_TYPES.register("model_type", () -> DataComponentType.<Holder<ModelType>>builder().persistent(ModelType.CODEC).networkSynchronized(ModelType.STREAM_CODEC).cacheEncoding().build());
     public static final SimpleHolder<DataComponentType<PatternHolder>> PATTERN_HOLDER = DATA_COMPONENT_TYPES.register("pattern_holder", () -> DataComponentType.<PatternHolder>builder().persistent(PatternHolder.CODEC).networkSynchronized(PatternHolder.STREAM_CODEC).cacheEncoding().build());
     public static final SimpleHolder<DataComponentType<Integer>> PURITY = DATA_COMPONENT_TYPES.register("purity", () -> DataComponentType.<Integer>builder().persistent(ExtraCodecs.intRange(1, 100)).networkSynchronized(ByteBufCodecs.VAR_INT).cacheEncoding().build());

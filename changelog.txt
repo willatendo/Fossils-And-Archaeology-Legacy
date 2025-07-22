@@ -7,6 +7,7 @@
 - Fixed All Dinosaur And Fossil Shadows
 - Fixed "Caution: Dangerous" Tag In Dinopedia Not Working Properly
 - Fixed Analyzer Not Giving Light Level On When
+- Fixed Spinosaurus Dropping Stegosaurus Meat
 - Mammoth Shearing Is Done By Loot Table
 - Cultivator Recipes Now Unlocked By Acquiring Water Buckets
 - Llama Statue Recipes Now In One Group In Recipe Book
@@ -38,6 +39,8 @@
 - Fossil Ore Now Drops the Following, Drops 30% Mesozoic Fossil, 60% Bone, 10% Skull
 - Deepslate Fossil Ore Now Called Deepslate Mesozoic Fossil Ore
 - Deepslate Fossil Ore Now Drops the Following, Drops 30% Mesozoic Fossil, 60% Bone, 10% Skull
+- Adjusted All Dinosaur Stats, Now Defaults To Baby Stats, Changes As They Grow
+- All Dinosaurs Drop More Meat As They Age
 - Added Archaeology Category For Analyzer Recipe Book
 - Added Palaeontology Category For Analyzer Recipe Book
 - Added Mosasaurus Skeleton
@@ -181,6 +184,7 @@
 - Added Palaeozoic Fossil Ore (Drops 30% Palaeozoic Fossil, 60% Bone, 10% Skull)
 - Added Deepslate Cenozoic Fossil Ore (Drops 30% Cenozoic Fossil, 60% Bone, 10% Skull)
 - Added Deepslate Palaeozoic Fossil Ore (Drops 30% Palaeozoic Fossil, 60% Bone, 10% Skull)
+- Added Cooksonia
 27/2/2024 1.4.9
 - Fixed Tooth Dagger Not Shearing All Shearables
 - Fixed Mayan Vase Not Wobbling

@@ -93,12 +93,12 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
     }
 
     public static AttributeSupplier mammothAttributes() {
-        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 24.0F).add(Attributes.MOVEMENT_SPEED, 0.23D).add(Attributes.ATTACK_DAMAGE, 3.0D).build();
+        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 5.0F).add(Attributes.MOVEMENT_SPEED, 0.23D).add(Attributes.ATTACK_DAMAGE, 3.0D).build();
     }
 
     @Override
     public float maxUpStep() {
-        return DinosaurUtils.getStepHeights(8, 0.5F, 1.5F)[this.getGrowthStage()];
+        return DinosaurUtils.getStepHeights(this.getMaxGrowthStage(), 0.5F, 1.5F)[this.getGrowthStage()];
     }
 
     @Override
@@ -137,6 +137,11 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
     @Override
     public Diet getDiet() {
         return Diet.herbivore(this.level());
+    }
+
+    @Override
+    public float[] healthPerGrowthStage() {
+        return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 5.0F, 30.0F);
     }
 
     public int getSwingTick() {

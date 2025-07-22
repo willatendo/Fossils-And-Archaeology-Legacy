@@ -82,9 +82,9 @@ public class DinosaurSpawnEggItem extends SpawnEggItem {
                 Entity entity = entityType.create(serverLevel, EntitySpawnReason.SPAWN_ITEM_USE);
                 if (entity instanceof Dinosaur dinosaur) {
                     if (!player.isCrouching()) {
-                        dinosaur.setGrowthStage(dinosaur.getMaxGrowthStage());
+                        dinosaur.setGrowthStage(dinosaur.getMaxGrowthStage(), true);
                     } else {
-                        dinosaur.setGrowthStage(0);
+                        dinosaur.setGrowthStage(0, true);
                     }
                 }
                 if (entity instanceof Mob mob) {
@@ -123,7 +123,7 @@ public class DinosaurSpawnEggItem extends SpawnEggItem {
                 Entity entity = entityType.spawn(serverLevel, itemStack, player, blockPos, EntitySpawnReason.SPAWN_ITEM_USE, false, false);
                 if (entity instanceof Dinosaur dinosaur) {
                     if (!player.isCrouching()) {
-                        dinosaur.setGrowthStage(dinosaur.getMaxGrowthStage());
+                        dinosaur.setGrowthStage(dinosaur.getMaxGrowthStage(), true);
                     }
                 }
                 if (entity == null) {

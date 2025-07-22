@@ -24,7 +24,13 @@ public final class FAModelTemplates {
     public static final ExtendedModelTemplate TEMPLATE_MEDIUM_CAGE_TOP_OPEN_RIGHT = FAModelTemplates.create("template_medium_cage_top_open_right").renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_CYCAD_HEAD_CONE = FAModelTemplates.create("template_cycad_head_cone", TextureSlot.SIDE, TextureSlot.TOP, FATextureSlot.LEAVES, FATextureSlot.HEAD).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_CYCAD_HEAD_NO_CONE = FAModelTemplates.create("template_cycad_head_no_cone", TextureSlot.SIDE, TextureSlot.TOP, FATextureSlot.LEAVES).renderType("cutout").build();
-    public static final ExtendedModelTemplate TEMPLATE_CYCAD_LOG = FAModelTemplates.create("template_cycad_log", TextureSlot.SIDE, TextureSlot.TOP).build();
+    public static final ExtendedModelTemplate TEMPLATE_CYCAD_LOG_1 = FAModelTemplates.create("template_cycad_log_1", TextureSlot.SIDE, TextureSlot.TOP).build();
+    public static final ExtendedModelTemplate TEMPLATE_CYCAD_LOG_2 = FAModelTemplates.create("template_cycad_log_2", TextureSlot.SIDE, TextureSlot.TOP).build();
+    public static final ExtendedModelTemplate TEMPLATE_CYCAD_LOG_3 = FAModelTemplates.create("template_cycad_log_3", TextureSlot.SIDE, TextureSlot.TOP).build();
+    public static final ExtendedModelTemplate TEMPLATE_COOKSONIA_1 = FAModelTemplates.create("template_cooksonia_1", TextureSlot.TEXTURE).build();
+    public static final ExtendedModelTemplate TEMPLATE_COOKSONIA_2 = FAModelTemplates.create("template_cooksonia_2", TextureSlot.TEXTURE).build();
+    public static final ExtendedModelTemplate TEMPLATE_COOKSONIA_3 = FAModelTemplates.create("template_cooksonia_3", TextureSlot.TEXTURE).build();
+    public static final ExtendedModelTemplate TEMPLATE_COOKSONIA_4 = FAModelTemplates.create("template_cooksonia_4", TextureSlot.TEXTURE).build();
     public static final ExtendedModelTemplate TEMPLATE_DECORATION_PLAQUE_POST = FAModelTemplates.create("template_decoration_plaque_post", FATextureSlot.POST).build();
     public static final ExtendedModelTemplate TEMPLATE_PLANT_1 = FAModelTemplates.create("template_plant_1", FATextureSlot.PLANT_1).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_PLANT_2 = FAModelTemplates.create("template_plant_2", FATextureSlot.PLANT_2).renderType("cutout").build();

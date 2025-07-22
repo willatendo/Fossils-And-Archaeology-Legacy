@@ -55,7 +55,7 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
     }
 
     public static AttributeSupplier futabasaurusAttributes() {
-        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 16.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 3.0D).build();
+        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 5.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 3.0D).build();
     }
 
     public static boolean checkFutabasaurusSpawnRules(EntityType<Futabasaurus> entityType, ServerLevelAccessor serverLevelAccessor, EntitySpawnReason entitySpawnReason, BlockPos blockPos, RandomSource randomSource) {
@@ -69,7 +69,7 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
 
     @Override
     public float maxUpStep() {
-        return DinosaurUtils.getStepHeights(12, 0.5F, 1.0F)[this.getGrowthStage()];
+        return DinosaurUtils.getStepHeights(this.getMaxGrowthStage(), 0.5F, 1.0F)[this.getGrowthStage()];
     }
 
     @Override
@@ -93,13 +93,13 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
     }
 
     @Override
-    public double getMinHealth() {
-        return 4.0D;
+    public Diet getDiet() {
+        return Diet.piscivore(this.level());
     }
 
     @Override
-    public Diet getDiet() {
-        return Diet.piscivore(this.level());
+    public float[] healthPerGrowthStage() {
+        return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 5.0F, 10.0F);
     }
 
     @Override

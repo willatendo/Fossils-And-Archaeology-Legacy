@@ -1,0 +1,7 @@
+{
+  "parent": "fossilslegacy:block/template_cycad_log_2",
+  "textures": {
+    "side": "fossilslegacy:block/cycad_log",
+    "top": "fossilslegacy:block/cycad_log_top_2"
+  }
+}

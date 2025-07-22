@@ -27,6 +27,7 @@ import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.entity.goals.*;
 import willatendo.fossilslegacy.server.entity.util.Diet;
+import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.FloatDownEntity;
@@ -46,7 +47,7 @@ public class Dodo extends Dinosaur implements DinopediaInformation, FloatDownEnt
     }
 
     public static AttributeSupplier dodoAttributes() {
-        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 4.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).build();
+        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 2.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).build();
     }
 
     @Override
@@ -82,13 +83,13 @@ public class Dodo extends Dinosaur implements DinopediaInformation, FloatDownEnt
     }
 
     @Override
-    public double getMinHealth() {
-        return 4.0F;
+    public Diet getDiet() {
+        return Diet.herbivore(this.level());
     }
 
     @Override
-    public Diet getDiet() {
-        return Diet.herbivore(this.level());
+    public float[] healthPerGrowthStage() {
+        return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 2.0F, 4.0F);
     }
 
     @Override

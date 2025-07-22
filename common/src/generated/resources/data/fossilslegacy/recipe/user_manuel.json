@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:paper",
+    "minecraft:paper",
+    "minecraft:paper",
+    "minecraft:string"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:user_manuel"
+  }
+}

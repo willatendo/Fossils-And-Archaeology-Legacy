@@ -94,6 +94,7 @@ public final class FAFeederFoods {
     public static final ResourceKey<FeederFood> ARCHAEOPTERIS_SPORE = FAFeederFoods.create("archaeopteris_spore");
     public static final ResourceKey<FeederFood> CALAMITES_SPORE = FAFeederFoods.create("calamites_spore");
     public static final ResourceKey<FeederFood> CYCAD_CONE = FAFeederFoods.create("cycad_cone");
+    public static final ResourceKey<FeederFood> COOKSONIA_SPORES = FAFeederFoods.create("cooksonia_spores");
     public static final ResourceKey<FeederFood> GINKGO_SEED = FAFeederFoods.create("ginkgo_seed");
     public static final ResourceKey<FeederFood> HORSETAIL_SPORE = FAFeederFoods.create("horsetail_spore");
     public static final ResourceKey<FeederFood> JURASSIC_FERN_SPORES = FAFeederFoods.create("jurassic_fern_spores");
@@ -194,6 +195,7 @@ public final class FAFeederFoods {
         register(bootstrapContext, ARCHAEOPTERIS_SPORE, FAItems.ARCHAEOPTERIS_SPORE.get(), 25, FeederFood.FillType.PLANT);
         register(bootstrapContext, CALAMITES_SPORE, FAItems.CALAMITES_SPORE.get(), 25, FeederFood.FillType.PLANT);
         register(bootstrapContext, CYCAD_CONE, FAItems.CYCAD_CONE.get(), 25, FeederFood.FillType.PLANT);
+        register(bootstrapContext, COOKSONIA_SPORES, FAItems.COOKSONIA_SPORES.get(), 25, FeederFood.FillType.PLANT);
         register(bootstrapContext, GINKGO_SEED, FAItems.GINKGO_SEED.get(), 25, FeederFood.FillType.PLANT);
         register(bootstrapContext, HORSETAIL_SPORE, FAItems.HORSETAIL_SPORE.get(), 25, FeederFood.FillType.PLANT);
         register(bootstrapContext, JURASSIC_FERN_SPORES, FAItems.JURASSIC_FERN_SPORES.get(), 25, FeederFood.FillType.PLANT);

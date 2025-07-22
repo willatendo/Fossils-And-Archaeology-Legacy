@@ -8,6 +8,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import willatendo.fossilslegacy.server.gene.GeneHolder;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
 import willatendo.fossilslegacy.server.model_type.ModelType;
@@ -51,6 +52,10 @@ public class AnimalDNAItem extends DNAItem {
         if (itemStack.has(FADataComponents.PATTERN_HOLDER.get())) {
             PatternHolder patternHolder = itemStack.get(FADataComponents.PATTERN_HOLDER.get());
             tooltipComponents.add(FAUtils.translation("item", "dna.skin", patternHolder.getDisplayName()).withStyle(ChatFormatting.GRAY));
+        }
+        if (itemStack.has(FADataComponents.GENE_HOLDER.get())) {
+            GeneHolder geneHolder = itemStack.get(FADataComponents.GENE_HOLDER.get());
+            geneHolder.addTooltips(tooltipComponents);
         }
     }
 }

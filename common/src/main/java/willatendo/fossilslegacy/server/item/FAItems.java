@@ -67,6 +67,7 @@ public final class FAItems {
     public static final SimpleHolder<AnimalDNAItem> BARYONYX_DNA = ITEMS.registerItem("baryonyx_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.CRETACEOUS, FAEntityTypes.BARYONYX::get, FAModelTypeTags.BARYONYX, properties));
     public static final SimpleHolder<AnimalDNAItem> ISOTELUS_DNA = ITEMS.registerItem("isotelus_dna", properties -> new AnimalDNAItem(GeologicalTimeScale.Period.ORDOVICIAN, FAEntityTypes.ISOTELUS::get, FAModelTypeTags.ISOTELUS, properties));
     public static final SimpleHolder<PlantDNAItem> CYCAD_DNA = ITEMS.registerItem("cycad_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.QUATERNARY, properties));
+    public static final SimpleHolder<PlantDNAItem> COOKSONIA_DNA = ITEMS.registerItem("cooksonia_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.SILURIAN, properties));
     public static final SimpleHolder<PlantDNAItem> HORSETAIL_DNA = ITEMS.registerItem("horsetail_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.QUATERNARY, properties));
     public static final SimpleHolder<PlantDNAItem> JURASSIC_FERN_DNA = ITEMS.registerItem("jurassic_fern_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.JURASSIC, properties));
     public static final SimpleHolder<PlantDNAItem> LEPIDODENDRON_DNA = ITEMS.registerItem("lepidodendron_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.PERMIAN, properties));
@@ -77,12 +78,15 @@ public final class FAItems {
     public static final SimpleHolder<PlantDNAItem> ARAUCARIA_DNA = ITEMS.registerItem("araucaria_dna", properties -> new PlantDNAItem(GeologicalTimeScale.Period.JURASSIC, properties));
     public static final SimpleHolder<StorageDiscItem> STORAGE_DISC = ITEMS.registerItem("storage_disc", StorageDiscItem::new);
     public static final SimpleHolder<SeedItem> CYCAD_CONE = ITEMS.registerItem("cycad_cone", properties -> new SeedItem(FABlocks.CYCAD_HEAD.get(), properties.useItemDescriptionPrefix()));
+    public static final SimpleHolder<SeedItem> COOKSONIA_SPORES = ITEMS.registerItem("cooksonia_spores", properties -> new SeedItem(FABlocks.COOKSONIA.get(), properties.useItemDescriptionPrefix()));
     public static final SimpleHolder<SeedItem> LEPIDODENDRON_CONE = ITEMS.registerItem("lepidodendron_cone", properties -> new SeedItem(FABlocks.LEPIDODENDRON_SAPLING.get(), properties.useItemDescriptionPrefix()));
     public static final SimpleHolder<SeedItem> SIGILLARIA_SPORE = ITEMS.registerItem("sigillaria_spore", properties -> new SeedItem(FABlocks.SIGILLARIA_SAPLING.get(), properties.useItemDescriptionPrefix()));
     public static final SimpleHolder<SeedItem> CALAMITES_SPORE = ITEMS.registerItem("calamites_spore", properties -> new SeedItem(FABlocks.CALAMITES_SAPLING.get(), properties.useItemDescriptionPrefix()));
     public static final SimpleHolder<SeedItem> ARCHAEOPTERIS_SPORE = ITEMS.registerItem("archaeopteris_spore", properties -> new SeedItem(FABlocks.ARCHAEOPTERIS_SAPLING.get(), properties));
     public static final SimpleHolder<SeedItem> GINKGO_SEED = ITEMS.registerItem("ginkgo_seed", properties -> new SeedItem(FABlocks.GINKGO_SAPLING.get(), properties));
     public static final SimpleHolder<SeedItem> ARAUCARIA_CONE = ITEMS.registerItem("araucaria_cone", properties -> new SeedItem(FABlocks.ARAUCARIA_SAPLING.get(), properties));
+    public static final SimpleHolder<SeedItem> HORSETAIL_SPORE = ITEMS.registerItem("horsetail_spore", properties -> new SeedItem(FABlocks.SHORT_HORSETAIL.get(), properties.useItemDescriptionPrefix()));
+    public static final SimpleHolder<SeedItem> JURASSIC_FERN_SPORES = ITEMS.registerItem("jurassic_fern_spores", properties -> new SeedItem(FABlocks.JURASSIC_FERN.get(), properties.useItemDescriptionPrefix()));
     public static final SimpleHolder<EggItem> TRICERATOPS_EGG = ITEMS.registerItem("triceratops_egg", properties -> new EggItem(FAEntityTypes.TRICERATOPS_EGG::get, GeologicalTimeScale.Period.CRETACEOUS, FAModelTypeTags.NON_LEGACY_TRICERATOPS, properties.stacksTo(1)));
     public static final SimpleHolder<EggItem> VELOCIRAPTOR_EGG = ITEMS.registerItem("velociraptor_egg", properties -> new VelociraptorEggItem(GeologicalTimeScale.Period.CRETACEOUS, properties.stacksTo(1)));
     public static final SimpleHolder<EggItem> TYRANNOSAURUS_EGG = ITEMS.registerItem("tyrannosaurus_egg", properties -> new EggItem(FAEntityTypes.TYRANNOSAURUS_EGG::get, GeologicalTimeScale.Period.CRETACEOUS, FAModelTypeTags.NON_LEGACY_TYRANNOSAURUS, properties.stacksTo(1)));
@@ -228,8 +232,6 @@ public final class FAItems {
     public static final SimpleHolder<AnimalEggItem> DODO_EGG = ITEMS.registerItem("dodo_egg", properties -> new AnimalEggItem(GeologicalTimeScale.Period.QUATERNARY, FAEntityTypes.DODO::get, false, FAModelTypeTags.DODO, properties.stacksTo(16)));
     public static final SimpleHolder<AnimalEggItem> INCUBATED_MOA_EGG = ITEMS.registerItem("incubated_moa_egg", properties -> new AnimalEggItem(GeologicalTimeScale.Period.QUATERNARY, FAEntityTypes.MOA::get, true, FAModelTypeTags.MOA, properties.stacksTo(16)));
     public static final SimpleHolder<AnimalEggItem> MOA_EGG = ITEMS.registerItem("moa_egg", properties -> new AnimalEggItem(GeologicalTimeScale.Period.QUATERNARY, FAEntityTypes.MOA::get, false, FAModelTypeTags.MOA, properties.stacksTo(16)));
-    public static final SimpleHolder<SeedItem> HORSETAIL_SPORE = ITEMS.registerItem("horsetail_spore", properties -> new SeedItem(FABlocks.SHORT_HORSETAIL.get(), properties.useItemDescriptionPrefix()));
-    public static final SimpleHolder<SeedItem> JURASSIC_FERN_SPORES = ITEMS.registerItem("jurassic_fern_spores", properties -> new SeedItem(FABlocks.JURASSIC_FERN.get(), properties.useItemDescriptionPrefix()));
     public static final SimpleHolder<ArticulatedFossilItem> ARTICULATED_FOSSIL = ITEMS.registerItem("articulated_fossil", properties -> FAModloaderHelper.INSTANCE.getArticulatedFossilItem(properties.stacksTo(1)));
     public static final SimpleHolder<Item> RELIC_SCRAP = ITEMS.registerItem("relic_scrap", Item::new);
     public static final SimpleHolder<DecorationPlaqueItem> WHITE_DECORATION_PLAQUE = ITEMS.registerItem("white_decoration_plaque", properties -> new DecorationPlaqueItem(FABlocks.WHITE_DECORATION_POST.get(), properties));
@@ -316,6 +318,7 @@ public final class FAItems {
     public static final SimpleHolder<BoltCutterItem> BOLT_CUTTER = ITEMS.registerItem("bolt_cutter", BoltCutterItem::new);
     public static final SimpleHolder<FlareItem> FLARE = ITEMS.registerItem("flare", FlareItem::new, new Item.Properties().durability(300));
     public static final SimpleHolder<Item> FLARE_BODY = ITEMS.registerItem("flare_body", Item::new);
+    public static final SimpleHolder<UserManualItem> USER_MANUEL = ITEMS.registerItem("user_manuel", UserManualItem::new, new Item.Properties().stacksTo(1));
     public static final SimpleHolder<PlaceEntityItem<Jeep>> JEEP_1993 = ITEMS.registerItem("1993_jeep", properties -> new PlaceEntityItem<>(FAEntityTypes.JEEP::get, properties));
     public static final SimpleHolder<SpawnEggItem> ANU_SPAWN_EGG = ITEMS.registerItem("anu_spawn_egg", properties -> new SpawnEggItem(FAEntityTypes.ANU.get(), properties));
     public static final SimpleHolder<SpawnEggItem> FAILURESAURUS_SPAWN_EGG = ITEMS.registerItem("failuresaurus_spawn_egg", properties -> new SpawnEggItem(FAEntityTypes.FAILURESAURUS.get(), properties));

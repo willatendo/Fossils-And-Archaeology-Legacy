@@ -1,7 +1,13 @@
 {
   "variants": {
-    "": {
-      "model": "fossilslegacy:block/cycad_log"
+    "size=1": {
+      "model": "fossilslegacy:block/cycad_log_1"
+    },
+    "size=2": {
+      "model": "fossilslegacy:block/cycad_log_2"
+    },
+    "size=3": {
+      "model": "fossilslegacy:block/cycad_log_3"
     }
   }
 }

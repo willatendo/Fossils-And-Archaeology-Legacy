@@ -46,7 +46,7 @@ public class Gallimimus extends Dinosaur implements DinopediaInformation, Rideab
     }
 
     public static AttributeSupplier gallimimusAttributes() {
-        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 10.0F).add(Attributes.MOVEMENT_SPEED, 0.35D).add(Attributes.ATTACK_DAMAGE, 1.0D).build();
+        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 5.0F).add(Attributes.MOVEMENT_SPEED, 0.35D).add(Attributes.ATTACK_DAMAGE, 1.0D).build();
     }
 
     @Override
@@ -56,7 +56,7 @@ public class Gallimimus extends Dinosaur implements DinopediaInformation, Rideab
 
     @Override
     public float maxUpStep() {
-        return DinosaurUtils.getStepHeights(8, 0.5F, 1.5F)[this.getGrowthStage()];
+        return DinosaurUtils.getStepHeights(this.getMaxGrowthStage(), 0.5F, 1.5F)[this.getGrowthStage()];
     }
 
     @Override
@@ -79,15 +79,14 @@ public class Gallimimus extends Dinosaur implements DinopediaInformation, Rideab
         return 8;
     }
 
-
-    @Override
-    public double getMinHealth() {
-        return 10.0F;
-    }
-
     @Override
     public Diet getDiet() {
         return Diet.omnivore(this.level());
+    }
+
+    @Override
+    public float[] healthPerGrowthStage() {
+        return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 5.0F, 20.0F);
     }
 
     @Override

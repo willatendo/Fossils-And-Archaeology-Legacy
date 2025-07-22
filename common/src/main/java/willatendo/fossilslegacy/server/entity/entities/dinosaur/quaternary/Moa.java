@@ -23,6 +23,7 @@ import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.entity.goals.*;
 import willatendo.fossilslegacy.server.entity.util.Diet;
+import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.item.FAItems;
@@ -40,7 +41,7 @@ public class Moa extends Dinosaur implements DinopediaInformation {
     }
 
     public static AttributeSupplier moaAttributes() {
-        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 15.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).build();
+        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 3.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).build();
     }
 
     @Override
@@ -66,13 +67,13 @@ public class Moa extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
-    public double getMinHealth() {
-        return 4.0F;
+    public Diet getDiet() {
+        return Diet.herbivore(this.level());
     }
 
     @Override
-    public Diet getDiet() {
-        return Diet.herbivore(this.level());
+    public float[] healthPerGrowthStage() {
+        return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 3.0F, 15.0F);
     }
 
     @Override

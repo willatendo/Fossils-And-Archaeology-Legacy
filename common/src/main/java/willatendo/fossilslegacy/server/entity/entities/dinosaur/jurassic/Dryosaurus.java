@@ -44,7 +44,7 @@ public class Dryosaurus extends Dinosaur implements DinopediaInformation {
 
     @Override
     public float maxUpStep() {
-        return DinosaurUtils.getStepHeights(8, 0.25F, 0.75F)[this.getGrowthStage()];
+        return DinosaurUtils.getStepHeights(this.getMaxGrowthStage(), 0.25F, 0.75F)[this.getGrowthStage()];
     }
 
 
@@ -63,15 +63,14 @@ public class Dryosaurus extends Dinosaur implements DinopediaInformation {
         return 8;
     }
 
-
-    @Override
-    public double getMinHealth() {
-        return 10.0F;
-    }
-
     @Override
     public Diet getDiet() {
         return Diet.herbivore(this.level());
+    }
+
+    @Override
+    public float[] healthPerGrowthStage() {
+        return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 5.0F, 20.0F);
     }
 
     @Override

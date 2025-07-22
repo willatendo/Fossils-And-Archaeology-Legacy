@@ -11,6 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.entity.entities.Egg;
+import willatendo.fossilslegacy.server.gene.GeneHolder;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
 import willatendo.fossilslegacy.server.model_type.ModelType;
@@ -59,11 +60,15 @@ public class EggItem extends PlaceEntityItem<Egg> {
         this.period.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
         if (itemStack.has(FADataComponents.MODEL_TYPE.get())) {
             Holder<ModelType> holder = itemStack.get(FADataComponents.MODEL_TYPE.get());
-            tooltipComponents.add(FAUtils.translation("item", "model_type", holder.value().displayInfo().modelName()).withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(FAUtils.translation("item", "dna.model_type", holder.value().displayInfo().modelName()).withStyle(ChatFormatting.GRAY));
         }
         if (itemStack.has(FADataComponents.PATTERN_HOLDER.get())) {
             PatternHolder patternHolder = itemStack.get(FADataComponents.PATTERN_HOLDER.get());
-            tooltipComponents.add(FAUtils.translation("item", "skin", patternHolder.getDisplayName()).withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(FAUtils.translation("item", "dna.skin", patternHolder.getDisplayName()).withStyle(ChatFormatting.GRAY));
+        }
+        if (itemStack.has(FADataComponents.GENE_HOLDER.get())) {
+            GeneHolder geneHolder = itemStack.get(FADataComponents.GENE_HOLDER.get());
+            geneHolder.addTooltips(tooltipComponents);
         }
         super.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
     }

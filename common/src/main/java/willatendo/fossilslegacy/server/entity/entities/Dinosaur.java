@@ -15,6 +15,7 @@ import net.minecraft.server.players.OldUsersConverter;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
@@ -22,6 +23,8 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -38,6 +41,7 @@ import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
 import willatendo.fossilslegacy.server.entity.util.Diet;
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.*;
+import willatendo.fossilslegacy.server.gene.GeneHolder;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.level.FAGameRules;
 import willatendo.fossilslegacy.server.model_type.ModelType;
@@ -61,6 +65,7 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
     private static final EntityDataAccessor<Integer> TRANQUILIZE_TIME = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> TRANQUILIZED = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.BOOLEAN);
     protected static final EntityDataAccessor<Optional<UUID>> OWNER = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.OPTIONAL_UUID);
+    protected final GeneHolder geneHolder = new GeneHolder();
     protected int internalClock = 0;
 
     public Dinosaur(EntityType<? extends Dinosaur> entityType, Level level) {
@@ -76,6 +81,16 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
 
     public abstract Diet getDiet();
 
+    public abstract float[] healthPerGrowthStage();
+
+    public void updateStatsOnGrowth(int growthStage) {
+        this.updateAttributeValue(Attributes.MAX_HEALTH, this.healthPerGrowthStage()[growthStage]);
+    }
+
+    protected void updateAttributeValue(Holder<Attribute> attribute, float value) {
+        this.getAttribute(attribute).setBaseValue(this.geneHolder.apply(attribute, value));
+    }
+
     public EntityType<Egg> getEggEntityType() {
         return null;
     }
@@ -90,10 +105,10 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
         return this.getOverridenName(super.getTypeName());
     }
 
-    @Override
+    /* @Override
     public double getEyeY() {
         return this.getDimensions(this.getPose()).eyeHeight();
-    }
+    }*/
 
     public float getBoundingBoxGrowth() {
         ModelType modelType = this.getModelType().value();
@@ -122,7 +137,7 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
 
         this.setHunger(this.getMaxHunger());
         if (EntitySpawnReason.isSpawner(entitySpawnReason) || entitySpawnReason == EntitySpawnReason.COMMAND || entitySpawnReason == EntitySpawnReason.MOB_SUMMONED || entitySpawnReason == EntitySpawnReason.NATURAL || entitySpawnReason == EntitySpawnReason.CHUNK_GENERATION) {
-            this.setGrowthStage(this.getMaxGrowthStage());
+            this.setGrowthStage(this.getMaxGrowthStage(), true);
         }
         this.refreshDimensions();
         this.setCommand(FACommandTypes.FREE_MOVE);
@@ -164,6 +179,16 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
     }
 
     @Override
+    public boolean shouldDropExperience() {
+        return true;
+    }
+
+    @Override
+    protected boolean shouldDropLoot() {
+        return true;
+    }
+
+    @Override
     public void tick() {
         if (!this.isNoAi()) {
             this.tranquilizedTick();
@@ -186,8 +211,7 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
                 if (this.getGrowthStage() < this.getMaxGrowthStage()) {
                     if (this.internalClock % Level.TICKS_PER_DAY == 0) {
                         if (this.hasSpace()) {
-                            this.setGrowthStage(this.getGrowthStage() + 1);
-                            this.setHealth((float) (this.getHealth() + this.getMinHealth()));
+                            this.setGrowthStage(this.getGrowthStage() + 1, true);
                         } else {
                             this.sendMessageToOwnerOrElseAll(DinoSituation.NO_SPACE);
                         }
@@ -362,10 +386,17 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
     }
 
     @Override
-    public void setGrowthStage(int growthStage) {
-        this.entityData.set(GROWTH_STAGE, growthStage);
+    public void setGrowthStage(int growthStage, boolean resetHealth) {
+        int corrected = Mth.clamp(growthStage, 0, this.getMaxGrowthStage());
+        this.entityData.set(GROWTH_STAGE, corrected);
         this.reapplyPosition();
         this.refreshDimensions();
+        this.updateStatsOnGrowth(corrected);
+        if (resetHealth) {
+            this.setHealth(this.getMaxHealth());
+        }
+
+        this.xpReward = corrected;
     }
 
     @Override
@@ -493,6 +524,9 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
             compoundTag.putUUID("Owner", this.getOwnerUUID());
         }
 
+        CompoundTag geneHolder = new CompoundTag();
+        this.geneHolder.save(geneHolder);
+        compoundTag.put("gene_holder", geneHolder);
         this.addCosmeticsData(compoundTag, this.registryAccess());
         this.addCommandType(compoundTag, this.registryAccess());
         this.addTranquilizeData(compoundTag, this.registryAccess());
@@ -521,12 +555,13 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
             }
         }
 
+        this.geneHolder.load(compoundTag.getCompound("gene_holder"));
         this.readCosmeticsData(compoundTag, this.registryAccess());
         this.readCommandType(compoundTag, this.registryAccess());
         this.readTranquilizeData(compoundTag, this.registryAccess());
         this.setDaysAlive(compoundTag.getInt("DaysAlive"));
         this.setHunger(compoundTag.getInt("Hunger"));
-        this.setGrowthStage(compoundTag.getInt("GrowthStage"));
+        this.setGrowthStage(compoundTag.getInt("GrowthStage"), false);
         this.internalClock = compoundTag.getInt("InternalClock");
     }
 

@@ -233,6 +233,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("block.fossilslegacy.cage.incorrect_key", "Key does not fit!");
         this.add(FABlocks.CYCAD_HEAD.get());
         this.add(FABlocks.CYCAD_LOG.get());
+        this.add(FABlocks.COOKSONIA.get());
         this.add(FABlocks.LEPIDODENDRON_PLANKS.get());
         this.add(FABlocks.LEPIDODENDRON_SAPLING.get());
         this.add(FABlocks.LEPIDODENDRON_LOG.get());
@@ -693,6 +694,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.BARYONYX_DNA.get(), "Baryonyx DNA");
         this.add(FAItems.ISOTELUS_DNA.get(), "Isotelus DNA");
         this.add(FAItems.CYCAD_DNA.get());
+        this.add(FAItems.COOKSONIA_DNA.get());
         this.add(FAItems.HORSETAIL_DNA.get());
         this.add(FAItems.JURASSIC_FERN_DNA.get());
         this.add(FAItems.LEPIDODENDRON_DNA.get(), "Lepidodendron DNA");
@@ -705,6 +707,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.storage_disc.type", "Type: %s");
         this.add(FAItems.BLANK_DNA.get());
         this.add(FAItems.CYCAD_CONE.get());
+        this.add(FAItems.COOKSONIA_SPORES.get());
         this.add(FAItems.LEPIDODENDRON_CONE.get());
         this.add(FAItems.SIGILLARIA_SPORE.get());
         this.add(FAItems.CALAMITES_SPORE.get());
@@ -832,6 +835,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.DODO_DNA.get(), "Dodo DNA");
         this.add(FAItems.MOA_DNA.get(), "Moa DNA");
         this.add("item.fossilslegacy.dna.era", "Era: %s");
+        this.add("item.fossilslegacy.dna.gene", "%s: %s");
         this.add("item.fossilslegacy.dna.genetic_code", "Genetic Code: %s");
         this.add("item.fossilslegacy.dna.period", "Period: %s");
         this.add("item.fossilslegacy.dna.purity", "Purity: %s");
@@ -974,6 +978,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.BOLT_CUTTER.get());
         this.add(FAItems.FLARE.get());
         this.add(FAItems.FLARE_BODY.get());
+        this.add(FAItems.USER_MANUEL.get());
+        this.add("item.fossilslegacy.user_manuel.by", "By Willatendo");
 
         this.add(FAItems.JEEP_1993.get(), "1993 Jeep");
 

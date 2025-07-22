@@ -51,6 +51,7 @@ import willatendo.fossilslegacy.server.entity.goals.DinoOwnerHurtByTargetGoal;
 import willatendo.fossilslegacy.server.entity.goals.DinoOwnerHurtTargetGoal;
 import willatendo.fossilslegacy.server.entity.goals.IchthyosaurusJumpGoal;
 import willatendo.fossilslegacy.server.entity.util.Diet;
+import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.model_type.ModelType;
@@ -77,7 +78,7 @@ public class Ichthyosaurus extends Dinosaur implements DinopediaInformation {
     }
 
     public static AttributeSupplier ichthyosaurusAttributes() {
-        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 15.0F).add(Attributes.MOVEMENT_SPEED, 1.2000000476837158).add(Attributes.ATTACK_DAMAGE, 4.0D).build();
+        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 5.0F).add(Attributes.MOVEMENT_SPEED, 1.2000000476837158).add(Attributes.ATTACK_DAMAGE, 4.0D).build();
     }
 
     public static boolean checkIchthyosaurusSpawnRules(EntityType<Ichthyosaurus> entityType, ServerLevelAccessor serverLevelAccessor, EntitySpawnReason entitySpawnReason, BlockPos blockPos, RandomSource randomSource) {
@@ -114,6 +115,11 @@ public class Ichthyosaurus extends Dinosaur implements DinopediaInformation {
     @Override
     public Diet getDiet() {
         return Diet.piscivore(this.level());
+    }
+
+    @Override
+    public float[] healthPerGrowthStage() {
+        return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 5.0F, 25.0F);
     }
 
     @Override

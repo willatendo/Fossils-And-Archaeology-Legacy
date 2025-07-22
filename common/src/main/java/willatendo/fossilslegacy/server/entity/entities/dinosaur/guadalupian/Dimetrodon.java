@@ -46,7 +46,7 @@ public class Dimetrodon extends Dinosaur implements DinopediaInformation {
 
     @Override
     public float maxUpStep() {
-        return DinosaurUtils.getStepHeights(12, 0.5F, 1.0F)[this.getGrowthStage()];
+        return DinosaurUtils.getStepHeights(this.getMaxGrowthStage(), 0.5F, 1.0F)[this.getGrowthStage()];
     }
 
     @Override
@@ -57,6 +57,11 @@ public class Dimetrodon extends Dinosaur implements DinopediaInformation {
     @Override
     public Diet getDiet() {
         return Diet.carnivore(this.level());
+    }
+
+    @Override
+    public float[] healthPerGrowthStage() {
+        return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 5.0F, 30.0F);
     }
 
     @Override
@@ -102,11 +107,6 @@ public class Dimetrodon extends Dinosaur implements DinopediaInformation {
     @Override
     public int getMaxGrowthStage() {
         return 12;
-    }
-
-    @Override
-    public double getMinHealth() {
-        return 10.0F;
     }
 
     @Override

@@ -119,7 +119,7 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements DataDriv
                         }
                     }
                     if (animalToSpawn instanceof Dinosaur dinosaur) {
-                        dinosaur.setGrowthStage(0);
+                        dinosaur.setGrowthStage(0, true);
                     }
                     if (animalToSpawn instanceof TamesOnBirth tamesOnBirth) {
                         if (tamesOnBirth.tamesOnBirth()) {

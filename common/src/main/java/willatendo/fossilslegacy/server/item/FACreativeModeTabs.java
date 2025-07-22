@@ -105,6 +105,7 @@ public final class FACreativeModeTabs {
         output.accept(FABlocks.MEDIUM_CAGE.get());
         output.accept(FABlocks.CYCAD_HEAD.get());
         output.accept(FABlocks.CYCAD_LOG.get());
+        output.accept(FABlocks.COOKSONIA.get());
         output.accept(FABlocks.SHORT_HORSETAIL.get());
         output.accept(FABlocks.TALL_HORSETAIL.get());
         output.accept(FABlocks.JURASSIC_FERN.get());
@@ -451,6 +452,7 @@ public final class FACreativeModeTabs {
         DNAItem.addDNAItem(output, FAItems.JURASSIC_FERN_DNA.get());
         DNAItem.addDNAItem(output, FAItems.ARCHAEOPTERIS_DNA.get());
         DNAItem.addDNAItem(output, FAItems.CALAMITES_DNA.get());
+        DNAItem.addDNAItem(output, FAItems.COOKSONIA_DNA.get());
         DNAItem.addDNAItem(output, FAItems.LEPIDODENDRON_DNA.get());
         DNAItem.addDNAItem(output, FAItems.SIGILLARIA_DNA.get());
         output.accept(FAItems.CYCAD_CONE.get());
@@ -459,11 +461,13 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.JURASSIC_FERN_SPORES.get());
         output.accept(FAItems.ARCHAEOPTERIS_SPORE.get());
         output.accept(FAItems.CALAMITES_SPORE.get());
+        output.accept(FAItems.COOKSONIA_SPORES.get());
         output.accept(FAItems.GINKGO_SEED.get());
         output.accept(FAItems.LEPIDODENDRON_CONE.get());
         output.accept(FAItems.SIGILLARIA_SPORE.get());
         output.accept(FABlocks.CYCAD_HEAD.get());
         output.accept(FABlocks.CYCAD_LOG.get());
+        output.accept(FABlocks.COOKSONIA.get());
         output.accept(FABlocks.SHORT_HORSETAIL.get());
         output.accept(FABlocks.TALL_HORSETAIL.get());
         output.accept(FABlocks.JURASSIC_FERN.get());
@@ -624,6 +628,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.BOLT_CUTTER.get());
         output.accept(FAItems.FLARE.get());
         output.accept(FAItems.FLARE_BODY.get());
+        output.accept(FAItems.USER_MANUEL.get());
         output.accept(FAItems.JEEP_1993.get());
         output.accept(FAItems.ANKYLOSAURUS_SPAWN_EGG.get());
         output.accept(FAItems.ANU_SPAWN_EGG.get());

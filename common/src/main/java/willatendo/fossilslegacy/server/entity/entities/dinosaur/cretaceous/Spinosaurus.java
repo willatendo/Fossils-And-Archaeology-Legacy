@@ -38,7 +38,7 @@ public class Spinosaurus extends Dinosaur implements DinopediaInformation {
     }
 
     public static AttributeSupplier spinosaurusAttributes() {
-        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 200.0F).add(Attributes.MOVEMENT_SPEED, 0.4D).add(Attributes.ATTACK_DAMAGE, 7.0D).build();
+        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 5.0F).add(Attributes.MOVEMENT_SPEED, 0.4D).add(Attributes.ATTACK_DAMAGE, 7.0D).build();
     }
 
     @Override
@@ -48,7 +48,7 @@ public class Spinosaurus extends Dinosaur implements DinopediaInformation {
 
     @Override
     public float maxUpStep() {
-        return DinosaurUtils.getStepHeights(8, 1.0F, 2.0F)[this.getGrowthStage()];
+        return DinosaurUtils.getStepHeights(this.getMaxGrowthStage(), 1.0F, 2.0F)[this.getGrowthStage()];
     }
 
     @Override
@@ -72,13 +72,13 @@ public class Spinosaurus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
-    public double getMinHealth() {
-        return 15.0F;
+    public Diet getDiet() {
+        return Diet.piscivore(this.level());
     }
 
     @Override
-    public Diet getDiet() {
-        return Diet.piscivore(this.level());
+    public float[] healthPerGrowthStage() {
+        return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 5.0F, 150.0F);
     }
 
     @Override

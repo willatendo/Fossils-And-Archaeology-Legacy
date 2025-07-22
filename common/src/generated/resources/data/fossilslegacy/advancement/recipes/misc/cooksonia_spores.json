@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cooksonia_dna": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:cooksonia_dna"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:cooksonia_spores"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cooksonia_dna"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:cooksonia_spores"
+    ]
+  }
+}

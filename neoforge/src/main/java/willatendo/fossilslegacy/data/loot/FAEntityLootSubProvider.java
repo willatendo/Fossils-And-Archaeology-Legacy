@@ -1,6 +1,7 @@
 package willatendo.fossilslegacy.data.loot;
 
 import net.minecraft.advancements.critereon.EntityPredicate;
+import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.DyeColor;
@@ -23,6 +24,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWit
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.criteria.critereon.DinosaurPredicate;
 import willatendo.fossilslegacy.server.criteria.critereon.MammothPredicate;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.item.FAItems;
@@ -43,36 +45,36 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
 
     @Override
     public void generate() {
-        this.add(FAEntityTypes.ANKYLOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_ANKYLOSAURUS.get()));
-        this.add(FAEntityTypes.BARYONYX.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_BARYONYX.get()));
-        this.add(FAEntityTypes.BRACHIOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_BRACHIOSAURUS.get()));
-        this.add(FAEntityTypes.CARNOTAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_CARNOTAURUS.get()));
-        this.add(FAEntityTypes.COMPSOGNATHUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_COMPSOGNATHUS.get()));
-        this.add(FAEntityTypes.CRYOLOPHOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_CRYOLOPHOSAURUS.get()));
-        this.add(FAEntityTypes.DILOPHOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_DILOPHOSAURUS.get()));
-        this.add(FAEntityTypes.DIMETRODON.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_DIMETRODON.get()));
-        this.add(FAEntityTypes.DISTORTUS_REX.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_TYRANNOSAURUS.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.TYRANNOSAURUS_TOOTH.get()))));
-        this.add(FAEntityTypes.DODO.get(), this.createDinosaurTable(1.0F, 2.0F, FAItems.RAW_DODO.get()));
-        this.add(FAEntityTypes.DRYOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_DRYOSAURUS.get()));
-        this.add(FAEntityTypes.MOA.get(), this.createDinosaurTable(1.0F, 2.0F, FAItems.RAW_MOA.get()));
-        this.add(FAEntityTypes.ELASMOTHERIUM.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_ELASMOTHERIUM.get()));
-        this.add(FAEntityTypes.FUTABASAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_FUTABASAURUS.get()));
-        this.add(FAEntityTypes.GALLIMIMUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_GALLIMIMUS.get()));
-        this.add(FAEntityTypes.ICHTHYOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_ICHTHYOSAURUS.get()));
+        this.add(FAEntityTypes.ANKYLOSAURUS.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_ANKYLOSAURUS.get()));
+        this.add(FAEntityTypes.BARYONYX.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_BARYONYX.get()));
+        this.add(FAEntityTypes.BRACHIOSAURUS.get(), this.createDinosaurTable(36, 1.0F, 3.0F, FAItems.RAW_BRACHIOSAURUS.get()));
+        this.add(FAEntityTypes.CARNOTAURUS.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_CARNOTAURUS.get()));
+        this.add(FAEntityTypes.COMPSOGNATHUS.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_COMPSOGNATHUS.get()));
+        this.add(FAEntityTypes.CRYOLOPHOSAURUS.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_CRYOLOPHOSAURUS.get()));
+        this.add(FAEntityTypes.DILOPHOSAURUS.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_DILOPHOSAURUS.get()));
+        this.add(FAEntityTypes.DIMETRODON.get(), this.createDinosaurTable(12, 1.0F, 3.0F, FAItems.RAW_DIMETRODON.get()));
+        this.add(FAEntityTypes.DISTORTUS_REX.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_TYRANNOSAURUS.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.TYRANNOSAURUS_TOOTH.get()))));
+        this.add(FAEntityTypes.DODO.get(), this.createDinosaurTable(8, 1.0F, 2.0F, FAItems.RAW_DODO.get()));
+        this.add(FAEntityTypes.DRYOSAURUS.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_DRYOSAURUS.get()));
+        this.add(FAEntityTypes.MOA.get(), this.createDinosaurTable(8, 1.0F, 2.0F, FAItems.RAW_MOA.get()));
+        this.add(FAEntityTypes.ELASMOTHERIUM.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_ELASMOTHERIUM.get()));
+        this.add(FAEntityTypes.FUTABASAURUS.get(), this.createDinosaurTable(12, 1.0F, 3.0F, FAItems.RAW_FUTABASAURUS.get()));
+        this.add(FAEntityTypes.GALLIMIMUS.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_GALLIMIMUS.get()));
+        this.add(FAEntityTypes.ICHTHYOSAURUS.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_ICHTHYOSAURUS.get()));
         this.add(FAEntityTypes.ISOTELUS.get(), LootTable.lootTable());
         this.add(FAEntityTypes.ISOTELUS_LARVA.get(), LootTable.lootTable());
-        this.add(FAEntityTypes.MAMMOTH.get(), this.createDinosaurTable(0.0F, 3.0F, Items.LEATHER, 1.0F, 3.0F, FAItems.RAW_MAMMOTH.get()));
-        this.add(FAEntityTypes.MOSASAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_MOSASAURUS.get()));
+        this.add(FAEntityTypes.MAMMOTH.get(), this.createDinosaurTable(8, 0.0F, 3.0F, Items.LEATHER, 1.0F, 3.0F, FAItems.RAW_MAMMOTH.get()));
+        this.add(FAEntityTypes.MOSASAURUS.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_MOSASAURUS.get()));
         this.add(FAEntityTypes.NAUTILUS.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootRandomItem.randomItem(5, new RandomItemEntry(FAItems.NAUTILUS_SHELL.get(), 0, 3), new RandomItemEntry(FAItems.MAGIC_CONCH.get(), 3, 5)))));
-        this.add(FAEntityTypes.PACHYCEPHALOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_PACHYCEPHALOSAURUS.get()));
-        this.add(FAEntityTypes.PTERANODON.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_PTERANODON.get()));
-        this.add(FAEntityTypes.SMILODON.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_SMILODON.get()));
-        this.add(FAEntityTypes.SPINOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_STEGOSAURUS.get()));
-        this.add(FAEntityTypes.STEGOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_STEGOSAURUS.get()));
-        this.add(FAEntityTypes.THERIZINOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_THERIZINOSAURUS.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.FEATHER).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 3.0F)))).add(LootItem.lootTableItem(FAItems.THERIZINOSAURUS_CLAWS.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))));
-        this.add(FAEntityTypes.TRICERATOPS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_TRICERATOPS.get()));
-        this.add(FAEntityTypes.TYRANNOSAURUS.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_TYRANNOSAURUS.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.TYRANNOSAURUS_TOOTH.get()))));
-        this.add(FAEntityTypes.VELOCIRAPTOR.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_VELOCIRAPTOR.get()));
+        this.add(FAEntityTypes.PACHYCEPHALOSAURUS.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_PACHYCEPHALOSAURUS.get()));
+        this.add(FAEntityTypes.PTERANODON.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_PTERANODON.get()));
+        this.add(FAEntityTypes.SMILODON.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_SMILODON.get()));
+        this.add(FAEntityTypes.SPINOSAURUS.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_SPINOSAURUS.get()));
+        this.add(FAEntityTypes.STEGOSAURUS.get(), this.createDinosaurTable(12, 1.0F, 3.0F, FAItems.RAW_STEGOSAURUS.get()));
+        this.add(FAEntityTypes.THERIZINOSAURUS.get(), this.createDinosaurTable(10, 1.0F, 3.0F, FAItems.RAW_THERIZINOSAURUS.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.FEATHER).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 3.0F)))).add(LootItem.lootTableItem(FAItems.THERIZINOSAURUS_CLAWS.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))));
+        this.add(FAEntityTypes.TRICERATOPS.get(), this.createDinosaurTable(12, 1.0F, 3.0F, FAItems.RAW_TRICERATOPS.get()));
+        this.add(FAEntityTypes.TYRANNOSAURUS.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_TYRANNOSAURUS.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.TYRANNOSAURUS_TOOTH.get()))));
+        this.add(FAEntityTypes.VELOCIRAPTOR.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_VELOCIRAPTOR.get()));
 
         this.add(FAEntityTypes.ANKYLOSAURUS_EGG.get(), this.createEggTable(FAItems.ANKYLOSAURUS_EGG.get()));
         this.add(FAEntityTypes.BARYONYX_EGG.get(), this.createEggTable(FAItems.BARYONYX_EGG.get()));
@@ -101,7 +103,7 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
         this.add(FAEntityTypes.PREGNANT_COW.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.LEATHER).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.BEEF).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))))));
         this.add(FAEntityTypes.PREGNANT_DOLPHIN.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.COD).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F))).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())))));
         this.add(FAEntityTypes.PREGNANT_DONKEY.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.LEATHER).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))))));
-        this.add(FAEntityTypes.PREGNANT_ELASMOTHERIUM.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_ELASMOTHERIUM.get()));
+        this.add(FAEntityTypes.PREGNANT_ELASMOTHERIUM.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_ELASMOTHERIUM.get()));
         this.add(FAEntityTypes.PREGNANT_FOX.get(), LootTable.lootTable());
         this.add(FAEntityTypes.PREGNANT_GOAT.get(), LootTable.lootTable());
         this.add(FAEntityTypes.PREGNANT_HORSE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.LEATHER).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))))));
@@ -114,7 +116,7 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
         this.add(FAEntityTypes.PREGNANT_POLAR_BEAR.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.COD).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())).setWeight(3).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))).add(LootItem.lootTableItem(Items.SALMON).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))))));
         this.add(FAEntityTypes.PREGNANT_RABBIT.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.RABBIT_HIDE).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F))).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.RABBIT).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.RABBIT_FOOT)).when(LootItemKilledByPlayerCondition.killedByPlayer()).when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(this.registries, 0.1F, 0.03F))));
         this.add(FAEntityTypes.PREGNANT_SHEEP.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.MUTTON).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))))).withPool(FAEntityLootSubProvider.createSheepDispatchPool(FALootTables.SHEAR_PREGNANT_SHEEP_BY_DYE)));
-        this.add(FAEntityTypes.PREGNANT_SMILODON.get(), this.createDinosaurTable(1.0F, 3.0F, FAItems.RAW_SMILODON.get()));
+        this.add(FAEntityTypes.PREGNANT_SMILODON.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_SMILODON.get()));
         this.add(FAEntityTypes.PREGNANT_WOLF.get(), LootTable.lootTable());
 
         this.add(FAEntityTypes.ANU.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(UniformGenerator.between(1.0F, 3.0F)).add(LootItem.lootTableItem(Items.COOKED_PORKCHOP))).withPool(LootPool.lootPool().add(LootItem.lootTableItem(FABlocks.TIME_MACHINE.get()))));
@@ -122,20 +124,22 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
         this.add(FAEntityTypes.FAILURESAURUS.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(UniformGenerator.between(0.0F, 2.0F)).add(LootItem.lootTableItem(FAItems.MESOZOIC_FOSSIL.get()))));
     }
 
-    protected LootTable.Builder createDinosaurTable(float minAdditional, float maxAdditional, ItemLike additionalDrop, float min, float max, ItemLike rawMeat) {
-        return this.createDinosaurTable(Optional.of(minAdditional), Optional.of(maxAdditional), Optional.of(additionalDrop), min, max, rawMeat);
+    protected LootTable.Builder createDinosaurTable(int growthStages, float minAdditional, float maxAdditional, ItemLike additionalDrop, float min, float max, ItemLike rawMeat) {
+        return this.createDinosaurTable(growthStages, Optional.of(minAdditional), Optional.of(maxAdditional), Optional.of(additionalDrop), min, max, rawMeat);
     }
 
-    protected LootTable.Builder createDinosaurTable(float min, float max, ItemLike rawMeat) {
-        return this.createDinosaurTable(Optional.empty(), Optional.empty(), Optional.empty(), min, max, rawMeat);
+    protected LootTable.Builder createDinosaurTable(int growthStages, float min, float max, ItemLike rawMeat) {
+        return this.createDinosaurTable(growthStages, Optional.empty(), Optional.empty(), Optional.empty(), min, max, rawMeat);
     }
 
-    protected LootTable.Builder createDinosaurTable(Optional<Float> minAdditional, Optional<Float> maxAdditional, Optional<ItemLike> additionalDrop, float min, float max, ItemLike rawMeat) {
+    protected LootTable.Builder createDinosaurTable(int growthStages, Optional<Float> minAdditional, Optional<Float> maxAdditional, Optional<ItemLike> additionalDrop, float min, float max, ItemLike rawMeat) {
         LootTable.Builder builder = LootTable.lootTable();
         if (additionalDrop.isPresent() && minAdditional.isPresent() && maxAdditional.isPresent()) {
             builder.withPool(LootPool.lootPool().setRolls(UniformGenerator.between(minAdditional.get(), maxAdditional.get())).setBonusRolls(UniformGenerator.between(0.0F, 2.0F)).add(LootItem.lootTableItem(additionalDrop.get())));
         }
-        builder.withPool(LootPool.lootPool().setRolls(UniformGenerator.between(min, max)).setBonusRolls(UniformGenerator.between(1.0F, 2.0F)).add(LootItem.lootTableItem(rawMeat).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))));
+        for (int i = 0; i < growthStages + 1; i++) {
+            builder.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(rawMeat).apply(SetItemCountFunction.setCount(UniformGenerator.between(min + i, max + i))).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))).when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().subPredicate(DinosaurPredicate.growthStage(MinMaxBounds.Ints.exactly(i))))));
+        }
         return builder;
     }
 

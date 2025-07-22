@@ -137,6 +137,7 @@ public final class FAAnalyzerResults {
         FAAnalyzerResults.register(bootstrapContext, CENOZOIC_FOSSIL_RESULTS, "cenozoic_fossil_results", new ItemStack(FAItems.SMILODON_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(Items.COAL), 60);
         FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(FAItems.CYCAD_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(FAItems.COOKSONIA_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(FAItems.JURASSIC_FERN_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(FAItems.HORSETAIL_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(FAItems.LEPIDODENDRON_DNA.get()), 2);

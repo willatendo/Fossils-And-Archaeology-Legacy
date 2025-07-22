@@ -52,6 +52,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.BARYONYX_DNA.get());
         this.generatedItem(FAItems.ISOTELUS_DNA.get());
         this.generatedItem(FAItems.CYCAD_DNA.get());
+        this.generatedItem(FAItems.COOKSONIA_DNA.get());
         this.generatedItem(FAItems.HORSETAIL_DNA.get());
         this.generatedItem(FAItems.JURASSIC_FERN_DNA.get());
         this.generatedItem(FAItems.LEPIDODENDRON_DNA.get());
@@ -63,6 +64,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.STORAGE_DISC.get());
         this.generatedItem(FAItems.BLANK_DNA.get());
         this.generatedItem(FAItems.CYCAD_CONE.get());
+        this.generatedItem(FAItems.COOKSONIA_SPORES.get());
         this.generatedItem(FAItems.LEPIDODENDRON_CONE.get());
         this.generatedItem(FAItems.SIGILLARIA_SPORE.get());
         this.generatedItem(FAItems.CALAMITES_SPORE.get());
@@ -297,6 +299,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.BOLT_CUTTER.get());
         this.generateFlare(FAItems.FLARE.get());
         this.generatedItem(FAItems.FLARE_BODY.get());
+        this.generatedItem(FAItems.USER_MANUEL.get());
         this.generatedItem(FAItems.JEEP_1993.get());
         this.spawnEggItem(FAItems.ANU_SPAWN_EGG.get(), 0x432600, 0xa62c14);
         this.spawnEggItem(FAItems.FAILURESAURUS_SPAWN_EGG.get(), 0x51e6a5, 0x1b5128);

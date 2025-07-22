@@ -55,7 +55,7 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
     }
 
     public static AttributeSupplier pteranodonAttributes() {
-        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 3.0D).build();
+        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 5.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 3.0D).build();
     }
 
     @Override
@@ -111,7 +111,7 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 
     @Override
     public float maxUpStep() {
-        return DinosaurUtils.getStepHeights(8, 0.5F, 1.0F)[this.getGrowthStage()];
+        return DinosaurUtils.getStepHeights(this.getMaxGrowthStage(), 0.5F, 1.0F)[this.getGrowthStage()];
     }
 
     @Override
@@ -122,11 +122,6 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
     @Override
     public int getMaxGrowthStage() {
         return 8;
-    }
-
-    @Override
-    public double getMinHealth() {
-        return 4.0D;
     }
 
     @Override
@@ -142,6 +137,11 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
     @Override
     public Diet getDiet() {
         return Diet.piscivore(this.level());
+    }
+
+    @Override
+    public float[] healthPerGrowthStage() {
+        return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 5.0F, 20.0F);
     }
 
     @Override

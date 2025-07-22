@@ -39,7 +39,7 @@ public interface TicksToBirth {
             Entity offspring = this.getOffspring(level);
             offspring.moveTo(mob.getX(), mob.getY(), mob.getZ(), 0.0F, 0.0F);
             if (offspring instanceof GrowingEntity growingEntity) {
-                growingEntity.setGrowthStage(0);
+                growingEntity.setGrowthStage(0, true);
             }
             if (offspring instanceof Animal animal) {
                 animal.setBaby(true);

@@ -16,11 +16,12 @@ public final class FAStats {
     public static final ResourceLocation INTERACT_WITH_ANALYZER = FAStats.makeCustomStat("interact_with_analyzer", StatFormatter.DEFAULT);
     public static final ResourceLocation INTERACT_WITH_ARCHAEOLOGY_WORKBENCH = FAStats.makeCustomStat("interact_with_archaeology_workbench", StatFormatter.DEFAULT);
     public static final ResourceLocation INTERACT_WITH_DNA_CODER = FAStats.makeCustomStat("interact_with_dna_coder", StatFormatter.DEFAULT);
-    public static final ResourceLocation INTERACT_WITH_DNA_HYBRIDIZER= FAStats.makeCustomStat("interact_with_dna_hybridizer", StatFormatter.DEFAULT);
+    public static final ResourceLocation INTERACT_WITH_DNA_HYBRIDIZER = FAStats.makeCustomStat("interact_with_dna_hybridizer", StatFormatter.DEFAULT);
     public static final ResourceLocation INTERACT_WITH_CULTIVATOR = FAStats.makeCustomStat("interact_with_cultivator", StatFormatter.DEFAULT);
     public static final ResourceLocation INTERACT_WITH_FEEDER = FAStats.makeCustomStat("interact_with_feeder", StatFormatter.DEFAULT);
     public static final ResourceLocation INTERACT_WITH_GENE_MODIFICATION_TABLE = FAStats.makeCustomStat("interact_with_gene_modification_table", StatFormatter.DEFAULT);
     public static final ResourceLocation INTERACT_WITH_PALAEONTOLOGY_TABLE = FAStats.makeCustomStat("interact_with_palaeontology_table", StatFormatter.DEFAULT);
+    public static final ResourceLocation INTERACT_WITH_USER_MANUEL = FAStats.makeCustomStat("interact_with_user_manuel", StatFormatter.DEFAULT);
 
     private static ResourceLocation makeCustomStat(String name, StatFormatter statFormatter) {
         ResourceLocation stat = FAUtils.resource(name);

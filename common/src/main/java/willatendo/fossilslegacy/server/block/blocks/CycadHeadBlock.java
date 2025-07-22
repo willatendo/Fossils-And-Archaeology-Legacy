@@ -32,8 +32,8 @@ import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.tags.FABlockTags;
 
 public class CycadHeadBlock extends Block implements BonemealableBlock {
-    private static final VoxelShape SHAPE_CONE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
-    private static final VoxelShape SHAPE_NO_CONE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 10.0D, 14.0D);
+    private static final VoxelShape SHAPE_CONE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 16.0D, 12.0D);
+    private static final VoxelShape SHAPE_NO_CONE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 10.0D, 12.0D);
     public static final BooleanProperty HAS_CONE = BooleanProperty.create("has_cone");
 
     public CycadHeadBlock(Properties properties) {
@@ -49,10 +49,41 @@ public class CycadHeadBlock extends Block implements BonemealableBlock {
         BlockState blockState = level.getBlockState(blockPos);
         if (level.getBlockState(blockPos).is(this) && level.getBlockState(aboveBlockPos).isAir() && aboveBlockPos.getY() < level.getHeight()) {
             level.setBlock(blockPos.above(), blockState, 3);
-            return FABlocks.CYCAD_LOG.get().defaultBlockState();
+            return this.placeLogs(level, blockPos, false);
         } else {
             return super.getStateForPlacement(blockPlaceContext);
         }
+    }
+
+    private BlockState placeLogs(Level level, BlockPos cycadHeadBlockPos, boolean placeAt) {
+        BlockState blockStateBelowHead = level.getBlockState(cycadHeadBlockPos.below());
+        BlockState blockState2BelowHead = level.getBlockState(cycadHeadBlockPos.below(2));
+        BlockState blockState3BelowHead = level.getBlockState(cycadHeadBlockPos.below(3));
+        if (!blockStateBelowHead.is(FABlocks.CYCAD_LOG.get())) {
+            if (placeAt) {
+                level.setBlock(cycadHeadBlockPos, FABlocks.CYCAD_LOG.get().defaultBlockState().setValue(CycadLogBlock.SIZE, 2), 3);
+            }
+            return FABlocks.CYCAD_LOG.get().defaultBlockState().setValue(CycadLogBlock.SIZE, 2);
+        }
+        if (blockStateBelowHead.is(FABlocks.CYCAD_LOG.get()) && !blockState2BelowHead.is(FABlocks.CYCAD_LOG.get())) {
+            level.setBlock(cycadHeadBlockPos.below(), FABlocks.CYCAD_LOG.get().defaultBlockState().setValue(CycadLogBlock.SIZE, 3), 3);
+            if (placeAt) {
+                level.setBlock(cycadHeadBlockPos, FABlocks.CYCAD_LOG.get().defaultBlockState().setValue(CycadLogBlock.SIZE, 2), 3);
+            }
+            return FABlocks.CYCAD_LOG.get().defaultBlockState().setValue(CycadLogBlock.SIZE, 2);
+        }
+        if (blockStateBelowHead.is(FABlocks.CYCAD_LOG.get()) && blockState2BelowHead.is(FABlocks.CYCAD_LOG.get()) && !blockState3BelowHead.is(FABlocks.CYCAD_LOG.get())) {
+            level.setBlock(cycadHeadBlockPos.below(), FABlocks.CYCAD_LOG.get().defaultBlockState().setValue(CycadLogBlock.SIZE, 2), 3);
+            level.setBlock(cycadHeadBlockPos.below(2), FABlocks.CYCAD_LOG.get().defaultBlockState().setValue(CycadLogBlock.SIZE, 3), 3);
+            if (placeAt) {
+                level.setBlock(cycadHeadBlockPos, FABlocks.CYCAD_LOG.get().defaultBlockState().setValue(CycadLogBlock.SIZE, 1), 3);
+            }
+            return FABlocks.CYCAD_LOG.get().defaultBlockState().setValue(CycadLogBlock.SIZE, 1);
+        }
+        if (placeAt) {
+            level.setBlock(cycadHeadBlockPos, FABlocks.CYCAD_LOG.get().defaultBlockState().setValue(CycadLogBlock.SIZE, 1), 3);
+        }
+        return FABlocks.CYCAD_LOG.get().defaultBlockState().setValue(CycadLogBlock.SIZE, 1);
     }
 
     @Override
@@ -66,9 +97,9 @@ public class CycadHeadBlock extends Block implements BonemealableBlock {
             serverLevel.setBlock(blockPos, blockState.setValue(HAS_CONE, true), 3);
         }
 
-        if (randomSource.nextInt(100) == 0 && !serverLevel.getBlockState(blockPos.below(3)).is(FABlocks.CYCAD_LOG.get())) {
+        if (randomSource.nextInt(40) == 0 && !serverLevel.getBlockState(blockPos.below(3)).is(FABlocks.CYCAD_LOG.get())) {
             serverLevel.setBlock(blockPos.above(), blockState, 3);
-            serverLevel.setBlock(blockPos, FABlocks.CYCAD_LOG.get().defaultBlockState(), 3);
+            this.placeLogs(serverLevel, blockPos, true);
         }
     }
 
@@ -122,7 +153,7 @@ public class CycadHeadBlock extends Block implements BonemealableBlock {
     @Override
     public void performBonemeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
         serverLevel.setBlock(blockPos.above(), blockState, 3);
-        serverLevel.setBlock(blockPos, FABlocks.CYCAD_LOG.get().defaultBlockState(), 3);
+        this.placeLogs(serverLevel, blockPos, true);
     }
 
     @Override

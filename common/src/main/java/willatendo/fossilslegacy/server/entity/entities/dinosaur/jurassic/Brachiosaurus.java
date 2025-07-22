@@ -46,7 +46,7 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Rid
     }
 
     public static AttributeSupplier brachiosaurusAttributes() {
-        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.35D).add(Attributes.ATTACK_DAMAGE, 4.0D).build();
+        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 10.0F).add(Attributes.MOVEMENT_SPEED, 0.35D).add(Attributes.ATTACK_DAMAGE, 4.0D).build();
     }
 
     @Override
@@ -56,7 +56,7 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Rid
 
     @Override
     public float maxUpStep() {
-        return DinosaurUtils.getStepHeights(36, 1.0F, 5.0F)[this.getGrowthStage()];
+        return DinosaurUtils.getStepHeights(this.getMaxGrowthStage(), 1.0F, 5.0F)[this.getGrowthStage()];
     }
 
     @Override
@@ -80,13 +80,13 @@ public class Brachiosaurus extends Dinosaur implements DinopediaInformation, Rid
     }
 
     @Override
-    public double getMinHealth() {
-        return 20.0F;
+    public Diet getDiet() {
+        return Diet.herbivore(this.level());
     }
 
     @Override
-    public Diet getDiet() {
-        return Diet.herbivore(this.level());
+    public float[] healthPerGrowthStage() {
+        return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 10.0F, 200.0F);
     }
 
     @Override

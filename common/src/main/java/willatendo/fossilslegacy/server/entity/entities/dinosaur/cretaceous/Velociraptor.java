@@ -32,6 +32,7 @@ import willatendo.fossilslegacy.server.entity.entities.Egg;
 import willatendo.fossilslegacy.server.entity.goals.*;
 import willatendo.fossilslegacy.server.entity.util.Diet;
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
+import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.HighlyIntelligent;
@@ -54,7 +55,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
     }
 
     public static AttributeSupplier velociraptorAttributes() {
-        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.ATTACK_DAMAGE, 6.0D).build();
+        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 5.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.ATTACK_DAMAGE, 6.0D).build();
     }
 
     @Override
@@ -83,13 +84,13 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
     }
 
     @Override
-    public double getMinHealth() {
-        return 5.0F;
+    public Diet getDiet() {
+        return Diet.carnivore(this.level());
     }
 
     @Override
-    public Diet getDiet() {
-        return Diet.carnivore(this.level());
+    public float[] healthPerGrowthStage() {
+        return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 5.0F, 25.0F);
     }
 
     @Override

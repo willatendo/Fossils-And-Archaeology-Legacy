@@ -46,7 +46,7 @@ public class Compsognathus extends Dinosaur implements DinopediaInformation {
 
     @Override
     public float maxUpStep() {
-        return DinosaurUtils.getStepHeights(8, 1.0F, 2.0F)[this.getGrowthStage()];
+        return DinosaurUtils.getStepHeights(this.getMaxGrowthStage(), 1.0F, 2.0F)[this.getGrowthStage()];
     }
 
     @Override
@@ -70,13 +70,13 @@ public class Compsognathus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
-    public double getMinHealth() {
-        return 3.0F;
+    public Diet getDiet() {
+        return Diet.carnivore(this.level());
     }
 
     @Override
-    public Diet getDiet() {
-        return Diet.carnivore(this.level());
+    public float[] healthPerGrowthStage() {
+        return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 3.0F, 7.0F);
     }
 
     @Override

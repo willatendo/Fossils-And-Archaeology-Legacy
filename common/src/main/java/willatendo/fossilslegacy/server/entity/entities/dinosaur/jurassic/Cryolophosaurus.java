@@ -36,7 +36,7 @@ public class Cryolophosaurus extends Dinosaur implements DinopediaInformation {
     }
 
     public static AttributeSupplier cryolophosaurusAttributes() {
-        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 15.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.ATTACK_DAMAGE, 6.0D).build();
+        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 5.0F).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.ATTACK_DAMAGE, 6.0D).build();
     }
 
     @Override
@@ -46,7 +46,7 @@ public class Cryolophosaurus extends Dinosaur implements DinopediaInformation {
 
     @Override
     public float maxUpStep() {
-        return DinosaurUtils.getStepHeights(8, 1.0F, 2.0F)[this.getGrowthStage()];
+        return DinosaurUtils.getStepHeights(this.getMaxGrowthStage(), 1.0F, 2.0F)[this.getGrowthStage()];
     }
 
     @Override
@@ -65,13 +65,13 @@ public class Cryolophosaurus extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
-    public double getMinHealth() {
-        return 10.0F;
+    public Diet getDiet() {
+        return Diet.carnivore(this.level());
     }
 
     @Override
-    public Diet getDiet() {
-        return Diet.carnivore(this.level());
+    public float[] healthPerGrowthStage() {
+        return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 5.0F, 30.0F);
     }
 
     @Override

@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "plant",
+  "ingredient": "fossilslegacy:cooksonia_dna",
+  "result": {
+    "id": "fossilslegacy:cooksonia_spores"
+  },
+  "time": 6000
+}

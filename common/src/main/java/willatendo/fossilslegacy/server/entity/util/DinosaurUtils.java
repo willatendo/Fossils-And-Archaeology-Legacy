@@ -10,4 +10,18 @@ public class DinosaurUtils {
         }
         return stepHeights;
     }
+
+    public static float[] getHealths(int growthStages, float minHealth, float maxHealth) {
+        float[] healths = new float[growthStages + 1];
+        float diff = maxHealth - minHealth;
+        float change = (float) Math.floor(diff / growthStages);
+        for (int i = 0; i < growthStages + 1; i++) {
+            if (i != growthStages + 1) {
+                healths[i] = minHealth + (change * ((float) i));
+            } else {
+                healths[i] = maxHealth;
+            }
+        }
+        return healths;
+    }
 }

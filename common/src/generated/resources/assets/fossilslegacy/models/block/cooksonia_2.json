@@ -1,0 +1,6 @@
+{
+  "parent": "fossilslegacy:block/template_cooksonia_2",
+  "textures": {
+    "texture": "fossilslegacy:block/cooksonia"
+  }
+}

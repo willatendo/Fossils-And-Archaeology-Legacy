@@ -17,6 +17,7 @@ import willatendo.fossilslegacy.client.model.vehicle.JeepModel;
 import willatendo.fossilslegacy.client.particle.Particles;
 import willatendo.fossilslegacy.client.render.*;
 import willatendo.fossilslegacy.client.screen.*;
+import willatendo.fossilslegacy.client.screen.user_manuel.UserManuelData;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.block.FAWoodTypes;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
@@ -29,6 +30,10 @@ import willatendo.simplelibrary.client.event.registry.*;
 public final class FossilsLegacyClient {
     public static final ResourceLocation TAR_STILL = ResourceLocation.withDefaultNamespace("block/bedrock");
     public static final ResourceLocation TAR_FLOW = ResourceLocation.withDefaultNamespace("block/bedrock");
+
+    public static void loadUserManuelData() {
+        UserManuelData.init();
+    }
 
     public static void signSheets() {
         FAWoodTypes.register(FAWoodTypes.ARAUCARIA);
@@ -201,6 +206,7 @@ public final class FossilsLegacyClient {
         menuScreenRegister.addMenuScreen(FAMenuTypes.FEEDER.get(), FeederScreen::new);
         menuScreenRegister.addMenuScreen(FAMenuTypes.GENE_MODIFICATION.get(), DNARecombinatorScreen::new);
         menuScreenRegister.addMenuScreen(FAMenuTypes.PALAEONTOLOGY_TABLE.get(), PalaeontologyTableScreen::new);
+        menuScreenRegister.addMenuScreen(FAMenuTypes.USER_MANUEL.get(), UserManuelScreen::new);
         menuScreenRegister.addMenuScreen(FAMenuTypes.TIME_MACHINE.get(), TimeMachineScreen::new);
     }
 

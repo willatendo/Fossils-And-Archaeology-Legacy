@@ -46,7 +46,7 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Ridea
     }
 
     public static AttributeSupplier triceratopsAttributes() {
-        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 4.0D).build();
+        return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 5.0F).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 4.0D).build();
     }
 
     @Override
@@ -56,7 +56,7 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Ridea
 
     @Override
     public float maxUpStep() {
-        return DinosaurUtils.getStepHeights(12, 1.0F, 1.5F)[this.getGrowthStage()];
+        return DinosaurUtils.getStepHeights(this.getMaxGrowthStage(), 1.0F, 1.5F)[this.getGrowthStage()];
     }
 
     @Override
@@ -80,13 +80,13 @@ public class Triceratops extends Dinosaur implements DinopediaInformation, Ridea
     }
 
     @Override
-    public double getMinHealth() {
-        return 10.0F;
+    public Diet getDiet() {
+        return Diet.herbivore(this.level());
     }
 
     @Override
-    public Diet getDiet() {
-        return Diet.herbivore(this.level());
+    public float[] healthPerGrowthStage() {
+        return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 5.0F, 40.0F);
     }
 
     @Override
