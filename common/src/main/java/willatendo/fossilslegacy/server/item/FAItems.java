@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.server.item;
 
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -13,7 +12,6 @@ import net.minecraft.world.level.block.Block;
 import willatendo.fossilslegacy.platform.FAModloaderHelper;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
-import willatendo.fossilslegacy.server.entity.entities.dinosaur.ordovician.Isotelus;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.ordovician.IsotelusLarva;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Nautilus;
 import willatendo.fossilslegacy.server.entity.entities.projectile.Dart;
@@ -30,7 +28,6 @@ import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 import java.util.List;
-import java.util.function.Function;
 
 public final class FAItems {
     public static final ItemRegistry ITEMS = SimpleRegistry.createItem(FAUtils.ID);
@@ -318,7 +315,7 @@ public final class FAItems {
     public static final SimpleHolder<BoltCutterItem> BOLT_CUTTER = ITEMS.registerItem("bolt_cutter", BoltCutterItem::new);
     public static final SimpleHolder<FlareItem> FLARE = ITEMS.registerItem("flare", FlareItem::new, new Item.Properties().durability(300));
     public static final SimpleHolder<Item> FLARE_BODY = ITEMS.registerItem("flare_body", Item::new);
-    public static final SimpleHolder<UserManualItem> USER_MANUEL = ITEMS.registerItem("user_manuel", UserManualItem::new, new Item.Properties().stacksTo(1));
+    public static final SimpleHolder<UserManualItem> USER_MANUAL = ITEMS.registerItem("user_manual", UserManualItem::new, new Item.Properties().stacksTo(1));
     public static final SimpleHolder<PlaceEntityItem<Jeep>> JEEP_1993 = ITEMS.registerItem("1993_jeep", properties -> new PlaceEntityItem<>(FAEntityTypes.JEEP::get, properties));
     public static final SimpleHolder<SpawnEggItem> ANU_SPAWN_EGG = ITEMS.registerItem("anu_spawn_egg", properties -> new SpawnEggItem(FAEntityTypes.ANU.get(), properties));
     public static final SimpleHolder<SpawnEggItem> FAILURESAURUS_SPAWN_EGG = ITEMS.registerItem("failuresaurus_spawn_egg", properties -> new SpawnEggItem(FAEntityTypes.FAILURESAURUS.get(), properties));

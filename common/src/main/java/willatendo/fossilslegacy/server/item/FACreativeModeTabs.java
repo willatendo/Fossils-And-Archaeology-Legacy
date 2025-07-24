@@ -628,7 +628,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.BOLT_CUTTER.get());
         output.accept(FAItems.FLARE.get());
         output.accept(FAItems.FLARE_BODY.get());
-        output.accept(FAItems.USER_MANUEL.get());
+        output.accept(FAItems.USER_MANUAL.get());
         output.accept(FAItems.JEEP_1993.get());
         output.accept(FAItems.ANKYLOSAURUS_SPAWN_EGG.get());
         output.accept(FAItems.ANU_SPAWN_EGG.get());

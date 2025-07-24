@@ -87,4 +87,9 @@ public class ClientEvents {
     public static void registerParticleProvidersEvent(RegisterParticleProvidersEvent event) {
         FossilsLegacyClient.particleRegisterEvent(new NeoforgeParticleRegistry(event));
     }
+
+    @SubscribeEvent
+    public static void registerRecipesEvent(RecipesReceivedEvent event) {
+        FossilsLegacyClient.addRecipes(event.getRecipeMap());
+    }
 }

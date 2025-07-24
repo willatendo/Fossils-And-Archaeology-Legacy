@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:scarab_gem_boots_smithing"
+        "recipe": "fossilslegacy:scarab_gem_helmet_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:scarab_gem_boots_smithing"
+      "fossilslegacy:scarab_gem_helmet_smithing"
     ]
   }
 }

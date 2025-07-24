@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.server.menu.menus;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -13,24 +14,29 @@ import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.menu.FAMenuTypes;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
-public class UserManuelMenu extends AbstractContainerMenu {
+public class UserManualMenu extends AbstractContainerMenu {
     public final SimpleContainer itemSlot = new SimpleContainer(1);
     private final ContainerLevelAccess containerLevelAccess;
 
-    public UserManuelMenu(int windowId, Inventory inventory, ContainerLevelAccess containerLevelAccess) {
+    public UserManualMenu(int windowId, Inventory inventory, ContainerLevelAccess containerLevelAccess) {
         super(FAMenuTypes.USER_MANUEL.get(), windowId);
         this.containerLevelAccess = containerLevelAccess;
 
-        this.addSlot(new Slot(this.itemSlot, 0, 150, 15));
+        this.addSlot(new Slot(this.itemSlot, 0, 150, 15) {
+            @Override
+            public int getMaxStackSize() {
+                return 1;
+            }
+        });
 
         this.addStandardInventorySlots(inventory, 60, 197);
     }
 
-    public UserManuelMenu(int windowId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
+    public UserManualMenu(int windowId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
         this(windowId, inventory, ContainerLevelAccess.NULL);
     }
 
-    public UserManuelMenu(int windowId, Inventory inventory, BlockPos blockPos) {
+    public UserManualMenu(int windowId, Inventory inventory, BlockPos blockPos) {
         this(windowId, inventory, ContainerLevelAccess.NULL);
     }
 
@@ -42,7 +48,7 @@ public class UserManuelMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        return player.getMainHandItem().is(FAItems.USER_MANUEL.get());
+        return player.getMainHandItem().is(FAItems.USER_MANUAL.get());
     }
 
     @Override

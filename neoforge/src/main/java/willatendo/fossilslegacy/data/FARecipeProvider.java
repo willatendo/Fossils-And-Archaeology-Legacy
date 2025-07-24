@@ -45,14 +45,14 @@ public class FARecipeProvider extends RecipeProvider {
     protected void buildRecipes() {
         HolderGetter<Item> itemRegistries = this.registries.lookupOrThrow(Registries.ITEM);
         this.shaped(RecipeCategory.FOOD, Items.CAKE).pattern("###").pattern("$%$").pattern("&&&").define('#', Items.MILK_BUCKET).define('$', Items.SUGAR).define('%', this.tag(FAItemTags.CAKE_EGGS)).define('&', Items.WHEAT).unlockedBy("has_egg", this.has(FAItemTags.CAKE_EGGS)).save(this.output, this.name("cake_from_eggs"));
-        this.shaped(RecipeCategory.FOOD, FAItems.CHICKEN_ESSENCE_BOTTLE.get(), 8).pattern("###").pattern("#$#").pattern("###").define('#', Items.GLASS_BOTTLE).define('$', FAItems.COOKED_CHICKEN_SOUP_BUCKET.get()).unlockedBy(RecipeProvider.getHasName(FAItems.COOKED_CHICKEN_SOUP_BUCKET.get()), this.has(FAItems.COOKED_CHICKEN_SOUP_BUCKET.get()));
+        this.shaped(RecipeCategory.FOOD, FAItems.CHICKEN_ESSENCE_BOTTLE.get(), 8).pattern("###").pattern("#$#").pattern("###").define('#', Items.GLASS_BOTTLE).define('$', FAItems.COOKED_CHICKEN_SOUP_BUCKET.get()).unlockedBy(RecipeProvider.getHasName(FAItems.COOKED_CHICKEN_SOUP_BUCKET.get()), this.has(FAItems.COOKED_CHICKEN_SOUP_BUCKET.get())).save(this.output);
         this.shapeless(RecipeCategory.FOOD, FAItems.RAW_BERRY_MEDLEY_BUCKET.get()).requires(Items.BUCKET).requires(Items.SWEET_BERRIES, 4).requires(Items.CARROT).requires(Items.POTATO).requires(Items.BEEF).requires(Items.PORKCHOP).unlockedBy(RecipeProvider.getHasName(Items.BUCKET), this.has(Items.BUCKET)).save(this.output);
         this.shaped(RecipeCategory.FOOD, FAItems.ROMANTIC_CONCOCTION_BOTTLE.get(), 8).pattern("###").pattern("#$#").pattern("###").define('#', Items.GLASS_BOTTLE).define('$', FAItems.COOKED_BERRY_MEDLEY_BUCKET.get()).unlockedBy(RecipeProvider.getHasName(FAItems.COOKED_BERRY_MEDLEY_BUCKET.get()), this.has(FAItems.COOKED_BERRY_MEDLEY_BUCKET.get())).save(this.output);
         this.shapeless(RecipeCategory.BUILDING_BLOCKS, FABlocks.SKULL_LANTERN_BLOCK.get()).requires(FABlocks.SKULL_BLOCK.get()).requires(Items.TORCH).unlockedBy(RecipeProvider.getHasName(FABlocks.SKULL_BLOCK.get()), this.has(FABlocks.SKULL_BLOCK.get())).save(this.output);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FAItems.SKULL_STICK.get()).pattern("#").pattern("$").define('#', FABlocks.SKULL_BLOCK.get()).define('$', Items.STICK).unlockedBy(RecipeProvider.getHasName(FABlocks.SKULL_BLOCK.get()), this.has(FABlocks.SKULL_BLOCK.get())).save(this.output);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FAItems.TOOTH_DAGGER.get()).pattern("#").pattern("$").define('#', FAItems.TYRANNOSAURUS_TOOTH.get()).define('$', Items.STICK).unlockedBy(RecipeProvider.getHasName(FAItems.TYRANNOSAURUS_TOOTH.get()), this.has(FAItems.TYRANNOSAURUS_TOOTH.get())).save(this.output);
         this.shapeless(RecipeCategory.TOOLS, FAItems.DINOPEDIA.get()).requires(Items.BOOK).requires(this.tag(FAItemTags.ANIMAL_DNA)).unlockedBy("has_dna", this.has(FAItemTags.ANIMAL_DNA)).save(this.output);
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.ANALYZER.get()).pattern("#%#").pattern("#$#").define('#', Items.IRON_INGOT).define('%', FAItems.RELIC_SCRAP.get()).define('$', FAItems.MESOZOIC_FOSSIL.get()).unlockedBy(RecipeProvider.getHasName(FAItems.MESOZOIC_FOSSIL.get()), this.has(FAItems.MESOZOIC_FOSSIL.get())).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.ANALYZER.get()).pattern("#%#").pattern("#$#").define('#', Items.IRON_INGOT).define('%', FAItems.RELIC_SCRAP.get()).define('$', FAItemTags.FOSSILS).unlockedBy("has_fossil", this.has(FAItemTags.FOSSILS)).save(this.output);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DNA_CODER.get()).pattern("#%#").pattern("#$#").define('#', Items.IRON_INGOT).define('%', Items.DIAMOND).define('$', Items.REDSTONE).unlockedBy(RecipeProvider.getHasName(Items.DIAMOND), this.has(Items.DIAMOND)).save(this.output);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DNA_HYBRIDIZER.get()).pattern("@%@").pattern("###").define('@', Tags.Items.GLASS_BLOCKS).define('#', Items.IRON_INGOT).define('%', Items.GOLD_INGOT).unlockedBy(RecipeProvider.getHasName(Items.GOLD_INGOT), this.has(Items.GOLD_INGOT)).save(this.output);
         this.cultivator(FABlocks.WHITE_CULTIVATOR.get(), Items.WHITE_DYE, Blocks.WHITE_STAINED_GLASS);
@@ -73,7 +73,7 @@ public class FARecipeProvider extends RecipeProvider {
         this.cultivator(FABlocks.BLACK_CULTIVATOR.get(), Items.BLACK_DYE, Blocks.BLACK_STAINED_GLASS);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DNA_RECOMBINATOR.get()).pattern("#$#").pattern("#&#").pattern("#!#").define('#', Items.IRON_INGOT).define('$', Blocks.REDSTONE_BLOCK).define('&', Items.NETHER_STAR).define('!', Items.GOLD_INGOT).unlockedBy(RecipeProvider.getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
         this.craftingTable(FABlocks.ARCHAEOLOGY_WORKBENCH.get(), Items.PAPER);
-        this.craftingTable(FABlocks.PALAEONTOLOGY_TABLE.get(), FAItems.MESOZOIC_FOSSIL.get());
+        this.craftingTable(FABlocks.PALAEONTOLOGY_TABLE.get(), FAItemTags.FOSSILS, "fossils");
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DRUM.get()).pattern("###").pattern("$%$").pattern("$$$").define('#', Items.LEATHER).define('$', this.tag(ItemTags.PLANKS)).define('%', Items.REDSTONE).unlockedBy(RecipeProvider.getHasName(Items.LEATHER), this.has(Items.LEATHER)).save(this.output);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.FEEDER.get()).pattern("#$#").pattern("%@!").pattern("!!!").define('#', Items.IRON_INGOT).define('$', Blocks.GLASS).define('%', Blocks.STONE_BUTTON).define('@', Items.BUCKET).define('!', Blocks.STONE).unlockedBy(RecipeProvider.getHasName(Blocks.STONE), this.has(Blocks.STONE)).save(this.output);
         this.shapeless(RecipeCategory.BUILDING_BLOCKS, FAItems.RAW_CHICKEN_SOUP_BUCKET.get()).requires(Items.CHICKEN).requires(Items.BUCKET).unlockedBy(RecipeProvider.getHasName(Items.BUCKET), this.has(Items.BUCKET)).save(this.output);
@@ -129,13 +129,12 @@ public class FARecipeProvider extends RecipeProvider {
         this.shaped(RecipeCategory.MISC, FAItems.FLARE_BODY.get()).pattern("#$").pattern("$#").define('#', Items.RED_DYE).define('$', Items.IRON_INGOT).unlockedBy(RecipeProvider.getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
         this.shaped(RecipeCategory.MISC, FAItems.FLARE.get()).pattern(" #@").pattern("#$#").pattern("$# ").define('#', Items.RED_DYE).define('$', Items.IRON_INGOT).define('@', Items.GUNPOWDER).unlockedBy(RecipeProvider.getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
         this.shaped(RecipeCategory.MISC, FAItems.FLARE.get()).pattern("#@").pattern("$#").define('#', Items.RED_DYE).define('$', FAItems.FLARE_BODY.get()).define('@', Items.GUNPOWDER).unlockedBy(RecipeProvider.getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output, FAUtils.resource("renew_flare").toString());
-        this.shapeless(RecipeCategory.TOOLS, FAItems.USER_MANUEL.get()).requires(Items.PAPER, 3).requires(Items.STRING).unlockedBy(RecipeProvider.getHasName(Items.STRING), this.has(Items.STRING)).save(this.output);
+        this.shapeless(RecipeCategory.TOOLS, FAItems.USER_MANUAL.get()).requires(Items.PAPER, 3).requires(Items.STRING).unlockedBy(RecipeProvider.getHasName(Items.STRING), this.has(Items.STRING)).save(this.output);
         this.shaped(RecipeCategory.TOOLS, FAItems.STORAGE_DISC.get()).pattern("#$#").pattern("$%$").pattern("#$#").define('#', Items.IRON_NUGGET).define('$', Items.IRON_INGOT).define('%', ItemTags.WOOL).unlockedBy(RecipeProvider.getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
         this.shapeless(RecipeCategory.MISC, FAItems.BLANK_DNA.get()).requires(FAItemTags.DNA).requires(Ingredient.of(itemRegistries.getOrThrow(ItemTags.MEAT)), 2).requires(Items.ROTTEN_FLESH).unlockedBy(RecipeProvider.getHasName(Items.ROTTEN_FLESH), this.has(Items.ROTTEN_FLESH)).save(this.output);
 
-        SpecialRecipeBuilder.special(MagicConchRecipe::new).save(this.output, "magic_conch");
-        SpecialRecipeBuilder.special(KeyCloningRecipe::new).save(this.output, "key_cloning");
-
+        SpecialRecipeBuilder.special(MagicConchRecipe::new).save(this.output, FAUtils.ID + ":magic_conch");
+        SpecialRecipeBuilder.special(KeyCloningRecipe::new).save(this.output, FAUtils.ID + ":key_cloning");
 
         this.copySmithingTemplate(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), Blocks.STONE_BRICKS);
 
@@ -197,7 +196,7 @@ public class FARecipeProvider extends RecipeProvider {
         this.cultivate(CultivationBookCategory.EGG, FAItems.DOLPHIN_DNA.get(), FAItems.DOLPHIN_EMBRYO_SYRINGE.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.DONKEY_DNA.get(), FAItems.DONKEY_EMBRYO_SYRINGE.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.FOX_DNA.get(), FAItems.FOX_EMBRYO_SYRINGE.get(), 6000);
-        this.cultivate(CultivationBookCategory.EGG, FAItems.FROG_DNA.get(), Blocks.FROGSPAWN, 6000);
+        this.cultivate(CultivationBookCategory.EGG, FAItems.FROG_DNA.get(), Blocks.FROGSPAWN, "frogspawn", 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.GOAT_DNA.get(), FAItems.GOAT_EMBRYO_SYRINGE.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.HORSE_DNA.get(), FAItems.HORSE_EMBRYO_SYRINGE.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.LLAMA_DNA.get(), FAItems.LLAMA_EMBRYO_SYRINGE.get(), 6000);
@@ -341,8 +340,12 @@ public class FARecipeProvider extends RecipeProvider {
         SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(raw), RecipeCategory.FOOD, cooked, 0.35F, 600).unlockedBy(RecipeProvider.getHasName(raw), this.has(raw)).save(this.output, FAUtils.ID + ":" + getItemName(cooked) + "_from_campfire_cooking");
     }
 
+    protected void netheriteSmithing(Item ingredientItem, RecipeCategory category, Item resultItem) {
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredientItem), this.tag(ItemTags.NETHERITE_TOOL_MATERIALS), category, resultItem).unlocks("has_netherite", this.has(ItemTags.NETHERITE_TOOL_MATERIALS)).save(this.output, "fossilslegacy:" + getItemName(resultItem) + "_smithing");
+    }
+
     protected void scarabGemSmithing(Item ingredientItem, RecipeCategory category, Item resultItem) {
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(ingredientItem), this.tag(FAItemTags.SCARAB_GEM_TOOL_MATERIALS), category, resultItem).unlocks("has_scarab_gem", this.has(FAItemTags.SCARAB_GEM_TOOL_MATERIALS)).save(this.output, getItemName(resultItem) + "_smithing");
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(ingredientItem), this.tag(FAItemTags.SCARAB_GEM_TOOL_MATERIALS), category, resultItem).unlocks("has_scarab_gem", this.has(FAItemTags.SCARAB_GEM_TOOL_MATERIALS)).save(this.output, "fossilslegacy:" + getItemName(resultItem) + "_smithing");
     }
 
     public void decorationPlaque(ItemLike concrete, ItemLike output) {
@@ -374,8 +377,16 @@ public class FARecipeProvider extends RecipeProvider {
         this.shaped(RecipeCategory.BUILDING_BLOCKS, output).pattern("$$").pattern("##").pattern("##").define('#', this.tag(ItemTags.PLANKS)).define('$', modifier).unlockedBy(RecipeProvider.getHasName(modifier), this.has(modifier)).save(this.output);
     }
 
+    public void craftingTable(ItemLike output, TagKey<Item> modifier, String has) {
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, output).pattern("$$").pattern("##").pattern("##").define('#', this.tag(ItemTags.PLANKS)).define('$', modifier).unlockedBy(has, this.has(modifier)).save(this.output);
+    }
+
     public void cultivate(CultivationBookCategory cultivationBookCategory, Item ingredient, ItemLike itemLike, int time) {
         CultivationRecipeBuilder.recipe(cultivationBookCategory, null, ingredient, itemLike, time).unlockedBy(RecipeProvider.getHasName(ingredient), this.has(ingredient)).save(this.output);
+    }
+
+    public void cultivate(CultivationBookCategory cultivationBookCategory, Item ingredient, ItemLike itemLike, String name, int time) {
+        CultivationRecipeBuilder.recipe(cultivationBookCategory, null, ingredient, itemLike, time).unlockedBy(RecipeProvider.getHasName(ingredient), this.has(ingredient)).save(this.output, FAUtils.ID + ":" + name);
     }
 
     public void archaeology(ArchaeologyBookCategory archaeologyBookCategory, String name, Item ingredient, ItemLike itemLike, int time) {

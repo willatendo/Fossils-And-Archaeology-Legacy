@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "fossilslegacy:item/user_manuel"
+    "layer0": "fossilslegacy:item/user_manual"
   }
 }

@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_scarab_gem": {
+    "has_netherite": {
       "conditions": {
         "items": [
           {
-            "items": "#fossilslegacy:scarab_gem_tool_materials"
+            "items": "#minecraft:netherite_tool_materials"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:scarab_gem_axe_smithing"
+        "recipe": "fossilslegacy:netherite_hammer_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_scarab_gem"
+      "has_netherite"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:scarab_gem_axe_smithing"
+      "fossilslegacy:netherite_hammer_smithing"
     ]
   }
 }

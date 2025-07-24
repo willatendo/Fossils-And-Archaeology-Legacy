@@ -3,7 +3,6 @@ package willatendo.fossilslegacy.data.model;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.item.ItemModel;
-import net.minecraft.client.renderer.item.properties.conditional.ConditionalItemModelProperty;
 import net.minecraft.world.item.Item;
 import willatendo.fossilslegacy.client.model.ArticulatedFossilSpecialRenderer;
 import willatendo.fossilslegacy.data.FAModelTemplates;
@@ -299,7 +298,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.BOLT_CUTTER.get());
         this.generateFlare(FAItems.FLARE.get());
         this.generatedItem(FAItems.FLARE_BODY.get());
-        this.generatedItem(FAItems.USER_MANUEL.get());
+        this.generatedItem(FAItems.USER_MANUAL.get());
         this.generatedItem(FAItems.JEEP_1993.get());
         this.spawnEggItem(FAItems.ANU_SPAWN_EGG.get(), 0x432600, 0xa62c14);
         this.spawnEggItem(FAItems.FAILURESAURUS_SPAWN_EGG.get(), 0x51e6a5, 0x1b5128);

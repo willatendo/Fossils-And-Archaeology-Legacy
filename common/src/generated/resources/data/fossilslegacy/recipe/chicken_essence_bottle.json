@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "minecraft:glass_bottle",
+    "$": "fossilslegacy:cooked_chicken_soup_bucket"
+  },
+  "pattern": [
+    "###",
+    "#$#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "id": "fossilslegacy:chicken_essence_bottle"
+  }
+}

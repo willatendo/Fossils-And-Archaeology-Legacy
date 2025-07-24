@@ -27,6 +27,8 @@ public interface FAModloaderHelper {
 
     void sendToClient(ServerPlayer serverPlayer, CustomPacketPayload customPacketPayload);
 
+
+
     default <T> Supplier<EntityDataSerializer<Holder<T>>> registerDataSerializer(String id, StreamCodec<RegistryFriendlyByteBuf, Holder<T>> streamCodec) {
         return this.registerDataSerializer(id, EntityDataSerializer.forValueType(streamCodec));
     }

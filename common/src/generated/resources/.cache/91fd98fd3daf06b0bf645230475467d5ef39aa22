@@ -1,4 +1,4 @@
-// 1.21.4	2025-07-21T21:38:57.3059387	Model Definitions - fossilslegacy
+// 1.21.4	2025-07-23T22:46:59.5012986	Model Definitions - fossilslegacy
 bc40e7fb93a5d1812ca1648e1df89885a48cd95d assets/fossilslegacy/blockstates/analyzer.json
 07c20db309c8d0585a2a8278cedc3a78c1e522ee assets/fossilslegacy/blockstates/araucaria_button.json
 08fd4b3534ecb18f35bcb325aec6e666bd330091 assets/fossilslegacy/blockstates/araucaria_door.json
@@ -704,7 +704,7 @@ b99bae90009dba70fc98116d8b9bd86c6c95c74e assets/fossilslegacy/items/tyrannosauru
 3892ef836ad5dbc062f7beeece5020b3f9c46985 assets/fossilslegacy/items/tyrannosaurus_egg.json
 0dd81affc3a1080ed7276f82d15e83a07e1207cc assets/fossilslegacy/items/tyrannosaurus_spawn_egg.json
 8bc1aaf8a1506739190367d2eb936703a0c92489 assets/fossilslegacy/items/tyrannosaurus_tooth.json
-eb691d266df5c036cc06d8ba873a636e029b9639 assets/fossilslegacy/items/user_manuel.json
+a9cdfe572c232278231422255143e6aafdd20372 assets/fossilslegacy/items/user_manual.json
 ff70d04902a6c1a7a08234b60d1d8c3f6f21e853 assets/fossilslegacy/items/velociraptor_dna.json
 437d3972b5dbad261981f364e93a5cc6855d2727 assets/fossilslegacy/items/velociraptor_egg.json
 dea3abf19edb35b80a7786647f58b8a10552b8bc assets/fossilslegacy/items/velociraptor_spawn_egg.json
@@ -1550,7 +1550,7 @@ dc13f3a6b3c5ff8ed50e5b7523b67345c019d21a assets/fossilslegacy/models/item/tricer
 fab704a980924513c3605afad000c0ab90f4ef66 assets/fossilslegacy/models/item/tyrannosaurus_dna.json
 e6e67e14c1be93a7b836f6faf4936837f94f6362 assets/fossilslegacy/models/item/tyrannosaurus_egg.json
 151202e91933efefc63b4df9a95998761b726c5b assets/fossilslegacy/models/item/tyrannosaurus_tooth.json
-83e25065e45c398281052a05636c1aba213e2f45 assets/fossilslegacy/models/item/user_manuel.json
+b5ee7e84d5cbe768e158c4c336ff42ce27d6ae26 assets/fossilslegacy/models/item/user_manual.json
 d6bceb669375ccc87d58ff14dcc80064f8ab5091 assets/fossilslegacy/models/item/velociraptor_dna.json
 2424b095295cc863aa4c7f160c0c46587e4d2291 assets/fossilslegacy/models/item/velociraptor_egg.json
 a116bba9f9741ece0681ec0fb3548d54efd77871 assets/fossilslegacy/models/item/white_decoration_plaque.json

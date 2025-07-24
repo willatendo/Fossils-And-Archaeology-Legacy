@@ -68,6 +68,7 @@ accessible field net/minecraft/world/entity/ai/behavior/GiveGiftToHero GIFTS Lja
 accessible field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool rawTemplates Ljava/util/List;
 mutable field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool rawTemplates Ljava/util/List;
 accessible field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool templates Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+accessible field net/minecraft/world/item/crafting/RecipeManager recipes Lnet/minecraft/world/item/crafting/RecipeMap;
 
 accessible field net/minecraft/client/ClientRecipeBook collectionsByTab Ljava/util/Map;
 accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_HELMET Lnet/minecraft/resources/ResourceLocation;

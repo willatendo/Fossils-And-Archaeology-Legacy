@@ -8,9 +8,12 @@ import net.minecraft.client.gui.screens.recipebook.RecipeCollection;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.crafting.ExtendedRecipeBookCategory;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
 import willatendo.fossilslegacy.client.FASearchRecipeBookCategory;
+import willatendo.fossilslegacy.network.NetworkUtils;
 import willatendo.fossilslegacy.network.ServerboundPacketRegistry;
+import willatendo.fossilslegacy.network.clientbound.ClientboundRecipeContentPacket;
 import willatendo.fossilslegacy.network.serverbound.ServerboundPackets;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.feature.FAPlacedFeatures;
@@ -21,6 +24,7 @@ import willatendo.simplelibrary.server.event.registry.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class ModEvents {
     public static final Map<ExtendedRecipeBookCategory, List<RecipeCollection>> SEARCH_TABS = new HashMap<>();
@@ -54,5 +58,6 @@ public class ModEvents {
         BiomeModifications.addSpawn(BiomeSelectors.tag(BiomeTags.HAS_OCEAN_RUIN_WARM), MobCategory.WATER_AMBIENT, FAEntityTypes.NAUTILUS.get(), 1, 1, 1);
 
         ServerLifecycleEvents.SERVER_STARTING.register(server -> BasicEvents.structurePoolModification(new FabricStructurePoolModification(server)));
+        ServerLifecycleEvents.SYNC_DATA_PACK_CONTENTS.register((serverPlayer, b) -> NetworkUtils.sendToClient(serverPlayer, ClientboundRecipeContentPacket.create(Set.of(RecipeType.CRAFTING, RecipeType.SMELTING, RecipeType.SMOKING, RecipeType.BLASTING, RecipeType.SMITHING), serverPlayer.server.getRecipeManager().recipes)));
     }
 }

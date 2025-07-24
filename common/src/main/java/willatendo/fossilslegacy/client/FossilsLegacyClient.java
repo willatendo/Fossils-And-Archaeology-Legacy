@@ -11,13 +11,15 @@ import net.minecraft.client.renderer.entity.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.animal.horse.Donkey;
 import net.minecraft.world.entity.animal.horse.Mule;
+import net.minecraft.world.item.crafting.RecipeMap;
 import willatendo.fossilslegacy.client.model.*;
 import willatendo.fossilslegacy.client.model.dinosaur.NautilusModel;
 import willatendo.fossilslegacy.client.model.vehicle.JeepModel;
 import willatendo.fossilslegacy.client.particle.Particles;
 import willatendo.fossilslegacy.client.render.*;
 import willatendo.fossilslegacy.client.screen.*;
-import willatendo.fossilslegacy.client.screen.user_manuel.UserManuelData;
+import willatendo.fossilslegacy.client.screen.user_manual.SyncedData;
+import willatendo.fossilslegacy.client.screen.user_manual.UserManualData;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.block.FAWoodTypes;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
@@ -32,7 +34,7 @@ public final class FossilsLegacyClient {
     public static final ResourceLocation TAR_FLOW = ResourceLocation.withDefaultNamespace("block/bedrock");
 
     public static void loadUserManuelData() {
-        UserManuelData.init();
+        UserManualData.init();
     }
 
     public static void signSheets() {
@@ -206,7 +208,7 @@ public final class FossilsLegacyClient {
         menuScreenRegister.addMenuScreen(FAMenuTypes.FEEDER.get(), FeederScreen::new);
         menuScreenRegister.addMenuScreen(FAMenuTypes.GENE_MODIFICATION.get(), DNARecombinatorScreen::new);
         menuScreenRegister.addMenuScreen(FAMenuTypes.PALAEONTOLOGY_TABLE.get(), PalaeontologyTableScreen::new);
-        menuScreenRegister.addMenuScreen(FAMenuTypes.USER_MANUEL.get(), UserManuelScreen::new);
+        menuScreenRegister.addMenuScreen(FAMenuTypes.USER_MANUEL.get(), UserManualScreen::new);
         menuScreenRegister.addMenuScreen(FAMenuTypes.TIME_MACHINE.get(), TimeMachineScreen::new);
     }
 
@@ -214,5 +216,9 @@ public final class FossilsLegacyClient {
         particleRegistry.registerSprite(FAParticleTypes.DRIPPING_TAR.get(), Particles::createTarHangParticle);
         particleRegistry.registerSprite(FAParticleTypes.FALLING_TAR.get(), Particles::createTarFallParticle);
         particleRegistry.registerSprite(FAParticleTypes.LANDING_TAR.get(), Particles::createTarLandParticle);
+    }
+
+    public static void addRecipes(RecipeMap recipeMap) {
+        SyncedData.addRecipes(recipeMap);
     }
 }

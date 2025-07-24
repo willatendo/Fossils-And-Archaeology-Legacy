@@ -1,12 +1,14 @@
 package willatendo.fossilslegacy.server.event;
 
 import net.minecraft.world.item.crafting.RecipeBookCategory;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.event.RegisterRecipeBookSearchCategoriesEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
@@ -83,5 +85,10 @@ public class ModEvents {
         for (FASearchRecipeBookCategory category : FASearchRecipeBookCategory.values()) {
             event.register(category, category.includedCategories().toArray(RecipeBookCategory[]::new));
         }
+    }
+
+    @SubscribeEvent
+    public static void syncDatapack(OnDatapackSyncEvent event) {
+        event.sendRecipes(RecipeType.CRAFTING, RecipeType.SMELTING, RecipeType.SMOKING, RecipeType.BLASTING, RecipeType.SMITHING);
     }
 }

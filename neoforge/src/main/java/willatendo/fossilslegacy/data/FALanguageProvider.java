@@ -19,7 +19,6 @@ import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
 import willatendo.fossilslegacy.server.level.FAGameRules;
 import willatendo.fossilslegacy.server.model_type.FAModelTypes;
 import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 import willatendo.fossilslegacy.server.stats.FAStats;
 import willatendo.fossilslegacy.server.tags.*;
 import willatendo.simplelibrary.data.SimpleLanguageProvider;
@@ -978,8 +977,10 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.BOLT_CUTTER.get());
         this.add(FAItems.FLARE.get());
         this.add(FAItems.FLARE_BODY.get());
-        this.add(FAItems.USER_MANUEL.get());
-        this.add("item.fossilslegacy.user_manuel.by", "By Willatendo");
+        this.add(FAItems.USER_MANUAL.get());
+        this.add("item.fossilslegacy.user_manual.by", "By Willatendo");
+        this.add("item.fossilslegacy.user_manual.drops", "Click for drops");
+        this.add("item.fossilslegacy.user_manual.recipes", "Click for recipes");
 
         this.add(FAItems.JEEP_1993.get(), "1993 Jeep");
 

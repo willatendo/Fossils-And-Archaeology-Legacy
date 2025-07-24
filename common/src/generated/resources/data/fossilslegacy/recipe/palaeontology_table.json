@@ -3,7 +3,7 @@
   "category": "building",
   "key": {
     "#": "#minecraft:planks",
-    "$": "fossilslegacy:mesozoic_fossil"
+    "$": "#fossilslegacy:fossils"
   },
   "pattern": [
     "$$",

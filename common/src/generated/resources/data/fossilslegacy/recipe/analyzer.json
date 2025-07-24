@@ -3,7 +3,7 @@
   "category": "building",
   "key": {
     "#": "minecraft:iron_ingot",
-    "$": "fossilslegacy:mesozoic_fossil",
+    "$": "#fossilslegacy:fossils",
     "%": "fossilslegacy:relic_scrap"
   },
   "pattern": [

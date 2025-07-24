@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_scarab_gem": {
+    "has_string": {
       "conditions": {
         "items": [
           {
-            "items": "#fossilslegacy:scarab_gem_tool_materials"
+            "items": "minecraft:string"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:scarab_gem_chestplate_smithing"
+        "recipe": "fossilslegacy:user_manual"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_scarab_gem"
+      "has_string"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:scarab_gem_chestplate_smithing"
+      "fossilslegacy:user_manual"
     ]
   }
 }

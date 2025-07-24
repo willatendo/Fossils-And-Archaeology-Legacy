@@ -4,7 +4,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerPlayer;
 import willatendo.fossilslegacy.platform.FAModloaderHelper;
 
-public class NetworkUtils {
+public final class NetworkUtils {
     public static void sendToClient(ServerPlayer serverPlayer, CustomPacketPayload customPacketPayload) {
         FAModloaderHelper.INSTANCE.sendToClient(serverPlayer, customPacketPayload);
     }

@@ -20,14 +20,14 @@ import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.client.resources.DecorationPlaqueTextureManager;
 import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;
 import willatendo.fossilslegacy.network.ClientboundPacketRegistry;
-import willatendo.fossilslegacy.network.ServerboundPacketRegistry;
+import willatendo.fossilslegacy.network.clientbound.ClientboundRecipeContentPacket;
+import willatendo.fossilslegacy.network.clientbound.FabricClientboundPackets;
 import willatendo.fossilslegacy.network.serverbound.ServerboundVehicleSinkPacket;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
 import willatendo.fossilslegacy.server.fluid.FAFluids;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.client.event.registry.*;
-import willatendo.simplelibrary.server.event.registry.FabricServerboundPacketRegister;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
@@ -164,7 +164,9 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
 
         ParticleRenderEvents.ALLOW_BLOCK_DUST_TINT.register((blockState, clientLevel, blockPos) -> blockState.is(FABlocks.CYCAD_HEAD.get()));
 
-        ClientboundPacketRegistry.clientboundPacketSetup(new FabricClientboundPacketRegister());
+        FabricClientboundPacketRegister fabricClientboundPacketRegister = new FabricClientboundPacketRegister();
+        fabricClientboundPacketRegister.registerClientbound(ClientboundRecipeContentPacket.TYPE, ClientboundRecipeContentPacket.STREAM_CODEC, FabricClientboundPackets::clientboundOpenDinopediaScreenPacket);
+        ClientboundPacketRegistry.clientboundPacketSetup(fabricClientboundPacketRegister);
 
         FossilsLegacyClient.blockColorRegistry(new FabricBlockColorRegister());
 
