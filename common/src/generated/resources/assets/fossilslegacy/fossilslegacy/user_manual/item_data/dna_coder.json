@@ -1,0 +1,19 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": "fossilslegacy:dna_coder",
+      "drops": [
+        "fossilslegacy:dna_coder"
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    "A utility block.",
+    "Used to decode and encode DNA.",
+    "For more information, look to the recipes."
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:dna_coder"
+  ]
+}

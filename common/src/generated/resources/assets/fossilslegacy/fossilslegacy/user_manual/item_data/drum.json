@@ -1,0 +1,19 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": "fossilslegacy:drum",
+      "drops": [
+        "fossilslegacy:drum"
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    "A utility block.",
+    "Used send commands to many creatures at once. Left-click to set the command, right-click to send the command.",
+    "For more information, look to the recipes."
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:drum"
+  ]
+}

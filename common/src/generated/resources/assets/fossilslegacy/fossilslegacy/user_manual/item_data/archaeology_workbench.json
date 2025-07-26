@@ -1,0 +1,19 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": "fossilslegacy:archaeology_workbench",
+      "drops": [
+        "fossilslegacy:archaeology_workbench"
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    "A utility block.",
+    "Used to repair and restore broken artifacts.",
+    "For more information, look to the recipes."
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:archaeology_workbench"
+  ]
+}

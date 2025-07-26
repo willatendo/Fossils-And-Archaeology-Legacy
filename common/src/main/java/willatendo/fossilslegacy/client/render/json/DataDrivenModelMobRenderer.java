@@ -17,10 +17,8 @@ import willatendo.fossilslegacy.server.pattern.FATextures;
 import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 import willatendo.fossilslegacy.server.pattern.texture.Texture;
 import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
-import java.util.Optional;
 
 public abstract class DataDrivenModelMobRenderer<T extends Mob & DataDrivenCosmetics, S extends DataDrivenRenderState> extends MobRenderer<T, S, EntityModel<S>> {
     private ResourceLocation modelId;

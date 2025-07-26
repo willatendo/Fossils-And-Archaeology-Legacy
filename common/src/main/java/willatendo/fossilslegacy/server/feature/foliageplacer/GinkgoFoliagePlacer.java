@@ -11,7 +11,6 @@ import net.minecraft.world.level.levelgen.feature.configurations.TreeConfigurati
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import willatendo.fossilslegacy.server.feature.FAFoliagePlacerTypes;
-import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public class GinkgoFoliagePlacer extends FoliagePlacer {
     public static final MapCodec<GinkgoFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(IntProvider.codec(0, 16).fieldOf("radius").forGetter(ginkgoFoliagePlacer -> ginkgoFoliagePlacer.radius), IntProvider.codec(0, 16).fieldOf("offset").forGetter(ginkgoFoliagePlacer -> ginkgoFoliagePlacer.offset), IntProvider.codec(0, 16).fieldOf("height").forGetter(ginkgoFoliagePlacer -> ginkgoFoliagePlacer.height)).apply(instance, GinkgoFoliagePlacer::new));

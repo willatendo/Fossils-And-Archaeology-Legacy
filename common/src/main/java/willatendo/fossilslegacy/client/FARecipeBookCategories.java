@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.client;
 
-import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeBookCategory;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.RecipeBookCategoryRegistry;

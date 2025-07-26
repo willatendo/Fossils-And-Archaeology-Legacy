@@ -1,0 +1,19 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": "fossilslegacy:feeder",
+      "drops": [
+        "fossilslegacy:feeder"
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    "A utility block.",
+    "Used for animals to feed themselves when hungry.",
+    "For more information, look to the recipes."
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:feeder"
+  ]
+}

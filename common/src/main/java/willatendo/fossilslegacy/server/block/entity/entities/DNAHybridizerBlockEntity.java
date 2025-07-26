@@ -4,7 +4,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -25,8 +24,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import willatendo.fossilslegacy.server.block.blocks.DNAHybridizerBlock;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.item.FADataComponents;
-import willatendo.fossilslegacy.server.item.FAItems;
-import willatendo.fossilslegacy.server.item.items.StorageDiscItem;
 import willatendo.fossilslegacy.server.menu.menus.DNAHybridizerMenu;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 

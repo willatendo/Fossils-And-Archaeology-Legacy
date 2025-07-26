@@ -8,7 +8,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import willatendo.fossilslegacy.network.NetworkUtils;
 import willatendo.fossilslegacy.network.serverbound.ServerboundStartTimeMachinePacket;
-import willatendo.fossilslegacy.platform.FAModloaderHelper;
 import willatendo.fossilslegacy.server.block.entity.entities.TimeMachineBlockEntity;
 import willatendo.fossilslegacy.server.menu.menus.TimeMachineMenu;
 import willatendo.fossilslegacy.server.utils.FAUtils;

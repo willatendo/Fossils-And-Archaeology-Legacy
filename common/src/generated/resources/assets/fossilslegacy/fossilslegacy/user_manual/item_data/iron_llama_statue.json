@@ -1,0 +1,19 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": "fossilslegacy:iron_llama_statue",
+      "drops": [
+        "fossilslegacy:iron_llama_statue"
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    "A Mayan relic from the past, found in Mayan structures.",
+    "A decorative iron llama.",
+    "For more information, look to the recipes."
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:iron_llama_statue"
+  ]
+}

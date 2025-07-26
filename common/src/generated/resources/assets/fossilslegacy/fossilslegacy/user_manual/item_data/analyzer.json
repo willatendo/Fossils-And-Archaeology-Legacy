@@ -1,0 +1,19 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": "fossilslegacy:analyzer",
+      "drops": [
+        "fossilslegacy:analyzer"
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    "A utility block.",
+    "Used to analyzer discovered items.",
+    "For more information, look to the recipes."
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:analyzer"
+  ]
+}

@@ -10,8 +10,6 @@ import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.GameRules;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import willatendo.fossilslegacy.server.block.blocks.CycadHeadBlock;
 import willatendo.fossilslegacy.server.fluid.TarFluid;
 import willatendo.fossilslegacy.server.item.items.ArticulatedFossilItem;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;

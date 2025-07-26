@@ -23,7 +23,6 @@ import willatendo.fossilslegacy.network.NetworkUtils;
 import willatendo.fossilslegacy.network.serverbound.ServerboundDamageHammerPacket;
 import willatendo.fossilslegacy.network.serverbound.ServerboundSetFossilPartPositionsPacket;
 import willatendo.fossilslegacy.network.serverbound.ServerboundSetFossilPartRotationsPacket;
-import willatendo.fossilslegacy.platform.FAModloaderHelper;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Fossil;
 import willatendo.fossilslegacy.server.entity.util.FossilPositions;

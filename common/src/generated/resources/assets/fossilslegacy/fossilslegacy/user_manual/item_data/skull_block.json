@@ -1,0 +1,19 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": "fossilslegacy:skull_block",
+      "drops": [
+        "fossilslegacy:skull_block"
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    "A skull block.",
+    "For more information, look to the recipes."
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:skull_lantern_block",
+    "fossilslegacy:skull_stick"
+  ]
+}

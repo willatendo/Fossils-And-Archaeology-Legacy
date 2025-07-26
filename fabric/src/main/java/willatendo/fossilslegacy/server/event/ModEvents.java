@@ -14,7 +14,6 @@ import willatendo.fossilslegacy.client.FASearchRecipeBookCategory;
 import willatendo.fossilslegacy.network.NetworkUtils;
 import willatendo.fossilslegacy.network.ServerboundPacketRegistry;
 import willatendo.fossilslegacy.network.clientbound.ClientboundRecipeContentPacket;
-import willatendo.fossilslegacy.network.serverbound.ServerboundPackets;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.feature.FAPlacedFeatures;
 import willatendo.fossilslegacy.server.utils.FAUtils;

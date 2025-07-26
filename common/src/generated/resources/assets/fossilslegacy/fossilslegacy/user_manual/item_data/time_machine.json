@@ -1,0 +1,17 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": "fossilslegacy:time_machine",
+      "drops": [
+        "fossilslegacy:time_machine"
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    "A utility block.",
+    "Used to travel to different time periods.",
+    "For more information, look to the recipes."
+  ],
+  "displayed_recipes": []
+}

@@ -30,7 +30,10 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlac
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import willatendo.fossilslegacy.server.block.FABlocks;
-import willatendo.fossilslegacy.server.feature.foliageplacer.*;
+import willatendo.fossilslegacy.server.feature.foliageplacer.BranchedFoliagePlacer;
+import willatendo.fossilslegacy.server.feature.foliageplacer.GinkgoFoliagePlacer;
+import willatendo.fossilslegacy.server.feature.foliageplacer.LepidodendronFoliagePlacer;
+import willatendo.fossilslegacy.server.feature.foliageplacer.SigillariaFoliagePlacer;
 import willatendo.fossilslegacy.server.feature.trunkplacer.*;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 

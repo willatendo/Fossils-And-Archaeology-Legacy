@@ -4,19 +4,19 @@
   "line": [
     {
       "type": "fossilslegacy:built_in",
-      "modelName": "pregnant_display_name"
+      "name": "pregnant_display_name"
     },
     {
       "type": "fossilslegacy:built_in",
-      "modelName": "pregnant_health"
+      "name": "pregnant_health"
     },
     {
       "type": "fossilslegacy:built_in",
-      "modelName": "pregnancy_time"
+      "name": "pregnancy_time"
     },
     {
       "type": "fossilslegacy:built_in",
-      "modelName": "pregnancy_type"
+      "name": "pregnancy_type"
     }
   ]
 }

@@ -32,7 +32,6 @@ import willatendo.fossilslegacy.network.NetworkUtils;
 import willatendo.fossilslegacy.network.serverbound.ServerboundSetDNARecombinatorGenePacket;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Pteranodon;
-import willatendo.fossilslegacy.server.gene.FAGenes;
 import willatendo.fossilslegacy.server.gene.Gene;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.data_components.CosmeticGeneticInformation;
@@ -48,7 +47,9 @@ import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 import willatendo.fossilslegacy.server.tags.FAPatternTags;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinatorMenu> {
     private static final ResourceLocation TEXTURE = FAUtils.resource("textures/gui/container/dna_recombinator.png");

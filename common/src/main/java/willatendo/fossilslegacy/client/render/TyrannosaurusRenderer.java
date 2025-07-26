@@ -9,8 +9,8 @@ import willatendo.fossilslegacy.client.state.TyrannosaurusRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Tyrannosaurus;
 import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.pattern.FATextures;
-import willatendo.fossilslegacy.server.pattern.texture.Texture;
 import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
+import willatendo.fossilslegacy.server.pattern.texture.Texture;
 
 import java.util.List;
 import java.util.Optional;

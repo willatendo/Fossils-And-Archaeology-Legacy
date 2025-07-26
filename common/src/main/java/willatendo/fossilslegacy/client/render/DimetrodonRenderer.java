@@ -8,8 +8,8 @@ import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRender
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.guadalupian.Dimetrodon;
 import willatendo.fossilslegacy.server.pattern.FATextures;
-import willatendo.fossilslegacy.server.pattern.texture.Texture;
 import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
+import willatendo.fossilslegacy.server.pattern.texture.Texture;
 
 import java.util.List;
 import java.util.Optional;

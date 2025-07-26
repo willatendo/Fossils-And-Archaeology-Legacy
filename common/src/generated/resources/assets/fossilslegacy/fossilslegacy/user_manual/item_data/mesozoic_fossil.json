@@ -1,0 +1,12 @@
+{
+  "displayed_loot_tables": [],
+  "displayed_paragraphs": [
+    "Fossils from the Mesozoic. From mesozoic fossil ore, which can be found from y50-y20.",
+    "Can be used in some recipes and can give DNA from the Mesozoic.",
+    "For more information, look to the recipes."
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:analyzer",
+    "fossilslegacy:palaeontology_table"
+  ]
+}

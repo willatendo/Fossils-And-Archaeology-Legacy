@@ -19,6 +19,7 @@ import willatendo.fossilslegacy.client.model.json.JsonLayerDefinitionResourceMan
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.client.resources.DecorationPlaqueTextureManager;
 import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;
+import willatendo.fossilslegacy.client.user_manual.UserManualItemDataLoader;
 import willatendo.fossilslegacy.network.ClientboundPacketRegistry;
 import willatendo.fossilslegacy.network.clientbound.ClientboundRecipeContentPacket;
 import willatendo.fossilslegacy.network.clientbound.FabricClientboundPackets;
@@ -89,6 +90,17 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
             @Override
             public CompletableFuture<Void> reload(PreparationBarrier preparationBarrier, ResourceManager resourceManager, Executor backgroundExecutor, Executor gameExecutor) {
                 return JsonLayerDefinitionResourceManager.INSTANCE.reload(preparationBarrier, resourceManager, backgroundExecutor, gameExecutor);
+            }
+        });
+        resourceManagerHelper.registerReloadListener(new IdentifiableResourceReloadListener() {
+            @Override
+            public ResourceLocation getFabricId() {
+                return FAUtils.resource("user_manual_item_data_loader");
+            }
+
+            @Override
+            public CompletableFuture<Void> reload(PreparationBarrier preparationBarrier, ResourceManager resourceManager, Executor backgroundExecutor, Executor gameExecutor) {
+                return UserManualItemDataLoader.INSTANCE.reload(preparationBarrier, resourceManager, backgroundExecutor, gameExecutor);
             }
         });
 

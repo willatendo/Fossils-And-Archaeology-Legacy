@@ -2,13 +2,17 @@ package willatendo.fossilslegacy.server.tags;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.util.TagRegister;
 
 public class FABlockTags {
     private static final TagRegister<Block> BLOCK_TAGS = TagRegister.create(Registries.BLOCK, FAUtils.ID);
+    private static final TagRegister<Block> C_BLOCK_TAGS = TagRegister.create(Registries.BLOCK, "neoforge");
+
+    public static final TagKey<Block> NEEDS_WOOD_TOOL = C_BLOCK_TAGS.register("needs_wood_tool");
+    public static final TagKey<Block> NEEDS_GOLD_TOOL = C_BLOCK_TAGS.register("needs_gold_tool");
+    public static final TagKey<Block> NEEDS_NETHERITE_TOOL = C_BLOCK_TAGS.register("needs_netherite_tool");
 
     public static final TagKey<Block> ANKYLOSAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/ankylosaurus");
     public static final TagKey<Block> ARAUCARIA_LOGS = BLOCK_TAGS.register("araucaria_logs");
@@ -37,6 +41,7 @@ public class FABlockTags {
     public static final TagKey<Block> MAMMOTH_SPAWNABLE = BLOCK_TAGS.register("spawnable/mammoth");
     public static final TagKey<Block> MINEABLE_WITH_ANCIENT_HOE = BLOCK_TAGS.register("mineable/ancient_hoe");
     public static final TagKey<Block> MOA_SPAWNABLE = BLOCK_TAGS.register("spawnable/moa");
+    public static final TagKey<Block> NEEDS_SCARAB_GEM_TOOL = BLOCK_TAGS.register("needs_scarab_gem_tool");
     public static final TagKey<Block> PACHYCEPHALOSAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/pachycephalosaurus");
     public static final TagKey<Block> PERMAFROST_FROSTABLE = BLOCK_TAGS.register("permafrost_frostable");
     public static final TagKey<Block> PTERANODON_SPAWNABLE = BLOCK_TAGS.register("spawnable/pteranodon");

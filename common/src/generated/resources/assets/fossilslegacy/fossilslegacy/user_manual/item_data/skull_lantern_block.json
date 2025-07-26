@@ -1,0 +1,18 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": "fossilslegacy:skull_lantern_block",
+      "drops": [
+        "fossilslegacy:skull_lantern_block"
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    "A skull block with a torch inside.",
+    "For more information, look to the recipes."
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:skull_lantern_block"
+  ]
+}

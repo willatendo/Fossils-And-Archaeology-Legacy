@@ -75,6 +75,7 @@ public class FossilsLegacyData {
         event.addProvider(new FALanguageProvider(packOutput, FAUtils.ID, "en_us"));
         event.addProvider(new FAEntityModelProvider(packOutput, FAUtils.ID));
         event.addProvider(new FAAnimationProvider(packOutput, FAUtils.ID));
+        event.addProvider(new FAUserManualDataProvider(packOutput, FAUtils.ID));
         event.addProvider(new FAEquipmentAssetProvider(packOutput));
 
         event.createDatapackRegistryObjects(BUILDER);

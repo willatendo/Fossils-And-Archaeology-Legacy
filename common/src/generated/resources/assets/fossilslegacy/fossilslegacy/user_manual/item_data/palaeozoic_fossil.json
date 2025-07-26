@@ -1,0 +1,12 @@
+{
+  "displayed_loot_tables": [],
+  "displayed_paragraphs": [
+    "Fossils from the Palaeozoic. From palaeozoic fossil ore, which can be found from y20-y0.",
+    "Can be used in some recipes and can give DNA from the Palaeozoic.",
+    "For more information, look to the recipes."
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:analyzer",
+    "fossilslegacy:palaeontology_table"
+  ]
+}

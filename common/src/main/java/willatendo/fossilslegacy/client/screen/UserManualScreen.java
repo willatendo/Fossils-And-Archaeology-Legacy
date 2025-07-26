@@ -19,9 +19,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeMap;
-import willatendo.fossilslegacy.client.screen.user_manual.SyncedData;
-import willatendo.fossilslegacy.client.screen.user_manual.UserManualData;
 import willatendo.fossilslegacy.client.screen.user_manual.UserManualGhostSlots;
+import willatendo.fossilslegacy.client.user_manual.SyncedData;
+import willatendo.fossilslegacy.client.user_manual.UserManualData;
+import willatendo.fossilslegacy.client.user_manual.UserManualItemDisplayData;
+import willatendo.fossilslegacy.client.user_manual.draw.*;
+import willatendo.fossilslegacy.client.user_manual.loot.DrawLootRecipe;
+import willatendo.fossilslegacy.client.user_manual.recipe.type.RecipeTypeDrawInformationHolder;
 import willatendo.fossilslegacy.server.menu.menus.UserManualMenu;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
@@ -49,7 +53,7 @@ public class UserManualScreen extends AbstractContainerScreen<UserManualMenu> {
     private List<ResourceKey<Recipe<?>>> recipes;
     private int dropPage = 0;
     private int dropPages = 0;
-    private List<UserManualData.LootRecipe> drops;
+    private List<DrawLootRecipe> drops;
     private float time;
     private UserManualGhostSlots recipeSlots;
     private UserManualGhostSlots dropSlots;
@@ -87,8 +91,8 @@ public class UserManualScreen extends AbstractContainerScreen<UserManualMenu> {
     private void updateButtonVisibility() {
         ItemStack itemStack = this.menu.itemSlot.getItem(0);
         if (!itemStack.isEmpty()) {
-            this.recipes = UserManualData.getItemInformation(itemStack).recipes();
-            this.drops = UserManualData.getItemInformation(itemStack).lootTables();
+            this.recipes = UserManualData.getItemDisplayData(itemStack).displayedRecipes();
+            this.drops = UserManualData.getItemDisplayData(itemStack).displayedLootRecipes();
         } else {
             this.recipes = List.of();
             this.drops = List.of();
@@ -141,18 +145,18 @@ public class UserManualScreen extends AbstractContainerScreen<UserManualMenu> {
                 guiGraphics.drawString(this.font, name.getFirst(), this.leftPos + 170, this.topPos + 19, 0, false);
             } else {
                 for (int i = 0; i < name.size(); i++) {
-                    guiGraphics.drawString(this.font, name.get(i), this.leftPos + 170, this.topPos + 19 - (10 / name.size()) + (i * 10), 0, false);
+                    guiGraphics.drawString(this.font, name.get(i), this.leftPos + 170, this.topPos + 24 - ((10 * name.size()) / 2) + (10 * i), 0, false);
                 }
             }
 
-            UserManualData.ItemPage itemPage = UserManualData.getItemInformation(itemStack);
+            UserManualItemDisplayData userManualItemDisplayData = UserManualData.getItemDisplayData(itemStack);
             if (!this.drops.isEmpty()) {
                 guiGraphics.drawString(this.font, DROPS, this.leftPos + 15, this.topPos + 15, 0, false);
             }
             if (!this.recipes.isEmpty()) {
                 guiGraphics.drawString(this.font, RECIPES, this.leftPos + 15, this.topPos + 35, 0, false);
             }
-            List<Component> text = itemPage.information();
+            List<Component> text = userManualItemDisplayData.displayedParagraphs();
             int lastParagraph = 0;
             for (int i = 0; i < text.size(); i++) {
                 Component paragraph = text.get(i);
@@ -179,25 +183,30 @@ public class UserManualScreen extends AbstractContainerScreen<UserManualMenu> {
                             FAUtils.LOGGER.error("RECIPE: {} IS NULL!", this.recipes.get(index));
                         } else {
                             Recipe<?> recipe = recipeHolder.value();
-                            UserManualData.RecipeTypePage recipeTypePage = UserManualData.getRecipeTypeInformation(recipe.getType());
-                            if (recipeTypePage != UserManualData.RecipeTypePage.EMPTY && recipeTypePage != null) {
+                            RecipeTypeDrawInformationHolder recipeTypePage = UserManualData.getRecipeTypeDrawInformation(recipe.getType());
+                            if (recipeTypePage != RecipeTypeDrawInformationHolder.EMPTY && recipeTypePage != null) {
                                 if (i == 1) {
                                     topPos += 59;
                                 }
                                 guiGraphics.blitSprite(RenderType::guiTextured, recipeTypePage.texture(), leftPos + recipeTypePage.xOffset(), topPos + recipeTypePage.yOffset(), recipeTypePage.width(), recipeTypePage.height());
                                 guiGraphics.blitSprite(RenderType::guiTextured, SLOT_SPRITE, leftPos + 7, topPos + 34, 18, 18);
-                                UserManualData.SlotPlacer slotPlacer = new UserManualData.SlotPlacer();
-                                UserManualData.SpriteDrawer spriteDrawer = new UserManualData.SpriteDrawer();
-                                recipeTypePage.drawRecipe().draw(this.player.level(), recipe, this.player.registryAccess(), slotPlacer, spriteDrawer);
+                                SlotPlacer slotPlacer = new SlotPlacer();
+                                SpriteDrawer spriteDrawer = new SpriteDrawer();
+                                recipeTypePage.drawRecipe().draw(this.player.level(), recipe, slotPlacer, spriteDrawer);
                                 this.recipeSlots.addContainers(Arrays.asList(recipeTypePage.containers()), leftPos + 8, topPos + 35, 16, 16);
-                                for (Map.Entry<UserManualData.Coordinate, List<ItemStack>> entry : slotPlacer.forEach()) {
-                                    UserManualData.Coordinate coordinate = entry.getKey();
+                                for (Map.Entry<Coordinate, List<ItemStack>> entry : slotPlacer.forEach()) {
+                                    Coordinate coordinate = entry.getKey();
                                     this.recipeSlots.add(entry.getValue(), leftPos + coordinate.x() + recipeTypePage.xOffset(), topPos + coordinate.y() + recipeTypePage.yOffset(), 16, 16);
                                 }
-                                for (Map.Entry<UserManualData.SpriteInformation, ResourceLocation> entry : spriteDrawer.forEach()) {
-                                    UserManualData.SpriteInformation spriteInformation = entry.getKey();
-                                    UserManualData.Coordinate coordinate = spriteInformation.coordinate();
+                                for (Map.Entry<SpriteInformation, ResourceLocation> entry : spriteDrawer.forEachSprite()) {
+                                    SpriteInformation spriteInformation = entry.getKey();
+                                    Coordinate coordinate = spriteInformation.coordinate();
                                     guiGraphics.blitSprite(RenderType::guiTextured, entry.getValue(), leftPos + coordinate.x(), topPos + coordinate.y(), spriteInformation.width(), spriteInformation.height());
+                                }
+                                for (Map.Entry<TextInformation, Component> entry : spriteDrawer.forEachText()) {
+                                    TextInformation textInformation = entry.getKey();
+                                    Coordinate coordinate = textInformation.coordinate();
+                                    guiGraphics.drawString(this.font, entry.getValue(), leftPos + coordinate.x(), topPos + coordinate.y(), textInformation.color(), false);
                                 }
                             }
                         }
@@ -222,19 +231,30 @@ public class UserManualScreen extends AbstractContainerScreen<UserManualMenu> {
                 for (int i = 0; i < 2; i++) {
                     int index = i + (this.dropPage * 2);
                     if (!(index >= this.drops.size())) {
-                        UserManualData.LootRecipe lootRecipe = this.drops.get(index);
-                        if (lootRecipe == null) {
+                        DrawLootRecipe drawLootRecipe = this.drops.get(index);
+                        if (drawLootRecipe == null) {
                             FAUtils.LOGGER.error("DROP: {} IS NULL!", this.drops.get(index));
                         } else {
                             if (i == 1) {
                                 topPos += 59;
                             }
                             guiGraphics.blitSprite(RenderType::guiTextured, LOOT_SPRITE, leftPos + 32, topPos + 34, 108, 18);
-                            UserManualData.SlotPlacer slotPlacer = new UserManualData.SlotPlacer();
-                            lootRecipe.draw(slotPlacer);
-                            for (Map.Entry<UserManualData.Coordinate, List<ItemStack>> entry : slotPlacer.forEach()) {
-                                UserManualData.Coordinate coordinate = entry.getKey();
+                            SlotPlacer slotPlacer = new SlotPlacer();
+                            SpriteDrawer spriteDrawer = new SpriteDrawer();
+                            drawLootRecipe.draw(this.player.level(), slotPlacer, spriteDrawer);
+                            for (Map.Entry<Coordinate, List<ItemStack>> entry : slotPlacer.forEach()) {
+                                Coordinate coordinate = entry.getKey();
                                 this.dropSlots.add(entry.getValue(), leftPos + coordinate.x() + 32, topPos + coordinate.y() + 34, 16, 16);
+                            }
+                            for (Map.Entry<SpriteInformation, ResourceLocation> entry : spriteDrawer.forEachSprite()) {
+                                SpriteInformation spriteInformation = entry.getKey();
+                                Coordinate coordinate = spriteInformation.coordinate();
+                                guiGraphics.blitSprite(RenderType::guiTextured, entry.getValue(), leftPos + coordinate.x(), topPos + coordinate.y(), spriteInformation.width(), spriteInformation.height());
+                            }
+                            for (Map.Entry<TextInformation, Component> entry : spriteDrawer.forEachText()) {
+                                TextInformation textInformation = entry.getKey();
+                                Coordinate coordinate = textInformation.coordinate();
+                                guiGraphics.drawString(this.font, entry.getValue(), leftPos + coordinate.x(), topPos + coordinate.y(), textInformation.color(), false);
                             }
                         }
                     }
@@ -289,7 +309,7 @@ public class UserManualScreen extends AbstractContainerScreen<UserManualMenu> {
 
     @Override
     public boolean mouseClicked(double x, double y, int button) {
-        if ((x >= this.leftPos + 15 && x <= this.leftPos + 15 + this.font.width(DROPS)) && (y >= this.topPos + 15 && y <= this.topPos + 15 + this.font.lineHeight)) {
+        if ((x >= this.leftPos + 15 && x <= this.leftPos + 15 + this.font.width(DROPS)) && (y >= this.topPos + 15 && y <= this.topPos + 15 + this.font.lineHeight) && !this.drops.isEmpty()) {
             this.drawDrops = !this.drawDrops;
             if (!this.drawDrops) {
                 this.dropPages = 0;
@@ -298,7 +318,7 @@ public class UserManualScreen extends AbstractContainerScreen<UserManualMenu> {
             return true;
         }
 
-        if ((x >= this.leftPos + 15 && x <= this.leftPos + 15 + this.font.width(RECIPES)) && (y >= this.topPos + 35 && y <= this.topPos + 35 + this.font.lineHeight)) {
+        if ((x >= this.leftPos + 15 && x <= this.leftPos + 15 + this.font.width(RECIPES)) && (y >= this.topPos + 35 && y <= this.topPos + 35 + this.font.lineHeight) && !this.recipes.isEmpty()) {
             this.drawRecipes = !this.drawRecipes;
             if (!this.drawRecipes) {
                 this.recipePage = 0;

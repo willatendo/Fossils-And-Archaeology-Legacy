@@ -4,31 +4,31 @@
   "line": [
     {
       "type": "fossilslegacy:built_in",
-      "modelName": "display_name"
+      "name": "display_name"
     },
     {
       "type": "fossilslegacy:built_in",
-      "modelName": "owner"
+      "name": "owner"
     },
     {
       "type": "fossilslegacy:built_in",
-      "modelName": "age"
+      "name": "age"
     },
     {
       "type": "fossilslegacy:built_in",
-      "modelName": "health"
+      "name": "health"
     },
     {
       "type": "fossilslegacy:built_in",
-      "modelName": "hunger"
+      "name": "hunger"
     },
     {
       "type": "fossilslegacy:built_in",
-      "modelName": "not_owner"
+      "name": "not_owner"
     },
     {
       "type": "fossilslegacy:built_in",
-      "modelName": "wild"
+      "name": "wild"
     }
   ]
 }

@@ -13,7 +13,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.tags.FABlockTags;
 
 public class CycadLogBlock extends Block {

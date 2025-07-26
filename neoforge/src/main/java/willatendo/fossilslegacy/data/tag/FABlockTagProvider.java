@@ -70,6 +70,7 @@ public class FABlockTagProvider extends BlockTagsProvider {
         this.tag(FABlockTags.MAMMOTH_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
         this.tag(FABlockTags.MINEABLE_WITH_ANCIENT_HOE).addTags(BlockTags.MINEABLE_WITH_HOE).add(Blocks.WHEAT, Blocks.CARROTS, Blocks.POTATOES, Blocks.BEETROOTS, Blocks.MELON_STEM, Blocks.ATTACHED_MELON_STEM, Blocks.PUMPKIN_STEM, Blocks.ATTACHED_PUMPKIN_STEM, Blocks.PITCHER_CROP, Blocks.TORCHFLOWER_CROP);
         this.tag(FABlockTags.MOA_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
+        this.tag(FABlockTags.NEEDS_SCARAB_GEM_TOOL).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
         this.tag(FABlockTags.PACHYCEPHALOSAURUS_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);
         this.tag(FABlockTags.PERMAFROST_FROSTABLE).add(Blocks.STONE, Blocks.GRANITE, Blocks.ANDESITE, Blocks.DIORITE);
         this.tag(FABlockTags.PTERANODON_SPAWNABLE).addTags(BlockTags.ANIMALS_SPAWNABLE_ON);

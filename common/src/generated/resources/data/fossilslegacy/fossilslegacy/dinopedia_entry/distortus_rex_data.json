@@ -4,15 +4,15 @@
   "line": [
     {
       "type": "fossilslegacy:built_in",
-      "modelName": "display_name"
+      "name": "display_name"
     },
     {
       "type": "fossilslegacy:built_in",
-      "modelName": "untameable"
+      "name": "untameable"
     },
     {
       "type": "fossilslegacy:built_in",
-      "modelName": "hybrid_dangerous"
+      "name": "hybrid_dangerous"
     }
   ]
 }

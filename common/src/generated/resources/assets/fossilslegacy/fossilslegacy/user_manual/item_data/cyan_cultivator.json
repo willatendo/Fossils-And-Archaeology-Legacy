@@ -1,0 +1,20 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": "fossilslegacy:cyan_cultivator",
+      "drops": [
+        "fossilslegacy:cyan_cultivator"
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    "A utility block.",
+    "Used to cultivate DNA in eggs, embryos, seeds, spores, and cones.",
+    "For more information, look to the recipes."
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:cyan_cultivator",
+    "fossilslegacy:cyan_cultivator_from_dyed_glass"
+  ]
+}

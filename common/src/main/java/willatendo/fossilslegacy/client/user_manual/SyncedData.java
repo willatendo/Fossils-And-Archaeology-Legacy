@@ -1,4 +1,4 @@
-package willatendo.fossilslegacy.client.screen.user_manual;
+package willatendo.fossilslegacy.client.user_manual;
 
 import net.minecraft.world.item.crafting.RecipeMap;
 

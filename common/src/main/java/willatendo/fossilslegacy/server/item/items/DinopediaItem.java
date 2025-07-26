@@ -10,7 +10,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import willatendo.fossilslegacy.network.NetworkUtils;
 import willatendo.fossilslegacy.network.clientbound.ClientboundOpenDinopediaScreenPacket;
-import willatendo.fossilslegacy.platform.FAModloaderHelper;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 
 public class DinopediaItem extends Item {

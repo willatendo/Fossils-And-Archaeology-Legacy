@@ -43,7 +43,7 @@ public class BuiltInDinopediaLines implements DinopediaLine {
 
     public static Map<String, BuiltInDinopediaLines> BY_NAME;
 
-    public static final MapCodec<BuiltInDinopediaLines> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(Codec.STRING.fieldOf("modelName").forGetter(builtInDinopediaLines -> builtInDinopediaLines.name)).apply(instance, BY_NAME::get));
+    public static final MapCodec<BuiltInDinopediaLines> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(Codec.STRING.fieldOf("name").forGetter(builtInDinopediaLines -> builtInDinopediaLines.name)).apply(instance, BY_NAME::get));
 
     public static BuiltInDinopediaLines createDinosaurLines(String name, Function<Dinosaur, List<Component>> line, BiFunction<Dinosaur, Player, Boolean> condition) {
         return BuiltInDinopediaLines.register(name, new BuiltInDinopediaLines(name) {

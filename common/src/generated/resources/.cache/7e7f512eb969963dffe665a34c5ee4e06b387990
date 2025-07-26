@@ -1,4 +1,4 @@
-// 1.21.4	2025-07-19T00:12:09.2664934	Tags for minecraft:block mod id fossilslegacy
+// 1.21.4	2025-07-26T00:32:44.4169505	Tags for minecraft:block mod id fossilslegacy
 8fed1c7774e26d293c99e32105efe5a57c3a9c50 data/fossilslegacy/tags/block/araucaria_logs.json
 362a23698630e3353e7d1dc805d0198527d13961 data/fossilslegacy/tags/block/archaeopteris_logs.json
 80e160a91f3744e8cb737cde249c3d4059ae1424 data/fossilslegacy/tags/block/calamites_logs.json
@@ -12,6 +12,7 @@ a4e8097fff07f9a74259d6b5dd583f3437ff28a2 data/fossilslegacy/tags/block/eatable_l
 dad829093473a418f24cdab5a8ffb6116744f27f data/fossilslegacy/tags/block/lepidodendron_logs.json
 abd6aa16b137a1347d9621f1fe5cb445cd255d84 data/fossilslegacy/tags/block/llama_statues.json
 b58b977b8e0a5206e75d748704411629e8e9e896 data/fossilslegacy/tags/block/mineable/ancient_hoe.json
+ff9b281b9a16648420ec54ace1183217c76bfa6c data/fossilslegacy/tags/block/needs_scarab_gem_tool.json
 9e5b271f0c7ec4847dded614168452fd660518de data/fossilslegacy/tags/block/permafrost_frostable.json
 f7230fc0dcd04034cf98f0304755274776cb4ce1 data/fossilslegacy/tags/block/sigillaria_logs.json
 ff9b281b9a16648420ec54ace1183217c76bfa6c data/fossilslegacy/tags/block/spawnable/ankylosaurus.json

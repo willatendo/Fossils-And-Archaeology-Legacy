@@ -1,0 +1,11 @@
+{
+  "displayed_loot_tables": [],
+  "displayed_paragraphs": [
+    "An iron tool.",
+    "Used to lock and open cages. Shift and left-click assign it, the cage will need it to open, place in crafting table with another key to clone it.",
+    "For more information, look to the recipes."
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:iron_key"
+  ]
+}

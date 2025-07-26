@@ -5,6 +5,7 @@ import willatendo.fossilslegacy.client.model.json.JsonLayerDefinitionResourceMan
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.client.resources.DecorationPlaqueTextureManager;
 import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;
+import willatendo.fossilslegacy.client.user_manual.UserManualItemDataLoader;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.event.registry.ClientReloadListenerRegister;
 
@@ -15,5 +16,6 @@ public class FossilsLegacyDualEvents {
         clientReloadListenerRegister.register(FAUtils.resource("json_models_loader"), JsonModelLoader.INSTANCE);
         clientReloadListenerRegister.register(FAUtils.resource("json_animations_loader"), JsonAnimationLoader.INSTANCE);
         clientReloadListenerRegister.register(FAUtils.resource("json_layers_loader"), JsonLayerDefinitionResourceManager.INSTANCE);
+        clientReloadListenerRegister.register(FAUtils.resource("user_manual_item_data_loader"), UserManualItemDataLoader.INSTANCE);
     }
 }

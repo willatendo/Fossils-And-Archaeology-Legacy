@@ -1,0 +1,20 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": "fossilslegacy:pink_cultivator",
+      "drops": [
+        "fossilslegacy:pink_cultivator"
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    "Broken cultivator. Left behind after a failed experiment",
+    "Holds the items left after a failed experiment.",
+    "For more information, look to the recipes."
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:pink_cultivator",
+    "fossilslegacy:pink_cultivator_from_dyed_glass"
+  ]
+}
