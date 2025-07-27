@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "Plant fossils, found from plant fossil ore.",
-    "Can give plant DNA from many eras.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.plant_fossil.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.plant_fossil.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": []
 }

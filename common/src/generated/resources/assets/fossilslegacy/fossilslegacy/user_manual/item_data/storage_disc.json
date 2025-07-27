@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "Plates of iron to save genetic code.",
-    "Used to encode and decode DNA.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.storage_disc.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.storage_disc.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:storage_disc"

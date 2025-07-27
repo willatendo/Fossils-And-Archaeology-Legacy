@@ -9,8 +9,12 @@
     }
   ],
   "displayed_paragraphs": [
-    "A skull block.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.skull_block"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:skull_lantern_block",

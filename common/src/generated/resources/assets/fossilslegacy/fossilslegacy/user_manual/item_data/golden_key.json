@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "A golden tool.",
-    "Used to lock and open cages. Shift and right-click assign it, the cage will need it to open, place in crafting table with another key to clone it.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.golden_key.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.golden_key.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:golden_key"

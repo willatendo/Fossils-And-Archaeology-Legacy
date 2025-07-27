@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "Leech in a block of ice, often from an ice burg.",
-    "Can give water-animal DNA from many eras.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.leech_in_ice.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.leech_in_ice.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": []
 }

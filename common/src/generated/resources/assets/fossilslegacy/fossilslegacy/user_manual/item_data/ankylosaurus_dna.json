@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "Deoxyribonucleic acid.",
-    "Information of a creature, used to recreate the aforementioned.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.dna.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.dna.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": []
 }

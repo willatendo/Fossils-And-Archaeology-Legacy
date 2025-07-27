@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "Claws from a therizinosaurus.",
-    "Can be used as a slow, but powerful weapon.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.therizinosaurus_claws.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.therizinosaurus_claws.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": []
 }

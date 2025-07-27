@@ -9,9 +9,15 @@
     }
   ],
   "displayed_paragraphs": [
-    "A utility block.",
-    "Used send commands to many creatures at once. Left-click to set the command, right-click to send the command.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.drum.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.drum.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:drum"

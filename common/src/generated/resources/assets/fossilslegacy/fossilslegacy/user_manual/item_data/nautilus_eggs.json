@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "A cluster of eggs.",
-    "Place to hatch.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.placed_egg.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.placed_egg.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": []
 }

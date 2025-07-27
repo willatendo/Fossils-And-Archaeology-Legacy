@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "Tooth from a tyrannosaurus.",
-    "Can be used as an ingredient.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.tyrannosaurus_tooth.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.tyrannosaurus_tooth.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:tooth_dagger"

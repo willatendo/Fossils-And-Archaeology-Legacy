@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "Concoction of food.",
-    "Can be used to mate dinosaurs.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.romantic_concoction_bottle.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.romantic_concoction_bottle.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:romantic_concoction_bottle"

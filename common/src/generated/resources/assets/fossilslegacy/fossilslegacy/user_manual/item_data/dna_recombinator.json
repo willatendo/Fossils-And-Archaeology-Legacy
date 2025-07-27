@@ -9,9 +9,15 @@
     }
   ],
   "displayed_paragraphs": [
-    "A utility block.",
-    "Used to modify parts of DNA.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.dna_recombinator.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.dna_recombinator.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:dna_recombinator"

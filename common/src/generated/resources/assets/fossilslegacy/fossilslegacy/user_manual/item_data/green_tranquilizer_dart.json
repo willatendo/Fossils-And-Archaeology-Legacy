@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "Dart tipped with poisonous potato.",
-    "Can be used in a rifle to sedate dinosaurs for capture and movement for a shorter length of time.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.green_tranquilizer_dart.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.green_tranquilizer_dart.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:green_tranquilizer_dart"

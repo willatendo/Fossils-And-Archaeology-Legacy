@@ -1,8 +1,9 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "Shell from a nautilus.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.nautilus_shell"
+    }
   ],
   "displayed_recipes": []
 }

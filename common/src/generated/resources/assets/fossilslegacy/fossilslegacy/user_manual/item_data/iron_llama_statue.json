@@ -9,9 +9,15 @@
     }
   ],
   "displayed_paragraphs": [
-    "A Mayan relic from the past, found in Mayan structures.",
-    "A decorative iron llama.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.iron_llama_statue.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.iron_llama_statue.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:iron_llama_statue"

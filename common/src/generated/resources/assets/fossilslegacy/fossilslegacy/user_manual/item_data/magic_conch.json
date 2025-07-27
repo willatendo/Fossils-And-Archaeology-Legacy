@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "A playable nautilus shell.",
-    "Used to command some water animals. Can change command by placing it in a crafting table.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.magic_conch.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.magic_conch.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": []
 }

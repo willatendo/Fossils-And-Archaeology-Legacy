@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "An utility tool.",
-    "Used to lure certain creatures towards you, Right-click to start it.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.flare.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.flare.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:flare",

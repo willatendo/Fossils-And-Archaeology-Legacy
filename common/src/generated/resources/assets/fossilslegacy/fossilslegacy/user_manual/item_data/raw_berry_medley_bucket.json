@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "Bucket of various berries, meat, and vegetables.",
-    "Used to make Romantic Concoction.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.raw_berry_medley_bucket.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.raw_berry_medley_bucket.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:raw_berry_medley_bucket"

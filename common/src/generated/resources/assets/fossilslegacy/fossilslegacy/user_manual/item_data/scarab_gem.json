@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "A relics from the past. From suspicious sand and gravel patches.",
-    "Can be used in some recipes and can be used to tame a knocked out tyrannosaurus.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.scarab_gem.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.scarab_gem.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:scarab_gem_sword_smithing",

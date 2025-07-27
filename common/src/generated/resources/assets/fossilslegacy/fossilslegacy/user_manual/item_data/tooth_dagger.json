@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "A tooth dagger.",
-    "Used like a sword, made of tyrannosaurus tooth.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.tooth_dagger.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.tooth_dagger.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:tooth_dagger"

@@ -9,9 +9,15 @@
     }
   ],
   "displayed_paragraphs": [
-    "A Mayan relic from the past, found in Mayan structures.",
-    "A decorative copper llama, waxed to prevent oxidation.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.waxed_copper_llama.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.waxed_copper_llama.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:copper_llama_statue"

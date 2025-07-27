@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "An egg.",
-    "The egg of a creature, place down and give heat to allow it to hatch.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.egg.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.egg.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": []
 }

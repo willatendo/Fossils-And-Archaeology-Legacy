@@ -9,9 +9,15 @@
     }
   ],
   "displayed_paragraphs": [
-    "A utility block.",
-    "Used to repair and restore broken artifacts.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.archaeology_workbench.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.archaeology_workbench.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:archaeology_workbench"

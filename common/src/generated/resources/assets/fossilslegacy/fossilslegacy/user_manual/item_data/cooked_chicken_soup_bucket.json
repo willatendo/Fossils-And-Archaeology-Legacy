@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "A bucket of cooked chicken in broth.",
-    "Used to make Chicken Essence and is a heart meal.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.cooked_chicken_soup_bucket.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.cooked_chicken_soup_bucket.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:cooked_chicken_soup_bucket",

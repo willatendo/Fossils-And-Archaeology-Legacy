@@ -9,9 +9,15 @@
     }
   ],
   "displayed_paragraphs": [
-    "A utility block.",
-    "Used to decode and encode DNA.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.dna_coder.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.dna_coder.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:dna_coder"

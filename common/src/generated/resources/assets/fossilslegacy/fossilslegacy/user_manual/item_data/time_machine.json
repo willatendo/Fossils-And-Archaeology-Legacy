@@ -9,9 +9,15 @@
     }
   ],
   "displayed_paragraphs": [
-    "A utility block.",
-    "Used to travel to different time periods.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.time_machine.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.time_machine.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": []
 }

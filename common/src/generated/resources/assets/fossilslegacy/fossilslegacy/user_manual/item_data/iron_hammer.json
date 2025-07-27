@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "An iron tool.",
-    "Used to cultivate DNA in eggs, embryos, seeds, spores, and cones.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.iron_hammer.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.hammer.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:iron_hammer"

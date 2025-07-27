@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "Mix of nucleotides, phosphates, and deoxyribose.",
-    "Used to clone DNA.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.blank_dna.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.blank_dna.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:blank_dna"

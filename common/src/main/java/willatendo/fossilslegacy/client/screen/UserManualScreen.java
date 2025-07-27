@@ -208,6 +208,11 @@ public class UserManualScreen extends AbstractContainerScreen<UserManualMenu> {
                                     Coordinate coordinate = textInformation.coordinate();
                                     guiGraphics.drawString(this.font, entry.getValue(), leftPos + coordinate.x(), topPos + coordinate.y(), textInformation.color(), false);
                                 }
+                                for (Map.Entry<TextInformation, Component> entry : spriteDrawer.forEachCenteredText()) {
+                                    TextInformation textInformation = entry.getKey();
+                                    Coordinate coordinate = textInformation.coordinate();
+                                    this.drawCenteredStringNoShadow(guiGraphics, this.font, entry.getValue(), leftPos + coordinate.x(), topPos + coordinate.y(), textInformation.color());
+                                }
                             }
                         }
                     }
@@ -255,6 +260,11 @@ public class UserManualScreen extends AbstractContainerScreen<UserManualMenu> {
                                 TextInformation textInformation = entry.getKey();
                                 Coordinate coordinate = textInformation.coordinate();
                                 guiGraphics.drawString(this.font, entry.getValue(), leftPos + coordinate.x(), topPos + coordinate.y(), textInformation.color(), false);
+                            }
+                            for (Map.Entry<TextInformation, Component> entry : spriteDrawer.forEachCenteredText()) {
+                                TextInformation textInformation = entry.getKey();
+                                Coordinate coordinate = textInformation.coordinate();
+                                this.drawCenteredStringNoShadow(guiGraphics, this.font, entry.getValue(), leftPos + coordinate.x(), topPos + coordinate.y(), textInformation.color());
                             }
                         }
                     }

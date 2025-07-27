@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "Long barrel of iron.",
-    "Can be used to sedate dinosaurs for capture and movement.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.rifle.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.rifle.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:rifle"

@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "An iron tool.",
-    "Used to cut open locked cages. Right-click to break it.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.bolt_cutter.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.bolt_cutter.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:bolt_cutter"

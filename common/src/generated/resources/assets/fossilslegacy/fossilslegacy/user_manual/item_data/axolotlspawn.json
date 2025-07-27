@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "A cluster of eggs.",
-    "Place on water and wait to hatch.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.axolotlspawn.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.axolotlspawn.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": []
 }

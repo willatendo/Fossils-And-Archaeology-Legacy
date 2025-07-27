@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "Old genetic code.",
-    "Used in DNA Recombinator to provide old genetic information.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.legacy_genetic_code.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.legacy_genetic_code.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": []
 }

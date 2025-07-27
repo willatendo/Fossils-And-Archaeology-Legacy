@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "Essence of chicken.",
-    "Can be used to grow a dinosaur one growth stage, with a cost of hunger.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.chicken_essence_bottle.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.chicken_essence_bottle.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:chicken_essence_bottle"

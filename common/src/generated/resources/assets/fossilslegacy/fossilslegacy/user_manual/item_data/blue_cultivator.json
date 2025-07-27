@@ -9,9 +9,15 @@
     }
   ],
   "displayed_paragraphs": [
-    "A utility block.",
-    "Used to cultivate DNA in eggs, embryos, seeds, spores, and cones.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.cultivator.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.cultivator.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:blue_cultivator",

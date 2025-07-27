@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "Raw meat from an animal.",
-    "Can be used to get DNA or cooked to eat.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.raw_meat.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.raw_meat.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": []
 }

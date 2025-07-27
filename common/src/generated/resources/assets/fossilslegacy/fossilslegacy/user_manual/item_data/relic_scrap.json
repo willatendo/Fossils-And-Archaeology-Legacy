@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "Relics from the past. From suspicious sand and gravel patches.",
-    "Can be used in some recipes and can give other archaeological items.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.relic_scrap.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.relic_scrap.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:analyzer"

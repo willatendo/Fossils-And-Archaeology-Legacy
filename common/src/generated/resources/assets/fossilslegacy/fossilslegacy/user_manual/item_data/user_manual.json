@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "An encyclopedia of information.",
-    "A manuel that contains all information for the Fossils and Archaeology Mod.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.user_manual.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.user_manual.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:user_manuel"

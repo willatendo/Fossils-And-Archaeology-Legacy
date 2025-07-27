@@ -9,9 +9,15 @@
     }
   ],
   "displayed_paragraphs": [
-    "Broken cultivator. Left behind after a failed experiment",
-    "Holds the items left after a failed experiment.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.shattered_cultivator.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.shattered_cultivator.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:magenta_cultivator",

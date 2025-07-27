@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "A Mayan relic from the past, found in Mayan structures.",
-    "Can be used in some recipes and is decorative.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.jade.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.jade.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": [
     "fossilslegacy:mayan_villager_vase"

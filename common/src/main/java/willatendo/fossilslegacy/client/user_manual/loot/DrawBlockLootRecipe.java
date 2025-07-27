@@ -13,7 +13,6 @@ import willatendo.fossilslegacy.server.tags.FABlockTags;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.platform.ModloaderHelper;
 import willatendo.simplelibrary.server.util.Platform;
-import willatendo.simplelibrary.server.util.SimpleUtils;
 
 import java.util.List;
 
@@ -72,7 +71,7 @@ public record DrawBlockLootRecipe(Block block, List<Item> drops) implements Draw
             text += "hoe";
         }
         if (!text.isEmpty()) {
-            spriteDrawer.draw(0, 0, FAUtils.translation("item", "user_manual.drop.requirement." + text), 4210752);
+            spriteDrawer.drawCentered((176 / 2), 25, FAUtils.translation("item", "user_manual.drop.requirement." + text), 4210752);
         }
     }
 

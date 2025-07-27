@@ -1,9 +1,15 @@
 {
   "displayed_loot_tables": [],
   "displayed_paragraphs": [
-    "A syringe filled with a creature embryo.",
-    "Use on a mammal to impregnate.",
-    "For more information, look to the recipes."
+    {
+      "translate": "item.fossilslegacy.user_manual.information.embryo_syringe.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.embryo_syringe.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
   ],
   "displayed_recipes": []
 }
