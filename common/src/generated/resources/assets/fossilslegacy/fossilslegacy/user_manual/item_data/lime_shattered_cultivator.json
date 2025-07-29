@@ -4,7 +4,11 @@
       "type": "block_loot",
       "display": "fossilslegacy:lime_cultivator",
       "drops": [
-        "fossilslegacy:lime_cultivator"
+        [
+          {
+            "drop": "fossilslegacy:lime_cultivator"
+          }
+        ]
       ]
     }
   ],

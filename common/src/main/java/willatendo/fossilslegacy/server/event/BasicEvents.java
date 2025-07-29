@@ -423,5 +423,7 @@ public final class BasicEvents {
         idModification.updateId(BuiltInRegistries.BLOCK, FAUtils.resource("gene_modification_table"), FABlocks.DNA_RECOMBINATOR::get);
         idModification.updateId(BuiltInRegistries.BLOCK_ENTITY_TYPE, FAUtils.resource("gene_modification_table"), FABlockEntityTypes.DNA_RECOMBINATOR::get);
         idModification.updateId(BuiltInRegistries.BLOCK, FAUtils.resource("fossil_ore"), FABlocks.MESOZOIC_FOSSIL_ORE::get);
+        idModification.updateId(BuiltInRegistries.BLOCK, FAUtils.resource("analyzer"), FABlocks.DNA_ANALYZER::get);
+        idModification.updateId(BuiltInRegistries.BLOCK_ENTITY_TYPE, FAUtils.resource("analyzer"), FABlockEntityTypes.DNA_ANALYZER::get);
     }
 }

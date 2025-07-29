@@ -11,5 +11,8 @@
       "translate": "item.fossilslegacy.user_manual.information.read_recipes"
     }
   ],
-  "displayed_recipes": []
+  "displayed_recipes": [
+    "fossilslegacy:mesozoic_fossil_outputs",
+    "fossilslegacy:leech_in_ice_outputs"
+  ]
 }

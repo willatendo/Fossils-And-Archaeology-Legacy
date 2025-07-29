@@ -36,7 +36,7 @@ public class UserManualItem extends Item {
         if (player instanceof ServerPlayer serverPlayer) {
             BlockPos blockPos = player.blockPosition();
             SimpleUtils.openContainer(new SimpleMenuProvider((windowId, inventory, playerIn) -> new UserManualMenu(windowId, inventory, ContainerLevelAccess.create(level, blockPos)), Component.empty()), blockPos, serverPlayer);
-            player.awardStat(FAStats.INTERACT_WITH_USER_MANUEL);
+            player.awardStat(FAStats.INTERACT_WITH_USER_MANUAL);
         }
 
         return InteractionResult.SUCCESS;

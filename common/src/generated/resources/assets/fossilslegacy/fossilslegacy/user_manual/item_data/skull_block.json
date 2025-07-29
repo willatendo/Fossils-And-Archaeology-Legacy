@@ -4,7 +4,11 @@
       "type": "block_loot",
       "display": "fossilslegacy:skull_block",
       "drops": [
-        "fossilslegacy:skull_block"
+        [
+          {
+            "drop": "fossilslegacy:skull_block"
+          }
+        ]
       ]
     }
   ],

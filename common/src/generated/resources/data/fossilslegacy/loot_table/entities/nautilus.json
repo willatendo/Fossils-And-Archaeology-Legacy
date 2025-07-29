@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "fossilslegacy:random_item",
-          "fuels": [
+          "entries": [
             {
               "hit_from": 0,
               "hit_to": 3,

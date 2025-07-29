@@ -84,7 +84,7 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
     private final CachedCheck<AnalyzerRecipeInput, AnalyzationRecipe> recipeCheck = RecipeManager.createCheck(FARecipeTypes.ANALYZATION.get());
 
     public AnalyzerBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(FABlockEntityTypes.ANALYZER.get(), blockPos, blockState);
+        super(FABlockEntityTypes.DNA_ANALYZER.get(), blockPos, blockState);
     }
 
     private boolean isOn() {
@@ -370,9 +370,5 @@ public class AnalyzerBlockEntity extends BaseContainerBlockEntity implements Wor
     @Override
     protected AbstractContainerMenu createMenu(int windowId, Inventory inventory) {
         return new AnalyzerMenu(windowId, inventory, this);
-    }
-
-    public NonNullList<ItemStack> getItemStacks() {
-        return this.itemStacks;
     }
 }

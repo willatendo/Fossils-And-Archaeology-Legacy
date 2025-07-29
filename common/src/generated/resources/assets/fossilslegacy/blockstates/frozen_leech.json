@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "fossilslegacy:block/frozen_leech",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "fossilslegacy:block/frozen_leech"
+    },
+    "facing=south": {
+      "model": "fossilslegacy:block/frozen_leech",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "fossilslegacy:block/frozen_leech",
+      "y": 270
+    }
+  }
+}

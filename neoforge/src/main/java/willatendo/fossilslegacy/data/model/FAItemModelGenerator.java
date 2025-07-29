@@ -25,7 +25,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.PLANT_FOSSIL.get());
         this.generatedItem(FAItems.AMBER.get());
         this.generatedItem(FAItems.MOSQUITO_IN_AMBER.get());
-        this.generatedItem(FAItems.LEECH_IN_ICE.get());
+        this.generatedItem(FAItems.FROZEN_LEECH.get());
         this.generatedItem(FAItems.TRICERATOPS_DNA.get());
         this.generatedItem(FAItems.VELOCIRAPTOR_DNA.get());
         this.generatedItem(FAItems.TYRANNOSAURUS_DNA.get());

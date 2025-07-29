@@ -1,8 +1,0 @@
-{
-  "type": "fossilslegacy:analyzation",
-  "category": "palaeontology",
-  "creates_pure_dna": false,
-  "fuels": "fossilslegacy:leech_in_ice_results",
-  "ingredient": "fossilslegacy:leech_in_ice",
-  "time": 100
-}

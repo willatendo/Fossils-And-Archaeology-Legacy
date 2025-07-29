@@ -4,7 +4,11 @@
       "type": "block_loot",
       "display": "fossilslegacy:iron_llama_statue",
       "drops": [
-        "fossilslegacy:iron_llama_statue"
+        [
+          {
+            "drop": "fossilslegacy:iron_llama_statue"
+          }
+        ]
       ]
     }
   ],

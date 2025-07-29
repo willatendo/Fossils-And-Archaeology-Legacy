@@ -26,6 +26,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.block.entity.entities.ArchaeologyWorkbenchBlockEntity;
 import willatendo.fossilslegacy.server.block.properties.FABlockStateProperties;
+import willatendo.fossilslegacy.server.stats.FAStats;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class ArchaeologyWorkbenchBlock extends Block implements EntityBlock {
@@ -78,6 +79,7 @@ public class ArchaeologyWorkbenchBlock extends Block implements EntityBlock {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
             if (blockEntity instanceof ArchaeologyWorkbenchBlockEntity archaeologyWorkbenchBlockEntity && player instanceof ServerPlayer serverPlayer) {
                 SimpleUtils.openContainer(archaeologyWorkbenchBlockEntity, blockPos, serverPlayer);
+                player.awardStat(FAStats.INTERACT_WITH_ARCHAEOLOGY_WORKBENCH);
             }
             return InteractionResult.CONSUME;
         }

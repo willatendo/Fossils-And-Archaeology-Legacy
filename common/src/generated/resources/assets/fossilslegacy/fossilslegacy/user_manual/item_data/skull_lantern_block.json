@@ -4,7 +4,11 @@
       "type": "block_loot",
       "display": "fossilslegacy:skull_lantern_block",
       "drops": [
-        "fossilslegacy:skull_lantern_block"
+        [
+          {
+            "drop": "fossilslegacy:skull_lantern_block"
+          }
+        ]
       ]
     }
   ],

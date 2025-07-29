@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.server.block.blocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
@@ -13,6 +14,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import willatendo.fossilslegacy.server.menu.menus.PalaeontologyTableMenu;
+import willatendo.fossilslegacy.server.stats.FAStats;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
@@ -35,6 +37,7 @@ public class PalaeontologyTableBlock extends Block {
         } else {
             if (player instanceof ServerPlayer serverPlayer) {
                 SimpleUtils.openContainer(blockState.getMenuProvider(level, blockPos), blockPos, serverPlayer);
+                serverPlayer.awardStat(FAStats.INTERACT_WITH_PALAEONTOLOGY_TABLE);
             }
             return InteractionResult.CONSUME;
         }

@@ -157,11 +157,16 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.DEEPSLATE_CENOZOIC_FOSSIL_ORE.get());
         this.add(FABlocks.DEEPSLATE_MESOZOIC_FOSSIL_ORE.get());
         this.add(FABlocks.DEEPSLATE_PALAEOZOIC_FOSSIL_ORE.get());
+        this.add(FABlocks.AMBER_ORE.get());
+        this.add(FABlocks.DEEPSLATE_AMBER_ORE.get());
+        this.add(FABlocks.RELIC_IN_STONE.get(), "Relic in Stone");
+        this.add(FABlocks.RELIC_IN_DEEPSLATE.get(), "Relic in Deepslate");
+        this.add(FABlocks.LEECH_IN_ICE.get(), "Leech in Ice");
         this.add(FABlocks.SKULL_BLOCK.get());
         this.add(FABlocks.SKULL_LANTERN_BLOCK.get());
-        this.add(FABlocks.ANALYZER.get());
-        this.add(FABlocks.DNA_CODER.get());
-        this.add(FABlocks.DNA_HYBRIDIZER.get());
+        this.add(FABlocks.DNA_ANALYZER.get(), "DNA Analyzer");
+        this.add(FABlocks.DNA_CODER.get(), "DNA Coder");
+        this.add(FABlocks.DNA_HYBRIDIZER.get(), "DNA Hybridizer");
         this.add(FABlocks.WHITE_CULTIVATOR.get());
         this.add(FABlocks.WHITE_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.ORANGE_CULTIVATOR.get());
@@ -422,6 +427,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("container.fossilslegacy.dna_recombinator.tab.hybridization", "Hybridization");
         this.add("container.fossilslegacy.feeder", "Feeder");
         this.add("container.fossilslegacy.palaeontology_table", "Palaeontology Table");
+        this.add("container.fossilslegacy.restoration_table", "Restoration Table");
         this.add("container.fossilslegacy.time_machine", "Time Machine");
         this.add("container.fossilslegacy.time_machine.start", "Start");
 
@@ -667,7 +673,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.PLANT_FOSSIL.get());
         this.add(FAItems.AMBER.get());
         this.add(FAItems.MOSQUITO_IN_AMBER.get(), "Mosquito in Amber");
-        this.add(FAItems.LEECH_IN_ICE.get(), "Leech in Ice");
+        this.add(FAItems.FROZEN_LEECH.get());
         this.add(FAItems.TRICERATOPS_DNA.get(), "Triceratops DNA");
         this.add(FAItems.VELOCIRAPTOR_DNA.get(), "Velociraptor DNA");
         this.add(FAItems.TYRANNOSAURUS_DNA.get(), "Tyrannosaurus DNA");
@@ -704,7 +710,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.ARAUCARIA_DNA.get(), "Araucaria DNA");
         this.add(FAItems.STORAGE_DISC.get());
         this.add("item.fossilslegacy.storage_disc.type", "Type: %s");
-        this.add(FAItems.BLANK_DNA.get());
+        this.add(FAItems.BLANK_DNA.get(), "Blank DNA");
         this.add(FAItems.CYCAD_CONE.get());
         this.add(FAItems.COOKSONIA_SPORES.get());
         this.add(FAItems.LEPIDODENDRON_CONE.get());
@@ -981,6 +987,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.user_manual.by", "By Willatendo");
         this.add("item.fossilslegacy.user_manual.drops", "Click for drops");
         this.add("item.fossilslegacy.user_manual.recipes", "Click for recipes");
+        this.add("item.fossilslegacy.user_manual.recipes.chance", "%s");
         this.add("item.fossilslegacy.user_manual.drop.requirement.wood", "Needs wood level or above.");
         this.add("item.fossilslegacy.user_manual.drop.requirement.stone", "Needs stone level or above.");
         this.add("item.fossilslegacy.user_manual.drop.requirement.iron", "Needs iron level or above.");
@@ -1020,7 +1027,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.user_manual.drop.requirement.diamond_shovel", "Needs diamond shovel or above.");
         this.add("item.fossilslegacy.user_manual.drop.requirement.netherite_shovel", "Needs netherite shovel or above.");
         this.add("item.fossilslegacy.user_manual.drop.requirement.scarab_shovel", "Needs scarab gem shovel or above.");
-        this.add("item.fossilslegacy.user_manual.information.amber.description", "Fossilized tree sap from amber ore.");
+        this.add("item.fossilslegacy.user_manual.information.amber.description", "Fossilized tree sap from amber ore which can be found from y25-y-25.");
         this.add("item.fossilslegacy.user_manual.information.amber.use", "Decorative gem.");
         this.add("item.fossilslegacy.user_manual.information.analyzer.description", "A utility block.");
         this.add("item.fossilslegacy.user_manual.information.analyzer.use", "Used to repair and restore broken artifacts.");
@@ -1125,7 +1132,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.user_manual.information.read_recipes", "For more information, look to the recipes and drops.");
         this.add("item.fossilslegacy.user_manual.information.red_tranquilizer_dart.description", "Dart tipped with rotten flesh.");
         this.add("item.fossilslegacy.user_manual.information.red_tranquilizer_dart.use", "Can be used in a rifle to sedate dinosaurs for capture and movement for a medium length of time.");
-        this.add("item.fossilslegacy.user_manual.information.relic_scrap.description", "Relics from the past. From suspicious sand and gravel patches.");
+        this.add("item.fossilslegacy.user_manual.information.relic_scrap.description", "Relics from the past. From relics in stone, which can be found from y256-y50.");
         this.add("item.fossilslegacy.user_manual.information.relic_scrap.use", "Can be used in some recipes and can give other archaeological items.");
         this.add("item.fossilslegacy.user_manual.information.rifle.description", "Long barrel of iron.");
         this.add("item.fossilslegacy.user_manual.information.rifle.use", "Can be used to sedate dinosaurs for capture and movement.");
@@ -1326,8 +1333,10 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.addStat(FAStats.INTERACT_WITH_DNA_CODER, "Interactions with DNA Coder");
         this.addStat(FAStats.INTERACT_WITH_DNA_HYBRIDIZER, "Interactions with DNA Hybridizer");
         this.addStat(FAStats.INTERACT_WITH_FEEDER, "Interactions with Feeder");
-        this.addStat(FAStats.INTERACT_WITH_GENE_MODIFICATION_TABLE, "Interactions with Gene Modification Table");
+        this.addStat(FAStats.INTERACT_WITH_DNA_RECOMBINATOR, "Interactions with DNA Recombinator");
         this.addStat(FAStats.INTERACT_WITH_PALAEONTOLOGY_TABLE, "Interactions with Palaeontology Table");
+        this.addStat(FAStats.INTERACT_WITH_RESTORATION_TABLE, "Interactions with Restoration Table");
+        this.addStat(FAStats.INTERACT_WITH_USER_MANUAL, "Interactions with User Manual");
 
         // Stone Tablet
         this.add("stone_tablet.fossilslegacy.lighting.title", "Lightning");
@@ -1467,7 +1476,6 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAAnalyzerResultTags.MOSQUITO_IN_AMBER_RESULTS, "Mosquito in Amber Results");
         this.add(FAAnalyzerResultTags.LEECH_IN_ICE_RESULTS, "Leech in Ice Results");
         this.add(FAAnalyzerResultTags.PLANT_FOSSIL_RESULTS, "Plant Fossil Results");
-        this.add(FAAnalyzerResultTags.RELIC_SCRAP_RESULTS, "Relic Scrap Results");
         this.add(FAAnalyzerResultTags.FROZEN_MEAT_RESULTS, "Frozen Meat Results");
         this.add(FAAnalyzerResultTags.AXOLOTL_BUCKET_RESULTS, "Axolotl Bucket Results");
         this.add(FAAnalyzerResultTags.TROPICAL_FISH_BUCKET_RESULTS, "Tropical Fish Bucket Results");
@@ -1624,6 +1632,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
 
         this.add(FAFossilVariantTags.PLACEABLE_FROM_FOSSIL, "Placeable from Fossil");
 
+        this.add(FAFuelEntryTags.RESTORE_BY_STONE_TABLET, "Restore By Stone Tablet Fuels");
         this.add(FAFuelEntryTags.ARCHAEOLOGY_WORKBENCH, "Archaeology Workbench Fuels");
         this.add(FAFuelEntryTags.CULTIVATOR, "Cultivator Fuels");
 

@@ -4,7 +4,11 @@
       "type": "block_loot",
       "display": "fossilslegacy:copper_llama_statue",
       "drops": [
-        "fossilslegacy:copper_llama_statue"
+        [
+          {
+            "drop": "fossilslegacy:copper_llama_statue"
+          }
+        ]
       ]
     }
   ],

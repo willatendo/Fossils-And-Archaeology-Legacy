@@ -35,7 +35,7 @@ public class AnalyzerBlock extends Block implements EntityBlock {
 
     public AnalyzerBlock(Properties properties) {
         super(properties);
-        this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH).setValue(ACTIVE, false);
+        this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH).setValue(ACTIVE, false));
     }
 
     @Override
@@ -89,7 +89,7 @@ public class AnalyzerBlock extends Block implements EntityBlock {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
         BlockEntityTicker<T> blockEntityTicker = null;
         if (level instanceof ServerLevel serverlevel) {
-            blockEntityTicker = SimpleUtils.createTickerHelper(blockEntityType, FABlockEntityTypes.ANALYZER.get(), (levelIn, blockPosIn, blockStateIn, analyzerBlockEntityIn) -> {
+            blockEntityTicker = SimpleUtils.createTickerHelper(blockEntityType, FABlockEntityTypes.DNA_ANALYZER.get(), (levelIn, blockPosIn, blockStateIn, analyzerBlockEntityIn) -> {
                 AnalyzerBlockEntity.serverTick(serverlevel, blockPosIn, blockStateIn, analyzerBlockEntityIn);
             });
         }

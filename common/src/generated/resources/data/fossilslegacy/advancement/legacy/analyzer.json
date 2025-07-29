@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "fossilslegacy:analyzer"
+            "items": "fossilslegacy:dna_analyzer"
           }
         ]
       },
@@ -19,7 +19,7 @@
     "hidden": true,
     "icon": {
       "count": 1,
-      "id": "fossilslegacy:analyzer"
+      "id": "fossilslegacy:dna_analyzer"
     },
     "title": {
       "translate": "advancements.fossilslegacy.legacy.analyzer.title"

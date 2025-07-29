@@ -17,6 +17,7 @@ import net.neoforged.neoforge.registries.NewRegistryEvent;
 import willatendo.fossilslegacy.client.FASearchRecipeBookCategory;
 import willatendo.fossilslegacy.network.ClientboundPacketRegistry;
 import willatendo.fossilslegacy.network.ServerboundPacketRegistry;
+import willatendo.fossilslegacy.server.recipe.FARecipeTypes;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.event.modification.*;
 import willatendo.simplelibrary.server.event.registry.*;
@@ -89,6 +90,6 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void syncDatapack(OnDatapackSyncEvent event) {
-        event.sendRecipes(RecipeType.CRAFTING, RecipeType.SMELTING, RecipeType.SMOKING, RecipeType.BLASTING, RecipeType.SMITHING);
+        event.sendRecipes(RecipeType.CRAFTING, RecipeType.SMELTING, RecipeType.SMOKING, RecipeType.BLASTING, RecipeType.SMITHING, FARecipeTypes.ANALYZATION.get());
     }
 }

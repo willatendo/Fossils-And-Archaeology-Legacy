@@ -9,6 +9,7 @@ import willatendo.simplelibrary.server.util.TagRegister;
 public class FAFuelEntryTags {
     private static final TagRegister<FuelEntry> FUEL_ENTRY_TAGS = TagRegister.create(FARegistries.FUEL_ENTRY, FAUtils.ID);
 
+    public static final TagKey<FuelEntry> RESTORE_BY_STONE_TABLET = FUEL_ENTRY_TAGS.register("archaeology_workbench/restore_by_stone_table");
     public static final TagKey<FuelEntry> ARCHAEOLOGY_WORKBENCH = FUEL_ENTRY_TAGS.register("archaeology_workbench");
     public static final TagKey<FuelEntry> CULTIVATOR = FUEL_ENTRY_TAGS.register("cultivator");
 }

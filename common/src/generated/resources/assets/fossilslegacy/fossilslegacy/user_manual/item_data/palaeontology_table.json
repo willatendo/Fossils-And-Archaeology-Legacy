@@ -4,7 +4,11 @@
       "type": "block_loot",
       "display": "fossilslegacy:palaeontology_table",
       "drops": [
-        "fossilslegacy:palaeontology_table"
+        [
+          {
+            "drop": "fossilslegacy:palaeontology_table"
+          }
+        ]
       ]
     }
   ],

@@ -4,7 +4,11 @@
       "type": "block_loot",
       "display": "fossilslegacy:white_cultivator",
       "drops": [
-        "minecraft:iron_ingot"
+        [
+          {
+            "drop": "minecraft:iron_ingot"
+          }
+        ]
       ]
     }
   ],

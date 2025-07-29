@@ -40,6 +40,10 @@ public class AnalyzationRecipe implements Recipe<AnalyzerRecipeInput> {
         this.time = time;
     }
 
+    public TagKey<AnalyzerResult> getResults() {
+        return this.results;
+    }
+
     @Override
     public boolean matches(AnalyzerRecipeInput analyzerRecipeInput, Level level) {
         boolean matchesAny = false;
@@ -84,7 +88,7 @@ public class AnalyzationRecipe implements Recipe<AnalyzerRecipeInput> {
 
     @Override
     public List<RecipeDisplay> display() {
-        return List.of(new AnalyzationRecipeDisplay(this.ingredient.display(), new ItemStacksSlotDisplay(this.results), new SlotDisplay.ItemSlotDisplay(FABlocks.ANALYZER.get().asItem()), this.time));
+        return List.of(new AnalyzationRecipeDisplay(this.ingredient.display(), new ItemStacksSlotDisplay(this.results), new SlotDisplay.ItemSlotDisplay(FABlocks.DNA_ANALYZER.get().asItem()), this.time));
     }
 
     @Override
@@ -92,7 +96,6 @@ public class AnalyzationRecipe implements Recipe<AnalyzerRecipeInput> {
         RecipeBookCategory recipeBookCategory;
         switch (this.analyzationBookCategory) {
             case PALAEONTOLOGY -> recipeBookCategory = FARecipeBookCategories.ANALYZATION_PALAEONTOLOGY.get();
-            case ARCHAEOLOGY -> recipeBookCategory = FARecipeBookCategories.ANALYZATION_ARCHAEOLOGY.get();
             case PALAEOBOTANY -> recipeBookCategory = FARecipeBookCategories.ANALYZATION_PALAEOBOTANY.get();
             case MISC -> recipeBookCategory = FARecipeBookCategories.ANALYZATION_MISC.get();
             default -> throw new MatchException(null, null);

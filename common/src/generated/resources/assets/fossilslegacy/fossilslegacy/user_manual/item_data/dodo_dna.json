@@ -11,5 +11,8 @@
       "translate": "item.fossilslegacy.user_manual.information.read_recipes"
     }
   ],
-  "displayed_recipes": []
+  "displayed_recipes": [
+    "fossilslegacy:cenozoic_fossil_outputs",
+    "fossilslegacy:mosquito_in_amber_outputs"
+  ]
 }

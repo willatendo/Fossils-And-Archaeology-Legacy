@@ -13,14 +13,12 @@ import java.util.List;
 public class DrawFurnaceRecipe implements DrawRecipe {
     @Override
     public void draw(Level level, Recipe<?> recipe, SlotPlacer slotPlacer, SpriteDrawer spriteDrawer) {
-        ItemStack output;
-        List<Ingredient> ingredients = recipe.placementInfo().ingredients();
         if (recipe instanceof SmeltingRecipe smeltingRecipe) {
-            output = smeltingRecipe.assemble(null, level.registryAccess());
+            List<Ingredient> ingredients = recipe.placementInfo().ingredients();
+            ItemStack output = smeltingRecipe.assemble(null, level.registryAccess());
+
             slotPlacer.place(1, 1, ingredients.getFirst());
-
             slotPlacer.place(1, 37, level.fuelValues().fuelItems().stream().map(ItemStack::new).toList());
-
             slotPlacer.place(61, 19, output);
         }
     }

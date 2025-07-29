@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_fossil": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#fossilslegacy:fossils"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:dna_analyzer"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_fossil"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:dna_analyzer"
+    ]
+  }
+}

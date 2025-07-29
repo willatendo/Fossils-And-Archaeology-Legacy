@@ -4,7 +4,11 @@
       "type": "block_loot",
       "display": "fossilslegacy:light_gray_cultivator",
       "drops": [
-        "fossilslegacy:light_gray_cultivator"
+        [
+          {
+            "drop": "fossilslegacy:light_gray_cultivator"
+          }
+        ]
       ]
     }
   ],

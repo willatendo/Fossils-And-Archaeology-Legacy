@@ -1,0 +1,104 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "predicates": {
+                      "minecraft:enchantments": [
+                        {
+                          "enchantments": "minecraft:silk_touch",
+                          "levels": {
+                            "min": 1
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "name": "fossilslegacy:relic_in_stone"
+            },
+            {
+              "type": "fossilslegacy:random_item",
+              "conditions": [
+                {
+                  "condition": "minecraft:survives_explosion"
+                }
+              ],
+              "entries": [
+                {
+                  "hit_from": 0,
+                  "hit_to": 1,
+                  "item": "fossilslegacy:scarab_gem"
+                },
+                {
+                  "hit_from": 1,
+                  "hit_to": 1550,
+                  "item": "fossilslegacy:relic_scrap"
+                },
+                {
+                  "hit_from": 1550,
+                  "hit_to": 1600,
+                  "item": "fossilslegacy:ancient_sword_artifact"
+                },
+                {
+                  "hit_from": 1600,
+                  "hit_to": 1650,
+                  "item": "fossilslegacy:ancient_shovel_artifact"
+                },
+                {
+                  "hit_from": 1650,
+                  "hit_to": 1700,
+                  "item": "fossilslegacy:ancient_pickaxe_artifact"
+                },
+                {
+                  "hit_from": 1700,
+                  "hit_to": 1750,
+                  "item": "fossilslegacy:ancient_axe_artifact"
+                },
+                {
+                  "hit_from": 1750,
+                  "hit_to": 1800,
+                  "item": "fossilslegacy:ancient_hoe_artifact"
+                },
+                {
+                  "hit_from": 1800,
+                  "hit_to": 1850,
+                  "item": "fossilslegacy:ancient_helmet_artifact"
+                },
+                {
+                  "hit_from": 1850,
+                  "hit_to": 1900,
+                  "item": "fossilslegacy:ancient_chestplate_artifact"
+                },
+                {
+                  "hit_from": 1900,
+                  "hit_to": 1950,
+                  "item": "fossilslegacy:ancient_leggings_artifact"
+                },
+                {
+                  "hit_from": 1950,
+                  "hit_to": 2000,
+                  "item": "fossilslegacy:ancient_boots_artifact"
+                }
+              ],
+              "max_weight": 2000
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "fossilslegacy:blocks/relic_in_stone"
+}

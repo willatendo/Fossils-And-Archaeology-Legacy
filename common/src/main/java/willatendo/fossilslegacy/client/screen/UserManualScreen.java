@@ -23,7 +23,9 @@ import willatendo.fossilslegacy.client.screen.user_manual.UserManualGhostSlots;
 import willatendo.fossilslegacy.client.user_manual.SyncedData;
 import willatendo.fossilslegacy.client.user_manual.UserManualData;
 import willatendo.fossilslegacy.client.user_manual.UserManualItemDisplayData;
-import willatendo.fossilslegacy.client.user_manual.draw.*;
+import willatendo.fossilslegacy.client.user_manual.draw.Coordinate;
+import willatendo.fossilslegacy.client.user_manual.draw.SlotPlacer;
+import willatendo.fossilslegacy.client.user_manual.draw.SpriteDrawer;
 import willatendo.fossilslegacy.client.user_manual.loot.DrawLootRecipe;
 import willatendo.fossilslegacy.client.user_manual.recipe.type.RecipeTypeDrawInformationHolder;
 import willatendo.fossilslegacy.server.menu.menus.UserManualMenu;
@@ -191,27 +193,11 @@ public class UserManualScreen extends AbstractContainerScreen<UserManualMenu> {
                                 guiGraphics.blitSprite(RenderType::guiTextured, recipeTypePage.texture(), leftPos + recipeTypePage.xOffset(), topPos + recipeTypePage.yOffset(), recipeTypePage.width(), recipeTypePage.height());
                                 guiGraphics.blitSprite(RenderType::guiTextured, SLOT_SPRITE, leftPos + 7, topPos + 34, 18, 18);
                                 SlotPlacer slotPlacer = new SlotPlacer();
-                                SpriteDrawer spriteDrawer = new SpriteDrawer();
-                                recipeTypePage.drawRecipe().draw(this.player.level(), recipe, slotPlacer, spriteDrawer);
+                                recipeTypePage.drawRecipe().draw(this.player.level(), recipe, slotPlacer, SpriteDrawer.simple(this, guiGraphics, this.font, this.slotSelectTime, leftPos, topPos));
                                 this.recipeSlots.addContainers(Arrays.asList(recipeTypePage.containers()), leftPos + 8, topPos + 35, 16, 16);
                                 for (Map.Entry<Coordinate, List<ItemStack>> entry : slotPlacer.forEach()) {
                                     Coordinate coordinate = entry.getKey();
                                     this.recipeSlots.add(entry.getValue(), leftPos + coordinate.x() + recipeTypePage.xOffset(), topPos + coordinate.y() + recipeTypePage.yOffset(), 16, 16);
-                                }
-                                for (Map.Entry<SpriteInformation, ResourceLocation> entry : spriteDrawer.forEachSprite()) {
-                                    SpriteInformation spriteInformation = entry.getKey();
-                                    Coordinate coordinate = spriteInformation.coordinate();
-                                    guiGraphics.blitSprite(RenderType::guiTextured, entry.getValue(), leftPos + coordinate.x(), topPos + coordinate.y(), spriteInformation.width(), spriteInformation.height());
-                                }
-                                for (Map.Entry<TextInformation, Component> entry : spriteDrawer.forEachText()) {
-                                    TextInformation textInformation = entry.getKey();
-                                    Coordinate coordinate = textInformation.coordinate();
-                                    guiGraphics.drawString(this.font, entry.getValue(), leftPos + coordinate.x(), topPos + coordinate.y(), textInformation.color(), false);
-                                }
-                                for (Map.Entry<TextInformation, Component> entry : spriteDrawer.forEachCenteredText()) {
-                                    TextInformation textInformation = entry.getKey();
-                                    Coordinate coordinate = textInformation.coordinate();
-                                    this.drawCenteredStringNoShadow(guiGraphics, this.font, entry.getValue(), leftPos + coordinate.x(), topPos + coordinate.y(), textInformation.color());
                                 }
                             }
                         }
@@ -243,28 +229,12 @@ public class UserManualScreen extends AbstractContainerScreen<UserManualMenu> {
                             if (i == 1) {
                                 topPos += 59;
                             }
-                            guiGraphics.blitSprite(RenderType::guiTextured, LOOT_SPRITE, leftPos + 32, topPos + 34, 108, 18);
+                            guiGraphics.blitSprite(RenderType::guiTextured, LOOT_SPRITE, leftPos + 32, topPos + 34, 54, 18);
                             SlotPlacer slotPlacer = new SlotPlacer();
-                            SpriteDrawer spriteDrawer = new SpriteDrawer();
-                            drawLootRecipe.draw(this.player.level(), slotPlacer, spriteDrawer);
+                            drawLootRecipe.draw( this.player.level(), slotPlacer, SpriteDrawer.simple(this, guiGraphics, this.font, this.slotSelectTime, leftPos, topPos));
                             for (Map.Entry<Coordinate, List<ItemStack>> entry : slotPlacer.forEach()) {
                                 Coordinate coordinate = entry.getKey();
                                 this.dropSlots.add(entry.getValue(), leftPos + coordinate.x() + 32, topPos + coordinate.y() + 34, 16, 16);
-                            }
-                            for (Map.Entry<SpriteInformation, ResourceLocation> entry : spriteDrawer.forEachSprite()) {
-                                SpriteInformation spriteInformation = entry.getKey();
-                                Coordinate coordinate = spriteInformation.coordinate();
-                                guiGraphics.blitSprite(RenderType::guiTextured, entry.getValue(), leftPos + coordinate.x(), topPos + coordinate.y(), spriteInformation.width(), spriteInformation.height());
-                            }
-                            for (Map.Entry<TextInformation, Component> entry : spriteDrawer.forEachText()) {
-                                TextInformation textInformation = entry.getKey();
-                                Coordinate coordinate = textInformation.coordinate();
-                                guiGraphics.drawString(this.font, entry.getValue(), leftPos + coordinate.x(), topPos + coordinate.y(), textInformation.color(), false);
-                            }
-                            for (Map.Entry<TextInformation, Component> entry : spriteDrawer.forEachCenteredText()) {
-                                TextInformation textInformation = entry.getKey();
-                                Coordinate coordinate = textInformation.coordinate();
-                                this.drawCenteredStringNoShadow(guiGraphics, this.font, entry.getValue(), leftPos + coordinate.x(), topPos + coordinate.y(), textInformation.color());
                             }
                         }
                     }
@@ -340,7 +310,7 @@ public class UserManualScreen extends AbstractContainerScreen<UserManualMenu> {
         return super.mouseClicked(x, y, button);
     }
 
-    private void drawCenteredStringNoShadow(GuiGraphics guiGraphics, Font font, Component component, int x, int y, int color) {
+    public void drawCenteredStringNoShadow(GuiGraphics guiGraphics, Font font, Component component, int x, int y, int color) {
         FormattedCharSequence formattedCharSequence = component.getVisualOrderText();
         guiGraphics.drawString(font, formattedCharSequence, x - font.width(formattedCharSequence) / 2, y, color, false);
     }

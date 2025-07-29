@@ -13,7 +13,7 @@ import java.util.Set;
 public class FABlockEntityTypes {
     public static final SimpleRegistry<BlockEntityType<?>> BLOCK_ENTITY_TYPES = SimpleRegistry.create(Registries.BLOCK_ENTITY_TYPE, FAUtils.ID);
 
-    public static final SimpleHolder<BlockEntityType<AnalyzerBlockEntity>> ANALYZER = BLOCK_ENTITY_TYPES.register("analyzer", () -> new BlockEntityType<>(AnalyzerBlockEntity::new, Set.of(FABlocks.ANALYZER.get())));
+    public static final SimpleHolder<BlockEntityType<AnalyzerBlockEntity>> DNA_ANALYZER = BLOCK_ENTITY_TYPES.register("dna_analyzer", () -> new BlockEntityType<>(AnalyzerBlockEntity::new, Set.of(FABlocks.DNA_ANALYZER.get())));
     public static final SimpleHolder<BlockEntityType<DNACoderBlockEntity>> DNA_CODER = BLOCK_ENTITY_TYPES.register("dna_coder", () -> new BlockEntityType<>(DNACoderBlockEntity::new, Set.of(FABlocks.DNA_CODER.get())));
     public static final SimpleHolder<BlockEntityType<DNAHybridizerBlockEntity>> DNA_HYBRIDIZER = BLOCK_ENTITY_TYPES.register("dna_hybridizer", () -> new BlockEntityType<>(DNAHybridizerBlockEntity::new, Set.of(FABlocks.DNA_HYBRIDIZER.get())));
     public static final SimpleHolder<BlockEntityType<CageBlockEntity>> CAGE = BLOCK_ENTITY_TYPES.register("cage", () -> new BlockEntityType<>(CageBlockEntity::new, Set.of(FABlocks.SMALL_CAGE.get())));

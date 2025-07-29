@@ -4,7 +4,11 @@
       "type": "block_loot",
       "display": "fossilslegacy:drum",
       "drops": [
-        "fossilslegacy:drum"
+        [
+          {
+            "drop": "fossilslegacy:drum"
+          }
+        ]
       ]
     }
   ],

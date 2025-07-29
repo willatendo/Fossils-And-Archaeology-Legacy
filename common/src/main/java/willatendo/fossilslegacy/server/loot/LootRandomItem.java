@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class LootRandomItem extends LootPoolSingletonContainer {
-    public static final MapCodec<LootRandomItem> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(Codec.INT.fieldOf("max_weight").orElse(100).forGetter(lootRandomItem -> lootRandomItem.randomRange), Codec.list(RandomItemEntry.CODEC).fieldOf("fuels").forGetter(lootRandomItem -> lootRandomItem.randomItemEntries)).and(LootItem.singletonFields(instance)).apply(instance, LootRandomItem::new));
+    public static final MapCodec<LootRandomItem> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(Codec.INT.fieldOf("max_weight").orElse(100).forGetter(lootRandomItem -> lootRandomItem.randomRange), Codec.list(RandomItemEntry.CODEC).fieldOf("entries").forGetter(lootRandomItem -> lootRandomItem.randomItemEntries)).and(LootItem.singletonFields(instance)).apply(instance, LootRandomItem::new));
     private final List<RandomItemEntry> randomItemEntries;
     private final int randomRange;
 

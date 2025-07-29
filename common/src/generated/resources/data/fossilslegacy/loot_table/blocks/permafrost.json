@@ -35,7 +35,7 @@
                   "condition": "minecraft:survives_explosion"
                 }
               ],
-              "fuels": [
+              "entries": [
                 {
                   "hit_from": 0,
                   "hit_to": 2000,

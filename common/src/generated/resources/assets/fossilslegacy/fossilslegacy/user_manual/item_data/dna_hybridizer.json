@@ -4,7 +4,11 @@
       "type": "block_loot",
       "display": "fossilslegacy:dna_hybridizer",
       "drops": [
-        "fossilslegacy:dna_hybridizer"
+        [
+          {
+            "drop": "fossilslegacy:dna_hybridizer"
+          }
+        ]
       ]
     }
   ],

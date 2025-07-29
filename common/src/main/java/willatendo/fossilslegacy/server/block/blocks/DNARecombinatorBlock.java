@@ -26,6 +26,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import willatendo.fossilslegacy.server.block.entity.entities.DNARecombinatorBlockEntity;
+import willatendo.fossilslegacy.server.stats.FAStats;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class DNARecombinatorBlock extends Block implements EntityBlock {
@@ -83,6 +84,7 @@ public class DNARecombinatorBlock extends Block implements EntityBlock {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
             if (blockEntity instanceof DNARecombinatorBlockEntity dnaRecombinatorBlockEntity && player instanceof ServerPlayer serverPlayer) {
                 SimpleUtils.openContainer(dnaRecombinatorBlockEntity, blockPos, serverPlayer);
+                player.awardStat(FAStats.INTERACT_WITH_DNA_RECOMBINATOR);
             }
             return InteractionResult.CONSUME;
         }

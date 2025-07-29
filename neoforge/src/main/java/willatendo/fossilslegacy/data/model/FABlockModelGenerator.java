@@ -37,9 +37,15 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createTrivialCube(FABlocks.DEEPSLATE_CENOZOIC_FOSSIL_ORE.get());
         this.createTrivialCube(FABlocks.DEEPSLATE_MESOZOIC_FOSSIL_ORE.get());
         this.createTrivialCube(FABlocks.DEEPSLATE_PALAEOZOIC_FOSSIL_ORE.get());
+        this.createTrivialCube(FABlocks.AMBER_ORE.get());
+        this.createTrivialCube(FABlocks.DEEPSLATE_AMBER_ORE.get());
+        this.createTrivialCube(FABlocks.RELIC_IN_STONE.get());
+        this.createTrivialCube(FABlocks.RELIC_IN_DEEPSLATE.get());
+        this.createFrozenLeech(FABlocks.FROZEN_LEECH.get());
+        this.createTrivialCube(FABlocks.LEECH_IN_ICE.get());
         this.createSkull(FABlocks.SKULL_BLOCK.get(), this.modLocation("block/skull_front"));
         this.createSkull(FABlocks.SKULL_LANTERN_BLOCK.get(), this.modLocation("block/skull_lantern_front"));
-        this.createAnalyzer(FABlocks.ANALYZER.get());
+        this.createAnalyzer(FABlocks.DNA_ANALYZER.get());
         this.createDNACoder(FABlocks.DNA_CODER.get());
         this.createDNAHybridizer(FABlocks.DNA_HYBRIDIZER.get());
         this.createCultivator(FABlocks.WHITE_CULTIVATOR.get(), "white");
@@ -180,6 +186,10 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.block(MultiVariantGenerator.multiVariant(fossil, variants.toArray(Variant[]::new)));
     }
 
+    private void createFrozenLeech(Block leechInIce) {
+        this.block(MultiVariantGenerator.multiVariant(leechInIce, Variant.variant().with(VariantProperties.MODEL, FAModelTemplates.TEMPLATE_FROZEN_LEECH.create(leechInIce, new TextureMapping().put(TextureSlot.TEXTURE, this.mcLocation("block/packed_ice")), this.modelOutput))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
+    }
+
     private void createSkull(Block skull, ResourceLocation frontTexture) {
         this.block(MultiVariantGenerator.multiVariant(skull, Variant.variant().with(VariantProperties.MODEL, ModelTemplates.CUBE.create(skull, new TextureMapping().put(TextureSlot.DOWN, this.modLocation("block/skull")).put(TextureSlot.EAST, this.modLocation("block/skull_crack")).put(TextureSlot.NORTH, frontTexture).put(TextureSlot.PARTICLE, this.modLocation("block/skull_crack")).put(TextureSlot.SOUTH, this.modLocation("block/skull_crack")).put(TextureSlot.UP, this.modLocation("block/skull")).put(TextureSlot.WEST, this.modLocation("block/skull_crack")), this.modelOutput))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
     }
@@ -217,6 +227,10 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
 
     private void createPalaeontologyTable(Block palaeontologyTable) {
         this.block(MultiVariantGenerator.multiVariant(palaeontologyTable, Variant.variant().with(VariantProperties.MODEL, ModelTemplates.CUBE_BOTTOM_TOP.create(palaeontologyTable, new TextureMapping().put(TextureSlot.BOTTOM, this.modLocation("block/lepidodendron_planks")).put(TextureSlot.PARTICLE, this.modLocation("block/palaeontology_table_side")).put(TextureSlot.SIDE, this.modLocation("block/palaeontology_table_side")).put(TextureSlot.TOP, this.modLocation("block/palaeontology_table_top")), this.modelOutput))));
+    }
+
+    private void createRestorationTable(Block restorationTable) {
+        this.block(MultiVariantGenerator.multiVariant(restorationTable, Variant.variant().with(VariantProperties.MODEL, FAModelTemplates.TEMPLATE_RESTORATION_TABLE.create(restorationTable, new TextureMapping().put(TextureSlot.TEXTURE, this.mcLocation("block/oak_planks")), this.modelOutput))));
     }
 
     private void createActiveType(Block block, ResourceLocation inactive, ResourceLocation active, BooleanProperty booleanProperty, boolean directional) {

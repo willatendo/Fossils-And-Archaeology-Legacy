@@ -23,7 +23,6 @@ public class FAAnalyzerResultTagProvider extends DataDrivenTagsProvider<Analyzer
         this.tag(FAAnalyzerResultTags.MOSQUITO_IN_AMBER_RESULTS).add(FAAnalyzerResults.MOSQUITO_IN_AMBER_RESULTS.toArray(ResourceKey[]::new));
         this.tag(FAAnalyzerResultTags.LEECH_IN_ICE_RESULTS).add(FAAnalyzerResults.LEECH_IN_ICE_RESULTS.toArray(ResourceKey[]::new));
         this.tag(FAAnalyzerResultTags.PLANT_FOSSIL_RESULTS).add(FAAnalyzerResults.PLANT_FOSSIL_RESULTS.toArray(ResourceKey[]::new));
-        this.tag(FAAnalyzerResultTags.RELIC_SCRAP_RESULTS).add(FAAnalyzerResults.RELIC_SCRAP_RESULTS.toArray(ResourceKey[]::new));
         this.tag(FAAnalyzerResultTags.FROZEN_MEAT_RESULTS).add(FAAnalyzerResults.FROZEN_MEAT_RESULTS.toArray(ResourceKey[]::new));
         this.tag(FAAnalyzerResultTags.AXOLOTL_BUCKET_RESULTS).add(FAAnalyzerResults.AXOLOTL_DNA);
         this.tag(FAAnalyzerResultTags.TROPICAL_FISH_BUCKET_RESULTS).add(FAAnalyzerResults.AXOLOTL_DNA);

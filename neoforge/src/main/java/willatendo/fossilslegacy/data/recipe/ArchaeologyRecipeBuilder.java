@@ -8,12 +8,14 @@ import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
+import willatendo.fossilslegacy.server.fuel.FuelEntry;
 import willatendo.fossilslegacy.server.menu.categories.ArchaeologyBookCategory;
 import willatendo.fossilslegacy.server.recipe.recipes.ArchaeologyRecipe;
 
@@ -25,19 +27,21 @@ public class ArchaeologyRecipeBuilder implements RecipeBuilder {
     private final ArchaeologyBookCategory archaeologyBookCategory;
     private final Item result;
     private final Ingredient ingredient;
+    private final TagKey<FuelEntry> requiredFuels;
     private final int time;
     private final Map<String, Criterion<?>> criteria = new LinkedHashMap();
     private String group;
 
-    private ArchaeologyRecipeBuilder(ArchaeologyBookCategory archaeologyBookCategory, ItemLike itemLike, Ingredient ingredient, int time) {
+    private ArchaeologyRecipeBuilder(ArchaeologyBookCategory archaeologyBookCategory, ItemLike itemLike, Ingredient ingredient, TagKey<FuelEntry> requiredFuels, int time) {
         this.archaeologyBookCategory = archaeologyBookCategory;
         this.result = itemLike.asItem();
         this.ingredient = ingredient;
+        this.requiredFuels = requiredFuels;
         this.time = time;
     }
 
-    public static <T extends AbstractCookingRecipe> ArchaeologyRecipeBuilder recipe(ArchaeologyBookCategory archaeologyBookCategory, Item ingredient, ItemLike itemLike, int time) {
-        return new ArchaeologyRecipeBuilder(archaeologyBookCategory, itemLike, Ingredient.of(ingredient), time);
+    public static <T extends AbstractCookingRecipe> ArchaeologyRecipeBuilder recipe(ArchaeologyBookCategory archaeologyBookCategory, Item ingredient, ItemLike itemLike, TagKey<FuelEntry> requiredFuels, int time) {
+        return new ArchaeologyRecipeBuilder(archaeologyBookCategory, itemLike, Ingredient.of(ingredient), requiredFuels, time);
     }
 
     @Override
@@ -62,7 +66,7 @@ public class ArchaeologyRecipeBuilder implements RecipeBuilder {
         this.ensureValid(recipeId);
         Advancement.Builder builder = recipeOutput.advancement().addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId)).rewards(AdvancementRewards.Builder.recipe(recipeId)).requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(builder::addCriterion);
-        recipeOutput.accept(recipeId, new ArchaeologyRecipe(this.archaeologyBookCategory, Objects.requireNonNullElse(this.group, ""), this.ingredient, new ItemStack(this.result), this.time), builder.build(recipeId.location().withPrefix("recipes/misc/")));
+        recipeOutput.accept(recipeId, new ArchaeologyRecipe(this.archaeologyBookCategory, Objects.requireNonNullElse(this.group, ""), this.ingredient, new ItemStack(this.result), this.time, this.requiredFuels), builder.build(recipeId.location().withPrefix("recipes/misc/")));
     }
 
     private void ensureValid(ResourceKey<Recipe<?>> recipeId) {

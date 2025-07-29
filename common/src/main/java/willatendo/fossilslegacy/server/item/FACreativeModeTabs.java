@@ -36,8 +36,8 @@ public final class FACreativeModeTabs {
     private static final Comparator<Holder<DecorationPlaqueType>> DECORATION_PLAQUE_COMPARATOR = Comparator.comparing(Holder::value, Comparator.<DecorationPlaqueType>comparingInt(decorationPlaqueType -> decorationPlaqueType.height() * decorationPlaqueType.width()).thenComparing(DecorationPlaqueType::width));
     private static final Comparator<Holder<StoneTabletVariant>> STONE_TABLET_COMPARATOR = Comparator.comparing(Holder::value, Comparator.<StoneTabletVariant>comparingInt(stoneTabletVariant -> stoneTabletVariant.height() * stoneTabletVariant.width()).thenComparing(StoneTabletVariant::width));
 
-    public static final SimpleHolder<CreativeModeTab> FA_BLOCKS = CREATIVE_MODE_TABS.register("fa_blocks", () -> SimpleUtils.create(FAUtils.ID, "fa_blocks", () -> FABlocks.ANALYZER.get().asItem(), (itemDisplayParameters, output) -> {
-        output.accept(FABlocks.ANALYZER.get());
+    public static final SimpleHolder<CreativeModeTab> FA_BLOCKS = CREATIVE_MODE_TABS.register("fa_blocks", () -> SimpleUtils.create(FAUtils.ID, "fa_blocks", () -> FABlocks.DNA_ANALYZER.get().asItem(), (itemDisplayParameters, output) -> {
+        output.accept(FABlocks.DNA_ANALYZER.get());
         output.accept(FABlocks.DNA_CODER.get());
         output.accept(FABlocks.DNA_HYBRIDIZER.get());
         output.accept(FABlocks.WHITE_CULTIVATOR.get());
@@ -94,11 +94,16 @@ public final class FACreativeModeTabs {
         output.accept(FABlocks.WAXED_WEATHERED_COPPER_LLAMA_STATUE.get());
         output.accept(FABlocks.WAXED_OXIDIZED_COPPER_LLAMA_STATUE.get());
         output.accept(FABlocks.CENOZOIC_FOSSIL_ORE.get());
-        output.accept(FABlocks.MESOZOIC_FOSSIL_ORE.get());
-        output.accept(FABlocks.PALAEOZOIC_FOSSIL_ORE.get());
         output.accept(FABlocks.DEEPSLATE_CENOZOIC_FOSSIL_ORE.get());
+        output.accept(FABlocks.MESOZOIC_FOSSIL_ORE.get());
         output.accept(FABlocks.DEEPSLATE_MESOZOIC_FOSSIL_ORE.get());
+        output.accept(FABlocks.PALAEOZOIC_FOSSIL_ORE.get());
         output.accept(FABlocks.DEEPSLATE_PALAEOZOIC_FOSSIL_ORE.get());
+        output.accept(FABlocks.AMBER_ORE.get());
+        output.accept(FABlocks.DEEPSLATE_AMBER_ORE.get());
+        output.accept(FABlocks.RELIC_IN_STONE.get());
+        output.accept(FABlocks.RELIC_IN_DEEPSLATE.get());
+        output.accept(FABlocks.LEECH_IN_ICE.get());
         output.accept(FABlocks.PERMAFROST.get());
         output.accept(FABlocks.ICED_STONE.get());
         output.accept(FABlocks.SMALL_CAGE.get());
@@ -593,7 +598,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.PLANT_FOSSIL.get());
         output.accept(FAItems.AMBER.get());
         output.accept(FAItems.MOSQUITO_IN_AMBER.get());
-        output.accept(FAItems.LEECH_IN_ICE.get());
+        output.accept(FAItems.FROZEN_LEECH.get());
         output.accept(FAItems.FROZEN_MEAT.get());
         output.accept(FAItems.STORAGE_DISC.get());
         output.accept(FAItems.BLANK_DNA.get());

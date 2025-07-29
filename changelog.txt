@@ -42,11 +42,20 @@
 - Deepslate Fossil Ore Now Drops the Following, Drops 30% Mesozoic Fossil, 60% Bone, 10% Skull
 - Adjusted All Dinosaur Stats, Now Defaults To Baby Stats, Changes As They Grow
 - All Dinosaurs Drop More Meat As They Age
+- Analyzer Now Called DNA Analyzer
+- Analyzer No Longer Analyzes Relic Scraps
+- Relic Scraps Can Now Be Crafted In An Archaeology Table With Archaeologist's Notes
+- Archaeology Table Now Uses Stone Tablets
+- Stone Tablets Now Crafted With Four Relic Scraps
 - Added Archaeology Category For Analyzer Recipe Book
 - Added Palaeontology Category For Analyzer Recipe Book
 - Added Mosasaurus Skeleton
 - Added Lepidodendron Cone
 - Added Calamites Spore
+- Added Rifle
+- Added Green Tranquilizer Dart
+- Added Red Tranquilizer Dart
+- Added Blue Tranquilizer Dart
 - Added Archaeopteris Planks
 - Added Archaeopteris Log
 - Added Stripped Archaeopteris Log
@@ -179,6 +188,8 @@
 - Added Flare Body
 - Added DNA Coder
 - Added DNA Hybridizer
+- Added Storage Disc
+- Added Blank DNA
 - Added Cenozoic Fossil
 - Added Palaeozoic Fossil
 - Added Cenozoic Fossil Ore (Drops 30% Cenozoic Fossil, 60% Bone, 10% Skull)
@@ -186,6 +197,15 @@
 - Added Deepslate Cenozoic Fossil Ore (Drops 30% Cenozoic Fossil, 60% Bone, 10% Skull)
 - Added Deepslate Palaeozoic Fossil Ore (Drops 30% Palaeozoic Fossil, 60% Bone, 10% Skull)
 - Added Cooksonia
+- Added Cooksonia DNA
+- Added Cooksonia Spores
+- Added Amber
+- Added Mosquito in Amber
+- Added Amber Ore
+- Added Deepslate Amber
+- Added User Manual
+- Added Frozen Leech
+- Added Leech in Ice
 27/2/2024 1.4.9
 - Fixed Tooth Dagger Not Shearing All Shearables
 - Fixed Mayan Vase Not Wobbling

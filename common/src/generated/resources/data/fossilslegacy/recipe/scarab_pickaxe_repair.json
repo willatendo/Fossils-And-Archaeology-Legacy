@@ -2,6 +2,7 @@
   "type": "fossilslegacy:archaeology",
   "category": "repair",
   "ingredient": "fossilslegacy:scarab_gem_pickaxe",
+  "required_fuels": "fossilslegacy:archaeology_workbench/restore_by_stone_table",
   "result": {
     "id": "fossilslegacy:scarab_gem_pickaxe"
   },

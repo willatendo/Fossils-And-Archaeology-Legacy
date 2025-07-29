@@ -20,6 +20,7 @@ import willatendo.fossilslegacy.data.recipe.ArchaeologyRecipeBuilder;
 import willatendo.fossilslegacy.data.recipe.CultivationRecipeBuilder;
 import willatendo.fossilslegacy.server.analyzer_result.AnalyzerResult;
 import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.fuel.FuelEntry;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.menu.categories.AnalyzationBookCategory;
 import willatendo.fossilslegacy.server.menu.categories.ArchaeologyBookCategory;
@@ -27,6 +28,7 @@ import willatendo.fossilslegacy.server.menu.categories.CultivationBookCategory;
 import willatendo.fossilslegacy.server.recipe.recipes.KeyCloningRecipe;
 import willatendo.fossilslegacy.server.recipe.recipes.MagicConchRecipe;
 import willatendo.fossilslegacy.server.tags.FAAnalyzerResultTags;
+import willatendo.fossilslegacy.server.tags.FAFuelEntryTags;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
@@ -52,7 +54,7 @@ public class FARecipeProvider extends RecipeProvider {
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FAItems.SKULL_STICK.get()).pattern("#").pattern("$").define('#', FABlocks.SKULL_BLOCK.get()).define('$', Items.STICK).unlockedBy(RecipeProvider.getHasName(FABlocks.SKULL_BLOCK.get()), this.has(FABlocks.SKULL_BLOCK.get())).save(this.output);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FAItems.TOOTH_DAGGER.get()).pattern("#").pattern("$").define('#', FAItems.TYRANNOSAURUS_TOOTH.get()).define('$', Items.STICK).unlockedBy(RecipeProvider.getHasName(FAItems.TYRANNOSAURUS_TOOTH.get()), this.has(FAItems.TYRANNOSAURUS_TOOTH.get())).save(this.output);
         this.shapeless(RecipeCategory.TOOLS, FAItems.DINOPEDIA.get()).requires(Items.BOOK).requires(this.tag(FAItemTags.ANIMAL_DNA)).unlockedBy("has_dna", this.has(FAItemTags.ANIMAL_DNA)).save(this.output);
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.ANALYZER.get()).pattern("#%#").pattern("#$#").define('#', Items.IRON_INGOT).define('%', FAItems.RELIC_SCRAP.get()).define('$', FAItemTags.FOSSILS).unlockedBy("has_fossil", this.has(FAItemTags.FOSSILS)).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DNA_ANALYZER.get()).pattern("#%#").pattern("#$#").define('#', Items.IRON_INGOT).define('%', FAItems.RELIC_SCRAP.get()).define('$', FAItemTags.FOSSILS).unlockedBy("has_fossil", this.has(FAItemTags.FOSSILS)).save(this.output);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DNA_CODER.get()).pattern("#%#").pattern("#$#").define('#', Items.IRON_INGOT).define('%', Items.DIAMOND).define('$', Items.REDSTONE).unlockedBy(RecipeProvider.getHasName(Items.DIAMOND), this.has(Items.DIAMOND)).save(this.output);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DNA_HYBRIDIZER.get()).pattern("@%@").pattern("###").define('@', Tags.Items.GLASS_BLOCKS).define('#', Items.IRON_INGOT).define('%', Items.GOLD_INGOT).unlockedBy(RecipeProvider.getHasName(Items.GOLD_INGOT), this.has(Items.GOLD_INGOT)).save(this.output);
         this.cultivator(FABlocks.WHITE_CULTIVATOR.get(), Items.WHITE_DYE, Blocks.WHITE_STAINED_GLASS);
@@ -132,6 +134,7 @@ public class FARecipeProvider extends RecipeProvider {
         this.shapeless(RecipeCategory.TOOLS, FAItems.USER_MANUAL.get()).requires(Items.PAPER, 3).requires(Items.STRING).unlockedBy(RecipeProvider.getHasName(Items.STRING), this.has(Items.STRING)).save(this.output);
         this.shaped(RecipeCategory.TOOLS, FAItems.STORAGE_DISC.get()).pattern("#$#").pattern("$%$").pattern("#$#").define('#', Items.IRON_NUGGET).define('$', Items.IRON_INGOT).define('%', ItemTags.WOOL).unlockedBy(RecipeProvider.getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
         this.shapeless(RecipeCategory.MISC, FAItems.BLANK_DNA.get()).requires(FAItemTags.DNA).requires(Ingredient.of(itemRegistries.getOrThrow(ItemTags.MEAT)), 2).requires(Items.ROTTEN_FLESH).unlockedBy(RecipeProvider.getHasName(Items.ROTTEN_FLESH), this.has(Items.ROTTEN_FLESH)).save(this.output);
+        this.shapeless(RecipeCategory.MISC, FAItems.STONE_TABLET.get()).requires(FAItems.RELIC_SCRAP.get(), 4).unlockedBy(RecipeProvider.getHasName(FAItems.RELIC_SCRAP.get()), this.has(FAItems.RELIC_SCRAP.get())).save(this.output);
 
         SpecialRecipeBuilder.special(MagicConchRecipe::new).save(this.output, FAUtils.ID + ":magic_conch");
         SpecialRecipeBuilder.special(KeyCloningRecipe::new).save(this.output, FAUtils.ID + ":key_cloning");
@@ -264,9 +267,8 @@ public class FARecipeProvider extends RecipeProvider {
         this.roughAnalyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.MESOZOIC_FOSSIL.get(), FAAnalyzerResultTags.MESOZOIC_FOSSIL_RESULTS, 100);
         this.roughAnalyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.PALAEOZOIC_FOSSIL.get(), FAAnalyzerResultTags.PALAEOZOIC_FOSSIL_RESULTS, 100);
         this.roughAnalyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.MOSQUITO_IN_AMBER.get(), FAAnalyzerResultTags.MOSQUITO_IN_AMBER_RESULTS, 100);
-        this.roughAnalyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.LEECH_IN_ICE.get(), FAAnalyzerResultTags.LEECH_IN_ICE_RESULTS, 100);
+        this.roughAnalyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.FROZEN_LEECH.get(), FAAnalyzerResultTags.LEECH_IN_ICE_RESULTS, 100);
         this.roughAnalyzation(AnalyzationBookCategory.PALAEOBOTANY, FAItems.PLANT_FOSSIL.get(), FAAnalyzerResultTags.PLANT_FOSSIL_RESULTS, 100);
-        this.analyzation(AnalyzationBookCategory.ARCHAEOLOGY, FAItems.RELIC_SCRAP.get(), FAAnalyzerResultTags.RELIC_SCRAP_RESULTS, 100);
         this.roughAnalyzation(AnalyzationBookCategory.PALAEONTOLOGY, FAItems.FROZEN_MEAT.get(), FAAnalyzerResultTags.FROZEN_MEAT_RESULTS, 100);
         this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, Items.AXOLOTL_BUCKET, FAAnalyzerResultTags.AXOLOTL_BUCKET_RESULTS, 100);
         this.analyzation(AnalyzationBookCategory.PALAEONTOLOGY, Items.TROPICAL_FISH_BUCKET, FAAnalyzerResultTags.TROPICAL_FISH_BUCKET_RESULTS, 100);
@@ -390,11 +392,15 @@ public class FARecipeProvider extends RecipeProvider {
     }
 
     public void archaeology(ArchaeologyBookCategory archaeologyBookCategory, String name, Item ingredient, ItemLike itemLike, int time) {
-        ArchaeologyRecipeBuilder.recipe(archaeologyBookCategory, ingredient, itemLike, time).unlockedBy(RecipeProvider.getHasName(ingredient), this.has(ingredient)).save(this.output, FAUtils.ID + ":" + name);
+        ArchaeologyRecipeBuilder.recipe(archaeologyBookCategory, ingredient, itemLike, FAFuelEntryTags.RESTORE_BY_STONE_TABLET, time).unlockedBy(RecipeProvider.getHasName(ingredient), this.has(ingredient)).save(this.output, FAUtils.ID + ":" + name);
     }
 
     public void archaeology(ArchaeologyBookCategory archaeologyBookCategory, Item ingredient, ItemLike itemLike, int time) {
-        ArchaeologyRecipeBuilder.recipe(archaeologyBookCategory, ingredient, itemLike, time).unlockedBy(RecipeProvider.getHasName(ingredient), this.has(ingredient)).save(this.output);
+        ArchaeologyRecipeBuilder.recipe(archaeologyBookCategory, ingredient, itemLike, FAFuelEntryTags.RESTORE_BY_STONE_TABLET, time).unlockedBy(RecipeProvider.getHasName(ingredient), this.has(ingredient)).save(this.output);
+    }
+
+    public void archaeology(ArchaeologyBookCategory archaeologyBookCategory, Item ingredient, ItemLike itemLike, TagKey<FuelEntry> requiredFuels, int time) {
+        ArchaeologyRecipeBuilder.recipe(archaeologyBookCategory, ingredient, itemLike, requiredFuels, time).unlockedBy(RecipeProvider.getHasName(ingredient), this.has(ingredient)).save(this.output);
     }
 
     public void analyzation(AnalyzationBookCategory analyzationBookCategory, ItemLike ingredient, TagKey<AnalyzerResult> results, int time) {

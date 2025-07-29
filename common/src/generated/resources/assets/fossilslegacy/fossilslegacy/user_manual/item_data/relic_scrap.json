@@ -1,5 +1,118 @@
 {
-  "displayed_loot_tables": [],
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": "fossilslegacy:relic_in_stone",
+      "drops": [
+        [
+          {
+            "chance": "0.0005%",
+            "drop": "fossilslegacy:scarab_gem"
+          }
+        ],
+        [
+          {
+            "chance": "77%",
+            "drop": "fossilslegacy:relic_scrap"
+          }
+        ],
+        [
+          {
+            "chance": "2.5%",
+            "drop": "fossilslegacy:ancient_sword_artifact"
+          },
+          {
+            "chance": "2.5%",
+            "drop": "fossilslegacy:ancient_shovel_artifact"
+          },
+          {
+            "chance": "2.5%",
+            "drop": "fossilslegacy:ancient_pickaxe_artifact"
+          },
+          {
+            "chance": "2.5%",
+            "drop": "fossilslegacy:ancient_axe_artifact"
+          },
+          {
+            "chance": "2.5%",
+            "drop": "fossilslegacy:ancient_hoe_artifact"
+          },
+          {
+            "chance": "2.5%",
+            "drop": "fossilslegacy:ancient_helmet_artifact"
+          },
+          {
+            "chance": "2.5%",
+            "drop": "fossilslegacy:ancient_pickaxe_artifact"
+          },
+          {
+            "chance": "2.5%",
+            "drop": "fossilslegacy:ancient_leggings_artifact"
+          },
+          {
+            "chance": "2.5%",
+            "drop": "fossilslegacy:ancient_boots_artifact"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "block_loot",
+      "display": "fossilslegacy:relic_in_deepslate",
+      "drops": [
+        [
+          {
+            "chance": "0.0005%",
+            "drop": "fossilslegacy:scarab_gem"
+          }
+        ],
+        [
+          {
+            "chance": "77%",
+            "drop": "fossilslegacy:relic_scrap"
+          }
+        ],
+        [
+          {
+            "chance": "2.5%",
+            "drop": "fossilslegacy:ancient_sword_artifact"
+          },
+          {
+            "chance": "2.5%",
+            "drop": "fossilslegacy:ancient_shovel_artifact"
+          },
+          {
+            "chance": "2.5%",
+            "drop": "fossilslegacy:ancient_pickaxe_artifact"
+          },
+          {
+            "chance": "2.5%",
+            "drop": "fossilslegacy:ancient_axe_artifact"
+          },
+          {
+            "chance": "2.5%",
+            "drop": "fossilslegacy:ancient_hoe_artifact"
+          },
+          {
+            "chance": "2.5%",
+            "drop": "fossilslegacy:ancient_helmet_artifact"
+          },
+          {
+            "chance": "2.5%",
+            "drop": "fossilslegacy:ancient_pickaxe_artifact"
+          },
+          {
+            "chance": "2.5%",
+            "drop": "fossilslegacy:ancient_leggings_artifact"
+          },
+          {
+            "chance": "2.5%",
+            "drop": "fossilslegacy:ancient_boots_artifact"
+          }
+        ]
+      ]
+    }
+  ],
   "displayed_paragraphs": [
     {
       "translate": "item.fossilslegacy.user_manual.information.relic_scrap.description"
@@ -12,6 +125,7 @@
     }
   ],
   "displayed_recipes": [
-    "fossilslegacy:analyzer"
+    "fossilslegacy:dna_analyzer",
+    "fossilslegacy:stone_tablet"
   ]
 }

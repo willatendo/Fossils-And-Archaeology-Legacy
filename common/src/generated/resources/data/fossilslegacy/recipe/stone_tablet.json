@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "fossilslegacy:relic_scrap",
+    "fossilslegacy:relic_scrap",
+    "fossilslegacy:relic_scrap",
+    "fossilslegacy:relic_scrap"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:stone_tablet"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": "fossilslegacy:dna_analyzer",
+      "drops": [
+        [
+          {
+            "drop": "fossilslegacy:dna_analyzer"
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.dna_analyzer.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.dna_analyzer.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:dna_analyzer"
+  ]
+}

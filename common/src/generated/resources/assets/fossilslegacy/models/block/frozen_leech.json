@@ -1,0 +1,6 @@
+{
+  "parent": "fossilslegacy:block/template_frozen_leech",
+  "textures": {
+    "texture": "minecraft:block/packed_ice"
+  }
+}

@@ -15,7 +15,6 @@ public class FAAnalyzerResultTags {
     public static final TagKey<AnalyzerResult> MOSQUITO_IN_AMBER_RESULTS = ANALYZER_RESULT_TAGS.register("mosquito_in_amber_results");
     public static final TagKey<AnalyzerResult> LEECH_IN_ICE_RESULTS = ANALYZER_RESULT_TAGS.register("leech_in_ice_results");
     public static final TagKey<AnalyzerResult> PLANT_FOSSIL_RESULTS = ANALYZER_RESULT_TAGS.register("plant_fossil");
-    public static final TagKey<AnalyzerResult> RELIC_SCRAP_RESULTS = ANALYZER_RESULT_TAGS.register("relic_scrap");
     public static final TagKey<AnalyzerResult> FROZEN_MEAT_RESULTS = ANALYZER_RESULT_TAGS.register("frozen_meat");
     public static final TagKey<AnalyzerResult> AXOLOTL_BUCKET_RESULTS = ANALYZER_RESULT_TAGS.register("axolotl_bucket");
     public static final TagKey<AnalyzerResult> TROPICAL_FISH_BUCKET_RESULTS = ANALYZER_RESULT_TAGS.register("tropical_fish_bucket");

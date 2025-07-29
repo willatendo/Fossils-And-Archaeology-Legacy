@@ -82,7 +82,7 @@ public final class FAFuelEntries {
     public static final ResourceKey<FuelEntry> SLIME_BALL = FAFuelEntries.create("slime_ball");
     public static final ResourceKey<FuelEntry> MILK_BUCKET = FAFuelEntries.create("milk_bucket");
 
-    public static final ResourceKey<FuelEntry> RELIC_SCRAP = FAFuelEntries.create("relic_scrap");
+    public static final ResourceKey<FuelEntry> STONE_TABLET = FAFuelEntries.create("stone_tablet");
 
     private static ResourceKey<FuelEntry> create(String name) {
         return ResourceKey.create(FARegistries.FUEL_ENTRY, FAUtils.resource(name));
@@ -164,6 +164,6 @@ public final class FAFuelEntries {
         FAFuelEntries.register(bootstrapContext, SLIME_BALL, Items.SLIME_BALL, 800);
         FAFuelEntries.register(bootstrapContext, MILK_BUCKET, Items.MILK_BUCKET, 6000);
 
-        FAFuelEntries.register(bootstrapContext, RELIC_SCRAP, FAItems.RELIC_SCRAP.get(), 100);
+        FAFuelEntries.register(bootstrapContext, STONE_TABLET, FAItems.STONE_TABLET.get(), 500);
     }
 }

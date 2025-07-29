@@ -20,7 +20,6 @@ public final class FAAnalyzerResults {
     public static final List<ResourceKey<AnalyzerResult>> MOSQUITO_IN_AMBER_RESULTS = new ArrayList<>();
     public static final List<ResourceKey<AnalyzerResult>> LEECH_IN_ICE_RESULTS = new ArrayList<>();
     public static final List<ResourceKey<AnalyzerResult>> PLANT_FOSSIL_RESULTS = new ArrayList<>();
-    public static final List<ResourceKey<AnalyzerResult>> RELIC_SCRAP_RESULTS = new ArrayList<>();
     public static final List<ResourceKey<AnalyzerResult>> FROZEN_MEAT_RESULTS = new ArrayList<>();
     public static final ResourceKey<AnalyzerResult> AXOLOTL_DNA = FAAnalyzerResults.create("axolotl_dna");
     public static final ResourceKey<AnalyzerResult> PIG_DNA = FAAnalyzerResults.create("pig_dna");
@@ -146,19 +145,6 @@ public final class FAAnalyzerResults {
         FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(FAItems.ARCHAEOPTERIS_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(FAItems.GINKGO_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(FAItems.ARAUCARIA_DNA.get()), 2);
-        FAAnalyzerResults.register(bootstrapContext, RELIC_SCRAP_RESULTS, "relic_scarp_results", new ItemStack(Blocks.GRAVEL), 40);
-        FAAnalyzerResults.register(bootstrapContext, RELIC_SCRAP_RESULTS, "relic_scarp_results", new ItemStack(FAItems.STONE_TABLET.get()), 30);
-        FAAnalyzerResults.register(bootstrapContext, RELIC_SCRAP_RESULTS, "relic_scarp_results", new ItemStack(Items.FLINT), 20);
-        FAAnalyzerResults.register(bootstrapContext, RELIC_SCRAP_RESULTS, "relic_scarp_results", new ItemStack(FAItems.ANCIENT_SWORD_ARTIFACT.get()), 5);
-        FAAnalyzerResults.register(bootstrapContext, RELIC_SCRAP_RESULTS, "relic_scarp_results", new ItemStack(FAItems.ANCIENT_SHOVEL_ARTIFACT.get()), 5);
-        FAAnalyzerResults.register(bootstrapContext, RELIC_SCRAP_RESULTS, "relic_scarp_results", new ItemStack(FAItems.ANCIENT_PICKAXE_ARTIFACT.get()), 5);
-        FAAnalyzerResults.register(bootstrapContext, RELIC_SCRAP_RESULTS, "relic_scarp_results", new ItemStack(FAItems.ANCIENT_AXE_ARTIFACT.get()), 5);
-        FAAnalyzerResults.register(bootstrapContext, RELIC_SCRAP_RESULTS, "relic_scarp_results", new ItemStack(FAItems.ANCIENT_HOE_ARTIFACT.get()), 5);
-        FAAnalyzerResults.register(bootstrapContext, RELIC_SCRAP_RESULTS, "relic_scarp_results", new ItemStack(FAItems.ANCIENT_HELMET_ARTIFACT.get()), 5);
-        FAAnalyzerResults.register(bootstrapContext, RELIC_SCRAP_RESULTS, "relic_scarp_results", new ItemStack(FAItems.ANCIENT_CHESTPLATE_ARTIFACT.get()), 5);
-        FAAnalyzerResults.register(bootstrapContext, RELIC_SCRAP_RESULTS, "relic_scarp_results", new ItemStack(FAItems.ANCIENT_LEGGINGS_ARTIFACT.get()), 5);
-        FAAnalyzerResults.register(bootstrapContext, RELIC_SCRAP_RESULTS, "relic_scarp_results", new ItemStack(FAItems.ANCIENT_BOOTS_ARTIFACT.get()), 5);
-        FAAnalyzerResults.register(bootstrapContext, RELIC_SCRAP_RESULTS, "relic_scarp_results", new ItemStack(FAItems.PREHISTORIC_COIN.get()), 1);
         FAAnalyzerResults.register(bootstrapContext, FROZEN_MEAT_RESULTS, "frozen_meat_results", new ItemStack(FAItems.SMILODON_DNA.get()), 33);
         FAAnalyzerResults.register(bootstrapContext, FROZEN_MEAT_RESULTS, "frozen_meat_results", new ItemStack(FAItems.MAMMOTH_DNA.get()), 33);
         FAAnalyzerResults.register(bootstrapContext, FROZEN_MEAT_RESULTS, "frozen_meat_results", new ItemStack(FAItems.DODO_DNA.get()), 33);

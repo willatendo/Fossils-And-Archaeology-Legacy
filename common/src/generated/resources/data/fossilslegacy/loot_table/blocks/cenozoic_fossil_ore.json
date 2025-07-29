@@ -35,24 +35,24 @@
                   "condition": "minecraft:survives_explosion"
                 }
               ],
-              "fuels": [
+              "entries": [
                 {
                   "hit_from": 0,
-                  "hit_to": 30,
+                  "hit_to": 3,
                   "item": "fossilslegacy:cenozoic_fossil"
                 },
                 {
-                  "hit_from": 30,
-                  "hit_to": 90,
+                  "hit_from": 3,
+                  "hit_to": 9,
                   "item": "minecraft:bone"
                 },
                 {
-                  "hit_from": 90,
-                  "hit_to": 100,
+                  "hit_from": 9,
+                  "hit_to": 10,
                   "item": "fossilslegacy:skull_block"
                 }
               ],
-              "max_weight": 100
+              "max_weight": 10
             }
           ]
         }

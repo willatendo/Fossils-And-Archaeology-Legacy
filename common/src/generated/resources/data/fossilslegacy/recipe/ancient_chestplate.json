@@ -2,6 +2,7 @@
   "type": "fossilslegacy:archaeology",
   "category": "restore",
   "ingredient": "fossilslegacy:ancient_chestplate_artifact",
+  "required_fuels": "fossilslegacy:archaeology_workbench/restore_by_stone_table",
   "result": {
     "id": "fossilslegacy:ancient_chestplate"
   },

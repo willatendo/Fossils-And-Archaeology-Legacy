@@ -4,7 +4,11 @@
       "type": "block_loot",
       "display": "fossilslegacy:feeder",
       "drops": [
-        "fossilslegacy:feeder"
+        [
+          {
+            "drop": "fossilslegacy:feeder"
+          }
+        ]
       ]
     }
   ],

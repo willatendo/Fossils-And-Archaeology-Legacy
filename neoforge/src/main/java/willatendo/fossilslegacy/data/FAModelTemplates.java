@@ -49,6 +49,8 @@ public final class FAModelTemplates {
     public static final ExtendedModelTemplate TEMPLATE_VASE = FAModelTemplates.create("template_vase", TextureSlot.SIDE).build();
     public static final ExtendedModelTemplate TEMPLATE_LLAMA = FAModelTemplates.create("template_llama", TextureSlot.TEXTURE, TextureSlot.PARTICLE).build();
     public static final ExtendedModelTemplate TEMPLATE_LIQUID = FAModelTemplates.create(TextureSlot.PARTICLE).build();
+    public static final ExtendedModelTemplate TEMPLATE_FROZEN_LEECH = FAModelTemplates.create("template_frozen_leech", TextureSlot.TEXTURE).build();
+    public static final ExtendedModelTemplate TEMPLATE_RESTORATION_TABLE = FAModelTemplates.create("template_restoration_table", TextureSlot.TEXTURE).build();
 
     public static final ModelTemplate TEMPLATE_ARTICULATED_FOSSIL = FAModelTemplates.createItem("template_articulated_fossil", TextureSlot.PARTICLE);
     public static final ModelTemplate TEMPLATE_RIFLE = FAModelTemplates.createItem("template_rifle", TextureSlot.TEXTURE);

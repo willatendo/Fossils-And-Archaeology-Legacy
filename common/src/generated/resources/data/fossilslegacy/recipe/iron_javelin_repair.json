@@ -2,6 +2,7 @@
   "type": "fossilslegacy:archaeology",
   "category": "repair",
   "ingredient": "fossilslegacy:broken_iron_javelin",
+  "required_fuels": "fossilslegacy:archaeology_workbench/restore_by_stone_table",
   "result": {
     "id": "fossilslegacy:iron_javelin"
   },

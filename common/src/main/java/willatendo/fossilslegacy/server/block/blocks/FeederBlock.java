@@ -25,6 +25,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.block.entity.entities.FeederBlockEntity;
+import willatendo.fossilslegacy.server.stats.FAStats;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class FeederBlock extends Block implements EntityBlock {
@@ -72,6 +73,7 @@ public class FeederBlock extends Block implements EntityBlock {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
             if (blockEntity instanceof FeederBlockEntity feederBlockEntity && player instanceof ServerPlayer serverPlayer) {
                 SimpleUtils.openContainer(feederBlockEntity, blockPos, serverPlayer);
+                player.awardStat(FAStats.INTERACT_WITH_FEEDER);
             }
             return InteractionResult.CONSUME;
         }

@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "fossilslegacy:item/leech_in_ice"
+    "model": "fossilslegacy:block/leech_in_ice"
   }
 }

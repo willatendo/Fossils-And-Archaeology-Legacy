@@ -12,7 +12,8 @@
     }
   ],
   "displayed_recipes": [
-    "fossilslegacy:analyzer",
-    "fossilslegacy:palaeontology_table"
+    "fossilslegacy:dna_analyzer",
+    "fossilslegacy:palaeontology_table",
+    "fossilslegacy:mesozoic_fossil_outputs"
   ]
 }

@@ -1,0 +1,60 @@
+{
+	"parent": "block/block",
+	"textures": {
+		"particle": "#texture"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 2, 16],
+			"faces": {
+				"north": {"uv": [0, 14, 16, 16], "texture": "#texture", "cullface": "north"},
+				"east": {"uv": [0, 14, 16, 16], "texture": "#texture", "cullface": "east"},
+				"south": {"uv": [0, 14, 16, 16], "texture": "#texture", "cullface": "south"},
+				"west": {"uv": [0, 14, 16, 16], "texture": "#texture", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#texture"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#texture", "cullface": "down"}
+			}
+		},
+		{
+			"from": [0, 2, 0],
+			"to": [2, 5, 16],
+			"faces": {
+				"north": {"uv": [14, 11, 16, 14], "texture": "#texture", "cullface": "north"},
+				"east": {"uv": [0, 11, 16, 14], "texture": "#texture"},
+				"south": {"uv": [0, 11, 2, 14], "texture": "#texture", "cullface": "south"},
+				"west": {"uv": [0, 11, 16, 14], "texture": "#texture", "cullface": "west"},
+				"up": {"uv": [0, 0, 2, 16], "texture": "#texture"}
+			}
+		},
+		{
+			"from": [14, 2, 0],
+			"to": [16, 5, 16],
+			"faces": {
+				"north": {"uv": [0, 11, 2, 14], "texture": "#texture", "cullface": "north"},
+				"east": {"uv": [0, 11, 16, 14], "texture": "#texture", "cullface": "east"},
+				"south": {"uv": [14, 11, 16, 14], "texture": "#texture", "cullface": "south"},
+				"west": {"uv": [0, 11, 16, 14], "texture": "#texture"},
+				"up": {"uv": [14, 0, 16, 16], "texture": "#texture"}
+			}
+		},
+		{
+			"from": [2, 2, 0],
+			"to": [14, 5, 2],
+			"faces": {
+				"north": {"uv": [3, 11, 13, 14], "texture": "#texture", "cullface": "north"},
+				"south": {"uv": [3, 11, 13, 14], "texture": "#texture"},
+				"up": {"uv": [3, 0, 13, 2], "texture": "#texture"}
+			}
+		},
+		{
+			"from": [2, 2, 14],
+			"to": [14, 5, 16],
+			"faces": {
+				"north": {"uv": [3, 10, 13, 13], "texture": "#texture"},
+				"south": {"uv": [2, 11, 14, 14], "texture": "#texture", "cullface": "south"},
+				"up": {"uv": [3, 14, 13, 16], "texture": "#texture"}
+			}
+		}
+	]
+}

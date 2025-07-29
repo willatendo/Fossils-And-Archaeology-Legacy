@@ -4,7 +4,11 @@
       "type": "block_loot",
       "display": "fossilslegacy:magenta_cultivator",
       "drops": [
-        "fossilslegacy:magenta_cultivator"
+        [
+          {
+            "drop": "fossilslegacy:magenta_cultivator"
+          }
+        ]
       ]
     }
   ],

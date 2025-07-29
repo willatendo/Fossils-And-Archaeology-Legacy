@@ -1,6 +1,7 @@
 package willatendo.fossilslegacy.server.recipe.recipes;
 
 import net.minecraft.core.HolderLookup;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.item.crafting.display.RecipeDisplay;
@@ -8,6 +9,7 @@ import net.minecraft.world.item.crafting.display.SlotDisplay;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.client.FARecipeBookCategories;
 import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.fuel.FuelEntry;
 import willatendo.fossilslegacy.server.menu.categories.ArchaeologyBookCategory;
 import willatendo.fossilslegacy.server.recipe.FARecipeSerialisers;
 import willatendo.fossilslegacy.server.recipe.FARecipeTypes;
@@ -21,14 +23,16 @@ public class ArchaeologyRecipe implements Recipe<SingleRecipeInput> {
     public final ArchaeologyBookCategory archaeologyBookCategory;
     public final Ingredient ingredient;
     public final ItemStack result;
+    public final TagKey<FuelEntry> requiredFuels;
     public final int time;
     public String group;
 
-    public ArchaeologyRecipe(ArchaeologyBookCategory archaeologyBookCategory, String group, Ingredient ingredient, ItemStack result, int time) {
+    public ArchaeologyRecipe(ArchaeologyBookCategory archaeologyBookCategory, String group, Ingredient ingredient, ItemStack result, int time, TagKey<FuelEntry> requiredFuels) {
         this.archaeologyBookCategory = archaeologyBookCategory;
         this.group = group;
         this.ingredient = ingredient;
         this.result = result;
+        this.requiredFuels = requiredFuels;
         this.time = time;
     }
 
@@ -63,7 +67,7 @@ public class ArchaeologyRecipe implements Recipe<SingleRecipeInput> {
 
     @Override
     public List<RecipeDisplay> display() {
-        return List.of(new ArchaeologyRecipeDisplay(this.ingredient.display(), new FuelDisplay(FAFuelEntryTags.ARCHAEOLOGY_WORKBENCH), new SlotDisplay.ItemStackSlotDisplay(this.result), new SlotDisplay.ItemSlotDisplay(FABlocks.ARCHAEOLOGY_WORKBENCH.get().asItem()), this.time));
+        return List.of(new ArchaeologyRecipeDisplay(this.ingredient.display(), new FuelDisplay(FAFuelEntryTags.RESTORE_BY_STONE_TABLET), new SlotDisplay.ItemStackSlotDisplay(this.result), new SlotDisplay.ItemSlotDisplay(FABlocks.ARCHAEOLOGY_WORKBENCH.get().asItem()), this.time));
     }
 
     @Override

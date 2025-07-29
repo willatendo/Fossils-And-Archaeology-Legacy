@@ -4,7 +4,11 @@
       "type": "block_loot",
       "display": "fossilslegacy:dna_coder",
       "drops": [
-        "fossilslegacy:dna_coder"
+        [
+          {
+            "drop": "fossilslegacy:dna_coder"
+          }
+        ]
       ]
     }
   ],
