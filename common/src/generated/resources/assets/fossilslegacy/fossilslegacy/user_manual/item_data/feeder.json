@@ -3,7 +3,7 @@
     {
       "type": "block_loot",
       "display": "fossilslegacy:feeder",
-      "drops": [
+      "loot": [
         [
           {
             "drop": "fossilslegacy:feeder"

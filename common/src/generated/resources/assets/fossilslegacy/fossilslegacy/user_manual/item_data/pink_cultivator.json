@@ -3,7 +3,7 @@
     {
       "type": "block_loot",
       "display": "fossilslegacy:pink_cultivator",
-      "drops": [
+      "loot": [
         [
           {
             "drop": "fossilslegacy:pink_cultivator"

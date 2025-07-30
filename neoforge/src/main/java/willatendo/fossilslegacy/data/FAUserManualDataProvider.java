@@ -1,17 +1,15 @@
 package willatendo.fossilslegacy.data;
 
-import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import willatendo.fossilslegacy.api.data.UserManualDataProvider;
-import willatendo.fossilslegacy.client.user_manual.loot.DrawBlockLootRecipe;
-import willatendo.fossilslegacy.client.user_manual.loot.DrawLootRecipe;
+import willatendo.fossilslegacy.client.user_manual.loot.*;
 import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.entity.FAVillagerProfessions;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
@@ -43,11 +41,12 @@ public class FAUserManualDataProvider extends UserManualDataProvider {
 
     @Override
     protected void getAll() {
-        List<DrawBlockLootRecipe.Drop>[] relicInStoneDrops = new List[]{List.of(DrawBlockLootRecipe.drop(FAItems.SCARAB_GEM.get(), Component.literal("0.0005%"))), List.of(DrawBlockLootRecipe.drop(FAItems.RELIC_SCRAP.get(), Component.literal("77%"))), List.of(DrawBlockLootRecipe.drop(FAItems.ANCIENT_SWORD_ARTIFACT.get(), Component.literal("2.5%")), DrawBlockLootRecipe.drop(FAItems.ANCIENT_SHOVEL_ARTIFACT.get(), Component.literal("2.5%")), DrawBlockLootRecipe.drop(FAItems.ANCIENT_PICKAXE_ARTIFACT.get(), Component.literal("2.5%")), DrawBlockLootRecipe.drop(FAItems.ANCIENT_AXE_ARTIFACT.get(), Component.literal("2.5%")), DrawBlockLootRecipe.drop(FAItems.ANCIENT_HOE_ARTIFACT.get(), Component.literal("2.5%")), DrawBlockLootRecipe.drop(FAItems.ANCIENT_HELMET_ARTIFACT.get(), Component.literal("2.5%")), DrawBlockLootRecipe.drop(FAItems.ANCIENT_PICKAXE_ARTIFACT.get(), Component.literal("2.5%")), DrawBlockLootRecipe.drop(FAItems.ANCIENT_LEGGINGS_ARTIFACT.get(), Component.literal("2.5%")), DrawBlockLootRecipe.drop(FAItems.ANCIENT_BOOTS_ARTIFACT.get(), Component.literal("2.5%")))};
-        DrawBlockLootRecipe relicInStone = DrawBlockLootRecipe.dropMany(FABlocks.RELIC_IN_STONE.get(), relicInStoneDrops);
-        DrawBlockLootRecipe relicInDeepslate = DrawBlockLootRecipe.dropMany(FABlocks.RELIC_IN_DEEPSLATE.get(), relicInStoneDrops);
-        this.addSimple(FAItems.RELIC_SCRAP.get(), List.of(this.mod("dna_analyzer"), this.mod("stone_tablet")), List.of(relicInStone, relicInDeepslate));
-        this.addSimple(FAItems.SCARAB_GEM.get(), List.of(this.mod("scarab_gem_sword_smithing"), this.mod("scarab_gem_shovel_smithing"), this.mod("scarab_gem_pickaxe_smithing"), this.mod("scarab_gem_axe_smithing"), this.mod("scarab_gem_hoe_smithing"), this.mod("scarab_gem_helmet_smithing"), this.mod("scarab_gem_chestplate_smithing"), this.mod("scarab_gem_leggings_smithing"), this.mod("scarab_gem_boots_smithing")), List.of());
+        DrawBlockLootRecipe relicInStone = DrawBlockLootRecipe.dropMany(FABlocks.RELIC_IN_STONE.get(), List.of(Drop.silkTouch(FABlocks.RELIC_IN_STONE.get())), List.of(Drop.drop(FAItems.SCARAB_GEM.get(), Component.literal("0.0005%"))), List.of(Drop.drop(FAItems.RELIC_SCRAP.get(), Component.literal("77%"))), List.of(Drop.drop(FAItems.ANCIENT_SWORD_ARTIFACT.get(), Component.literal("2.5%")), Drop.drop(FAItems.ANCIENT_SHOVEL_ARTIFACT.get(), Component.literal("2.5%")), Drop.drop(FAItems.ANCIENT_PICKAXE_ARTIFACT.get(), Component.literal("2.5%")), Drop.drop(FAItems.ANCIENT_AXE_ARTIFACT.get(), Component.literal("2.5%")), Drop.drop(FAItems.ANCIENT_HOE_ARTIFACT.get(), Component.literal("2.5%")), Drop.drop(FAItems.ANCIENT_HELMET_ARTIFACT.get(), Component.literal("2.5%")), Drop.drop(FAItems.ANCIENT_PICKAXE_ARTIFACT.get(), Component.literal("2.5%")), Drop.drop(FAItems.ANCIENT_LEGGINGS_ARTIFACT.get(), Component.literal("2.5%")), Drop.drop(FAItems.ANCIENT_BOOTS_ARTIFACT.get(), Component.literal("2.5%"))));
+        DrawBlockLootRecipe relicInDeepslate = DrawBlockLootRecipe.dropMany(FABlocks.RELIC_IN_DEEPSLATE.get(), List.of(Drop.silkTouch(FABlocks.RELIC_IN_DEEPSLATE.get())), List.of(Drop.drop(FAItems.SCARAB_GEM.get(), Component.literal("0.0005%"))), List.of(Drop.drop(FAItems.RELIC_SCRAP.get(), Component.literal("77%"))), List.of(Drop.drop(FAItems.ANCIENT_SWORD_ARTIFACT.get(), Component.literal("2.5%")), Drop.drop(FAItems.ANCIENT_SHOVEL_ARTIFACT.get(), Component.literal("2.5%")), Drop.drop(FAItems.ANCIENT_PICKAXE_ARTIFACT.get(), Component.literal("2.5%")), Drop.drop(FAItems.ANCIENT_AXE_ARTIFACT.get(), Component.literal("2.5%")), Drop.drop(FAItems.ANCIENT_HOE_ARTIFACT.get(), Component.literal("2.5%")), Drop.drop(FAItems.ANCIENT_HELMET_ARTIFACT.get(), Component.literal("2.5%")), Drop.drop(FAItems.ANCIENT_PICKAXE_ARTIFACT.get(), Component.literal("2.5%")), Drop.drop(FAItems.ANCIENT_LEGGINGS_ARTIFACT.get(), Component.literal("2.5%")), Drop.drop(FAItems.ANCIENT_BOOTS_ARTIFACT.get(), Component.literal("2.5%"))));
+        DrawGiftLootRecipe archaeologistGifts = DrawGiftLootRecipe.simple(FAVillagerProfessions.ARCHAEOLOGIST.get(), List.of(Drop.drop(FAItems.ANCIENT_HELMET.get(), Component.literal("25%"))), List.of(Drop.drop(FAItems.RELIC_SCRAP.get(), Component.literal("25%"))), List.of(Drop.drop(FAItems.JADE.get(), Component.literal("25%"))), List.of(Drop.drop(FAItems.JADE_VILLAGER.get(), Component.literal("25%"))));
+        DrawChestLootRecipe fossilLoot = DrawChestLootRecipe.simple(FAUtils.translation("item", "user_manual.loot_table.lab_fossil_loot"), List.of(Drop.drop(FAItems.RELIC_SCRAP.get(), Component.literal("1-4"))), List.of(Drop.drop(FAItems.MESOZOIC_FOSSIL.get(), Component.literal("1-4"))), List.of(Drop.drop(FAItems.FROZEN_MEAT.get(), Component.literal("1-4"))));
+        this.addSimple(FAItems.RELIC_SCRAP.get(), List.of(this.mod("dna_analyzer"), this.mod("stone_tablet")), List.of(relicInStone, relicInDeepslate, archaeologistGifts, fossilLoot));
+        this.addSimple(FAItems.SCARAB_GEM.get(), List.of(this.mod("scarab_gem_sword_smithing"), this.mod("scarab_gem_shovel_smithing"), this.mod("scarab_gem_pickaxe_smithing"), this.mod("scarab_gem_axe_smithing"), this.mod("scarab_gem_hoe_smithing"), this.mod("scarab_gem_helmet_smithing"), this.mod("scarab_gem_chestplate_smithing"), this.mod("scarab_gem_leggings_smithing"), this.mod("scarab_gem_boots_smithing")), List.of(relicInStone, relicInDeepslate));
         Component jadeDescription = this.descriptionTranslation("jade");
         Component jadeUse = this.useTranslation("jade");
         this.add(FAItems.JADE.get(), List.of(this.mod("mayan_jade_vase")), List.of(), jadeDescription, jadeUse, this.readRecipes);
@@ -59,8 +58,10 @@ public class FAUserManualDataProvider extends UserManualDataProvider {
         this.addSimple(FAItems.MESOZOIC_FOSSIL.get(), List.of(this.mod("dna_analyzer"), this.mod("palaeontology_table"), this.mod("mesozoic_fossil_outputs")), List.of());
         this.addSimple(FAItems.PALAEOZOIC_FOSSIL.get(), List.of(this.mod("dna_analyzer"), this.mod("palaeontology_table"), this.mod("palaeozoic_fossil_outputs")), List.of());
         this.addSimple(FAItems.PLANT_FOSSIL.get(), List.of(), List.of());
-        this.addSimple(FAItems.AMBER.get(), List.of(), List.of());
-        this.addSimple(FAItems.MOSQUITO_IN_AMBER.get(), List.of(), List.of());
+        DrawBlockLootRecipe amberOre = DrawBlockLootRecipe.dropMany(FABlocks.AMBER_ORE.get(), List.of(Drop.silkTouch(FABlocks.AMBER_ORE.get())), List.of(Drop.drop(FAItems.MOSQUITO_IN_AMBER.get(), Component.literal("10%"))), List.of(Drop.drop(FAItems.AMBER.get(), Component.literal("90%"))));
+        DrawBlockLootRecipe deepslateAmberOre = DrawBlockLootRecipe.dropMany(FABlocks.DEEPSLATE_AMBER_ORE.get(), List.of(Drop.silkTouch(FABlocks.DEEPSLATE_AMBER_ORE.get())), List.of(Drop.drop(FAItems.MOSQUITO_IN_AMBER.get(), Component.literal("10%"))), List.of(Drop.drop(FAItems.AMBER.get(), Component.literal("90%"))));
+        this.addSimple(FAItems.AMBER.get(), List.of(), List.of(amberOre, deepslateAmberOre));
+        this.addSimple(FAItems.MOSQUITO_IN_AMBER.get(), List.of(), List.of(amberOre, deepslateAmberOre));
         this.addSimple(FAItems.FROZEN_LEECH.get(), List.of(), List.of());
         this.addSimple(FAItems.FROZEN_MEAT.get(), List.of(), List.of());
         this.addSimple(FAItems.STORAGE_DISC.get(), List.of(this.mod("storage_disc")), List.of());

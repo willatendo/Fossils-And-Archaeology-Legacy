@@ -3,7 +3,7 @@
     {
       "type": "block_loot",
       "display": "fossilslegacy:dna_recombinator",
-      "drops": [
+      "loot": [
         [
           {
             "drop": "fossilslegacy:dna_recombinator"

@@ -3,7 +3,7 @@
     {
       "type": "block_loot",
       "display": "fossilslegacy:orange_cultivator",
-      "drops": [
+      "loot": [
         [
           {
             "drop": "fossilslegacy:orange_cultivator"

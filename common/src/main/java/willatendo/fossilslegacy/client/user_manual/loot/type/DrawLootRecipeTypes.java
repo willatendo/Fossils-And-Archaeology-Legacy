@@ -6,7 +6,9 @@ import net.minecraft.util.StringRepresentable;
 import willatendo.fossilslegacy.client.user_manual.loot.DrawLootRecipe;
 
 public enum DrawLootRecipeTypes implements StringRepresentable {
-    BLOCK_LOOT("block_loot", DrawBlockLootRecipeType.CODEC);
+    BLOCK_LOOT("block_loot", DrawBlockLootRecipeType.CODEC),
+    CHEST_LOOT("chest_loot", DrawChestLootRecipeType.CODEC),
+    GIFT_LOOT("gift_loot", DrawGiftLootRecipeType.CODEC);
 
     public static final Codec<DrawLootRecipeTypes> CODEC = StringRepresentable.fromValues(DrawLootRecipeTypes::values);
     private final String name;

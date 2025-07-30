@@ -1,17 +1,12 @@
 package willatendo.fossilslegacy.client.user_manual.loot;
 
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import willatendo.fossilslegacy.client.screen.UserManualScreen;
 import willatendo.fossilslegacy.client.user_manual.draw.SlotPlacer;
 import willatendo.fossilslegacy.client.user_manual.draw.SpriteDrawer;
 import willatendo.fossilslegacy.client.user_manual.loot.type.DrawLootRecipeTypes;
@@ -24,41 +19,35 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-public record DrawBlockLootRecipe(Block block, List<List<DrawBlockLootRecipe.Drop>> drops) implements DrawLootRecipe {
-    private static final ResourceLocation SLOT = FAUtils.resource("container/user_manual/slot");
-
+public record DrawBlockLootRecipe(Block block, List<List<Drop>> drops) implements DrawLootRecipe {
     public static DrawBlockLootRecipe dropSelf(Block block) {
-        return new DrawBlockLootRecipe(block, List.of(List.of(DrawBlockLootRecipe.drop(block.asItem()))));
+        return new DrawBlockLootRecipe(block, List.of(List.of(Drop.drop(block.asItem()))));
     }
 
     public static DrawBlockLootRecipe dropOther(Block block, ItemLike drop) {
-        return new DrawBlockLootRecipe(block, List.of(List.of(DrawBlockLootRecipe.drop(drop.asItem()))));
+        return new DrawBlockLootRecipe(block, List.of(List.of(Drop.drop(drop.asItem()))));
     }
 
-    public static DrawBlockLootRecipe dropMany(Block block, List<DrawBlockLootRecipe.Drop>... drops) {
+    public static DrawBlockLootRecipe dropMany(Block block, List<Drop>... drops) {
         return new DrawBlockLootRecipe(block, Arrays.asList(drops));
-    }
-
-    public static DrawBlockLootRecipe.Drop drop(Item item, Component chance) {
-        return new DrawBlockLootRecipe.Drop(item, Optional.of(chance));
-    }
-
-    public static DrawBlockLootRecipe.Drop drop(Item item) {
-        return new DrawBlockLootRecipe.Drop(item, Optional.empty());
     }
 
     @Override
     public void draw(Level level, SlotPlacer slotPlacer, SpriteDrawer spriteDrawer) {
-        slotPlacer.place(1, 1, new ItemStack(this.block));
-        for (int i = 0; i < this.drops.size(); i++) {
-            spriteDrawer.draw(86 + (i * 18), 34, 18, 18, 0, 0, SLOT);
-            slotPlacer.place(55 + (i * 18), 1, this.drops.get(i).stream().map(itemFloatPair -> new ItemStack(itemFloatPair.drop())).toList());
-            List<Optional<Component>> chances = this.drops.get(i).stream().map(Drop::chance).toList();
+        int dropSlots = this.drops.size();
+        int fullWidth = (18 * dropSlots) + 54;
+        int leftPos = (176 / 2) - (fullWidth / 2);
+        slotPlacer.place(leftPos - 31, 1, new ItemStack(this.block));
+        for (int i = 0; i < dropSlots; i++) {
+            int x = fullWidth - ((dropSlots - i) * 18) + leftPos;
+            spriteDrawer.draw(x, 34, 18, 18, 0, 0, UserManualScreen.SLOT_SPRITE);
+            slotPlacer.place(x - 31, 1, this.drops.get(i).stream().map(itemFloatPair -> new ItemStack(itemFloatPair.drop())).toList());
+            List<Optional<Component>> chances = this.drops.get(i).stream().map(Drop::description).toList();
             int extra = 0;
             if (i % 2 != 0) {
                 extra += 10;
             }
-            spriteDrawer.drawCenteredSmall(32 + 62 + (i * 18), 34 + 20 + extra, chances.stream().map(optionalComponent -> optionalComponent.orElse(Component.empty())).toList(), 4210752);
+            spriteDrawer.drawCentered(x + 9, 54 + extra, chances.stream().map(optionalComponent -> optionalComponent.orElse(Component.empty())).toList(), 4210752);
         }
         String text = "";
         boolean addition = false;
@@ -100,7 +89,7 @@ public record DrawBlockLootRecipe(Block block, List<List<DrawBlockLootRecipe.Dro
             text += "hoe";
         }
         if (!text.isEmpty()) {
-            spriteDrawer.drawCentered((176 / 2), 25, FAUtils.translation("item", "user_manual.drop.requirement." + text), 4210752);
+            spriteDrawer.drawCentered(88, 25, FAUtils.translation("item", "user_manual.drop.requirement." + text), 4210752);
         }
     }
 
@@ -109,7 +98,8 @@ public record DrawBlockLootRecipe(Block block, List<List<DrawBlockLootRecipe.Dro
         return DrawLootRecipeTypes.BLOCK_LOOT;
     }
 
-    public record Drop(Item drop, Optional<Component> chance) {
-        public static final Codec<Drop> CODEC = RecordCodecBuilder.create(instance -> instance.group(BuiltInRegistries.ITEM.byNameCodec().fieldOf("drop").forGetter(Drop::drop), ComponentSerialization.CODEC.optionalFieldOf("chance").forGetter(Drop::chance)).apply(instance, DrawBlockLootRecipe.Drop::new));
+    @Override
+    public int dropSize() {
+        return this.drops.size();
     }
 }

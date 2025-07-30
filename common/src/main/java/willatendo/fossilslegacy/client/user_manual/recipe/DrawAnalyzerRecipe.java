@@ -25,7 +25,7 @@ public class DrawAnalyzerRecipe implements DrawRecipe {
             HolderLookup.RegistryLookup<AnalyzerResult> registryLookup = registries.lookupOrThrow(FARegistries.ANALYZER_RESULT);
             HolderSet.Named<AnalyzerResult> analyzerResults = registryLookup.getOrThrow(analyzationRecipe.getResults());
             List<ItemStack> outputs = analyzerResults.stream().map(analyzerResult -> analyzerResult.value().output()).toList();
-            List<Component> weights = analyzerResults.stream().map(analyzerResult -> (Component) FAUtils.translation("item", "user_manual.recipes.chance", (analyzerResult.value().weight() + "%"))).toList();
+            List<Component> weights = analyzerResults.stream().map(analyzerResult -> (Component) FAUtils.translation("item", "user_manual.recipes.description", (analyzerResult.value().weight() + "%"))).toList();
 
             slotPlacer.place(1, 1, ingredients.getFirst());
             slotPlacer.place(95, 5, outputs);

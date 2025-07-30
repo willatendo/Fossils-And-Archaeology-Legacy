@@ -11,5 +11,7 @@ public interface DrawLootRecipe {
 
     DrawLootRecipeTypes type();
 
+    int dropSize();
+
     void draw(Level level, SlotPlacer slotPlacer, SpriteDrawer spriteDrawer);
 }

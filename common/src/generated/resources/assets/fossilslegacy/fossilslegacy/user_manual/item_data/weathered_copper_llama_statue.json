@@ -3,7 +3,7 @@
     {
       "type": "block_loot",
       "display": "fossilslegacy:weathered_copper_llama_statue",
-      "drops": [
+      "loot": [
         [
           {
             "drop": "fossilslegacy:weathered_copper_llama_statue"

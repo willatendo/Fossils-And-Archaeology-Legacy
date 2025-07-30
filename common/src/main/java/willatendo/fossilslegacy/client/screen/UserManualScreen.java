@@ -38,15 +38,17 @@ import java.util.Map;
 public class UserManualScreen extends AbstractContainerScreen<UserManualMenu> {
     private static final ResourceLocation USER_MANUEL_TEXTURE = FAUtils.resource("textures/gui/container/user_manual.png");
     private static final ResourceLocation TAB_SPRITE = FAUtils.resource("container/user_manual/tab");
-    private static final ResourceLocation SLOT_SPRITE = FAUtils.resource("container/user_manual/slot");
+    public static final ResourceLocation SLOT_SPRITE = FAUtils.resource("container/user_manual/slot");
     private static final ResourceLocation LOOT_SPRITE = FAUtils.resource("container/user_manual/loot");
-    private static final Component DROPS = FAUtils.translation("item", "user_manual.drops").withStyle(ChatFormatting.UNDERLINE, ChatFormatting.BOLD);
+    private static final Component DROPS = FAUtils.translation("item", "user_manual.loot").withStyle(ChatFormatting.UNDERLINE, ChatFormatting.BOLD);
     private static final Component RECIPES = FAUtils.translation("item", "user_manual.recipes").withStyle(ChatFormatting.UNDERLINE, ChatFormatting.BOLD);
     private final SlotSelectTime slotSelectTime = () -> Mth.floor(this.time / 30.0F);
     private final RecipeMap recipeMap = SyncedData.getRecipes();
     private final Player player;
     private PageButton forwardRecipeButton;
     private PageButton backRecipeButton;
+    private PageButton forwardDropButton;
+    private PageButton backDropButton;
     private ItemStack lastItemStack;
     private boolean drawRecipes = false;
     private boolean drawDrops = false;
@@ -73,19 +75,28 @@ public class UserManualScreen extends AbstractContainerScreen<UserManualMenu> {
     @Override
     protected void init() {
         super.init();
-        int leftPos = this.leftPos + this.imageWidth;
         int topPos = this.topPos + 68;
         this.recipeSlots = new UserManualGhostSlots(this.menu, this.slotSelectTime, this.leftPos, this.topPos, this.imageWidth, this.imageHeight);
         this.dropSlots = new UserManualGhostSlots(this.menu, this.slotSelectTime, this.leftPos, this.topPos, this.imageWidth, this.imageHeight);
-        this.forwardRecipeButton = this.addRenderableWidget(new PageButton(leftPos + 153, topPos + 140, true, button -> {
+        this.forwardRecipeButton = this.addRenderableWidget(new PageButton(this.leftPos + this.imageWidth + 153, topPos + 140, true, button -> {
             this.recipePage++;
             this.updateButtonVisibility();
             this.recipeSlots.clear();
         }, false));
-        this.backRecipeButton = this.addRenderableWidget(new PageButton(leftPos, topPos + 140, false, button -> {
+        this.backRecipeButton = this.addRenderableWidget(new PageButton(this.leftPos + this.imageWidth, topPos + 140, false, button -> {
             this.recipePage--;
             this.updateButtonVisibility();
             this.recipeSlots.clear();
+        }, false));
+        this.forwardDropButton = this.addRenderableWidget(new PageButton(this.leftPos + 153 - 176, topPos + 140, true, button -> {
+            this.dropPage++;
+            this.updateButtonVisibility();
+            this.dropSlots.clear();
+        }, false));
+        this.backDropButton = this.addRenderableWidget(new PageButton(this.leftPos - 176, topPos + 140, false, button -> {
+            this.dropPage--;
+            this.updateButtonVisibility();
+            this.dropSlots.clear();
         }, false));
         this.updateButtonVisibility();
     }
@@ -105,6 +116,9 @@ public class UserManualScreen extends AbstractContainerScreen<UserManualMenu> {
 
         this.forwardRecipeButton.visible = this.recipePage < this.recipePages - 1 && this.drawRecipes;
         this.backRecipeButton.visible = this.recipePage > 0 && this.drawRecipes;
+
+        this.forwardDropButton.visible = this.dropPage < this.dropPages - 1 && this.drawDrops;
+        this.backDropButton.visible = this.dropPage > 0 && this.drawDrops;
     }
 
     @Override
@@ -229,9 +243,10 @@ public class UserManualScreen extends AbstractContainerScreen<UserManualMenu> {
                             if (i == 1) {
                                 topPos += 59;
                             }
-                            guiGraphics.blitSprite(RenderType::guiTextured, LOOT_SPRITE, leftPos + 32, topPos + 34, 54, 18);
+                            int recipeleftPos = (176 / 2) - (((18 * drawLootRecipe.dropSize()) + 54) / 2);
+                            guiGraphics.blitSprite(RenderType::guiTextured, LOOT_SPRITE, leftPos + recipeleftPos, topPos + 34, 54, 18);
                             SlotPlacer slotPlacer = new SlotPlacer();
-                            drawLootRecipe.draw( this.player.level(), slotPlacer, SpriteDrawer.simple(this, guiGraphics, this.font, this.slotSelectTime, leftPos, topPos));
+                            drawLootRecipe.draw(this.player.level(), slotPlacer, SpriteDrawer.simple(this, guiGraphics, this.font, this.slotSelectTime, leftPos, topPos));
                             for (Map.Entry<Coordinate, List<ItemStack>> entry : slotPlacer.forEach()) {
                                 Coordinate coordinate = entry.getKey();
                                 this.dropSlots.add(entry.getValue(), leftPos + coordinate.x() + 32, topPos + coordinate.y() + 34, 16, 16);

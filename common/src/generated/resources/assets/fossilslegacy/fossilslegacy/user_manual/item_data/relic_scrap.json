@@ -3,54 +3,62 @@
     {
       "type": "block_loot",
       "display": "fossilslegacy:relic_in_stone",
-      "drops": [
+      "loot": [
         [
           {
-            "chance": "0.0005%",
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.silk_touch"
+            },
+            "drop": "fossilslegacy:relic_in_stone"
+          }
+        ],
+        [
+          {
+            "description": "0.0005%",
             "drop": "fossilslegacy:scarab_gem"
           }
         ],
         [
           {
-            "chance": "77%",
+            "description": "77%",
             "drop": "fossilslegacy:relic_scrap"
           }
         ],
         [
           {
-            "chance": "2.5%",
+            "description": "2.5%",
             "drop": "fossilslegacy:ancient_sword_artifact"
           },
           {
-            "chance": "2.5%",
+            "description": "2.5%",
             "drop": "fossilslegacy:ancient_shovel_artifact"
           },
           {
-            "chance": "2.5%",
+            "description": "2.5%",
             "drop": "fossilslegacy:ancient_pickaxe_artifact"
           },
           {
-            "chance": "2.5%",
+            "description": "2.5%",
             "drop": "fossilslegacy:ancient_axe_artifact"
           },
           {
-            "chance": "2.5%",
+            "description": "2.5%",
             "drop": "fossilslegacy:ancient_hoe_artifact"
           },
           {
-            "chance": "2.5%",
+            "description": "2.5%",
             "drop": "fossilslegacy:ancient_helmet_artifact"
           },
           {
-            "chance": "2.5%",
+            "description": "2.5%",
             "drop": "fossilslegacy:ancient_pickaxe_artifact"
           },
           {
-            "chance": "2.5%",
+            "description": "2.5%",
             "drop": "fossilslegacy:ancient_leggings_artifact"
           },
           {
-            "chance": "2.5%",
+            "description": "2.5%",
             "drop": "fossilslegacy:ancient_boots_artifact"
           }
         ]
@@ -59,58 +67,122 @@
     {
       "type": "block_loot",
       "display": "fossilslegacy:relic_in_deepslate",
-      "drops": [
+      "loot": [
         [
           {
-            "chance": "0.0005%",
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.silk_touch"
+            },
+            "drop": "fossilslegacy:relic_in_deepslate"
+          }
+        ],
+        [
+          {
+            "description": "0.0005%",
             "drop": "fossilslegacy:scarab_gem"
           }
         ],
         [
           {
-            "chance": "77%",
+            "description": "77%",
             "drop": "fossilslegacy:relic_scrap"
           }
         ],
         [
           {
-            "chance": "2.5%",
+            "description": "2.5%",
             "drop": "fossilslegacy:ancient_sword_artifact"
           },
           {
-            "chance": "2.5%",
+            "description": "2.5%",
             "drop": "fossilslegacy:ancient_shovel_artifact"
           },
           {
-            "chance": "2.5%",
+            "description": "2.5%",
             "drop": "fossilslegacy:ancient_pickaxe_artifact"
           },
           {
-            "chance": "2.5%",
+            "description": "2.5%",
             "drop": "fossilslegacy:ancient_axe_artifact"
           },
           {
-            "chance": "2.5%",
+            "description": "2.5%",
             "drop": "fossilslegacy:ancient_hoe_artifact"
           },
           {
-            "chance": "2.5%",
+            "description": "2.5%",
             "drop": "fossilslegacy:ancient_helmet_artifact"
           },
           {
-            "chance": "2.5%",
+            "description": "2.5%",
             "drop": "fossilslegacy:ancient_pickaxe_artifact"
           },
           {
-            "chance": "2.5%",
+            "description": "2.5%",
             "drop": "fossilslegacy:ancient_leggings_artifact"
           },
           {
-            "chance": "2.5%",
+            "description": "2.5%",
             "drop": "fossilslegacy:ancient_boots_artifact"
           }
         ]
       ]
+    },
+    {
+      "type": "gift_loot",
+      "display": "fossilslegacy:archaeologist",
+      "loot": [
+        [
+          {
+            "description": "25%",
+            "drop": "fossilslegacy:ancient_helmet"
+          }
+        ],
+        [
+          {
+            "description": "25%",
+            "drop": "fossilslegacy:relic_scrap"
+          }
+        ],
+        [
+          {
+            "description": "25%",
+            "drop": "fossilslegacy:jade"
+          }
+        ],
+        [
+          {
+            "description": "25%",
+            "drop": "fossilslegacy:jade_villager"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "chest_loot",
+      "loot": [
+        [
+          {
+            "description": "1-4",
+            "drop": "fossilslegacy:relic_scrap"
+          }
+        ],
+        [
+          {
+            "description": "1-4",
+            "drop": "fossilslegacy:mesozoic_fossil"
+          }
+        ],
+        [
+          {
+            "description": "1-4",
+            "drop": "fossilslegacy:frozen_meat"
+          }
+        ]
+      ],
+      "name": {
+        "translate": "item.fossilslegacy.user_manual.loot_table.lab_fossil_loot"
+      }
     }
   ],
   "displayed_paragraphs": [

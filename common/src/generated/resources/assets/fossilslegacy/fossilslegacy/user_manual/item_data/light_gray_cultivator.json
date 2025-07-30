@@ -3,7 +3,7 @@
     {
       "type": "block_loot",
       "display": "fossilslegacy:light_gray_cultivator",
-      "drops": [
+      "loot": [
         [
           {
             "drop": "fossilslegacy:light_gray_cultivator"

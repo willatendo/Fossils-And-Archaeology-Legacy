@@ -3,7 +3,7 @@
     {
       "type": "block_loot",
       "display": "fossilslegacy:time_machine",
-      "drops": [
+      "loot": [
         [
           {
             "drop": "fossilslegacy:time_machine"

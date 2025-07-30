@@ -3,7 +3,7 @@
     {
       "type": "block_loot",
       "display": "fossilslegacy:archaeology_workbench",
-      "drops": [
+      "loot": [
         [
           {
             "drop": "fossilslegacy:archaeology_workbench"

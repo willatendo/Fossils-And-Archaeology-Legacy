@@ -985,9 +985,10 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.FLARE_BODY.get());
         this.add(FAItems.USER_MANUAL.get());
         this.add("item.fossilslegacy.user_manual.by", "By Willatendo");
-        this.add("item.fossilslegacy.user_manual.drops", "Click for drops");
+        this.add("item.fossilslegacy.user_manual.loot", "Click for loot");
         this.add("item.fossilslegacy.user_manual.recipes", "Click for recipes");
-        this.add("item.fossilslegacy.user_manual.recipes.chance", "%s");
+        this.add("item.fossilslegacy.user_manual.recipes.description", "%s");
+        this.add("item.fossilslegacy.user_manual.drop.requirement.silk_touch", "Silk Touch");
         this.add("item.fossilslegacy.user_manual.drop.requirement.wood", "Needs wood level or above.");
         this.add("item.fossilslegacy.user_manual.drop.requirement.stone", "Needs stone level or above.");
         this.add("item.fossilslegacy.user_manual.drop.requirement.iron", "Needs iron level or above.");
@@ -1027,6 +1028,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.user_manual.drop.requirement.diamond_shovel", "Needs diamond shovel or above.");
         this.add("item.fossilslegacy.user_manual.drop.requirement.netherite_shovel", "Needs netherite shovel or above.");
         this.add("item.fossilslegacy.user_manual.drop.requirement.scarab_shovel", "Needs scarab gem shovel or above.");
+        this.add("item.fossilslegacy.user_manual.gift.requirement.hero_of_the_village", "When has hero of the village");
         this.add("item.fossilslegacy.user_manual.information.amber.description", "Fossilized tree sap from amber ore which can be found from y25-y-25.");
         this.add("item.fossilslegacy.user_manual.information.amber.use", "Decorative gem.");
         this.add("item.fossilslegacy.user_manual.information.analyzer.description", "A utility block.");
@@ -1129,7 +1131,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.user_manual.information.raw_chicken_soup.use", "Used to make Chicken Essence.");
         this.add("item.fossilslegacy.user_manual.information.raw_meat.description", "Cooked meat from an animal.");
         this.add("item.fossilslegacy.user_manual.information.raw_meat.use", "A hearty meal.");
-        this.add("item.fossilslegacy.user_manual.information.read_recipes", "For more information, look to the recipes and drops.");
+        this.add("item.fossilslegacy.user_manual.information.read_recipes", "For more information, look to the recipes and loot.");
         this.add("item.fossilslegacy.user_manual.information.red_tranquilizer_dart.description", "Dart tipped with rotten flesh.");
         this.add("item.fossilslegacy.user_manual.information.red_tranquilizer_dart.use", "Can be used in a rifle to sedate dinosaurs for capture and movement for a medium length of time.");
         this.add("item.fossilslegacy.user_manual.information.relic_scrap.description", "Relics from the past. From relics in stone, which can be found from y256-y50.");
@@ -1143,7 +1145,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.user_manual.information.therizinosaurus_claws.description", "Claws from a therizinosaurus.");
         this.add("item.fossilslegacy.user_manual.information.therizinosaurus_claws.use", "Can be used as a slow, but powerful weapon.");
         this.add("item.fossilslegacy.user_manual.information.thrown_egg.description", "An egg.");
-        this.add("item.fossilslegacy.user_manual.information.thrown_egg.use", "Throw for a chance to hatch.");
+        this.add("item.fossilslegacy.user_manual.information.thrown_egg.use", "Throw for a description to hatch.");
         this.add("item.fossilslegacy.user_manual.information.time_machine.description", "A utility block.");
         this.add("item.fossilslegacy.user_manual.information.time_machine.use", "Used to travel to different time periods.");
         this.add("item.fossilslegacy.user_manual.information.tooth_dagger.description", "A tooth dagger.");
@@ -1166,6 +1168,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.user_manual.information.waxed_copper_llama.description", "A Mayan relic from the past, found in Mayan structures.");
         this.add("item.fossilslegacy.user_manual.information.waxed_copper_llama.use", "A decorative copper llama, waxed to prevent oxidation.");
         this.add("item.fossilslegacy.user_manual.information.wooden_hammer.description", "A wooden tool.");
+        this.add("item.fossilslegacy.user_manual.loot_table.lab_fossil_loot", "Lab Fossil Loot");
         /*
         this.add("item.fossilslegacy.user_manual.information..description", "");
         this.add("item.fossilslegacy.user_manual.information..use", "");
