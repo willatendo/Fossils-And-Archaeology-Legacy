@@ -1,5 +1,34 @@
 {
-  "displayed_loot_tables": [],
+  "displayed_loot_tables": [
+    {
+      "type": "chest_loot",
+      "loot": [
+        [
+          {
+            "description": "+++",
+            "drop": "fossilslegacy:jade"
+          },
+          {
+            "description": "+",
+            "drop": "fossilslegacy:jade_ocelot"
+          },
+          {
+            "description": "+",
+            "drop": "fossilslegacy:jade_villager"
+          }
+        ],
+        [
+          {
+            "description": "++",
+            "drop": "fossilslegacy:codex"
+          }
+        ]
+      ],
+      "name": {
+        "translate": "item.fossilslegacy.user_manual.loot_table.mayan_treasure"
+      }
+    }
+  ],
   "displayed_paragraphs": [
     {
       "translate": "item.fossilslegacy.user_manual.information.codex.description"

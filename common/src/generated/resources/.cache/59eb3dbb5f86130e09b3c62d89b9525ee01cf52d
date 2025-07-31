@@ -1,4 +1,4 @@
-// 1.21.4	2025-07-29T01:00:26.3037694	Loot Tables
+// 1.21.4	2025-07-30T23:53:35.4379488	Loot Tables
 6b196aa6cdadbe968410835a209fed7ad992066f data/fossilslegacy/loot_table/archaeology/inca_loot.json
 bb0a83fd719766efefe4b270836d5a39651187e0 data/fossilslegacy/loot_table/blocks/amber_ore.json
 5cb02374129bf20a2da69b1d928ab94778ec5ea0 data/fossilslegacy/loot_table/blocks/araucaria_button.json
@@ -161,8 +161,8 @@ b74a1925f81846082aed9411c17ff2a74fb583ea data/fossilslegacy/loot_table/blocks/ra
 3f154955ef11d7746dfbdc8dc7c032d73a5f81fb data/fossilslegacy/loot_table/blocks/red_cultivator.json
 676fc44f397d88434fd4e55d951eb46fadb47e71 data/fossilslegacy/loot_table/blocks/red_decoration_post.json
 4907839ebda22bb5235c156b6bb9c7268c0fabd5 data/fossilslegacy/loot_table/blocks/red_shattered_cultivator.json
-adae04806ba9f531241918909d105c19a226adec data/fossilslegacy/loot_table/blocks/relic_in_deepslate.json
-f25ea3d7a27627d5669a81123afcdf5818123578 data/fossilslegacy/loot_table/blocks/relic_in_stone.json
+e366c8d7366ee212927ec155633555cc8c941150 data/fossilslegacy/loot_table/blocks/relic_in_deepslate.json
+87a067a50e96a1e82d08c644a966eef85053744c data/fossilslegacy/loot_table/blocks/relic_in_stone.json
 f6c180942cabf6043b62890e78ab9c6061ee352a data/fossilslegacy/loot_table/blocks/short_horsetail.json
 165db3e36bfc1858ee0528378bf5eea10ac58d3f data/fossilslegacy/loot_table/blocks/sigillaria_button.json
 c266adaab0da48379c90fab69253439ef7c06c51 data/fossilslegacy/loot_table/blocks/sigillaria_door.json

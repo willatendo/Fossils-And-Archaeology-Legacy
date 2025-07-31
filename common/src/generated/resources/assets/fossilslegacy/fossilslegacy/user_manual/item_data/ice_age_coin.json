@@ -1,0 +1,17 @@
+{
+  "displayed_loot_tables": [],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.ice_age_coin.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.ice_age_coin.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:ice_age_coin"
+  ]
+}

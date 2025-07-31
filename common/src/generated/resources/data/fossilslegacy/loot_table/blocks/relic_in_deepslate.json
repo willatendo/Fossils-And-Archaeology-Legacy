@@ -43,6 +43,11 @@
                 },
                 {
                   "hit_from": 1,
+                  "hit_to": 2,
+                  "item": "fossilslegacy:prehistoric_coin"
+                },
+                {
+                  "hit_from": 2,
                   "hit_to": 1550,
                   "item": "fossilslegacy:relic_scrap"
                 },

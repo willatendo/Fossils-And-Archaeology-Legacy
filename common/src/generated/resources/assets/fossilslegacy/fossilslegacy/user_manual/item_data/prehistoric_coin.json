@@ -1,0 +1,154 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": "fossilslegacy:relic_in_stone",
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.silk_touch"
+            },
+            "drop": "fossilslegacy:relic_in_stone"
+          }
+        ],
+        [
+          {
+            "description": "0.0005%",
+            "drop": "fossilslegacy:scarab_gem"
+          },
+          {
+            "description": "0.0005%",
+            "drop": "fossilslegacy:prehistoric_coin"
+          }
+        ],
+        [
+          {
+            "description": "77%",
+            "drop": "fossilslegacy:relic_scrap"
+          }
+        ],
+        [
+          {
+            "description": "2.5%",
+            "drop": "fossilslegacy:ancient_sword_artifact"
+          },
+          {
+            "description": "2.5%",
+            "drop": "fossilslegacy:ancient_shovel_artifact"
+          },
+          {
+            "description": "2.5%",
+            "drop": "fossilslegacy:ancient_pickaxe_artifact"
+          },
+          {
+            "description": "2.5%",
+            "drop": "fossilslegacy:ancient_axe_artifact"
+          },
+          {
+            "description": "2.5%",
+            "drop": "fossilslegacy:ancient_hoe_artifact"
+          },
+          {
+            "description": "2.5%",
+            "drop": "fossilslegacy:ancient_helmet_artifact"
+          },
+          {
+            "description": "2.5%",
+            "drop": "fossilslegacy:ancient_pickaxe_artifact"
+          },
+          {
+            "description": "2.5%",
+            "drop": "fossilslegacy:ancient_leggings_artifact"
+          },
+          {
+            "description": "2.5%",
+            "drop": "fossilslegacy:ancient_boots_artifact"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "block_loot",
+      "display": "fossilslegacy:relic_in_deepslate",
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.silk_touch"
+            },
+            "drop": "fossilslegacy:relic_in_deepslate"
+          }
+        ],
+        [
+          {
+            "description": "0.0005%",
+            "drop": "fossilslegacy:scarab_gem"
+          },
+          {
+            "description": "0.0005%",
+            "drop": "fossilslegacy:prehistoric_coin"
+          }
+        ],
+        [
+          {
+            "description": "77%",
+            "drop": "fossilslegacy:relic_scrap"
+          }
+        ],
+        [
+          {
+            "description": "2.5%",
+            "drop": "fossilslegacy:ancient_sword_artifact"
+          },
+          {
+            "description": "2.5%",
+            "drop": "fossilslegacy:ancient_shovel_artifact"
+          },
+          {
+            "description": "2.5%",
+            "drop": "fossilslegacy:ancient_pickaxe_artifact"
+          },
+          {
+            "description": "2.5%",
+            "drop": "fossilslegacy:ancient_axe_artifact"
+          },
+          {
+            "description": "2.5%",
+            "drop": "fossilslegacy:ancient_hoe_artifact"
+          },
+          {
+            "description": "2.5%",
+            "drop": "fossilslegacy:ancient_helmet_artifact"
+          },
+          {
+            "description": "2.5%",
+            "drop": "fossilslegacy:ancient_pickaxe_artifact"
+          },
+          {
+            "description": "2.5%",
+            "drop": "fossilslegacy:ancient_leggings_artifact"
+          },
+          {
+            "description": "2.5%",
+            "drop": "fossilslegacy:ancient_boots_artifact"
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.prehistoric_coin.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.prehistoric_coin.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:prehistoric_coin"
+  ]
+}

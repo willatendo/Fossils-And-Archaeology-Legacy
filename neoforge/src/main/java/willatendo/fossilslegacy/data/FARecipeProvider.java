@@ -80,8 +80,6 @@ public class FARecipeProvider extends RecipeProvider {
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.FEEDER.get()).pattern("#$#").pattern("%@!").pattern("!!!").define('#', Items.IRON_INGOT).define('$', Blocks.GLASS).define('%', Blocks.STONE_BUTTON).define('@', Items.BUCKET).define('!', Blocks.STONE).unlockedBy(RecipeProvider.getHasName(Blocks.STONE), this.has(Blocks.STONE)).save(this.output);
         this.shapeless(RecipeCategory.BUILDING_BLOCKS, FAItems.RAW_CHICKEN_SOUP_BUCKET.get()).requires(Items.CHICKEN).requires(Items.BUCKET).unlockedBy(RecipeProvider.getHasName(Items.BUCKET), this.has(Items.BUCKET)).save(this.output);
         this.shapeless(RecipeCategory.MISC, Items.BONE_MEAL, 5).requires(FABlocks.SKULL_BLOCK.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.SKULL_BLOCK.get()), this.has(FABlocks.SKULL_BLOCK.get())).save(this.output, FAUtils.ID + ":skull_bonemeal");
-        this.shapeless(RecipeCategory.MISC, FAItems.OVERWORLD_COIN.get()).requires(FAItems.PREHISTORIC_COIN.get()).unlockedBy(RecipeProvider.getHasName(FAItems.OVERWORLD_COIN.get()), this.has(FAItems.OVERWORLD_COIN.get())).save(this.output);
-        this.shapeless(RecipeCategory.MISC, FAItems.PREHISTORIC_COIN.get()).requires(FAItems.OVERWORLD_COIN.get()).unlockedBy(RecipeProvider.getHasName(FAItems.PREHISTORIC_COIN.get()), this.has(FAItems.PREHISTORIC_COIN.get())).save(this.output);
         this.woodType(FABlocks.LEPIDODENDRON_LOG.get(), FABlocks.STRIPPED_LEPIDODENDRON_LOG.get(), FABlocks.LEPIDODENDRON_WOOD.get(), FABlocks.STRIPPED_LEPIDODENDRON_WOOD.get(), FAItemTags.LEPIDODENDRON_LOGS, FABlocks.LEPIDODENDRON_PLANKS.get(), FABlocks.LEPIDODENDRON_STAIRS.get(), FABlocks.LEPIDODENDRON_SLAB.get(), FABlocks.LEPIDODENDRON_FENCE.get(), FABlocks.LEPIDODENDRON_FENCE_GATE.get(), FABlocks.LEPIDODENDRON_DOOR.get(), FABlocks.LEPIDODENDRON_TRAPDOOR.get(), FABlocks.LEPIDODENDRON_PRESSURE_PLATE.get(), FABlocks.LEPIDODENDRON_BUTTON.get(), FAItems.LEPIDODENDRON_SIGN.get(), FAItems.LEPIDODENDRON_HANGING_SIGN.get(), FAItems.LEPIDODENDRON_BOAT.get(), FAItems.LEPIDODENDRON_CHEST_BOAT.get());
         this.woodType(FABlocks.SIGILLARIA_LOG.get(), FABlocks.STRIPPED_SIGILLARIA_LOG.get(), FABlocks.SIGILLARIA_WOOD.get(), FABlocks.STRIPPED_SIGILLARIA_WOOD.get(), FAItemTags.SIGILLARIA_LOGS, FABlocks.SIGILLARIA_PLANKS.get(), FABlocks.SIGILLARIA_STAIRS.get(), FABlocks.SIGILLARIA_SLAB.get(), FABlocks.SIGILLARIA_FENCE.get(), FABlocks.SIGILLARIA_FENCE_GATE.get(), FABlocks.SIGILLARIA_DOOR.get(), FABlocks.SIGILLARIA_TRAPDOOR.get(), FABlocks.SIGILLARIA_PRESSURE_PLATE.get(), FABlocks.SIGILLARIA_BUTTON.get(), FAItems.SIGILLARIA_SIGN.get(), FAItems.SIGILLARIA_HANGING_SIGN.get(), FAItems.SIGILLARIA_BOAT.get(), FAItems.SIGILLARIA_CHEST_BOAT.get());
         this.woodType(FABlocks.CALAMITES_LOG.get(), FABlocks.STRIPPED_CALAMITES_LOG.get(), FABlocks.CALAMITES_WOOD.get(), FABlocks.STRIPPED_CALAMITES_WOOD.get(), FAItemTags.CALAMITES_LOGS, FABlocks.CALAMITES_PLANKS.get(), FABlocks.CALAMITES_STAIRS.get(), FABlocks.CALAMITES_SLAB.get(), FABlocks.CALAMITES_FENCE.get(), FABlocks.CALAMITES_FENCE_GATE.get(), FABlocks.CALAMITES_DOOR.get(), FABlocks.CALAMITES_TRAPDOOR.get(), FABlocks.CALAMITES_PRESSURE_PLATE.get(), FABlocks.CALAMITES_BUTTON.get(), FAItems.CALAMITES_SIGN.get(), FAItems.CALAMITES_HANGING_SIGN.get(), FAItems.CALAMITES_BOAT.get(), FAItems.CALAMITES_CHEST_BOAT.get());
@@ -135,6 +133,9 @@ public class FARecipeProvider extends RecipeProvider {
         this.shaped(RecipeCategory.TOOLS, FAItems.STORAGE_DISC.get()).pattern("#$#").pattern("$%$").pattern("#$#").define('#', Items.IRON_NUGGET).define('$', Items.IRON_INGOT).define('%', ItemTags.WOOL).unlockedBy(RecipeProvider.getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
         this.shapeless(RecipeCategory.MISC, FAItems.BLANK_DNA.get()).requires(FAItemTags.DNA).requires(Ingredient.of(itemRegistries.getOrThrow(ItemTags.MEAT)), 2).requires(Items.ROTTEN_FLESH).unlockedBy(RecipeProvider.getHasName(Items.ROTTEN_FLESH), this.has(Items.ROTTEN_FLESH)).save(this.output);
         this.shapeless(RecipeCategory.MISC, FAItems.STONE_TABLET.get()).requires(FAItems.RELIC_SCRAP.get(), 4).unlockedBy(RecipeProvider.getHasName(FAItems.RELIC_SCRAP.get()), this.has(FAItems.RELIC_SCRAP.get())).save(this.output);
+        this.coin(FAItems.OVERWORLD_COIN.get(), Blocks.GRASS_BLOCK);
+        this.coin(FAItems.PREHISTORIC_COIN.get(), Blocks.JUNGLE_LOG);
+        this.coin(FAItems.ICE_AGE_COIN.get(), Blocks.ICE);
 
         SpecialRecipeBuilder.special(MagicConchRecipe::new).save(this.output, FAUtils.ID + ":magic_conch");
         SpecialRecipeBuilder.special(KeyCloningRecipe::new).save(this.output, FAUtils.ID + ":key_cloning");
@@ -381,6 +382,10 @@ public class FARecipeProvider extends RecipeProvider {
 
     public void craftingTable(ItemLike output, TagKey<Item> modifier, String has) {
         this.shaped(RecipeCategory.BUILDING_BLOCKS, output).pattern("$$").pattern("##").pattern("##").define('#', this.tag(ItemTags.PLANKS)).define('$', modifier).unlockedBy(has, this.has(modifier)).save(this.output);
+    }
+
+    public void coin(ItemLike coin, ItemLike destination) {
+        this.shaped(RecipeCategory.MISC, coin).pattern("!@#").pattern("$%^").pattern("&*(").define('!', FAItems.SCARAB_GEM.get()).define('@', Blocks.CREAKING_HEART).define('#', Items.HEART_OF_THE_SEA).define('$', Items.POPPED_CHORUS_FRUIT).define('%', destination).define('^', Items.ECHO_SHARD).define('&', Items.BREEZE_ROD).define('*', Items.BLAZE_ROD).define('(', Items.ENDER_PEARL).unlockedBy(RecipeProvider.getHasName(Items.ENDER_PEARL), this.has(Items.ENDER_PEARL)).save(this.output);
     }
 
     public void cultivate(CultivationBookCategory cultivationBookCategory, Item ingredient, ItemLike itemLike, int time) {

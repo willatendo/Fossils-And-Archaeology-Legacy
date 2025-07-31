@@ -47,6 +47,10 @@
 - Relic Scraps Can Now Be Crafted In An Archaeology Table With Archaeologist's Notes
 - Archaeology Table Now Uses Stone Tablets
 - Stone Tablets Now Crafted With Four Relic Scraps
+- When Time Traveling Coins Now Go As Follows (Overworld -> Prehistory Overworld Coin, Prehistory -> Overworld Prehistory Coin)
+- Overworld Coins Can Now Be Crafted
+- Prehistoric Coins Can Now Be Crafted
+- "Smithing Template" Now Named To "Scarab Gem Upgrade"
 - Added Archaeology Category For Analyzer Recipe Book
 - Added Palaeontology Category For Analyzer Recipe Book
 - Added Mosasaurus Skeleton

@@ -31,7 +31,6 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.Nullable;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.item.items.CoinItem;
@@ -117,20 +116,18 @@ public class TimeMachineBlockEntity extends BaseContainerBlockEntity implements 
                     double y = serverLevel.getHeight(Heightmap.Types.WORLD_SURFACE, (int) x, (int) z);
                     double finalY = y > -64.0D ? y : 70;
                     this.level.playSound(player, this.getBlockPos(), SoundEvents.PORTAL_TRAVEL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                    player.setAsInsidePortal(new Portal() {
-                        @Nullable
-                        @Override
-                        public TeleportTransition getPortalDestination(ServerLevel serverLevel, Entity entity, BlockPos blockPos) {
-                            Level level = entity.level();
-                            if (!level.getBlockState(TimeMachineBlockEntity.this.getBlockPos()).is(FABlocks.TIME_MACHINE.get())) {
-                                level.setBlock(TimeMachineBlockEntity.this.getBlockPos(), FABlocks.TIME_MACHINE.get().defaultBlockState(), 3);
-                            }
-                            BlockEntity blockEntity = level.getBlockEntity(TimeMachineBlockEntity.this.getBlockPos());
-                            if (blockEntity instanceof TimeMachineBlockEntity timeMachineBlockEntity) {
-                                timeMachineBlockEntity.setItem(0, new ItemStack(CoinItem.ITEM_MAP.get(level.dimension())));
-                            }
-                            return new TeleportTransition(serverLevel, new Vec3(x, finalY, z), Vec3.ZERO, 0.0F, 0.0F, TeleportTransition.PLAY_PORTAL_SOUND.then(TeleportTransition.PLACE_PORTAL_TICKET));
+                    player.setAsInsidePortal((serverLevelIn, entity, blockPosIn) -> {
+                        Level level = entity.level();
+                        if (!level.getBlockState(TimeMachineBlockEntity.this.getBlockPos()).is(FABlocks.TIME_MACHINE.get())) {
+                            level.setBlock(TimeMachineBlockEntity.this.getBlockPos(), FABlocks.TIME_MACHINE.get().defaultBlockState(), 3);
                         }
+                        BlockEntity blockEntity = level.getBlockEntity(TimeMachineBlockEntity.this.getBlockPos());
+                        if (blockEntity instanceof TimeMachineBlockEntity timeMachineBlockEntity) {
+                            if (timeMachineBlockEntity.getItem(0).isEmpty()) {
+                                timeMachineBlockEntity.setItem(0, CoinItem.getCoin(blockEntityLevel, destinedLevel));
+                            }
+                        }
+                        return new TeleportTransition(serverLevelIn, new Vec3(x, finalY, z), Vec3.ZERO, 0.0F, 0.0F, TeleportTransition.PLAY_PORTAL_SOUND.then(TeleportTransition.PLACE_PORTAL_TICKET));
                     }, blockPos);
                 }
             }

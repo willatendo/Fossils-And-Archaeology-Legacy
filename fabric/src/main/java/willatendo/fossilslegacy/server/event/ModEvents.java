@@ -60,6 +60,6 @@ public class ModEvents {
         BiomeModifications.addSpawn(BiomeSelectors.tag(BiomeTags.HAS_OCEAN_RUIN_WARM), MobCategory.WATER_AMBIENT, FAEntityTypes.NAUTILUS.get(), 1, 1, 1);
 
         ServerLifecycleEvents.SERVER_STARTING.register(server -> BasicEvents.structurePoolModification(new FabricStructurePoolModification(server)));
-        ServerLifecycleEvents.SYNC_DATA_PACK_CONTENTS.register((serverPlayer, b) -> NetworkUtils.sendToClient(serverPlayer, ClientboundRecipeContentPacket.create(Set.of(RecipeType.CRAFTING, RecipeType.SMELTING, RecipeType.SMOKING, RecipeType.BLASTING, RecipeType.SMITHING, FARecipeTypes.ANALYZATION.get()), serverPlayer.server.getRecipeManager().recipes)));
+        ServerLifecycleEvents.SYNC_DATA_PACK_CONTENTS.register((serverPlayer, b) -> NetworkUtils.sendToClient(serverPlayer, ClientboundRecipeContentPacket.create(Set.of(RecipeType.CRAFTING, RecipeType.SMELTING, RecipeType.SMOKING, RecipeType.BLASTING, RecipeType.SMITHING, FARecipeTypes.ANALYZATION.get(), FARecipeTypes.ARCHAEOLOGY.get()), serverPlayer.server.getRecipeManager().recipes)));
     }
 }

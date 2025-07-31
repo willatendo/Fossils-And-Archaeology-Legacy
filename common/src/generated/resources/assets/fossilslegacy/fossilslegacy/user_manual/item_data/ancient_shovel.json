@@ -1,0 +1,17 @@
+{
+  "displayed_loot_tables": [],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.ancient_shovel.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.ancient_shovel.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:ancient_shovel"
+  ]
+}

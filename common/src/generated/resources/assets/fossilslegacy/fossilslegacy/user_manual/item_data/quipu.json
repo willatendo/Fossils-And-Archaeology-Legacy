@@ -1,5 +1,55 @@
 {
-  "displayed_loot_tables": [],
+  "displayed_loot_tables": [
+    {
+      "type": "archaeology_loot",
+      "loot": [
+        [
+          {
+            "description": "+",
+            "drop": "fossilslegacy:quipu"
+          }
+        ],
+        [
+          {
+            "description": "+",
+            "drop": "fossilslegacy:iron_llama_statue"
+          },
+          {
+            "description": "+",
+            "drop": "fossilslegacy:copper_llama_statue"
+          },
+          {
+            "description": "+",
+            "drop": "fossilslegacy:exposed_copper_llama_statue"
+          },
+          {
+            "description": "+",
+            "drop": "fossilslegacy:weathered_copper_llama_statue"
+          },
+          {
+            "description": "+",
+            "drop": "fossilslegacy:oxidized_copper_llama_statue"
+          }
+        ],
+        [
+          {
+            "description": "++",
+            "drop": "minecraft:feather"
+          }
+        ],
+        [
+          {
+            "description": "++",
+            "drop": "minecraft:string"
+          }
+        ]
+      ],
+      "structure_name": {
+        "translate": "item.fossilslegacy.user_manual.structure.machu_picchu"
+      },
+      "suspicious_block": "minecraft:suspicious_gravel"
+    }
+  ],
   "displayed_paragraphs": [
     {
       "translate": "item.fossilslegacy.user_manual.information.quipu.description"

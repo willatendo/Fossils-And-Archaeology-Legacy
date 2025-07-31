@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "!": "fossilslegacy:scarab_gem",
+    "#": "minecraft:heart_of_the_sea",
+    "$": "minecraft:popped_chorus_fruit",
+    "%": "minecraft:ice",
+    "&": "minecraft:breeze_rod",
+    "(": "minecraft:ender_pearl",
+    "*": "minecraft:blaze_rod",
+    "@": "minecraft:creaking_heart",
+    "^": "minecraft:echo_shard"
+  },
+  "pattern": [
+    "!@#",
+    "$%^",
+    "&*("
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:ice_age_coin"
+  }
+}

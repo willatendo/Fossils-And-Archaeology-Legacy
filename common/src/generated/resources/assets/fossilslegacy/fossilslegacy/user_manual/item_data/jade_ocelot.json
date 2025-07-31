@@ -1,5 +1,140 @@
 {
-  "displayed_loot_tables": [],
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": "fossilslegacy:mayan_ocelot_vase",
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.hand"
+            },
+            "drop": "fossilslegacy:mayan_ocelot_vase"
+          }
+        ],
+        [
+          {
+            "description": "4",
+            "drop": "minecraft:brick"
+          }
+        ],
+        [
+          {
+            "description": "4",
+            "drop": "fossilslegacy:jade_ocelot"
+          }
+        ]
+      ]
+    },
+    {
+      "type": "chest_loot",
+      "loot": [
+        [
+          {
+            "description": "+++",
+            "drop": "fossilslegacy:jade"
+          },
+          {
+            "description": "+",
+            "drop": "fossilslegacy:jade_ocelot"
+          },
+          {
+            "description": "+",
+            "drop": "fossilslegacy:jade_villager"
+          }
+        ],
+        [
+          {
+            "description": "+++",
+            "drop": "minecraft:rotten_flesh"
+          }
+        ],
+        [
+          {
+            "description": "+++",
+            "drop": "minecraft:bone"
+          }
+        ],
+        [
+          {
+            "description": "+",
+            "drop": "fossilslegacy:scarab_gem_javelin"
+          }
+        ]
+      ],
+      "name": {
+        "translate": "item.fossilslegacy.user_manual.loot_table.archaeologist_hut"
+      }
+    },
+    {
+      "type": "chest_loot",
+      "loot": [
+        [
+          {
+            "description": "+++",
+            "drop": "fossilslegacy:jade"
+          },
+          {
+            "description": "+",
+            "drop": "fossilslegacy:jade_ocelot"
+          },
+          {
+            "description": "+",
+            "drop": "fossilslegacy:jade_villager"
+          }
+        ],
+        [
+          {
+            "description": "+++",
+            "drop": "minecraft:rotten_flesh"
+          }
+        ],
+        [
+          {
+            "description": "+++",
+            "drop": "minecraft:bone"
+          }
+        ],
+        [
+          {
+            "description": "+",
+            "drop": "fossilslegacy:scarab_gem_javelin"
+          }
+        ]
+      ],
+      "name": {
+        "translate": "item.fossilslegacy.user_manual.loot_table.mayan_loot"
+      }
+    },
+    {
+      "type": "chest_loot",
+      "loot": [
+        [
+          {
+            "description": "+++",
+            "drop": "fossilslegacy:jade"
+          },
+          {
+            "description": "+",
+            "drop": "fossilslegacy:jade_ocelot"
+          },
+          {
+            "description": "+",
+            "drop": "fossilslegacy:jade_villager"
+          }
+        ],
+        [
+          {
+            "description": "++",
+            "drop": "fossilslegacy:codex"
+          }
+        ]
+      ],
+      "name": {
+        "translate": "item.fossilslegacy.user_manual.loot_table.mayan_treasure"
+      }
+    }
+  ],
   "displayed_paragraphs": [
     {
       "translate": "item.fossilslegacy.user_manual.information.jade.description"

@@ -90,6 +90,6 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void syncDatapack(OnDatapackSyncEvent event) {
-        event.sendRecipes(RecipeType.CRAFTING, RecipeType.SMELTING, RecipeType.SMOKING, RecipeType.BLASTING, RecipeType.SMITHING, FARecipeTypes.ANALYZATION.get());
+        event.sendRecipes(RecipeType.CRAFTING, RecipeType.SMELTING, RecipeType.SMOKING, RecipeType.BLASTING, RecipeType.SMITHING, FARecipeTypes.ANALYZATION.get(), FARecipeTypes.ARCHAEOLOGY.get());
     }
 }

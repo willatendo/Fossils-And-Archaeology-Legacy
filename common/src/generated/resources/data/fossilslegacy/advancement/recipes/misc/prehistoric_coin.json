@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_prehistoric_coin": {
+    "has_ender_pearl": {
       "conditions": {
         "items": [
           {
-            "items": "fossilslegacy:prehistoric_coin"
+            "items": "minecraft:ender_pearl"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_prehistoric_coin"
+      "has_ender_pearl"
     ]
   ],
   "rewards": {

@@ -1,0 +1,113 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "chest_loot",
+      "loot": [
+        [
+          {
+            "description": "0-1",
+            "drop": "fossilslegacy:scarab_gem_upgrade_smithing_template"
+          }
+        ],
+        [
+          {
+            "drop": "minecraft:iron_sword"
+          },
+          {
+            "drop": "minecraft:iron_shovel"
+          },
+          {
+            "drop": "minecraft:iron_pickaxe"
+          },
+          {
+            "drop": "minecraft:iron_axe"
+          },
+          {
+            "drop": "minecraft:iron_hoe"
+          },
+          {
+            "drop": "fossilslegacy:iron_javelin"
+          },
+          {
+            "drop": "minecraft:golden_sword"
+          },
+          {
+            "drop": "minecraft:golden_shovel"
+          },
+          {
+            "drop": "minecraft:golden_pickaxe"
+          },
+          {
+            "drop": "minecraft:golden_axe"
+          },
+          {
+            "drop": "minecraft:golden_hoe"
+          },
+          {
+            "drop": "fossilslegacy:golden_javelin"
+          },
+          {
+            "drop": "minecraft:diamond_sword"
+          },
+          {
+            "drop": "minecraft:diamond_shovel"
+          },
+          {
+            "drop": "minecraft:diamond_pickaxe"
+          },
+          {
+            "drop": "minecraft:diamond_axe"
+          },
+          {
+            "drop": "minecraft:diamond_hoe"
+          },
+          {
+            "drop": "fossilslegacy:diamond_javelin"
+          }
+        ],
+        [
+          {
+            "drop": "minecraft:bow"
+          }
+        ],
+        [
+          {
+            "drop": "minecraft:arrow"
+          },
+          {
+            "drop": "minecraft:tipped_arrow"
+          },
+          {
+            "drop": "minecraft:spectral_arrow"
+          }
+        ]
+      ],
+      "name": {
+        "translate": "item.fossilslegacy.user_manual.loot_table.weapon_shop_loot"
+      }
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.scarab_gem_upgrade_smithing_template.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.scarab_gem_upgrade_smithing_template.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:scarab_gem_upgrade_smithing_template",
+    "fossilslegacy:scarab_gem_sword_smithing",
+    "fossilslegacy:scarab_gem_shovel_smithing",
+    "fossilslegacy:scarab_gem_pickaxe_smithing",
+    "fossilslegacy:scarab_gem_axe_smithing",
+    "fossilslegacy:scarab_gem_hoe_smithing",
+    "fossilslegacy:scarab_gem_helmet_smithing",
+    "fossilslegacy:scarab_gem_chestplate_smithing",
+    "fossilslegacy:scarab_gem_leggings_smithing",
+    "fossilslegacy:scarab_gem_boots_smithing"
+  ]
+}
