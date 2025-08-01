@@ -2,11 +2,15 @@
   "displayed_loot_tables": [
     {
       "type": "block_loot",
-      "display": "fossilslegacy:iron_llama_statue",
+      "display": {
+        "id": "fossilslegacy:iron_llama_statue"
+      },
       "loot": [
         [
           {
-            "drop": "fossilslegacy:iron_llama_statue"
+            "drop": {
+              "id": "fossilslegacy:iron_llama_statue"
+            }
           }
         ]
       ]

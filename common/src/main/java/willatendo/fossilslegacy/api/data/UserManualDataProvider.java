@@ -51,6 +51,10 @@ public abstract class UserManualDataProvider implements DataProvider {
         return SimpleUtils.resource(this.modId, name);
     }
 
+    protected ResourceLocation mc(String name) {
+        return SimpleUtils.mc(name);
+    }
+
     @Override
     public CompletableFuture<?> run(CachedOutput cachedOutput) {
         this.userManualItemData.clear();

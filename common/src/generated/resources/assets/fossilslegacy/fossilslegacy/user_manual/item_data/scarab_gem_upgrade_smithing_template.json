@@ -6,79 +6,130 @@
         [
           {
             "description": "0-1",
-            "drop": "fossilslegacy:scarab_gem_upgrade_smithing_template"
+            "drop": {
+              "id": "fossilslegacy:scarab_gem_upgrade_smithing_template"
+            }
           }
         ],
         [
           {
-            "drop": "minecraft:iron_sword"
+            "drop": {
+              "id": "minecraft:iron_sword"
+            }
           },
           {
-            "drop": "minecraft:iron_shovel"
+            "drop": {
+              "id": "minecraft:iron_shovel"
+            }
           },
           {
-            "drop": "minecraft:iron_pickaxe"
+            "drop": {
+              "id": "minecraft:iron_pickaxe"
+            }
           },
           {
-            "drop": "minecraft:iron_axe"
+            "drop": {
+              "id": "minecraft:iron_axe"
+            }
           },
           {
-            "drop": "minecraft:iron_hoe"
+            "drop": {
+              "id": "minecraft:iron_hoe"
+            }
           },
           {
-            "drop": "fossilslegacy:iron_javelin"
+            "drop": {
+              "id": "fossilslegacy:iron_javelin"
+            }
           },
           {
-            "drop": "minecraft:golden_sword"
+            "drop": {
+              "id": "minecraft:golden_sword"
+            }
           },
           {
-            "drop": "minecraft:golden_shovel"
+            "drop": {
+              "id": "minecraft:golden_shovel"
+            }
           },
           {
-            "drop": "minecraft:golden_pickaxe"
+            "drop": {
+              "id": "minecraft:golden_pickaxe"
+            }
           },
           {
-            "drop": "minecraft:golden_axe"
+            "drop": {
+              "id": "minecraft:golden_axe"
+            }
           },
           {
-            "drop": "minecraft:golden_hoe"
+            "drop": {
+              "id": "minecraft:golden_hoe"
+            }
           },
           {
-            "drop": "fossilslegacy:golden_javelin"
+            "drop": {
+              "id": "fossilslegacy:golden_javelin"
+            }
           },
           {
-            "drop": "minecraft:diamond_sword"
+            "drop": {
+              "id": "minecraft:diamond_sword"
+            }
           },
           {
-            "drop": "minecraft:diamond_shovel"
+            "drop": {
+              "id": "minecraft:diamond_shovel"
+            }
           },
           {
-            "drop": "minecraft:diamond_pickaxe"
+            "drop": {
+              "id": "minecraft:diamond_pickaxe"
+            }
           },
           {
-            "drop": "minecraft:diamond_axe"
+            "drop": {
+              "id": "minecraft:diamond_axe"
+            }
           },
           {
-            "drop": "minecraft:diamond_hoe"
+            "drop": {
+              "id": "minecraft:diamond_hoe"
+            }
           },
           {
-            "drop": "fossilslegacy:diamond_javelin"
+            "drop": {
+              "id": "fossilslegacy:diamond_javelin"
+            }
           }
         ],
         [
           {
-            "drop": "minecraft:bow"
+            "drop": {
+              "id": "minecraft:bow"
+            }
           }
         ],
         [
           {
-            "drop": "minecraft:arrow"
+            "drop": {
+              "id": "minecraft:arrow"
+            }
           },
           {
-            "drop": "minecraft:tipped_arrow"
+            "drop": {
+              "components": {
+                "minecraft:potion_contents": {
+                  "potion": "minecraft:harming"
+                }
+              },
+              "id": "minecraft:tipped_arrow"
+            }
           },
           {
-            "drop": "minecraft:spectral_arrow"
+            "drop": {
+              "id": "minecraft:spectral_arrow"
+            }
           }
         ]
       ],

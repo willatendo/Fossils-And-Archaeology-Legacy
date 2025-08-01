@@ -1,5 +1,31 @@
 {
-  "displayed_loot_tables": [],
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:leech_in_ice"
+      },
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.silk_touch"
+            },
+            "drop": {
+              "id": "fossilslegacy:leech_in_ice"
+            }
+          }
+        ],
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:frozen_leech"
+            }
+          }
+        ]
+      ]
+    }
+  ],
   "displayed_paragraphs": [
     {
       "translate": "item.fossilslegacy.user_manual.information.frozen_leech.description"
@@ -11,5 +37,7 @@
       "translate": "item.fossilslegacy.user_manual.information.read_recipes"
     }
   ],
-  "displayed_recipes": []
+  "displayed_recipes": [
+    "fossilslegacy:frozen_leech_outputs"
+  ]
 }

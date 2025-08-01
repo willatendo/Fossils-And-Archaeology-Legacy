@@ -1,0 +1,57 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:archaeopteris_sapling"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:archaeopteris_sapling"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:archaeopteris_leaves"
+      },
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.shears"
+            },
+            "drop": {
+              "id": "fossilslegacy:archaeopteris_leaves"
+            }
+          }
+        ],
+        [
+          {
+            "description": "+",
+            "drop": {
+              "id": "fossilslegacy:archaeopteris_sapling"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.sapling.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.sapling.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": []
+}

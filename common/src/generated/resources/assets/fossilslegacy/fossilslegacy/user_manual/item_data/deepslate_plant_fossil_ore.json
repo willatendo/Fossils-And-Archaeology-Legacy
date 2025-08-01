@@ -1,0 +1,50 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:deepslate_plant_fossil_ore"
+      },
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.silk_touch"
+            },
+            "drop": {
+              "id": "fossilslegacy:deepslate_plant_fossil_ore"
+            }
+          }
+        ],
+        [
+          {
+            "description": "40%",
+            "drop": {
+              "id": "fossilslegacy:plant_fossil"
+            }
+          }
+        ],
+        [
+          {
+            "description": "60%",
+            "drop": {
+              "id": "minecraft:coal"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.deepslate_plant_fossil_ore.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.deepslate_plant_fossil_ore.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": []
+}

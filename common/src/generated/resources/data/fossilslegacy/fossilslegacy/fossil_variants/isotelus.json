@@ -1,0 +1,18 @@
+{
+  "base_scale_height": 1.0,
+  "base_scale_width": 1.0,
+  "bounding_box_growth": 0.0,
+  "bounding_box_height": 0.5,
+  "bounding_box_width": 0.5,
+  "can_articulate": true,
+  "fossil_count": 2,
+  "fossil_ingredient": "fossilslegacy:palaeozoic_fossil",
+  "max_size": 0,
+  "model": "fossilslegacy:isotelus",
+  "scale": 60.0,
+  "shadow_growth": 0.0,
+  "shadow_size": 0.25,
+  "size_scale": 0.0,
+  "texture": "fossilslegacy:textures/entity/isotelus/isotelus_skeleton.png",
+  "y_offset": 0
+}

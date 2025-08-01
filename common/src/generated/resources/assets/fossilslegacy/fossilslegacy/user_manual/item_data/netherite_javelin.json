@@ -1,0 +1,78 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "chest_loot",
+      "loot": [
+        [
+          {
+            "description": "+",
+            "drop": {
+              "id": "fossilslegacy:scarab_gem_javelin"
+            }
+          },
+          {
+            "description": "+",
+            "drop": {
+              "id": "fossilslegacy:netherite_javelin"
+            }
+          }
+        ],
+        [
+          {
+            "description": "+++",
+            "drop": {
+              "id": "fossilslegacy:cenozoic_fossil"
+            }
+          },
+          {
+            "description": "+++",
+            "drop": {
+              "id": "fossilslegacy:mesozoic_fossil"
+            }
+          },
+          {
+            "description": "+++",
+            "drop": {
+              "id": "fossilslegacy:palaeozoic_fossil"
+            }
+          },
+          {
+            "description": "+++",
+            "drop": {
+              "id": "fossilslegacy:plant_fossil"
+            }
+          },
+          {
+            "description": "+++",
+            "drop": {
+              "id": "fossilslegacy:relic_scrap"
+            }
+          }
+        ],
+        [
+          {
+            "description": "++",
+            "drop": {
+              "id": "minecraft:potion"
+            }
+          }
+        ]
+      ],
+      "name": {
+        "translate": "item.fossilslegacy.user_manual.loot_table.academy_loot"
+      }
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.netherite_javelin.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.netherite_javelin.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": []
+}

@@ -2,11 +2,15 @@
   "displayed_loot_tables": [
     {
       "type": "block_loot",
-      "display": "fossilslegacy:dna_recombinator",
+      "display": {
+        "id": "fossilslegacy:dna_recombinator"
+      },
       "loot": [
         [
           {
-            "drop": "fossilslegacy:dna_recombinator"
+            "drop": {
+              "id": "fossilslegacy:dna_recombinator"
+            }
           }
         ]
       ]

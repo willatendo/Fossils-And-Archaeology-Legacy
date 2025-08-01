@@ -1,0 +1,52 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:mayan_ocelot_vase"
+      },
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.hand"
+            },
+            "drop": {
+              "id": "fossilslegacy:mayan_ocelot_vase"
+            }
+          }
+        ],
+        [
+          {
+            "description": "4",
+            "drop": {
+              "id": "minecraft:brick"
+            }
+          }
+        ],
+        [
+          {
+            "description": "4",
+            "drop": {
+              "id": "fossilslegacy:jade_ocelot"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.mayan_vase.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.mayan_vase.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:mayan_ocelot_vase"
+  ]
+}

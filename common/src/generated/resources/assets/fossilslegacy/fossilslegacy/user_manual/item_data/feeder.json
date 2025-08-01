@@ -2,11 +2,15 @@
   "displayed_loot_tables": [
     {
       "type": "block_loot",
-      "display": "fossilslegacy:feeder",
+      "display": {
+        "id": "fossilslegacy:feeder"
+      },
       "loot": [
         [
           {
-            "drop": "fossilslegacy:feeder"
+            "drop": {
+              "id": "fossilslegacy:feeder"
+            }
           }
         ]
       ]

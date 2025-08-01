@@ -6,7 +6,7 @@
   "bounding_box_width": 0.5,
   "can_articulate": true,
   "fossil_count": 5,
-  "fossil_ingredient": "fossilslegacy:mesozoic_fossil",
+  "fossil_ingredient": "fossilslegacy:palaeozoic_fossil",
   "max_size": 12,
   "model": "fossilslegacy:dimetrodon",
   "scale": 60.0,

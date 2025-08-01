@@ -1,0 +1,182 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "chest_loot",
+      "loot": [
+        [
+          {
+            "description": "+",
+            "drop": {
+              "id": "fossilslegacy:scarab_gem_javelin"
+            }
+          },
+          {
+            "description": "+",
+            "drop": {
+              "id": "fossilslegacy:netherite_javelin"
+            }
+          }
+        ],
+        [
+          {
+            "description": "+++",
+            "drop": {
+              "id": "fossilslegacy:cenozoic_fossil"
+            }
+          },
+          {
+            "description": "+++",
+            "drop": {
+              "id": "fossilslegacy:mesozoic_fossil"
+            }
+          },
+          {
+            "description": "+++",
+            "drop": {
+              "id": "fossilslegacy:palaeozoic_fossil"
+            }
+          },
+          {
+            "description": "+++",
+            "drop": {
+              "id": "fossilslegacy:plant_fossil"
+            }
+          },
+          {
+            "description": "+++",
+            "drop": {
+              "id": "fossilslegacy:relic_scrap"
+            }
+          }
+        ],
+        [
+          {
+            "description": "++",
+            "drop": {
+              "id": "minecraft:potion"
+            }
+          }
+        ]
+      ],
+      "name": {
+        "translate": "item.fossilslegacy.user_manual.loot_table.academy_loot"
+      }
+    },
+    {
+      "type": "chest_loot",
+      "loot": [
+        [
+          {
+            "description": "+++",
+            "drop": {
+              "id": "fossilslegacy:jade"
+            }
+          },
+          {
+            "description": "+",
+            "drop": {
+              "id": "fossilslegacy:jade_ocelot"
+            }
+          },
+          {
+            "description": "+",
+            "drop": {
+              "id": "fossilslegacy:jade_villager"
+            }
+          }
+        ],
+        [
+          {
+            "description": "+++",
+            "drop": {
+              "id": "minecraft:rotten_flesh"
+            }
+          }
+        ],
+        [
+          {
+            "description": "+++",
+            "drop": {
+              "id": "minecraft:bone"
+            }
+          }
+        ],
+        [
+          {
+            "description": "+",
+            "drop": {
+              "id": "fossilslegacy:scarab_gem_javelin"
+            }
+          }
+        ]
+      ],
+      "name": {
+        "translate": "item.fossilslegacy.user_manual.loot_table.mayan_loot"
+      }
+    },
+    {
+      "type": "chest_loot",
+      "loot": [
+        [
+          {
+            "description": "+++",
+            "drop": {
+              "id": "fossilslegacy:jade"
+            }
+          },
+          {
+            "description": "+",
+            "drop": {
+              "id": "fossilslegacy:jade_ocelot"
+            }
+          },
+          {
+            "description": "+",
+            "drop": {
+              "id": "fossilslegacy:jade_villager"
+            }
+          }
+        ],
+        [
+          {
+            "description": "+++",
+            "drop": {
+              "id": "minecraft:rotten_flesh"
+            }
+          }
+        ],
+        [
+          {
+            "description": "+++",
+            "drop": {
+              "id": "minecraft:bone"
+            }
+          }
+        ],
+        [
+          {
+            "description": "+",
+            "drop": {
+              "id": "fossilslegacy:scarab_gem_javelin"
+            }
+          }
+        ]
+      ],
+      "name": {
+        "translate": "item.fossilslegacy.user_manual.loot_table.archaeologist_hut"
+      }
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.scarab_gem_javelin.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.scarab_gem_javelin.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": []
+}

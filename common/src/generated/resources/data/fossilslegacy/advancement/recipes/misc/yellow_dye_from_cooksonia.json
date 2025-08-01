@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cooksonia": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:cooksonia"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:yellow_dye_from_cooksonia"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cooksonia"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:yellow_dye_from_cooksonia"
+    ]
+  }
+}

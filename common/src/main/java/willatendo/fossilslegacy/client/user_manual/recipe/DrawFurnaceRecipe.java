@@ -17,9 +17,9 @@ public class DrawFurnaceRecipe implements DrawRecipe {
             List<Ingredient> ingredients = recipe.placementInfo().ingredients();
             ItemStack output = smeltingRecipe.assemble(null, level.registryAccess());
 
-            slotPlacer.place(1, 1, ingredients.getFirst());
-            slotPlacer.place(1, 37, level.fuelValues().fuelItems().stream().map(ItemStack::new).toList());
-            slotPlacer.place(61, 19, output);
+            slotPlacer.place(56, 17, ingredients.getFirst());
+            slotPlacer.place(56, 53, level.fuelValues().fuelItems().stream().map(ItemStack::new).toList());
+            slotPlacer.place(116, 35, output);
         }
     }
 }

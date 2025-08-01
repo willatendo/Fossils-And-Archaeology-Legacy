@@ -2,11 +2,15 @@
   "displayed_loot_tables": [
     {
       "type": "block_loot",
-      "display": "fossilslegacy:dna_analyzer",
+      "display": {
+        "id": "fossilslegacy:dna_analyzer"
+      },
       "loot": [
         [
           {
-            "drop": "fossilslegacy:dna_analyzer"
+            "drop": {
+              "id": "fossilslegacy:dna_analyzer"
+            }
           }
         ]
       ]

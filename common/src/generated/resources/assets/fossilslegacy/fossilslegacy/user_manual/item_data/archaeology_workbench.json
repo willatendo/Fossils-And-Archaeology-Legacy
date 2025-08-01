@@ -2,11 +2,15 @@
   "displayed_loot_tables": [
     {
       "type": "block_loot",
-      "display": "fossilslegacy:archaeology_workbench",
+      "display": {
+        "id": "fossilslegacy:archaeology_workbench"
+      },
       "loot": [
         [
           {
-            "drop": "fossilslegacy:archaeology_workbench"
+            "drop": {
+              "id": "fossilslegacy:archaeology_workbench"
+            }
           }
         ]
       ]

@@ -1,0 +1,34 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:cooksonia"
+      },
+      "loot": [
+        [
+          {
+            "description": "1-4",
+            "drop": {
+              "id": "fossilslegacy:cooksonia"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.cooksonia.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.cooksonia.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:yellow_dye_from_cooksonia"
+  ]
+}

@@ -2,11 +2,15 @@
   "displayed_loot_tables": [
     {
       "type": "block_loot",
-      "display": "fossilslegacy:lime_cultivator",
+      "display": {
+        "id": "fossilslegacy:lime_cultivator"
+      },
       "loot": [
         [
           {
-            "drop": "fossilslegacy:lime_cultivator"
+            "drop": {
+              "id": "fossilslegacy:lime_cultivator"
+            }
           }
         ]
       ]

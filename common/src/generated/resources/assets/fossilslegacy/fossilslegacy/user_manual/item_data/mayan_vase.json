@@ -1,0 +1,44 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:mayan_jade_vase"
+      },
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.hand"
+            },
+            "drop": {
+              "id": "fossilslegacy:mayan_jade_vase"
+            }
+          }
+        ],
+        [
+          {
+            "description": "8",
+            "drop": {
+              "id": "minecraft:brick"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.mayan_vase.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.mayan_vase.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:mayan_vase"
+  ]
+}

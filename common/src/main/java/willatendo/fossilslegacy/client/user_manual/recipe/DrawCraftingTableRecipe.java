@@ -31,27 +31,27 @@ public class DrawCraftingTableRecipe implements DrawRecipe {
                     if (index < ingredients.size()) {
                         Optional<Ingredient> ingredient = ingredients.get(index);
                         if (ingredient.isPresent()) {
-                            slotPlacer.place(1 + x * 18, 1 + y * 18, ingredient.get());
+                            slotPlacer.place(30 + x * 18, 17 + y * 18, ingredient.get());
                         }
                     }
                 }
             }
 
-            slotPlacer.place(95, 19, output);
+            slotPlacer.place(124, 35, output);
         }
         List<Ingredient> ingredients = recipe.placementInfo().ingredients();
         if (recipe instanceof ShapelessRecipe) {
             output = recipe.assemble(null, registries);
-            for (int x = 0; x < 3; x++) {
-                for (int y = 0; y < 3; y++) {
+            for (int y = 0; y < 3; y++) {
+                for (int x = 0; x < 3; x++) {
                     int index = x + (y * 3);
                     if (index < ingredients.size()) {
-                        slotPlacer.place(1 + x * 18, 1 + y * 18, ingredients.get(index));
+                        slotPlacer.place(30 + x * 18, 17 + y * 18, ingredients.get(index));
                     }
                 }
             }
 
-            slotPlacer.place(95, 19, output);
+            slotPlacer.place(124, 35, output);
 
             spriteDrawer.draw(93, 16, 16, 16, 16, 16, SHAPELESS);
         }

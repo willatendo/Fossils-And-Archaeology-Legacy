@@ -38,31 +38,26 @@
               "entries": [
                 {
                   "hit_from": 0,
-                  "hit_to": 2000,
-                  "item": "fossilslegacy:jurassic_fern_spores"
-                },
-                {
-                  "hit_from": 4000,
-                  "hit_to": 8000,
+                  "hit_to": 3,
                   "item": "fossilslegacy:skull_block"
                 },
                 {
-                  "hit_from": 8000,
-                  "hit_to": 12000,
+                  "hit_from": 3,
+                  "hit_to": 6,
                   "item": "fossilslegacy:frozen_meat"
                 },
                 {
-                  "hit_from": 12000,
-                  "hit_to": 16000,
+                  "hit_from": 6,
+                  "hit_to": 8,
                   "item": "minecraft:beef"
                 },
                 {
-                  "hit_from": 16000,
-                  "hit_to": 20000,
+                  "hit_from": 8,
+                  "hit_to": 10,
                   "item": "minecraft:porkchop"
                 }
               ],
-              "max_weight": 20000
+              "max_weight": 10
             }
           ]
         }

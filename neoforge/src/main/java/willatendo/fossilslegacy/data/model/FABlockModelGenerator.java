@@ -39,6 +39,8 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createTrivialCube(FABlocks.DEEPSLATE_PALAEOZOIC_FOSSIL_ORE.get());
         this.createTrivialCube(FABlocks.AMBER_ORE.get());
         this.createTrivialCube(FABlocks.DEEPSLATE_AMBER_ORE.get());
+        this.createTrivialCube(FABlocks.PLANT_FOSSIL_ORE.get());
+        this.createTrivialCube(FABlocks.DEEPSLATE_PLANT_FOSSIL_ORE.get());
         this.createTrivialCube(FABlocks.RELIC_IN_STONE.get());
         this.createTrivialCube(FABlocks.RELIC_IN_DEEPSLATE.get());
         this.createFrozenLeech(FABlocks.FROZEN_LEECH.get());

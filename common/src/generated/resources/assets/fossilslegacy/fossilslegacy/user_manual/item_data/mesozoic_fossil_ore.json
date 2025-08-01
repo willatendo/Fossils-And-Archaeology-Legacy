@@ -1,0 +1,58 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:mesozoic_fossil_ore"
+      },
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.silk_touch"
+            },
+            "drop": {
+              "id": "fossilslegacy:mesozoic_fossil_ore"
+            }
+          }
+        ],
+        [
+          {
+            "description": "30%",
+            "drop": {
+              "id": "fossilslegacy:mesozoic_fossil"
+            }
+          }
+        ],
+        [
+          {
+            "description": "60%",
+            "drop": {
+              "id": "minecraft:bone"
+            }
+          }
+        ],
+        [
+          {
+            "description": "10%",
+            "drop": {
+              "id": "fossilslegacy:skull_block"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.mesozoic_fossil_ore.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.mesozoic_fossil_ore.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": []
+}

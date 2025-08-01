@@ -1,0 +1,87 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:ginkgo_planks"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:ginkgo_planks"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.planks.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.planks.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:ginkgo_planks",
+    "fossilslegacy:ginkgo_stairs",
+    "fossilslegacy:ginkgo_slab",
+    "fossilslegacy:ginkgo_fence",
+    "fossilslegacy:ginkgo_fence_gate",
+    "fossilslegacy:ginkgo_door",
+    "fossilslegacy:ginkgo_trapdoor",
+    "fossilslegacy:ginkgo_pressure_plate",
+    "fossilslegacy:ginkgo_button",
+    "fossilslegacy:ginkgo_sign",
+    "fossilslegacy:ginkgo_hanging_sign",
+    "fossilslegacy:ginkgo_boat",
+    "fossilslegacy:drum",
+    "fossilslegacy:rifle",
+    "fossilslegacy:archaeology_workbench",
+    "fossilslegacy:palaeontology_table",
+    "minecraft:barrel",
+    "minecraft:beehive",
+    "minecraft:bookshelf",
+    "minecraft:bowl",
+    "minecraft:cartography_table",
+    "minecraft:chest",
+    "minecraft:chiseled_bookshelf",
+    "minecraft:crafting_table",
+    "minecraft:fletching_table",
+    "minecraft:grindstone",
+    "minecraft:jukebox",
+    "minecraft:loom",
+    "minecraft:white_bed",
+    "minecraft:light_gray_bed",
+    "minecraft:gray_bed",
+    "minecraft:black_bed",
+    "minecraft:brown_bed",
+    "minecraft:red_bed",
+    "minecraft:orange_bed",
+    "minecraft:yellow_bed",
+    "minecraft:lime_bed",
+    "minecraft:green_bed",
+    "minecraft:cyan_bed",
+    "minecraft:light_blue_bed",
+    "minecraft:blue_bed",
+    "minecraft:purple_bed",
+    "minecraft:magenta_bed",
+    "minecraft:pink_bed",
+    "minecraft:note_block",
+    "minecraft:piston",
+    "minecraft:shield",
+    "minecraft:smithing_table",
+    "minecraft:stick",
+    "minecraft:tripwire_hook",
+    "minecraft:wooden_sword",
+    "minecraft:wooden_pickaxe",
+    "minecraft:wooden_axe",
+    "minecraft:wooden_shovel",
+    "minecraft:wooden_hoe"
+  ]
+}

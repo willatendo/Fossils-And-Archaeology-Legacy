@@ -1,0 +1,59 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "predicates": {
+                      "minecraft:enchantments": [
+                        {
+                          "enchantments": "minecraft:silk_touch",
+                          "levels": {
+                            "min": 1
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "name": "fossilslegacy:plant_fossil_ore"
+            },
+            {
+              "type": "fossilslegacy:random_item",
+              "conditions": [
+                {
+                  "condition": "minecraft:survives_explosion"
+                }
+              ],
+              "entries": [
+                {
+                  "hit_from": 0,
+                  "hit_to": 4,
+                  "item": "fossilslegacy:plant_fossil"
+                },
+                {
+                  "hit_from": 6,
+                  "hit_to": 10,
+                  "item": "minecraft:coal"
+                }
+              ],
+              "max_weight": 10
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "fossilslegacy:blocks/plant_fossil_ore"
+}

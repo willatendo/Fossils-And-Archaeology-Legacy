@@ -1,0 +1,41 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:iced_stone"
+      },
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.silk_touch"
+            },
+            "drop": {
+              "id": "fossilslegacy:iced_stone"
+            }
+          }
+        ],
+        [
+          {
+            "drop": {
+              "id": "minecraft:cobblestone"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.iced_stone.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.iced_stone.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": []
+}

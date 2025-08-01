@@ -1,4 +1,4 @@
-// 1.21.4	2025-07-31T00:17:46.208148	F/A Recipes
+// 1.21.4	2025-07-31T12:58:27.1633492	F/A Recipes
 1338707fdaed8d1fba4efb30f42c8d461e296aab data/fossilslegacy/advancement/recipes/building_blocks/araucaria_planks.json
 5db4e734c77296e26a3f8f52f87e7bd6555aac60 data/fossilslegacy/advancement/recipes/building_blocks/araucaria_slab.json
 c560c2290e30f84997e810aafa8a5d057b03dd8c data/fossilslegacy/advancement/recipes/building_blocks/araucaria_stairs.json
@@ -353,6 +353,7 @@ ec63784e6c5db7599779c90fb2bd52cb4374ae28 data/fossilslegacy/advancement/recipes/
 3da959b4133b3843fbc35c3629f639b9d2fbfd4e data/fossilslegacy/advancement/recipes/misc/wolf_embryo_syringe.json
 74988ff0b74ffff44d0620e054a2f1b805a487d4 data/fossilslegacy/advancement/recipes/misc/wooden_javelin_repair.json
 43e3ce1d0eb8dbae65824f2fc9103c255f86a700 data/fossilslegacy/advancement/recipes/misc/wool_outputs.json
+1a7f53dae96d5ecc71398c0d52d782f985981a06 data/fossilslegacy/advancement/recipes/misc/yellow_dye_from_cooksonia.json
 68e41681bae99ce8d4b8c7215865d2c91655c9f8 data/fossilslegacy/advancement/recipes/redstone/araucaria_button.json
 72e35226f296fd55eda14bb0382dba2c82c8ae76 data/fossilslegacy/advancement/recipes/redstone/araucaria_door.json
 5d5248b998b9d7df556f26b3b47f42430bc47b86 data/fossilslegacy/advancement/recipes/redstone/araucaria_fence_gate.json
@@ -841,3 +842,4 @@ f9a86d9f5c09caebd41179cf81e0067b554611b9 data/fossilslegacy/recipe/wool_outputs.
 93219f26faaab30eb1709b20748ce94adfb052b7 data/fossilslegacy/recipe/yellow_cultivator.json
 948d492cce455f1e7a963ed0293e216c29811cd0 data/fossilslegacy/recipe/yellow_cultivator_from_dyed_glass.json
 6b2ae952ab5ac820dad70883880e854a97d15bdd data/fossilslegacy/recipe/yellow_decoration_plaque.json
+5c701a50a0654ccdaf4a01e18a8aecc2b8d60099 data/fossilslegacy/recipe/yellow_dye_from_cooksonia.json

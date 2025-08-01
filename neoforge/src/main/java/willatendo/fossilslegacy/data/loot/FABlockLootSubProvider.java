@@ -1,7 +1,11 @@
 package willatendo.fossilslegacy.data.loot;
 
+import net.minecraft.advancements.critereon.BlockPredicate;
+import net.minecraft.advancements.critereon.LocationPredicate;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
@@ -12,8 +16,11 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.LocationCheck;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.block.blocks.HorsetailBlock;
@@ -42,6 +49,8 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.add(FABlocks.DEEPSLATE_PALAEOZOIC_FOSSIL_ORE.get(), block -> this.createFossilOreLootTable(block, 10, new RandomItemEntry(FAItems.PALAEOZOIC_FOSSIL.get(), 0, 3), new RandomItemEntry(Items.BONE, 3, 9), new RandomItemEntry(FABlocks.SKULL_BLOCK.get(), 90, 100)));
         this.add(FABlocks.AMBER_ORE.get(), block -> this.createFossilOreLootTable(block, 10, new RandomItemEntry(FAItems.AMBER.get(), 0, 9), new RandomItemEntry(FAItems.MOSQUITO_IN_AMBER.get(), 9, 10)));
         this.add(FABlocks.DEEPSLATE_AMBER_ORE.get(), block -> this.createFossilOreLootTable(block, 10, new RandomItemEntry(FAItems.AMBER.get(), 0, 9), new RandomItemEntry(FAItems.MOSQUITO_IN_AMBER.get(), 9, 10)));
+        this.add(FABlocks.PLANT_FOSSIL_ORE.get(), block -> this.createFossilOreLootTable(block, 10, new RandomItemEntry(FAItems.PLANT_FOSSIL.get(), 0, 4), new RandomItemEntry(Items.COAL, 6, 10)));
+        this.add(FABlocks.DEEPSLATE_PLANT_FOSSIL_ORE.get(), block -> this.createFossilOreLootTable(block, 10, new RandomItemEntry(FAItems.PLANT_FOSSIL.get(), 0, 4), new RandomItemEntry(Items.COAL, 6, 10)));
         this.add(FABlocks.RELIC_IN_STONE.get(), block -> this.createFossilOreLootTable(block, 2000, new RandomItemEntry(FAItems.SCARAB_GEM.get(), 0, 1), new RandomItemEntry(FAItems.PREHISTORIC_COIN.get(), 1, 2), new RandomItemEntry(FAItems.RELIC_SCRAP.get(), 2, 1550), new RandomItemEntry(FAItems.ANCIENT_SWORD_ARTIFACT.get(), 1550, 1600), new RandomItemEntry(FAItems.ANCIENT_SHOVEL_ARTIFACT.get(), 1600, 1650), new RandomItemEntry(FAItems.ANCIENT_PICKAXE_ARTIFACT.get(), 1650, 1700), new RandomItemEntry(FAItems.ANCIENT_AXE_ARTIFACT.get(), 1700, 1750), new RandomItemEntry(FAItems.ANCIENT_HOE_ARTIFACT.get(), 1750, 1800), new RandomItemEntry(FAItems.ANCIENT_HELMET_ARTIFACT.get(), 1800, 1850), new RandomItemEntry(FAItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 1850, 1900), new RandomItemEntry(FAItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 1900, 1950), new RandomItemEntry(FAItems.ANCIENT_BOOTS_ARTIFACT.get(), 1950, 2000)));
         this.add(FABlocks.RELIC_IN_DEEPSLATE.get(), block -> this.createFossilOreLootTable(block, 2000, new RandomItemEntry(FAItems.SCARAB_GEM.get(), 0, 1), new RandomItemEntry(FAItems.PREHISTORIC_COIN.get(), 1, 2), new RandomItemEntry(FAItems.RELIC_SCRAP.get(), 2, 1550), new RandomItemEntry(FAItems.ANCIENT_SWORD_ARTIFACT.get(), 1550, 1600), new RandomItemEntry(FAItems.ANCIENT_SHOVEL_ARTIFACT.get(), 1600, 1650), new RandomItemEntry(FAItems.ANCIENT_PICKAXE_ARTIFACT.get(), 1650, 1700), new RandomItemEntry(FAItems.ANCIENT_AXE_ARTIFACT.get(), 1700, 1750), new RandomItemEntry(FAItems.ANCIENT_HOE_ARTIFACT.get(), 1750, 1800), new RandomItemEntry(FAItems.ANCIENT_HELMET_ARTIFACT.get(), 1800, 1850), new RandomItemEntry(FAItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 1850, 1900), new RandomItemEntry(FAItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 1900, 1950), new RandomItemEntry(FAItems.ANCIENT_BOOTS_ARTIFACT.get(), 1950, 2000)));
         this.dropWhenSilkTouch(FABlocks.FROZEN_LEECH.get());
@@ -86,12 +95,12 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.dropSelf(FABlocks.DNA_RECOMBINATOR.get());
         this.dropSelf(FABlocks.ARCHAEOLOGY_WORKBENCH.get());
         this.dropSelf(FABlocks.PALAEONTOLOGY_TABLE.get());
-        this.add(FABlocks.JURASSIC_FERN.get(), block -> this.createDoublePlantWithSeedDrops(block, FABlocks.JURASSIC_FERN.get()));
+        this.add(FABlocks.JURASSIC_FERN.get(), block -> this.createDoublePlantWithSeedDrops(block, FAItems.JURASSIC_FERN_SPORES.get(), FABlocks.JURASSIC_FERN.get()));
         this.add(FABlocks.SHORT_HORSETAIL.get(), block -> LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(this.applyExplosionDecay(block, LootItem.lootTableItem(block).apply(IntStream.rangeClosed(1, 3).boxed().toList(), integer -> SetItemCountFunction.setCount(ConstantValue.exactly(integer)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(HorsetailBlock.AMOUNT, integer))))))));
         this.add(FABlocks.TALL_HORSETAIL.get(), block -> LootTable.lootTable().withPool(this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(block).apply(IntStream.rangeClosed(1, 3).boxed().toList(), integer -> SetItemCountFunction.setCount(ConstantValue.exactly(integer)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(HorsetailBlock.AMOUNT, integer)))).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER)))))));
         this.dropSelf(FABlocks.DRUM.get());
         this.dropSelf(FABlocks.FEEDER.get());
-        this.add(FABlocks.PERMAFROST.get(), block -> this.createSilkTouchDispatchTable(block, this.applyExplosionCondition(block, LootRandomItem.randomItem(20000, new RandomItemEntry(FAItems.JURASSIC_FERN_SPORES.get(), 0, 2000), new RandomItemEntry(FABlocks.SKULL_BLOCK.get(), 4000, 8000), new RandomItemEntry(FAItems.FROZEN_MEAT.get(), 8000, 12000), new RandomItemEntry(Items.BEEF, 12000, 16000), new RandomItemEntry(Items.PORKCHOP, 16000, 20000)))));
+        this.add(FABlocks.PERMAFROST.get(), block -> this.createSilkTouchDispatchTable(block, this.applyExplosionCondition(block, LootRandomItem.randomItem(10, new RandomItemEntry(FABlocks.SKULL_BLOCK.get(), 0, 3), new RandomItemEntry(FAItems.FROZEN_MEAT.get(), 3, 6), new RandomItemEntry(Items.BEEF, 6, 8), new RandomItemEntry(Items.PORKCHOP, 8, 10)))));
         this.add(FABlocks.ICED_STONE.get(), block -> this.createSingleItemTableWithSilkTouch(block, Blocks.COBBLESTONE));
         this.add(FABlocks.AXOLOTLSPAWN.get(), noDrop());
         this.dropSelf(FABlocks.TIME_MACHINE.get());
@@ -250,4 +259,12 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
     protected void createOtherWhenSilkTouch(Block block, ItemLike other, int amount) {
         this.add(block, this.createSilkTouchDispatchTable(block, this.applyExplosionDecay(block, LootItem.lootTableItem(other).apply(SetItemCountFunction.setCount(ConstantValue.exactly(amount))))));
     }
+
+    protected LootTable.Builder createDoublePlantWithSeedDrops(Block block, ItemLike seeds, Block sheared) {
+        HolderLookup.RegistryLookup<Block> blocks = this.registries.lookupOrThrow(Registries.BLOCK);
+        LootPoolEntryContainer.Builder<?> builder = LootItem.lootTableItem(sheared).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F))).when(this.hasShears()).otherwise(this.applyExplosionCondition(block, LootItem.lootTableItem(seeds)).when(LootItemRandomChanceCondition.randomChance(0.125F)));
+        return LootTable.lootTable().withPool(LootPool.lootPool().add(builder).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER))).when(LocationCheck.checkLocation(LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(blocks, block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER))), new BlockPos(0, 1, 0)))).withPool(LootPool.lootPool().add(builder).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER))).when(LocationCheck.checkLocation(LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(blocks, block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER))), new BlockPos(0, -1, 0))));
+    }
+
+
 }

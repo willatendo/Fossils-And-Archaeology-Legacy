@@ -1,5 +1,152 @@
 {
-  "displayed_loot_tables": [],
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:cenozoic_fossil_ore"
+      },
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.silk_touch"
+            },
+            "drop": {
+              "id": "fossilslegacy:cenozoic_fossil_ore"
+            }
+          }
+        ],
+        [
+          {
+            "description": "30%",
+            "drop": {
+              "id": "fossilslegacy:cenozoic_fossil"
+            }
+          }
+        ],
+        [
+          {
+            "description": "60%",
+            "drop": {
+              "id": "minecraft:bone"
+            }
+          }
+        ],
+        [
+          {
+            "description": "10%",
+            "drop": {
+              "id": "fossilslegacy:skull_block"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:deepslate_cenozoic_fossil_ore"
+      },
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.silk_touch"
+            },
+            "drop": {
+              "id": "fossilslegacy:deepslate_cenozoic_fossil_ore"
+            }
+          }
+        ],
+        [
+          {
+            "description": "30%",
+            "drop": {
+              "id": "fossilslegacy:cenozoic_fossil"
+            }
+          }
+        ],
+        [
+          {
+            "description": "60%",
+            "drop": {
+              "id": "minecraft:bone"
+            }
+          }
+        ],
+        [
+          {
+            "description": "10%",
+            "drop": {
+              "id": "fossilslegacy:skull_block"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "type": "chest_loot",
+      "loot": [
+        [
+          {
+            "description": "+",
+            "drop": {
+              "id": "fossilslegacy:scarab_gem_javelin"
+            }
+          },
+          {
+            "description": "+",
+            "drop": {
+              "id": "fossilslegacy:netherite_javelin"
+            }
+          }
+        ],
+        [
+          {
+            "description": "+++",
+            "drop": {
+              "id": "fossilslegacy:cenozoic_fossil"
+            }
+          },
+          {
+            "description": "+++",
+            "drop": {
+              "id": "fossilslegacy:mesozoic_fossil"
+            }
+          },
+          {
+            "description": "+++",
+            "drop": {
+              "id": "fossilslegacy:palaeozoic_fossil"
+            }
+          },
+          {
+            "description": "+++",
+            "drop": {
+              "id": "fossilslegacy:plant_fossil"
+            }
+          },
+          {
+            "description": "+++",
+            "drop": {
+              "id": "fossilslegacy:relic_scrap"
+            }
+          }
+        ],
+        [
+          {
+            "description": "++",
+            "drop": {
+              "id": "minecraft:potion"
+            }
+          }
+        ]
+      ],
+      "name": {
+        "translate": "item.fossilslegacy.user_manual.loot_table.academy_loot"
+      }
+    }
+  ],
   "displayed_paragraphs": [
     {
       "translate": "item.fossilslegacy.user_manual.information.cenozoic_fossil.description"

@@ -6,41 +6,57 @@
         [
           {
             "description": "+",
-            "drop": "fossilslegacy:quipu"
+            "drop": {
+              "id": "fossilslegacy:quipu"
+            }
           }
         ],
         [
           {
             "description": "+",
-            "drop": "fossilslegacy:iron_llama_statue"
+            "drop": {
+              "id": "fossilslegacy:iron_llama_statue"
+            }
           },
           {
             "description": "+",
-            "drop": "fossilslegacy:copper_llama_statue"
+            "drop": {
+              "id": "fossilslegacy:copper_llama_statue"
+            }
           },
           {
             "description": "+",
-            "drop": "fossilslegacy:exposed_copper_llama_statue"
+            "drop": {
+              "id": "fossilslegacy:exposed_copper_llama_statue"
+            }
           },
           {
             "description": "+",
-            "drop": "fossilslegacy:weathered_copper_llama_statue"
+            "drop": {
+              "id": "fossilslegacy:weathered_copper_llama_statue"
+            }
           },
           {
             "description": "+",
-            "drop": "fossilslegacy:oxidized_copper_llama_statue"
+            "drop": {
+              "id": "fossilslegacy:oxidized_copper_llama_statue"
+            }
           }
         ],
         [
           {
             "description": "++",
-            "drop": "minecraft:feather"
+            "drop": {
+              "id": "minecraft:feather"
+            }
           }
         ],
         [
           {
             "description": "++",
-            "drop": "minecraft:string"
+            "drop": {
+              "id": "minecraft:string"
+            }
           }
         ]
       ],

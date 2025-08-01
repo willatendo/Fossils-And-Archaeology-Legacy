@@ -20,10 +20,10 @@ public class DrawSmithingTableRecipe implements DrawRecipe {
             Optional<Ingredient> addition = smithingTransformRecipe.additionIngredient();
             ItemStack output = smithingTransformRecipe.assemble(new SmithingRecipeInput(new ItemStack(template.get().items().toList().getFirst()), new ItemStack(base.get().items().toList().getFirst()), new ItemStack(addition.get().items().toList().getFirst())), level.registryAccess());
 
-            template.ifPresent(ingredient -> slotPlacer.place(1, 1, ingredient));
-            base.ifPresent(ingredient -> slotPlacer.place(19, 1, ingredient));
-            addition.ifPresent(ingredient -> slotPlacer.place(37, 1, ingredient));
-            slotPlacer.place(91, 1, output);
+            template.ifPresent(ingredient -> slotPlacer.place(33, 35, ingredient));
+            base.ifPresent(ingredient -> slotPlacer.place(51, 35, ingredient));
+            addition.ifPresent(ingredient -> slotPlacer.place(69, 35, ingredient));
+            slotPlacer.place(123, 35, output);
         }
     }
 }

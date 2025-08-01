@@ -101,6 +101,8 @@ public final class FACreativeModeTabs {
         output.accept(FABlocks.DEEPSLATE_PALAEOZOIC_FOSSIL_ORE.get());
         output.accept(FABlocks.AMBER_ORE.get());
         output.accept(FABlocks.DEEPSLATE_AMBER_ORE.get());
+        output.accept(FABlocks.PLANT_FOSSIL_ORE.get());
+        output.accept(FABlocks.DEEPSLATE_PLANT_FOSSIL_ORE.get());
         output.accept(FABlocks.RELIC_IN_STONE.get());
         output.accept(FABlocks.RELIC_IN_DEEPSLATE.get());
         output.accept(FABlocks.LEECH_IN_ICE.get());

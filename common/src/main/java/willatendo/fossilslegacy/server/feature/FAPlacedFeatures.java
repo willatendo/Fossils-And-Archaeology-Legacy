@@ -25,6 +25,7 @@ public final class FAPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ORE_MESOZOIC_FOSSIL = create("ore_mesozoic_fossil");
     public static final ResourceKey<PlacedFeature> ORE_PALAEOZOIC_FOSSIL = create("ore_palaeozoic_fossil");
     public static final ResourceKey<PlacedFeature> ORE_AMBER = create("ore_amber");
+    public static final ResourceKey<PlacedFeature> ORE_PLANT_FOSSIL = create("ore_plant_fossil");
     public static final ResourceKey<PlacedFeature> ORE_RELIC = create("ore_relic");
     public static final ResourceKey<PlacedFeature> ORE_PERMAFROST = create("ore_permafrost");
 
@@ -80,6 +81,7 @@ public final class FAPlacedFeatures {
         PlacementUtils.register(bootstrapContext, ORE_MESOZOIC_FOSSIL, configuredFeatures.getOrThrow(FAConfiguredFeatures.ORE_MESOZOIC_FOSSIL), FAPlacedFeatures.commonOrePlacement(3, HeightRangePlacement.triangle(VerticalAnchor.absolute(20), VerticalAnchor.absolute(50))));
         PlacementUtils.register(bootstrapContext, ORE_PALAEOZOIC_FOSSIL, configuredFeatures.getOrThrow(FAConfiguredFeatures.ORE_PALAEOZOIC_FOSSIL), FAPlacedFeatures.commonOrePlacement(3, HeightRangePlacement.triangle(VerticalAnchor.absolute(0), VerticalAnchor.absolute(20))));
         PlacementUtils.register(bootstrapContext, ORE_AMBER, configuredFeatures.getOrThrow(FAConfiguredFeatures.ORE_AMBER), FAPlacedFeatures.commonOrePlacement(3, HeightRangePlacement.triangle(VerticalAnchor.absolute(-25), VerticalAnchor.absolute(25))));
+        PlacementUtils.register(bootstrapContext, ORE_PLANT_FOSSIL, configuredFeatures.getOrThrow(FAConfiguredFeatures.ORE_PLANT_FOSSIL), FAPlacedFeatures.commonOrePlacement(10, HeightRangePlacement.triangle(VerticalAnchor.absolute(-30), VerticalAnchor.absolute(90))));
         PlacementUtils.register(bootstrapContext, ORE_RELIC, configuredFeatures.getOrThrow(FAConfiguredFeatures.ORE_RELIC), FAPlacedFeatures.commonOrePlacement(15, HeightRangePlacement.triangle(VerticalAnchor.absolute(50), VerticalAnchor.absolute(256))));
         PlacementUtils.register(bootstrapContext, ORE_PERMAFROST, configuredFeatures.getOrThrow(FAConfiguredFeatures.ORE_PERMAFROST), FAPlacedFeatures.commonOrePlacement(25, HeightRangePlacement.triangle(VerticalAnchor.absolute(25), VerticalAnchor.absolute(256))));
 

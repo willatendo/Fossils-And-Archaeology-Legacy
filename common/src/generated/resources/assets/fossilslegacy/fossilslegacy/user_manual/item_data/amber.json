@@ -2,52 +2,68 @@
   "displayed_loot_tables": [
     {
       "type": "block_loot",
-      "display": "fossilslegacy:amber_ore",
+      "display": {
+        "id": "fossilslegacy:amber_ore"
+      },
       "loot": [
         [
           {
             "description": {
               "translate": "item.fossilslegacy.user_manual.drop.requirement.silk_touch"
             },
-            "drop": "fossilslegacy:amber_ore"
+            "drop": {
+              "id": "fossilslegacy:amber_ore"
+            }
           }
         ],
         [
           {
             "description": "10%",
-            "drop": "fossilslegacy:mosquito_in_amber"
+            "drop": {
+              "id": "fossilslegacy:mosquito_in_amber"
+            }
           }
         ],
         [
           {
             "description": "90%",
-            "drop": "fossilslegacy:amber"
+            "drop": {
+              "id": "fossilslegacy:amber"
+            }
           }
         ]
       ]
     },
     {
       "type": "block_loot",
-      "display": "fossilslegacy:deepslate_amber_ore",
+      "display": {
+        "id": "fossilslegacy:deepslate_amber_ore"
+      },
       "loot": [
         [
           {
             "description": {
               "translate": "item.fossilslegacy.user_manual.drop.requirement.silk_touch"
             },
-            "drop": "fossilslegacy:deepslate_amber_ore"
+            "drop": {
+              "id": "fossilslegacy:deepslate_amber_ore"
+            }
           }
         ],
         [
           {
             "description": "10%",
-            "drop": "fossilslegacy:mosquito_in_amber"
+            "drop": {
+              "id": "fossilslegacy:mosquito_in_amber"
+            }
           }
         ],
         [
           {
             "description": "90%",
-            "drop": "fossilslegacy:amber"
+            "drop": {
+              "id": "fossilslegacy:amber"
+            }
           }
         ]
       ]

@@ -1,0 +1,34 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:sigillaria_log"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:sigillaria_log"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.log.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.log.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:sigillaria_planks",
+    "fossilslegacy:sigillaria_wood"
+  ]
+}

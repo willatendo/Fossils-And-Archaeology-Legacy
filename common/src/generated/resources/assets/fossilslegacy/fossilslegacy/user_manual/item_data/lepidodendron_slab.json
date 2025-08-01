@@ -1,0 +1,39 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:lepidodendron_slab"
+      },
+      "loot": [
+        [
+          {
+            "description": "1-2",
+            "drop": {
+              "id": "fossilslegacy:lepidodendron_slab"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.slab.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.slab.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:lepidodendron_slab",
+    "minecraft:barrel",
+    "minecraft:chiseled_bookshelf",
+    "minecraft:composter",
+    "minecraft:daylight_detector",
+    "minecraft:lectern"
+  ]
+}

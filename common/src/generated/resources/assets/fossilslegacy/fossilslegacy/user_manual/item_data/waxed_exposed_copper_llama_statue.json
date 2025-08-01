@@ -2,11 +2,15 @@
   "displayed_loot_tables": [
     {
       "type": "block_loot",
-      "display": "fossilslegacy:waxed_exposed_copper_llama_statue",
+      "display": {
+        "id": "fossilslegacy:waxed_exposed_copper_llama_statue"
+      },
       "loot": [
         [
           {
-            "drop": "fossilslegacy:waxed_exposed_copper_llama_statue"
+            "drop": {
+              "id": "fossilslegacy:waxed_exposed_copper_llama_statue"
+            }
           }
         ]
       ]

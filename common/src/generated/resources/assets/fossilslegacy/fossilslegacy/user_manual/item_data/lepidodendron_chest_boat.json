@@ -1,0 +1,17 @@
+{
+  "displayed_loot_tables": [],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.chest_boat.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.chest_boat.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:lepidodendron_chest_boat"
+  ]
+}

@@ -2,11 +2,15 @@
   "displayed_loot_tables": [
     {
       "type": "block_loot",
-      "display": "fossilslegacy:drum",
+      "display": {
+        "id": "fossilslegacy:drum"
+      },
       "loot": [
         [
           {
-            "drop": "fossilslegacy:drum"
+            "drop": {
+              "id": "fossilslegacy:drum"
+            }
           }
         ]
       ]

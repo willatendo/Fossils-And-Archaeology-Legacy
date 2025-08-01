@@ -2,11 +2,15 @@
   "displayed_loot_tables": [
     {
       "type": "block_loot",
-      "display": "fossilslegacy:gray_cultivator",
+      "display": {
+        "id": "fossilslegacy:gray_cultivator"
+      },
       "loot": [
         [
           {
-            "drop": "fossilslegacy:gray_cultivator"
+            "drop": {
+              "id": "fossilslegacy:gray_cultivator"
+            }
           }
         ]
       ]

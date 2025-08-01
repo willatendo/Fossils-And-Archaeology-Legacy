@@ -2,11 +2,315 @@
   "displayed_loot_tables": [
     {
       "type": "block_loot",
-      "display": "fossilslegacy:skull_block",
+      "display": {
+        "id": "fossilslegacy:cenozoic_fossil_ore"
+      },
       "loot": [
         [
           {
-            "drop": "fossilslegacy:skull_block"
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.silk_touch"
+            },
+            "drop": {
+              "id": "fossilslegacy:cenozoic_fossil_ore"
+            }
+          }
+        ],
+        [
+          {
+            "description": "30%",
+            "drop": {
+              "id": "fossilslegacy:cenozoic_fossil"
+            }
+          }
+        ],
+        [
+          {
+            "description": "60%",
+            "drop": {
+              "id": "minecraft:bone"
+            }
+          }
+        ],
+        [
+          {
+            "description": "10%",
+            "drop": {
+              "id": "fossilslegacy:skull_block"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:deepslate_cenozoic_fossil_ore"
+      },
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.silk_touch"
+            },
+            "drop": {
+              "id": "fossilslegacy:deepslate_cenozoic_fossil_ore"
+            }
+          }
+        ],
+        [
+          {
+            "description": "30%",
+            "drop": {
+              "id": "fossilslegacy:cenozoic_fossil"
+            }
+          }
+        ],
+        [
+          {
+            "description": "60%",
+            "drop": {
+              "id": "minecraft:bone"
+            }
+          }
+        ],
+        [
+          {
+            "description": "10%",
+            "drop": {
+              "id": "fossilslegacy:skull_block"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:mesozoic_fossil_ore"
+      },
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.silk_touch"
+            },
+            "drop": {
+              "id": "fossilslegacy:mesozoic_fossil_ore"
+            }
+          }
+        ],
+        [
+          {
+            "description": "30%",
+            "drop": {
+              "id": "fossilslegacy:mesozoic_fossil"
+            }
+          }
+        ],
+        [
+          {
+            "description": "60%",
+            "drop": {
+              "id": "minecraft:bone"
+            }
+          }
+        ],
+        [
+          {
+            "description": "10%",
+            "drop": {
+              "id": "fossilslegacy:skull_block"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:deepslate_mesozoic_fossil_ore"
+      },
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.silk_touch"
+            },
+            "drop": {
+              "id": "fossilslegacy:mesozoic_fossil_ore"
+            }
+          }
+        ],
+        [
+          {
+            "description": "30%",
+            "drop": {
+              "id": "fossilslegacy:mesozoic_fossil"
+            }
+          }
+        ],
+        [
+          {
+            "description": "60%",
+            "drop": {
+              "id": "minecraft:bone"
+            }
+          }
+        ],
+        [
+          {
+            "description": "10%",
+            "drop": {
+              "id": "fossilslegacy:skull_block"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:palaeozoic_fossil_ore"
+      },
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.silk_touch"
+            },
+            "drop": {
+              "id": "fossilslegacy:palaeozoic_fossil_ore"
+            }
+          }
+        ],
+        [
+          {
+            "description": "30%",
+            "drop": {
+              "id": "fossilslegacy:palaeozoic_fossil"
+            }
+          }
+        ],
+        [
+          {
+            "description": "60%",
+            "drop": {
+              "id": "minecraft:bone"
+            }
+          }
+        ],
+        [
+          {
+            "description": "10%",
+            "drop": {
+              "id": "fossilslegacy:skull_block"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:deepslate_palaeozoic_fossil_ore"
+      },
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.silk_touch"
+            },
+            "drop": {
+              "id": "fossilslegacy:deepslate_palaeozoic_fossil_ore"
+            }
+          }
+        ],
+        [
+          {
+            "description": "30%",
+            "drop": {
+              "id": "fossilslegacy:palaeozoic_fossil"
+            }
+          }
+        ],
+        [
+          {
+            "description": "60%",
+            "drop": {
+              "id": "minecraft:bone"
+            }
+          }
+        ],
+        [
+          {
+            "description": "10%",
+            "drop": {
+              "id": "fossilslegacy:skull_block"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:permafrost"
+      },
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.silk_touch"
+            },
+            "drop": {
+              "id": "fossilslegacy:permafrost"
+            }
+          }
+        ],
+        [
+          {
+            "description": "30%",
+            "drop": {
+              "id": "fossilslegacy:skull_block"
+            }
+          }
+        ],
+        [
+          {
+            "description": "30%",
+            "drop": {
+              "id": "fossilslegacy:frozen_meat"
+            }
+          }
+        ],
+        [
+          {
+            "description": "20%",
+            "drop": {
+              "id": "minecraft:beef"
+            }
+          },
+          {
+            "description": "20%",
+            "drop": {
+              "id": "minecraft:porkchop"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:skull_block"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:skull_block"
+            }
           }
         ]
       ]
@@ -22,6 +326,7 @@
   ],
   "displayed_recipes": [
     "fossilslegacy:skull_lantern_block",
-    "fossilslegacy:skull_stick"
+    "fossilslegacy:skull_stick",
+    "fossilslegacy:skull_bonemeal"
   ]
 }

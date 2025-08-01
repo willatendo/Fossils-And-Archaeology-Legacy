@@ -23,11 +23,11 @@ public record DrawArchaeologyLootRecipe(Component structureName, Block suspiciou
         int dropSlots = this.loot.size();
         int fullWidth = (18 * dropSlots) + 54;
         int leftPos = (176 / 2) - (fullWidth / 2);
-        slotPlacer.place(leftPos - 31, 1, new ItemStack(this.suspiciousBlock));
+        slotPlacer.place(leftPos + 1, 35, new ItemStack(this.suspiciousBlock));
         for (int i = 0; i < dropSlots; i++) {
             int x = fullWidth - ((dropSlots - i) * 18) + leftPos;
             spriteDrawer.draw(x, 34, 18, 18, 0, 0, UserManualScreen.SLOT_SPRITE);
-            slotPlacer.place(x - 31, 1, this.loot.get(i).stream().map(itemFloatPair -> new ItemStack(itemFloatPair.drop())).toList());
+            slotPlacer.place(x + 1, 35, this.loot.get(i).stream().map(Drop::itemStack).toList());
             List<Optional<Component>> chances = this.loot.get(i).stream().map(Drop::description).toList();
             int extra = 0;
             if (i % 2 != 0) {

@@ -54,6 +54,11 @@ public class Fossil extends Mob {
     }
 
     @Override
+    public boolean isPushable() {
+        return false;
+    }
+
+    @Override
     protected EntityDimensions getDefaultDimensions(Pose pose) {
         FossilVariant fossilVariant = this.getFossilVariant().value();
         return this.dimensions = EntityDimensions.scalable(fossilVariant.boundingBoxWidth() + (fossilVariant.boundingBoxGrowth() * this.getSize()), fossilVariant.boundingBoxHeight() + (fossilVariant.boundingBoxGrowth() * this.getSize()));

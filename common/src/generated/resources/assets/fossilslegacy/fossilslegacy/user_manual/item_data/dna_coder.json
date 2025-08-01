@@ -2,11 +2,15 @@
   "displayed_loot_tables": [
     {
       "type": "block_loot",
-      "display": "fossilslegacy:dna_coder",
+      "display": {
+        "id": "fossilslegacy:dna_coder"
+      },
       "loot": [
         [
           {
-            "drop": "fossilslegacy:dna_coder"
+            "drop": {
+              "id": "fossilslegacy:dna_coder"
+            }
           }
         ]
       ]

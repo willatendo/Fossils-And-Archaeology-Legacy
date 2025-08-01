@@ -10,6 +10,7 @@ public enum DrawLootRecipeTypes implements StringRepresentable {
     ARCHAEOLOGY_LOOT("archaeology_loot", DrawArchaeologyLootRecipeType.CODEC),
     BLOCK_LOOT("block_loot", DrawBlockLootRecipeType.CODEC),
     CHEST_LOOT("chest_loot", DrawChestLootRecipeType.CODEC),
+    ENTITY_LOOT("entity_loot", DrawEntityLootRecipeType.CODEC),
     GIFT_LOOT("gift_loot", DrawGiftLootRecipeType.CODEC);
 
     public static final Codec<DrawLootRecipeTypes> CODEC = StringRepresentable.fromValues(DrawLootRecipeTypes::values);

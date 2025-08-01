@@ -60,6 +60,8 @@ public class FAItemTagProvider extends ItemTagsProvider {
         this.tag(FAItemTags.HERBIVORE_FOODS).add(Items.APPLE, Items.WHEAT, Items.BREAD, Items.SUGAR_CANE, Items.WHEAT_SEEDS, Items.BEETROOT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.MELON_SLICE, Items.SWEET_BERRIES, Items.GLOW_BERRIES, Items.CARROT, Items.POTATO, Items.BAKED_POTATO, Items.BEETROOT, Items.KELP, FAItems.JURASSIC_FERN_SPORES.get(), FAItems.ARAUCARIA_CONE.get(), FAItems.ARCHAEOPTERIS_SPORE.get(), FAItems.CALAMITES_SPORE.get(), FAItems.COOKSONIA_SPORES.get(), FAItems.CYCAD_CONE.get(), FAItems.GINKGO_SEED.get(), FAItems.HORSETAIL_SPORE.get(), FAItems.SIGILLARIA_SPORE.get());
         this.tag(FAItemTags.OMNIVORE_FOODS).addTags(FAItemTags.CARNIVORE_FOODS, FAItemTags.HERBIVORE_FOODS);
         this.tag(FAItemTags.PISCIVORE_FOODS).add(Items.COD, Items.COOKED_COD, Items.SALMON, Items.COOKED_SALMON, Items.TROPICAL_FISH, FAItems.SIO_CHIU_LE.get(), FAItems.NAUTILUS.get());
+        this.tag(FAItemTags.CENOZOIC_FOSSIL).add(FAItems.CENOZOIC_FOSSIL.get());
+        this.tag(FAItemTags.PALAEOZOIC_FOSSIL).add(FAItems.PALAEOZOIC_FOSSIL.get());
         this.tag(FAItemTags.MESOZOIC_FOSSIL).add(FAItems.MESOZOIC_FOSSIL.get());
         this.tag(ItemTags.SWORD_ENCHANTABLE).add(FAItems.THERIZINOSAURUS_CLAWS.get());
 

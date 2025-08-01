@@ -1,0 +1,33 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:ginkgo_hanging_sign"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:ginkgo_hanging_sign"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.hanging_sign.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.hanging_sign.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:ginkgo_hanging_sign"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:short_horsetail"
+      },
+      "loot": [
+        [
+          {
+            "description": "1-3",
+            "drop": {
+              "id": "fossilslegacy:short_horsetail"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.short_horsetail.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.short_horsetail.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": []
+}

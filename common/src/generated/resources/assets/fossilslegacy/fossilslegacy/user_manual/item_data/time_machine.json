@@ -1,12 +1,37 @@
 {
   "displayed_loot_tables": [
     {
-      "type": "block_loot",
-      "display": "fossilslegacy:time_machine",
+      "type": "entity_loot",
       "loot": [
         [
           {
-            "drop": "fossilslegacy:time_machine"
+            "description": "1-3",
+            "drop": {
+              "id": "minecraft:cooked_porkchop"
+            }
+          }
+        ],
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:time_machine"
+            }
+          }
+        ]
+      ],
+      "spawn_egg": "fossilslegacy:anu_spawn_egg"
+    },
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:time_machine"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:time_machine"
+            }
           }
         ]
       ]

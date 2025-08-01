@@ -51,6 +51,31 @@
 - Overworld Coins Can Now Be Crafted
 - Prehistoric Coins Can Now Be Crafted
 - "Smithing Template" Now Named To "Scarab Gem Upgrade"
+- DNA No Longer Generates In Academies
+- Updated Permafrost Drops (30% Skull Block, 30% Frozen Meat, 20% Raw Beef, 20% Raw Porkchop)
+- Jurassic Ferns No Longer Drop Wheat Seeds, Sometimes Drops Jurassic Fern Spores
+- Updated Ankylosaurus Skeleton Texture
+- Updated Brachiosaurus Skeleton Texture
+- Updated Carnotaurus Skeleton Texture
+- Updated Composgnathus Skeleton Texture
+- Updated Cryolophosaurus Skeleton Texture
+- Updated Dilophosaurus Skeleton Texture
+- Updated Dimetrodon Skeleton Texture
+- Updated Dryosaurus Skeleton Texture
+- Updated Futabasaurus Skeleton Texture
+- Updated Gallimimus Skeleton Texture
+- Updated Ankylosaurus Skeleton Texture
+- Updated Ankylosaurus Skeleton Texture
+- Updated Ankylosaurus Skeleton Texture
+- Updated Ankylosaurus Skeleton Texture
+- Updated Ankylosaurus Skeleton Texture
+- Updated Ankylosaurus Skeleton Texture
+- Updated Ankylosaurus Skeleton Texture
+- Updated Ankylosaurus Skeleton Texture
+- Updated Ankylosaurus Skeleton Texture
+- Updated Ankylosaurus Skeleton Texture
+- Updated Ankylosaurus Skeleton Texture
+- Updated Ankylosaurus Skeleton Texture
 - Added Archaeology Category For Analyzer Recipe Book
 - Added Palaeontology Category For Analyzer Recipe Book
 - Added Mosasaurus Skeleton
@@ -210,6 +235,11 @@
 - Added User Manual
 - Added Frozen Leech
 - Added Leech in Ice
+- Added Articulated Dodo Skeleton
+- Added Articulated Elasmotherium Skeleton
+- Added Articulated Isotelus Skeleton
+- Added Articulated Mammoth Skeleton
+- Added Articulated Moa Skeleton
 27/2/2024 1.4.9
 - Fixed Tooth Dagger Not Shearing All Shearables
 - Fixed Mayan Vase Not Wobbling

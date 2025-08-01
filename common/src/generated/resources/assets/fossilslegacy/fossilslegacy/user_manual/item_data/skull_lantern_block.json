@@ -2,11 +2,15 @@
   "displayed_loot_tables": [
     {
       "type": "block_loot",
-      "display": "fossilslegacy:skull_lantern_block",
+      "display": {
+        "id": "fossilslegacy:skull_lantern_block"
+      },
       "loot": [
         [
           {
-            "drop": "fossilslegacy:skull_lantern_block"
+            "drop": {
+              "id": "fossilslegacy:skull_lantern_block"
+            }
           }
         ]
       ]

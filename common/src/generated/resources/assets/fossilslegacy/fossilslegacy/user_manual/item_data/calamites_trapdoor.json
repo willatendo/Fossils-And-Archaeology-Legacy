@@ -1,0 +1,33 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:calamites_trapdoor"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:calamites_trapdoor"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.trapdoor.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.trapdoor.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:calamites_trapdoor"
+  ]
+}

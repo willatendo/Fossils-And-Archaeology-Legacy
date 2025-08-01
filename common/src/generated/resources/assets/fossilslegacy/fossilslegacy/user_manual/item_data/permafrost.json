@@ -1,0 +1,64 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:permafrost"
+      },
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.silk_touch"
+            },
+            "drop": {
+              "id": "fossilslegacy:permafrost"
+            }
+          }
+        ],
+        [
+          {
+            "description": "30%",
+            "drop": {
+              "id": "fossilslegacy:skull_block"
+            }
+          }
+        ],
+        [
+          {
+            "description": "30%",
+            "drop": {
+              "id": "fossilslegacy:frozen_meat"
+            }
+          }
+        ],
+        [
+          {
+            "description": "20%",
+            "drop": {
+              "id": "minecraft:beef"
+            }
+          },
+          {
+            "description": "20%",
+            "drop": {
+              "id": "minecraft:porkchop"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.permafrost.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.permafrost.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": []
+}

@@ -1,29 +1,41 @@
 package willatendo.fossilslegacy.client.user_manual.draw;
 
+import net.minecraft.core.Holder;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import willatendo.fossilslegacy.client.screen.user_manual.UserManualGhostSlots;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
-public final class SlotPlacer {
-    private final Map<Coordinate, List<ItemStack>> data = new HashMap<>();
-
-    public void place(int x, int y, Ingredient ingredient) {
-        this.data.put(new Coordinate(x, y), ingredient.items().map(ItemStack::new).toList());
+public interface SlotPlacer {
+    static SlotPlacer.SimpleSlotPlacer simple(UserManualGhostSlots slots, int leftPos, int topPos) {
+        return new SlotPlacer.SimpleSlotPlacer(slots, leftPos, topPos);
     }
 
-    public void place(int x, int y, ItemStack itemStack) {
-        this.data.put(new Coordinate(x, y), List.of(itemStack));
+    void place(int x, int y, List<ItemStack> itemStacks);
+
+    default void place(int x, int y, ItemStack itemStack) {
+        this.place(x, y, List.of(itemStack));
     }
 
-    public void place(int x, int y, List<ItemStack> itemStacks) {
-        this.data.put(new Coordinate(x, y), itemStacks);
+    default void place(int x, int y, Ingredient ingredient) {
+        this.place(x, y, ingredient.items().map(Holder::value).map(ItemStack::new).toList());
     }
 
-    public Set<Map.Entry<Coordinate, List<ItemStack>>> forEach() {
-        return this.data.entrySet();
+    final class SimpleSlotPlacer implements SlotPlacer {
+        private final UserManualGhostSlots slots;
+        private final int leftPos;
+        private final int topPos;
+
+        private SimpleSlotPlacer(UserManualGhostSlots slots, int leftPos, int topPos) {
+            this.slots = slots;
+            this.leftPos = leftPos;
+            this.topPos = topPos;
+        }
+
+        @Override
+        public void place(int x, int y, List<ItemStack> itemStacks) {
+            this.slots.add(itemStacks, this.leftPos + x, this.topPos + y, 16, 16);
+        }
     }
 }

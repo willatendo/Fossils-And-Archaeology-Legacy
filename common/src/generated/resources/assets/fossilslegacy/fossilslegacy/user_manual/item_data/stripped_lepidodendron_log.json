@@ -1,0 +1,34 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:stripped_lepidodendron_log"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:stripped_lepidodendron_log"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.stripped_log.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.stripped_log.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:lepidodendron_planks",
+    "fossilslegacy:stripped_lepidodendron_wood"
+  ]
+}

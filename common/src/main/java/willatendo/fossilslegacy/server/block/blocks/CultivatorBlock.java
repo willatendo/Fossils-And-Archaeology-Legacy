@@ -50,7 +50,7 @@ public class CultivatorBlock extends Block implements EntityBlock {
 
         for (Player player : level.players()) {
             if (player instanceof ServerPlayer serverPlayer) {
-                serverPlayer.sendSystemMessage(FAUtils.translation("block", "cultivator.shatter"));
+                serverPlayer.sendSystemMessage(FAUtils.translation("itemStack", "cultivator.shatter"));
             }
         }
 

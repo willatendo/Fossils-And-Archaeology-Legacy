@@ -27,6 +27,8 @@ import willatendo.fossilslegacy.client.user_manual.draw.Coordinate;
 import willatendo.fossilslegacy.client.user_manual.draw.SlotPlacer;
 import willatendo.fossilslegacy.client.user_manual.draw.SpriteDrawer;
 import willatendo.fossilslegacy.client.user_manual.loot.DrawLootRecipe;
+import willatendo.fossilslegacy.client.user_manual.recipe.special.DrawSpecialRecipe;
+import willatendo.fossilslegacy.client.user_manual.recipe.type.RecipeTypeDrawInformation;
 import willatendo.fossilslegacy.client.user_manual.recipe.type.RecipeTypeDrawInformationHolder;
 import willatendo.fossilslegacy.server.menu.menus.UserManualMenu;
 import willatendo.fossilslegacy.server.utils.FAUtils;
@@ -194,24 +196,26 @@ public class UserManualScreen extends AbstractContainerScreen<UserManualMenu> {
                 for (int i = 0; i < 2; i++) {
                     int index = i + (this.recipePage * 2);
                     if (!(index >= this.recipes.size())) {
-                        RecipeHolder<?> recipeHolder = this.recipeMap.byKey(this.recipes.get(index));
-                        if (recipeHolder == null) {
-                            FAUtils.LOGGER.error("RECIPE: {} IS NULL!", this.recipes.get(index));
+                        ResourceKey<Recipe<?>> key = this.recipes.get(index);
+                        //FAUtils.LOGGER.info("Key: {}", key);
+                        if (RecipeTypeDrawInformation.BUILT_IN_RECIPES.containsKey(key.location())) {
+                            DrawSpecialRecipe drawSpecialRecipe = RecipeTypeDrawInformation.BUILT_IN_RECIPES.get(key.location());
+                            drawSpecialRecipe.draw(itemStack, this.player.level(), SlotPlacer.simple(this.recipeSlots, leftPos, topPos), SpriteDrawer.simple(this, guiGraphics, this.font, this.slotSelectTime, leftPos, topPos));
                         } else {
-                            Recipe<?> recipe = recipeHolder.value();
-                            RecipeTypeDrawInformationHolder recipeTypePage = UserManualData.getRecipeTypeDrawInformation(recipe.getType());
-                            if (recipeTypePage != RecipeTypeDrawInformationHolder.EMPTY && recipeTypePage != null) {
-                                if (i == 1) {
-                                    topPos += 59;
-                                }
-                                guiGraphics.blitSprite(RenderType::guiTextured, recipeTypePage.texture(), leftPos + recipeTypePage.xOffset(), topPos + recipeTypePage.yOffset(), recipeTypePage.width(), recipeTypePage.height());
-                                guiGraphics.blitSprite(RenderType::guiTextured, SLOT_SPRITE, leftPos + 7, topPos + 34, 18, 18);
-                                SlotPlacer slotPlacer = new SlotPlacer();
-                                recipeTypePage.drawRecipe().draw(this.player.level(), recipe, slotPlacer, SpriteDrawer.simple(this, guiGraphics, this.font, this.slotSelectTime, leftPos, topPos));
-                                this.recipeSlots.addContainers(Arrays.asList(recipeTypePage.containers()), leftPos + 8, topPos + 35, 16, 16);
-                                for (Map.Entry<Coordinate, List<ItemStack>> entry : slotPlacer.forEach()) {
-                                    Coordinate coordinate = entry.getKey();
-                                    this.recipeSlots.add(entry.getValue(), leftPos + coordinate.x() + recipeTypePage.xOffset(), topPos + coordinate.y() + recipeTypePage.yOffset(), 16, 16);
+                            RecipeHolder<?> recipeHolder = this.recipeMap.byKey(key);
+                            if (recipeHolder == null) {
+                                FAUtils.LOGGER.error("RECIPE: {} IS NULL!", this.recipes.get(index));
+                            } else {
+                                Recipe<?> recipe = recipeHolder.value();
+                                RecipeTypeDrawInformationHolder recipeTypePage = UserManualData.getRecipeTypeDrawInformation(recipe.getType());
+                                if (recipeTypePage != RecipeTypeDrawInformationHolder.EMPTY && recipeTypePage != null) {
+                                    if (i == 1) {
+                                        topPos += 59;
+                                    }
+                                    guiGraphics.blitSprite(RenderType::guiTextured, recipeTypePage.texture(), leftPos + recipeTypePage.xOffset(), topPos + recipeTypePage.yOffset(), recipeTypePage.width(), recipeTypePage.height());
+                                    guiGraphics.blitSprite(RenderType::guiTextured, SLOT_SPRITE, leftPos + 7, topPos + 34, 18, 18);
+                                    recipeTypePage.drawRecipe().draw(this.player.level(), recipe, SlotPlacer.simple(this.recipeSlots, leftPos, topPos), SpriteDrawer.simple(this, guiGraphics, this.font, this.slotSelectTime, leftPos, topPos));
+                                    this.recipeSlots.addContainers(Arrays.asList(recipeTypePage.containers()), leftPos + 8, topPos + 35, 16, 16);
                                 }
                             }
                         }
@@ -245,12 +249,7 @@ public class UserManualScreen extends AbstractContainerScreen<UserManualMenu> {
                             }
                             int recipeleftPos = (176 / 2) - (((18 * drawLootRecipe.dropSize()) + 54) / 2);
                             guiGraphics.blitSprite(RenderType::guiTextured, LOOT_SPRITE, leftPos + recipeleftPos, topPos + 34, 54, 18);
-                            SlotPlacer slotPlacer = new SlotPlacer();
-                            drawLootRecipe.draw(this.player.level(), slotPlacer, SpriteDrawer.simple(this, guiGraphics, this.font, this.slotSelectTime, leftPos, topPos));
-                            for (Map.Entry<Coordinate, List<ItemStack>> entry : slotPlacer.forEach()) {
-                                Coordinate coordinate = entry.getKey();
-                                this.dropSlots.add(entry.getValue(), leftPos + coordinate.x() + 32, topPos + coordinate.y() + 34, 16, 16);
-                            }
+                            drawLootRecipe.draw(this.player.level(), SlotPlacer.simple(this.dropSlots, leftPos, topPos), SpriteDrawer.simple(this, guiGraphics, this.font, this.slotSelectTime, leftPos, topPos));
                         }
                     }
                 }

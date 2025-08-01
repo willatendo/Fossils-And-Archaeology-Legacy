@@ -58,7 +58,7 @@
                   "condition": "minecraft:random_chance"
                 }
               ],
-              "name": "minecraft:wheat_seeds"
+              "name": "fossilslegacy:jurassic_fern_spores"
             }
           ]
         }
@@ -122,7 +122,7 @@
                   "condition": "minecraft:random_chance"
                 }
               ],
-              "name": "minecraft:wheat_seeds"
+              "name": "fossilslegacy:jurassic_fern_spores"
             }
           ]
         }

@@ -21,9 +21,9 @@ public class DrawArchaeologyRecipe implements DrawRecipe {
             ItemStack output = archaeologyRecipe.assemble(null, level.registryAccess());
             List<FuelEntry> fuelEntries = level.registryAccess().lookupOrThrow(FARegistries.FUEL_ENTRY).get(archaeologyRecipe.requiredFuels).get().stream().map(fuelEntryHolder -> fuelEntryHolder.value()).toList();
 
-            slotPlacer.place(5, 5, ingredients.getFirst());
-            slotPlacer.place(36, 39, fuelEntries.stream().map(fuelEntry -> new ItemStack(BuiltInRegistries.ITEM.get(fuelEntry.fuel()).get().value())).toList());
-            slotPlacer.place(67, 5, output);
+            slotPlacer.place(49, 20, ingredients.getFirst());
+            slotPlacer.place(80, 54, fuelEntries.stream().map(fuelEntry -> new ItemStack(BuiltInRegistries.ITEM.get(fuelEntry.fuel()).get().value())).toList());
+            slotPlacer.place(111, 20, output);
         }
     }
 }

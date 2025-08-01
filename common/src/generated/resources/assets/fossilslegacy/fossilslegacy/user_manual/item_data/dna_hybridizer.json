@@ -2,11 +2,15 @@
   "displayed_loot_tables": [
     {
       "type": "block_loot",
-      "display": "fossilslegacy:dna_hybridizer",
+      "display": {
+        "id": "fossilslegacy:dna_hybridizer"
+      },
       "loot": [
         [
           {
-            "drop": "fossilslegacy:dna_hybridizer"
+            "drop": {
+              "id": "fossilslegacy:dna_hybridizer"
+            }
           }
         ]
       ]

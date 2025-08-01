@@ -2,11 +2,15 @@
   "displayed_loot_tables": [
     {
       "type": "block_loot",
-      "display": "fossilslegacy:palaeontology_table",
+      "display": {
+        "id": "fossilslegacy:palaeontology_table"
+      },
       "loot": [
         [
           {
-            "drop": "fossilslegacy:palaeontology_table"
+            "drop": {
+              "id": "fossilslegacy:palaeontology_table"
+            }
           }
         ]
       ]

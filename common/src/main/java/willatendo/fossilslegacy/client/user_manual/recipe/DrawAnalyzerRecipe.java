@@ -27,8 +27,8 @@ public class DrawAnalyzerRecipe implements DrawRecipe {
             List<ItemStack> outputs = analyzerResults.stream().map(analyzerResult -> analyzerResult.value().output()).toList();
             List<Component> weights = analyzerResults.stream().map(analyzerResult -> (Component) FAUtils.translation("item", "user_manual.recipes.description", (analyzerResult.value().weight() + "%"))).toList();
 
-            slotPlacer.place(1, 1, ingredients.getFirst());
-            slotPlacer.place(95, 5, outputs);
+            slotPlacer.place(28, 18, ingredients.getFirst());
+            slotPlacer.place(122, 22, outputs);
 
             spriteDrawer.draw(145, 26, weights, 0);
         }

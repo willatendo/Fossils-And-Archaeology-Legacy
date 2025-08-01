@@ -1,0 +1,33 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:lepidodendron_button"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:lepidodendron_button"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.button.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.button.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:lepidodendron_button"
+  ]
+}

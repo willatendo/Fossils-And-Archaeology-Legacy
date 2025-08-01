@@ -1,0 +1,33 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:small_cage"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:small_cage"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.small_cage.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.small_cage.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:small_cage"
+  ]
+}

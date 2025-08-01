@@ -1,0 +1,153 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "chest_loot",
+      "loot": [
+        [
+          {
+            "description": "0-1",
+            "drop": {
+              "id": "fossilslegacy:scarab_gem_upgrade_smithing_template"
+            }
+          }
+        ],
+        [
+          {
+            "drop": {
+              "id": "minecraft:iron_sword"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:iron_shovel"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:iron_pickaxe"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:iron_axe"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:iron_hoe"
+            }
+          },
+          {
+            "drop": {
+              "id": "fossilslegacy:iron_javelin"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:golden_sword"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:golden_shovel"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:golden_pickaxe"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:golden_axe"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:golden_hoe"
+            }
+          },
+          {
+            "drop": {
+              "id": "fossilslegacy:golden_javelin"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:diamond_sword"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:diamond_shovel"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:diamond_pickaxe"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:diamond_axe"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:diamond_hoe"
+            }
+          },
+          {
+            "drop": {
+              "id": "fossilslegacy:diamond_javelin"
+            }
+          }
+        ],
+        [
+          {
+            "drop": {
+              "id": "minecraft:bow"
+            }
+          }
+        ],
+        [
+          {
+            "drop": {
+              "id": "minecraft:arrow"
+            }
+          },
+          {
+            "drop": {
+              "components": {
+                "minecraft:potion_contents": {
+                  "potion": "minecraft:harming"
+                }
+              },
+              "id": "minecraft:tipped_arrow"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:spectral_arrow"
+            }
+          }
+        ]
+      ],
+      "name": {
+        "translate": "item.fossilslegacy.user_manual.loot_table.weapon_shop_loot"
+      }
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.iron_javelin.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.iron_javelin.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": []
+}

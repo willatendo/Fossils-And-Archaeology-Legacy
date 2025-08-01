@@ -1,0 +1,88 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "chest_loot",
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "minecraft:wooden_sword"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:wooden_shovel"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:wooden_pickaxe"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:wooden_axe"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:wooden_hoe"
+            }
+          },
+          {
+            "drop": {
+              "id": "fossilslegacy:wooden_javelin"
+            }
+          }
+        ],
+        [
+          {
+            "drop": {
+              "id": "minecraft:stone_sword"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:stone_shovel"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:stone_pickaxe"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:stone_axe"
+            }
+          },
+          {
+            "drop": {
+              "id": "minecraft:stone_hoe"
+            }
+          },
+          {
+            "drop": {
+              "id": "fossilslegacy:stone_javelin"
+            }
+          }
+        ]
+      ],
+      "name": {
+        "translate": "item.fossilslegacy.user_manual.loot_table.weapon_shop_decoy"
+      }
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.stone_javelin.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.stone_javelin.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": []
+}

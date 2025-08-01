@@ -1,0 +1,31 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:medium_cage"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:medium_cage"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.medium_cage.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.medium_cage.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": []
+}

@@ -1,0 +1,33 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:araucaria_fence_gate"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:araucaria_fence_gate"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.fence_gate.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.fence_gate.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:araucaria_fence_gate"
+  ]
+}

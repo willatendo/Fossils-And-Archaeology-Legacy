@@ -2,26 +2,34 @@
   "displayed_loot_tables": [
     {
       "type": "block_loot",
-      "display": "fossilslegacy:mayan_ocelot_vase",
+      "display": {
+        "id": "fossilslegacy:mayan_ocelot_vase"
+      },
       "loot": [
         [
           {
             "description": {
               "translate": "item.fossilslegacy.user_manual.drop.requirement.hand"
             },
-            "drop": "fossilslegacy:mayan_ocelot_vase"
+            "drop": {
+              "id": "fossilslegacy:mayan_ocelot_vase"
+            }
           }
         ],
         [
           {
             "description": "4",
-            "drop": "minecraft:brick"
+            "drop": {
+              "id": "minecraft:brick"
+            }
           }
         ],
         [
           {
             "description": "4",
-            "drop": "fossilslegacy:jade_ocelot"
+            "drop": {
+              "id": "fossilslegacy:jade_ocelot"
+            }
           }
         ]
       ]
@@ -32,33 +40,45 @@
         [
           {
             "description": "+++",
-            "drop": "fossilslegacy:jade"
+            "drop": {
+              "id": "fossilslegacy:jade"
+            }
           },
           {
             "description": "+",
-            "drop": "fossilslegacy:jade_ocelot"
+            "drop": {
+              "id": "fossilslegacy:jade_ocelot"
+            }
           },
           {
             "description": "+",
-            "drop": "fossilslegacy:jade_villager"
+            "drop": {
+              "id": "fossilslegacy:jade_villager"
+            }
           }
         ],
         [
           {
             "description": "+++",
-            "drop": "minecraft:rotten_flesh"
+            "drop": {
+              "id": "minecraft:rotten_flesh"
+            }
           }
         ],
         [
           {
             "description": "+++",
-            "drop": "minecraft:bone"
+            "drop": {
+              "id": "minecraft:bone"
+            }
           }
         ],
         [
           {
             "description": "+",
-            "drop": "fossilslegacy:scarab_gem_javelin"
+            "drop": {
+              "id": "fossilslegacy:scarab_gem_javelin"
+            }
           }
         ]
       ],
@@ -72,33 +92,45 @@
         [
           {
             "description": "+++",
-            "drop": "fossilslegacy:jade"
+            "drop": {
+              "id": "fossilslegacy:jade"
+            }
           },
           {
             "description": "+",
-            "drop": "fossilslegacy:jade_ocelot"
+            "drop": {
+              "id": "fossilslegacy:jade_ocelot"
+            }
           },
           {
             "description": "+",
-            "drop": "fossilslegacy:jade_villager"
+            "drop": {
+              "id": "fossilslegacy:jade_villager"
+            }
           }
         ],
         [
           {
             "description": "+++",
-            "drop": "minecraft:rotten_flesh"
+            "drop": {
+              "id": "minecraft:rotten_flesh"
+            }
           }
         ],
         [
           {
             "description": "+++",
-            "drop": "minecraft:bone"
+            "drop": {
+              "id": "minecraft:bone"
+            }
           }
         ],
         [
           {
             "description": "+",
-            "drop": "fossilslegacy:scarab_gem_javelin"
+            "drop": {
+              "id": "fossilslegacy:scarab_gem_javelin"
+            }
           }
         ]
       ],
@@ -112,21 +144,29 @@
         [
           {
             "description": "+++",
-            "drop": "fossilslegacy:jade"
+            "drop": {
+              "id": "fossilslegacy:jade"
+            }
           },
           {
             "description": "+",
-            "drop": "fossilslegacy:jade_ocelot"
+            "drop": {
+              "id": "fossilslegacy:jade_ocelot"
+            }
           },
           {
             "description": "+",
-            "drop": "fossilslegacy:jade_villager"
+            "drop": {
+              "id": "fossilslegacy:jade_villager"
+            }
           }
         ],
         [
           {
             "description": "++",
-            "drop": "fossilslegacy:codex"
+            "drop": {
+              "id": "fossilslegacy:codex"
+            }
           }
         ]
       ],

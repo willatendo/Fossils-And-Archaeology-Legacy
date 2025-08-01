@@ -1,0 +1,31 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:cycad_head"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:cycad_head"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.cycad_head.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.cycad_head.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": []
+}

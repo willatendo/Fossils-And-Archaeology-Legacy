@@ -2,11 +2,15 @@
   "displayed_loot_tables": [
     {
       "type": "block_loot",
-      "display": "fossilslegacy:magenta_cultivator",
+      "display": {
+        "id": "fossilslegacy:magenta_cultivator"
+      },
       "loot": [
         [
           {
-            "drop": "fossilslegacy:magenta_cultivator"
+            "drop": {
+              "id": "fossilslegacy:magenta_cultivator"
+            }
           }
         ]
       ]

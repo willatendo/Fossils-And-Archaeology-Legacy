@@ -20,6 +20,7 @@ public class FAItemTags {
     public static final TagKey<Item> CALAMITES_LOGS = ITEM_TAGS.register("calamites_logs");
     public static final TagKey<Item> CARNIVORE_FOODS = ITEM_TAGS.register("carnivore_foods");
     public static final TagKey<Item> CARNOTAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/carnotaurus");
+    public static final TagKey<Item> CENOZOIC_FOSSIL = ITEM_TAGS.register("cenozoic_fossil");
     public static final TagKey<Item> COMPSOGNATHUS_COMMANDABLES = ITEM_TAGS.register("commandable/compsognathus");
     public static final TagKey<Item> CRYOLOPHOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/cryolophosaurus");
     public static final TagKey<Item> CULTIVATORS = ITEM_TAGS.register("cultivators");
@@ -47,6 +48,7 @@ public class FAItemTags {
     public static final TagKey<Item> MESOZOIC_FOSSIL = ITEM_TAGS.register("mesozoic_fossil");
     public static final TagKey<Item> OMNIVORE_FOODS = ITEM_TAGS.register("omnivore_foods");
     public static final TagKey<Item> PACHYCEPHALOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/pachycephalosaurus");
+    public static final TagKey<Item> PALAEOZOIC_FOSSIL = ITEM_TAGS.register("palaeozoic_fossil");
     public static final TagKey<Item> PIGLIN_TAMING_ARMOR = ITEM_TAGS.register("piglin_taming_armor");
     public static final TagKey<Item> PISCIVORE_FOODS = ITEM_TAGS.register("piscivore_foods");
     public static final TagKey<Item> PLANT_DNA = ITEM_TAGS.register("plant_dna");

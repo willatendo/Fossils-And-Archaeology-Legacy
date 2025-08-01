@@ -10,68 +10,32 @@
         },
         {
           "type": "minecraft:item",
+          "name": "fossilslegacy:netherite_javelin"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "fossilslegacy:cenozoic_fossil",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:item",
           "name": "fossilslegacy:mesozoic_fossil",
           "weight": 20
         },
         {
           "type": "minecraft:item",
-          "name": "fossilslegacy:triceratops_dna",
-          "weight": 2
+          "name": "fossilslegacy:palaeozoic_fossil",
+          "weight": 20
         },
         {
           "type": "minecraft:item",
-          "name": "fossilslegacy:velociraptor_dna",
-          "weight": 2
+          "name": "fossilslegacy:plant_fossil",
+          "weight": 20
         },
         {
           "type": "minecraft:item",
-          "name": "fossilslegacy:tyrannosaurus_dna",
-          "weight": 2
-        },
-        {
-          "type": "minecraft:item",
-          "name": "fossilslegacy:futabasaurus_dna",
-          "weight": 2
-        },
-        {
-          "type": "minecraft:item",
-          "name": "fossilslegacy:mosasaurus_dna",
-          "weight": 2
-        },
-        {
-          "type": "minecraft:item",
-          "name": "fossilslegacy:stegosaurus_dna",
-          "weight": 2
-        },
-        {
-          "type": "minecraft:item",
-          "name": "fossilslegacy:dilophosaurus_dna",
-          "weight": 2
-        },
-        {
-          "type": "minecraft:item",
-          "name": "fossilslegacy:brachiosaurus_dna",
-          "weight": 2
-        },
-        {
-          "type": "minecraft:item",
-          "name": "fossilslegacy:carnotaurus_dna"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "fossilslegacy:cryolophosaurus_dna"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "fossilslegacy:therizinosaurus_dna"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "fossilslegacy:pachycephalosaurus_dna"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "fossilslegacy:compsognathus_dna"
+          "name": "fossilslegacy:relic_scrap",
+          "weight": 20
         }
       ],
       "rolls": {

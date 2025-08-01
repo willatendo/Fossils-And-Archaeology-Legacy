@@ -136,6 +136,7 @@ public class FARecipeProvider extends RecipeProvider {
         this.coin(FAItems.OVERWORLD_COIN.get(), Blocks.GRASS_BLOCK);
         this.coin(FAItems.PREHISTORIC_COIN.get(), Blocks.JUNGLE_LOG);
         this.coin(FAItems.ICE_AGE_COIN.get(), Blocks.ICE);
+        this.shapeless(RecipeCategory.MISC, Items.YELLOW_DYE).requires(FABlocks.COOKSONIA.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.COOKSONIA.get()), this.has(FABlocks.COOKSONIA.get())).save(this.output, FAUtils.ID + ":yellow_dye_from_cooksonia");
 
         SpecialRecipeBuilder.special(MagicConchRecipe::new).save(this.output, FAUtils.ID + ":magic_conch");
         SpecialRecipeBuilder.special(KeyCloningRecipe::new).save(this.output, FAUtils.ID + ":key_cloning");
