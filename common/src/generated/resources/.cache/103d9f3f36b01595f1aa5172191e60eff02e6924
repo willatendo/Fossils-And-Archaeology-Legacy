@@ -1,4 +1,4 @@
-// 1.21.4	2025-08-01T03:00:52.9143104	Registries
+// 1.21.4	2025-08-01T21:43:28.9060087	Registries
 532001524c06f9b4a4565f8b548bb4a8de84ba73 data/fossilslegacy/damage_type/animal_starve.json
 2114b0003e5d2bbcaa78bf13cc88ac12e038a4d0 data/fossilslegacy/damage_type/dart.json
 272b73d0ec6656b7beba50d287714cb055cc1dce data/fossilslegacy/damage_type/dilophosaurus_envenomation.json
@@ -319,7 +319,7 @@ c91ce5870c1ecdd7f63d9196841f21aaacd5124e data/fossilslegacy/fossilslegacy/fossil
 6082713bbe2c227c3d0fbddf1d47058e335d6b29 data/fossilslegacy/fossilslegacy/fossil_variants/legacy_pteranodon.json
 25c6e62e193f4daa297f9372425362708e12a25f data/fossilslegacy/fossilslegacy/fossil_variants/legacy_triceratops.json
 c132cf99b18659b814693a88b5132039f2371e29 data/fossilslegacy/fossilslegacy/fossil_variants/mammoth.json
-08b47d8a1e694966703c1ae0b318081e7f8c5785 data/fossilslegacy/fossilslegacy/fossil_variants/moa.json
+8d3d4a3de4579cc0436f005985f4e63582f3482b data/fossilslegacy/fossilslegacy/fossil_variants/moa.json
 501faf4890a356d107e038a1a6226b0151d61602 data/fossilslegacy/fossilslegacy/fossil_variants/mosasaurus.json
 2bedf053d2c1840488b753cf74cb91d782a095fb data/fossilslegacy/fossilslegacy/fossil_variants/pachycephalosaurus.json
 61a64859da29b2fa48268b1068ebd5c4f65a4e18 data/fossilslegacy/fossilslegacy/fossil_variants/pteranodon.json

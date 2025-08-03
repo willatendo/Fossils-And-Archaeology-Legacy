@@ -47,6 +47,17 @@ public final class FAModelTemplates {
     public static final ExtendedModelTemplate TEMPLATE_DNA_RECOMBINATOR = FAModelTemplates.create("template_dna_recombinator", TextureSlot.FRONT).build();
     public static final ExtendedModelTemplate TEMPLATE_TIME_MACHINE = FAModelTemplates.create("template_time_machine").build();
     public static final ExtendedModelTemplate TEMPLATE_VASE = FAModelTemplates.create("template_vase", TextureSlot.SIDE).build();
+    public static final ExtendedModelTemplate TEMPLATE_LOW_SECURITY_FENCE_BAR_FOUNDATION = FAModelTemplates.create("template_low_security_fence_bar_foundation", TextureSlot.TEXTURE, TextureSlot.PARTICLE).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_LOW_SECURITY_FENCE_BAR_BOTTOM = FAModelTemplates.create("template_low_security_fence_bar_bottom", TextureSlot.TEXTURE, TextureSlot.BOTTOM, TextureSlot.PARTICLE).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_LOW_SECURITY_FENCE_BAR_MIDDLE = FAModelTemplates.create("template_low_security_fence_bar_middle", TextureSlot.TEXTURE, TextureSlot.PARTICLE).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_LOW_SECURITY_FENCE_BAR_TOP = FAModelTemplates.create("template_low_security_fence_bar_top", TextureSlot.TEXTURE, TextureSlot.PARTICLE).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_LOW_SECURITY_FENCE_CENTER_BOTTOM = FAModelTemplates.create("template_low_security_fence_center_bottom", TextureSlot.TEXTURE, TextureSlot.BOTTOM, TextureSlot.PARTICLE).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_LOW_SECURITY_FENCE_CENTER_MIDDLE = FAModelTemplates.create("template_low_security_fence_center_middle", TextureSlot.TEXTURE, TextureSlot.PARTICLE).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_LOW_SECURITY_FENCE_CENTER_TOP = FAModelTemplates.create("template_low_security_fence_center_top", TextureSlot.TEXTURE, TextureSlot.PARTICLE).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_LOW_SECURITY_FENCE_POST_EXTENDED_BOTTOM = FAModelTemplates.create("template_low_security_fence_post_extended_bottom", TextureSlot.TEXTURE, TextureSlot.PARTICLE).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_LOW_SECURITY_FENCE_POST_BOTTOM = FAModelTemplates.create("template_low_security_fence_post_bottom", TextureSlot.TEXTURE, TextureSlot.BOTTOM, TextureSlot.PARTICLE).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_LOW_SECURITY_FENCE_POST_MIDDLE = FAModelTemplates.create("template_low_security_fence_post_middle", TextureSlot.TEXTURE, TextureSlot.PARTICLE).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_LOW_SECURITY_FENCE_POST_TOP = FAModelTemplates.create("template_low_security_fence_post_top", TextureSlot.TEXTURE, TextureSlot.UP, TextureSlot.PARTICLE).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_LLAMA = FAModelTemplates.create("template_llama", TextureSlot.TEXTURE, TextureSlot.PARTICLE).build();
     public static final ExtendedModelTemplate TEMPLATE_LIQUID = FAModelTemplates.create(TextureSlot.PARTICLE).build();
     public static final ExtendedModelTemplate TEMPLATE_FROZEN_LEECH = FAModelTemplates.create("template_frozen_leech", TextureSlot.TEXTURE).build();

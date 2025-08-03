@@ -110,6 +110,7 @@ public final class FACreativeModeTabs {
         output.accept(FABlocks.ICED_STONE.get());
         output.accept(FABlocks.SMALL_CAGE.get());
         output.accept(FABlocks.MEDIUM_CAGE.get());
+        output.accept(FABlocks.LOW_SECURITY_FENCE.get());
         output.accept(FABlocks.CYCAD_HEAD.get());
         output.accept(FABlocks.CYCAD_LOG.get());
         output.accept(FABlocks.COOKSONIA.get());

@@ -237,6 +237,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("block.fossilslegacy.small_cage.desc", "In cage: %s");
         this.add("block.fossilslegacy.cage.locked", "Cage is locked!");
         this.add("block.fossilslegacy.cage.incorrect_key", "Key does not fit!");
+        this.add(FABlocks.LOW_SECURITY_FENCE.get());
         this.add(FABlocks.CYCAD_HEAD.get());
         this.add(FABlocks.CYCAD_LOG.get());
         this.add(FABlocks.COOKSONIA.get());

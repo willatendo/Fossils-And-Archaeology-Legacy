@@ -173,6 +173,7 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.RED_SHATTERED_CULTIVATOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.BLACK_CULTIVATOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.BLACK_SHATTERED_CULTIVATOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.LOW_SECURITY_FENCE.get(), RenderType.cutout());
 
         ParticleRenderEvents.ALLOW_BLOCK_DUST_TINT.register((blockState, clientLevel, blockPos) -> blockState.is(FABlocks.CYCAD_HEAD.get()));
 

@@ -64,18 +64,13 @@
 - Updated Dryosaurus Skeleton Texture
 - Updated Futabasaurus Skeleton Texture
 - Updated Gallimimus Skeleton Texture
-- Updated Ankylosaurus Skeleton Texture
-- Updated Ankylosaurus Skeleton Texture
-- Updated Ankylosaurus Skeleton Texture
-- Updated Ankylosaurus Skeleton Texture
-- Updated Ankylosaurus Skeleton Texture
-- Updated Ankylosaurus Skeleton Texture
-- Updated Ankylosaurus Skeleton Texture
-- Updated Ankylosaurus Skeleton Texture
-- Updated Ankylosaurus Skeleton Texture
-- Updated Ankylosaurus Skeleton Texture
-- Updated Ankylosaurus Skeleton Texture
-- Updated Ankylosaurus Skeleton Texture
+- Updated Pachycephalosaurus Skeleton Texture
+- Updated Pteranodon Skeleton Texture
+- Updated Spinosaurus Skeleton Texture
+- Updated Therizinosaurus Skeleton Texture
+- Updated Triceratops Skeleton Texture
+- Updated Tyrannosaurus Skeleton Texture
+- Updated Velociraptor Skeleton Texture
 - Added Archaeology Category For Analyzer Recipe Book
 - Added Palaeontology Category For Analyzer Recipe Book
 - Added Mosasaurus Skeleton
@@ -240,6 +235,8 @@
 - Added Articulated Isotelus Skeleton
 - Added Articulated Mammoth Skeleton
 - Added Articulated Moa Skeleton
+- Added Articulated Smilodon Skeleton
+- Added Light Security Fence
 27/2/2024 1.4.9
 - Fixed Tooth Dagger Not Shearing All Shearables
 - Fixed Mayan Vase Not Wobbling

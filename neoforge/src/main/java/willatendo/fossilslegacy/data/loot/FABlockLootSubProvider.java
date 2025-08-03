@@ -139,6 +139,7 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.dropOther(FABlocks.BLACK_DECORATION_POST.get(), FAItems.BLACK_DECORATION_PLAQUE.get());
         this.dropSelf(FABlocks.SMALL_CAGE.get());
         this.add(FABlocks.MEDIUM_CAGE.get(), block -> LootTable.lootTable().withPool(this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(block).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(MediumCageBlock.HALF, DoubleBlockHalf.LOWER).hasProperty(MediumCageBlock.PART, 1)))))));
+        this.dropSelf(FABlocks.LOW_SECURITY_FENCE.get());
         this.dropSelf(FABlocks.CYCAD_HEAD.get());
         this.dropSelf(FABlocks.CYCAD_LOG.get());
         this.dropSelf(FABlocks.COOKSONIA.get());

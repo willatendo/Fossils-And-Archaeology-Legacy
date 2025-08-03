@@ -12,14 +12,13 @@ public final class TriceratopsModels {
     private static JsonModel.Builder createTriceratopsBodyLayer() {
         JsonModel.Builder builder = JsonModel.builder(128, 128);
 
-        builder.addOrReplaceChild("right_leg", elementBuilder -> elementBuilder.addBox(50, 62, -1.0F, 4.0F, -2.0F, 3.0F, 6.0F, 4.0F).addBox(50, 49, -2.0F, -3.0F, -3.0F, 3.0F, 7.0F, 6.0F).build(), JsonPose.offset(-5.0F, 14.0F, 4.0F));
-        builder.addOrReplaceChild("left_leg", elementBuilder -> elementBuilder.addBox(50, 62, -2.0F, 4.0F, -2.0F, 3.0F, 6.0F, 4.0F).addBox(50, 49, -1.0F, -3.0F, -3.0F, 3.0F, 7.0F, 6.0F, true).build(), JsonPose.offset(5.0F, 14.0F, 4.0F));
-        builder.addOrReplaceChild("tail", elementBuilder -> elementBuilder.addBox(0, 50, -2.5F, -4.0F, 0.0F, 5.0F, 9.0F, 5.0F).addBox(0, 36, -2.0F, 0.0F, 5.0F, 4.0F, 5.0F, 9.0F).addBox(38, 0, -2.0F, -5.0F, 6.0F, 4.0F, 5.0F, 9.0F).build(), JsonPose.offset(0.0F, 14.0F, 7.0F));
-        builder.addOrReplaceChild("head", elementBuilder -> elementBuilder.addBox(30, 35, -3.5F, -3.6667F, -6.2111F, 7.0F, 7.0F, 7.0F).addBox(0, 22, -6.5F, -9.6667F, -1.2111F, 13.0F, 12.0F, 2.0F).addBox(30, 22, -7.5F, -10.6667F, -1.3111F, 15.0F, 13.0F, 0.0F).addBox(38, 14, -1.5F, -0.6667F, -9.2111F, 3.0F, 4.0F, 3.0F).addBox(26, 36, 0.0F, -2.6667F, -9.2111F, 0.0F, 2.0F, 2.0F).addBox(60, 28, -3.5F, -6.6667F, -6.2111F, 1.0F, 2.0F, 5.0F).addBox(20, 63, -3.5F, -6.6667F, -11.2111F, 1.0F, 2.0F, 5.0F).addBox(60, 28, 2.5F, -6.6667F, -6.2111F, 1.0F, 2.0F, 5.0F).addBox(20, 63, 2.5F, -6.6667F, -11.2111F, 1.0F, 2.0F, 5.0F).build(), JsonPose.offset(0.0F, 14.6667F, -8.7889F));
-        builder.addOrReplaceChild("right_arm", elementBuilder -> elementBuilder.addBox(58, 35, -1.5F, -3.0F, -1.5F, 3.0F, 11.0F, 3.0F).build(), JsonPose.offset(-4.5F, 16.0F, -5.5F));
-        builder.addOrReplaceChild("left_arm", elementBuilder -> elementBuilder.addBox(60, 14, -1.5F, -3.0F, -1.5F, 3.0F, 11.0F, 3.0F).build(), JsonPose.offset(4.5F, 16.0F, -5.5F));
-        builder.addOrReplaceChild("body", elementBuilder -> elementBuilder.addBox(0, 0, -4.0F, -16.0F, -4.0F, 8.0F, 11.0F, 11.0F).addBox(26, 49, -4.0F, -15.0F, -8.0F, 8.0F, 10.0F, 4.0F).build(), JsonPose.offset(0.0F, 24.0F, 0.0F));
-
+        builder.addOrReplaceChild("right_leg", elementBuilder -> elementBuilder.addBox(50, 62, -1F, 4F, -2F, 3F, 6F, 4F).addBox(50, 49, -2F, -3F, -3F, 3F, 7F, 6F).build(), JsonPose.offset(-5F, 14F, 4F));
+        builder.addOrReplaceChild("left_leg", elementBuilder -> elementBuilder.addBox(64, 62, -2F, 4F, -2F, 3F, 6F, 4F).addBox(68, 49, -1F, -3F, -3F, 3F, 7F, 6F).build(), JsonPose.offset(5F, 14F, 4F));
+        builder.addOrReplaceChild("tail", elementBuilder -> elementBuilder.addBox(0, 50, -2.5F, -4F, 0F, 5F, 9F, 5F).addBox(0, 36, -2F, 0F, 5F, 4F, 5F, 9F).addBox(38, 0, -2F, -5F, 6F, 4F, 5F, 9F).build(), JsonPose.offset(0F, 14F, 7F));
+        builder.addOrReplaceChild("body", elementBuilder -> elementBuilder.addBox(0, 0, -4F, -6F, -2F, 8F, 11F, 11F).addBox(26, 49, -4F, -5F, -6F, 8F, 10F, 4F).build(), JsonPose.offset(0F, 14F, -2F));
+        builder.addOrReplaceChild("head", elementBuilder -> elementBuilder.addBox(30, 35, -3.5F, -3.66667F, -6.21111F, 7F, 7F, 7F).addBox(0, 22, -6.5F, -9.66667F, -1.2111099999999997F, 13F, 12F, 2F).addBox(30, 22, -7.5F, -10.66667F, -1.3111099999999993F, 15F, 13F, 0F).addBox(38, 14, -1.5F, -0.6666699999999999F, -9.21111F, 3F, 4F, 3F).addBox(26, 36, 0F, -2.66667F, -9.21111F, 0F, 2F, 2F).addBox(60, 28, -3.5F, -6.66667F, -6.21111F, 1F, 2F, 5F).addBox(20, 63, -3.5F, -6.66667F, -11.21111F, 1F, 2F, 5F).addBox(60, 28, 2.5F, -6.66667F, -6.21111F, 1F, 2F, 5F, true).addBox(20, 63, 2.5F, -6.66667F, -11.21111F, 1F, 2F, 5F, true).build(), JsonPose.offset(0F, 14.66667F, -8.78889F));
+        builder.addOrReplaceChild("right_arm", elementBuilder -> elementBuilder.addBox(58, 35, -1.5F, -3F, -1.5F, 3F, 11F, 3F).build(), JsonPose.offset(-4.5F, 16F, -5.5F));
+        builder.addOrReplaceChild("left_arm", elementBuilder -> elementBuilder.addBox(60, 14, -1.5F, -3F, -1.5F, 3F, 11F, 3F).build(), JsonPose.offset(4.5F, 16F, -5.5F));
         return builder;
     }
 

@@ -129,6 +129,10 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createDecorationPost(FABlocks.BLACK_DECORATION_POST.get(), Blocks.BLACK_CONCRETE);
         this.createSmallCage(FABlocks.SMALL_CAGE.get());
         this.createMediumCage(FABlocks.MEDIUM_CAGE.get());
+        this.createSecurityFence(FABlocks.LOW_SECURITY_FENCE.get(),
+                FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_BAR_TOP, FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_BAR_MIDDLE, FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_BAR_BOTTOM, FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_BAR_FOUNDATION,
+                FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_CENTER_TOP, FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_CENTER_MIDDLE, FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_CENTER_BOTTOM,
+                FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_POST_TOP, FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_POST_MIDDLE, FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_POST_BOTTOM, FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_POST_EXTENDED_BOTTOM);
         this.createCycadHead(FABlocks.CYCAD_HEAD.get());
         this.createCycadLog(FABlocks.CYCAD_LOG.get());
         this.createCooksonia(FABlocks.COOKSONIA.get());
@@ -298,6 +302,247 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         ResourceLocation topOpenRight = FAModelTemplates.TEMPLATE_MEDIUM_CAGE_TOP_OPEN_RIGHT.createWithSuffix(mediumCage, "_top_open_right", new TextureMapping(), this.modelOutput);
         this.block(MultiVariantGenerator.multiVariant(mediumCage, Variant.variant()).with(PropertyDispatch.properties(MediumCageBlock.HORIZONTAL_FACING, MediumCageBlock.OPEN, MediumCageBlock.PART, MediumCageBlock.HALF).select(Direction.NORTH, false, 1, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.MODEL, bottom)).select(Direction.NORTH, false, 2, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottom)).select(Direction.NORTH, false, 3, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottom)).select(Direction.NORTH, false, 4, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottom)).select(Direction.NORTH, false, 1, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.MODEL, top)).select(Direction.NORTH, false, 2, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, top)).select(Direction.NORTH, false, 3, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, top)).select(Direction.NORTH, false, 4, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, top)).select(Direction.EAST, false, 1, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.MODEL, bottom)).select(Direction.EAST, false, 2, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottom)).select(Direction.EAST, false, 3, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottom)).select(Direction.EAST, false, 4, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottom)).select(Direction.EAST, false, 1, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.MODEL, top)).select(Direction.EAST, false, 2, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, top)).select(Direction.EAST, false, 3, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, top)).select(Direction.EAST, false, 4, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, top)).select(Direction.SOUTH, false, 1, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.MODEL, bottom)).select(Direction.SOUTH, false, 2, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottom)).select(Direction.SOUTH, false, 3, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottom)).select(Direction.SOUTH, false, 4, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottom)).select(Direction.SOUTH, false, 1, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.MODEL, top)).select(Direction.SOUTH, false, 2, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, top)).select(Direction.SOUTH, false, 3, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, top)).select(Direction.SOUTH, false, 4, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, top)).select(Direction.WEST, false, 1, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.MODEL, bottom)).select(Direction.WEST, false, 2, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottom)).select(Direction.WEST, false, 3, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottom)).select(Direction.WEST, false, 4, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottom)).select(Direction.WEST, false, 1, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.MODEL, top)).select(Direction.WEST, false, 2, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, top)).select(Direction.WEST, false, 3, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, top)).select(Direction.WEST, false, 4, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, top)).select(Direction.NORTH, true, 1, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.MODEL, bottomOpenLeft)).select(Direction.NORTH, true, 2, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.MODEL, bottomOpenRight)).select(Direction.NORTH, true, 3, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottom)).select(Direction.NORTH, true, 4, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottom)).select(Direction.NORTH, true, 1, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.MODEL, topOpenLeft)).select(Direction.NORTH, true, 2, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.MODEL, topOpenRight)).select(Direction.NORTH, true, 3, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, top)).select(Direction.NORTH, true, 4, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, top)).select(Direction.EAST, true, 1, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.MODEL, bottom)).select(Direction.EAST, true, 2, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottomOpenLeft)).select(Direction.EAST, true, 3, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottom)).select(Direction.EAST, true, 4, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottomOpenRight)).select(Direction.EAST, true, 1, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.MODEL, top)).select(Direction.EAST, true, 2, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, topOpenLeft)).select(Direction.EAST, true, 3, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, top)).select(Direction.EAST, true, 4, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, topOpenRight)).select(Direction.SOUTH, true, 1, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.MODEL, bottom)).select(Direction.SOUTH, true, 2, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottom)).select(Direction.SOUTH, true, 3, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottomOpenRight)).select(Direction.SOUTH, true, 4, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottomOpenLeft)).select(Direction.SOUTH, true, 1, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.MODEL, top)).select(Direction.SOUTH, true, 2, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, top)).select(Direction.SOUTH, true, 3, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, topOpenRight)).select(Direction.SOUTH, true, 4, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, topOpenLeft)).select(Direction.WEST, true, 1, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottomOpenRight)).select(Direction.WEST, true, 2, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottom)).select(Direction.WEST, true, 3, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottomOpenLeft)).select(Direction.WEST, true, 4, DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, bottom)).select(Direction.WEST, true, 1, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, topOpenRight)).select(Direction.WEST, true, 2, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, top)).select(Direction.WEST, true, 3, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, topOpenLeft)).select(Direction.WEST, true, 4, DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true).with(VariantProperties.MODEL, top))));
         this.registerSimpleItemModel(mediumCage, FAUtils.resource("item/medium_cage"));
+    }
+
+    private void createSecurityFence(Block fence, ModelTemplate barTop, ModelTemplate barMiddle, ModelTemplate barBottom, ModelTemplate barFoundation, ModelTemplate centerTop, ModelTemplate centerMiddle, ModelTemplate centerBottom, ModelTemplate postTop, ModelTemplate postMiddle, ModelTemplate postBottom, ModelTemplate postExtendedBottom) {
+        ResourceLocation barTopModel = barTop.createWithSuffix(fence, "_bar_top", new TextureMapping()
+                        .put(TextureSlot.TEXTURE, this.modLocation("block/bar"))
+                        .put(TextureSlot.PARTICLE, this.mcLocation("block/iron_bars")),
+                this.modelOutput);
+        ResourceLocation barMiddleModel = barMiddle.createWithSuffix(fence, "_bar_middle", new TextureMapping()
+                        .put(TextureSlot.TEXTURE, this.modLocation("block/bar"))
+                        .put(TextureSlot.PARTICLE, this.mcLocation("block/iron_bars")),
+                this.modelOutput);
+        ResourceLocation barBottomModel = barBottom.createWithSuffix(fence, "_bar_bottom", new TextureMapping()
+                        .put(TextureSlot.TEXTURE, this.modLocation("block/bar"))
+                        .put(TextureSlot.PARTICLE, this.mcLocation("block/iron_bars"))
+                        .put(TextureSlot.BOTTOM, this.mcLocation("block/stone_bricks")),
+                this.modelOutput);
+        ResourceLocation barFoundationModel = barFoundation.createWithSuffix(fence, "_bar_foundation", new TextureMapping()
+                        .put(TextureSlot.TEXTURE, this.mcLocation("block/stone_bricks"))
+                        .put(TextureSlot.PARTICLE, this.mcLocation("block/stone_bricks")),
+                this.modelOutput);
+        ResourceLocation centerTopModel = centerTop.createWithSuffix(fence, "_center_top", new TextureMapping()
+                        .put(TextureSlot.TEXTURE, this.modLocation("block/bar"))
+                        .put(TextureSlot.PARTICLE, this.mcLocation("block/iron_bars")),
+                this.modelOutput);
+        ResourceLocation centerMiddleModel = centerMiddle.createWithSuffix(fence, "_center_middle", new TextureMapping()
+                        .put(TextureSlot.TEXTURE, this.modLocation("block/bar"))
+                        .put(TextureSlot.PARTICLE, this.mcLocation("block/iron_bars")),
+                this.modelOutput);
+        ResourceLocation centerBottomModel = centerBottom.createWithSuffix(fence, "_center_bottom", new TextureMapping()
+                        .put(TextureSlot.TEXTURE, this.modLocation("block/bar"))
+                        .put(TextureSlot.PARTICLE, this.mcLocation("block/iron_bars"))
+                        .put(TextureSlot.BOTTOM, this.mcLocation("block/stone_bricks")),
+                this.modelOutput);
+        ResourceLocation postTopModel = postTop.createWithSuffix(fence, "_post_top", new TextureMapping()
+                        .put(TextureSlot.TEXTURE, this.modLocation("block/low_security_fence_post"))
+                        .put(TextureSlot.UP, this.modLocation("block/low_security_fence_post_lights"))
+                        .put(TextureSlot.PARTICLE, this.mcLocation("block/iron_block")),
+                this.modelOutput);
+        ResourceLocation postMiddleModel = postMiddle.createWithSuffix(fence, "_post_middle", new TextureMapping()
+                        .put(TextureSlot.TEXTURE, this.modLocation("block/low_security_fence_post"))
+                        .put(TextureSlot.PARTICLE, this.mcLocation("block/iron_block")),
+                this.modelOutput);
+        ResourceLocation postBottomModel = postBottom.createWithSuffix(fence, "_post_bottom", new TextureMapping()
+                        .put(TextureSlot.TEXTURE, this.modLocation("block/low_security_fence_post"))
+                        .put(TextureSlot.BOTTOM, this.mcLocation("block/stone_bricks"))
+                        .put(TextureSlot.PARTICLE, this.mcLocation("block/iron_block")),
+                this.modelOutput);
+        ResourceLocation postExtendedBottomModel = postExtendedBottom.createWithSuffix(fence, "_post_extended_bottom", new TextureMapping()
+                        .put(TextureSlot.TEXTURE, this.mcLocation("block/stone_bricks")),
+                this.modelOutput);
+        Condition shouldPost = Condition.or(
+                Condition.and(
+                        Condition.condition().term(LowSecurityFenceBlock.NORTH, true),
+                        Condition.condition().term(LowSecurityFenceBlock.EAST, true),
+                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, true),
+                        Condition.condition().term(LowSecurityFenceBlock.WEST, true)
+                ),
+                Condition.and(
+                        Condition.condition().term(LowSecurityFenceBlock.NORTH, false),
+                        Condition.condition().term(LowSecurityFenceBlock.EAST, false),
+                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, false),
+                        Condition.condition().term(LowSecurityFenceBlock.WEST, false)
+                ),
+                Condition.and(
+                        Condition.condition().term(LowSecurityFenceBlock.NORTH, true),
+                        Condition.condition().term(LowSecurityFenceBlock.EAST, false),
+                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, false),
+                        Condition.condition().term(LowSecurityFenceBlock.WEST, false)
+                ),
+                Condition.and(
+                        Condition.condition().term(LowSecurityFenceBlock.NORTH, false),
+                        Condition.condition().term(LowSecurityFenceBlock.EAST, true),
+                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, false),
+                        Condition.condition().term(LowSecurityFenceBlock.WEST, false)
+                ),
+                Condition.and(
+                        Condition.condition().term(LowSecurityFenceBlock.NORTH, false),
+                        Condition.condition().term(LowSecurityFenceBlock.EAST, false),
+                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, true),
+                        Condition.condition().term(LowSecurityFenceBlock.WEST, false)
+                ),
+                Condition.and(
+                        Condition.condition().term(LowSecurityFenceBlock.NORTH, false),
+                        Condition.condition().term(LowSecurityFenceBlock.EAST, false),
+                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, false),
+                        Condition.condition().term(LowSecurityFenceBlock.WEST, true)
+                ),
+                Condition.and(
+                        Condition.condition().term(LowSecurityFenceBlock.NORTH, true),
+                        Condition.condition().term(LowSecurityFenceBlock.EAST, true),
+                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, false),
+                        Condition.condition().term(LowSecurityFenceBlock.WEST, false)
+                ),
+                Condition.and(
+                        Condition.condition().term(LowSecurityFenceBlock.NORTH, false),
+                        Condition.condition().term(LowSecurityFenceBlock.EAST, true),
+                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, true),
+                        Condition.condition().term(LowSecurityFenceBlock.WEST, false)
+                ),
+                Condition.and(
+                        Condition.condition().term(LowSecurityFenceBlock.NORTH, false),
+                        Condition.condition().term(LowSecurityFenceBlock.EAST, false),
+                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, true),
+                        Condition.condition().term(LowSecurityFenceBlock.WEST, true)
+                ),
+                Condition.and(
+                        Condition.condition().term(LowSecurityFenceBlock.NORTH, true),
+                        Condition.condition().term(LowSecurityFenceBlock.EAST, false),
+                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, false),
+                        Condition.condition().term(LowSecurityFenceBlock.WEST, true)
+                ),
+                Condition.and(
+                        Condition.condition().term(LowSecurityFenceBlock.NORTH, true),
+                        Condition.condition().term(LowSecurityFenceBlock.EAST, true),
+                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, true),
+                        Condition.condition().term(LowSecurityFenceBlock.WEST, false)
+                ),
+                Condition.and(
+                        Condition.condition().term(LowSecurityFenceBlock.NORTH, false),
+                        Condition.condition().term(LowSecurityFenceBlock.EAST, true),
+                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, true),
+                        Condition.condition().term(LowSecurityFenceBlock.WEST, true)
+                ),
+                Condition.and(
+                        Condition.condition().term(LowSecurityFenceBlock.NORTH, true),
+                        Condition.condition().term(LowSecurityFenceBlock.EAST, false),
+                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, true),
+                        Condition.condition().term(LowSecurityFenceBlock.WEST, true)
+                ),
+                Condition.and(
+                        Condition.condition().term(LowSecurityFenceBlock.NORTH, true),
+                        Condition.condition().term(LowSecurityFenceBlock.EAST, true),
+                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, false),
+                        Condition.condition().term(LowSecurityFenceBlock.WEST, true)
+                )
+        );
+        this.block(MultiPartGenerator.multiPart(fence)
+                .with(Condition.or(
+                        Condition.and(
+                                Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.FOUNDATION),
+                                Condition.condition().term(LowSecurityFenceBlock.FORCE_POST, true)
+                        ),
+                        Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.FOUNDATION)
+                ), Variant.variant().with(VariantProperties.MODEL, postExtendedBottomModel))
+                .with(Condition.or(
+                        Condition.and(
+                                Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.BOTTOM),
+                                Condition.condition().term(LowSecurityFenceBlock.FORCE_POST, true)
+                        ),
+                        Condition.and(
+                                Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.BOTTOM),
+                                shouldPost
+                        )
+                ), Variant.variant().with(VariantProperties.MODEL, postBottomModel))
+                .with(
+                Condition.or(
+                        Condition.and(
+                                Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.MIDDLE),
+                                Condition.condition().term(LowSecurityFenceBlock.FORCE_POST, true)
+                        ),
+                        Condition.and(
+                                Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.MIDDLE),
+                                shouldPost
+                        )
+                ), Variant.variant().with(VariantProperties.MODEL, postMiddleModel))
+                .with(Condition.or(
+                        Condition.and(
+                                Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.TOP),
+                                Condition.condition().term(LowSecurityFenceBlock.FORCE_POST, true)
+                        ),
+                        Condition.and(
+                                Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.TOP),
+                                shouldPost
+                        )
+                ), Variant.variant().with(VariantProperties.MODEL, postTopModel))
+                .with(Condition.and(
+                        Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.BOTTOM),
+                        Condition.condition().term(LowSecurityFenceBlock.NORTH, true),
+                        Condition.condition().term(LowSecurityFenceBlock.EAST, false),
+                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, true),
+                        Condition.condition().term(LowSecurityFenceBlock.WEST, false),
+                        Condition.condition().term(LowSecurityFenceBlock.FORCE_POST, false)
+                ), Variant.variant().with(VariantProperties.MODEL, centerBottomModel))
+                .with(Condition.and(
+                        Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.BOTTOM),
+                        Condition.condition().term(LowSecurityFenceBlock.NORTH, false),
+                        Condition.condition().term(LowSecurityFenceBlock.EAST, true),
+                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, false),
+                        Condition.condition().term(LowSecurityFenceBlock.WEST, true),
+                        Condition.condition().term(LowSecurityFenceBlock.FORCE_POST, false)
+                ), Variant.variant().with(VariantProperties.MODEL, centerBottomModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.and(
+                        Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.MIDDLE),
+                        Condition.condition().term(LowSecurityFenceBlock.NORTH, true),
+                        Condition.condition().term(LowSecurityFenceBlock.EAST, false),
+                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, true),
+                        Condition.condition().term(LowSecurityFenceBlock.WEST, false),
+                        Condition.condition().term(LowSecurityFenceBlock.FORCE_POST, false)
+                ), Variant.variant().with(VariantProperties.MODEL, centerMiddleModel))
+                .with(Condition.and(
+                        Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.MIDDLE),
+                        Condition.condition().term(LowSecurityFenceBlock.NORTH, false),
+                        Condition.condition().term(LowSecurityFenceBlock.EAST, true),
+                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, false),
+                        Condition.condition().term(LowSecurityFenceBlock.WEST, true),
+                        Condition.condition().term(LowSecurityFenceBlock.FORCE_POST, false)
+                ), Variant.variant().with(VariantProperties.MODEL, centerMiddleModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.and(
+                        Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.TOP),
+                        Condition.condition().term(LowSecurityFenceBlock.NORTH, true),
+                        Condition.condition().term(LowSecurityFenceBlock.EAST, false),
+                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, true),
+                        Condition.condition().term(LowSecurityFenceBlock.WEST, false),
+                        Condition.condition().term(LowSecurityFenceBlock.FORCE_POST, false)
+                ), Variant.variant().with(VariantProperties.MODEL, centerTopModel))
+                .with(Condition.and(
+                        Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.TOP),
+                        Condition.condition().term(LowSecurityFenceBlock.NORTH, false),
+                        Condition.condition().term(LowSecurityFenceBlock.EAST, true),
+                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, false),
+                        Condition.condition().term(LowSecurityFenceBlock.WEST, true),
+                        Condition.condition().term(LowSecurityFenceBlock.FORCE_POST, false)
+                ), Variant.variant().with(VariantProperties.MODEL, centerTopModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.FOUNDATION).term(LowSecurityFenceBlock.NORTH, true)), Variant.variant().with(VariantProperties.MODEL, barFoundationModel))
+                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.BOTTOM).term(LowSecurityFenceBlock.NORTH, true)), Variant.variant().with(VariantProperties.MODEL, barBottomModel))
+                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.MIDDLE).term(LowSecurityFenceBlock.NORTH, true)), Variant.variant().with(VariantProperties.MODEL, barMiddleModel))
+                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.TOP).term(LowSecurityFenceBlock.NORTH, true)), Variant.variant().with(VariantProperties.MODEL, barTopModel))
+                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.FOUNDATION).term(LowSecurityFenceBlock.EAST, true)), Variant.variant().with(VariantProperties.MODEL, barFoundationModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.BOTTOM).term(LowSecurityFenceBlock.EAST, true)), Variant.variant().with(VariantProperties.MODEL, barBottomModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.MIDDLE).term(LowSecurityFenceBlock.EAST, true)), Variant.variant().with(VariantProperties.MODEL, barMiddleModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.TOP).term(LowSecurityFenceBlock.EAST, true)), Variant.variant().with(VariantProperties.MODEL, barTopModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.FOUNDATION).term(LowSecurityFenceBlock.SOUTH, true)), Variant.variant().with(VariantProperties.MODEL, barFoundationModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.BOTTOM).term(LowSecurityFenceBlock.SOUTH, true)), Variant.variant().with(VariantProperties.MODEL, barBottomModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.MIDDLE).term(LowSecurityFenceBlock.SOUTH, true)), Variant.variant().with(VariantProperties.MODEL, barMiddleModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.TOP).term(LowSecurityFenceBlock.SOUTH, true)), Variant.variant().with(VariantProperties.MODEL, barTopModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.FOUNDATION).term(LowSecurityFenceBlock.WEST, true)), Variant.variant().with(VariantProperties.MODEL, barFoundationModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.BOTTOM).term(LowSecurityFenceBlock.WEST, true)), Variant.variant().with(VariantProperties.MODEL, barBottomModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.MIDDLE).term(LowSecurityFenceBlock.WEST, true)), Variant.variant().with(VariantProperties.MODEL, barMiddleModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.TOP).term(LowSecurityFenceBlock.WEST, true)), Variant.variant().with(VariantProperties.MODEL, barTopModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true))
+        );
+        this.blockModelGenerators.registerSimpleItemModel(fence, postBottomModel);
     }
 
     private void createCycadHead(Block cycadHead) {
