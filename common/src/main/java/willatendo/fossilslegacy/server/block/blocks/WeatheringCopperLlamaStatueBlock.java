@@ -14,11 +14,6 @@ public class WeatheringCopperLlamaStatueBlock extends LlamaStatueBlock implement
     public static final MapCodec<WeatheringCopperLlamaStatueBlock> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(WeatherState.CODEC.fieldOf("weathering_state").forGetter(ChangeOverTimeBlock::getAge), Block.propertiesCodec()).apply(instance, WeatheringCopperLlamaStatueBlock::new));
     private final WeatheringCopper.WeatherState weatherState;
 
-    @Override
-    public MapCodec<? extends WeatheringCopperLlamaStatueBlock> codec() {
-        return CODEC;
-    }
-
     public WeatheringCopperLlamaStatueBlock(WeatheringCopper.WeatherState weatherState, Properties properties) {
         super(properties);
         this.weatherState = weatherState;
@@ -37,5 +32,10 @@ public class WeatheringCopperLlamaStatueBlock extends LlamaStatueBlock implement
     @Override
     public WeatherState getAge() {
         return this.weatherState;
+    }
+
+    @Override
+    public MapCodec<? extends WeatheringCopperLlamaStatueBlock> codec() {
+        return CODEC;
     }
 }

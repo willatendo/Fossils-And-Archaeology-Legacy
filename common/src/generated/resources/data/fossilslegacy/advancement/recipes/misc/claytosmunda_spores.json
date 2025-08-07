@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_claytosmunda_dna": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:claytosmunda_dna"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:claytosmunda_spores"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_claytosmunda_dna"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:claytosmunda_spores"
+    ]
+  }
+}

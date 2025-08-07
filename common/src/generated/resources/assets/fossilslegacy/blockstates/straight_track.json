@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "fossilslegacy:block/straight_track",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "fossilslegacy:block/straight_track"
+    },
+    "facing=south": {
+      "model": "fossilslegacy:block/straight_track",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "fossilslegacy:block/straight_track",
+      "y": 270
+    }
+  }
+}

@@ -27,6 +27,9 @@ public final class FAAncientAxeBonuses {
     public static final ResourceKey<AncientAxeBonus> GINKGO_LOG_TO_GINKGO_PLANKS = FAAncientAxeBonuses.create("ginkgo_log_to_ginkgo_planks");
     public static final ResourceKey<AncientAxeBonus> LEPIDODENDRON_LOG_TO_LEPIDODENDRON_PLANKS = FAAncientAxeBonuses.create("lepidodendron_log_to_lepidodendron_planks");
     public static final ResourceKey<AncientAxeBonus> SIGILLARIA_LOG_TO_SIGILLARIA_PLANKS = FAAncientAxeBonuses.create("sigillaria_log_to_sigillaria_planks");
+    public static final ResourceKey<AncientAxeBonus> ARAUCARIOXYLON_LOG_TO_ARAUCARIOXYLON_PLANKS = FAAncientAxeBonuses.create("araucarioxylon_log_to_araucarioxylon_planks");
+    public static final ResourceKey<AncientAxeBonus> CORDAITES_LOG_TO_CORDAITES_PLANKS = FAAncientAxeBonuses.create("cordaites_log_to_cordaites_planks");
+    public static final ResourceKey<AncientAxeBonus> WOLLEMIA_LOG_TO_WOLLEMIA_PLANKS = FAAncientAxeBonuses.create("wollemia_log_to_wollemia_planks");
 
     private static ResourceKey<AncientAxeBonus> create(String name) {
         return ResourceKey.create(FARegistries.ANCIENT_AXE_BONUS, FAUtils.resource(name));
@@ -53,5 +56,8 @@ public final class FAAncientAxeBonuses {
         FAAncientAxeBonuses.register(bootstrapContext, GINKGO_LOG_TO_GINKGO_PLANKS, FABlocks.GINKGO_LOG.get(), new ItemStack(FABlocks.GINKGO_PLANKS.get()), 1, 3);
         FAAncientAxeBonuses.register(bootstrapContext, LEPIDODENDRON_LOG_TO_LEPIDODENDRON_PLANKS, FABlocks.LEPIDODENDRON_LOG.get(), new ItemStack(FABlocks.LEPIDODENDRON_PLANKS.get()), 1, 3);
         FAAncientAxeBonuses.register(bootstrapContext, SIGILLARIA_LOG_TO_SIGILLARIA_PLANKS, FABlocks.SIGILLARIA_LOG.get(), new ItemStack(FABlocks.SIGILLARIA_PLANKS.get()), 1, 3);
+        FAAncientAxeBonuses.register(bootstrapContext, ARAUCARIOXYLON_LOG_TO_ARAUCARIOXYLON_PLANKS, FABlocks.ARAUCARIOXYLON_LOG.get(), new ItemStack(FABlocks.ARAUCARIOXYLON_PLANKS.get()), 1, 3);
+        FAAncientAxeBonuses.register(bootstrapContext, CORDAITES_LOG_TO_CORDAITES_PLANKS, FABlocks.CORDAITES_LOG.get(), new ItemStack(FABlocks.CORDAITES_PLANKS.get()), 1, 3);
+        FAAncientAxeBonuses.register(bootstrapContext, WOLLEMIA_LOG_TO_WOLLEMIA_PLANKS, FABlocks.WOLLEMIA_LOG.get(), new ItemStack(FABlocks.WOLLEMIA_PLANKS.get()), 1, 3);
     }
 }

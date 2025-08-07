@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "wooden_fence_gate",
+  "key": {
+    "#": "fossilslegacy:cordaites_planks",
+    "$": "minecraft:stick"
+  },
+  "pattern": [
+    "$#$",
+    "$#$"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:cordaites_fence_gate"
+  }
+}

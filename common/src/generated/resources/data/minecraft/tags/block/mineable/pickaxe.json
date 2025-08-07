@@ -48,6 +48,9 @@
     "fossilslegacy:feeder",
     "fossilslegacy:iced_stone",
     "fossilslegacy:small_cage",
-    "fossilslegacy:medium_cage"
+    "fossilslegacy:medium_cage",
+    "fossilslegacy:straight_track",
+    "fossilslegacy:corner_track",
+    "fossilslegacy:ramp_track"
   ]
 }

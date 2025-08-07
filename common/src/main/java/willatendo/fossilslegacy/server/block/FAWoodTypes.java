@@ -9,11 +9,14 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FAWoodTypes {
     public static final WoodType ARAUCARIA = register("araucaria", FABlockSetTypes.ARAUCARIA);
+    public static final WoodType ARAUCARIOXYLON = register("araucarioxylon", FABlockSetTypes.ARAUCARIA);
     public static final WoodType ARCHAEOPTERIS = register("archaeopteris", FABlockSetTypes.ARCHAEOPTERIS);
     public static final WoodType CALAMITES = register("calamites", FABlockSetTypes.CALAMITES);
+    public static final WoodType CORDAITES = register("cordaites", FABlockSetTypes.CORDAITES);
     public static final WoodType GINKGO = register("ginkgo", FABlockSetTypes.GINKGO);
     public static final WoodType LEPIDODENDRON = register("lepidodendron", FABlockSetTypes.LEPIDODENDRON);
     public static final WoodType SIGILLARIA = register("sigillaria", FABlockSetTypes.SIGILLARIA);
+    public static final WoodType WOLLEMIA = register("wollemia", FABlockSetTypes.WOLLEMIA);
 
     public static WoodType register(String id, BlockSetType blockSetType) {
         return WoodType.register(new WoodType(FAUtils.ID + ":" + id, blockSetType));

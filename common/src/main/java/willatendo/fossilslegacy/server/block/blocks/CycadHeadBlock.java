@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.block.blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -32,13 +33,14 @@ import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.tags.FABlockTags;
 
 public class CycadHeadBlock extends Block implements BonemealableBlock {
+    public static final MapCodec<CycadHeadBlock> CODEC = Block.simpleCodec(CycadHeadBlock::new);
     private static final VoxelShape SHAPE_CONE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 16.0D, 12.0D);
     private static final VoxelShape SHAPE_NO_CONE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 10.0D, 12.0D);
     public static final BooleanProperty HAS_CONE = BooleanProperty.create("has_cone");
 
     public CycadHeadBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(HAS_CONE, false));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(HAS_CONE, false));
     }
 
     @Override
@@ -159,5 +161,10 @@ public class CycadHeadBlock extends Block implements BonemealableBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(HAS_CONE);
+    }
+
+    @Override
+    protected MapCodec<? extends Block> codec() {
+        return CODEC;
     }
 }

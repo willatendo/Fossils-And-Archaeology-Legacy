@@ -1,4 +1,4 @@
-// 1.21.4	2025-08-01T00:34:01.4537014	Tags for minecraft:item mod id fossilslegacy
+// 1.21.4	2025-08-07T04:02:44.9607794	Tags for minecraft:item mod id fossilslegacy
 cc1c82adb966f74da9898f8ff3e7ad473be3401f data/c/tags/item/bones.json
 d31244a2a7f7cb4224e5362dca80427850e5daa5 data/c/tags/item/buckets.json
 8773b7b9cd8f313f03d59d28a609bd9f1434b870 data/c/tags/item/eggs.json
@@ -8,7 +8,7 @@ edc32d34e7f30871a0b59dd40eb9946058a7aff3 data/c/tags/item/fence_gates/wooden.jso
 ac39565003d3d0c0fb56f5e9a7359a23c67d8dba data/c/tags/item/foods/food_poisoning.json
 839ee61d36e5d0eeb0fa30c6a0658dab1151bd76 data/c/tags/item/foods/raw_meat.json
 42b1f3f1d41a30d5638f799c098714b5d31d9ad3 data/c/tags/item/gems.json
-73dd1396abaec4e06a7332e0b8f1877b4e89aa29 data/c/tags/item/seeds.json
+f8bd8d4e3a38ab01ebdc1a4c365a9bbde3054d8a data/c/tags/item/seeds.json
 21fd716704c92101bd22c663fd11842d681b5cb5 data/c/tags/item/tools.json
 78b35916f2f78650ea9a23cd8c5c283e8b50f572 data/c/tags/item/tools/melee_weapon.json
 fc0f62709299e4c131dfcbfbaa30d360aa0d2120 data/c/tags/item/tools/mining_tool.json
@@ -16,6 +16,7 @@ fc0f62709299e4c131dfcbfbaa30d360aa0d2120 data/c/tags/item/tools/mining_tool.json
 361888d5f870633bf3815eaaa14c28e67d7c9db3 data/c/tags/item/tools/shear.json
 a75ea554119002d76a94a95c05de2c52f929102a data/fossilslegacy/tags/item/animal_dna.json
 8fed1c7774e26d293c99e32105efe5a57c3a9c50 data/fossilslegacy/tags/item/araucaria_logs.json
+d3b3dcbfa8e5eb6cceb6943194af15f55784acb5 data/fossilslegacy/tags/item/araucarioxylon_logs.json
 362a23698630e3353e7d1dc805d0198527d13961 data/fossilslegacy/tags/item/archaeopteris_logs.json
 09a36530ab315d1fcf7219dea2d86863dca9bdce data/fossilslegacy/tags/item/cake_eggs.json
 80e160a91f3744e8cb737cde249c3d4059ae1424 data/fossilslegacy/tags/item/calamites_logs.json
@@ -38,6 +39,7 @@ e71ff39a58e6626fffa365ff9e1ee48712eecece data/fossilslegacy/tags/item/commandabl
 1ad920aa65e2706dabb6265f3b12546ab33e8936 data/fossilslegacy/tags/item/commandable/therizinosaurus.json
 1ad920aa65e2706dabb6265f3b12546ab33e8936 data/fossilslegacy/tags/item/commandable/triceratops.json
 e71ff39a58e6626fffa365ff9e1ee48712eecece data/fossilslegacy/tags/item/commandable/tyrannosaurus.json
+45df8c78730a12d1f074363d932b4397aae6699b data/fossilslegacy/tags/item/cordaites_logs.json
 138ec2ff922580dd084cd402c834b38063afce4d data/fossilslegacy/tags/item/cultivators.json
 cc971faa0f00f993095c0060588d78ae00c5b668 data/fossilslegacy/tags/item/darts.json
 7ca1dc2c1ad73e4bb28964a6bff9a9456dfdd8c4 data/fossilslegacy/tags/item/dino_eggs.json
@@ -48,7 +50,7 @@ ece1fe464f1ad83147253b99fb9cf368290ea3f8 data/fossilslegacy/tags/item/fossils.js
 0d91c860420e5c6d47e16f6376dad63806657b0b data/fossilslegacy/tags/item/froglights.json
 825845803d71c17e3b0b9cafb0e7df950bd7abef data/fossilslegacy/tags/item/ginkgo_logs.json
 ccf86a5c4d3dc683416d936455d4d4147ed1305a data/fossilslegacy/tags/item/hammer.json
-48bbdf7fbd935105ec6716dabc193fdfc11f0e85 data/fossilslegacy/tags/item/herbivore_foods.json
+4950af7f2d4476900e9ae0acf4fe47b583fbbe1d data/fossilslegacy/tags/item/herbivore_foods.json
 607028286fb160d85ab7b759da13e96c3efc571b data/fossilslegacy/tags/item/jade.json
 78040daf8f34792f01470ee3d3fb0482edd27bbc data/fossilslegacy/tags/item/key.json
 dad829093473a418f24cdab5a8ffb6116744f27f data/fossilslegacy/tags/item/lepidodendron_logs.json
@@ -58,10 +60,11 @@ db326b911d785c43db1f6cda0d0c5d51709084fe data/fossilslegacy/tags/item/omnivore_f
 e9bfd0f4d62c954fbeab9f6a304b1f513f193d55 data/fossilslegacy/tags/item/palaeozoic_fossil.json
 6a2ec8a487cf8a17501c5ffe9b096c48e6350237 data/fossilslegacy/tags/item/piglin_taming_armor.json
 77b4cf8ac74a61bab607715b78ea1f6556e53268 data/fossilslegacy/tags/item/piscivore_foods.json
-988170bab7224f845fc9456aecb5b61b1f2c88a1 data/fossilslegacy/tags/item/plant_dna.json
+b13a57e2f5dd452b10fc6c8de79a2f50b08c4b48 data/fossilslegacy/tags/item/plant_dna.json
 a2af2e36b3b3a506a70a88488ac2b09916eaf346 data/fossilslegacy/tags/item/repair_when_broken_in_archaeology_table.json
 de2270928560d90749e940855dd531b036c79510 data/fossilslegacy/tags/item/scarab_gem_tool_materials.json
 f7230fc0dcd04034cf98f0304755274776cb4ce1 data/fossilslegacy/tags/item/sigillaria_logs.json
+b1f1001e32f447380a88ab813a7d61d4826533d9 data/fossilslegacy/tags/item/wollemia_logs.json
 b0df71f7b6d498abdffd45df38af1ec699c76646 data/minecraft/tags/item/axes.json
 6b1f65f60dbb2a79c22abdac12bdd9e11bcdfd04 data/minecraft/tags/item/boats.json
 78b35916f2f78650ea9a23cd8c5c283e8b50f572 data/minecraft/tags/item/breaks_decorated_pots.json
@@ -89,7 +92,7 @@ da9b18859d0986e261248bd5865cd099b4d38dab data/minecraft/tags/item/gaze_disguise_
 1b7f437b717d46be0517e48d2cd176e90d09c3ba data/minecraft/tags/item/hoes.json
 4e72007736f059e7d325af6353edc2518b14b6d1 data/minecraft/tags/item/leaves.json
 67cf83bacc162fdf2a418cef8c1a6bc8dd6144a8 data/minecraft/tags/item/leg_armor.json
-43c927760a5fde3d1f4c8ed7ece60f4874567eeb data/minecraft/tags/item/logs_that_burn.json
+684a488b4c92234bbb294294885de7806096616c data/minecraft/tags/item/logs_that_burn.json
 46f6bc4afb079aa2508d68028c4ca9dc97ee2702 data/minecraft/tags/item/meat.json
 fc0f62709299e4c131dfcbfbaa30d360aa0d2120 data/minecraft/tags/item/pickaxes.json
 3feade3c2b3b9a995bde4ee2443381c609ef1e94 data/minecraft/tags/item/planks.json

@@ -237,10 +237,15 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("block.fossilslegacy.small_cage.desc", "In cage: %s");
         this.add("block.fossilslegacy.cage.locked", "Cage is locked!");
         this.add("block.fossilslegacy.cage.incorrect_key", "Key does not fit!");
-        this.add(FABlocks.LOW_SECURITY_FENCE.get());
+        this.add(FABlocks.STRAIGHT_TRACK.get());
+        this.add(FABlocks.CORNER_TRACK.get());
+        this.add(FABlocks.RAMP_TRACK.get());
         this.add(FABlocks.CYCAD_HEAD.get());
         this.add(FABlocks.CYCAD_LOG.get());
         this.add(FABlocks.COOKSONIA.get());
+        this.add(FABlocks.CLAYTOSMUNDA.get());
+        this.add(FABlocks.CYCADEOIDEA.get());
+        this.add(FABlocks.MACROTAENIOPTERIS.get());
         this.add(FABlocks.LEPIDODENDRON_PLANKS.get());
         this.add(FABlocks.LEPIDODENDRON_SAPLING.get());
         this.add(FABlocks.LEPIDODENDRON_LOG.get());
@@ -292,6 +297,23 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.CALAMITES_FENCE_GATE.get());
         this.add(FABlocks.CALAMITES_BUTTON.get());
         this.add(FABlocks.CALAMITES_SLAB.get());
+        this.add(FABlocks.CORDAITES_PLANKS.get());
+        this.add(FABlocks.CORDAITES_SAPLING.get());
+        this.add(FABlocks.CORDAITES_LOG.get());
+        this.add(FABlocks.STRIPPED_CORDAITES_LOG.get());
+        this.add(FABlocks.CORDAITES_WOOD.get());
+        this.add(FABlocks.STRIPPED_CORDAITES_WOOD.get());
+        this.add(FABlocks.CORDAITES_LEAVES.get());
+        this.add(FABlocks.CORDAITES_STAIRS.get());
+        this.add(FABlocks.CORDAITES_SIGN.get());
+        this.add(FABlocks.CORDAITES_DOOR.get());
+        this.add(FABlocks.CORDAITES_HANGING_SIGN.get());
+        this.add(FABlocks.CORDAITES_PRESSURE_PLATE.get());
+        this.add(FABlocks.CORDAITES_FENCE.get());
+        this.add(FABlocks.CORDAITES_TRAPDOOR.get());
+        this.add(FABlocks.CORDAITES_FENCE_GATE.get());
+        this.add(FABlocks.CORDAITES_BUTTON.get());
+        this.add(FABlocks.CORDAITES_SLAB.get());
         this.add(FABlocks.ARCHAEOPTERIS_PLANKS.get());
         this.add(FABlocks.ARCHAEOPTERIS_SAPLING.get());
         this.add(FABlocks.ARCHAEOPTERIS_LOG.get());
@@ -435,11 +457,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("container.fossilslegacy.time_machine.start", "Start");
 
         // Creative Mode Tabs
-        this.add(FACreativeModeTabs.FA_BLOCKS.get(), "F/A: Blocks");
-        this.add(FACreativeModeTabs.FA_ARCHAEOLOGY_ITEMS.get(), "F/A: Archaeology Items");
-        this.add(FACreativeModeTabs.FA_PALAEONTOLOGY_ITEMS.get(), "F/A: Palaeontology Items");
-        this.add(FACreativeModeTabs.FA_PALAEOBOTANY_ITEMS.get(), "F/A: Palaeobotany Items");
-        this.add(FACreativeModeTabs.FA_OTHER_ITEMS.get(), "F/A: Other Items");
+        this.add(FACreativeModeTabs.FA_ARCHAEOLOGY.get(), "F/A: Archaeology");
+        this.add(FACreativeModeTabs.FA_PALAEONTOLOGY.get(), "F/A: Palaeontology");
+        this.add(FACreativeModeTabs.FA_ALL.get(), "F/A: All");
 
         // Deaths
         this.add("death.attack.dinosaur_starve", "%1$s starved to death");
@@ -609,6 +629,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAEntityTypes.ARCHAEOPTERIS_CHEST_BOAT.get(), "Archaeopteris Boat with Chest");
         this.add(FAEntityTypes.CALAMITES_BOAT.get(), "Calamites Boat");
         this.add(FAEntityTypes.CALAMITES_CHEST_BOAT.get(), "Calamites Boat with Chest");
+        this.add(FAEntityTypes.CORDAITES_BOAT.get(), "Cordaites Boat");
+        this.add(FAEntityTypes.CORDAITES_CHEST_BOAT.get(), "Cordaites Boat with Chest");
         this.add(FAEntityTypes.GINKGO_BOAT.get(), "Ginkgo Boat");
         this.add(FAEntityTypes.GINKGO_CHEST_BOAT.get(), "Ginkgo Boat with Chest");
         this.add(FAEntityTypes.LEPIDODENDRON_BOAT.get(), "Calamites Boat");
@@ -706,10 +728,12 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.ELASMOTHERIUM_DNA.get(), "Elasmotherium DNA");
         this.add(FAItems.BARYONYX_DNA.get(), "Baryonyx DNA");
         this.add(FAItems.ISOTELUS_DNA.get(), "Isotelus DNA");
-        this.add(FAItems.CYCAD_DNA.get());
-        this.add(FAItems.COOKSONIA_DNA.get());
-        this.add(FAItems.HORSETAIL_DNA.get());
-        this.add(FAItems.JURASSIC_FERN_DNA.get());
+        this.add(FAItems.CYCAD_DNA.get(), "Cycad DNA");
+        this.add(FAItems.CYCADEOIDEA_DNA.get(), "Cycadeoidea DNA");
+        this.add(FAItems.CLAYTOSMUNDA_DNA.get(), "Claytosmunda DNA");
+        this.add(FAItems.COOKSONIA_DNA.get(), "Cooksonia DNA");
+        this.add(FAItems.HORSETAIL_DNA.get(), "Horsetail DNA");
+        this.add(FAItems.JURASSIC_FERN_DNA.get(), "Jurassic Fern DNA");
         this.add(FAItems.LEPIDODENDRON_DNA.get(), "Lepidodendron DNA");
         this.add(FAItems.SIGILLARIA_DNA.get(), "Sigillaria DNA");
         this.add(FAItems.CALAMITES_DNA.get(), "Calamites DNA");
@@ -721,6 +745,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.BLANK_DNA.get(), "Blank DNA");
         this.add(FAItems.CYCAD_CONE.get());
         this.add(FAItems.COOKSONIA_SPORES.get());
+        this.add(FAItems.CLAYTOSMUNDA_SPORES.get());
+        this.add(FAItems.CYCADEOIDEA_SEED.get());
         this.add(FAItems.LEPIDODENDRON_CONE.get());
         this.add(FAItems.SIGILLARIA_SPORE.get());
         this.add(FAItems.CALAMITES_SPORE.get());
@@ -1403,6 +1429,12 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.GINKGO_CHEST_BOAT.get(), "Ginkgo Boat with Chest");
         this.add(FAItems.ARAUCARIA_BOAT.get());
         this.add(FAItems.ARAUCARIA_CHEST_BOAT.get(), "Araucaria Boat with Chest");
+        this.add(FAItems.ARAUCARIOXYLON_BOAT.get());
+        this.add(FAItems.ARAUCARIOXYLON_CHEST_BOAT.get(), "Araucarioxylon Boat with Chest");
+        this.add(FAItems.CORDAITES_BOAT.get());
+        this.add(FAItems.CORDAITES_CHEST_BOAT.get(), "Cordaites Boat with Chest");
+        this.add(FAItems.WOLLEMIA_BOAT.get());
+        this.add(FAItems.WOLLEMIA_CHEST_BOAT.get(), "Wollemia Boat with Chest");
 
         this.add(FAItems.DEBUG_MAX_HUNGER.get(), "Debug Max Hunger");
         this.add(FAItems.DEBUG_MAX_HEALTH.get(), "Debug Max Health");
@@ -1813,6 +1845,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItemTags.ANCIENT_TOOL_MATERIALS, "Ancient Tool Materials");
         this.add(FAItemTags.ANKYLOSAURUS_COMMANDABLES, "Ankylosaurus Commandables");
         this.add(FAItemTags.ARAUCARIA_LOGS, "Araucaria Logs");
+        this.add(FAItemTags.ARAUCARIOXYLON_LOGS, "Araucarioxylon Logs");
         this.add(FAItemTags.ARCHAEOPTERIS_LOGS, "Archaeopteris Logs");
         this.add(FAItemTags.BARYONYX_COMMANDABLES, "Baryonyx Commandables");
         this.add(FAItemTags.BRACHIOSAURUS_COMMANDABLES, "Brachiosaurus Commandables");
@@ -1822,6 +1855,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItemTags.CARNOTAURUS_COMMANDABLES, "Canotaurus Commandables");
         this.add(FAItemTags.CENOZOIC_FOSSIL, "Cenozoic Fossil");
         this.add(FAItemTags.COMPSOGNATHUS_COMMANDABLES, "Compsognathus Commandables");
+        this.add(FAItemTags.CORDAITES_LOGS, "Cordaites Logs");
         this.add(FAItemTags.CRYOLOPHOSAURUS_COMMANDABLES, "Cryolophosaurus Commandables");
         this.add(FAItemTags.CULTIVATORS, "Cultivators");
         this.add(FAItemTags.DARTS, "Darts");
@@ -1856,6 +1890,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItemTags.TRICERATOPS_COMMANDABLES, "Triceratops Commandables");
         this.add(FAItemTags.THERIZINOSAURUS_COMMANDABLES, "Therizinosaurus Commandables");
         this.add(FAItemTags.TYRANNOSAURUS_COMMANDABLES, "Tyrannosaurus Commandables");
+        this.add(FAItemTags.WOLLEMIA_LOGS, "Wollemia Logs");
 
         this.add(FAStoneTabletVariantTags.PLACEABLE, "Placeable");
 

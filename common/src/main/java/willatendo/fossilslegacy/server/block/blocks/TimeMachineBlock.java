@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.block.blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -23,6 +24,7 @@ import willatendo.fossilslegacy.server.block.entity.entities.TimeMachineBlockEnt
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class TimeMachineBlock extends Block implements EntityBlock {
+    public static final MapCodec<TimeMachineBlock> CODEC = Block.simpleCodec(TimeMachineBlock::new);
     public static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D);
 
     public TimeMachineBlock(Properties properties) {
@@ -83,5 +85,10 @@ public class TimeMachineBlock extends Block implements EntityBlock {
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
         return new TimeMachineBlockEntity(blockPos, blockState);
+    }
+
+    @Override
+    protected MapCodec<? extends Block> codec() {
+        return CODEC;
     }
 }

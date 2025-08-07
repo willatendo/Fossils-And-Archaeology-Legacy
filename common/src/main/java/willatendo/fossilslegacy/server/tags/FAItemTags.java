@@ -13,6 +13,7 @@ public class FAItemTags {
     public static final TagKey<Item> ANCIENT_TOOL_MATERIALS = ITEM_TAGS.register("ancient_tool_materials");
     public static final TagKey<Item> ANKYLOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/ankylosaurus");
     public static final TagKey<Item> ARAUCARIA_LOGS = ITEM_TAGS.register("araucaria_logs");
+    public static final TagKey<Item> ARAUCARIOXYLON_LOGS = ITEM_TAGS.register("araucarioxylon_logs");
     public static final TagKey<Item> ARCHAEOPTERIS_LOGS = ITEM_TAGS.register("archaeopteris_logs");
     public static final TagKey<Item> BARYONYX_COMMANDABLES = ITEM_TAGS.register("commandable/baryonyx");
     public static final TagKey<Item> BRACHIOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/brachiosaurus");
@@ -22,6 +23,7 @@ public class FAItemTags {
     public static final TagKey<Item> CARNOTAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/carnotaurus");
     public static final TagKey<Item> CENOZOIC_FOSSIL = ITEM_TAGS.register("cenozoic_fossil");
     public static final TagKey<Item> COMPSOGNATHUS_COMMANDABLES = ITEM_TAGS.register("commandable/compsognathus");
+    public static final TagKey<Item> CORDAITES_LOGS = ITEM_TAGS.register("cordaites_logs");
     public static final TagKey<Item> CRYOLOPHOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/cryolophosaurus");
     public static final TagKey<Item> CULTIVATORS = ITEM_TAGS.register("cultivators");
     public static final TagKey<Item> DAGGER_TOOL_MATERIALS = ITEM_TAGS.register("dagger_tool_materials");
@@ -61,4 +63,5 @@ public class FAItemTags {
     public static final TagKey<Item> TRICERATOPS_COMMANDABLES = ITEM_TAGS.register("commandable/triceratops");
     public static final TagKey<Item> THERIZINOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/therizinosaurus");
     public static final TagKey<Item> TYRANNOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/tyrannosaurus");
+    public static final TagKey<Item> WOLLEMIA_LOGS = ITEM_TAGS.register("wollemia_logs");
 }

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "fossilslegacy:block/cordaites_slab"
+    },
+    "type=double": {
+      "model": "fossilslegacy:block/cordaites_planks"
+    },
+    "type=top": {
+      "model": "fossilslegacy:block/cordaites_slab_top"
+    }
+  }
+}

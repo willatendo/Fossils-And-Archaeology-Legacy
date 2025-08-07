@@ -104,7 +104,7 @@ public final class BasicEvents {
             protected ItemStack execute(BlockSource blockSource, ItemStack itemStack) {
                 Level level = blockSource.level();
                 BlockPos blockPos = blockSource.pos().relative(blockSource.state().getValue(DispenserBlock.FACING));
-                SkullBlock skullBlock = (SkullBlock) FABlocks.SKULL_LANTERN_BLOCK.get();
+                SkullBlock skullBlock = FABlocks.SKULL_LANTERN_BLOCK.get();
                 if (level.isEmptyBlock(blockPos) && skullBlock.canSpawnAnu(level, blockPos)) {
                     if (!level.isClientSide()) {
                         level.setBlock(blockPos, skullBlock.defaultBlockState(), 3);
@@ -139,6 +139,16 @@ public final class BasicEvents {
         FlammablesModification.register(FABlocks.STRIPPED_ARAUCARIA_WOOD.get(), 5, 5);
         FlammablesModification.register(FABlocks.ARAUCARIA_WOOD.get(), 5, 5);
         FlammablesModification.register(FABlocks.ARAUCARIA_LEAVES.get(), 30, 60);
+        FlammablesModification.register(FABlocks.ARAUCARIOXYLON_PLANKS.get(), 5, 20);
+        FlammablesModification.register(FABlocks.ARAUCARIOXYLON_SLAB.get(), 5, 20);
+        FlammablesModification.register(FABlocks.ARAUCARIOXYLON_FENCE_GATE.get(), 5, 20);
+        FlammablesModification.register(FABlocks.ARAUCARIOXYLON_FENCE.get(), 5, 20);
+        FlammablesModification.register(FABlocks.ARAUCARIOXYLON_STAIRS.get(), 5, 20);
+        FlammablesModification.register(FABlocks.ARAUCARIOXYLON_LOG.get(), 5, 5);
+        FlammablesModification.register(FABlocks.STRIPPED_ARAUCARIOXYLON_LOG.get(), 5, 5);
+        FlammablesModification.register(FABlocks.STRIPPED_ARAUCARIOXYLON_WOOD.get(), 5, 5);
+        FlammablesModification.register(FABlocks.ARAUCARIOXYLON_WOOD.get(), 5, 5);
+        FlammablesModification.register(FABlocks.ARAUCARIOXYLON_LEAVES.get(), 30, 60);
         FlammablesModification.register(FABlocks.ARCHAEOPTERIS_PLANKS.get(), 5, 20);
         FlammablesModification.register(FABlocks.ARCHAEOPTERIS_SLAB.get(), 5, 20);
         FlammablesModification.register(FABlocks.ARCHAEOPTERIS_FENCE_GATE.get(), 5, 20);
@@ -159,6 +169,16 @@ public final class BasicEvents {
         FlammablesModification.register(FABlocks.STRIPPED_CALAMITES_WOOD.get(), 5, 5);
         FlammablesModification.register(FABlocks.CALAMITES_WOOD.get(), 5, 5);
         FlammablesModification.register(FABlocks.CALAMITES_LEAVES.get(), 30, 60);
+        FlammablesModification.register(FABlocks.CORDAITES_PLANKS.get(), 5, 20);
+        FlammablesModification.register(FABlocks.CORDAITES_SLAB.get(), 5, 20);
+        FlammablesModification.register(FABlocks.CORDAITES_FENCE_GATE.get(), 5, 20);
+        FlammablesModification.register(FABlocks.CORDAITES_FENCE.get(), 5, 20);
+        FlammablesModification.register(FABlocks.CORDAITES_STAIRS.get(), 5, 20);
+        FlammablesModification.register(FABlocks.CORDAITES_LOG.get(), 5, 5);
+        FlammablesModification.register(FABlocks.STRIPPED_CORDAITES_LOG.get(), 5, 5);
+        FlammablesModification.register(FABlocks.STRIPPED_CORDAITES_WOOD.get(), 5, 5);
+        FlammablesModification.register(FABlocks.CORDAITES_WOOD.get(), 5, 5);
+        FlammablesModification.register(FABlocks.CORDAITES_LEAVES.get(), 30, 60);
         FlammablesModification.register(FABlocks.GINKGO_PLANKS.get(), 5, 20);
         FlammablesModification.register(FABlocks.GINKGO_SLAB.get(), 5, 20);
         FlammablesModification.register(FABlocks.GINKGO_FENCE_GATE.get(), 5, 20);
@@ -189,6 +209,16 @@ public final class BasicEvents {
         FlammablesModification.register(FABlocks.STRIPPED_SIGILLARIA_WOOD.get(), 5, 5);
         FlammablesModification.register(FABlocks.SIGILLARIA_WOOD.get(), 5, 5);
         FlammablesModification.register(FABlocks.SIGILLARIA_LEAVES.get(), 30, 60);
+        FlammablesModification.register(FABlocks.WOLLEMIA_PLANKS.get(), 5, 20);
+        FlammablesModification.register(FABlocks.WOLLEMIA_SLAB.get(), 5, 20);
+        FlammablesModification.register(FABlocks.WOLLEMIA_FENCE_GATE.get(), 5, 20);
+        FlammablesModification.register(FABlocks.WOLLEMIA_FENCE.get(), 5, 20);
+        FlammablesModification.register(FABlocks.WOLLEMIA_STAIRS.get(), 5, 20);
+        FlammablesModification.register(FABlocks.WOLLEMIA_LOG.get(), 5, 5);
+        FlammablesModification.register(FABlocks.STRIPPED_WOLLEMIA_LOG.get(), 5, 5);
+        FlammablesModification.register(FABlocks.STRIPPED_WOLLEMIA_WOOD.get(), 5, 5);
+        FlammablesModification.register(FABlocks.WOLLEMIA_WOOD.get(), 5, 5);
+        FlammablesModification.register(FABlocks.WOLLEMIA_LEAVES.get(), 30, 60);
 
         FAStats.STAT_FORMATTERS.forEach(Stats.CUSTOM::get);
     }
@@ -200,6 +230,8 @@ public final class BasicEvents {
         compostablesModification.add(FABlocks.TALL_HORSETAIL.get(), 0.5F);
         compostablesModification.add(FAItems.HORSETAIL_SPORE.get(), 0.35F);
         compostablesModification.add(FAItems.COOKSONIA_SPORES.get(), 0.35F);
+        compostablesModification.add(FAItems.CLAYTOSMUNDA_SPORES.get(), 0.35F);
+        compostablesModification.add(FAItems.CYCADEOIDEA_SEED.get(), 0.35F);
         compostablesModification.add(FAItems.CYCAD_CONE.get(), 0.35F);
         compostablesModification.add(FABlocks.LEPIDODENDRON_LEAVES.get(), 0.3F);
         compostablesModification.add(FABlocks.LEPIDODENDRON_SAPLING.get(), 0.3F);
@@ -218,6 +250,15 @@ public final class BasicEvents {
         compostablesModification.add(FABlocks.ARAUCARIA_LEAVES.get(), 0.3F);
         compostablesModification.add(FABlocks.ARAUCARIA_SAPLING.get(), 0.3F);
         compostablesModification.add(FAItems.ARAUCARIA_CONE.get(), 0.35F);
+        compostablesModification.add(FABlocks.ARAUCARIOXYLON_LEAVES.get(), 0.3F);
+        compostablesModification.add(FABlocks.ARAUCARIOXYLON_SAPLING.get(), 0.3F);
+        //compostablesModification.add(FAItems.ARAUCARIOXYLON_CONE.get(), 0.35F);
+        compostablesModification.add(FABlocks.CORDAITES_LEAVES.get(), 0.3F);
+        compostablesModification.add(FABlocks.CORDAITES_SAPLING.get(), 0.3F);
+        //compostablesModification.add(FAItems.CORDAITES_CONE.get(), 0.35F);
+        compostablesModification.add(FABlocks.WOLLEMIA_LEAVES.get(), 0.3F);
+        compostablesModification.add(FABlocks.WOLLEMIA_SAPLING.get(), 0.3F);
+        //compostablesModification.add(FAItems.WOLLEMIA_CONE.get(), 0.35F);
     }
 
     public static void strippablesSetup(StrippablesModification strippablesModification) {

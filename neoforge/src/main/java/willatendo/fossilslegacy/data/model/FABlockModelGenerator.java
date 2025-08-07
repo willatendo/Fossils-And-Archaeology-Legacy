@@ -129,13 +129,20 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createDecorationPost(FABlocks.BLACK_DECORATION_POST.get(), Blocks.BLACK_CONCRETE);
         this.createSmallCage(FABlocks.SMALL_CAGE.get());
         this.createMediumCage(FABlocks.MEDIUM_CAGE.get());
-        this.createSecurityFence(FABlocks.LOW_SECURITY_FENCE.get(),
-                FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_BAR_TOP, FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_BAR_MIDDLE, FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_BAR_BOTTOM, FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_BAR_FOUNDATION,
-                FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_CENTER_TOP, FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_CENTER_MIDDLE, FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_CENTER_BOTTOM,
-                FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_POST_TOP, FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_POST_MIDDLE, FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_POST_BOTTOM, FAModelTemplates.TEMPLATE_LOW_SECURITY_FENCE_POST_EXTENDED_BOTTOM);
+        this.createStraightTrack(FABlocks.STRAIGHT_TRACK.get());
+        this.createCornerTrack(FABlocks.CORNER_TRACK.get());
+        this.createRampTrack(FABlocks.RAMP_TRACK.get());
         this.createCycadHead(FABlocks.CYCAD_HEAD.get());
         this.createCycadLog(FABlocks.CYCAD_LOG.get());
         this.createCooksonia(FABlocks.COOKSONIA.get());
+        this.createClaytosmunda(FABlocks.CLAYTOSMUNDA.get());
+        this.createCycadeoidea(FABlocks.CYCADEOIDEA.get());
+        this.createTrivialCube(FABlocks.NIPA.get());
+        this.createTrivialCube(FABlocks.ONYCHIOPSIS.get());
+        this.createTrivialCube(FABlocks.PACHYPTERIS.get());
+        this.createTrivialCube(FABlocks.PACHYPODIUM.get());
+        this.createTrivialCube(FABlocks.WILLIAMSONIA.get());
+        this.createMacrotaeniopteris(FABlocks.MACROTAENIOPTERIS.get());
         this.blockModelGenerators.woodProvider(FABlocks.ARAUCARIA_LOG.get()).logWithHorizontal(FABlocks.ARAUCARIA_LOG.get()).wood(FABlocks.ARAUCARIA_WOOD.get());
         this.blockModelGenerators.woodProvider(FABlocks.STRIPPED_ARAUCARIA_LOG.get()).logWithHorizontal(FABlocks.STRIPPED_ARAUCARIA_LOG.get()).wood(FABlocks.STRIPPED_ARAUCARIA_WOOD.get());
         this.blockModelGenerators.createHangingSign(FABlocks.STRIPPED_ARAUCARIA_LOG.get(), FABlocks.ARAUCARIA_HANGING_SIGN.get(), FABlocks.ARAUCARIA_WALL_HANGING_SIGN.get());
@@ -166,11 +173,28 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.blockModelGenerators.createHangingSign(FABlocks.STRIPPED_SIGILLARIA_LOG.get(), FABlocks.SIGILLARIA_HANGING_SIGN.get(), FABlocks.SIGILLARIA_WALL_HANGING_SIGN.get());
         this.createPlantWithDefaultItem(FABlocks.SIGILLARIA_SAPLING.get(), FABlocks.POTTED_SIGILLARIA_SAPLING.get(), SimpleBlockModelGenerator.PlantType.NOT_TINTED);
         this.blockModelGenerators.createTintedLeaves(FABlocks.SIGILLARIA_LEAVES.get(), TexturedModel.LEAVES, -12012264);
+        this.blockModelGenerators.woodProvider(FABlocks.ARAUCARIOXYLON_LOG.get()).logWithHorizontal(FABlocks.ARAUCARIOXYLON_LOG.get()).wood(FABlocks.ARAUCARIOXYLON_WOOD.get());
+        this.blockModelGenerators.woodProvider(FABlocks.STRIPPED_ARAUCARIOXYLON_LOG.get()).logWithHorizontal(FABlocks.STRIPPED_ARAUCARIOXYLON_LOG.get()).wood(FABlocks.STRIPPED_ARAUCARIOXYLON_WOOD.get());
+        this.blockModelGenerators.createHangingSign(FABlocks.STRIPPED_ARAUCARIOXYLON_LOG.get(), FABlocks.ARAUCARIOXYLON_HANGING_SIGN.get(), FABlocks.ARAUCARIOXYLON_WALL_HANGING_SIGN.get());
+        this.createPlantWithDefaultItem(FABlocks.ARAUCARIOXYLON_SAPLING.get(), FABlocks.POTTED_ARAUCARIOXYLON_SAPLING.get(), SimpleBlockModelGenerator.PlantType.NOT_TINTED);
+        this.blockModelGenerators.createTintedLeaves(FABlocks.ARAUCARIOXYLON_LEAVES.get(), TexturedModel.LEAVES, -12012264);
+        this.blockModelGenerators.woodProvider(FABlocks.CORDAITES_LOG.get()).logWithHorizontal(FABlocks.CORDAITES_LOG.get()).wood(FABlocks.CORDAITES_WOOD.get());
+        this.blockModelGenerators.woodProvider(FABlocks.STRIPPED_CORDAITES_LOG.get()).logWithHorizontal(FABlocks.STRIPPED_CORDAITES_LOG.get()).wood(FABlocks.STRIPPED_CORDAITES_WOOD.get());
+        this.blockModelGenerators.createHangingSign(FABlocks.STRIPPED_CORDAITES_LOG.get(), FABlocks.CORDAITES_HANGING_SIGN.get(), FABlocks.CORDAITES_WALL_HANGING_SIGN.get());
+        this.createPlantWithDefaultItem(FABlocks.CORDAITES_SAPLING.get(), FABlocks.POTTED_CORDAITES_SAPLING.get(), SimpleBlockModelGenerator.PlantType.NOT_TINTED);
+        this.blockModelGenerators.createTintedLeaves(FABlocks.CORDAITES_LEAVES.get(), TexturedModel.LEAVES, -12012264);
+        this.blockModelGenerators.woodProvider(FABlocks.WOLLEMIA_LOG.get()).logWithHorizontal(FABlocks.WOLLEMIA_LOG.get()).wood(FABlocks.WOLLEMIA_WOOD.get());
+        this.blockModelGenerators.woodProvider(FABlocks.STRIPPED_WOLLEMIA_LOG.get()).logWithHorizontal(FABlocks.STRIPPED_WOLLEMIA_LOG.get()).wood(FABlocks.STRIPPED_WOLLEMIA_WOOD.get());
+        this.blockModelGenerators.createHangingSign(FABlocks.STRIPPED_WOLLEMIA_LOG.get(), FABlocks.WOLLEMIA_HANGING_SIGN.get(), FABlocks.WOLLEMIA_WALL_HANGING_SIGN.get());
+        this.createPlantWithDefaultItem(FABlocks.WOLLEMIA_SAPLING.get(), FABlocks.POTTED_WOLLEMIA_SAPLING.get(), SimpleBlockModelGenerator.PlantType.NOT_TINTED);
+        this.blockModelGenerators.createTintedLeaves(FABlocks.WOLLEMIA_LEAVES.get(), TexturedModel.LEAVES, -12012264);
         this.block(MultiVariantGenerator.multiVariant(FABlocks.TAR.get(), Variant.variant().with(VariantProperties.MODEL, FAModelTemplates.TEMPLATE_LIQUID.create(FABlocks.TAR.get(), new TextureMapping().put(TextureSlot.PARTICLE, this.mcLocation("block/bedrock")), this.modelOutput))));
     }
 
-    private void basic(Block block, ModelTemplate modelTemplate, TextureMapping textureMapping) {
-        this.block(BlockModelGenerators.createSimpleBlock(block, modelTemplate.create(block, textureMapping, this.modelOutput)));
+    private ResourceLocation basic(Block block, ModelTemplate modelTemplate, TextureMapping textureMapping) {
+        ResourceLocation model = modelTemplate.create(block, textureMapping, this.modelOutput);
+        this.block(BlockModelGenerators.createSimpleBlock(block, model));
+        return model;
     }
 
     private void createBasic(Block block) {
@@ -233,10 +257,6 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
 
     private void createPalaeontologyTable(Block palaeontologyTable) {
         this.block(MultiVariantGenerator.multiVariant(palaeontologyTable, Variant.variant().with(VariantProperties.MODEL, ModelTemplates.CUBE_BOTTOM_TOP.create(palaeontologyTable, new TextureMapping().put(TextureSlot.BOTTOM, this.modLocation("block/lepidodendron_planks")).put(TextureSlot.PARTICLE, this.modLocation("block/palaeontology_table_side")).put(TextureSlot.SIDE, this.modLocation("block/palaeontology_table_side")).put(TextureSlot.TOP, this.modLocation("block/palaeontology_table_top")), this.modelOutput))));
-    }
-
-    private void createRestorationTable(Block restorationTable) {
-        this.block(MultiVariantGenerator.multiVariant(restorationTable, Variant.variant().with(VariantProperties.MODEL, FAModelTemplates.TEMPLATE_RESTORATION_TABLE.create(restorationTable, new TextureMapping().put(TextureSlot.TEXTURE, this.mcLocation("block/oak_planks")), this.modelOutput))));
     }
 
     private void createActiveType(Block block, ResourceLocation inactive, ResourceLocation active, BooleanProperty booleanProperty, boolean directional) {
@@ -304,245 +324,32 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.registerSimpleItemModel(mediumCage, FAUtils.resource("item/medium_cage"));
     }
 
-    private void createSecurityFence(Block fence, ModelTemplate barTop, ModelTemplate barMiddle, ModelTemplate barBottom, ModelTemplate barFoundation, ModelTemplate centerTop, ModelTemplate centerMiddle, ModelTemplate centerBottom, ModelTemplate postTop, ModelTemplate postMiddle, ModelTemplate postBottom, ModelTemplate postExtendedBottom) {
-        ResourceLocation barTopModel = barTop.createWithSuffix(fence, "_bar_top", new TextureMapping()
-                        .put(TextureSlot.TEXTURE, this.modLocation("block/bar"))
-                        .put(TextureSlot.PARTICLE, this.mcLocation("block/iron_bars")),
-                this.modelOutput);
-        ResourceLocation barMiddleModel = barMiddle.createWithSuffix(fence, "_bar_middle", new TextureMapping()
-                        .put(TextureSlot.TEXTURE, this.modLocation("block/bar"))
-                        .put(TextureSlot.PARTICLE, this.mcLocation("block/iron_bars")),
-                this.modelOutput);
-        ResourceLocation barBottomModel = barBottom.createWithSuffix(fence, "_bar_bottom", new TextureMapping()
-                        .put(TextureSlot.TEXTURE, this.modLocation("block/bar"))
-                        .put(TextureSlot.PARTICLE, this.mcLocation("block/iron_bars"))
-                        .put(TextureSlot.BOTTOM, this.mcLocation("block/stone_bricks")),
-                this.modelOutput);
-        ResourceLocation barFoundationModel = barFoundation.createWithSuffix(fence, "_bar_foundation", new TextureMapping()
-                        .put(TextureSlot.TEXTURE, this.mcLocation("block/stone_bricks"))
-                        .put(TextureSlot.PARTICLE, this.mcLocation("block/stone_bricks")),
-                this.modelOutput);
-        ResourceLocation centerTopModel = centerTop.createWithSuffix(fence, "_center_top", new TextureMapping()
-                        .put(TextureSlot.TEXTURE, this.modLocation("block/bar"))
-                        .put(TextureSlot.PARTICLE, this.mcLocation("block/iron_bars")),
-                this.modelOutput);
-        ResourceLocation centerMiddleModel = centerMiddle.createWithSuffix(fence, "_center_middle", new TextureMapping()
-                        .put(TextureSlot.TEXTURE, this.modLocation("block/bar"))
-                        .put(TextureSlot.PARTICLE, this.mcLocation("block/iron_bars")),
-                this.modelOutput);
-        ResourceLocation centerBottomModel = centerBottom.createWithSuffix(fence, "_center_bottom", new TextureMapping()
-                        .put(TextureSlot.TEXTURE, this.modLocation("block/bar"))
-                        .put(TextureSlot.PARTICLE, this.mcLocation("block/iron_bars"))
-                        .put(TextureSlot.BOTTOM, this.mcLocation("block/stone_bricks")),
-                this.modelOutput);
-        ResourceLocation postTopModel = postTop.createWithSuffix(fence, "_post_top", new TextureMapping()
-                        .put(TextureSlot.TEXTURE, this.modLocation("block/low_security_fence_post"))
-                        .put(TextureSlot.UP, this.modLocation("block/low_security_fence_post_lights"))
-                        .put(TextureSlot.PARTICLE, this.mcLocation("block/iron_block")),
-                this.modelOutput);
-        ResourceLocation postMiddleModel = postMiddle.createWithSuffix(fence, "_post_middle", new TextureMapping()
-                        .put(TextureSlot.TEXTURE, this.modLocation("block/low_security_fence_post"))
-                        .put(TextureSlot.PARTICLE, this.mcLocation("block/iron_block")),
-                this.modelOutput);
-        ResourceLocation postBottomModel = postBottom.createWithSuffix(fence, "_post_bottom", new TextureMapping()
-                        .put(TextureSlot.TEXTURE, this.modLocation("block/low_security_fence_post"))
-                        .put(TextureSlot.BOTTOM, this.mcLocation("block/stone_bricks"))
-                        .put(TextureSlot.PARTICLE, this.mcLocation("block/iron_block")),
-                this.modelOutput);
-        ResourceLocation postExtendedBottomModel = postExtendedBottom.createWithSuffix(fence, "_post_extended_bottom", new TextureMapping()
-                        .put(TextureSlot.TEXTURE, this.mcLocation("block/stone_bricks")),
-                this.modelOutput);
-        Condition shouldPost = Condition.or(
-                Condition.and(
-                        Condition.condition().term(LowSecurityFenceBlock.NORTH, true),
-                        Condition.condition().term(LowSecurityFenceBlock.EAST, true),
-                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, true),
-                        Condition.condition().term(LowSecurityFenceBlock.WEST, true)
-                ),
-                Condition.and(
-                        Condition.condition().term(LowSecurityFenceBlock.NORTH, false),
-                        Condition.condition().term(LowSecurityFenceBlock.EAST, false),
-                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, false),
-                        Condition.condition().term(LowSecurityFenceBlock.WEST, false)
-                ),
-                Condition.and(
-                        Condition.condition().term(LowSecurityFenceBlock.NORTH, true),
-                        Condition.condition().term(LowSecurityFenceBlock.EAST, false),
-                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, false),
-                        Condition.condition().term(LowSecurityFenceBlock.WEST, false)
-                ),
-                Condition.and(
-                        Condition.condition().term(LowSecurityFenceBlock.NORTH, false),
-                        Condition.condition().term(LowSecurityFenceBlock.EAST, true),
-                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, false),
-                        Condition.condition().term(LowSecurityFenceBlock.WEST, false)
-                ),
-                Condition.and(
-                        Condition.condition().term(LowSecurityFenceBlock.NORTH, false),
-                        Condition.condition().term(LowSecurityFenceBlock.EAST, false),
-                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, true),
-                        Condition.condition().term(LowSecurityFenceBlock.WEST, false)
-                ),
-                Condition.and(
-                        Condition.condition().term(LowSecurityFenceBlock.NORTH, false),
-                        Condition.condition().term(LowSecurityFenceBlock.EAST, false),
-                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, false),
-                        Condition.condition().term(LowSecurityFenceBlock.WEST, true)
-                ),
-                Condition.and(
-                        Condition.condition().term(LowSecurityFenceBlock.NORTH, true),
-                        Condition.condition().term(LowSecurityFenceBlock.EAST, true),
-                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, false),
-                        Condition.condition().term(LowSecurityFenceBlock.WEST, false)
-                ),
-                Condition.and(
-                        Condition.condition().term(LowSecurityFenceBlock.NORTH, false),
-                        Condition.condition().term(LowSecurityFenceBlock.EAST, true),
-                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, true),
-                        Condition.condition().term(LowSecurityFenceBlock.WEST, false)
-                ),
-                Condition.and(
-                        Condition.condition().term(LowSecurityFenceBlock.NORTH, false),
-                        Condition.condition().term(LowSecurityFenceBlock.EAST, false),
-                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, true),
-                        Condition.condition().term(LowSecurityFenceBlock.WEST, true)
-                ),
-                Condition.and(
-                        Condition.condition().term(LowSecurityFenceBlock.NORTH, true),
-                        Condition.condition().term(LowSecurityFenceBlock.EAST, false),
-                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, false),
-                        Condition.condition().term(LowSecurityFenceBlock.WEST, true)
-                ),
-                Condition.and(
-                        Condition.condition().term(LowSecurityFenceBlock.NORTH, true),
-                        Condition.condition().term(LowSecurityFenceBlock.EAST, true),
-                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, true),
-                        Condition.condition().term(LowSecurityFenceBlock.WEST, false)
-                ),
-                Condition.and(
-                        Condition.condition().term(LowSecurityFenceBlock.NORTH, false),
-                        Condition.condition().term(LowSecurityFenceBlock.EAST, true),
-                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, true),
-                        Condition.condition().term(LowSecurityFenceBlock.WEST, true)
-                ),
-                Condition.and(
-                        Condition.condition().term(LowSecurityFenceBlock.NORTH, true),
-                        Condition.condition().term(LowSecurityFenceBlock.EAST, false),
-                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, true),
-                        Condition.condition().term(LowSecurityFenceBlock.WEST, true)
-                ),
-                Condition.and(
-                        Condition.condition().term(LowSecurityFenceBlock.NORTH, true),
-                        Condition.condition().term(LowSecurityFenceBlock.EAST, true),
-                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, false),
-                        Condition.condition().term(LowSecurityFenceBlock.WEST, true)
-                )
-        );
-        this.block(MultiPartGenerator.multiPart(fence)
-                .with(Condition.or(
-                        Condition.and(
-                                Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.FOUNDATION),
-                                Condition.condition().term(LowSecurityFenceBlock.FORCE_POST, true)
-                        ),
-                        Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.FOUNDATION)
-                ), Variant.variant().with(VariantProperties.MODEL, postExtendedBottomModel))
-                .with(Condition.or(
-                        Condition.and(
-                                Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.BOTTOM),
-                                Condition.condition().term(LowSecurityFenceBlock.FORCE_POST, true)
-                        ),
-                        Condition.and(
-                                Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.BOTTOM),
-                                shouldPost
-                        )
-                ), Variant.variant().with(VariantProperties.MODEL, postBottomModel))
-                .with(
-                Condition.or(
-                        Condition.and(
-                                Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.MIDDLE),
-                                Condition.condition().term(LowSecurityFenceBlock.FORCE_POST, true)
-                        ),
-                        Condition.and(
-                                Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.MIDDLE),
-                                shouldPost
-                        )
-                ), Variant.variant().with(VariantProperties.MODEL, postMiddleModel))
-                .with(Condition.or(
-                        Condition.and(
-                                Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.TOP),
-                                Condition.condition().term(LowSecurityFenceBlock.FORCE_POST, true)
-                        ),
-                        Condition.and(
-                                Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.TOP),
-                                shouldPost
-                        )
-                ), Variant.variant().with(VariantProperties.MODEL, postTopModel))
-                .with(Condition.and(
-                        Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.BOTTOM),
-                        Condition.condition().term(LowSecurityFenceBlock.NORTH, true),
-                        Condition.condition().term(LowSecurityFenceBlock.EAST, false),
-                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, true),
-                        Condition.condition().term(LowSecurityFenceBlock.WEST, false),
-                        Condition.condition().term(LowSecurityFenceBlock.FORCE_POST, false)
-                ), Variant.variant().with(VariantProperties.MODEL, centerBottomModel))
-                .with(Condition.and(
-                        Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.BOTTOM),
-                        Condition.condition().term(LowSecurityFenceBlock.NORTH, false),
-                        Condition.condition().term(LowSecurityFenceBlock.EAST, true),
-                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, false),
-                        Condition.condition().term(LowSecurityFenceBlock.WEST, true),
-                        Condition.condition().term(LowSecurityFenceBlock.FORCE_POST, false)
-                ), Variant.variant().with(VariantProperties.MODEL, centerBottomModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
-                .with(Condition.and(
-                        Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.MIDDLE),
-                        Condition.condition().term(LowSecurityFenceBlock.NORTH, true),
-                        Condition.condition().term(LowSecurityFenceBlock.EAST, false),
-                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, true),
-                        Condition.condition().term(LowSecurityFenceBlock.WEST, false),
-                        Condition.condition().term(LowSecurityFenceBlock.FORCE_POST, false)
-                ), Variant.variant().with(VariantProperties.MODEL, centerMiddleModel))
-                .with(Condition.and(
-                        Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.MIDDLE),
-                        Condition.condition().term(LowSecurityFenceBlock.NORTH, false),
-                        Condition.condition().term(LowSecurityFenceBlock.EAST, true),
-                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, false),
-                        Condition.condition().term(LowSecurityFenceBlock.WEST, true),
-                        Condition.condition().term(LowSecurityFenceBlock.FORCE_POST, false)
-                ), Variant.variant().with(VariantProperties.MODEL, centerMiddleModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
-                .with(Condition.and(
-                        Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.TOP),
-                        Condition.condition().term(LowSecurityFenceBlock.NORTH, true),
-                        Condition.condition().term(LowSecurityFenceBlock.EAST, false),
-                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, true),
-                        Condition.condition().term(LowSecurityFenceBlock.WEST, false),
-                        Condition.condition().term(LowSecurityFenceBlock.FORCE_POST, false)
-                ), Variant.variant().with(VariantProperties.MODEL, centerTopModel))
-                .with(Condition.and(
-                        Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.TOP),
-                        Condition.condition().term(LowSecurityFenceBlock.NORTH, false),
-                        Condition.condition().term(LowSecurityFenceBlock.EAST, true),
-                        Condition.condition().term(LowSecurityFenceBlock.SOUTH, false),
-                        Condition.condition().term(LowSecurityFenceBlock.WEST, true),
-                        Condition.condition().term(LowSecurityFenceBlock.FORCE_POST, false)
-                ), Variant.variant().with(VariantProperties.MODEL, centerTopModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
-                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.FOUNDATION).term(LowSecurityFenceBlock.NORTH, true)), Variant.variant().with(VariantProperties.MODEL, barFoundationModel))
-                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.BOTTOM).term(LowSecurityFenceBlock.NORTH, true)), Variant.variant().with(VariantProperties.MODEL, barBottomModel))
-                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.MIDDLE).term(LowSecurityFenceBlock.NORTH, true)), Variant.variant().with(VariantProperties.MODEL, barMiddleModel))
-                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.TOP).term(LowSecurityFenceBlock.NORTH, true)), Variant.variant().with(VariantProperties.MODEL, barTopModel))
-                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.FOUNDATION).term(LowSecurityFenceBlock.EAST, true)), Variant.variant().with(VariantProperties.MODEL, barFoundationModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
-                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.BOTTOM).term(LowSecurityFenceBlock.EAST, true)), Variant.variant().with(VariantProperties.MODEL, barBottomModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
-                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.MIDDLE).term(LowSecurityFenceBlock.EAST, true)), Variant.variant().with(VariantProperties.MODEL, barMiddleModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
-                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.TOP).term(LowSecurityFenceBlock.EAST, true)), Variant.variant().with(VariantProperties.MODEL, barTopModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
-                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.FOUNDATION).term(LowSecurityFenceBlock.SOUTH, true)), Variant.variant().with(VariantProperties.MODEL, barFoundationModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true))
-                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.BOTTOM).term(LowSecurityFenceBlock.SOUTH, true)), Variant.variant().with(VariantProperties.MODEL, barBottomModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true))
-                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.MIDDLE).term(LowSecurityFenceBlock.SOUTH, true)), Variant.variant().with(VariantProperties.MODEL, barMiddleModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true))
-                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.TOP).term(LowSecurityFenceBlock.SOUTH, true)), Variant.variant().with(VariantProperties.MODEL, barTopModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true))
-                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.FOUNDATION).term(LowSecurityFenceBlock.WEST, true)), Variant.variant().with(VariantProperties.MODEL, barFoundationModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true))
-                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.BOTTOM).term(LowSecurityFenceBlock.WEST, true)), Variant.variant().with(VariantProperties.MODEL, barBottomModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true))
-                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.MIDDLE).term(LowSecurityFenceBlock.WEST, true)), Variant.variant().with(VariantProperties.MODEL, barMiddleModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true))
-                .with(Condition.and(Condition.condition().term(LowSecurityFenceBlock.LAYER, SecurityFenceBlock.Layer.TOP).term(LowSecurityFenceBlock.WEST, true)), Variant.variant().with(VariantProperties.MODEL, barTopModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true))
-        );
-        this.blockModelGenerators.registerSimpleItemModel(fence, postBottomModel);
+    private void createStraightTrack(Block straightTrack) {
+        this.block(MultiVariantGenerator.multiVariant(straightTrack, Variant.variant().with(VariantProperties.MODEL, ModelTemplates.RAIL_FLAT.extend().renderType("cutout").build().create(straightTrack, new TextureMapping().put(TextureSlot.RAIL, this.modLocation("block/straight_track")), this.modelOutput))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
+        this.blockModelGenerators.registerSimpleFlatItemModel(straightTrack);
+    }
+
+    private void createCornerTrack(Block cornerTrack) {
+        ResourceLocation part1 = ModelTemplates.RAIL_FLAT.extend().renderType("cutout").build().createWithSuffix(cornerTrack, "_part_1", new TextureMapping().put(TextureSlot.RAIL, this.modLocation("block/corner_track_1")), this.modelOutput);
+        ResourceLocation part2 = ModelTemplates.RAIL_FLAT.extend().renderType("cutout").build().createWithSuffix(cornerTrack, "_part_2", new TextureMapping().put(TextureSlot.RAIL, this.modLocation("block/corner_track_2")), this.modelOutput);
+        ResourceLocation part3 = ModelTemplates.RAIL_FLAT.extend().renderType("cutout").build().createWithSuffix(cornerTrack, "_part_3", new TextureMapping().put(TextureSlot.RAIL, this.modLocation("block/corner_track_3")), this.modelOutput);
+        ResourceLocation part4 = ModelTemplates.RAIL_FLAT.extend().renderType("cutout").build().createWithSuffix(cornerTrack, "_part_4", new TextureMapping().put(TextureSlot.RAIL, this.modLocation("block/corner_track_4")), this.modelOutput);
+        ResourceLocation part5 = ModelTemplates.RAIL_FLAT.extend().renderType("cutout").build().createWithSuffix(cornerTrack, "_part_5", new TextureMapping().put(TextureSlot.RAIL, this.modLocation("block/corner_track_5")), this.modelOutput);
+        ResourceLocation part6 = ModelTemplates.RAIL_FLAT.extend().renderType("cutout").build().createWithSuffix(cornerTrack, "_part_6", new TextureMapping().put(TextureSlot.RAIL, this.modLocation("block/corner_track_6")), this.modelOutput);
+        ResourceLocation part7 = ModelTemplates.RAIL_FLAT.extend().renderType("cutout").build().createWithSuffix(cornerTrack, "_part_7", new TextureMapping().put(TextureSlot.RAIL, this.modLocation("block/corner_track_7")), this.modelOutput);
+        ResourceLocation part8 = ModelTemplates.RAIL_FLAT.extend().renderType("cutout").build().createWithSuffix(cornerTrack, "_part_8", new TextureMapping().put(TextureSlot.RAIL, this.modLocation("block/corner_track_8")), this.modelOutput);
+        ResourceLocation part9 = ModelTemplates.RAIL_FLAT.extend().renderType("cutout").build().createWithSuffix(cornerTrack, "_part_9", new TextureMapping().put(TextureSlot.RAIL, this.modLocation("block/corner_track_9")), this.modelOutput);
+        this.block(MultiVariantGenerator.multiVariant(cornerTrack, Variant.variant()).with(PropertyDispatch.property(CornerTrackBlock.PART).select(1, Variant.variant().with(VariantProperties.MODEL, part1)).select(2, Variant.variant().with(VariantProperties.MODEL, part2)).select(3, Variant.variant().with(VariantProperties.MODEL, part3)).select(4, Variant.variant().with(VariantProperties.MODEL, part4)).select(5, Variant.variant().with(VariantProperties.MODEL, part5)).select(6, Variant.variant().with(VariantProperties.MODEL, part6)).select(7, Variant.variant().with(VariantProperties.MODEL, part7)).select(8, Variant.variant().with(VariantProperties.MODEL, part8)).select(9, Variant.variant().with(VariantProperties.MODEL, part9))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
+        this.blockModelGenerators.registerSimpleItemModel(cornerTrack, ModelTemplates.FLAT_ITEM.create(cornerTrack, new TextureMapping().put(TextureSlot.LAYER0, this.modLocation("block/corner_track")), this.modelOutput));
+    }
+
+    private void createRampTrack(Block rampTrack) {
+        ResourceLocation part1 = FAModelTemplates.TEMPLATE_RAIL_RAMP_1.createWithSuffix(rampTrack, "_1", new TextureMapping().put(TextureSlot.RAIL, this.modLocation("block/straight_track")), this.modelOutput);
+        ResourceLocation part2 = FAModelTemplates.TEMPLATE_RAIL_RAMP_2.createWithSuffix(rampTrack, "_2", new TextureMapping().put(TextureSlot.RAIL, this.modLocation("block/straight_track")), this.modelOutput);
+        ResourceLocation part3 = FAModelTemplates.TEMPLATE_RAIL_RAMP_3.createWithSuffix(rampTrack, "_3", new TextureMapping().put(TextureSlot.RAIL, this.modLocation("block/straight_track")), this.modelOutput);
+        ResourceLocation part4 = FAModelTemplates.TEMPLATE_RAIL_RAMP_4.createWithSuffix(rampTrack, "_4", new TextureMapping().put(TextureSlot.RAIL, this.modLocation("block/straight_track")), this.modelOutput);
+        this.block(MultiVariantGenerator.multiVariant(rampTrack, Variant.variant()).with(PropertyDispatch.property(RampTrackBlock.PART).select(1, Variant.variant().with(VariantProperties.MODEL, part1)).select(2, Variant.variant().with(VariantProperties.MODEL, part2)).select(3, Variant.variant().with(VariantProperties.MODEL, part3)).select(4, Variant.variant().with(VariantProperties.MODEL, part4))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
+        this.blockModelGenerators.registerSimpleItemModel(rampTrack, ModelTemplates.FLAT_ITEM.create(rampTrack, new TextureMapping().put(TextureSlot.LAYER0, this.modLocation("block/straight_track")), this.modelOutput));
     }
 
     private void createCycadHead(Block cycadHead) {
@@ -566,7 +373,32 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         ResourceLocation model3 = FAModelTemplates.TEMPLATE_COOKSONIA_3.createWithSuffix(cooksonia, "_3", new TextureMapping().put(TextureSlot.TEXTURE, this.modLocation("block/cooksonia")), this.modelOutput);
         ResourceLocation model4 = FAModelTemplates.TEMPLATE_COOKSONIA_4.createWithSuffix(cooksonia, "_4", new TextureMapping().put(TextureSlot.TEXTURE, this.modLocation("block/cooksonia")), this.modelOutput);
         this.blockStateOutput.accept(MultiPartGenerator.multiPart(cooksonia).with(Condition.condition().term(BlockStateProperties.FLOWER_AMOUNT, 1, 2, 3, 4).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), Variant.variant().with(VariantProperties.MODEL, model1)).with(Condition.condition().term(BlockStateProperties.FLOWER_AMOUNT, 1, 2, 3, 4).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), Variant.variant().with(VariantProperties.MODEL, model1).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)).with(Condition.condition().term(BlockStateProperties.FLOWER_AMOUNT, 1, 2, 3, 4).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), Variant.variant().with(VariantProperties.MODEL, model1).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180)).with(Condition.condition().term(BlockStateProperties.FLOWER_AMOUNT, 1, 2, 3, 4).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), Variant.variant().with(VariantProperties.MODEL, model1).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)).with(Condition.condition().term(BlockStateProperties.FLOWER_AMOUNT, 2, 3, 4).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), Variant.variant().with(VariantProperties.MODEL, model2)).with(Condition.condition().term(BlockStateProperties.FLOWER_AMOUNT, 2, 3, 4).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), Variant.variant().with(VariantProperties.MODEL, model2).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)).with(Condition.condition().term(BlockStateProperties.FLOWER_AMOUNT, 2, 3, 4).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), Variant.variant().with(VariantProperties.MODEL, model2).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180)).with(Condition.condition().term(BlockStateProperties.FLOWER_AMOUNT, 2, 3, 4).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), Variant.variant().with(VariantProperties.MODEL, model2).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)).with(Condition.condition().term(BlockStateProperties.FLOWER_AMOUNT, 3, 4).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), Variant.variant().with(VariantProperties.MODEL, model3)).with(Condition.condition().term(BlockStateProperties.FLOWER_AMOUNT, 3, 4).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), Variant.variant().with(VariantProperties.MODEL, model3).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)).with(Condition.condition().term(BlockStateProperties.FLOWER_AMOUNT, 3, 4).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), Variant.variant().with(VariantProperties.MODEL, model3).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180)).with(Condition.condition().term(BlockStateProperties.FLOWER_AMOUNT, 3, 4).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), Variant.variant().with(VariantProperties.MODEL, model3).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)).with(Condition.condition().term(BlockStateProperties.FLOWER_AMOUNT, 4).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), Variant.variant().with(VariantProperties.MODEL, model4)).with(Condition.condition().term(BlockStateProperties.FLOWER_AMOUNT, 4).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), Variant.variant().with(VariantProperties.MODEL, model4).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)).with(Condition.condition().term(BlockStateProperties.FLOWER_AMOUNT, 4).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), Variant.variant().with(VariantProperties.MODEL, model4).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180)).with(Condition.condition().term(BlockStateProperties.FLOWER_AMOUNT, 4).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), Variant.variant().with(VariantProperties.MODEL, model4).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)));
-        this.blockModelGenerators.registerSimpleItemModel(cooksonia, ModelTemplates.FLAT_ITEM.create(cooksonia, new TextureMapping().put(TextureSlot.LAYER0, this.modLocation("item/cooksonia")), this.modelOutput));
+        this.blockModelGenerators.registerSimpleItemModel(cooksonia, ModelTemplates.FLAT_ITEM.create(this.modLocation("item/cooksonia"), new TextureMapping().put(TextureSlot.LAYER0, this.modLocation("item/cooksonia")), this.modelOutput));
+    }
+
+    private void createClaytosmunda(Block claytosmunda) {
+        this.basic(claytosmunda, FAModelTemplates.TEMPLATE_CLAYTOSMUNDA, new TextureMapping().put(FATextureSlot.SHORT_LEAVES, this.modLocation("block/short_claytosmunda_fern")).put(FATextureSlot.TALL_LEAVES, this.modLocation("block/tall_claytosmunda_fern")));
+        this.blockModelGenerators.registerSimpleFlatItemModel(claytosmunda);
+    }
+
+    private void createCycadeoidea(Block claytosmunda) {
+        ResourceLocation model = this.basic(claytosmunda, FAModelTemplates.TEMPLATE_CYCADEOIDEA, new TextureMapping().put(TextureSlot.TEXTURE, this.modLocation("block/cycadeoidea")));
+        this.blockModelGenerators.registerSimpleTintedItemModel(claytosmunda, model, ItemModelUtils.constantTint(-12012264));
+    }
+
+    private void createMacrotaeniopteris(Block macrotaeniopteris) {
+        ResourceLocation stem1 = FAModelTemplates.TEMPLATE_MACROTAENIOPTERIS_STEM_1.createWithSuffix(macrotaeniopteris, "_stem_1", new TextureMapping().put(TextureSlot.TEXTURE, this.modLocation("block/macrotaeniopteris_plant")), this.modelOutput);
+        ResourceLocation leaf1 = FAModelTemplates.TEMPLATE_MACROTAENIOPTERIS_LEAF_1.createWithSuffix(macrotaeniopteris, "_leaf_1", new TextureMapping().put(TextureSlot.TEXTURE, this.modLocation("block/macrotaeniopteris_plant")), this.modelOutput);
+        ResourceLocation stem2 = FAModelTemplates.TEMPLATE_MACROTAENIOPTERIS_STEM_2.createWithSuffix(macrotaeniopteris, "_stem_2", new TextureMapping().put(TextureSlot.TEXTURE, this.modLocation("block/macrotaeniopteris_plant")), this.modelOutput);
+        ResourceLocation leaf2 = FAModelTemplates.TEMPLATE_MACROTAENIOPTERIS_LEAF_2.createWithSuffix(macrotaeniopteris, "_leaf_2", new TextureMapping().put(TextureSlot.TEXTURE, this.modLocation("block/macrotaeniopteris_plant")), this.modelOutput);
+        ResourceLocation stem3 = FAModelTemplates.TEMPLATE_MACROTAENIOPTERIS_STEM_3.createWithSuffix(macrotaeniopteris, "_stem_3", new TextureMapping().put(TextureSlot.TEXTURE, this.modLocation("block/macrotaeniopteris_plant")), this.modelOutput);
+        ResourceLocation leaf3 = FAModelTemplates.TEMPLATE_MACROTAENIOPTERIS_LEAF_3.createWithSuffix(macrotaeniopteris, "_leaf_3", new TextureMapping().put(TextureSlot.TEXTURE, this.modLocation("block/macrotaeniopteris_plant")), this.modelOutput);
+        ResourceLocation stem4 = FAModelTemplates.TEMPLATE_MACROTAENIOPTERIS_STEM_4.createWithSuffix(macrotaeniopteris, "_stem_4", new TextureMapping().put(TextureSlot.TEXTURE, this.modLocation("block/macrotaeniopteris_plant")), this.modelOutput);
+        ResourceLocation leaf4 = FAModelTemplates.TEMPLATE_MACROTAENIOPTERIS_LEAF_4.createWithSuffix(macrotaeniopteris, "_leaf_4", new TextureMapping().put(TextureSlot.TEXTURE, this.modLocation("block/macrotaeniopteris_plant")), this.modelOutput);
+        ResourceLocation stem5 = FAModelTemplates.TEMPLATE_MACROTAENIOPTERIS_STEM_5.createWithSuffix(macrotaeniopteris, "_stem_5", new TextureMapping().put(TextureSlot.TEXTURE, this.modLocation("block/macrotaeniopteris_plant")), this.modelOutput);
+        ResourceLocation leaf5 = FAModelTemplates.TEMPLATE_MACROTAENIOPTERIS_LEAF_5.createWithSuffix(macrotaeniopteris, "_leaf_5", new TextureMapping().put(TextureSlot.TEXTURE, this.modLocation("block/macrotaeniopteris_plant")), this.modelOutput);
+        this.block(MultiVariantGenerator.multiVariant(macrotaeniopteris).with(PropertyDispatch.properties(MacrotaeniopterisBlock.HALF, MacrotaeniopterisBlock.AMOUNT).select(DoubleBlockHalf.LOWER, 1, Variant.variant().with(VariantProperties.MODEL, stem1)).select(DoubleBlockHalf.UPPER, 1, Variant.variant().with(VariantProperties.MODEL, leaf1)).select(DoubleBlockHalf.LOWER, 2, Variant.variant().with(VariantProperties.MODEL, stem2)).select(DoubleBlockHalf.UPPER, 2, Variant.variant().with(VariantProperties.MODEL, leaf2)).select(DoubleBlockHalf.LOWER, 3, Variant.variant().with(VariantProperties.MODEL, stem3)).select(DoubleBlockHalf.UPPER, 3, Variant.variant().with(VariantProperties.MODEL, leaf3)).select(DoubleBlockHalf.LOWER, 4, Variant.variant().with(VariantProperties.MODEL, stem4)).select(DoubleBlockHalf.UPPER, 4, Variant.variant().with(VariantProperties.MODEL, leaf4)).select(DoubleBlockHalf.LOWER, 5, Variant.variant().with(VariantProperties.MODEL, stem5)).select(DoubleBlockHalf.UPPER, 5, Variant.variant().with(VariantProperties.MODEL, leaf5))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
+        this.blockModelGenerators.registerSimpleFlatItemModel(macrotaeniopteris);
     }
 
     private void createDrum(Block drum) {

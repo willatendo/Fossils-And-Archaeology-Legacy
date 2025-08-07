@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.block.blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -19,14 +20,13 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import willatendo.fossilslegacy.server.item.FAItems;
 
-import javax.annotation.Nullable;
-
 public class LeechInIceBlock extends HalfTransparentBlock {
+    public static final MapCodec<LeechInIceBlock> CODEC = Block.simpleCodec(LeechInIceBlock::new);
     public static final EnumProperty<Direction> HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
 
     public LeechInIceBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(HORIZONTAL_FACING, Direction.NORTH));
     }
 
     public static BlockState meltsInto() {
@@ -39,7 +39,7 @@ public class LeechInIceBlock extends HalfTransparentBlock {
     }
 
     @Override
-    public void playerDestroy(Level level, Player player, BlockPos blockPos, BlockState blockState, @Nullable BlockEntity blockEntity, ItemStack itemStack) {
+    public void playerDestroy(Level level, Player player, BlockPos blockPos, BlockState blockState, BlockEntity blockEntity, ItemStack itemStack) {
         super.playerDestroy(level, player, blockPos, blockState, blockEntity, itemStack);
         if (!EnchantmentHelper.hasTag(itemStack, EnchantmentTags.PREVENTS_ICE_MELTING)) {
             if (level.dimensionType().ultraWarm()) {
@@ -90,5 +90,10 @@ public class LeechInIceBlock extends HalfTransparentBlock {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(HORIZONTAL_FACING);
         super.createBlockStateDefinition(builder);
+    }
+
+    @Override
+    protected MapCodec<? extends HalfTransparentBlock> codec() {
+        return CODEC;
     }
 }

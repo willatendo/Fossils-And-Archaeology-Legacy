@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.server.block.blocks;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.world.item.ItemStack;
@@ -14,20 +13,13 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 
-public class SoupCauldronBlock extends AbstractCauldronBlock {
+public abstract class SoupCauldronBlock extends AbstractCauldronBlock {
     public static final IntegerProperty LEVEL = IntegerProperty.create("level", 1, 8);
 
     public SoupCauldronBlock(CauldronInteraction.InteractionMap interactionMap, Properties properties) {
         super(properties, interactionMap);
         this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, Integer.valueOf(1)));
     }
-
-
-    @Override
-    protected MapCodec<? extends AbstractCauldronBlock> codec() {
-        return null;
-    }
-
 
     @Override
     public int getAnalogOutputSignal(BlockState blockState, Level level, BlockPos blockPos) {

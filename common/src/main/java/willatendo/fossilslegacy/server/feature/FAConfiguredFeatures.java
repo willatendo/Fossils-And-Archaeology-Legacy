@@ -25,6 +25,7 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.CocoaDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.MegaJungleTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
@@ -54,6 +55,8 @@ public final class FAConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ARAUCARIA = create("araucaria");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ARCHAEOPTERIS = create("archaeopteris");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CALAMITES = create("calamites");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CORDAITES = create("cordaites");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MEGA_CORDAITES = create("mega_cordaites");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GINKGO = create("ginkgo");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LEPIDODENDRON = create("lepidodendron");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SIGILLARIA = create("sigillaria");
@@ -86,6 +89,14 @@ public final class FAConfiguredFeatures {
 
     private static TreeConfiguration.TreeConfigurationBuilder createCalamites() {
         return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(FABlocks.CALAMITES_LOG.get()), new StraightBranchingTrunkPlacer(9, 3, 6), BlockStateProvider.simple(FABlocks.CALAMITES_LEAVES.get()), new BranchedFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines();
+    }
+
+    private static TreeConfiguration.TreeConfigurationBuilder createCordaites() {
+        return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(FABlocks.CORDAITES_LOG.get()), new StraightTrunkPlacer(10, 3, 6), BlockStateProvider.simple(FABlocks.CORDAITES_LEAVES.get()), new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(0, 2), UniformInt.of(5, 7)), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines();
+    }
+
+    private static TreeConfiguration.TreeConfigurationBuilder createMegaCordaites() {
+        return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(FABlocks.CORDAITES_LOG.get()), new GiantTrunkPlacer(15, 2, 14), BlockStateProvider.simple(FABlocks.CORDAITES_LEAVES.get()), new MegaPineFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0), UniformInt.of(15, 17)), new TwoLayersFeatureSize(1, 1, 2)).ignoreVines();
     }
 
     private static TreeConfiguration.TreeConfigurationBuilder createGinkgo() {
@@ -135,6 +146,8 @@ public final class FAConfiguredFeatures {
         FeatureUtils.register(bootstrapContext, ARAUCARIA, Feature.TREE, FAConfiguredFeatures.createAraucaria().build());
         FeatureUtils.register(bootstrapContext, ARCHAEOPTERIS, Feature.TREE, FAConfiguredFeatures.createArchaeopteris().build());
         FeatureUtils.register(bootstrapContext, CALAMITES, Feature.TREE, FAConfiguredFeatures.createCalamites().build());
+        FeatureUtils.register(bootstrapContext, CORDAITES, Feature.TREE, FAConfiguredFeatures.createCordaites().build());
+        FeatureUtils.register(bootstrapContext, MEGA_CORDAITES, Feature.TREE, FAConfiguredFeatures.createMegaCordaites().build());
         FeatureUtils.register(bootstrapContext, GINKGO, Feature.TREE, FAConfiguredFeatures.createGinkgo().build());
         FeatureUtils.register(bootstrapContext, LEPIDODENDRON, Feature.TREE, FAConfiguredFeatures.createLepidodendron().build());
         FeatureUtils.register(bootstrapContext, SIGILLARIA, Feature.TREE, FAConfiguredFeatures.createSigillaria().build());

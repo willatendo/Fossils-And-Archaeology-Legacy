@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.block.blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -28,6 +29,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import willatendo.fossilslegacy.server.block.entity.entities.DecorationPostBlockEntity;
 
 public class DecorationPostBlock extends Block implements EntityBlock, SimpleWaterloggedBlock {
+    public static final MapCodec<DecorationPostBlock> CODEC = Block.simpleCodec(DecorationPostBlock::new);
     public static final VoxelShape SHAPE = Block.box(6.0F, 0.0F, 6.0F, 10.0F, 16.0F, 10.0F);
     public static final IntegerProperty ROTATION = IntegerProperty.create("rotation", 0, 7);
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -98,5 +100,10 @@ public class DecorationPostBlock extends Block implements EntityBlock, SimpleWat
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
         return new DecorationPostBlockEntity(blockPos, blockState);
+    }
+
+    @Override
+    protected MapCodec<? extends Block> codec() {
+        return CODEC;
     }
 }

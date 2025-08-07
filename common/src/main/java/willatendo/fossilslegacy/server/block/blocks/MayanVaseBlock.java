@@ -42,18 +42,13 @@ import org.jetbrains.annotations.Nullable;
 import willatendo.fossilslegacy.server.block.entity.entities.VaseBlockEntity;
 
 public class MayanVaseBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
-    public static final MapCodec<MayanVaseBlock> CODEC = simpleCodec(MayanVaseBlock::new);
+    public static final MapCodec<MayanVaseBlock> CODEC = Block.simpleCodec(MayanVaseBlock::new);
     private static final VoxelShape SHAPE = Block.box(3.0F, 0.0F, 3.0F, 13.0F, 12.0F, 13.0F);
     public static final BooleanProperty CRACKED = BlockStateProperties.CRACKED;
     private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     public MayanVaseBlock(Properties properties) {
         super(properties);
-    }
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        return CODEC;
     }
 
     @Override
@@ -188,5 +183,10 @@ public class MayanVaseBlock extends BaseEntityBlock implements SimpleWaterlogged
     @Override
     protected int getAnalogOutputSignal(BlockState blockState, Level level, BlockPos blockPos) {
         return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(level.getBlockEntity(blockPos));
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 }

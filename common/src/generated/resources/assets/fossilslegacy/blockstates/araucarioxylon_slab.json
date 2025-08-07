@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "fossilslegacy:block/araucarioxylon_slab"
+    },
+    "type=double": {
+      "model": "fossilslegacy:block/araucarioxylon_planks"
+    },
+    "type=top": {
+      "model": "fossilslegacy:block/araucarioxylon_slab_top"
+    }
+  }
+}

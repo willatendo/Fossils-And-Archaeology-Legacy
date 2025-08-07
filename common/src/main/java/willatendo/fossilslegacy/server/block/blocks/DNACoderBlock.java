@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.block.blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -30,6 +31,7 @@ import willatendo.fossilslegacy.server.stats.FAStats;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class DNACoderBlock extends Block implements EntityBlock {
+    public static final MapCodec<DNACoderBlock> CODEC = Block.simpleCodec(DNACoderBlock::new);
     public static final EnumProperty<Direction> HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty ACTIVE = FABlockStateProperties.ACTIVE;
 
@@ -114,6 +116,10 @@ public class DNACoderBlock extends Block implements EntityBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(HORIZONTAL_FACING, ACTIVE);
-        super.createBlockStateDefinition(builder);
+    }
+
+    @Override
+    protected MapCodec<? extends Block> codec() {
+        return CODEC;
     }
 }

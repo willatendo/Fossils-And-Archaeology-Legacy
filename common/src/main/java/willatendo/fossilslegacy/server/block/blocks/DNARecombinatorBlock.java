@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.block.blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -30,12 +31,13 @@ import willatendo.fossilslegacy.server.stats.FAStats;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class DNARecombinatorBlock extends Block implements EntityBlock {
+    public static final MapCodec<DNARecombinatorBlock> CODEC = Block.simpleCodec(DNARecombinatorBlock::new);
     public static final EnumProperty<Direction> HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final VoxelShape SHAPE = Shapes.join(Block.box(0, 0, 0, 16, 5, 16), Block.box(2, 5, 2, 14, 12, 14), BooleanOp.OR);
 
     public DNARecombinatorBlock(Properties properties) {
         super(properties);
-        this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH);
+        this.registerDefaultState(this.getStateDefinition().any().setValue(HORIZONTAL_FACING, Direction.NORTH));
     }
 
     @Override
@@ -108,6 +110,10 @@ public class DNARecombinatorBlock extends Block implements EntityBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(HORIZONTAL_FACING);
-        super.createBlockStateDefinition(builder);
+    }
+
+    @Override
+    protected MapCodec<? extends Block> codec() {
+        return CODEC;
     }
 }

@@ -1,0 +1,154 @@
+{
+  "variants": {
+    "amount=1,facing=east,half=lower": {
+      "model": "fossilslegacy:block/macrotaeniopteris_stem_1",
+      "y": 90
+    },
+    "amount=1,facing=east,half=upper": {
+      "model": "fossilslegacy:block/macrotaeniopteris_leaf_1",
+      "y": 90
+    },
+    "amount=1,facing=north,half=lower": {
+      "model": "fossilslegacy:block/macrotaeniopteris_stem_1"
+    },
+    "amount=1,facing=north,half=upper": {
+      "model": "fossilslegacy:block/macrotaeniopteris_leaf_1"
+    },
+    "amount=1,facing=south,half=lower": {
+      "model": "fossilslegacy:block/macrotaeniopteris_stem_1",
+      "y": 180
+    },
+    "amount=1,facing=south,half=upper": {
+      "model": "fossilslegacy:block/macrotaeniopteris_leaf_1",
+      "y": 180
+    },
+    "amount=1,facing=west,half=lower": {
+      "model": "fossilslegacy:block/macrotaeniopteris_stem_1",
+      "y": 270
+    },
+    "amount=1,facing=west,half=upper": {
+      "model": "fossilslegacy:block/macrotaeniopteris_leaf_1",
+      "y": 270
+    },
+    "amount=2,facing=east,half=lower": {
+      "model": "fossilslegacy:block/macrotaeniopteris_stem_2",
+      "y": 90
+    },
+    "amount=2,facing=east,half=upper": {
+      "model": "fossilslegacy:block/macrotaeniopteris_leaf_2",
+      "y": 90
+    },
+    "amount=2,facing=north,half=lower": {
+      "model": "fossilslegacy:block/macrotaeniopteris_stem_2"
+    },
+    "amount=2,facing=north,half=upper": {
+      "model": "fossilslegacy:block/macrotaeniopteris_leaf_2"
+    },
+    "amount=2,facing=south,half=lower": {
+      "model": "fossilslegacy:block/macrotaeniopteris_stem_2",
+      "y": 180
+    },
+    "amount=2,facing=south,half=upper": {
+      "model": "fossilslegacy:block/macrotaeniopteris_leaf_2",
+      "y": 180
+    },
+    "amount=2,facing=west,half=lower": {
+      "model": "fossilslegacy:block/macrotaeniopteris_stem_2",
+      "y": 270
+    },
+    "amount=2,facing=west,half=upper": {
+      "model": "fossilslegacy:block/macrotaeniopteris_leaf_2",
+      "y": 270
+    },
+    "amount=3,facing=east,half=lower": {
+      "model": "fossilslegacy:block/macrotaeniopteris_stem_3",
+      "y": 90
+    },
+    "amount=3,facing=east,half=upper": {
+      "model": "fossilslegacy:block/macrotaeniopteris_leaf_3",
+      "y": 90
+    },
+    "amount=3,facing=north,half=lower": {
+      "model": "fossilslegacy:block/macrotaeniopteris_stem_3"
+    },
+    "amount=3,facing=north,half=upper": {
+      "model": "fossilslegacy:block/macrotaeniopteris_leaf_3"
+    },
+    "amount=3,facing=south,half=lower": {
+      "model": "fossilslegacy:block/macrotaeniopteris_stem_3",
+      "y": 180
+    },
+    "amount=3,facing=south,half=upper": {
+      "model": "fossilslegacy:block/macrotaeniopteris_leaf_3",
+      "y": 180
+    },
+    "amount=3,facing=west,half=lower": {
+      "model": "fossilslegacy:block/macrotaeniopteris_stem_3",
+      "y": 270
+    },
+    "amount=3,facing=west,half=upper": {
+      "model": "fossilslegacy:block/macrotaeniopteris_leaf_3",
+      "y": 270
+    },
+    "amount=4,facing=east,half=lower": {
+      "model": "fossilslegacy:block/macrotaeniopteris_stem_4",
+      "y": 90
+    },
+    "amount=4,facing=east,half=upper": {
+      "model": "fossilslegacy:block/macrotaeniopteris_leaf_4",
+      "y": 90
+    },
+    "amount=4,facing=north,half=lower": {
+      "model": "fossilslegacy:block/macrotaeniopteris_stem_4"
+    },
+    "amount=4,facing=north,half=upper": {
+      "model": "fossilslegacy:block/macrotaeniopteris_leaf_4"
+    },
+    "amount=4,facing=south,half=lower": {
+      "model": "fossilslegacy:block/macrotaeniopteris_stem_4",
+      "y": 180
+    },
+    "amount=4,facing=south,half=upper": {
+      "model": "fossilslegacy:block/macrotaeniopteris_leaf_4",
+      "y": 180
+    },
+    "amount=4,facing=west,half=lower": {
+      "model": "fossilslegacy:block/macrotaeniopteris_stem_4",
+      "y": 270
+    },
+    "amount=4,facing=west,half=upper": {
+      "model": "fossilslegacy:block/macrotaeniopteris_leaf_4",
+      "y": 270
+    },
+    "amount=5,facing=east,half=lower": {
+      "model": "fossilslegacy:block/macrotaeniopteris_stem_5",
+      "y": 90
+    },
+    "amount=5,facing=east,half=upper": {
+      "model": "fossilslegacy:block/macrotaeniopteris_leaf_5",
+      "y": 90
+    },
+    "amount=5,facing=north,half=lower": {
+      "model": "fossilslegacy:block/macrotaeniopteris_stem_5"
+    },
+    "amount=5,facing=north,half=upper": {
+      "model": "fossilslegacy:block/macrotaeniopteris_leaf_5"
+    },
+    "amount=5,facing=south,half=lower": {
+      "model": "fossilslegacy:block/macrotaeniopteris_stem_5",
+      "y": 180
+    },
+    "amount=5,facing=south,half=upper": {
+      "model": "fossilslegacy:block/macrotaeniopteris_leaf_5",
+      "y": 180
+    },
+    "amount=5,facing=west,half=lower": {
+      "model": "fossilslegacy:block/macrotaeniopteris_stem_5",
+      "y": 270
+    },
+    "amount=5,facing=west,half=upper": {
+      "model": "fossilslegacy:block/macrotaeniopteris_leaf_5",
+      "y": 270
+    }
+  }
+}

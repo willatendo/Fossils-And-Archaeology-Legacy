@@ -98,6 +98,8 @@ public final class FAFeederFoods {
     public static final ResourceKey<FeederFood> GINKGO_SEED = FAFeederFoods.create("ginkgo_seed");
     public static final ResourceKey<FeederFood> HORSETAIL_SPORE = FAFeederFoods.create("horsetail_spore");
     public static final ResourceKey<FeederFood> JURASSIC_FERN_SPORES = FAFeederFoods.create("jurassic_fern_spores");
+    public static final ResourceKey<FeederFood> CYCADEOIDEA_SEED = FAFeederFoods.create("cycadeoidea_seed");
+    public static final ResourceKey<FeederFood> CLAYTOSMUNDA_SPORES = FAFeederFoods.create("claytosmunda_spores");
     public static final ResourceKey<FeederFood> LEPIDODENDRON_CONE = FAFeederFoods.create("lepidodendron_cone");
     public static final ResourceKey<FeederFood> SIGILLARIA_SPORE = FAFeederFoods.create("sigillaria_spore");
 
@@ -196,9 +198,11 @@ public final class FAFeederFoods {
         register(bootstrapContext, CALAMITES_SPORE, FAItems.CALAMITES_SPORE.get(), 25, FeederFood.FillType.PLANT);
         register(bootstrapContext, CYCAD_CONE, FAItems.CYCAD_CONE.get(), 25, FeederFood.FillType.PLANT);
         register(bootstrapContext, COOKSONIA_SPORES, FAItems.COOKSONIA_SPORES.get(), 25, FeederFood.FillType.PLANT);
+        register(bootstrapContext, CLAYTOSMUNDA_SPORES, FAItems.CLAYTOSMUNDA_SPORES.get(), 25, FeederFood.FillType.PLANT);
         register(bootstrapContext, GINKGO_SEED, FAItems.GINKGO_SEED.get(), 25, FeederFood.FillType.PLANT);
         register(bootstrapContext, HORSETAIL_SPORE, FAItems.HORSETAIL_SPORE.get(), 25, FeederFood.FillType.PLANT);
         register(bootstrapContext, JURASSIC_FERN_SPORES, FAItems.JURASSIC_FERN_SPORES.get(), 25, FeederFood.FillType.PLANT);
+        register(bootstrapContext, CYCADEOIDEA_SEED, FAItems.CYCADEOIDEA_SEED.get(), 25, FeederFood.FillType.PLANT);
         register(bootstrapContext, LEPIDODENDRON_CONE, FAItems.LEPIDODENDRON_CONE.get(), 25, FeederFood.FillType.PLANT);
         register(bootstrapContext, SIGILLARIA_SPORE, FAItems.SIGILLARIA_SPORE.get(), 25, FeederFood.FillType.PLANT);
     }

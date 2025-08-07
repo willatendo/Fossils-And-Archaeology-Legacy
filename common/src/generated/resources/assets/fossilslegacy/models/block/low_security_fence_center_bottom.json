@@ -1,9 +1,0 @@
-{
-  "parent": "fossilslegacy:block/template_low_security_fence_center_bottom",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "bottom": "minecraft:block/stone_bricks",
-    "particle": "minecraft:block/iron_bars",
-    "texture": "fossilslegacy:block/bar"
-  }
-}

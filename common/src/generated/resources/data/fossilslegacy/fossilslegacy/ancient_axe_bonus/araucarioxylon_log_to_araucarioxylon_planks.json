@@ -1,0 +1,8 @@
+{
+  "input": "fossilslegacy:araucarioxylon_log",
+  "max_drop": 3,
+  "min_drop": 1,
+  "output": {
+    "id": "fossilslegacy:araucarioxylon_planks"
+  }
+}

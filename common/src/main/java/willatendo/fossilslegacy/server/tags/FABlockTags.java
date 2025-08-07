@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.server.tags;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.util.TagRegister;
@@ -16,12 +17,14 @@ public class FABlockTags {
 
     public static final TagKey<Block> ANKYLOSAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/ankylosaurus");
     public static final TagKey<Block> ARAUCARIA_LOGS = BLOCK_TAGS.register("araucaria_logs");
+    public static final TagKey<Block> ARAUCARIOXYLON_LOGS = BLOCK_TAGS.register("araucarioxylon_logs");
     public static final TagKey<Block> ARCHAEOPTERIS_LOGS = BLOCK_TAGS.register("archaeopteris_logs");
     public static final TagKey<Block> BARYONYX_SPAWNABLE = BLOCK_TAGS.register("spawnable/baryonyx");
     public static final TagKey<Block> BRACHIOSAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/brachiosaurus");
     public static final TagKey<Block> CALAMITES_LOGS = BLOCK_TAGS.register("calamites_logs");
     public static final TagKey<Block> CARNOTAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/carnotaurus");
     public static final TagKey<Block> COMPSOGNATHUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/compsognathus");
+    public static final TagKey<Block> CORDAITES_LOGS = BLOCK_TAGS.register("cordaites_logs");
     public static final TagKey<Block> CRYOLOPHOSAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/cryolophosaurus");
     public static final TagKey<Block> CULTIVATORS = BLOCK_TAGS.register("cultivators");
     public static final TagKey<Block> CYCAD_PLANTABLE_ON = BLOCK_TAGS.register("cycad_plantable_on");
@@ -55,4 +58,5 @@ public class FABlockTags {
     public static final TagKey<Block> TYRANNOSAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/tyrannosaurus");
     public static final TagKey<Block> TYRANNOSAURUS_UNBREAKABLES = BLOCK_TAGS.register("unbreakable/tyrannosaurus");
     public static final TagKey<Block> VELOCIRAPTOR_SPAWNABLE = BLOCK_TAGS.register("spawnable/velociraptor");
+    public static final TagKey<Block> WOLLEMIA_LOGS = BLOCK_TAGS.register("wollemia_logs");
 }

@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.block.blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -30,6 +31,7 @@ import willatendo.fossilslegacy.server.tags.FAItemTags;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public class SmallCageBlock extends Block implements EntityBlock {
+    public static final MapCodec<SmallCageBlock> CODEC = Block.simpleCodec(SmallCageBlock::new);
     public static final EnumProperty<Direction> HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
@@ -107,5 +109,10 @@ public class SmallCageBlock extends Block implements EntityBlock {
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
         return new CageBlockEntity(blockPos, blockState);
+    }
+
+    @Override
+    protected MapCodec<? extends Block> codec() {
+        return CODEC;
     }
 }

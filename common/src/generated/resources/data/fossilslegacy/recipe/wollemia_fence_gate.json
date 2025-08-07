@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "wooden_fence_gate",
+  "key": {
+    "#": "fossilslegacy:wollemia_planks",
+    "$": "minecraft:stick"
+  },
+  "pattern": [
+    "$#$",
+    "$#$"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:wollemia_fence_gate"
+  }
+}

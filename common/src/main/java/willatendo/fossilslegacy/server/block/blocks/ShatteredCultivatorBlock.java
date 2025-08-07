@@ -1,5 +1,7 @@
 package willatendo.fossilslegacy.server.block.blocks;
 
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -23,14 +25,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ShatteredCultivatorBlock extends Block implements SimpleWaterloggedBlock {
+    public static final MapCodec<ShatteredCultivatorBlock> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(DyeColor.CODEC.fieldOf("color").forGetter(ShatteredCultivatorBlock::getDyeColor), Block.propertiesCodec()).apply(instance, ShatteredCultivatorBlock::new));
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final Map<DyeColor, Block> DYE_TO_BLOCK = new HashMap<>();
     private static final VoxelShape SHAPE = Block.box(0.0F, 0.0F, 0.0F, 16.0F, 2.0F, 16.0F);
+    private final DyeColor dyeColor;
 
     public ShatteredCultivatorBlock(DyeColor dyeColor, Properties properties) {
         super(properties);
+        this.dyeColor = dyeColor;
         DYE_TO_BLOCK.put(dyeColor, this);
-        this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, false));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(WATERLOGGED, false));
+    }
+
+    public DyeColor getDyeColor() {
+        return this.dyeColor;
     }
 
     @Override

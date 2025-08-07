@@ -1,0 +1,8 @@
+{
+  "parent": "fossilslegacy:block/template_claytosmunda",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "short_leaves": "fossilslegacy:block/short_claytosmunda_fern",
+    "tall_leaves": "fossilslegacy:block/tall_claytosmunda_fern"
+  }
+}

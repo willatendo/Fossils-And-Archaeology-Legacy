@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.block.blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -16,6 +17,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import willatendo.fossilslegacy.server.tags.FABlockTags;
 
 public class CycadLogBlock extends Block {
+    public static final MapCodec<CycadLogBlock> CODEC = Block.simpleCodec(CycadLogBlock::new);
     public static final IntegerProperty SIZE = IntegerProperty.create("size", 1, 3);
     private static final VoxelShape SHAPE_3 = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
     private static final VoxelShape SHAPE_2 = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 16.0D, 13.0D);
@@ -48,5 +50,10 @@ public class CycadLogBlock extends Block {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(SIZE);
+    }
+
+    @Override
+    protected MapCodec<? extends Block> codec() {
+        return CODEC;
     }
 }

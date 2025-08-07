@@ -1,0 +1,7 @@
+{
+  "parent": "fossilslegacy:block/template_cycadeoidea",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "texture": "fossilslegacy:block/cycadeoidea"
+  }
+}

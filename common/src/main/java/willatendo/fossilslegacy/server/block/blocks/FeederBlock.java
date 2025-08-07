@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.block.blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -29,12 +30,13 @@ import willatendo.fossilslegacy.server.stats.FAStats;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class FeederBlock extends Block implements EntityBlock {
+    public static final MapCodec<FeederBlock> CODEC = Block.simpleCodec(FeederBlock::new);
     public static final EnumProperty<Direction> HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty HAS_FOOD = BooleanProperty.create("has_food");
 
     public FeederBlock(Properties properties) {
         super(properties);
-        this.stateDefinition.any().setValue(HAS_FOOD, false).setValue(HORIZONTAL_FACING, Direction.NORTH);
+        this.registerDefaultState(this.getStateDefinition().any().setValue(HAS_FOOD, false).setValue(HORIZONTAL_FACING, Direction.NORTH));
     }
 
     @Override
@@ -113,6 +115,10 @@ public class FeederBlock extends Block implements EntityBlock {
     @Override
     protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
         builder.add(HAS_FOOD, HORIZONTAL_FACING);
-        super.createBlockStateDefinition(builder);
+    }
+
+    @Override
+    protected MapCodec<? extends Block> codec() {
+        return CODEC;
     }
 }

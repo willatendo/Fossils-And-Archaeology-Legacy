@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "plant",
+  "ingredient": "fossilslegacy:claytosmunda_dna",
+  "result": {
+    "id": "fossilslegacy:claytosmunda_spores"
+  },
+  "time": 6000
+}

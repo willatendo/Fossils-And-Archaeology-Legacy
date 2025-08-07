@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.block.blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -33,6 +34,7 @@ import org.jetbrains.annotations.Nullable;
 import willatendo.fossilslegacy.server.block.FABlocks;
 
 public class MediumCageBlock extends Block {
+    public static final MapCodec<MediumCageBlock> CODEC = Block.simpleCodec(MediumCageBlock::new);
     public static final VoxelShape BOTTOM = Block.box(0.0F, 0.0F, 0.0F, 16.0F, 2.0F, 16.0F);
     public static final VoxelShape TOP = Block.box(0.0F, 14.0F, 0.0F, 16.0F, 16.0F, 16.0F);
     public static final VoxelShape PART_1_BOTTOM = Block.box(0.0F, 2.0F, 0.0F, 2.0F, 16.0F, 2.0F);
@@ -224,22 +226,7 @@ public class MediumCageBlock extends Block {
         BlockPos blockPos = blockPlaceContext.getClickedPos();
         boolean flag = level.hasNeighborSignal(blockPos);
         BlockState blockState = super.getStateForPlacement(blockPlaceContext).setValue(HORIZONTAL_FACING, blockPlaceContext.getHorizontalDirection().getOpposite()).setValue(POWERED, flag).setValue(OPEN, flag);
-        boolean hasRoom =
-                level.isInWorldBounds(blockPos.relative(facing)) &&
-                        level.isInWorldBounds(blockPos.relative(facing.getCounterClockWise())) &&
-                        level.isInWorldBounds(blockPos.relative(facing).relative(facing.getCounterClockWise())) &&
-                        level.isInWorldBounds(blockPos.above()) &&
-                        level.isInWorldBounds(blockPos.above().relative(facing)) &&
-                        level.isInWorldBounds(blockPos.above().relative(facing.getCounterClockWise())) &&
-                        level.isInWorldBounds(blockPos.above().relative(facing).relative(facing.getCounterClockWise()))
-                && level.getBlockState(blockPos.relative(facing)).canBeReplaced()
-                        && level.getBlockState(blockPos.relative(facing.getCounterClockWise())).canBeReplaced()
-                        && level.getBlockState(blockPos.relative(facing).relative(facing.getCounterClockWise())).canBeReplaced()
-                        && level.getBlockState(blockPos.above()).canBeReplaced()
-                        && level.getBlockState(blockPos.above().relative(facing)).canBeReplaced()
-                        && level.getBlockState(blockPos.above().relative(facing.getCounterClockWise())).canBeReplaced()
-                        && level.getBlockState(blockPos.above().relative(facing).relative(facing.getCounterClockWise())).canBeReplaced()
-                ;
+        boolean hasRoom = level.isInWorldBounds(blockPos.relative(facing)) && level.isInWorldBounds(blockPos.relative(facing.getCounterClockWise())) && level.isInWorldBounds(blockPos.relative(facing).relative(facing.getCounterClockWise())) && level.isInWorldBounds(blockPos.above()) && level.isInWorldBounds(blockPos.above().relative(facing)) && level.isInWorldBounds(blockPos.above().relative(facing.getCounterClockWise())) && level.isInWorldBounds(blockPos.above().relative(facing).relative(facing.getCounterClockWise())) && level.getBlockState(blockPos.relative(facing)).canBeReplaced() && level.getBlockState(blockPos.relative(facing.getCounterClockWise())).canBeReplaced() && level.getBlockState(blockPos.relative(facing).relative(facing.getCounterClockWise())).canBeReplaced() && level.getBlockState(blockPos.above()).canBeReplaced() && level.getBlockState(blockPos.above().relative(facing)).canBeReplaced() && level.getBlockState(blockPos.above().relative(facing.getCounterClockWise())).canBeReplaced() && level.getBlockState(blockPos.above().relative(facing).relative(facing.getCounterClockWise())).canBeReplaced();
         return !hasRoom ? null : facing == Direction.NORTH ? blockState.setValue(PART, 4) : facing == Direction.EAST ? blockState.setValue(PART, 3) : facing == Direction.WEST ? blockState.setValue(PART, 2) : blockState;
     }
 
@@ -287,5 +274,10 @@ public class MediumCageBlock extends Block {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(HORIZONTAL_FACING, OPEN, POWERED, PART, HALF);
+    }
+
+    @Override
+    protected MapCodec<? extends Block> codec() {
+        return CODEC;
     }
 }

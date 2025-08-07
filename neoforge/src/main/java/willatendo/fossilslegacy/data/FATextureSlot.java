@@ -10,4 +10,7 @@ public final class FATextureSlot {
     public static final TextureSlot PLANT_2 = TextureSlot.create("plant_2");
     public static final TextureSlot PLANT_3 = TextureSlot.create("plant_3");
     public static final TextureSlot POST = TextureSlot.create("post");
+    public static final TextureSlot SHORT_LEAVES = TextureSlot.create("short_leaves");
+    public static final TextureSlot TALL_LEAVES = TextureSlot.create("tall_leaves");
 }
+

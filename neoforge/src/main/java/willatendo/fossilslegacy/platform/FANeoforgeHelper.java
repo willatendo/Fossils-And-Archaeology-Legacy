@@ -2,8 +2,10 @@ package willatendo.fossilslegacy.platform;
 
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.syncher.EntityDataSerializer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.RecipeBookType;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.GameRules;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -12,6 +14,7 @@ import willatendo.fossilslegacy.server.fluid.FAFluidTypes;
 import willatendo.fossilslegacy.server.fluid.TarFluid;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 public class FANeoforgeHelper implements FAModloaderHelper {
@@ -23,6 +26,15 @@ public class FANeoforgeHelper implements FAModloaderHelper {
     @Override
     public void sendToClient(ServerPlayer serverPlayer, CustomPacketPayload customPacketPayload) {
         PacketDistributor.sendToPlayer(serverPlayer, customPacketPayload);
+    }
+
+    @Override
+    public CreativeModeTab.Builder createCreativeModeTab(String id, List<String> after, List<String> before) {
+        CreativeModeTab.Builder builder = CreativeModeTab.builder();
+        if (id.equals("fa_all")) {
+            builder.withSearchBar();
+        }
+        return builder.title(FAUtils.translation("itemGroup", id)).withTabsAfter(after.stream().map(FAUtils::resource).toArray(ResourceLocation[]::new)).withTabsBefore(before.stream().map(FAUtils::resource).toArray(ResourceLocation[]::new));
     }
 
     @Override

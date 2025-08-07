@@ -9,6 +9,12 @@
     "fossilslegacy:araucaria_sapling": {
       "chance": 0.3
     },
+    "fossilslegacy:araucarioxylon_leaves": {
+      "chance": 0.3
+    },
+    "fossilslegacy:araucarioxylon_sapling": {
+      "chance": 0.3
+    },
     "fossilslegacy:archaeopteris_leaves": {
       "chance": 0.3
     },
@@ -27,10 +33,22 @@
     "fossilslegacy:calamites_spore": {
       "chance": 0.35
     },
+    "fossilslegacy:claytosmunda_spores": {
+      "chance": 0.35
+    },
     "fossilslegacy:cooksonia_spores": {
       "chance": 0.35
     },
+    "fossilslegacy:cordaites_leaves": {
+      "chance": 0.3
+    },
+    "fossilslegacy:cordaites_sapling": {
+      "chance": 0.3
+    },
     "fossilslegacy:cycad_cone": {
+      "chance": 0.35
+    },
+    "fossilslegacy:cycadeoidea_seed": {
       "chance": 0.35
     },
     "fossilslegacy:ginkgo_leaves": {
@@ -71,6 +89,12 @@
     },
     "fossilslegacy:tall_horsetail": {
       "chance": 0.5
+    },
+    "fossilslegacy:wollemia_leaves": {
+      "chance": 0.3
+    },
+    "fossilslegacy:wollemia_sapling": {
+      "chance": 0.3
     }
   }
 }

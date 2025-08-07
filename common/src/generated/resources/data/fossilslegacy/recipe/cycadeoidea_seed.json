@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "plant",
+  "ingredient": "fossilslegacy:cycadeoidea_dna",
+  "result": {
+    "id": "fossilslegacy:cycadeoidea_seed"
+  },
+  "time": 6000
+}

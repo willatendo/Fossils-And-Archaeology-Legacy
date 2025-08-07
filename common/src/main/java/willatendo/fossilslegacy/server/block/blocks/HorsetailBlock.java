@@ -29,7 +29,7 @@ public class HorsetailBlock extends BushBlock implements BonemealableBlock {
 
     public HorsetailBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH).setValue(AMOUNT, 1));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(HORIZONTAL_FACING, Direction.NORTH).setValue(AMOUNT, 1));
     }
 
     @Override

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "fossilslegacy:block/wollemia_slab"
+    },
+    "type=double": {
+      "model": "fossilslegacy:block/wollemia_planks"
+    },
+    "type=top": {
+      "model": "fossilslegacy:block/wollemia_slab_top"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cycadeoidea_dna": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:cycadeoidea_dna"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:cycadeoidea_seed"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cycadeoidea_dna"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:cycadeoidea_seed"
+    ]
+  }
+}

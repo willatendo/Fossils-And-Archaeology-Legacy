@@ -1,0 +1,139 @@
+{
+  "variants": {
+    "facing=east,part=1": {
+      "model": "fossilslegacy:block/corner_track_part_1",
+      "y": 90
+    },
+    "facing=east,part=2": {
+      "model": "fossilslegacy:block/corner_track_part_2",
+      "y": 90
+    },
+    "facing=east,part=3": {
+      "model": "fossilslegacy:block/corner_track_part_3",
+      "y": 90
+    },
+    "facing=east,part=4": {
+      "model": "fossilslegacy:block/corner_track_part_4",
+      "y": 90
+    },
+    "facing=east,part=5": {
+      "model": "fossilslegacy:block/corner_track_part_5",
+      "y": 90
+    },
+    "facing=east,part=6": {
+      "model": "fossilslegacy:block/corner_track_part_6",
+      "y": 90
+    },
+    "facing=east,part=7": {
+      "model": "fossilslegacy:block/corner_track_part_7",
+      "y": 90
+    },
+    "facing=east,part=8": {
+      "model": "fossilslegacy:block/corner_track_part_8",
+      "y": 90
+    },
+    "facing=east,part=9": {
+      "model": "fossilslegacy:block/corner_track_part_9",
+      "y": 90
+    },
+    "facing=north,part=1": {
+      "model": "fossilslegacy:block/corner_track_part_1"
+    },
+    "facing=north,part=2": {
+      "model": "fossilslegacy:block/corner_track_part_2"
+    },
+    "facing=north,part=3": {
+      "model": "fossilslegacy:block/corner_track_part_3"
+    },
+    "facing=north,part=4": {
+      "model": "fossilslegacy:block/corner_track_part_4"
+    },
+    "facing=north,part=5": {
+      "model": "fossilslegacy:block/corner_track_part_5"
+    },
+    "facing=north,part=6": {
+      "model": "fossilslegacy:block/corner_track_part_6"
+    },
+    "facing=north,part=7": {
+      "model": "fossilslegacy:block/corner_track_part_7"
+    },
+    "facing=north,part=8": {
+      "model": "fossilslegacy:block/corner_track_part_8"
+    },
+    "facing=north,part=9": {
+      "model": "fossilslegacy:block/corner_track_part_9"
+    },
+    "facing=south,part=1": {
+      "model": "fossilslegacy:block/corner_track_part_1",
+      "y": 180
+    },
+    "facing=south,part=2": {
+      "model": "fossilslegacy:block/corner_track_part_2",
+      "y": 180
+    },
+    "facing=south,part=3": {
+      "model": "fossilslegacy:block/corner_track_part_3",
+      "y": 180
+    },
+    "facing=south,part=4": {
+      "model": "fossilslegacy:block/corner_track_part_4",
+      "y": 180
+    },
+    "facing=south,part=5": {
+      "model": "fossilslegacy:block/corner_track_part_5",
+      "y": 180
+    },
+    "facing=south,part=6": {
+      "model": "fossilslegacy:block/corner_track_part_6",
+      "y": 180
+    },
+    "facing=south,part=7": {
+      "model": "fossilslegacy:block/corner_track_part_7",
+      "y": 180
+    },
+    "facing=south,part=8": {
+      "model": "fossilslegacy:block/corner_track_part_8",
+      "y": 180
+    },
+    "facing=south,part=9": {
+      "model": "fossilslegacy:block/corner_track_part_9",
+      "y": 180
+    },
+    "facing=west,part=1": {
+      "model": "fossilslegacy:block/corner_track_part_1",
+      "y": 270
+    },
+    "facing=west,part=2": {
+      "model": "fossilslegacy:block/corner_track_part_2",
+      "y": 270
+    },
+    "facing=west,part=3": {
+      "model": "fossilslegacy:block/corner_track_part_3",
+      "y": 270
+    },
+    "facing=west,part=4": {
+      "model": "fossilslegacy:block/corner_track_part_4",
+      "y": 270
+    },
+    "facing=west,part=5": {
+      "model": "fossilslegacy:block/corner_track_part_5",
+      "y": 270
+    },
+    "facing=west,part=6": {
+      "model": "fossilslegacy:block/corner_track_part_6",
+      "y": 270
+    },
+    "facing=west,part=7": {
+      "model": "fossilslegacy:block/corner_track_part_7",
+      "y": 270
+    },
+    "facing=west,part=8": {
+      "model": "fossilslegacy:block/corner_track_part_8",
+      "y": 270
+    },
+    "facing=west,part=9": {
+      "model": "fossilslegacy:block/corner_track_part_9",
+      "y": 270
+    }
+  }
+}

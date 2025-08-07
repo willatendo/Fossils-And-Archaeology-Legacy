@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.block.blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -25,6 +26,7 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 import java.util.List;
 
 public class DrumBlock extends Block {
+    public static final MapCodec<DrumBlock> CODEC = Block.simpleCodec(DrumBlock::new);
     public static final StringProperty COMMAND_TYPE_PROPERTY = FABlockStateProperties.COMMAND_TYPE;
 
     public DrumBlock(Properties properties) {
@@ -61,6 +63,10 @@ public class DrumBlock extends Block {
     @Override
     protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
         builder.add(COMMAND_TYPE_PROPERTY);
-        super.createBlockStateDefinition(builder);
+    }
+
+    @Override
+    protected MapCodec<? extends Block> codec() {
+        return CODEC;
     }
 }

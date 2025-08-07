@@ -1,5 +1,7 @@
 package willatendo.fossilslegacy.server.block.blocks;
 
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -33,13 +35,18 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class CultivatorBlock extends Block implements EntityBlock {
+    public static final MapCodec<CultivatorBlock> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(DyeColor.CODEC.fieldOf("color").forGetter(CultivatorBlock::getDyeColor), Block.propertiesCodec()).apply(instance, CultivatorBlock::new));
     public static final BooleanProperty ACTIVE = FABlockStateProperties.ACTIVE;
     private final DyeColor dyeColor;
 
     public CultivatorBlock(DyeColor dyeColor, Properties properties) {
         super(properties);
         this.dyeColor = dyeColor;
-        this.stateDefinition.any().setValue(ACTIVE, false);
+        this.registerDefaultState(this.getStateDefinition().any().setValue(ACTIVE, false));
+    }
+
+    public DyeColor getDyeColor() {
+        return this.dyeColor;
     }
 
     public static void shatter(Level level, BlockPos blockPos, CultivatorBlockEntity cultivatorBlockEntity) {
@@ -142,6 +149,10 @@ public class CultivatorBlock extends Block implements EntityBlock {
     @Override
     protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
         builder.add(ACTIVE);
-        super.createBlockStateDefinition(builder);
+    }
+
+    @Override
+    protected MapCodec<? extends Block> codec() {
+        return CODEC;
     }
 }

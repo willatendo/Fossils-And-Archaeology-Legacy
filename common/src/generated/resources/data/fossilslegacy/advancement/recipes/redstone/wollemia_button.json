@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:wollemia_button"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wollemia_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:wollemia_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_wollemia_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:wollemia_button"
+    ]
+  }
+}

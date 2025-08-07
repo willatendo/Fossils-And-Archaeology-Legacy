@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "fossilslegacy:block/araucarioxylon_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "fossilslegacy:block/araucarioxylon_log"
+    },
+    "axis=z": {
+      "model": "fossilslegacy:block/araucarioxylon_log_horizontal",
+      "x": 90
+    }
+  }
+}

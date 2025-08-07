@@ -1,0 +1,7 @@
+{
+  "parent": "fossilslegacy:block/template_macrotaeniopteris_leaf_4",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "texture": "fossilslegacy:block/macrotaeniopteris_plant"
+  }
+}

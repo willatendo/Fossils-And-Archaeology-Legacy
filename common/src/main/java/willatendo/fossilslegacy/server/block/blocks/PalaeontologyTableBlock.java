@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.block.blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -19,6 +20,7 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class PalaeontologyTableBlock extends Block {
+    public static final MapCodec<PalaeontologyTableBlock> CODEC = Block.simpleCodec(PalaeontologyTableBlock::new);
     private static final Component CONTAINER_TITLE = FAUtils.translation("container", "palaeontology_table");
 
     public PalaeontologyTableBlock(Properties properties) {
@@ -41,5 +43,10 @@ public class PalaeontologyTableBlock extends Block {
             }
             return InteractionResult.CONSUME;
         }
+    }
+
+    @Override
+    protected MapCodec<? extends Block> codec() {
+        return CODEC;
     }
 }

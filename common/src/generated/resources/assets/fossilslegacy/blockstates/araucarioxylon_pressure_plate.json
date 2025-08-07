@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "fossilslegacy:block/araucarioxylon_pressure_plate"
+    },
+    "powered=true": {
+      "model": "fossilslegacy:block/araucarioxylon_pressure_plate_down"
+    }
+  }
+}

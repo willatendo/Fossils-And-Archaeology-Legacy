@@ -54,6 +54,8 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.COOKSONIA_DNA.get());
         this.generatedItem(FAItems.HORSETAIL_DNA.get());
         this.generatedItem(FAItems.JURASSIC_FERN_DNA.get());
+        this.generatedItem(FAItems.CYCADEOIDEA_DNA.get());
+        this.generatedItem(FAItems.CLAYTOSMUNDA_DNA.get());
         this.generatedItem(FAItems.LEPIDODENDRON_DNA.get());
         this.generatedItem(FAItems.SIGILLARIA_DNA.get());
         this.generatedItem(FAItems.CALAMITES_DNA.get());
@@ -64,6 +66,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.BLANK_DNA.get());
         this.generatedItem(FAItems.CYCAD_CONE.get());
         this.generatedItem(FAItems.COOKSONIA_SPORES.get());
+        this.generatedItem(FAItems.CLAYTOSMUNDA_SPORES.get());
         this.generatedItem(FAItems.LEPIDODENDRON_CONE.get());
         this.generatedItem(FAItems.SIGILLARIA_SPORE.get());
         this.generatedItem(FAItems.CALAMITES_SPORE.get());
@@ -216,6 +219,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.MAGIC_CONCH.get());
         this.generatedItem(FAItems.HORSETAIL_SPORE.get());
         this.generatedItem(FAItems.JURASSIC_FERN_SPORES.get());
+        this.generatedItem(FAItems.CYCADEOIDEA_SEED.get());
         this.item(FAItems.ARTICULATED_FOSSIL.get(), ItemModelUtils.specialModel(FAModelTemplates.TEMPLATE_ARTICULATED_FOSSIL.create(FAItems.ARTICULATED_FOSSIL.get(), new TextureMapping().put(TextureSlot.PARTICLE, this.modLocation("item/articulated_fossil")), itemModelGenerators.modelOutput), new ArticulatedFossilSpecialRenderer.Unbaked()));
         this.generatedItem(FAItems.RELIC_SCRAP.get());
         this.generatedItem(FAItems.WHITE_DECORATION_PLAQUE.get());
@@ -345,6 +349,12 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.GINKGO_CHEST_BOAT.get());
         this.generatedItem(FAItems.ARAUCARIA_BOAT.get());
         this.generatedItem(FAItems.ARAUCARIA_CHEST_BOAT.get());
+        this.generatedItem(FAItems.ARAUCARIOXYLON_BOAT.get());
+        this.generatedItem(FAItems.ARAUCARIOXYLON_CHEST_BOAT.get());
+        this.generatedItem(FAItems.CORDAITES_BOAT.get());
+        this.generatedItem(FAItems.CORDAITES_CHEST_BOAT.get());
+        this.generatedItem(FAItems.WOLLEMIA_BOAT.get());
+        this.generatedItem(FAItems.WOLLEMIA_CHEST_BOAT.get());
 
         this.generatedItem(FAItems.OVERWORLD_COIN.get());
         this.generatedItem(FAItems.ICE_AGE_COIN.get());

@@ -16,8 +16,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class LlamaStatueBlock extends Block {
-    public static final EnumProperty<Direction> HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final MapCodec<LlamaStatueBlock> CODEC = Block.simpleCodec(LlamaStatueBlock::new);
+    public static final EnumProperty<Direction> HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final VoxelShape NORTH_SHAPE = Block.box(5.0F, 0.0F, 0.0F, 11.0F, 16.0F, 13.0F);
     public static final VoxelShape EAST_SHAPE = Block.box(3.0F, 0.0F, 5.0F, 16.0F, 16.0F, 11.0F);
     public static final VoxelShape SOUTH_SHAPE = Block.box(5.0F, 0.0F, 3.0F, 11.0F, 16.0F, 16.0F);
@@ -25,12 +25,7 @@ public class LlamaStatueBlock extends Block {
 
     public LlamaStatueBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH));
-    }
-
-    @Override
-    protected MapCodec<? extends LlamaStatueBlock> codec() {
-        return CODEC;
+        this.registerDefaultState(this.getStateDefinition().any().setValue(HORIZONTAL_FACING, Direction.NORTH));
     }
 
     @Override
@@ -70,5 +65,10 @@ public class LlamaStatueBlock extends Block {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(HORIZONTAL_FACING);
+    }
+
+    @Override
+    protected MapCodec<? extends LlamaStatueBlock> codec() {
+        return CODEC;
     }
 }
