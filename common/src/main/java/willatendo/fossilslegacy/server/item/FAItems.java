@@ -398,12 +398,12 @@ public final class FAItems {
     public static final SimpleHolder<BoatItem> GINKGO_CHEST_BOAT = ITEMS.registerItem("ginkgo_chest_boat", properties -> new BoatItem(FAEntityTypes.GINKGO_CHEST_BOAT.get(), properties.stacksTo(1)));
     public static final SimpleHolder<BoatItem> ARAUCARIA_BOAT = ITEMS.registerItem("araucaria_boat", properties -> new BoatItem(FAEntityTypes.ARAUCARIA_BOAT.get(), properties.stacksTo(1)));
     public static final SimpleHolder<BoatItem> ARAUCARIA_CHEST_BOAT = ITEMS.registerItem("araucaria_chest_boat", properties -> new BoatItem(FAEntityTypes.ARAUCARIA_CHEST_BOAT.get(), properties.stacksTo(1)));
-    public static final SimpleHolder<BoatItem> ARAUCARIOXYLON_BOAT = ITEMS.registerItem("araucarioxylon_boat", properties -> new BoatItem(FAEntityTypes.ARAUCARIA_BOAT.get(), properties.stacksTo(1)));
-    public static final SimpleHolder<BoatItem> ARAUCARIOXYLON_CHEST_BOAT = ITEMS.registerItem("araucarioxylon_chest_boat", properties -> new BoatItem(FAEntityTypes.ARAUCARIA_CHEST_BOAT.get(), properties.stacksTo(1)));
+    public static final SimpleHolder<BoatItem> ARAUCARIOXYLON_BOAT = ITEMS.registerItem("araucarioxylon_boat", properties -> new BoatItem(FAEntityTypes.ARAUCARIOXYLON_BOAT.get(), properties.stacksTo(1)));
+    public static final SimpleHolder<BoatItem> ARAUCARIOXYLON_CHEST_BOAT = ITEMS.registerItem("araucarioxylon_chest_boat", properties -> new BoatItem(FAEntityTypes.ARAUCARIOXYLON_CHEST_BOAT.get(), properties.stacksTo(1)));
     public static final SimpleHolder<BoatItem> CORDAITES_BOAT = ITEMS.registerItem("cordaites_boat", properties -> new BoatItem(FAEntityTypes.CORDAITES_BOAT.get(), properties.stacksTo(1)));
     public static final SimpleHolder<BoatItem> CORDAITES_CHEST_BOAT = ITEMS.registerItem("cordaites_chest_boat", properties -> new BoatItem(FAEntityTypes.CORDAITES_CHEST_BOAT.get(), properties.stacksTo(1)));
-    public static final SimpleHolder<BoatItem> WOLLEMIA_BOAT = ITEMS.registerItem("wollemia_boat", properties -> new BoatItem(FAEntityTypes.ARAUCARIA_BOAT.get(), properties.stacksTo(1)));
-    public static final SimpleHolder<BoatItem> WOLLEMIA_CHEST_BOAT = ITEMS.registerItem("wollemia_chest_boat", properties -> new BoatItem(FAEntityTypes.ARAUCARIA_CHEST_BOAT.get(), properties.stacksTo(1)));
+    public static final SimpleHolder<BoatItem> WOLLEMIA_BOAT = ITEMS.registerItem("wollemia_boat", properties -> new BoatItem(FAEntityTypes.WOLLEMIA_BOAT.get(), properties.stacksTo(1)));
+    public static final SimpleHolder<BoatItem> WOLLEMIA_CHEST_BOAT = ITEMS.registerItem("wollemia_chest_boat", properties -> new BoatItem(FAEntityTypes.WOLLEMIA_CHEST_BOAT.get(), properties.stacksTo(1)));
 
     public static final SimpleHolder<DebugItem> DEBUG_MAX_HUNGER = ITEMS.registerItem("debug_max_hunger", properties -> new DebugItem(DebugItem.debugMaxHunger(), properties));
     public static final SimpleHolder<DebugItem> DEBUG_MAX_HEALTH = ITEMS.registerItem("debug_max_health", properties -> new DebugItem(DebugItem.debugMaxHealth(), properties));

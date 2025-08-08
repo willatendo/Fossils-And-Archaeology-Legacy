@@ -365,7 +365,40 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.ARAUCARIA_FENCE_GATE.get());
         this.add(FABlocks.ARAUCARIA_BUTTON.get());
         this.add(FABlocks.ARAUCARIA_SLAB.get());
-
+        this.add(FABlocks.WOLLEMIA_PLANKS.get());
+        this.add(FABlocks.WOLLEMIA_SAPLING.get());
+        this.add(FABlocks.WOLLEMIA_LOG.get());
+        this.add(FABlocks.STRIPPED_WOLLEMIA_LOG.get());
+        this.add(FABlocks.WOLLEMIA_WOOD.get());
+        this.add(FABlocks.STRIPPED_WOLLEMIA_WOOD.get());
+        this.add(FABlocks.WOLLEMIA_LEAVES.get());
+        this.add(FABlocks.WOLLEMIA_STAIRS.get());
+        this.add(FABlocks.WOLLEMIA_SIGN.get());
+        this.add(FABlocks.WOLLEMIA_DOOR.get());
+        this.add(FABlocks.WOLLEMIA_HANGING_SIGN.get());
+        this.add(FABlocks.WOLLEMIA_PRESSURE_PLATE.get());
+        this.add(FABlocks.WOLLEMIA_FENCE.get());
+        this.add(FABlocks.WOLLEMIA_TRAPDOOR.get());
+        this.add(FABlocks.WOLLEMIA_FENCE_GATE.get());
+        this.add(FABlocks.WOLLEMIA_BUTTON.get());
+        this.add(FABlocks.WOLLEMIA_SLAB.get());
+        this.add(FABlocks.ARAUCARIOXYLON_PLANKS.get());
+        this.add(FABlocks.ARAUCARIOXYLON_SAPLING.get());
+        this.add(FABlocks.ARAUCARIOXYLON_LOG.get());
+        this.add(FABlocks.STRIPPED_ARAUCARIOXYLON_LOG.get());
+        this.add(FABlocks.ARAUCARIOXYLON_WOOD.get());
+        this.add(FABlocks.STRIPPED_ARAUCARIOXYLON_WOOD.get());
+        this.add(FABlocks.ARAUCARIOXYLON_LEAVES.get());
+        this.add(FABlocks.ARAUCARIOXYLON_STAIRS.get());
+        this.add(FABlocks.ARAUCARIOXYLON_SIGN.get());
+        this.add(FABlocks.ARAUCARIOXYLON_DOOR.get());
+        this.add(FABlocks.ARAUCARIOXYLON_HANGING_SIGN.get());
+        this.add(FABlocks.ARAUCARIOXYLON_PRESSURE_PLATE.get());
+        this.add(FABlocks.ARAUCARIOXYLON_FENCE.get());
+        this.add(FABlocks.ARAUCARIOXYLON_TRAPDOOR.get());
+        this.add(FABlocks.ARAUCARIOXYLON_FENCE_GATE.get());
+        this.add(FABlocks.ARAUCARIOXYLON_BUTTON.get());
+        this.add(FABlocks.ARAUCARIOXYLON_SLAB.get());
         // Biomes
         this.add("biome.fossilslegacy.prehistoric_ocean", "Prehistoric Ocean");
         this.add("biome.fossilslegacy.deep_prehistoric_ocean", "Deep Prehistoric Ocean");
@@ -459,6 +492,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         // Creative Mode Tabs
         this.add(FACreativeModeTabs.FA_ARCHAEOLOGY.get(), "F/A: Archaeology");
         this.add(FACreativeModeTabs.FA_PALAEONTOLOGY.get(), "F/A: Palaeontology");
+        this.add(FACreativeModeTabs.FA_PALAEOBOTANY.get(), "F/A: Palaeobotany");
+        this.add(FACreativeModeTabs.FA_BUILDING_BLOCKS.get(), "F/A: Building Blocks");
+        this.add(FACreativeModeTabs.FA_UTILITIES.get(), "F/A: Utilities");
         this.add(FACreativeModeTabs.FA_ALL.get(), "F/A: All");
 
         // Deaths
@@ -637,6 +673,10 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAEntityTypes.LEPIDODENDRON_CHEST_BOAT.get(), "Calamites Boat with Chest");
         this.add(FAEntityTypes.SIGILLARIA_BOAT.get(), "Sigillaria Boat");
         this.add(FAEntityTypes.SIGILLARIA_CHEST_BOAT.get(), "Sigillaria Boat with Chest");
+        this.add(FAEntityTypes.WOLLEMIA_BOAT.get(), "Wollemia Boat");
+        this.add(FAEntityTypes.WOLLEMIA_CHEST_BOAT.get(), "Wollemia Boat with Chest");
+        this.add(FAEntityTypes.ARAUCARIOXYLON_BOAT.get(), "Araucarioxylon Boat");
+        this.add(FAEntityTypes.ARAUCARIOXYLON_CHEST_BOAT.get(), "Araucarioxylon Boat with Chest");
 
         this.add("entity.minecraft.villager.fossilslegacy.archaeologist", "Archaeologist");
         this.add("entity.minecraft.archaeologist", "Archaeologist");
@@ -673,6 +713,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.addFossilVariant(FAFossilVariants.PACHYCEPHALOSAURUS, "Pachycephalosaurus");
         this.addFossilVariant(FAFossilVariants.PTERANODON, "Pteranodon");
         this.addFossilVariant(FAFossilVariants.LEGACY_PTERANODON, "Legacy Pteranodon");
+        this.addFossilVariant(FAFossilVariants.SMILODON, "Smilodon");
         this.addFossilVariant(FAFossilVariants.SPINOSAURUS, "Spinosaurus");
         this.addFossilVariant(FAFossilVariants.STEGOSAURUS, "Stegosaurus");
         this.addFossilVariant(FAFossilVariants.THERIZINOSAURUS, "Therizinosaurus");
@@ -932,6 +973,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.articulated_fossil.pachycephalosaurus", "Articulated Pachycephalosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.pteranodon", "Articulated Pteranodon Fossil");
         this.add("item.fossilslegacy.articulated_fossil.legacy_pteranodon", "Articulated Legacy Pteranodon Fossil");
+        this.add("item.fossilslegacy.articulated_fossil.smilodon", "Articulated Smilodon Fossil");
         this.add("item.fossilslegacy.articulated_fossil.spinosaurus", "Articulated Spinosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.stegosaurus", "Articulated Stegosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.therizinosaurus", "Articulated Therizinosaurus Fossil");
@@ -1835,7 +1877,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
 
         this.add(FAFluidTags.PERMAFROST_FREEZABLE, "Permaforst Freezable");
 
-        this.add(FAFossilVariantTags.PLACEABLE_FROM_FOSSIL, "Placeable from Fossil");
+        this.add(FAFossilVariantTags.CENOZOIC, "Cenozoic");
+        this.add(FAFossilVariantTags.MESOZOIC, "Mesozoic");
+        this.add(FAFossilVariantTags.PALAEOZOIC, "Palaeozoic");
 
         this.add(FAFuelEntryTags.RESTORE_BY_STONE_TABLET, "Restore By Stone Tablet Fuels");
         this.add(FAFuelEntryTags.ARCHAEOLOGY_WORKBENCH, "Archaeology Workbench Fuels");

@@ -1,2 +1,4 @@
-// 1.21.4	2025-08-01T03:00:52.9247127	Tags for fossilslegacy:fossil_variants mod id fossilslegacy
-78e1895849b8062bfb6ae8062d49f48ce83ee4c0 data/fossilslegacy/tags/fossilslegacy/fossil_variants/placeable_from_fossil.json
+// 1.21.4	2025-08-08T00:10:30.9584549	Tags for fossilslegacy:fossil_variants mod id fossilslegacy
+f23cd3244774744d2c6efe414b499ca125a83976 data/fossilslegacy/tags/fossilslegacy/fossil_variants/cenozoic.json
+49fcefc71d816d424d4cb5ec2f13af0b1ef6f31d data/fossilslegacy/tags/fossilslegacy/fossil_variants/mesozoic.json
+0a11bd68f15f8639e8bcafdc4747c5b5c3912f76 data/fossilslegacy/tags/fossilslegacy/fossil_variants/palaeozoic.json

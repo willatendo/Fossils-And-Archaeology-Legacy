@@ -60,6 +60,7 @@ public final class FAConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> GINKGO = create("ginkgo");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LEPIDODENDRON = create("lepidodendron");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SIGILLARIA = create("sigillaria");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WOLLEMIA = create("wollemia");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> PREHISTORIC_OAK = create("prehistoric_oak");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PREHISTORIC_BIRCH = create("prehistoric_birch");
@@ -111,6 +112,10 @@ public final class FAConfiguredFeatures {
         return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(FABlocks.SIGILLARIA_LOG.get()), new SigillariaTrunkPlacer(9, 3, 5), BlockStateProvider.simple(FABlocks.SIGILLARIA_LEAVES.get()), new SigillariaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines();
     }
 
+    private static TreeConfiguration.TreeConfigurationBuilder createWollemia() {
+        return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(FABlocks.WOLLEMIA_LOG.get()), new StraightTrunkPlacer(10, 3, 6), BlockStateProvider.simple(FABlocks.WOLLEMIA_LEAVES.get()), new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(0, 2), UniformInt.of(1, 3)), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines();
+    }
+
     private static TreeConfiguration.TreeConfigurationBuilder createPrehistoricOak() {
         return createStraightBlobTree(Blocks.OAK_LOG, Blocks.OAK_LEAVES, 8, 2, 0, 2).ignoreVines();
     }
@@ -151,6 +156,7 @@ public final class FAConfiguredFeatures {
         FeatureUtils.register(bootstrapContext, GINKGO, Feature.TREE, FAConfiguredFeatures.createGinkgo().build());
         FeatureUtils.register(bootstrapContext, LEPIDODENDRON, Feature.TREE, FAConfiguredFeatures.createLepidodendron().build());
         FeatureUtils.register(bootstrapContext, SIGILLARIA, Feature.TREE, FAConfiguredFeatures.createSigillaria().build());
+        FeatureUtils.register(bootstrapContext, WOLLEMIA, Feature.TREE, FAConfiguredFeatures.createWollemia().build());
 
         FeatureUtils.register(bootstrapContext, PREHISTORIC_OAK, Feature.TREE, createPrehistoricOak().build());
         FeatureUtils.register(bootstrapContext, PREHISTORIC_BIRCH, Feature.TREE, createPrehistoricBirch().build());

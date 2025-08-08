@@ -7,6 +7,8 @@ public final class FAModelLayers {
     public static final ModelLayerLocation ANIMAL_FETUS = FAModelLayers.create("animal_fetus");
     public static final ModelLayerLocation ARAUCARIA_BOAT = FAModelLayers.create("boat/araucaria");
     public static final ModelLayerLocation ARAUCARIA_CHEST_BOAT = FAModelLayers.create("chest_boat/araucaria");
+    public static final ModelLayerLocation ARAUCARIOXYLON_BOAT = FAModelLayers.create("boat/araucarioxylon");
+    public static final ModelLayerLocation ARAUCARIOXYLON_CHEST_BOAT = FAModelLayers.create("chest_boat/araucarioxylon");
     public static final ModelLayerLocation ARCHAEOPTERIS_BOAT = FAModelLayers.create("boat/archaeopteris");
     public static final ModelLayerLocation ARCHAEOPTERIS_CHEST_BOAT = FAModelLayers.create("chest_boat/archaeopteris");
     public static final ModelLayerLocation ANU = FAModelLayers.create("anu");
@@ -28,6 +30,8 @@ public final class FAModelLayers {
     public static final ModelLayerLocation SMALL_EGG = FAModelLayers.create("small_egg");
     public static final ModelLayerLocation THROWN_JAVELIN = FAModelLayers.create("thrown_javelin");
     public static final ModelLayerLocation TIME_MACHINE_CLOCK = FAModelLayers.create("time_machine_clock");
+    public static final ModelLayerLocation WOLLEMIA_BOAT = FAModelLayers.create("boat/wollemia");
+    public static final ModelLayerLocation WOLLEMIA_CHEST_BOAT = FAModelLayers.create("chest_boat/wollemia");
 
     private static ModelLayerLocation create(String layerName) {
         return FAModelLayers.create(layerName, "main");

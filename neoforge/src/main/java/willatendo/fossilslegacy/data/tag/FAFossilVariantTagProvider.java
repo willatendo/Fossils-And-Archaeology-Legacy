@@ -16,6 +16,39 @@ public class FAFossilVariantTagProvider extends DataDrivenTagsProvider<FossilVar
 
     @Override
     protected void addTags(Provider provider) {
-        this.tag(FAFossilVariantTags.PLACEABLE_FROM_FOSSIL).add(FAFossilVariants.ANKYLOSAURUS, FAFossilVariants.BARYONYX, FAFossilVariants.BRACHIOSAURUS, FAFossilVariants.LEGACY_BRACHIOSAURUS, FAFossilVariants.CARNOTAURUS, FAFossilVariants.COMPSOGNATHUS, FAFossilVariants.CRYOLOPHOSAURUS, FAFossilVariants.DILOPHOSAURUS, FAFossilVariants.DIMETRODON, FAFossilVariants.DODO, FAFossilVariants.DRYOSAURUS, FAFossilVariants.ELASMOTHERIUM, FAFossilVariants.FUTABASAURUS, FAFossilVariants.LEGACY_FUTABASAURUS, FAFossilVariants.GALLIMIMUS, FAFossilVariants.ICHTHYOSAURUS, FAFossilVariants.ISOTELUS, FAFossilVariants.MAMMOTH, FAFossilVariants.MOA, FAFossilVariants.MOSASAURUS, FAFossilVariants.PACHYCEPHALOSAURUS, FAFossilVariants.PTERANODON, FAFossilVariants.LEGACY_PTERANODON, FAFossilVariants.SPINOSAURUS, FAFossilVariants.STEGOSAURUS, FAFossilVariants.THERIZINOSAURUS, FAFossilVariants.TRICERATOPS, FAFossilVariants.LEGACY_TRICERATOPS, FAFossilVariants.TYRANNOSAURUS, FAFossilVariants.VELOCIRAPTOR);
+        this.tag(FAFossilVariantTags.CENOZOIC).add(
+                FAFossilVariants.DODO,
+                FAFossilVariants.ELASMOTHERIUM,
+                FAFossilVariants.MAMMOTH,
+                FAFossilVariants.MOA,
+                FAFossilVariants.SMILODON);
+        this.tag(FAFossilVariantTags.MESOZOIC).add(
+                FAFossilVariants.ANKYLOSAURUS,
+                FAFossilVariants.BARYONYX,
+                FAFossilVariants.BRACHIOSAURUS,
+                FAFossilVariants.LEGACY_BRACHIOSAURUS,
+                FAFossilVariants.CARNOTAURUS,
+                FAFossilVariants.COMPSOGNATHUS,
+                FAFossilVariants.CRYOLOPHOSAURUS,
+                FAFossilVariants.DILOPHOSAURUS,
+                FAFossilVariants.DRYOSAURUS,
+                FAFossilVariants.FUTABASAURUS,
+                FAFossilVariants.LEGACY_FUTABASAURUS,
+                FAFossilVariants.GALLIMIMUS,
+                FAFossilVariants.ICHTHYOSAURUS,
+                FAFossilVariants.MOSASAURUS,
+                FAFossilVariants.PACHYCEPHALOSAURUS,
+                FAFossilVariants.PTERANODON,
+                FAFossilVariants.LEGACY_PTERANODON,
+                FAFossilVariants.SPINOSAURUS,
+                FAFossilVariants.STEGOSAURUS,
+                FAFossilVariants.THERIZINOSAURUS,
+                FAFossilVariants.TRICERATOPS,
+                FAFossilVariants.LEGACY_TRICERATOPS,
+                FAFossilVariants.TYRANNOSAURUS,
+                FAFossilVariants.VELOCIRAPTOR);
+        this.tag(FAFossilVariantTags.PALAEOZOIC).add(
+                FAFossilVariants.DIMETRODON,
+                FAFossilVariants.ISOTELUS);
     }
 }
