@@ -246,6 +246,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.CLAYTOSMUNDA.get());
         this.add(FABlocks.CYCADEOIDEA.get());
         this.add(FABlocks.MACROTAENIOPTERIS.get());
+        this.add(FABlocks.DIPTERIS.get());
         this.add(FABlocks.LEPIDODENDRON_PLANKS.get());
         this.add(FABlocks.LEPIDODENDRON_SAPLING.get());
         this.add(FABlocks.LEPIDODENDRON_LOG.get());
@@ -781,6 +782,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.ARCHAEOPTERIS_DNA.get(), "Archaeopteris DNA");
         this.add(FAItems.GINKGO_DNA.get(), "Ginkgo DNA");
         this.add(FAItems.ARAUCARIA_DNA.get(), "Araucaria DNA");
+        this.add(FAItems.ARAUCARIOXYLON_DNA.get(), "Araucarioxylon DNA");
+        this.add(FAItems.CORDAITES_DNA.get(), "Cordaties DNA");
+        this.add(FAItems.WOLLEMIA_DNA.get(), "Wollemia DNA");
         this.add(FAItems.STORAGE_DISC.get());
         this.add("item.fossilslegacy.storage_disc.type", "Type: %s");
         this.add(FAItems.BLANK_DNA.get(), "Blank DNA");
@@ -915,9 +919,11 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.DODO_DNA.get(), "Dodo DNA");
         this.add(FAItems.MOA_DNA.get(), "Moa DNA");
         this.add("item.fossilslegacy.dna.era", "Era: %s");
+        this.add("item.fossilslegacy.dna.era_range", "Era: %s-%s");
         this.add("item.fossilslegacy.dna.gene", "%s: %s");
         this.add("item.fossilslegacy.dna.genetic_code", "Genetic Code: %s");
         this.add("item.fossilslegacy.dna.period", "Period: %s");
+        this.add("item.fossilslegacy.dna.period_range", "Period: %s-%s");
         this.add("item.fossilslegacy.dna.purity", "Purity: %s");
         this.add("item.fossilslegacy.dna.model_type", "Model Type: %s");
         this.add("item.fossilslegacy.dna.skin", "Pattern: %s");
@@ -1449,6 +1455,12 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.BARYONYX_SPAWN_EGG.get());
         this.add(FAItems.DISTORTUS_REX_SPAWN_EGG.get());
         this.add("item.fossilslegacy.dinosaur_spawn_egg.desc", "Crouch to spawn baby");
+        this.add(FAItems.MUSIC_DISC_TRIASSIC.get(), "Music Disc");
+        this.add(FAItems.MUSIC_DISC_JURASSIC.get(), "Music Disc");
+        this.add(FAItems.MUSIC_DISC_CRETACEOUS.get(), "Music Disc");
+        this.add("jukebox_song.fossilslegacy.triassic", "Glacie - Triassic");
+        this.add("jukebox_song.fossilslegacy.jurassic", "Glacie - Jurassic");
+        this.add("jukebox_song.fossilslegacy.cretaceous", "Glacie - Cretaceous");
 
         this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.applies_to", "Netherite Equipment");
         this.add("item.fossilslegacy.smithing_template.scarab_gem_upgrade.ingredient", "Scarab Gem");

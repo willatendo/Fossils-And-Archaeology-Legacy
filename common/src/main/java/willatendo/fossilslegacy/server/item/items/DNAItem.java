@@ -13,17 +13,17 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 import java.util.List;
 
 public abstract class DNAItem extends Item {
-    private final GeologicalTimeScale.Period period;
+    private final GeologicalTimeScale.EraDescription eraDescription;
     private final EmbryoType embryoType;
 
-    public DNAItem(GeologicalTimeScale.Period period, EmbryoType embryoType,  Properties properties) {
+    public DNAItem(GeologicalTimeScale.EraDescription eraDescription, EmbryoType embryoType, Properties properties) {
         super(properties);
-        this.period = period;
+        this.eraDescription = eraDescription;
         this.embryoType = embryoType;
     }
 
-    public GeologicalTimeScale.Period getPeriod() {
-        return this.period;
+    public GeologicalTimeScale.EraDescription getEraDescription() {
+        return this.eraDescription;
     }
 
     public EmbryoType getEmbryoType() {
@@ -32,7 +32,7 @@ public abstract class DNAItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        this.period.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
+        this.eraDescription.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
         if (itemStack.has(FADataComponents.PURITY.get())) {
             tooltipComponents.add(FAUtils.translation("item", "dna.purity", (int) Math.floor((((float) itemStack.get(FADataComponents.PURITY.get())) / 100) * 100) + "%").withStyle(ChatFormatting.GRAY));
         }

@@ -54,7 +54,6 @@
 - DNA No Longer Generates In Academies
 - Updated Permafrost Drops (30% Skull Block, 30% Frozen Meat, 20% Raw Beef, 20% Raw Porkchop)
 - Jurassic Ferns No Longer Drop Wheat Seeds, Sometimes Drops Jurassic Fern Spores
-- Creative Mode Tabs More Coherently Organized
 - Updated Ankylosaurus Skeleton Texture
 - Updated Brachiosaurus Skeleton Texture
 - Updated Carnotaurus Skeleton Texture
@@ -72,6 +71,84 @@
 - Updated Triceratops Skeleton Texture
 - Updated Tyrannosaurus Skeleton Texture
 - Updated Velociraptor Skeleton Texture
+- Creative Mode Tabs More Coherently Organized
+- Items That Show Time Period Show A Range If Applicable
+- Golden Apple Can Be Used In Feeder
+- Enchanted Golden Apple Can Be Used In Feeder
+- Golden Carrot Can Be Used In Feeder
+- Dried Kelp Can Be Used In Feeder
+- Cookie Can Be Used In Feeder
+- Cocoa Beans Can Be Used In Feeder
+- Cake Can Be Used In Feeder
+- Pumpkin Pie Can Be Used In Feeder
+- Oak Leaves Can Be Used In Feeder
+- Spruce Leaves Can Be Used In Feeder
+- Birch Leaves Can Be Used In Feeder
+- Jungle Leaves Can Be Used In Feeder
+- Acacia Leaves Can Be Used In Feeder
+- Dark Oak Leaves Can Be Used In Feeder
+- Mangrove Leaves Can Be Used In Feeder
+- Cherry Leaves Can Be Used In Feeder
+- Pale Oak Leaves Can Be Used In Feeder
+- Azalea Leaves Can Be Used In Feeder
+- Flowering Azalea Leaves Can Be Used In Feeder
+- Calamites Leaves Can Be Used In Feeder
+- Lepidodendron Leaves Can Be Used In Feeder
+- Sigillaria Leaves Can Be Used In Feeder
+- Oak Sapling Can Be Used In Feeder
+- Spruce Sapling Can Be Used In Feeder
+- Birch Sapling Can Be Used In Feeder
+- Jungle Sapling Can Be Used In Feeder
+- Acacia Sapling Can Be Used In Feeder
+- Dark Oak Sapling Can Be Used In Feeder
+- Mangrove Sapling Can Be Used In Feeder
+- Cherry Sapling Can Be Used In Feeder
+- Pale Oak Sapling Can Be Used In Feeder
+- Azalea Can Be Used In Feeder
+- Flowering Azalea Can Be Used In Feeder
+- Calamites Sapling Can Be Used In Feeder
+- Lepidodendron Sapling Can Be Used In Feeder
+- Sigillaria Sapling Can Be Used In Feeder
+- Brown Mushroom Can Be Used In Feeder
+- Red Mushroom Can Be Used In Feeder
+- Short Grass Can Be Used In Feeder
+- Fern Can Be Used In Feeder
+- Dandelion Can Be Used In Feeder
+- Poppy Can Be Used In Feeder
+- Blue Orchid Can Be Used In Feeder
+- Allium Can Be Used In Feeder
+- Azure Bluet Can Be Used In Feeder
+- Red Tulip Can Be Used In Feeder
+- Orange Tulip Can Be Used In Feeder
+- White Tulip Can Be Used In Feeder
+- Pink Tulip Can Be Used In Feeder
+- Oxeye Daisy Can Be Used In Feeder
+- Cornflower Can Be Used In Feeder
+- Pink Petals Can Be Used In Feeder
+- Spore Blossom Can Be Used In Feeder
+- Bamboo Can Be Used In Feeder
+- Vine Can Be Used In Feeder
+- Tall Grass Can Be Used In Feeder
+- Large Fern Can Be Used In Feeder
+- Sunflower Can Be Used In Feeder
+- Lilac Can Be Used In Feeder
+- Rose Bush Can Be Used In Feeder
+- Peony Can Be Used In Feeder
+- Big Dripleaf Can Be Used In Feeder
+- Small Dripleaf Can Be Used In Feeder
+- Glow Lichen Can Be Used In Feeder
+- Hanging Roots Can Be Used In Feeder
+- Lilypad Can Be Used In Feeder
+- Seagrass Can Be Used In Feeder
+- Sea Pickle Can Be Used In Feeder
+- Melon Can Be Used In Feeder
+- Pumpkin Can Be Used In Feeder
+- Hay Bale Can Be Used In Feeder
+- Moss Block Can Be Used In Feeder
+- Moss Carpet Can Be Used In Feeder
+- Pale Moss Block Can Be Used In Feeder
+- Pale Moss Carpet Can Be Used In Feeder
+- Pale Hanging Moss Can Be Used In Feeder
 - Added Archaeology Category For Analyzer Recipe Book
 - Added Palaeontology Category For Analyzer Recipe Book
 - Added Mosasaurus Skeleton
@@ -247,6 +324,75 @@
 - Added Claytosmunda Spores
 - Added Cycadeoidea DNA
 - Added Cycadeoidea Seed
+- Added Araucarioxylon Planks
+- Added Araucarioxylon Log
+- Added Stripped Araucarioxylon Log
+- Added Araucarioxylon Wood
+- Added Stripped Araucarioxylon Wood
+- Added Araucarioxylon Leaves
+- Added Araucarioxylon Stairs
+- Added Araucarioxylon Sign
+- Added Araucarioxylon Door
+- Added Araucarioxylon Hanging Sign
+- Added Araucarioxylon Pressure Plate
+- Added Araucarioxylon Fence
+- Added Araucarioxylon Trapdoor
+- Added Araucarioxylon Fence Gate
+- Added Potted Araucarioxylon Sapling
+- Added Araucarioxylon Button
+- Added Araucarioxylon Slab
+- Added Araucarioxylon Boat
+- Added Araucarioxylon Boat with Chest
+- Added Araucarioxylon Tree
+- Added Araucarioxylon DNA
+- Added Araucarioxylon Cone
+- Added Cordaites Planks
+- Added Cordaites Log
+- Added Stripped Cordaites Log
+- Added Cordaites Wood
+- Added Stripped Cordaites Wood
+- Added Cordaites Leaves
+- Added Cordaites Stairs
+- Added Cordaites Sign
+- Added Cordaites Door
+- Added Cordaites Hanging Sign
+- Added Cordaites Pressure Plate
+- Added Cordaites Fence
+- Added Cordaites Trapdoor
+- Added Cordaites Fence Gate
+- Added Potted Cordaites Sapling
+- Added Cordaites Button
+- Added Cordaites Slab
+- Added Cordaites Boat
+- Added Cordaites Boat with Chest
+- Added Cordaites Tree
+- Added Cordaites DNA
+- Added Cordaites Cone
+- Added Wollemia Planks
+- Added Wollemia Log
+- Added Stripped Wollemia Log
+- Added Wollemia Wood
+- Added Stripped Wollemia Wood
+- Added Wollemia Leaves
+- Added Wollemia Stairs
+- Added Wollemia Sign
+- Added Wollemia Door
+- Added Wollemia Hanging Sign
+- Added Wollemia Pressure Plate
+- Added Wollemia Fence
+- Added Wollemia Trapdoor
+- Added Wollemia Fence Gate
+- Added Potted Wollemia Sapling
+- Added Wollemia Button
+- Added Wollemia Slab
+- Added Wollemia Boat
+- Added Wollemia Boat with Chest
+- Added Wollemia Tree
+- Added Wollemia DNA
+- Added Wollemia Cone
+- Added Triassic Music Disc
+- Added Jurassic Music Disc
+- Added Cretaceous Music Disc
 27/2/2024 1.4.9
 - Fixed Tooth Dagger Not Shearing All Shearables
 - Fixed Mayan Vase Not Wobbling

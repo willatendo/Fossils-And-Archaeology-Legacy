@@ -1,17 +1,16 @@
 package willatendo.fossilslegacy.data.model;
 
+import net.minecraft.client.color.item.GrassColorSource;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.blockstates.*;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import org.apache.commons.compress.utils.Lists;
 import willatendo.fossilslegacy.data.FABlockFamilies;
 import willatendo.fossilslegacy.data.FAModelTemplates;
 import willatendo.fossilslegacy.data.FATextureSlot;
@@ -20,8 +19,6 @@ import willatendo.fossilslegacy.server.block.blocks.*;
 import willatendo.fossilslegacy.server.block.properties.FABlockStateProperties;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.data.model.SimpleBlockModelGenerator;
-
-import java.util.List;
 
 public class FABlockModelGenerator extends SimpleBlockModelGenerator {
     public FABlockModelGenerator(BlockModelGenerators blockModelGenerators) {
@@ -143,6 +140,7 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createTrivialCube(FABlocks.PACHYPODIUM.get());
         this.createTrivialCube(FABlocks.WILLIAMSONIA.get());
         this.createMacrotaeniopteris(FABlocks.MACROTAENIOPTERIS.get());
+        this.createDipteris(FABlocks.DIPTERIS.get());
         this.blockModelGenerators.woodProvider(FABlocks.ARAUCARIA_LOG.get()).logWithHorizontal(FABlocks.ARAUCARIA_LOG.get()).wood(FABlocks.ARAUCARIA_WOOD.get());
         this.blockModelGenerators.woodProvider(FABlocks.STRIPPED_ARAUCARIA_LOG.get()).logWithHorizontal(FABlocks.STRIPPED_ARAUCARIA_LOG.get()).wood(FABlocks.STRIPPED_ARAUCARIA_WOOD.get());
         this.blockModelGenerators.createHangingSign(FABlocks.STRIPPED_ARAUCARIA_LOG.get(), FABlocks.ARAUCARIA_HANGING_SIGN.get(), FABlocks.ARAUCARIA_WALL_HANGING_SIGN.get());
@@ -187,7 +185,7 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.blockModelGenerators.woodProvider(FABlocks.STRIPPED_WOLLEMIA_LOG.get()).logWithHorizontal(FABlocks.STRIPPED_WOLLEMIA_LOG.get()).wood(FABlocks.STRIPPED_WOLLEMIA_WOOD.get());
         this.blockModelGenerators.createHangingSign(FABlocks.STRIPPED_WOLLEMIA_LOG.get(), FABlocks.WOLLEMIA_HANGING_SIGN.get(), FABlocks.WOLLEMIA_WALL_HANGING_SIGN.get());
         this.createPlantWithDefaultItem(FABlocks.WOLLEMIA_SAPLING.get(), FABlocks.POTTED_WOLLEMIA_SAPLING.get(), SimpleBlockModelGenerator.PlantType.NOT_TINTED);
-        this.blockModelGenerators.createTintedLeaves(FABlocks.WOLLEMIA_LEAVES.get(), TexturedModel.LEAVES, -12012264);
+        this.blockModelGenerators.createTintedLeaves(FABlocks.WOLLEMIA_LEAVES.get(), TexturedModel.LEAVES, -10380959);
         this.block(MultiVariantGenerator.multiVariant(FABlocks.TAR.get(), Variant.variant().with(VariantProperties.MODEL, FAModelTemplates.TEMPLATE_LIQUID.create(FABlocks.TAR.get(), new TextureMapping().put(TextureSlot.PARTICLE, this.mcLocation("block/bedrock")), this.modelOutput))));
     }
 
@@ -199,21 +197,6 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
 
     private void createBasic(Block block) {
         this.block(BlockModelGenerators.createSimpleBlock(block, ModelTemplates.CUBE_ALL.create(block, TextureMapping.cube(block), this.modelOutput)));
-    }
-
-    private void createFossil(Block fossil, boolean deepslate, String... variantNames) {
-        List<Variant> variants = Lists.newArrayList();
-        for (int i = 0; i < variantNames.length; i++) {
-            String variantName = variantNames[i];
-            String blockId = BuiltInRegistries.BLOCK.getKey(fossil).getPath();
-            String texturePath = deepslate ? "block/deepslate_" + variantName + "_" + blockId.replace("deepslate_", "") : "block/" + variantName + "_" + blockId;
-            ResourceLocation model = ModelTemplates.CUBE_ALL.create(this.modLocation(texturePath), TextureMapping.cube(this.modLocation(texturePath)), this.modelOutput);
-            variants.add(Variant.variant().with(VariantProperties.MODEL, model));
-            if (i == 0) {
-                this.blockModelGenerators.registerSimpleItemModel(fossil, model);
-            }
-        }
-        this.block(MultiVariantGenerator.multiVariant(fossil, variants.toArray(Variant[]::new)));
     }
 
     private void createFrozenLeech(Block leechInIce) {
@@ -285,7 +268,7 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         ResourceLocation plant1Texture = this.modLocation("block/horsetail_1");
         ResourceLocation plant2Texture = this.modLocation("block/horsetail_2");
         ResourceLocation plant3Texture = this.modLocation("block/horsetail_3");
-        this.blockModelGenerators.registerSimpleTintedItemModel(horsetail, ModelTemplates.FLAT_ITEM.create(horsetail, new TextureMapping().put(TextureSlot.LAYER0, plant2Texture), this.modelOutput), ItemModelUtils.constantTint(-12012264));
+        this.blockModelGenerators.registerSimpleTintedItemModel(horsetail, ModelTemplates.FLAT_ITEM.create(horsetail, new TextureMapping().put(TextureSlot.LAYER0, plant2Texture), this.modelOutput), new GrassColorSource());
         ResourceLocation plant1Model = FAModelTemplates.TEMPLATE_PLANT_1.create(ModelLocationUtils.getModelLocation(horsetail).withSuffix("_1"), new TextureMapping().put(FATextureSlot.PLANT_1, plant1Texture), this.modelOutput);
         ResourceLocation plant2Model = FAModelTemplates.TEMPLATE_PLANT_2.create(ModelLocationUtils.getModelLocation(horsetail).withSuffix("_2"), new TextureMapping().put(FATextureSlot.PLANT_1, plant1Texture).put(FATextureSlot.PLANT_2, plant2Texture), this.modelOutput);
         ResourceLocation plant3Model = FAModelTemplates.TEMPLATE_PLANT_3.create(ModelLocationUtils.getModelLocation(horsetail).withSuffix("_3"), new TextureMapping().put(FATextureSlot.PLANT_1, plant1Texture).put(FATextureSlot.PLANT_2, plant2Texture).put(FATextureSlot.PLANT_3, plant3Texture), this.modelOutput);
@@ -297,7 +280,7 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         ResourceLocation plant1Texture = this.modLocation("block/horsetail_1");
         ResourceLocation plant2Texture = this.modLocation("block/horsetail_2");
         ResourceLocation plant3Texture = this.modLocation("block/horsetail_3");
-        this.blockModelGenerators.registerSimpleTintedItemModel(tallHorsetail, ModelTemplates.FLAT_ITEM.create(tallHorsetail, new TextureMapping().put(TextureSlot.LAYER0, plant3Texture), this.modelOutput), ItemModelUtils.constantTint(-12012264));
+        this.blockModelGenerators.registerSimpleTintedItemModel(tallHorsetail, ModelTemplates.FLAT_ITEM.create(tallHorsetail, new TextureMapping().put(TextureSlot.LAYER0, plant3Texture), this.modelOutput), new GrassColorSource());
         ResourceLocation plant1Model = FAModelTemplates.TEMPLATE_PLANT_1.create(ModelLocationUtils.getModelLocation(tallHorsetail).withSuffix("_1"), new TextureMapping().put(FATextureSlot.PLANT_1, plant1Texture), this.modelOutput);
         ResourceLocation plant2Model = FAModelTemplates.TEMPLATE_PLANT_2.create(ModelLocationUtils.getModelLocation(tallHorsetail).withSuffix("_2"), new TextureMapping().put(FATextureSlot.PLANT_2, plant2Texture), this.modelOutput);
         ResourceLocation plant3Model = FAModelTemplates.TEMPLATE_PLANT_3.create(ModelLocationUtils.getModelLocation(tallHorsetail).withSuffix("_3"), new TextureMapping().put(FATextureSlot.PLANT_3, plant3Texture), this.modelOutput);
@@ -356,7 +339,7 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         ResourceLocation headCone = FAModelTemplates.TEMPLATE_CYCAD_HEAD_CONE.createWithSuffix(cycadHead, "_cone", new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/cycad_log")).put(TextureSlot.TOP, this.modLocation("block/cycad_log_top_1")).put(FATextureSlot.HEAD, this.modLocation("block/cycad_head")).put(FATextureSlot.LEAVES, this.modLocation("block/cycad_leaves")), this.modelOutput);
         ResourceLocation headNoCone = FAModelTemplates.TEMPLATE_CYCAD_HEAD_NO_CONE.createWithSuffix(cycadHead, "_no_cone", new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/cycad_log")).put(TextureSlot.TOP, this.modLocation("block/cycad_log_top_1")).put(FATextureSlot.LEAVES, this.modLocation("block/cycad_leaves")), this.modelOutput);
         this.block(MultiVariantGenerator.multiVariant(cycadHead, Variant.variant()).with(BlockModelGenerators.createBooleanModelDispatch(CycadHeadBlock.HAS_CONE, headCone, headNoCone)));
-        this.blockModelGenerators.registerSimpleTintedItemModel(cycadHead, headCone, ItemModelUtils.constantTint(-12012264));
+        this.blockModelGenerators.registerSimpleTintedItemModel(cycadHead, headCone, new GrassColorSource());
     }
 
     private void createCycadLog(Block cycadLog) {
@@ -383,7 +366,7 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
 
     private void createCycadeoidea(Block claytosmunda) {
         ResourceLocation model = this.basic(claytosmunda, FAModelTemplates.TEMPLATE_CYCADEOIDEA, new TextureMapping().put(TextureSlot.TEXTURE, this.modLocation("block/cycadeoidea")));
-        this.blockModelGenerators.registerSimpleTintedItemModel(claytosmunda, model, ItemModelUtils.constantTint(-12012264));
+        this.blockModelGenerators.registerSimpleTintedItemModel(claytosmunda, model, new GrassColorSource());
     }
 
     private void createMacrotaeniopteris(Block macrotaeniopteris) {
@@ -401,6 +384,12 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.blockModelGenerators.registerSimpleFlatItemModel(macrotaeniopteris);
     }
 
+    private void createDipteris(Block dipteris) {
+        ResourceLocation model = FAModelTemplates.TEMPLATE_DIPTERIS.create(dipteris, new TextureMapping().put(TextureSlot.TEXTURE, this.modLocation("block/dipteris")), this.modelOutput);
+        this.block(MultiVariantGenerator.multiVariant(dipteris, Variant.variant().with(VariantProperties.MODEL, model)).with(BlockModelGenerators.createHorizontalFacingDispatch()));
+        this.blockModelGenerators.registerSimpleTintedItemModel(dipteris, model, new GrassColorSource());
+    }
+
     private void createDrum(Block drum) {
         ResourceLocation followModel = ModelTemplates.CUBE.create(ModelLocationUtils.getModelLocation(drum).withSuffix("_follow"), new TextureMapping().put(TextureSlot.DOWN, this.mcLocation("block/spruce_planks")).put(TextureSlot.EAST, this.modLocation("block/drum_side")).put(TextureSlot.NORTH, this.modLocation("block/drum_side")).put(TextureSlot.PARTICLE, this.modLocation("block/drum_side")).put(TextureSlot.SOUTH, this.modLocation("block/drum_side")).put(TextureSlot.UP, this.modLocation("block/drum_follow")).put(TextureSlot.WEST, this.modLocation("block/drum_side")), this.modelOutput);
         this.blockModelGenerators.registerSimpleItemModel(drum, followModel);
@@ -410,7 +399,7 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
     private void createFeeder(Block feeder) {
         ResourceLocation emptyModel = ModelTemplates.CUBE.create(ModelLocationUtils.getModelLocation(feeder).withSuffix("_empty"), new TextureMapping().put(TextureSlot.DOWN, this.mcLocation("block/smooth_stone")).put(TextureSlot.EAST, this.modLocation("block/feeder_side")).put(TextureSlot.NORTH, this.modLocation("block/feeder_front")).put(TextureSlot.PARTICLE, this.modLocation("block/feeder_side")).put(TextureSlot.SOUTH, this.modLocation("block/feeder_side")).put(TextureSlot.UP, this.modLocation("block/feeder_top_empty")).put(TextureSlot.WEST, this.modLocation("block/feeder_side")), this.modelOutput);
         this.blockModelGenerators.registerSimpleItemModel(feeder, emptyModel);
-        this.createActiveType(feeder, emptyModel, ModelTemplates.CUBE.create(ModelLocationUtils.getModelLocation(feeder).withSuffix("_full"), new TextureMapping().put(TextureSlot.DOWN, this.mcLocation("block/smooth_stone")).put(TextureSlot.EAST, this.modLocation("block/feeder_side")).put(TextureSlot.NORTH, this.modLocation("block/feeder_front")).put(TextureSlot.PARTICLE, this.modLocation("block/feeder_side")).put(TextureSlot.SOUTH, this.modLocation("block/feeder_side")).put(TextureSlot.UP, this.modLocation("block/feeder_top_empty")).put(TextureSlot.WEST, this.modLocation("block/feeder_side")), this.modelOutput), FeederBlock.HAS_FOOD, true);
+        this.createActiveType(feeder, emptyModel, ModelTemplates.CUBE.create(ModelLocationUtils.getModelLocation(feeder).withSuffix("_full"), new TextureMapping().put(TextureSlot.DOWN, this.mcLocation("block/smooth_stone")).put(TextureSlot.EAST, this.modLocation("block/feeder_side")).put(TextureSlot.NORTH, this.modLocation("block/feeder_front")).put(TextureSlot.PARTICLE, this.modLocation("block/feeder_side")).put(TextureSlot.SOUTH, this.modLocation("block/feeder_side")).put(TextureSlot.UP, this.modLocation("block/feeder_top_full")).put(TextureSlot.WEST, this.modLocation("block/feeder_side")), this.modelOutput), FeederBlock.HAS_FOOD, true);
     }
 
     private void createAxolotlSpawn(Block axolotlSpawn) {

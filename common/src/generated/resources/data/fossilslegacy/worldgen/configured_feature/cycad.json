@@ -1,0 +1,28 @@
+{
+  "type": "fossilslegacy:cycad",
+  "config": {
+    "head": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "fossilslegacy:cycad_head",
+        "Properties": {
+          "has_cone": "false"
+        }
+      }
+    },
+    "height": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 4,
+      "min_inclusive": 1
+    },
+    "log": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "fossilslegacy:cycad_log",
+        "Properties": {
+          "size": "3"
+        }
+      }
+    }
+  }
+}

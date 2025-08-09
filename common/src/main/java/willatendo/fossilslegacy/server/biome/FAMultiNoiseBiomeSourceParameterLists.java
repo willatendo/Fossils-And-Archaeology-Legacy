@@ -9,7 +9,7 @@ import net.minecraft.world.level.biome.MultiNoiseBiomeSourceParameterList;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FAMultiNoiseBiomeSourceParameterLists {
-    public static final ResourceKey<MultiNoiseBiomeSourceParameterList> PREHISTORIC = create("prehistoric");
+    public static final ResourceKey<MultiNoiseBiomeSourceParameterList> PREHISTORIC = FAMultiNoiseBiomeSourceParameterLists.create("prehistoric");
 
     private static ResourceKey<MultiNoiseBiomeSourceParameterList> create(String name) {
         return ResourceKey.create(Registries.MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST, FAUtils.resource(name));

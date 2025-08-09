@@ -7,6 +7,7 @@ import java.util.Optional;
 
 public final class FATreeGrowers {
     public static final TreeGrower ARAUCARIA = new TreeGrower("araucaria", Optional.empty(), Optional.of(FAConfiguredFeatures.ARAUCARIA), Optional.empty());
+    public static final TreeGrower ARAUCARIOXYLON = new TreeGrower("araucarioxylon", Optional.empty(), Optional.of(FAConfiguredFeatures.ARAUCARIOXYLON), Optional.empty());
     public static final TreeGrower ARCHAEOPTERIS = new TreeGrower("archaeopteris", Optional.empty(), Optional.of(FAConfiguredFeatures.ARCHAEOPTERIS), Optional.empty());
     public static final TreeGrower CALAMITES = new TreeGrower("calamites", Optional.empty(), Optional.of(FAConfiguredFeatures.CALAMITES), Optional.empty());
     public static final TreeGrower CORDAITES = new TreeGrower("cordaites", Optional.of(FAConfiguredFeatures.MEGA_CORDAITES), Optional.of(FAConfiguredFeatures.CORDAITES), Optional.empty());

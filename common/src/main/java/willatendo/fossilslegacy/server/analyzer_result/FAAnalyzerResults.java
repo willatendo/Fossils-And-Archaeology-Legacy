@@ -147,6 +147,9 @@ public final class FAAnalyzerResults {
         FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(FAItems.ARCHAEOPTERIS_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(FAItems.GINKGO_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(FAItems.ARAUCARIA_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(FAItems.ARAUCARIOXYLON_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(FAItems.CORDAITES_DNA.get()), 2);
+        FAAnalyzerResults.register(bootstrapContext, PLANT_FOSSIL_RESULTS, "plant_fossil_results", new ItemStack(FAItems.WOLLEMIA_DNA.get()), 2);
         FAAnalyzerResults.register(bootstrapContext, FROZEN_MEAT_RESULTS, "frozen_meat_results", new ItemStack(FAItems.SMILODON_DNA.get()), 33);
         FAAnalyzerResults.register(bootstrapContext, FROZEN_MEAT_RESULTS, "frozen_meat_results", new ItemStack(FAItems.MAMMOTH_DNA.get()), 33);
         FAAnalyzerResults.register(bootstrapContext, FROZEN_MEAT_RESULTS, "frozen_meat_results", new ItemStack(FAItems.DODO_DNA.get()), 33);

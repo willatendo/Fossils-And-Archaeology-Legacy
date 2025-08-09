@@ -11,7 +11,7 @@ import net.minecraft.world.level.levelgen.NoiseSettings;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class PrehistoricNoiseGeneratorSettings {
-    public static final ResourceKey<NoiseGeneratorSettings> PREHISTORIC = create("prehistoric");
+    public static final ResourceKey<NoiseGeneratorSettings> PREHISTORIC = PrehistoricNoiseGeneratorSettings.create("prehistoric");
 
     public static ResourceKey<NoiseGeneratorSettings> create(String name) {
         return ResourceKey.create(Registries.NOISE_SETTINGS, FAUtils.resource(name));

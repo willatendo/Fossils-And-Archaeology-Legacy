@@ -151,6 +151,7 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.dropSelf(FABlocks.PACHYPODIUM.get());
         this.dropSelf(FABlocks.WILLIAMSONIA.get());
         this.add(FABlocks.MACROTAENIOPTERIS.get(), block -> this.createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+        this.dropSelf(FABlocks.DIPTERIS.get());
         this.dropSelf(FABlocks.LEPIDODENDRON_PLANKS.get());
         this.dropSelf(FABlocks.LEPIDODENDRON_SAPLING.get());
         this.dropSelf(FABlocks.LEPIDODENDRON_LOG.get());

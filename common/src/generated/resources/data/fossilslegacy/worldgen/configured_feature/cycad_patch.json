@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:random_patch",
+  "config": {
+    "feature": "fossilslegacy:cycad",
+    "tries": 10,
+    "xz_spread": 12,
+    "y_spread": 3
+  }
+}

@@ -31,8 +31,8 @@ public class FeederScreen extends AbstractContainerScreen<FeederMenu> {
         int topPos = this.topPos;
         guiGraphics.blit(RenderType::guiTextured, TEXTURE, leftPos, topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
         int meat = this.menu.getMeatScaled(46);
-        guiGraphics.blitSprite(RenderType::guiTextured, FEEDER_CAPACITY_SPRITE, 3, 46, 0, 46 - meat, leftPos + 67, topPos + 55 - meat, 46 - meat, 3);
+        guiGraphics.blitSprite(RenderType::guiTextured, FEEDER_CAPACITY_SPRITE, 3, 46, 0, 46 - meat, leftPos + 67, topPos + 55 - meat, 3, meat);
         int plants = this.menu.getPlantsScaled(46);
-        guiGraphics.blitSprite(RenderType::guiTextured, FEEDER_CAPACITY_SPRITE, 3, 46, 0, 46 - plants, leftPos + 111, topPos + 55 - plants, 46 - plants, 3);
+        guiGraphics.blitSprite(RenderType::guiTextured, FEEDER_CAPACITY_SPRITE, 3, 46, 0, 46 - plants, leftPos + 111, topPos + 55 - plants, 3, plants);
     }
 }

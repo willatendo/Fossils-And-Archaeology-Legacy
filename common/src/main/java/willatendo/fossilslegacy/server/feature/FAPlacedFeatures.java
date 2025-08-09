@@ -6,6 +6,7 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -29,10 +30,26 @@ public final class FAPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ORE_RELIC = create("ore_relic");
     public static final ResourceKey<PlacedFeature> ORE_PERMAFROST = create("ore_permafrost");
 
+    public static final ResourceKey<PlacedFeature> CYCAD_CHECKED = create("cycad");
+    public static final ResourceKey<PlacedFeature> CYCAD_PATCH = create("cycad_patch");
+    public static final ResourceKey<PlacedFeature> FERN_PATCH = create("fern_patch");
+    public static final ResourceKey<PlacedFeature> SHORT_HORSETAIL_PATCH = create("short_horsetail_patch");
+    public static final ResourceKey<PlacedFeature> TALL_HORSETAIL_PATCH = create("tall_horsetail_patch");
+    public static final ResourceKey<PlacedFeature> JURASSIC_FERN_PATCH = create("jurassic_fern_patch");
+
     //Trees
+    public static final ResourceKey<PlacedFeature> ARAUCARIA_CHECKED = create("araucaria_checked");
+    public static final ResourceKey<PlacedFeature> ARAUCARIOXYLON_CHECKED = create("araucarioxylon_checked");
+    public static final ResourceKey<PlacedFeature> ARCHAEOPTERIS_CHECKED = create("archaeopteris_checked");
     public static final ResourceKey<PlacedFeature> CALAMITES_CHECKED = create("calamites_checked");
+    public static final ResourceKey<PlacedFeature> CORDAITES_CHECKED = create("cordaites_checked");
+    public static final ResourceKey<PlacedFeature> MEGA_CORDAITES_CHECKED = create("mega_cordaites");
+    public static final ResourceKey<PlacedFeature> GINKGO_CHECKED = create("ginkgo_checked");
     public static final ResourceKey<PlacedFeature> LEPIDODENDRON_CHECKED = create("lepidodendron_checked");
     public static final ResourceKey<PlacedFeature> SIGILLARIA_CHECKED = create("sigillaria_checked");
+    public static final ResourceKey<PlacedFeature> WOLLEMIA_CHECKED = create("wollemia_checked");
+    public static final ResourceKey<PlacedFeature> TREES_MORRISON_FORMATION_PLAINS = create("trees_morrison_formation_plains");
+    public static final ResourceKey<PlacedFeature> TREES_MORRISON_FORMATION_FOREST = create("trees_morrison_formation_forest");
 
     public static final ResourceKey<PlacedFeature> PREHISTORIC_OAK_CHECKED = create("prehistoric_oak_checked");
     public static final ResourceKey<PlacedFeature> PREHISTORIC_BIRCH_CHECKED = create("prehistoric_birch_checked");
@@ -85,10 +102,26 @@ public final class FAPlacedFeatures {
         PlacementUtils.register(bootstrapContext, ORE_RELIC, configuredFeatures.getOrThrow(FAConfiguredFeatures.ORE_RELIC), FAPlacedFeatures.commonOrePlacement(15, HeightRangePlacement.triangle(VerticalAnchor.absolute(50), VerticalAnchor.absolute(256))));
         PlacementUtils.register(bootstrapContext, ORE_PERMAFROST, configuredFeatures.getOrThrow(FAConfiguredFeatures.ORE_PERMAFROST), FAPlacedFeatures.commonOrePlacement(25, HeightRangePlacement.triangle(VerticalAnchor.absolute(25), VerticalAnchor.absolute(256))));
 
+        PlacementUtils.register(bootstrapContext, CYCAD_CHECKED, configuredFeatures.getOrThrow(FAConfiguredFeatures.CYCAD), List.of(PlacementUtils.filteredByBlockSurvival(FABlocks.CYCAD_HEAD.get())));
+        PlacementUtils.register(bootstrapContext, CYCAD_PATCH, configuredFeatures.getOrThrow(FAConfiguredFeatures.CYCAD_PATCH), VegetationPlacements.treePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
+        PlacementUtils.register(bootstrapContext, FERN_PATCH, configuredFeatures.getOrThrow(FAConfiguredFeatures.FERN_PATCH), NoiseThresholdCountPlacement.of(-0.8, 5, 10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
+        PlacementUtils.register(bootstrapContext, SHORT_HORSETAIL_PATCH, configuredFeatures.getOrThrow(FAConfiguredFeatures.SHORT_HORSETAIL_PATCH), NoiseThresholdCountPlacement.of(-0.8, 5, 10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
+        PlacementUtils.register(bootstrapContext, TALL_HORSETAIL_PATCH, configuredFeatures.getOrThrow(FAConfiguredFeatures.TALL_HORSETAIL_PATCH), NoiseThresholdCountPlacement.of(-0.8, 5, 10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
+        PlacementUtils.register(bootstrapContext, JURASSIC_FERN_PATCH, configuredFeatures.getOrThrow(FAConfiguredFeatures.JURASSIC_FERN_PATCH));
+
         // Trees
+        PlacementUtils.register(bootstrapContext, ARAUCARIA_CHECKED, configuredFeatures.getOrThrow(FAConfiguredFeatures.ARAUCARIA), List.of(PlacementUtils.filteredByBlockSurvival(FABlocks.ARAUCARIA_SAPLING.get())));
+        PlacementUtils.register(bootstrapContext, ARAUCARIOXYLON_CHECKED, configuredFeatures.getOrThrow(FAConfiguredFeatures.ARAUCARIOXYLON), List.of(PlacementUtils.filteredByBlockSurvival(FABlocks.ARAUCARIOXYLON_SAPLING.get())));
+        PlacementUtils.register(bootstrapContext, ARCHAEOPTERIS_CHECKED, configuredFeatures.getOrThrow(FAConfiguredFeatures.ARCHAEOPTERIS), List.of(PlacementUtils.filteredByBlockSurvival(FABlocks.ARCHAEOPTERIS_SAPLING.get())));
         PlacementUtils.register(bootstrapContext, CALAMITES_CHECKED, configuredFeatures.getOrThrow(FAConfiguredFeatures.CALAMITES), List.of(PlacementUtils.filteredByBlockSurvival(FABlocks.CALAMITES_SAPLING.get())));
+        PlacementUtils.register(bootstrapContext, CORDAITES_CHECKED, configuredFeatures.getOrThrow(FAConfiguredFeatures.CORDAITES), List.of(PlacementUtils.filteredByBlockSurvival(FABlocks.CORDAITES_SAPLING.get())));
+        PlacementUtils.register(bootstrapContext, MEGA_CORDAITES_CHECKED, configuredFeatures.getOrThrow(FAConfiguredFeatures.MEGA_CORDAITES), List.of(PlacementUtils.filteredByBlockSurvival(FABlocks.CORDAITES_SAPLING.get())));
+        PlacementUtils.register(bootstrapContext, GINKGO_CHECKED, configuredFeatures.getOrThrow(FAConfiguredFeatures.GINKGO), List.of(PlacementUtils.filteredByBlockSurvival(FABlocks.GINKGO_SAPLING.get())));
         PlacementUtils.register(bootstrapContext, LEPIDODENDRON_CHECKED, configuredFeatures.getOrThrow(FAConfiguredFeatures.LEPIDODENDRON), List.of(PlacementUtils.filteredByBlockSurvival(FABlocks.LEPIDODENDRON_SAPLING.get())));
         PlacementUtils.register(bootstrapContext, SIGILLARIA_CHECKED, configuredFeatures.getOrThrow(FAConfiguredFeatures.SIGILLARIA), List.of(PlacementUtils.filteredByBlockSurvival(FABlocks.SIGILLARIA_SAPLING.get())));
+        PlacementUtils.register(bootstrapContext, WOLLEMIA_CHECKED, configuredFeatures.getOrThrow(FAConfiguredFeatures.WOLLEMIA), List.of(PlacementUtils.filteredByBlockSurvival(FABlocks.WOLLEMIA_SAPLING.get())));
+        PlacementUtils.register(bootstrapContext, TREES_MORRISON_FORMATION_PLAINS, configuredFeatures.getOrThrow(FAConfiguredFeatures.TREES_MORRISON_FORMATION), FAPlacedFeatures.treePlacement(PlacementUtils.countExtra(1, 0.1F, 1)));
+        PlacementUtils.register(bootstrapContext, TREES_MORRISON_FORMATION_FOREST, configuredFeatures.getOrThrow(FAConfiguredFeatures.TREES_MORRISON_FORMATION), FAPlacedFeatures.treePlacement(PlacementUtils.countExtra(10, 0.1F, 1)));
 
         PlacementUtils.register(bootstrapContext, PREHISTORIC_OAK_CHECKED, configuredFeatures.getOrThrow(FAConfiguredFeatures.PREHISTORIC_OAK), List.of(PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING)));
         PlacementUtils.register(bootstrapContext, PREHISTORIC_BIRCH_CHECKED, configuredFeatures.getOrThrow(FAConfiguredFeatures.PREHISTORIC_BIRCH), List.of(PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING)));

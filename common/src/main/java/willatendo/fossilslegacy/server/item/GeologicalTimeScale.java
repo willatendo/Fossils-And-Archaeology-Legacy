@@ -14,6 +14,17 @@ public final class GeologicalTimeScale {
         void appendHoverText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag);
     }
 
+    public static EraDescription range(GeologicalTimeScale.Period from, GeologicalTimeScale.Period to) {
+        return (itemStack, tooltipContext, tooltipComponents, tooltipFlag) -> {
+            if (from.getEra() != to.getEra()) {
+                tooltipComponents.add(FAUtils.translation("item", "dna.era_range", FAUtils.translation("item", "dna.era." + from.getEra().getName()).withStyle(from.getEra().getChatFormatting()), FAUtils.translation("item", "dna.era." + to.getEra().getName()).withStyle(to.getEra().getChatFormatting())).withStyle(ChatFormatting.GRAY));
+            } else {
+                from.getEra().appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
+            }
+            tooltipComponents.add(FAUtils.translation("item", "dna.period_range", FAUtils.translation("item", "dna.period." + from.getName()).withColor(from.getColor()), FAUtils.translation("item", "dna.period." + to.getName()).withColor(to.getColor())).withStyle(ChatFormatting.GRAY));
+        };
+    }
+
     public enum Era implements EraDescription {
         CENOZOIC("cenozoic", ChatFormatting.BLUE),
         MESOZOIC("mesozoic", ChatFormatting.DARK_GREEN),
@@ -29,6 +40,10 @@ public final class GeologicalTimeScale {
 
         public String getName() {
             return this.name;
+        }
+
+        public ChatFormatting getChatFormatting() {
+            return this.chatFormatting;
         }
 
         @Override
@@ -63,6 +78,14 @@ public final class GeologicalTimeScale {
 
         public String getName() {
             return this.name;
+        }
+
+        public Era getEra() {
+            return this.era;
+        }
+
+        public int getColor() {
+            return this.color;
         }
 
         @Override

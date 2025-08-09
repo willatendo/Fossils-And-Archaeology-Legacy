@@ -70,6 +70,7 @@ public final class FACreativeModeTabs {
     }, List.of("fa_all", "fa_utilities"), List.of("fa_archaeology", "fa_palaeontology", "fa_palaeobotany"));
     public static final SimpleHolder<CreativeModeTab> FA_UTILITIES = FACreativeModeTabs.register("fa_utilities", () -> new ItemStack(FABlocks.SMALL_CAGE.get()), (itemDisplayParameters, output) -> {
         output.accept(FAItems.USER_MANUAL.get());
+        output.accept(FAItems.DINOPEDIA.get());
         FACreativeModeTabs.addRifle(output);
         FACreativeModeTabs.addCages(output);
         FACreativeModeTabs.addFlare(output);
@@ -77,6 +78,7 @@ public final class FACreativeModeTabs {
         FACreativeModeTabs.addCommandingItems(output, itemDisplayParameters, false);
         output.accept(FAItems.LEGACY_GENETIC_CODE.get());
         output.accept(FAItems.TAR_BUCKET.get());
+        FACreativeModeTabs.addMusicDiscs(output);
     }, List.of("fa_all"), List.of("fa_archaeology", "fa_palaeontology", "fa_palaeobotany", "fa_building_blocks"));
     public static final SimpleHolder<CreativeModeTab> FA_ALL = FACreativeModeTabs.register("fa_all", () -> new ItemStack(FAItems.MESOZOIC_FOSSIL.get()), (itemDisplayParameters, output) -> {
         FACreativeModeTabs.addCreationBlocks(output);
@@ -97,6 +99,7 @@ public final class FACreativeModeTabs {
         FACreativeModeTabs.addDecorationPosts(output);
         FACreativeModeTabs.addArchaeology(output, itemDisplayParameters);
         output.accept(FAItems.USER_MANUAL.get());
+        output.accept(FAItems.DINOPEDIA.get());
         FACreativeModeTabs.addRifle(output);
         FACreativeModeTabs.addCages(output);
         FACreativeModeTabs.addFlare(output);
@@ -107,6 +110,7 @@ public final class FACreativeModeTabs {
         FACreativeModeTabs.addCreatureSpawnEggs(output);
         output.accept(FAItems.ANU_SPAWN_EGG.get());
         output.accept(FAItems.FAILURESAURUS_SPAWN_EGG.get());
+        FACreativeModeTabs.addMusicDiscs(output);
     }, List.of(), List.of("fa_archaeology", "fa_palaeontology", "fa_palaeobotany", "fa_building_blocks"));
 
     private static SimpleHolder<CreativeModeTab> register(String id, Supplier<ItemStack> icon, CreativeModeTab.DisplayItemsGenerator displayItemsGenerator, List<String> after, List<String> before) {
@@ -457,12 +461,15 @@ public final class FACreativeModeTabs {
         DNAItem.addDNAItem(output, FAItems.CYCAD_DNA.get());
         DNAItem.addDNAItem(output, FAItems.GINKGO_DNA.get());
         DNAItem.addDNAItem(output, FAItems.HORSETAIL_DNA.get());
+        DNAItem.addDNAItem(output, FAItems.WOLLEMIA_DNA.get());
         DNAItem.addDNAItem(output, FAItems.ARAUCARIA_DNA.get());
         DNAItem.addDNAItem(output, FAItems.CLAYTOSMUNDA_DNA.get());
         DNAItem.addDNAItem(output, FAItems.CYCADEOIDEA_DNA.get());
         DNAItem.addDNAItem(output, FAItems.JURASSIC_FERN_DNA.get());
+        DNAItem.addDNAItem(output, FAItems.ARAUCARIOXYLON_DNA.get());
         DNAItem.addDNAItem(output, FAItems.ARCHAEOPTERIS_DNA.get());
         DNAItem.addDNAItem(output, FAItems.CALAMITES_DNA.get());
+        DNAItem.addDNAItem(output, FAItems.CORDAITES_DNA.get());
         DNAItem.addDNAItem(output, FAItems.COOKSONIA_DNA.get());
         DNAItem.addDNAItem(output, FAItems.LEPIDODENDRON_DNA.get());
         DNAItem.addDNAItem(output, FAItems.SIGILLARIA_DNA.get());
@@ -492,6 +499,8 @@ public final class FACreativeModeTabs {
         output.accept(FABlocks.CYCADEOIDEA.get());
         output.accept(FABlocks.JURASSIC_FERN.get());
         output.accept(FABlocks.COOKSONIA.get());
+        output.accept(FABlocks.MACROTAENIOPTERIS.get());
+        output.accept(FABlocks.DIPTERIS.get());
     }
 
     private static void addRails(CreativeModeTab.Output output) {
@@ -733,6 +742,12 @@ public final class FACreativeModeTabs {
         output.accept(FABlocks.WOLLEMIA_HANGING_SIGN.get());
         output.accept(FAItems.WOLLEMIA_BOAT.get());
         output.accept(FAItems.WOLLEMIA_CHEST_BOAT.get());
+    }
+
+    private static void addMusicDiscs(CreativeModeTab.Output output) {
+        output.accept(FAItems.MUSIC_DISC_TRIASSIC.get());
+        output.accept(FAItems.MUSIC_DISC_JURASSIC.get());
+        output.accept(FAItems.MUSIC_DISC_CRETACEOUS.get());
     }
 
     private static void generateMagicConches(CreativeModeTab.Output output, HolderLookup.RegistryLookup<CommandType> registryLookup) {

@@ -4,8 +4,9 @@
     "model": "fossilslegacy:block/tall_horsetail",
     "tints": [
       {
-        "type": "minecraft:constant",
-        "value": -12012264
+        "type": "minecraft:grass",
+        "downfall": 1.0,
+        "temperature": 0.5
       }
     ]
   }

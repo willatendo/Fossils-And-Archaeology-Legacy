@@ -11,6 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -203,6 +204,16 @@ public class JurassicFernBlock extends BushBlock implements BonemealableBlock {
         } else {
             popResource(serverLevel, blockPos, new ItemStack(BuiltInRegistries.ITEM.getValue(FAUtils.resource("jurassic_fern"))));
         }
+    }
+
+    public static void placeAt(LevelAccessor levelAccessor, BlockState blockState, BlockPos blockPos, int flags) {
+        BlockPos aboveBlockPos = blockPos.above();
+        levelAccessor.setBlock(blockPos, JurassicFernBlock.copyGrowthFrom(blockState.setValue(HALF, DoubleBlockHalf.LOWER)), flags);
+        levelAccessor.setBlock(aboveBlockPos, JurassicFernBlock.copyGrowthFrom(blockState.setValue(HALF, DoubleBlockHalf.UPPER)), flags);
+    }
+
+    private static BlockState copyGrowthFrom(BlockState state) {
+        return state.hasProperty(JurassicFernBlock.GROWTH) ? state.setValue(JurassicFernBlock.GROWTH, 5) : state;
     }
 
     @Override

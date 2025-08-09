@@ -1,4 +1,4 @@
-// 1.21.4	2025-08-07T04:02:44.9607794	Tags for minecraft:item mod id fossilslegacy
+// 1.21.4	2025-08-08T17:16:48.6370678	Tags for minecraft:item mod id fossilslegacy
 cc1c82adb966f74da9898f8ff3e7ad473be3401f data/c/tags/item/bones.json
 d31244a2a7f7cb4224e5362dca80427850e5daa5 data/c/tags/item/buckets.json
 8773b7b9cd8f313f03d59d28a609bd9f1434b870 data/c/tags/item/eggs.json
@@ -67,6 +67,7 @@ f7230fc0dcd04034cf98f0304755274776cb4ce1 data/fossilslegacy/tags/item/sigillaria
 b1f1001e32f447380a88ab813a7d61d4826533d9 data/fossilslegacy/tags/item/wollemia_logs.json
 b0df71f7b6d498abdffd45df38af1ec699c76646 data/minecraft/tags/item/axes.json
 6b1f65f60dbb2a79c22abdac12bdd9e11bcdfd04 data/minecraft/tags/item/boats.json
+a84af806b006c16e60418f197fea3beff62ec701 data/minecraft/tags/item/bookshelf_books.json
 78b35916f2f78650ea9a23cd8c5c283e8b50f572 data/minecraft/tags/item/breaks_decorated_pots.json
 d9f371647b47a6ec6d81979bc176da9f00511125 data/minecraft/tags/item/chest_armor.json
 fc0f62709299e4c131dfcbfbaa30d360aa0d2120 data/minecraft/tags/item/cluster_max_harvestables.json

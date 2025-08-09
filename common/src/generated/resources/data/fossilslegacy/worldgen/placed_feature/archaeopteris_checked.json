@@ -1,0 +1,17 @@
+{
+  "feature": "fossilslegacy:archaeopteris",
+  "placement": [
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "fossilslegacy:archaeopteris_sapling",
+          "Properties": {
+            "stage": "0"
+          }
+        }
+      }
+    }
+  ]
+}

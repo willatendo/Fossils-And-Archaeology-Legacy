@@ -62,6 +62,9 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.ARCHAEOPTERIS_DNA.get());
         this.generatedItem(FAItems.GINKGO_DNA.get());
         this.generatedItem(FAItems.ARAUCARIA_DNA.get());
+        this.generatedItem(FAItems.ARAUCARIOXYLON_DNA.get());
+        this.generatedItem(FAItems.CORDAITES_DNA.get());
+        this.generatedItem(FAItems.WOLLEMIA_DNA.get());
         this.generatedItem(FAItems.STORAGE_DISC.get());
         this.generatedItem(FAItems.BLANK_DNA.get());
         this.generatedItem(FAItems.CYCAD_CONE.get());
@@ -336,6 +339,9 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.spawnEggItem(FAItems.DISTORTUS_REX_SPAWN_EGG.get(), 0x80643A, 0xC5875B);
         this.spawnEggItem(FAItems.ISOTELUS_SPAWN_EGG.get(), 0x43403B, 0x24211C);
         this.spawnEggItem(FAItems.ISOTELUS_LARVA_SPAWN_EGG.get(), 0xA9892E, 0xDEBF61);
+        this.generatedItem(FAItems.MUSIC_DISC_TRIASSIC.get());
+        this.generatedItem(FAItems.MUSIC_DISC_JURASSIC.get());
+        this.generatedItem(FAItems.MUSIC_DISC_CRETACEOUS.get());
         this.generatedItem(FAItems.TAR_BUCKET.get());
         this.generatedItem(FAItems.LEPIDODENDRON_BOAT.get());
         this.generatedItem(FAItems.LEPIDODENDRON_CHEST_BOAT.get());

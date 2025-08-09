@@ -1,4 +1,4 @@
-// 1.21.4	2025-08-05T17:46:01.5482939	Loot Tables
+// 1.21.4	2025-08-09T13:58:53.273067	Loot Tables
 6b196aa6cdadbe968410835a209fed7ad992066f data/fossilslegacy/loot_table/archaeology/inca_loot.json
 bb0a83fd719766efefe4b270836d5a39651187e0 data/fossilslegacy/loot_table/blocks/amber_ore.json
 5cb02374129bf20a2da69b1d928ab94778ec5ea0 data/fossilslegacy/loot_table/blocks/araucaria_button.json
@@ -105,6 +105,7 @@ cb1d9a96e27a1db37a03d7292111e118289bbcbe data/fossilslegacy/loot_table/blocks/de
 c3408f8b0c160178750acb823c42e3739f85e8b4 data/fossilslegacy/loot_table/blocks/deepslate_mesozoic_fossil_ore.json
 32b30fc733a2fb323bc899f2a436fecb8aff7ffa data/fossilslegacy/loot_table/blocks/deepslate_palaeozoic_fossil_ore.json
 9c6e994c47d9a481bd90768c0240468113094c28 data/fossilslegacy/loot_table/blocks/deepslate_plant_fossil_ore.json
+0cea7d5c0ce71caed37ba7b90b2f200905efca2c data/fossilslegacy/loot_table/blocks/dipteris.json
 5f7316715a0188fac3ec6fea169ca953b17b7618 data/fossilslegacy/loot_table/blocks/dna_analyzer.json
 559b083f4953dd3e27c01096919688a6badec7cf data/fossilslegacy/loot_table/blocks/dna_coder.json
 243132b3ab9aa668df769aa3e50c8940c5ffe4e0 data/fossilslegacy/loot_table/blocks/dna_hybridizer.json

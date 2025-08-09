@@ -64,6 +64,7 @@ public class FAItemTagProvider extends ItemTagsProvider {
         this.tag(FAItemTags.PALAEOZOIC_FOSSIL).add(FAItems.PALAEOZOIC_FOSSIL.get());
         this.tag(FAItemTags.MESOZOIC_FOSSIL).add(FAItems.MESOZOIC_FOSSIL.get());
         this.tag(ItemTags.SWORD_ENCHANTABLE).add(FAItems.THERIZINOSAURUS_CLAWS.get());
+        this.tag(ItemTags.BOOKSHELF_BOOKS).add(FAItems.DINOPEDIA.get(), FAItems.USER_MANUAL.get());
 
         this.copy(FABlockTags.ARAUCARIA_LOGS, FAItemTags.ARAUCARIA_LOGS);
         this.copy(FABlockTags.ARAUCARIOXYLON_LOGS, FAItemTags.ARAUCARIOXYLON_LOGS);

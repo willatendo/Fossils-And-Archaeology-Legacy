@@ -15,12 +15,13 @@ import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import willatendo.fossilslegacy.server.biome.biomes.PrehistoricBiomes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.feature.PrehistoricBiomeFeatures;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FABiomes {
-    private static final Music NORMAL_MUSIC = null;
+    public static final Music NORMAL_MUSIC = null;
 
     public static final ResourceKey<Biome> PREHISTORIC_OCEAN = register("prehistoric_ocean");
     public static final ResourceKey<Biome> DEEP_PREHISTORIC_OCEAN = register("deep_prehistoric_ocean");
@@ -32,6 +33,10 @@ public final class FABiomes {
     public static final ResourceKey<Biome> PREHISTORIC_RIVER = register("prehistoric_river");
     public static final ResourceKey<Biome> PREHISTORIC_SWAMP = register("prehistoric_swamp");
     public static final ResourceKey<Biome> PREHISTORIC_BEACH = register("prehistoric_beach");
+    public static final ResourceKey<Biome> MORRISON_FORMATION_PLAINS = FABiomes.register("morrison_formation");
+    public static final ResourceKey<Biome> MORRISON_FORMATION_FOREST = FABiomes.register("morrison_formation_forest");
+    public static final ResourceKey<Biome> DJADOCHTA_FORMATION = register("djadochta_formation");
+    public static final ResourceKey<Biome> FLAMING_CLIFFS = FABiomes.register("flaming_cliffs");
 
     private static ResourceKey<Biome> register(String name) {
         return ResourceKey.create(Registries.BIOME, FAUtils.resource(name));
@@ -43,11 +48,11 @@ public final class FABiomes {
         return Mth.hsvToRgb(0.62222224F - color * 0.05F, 0.5F + color * 0.1F, 1.0F);
     }
 
-    private static Biome biome(boolean hasPrecipitation, float temperature, float downfall, MobSpawnSettings.Builder mobSpawnSettings, BiomeGenerationSettings.Builder biomeGenerationSettings, Music music) {
+    public static Biome biome(boolean hasPrecipitation, float temperature, float downfall, MobSpawnSettings.Builder mobSpawnSettings, BiomeGenerationSettings.Builder biomeGenerationSettings, Music music) {
         return biome(hasPrecipitation, temperature, downfall, 4159204, 329011, null, null, mobSpawnSettings, biomeGenerationSettings, music);
     }
 
-    private static Biome biome(boolean hasPrecipitation, float temperature, float downfall, int waterColor, int waterFogColour, Integer grassColorOverride, Integer foliageColorOverride, MobSpawnSettings.Builder mobSpwanSettings, BiomeGenerationSettings.Builder biomeGenerationSettings, Music music) {
+    public static Biome biome(boolean hasPrecipitation, float temperature, float downfall, int waterColor, int waterFogColour, Integer grassColorOverride, Integer foliageColorOverride, MobSpawnSettings.Builder mobSpwanSettings, BiomeGenerationSettings.Builder biomeGenerationSettings, Music music) {
         BiomeSpecialEffects.Builder biomespecialeffects$builder = new BiomeSpecialEffects.Builder().waterColor(waterColor).waterFogColor(waterFogColour).fogColor(12638463).skyColor(calculateSkyColor(temperature)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(music);
         if (grassColorOverride != null) {
             biomespecialeffects$builder.grassColorOverride(grassColorOverride);
@@ -60,7 +65,7 @@ public final class FABiomes {
         return new Biome.BiomeBuilder().hasPrecipitation(hasPrecipitation).temperature(temperature).downfall(downfall).specialEffects(biomespecialeffects$builder.build()).mobSpawnSettings(mobSpwanSettings.build()).generationSettings(biomeGenerationSettings.build()).build();
     }
 
-    static void globalPrehistoricGeneration(BiomeGenerationSettings.Builder biomeGenerationSettings) {
+    public static void globalPrehistoricGeneration(BiomeGenerationSettings.Builder biomeGenerationSettings) {
         BiomeDefaultFeatures.addDefaultCarversAndLakes(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultCrystalFormations(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultUndergroundVariety(biomeGenerationSettings);
@@ -258,5 +263,6 @@ public final class FABiomes {
         bootstrapContext.register(FABiomes.PREHISTORIC_TAIGA, FABiomes.taiga(placedFeatures, configuredWorldCarvers));
         bootstrapContext.register(FABiomes.PREHISTORIC_SWAMP, FABiomes.swamp(placedFeatures, configuredWorldCarvers));
         bootstrapContext.register(FABiomes.PREHISTORIC_BEACH, FABiomes.beach(placedFeatures, configuredWorldCarvers));
+        PrehistoricBiomes.bootstrap(bootstrapContext, placedFeatures, configuredWorldCarvers);
     }
 }

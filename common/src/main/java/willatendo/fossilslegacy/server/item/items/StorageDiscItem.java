@@ -30,7 +30,7 @@ public class StorageDiscItem extends Item {
             Item item = BuiltInRegistries.ITEM.getValue(ResourceLocation.parse(customData.getString("dna_item")));
             tooltipComponents.add(FAUtils.translation("item", "storage_disc.type", item.getName()).withStyle(ChatFormatting.GRAY));
             if (item instanceof DNAItem dnaItem) {
-                dnaItem.getPeriod().appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
+                dnaItem.getEraDescription().appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
             }
         }
         if (itemStack.has(FADataComponents.MODEL_TYPE.get())) {

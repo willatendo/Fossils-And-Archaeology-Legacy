@@ -1,0 +1,161 @@
+{
+  "type": "minecraft:flower",
+  "config": {
+    "feature": {
+      "feature": {
+        "type": "fossilslegacy:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:weighted_state_provider",
+            "entries": [
+              {
+                "data": {
+                  "Name": "fossilslegacy:tall_horsetail",
+                  "Properties": {
+                    "amount": "1",
+                    "facing": "north",
+                    "half": "lower"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "fossilslegacy:tall_horsetail",
+                  "Properties": {
+                    "amount": "1",
+                    "facing": "east",
+                    "half": "lower"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "fossilslegacy:tall_horsetail",
+                  "Properties": {
+                    "amount": "1",
+                    "facing": "south",
+                    "half": "lower"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "fossilslegacy:tall_horsetail",
+                  "Properties": {
+                    "amount": "1",
+                    "facing": "west",
+                    "half": "lower"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "fossilslegacy:tall_horsetail",
+                  "Properties": {
+                    "amount": "2",
+                    "facing": "north",
+                    "half": "lower"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "fossilslegacy:tall_horsetail",
+                  "Properties": {
+                    "amount": "2",
+                    "facing": "east",
+                    "half": "lower"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "fossilslegacy:tall_horsetail",
+                  "Properties": {
+                    "amount": "2",
+                    "facing": "south",
+                    "half": "lower"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "fossilslegacy:tall_horsetail",
+                  "Properties": {
+                    "amount": "2",
+                    "facing": "west",
+                    "half": "lower"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "fossilslegacy:tall_horsetail",
+                  "Properties": {
+                    "amount": "3",
+                    "facing": "north",
+                    "half": "lower"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "fossilslegacy:tall_horsetail",
+                  "Properties": {
+                    "amount": "3",
+                    "facing": "east",
+                    "half": "lower"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "fossilslegacy:tall_horsetail",
+                  "Properties": {
+                    "amount": "3",
+                    "facing": "south",
+                    "half": "lower"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "fossilslegacy:tall_horsetail",
+                  "Properties": {
+                    "amount": "3",
+                    "facing": "west",
+                    "half": "lower"
+                  }
+                },
+                "weight": 1
+              }
+            ]
+          }
+        }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          }
+        }
+      ]
+    },
+    "tries": 30,
+    "xz_spread": 6,
+    "y_spread": 2
+  }
+}

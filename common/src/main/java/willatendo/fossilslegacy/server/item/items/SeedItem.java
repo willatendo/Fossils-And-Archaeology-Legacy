@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.item.items;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
@@ -30,15 +31,27 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import willatendo.fossilslegacy.server.item.FADataComponents;
+import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
 
 public class SeedItem extends Item {
+    private final GeologicalTimeScale.EraDescription eraDescription;
     private final Block block;
 
-    public SeedItem(Block block, Properties properties) {
+    public SeedItem(GeologicalTimeScale.EraDescription eraDescription, Block block, Properties properties) {
         super(properties);
+        this.eraDescription = eraDescription;
         this.block = block;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        this.eraDescription.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
+        super.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
+        this.getBlock().appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
     }
 
     @Override
@@ -171,12 +184,6 @@ public class SeedItem extends Item {
 
             return false;
         }
-    }
-
-    @Override
-    public void appendHoverText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> tooltips, TooltipFlag tooltipFlag) {
-        super.appendHoverText(itemStack, tooltipContext, tooltips, tooltipFlag);
-        this.getBlock().appendHoverText(itemStack, tooltipContext, tooltips, tooltipFlag);
     }
 
     @Override

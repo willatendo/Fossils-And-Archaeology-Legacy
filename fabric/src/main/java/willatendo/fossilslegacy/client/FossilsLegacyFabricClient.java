@@ -113,6 +113,7 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.CLAYTOSMUNDA.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.CYCADEOIDEA.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.MACROTAENIOPTERIS.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.DIPTERIS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ARAUCARIA_SAPLING.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ARAUCARIA_LEAVES.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ARAUCARIA_DOOR.get(), RenderType.cutout());
@@ -190,7 +191,7 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.WOLLEMIA_TRAPDOOR.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.POTTED_WOLLEMIA_SAPLING.get(), RenderType.cutout());
 
-        ParticleRenderEvents.ALLOW_BLOCK_DUST_TINT.register((blockState, clientLevel, blockPos) -> blockState.is(FABlocks.CYCAD_HEAD.get()));
+        ParticleRenderEvents.ALLOW_BLOCK_DUST_TINT.register((blockState, clientLevel, blockPos) -> !blockState.is(FABlocks.CYCAD_HEAD.get()));
 
         FabricClientboundPacketRegister fabricClientboundPacketRegister = new FabricClientboundPacketRegister();
         fabricClientboundPacketRegister.registerClientbound(ClientboundRecipeContentPacket.TYPE, ClientboundRecipeContentPacket.STREAM_CODEC, FabricClientboundPackets::clientboundOpenDinopediaScreenPacket);

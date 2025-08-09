@@ -13,7 +13,7 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 import java.util.function.Function;
 
 public final class FABiomeSources {
-    protected static final ResourceLocation PREHISTORIC_ID = FAUtils.resource("prehistoric");
+    private static final ResourceLocation PREHISTORIC_ID = FAUtils.resource("prehistoric");
     public static final MultiNoiseBiomeSourceParameterList.Preset PREHISTORIC = new MultiNoiseBiomeSourceParameterList.Preset(PREHISTORIC_ID, new MultiNoiseBiomeSourceParameterList.Preset.SourceProvider() {
         @Override
         public <T> Climate.ParameterList<T> apply(Function<ResourceKey<Biome>, T> biome) {
@@ -21,12 +21,10 @@ public final class FABiomeSources {
         }
     });
 
-    protected static <T> Climate.ParameterList<T> generatePrehistoricBiomes(Function<ResourceKey<Biome>, T> biome) {
+    private static <T> Climate.ParameterList<T> generatePrehistoricBiomes(Function<ResourceKey<Biome>, T> biome) {
         ImmutableList.Builder<Pair<Climate.ParameterPoint, T>> builder = ImmutableList.builder();
-        (new PrehistoricBiomeBuilder()).addBiomes((point) -> {
-            builder.add(point.mapSecond(biome));
-        });
-        return new Climate.ParameterList(builder.build());
+        new PrehistoricBiomeBuilder().addBiomes((point) -> builder.add(point.mapSecond(biome)));
+        return new Climate.ParameterList<>(builder.build());
     }
 
     public static void init() {

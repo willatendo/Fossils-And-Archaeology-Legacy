@@ -13,6 +13,7 @@ import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.FAPoiTypes;
 import willatendo.fossilslegacy.server.entity.FAVillagerProfessions;
+import willatendo.fossilslegacy.server.feature.FAFeatures;
 import willatendo.fossilslegacy.server.feature.FAFoliagePlacerTypes;
 import willatendo.fossilslegacy.server.feature.FATrunkPlacerTypes;
 import willatendo.fossilslegacy.server.fluid.FAFluids;
@@ -61,6 +62,7 @@ public final class FossilsLegacyMod {
         simpleRegistryRegister.register(FAFluids.FLUIDS);
         simpleRegistryRegister.register(FABlocks.BLOCKS);
         simpleRegistryRegister.register(FABlockTypes.BLOCK_TYPES);
+        simpleRegistryRegister.register(FAFeatures.FEATURES);
         simpleRegistryRegister.register(FABlockEntityTypes.BLOCK_ENTITY_TYPES);
         simpleRegistryRegister.register(FAMenuTypes.MENU_TYPES);
         simpleRegistryRegister.register(FAPregnancyTypes.PREGNANCY_TYPES);

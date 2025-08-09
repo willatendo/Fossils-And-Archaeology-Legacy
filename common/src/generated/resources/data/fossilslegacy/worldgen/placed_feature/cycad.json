@@ -1,0 +1,17 @@
+{
+  "feature": "fossilslegacy:cycad",
+  "placement": [
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "fossilslegacy:cycad_head",
+          "Properties": {
+            "has_cone": "false"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -47,6 +47,7 @@ public final class FAModelTemplates {
     public static final ExtendedModelTemplate TEMPLATE_MACROTAENIOPTERIS_LEAF_3 = FAModelTemplates.create("template_macrotaeniopteris_leaf_3", TextureSlot.TEXTURE).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_MACROTAENIOPTERIS_LEAF_4 = FAModelTemplates.create("template_macrotaeniopteris_leaf_4", TextureSlot.TEXTURE).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_MACROTAENIOPTERIS_LEAF_5 = FAModelTemplates.create("template_macrotaeniopteris_leaf_5", TextureSlot.TEXTURE).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_DIPTERIS = FAModelTemplates.create("template_dipteris", TextureSlot.TEXTURE).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_RAIL_RAMP_1 = FAModelTemplates.create("template_rail_ramp_1", TextureSlot.RAIL).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_RAIL_RAMP_2 = FAModelTemplates.create("template_rail_ramp_2", TextureSlot.RAIL).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_RAIL_RAMP_3 = FAModelTemplates.create("template_rail_ramp_3", TextureSlot.RAIL).renderType("cutout").build();

@@ -26,7 +26,6 @@ public final class PrehistoricBiomeBuilder {
     private final Climate.Parameter[] erosions = new Climate.Parameter[]{Climate.Parameter.span(-1.0F, -0.78F), Climate.Parameter.span(-0.78F, -0.375F), Climate.Parameter.span(-0.375F, -0.2225F), Climate.Parameter.span(-0.2225F, 0.05F), Climate.Parameter.span(0.05F, 0.45F), Climate.Parameter.span(0.45F, 0.55F), Climate.Parameter.span(0.55F, 1.0F)};
     private final Climate.Parameter FROZEN_RANGE;
     private final Climate.Parameter UNFROZEN_RANGE;
-    private final Climate.Parameter mushroomFieldsContinentalness;
     private final Climate.Parameter deepOceanContinentalness;
     private final Climate.Parameter oceanContinentalness;
     private final Climate.Parameter coastContinentalness;
@@ -34,13 +33,12 @@ public final class PrehistoricBiomeBuilder {
     private final Climate.Parameter nearInlandContinentalness;
     private final Climate.Parameter midInlandContinentalness;
     private final Climate.Parameter farInlandContinentalness;
-    private final ResourceKey<Biome>[][] MIDDLE_BIOMES;
-    private final ResourceKey<Biome>[][] PLATEAU_BIOMES;
+    private final ResourceKey<Biome>[][] middleBiomes;
+    private final ResourceKey<Biome>[][] plateauBiomes;
 
     public PrehistoricBiomeBuilder() {
         this.FROZEN_RANGE = this.temperatures[0];
         this.UNFROZEN_RANGE = Climate.Parameter.span(this.temperatures[1], this.temperatures[4]);
-        this.mushroomFieldsContinentalness = Climate.Parameter.span(-1.2F, -1.05F);
         this.deepOceanContinentalness = Climate.Parameter.span(-1.05F, -0.455F);
         this.oceanContinentalness = Climate.Parameter.span(-0.455F, -0.19F);
         this.coastContinentalness = Climate.Parameter.span(-0.19F, -0.11F);
@@ -48,8 +46,8 @@ public final class PrehistoricBiomeBuilder {
         this.nearInlandContinentalness = Climate.Parameter.span(-0.11F, 0.03F);
         this.midInlandContinentalness = Climate.Parameter.span(0.03F, 0.3F);
         this.farInlandContinentalness = Climate.Parameter.span(0.3F, 1.0F);
-        this.MIDDLE_BIOMES = new ResourceKey[][]{{FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_TAIGA}, {FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_FOREST, FABiomes.PREHISTORIC_TAIGA, FABiomes.PREHISTORIC_TAIGA}, {FABiomes.PREHISTORIC_FOREST, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_FOREST, FABiomes.PREHISTORIC_FOREST, FABiomes.PREHISTORIC_FOREST}, {FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_FOREST, FABiomes.PREHISTORIC_JUNGLE, FABiomes.PREHISTORIC_JUNGLE}, {FABiomes.PREHISTORIC_DESERT, FABiomes.PREHISTORIC_DESERT, FABiomes.PREHISTORIC_DESERT, FABiomes.PREHISTORIC_DESERT, FABiomes.PREHISTORIC_DESERT}};
-        this.PLATEAU_BIOMES = new ResourceKey[][]{{FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_TAIGA, FABiomes.PREHISTORIC_TAIGA}, {FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_FOREST, FABiomes.PREHISTORIC_TAIGA, FABiomes.PREHISTORIC_TAIGA}, {FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_FOREST}, {FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_FOREST, FABiomes.PREHISTORIC_FOREST, FABiomes.PREHISTORIC_JUNGLE}, {FABiomes.PREHISTORIC_DESERT, FABiomes.PREHISTORIC_DESERT, FABiomes.PREHISTORIC_DESERT, FABiomes.PREHISTORIC_DESERT, FABiomes.PREHISTORIC_DESERT}};
+        this.middleBiomes = new ResourceKey[][]{{FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_TAIGA}, {FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_FOREST, FABiomes.PREHISTORIC_TAIGA, FABiomes.PREHISTORIC_TAIGA}, {FABiomes.PREHISTORIC_FOREST, FABiomes.MORRISON_FORMATION_PLAINS, FABiomes.MORRISON_FORMATION_PLAINS, FABiomes.MORRISON_FORMATION_FOREST, FABiomes.PREHISTORIC_FOREST}, {FABiomes.PREHISTORIC_PLAINS, FABiomes.MORRISON_FORMATION_PLAINS, FABiomes.MORRISON_FORMATION_FOREST, FABiomes.PREHISTORIC_FOREST, FABiomes.PREHISTORIC_JUNGLE}, {FABiomes.DJADOCHTA_FORMATION, FABiomes.DJADOCHTA_FORMATION, FABiomes.DJADOCHTA_FORMATION, FABiomes.FLAMING_CLIFFS, FABiomes.FLAMING_CLIFFS}};
+        this.plateauBiomes = new ResourceKey[][]{{FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_TAIGA, FABiomes.PREHISTORIC_TAIGA}, {FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_FOREST, FABiomes.PREHISTORIC_TAIGA, FABiomes.PREHISTORIC_TAIGA}, {FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_FOREST}, {FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_PLAINS, FABiomes.PREHISTORIC_FOREST, FABiomes.PREHISTORIC_FOREST, FABiomes.PREHISTORIC_JUNGLE}, {FABiomes.DJADOCHTA_FORMATION, FABiomes.DJADOCHTA_FORMATION, FABiomes.FLAMING_CLIFFS, FABiomes.FLAMING_CLIFFS, FABiomes.FLAMING_CLIFFS}};
     }
 
     public void addBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> point) {
@@ -72,7 +70,7 @@ public final class PrehistoricBiomeBuilder {
         float[] locations;
         float location;
         if (erosionOffsetSpline instanceof CubicSpline.Multipoint<?, ?> multipoint) {
-            ResourceKey<Biome> desert = FABiomes.PREHISTORIC_DESERT;
+            ResourceKey<Biome> desert = FABiomes.FLAMING_CLIFFS;
             locations = multipoint.locations();
 
             for (int i = 0; i < locations.length; ++i) {
@@ -262,7 +260,7 @@ public final class PrehistoricBiomeBuilder {
     }
 
     private ResourceKey<Biome> pickMiddleBiome(int temperature, int humidity, Climate.Parameter span) {
-        return this.MIDDLE_BIOMES[temperature][humidity];
+        return this.middleBiomes[temperature][humidity];
     }
 
     private ResourceKey<Biome> pickShatteredCoastBiome(int temperature, int humidity, Climate.Parameter span) {
@@ -270,11 +268,11 @@ public final class PrehistoricBiomeBuilder {
     }
 
     private ResourceKey<Biome> pickBeachBiome(int temperature, int humidity) {
-        return temperature == 4 ? FABiomes.PREHISTORIC_DESERT : FABiomes.PREHISTORIC_BEACH;
+        return FABiomes.PREHISTORIC_BEACH;
     }
 
     private ResourceKey<Biome> pickPlateauBiome(int temperature, int humidity, Climate.Parameter span) {
-        return this.PLATEAU_BIOMES[temperature][humidity];
+        return this.plateauBiomes[temperature][humidity];
     }
 
     private void addSurfaceBiome(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> point, Climate.Parameter temperatureRange, Climate.Parameter humidityRange, Climate.Parameter continentalnessRange, Climate.Parameter erosionRange, Climate.Parameter depthRange, float weirdness, ResourceKey<Biome> biome) {
