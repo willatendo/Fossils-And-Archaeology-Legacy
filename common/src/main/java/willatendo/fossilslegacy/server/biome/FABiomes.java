@@ -30,13 +30,19 @@ public final class FABiomes {
     public static final ResourceKey<Biome> PREHISTORIC_DESERT = register("prehistoric_desert");
     public static final ResourceKey<Biome> PREHISTORIC_JUNGLE = register("prehistoric_jungle");
     public static final ResourceKey<Biome> PREHISTORIC_TAIGA = register("prehistoric_taiga");
-    public static final ResourceKey<Biome> PREHISTORIC_RIVER = register("prehistoric_river");
     public static final ResourceKey<Biome> PREHISTORIC_SWAMP = register("prehistoric_swamp");
     public static final ResourceKey<Biome> PREHISTORIC_BEACH = register("prehistoric_beach");
-    public static final ResourceKey<Biome> MORRISON_FORMATION_PLAINS = FABiomes.register("morrison_formation");
-    public static final ResourceKey<Biome> MORRISON_FORMATION_FOREST = FABiomes.register("morrison_formation_forest");
-    public static final ResourceKey<Biome> DJADOCHTA_FORMATION = register("djadochta_formation");
-    public static final ResourceKey<Biome> FLAMING_CLIFFS = FABiomes.register("flaming_cliffs");
+    // Based on Morrison Formation
+    public static final ResourceKey<Biome> ARID_PLAINS = FABiomes.register("arid_plains");
+    public static final ResourceKey<Biome> ARID_FOREST = FABiomes.register("arid_forest");
+    // Based on Djadochta Formation
+    public static final ResourceKey<Biome> COLD_DESERT = register("cold_desert");
+    // Based on Flaming Cliffs
+    public static final ResourceKey<Biome> RED_DESERT = FABiomes.register("red_desert");
+    //
+    public static final ResourceKey<Biome> WARM_PREHISTORIC_RIVER = register("warm_prehistoric_river");
+    public static final ResourceKey<Biome> PREHISTORIC_RIVER = register("prehistoric_river");
+    public static final ResourceKey<Biome> COLD_PREHISTORIC_RIVER = register("cold_prehistoric_river");
 
     private static ResourceKey<Biome> register(String name) {
         return ResourceKey.create(Registries.BIOME, FAUtils.resource(name));

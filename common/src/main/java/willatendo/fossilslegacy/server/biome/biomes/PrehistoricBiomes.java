@@ -3,9 +3,11 @@ package willatendo.fossilslegacy.server.biome.biomes;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.placement.AquaticPlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.MobSpawnSettings;
@@ -13,10 +15,12 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import willatendo.fossilslegacy.server.biome.FABiomes;
+import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.feature.FAPlacedFeatures;
+import willatendo.fossilslegacy.server.feature.PrehistoricBiomeFeatures;
 
 public final class PrehistoricBiomes {
-    private static Biome morrisonFormation(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers, boolean forest) {
+    private static Biome aridPlains(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers, boolean forest) {
         MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder(placedFeatures, configuredWorldCarvers);
         FABiomes.globalPrehistoricGeneration(biomeGenerationSettings);
@@ -31,7 +35,7 @@ public final class PrehistoricBiomes {
         return FABiomes.biome(true, 2.0F, 0.0F, mobSpawnSettings, biomeGenerationSettings, FABiomes.NORMAL_MUSIC);
     }
 
-    private static Biome djadochtaFormation(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
+    private static Biome coldDesert(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
         MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder(placedFeatures, configuredWorldCarvers);
         FABiomes.globalPrehistoricGeneration(biomeGenerationSettings);
@@ -39,23 +43,36 @@ public final class PrehistoricBiomes {
         BiomeDefaultFeatures.addDefaultSoftDisks(biomeGenerationSettings);
         BiomeDefaultFeatures.addFossilDecoration(biomeGenerationSettings);
         biomeGenerationSettings.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatures.getOrThrow(VegetationPlacements.PATCH_DEAD_BUSH_BADLANDS));
-        return FABiomes.biome(false, 2.0F, 0.0F, mobSpawnSettings, biomeGenerationSettings, Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DESERT));
+        return FABiomes.biome(false, 1.0F, 0.0F, mobSpawnSettings, biomeGenerationSettings, Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DESERT));
     }
 
-    private static Biome flamingCliffs(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
+    private static Biome redDesert(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
         MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder(placedFeatures, configuredWorldCarvers);
         FABiomes.globalPrehistoricGeneration(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultOres(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultSoftDisks(biomeGenerationSettings);
         biomeGenerationSettings.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatures.getOrThrow(VegetationPlacements.PATCH_DEAD_BUSH_BADLANDS));
-        return FABiomes.biome(false, 2.0F, 0.0F, mobSpawnSettings, biomeGenerationSettings, FABiomes.NORMAL_MUSIC);
+        return FABiomes.biome(false, 1.0F, 0.0F, mobSpawnSettings, biomeGenerationSettings, FABiomes.NORMAL_MUSIC);
+    }
+
+    private static Biome river(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
+        MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
+        mobSpawnSettings.addSpawn(MobCategory.WATER_CREATURE, new MobSpawnSettings.SpawnerData(FAEntityTypes.FUTABASAURUS.get(), 1, 1, 3));
+        BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder(placedFeatures, configuredWorldCarvers);
+        FABiomes.globalPrehistoricGeneration(biomeGenerationSettings);
+        BiomeDefaultFeatures.addDefaultOres(biomeGenerationSettings);
+        BiomeDefaultFeatures.addDefaultSoftDisks(biomeGenerationSettings);
+        biomeGenerationSettings.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_RIVER);
+
+        return FABiomes.biome(true, 0.5F, 0.5F, mobSpawnSettings, biomeGenerationSettings, FABiomes.NORMAL_MUSIC);
     }
 
     public static void bootstrap(BootstrapContext<Biome> bootstrapContext, HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
-        bootstrapContext.register(FABiomes.MORRISON_FORMATION_PLAINS, PrehistoricBiomes.morrisonFormation(placedFeatures, configuredWorldCarvers, false));
-        bootstrapContext.register(FABiomes.MORRISON_FORMATION_FOREST, PrehistoricBiomes.morrisonFormation(placedFeatures, configuredWorldCarvers, true));
-        bootstrapContext.register(FABiomes.DJADOCHTA_FORMATION, PrehistoricBiomes.djadochtaFormation(placedFeatures, configuredWorldCarvers));
-        bootstrapContext.register(FABiomes.FLAMING_CLIFFS, PrehistoricBiomes.flamingCliffs(placedFeatures, configuredWorldCarvers));
+        bootstrapContext.register(FABiomes.ARID_PLAINS, PrehistoricBiomes.aridPlains(placedFeatures, configuredWorldCarvers, false));
+        bootstrapContext.register(FABiomes.ARID_FOREST, PrehistoricBiomes.aridPlains(placedFeatures, configuredWorldCarvers, true));
+        bootstrapContext.register(FABiomes.COLD_DESERT, PrehistoricBiomes.coldDesert(placedFeatures, configuredWorldCarvers));
+        bootstrapContext.register(FABiomes.RED_DESERT, PrehistoricBiomes.redDesert(placedFeatures, configuredWorldCarvers));
+
     }
 }
