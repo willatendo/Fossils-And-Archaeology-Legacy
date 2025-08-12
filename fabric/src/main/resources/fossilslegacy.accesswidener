@@ -70,6 +70,10 @@ accessible field net/minecraft/world/level/levelgen/structure/pools/StructureTem
 mutable field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool rawTemplates Ljava/util/List;
 accessible field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool templates Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
 accessible field net/minecraft/world/item/crafting/RecipeManager recipes Lnet/minecraft/world/item/crafting/RecipeMap;
+accessible field net/minecraft/world/level/Level levelData Lnet/minecraft/world/level/storage/WritableLevelData;
+mutable field net/minecraft/world/level/Level levelData Lnet/minecraft/world/level/storage/WritableLevelData;
+accessible field net/minecraft/server/level/ServerLevel serverLevelData Lnet/minecraft/world/level/storage/ServerLevelData;
+mutable field net/minecraft/server/level/ServerLevel serverLevelData Lnet/minecraft/world/level/storage/ServerLevelData;
 
 accessible field net/minecraft/client/ClientRecipeBook collectionsByTab Ljava/util/Map;
 accessible field net/minecraft/world/item/SmithingTemplateItem EMPTY_SLOT_HELMET Lnet/minecraft/resources/ResourceLocation;

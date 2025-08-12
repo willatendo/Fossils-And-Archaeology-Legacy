@@ -15,23 +15,4 @@ public record ServerboundSetFossilPartPositionsPacket(int id, String part, float
     public Type<? extends CustomPacketPayload> type() {
         return TYPE;
     }
-
-    // Forge Start
-
-    public void encode(FriendlyByteBuf friendlyByteBuf) {
-        friendlyByteBuf.writeInt(this.id());
-        friendlyByteBuf.writeUtf(this.part());
-        friendlyByteBuf.writeFloat(this.x());
-        friendlyByteBuf.writeFloat(this.y());
-        friendlyByteBuf.writeFloat(this.z());
-    }
-
-    public static ServerboundSetFossilPartPositionsPacket decode(FriendlyByteBuf friendlyByteBuf) {
-        int id = friendlyByteBuf.readInt();
-        String part = friendlyByteBuf.readUtf();
-        float x = friendlyByteBuf.readFloat();
-        float y = friendlyByteBuf.readFloat();
-        float z = friendlyByteBuf.readFloat();
-        return new ServerboundSetFossilPartPositionsPacket(id, part, x, y, z);
-    }
 }

@@ -12,6 +12,7 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 import java.util.OptionalLong;
 
 public final class FADimensionTypes {
+    public static final ResourceKey<DimensionType> ICE_AGE = FADimensionTypes.create("ice_age");
     public static final ResourceKey<DimensionType> PREHISTORY = FADimensionTypes.create("prehistory");
 
     public static ResourceKey<DimensionType> create(String name) {
@@ -19,6 +20,7 @@ public final class FADimensionTypes {
     }
 
     public static void bootstrap(BootstrapContext<DimensionType> bootstrapContext) {
+        bootstrapContext.register(ICE_AGE, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0F, true, false, -64, 384, 384, BlockTags.INFINIBURN_OVERWORLD, BuiltinDimensionTypes.OVERWORLD_EFFECTS, 0.0F, new DimensionType.MonsterSettings(false, true, UniformInt.of(0, 7), 0)));
         bootstrapContext.register(PREHISTORY, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0F, true, false, -64, 384, 384, BlockTags.INFINIBURN_OVERWORLD, BuiltinDimensionTypes.OVERWORLD_EFFECTS, 0.0F, new DimensionType.MonsterSettings(false, true, UniformInt.of(0, 7), 0)));
     }
 }

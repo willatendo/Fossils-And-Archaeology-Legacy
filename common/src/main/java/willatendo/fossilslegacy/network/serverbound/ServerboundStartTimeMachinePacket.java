@@ -15,14 +15,4 @@ public record ServerboundStartTimeMachinePacket(BlockPos blockPos) implements Cu
     public Type<? extends CustomPacketPayload> type() {
         return TYPE;
     }
-
-    // Forge Start
-
-    public void encode(FriendlyByteBuf friendlyByteBuf) {
-        friendlyByteBuf.writeBlockPos(this.blockPos());
-    }
-
-    public static ServerboundStartTimeMachinePacket decode(FriendlyByteBuf friendlyByteBuf) {
-        return new ServerboundStartTimeMachinePacket(friendlyByteBuf.readBlockPos());
-    }
 }

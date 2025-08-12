@@ -1,7 +1,9 @@
 package willatendo.fossilslegacy.server.event;
 
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.crafting.RecipeBookCategory;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.LevelAccessor;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -11,18 +13,21 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
+import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import willatendo.fossilslegacy.client.FASearchRecipeBookCategory;
 import willatendo.fossilslegacy.network.ClientboundPacketRegistry;
 import willatendo.fossilslegacy.network.ServerboundPacketRegistry;
+import willatendo.fossilslegacy.server.dimension.DayCycleLevelData;
+import willatendo.fossilslegacy.server.level.FALevels;
 import willatendo.fossilslegacy.server.recipe.FARecipeTypes;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.event.modification.*;
 import willatendo.simplelibrary.server.event.registry.*;
 
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = FAUtils.ID)
+@EventBusSubscriber(modid = FAUtils.ID)
 public class ModEvents {
     public static final NeoforgeCompostablesModification NEOFORGE_COMPOSTABLES_MODIFICATION = new NeoforgeCompostablesModification();
     public static final NeoforgeHeroOfTheVillageGiftModification NEOFORGE_HERO_OF_THE_VILLAGE_GIFT_MODIFICATION = new NeoforgeHeroOfTheVillageGiftModification();
@@ -89,7 +94,12 @@ public class ModEvents {
     }
 
     @SubscribeEvent
-    public static void syncDatapack(OnDatapackSyncEvent event) {
+    public static void onDatapackSyncEvent(OnDatapackSyncEvent event) {
         event.sendRecipes(RecipeType.CRAFTING, RecipeType.SMELTING, RecipeType.SMOKING, RecipeType.BLASTING, RecipeType.SMITHING, FARecipeTypes.ANALYZATION.get(), FARecipeTypes.ARCHAEOLOGY.get());
+    }
+
+    @SubscribeEvent
+    public static void levelEvent_load(LevelEvent.Load event) {
+        BasicEvents.levelDataModification(event.getLevel());
     }
 }

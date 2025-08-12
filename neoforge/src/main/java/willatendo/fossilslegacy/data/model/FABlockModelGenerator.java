@@ -141,6 +141,7 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createTrivialCube(FABlocks.WILLIAMSONIA.get());
         this.createMacrotaeniopteris(FABlocks.MACROTAENIOPTERIS.get());
         this.createDipteris(FABlocks.DIPTERIS.get());
+        this.createZamitesHead(FABlocks.ZAMITES_HEAD.get());
         this.blockModelGenerators.woodProvider(FABlocks.ARAUCARIA_LOG.get()).logWithHorizontal(FABlocks.ARAUCARIA_LOG.get()).wood(FABlocks.ARAUCARIA_WOOD.get());
         this.blockModelGenerators.woodProvider(FABlocks.STRIPPED_ARAUCARIA_LOG.get()).logWithHorizontal(FABlocks.STRIPPED_ARAUCARIA_LOG.get()).wood(FABlocks.STRIPPED_ARAUCARIA_WOOD.get());
         this.blockModelGenerators.createHangingSign(FABlocks.STRIPPED_ARAUCARIA_LOG.get(), FABlocks.ARAUCARIA_HANGING_SIGN.get(), FABlocks.ARAUCARIA_WALL_HANGING_SIGN.get());
@@ -340,6 +341,11 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         ResourceLocation headNoCone = FAModelTemplates.TEMPLATE_CYCAD_HEAD_NO_CONE.createWithSuffix(cycadHead, "_no_cone", new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/cycad_log")).put(TextureSlot.TOP, this.modLocation("block/cycad_log_top_1")).put(FATextureSlot.LEAVES, this.modLocation("block/cycad_leaves")), this.modelOutput);
         this.block(MultiVariantGenerator.multiVariant(cycadHead, Variant.variant()).with(BlockModelGenerators.createBooleanModelDispatch(CycadHeadBlock.HAS_CONE, headCone, headNoCone)));
         this.blockModelGenerators.registerSimpleTintedItemModel(cycadHead, headCone, new GrassColorSource());
+    }
+
+    private void createZamitesHead(Block zamitesHead) {
+        ResourceLocation model = this.basic(zamitesHead, FAModelTemplates.TEMPLATE_ZAMITES_HEAD, new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/cycad_log")).put(TextureSlot.TOP, this.modLocation("block/cycad_log_top_1")).put(FATextureSlot.HEAD, this.modLocation("block/cycad_head")).put(FATextureSlot.LEAVES, this.modLocation("block/cycad_leaves")));
+        this.blockModelGenerators.registerSimpleTintedItemModel(zamitesHead, model, new GrassColorSource());
     }
 
     private void createCycadLog(Block cycadLog) {

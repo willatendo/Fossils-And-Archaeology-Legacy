@@ -15,14 +15,4 @@ public record ServerboundDamageHammerPacket(int id) implements CustomPacketPaylo
     public CustomPacketPayload.Type<? extends CustomPacketPayload> type() {
         return TYPE;
     }
-
-    // Forge Start
-
-    public void encode(FriendlyByteBuf friendlyByteBuf) {
-        friendlyByteBuf.writeInt(this.id());
-    }
-
-    public static ServerboundDamageHammerPacket decode(FriendlyByteBuf friendlyByteBuf) {
-        return new ServerboundDamageHammerPacket(friendlyByteBuf.readInt());
-    }
 }

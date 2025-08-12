@@ -1,7 +1,9 @@
 package willatendo.fossilslegacy.server.event;
 
+import net.fabricmc.fabric.api.entity.event.v1.EntitySleepEvents;
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -10,12 +12,14 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.criteria.FACriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.AncientLightningBolt;
 import willatendo.fossilslegacy.server.entity.entities.TamedZombifiedPiglin;
 import willatendo.fossilslegacy.server.item.FAItems;
+import willatendo.fossilslegacy.server.level.FALevels;
 
 public class ModCallbacks {
     public static final Event<EntityStruckByLighting> ENTITY_STRUCK_BY_LIGHTING = EventFactory.createArrayBacked(EntityStruckByLighting.class, callbacks -> (entity, lightningBolt) -> {
@@ -28,7 +32,7 @@ public class ModCallbacks {
     });
 
     public static void callbacks() {
-        lightning();
+        ModCallbacks.lightning();
     }
 
     public static void lightning() {

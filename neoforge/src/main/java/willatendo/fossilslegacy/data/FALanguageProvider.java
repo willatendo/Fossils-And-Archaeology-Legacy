@@ -247,6 +247,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.CYCADEOIDEA.get());
         this.add(FABlocks.MACROTAENIOPTERIS.get());
         this.add(FABlocks.DIPTERIS.get());
+        this.add(FABlocks.ZAMITES_HEAD.get());
         this.add(FABlocks.LEPIDODENDRON_PLANKS.get());
         this.add(FABlocks.LEPIDODENDRON_SAPLING.get());
         this.add(FABlocks.LEPIDODENDRON_LOG.get());

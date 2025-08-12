@@ -15,14 +15,4 @@ public record ServerboundVehicleSinkPacket(boolean shouldSink) implements Custom
     public Type<? extends CustomPacketPayload> type() {
         return TYPE;
     }
-
-    // Forge Start
-
-    public void encode(FriendlyByteBuf friendlyByteBuf) {
-        friendlyByteBuf.writeBoolean(this.shouldSink());
-    }
-
-    public static ServerboundVehicleSinkPacket decode(FriendlyByteBuf friendlyByteBuf) {
-        return new ServerboundVehicleSinkPacket(friendlyByteBuf.readBoolean());
-    }
 }

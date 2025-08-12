@@ -1,0 +1,23 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "fossilslegacy:block/zamites_log",
+		"1": "fossilslegacy:block/zamites_log_top",
+		"particle": "fossilslegacy:block/zamites_log"
+	},
+	"elements": [
+		{
+			"from": [4, 0, 4],
+			"to": [12, 16, 12],
+			"faces": {
+				"north": {"uv": [7, 0, 15, 16], "texture": "#0"},
+				"east": {"uv": [7, 0, 15, 16], "texture": "#0"},
+				"south": {"uv": [7, 0, 15, 16], "texture": "#0"},
+				"west": {"uv": [7, 0, 15, 16], "texture": "#0"},
+				"up": {"uv": [8, 8, 16, 16], "texture": "#1"},
+				"down": {"uv": [8, 8, 16, 16], "texture": "#1"}
+			}
+		}
+	]
+}

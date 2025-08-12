@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
 import net.minecraft.client.gui.screens.recipebook.RecipeCollection;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.MobCategory;
@@ -14,6 +15,7 @@ import willatendo.fossilslegacy.client.FASearchRecipeBookCategory;
 import willatendo.fossilslegacy.network.NetworkUtils;
 import willatendo.fossilslegacy.network.ServerboundPacketRegistry;
 import willatendo.fossilslegacy.network.clientbound.ClientboundRecipeContentPacket;
+import willatendo.fossilslegacy.server.dimension.DayCycleLevelData;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.feature.FAPlacedFeatures;
 import willatendo.fossilslegacy.server.recipe.FARecipeTypes;
@@ -62,5 +64,6 @@ public class ModEvents {
 
         ServerLifecycleEvents.SERVER_STARTING.register(server -> BasicEvents.structurePoolModification(new FabricStructurePoolModification(server)));
         ServerLifecycleEvents.SYNC_DATA_PACK_CONTENTS.register((serverPlayer, b) -> NetworkUtils.sendToClient(serverPlayer, ClientboundRecipeContentPacket.create(Set.of(RecipeType.CRAFTING, RecipeType.SMELTING, RecipeType.SMOKING, RecipeType.BLASTING, RecipeType.SMITHING, FARecipeTypes.ANALYZATION.get(), FARecipeTypes.ARCHAEOLOGY.get()), serverPlayer.server.getRecipeManager().recipes)));
+        ServerWorldEvents.LOAD.register((minecraftServer, serverLevel) -> BasicEvents.levelDataModification(serverLevel));
     }
 }

@@ -68,13 +68,6 @@
     ],
     [
       "minecraft:glow_lichen",
-      "fossilslegacy:trees_prehistoric_water",
-      "minecraft:flower_default",
-      "minecraft:patch_grass_badlands",
-      "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal",
-      "minecraft:patch_sugar_cane",
-      "minecraft:patch_pumpkin",
       "minecraft:seagrass_river"
     ],
     [
@@ -91,14 +84,7 @@
     "monster": [],
     "underground_water_creature": [],
     "water_ambient": [],
-    "water_creature": [
-      {
-        "type": "fossilslegacy:futabasaurus",
-        "maxCount": 3,
-        "minCount": 1,
-        "weight": 1
-      }
-    ]
+    "water_creature": []
   },
   "temperature": 0.5
 }

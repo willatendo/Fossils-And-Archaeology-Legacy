@@ -1,4 +1,4 @@
-// 1.21.4	2025-08-09T13:58:53.273067	Loot Tables
+// 1.21.4	2025-08-12T02:09:22.7669324	Loot Tables
 6b196aa6cdadbe968410835a209fed7ad992066f data/fossilslegacy/loot_table/archaeology/inca_loot.json
 bb0a83fd719766efefe4b270836d5a39651187e0 data/fossilslegacy/loot_table/blocks/amber_ore.json
 5cb02374129bf20a2da69b1d928ab94778ec5ea0 data/fossilslegacy/loot_table/blocks/araucaria_button.json
@@ -275,6 +275,7 @@ d05c9ad6eae225e9981fb382fdbecf172ab48659 data/fossilslegacy/loot_table/blocks/wo
 2b4fd7e536a5eb5042c10fe54432be5eaf746b01 data/fossilslegacy/loot_table/blocks/yellow_cultivator.json
 afc8958461aba1c4b8fd7959cd7444eb72d0e7f3 data/fossilslegacy/loot_table/blocks/yellow_decoration_post.json
 6ba4d5f784ef50d27aaf0483ea34ae86256babc1 data/fossilslegacy/loot_table/blocks/yellow_shattered_cultivator.json
+445597fdf374b1cb187d47c9e0d276e5961148df data/fossilslegacy/loot_table/blocks/zamites_head.json
 6092aafe4bca6a32828a100accc015b5725a7d51 data/fossilslegacy/loot_table/chests/academy_disc.json
 0e504001fa6014fdf23cf4bdb8a81105d95b9d25 data/fossilslegacy/loot_table/chests/academy_loot.json
 8ae0de33cdeff1cb04f5846e2ab179c1d3f0e5ca data/fossilslegacy/loot_table/chests/lab_loot/dna.json

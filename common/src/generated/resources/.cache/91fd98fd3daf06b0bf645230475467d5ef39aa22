@@ -1,4 +1,4 @@
-// 1.21.4	2025-08-09T14:22:05.1054972	Model Definitions - fossilslegacy
+// 1.21.4	2025-08-12T02:09:22.7849365	Model Definitions - fossilslegacy
 79ad7cdd7edd464e48a78b81a05734e809d8790f assets/fossilslegacy/blockstates/amber_ore.json
 07c20db309c8d0585a2a8278cedc3a78c1e522ee assets/fossilslegacy/blockstates/araucaria_button.json
 08fd4b3534ecb18f35bcb325aec6e666bd330091 assets/fossilslegacy/blockstates/araucaria_door.json
@@ -293,6 +293,7 @@ b7cee462c87dbda8f5dce785f069a7a1e6d12739 assets/fossilslegacy/blockstates/wollem
 bb55c80134b9af340c58aa1bd31db1cb6c7a95c2 assets/fossilslegacy/blockstates/yellow_cultivator.json
 f080f0df88283389a21d47e21cefe5db82724c93 assets/fossilslegacy/blockstates/yellow_decoration_post.json
 ccb47472df470e7275cb0c29d3cef1eba42280c3 assets/fossilslegacy/blockstates/yellow_shattered_cultivator.json
+e3ca008b54f3d5fa307326ff5b53b938c8c5583d assets/fossilslegacy/blockstates/zamites_head.json
 48e7b273a391c540aebb7310df795eb605b280dd assets/fossilslegacy/items/1993_jeep.json
 069c40599a4fc55199d6cedf14add745b5cc33c3 assets/fossilslegacy/items/amber.json
 67a3c972c7f597bcdf522281929966ff5a0e8d0a assets/fossilslegacy/items/amber_ore.json
@@ -892,6 +893,7 @@ e60e32f84cc058ecfc67797624ed55dd815f762d assets/fossilslegacy/items/wollemia_woo
 7df885ddefd47978dd0fa48e182e4ee45e0ee344 assets/fossilslegacy/items/yellow_cultivator.json
 f2334b59150d2c0e3e47b55fa1b0f60f90c810d3 assets/fossilslegacy/items/yellow_decoration_plaque.json
 9be8867ae0ac2d3fdf040178db63f5d63d68526a assets/fossilslegacy/items/yellow_shattered_cultivator.json
+c0d8d1ac4f076f0b3c1d24a8b9655a0030050fb6 assets/fossilslegacy/items/zamites_head.json
 7aa97df91657ba29c1d31f8fa7a552700bfe37a8 assets/fossilslegacy/models/block/amber_ore.json
 901590af700b69ea699c5be450706110fcfe5dbb assets/fossilslegacy/models/block/araucaria_button.json
 830ec3511b90b5c22bac64d8816b52276c0d25af assets/fossilslegacy/models/block/araucaria_button_inventory.json
@@ -1472,6 +1474,7 @@ cfada9be8e9d5fb0e9dadbbfe6da750002002018 assets/fossilslegacy/models/block/wolle
 67e0886d03c5a82c6e6eed70d49c8b4efce9d621 assets/fossilslegacy/models/block/yellow_cultivator_active.json
 1e48b453663e164a5744f1aff86a47adca1535b6 assets/fossilslegacy/models/block/yellow_decoration_post.json
 a23ceaf484cb6a095b437362044391559a66ef0a assets/fossilslegacy/models/block/yellow_shattered_cultivator.json
+1ff701926b3a39da798f8f215bb591e5dd9949a7 assets/fossilslegacy/models/block/zamites_head.json
 39aba3fdc168f9e3e24afbc0ee57471e8e5e5873 assets/fossilslegacy/models/item/1993_jeep.json
 6b2c12d69810a8ea1cf7debedb2b26941e850571 assets/fossilslegacy/models/item/amber.json
 1f02e6db84914fc2677089f5e420f925ba109484 assets/fossilslegacy/models/item/ancient_axe.json

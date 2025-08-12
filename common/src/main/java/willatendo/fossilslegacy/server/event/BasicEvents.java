@@ -6,6 +6,7 @@ import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.BoatDispenseItemBehavior;
 import net.minecraft.core.dispenser.OptionalDispenseItemBehavior;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.animal.*;
@@ -21,6 +22,7 @@ import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -32,6 +34,7 @@ import willatendo.fossilslegacy.server.block.cauldron.FACauldronInteraction;
 import willatendo.fossilslegacy.server.block.dispenser.DispenseEntityItemBehavior;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.decoration_plaque_type.DecorationPlaqueType;
+import willatendo.fossilslegacy.server.dimension.DayCycleLevelData;
 import willatendo.fossilslegacy.server.dinopedia_entry.DinopediaEntry;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -55,6 +58,7 @@ import willatendo.fossilslegacy.server.item.FALootTables;
 import willatendo.fossilslegacy.server.item.FAMapDecorationTypes;
 import willatendo.fossilslegacy.server.item.items.EggItem;
 import willatendo.fossilslegacy.server.jewel_recovery.JewelRecovery;
+import willatendo.fossilslegacy.server.level.FALevels;
 import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 import willatendo.fossilslegacy.server.pattern.texture.Texture;
@@ -466,5 +470,13 @@ public final class BasicEvents {
         idModification.updateId(BuiltInRegistries.BLOCK, FAUtils.resource("fossil_ore"), FABlocks.MESOZOIC_FOSSIL_ORE::get);
         idModification.updateId(BuiltInRegistries.BLOCK, FAUtils.resource("analyzer"), FABlocks.DNA_ANALYZER::get);
         idModification.updateId(BuiltInRegistries.BLOCK_ENTITY_TYPE, FAUtils.resource("analyzer"), FABlockEntityTypes.DNA_ANALYZER::get);
+    }
+
+    public static void levelDataModification(LevelAccessor levelAccessor) {
+        if (levelAccessor instanceof ServerLevel serverLevel && serverLevel.dimension() == FALevels.PREHISTORY) {
+            DayCycleLevelData dayCycleLevelData = new DayCycleLevelData(serverLevel.getServer().getWorldData(), serverLevel.getServer().getWorldData().overworldData());
+            serverLevel.serverLevelData = dayCycleLevelData;
+            serverLevel.levelData = dayCycleLevelData;
+        }
     }
 }

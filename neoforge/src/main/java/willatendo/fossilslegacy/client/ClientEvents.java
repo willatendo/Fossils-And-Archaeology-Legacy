@@ -12,12 +12,16 @@ import net.neoforged.neoforge.client.event.*;
 import net.neoforged.neoforge.client.extensions.common.IClientBlockExtensions;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
-import willatendo.fossilslegacy.dual.FossilsLegacyDualEvents;
+import willatendo.fossilslegacy.client.animation.json.JsonAnimationLoader;
+import willatendo.fossilslegacy.client.model.json.JsonLayerDefinitionResourceManager;
+import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
+import willatendo.fossilslegacy.client.resources.DecorationPlaqueTextureManager;
+import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;
+import willatendo.fossilslegacy.client.user_manual.UserManualItemDataLoader;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.fluid.FAFluidTypes;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.client.event.registry.*;
-import willatendo.simplelibrary.server.event.registry.NeoforgeClientReloadListenerRegister;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = FAUtils.ID, value = Dist.CLIENT)
 public class ClientEvents {
@@ -29,7 +33,12 @@ public class ClientEvents {
 
     @SubscribeEvent
     public static void registerClientReloadListenersEvent(AddClientReloadListenersEvent event) {
-        FossilsLegacyDualEvents.clientReloadListenersEvent(new NeoforgeClientReloadListenerRegister(event));
+        event.addListener(FAUtils.resource("decoration_plaque_texture_manager"), DecorationPlaqueTextureManager.INSTANCE);
+        event.addListener(FAUtils.resource("stone_table_texture_manager"), StoneTabletTextureManager.INSTANCE);
+        event.addListener(FAUtils.resource("json_models_loader"), JsonModelLoader.INSTANCE);
+        event.addListener(FAUtils.resource("json_animations_loader"), JsonAnimationLoader.INSTANCE);
+        event.addListener(FAUtils.resource("json_layers_loader"), JsonLayerDefinitionResourceManager.INSTANCE);
+        event.addListener(FAUtils.resource("user_manual_item_data_loader"), UserManualItemDataLoader.INSTANCE);
     }
 
     @SubscribeEvent
@@ -69,7 +78,7 @@ public class ClientEvents {
             public boolean areBreakingParticlesTinted(BlockState blockState, ClientLevel clientLevel, BlockPos blockPos) {
                 return false;
             }
-        }, FABlocks.CYCAD_HEAD.get());
+        }, FABlocks.CYCAD_HEAD.get(), FABlocks.ZAMITES_HEAD.get());
         event.registerFluidType(new IClientFluidTypeExtensions() {
             @Override
             public ResourceLocation getStillTexture() {

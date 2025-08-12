@@ -1,7 +1,5 @@
 package willatendo.fossilslegacy.server.menu.menus;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -31,11 +29,7 @@ public class UserManualMenu extends AbstractContainerMenu {
         this.addStandardInventorySlots(inventory, 60, 197);
     }
 
-    public UserManualMenu(int windowId, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
-        this(windowId, inventory, ContainerLevelAccess.NULL);
-    }
-
-    public UserManualMenu(int windowId, Inventory inventory, BlockPos blockPos) {
+    public UserManualMenu(int windowId, Inventory inventory) {
         this(windowId, inventory, ContainerLevelAccess.NULL);
     }
 

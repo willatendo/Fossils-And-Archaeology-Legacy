@@ -50,7 +50,7 @@ public final class FossilsLegacyClient {
     }
 
     public static void blockColorRegistry(BlockColorRegistry blockColorRegistry) {
-        blockColorRegistry.registerLeavesColor(FABlocks.CYCAD_HEAD.get(), FABlocks.ARCHAEOPTERIS_LEAVES.get(), FABlocks.CALAMITES_LEAVES.get(), FABlocks.LEPIDODENDRON_LEAVES.get(), FABlocks.SIGILLARIA_LEAVES.get(), FABlocks.JURASSIC_FERN.get(), FABlocks.SHORT_HORSETAIL.get(), FABlocks.TALL_HORSETAIL.get(), FABlocks.CLAYTOSMUNDA.get(), FABlocks.CYCADEOIDEA.get(), FABlocks.MACROTAENIOPTERIS.get(), FABlocks.DIPTERIS.get(), FABlocks.CORDAITES_LEAVES.get(), FABlocks.WOLLEMIA_LEAVES.get());
+        blockColorRegistry.registerLeavesColor(FABlocks.CYCAD_HEAD.get(), FABlocks.ZAMITES_HEAD.get(), FABlocks.ARCHAEOPTERIS_LEAVES.get(), FABlocks.CALAMITES_LEAVES.get(), FABlocks.LEPIDODENDRON_LEAVES.get(), FABlocks.SIGILLARIA_LEAVES.get(), FABlocks.JURASSIC_FERN.get(), FABlocks.SHORT_HORSETAIL.get(), FABlocks.TALL_HORSETAIL.get(), FABlocks.CLAYTOSMUNDA.get(), FABlocks.CYCADEOIDEA.get(), FABlocks.MACROTAENIOPTERIS.get(), FABlocks.DIPTERIS.get(), FABlocks.CORDAITES_LEAVES.get(), FABlocks.WOLLEMIA_LEAVES.get());
         blockColorRegistry.registerBlockColor((blockState, blockAndTintGetter, blockPos, tintIndex) -> 0xD8C12E, FABlocks.GINKGO_LEAVES.get());
         blockColorRegistry.registerBlockColor((blockState, blockAndTintGetter, blockPos, tintIndex) -> -10380959, FABlocks.ARAUCARIA_LEAVES.get(), FABlocks.ARAUCARIOXYLON_LEAVES.get());
     }

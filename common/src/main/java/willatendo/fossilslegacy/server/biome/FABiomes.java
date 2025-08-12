@@ -31,7 +31,6 @@ public final class FABiomes {
     public static final ResourceKey<Biome> PREHISTORIC_JUNGLE = register("prehistoric_jungle");
     public static final ResourceKey<Biome> PREHISTORIC_TAIGA = register("prehistoric_taiga");
     public static final ResourceKey<Biome> PREHISTORIC_SWAMP = register("prehistoric_swamp");
-    public static final ResourceKey<Biome> PREHISTORIC_BEACH = register("prehistoric_beach");
     // Based on Morrison Formation
     public static final ResourceKey<Biome> ARID_PLAINS = FABiomes.register("arid_plains");
     public static final ResourceKey<Biome> ARID_FOREST = FABiomes.register("arid_forest");
@@ -39,10 +38,14 @@ public final class FABiomes {
     public static final ResourceKey<Biome> COLD_DESERT = register("cold_desert");
     // Based on Flaming Cliffs
     public static final ResourceKey<Biome> RED_DESERT = FABiomes.register("red_desert");
-    //
+    // Rivers
     public static final ResourceKey<Biome> WARM_PREHISTORIC_RIVER = register("warm_prehistoric_river");
     public static final ResourceKey<Biome> PREHISTORIC_RIVER = register("prehistoric_river");
     public static final ResourceKey<Biome> COLD_PREHISTORIC_RIVER = register("cold_prehistoric_river");
+    // Beaches
+    public static final ResourceKey<Biome> WARM_PREHISTORIC_BEACH = register("warm_prehistoric_beach");
+    public static final ResourceKey<Biome> PREHISTORIC_BEACH = register("prehistoric_beach");
+    public static final ResourceKey<Biome> COLD_PREHISTORIC_BEACH = register("cold_prehistoric_beach");
 
     private static ResourceKey<Biome> register(String name) {
         return ResourceKey.create(Registries.BIOME, FAUtils.resource(name));
@@ -190,23 +193,6 @@ public final class FABiomes {
         return biome(true, 0.95F, 0.9F, mobSpawnSettings, biomeGenerationSettings, Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE));
     }
 
-    private static Biome river(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
-        MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
-        mobSpawnSettings.addSpawn(MobCategory.WATER_CREATURE, new MobSpawnSettings.SpawnerData(FAEntityTypes.FUTABASAURUS.get(), 1, 1, 3));
-        BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder(placedFeatures, configuredWorldCarvers);
-        globalPrehistoricGeneration(biomeGenerationSettings);
-        BiomeDefaultFeatures.addDefaultOres(biomeGenerationSettings);
-        BiomeDefaultFeatures.addDefaultSoftDisks(biomeGenerationSettings);
-        PrehistoricBiomeFeatures.addPrehistoricWaterTrees(biomeGenerationSettings);
-        BiomeDefaultFeatures.addDefaultFlowers(biomeGenerationSettings);
-        BiomeDefaultFeatures.addDefaultGrass(biomeGenerationSettings);
-        BiomeDefaultFeatures.addDefaultMushrooms(biomeGenerationSettings);
-        BiomeDefaultFeatures.addDefaultExtraVegetation(biomeGenerationSettings);
-        biomeGenerationSettings.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_RIVER);
-
-        return biome(true, 0.5F, 0.5F, 4159204, 329011, (Integer) null, (Integer) null, mobSpawnSettings, biomeGenerationSettings, NORMAL_MUSIC);
-    }
-
     private static Biome taiga(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
         MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
         mobSpawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FAEntityTypes.CRYOLOPHOSAURUS.get(), 1, 2, 2));
@@ -242,20 +228,6 @@ public final class FABiomes {
         return new Biome.BiomeBuilder().hasPrecipitation(true).temperature(0.8F).downfall(0.9F).specialEffects(new BiomeSpecialEffects.Builder().waterColor(6388580).waterFogColor(2302743).fogColor(12638463).skyColor(calculateSkyColor(0.8F)).foliageColorOverride(6975545).grassColorModifier(BiomeSpecialEffects.GrassColorModifier.SWAMP).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SWAMP)).build()).mobSpawnSettings(mobSpawnSettings.build()).generationSettings(biomeGenerationSettings.build()).build();
     }
 
-    private static Biome beach(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
-        MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
-        BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder(placedFeatures, configuredWorldCarvers);
-        globalPrehistoricGeneration(biomeGenerationSettings);
-        BiomeDefaultFeatures.addDefaultOres(biomeGenerationSettings);
-        BiomeDefaultFeatures.addDefaultSoftDisks(biomeGenerationSettings);
-        BiomeDefaultFeatures.addDefaultFlowers(biomeGenerationSettings);
-        BiomeDefaultFeatures.addDefaultGrass(biomeGenerationSettings);
-        BiomeDefaultFeatures.addDefaultMushrooms(biomeGenerationSettings);
-        BiomeDefaultFeatures.addDefaultExtraVegetation(biomeGenerationSettings);
-
-        return biome(true, 0.8F, 0.4F, 4159204, 329011, (Integer) null, (Integer) null, mobSpawnSettings, biomeGenerationSettings, NORMAL_MUSIC);
-    }
-
     public static void bootstrap(BootstrapContext<Biome> bootstrapContext) {
         HolderGetter<PlacedFeature> placedFeatures = bootstrapContext.lookup(Registries.PLACED_FEATURE);
         HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers = bootstrapContext.lookup(Registries.CONFIGURED_CARVER);
@@ -265,10 +237,8 @@ public final class FABiomes {
         bootstrapContext.register(FABiomes.PREHISTORIC_FOREST, FABiomes.forest(placedFeatures, configuredWorldCarvers));
         bootstrapContext.register(FABiomes.PREHISTORIC_DESERT, FABiomes.desert(placedFeatures, configuredWorldCarvers));
         bootstrapContext.register(FABiomes.PREHISTORIC_JUNGLE, FABiomes.jungle(placedFeatures, configuredWorldCarvers));
-        bootstrapContext.register(FABiomes.PREHISTORIC_RIVER, FABiomes.river(placedFeatures, configuredWorldCarvers));
         bootstrapContext.register(FABiomes.PREHISTORIC_TAIGA, FABiomes.taiga(placedFeatures, configuredWorldCarvers));
         bootstrapContext.register(FABiomes.PREHISTORIC_SWAMP, FABiomes.swamp(placedFeatures, configuredWorldCarvers));
-        bootstrapContext.register(FABiomes.PREHISTORIC_BEACH, FABiomes.beach(placedFeatures, configuredWorldCarvers));
         PrehistoricBiomes.bootstrap(bootstrapContext, placedFeatures, configuredWorldCarvers);
     }
 }

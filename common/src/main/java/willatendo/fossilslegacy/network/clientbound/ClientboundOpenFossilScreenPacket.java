@@ -17,17 +17,4 @@ public record ClientboundOpenFossilScreenPacket(int id, FossilRotations fossilRo
     public Type<? extends CustomPacketPayload> type() {
         return TYPE;
     }
-
-    // Forge Start
-
-    public void encode(FriendlyByteBuf friendlyByteBuf) {
-        friendlyByteBuf.writeInt(this.id());
-        FossilRotations.STREAM_CODEC_FROM_CODEC.encode(friendlyByteBuf, this.fossilRotations());
-        FossilPositions.STREAM_CODEC_FROM_CODEC.encode(friendlyByteBuf, this.fossilPositions());
-        friendlyByteBuf.writeUtf(this.fossilVariant());
-    }
-
-    public static ClientboundOpenFossilScreenPacket decode(FriendlyByteBuf friendlyByteBuf) {
-        return new ClientboundOpenFossilScreenPacket(friendlyByteBuf.readInt(), FossilRotations.STREAM_CODEC_FROM_CODEC.decode(friendlyByteBuf), FossilPositions.STREAM_CODEC_FROM_CODEC.decode(friendlyByteBuf), friendlyByteBuf.readUtf());
-    }
 }

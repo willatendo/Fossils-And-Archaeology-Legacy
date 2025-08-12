@@ -56,16 +56,25 @@ public final class PrehistoricBiomes {
         return FABiomes.biome(false, 1.0F, 0.0F, mobSpawnSettings, biomeGenerationSettings, FABiomes.NORMAL_MUSIC);
     }
 
-    private static Biome river(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
+    private static Biome river(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers, boolean hasPrecipitation, float temperature, float downfall) {
         MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
-        mobSpawnSettings.addSpawn(MobCategory.WATER_CREATURE, new MobSpawnSettings.SpawnerData(FAEntityTypes.FUTABASAURUS.get(), 1, 1, 3));
         BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder(placedFeatures, configuredWorldCarvers);
         FABiomes.globalPrehistoricGeneration(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultOres(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultSoftDisks(biomeGenerationSettings);
         biomeGenerationSettings.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_RIVER);
 
-        return FABiomes.biome(true, 0.5F, 0.5F, mobSpawnSettings, biomeGenerationSettings, FABiomes.NORMAL_MUSIC);
+        return FABiomes.biome(hasPrecipitation, temperature, downfall, mobSpawnSettings, biomeGenerationSettings, FABiomes.NORMAL_MUSIC);
+    }
+
+    private static Biome beach(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers, boolean hasPrecipitation, float temperature, float downfall) {
+        MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
+        BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder(placedFeatures, configuredWorldCarvers);
+        FABiomes.globalPrehistoricGeneration(biomeGenerationSettings);
+        BiomeDefaultFeatures.addDefaultOres(biomeGenerationSettings);
+        BiomeDefaultFeatures.addDefaultSoftDisks(biomeGenerationSettings);
+
+        return FABiomes.biome(hasPrecipitation, temperature, downfall, mobSpawnSettings, biomeGenerationSettings, FABiomes.NORMAL_MUSIC);
     }
 
     public static void bootstrap(BootstrapContext<Biome> bootstrapContext, HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> configuredWorldCarvers) {
@@ -73,6 +82,11 @@ public final class PrehistoricBiomes {
         bootstrapContext.register(FABiomes.ARID_FOREST, PrehistoricBiomes.aridPlains(placedFeatures, configuredWorldCarvers, true));
         bootstrapContext.register(FABiomes.COLD_DESERT, PrehistoricBiomes.coldDesert(placedFeatures, configuredWorldCarvers));
         bootstrapContext.register(FABiomes.RED_DESERT, PrehistoricBiomes.redDesert(placedFeatures, configuredWorldCarvers));
-
+        bootstrapContext.register(FABiomes.COLD_PREHISTORIC_RIVER, PrehistoricBiomes.river(placedFeatures, configuredWorldCarvers, true, 0.0F, 0.5F));
+        bootstrapContext.register(FABiomes.PREHISTORIC_RIVER, PrehistoricBiomes.river(placedFeatures, configuredWorldCarvers, true, 0.5F, 0.5F));
+        bootstrapContext.register(FABiomes.WARM_PREHISTORIC_RIVER, PrehistoricBiomes.river(placedFeatures, configuredWorldCarvers, false, 1.5F, 0.0F));
+        bootstrapContext.register(FABiomes.COLD_PREHISTORIC_BEACH, PrehistoricBiomes.beach(placedFeatures, configuredWorldCarvers, true, 0.25F, 0.5F));
+        bootstrapContext.register(FABiomes.PREHISTORIC_BEACH, PrehistoricBiomes.beach(placedFeatures, configuredWorldCarvers, true, 0.5F, 0.5F));
+        bootstrapContext.register(FABiomes.WARM_PREHISTORIC_BEACH, PrehistoricBiomes.beach(placedFeatures, configuredWorldCarvers, false, 1.5F, 0.0F));
     }
 }

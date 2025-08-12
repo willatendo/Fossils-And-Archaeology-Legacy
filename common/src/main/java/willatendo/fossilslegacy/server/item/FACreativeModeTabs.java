@@ -501,6 +501,7 @@ public final class FACreativeModeTabs {
         output.accept(FABlocks.COOKSONIA.get());
         output.accept(FABlocks.MACROTAENIOPTERIS.get());
         output.accept(FABlocks.DIPTERIS.get());
+        output.accept(FABlocks.ZAMITES_HEAD.get());
     }
 
     private static void addRails(CreativeModeTab.Output output) {

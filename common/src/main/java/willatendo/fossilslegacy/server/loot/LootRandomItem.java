@@ -54,7 +54,7 @@ public class LootRandomItem extends LootPoolSingletonContainer {
     }
 
     public static LootPoolSingletonContainer.Builder<?> randomItem(int randomRange, RandomItemEntry... randomItemEntries) {
-        return LootItem.simpleBuilder((i, j, list, list2) -> new LootRandomItem(randomRange, SimpleUtils.toList(randomItemEntries), i, j, list, list2));
+        return LootItem.simpleBuilder((i, j, list, list2) -> new LootRandomItem(randomRange, List.of(randomItemEntries), i, j, list, list2));
     }
 
     public record RandomItemEntry(Holder<Item> item, int hitFrom, int hitTo) {
