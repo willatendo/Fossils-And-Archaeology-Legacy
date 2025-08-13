@@ -11,10 +11,10 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.JukeboxSong;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
-public class FAJukeboxSongs {
-    public static final ResourceKey<JukeboxSong> TRIASSIC = create("triassic");
-    public static final ResourceKey<JukeboxSong> JURASSIC = create("jurassic");
-    public static final ResourceKey<JukeboxSong> CRETACEOUS = create("cretaceous");
+public final class FAJukeboxSongs {
+    public static final ResourceKey<JukeboxSong> TRIASSIC = FAJukeboxSongs.create("triassic");
+    public static final ResourceKey<JukeboxSong> JURASSIC = FAJukeboxSongs.create("jurassic");
+    public static final ResourceKey<JukeboxSong> CRETACEOUS = FAJukeboxSongs.create("cretaceous");
 
     private static ResourceKey<JukeboxSong> create(String name) {
         return ResourceKey.create(Registries.JUKEBOX_SONG, FAUtils.resource(name));

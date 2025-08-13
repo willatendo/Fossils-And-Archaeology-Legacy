@@ -5,7 +5,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.Block;
 import willatendo.fossilslegacy.server.block.blocks.*;
 import willatendo.fossilslegacy.server.utils.FAUtils;
-import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 public final class FABlockTypes {
@@ -55,5 +54,8 @@ public final class FABlockTypes {
         FABlockTypes.register("tall_horsetail", TallHorsetailBlock.CODEC);
         FABlockTypes.register("time_machine", TimeMachineBlock.CODEC);
         FABlockTypes.register("weathering_copper_llama_statue", WeatheringCopperLlamaStatueBlock.CODEC);
+        FABlockTypes.register("zamites_branch", ZamitesBranchBlock.CODEC);
+        FABlockTypes.register("zamites_head", ZamitesHeadBlock.CODEC);
+        FABlockTypes.register("zamites_log", ZamitesLogBlock.CODEC);
     }
 }

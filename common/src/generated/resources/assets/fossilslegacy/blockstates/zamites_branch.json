@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,part=1": {
+      "model": "fossilslegacy:block/zamites_branch_branch",
+      "y": 90
+    },
+    "facing=east,part=2": {
+      "model": "fossilslegacy:block/zamites_branch_branch_top",
+      "y": 90
+    },
+    "facing=north,part=1": {
+      "model": "fossilslegacy:block/zamites_branch_branch"
+    },
+    "facing=north,part=2": {
+      "model": "fossilslegacy:block/zamites_branch_branch_top"
+    },
+    "facing=south,part=1": {
+      "model": "fossilslegacy:block/zamites_branch_branch",
+      "y": 180
+    },
+    "facing=south,part=2": {
+      "model": "fossilslegacy:block/zamites_branch_branch_top",
+      "y": 180
+    },
+    "facing=west,part=1": {
+      "model": "fossilslegacy:block/zamites_branch_branch",
+      "y": 270
+    },
+    "facing=west,part=2": {
+      "model": "fossilslegacy:block/zamites_branch_branch_top",
+      "y": 270
+    }
+  }
+}

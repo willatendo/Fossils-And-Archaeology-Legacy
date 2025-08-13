@@ -12,6 +12,7 @@ import net.minecraft.world.level.material.PushReaction;
 import willatendo.fossilslegacy.server.block.blocks.SkullBlock;
 import willatendo.fossilslegacy.server.block.blocks.*;
 import willatendo.fossilslegacy.server.fluid.FAFluids;
+import willatendo.fossilslegacy.server.item.FAHeadTypes;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.BlockRegistry;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
@@ -134,9 +135,11 @@ public final class FABlocks {
     public static final SimpleHolder<Block> PACHYPTERIS = BLOCKS.registerBlock("pachypteris", () -> BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ));
     public static final SimpleHolder<Block> PACHYPODIUM = BLOCKS.registerBlock("pachypodium", () -> BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ));
     public static final SimpleHolder<Block> WILLIAMSONIA = BLOCKS.registerBlock("williamsonia", () -> BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ));
-    public static final SimpleHolder<Block> ZAMITES_HEAD = BLOCKS.registerBlock("zamites_head", () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava().noOcclusion().randomTicks());
     public static final SimpleHolder<MacrotaeniopterisBlock> MACROTAENIOPTERIS = BLOCKS.registerBlock("macrotaeniopteris", MacrotaeniopterisBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ));
     public static final SimpleHolder<DipterisBlock> DIPTERIS = BLOCKS.registerBlock("dipteris", DipterisBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ));
+    public static final SimpleHolder<ZamitesHeadBlock> ZAMITES_HEAD = BLOCKS.registerBlock("zamites_head", ZamitesHeadBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava().noOcclusion().randomTicks());
+    public static final SimpleHolder<ZamitesLogBlock> ZAMITES_LOG = BLOCKS.registerBlock("zamites_log", ZamitesLogBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava());
+    public static final SimpleHolder<ZamitesBranchBlock> ZAMITES_BRANCH = BLOCKS.registerBlock("zamites_branch", ZamitesBranchBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava());
     public static final SimpleHolder<Block> LEPIDODENDRON_PLANKS = BLOCKS.registerBlock("lepidodendron_planks", () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN).instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava());
     public static final SimpleHolder<SaplingBlock> LEPIDODENDRON_SAPLING = BLOCKS.registerBlock("lepidodendron_sapling", properties -> new SaplingBlock(FATreeGrowers.LEPIDODENDRON, properties), () -> BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY));
     public static final SimpleHolder<RotatedPillarBlock> LEPIDODENDRON_LOG = BLOCKS.registerBlock("lepidodendron_log", RotatedPillarBlock::new, () -> FABlocks.logProperties(MapColor.TERRACOTTA_GREEN, MapColor.TERRACOTTA_BROWN));
@@ -318,6 +321,10 @@ public final class FABlocks {
     public static final SimpleHolder<ButtonBlock> WOLLEMIA_BUTTON = BLOCKS.registerBlock("wollemia_button", properties -> new ButtonBlock(FABlockSetTypes.WOLLEMIA, 30, properties), FABlocks::buttonProperties);
     public static final SimpleHolder<SlabBlock> WOLLEMIA_SLAB = BLOCKS.registerBlock("wollemia_slab", SlabBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN).instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava());
     public static final SimpleHolder<TarBlock> TAR = BLOCKS.registerBlock("tar", properties -> new TarBlock(FAFluids.TAR.get(), properties), () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).replaceable().noCollission().strength(100.0F).pushReaction(PushReaction.DESTROY).noLootTable().liquid().sound(SoundType.EMPTY));
+    public static final SimpleHolder<HeadBlock> ANKYLOSAURUS_HEAD = BLOCKS.registerBlock("ankylosaurus_head", properties -> new HeadBlock(FAHeadTypes.ANKYLOSAURUS, properties), () -> BlockBehaviour.Properties.of().strength(1.0F).pushReaction(PushReaction.DESTROY));
+    public static final SimpleHolder<WallHeadBlock> WALL_ANKYLOSAURUS_HEAD = BLOCKS.registerBlock("wall_ankylosaurus_head", properties -> new WallHeadBlock(FAHeadTypes.ANKYLOSAURUS, properties), () -> FABlocks.wallVariant(FABlocks.ANKYLOSAURUS_HEAD.get(), true).strength(1.0F).pushReaction(PushReaction.DESTROY));
+    public static final SimpleHolder<HeadBlock> BARYONYX_HEAD = BLOCKS.registerBlock("baryonyx_head", properties -> new HeadBlock(FAHeadTypes.BARYONYX, properties), () -> BlockBehaviour.Properties.of().strength(1.0F).pushReaction(PushReaction.DESTROY));
+    public static final SimpleHolder<WallHeadBlock> WALL_BARYONYX_HEAD = BLOCKS.registerBlock("wall_baryonyx_head", properties -> new WallHeadBlock(FAHeadTypes.BARYONYX, properties), () -> FABlocks.wallVariant(FABlocks.BARYONYX_HEAD.get(), true).strength(1.0F).pushReaction(PushReaction.DESTROY));
 
     public static BlockBehaviour.Properties flowerPotProperties() {
         return BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY);
@@ -345,5 +352,15 @@ public final class FABlocks {
 
     private static SimpleHolder<FossilsWallHangingSignBlock> registerWallHangingSign(String name, WoodType woodType, Supplier<? extends Block> block, Supplier<BlockBehaviour.Properties> properties) {
         return BLOCKS.registerBlock(name, propertiesIn -> new FossilsWallHangingSignBlock(woodType, propertiesIn), () -> properties.get().overrideLootTable(block.get().getLootTable()).overrideDescription(block.get().getDescriptionId()));
+    }
+
+
+    private static BlockBehaviour.Properties wallVariant(Block base, boolean overrideDescription) {
+        BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().overrideLootTable(base.getLootTable());
+        if (overrideDescription) {
+            properties = properties.overrideDescription(base.getDescriptionId());
+        }
+
+        return properties;
     }
 }

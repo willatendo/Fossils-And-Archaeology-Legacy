@@ -248,6 +248,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.MACROTAENIOPTERIS.get());
         this.add(FABlocks.DIPTERIS.get());
         this.add(FABlocks.ZAMITES_HEAD.get());
+        this.add(FABlocks.ZAMITES_LOG.get());
+        this.add(FABlocks.ZAMITES_BRANCH.get());
         this.add(FABlocks.LEPIDODENDRON_PLANKS.get());
         this.add(FABlocks.LEPIDODENDRON_SAPLING.get());
         this.add(FABlocks.LEPIDODENDRON_LOG.get());
@@ -401,6 +403,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.ARAUCARIOXYLON_FENCE_GATE.get());
         this.add(FABlocks.ARAUCARIOXYLON_BUTTON.get());
         this.add(FABlocks.ARAUCARIOXYLON_SLAB.get());
+        this.add(FABlocks.ANKYLOSAURUS_HEAD.get());
+        this.add(FABlocks.BARYONYX_HEAD.get());
+
         // Biomes
         this.add("biome.fossilslegacy.prehistoric_ocean", "Prehistoric Ocean");
         this.add("biome.fossilslegacy.deep_prehistoric_ocean", "Deep Prehistoric Ocean");
@@ -1829,6 +1834,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlockTags.TYRANNOSAURUS_SPAWNABLE, "Tyrannosaurus Spawnable");
         this.add(FABlockTags.TYRANNOSAURUS_UNBREAKABLES, "Tyrannosaurus Unbreakables");
         this.add(FABlockTags.VELOCIRAPTOR_SPAWNABLE, "Velociraptor Spawnable");
+        this.add(FABlockTags.ZAMITES_PLANTABLE_ON, "Zamites Plantable On");
 
         this.add(FAModelTypeTags.ANKYLOSAURUS, "Ankylosaurus");
         this.add(FAModelTypeTags.BARYONYX, "Baryonyx");

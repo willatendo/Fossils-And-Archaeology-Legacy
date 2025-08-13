@@ -68,7 +68,12 @@ public final class FAModelTemplates {
     public static final ExtendedModelTemplate TEMPLATE_LIQUID = FAModelTemplates.create(TextureSlot.PARTICLE).build();
     public static final ExtendedModelTemplate TEMPLATE_FROZEN_LEECH = FAModelTemplates.create("template_frozen_leech", TextureSlot.TEXTURE).build();
     public static final ExtendedModelTemplate TEMPLATE_RESTORATION_TABLE = FAModelTemplates.create("template_restoration_table", TextureSlot.TEXTURE).build();
-    public static final ExtendedModelTemplate TEMPLATE_ZAMITES_HEAD = FAModelTemplates.create("template_zamites_head", TextureSlot.SIDE, TextureSlot.TOP, FATextureSlot.LEAVES, FATextureSlot.HEAD).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_ZAMITES_HEAD = FAModelTemplates.create("template_zamites_head", TextureSlot.SIDE, TextureSlot.TOP, FATextureSlot.LEAVES).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_ZAMITES_LOG_BRANCH = FAModelTemplates.create("template_zamites_log_branch", TextureSlot.SIDE, TextureSlot.TOP).build();
+    public static final ExtendedModelTemplate TEMPLATE_ZAMITES_LOG_SMALL = FAModelTemplates.create("template_zamites_log_small", TextureSlot.SIDE, TextureSlot.TOP).build();
+    public static final ExtendedModelTemplate TEMPLATE_ZAMITES_LOG_LARGE = FAModelTemplates.create("template_zamites_log_large", TextureSlot.SIDE, TextureSlot.TOP).build();
+    public static final ExtendedModelTemplate TEMPLATE_ZAMITES_BRANCH = FAModelTemplates.create("template_zamites_branch", TextureSlot.SIDE, TextureSlot.TOP).build();
+    public static final ExtendedModelTemplate TEMPLATE_ZAMITES_BRANCH_TOP = FAModelTemplates.create("template_zamites_branch_top", TextureSlot.SIDE, TextureSlot.TOP, FATextureSlot.LEAVES).renderType("cutout").build();
 
     public static final ModelTemplate TEMPLATE_ARTICULATED_FOSSIL = FAModelTemplates.createItem("template_articulated_fossil", TextureSlot.PARTICLE);
     public static final ModelTemplate TEMPLATE_RIFLE = FAModelTemplates.createItem("template_rifle", TextureSlot.TEXTURE);

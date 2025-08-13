@@ -153,6 +153,8 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.add(FABlocks.MACROTAENIOPTERIS.get(), block -> this.createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
         this.dropSelf(FABlocks.DIPTERIS.get());
         this.dropSelf(FABlocks.ZAMITES_HEAD.get());
+        this.dropSelf(FABlocks.ZAMITES_LOG.get());
+        this.dropSelf(FABlocks.ZAMITES_BRANCH.get());
         this.dropSelf(FABlocks.LEPIDODENDRON_PLANKS.get());
         this.dropSelf(FABlocks.LEPIDODENDRON_SAPLING.get());
         this.dropSelf(FABlocks.LEPIDODENDRON_LOG.get());
@@ -315,6 +317,8 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.dropPottedContents(FABlocks.POTTED_WOLLEMIA_SAPLING.get());
         this.dropSelf(FABlocks.WOLLEMIA_BUTTON.get());
         this.add(FABlocks.WOLLEMIA_SLAB.get(), this::createSlabItemTable);
+        this.dropSelf(FABlocks.ANKYLOSAURUS_HEAD.get());
+        this.dropSelf(FABlocks.BARYONYX_HEAD.get());
     }
 
     protected LootTable.Builder createFossilOreLootTable(Block block, int randomRange, RandomItemEntry... randomItemEntries) {

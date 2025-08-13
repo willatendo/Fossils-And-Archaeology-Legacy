@@ -67,6 +67,7 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
     protected static final EntityDataAccessor<Optional<UUID>> OWNER = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.OPTIONAL_UUID);
     protected final GeneHolder geneHolder = new GeneHolder();
     protected int internalClock = 0;
+    private boolean isNatural = false;
 
     public Dinosaur(EntityType<? extends Dinosaur> entityType, Level level) {
         super(entityType, level);
@@ -82,6 +83,11 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
     public abstract Diet getDiet();
 
     public abstract float[] healthPerGrowthStage();
+
+    @Override
+    public boolean canSendMessage() {
+        return !this.isNatural;
+    }
 
     public void updateStatsOnGrowth(int growthStage) {
         this.updateAttributeValue(Attributes.MAX_HEALTH, this.healthPerGrowthStage()[growthStage]);
@@ -141,6 +147,9 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
         }
         this.refreshDimensions();
         this.setCommand(FACommandTypes.FREE_MOVE);
+        if (entitySpawnReason == EntitySpawnReason.NATURAL) {
+            this.isNatural = true;
+        }
         return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, entitySpawnReason, spawnGroupData);
     }
 
@@ -223,7 +232,7 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
                 this.setDaysAlive(this.getDaysAlive() + 1);
             }
 
-            if (this.level() instanceof ServerLevel serverLevel && serverLevel.getGameRules().getBoolean(FAGameRules.RULE_DOANIMALHUNGER)) {
+            if (this.level() instanceof ServerLevel serverLevel && serverLevel.getGameRules().getBoolean(FAGameRules.RULE_DOANIMALHUNGER) && !this.isNatural) {
                 if (this.level().getDifficulty() != Difficulty.PEACEFUL) {
                     if (this.internalClock % 300 == 0) {
                         this.decreaseHunger();
@@ -534,6 +543,7 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
         compoundTag.putInt("Hunger", this.getHunger());
         compoundTag.putInt("GrowthStage", this.getGrowthStage());
         compoundTag.putInt("InternalClock", this.internalClock);
+        compoundTag.putBoolean("natural", this.isNatural);
     }
 
     @Override
@@ -563,6 +573,7 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
         this.setHunger(compoundTag.getInt("Hunger"));
         this.setGrowthStage(compoundTag.getInt("GrowthStage"), false);
         this.internalClock = compoundTag.getInt("InternalClock");
+        this.isNatural = compoundTag.getBoolean("natural");
     }
 
     @Override

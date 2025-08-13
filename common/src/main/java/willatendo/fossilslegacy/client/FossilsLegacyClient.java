@@ -14,6 +14,8 @@ import net.minecraft.world.entity.animal.horse.Mule;
 import net.minecraft.world.item.crafting.RecipeMap;
 import willatendo.fossilslegacy.client.model.*;
 import willatendo.fossilslegacy.client.model.dinosaur.NautilusModel;
+import willatendo.fossilslegacy.client.model.dinosaur.head.AnkylosaursHeadModel;
+import willatendo.fossilslegacy.client.model.dinosaur.head.BaryonyxHeadModel;
 import willatendo.fossilslegacy.client.model.vehicle.JeepModel;
 import willatendo.fossilslegacy.client.particle.Particles;
 import willatendo.fossilslegacy.client.render.*;
@@ -50,7 +52,7 @@ public final class FossilsLegacyClient {
     }
 
     public static void blockColorRegistry(BlockColorRegistry blockColorRegistry) {
-        blockColorRegistry.registerLeavesColor(FABlocks.CYCAD_HEAD.get(), FABlocks.ZAMITES_HEAD.get(), FABlocks.ARCHAEOPTERIS_LEAVES.get(), FABlocks.CALAMITES_LEAVES.get(), FABlocks.LEPIDODENDRON_LEAVES.get(), FABlocks.SIGILLARIA_LEAVES.get(), FABlocks.JURASSIC_FERN.get(), FABlocks.SHORT_HORSETAIL.get(), FABlocks.TALL_HORSETAIL.get(), FABlocks.CLAYTOSMUNDA.get(), FABlocks.CYCADEOIDEA.get(), FABlocks.MACROTAENIOPTERIS.get(), FABlocks.DIPTERIS.get(), FABlocks.CORDAITES_LEAVES.get(), FABlocks.WOLLEMIA_LEAVES.get());
+        blockColorRegistry.registerLeavesColor(FABlocks.CYCAD_HEAD.get(), FABlocks.ZAMITES_HEAD.get(), FABlocks.ZAMITES_BRANCH.get(), FABlocks.ARCHAEOPTERIS_LEAVES.get(), FABlocks.CALAMITES_LEAVES.get(), FABlocks.LEPIDODENDRON_LEAVES.get(), FABlocks.SIGILLARIA_LEAVES.get(), FABlocks.JURASSIC_FERN.get(), FABlocks.SHORT_HORSETAIL.get(), FABlocks.TALL_HORSETAIL.get(), FABlocks.CLAYTOSMUNDA.get(), FABlocks.CYCADEOIDEA.get(), FABlocks.MACROTAENIOPTERIS.get(), FABlocks.DIPTERIS.get(), FABlocks.CORDAITES_LEAVES.get(), FABlocks.WOLLEMIA_LEAVES.get());
         blockColorRegistry.registerBlockColor((blockState, blockAndTintGetter, blockPos, tintIndex) -> 0xD8C12E, FABlocks.GINKGO_LEAVES.get());
         blockColorRegistry.registerBlockColor((blockState, blockAndTintGetter, blockPos, tintIndex) -> -10380959, FABlocks.ARAUCARIA_LEAVES.get(), FABlocks.ARAUCARIOXYLON_LEAVES.get());
     }
@@ -173,12 +175,14 @@ public final class FossilsLegacyClient {
         modelRegister.register(FABlockEntityTypes.DECORATION_POST.get(), DecorationPostRenderer::new);
         modelRegister.register(FABlockEntityTypes.FOSSILS_SIGN.get(), SignRenderer::new);
         modelRegister.register(FABlockEntityTypes.FOSSILS_HANGING_SIGN.get(), HangingSignRenderer::new);
+        modelRegister.register(FABlockEntityTypes.HEAD.get(), HeadBlockEntityRenderer::new);
         modelRegister.register(FABlockEntityTypes.TIME_MACHINE.get(), TimeMachineClockRenderer::new);
         modelRegister.register(FABlockEntityTypes.VASE.get(), VaseRenderer::new);
     }
 
     public static void specialModelsEvent(SpecialRendererRegistry specialRendererRegistry) {
         specialRendererRegistry.register(FAUtils.resource("articulated_fossil"), ArticulatedFossilSpecialRenderer.Unbaked.MAP_CODEC);
+        specialRendererRegistry.register(FAUtils.resource("head"), HeadSpecialRenderer.Unbaked.MAP_CODEC);
     }
 
     public static void modelLayerEvent(ModelLayerRegistry modelLayerRegister) {
@@ -212,6 +216,9 @@ public final class FossilsLegacyClient {
         modelLayerRegister.register(FAModelLayers.LEPIDODENDRON_CHEST_BOAT, () -> chestBoatModel);
         modelLayerRegister.register(FAModelLayers.SIGILLARIA_CHEST_BOAT, () -> chestBoatModel);
         modelLayerRegister.register(FAModelLayers.WOLLEMIA_CHEST_BOAT, () -> chestBoatModel);
+
+        modelLayerRegister.register(FAModelLayers.ANKYLOSAURUS_HEAD, AnkylosaursHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.BARYONYX_HEAD, BaryonyxHeadModel::createBodyLayer);
     }
 
     public static void menuScreenEvent(MenuScreenRegistry menuScreenRegister) {

@@ -11,12 +11,14 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import willatendo.fossilslegacy.client.model.HeadSpecialRenderer;
 import willatendo.fossilslegacy.data.FABlockFamilies;
 import willatendo.fossilslegacy.data.FAModelTemplates;
 import willatendo.fossilslegacy.data.FATextureSlot;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.block.blocks.*;
 import willatendo.fossilslegacy.server.block.properties.FABlockStateProperties;
+import willatendo.fossilslegacy.server.item.FAHeadTypes;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.data.model.SimpleBlockModelGenerator;
 
@@ -142,6 +144,8 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createMacrotaeniopteris(FABlocks.MACROTAENIOPTERIS.get());
         this.createDipteris(FABlocks.DIPTERIS.get());
         this.createZamitesHead(FABlocks.ZAMITES_HEAD.get());
+        this.createZamitesLog(FABlocks.ZAMITES_LOG.get());
+        this.createZamitesBranch(FABlocks.ZAMITES_BRANCH.get());
         this.blockModelGenerators.woodProvider(FABlocks.ARAUCARIA_LOG.get()).logWithHorizontal(FABlocks.ARAUCARIA_LOG.get()).wood(FABlocks.ARAUCARIA_WOOD.get());
         this.blockModelGenerators.woodProvider(FABlocks.STRIPPED_ARAUCARIA_LOG.get()).logWithHorizontal(FABlocks.STRIPPED_ARAUCARIA_LOG.get()).wood(FABlocks.STRIPPED_ARAUCARIA_WOOD.get());
         this.blockModelGenerators.createHangingSign(FABlocks.STRIPPED_ARAUCARIA_LOG.get(), FABlocks.ARAUCARIA_HANGING_SIGN.get(), FABlocks.ARAUCARIA_WALL_HANGING_SIGN.get());
@@ -188,10 +192,18 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createPlantWithDefaultItem(FABlocks.WOLLEMIA_SAPLING.get(), FABlocks.POTTED_WOLLEMIA_SAPLING.get(), SimpleBlockModelGenerator.PlantType.NOT_TINTED);
         this.blockModelGenerators.createTintedLeaves(FABlocks.WOLLEMIA_LEAVES.get(), TexturedModel.LEAVES, -10380959);
         this.block(MultiVariantGenerator.multiVariant(FABlocks.TAR.get(), Variant.variant().with(VariantProperties.MODEL, FAModelTemplates.TEMPLATE_LIQUID.create(FABlocks.TAR.get(), new TextureMapping().put(TextureSlot.PARTICLE, this.mcLocation("block/bedrock")), this.modelOutput))));
+        ResourceLocation templateSkull = this.modLocation("item/template_ankylosaurus_head");
+        this.createHead(FABlocks.ANKYLOSAURUS_HEAD.get(), FABlocks.WALL_ANKYLOSAURUS_HEAD.get(), FAHeadTypes.ANKYLOSAURUS, templateSkull);
+        this.createHead(FABlocks.BARYONYX_HEAD.get(), FABlocks.WALL_BARYONYX_HEAD.get(), FAHeadTypes.BARYONYX, templateSkull);
     }
 
     private ResourceLocation basic(Block block, ModelTemplate modelTemplate, TextureMapping textureMapping) {
         ResourceLocation model = modelTemplate.create(block, textureMapping, this.modelOutput);
+        this.block(BlockModelGenerators.createSimpleBlock(block, model));
+        return model;
+    }
+
+    private ResourceLocation basic(Block block, ResourceLocation model) {
         this.block(BlockModelGenerators.createSimpleBlock(block, model));
         return model;
     }
@@ -343,17 +355,52 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.blockModelGenerators.registerSimpleTintedItemModel(cycadHead, headCone, new GrassColorSource());
     }
 
-    private void createZamitesHead(Block zamitesHead) {
-        ResourceLocation model = this.basic(zamitesHead, FAModelTemplates.TEMPLATE_ZAMITES_HEAD, new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/cycad_log")).put(TextureSlot.TOP, this.modLocation("block/cycad_log_top_1")).put(FATextureSlot.HEAD, this.modLocation("block/cycad_head")).put(FATextureSlot.LEAVES, this.modLocation("block/cycad_leaves")));
-        this.blockModelGenerators.registerSimpleTintedItemModel(zamitesHead, model, new GrassColorSource());
-    }
-
     private void createCycadLog(Block cycadLog) {
         ResourceLocation model1 = FAModelTemplates.TEMPLATE_CYCAD_LOG_1.createWithSuffix(cycadLog, "_1", new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/cycad_log")).put(TextureSlot.TOP, this.modLocation("block/cycad_log_top_1")), this.modelOutput);
         ResourceLocation model2 = FAModelTemplates.TEMPLATE_CYCAD_LOG_2.createWithSuffix(cycadLog, "_2", new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/cycad_log")).put(TextureSlot.TOP, this.modLocation("block/cycad_log_top_2")), this.modelOutput);
         ResourceLocation model3 = FAModelTemplates.TEMPLATE_CYCAD_LOG_3.createWithSuffix(cycadLog, "_3", new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/cycad_log")).put(TextureSlot.TOP, this.modLocation("block/cycad_log_top_3")), this.modelOutput);
         this.block(MultiVariantGenerator.multiVariant(cycadLog, Variant.variant()).with(PropertyDispatch.property(CycadLogBlock.SIZE).select(1, Variant.variant().with(VariantProperties.MODEL, model1)).select(2, Variant.variant().with(VariantProperties.MODEL, model2)).select(3, Variant.variant().with(VariantProperties.MODEL, model3))));
         this.blockModelGenerators.registerSimpleItemModel(cycadLog, model3);
+    }
+
+    private void createZamitesHead(Block zamitesHead) {
+        ResourceLocation model = this.basic(zamitesHead, FAModelTemplates.TEMPLATE_ZAMITES_HEAD, new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/zamites_log")).put(TextureSlot.TOP, this.modLocation("block/zamites_log_top")).put(FATextureSlot.LEAVES, this.modLocation("block/zamites_leaves")));
+        this.blockModelGenerators.registerSimpleTintedItemModel(zamitesHead, model, new GrassColorSource());
+    }
+
+    private void createZamitesLog(Block zamitesLog) {
+        ResourceLocation logBranch = FAModelTemplates.TEMPLATE_ZAMITES_LOG_BRANCH.createWithSuffix(zamitesLog, "_branch", new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/zamites_log")).put(TextureSlot.TOP, this.modLocation("block/zamites_log_top")), this.modelOutput);
+        ResourceLocation logSmall = FAModelTemplates.TEMPLATE_ZAMITES_LOG_SMALL.createWithSuffix(zamitesLog, "_small", new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/zamites_log")).put(TextureSlot.TOP, this.modLocation("block/zamites_log_top")), this.modelOutput);
+        ResourceLocation logLarge = FAModelTemplates.TEMPLATE_ZAMITES_LOG_LARGE.createWithSuffix(zamitesLog, "_large", new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/zamites_log")).put(TextureSlot.TOP, this.modLocation("block/zamites_log_top_large")), this.modelOutput);
+        this.block(
+                MultiPartGenerator.multiPart(zamitesLog)
+                        .with(Condition.condition().term(ZamitesLogBlock.SIZE, 1), Variant.variant()
+                                .with(VariantProperties.MODEL, logSmall)
+                        )
+                        .with(Condition.condition().term(ZamitesLogBlock.SIZE, 2), Variant.variant()
+                                .with(VariantProperties.MODEL, logLarge)
+                        )
+                        .with(Condition.condition().term(ZamitesLogBlock.NORTH, true), Variant.variant()
+                                .with(VariantProperties.MODEL, logBranch)
+                        )
+                        .with(Condition.condition().term(ZamitesLogBlock.EAST, true), Variant.variant()
+                                .with(VariantProperties.MODEL, logBranch).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)
+                        )
+                        .with(Condition.condition().term(ZamitesLogBlock.SOUTH, true), Variant.variant()
+                                .with(VariantProperties.MODEL, logBranch).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180)
+                        )
+                        .with(Condition.condition().term(ZamitesLogBlock.WEST, true), Variant.variant()
+                                .with(VariantProperties.MODEL, logBranch).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)
+                        )
+        );
+        this.blockModelGenerators.registerSimpleItemModel(zamitesLog, logSmall);
+    }
+
+    private void createZamitesBranch(Block zamitesBranch) {
+        ResourceLocation logBranch = FAModelTemplates.TEMPLATE_ZAMITES_BRANCH.createWithSuffix(zamitesBranch, "_branch", new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/zamites_log")).put(TextureSlot.TOP, this.modLocation("block/zamites_log_top")), this.modelOutput);
+        ResourceLocation logBranchTop = FAModelTemplates.TEMPLATE_ZAMITES_BRANCH_TOP.createWithSuffix(zamitesBranch, "_branch_top", new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/zamites_log")).put(TextureSlot.TOP, this.modLocation("block/zamites_log_top")).put(FATextureSlot.LEAVES, this.modLocation("block/zamites_leaves")), this.modelOutput);
+        this.block(MultiVariantGenerator.multiVariant(zamitesBranch, Variant.variant()).with(PropertyDispatch.property(ZamitesBranchBlock.PART).select(1, Variant.variant().with(VariantProperties.MODEL, logBranch)).select(2, Variant.variant().with(VariantProperties.MODEL, logBranchTop))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
+        this.blockModelGenerators.registerSimpleTintedItemModel(zamitesBranch, logBranchTop, new GrassColorSource());
     }
 
     private void createCooksonia(Block cooksonia) {
@@ -435,5 +482,12 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
 
     private void createDecorationPost(Block decorationPost, Block concrete) {
         this.block(MultiVariantGenerator.multiVariant(decorationPost, Variant.variant().with(VariantProperties.MODEL, FAModelTemplates.TEMPLATE_DECORATION_PLAQUE_POST.create(decorationPost, new TextureMapping().put(FATextureSlot.POST, TextureMapping.getBlockTexture(concrete)), this.modelOutput))));
+    }
+
+    private void createHead(Block headBlock, Block wallHeadBlock, FAHeadTypes faHeadTypes, ResourceLocation modelLocation) {
+        ResourceLocation model = ModelLocationUtils.decorateBlockModelLocation("skull");
+        this.basic(headBlock, model);
+        this.basic(wallHeadBlock, model);
+        this.itemModelOutput.accept(headBlock.asItem(), ItemModelUtils.specialModel(modelLocation, new HeadSpecialRenderer.Unbaked(faHeadTypes)));
     }
 }

@@ -42,7 +42,7 @@ public class ArticulatedFossilSpecialRenderer implements NoDataSpecialModelRende
         }
     }
 
-    public static record Unbaked() implements SpecialModelRenderer.Unbaked {
+    public record Unbaked() implements SpecialModelRenderer.Unbaked {
         public static final MapCodec<ArticulatedFossilSpecialRenderer.Unbaked> MAP_CODEC = MapCodec.unit(new ArticulatedFossilSpecialRenderer.Unbaked());
 
         @Override

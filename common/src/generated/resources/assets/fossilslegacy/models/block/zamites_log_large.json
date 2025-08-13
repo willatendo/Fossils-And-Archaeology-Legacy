@@ -1,0 +1,7 @@
+{
+  "parent": "fossilslegacy:block/template_zamites_log_large",
+  "textures": {
+    "side": "fossilslegacy:block/zamites_log",
+    "top": "fossilslegacy:block/zamites_log_top_large"
+  }
+}

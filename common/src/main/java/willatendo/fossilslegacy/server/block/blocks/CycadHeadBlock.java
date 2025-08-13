@@ -14,16 +14,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -32,7 +30,9 @@ import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.tags.FABlockTags;
 
-public class CycadHeadBlock extends Block implements BonemealableBlock {
+import java.util.function.Function;
+
+public class CycadHeadBlock extends Block implements BonemealableBlock, TallPlantBlock {
     public static final MapCodec<CycadHeadBlock> CODEC = Block.simpleCodec(CycadHeadBlock::new);
     private static final VoxelShape SHAPE_CONE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 16.0D, 12.0D);
     private static final VoxelShape SHAPE_NO_CONE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 10.0D, 12.0D);
@@ -41,6 +41,26 @@ public class CycadHeadBlock extends Block implements BonemealableBlock {
     public CycadHeadBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.getStateDefinition().any().setValue(HAS_CONE, false));
+    }
+
+    @Override
+    public boolean featurePlace(WorldGenLevel worldGenLevel, BlockPos blockPos, int height, BlockState[] blockStates, Function<BlockPos, Boolean> canPlace) {
+        for (int i = 0; i < height; i++) {
+            BlockPos aboveBlockPos = blockPos.above(i);
+            if (!canPlace.apply(aboveBlockPos)) {
+                return false;
+            }
+        }
+        for (int i = 0; i < height; i++) {
+            BlockPos aboveBlockPos = blockPos.above(i);
+            worldGenLevel.setBlock(aboveBlockPos, blockStates[i], 2);
+        }
+        return true;
+    }
+
+    @Override
+    public IntegerProperty sizeProperty() {
+        return CycadLogBlock.SIZE;
     }
 
     @Override

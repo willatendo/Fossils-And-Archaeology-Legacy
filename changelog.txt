@@ -150,6 +150,8 @@
 - Pale Moss Block Can Be Used In Feeder
 - Pale Moss Carpet Can Be Used In Feeder
 - Pale Hanging Moss Can Be Used In Feeder
+- Naturally-Spawning Dinosaurs Don't Starve Anymore
+- Naturally-Spawning Dinosaurs Don't Send Messages Anymore
 - Added Archaeology Category For Analyzer Recipe Book
 - Added Palaeontology Category For Analyzer Recipe Book
 - Added Mosasaurus Skeleton
@@ -394,6 +396,9 @@
 - Added Triassic Music Disc
 - Added Jurassic Music Disc
 - Added Cretaceous Music Disc
+- Added Zamites Head
+- Added Zamites Log
+- Added Ankylosaurus Head
 27/2/2024 1.4.9
 - Fixed Tooth Dagger Not Shearing All Shearables
 - Fixed Mayan Vase Not Wobbling

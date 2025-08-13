@@ -236,6 +236,11 @@ public class TamedZombifiedPiglin extends ZombifiedPiglin implements OwnableEnti
         this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(Items.GOLDEN_HELMET));
     }
 
+    @Override
+    public boolean canSendMessage() {
+        return true;
+    }
+
     class FollowOwnerGoal extends Goal {
         private final TamedZombifiedPiglin tamable;
         private LivingEntity owner;

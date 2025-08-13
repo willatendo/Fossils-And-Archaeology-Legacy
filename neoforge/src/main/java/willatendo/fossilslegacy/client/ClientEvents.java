@@ -78,7 +78,7 @@ public class ClientEvents {
             public boolean areBreakingParticlesTinted(BlockState blockState, ClientLevel clientLevel, BlockPos blockPos) {
                 return false;
             }
-        }, FABlocks.CYCAD_HEAD.get(), FABlocks.ZAMITES_HEAD.get());
+        }, FABlocks.CYCAD_HEAD.get(), FABlocks.ZAMITES_HEAD.get(), FABlocks.ZAMITES_BRANCH.get());
         event.registerFluidType(new IClientFluidTypeExtensions() {
             @Override
             public ResourceLocation getStillTexture() {

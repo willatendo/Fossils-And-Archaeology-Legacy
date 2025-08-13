@@ -366,6 +366,11 @@ public class Anu extends Zombie implements SpeakingEntity {
         return 1.0F;
     }
 
+    @Override
+    public boolean canSendMessage() {
+        return true;
+    }
+
     public static class AnuShootFireballGoal extends Goal {
         private final Anu anu;
         public int chargeTime;

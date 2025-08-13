@@ -59,4 +59,5 @@ public class FABlockTags {
     public static final TagKey<Block> TYRANNOSAURUS_UNBREAKABLES = BLOCK_TAGS.register("unbreakable/tyrannosaurus");
     public static final TagKey<Block> VELOCIRAPTOR_SPAWNABLE = BLOCK_TAGS.register("spawnable/velociraptor");
     public static final TagKey<Block> WOLLEMIA_LOGS = BLOCK_TAGS.register("wollemia_logs");
+    public static final TagKey<Block> ZAMITES_PLANTABLE_ON = BLOCK_TAGS.register("zamites_plantable_on");
 }

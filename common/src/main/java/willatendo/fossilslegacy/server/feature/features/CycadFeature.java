@@ -8,7 +8,7 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import willatendo.fossilslegacy.server.block.blocks.CycadLogBlock;
+import willatendo.fossilslegacy.server.block.blocks.TallPlantBlock;
 import willatendo.fossilslegacy.server.feature.configurations.CycadConfiguration;
 
 public class CycadFeature extends Feature<CycadConfiguration> {
@@ -27,39 +27,19 @@ public class CycadFeature extends Feature<CycadConfiguration> {
         WorldGenLevel worldGenLevel = featurePlaceContext.level();
         CycadConfiguration cycadConfiguration = featurePlaceContext.config();
         int height = cycadConfiguration.height().sample(randomSource);
-        for (int i = 0; i < height - 1; i++) {
-            BlockPos aboveBlockPos = blockPos.above(i);
-            BlockState logBlockState = cycadConfiguration.log().getState(randomSource, aboveBlockPos);
-            if (height == 2) {
-                logBlockState = logBlockState.setValue(CycadLogBlock.SIZE, 2);
-            }
-            if (height == 3) {
-                if (i == 0) {
-                    logBlockState = logBlockState.setValue(CycadLogBlock.SIZE, 3);
-                } else if (i == 1) {
-                    logBlockState = logBlockState.setValue(CycadLogBlock.SIZE, 2);
+        BlockState head = cycadConfiguration.head().getState(randomSource, blockPos.above(height - 1));
+        BlockState log = cycadConfiguration.log().getState(randomSource, blockPos.above(height - 1));
+        if (head.getBlock() instanceof TallPlantBlock tallPlantBlock) {
+            BlockState[] blockState = new BlockState[height];
+            for (int i = 0; i < height; i++) {
+                if (i == height - 1) {
+                    blockState[i] = head;
+                } else {
+                    blockState[i] = log.setValue(tallPlantBlock.sizeProperty(), height - 1);
                 }
             }
-            if (height == 4) {
-                if (i == 0) {
-                    logBlockState = logBlockState.setValue(CycadLogBlock.SIZE, 3);
-                } else if (i == 1) {
-                    logBlockState = logBlockState.setValue(CycadLogBlock.SIZE, 2);
-                } else if (i == 2) {
-                    logBlockState = logBlockState.setValue(CycadLogBlock.SIZE, 1);
-                }
-            }
-            if (this.validTreePos(worldGenLevel, aboveBlockPos) && logBlockState.canSurvive(worldGenLevel, aboveBlockPos)) {
-                worldGenLevel.setBlock(aboveBlockPos, logBlockState, 2);
-            }
+            return tallPlantBlock.featurePlace(worldGenLevel, blockPos, height, blockState, blockPosIn -> this.validTreePos(worldGenLevel, blockPosIn));
         }
-        BlockPos aboveBlockPos = blockPos.above(height - 1);
-        BlockState headBlockState = cycadConfiguration.head().getState(randomSource, aboveBlockPos);
-        boolean placed = false;
-        if (this.validTreePos(worldGenLevel, aboveBlockPos) && headBlockState.canSurvive(worldGenLevel, aboveBlockPos)) {
-            worldGenLevel.setBlock(aboveBlockPos, headBlockState, 2);
-            placed = true;
-        }
-        return placed;
+        return false;
     }
 }

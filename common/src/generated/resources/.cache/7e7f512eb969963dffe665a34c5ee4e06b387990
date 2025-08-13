@@ -1,4 +1,4 @@
-// 1.21.4	2025-08-07T04:02:44.9477742	Tags for minecraft:block mod id fossilslegacy
+// 1.21.4	2025-08-12T09:26:49.6028071	Tags for minecraft:block mod id fossilslegacy
 8fed1c7774e26d293c99e32105efe5a57c3a9c50 data/fossilslegacy/tags/block/araucaria_logs.json
 d3b3dcbfa8e5eb6cceb6943194af15f55784acb5 data/fossilslegacy/tags/block/araucarioxylon_logs.json
 362a23698630e3353e7d1dc805d0198527d13961 data/fossilslegacy/tags/block/archaeopteris_logs.json
@@ -42,6 +42,7 @@ ff9b281b9a16648420ec54ace1183217c76bfa6c data/fossilslegacy/tags/block/spawnable
 7b64ecbd6f910336a3048eee60e5fbe365fe3f35 data/fossilslegacy/tags/block/unbreakable/spinosaurus.json
 7b64ecbd6f910336a3048eee60e5fbe365fe3f35 data/fossilslegacy/tags/block/unbreakable/tyrannosaurus.json
 b1f1001e32f447380a88ab813a7d61d4826533d9 data/fossilslegacy/tags/block/wollemia_logs.json
+69c396cb051bbe9a130e6979b67065e5041b179d data/fossilslegacy/tags/block/zamites_plantable_on.json
 57fe9124af5de4665b02ab20ef7879f32d8f2642 data/minecraft/tags/block/cauldrons.json
 47a71a82f73050ba5438ed796de5b5a91e8c878f data/minecraft/tags/block/ceiling_hanging_signs.json
 797196f5504d9af5bc7da7298bfd4afe793f7450 data/minecraft/tags/block/dragon_immune.json

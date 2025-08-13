@@ -1,0 +1,9 @@
+{
+  "parent": "fossilslegacy:block/template_zamites_branch_top",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "leaves": "fossilslegacy:block/zamites_leaves",
+    "side": "fossilslegacy:block/zamites_log",
+    "top": "fossilslegacy:block/zamites_log_top"
+  }
+}

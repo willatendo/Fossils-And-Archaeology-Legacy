@@ -1,0 +1,55 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "fossilslegacy:block/zamites_log_small"
+      },
+      "when": {
+        "size": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "fossilslegacy:block/zamites_log_large"
+      },
+      "when": {
+        "size": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "fossilslegacy:block/zamites_log_branch"
+      },
+      "when": {
+        "north": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "fossilslegacy:block/zamites_log_branch",
+        "y": 90
+      },
+      "when": {
+        "east": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "fossilslegacy:block/zamites_log_branch",
+        "y": 180
+      },
+      "when": {
+        "south": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "fossilslegacy:block/zamites_log_branch",
+        "y": 270
+      },
+      "when": {
+        "west": "true"
+      }
+    }
+  ]
+}

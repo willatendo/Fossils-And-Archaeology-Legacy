@@ -33,6 +33,9 @@ public final class FAModelLayers {
     public static final ModelLayerLocation WOLLEMIA_BOAT = FAModelLayers.create("boat/wollemia");
     public static final ModelLayerLocation WOLLEMIA_CHEST_BOAT = FAModelLayers.create("chest_boat/wollemia");
 
+    public static final ModelLayerLocation ANKYLOSAURUS_HEAD = FAModelLayers.create("ankylosaurus_head");
+    public static final ModelLayerLocation BARYONYX_HEAD = FAModelLayers.create("baryonyx_head");
+
     private static ModelLayerLocation create(String layerName) {
         return FAModelLayers.create(layerName, "main");
     }

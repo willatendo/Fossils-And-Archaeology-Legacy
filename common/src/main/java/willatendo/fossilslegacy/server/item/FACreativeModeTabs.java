@@ -111,6 +111,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.ANU_SPAWN_EGG.get());
         output.accept(FAItems.FAILURESAURUS_SPAWN_EGG.get());
         FACreativeModeTabs.addMusicDiscs(output);
+        FACreativeModeTabs.addHeads(output);
     }, List.of(), List.of("fa_archaeology", "fa_palaeontology", "fa_palaeobotany", "fa_building_blocks"));
 
     private static SimpleHolder<CreativeModeTab> register(String id, Supplier<ItemStack> icon, CreativeModeTab.DisplayItemsGenerator displayItemsGenerator, List<String> after, List<String> before) {
@@ -501,7 +502,9 @@ public final class FACreativeModeTabs {
         output.accept(FABlocks.COOKSONIA.get());
         output.accept(FABlocks.MACROTAENIOPTERIS.get());
         output.accept(FABlocks.DIPTERIS.get());
+        output.accept(FABlocks.ZAMITES_BRANCH.get());
         output.accept(FABlocks.ZAMITES_HEAD.get());
+        output.accept(FABlocks.ZAMITES_LOG.get());
     }
 
     private static void addRails(CreativeModeTab.Output output) {
@@ -743,6 +746,11 @@ public final class FACreativeModeTabs {
         output.accept(FABlocks.WOLLEMIA_HANGING_SIGN.get());
         output.accept(FAItems.WOLLEMIA_BOAT.get());
         output.accept(FAItems.WOLLEMIA_CHEST_BOAT.get());
+    }
+
+    private static void addHeads(CreativeModeTab.Output output) {
+        output.accept(FABlocks.ANKYLOSAURUS_HEAD.get());
+        output.accept(FABlocks.BARYONYX_HEAD.get());
     }
 
     private static void addMusicDiscs(CreativeModeTab.Output output) {
