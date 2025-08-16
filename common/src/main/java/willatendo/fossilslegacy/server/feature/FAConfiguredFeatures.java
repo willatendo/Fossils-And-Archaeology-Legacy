@@ -35,7 +35,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.block.blocks.HorsetailBlock;
-import willatendo.fossilslegacy.server.feature.configurations.CycadConfiguration;
+import willatendo.fossilslegacy.server.feature.configurations.TallPlantConfiguration;
 import willatendo.fossilslegacy.server.feature.foliageplacer.BranchedFoliagePlacer;
 import willatendo.fossilslegacy.server.feature.foliageplacer.GinkgoFoliagePlacer;
 import willatendo.fossilslegacy.server.feature.foliageplacer.LepidodendronFoliagePlacer;
@@ -48,47 +48,54 @@ import java.util.OptionalInt;
 
 public final class FAConfiguredFeatures {
     // Ores
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_CENOZOIC_FOSSIL = create("ore_cenozoic_fossil");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_MESOZOIC_FOSSIL = create("ore_mesozoic_fossil");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_PALAEOZOIC_FOSSIL = create("ore_palaeozoic_fossil");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_AMBER = create("ore_amber");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_PLANT_FOSSIL = create("ore_plant_fossil");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_RELIC = create("ore_relic");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_PERMAFROST = create("ore_permafrost");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_CENOZOIC_FOSSIL = FAConfiguredFeatures.create("ore_cenozoic_fossil");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_MESOZOIC_FOSSIL = FAConfiguredFeatures.create("ore_mesozoic_fossil");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_PALAEOZOIC_FOSSIL = FAConfiguredFeatures.create("ore_palaeozoic_fossil");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_AMBER = FAConfiguredFeatures.create("ore_amber");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_PLANT_FOSSIL = FAConfiguredFeatures.create("ore_plant_fossil");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_RELIC = FAConfiguredFeatures.create("ore_relic");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_PERMAFROST = FAConfiguredFeatures.create("ore_permafrost");
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CYCAD = create("cycad");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CYCAD_PATCH = create("cycad_patch");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FERN_PATCH = create("fern_patch");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SHORT_HORSETAIL_PATCH = create("short_horsetail_patch");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_HORSETAIL_PATCH = create("tall_horsetail_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CYCAD = FAConfiguredFeatures.create("cycad");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CYCAD_PATCH = FAConfiguredFeatures.create("cycad_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CYCADEOIDEA_PATCH = FAConfiguredFeatures.create("cycadeoidea_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FERN_PATCH = FAConfiguredFeatures.create("fern_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SHORT_HORSETAIL_PATCH = FAConfiguredFeatures.create("short_horsetail_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_HORSETAIL_PATCH = FAConfiguredFeatures.create("tall_horsetail_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> JURASSIC_FERN_PATCH = FAConfiguredFeatures.create("jurassic_fern_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LOTUS_PATCH = FAConfiguredFeatures.create("lotus_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MOSS_PATCH = FAConfiguredFeatures.create("moss_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SALVINIA_PATCH = FAConfiguredFeatures.create("salvinia_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ZAMITES = FAConfiguredFeatures.create("zamites");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ZAMITES_PATCH = FAConfiguredFeatures.create("zamites_patch");
 
     // Trees
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ARAUCARIA = create("araucaria");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ARAUCARIOXYLON = create("araucarioxylon");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ARCHAEOPTERIS = create("archaeopteris");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CALAMITES = create("calamites");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CORDAITES = create("cordaites");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MEGA_CORDAITES = create("mega_cordaites");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GINKGO = create("ginkgo");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LEPIDODENDRON = create("lepidodendron");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SIGILLARIA = create("sigillaria");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> WOLLEMIA = create("wollemia");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_MORRISON_FORMATION = create("trees_morrison_formation");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ARAUCARIA = FAConfiguredFeatures.create("araucaria");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ARAUCARIOXYLON = FAConfiguredFeatures.create("araucarioxylon");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ARCHAEOPTERIS = FAConfiguredFeatures.create("archaeopteris");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CALAMITES = FAConfiguredFeatures.create("calamites");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CORDAITES = FAConfiguredFeatures.create("cordaites");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MEGA_CORDAITES = FAConfiguredFeatures.create("mega_cordaites");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GINKGO = FAConfiguredFeatures.create("ginkgo");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LEPIDODENDRON = FAConfiguredFeatures.create("lepidodendron");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SIGILLARIA = FAConfiguredFeatures.create("sigillaria");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WOLLEMIA = FAConfiguredFeatures.create("wollemia");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_MORRISON_FORMATION = FAConfiguredFeatures.create("trees_morrison_formation");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_HELL_CREEK = FAConfiguredFeatures.create("trees_hell_creek");
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PREHISTORIC_OAK = create("prehistoric_oak");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PREHISTORIC_BIRCH = create("prehistoric_birch");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PREHISTORIC_FANCY_OAK = create("prehistoric_fancy_oak");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PREHISTORIC_SWAMP_OAK = create("prehistoric_swamp_oak");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PREHISTORIC_SPRUCE = create("prehistoric_spruce");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PREHISTORIC_PINE = create("prehistoric_pine");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PREHISTORIC_JUNGLE_TREE = create("prehistoric_jungle_tree");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MEGA_PREHISTORIC_JUNGLE_TREE = create("mega_prehistoric_jungle_tree");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_PREHISTORIC_PLAINS = create("trees_prehistoric_plains");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_PREHISTORIC_FOREST = create("trees_prehistoric_forest");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_PREHISTORIC_WATER = create("trees_prehistoric_water");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_PREHISTORIC_TAIGA = create("trees_prehistoric_taiga");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_PREHISTORIC_JUNGLE = create("trees_prehistoric_jungle");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PREHISTORIC_OAK = FAConfiguredFeatures.create("prehistoric_oak");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PREHISTORIC_BIRCH = FAConfiguredFeatures.create("prehistoric_birch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PREHISTORIC_FANCY_OAK = FAConfiguredFeatures.create("prehistoric_fancy_oak");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PREHISTORIC_SWAMP_OAK = FAConfiguredFeatures.create("prehistoric_swamp_oak");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PREHISTORIC_SPRUCE = FAConfiguredFeatures.create("prehistoric_spruce");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PREHISTORIC_PINE = FAConfiguredFeatures.create("prehistoric_pine");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PREHISTORIC_JUNGLE_TREE = FAConfiguredFeatures.create("prehistoric_jungle_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MEGA_PREHISTORIC_JUNGLE_TREE = FAConfiguredFeatures.create("mega_prehistoric_jungle_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_PREHISTORIC_PLAINS = FAConfiguredFeatures.create("trees_prehistoric_plains");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_PREHISTORIC_FOREST = FAConfiguredFeatures.create("trees_prehistoric_forest");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_PREHISTORIC_WATER = FAConfiguredFeatures.create("trees_prehistoric_water");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_PREHISTORIC_TAIGA = FAConfiguredFeatures.create("trees_prehistoric_taiga");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_PREHISTORIC_JUNGLE = FAConfiguredFeatures.create("trees_prehistoric_jungle");
 
     public static ResourceKey<ConfiguredFeature<?, ?>> create(String name) {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, FAUtils.resource(name));
@@ -165,9 +172,10 @@ public final class FAConfiguredFeatures {
         FeatureUtils.register(bootstrapContext, ORE_RELIC, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), FABlocks.RELIC_IN_STONE.get().defaultBlockState()), OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), FABlocks.RELIC_IN_DEEPSLATE.get().defaultBlockState())), 8, 0.0F));
         FeatureUtils.register(bootstrapContext, ORE_PERMAFROST, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), FABlocks.PERMAFROST.get().defaultBlockState())), 8, 0.0F));
 
-        // Cycads
-        FeatureUtils.register(bootstrapContext, CYCAD, FAFeatures.CYCAD.get(), new CycadConfiguration(BlockStateProvider.simple(FABlocks.CYCAD_HEAD.get()), BlockStateProvider.simple(FABlocks.CYCAD_LOG.get()), UniformInt.of(1, 4)));
+        // Patches
+        FeatureUtils.register(bootstrapContext, CYCAD, FAFeatures.TALL_PLANT.get(), new TallPlantConfiguration(BlockStateProvider.simple(FABlocks.CYCAD_HEAD.get()), BlockStateProvider.simple(FABlocks.CYCAD_LOG.get()), UniformInt.of(1, 4)));
         FeatureUtils.register(bootstrapContext, CYCAD_PATCH, Feature.RANDOM_PATCH, new RandomPatchConfiguration(10, 12, 3, placedFeature.getOrThrow(FAPlacedFeatures.CYCAD_CHECKED)));
+        FeatureUtils.register(bootstrapContext, CYCADEOIDEA_PATCH, Feature.FLOWER, new RandomPatchConfiguration(40, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(FABlocks.CYCADEOIDEA.get())))));
         FeatureUtils.register(bootstrapContext, FERN_PATCH, Feature.FLOWER, new RandomPatchConfiguration(40, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.FERN)))));
         SimpleWeightedRandomList.Builder<BlockState> shortHorsetails = SimpleWeightedRandomList.builder();
         for (int i = 1; i <= 3; ++i) {
@@ -184,6 +192,11 @@ public final class FAConfiguredFeatures {
         }
         FeatureUtils.register(bootstrapContext, TALL_HORSETAIL_PATCH, Feature.FLOWER, new RandomPatchConfiguration(30, 6, 2, PlacementUtils.onlyWhenEmpty(FAFeatures.FA_SIMPLE_BLOCK.get(), new SimpleBlockConfiguration(new WeightedStateProvider(tallHorsetails)))));
         FeatureUtils.register(bootstrapContext, JURASSIC_FERN_PATCH, FAFeatures.JURASSIC_FERN.get());
+        FeatureUtils.register(bootstrapContext, LOTUS_PATCH, Feature.RANDOM_PATCH, new RandomPatchConfiguration(60, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(FABlocks.LOTUS.get())))));
+        FeatureUtils.register(bootstrapContext, MOSS_PATCH, Feature.FLOWER, new RandomPatchConfiguration(20, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.MOSS_CARPET)))));
+        FeatureUtils.register(bootstrapContext, SALVINIA_PATCH, Feature.RANDOM_PATCH, new RandomPatchConfiguration(60, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(FABlocks.SALVINIA.get())))));
+        FeatureUtils.register(bootstrapContext, ZAMITES, FAFeatures.TALL_PLANT.get(), new TallPlantConfiguration(BlockStateProvider.simple(FABlocks.ZAMITES_HEAD.get()), BlockStateProvider.simple(FABlocks.ZAMITES_LOG.get()), UniformInt.of(1, 3)));
+        FeatureUtils.register(bootstrapContext, ZAMITES_PATCH, Feature.RANDOM_PATCH, new RandomPatchConfiguration(10, 12, 3, placedFeature.getOrThrow(FAPlacedFeatures.ZAMITES_CHECKED)));
 
         // Trees
         FeatureUtils.register(bootstrapContext, ARAUCARIA, Feature.TREE, FAConfiguredFeatures.createAraucaria().build());
@@ -198,6 +211,7 @@ public final class FAConfiguredFeatures {
         FeatureUtils.register(bootstrapContext, WOLLEMIA, Feature.TREE, FAConfiguredFeatures.createWollemia().build());
 
         FeatureUtils.register(bootstrapContext, TREES_MORRISON_FORMATION, Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(placedFeature.getOrThrow(FAPlacedFeatures.ARAUCARIA_CHECKED), 0.8F)), placedFeature.getOrThrow(FAPlacedFeatures.GINKGO_CHECKED)));
+        FeatureUtils.register(bootstrapContext, TREES_HELL_CREEK, Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(placedFeature.getOrThrow(FAPlacedFeatures.ARAUCARIA_CHECKED), 0.5F), new WeightedPlacedFeature(placedFeature.getOrThrow(FAPlacedFeatures.GINKGO_CHECKED), 0.1F)), placedFeature.getOrThrow(FAPlacedFeatures.WOLLEMIA_CHECKED)));
 
         FeatureUtils.register(bootstrapContext, PREHISTORIC_OAK, Feature.TREE, createPrehistoricOak().build());
         FeatureUtils.register(bootstrapContext, PREHISTORIC_BIRCH, Feature.TREE, createPrehistoricBirch().build());

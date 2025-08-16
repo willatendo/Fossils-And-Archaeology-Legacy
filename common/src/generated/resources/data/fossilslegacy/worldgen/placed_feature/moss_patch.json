@@ -1,0 +1,14 @@
+{
+  "feature": "fossilslegacy:moss_patch",
+  "placement": [
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "minecraft:moss_carpet"
+        }
+      }
+    }
+  ]
+}

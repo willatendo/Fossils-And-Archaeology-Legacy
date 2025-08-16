@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "fossilslegacy:block/metasequoia_slab"
+    },
+    "type=double": {
+      "model": "fossilslegacy:block/metasequoia_planks"
+    },
+    "type=top": {
+      "model": "fossilslegacy:block/metasequoia_slab_top"
+    }
+  }
+}

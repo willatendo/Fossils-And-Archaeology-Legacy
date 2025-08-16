@@ -60,7 +60,7 @@ public final class FossilsLegacyMod {
         simpleRegistryRegister.register(FATrunkPlacerTypes.TRUNK_PLACER_TYPES);
         simpleRegistryRegister.register(FAFoliagePlacerTypes.FOLIAGE_PLACER_TYPES);
         simpleRegistryRegister.register(FAFluids.FLUIDS);
-        simpleRegistryRegister.register(FABlocks.BLOCKS);
+        simpleRegistryRegister.register(FABlocks.BLOCKS.blockRegistry());
         simpleRegistryRegister.register(FABlockTypes.BLOCK_TYPES);
         simpleRegistryRegister.register(FAFeatures.FEATURES);
         simpleRegistryRegister.register(FABlockEntityTypes.BLOCK_ENTITY_TYPES);
@@ -78,7 +78,7 @@ public final class FossilsLegacyMod {
         simpleRegistryRegister.register(FATextureTypes.TEXTURE_TYPES);
         simpleRegistryRegister.register(FAMapDecorationTypes.MAP_DECORATION_TYPE);
         simpleRegistryRegister.register(FAGenes.GENES);
-        simpleRegistryRegister.register(FAItems.ITEMS);
+        simpleRegistryRegister.register(FAItems.ITEMS.itemRegistry());
         simpleRegistryRegister.register(FACreativeModeTabs.CREATIVE_MODE_TABS);
         simpleRegistryRegister.register(FALootPoolEntryTypes.LOOT_POOL_ENTRY_TYPES);
         simpleRegistryRegister.register(FARuleTestTypes.RULE_TEST_TYPES);

@@ -1,5 +1,5 @@
 {
-  "type": "fossilslegacy:cycad",
+  "type": "fossilslegacy:tall_plant",
   "config": {
     "head": {
       "type": "minecraft:simple_state_provider",

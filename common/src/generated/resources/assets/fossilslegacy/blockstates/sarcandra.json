@@ -1,0 +1,17 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "fossilslegacy:block/sarcandra"
+      }
+    },
+    {
+      "apply": {
+        "model": "fossilslegacy:block/sarcandra_berries"
+      },
+      "when": {
+        "has_berries": "true"
+      }
+    }
+  ]
+}

@@ -42,6 +42,7 @@ public class FABlockTags {
     public static final TagKey<Block> LLAMA_STATUES = BLOCK_TAGS.register("llama_statues");
     public static final TagKey<Block> LEPIDODENDRON_LOGS = BLOCK_TAGS.register("lepidodendron_logs");
     public static final TagKey<Block> MAMMOTH_SPAWNABLE = BLOCK_TAGS.register("spawnable/mammoth");
+    public static final TagKey<Block> METASEQUOIA_LOGS = BLOCK_TAGS.register("metasequoia_logs");
     public static final TagKey<Block> MINEABLE_WITH_ANCIENT_HOE = BLOCK_TAGS.register("mineable/ancient_hoe");
     public static final TagKey<Block> MOA_SPAWNABLE = BLOCK_TAGS.register("spawnable/moa");
     public static final TagKey<Block> NEEDS_SCARAB_GEM_TOOL = BLOCK_TAGS.register("needs_scarab_gem_tool");

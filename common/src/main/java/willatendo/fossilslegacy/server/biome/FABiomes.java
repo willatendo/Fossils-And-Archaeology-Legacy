@@ -34,6 +34,8 @@ public final class FABiomes {
     // Based on Morrison Formation
     public static final ResourceKey<Biome> ARID_PLAINS = FABiomes.register("arid_plains");
     public static final ResourceKey<Biome> ARID_FOREST = FABiomes.register("arid_forest");
+    // Based On Hell Creek Formation
+    public static final ResourceKey<Biome> RAINY_FLOODPLAINS = FABiomes.register("rainy_floodplains");
     // Based on Djadochta Formation
     public static final ResourceKey<Biome> COLD_DESERT = register("cold_desert");
     // Based on Flaming Cliffs

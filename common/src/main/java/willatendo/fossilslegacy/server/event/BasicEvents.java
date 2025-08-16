@@ -62,6 +62,7 @@ import willatendo.fossilslegacy.server.level.FALevels;
 import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 import willatendo.fossilslegacy.server.pattern.texture.Texture;
+import willatendo.fossilslegacy.server.registry.FABlockRegistry;
 import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.stats.FAStats;
@@ -193,36 +194,18 @@ public final class BasicEvents {
         FlammablesModification.register(FABlocks.STRIPPED_GINKGO_WOOD.get(), 5, 5);
         FlammablesModification.register(FABlocks.GINKGO_WOOD.get(), 5, 5);
         FlammablesModification.register(FABlocks.GINKGO_LEAVES.get(), 30, 60);
-        FlammablesModification.register(FABlocks.LEPIDODENDRON_PLANKS.get(), 5, 20);
-        FlammablesModification.register(FABlocks.LEPIDODENDRON_SLAB.get(), 5, 20);
-        FlammablesModification.register(FABlocks.LEPIDODENDRON_FENCE_GATE.get(), 5, 20);
-        FlammablesModification.register(FABlocks.LEPIDODENDRON_FENCE.get(), 5, 20);
-        FlammablesModification.register(FABlocks.LEPIDODENDRON_STAIRS.get(), 5, 20);
-        FlammablesModification.register(FABlocks.LEPIDODENDRON_LOG.get(), 5, 5);
-        FlammablesModification.register(FABlocks.STRIPPED_LEPIDODENDRON_LOG.get(), 5, 5);
-        FlammablesModification.register(FABlocks.STRIPPED_LEPIDODENDRON_WOOD.get(), 5, 5);
-        FlammablesModification.register(FABlocks.LEPIDODENDRON_WOOD.get(), 5, 5);
-        FlammablesModification.register(FABlocks.LEPIDODENDRON_LEAVES.get(), 30, 60);
-        FlammablesModification.register(FABlocks.SIGILLARIA_PLANKS.get(), 5, 20);
-        FlammablesModification.register(FABlocks.SIGILLARIA_SLAB.get(), 5, 20);
-        FlammablesModification.register(FABlocks.SIGILLARIA_FENCE_GATE.get(), 5, 20);
-        FlammablesModification.register(FABlocks.SIGILLARIA_FENCE.get(), 5, 20);
-        FlammablesModification.register(FABlocks.SIGILLARIA_STAIRS.get(), 5, 20);
-        FlammablesModification.register(FABlocks.SIGILLARIA_LOG.get(), 5, 5);
-        FlammablesModification.register(FABlocks.STRIPPED_SIGILLARIA_LOG.get(), 5, 5);
-        FlammablesModification.register(FABlocks.STRIPPED_SIGILLARIA_WOOD.get(), 5, 5);
-        FlammablesModification.register(FABlocks.SIGILLARIA_WOOD.get(), 5, 5);
-        FlammablesModification.register(FABlocks.SIGILLARIA_LEAVES.get(), 30, 60);
-        FlammablesModification.register(FABlocks.WOLLEMIA_PLANKS.get(), 5, 20);
-        FlammablesModification.register(FABlocks.WOLLEMIA_SLAB.get(), 5, 20);
-        FlammablesModification.register(FABlocks.WOLLEMIA_FENCE_GATE.get(), 5, 20);
-        FlammablesModification.register(FABlocks.WOLLEMIA_FENCE.get(), 5, 20);
-        FlammablesModification.register(FABlocks.WOLLEMIA_STAIRS.get(), 5, 20);
-        FlammablesModification.register(FABlocks.WOLLEMIA_LOG.get(), 5, 5);
-        FlammablesModification.register(FABlocks.STRIPPED_WOLLEMIA_LOG.get(), 5, 5);
-        FlammablesModification.register(FABlocks.STRIPPED_WOLLEMIA_WOOD.get(), 5, 5);
-        FlammablesModification.register(FABlocks.WOLLEMIA_WOOD.get(), 5, 5);
-        FlammablesModification.register(FABlocks.WOLLEMIA_LEAVES.get(), 30, 60);
+        for (int i = 0; i < FABlockRegistry.woodSize(); i++) {
+            FlammablesModification.register(FABlockRegistry.getPlanks(i).get(), 5, 20);
+            FlammablesModification.register(FABlockRegistry.getSlab(i).get(), 5, 20);
+            FlammablesModification.register(FABlockRegistry.getFenceGate(i).get(), 5, 20);
+            FlammablesModification.register(FABlockRegistry.getFence(i).get(), 5, 20);
+            FlammablesModification.register(FABlockRegistry.getStairs(i).get(), 5, 20);
+            FlammablesModification.register(FABlockRegistry.getLog(i).get(), 5, 5);
+            FlammablesModification.register(FABlockRegistry.getStrippedLog(i).get(), 5, 5);
+            FlammablesModification.register(FABlockRegistry.getStrippedWood(i).get(), 5, 5);
+            FlammablesModification.register(FABlockRegistry.getWood(i).get(), 5, 5);
+            FlammablesModification.register(FABlockRegistry.getLeaves(i).get(), 30, 60);
+        }
 
         FAStats.STAT_FORMATTERS.forEach(Stats.CUSTOM::get);
     }
@@ -235,48 +218,30 @@ public final class BasicEvents {
         compostablesModification.add(FAItems.HORSETAIL_SPORE.get(), 0.35F);
         compostablesModification.add(FAItems.COOKSONIA_SPORES.get(), 0.35F);
         compostablesModification.add(FAItems.CLAYTOSMUNDA_SPORES.get(), 0.35F);
+        compostablesModification.add(FAItems.SARCANDRA_BERRIES.get(), 0.35F);
         compostablesModification.add(FAItems.CYCADEOIDEA_SEED.get(), 0.35F);
         compostablesModification.add(FAItems.CYCAD_CONE.get(), 0.35F);
-        compostablesModification.add(FABlocks.LEPIDODENDRON_LEAVES.get(), 0.3F);
-        compostablesModification.add(FABlocks.LEPIDODENDRON_SAPLING.get(), 0.3F);
         compostablesModification.add(FAItems.LEPIDODENDRON_CONE.get(), 0.35F);
-        compostablesModification.add(FABlocks.SIGILLARIA_LEAVES.get(), 0.3F);
-        compostablesModification.add(FABlocks.SIGILLARIA_SAPLING.get(), 0.3F);
         compostablesModification.add(FAItems.CALAMITES_SPORE.get(), 0.35F);
-        compostablesModification.add(FABlocks.CALAMITES_LEAVES.get(), 0.3F);
-        compostablesModification.add(FABlocks.CALAMITES_SAPLING.get(), 0.3F);
-        compostablesModification.add(FABlocks.ARCHAEOPTERIS_LEAVES.get(), 0.3F);
-        compostablesModification.add(FABlocks.ARCHAEOPTERIS_SAPLING.get(), 0.3F);
         compostablesModification.add(FAItems.ARCHAEOPTERIS_SPORE.get(), 0.35F);
-        compostablesModification.add(FABlocks.GINKGO_LEAVES.get(), 0.3F);
-        compostablesModification.add(FABlocks.GINKGO_SAPLING.get(), 0.3F);
         compostablesModification.add(FAItems.GINKGO_SEED.get(), 0.35F);
-        compostablesModification.add(FABlocks.ARAUCARIA_LEAVES.get(), 0.3F);
-        compostablesModification.add(FABlocks.ARAUCARIA_SAPLING.get(), 0.3F);
         compostablesModification.add(FAItems.ARAUCARIA_CONE.get(), 0.35F);
-        compostablesModification.add(FABlocks.ARAUCARIOXYLON_LEAVES.get(), 0.3F);
-        compostablesModification.add(FABlocks.ARAUCARIOXYLON_SAPLING.get(), 0.3F);
         //compostablesModification.add(FAItems.ARAUCARIOXYLON_CONE.get(), 0.35F);
-        compostablesModification.add(FABlocks.CORDAITES_LEAVES.get(), 0.3F);
-        compostablesModification.add(FABlocks.CORDAITES_SAPLING.get(), 0.3F);
         //compostablesModification.add(FAItems.CORDAITES_CONE.get(), 0.35F);
-        compostablesModification.add(FABlocks.WOLLEMIA_LEAVES.get(), 0.3F);
-        compostablesModification.add(FABlocks.WOLLEMIA_SAPLING.get(), 0.3F);
         //compostablesModification.add(FAItems.WOLLEMIA_CONE.get(), 0.35F);
+        //compostablesModification.add(FAItems.METASEQUOIA_CONE.get(), 0.35F);
+        for (int i = 0; i < FABlockRegistry.woodSize(); i++) {
+            compostablesModification.add(FABlockRegistry.getLeaves(i).get(), 0.3F);
+            compostablesModification.add(FABlockRegistry.getSapling(i).get(), 0.3F);
+        }
     }
 
     public static void strippablesSetup(StrippablesModification strippablesModification) {
         AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
-        strippablesModification.register(FABlocks.ARCHAEOPTERIS_LOG.get(), FABlocks.STRIPPED_ARCHAEOPTERIS_LOG.get());
-        strippablesModification.register(FABlocks.ARCHAEOPTERIS_WOOD.get(), FABlocks.STRIPPED_ARCHAEOPTERIS_WOOD.get());
-        strippablesModification.register(FABlocks.CALAMITES_LOG.get(), FABlocks.STRIPPED_CALAMITES_LOG.get());
-        strippablesModification.register(FABlocks.CALAMITES_WOOD.get(), FABlocks.STRIPPED_CALAMITES_WOOD.get());
-        strippablesModification.register(FABlocks.GINKGO_LOG.get(), FABlocks.STRIPPED_GINKGO_LOG.get());
-        strippablesModification.register(FABlocks.GINKGO_WOOD.get(), FABlocks.STRIPPED_GINKGO_WOOD.get());
-        strippablesModification.register(FABlocks.LEPIDODENDRON_LOG.get(), FABlocks.STRIPPED_LEPIDODENDRON_LOG.get());
-        strippablesModification.register(FABlocks.LEPIDODENDRON_WOOD.get(), FABlocks.STRIPPED_LEPIDODENDRON_WOOD.get());
-        strippablesModification.register(FABlocks.SIGILLARIA_LOG.get(), FABlocks.STRIPPED_SIGILLARIA_LOG.get());
-        strippablesModification.register(FABlocks.SIGILLARIA_WOOD.get(), FABlocks.STRIPPED_SIGILLARIA_WOOD.get());
+        for (int i = 0; i < FABlockRegistry.woodSize(); i++) {
+            strippablesModification.register(FABlockRegistry.getLog(i).get(), FABlockRegistry.getStrippedLog(i).get());
+            strippablesModification.register(FABlockRegistry.getWood(i).get(), FABlockRegistry.getStrippedWood(i).get());
+        }
     }
 
     public static void buildCreativeModeTabEvent(CreativeModeTabModification creativeModeTabModification) {

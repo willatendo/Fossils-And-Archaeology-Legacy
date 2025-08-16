@@ -433,7 +433,8 @@
                         "if_true": {
                           "type": "minecraft:biome",
                           "biome_is": [
-                            "fossilslegacy:prehistoric_swamp"
+                            "fossilslegacy:prehistoric_swamp",
+                            "fossilslegacy:rainy_floodplains"
                           ]
                         },
                         "then_run": {

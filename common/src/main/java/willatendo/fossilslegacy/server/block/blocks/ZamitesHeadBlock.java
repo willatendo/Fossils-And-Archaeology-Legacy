@@ -6,25 +6,61 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.tags.FABlockTags;
 
-public class ZamitesHeadBlock extends Block implements BonemealableBlock {
+import java.util.function.Function;
+
+public class ZamitesHeadBlock extends Block implements BonemealableBlock, TallPlantBlock {
     public static final MapCodec<ZamitesHeadBlock> CODEC = Block.simpleCodec(ZamitesHeadBlock::new);
     private static final VoxelShape SHAPE = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 9.0D, 11.0D);
 
     public ZamitesHeadBlock(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    public boolean featurePlace(WorldGenLevel worldGenLevel, RandomSource randomSource, BlockPos blockPos, int height, BlockState[] blockStates, Function<BlockPos, Boolean> canPlace) {
+        Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(randomSource);
+        for (int i = 0; i < height; i++) {
+            BlockPos aboveBlockPos = blockPos.above(i);
+            if (!canPlace.apply(aboveBlockPos)) {
+                return false;
+            }
+            if (height == 3 && i == 2) {
+                if (!canPlace.apply(aboveBlockPos.relative(direction)) || !canPlace.apply(aboveBlockPos.relative(direction).above())) {
+                    return false;
+                }
+            }
+        }
+        for (int i = 0; i < height; i++) {
+            BlockPos aboveBlockPos = blockPos.above(i);
+            if (height == 3 && i == 1) {
+                worldGenLevel.setBlock(aboveBlockPos.relative(direction), FABlocks.ZAMITES_BRANCH.get().defaultBlockState().setValue(ZamitesBranchBlock.HORIZONTAL_FACING, direction).setValue(ZamitesBranchBlock.PART, 1), 3);
+                worldGenLevel.setBlock(aboveBlockPos.relative(direction).above(), FABlocks.ZAMITES_BRANCH.get().defaultBlockState().setValue(ZamitesBranchBlock.HORIZONTAL_FACING, direction).setValue(ZamitesBranchBlock.PART, 2), 3);
+                blockStates[i] = blockStates[i].setValue(ZamitesLogBlock.NORTH, direction == Direction.NORTH).setValue(ZamitesLogBlock.EAST, direction == Direction.EAST).setValue(ZamitesLogBlock.SOUTH, direction == Direction.SOUTH).setValue(ZamitesLogBlock.WEST, direction == Direction.WEST);
+            }
+            worldGenLevel.setBlock(aboveBlockPos, blockStates[i], 2);
+        }
+        return true;
+    }
+
+    @Override
+    public IntegerProperty sizeProperty() {
+        return ZamitesLogBlock.SIZE;
+    }
+
+    @Override
+    public int[][] sizesPerHeight() {
+        return new int[][]{{}, {1}, {2, 1}};
     }
 
     @Override

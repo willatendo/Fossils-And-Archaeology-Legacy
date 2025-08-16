@@ -13,4 +13,5 @@ public final class FAFoods {
     public static final FoodProperties COOKED_BERRY_MEDLEY_BUCKET = new FoodProperties.Builder().nutrition(6).saturationModifier(0.5F).build();
     public static final FoodProperties CHICKEN_ESSENCE = new FoodProperties.Builder().nutrition(10).saturationModifier(0.0F).build();
     public static final FoodProperties ROMANTIC_CONCOCTION = new FoodProperties.Builder().nutrition(5).saturationModifier(0.2F).build();
+    public static final FoodProperties SARCANDRA_BERRIES = new FoodProperties.Builder().nutrition(2).saturationModifier(0.1F).build();
 }

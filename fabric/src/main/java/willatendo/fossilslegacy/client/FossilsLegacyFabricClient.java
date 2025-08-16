@@ -27,6 +27,7 @@ import willatendo.fossilslegacy.network.serverbound.ServerboundVehicleSinkPacket
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
 import willatendo.fossilslegacy.server.fluid.FAFluids;
+import willatendo.fossilslegacy.server.registry.FABlockRegistry;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.client.event.registry.*;
 
@@ -104,47 +105,27 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
             }
         });
 
+        for (int i = 0; i < FABlockRegistry.woodSize(); i++) {
+            BlockRenderLayerMap.INSTANCE.putBlock(FABlockRegistry.getSapling(i).get(), RenderType.cutout());
+            BlockRenderLayerMap.INSTANCE.putBlock(FABlockRegistry.getLeaves(i).get(), RenderType.cutout());
+            BlockRenderLayerMap.INSTANCE.putBlock(FABlockRegistry.getDoor(i).get(), RenderType.cutout());
+            BlockRenderLayerMap.INSTANCE.putBlock(FABlockRegistry.getTrapdoor(i).get(), RenderType.cutout());
+            BlockRenderLayerMap.INSTANCE.putBlock(FABlockRegistry.getPottedSapling(i).get(), RenderType.cutout());
+        }
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.JURASSIC_FERN.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.SHORT_HORSETAIL.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.TALL_HORSETAIL.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.AXOLOTLSPAWN.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.CYCAD_HEAD.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ZAMITES_HEAD.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.SALVINIA.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.LOTUS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.COOKSONIA.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.CLAYTOSMUNDA.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.CYCADEOIDEA.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.MACROTAENIOPTERIS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.DIPTERIS.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ARAUCARIA_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ARAUCARIA_LEAVES.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ARAUCARIA_DOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ARAUCARIA_TRAPDOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.POTTED_ARAUCARIA_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ARCHAEOPTERIS_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ARCHAEOPTERIS_LEAVES.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ARCHAEOPTERIS_DOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ARCHAEOPTERIS_TRAPDOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.POTTED_ARCHAEOPTERIS_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ARAUCARIOXYLON_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ARAUCARIOXYLON_LEAVES.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ARAUCARIOXYLON_DOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ARAUCARIOXYLON_TRAPDOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.POTTED_ARAUCARIOXYLON_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.GINKGO_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.GINKGO_LEAVES.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.GINKGO_DOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.GINKGO_TRAPDOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.POTTED_GINKGO_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.LEPIDODENDRON_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.LEPIDODENDRON_LEAVES.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.LEPIDODENDRON_DOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.LEPIDODENDRON_TRAPDOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.POTTED_LEPIDODENDRON_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.SIGILLARIA_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.SIGILLARIA_LEAVES.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.SIGILLARIA_DOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.SIGILLARIA_TRAPDOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.POTTED_SIGILLARIA_SAPLING.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.SARCANDRA.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.DNA_HYBRIDIZER.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.WHITE_CULTIVATOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.WHITE_SHATTERED_CULTIVATOR.get(), RenderType.translucent());
@@ -181,16 +162,6 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.STRAIGHT_TRACK.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.CORNER_TRACK.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.RAMP_TRACK.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.CORDAITES_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.CORDAITES_LEAVES.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.CORDAITES_DOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.CORDAITES_TRAPDOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.POTTED_CORDAITES_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.WOLLEMIA_SAPLING.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.WOLLEMIA_LEAVES.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.WOLLEMIA_DOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.WOLLEMIA_TRAPDOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.POTTED_WOLLEMIA_SAPLING.get(), RenderType.cutout());
 
         ParticleRenderEvents.ALLOW_BLOCK_DUST_TINT.register((blockState, clientLevel, blockPos) -> !blockState.is(FABlocks.CYCAD_HEAD.get()) && !blockState.is(FABlocks.ZAMITES_HEAD.get()) && !blockState.is(FABlocks.ZAMITES_BRANCH.get()));
 

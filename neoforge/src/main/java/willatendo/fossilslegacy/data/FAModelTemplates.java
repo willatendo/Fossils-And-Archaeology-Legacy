@@ -52,6 +52,8 @@ public final class FAModelTemplates {
     public static final ExtendedModelTemplate TEMPLATE_RAIL_RAMP_2 = FAModelTemplates.create("template_rail_ramp_2", TextureSlot.RAIL).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_RAIL_RAMP_3 = FAModelTemplates.create("template_rail_ramp_3", TextureSlot.RAIL).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_RAIL_RAMP_4 = FAModelTemplates.create("template_rail_ramp_4", TextureSlot.RAIL).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_LILY_PAD = FAModelTemplates.createMC("lily_pad", TextureSlot.TEXTURE).extend().renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_LOTUS = FAModelTemplates.create("template_lotus", TextureSlot.TEXTURE, FATextureSlot.FLOWER, FATextureSlot.STEM).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_SOUP_CAULDRON_1 = FAModelTemplates.create("template_soup_cauldron_1", TextureSlot.CONTENT).build();
     public static final ExtendedModelTemplate TEMPLATE_SOUP_CAULDRON_2 = FAModelTemplates.create("template_soup_cauldron_2", TextureSlot.CONTENT).build();
     public static final ExtendedModelTemplate TEMPLATE_SOUP_CAULDRON_3 = FAModelTemplates.create("template_soup_cauldron_3", TextureSlot.CONTENT).build();

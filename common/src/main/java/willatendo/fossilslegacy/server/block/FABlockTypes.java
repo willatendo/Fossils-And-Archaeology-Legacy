@@ -47,6 +47,7 @@ public final class FABlockTypes {
         FABlockTypes.register("ramp_track", RampTrackBlock.CODEC);
         FABlockTypes.register("raw_berry_medley_cauldron", RawBerryMedleyCauldronBlock.CODEC);
         FABlockTypes.register("raw_chicken_soup_cauldron", RawChickenSoupCauldronBlock.CODEC);
+        FABlockTypes.register("salvinia", SalviniaBlock.CODEC);
         FABlockTypes.register("shattered_cultivator", ShatteredCultivatorBlock.CODEC);
         FABlockTypes.register("skull", SkullBlock.CODEC);
         FABlockTypes.register("small_cage", SmallCageBlock.CODEC);

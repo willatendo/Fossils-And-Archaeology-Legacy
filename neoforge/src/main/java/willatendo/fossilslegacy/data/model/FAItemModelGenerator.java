@@ -71,6 +71,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.COOKSONIA_SPORES.get());
         this.generatedItem(FAItems.CLAYTOSMUNDA_SPORES.get());
         this.generatedItem(FAItems.LEPIDODENDRON_CONE.get());
+        this.generatedItem(FAItems.SARCANDRA_BERRIES.get());
         this.generatedItem(FAItems.SIGILLARIA_SPORE.get());
         this.generatedItem(FAItems.CALAMITES_SPORE.get());
         this.generatedItem(FAItems.ARCHAEOPTERIS_SPORE.get());
@@ -361,6 +362,8 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.CORDAITES_CHEST_BOAT.get());
         this.generatedItem(FAItems.WOLLEMIA_BOAT.get());
         this.generatedItem(FAItems.WOLLEMIA_CHEST_BOAT.get());
+        this.generatedItem(FAItems.METASEQUOIA_BOAT.get());
+        this.generatedItem(FAItems.METASEQUOIA_CHEST_BOAT.get());
 
         this.generatedItem(FAItems.OVERWORLD_COIN.get());
         this.generatedItem(FAItems.ICE_AGE_COIN.get());

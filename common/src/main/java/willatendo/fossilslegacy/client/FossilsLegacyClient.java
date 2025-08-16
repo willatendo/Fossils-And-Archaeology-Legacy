@@ -5,6 +5,7 @@ import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.*;
@@ -12,6 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.animal.horse.Donkey;
 import net.minecraft.world.entity.animal.horse.Mule;
 import net.minecraft.world.item.crafting.RecipeMap;
+import net.minecraft.world.level.GrassColor;
 import willatendo.fossilslegacy.client.model.*;
 import willatendo.fossilslegacy.client.model.dinosaur.NautilusModel;
 import willatendo.fossilslegacy.client.model.dinosaur.head.AnkylosaursHeadModel;
@@ -52,9 +54,10 @@ public final class FossilsLegacyClient {
     }
 
     public static void blockColorRegistry(BlockColorRegistry blockColorRegistry) {
-        blockColorRegistry.registerLeavesColor(FABlocks.CYCAD_HEAD.get(), FABlocks.ZAMITES_HEAD.get(), FABlocks.ZAMITES_BRANCH.get(), FABlocks.ARCHAEOPTERIS_LEAVES.get(), FABlocks.CALAMITES_LEAVES.get(), FABlocks.LEPIDODENDRON_LEAVES.get(), FABlocks.SIGILLARIA_LEAVES.get(), FABlocks.JURASSIC_FERN.get(), FABlocks.SHORT_HORSETAIL.get(), FABlocks.TALL_HORSETAIL.get(), FABlocks.CLAYTOSMUNDA.get(), FABlocks.CYCADEOIDEA.get(), FABlocks.MACROTAENIOPTERIS.get(), FABlocks.DIPTERIS.get(), FABlocks.CORDAITES_LEAVES.get(), FABlocks.WOLLEMIA_LEAVES.get());
+        blockColorRegistry.registerLeavesColor(FABlocks.ARCHAEOPTERIS_LEAVES.get(), FABlocks.CALAMITES_LEAVES.get(), FABlocks.LEPIDODENDRON_LEAVES.get(), FABlocks.SIGILLARIA_LEAVES.get(), FABlocks.CORDAITES_LEAVES.get(), FABlocks.WOLLEMIA_LEAVES.get(), FABlocks.METASEQUOIA_LEAVES.get());
         blockColorRegistry.registerBlockColor((blockState, blockAndTintGetter, blockPos, tintIndex) -> 0xD8C12E, FABlocks.GINKGO_LEAVES.get());
         blockColorRegistry.registerBlockColor((blockState, blockAndTintGetter, blockPos, tintIndex) -> -10380959, FABlocks.ARAUCARIA_LEAVES.get(), FABlocks.ARAUCARIOXYLON_LEAVES.get());
+        blockColorRegistry.registerBlockColor((blockState, blockAndTintGetter, blockPos, tintIndex) -> blockAndTintGetter != null && blockPos != null ? BiomeColors.getAverageGrassColor(blockAndTintGetter, blockPos) : GrassColor.getDefaultColor(), FABlocks.CYCAD_HEAD.get(), FABlocks.ZAMITES_HEAD.get(), FABlocks.ZAMITES_BRANCH.get(), FABlocks.JURASSIC_FERN.get(), FABlocks.SHORT_HORSETAIL.get(), FABlocks.TALL_HORSETAIL.get(), FABlocks.CLAYTOSMUNDA.get(), FABlocks.CYCADEOIDEA.get(), FABlocks.MACROTAENIOPTERIS.get(), FABlocks.DIPTERIS.get(), FABlocks.SALVINIA.get(), FABlocks.LOTUS.get(), FABlocks.SARCANDRA.get());
     }
 
     public static void keyMappingEvent(KeyMappingRegistry keyMappingRegister) {
@@ -158,6 +161,7 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.CORDAITES_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.CORDAITES_BOAT));
         modelRegister.register(FAEntityTypes.GINKGO_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.GINKGO_BOAT));
         modelRegister.register(FAEntityTypes.LEPIDODENDRON_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.LEPIDODENDRON_BOAT));
+        modelRegister.register(FAEntityTypes.METASEQUOIA_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.METASEQUOIA_BOAT));
         modelRegister.register(FAEntityTypes.SIGILLARIA_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.SIGILLARIA_BOAT));
         modelRegister.register(FAEntityTypes.WOLLEMIA_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.WOLLEMIA_BOAT));
         modelRegister.register(FAEntityTypes.ARAUCARIA_CHEST_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.ARAUCARIA_CHEST_BOAT));
@@ -167,6 +171,7 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.CORDAITES_CHEST_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.CORDAITES_CHEST_BOAT));
         modelRegister.register(FAEntityTypes.GINKGO_CHEST_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.GINKGO_CHEST_BOAT));
         modelRegister.register(FAEntityTypes.LEPIDODENDRON_CHEST_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.LEPIDODENDRON_CHEST_BOAT));
+        modelRegister.register(FAEntityTypes.METASEQUOIA_CHEST_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.METASEQUOIA_CHEST_BOAT));
         modelRegister.register(FAEntityTypes.SIGILLARIA_CHEST_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.SIGILLARIA_CHEST_BOAT));
         modelRegister.register(FAEntityTypes.WOLLEMIA_CHEST_BOAT.get(), context -> new BoatRenderer(context, FAModelLayers.WOLLEMIA_CHEST_BOAT));
 
@@ -205,6 +210,7 @@ public final class FossilsLegacyClient {
         modelLayerRegister.register(FAModelLayers.CORDAITES_BOAT, () -> boatModel);
         modelLayerRegister.register(FAModelLayers.GINKGO_BOAT, () -> boatModel);
         modelLayerRegister.register(FAModelLayers.LEPIDODENDRON_BOAT, () -> boatModel);
+        modelLayerRegister.register(FAModelLayers.METASEQUOIA_BOAT, () -> boatModel);
         modelLayerRegister.register(FAModelLayers.SIGILLARIA_BOAT, () -> boatModel);
         modelLayerRegister.register(FAModelLayers.WOLLEMIA_BOAT, () -> boatModel);
         modelLayerRegister.register(FAModelLayers.ARAUCARIA_CHEST_BOAT, () -> chestBoatModel);
@@ -214,6 +220,7 @@ public final class FossilsLegacyClient {
         modelLayerRegister.register(FAModelLayers.CORDAITES_CHEST_BOAT, () -> chestBoatModel);
         modelLayerRegister.register(FAModelLayers.GINKGO_CHEST_BOAT, () -> chestBoatModel);
         modelLayerRegister.register(FAModelLayers.LEPIDODENDRON_CHEST_BOAT, () -> chestBoatModel);
+        modelLayerRegister.register(FAModelLayers.METASEQUOIA_CHEST_BOAT, () -> chestBoatModel);
         modelLayerRegister.register(FAModelLayers.SIGILLARIA_CHEST_BOAT, () -> chestBoatModel);
         modelLayerRegister.register(FAModelLayers.WOLLEMIA_CHEST_BOAT, () -> chestBoatModel);
 

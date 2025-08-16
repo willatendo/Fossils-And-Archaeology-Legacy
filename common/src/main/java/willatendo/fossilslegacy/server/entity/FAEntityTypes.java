@@ -142,6 +142,8 @@ public final class FAEntityTypes {
     public static final SimpleHolder<EntityType<ChestBoat>> WOLLEMIA_CHEST_BOAT = FAEntityTypes.registerChestBoat("wollemia_chest_boat", FAItems.WOLLEMIA_CHEST_BOAT::get);
     public static final SimpleHolder<EntityType<Boat>> ARAUCARIOXYLON_BOAT = FAEntityTypes.registerBoat("araucarioxylon_boat", FAItems.ARAUCARIOXYLON_BOAT::get);
     public static final SimpleHolder<EntityType<ChestBoat>> ARAUCARIOXYLON_CHEST_BOAT = FAEntityTypes.registerChestBoat("araucarioxylon_chest_boat", FAItems.ARAUCARIOXYLON_CHEST_BOAT::get);
+    public static final SimpleHolder<EntityType<Boat>> METASEQUOIA_BOAT = FAEntityTypes.registerBoat("metasequoia_boat", FAItems.METASEQUOIA_BOAT::get);
+    public static final SimpleHolder<EntityType<ChestBoat>> METASEQUOIA_CHEST_BOAT = FAEntityTypes.registerChestBoat("metasequoia_chest_boat", FAItems.METASEQUOIA_CHEST_BOAT::get);
 
     private static SimpleHolder<EntityType<Jeep>> registerJeep(String id, Supplier<Item> item) {
         return ENTITY_TYPES.register(id, FAEntityTypes.<Jeep>simple((entityType, level) -> new Jeep(entityType, level, item), MobCategory.MISC, 2.0F, 2.0F).noLootTable());

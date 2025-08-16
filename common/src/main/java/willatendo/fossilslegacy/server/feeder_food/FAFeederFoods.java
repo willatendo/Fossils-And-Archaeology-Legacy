@@ -199,6 +199,7 @@ public final class FAFeederFoods {
         FAFeederFoods.register(bootstrapContext, FAItems.CYCAD_CONE.get(), 25, FeederFood.FillType.PLANT);
         FAFeederFoods.register(bootstrapContext, FAItems.COOKSONIA_SPORES.get(), 25, FeederFood.FillType.PLANT);
         FAFeederFoods.register(bootstrapContext, FAItems.CLAYTOSMUNDA_SPORES.get(), 25, FeederFood.FillType.PLANT);
+        FAFeederFoods.register(bootstrapContext, FAItems.SARCANDRA_BERRIES.get(), 25, FeederFood.FillType.PLANT);
         FAFeederFoods.register(bootstrapContext, FAItems.GINKGO_SEED.get(), 25, FeederFood.FillType.PLANT);
         FAFeederFoods.register(bootstrapContext, FAItems.HORSETAIL_SPORE.get(), 25, FeederFood.FillType.PLANT);
         FAFeederFoods.register(bootstrapContext, FAItems.JURASSIC_FERN_SPORES.get(), 25, FeederFood.FillType.PLANT);

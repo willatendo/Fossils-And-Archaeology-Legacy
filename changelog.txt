@@ -55,6 +55,7 @@
 - DNA No Longer Generates In Academies
 - Updated Permafrost Drops (30% Skull Block, 30% Frozen Meat, 20% Raw Beef, 20% Raw Porkchop)
 - Jurassic Ferns No Longer Drop Wheat Seeds, Sometimes Drops Jurassic Fern Spores
+- Some Plants Now Use Grass Colors
 - Updated Ankylosaurus Skeleton Texture
 - Updated Brachiosaurus Skeleton Texture
 - Updated Carnotaurus Skeleton Texture
@@ -152,6 +153,10 @@
 - Pale Hanging Moss Can Be Used In Feeder
 - Naturally-Spawning Dinosaurs Don't Starve Anymore
 - Naturally-Spawning Dinosaurs Don't Send Messages Anymore
+- Updated Lepidodendron Trapdoor Texture
+- Updated Lepidodendron Door Texture
+- Updated Calamites Trapdoor Texture
+- Updated Calamites Door Texture
 - Added Archaeology Category For Analyzer Recipe Book
 - Added Palaeontology Category For Analyzer Recipe Book
 - Added Mosasaurus Skeleton
@@ -399,6 +404,25 @@
 - Added Zamites Head
 - Added Zamites Log
 - Added Ankylosaurus Head
+- Added Metasequoia Planks
+- Added Metasequoia Log
+- Added Stripped Metasequoia Log
+- Added Metasequoia Wood
+- Added Stripped Metasequoia Wood
+- Added Metasequoia Leaves
+- Added Metasequoia Stairs
+- Added Metasequoia Sign
+- Added Metasequoia Door
+- Added Metasequoia Hanging Sign
+- Added Metasequoia Pressure Plate
+- Added Metasequoia Fence
+- Added Metasequoia Trapdoor
+- Added Metasequoia Fence Gate
+- Added Potted Metasequoia Sapling
+- Added Metasequoia Button
+- Added Metasequoia Slab
+- Added Metasequoia Boat
+- Added Metasequoia Boat with Chest
 27/2/2024 1.4.9
 - Fixed Tooth Dagger Not Shearing All Shearables
 - Fixed Mayan Vase Not Wobbling

@@ -10,6 +10,7 @@ public final class FABlockSetTypes {
     public static final BlockSetType CORDAITES = BlockSetType.register(new BlockSetType("cordaites"));
     public static final BlockSetType GINKGO = BlockSetType.register(new BlockSetType("gnikgo"));
     public static final BlockSetType LEPIDODENDRON = BlockSetType.register(new BlockSetType("lepidodendron"));
+    public static final BlockSetType METASEQUOIA = BlockSetType.register(new BlockSetType("metasequoia"));
     public static final BlockSetType SIGILLARIA = BlockSetType.register(new BlockSetType("sigillaria"));
     public static final BlockSetType WOLLEMIA = BlockSetType.register(new BlockSetType("wollemia"));
 }

@@ -1,0 +1,9 @@
+{
+  "parent": "fossilslegacy:block/template_lotus",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "flower": "fossilslegacy:block/lotus_flower",
+    "stem": "fossilslegacy:block/lotus_stem",
+    "texture": "fossilslegacy:block/lotus_leaves"
+  }
+}

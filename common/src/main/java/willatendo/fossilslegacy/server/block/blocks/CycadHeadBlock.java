@@ -44,7 +44,7 @@ public class CycadHeadBlock extends Block implements BonemealableBlock, TallPlan
     }
 
     @Override
-    public boolean featurePlace(WorldGenLevel worldGenLevel, BlockPos blockPos, int height, BlockState[] blockStates, Function<BlockPos, Boolean> canPlace) {
+    public boolean featurePlace(WorldGenLevel worldGenLevel, RandomSource randomSource, BlockPos blockPos, int height, BlockState[] blockStates, Function<BlockPos, Boolean> canPlace) {
         for (int i = 0; i < height; i++) {
             BlockPos aboveBlockPos = blockPos.above(i);
             if (!canPlace.apply(aboveBlockPos)) {
@@ -61,6 +61,11 @@ public class CycadHeadBlock extends Block implements BonemealableBlock, TallPlan
     @Override
     public IntegerProperty sizeProperty() {
         return CycadLogBlock.SIZE;
+    }
+
+    @Override
+    public int[][] sizesPerHeight() {
+        return new int[][]{{}, {2}, {3, 2}, {3, 2, 1}};
     }
 
     @Override

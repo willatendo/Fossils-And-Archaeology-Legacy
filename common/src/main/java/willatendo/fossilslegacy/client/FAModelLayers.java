@@ -22,6 +22,8 @@ public final class FAModelLayers {
     public static final ModelLayerLocation JEEP = FAModelLayers.create("jeep");
     public static final ModelLayerLocation LEPIDODENDRON_BOAT = FAModelLayers.create("boat/lepidodendron");
     public static final ModelLayerLocation LEPIDODENDRON_CHEST_BOAT = FAModelLayers.create("chest_boat/lepidodendron");
+    public static final ModelLayerLocation METASEQUOIA_BOAT = FAModelLayers.create("boat/metasequoia");
+    public static final ModelLayerLocation METASEQUOIA_CHEST_BOAT = FAModelLayers.create("chest_boat/metasequoia");
     public static final ModelLayerLocation NAUTILUS = FAModelLayers.create("nautilus");
     public static final ModelLayerLocation PLANT_EMBRYO = FAModelLayers.create("plant_embryo");
     public static final ModelLayerLocation REGULAR_EGG = FAModelLayers.create("regular_egg");

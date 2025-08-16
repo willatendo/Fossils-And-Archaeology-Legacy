@@ -15,6 +15,7 @@ public final class FAWoodTypes {
     public static final WoodType CORDAITES = register("cordaites", FABlockSetTypes.CORDAITES);
     public static final WoodType GINKGO = register("ginkgo", FABlockSetTypes.GINKGO);
     public static final WoodType LEPIDODENDRON = register("lepidodendron", FABlockSetTypes.LEPIDODENDRON);
+    public static final WoodType METASEQUOIA = register("metasequoia", FABlockSetTypes.METASEQUOIA);
     public static final WoodType SIGILLARIA = register("sigillaria", FABlockSetTypes.SIGILLARIA);
     public static final WoodType WOLLEMIA = register("wollemia", FABlockSetTypes.WOLLEMIA);
 

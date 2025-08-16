@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "fossilslegacy:block/lotus",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "fossilslegacy:block/lotus"
+    },
+    "facing=south": {
+      "model": "fossilslegacy:block/lotus",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "fossilslegacy:block/lotus",
+      "y": 270
+    }
+  }
+}

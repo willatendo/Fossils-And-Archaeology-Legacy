@@ -78,6 +78,9 @@
     "fossilslegacy:lepidodendron_sapling": {
       "chance": 0.3
     },
+    "fossilslegacy:sarcandra_berries": {
+      "chance": 0.35
+    },
     "fossilslegacy:short_horsetail": {
       "chance": 0.5
     },

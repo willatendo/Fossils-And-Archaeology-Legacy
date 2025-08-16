@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.server.tags;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.util.TagRegister;
 
@@ -47,6 +48,7 @@ public class FAItemTags {
     public static final TagKey<Item> LEPIDODENDRON_LOGS = ITEM_TAGS.register("lepidodendron_logs");
     public static final TagKey<Item> LLAMA_STATUES = ITEM_TAGS.register("llama_statues");
     public static final TagKey<Item> MAMMOTH_COMMANDABLES = ITEM_TAGS.register("commandable/mammoth");
+    public static final TagKey<Item> METASEQUOIA_LOGS = ITEM_TAGS.register("metasequoia_logs");
     public static final TagKey<Item> MESOZOIC_FOSSIL = ITEM_TAGS.register("mesozoic_fossil");
     public static final TagKey<Item> OMNIVORE_FOODS = ITEM_TAGS.register("omnivore_foods");
     public static final TagKey<Item> PACHYCEPHALOSAURUS_COMMANDABLES = ITEM_TAGS.register("commandable/pachycephalosaurus");

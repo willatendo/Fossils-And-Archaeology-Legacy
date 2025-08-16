@@ -1,4 +1,4 @@
-// 1.21.4	2025-08-07T04:02:44.9547757	F/A Recipes
+// 1.21.4	2025-08-13T16:10:18.6906932	F/A Recipes
 1338707fdaed8d1fba4efb30f42c8d461e296aab data/fossilslegacy/advancement/recipes/building_blocks/araucaria_planks.json
 5db4e734c77296e26a3f8f52f87e7bd6555aac60 data/fossilslegacy/advancement/recipes/building_blocks/araucaria_slab.json
 c560c2290e30f84997e810aafa8a5d057b03dd8c data/fossilslegacy/advancement/recipes/building_blocks/araucaria_stairs.json
@@ -313,6 +313,7 @@ ffb5456cce00aebdbd352664851a77c72d50f3dd data/fossilslegacy/advancement/recipes/
 2dc61f47285b29f0c9455890a3494661d2f814b9 data/fossilslegacy/advancement/recipes/misc/palaeozoic_fossil_outputs.json
 de6b4dd6280aaa19ed0afd179d1e728be2b5c093 data/fossilslegacy/advancement/recipes/misc/panda_embryo_syringe.json
 94dc3b2b218ad9c413c763f3b4ffb407156b7c9a data/fossilslegacy/advancement/recipes/misc/pig_embryo_syringe.json
+e3d673133cc577571f855a1d38cdf8f725004688 data/fossilslegacy/advancement/recipes/misc/pink_dye_from_lotus.json
 11af96e5e4fd5a86fff1a96fa41f9a21adda0a43 data/fossilslegacy/advancement/recipes/misc/plant_fossil_outputs.json
 ad17fc38a52c491ff51025ae7a6a210e73ace668 data/fossilslegacy/advancement/recipes/misc/polar_bear_embryo_syringe.json
 80440e75ca50339911b602f78afa423c0ff050b1 data/fossilslegacy/advancement/recipes/misc/porkchop_outputs.json
@@ -798,6 +799,7 @@ fe5dd016eae1be107c7a57b98787457645583167 data/fossilslegacy/recipe/palaeontology
 4d83e8490e1c8d8fe93b9352bb48774a7951e6c9 data/fossilslegacy/recipe/pink_cultivator.json
 0560fcb089b6c59982c7c719bc54ce8936c418e9 data/fossilslegacy/recipe/pink_cultivator_from_dyed_glass.json
 877bf6dd883e8eee1951f9dfb1425b1e3fb62e8f data/fossilslegacy/recipe/pink_decoration_plaque.json
+e8fa375009f3589fea045767f4b35805b84debc9 data/fossilslegacy/recipe/pink_dye_from_lotus.json
 3bb163aa9f21c4a68d4af9ef081ab6c23b6a7521 data/fossilslegacy/recipe/plant_fossil_outputs.json
 a3094ef1a8afc09a7c0650a7817168493fbffef9 data/fossilslegacy/recipe/polar_bear_embryo_syringe.json
 2220bfedd53f9f2586281688022e1814cb779b99 data/fossilslegacy/recipe/porkchop_outputs.json

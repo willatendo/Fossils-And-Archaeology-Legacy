@@ -1,9 +1,11 @@
 package willatendo.fossilslegacy.server.block.entity;
 
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.block.entity.entities.*;
+import willatendo.fossilslegacy.server.registry.FABlockRegistry;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
@@ -22,13 +24,10 @@ public class FABlockEntityTypes {
     public static final SimpleHolder<BlockEntityType<DNARecombinatorBlockEntity>> DNA_RECOMBINATOR = BLOCK_ENTITY_TYPES.register("dna_recombinator", () -> new BlockEntityType<>(DNARecombinatorBlockEntity::new, Set.of(FABlocks.DNA_RECOMBINATOR.get())));
     public static final SimpleHolder<BlockEntityType<ArchaeologyWorkbenchBlockEntity>> ARCHAEOLOGY_WORKBENCH = BLOCK_ENTITY_TYPES.register("archaeology_workbench", () -> new BlockEntityType<>(ArchaeologyWorkbenchBlockEntity::new, Set.of(FABlocks.ARCHAEOLOGY_WORKBENCH.get())));
     public static final SimpleHolder<BlockEntityType<FeederBlockEntity>> FEEDER = BLOCK_ENTITY_TYPES.register("feeder", () -> new BlockEntityType<>(FeederBlockEntity::new, Set.of(FABlocks.FEEDER.get())));
-    public static final SimpleHolder<BlockEntityType<HeadBlockEntity>> HEAD = BLOCK_ENTITY_TYPES.register("head", () -> new BlockEntityType<>(HeadBlockEntity::new, Set.of(
-            FABlocks.ANKYLOSAURUS_HEAD.get(), FABlocks.WALL_ANKYLOSAURUS_HEAD.get(),
-            FABlocks.BARYONYX_HEAD.get(), FABlocks.WALL_BARYONYX_HEAD.get()
-    )));
+    public static final SimpleHolder<BlockEntityType<HeadBlockEntity>> HEAD = BLOCK_ENTITY_TYPES.register("head", () -> new BlockEntityType<>(HeadBlockEntity::new, Set.of(FABlocks.ANKYLOSAURUS_HEAD.get(), FABlocks.WALL_ANKYLOSAURUS_HEAD.get(), FABlocks.BARYONYX_HEAD.get(), FABlocks.WALL_BARYONYX_HEAD.get())));
     public static final SimpleHolder<BlockEntityType<TimeMachineBlockEntity>> TIME_MACHINE = BLOCK_ENTITY_TYPES.register("time_machine", () -> new BlockEntityType<>(TimeMachineBlockEntity::new, Set.of(FABlocks.TIME_MACHINE.get())));
     public static final SimpleHolder<BlockEntityType<RawSoupBlockEntity>> RAW_SOUP = BLOCK_ENTITY_TYPES.register("raw_soup", () -> new BlockEntityType<>(RawSoupBlockEntity::new, Set.of(FABlocks.RAW_CHICKEN_SOUP_CAULDRON.get(), FABlocks.RAW_BERRY_MEDLEY_CAULDRON.get())));
-    public static final SimpleHolder<BlockEntityType<FossilsSignBlockEntity>> FOSSILS_SIGN = BLOCK_ENTITY_TYPES.register("fossils_sign", () -> new BlockEntityType<>(FossilsSignBlockEntity::new, Set.of(FABlocks.ARAUCARIA_SIGN.get(), FABlocks.ARAUCARIA_WALL_SIGN.get(), FABlocks.ARAUCARIOXYLON_SIGN.get(), FABlocks.ARAUCARIOXYLON_WALL_SIGN.get(), FABlocks.ARCHAEOPTERIS_SIGN.get(), FABlocks.ARCHAEOPTERIS_WALL_SIGN.get(), FABlocks.LEPIDODENDRON_SIGN.get(), FABlocks.LEPIDODENDRON_WALL_SIGN.get(), FABlocks.SIGILLARIA_SIGN.get(), FABlocks.SIGILLARIA_WALL_SIGN.get(), FABlocks.CALAMITES_SIGN.get(), FABlocks.CALAMITES_WALL_SIGN.get(), FABlocks.CORDAITES_SIGN.get(), FABlocks.CORDAITES_WALL_SIGN.get(), FABlocks.GINKGO_SIGN.get(), FABlocks.GINKGO_WALL_SIGN.get(), FABlocks.WOLLEMIA_SIGN.get(), FABlocks.WOLLEMIA_WALL_SIGN.get())));
-    public static final SimpleHolder<BlockEntityType<FossilsHangingSignBlockEntity>> FOSSILS_HANGING_SIGN = BLOCK_ENTITY_TYPES.register("fossils_hanging_sign", () -> new BlockEntityType<>(FossilsHangingSignBlockEntity::new, Set.of(FABlocks.ARAUCARIA_HANGING_SIGN.get(), FABlocks.ARAUCARIA_WALL_HANGING_SIGN.get(), FABlocks.ARAUCARIOXYLON_HANGING_SIGN.get(), FABlocks.ARAUCARIOXYLON_WALL_HANGING_SIGN.get(), FABlocks.ARCHAEOPTERIS_HANGING_SIGN.get(), FABlocks.ARCHAEOPTERIS_WALL_HANGING_SIGN.get(), FABlocks.LEPIDODENDRON_HANGING_SIGN.get(), FABlocks.LEPIDODENDRON_WALL_HANGING_SIGN.get(), FABlocks.SIGILLARIA_HANGING_SIGN.get(), FABlocks.SIGILLARIA_WALL_HANGING_SIGN.get(), FABlocks.CALAMITES_HANGING_SIGN.get(), FABlocks.CALAMITES_WALL_HANGING_SIGN.get(), FABlocks.CORDAITES_HANGING_SIGN.get(), FABlocks.CORDAITES_WALL_HANGING_SIGN.get(), FABlocks.GINKGO_HANGING_SIGN.get(), FABlocks.GINKGO_WALL_HANGING_SIGN.get(), FABlocks.WOLLEMIA_HANGING_SIGN.get(), FABlocks.WOLLEMIA_WALL_HANGING_SIGN.get())));
+    public static final SimpleHolder<BlockEntityType<FossilsSignBlockEntity>> FOSSILS_SIGN = BLOCK_ENTITY_TYPES.register("fossils_sign", () -> new BlockEntityType<>(FossilsSignBlockEntity::new, Set.of(FABlockRegistry.ALL_SIGNS.stream().map(SimpleHolder::get).toArray(Block[]::new))));
+    public static final SimpleHolder<BlockEntityType<FossilsHangingSignBlockEntity>> FOSSILS_HANGING_SIGN = BLOCK_ENTITY_TYPES.register("fossils_hanging_sign", () -> new BlockEntityType<>(FossilsHangingSignBlockEntity::new, Set.of(FABlockRegistry.ALL_HANGING_SIGNS.stream().map(SimpleHolder::get).toArray(Block[]::new))));
     public static final SimpleHolder<BlockEntityType<VaseBlockEntity>> VASE = BLOCK_ENTITY_TYPES.register("vase", () -> new BlockEntityType<>(VaseBlockEntity::new, Set.of(FABlocks.MAYAN_VASE.get(), FABlocks.MAYAN_JADE_VASE.get(), FABlocks.MAYAN_OCELOT_VASE.get(), FABlocks.MAYAN_VILLAGER_VASE.get())));
 }

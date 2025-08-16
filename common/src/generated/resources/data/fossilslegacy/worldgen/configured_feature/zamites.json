@@ -1,0 +1,29 @@
+{
+  "type": "fossilslegacy:tall_plant",
+  "config": {
+    "head": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "fossilslegacy:zamites_head"
+      }
+    },
+    "height": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 3,
+      "min_inclusive": 1
+    },
+    "log": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "fossilslegacy:zamites_log",
+        "Properties": {
+          "east": "false",
+          "north": "false",
+          "size": "2",
+          "south": "false",
+          "west": "false"
+        }
+      }
+    }
+  }
+}
