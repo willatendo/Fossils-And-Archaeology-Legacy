@@ -1,0 +1,8 @@
+{
+  "asset_name": "amber",
+  "description": {
+    "color": "#D36A0B",
+    "translate": "trim_material.fossilslegacy.amber"
+  },
+  "ingredient": "fossilslegacy:amber"
+}

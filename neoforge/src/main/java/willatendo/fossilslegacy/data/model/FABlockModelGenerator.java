@@ -140,7 +140,7 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createClaytosmunda(FABlocks.CLAYTOSMUNDA.get());
         this.createCycadeoidea(FABlocks.CYCADEOIDEA.get());
         this.createTrivialCube(FABlocks.NIPA.get());
-        this.createTrivialCube(FABlocks.ONYCHIOPSIS.get());
+        this.createOnychiopsis(FABlocks.ONYCHIOPSIS.get());
         this.createTrivialCube(FABlocks.PACHYPTERIS.get());
         this.createTrivialCube(FABlocks.PACHYPODIUM.get());
         this.createTrivialCube(FABlocks.WILLIAMSONIA.get());
@@ -167,6 +167,7 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.blockModelGenerators.createTintedLeaves(FABlocks.ARAUCARIOXYLON_LEAVES.get(), TexturedModel.LEAVES, -12012264);
         this.blockModelGenerators.createTintedLeaves(FABlocks.CORDAITES_LEAVES.get(), TexturedModel.LEAVES, -12012264);
         this.blockModelGenerators.createTintedLeaves(FABlocks.WOLLEMIA_LEAVES.get(), TexturedModel.LEAVES, -10380959);
+        this.blockModelGenerators.createTintedLeaves(FABlocks.METASEQUOIA_LEAVES.get(), TexturedModel.LEAVES, -12012264);
         this.block(MultiVariantGenerator.multiVariant(FABlocks.TAR.get(), Variant.variant().with(VariantProperties.MODEL, FAModelTemplates.TEMPLATE_LIQUID.create(FABlocks.TAR.get(), new TextureMapping().put(TextureSlot.PARTICLE, this.mcLocation("block/bedrock")), this.modelOutput))));
         ResourceLocation templateSkull = this.modLocation("item/template_ankylosaurus_head");
         this.createHead(FABlocks.ANKYLOSAURUS_HEAD.get(), FABlocks.WALL_ANKYLOSAURUS_HEAD.get(), FAHeadTypes.ANKYLOSAURUS, templateSkull);
@@ -391,6 +392,15 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
     private void createCycadeoidea(Block claytosmunda) {
         ResourceLocation model = this.basic(claytosmunda, FAModelTemplates.TEMPLATE_CYCADEOIDEA, new TextureMapping().put(TextureSlot.TEXTURE, this.modLocation("block/cycadeoidea")));
         this.blockModelGenerators.registerSimpleTintedItemModel(claytosmunda, model, new GrassColorSource());
+    }
+
+    private void createOnychiopsis(Block onychiopsis) {
+        ResourceLocation model1 = FAModelTemplates.TEMPLATE_ONYCHIOPSIS_1.createWithSuffix(onychiopsis, "_1", new TextureMapping().put(TextureSlot.UPPER_STEM, this.modLocation("block/upper_onychiopsis_frond")).put(TextureSlot.STEM, this.modLocation("block/lower_onychiopsis_frond")), this.modelOutput);
+        ResourceLocation model2 = FAModelTemplates.TEMPLATE_ONYCHIOPSIS_2.createWithSuffix(onychiopsis, "_2", new TextureMapping().put(TextureSlot.UPPER_STEM, this.modLocation("block/upper_onychiopsis_frond")).put(TextureSlot.STEM, this.modLocation("block/lower_onychiopsis_frond")), this.modelOutput);
+        ResourceLocation model3 = FAModelTemplates.TEMPLATE_ONYCHIOPSIS_3.createWithSuffix(onychiopsis, "_3", new TextureMapping().put(TextureSlot.UPPER_STEM, this.modLocation("block/upper_onychiopsis_frond")).put(TextureSlot.STEM, this.modLocation("block/lower_onychiopsis_frond")), this.modelOutput);
+        ResourceLocation model4 = FAModelTemplates.TEMPLATE_ONYCHIOPSIS_4.createWithSuffix(onychiopsis, "_4", new TextureMapping().put(TextureSlot.UPPER_STEM, this.modLocation("block/upper_onychiopsis_frond")).put(TextureSlot.STEM, this.modLocation("block/lower_onychiopsis_frond")), this.modelOutput);
+        this.block(MultiVariantGenerator.multiVariant(onychiopsis).with(PropertyDispatch.property(OnychiopsisBlock.AMOUNT).select(1, Variant.variant().with(VariantProperties.MODEL, model1)).select(2, Variant.variant().with(VariantProperties.MODEL, model2)).select(3, Variant.variant().with(VariantProperties.MODEL, model3)).select(4, Variant.variant().with(VariantProperties.MODEL, model4))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
+        this.blockModelGenerators.registerSimpleTintedItemModel(onychiopsis, ModelTemplates.FLAT_ITEM.create(this.modLocation("item/onychiopsis"), new TextureMapping().put(TextureSlot.LAYER0, this.modLocation("block/upper_onychiopsis_frond")), this.modelOutput), new GrassColorSource());
     }
 
     private void createMacrotaeniopteris(Block macrotaeniopteris) {

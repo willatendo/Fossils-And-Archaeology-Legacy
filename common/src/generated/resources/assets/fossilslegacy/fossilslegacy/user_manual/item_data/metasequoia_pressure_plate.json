@@ -1,0 +1,33 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:metasequoia_pressure_plate"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:metasequoia_pressure_plate"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.pressure_plate.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.pressure_plate.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:metasequoia_pressure_plate"
+  ]
+}

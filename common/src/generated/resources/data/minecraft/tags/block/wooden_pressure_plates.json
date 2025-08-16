@@ -1,10 +1,14 @@
 {
   "values": [
-    "fossilslegacy:archaeopteris_pressure_plate",
     "fossilslegacy:lepidodendron_pressure_plate",
     "fossilslegacy:sigillaria_pressure_plate",
     "fossilslegacy:calamites_pressure_plate",
+    "fossilslegacy:archaeopteris_pressure_plate",
     "fossilslegacy:ginkgo_pressure_plate",
-    "fossilslegacy:araucaria_pressure_plate"
+    "fossilslegacy:araucaria_pressure_plate",
+    "fossilslegacy:araucarioxylon_pressure_plate",
+    "fossilslegacy:cordaites_pressure_plate",
+    "fossilslegacy:wollemia_pressure_plate",
+    "fossilslegacy:metasequoia_pressure_plate"
   ]
 }

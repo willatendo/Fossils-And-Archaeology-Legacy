@@ -498,6 +498,7 @@ public final class FACreativeModeTabs {
         output.accept(FABlocks.SHORT_HORSETAIL.get());
         output.accept(FABlocks.TALL_HORSETAIL.get());
         output.accept(FABlocks.LOTUS.get());
+        output.accept(FABlocks.ONYCHIOPSIS.get());
         output.accept(FABlocks.SALVINIA.get());
         output.accept(FABlocks.SARCANDRA.get());
         output.accept(FABlocks.CLAYTOSMUNDA.get());

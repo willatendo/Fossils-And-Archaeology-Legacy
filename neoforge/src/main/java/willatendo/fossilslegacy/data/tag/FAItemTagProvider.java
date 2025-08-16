@@ -67,6 +67,7 @@ public class FAItemTagProvider extends ItemTagsProvider {
         this.tag(FAItemTags.MESOZOIC_FOSSIL).add(FAItems.MESOZOIC_FOSSIL.get());
         this.tag(ItemTags.SWORD_ENCHANTABLE).add(FAItems.THERIZINOSAURUS_CLAWS.get());
         this.tag(ItemTags.BOOKSHELF_BOOKS).add(FAItems.DINOPEDIA.get(), FAItems.USER_MANUAL.get());
+        this.tag(ItemTags.TRIM_MATERIALS).add(FAItems.AMBER.get(), FAItems.JADE.get());
 
         for (int i = 0; i < FABlockRegistry.woodSize(); i++) {
             this.copy(FABlockRegistry.LOG_TAGS[i], FABlockRegistry.ITEM_LOG_TAGS[i]);

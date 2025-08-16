@@ -1,10 +1,14 @@
 {
   "values": [
-    "fossilslegacy:archaeopteris_wall_sign",
     "fossilslegacy:lepidodendron_wall_sign",
     "fossilslegacy:sigillaria_wall_sign",
     "fossilslegacy:calamites_wall_sign",
+    "fossilslegacy:archaeopteris_wall_sign",
     "fossilslegacy:ginkgo_wall_sign",
-    "fossilslegacy:araucaria_wall_sign"
+    "fossilslegacy:araucaria_wall_sign",
+    "fossilslegacy:araucarioxylon_wall_sign",
+    "fossilslegacy:cordaites_wall_sign",
+    "fossilslegacy:wollemia_wall_sign",
+    "fossilslegacy:metasequoia_wall_sign"
   ]
 }

@@ -40,6 +40,7 @@ import willatendo.fossilslegacy.server.feeder_food.FAFeederFoods;
 import willatendo.fossilslegacy.server.fossil_variant.FAFossilVariants;
 import willatendo.fossilslegacy.server.fuel.FAFuelEntries;
 import willatendo.fossilslegacy.server.item.FAJukeboxSongs;
+import willatendo.fossilslegacy.server.item.FATrimMaterials;
 import willatendo.fossilslegacy.server.jewel_recovery.FAJewelRecoveries;
 import willatendo.fossilslegacy.server.level.prehistoric.PrehistoricNoiseGeneratorSettings;
 import willatendo.fossilslegacy.server.model_type.FAModelTypes;
@@ -77,6 +78,7 @@ public class FossilsLegacyData {
             .add(Registries.STRUCTURE, FAStructures::bootstrap)
             .add(Registries.STRUCTURE_SET, FAStructureSets::bootstrap)
             .add(Registries.TEMPLATE_POOL, FAPools::bootstrap)
+            .add(Registries.TRIM_MATERIAL, FATrimMaterials::bootstrap)
             .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, FABiomeModifiers::bootstrap)
             .add(FARegistries.ANALYZER_RESULT, FAAnalyzerResults::bootstrap)
             .add(FARegistries.ANCIENT_AXE_BONUS, FAAncientAxeBonuses::bootstrap)

@@ -1,10 +1,14 @@
 {
   "values": [
-    "fossilslegacy:archaeopteris_sapling",
     "fossilslegacy:lepidodendron_sapling",
     "fossilslegacy:sigillaria_sapling",
     "fossilslegacy:calamites_sapling",
+    "fossilslegacy:archaeopteris_sapling",
     "fossilslegacy:ginkgo_sapling",
-    "fossilslegacy:araucaria_sapling"
+    "fossilslegacy:araucaria_sapling",
+    "fossilslegacy:araucarioxylon_sapling",
+    "fossilslegacy:cordaites_sapling",
+    "fossilslegacy:wollemia_sapling",
+    "fossilslegacy:metasequoia_sapling"
   ]
 }

@@ -1,0 +1,34 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:araucarioxylon_wood"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:araucarioxylon_wood"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.wood.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.wood.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:araucarioxylon_planks",
+    "fossilslegacy:araucarioxylon_wood"
+  ]
+}

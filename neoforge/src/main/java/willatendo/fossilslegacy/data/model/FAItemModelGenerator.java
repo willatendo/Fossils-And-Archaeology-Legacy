@@ -1,24 +1,155 @@
 package willatendo.fossilslegacy.data.model;
 
+import net.minecraft.client.color.item.Dye;
+import net.minecraft.client.color.item.ItemTintSource;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.item.ItemModel;
+import net.minecraft.client.renderer.item.SelectItemModel;
+import net.minecraft.client.renderer.item.properties.select.TrimMaterialProperty;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.equipment.EquipmentAsset;
+import net.minecraft.world.item.equipment.EquipmentAssets;
+import net.minecraft.world.item.equipment.trim.TrimMaterial;
+import net.minecraft.world.item.equipment.trim.TrimMaterials;
 import willatendo.fossilslegacy.client.model.ArticulatedFossilSpecialRenderer;
 import willatendo.fossilslegacy.data.FAModelTemplates;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.FAEquipmentAssets;
 import willatendo.fossilslegacy.server.item.FAItems;
+import willatendo.fossilslegacy.server.item.FATrimMaterials;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.data.model.SimpleItemModelGenerator;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
+
 public class FAItemModelGenerator extends SimpleItemModelGenerator {
+    public static final List<ItemModelGenerators.TrimMaterialData> FA_TRIM_MATERIAL_MODELS = List.of(new ItemModelGenerators.TrimMaterialData("amber", FATrimMaterials.AMBER, Map.of()), new ItemModelGenerators.TrimMaterialData("jade", FATrimMaterials.JADE, Map.of()));
+    public static final List<ItemModelGenerators.TrimMaterialData> VANILLA_TRIM_MATERIAL_MODELS = List.of(new ItemModelGenerators.TrimMaterialData("quartz", TrimMaterials.QUARTZ, Map.of()), new ItemModelGenerators.TrimMaterialData("iron", TrimMaterials.IRON, Map.of(EquipmentAssets.IRON, "iron_darker")), new ItemModelGenerators.TrimMaterialData("netherite", TrimMaterials.NETHERITE, Map.of(EquipmentAssets.NETHERITE, "netherite_darker")), new ItemModelGenerators.TrimMaterialData("redstone", TrimMaterials.REDSTONE, Map.of()), new ItemModelGenerators.TrimMaterialData("copper", TrimMaterials.COPPER, Map.of()), new ItemModelGenerators.TrimMaterialData("gold", TrimMaterials.GOLD, Map.of(EquipmentAssets.GOLD, "gold_darker")), new ItemModelGenerators.TrimMaterialData("emerald", TrimMaterials.EMERALD, Map.of()), new ItemModelGenerators.TrimMaterialData("diamond", TrimMaterials.DIAMOND, Map.of(EquipmentAssets.DIAMOND, "diamond_darker")), new ItemModelGenerators.TrimMaterialData("lapis", TrimMaterials.LAPIS, Map.of()), new ItemModelGenerators.TrimMaterialData("amethyst", TrimMaterials.AMETHYST, Map.of()), new ItemModelGenerators.TrimMaterialData("resin", TrimMaterials.RESIN, Map.of()));
+    public static final List<ItemModelGenerators.TrimMaterialData> ALL_MATERIAL_MODELS = Stream.concat(FA_TRIM_MATERIAL_MODELS.stream(), VANILLA_TRIM_MATERIAL_MODELS.stream()).toList();
+
     public FAItemModelGenerator(ItemModelGenerators itemModelGenerators) {
         super(itemModelGenerators, FAUtils.ID);
     }
 
+    public void generateFATrims(Item item, ResourceKey<EquipmentAsset> key, String name, boolean dyeable) {
+        ResourceLocation modelLocation = FAUtils.resource(ModelLocationUtils.getModelLocation(item).getPath());
+        ResourceLocation itemTexture = TextureMapping.getItemTexture(item);
+        ResourceLocation overlayTexture = TextureMapping.getItemTexture(item, "_overlay");
+        List<SelectItemModel.SwitchCase<ResourceKey<TrimMaterial>>> list = new ArrayList<>(FA_TRIM_MATERIAL_MODELS.size());
+
+        for (ItemModelGenerators.TrimMaterialData trimMaterialData : FA_TRIM_MATERIAL_MODELS) {
+            ResourceLocation trimTexture = modelLocation.withSuffix("_" + trimMaterialData.name() + "_trim");
+            ResourceLocation trimOverlayTexture = ResourceLocation.withDefaultNamespace("trims/items/" + name + "_trim_" + trimMaterialData.textureName(key));
+            ItemModel.Unbaked unbakedModel;
+            if (dyeable) {
+                this.itemModelGenerators.generateLayeredItem(trimTexture, itemTexture, overlayTexture, trimOverlayTexture);
+                unbakedModel = ItemModelUtils.tintedModel(trimTexture, new Dye(-6265536));
+            } else {
+                this.itemModelGenerators.generateLayeredItem(trimTexture, itemTexture, trimOverlayTexture);
+                unbakedModel = ItemModelUtils.plainModel(trimTexture);
+            }
+
+            list.add(ItemModelUtils.when(trimMaterialData.materialKey(), unbakedModel));
+        }
+
+        modelLocation = ModelLocationUtils.getModelLocation(item);
+        for (ItemModelGenerators.TrimMaterialData trimMaterialData : VANILLA_TRIM_MATERIAL_MODELS) {
+            ResourceLocation trimTexture = modelLocation.withSuffix("_" + trimMaterialData.name() + "_trim");
+            ItemModel.Unbaked unbakedMdoel;
+            if (dyeable) {
+                unbakedMdoel = ItemModelUtils.tintedModel(trimTexture, new Dye(-6265536));
+            } else {
+                unbakedMdoel = ItemModelUtils.plainModel(trimTexture);
+            }
+            list.add(ItemModelUtils.when(trimMaterialData.materialKey(), unbakedMdoel));
+        }
+
+        ItemModel.Unbaked unbakedModel;
+        if (dyeable) {
+            unbakedModel = ItemModelUtils.tintedModel(ModelLocationUtils.getModelLocation(item), new Dye(-6265536));
+        } else {
+            unbakedModel = ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(item));
+        }
+
+        this.itemModelOutput.accept(item, ItemModelUtils.select(new TrimMaterialProperty(), unbakedModel, list));
+    }
+
+
+    private void generateFATrimmableItem(Item item, ResourceKey<EquipmentAsset> key, String name, boolean dyeable) {
+        ResourceLocation modelLocation = ModelLocationUtils.getModelLocation(item);
+        ResourceLocation itemTexture = TextureMapping.getItemTexture(item);
+        ResourceLocation overlayTexture = TextureMapping.getItemTexture(item, "_overlay");
+        List<SelectItemModel.SwitchCase<ResourceKey<TrimMaterial>>> list = new ArrayList<>(ALL_MATERIAL_MODELS.size());
+
+        for (ItemModelGenerators.TrimMaterialData trimMaterialData : ALL_MATERIAL_MODELS) {
+            ResourceLocation trimTexture = modelLocation.withSuffix("_" + trimMaterialData.name() + "_trim");
+            ResourceLocation trimOverlayTexture = ResourceLocation.withDefaultNamespace("trims/items/" + name + "_trim_" + trimMaterialData.textureName(key));
+            ItemModel.Unbaked unbakedModel;
+            if (dyeable) {
+                this.itemModelGenerators.generateLayeredItem(trimTexture, itemTexture, overlayTexture, trimOverlayTexture);
+                unbakedModel = ItemModelUtils.tintedModel(trimTexture, new Dye(-6265536));
+            } else {
+                this.itemModelGenerators.generateLayeredItem(trimTexture, itemTexture, trimOverlayTexture);
+                unbakedModel = ItemModelUtils.plainModel(trimTexture);
+            }
+            list.add(ItemModelUtils.when(trimMaterialData.materialKey(), unbakedModel));
+        }
+
+        ItemModel.Unbaked unbakedModel;
+        if (dyeable) {
+            ModelTemplates.TWO_LAYERED_ITEM.create(modelLocation, TextureMapping.layered(itemTexture, overlayTexture), this.modelOutput);
+            unbakedModel = ItemModelUtils.tintedModel(modelLocation, new Dye(-6265536));
+        } else {
+            ModelTemplates.FLAT_ITEM.create(modelLocation, TextureMapping.layer0(itemTexture), this.modelOutput);
+            unbakedModel = ItemModelUtils.plainModel(modelLocation);
+        }
+
+        this.itemModelOutput.accept(item, ItemModelUtils.select(new TrimMaterialProperty(), unbakedModel, list));
+    }
+
     @Override
     public void run() {
+        this.generateFATrims(Items.TURTLE_HELMET, EquipmentAssets.TURTLE_SCUTE, "helmet", false);
+        this.generateFATrims(Items.LEATHER_HELMET, EquipmentAssets.LEATHER, "helmet", true);
+        this.generateFATrims(Items.LEATHER_CHESTPLATE, EquipmentAssets.LEATHER, "chestplate", true);
+        this.generateFATrims(Items.LEATHER_LEGGINGS, EquipmentAssets.LEATHER, "leggings", true);
+        this.generateFATrims(Items.LEATHER_BOOTS, EquipmentAssets.LEATHER, "boots", true);
+        this.generateFATrims(Items.CHAINMAIL_HELMET, EquipmentAssets.CHAINMAIL, "helmet", false);
+        this.generateFATrims(Items.CHAINMAIL_CHESTPLATE, EquipmentAssets.CHAINMAIL, "chestplate", false);
+        this.generateFATrims(Items.CHAINMAIL_LEGGINGS, EquipmentAssets.CHAINMAIL, "leggings", false);
+        this.generateFATrims(Items.CHAINMAIL_BOOTS, EquipmentAssets.CHAINMAIL, "boots", false);
+        this.generateFATrims(Items.IRON_HELMET, EquipmentAssets.IRON, "helmet", false);
+        this.generateFATrims(Items.IRON_CHESTPLATE, EquipmentAssets.IRON, "chestplate", false);
+        this.generateFATrims(Items.IRON_LEGGINGS, EquipmentAssets.IRON, "leggings", false);
+        this.generateFATrims(Items.IRON_BOOTS, EquipmentAssets.IRON, "boots", false);
+        this.generateFATrims(Items.DIAMOND_HELMET, EquipmentAssets.DIAMOND, "helmet", false);
+        this.generateFATrims(Items.DIAMOND_CHESTPLATE, EquipmentAssets.DIAMOND, "chestplate", false);
+        this.generateFATrims(Items.DIAMOND_LEGGINGS, EquipmentAssets.DIAMOND, "leggings", false);
+        this.generateFATrims(Items.DIAMOND_BOOTS, EquipmentAssets.DIAMOND, "boots", false);
+        this.generateFATrims(Items.GOLDEN_HELMET, EquipmentAssets.GOLD, "helmet", false);
+        this.generateFATrims(Items.GOLDEN_CHESTPLATE, EquipmentAssets.GOLD, "chestplate", false);
+        this.generateFATrims(Items.GOLDEN_LEGGINGS, EquipmentAssets.GOLD, "leggings", false);
+        this.generateFATrims(Items.GOLDEN_BOOTS, EquipmentAssets.GOLD, "boots", false);
+        this.generateFATrims(Items.NETHERITE_HELMET, EquipmentAssets.NETHERITE, "helmet", false);
+        this.generateFATrims(Items.NETHERITE_CHESTPLATE, EquipmentAssets.NETHERITE, "chestplate", false);
+        this.generateFATrims(Items.NETHERITE_LEGGINGS, EquipmentAssets.NETHERITE, "leggings", false);
+        this.generateFATrims(Items.NETHERITE_BOOTS, EquipmentAssets.NETHERITE, "boots", false);
+        this.generateFATrimmableItem(FAItems.ANCIENT_HELMET.get(), FAEquipmentAssets.ANCIENT, "helmet", false);
+        this.generateFATrimmableItem(FAItems.ANCIENT_CHESTPLATE.get(), FAEquipmentAssets.ANCIENT, "chestplate", false);
+        this.generateFATrimmableItem(FAItems.ANCIENT_LEGGINGS.get(), FAEquipmentAssets.ANCIENT, "leggings", false);
+        this.generateFATrimmableItem(FAItems.ANCIENT_BOOTS.get(), FAEquipmentAssets.ANCIENT, "boots", false);
+        this.generateFATrimmableItem(FAItems.SCARAB_GEM_HELMET.get(), FAEquipmentAssets.SCARAB_GEM, "helmet", false);
+        this.generateFATrimmableItem(FAItems.SCARAB_GEM_CHESTPLATE.get(), FAEquipmentAssets.SCARAB_GEM, "chestplate", false);
+        this.generateFATrimmableItem(FAItems.SCARAB_GEM_LEGGINGS.get(), FAEquipmentAssets.SCARAB_GEM, "leggings", false);
+        this.generateFATrimmableItem(FAItems.SCARAB_GEM_BOOTS.get(), FAEquipmentAssets.SCARAB_GEM, "boots", false);
+
         this.generatedItem(FAItems.CENOZOIC_FOSSIL.get());
         this.generatedItem(FAItems.MESOZOIC_FOSSIL.get());
         this.generatedItem(FAItems.PALAEOZOIC_FOSSIL.get());
@@ -263,19 +394,11 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.handheldItem(FAItems.ANCIENT_PICKAXE.get());
         this.handheldItem(FAItems.ANCIENT_AXE.get());
         this.handheldItem(FAItems.ANCIENT_HOE.get());
-        this.helmetItem(FAItems.ANCIENT_HELMET.get(), FAEquipmentAssets.ANCIENT, false);
-        this.chestplateItem(FAItems.ANCIENT_CHESTPLATE.get(), FAEquipmentAssets.ANCIENT, false);
-        this.leggingsItem(FAItems.ANCIENT_LEGGINGS.get(), FAEquipmentAssets.ANCIENT, false);
-        this.bootsItem(FAItems.ANCIENT_BOOTS.get(), FAEquipmentAssets.ANCIENT, false);
         this.handheldItem(FAItems.SCARAB_GEM_SWORD.get());
         this.handheldItem(FAItems.SCARAB_GEM_SHOVEL.get());
         this.handheldItem(FAItems.SCARAB_GEM_PICKAXE.get());
         this.handheldItem(FAItems.SCARAB_GEM_AXE.get());
         this.handheldItem(FAItems.SCARAB_GEM_HOE.get());
-        this.helmetItem(FAItems.SCARAB_GEM_HELMET.get(), FAEquipmentAssets.SCARAB_GEM, false);
-        this.chestplateItem(FAItems.SCARAB_GEM_CHESTPLATE.get(), FAEquipmentAssets.SCARAB_GEM, false);
-        this.leggingsItem(FAItems.SCARAB_GEM_LEGGINGS.get(), FAEquipmentAssets.SCARAB_GEM, false);
-        this.bootsItem(FAItems.SCARAB_GEM_BOOTS.get(), FAEquipmentAssets.SCARAB_GEM, false);
         this.generatedItem(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get());
         this.generatedItem(FAItems.WOODEN_JAVELIN.get());
         this.generatedItem(FAItems.BROKEN_WOODEN_JAVELIN.get(), this.modLocation("item/wooden_javelin"));

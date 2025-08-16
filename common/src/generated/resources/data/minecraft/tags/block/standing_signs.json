@@ -1,10 +1,14 @@
 {
   "values": [
-    "fossilslegacy:archaeopteris_sign",
     "fossilslegacy:lepidodendron_sign",
     "fossilslegacy:sigillaria_sign",
     "fossilslegacy:calamites_sign",
+    "fossilslegacy:archaeopteris_sign",
     "fossilslegacy:ginkgo_sign",
-    "fossilslegacy:araucaria_sign"
+    "fossilslegacy:araucaria_sign",
+    "fossilslegacy:araucarioxylon_sign",
+    "fossilslegacy:cordaites_sign",
+    "fossilslegacy:wollemia_sign",
+    "fossilslegacy:metasequoia_sign"
   ]
 }

@@ -1,10 +1,14 @@
 {
   "values": [
-    "fossilslegacy:archaeopteris_door",
     "fossilslegacy:lepidodendron_door",
     "fossilslegacy:sigillaria_door",
     "fossilslegacy:calamites_door",
+    "fossilslegacy:archaeopteris_door",
     "fossilslegacy:ginkgo_door",
-    "fossilslegacy:araucaria_door"
+    "fossilslegacy:araucaria_door",
+    "fossilslegacy:araucarioxylon_door",
+    "fossilslegacy:cordaites_door",
+    "fossilslegacy:wollemia_door",
+    "fossilslegacy:metasequoia_door"
   ]
 }

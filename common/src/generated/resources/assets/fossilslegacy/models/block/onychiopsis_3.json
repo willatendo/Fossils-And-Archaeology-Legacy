@@ -1,0 +1,8 @@
+{
+  "parent": "fossilslegacy:block/template_onychiopsis_3",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "stem": "fossilslegacy:block/lower_onychiopsis_frond",
+    "upperstem": "fossilslegacy:block/upper_onychiopsis_frond"
+  }
+}

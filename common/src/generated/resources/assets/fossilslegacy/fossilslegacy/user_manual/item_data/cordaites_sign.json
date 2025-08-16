@@ -1,0 +1,33 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:cordaites_sign"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:cordaites_sign"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.sign.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.sign.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:cordaites_sign"
+  ]
+}

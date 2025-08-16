@@ -1,0 +1,8 @@
+{
+  "asset_name": "jade",
+  "description": {
+    "color": "#51E392",
+    "translate": "trim_material.fossilslegacy.jade"
+  },
+  "ingredient": "fossilslegacy:jade"
+}

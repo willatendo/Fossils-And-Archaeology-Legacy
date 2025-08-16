@@ -5,6 +5,20 @@
       {
         "model": {
           "type": "minecraft:model",
+          "model": "fossilslegacy:item/scarab_gem_helmet_amber_trim"
+        },
+        "when": "fossilslegacy:amber"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "fossilslegacy:item/scarab_gem_helmet_jade_trim"
+        },
+        "when": "fossilslegacy:jade"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
           "model": "fossilslegacy:item/scarab_gem_helmet_quartz_trim"
         },
         "when": "minecraft:quartz"

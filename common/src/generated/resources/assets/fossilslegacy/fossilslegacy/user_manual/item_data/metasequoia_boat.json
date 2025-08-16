@@ -1,0 +1,18 @@
+{
+  "displayed_loot_tables": [],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.boat.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.boat.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:metasequoia_boat",
+    "fossilslegacy:metasequoia_chest_boat"
+  ]
+}

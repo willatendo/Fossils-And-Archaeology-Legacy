@@ -2,6 +2,8 @@ package willatendo.fossilslegacy.server.registry;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.AbstractBoat;
+import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraft.world.entity.vehicle.ChestBoat;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import willatendo.fossilslegacy.server.block.blocks.FossilsCeilingHangingSignBlock;
@@ -69,14 +71,14 @@ public record FAItemRegistry(ItemRegistry itemRegistry) {
         return hangingSign;
     }
 
-    public SimpleHolder<BoatItem> registerBoat(String name, EntityType<? extends AbstractBoat> entityType) {
-        SimpleHolder<BoatItem> boat = this.registerItem(name, properties -> new BoatItem(entityType, properties), new Item.Properties().stacksTo(1));
+    public SimpleHolder<BoatItem> registerBoat(String name, Function<Item.Properties, BoatItem> boatItem) {
+        SimpleHolder<BoatItem> boat = this.registerItem(name, boatItem, () -> new Item.Properties().stacksTo(1));
         BOATS.add(boat);
         return boat;
     }
 
-    public SimpleHolder<BoatItem> registerChestBoat(String name, EntityType<? extends AbstractBoat> entityType) {
-        SimpleHolder<BoatItem> chestBoat = this.registerItem(name, properties -> new BoatItem(entityType, properties), new Item.Properties().stacksTo(1));
+    public SimpleHolder<BoatItem> registerChestBoat(String name, Function<Item.Properties, BoatItem> boatItem) {
+        SimpleHolder<BoatItem> chestBoat = this.registerItem(name, boatItem, new Item.Properties().stacksTo(1));
         CHEST_BOATS.add(chestBoat);
         return chestBoat;
     }

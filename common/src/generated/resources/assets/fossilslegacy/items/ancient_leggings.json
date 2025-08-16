@@ -5,6 +5,20 @@
       {
         "model": {
           "type": "minecraft:model",
+          "model": "fossilslegacy:item/ancient_leggings_amber_trim"
+        },
+        "when": "fossilslegacy:amber"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "fossilslegacy:item/ancient_leggings_jade_trim"
+        },
+        "when": "fossilslegacy:jade"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
           "model": "fossilslegacy:item/ancient_leggings_quartz_trim"
         },
         "when": "minecraft:quartz"

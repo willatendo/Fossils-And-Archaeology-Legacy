@@ -1,10 +1,14 @@
 {
   "values": [
-    "fossilslegacy:archaeopteris_fence",
     "fossilslegacy:lepidodendron_fence",
     "fossilslegacy:sigillaria_fence",
     "fossilslegacy:calamites_fence",
+    "fossilslegacy:archaeopteris_fence",
     "fossilslegacy:ginkgo_fence",
-    "fossilslegacy:araucaria_fence"
+    "fossilslegacy:araucaria_fence",
+    "fossilslegacy:araucarioxylon_fence",
+    "fossilslegacy:cordaites_fence",
+    "fossilslegacy:wollemia_fence",
+    "fossilslegacy:metasequoia_fence"
   ]
 }

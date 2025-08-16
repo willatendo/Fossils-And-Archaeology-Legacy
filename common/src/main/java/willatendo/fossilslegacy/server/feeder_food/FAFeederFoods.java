@@ -210,6 +210,7 @@ public final class FAFeederFoods {
         FAFeederFoods.register(bootstrapContext, FABlocks.TALL_HORSETAIL.get(), 100, FeederFood.FillType.PLANT);
         FAFeederFoods.register(bootstrapContext, FABlocks.CLAYTOSMUNDA.get(), 100, FeederFood.FillType.PLANT);
         FAFeederFoods.register(bootstrapContext, FABlocks.CYCADEOIDEA.get(), 100, FeederFood.FillType.PLANT);
+        FAFeederFoods.register(bootstrapContext, FABlocks.ONYCHIOPSIS.get(), 100, FeederFood.FillType.PLANT);
         FAFeederFoods.register(bootstrapContext, FABlocks.JURASSIC_FERN.get(), 100, FeederFood.FillType.PLANT);
         FAFeederFoods.register(bootstrapContext, FABlocks.COOKSONIA.get(), 100, FeederFood.FillType.PLANT);
     }

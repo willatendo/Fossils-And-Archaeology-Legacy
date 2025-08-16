@@ -1,13 +1,14 @@
 {
   "values": [
-    "#fossilslegacy:araucaria_logs",
-    "#fossilslegacy:araucarioxylon_logs",
-    "#fossilslegacy:archaeopteris_logs",
     "#fossilslegacy:lepidodendron_logs",
     "#fossilslegacy:sigillaria_logs",
     "#fossilslegacy:calamites_logs",
-    "#fossilslegacy:cordaites_logs",
+    "#fossilslegacy:archaeopteris_logs",
     "#fossilslegacy:ginkgo_logs",
-    "#fossilslegacy:wollemia_logs"
+    "#fossilslegacy:araucaria_logs",
+    "#fossilslegacy:araucarioxylon_logs",
+    "#fossilslegacy:cordaites_logs",
+    "#fossilslegacy:wollemia_logs",
+    "#fossilslegacy:metasequoia_logs"
   ]
 }

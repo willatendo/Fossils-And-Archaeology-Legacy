@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "wooden_fence_gate",
+  "key": {
+    "#": "fossilslegacy:metasequoia_planks",
+    "$": "minecraft:stick"
+  },
+  "pattern": [
+    "$#$",
+    "$#$"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:metasequoia_fence_gate"
+  }
+}

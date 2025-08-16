@@ -144,15 +144,15 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.add(FABlocks.RAMP_TRACK.get(), block -> LootTable.lootTable().withPool(this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(block).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(RampTrackBlock.PART, 1)))))));
         this.dropSelf(FABlocks.CYCAD_HEAD.get());
         this.dropSelf(FABlocks.CYCAD_LOG.get());
-        this.dropSelf(FABlocks.COOKSONIA.get());
+        this.add(FABlocks.COOKSONIA.get(), block -> LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(this.applyExplosionDecay(block, LootItem.lootTableItem(block).apply(IntStream.rangeClosed(1, 4).boxed().toList(), integer -> SetItemCountFunction.setCount(ConstantValue.exactly(integer)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CooksoniaBlock.AMOUNT, integer))))))));
         this.dropSelf(FABlocks.CLAYTOSMUNDA.get());
         this.dropSelf(FABlocks.CYCADEOIDEA.get());
         this.dropSelf(FABlocks.NIPA.get());
-        this.dropSelf(FABlocks.ONYCHIOPSIS.get());
+        this.add(FABlocks.ONYCHIOPSIS.get(), block -> LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(this.applyExplosionDecay(block, LootItem.lootTableItem(block).apply(IntStream.rangeClosed(1, 4).boxed().toList(), integer -> SetItemCountFunction.setCount(ConstantValue.exactly(integer)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(OnychiopsisBlock.AMOUNT, integer))))))));
         this.dropSelf(FABlocks.PACHYPTERIS.get());
         this.dropSelf(FABlocks.PACHYPODIUM.get());
         this.dropSelf(FABlocks.WILLIAMSONIA.get());
-        this.add(FABlocks.MACROTAENIOPTERIS.get(), block -> this.createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+        this.add(FABlocks.MACROTAENIOPTERIS.get(), block -> LootTable.lootTable().withPool(this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(block).apply(IntStream.rangeClosed(1, 5).boxed().toList(), integer -> SetItemCountFunction.setCount(ConstantValue.exactly(integer)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(MacrotaeniopterisBlock.AMOUNT, integer)))).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER)))))));
         this.dropSelf(FABlocks.DIPTERIS.get());
         this.dropSelf(FABlocks.ZAMITES_HEAD.get());
         this.dropSelf(FABlocks.ZAMITES_LOG.get());

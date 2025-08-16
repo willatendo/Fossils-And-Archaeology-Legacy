@@ -1,0 +1,57 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:araucarioxylon_sapling"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:araucarioxylon_sapling"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:araucarioxylon_leaves"
+      },
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.shears"
+            },
+            "drop": {
+              "id": "fossilslegacy:araucarioxylon_leaves"
+            }
+          }
+        ],
+        [
+          {
+            "description": "+",
+            "drop": {
+              "id": "fossilslegacy:araucarioxylon_sapling"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.sapling.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.sapling.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": []
+}

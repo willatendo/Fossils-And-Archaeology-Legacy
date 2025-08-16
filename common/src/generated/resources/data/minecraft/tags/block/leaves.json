@@ -1,10 +1,14 @@
 {
   "values": [
-    "fossilslegacy:archaeopteris_leaves",
     "fossilslegacy:lepidodendron_leaves",
     "fossilslegacy:sigillaria_leaves",
     "fossilslegacy:calamites_leaves",
+    "fossilslegacy:archaeopteris_leaves",
     "fossilslegacy:ginkgo_leaves",
-    "fossilslegacy:araucaria_leaves"
+    "fossilslegacy:araucaria_leaves",
+    "fossilslegacy:araucarioxylon_leaves",
+    "fossilslegacy:cordaites_leaves",
+    "fossilslegacy:wollemia_leaves",
+    "fossilslegacy:metasequoia_leaves"
   ]
 }

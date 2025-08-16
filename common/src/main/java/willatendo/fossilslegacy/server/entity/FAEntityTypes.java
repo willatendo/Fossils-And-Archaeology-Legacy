@@ -27,10 +27,13 @@ import willatendo.simplelibrary.server.registry.EntityTypeRegistry;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 
 public final class FAEntityTypes {
     public static final EntityTypeRegistry ENTITY_TYPES = SimpleRegistry.createEntityType(FAUtils.ID);
+    public static final List<SimpleHolder<EntityType<Boat>>> BOATS = new ArrayList<>();
 
     public static final SimpleHolder<EntityType<AncientLightningBolt>> ANCIENT_LIGHTNING_BOLT = ENTITY_TYPES.register("ancient_lightning_bolt", FAEntityTypes.simple(AncientLightningBolt::new, MobCategory.MISC, 0.0F, 0.0F).noSave().noLootTable());
 
@@ -150,7 +153,9 @@ public final class FAEntityTypes {
     }
 
     private static SimpleHolder<EntityType<Boat>> registerBoat(String id, Supplier<Item> boatItem) {
-        return ENTITY_TYPES.register(id, FAEntityTypes.<Boat>simple((entityType, level) -> new Boat(entityType, level, boatItem), MobCategory.MISC, 1.375F, 0.5625F).noLootTable().eyeHeight(0.5625F).clientTrackingRange(10));
+        SimpleHolder<EntityType<Boat>> boat = ENTITY_TYPES.register(id, FAEntityTypes.<Boat>simple((entityType, level) -> new Boat(entityType, level, boatItem), MobCategory.MISC, 1.375F, 0.5625F).noLootTable().eyeHeight(0.5625F).clientTrackingRange(10));
+        BOATS.add(boat);
+        return boat;
     }
 
     private static SimpleHolder<EntityType<ChestBoat>> registerChestBoat(String id, Supplier<Item> boatItem) {

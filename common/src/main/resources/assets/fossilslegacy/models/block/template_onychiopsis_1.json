@@ -1,0 +1,26 @@
+{
+	"parent": "block/block",
+	"textures": {
+		"particle": "#stem"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 7],
+			"to": [16, 16, 7],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 0, 7]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#stem", "tintindex": 0},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#stem", "tintindex": 0}
+			}
+		},
+		{
+			"from": [0, 14.7, -15],
+			"to": [16, 14.7, 1],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 14.7, 1]},
+			"faces": {
+				"up": {"uv": [0, 0, 16, 16], "texture": "#upperstem", "tintindex": 0},
+				"down": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#upperstem", "tintindex": 0}
+			}
+		}
+	]
+}

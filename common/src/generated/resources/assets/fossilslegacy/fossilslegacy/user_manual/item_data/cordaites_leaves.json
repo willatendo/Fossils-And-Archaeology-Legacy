@@ -1,0 +1,42 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:cordaites_leaves"
+      },
+      "loot": [
+        [
+          {
+            "description": {
+              "translate": "item.fossilslegacy.user_manual.drop.requirement.shears"
+            },
+            "drop": {
+              "id": "fossilslegacy:cordaites_leaves"
+            }
+          }
+        ],
+        [
+          {
+            "description": "+",
+            "drop": {
+              "id": "fossilslegacy:cordaites_sapling"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.leaves.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.leaves.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": []
+}

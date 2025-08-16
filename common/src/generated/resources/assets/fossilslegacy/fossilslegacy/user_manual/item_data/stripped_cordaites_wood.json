@@ -1,0 +1,34 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:stripped_cordaites_wood"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:stripped_cordaites_wood"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.stripped_wood.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.stripped_wood.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:cordaites_planks",
+    "fossilslegacy:stripped_cordaites_wood"
+  ]
+}

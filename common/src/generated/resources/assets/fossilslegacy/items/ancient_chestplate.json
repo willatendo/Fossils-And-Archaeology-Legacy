@@ -5,6 +5,20 @@
       {
         "model": {
           "type": "minecraft:model",
+          "model": "fossilslegacy:item/ancient_chestplate_amber_trim"
+        },
+        "when": "fossilslegacy:amber"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "fossilslegacy:item/ancient_chestplate_jade_trim"
+        },
+        "when": "fossilslegacy:jade"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
           "model": "fossilslegacy:item/ancient_chestplate_quartz_trim"
         },
         "when": "minecraft:quartz"

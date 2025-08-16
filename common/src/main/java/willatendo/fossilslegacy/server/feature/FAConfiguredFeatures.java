@@ -78,6 +78,8 @@ public final class FAConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> MEGA_CORDAITES = FAConfiguredFeatures.create("mega_cordaites");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GINKGO = FAConfiguredFeatures.create("ginkgo");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LEPIDODENDRON = FAConfiguredFeatures.create("lepidodendron");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> METASEQUOIA_SAPLING = FAConfiguredFeatures.create("metasequoia_sapling");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> METASEQUOIA = FAConfiguredFeatures.create("metasequoia");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SIGILLARIA = FAConfiguredFeatures.create("sigillaria");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WOLLEMIA = FAConfiguredFeatures.create("wollemia");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_MORRISON_FORMATION = FAConfiguredFeatures.create("trees_morrison_formation");
@@ -131,6 +133,14 @@ public final class FAConfiguredFeatures {
 
     private static TreeConfiguration.TreeConfigurationBuilder createLepidodendron() {
         return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(FABlocks.LEPIDODENDRON_LOG.get()), new ForkedThickTrunkPlacer(8, 2, 0), BlockStateProvider.simple(FABlocks.LEPIDODENDRON_LEAVES.get()), new LepidodendronFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines();
+    }
+
+    private static TreeConfiguration.TreeConfigurationBuilder createMetasequoiaSapling() {
+        return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(FABlocks.METASEQUOIA_LOG.get()), new StraightTrunkPlacer(10, 3, 6), BlockStateProvider.simple(FABlocks.METASEQUOIA_LEAVES.get()), new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(0, 2), UniformInt.of(1, 3)), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines();
+    }
+
+    private static TreeConfiguration.TreeConfigurationBuilder createMetasequoia() {
+        return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(FABlocks.METASEQUOIA_LOG.get()), new GiantTrunkPlacer(20, 2, 14), BlockStateProvider.simple(FABlocks.METASEQUOIA_LEAVES.get()), new MegaPineFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0), UniformInt.of(13, 17)), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines();
     }
 
     private static TreeConfiguration.TreeConfigurationBuilder createSigillaria() {
@@ -206,6 +216,8 @@ public final class FAConfiguredFeatures {
         FeatureUtils.register(bootstrapContext, CORDAITES, Feature.TREE, FAConfiguredFeatures.createCordaites().build());
         FeatureUtils.register(bootstrapContext, MEGA_CORDAITES, Feature.TREE, FAConfiguredFeatures.createMegaCordaites().build());
         FeatureUtils.register(bootstrapContext, GINKGO, Feature.TREE, FAConfiguredFeatures.createGinkgo().build());
+        FeatureUtils.register(bootstrapContext, METASEQUOIA_SAPLING, Feature.TREE, FAConfiguredFeatures.createMetasequoiaSapling().build());
+        FeatureUtils.register(bootstrapContext, METASEQUOIA, Feature.TREE, FAConfiguredFeatures.createMetasequoia().build());
         FeatureUtils.register(bootstrapContext, LEPIDODENDRON, Feature.TREE, FAConfiguredFeatures.createLepidodendron().build());
         FeatureUtils.register(bootstrapContext, SIGILLARIA, Feature.TREE, FAConfiguredFeatures.createSigillaria().build());
         FeatureUtils.register(bootstrapContext, WOLLEMIA, Feature.TREE, FAConfiguredFeatures.createWollemia().build());

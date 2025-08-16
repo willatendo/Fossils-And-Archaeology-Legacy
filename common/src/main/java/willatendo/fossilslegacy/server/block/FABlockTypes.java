@@ -18,7 +18,6 @@ public final class FABlockTypes {
         FABlockTypes.register("analyzer", AnalyzerBlock.CODEC);
         FABlockTypes.register("archaeology_workbench", ArchaeologyWorkbenchBlock.CODEC);
         FABlockTypes.register("axolotlspawn", AxolotlspawnBlock.CODEC);
-        FABlockTypes.register("claytosmunda", ClaytosmundaBlock.CODEC);
         FABlockTypes.register("cooked_berry_medley_cauldron", CookedBerryMedleyCauldronBlock.CODEC);
         FABlockTypes.register("cooked_chicken_soup_cauldron", CookedChickenSoupCauldronBlock.CODEC);
         FABlockTypes.register("cooksonia", CooksoniaBlock.CODEC);
@@ -42,6 +41,7 @@ public final class FABlockTypes {
         FABlockTypes.register("macrotaeniopteris", MacrotaeniopterisBlock.CODEC);
         FABlockTypes.register("mayan_vase", MayanVaseBlock.CODEC);
         FABlockTypes.register("medium_cage", MediumCageBlock.CODEC);
+        FABlockTypes.register("onychiopsis", OnychiopsisBlock.CODEC);
         FABlockTypes.register("palaeontology_table", PalaeontologyTableBlock.CODEC);
         FABlockTypes.register("permafrost", PermafrostBlock.CODEC);
         FABlockTypes.register("ramp_track", RampTrackBlock.CODEC);
@@ -50,6 +50,7 @@ public final class FABlockTypes {
         FABlockTypes.register("salvinia", SalviniaBlock.CODEC);
         FABlockTypes.register("shattered_cultivator", ShatteredCultivatorBlock.CODEC);
         FABlockTypes.register("skull", SkullBlock.CODEC);
+        FABlockTypes.register("simple_grassy", SimpleGrassyBlock.CODEC);
         FABlockTypes.register("small_cage", SmallCageBlock.CODEC);
         FABlockTypes.register("straight_track", StraightTrackBlock.CODEC);
         FABlockTypes.register("tall_horsetail", TallHorsetailBlock.CODEC);

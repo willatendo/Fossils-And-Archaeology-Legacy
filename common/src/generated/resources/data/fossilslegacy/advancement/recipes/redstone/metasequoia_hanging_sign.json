@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_stripped_metasequoia_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:stripped_metasequoia_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:metasequoia_hanging_sign"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_stripped_metasequoia_log"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:metasequoia_hanging_sign"
+    ]
+  }
+}

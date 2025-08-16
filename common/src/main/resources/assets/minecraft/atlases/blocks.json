@@ -1,0 +1,18 @@
+{
+  "sources": [
+    {
+      "type": "paletted_permutations",
+      "textures": [
+        "trims/items/leggings_trim",
+        "trims/items/chestplate_trim",
+        "trims/items/helmet_trim",
+        "trims/items/boots_trim"
+      ],
+      "palette_key": "trims/color_palettes/trim_palette",
+      "permutations": {
+        "amber": "fossilslegacy:trims/color_palettes/amber",
+        "jade": "fossilslegacy:trims/color_palettes/jade"
+      }
+    }
+  ]
+}

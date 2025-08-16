@@ -1,9 +1,14 @@
 {
   "values": [
+    "fossilslegacy:araucaria_boat",
     "fossilslegacy:archaeopteris_boat",
     "fossilslegacy:calamites_boat",
+    "fossilslegacy:cordaites_boat",
     "fossilslegacy:ginkgo_boat",
     "fossilslegacy:lepidodendron_boat",
-    "fossilslegacy:sigillaria_boat"
+    "fossilslegacy:sigillaria_boat",
+    "fossilslegacy:wollemia_boat",
+    "fossilslegacy:araucarioxylon_boat",
+    "fossilslegacy:metasequoia_boat"
   ]
 }

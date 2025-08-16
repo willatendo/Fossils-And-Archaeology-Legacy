@@ -1,10 +1,14 @@
 {
   "values": [
-    "fossilslegacy:archaeopteris_button",
     "fossilslegacy:lepidodendron_button",
     "fossilslegacy:sigillaria_button",
     "fossilslegacy:calamites_button",
+    "fossilslegacy:archaeopteris_button",
     "fossilslegacy:ginkgo_button",
-    "fossilslegacy:araucaria_button"
+    "fossilslegacy:araucaria_button",
+    "fossilslegacy:araucarioxylon_button",
+    "fossilslegacy:cordaites_button",
+    "fossilslegacy:wollemia_button",
+    "fossilslegacy:metasequoia_button"
   ]
 }

@@ -246,6 +246,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.COOKSONIA.get());
         this.add(FABlocks.CLAYTOSMUNDA.get());
         this.add(FABlocks.CYCADEOIDEA.get());
+        this.add(FABlocks.ONYCHIOPSIS.get());
         this.add(FABlocks.MACROTAENIOPTERIS.get());
         this.add(FABlocks.DIPTERIS.get());
         this.add(FABlocks.ZAMITES_HEAD.get());
@@ -1837,6 +1838,10 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAStructureTags.MACHU_PICCHU, "Machu Picchu");
         this.add(FAStructureTags.MAYAN_TEMPLE, "Mayan Temple");
         this.add(FAStructureTags.WEAPON_SHOP, "Weapon Shop");
+
+        // Trims
+        this.add("trim_material.fossilslegacy.amber", "Amber");
+        this.add("trim_material.fossilslegacy.jade", "Jade");
 
         // Upgrades
         this.add("upgrade.fossilslegacy.scarab_gem_upgrade", "Scarab Gem Upgrade");

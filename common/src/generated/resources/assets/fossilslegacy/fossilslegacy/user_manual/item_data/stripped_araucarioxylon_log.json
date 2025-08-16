@@ -1,0 +1,34 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:stripped_araucarioxylon_log"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:stripped_araucarioxylon_log"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.stripped_log.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.stripped_log.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:araucarioxylon_planks",
+    "fossilslegacy:stripped_araucarioxylon_wood"
+  ]
+}

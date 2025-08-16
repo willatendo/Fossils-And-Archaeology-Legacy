@@ -1,7 +1,64 @@
 {
   "variants": {
-    "": {
-      "model": "fossilslegacy:block/onychiopsis"
+    "facing=east,flower_amount=1": {
+      "model": "fossilslegacy:block/onychiopsis_1",
+      "y": 90
+    },
+    "facing=east,flower_amount=2": {
+      "model": "fossilslegacy:block/onychiopsis_2",
+      "y": 90
+    },
+    "facing=east,flower_amount=3": {
+      "model": "fossilslegacy:block/onychiopsis_3",
+      "y": 90
+    },
+    "facing=east,flower_amount=4": {
+      "model": "fossilslegacy:block/onychiopsis_4",
+      "y": 90
+    },
+    "facing=north,flower_amount=1": {
+      "model": "fossilslegacy:block/onychiopsis_1"
+    },
+    "facing=north,flower_amount=2": {
+      "model": "fossilslegacy:block/onychiopsis_2"
+    },
+    "facing=north,flower_amount=3": {
+      "model": "fossilslegacy:block/onychiopsis_3"
+    },
+    "facing=north,flower_amount=4": {
+      "model": "fossilslegacy:block/onychiopsis_4"
+    },
+    "facing=south,flower_amount=1": {
+      "model": "fossilslegacy:block/onychiopsis_1",
+      "y": 180
+    },
+    "facing=south,flower_amount=2": {
+      "model": "fossilslegacy:block/onychiopsis_2",
+      "y": 180
+    },
+    "facing=south,flower_amount=3": {
+      "model": "fossilslegacy:block/onychiopsis_3",
+      "y": 180
+    },
+    "facing=south,flower_amount=4": {
+      "model": "fossilslegacy:block/onychiopsis_4",
+      "y": 180
+    },
+    "facing=west,flower_amount=1": {
+      "model": "fossilslegacy:block/onychiopsis_1",
+      "y": 270
+    },
+    "facing=west,flower_amount=2": {
+      "model": "fossilslegacy:block/onychiopsis_2",
+      "y": 270
+    },
+    "facing=west,flower_amount=3": {
+      "model": "fossilslegacy:block/onychiopsis_3",
+      "y": 270
+    },
+    "facing=west,flower_amount=4": {
+      "model": "fossilslegacy:block/onychiopsis_4",
+      "y": 270
     }
   }
 }

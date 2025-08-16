@@ -1,0 +1,33 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:wollemia_fence"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:wollemia_fence"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.fence.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.fence.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:wollemia_fence"
+  ]
+}

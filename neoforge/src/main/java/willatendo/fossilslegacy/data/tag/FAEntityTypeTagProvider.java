@@ -9,6 +9,7 @@ import net.minecraft.world.entity.EntityType;
 import net.neoforged.neoforge.common.Tags;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.tags.FAEntityTypeTags;
+import willatendo.simplelibrary.server.registry.SimpleHolder;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -19,7 +20,7 @@ public class FAEntityTypeTagProvider extends EntityTypeTagsProvider {
 
     @Override
     protected void addTags(Provider provider) {
-        this.tag(EntityTypeTags.BOAT).add(FAEntityTypes.ARCHAEOPTERIS_BOAT.get(), FAEntityTypes.CALAMITES_BOAT.get(), FAEntityTypes.GINKGO_BOAT.get(), FAEntityTypes.LEPIDODENDRON_BOAT.get(), FAEntityTypes.SIGILLARIA_BOAT.get());
+        this.tag(EntityTypeTags.BOAT).add(FAEntityTypes.BOATS.stream().map(SimpleHolder::get).toArray(EntityType[]::new));
         this.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(FAEntityTypes.DODO.get(), FAEntityTypes.PTERANODON.get());
         this.tag(EntityTypeTags.CAN_BREATHE_UNDER_WATER).add(FAEntityTypes.MOSASAURUS.get(), FAEntityTypes.FUTABASAURUS.get(), FAEntityTypes.SPINOSAURUS.get());
         this.tag(Tags.EntityTypes.BOATS).add(FAEntityTypes.ARCHAEOPTERIS_CHEST_BOAT.get(), FAEntityTypes.CALAMITES_CHEST_BOAT.get(), FAEntityTypes.GINKGO_CHEST_BOAT.get(), FAEntityTypes.LEPIDODENDRON_CHEST_BOAT.get(), FAEntityTypes.SIGILLARIA_CHEST_BOAT.get());

@@ -1,10 +1,14 @@
 {
   "values": [
-    "fossilslegacy:archaeopteris_hanging_sign",
     "fossilslegacy:lepidodendron_hanging_sign",
     "fossilslegacy:sigillaria_hanging_sign",
     "fossilslegacy:calamites_hanging_sign",
+    "fossilslegacy:archaeopteris_hanging_sign",
     "fossilslegacy:ginkgo_hanging_sign",
-    "fossilslegacy:araucaria_hanging_sign"
+    "fossilslegacy:araucaria_hanging_sign",
+    "fossilslegacy:araucarioxylon_hanging_sign",
+    "fossilslegacy:cordaites_hanging_sign",
+    "fossilslegacy:wollemia_hanging_sign",
+    "fossilslegacy:metasequoia_hanging_sign"
   ]
 }

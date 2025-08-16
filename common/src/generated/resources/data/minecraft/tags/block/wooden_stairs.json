@@ -1,10 +1,14 @@
 {
   "values": [
-    "fossilslegacy:archaeopteris_stairs",
     "fossilslegacy:lepidodendron_stairs",
     "fossilslegacy:sigillaria_stairs",
     "fossilslegacy:calamites_stairs",
+    "fossilslegacy:archaeopteris_stairs",
     "fossilslegacy:ginkgo_stairs",
-    "fossilslegacy:araucaria_stairs"
+    "fossilslegacy:araucaria_stairs",
+    "fossilslegacy:araucarioxylon_stairs",
+    "fossilslegacy:cordaites_stairs",
+    "fossilslegacy:wollemia_stairs",
+    "fossilslegacy:metasequoia_stairs"
   ]
 }

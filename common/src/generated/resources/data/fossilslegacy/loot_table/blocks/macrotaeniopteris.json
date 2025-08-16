@@ -20,6 +20,78 @@
               }
             }
           ],
+          "functions": [
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "block": "fossilslegacy:macrotaeniopteris",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "amount": "1"
+                  }
+                }
+              ],
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            },
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "block": "fossilslegacy:macrotaeniopteris",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "amount": "2"
+                  }
+                }
+              ],
+              "count": 2.0,
+              "function": "minecraft:set_count"
+            },
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "block": "fossilslegacy:macrotaeniopteris",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "amount": "3"
+                  }
+                }
+              ],
+              "count": 3.0,
+              "function": "minecraft:set_count"
+            },
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "block": "fossilslegacy:macrotaeniopteris",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "amount": "4"
+                  }
+                }
+              ],
+              "count": 4.0,
+              "function": "minecraft:set_count"
+            },
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "block": "fossilslegacy:macrotaeniopteris",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "amount": "5"
+                  }
+                }
+              ],
+              "count": 5.0,
+              "function": "minecraft:set_count"
+            }
+          ],
           "name": "fossilslegacy:macrotaeniopteris"
         }
       ],

@@ -1,0 +1,33 @@
+{
+  "displayed_loot_tables": [
+    {
+      "type": "block_loot",
+      "display": {
+        "id": "fossilslegacy:cordaites_door"
+      },
+      "loot": [
+        [
+          {
+            "drop": {
+              "id": "fossilslegacy:cordaites_door"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "displayed_paragraphs": [
+    {
+      "translate": "item.fossilslegacy.user_manual.information.door.description"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.door.use"
+    },
+    {
+      "translate": "item.fossilslegacy.user_manual.information.read_recipes"
+    }
+  ],
+  "displayed_recipes": [
+    "fossilslegacy:cordaites_door"
+  ]
+}

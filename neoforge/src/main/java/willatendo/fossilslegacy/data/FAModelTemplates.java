@@ -33,6 +33,10 @@ public final class FAModelTemplates {
     public static final ExtendedModelTemplate TEMPLATE_COOKSONIA_4 = FAModelTemplates.create("template_cooksonia_4", TextureSlot.TEXTURE).build();
     public static final ExtendedModelTemplate TEMPLATE_CLAYTOSMUNDA = FAModelTemplates.create("template_claytosmunda", FATextureSlot.SHORT_LEAVES, FATextureSlot.TALL_LEAVES).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_CYCADEOIDEA = FAModelTemplates.create("template_cycadeoidea", TextureSlot.TEXTURE).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_ONYCHIOPSIS_1 = FAModelTemplates.create("template_onychiopsis_1", TextureSlot.UPPER_STEM, TextureSlot.STEM).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_ONYCHIOPSIS_2 = FAModelTemplates.create("template_onychiopsis_2", TextureSlot.UPPER_STEM, TextureSlot.STEM).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_ONYCHIOPSIS_3 = FAModelTemplates.create("template_onychiopsis_3", TextureSlot.UPPER_STEM, TextureSlot.STEM).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_ONYCHIOPSIS_4 = FAModelTemplates.create("template_onychiopsis_4", TextureSlot.UPPER_STEM, TextureSlot.STEM).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_DECORATION_PLAQUE_POST = FAModelTemplates.create("template_decoration_plaque_post", FATextureSlot.POST).build();
     public static final ExtendedModelTemplate TEMPLATE_PLANT_1 = FAModelTemplates.create("template_plant_1", FATextureSlot.PLANT_1).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_PLANT_2 = FAModelTemplates.create("template_plant_2", FATextureSlot.PLANT_2).renderType("cutout").build();

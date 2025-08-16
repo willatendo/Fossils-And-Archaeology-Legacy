@@ -1,10 +1,14 @@
 {
   "values": [
-    "fossilslegacy:archaeopteris_trapdoor",
     "fossilslegacy:lepidodendron_trapdoor",
     "fossilslegacy:sigillaria_trapdoor",
     "fossilslegacy:calamites_trapdoor",
+    "fossilslegacy:archaeopteris_trapdoor",
     "fossilslegacy:ginkgo_trapdoor",
-    "fossilslegacy:araucaria_trapdoor"
+    "fossilslegacy:araucaria_trapdoor",
+    "fossilslegacy:araucarioxylon_trapdoor",
+    "fossilslegacy:cordaites_trapdoor",
+    "fossilslegacy:wollemia_trapdoor",
+    "fossilslegacy:metasequoia_trapdoor"
   ]
 }

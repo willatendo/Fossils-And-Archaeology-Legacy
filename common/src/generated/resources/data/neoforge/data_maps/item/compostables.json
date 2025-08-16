@@ -78,6 +78,12 @@
     "fossilslegacy:lepidodendron_sapling": {
       "chance": 0.3
     },
+    "fossilslegacy:metasequoia_leaves": {
+      "chance": 0.3
+    },
+    "fossilslegacy:metasequoia_sapling": {
+      "chance": 0.3
+    },
     "fossilslegacy:sarcandra_berries": {
       "chance": 0.35
     },
