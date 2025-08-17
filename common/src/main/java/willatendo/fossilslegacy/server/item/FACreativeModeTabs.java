@@ -11,6 +11,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import willatendo.fossilslegacy.platform.FAModloaderHelper;
 import willatendo.fossilslegacy.server.block.FABlocks;
@@ -21,6 +22,7 @@ import willatendo.fossilslegacy.server.entity.entities.StoneTablet;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 import willatendo.fossilslegacy.server.item.items.DNAItem;
 import willatendo.fossilslegacy.server.item.items.MagicConchItem;
+import willatendo.fossilslegacy.server.registry.FABlockRegistry;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.stone_tablet_variant.StoneTabletVariant;
 import willatendo.fossilslegacy.server.tags.FAFossilVariantTags;
@@ -773,8 +775,9 @@ public final class FACreativeModeTabs {
     }
 
     private static void addHeads(CreativeModeTab.Output output) {
-        output.accept(FABlocks.ANKYLOSAURUS_HEAD.get());
-        output.accept(FABlocks.BARYONYX_HEAD.get());
+        for (Block head : FABlockRegistry.getHeads()) {
+            output.accept(head);
+        }
     }
 
     private static void addMusicDiscs(CreativeModeTab.Output output) {

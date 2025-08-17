@@ -15,23 +15,50 @@ import net.minecraft.world.level.block.SkullBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.RotationSegment;
 import willatendo.fossilslegacy.client.FAModelLayers;
-import willatendo.fossilslegacy.client.model.dinosaur.head.AnkylosaursHeadModel;
-import willatendo.fossilslegacy.client.model.dinosaur.head.BaryonyxHeadModel;
-import willatendo.fossilslegacy.client.model.dinosaur.head.HeadModel;
+import willatendo.fossilslegacy.client.model.dinosaur.head.*;
 import willatendo.fossilslegacy.server.block.blocks.AbstractHeadBlock;
 import willatendo.fossilslegacy.server.block.blocks.WallHeadBlock;
 import willatendo.fossilslegacy.server.block.entity.entities.HeadBlockEntity;
 import willatendo.fossilslegacy.server.item.FAHeadTypes;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
 public class HeadBlockEntityRenderer implements BlockEntityRenderer<HeadBlockEntity> {
-    private static final Map<FAHeadTypes, ResourceLocation> TEXTURE_BY_HEAD = Map.of(
-            FAHeadTypes.ANKYLOSAURUS, FAUtils.resource("textures/entity/ankylosaurus/ankylosaurus.png"),
-            FAHeadTypes.BARYONYX, FAUtils.resource("textures/entity/baryonyx/baryonyx.png")
-    );
+    private static final Map<FAHeadTypes, ResourceLocation> TEXTURE_BY_HEAD = Util.make(() -> {
+        Map<FAHeadTypes, ResourceLocation> map = new HashMap<>();
+        map.put(FAHeadTypes.ANKYLOSAURUS, FAUtils.resource("textures/entity/ankylosaurus/ankylosaurus.png"));
+        map.put(FAHeadTypes.BARYONYX, FAUtils.resource("textures/entity/baryonyx/baryonyx.png"));
+        map.put(FAHeadTypes.BRACHIOSAURUS, FAUtils.resource("textures/entity/brachiosaurus/brachiosaurus.png"));
+        map.put(FAHeadTypes.CARNOTAURUS, FAUtils.resource("textures/entity/carnotaurus/red_carnotaurus_adult.png"));
+        map.put(FAHeadTypes.COMPSOGNATHUS, FAUtils.resource("textures/entity/compsognathus/compsognathus.png"));
+        map.put(FAHeadTypes.CRYOLOPHOSAURUS, FAUtils.resource("textures/entity/cryolophosaurus/cryolophosaurus.png"));
+        map.put(FAHeadTypes.DILOPHOSAURUS, FAUtils.resource("textures/entity/dilophosaurus/dilophosaurus.png"));
+        map.put(FAHeadTypes.DIMETRODON, FAUtils.resource("textures/entity/dimetrodon/dimetrodon_adult.png"));
+        map.put(FAHeadTypes.DISTORTUS_REX, FAUtils.resource("textures/entity/distortus_rex/distortus_rex.png"));
+        map.put(FAHeadTypes.DODO, FAUtils.resource("textures/entity/dodo/dodo.png"));
+        map.put(FAHeadTypes.DRYOSAURUS, FAUtils.resource("textures/entity/dryosaurus/dryosaurus.png"));
+        map.put(FAHeadTypes.ELASMOTHERIUM, FAUtils.resource("textures/entity/elasmotherium/elasmotherium.png"));
+        map.put(FAHeadTypes.FUTABASAURUS, FAUtils.resource("textures/entity/futabasaurus/futabasaurus.png"));
+        map.put(FAHeadTypes.GALLIMIMUS, FAUtils.resource("textures/entity/gallimimus/gallimimus_adult.png"));
+        map.put(FAHeadTypes.ICHTHYOSAURUS, FAUtils.resource("textures/entity/ichthyosaurus/ichthyosaurus.png"));
+        map.put(FAHeadTypes.MAMMOTH, FAUtils.resource("textures/entity/mammoth/mammoth_adult_fur.png"));
+        map.put(FAHeadTypes.MOA, FAUtils.resource("textures/entity/moa/moa.png"));
+        map.put(FAHeadTypes.MOSASAURUS, FAUtils.resource("textures/entity/mosasaurus/mosasaurus.png"));
+        map.put(FAHeadTypes.PACHYCEPHALOSAURUS, FAUtils.resource("textures/entity/pachycephalosaurus/pachycephalosaurus_adult.png"));
+        map.put(FAHeadTypes.PTERANODON, FAUtils.resource("textures/entity/pteranodon/pteranodon_adult.png"));
+        map.put(FAHeadTypes.SMILODON, FAUtils.resource("textures/entity/smilodon/smilodon_adult.png"));
+        map.put(FAHeadTypes.SPINOSAURUS, FAUtils.resource("textures/entity/spinosaurus/spinosaurus_adult.png"));
+        map.put(FAHeadTypes.STEGOSAURUS, FAUtils.resource("textures/entity/stegosaurus/stegosaurus_adult.png"));
+        map.put(FAHeadTypes.THERIZINOSAURUS, FAUtils.resource("textures/entity/therizinosaurus/therizinosaurus_adult.png"));
+        map.put(FAHeadTypes.TRICERATOPS, FAUtils.resource("textures/entity/triceratops/green_triceratops_adult.png"));
+        map.put(FAHeadTypes.TYRANNOSAURUS, FAUtils.resource("textures/entity/tyrannosaurus/tyrannosaurus_adult.png"));
+        map.put(FAHeadTypes.VELOCIRAPTOR, FAUtils.resource("textures/entity/velociraptor/green_velociraptor_adult.png"));
+        return map;
+    });
+
     private final Function<FAHeadTypes, HeadModel> modelByHead;
 
     public static HeadModel createModel(EntityModelSet modelSet, FAHeadTypes faHeadTypes) {
@@ -39,8 +66,48 @@ public class HeadBlockEntityRenderer implements BlockEntityRenderer<HeadBlockEnt
         switch (faHeadTypes) {
             case ANKYLOSAURUS ->
                     headModel = new AnkylosaursHeadModel(modelSet.bakeLayer(FAModelLayers.ANKYLOSAURUS_HEAD));
-            case BARYONYX ->
-                    headModel = new BaryonyxHeadModel(modelSet.bakeLayer(FAModelLayers.BARYONYX_HEAD));
+            case BARYONYX -> headModel = new BaryonyxHeadModel(modelSet.bakeLayer(FAModelLayers.BARYONYX_HEAD));
+            case BRACHIOSAURUS ->
+                    headModel = new BrachiosaurusHeadModel(modelSet.bakeLayer(FAModelLayers.BRACHIOSAURUS_HEAD));
+            case CARNOTAURUS ->
+                    headModel = new CarnotaurusHeadModel(modelSet.bakeLayer(FAModelLayers.CARNOTAURUS_HEAD));
+            case COMPSOGNATHUS ->
+                    headModel = new CompsognathusHeadModel(modelSet.bakeLayer(FAModelLayers.COMPSOGNATHUS_HEAD));
+            case CRYOLOPHOSAURUS ->
+                    headModel = new CryolophosaurusHeadModel(modelSet.bakeLayer(FAModelLayers.CRYOLOPHOSAURUS_HEAD));
+            case DILOPHOSAURUS ->
+                    headModel = new DilophosaurusHeadModel(modelSet.bakeLayer(FAModelLayers.DILOPHOSAURUS_HEAD));
+            case DIMETRODON -> headModel = new DimetrodonHeadModel(modelSet.bakeLayer(FAModelLayers.DIMETRODON_HEAD));
+            case DISTORTUS_REX ->
+                    headModel = new DistortusRexHeadModel(modelSet.bakeLayer(FAModelLayers.DISTORTUS_REX_HEAD));
+            case DODO -> headModel = new DodoHeadModel(modelSet.bakeLayer(FAModelLayers.DODO_HEAD));
+            case DRYOSAURUS -> headModel = new DryosaurusHeadModel(modelSet.bakeLayer(FAModelLayers.DRYOSAURUS_HEAD));
+            case ELASMOTHERIUM ->
+                    headModel = new ElasmotheriumHeadModel(modelSet.bakeLayer(FAModelLayers.ELASMOTHERIUM_HEAD));
+            case FUTABASAURUS ->
+                    headModel = new FutabasaurusHeadModel(modelSet.bakeLayer(FAModelLayers.FUTABASAURUS_HEAD));
+            case GALLIMIMUS -> headModel = new GallimimusHeadModel(modelSet.bakeLayer(FAModelLayers.GALLIMIMUS_HEAD));
+            case ICHTHYOSAURUS ->
+                    headModel = new IchthyosaurusHeadModel(modelSet.bakeLayer(FAModelLayers.ICHTHYOSAURUS_HEAD));
+            case MAMMOTH -> headModel = new MammothHeadModel(modelSet.bakeLayer(FAModelLayers.MAMMOTH_HEAD));
+            case MOA -> headModel = new MoaHeadModel(modelSet.bakeLayer(FAModelLayers.MOA_HEAD));
+            case MOSASAURUS -> headModel = new MosasaurusHeadModel(modelSet.bakeLayer(FAModelLayers.MOSASAURUS_HEAD));
+            case PACHYCEPHALOSAURUS ->
+                    headModel = new PachycephalosaurusHeadModel(modelSet.bakeLayer(FAModelLayers.PACHYCEPHALOSAURUS_HEAD));
+            case PTERANODON -> headModel = new PteranodonHeadModel(modelSet.bakeLayer(FAModelLayers.PTERANODON_HEAD));
+            case SMILODON -> headModel = new SmilodonHeadModel(modelSet.bakeLayer(FAModelLayers.SMILODON_HEAD));
+            case SPINOSAURUS ->
+                    headModel = new SpinosaurusHeadModel(modelSet.bakeLayer(FAModelLayers.SPINOSAURUS_HEAD));
+            case STEGOSAURUS ->
+                    headModel = new StegosaurusHeadModel(modelSet.bakeLayer(FAModelLayers.STEGOSAURUS_HEAD));
+            case THERIZINOSAURUS ->
+                    headModel = new TherizinosaurusHeadModel(modelSet.bakeLayer(FAModelLayers.THERIZINOSAURUS_HEAD));
+            case TRICERATOPS ->
+                    headModel = new TriceratopsHeadModel(modelSet.bakeLayer(FAModelLayers.TRICERATOPS_HEAD));
+            case TYRANNOSAURUS ->
+                    headModel = new TyrannosaurusHeadModel(modelSet.bakeLayer(FAModelLayers.TYRANNOSAURUS_HEAD));
+            case VELOCIRAPTOR ->
+                    headModel = new VelociraptorHeadModel(modelSet.bakeLayer(FAModelLayers.VELOCIRAPTOR_HEAD));
             default -> throw new MatchException(null, null);
         }
         return headModel;

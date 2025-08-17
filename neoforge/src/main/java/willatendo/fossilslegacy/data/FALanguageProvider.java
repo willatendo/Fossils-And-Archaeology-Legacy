@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.data;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Anu;
@@ -274,8 +275,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
             this.add(FABlockRegistry.getButton(i).get());
             this.add(FABlockRegistry.getSlab(i).get());
         }
-        this.add(FABlocks.ANKYLOSAURUS_HEAD.get());
-        this.add(FABlocks.BARYONYX_HEAD.get());
+        for (Block headBlock : FABlockRegistry.getHeads()) {
+            this.add(headBlock);
+        }
 
         // Biomes
         this.add("biome.fossilslegacy.prehistoric_ocean", "Prehistoric Ocean");

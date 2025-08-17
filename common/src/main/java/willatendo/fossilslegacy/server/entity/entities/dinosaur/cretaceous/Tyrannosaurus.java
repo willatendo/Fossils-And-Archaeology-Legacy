@@ -107,6 +107,11 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
     }
 
     @Override
+    protected ItemStack getHead() {
+        return new ItemStack(FAItems.TYRANNOSAURUS_HEAD.get());
+    }
+
+    @Override
     public boolean hurtServer(ServerLevel serverLevel, DamageSource damageSource, float damage) {
         if (damageSource.is(FADamageTypeTags.TYRANNOSAURUS_IMMUNE)) {
             return false;

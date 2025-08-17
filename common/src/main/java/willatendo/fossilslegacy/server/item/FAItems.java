@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.server.item;
 
-import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -8,9 +7,10 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import willatendo.fossilslegacy.platform.FAModloaderHelper;
 import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.block.blocks.HeadBlock;
+import willatendo.fossilslegacy.server.block.blocks.WallHeadBlock;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.ordovician.IsotelusLarva;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Nautilus;
@@ -24,12 +24,8 @@ import willatendo.fossilslegacy.server.pregnancy_types.FAPregnancyTypes;
 import willatendo.fossilslegacy.server.registry.FAItemRegistry;
 import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 import willatendo.fossilslegacy.server.utils.FAUtils;
-import willatendo.simplelibrary.server.registry.ItemRegistry;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
-
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
 
 public final class FAItems {
     public static final FAItemRegistry ITEMS = new FAItemRegistry(SimpleRegistry.createItem(FAUtils.ID));
@@ -149,8 +145,33 @@ public final class FAItems {
     public static final SimpleHolder<PlaceOnWaterBlockItem> SALVINIA = ITEMS.registerBlock(FABlocks.SALVINIA, PlaceOnWaterBlockItem::new);
     public static final SimpleHolder<PlaceOnWaterBlockItem> LOTUS = ITEMS.registerBlock(FABlocks.LOTUS, PlaceOnWaterBlockItem::new);
     public static final SimpleHolder<BlockItem> SARCANDRA = ITEMS.registerBlock(FABlocks.SARCANDRA);
-    public static final SimpleHolder<StandingAndWallBlockItem> ANKYLOSAURUS_HEAD = ITEMS.registerBlock(FABlocks.ANKYLOSAURUS_HEAD, (block, properties) -> new StandingAndWallBlockItem(block, FABlocks.WALL_ANKYLOSAURUS_HEAD.get(), Direction.DOWN, properties), () -> new Item.Properties().rarity(Rarity.UNCOMMON).equippableUnswappable(EquipmentSlot.HEAD).useBlockDescriptionPrefix());
-    public static final SimpleHolder<StandingAndWallBlockItem> BARYONYX_HEAD = ITEMS.registerBlock(FABlocks.BARYONYX_HEAD, (block, properties) -> new StandingAndWallBlockItem(block, FABlocks.WALL_BARYONYX_HEAD.get(), Direction.DOWN, properties), () -> new Item.Properties().rarity(Rarity.UNCOMMON).equippableUnswappable(EquipmentSlot.HEAD).useBlockDescriptionPrefix());
+    public static final SimpleHolder<StandingAndWallBlockItem> ANKYLOSAURUS_HEAD = ITEMS.registerHead(FABlocks.ANKYLOSAURUS_HEAD, FABlocks.WALL_ANKYLOSAURUS_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> BARYONYX_HEAD = ITEMS.registerHead(FABlocks.BARYONYX_HEAD, FABlocks.WALL_BARYONYX_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> BRACHIOSAURUS_HEAD = ITEMS.registerHead(FABlocks.BRACHIOSAURUS_HEAD, FABlocks.WALL_BRACHIOSAURUS_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> CARNOTAURUS_HEAD = ITEMS.registerHead(FABlocks.CARNOTAURUS_HEAD, FABlocks.WALL_CARNOTAURUS_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> COMPSOGNATHUS_HEAD = ITEMS.registerHead(FABlocks.COMPSOGNATHUS_HEAD, FABlocks.WALL_COMPSOGNATHUS_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> CRYOLOPHOSAURUS_HEAD = ITEMS.registerHead(FABlocks.CRYOLOPHOSAURUS_HEAD, FABlocks.WALL_CRYOLOPHOSAURUS_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> DILOPHOSAURUS_HEAD = ITEMS.registerHead(FABlocks.DILOPHOSAURUS_HEAD, FABlocks.WALL_DILOPHOSAURUS_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> DIMETRODON_HEAD = ITEMS.registerHead(FABlocks.DIMETRODON_HEAD, FABlocks.WALL_DIMETRODON_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> DISTORTUS_REX_HEAD = ITEMS.registerHead(FABlocks.DISTORTUS_REX_HEAD, FABlocks.WALL_DISTORTUS_REX_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> DODO_HEAD = ITEMS.registerHead(FABlocks.DODO_HEAD, FABlocks.WALL_DODO_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> DRYOSAURUS_HEAD = ITEMS.registerHead(FABlocks.DRYOSAURUS_HEAD, FABlocks.WALL_DRYOSAURUS_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> ELASMOTHERIUM_HEAD = ITEMS.registerHead(FABlocks.ELASMOTHERIUM_HEAD, FABlocks.WALL_ELASMOTHERIUM_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> FUTABASAURUS_HEAD = ITEMS.registerHead(FABlocks.FUTABASAURUS_HEAD, FABlocks.WALL_FUTABASAURUS_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> GALLIMIMUS_HEAD = ITEMS.registerHead(FABlocks.GALLIMIMUS_HEAD, FABlocks.WALL_GALLIMIMUS_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> ICHTHYOSAURUS_HEAD = ITEMS.registerHead(FABlocks.ICHTHYOSAURUS_HEAD, FABlocks.WALL_ICHTHYOSAURUS_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> MAMMOTH_HEAD = ITEMS.registerHead(FABlocks.MAMMOTH_HEAD, FABlocks.WALL_MAMMOTH_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> MOA_HEAD = ITEMS.registerHead(FABlocks.MOA_HEAD, FABlocks.WALL_MOA_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> MOSASAURUS_HEAD = ITEMS.registerHead(FABlocks.MOSASAURUS_HEAD, FABlocks.WALL_MOSASAURUS_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> PACHYCEPHALOSAURUS_HEAD = ITEMS.registerHead(FABlocks.PACHYCEPHALOSAURUS_HEAD, FABlocks.WALL_PACHYCEPHALOSAURUS_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> PTERANODON_HEAD = ITEMS.registerHead(FABlocks.PTERANODON_HEAD, FABlocks.WALL_PTERANODON_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> SMILODON_HEAD = ITEMS.registerHead(FABlocks.SMILODON_HEAD, FABlocks.WALL_SMILODON_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> SPINOSAURUS_HEAD = ITEMS.registerHead(FABlocks.SPINOSAURUS_HEAD, FABlocks.WALL_SPINOSAURUS_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> STEGOSAURUS_HEAD = ITEMS.registerHead(FABlocks.STEGOSAURUS_HEAD, FABlocks.WALL_STEGOSAURUS_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> THERIZINOSAURUS_HEAD = ITEMS.registerHead(FABlocks.THERIZINOSAURUS_HEAD, FABlocks.WALL_THERIZINOSAURUS_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> TRICERATOPS_HEAD = ITEMS.registerHead(FABlocks.TRICERATOPS_HEAD, FABlocks.WALL_TRICERATOPS_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> TYRANNOSAURUS_HEAD = ITEMS.registerHead(FABlocks.TYRANNOSAURUS_HEAD, FABlocks.WALL_TYRANNOSAURUS_HEAD);
+    public static final SimpleHolder<StandingAndWallBlockItem> VELOCIRAPTOR_HEAD = ITEMS.registerHead(FABlocks.VELOCIRAPTOR_HEAD, FABlocks.WALL_VELOCIRAPTOR_HEAD);
     public static final SimpleHolder<BlockItem> LEPIDODENDRON_PLANKS = ITEMS.registerBlock(FABlocks.LEPIDODENDRON_PLANKS);
     public static final SimpleHolder<BlockItem> LEPIDODENDRON_SAPLING = ITEMS.registerBlock(FABlocks.LEPIDODENDRON_SAPLING);
     public static final SimpleHolder<BlockItem> LEPIDODENDRON_LOG = ITEMS.registerBlock(FABlocks.LEPIDODENDRON_LOG);

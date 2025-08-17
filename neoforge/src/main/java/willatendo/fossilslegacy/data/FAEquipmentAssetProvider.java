@@ -21,9 +21,7 @@ public class FAEquipmentAssetProvider extends EquipmentAssetProvider {
         output.accept(FAEquipmentAssets.SCARAB_GEM, this.humanoid("scarab_gem"));
     }
 
-
     private EquipmentClientInfo humanoid(String name) {
         return EquipmentClientInfo.builder().addHumanoidLayers(FAUtils.resource(name)).build();
     }
-
 }

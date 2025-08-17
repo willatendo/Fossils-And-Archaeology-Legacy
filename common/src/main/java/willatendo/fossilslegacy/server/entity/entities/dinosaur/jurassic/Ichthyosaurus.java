@@ -54,6 +54,7 @@ import willatendo.fossilslegacy.server.entity.util.Diet;
 import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
+import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 import willatendo.fossilslegacy.server.tags.FAStructureTags;
@@ -120,6 +121,11 @@ public class Ichthyosaurus extends Dinosaur implements DinopediaInformation {
     @Override
     public float[] healthPerGrowthStage() {
         return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 5.0F, 25.0F);
+    }
+
+    @Override
+    protected ItemStack getHead() {
+        return new ItemStack(FAItems.ICHTHYOSAURUS_HEAD.get());
     }
 
     @Override

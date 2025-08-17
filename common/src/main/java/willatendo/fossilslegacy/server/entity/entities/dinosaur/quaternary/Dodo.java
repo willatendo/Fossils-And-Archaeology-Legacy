@@ -17,6 +17,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -90,6 +91,11 @@ public class Dodo extends Dinosaur implements DinopediaInformation, FloatDownEnt
     @Override
     public float[] healthPerGrowthStage() {
         return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 2.0F, 4.0F);
+    }
+
+    @Override
+    protected ItemStack getHead() {
+        return new ItemStack(FAItems.DODO_HEAD.get());
     }
 
     @Override

@@ -181,8 +181,9 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
             this.dropSelf(FABlockRegistry.getButton(i).get());
             this.add(FABlockRegistry.getSlab(i).get(), this::createSlabItemTable);
         }
-        this.dropSelf(FABlocks.ANKYLOSAURUS_HEAD.get());
-        this.dropSelf(FABlocks.BARYONYX_HEAD.get());
+        for (Block headBlock : FABlockRegistry.getAllHeads()) {
+            this.dropSelf(headBlock);
+        }
     }
 
     protected LootTable.Builder createFossilOreLootTable(Block block, int randomRange, RandomItemEntry... randomItemEntries) {

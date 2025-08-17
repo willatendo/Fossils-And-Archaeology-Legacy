@@ -94,6 +94,11 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
     }
 
     @Override
+    protected ItemStack getHead() {
+        return new ItemStack(FAItems.VELOCIRAPTOR_HEAD.get());
+    }
+
+    @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D));

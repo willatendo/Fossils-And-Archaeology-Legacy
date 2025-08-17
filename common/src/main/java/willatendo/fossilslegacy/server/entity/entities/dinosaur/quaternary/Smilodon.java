@@ -21,6 +21,7 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
@@ -35,6 +36,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.AnimatedSittingEnt
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.ShakingEntity;
+import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
 import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
@@ -99,6 +101,11 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, ShakingE
     @Override
     public float[] healthPerGrowthStage() {
         return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 5.0F, 20.0F);
+    }
+
+    @Override
+    protected ItemStack getHead() {
+        return new ItemStack(FAItems.SMILODON_HEAD.get());
     }
 
     @Override

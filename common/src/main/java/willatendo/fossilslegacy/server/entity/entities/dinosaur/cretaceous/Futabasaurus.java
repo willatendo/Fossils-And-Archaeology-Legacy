@@ -39,6 +39,7 @@ import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.RideableDinosaur;
+import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
 import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
@@ -100,6 +101,11 @@ public class Futabasaurus extends Dinosaur implements DinopediaInformation, Ride
     @Override
     public float[] healthPerGrowthStage() {
         return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 5.0F, 10.0F);
+    }
+
+    @Override
+    protected ItemStack getHead() {
+        return new ItemStack(FAItems.FUTABASAURUS_HEAD.get());
     }
 
     @Override

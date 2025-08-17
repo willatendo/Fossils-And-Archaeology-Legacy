@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "fossilslegacy:item/template_ankylosaurus_head",
+    "model": {
+      "type": "fossilslegacy:head",
+      "head_type": "pachycephalosaurus"
+    }
+  }
+}

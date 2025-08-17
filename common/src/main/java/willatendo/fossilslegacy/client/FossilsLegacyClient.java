@@ -15,9 +15,9 @@ import net.minecraft.world.entity.animal.horse.Mule;
 import net.minecraft.world.item.crafting.RecipeMap;
 import net.minecraft.world.level.GrassColor;
 import willatendo.fossilslegacy.client.model.*;
+import willatendo.fossilslegacy.client.model.dinosaur.ElasmotheriumModels;
 import willatendo.fossilslegacy.client.model.dinosaur.NautilusModel;
-import willatendo.fossilslegacy.client.model.dinosaur.head.AnkylosaursHeadModel;
-import willatendo.fossilslegacy.client.model.dinosaur.head.BaryonyxHeadModel;
+import willatendo.fossilslegacy.client.model.dinosaur.head.*;
 import willatendo.fossilslegacy.client.model.vehicle.JeepModel;
 import willatendo.fossilslegacy.client.particle.Particles;
 import willatendo.fossilslegacy.client.render.*;
@@ -226,6 +226,31 @@ public final class FossilsLegacyClient {
 
         modelLayerRegister.register(FAModelLayers.ANKYLOSAURUS_HEAD, AnkylosaursHeadModel::createBodyLayer);
         modelLayerRegister.register(FAModelLayers.BARYONYX_HEAD, BaryonyxHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.BRACHIOSAURUS_HEAD, BrachiosaurusHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.CARNOTAURUS_HEAD, CarnotaurusHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.COMPSOGNATHUS_HEAD, CompsognathusHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.CRYOLOPHOSAURUS_HEAD, CryolophosaurusHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.DILOPHOSAURUS_HEAD, DilophosaurusHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.DIMETRODON_HEAD, DimetrodonHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.DISTORTUS_REX_HEAD, DistortusRexHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.DODO_HEAD, DodoHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.DRYOSAURUS_HEAD, DryosaurusHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.ELASMOTHERIUM_HEAD, ElasmotheriumHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.FUTABASAURUS_HEAD, FutabasaurusHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.GALLIMIMUS_HEAD, GallimimusHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.ICHTHYOSAURUS_HEAD, IchthyosaurusHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.MAMMOTH_HEAD, MammothHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.MOA_HEAD, MoaHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.MOSASAURUS_HEAD, MosasaurusHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.PACHYCEPHALOSAURUS_HEAD, PachycephalosaurusHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.PTERANODON_HEAD, PteranodonHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.SMILODON_HEAD, SmilodonHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.SPINOSAURUS_HEAD, SpinosaurusHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.STEGOSAURUS_HEAD, StegosaurusHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.THERIZINOSAURUS_HEAD, TherizinosaurusHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.TRICERATOPS_HEAD, TriceratopsHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.TYRANNOSAURUS_HEAD, TyrannosaurusHeadModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.VELOCIRAPTOR_HEAD, VelociraptorHeadModel::createBodyLayer);
     }
 
     public static void menuScreenEvent(MenuScreenRegistry menuScreenRegister) {

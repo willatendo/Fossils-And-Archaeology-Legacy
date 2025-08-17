@@ -15,6 +15,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
@@ -74,6 +75,11 @@ public class Moa extends Dinosaur implements DinopediaInformation {
     @Override
     public float[] healthPerGrowthStage() {
         return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 3.0F, 15.0F);
+    }
+
+    @Override
+    protected ItemStack getHead() {
+        return new ItemStack(FAItems.MOA_HEAD.get());
     }
 
     @Override

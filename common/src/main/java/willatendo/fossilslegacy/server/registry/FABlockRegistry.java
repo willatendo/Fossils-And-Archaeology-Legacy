@@ -11,10 +11,8 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import willatendo.fossilslegacy.server.block.FABlocks;
-import willatendo.fossilslegacy.server.block.blocks.FossilsCeilingHangingSignBlock;
-import willatendo.fossilslegacy.server.block.blocks.FossilsStandingSignBlock;
-import willatendo.fossilslegacy.server.block.blocks.FossilsWallHangingSignBlock;
-import willatendo.fossilslegacy.server.block.blocks.FossilsWallSignBlock;
+import willatendo.fossilslegacy.server.block.blocks.*;
+import willatendo.fossilslegacy.server.item.FAHeadTypes;
 import willatendo.fossilslegacy.server.tags.FABlockTags;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
 import willatendo.simplelibrary.server.registry.BlockRegistry;
@@ -51,9 +49,16 @@ public record FABlockRegistry(BlockRegistry blockRegistry) {
     public static final List<SimpleHolder<FlowerPotBlock>> POTTED_SAPLINGS = new ArrayList<>();
     public static final List<SimpleHolder<ButtonBlock>> BUTTONS = new ArrayList<>();
     public static final List<SimpleHolder<SlabBlock>> SLABS = new ArrayList<>();
+    public static final List<SimpleHolder<? extends AbstractHeadBlock>> ALL_HEADS = new ArrayList<>();
+    public static final List<SimpleHolder<HeadBlock>> HEADS = new ArrayList<>();
+    public static final List<SimpleHolder<WallHeadBlock>> WALL_HEADS = new ArrayList<>();
 
     public static int woodSize() {
         return 10;
+    }
+
+    public static int headSize() {
+        return ALL_HEADS.size() / 2;
     }
 
     public static SimpleHolder<Block> getPlanks(int i) {
@@ -224,6 +229,22 @@ public record FABlockRegistry(BlockRegistry blockRegistry) {
         return SLABS.stream().map(SimpleHolder::get).toArray(Block[]::new);
     }
 
+    public static SimpleHolder<HeadBlock> getHeads(int i) {
+        return HEADS.get(i);
+    }
+
+    public static Block[] getHeads() {
+        return HEADS.stream().map(SimpleHolder::get).toArray(Block[]::new);
+    }
+
+    public static SimpleHolder<WallHeadBlock> getWallHeads(int i) {
+        return WALL_HEADS.get(i);
+    }
+
+    public static Block[] getAllHeads() {
+        return ALL_HEADS.stream().map(SimpleHolder::get).toArray(Block[]::new);
+    }
+
     public SimpleHolder<Block> registerPlanks(String name, MapColor mapColor) {
         SimpleHolder<Block> planks = this.registerBlock(name, BlockBehaviour.Properties.of().mapColor(mapColor).instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava());
         PLANKS.add(planks);
@@ -346,6 +367,20 @@ public record FABlockRegistry(BlockRegistry blockRegistry) {
         SimpleHolder<SlabBlock> slab = this.registerBlock(name, SlabBlock::new, () -> BlockBehaviour.Properties.of().mapColor(mapColor).instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava());
         SLABS.add(slab);
         return slab;
+    }
+
+    public SimpleHolder<HeadBlock> registerHead(FAHeadTypes faHeadTypes) {
+        SimpleHolder<HeadBlock> head = this.registerBlock(faHeadTypes.getSerializedName() + "_head", properties -> new HeadBlock(faHeadTypes, properties), () -> BlockBehaviour.Properties.of().strength(1.0F).pushReaction(PushReaction.DESTROY));
+        HEADS.add(head);
+        ALL_HEADS.add(head);
+        return head;
+    }
+
+    public SimpleHolder<WallHeadBlock> registerWallHead(SimpleHolder<HeadBlock> holder) {
+        SimpleHolder<WallHeadBlock> wallHead = this.registerBlock("wall_" + holder.getRegisteredName().replace("fossilslegacy:", ""), properties -> new WallHeadBlock(holder.get().getType(), properties), () -> FABlocks.wallVariant(holder.get(), true).strength(1.0F).pushReaction(PushReaction.DESTROY));
+        WALL_HEADS.add(wallHead);
+        ALL_HEADS.add(wallHead);
+        return wallHead;
     }
 
     public SimpleHolder<Block> registerBlock(String name, BlockBehaviour.Properties properties) {

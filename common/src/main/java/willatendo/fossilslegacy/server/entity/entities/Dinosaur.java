@@ -26,6 +26,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
@@ -83,6 +84,8 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
     public abstract Diet getDiet();
 
     public abstract float[] healthPerGrowthStage();
+
+    protected abstract ItemStack getHead();
 
     @Override
     public boolean canSendMessage() {
@@ -645,5 +648,20 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
     @Override
     public SoundSource getSoundSource() {
         return SoundSource.NEUTRAL;
+    }
+
+    @Override
+    protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource damageSource, boolean flag) {
+        super.dropCustomDeathLoot(serverLevel, damageSource, flag);
+        Entity entity = damageSource.getEntity();
+        if (entity instanceof Creeper creeper) {
+            if (creeper.canDropMobsSkull()) {
+                ItemStack skullItemStack = this.getHead();
+                if (!skullItemStack.isEmpty()) {
+                    creeper.increaseDroppedSkulls();
+                    this.spawnAtLocation(serverLevel, skullItemStack);
+                }
+            }
+        }
     }
 }

@@ -37,6 +37,31 @@ public final class FAModelLayers {
 
     public static final ModelLayerLocation ANKYLOSAURUS_HEAD = FAModelLayers.create("ankylosaurus_head");
     public static final ModelLayerLocation BARYONYX_HEAD = FAModelLayers.create("baryonyx_head");
+    public static final ModelLayerLocation BRACHIOSAURUS_HEAD = FAModelLayers.create("brachiosaurus_head");
+    public static final ModelLayerLocation CARNOTAURUS_HEAD = FAModelLayers.create("carnotaurus_head");
+    public static final ModelLayerLocation COMPSOGNATHUS_HEAD = FAModelLayers.create("compsognathus_head");
+    public static final ModelLayerLocation CRYOLOPHOSAURUS_HEAD = FAModelLayers.create("cryolophosaurus_head");
+    public static final ModelLayerLocation DILOPHOSAURUS_HEAD = FAModelLayers.create("dilophosaurus_head");
+    public static final ModelLayerLocation DIMETRODON_HEAD = FAModelLayers.create("dimetrodon_head");
+    public static final ModelLayerLocation DISTORTUS_REX_HEAD = FAModelLayers.create("distortus_rex_head");
+    public static final ModelLayerLocation DODO_HEAD = FAModelLayers.create("dodo_head");
+    public static final ModelLayerLocation DRYOSAURUS_HEAD = FAModelLayers.create("dryosaurus_head");
+    public static final ModelLayerLocation ELASMOTHERIUM_HEAD = FAModelLayers.create("elasmotherium_head");
+    public static final ModelLayerLocation FUTABASAURUS_HEAD = FAModelLayers.create("futabasaurus_head");
+    public static final ModelLayerLocation GALLIMIMUS_HEAD = FAModelLayers.create("gallimimus_head");
+    public static final ModelLayerLocation ICHTHYOSAURUS_HEAD = FAModelLayers.create("ichthyosaurus_head");
+    public static final ModelLayerLocation MAMMOTH_HEAD = FAModelLayers.create("mammoth_head");
+    public static final ModelLayerLocation MOA_HEAD = FAModelLayers.create("moa_head");
+    public static final ModelLayerLocation MOSASAURUS_HEAD = FAModelLayers.create("mosasaurus_head");
+    public static final ModelLayerLocation PACHYCEPHALOSAURUS_HEAD = FAModelLayers.create("pachycephalosaurus_head");
+    public static final ModelLayerLocation PTERANODON_HEAD = FAModelLayers.create("pteranodon_head");
+    public static final ModelLayerLocation SMILODON_HEAD = FAModelLayers.create("smilodon_head");
+    public static final ModelLayerLocation SPINOSAURUS_HEAD = FAModelLayers.create("spinosaurus_head");
+    public static final ModelLayerLocation STEGOSAURUS_HEAD = FAModelLayers.create("stegosaurus_head");
+    public static final ModelLayerLocation THERIZINOSAURUS_HEAD = FAModelLayers.create("therizinosaurus_head");
+    public static final ModelLayerLocation TRICERATOPS_HEAD = FAModelLayers.create("triceratops_head");
+    public static final ModelLayerLocation TYRANNOSAURUS_HEAD = FAModelLayers.create("tyrannosaurus_head");
+    public static final ModelLayerLocation VELOCIRAPTOR_HEAD = FAModelLayers.create("velociraptor_head");
 
     private static ModelLayerLocation create(String layerName) {
         return FAModelLayers.create(layerName, "main");

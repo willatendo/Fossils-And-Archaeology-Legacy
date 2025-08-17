@@ -55,6 +55,7 @@ import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.RideableDinosaur;
+import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.item.FALootTables;
 import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
@@ -142,6 +143,11 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
     @Override
     public float[] healthPerGrowthStage() {
         return DinosaurUtils.getHealths(this.getMaxGrowthStage(), 5.0F, 30.0F);
+    }
+
+    @Override
+    protected ItemStack getHead() {
+        return new ItemStack(FAItems.MAMMOTH_HEAD.get());
     }
 
     public int getSwingTick() {
