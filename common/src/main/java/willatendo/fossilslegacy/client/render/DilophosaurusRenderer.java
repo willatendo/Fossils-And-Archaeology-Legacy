@@ -8,9 +8,9 @@ import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRender
 import willatendo.fossilslegacy.client.render.layer.EyeLayer;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.jurassic.Dilophosaurus;
-import willatendo.fossilslegacy.server.pattern.FATextures;
-import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
-import willatendo.fossilslegacy.server.pattern.texture.Texture;
+import willatendo.fossilslegacy.server.gene.cosmetics.FATextures;
+import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.Texture;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,8 +27,8 @@ public class DilophosaurusRenderer extends DataDrivenModelDinosaurRenderer<Dilop
     }
 
     @Override
-    protected Optional<ResourceLocation> getAdditionalTexture(Registry<Texture> textureRegistry, DinosaurRenderState dinosaurRenderState, Pattern pattern) {
-        return dinosaurRenderState.isAttacking ? (dinosaurRenderState.isBaby && this.hasAggressiveBabyTexture(textureRegistry, pattern)) ? Optional.of(this.getAggressiveBabyTexture(textureRegistry, pattern)) : Optional.of(this.getAggressiveTexture(textureRegistry, pattern)) : Optional.empty();
+    protected Optional<ResourceLocation> getAdditionalTexture(Registry<Texture> textureRegistry, DinosaurRenderState dinosaurRenderState, PatternGene patternGene) {
+        return dinosaurRenderState.isAttacking ? (dinosaurRenderState.isBaby && this.hasAggressiveBabyTexture(textureRegistry, patternGene)) ? Optional.of(this.getAggressiveBabyTexture(textureRegistry, patternGene)) : Optional.of(this.getAggressiveTexture(textureRegistry, patternGene)) : Optional.empty();
     }
 
     @Override

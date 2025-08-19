@@ -5,8 +5,8 @@ import net.minecraft.resources.ResourceKey;
 import willatendo.fossilslegacy.client.render.json.DataDrivenModelMobRenderer;
 import willatendo.fossilslegacy.client.state.DataDrivenRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.ordovician.Isotelus;
-import willatendo.fossilslegacy.server.pattern.FATextures;
-import willatendo.fossilslegacy.server.pattern.texture.Texture;
+import willatendo.fossilslegacy.server.gene.cosmetics.FATextures;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.Texture;
 
 import java.util.List;
 

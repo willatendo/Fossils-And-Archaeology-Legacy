@@ -143,7 +143,7 @@ public class DNAHybridizerBlockEntity extends BaseContainerBlockEntity implement
     private boolean canHybridize(NonNullList<ItemStack> itemStacks, int maxStackSize) {
         ItemStack dna1 = itemStacks.get(0);
         ItemStack dna2 = itemStacks.get(1);
-        if (!dna1.isEmpty() && !dna2.isEmpty() && dna1.getItem() == dna2.getItem() && !dna1.has(FADataComponents.MODEL_TYPE.get()) && !dna1.has(FADataComponents.PATTERN_HOLDER.get()) && !dna2.has(FADataComponents.MODEL_TYPE.get()) && !dna2.has(FADataComponents.PATTERN_HOLDER.get()) && dna1.has(FADataComponents.PURITY.get()) && dna2.has(FADataComponents.PURITY.get()) && dna1.get(FADataComponents.PURITY.get()) != 100 && dna2.get(FADataComponents.PURITY.get()) != 100) {
+        if (!dna1.isEmpty() && !dna2.isEmpty() && dna1.getItem() == dna2.getItem() && !dna1.has(FADataComponents.MODEL_TYPE.get()) && !dna1.has(FADataComponents.COSMETIC_GENE_HOLDER.get()) && !dna2.has(FADataComponents.MODEL_TYPE.get()) && !dna2.has(FADataComponents.COSMETIC_GENE_HOLDER.get()) && dna1.has(FADataComponents.PURITY.get()) && dna2.has(FADataComponents.PURITY.get()) && dna1.get(FADataComponents.PURITY.get()) != 100 && dna2.get(FADataComponents.PURITY.get()) != 100) {
             ItemStack output = new ItemStack(dna1.getItem());
             if (dna1.has(FADataComponents.GENETIC_CODE.get()) && dna2.has(FADataComponents.GENETIC_CODE.get())) {
                 UUID geneticCode1 = dna1.get(FADataComponents.GENETIC_CODE.get());

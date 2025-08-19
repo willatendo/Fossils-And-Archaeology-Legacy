@@ -6,9 +6,9 @@ import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRenderer;
 import willatendo.fossilslegacy.client.state.PteranodonRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Pteranodon;
-import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.FATextures;
-import willatendo.fossilslegacy.server.pattern.texture.Texture;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.FATextures;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.Texture;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,8 +35,8 @@ public class PteranodonRenderer extends DataDrivenModelDinosaurRenderer<Pteranod
     }
 
     @Override
-    public Optional<ResourceLocation> getAdditionalModel(PteranodonRenderState pteranodonRenderState, ModelType modelType) {
-        ModelType.Models models = modelType.models();
+    public Optional<ResourceLocation> getAdditionalModel(PteranodonRenderState pteranodonRenderState, ModelGene modelGene) {
+        ModelGene.Models models = modelGene.models();
         return pteranodonRenderState.shouldLand ? this.additionalModel(models.landingModel(), models) : pteranodonRenderState.shouldFly ? this.additionalModel(models.flyingModel(), models) : Optional.empty();
     }
 

@@ -12,10 +12,10 @@ import net.minecraft.world.entity.Mob;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.client.state.DataDrivenRenderState;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DataDrivenCosmetics;
-import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.FATextures;
-import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
-import willatendo.fossilslegacy.server.pattern.texture.Texture;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.FATextures;
+import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.Texture;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 
 import java.util.List;
@@ -57,18 +57,18 @@ public abstract class DataDrivenModelMobRenderer<T extends Mob & DataDrivenCosme
 
     @Override
     public void render(S dataDrivenRenderState, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
-        ModelType modelType = dataDrivenRenderState.modelType.value();
-        this.setModel(modelType.models().model());
+        ModelGene modelGene = dataDrivenRenderState.modelType.value();
+        this.setModel(modelGene.models().model());
         super.render(dataDrivenRenderState, poseStack, multiBufferSource, partialTicks);
     }
 
     @Override
     public ResourceLocation getTextureLocation(S dataDrivenRenderState) {
-        Pattern skin = dataDrivenRenderState.skin.value();
+        PatternGene skin = dataDrivenRenderState.skin.value();
         return this.getBaseTexture(dataDrivenRenderState.textureRegistry, skin);
     }
 
-    public ResourceLocation getBaseTexture(Registry<Texture> textureRegistry, Pattern pattern) {
-        return pattern.getTexture(textureRegistry, FATextures.BASE, this.baseTextureName(), this.requiredTextures());
+    public ResourceLocation getBaseTexture(Registry<Texture> textureRegistry, PatternGene patternGene) {
+        return patternGene.getTexture(textureRegistry, FATextures.BASE, this.baseTextureName(), this.requiredTextures());
     }
 }

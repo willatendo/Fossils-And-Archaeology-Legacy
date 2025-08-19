@@ -1,15 +1,12 @@
 package willatendo.fossilslegacy.server.registry;
 
 import net.minecraft.core.Direction;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.vehicle.AbstractBoat;
-import net.minecraft.world.entity.vehicle.Boat;
-import net.minecraft.world.entity.vehicle.ChestBoat;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
-import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.block.blocks.*;
+import willatendo.fossilslegacy.server.item.FADataComponents;
+import willatendo.fossilslegacy.server.item.data_components.HeadDisplayInformation;
 import willatendo.simplelibrary.server.registry.ItemRegistry;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 
@@ -84,7 +81,7 @@ public record FAItemRegistry(ItemRegistry itemRegistry) {
     }
 
     public SimpleHolder<StandingAndWallBlockItem> registerHead(SimpleHolder<HeadBlock> head, SimpleHolder<WallHeadBlock> wallHead) {
-        return this.registerBlock(head, (block, properties) -> new StandingAndWallBlockItem(block, wallHead.get(), Direction.DOWN, properties), () -> new Item.Properties().rarity(Rarity.UNCOMMON).equippableUnswappable(EquipmentSlot.HEAD).useBlockDescriptionPrefix());
+        return this.registerBlock(head, (block, properties) -> new StandingAndWallBlockItem(block, wallHead.get(), Direction.DOWN, properties.component(FADataComponents.HEAD_DISPLAY_INFORMATION.get(), HeadDisplayInformation.NONE)), () -> new Item.Properties().rarity(Rarity.UNCOMMON).equippableUnswappable(EquipmentSlot.HEAD));
     }
 
     public SimpleHolder<Item> registerItem(String name) {

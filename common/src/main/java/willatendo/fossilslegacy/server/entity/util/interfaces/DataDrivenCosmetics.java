@@ -8,72 +8,39 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityDimensions;
-import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 
 import java.util.Optional;
 
 public interface DataDrivenCosmetics {
-    void setModelType(Holder<ModelType> modelType);
+    void setModelType(Holder<ModelGene> modelType);
 
-    Holder<ModelType> getModelType();
+    Holder<ModelGene> getModelType();
 
-    void setSkin(Holder<Pattern> pattern);
+    void setSkin(Holder<PatternGene> pattern);
 
-    Holder<Pattern> getSkin();
+    Holder<PatternGene> getSkin();
 
-    void setPattern(Holder<Pattern> pattern);
+    void setPattern(Holder<PatternGene> pattern);
 
-    Holder<Pattern> getPattern();
+    Holder<PatternGene> getPattern();
 
     default void addCosmeticsData(CompoundTag compoundTag, HolderLookup.Provider provider) {
         this.getModelType().unwrapKey().ifPresent(modelType -> compoundTag.putString("model_type", modelType.location().toString()));
-        this.getSkin().unwrapKey().ifPresent(skin -> compoundTag.putString("skin", skin.location().toString()));
+        this.getSkin().unwrapKey().ifPresent(skin -> compoundTag.putString("skinGenes", skin.location().toString()));
         if (this.getPattern() != null) {
-            this.getPattern().unwrapKey().ifPresent(pattern -> compoundTag.putString("pattern", pattern.location().toString()));
+            this.getPattern().unwrapKey().ifPresent(pattern -> compoundTag.putString("patternGenes", pattern.location().toString()));
         }
     }
 
     default void readCosmeticsData(CompoundTag compoundTag, HolderLookup.Provider provider) {
-        Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("model_type"))).map(id -> ResourceKey.create(FARegistries.MODEL_TYPES, id)).flatMap(resourceKey -> provider.lookupOrThrow(FARegistries.MODEL_TYPES).get(resourceKey)).ifPresent(this::setModelType);
-        Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("skin"))).map(id -> ResourceKey.create(FARegistries.PATTERN, id)).flatMap(resourceKey -> provider.lookupOrThrow(FARegistries.PATTERN).get(resourceKey)).ifPresent(this::setSkin);
-        if (compoundTag.contains("pattern")) {
-            Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("pattern"))).map(id -> ResourceKey.create(FARegistries.PATTERN, id)).flatMap(resourceKey -> provider.lookupOrThrow(FARegistries.PATTERN).get(resourceKey)).ifPresent(this::setPattern);
+        Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("model_type"))).map(id -> ResourceKey.create(FARegistries.MODEL_GENE, id)).flatMap(resourceKey -> provider.lookupOrThrow(FARegistries.MODEL_GENE).get(resourceKey)).ifPresent(this::setModelType);
+        Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("skinGenes"))).map(id -> ResourceKey.create(FARegistries.PATTERN_GENE, id)).flatMap(resourceKey -> provider.lookupOrThrow(FARegistries.PATTERN_GENE).get(resourceKey)).ifPresent(this::setSkin);
+        if (compoundTag.contains("patternGenes")) {
+            Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("patternGenes"))).map(id -> ResourceKey.create(FARegistries.PATTERN_GENE, id)).flatMap(resourceKey -> provider.lookupOrThrow(FARegistries.PATTERN_GENE).get(resourceKey)).ifPresent(this::setPattern);
         }
     }
 
-    default Component getOverridenName(Component defaultName) {
-        ModelType modelType = this.getModelType().value();
-        Optional<ModelType.OverrideInfo> overrideInfo = modelType.overrideInfo();
-        return (overrideInfo.isPresent() && overrideInfo.get().animalName().isPresent()) ? overrideInfo.get().animalName().get() : defaultName;
-    }
-
-    default SoundEvent getOverridenSoundEvent(SoundEvent defaultSoundEvent, ModelType.OverrideInfo.OverridenSoundType overridenSoundType) {
-        ModelType modelType = this.getModelType().value();
-        Optional<ModelType.OverrideInfo> overrideInfoOptional = modelType.overrideInfo();
-        if (overrideInfoOptional.isEmpty()) {
-            return defaultSoundEvent;
-        }
-        ModelType.OverrideInfo overrideInfo = overrideInfoOptional.get();
-        if (overridenSoundType == ModelType.OverrideInfo.OverridenSoundType.AMBIENT) {
-            Optional<SoundEvent> soundEvent = overrideInfo.getAmbientSound();
-            return soundEvent.orElse(defaultSoundEvent);
-        }
-        if (overridenSoundType == ModelType.OverrideInfo.OverridenSoundType.HURT) {
-            Optional<SoundEvent> soundEvent = overrideInfo.getHurtSound();
-            return soundEvent.orElse(defaultSoundEvent);
-        }
-        if (overridenSoundType == ModelType.OverrideInfo.OverridenSoundType.DEATH) {
-            Optional<SoundEvent> soundEvent = overrideInfo.getDeathSound();
-            return soundEvent.orElse(defaultSoundEvent);
-        }
-        return defaultSoundEvent;
-    }
-
-    default EntityDimensions getEntityDimensions(int growthStage) {
-        ModelType modelType = this.getModelType().value();
-        ModelType.BoundingBoxInfo boundingBoxInfo = modelType.boundingBoxInfo();
-        return EntityDimensions.scalable(boundingBoxInfo.boundingBoxWidth() + (boundingBoxInfo.boundingBoxGrowth() * growthStage), boundingBoxInfo.boundingBoxHeight() + (boundingBoxInfo.boundingBoxGrowth() * growthStage));
-    }
 }

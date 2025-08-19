@@ -14,9 +14,9 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.Level;
-import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.FAPatterns;
-import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.FAPatterns;
 import willatendo.fossilslegacy.server.pregnancy_types.FAPregnancyTypes;
 import willatendo.fossilslegacy.server.pregnancy_types.PregnancyType;
 import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
@@ -43,17 +43,17 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLe
 
     void setPregnancyType(Holder<PregnancyType> pregnancyType);
 
-    Holder<ModelType> getOffspringModelType();
+    Holder<ModelGene> getOffspringModelType();
 
-    void setOffspringModelType(Holder<ModelType> coatTypeHolder);
+    void setOffspringModelType(Holder<ModelGene> coatTypeHolder);
 
-    void setOffspringSkin(Holder<Pattern> pattern);
+    void setOffspringSkin(Holder<PatternGene> pattern);
 
-    Holder<Pattern> getOffspringSkin();
+    Holder<PatternGene> getOffspringSkin();
 
-    void setOffspringPattern(Holder<Pattern> pattern);
+    void setOffspringPattern(Holder<PatternGene> pattern);
 
-    Holder<Pattern> getOffspringPattern();
+    Holder<PatternGene> getOffspringPattern();
 
     T getBaseEntity(Level level);
 
@@ -85,12 +85,12 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLe
         this.onRemove(mob, baseEntity);
     }
 
-    default void definePregnancyData(SynchedEntityData.Builder builder, RegistryAccess registryAccess, EntityDataAccessor<Integer> pregnancyTime, EntityDataAccessor<Holder<PregnancyType>> pregnancyType, EntityDataAccessor<Holder<ModelType>> modelType, EntityDataAccessor<Holder<Pattern>> skin, EntityDataAccessor<Holder<Pattern>> pattern) {
+    default void definePregnancyData(SynchedEntityData.Builder builder, RegistryAccess registryAccess, EntityDataAccessor<Integer> pregnancyTime, EntityDataAccessor<Holder<PregnancyType>> pregnancyType, EntityDataAccessor<Holder<ModelGene>> modelType, EntityDataAccessor<Holder<PatternGene>> skin, EntityDataAccessor<Holder<PatternGene>> pattern) {
         builder.define(pregnancyTime, 0);
         builder.define(pregnancyType, FABuiltInRegistries.PREGNANCY_TYPES.getOrThrow(FAPregnancyTypes.CAT.getKey()));
-        builder.define(modelType, registryAccess.lookupOrThrow(FARegistries.MODEL_TYPES).getAny().orElseThrow());
-        builder.define(skin, registryAccess.lookupOrThrow(FARegistries.PATTERN).getAny().orElseThrow());
-        builder.define(pattern, registryAccess.lookupOrThrow(FARegistries.PATTERN).getAny().orElse(this.getLevel().holderLookup(FARegistries.PATTERN).getOrThrow(FAPatterns.BLANK)));
+        builder.define(modelType, registryAccess.lookupOrThrow(FARegistries.MODEL_GENE).getAny().orElseThrow());
+        builder.define(skin, registryAccess.lookupOrThrow(FARegistries.PATTERN_GENE).getAny().orElseThrow());
+        builder.define(pattern, registryAccess.lookupOrThrow(FARegistries.PATTERN_GENE).getAny().orElse(this.getLevel().holderLookup(FARegistries.PATTERN_GENE).getOrThrow(FAPatterns.BLANK)));
     }
 
     default void addPregnancyData(CompoundTag compoundTag, HolderLookup.Provider provider) {
@@ -106,10 +106,10 @@ public interface PregnantAnimal<T extends Entity> extends TicksToBirth, SimpleLe
     default void readPregnancyData(CompoundTag compoundTag, HolderLookup.Provider provider) {
         this.setRemainingPregnancyTime(compoundTag.getInt("pregnancy_time"));
         Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("pregnancy_type"))).map(id -> ResourceKey.create(FARegistries.PREGNANCY_TYPE, id)).flatMap(resourceKey -> provider.lookupOrThrow(FARegistries.PREGNANCY_TYPE).get(resourceKey)).ifPresent(this::setPregnancyType);
-        Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("offspring_model_type"))).map(id -> ResourceKey.create(FARegistries.MODEL_TYPES, id)).flatMap(resourceKey -> provider.lookupOrThrow(FARegistries.MODEL_TYPES).get(resourceKey)).ifPresent(this::setOffspringModelType);
-        Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("offspring_skin"))).map(id -> ResourceKey.create(FARegistries.PATTERN, id)).flatMap(resourceKey -> provider.lookupOrThrow(FARegistries.PATTERN).get(resourceKey)).ifPresent(this::setOffspringSkin);
+        Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("offspring_model_type"))).map(id -> ResourceKey.create(FARegistries.MODEL_GENE, id)).flatMap(resourceKey -> provider.lookupOrThrow(FARegistries.MODEL_GENE).get(resourceKey)).ifPresent(this::setOffspringModelType);
+        Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("offspring_skin"))).map(id -> ResourceKey.create(FARegistries.PATTERN_GENE, id)).flatMap(resourceKey -> provider.lookupOrThrow(FARegistries.PATTERN_GENE).get(resourceKey)).ifPresent(this::setOffspringSkin);
         if (compoundTag.contains("offspring_pattern")) {
-            Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("offspring_pattern"))).map(id -> ResourceKey.create(FARegistries.PATTERN, id)).flatMap(resourceKey -> provider.lookupOrThrow(FARegistries.PATTERN).get(resourceKey)).ifPresent(this::setOffspringPattern);
+            Optional.ofNullable(ResourceLocation.tryParse(compoundTag.getString("offspring_pattern"))).map(id -> ResourceKey.create(FARegistries.PATTERN_GENE, id)).flatMap(resourceKey -> provider.lookupOrThrow(FARegistries.PATTERN_GENE).get(resourceKey)).ifPresent(this::setOffspringPattern);
         }
     }
 }

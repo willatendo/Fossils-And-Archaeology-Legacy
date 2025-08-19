@@ -2,14 +2,16 @@ package willatendo.fossilslegacy.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.Util;
-import net.minecraft.client.model.Model;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.EntityModelSet;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.SkullBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,10 +21,16 @@ import willatendo.fossilslegacy.client.model.dinosaur.head.*;
 import willatendo.fossilslegacy.server.block.blocks.AbstractHeadBlock;
 import willatendo.fossilslegacy.server.block.blocks.WallHeadBlock;
 import willatendo.fossilslegacy.server.block.entity.entities.HeadBlockEntity;
+import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 import willatendo.fossilslegacy.server.item.FAHeadTypes;
+import willatendo.fossilslegacy.server.item.data_components.HeadDisplayInformation;
+import willatendo.fossilslegacy.server.gene.cosmetics.FATextures;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.Texture;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -124,11 +132,11 @@ public class HeadBlockEntityRenderer implements BlockEntityRenderer<HeadBlockEnt
         Direction direction = flag ? blockState.getValue(WallHeadBlock.FACING) : null;
         int rotation = flag ? RotationSegment.convertToSegment(direction.getOpposite()) : blockState.getValue(SkullBlock.ROTATION);
         FAHeadTypes faHeadTypes = ((AbstractHeadBlock) blockState.getBlock()).getType();
-        RenderType rendertype = HeadBlockEntityRenderer.getRenderType(faHeadTypes);
-        HeadBlockEntityRenderer.renderSkull(direction, RotationSegment.convertToDegrees(rotation), 0, poseStack, multiBufferSource, packedLight, this.modelByHead.apply(faHeadTypes), rendertype);
+        RenderType renderType = HeadBlockEntityRenderer.getRenderType(faHeadTypes);
+        HeadBlockEntityRenderer.renderHead(direction, RotationSegment.convertToDegrees(rotation), 0, poseStack, multiBufferSource, packedLight, this.modelByHead.apply(faHeadTypes), renderType, headBlockEntity.headDisplayInformation, true);
     }
 
-    public static void renderSkull(Direction direction, float yRot, float mouthAnimation, PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight, HeadModel headModel, RenderType renderType) {
+    public static void renderHead(Direction direction, float yRot, float mouthAnimation, PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight, HeadModel headModel, RenderType renderType, HeadDisplayInformation headDisplayInformation, boolean scale) {
         poseStack.pushPose();
         if (direction == null) {
             poseStack.translate(0.5F, 0.0F, 0.5F);
@@ -137,8 +145,20 @@ public class HeadBlockEntityRenderer implements BlockEntityRenderer<HeadBlockEnt
         }
 
         poseStack.scale(-1.0F, -1.0F, 1.0F);
-        headModel.setupAnim(mouthAnimation, yRot, 0.0F);
-        headModel.renderToBuffer(poseStack, multiBufferSource.getBuffer(renderType), packedLight, OverlayTexture.NO_OVERLAY);
+        ClientLevel clientLevel = Minecraft.getInstance().level;
+        if (headDisplayInformation != null) {
+            PatternGene skin = headDisplayInformation.cosmeticGeneHolder().skinGene(clientLevel.registryAccess()).value();
+            PatternGene patternGene = headDisplayInformation.cosmeticGeneHolder().patternGene(clientLevel.registryAccess()).value();
+            Registry<Texture> textureRegistry = clientLevel.registryAccess().lookupOrThrow(FARegistries.TEXTURE);
+            if (scale) {
+
+            }
+            headModel.setupAnim(mouthAnimation, yRot, 0.0F);
+            headModel.renderToBuffer(poseStack, multiBufferSource.getBuffer(RenderType.entityCutoutNoCullZOffset(skin.getTexture(textureRegistry, FATextures.BASE, "ankylosaurus", List.of(FATextures.BASE)))), packedLight, OverlayTexture.NO_OVERLAY);
+            if (skin.hasEyeTexture(textureRegistry, "ankylosaurus", List.of(FATextures.BASE))) {
+                headModel.renderToBuffer(poseStack, multiBufferSource.getBuffer(RenderType.entityCutoutNoCullZOffset(skin.getEyeTexture(textureRegistry, "ankylosaurus", List.of(FATextures.BASE)))), packedLight, OverlayTexture.NO_OVERLAY);
+            }
+        }
         poseStack.popPose();
     }
 

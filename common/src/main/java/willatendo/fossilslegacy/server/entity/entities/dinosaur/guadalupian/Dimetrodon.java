@@ -23,8 +23,8 @@ import willatendo.fossilslegacy.server.entity.util.Diet;
 import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.item.FAItems;
-import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
 import willatendo.fossilslegacy.server.tags.FAEntityTypeTags;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
@@ -107,7 +107,7 @@ public class Dimetrodon extends Dinosaur implements DinopediaInformation {
     }
 
     @Override
-    public TagKey<ModelType> getModelTypes() {
+    public TagKey<ModelGene> getModelTypes() {
         return FAModelTypeTags.DIMETRODON;
     }
 

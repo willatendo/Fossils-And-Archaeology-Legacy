@@ -11,7 +11,6 @@ import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import org.jetbrains.annotations.Nullable;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 import willatendo.fossilslegacy.server.item.FADataComponents;
@@ -19,7 +18,6 @@ import willatendo.fossilslegacy.server.item.FADataComponents;
 public class ArticulatedFossilSpecialRenderer implements NoDataSpecialModelRenderer {
     private Holder<FossilVariant> fossilVariantHolder;
 
-    @Nullable
     @Override
     public Void extractArgument(ItemStack itemStack) {
         this.fossilVariantHolder = itemStack.get(FADataComponents.FOSSIL_VARIANT.get());

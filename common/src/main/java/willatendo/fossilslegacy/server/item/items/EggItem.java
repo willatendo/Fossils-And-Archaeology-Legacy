@@ -10,12 +10,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.entity.entities.Egg;
-import willatendo.fossilslegacy.server.gene.GeneHolder;
+import willatendo.fossilslegacy.server.gene.attributes.AttributeGeneHolder;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
-import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
-import willatendo.fossilslegacy.server.pattern.pattern.PatternHolder;
+import willatendo.fossilslegacy.server.gene.cosmetics.CosmeticGeneHolder;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
@@ -26,9 +26,9 @@ import java.util.function.Supplier;
 public class EggItem extends PlaceEntityItem<Egg> {
     public static final List<EggItem> EGGS = new ArrayList<>();
     private final GeologicalTimeScale.Period period;
-    protected final TagKey<ModelType> applicableCoatTypes;
+    protected final TagKey<ModelGene> applicableCoatTypes;
 
-    public EggItem(Supplier<EntityType<Egg>> entityType, GeologicalTimeScale.Period period, TagKey<ModelType> applicableCoatTypes, Properties properties) {
+    public EggItem(Supplier<EntityType<Egg>> entityType, GeologicalTimeScale.Period period, TagKey<ModelGene> applicableCoatTypes, Properties properties) {
         super(entityType, properties);
         this.period = period;
         this.applicableCoatTypes = applicableCoatTypes;
@@ -37,20 +37,20 @@ public class EggItem extends PlaceEntityItem<Egg> {
 
     @Override
     public void entityModification(ItemStack itemStack, Egg egg) {
-        if (itemStack.has(FADataComponents.MODEL_TYPE.get()) && itemStack.has(FADataComponents.PATTERN_HOLDER.get())) {
+        if (itemStack.has(FADataComponents.MODEL_TYPE.get()) && itemStack.has(FADataComponents.COSMETIC_GENE_HOLDER.get())) {
             egg.setModelType(itemStack.get(FADataComponents.MODEL_TYPE.get()));
-            PatternHolder patternHolder = itemStack.get(FADataComponents.PATTERN_HOLDER.get());
-            egg.setSkin(patternHolder.skin());
-            if (patternHolder.hasPattern()) {
-                egg.setPattern(patternHolder.pattern().get());
+            CosmeticGeneHolder cosmeticGeneHolder = itemStack.get(FADataComponents.COSMETIC_GENE_HOLDER.get());
+            egg.setSkin(cosmeticGeneHolder.skinGene(egg.registryAccess()));
+            if (cosmeticGeneHolder.hasPattern()) {
+                egg.setPattern(cosmeticGeneHolder.patternGene(egg.registryAccess()));
             }
         } else {
             Level level = egg.level();
-            HolderLookup<ModelType> modelTypeRegistry = level.holderLookup(FARegistries.MODEL_TYPES);
-            HolderLookup<Pattern> patternRegistry = level.holderLookup(FARegistries.PATTERN);
-            Holder<ModelType> modelType = modelTypeRegistry.getOrThrow(this.applicableCoatTypes).getRandomElement(egg.getRandom()).get();
+            HolderLookup<ModelGene> modelTypeRegistry = level.holderLookup(FARegistries.MODEL_GENE);
+            HolderLookup<PatternGene> patternRegistry = level.holderLookup(FARegistries.PATTERN_GENE);
+            Holder<ModelGene> modelType = modelTypeRegistry.getOrThrow(this.applicableCoatTypes).getRandomElement(egg.getRandom()).get();
             egg.setModelType(modelType);
-            egg.setSkin(patternRegistry.getOrThrow(modelType.value().skins()).getRandomElement(egg.getRandom()).get());
+            egg.setSkin(patternRegistry.getOrThrow(modelType.value().skinGenes()).getRandomElement(egg.getRandom()).get());
         }
     }
 
@@ -58,16 +58,16 @@ public class EggItem extends PlaceEntityItem<Egg> {
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         this.period.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
         if (itemStack.has(FADataComponents.MODEL_TYPE.get())) {
-            Holder<ModelType> holder = itemStack.get(FADataComponents.MODEL_TYPE.get());
+            Holder<ModelGene> holder = itemStack.get(FADataComponents.MODEL_TYPE.get());
             tooltipComponents.add(FAUtils.translation("item", "dna.model_type", holder.value().displayInfo().modelName()).withStyle(ChatFormatting.GRAY));
         }
-        if (itemStack.has(FADataComponents.PATTERN_HOLDER.get())) {
-            PatternHolder patternHolder = itemStack.get(FADataComponents.PATTERN_HOLDER.get());
-            tooltipComponents.add(FAUtils.translation("item", "dna.skin", patternHolder.getDisplayName()).withStyle(ChatFormatting.GRAY));
+        if (itemStack.has(FADataComponents.COSMETIC_GENE_HOLDER.get())) {
+            CosmeticGeneHolder cosmeticGeneHolder = itemStack.get(FADataComponents.COSMETIC_GENE_HOLDER.get());
+            tooltipComponents.add(FAUtils.translation("item", "dna.skinGenes", cosmeticGeneHolder.getDisplayName(tooltipContext.registries())).withStyle(ChatFormatting.GRAY));
         }
         if (itemStack.has(FADataComponents.GENE_HOLDER.get())) {
-            GeneHolder geneHolder = itemStack.get(FADataComponents.GENE_HOLDER.get());
-            geneHolder.addTooltips(tooltipComponents);
+            AttributeGeneHolder attributeGeneHolder = itemStack.get(FADataComponents.GENE_HOLDER.get());
+            attributeGeneHolder.addTooltips(tooltipComponents);
         }
         super.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
     }

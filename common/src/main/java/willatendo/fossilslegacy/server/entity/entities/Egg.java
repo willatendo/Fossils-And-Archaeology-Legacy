@@ -26,8 +26,8 @@ import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DataDrivenCosmetics;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.TicksToBirth;
-import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
@@ -36,9 +36,9 @@ import java.util.UUID;
 import java.util.function.Supplier;
 
 public abstract class Egg extends Animal implements TicksToBirth, DinopediaInformation, DataDrivenCosmetics {
-    private static final EntityDataAccessor<Holder<ModelType>> MODEL_TYPE = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.MODEL_TYPES.get());
-    private static final EntityDataAccessor<Holder<Pattern>> SKIN = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.PATTERN.get());
-    private static final EntityDataAccessor<Holder<Pattern>> PATTERN = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.PATTERN.get());
+    private static final EntityDataAccessor<Holder<ModelGene>> MODEL_TYPE = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.MODEL_TYPES.get());
+    private static final EntityDataAccessor<Holder<PatternGene>> SKIN = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.PATTERN.get());
+    private static final EntityDataAccessor<Holder<PatternGene>> PATTERN = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.PATTERN.get());
     private static final EntityDataAccessor<Integer> REMAINING_TIME = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> WARM = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.BOOLEAN);
     protected static final EntityDataAccessor<Optional<UUID>> OWNER = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.OPTIONAL_UUID);
@@ -186,9 +186,9 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(MODEL_TYPE, this.registryAccess().lookupOrThrow(FARegistries.MODEL_TYPES).getAny().orElseThrow());
-        builder.define(SKIN, this.registryAccess().lookupOrThrow(FARegistries.PATTERN).getAny().orElseThrow());
-        builder.define(PATTERN, this.registryAccess().lookupOrThrow(FARegistries.PATTERN).getAny().orElseThrow());
+        builder.define(MODEL_TYPE, this.registryAccess().lookupOrThrow(FARegistries.MODEL_GENE).getAny().orElseThrow());
+        builder.define(SKIN, this.registryAccess().lookupOrThrow(FARegistries.PATTERN_GENE).getAny().orElseThrow());
+        builder.define(PATTERN, this.registryAccess().lookupOrThrow(FARegistries.PATTERN_GENE).getAny().orElseThrow());
         builder.define(REMAINING_TIME, 0);
         builder.define(WARM, false);
         builder.define(OWNER, Optional.empty());
@@ -285,32 +285,32 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
     }
 
     @Override
-    public Holder<ModelType> getModelType() {
+    public Holder<ModelGene> getModelType() {
         return this.entityData.get(MODEL_TYPE);
     }
 
     @Override
-    public void setModelType(Holder<ModelType> modelType) {
+    public void setModelType(Holder<ModelGene> modelType) {
         this.entityData.set(MODEL_TYPE, modelType);
     }
 
     @Override
-    public Holder<Pattern> getSkin() {
+    public Holder<PatternGene> getSkin() {
         return this.entityData.get(SKIN);
     }
 
     @Override
-    public void setSkin(Holder<Pattern> pattern) {
+    public void setSkin(Holder<PatternGene> pattern) {
         this.entityData.set(SKIN, pattern);
     }
 
     @Override
-    public Holder<Pattern> getPattern() {
+    public Holder<PatternGene> getPattern() {
         return this.entityData.get(PATTERN);
     }
 
     @Override
-    public void setPattern(Holder<Pattern> pattern) {
+    public void setPattern(Holder<PatternGene> pattern) {
         this.entityData.set(PATTERN, pattern);
     }
 

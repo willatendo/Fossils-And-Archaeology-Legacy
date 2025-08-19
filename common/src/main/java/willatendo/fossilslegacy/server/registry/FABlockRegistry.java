@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.registry;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -15,6 +16,7 @@ import willatendo.fossilslegacy.server.block.blocks.*;
 import willatendo.fossilslegacy.server.item.FAHeadTypes;
 import willatendo.fossilslegacy.server.tags.FABlockTags;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.BlockRegistry;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.util.BlockUtils;

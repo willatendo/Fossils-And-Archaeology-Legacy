@@ -12,8 +12,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
 import willatendo.fossilslegacy.server.item.FADataComponents;
-import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.pattern.PatternHolder;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.CosmeticGeneHolder;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;
@@ -34,12 +34,12 @@ public class StorageDiscItem extends Item {
             }
         }
         if (itemStack.has(FADataComponents.MODEL_TYPE.get())) {
-            Holder<ModelType> holder = itemStack.get(FADataComponents.MODEL_TYPE.get());
+            Holder<ModelGene> holder = itemStack.get(FADataComponents.MODEL_TYPE.get());
             tooltipComponents.add(FAUtils.translation("item", "dna.model_type", holder.value().displayInfo().modelName()).withStyle(ChatFormatting.GRAY));
         }
-        if (itemStack.has(FADataComponents.PATTERN_HOLDER.get())) {
-            PatternHolder patternHolder = itemStack.get(FADataComponents.PATTERN_HOLDER.get());
-            tooltipComponents.add(FAUtils.translation("item", "dna.skin", patternHolder.getDisplayName()).withStyle(ChatFormatting.GRAY));
+        if (itemStack.has(FADataComponents.COSMETIC_GENE_HOLDER.get())) {
+            CosmeticGeneHolder cosmeticGeneHolder = itemStack.get(FADataComponents.COSMETIC_GENE_HOLDER.get());
+            tooltipComponents.add(FAUtils.translation("item", "dna.skinGenes", cosmeticGeneHolder.getDisplayName(tooltipContext.registries())).withStyle(ChatFormatting.GRAY));
 
         }
         if (itemStack.has(FADataComponents.PURITY.get())) {
@@ -56,8 +56,8 @@ public class StorageDiscItem extends Item {
             if (dna.has(FADataComponents.MODEL_TYPE.get())) {
                 storageDisc.set(FADataComponents.MODEL_TYPE.get(), dna.get(FADataComponents.MODEL_TYPE.get()));
             }
-            if (dna.has(FADataComponents.PATTERN_HOLDER.get())) {
-                storageDisc.set(FADataComponents.PATTERN_HOLDER.get(), dna.get(FADataComponents.PATTERN_HOLDER.get()));
+            if (dna.has(FADataComponents.COSMETIC_GENE_HOLDER.get())) {
+                storageDisc.set(FADataComponents.COSMETIC_GENE_HOLDER.get(), dna.get(FADataComponents.COSMETIC_GENE_HOLDER.get()));
             }
             if (dna.has(FADataComponents.PURITY.get())) {
                 storageDisc.set(FADataComponents.PURITY.get(), dna.get(FADataComponents.PURITY.get()));
@@ -75,8 +75,8 @@ public class StorageDiscItem extends Item {
             if (storageDisc.has(FADataComponents.MODEL_TYPE.get())) {
                 dna.set(FADataComponents.MODEL_TYPE.get(), storageDisc.get(FADataComponents.MODEL_TYPE.get()));
             }
-            if (storageDisc.has(FADataComponents.PATTERN_HOLDER.get())) {
-                dna.set(FADataComponents.PATTERN_HOLDER.get(), storageDisc.get(FADataComponents.PATTERN_HOLDER.get()));
+            if (storageDisc.has(FADataComponents.COSMETIC_GENE_HOLDER.get())) {
+                dna.set(FADataComponents.COSMETIC_GENE_HOLDER.get(), storageDisc.get(FADataComponents.COSMETIC_GENE_HOLDER.get()));
             }
             if (storageDisc.has(FADataComponents.PURITY.get())) {
                 dna.set(FADataComponents.PURITY.get(), storageDisc.get(FADataComponents.PURITY.get()));

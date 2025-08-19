@@ -2,66 +2,66 @@ package willatendo.fossilslegacy.data.tag;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
-import willatendo.fossilslegacy.server.model_type.FAModelTypes;
-import willatendo.fossilslegacy.server.model_type.ModelType;
+import willatendo.fossilslegacy.server.gene.cosmetics.FAModelGenes;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class FAModelTypeTagProvider extends DataDrivenTagsProvider<ModelType> {
+public class FAModelTypeTagProvider extends DataDrivenTagsProvider<ModelGene> {
     public FAModelTypeTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId) {
-        super(packOutput, FARegistries.MODEL_TYPES, provider, modId);
+        super(packOutput, FARegistries.MODEL_GENE, provider, modId);
     }
 
     @Override
     protected void addTags(Provider provider) {
         this.tag(FAModelTypeTags.LOCKED).addTag(FAModelTypeTags.LEGACY);
 
-        this.tag(FAModelTypeTags.ANKYLOSAURUS).add(FAModelTypes.ANKYLOSAURUS);
-        this.tag(FAModelTypeTags.BARYONYX).add(FAModelTypes.BARYONYX);
-        this.tag(FAModelTypeTags.BRACHIOSAURUS).add(FAModelTypes.BRACHIOSAURUS, FAModelTypes.LEGACY_BRACHIOSAURUS);
-        this.tag(FAModelTypeTags.NON_LEGACY_BRACHIOSAURUS).add(FAModelTypes.BRACHIOSAURUS);
-        this.tag(FAModelTypeTags.CARNOTAURUS).add(FAModelTypes.CARNOTAURUS, FAModelTypes.LEGACY_CARNOTAURUS);
-        this.tag(FAModelTypeTags.NON_LEGACY_CARNOTAURUS).add(FAModelTypes.CARNOTAURUS);
-        this.tag(FAModelTypeTags.COMPSOGNATHUS).add(FAModelTypes.COMPSOGNATHUS);
-        this.tag(FAModelTypeTags.CRYOLOPHOSAURUS).add(FAModelTypes.CRYOLOPHOSAURUS, FAModelTypes.LEGACY_CRYOLOPHOSAURUS);
-        this.tag(FAModelTypeTags.NON_LEGACY_CRYOLOPHOSAURUS).add(FAModelTypes.CRYOLOPHOSAURUS);
-        this.tag(FAModelTypeTags.DILOPHOSAURUS).add(FAModelTypes.DILOPHOSAURUS, FAModelTypes.LEGACY_DILOPHOSAURUS);
-        this.tag(FAModelTypeTags.NON_LEGACY_DILOPHOSAURUS).add(FAModelTypes.DILOPHOSAURUS);
-        this.tag(FAModelTypeTags.DODO).add(FAModelTypes.DODO);
-        this.tag(FAModelTypeTags.DIMETRODON).add(FAModelTypes.DIMETRODON);
-        this.tag(FAModelTypeTags.DISTORTUS_REX).add(FAModelTypes.DISTORTUS_REX);
-        this.tag(FAModelTypeTags.DRYOSAURUS).add(FAModelTypes.DRYOSAURUS);
-        this.tag(FAModelTypeTags.ELASMOTHERIUM).add(FAModelTypes.ELASMOTHERIUM);
-        this.tag(FAModelTypeTags.FUTABASAURUS).add(FAModelTypes.FUTABASAURUS, FAModelTypes.LEGACY_FUTABASAURUS);
-        this.tag(FAModelTypeTags.NON_LEGACY_FUTABASAURUS).add(FAModelTypes.FUTABASAURUS);
-        this.tag(FAModelTypeTags.GALLIMIMUS).add(FAModelTypes.GALLIMIMUS);
-        this.tag(FAModelTypeTags.ICHTHYOSAURUS).add(FAModelTypes.ICHTHYOSAURUS);
-        this.tag(FAModelTypeTags.ISOTELUS).add(FAModelTypes.ISOTELUS);
-        this.tag(FAModelTypeTags.ISOTELUS_LARVA).add(FAModelTypes.ISOTELUS_LARVA);
-        this.tag(FAModelTypeTags.LEGACY).add(FAModelTypes.LEGACY_BRACHIOSAURUS, FAModelTypes.LEGACY_CARNOTAURUS, FAModelTypes.LEGACY_CRYOLOPHOSAURUS, FAModelTypes.LEGACY_DILOPHOSAURUS, FAModelTypes.LEGACY_FUTABASAURUS, FAModelTypes.LEGACY_MAMMOTH, FAModelTypes.LEGACY_MOSASAURUS, FAModelTypes.LEGACY_PTERANODON, FAModelTypes.LEGACY_SMILODON, FAModelTypes.LEGACY_STEGOSAURUS, FAModelTypes.LEGACY_THERIZINOSAURUS, FAModelTypes.LEGACY_TRICERATOPS, FAModelTypes.LEGACY_TYRANNOSAURUS, FAModelTypes.LEGACY_VELOCIRAPTOR);
-        this.tag(FAModelTypeTags.MAMMOTH).add(FAModelTypes.MAMMOTH, FAModelTypes.LEGACY_MAMMOTH);
-        this.tag(FAModelTypeTags.NON_LEGACY_MAMMOTH).add(FAModelTypes.MAMMOTH);
-        this.tag(FAModelTypeTags.MOA).add(FAModelTypes.MOA);
-        this.tag(FAModelTypeTags.MOSASAURUS).add(FAModelTypes.MOSASAURUS, FAModelTypes.LEGACY_MOSASAURUS);
-        this.tag(FAModelTypeTags.NON_LEGACY_MOSASAURUS).add(FAModelTypes.MOSASAURUS);
-        this.tag(FAModelTypeTags.PACHYCEPHALOSAURUS).add(FAModelTypes.PACHYCEPHALOSAURUS);
-        this.tag(FAModelTypeTags.PTERANODON).add(FAModelTypes.PTERANODON, FAModelTypes.LEGACY_PTERANODON);
-        this.tag(FAModelTypeTags.NON_LEGACY_PTERANODON).add(FAModelTypes.PTERANODON);
-        this.tag(FAModelTypeTags.SMILODON).add(FAModelTypes.SMILODON, FAModelTypes.LEGACY_SMILODON);
-        this.tag(FAModelTypeTags.NON_LEGACY_SMILODON).add(FAModelTypes.SMILODON);
-        this.tag(FAModelTypeTags.SPINOSAURUS).add(FAModelTypes.SPINOSAURUS);
-        this.tag(FAModelTypeTags.STEGOSAURUS).add(FAModelTypes.STEGOSAURUS, FAModelTypes.LEGACY_STEGOSAURUS);
-        this.tag(FAModelTypeTags.NON_LEGACY_STEGOSAURUS).add(FAModelTypes.STEGOSAURUS);
-        this.tag(FAModelTypeTags.THERIZINOSAURUS).add(FAModelTypes.THERIZINOSAURUS, FAModelTypes.LEGACY_THERIZINOSAURUS);
-        this.tag(FAModelTypeTags.NON_LEGACY_THERIZINOSAURUS).add(FAModelTypes.THERIZINOSAURUS);
-        this.tag(FAModelTypeTags.TRICERATOPS).add(FAModelTypes.TRICERATOPS, FAModelTypes.LEGACY_TRICERATOPS);
-        this.tag(FAModelTypeTags.NON_LEGACY_TRICERATOPS).add(FAModelTypes.TRICERATOPS);
-        this.tag(FAModelTypeTags.TYRANNOSAURUS).add(FAModelTypes.TYRANNOSAURUS, FAModelTypes.LEGACY_TYRANNOSAURUS);
-        this.tag(FAModelTypeTags.NON_LEGACY_TYRANNOSAURUS).add(FAModelTypes.TYRANNOSAURUS);
-        this.tag(FAModelTypeTags.VELOCIRAPTOR).add(FAModelTypes.VELOCIRAPTOR, FAModelTypes.LEGACY_VELOCIRAPTOR);
-        this.tag(FAModelTypeTags.LEGACY_VELOCIRAPTOR).add(FAModelTypes.LEGACY_VELOCIRAPTOR);
-        this.tag(FAModelTypeTags.NON_LEGACY_VELOCIRAPTOR).add(FAModelTypes.VELOCIRAPTOR);
+        this.tag(FAModelTypeTags.ANKYLOSAURUS).add(FAModelGenes.ANKYLOSAURUS);
+        this.tag(FAModelTypeTags.BARYONYX).add(FAModelGenes.BARYONYX);
+        this.tag(FAModelTypeTags.BRACHIOSAURUS).add(FAModelGenes.BRACHIOSAURUS, FAModelGenes.LEGACY_BRACHIOSAURUS);
+        this.tag(FAModelTypeTags.NON_LEGACY_BRACHIOSAURUS).add(FAModelGenes.BRACHIOSAURUS);
+        this.tag(FAModelTypeTags.CARNOTAURUS).add(FAModelGenes.CARNOTAURUS, FAModelGenes.LEGACY_CARNOTAURUS);
+        this.tag(FAModelTypeTags.NON_LEGACY_CARNOTAURUS).add(FAModelGenes.CARNOTAURUS);
+        this.tag(FAModelTypeTags.COMPSOGNATHUS).add(FAModelGenes.COMPSOGNATHUS);
+        this.tag(FAModelTypeTags.CRYOLOPHOSAURUS).add(FAModelGenes.CRYOLOPHOSAURUS, FAModelGenes.LEGACY_CRYOLOPHOSAURUS);
+        this.tag(FAModelTypeTags.NON_LEGACY_CRYOLOPHOSAURUS).add(FAModelGenes.CRYOLOPHOSAURUS);
+        this.tag(FAModelTypeTags.DILOPHOSAURUS).add(FAModelGenes.DILOPHOSAURUS, FAModelGenes.LEGACY_DILOPHOSAURUS);
+        this.tag(FAModelTypeTags.NON_LEGACY_DILOPHOSAURUS).add(FAModelGenes.DILOPHOSAURUS);
+        this.tag(FAModelTypeTags.DODO).add(FAModelGenes.DODO);
+        this.tag(FAModelTypeTags.DIMETRODON).add(FAModelGenes.DIMETRODON);
+        this.tag(FAModelTypeTags.DISTORTUS_REX).add(FAModelGenes.DISTORTUS_REX);
+        this.tag(FAModelTypeTags.DRYOSAURUS).add(FAModelGenes.DRYOSAURUS);
+        this.tag(FAModelTypeTags.ELASMOTHERIUM).add(FAModelGenes.ELASMOTHERIUM);
+        this.tag(FAModelTypeTags.FUTABASAURUS).add(FAModelGenes.FUTABASAURUS, FAModelGenes.LEGACY_FUTABASAURUS);
+        this.tag(FAModelTypeTags.NON_LEGACY_FUTABASAURUS).add(FAModelGenes.FUTABASAURUS);
+        this.tag(FAModelTypeTags.GALLIMIMUS).add(FAModelGenes.GALLIMIMUS);
+        this.tag(FAModelTypeTags.ICHTHYOSAURUS).add(FAModelGenes.ICHTHYOSAURUS);
+        this.tag(FAModelTypeTags.ISOTELUS).add(FAModelGenes.ISOTELUS);
+        this.tag(FAModelTypeTags.ISOTELUS_LARVA).add(FAModelGenes.ISOTELUS_LARVA);
+        this.tag(FAModelTypeTags.LEGACY).add(FAModelGenes.LEGACY_BRACHIOSAURUS, FAModelGenes.LEGACY_CARNOTAURUS, FAModelGenes.LEGACY_CRYOLOPHOSAURUS, FAModelGenes.LEGACY_DILOPHOSAURUS, FAModelGenes.LEGACY_FUTABASAURUS, FAModelGenes.LEGACY_MAMMOTH, FAModelGenes.LEGACY_MOSASAURUS, FAModelGenes.LEGACY_PTERANODON, FAModelGenes.LEGACY_SMILODON, FAModelGenes.LEGACY_STEGOSAURUS, FAModelGenes.LEGACY_THERIZINOSAURUS, FAModelGenes.LEGACY_TRICERATOPS, FAModelGenes.LEGACY_TYRANNOSAURUS, FAModelGenes.LEGACY_VELOCIRAPTOR);
+        this.tag(FAModelTypeTags.MAMMOTH).add(FAModelGenes.MAMMOTH, FAModelGenes.LEGACY_MAMMOTH);
+        this.tag(FAModelTypeTags.NON_LEGACY_MAMMOTH).add(FAModelGenes.MAMMOTH);
+        this.tag(FAModelTypeTags.MOA).add(FAModelGenes.MOA);
+        this.tag(FAModelTypeTags.MOSASAURUS).add(FAModelGenes.MOSASAURUS, FAModelGenes.LEGACY_MOSASAURUS);
+        this.tag(FAModelTypeTags.NON_LEGACY_MOSASAURUS).add(FAModelGenes.MOSASAURUS);
+        this.tag(FAModelTypeTags.PACHYCEPHALOSAURUS).add(FAModelGenes.PACHYCEPHALOSAURUS);
+        this.tag(FAModelTypeTags.PTERANODON).add(FAModelGenes.PTERANODON, FAModelGenes.LEGACY_PTERANODON);
+        this.tag(FAModelTypeTags.NON_LEGACY_PTERANODON).add(FAModelGenes.PTERANODON);
+        this.tag(FAModelTypeTags.SMILODON).add(FAModelGenes.SMILODON, FAModelGenes.LEGACY_SMILODON);
+        this.tag(FAModelTypeTags.NON_LEGACY_SMILODON).add(FAModelGenes.SMILODON);
+        this.tag(FAModelTypeTags.SPINOSAURUS).add(FAModelGenes.SPINOSAURUS);
+        this.tag(FAModelTypeTags.STEGOSAURUS).add(FAModelGenes.STEGOSAURUS, FAModelGenes.LEGACY_STEGOSAURUS);
+        this.tag(FAModelTypeTags.NON_LEGACY_STEGOSAURUS).add(FAModelGenes.STEGOSAURUS);
+        this.tag(FAModelTypeTags.THERIZINOSAURUS).add(FAModelGenes.THERIZINOSAURUS, FAModelGenes.LEGACY_THERIZINOSAURUS);
+        this.tag(FAModelTypeTags.NON_LEGACY_THERIZINOSAURUS).add(FAModelGenes.THERIZINOSAURUS);
+        this.tag(FAModelTypeTags.TRICERATOPS).add(FAModelGenes.TRICERATOPS, FAModelGenes.LEGACY_TRICERATOPS);
+        this.tag(FAModelTypeTags.NON_LEGACY_TRICERATOPS).add(FAModelGenes.TRICERATOPS);
+        this.tag(FAModelTypeTags.TYRANNOSAURUS).add(FAModelGenes.TYRANNOSAURUS, FAModelGenes.LEGACY_TYRANNOSAURUS);
+        this.tag(FAModelTypeTags.NON_LEGACY_TYRANNOSAURUS).add(FAModelGenes.TYRANNOSAURUS);
+        this.tag(FAModelTypeTags.VELOCIRAPTOR).add(FAModelGenes.VELOCIRAPTOR, FAModelGenes.LEGACY_VELOCIRAPTOR);
+        this.tag(FAModelTypeTags.LEGACY_VELOCIRAPTOR).add(FAModelGenes.LEGACY_VELOCIRAPTOR);
+        this.tag(FAModelTypeTags.NON_LEGACY_VELOCIRAPTOR).add(FAModelGenes.VELOCIRAPTOR);
     }
 }

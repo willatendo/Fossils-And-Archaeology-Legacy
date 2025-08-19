@@ -42,8 +42,8 @@ import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.RideableDinosaur;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.item.FAItems;
-import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
 import willatendo.fossilslegacy.server.tags.*;
 
@@ -87,7 +87,7 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
     }
 
     @Override
-    public TagKey<ModelType> getModelTypes() {
+    public TagKey<ModelGene> getModelTypes() {
         return FAModelTypeTags.TYRANNOSAURUS;
     }
 
@@ -310,17 +310,17 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return !this.isKnockedOut() ? this.getOverridenSoundEvent(FASoundEvents.TYRANNOSAURUS_AMBIENT.get(), ModelType.OverrideInfo.OverridenSoundType.AMBIENT) : super.getAmbientSound();
+        return !this.isKnockedOut() ? this.getOverridenSoundEvent(FASoundEvents.TYRANNOSAURUS_AMBIENT.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT) : super.getAmbientSound();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return !this.isKnockedOut() ? this.getOverridenSoundEvent(FASoundEvents.TYRANNOSAURUS_HURT.get(), ModelType.OverrideInfo.OverridenSoundType.HURT) : super.getHurtSound(damageSource);
+        return !this.isKnockedOut() ? this.getOverridenSoundEvent(FASoundEvents.TYRANNOSAURUS_HURT.get(), ModelGene.OverrideInfo.OverridenSoundType.HURT) : super.getHurtSound(damageSource);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return !this.isKnockedOut() ? this.getOverridenSoundEvent(FASoundEvents.TYRANNOSAURUS_DEATH.get(), ModelType.OverrideInfo.OverridenSoundType.DEATH) : super.getDeathSound();
+        return !this.isKnockedOut() ? this.getOverridenSoundEvent(FASoundEvents.TYRANNOSAURUS_DEATH.get(), ModelGene.OverrideInfo.OverridenSoundType.DEATH) : super.getDeathSound();
     }
 
     public boolean isKnockedOut() {

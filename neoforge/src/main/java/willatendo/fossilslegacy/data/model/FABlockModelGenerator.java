@@ -169,9 +169,8 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.blockModelGenerators.createTintedLeaves(FABlocks.WOLLEMIA_LEAVES.get(), TexturedModel.LEAVES, -10380959);
         this.blockModelGenerators.createTintedLeaves(FABlocks.METASEQUOIA_LEAVES.get(), TexturedModel.LEAVES, -12012264);
         this.block(MultiVariantGenerator.multiVariant(FABlocks.TAR.get(), Variant.variant().with(VariantProperties.MODEL, FAModelTemplates.TEMPLATE_LIQUID.create(FABlocks.TAR.get(), new TextureMapping().put(TextureSlot.PARTICLE, this.mcLocation("block/bedrock")), this.modelOutput))));
-        ResourceLocation templateSkull = this.modLocation("item/template_ankylosaurus_head");
         for (int i = 0; i < FABlockRegistry.headSize(); i++) {
-            this.createHead(FABlockRegistry.getHeads(i).get(), FABlockRegistry.getWallHeads(i).get(), FAHeadTypes.values()[i], templateSkull);
+            this.createHead(FABlockRegistry.getHeads(i).get(), FABlockRegistry.getWallHeads(i).get(), FAHeadTypes.values()[i], this.modLocation("item/template_" + FAHeadTypes.values()[i].getSerializedName() + "_head"));
         }
     }
 

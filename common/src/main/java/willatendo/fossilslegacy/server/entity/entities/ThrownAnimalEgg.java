@@ -23,15 +23,15 @@ import net.minecraft.world.phys.HitResult;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DataDrivenCosmetics;
 import willatendo.fossilslegacy.server.entity.util.interfaces.TamesOnBirth;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 import willatendo.fossilslegacy.server.item.FAItems;
-import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 
 public class ThrownAnimalEgg extends ThrowableItemProjectile implements DataDrivenCosmetics {
     private EntityType<? extends Animal> animal;
-    private Holder<ModelType> modelType;
-    private Holder<Pattern> skin;
-    private Holder<Pattern> pattern;
+    private Holder<ModelGene> modelType;
+    private Holder<PatternGene> skin;
+    private Holder<PatternGene> pattern;
     private boolean incubated;
 
     public ThrownAnimalEgg(EntityType<? extends ThrownAnimalEgg> entityType, Level level) {
@@ -53,32 +53,32 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements DataDriv
     }
 
     @Override
-    public void setModelType(Holder<ModelType> coatType) {
+    public void setModelType(Holder<ModelGene> coatType) {
         this.modelType = coatType;
     }
 
     @Override
-    public Holder<ModelType> getModelType() {
+    public Holder<ModelGene> getModelType() {
         return this.modelType;
     }
 
     @Override
-    public void setSkin(Holder<Pattern> pattern) {
+    public void setSkin(Holder<PatternGene> pattern) {
         this.skin = pattern;
     }
 
     @Override
-    public Holder<Pattern> getSkin() {
+    public Holder<PatternGene> getSkin() {
         return this.skin;
     }
 
     @Override
-    public void setPattern(Holder<Pattern> pattern) {
+    public void setPattern(Holder<PatternGene> pattern) {
         this.pattern = pattern;
     }
 
     @Override
-    public Holder<Pattern> getPattern() {
+    public Holder<PatternGene> getPattern() {
         return this.pattern;
     }
 
@@ -159,7 +159,7 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements DataDriv
         super.readAdditionalSaveData(compoundTag);
         this.animal = (EntityType<? extends Animal>) BuiltInRegistries.ENTITY_TYPE.getValue(ResourceLocation.parse(compoundTag.getString("EntityType")));
         this.incubated = compoundTag.getBoolean("Incubated");
-        if (compoundTag.contains("model_type") && compoundTag.contains("skin")) {
+        if (compoundTag.contains("model_type") && compoundTag.contains("skinGenes")) {
             this.readCosmeticsData(compoundTag, this.registryAccess());
         }
     }

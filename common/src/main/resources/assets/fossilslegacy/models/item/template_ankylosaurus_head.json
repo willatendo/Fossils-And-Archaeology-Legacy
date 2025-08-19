@@ -2,9 +2,9 @@
   "parent": "minecraft:item/template_skull",
   "display": {
     "head": {
-      "scale": [1.5, 1.5, 1.5],
+      "scale": [2.0, 2.0, 2.0],
       "rotation": [0, 180, 0],
-      "translation": [0, 0, 2]
+      "translation": [0, 7, 0]
     }
   }
 }

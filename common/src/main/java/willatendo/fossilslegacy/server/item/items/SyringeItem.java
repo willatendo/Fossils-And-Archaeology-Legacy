@@ -15,14 +15,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import willatendo.fossilslegacy.server.gene.cosmetics.CosmeticGeneHolder;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.util.interfaces.HungerAccessor;
 import willatendo.fossilslegacy.server.entity.util.interfaces.PregnantAnimal;
 import willatendo.fossilslegacy.server.entity.util.interfaces.TameAccessor;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
-import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.pattern.PatternHolder;
 import willatendo.fossilslegacy.server.pregnancy_types.PregnancyType;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
@@ -35,7 +35,7 @@ public class SyringeItem extends Item {
     private static final Map<EntityType<? extends LivingEntity>, EntityType<? extends PregnantAnimal<?>>> ENTITY_TO_PREGNANCY = new HashMap<>();
     private final GeologicalTimeScale.Period period;
     private final Holder<PregnancyType> pregnancyType;
-    protected final TagKey<ModelType> applicableModelTypes;
+    protected final TagKey<ModelGene> applicableModelTypes;
 
     public static void addEntityToPregnancy(EntityType<? extends LivingEntity> animalEntityType, EntityType<? extends PregnantAnimal<?>> pregnantEntityType) {
         ENTITY_TO_PREGNANCY.put(animalEntityType, pregnantEntityType);
@@ -63,7 +63,7 @@ public class SyringeItem extends Item {
         SyringeItem.addEntityToPregnancy(EntityType.WOLF, FAEntityTypes.PREGNANT_WOLF.get());
     }
 
-    public SyringeItem(GeologicalTimeScale.Period period, Holder<PregnancyType> pregnancyType, TagKey<ModelType> applicableModelTypes, Properties properties) {
+    public SyringeItem(GeologicalTimeScale.Period period, Holder<PregnancyType> pregnancyType, TagKey<ModelGene> applicableModelTypes, Properties properties) {
         super(properties);
         this.period = period;
         this.pregnancyType = pregnancyType;
@@ -78,12 +78,12 @@ public class SyringeItem extends Item {
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         this.period.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
         if (itemStack.has(FADataComponents.MODEL_TYPE.get())) {
-            Holder<ModelType> holder = itemStack.get(FADataComponents.MODEL_TYPE.get());
+            Holder<ModelGene> holder = itemStack.get(FADataComponents.MODEL_TYPE.get());
             tooltipComponents.add(FAUtils.translation("item", "model_type", holder.value().displayInfo().modelName()).withStyle(ChatFormatting.GRAY));
         }
-        if (itemStack.has(FADataComponents.PATTERN_HOLDER.get())) {
-            PatternHolder patternHolder = itemStack.get(FADataComponents.PATTERN_HOLDER.get());
-            tooltipComponents.add(FAUtils.translation("item", "skin", patternHolder.getDisplayName()).withStyle(ChatFormatting.GRAY));
+        if (itemStack.has(FADataComponents.COSMETIC_GENE_HOLDER.get())) {
+            CosmeticGeneHolder cosmeticGeneHolder = itemStack.get(FADataComponents.COSMETIC_GENE_HOLDER.get());
+            tooltipComponents.add(FAUtils.translation("item", "skinGenes", cosmeticGeneHolder.getDisplayName(tooltipContext.registries())).withStyle(ChatFormatting.GRAY));
         }
         super.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
     }
@@ -103,7 +103,7 @@ public class SyringeItem extends Item {
 
                     pregnantAnimal.setPregnancyType(this.getPregnancyType());
                     if (this.applicableModelTypes != null) {
-                        HolderGetter<ModelType> coatTypeRegistry = pregnantAnimal.getLevel().holderLookup(FARegistries.MODEL_TYPES);
+                        HolderGetter<ModelGene> coatTypeRegistry = pregnantAnimal.getLevel().holderLookup(FARegistries.MODEL_GENE);
                         pregnantAnimal.setOffspringModelType(coatTypeRegistry.getOrThrow(this.applicableModelTypes).getRandomElement(pregnantAnimal.getLevel().getRandom()).get());
                     }
                     pregnantAnimal.setRemainingPregnancyTime(0);
@@ -128,7 +128,7 @@ public class SyringeItem extends Item {
 
                 pregnantAnimal.setPregnancyType(this.getPregnancyType());
                 if (this.applicableModelTypes != null) {
-                    HolderGetter<ModelType> coatTypeRegistry = pregnantAnimal.getLevel().holderLookup(FARegistries.MODEL_TYPES);
+                    HolderGetter<ModelGene> coatTypeRegistry = pregnantAnimal.getLevel().holderLookup(FARegistries.MODEL_GENE);
                     pregnantAnimal.setOffspringModelType(coatTypeRegistry.getOrThrow(this.applicableModelTypes).getRandomElement(pregnantAnimal.getLevel().getRandom()).get());
                 }
                 pregnantAnimal.setRemainingPregnancyTime(0);

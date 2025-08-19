@@ -12,8 +12,8 @@ import net.minecraft.world.item.DyeColor;
 import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRenderer;
 import willatendo.fossilslegacy.client.state.MammothRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Mammoth;
-import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 
 public class MammothFurLayer extends RenderLayer<MammothRenderState, EntityModel<MammothRenderState>> {
     private EntityModel<MammothRenderState> model;
@@ -34,13 +34,13 @@ public class MammothFurLayer extends RenderLayer<MammothRenderState, EntityModel
 
     @Override
     public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks, MammothRenderState mammothRenderState, float packedLight, float packedOverlay) {
-        ModelType modelType = mammothRenderState.modelType.value();
-        if (this.dataDrivenModelDinosaurRenderer.getAdditionalModel(mammothRenderState, modelType).isPresent()) {
-            this.setModel(this.dataDrivenModelDinosaurRenderer.getAdditionalModel(mammothRenderState, modelType).get());
+        ModelGene modelGene = mammothRenderState.modelGene.value();
+        if (this.dataDrivenModelDinosaurRenderer.getAdditionalModel(mammothRenderState, modelGene).isPresent()) {
+            this.setModel(this.dataDrivenModelDinosaurRenderer.getAdditionalModel(mammothRenderState, modelGene).get());
         } else {
-            this.setModel(modelType.models().model());
+            this.setModel(modelGene.models().model());
         }
-        Pattern skin = mammothRenderState.skin.value();
+        PatternGene skin = mammothRenderState.skinGene.value();
         if (this.dataDrivenModelDinosaurRenderer.hasFurTexture(mammothRenderState.textureRegistry, skin)) {
             ResourceLocation texture = this.dataDrivenModelDinosaurRenderer.getFurTexture(mammothRenderState.textureRegistry, skin);
             if (mammothRenderState.isSheared) {

@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRenderer;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Mosasaurus;
-import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
+import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 
 public class MosasaurusEyesLayer extends RenderLayer<DinosaurRenderState, EntityModel<DinosaurRenderState>> {
     private DataDrivenModelDinosaurRenderer<Mosasaurus, DinosaurRenderState> dataDrivenModelDinosaurRenderer;
@@ -22,7 +22,7 @@ public class MosasaurusEyesLayer extends RenderLayer<DinosaurRenderState, Entity
 
     @Override
     public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks, DinosaurRenderState dinosaurRenderState, float packedLight, float packedOverlay) {
-        Pattern skin = dinosaurRenderState.skin.value();
+        PatternGene skin = dinosaurRenderState.skinGene.value();
         if (this.dataDrivenModelDinosaurRenderer.hasEyeTexture(dinosaurRenderState.textureRegistry, skin)) {
             VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.eyes(this.dataDrivenModelDinosaurRenderer.getEyeTexture(dinosaurRenderState.textureRegistry, skin)));
             this.getParentModel().renderToBuffer(poseStack, vertexConsumer, 15728640, OverlayTexture.NO_OVERLAY);

@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.server.entity.entities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -42,12 +43,15 @@ import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
 import willatendo.fossilslegacy.server.entity.util.Diet;
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.*;
-import willatendo.fossilslegacy.server.gene.GeneHolder;
+import willatendo.fossilslegacy.server.gene.Chromosome;
+import willatendo.fossilslegacy.server.gene.cosmetics.FAPatterns;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
+import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.FAItems;
+import willatendo.fossilslegacy.server.item.data_components.HeadDisplayInformation;
 import willatendo.fossilslegacy.server.level.FAGameRules;
-import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.FAPatterns;
-import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FAPatternTags;
 import willatendo.fossilslegacy.server.utils.FAUtils;
@@ -55,10 +59,9 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 import java.util.Optional;
 import java.util.UUID;
 
-public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, CommandableEntity, DaysAliveAccessor, GrowingEntity, HungerAccessor, OwnableEntity, TamesOnBirth, TameAccessor, TamedSpeakingEntity, TranquilizableEntity {
-    private static final EntityDataAccessor<Holder<ModelType>> MODEL_TYPE = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.MODEL_TYPES.get());
-    private static final EntityDataAccessor<Holder<Pattern>> SKIN = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.PATTERN.get());
-    private static final EntityDataAccessor<Holder<Pattern>> PATTERN = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.PATTERN.get());
+public abstract class Dinosaur extends Animal implements ChromosomedEntity, CommandableEntity, DaysAliveAccessor, GrowingEntity, HungerAccessor, OwnableEntity, TamesOnBirth, TameAccessor, TamedSpeakingEntity, TranquilizableEntity {
+    private static final EntityDataAccessor<Chromosome> CHROMOSOME_1 = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.CHROMOSOME.get());
+    private static final EntityDataAccessor<Chromosome> CHROMOSOME_2 = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.CHROMOSOME.get());
     private static final EntityDataAccessor<Holder<CommandType>> COMMAND = SynchedEntityData.defineId(Dinosaur.class, FAEntityDataSerializers.COMMAND_TYPES.get());
     private static final EntityDataAccessor<Integer> DAYS_ALIVE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> GROWTH_STAGE = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
@@ -66,12 +69,17 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
     private static final EntityDataAccessor<Integer> TRANQUILIZE_TIME = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> TRANQUILIZED = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.BOOLEAN);
     protected static final EntityDataAccessor<Optional<UUID>> OWNER = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.OPTIONAL_UUID);
-    protected final GeneHolder geneHolder = new GeneHolder();
+    public final Registry<ModelGene> modelGeneRegistry;
+    public final Registry<PatternGene> patternGeneRegistry;
+    public final Registry<SkinGene> skinGeneRegistry;
     protected int internalClock = 0;
     private boolean isNatural = false;
 
     public Dinosaur(EntityType<? extends Dinosaur> entityType, Level level) {
         super(entityType, level);
+        this.modelGeneRegistry = level.registryAccess().lookupOrThrow(FARegistries.MODEL_GENE);
+        this.patternGeneRegistry = level.registryAccess().lookupOrThrow(FARegistries.PATTERN_GENE);
+        this.skinGeneRegistry = level.registryAccess().lookupOrThrow(FARegistries.SKIN_GENE);
     }
 
     public static boolean checkDinosaurSpawnRules(EntityType<? extends Dinosaur> dinosaur, LevelAccessor levelAccessor, EntitySpawnReason entitySpawnReason, BlockPos blockPos, RandomSource randomSource, TagKey<Block> spawnableBlocks) {
@@ -79,13 +87,28 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
         return levelAccessor.getBlockState(blockPos.below()).is(spawnableBlocks) && flag;
     }
 
-    public abstract TagKey<ModelType> getModelTypes();
+    public abstract TagKey<ModelGene> getModelTypes();
 
     public abstract Diet getDiet();
 
     public abstract float[] healthPerGrowthStage();
 
     protected abstract ItemStack getHead();
+
+    @Override
+    public Registry<ModelGene> getModelGeneRegistry() {
+        return this.modelGeneRegistry;
+    }
+
+    @Override
+    public Registry<SkinGene> getSkinGeneRegistry() {
+        return this.skinGeneRegistry;
+    }
+
+    @Override
+    public Registry<PatternGene> getPatternGeneRegistry() {
+        return this.patternGeneRegistry;
+    }
 
     @Override
     public boolean canSendMessage() {
@@ -97,7 +120,7 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
     }
 
     protected void updateAttributeValue(Holder<Attribute> attribute, float value) {
-        this.getAttribute(attribute).setBaseValue(this.geneHolder.apply(attribute, value));
+        this.getAttribute(attribute).setBaseValue(this.getChromosome1().getAttributeGeneHolder().apply(attribute, value));
     }
 
     public EntityType<Egg> getEggEntityType() {
@@ -111,34 +134,29 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
 
     @Override
     protected Component getTypeName() {
-        return this.getOverridenName(super.getTypeName());
+        return this.getOverridenName(super.getTypeName(), this.registryAccess());
     }
 
-    /* @Override
-    public double getEyeY() {
-        return this.getDimensions(this.getPose()).eyeHeight();
-    }*/
-
     public float getBoundingBoxGrowth() {
-        ModelType modelType = this.getModelType().value();
-        return modelType.boundingBoxInfo().boundingBoxGrowth();
+        ModelGene modelGene = this.getModelGene(this.modelGeneRegistry).value();
+        return modelGene.boundingBoxInfo().boundingBoxGrowth();
     }
 
     @Override
     protected EntityDimensions getDefaultDimensions(Pose pose) {
-        return this.dimensions = this.getEntityDimensions(this.getGrowthStage());
+        return this.dimensions = this.getEntityDimensions(this.getGrowthStage(), this.registryAccess());
     }
 
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, EntitySpawnReason entitySpawnReason, SpawnGroupData spawnGroupData) {
-        HolderLookup<ModelType> modelTypes = serverLevelAccessor.holderLookup(FARegistries.MODEL_TYPES);
-        Holder<ModelType> modelType = modelTypes.getOrThrow(this.getModelTypes()).getRandomElement(this.getRandom()).get();
+        HolderLookup<ModelGene> modelTypes = serverLevelAccessor.holderLookup(FARegistries.MODEL_GENE);
+        Holder<ModelGene> modelType = modelTypes.getOrThrow(this.getModelTypes()).getRandomElement(this.getRandom()).get();
         this.setModelType(modelType);
-        HolderLookup<Pattern> patterns = serverLevelAccessor.holderLookup(FARegistries.PATTERN);
-        Holder<Pattern> skin = patterns.getOrThrow(modelType.value().skins()).getRandomElement(this.getRandom()).get();
+        HolderLookup<PatternGene> patterns = serverLevelAccessor.holderLookup(FARegistries.PATTERN_GENE);
+        Holder<PatternGene> skin = patterns.getOrThrow(modelType.value().skinGenes()).getRandomElement(this.getRandom()).get();
         this.setSkin(skin);
         if (skin.is(FAPatternTags.HAS_PATTERNS) && serverLevelAccessor.getRandom().nextInt(4) == 1) {
-            Holder<Pattern> pattern = patterns.getOrThrow(modelType.value().patterns()).getRandomElement(this.getRandom()).get();
+            Holder<PatternGene> pattern = patterns.getOrThrow(modelType.value().patternGenes()).getRandomElement(this.getRandom()).get();
             this.setPattern(pattern);
         } else {
             this.setPattern(patterns.getOrThrow(FAPatterns.BLANK));
@@ -205,7 +223,7 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
         if (!this.isNoAi()) {
             this.tranquilizedTick();
 
-            if (this.dimensions.width() != this.getEntityDimensions(this.getGrowthStage()).width() || this.dimensions.height() != this.getEntityDimensions(this.getGrowthStage()).height()) {
+            if (this.dimensions.width() != this.getEntityDimensions(this.getGrowthStage(), this.registryAccess()).width() || this.dimensions.height() != this.getEntityDimensions(this.getGrowthStage(), this.registryAccess()).height()) {
                 this.refreshDimensions();
             }
 
@@ -273,13 +291,13 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
     }
 
     public float renderScaleWidth() {
-        ModelType modelType = this.getModelType().value();
-        return modelType.ageScaleInfo().baseScaleWidth() + (modelType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
+        ModelGene modelGene = this.getModelGene(this.modelGeneRegistry).value();
+        return modelGene.ageScaleInfo().baseScaleWidth() + (modelGene.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
     }
 
     public float renderScaleHeight() {
-        ModelType modelType = this.getModelType().value();
-        return modelType.ageScaleInfo().baseScaleHeight() + (modelType.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
+        ModelGene modelGene = this.getModelGene(this.modelGeneRegistry).value();
+        return modelGene.ageScaleInfo().baseScaleHeight() + (modelGene.ageScaleInfo().ageScale() * (float) this.getGrowthStage());
     }
 
     @Override
@@ -385,9 +403,8 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(MODEL_TYPE, this.registryAccess().lookupOrThrow(FARegistries.MODEL_TYPES).getAny().orElseThrow());
-        builder.define(SKIN, this.registryAccess().lookupOrThrow(FARegistries.PATTERN).getAny().orElseThrow());
-        builder.define(PATTERN, this.registryAccess().lookupOrThrow(FARegistries.PATTERN).getAny().orElse(this.level().holderLookup(FARegistries.PATTERN).getOrThrow(FAPatterns.BLANK)));
+        builder.define(CHROMOSOME_1, Chromosome.BLANK);
+        builder.define(CHROMOSOME_2, Chromosome.BLANK);
         builder.define(COMMAND, this.registryAccess().lookupOrThrow(FARegistries.COMMAND_TYPES).getAny().orElseThrow());
         builder.define(GROWTH_STAGE, 0);
         builder.define(DAYS_ALIVE, 0);
@@ -395,6 +412,26 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
         builder.define(TRANQUILIZE_TIME, 0);
         builder.define(TRANQUILIZED, false);
         builder.define(OWNER, Optional.empty());
+    }
+
+    @Override
+    public void setChromosome1(Chromosome chromosome) {
+        this.entityData.set(CHROMOSOME_1, chromosome);
+    }
+
+    @Override
+    public Chromosome getChromosome1() {
+        return this.entityData.get(CHROMOSOME_1);
+    }
+
+    @Override
+    public void setChromosome2(Chromosome chromosome) {
+        this.entityData.set(CHROMOSOME_2, chromosome);
+    }
+
+    @Override
+    public Chromosome getChromosome2() {
+        return this.entityData.get(CHROMOSOME_2);
     }
 
     @Override
@@ -499,36 +536,6 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
     }
 
     @Override
-    public Holder<ModelType> getModelType() {
-        return this.entityData.get(MODEL_TYPE);
-    }
-
-    @Override
-    public void setModelType(Holder<ModelType> modelType) {
-        this.entityData.set(MODEL_TYPE, modelType);
-    }
-
-    @Override
-    public Holder<Pattern> getSkin() {
-        return this.entityData.get(SKIN);
-    }
-
-    @Override
-    public void setSkin(Holder<Pattern> pattern) {
-        this.entityData.set(SKIN, pattern);
-    }
-
-    @Override
-    public Holder<Pattern> getPattern() {
-        return this.entityData.get(PATTERN);
-    }
-
-    @Override
-    public void setPattern(Holder<Pattern> pattern) {
-        this.entityData.set(PATTERN, pattern);
-    }
-
-    @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
 
@@ -536,10 +543,7 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
             compoundTag.putUUID("Owner", this.getOwnerUUID());
         }
 
-        CompoundTag geneHolder = new CompoundTag();
-        this.geneHolder.save(geneHolder);
-        compoundTag.put("gene_holder", geneHolder);
-        this.addCosmeticsData(compoundTag, this.registryAccess());
+        this.saveChromosomes(compoundTag);
         this.addCommandType(compoundTag, this.registryAccess());
         this.addTranquilizeData(compoundTag, this.registryAccess());
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
@@ -568,8 +572,7 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
             }
         }
 
-        this.geneHolder.load(compoundTag.getCompound("gene_holder"));
-        this.readCosmeticsData(compoundTag, this.registryAccess());
+        this.loadChromosomes(compoundTag);
         this.readCommandType(compoundTag, this.registryAccess());
         this.readTranquilizeData(compoundTag, this.registryAccess());
         this.setDaysAlive(compoundTag.getInt("DaysAlive"));
@@ -585,7 +588,7 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
             compoundTag.putUUID("Owner", this.getOwnerUUID());
         }
 
-        this.addCosmeticsData(compoundTag, this.registryAccess());
+        this.saveChromosomes(compoundTag);
         this.addCommandType(compoundTag, this.registryAccess());
         this.addTranquilizeData(compoundTag, this.registryAccess());
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
@@ -602,7 +605,7 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
             compoundTag.putUUID("Owner", this.getOwnerUUID());
         }
 
-        this.addCosmeticsData(compoundTag, this.registryAccess());
+        this.saveChromosomes(compoundTag);
         this.addCommandType(compoundTag, this.registryAccess());
         this.addTranquilizeData(compoundTag, this.registryAccess());
         compoundTag.putInt("DaysAlive", this.getDaysAlive());
@@ -659,6 +662,7 @@ public abstract class Dinosaur extends Animal implements DataDrivenCosmetics, Co
                 ItemStack skullItemStack = this.getHead();
                 if (!skullItemStack.isEmpty()) {
                     creeper.increaseDroppedSkulls();
+                    skullItemStack.set(FADataComponents.HEAD_DISPLAY_INFORMATION.get(), new HeadDisplayInformation(this.getGrowthStage(), this.getChromosome1().getCosmeticGeneHolder()));
                     this.spawnAtLocation(serverLevel, skullItemStack);
                 }
             }

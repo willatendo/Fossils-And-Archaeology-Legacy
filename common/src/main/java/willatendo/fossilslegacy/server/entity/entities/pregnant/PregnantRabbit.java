@@ -19,8 +19,8 @@ import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.PregnantAnimal;
-import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
+import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.pregnancy_types.PregnancyType;
 
 import java.util.Optional;
@@ -28,9 +28,9 @@ import java.util.Optional;
 public class PregnantRabbit extends Rabbit implements DinopediaInformation, PregnantAnimal<Rabbit> {
     private static final EntityDataAccessor<Integer> PREGNANCY_TIME = SynchedEntityData.defineId(PregnantRabbit.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Holder<PregnancyType>> PREGNANCY_TYPE = SynchedEntityData.defineId(PregnantRabbit.class, FAEntityDataSerializers.PREGNANCY_TYPES.get());
-    private static final EntityDataAccessor<Holder<ModelType>> OFFSPRING_MODEL_TYPE = SynchedEntityData.defineId(PregnantRabbit.class, FAEntityDataSerializers.MODEL_TYPES.get());
-    private static final EntityDataAccessor<Holder<Pattern>> OFFSPRING_SKIN = SynchedEntityData.defineId(PregnantRabbit.class, FAEntityDataSerializers.PATTERN.get());
-    private static final EntityDataAccessor<Holder<Pattern>> OFFSPRING_PATTERN = SynchedEntityData.defineId(PregnantRabbit.class, FAEntityDataSerializers.PATTERN.get());
+    private static final EntityDataAccessor<Holder<ModelGene>> OFFSPRING_MODEL_TYPE = SynchedEntityData.defineId(PregnantRabbit.class, FAEntityDataSerializers.MODEL_TYPES.get());
+    private static final EntityDataAccessor<Holder<PatternGene>> OFFSPRING_SKIN = SynchedEntityData.defineId(PregnantRabbit.class, FAEntityDataSerializers.PATTERN.get());
+    private static final EntityDataAccessor<Holder<PatternGene>> OFFSPRING_PATTERN = SynchedEntityData.defineId(PregnantRabbit.class, FAEntityDataSerializers.PATTERN.get());
 
     public PregnantRabbit(EntityType<? extends Rabbit> entityType, Level level) {
         super(entityType, level);
@@ -128,32 +128,32 @@ public class PregnantRabbit extends Rabbit implements DinopediaInformation, Preg
     }
 
     @Override
-    public Holder<ModelType> getOffspringModelType() {
+    public Holder<ModelGene> getOffspringModelType() {
         return this.entityData.get(OFFSPRING_MODEL_TYPE);
     }
 
     @Override
-    public void setOffspringModelType(Holder<ModelType> coatTypeHolder) {
+    public void setOffspringModelType(Holder<ModelGene> coatTypeHolder) {
         this.entityData.set(OFFSPRING_MODEL_TYPE, coatTypeHolder);
     }
 
     @Override
-    public void setOffspringSkin(Holder<Pattern> pattern) {
+    public void setOffspringSkin(Holder<PatternGene> pattern) {
         this.entityData.set(OFFSPRING_SKIN, pattern);
     }
 
     @Override
-    public Holder<Pattern> getOffspringSkin() {
+    public Holder<PatternGene> getOffspringSkin() {
         return this.entityData.get(OFFSPRING_SKIN);
     }
 
     @Override
-    public void setOffspringPattern(Holder<Pattern> pattern) {
+    public void setOffspringPattern(Holder<PatternGene> pattern) {
         this.entityData.set(OFFSPRING_PATTERN, pattern);
     }
 
     @Override
-    public Holder<Pattern> getOffspringPattern() {
+    public Holder<PatternGene> getOffspringPattern() {
         return this.entityData.get(OFFSPRING_PATTERN);
     }
 

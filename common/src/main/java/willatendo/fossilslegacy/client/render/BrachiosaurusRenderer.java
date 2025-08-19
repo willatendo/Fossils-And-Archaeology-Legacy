@@ -6,8 +6,8 @@ import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRender
 import willatendo.fossilslegacy.client.render.layer.EyeLayer;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.jurassic.Brachiosaurus;
-import willatendo.fossilslegacy.server.pattern.FATextures;
-import willatendo.fossilslegacy.server.pattern.texture.Texture;
+import willatendo.fossilslegacy.server.gene.cosmetics.FATextures;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.Texture;
 
 import java.util.List;
 

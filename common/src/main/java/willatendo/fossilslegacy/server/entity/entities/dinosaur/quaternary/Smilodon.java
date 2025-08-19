@@ -36,8 +36,8 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.AnimatedSittingEnt
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.ShakingEntity;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.item.FAItems;
-import willatendo.fossilslegacy.server.model_type.ModelType;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
 import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
 
@@ -77,7 +77,7 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, ShakingE
     }
 
     @Override
-    public TagKey<ModelType> getModelTypes() {
+    public TagKey<ModelGene> getModelTypes() {
         return FAModelTypeTags.SMILODON;
     }
 
@@ -243,17 +243,17 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, ShakingE
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.SMILODON_AMBIENT.get(), ModelType.OverrideInfo.OverridenSoundType.AMBIENT);
+        return this.getOverridenSoundEvent(FASoundEvents.SMILODON_AMBIENT.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT);
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return this.getOverridenSoundEvent(FASoundEvents.SMILODON_HURT.get(), ModelType.OverrideInfo.OverridenSoundType.HURT);
+        return this.getOverridenSoundEvent(FASoundEvents.SMILODON_HURT.get(), ModelGene.OverrideInfo.OverridenSoundType.HURT);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.SMILODON_DEATH.get(), ModelType.OverrideInfo.OverridenSoundType.DEATH);
+        return this.getOverridenSoundEvent(FASoundEvents.SMILODON_DEATH.get(), ModelGene.OverrideInfo.OverridenSoundType.DEATH);
     }
 
     public void setIsInterested(boolean interested) {

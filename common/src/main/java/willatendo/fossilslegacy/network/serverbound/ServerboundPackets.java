@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.network.serverbound;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -13,14 +14,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import willatendo.fossilslegacy.server.block.entity.entities.DNARecombinatorBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.entities.TimeMachineBlockEntity;
+import willatendo.fossilslegacy.server.gene.cosmetics.CosmeticGeneHolder;
 import willatendo.fossilslegacy.server.criteria.FACriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.entities.Fossil;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
-import willatendo.fossilslegacy.server.gene.GeneHolder;
+import willatendo.fossilslegacy.server.gene.attributes.AttributeGeneHolder;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.item.FADataComponents;
-import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
-import willatendo.fossilslegacy.server.pattern.pattern.PatternHolder;
+import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 
@@ -48,28 +49,27 @@ public final class ServerboundPackets {
             ItemStack itemStack = DNARecombinatorBlockEntity.getItem(0);
             DNARecombinatorBlockEntity.setItem(0, ItemStack.EMPTY);
             if (modelType.isPresent() && skin.isPresent()) {
-                Registry<ModelType> modelTypeRegistry = level.registryAccess().lookupOrThrow(FARegistries.MODEL_TYPES);
-                Registry<Pattern> patternRegistry = level.registryAccess().lookupOrThrow(FARegistries.PATTERN);
-                Holder<ModelType> modelTypeHolder = modelTypeRegistry.get(ResourceLocation.parse(modelType.get())).get();
-                Holder<Pattern> skinHolder = patternRegistry.get(ResourceLocation.parse(skin.get())).get();
-                Optional<Holder<Pattern>> patternHolder = pattern.map(patternId -> patternRegistry.get(ResourceLocation.parse(patternId)).get());
+                Registry<ModelGene> modelTypeRegistry = level.registryAccess().lookupOrThrow(FARegistries.MODEL_GENE);
+                Holder<ModelGene> modelTypeHolder = modelTypeRegistry.get(ResourceLocation.parse(modelType.get())).get();
+                ResourceKey<PatternGene> skinHolder = ResourceKey.create(FARegistries.PATTERN_GENE, ResourceLocation.parse(skin.get()));
+                Optional<ResourceKey<PatternGene>> patternHolder = pattern.map(patternId -> ResourceKey.create(FARegistries.PATTERN_GENE, ResourceLocation.parse(patternId)));
                 itemStack.set(FADataComponents.MODEL_TYPE.get(), modelTypeHolder);
-                itemStack.set(FADataComponents.PATTERN_HOLDER.get(), new PatternHolder(skinHolder, patternHolder));
+                itemStack.set(FADataComponents.COSMETIC_GENE_HOLDER.get(), new CosmeticGeneHolder(skinHolder, patternHolder));
             } else {
                 itemStack.remove(FADataComponents.MODEL_TYPE.get());
-                itemStack.remove(FADataComponents.PATTERN_HOLDER.get());
+                itemStack.remove(FADataComponents.COSMETIC_GENE_HOLDER.get());
             }
 
-            GeneHolder geneHolder = new GeneHolder();
+            AttributeGeneHolder attributeGeneHolder = new AttributeGeneHolder();
             List<Optional<String>> attributeGenes = serverboundSetDNARecombinatorGenePacket.attributeGenes();
             for (int i = 0; i < attributeGenes.size(); i++) {
                 Optional<String> gene = attributeGenes.get(i);
                 if (gene.isPresent()) {
-                    geneHolder.set(i, FABuiltInRegistries.GENE.get(ResourceLocation.parse(gene.get())).orElseThrow());
+                    attributeGeneHolder.set(i, FABuiltInRegistries.GENE.get(ResourceLocation.parse(gene.get())).orElseThrow());
                 }
             }
-            if (!geneHolder.isEmpty()) {
-                itemStack.set(FADataComponents.GENE_HOLDER.get(), geneHolder);
+            if (!attributeGeneHolder.isEmpty()) {
+                itemStack.set(FADataComponents.GENE_HOLDER.get(), attributeGeneHolder);
             } else if (itemStack.has(FADataComponents.GENE_HOLDER.get())) {
                 itemStack.remove(FADataComponents.GENE_HOLDER.get());
             }

@@ -14,19 +14,20 @@ import willatendo.fossilslegacy.client.render.layer.PatternLayer;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.jurassic.Dilophosaurus;
-import willatendo.fossilslegacy.server.entity.util.interfaces.DataDrivenCosmetics;
+import willatendo.fossilslegacy.server.entity.util.interfaces.ChromosomedEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.ShakingEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.WetFurEntity;
-import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.FATextures;
-import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
-import willatendo.fossilslegacy.server.pattern.texture.Texture;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.FATextures;
+import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.Texture;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 
 import java.util.List;
 import java.util.Optional;
 
-public abstract class DataDrivenModelDinosaurRenderer<T extends Dinosaur & DataDrivenCosmetics, S extends DinosaurRenderState> extends MobRenderer<T, S, EntityModel<S>> {
+public abstract class DataDrivenModelDinosaurRenderer<T extends Dinosaur & ChromosomedEntity, S extends DinosaurRenderState> extends MobRenderer<T, S, EntityModel<S>> {
     private ResourceLocation modelId;
 
     public DataDrivenModelDinosaurRenderer(EntityRendererProvider.Context context, float shadowSize) {
@@ -38,11 +39,11 @@ public abstract class DataDrivenModelDinosaurRenderer<T extends Dinosaur & DataD
 
     public abstract List<ResourceKey<Texture>> requiredTextures();
 
-    public Optional<ResourceLocation> getAdditionalModel(S dinosaurRenderState, ModelType modelType) {
+    public Optional<ResourceLocation> getAdditionalModel(S dinosaurRenderState, ModelGene modelGene) {
         return Optional.empty();
     }
 
-    protected Optional<ResourceLocation> getAdditionalTexture(Registry<Texture> textureRegistry, S dinosaurRenderState, Pattern pattern) {
+    protected Optional<ResourceLocation> getAdditionalTexture(Registry<Texture> textureRegistry, S dinosaurRenderState, SkinGene skinGene) {
         return Optional.empty();
     }
 
@@ -65,9 +66,9 @@ public abstract class DataDrivenModelDinosaurRenderer<T extends Dinosaur & DataD
     public void extractRenderState(T dinosaur, S dinosaurRenderState, float partialTick) {
         super.extractRenderState(dinosaur, dinosaurRenderState, partialTick);
         dinosaurRenderState.textureRegistry = dinosaur.registryAccess().lookupOrThrow(FARegistries.TEXTURE);
-        dinosaurRenderState.modelType = dinosaur.getModelType();
-        dinosaurRenderState.skin = dinosaur.getSkin();
-        dinosaurRenderState.pattern = dinosaur.getPattern();
+        dinosaurRenderState.modelGene = dinosaur.getModelGene(dinosaur.modelGeneRegistry);
+        dinosaurRenderState.skinGene = dinosaur.getSkinGene(dinosaur.skinGeneRegistry);
+        dinosaurRenderState.patternGene = dinosaur.getPatternGene(dinosaur.patternGeneRegistry);
         dinosaurRenderState.growthStage = dinosaur.getGrowthStage();
         dinosaurRenderState.isTame = dinosaur.isTame();
         dinosaurRenderState.isOrderedToSit = dinosaur.isOrderedToSit();
@@ -107,100 +108,100 @@ public abstract class DataDrivenModelDinosaurRenderer<T extends Dinosaur & DataD
 
     @Override
     protected float getShadowRadius(S dinosaurRenderState) {
-        ModelType.AgeScaleInfo ageScaleInfo = dinosaurRenderState.modelType.value().ageScaleInfo();
+        ModelGene.AgeScaleInfo ageScaleInfo = dinosaurRenderState.modelGene.value().ageScaleInfo();
         return ageScaleInfo.shadowSize() + (ageScaleInfo.shadowGrowth() * dinosaurRenderState.growthStage);
     }
 
-    protected Optional<ResourceLocation> additionalModel(Optional<ResourceLocation> additionalModel, ModelType.Models models) {
+    protected Optional<ResourceLocation> additionalModel(Optional<ResourceLocation> additionalModel, ModelGene.Models models) {
         return additionalModel.isPresent() ? Optional.of(additionalModel.get()) : Optional.of(models.model());
     }
 
     @Override
     public void render(S dinosaurRenderState, PoseStack poseStack, MultiBufferSource multiBufferSource, int partialTicks) {
-        ModelType modelType = dinosaurRenderState.modelType.value();
-        if (this.getAdditionalModel(dinosaurRenderState, modelType).isPresent()) {
-            this.setModel(this.getAdditionalModel(dinosaurRenderState, modelType).get());
+        ModelGene modelGene = dinosaurRenderState.modelGene.value();
+        if (this.getAdditionalModel(dinosaurRenderState, modelGene).isPresent()) {
+            this.setModel(this.getAdditionalModel(dinosaurRenderState, modelGene).get());
         } else {
-            this.setModel(modelType.models().model());
+            this.setModel(modelGene.models().model());
         }
         super.render(dinosaurRenderState, poseStack, multiBufferSource, partialTicks);
     }
 
     @Override
     public ResourceLocation getTextureLocation(S dinosaurRenderState) {
-        Pattern skin = dinosaurRenderState.skin.value();
+        SkinGene skin = dinosaurRenderState.skinGene.value();
         return this.getAdditionalTexture(dinosaurRenderState.textureRegistry, dinosaurRenderState, skin).isPresent() ? this.getAdditionalTexture(dinosaurRenderState.textureRegistry, dinosaurRenderState, skin).get() : dinosaurRenderState.isBaby ? this.hasBabyTexture(dinosaurRenderState.textureRegistry, skin) ? this.getBabyTexture(dinosaurRenderState.textureRegistry, skin) : this.getBaseTexture(dinosaurRenderState.textureRegistry, skin) : this.getBaseTexture(dinosaurRenderState.textureRegistry, skin);
     }
 
-    public ResourceLocation getTexture(Registry<Texture> textureRegistry, ResourceKey<Texture> texture, Pattern pattern) {
-        return pattern.getTexture(textureRegistry, texture, this.baseTextureName(), this.requiredTextures());
+    public ResourceLocation getTexture(Registry<Texture> textureRegistry, ResourceKey<Texture> texture, PatternGene patternGene) {
+        return patternGene.getTexture(textureRegistry, texture, this.baseTextureName(), this.requiredTextures());
     }
 
-    public ResourceLocation getBaseTexture(Registry<Texture> textureRegistry, Pattern pattern) {
-        return pattern.getTexture(textureRegistry, FATextures.BASE, this.baseTextureName(), this.requiredTextures());
+    public ResourceLocation getBaseTexture(Registry<Texture> textureRegistry, PatternGene patternGene) {
+        return patternGene.getTexture(textureRegistry, FATextures.BASE, this.baseTextureName(), this.requiredTextures());
     }
 
-    public ResourceLocation getBabyTexture(Registry<Texture> textureRegistry, Pattern pattern) {
-        return pattern.getBabyTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
+    public ResourceLocation getBabyTexture(Registry<Texture> textureRegistry, PatternGene patternGene) {
+        return patternGene.getBabyTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
     }
 
-    public ResourceLocation getAggressiveTexture(Registry<Texture> textureRegistry, Pattern pattern) {
-        return pattern.getAggressiveTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
+    public ResourceLocation getAggressiveTexture(Registry<Texture> textureRegistry, PatternGene patternGene) {
+        return patternGene.getAggressiveTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
     }
 
-    public ResourceLocation getAggressiveBabyTexture(Registry<Texture> textureRegistry, Pattern pattern) {
-        return pattern.getAggressiveBabyTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
+    public ResourceLocation getAggressiveBabyTexture(Registry<Texture> textureRegistry, PatternGene patternGene) {
+        return patternGene.getAggressiveBabyTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
     }
 
-    public ResourceLocation getKnockedOutTexture(Registry<Texture> textureRegistry, Pattern pattern) {
-        return pattern.getKnockedOutTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
+    public ResourceLocation getKnockedOutTexture(Registry<Texture> textureRegistry, PatternGene patternGene) {
+        return patternGene.getKnockedOutTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
     }
 
-    public ResourceLocation getFurTexture(Registry<Texture> textureRegistry, Pattern pattern) {
-        return pattern.getFurTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
+    public ResourceLocation getFurTexture(Registry<Texture> textureRegistry, PatternGene patternGene) {
+        return patternGene.getFurTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
     }
 
-    public ResourceLocation getBabyFurTexture(Registry<Texture> textureRegistry, Pattern pattern) {
-        return pattern.getBabyFurTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
+    public ResourceLocation getBabyFurTexture(Registry<Texture> textureRegistry, PatternGene patternGene) {
+        return patternGene.getBabyFurTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
     }
 
-    public ResourceLocation getShearedTexture(Registry<Texture> textureRegistry, Pattern pattern) {
-        return pattern.getShearedTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
+    public ResourceLocation getShearedTexture(Registry<Texture> textureRegistry, PatternGene patternGene) {
+        return patternGene.getShearedTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
     }
 
-    public ResourceLocation getEyeTexture(Registry<Texture> textureRegistry, Pattern pattern) {
-        return pattern.getEyeTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
+    public ResourceLocation getEyeTexture(Registry<Texture> textureRegistry, PatternGene patternGene) {
+        return patternGene.getEyeTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
     }
 
-    public boolean hasBabyTexture(Registry<Texture> textureRegistry, Pattern pattern) {
-        return pattern.hasBabyTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
+    public boolean hasBabyTexture(Registry<Texture> textureRegistry, PatternGene patternGene) {
+        return patternGene.hasBabyTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
     }
 
-    public boolean hasAggressiveBabyTexture(Registry<Texture> textureRegistry, Pattern pattern) {
-        return pattern.hasAggressiveBabyTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
+    public boolean hasAggressiveBabyTexture(Registry<Texture> textureRegistry, PatternGene patternGene) {
+        return patternGene.hasAggressiveBabyTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
     }
 
-    public boolean hasAggressiveTexture(Registry<Texture> textureRegistry, Pattern pattern) {
-        return pattern.hasAggressiveTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
+    public boolean hasAggressiveTexture(Registry<Texture> textureRegistry, PatternGene patternGene) {
+        return patternGene.hasAggressiveTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
     }
 
-    public boolean hasKnockedOutTexture(Registry<Texture> textureRegistry, Pattern pattern) {
-        return pattern.hasKnockedOutTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
+    public boolean hasKnockedOutTexture(Registry<Texture> textureRegistry, PatternGene patternGene) {
+        return patternGene.hasKnockedOutTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
     }
 
-    public boolean hasFurTexture(Registry<Texture> textureRegistry, Pattern pattern) {
-        return pattern.hasFurTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
+    public boolean hasFurTexture(Registry<Texture> textureRegistry, PatternGene patternGene) {
+        return patternGene.hasFurTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
     }
 
-    public boolean hasBabyFurTexture(Registry<Texture> textureRegistry, Pattern pattern) {
-        return pattern.hasBabyFurTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
+    public boolean hasBabyFurTexture(Registry<Texture> textureRegistry, PatternGene patternGene) {
+        return patternGene.hasBabyFurTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
     }
 
-    public boolean hasShearedTexture(Registry<Texture> textureRegistry, Pattern pattern) {
-        return pattern.hasShearedTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
+    public boolean hasShearedTexture(Registry<Texture> textureRegistry, PatternGene patternGene) {
+        return patternGene.hasShearedTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
     }
 
-    public boolean hasEyeTexture(Registry<Texture> textureRegistry, Pattern pattern) {
-        return pattern.hasEyeTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
+    public boolean hasEyeTexture(Registry<Texture> textureRegistry, PatternGene patternGene) {
+        return patternGene.hasEyeTexture(textureRegistry, this.baseTextureName(), this.requiredTextures());
     }
 }

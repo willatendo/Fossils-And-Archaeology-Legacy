@@ -53,15 +53,15 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.*;
 import willatendo.fossilslegacy.server.feeder_food.FeederFood;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 import willatendo.fossilslegacy.server.fuel.FuelEntry;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.item.FALootTables;
 import willatendo.fossilslegacy.server.item.FAMapDecorationTypes;
 import willatendo.fossilslegacy.server.item.items.EggItem;
 import willatendo.fossilslegacy.server.jewel_recovery.JewelRecovery;
 import willatendo.fossilslegacy.server.level.FALevels;
-import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
-import willatendo.fossilslegacy.server.pattern.texture.Texture;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.Texture;
 import willatendo.fossilslegacy.server.registry.FABlockRegistry;
 import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 import willatendo.fossilslegacy.server.registry.FARegistries;
@@ -283,9 +283,11 @@ public final class BasicEvents {
     public static void newRegistryEvent(NewRegistryRegister newRegistryRegister) {
         newRegistryRegister.register(FABuiltInRegistries.COMMAND_TYPES, FARegistries.COMMAND_TYPES);
         newRegistryRegister.register(FABuiltInRegistries.DINOPEDIA_LINE_TYPES, FARegistries.DINOPEDIA_LINE_TYPE);
-        newRegistryRegister.register(FABuiltInRegistries.GENE, FARegistries.GENE);
+        newRegistryRegister.register(FABuiltInRegistries.GENE, FARegistries.ATTRIBUTE_GENE);
+        newRegistryRegister.register(FABuiltInRegistries.INHERITANCE_CONDITION, FARegistries.INHERITANCE_CONDITION);
+        newRegistryRegister.register(FABuiltInRegistries.INHERITANCE_RULE, FARegistries.INHERITANCE_RULE);
         newRegistryRegister.register(FABuiltInRegistries.PREGNANCY_TYPES, FARegistries.PREGNANCY_TYPE);
-        newRegistryRegister.register(FABuiltInRegistries.PATTERN_INFORMATION_TYPES, FARegistries.PATTERN_INFORMATION_TYPE);
+        newRegistryRegister.register(FABuiltInRegistries.TEXTURE_INFORMATION_TYPES, FARegistries.TEXTURE_INFORMATION_TYPE);
         newRegistryRegister.register(FABuiltInRegistries.TEXTURE_TYPES, FARegistries.TEXTURE_TYPE);
     }
 
@@ -298,9 +300,9 @@ public final class BasicEvents {
         dynamicRegistryRegister.register(FARegistries.FEEDER_FOOD, FeederFood.CODEC);
         dynamicRegistryRegister.register(FARegistries.FOSSIL_VARIANTS, FossilVariant.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.FUEL_ENTRY, FuelEntry.CODEC);
-        dynamicRegistryRegister.register(FARegistries.MODEL_TYPES, ModelType.DIRECT_CODEC);
-        dynamicRegistryRegister.register(FARegistries.PATTERN, Pattern.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.JEWEL_RECOVERY, JewelRecovery.CODEC);
+        dynamicRegistryRegister.register(FARegistries.MODEL_GENE, ModelGene.DIRECT_CODEC);
+        dynamicRegistryRegister.register(FARegistries.SKIN_GENE, SkinGene.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.STONE_TABLET_VARIANT, StoneTabletVariant.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.TEXTURE, Texture.CODEC);
     }

@@ -21,10 +21,10 @@ import net.minecraft.world.item.ProjectileItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.entity.entities.ThrownAnimalEgg;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
-import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.pattern.PatternHolder;
+import willatendo.fossilslegacy.server.gene.cosmetics.CosmeticGeneHolder;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
@@ -35,7 +35,7 @@ public class AnimalEggItem extends Item implements ProjectileItem {
     private final Supplier<EntityType<? extends Animal>> animal;
     private final GeologicalTimeScale.Period period;
     private final boolean incubated;
-    private TagKey<ModelType> modelTypes;
+    private TagKey<ModelGene> modelTypes;
 
     public AnimalEggItem(GeologicalTimeScale.Period period, Supplier<EntityType<? extends Animal>> animal, boolean incubated, Properties properties) {
         super(properties);
@@ -44,7 +44,7 @@ public class AnimalEggItem extends Item implements ProjectileItem {
         this.incubated = incubated;
     }
 
-    public AnimalEggItem(GeologicalTimeScale.Period period, Supplier<EntityType<? extends Animal>> animal, boolean incubated, TagKey<ModelType> modelTypes, Properties properties) {
+    public AnimalEggItem(GeologicalTimeScale.Period period, Supplier<EntityType<? extends Animal>> animal, boolean incubated, TagKey<ModelGene> modelTypes, Properties properties) {
         this(period, animal, incubated, properties);
         this.modelTypes = modelTypes;
     }
@@ -53,12 +53,12 @@ public class AnimalEggItem extends Item implements ProjectileItem {
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         this.period.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
         if (itemStack.has(FADataComponents.MODEL_TYPE.get())) {
-            Holder<ModelType> holder = itemStack.get(FADataComponents.MODEL_TYPE.get());
+            Holder<ModelGene> holder = itemStack.get(FADataComponents.MODEL_TYPE.get());
             tooltipComponents.add(FAUtils.translation("item", "dna.coat_type", holder.value().displayInfo().modelName()).withStyle(ChatFormatting.GRAY));
         }
-        if (itemStack.has(FADataComponents.PATTERN_HOLDER.get())) {
-            PatternHolder patternHolder = itemStack.get(FADataComponents.PATTERN_HOLDER.get());
-            tooltipComponents.add(FAUtils.translation("item", "skin", patternHolder.getDisplayName()).withStyle(ChatFormatting.GRAY));
+        if (itemStack.has(FADataComponents.COSMETIC_GENE_HOLDER.get())) {
+            CosmeticGeneHolder cosmeticGeneHolder = itemStack.get(FADataComponents.COSMETIC_GENE_HOLDER.get());
+            tooltipComponents.add(FAUtils.translation("item", "skinGenes", cosmeticGeneHolder.getDisplayName(tooltipContext.registries())).withStyle(ChatFormatting.GRAY));
         }
         super.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
     }
@@ -70,7 +70,7 @@ public class AnimalEggItem extends Item implements ProjectileItem {
         if (!level.isClientSide) {
             ThrownAnimalEgg thrownAnimalEgg = new ThrownAnimalEgg(level, player, this.animal.get(), this.incubated, player.getItemInHand(interactionHand));
             if (this.modelTypes != null) {
-                thrownAnimalEgg.setModelType(level.holderLookup(FARegistries.MODEL_TYPES).getOrThrow(this.modelTypes).getRandomElement(level.getRandom()).get());
+                thrownAnimalEgg.setModelType(level.holderLookup(FARegistries.MODEL_GENE).getOrThrow(this.modelTypes).getRandomElement(level.getRandom()).get());
             }
             thrownAnimalEgg.setItem(itemStack);
             thrownAnimalEgg.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);

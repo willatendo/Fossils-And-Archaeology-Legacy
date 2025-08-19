@@ -4,7 +4,8 @@
   "pattern_information": {
     "type": "fossilslegacy:package",
     "textures": {
-      "fossilslegacy:base": "fossilslegacy:textures/entity/ankylosaurus/ankylosaurus.png"
+      "fossilslegacy:base": "fossilslegacy:textures/entity/ankylosaurus/ankylosaurus.png",
+      "fossilslegacy:eye_layer": "fossilslegacy:textures/entity/ankylosaurus/eyes/adult.png"
     }
   },
   "pattern_name": {

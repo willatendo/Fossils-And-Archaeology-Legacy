@@ -1,7 +1,7 @@
 {
   "model": {
     "type": "minecraft:special",
-    "base": "fossilslegacy:item/template_ankylosaurus_head",
+    "base": "fossilslegacy:item/template_carnotaurus_head",
     "model": {
       "type": "fossilslegacy:head",
       "head_type": "carnotaurus"

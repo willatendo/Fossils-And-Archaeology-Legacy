@@ -10,7 +10,6 @@ import java.util.List;
 
 public interface DinopediaLine {
     Codec<DinopediaLine> CODEC = FABuiltInRegistries.DINOPEDIA_LINE_TYPES.byNameCodec().dispatch(DinopediaLine::type, DinopediaLineType::codec);
-    Codec<DinopediaLineType<?>> D = FABuiltInRegistries.DINOPEDIA_LINE_TYPES.byNameCodec();
 
     DinopediaLineType<?> type();
 

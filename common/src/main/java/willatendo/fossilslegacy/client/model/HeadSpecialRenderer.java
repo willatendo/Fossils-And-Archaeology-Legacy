@@ -4,25 +4,22 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.model.Model;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.special.NoDataSpecialModelRenderer;
-import net.minecraft.client.renderer.special.SkullSpecialRenderer;
 import net.minecraft.client.renderer.special.SpecialModelRenderer;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.ResolvableProfile;
 import willatendo.fossilslegacy.client.model.dinosaur.head.HeadModel;
 import willatendo.fossilslegacy.client.render.HeadBlockEntityRenderer;
+import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.FAHeadTypes;
+import willatendo.fossilslegacy.server.item.data_components.HeadDisplayInformation;
 
 import java.util.Optional;
 
-public class HeadSpecialRenderer implements NoDataSpecialModelRenderer {
+public class HeadSpecialRenderer implements SpecialModelRenderer<HeadDisplayInformation> {
     private final FAHeadTypes faHeadTypes;
     private final HeadModel headModel;
     private final ResourceLocation textureOverride;
@@ -36,9 +33,14 @@ public class HeadSpecialRenderer implements NoDataSpecialModelRenderer {
     }
 
     @Override
-    public void render(ItemDisplayContext itemDisplayContext, PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight, int packedOverlay, boolean hasFoilType) {
-        RenderType rendertype = HeadBlockEntityRenderer.getRenderType(this.faHeadTypes, this.textureOverride);
-        HeadBlockEntityRenderer.renderSkull(null, 180.0F, this.animation, poseStack, multiBufferSource, packedLight, this.headModel, rendertype);
+    public void render(HeadDisplayInformation headDisplayInformation, ItemDisplayContext itemDisplayContext, PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight, int packedOverlay, boolean hasFoilType) {
+        RenderType renderType = HeadBlockEntityRenderer.getRenderType(this.faHeadTypes, this.textureOverride);
+        HeadBlockEntityRenderer.renderHead(null, 180.0F, this.animation, poseStack, multiBufferSource, packedLight, this.headModel, renderType, headDisplayInformation, false);
+    }
+
+    @Override
+    public HeadDisplayInformation extractArgument(ItemStack itemStack) {
+        return itemStack.get(FADataComponents.HEAD_DISPLAY_INFORMATION.get());
     }
 
     public record Unbaked(FAHeadTypes faHeadTypes, Optional<ResourceLocation> textureOverride, float animation) implements SpecialModelRenderer.Unbaked {

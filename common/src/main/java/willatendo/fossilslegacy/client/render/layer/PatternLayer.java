@@ -10,8 +10,8 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRenderer;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
-import willatendo.fossilslegacy.server.pattern.FAPatterns;
-import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
+import willatendo.fossilslegacy.server.gene.cosmetics.FAPatterns;
+import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 
 public class PatternLayer<T extends Dinosaur, S extends DinosaurRenderState> extends RenderLayer<S, EntityModel<S>> {
     private final DataDrivenModelDinosaurRenderer<T, S> dataDrivenModelDinosaurRenderer;
@@ -23,9 +23,9 @@ public class PatternLayer<T extends Dinosaur, S extends DinosaurRenderState> ext
 
     @Override
     public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight, DinosaurRenderState dinosaurRenderState, float yRot, float xRot) {
-        if (dinosaurRenderState.pattern != null && !dinosaurRenderState.pattern.is(FAPatterns.BLANK)) {
-            Pattern pattern = dinosaurRenderState.pattern.value();
-            VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entityCutoutNoCull(this.dataDrivenModelDinosaurRenderer.getBaseTexture(dinosaurRenderState.textureRegistry, pattern)));
+        if (dinosaurRenderState.patternGene != null && !dinosaurRenderState.patternGene.is(FAPatterns.BLANK)) {
+            PatternGene patternGene = dinosaurRenderState.patternGene.value();
+            VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entityCutoutNoCull(this.dataDrivenModelDinosaurRenderer.getBaseTexture(dinosaurRenderState.textureRegistry, patternGene)));
             poseStack.pushPose();
             this.getParentModel().renderToBuffer(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY);
             poseStack.popPose();

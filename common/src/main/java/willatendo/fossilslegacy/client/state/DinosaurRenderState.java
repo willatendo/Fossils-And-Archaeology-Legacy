@@ -4,15 +4,16 @@ import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.util.Mth;
-import willatendo.fossilslegacy.server.model_type.ModelType;
-import willatendo.fossilslegacy.server.pattern.pattern.Pattern;
-import willatendo.fossilslegacy.server.pattern.texture.Texture;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.Texture;
 
 public class DinosaurRenderState extends LivingEntityRenderState {
     public Registry<Texture> textureRegistry;
-    public Holder<ModelType> modelType;
-    public Holder<Pattern> skin;
-    public Holder<Pattern> pattern;
+    public Holder<ModelGene> modelGene;
+    public Holder<SkinGene> skinGene;
+    public Holder<PatternGene> patternGene;
     public int growthStage;
     public boolean isTame;
     public boolean isOrderedToSit;
