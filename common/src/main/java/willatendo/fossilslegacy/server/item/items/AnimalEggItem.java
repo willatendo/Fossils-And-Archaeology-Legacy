@@ -21,6 +21,7 @@ import net.minecraft.world.item.ProjectileItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.entity.entities.ThrownAnimalEgg;
+import willatendo.fossilslegacy.server.gene.ChromosomeUtils;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
@@ -70,7 +71,7 @@ public class AnimalEggItem extends Item implements ProjectileItem {
         if (!level.isClientSide) {
             ThrownAnimalEgg thrownAnimalEgg = new ThrownAnimalEgg(level, player, this.animal.get(), this.incubated, player.getItemInHand(interactionHand));
             if (this.modelTypes != null) {
-                thrownAnimalEgg.setModelType(level.holderLookup(FARegistries.MODEL_GENE).getOrThrow(this.modelTypes).getRandomElement(level.getRandom()).get());
+                ChromosomeUtils.createRandomChromosomes(thrownAnimalEgg, level.getRandom(), this.modelTypes);
             }
             thrownAnimalEgg.setItem(itemStack);
             thrownAnimalEgg.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);

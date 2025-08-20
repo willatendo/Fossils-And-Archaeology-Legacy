@@ -28,7 +28,7 @@ import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
 import willatendo.fossilslegacy.server.tags.FAEntityTypeTags;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
-import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelGeneTags;
 
 import java.util.Optional;
 
@@ -108,7 +108,7 @@ public class Dimetrodon extends Dinosaur implements DinopediaInformation {
 
     @Override
     public TagKey<ModelGene> getModelTypes() {
-        return FAModelTypeTags.DIMETRODON;
+        return FAModelGeneTags.DIMETRODON;
     }
 
     @Override

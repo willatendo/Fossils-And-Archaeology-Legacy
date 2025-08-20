@@ -39,13 +39,12 @@ import willatendo.fossilslegacy.server.feature.FAPlacedFeatures;
 import willatendo.fossilslegacy.server.feeder_food.FAFeederFoods;
 import willatendo.fossilslegacy.server.fossil_variant.FAFossilVariants;
 import willatendo.fossilslegacy.server.fuel.FAFuelEntries;
+import willatendo.fossilslegacy.server.gene.cosmetics.FAModelGenes;
+import willatendo.fossilslegacy.server.gene.cosmetics.FAPatternGenes;
 import willatendo.fossilslegacy.server.item.FAJukeboxSongs;
 import willatendo.fossilslegacy.server.item.FATrimMaterials;
 import willatendo.fossilslegacy.server.jewel_recovery.FAJewelRecoveries;
 import willatendo.fossilslegacy.server.level.prehistoric.PrehistoricNoiseGeneratorSettings;
-import willatendo.fossilslegacy.server.gene.cosmetics.FAModelGenes;
-import willatendo.fossilslegacy.server.gene.cosmetics.FAPatterns;
-import willatendo.fossilslegacy.server.gene.cosmetics.FATextures;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.stone_tablet_variant.FAStoneTabletVariants;
 import willatendo.fossilslegacy.server.structure.FAPools;
@@ -64,7 +63,7 @@ import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = FAUtils.ID)
 public class FossilsLegacyData {
-    private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder().add(Registries.BIOME, FABiomes::bootstrap).add(Registries.CONFIGURED_FEATURE, FAConfiguredFeatures::bootstrap).add(Registries.DAMAGE_TYPE, FADamageTypes::bootstrap).add(Registries.DIMENSION_TYPE, FADimensionTypes::bootstrap).add(Registries.JUKEBOX_SONG, FAJukeboxSongs::bootstrap).add(Registries.LEVEL_STEM, FALevelStems::bootstrap).add(Registries.MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST, FAMultiNoiseBiomeSourceParameterLists::bootstrap).add(Registries.NOISE_SETTINGS, PrehistoricNoiseGeneratorSettings::bootstrap).add(Registries.PLACED_FEATURE, FAPlacedFeatures::bootstrap).add(Registries.PROCESSOR_LIST, FAProcessorLists::bootstrap).add(Registries.STRUCTURE, FAStructures::bootstrap).add(Registries.STRUCTURE_SET, FAStructureSets::bootstrap).add(Registries.TEMPLATE_POOL, FAPools::bootstrap).add(Registries.TRIM_MATERIAL, FATrimMaterials::bootstrap).add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, FABiomeModifiers::bootstrap).add(FARegistries.ANALYZER_RESULT, FAAnalyzerResults::bootstrap).add(FARegistries.ANCIENT_AXE_BONUS, FAAncientAxeBonuses::bootstrap).add(FARegistries.MODEL_GENE, FAModelGenes::bootstrap).add(FARegistries.PATTERN_GENE, FAPatterns::bootstrap).add(FARegistries.DECORATION_PLAQUE_TYPE, FADecorationPlaqueTypes::bootstrap).add(FARegistries.DINOPEDIA_ENTRY, FADinopediaEntries::bootstrap).add(FARegistries.DINOPEDIA_TYPE, FADinopediaTypes::bootstrap).add(FARegistries.FEEDER_FOOD, FAFeederFoods::bootstrap).add(FARegistries.FOSSIL_VARIANTS, FAFossilVariants::bootstrap).add(FARegistries.FUEL_ENTRY, FAFuelEntries::bootstrap).add(FARegistries.JEWEL_RECOVERY, FAJewelRecoveries::bootstrap).add(FARegistries.STONE_TABLET_VARIANT, FAStoneTabletVariants::bootstrap).add(FARegistries.TEXTURE, FATextures::bootstrap);
+    private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder().add(Registries.BIOME, FABiomes::bootstrap).add(Registries.CONFIGURED_FEATURE, FAConfiguredFeatures::bootstrap).add(Registries.DAMAGE_TYPE, FADamageTypes::bootstrap).add(Registries.DIMENSION_TYPE, FADimensionTypes::bootstrap).add(Registries.JUKEBOX_SONG, FAJukeboxSongs::bootstrap).add(Registries.LEVEL_STEM, FALevelStems::bootstrap).add(Registries.MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST, FAMultiNoiseBiomeSourceParameterLists::bootstrap).add(Registries.NOISE_SETTINGS, PrehistoricNoiseGeneratorSettings::bootstrap).add(Registries.PLACED_FEATURE, FAPlacedFeatures::bootstrap).add(Registries.PROCESSOR_LIST, FAProcessorLists::bootstrap).add(Registries.STRUCTURE, FAStructures::bootstrap).add(Registries.STRUCTURE_SET, FAStructureSets::bootstrap).add(Registries.TEMPLATE_POOL, FAPools::bootstrap).add(Registries.TRIM_MATERIAL, FATrimMaterials::bootstrap).add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, FABiomeModifiers::bootstrap).add(FARegistries.ANALYZER_RESULT, FAAnalyzerResults::bootstrap).add(FARegistries.ANCIENT_AXE_BONUS, FAAncientAxeBonuses::bootstrap).add(FARegistries.MODEL_GENE, FAModelGenes::bootstrap).add(FARegistries.PATTERN_GENE, FAPatternGenes::bootstrap).add(FARegistries.DECORATION_PLAQUE_TYPE, FADecorationPlaqueTypes::bootstrap).add(FARegistries.DINOPEDIA_ENTRY, FADinopediaEntries::bootstrap).add(FARegistries.DINOPEDIA_TYPE, FADinopediaTypes::bootstrap).add(FARegistries.FEEDER_FOOD, FAFeederFoods::bootstrap).add(FARegistries.FOSSIL_VARIANTS, FAFossilVariants::bootstrap).add(FARegistries.FUEL_ENTRY, FAFuelEntries::bootstrap).add(FARegistries.JEWEL_RECOVERY, FAJewelRecoveries::bootstrap).add(FARegistries.STONE_TABLET_VARIANT, FAStoneTabletVariants::bootstrap);
 
     @SubscribeEvent
     public static void gatherDataEvent(GatherDataEvent.Client event) {
@@ -98,7 +97,7 @@ public class FossilsLegacyData {
         event.addProvider(new FAFossilVariantTagProvider(packOutput, registries, FAUtils.ID));
         event.addProvider(new FAStoneTabletVariantTagProvider(packOutput, registries, FAUtils.ID));
         event.addProvider(new FADecorationPlaqueTypeTagProvider(packOutput, registries, FAUtils.ID));
-        event.addProvider(new FAModelTypeTagProvider(packOutput, registries, FAUtils.ID));
+        event.addProvider(new FAModelGeneTagProvider(packOutput, registries, FAUtils.ID));
         event.addProvider(new FAPOITypeTagProvider(packOutput, registries, FAUtils.ID));
         event.addProvider(new FAStructureTagProvider(packOutput, registries, FAUtils.ID));
         event.addProvider(new FAAnalyzerResultTagProvider(packOutput, registries, FAUtils.ID));

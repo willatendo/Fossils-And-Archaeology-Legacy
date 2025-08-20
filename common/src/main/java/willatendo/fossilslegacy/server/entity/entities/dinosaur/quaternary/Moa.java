@@ -25,12 +25,14 @@ import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.entity.goals.*;
 import willatendo.fossilslegacy.server.entity.util.Diet;
 import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
+import willatendo.fossilslegacy.server.entity.util.interfaces.ChromosomedEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
+import willatendo.fossilslegacy.server.gene.ChromosomeUtils;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
-import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelGeneTags;
 
 import java.util.Optional;
 
@@ -52,13 +54,15 @@ public class Moa extends Dinosaur implements DinopediaInformation {
 
     @Override
     public TagKey<ModelGene> getModelTypes() {
-        return FAModelTypeTags.MOA;
+        return FAModelGeneTags.MOA;
     }
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
         Moa moa = FAEntityTypes.MOA.get().create(serverLevel, EntitySpawnReason.BREEDING);
-        moa.setModelType(this.getModelType());
+        if (ageableMob instanceof ChromosomedEntity chromosomedEntity) {
+            ChromosomeUtils.createChildChromosomes(moa, this, chromosomedEntity, this.getRandom());
+        }
         return moa;
     }
 
@@ -110,17 +114,17 @@ public class Moa extends Dinosaur implements DinopediaInformation {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.MOA_AMBIENT.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT);
+        return this.getOverridenSoundEvent(FASoundEvents.MOA_AMBIENT.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT, this.registryAccess());
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return this.getOverridenSoundEvent(FASoundEvents.MOA_HURT.get(), ModelGene.OverrideInfo.OverridenSoundType.HURT);
+        return this.getOverridenSoundEvent(FASoundEvents.MOA_HURT.get(), ModelGene.OverrideInfo.OverridenSoundType.HURT, this.registryAccess());
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.MOA_DEATH.get(), ModelGene.OverrideInfo.OverridenSoundType.DEATH);
+        return this.getOverridenSoundEvent(FASoundEvents.MOA_DEATH.get(), ModelGene.OverrideInfo.OverridenSoundType.DEATH, this.registryAccess());
     }
 
     @Override

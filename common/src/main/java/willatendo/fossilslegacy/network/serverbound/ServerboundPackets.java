@@ -14,12 +14,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import willatendo.fossilslegacy.server.block.entity.entities.DNARecombinatorBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.entities.TimeMachineBlockEntity;
+import willatendo.fossilslegacy.server.gene.InheritedGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.CosmeticGeneHolder;
 import willatendo.fossilslegacy.server.criteria.FACriteriaTriggers;
 import willatendo.fossilslegacy.server.entity.entities.Fossil;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
 import willatendo.fossilslegacy.server.gene.attributes.AttributeGeneHolder;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
@@ -50,11 +52,11 @@ public final class ServerboundPackets {
             DNARecombinatorBlockEntity.setItem(0, ItemStack.EMPTY);
             if (modelType.isPresent() && skin.isPresent()) {
                 Registry<ModelGene> modelTypeRegistry = level.registryAccess().lookupOrThrow(FARegistries.MODEL_GENE);
-                Holder<ModelGene> modelTypeHolder = modelTypeRegistry.get(ResourceLocation.parse(modelType.get())).get();
-                ResourceKey<PatternGene> skinHolder = ResourceKey.create(FARegistries.PATTERN_GENE, ResourceLocation.parse(skin.get()));
-                Optional<ResourceKey<PatternGene>> patternHolder = pattern.map(patternId -> ResourceKey.create(FARegistries.PATTERN_GENE, ResourceLocation.parse(patternId)));
-                itemStack.set(FADataComponents.MODEL_TYPE.get(), modelTypeHolder);
-                itemStack.set(FADataComponents.COSMETIC_GENE_HOLDER.get(), new CosmeticGeneHolder(skinHolder, patternHolder));
+                Holder<ModelGene> modelGeneKey = modelTypeRegistry.get(ResourceLocation.parse(modelType.get())).get();
+                ResourceKey<SkinGene> skinKey = ResourceKey.create(FARegistries.SKIN_GENE, ResourceLocation.parse(skin.get()));
+                Optional<ResourceKey<PatternGene>> patternKey = pattern.map(patternId -> ResourceKey.create(FARegistries.PATTERN_GENE, ResourceLocation.parse(patternId)));
+                itemStack.set(FADataComponents.MODEL_TYPE.get(), modelGeneKey);
+                itemStack.set(FADataComponents.COSMETIC_GENE_HOLDER.get(), new CosmeticGeneHolder(InheritedGene.createModelGene(modelGeneKey.getRegisteredName()), skinKey, patternKey));
             } else {
                 itemStack.remove(FADataComponents.MODEL_TYPE.get());
                 itemStack.remove(FADataComponents.COSMETIC_GENE_HOLDER.get());

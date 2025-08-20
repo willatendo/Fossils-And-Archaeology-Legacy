@@ -29,13 +29,15 @@ import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.entity.goals.*;
 import willatendo.fossilslegacy.server.entity.util.Diet;
 import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
+import willatendo.fossilslegacy.server.entity.util.interfaces.ChromosomedEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.FloatDownEntity;
+import willatendo.fossilslegacy.server.gene.ChromosomeUtils;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
-import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelGeneTags;
 
 import java.util.Optional;
 
@@ -68,13 +70,15 @@ public class Dodo extends Dinosaur implements DinopediaInformation, FloatDownEnt
 
     @Override
     public TagKey<ModelGene> getModelTypes() {
-        return FAModelTypeTags.DODO;
+        return FAModelGeneTags.DODO;
     }
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
         Dodo dodo = FAEntityTypes.DODO.get().create(serverLevel, EntitySpawnReason.BREEDING);
-        dodo.setModelType(this.getModelType());
+        if (ageableMob instanceof ChromosomedEntity chromosomedEntity) {
+            ChromosomeUtils.createChildChromosomes(dodo, this, chromosomedEntity, this.getRandom());
+        }
         return dodo;
     }
 
@@ -139,17 +143,17 @@ public class Dodo extends Dinosaur implements DinopediaInformation, FloatDownEnt
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.DODO_AMBIENT.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT);
+        return this.getOverridenSoundEvent(FASoundEvents.DODO_AMBIENT.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT, this.registryAccess());
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return this.getOverridenSoundEvent(FASoundEvents.DODO_HURT.get(), ModelGene.OverrideInfo.OverridenSoundType.HURT);
+        return this.getOverridenSoundEvent(FASoundEvents.DODO_HURT.get(), ModelGene.OverrideInfo.OverridenSoundType.HURT, this.registryAccess());
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.DODO_DEATH.get(), ModelGene.OverrideInfo.OverridenSoundType.DEATH);
+        return this.getOverridenSoundEvent(FASoundEvents.DODO_DEATH.get(), ModelGene.OverrideInfo.OverridenSoundType.DEATH, this.registryAccess());
     }
 
     @Override

@@ -28,7 +28,7 @@ import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
-import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelGeneTags;
 
 import java.util.Optional;
 
@@ -48,7 +48,7 @@ public class Therizinosaurus extends Dinosaur implements DinopediaInformation {
 
     @Override
     protected Component getTypeName() {
-        return this.getOverridenName(super.getTypeName());
+        return this.getOverridenName(super.getTypeName(), this.registryAccess());
     }
 
     @Override
@@ -63,7 +63,7 @@ public class Therizinosaurus extends Dinosaur implements DinopediaInformation {
 
     @Override
     public TagKey<ModelGene> getModelTypes() {
-        return FAModelTypeTags.THERIZINOSAURUS;
+        return FAModelGeneTags.THERIZINOSAURUS;
     }
 
     @Override
@@ -106,17 +106,17 @@ public class Therizinosaurus extends Dinosaur implements DinopediaInformation {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.THERIZINOSAURUS_AMBIENT.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT);
+        return this.getOverridenSoundEvent(FASoundEvents.THERIZINOSAURUS_AMBIENT.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT, this.registryAccess());
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return this.getOverridenSoundEvent(FASoundEvents.THERIZINOSAURUS_HURT.get(), ModelGene.OverrideInfo.OverridenSoundType.HURT);
+        return this.getOverridenSoundEvent(FASoundEvents.THERIZINOSAURUS_HURT.get(), ModelGene.OverrideInfo.OverridenSoundType.HURT, this.registryAccess());
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.THERIZINOSAURUS_DEATH.get(), ModelGene.OverrideInfo.OverridenSoundType.DEATH);
+        return this.getOverridenSoundEvent(FASoundEvents.THERIZINOSAURUS_DEATH.get(), ModelGene.OverrideInfo.OverridenSoundType.DEATH, this.registryAccess());
     }
 
     @Override

@@ -1,16 +1,12 @@
 package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRenderer;
 import willatendo.fossilslegacy.client.state.PteranodonRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Pteranodon;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
-import willatendo.fossilslegacy.server.gene.cosmetics.FATextures;
-import willatendo.fossilslegacy.server.gene.cosmetics.texture.Texture;
 
-import java.util.List;
 import java.util.Optional;
 
 public class PteranodonRenderer extends DataDrivenModelDinosaurRenderer<Pteranodon, PteranodonRenderState> {
@@ -41,12 +37,7 @@ public class PteranodonRenderer extends DataDrivenModelDinosaurRenderer<Pteranod
     }
 
     @Override
-    public String baseTextureName() {
-        return "pteranodon";
-    }
-
-    @Override
-    public List<ResourceKey<Texture>> requiredTextures() {
-        return List.of(FATextures.BASE, FATextures.BABY);
+    public ResourceLocation getBasePath() {
+        return this.createPath("pteranodon");
     }
 }

@@ -27,7 +27,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformati
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
-import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelGeneTags;
 
 import java.util.Optional;
 
@@ -52,7 +52,7 @@ public class Elasmotherium extends Dinosaur implements DinopediaInformation {
 
     @Override
     public TagKey<ModelGene> getModelTypes() {
-        return FAModelTypeTags.ELASMOTHERIUM;
+        return FAModelGeneTags.ELASMOTHERIUM;
     }
 
     @Override
@@ -99,17 +99,17 @@ public class Elasmotherium extends Dinosaur implements DinopediaInformation {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.ELASMOTHERIUM_AMBIENT.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT);
+        return this.getOverridenSoundEvent(FASoundEvents.ELASMOTHERIUM_AMBIENT.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT, this.registryAccess());
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return this.getOverridenSoundEvent(FASoundEvents.ELASMOTHERIUM_HURT.get(), ModelGene.OverrideInfo.OverridenSoundType.HURT);
+        return this.getOverridenSoundEvent(FASoundEvents.ELASMOTHERIUM_HURT.get(), ModelGene.OverrideInfo.OverridenSoundType.HURT, this.registryAccess());
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.ELASMOTHERIUM_DEATH.get(), ModelGene.OverrideInfo.OverridenSoundType.DEATH);
+        return this.getOverridenSoundEvent(FASoundEvents.ELASMOTHERIUM_DEATH.get(), ModelGene.OverrideInfo.OverridenSoundType.DEATH, this.registryAccess());
     }
 
     @Override

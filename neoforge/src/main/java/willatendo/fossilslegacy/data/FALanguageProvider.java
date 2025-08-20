@@ -1714,48 +1714,48 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlockTags.VELOCIRAPTOR_SPAWNABLE, "Velociraptor Spawnable");
         this.add(FABlockTags.ZAMITES_PLANTABLE_ON, "Zamites Plantable On");
 
-        this.add(FAModelTypeTags.ANKYLOSAURUS, "Ankylosaurus");
-        this.add(FAModelTypeTags.BARYONYX, "Baryonyx");
-        this.add(FAModelTypeTags.BRACHIOSAURUS, "Brachiosaurus");
-        this.add(FAModelTypeTags.NON_LEGACY_BRACHIOSAURUS, "Non-Legacy Brachiosaurus");
-        this.add(FAModelTypeTags.CARNOTAURUS, "Carnotaurus");
-        this.add(FAModelTypeTags.NON_LEGACY_CARNOTAURUS, "Non-Legacy Carnotaurus");
-        this.add(FAModelTypeTags.COMPSOGNATHUS, "Compsognathus");
-        this.add(FAModelTypeTags.CRYOLOPHOSAURUS, "Cryolophosaurus");
-        this.add(FAModelTypeTags.NON_LEGACY_CRYOLOPHOSAURUS, "Non-Legacy Cryolophosaurus");
-        this.add(FAModelTypeTags.DILOPHOSAURUS, "Dilophosaurus");
-        this.add(FAModelTypeTags.NON_LEGACY_DILOPHOSAURUS, "Non-Legacy Dilophosaurus");
-        this.add(FAModelTypeTags.DIMETRODON, "Dimetrodon");
-        this.add(FAModelTypeTags.DISTORTUS_REX, "Distortus Rex");
-        this.add(FAModelTypeTags.DODO, "Dodo");
-        this.add(FAModelTypeTags.DRYOSAURUS, "Dryosaurus");
-        this.add(FAModelTypeTags.ELASMOTHERIUM, "Elasmotherium");
-        this.add(FAModelTypeTags.FUTABASAURUS, "Futabasaurus");
-        this.add(FAModelTypeTags.NON_LEGACY_FUTABASAURUS, "Non-Legacy Futabasaurus");
-        this.add(FAModelTypeTags.GALLIMIMUS, "Gallimimus");
-        this.add(FAModelTypeTags.LEGACY, "Legacy");
-        this.add(FAModelTypeTags.MAMMOTH, "Mammoth");
-        this.add(FAModelTypeTags.NON_LEGACY_MAMMOTH, "Non-Legacy Mammoth");
-        this.add(FAModelTypeTags.MOA, "Moa");
-        this.add(FAModelTypeTags.MOSASAURUS, "Mosasaurus");
-        this.add(FAModelTypeTags.NON_LEGACY_MOSASAURUS, "Non-Legacy Mosasaurus");
-        this.add(FAModelTypeTags.PACHYCEPHALOSAURUS, "Pachycephalosaurus");
-        this.add(FAModelTypeTags.PTERANODON, "Pteranodon");
-        this.add(FAModelTypeTags.NON_LEGACY_PTERANODON, "Non-Legacy Pteranodon");
-        this.add(FAModelTypeTags.SMILODON, "Smilodon");
-        this.add(FAModelTypeTags.NON_LEGACY_SMILODON, "Non-Legacy Smilodon");
-        this.add(FAModelTypeTags.SPINOSAURUS, "Spinosaurus");
-        this.add(FAModelTypeTags.STEGOSAURUS, "Stegosaurus");
-        this.add(FAModelTypeTags.NON_LEGACY_STEGOSAURUS, "Non-Legacy Stegosaurus");
-        this.add(FAModelTypeTags.THERIZINOSAURUS, "Therizinosaurus");
-        this.add(FAModelTypeTags.NON_LEGACY_THERIZINOSAURUS, "Non-Legacy Therizinosaurus");
-        this.add(FAModelTypeTags.TRICERATOPS, "Triceratops");
-        this.add(FAModelTypeTags.NON_LEGACY_TRICERATOPS, "Non-Legacy Triceratops");
-        this.add(FAModelTypeTags.TYRANNOSAURUS, "Tyrannosaurus");
-        this.add(FAModelTypeTags.NON_LEGACY_TYRANNOSAURUS, "Non-Legacy Tyrannosaurus");
-        this.add(FAModelTypeTags.VELOCIRAPTOR, "Velociraptor");
-        this.add(FAModelTypeTags.LEGACY_VELOCIRAPTOR, "Legacy Velociraptor");
-        this.add(FAModelTypeTags.NON_LEGACY_VELOCIRAPTOR, "Non-Legacy Velociraptor");
+        this.add(FAModelGeneTags.ANKYLOSAURUS, "Ankylosaurus");
+        this.add(FAModelGeneTags.BARYONYX, "Baryonyx");
+        this.add(FAModelGeneTags.BRACHIOSAURUS, "Brachiosaurus");
+        this.add(FAModelGeneTags.NON_LEGACY_BRACHIOSAURUS, "Non-Legacy Brachiosaurus");
+        this.add(FAModelGeneTags.CARNOTAURUS, "Carnotaurus");
+        this.add(FAModelGeneTags.NON_LEGACY_CARNOTAURUS, "Non-Legacy Carnotaurus");
+        this.add(FAModelGeneTags.COMPSOGNATHUS, "Compsognathus");
+        this.add(FAModelGeneTags.CRYOLOPHOSAURUS, "Cryolophosaurus");
+        this.add(FAModelGeneTags.NON_LEGACY_CRYOLOPHOSAURUS, "Non-Legacy Cryolophosaurus");
+        this.add(FAModelGeneTags.DILOPHOSAURUS, "Dilophosaurus");
+        this.add(FAModelGeneTags.NON_LEGACY_DILOPHOSAURUS, "Non-Legacy Dilophosaurus");
+        this.add(FAModelGeneTags.DIMETRODON, "Dimetrodon");
+        this.add(FAModelGeneTags.DISTORTUS_REX, "Distortus Rex");
+        this.add(FAModelGeneTags.DODO, "Dodo");
+        this.add(FAModelGeneTags.DRYOSAURUS, "Dryosaurus");
+        this.add(FAModelGeneTags.ELASMOTHERIUM, "Elasmotherium");
+        this.add(FAModelGeneTags.FUTABASAURUS, "Futabasaurus");
+        this.add(FAModelGeneTags.NON_LEGACY_FUTABASAURUS, "Non-Legacy Futabasaurus");
+        this.add(FAModelGeneTags.GALLIMIMUS, "Gallimimus");
+        this.add(FAModelGeneTags.LEGACY, "Legacy");
+        this.add(FAModelGeneTags.MAMMOTH, "Mammoth");
+        this.add(FAModelGeneTags.NON_LEGACY_MAMMOTH, "Non-Legacy Mammoth");
+        this.add(FAModelGeneTags.MOA, "Moa");
+        this.add(FAModelGeneTags.MOSASAURUS, "Mosasaurus");
+        this.add(FAModelGeneTags.NON_LEGACY_MOSASAURUS, "Non-Legacy Mosasaurus");
+        this.add(FAModelGeneTags.PACHYCEPHALOSAURUS, "Pachycephalosaurus");
+        this.add(FAModelGeneTags.PTERANODON, "Pteranodon");
+        this.add(FAModelGeneTags.NON_LEGACY_PTERANODON, "Non-Legacy Pteranodon");
+        this.add(FAModelGeneTags.SMILODON, "Smilodon");
+        this.add(FAModelGeneTags.NON_LEGACY_SMILODON, "Non-Legacy Smilodon");
+        this.add(FAModelGeneTags.SPINOSAURUS, "Spinosaurus");
+        this.add(FAModelGeneTags.STEGOSAURUS, "Stegosaurus");
+        this.add(FAModelGeneTags.NON_LEGACY_STEGOSAURUS, "Non-Legacy Stegosaurus");
+        this.add(FAModelGeneTags.THERIZINOSAURUS, "Therizinosaurus");
+        this.add(FAModelGeneTags.NON_LEGACY_THERIZINOSAURUS, "Non-Legacy Therizinosaurus");
+        this.add(FAModelGeneTags.TRICERATOPS, "Triceratops");
+        this.add(FAModelGeneTags.NON_LEGACY_TRICERATOPS, "Non-Legacy Triceratops");
+        this.add(FAModelGeneTags.TYRANNOSAURUS, "Tyrannosaurus");
+        this.add(FAModelGeneTags.NON_LEGACY_TYRANNOSAURUS, "Non-Legacy Tyrannosaurus");
+        this.add(FAModelGeneTags.VELOCIRAPTOR, "Velociraptor");
+        this.add(FAModelGeneTags.LEGACY_VELOCIRAPTOR, "Legacy Velociraptor");
+        this.add(FAModelGeneTags.NON_LEGACY_VELOCIRAPTOR, "Non-Legacy Velociraptor");
 
         this.add(FADamageTypeTags.SPINOSAURUS_IMMUNE, "Spinosaurus Immune");
         this.add(FADamageTypeTags.TYRANNOSAURUS_IMMUNE, "Tyrannosaurus Immune");
@@ -1866,11 +1866,11 @@ public class FALanguageProvider extends SimpleLanguageProvider {
     }
 
     public void addSkin(String pattern, String translation) {
-        this.add("skinGenes.fossilslegacy." + pattern, translation);
+        this.add("skin_gene.fossilslegacy." + pattern, translation);
     }
 
     public void addPattern(String pattern, String translation) {
-        this.add("patternGenes.fossilslegacy." + pattern, translation);
+        this.add("pattern_gene.fossilslegacy." + pattern, translation);
     }
 
     public void addStat(ResourceLocation stat, String name) {

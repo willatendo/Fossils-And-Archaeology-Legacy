@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.server.item.items;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
@@ -10,13 +9,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.entity.entities.Egg;
+import willatendo.fossilslegacy.server.gene.ChromosomeUtils;
 import willatendo.fossilslegacy.server.gene.attributes.AttributeGeneHolder;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
-import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
 import willatendo.fossilslegacy.server.gene.cosmetics.CosmeticGeneHolder;
-import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.ArrayList;
@@ -37,20 +35,12 @@ public class EggItem extends PlaceEntityItem<Egg> {
 
     @Override
     public void entityModification(ItemStack itemStack, Egg egg) {
-        if (itemStack.has(FADataComponents.MODEL_TYPE.get()) && itemStack.has(FADataComponents.COSMETIC_GENE_HOLDER.get())) {
-            egg.setModelType(itemStack.get(FADataComponents.MODEL_TYPE.get()));
-            CosmeticGeneHolder cosmeticGeneHolder = itemStack.get(FADataComponents.COSMETIC_GENE_HOLDER.get());
-            egg.setSkin(cosmeticGeneHolder.skinGene(egg.registryAccess()));
-            if (cosmeticGeneHolder.hasPattern()) {
-                egg.setPattern(cosmeticGeneHolder.patternGene(egg.registryAccess()));
-            }
+        if (itemStack.has(FADataComponents.CHROMOSOME_1.get()) && itemStack.has(FADataComponents.CHROMOSOME_2.get())) {
+            egg.setChromosome1(itemStack.get(FADataComponents.CHROMOSOME_1.get()));
+            egg.setChromosome2(itemStack.get(FADataComponents.CHROMOSOME_2.get()));
         } else {
             Level level = egg.level();
-            HolderLookup<ModelGene> modelTypeRegistry = level.holderLookup(FARegistries.MODEL_GENE);
-            HolderLookup<PatternGene> patternRegistry = level.holderLookup(FARegistries.PATTERN_GENE);
-            Holder<ModelGene> modelType = modelTypeRegistry.getOrThrow(this.applicableCoatTypes).getRandomElement(egg.getRandom()).get();
-            egg.setModelType(modelType);
-            egg.setSkin(patternRegistry.getOrThrow(modelType.value().skinGenes()).getRandomElement(egg.getRandom()).get());
+            ChromosomeUtils.createRandomChromosomes(egg, level.getRandom(), this.applicableCoatTypes);
         }
     }
 

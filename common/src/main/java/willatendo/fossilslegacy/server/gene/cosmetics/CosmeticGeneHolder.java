@@ -41,7 +41,7 @@ public record CosmeticGeneHolder(ResourceKey<ModelGene> modelGene, ResourceKey<S
 
     public Holder<PatternGene> patternGene(HolderLookup.Provider registries) {
         HolderLookup<PatternGene> patternRegistry = registries.lookupOrThrow(FARegistries.PATTERN_GENE);
-        return this.patternGene().isPresent() ? patternRegistry.getOrThrow(this.patternGene().get()) : patternRegistry.getOrThrow(FAPatterns.BLANK);
+        return this.patternGene().isPresent() ? patternRegistry.getOrThrow(this.patternGene().get()) : patternRegistry.getOrThrow(FAPatternGenes.BLANK);
     }
 
     public Optional<Holder<PatternGene>> optionalPatternGene(HolderLookup.Provider registries) {

@@ -1,7 +1,7 @@
 package willatendo.fossilslegacy.server.entity.entities;
 
 import net.minecraft.Util;
-import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -21,17 +21,18 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
-import willatendo.fossilslegacy.server.entity.util.interfaces.DataDrivenCosmetics;
+import willatendo.fossilslegacy.server.entity.util.interfaces.ChromosomedEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.TamesOnBirth;
+import willatendo.fossilslegacy.server.gene.Chromosome;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
 import willatendo.fossilslegacy.server.item.FAItems;
 
-public class ThrownAnimalEgg extends ThrowableItemProjectile implements DataDrivenCosmetics {
+public class ThrownAnimalEgg extends ThrowableItemProjectile implements ChromosomedEntity {
     private EntityType<? extends Animal> animal;
-    private Holder<ModelGene> modelType;
-    private Holder<PatternGene> skin;
-    private Holder<PatternGene> pattern;
+    private Chromosome chromosome1;
+    private Chromosome chromosome2;
     private boolean incubated;
 
     public ThrownAnimalEgg(EntityType<? extends ThrownAnimalEgg> entityType, Level level) {
@@ -50,36 +51,6 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements DataDriv
         super(FAEntityTypes.THROWN_INCUBATED_EGG.get(), x, y, z, level, itemStack);
         this.animal = animal;
         this.incubated = incubated;
-    }
-
-    @Override
-    public void setModelType(Holder<ModelGene> coatType) {
-        this.modelType = coatType;
-    }
-
-    @Override
-    public Holder<ModelGene> getModelType() {
-        return this.modelType;
-    }
-
-    @Override
-    public void setSkin(Holder<PatternGene> pattern) {
-        this.skin = pattern;
-    }
-
-    @Override
-    public Holder<PatternGene> getSkin() {
-        return this.skin;
-    }
-
-    @Override
-    public void setPattern(Holder<PatternGene> pattern) {
-        this.pattern = pattern;
-    }
-
-    @Override
-    public Holder<PatternGene> getPattern() {
-        return this.pattern;
     }
 
     @Override
@@ -111,12 +82,9 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements DataDriv
                 for (int animals = 0; animals < i; ++animals) {
                     Animal animalToSpawn = this.animal.create(this.level(), EntitySpawnReason.TRIGGERED);
                     animalToSpawn.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
-                    if (animalToSpawn instanceof DataDrivenCosmetics dataDrivenCosmetics && this.modelType != null && this.skin != null) {
-                        dataDrivenCosmetics.setModelType(this.modelType);
-                        dataDrivenCosmetics.setSkin(this.skin);
-                        if (this.pattern != null) {
-                            dataDrivenCosmetics.setPattern(this.pattern);
-                        }
+                    if (animalToSpawn instanceof ChromosomedEntity chromosomedEntity && this.chromosome1 != null && this.chromosome2 != null) {
+                        chromosomedEntity.setChromosome1(this.chromosome1);
+                        chromosomedEntity.setChromosome2(this.chromosome2);
                     }
                     if (animalToSpawn instanceof Dinosaur dinosaur) {
                         dinosaur.setGrowthStage(0, true);
@@ -149,8 +117,8 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements DataDriv
         super.addAdditionalSaveData(compoundTag);
         compoundTag.putString("EntityType", BuiltInRegistries.ENTITY_TYPE.getKey(this.animal).toString());
         compoundTag.putBoolean("Incubated", this.incubated);
-        if (this.modelType != null && this.skin != null) {
-            this.addCosmeticsData(compoundTag, this.registryAccess());
+        if (this.chromosome1 != null && this.chromosome2 != null) {
+            this.saveChromosomes(compoundTag);
         }
     }
 
@@ -159,13 +127,48 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements DataDriv
         super.readAdditionalSaveData(compoundTag);
         this.animal = (EntityType<? extends Animal>) BuiltInRegistries.ENTITY_TYPE.getValue(ResourceLocation.parse(compoundTag.getString("EntityType")));
         this.incubated = compoundTag.getBoolean("Incubated");
-        if (compoundTag.contains("model_type") && compoundTag.contains("skinGenes")) {
-            this.readCosmeticsData(compoundTag, this.registryAccess());
+        if (compoundTag.contains("chromosome_1") && compoundTag.contains("chromosome_2")) {
+            this.loadChromosomes(compoundTag);
         }
     }
 
     @Override
     protected Item getDefaultItem() {
         return FAItems.INCUBATED_CHICKEN_EGG.get();
+    }
+
+    @Override
+    public Registry<ModelGene> getModelGeneRegistry() {
+        return null;
+    }
+
+    @Override
+    public Registry<SkinGene> getSkinGeneRegistry() {
+        return null;
+    }
+
+    @Override
+    public Registry<PatternGene> getPatternGeneRegistry() {
+        return null;
+    }
+
+    @Override
+    public Chromosome getChromosome1() {
+        return this.chromosome1;
+    }
+
+    @Override
+    public void setChromosome1(Chromosome chromosome) {
+        this.chromosome1 = chromosome;
+    }
+
+    @Override
+    public Chromosome getChromosome2() {
+        return this.chromosome2;
+    }
+
+    @Override
+    public void setChromosome2(Chromosome chromosome) {
+        this.chromosome2 = chromosome;
     }
 }

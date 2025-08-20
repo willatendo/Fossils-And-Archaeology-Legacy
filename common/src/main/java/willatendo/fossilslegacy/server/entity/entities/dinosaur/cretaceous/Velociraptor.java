@@ -41,7 +41,7 @@ import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.item.items.DebugItem;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
 import willatendo.fossilslegacy.server.tags.FAEntityTypeTags;
-import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelGeneTags;
 
 import java.util.Optional;
 
@@ -75,7 +75,7 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
 
     @Override
     public TagKey<ModelGene> getModelTypes() {
-        return FAModelTypeTags.VELOCIRAPTOR;
+        return FAModelGeneTags.VELOCIRAPTOR;
     }
 
     @Override
@@ -150,17 +150,17 @@ public class Velociraptor extends Dinosaur implements DinopediaInformation, High
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.isTame() ? this.getOverridenSoundEvent(FASoundEvents.VELOCIRAPTOR_AMBIENT_TAME.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT) : this.getOverridenSoundEvent(FASoundEvents.VELOCIRAPTOR_AMBIENT_WILD.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT);
+        return this.isTame() ? this.getOverridenSoundEvent(FASoundEvents.VELOCIRAPTOR_AMBIENT_TAME.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT, this.registryAccess()) : this.getOverridenSoundEvent(FASoundEvents.VELOCIRAPTOR_AMBIENT_WILD.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT, this.registryAccess());
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return this.getOverridenSoundEvent(FASoundEvents.VELOCIRAPTOR_HURT.get(), ModelGene.OverrideInfo.OverridenSoundType.HURT);
+        return this.getOverridenSoundEvent(FASoundEvents.VELOCIRAPTOR_HURT.get(), ModelGene.OverrideInfo.OverridenSoundType.HURT, this.registryAccess());
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.VELOCIRAPTOR_DEATH.get(), ModelGene.OverrideInfo.OverridenSoundType.DEATH);
+        return this.getOverridenSoundEvent(FASoundEvents.VELOCIRAPTOR_DEATH.get(), ModelGene.OverrideInfo.OverridenSoundType.DEATH, this.registryAccess());
     }
 
     @Override

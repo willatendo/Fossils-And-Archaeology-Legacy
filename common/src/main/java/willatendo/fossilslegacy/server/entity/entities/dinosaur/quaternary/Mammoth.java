@@ -52,14 +52,16 @@ import willatendo.fossilslegacy.server.entity.goals.DinoOwnerHurtTargetGoal;
 import willatendo.fossilslegacy.server.entity.goals.DinoTemptGoal;
 import willatendo.fossilslegacy.server.entity.util.Diet;
 import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
+import willatendo.fossilslegacy.server.entity.util.interfaces.ChromosomedEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.RideableDinosaur;
+import willatendo.fossilslegacy.server.gene.ChromosomeUtils;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.item.FALootTables;
-import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
-import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelGeneTags;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -114,13 +116,15 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
 
     @Override
     public TagKey<ModelGene> getModelTypes() {
-        return FAModelTypeTags.MAMMOTH;
+        return FAModelGeneTags.MAMMOTH;
     }
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
         Mammoth mammoth = FAEntityTypes.MAMMOTH.get().create(serverLevel, EntitySpawnReason.BREEDING);
-        mammoth.setModelType(this.getModelType());
+        if (ageableMob instanceof ChromosomedEntity chromosomedEntity) {
+            ChromosomeUtils.createChildChromosomes(mammoth, this, chromosomedEntity, this.getRandom());
+        }
         mammoth.setColor(DyeColor.getMixedColor(serverLevel, this.getColor(), ((Mammoth) ageableMob).getColor()));
         return mammoth;
     }
@@ -318,17 +322,17 @@ public class Mammoth extends Dinosaur implements DinopediaInformation, RideableD
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.MAMMOTH_AMBIENT.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT);
+        return this.getOverridenSoundEvent(FASoundEvents.MAMMOTH_AMBIENT.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT, this.registryAccess());
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return this.getOverridenSoundEvent(FASoundEvents.MAMMOTH_HURT.get(), ModelGene.OverrideInfo.OverridenSoundType.HURT);
+        return this.getOverridenSoundEvent(FASoundEvents.MAMMOTH_HURT.get(), ModelGene.OverrideInfo.OverridenSoundType.HURT, this.registryAccess());
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.MAMMOTH_DEATH.get(), ModelGene.OverrideInfo.OverridenSoundType.DEATH);
+        return this.getOverridenSoundEvent(FASoundEvents.MAMMOTH_DEATH.get(), ModelGene.OverrideInfo.OverridenSoundType.DEATH, this.registryAccess());
     }
 
     public void setColor(DyeColor dyeColor) {

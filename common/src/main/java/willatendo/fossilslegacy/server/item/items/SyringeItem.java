@@ -15,6 +15,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import willatendo.fossilslegacy.server.gene.ChromosomeUtils;
 import willatendo.fossilslegacy.server.gene.cosmetics.CosmeticGeneHolder;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.util.interfaces.HungerAccessor;
@@ -103,8 +104,7 @@ public class SyringeItem extends Item {
 
                     pregnantAnimal.setPregnancyType(this.getPregnancyType());
                     if (this.applicableModelTypes != null) {
-                        HolderGetter<ModelGene> coatTypeRegistry = pregnantAnimal.getLevel().holderLookup(FARegistries.MODEL_GENE);
-                        pregnantAnimal.setOffspringModelType(coatTypeRegistry.getOrThrow(this.applicableModelTypes).getRandomElement(pregnantAnimal.getLevel().getRandom()).get());
+                        ChromosomeUtils.createRandomChromosomes(pregnantAnimal, ageableMob.getRandom(), this.applicableModelTypes);
                     }
                     pregnantAnimal.setRemainingPregnancyTime(0);
                     if (pregnantAnimal instanceof HungerAccessor hungerAccessor) {
@@ -128,8 +128,7 @@ public class SyringeItem extends Item {
 
                 pregnantAnimal.setPregnancyType(this.getPregnancyType());
                 if (this.applicableModelTypes != null) {
-                    HolderGetter<ModelGene> coatTypeRegistry = pregnantAnimal.getLevel().holderLookup(FARegistries.MODEL_GENE);
-                    pregnantAnimal.setOffspringModelType(coatTypeRegistry.getOrThrow(this.applicableModelTypes).getRandomElement(pregnantAnimal.getLevel().getRandom()).get());
+                    ChromosomeUtils.createRandomChromosomes(pregnantAnimal, player.getRandom(), this.applicableModelTypes);
                 }
                 pregnantAnimal.setRemainingPregnancyTime(0);
                 if (pregnantAnimal instanceof HungerAccessor hungerAccessor) {

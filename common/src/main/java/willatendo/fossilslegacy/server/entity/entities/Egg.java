@@ -1,6 +1,6 @@
 package willatendo.fossilslegacy.server.entity.entities;
 
-import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -23,11 +23,13 @@ import net.minecraft.world.level.LightLayer;
 import willatendo.fossilslegacy.server.dinopedia_type.DinopediaType;
 import willatendo.fossilslegacy.server.dinopedia_type.FADinopediaTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
-import willatendo.fossilslegacy.server.entity.util.interfaces.DataDrivenCosmetics;
+import willatendo.fossilslegacy.server.entity.util.interfaces.ChromosomedEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.TicksToBirth;
+import willatendo.fossilslegacy.server.gene.Chromosome;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
@@ -35,16 +37,21 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Supplier;
 
-public abstract class Egg extends Animal implements TicksToBirth, DinopediaInformation, DataDrivenCosmetics {
-    private static final EntityDataAccessor<Holder<ModelGene>> MODEL_TYPE = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.MODEL_TYPES.get());
-    private static final EntityDataAccessor<Holder<PatternGene>> SKIN = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.PATTERN.get());
-    private static final EntityDataAccessor<Holder<PatternGene>> PATTERN = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.PATTERN.get());
+public abstract class Egg extends Animal implements TicksToBirth, DinopediaInformation, ChromosomedEntity {
+    private static final EntityDataAccessor<Chromosome> CHROMOSOME_1 = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.CHROMOSOME.get());
+    private static final EntityDataAccessor<Chromosome> CHROMOSOME_2 = SynchedEntityData.defineId(Egg.class, FAEntityDataSerializers.CHROMOSOME.get());
     private static final EntityDataAccessor<Integer> REMAINING_TIME = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> WARM = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.BOOLEAN);
     protected static final EntityDataAccessor<Optional<UUID>> OWNER = SynchedEntityData.defineId(Egg.class, EntityDataSerializers.OPTIONAL_UUID);
+    public final Registry<ModelGene> modelGeneRegistry;
+    public final Registry<PatternGene> patternGeneRegistry;
+    public final Registry<SkinGene> skinGeneRegistry;
 
     public Egg(EntityType<? extends Egg> entityType, Level level) {
         super(entityType, level);
+        this.modelGeneRegistry = level.registryAccess().lookupOrThrow(FARegistries.MODEL_GENE);
+        this.patternGeneRegistry = level.registryAccess().lookupOrThrow(FARegistries.PATTERN_GENE);
+        this.skinGeneRegistry = level.registryAccess().lookupOrThrow(FARegistries.SKIN_GENE);
     }
 
     public static <I extends Item, E extends Entity> Egg createLand(EntityType<? extends Egg> entityType, Level level, Supplier<I> item, Supplier<EntityType<E>> offspring) {
@@ -108,13 +115,26 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
     public abstract <T extends Entity> EntityType<T> getOffspringType();
 
     @Override
+    public Registry<ModelGene> getModelGeneRegistry() {
+        return this.modelGeneRegistry;
+    }
+
+    @Override
+    public Registry<SkinGene> getSkinGeneRegistry() {
+        return this.skinGeneRegistry;
+    }
+
+    @Override
+    public Registry<PatternGene> getPatternGeneRegistry() {
+        return this.patternGeneRegistry;
+    }
+
+    @Override
     public void onEntityTicksComplete(Mob mob, Entity offspring, Level level) {
         TicksToBirth.super.onEntityTicksComplete(mob, offspring, level);
-        if (offspring instanceof DataDrivenCosmetics dataDrivenCosmetics) {
-            dataDrivenCosmetics.setSkin(this.getSkin());
-            if (dataDrivenCosmetics.getPattern() != null) {
-                dataDrivenCosmetics.setPattern(this.getPattern());
-            }
+        if (offspring instanceof ChromosomedEntity chromosomedEntity) {
+            chromosomedEntity.setChromosome1(this.getChromosome1());
+            chromosomedEntity.setChromosome2(this.getChromosome2());
         }
     }
 
@@ -186,9 +206,8 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(MODEL_TYPE, this.registryAccess().lookupOrThrow(FARegistries.MODEL_GENE).getAny().orElseThrow());
-        builder.define(SKIN, this.registryAccess().lookupOrThrow(FARegistries.PATTERN_GENE).getAny().orElseThrow());
-        builder.define(PATTERN, this.registryAccess().lookupOrThrow(FARegistries.PATTERN_GENE).getAny().orElseThrow());
+        builder.define(CHROMOSOME_1, Chromosome.BLANK);
+        builder.define(CHROMOSOME_2, Chromosome.BLANK);
         builder.define(REMAINING_TIME, 0);
         builder.define(WARM, false);
         builder.define(OWNER, Optional.empty());
@@ -198,7 +217,7 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
 
-        this.addCosmeticsData(compoundTag, this.registryAccess());
+        this.saveChromosomes(compoundTag);
 
         if (this.getOwnerUUID() != null) {
             compoundTag.putUUID("Owner", this.getOwnerUUID());
@@ -212,7 +231,7 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
 
-        this.readCosmeticsData(compoundTag, this.registryAccess());
+        this.loadChromosomes(compoundTag);
 
         UUID uuid;
         if (compoundTag.hasUUID("Owner")) {
@@ -235,7 +254,7 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
 
     @Override
     public CompoundTag saveWithoutId(CompoundTag compound) {
-        this.addCosmeticsData(compound, this.registryAccess());
+        this.saveChromosomes(compound);
 
         if (this.getOwnerUUID() != null) {
             compound.putUUID("Owner", this.getOwnerUUID());
@@ -249,7 +268,7 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
 
     @Override
     public boolean save(CompoundTag compound) {
-        this.addCosmeticsData(compound, this.registryAccess());
+        this.saveChromosomes(compound);
 
         if (this.getOwnerUUID() != null) {
             compound.putUUID("Owner", this.getOwnerUUID());
@@ -260,6 +279,27 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
 
         return super.save(compound);
     }
+
+    @Override
+    public void setChromosome1(Chromosome chromosome) {
+        this.entityData.set(CHROMOSOME_1, chromosome);
+    }
+
+    @Override
+    public Chromosome getChromosome1() {
+        return this.entityData.get(CHROMOSOME_1);
+    }
+
+    @Override
+    public void setChromosome2(Chromosome chromosome) {
+        this.entityData.set(CHROMOSOME_2, chromosome);
+    }
+
+    @Override
+    public Chromosome getChromosome2() {
+        return this.entityData.get(CHROMOSOME_2);
+    }
+
 
     @Override
     public boolean isFood(ItemStack itemStack) {
@@ -282,36 +322,6 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
 
     public void setWarm(boolean warm) {
         this.entityData.set(WARM, warm);
-    }
-
-    @Override
-    public Holder<ModelGene> getModelType() {
-        return this.entityData.get(MODEL_TYPE);
-    }
-
-    @Override
-    public void setModelType(Holder<ModelGene> modelType) {
-        this.entityData.set(MODEL_TYPE, modelType);
-    }
-
-    @Override
-    public Holder<PatternGene> getSkin() {
-        return this.entityData.get(SKIN);
-    }
-
-    @Override
-    public void setSkin(Holder<PatternGene> pattern) {
-        this.entityData.set(SKIN, pattern);
-    }
-
-    @Override
-    public Holder<PatternGene> getPattern() {
-        return this.entityData.get(PATTERN);
-    }
-
-    @Override
-    public void setPattern(Holder<PatternGene> pattern) {
-        this.entityData.set(PATTERN, pattern);
     }
 
     public boolean isOwnedBy(LivingEntity livingEntity) {

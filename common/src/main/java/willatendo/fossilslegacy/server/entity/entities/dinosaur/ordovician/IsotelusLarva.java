@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.server.entity.entities.dinosaur.ordovician;
 
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -20,31 +19,52 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import org.jetbrains.annotations.Nullable;
 import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
-import willatendo.fossilslegacy.server.entity.util.interfaces.DataDrivenCosmetics;
+import willatendo.fossilslegacy.server.entity.util.interfaces.ChromosomedEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
-import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
+import willatendo.fossilslegacy.server.gene.Chromosome;
+import willatendo.fossilslegacy.server.gene.ChromosomeUtils;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
-import willatendo.fossilslegacy.server.gene.cosmetics.FAPatterns;
+import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
 import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
-import willatendo.fossilslegacy.server.tags.FAPatternTags;
+import willatendo.fossilslegacy.server.tags.FAModelGeneTags;
 
-public class IsotelusLarva extends WaterAnimal implements DinopediaInformation, DataDrivenCosmetics {
-    private static final EntityDataAccessor<Holder<ModelGene>> MODEL_TYPE = SynchedEntityData.defineId(IsotelusLarva.class, FAEntityDataSerializers.MODEL_TYPES.get());
-    private static final EntityDataAccessor<Holder<PatternGene>> SKIN = SynchedEntityData.defineId(IsotelusLarva.class, FAEntityDataSerializers.PATTERN.get());
-    private static final EntityDataAccessor<Holder<PatternGene>> PATTERN = SynchedEntityData.defineId(IsotelusLarva.class, FAEntityDataSerializers.PATTERN.get());
+public class IsotelusLarva extends WaterAnimal implements DinopediaInformation, ChromosomedEntity {
+    private static final EntityDataAccessor<Chromosome> CHROMOSOME_1 = SynchedEntityData.defineId(IsotelusLarva.class, FAEntityDataSerializers.CHROMOSOME.get());
+    private static final EntityDataAccessor<Chromosome> CHROMOSOME_2 = SynchedEntityData.defineId(IsotelusLarva.class, FAEntityDataSerializers.CHROMOSOME.get());
+    public final Registry<ModelGene> modelGeneRegistry;
+    public final Registry<PatternGene> patternGeneRegistry;
+    public final Registry<SkinGene> skinGeneRegistry;
     public static int ticksToBeTrilobite = Math.abs(-24000);
     private int age;
 
     public IsotelusLarva(EntityType<? extends IsotelusLarva> entityType, Level level) {
         super(entityType, level);
+        this.modelGeneRegistry = level.registryAccess().lookupOrThrow(FARegistries.MODEL_GENE);
+        this.patternGeneRegistry = level.registryAccess().lookupOrThrow(FARegistries.PATTERN_GENE);
+        this.skinGeneRegistry = level.registryAccess().lookupOrThrow(FARegistries.SKIN_GENE);
     }
 
     public static AttributeSupplier isotelusLarvaAttributes() {
         return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 1.0F).add(Attributes.MOVEMENT_SPEED, 0.01D).build();
+    }
+
+
+    @Override
+    public Registry<ModelGene> getModelGeneRegistry() {
+        return this.modelGeneRegistry;
+    }
+
+    @Override
+    public Registry<SkinGene> getSkinGeneRegistry() {
+        return this.skinGeneRegistry;
+    }
+
+    @Override
+    public Registry<PatternGene> getPatternGeneRegistry() {
+        return this.patternGeneRegistry;
     }
 
     @Override
@@ -87,86 +107,63 @@ public class IsotelusLarva extends WaterAnimal implements DinopediaInformation, 
         }
     }
 
-    @Nullable
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, EntitySpawnReason entitySpawnReason, SpawnGroupData spawnGroupData) {
-        HolderLookup<ModelGene> modelTypes = serverLevelAccessor.holderLookup(FARegistries.MODEL_GENE);
-        Holder<ModelGene> modelType = modelTypes.getOrThrow(FAModelTypeTags.ISOTELUS_LARVA).getRandomElement(this.getRandom()).get();
-        this.setModelType(modelType);
-        HolderLookup<PatternGene> patterns = serverLevelAccessor.holderLookup(FARegistries.PATTERN_GENE);
-        Holder<PatternGene> skin = patterns.getOrThrow(modelType.value().skinGenes()).getRandomElement(this.getRandom()).get();
-        this.setSkin(skin);
-        if (skin.is(FAPatternTags.HAS_PATTERNS) && serverLevelAccessor.getRandom().nextInt(4) == 1) {
-            Holder<PatternGene> pattern = patterns.getOrThrow(modelType.value().patternGenes()).getRandomElement(this.getRandom()).get();
-            this.setPattern(pattern);
-        } else {
-            this.setPattern(patterns.getOrThrow(FAPatterns.BLANK));
-        }
+        ChromosomeUtils.createRandomChromosomes(this, this.getRandom(), FAModelGeneTags.ISOTELUS_LARVA);
         return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, entitySpawnReason, spawnGroupData);
     }
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(MODEL_TYPE, this.registryAccess().lookupOrThrow(FARegistries.MODEL_GENE).getAny().orElseThrow());
-        builder.define(SKIN, this.registryAccess().lookupOrThrow(FARegistries.PATTERN_GENE).getAny().orElseThrow());
-        builder.define(PATTERN, this.registryAccess().lookupOrThrow(FARegistries.PATTERN_GENE).getAny().orElse(this.level().holderLookup(FARegistries.PATTERN_GENE).getOrThrow(FAPatterns.BLANK)));
+        builder.define(CHROMOSOME_1, Chromosome.BLANK);
+        builder.define(CHROMOSOME_2, Chromosome.BLANK);
     }
 
     @Override
-    public Holder<ModelGene> getModelType() {
-        return this.entityData.get(MODEL_TYPE);
+    public void setChromosome1(Chromosome chromosome) {
+        this.entityData.set(CHROMOSOME_1, chromosome);
     }
 
     @Override
-    public void setModelType(Holder<ModelGene> modelType) {
-        this.entityData.set(MODEL_TYPE, modelType);
+    public Chromosome getChromosome1() {
+        return this.entityData.get(CHROMOSOME_1);
     }
 
     @Override
-    public Holder<PatternGene> getSkin() {
-        return this.entityData.get(SKIN);
+    public void setChromosome2(Chromosome chromosome) {
+        this.entityData.set(CHROMOSOME_2, chromosome);
     }
 
     @Override
-    public void setSkin(Holder<PatternGene> pattern) {
-        this.entityData.set(SKIN, pattern);
-    }
-
-    @Override
-    public Holder<PatternGene> getPattern() {
-        return this.entityData.get(PATTERN);
-    }
-
-    @Override
-    public void setPattern(Holder<PatternGene> pattern) {
-        this.entityData.set(PATTERN, pattern);
+    public Chromosome getChromosome2() {
+        return this.entityData.get(CHROMOSOME_2);
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        this.addCosmeticsData(compoundTag, this.registryAccess());
+        this.saveChromosomes(compoundTag);
         compoundTag.putInt("age", this.age);
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        this.readCosmeticsData(compoundTag, this.registryAccess());
+        this.loadChromosomes(compoundTag);
         this.setAge(compoundTag.getInt("age"));
     }
 
     @Override
     public CompoundTag saveWithoutId(CompoundTag compoundTag) {
-        this.addCosmeticsData(compoundTag, this.registryAccess());
+        this.saveChromosomes(compoundTag);
         compoundTag.putInt("age", this.age);
         return super.saveWithoutId(compoundTag);
     }
 
     @Override
     public boolean save(CompoundTag compoundTag) {
-        this.addCosmeticsData(compoundTag, this.registryAccess());
+        this.saveChromosomes(compoundTag);
         compoundTag.putInt("age", this.age);
         return super.save(compoundTag);
     }

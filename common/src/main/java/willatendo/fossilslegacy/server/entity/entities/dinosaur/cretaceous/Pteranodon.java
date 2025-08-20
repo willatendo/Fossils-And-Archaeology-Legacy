@@ -38,7 +38,7 @@ import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
-import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelGeneTags;
 
 import java.util.Optional;
 
@@ -66,7 +66,7 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 
     @Override
     protected EntityDimensions getDefaultDimensions(Pose pose) {
-        ModelGene modelGene = this.getModelType().value();
+        ModelGene modelGene = this.getModelGene(this.getModelGeneRegistry()).value();
         ModelGene.BoundingBoxInfo boundingBoxInfo = modelGene.boundingBoxInfo();
         EntityDimensions newDimensions = this.dimensions = EntityDimensions.scalable(boundingBoxInfo.boundingBoxWidth() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()), boundingBoxInfo.boundingBoxHeight() + (boundingBoxInfo.boundingBoxGrowth() * this.getGrowthStage()));
         if (this.shouldFly() && !this.landing) {
@@ -77,7 +77,7 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 
     @Override
     protected Component getTypeName() {
-        return this.getOverridenName(super.getTypeName());
+        return this.getOverridenName(super.getTypeName(), this.registryAccess());
     }
 
     @Override
@@ -132,7 +132,7 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 
     @Override
     public TagKey<ModelGene> getModelTypes() {
-        return FAModelTypeTags.PTERANODON;
+        return FAModelGeneTags.PTERANODON;
     }
 
     @Override
@@ -277,17 +277,17 @@ public class Pteranodon extends Dinosaur implements DinopediaInformation, Rideab
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.PTERANODON_AMBIENT.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT);
+        return this.getOverridenSoundEvent(FASoundEvents.PTERANODON_AMBIENT.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT, this.registryAccess());
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return this.getOverridenSoundEvent(FASoundEvents.PTERANODON_HURT.get(), ModelGene.OverrideInfo.OverridenSoundType.HURT);
+        return this.getOverridenSoundEvent(FASoundEvents.PTERANODON_HURT.get(), ModelGene.OverrideInfo.OverridenSoundType.HURT, this.registryAccess());
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.PTERANODON_DEATH.get(), ModelGene.OverrideInfo.OverridenSoundType.DEATH);
+        return this.getOverridenSoundEvent(FASoundEvents.PTERANODON_DEATH.get(), ModelGene.OverrideInfo.OverridenSoundType.DEATH, this.registryAccess());
     }
 
     @Override

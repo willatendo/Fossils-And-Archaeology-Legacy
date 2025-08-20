@@ -9,6 +9,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.Unit;
 import willatendo.fossilslegacy.server.command_type.CommandType;
+import willatendo.fossilslegacy.server.gene.Chromosome;
 import willatendo.fossilslegacy.server.gene.cosmetics.CosmeticGeneHolder;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 import willatendo.fossilslegacy.server.gene.attributes.AttributeGeneHolder;
@@ -25,6 +26,8 @@ public final class FADataComponents {
     public static final SimpleRegistry<DataComponentType<?>> DATA_COMPONENT_TYPES = SimpleRegistry.create(Registries.DATA_COMPONENT_TYPE, FAUtils.ID);
 
     public static final SimpleHolder<DataComponentType<Unit>> BURNING = DATA_COMPONENT_TYPES.register("burning", () -> DataComponentType.<Unit>builder().persistent(Unit.CODEC).networkSynchronized(StreamCodec.unit(Unit.INSTANCE)).cacheEncoding().build());
+    public static final SimpleHolder<DataComponentType<Chromosome>> CHROMOSOME_1 = DATA_COMPONENT_TYPES.register("chromosome_1", () -> DataComponentType.<Chromosome>builder().persistent(Chromosome.CODEC).networkSynchronized(Chromosome.STREAM_CODEC).cacheEncoding().build());
+    public static final SimpleHolder<DataComponentType<Chromosome>> CHROMOSOME_2 = DATA_COMPONENT_TYPES.register("chromosome_2", () -> DataComponentType.<Chromosome>builder().persistent(Chromosome.CODEC).networkSynchronized(Chromosome.STREAM_CODEC).cacheEncoding().build());
     public static final SimpleHolder<DataComponentType<Holder<CommandType>>> COMMAND_TYPE = DATA_COMPONENT_TYPES.register("command_type", () -> DataComponentType.<Holder<CommandType>>builder().persistent(CommandType.CODEC).networkSynchronized(CommandType.STREAM_CODEC).cacheEncoding().build());
     public static final SimpleHolder<DataComponentType<CosmeticGeneHolder>> COSMETIC_GENE_HOLDER = DATA_COMPONENT_TYPES.register("pattern_holder", () -> DataComponentType.<CosmeticGeneHolder>builder().persistent(CosmeticGeneHolder.CODEC).networkSynchronized(CosmeticGeneHolder.STREAM_CODEC).cacheEncoding().build());
     public static final SimpleHolder<DataComponentType<CosmeticGeneticInformation>> COSMETIC_GENETIC_INFORMATION = DATA_COMPONENT_TYPES.register("cosmetic_genetic_information", () -> DataComponentType.<CosmeticGeneticInformation>builder().persistent(CosmeticGeneticInformation.CODEC).networkSynchronized(CosmeticGeneticInformation.STREAM_CODEC).cacheEncoding().build());

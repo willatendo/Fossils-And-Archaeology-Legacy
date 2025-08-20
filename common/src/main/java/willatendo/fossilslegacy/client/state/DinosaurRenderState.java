@@ -1,19 +1,8 @@
 package willatendo.fossilslegacy.client.state;
 
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
 import net.minecraft.util.Mth;
-import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
-import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
-import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
-import willatendo.fossilslegacy.server.gene.cosmetics.texture.Texture;
 
-public class DinosaurRenderState extends LivingEntityRenderState {
-    public Registry<Texture> textureRegistry;
-    public Holder<ModelGene> modelGene;
-    public Holder<SkinGene> skinGene;
-    public Holder<PatternGene> patternGene;
+public class DinosaurRenderState extends ChromosomedEntityRenderState {
     public int growthStage;
     public boolean isTame;
     public boolean isOrderedToSit;

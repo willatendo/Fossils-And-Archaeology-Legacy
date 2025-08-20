@@ -1,14 +1,10 @@
 package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRenderer;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Carnotaurus;
-import willatendo.fossilslegacy.server.gene.cosmetics.FATextures;
-import willatendo.fossilslegacy.server.gene.cosmetics.texture.Texture;
-
-import java.util.List;
 
 public class CarnotaurusRenderer extends DataDrivenModelDinosaurRenderer<Carnotaurus, DinosaurRenderState> {
     public CarnotaurusRenderer(EntityRendererProvider.Context context) {
@@ -21,12 +17,7 @@ public class CarnotaurusRenderer extends DataDrivenModelDinosaurRenderer<Carnota
     }
 
     @Override
-    public String baseTextureName() {
-        return "carnotaurus";
-    }
-
-    @Override
-    public List<ResourceKey<Texture>> requiredTextures() {
-        return List.of(FATextures.BASE, FATextures.BABY);
+    public ResourceLocation getBasePath() {
+        return this.createPath("carnotaurus");
     }
 }

@@ -32,14 +32,12 @@ import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.entity.goals.*;
 import willatendo.fossilslegacy.server.entity.util.Diet;
 import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
-import willatendo.fossilslegacy.server.entity.util.interfaces.AnimatedSittingEntity;
-import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
-import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
-import willatendo.fossilslegacy.server.entity.util.interfaces.ShakingEntity;
+import willatendo.fossilslegacy.server.entity.util.interfaces.*;
+import willatendo.fossilslegacy.server.gene.ChromosomeUtils;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.sound.FASoundEvents;
-import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelGeneTags;
 
 import java.util.Optional;
 
@@ -78,13 +76,15 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, ShakingE
 
     @Override
     public TagKey<ModelGene> getModelTypes() {
-        return FAModelTypeTags.SMILODON;
+        return FAModelGeneTags.SMILODON;
     }
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
         Smilodon smilodon = FAEntityTypes.SMILODON.get().create(serverLevel, EntitySpawnReason.BREEDING);
-        smilodon.setModelType(this.getModelType());
+        if (ageableMob instanceof ChromosomedEntity chromosomedEntity) {
+            ChromosomeUtils.createChildChromosomes(smilodon, this, chromosomedEntity, this.getRandom());
+        }
         return smilodon;
     }
 
@@ -243,17 +243,17 @@ public class Smilodon extends Dinosaur implements DinopediaInformation, ShakingE
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.SMILODON_AMBIENT.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT);
+        return this.getOverridenSoundEvent(FASoundEvents.SMILODON_AMBIENT.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT, this.registryAccess());
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return this.getOverridenSoundEvent(FASoundEvents.SMILODON_HURT.get(), ModelGene.OverrideInfo.OverridenSoundType.HURT);
+        return this.getOverridenSoundEvent(FASoundEvents.SMILODON_HURT.get(), ModelGene.OverrideInfo.OverridenSoundType.HURT, this.registryAccess());
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return this.getOverridenSoundEvent(FASoundEvents.SMILODON_DEATH.get(), ModelGene.OverrideInfo.OverridenSoundType.DEATH);
+        return this.getOverridenSoundEvent(FASoundEvents.SMILODON_DEATH.get(), ModelGene.OverrideInfo.OverridenSoundType.DEATH, this.registryAccess());
     }
 
     public void setIsInterested(boolean interested) {

@@ -10,25 +10,10 @@ import willatendo.fossilslegacy.server.gene.cosmetics.CosmeticGeneHolder;
 import willatendo.fossilslegacy.server.gene.cosmetics.FAModelGenes;
 import willatendo.fossilslegacy.server.gene.cosmetics.FASkinGenes;
 
-public final class Chromosome {
+public record Chromosome(CosmeticGeneHolder cosmeticGeneHolder, AttributeGeneHolder attributeGeneHolder) {
     public static final Chromosome BLANK = new Chromosome(new CosmeticGeneHolder(FAModelGenes.ANKYLOSAURUS, FASkinGenes.ANKYLOSAURUS_2024), new AttributeGeneHolder());
-    public static final Codec<Chromosome> CODEC = RecordCodecBuilder.create(instance -> instance.group(CosmeticGeneHolder.CODEC.fieldOf("cosmetics").forGetter(Chromosome::getCosmeticGeneHolder), AttributeGeneHolder.CODEC.fieldOf("attributes").forGetter(Chromosome::getAttributeGeneHolder)).apply(instance, Chromosome::new));
-    public static final StreamCodec<RegistryFriendlyByteBuf, Chromosome> STREAM_CODEC = StreamCodec.composite(CosmeticGeneHolder.STREAM_CODEC, Chromosome::getCosmeticGeneHolder, AttributeGeneHolder.STREAM_CODEC, Chromosome::getAttributeGeneHolder, Chromosome::new);
-    private final CosmeticGeneHolder cosmeticGeneHolder;
-    private final AttributeGeneHolder attributeGeneHolder;
-
-    public Chromosome(CosmeticGeneHolder cosmeticGeneHolder, AttributeGeneHolder attributeGeneHolder) {
-        this.cosmeticGeneHolder = cosmeticGeneHolder;
-        this.attributeGeneHolder = attributeGeneHolder;
-    }
-
-    public CosmeticGeneHolder getCosmeticGeneHolder() {
-        return this.cosmeticGeneHolder;
-    }
-
-    public AttributeGeneHolder getAttributeGeneHolder() {
-        return this.attributeGeneHolder;
-    }
+    public static final Codec<Chromosome> CODEC = RecordCodecBuilder.create(instance -> instance.group(CosmeticGeneHolder.CODEC.fieldOf("cosmetics").forGetter(Chromosome::cosmeticGeneHolder), AttributeGeneHolder.CODEC.fieldOf("attributes").forGetter(Chromosome::attributeGeneHolder)).apply(instance, Chromosome::new));
+    public static final StreamCodec<RegistryFriendlyByteBuf, Chromosome> STREAM_CODEC = StreamCodec.composite(CosmeticGeneHolder.STREAM_CODEC, Chromosome::cosmeticGeneHolder, AttributeGeneHolder.STREAM_CODEC, Chromosome::attributeGeneHolder, Chromosome::new);
 
     public void saveAdditional(CompoundTag compoundTag) {
         CompoundTag cosmetics = new CompoundTag();

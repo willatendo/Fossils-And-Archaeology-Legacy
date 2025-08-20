@@ -1,6 +1,7 @@
 package willatendo.fossilslegacy.server.tags;
 
 import net.minecraft.tags.TagKey;
+import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
@@ -9,6 +10,7 @@ import willatendo.simplelibrary.server.util.TagRegister;
 public class FASkinTags {
     private static final TagRegister<SkinGene> SKIN_TAGS = TagRegister.create(FARegistries.SKIN_GENE, FAUtils.ID);
 
+    public static final TagKey<SkinGene> LOCKED = SKIN_TAGS.register("locked");
     public static final TagKey<SkinGene> HAS_PATTERNS = SKIN_TAGS.register("has_patterns");
 
     public static final TagKey<SkinGene> ANKYLOSAURUS_2024_SKINS = SKIN_TAGS.register("ankylosaurus_2024");

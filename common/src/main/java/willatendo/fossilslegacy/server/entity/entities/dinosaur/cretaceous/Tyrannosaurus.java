@@ -88,7 +88,7 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
 
     @Override
     public TagKey<ModelGene> getModelTypes() {
-        return FAModelTypeTags.TYRANNOSAURUS;
+        return FAModelGeneTags.TYRANNOSAURUS;
     }
 
     @Override
@@ -310,17 +310,17 @@ public class Tyrannosaurus extends Dinosaur implements DinopediaInformation, Rid
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return !this.isKnockedOut() ? this.getOverridenSoundEvent(FASoundEvents.TYRANNOSAURUS_AMBIENT.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT) : super.getAmbientSound();
+        return !this.isKnockedOut() ? this.getOverridenSoundEvent(FASoundEvents.TYRANNOSAURUS_AMBIENT.get(), ModelGene.OverrideInfo.OverridenSoundType.AMBIENT, this.registryAccess()) : super.getAmbientSound();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return !this.isKnockedOut() ? this.getOverridenSoundEvent(FASoundEvents.TYRANNOSAURUS_HURT.get(), ModelGene.OverrideInfo.OverridenSoundType.HURT) : super.getHurtSound(damageSource);
+        return !this.isKnockedOut() ? this.getOverridenSoundEvent(FASoundEvents.TYRANNOSAURUS_HURT.get(), ModelGene.OverrideInfo.OverridenSoundType.HURT, this.registryAccess()) : super.getHurtSound(damageSource);
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return !this.isKnockedOut() ? this.getOverridenSoundEvent(FASoundEvents.TYRANNOSAURUS_DEATH.get(), ModelGene.OverrideInfo.OverridenSoundType.DEATH) : super.getDeathSound();
+        return !this.isKnockedOut() ? this.getOverridenSoundEvent(FASoundEvents.TYRANNOSAURUS_DEATH.get(), ModelGene.OverrideInfo.OverridenSoundType.DEATH, this.registryAccess()) : super.getDeathSound();
     }
 
     public boolean isKnockedOut() {

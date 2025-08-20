@@ -2,7 +2,7 @@ package willatendo.fossilslegacy.data.tag;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
-import willatendo.fossilslegacy.server.gene.cosmetics.FAPatterns;
+import willatendo.fossilslegacy.server.gene.cosmetics.FAPatternGenes;
 import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FAPatternTags;
@@ -16,7 +16,7 @@ public class FAPatternTagProvider extends DataDrivenTagsProvider<PatternGene> {
 
     @Override
     protected void addTags(Provider provider) {
-        this.tag(FAPatternTags.ANKYLOSAURUS_2024_PATTERNS).add(FAPatterns.BLANK, FAPatterns.CHALCORANA, FAPatterns.LITHOBATES, FAPatterns.PAPURANA, FAPatterns.PELOPHYLAX, FAPatterns.PULCHRANA, FAPatterns.RANA);
+        this.tag(FAPatternTags.ANKYLOSAURUS_2024_PATTERNS).add(FAPatternGenes.BLANK, FAPatternGenes.CHALCORANA, FAPatternGenes.LITHOBATES, FAPatternGenes.PAPURANA, FAPatternGenes.PELOPHYLAX, FAPatternGenes.PULCHRANA, FAPatternGenes.RANA);
         this.tag(FAPatternTags.BARYONYX_2025_PATTERNS);
         this.tag(FAPatternTags.BRACHIOSAURUS_2024_PATTERNS);
         this.tag(FAPatternTags.BRACHIOSAURUS_2011_PATTERNS);

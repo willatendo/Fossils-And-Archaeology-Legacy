@@ -61,7 +61,7 @@ import willatendo.fossilslegacy.server.item.FAMapDecorationTypes;
 import willatendo.fossilslegacy.server.item.items.EggItem;
 import willatendo.fossilslegacy.server.jewel_recovery.JewelRecovery;
 import willatendo.fossilslegacy.server.level.FALevels;
-import willatendo.fossilslegacy.server.gene.cosmetics.texture.Texture;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.TextureInformation;
 import willatendo.fossilslegacy.server.registry.FABlockRegistry;
 import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 import willatendo.fossilslegacy.server.registry.FARegistries;
@@ -282,13 +282,16 @@ public final class BasicEvents {
 
     public static void newRegistryEvent(NewRegistryRegister newRegistryRegister) {
         newRegistryRegister.register(FABuiltInRegistries.COMMAND_TYPES, FARegistries.COMMAND_TYPES);
+        newRegistryRegister.register(FABuiltInRegistries.COMPOSITE_TEXTURE_CONDITION, FARegistries.COMPOSITE_TEXTURE_CONDITION);
+        newRegistryRegister.register(FABuiltInRegistries.COMPOSITE_TEXTURE_RULE, FARegistries.COMPOSITE_TEXTURE_RULE);
         newRegistryRegister.register(FABuiltInRegistries.DINOPEDIA_LINE_TYPES, FARegistries.DINOPEDIA_LINE_TYPE);
         newRegistryRegister.register(FABuiltInRegistries.GENE, FARegistries.ATTRIBUTE_GENE);
         newRegistryRegister.register(FABuiltInRegistries.INHERITANCE_CONDITION, FARegistries.INHERITANCE_CONDITION);
         newRegistryRegister.register(FABuiltInRegistries.INHERITANCE_RULE, FARegistries.INHERITANCE_RULE);
+        newRegistryRegister.register(FABuiltInRegistries.PACKAGE_TEXTURE_CONDITION, FARegistries.PACKAGE_TEXTURE_CONDITION);
+        newRegistryRegister.register(FABuiltInRegistries.PACKAGE_TEXTURE_RULE, FARegistries.PACKAGE_TEXTURE_RULE);
         newRegistryRegister.register(FABuiltInRegistries.PREGNANCY_TYPES, FARegistries.PREGNANCY_TYPE);
-        newRegistryRegister.register(FABuiltInRegistries.TEXTURE_INFORMATION_TYPES, FARegistries.TEXTURE_INFORMATION_TYPE);
-        newRegistryRegister.register(FABuiltInRegistries.TEXTURE_TYPES, FARegistries.TEXTURE_TYPE);
+        newRegistryRegister.register(FABuiltInRegistries.TEXTURE_TYPE, FARegistries.TEXTURE_TYPE);
     }
 
     public static void newDynamicRegistryEvent(DynamicRegistryRegister dynamicRegistryRegister) {
@@ -304,7 +307,7 @@ public final class BasicEvents {
         dynamicRegistryRegister.register(FARegistries.MODEL_GENE, ModelGene.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.SKIN_GENE, SkinGene.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.STONE_TABLET_VARIANT, StoneTabletVariant.DIRECT_CODEC);
-        dynamicRegistryRegister.register(FARegistries.TEXTURE, Texture.CODEC);
+        dynamicRegistryRegister.register(FARegistries.TEXTURE, TextureInformation.CODEC);
     }
 
     public static void attributeEvent(AttributeRegister attributeRegister) {

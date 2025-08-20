@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.server.entity.entities;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
@@ -44,7 +43,7 @@ import willatendo.fossilslegacy.server.entity.util.Diet;
 import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.*;
 import willatendo.fossilslegacy.server.gene.Chromosome;
-import willatendo.fossilslegacy.server.gene.cosmetics.FAPatterns;
+import willatendo.fossilslegacy.server.gene.ChromosomeUtils;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
@@ -53,7 +52,6 @@ import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.item.data_components.HeadDisplayInformation;
 import willatendo.fossilslegacy.server.level.FAGameRules;
 import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.tags.FAPatternTags;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.Optional;
@@ -120,7 +118,7 @@ public abstract class Dinosaur extends Animal implements ChromosomedEntity, Comm
     }
 
     protected void updateAttributeValue(Holder<Attribute> attribute, float value) {
-        this.getAttribute(attribute).setBaseValue(this.getChromosome1().getAttributeGeneHolder().apply(attribute, value));
+        this.getAttribute(attribute).setBaseValue(this.getChromosome1().attributeGeneHolder().apply(attribute, value));
     }
 
     public EntityType<Egg> getEggEntityType() {
@@ -149,18 +147,7 @@ public abstract class Dinosaur extends Animal implements ChromosomedEntity, Comm
 
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, EntitySpawnReason entitySpawnReason, SpawnGroupData spawnGroupData) {
-        HolderLookup<ModelGene> modelTypes = serverLevelAccessor.holderLookup(FARegistries.MODEL_GENE);
-        Holder<ModelGene> modelType = modelTypes.getOrThrow(this.getModelTypes()).getRandomElement(this.getRandom()).get();
-        this.setModelType(modelType);
-        HolderLookup<PatternGene> patterns = serverLevelAccessor.holderLookup(FARegistries.PATTERN_GENE);
-        Holder<PatternGene> skin = patterns.getOrThrow(modelType.value().skinGenes()).getRandomElement(this.getRandom()).get();
-        this.setSkin(skin);
-        if (skin.is(FAPatternTags.HAS_PATTERNS) && serverLevelAccessor.getRandom().nextInt(4) == 1) {
-            Holder<PatternGene> pattern = patterns.getOrThrow(modelType.value().patternGenes()).getRandomElement(this.getRandom()).get();
-            this.setPattern(pattern);
-        } else {
-            this.setPattern(patterns.getOrThrow(FAPatterns.BLANK));
-        }
+        ChromosomeUtils.createRandomChromosomes(this, this.getRandom(), this.getModelTypes());
 
         this.setHunger(this.getMaxHunger());
         if (EntitySpawnReason.isSpawner(entitySpawnReason) || entitySpawnReason == EntitySpawnReason.COMMAND || entitySpawnReason == EntitySpawnReason.MOB_SUMMONED || entitySpawnReason == EntitySpawnReason.NATURAL || entitySpawnReason == EntitySpawnReason.CHUNK_GENERATION) {
@@ -626,10 +613,10 @@ public abstract class Dinosaur extends Animal implements ChromosomedEntity, Comm
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
         if (this.getEggEntityType() != null) {
             Egg egg = this.getEggEntityType().create(serverLevel, EntitySpawnReason.BREEDING);
-            if (this.getModelType() != null) {
-                egg.setModelType(this.getModelType());
-            }
             if (egg != null) {
+                if (ageableMob instanceof ChromosomedEntity chromosomedEntity) {
+                    ChromosomeUtils.createChildChromosomes(egg, this, chromosomedEntity, this.getRandom());
+                }
                 UUID uuid = this.getOwnerUUID();
                 if (uuid != null) {
                     egg.setOwnerUUID(uuid);
@@ -662,7 +649,7 @@ public abstract class Dinosaur extends Animal implements ChromosomedEntity, Comm
                 ItemStack skullItemStack = this.getHead();
                 if (!skullItemStack.isEmpty()) {
                     creeper.increaseDroppedSkulls();
-                    skullItemStack.set(FADataComponents.HEAD_DISPLAY_INFORMATION.get(), new HeadDisplayInformation(this.getGrowthStage(), this.getChromosome1().getCosmeticGeneHolder()));
+                    skullItemStack.set(FADataComponents.HEAD_DISPLAY_INFORMATION.get(), new HeadDisplayInformation(this.getGrowthStage(), this.getChromosome1().cosmeticGeneHolder()));
                     this.spawnAtLocation(serverLevel, skullItemStack);
                 }
             }

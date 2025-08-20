@@ -18,6 +18,7 @@ import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Mammoth;
 import willatendo.fossilslegacy.server.entity.util.interfaces.PregnantAnimal;
+import willatendo.fossilslegacy.server.gene.Chromosome;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 import willatendo.fossilslegacy.server.item.FAItems;
@@ -28,9 +29,8 @@ import java.util.Optional;
 public class PregnantMammoth extends Mammoth implements PregnantAnimal<Mammoth> {
     private static final EntityDataAccessor<Integer> PREGNANCY_TIME = SynchedEntityData.defineId(PregnantMammoth.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Holder<PregnancyType>> PREGNANCY_TYPE = SynchedEntityData.defineId(PregnantMammoth.class, FAEntityDataSerializers.PREGNANCY_TYPES.get());
-    private static final EntityDataAccessor<Holder<ModelGene>> OFFSPRING_MODEL_TYPE = SynchedEntityData.defineId(PregnantMammoth.class, FAEntityDataSerializers.MODEL_TYPES.get());
-    private static final EntityDataAccessor<Holder<PatternGene>> OFFSPRING_SKIN = SynchedEntityData.defineId(PregnantMammoth.class, FAEntityDataSerializers.PATTERN.get());
-    private static final EntityDataAccessor<Holder<PatternGene>> OFFSPRING_PATTERN = SynchedEntityData.defineId(PregnantMammoth.class, FAEntityDataSerializers.PATTERN.get());
+    private static final EntityDataAccessor<Chromosome> CHROMOSOME_1 = SynchedEntityData.defineId(PregnantMammoth.class, FAEntityDataSerializers.CHROMOSOME.get());
+    private static final EntityDataAccessor<Chromosome> CHROMOSOME_2 = SynchedEntityData.defineId(PregnantMammoth.class, FAEntityDataSerializers.CHROMOSOME.get());
 
     public PregnantMammoth(EntityType<? extends Mammoth> entityType, Level level) {
         super(entityType, level);
@@ -79,9 +79,9 @@ public class PregnantMammoth extends Mammoth implements PregnantAnimal<Mammoth> 
     }
 
     @Override
-    public boolean saveChromosomes(CompoundTag compoundTag) {
+    public boolean save(CompoundTag compoundTag) {
         this.addPregnancyData(compoundTag, this.registryAccess());
-        return super.saveChromosomes(compoundTag);
+        return super.save(compoundTag);
     }
 
     @Override
@@ -99,7 +99,7 @@ public class PregnantMammoth extends Mammoth implements PregnantAnimal<Mammoth> 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        this.definePregnancyData(builder, this.registryAccess(), PREGNANCY_TIME, PREGNANCY_TYPE, OFFSPRING_MODEL_TYPE, OFFSPRING_SKIN, OFFSPRING_PATTERN);
+        this.definePregnancyData(builder, this.registryAccess(), PREGNANCY_TIME, PREGNANCY_TYPE, CHROMOSOME_1, CHROMOSOME_2);
     }
 
     @Override
@@ -123,33 +123,23 @@ public class PregnantMammoth extends Mammoth implements PregnantAnimal<Mammoth> 
     }
 
     @Override
-    public Holder<ModelGene> getOffspringModelType() {
-        return this.entityData.get(OFFSPRING_MODEL_TYPE);
+    public Chromosome getOffspringChromosome1() {
+        return this.entityData.get(CHROMOSOME_1);
     }
 
     @Override
-    public void setOffspringModelType(Holder<ModelGene> coatTypeHolder) {
-        this.entityData.set(OFFSPRING_MODEL_TYPE, coatTypeHolder);
+    public void setOffspringChromosome1(Chromosome chromosome) {
+        this.entityData.set(CHROMOSOME_1, chromosome);
     }
 
     @Override
-    public void setOffspringSkin(Holder<PatternGene> pattern) {
-        this.entityData.set(OFFSPRING_SKIN, pattern);
+    public Chromosome getOffspringChromosome2() {
+        return this.entityData.get(CHROMOSOME_2);
     }
 
     @Override
-    public Holder<PatternGene> getOffspringSkin() {
-        return this.entityData.get(OFFSPRING_SKIN);
-    }
-
-    @Override
-    public void setOffspringPattern(Holder<PatternGene> pattern) {
-        this.entityData.set(OFFSPRING_PATTERN, pattern);
-    }
-
-    @Override
-    public Holder<PatternGene> getOffspringPattern() {
-        return this.entityData.get(OFFSPRING_PATTERN);
+    public void setOffspringChromosome2(Chromosome chromosome) {
+        this.entityData.set(CHROMOSOME_2, chromosome);
     }
 
     @Override

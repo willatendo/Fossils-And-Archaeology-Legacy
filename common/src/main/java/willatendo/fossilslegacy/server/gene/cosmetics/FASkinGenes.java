@@ -3,7 +3,13 @@ package willatendo.fossilslegacy.server.gene.cosmetics;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
+import willatendo.fossilslegacy.server.entity.FAEntityTypeReferences;
+import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.CompositeTextureRules;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.TextureInformation;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.PackageTextureRules;
+import willatendo.fossilslegacy.server.gene.inheritance.InheritanceRules;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
@@ -84,71 +90,690 @@ public final class FASkinGenes {
     }
 
     public static void bootstrap(BootstrapContext<SkinGene> bootstrapContext) {
-        FASkinGenes.register(bootstrapContext, AMAZON_RAINFOREST, SkinGene.builder(FAUtils.translation("skinGenes", "amazon_rainforest"), 0x479678).buildComposite("amazon_rainforest"));
-        FASkinGenes.register(bootstrapContext, CHAMPLAIN_VALLEY, SkinGene.builder(FAUtils.translation("skinGenes", "champlain_valley"), 0x654920).buildComposite("champlain_valley"));
-        FASkinGenes.register(bootstrapContext, DEATH_VALLEY, SkinGene.builder(FAUtils.translation("skinGenes", "death_valley"), 0xAD8811).buildComposite("death_valley"));
-        FASkinGenes.register(bootstrapContext, GAMBIA_RIVER_BASIN, SkinGene.builder(FAUtils.translation("skinGenes", "gambia_river_basin"), 0x6C6665).buildComposite("gambia_river_basin"));
-        FASkinGenes.register(bootstrapContext, GREAT_SANDY_DESERT, SkinGene.builder(FAUtils.translation("skinGenes", "great_sandy_desert"), 0x5E6747).buildComposite("great_sandy_desert"));
-        FASkinGenes.register(bootstrapContext, LIMPOPO_RIVER, SkinGene.builder(FAUtils.translation("skinGenes", "limpopo_river"), 0x4A331A).buildComposite("limpopo_river"));
-        FASkinGenes.register(bootstrapContext, MANGROVE_FOREST, SkinGene.builder(FAUtils.translation("skinGenes", "mangrove_forest"), 0x5B753D).buildComposite("mangrove_forest"));
-        FASkinGenes.register(bootstrapContext, QILIAN_MOUNTAINS, SkinGene.builder(FAUtils.translation("skinGenes", "qilian_mountains"), 0xA9A191).buildComposite("qilian_mountains"));
-        FASkinGenes.register(bootstrapContext, SALAR_DEL_HUASCO, SkinGene.builder(FAUtils.translation("skinGenes", "salar_del_huasco"), 0x4A4018).buildComposite("salar_del_huasco"));
-        FASkinGenes.register(bootstrapContext, SONORAN_DESERT, SkinGene.builder(FAUtils.translation("skinGenes", "sonoran_desert"), 0xB4813E).buildComposite("sonoran_desert"));
-        FASkinGenes.register(bootstrapContext, SVALBARD, SkinGene.builder(FAUtils.translation("skinGenes", "svalbard"), 0x837B53).buildComposite("svalbard"));
-        FASkinGenes.register(bootstrapContext, YUKON_RIVER, SkinGene.builder(FAUtils.translation("skinGenes", "yukon_river"), 0x88724D).buildComposite("yukon_river"));
+        Component americanBison = Component.translatable("skin.fossilslegacy.american_bison");
+        Component blueIguana = Component.translatable("skin.fossilslegacy.blue_iguana");
+        Component broadheadSkink = Component.translatable("skin.fossilslegacy.broadhead_skink");
+        Component domesticPigeon = Component.translatable("skin.fossilslegacy.domestic_pigeon");
+        Component easternBrownSnake = Component.translatable("skin.fossilslegacy.eastern_brown_snake");
+        Component easternIndigoSnake = Component.translatable("skin.fossilslegacy.eastern_indigo_snake");
+        Component greenParkeet = Component.translatable("skin.fossilslegacy.green_parakeet");
+        Component greenTreePython = Component.translatable("skin.fossilslegacy.green_tree_python");
+        Component grayRatsnake = Component.translatable("skin.fossilslegacy.gray_ratsnake");
+        Component inlandTaipan = Component.translatable("skin.fossilslegacy.inland_taipan");
+        Component marineIguana = Component.translatable("skin.fossilslegacy.marine_iguana");
+        Component northCardinal = Component.translatable("skin.fossilslegacy.northern_cardinal");
+        Component tiger = Component.translatable("skin.fossilslegacy.tiger");
+        FASkinGenes.register(
+                bootstrapContext,
+                AMAZON_RAINFOREST,
+                SkinGene.createComposite(
+                        FAUtils.translation("skin", "amazon_rainforest"),
+                        0x479678,
+                        InheritanceRules.always(),
+                        CompositeTextureRules.sequence(
+                                CompositeTextureRules.ifTrue(
+                                        CompositeTextureRules.isEntity(
+                                                FAEntityTypeReferences.ANKYLOSAURUS
+                                        ),
+                                        CompositeTextureRules.sequence(
+                                                CompositeTextureRules.ifTrue(
+                                                        CompositeTextureRules.isBaby(),
+                                                        CompositeTextureRules.layer0("amazon_rainforest_baby")
+                                                ),
+                                                CompositeTextureRules.layer0("amazon_rainforest_adult")
+                                        )
+                                )
+                        )
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                CHAMPLAIN_VALLEY,
+                SkinGene.createComposite(
+                        FAUtils.translation("skin", "champlain_valley"),
+                        0x654920,
+                        InheritanceRules.always(),
+                        CompositeTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                DEATH_VALLEY,
+                SkinGene.createComposite(
+                        FAUtils.translation("skin", "death_valley"),
+                        0xAD8811,
+                        InheritanceRules.always(),
+                        CompositeTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                GAMBIA_RIVER_BASIN,
+                SkinGene.createComposite(
+                        FAUtils.translation("skin", "gambia_river_basin"),
+                        0x6C6665,
+                        InheritanceRules.always(),
+                        CompositeTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                GREAT_SANDY_DESERT,
+                SkinGene.createComposite(
+                        FAUtils.translation("skin", "great_sandy_desert"),
+                        0x5E6747,
+                        InheritanceRules.always(),
+                        CompositeTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                LIMPOPO_RIVER,
+                SkinGene.createComposite(
+                        FAUtils.translation("skin", "limpopo_river"),
+                        0x4A331A,
+                        InheritanceRules.always(),
+                        CompositeTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                MANGROVE_FOREST,
+                SkinGene.createComposite(
+                        FAUtils.translation("skin", "mangrove_forest"),
+                        0x5B753D,
+                        InheritanceRules.always(),
+                        CompositeTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                QILIAN_MOUNTAINS,
+                SkinGene.createComposite(
+                        FAUtils.translation("skin", "qilian_mountains"),
+                        0xA9A191,
+                        InheritanceRules.always(),
+                        CompositeTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                SALAR_DEL_HUASCO,
+                SkinGene.createComposite(
+                        FAUtils.translation("skin", "salar_del_huasco"),
+                        0x4A4018,
+                        InheritanceRules.always(),
+                        CompositeTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                SONORAN_DESERT,
+                SkinGene.createComposite(
+                        FAUtils.translation("skin", "sonoran_desert"),
+                        0xB4813E,
+                        InheritanceRules.always(),
+                        CompositeTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                SVALBARD,
+                SkinGene.createComposite(
+                        FAUtils.translation("skin", "svalbard"),
+                        0x837B53,
+                        InheritanceRules.always(),
+                        CompositeTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                YUKON_RIVER,
+                SkinGene.createComposite(
+                        FAUtils.translation("skin", "yukon_river"),
+                        0x88724D,
+                        InheritanceRules.always(),
+                        CompositeTextureRules.sequence()
+                )
+        );
 
-        FASkinGenes.register(bootstrapContext, ANKYLOSAURUS_2024, SkinGene.builder(FAUtils.resource("textures/entity/ankylosaurus/ankylosaurus.png"), Component.translatable("skinGenes.fossilslegacy.eastern_brown_snake"), 0xFFFFFF).withEyeLayerTexture(FAUtils.resource("textures/entity/ankylosaurus/eyes/adult.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, BARYONYX_2025, SkinGene.builder(FAUtils.resource("textures/entity/baryonyx/baryonyx.png"), Component.translatable("skinGenes.fossilslegacy.blue_iguana"), 0x3F4D71).buildPackage());
-        FASkinGenes.register(bootstrapContext, BRACHIOSAURUS_2024, SkinGene.builder(FAUtils.resource("textures/entity/brachiosaurus/brachiosaurus.png"), Component.translatable("skinGenes.fossilslegacy.blue_iguana"), 0xFFFFFF).buildPackage());
-        FASkinGenes.register(bootstrapContext, GREEN_CARNOTAURUS_2024, SkinGene.builder(FAUtils.resource("textures/entity/carnotaurus/green_carnotaurus_adult.png"), Component.translatable("skinGenes.fossilslegacy.green_tree_python"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/carnotaurus/red_carnotaurus_baby.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, RED_CARNOTAURUS_2024, SkinGene.builder(FAUtils.resource("textures/entity/carnotaurus/red_carnotaurus_adult.png"), Component.translatable("skinGenes.fossilslegacy.northern_cardinal"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/carnotaurus/green_carnotaurus_baby.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, COMPSOGNATHUS_2024, SkinGene.builder(FAUtils.resource("textures/entity/compsognathus/compsognathus.png"), Component.translatable("skinGenes.fossilslegacy.green_tree_python"), 0xFFFFFF).buildPackage());
-        FASkinGenes.register(bootstrapContext, CRYOLOPHOSAURUS_2024, SkinGene.builder(FAUtils.resource("textures/entity/cryolophosaurus/cryolophosaurus.png"), Component.translatable("skinGenes.fossilslegacy.blue_iguana"), 0xFFFFFF).buildPackage());
-        FASkinGenes.register(bootstrapContext, DILOPHOSAURUS_2024, SkinGene.builder(FAUtils.resource("textures/entity/dilophosaurus/dilophosaurus.png"), Component.translatable("skinGenes.fossilslegacy.inland_taipan"), 0xFFFFFF).withAggressiveTexture(FAUtils.resource("textures/entity/dilophosaurus/aggressive_dilophosaurus.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, DIMETRODON_2024, SkinGene.builder(FAUtils.resource("textures/entity/dimetrodon/dimetrodon_adult.png"), Component.translatable("skinGenes.fossilslegacy.eastern_indigo_snake"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/dimetrodon/dimetrodon_baby.png")).withAggressiveTexture(FAUtils.resource("textures/entity/dimetrodon/dimetrodon_agressive.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, DISTORTUS_REX_2025, SkinGene.builder(FAUtils.resource("textures/entity/distortus_rex/distortus_rex.png"), Component.translatable("skinGenes.fossilslegacy.eastern_brown_snake"), 0xFFFFFF).buildPackage());
-        FASkinGenes.register(bootstrapContext, DODO_2024, SkinGene.builder(FAUtils.resource("textures/entity/dodo/dodo.png"), Component.translatable("skinGenes.fossilslegacy.domestic_pigeon"), 0xFFFFFF).buildPackage());
-        FASkinGenes.register(bootstrapContext, DRYOSAURUS_2025, SkinGene.builder(FAUtils.resource("textures/entity/dryosaurus/dryosaurus.png"), Component.translatable("skinGenes.fossilslegacy.green_tree_python"), 0xB3C15C).buildPackage());
-        FASkinGenes.register(bootstrapContext, ELASMOTHERIUM_2025, SkinGene.builder(FAUtils.resource("textures/entity/elasmotherium/elasmotherium.png"), Component.translatable("skinGenes.fossilslegacy.american_bison"), 0xFFFFFF).buildPackage());
-        FASkinGenes.register(bootstrapContext, FUTABASAURUS_2024, SkinGene.builder(FAUtils.resource("textures/entity/futabasaurus/futabasaurus.png"), Component.translatable("skinGenes.fossilslegacy.broadhead_skink"), 0xFFFFFF).buildPackage());
-        FASkinGenes.register(bootstrapContext, GALLIMIMUS_2024, SkinGene.builder(FAUtils.resource("textures/entity/gallimimus/gallimimus_adult.png"), Component.translatable("skinGenes.fossilslegacy.broadhead_skink"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/gallimimus/gallimimus_baby.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, ICHTHYOSAURUS_2025, SkinGene.builder(FAUtils.resource("textures/entity/ichthyosaurus/ichthyosaurus.png"), Component.translatable("skinGenes.fossilslegacy.blue_iguana"), 0xFFFFFF).buildPackage());
-        FASkinGenes.register(bootstrapContext, ISOTELUS_2025, SkinGene.builder(FAUtils.resource("textures/entity/isotelus/isotelus.png"), Component.translatable("skinGenes.fossilslegacy.gray_ratsnake"), 0xFFFFFF).buildPackage());
-        FASkinGenes.register(bootstrapContext, ISOTELUS_LARVA_2025, SkinGene.builder(FAUtils.resource("textures/entity/isotelus/isotelus_larva.png"), Component.translatable("skinGenes.fossilslegacy.gray_ratsnake"), 0xFFFFFF).buildPackage());
-        FASkinGenes.register(bootstrapContext, MAMMOTH_2024, SkinGene.builder(FAUtils.resource("textures/entity/mammoth/mammoth_adult.png"), Component.translatable("skinGenes.fossilslegacy.american_bison"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/mammoth/mammoth_baby.png")).withFurTexture(FAUtils.resource("textures/entity/mammoth/mammoth_adult_fur.png")).withBabyFurTexture(FAUtils.resource("textures/entity/mammoth/mammoth_baby_fur.png")).withShearedTexture(FAUtils.resource("textures/entity/mammoth/mammoth_adult_sheared.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, MOSASAURUS_2024, SkinGene.builder(FAUtils.resource("textures/entity/mosasaurus/mosasaurus.png"), Component.translatable("skinGenes.fossilslegacy.marine_iguana"), 0xFFFFFF).withEyeLayerTexture(FAUtils.resource("textures/entity/mosasaurus/mosasaurus_eyes.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, MOA_2024, SkinGene.builder(FAUtils.resource("textures/entity/moa/moa.png"), Component.translatable("skinGenes.fossilslegacy.american_bison"), 0xFFFFFF).buildPackage());
-        FASkinGenes.register(bootstrapContext, PACHYCEPHALOSAURUS_2024, SkinGene.builder(FAUtils.resource("textures/entity/pachycephalosaurus/pachycephalosaurus_adult.png"), Component.translatable("skinGenes.fossilslegacy.broadhead_skink"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/pachycephalosaurus/pachycephalosaurus_baby.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, PTERANODON_2024, SkinGene.builder(FAUtils.resource("textures/entity/pteranodon/pteranodon_adult.png"), Component.translatable("skinGenes.fossilslegacy.eastern_indigo_snake"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/pteranodon/pteranodon_baby.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, SMILODON_2024, SkinGene.builder(FAUtils.resource("textures/entity/smilodon/smilodon_adult.png"), Component.translatable("skinGenes.fossilslegacy.tiger"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/smilodon/smilodon_baby.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, SPINOSAURUS_2024, SkinGene.builder(FAUtils.resource("textures/entity/spinosaurus/spinosaurus_adult.png"), Component.translatable("skinGenes.fossilslegacy.marine_iguana"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/spinosaurus/spinosaurus_baby.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, STEGOSAURUS_2024, SkinGene.builder(FAUtils.resource("textures/entity/stegosaurus/stegosaurus_adult.png"), Component.translatable("skinGenes.fossilslegacy.green_tree_python"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/stegosaurus/stegosaurus_baby.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, THERIZINOSAURUS_2024, SkinGene.builder(FAUtils.resource("textures/entity/therizinosaurus/therizinosaurus_adult.png"), Component.translatable("skinGenes.fossilslegacy.green_parakeet"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/therizinosaurus/therizinosaurus_baby.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, GREEN_TRICERATOPS_2024, SkinGene.builder(FAUtils.resource("textures/entity/triceratops/green_triceratops_adult.png"), Component.translatable("skinGenes.fossilslegacy.green_tree_python"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/triceratops/green_triceratops_baby.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, BROWN_TRICERATOPS_2024, SkinGene.builder(FAUtils.resource("textures/entity/triceratops/brown_triceratops_adult.png"), Component.translatable("skinGenes.fossilslegacy.eastern_brown_snake"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/triceratops/brown_triceratops_baby.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, TYRANNOSAURUS_2024, SkinGene.builder(FAUtils.resource("textures/entity/tyrannosaurus/tyrannosaurus_adult.png"), Component.translatable("skinGenes.fossilslegacy.eastern_brown_snake"), 0xFFFFFF).withAggressiveTexture(FAUtils.resource("textures/entity/tyrannosaurus/tyrannosaurus_aggressive.png")).withKnockedOutTexture(FAUtils.resource("textures/entity/tyrannosaurus/tyrannosaurus_weak.png")).withBabyTexture(FAUtils.resource("textures/entity/tyrannosaurus/tyrannosaurus_baby.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, GREEN_VELOCIRAPTOR_2024, SkinGene.builder(FAUtils.resource("textures/entity/velociraptor/green_velociraptor_adult.png"), Component.translatable("skinGenes.fossilslegacy.green_tree_python"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/velociraptor/green_velociraptor_baby.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, SANDY_VELOCIRAPTOR_2024, SkinGene.builder(FAUtils.resource("textures/entity/velociraptor/sandy_velociraptor_adult.png"), Component.translatable("skinGenes.fossilslegacy.eastern_brown_snake"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/velociraptor/sandy_velociraptor_baby.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, WHITE_VELOCIRAPTOR_2024, SkinGene.builder(FAUtils.resource("textures/entity/velociraptor/white_velociraptor_adult.png"), Component.translatable("skinGenes.fossilslegacy.gray_ratsnake"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/velociraptor/white_velociraptor_baby.png")).buildPackage());
+        FASkinGenes.register(
+                bootstrapContext,
+                ANKYLOSAURUS_2024,
+                SkinGene.createPackage(
+                        easternBrownSnake,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence(
+                                PackageTextureRules.ifTrue(
+                                        PackageTextureRules.isBaby(),
+                                        PackageTextureRules.texture(
+                                                TextureInformation.simple(
+                                                        FAUtils.resource("textures/entity/ankylosaurus/ankylosaurus.png"),
+                                                        FAUtils.resource("textures/entity/ankylosaurus/eyes/baby.png"),
+                                                        FAUtils.resource("textures/entity/ankylosaurus/eyes/closed.png")
+                                                )
+                                        )
+                                ),
+                                PackageTextureRules.texture(
+                                        TextureInformation.simple(
+                                                FAUtils.resource("textures/entity/ankylosaurus/ankylosaurus.png"),
+                                                FAUtils.resource("textures/entity/ankylosaurus/eyes/adult.png"),
+                                                FAUtils.resource("textures/entity/ankylosaurus/eyes/closed.png")
+                                        )
+                                )
+                        )
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext, 
+                BARYONYX_2025, 
+                SkinGene.createPackage(
+                        blueIguana, 
+                        0x3F4D71,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                BRACHIOSAURUS_2024,
+                SkinGene.createPackage(
+                        blueIguana,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                GREEN_CARNOTAURUS_2024,
+                SkinGene.createPackage(
+                        greenTreePython,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                RED_CARNOTAURUS_2024,
+                SkinGene.createPackage(
+                        northCardinal,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                COMPSOGNATHUS_2024,
+                SkinGene.createPackage(
+                        greenTreePython,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                CRYOLOPHOSAURUS_2024,
+                SkinGene.createPackage(
+                        blueIguana, 0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                DILOPHOSAURUS_2024,
+                SkinGene.createPackage(
+                        inlandTaipan,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                DIMETRODON_2024,
+                SkinGene.createPackage(
+                        easternIndigoSnake,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                DISTORTUS_REX_2025,
+                SkinGene.createPackage(
+                        easternBrownSnake,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                DODO_2024,
+                SkinGene.createPackage(
+                        domesticPigeon,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                DRYOSAURUS_2025,
+                SkinGene.createPackage(
+                        greenTreePython,
+                        0xB3C15C,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                ELASMOTHERIUM_2025,
+                SkinGene.createPackage(
+                        americanBison,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                FUTABASAURUS_2024,
+                SkinGene.createPackage(
+                        broadheadSkink,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                GALLIMIMUS_2024,
+                SkinGene.createPackage(
+                        broadheadSkink,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                ICHTHYOSAURUS_2025,
+                SkinGene.createPackage(
+                        blueIguana,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                ISOTELUS_2025,
+                SkinGene.createPackage(
+                        grayRatsnake,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                ISOTELUS_LARVA_2025,
+                SkinGene.createPackage(
+                        grayRatsnake,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                MAMMOTH_2024,
+                SkinGene.createPackage(
+                        americanBison,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                MOSASAURUS_2024,
+                SkinGene.createPackage(
+                        marineIguana,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                MOA_2024,
+                SkinGene.createPackage(
+                        americanBison,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                PACHYCEPHALOSAURUS_2024,
+                SkinGene.createPackage(
+                        broadheadSkink,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                PTERANODON_2024,
+                SkinGene.createPackage(
+                        easternIndigoSnake,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                SMILODON_2024,
+                SkinGene.createPackage(
+                        tiger,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                SPINOSAURUS_2024,
+                SkinGene.createPackage(
+                        marineIguana,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                STEGOSAURUS_2024,
+                SkinGene.createPackage(
+                        greenTreePython,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                THERIZINOSAURUS_2024,
+                SkinGene.createPackage(
+                        greenParkeet,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                GREEN_TRICERATOPS_2024,
+                SkinGene.createPackage(
+                        greenTreePython,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                BROWN_TRICERATOPS_2024,
+                SkinGene.createPackage(
+                        easternBrownSnake,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                TYRANNOSAURUS_2024,
+                SkinGene.createPackage(
+                        easternBrownSnake,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                GREEN_VELOCIRAPTOR_2024,
+                SkinGene.createPackage(
+                        greenTreePython,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                SANDY_VELOCIRAPTOR_2024,
+                SkinGene.createPackage(
+                        easternBrownSnake,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                WHITE_VELOCIRAPTOR_2024,
+                SkinGene.createPackage(
+                        grayRatsnake,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
 
-        FASkinGenes.register(bootstrapContext, BRACHIOSAURUS_2011, SkinGene.builder(FAUtils.resource("textures/entity/brachiosaurus/legacy/brachiosaurus.png"), Component.translatable("skinGenes.fossilslegacy.blue_iguana"), 0xFFFFFF).buildPackage());
-        FASkinGenes.register(bootstrapContext, GREEN_CARNOTAURUS_2011, SkinGene.builder(FAUtils.resource("textures/entity/carnotaurus/legacy/green_carnotaurus.png"), Component.translatable("skinGenes.fossilslegacy.green_tree_python"), 0xFFFFFF).buildPackage());
-        FASkinGenes.register(bootstrapContext, RED_CARNOTAURUS_2011, SkinGene.builder(FAUtils.resource("textures/entity/carnotaurus/legacy/red_carnotaurus.png"), Component.translatable("skinGenes.fossilslegacy.northern_cardinal"), 0xFFFFFF).buildPackage());
-        FASkinGenes.register(bootstrapContext, CRYOLOPHOSAURUS_2011, SkinGene.builder(FAUtils.resource("textures/entity/cryolophosaurus/legacy/cryolophosaurus.png"), Component.translatable("skinGenes.fossilslegacy.blue_iguana"), 0xFFFFFF).buildPackage());
-        FASkinGenes.register(bootstrapContext, DILOPHOSAURUS_2011, SkinGene.builder(FAUtils.resource("textures/entity/dilophosaurus/legacy/dilophosaurus.png"), Component.translatable("skinGenes.fossilslegacy.inland_taipan"), 0xFFFFFF).withAggressiveTexture(FAUtils.resource("textures/entity/dilophosaurus/legacy/dilophosaurus_aggressive.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, FUTABASAURUS_2011, SkinGene.builder(FAUtils.resource("textures/entity/futabasaurus/legacy/futabasaurus.png"), Component.translatable("skinGenes.fossilslegacy.broadhead_skink"), 0xFFFFFF).buildPackage());
-        FASkinGenes.register(bootstrapContext, MAMMOTH_2011, SkinGene.builder(FAUtils.resource("textures/entity/mammoth/legacy/mammoth_adult.png"), Component.translatable("skinGenes.fossilslegacy.american_bison"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/mammoth/legacy/mammoth_baby.png")).withFurTexture(FAUtils.resource("textures/entity/mammoth/legacy/mammoth_adult_fur.png")).withBabyFurTexture(FAUtils.resource("textures/entity/mammoth/legacy/mammoth_baby_fur.png")).withShearedTexture(FAUtils.resource("textures/entity/mammoth/legacy/mammoth_adult_sheared.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, MOSASAURUS_2011, SkinGene.builder(FAUtils.resource("textures/entity/mosasaurus/legacy/mosasaurus.png"), Component.translatable("skinGenes.fossilslegacy.marine_iguana"), 0xFFFFFF).withEyeLayerTexture(FAUtils.resource("textures/entity/mosasaurus/legacy/mosasaurus_eyes.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, PTERANODON_2011, SkinGene.builder(FAUtils.resource("textures/entity/pteranodon/legacy/pteranodon.png"), Component.translatable("skinGenes.fossilslegacy.eastern_indigo_snake"), 0xFFFFFF).buildPackage());
-        FASkinGenes.register(bootstrapContext, SMILODON_2011, SkinGene.builder(FAUtils.resource("textures/entity/smilodon/legacy/smilodon_adult.png"), Component.translatable("skinGenes.fossilslegacy.tiger"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/smilodon/legacy/smilodon_baby.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, STEGOSAURUS_2011, SkinGene.builder(FAUtils.resource("textures/entity/stegosaurus/legacy/stegosaurus_adult.png"), Component.translatable("skinGenes.fossilslegacy.green_tree_python"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/stegosaurus/legacy/stegosaurus_baby.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, FEATHERED_THERIZINOSAURUS_2011, SkinGene.builder(FAUtils.resource("textures/entity/therizinosaurus/legacy/therizinosaurus_feathered.png"), Component.translatable("skinGenes.fossilslegacy.green_parakeet"), 0xFFFFFF).buildPackage());
-        FASkinGenes.register(bootstrapContext, FEATHERLESS_THERIZINOSAURUS_2011, SkinGene.builder(FAUtils.resource("textures/entity/therizinosaurus/legacy/therizinosaurus_featherless.png"), Component.translatable("skinGenes.fossilslegacy.green_tree_python"), 0xFFFFFF).buildPackage());
-        FASkinGenes.register(bootstrapContext, GREEN_TRICERATOPS_2011, SkinGene.builder(FAUtils.resource("textures/entity/triceratops/legacy/green_triceratops_adult.png"), Component.translatable("skinGenes.fossilslegacy.green_tree_python"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/triceratops/legacy/green_triceratops_baby.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, BROWN_TRICERATOPS_2011, SkinGene.builder(FAUtils.resource("textures/entity/triceratops/legacy/brown_triceratops_adult.png"), Component.translatable("skinGenes.fossilslegacy.eastern_brown_snake"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/triceratops/legacy/brown_triceratops_baby.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, TYRANNOSAURUS_2011, SkinGene.builder(FAUtils.resource("textures/entity/tyrannosaurus/legacy/tyrannosaurus.png"), Component.translatable("skinGenes.fossilslegacy.eastern_brown_snake"), 0xFFFFFF).withAggressiveTexture(FAUtils.resource("textures/entity/tyrannosaurus/legacy/tyrannosaurus_aggressive.png")).withKnockedOutTexture(FAUtils.resource("textures/entity/tyrannosaurus/legacy/tyrannosaurus_weak.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, GREEN_VELOCIRAPTOR_2011, SkinGene.builder(FAUtils.resource("textures/entity/velociraptor/legacy/green_velociraptor_adult.png"), Component.translatable("skinGenes.fossilslegacy.green_tree_python"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/velociraptor/legacy/green_velociraptor_baby.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, SANDY_VELOCIRAPTOR_2011, SkinGene.builder(FAUtils.resource("textures/entity/velociraptor/legacy/sandy_velociraptor_adult.png"), Component.translatable("skinGenes.fossilslegacy.eastern_brown_snake"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/velociraptor/legacy/sandy_velociraptor_baby.png")).buildPackage());
-        FASkinGenes.register(bootstrapContext, WHITE_VELOCIRAPTOR_2011, SkinGene.builder(FAUtils.resource("textures/entity/velociraptor/legacy/white_velociraptor_adult.png"), Component.translatable("skinGenes.fossilslegacy.gray_ratsnake"), 0xFFFFFF).withBabyTexture(FAUtils.resource("textures/entity/velociraptor/legacy/white_velociraptor_baby.png")).buildPackage());
+        FASkinGenes.register(
+                bootstrapContext,
+                BRACHIOSAURUS_2011,
+                SkinGene.createPackage(
+                        blueIguana,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                GREEN_CARNOTAURUS_2011,
+                SkinGene.createPackage(
+                        greenTreePython,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                RED_CARNOTAURUS_2011,
+                SkinGene.createPackage(
+                        northCardinal,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                CRYOLOPHOSAURUS_2011,
+                SkinGene.createPackage(
+                        blueIguana,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                DILOPHOSAURUS_2011,
+                SkinGene.createPackage(
+                        inlandTaipan,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                FUTABASAURUS_2011,
+                SkinGene.createPackage(
+                        broadheadSkink,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                MAMMOTH_2011,
+                SkinGene.createPackage(
+                        americanBison,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                MOSASAURUS_2011,
+                SkinGene.createPackage(
+                        marineIguana,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                PTERANODON_2011,
+                SkinGene.createPackage(
+                        easternIndigoSnake,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                SMILODON_2011,
+                SkinGene.createPackage(
+                        tiger,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                STEGOSAURUS_2011,
+                SkinGene.createPackage(
+                        greenTreePython,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                FEATHERED_THERIZINOSAURUS_2011,
+                SkinGene.createPackage(
+                        greenParkeet,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                FEATHERLESS_THERIZINOSAURUS_2011,
+                SkinGene.createPackage(
+                        greenTreePython,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                GREEN_TRICERATOPS_2011,
+                SkinGene.createPackage(
+                        greenTreePython,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                BROWN_TRICERATOPS_2011,
+                SkinGene.createPackage(
+                        easternBrownSnake,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                TYRANNOSAURUS_2011,
+                SkinGene.createPackage(
+                        easternBrownSnake,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                GREEN_VELOCIRAPTOR_2011,
+                SkinGene.createPackage(
+                        greenTreePython,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                SANDY_VELOCIRAPTOR_2011,
+                SkinGene.createPackage(
+                        easternBrownSnake,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
+        FASkinGenes.register(
+                bootstrapContext,
+                WHITE_VELOCIRAPTOR_2011,
+                SkinGene.createPackage(
+                        grayRatsnake,
+                        0xFFFFFF,
+                        InheritanceRules.always(),
+                        PackageTextureRules.sequence()
+                )
+        );
     }
 }

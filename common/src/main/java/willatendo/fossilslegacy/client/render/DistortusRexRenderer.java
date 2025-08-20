@@ -1,14 +1,10 @@
 package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRenderer;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.hybrid.DistortusRex;
-import willatendo.fossilslegacy.server.gene.cosmetics.FATextures;
-import willatendo.fossilslegacy.server.gene.cosmetics.texture.Texture;
-
-import java.util.List;
 
 public class DistortusRexRenderer extends DataDrivenModelDinosaurRenderer<DistortusRex, DinosaurRenderState> {
     public DistortusRexRenderer(EntityRendererProvider.Context context) {
@@ -21,12 +17,7 @@ public class DistortusRexRenderer extends DataDrivenModelDinosaurRenderer<Distor
     }
 
     @Override
-    public String baseTextureName() {
-        return "distortus_rex";
-    }
-
-    @Override
-    public List<ResourceKey<Texture>> requiredTextures() {
-        return List.of(FATextures.BASE);
+    public ResourceLocation getBasePath() {
+        return this.createPath("distortus_rex");
     }
 }

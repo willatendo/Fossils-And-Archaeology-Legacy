@@ -22,7 +22,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformati
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.tags.FAEntityTypeTags;
-import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelGeneTags;
 
 import java.util.Optional;
 
@@ -52,17 +52,12 @@ public class DistortusRex extends Dinosaur implements DinopediaInformation {
 
     @Override
     public TagKey<ModelGene> getModelTypes() {
-        return FAModelTypeTags.DISTORTUS_REX;
+        return FAModelGeneTags.DISTORTUS_REX;
     }
 
     @Override
     public int getMaxGrowthStage() {
         return 8;
-    }
-
-    @Override
-    public double getMinHealth() {
-        return 15.0F;
     }
 
     @Override

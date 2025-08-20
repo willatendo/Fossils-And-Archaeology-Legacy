@@ -22,15 +22,14 @@ import willatendo.fossilslegacy.server.block.blocks.AbstractHeadBlock;
 import willatendo.fossilslegacy.server.block.blocks.WallHeadBlock;
 import willatendo.fossilslegacy.server.block.entity.entities.HeadBlockEntity;
 import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.TextureInformation;
 import willatendo.fossilslegacy.server.item.FAHeadTypes;
 import willatendo.fossilslegacy.server.item.data_components.HeadDisplayInformation;
-import willatendo.fossilslegacy.server.gene.cosmetics.FATextures;
-import willatendo.fossilslegacy.server.gene.cosmetics.texture.Texture;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -147,17 +146,15 @@ public class HeadBlockEntityRenderer implements BlockEntityRenderer<HeadBlockEnt
         poseStack.scale(-1.0F, -1.0F, 1.0F);
         ClientLevel clientLevel = Minecraft.getInstance().level;
         if (headDisplayInformation != null) {
-            PatternGene skin = headDisplayInformation.cosmeticGeneHolder().skinGene(clientLevel.registryAccess()).value();
+            SkinGene skinGene = headDisplayInformation.cosmeticGeneHolder().skinGene(clientLevel.registryAccess()).value();
             PatternGene patternGene = headDisplayInformation.cosmeticGeneHolder().patternGene(clientLevel.registryAccess()).value();
-            Registry<Texture> textureRegistry = clientLevel.registryAccess().lookupOrThrow(FARegistries.TEXTURE);
+            Registry<TextureInformation> textureRegistry = clientLevel.registryAccess().lookupOrThrow(FARegistries.TEXTURE);
             if (scale) {
 
             }
             headModel.setupAnim(mouthAnimation, yRot, 0.0F);
-            headModel.renderToBuffer(poseStack, multiBufferSource.getBuffer(RenderType.entityCutoutNoCullZOffset(skin.getTexture(textureRegistry, FATextures.BASE, "ankylosaurus", List.of(FATextures.BASE)))), packedLight, OverlayTexture.NO_OVERLAY);
-            if (skin.hasEyeTexture(textureRegistry, "ankylosaurus", List.of(FATextures.BASE))) {
-                headModel.renderToBuffer(poseStack, multiBufferSource.getBuffer(RenderType.entityCutoutNoCullZOffset(skin.getEyeTexture(textureRegistry, "ankylosaurus", List.of(FATextures.BASE)))), packedLight, OverlayTexture.NO_OVERLAY);
-            }
+            headModel.renderToBuffer(poseStack, multiBufferSource.getBuffer(RenderType.entityCutoutNoCullZOffset(FAUtils.resource("texture/entity/ankylosaurus/ankylosaurus.png"))), packedLight, OverlayTexture.NO_OVERLAY);
+
         }
         poseStack.popPose();
     }

@@ -56,7 +56,7 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.item.FAItems;
-import willatendo.fossilslegacy.server.tags.FAModelTypeTags;
+import willatendo.fossilslegacy.server.tags.FAModelGeneTags;
 import willatendo.fossilslegacy.server.tags.FAStructureTags;
 
 import java.util.EnumSet;
@@ -105,7 +105,7 @@ public class Ichthyosaurus extends Dinosaur implements DinopediaInformation {
 
     @Override
     public TagKey<ModelGene> getModelTypes() {
-        return FAModelTypeTags.ICHTHYOSAURUS;
+        return FAModelGeneTags.ICHTHYOSAURUS;
     }
 
     @Override
@@ -322,17 +322,17 @@ public class Ichthyosaurus extends Dinosaur implements DinopediaInformation {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.getOverridenSoundEvent(SoundEvents.DOLPHIN_AMBIENT, ModelGene.OverrideInfo.OverridenSoundType.AMBIENT);
+        return this.getOverridenSoundEvent(SoundEvents.DOLPHIN_AMBIENT, ModelGene.OverrideInfo.OverridenSoundType.AMBIENT, this.registryAccess());
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return this.getOverridenSoundEvent(SoundEvents.DOLPHIN_HURT, ModelGene.OverrideInfo.OverridenSoundType.HURT);
+        return this.getOverridenSoundEvent(SoundEvents.DOLPHIN_HURT, ModelGene.OverrideInfo.OverridenSoundType.HURT, this.registryAccess());
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return this.getOverridenSoundEvent(SoundEvents.DOLPHIN_DEATH, ModelGene.OverrideInfo.OverridenSoundType.DEATH);
+        return this.getOverridenSoundEvent(SoundEvents.DOLPHIN_DEATH, ModelGene.OverrideInfo.OverridenSoundType.DEATH, this.registryAccess());
     }
 
     public void setTreasurePos(BlockPos blockPos) {

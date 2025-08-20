@@ -1,6 +1,7 @@
 package willatendo.fossilslegacy.server.entity.entities.pregnant;
 
 import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -18,8 +19,10 @@ import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Smilodon;
 import willatendo.fossilslegacy.server.entity.util.interfaces.PregnantAnimal;
+import willatendo.fossilslegacy.server.gene.Chromosome;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.pregnancy_types.PregnancyType;
 
@@ -28,9 +31,8 @@ import java.util.Optional;
 public class PregnantSmilodon extends Smilodon implements PregnantAnimal<Smilodon> {
     private static final EntityDataAccessor<Integer> PREGNANCY_TIME = SynchedEntityData.defineId(PregnantSmilodon.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Holder<PregnancyType>> PREGNANCY_TYPE = SynchedEntityData.defineId(PregnantSmilodon.class, FAEntityDataSerializers.PREGNANCY_TYPES.get());
-    private static final EntityDataAccessor<Holder<ModelGene>> OFFSPRING_MODEL_TYPE = SynchedEntityData.defineId(PregnantSmilodon.class, FAEntityDataSerializers.MODEL_TYPES.get());
-    private static final EntityDataAccessor<Holder<PatternGene>> OFFSPRING_SKIN = SynchedEntityData.defineId(PregnantSmilodon.class, FAEntityDataSerializers.PATTERN.get());
-    private static final EntityDataAccessor<Holder<PatternGene>> OFFSPRING_PATTERN = SynchedEntityData.defineId(PregnantSmilodon.class, FAEntityDataSerializers.PATTERN.get());
+    private static final EntityDataAccessor<Chromosome> CHROMOSOME_1 = SynchedEntityData.defineId(PregnantSmilodon.class, FAEntityDataSerializers.CHROMOSOME.get());
+    private static final EntityDataAccessor<Chromosome> CHROMOSOME_2 = SynchedEntityData.defineId(PregnantSmilodon.class, FAEntityDataSerializers.CHROMOSOME.get());
 
     public PregnantSmilodon(EntityType<? extends Smilodon> entityType, Level level) {
         super(entityType, level);
@@ -44,11 +46,6 @@ public class PregnantSmilodon extends Smilodon implements PregnantAnimal<Smilodo
     @Override
     public boolean canBreed() {
         return false;
-    }
-
-    @Override
-    public Level getLevel() {
-        return this.level();
     }
 
     @Override
@@ -84,9 +81,9 @@ public class PregnantSmilodon extends Smilodon implements PregnantAnimal<Smilodo
     }
 
     @Override
-    public boolean saveChromosomes(CompoundTag compoundTag) {
+    public boolean save(CompoundTag compoundTag) {
         this.addPregnancyData(compoundTag, this.registryAccess());
-        return super.saveChromosomes(compoundTag);
+        return super.save(compoundTag);
     }
 
     @Override
@@ -104,7 +101,7 @@ public class PregnantSmilodon extends Smilodon implements PregnantAnimal<Smilodo
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        this.definePregnancyData(builder, this.registryAccess(), PREGNANCY_TIME, PREGNANCY_TYPE, OFFSPRING_MODEL_TYPE, OFFSPRING_SKIN, OFFSPRING_PATTERN);
+        this.definePregnancyData(builder, this.registryAccess(), PREGNANCY_TIME, PREGNANCY_TYPE, CHROMOSOME_1, CHROMOSOME_2);
     }
 
     @Override
@@ -127,34 +124,25 @@ public class PregnantSmilodon extends Smilodon implements PregnantAnimal<Smilodo
         this.entityData.set(PREGNANCY_TYPE, pregnancyType);
     }
 
+
     @Override
-    public Holder<ModelGene> getOffspringModelType() {
-        return this.entityData.get(OFFSPRING_MODEL_TYPE);
+    public Chromosome getOffspringChromosome1() {
+        return this.entityData.get(CHROMOSOME_1);
     }
 
     @Override
-    public void setOffspringModelType(Holder<ModelGene> coatTypeHolder) {
-        this.entityData.set(OFFSPRING_MODEL_TYPE, coatTypeHolder);
+    public void setOffspringChromosome1(Chromosome chromosome) {
+        this.entityData.set(CHROMOSOME_1, chromosome);
     }
 
     @Override
-    public void setOffspringSkin(Holder<PatternGene> pattern) {
-        this.entityData.set(OFFSPRING_SKIN, pattern);
+    public Chromosome getOffspringChromosome2() {
+        return this.entityData.get(CHROMOSOME_2);
     }
 
     @Override
-    public Holder<PatternGene> getOffspringSkin() {
-        return this.entityData.get(OFFSPRING_SKIN);
-    }
-
-    @Override
-    public void setOffspringPattern(Holder<PatternGene> pattern) {
-        this.entityData.set(OFFSPRING_PATTERN, pattern);
-    }
-
-    @Override
-    public Holder<PatternGene> getOffspringPattern() {
-        return this.entityData.get(OFFSPRING_PATTERN);
+    public void setOffspringChromosome2(Chromosome chromosome) {
+        this.entityData.set(CHROMOSOME_2, chromosome);
     }
 
     @Override

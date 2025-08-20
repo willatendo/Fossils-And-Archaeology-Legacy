@@ -6,7 +6,6 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.KeyDispatchDataCodec;
 import net.minecraft.util.RandomSource;
 import willatendo.fossilslegacy.server.gene.InheritedGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
@@ -21,8 +20,8 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public final class InheritanceRules {
-    public static final SimpleRegistry<KeyDispatchDataCodec<? extends InheritanceRules.RuleSource>> RULE_SOURCES = SimpleRegistry.create(FARegistries.INHERITANCE_RULE, FAUtils.ID);
-    public static final SimpleRegistry<KeyDispatchDataCodec<? extends InheritanceRules.ConditionSource>> RULE_CONDITIONS = SimpleRegistry.create(FARegistries.INHERITANCE_CONDITION, FAUtils.ID);
+    public static final SimpleRegistry<MapCodec<? extends InheritanceRules.RuleSource>> RULE_SOURCES = SimpleRegistry.create(FARegistries.INHERITANCE_RULE, FAUtils.ID);
+    public static final SimpleRegistry<MapCodec<? extends InheritanceRules.ConditionSource>> RULE_CONDITIONS = SimpleRegistry.create(FARegistries.INHERITANCE_CONDITION, FAUtils.ID);
 
     static {
         RULE_SOURCES.register("always", () -> InheritanceRules.AlwaysRuleSource.CODEC);
@@ -76,19 +75,19 @@ public final class InheritanceRules {
     }
 
     public interface RuleSource extends Function<Holder<? extends InheritedGene>, InheritanceRules.InheritanceRule> {
-        Codec<RuleSource> CODEC = FABuiltInRegistries.INHERITANCE_RULE.byNameCodec().dispatch(ruleSource -> ruleSource.codec().codec(), Function.identity());
+        Codec<InheritanceRules.RuleSource> CODEC = FABuiltInRegistries.INHERITANCE_RULE.byNameCodec().dispatch(InheritanceRules.RuleSource::codec, Function.identity());
 
-        KeyDispatchDataCodec<? extends RuleSource> codec();
+        MapCodec<? extends InheritanceRules.RuleSource> codec();
     }
 
     public interface InheritanceRule {
-        InheritedGene tryApply(RandomSource randomSource, InheritedGene mom, InheritedGene dad);
+        boolean tryApply(RandomSource randomSource, InheritedGene mom, InheritedGene dad);
     }
 
     public interface ConditionSource extends Function<Holder<? extends InheritedGene>, InheritanceRules.Condition> {
-        Codec<InheritanceRules.ConditionSource> CODEC = FABuiltInRegistries.INHERITANCE_CONDITION.byNameCodec().dispatch(conditionSource -> conditionSource.codec().codec(), Function.identity());
+        Codec<InheritanceRules.ConditionSource> CODEC = FABuiltInRegistries.INHERITANCE_CONDITION.byNameCodec().dispatch(InheritanceRules.ConditionSource::codec, Function.identity());
 
-        KeyDispatchDataCodec<? extends InheritanceRules.ConditionSource> codec();
+        MapCodec<? extends InheritanceRules.ConditionSource> codec();
     }
 
     public interface Condition {
@@ -96,10 +95,10 @@ public final class InheritanceRules {
     }
 
     record TestRuleSource(InheritanceRules.ConditionSource ifTrue, InheritanceRules.RuleSource thenRun) implements InheritanceRules.RuleSource {
-        static final KeyDispatchDataCodec<InheritanceRules.TestRuleSource> CODEC = KeyDispatchDataCodec.of(RecordCodecBuilder.mapCodec((instance) -> instance.group(ConditionSource.CODEC.fieldOf("if_true").forGetter(TestRuleSource::ifTrue), RuleSource.CODEC.fieldOf("then_run").forGetter(TestRuleSource::thenRun)).apply(instance, TestRuleSource::new)));
+        static final MapCodec<InheritanceRules.TestRuleSource> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(ConditionSource.CODEC.fieldOf("if_true").forGetter(TestRuleSource::ifTrue), RuleSource.CODEC.fieldOf("then_run").forGetter(TestRuleSource::thenRun)).apply(instance, TestRuleSource::new));
 
         @Override
-        public KeyDispatchDataCodec<? extends InheritanceRules.TestRuleSource> codec() {
+        public MapCodec<? extends InheritanceRules.TestRuleSource> codec() {
             return CODEC;
         }
 
@@ -112,26 +111,26 @@ public final class InheritanceRules {
     public enum RandomRuleSource implements InheritanceRules.RuleSource {
         INSTANCE;
 
-        static final KeyDispatchDataCodec<InheritanceRules.RandomRuleSource> CODEC = KeyDispatchDataCodec.of(MapCodec.unit(INSTANCE));
+        static final MapCodec<InheritanceRules.RandomRuleSource> CODEC = MapCodec.unit(INSTANCE);
 
         @Override
-        public KeyDispatchDataCodec<? extends InheritanceRules.RandomRuleSource> codec() {
+        public MapCodec<? extends InheritanceRules.RandomRuleSource> codec() {
             return CODEC;
         }
 
         @Override
         public InheritanceRules.InheritanceRule apply(Holder<? extends InheritedGene> inheritedGene) {
-            return new InheritanceRules.RandomRule();
+            return new InheritanceRules.RandomRule(inheritedGene.value());
         }
     }
 
     public enum AlwaysRuleSource implements InheritanceRules.RuleSource {
         INSTANCE;
 
-        static final KeyDispatchDataCodec<InheritanceRules.AlwaysRuleSource> CODEC = KeyDispatchDataCodec.of(MapCodec.unit(INSTANCE));
+        static final MapCodec<InheritanceRules.AlwaysRuleSource> CODEC = MapCodec.unit(INSTANCE);
 
         @Override
-        public KeyDispatchDataCodec<? extends InheritanceRules.AlwaysRuleSource> codec() {
+        public MapCodec<? extends InheritanceRules.AlwaysRuleSource> codec() {
             return CODEC;
         }
 
@@ -142,10 +141,10 @@ public final class InheritanceRules {
     }
 
     public record SequenceRuleSource(List<InheritanceRules.RuleSource> sequence) implements InheritanceRules.RuleSource {
-        public static final KeyDispatchDataCodec<InheritanceRules.SequenceRuleSource> CODEC = KeyDispatchDataCodec.of(RuleSource.CODEC.listOf().xmap(InheritanceRules.SequenceRuleSource::new, InheritanceRules.SequenceRuleSource::sequence).fieldOf("sequence"));
+        public static final MapCodec<InheritanceRules.SequenceRuleSource> CODEC = RuleSource.CODEC.listOf().xmap(InheritanceRules.SequenceRuleSource::new, InheritanceRules.SequenceRuleSource::sequence).fieldOf("sequence");
 
         @Override
-        public KeyDispatchDataCodec<? extends RuleSource> codec() {
+        public MapCodec<? extends RuleSource> codec() {
             return CODEC;
         }
 
@@ -167,25 +166,25 @@ public final class InheritanceRules {
 
     record SequenceRule(List<InheritanceRules.InheritanceRule> rules) implements InheritanceRules.InheritanceRule {
         @Override
-        public InheritedGene tryApply(RandomSource randomSource, InheritedGene mom, InheritedGene dad) {
+        public boolean tryApply(RandomSource randomSource, InheritedGene mom, InheritedGene dad) {
             Iterator<InheritanceRules.InheritanceRule> iterator = this.rules.iterator();
 
-            InheritedGene inheritedGene;
+            boolean applies;
             do {
                 if (!iterator.hasNext()) {
-                    return null;
+                    return false;
                 }
 
                 InheritanceRules.InheritanceRule inheritanceRule = iterator.next();
-                inheritedGene = inheritanceRule.tryApply(randomSource, mom, mom);
-            } while (inheritedGene == null);
+                applies = inheritanceRule.tryApply(randomSource, mom, mom);
+            } while (!applies);
 
-            return inheritedGene;
+            return applies;
         }
     }
 
     public static final class SkinGeneConditionSource implements InheritanceRules.ConditionSource {
-        static final KeyDispatchDataCodec<InheritanceRules.SkinGeneConditionSource> CODEC = KeyDispatchDataCodec.of(ResourceKey.codec(FARegistries.SKIN_GENE).listOf().fieldOf("skin_gene_is").xmap(InheritanceRules::isSkinGene, skinGeneConditionSource -> skinGeneConditionSource.skinGenes));
+        static final MapCodec<InheritanceRules.SkinGeneConditionSource> CODEC = ResourceKey.codec(FARegistries.SKIN_GENE).listOf().fieldOf("skin_gene_is").xmap(InheritanceRules::isSkinGene, skinGeneConditionSource -> skinGeneConditionSource.skinGenes);
         private final List<ResourceKey<SkinGene>> skinGenes;
         final Predicate<ResourceKey<SkinGene>> skinGeneNameTest;
 
@@ -197,13 +196,13 @@ public final class InheritanceRules {
         }
 
         @Override
-        public KeyDispatchDataCodec<? extends InheritanceRules.ConditionSource> codec() {
+        public MapCodec<? extends InheritanceRules.ConditionSource> codec() {
             return CODEC;
         }
 
         @Override
         public InheritanceRules.Condition apply(Holder<? extends InheritedGene> inheritedGene) {
-            class SkinGeneCondition implements Condition {
+            class SkinGeneCondition implements InheritanceRules.Condition {
                 @Override
                 public boolean test() {
                     if (inheritedGene.value() instanceof SkinGene) {
@@ -244,7 +243,7 @@ public final class InheritanceRules {
     }
 
     public static final class PatternGeneConditionSource implements InheritanceRules.ConditionSource {
-        static final KeyDispatchDataCodec<InheritanceRules.PatternGeneConditionSource> CODEC = KeyDispatchDataCodec.of(ResourceKey.codec(FARegistries.PATTERN_GENE).listOf().fieldOf("pattern_gene_is").xmap(InheritanceRules::isPatternGene, skinGeneConditionSource -> skinGeneConditionSource.patternGenes));
+        static final MapCodec<InheritanceRules.PatternGeneConditionSource> CODEC = ResourceKey.codec(FARegistries.PATTERN_GENE).listOf().fieldOf("pattern_gene_is").xmap(InheritanceRules::isPatternGene, skinGeneConditionSource -> skinGeneConditionSource.patternGenes);
         private final List<ResourceKey<PatternGene>> patternGenes;
         final Predicate<ResourceKey<PatternGene>> patternGeneNameTest;
 
@@ -256,13 +255,13 @@ public final class InheritanceRules {
         }
 
         @Override
-        public KeyDispatchDataCodec<? extends InheritanceRules.ConditionSource> codec() {
+        public MapCodec<? extends InheritanceRules.ConditionSource> codec() {
             return CODEC;
         }
 
         @Override
         public InheritanceRules.Condition apply(Holder<? extends InheritedGene> inheritedGene) {
-            class PatternGeneCondition implements Condition {
+            class PatternGeneCondition implements InheritanceRules.Condition {
                 @Override
                 public boolean test() {
                     if (inheritedGene.value() instanceof PatternGene) {
@@ -303,7 +302,7 @@ public final class InheritanceRules {
     }
 
     record NotConditionSource(InheritanceRules.ConditionSource target) implements InheritanceRules.ConditionSource {
-        static final KeyDispatchDataCodec<InheritanceRules.NotConditionSource> CODEC = KeyDispatchDataCodec.of(InheritanceRules.ConditionSource.CODEC.xmap(InheritanceRules.NotConditionSource::new, InheritanceRules.NotConditionSource::target).fieldOf("invert"));
+        static final MapCodec<InheritanceRules.NotConditionSource> CODEC = InheritanceRules.ConditionSource.CODEC.xmap(InheritanceRules.NotConditionSource::new, InheritanceRules.NotConditionSource::target).fieldOf("invert");
 
         @Override
         public InheritanceRules.Condition apply(Holder<? extends InheritedGene> holder) {
@@ -311,7 +310,7 @@ public final class InheritanceRules {
         }
 
         @Override
-        public KeyDispatchDataCodec<? extends ConditionSource> codec() {
+        public MapCodec<? extends ConditionSource> codec() {
             return CODEC;
         }
     }
@@ -324,24 +323,24 @@ public final class InheritanceRules {
         }
     }
 
-    record RandomRule() implements InheritanceRules.InheritanceRule {
+    record RandomRule(InheritedGene inheritedGene) implements InheritanceRules.InheritanceRule {
         @Override
-        public InheritedGene tryApply(RandomSource randomSource, InheritedGene mom, InheritedGene dad) {
-            return randomSource.nextInt(2) == 0 ? mom : dad;
+        public boolean tryApply(RandomSource randomSource, InheritedGene mom, InheritedGene dad) {
+            return this.inheritedGene == (randomSource.nextInt(2) == 0 ? mom : dad);
         }
     }
 
     record AlwaysRule(InheritedGene inheritedGene) implements InheritanceRules.InheritanceRule {
         @Override
-        public InheritedGene tryApply(RandomSource randomSource, InheritedGene mom, InheritedGene dad) {
-            return this.inheritedGene;
+        public boolean tryApply(RandomSource randomSource, InheritedGene mom, InheritedGene dad) {
+            return true;
         }
     }
 
     record TestRule(InheritanceRules.Condition condition, InheritanceRules.InheritanceRule followUp) implements InheritanceRules.InheritanceRule {
         @Override
-        public InheritedGene tryApply(RandomSource randomSource, InheritedGene mom, InheritedGene dad) {
-            return !this.condition.test() ? null : this.followUp.tryApply(randomSource, mom, dad);
+        public boolean tryApply(RandomSource randomSource, InheritedGene mom, InheritedGene dad) {
+            return this.condition.test() && this.followUp.tryApply(randomSource, mom, dad);
         }
     }
 }

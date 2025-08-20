@@ -8,7 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityDimensions;
 import willatendo.fossilslegacy.server.gene.Chromosome;
-import willatendo.fossilslegacy.server.gene.cosmetics.FAPatterns;
+import willatendo.fossilslegacy.server.gene.cosmetics.FAPatternGenes;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
@@ -31,15 +31,15 @@ public interface ChromosomedEntity {
     void setChromosome2(Chromosome chromosome);
 
     default Holder<ModelGene> getModelGene(Registry<ModelGene> modelGeneRegistry) {
-        return modelGeneRegistry.getOrThrow(this.getChromosome1().getCosmeticGeneHolder().modelGene());
+        return modelGeneRegistry.getOrThrow(this.getChromosome1().cosmeticGeneHolder().modelGene());
     }
 
     default Holder<SkinGene> getSkinGene(Registry<SkinGene> skinGeneRegistry) {
-        return skinGeneRegistry.getOrThrow(this.getChromosome1().getCosmeticGeneHolder().skinGene());
+        return skinGeneRegistry.getOrThrow(this.getChromosome1().cosmeticGeneHolder().skinGene());
     }
 
     default Holder<PatternGene> getPatternGene(Registry<PatternGene> modelGeneRegistry) {
-        return this.getChromosome1().getCosmeticGeneHolder().patternGene().map(modelGeneRegistry::getOrThrow).orElse(modelGeneRegistry.getOrThrow(FAPatterns.BLANK));
+        return this.getChromosome1().cosmeticGeneHolder().patternGene().map(modelGeneRegistry::getOrThrow).orElse(modelGeneRegistry.getOrThrow(FAPatternGenes.BLANK));
     }
 
     default void saveChromosomes(CompoundTag compoundTag) {
@@ -57,13 +57,13 @@ public interface ChromosomedEntity {
     }
 
     default Component getOverridenName(Component defaultName, HolderLookup.Provider registries) {
-        ModelGene modelGene = this.getChromosome1().getCosmeticGeneHolder().modelGene(registries).value();
+        ModelGene modelGene = this.getChromosome1().cosmeticGeneHolder().modelGene(registries).value();
         Optional<ModelGene.OverrideInfo> overrideInfo = modelGene.overrideInfo();
         return (overrideInfo.isPresent() && overrideInfo.get().animalName().isPresent()) ? overrideInfo.get().animalName().get() : defaultName;
     }
 
     default SoundEvent getOverridenSoundEvent(SoundEvent defaultSoundEvent, ModelGene.OverrideInfo.OverridenSoundType overridenSoundType, HolderLookup.Provider registries) {
-        ModelGene modelGene = this.getChromosome1().getCosmeticGeneHolder().modelGene(registries).value();
+        ModelGene modelGene = this.getChromosome1().cosmeticGeneHolder().modelGene(registries).value();
         Optional<ModelGene.OverrideInfo> overrideInfoOptional = modelGene.overrideInfo();
         if (overrideInfoOptional.isEmpty()) {
             return defaultSoundEvent;
@@ -85,7 +85,7 @@ public interface ChromosomedEntity {
     }
 
     default EntityDimensions getEntityDimensions(int growthStage, HolderLookup.Provider registries) {
-        ModelGene modelGene = this.getChromosome1().getCosmeticGeneHolder().modelGene(registries).value();
+        ModelGene modelGene = this.getChromosome1().cosmeticGeneHolder().modelGene(registries).value();
         ModelGene.BoundingBoxInfo boundingBoxInfo = modelGene.boundingBoxInfo();
         return EntityDimensions.scalable(boundingBoxInfo.boundingBoxWidth() + (boundingBoxInfo.boundingBoxGrowth() * growthStage), boundingBoxInfo.boundingBoxHeight() + (boundingBoxInfo.boundingBoxGrowth() * growthStage));
     }
