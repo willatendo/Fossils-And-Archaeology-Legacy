@@ -12,34 +12,9 @@
       "type": "fossilslegacy:sequence",
       "sequence": [
         {
-          "type": "fossilslegacy:condition",
-          "if_true": {
-            "type": "fossilslegacy:is_entity_type",
-            "entity_type_is": [
-              "fossilslegacy:ankylosaurus"
-            ]
-          },
-          "then_run": {
-            "type": "fossilslegacy:sequence",
-            "sequence": [
-              {
-                "type": "fossilslegacy:condition",
-                "if_true": {
-                  "type": "fossilslegacy:is_baby"
-                },
-                "then_run": {
-                  "type": "fossilslegacy:composite_texture",
-                  "layer": "layer0",
-                  "texture_name": "amazon_rainforest_baby"
-                }
-              },
-              {
-                "type": "fossilslegacy:composite_texture",
-                "layer": "layer0",
-                "texture_name": "amazon_rainforest_adult"
-              }
-            ]
-          }
+          "type": "fossilslegacy:composite_texture",
+          "layer": "layer0",
+          "texture_name": "amazon_rainforest"
         }
       ]
     }

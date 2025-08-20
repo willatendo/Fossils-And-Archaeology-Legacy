@@ -111,18 +111,7 @@ public final class FASkinGenes {
                         0x479678,
                         InheritanceRules.always(),
                         CompositeTextureRules.sequence(
-                                CompositeTextureRules.ifTrue(
-                                        CompositeTextureRules.isEntity(
-                                                FAEntityTypeReferences.ANKYLOSAURUS
-                                        ),
-                                        CompositeTextureRules.sequence(
-                                                CompositeTextureRules.ifTrue(
-                                                        CompositeTextureRules.isBaby(),
-                                                        CompositeTextureRules.layer0("amazon_rainforest_baby")
-                                                ),
-                                                CompositeTextureRules.layer0("amazon_rainforest_adult")
-                                        )
-                                )
+                                CompositeTextureRules.layer0("amazon_rainforest")
                         )
                 )
         );
@@ -133,7 +122,9 @@ public final class FASkinGenes {
                         FAUtils.translation("skin", "champlain_valley"),
                         0x654920,
                         InheritanceRules.always(),
-                        CompositeTextureRules.sequence()
+                        CompositeTextureRules.sequence(
+                                CompositeTextureRules.layer0("champlain_valley")
+                        )
                 )
         );
         FASkinGenes.register(
@@ -143,7 +134,9 @@ public final class FASkinGenes {
                         FAUtils.translation("skin", "death_valley"),
                         0xAD8811,
                         InheritanceRules.always(),
-                        CompositeTextureRules.sequence()
+                        CompositeTextureRules.sequence(
+                                CompositeTextureRules.layer0("death_valley")
+                        )
                 )
         );
         FASkinGenes.register(
@@ -153,7 +146,9 @@ public final class FASkinGenes {
                         FAUtils.translation("skin", "gambia_river_basin"),
                         0x6C6665,
                         InheritanceRules.always(),
-                        CompositeTextureRules.sequence()
+                        CompositeTextureRules.sequence(
+                                CompositeTextureRules.layer0("gambia_river_basin")
+                        )
                 )
         );
         FASkinGenes.register(
@@ -163,7 +158,9 @@ public final class FASkinGenes {
                         FAUtils.translation("skin", "great_sandy_desert"),
                         0x5E6747,
                         InheritanceRules.always(),
-                        CompositeTextureRules.sequence()
+                        CompositeTextureRules.sequence(
+                                CompositeTextureRules.layer0("great_sandy_desert")
+                        )
                 )
         );
         FASkinGenes.register(
@@ -173,7 +170,9 @@ public final class FASkinGenes {
                         FAUtils.translation("skin", "limpopo_river"),
                         0x4A331A,
                         InheritanceRules.always(),
-                        CompositeTextureRules.sequence()
+                        CompositeTextureRules.sequence(
+                                CompositeTextureRules.layer0("limpopo_river")
+                        )
                 )
         );
         FASkinGenes.register(
@@ -183,7 +182,9 @@ public final class FASkinGenes {
                         FAUtils.translation("skin", "mangrove_forest"),
                         0x5B753D,
                         InheritanceRules.always(),
-                        CompositeTextureRules.sequence()
+                        CompositeTextureRules.sequence(
+                                CompositeTextureRules.layer0("mangrove_forest")
+                        )
                 )
         );
         FASkinGenes.register(
@@ -193,7 +194,9 @@ public final class FASkinGenes {
                         FAUtils.translation("skin", "qilian_mountains"),
                         0xA9A191,
                         InheritanceRules.always(),
-                        CompositeTextureRules.sequence()
+                        CompositeTextureRules.sequence(
+                                CompositeTextureRules.layer0("qilian_mountains")
+                        )
                 )
         );
         FASkinGenes.register(
@@ -203,7 +206,9 @@ public final class FASkinGenes {
                         FAUtils.translation("skin", "salar_del_huasco"),
                         0x4A4018,
                         InheritanceRules.always(),
-                        CompositeTextureRules.sequence()
+                        CompositeTextureRules.sequence(
+                                CompositeTextureRules.layer0("salar_del_huasco")
+                        )
                 )
         );
         FASkinGenes.register(
@@ -213,7 +218,9 @@ public final class FASkinGenes {
                         FAUtils.translation("skin", "sonoran_desert"),
                         0xB4813E,
                         InheritanceRules.always(),
-                        CompositeTextureRules.sequence()
+                        CompositeTextureRules.sequence(
+                                CompositeTextureRules.layer0("sonoran_desert")
+                        )
                 )
         );
         FASkinGenes.register(
@@ -223,7 +230,9 @@ public final class FASkinGenes {
                         FAUtils.translation("skin", "svalbard"),
                         0x837B53,
                         InheritanceRules.always(),
-                        CompositeTextureRules.sequence()
+                        CompositeTextureRules.sequence(
+                                CompositeTextureRules.layer0("svalbard")
+                        )
                 )
         );
         FASkinGenes.register(
@@ -233,7 +242,9 @@ public final class FASkinGenes {
                         FAUtils.translation("skin", "yukon_river"),
                         0x88724D,
                         InheritanceRules.always(),
-                        CompositeTextureRules.sequence()
+                        CompositeTextureRules.sequence(
+                                CompositeTextureRules.layer0("yukon_river")
+                        )
                 )
         );
 

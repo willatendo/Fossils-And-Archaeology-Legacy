@@ -10,7 +10,13 @@
     "type": "fossilslegacy:composite",
     "texture_rules": {
       "type": "fossilslegacy:sequence",
-      "sequence": []
+      "sequence": [
+        {
+          "type": "fossilslegacy:composite_texture",
+          "layer": "layer0",
+          "texture_name": "limpopo_river"
+        }
+      ]
     }
   }
 }

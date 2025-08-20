@@ -8,8 +8,11 @@ import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
 
 public class ChromosomedEntityRenderState extends LivingEntityRenderState {
+    public boolean hasBabyEyes = true;
+    public boolean hasAggressiveEyes = false;
     public EntityType<?> type;
     public Holder<ModelGene> modelGene;
     public Holder<SkinGene> skinGene;
     public Holder<PatternGene> patternGene;
+    public boolean isBaby;
 }

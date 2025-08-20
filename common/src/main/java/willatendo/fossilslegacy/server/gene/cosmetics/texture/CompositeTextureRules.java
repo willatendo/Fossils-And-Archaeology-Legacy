@@ -294,7 +294,15 @@ public final class CompositeTextureRules {
     record PathRule(String layer, String textureName) implements CompositeTextureRules.TextureRule {
         @Override
         public TextureInformation tryApply(ChromosomedEntityRenderState chromosomedEntityRenderState, ResourceLocation path) {
-            return TextureInformation.simple(path.withSuffix("/" + this.layer + "/" + this.textureName + ".png"), path.withSuffix("/eyes/adult.png"), path.withSuffix("/eyes/closed.png"));
+            String eye = "adult";
+            if (chromosomedEntityRenderState instanceof DinosaurRenderState dinosaurRenderState) {
+                if (chromosomedEntityRenderState.hasAggressiveEyes && !dinosaurRenderState.isBaby && !dinosaurRenderState.isTame) {
+                    eye = "aggressive";
+                } else if (chromosomedEntityRenderState.hasBabyEyes && dinosaurRenderState.isBaby) {
+                    eye = "baby";
+                }
+            }
+            return TextureInformation.simple(path.withSuffix("/" + this.layer + "/" + this.textureName + ".png"), path.withSuffix("/eyes/" + eye + ".png"), path.withSuffix("/eyes/closed.png"));
         }
     }
 

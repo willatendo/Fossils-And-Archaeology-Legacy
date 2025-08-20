@@ -51,6 +51,7 @@ public abstract class DataDrivenModelMobRenderer<T extends Mob & ChromosomedEnti
         chromosomedEntityRenderState.modelGene = mob.getModelGene(mob.registryAccess().lookupOrThrow(FARegistries.MODEL_GENE));
         chromosomedEntityRenderState.skinGene = mob.getSkinGene(mob.registryAccess().lookupOrThrow(FARegistries.SKIN_GENE));
         chromosomedEntityRenderState.patternGene = mob.getPatternGene(mob.registryAccess().lookupOrThrow(FARegistries.PATTERN_GENE));
+        chromosomedEntityRenderState.isBaby = mob.isBaby();
     }
 
     @Override

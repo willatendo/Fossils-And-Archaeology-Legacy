@@ -9,6 +9,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ARGB;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
+import willatendo.fossilslegacy.client.render.layer.EyeLayer;
 import willatendo.fossilslegacy.client.render.layer.PatternLayer;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
@@ -19,7 +20,6 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.WetFurEntity;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.texture.TextureInformation;
-import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.Optional;
@@ -29,10 +29,16 @@ public abstract class DataDrivenModelDinosaurRenderer<T extends Dinosaur & Chrom
 
     public DataDrivenModelDinosaurRenderer(EntityRendererProvider.Context context, float shadowSize) {
         super(context, null, shadowSize);
+        this.addLayer(new EyeLayer<>(this));
         this.addLayer(new PatternLayer<>(this));
     }
 
     public abstract ResourceLocation getBasePath();
+
+    public TextureInformation getTextureInformation(S dinosaurRenderState) {
+        TextureInformation textureInformation = dinosaurRenderState.skinGene.value().textures().apply(dinosaurRenderState, this.getBasePath());
+        return textureInformation.texture().isPresent() ? textureInformation : TextureInformation.empty();
+    }
 
     protected ResourceLocation createPath(String name) {
         return FAUtils.resource("textures/entity/" + name);
@@ -76,6 +82,7 @@ public abstract class DataDrivenModelDinosaurRenderer<T extends Dinosaur & Chrom
         dinosaurRenderState.renderScaleHeight = dinosaur.renderScaleHeight();
         dinosaurRenderState.isMoving = dinosaur.getDeltaMovement().horizontalDistanceSqr() > 1.0E-7;
         dinosaurRenderState.isTranquilized = dinosaur.isTranquilized();
+        dinosaurRenderState.isBaby = dinosaur.isBaby();
         if (dinosaur instanceof WetFurEntity wetFurEntity) {
             dinosaurRenderState.isWet = wetFurEntity.isWet();
             dinosaurRenderState.wetShade = wetFurEntity.getWetShade(partialTick);
@@ -128,8 +135,7 @@ public abstract class DataDrivenModelDinosaurRenderer<T extends Dinosaur & Chrom
 
     @Override
     public ResourceLocation getTextureLocation(S dinosaurRenderState) {
-        SkinGene skinGene = dinosaurRenderState.skinGene.value();
-        TextureInformation textureInformation = skinGene.textures().apply(dinosaurRenderState, this.getBasePath());
+        TextureInformation textureInformation = this.getTextureInformation(dinosaurRenderState);
         return textureInformation.texture().isPresent() ? textureInformation.texture().get() : null;
     }
 }
