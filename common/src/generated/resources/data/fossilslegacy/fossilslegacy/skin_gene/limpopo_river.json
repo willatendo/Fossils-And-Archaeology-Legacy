@@ -1,0 +1,16 @@
+{
+  "gene_color": 4862746,
+  "inheritance_rule": {
+    "type": "fossilslegacy:always"
+  },
+  "skin_name": {
+    "translate": "skin.fossilslegacy.limpopo_river"
+  },
+  "textures": {
+    "type": "fossilslegacy:composite",
+    "texture_rules": {
+      "type": "fossilslegacy:sequence",
+      "sequence": []
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "gene_color": 4866072,
+  "inheritance_rule": {
+    "type": "fossilslegacy:always"
+  },
+  "skin_name": {
+    "translate": "skin.fossilslegacy.salar_del_huasco"
+  },
+  "textures": {
+    "type": "fossilslegacy:composite",
+    "texture_rules": {
+      "type": "fossilslegacy:sequence",
+      "sequence": []
+    }
+  }
+}

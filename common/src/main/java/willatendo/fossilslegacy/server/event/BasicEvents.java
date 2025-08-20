@@ -54,6 +54,7 @@ import willatendo.fossilslegacy.server.feeder_food.FeederFood;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 import willatendo.fossilslegacy.server.fuel.FuelEntry;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.item.FALootTables;
@@ -305,6 +306,7 @@ public final class BasicEvents {
         dynamicRegistryRegister.register(FARegistries.FUEL_ENTRY, FuelEntry.CODEC);
         dynamicRegistryRegister.register(FARegistries.JEWEL_RECOVERY, JewelRecovery.CODEC);
         dynamicRegistryRegister.register(FARegistries.MODEL_GENE, ModelGene.DIRECT_CODEC);
+        dynamicRegistryRegister.register(FARegistries.PATTERN_GENE, PatternGene.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.SKIN_GENE, SkinGene.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.STONE_TABLET_VARIANT, StoneTabletVariant.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.TEXTURE, TextureInformation.CODEC);

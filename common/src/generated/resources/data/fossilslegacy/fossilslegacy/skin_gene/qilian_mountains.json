@@ -1,0 +1,16 @@
+{
+  "gene_color": 11116945,
+  "inheritance_rule": {
+    "type": "fossilslegacy:always"
+  },
+  "skin_name": {
+    "translate": "skin.fossilslegacy.qilian_mountains"
+  },
+  "textures": {
+    "type": "fossilslegacy:composite",
+    "texture_rules": {
+      "type": "fossilslegacy:sequence",
+      "sequence": []
+    }
+  }
+}

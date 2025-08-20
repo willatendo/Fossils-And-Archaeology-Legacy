@@ -18,6 +18,7 @@ import willatendo.fossilslegacy.server.feature.FAFoliagePlacerTypes;
 import willatendo.fossilslegacy.server.feature.FATrunkPlacerTypes;
 import willatendo.fossilslegacy.server.fluid.FAFluids;
 import willatendo.fossilslegacy.server.gene.attributes.FAGenes;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.CompositeTextureRules;
 import willatendo.fossilslegacy.server.gene.cosmetics.texture.PackageTextureRules;
 import willatendo.fossilslegacy.server.gene.cosmetics.texture.type.FATextureTypes;
 import willatendo.fossilslegacy.server.gene.inheritance.InheritanceRules;
@@ -76,6 +77,8 @@ public final class FossilsLegacyMod {
         simpleRegistryRegister.register(InheritanceRules.RULE_CONDITIONS);
         simpleRegistryRegister.register(PackageTextureRules.RULE_SOURCES);
         simpleRegistryRegister.register(PackageTextureRules.RULE_CONDITIONS);
+        simpleRegistryRegister.register(CompositeTextureRules.RULE_SOURCES);
+        simpleRegistryRegister.register(CompositeTextureRules.RULE_CONDITIONS);
         simpleRegistryRegister.register(FAEntityTypes.ENTITY_TYPES);
         simpleRegistryRegister.register(FADataComponents.DATA_COMPONENT_TYPES);
         simpleRegistryRegister.register(FADinopediaLineTypes.DINOPEDIA_LINE_TYPES);

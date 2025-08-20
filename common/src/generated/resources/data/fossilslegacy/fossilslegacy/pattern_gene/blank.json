@@ -1,0 +1,15 @@
+{
+  "gene_color": 16777215,
+  "inheritance_rules": {
+    "type": "fossilslegacy:always"
+  },
+  "pattern_name": {
+    "translate": "pattern_gene.fossilslegacy.blank"
+  },
+  "textures": {
+    "type": "fossilslegacy:composite",
+    "texture_rules": {
+      "type": "fossilslegacy:blank"
+    }
+  }
+}

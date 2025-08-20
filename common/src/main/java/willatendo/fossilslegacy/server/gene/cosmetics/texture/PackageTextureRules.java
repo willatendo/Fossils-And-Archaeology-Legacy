@@ -46,11 +46,11 @@ public final class PackageTextureRules {
     }
 
     public static PackageTextureRules.SequenceRuleSource sequence(PackageTextureRules.RuleSource... rules) {
-        if (rules.length == 0) {
+        /*if (rules.length == 0) {
             throw new IllegalArgumentException("Need at least 1 rule for a sequence");
-        } else {
+        } else {*/
             return new PackageTextureRules.SequenceRuleSource(Arrays.asList(rules));
-        }
+        //}
     }
 
     public interface RuleSource extends Function<ChromosomedEntityRenderState, PackageTextureRules.TextureRule> {

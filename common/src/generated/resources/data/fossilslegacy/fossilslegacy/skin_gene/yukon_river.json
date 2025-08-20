@@ -1,0 +1,16 @@
+{
+  "gene_color": 8942157,
+  "inheritance_rule": {
+    "type": "fossilslegacy:always"
+  },
+  "skin_name": {
+    "translate": "skin.fossilslegacy.yukon_river"
+  },
+  "textures": {
+    "type": "fossilslegacy:composite",
+    "texture_rules": {
+      "type": "fossilslegacy:sequence",
+      "sequence": []
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "gene_color": 8616787,
+  "inheritance_rule": {
+    "type": "fossilslegacy:always"
+  },
+  "skin_name": {
+    "translate": "skin.fossilslegacy.svalbard"
+  },
+  "textures": {
+    "type": "fossilslegacy:composite",
+    "texture_rules": {
+      "type": "fossilslegacy:sequence",
+      "sequence": []
+    }
+  }
+}

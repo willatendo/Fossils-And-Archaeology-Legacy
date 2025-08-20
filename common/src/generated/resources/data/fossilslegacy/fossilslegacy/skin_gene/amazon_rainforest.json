@@ -1,0 +1,47 @@
+{
+  "gene_color": 4691576,
+  "inheritance_rule": {
+    "type": "fossilslegacy:always"
+  },
+  "skin_name": {
+    "translate": "skin.fossilslegacy.amazon_rainforest"
+  },
+  "textures": {
+    "type": "fossilslegacy:composite",
+    "texture_rules": {
+      "type": "fossilslegacy:sequence",
+      "sequence": [
+        {
+          "type": "fossilslegacy:condition",
+          "if_true": {
+            "type": "fossilslegacy:is_entity_type",
+            "entity_type_is": [
+              "fossilslegacy:ankylosaurus"
+            ]
+          },
+          "then_run": {
+            "type": "fossilslegacy:sequence",
+            "sequence": [
+              {
+                "type": "fossilslegacy:condition",
+                "if_true": {
+                  "type": "fossilslegacy:is_baby"
+                },
+                "then_run": {
+                  "type": "fossilslegacy:composite_texture",
+                  "layer": "layer0",
+                  "texture_name": "amazon_rainforest_baby"
+                }
+              },
+              {
+                "type": "fossilslegacy:composite_texture",
+                "layer": "layer0",
+                "texture_name": "amazon_rainforest_adult"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

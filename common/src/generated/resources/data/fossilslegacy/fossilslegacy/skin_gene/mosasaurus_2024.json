@@ -1,0 +1,16 @@
+{
+  "gene_color": 16777215,
+  "inheritance_rule": {
+    "type": "fossilslegacy:always"
+  },
+  "skin_name": {
+    "translate": "skin.fossilslegacy.marine_iguana"
+  },
+  "textures": {
+    "type": "fossilslegacy:package",
+    "texture_rules": {
+      "type": "fossilslegacy:sequence",
+      "sequence": []
+    }
+  }
+}

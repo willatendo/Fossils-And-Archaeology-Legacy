@@ -1,0 +1,27 @@
+{
+  "age_scale_info": {
+    "age_scale": 0.15,
+    "base_scale_height": 0.8,
+    "base_scale_width": 0.8,
+    "shadow_growth": 0.05,
+    "shadow_size": 0.5
+  },
+  "bounding_box_info": {
+    "bounding_box_growth": 0.15,
+    "bounding_box_height": 1.0,
+    "bounding_box_width": 1.0
+  },
+  "display_info": {
+    "display_scale": 2.0,
+    "display_y_offset": -0.5,
+    "geneColor": 12132864,
+    "model_name": {
+      "translate": "model_type.fossilslegacy.elasmotherium"
+    }
+  },
+  "models": {
+    "model": "fossilslegacy:elasmotherium"
+  },
+  "pattern_genes": "fossilslegacy:elasmotherium_2025",
+  "skin_genes": "fossilslegacy:elasmotherium_2025"
+}

@@ -1,0 +1,29 @@
+{
+  "age_scale_info": {
+    "age_scale": 0.2,
+    "base_scale_height": 0.8,
+    "base_scale_width": 0.8,
+    "shadow_growth": 0.075,
+    "shadow_size": 0.35
+  },
+  "bounding_box_info": {
+    "bounding_box_growth": 0.2,
+    "bounding_box_height": 0.5,
+    "bounding_box_width": 0.5
+  },
+  "display_info": {
+    "display_scale": 1.5,
+    "display_y_offset": 0.0,
+    "geneColor": 8150409,
+    "model_name": {
+      "translate": "model_type.fossilslegacy.legacy_pteranodon"
+    }
+  },
+  "models": {
+    "flying_model": "fossilslegacy:legacy_flying_pteranodon",
+    "landing_model": "fossilslegacy:legacy_landing_pteranodon",
+    "model": "fossilslegacy:legacy_pteranodon"
+  },
+  "pattern_genes": "fossilslegacy:pteranodon_2011",
+  "skin_genes": "fossilslegacy:pteranodon_2011"
+}

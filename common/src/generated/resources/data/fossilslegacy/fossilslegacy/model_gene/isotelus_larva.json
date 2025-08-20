@@ -1,0 +1,27 @@
+{
+  "age_scale_info": {
+    "age_scale": 0.0,
+    "base_scale_height": 1.0,
+    "base_scale_width": 1.0,
+    "shadow_growth": 0.0,
+    "shadow_size": 0.1
+  },
+  "bounding_box_info": {
+    "bounding_box_growth": 0.0,
+    "bounding_box_height": 0.15,
+    "bounding_box_width": 0.15
+  },
+  "display_info": {
+    "display_scale": 3.0,
+    "display_y_offset": -1.0,
+    "geneColor": 13346880,
+    "model_name": {
+      "translate": "model_type.fossilslegacy.isotelus_larva"
+    }
+  },
+  "models": {
+    "model": "fossilslegacy:isotelus_larva"
+  },
+  "pattern_genes": "fossilslegacy:isotelus_larva_2025",
+  "skin_genes": "fossilslegacy:isotelus_larva_2025"
+}

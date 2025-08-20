@@ -1,0 +1,43 @@
+{
+  "gene_color": 16777215,
+  "inheritance_rule": {
+    "type": "fossilslegacy:always"
+  },
+  "skin_name": {
+    "translate": "skin.fossilslegacy.eastern_brown_snake"
+  },
+  "textures": {
+    "type": "fossilslegacy:package",
+    "texture_rules": {
+      "type": "fossilslegacy:sequence",
+      "sequence": [
+        {
+          "type": "fossilslegacy:condition",
+          "if_true": {
+            "type": "fossilslegacy:is_baby"
+          },
+          "then_run": {
+            "type": "fossilslegacy:package_texture",
+            "texture": {
+              "eye_textures": {
+                "closed_eye_texture": "fossilslegacy:textures/entity/ankylosaurus/eyes/closed.png",
+                "eye_texture": "fossilslegacy:textures/entity/ankylosaurus/eyes/baby.png"
+              },
+              "texture": "fossilslegacy:textures/entity/ankylosaurus/ankylosaurus.png"
+            }
+          }
+        },
+        {
+          "type": "fossilslegacy:package_texture",
+          "texture": {
+            "eye_textures": {
+              "closed_eye_texture": "fossilslegacy:textures/entity/ankylosaurus/eyes/closed.png",
+              "eye_texture": "fossilslegacy:textures/entity/ankylosaurus/eyes/adult.png"
+            },
+            "texture": "fossilslegacy:textures/entity/ankylosaurus/ankylosaurus.png"
+          }
+        }
+      ]
+    }
+  }
+}

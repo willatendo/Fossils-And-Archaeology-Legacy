@@ -1,0 +1,17 @@
+{
+  "gene_color": 3678731,
+  "inheritance_rules": {
+    "type": "fossilslegacy:always"
+  },
+  "pattern_name": {
+    "translate": "pattern_gene.fossilslegacy.lithobates"
+  },
+  "textures": {
+    "type": "fossilslegacy:composite",
+    "texture_rules": {
+      "type": "fossilslegacy:composite_texture",
+      "layer": "layer1",
+      "texture_name": "lithobates"
+    }
+  }
+}

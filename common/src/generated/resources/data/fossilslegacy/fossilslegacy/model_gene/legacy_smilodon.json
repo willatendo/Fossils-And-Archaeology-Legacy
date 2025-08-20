@@ -1,0 +1,27 @@
+{
+  "age_scale_info": {
+    "age_scale": 0.14285715,
+    "base_scale_height": 1.0,
+    "base_scale_width": 1.0,
+    "shadow_growth": 0.05,
+    "shadow_size": 0.5
+  },
+  "bounding_box_info": {
+    "bounding_box_growth": 0.1,
+    "bounding_box_height": 0.75,
+    "bounding_box_width": 0.75
+  },
+  "display_info": {
+    "display_scale": 3.0,
+    "display_y_offset": -0.25,
+    "geneColor": 15705925,
+    "model_name": {
+      "translate": "model_type.fossilslegacy.legacy_smilodon"
+    }
+  },
+  "models": {
+    "model": "fossilslegacy:legacy_smilodon"
+  },
+  "pattern_genes": "fossilslegacy:smilodon_2011",
+  "skin_genes": "fossilslegacy:smilodon_2011"
+}

@@ -1,0 +1,27 @@
+{
+  "age_scale_info": {
+    "age_scale": 0.3,
+    "base_scale_height": 1.5,
+    "base_scale_width": 1.5,
+    "shadow_growth": 0.1,
+    "shadow_size": 0.75
+  },
+  "bounding_box_info": {
+    "bounding_box_growth": 0.3,
+    "bounding_box_height": 2.5,
+    "bounding_box_width": 1.75
+  },
+  "display_info": {
+    "display_scale": 0.35,
+    "display_y_offset": 8.0,
+    "geneColor": 3553616,
+    "model_name": {
+      "translate": "model_type.fossilslegacy.legacy_brachiosaurus"
+    }
+  },
+  "models": {
+    "model": "fossilslegacy:legacy_brachiosaurus"
+  },
+  "pattern_genes": "fossilslegacy:brachiosaurus_2011",
+  "skin_genes": "fossilslegacy:brachiosaurus_2011"
+}

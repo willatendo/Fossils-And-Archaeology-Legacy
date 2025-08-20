@@ -31,6 +31,7 @@ public final class CompositeTextureRules {
         RULE_SOURCES.register("sequence", () -> CompositeTextureRules.SequenceRuleSource.CODEC);
 
         RULE_CONDITIONS.register("is_baby", () -> CompositeTextureRules.IsBabyConditionSource.CODEC);
+        RULE_CONDITIONS.register("is_entity_type", () -> CompositeTextureRules.EntityTypeConditionSource.CODEC);
         RULE_CONDITIONS.register("not", () -> CompositeTextureRules.NotConditionSource.CODEC);
     }
 
@@ -71,11 +72,11 @@ public final class CompositeTextureRules {
     }
 
     public static CompositeTextureRules.SequenceRuleSource sequence(CompositeTextureRules.RuleSource... rules) {
-        if (rules.length == 0) {
+        /*if (rules.length == 0) {
             throw new IllegalArgumentException("Need at least 1 rule for a sequence");
-        } else {
-            return new CompositeTextureRules.SequenceRuleSource(Arrays.asList(rules));
-        }
+        } else {*/
+        return new CompositeTextureRules.SequenceRuleSource(Arrays.asList(rules));
+        //}
     }
 
     public interface RuleSource extends Function<ChromosomedEntityRenderState, CompositeTextureRules.TextureRule> {
