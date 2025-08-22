@@ -4,7 +4,7 @@
     "type": "fossilslegacy:always"
   },
   "skin_name": {
-    "translate": "skin.fossilslegacy.gambia_river_basin"
+    "translate": "skin_gene.fossilslegacy.gambia_river_basin"
   },
   "textures": {
     "type": "fossilslegacy:composite",

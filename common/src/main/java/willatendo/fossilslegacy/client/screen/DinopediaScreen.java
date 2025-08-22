@@ -17,12 +17,13 @@ import willatendo.fossilslegacy.server.dinopedia_entry.DinopediaEntry;
 import willatendo.fossilslegacy.server.dinopedia_entry.line.BuiltInDinopediaLines;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.registry.FARegistries;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DinopediaScreen extends Screen {
-    public static final ResourceLocation BOOK_LOCATION = ResourceLocation.withDefaultNamespace("textures/gui/book.png");
+    private static final ResourceLocation DINOPEDIA_TEXTURE = FAUtils.resource("textures/gui/container/dinopedia.png");
     private final List<DinopediaEntry> dinopediaEntries;
     private final Player player;
     private final LivingEntity livingEntity;
@@ -30,6 +31,8 @@ public class DinopediaScreen extends Screen {
     private int index = 0;
     private PageButton forwardButton;
     private PageButton backButton;
+    private int imageWidth = 280;
+    private int imageHeight = 180;
 
     public DinopediaScreen(Player player, LivingEntity livingEntity, DinopediaInformation dinopediaInformation) {
         super(GameNarrator.NO_TITLE);
@@ -47,8 +50,8 @@ public class DinopediaScreen extends Screen {
 
     @Override
     protected void init() {
-        int leftPos = (this.width - 192) / 2;
-        int topPos = (this.height / 2) - (182 / 2);
+        int leftPos = (this.width - this.imageWidth) / 2;
+        int topPos = (this.height / 2) - (this.imageHeight / 2);
         this.forwardButton = this.addRenderableWidget(new PageButton(leftPos + 116, topPos + 157, true, button -> {
             if (this.index + 1 < this.dinopediaEntries.size()) {
                 this.index++;
@@ -108,8 +111,8 @@ public class DinopediaScreen extends Screen {
 
         if (!this.dinopediaEntries.isEmpty()) {
             DinopediaEntry dinopediaEntry = this.dinopediaEntries.get(this.index);
-            int leftPos = (this.width - 192) / 2;
-            int topPos = (this.height / 2) - (182 / 2);
+            int leftPos = (this.width - this.imageWidth) / 2;
+            int topPos = (this.height / 2) - (this.imageHeight / 2);
 
             int textStart = 20;
 
@@ -142,7 +145,7 @@ public class DinopediaScreen extends Screen {
     private void drawCenteredStringMinusShadow(GuiGraphics guiGraphics, Font font, Component text, int x, int y, int color, boolean centered) {
         int drawX = x + 36;
         if (centered) {
-            drawX = x - (font.width(text) / 2) + (192 / 2);
+            drawX = x - (font.width(text) / 2) + (this.imageWidth / 2);
         }
         guiGraphics.drawString(font, text, drawX, y, color, false);
     }
@@ -150,6 +153,6 @@ public class DinopediaScreen extends Screen {
     @Override
     public void renderBackground(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         this.renderTransparentBackground(guiGraphics);
-        guiGraphics.blit(RenderType::guiTextured, BOOK_LOCATION, (this.width - 192) / 2, (this.height / 2) - (182 / 2), 0.0F, 0.0F, 192, 192, 256, 256);
+        guiGraphics.blit(RenderType::guiTextured, DINOPEDIA_TEXTURE, (this.width - this.imageWidth) / 2, (this.height / 2) - (this.imageHeight / 2), 0.0F, 0.0F, 280, 180, 512, 512);
     }
 }

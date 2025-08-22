@@ -4,6 +4,7 @@ import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FAPackets {
+    public static final ResourceLocation CLIENTBOUND_OPEN_DEBUG_GENETICS_SCREEN = FAUtils.resource("clientbound_open_debug_genetics_screen");
     public static final ResourceLocation CLIENTBOUND_OPEN_DINOPEDIA_SCREEN = FAUtils.resource("open_dinopedia_screen");
     public static final ResourceLocation CLIENTBOUND_OPEN_FOSSIL_SCREEN = FAUtils.resource("open_fossil_screen");
 

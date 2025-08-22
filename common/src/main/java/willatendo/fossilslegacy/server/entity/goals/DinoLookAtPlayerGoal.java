@@ -14,6 +14,6 @@ public class DinoLookAtPlayerGoal extends LookAtPlayerGoal {
 
     @Override
     public boolean canUse() {
-        return this.dinosaur != null ? !this.dinosaur.isTranquilized() && super.canUse() : super.canUse();
+        return !this.dinosaur.isTranquilized() && super.canUse();
     }
 }

@@ -4,7 +4,7 @@
     "type": "fossilslegacy:always"
   },
   "skin_name": {
-    "translate": "skin.fossilslegacy.qilian_mountains"
+    "translate": "skin_gene.fossilslegacy.qilian_mountains"
   },
   "textures": {
     "type": "fossilslegacy:composite",

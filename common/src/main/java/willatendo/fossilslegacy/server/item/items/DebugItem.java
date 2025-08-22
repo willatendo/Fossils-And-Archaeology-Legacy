@@ -1,11 +1,14 @@
 package willatendo.fossilslegacy.server.item.items;
 
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import willatendo.fossilslegacy.network.NetworkUtils;
+import willatendo.fossilslegacy.network.clientbound.ClientboundOpenDebugGeneticsScreenPacket;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 
 import java.util.function.BiFunction;
@@ -59,7 +62,12 @@ public class DebugItem extends Item {
     }
 
     public static BiFunction<Dinosaur, Player, InteractionResult> debugChangeGenetics() {
-        return (dinosaur, player) -> InteractionResult.SUCCESS;
+        return (dinosaur, player) -> {
+            if (player instanceof ServerPlayer serverPlayer) {
+                NetworkUtils.sendToClient(serverPlayer, new ClientboundOpenDebugGeneticsScreenPacket(dinosaur.getId()));
+            }
+            return InteractionResult.SUCCESS;
+        };
     }
 
     @Override

@@ -4,7 +4,7 @@
     "type": "fossilslegacy:always"
   },
   "skin_name": {
-    "translate": "skin.fossilslegacy.yukon_river"
+    "translate": "skin_gene.fossilslegacy.yukon_river"
   },
   "textures": {
     "type": "fossilslegacy:composite",

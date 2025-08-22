@@ -13,6 +13,6 @@ public class DinoRandomLookAroundGoal extends RandomLookAroundGoal {
 
     @Override
     public boolean canUse() {
-        return this.dinosaur != null ? !this.dinosaur.isTranquilized() && super.canUse() : super.canUse();
+        return !this.dinosaur.isTranquilized() && super.canUse();
     }
 }

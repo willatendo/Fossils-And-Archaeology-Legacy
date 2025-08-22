@@ -296,7 +296,9 @@ public final class CompositeTextureRules {
         public TextureInformation tryApply(ChromosomedEntityRenderState chromosomedEntityRenderState, ResourceLocation path) {
             String eye = "adult";
             if (chromosomedEntityRenderState instanceof DinosaurRenderState dinosaurRenderState) {
-                if (chromosomedEntityRenderState.hasAggressiveEyes && !dinosaurRenderState.isBaby && !dinosaurRenderState.isTame) {
+                if (dinosaurRenderState.isTranquilized) {
+                    eye = this.layer + "/" + this.textureName;
+                } else if (chromosomedEntityRenderState.hasAggressiveEyes && !dinosaurRenderState.isBaby && !dinosaurRenderState.isTame) {
                     eye = "aggressive";
                 } else if (chromosomedEntityRenderState.hasBabyEyes && dinosaurRenderState.isBaby) {
                     eye = "baby";

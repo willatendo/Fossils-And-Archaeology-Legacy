@@ -107,7 +107,7 @@ public final class FASkinGenes {
                 bootstrapContext,
                 AMAZON_RAINFOREST,
                 SkinGene.createComposite(
-                        FAUtils.translation("skin", "amazon_rainforest"),
+                        FAUtils.translation("skin_gene", "amazon_rainforest"),
                         0x479678,
                         InheritanceRules.always(),
                         CompositeTextureRules.sequence(
@@ -119,7 +119,7 @@ public final class FASkinGenes {
                 bootstrapContext,
                 CHAMPLAIN_VALLEY,
                 SkinGene.createComposite(
-                        FAUtils.translation("skin", "champlain_valley"),
+                        FAUtils.translation("skin_gene", "champlain_valley"),
                         0x654920,
                         InheritanceRules.always(),
                         CompositeTextureRules.sequence(
@@ -131,7 +131,7 @@ public final class FASkinGenes {
                 bootstrapContext,
                 DEATH_VALLEY,
                 SkinGene.createComposite(
-                        FAUtils.translation("skin", "death_valley"),
+                        FAUtils.translation("skin_gene", "death_valley"),
                         0xAD8811,
                         InheritanceRules.always(),
                         CompositeTextureRules.sequence(
@@ -143,7 +143,7 @@ public final class FASkinGenes {
                 bootstrapContext,
                 GAMBIA_RIVER_BASIN,
                 SkinGene.createComposite(
-                        FAUtils.translation("skin", "gambia_river_basin"),
+                        FAUtils.translation("skin_gene", "gambia_river_basin"),
                         0x6C6665,
                         InheritanceRules.always(),
                         CompositeTextureRules.sequence(
@@ -155,7 +155,7 @@ public final class FASkinGenes {
                 bootstrapContext,
                 GREAT_SANDY_DESERT,
                 SkinGene.createComposite(
-                        FAUtils.translation("skin", "great_sandy_desert"),
+                        FAUtils.translation("skin_gene", "great_sandy_desert"),
                         0x5E6747,
                         InheritanceRules.always(),
                         CompositeTextureRules.sequence(
@@ -167,7 +167,7 @@ public final class FASkinGenes {
                 bootstrapContext,
                 LIMPOPO_RIVER,
                 SkinGene.createComposite(
-                        FAUtils.translation("skin", "limpopo_river"),
+                        FAUtils.translation("skin_gene", "limpopo_river"),
                         0x4A331A,
                         InheritanceRules.always(),
                         CompositeTextureRules.sequence(
@@ -179,7 +179,7 @@ public final class FASkinGenes {
                 bootstrapContext,
                 MANGROVE_FOREST,
                 SkinGene.createComposite(
-                        FAUtils.translation("skin", "mangrove_forest"),
+                        FAUtils.translation("skin_gene", "mangrove_forest"),
                         0x5B753D,
                         InheritanceRules.always(),
                         CompositeTextureRules.sequence(
@@ -191,7 +191,7 @@ public final class FASkinGenes {
                 bootstrapContext,
                 QILIAN_MOUNTAINS,
                 SkinGene.createComposite(
-                        FAUtils.translation("skin", "qilian_mountains"),
+                        FAUtils.translation("skin_gene", "qilian_mountains"),
                         0xA9A191,
                         InheritanceRules.always(),
                         CompositeTextureRules.sequence(
@@ -203,7 +203,7 @@ public final class FASkinGenes {
                 bootstrapContext,
                 SALAR_DEL_HUASCO,
                 SkinGene.createComposite(
-                        FAUtils.translation("skin", "salar_del_huasco"),
+                        FAUtils.translation("skin_gene", "salar_del_huasco"),
                         0x4A4018,
                         InheritanceRules.always(),
                         CompositeTextureRules.sequence(
@@ -215,7 +215,7 @@ public final class FASkinGenes {
                 bootstrapContext,
                 SONORAN_DESERT,
                 SkinGene.createComposite(
-                        FAUtils.translation("skin", "sonoran_desert"),
+                        FAUtils.translation("skin_gene", "sonoran_desert"),
                         0xB4813E,
                         InheritanceRules.always(),
                         CompositeTextureRules.sequence(
@@ -227,7 +227,7 @@ public final class FASkinGenes {
                 bootstrapContext,
                 SVALBARD,
                 SkinGene.createComposite(
-                        FAUtils.translation("skin", "svalbard"),
+                        FAUtils.translation("skin_gene", "svalbard"),
                         0x837B53,
                         InheritanceRules.always(),
                         CompositeTextureRules.sequence(
@@ -239,7 +239,7 @@ public final class FASkinGenes {
                 bootstrapContext,
                 YUKON_RIVER,
                 SkinGene.createComposite(
-                        FAUtils.translation("skin", "yukon_river"),
+                        FAUtils.translation("skin_gene", "yukon_river"),
                         0x88724D,
                         InheritanceRules.always(),
                         CompositeTextureRules.sequence(

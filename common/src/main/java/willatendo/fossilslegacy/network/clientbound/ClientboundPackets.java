@@ -8,16 +8,28 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import willatendo.fossilslegacy.client.screen.DebugGeneticsScreen;
 import willatendo.fossilslegacy.client.screen.DinopediaScreen;
 import willatendo.fossilslegacy.client.screen.FossilScreen;
 import willatendo.fossilslegacy.server.entity.util.FossilPositions;
 import willatendo.fossilslegacy.server.entity.util.FossilRotations;
+import willatendo.fossilslegacy.server.entity.util.interfaces.ChromosomedEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class ClientboundPackets {
+    public static void clientboundOpenDebugGeneticsScreenPacket(ClientboundOpenDebugGeneticsScreenPacket clientboundOpenDebugGeneticsScreenPacket, Player player) {
+        Level level = player.level();
+        int id = clientboundOpenDebugGeneticsScreenPacket.id();
+        Entity entity = level.getEntity(id);
+        if (entity instanceof ChromosomedEntity chromosomedEntity) {
+            Minecraft minecraft = Minecraft.getInstance();
+            minecraft.setScreen(new DebugGeneticsScreen(chromosomedEntity));
+        }
+    }
+
     public static void clientboundOpenDinopediaScreenPacket(ClientboundOpenDinopediaScreenPacket clientboundOpenDinopediaScreenPacket, Player player) {
         Level level = player.level();
         int id = clientboundOpenDinopediaScreenPacket.id();

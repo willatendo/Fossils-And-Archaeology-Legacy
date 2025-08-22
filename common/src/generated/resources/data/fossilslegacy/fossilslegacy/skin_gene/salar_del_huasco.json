@@ -4,7 +4,7 @@
     "type": "fossilslegacy:always"
   },
   "skin_name": {
-    "translate": "skin.fossilslegacy.salar_del_huasco"
+    "translate": "skin_gene.fossilslegacy.salar_del_huasco"
   },
   "textures": {
     "type": "fossilslegacy:composite",

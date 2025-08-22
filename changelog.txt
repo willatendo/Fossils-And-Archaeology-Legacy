@@ -157,6 +157,7 @@
 - Updated Lepidodendron Door Texture
 - Updated Calamites Trapdoor Texture
 - Updated Calamites Door Texture
+- Dinopedia Texture Now Shows Two Pages
 - Added Archaeology Category For Analyzer Recipe Book
 - Added Palaeontology Category For Analyzer Recipe Book
 - Added Mosasaurus Skeleton

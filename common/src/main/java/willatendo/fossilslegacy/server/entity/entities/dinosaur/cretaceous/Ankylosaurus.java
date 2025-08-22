@@ -14,7 +14,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.BreedGoal;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.DismountHelper;
@@ -106,8 +108,8 @@ public class Ankylosaurus extends Dinosaur implements DinopediaInformation, Ride
         this.goalSelector.addGoal(5, new DinoFollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
         this.goalSelector.addGoal(5, new DinoEatFromFeederGoal(this, 1.0D, 24, false));
         this.goalSelector.addGoal(5, new DinoEatFernsGoal(this));
-        this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
-        this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(6, new DinoLookAtPlayerGoal(this, Player.class, 6.0F));
+        this.goalSelector.addGoal(7, new DinoRandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new DinoOwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new DinoOwnerHurtTargetGoal(this));
     }

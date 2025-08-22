@@ -13,6 +13,7 @@ public class FAAnimationProvider extends AnimationProvider {
     @Override
     protected void getAll() {
         this.addAnimation(FAUtils.resource("ankylosaurus_walk"), AnkylosaurusAnimations.ANKYLOSAURUS_WALK);
+        this.addAnimation(FAUtils.resource("ankylosaurus_sleep"), AnkylosaurusAnimations.ANKYLOSAURUS_SLEEP);
         this.addAnimation(FAUtils.resource("baryonyx_walk"), BaryonyxAnimations.BARYONYX_WALK);
         this.addAnimation(FAUtils.resource("brachiosaurus_walk"), BrachiosaurusAnimations.BRACHIOSAURUS_WALK);
         this.addAnimation(FAUtils.resource("carnotaurus_walk"), CarnotaurusAnimations.CARNOTAURUS_WALK);
