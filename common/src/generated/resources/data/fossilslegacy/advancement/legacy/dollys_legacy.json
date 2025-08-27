@@ -11,11 +11,51 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "bat": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:bat_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "bee": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:bee_eggs"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "camel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:camel_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "cat": {
       "conditions": {
         "items": [
           {
             "items": "fossilslegacy:cat_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "cod": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:cod_eggs"
           }
         ]
       },
@@ -141,6 +181,16 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "pufferfish": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:pufferfish_eggs"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "rabbit": {
       "conditions": {
         "items": [
@@ -151,11 +201,41 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "salmon": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:salmon_eggs"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "sheep": {
       "conditions": {
         "items": [
           {
             "items": "fossilslegacy:sheep_embryo_syringe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "squid": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:squid_eggs"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "tropical_fish": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:tropical_fish_eggs"
           }
         ]
       },
@@ -191,7 +271,19 @@
       "armadillo"
     ],
     [
+      "bat"
+    ],
+    [
+      "bee"
+    ],
+    [
       "cat"
+    ],
+    [
+      "camel"
+    ],
+    [
+      "cod"
     ],
     [
       "cow"
@@ -230,10 +322,22 @@
       "polar_bear"
     ],
     [
+      "pufferfish"
+    ],
+    [
       "rabbit"
     ],
     [
+      "salmon"
+    ],
+    [
       "sheep"
+    ],
+    [
+      "squid"
+    ],
+    [
+      "tropical_fish"
     ],
     [
       "wolf"

@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": "fossilslegacy:camel_dna",
+  "result": {
+    "id": "fossilslegacy:camel_embryo_syringe"
+  },
+  "time": 6000
+}

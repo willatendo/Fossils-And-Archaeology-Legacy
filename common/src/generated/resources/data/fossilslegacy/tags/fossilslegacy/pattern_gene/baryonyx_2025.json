@@ -1,3 +1,11 @@
 {
-  "values": []
+  "values": [
+    "fossilslegacy:blank",
+    "fossilslegacy:chalcorana",
+    "fossilslegacy:lithobates",
+    "fossilslegacy:papurana",
+    "fossilslegacy:pelophylax",
+    "fossilslegacy:pulchrana",
+    "fossilslegacy:rana"
+  ]
 }

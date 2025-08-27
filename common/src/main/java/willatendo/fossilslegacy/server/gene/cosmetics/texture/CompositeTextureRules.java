@@ -10,9 +10,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import willatendo.fossilslegacy.client.state.ChromosomedEntityRenderState;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
-import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 import willatendo.fossilslegacy.server.registry.FARegistries;
+import willatendo.fossilslegacy.server.utils.AffixType;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
@@ -25,13 +25,13 @@ public final class CompositeTextureRules {
     public static final SimpleRegistry<MapCodec<? extends CompositeTextureRules.ConditionSource>> RULE_CONDITIONS = SimpleRegistry.create(FARegistries.COMPOSITE_TEXTURE_CONDITION, FAUtils.ID);
 
     static {
-        RULE_SOURCES.register("blank", () -> CompositeTextureRules.BlankTextureRuleSource.CODEC);
         RULE_SOURCES.register("condition", () -> CompositeTextureRules.TestRuleSource.CODEC);
         RULE_SOURCES.register("composite_texture", () -> CompositeTextureRules.CompositeTextureRuleSource.CODEC);
         RULE_SOURCES.register("sequence", () -> CompositeTextureRules.SequenceRuleSource.CODEC);
 
         RULE_CONDITIONS.register("is_baby", () -> CompositeTextureRules.IsBabyConditionSource.CODEC);
         RULE_CONDITIONS.register("is_entity_type", () -> CompositeTextureRules.EntityTypeConditionSource.CODEC);
+        RULE_CONDITIONS.register("is_tame", () -> CompositeTextureRules.IsTameConditionSource.CODEC);
         RULE_CONDITIONS.register("not", () -> CompositeTextureRules.NotConditionSource.CODEC);
     }
 
@@ -43,20 +43,32 @@ public final class CompositeTextureRules {
         return new CompositeTextureRules.EntityTypeConditionSource(skinGenes);
     }
 
-    public static CompositeTextureRules.BlankTextureRuleSource blank() {
-        return CompositeTextureRules.BlankTextureRuleSource.INSTANCE;
+    public static CompositeTextureRules.RuleSource texture(String layer, Optional<String> eyeTexture, AffixType affixType, Optional<String> textureName) {
+        return new CompositeTextureRules.CompositeTextureRuleSource(layer, eyeTexture, affixType, textureName);
     }
 
-    public static CompositeTextureRules.RuleSource texture(String layer, String textureName) {
-        return new CompositeTextureRules.CompositeTextureRuleSource(layer, textureName);
+    public static CompositeTextureRules.RuleSource layer0(AffixType affixType, String affix) {
+        return CompositeTextureRules.texture("layer0", Optional.empty(), affixType, Optional.of(affix));
     }
 
-    public static CompositeTextureRules.RuleSource layer0(String textureName) {
-        return new CompositeTextureRuleSource("layer0", textureName);
+    public static CompositeTextureRules.RuleSource layer0(String eyeTexture) {
+        return CompositeTextureRules.texture("layer0", Optional.of(eyeTexture), AffixType.NONE, Optional.empty());
     }
 
-    public static CompositeTextureRules.RuleSource layer1(String textureName) {
-        return new CompositeTextureRuleSource("layer1", textureName);
+    public static CompositeTextureRules.RuleSource layer0() {
+        return CompositeTextureRules.texture("layer0", Optional.empty(), AffixType.NONE, Optional.empty());
+    }
+
+    public static CompositeTextureRules.RuleSource layer1(AffixType affixType, String affix) {
+        return CompositeTextureRules.texture("layer1", Optional.empty(), affixType, Optional.of(affix));
+    }
+
+    public static CompositeTextureRules.RuleSource layer1(String eyeTexture) {
+        return CompositeTextureRules.texture("layer1", Optional.of(eyeTexture), AffixType.NONE, Optional.empty());
+    }
+
+    public static CompositeTextureRules.RuleSource layer1() {
+        return CompositeTextureRules.texture("layer1", Optional.empty(), AffixType.NONE, Optional.empty());
     }
 
     public static CompositeTextureRules.ConditionSource not(CompositeTextureRules.ConditionSource target) {
@@ -65,6 +77,10 @@ public final class CompositeTextureRules {
 
     public static CompositeTextureRules.ConditionSource isBaby() {
         return CompositeTextureRules.IsBabyConditionSource.INSTANCE;
+    }
+
+    public static CompositeTextureRules.ConditionSource isTame() {
+        return CompositeTextureRules.IsTameConditionSource.INSTANCE;
     }
 
     public static CompositeTextureRules.RuleSource ifTrue(CompositeTextureRules.ConditionSource ifTrue, CompositeTextureRules.RuleSource thenRun) {
@@ -86,7 +102,7 @@ public final class CompositeTextureRules {
     }
 
     public interface TextureRule {
-        TextureInformation tryApply(ChromosomedEntityRenderState chromosomedEntityRenderState, ResourceLocation path);
+        TextureInformation tryApply(ChromosomedEntityRenderState chromosomedEntityRenderState, ResourceLocation path, String baseTextureName);
     }
 
     public interface ConditionSource extends Function<ChromosomedEntityRenderState, CompositeTextureRules.Condition> {
@@ -137,11 +153,11 @@ public final class CompositeTextureRules {
         }
     }
 
-    record CompositeTextureRuleSource(String layer, String textureName, PathRule rule) implements CompositeTextureRules.RuleSource {
-        static final MapCodec<CompositeTextureRuleSource> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(Codec.STRING.fieldOf("layer").forGetter(CompositeTextureRules.CompositeTextureRuleSource::layer), Codec.STRING.fieldOf("texture_name").forGetter(CompositeTextureRules.CompositeTextureRuleSource::textureName)).apply(instance, CompositeTextureRules.CompositeTextureRuleSource::new));
+    record CompositeTextureRuleSource(String layer, Optional<String> eyeTexture, AffixType affixType, Optional<String> affix, TextureInformationRule rule) implements CompositeTextureRules.RuleSource {
+        static final MapCodec<CompositeTextureRuleSource> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(Codec.STRING.fieldOf("layer").forGetter(CompositeTextureRules.CompositeTextureRuleSource::layer), Codec.STRING.optionalFieldOf("eye_texture").forGetter(CompositeTextureRules.CompositeTextureRuleSource::eyeTexture), AffixType.CODEC.fieldOf("affix_type").forGetter(CompositeTextureRules.CompositeTextureRuleSource::affixType), Codec.STRING.optionalFieldOf("affix").forGetter(CompositeTextureRules.CompositeTextureRuleSource::affix)).apply(instance, CompositeTextureRules.CompositeTextureRuleSource::new));
 
-        CompositeTextureRuleSource(String layer, String textureName) {
-            this(layer, textureName, new PathRule(layer, textureName));
+        CompositeTextureRuleSource(String layer, Optional<String> eyeTexture, AffixType affixType, Optional<String> textureName) {
+            this(layer, eyeTexture, affixType, textureName, new TextureInformationRule(layer, eyeTexture, affixType, textureName));
         }
 
         @Override
@@ -155,25 +171,9 @@ public final class CompositeTextureRules {
         }
     }
 
-    public enum BlankTextureRuleSource implements CompositeTextureRules.RuleSource {
-        INSTANCE;
-        static final MapCodec<BlankTextureRuleSource> CODEC = MapCodec.unit(INSTANCE);
-
-
-        @Override
-        public MapCodec<? extends CompositeTextureRules.RuleSource> codec() {
-            return CODEC;
-        }
-
-        @Override
-        public CompositeTextureRules.TextureRule apply(ChromosomedEntityRenderState chromosomedEntityRenderState) {
-            return new BlankRule();
-        }
-    }
-
     record SequenceRule(List<TextureRule> rules) implements CompositeTextureRules.TextureRule {
         @Override
-        public TextureInformation tryApply(ChromosomedEntityRenderState chromosomedEntityRenderState, ResourceLocation path) {
+        public TextureInformation tryApply(ChromosomedEntityRenderState chromosomedEntityRenderState, ResourceLocation path, String baseTextureName) {
             Iterator<TextureRule> iterator = this.rules.iterator();
 
             TextureInformation textureInformation;
@@ -183,7 +183,7 @@ public final class CompositeTextureRules {
                 }
 
                 TextureRule textureRule = iterator.next();
-                textureInformation = textureRule.tryApply(chromosomedEntityRenderState, path);
+                textureInformation = textureRule.tryApply(chromosomedEntityRenderState, path, baseTextureName);
             } while (textureInformation == null);
 
             return textureInformation;
@@ -284,6 +284,30 @@ public final class CompositeTextureRules {
         }
     }
 
+    enum IsTameConditionSource implements CompositeTextureRules.ConditionSource {
+        INSTANCE;
+        static final MapCodec<CompositeTextureRules.IsTameConditionSource> CODEC = MapCodec.unit(INSTANCE);
+
+        @Override
+        public CompositeTextureRules.Condition apply(ChromosomedEntityRenderState chromosomedEntityRenderState) {
+            class IsBaby implements CompositeTextureRules.Condition {
+                @Override
+                public boolean test() {
+                    if (chromosomedEntityRenderState instanceof DinosaurRenderState dinosaurRenderState) {
+                        return dinosaurRenderState.isTame;
+                    }
+                    return false;
+                }
+            }
+            return new IsBaby();
+        }
+
+        @Override
+        public MapCodec<? extends CompositeTextureRules.ConditionSource> codec() {
+            return CODEC;
+        }
+    }
+
     record NotCondition(CompositeTextureRules.Condition target) implements CompositeTextureRules.Condition {
         @Override
         public boolean test() {
@@ -291,34 +315,19 @@ public final class CompositeTextureRules {
         }
     }
 
-    record PathRule(String layer, String textureName) implements CompositeTextureRules.TextureRule {
+    record TextureInformationRule(String layer, Optional<String> eyeTexture, AffixType affixType, Optional<String> affix) implements CompositeTextureRules.TextureRule {
         @Override
-        public TextureInformation tryApply(ChromosomedEntityRenderState chromosomedEntityRenderState, ResourceLocation path) {
-            String eye = "adult";
-            if (chromosomedEntityRenderState instanceof DinosaurRenderState dinosaurRenderState) {
-                if (dinosaurRenderState.isTranquilized) {
-                    eye = this.layer + "/" + this.textureName;
-                } else if (chromosomedEntityRenderState.hasAggressiveEyes && !dinosaurRenderState.isBaby && !dinosaurRenderState.isTame) {
-                    eye = "aggressive";
-                } else if (chromosomedEntityRenderState.hasBabyEyes && dinosaurRenderState.isBaby) {
-                    eye = "baby";
-                }
-            }
-            return TextureInformation.simple(path.withSuffix("/" + this.layer + "/" + this.textureName + ".png"), path.withSuffix("/eyes/" + eye + ".png"), path.withSuffix("/eyes/closed.png"));
-        }
-    }
-
-    record BlankRule() implements CompositeTextureRules.TextureRule {
-        @Override
-        public TextureInformation tryApply(ChromosomedEntityRenderState chromosomedEntityRenderState, ResourceLocation path) {
-            return TextureInformation.empty();
+        public TextureInformation tryApply(ChromosomedEntityRenderState chromosomedEntityRenderState, ResourceLocation path, String baseTextureName) {
+            String textureName = this.affix.isPresent() ? this.affixType.apply(baseTextureName, this.affix.get()) : baseTextureName;
+            String eye = this.eyeTexture.orElse("adult");
+            return TextureInformation.simple(path.withSuffix("/" + this.layer + "/" + textureName + ".png"), path.withSuffix("/eyes/" + eye + ".png"), path.withSuffix("/eyes/layer0/" + baseTextureName + ".png"));
         }
     }
 
     record TestRule(CompositeTextureRules.Condition condition, TextureRule followUp) implements CompositeTextureRules.TextureRule {
         @Override
-        public TextureInformation tryApply(ChromosomedEntityRenderState chromosomedEntityRenderState, ResourceLocation path) {
-            return !this.condition.test() ? null : this.followUp.tryApply(chromosomedEntityRenderState, path);
+        public TextureInformation tryApply(ChromosomedEntityRenderState chromosomedEntityRenderState, ResourceLocation path, String baseTextureName) {
+            return !this.condition.test() ? null : this.followUp.tryApply(chromosomedEntityRenderState, path, baseTextureName);
         }
     }
 }

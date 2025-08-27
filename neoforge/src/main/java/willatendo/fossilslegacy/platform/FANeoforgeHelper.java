@@ -68,6 +68,11 @@ public class FANeoforgeHelper implements FAModloaderHelper {
     }
 
     @Override
+    public GameRules.Key<GameRules.IntegerValue> createIntegerGameRule(String name, GameRules.Category category, int defaultValue) {
+        return GameRules.register(name, category, GameRules.IntegerValue.create(defaultValue));
+    }
+
+    @Override
     public RecipeBookType createRecipeBookType(String name) {
         return RecipeBookType.valueOf(FAUtils.ID + name);
     }

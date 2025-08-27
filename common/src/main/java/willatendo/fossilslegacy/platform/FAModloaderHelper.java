@@ -53,5 +53,7 @@ public interface FAModloaderHelper {
 
     GameRules.Key<GameRules.BooleanValue> createBooleanGameRule(String name, GameRules.Category category, boolean defaultValue);
 
+    GameRules.Key<GameRules.IntegerValue> createIntegerGameRule(String name, GameRules.Category category, int defaultValue);
+
     RecipeBookType createRecipeBookType(String name);
 }

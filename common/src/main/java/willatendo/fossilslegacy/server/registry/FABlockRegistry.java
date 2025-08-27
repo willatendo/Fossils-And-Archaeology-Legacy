@@ -235,8 +235,8 @@ public record FABlockRegistry(BlockRegistry blockRegistry) {
         return HEADS.get(i);
     }
 
-    public static Block[] getHeads() {
-        return HEADS.stream().map(SimpleHolder::get).toArray(Block[]::new);
+    public static HeadBlock[] getHeads() {
+        return HEADS.stream().map(SimpleHolder::get).toArray(HeadBlock[]::new);
     }
 
     public static SimpleHolder<WallHeadBlock> getWallHeads(int i) {
@@ -371,8 +371,8 @@ public record FABlockRegistry(BlockRegistry blockRegistry) {
         return slab;
     }
 
-    public SimpleHolder<HeadBlock> registerHead(FAHeadTypes faHeadTypes) {
-        SimpleHolder<HeadBlock> head = this.registerBlock(faHeadTypes.getSerializedName() + "_head", properties -> new HeadBlock(faHeadTypes, properties), () -> BlockBehaviour.Properties.of().strength(1.0F).pushReaction(PushReaction.DESTROY));
+    public SimpleHolder<HeadBlock> registerHead(int maxSize, FAHeadTypes faHeadTypes) {
+        SimpleHolder<HeadBlock> head = this.registerBlock(faHeadTypes.getSerializedName() + "_head", properties -> new HeadBlock(maxSize, faHeadTypes, properties), () -> BlockBehaviour.Properties.of().strength(1.0F).pushReaction(PushReaction.DESTROY));
         HEADS.add(head);
         ALL_HEADS.add(head);
         return head;

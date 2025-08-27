@@ -1,6 +1,8 @@
 package willatendo.fossilslegacy.server.entity.util.interfaces;
 
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Entity.RemovalReason;
 import net.minecraft.world.entity.EntitySpawnReason;
@@ -50,6 +52,9 @@ public interface TicksToBirth {
                         Player player = level.getNearestPlayer(offspring, 25.0D);
                         if (player != null) {
                             tamesOnBirth.setOwnerUUID(player.getUUID());
+                        }
+                        if (player instanceof ServerPlayer serverPlayer && tamesOnBirth instanceof Animal animal) {
+                            CriteriaTriggers.TAME_ANIMAL.trigger(serverPlayer, animal);
                         }
                     }
                 }

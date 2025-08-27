@@ -6,7 +6,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.SkullBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -22,10 +21,16 @@ public class HeadBlock extends AbstractHeadBlock {
     private static final int ROTATIONS = MAX + 1;
     public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
     protected static final VoxelShape SHAPE = Block.box(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+    private final int maxSize;
 
-    public HeadBlock(FAHeadTypes faHeadTypes, Properties properties) {
+    public HeadBlock(int maxSize, FAHeadTypes faHeadTypes, Properties properties) {
         super(faHeadTypes, properties);
         this.registerDefaultState(this.defaultBlockState().setValue(ROTATION, 0));
+        this.maxSize = maxSize;
+    }
+
+    public int getMaxSize() {
+        return this.maxSize;
     }
 
     @Override

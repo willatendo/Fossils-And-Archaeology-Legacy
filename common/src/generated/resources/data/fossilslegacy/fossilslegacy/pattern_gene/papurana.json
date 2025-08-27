@@ -8,10 +8,7 @@
   },
   "textures": {
     "type": "fossilslegacy:composite",
-    "texture_rules": {
-      "type": "fossilslegacy:composite_texture",
-      "layer": "layer1",
-      "texture_name": "papurana"
-    }
+    "base_texture_name": "papurana",
+    "layer": 1
   }
 }

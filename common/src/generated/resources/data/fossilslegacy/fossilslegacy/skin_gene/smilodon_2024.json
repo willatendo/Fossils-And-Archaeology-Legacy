@@ -4,7 +4,7 @@
     "type": "fossilslegacy:always"
   },
   "skin_name": {
-    "translate": "skin.fossilslegacy.tiger"
+    "translate": "skin_gene.fossilslegacy.tiger"
   },
   "textures": {
     "type": "fossilslegacy:package",

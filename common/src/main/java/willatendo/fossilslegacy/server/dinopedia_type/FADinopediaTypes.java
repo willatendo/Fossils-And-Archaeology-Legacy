@@ -49,7 +49,7 @@ public final class FADinopediaTypes {
     }
 
     public static void bootstrap(BootstrapContext<DinopediaType> bootstrapContext) {
-        FADinopediaTypes.register(bootstrapContext, ANKYLOSAURUS, FADinopediaEntries.ANKYLOSAURUS_DATA);
+        FADinopediaTypes.register(bootstrapContext, ANKYLOSAURUS, FADinopediaEntries.ANKYLOSAURUS_STATS);
         FADinopediaTypes.register(bootstrapContext, BARYONYX, FADinopediaEntries.BARYONYX_DATA);
         FADinopediaTypes.register(bootstrapContext, BRACHIOSAURUS, FADinopediaEntries.BRACHIOSAURUS_DATA);
         FADinopediaTypes.register(bootstrapContext, CARNOTAURUS, FADinopediaEntries.CARNOTAURUS_DATA);

@@ -41,7 +41,7 @@ public class Dryosaurus extends Dinosaur implements DinopediaInformation {
 
     @Override
     public EntityType<Egg> getEggEntityType() {
-        return FAEntityTypes.GALLIMIMUS_EGG.get();
+        return FAEntityTypes.DRYOSAURUS_EGG.get();
     }
 
     @Override
@@ -76,7 +76,7 @@ public class Dryosaurus extends Dinosaur implements DinopediaInformation {
 
     @Override
     protected ItemStack getHead() {
-        return new ItemStack(FAItems.DRYOSAURUS_EGG.get());
+        return new ItemStack(FAItems.DRYOSAURUS_HEAD.get());
     }
 
     @Override

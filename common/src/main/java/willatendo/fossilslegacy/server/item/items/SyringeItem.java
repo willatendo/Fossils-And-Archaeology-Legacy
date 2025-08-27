@@ -15,6 +15,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import willatendo.fossilslegacy.server.entity.PregnancySize;
 import willatendo.fossilslegacy.server.gene.ChromosomeUtils;
 import willatendo.fossilslegacy.server.gene.cosmetics.CosmeticGeneHolder;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -33,51 +34,60 @@ import java.util.List;
 import java.util.Map;
 
 public class SyringeItem extends Item {
+    private static final Map<EntityType<? extends LivingEntity>, PregnancySize> ENTITY_TO_PREGNANCY_SIZE = new HashMap<>();
     private static final Map<EntityType<? extends LivingEntity>, EntityType<? extends PregnantAnimal<?>>> ENTITY_TO_PREGNANCY = new HashMap<>();
     private final GeologicalTimeScale.Period period;
     private final Holder<PregnancyType> pregnancyType;
     protected final TagKey<ModelGene> applicableModelTypes;
+    private final PregnancySize pregnancySize;
 
-    public static void addEntityToPregnancy(EntityType<? extends LivingEntity> animalEntityType, EntityType<? extends PregnantAnimal<?>> pregnantEntityType) {
+    public static void addEntityToPregnancy(EntityType<? extends LivingEntity> animalEntityType, EntityType<? extends PregnantAnimal<?>> pregnantEntityType, PregnancySize pregnancySize) {
         ENTITY_TO_PREGNANCY.put(animalEntityType, pregnantEntityType);
+        ENTITY_TO_PREGNANCY_SIZE.put(animalEntityType, pregnancySize);
     }
 
     static {
-        SyringeItem.addEntityToPregnancy(EntityType.ARMADILLO, FAEntityTypes.PREGNANT_ARMADILLO.get());
-        SyringeItem.addEntityToPregnancy(EntityType.CAT, FAEntityTypes.PREGNANT_CAT.get());
-        SyringeItem.addEntityToPregnancy(EntityType.COW, FAEntityTypes.PREGNANT_DOLPHIN.get());
-        SyringeItem.addEntityToPregnancy(EntityType.DONKEY, FAEntityTypes.PREGNANT_DONKEY.get());
-        SyringeItem.addEntityToPregnancy(FAEntityTypes.ELASMOTHERIUM.get(), FAEntityTypes.PREGNANT_ELASMOTHERIUM.get());
-        SyringeItem.addEntityToPregnancy(EntityType.FOX, FAEntityTypes.PREGNANT_FOX.get());
-        SyringeItem.addEntityToPregnancy(EntityType.GOAT, FAEntityTypes.PREGNANT_GOAT.get());
-        SyringeItem.addEntityToPregnancy(EntityType.HORSE, FAEntityTypes.PREGNANT_HORSE.get());
-        SyringeItem.addEntityToPregnancy(EntityType.LLAMA, FAEntityTypes.PREGNANT_LLAMA.get());
-        SyringeItem.addEntityToPregnancy(FAEntityTypes.MAMMOTH.get(), FAEntityTypes.PREGNANT_MAMMOTH.get());
-        SyringeItem.addEntityToPregnancy(EntityType.MULE, FAEntityTypes.PREGNANT_MULE.get());
-        SyringeItem.addEntityToPregnancy(EntityType.OCELOT, FAEntityTypes.PREGNANT_OCELOT.get());
-        SyringeItem.addEntityToPregnancy(EntityType.PANDA, FAEntityTypes.PREGNANT_PANDA.get());
-        SyringeItem.addEntityToPregnancy(EntityType.PIG, FAEntityTypes.PREGNANT_PIG.get());
-        SyringeItem.addEntityToPregnancy(EntityType.POLAR_BEAR, FAEntityTypes.PREGNANT_POLAR_BEAR.get());
-        SyringeItem.addEntityToPregnancy(EntityType.RABBIT, FAEntityTypes.PREGNANT_RABBIT.get());
-        SyringeItem.addEntityToPregnancy(EntityType.SHEEP, FAEntityTypes.PREGNANT_SHEEP.get());
-        SyringeItem.addEntityToPregnancy(FAEntityTypes.SMILODON.get(), FAEntityTypes.PREGNANT_SMILODON.get());
-        SyringeItem.addEntityToPregnancy(EntityType.WOLF, FAEntityTypes.PREGNANT_WOLF.get());
+        SyringeItem.addEntityToPregnancy(EntityType.ARMADILLO, FAEntityTypes.PREGNANT_ARMADILLO.get(), PregnancySize.SMALL);
+        SyringeItem.addEntityToPregnancy(EntityType.BAT, FAEntityTypes.PREGNANT_BAT.get(), PregnancySize.SMALL);
+        SyringeItem.addEntityToPregnancy(EntityType.CAMEL, FAEntityTypes.PREGNANT_ARMADILLO.get(), PregnancySize.SMALL);
+        SyringeItem.addEntityToPregnancy(EntityType.CAMEL, FAEntityTypes.PREGNANT_CAMEL.get(), PregnancySize.LARGE);
+        SyringeItem.addEntityToPregnancy(EntityType.CAT, FAEntityTypes.PREGNANT_CAT.get(), PregnancySize.SMALL);
+        SyringeItem.addEntityToPregnancy(EntityType.COW, FAEntityTypes.PREGNANT_COW.get(), PregnancySize.MEDIUM);
+        SyringeItem.addEntityToPregnancy(EntityType.DOLPHIN, FAEntityTypes.PREGNANT_DOLPHIN.get(), PregnancySize.MEDIUM);
+        SyringeItem.addEntityToPregnancy(EntityType.DONKEY, FAEntityTypes.PREGNANT_DONKEY.get(), PregnancySize.LARGE);
+        SyringeItem.addEntityToPregnancy(FAEntityTypes.ELASMOTHERIUM.get(), FAEntityTypes.PREGNANT_ELASMOTHERIUM.get(), PregnancySize.LARGE);
+        SyringeItem.addEntityToPregnancy(EntityType.FOX, FAEntityTypes.PREGNANT_FOX.get(), PregnancySize.SMALL);
+        SyringeItem.addEntityToPregnancy(EntityType.GOAT, FAEntityTypes.PREGNANT_GOAT.get(), PregnancySize.MEDIUM);
+        SyringeItem.addEntityToPregnancy(EntityType.HORSE, FAEntityTypes.PREGNANT_HORSE.get(), PregnancySize.LARGE);
+        SyringeItem.addEntityToPregnancy(EntityType.LLAMA, FAEntityTypes.PREGNANT_LLAMA.get(), PregnancySize.LARGE);
+        SyringeItem.addEntityToPregnancy(FAEntityTypes.MAMMOTH.get(), FAEntityTypes.PREGNANT_MAMMOTH.get(), PregnancySize.LARGE);
+        SyringeItem.addEntityToPregnancy(EntityType.MULE, FAEntityTypes.PREGNANT_MULE.get(), PregnancySize.LARGE);
+        SyringeItem.addEntityToPregnancy(EntityType.OCELOT, FAEntityTypes.PREGNANT_OCELOT.get(), PregnancySize.SMALL);
+        SyringeItem.addEntityToPregnancy(EntityType.PANDA, FAEntityTypes.PREGNANT_PANDA.get(), PregnancySize.LARGE);
+        SyringeItem.addEntityToPregnancy(EntityType.PIG, FAEntityTypes.PREGNANT_PIG.get(), PregnancySize.MEDIUM);
+        SyringeItem.addEntityToPregnancy(EntityType.POLAR_BEAR, FAEntityTypes.PREGNANT_POLAR_BEAR.get(), PregnancySize.MEDIUM);
+        SyringeItem.addEntityToPregnancy(EntityType.RABBIT, FAEntityTypes.PREGNANT_RABBIT.get(), PregnancySize.SMALL);
+        SyringeItem.addEntityToPregnancy(EntityType.SHEEP, FAEntityTypes.PREGNANT_SHEEP.get(), PregnancySize.MEDIUM);
+        SyringeItem.addEntityToPregnancy(FAEntityTypes.SMILODON.get(), FAEntityTypes.PREGNANT_SMILODON.get(), PregnancySize.MEDIUM);
+        SyringeItem.addEntityToPregnancy(EntityType.WOLF, FAEntityTypes.PREGNANT_WOLF.get(), PregnancySize.SMALL);
     }
 
-    public SyringeItem(GeologicalTimeScale.Period period, Holder<PregnancyType> pregnancyType, TagKey<ModelGene> applicableModelTypes, Properties properties) {
+    public SyringeItem(GeologicalTimeScale.Period period, Holder<PregnancyType> pregnancyType, TagKey<ModelGene> applicableModelTypes, PregnancySize pregnancySize, Properties properties) {
         super(properties);
         this.period = period;
         this.pregnancyType = pregnancyType;
         this.applicableModelTypes = applicableModelTypes;
+        this.pregnancySize = pregnancySize;
     }
 
-    public SyringeItem(GeologicalTimeScale.Period period, Holder<PregnancyType> pregnancyType, Properties properties) {
-        this(period, pregnancyType, null, properties);
+    public SyringeItem(GeologicalTimeScale.Period period, Holder<PregnancyType> pregnancyType, PregnancySize pregnancySize, Properties properties) {
+        this(period, pregnancyType, null, pregnancySize, properties);
     }
 
     @Override
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         this.period.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
+        tooltipComponents.add(this.pregnancySize.getToolTip().copy().withStyle(ChatFormatting.GRAY));
         if (itemStack.has(FADataComponents.MODEL_TYPE.get())) {
             Holder<ModelGene> holder = itemStack.get(FADataComponents.MODEL_TYPE.get());
             tooltipComponents.add(FAUtils.translation("item", "model_type", holder.value().displayInfo().modelName()).withStyle(ChatFormatting.GRAY));
@@ -91,9 +101,10 @@ public class SyringeItem extends Item {
 
     @Override
     public InteractionResult interactLivingEntity(ItemStack itemStack, Player player, LivingEntity livingEntity, InteractionHand interactionHand) {
-        if (ENTITY_TO_PREGNANCY.containsKey(livingEntity.getType())) {
+        EntityType<?> entityType = livingEntity.getType();
+        if (ENTITY_TO_PREGNANCY.containsKey(entityType) && ENTITY_TO_PREGNANCY_SIZE.get(entityType) == this.pregnancySize) {
             Level level = player.level();
-            PregnantAnimal<?> pregnantAnimal = ENTITY_TO_PREGNANCY.get(livingEntity.getType()).create(level, EntitySpawnReason.NATURAL);
+            PregnantAnimal<?> pregnantAnimal = ENTITY_TO_PREGNANCY.get(entityType).create(level, EntitySpawnReason.NATURAL);
             if (livingEntity instanceof AgeableMob ageableMob) {
                 if (!ageableMob.isBaby()) {
                     CompoundTag compoundTag = new CompoundTag();

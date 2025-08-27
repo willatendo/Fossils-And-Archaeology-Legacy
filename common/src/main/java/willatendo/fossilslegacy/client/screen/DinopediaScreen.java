@@ -110,6 +110,7 @@ public class DinopediaScreen extends Screen {
         super.render(guiGraphics, mouseX, mouseY, partialTick);
 
         if (!this.dinopediaEntries.isEmpty()) {
+            boolean right = this.index % 2 == 0;
             DinopediaEntry dinopediaEntry = this.dinopediaEntries.get(this.index);
             int leftPos = (this.width - this.imageWidth) / 2;
             int topPos = (this.height / 2) - (this.imageHeight / 2);
@@ -132,11 +133,11 @@ public class DinopediaScreen extends Screen {
             if (!components.isEmpty()) {
                 boolean displayName = dinopediaEntry.line().contains(BuiltInDinopediaLines.DISPLAY_NAME);
                 if (displayName) {
-                    this.drawCenteredStringMinusShadow(guiGraphics, this.font, components.getFirst(), leftPos, topPos + textStart, 0, dinopediaEntry.centerText());
+                    this.drawCenteredStringMinusShadow(guiGraphics, this.font, components.getFirst(), leftPos + (right ? -78 : 0), topPos + textStart, 0, dinopediaEntry.centerText());
                 }
 
                 for (int i = displayName ? 1 : 0; i < components.size(); i++) {
-                    this.drawCenteredStringMinusShadow(guiGraphics, this.font, components.get(i), leftPos, topPos + textStart + (displayName ? 10 : 0) + (i * 10), 0, dinopediaEntry.centerText());
+                    this.drawCenteredStringMinusShadow(guiGraphics, this.font, components.get(i), leftPos + (right ? -78 : 0), topPos + textStart + (displayName ? 10 : 0) + (i * 10), 0, dinopediaEntry.centerText());
                 }
             }
         }

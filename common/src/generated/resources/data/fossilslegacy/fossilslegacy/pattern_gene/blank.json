@@ -7,9 +7,6 @@
     "translate": "pattern_gene.fossilslegacy.blank"
   },
   "textures": {
-    "type": "fossilslegacy:composite",
-    "texture_rules": {
-      "type": "fossilslegacy:blank"
-    }
+    "type": "fossilslegacy:blank"
   }
 }

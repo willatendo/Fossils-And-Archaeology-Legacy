@@ -34,6 +34,7 @@ public final class FAFuelEntries {
     public static final ResourceKey<FuelEntry> INCUBATED_PARROT_EGG = FAFuelEntries.create("incubated_parrot_egg");
     public static final ResourceKey<FuelEntry> MOSASAURUS_EGG = FAFuelEntries.create("mosasaurus_egg");
     public static final ResourceKey<FuelEntry> NAUTILUS_EGGS = FAFuelEntries.create("nautilus_eggs");
+    public static final ResourceKey<FuelEntry> CENOCERAS_EGGS = FAFuelEntries.create("cenoceras_eggs");
     public static final ResourceKey<FuelEntry> FUTABASAURUS_EGG = FAFuelEntries.create("futabasaurus_egg");
     public static final ResourceKey<FuelEntry> PACHYCEPHALOSAURUS_EGG = FAFuelEntries.create("pachycephalosaurus_egg");
     public static final ResourceKey<FuelEntry> PTERANODON_EGG = FAFuelEntries.create("pteranodon_egg");
@@ -115,6 +116,7 @@ public final class FAFuelEntries {
         FAFuelEntries.register(bootstrapContext, INCUBATED_PARROT_EGG, FAItems.INCUBATED_PARROT_EGG.get(), 12000);
         FAFuelEntries.register(bootstrapContext, MOSASAURUS_EGG, FAItems.MOSASAURUS_EGG.get(), 12000);
         FAFuelEntries.register(bootstrapContext, NAUTILUS_EGGS, FAItems.NAUTILUS_EGGS.get(), 12000);
+        FAFuelEntries.register(bootstrapContext, CENOCERAS_EGGS, FAItems.CENOCERAS_EGGS.get(), 12000);
         FAFuelEntries.register(bootstrapContext, FUTABASAURUS_EGG, FAItems.FUTABASAURUS_EGG.get(), 12000);
         FAFuelEntries.register(bootstrapContext, GALLIMIMUS_EGG, FAItems.GALLIMIMUS_EGG.get(), 12000);
         FAFuelEntries.register(bootstrapContext, PACHYCEPHALOSAURUS_EGG, FAItems.PACHYCEPHALOSAURUS_EGG.get(), 12000);

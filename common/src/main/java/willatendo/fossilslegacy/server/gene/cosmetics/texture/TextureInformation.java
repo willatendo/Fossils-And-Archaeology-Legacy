@@ -13,6 +13,14 @@ public record TextureInformation(Optional<ResourceLocation> texture, EyeTextures
         return new TextureInformation(Optional.of(texture), new EyeTextures(Optional.of(eyeTexture), Optional.of(closedEyeTexture)));
     }
 
+    public static TextureInformation item(ResourceLocation texture, ResourceLocation eyeTexture) {
+        return new TextureInformation(Optional.of(texture), new EyeTextures(Optional.of(eyeTexture), Optional.empty()));
+    }
+
+    public static TextureInformation item(ResourceLocation texture) {
+        return new TextureInformation(Optional.of(texture), new EyeTextures(Optional.empty(), Optional.empty()));
+    }
+
     public static TextureInformation empty() {
         return new TextureInformation(Optional.empty(), new EyeTextures(Optional.empty(), Optional.empty()));
     }

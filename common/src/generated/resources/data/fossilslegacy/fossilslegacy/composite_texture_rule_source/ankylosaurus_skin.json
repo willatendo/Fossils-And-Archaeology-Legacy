@@ -1,0 +1,23 @@
+{
+  "type": "fossilslegacy:sequence",
+  "sequence": [
+    {
+      "type": "fossilslegacy:condition",
+      "if_true": {
+        "type": "fossilslegacy:is_baby"
+      },
+      "then_run": {
+        "type": "fossilslegacy:composite_texture",
+        "affix_type": "none",
+        "eye_texture": "baby",
+        "layer": "layer0"
+      }
+    },
+    {
+      "type": "fossilslegacy:composite_texture",
+      "affix_type": "none",
+      "eye_texture": "adult",
+      "layer": "layer0"
+    }
+  ]
+}

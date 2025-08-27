@@ -1,10 +1,13 @@
 package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRenderer;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.jurassic.Dilophosaurus;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.CompositeTextureRules;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.FACompositeTextureRuleSources;
 
 public class DilophosaurusRenderer extends DataDrivenModelDinosaurRenderer<Dilophosaurus, DinosaurRenderState> {
     public DilophosaurusRenderer(Context context) {
@@ -14,6 +17,16 @@ public class DilophosaurusRenderer extends DataDrivenModelDinosaurRenderer<Dilop
     @Override
     public DinosaurRenderState createRenderState() {
         return new DinosaurRenderState();
+    }
+
+    @Override
+    public ResourceKey<CompositeTextureRules.RuleSource> getSkinCompositeTextureRuleSource() {
+        return FACompositeTextureRuleSources.DILOPHOSAURUS_SKIN;
+    }
+
+    @Override
+    public ResourceKey<CompositeTextureRules.RuleSource> getPatternCompositeTextureRuleSource() {
+        return FACompositeTextureRuleSources.DILOPHOSAURUS_PATTERN;
     }
 
     @Override

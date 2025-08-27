@@ -147,7 +147,8 @@ public class FARecipeProvider extends RecipeProvider {
         this.food(FAItems.COOKED_VELOCIRAPTOR.get(), FAItems.RAW_VELOCIRAPTOR.get());
         this.food(FAItems.COOKED_TYRANNOSAURUS.get(), FAItems.RAW_TYRANNOSAURUS.get());
         this.food(FAItems.COOKED_PTERANODON.get(), FAItems.RAW_PTERANODON.get());
-        this.food(FAItems.SIO_CHIU_LE.get(), FAItems.NAUTILUS.get());
+        this.food(FAItems.NAUTILUS_SIO_CHIU_LE.get(), FAItems.NAUTILUS.get());
+        this.food(FAItems.CENOCERAS_SIO_CHIU_LE.get(), FAItems.CENOCERAS.get());
         this.food(FAItems.COOKED_FUTABASAURUS.get(), FAItems.RAW_FUTABASAURUS.get());
         this.food(FAItems.COOKED_MOSASAURUS.get(), FAItems.RAW_MOSASAURUS.get());
         this.food(FAItems.COOKED_STEGOSAURUS.get(), FAItems.RAW_STEGOSAURUS.get());
@@ -188,6 +189,7 @@ public class FARecipeProvider extends RecipeProvider {
         this.cultivate(CultivationBookCategory.EGG, FAItems.TYRANNOSAURUS_DNA.get(), FAItems.TYRANNOSAURUS_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.PTERANODON_DNA.get(), FAItems.PTERANODON_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.NAUTILUS_DNA.get(), FAItems.NAUTILUS_EGGS.get(), 6000);
+        this.cultivate(CultivationBookCategory.EGG, FAItems.CENOCERAS_DNA.get(), FAItems.CENOCERAS_EGGS.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.FUTABASAURUS_DNA.get(), FAItems.FUTABASAURUS_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.MOSASAURUS_DNA.get(), FAItems.MOSASAURUS_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.STEGOSAURUS_DNA.get(), FAItems.STEGOSAURUS_EGG.get(), 6000);
@@ -195,8 +197,12 @@ public class FARecipeProvider extends RecipeProvider {
         this.cultivate(CultivationBookCategory.EGG, FAItems.BRACHIOSAURUS_DNA.get(), FAItems.BRACHIOSAURUS_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.ARMADILLO_DNA.get(), FAItems.ARMADILLO_EMBRYO_SYRINGE.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.AXOLOTL_DNA.get(), FAItems.AXOLOTLSPAWN.get(), 6000);
+        this.cultivate(CultivationBookCategory.EGG, FAItems.BAT_DNA.get(), FAItems.BAT_EMBRYO_SYRINGE.get(), 6000);
+        this.cultivate(CultivationBookCategory.EGG, FAItems.BEE_DNA.get(), FAItems.BEE_EGGS.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.CAT_DNA.get(), FAItems.CAT_EMBRYO_SYRINGE.get(), 6000);
+        this.cultivate(CultivationBookCategory.EGG, FAItems.CAMEL_DNA.get(), FAItems.CAMEL_EMBRYO_SYRINGE.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.CHICKEN_DNA.get(), FAItems.INCUBATED_CHICKEN_EGG.get(), 6000);
+        this.cultivate(CultivationBookCategory.EGG, FAItems.COD_DNA.get(), FAItems.COD_EGGS.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.COW_DNA.get(), FAItems.COW_EMBRYO_SYRINGE.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.DOLPHIN_DNA.get(), FAItems.DOLPHIN_EMBRYO_SYRINGE.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.DONKEY_DNA.get(), FAItems.DONKEY_EMBRYO_SYRINGE.get(), 6000);
@@ -211,8 +217,13 @@ public class FARecipeProvider extends RecipeProvider {
         this.cultivate(CultivationBookCategory.EGG, FAItems.PARROT_DNA.get(), FAItems.INCUBATED_PARROT_EGG.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.PIG_DNA.get(), FAItems.PIG_EMBRYO_SYRINGE.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.POLAR_BEAR_DNA.get(), FAItems.POLAR_BEAR_EMBRYO_SYRINGE.get(), 6000);
+        this.cultivate(CultivationBookCategory.EGG, FAItems.PUFFERFISH_DNA.get(), FAItems.PUFFERFISH_EGGS.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.RABBIT_DNA.get(), FAItems.RABBIT_EMBRYO_SYRINGE.get(), 6000);
+        this.cultivate(CultivationBookCategory.EGG, FAItems.SALMON_DNA.get(), FAItems.SALMON_EGGS.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.SHEEP_DNA.get(), FAItems.SHEEP_EMBRYO_SYRINGE.get(), 6000);
+        this.cultivate(CultivationBookCategory.EGG, FAItems.SQUID_DNA.get(), FAItems.SQUID_EGGS.get(), 6000);
+        this.cultivate(CultivationBookCategory.EGG, FAItems.TROPICAL_FISH_DNA.get(), FAItems.TROPICAL_FISH_EGGS.get(), 6000);
+        this.cultivate(CultivationBookCategory.EGG, FAItems.TURTLE_DNA.get(), Blocks.TURTLE_EGG, 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.WOLF_DNA.get(), FAItems.WOLF_EMBRYO_SYRINGE.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.SMILODON_DNA.get(), FAItems.SMILODON_EMBRYO_SYRINGE.get(), 6000);
         this.cultivate(CultivationBookCategory.EGG, FAItems.MAMMOTH_DNA.get(), FAItems.MAMMOTH_EMBRYO_SYRINGE.get(), 6000);

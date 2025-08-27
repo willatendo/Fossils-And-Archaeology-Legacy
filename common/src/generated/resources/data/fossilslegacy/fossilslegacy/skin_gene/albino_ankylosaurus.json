@@ -1,0 +1,43 @@
+{
+  "gene_color": 16777215,
+  "inheritance_rule": {
+    "type": "fossilslegacy:always"
+  },
+  "skin_name": {
+    "translate": "skin_gene.fossilslegacy.albino"
+  },
+  "textures": {
+    "type": "fossilslegacy:package",
+    "texture_rules": {
+      "type": "fossilslegacy:sequence",
+      "sequence": [
+        {
+          "type": "fossilslegacy:condition",
+          "if_true": {
+            "type": "fossilslegacy:is_baby"
+          },
+          "then_run": {
+            "type": "fossilslegacy:package_texture",
+            "texture": {
+              "eye_textures": {
+                "closed_eye_texture": "fossilslegacy:textures/entity/ankylosaurus/eyes/albino_closed.png",
+                "eye_texture": "fossilslegacy:textures/entity/ankylosaurus/eyes/albino_baby.png"
+              },
+              "texture": "fossilslegacy:textures/entity/ankylosaurus/albino.png"
+            }
+          }
+        },
+        {
+          "type": "fossilslegacy:package_texture",
+          "texture": {
+            "eye_textures": {
+              "closed_eye_texture": "fossilslegacy:textures/entity/ankylosaurus/eyes/albino_closed.png",
+              "eye_texture": "fossilslegacy:textures/entity/ankylosaurus/eyes/albino_adult.png"
+            },
+            "texture": "fossilslegacy:textures/entity/ankylosaurus/albino_ankylosaurus.png"
+          }
+        }
+      ]
+    }
+  }
+}

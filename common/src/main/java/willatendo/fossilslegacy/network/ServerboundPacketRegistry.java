@@ -6,6 +6,8 @@ import willatendo.simplelibrary.server.event.registry.ServerboundPacketRegister;
 public final class ServerboundPacketRegistry {
     public static void serverboundPacketSetup(ServerboundPacketRegister serverboundPacketRegister) {
         serverboundPacketRegister.registerServerbound(ServerboundDamageHammerPacket.TYPE, ServerboundDamageHammerPacket.STREAM_CODEC, ServerboundPackets::serverboundDamageHammerPacket);
+        serverboundPacketRegister.registerServerbound(ServerboundAddNotifiedPlayerPacket.TYPE, ServerboundAddNotifiedPlayerPacket.STREAM_CODEC, ServerboundPackets::serverboundAddNotifiedPlayerPacket);
+        serverboundPacketRegister.registerServerbound(ServerboundRemoveNotifiedPlayerPacket.TYPE, ServerboundRemoveNotifiedPlayerPacket.STREAM_CODEC, ServerboundPackets::serverboundRemoveNotifiedPlayerPacket);
         serverboundPacketRegister.registerServerbound(ServerboundSetDNARecombinatorGenePacket.TYPE, ServerboundSetDNARecombinatorGenePacket.STREAM_CODEC, ServerboundPackets::serverboundSetDNARecombinatorGenePacket);
         serverboundPacketRegister.registerServerbound(ServerboundSetFossilPartPositionsPacket.TYPE, ServerboundSetFossilPartPositionsPacket.STREAM_CODEC, ServerboundPackets::serverboundSetFossilPartPositionsPacket);
         serverboundPacketRegister.registerServerbound(ServerboundSetFossilPartRotationsPacket.TYPE, ServerboundSetFossilPartRotationsPacket.STREAM_CODEC, ServerboundPackets::serverboundSetRotationsPacket);

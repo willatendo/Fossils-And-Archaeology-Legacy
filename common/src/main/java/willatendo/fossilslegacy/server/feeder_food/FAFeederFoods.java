@@ -3,7 +3,6 @@ package willatendo.fossilslegacy.server.feeder_food;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
@@ -69,7 +68,8 @@ public final class FAFeederFoods {
         FAFeederFoods.register(bootstrapContext, FAItems.COOKED_VELOCIRAPTOR.get(), 100, FeederFood.FillType.MEAT);
         FAFeederFoods.register(bootstrapContext, FAItems.COOKED_TYRANNOSAURUS.get(), 100, FeederFood.FillType.MEAT);
         FAFeederFoods.register(bootstrapContext, FAItems.COOKED_PTERANODON.get(), 100, FeederFood.FillType.MEAT);
-        FAFeederFoods.register(bootstrapContext, FAItems.SIO_CHIU_LE.get(), 100, FeederFood.FillType.MEAT);
+        FAFeederFoods.register(bootstrapContext, FAItems.NAUTILUS_SIO_CHIU_LE.get(), 100, FeederFood.FillType.MEAT);
+        FAFeederFoods.register(bootstrapContext, FAItems.CENOCERAS_SIO_CHIU_LE.get(), 100, FeederFood.FillType.MEAT);
         FAFeederFoods.register(bootstrapContext, FAItems.COOKED_FUTABASAURUS.get(), 100, FeederFood.FillType.MEAT);
         FAFeederFoods.register(bootstrapContext, FAItems.COOKED_MOSASAURUS.get(), 100, FeederFood.FillType.MEAT);
         FAFeederFoods.register(bootstrapContext, FAItems.COOKED_STEGOSAURUS.get(), 100, FeederFood.FillType.MEAT);

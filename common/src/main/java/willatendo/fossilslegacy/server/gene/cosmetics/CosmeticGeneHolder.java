@@ -50,7 +50,7 @@ public record CosmeticGeneHolder(ResourceKey<ModelGene> modelGene, ResourceKey<S
     }
 
     public boolean hasPattern() {
-        return this.patternGene.isPresent();
+        return this.patternGene.isPresent() && this.patternGene.get() != (FAPatternGenes.BLANK);
     }
 
     public Component getDisplayName(HolderLookup.Provider registries) {

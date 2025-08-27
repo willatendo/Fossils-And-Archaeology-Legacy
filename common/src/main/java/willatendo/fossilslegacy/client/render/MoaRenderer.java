@@ -1,10 +1,13 @@
 package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRenderer;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Moa;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.CompositeTextureRules;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.FACompositeTextureRuleSources;
 
 public class MoaRenderer extends DataDrivenModelDinosaurRenderer<Moa, DinosaurRenderState> {
     public MoaRenderer(EntityRendererProvider.Context context) {
@@ -17,7 +20,17 @@ public class MoaRenderer extends DataDrivenModelDinosaurRenderer<Moa, DinosaurRe
     }
 
     @Override
+    public ResourceKey<CompositeTextureRules.RuleSource> getSkinCompositeTextureRuleSource() {
+        return FACompositeTextureRuleSources.MOA_SKIN;
+    }
+
+    @Override
+    public ResourceKey<CompositeTextureRules.RuleSource> getPatternCompositeTextureRuleSource() {
+        return FACompositeTextureRuleSources.MOA_PATTERN;
+    }
+
+    @Override
     public ResourceLocation getBasePath() {
-        return this.createPath("mao");
+        return this.createPath("moa");
     }
 }

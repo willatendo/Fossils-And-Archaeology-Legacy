@@ -16,7 +16,7 @@ public record PackageTextureType(PackageTextureRules.RuleSource textureRules) im
     }
 
     @Override
-    public TextureInformation apply(ChromosomedEntityRenderState chromosomedEntityRenderState, ResourceLocation path) {
+    public TextureInformation apply(ChromosomedEntityRenderState chromosomedEntityRenderState, ResourceLocation texturePath) {
         return this.textureRules.apply(chromosomedEntityRenderState).tryApply(chromosomedEntityRenderState);
     }
 }

@@ -287,8 +287,9 @@ public class FAUserManualDataProvider extends UserManualDataProvider {
         this.addSimple(FAItems.TYRANNOSAURUS_TOOTH.get(), List.of(this.mod("tooth_dagger")), List.of());
         this.addSimple(FAItems.TOOTH_DAGGER.get(), List.of(this.mod("tooth_dagger")), List.of());
         this.addSimple(FAItems.SKULL_STICK.get(), List.of(this.mod("skull_stick")), List.of());
-        this.add(FAItems.NAUTILUS_SHELL.get(), List.of(), List.of(), this.informationTranslation("nautilus_shell"));
-        this.addSimple(FAItems.MAGIC_CONCH.get(), List.of(), List.of());
+        this.add(FAItems.CENOCERAS_SHELL.get(), List.of(), List.of(), this.informationTranslation("cenoceras_shell"));
+        this.addSimple(FAItems.NAUTILUS_MAGIC_CONCH.get(), List.of(), List.of());
+        this.addSimple(FAItems.CENOCERAS_MAGIC_CONCH.get(), List.of(), List.of());
         this.addSimple(FAItems.LEGACY_GENETIC_CODE.get(), List.of(), List.of());
         Component hammerUse = this.informationTranslation("hammer.use");
         this.add(FAItems.WOODEN_HAMMER.get(), List.of(this.mod("wooden_hammer")), List.of(), this.descriptionTranslation("wooden_hammer"), hammerUse, this.readRecipes);
@@ -383,7 +384,9 @@ public class FAUserManualDataProvider extends UserManualDataProvider {
         this.add(FAItems.MAMMOTH_EMBRYO_SYRINGE.get(), List.of(), List.of(), embryoSyringeDescription, embryoSyringeUse, this.readRecipes);
         this.add(FAItems.SMILODON_EMBRYO_SYRINGE.get(), List.of(), List.of(), embryoSyringeDescription, embryoSyringeUse, this.readRecipes);
         this.add(FAItems.ARMADILLO_EMBRYO_SYRINGE.get(), List.of(), List.of(), embryoSyringeDescription, embryoSyringeUse, this.readRecipes);
+        this.add(FAItems.BAT_EMBRYO_SYRINGE.get(), List.of(), List.of(), embryoSyringeDescription, embryoSyringeUse, this.readRecipes);
         this.add(FAItems.CAT_EMBRYO_SYRINGE.get(), List.of(), List.of(), embryoSyringeDescription, embryoSyringeUse, this.readRecipes);
+        this.add(FAItems.CAMEL_EMBRYO_SYRINGE.get(), List.of(), List.of(), embryoSyringeDescription, embryoSyringeUse, this.readRecipes);
         this.add(FAItems.COW_EMBRYO_SYRINGE.get(), List.of(), List.of(), embryoSyringeDescription, embryoSyringeUse, this.readRecipes);
         this.add(FAItems.DOLPHIN_EMBRYO_SYRINGE.get(), List.of(), List.of(), embryoSyringeDescription, embryoSyringeUse, this.readRecipes);
         this.add(FAItems.DONKEY_EMBRYO_SYRINGE.get(), List.of(), List.of(), embryoSyringeDescription, embryoSyringeUse, this.readRecipes);
@@ -411,8 +414,15 @@ public class FAUserManualDataProvider extends UserManualDataProvider {
         this.add(FAItems.MOA_EGG.get(), List.of(), List.of(), thrownEggDescription, thrownEggUse, this.readRecipes);
         Component placeEggDescription = this.descriptionTranslation("placed_egg");
         Component placeEggUse = this.useTranslation("placed_egg");
+        this.add(FAItems.BEE_EGGS.get(), List.of(), List.of(), placeEggDescription, placeEggUse, this.readRecipes);
+        this.add(FAItems.CENOCERAS_EGGS.get(), List.of(), List.of(), placeEggDescription, placeEggUse, this.readRecipes);
+        this.add(FAItems.COD_EGGS.get(), List.of(), List.of(), placeEggDescription, placeEggUse, this.readRecipes);
         this.add(FAItems.ISOTELUS_EGGS.get(), List.of(), List.of(), placeEggDescription, placeEggUse, this.readRecipes);
         this.add(FAItems.NAUTILUS_EGGS.get(), List.of(), List.of(), placeEggDescription, placeEggUse, this.readRecipes);
+        this.add(FAItems.PUFFERFISH_EGGS.get(), List.of(), List.of(), placeEggDescription, placeEggUse, this.readRecipes);
+        this.add(FAItems.SALMON_EGGS.get(), List.of(), List.of(), placeEggDescription, placeEggUse, this.readRecipes);
+        this.add(FAItems.SQUID_EGGS.get(), List.of(), List.of(), placeEggDescription, placeEggUse, this.readRecipes);
+        this.add(FAItems.TROPICAL_FISH_EGGS.get(), List.of(), List.of(), placeEggDescription, placeEggUse, this.readRecipes);
         this.addSimple(FABlocks.AXOLOTLSPAWN.get(), List.of(), List.of());
         Component rawMeatDescription = this.descriptionTranslation("raw_meat");
         Component rawMeatUse = this.useTranslation("raw_meat");
@@ -443,6 +453,7 @@ public class FAUserManualDataProvider extends UserManualDataProvider {
         this.add(FAItems.RAW_TYRANNOSAURUS.get(), List.of(), List.of(), rawMeatDescription, rawMeatUse, this.readRecipes);
         this.add(FAItems.RAW_VELOCIRAPTOR.get(), List.of(), List.of(), rawMeatDescription, rawMeatUse, this.readRecipes);
         this.addSimple(FAItems.NAUTILUS.get(), List.of(), List.of());
+        this.addSimple(FAItems.CENOCERAS.get(), List.of(), List.of());
         Component cookedMeatDescription = this.descriptionTranslation("cooked_meat");
         Component cookedMeatUse = this.useTranslation("cooked_meat");
         this.add(FAItems.COOKED_ANKYLOSAURUS.get(), List.of(), List.of(), cookedMeatDescription, cookedMeatUse, this.readRecipes);
@@ -471,7 +482,7 @@ public class FAUserManualDataProvider extends UserManualDataProvider {
         this.add(FAItems.COOKED_TRICERATOPS.get(), List.of(), List.of(), cookedMeatDescription, cookedMeatUse, this.readRecipes);
         this.add(FAItems.COOKED_TYRANNOSAURUS.get(), List.of(), List.of(), cookedMeatDescription, cookedMeatUse, this.readRecipes);
         this.add(FAItems.COOKED_VELOCIRAPTOR.get(), List.of(), List.of(), cookedMeatDescription, cookedMeatUse, this.readRecipes);
-        this.add(FAItems.SIO_CHIU_LE.get(), List.of(), List.of(), cookedMeatDescription, cookedMeatUse, this.readRecipes);
+        this.add(FAItems.CENOCERAS_SIO_CHIU_LE.get(), List.of(), List.of(), cookedMeatDescription, cookedMeatUse, this.readRecipes);
         this.add(FAItems.CYCAD_DNA.get(), List.of(), List.of(), this.readRecipes);
         this.add(FAItems.GINKGO_DNA.get(), List.of(), List.of(), this.readRecipes);
         this.add(FAItems.HORSETAIL_DNA.get(), List.of(), List.of(), this.readRecipes);

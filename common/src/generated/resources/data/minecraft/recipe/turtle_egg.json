@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": "fossilslegacy:turtle_dna",
+  "result": {
+    "id": "minecraft:turtle_egg"
+  },
+  "time": 6000
+}

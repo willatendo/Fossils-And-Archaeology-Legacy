@@ -26,6 +26,7 @@ public final class PackageTextureRules {
         RULE_SOURCES.register("sequence", () -> PackageTextureRules.SequenceRuleSource.CODEC);
 
         RULE_CONDITIONS.register("is_baby", () -> PackageTextureRules.IsBabyConditionSource.CODEC);
+        RULE_CONDITIONS.register("is_tame", () -> PackageTextureRules.IsTameConditionSource.CODEC);
         RULE_CONDITIONS.register("not", () -> PackageTextureRules.NotConditionSource.CODEC);
     }
 
@@ -38,6 +39,10 @@ public final class PackageTextureRules {
     }
 
     public static PackageTextureRules.ConditionSource isBaby() {
+        return PackageTextureRules.IsBabyConditionSource.INSTANCE;
+    }
+
+    public static PackageTextureRules.ConditionSource isTame() {
         return PackageTextureRules.IsBabyConditionSource.INSTANCE;
     }
 
@@ -178,6 +183,30 @@ public final class PackageTextureRules {
                 }
             }
             return new IsBaby();
+        }
+
+        @Override
+        public MapCodec<? extends PackageTextureRules.ConditionSource> codec() {
+            return CODEC;
+        }
+    }
+
+    enum IsTameConditionSource implements PackageTextureRules.ConditionSource {
+        INSTANCE;
+        static final MapCodec<PackageTextureRules.IsTameConditionSource> CODEC = MapCodec.unit(INSTANCE);
+
+        @Override
+        public PackageTextureRules.Condition apply(ChromosomedEntityRenderState chromosomedEntityRenderState) {
+            class IsTame implements PackageTextureRules.Condition {
+                @Override
+                public boolean test() {
+                    if (chromosomedEntityRenderState instanceof DinosaurRenderState dinosaurRenderState) {
+                        return dinosaurRenderState.isTame;
+                    }
+                    return false;
+                }
+            }
+            return new IsTame();
         }
 
         @Override

@@ -10,7 +10,7 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.RegistryFileCodec;
 import willatendo.fossilslegacy.server.gene.InheritedGene;
-import willatendo.fossilslegacy.server.gene.cosmetics.texture.CompositeTextureRules;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.type.BlankTextureType;
 import willatendo.fossilslegacy.server.gene.cosmetics.texture.type.CompositeTextureType;
 import willatendo.fossilslegacy.server.gene.cosmetics.texture.type.TextureType;
 import willatendo.fossilslegacy.server.gene.inheritance.InheritanceRules;
@@ -24,10 +24,10 @@ public record PatternGene(Component patternName, int geneColor, InheritanceRules
     public static final StreamCodec<RegistryFriendlyByteBuf, Holder<PatternGene>> STREAM_CODEC = ByteBufCodecs.holderRegistry(FARegistries.PATTERN_GENE);
 
     private PatternGene() {
-        this(FAUtils.translation("pattern_gene", "blank"), 0xFFFFFF, InheritanceRules.always(), new CompositeTextureType(CompositeTextureRules.blank()));
+        this(FAUtils.translation("pattern_gene", "blank"), 0xFFFFFF, InheritanceRules.always(), BlankTextureType.INSTANCE);
     }
 
-    public static PatternGene create(Component skinName, int geneColor, InheritanceRules.RuleSource inheritanceRules, CompositeTextureRules.RuleSource compositeTextureRules) {
-        return new PatternGene(skinName, geneColor, inheritanceRules, new CompositeTextureType(compositeTextureRules));
+    public static PatternGene create(Component skinName, int geneColor, InheritanceRules.RuleSource inheritanceRules, String baseTextureName) {
+        return new PatternGene(skinName, geneColor, inheritanceRules, new CompositeTextureType(1, baseTextureName));
     }
 }

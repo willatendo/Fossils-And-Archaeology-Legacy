@@ -9,8 +9,10 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.SpawnPlacementTypes;
+import net.minecraft.world.entity.ambient.Bat;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.animal.armadillo.Armadillo;
+import net.minecraft.world.entity.animal.camel.Camel;
 import net.minecraft.world.entity.animal.goat.Goat;
 import net.minecraft.world.entity.animal.horse.Donkey;
 import net.minecraft.world.entity.animal.horse.Horse;
@@ -56,6 +58,7 @@ import willatendo.fossilslegacy.server.fuel.FuelEntry;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.CompositeTextureRules;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.item.FALootTables;
 import willatendo.fossilslegacy.server.item.FAMapDecorationTypes;
@@ -82,6 +85,7 @@ public final class BasicEvents {
 
         EggItem.EGGS.forEach(eggItem -> DispenserBlock.registerBehavior(eggItem, new DispenseEntityItemBehavior()));
         DispenserBlock.registerBehavior(FAItems.NAUTILUS_EGGS.get(), new DispenseEntityItemBehavior());
+        DispenserBlock.registerBehavior(FAItems.CENOCERAS_EGGS.get(), new DispenseEntityItemBehavior());
         DispenserBlock.registerBehavior(FAItems.NAUTILUS.get(), new DispenseEntityItemBehavior());
         DispenserBlock.registerBehavior(FAItems.ARTICULATED_FOSSIL.get(), new DispenseEntityItemBehavior());
         DispenserBlock.registerProjectileBehavior(FAItems.INCUBATED_CHICKEN_EGG.get());
@@ -256,7 +260,7 @@ public final class BasicEvents {
 
     public static void villagerTradesEvent(VillagerTradeModification villagerTradeModification) {
         villagerTradeModification.add(FAVillagerProfessions.ARCHAEOLOGIST.get(), List.of(new VillagerTrades.EmeraldForItems(FAItems.RELIC_SCRAP.get(), 5, 16, 2), new VillagerTrades.EmeraldForItems(FAItems.JADE.get(), 6, 8, 2, 10)), List.of(new VillagerTrades.ItemsAndEmeraldsToItems(FAItems.ANCIENT_SWORD_ARTIFACT.get(), 1, 30, FAItems.ANCIENT_SWORD.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FAItems.ANCIENT_AXE_ARTIFACT.get(), 1, 30, FAItems.ANCIENT_AXE.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FAItems.ANCIENT_PICKAXE_ARTIFACT.get(), 1, 30, FAItems.ANCIENT_PICKAXE.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FAItems.ANCIENT_HOE_ARTIFACT.get(), 1, 30, FAItems.ANCIENT_HOE.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FAItems.ANCIENT_SHOVEL_ARTIFACT.get(), 1, 30, FAItems.ANCIENT_SHOVEL.get(), 1, 8, 6, 15), new VillagerTrades.ItemsForEmeralds(FAItems.STONE_TABLET.get(), 10, 2, 6), new VillagerTrades.ItemsForEmeralds(FAItems.WOODEN_JAVELIN.get(), 5, 1, 6), new VillagerTrades.ItemsForEmeralds(FAItems.STONE_JAVELIN.get(), 10, 1, 6), new VillagerTrades.ItemsForEmeralds(FAItems.IRON_JAVELIN.get(), 15, 1, 6)), List.of(new VillagerTrades.ItemsAndEmeraldsToItems(FAItems.ANCIENT_HELMET_ARTIFACT.get(), 1, 30, FAItems.ANCIENT_HELMET.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FAItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 1, 30, FAItems.ANCIENT_CHESTPLATE.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FAItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 1, 30, FAItems.ANCIENT_LEGGINGS.get(), 1, 8, 6, 15), new VillagerTrades.ItemsAndEmeraldsToItems(FAItems.ANCIENT_BOOTS_ARTIFACT.get(), 1, 30, FAItems.ANCIENT_BOOTS.get(), 1, 8, 6, 15), new VillagerTrades.EmeraldForItems(FAItems.JADE_VILLAGER.get(), 1, 4, 6, 25), new VillagerTrades.EmeraldForItems(FAItems.JADE_OCELOT.get(), 1, 4, 6, 25)), List.of(new VillagerTrades.EmeraldForItems(FAItems.SCARAB_GEM_JAVELIN.get(), 1, 2, 12, 30), new VillagerTrades.ItemsForEmeralds(FAItems.GOLDEN_JAVELIN.get(), 20, 1, 12), new VillagerTrades.ItemsForEmeralds(FAItems.DIAMOND_JAVELIN.get(), 30, 1, 12)), List.of(new VillagerTrades.ItemsForEmeralds(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get(), 30, 1, 12), new VillagerTrades.EmeraldForItems(FAItems.CODEX.get(), 1, 2, 6, 30), new VillagerTrades.EmeraldForItems(FAItems.QUIPU.get(), 1, 2, 6, 30), new VillagerTrades.TreasureMapForEmeralds(20, FAStructureTags.ACADEMY, "filled_map.academy", FAMapDecorationTypes.ACADEMY, 12, 10), new VillagerTrades.TreasureMapForEmeralds(20, FAStructureTags.MACHU_PICCHU, "filled_map.machu_picchu", FAMapDecorationTypes.MACHU_PICCHU, 12, 10), new VillagerTrades.TreasureMapForEmeralds(20, FAStructureTags.MAYAN_TEMPLE, "filled_map.mayan_temple", FAMapDecorationTypes.MAYAN_TEMPLE, 12, 10), new VillagerTrades.TreasureMapForEmeralds(20, FAStructureTags.WEAPON_SHOP, "filled_map.weapon_shop", FAMapDecorationTypes.WEAPON_SHOP, 12, 10)));
-        villagerTradeModification.add(FAVillagerProfessions.PALAEONTOLOGIST.get(), List.of(new VillagerTrades.EmeraldForItems(FAItems.MESOZOIC_FOSSIL.get(), 5, 16, 2), new VillagerTrades.EmeraldForItems(FAItems.FROZEN_MEAT.get(), 5, 16, 2)), List.of(new VillagerTrades.ItemsForEmeralds(FAItems.DINOPEDIA.get(), 10, 1, 4, 4), new VillagerTrades.ItemsForEmeralds(FAItems.THERIZINOSAURUS_CLAWS.get(), 25, 1, 16, 2), new VillagerTrades.ItemsForEmeralds(FAItems.TYRANNOSAURUS_TOOTH.get(), 30, 1, 16, 2), new VillagerTrades.ItemsForEmeralds(FAItems.NAUTILUS_SHELL.get(), 10, 1, 16, 2)), List.of(new VillagerTrades.ItemsAndEmeraldsToItems(new ItemStack(FABlocks.CENOZOIC_FOSSIL_ORE.get()).getItem(), 1, 10, new ItemStack(FABlocks.DEEPSLATE_CENOZOIC_FOSSIL_ORE.get()).getItem(), 1, 8, 3, 15), new VillagerTrades.ItemsAndEmeraldsToItems(new ItemStack(FABlocks.MESOZOIC_FOSSIL_ORE.get()).getItem(), 1, 10, new ItemStack(FABlocks.DEEPSLATE_MESOZOIC_FOSSIL_ORE.get()).getItem(), 1, 8, 3, 15), new VillagerTrades.ItemsAndEmeraldsToItems(new ItemStack(FABlocks.RELIC_IN_STONE.get()).getItem(), 1, 10, new ItemStack(FABlocks.RELIC_IN_DEEPSLATE.get()).getItem(), 1, 8, 3, 15), new VillagerTrades.EmeraldForItems(new ItemStack(FABlocks.SKULL_BLOCK.get()).getItem(), 10, 16, 3), new VillagerTrades.ItemsForEmeralds(FAItems.LEPIDODENDRON_DNA.get(), 20, 1, 1, 2)), List.of(new VillagerTrades.EmeraldForItems(FAItems.JURASSIC_FERN_SPORES.get(), 3, 8, 6), new VillagerTrades.EmeraldForItems(FAItems.HORSETAIL_SPORE.get(), 3, 8, 6), new VillagerTrades.ItemsForEmeralds(FAItems.CALAMITES_SPORE.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.ARCHAEOPTERIS_SPORE.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.GINKGO_SEED.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.ARAUCARIA_CONE.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.LEPIDODENDRON_CONE.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.CYCAD_CONE.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.COOKSONIA_SPORES.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.SIGILLARIA_SPORE.get(), 20, 1, 4, 12)), List.of(new VillagerTrades.ItemsForEmeralds(FAItems.LEGACY_GENETIC_CODE.get(), 30, 1, 12)));
+        villagerTradeModification.add(FAVillagerProfessions.PALAEONTOLOGIST.get(), List.of(new VillagerTrades.EmeraldForItems(FAItems.MESOZOIC_FOSSIL.get(), 5, 16, 2), new VillagerTrades.EmeraldForItems(FAItems.FROZEN_MEAT.get(), 5, 16, 2)), List.of(new VillagerTrades.ItemsForEmeralds(FAItems.DINOPEDIA.get(), 10, 1, 4, 4), new VillagerTrades.ItemsForEmeralds(FAItems.THERIZINOSAURUS_CLAWS.get(), 25, 1, 16, 2), new VillagerTrades.ItemsForEmeralds(FAItems.TYRANNOSAURUS_TOOTH.get(), 30, 1, 16, 2), new VillagerTrades.ItemsForEmeralds(FAItems.CENOCERAS_SHELL.get(), 10, 1, 16, 2)), List.of(new VillagerTrades.ItemsAndEmeraldsToItems(new ItemStack(FABlocks.CENOZOIC_FOSSIL_ORE.get()).getItem(), 1, 10, new ItemStack(FABlocks.DEEPSLATE_CENOZOIC_FOSSIL_ORE.get()).getItem(), 1, 8, 3, 15), new VillagerTrades.ItemsAndEmeraldsToItems(new ItemStack(FABlocks.MESOZOIC_FOSSIL_ORE.get()).getItem(), 1, 10, new ItemStack(FABlocks.DEEPSLATE_MESOZOIC_FOSSIL_ORE.get()).getItem(), 1, 8, 3, 15), new VillagerTrades.ItemsAndEmeraldsToItems(new ItemStack(FABlocks.RELIC_IN_STONE.get()).getItem(), 1, 10, new ItemStack(FABlocks.RELIC_IN_DEEPSLATE.get()).getItem(), 1, 8, 3, 15), new VillagerTrades.EmeraldForItems(new ItemStack(FABlocks.SKULL_BLOCK.get()).getItem(), 10, 16, 3), new VillagerTrades.ItemsForEmeralds(FAItems.LEPIDODENDRON_DNA.get(), 20, 1, 1, 2)), List.of(new VillagerTrades.EmeraldForItems(FAItems.JURASSIC_FERN_SPORES.get(), 3, 8, 6), new VillagerTrades.EmeraldForItems(FAItems.HORSETAIL_SPORE.get(), 3, 8, 6), new VillagerTrades.ItemsForEmeralds(FAItems.CALAMITES_SPORE.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.ARCHAEOPTERIS_SPORE.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.GINKGO_SEED.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.ARAUCARIA_CONE.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.LEPIDODENDRON_CONE.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.CYCAD_CONE.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.COOKSONIA_SPORES.get(), 20, 1, 4, 12), new VillagerTrades.ItemsForEmeralds(FAItems.SIGILLARIA_SPORE.get(), 20, 1, 4, 12)), List.of(new VillagerTrades.ItemsForEmeralds(FAItems.LEGACY_GENETIC_CODE.get(), 30, 1, 12)));
     }
 
     public static void heroOfTheVillageGiftSetup(HeroOfTheVillageGiftModification heroOfTheVillageGiftModification) {
@@ -298,6 +302,7 @@ public final class BasicEvents {
     public static void newDynamicRegistryEvent(DynamicRegistryRegister dynamicRegistryRegister) {
         dynamicRegistryRegister.register(FARegistries.ANALYZER_RESULT, AnalyzerResult.CODEC);
         dynamicRegistryRegister.register(FARegistries.ANCIENT_AXE_BONUS, AncientAxeBonus.CODEC);
+        dynamicRegistryRegister.register(FARegistries.COMPOSITE_TEXTURE_RULE_SOURCE, CompositeTextureRules.RuleSource.CODEC);
         dynamicRegistryRegister.register(FARegistries.DECORATION_PLAQUE_TYPE, DecorationPlaqueType.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.DINOPEDIA_ENTRY, DinopediaEntry.CODEC);
         dynamicRegistryRegister.register(FARegistries.DINOPEDIA_TYPE, DinopediaType.CODEC);
@@ -309,7 +314,6 @@ public final class BasicEvents {
         dynamicRegistryRegister.register(FARegistries.PATTERN_GENE, PatternGene.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.SKIN_GENE, SkinGene.DIRECT_CODEC);
         dynamicRegistryRegister.register(FARegistries.STONE_TABLET_VARIANT, StoneTabletVariant.DIRECT_CODEC);
-        dynamicRegistryRegister.register(FARegistries.TEXTURE, TextureInformation.CODEC);
     }
 
     public static void attributeEvent(AttributeRegister attributeRegister) {
@@ -335,10 +339,13 @@ public final class BasicEvents {
         attributeRegister.register(FAEntityTypes.FOSSIL.get(), Fossil.fossilAttributes());
         attributeRegister.register(FAEntityTypes.MAMMOTH.get(), Mammoth.mammothAttributes());
         attributeRegister.register(FAEntityTypes.MOSASAURUS.get(), Mosasaurus.mosasaurusAttributes());
-        attributeRegister.register(FAEntityTypes.NAUTILUS.get(), Nautilus.nautilusAttributes());
+        attributeRegister.register(FAEntityTypes.NAUTILUS.get(), Nautilidae.nautilusAttributes());
+        attributeRegister.register(FAEntityTypes.CENOCERAS.get(), Nautilidae.nautilusAttributes());
         attributeRegister.register(FAEntityTypes.FUTABASAURUS.get(), Futabasaurus.futabasaurusAttributes());
         attributeRegister.register(FAEntityTypes.PACHYCEPHALOSAURUS.get(), Pachycephalosaurus.pachycephalosaurusAttributes());
         attributeRegister.register(FAEntityTypes.PREGNANT_ARMADILLO.get(), Armadillo.createAttributes().build());
+        attributeRegister.register(FAEntityTypes.PREGNANT_BAT.get(), Bat.createAttributes().build());
+        attributeRegister.register(FAEntityTypes.PREGNANT_CAMEL.get(), Camel.createAttributes().build());
         attributeRegister.register(FAEntityTypes.PREGNANT_CAT.get(), Cat.createAttributes().build());
         attributeRegister.register(FAEntityTypes.PREGNANT_COW.get(), Cow.createAttributes().build());
         attributeRegister.register(FAEntityTypes.PREGNANT_DOLPHIN.get(), Dolphin.createAttributes().build());
@@ -409,7 +416,8 @@ public final class BasicEvents {
         spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.MAMMOTH.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource) -> Mammoth.checkDinosaurSpawnRules(entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource, FABlockTags.MAMMOTH_SPAWNABLE));
         spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.MOA.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource) -> Moa.checkDinosaurSpawnRules(entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource, FABlockTags.MOA_SPAWNABLE));
         spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.MOSASAURUS.get(), SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mosasaurus::checkMosasaurusSpawnRules);
-        spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.NAUTILUS.get(), SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Nautilus::checkNautilusSpawnRules);
+        spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.NAUTILUS.get(), SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Nautilidae::checkNautilusSpawnRules);
+        spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.CENOCERAS.get(), SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Nautilidae::checkNautilusSpawnRules);
         spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.PACHYCEPHALOSAURUS.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource) -> Pachycephalosaurus.checkDinosaurSpawnRules(entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource, FABlockTags.PACHYCEPHALOSAURUS_SPAWNABLE));
         spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.PTERANODON.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource) -> Pteranodon.checkDinosaurSpawnRules(entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource, FABlockTags.PTERANODON_SPAWNABLE));
         spawnPlacementRegister.addSpawnPlacement(FAEntityTypes.SMILODON.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource) -> Smilodon.checkDinosaurSpawnRules(entityType, serverLevelAccessor, mobSpawnType, blockPos, randomSource, FABlockTags.SMILODON_SPAWNABLE));
@@ -437,6 +445,9 @@ public final class BasicEvents {
     public static void idModification(IdModification idModification) {
         idModification.updateId(BuiltInRegistries.ITEM, FAUtils.resource("gene_modification_table"), FAItems.DNA_RECOMBINATOR::get);
         idModification.updateId(BuiltInRegistries.ITEM, FAUtils.resource("fossil"), FAItems.MESOZOIC_FOSSIL::get);
+        idModification.updateId(BuiltInRegistries.ITEM, FAUtils.resource("magic_conch"), FAItems.CENOCERAS_MAGIC_CONCH::get);
+        idModification.updateId(BuiltInRegistries.ITEM, FAUtils.resource("sio_chiu_le"), FAItems.CENOCERAS_SIO_CHIU_LE::get);
+        idModification.updateId(BuiltInRegistries.ITEM, FAUtils.resource("nautilus_shell"), FAItems.CENOCERAS_SHELL::get);
         idModification.updateId(BuiltInRegistries.BLOCK, FAUtils.resource("gene_modification_table"), FABlocks.DNA_RECOMBINATOR::get);
         idModification.updateId(BuiltInRegistries.BLOCK_ENTITY_TYPE, FAUtils.resource("gene_modification_table"), FABlockEntityTypes.DNA_RECOMBINATOR::get);
         idModification.updateId(BuiltInRegistries.BLOCK, FAUtils.resource("fossil_ore"), FABlocks.MESOZOIC_FOSSIL_ORE::get);

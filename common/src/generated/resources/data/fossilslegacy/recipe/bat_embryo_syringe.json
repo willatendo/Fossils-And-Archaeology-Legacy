@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": "fossilslegacy:bat_dna",
+  "result": {
+    "id": "fossilslegacy:bat_embryo_syringe"
+  },
+  "time": 6000
+}

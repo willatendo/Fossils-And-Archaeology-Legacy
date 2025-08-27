@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:turtle_egg"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_turtle_dna": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:turtle_dna"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_turtle_dna"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:turtle_egg"
+    ]
+  }
+}

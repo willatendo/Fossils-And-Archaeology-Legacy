@@ -20,26 +20,26 @@ import java.util.function.Supplier;
 
 public class AnimalDNAItem extends DNAItem {
     private final Supplier<EntityType<? extends Mob>> entityType;
-    private final TagKey<ModelGene> applicableCoatTypes;
+    private final TagKey<ModelGene> applicableModelGenes;
 
-    public AnimalDNAItem(GeologicalTimeScale.EraDescription eraDescription, Supplier<EntityType<? extends Mob>> entityType, TagKey<ModelGene> applicableCoatTypes, Properties properties) {
+    public AnimalDNAItem(GeologicalTimeScale.EraDescription eraDescription, Supplier<EntityType<? extends Mob>> entityType, TagKey<ModelGene> applicableModelGenes, Properties properties) {
         super(eraDescription, DNAItem.EmbryoType.ANIMAL, properties);
         this.entityType = entityType;
-        this.applicableCoatTypes = applicableCoatTypes;
+        this.applicableModelGenes = applicableModelGenes;
     }
 
     public AnimalDNAItem(GeologicalTimeScale.EraDescription eraDescription, Supplier<EntityType<? extends Mob>> entityType, Properties properties) {
         super(eraDescription, DNAItem.EmbryoType.ANIMAL, properties);
         this.entityType = entityType;
-        this.applicableCoatTypes = null;
+        this.applicableModelGenes = null;
     }
 
     public Supplier<EntityType<? extends Mob>> getEntityType() {
         return this.entityType;
     }
 
-    public TagKey<ModelGene> getApplicableCoatTypes() {
-        return this.applicableCoatTypes;
+    public TagKey<ModelGene> getApplicableModelGenes() {
+        return this.applicableModelGenes;
     }
 
     @Override
@@ -47,11 +47,11 @@ public class AnimalDNAItem extends DNAItem {
         super.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
         if (itemStack.has(FADataComponents.MODEL_TYPE.get())) {
             Holder<ModelGene> holder = itemStack.get(FADataComponents.MODEL_TYPE.get());
-            tooltipComponents.add(FAUtils.translation("item", "dna.model_type", holder.value().displayInfo().modelName()).withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(FAUtils.translation("item", "dna.model_gene", holder.value().displayInfo().modelName()).withStyle(ChatFormatting.GRAY));
         }
         if (itemStack.has(FADataComponents.COSMETIC_GENE_HOLDER.get())) {
             CosmeticGeneHolder cosmeticGeneHolder = itemStack.get(FADataComponents.COSMETIC_GENE_HOLDER.get());
-            tooltipComponents.add(FAUtils.translation("item", "dna.skinGenes", cosmeticGeneHolder.getDisplayName(tooltipContext.registries())).withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(FAUtils.translation("item", "dna.skin_gene", cosmeticGeneHolder.getDisplayName(tooltipContext.registries())).withStyle(ChatFormatting.GRAY));
         }
         if (itemStack.has(FADataComponents.GENE_HOLDER.get())) {
             AttributeGeneHolder attributeGeneHolder = itemStack.get(FADataComponents.GENE_HOLDER.get());

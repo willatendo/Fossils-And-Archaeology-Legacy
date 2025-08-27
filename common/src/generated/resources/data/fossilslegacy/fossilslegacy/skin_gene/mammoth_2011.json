@@ -4,7 +4,7 @@
     "type": "fossilslegacy:always"
   },
   "skin_name": {
-    "translate": "skin.fossilslegacy.american_bison"
+    "translate": "skin_gene.fossilslegacy.american_bison"
   },
   "textures": {
     "type": "fossilslegacy:package",

@@ -24,12 +24,12 @@ import java.util.function.Supplier;
 public class EggItem extends PlaceEntityItem<Egg> {
     public static final List<EggItem> EGGS = new ArrayList<>();
     private final GeologicalTimeScale.Period period;
-    protected final TagKey<ModelGene> applicableCoatTypes;
+    protected final TagKey<ModelGene> applicableModelGenes;
 
-    public EggItem(Supplier<EntityType<Egg>> entityType, GeologicalTimeScale.Period period, TagKey<ModelGene> applicableCoatTypes, Properties properties) {
+    public EggItem(Supplier<EntityType<Egg>> entityType, GeologicalTimeScale.Period period, TagKey<ModelGene> applicableModelGenes, Properties properties) {
         super(entityType, properties);
         this.period = period;
-        this.applicableCoatTypes = applicableCoatTypes;
+        this.applicableModelGenes = applicableModelGenes;
         EggItem.EGGS.add(this);
     }
 
@@ -40,7 +40,7 @@ public class EggItem extends PlaceEntityItem<Egg> {
             egg.setChromosome2(itemStack.get(FADataComponents.CHROMOSOME_2.get()));
         } else {
             Level level = egg.level();
-            ChromosomeUtils.createRandomChromosomes(egg, level.getRandom(), this.applicableCoatTypes);
+            ChromosomeUtils.createRandomChromosomes(egg, level.getRandom(), this.applicableModelGenes);
         }
     }
 

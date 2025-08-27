@@ -10,7 +10,6 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.RegistryFileCodec;
 import willatendo.fossilslegacy.server.gene.InheritedGene;
-import willatendo.fossilslegacy.server.gene.cosmetics.texture.CompositeTextureRules;
 import willatendo.fossilslegacy.server.gene.cosmetics.texture.PackageTextureRules;
 import willatendo.fossilslegacy.server.gene.cosmetics.texture.type.CompositeTextureType;
 import willatendo.fossilslegacy.server.gene.cosmetics.texture.type.PackageTextureType;
@@ -23,8 +22,8 @@ public record SkinGene(Component skinName, int geneColor, InheritanceRules.RuleS
     public static final Codec<Holder<SkinGene>> CODEC = RegistryFileCodec.create(FARegistries.SKIN_GENE, DIRECT_CODEC);
     public static final StreamCodec<RegistryFriendlyByteBuf, Holder<SkinGene>> STREAM_CODEC = ByteBufCodecs.holderRegistry(FARegistries.SKIN_GENE);
 
-    public static SkinGene createComposite(Component skinName, int geneColor, InheritanceRules.RuleSource inheritanceRules, CompositeTextureRules.RuleSource compositeTextureRules) {
-        return new SkinGene(skinName, geneColor, inheritanceRules, new CompositeTextureType(compositeTextureRules));
+    public static SkinGene createComposite(Component skinName, int geneColor, InheritanceRules.RuleSource inheritanceRules, String textureName) {
+        return new SkinGene(skinName, geneColor, inheritanceRules, new CompositeTextureType(0, textureName));
     }
 
     public static SkinGene createPackage(Component skinName, int geneColor, InheritanceRules.RuleSource inheritanceRules, PackageTextureRules.RuleSource packageTextureRules) {

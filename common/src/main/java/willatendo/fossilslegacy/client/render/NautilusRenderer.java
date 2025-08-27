@@ -6,10 +6,10 @@ import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.FAModelLayers;
 import willatendo.fossilslegacy.client.model.dinosaur.NautilusModel;
-import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Nautilus;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Nautilidae;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
-public class NautilusRenderer extends MobRenderer<Nautilus, LivingEntityRenderState, NautilusModel> {
+public class NautilusRenderer extends MobRenderer<Nautilidae, LivingEntityRenderState, NautilusModel> {
     public static final ResourceLocation TEXTURE = FAUtils.resource("textures/entity/nautilus/nautilus.png");
 
     public NautilusRenderer(Context context) {

@@ -5,7 +5,9 @@
     "minecraft:salmon",
     "minecraft:cooked_salmon",
     "minecraft:tropical_fish",
-    "fossilslegacy:sio_chiu_le",
-    "fossilslegacy:nautilus"
+    "fossilslegacy:nautilus_sio_chiu_le",
+    "fossilslegacy:cenoceras_sio_chiu_le",
+    "fossilslegacy:nautilus",
+    "fossilslegacy:cenoceras"
   ]
 }

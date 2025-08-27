@@ -43,7 +43,8 @@ public final class FAEntityTypes {
     public static final SimpleHolder<EntityType<DistortusRex>> DISTORTUS_REX = ENTITY_TYPES.register("distortus_rex", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
     public static final SimpleHolder<EntityType<Mammoth>> MAMMOTH = ENTITY_TYPES.register("mammoth", FAEntityTypes.simple(Mammoth::new, MobCategory.CREATURE, 1.0F, 1.0F));
     public static final SimpleHolder<EntityType<Mosasaurus>> MOSASAURUS = ENTITY_TYPES.register("mosasaurus", FAEntityTypes.simple(Mosasaurus::new, MobCategory.WATER_CREATURE, 0.5F, 0.5F));
-    public static final SimpleHolder<EntityType<Nautilus>> NAUTILUS = ENTITY_TYPES.register("nautilus", FAEntityTypes.simple(Nautilus::new, MobCategory.WATER_AMBIENT, 1.0F, 0.75F));
+    public static final SimpleHolder<EntityType<Nautilidae>> NAUTILUS = ENTITY_TYPES.register("nautilus", FAEntityTypes.simple(Nautilidae::nautilus, MobCategory.WATER_AMBIENT, 1.0F, 0.75F));
+    public static final SimpleHolder<EntityType<Nautilidae>> CENOCERAS = ENTITY_TYPES.register("cenoceras", FAEntityTypes.simple(Nautilidae::cenoceras, MobCategory.WATER_AMBIENT, 1.0F, 0.75F));
     public static final SimpleHolder<EntityType<Futabasaurus>> FUTABASAURUS = ENTITY_TYPES.register("futabasaurus", FAEntityTypes.simple(Futabasaurus::new, MobCategory.WATER_CREATURE, 1.0F, 0.65F));
     public static final SimpleHolder<EntityType<Pteranodon>> PTERANODON = ENTITY_TYPES.register("pteranodon", FAEntityTypes.simple(Pteranodon::new, MobCategory.CREATURE, 0.5F, 0.5F));
     public static final SimpleHolder<EntityType<Smilodon>> SMILODON = ENTITY_TYPES.register("smilodon", FAEntityTypes.simple(Smilodon::new, MobCategory.CREATURE, 1.5F, 1.5F));
@@ -93,6 +94,8 @@ public final class FAEntityTypes {
     public static final SimpleHolder<EntityType<Egg>> VELOCIRAPTOR_EGG = FAEntityTypes.registerLandEgg("velociraptor_egg", FAItems.VELOCIRAPTOR_EGG::get, FAEntityTypes.VELOCIRAPTOR);
 
     public static final SimpleHolder<EntityType<PregnantArmadillo>> PREGNANT_ARMADILLO = ENTITY_TYPES.register("pregnant_armadillo", FAEntityTypes.simple(PregnantArmadillo::new, MobCategory.CREATURE, 0.7F, 0.65F));
+    public static final SimpleHolder<EntityType<PregnantBat>> PREGNANT_BAT = ENTITY_TYPES.register("pregnant_bat", FAEntityTypes.simple(PregnantBat::new, MobCategory.AMBIENT, 0.5F, 0.9F).eyeHeight(0.45F).clientTrackingRange(5));
+    public static final SimpleHolder<EntityType<PregnantCamel>> PREGNANT_CAMEL = ENTITY_TYPES.register("pregnant_camel", FAEntityTypes.simple(PregnantCamel::new, MobCategory.CREATURE, 1.7F, 2.375F).eyeHeight(2.275F).clientTrackingRange(10));
     public static final SimpleHolder<EntityType<PregnantCat>> PREGNANT_CAT = ENTITY_TYPES.register("pregnant_cat", FAEntityTypes.simple(PregnantCat::new, MobCategory.CREATURE, 0.6F, 0.7F));
     public static final SimpleHolder<EntityType<PregnantCow>> PREGNANT_COW = ENTITY_TYPES.register("pregnant_cow", FAEntityTypes.simple(PregnantCow::new, MobCategory.CREATURE, 0.9F, 1.4F));
     public static final SimpleHolder<EntityType<PregnantDolphin>> PREGNANT_DOLPHIN = ENTITY_TYPES.register("pregnant_dolphin", FAEntityTypes.simple(PregnantDolphin::new, MobCategory.WATER_CREATURE, 0.9F, 0.6F));

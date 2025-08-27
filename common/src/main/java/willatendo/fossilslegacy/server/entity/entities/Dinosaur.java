@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.server.entity.entities;
 
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -106,6 +107,11 @@ public abstract class Dinosaur extends Animal implements ChromosomedEntity, Comm
     @Override
     public Registry<PatternGene> getPatternGeneRegistry() {
         return this.patternGeneRegistry;
+    }
+
+    @Override
+    protected int getBaseExperienceReward(ServerLevel serverLevel) {
+        return super.getBaseExperienceReward(serverLevel) * this.getGrowthStage();
     }
 
     @Override
@@ -299,17 +305,11 @@ public abstract class Dinosaur extends Animal implements ChromosomedEntity, Comm
     public boolean canMate(Animal animal) {
         if (animal == this) {
             return false;
-        } else if (!this.isTame()) {
-            return false;
         } else if (!(animal instanceof Dinosaur)) {
             return false;
         } else {
             Dinosaur dinosaur = (Dinosaur) animal;
-            if (!dinosaur.isTame()) {
-                return false;
-            } else {
-                return this.isInLove() && dinosaur.isInLove();
-            }
+            return animal.getClass() == this.getClass() && this.isInLove() && dinosaur.isInLove();
         }
     }
 
@@ -329,35 +329,59 @@ public abstract class Dinosaur extends Animal implements ChromosomedEntity, Comm
             }
         }
 
-        if (this.getDiet().getItemStackFoodValue(itemStack) > 0) {
-            int addition = this.getHunger() + this.getDiet().getItemStackFoodValue(itemStack);
-            if (!(addition > this.getMaxHunger())) {
-                this.setHunger(addition);
-            } else {
-                this.setHunger(this.getMaxHunger());
-                if (!this.level().isClientSide && !this.isBaby() && this.canFallInLove()) {
-                    this.usePlayerItem(player, interactionHand, itemStack);
-                    this.setInLove(player);
-                    return InteractionResult.SUCCESS;
+        int foodValue = this.getDiet().getItemStackFoodValue(itemStack);
+        if (foodValue > 0) {
+            if (this.getHunger() < this.getMaxHunger()) {
+                int addition = this.getHunger() + foodValue;
+                if (addition < this.getMaxHunger()) {
+                    this.setHunger(addition);
+                    itemStack.shrink(1);
+                    this.playEatingSound();
                 } else {
+                    this.setHunger(this.getMaxHunger());
+                    itemStack.shrink(1);
+                    this.playEatingSound();
+
                     if (player instanceof ServerPlayer serverPlayer) {
                         this.sendMessageToPlayer(DinoSituation.FULL, serverPlayer);
                     }
                 }
+                if (this.isBaby()) {
+                    this.tryToTame(player);
+                }
+            } else {
+                if (player instanceof ServerPlayer serverPlayer) {
+                    this.sendMessageToPlayer(DinoSituation.FULL, serverPlayer);
+                }
             }
-            itemStack.shrink(1);
             return InteractionResult.SUCCESS;
         }
 
         if (itemStack.is(FAItems.ROMANTIC_CONCOCTION_BOTTLE.get())) {
-            if (!this.level().isClientSide() && this.isTame() && !this.isBaby() && this.canFallInLove()) {
+            if (!this.level().isClientSide() && !this.isBaby() && this.canFallInLove()) {
                 this.usePlayerItem(player, interactionHand, itemStack);
                 this.setInLove(player);
+                this.playEatingSound();
                 return InteractionResult.SUCCESS;
             }
         }
 
         return this.additionalInteractions(player, vec3, interactionHand);
+    }
+
+    private void tryToTame(Player player) {
+        if (this.random.nextInt(3) == 0) {
+            this.setOwnerUUID(player.getUUID(), true);
+            if (player instanceof ServerPlayer serverPlayer) {
+                CriteriaTriggers.TAME_ANIMAL.trigger(serverPlayer, this);
+            }
+            this.navigation.stop();
+            this.setTarget(null);
+            this.setCommand(FACommandTypes.STAY);
+            this.level().broadcastEntityEvent(this, (byte) 7);
+        } else {
+            this.level().broadcastEntityEvent(this, (byte) 6);
+        }
     }
 
     @Override

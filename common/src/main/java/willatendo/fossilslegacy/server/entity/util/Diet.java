@@ -10,7 +10,7 @@ import net.minecraft.world.entity.animal.goat.Goat;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
-import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Nautilus;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Nautilidae;
 import willatendo.fossilslegacy.server.feeder_food.FeederFood;
 import willatendo.fossilslegacy.server.tags.FAItemTags;
 
@@ -45,7 +45,7 @@ public interface Diet {
 
             @Override
             public int getEntityFoodValue(Entity entity) {
-                if (entity instanceof Nautilus) {
+                if (entity instanceof Nautilidae) {
                     return 100;
                 }
                 return 5;

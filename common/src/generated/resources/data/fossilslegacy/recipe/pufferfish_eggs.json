@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": "fossilslegacy:pufferfish_dna",
+  "result": {
+    "id": "fossilslegacy:pufferfish_eggs"
+  },
+  "time": 6000
+}

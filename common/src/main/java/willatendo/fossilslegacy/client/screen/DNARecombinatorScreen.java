@@ -49,8 +49,8 @@ import willatendo.fossilslegacy.server.menu.menus.DNARecombinatorMenu;
 import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.tags.FAModelGeneTags;
-import willatendo.fossilslegacy.server.tags.FAPatternTags;
-import willatendo.fossilslegacy.server.tags.FASkinTags;
+import willatendo.fossilslegacy.server.tags.FAPatternGeneTags;
+import willatendo.fossilslegacy.server.tags.FASkinGeneTags;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.Arrays;
@@ -140,7 +140,7 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
                 this.drawCenteredStringNoShadow(guiGraphics, this.font, FAUtils.translation("container", "dna_recombinator.navigation", this.geneSelection + 1, 2), this.leftPos + 120, this.topPos + 60, 0x404040);
                 guiGraphics.blitSprite(RenderType::guiTextured, GENE_SPRITE, this.leftPos + 46, this.topPos + 60, 22, 8, this.geneSelection == 1 ? ARGB.colorFromFloat(1.0F, 0.87F, 0.47F, 0.12F) : ARGB.colorFromFloat(1.0F, 0.45F, 0.6F, 0.74F));
                 if (this.geneSelection == 0) {
-                    TagKey<ModelGene> applicableModelTypes = animalDNAItem.getApplicableCoatTypes();
+                    TagKey<ModelGene> applicableModelTypes = animalDNAItem.getApplicableModelGenes();
 
                     if (applicableModelTypes != null) {
                         HolderGetter<ModelGene> modelTypeHolderGetter = clientLevel.holderLookup(FARegistries.MODEL_GENE);
@@ -179,7 +179,7 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
                     if (this.modelTypeLength > 0) {
                         HolderSet.Named<SkinGene> skinsHolderSet = skinHolderGetter.getOrThrow(this.modelGenes[this.modelTypeSelection].value().skinGenes());
                         List<Holder<SkinGene>> filteredSkinsHolderSet = Lists.newArrayList();
-                        filteredSkinsHolderSet.addAll(skinsHolderSet.stream().filter(skinGeneHolder -> !skinGeneHolder.is(FASkinTags.LOCKED)).toList());
+                        filteredSkinsHolderSet.addAll(skinsHolderSet.stream().filter(skinGeneHolder -> !skinGeneHolder.is(FASkinGeneTags.LOCKED)).toList());
 
                         for (int i = 0; i < 3; i++) {
                             if (this.getMenu().hasExtraGeneticCodeInSlot(i)) {
@@ -208,7 +208,7 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
                         HolderGetter<PatternGene> patternHolderGetter = clientLevel.holderLookup(FARegistries.PATTERN_GENE);
                         HolderSet.Named<PatternGene> patternsHolderSet = patternHolderGetter.getOrThrow(this.modelGenes[this.modelTypeSelection].value().patternGenes());
                         List<Holder<PatternGene>> filteredPatternsHolderSet = Lists.newArrayList();
-                        filteredPatternsHolderSet.addAll(patternsHolderSet.stream().filter(modelTypeHolder -> !modelTypeHolder.is(FAPatternTags.LOCKED)).toList());
+                        filteredPatternsHolderSet.addAll(patternsHolderSet.stream().filter(modelTypeHolder -> !modelTypeHolder.is(FAPatternGeneTags.LOCKED)).toList());
 
                         for (int i = 0; i < 3; i++) {
                             if (this.getMenu().hasExtraGeneticCodeInSlot(i)) {
@@ -269,7 +269,7 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
                         this.skinSelection = this.skinLength - 1;
                     }
 
-                    if (this.selectedGene == 3 && !this.skinGenes[this.skinSelection].is(FASkinTags.HAS_PATTERNS)) {
+                    if (this.selectedGene == 3 && !this.skinGenes[this.skinSelection].is(FASkinGeneTags.HAS_PATTERNS)) {
                         this.selectedGene = 1;
                     }
 
@@ -289,7 +289,7 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
                         float skinBlue = (skinGene.value().geneColor() & 0xFF) / 255.0F;
                         guiGraphics.blitSprite(RenderType::guiTextured, GENE_SPRITE, this.leftPos + 46, this.topPos + 94, 22, 8, ARGB.colorFromFloat(1.0F, skinRed, skinGreen, skinBlue));
                         this.drawCenteredStringNoShadow(guiGraphics, this.font, FAUtils.translation("container", "dna_recombinator.navigation", this.skinSelection + 1, this.skinLength), this.leftPos + 120, this.topPos + 94, 0x404040);
-                        if (this.patternGenes.length > 0 && skinGene.is(FASkinTags.HAS_PATTERNS)) {
+                        if (this.patternGenes.length > 0 && skinGene.is(FASkinGeneTags.HAS_PATTERNS)) {
                             Holder<PatternGene> patternGene = this.patternGenes[this.patternSelection];
                             float patternRed = ((patternGene.value().geneColor() & 0xFF0000) >> 16) / 255.0F;
                             float patternGreen = ((patternGene.value().geneColor() & 0xFF00) >> 8) / 255.0F;
@@ -479,7 +479,7 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
                 List<Component> tooltip = Lists.newArrayList();
                 if (this.geneSelection == 0) {
                     Holder<PatternGene> pattern = this.patternGenes[this.patternSelection];
-                    if (!pattern.is(FAPatternGenes.BLANK) || this.skinGenes[this.skinSelection].is(FASkinTags.HAS_PATTERNS)) {
+                    if (!pattern.is(FAPatternGenes.BLANK) || this.skinGenes[this.skinSelection].is(FASkinGeneTags.HAS_PATTERNS)) {
                         tooltip.add(pattern.value().patternName());
                         if (this.minecraft.options.advancedItemTooltips) {
                             tooltip.add(Component.literal(this.patternGenesRegistry.getKey(pattern.value()).toString()).withStyle(ChatFormatting.DARK_GRAY));
@@ -603,7 +603,7 @@ public class DNARecombinatorScreen extends AbstractContainerScreen<DNARecombinat
             return true;
         }
         if (FAKeys.NAVIGATE_DOWN.matches(keyCode, keyCode)) {
-            if (this.selectedGene < 3 && (this.selectedGene + 1 != 3 || this.skinGenes[this.skinSelection].is(FASkinTags.HAS_PATTERNS))) {
+            if (this.selectedGene < 3 && (this.selectedGene + 1 != 3 || this.skinGenes[this.skinSelection].is(FASkinGeneTags.HAS_PATTERNS))) {
                 this.selectedGene++;
             }
             return true;

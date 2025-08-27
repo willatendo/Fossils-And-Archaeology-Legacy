@@ -4,7 +4,7 @@
     "type": "fossilslegacy:always"
   },
   "skin_name": {
-    "translate": "skin.fossilslegacy.domestic_pigeon"
+    "translate": "skin_gene.fossilslegacy.domestic_pigeon"
   },
   "textures": {
     "type": "fossilslegacy:package",

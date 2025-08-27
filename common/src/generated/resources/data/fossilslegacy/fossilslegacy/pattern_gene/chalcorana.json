@@ -8,10 +8,7 @@
   },
   "textures": {
     "type": "fossilslegacy:composite",
-    "texture_rules": {
-      "type": "fossilslegacy:composite_texture",
-      "layer": "layer1",
-      "texture_name": "chalcorana"
-    }
+    "base_texture_name": "chalcorana",
+    "layer": 1
   }
 }

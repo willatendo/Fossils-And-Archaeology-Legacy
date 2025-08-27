@@ -26,7 +26,7 @@ public class MagicConchRecipe extends CustomRecipe {
 
         for (int slot = 0; slot < craftingInput.size(); ++slot) {
             ItemStack itemStackInSlot = craftingInput.getItem(slot);
-            if (itemStackInSlot.is(FAItems.MAGIC_CONCH.get())) {
+            if (itemStackInSlot.is(FAItems.CENOCERAS_MAGIC_CONCH.get()) || itemStackInSlot.is(FAItems.NAUTILUS_MAGIC_CONCH.get())) {
                 itemStack = itemStackInSlot;
             }
         }
@@ -36,12 +36,13 @@ public class MagicConchRecipe extends CustomRecipe {
 
     @Override
     public ItemStack assemble(CraftingInput craftingInput, HolderLookup.Provider provider) {
-        ItemStack itemStack = FAItems.MAGIC_CONCH.get().getDefaultInstance();
+        ItemStack itemStack = new ItemStack(FAItems.CENOCERAS_MAGIC_CONCH.get());
         Holder<CommandType> nextOrder = FACommandTypes.FOLLOW;
 
         for (int slot = 0; slot < craftingInput.size(); ++slot) {
             ItemStack itemStackInSlot = craftingInput.getItem(slot);
             if (!itemStackInSlot.isEmpty() && itemStackInSlot.getItem() instanceof MagicConchItem) {
+                itemStack = itemStackInSlot;
                 nextOrder = CommandType.getNext(MagicConchItem.getOrder(itemStackInSlot));
             }
         }

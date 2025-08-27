@@ -4,6 +4,7 @@ import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -65,7 +66,8 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
         this.add(FAEntityTypes.ISOTELUS_LARVA.get(), LootTable.lootTable());
         this.add(FAEntityTypes.MAMMOTH.get(), this.createDinosaurTable(8, 0.0F, 3.0F, Items.LEATHER, 1.0F, 3.0F, FAItems.RAW_MAMMOTH.get()));
         this.add(FAEntityTypes.MOSASAURUS.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_MOSASAURUS.get()));
-        this.add(FAEntityTypes.NAUTILUS.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootRandomItem.randomItem(5, new RandomItemEntry(FAItems.NAUTILUS_SHELL.get(), 0, 3), new RandomItemEntry(FAItems.MAGIC_CONCH.get(), 3, 5)))));
+        this.add(FAEntityTypes.NAUTILUS.get(), this.createNautilusTable(Items.NAUTILUS_SHELL, FAItems.NAUTILUS_MAGIC_CONCH.get()));
+        this.add(FAEntityTypes.CENOCERAS.get(), this.createNautilusTable(FAItems.CENOCERAS_SHELL.get(), FAItems.CENOCERAS_MAGIC_CONCH.get()));
         this.add(FAEntityTypes.PACHYCEPHALOSAURUS.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_PACHYCEPHALOSAURUS.get()));
         this.add(FAEntityTypes.PTERANODON.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_PTERANODON.get()));
         this.add(FAEntityTypes.SMILODON.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_SMILODON.get()));
@@ -99,6 +101,8 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
         this.add(FAEntityTypes.VELOCIRAPTOR_EGG.get(), this.createEggTable(FAItems.VELOCIRAPTOR_EGG.get()));
 
         this.add(FAEntityTypes.PREGNANT_ARMADILLO.get(), LootTable.lootTable());
+        this.add(FAEntityTypes.PREGNANT_BAT.get(), LootTable.lootTable());
+        this.add(FAEntityTypes.PREGNANT_CAMEL.get(), LootTable.lootTable());
         this.add(FAEntityTypes.PREGNANT_CAT.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.STRING).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))))));
         this.add(FAEntityTypes.PREGNANT_COW.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.LEATHER).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.BEEF).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))))));
         this.add(FAEntityTypes.PREGNANT_DOLPHIN.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.COD).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F))).apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))).apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())))));
@@ -130,6 +134,10 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
 
     protected LootTable.Builder createDinosaurTable(int growthStages, float min, float max, ItemLike rawMeat) {
         return this.createDinosaurTable(growthStages, Optional.empty(), Optional.empty(), Optional.empty(), min, max, rawMeat);
+    }
+
+    protected LootTable.Builder createNautilusTable(Item shell, Item magicConch) {
+        return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootRandomItem.randomItem(5, new RandomItemEntry(shell, 0, 3), new RandomItemEntry(magicConch, 3, 5))));
     }
 
     protected LootTable.Builder createDinosaurTable(int growthStages, Optional<Float> minAdditional, Optional<Float> maxAdditional, Optional<ItemLike> additionalDrop, float min, float max, ItemLike rawMeat) {

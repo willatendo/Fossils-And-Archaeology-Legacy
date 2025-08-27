@@ -82,6 +82,7 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.MAMMOTH.get(), MammothRenderer::new);
         modelRegister.register(FAEntityTypes.MOSASAURUS.get(), MosasaurusRenderer::new);
         modelRegister.register(FAEntityTypes.NAUTILUS.get(), NautilusRenderer::new);
+        modelRegister.register(FAEntityTypes.CENOCERAS.get(), CenocerasRenderer::new);
         modelRegister.register(FAEntityTypes.ELASMOTHERIUM.get(), ElasmotheriumRenderer::new);
         modelRegister.register(FAEntityTypes.FUTABASAURUS.get(), FutabasaurusRenderer::new);
         modelRegister.register(FAEntityTypes.GALLIMIMUS.get(), GallimimusRenderer::new);
@@ -125,6 +126,8 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.FAILURESAURUS.get(), FailuresaurusRenderer::new);
         modelRegister.register(FAEntityTypes.TAMED_ZOMBIFIED_PIGLIN.get(), context -> new TamedZombifiedPiglinRenderer(context, ModelLayers.ZOMBIFIED_PIGLIN, ModelLayers.ZOMBIFIED_PIGLIN_BABY, ModelLayers.ZOMBIFIED_PIGLIN_INNER_ARMOR, ModelLayers.ZOMBIFIED_PIGLIN_OUTER_ARMOR, ModelLayers.ZOMBIFIED_PIGLIN_BABY_INNER_ARMOR, ModelLayers.ZOMBIFIED_PIGLIN_BABY_OUTER_ARMOR));
         modelRegister.register(FAEntityTypes.PREGNANT_ARMADILLO.get(), ArmadilloRenderer::new);
+        modelRegister.register(FAEntityTypes.PREGNANT_BAT.get(), BatRenderer::new);
+        modelRegister.register(FAEntityTypes.PREGNANT_CAMEL.get(), CamelRenderer::new);
         modelRegister.register(FAEntityTypes.PREGNANT_CAT.get(), CatRenderer::new);
         modelRegister.register(FAEntityTypes.PREGNANT_COW.get(), CowRenderer::new);
         modelRegister.register(FAEntityTypes.PREGNANT_DOLPHIN.get(), DolphinRenderer::new);

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "fossilslegacy:random_item",
+          "entries": [
+            {
+              "hit_from": 0,
+              "hit_to": 3,
+              "item": "fossilslegacy:cenoceras_shell"
+            },
+            {
+              "hit_from": 3,
+              "hit_to": 5,
+              "item": "fossilslegacy:cenoceras_magic_conch"
+            }
+          ],
+          "max_weight": 5
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "fossilslegacy:entities/cenoceras"
+}

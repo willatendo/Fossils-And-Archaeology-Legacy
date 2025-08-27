@@ -1,4 +1,4 @@
-// 1.21.4	2025-07-27T21:28:57.1575483	Advancements
+// 1.21.4	2025-08-23T23:52:42.160393	Advancements
 72990a203ca07e691c88e4c1074cb390275b4a6e data/fossilslegacy/advancement/legacy/all_jade.json
 d5d7600aa9f8326f8ae7b0d6f872b8ed6b5e69e4 data/fossilslegacy/advancement/legacy/all_trees.json
 7883f450064c72c20a88e2f207fdcdfed78a6d9d data/fossilslegacy/advancement/legacy/analyzer.json
@@ -19,7 +19,7 @@ eff6c4452e05f8a9d5096fdeda3b239950942a7e data/fossilslegacy/advancement/legacy/d
 a260458ece3690bbf85fb490b15676338ae83cc3 data/fossilslegacy/advancement/legacy/discover_moai.json
 fbc084696cad41e4cf20cea07931929841416bea data/fossilslegacy/advancement/legacy/discover_totem_pole.json
 f694ac6f89e4a10b88b3dff8f752016da1fd44a9 data/fossilslegacy/advancement/legacy/discover_weapon_shop.json
-fa907bf04bf35cd8d7e3533f0b45223f6ca177ba data/fossilslegacy/advancement/legacy/dollys_legacy.json
+75dd550015cf303a8a5b16622d7adcd46088ce04 data/fossilslegacy/advancement/legacy/dollys_legacy.json
 4e56484a55e9a76eea99e6ded8c77a57a1d59266 data/fossilslegacy/advancement/legacy/extinct_since_the_cretaceous.json
 e3c3a37253ae96dce8dea2c661aa2516248bb889 data/fossilslegacy/advancement/legacy/fixed_ancient_armor.json
 e0f2a78101a1d4dc284ec6544cb124e16a9ce45a data/fossilslegacy/advancement/legacy/flocking.json

@@ -14,5 +14,5 @@ public interface TextureType {
 
     MapCodec<? extends TextureType> codec();
 
-    TextureInformation apply(ChromosomedEntityRenderState chromosomedEntityRenderState, ResourceLocation path);
+    TextureInformation apply(ChromosomedEntityRenderState chromosomedEntityRenderState, ResourceLocation texturePath);
 }

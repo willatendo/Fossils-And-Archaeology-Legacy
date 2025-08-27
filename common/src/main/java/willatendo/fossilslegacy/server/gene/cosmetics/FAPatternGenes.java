@@ -35,7 +35,7 @@ public final class FAPatternGenes {
                         FAUtils.translation("pattern_gene", "chalcorana"),
                         0x72A03C,
                         InheritanceRules.always(),
-                        CompositeTextureRules.layer1("chalcorana")
+                        "chalcorana"
                 )
         );
         FAPatternGenes.register(
@@ -45,7 +45,7 @@ public final class FAPatternGenes {
                         FAUtils.translation("pattern_gene", "lithobates"), 
                         0x38220B,
                         InheritanceRules.always(),
-                        CompositeTextureRules.layer1("lithobates")
+                        "lithobates"
                 )
         );
         FAPatternGenes.register(
@@ -55,7 +55,7 @@ public final class FAPatternGenes {
                         FAUtils.translation("pattern_gene", "papurana"),
                         0xBD5F1C,
                         InheritanceRules.always(),
-                        CompositeTextureRules.layer1("papurana")
+                        "papurana"
                 )
         );
         FAPatternGenes.register(
@@ -65,7 +65,7 @@ public final class FAPatternGenes {
                         FAUtils.translation("pattern_gene", "pelophylax"), 
                         0x45B58F,
                         InheritanceRules.always(),
-                        CompositeTextureRules.layer1("pelophylax")
+                        "pelophylax"
                 )
         );
         FAPatternGenes.register(
@@ -75,7 +75,7 @@ public final class FAPatternGenes {
                         FAUtils.translation("pattern_gene", "pulchrana"), 
                         0x241D16,
                         InheritanceRules.always(),
-                        CompositeTextureRules.layer1("pulchrana")
+                        "pulchrana"
                 )
         );
         FAPatternGenes.register(
@@ -85,7 +85,7 @@ public final class FAPatternGenes {
                         FAUtils.translation("pattern_gene", "rana"), 
                         0x48290A,
                         InheritanceRules.always(),
-                        CompositeTextureRules.layer1("rana")
+                        "rana"
                 )
         );
     }

@@ -7,6 +7,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -30,7 +31,7 @@ import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
 import willatendo.fossilslegacy.server.item.FAItems;
 
 public class ThrownAnimalEgg extends ThrowableItemProjectile implements ChromosomedEntity {
-    private EntityType<? extends Animal> animal;
+    private EntityType<? extends AgeableMob> animal;
     private Chromosome chromosome1;
     private Chromosome chromosome2;
     private boolean incubated;
@@ -41,13 +42,13 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements Chromoso
         this.incubated = false;
     }
 
-    public ThrownAnimalEgg(Level level, LivingEntity livingEntity, EntityType<? extends Animal> animal, boolean incubated, ItemStack itemStack) {
+    public ThrownAnimalEgg(Level level, LivingEntity livingEntity, EntityType<? extends AgeableMob> animal, boolean incubated, ItemStack itemStack) {
         super(FAEntityTypes.THROWN_INCUBATED_EGG.get(), livingEntity, level, itemStack);
         this.animal = animal;
         this.incubated = incubated;
     }
 
-    public ThrownAnimalEgg(Level level, double x, double y, double z, EntityType<? extends Animal> animal, boolean incubated, ItemStack itemStack) {
+    public ThrownAnimalEgg(Level level, double x, double y, double z, EntityType<? extends AgeableMob> animal, boolean incubated, ItemStack itemStack) {
         super(FAEntityTypes.THROWN_INCUBATED_EGG.get(), x, y, z, level, itemStack);
         this.animal = animal;
         this.incubated = incubated;
@@ -80,7 +81,7 @@ public class ThrownAnimalEgg extends ThrowableItemProjectile implements Chromoso
                 }
 
                 for (int animals = 0; animals < i; ++animals) {
-                    Animal animalToSpawn = this.animal.create(this.level(), EntitySpawnReason.TRIGGERED);
+                    AgeableMob animalToSpawn = this.animal.create(this.level(), EntitySpawnReason.TRIGGERED);
                     animalToSpawn.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
                     if (animalToSpawn instanceof ChromosomedEntity chromosomedEntity && this.chromosome1 != null && this.chromosome2 != null) {
                         chromosomedEntity.setChromosome1(this.chromosome1);

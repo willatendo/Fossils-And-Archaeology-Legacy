@@ -4,7 +4,7 @@
     "type": "fossilslegacy:always"
   },
   "skin_name": {
-    "translate": "skin.fossilslegacy.broadhead_skink"
+    "translate": "skin_gene.fossilslegacy.broadhead_skink"
   },
   "textures": {
     "type": "fossilslegacy:package",

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_salmon_dna": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:salmon_dna"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:salmon_eggs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_salmon_dna"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:salmon_eggs"
+    ]
+  }
+}

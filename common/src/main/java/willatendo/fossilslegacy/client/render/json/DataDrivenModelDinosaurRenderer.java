@@ -5,7 +5,7 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ARGB;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
@@ -18,8 +18,9 @@ import willatendo.fossilslegacy.server.entity.util.interfaces.ChromosomedEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.ShakingEntity;
 import willatendo.fossilslegacy.server.entity.util.interfaces.WetFurEntity;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
-import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.CompositeTextureRules;
 import willatendo.fossilslegacy.server.gene.cosmetics.texture.TextureInformation;
+import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.Optional;
@@ -33,10 +34,19 @@ public abstract class DataDrivenModelDinosaurRenderer<T extends Dinosaur & Chrom
         this.addLayer(new PatternLayer<>(this));
     }
 
+    public abstract ResourceKey<CompositeTextureRules.RuleSource> getSkinCompositeTextureRuleSource();
+
+    public abstract ResourceKey<CompositeTextureRules.RuleSource> getPatternCompositeTextureRuleSource();
+
     public abstract ResourceLocation getBasePath();
 
-    public TextureInformation getTextureInformation(S dinosaurRenderState) {
+    public TextureInformation getSkinTextureInformation(S dinosaurRenderState) {
         TextureInformation textureInformation = dinosaurRenderState.skinGene.value().textures().apply(dinosaurRenderState, this.getBasePath());
+        return textureInformation.texture().isPresent() ? textureInformation : TextureInformation.empty();
+    }
+
+    public TextureInformation getPatternTextureInformation(S dinosaurRenderState) {
+        TextureInformation textureInformation = dinosaurRenderState.patternGene.value().textures().apply(dinosaurRenderState, this.getBasePath());
         return textureInformation.texture().isPresent() ? textureInformation : TextureInformation.empty();
     }
 
@@ -45,10 +55,6 @@ public abstract class DataDrivenModelDinosaurRenderer<T extends Dinosaur & Chrom
     }
 
     public Optional<ResourceLocation> getAdditionalModel(S dinosaurRenderState, ModelGene modelGene) {
-        return Optional.empty();
-    }
-
-    protected Optional<ResourceLocation> getAdditionalTexture(Registry<TextureInformation> textureRegistry, S dinosaurRenderState, SkinGene skinGene) {
         return Optional.empty();
     }
 
@@ -71,6 +77,8 @@ public abstract class DataDrivenModelDinosaurRenderer<T extends Dinosaur & Chrom
     public void extractRenderState(T dinosaur, S dinosaurRenderState, float partialTick) {
         super.extractRenderState(dinosaur, dinosaurRenderState, partialTick);
         dinosaurRenderState.type = dinosaur.getType();
+        dinosaurRenderState.skinCompositeTextureRuleSource = dinosaur.registryAccess().lookupOrThrow(FARegistries.COMPOSITE_TEXTURE_RULE_SOURCE).getOrThrow(this.getSkinCompositeTextureRuleSource());
+        dinosaurRenderState.patternCompositeTextureRuleSource = dinosaur.registryAccess().lookupOrThrow(FARegistries.COMPOSITE_TEXTURE_RULE_SOURCE).getOrThrow(this.getPatternCompositeTextureRuleSource());
         dinosaurRenderState.modelGene = dinosaur.getModelGene(dinosaur.modelGeneRegistry);
         dinosaurRenderState.skinGene = dinosaur.getSkinGene(dinosaur.skinGeneRegistry);
         dinosaurRenderState.patternGene = dinosaur.getPatternGene(dinosaur.patternGeneRegistry);
@@ -135,7 +143,7 @@ public abstract class DataDrivenModelDinosaurRenderer<T extends Dinosaur & Chrom
 
     @Override
     public ResourceLocation getTextureLocation(S dinosaurRenderState) {
-        TextureInformation textureInformation = this.getTextureInformation(dinosaurRenderState);
+        TextureInformation textureInformation = this.getSkinTextureInformation(dinosaurRenderState);
         return textureInformation.texture().isPresent() ? textureInformation.texture().get() : null;
     }
 }

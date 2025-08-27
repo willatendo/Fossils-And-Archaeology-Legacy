@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": "fossilslegacy:bee_dna",
+  "result": {
+    "id": "fossilslegacy:bee_eggs"
+  },
+  "time": 6000
+}

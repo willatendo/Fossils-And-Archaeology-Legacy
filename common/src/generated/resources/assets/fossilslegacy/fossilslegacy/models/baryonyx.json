@@ -1,10 +1,56 @@
 {
   "animations": {
+    "sleep": [
+      "fossilslegacy:baryonyx_sleep"
+    ],
     "walk": [
       "fossilslegacy:baryonyx_walk"
     ]
   },
   "elements": [
+    {
+      "boxes": [
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 32,
+          "x_dimension": 4.0,
+          "x_origin": -2.0,
+          "y_dimension": 6.0,
+          "y_origin": -3.0,
+          "z_dimension": 6.0,
+          "z_origin": -9.0
+        },
+        {
+          "texture_x_offset": 0,
+          "texture_y_offset": 0,
+          "x_dimension": 6.0,
+          "x_origin": -3.0,
+          "y_dimension": 7.0,
+          "y_origin": -4.0,
+          "z_dimension": 12.0,
+          "z_origin": -3.0
+        },
+        {
+          "texture_x_offset": 26,
+          "texture_y_offset": 31,
+          "x_dimension": 0.0,
+          "x_origin": 0.0,
+          "y_dimension": 4.0,
+          "y_origin": -8.0,
+          "z_dimension": 10.0,
+          "z_origin": -1.0
+        }
+      ],
+      "id": "body",
+      "poses": {
+        "x": 0.0,
+        "x_rot": 0.0,
+        "y": 13.0,
+        "y_rot": 0.0,
+        "z": 0.0,
+        "z_rot": 0.0
+      }
+    },
     {
       "boxes": [
         {
@@ -310,49 +356,6 @@
         "y": 14.0,
         "y_rot": 0.0,
         "z": 4.0,
-        "z_rot": 0.0
-      }
-    },
-    {
-      "boxes": [
-        {
-          "texture_x_offset": 0,
-          "texture_y_offset": 0,
-          "x_dimension": 6.0,
-          "x_origin": -3.0,
-          "y_dimension": 7.0,
-          "y_origin": -15.0,
-          "z_dimension": 12.0,
-          "z_origin": -3.0
-        },
-        {
-          "texture_x_offset": 0,
-          "texture_y_offset": 32,
-          "x_dimension": 4.0,
-          "x_origin": -2.0,
-          "y_dimension": 6.0,
-          "y_origin": -14.0,
-          "z_dimension": 6.0,
-          "z_origin": -9.0
-        },
-        {
-          "texture_x_offset": 26,
-          "texture_y_offset": 31,
-          "x_dimension": 0.0,
-          "x_origin": 0.0,
-          "y_dimension": 4.0,
-          "y_origin": -19.0,
-          "z_dimension": 10.0,
-          "z_origin": -1.0
-        }
-      ],
-      "id": "body",
-      "poses": {
-        "x": 0.0,
-        "x_rot": 0.0,
-        "y": 24.0,
-        "y_rot": 0.0,
-        "z": 0.0,
         "z_rot": 0.0
       }
     }

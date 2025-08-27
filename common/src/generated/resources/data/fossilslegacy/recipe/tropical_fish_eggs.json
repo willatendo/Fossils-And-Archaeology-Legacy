@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": "fossilslegacy:tropical_fish_dna",
+  "result": {
+    "id": "fossilslegacy:tropical_fish_eggs"
+  },
+  "time": 6000
+}

@@ -1,10 +1,13 @@
 package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRenderer;
 import willatendo.fossilslegacy.client.state.SmilodonRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Smilodon;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.CompositeTextureRules;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.FACompositeTextureRuleSources;
 
 public class SmilodonRenderer extends DataDrivenModelDinosaurRenderer<Smilodon, SmilodonRenderState> {
     public SmilodonRenderer(Context context) {
@@ -20,6 +23,16 @@ public class SmilodonRenderer extends DataDrivenModelDinosaurRenderer<Smilodon, 
     public void extractRenderState(Smilodon smilodon, SmilodonRenderState smilodonRenderState, float partialTick) {
         super.extractRenderState(smilodon, smilodonRenderState, partialTick);
         smilodonRenderState.sitAnimationState.copyFrom(smilodon.sitAnimationState);
+    }
+
+    @Override
+    public ResourceKey<CompositeTextureRules.RuleSource> getSkinCompositeTextureRuleSource() {
+        return FACompositeTextureRuleSources.SMILODON_SKIN;
+    }
+
+    @Override
+    public ResourceKey<CompositeTextureRules.RuleSource> getPatternCompositeTextureRuleSource() {
+        return FACompositeTextureRuleSources.SMILODON_PATTERN;
     }
 
     @Override

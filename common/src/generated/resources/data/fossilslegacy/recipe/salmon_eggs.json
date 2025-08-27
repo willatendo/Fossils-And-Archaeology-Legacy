@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": "fossilslegacy:salmon_dna",
+  "result": {
+    "id": "fossilslegacy:salmon_eggs"
+  },
+  "time": 6000
+}

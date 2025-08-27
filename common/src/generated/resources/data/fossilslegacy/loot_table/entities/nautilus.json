@@ -10,12 +10,12 @@
             {
               "hit_from": 0,
               "hit_to": 3,
-              "item": "fossilslegacy:nautilus_shell"
+              "item": "minecraft:nautilus_shell"
             },
             {
               "hit_from": 3,
               "hit_to": 5,
-              "item": "fossilslegacy:magic_conch"
+              "item": "fossilslegacy:nautilus_magic_conch"
             }
           ],
           "max_weight": 5

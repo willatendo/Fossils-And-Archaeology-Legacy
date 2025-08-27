@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0.35,
+  "ingredient": "fossilslegacy:cenoceras",
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:cenoceras_sio_chiu_le"
+  }
+}

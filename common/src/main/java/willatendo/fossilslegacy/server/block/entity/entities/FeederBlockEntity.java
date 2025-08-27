@@ -5,6 +5,9 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Inventory;
@@ -19,17 +22,19 @@ import willatendo.fossilslegacy.server.block.blocks.FeederBlock;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.feeder_food.FeederFood;
+import willatendo.fossilslegacy.server.level.FAGameRules;
 import willatendo.fossilslegacy.server.menu.menus.FeederMenu;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class FeederBlockEntity extends BaseContainerBlockEntity {
     private NonNullList<ItemStack> itemStacks = NonNullList.withSize(2, ItemStack.EMPTY);
     public int meatLevel = 0;
-    public final int maxMeatLevel = 10000;
     public int plantsLevel = 0;
-    public final int maxPlantsLevel = 10000;
     public final ContainerData containerData = new ContainerData() {
         @Override
         public int get(int data) {
@@ -53,7 +58,6 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
                     FeederBlockEntity.this.plantsLevel = set;
                     break;
             }
-
         }
 
         @Override
@@ -61,9 +65,24 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
             return 2;
         }
     };
+    private List<UUID> notifiedPlayers = new ArrayList<>();
 
     public FeederBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(FABlockEntityTypes.FEEDER.get(), blockPos, blockState);
+    }
+
+    public void addNotifiedPlayer(UUID uuid) {
+        if (!this.notifiedPlayers.contains(uuid)) {
+            this.notifiedPlayers.add(uuid);
+        }
+    }
+
+    public void removeNotifiedPlayer(UUID uuid) {
+        this.notifiedPlayers.remove(uuid);
+    }
+
+    public List<UUID> getNotifiedPlayers() {
+        return this.notifiedPlayers;
     }
 
     @Override
@@ -73,6 +92,11 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
         this.plantsLevel = compoundTag.getInt("PlantsLevel");
         this.itemStacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
         ContainerHelper.loadAllItems(compoundTag, this.itemStacks, provider);
+        this.notifiedPlayers = new ArrayList<>();
+        CompoundTag notifiedPlayers = compoundTag.getCompound("notified_players");
+        for (int i = 0; i < compoundTag.getInt("notified_players_size"); i++) {
+            this.notifiedPlayers.add(notifiedPlayers.getUUID("player" + i));
+        }
     }
 
     @Override
@@ -81,6 +105,12 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
         compoundTag.putInt("MeatLevel", this.meatLevel);
         compoundTag.putInt("PlantsLevel", this.plantsLevel);
         ContainerHelper.saveAllItems(compoundTag, this.itemStacks, provider);
+        compoundTag.putInt("notified_players_size", this.notifiedPlayers.size());
+        CompoundTag notifiedPlayers = new CompoundTag();
+        for (int i = 0; i < this.notifiedPlayers.size(); i++) {
+            notifiedPlayers.putUUID("player" + i, this.notifiedPlayers.get(i));
+        }
+        compoundTag.put("notified_players", notifiedPlayers);
     }
 
     public static void serverTick(ServerLevel serverLevel, BlockPos blockPos, BlockState blockState, FeederBlockEntity feederBlockEntity) {
@@ -94,7 +124,7 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
             FeederFood.FeederInfo feederInfo = map.getOrDefault(meat.getItem(), null);
             if (feederInfo != null) {
                 int amount = feederInfo.fillAmount();
-                if (!(amount + feederBlockEntity.meatLevel > feederBlockEntity.maxMeatLevel)) {
+                if (!(amount + feederBlockEntity.meatLevel > 10000)) {
                     feederBlockEntity.meatLevel += amount;
                     meat.shrink(1);
                     changed = true;
@@ -105,7 +135,7 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
             FeederFood.FeederInfo feederInfo = map.getOrDefault(plants.getItem(), null);
             if (feederInfo != null) {
                 int amount = feederInfo.fillAmount();
-                if (!(amount + feederBlockEntity.plantsLevel > feederBlockEntity.maxPlantsLevel)) {
+                if (!(amount + feederBlockEntity.plantsLevel > 10000)) {
                     feederBlockEntity.plantsLevel += amount;
                     plants.shrink(1);
                     changed = true;
@@ -115,10 +145,8 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
 
         if (hasFood) {
             serverLevel.setBlock(blockPos, blockState.setValue(FeederBlock.HAS_FOOD, true), 3);
-            changed = true;
         } else {
             serverLevel.setBlock(blockPos, blockState.setValue(FeederBlock.HAS_FOOD, false), 3);
-            changed = true;
         }
 
         if (changed) {
@@ -136,6 +164,14 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
                 this.meatLevel--;
             } else {
                 this.plantsLevel--;
+            }
+        }
+
+        if (this.level instanceof ServerLevel serverLevel) {
+            int lowQuorum = serverLevel.getGameRules().getInt(FAGameRules.RULE_LOWFEEDERMESSAGEQUORUM);
+            boolean low = meat ? this.meatLevel <= lowQuorum : this.plantsLevel <= lowQuorum;
+            if (low) {
+                this.notifiedPlayers.forEach(uuid -> this.level.getPlayerByUUID(uuid).displayClientMessage(FAUtils.translation("block", "feeder.low." + (low ? "meat" : "plant"), this.getDisplayName()), false));
             }
         }
     }
@@ -217,5 +253,25 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
     @Override
     protected AbstractContainerMenu createMenu(int windowId, Inventory inventory) {
         return new FeederMenu(windowId, inventory, this);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        CompoundTag compoundTag = new CompoundTag();
+        compoundTag.putInt("MeatLevel", this.meatLevel);
+        compoundTag.putInt("PlantsLevel", this.plantsLevel);
+        ContainerHelper.saveAllItems(compoundTag, this.itemStacks, registries);
+        compoundTag.putInt("notified_players_size", this.notifiedPlayers.size());
+        CompoundTag notifiedPlayers = new CompoundTag();
+        for (int i = 0; i < this.notifiedPlayers.size(); i++) {
+            notifiedPlayers.putUUID("player" + i, this.notifiedPlayers.get(i));
+        }
+        compoundTag.put("notified_players", notifiedPlayers);
+        return compoundTag;
+    }
+
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
     }
 }

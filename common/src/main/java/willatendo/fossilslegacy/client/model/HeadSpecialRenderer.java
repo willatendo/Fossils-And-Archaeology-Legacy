@@ -6,9 +6,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.special.SpecialModelRenderer;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import willatendo.fossilslegacy.client.model.dinosaur.head.HeadModel;
@@ -17,25 +15,20 @@ import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.FAHeadTypes;
 import willatendo.fossilslegacy.server.item.data_components.HeadDisplayInformation;
 
-import java.util.Optional;
-
 public class HeadSpecialRenderer implements SpecialModelRenderer<HeadDisplayInformation> {
     private final FAHeadTypes faHeadTypes;
     private final HeadModel headModel;
-    private final ResourceLocation textureOverride;
     private final float animation;
 
-    public HeadSpecialRenderer(FAHeadTypes faHeadTypes, HeadModel headModel, ResourceLocation textureOverride, float animation) {
+    public HeadSpecialRenderer(FAHeadTypes faHeadTypes, HeadModel headModel, float animation) {
         this.faHeadTypes = faHeadTypes;
         this.headModel = headModel;
-        this.textureOverride = textureOverride;
         this.animation = animation;
     }
 
     @Override
     public void render(HeadDisplayInformation headDisplayInformation, ItemDisplayContext itemDisplayContext, PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight, int packedOverlay, boolean hasFoilType) {
-        RenderType renderType = HeadBlockEntityRenderer.getRenderType(this.faHeadTypes, this.textureOverride);
-        HeadBlockEntityRenderer.renderHead(null, 180.0F, this.animation, poseStack, multiBufferSource, packedLight, this.headModel, renderType, headDisplayInformation, false);
+        HeadBlockEntityRenderer.renderHead(null, 180.0F, this.animation, poseStack, multiBufferSource, packedLight, this.headModel, this.faHeadTypes, headDisplayInformation, false);
     }
 
     @Override
@@ -43,11 +36,11 @@ public class HeadSpecialRenderer implements SpecialModelRenderer<HeadDisplayInfo
         return itemStack.get(FADataComponents.HEAD_DISPLAY_INFORMATION.get());
     }
 
-    public record Unbaked(FAHeadTypes faHeadTypes, Optional<ResourceLocation> textureOverride, float animation) implements SpecialModelRenderer.Unbaked {
-        public static final MapCodec<HeadSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(FAHeadTypes.CODEC.fieldOf("head_type").forGetter(HeadSpecialRenderer.Unbaked::faHeadTypes), ResourceLocation.CODEC.optionalFieldOf("texture").forGetter(HeadSpecialRenderer.Unbaked::textureOverride), Codec.FLOAT.optionalFieldOf("animation", 0.0F).forGetter(HeadSpecialRenderer.Unbaked::animation)).apply(instance, HeadSpecialRenderer.Unbaked::new));
+    public record Unbaked(FAHeadTypes faHeadTypes, float animation) implements SpecialModelRenderer.Unbaked {
+        public static final MapCodec<HeadSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(FAHeadTypes.CODEC.fieldOf("head_type").forGetter(HeadSpecialRenderer.Unbaked::faHeadTypes), Codec.FLOAT.optionalFieldOf("animation", 0.0F).forGetter(HeadSpecialRenderer.Unbaked::animation)).apply(instance, HeadSpecialRenderer.Unbaked::new));
 
         public Unbaked(FAHeadTypes faHeadTypes) {
-            this(faHeadTypes, Optional.empty(), 0.0F);
+            this(faHeadTypes, 0.0F);
         }
 
         @Override
@@ -58,8 +51,7 @@ public class HeadSpecialRenderer implements SpecialModelRenderer<HeadDisplayInfo
         @Override
         public SpecialModelRenderer<?> bake(EntityModelSet modelSet) {
             HeadModel headModel = HeadBlockEntityRenderer.createModel(modelSet, this.faHeadTypes);
-            ResourceLocation resourcelocation = this.textureOverride.map(resouceLocation -> resouceLocation.withPath(path -> "textures/entity/" + path + ".png")).orElse(null);
-            return headModel != null ? new HeadSpecialRenderer(this.faHeadTypes, headModel, resourcelocation, this.animation) : null;
+            return headModel != null ? new HeadSpecialRenderer(this.faHeadTypes, headModel, this.animation) : null;
         }
     }
 }

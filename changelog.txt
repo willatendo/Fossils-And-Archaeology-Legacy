@@ -10,6 +10,12 @@
 - Fixed Spinosaurus Dropping Stegosaurus Meat
 - Fixed Chicken Essence Bottles Not Being Craftable
 - Fixed Sleeping Not Working In Prehistoric Dimension
+- Fixed Food Being Eaten By Dinosaurs While Full
+- Fixed Feeding Dinosaur Making Them In Love
+- Fixed Hand-Feeding Baby Dinosaurs Taming Them
+- Fixed Issues With Hand-Feeding Dinosaurs
+- Fixed Taming Dinosaurs Not Counting For Advancements
+- Fixed Some Untranslated Strings
 - Mammoth Shearing Is Done By Loot Table
 - Cultivator Recipes Now Unlocked By Acquiring Water Buckets
 - Llama Statue Recipes Now In One Group In Recipe Book
@@ -158,6 +164,14 @@
 - Updated Calamites Trapdoor Texture
 - Updated Calamites Door Texture
 - Dinopedia Texture Now Shows Two Pages
+- Dinosaurs Can Now Be Bred When Not Tame
+- Sound Now Plays When Dinosaurs Are Fed
+- Dinosaurs XP Drop Now Scales With Age
+- Magic Conch Now Called Cenoceras Magic Conch
+- Nautilus Shell Now Called Cenoceras Shell
+- Sio-Chiu-Le Now Called Cenoceras Sio-Chiu-Le
+- Similar-Sized Mammals Can Now Only Give Birth To Other Similar-Sized Mammals
+- Small Pregnancies:
 - Added Archaeology Category For Analyzer Recipe Book
 - Added Palaeontology Category For Analyzer Recipe Book
 - Added Mosasaurus Skeleton
@@ -424,6 +438,21 @@
 - Added Metasequoia Slab
 - Added Metasequoia Boat
 - Added Metasequoia Boat with Chest
+- Added Bat DNA
+- Added Bee DNA
+- Added Camel DNA
+- Added Cod DNA
+- Added Pufferfish DNA
+- Added Salmon DNA
+- Added Squid DNA
+- Added Tropical Fish DNA
+- Added Turtle DNA
+- Added Cenoceras
+- Added Cenoceras DNA
+- Added Cenoceras Entity
+- Added Cenoceras Sio-Chiu-Le
+- Added
+- Added Feeder Message When Below Certain Threshold
 27/2/2024 1.4.9
 - Fixed Tooth Dagger Not Shearing All Shearables
 - Fixed Mayan Vase Not Wobbling

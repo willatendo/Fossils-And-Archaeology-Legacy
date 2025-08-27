@@ -55,6 +55,11 @@ public class FAFabricHelper implements FAModloaderHelper {
     }
 
     @Override
+    public GameRules.Key<GameRules.IntegerValue> createIntegerGameRule(String name, GameRules.Category category, int defaultValue) {
+        return GameRuleRegistry.register(name, category, GameRuleFactory.createIntRule(defaultValue));
+    }
+
+    @Override
     public RecipeBookType createRecipeBookType(String name) {
         return FabricUtils.createRecipeBookType(name);
     }

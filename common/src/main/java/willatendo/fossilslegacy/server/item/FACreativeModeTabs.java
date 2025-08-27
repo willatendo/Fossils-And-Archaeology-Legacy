@@ -15,17 +15,26 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import willatendo.fossilslegacy.platform.FAModloaderHelper;
 import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.block.blocks.HeadBlock;
 import willatendo.fossilslegacy.server.command_type.CommandType;
 import willatendo.fossilslegacy.server.decoration_plaque_type.DecorationPlaqueType;
 import willatendo.fossilslegacy.server.entity.entities.DecorationPlaque;
 import willatendo.fossilslegacy.server.entity.entities.StoneTablet;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
+import willatendo.fossilslegacy.server.gene.attributes.AttributeGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.CosmeticGeneHolder;
+import willatendo.fossilslegacy.server.gene.cosmetics.FAModelGenes;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
+import willatendo.fossilslegacy.server.item.data_components.HeadDisplayInformation;
 import willatendo.fossilslegacy.server.item.items.DNAItem;
 import willatendo.fossilslegacy.server.item.items.MagicConchItem;
 import willatendo.fossilslegacy.server.registry.FABlockRegistry;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.stone_tablet_variant.StoneTabletVariant;
 import willatendo.fossilslegacy.server.tags.FAFossilVariantTags;
+import willatendo.fossilslegacy.server.tags.FASkinGeneTags;
 import willatendo.fossilslegacy.server.tags.FAStoneTabletVariantTags;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
@@ -113,7 +122,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.ANU_SPAWN_EGG.get());
         output.accept(FAItems.FAILURESAURUS_SPAWN_EGG.get());
         FACreativeModeTabs.addMusicDiscs(output);
-        FACreativeModeTabs.addHeads(output);
+        //FACreativeModeTabs.addHeads(output, itemDisplayParameters);
     }, List.of(), List.of("fa_archaeology", "fa_palaeontology", "fa_palaeobotany", "fa_building_blocks"));
 
     private static SimpleHolder<CreativeModeTab> register(String id, Supplier<ItemStack> icon, CreativeModeTab.DisplayItemsGenerator displayItemsGenerator, List<String> after, List<String> before) {
@@ -260,8 +269,12 @@ public final class FACreativeModeTabs {
     private static void addAnimalDNA(CreativeModeTab.Output output) {
         DNAItem.addDNAItem(output, FAItems.ARMADILLO_DNA.get());
         DNAItem.addDNAItem(output, FAItems.AXOLOTL_DNA.get());
+        DNAItem.addDNAItem(output, FAItems.BAT_DNA.get());
+        DNAItem.addDNAItem(output, FAItems.BEE_DNA.get());
         DNAItem.addDNAItem(output, FAItems.CAT_DNA.get());
+        DNAItem.addDNAItem(output, FAItems.CAMEL_DNA.get());
         DNAItem.addDNAItem(output, FAItems.CHICKEN_DNA.get());
+        DNAItem.addDNAItem(output, FAItems.COD_DNA.get());
         DNAItem.addDNAItem(output, FAItems.COW_DNA.get());
         DNAItem.addDNAItem(output, FAItems.DOLPHIN_DNA.get());
         DNAItem.addDNAItem(output, FAItems.DONKEY_DNA.get());
@@ -277,8 +290,13 @@ public final class FACreativeModeTabs {
         DNAItem.addDNAItem(output, FAItems.PARROT_DNA.get());
         DNAItem.addDNAItem(output, FAItems.PIG_DNA.get());
         DNAItem.addDNAItem(output, FAItems.POLAR_BEAR_DNA.get());
+        DNAItem.addDNAItem(output, FAItems.PUFFERFISH_DNA.get());
         DNAItem.addDNAItem(output, FAItems.RABBIT_DNA.get());
+        DNAItem.addDNAItem(output, FAItems.SALMON_DNA.get());
         DNAItem.addDNAItem(output, FAItems.SHEEP_DNA.get());
+        DNAItem.addDNAItem(output, FAItems.SQUID_DNA.get());
+        DNAItem.addDNAItem(output, FAItems.TROPICAL_FISH_DNA.get());
+        DNAItem.addDNAItem(output, FAItems.TURTLE_DNA.get());
         DNAItem.addDNAItem(output, FAItems.WOLF_DNA.get());
         DNAItem.addDNAItem(output, FAItems.DODO_DNA.get());
         DNAItem.addDNAItem(output, FAItems.ELASMOTHERIUM_DNA.get());
@@ -289,6 +307,7 @@ public final class FACreativeModeTabs {
         DNAItem.addDNAItem(output, FAItems.BARYONYX_DNA.get());
         DNAItem.addDNAItem(output, FAItems.BRACHIOSAURUS_DNA.get());
         DNAItem.addDNAItem(output, FAItems.CARNOTAURUS_DNA.get());
+        DNAItem.addDNAItem(output, FAItems.CENOCERAS_DNA.get());
         DNAItem.addDNAItem(output, FAItems.COMPSOGNATHUS_DNA.get());
         DNAItem.addDNAItem(output, FAItems.CRYOLOPHOSAURUS_DNA.get());
         DNAItem.addDNAItem(output, FAItems.DILOPHOSAURUS_DNA.get());
@@ -312,9 +331,13 @@ public final class FACreativeModeTabs {
     private static void addEggsAndEmbryos(CreativeModeTab.Output output) {
         output.accept(FAItems.ARMADILLO_EMBRYO_SYRINGE.get());
         output.accept(FABlocks.AXOLOTLSPAWN.get());
+        output.accept(FAItems.BAT_EMBRYO_SYRINGE.get());
+        output.accept(FAItems.BEE_EGGS.get());
         output.accept(FAItems.CAT_EMBRYO_SYRINGE.get());
+        output.accept(FAItems.CAMEL_EMBRYO_SYRINGE.get());
         output.accept(FAItems.INCUBATED_CHICKEN_EGG.get());
         output.accept(Items.EGG);
+        output.accept(FAItems.COD_EGGS.get());
         output.accept(FAItems.COW_EMBRYO_SYRINGE.get());
         output.accept(FAItems.DOLPHIN_EMBRYO_SYRINGE.get());
         output.accept(FAItems.DONKEY_EMBRYO_SYRINGE.get());
@@ -330,8 +353,13 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.INCUBATED_PARROT_EGG.get());
         output.accept(FAItems.PIG_EMBRYO_SYRINGE.get());
         output.accept(FAItems.POLAR_BEAR_EMBRYO_SYRINGE.get());
+        output.accept(FAItems.PUFFERFISH_EGGS.get());
         output.accept(FAItems.RABBIT_EMBRYO_SYRINGE.get());
+        output.accept(FAItems.SALMON_EGGS.get());
         output.accept(FAItems.SHEEP_EMBRYO_SYRINGE.get());
+        output.accept(FAItems.SQUID_EGGS.get());
+        output.accept(FAItems.TROPICAL_FISH_EGGS.get());
+        output.accept(Blocks.TURTLE_EGG);
         output.accept(FAItems.WOLF_EMBRYO_SYRINGE.get());
         output.accept(FAItems.INCUBATED_DODO_EGG.get());
         output.accept(FAItems.DODO_EGG.get());
@@ -344,6 +372,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.BARYONYX_EGG.get());
         output.accept(FAItems.BRACHIOSAURUS_EGG.get());
         output.accept(FAItems.CARNOTAURUS_EGG.get());
+        output.accept(FAItems.CENOCERAS_EGGS.get());
         output.accept(FAItems.COMPSOGNATHUS_EGG.get());
         output.accept(FAItems.CRYOLOPHOSAURUS_EGG.get());
         output.accept(FAItems.DILOPHOSAURUS_EGG.get());
@@ -400,7 +429,9 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.RAW_MOSASAURUS.get());
         output.accept(FAItems.COOKED_MOSASAURUS.get());
         output.accept(FAItems.NAUTILUS.get());
-        output.accept(FAItems.SIO_CHIU_LE.get());
+        output.accept(FAItems.NAUTILUS_SIO_CHIU_LE.get());
+        output.accept(FAItems.CENOCERAS.get());
+        output.accept(FAItems.CENOCERAS_SIO_CHIU_LE.get());
         output.accept(FAItems.RAW_PACHYCEPHALOSAURUS.get());
         output.accept(FAItems.COOKED_PACHYCEPHALOSAURUS.get());
         output.accept(FAItems.RAW_PTERANODON.get());
@@ -432,6 +463,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.BARYONYX_SPAWN_EGG.get());
         output.accept(FAItems.BRACHIOSAURUS_SPAWN_EGG.get());
         output.accept(FAItems.CARNOTAURUS_SPAWN_EGG.get());
+        output.accept(FAItems.CENOCERAS_SPAWN_EGG.get());
         output.accept(FAItems.COMPSOGNATHUS_SPAWN_EGG.get());
         output.accept(FAItems.CRYOLOPHOSAURUS_SPAWN_EGG.get());
         output.accept(FAItems.DILOPHOSAURUS_SPAWN_EGG.get());
@@ -774,9 +806,25 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.WOLLEMIA_CHEST_BOAT.get());
     }
 
-    private static void addHeads(CreativeModeTab.Output output) {
-        for (Block head : FABlockRegistry.getHeads()) {
-            output.accept(head);
+    private static void addHeads(CreativeModeTab.Output output, CreativeModeTab.ItemDisplayParameters itemDisplayParameters) {
+        for (HeadBlock headBlock : FABlockRegistry.getHeads()) {
+            for (Holder<ModelGene> modelGene : itemDisplayParameters.holders().lookupOrThrow(FARegistries.MODEL_GENE).getOrThrow(headBlock.getType().getApplicableModelGenes())) {
+                for (Holder<SkinGene> skinGene : itemDisplayParameters.holders().lookupOrThrow(FARegistries.SKIN_GENE).getOrThrow(modelGene.value().skinGenes())) {
+                    for (int growthStage = 0; growthStage <= headBlock.getMaxSize(); growthStage++) {
+                        if (skinGene.is(FASkinGeneTags.HAS_PATTERNS)) {
+                            for (Holder<PatternGene> patternGene : itemDisplayParameters.holders().lookupOrThrow(FARegistries.PATTERN_GENE).listElements().toList()) {
+                                ItemStack itemStack = new ItemStack(headBlock);
+                                itemStack.set(FADataComponents.HEAD_DISPLAY_INFORMATION.get(), new HeadDisplayInformation(growthStage, new CosmeticGeneHolder(modelGene.unwrapKey().orElseThrow(), skinGene.unwrapKey().orElseThrow(), patternGene.unwrapKey().orElseThrow())));
+                                output.accept(itemStack);
+                            }
+                        } else {
+                            ItemStack itemStack = new ItemStack(headBlock);
+                            itemStack.set(FADataComponents.HEAD_DISPLAY_INFORMATION.get(), new HeadDisplayInformation(growthStage, new CosmeticGeneHolder(modelGene.unwrapKey().orElseThrow(), skinGene.unwrapKey().orElseThrow())));
+                            output.accept(itemStack);
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -788,7 +836,12 @@ public final class FACreativeModeTabs {
 
     private static void generateMagicConches(CreativeModeTab.Output output, HolderLookup.RegistryLookup<CommandType> registryLookup) {
         for (Holder.Reference<CommandType> commandType : registryLookup.listElements().toList()) {
-            ItemStack itemStack = new ItemStack(FAItems.MAGIC_CONCH.get());
+            ItemStack itemStack = new ItemStack(FAItems.NAUTILUS_MAGIC_CONCH.get());
+            MagicConchItem.setOrder(itemStack, commandType);
+            output.accept(itemStack);
+        }
+        for (Holder.Reference<CommandType> commandType : registryLookup.listElements().toList()) {
+            ItemStack itemStack = new ItemStack(FAItems.CENOCERAS_MAGIC_CONCH.get());
             MagicConchItem.setOrder(itemStack, commandType);
             output.accept(itemStack);
         }

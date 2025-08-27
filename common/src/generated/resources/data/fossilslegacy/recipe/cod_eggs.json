@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": "fossilslegacy:cod_dna",
+  "result": {
+    "id": "fossilslegacy:cod_eggs"
+  },
+  "time": 6000
+}

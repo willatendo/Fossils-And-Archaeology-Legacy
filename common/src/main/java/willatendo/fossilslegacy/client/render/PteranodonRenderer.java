@@ -1,11 +1,14 @@
 package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRenderer;
 import willatendo.fossilslegacy.client.state.PteranodonRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Pteranodon;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.CompositeTextureRules;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.FACompositeTextureRuleSources;
 
 import java.util.Optional;
 
@@ -34,6 +37,16 @@ public class PteranodonRenderer extends DataDrivenModelDinosaurRenderer<Pteranod
     public Optional<ResourceLocation> getAdditionalModel(PteranodonRenderState pteranodonRenderState, ModelGene modelGene) {
         ModelGene.Models models = modelGene.models();
         return pteranodonRenderState.shouldLand ? this.additionalModel(models.landingModel(), models) : pteranodonRenderState.shouldFly ? this.additionalModel(models.flyingModel(), models) : Optional.empty();
+    }
+
+    @Override
+    public ResourceKey<CompositeTextureRules.RuleSource> getSkinCompositeTextureRuleSource() {
+        return FACompositeTextureRuleSources.PTERANODON_SKIN;
+    }
+
+    @Override
+    public ResourceKey<CompositeTextureRules.RuleSource> getPatternCompositeTextureRuleSource() {
+        return FACompositeTextureRuleSources.PTERANODON_PATTERN;
     }
 
     @Override

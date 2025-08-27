@@ -11,6 +11,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
@@ -33,19 +34,19 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class AnimalEggItem extends Item implements ProjectileItem {
-    private final Supplier<EntityType<? extends Animal>> animal;
+    private final Supplier<EntityType<? extends AgeableMob>> animal;
     private final GeologicalTimeScale.Period period;
     private final boolean incubated;
     private TagKey<ModelGene> modelTypes;
 
-    public AnimalEggItem(GeologicalTimeScale.Period period, Supplier<EntityType<? extends Animal>> animal, boolean incubated, Properties properties) {
+    public AnimalEggItem(GeologicalTimeScale.Period period, Supplier<EntityType<? extends AgeableMob>> animal, boolean incubated, Properties properties) {
         super(properties);
         this.period = period;
         this.animal = animal;
         this.incubated = incubated;
     }
 
-    public AnimalEggItem(GeologicalTimeScale.Period period, Supplier<EntityType<? extends Animal>> animal, boolean incubated, TagKey<ModelGene> modelTypes, Properties properties) {
+    public AnimalEggItem(GeologicalTimeScale.Period period, Supplier<EntityType<? extends AgeableMob>> animal, boolean incubated, TagKey<ModelGene> modelTypes, Properties properties) {
         this(period, animal, incubated, properties);
         this.modelTypes = modelTypes;
     }

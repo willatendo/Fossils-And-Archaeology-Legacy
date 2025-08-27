@@ -12,6 +12,7 @@ import net.minecraft.util.ARGB;
 import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRenderer;
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.TextureInformation;
 
 public class EyeLayer<T extends Dinosaur, S extends DinosaurRenderState> extends RenderLayer<S, EntityModel<S>> {
     private final DataDrivenModelDinosaurRenderer<T, S> dataDrivenModelDinosaurRenderer;
@@ -22,7 +23,8 @@ public class EyeLayer<T extends Dinosaur, S extends DinosaurRenderState> extends
     }
 
     protected RenderType getRenderType(S dinosaurRenderState, boolean isVisible, boolean renderTranslucent, boolean appearsGlowing) {
-        ResourceLocation texture = this.dataDrivenModelDinosaurRenderer.getTextureInformation(dinosaurRenderState).eyeTextures().eyeTexture().get();
+        TextureInformation.EyeTextures eyeTextures = this.dataDrivenModelDinosaurRenderer.getSkinTextureInformation(dinosaurRenderState).eyeTextures();
+        ResourceLocation texture = dinosaurRenderState.isTranquilized ? eyeTextures.closedEyeTexture().get() : eyeTextures.eyeTexture().get();
         if (renderTranslucent) {
             return RenderType.itemEntityTranslucentCull(texture);
         } else if (isVisible) {

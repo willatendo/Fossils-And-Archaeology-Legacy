@@ -11,7 +11,9 @@ public final class FAPregnancyTypes {
     public static final SimpleRegistry<PregnancyType> PREGNANCY_TYPES = SimpleRegistry.create(FARegistries.PREGNANCY_TYPE, FAUtils.ID);
 
     public static final SimpleHolder<PregnancyType> ARMADILLO = PREGNANCY_TYPES.register("armadillo", () -> new PregnancyType(() -> EntityType.ARMADILLO));
+    public static final SimpleHolder<PregnancyType> BAT = PREGNANCY_TYPES.register("bat", () -> new PregnancyType(() -> EntityType.BAT));
     public static final SimpleHolder<PregnancyType> CAT = PREGNANCY_TYPES.register("cat", () -> new PregnancyType(() -> EntityType.CAT));
+    public static final SimpleHolder<PregnancyType> CAMEL = PREGNANCY_TYPES.register("camel", () -> new PregnancyType(() -> EntityType.CAMEL));
     public static final SimpleHolder<PregnancyType> COW = PREGNANCY_TYPES.register("cow", () -> new PregnancyType(() -> EntityType.COW));
     public static final SimpleHolder<PregnancyType> DOLPHIN = PREGNANCY_TYPES.register("dolphin", () -> new PregnancyType(() -> EntityType.DOLPHIN));
     public static final SimpleHolder<PregnancyType> DONKEY = PREGNANCY_TYPES.register("donkey", () -> new PregnancyType(() -> EntityType.DONKEY));

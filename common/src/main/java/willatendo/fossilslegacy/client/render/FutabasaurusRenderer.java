@@ -1,10 +1,13 @@
 package willatendo.fossilslegacy.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRenderer;
 import willatendo.fossilslegacy.client.state.FutabasaurusRenderState;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.CompositeTextureRules;
+import willatendo.fossilslegacy.server.gene.cosmetics.texture.FACompositeTextureRuleSources;
 
 public class FutabasaurusRenderer extends DataDrivenModelDinosaurRenderer<Futabasaurus, FutabasaurusRenderState> {
     public FutabasaurusRenderer(Context context) {
@@ -20,6 +23,16 @@ public class FutabasaurusRenderer extends DataDrivenModelDinosaurRenderer<Futaba
     public void extractRenderState(Futabasaurus futabasaurus, FutabasaurusRenderState futabasaurusRenderState, float partialTick) {
         super.extractRenderState(futabasaurus, futabasaurusRenderState, partialTick);
         futabasaurusRenderState.divePose = futabasaurus.divePose() && futabasaurus.hasControllingPassenger();
+    }
+
+    @Override
+    public ResourceKey<CompositeTextureRules.RuleSource> getSkinCompositeTextureRuleSource() {
+        return FACompositeTextureRuleSources.FUTABASAURUS_SKIN;
+    }
+
+    @Override
+    public ResourceKey<CompositeTextureRules.RuleSource> getPatternCompositeTextureRuleSource() {
+        return FACompositeTextureRuleSources.FUTABASAURUS_PATTERN;
     }
 
     @Override

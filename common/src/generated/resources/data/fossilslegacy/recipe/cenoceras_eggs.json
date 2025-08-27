@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": "fossilslegacy:cenoceras_dna",
+  "result": {
+    "id": "fossilslegacy:cenoceras_eggs"
+  },
+  "time": 6000
+}

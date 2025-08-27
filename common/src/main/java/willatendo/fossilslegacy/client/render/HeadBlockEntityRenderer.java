@@ -11,58 +11,64 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.SkullBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.RotationSegment;
 import willatendo.fossilslegacy.client.FAModelLayers;
 import willatendo.fossilslegacy.client.model.dinosaur.head.*;
+import willatendo.fossilslegacy.client.state.ChromosomedEntityRenderState;
 import willatendo.fossilslegacy.server.block.blocks.AbstractHeadBlock;
 import willatendo.fossilslegacy.server.block.blocks.WallHeadBlock;
 import willatendo.fossilslegacy.server.block.entity.entities.HeadBlockEntity;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.texture.TextureInformation;
 import willatendo.fossilslegacy.server.item.FAHeadTypes;
 import willatendo.fossilslegacy.server.item.data_components.HeadDisplayInformation;
 import willatendo.fossilslegacy.server.registry.FARegistries;
+import willatendo.fossilslegacy.server.tags.FASkinGeneTags;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class HeadBlockEntityRenderer implements BlockEntityRenderer<HeadBlockEntity> {
-    private static final Map<FAHeadTypes, ResourceLocation> TEXTURE_BY_HEAD = Util.make(() -> {
-        Map<FAHeadTypes, ResourceLocation> map = new HashMap<>();
-        map.put(FAHeadTypes.ANKYLOSAURUS, FAUtils.resource("textures/entity/ankylosaurus/ankylosaurus.png"));
-        map.put(FAHeadTypes.BARYONYX, FAUtils.resource("textures/entity/baryonyx/baryonyx.png"));
-        map.put(FAHeadTypes.BRACHIOSAURUS, FAUtils.resource("textures/entity/brachiosaurus/brachiosaurus.png"));
-        map.put(FAHeadTypes.CARNOTAURUS, FAUtils.resource("textures/entity/carnotaurus/red_carnotaurus_adult.png"));
-        map.put(FAHeadTypes.COMPSOGNATHUS, FAUtils.resource("textures/entity/compsognathus/compsognathus.png"));
-        map.put(FAHeadTypes.CRYOLOPHOSAURUS, FAUtils.resource("textures/entity/cryolophosaurus/cryolophosaurus.png"));
-        map.put(FAHeadTypes.DILOPHOSAURUS, FAUtils.resource("textures/entity/dilophosaurus/dilophosaurus.png"));
-        map.put(FAHeadTypes.DIMETRODON, FAUtils.resource("textures/entity/dimetrodon/dimetrodon_adult.png"));
-        map.put(FAHeadTypes.DISTORTUS_REX, FAUtils.resource("textures/entity/distortus_rex/distortus_rex.png"));
-        map.put(FAHeadTypes.DODO, FAUtils.resource("textures/entity/dodo/dodo.png"));
-        map.put(FAHeadTypes.DRYOSAURUS, FAUtils.resource("textures/entity/dryosaurus/dryosaurus.png"));
-        map.put(FAHeadTypes.ELASMOTHERIUM, FAUtils.resource("textures/entity/elasmotherium/elasmotherium.png"));
-        map.put(FAHeadTypes.FUTABASAURUS, FAUtils.resource("textures/entity/futabasaurus/futabasaurus.png"));
-        map.put(FAHeadTypes.GALLIMIMUS, FAUtils.resource("textures/entity/gallimimus/gallimimus_adult.png"));
-        map.put(FAHeadTypes.ICHTHYOSAURUS, FAUtils.resource("textures/entity/ichthyosaurus/ichthyosaurus.png"));
-        map.put(FAHeadTypes.MAMMOTH, FAUtils.resource("textures/entity/mammoth/mammoth_adult_fur.png"));
-        map.put(FAHeadTypes.MOA, FAUtils.resource("textures/entity/moa/moa.png"));
-        map.put(FAHeadTypes.MOSASAURUS, FAUtils.resource("textures/entity/mosasaurus/mosasaurus.png"));
-        map.put(FAHeadTypes.PACHYCEPHALOSAURUS, FAUtils.resource("textures/entity/pachycephalosaurus/pachycephalosaurus_adult.png"));
-        map.put(FAHeadTypes.PTERANODON, FAUtils.resource("textures/entity/pteranodon/pteranodon_adult.png"));
-        map.put(FAHeadTypes.SMILODON, FAUtils.resource("textures/entity/smilodon/smilodon_adult.png"));
-        map.put(FAHeadTypes.SPINOSAURUS, FAUtils.resource("textures/entity/spinosaurus/spinosaurus_adult.png"));
-        map.put(FAHeadTypes.STEGOSAURUS, FAUtils.resource("textures/entity/stegosaurus/stegosaurus_adult.png"));
-        map.put(FAHeadTypes.THERIZINOSAURUS, FAUtils.resource("textures/entity/therizinosaurus/therizinosaurus_adult.png"));
-        map.put(FAHeadTypes.TRICERATOPS, FAUtils.resource("textures/entity/triceratops/green_triceratops_adult.png"));
-        map.put(FAHeadTypes.TYRANNOSAURUS, FAUtils.resource("textures/entity/tyrannosaurus/tyrannosaurus_adult.png"));
-        map.put(FAHeadTypes.VELOCIRAPTOR, FAUtils.resource("textures/entity/velociraptor/green_velociraptor_adult.png"));
+    private static final Map<FAHeadTypes, TextureInformation> DEFAULT_TEXTURES = Util.make(() -> {
+        Map<FAHeadTypes, TextureInformation> map = new HashMap<>();
+        map.put(FAHeadTypes.ANKYLOSAURUS, TextureInformation.item(FAUtils.resource("textures/entity/ankylosaurus/ankylosaurus.png"), FAUtils.resource("textures/entity/ankylosaurus/eyes/adult.png")));
+        map.put(FAHeadTypes.BARYONYX, TextureInformation.item(FAUtils.resource("textures/entity/baryonyx/baryonyx.png"), FAUtils.resource("textures/entity/baryonyx/eyes/adult.png")));
+        map.put(FAHeadTypes.BRACHIOSAURUS, TextureInformation.item(FAUtils.resource("textures/entity/brachiosaurus/brachiosaurus.png"), FAUtils.resource("textures/entity/brachiosaurus/eyes/adult.png")));
+        map.put(FAHeadTypes.CARNOTAURUS, TextureInformation.item(FAUtils.resource("textures/entity/carnotaurus/red_carnotaurus_adult.png")));
+        map.put(FAHeadTypes.COMPSOGNATHUS, TextureInformation.item(FAUtils.resource("textures/entity/compsognathus/compsognathus.png")));
+        map.put(FAHeadTypes.CRYOLOPHOSAURUS, TextureInformation.item(FAUtils.resource("textures/entity/cryolophosaurus/cryolophosaurus.png")));
+        map.put(FAHeadTypes.DILOPHOSAURUS, TextureInformation.item(FAUtils.resource("textures/entity/dilophosaurus/dilophosaurus.png")));
+        map.put(FAHeadTypes.DIMETRODON, TextureInformation.item(FAUtils.resource("textures/entity/dimetrodon/dimetrodon_adult.png")));
+        map.put(FAHeadTypes.DISTORTUS_REX, TextureInformation.item(FAUtils.resource("textures/entity/distortus_rex/distortus_rex.png")));
+        map.put(FAHeadTypes.DODO, TextureInformation.item(FAUtils.resource("textures/entity/dodo/dodo.png")));
+        map.put(FAHeadTypes.DRYOSAURUS, TextureInformation.item(FAUtils.resource("textures/entity/dryosaurus/dryosaurus.png")));
+        map.put(FAHeadTypes.ELASMOTHERIUM, TextureInformation.item(FAUtils.resource("textures/entity/elasmotherium/elasmotherium.png")));
+        map.put(FAHeadTypes.FUTABASAURUS, TextureInformation.item(FAUtils.resource("textures/entity/futabasaurus/futabasaurus.png")));
+        map.put(FAHeadTypes.GALLIMIMUS, TextureInformation.item(FAUtils.resource("textures/entity/gallimimus/gallimimus_adult.png")));
+        map.put(FAHeadTypes.ICHTHYOSAURUS, TextureInformation.item(FAUtils.resource("textures/entity/ichthyosaurus/ichthyosaurus.png")));
+        map.put(FAHeadTypes.MAMMOTH, TextureInformation.item(FAUtils.resource("textures/entity/mammoth/mammoth_adult_fur.png")));
+        map.put(FAHeadTypes.MOA, TextureInformation.item(FAUtils.resource("textures/entity/moa/moa.png")));
+        map.put(FAHeadTypes.MOSASAURUS, TextureInformation.item(FAUtils.resource("textures/entity/mosasaurus/mosasaurus.png")));
+        map.put(FAHeadTypes.PACHYCEPHALOSAURUS, TextureInformation.item(FAUtils.resource("textures/entity/pachycephalosaurus/pachycephalosaurus_adult.png")));
+        map.put(FAHeadTypes.PTERANODON, TextureInformation.item(FAUtils.resource("textures/entity/pteranodon/pteranodon_adult.png")));
+        map.put(FAHeadTypes.SMILODON, TextureInformation.item(FAUtils.resource("textures/entity/smilodon/smilodon_adult.png")));
+        map.put(FAHeadTypes.SPINOSAURUS, TextureInformation.item(FAUtils.resource("textures/entity/spinosaurus/spinosaurus_adult.png")));
+        map.put(FAHeadTypes.STEGOSAURUS, TextureInformation.item(FAUtils.resource("textures/entity/stegosaurus/stegosaurus_adult.png")));
+        map.put(FAHeadTypes.THERIZINOSAURUS, TextureInformation.item(FAUtils.resource("textures/entity/therizinosaurus/therizinosaurus_adult.png")));
+        map.put(FAHeadTypes.TRICERATOPS, TextureInformation.item(FAUtils.resource("textures/entity/triceratops/green_triceratops_adult.png")));
+        map.put(FAHeadTypes.TYRANNOSAURUS, TextureInformation.item(FAUtils.resource("textures/entity/tyrannosaurus/tyrannosaurus_adult.png")));
+        map.put(FAHeadTypes.VELOCIRAPTOR, TextureInformation.item(FAUtils.resource("textures/entity/velociraptor/green_velociraptor_adult.png")));
         return map;
     });
 
@@ -131,11 +137,10 @@ public class HeadBlockEntityRenderer implements BlockEntityRenderer<HeadBlockEnt
         Direction direction = flag ? blockState.getValue(WallHeadBlock.FACING) : null;
         int rotation = flag ? RotationSegment.convertToSegment(direction.getOpposite()) : blockState.getValue(SkullBlock.ROTATION);
         FAHeadTypes faHeadTypes = ((AbstractHeadBlock) blockState.getBlock()).getType();
-        RenderType renderType = HeadBlockEntityRenderer.getRenderType(faHeadTypes);
-        HeadBlockEntityRenderer.renderHead(direction, RotationSegment.convertToDegrees(rotation), 0, poseStack, multiBufferSource, packedLight, this.modelByHead.apply(faHeadTypes), renderType, headBlockEntity.headDisplayInformation, true);
+        HeadBlockEntityRenderer.renderHead(direction, RotationSegment.convertToDegrees(rotation), 0, poseStack, multiBufferSource, packedLight, this.modelByHead.apply(faHeadTypes), faHeadTypes, headBlockEntity.headDisplayInformation, true);
     }
 
-    public static void renderHead(Direction direction, float yRot, float mouthAnimation, PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight, HeadModel headModel, RenderType renderType, HeadDisplayInformation headDisplayInformation, boolean scale) {
+    public static void renderHead(Direction direction, float yRot, float mouthAnimation, PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight, HeadModel headModel, FAHeadTypes faHeadTypes, HeadDisplayInformation headDisplayInformation, boolean scale) {
         poseStack.pushPose();
         if (direction == null) {
             poseStack.translate(0.5F, 0.0F, 0.5F);
@@ -145,25 +150,42 @@ public class HeadBlockEntityRenderer implements BlockEntityRenderer<HeadBlockEnt
 
         poseStack.scale(-1.0F, -1.0F, 1.0F);
         ClientLevel clientLevel = Minecraft.getInstance().level;
-        if (headDisplayInformation != null) {
-            SkinGene skinGene = headDisplayInformation.cosmeticGeneHolder().skinGene(clientLevel.registryAccess()).value();
-            PatternGene patternGene = headDisplayInformation.cosmeticGeneHolder().patternGene(clientLevel.registryAccess()).value();
-            Registry<TextureInformation> textureRegistry = clientLevel.registryAccess().lookupOrThrow(FARegistries.TEXTURE);
-            if (scale) {
-
-            }
+        RegistryAccess registryAccess = clientLevel.registryAccess();
+        if (headDisplayInformation != HeadDisplayInformation.NONE) {
+            ModelGene modelGene = headDisplayInformation.cosmeticGeneHolder().modelGene(registryAccess).value();
+            SkinGene skinGene = headDisplayInformation.cosmeticGeneHolder().skinGene(registryAccess).value();
+            PatternGene patternGene = headDisplayInformation.cosmeticGeneHolder().patternGene(registryAccess).value();
+            ChromosomedEntityRenderState chromosomedEntityRenderState = new ChromosomedEntityRenderState();
+            chromosomedEntityRenderState.skinCompositeTextureRuleSource = registryAccess.lookupOrThrow(FARegistries.COMPOSITE_TEXTURE_RULE_SOURCE).getOrThrow(faHeadTypes.getSkinCompositeTextureRuleSource());
+            chromosomedEntityRenderState.patternCompositeTextureRuleSource = registryAccess.lookupOrThrow(FARegistries.COMPOSITE_TEXTURE_RULE_SOURCE).getOrThrow(faHeadTypes.getPatternCompositeTextureRuleSource());
+            Optional<ResourceLocation> base = skinGene.textures().apply(chromosomedEntityRenderState, FAUtils.resource("textures/entity/" + faHeadTypes.getSerializedName())).texture();
+            Optional<ResourceLocation> eye = skinGene.textures().apply(chromosomedEntityRenderState, FAUtils.resource("textures/entity/" + faHeadTypes.getSerializedName())).eyeTextures().eyeTexture();
+            Optional<ResourceLocation> pattern = patternGene.textures().apply(chromosomedEntityRenderState, FAUtils.resource("textures/entity/" + faHeadTypes.getSerializedName())).texture();
             headModel.setupAnim(mouthAnimation, yRot, 0.0F);
-            headModel.renderToBuffer(poseStack, multiBufferSource.getBuffer(RenderType.entityCutoutNoCullZOffset(FAUtils.resource("texture/entity/ankylosaurus/ankylosaurus.png"))), packedLight, OverlayTexture.NO_OVERLAY);
-
+            if (scale) {
+                float width = modelGene.ageScaleInfo().baseScaleWidth() + (modelGene.ageScaleInfo().ageScale() * (float) headDisplayInformation.growthStage());
+                float height = modelGene.ageScaleInfo().baseScaleHeight() + (modelGene.ageScaleInfo().ageScale() * (float) headDisplayInformation.growthStage());
+                poseStack.scale(width, height, width);
+            }
+            base.ifPresent(texture -> headModel.renderToBuffer(poseStack, multiBufferSource.getBuffer(RenderType.entityCutoutNoCullZOffset(texture)), packedLight, OverlayTexture.NO_OVERLAY));
+            eye.ifPresent(texture -> headModel.renderToBuffer(poseStack, multiBufferSource.getBuffer(RenderType.entityCutoutNoCullZOffset(texture)), packedLight, OverlayTexture.NO_OVERLAY));
+            pattern.ifPresent(texture -> headModel.renderToBuffer(poseStack, multiBufferSource.getBuffer(RenderType.entityCutoutNoCullZOffset(texture)), packedLight, OverlayTexture.NO_OVERLAY));
+        } else {
+            RenderType textureRenderType = HeadBlockEntityRenderer.getRenderType(faHeadTypes, false);
+            RenderType eyesRenderType = HeadBlockEntityRenderer.getRenderType(faHeadTypes, true);
+            headModel.setupAnim(mouthAnimation, yRot, 0.0F);
+            headModel.renderToBuffer(poseStack, multiBufferSource.getBuffer(textureRenderType), packedLight, OverlayTexture.NO_OVERLAY);
+            headModel.renderToBuffer(poseStack, multiBufferSource.getBuffer(eyesRenderType), packedLight, OverlayTexture.NO_OVERLAY);
         }
         poseStack.popPose();
     }
 
-    public static RenderType getRenderType(FAHeadTypes faHeadTypes) {
-        return HeadBlockEntityRenderer.getRenderType(faHeadTypes, null);
+    public static RenderType getRenderType(FAHeadTypes faHeadTypes, boolean eyesLayer) {
+        return HeadBlockEntityRenderer.getRenderType(faHeadTypes, eyesLayer, null);
     }
 
-    public static RenderType getRenderType(FAHeadTypes faHeadTypes, ResourceLocation textureOverride) {
-        return RenderType.entityCutoutNoCullZOffset(textureOverride != null ? textureOverride : HeadBlockEntityRenderer.TEXTURE_BY_HEAD.get(faHeadTypes));
+    public static RenderType getRenderType(FAHeadTypes faHeadTypes, boolean eyesLayer, ResourceLocation textureOverride) {
+        TextureInformation textureInformation = HeadBlockEntityRenderer.DEFAULT_TEXTURES.get(faHeadTypes);
+        return RenderType.entityCutoutNoCullZOffset(textureOverride != null ? textureOverride : eyesLayer ? textureInformation.eyeTextures().eyeTexture().get() : textureInformation.texture().get());
     }
 }

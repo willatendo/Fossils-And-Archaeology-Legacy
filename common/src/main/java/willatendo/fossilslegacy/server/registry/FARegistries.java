@@ -32,6 +32,7 @@ public final class FARegistries {
     public static final ResourceKey<Registry<AncientAxeBonus>> ANCIENT_AXE_BONUS = ResourceKey.createRegistryKey(FAUtils.resource("ancient_axe_bonus"));
     public static final ResourceKey<Registry<AttributeGene>> ATTRIBUTE_GENE = ResourceKey.createRegistryKey(FAUtils.resource("attribute_gene"));
     public static final ResourceKey<Registry<CommandType>> COMMAND_TYPES = ResourceKey.createRegistryKey(FAUtils.resource("command_type"));
+    public static final ResourceKey<Registry<CompositeTextureRules.RuleSource>> COMPOSITE_TEXTURE_RULE_SOURCE = ResourceKey.createRegistryKey(FAUtils.resource("composite_texture_rule_source"));
     public static final ResourceKey<Registry<MapCodec<? extends CompositeTextureRules.ConditionSource>>> COMPOSITE_TEXTURE_CONDITION = ResourceKey.createRegistryKey(FAUtils.resource("composite_texture_condition"));
     public static final ResourceKey<Registry<MapCodec<? extends CompositeTextureRules.RuleSource>>> COMPOSITE_TEXTURE_RULE = ResourceKey.createRegistryKey(FAUtils.resource("composite_texture_rule"));
     public static final ResourceKey<Registry<DecorationPlaqueType>> DECORATION_PLAQUE_TYPE = ResourceKey.createRegistryKey(FAUtils.resource("decoration_plaque_type"));
@@ -51,6 +52,5 @@ public final class FARegistries {
     public static final ResourceKey<Registry<PregnancyType>> PREGNANCY_TYPE = ResourceKey.createRegistryKey(FAUtils.resource("pregnancy_type"));
     public static final ResourceKey<Registry<SkinGene>> SKIN_GENE = ResourceKey.createRegistryKey(FAUtils.resource("skin_gene"));
     public static final ResourceKey<Registry<StoneTabletVariant>> STONE_TABLET_VARIANT = ResourceKey.createRegistryKey(FAUtils.resource("stone_tablet_variant"));
-    public static final ResourceKey<Registry<TextureInformation>> TEXTURE = ResourceKey.createRegistryKey(FAUtils.resource("texture"));
     public static final ResourceKey<Registry<MapCodec<? extends TextureType>>> TEXTURE_TYPE = ResourceKey.createRegistryKey(FAUtils.resource("texture_type"));
 }

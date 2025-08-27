@@ -1,8 +1,10 @@
 package willatendo.fossilslegacy.server.block.blocks;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -13,6 +15,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.level.redstone.Orientation;
 import willatendo.fossilslegacy.server.block.entity.entities.HeadBlockEntity;
+import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.FAHeadTypes;
 
 public abstract class AbstractHeadBlock extends Block implements EntityBlock {
@@ -64,5 +67,16 @@ public abstract class AbstractHeadBlock extends Block implements EntityBlock {
                 level.setBlock(blockPos, blockState.setValue(POWERED, flag), 2);
             }
         }
+    }
+
+    @Override
+    protected ItemStack getCloneItemStack(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean includeData) {
+        ItemStack itemStack = super.getCloneItemStack(levelReader, blockPos, blockState, includeData);
+        if (levelReader.getBlockEntity(blockPos) instanceof HeadBlockEntity headBlockEntity) {
+            if (headBlockEntity.headDisplayInformation != null) {
+                itemStack.set(FADataComponents.HEAD_DISPLAY_INFORMATION.get(), headBlockEntity.headDisplayInformation);
+            }
+        }
+        return itemStack;
     }
 }

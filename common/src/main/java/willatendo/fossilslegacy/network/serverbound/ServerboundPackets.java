@@ -13,6 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import willatendo.fossilslegacy.server.block.entity.entities.DNARecombinatorBlockEntity;
+import willatendo.fossilslegacy.server.block.entity.entities.FeederBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.entities.TimeMachineBlockEntity;
 import willatendo.fossilslegacy.server.gene.InheritedGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.CosmeticGeneHolder;
@@ -37,6 +38,24 @@ public final class ServerboundPackets {
         Entity entity = level.getEntity(id);
         if (entity instanceof Player thePlayer) {
             thePlayer.getMainHandItem().hurtAndBreak(1, thePlayer, EquipmentSlot.MAINHAND);
+        }
+    }
+
+    public static void serverboundAddNotifiedPlayerPacket(ServerboundAddNotifiedPlayerPacket serverboundAddNotifiedPlayerPacket, Player player) {
+        Level level = player.level();
+        BlockPos blockPos = serverboundAddNotifiedPlayerPacket.blockPos();
+        BlockEntity blockEntity = level.getBlockEntity(blockPos);
+        if (blockEntity instanceof FeederBlockEntity feederBlockEntity) {
+            feederBlockEntity.addNotifiedPlayer(serverboundAddNotifiedPlayerPacket.playerUuid());
+        }
+    }
+
+    public static void serverboundRemoveNotifiedPlayerPacket(ServerboundRemoveNotifiedPlayerPacket serverboundRemoveNotifiedPlayerPacket, Player player) {
+        Level level = player.level();
+        BlockPos blockPos = serverboundRemoveNotifiedPlayerPacket.blockPos();
+        BlockEntity blockEntity = level.getBlockEntity(blockPos);
+        if (blockEntity instanceof FeederBlockEntity feederBlockEntity) {
+            feederBlockEntity.removeNotifiedPlayer(serverboundRemoveNotifiedPlayerPacket.playerUuid());
         }
     }
 

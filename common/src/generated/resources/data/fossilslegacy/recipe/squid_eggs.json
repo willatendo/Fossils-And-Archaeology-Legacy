@@ -1,0 +1,9 @@
+{
+  "type": "fossilslegacy:cultivation",
+  "category": "egg",
+  "ingredient": "fossilslegacy:squid_dna",
+  "result": {
+    "id": "fossilslegacy:squid_eggs"
+  },
+  "time": 6000
+}
