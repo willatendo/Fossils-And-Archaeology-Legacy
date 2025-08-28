@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "short=false": {
+      "model": "fossilslegacy:block/hardened_tar_block"
+    },
+    "short=true": {
+      "model": "fossilslegacy:block/hardened_tar_block_short"
+    }
+  }
+}

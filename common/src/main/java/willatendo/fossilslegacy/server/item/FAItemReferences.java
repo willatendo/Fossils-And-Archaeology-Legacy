@@ -89,6 +89,8 @@ public final class FAItemReferences {
     public static final ResourceKey<Item> ARAUCARIA_BUTTON = FAItemReferences.create("ginkgo_button");
     public static final ResourceKey<Item> ARAUCARIA_SLAB = FAItemReferences.create("ginkgo_slab");
 
+    public static final ResourceKey<Item> TAR_BUCKET = FAItemReferences.create("tar_bucket");
+
     private static ResourceKey<Item> create(String name) {
         return FAItems.ITEMS.itemRegistry().reference(name);
     }

@@ -1,0 +1,7 @@
+{
+  "parent": "fossilslegacy:block/template_road_marking",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "texture": "fossilslegacy:block/solid_white_marking"
+  }
+}

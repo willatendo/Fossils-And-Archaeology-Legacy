@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "fossilslegacy:block/polished_asphalt"
+  }
+}

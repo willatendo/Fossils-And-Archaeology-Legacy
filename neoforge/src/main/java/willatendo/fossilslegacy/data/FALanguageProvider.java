@@ -282,6 +282,38 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         }
         this.add("block.fossilslegacy.head.skin_gene", "Skin: %s");
         this.add("block.fossilslegacy.head.growth_stage", "Growth Stage: %s");
+        this.add(FABlocks.ASPHALT.get());
+        this.add(FABlocks.ASPHALT_STAIRS.get());
+        this.add(FABlocks.ASPHALT_SLAB.get());
+        this.add(FABlocks.ASPHALT_WALL.get());
+        this.add(FABlocks.POLISHED_ASPHALT.get());
+        this.add(FABlocks.POLISHED_ASPHALT_STAIRS.get());
+        this.add(FABlocks.POLISHED_ASPHALT_SLAB.get());
+        this.add(FABlocks.POLISHED_ASPHALT_WALL.get());
+        this.add(FABlocks.POLISHED_ASPHALT_BRICKS.get());
+        this.add(FABlocks.POLISHED_ASPHALT_BRICK_STAIRS.get());
+        this.add(FABlocks.POLISHED_ASPHALT_BRICK_SLAB.get());
+        this.add(FABlocks.POLISHED_ASPHALT_BRICK_WALL.get());
+        this.add(FABlocks.SOLID_WHITE_MARKING.get());
+        this.add(FABlocks.DOUBLE_SOLID_WHITE_MARKING.get());
+        this.add(FABlocks.HARDENED_TAR_BLOCK.get());
+        this.add(FABlocks.HOLOGRAM_PROJECTOR.get());
+        this.add(FABlocks.WHITE_HOLOGRAM_PROJECTOR.get());
+        this.add(FABlocks.ORANGE_HOLOGRAM_PROJECTOR.get());
+        this.add(FABlocks.MAGENTA_HOLOGRAM_PROJECTOR.get());
+        this.add(FABlocks.LIGHT_BLUE_HOLOGRAM_PROJECTOR.get());
+        this.add(FABlocks.YELLOW_HOLOGRAM_PROJECTOR.get());
+        this.add(FABlocks.LIME_HOLOGRAM_PROJECTOR.get());
+        this.add(FABlocks.PINK_HOLOGRAM_PROJECTOR.get());
+        this.add(FABlocks.GRAY_HOLOGRAM_PROJECTOR.get());
+        this.add(FABlocks.LIGHT_GRAY_HOLOGRAM_PROJECTOR.get());
+        this.add(FABlocks.CYAN_HOLOGRAM_PROJECTOR.get());
+        this.add(FABlocks.PURPLE_HOLOGRAM_PROJECTOR.get());
+        this.add(FABlocks.BLUE_HOLOGRAM_PROJECTOR.get());
+        this.add(FABlocks.BROWN_HOLOGRAM_PROJECTOR.get());
+        this.add(FABlocks.GREEN_HOLOGRAM_PROJECTOR.get());
+        this.add(FABlocks.RED_HOLOGRAM_PROJECTOR.get());
+        this.add(FABlocks.BLACK_HOLOGRAM_PROJECTOR.get());
 
         // Biomes
         this.add("biome.fossilslegacy.prehistoric_ocean", "Prehistoric Ocean");

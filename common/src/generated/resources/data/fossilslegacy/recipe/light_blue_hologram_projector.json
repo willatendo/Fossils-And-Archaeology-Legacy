@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "minecraft:iron_ingot",
+    "$": "minecraft:light_blue_stained_glass",
+    "%": "minecraft:redstone_lamp",
+    "^": "minecraft:redstone_torch"
+  },
+  "pattern": [
+    "#$#",
+    "#%#",
+    "#^#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:light_blue_hologram_projector"
+  }
+}

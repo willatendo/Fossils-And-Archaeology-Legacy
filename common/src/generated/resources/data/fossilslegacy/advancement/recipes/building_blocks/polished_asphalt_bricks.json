@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_polished_asphalt": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:polished_asphalt"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:polished_asphalt_bricks"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_polished_asphalt"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:polished_asphalt_bricks"
+    ]
+  }
+}

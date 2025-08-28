@@ -34,8 +34,8 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.client.event.registry.*;
 
 public final class FossilsLegacyClient {
-    public static final ResourceLocation TAR_STILL = ResourceLocation.withDefaultNamespace("block/bedrock");
-    public static final ResourceLocation TAR_FLOW = ResourceLocation.withDefaultNamespace("block/bedrock");
+    public static final ResourceLocation TAR_STILL = FAUtils.resource("block/tar_still");
+    public static final ResourceLocation TAR_FLOW = FAUtils.resource("block/tar_flowing");
 
     public static void loadUserManuelData() {
         UserManualData.init();
@@ -184,6 +184,7 @@ public final class FossilsLegacyClient {
         modelRegister.register(FABlockEntityTypes.FOSSILS_SIGN.get(), SignRenderer::new);
         modelRegister.register(FABlockEntityTypes.FOSSILS_HANGING_SIGN.get(), HangingSignRenderer::new);
         modelRegister.register(FABlockEntityTypes.HEAD.get(), HeadBlockEntityRenderer::new);
+        modelRegister.register(FABlockEntityTypes.HOLOGRAM_PROJECTOR.get(), HologramProjectorBlockEntityRenderer::new);
         modelRegister.register(FABlockEntityTypes.TIME_MACHINE.get(), TimeMachineClockRenderer::new);
         modelRegister.register(FABlockEntityTypes.VASE.get(), VaseRenderer::new);
     }

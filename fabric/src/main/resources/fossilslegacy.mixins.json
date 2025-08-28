@@ -4,7 +4,8 @@
   "package": "willatendo.fossilslegacy.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "LightningBoltMixin"
+    "LightningBoltMixin",
+    "PistonStructureResolverMixin"
   ],
   "client": [
     "client.ClientRecipeBookMixin",

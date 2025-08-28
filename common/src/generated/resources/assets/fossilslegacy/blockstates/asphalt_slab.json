@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "fossilslegacy:block/asphalt_slab"
+    },
+    "type=double": {
+      "model": "fossilslegacy:block/asphalt"
+    },
+    "type=top": {
+      "model": "fossilslegacy:block/asphalt_slab_top"
+    }
+  }
+}

@@ -1,4 +1,4 @@
-// 1.21.4	2025-08-26T20:41:57.6927679	Registries
+// 1.21.4	2025-08-28T12:19:17.7492265	Registries
 532001524c06f9b4a4565f8b548bb4a8de84ba73 data/fossilslegacy/damage_type/animal_starve.json
 2114b0003e5d2bbcaa78bf13cc88ac12e038a4d0 data/fossilslegacy/damage_type/dart.json
 272b73d0ec6656b7beba50d287714cb055cc1dce data/fossilslegacy/damage_type/dilophosaurus_envenomation.json
@@ -574,6 +574,7 @@ b1cb96d5e3faf5e4fc8d04d00446362c0eaea756 data/fossilslegacy/fossilslegacy/fuel_e
 3745373ebf53beb5ea644b0ab28ae49e8ddbc649 data/fossilslegacy/fossilslegacy/fuel_entry/tropical_fish.json
 a776a38dcdc0edbcefd96ec8b8c95a2e24cdd6ce data/fossilslegacy/fossilslegacy/fuel_entry/tyrannosaurus_egg.json
 d30aa187e949d98b767ce04382b9432cc3f47902 data/fossilslegacy/fossilslegacy/fuel_entry/velociraptor_egg.json
+4cadb9dd571c6d366c9d54dbd489554e77c4c064 data/fossilslegacy/fossilslegacy/hologram_type/ankylosaurus.json
 da10015b51cbf34cc77557400f5807c9a2c4d29e data/fossilslegacy/fossilslegacy/jewel_recovery/andesite.json
 f6eabcbf0e2ffee02c31d52ba3ef1f3102dbe6df data/fossilslegacy/fossilslegacy/jewel_recovery/deepslate.json
 3b78334e816be594925c4e008f8e3cbffaee1be5 data/fossilslegacy/fossilslegacy/jewel_recovery/diorite.json

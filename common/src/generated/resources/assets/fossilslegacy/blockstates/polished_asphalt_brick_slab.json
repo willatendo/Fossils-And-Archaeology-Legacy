@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "fossilslegacy:block/polished_asphalt_brick_slab"
+    },
+    "type=double": {
+      "model": "fossilslegacy:block/polished_asphalt_bricks"
+    },
+    "type=top": {
+      "model": "fossilslegacy:block/polished_asphalt_brick_slab_top"
+    }
+  }
+}

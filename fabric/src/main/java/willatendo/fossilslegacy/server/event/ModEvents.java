@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
+import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.minecraft.client.gui.screens.recipebook.RecipeCollection;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.MobCategory;
@@ -18,6 +19,7 @@ import willatendo.fossilslegacy.network.clientbound.ClientboundRecipeContentPack
 import willatendo.fossilslegacy.server.dimension.DayCycleLevelData;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.feature.FAPlacedFeatures;
+import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.recipe.FARecipeTypes;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.event.modification.*;
@@ -33,6 +35,8 @@ public class ModEvents {
 
     public static void commonSetup() {
         BasicEvents.commonSetup();
+
+        FuelRegistryEvents.BUILD.register((builder, context) -> builder.add(FAItems.TAR_BUCKET.get(), 20000));
 
         ServerboundPacketRegistry.serverboundPacketSetup(new FabricServerboundPacketRegister());
         FabricCreativeModeTabModification fabricCreativeModeTabModification = new FabricCreativeModeTabModification();

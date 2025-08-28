@@ -14,6 +14,7 @@ public class FABlockTags {
     public static final TagKey<Block> NEEDS_WOOD_TOOL = C_BLOCK_TAGS.register("needs_wood_tool");
     public static final TagKey<Block> NEEDS_GOLD_TOOL = C_BLOCK_TAGS.register("needs_gold_tool");
     public static final TagKey<Block> NEEDS_NETHERITE_TOOL = C_BLOCK_TAGS.register("needs_netherite_tool");
+    public static final TagKey<Block> STONES = C_BLOCK_TAGS.register("stones");
 
     public static final TagKey<Block> ANKYLOSAURUS_SPAWNABLE = BLOCK_TAGS.register("spawnable/ankylosaurus");
     public static final TagKey<Block> ARAUCARIA_LOGS = BLOCK_TAGS.register("araucaria_logs");

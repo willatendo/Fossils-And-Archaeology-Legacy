@@ -1,6 +1,8 @@
 package willatendo.fossilslegacy.client;
 
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
@@ -20,15 +22,19 @@ import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;
 import willatendo.fossilslegacy.client.user_manual.UserManualItemDataLoader;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.fluid.FAFluidTypes;
+import willatendo.fossilslegacy.server.fluid.FAFluids;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.client.event.registry.*;
 
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = FAUtils.ID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = FAUtils.ID, value = Dist.CLIENT)
 public class ClientEvents {
     @SubscribeEvent
     public static void fmlClientSetupEvent(FMLClientSetupEvent event) {
         FossilsLegacyClient.loadUserManuelData();
         FossilsLegacyClient.signSheets();
+
+        ItemBlockRenderTypes.setRenderLayer(FAFluids.TAR.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(FAFluids.FLOWING_TAR.get(), RenderType.translucent());
     }
 
     @SubscribeEvent

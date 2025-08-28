@@ -38,6 +38,10 @@ public final class FAModelTemplates {
     public static final ExtendedModelTemplate TEMPLATE_ONYCHIOPSIS_3 = FAModelTemplates.create("template_onychiopsis_3", TextureSlot.UPPER_STEM, TextureSlot.STEM).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_ONYCHIOPSIS_4 = FAModelTemplates.create("template_onychiopsis_4", TextureSlot.UPPER_STEM, TextureSlot.STEM).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_DECORATION_PLAQUE_POST = FAModelTemplates.create("template_decoration_plaque_post", FATextureSlot.POST).build();
+    public static final ExtendedModelTemplate TEMPLATE_HOLOGRAM_PROJECTOR = FAModelTemplates.create("template_hologram_projector", TextureSlot.SIDE, TextureSlot.UP, TextureSlot.DOWN).build();
+    public static final ExtendedModelTemplate TEMPLATE_HOLOGRAM_PROJECTOR_ON = FAModelTemplates.create("template_hologram_projector_on", TextureSlot.SIDE, TextureSlot.UP, TextureSlot.DOWN).renderType("translucent").build();
+    public static final ExtendedModelTemplate TEMPLATE_HONEY_BLOCK = FAModelTemplates.createMC("honey_block", TextureSlot.PARTICLE, TextureSlot.DOWN, TextureSlot.UP, TextureSlot.SIDE).extend().renderType("translucent").build();
+    public static final ExtendedModelTemplate TEMPLATE_SHORT_HARDENED_TAR_BLOCK = FAModelTemplates.create("template_short_hardened_tar_block", TextureSlot.DOWN, TextureSlot.UP, TextureSlot.SIDE).renderType("translucent").build();
     public static final ExtendedModelTemplate TEMPLATE_PLANT_1 = FAModelTemplates.create("template_plant_1", FATextureSlot.PLANT_1).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_PLANT_2 = FAModelTemplates.create("template_plant_2", FATextureSlot.PLANT_2).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_PLANT_3 = FAModelTemplates.create("template_plant_3", FATextureSlot.PLANT_3).renderType("cutout").build();
@@ -56,6 +60,7 @@ public final class FAModelTemplates {
     public static final ExtendedModelTemplate TEMPLATE_RAIL_RAMP_2 = FAModelTemplates.create("template_rail_ramp_2", TextureSlot.RAIL).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_RAIL_RAMP_3 = FAModelTemplates.create("template_rail_ramp_3", TextureSlot.RAIL).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_RAIL_RAMP_4 = FAModelTemplates.create("template_rail_ramp_4", TextureSlot.RAIL).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_ROAD_MARKING = FAModelTemplates.create("template_road_marking", TextureSlot.TEXTURE).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_LILY_PAD = FAModelTemplates.createMC("lily_pad", TextureSlot.TEXTURE).extend().renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_LOTUS = FAModelTemplates.create("template_lotus", TextureSlot.TEXTURE, FATextureSlot.FLOWER, FATextureSlot.STEM).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_SOUP_CAULDRON_1 = FAModelTemplates.create("template_soup_cauldron_1", TextureSlot.CONTENT).build();
@@ -71,7 +76,7 @@ public final class FAModelTemplates {
     public static final ExtendedModelTemplate TEMPLATE_TIME_MACHINE = FAModelTemplates.create("template_time_machine").build();
     public static final ExtendedModelTemplate TEMPLATE_VASE = FAModelTemplates.create("template_vase", TextureSlot.SIDE).build();
     public static final ExtendedModelTemplate TEMPLATE_LLAMA = FAModelTemplates.create("template_llama", TextureSlot.TEXTURE, TextureSlot.PARTICLE).build();
-    public static final ExtendedModelTemplate TEMPLATE_LIQUID = FAModelTemplates.create(TextureSlot.PARTICLE).build();
+    public static final ExtendedModelTemplate TEMPLATE_LIQUID = FAModelTemplates.create(TextureSlot.PARTICLE).renderType("translucent").build();
     public static final ExtendedModelTemplate TEMPLATE_FROZEN_LEECH = FAModelTemplates.create("template_frozen_leech", TextureSlot.TEXTURE).build();
     public static final ExtendedModelTemplate TEMPLATE_RESTORATION_TABLE = FAModelTemplates.create("template_restoration_table", TextureSlot.TEXTURE).build();
     public static final ExtendedModelTemplate TEMPLATE_ZAMITES_HEAD = FAModelTemplates.create("template_zamites_head", TextureSlot.SIDE, TextureSlot.TOP, FATextureSlot.LEAVES).renderType("cutout").build();

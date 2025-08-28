@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "shape=east_west": {
+      "model": "fossilslegacy:block/double_solid_white_marking",
+      "y": 90
+    },
+    "shape=north_south": {
+      "model": "fossilslegacy:block/double_solid_white_marking"
+    }
+  }
+}

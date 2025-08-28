@@ -32,6 +32,8 @@ public final class FABlockTypes {
         FABlockTypes.register("dna_recombinator", DNARecombinatorBlock.CODEC);
         FABlockTypes.register("drum", DrumBlock.CODEC);
         FABlockTypes.register("frozen_leech", FrozenLeechBlock.CODEC);
+        FABlockTypes.register("hologram_projector", HologramProjectorBlock.CODEC);
+        FABlockTypes.register("hardened_tar", HardenedTarBlock.CODEC);
         FABlockTypes.register("horsetail", HorsetailBlock.CODEC);
         FABlockTypes.register("iced_stone", IcedStoneBlock.CODEC);
         FABlockTypes.register("jurassic_fern", JurassicFernBlock.CODEC);
@@ -47,6 +49,7 @@ public final class FABlockTypes {
         FABlockTypes.register("ramp_track", RampTrackBlock.CODEC);
         FABlockTypes.register("raw_berry_medley_cauldron", RawBerryMedleyCauldronBlock.CODEC);
         FABlockTypes.register("raw_chicken_soup_cauldron", RawChickenSoupCauldronBlock.CODEC);
+        FABlockTypes.register("road_marking", RoadMarkingBlock.CODEC);
         FABlockTypes.register("salvinia", SalviniaBlock.CODEC);
         FABlockTypes.register("shattered_cultivator", ShatteredCultivatorBlock.CODEC);
         FABlockTypes.register("skull", SkullBlock.CODEC);

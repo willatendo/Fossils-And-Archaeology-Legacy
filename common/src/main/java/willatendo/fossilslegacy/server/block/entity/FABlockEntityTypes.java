@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.server.block.entity;
 
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.block.entity.entities.*;
@@ -10,7 +9,12 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FABlockEntityTypes {
     public static final SimpleRegistry<BlockEntityType<?>> BLOCK_ENTITY_TYPES = SimpleRegistry.create(Registries.BLOCK_ENTITY_TYPE, FAUtils.ID);
@@ -26,6 +30,7 @@ public class FABlockEntityTypes {
     public static final SimpleHolder<BlockEntityType<FeederBlockEntity>> FEEDER = BLOCK_ENTITY_TYPES.register("feeder", () -> new BlockEntityType<>(FeederBlockEntity::new, Set.of(FABlocks.FEEDER.get())));
     public static final SimpleHolder<BlockEntityType<HeadBlockEntity>> HEAD = BLOCK_ENTITY_TYPES.register("head", () -> new BlockEntityType<>(HeadBlockEntity::new, Set.of(FABlockRegistry.getAllHeads())));
     public static final SimpleHolder<BlockEntityType<TimeMachineBlockEntity>> TIME_MACHINE = BLOCK_ENTITY_TYPES.register("time_machine", () -> new BlockEntityType<>(TimeMachineBlockEntity::new, Set.of(FABlocks.TIME_MACHINE.get())));
+    public static final SimpleHolder<BlockEntityType<HologramProjectorBlockEntity>> HOLOGRAM_PROJECTOR = BLOCK_ENTITY_TYPES.register("hologram_projector", () -> new BlockEntityType<>(HologramProjectorBlockEntity::new, Stream.concat(Stream.of(FABlocks.HOLOGRAM_PROJECTOR.get()), Arrays.stream(FABlockRegistry.getColoredHologramProjectors())).collect(Collectors.toSet())));
     public static final SimpleHolder<BlockEntityType<RawSoupBlockEntity>> RAW_SOUP = BLOCK_ENTITY_TYPES.register("raw_soup", () -> new BlockEntityType<>(RawSoupBlockEntity::new, Set.of(FABlocks.RAW_CHICKEN_SOUP_CAULDRON.get(), FABlocks.RAW_BERRY_MEDLEY_CAULDRON.get())));
     public static final SimpleHolder<BlockEntityType<FossilsSignBlockEntity>> FOSSILS_SIGN = BLOCK_ENTITY_TYPES.register("fossils_sign", () -> new BlockEntityType<>(FossilsSignBlockEntity::new, Set.of(FABlockRegistry.getAllSigns())));
     public static final SimpleHolder<BlockEntityType<FossilsHangingSignBlockEntity>> FOSSILS_HANGING_SIGN = BLOCK_ENTITY_TYPES.register("fossils_hanging_sign", () -> new BlockEntityType<>(FossilsHangingSignBlockEntity::new, Set.of(FABlockRegistry.getAllHangingSigns())));

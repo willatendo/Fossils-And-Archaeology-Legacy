@@ -13,6 +13,7 @@ import willatendo.fossilslegacy.client.render.json.DataDrivenModelDinosaurRender
 import willatendo.fossilslegacy.client.state.DinosaurRenderState;
 import willatendo.fossilslegacy.server.entity.entities.Dinosaur;
 import willatendo.fossilslegacy.server.gene.cosmetics.FAPatternGenes;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public class PatternLayer<T extends Dinosaur, S extends DinosaurRenderState> extends RenderLayer<S, EntityModel<S>> {
     private final DataDrivenModelDinosaurRenderer<T, S> dataDrivenModelDinosaurRenderer;
@@ -23,7 +24,7 @@ public class PatternLayer<T extends Dinosaur, S extends DinosaurRenderState> ext
     }
 
     protected RenderType getRenderType(S dinosaurRenderState, boolean isVisible, boolean renderTranslucent, boolean appearsGlowing) {
-        ResourceLocation texture = this.dataDrivenModelDinosaurRenderer.getPatternTextureInformation(dinosaurRenderState).texture().get();
+        ResourceLocation texture = this.dataDrivenModelDinosaurRenderer.getPatternTextureInformation(dinosaurRenderState).texture().orElse(FAUtils.resource("textures/entity/ankylosaurus/ankylosaurus.png"));
         if (renderTranslucent) {
             return RenderType.itemEntityTranslucentCull(texture);
         } else if (isVisible) {

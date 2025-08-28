@@ -451,8 +451,39 @@
 - Added Cenoceras DNA
 - Added Cenoceras Entity
 - Added Cenoceras Sio-Chiu-Le
-- Added
 - Added Feeder Message When Below Certain Threshold
+- Added Tar
+- Added Tar Bucket
+- Added Hardened Tar Block
+- Added Asphalt
+- Added Asphalt Stairs
+- Added Asphalt Slab
+- Added Asphalt Wall
+- Added Polished Asphalt
+- Added Polished Asphalt Stairs
+- Added Polished Asphalt Slab
+- Added Polished Asphalt Wall
+- Added Polished Asphalt Bricks
+- Added Polished Asphalt Brick Stairs
+- Added Polished Asphalt Brick Slab
+- Added Polished Asphalt Brick Wall
+- Added Hologram Projector
+- Added White Hologram Projector
+- Added Orange Hologram Projector
+- Added Magenta Hologram Projector
+- Added Light Blue Hologram Projector
+- Added Yellow Hologram Projector
+- Added Lime Hologram Projector
+- Added Pink Hologram Projector
+- Added Gray Hologram Projector
+- Added Light Gray Hologram Projector
+- Added Cyan Hologram Projector
+- Added Purple Hologram Projector
+- Added Blue Hologram Projector
+- Added Brown Hologram Projector
+- Added Green Hologram Projector
+- Added Red Hologram Projector
+- Added Black Hologram Projector
 27/2/2024 1.4.9
 - Fixed Tooth Dagger Not Shearing All Shearables
 - Fixed Mayan Vase Not Wobbling

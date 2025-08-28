@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import willatendo.fossilslegacy.platform.FAModloaderHelper;
 import willatendo.fossilslegacy.server.block.blocks.SkullBlock;
 import willatendo.fossilslegacy.server.block.blocks.*;
 import willatendo.fossilslegacy.server.fluid.FAFluids;
@@ -204,7 +205,7 @@ public final class FABlocks {
     public static final SimpleHolder<RotatedPillarBlock> LEPIDODENDRON_WOOD = BLOCKS.registerWood("lepidodendron_wood", MapColor.TERRACOTTA_BROWN);
     public static final SimpleHolder<RotatedPillarBlock> STRIPPED_LEPIDODENDRON_WOOD = BLOCKS.registerStrippedWood("stripped_lepidodendron_wood", MapColor.TERRACOTTA_GREEN);
     public static final SimpleHolder<LeavesBlock> LEPIDODENDRON_LEAVES = BLOCKS.registerLeaves("lepidodendron_leaves");
-    public static final SimpleHolder<StairBlock> LEPIDODENDRON_STAIRS = BLOCKS.registerStairs("lepidodendron_stairs", FABlocks.LEPIDODENDRON_PLANKS);
+    public static final SimpleHolder<StairBlock> LEPIDODENDRON_STAIRS = BLOCKS.registerWoodStairs("lepidodendron_stairs", FABlocks.LEPIDODENDRON_PLANKS);
     public static final SimpleHolder<FossilsStandingSignBlock> LEPIDODENDRON_SIGN = BLOCKS.registerSign("lepidodendron_sign", FAWoodTypes.LEPIDODENDRON, MapColor.TERRACOTTA_GREEN);
     public static final SimpleHolder<FossilsWallSignBlock> LEPIDODENDRON_WALL_SIGN = BLOCKS.registerWallSign("lepidodendron_wall_sign", FABlocks.LEPIDODENDRON_SIGN);
     public static final SimpleHolder<DoorBlock> LEPIDODENDRON_DOOR = BLOCKS.registerDoor("lepidodendron_door", FABlockSetTypes.LEPIDODENDRON, FABlocks.LEPIDODENDRON_PLANKS);
@@ -216,7 +217,7 @@ public final class FABlocks {
     public static final SimpleHolder<FenceGateBlock> LEPIDODENDRON_FENCE_GATE = BLOCKS.registerFenceGate("lepidodendron_fence_gate", FAWoodTypes.LEPIDODENDRON, FABlocks.LEPIDODENDRON_PLANKS);
     public static final SimpleHolder<FlowerPotBlock> POTTED_LEPIDODENDRON_SAPLING = BLOCKS.registerPottedSapling("potted_lepidodendron_sapling", FABlocks.LEPIDODENDRON_SAPLING);
     public static final SimpleHolder<ButtonBlock> LEPIDODENDRON_BUTTON = BLOCKS.registerButton("lepidodendron_button", FABlockSetTypes.LEPIDODENDRON);
-    public static final SimpleHolder<SlabBlock> LEPIDODENDRON_SLAB = BLOCKS.registerSlab("lepidodendron_slab", MapColor.TERRACOTTA_GREEN);
+    public static final SimpleHolder<SlabBlock> LEPIDODENDRON_SLAB = BLOCKS.registerWoodSlab("lepidodendron_slab", MapColor.TERRACOTTA_GREEN);
     public static final SimpleHolder<Block> SIGILLARIA_PLANKS = BLOCKS.registerPlanks("sigillaria_planks", MapColor.TERRACOTTA_BLACK);
     public static final SimpleHolder<SaplingBlock> SIGILLARIA_SAPLING = BLOCKS.registerSapling("sigillaria_sapling", FATreeGrowers.SIGILLARIA);
     public static final SimpleHolder<RotatedPillarBlock> SIGILLARIA_LOG = BLOCKS.registerLog("sigillaria_log", MapColor.TERRACOTTA_BLACK, MapColor.TERRACOTTA_GRAY);
@@ -224,7 +225,7 @@ public final class FABlocks {
     public static final SimpleHolder<RotatedPillarBlock> SIGILLARIA_WOOD = BLOCKS.registerWood("sigillaria_wood", MapColor.TERRACOTTA_GRAY);
     public static final SimpleHolder<RotatedPillarBlock> STRIPPED_SIGILLARIA_WOOD = BLOCKS.registerStrippedWood("stripped_sigillaria_wood", MapColor.TERRACOTTA_BLACK);
     public static final SimpleHolder<LeavesBlock> SIGILLARIA_LEAVES = BLOCKS.registerLeaves("sigillaria_leaves");
-    public static final SimpleHolder<StairBlock> SIGILLARIA_STAIRS = BLOCKS.registerStairs("sigillaria_stairs", FABlocks.SIGILLARIA_PLANKS);
+    public static final SimpleHolder<StairBlock> SIGILLARIA_STAIRS = BLOCKS.registerWoodStairs("sigillaria_stairs", FABlocks.SIGILLARIA_PLANKS);
     public static final SimpleHolder<FossilsStandingSignBlock> SIGILLARIA_SIGN = BLOCKS.registerSign("sigillaria_sign", FAWoodTypes.SIGILLARIA, MapColor.TERRACOTTA_BLACK);
     public static final SimpleHolder<FossilsWallSignBlock> SIGILLARIA_WALL_SIGN = BLOCKS.registerWallSign("sigillaria_wall_sign", FABlocks.SIGILLARIA_SIGN);
     public static final SimpleHolder<DoorBlock> SIGILLARIA_DOOR = BLOCKS.registerDoor("sigillaria_door", FABlockSetTypes.SIGILLARIA, FABlocks.SIGILLARIA_PLANKS);
@@ -236,7 +237,7 @@ public final class FABlocks {
     public static final SimpleHolder<FenceGateBlock> SIGILLARIA_FENCE_GATE = BLOCKS.registerFenceGate("sigillaria_fence_gate", FAWoodTypes.SIGILLARIA, FABlocks.SIGILLARIA_PLANKS);
     public static final SimpleHolder<FlowerPotBlock> POTTED_SIGILLARIA_SAPLING = BLOCKS.registerPottedSapling("potted_sigillaria_sapling", FABlocks.SIGILLARIA_SAPLING);
     public static final SimpleHolder<ButtonBlock> SIGILLARIA_BUTTON = BLOCKS.registerButton("sigillaria_button", FABlockSetTypes.SIGILLARIA);
-    public static final SimpleHolder<SlabBlock> SIGILLARIA_SLAB = BLOCKS.registerSlab("sigillaria_slab", MapColor.TERRACOTTA_BLACK);
+    public static final SimpleHolder<SlabBlock> SIGILLARIA_SLAB = BLOCKS.registerWoodSlab("sigillaria_slab", MapColor.TERRACOTTA_BLACK);
     public static final SimpleHolder<Block> CALAMITES_PLANKS = BLOCKS.registerPlanks("calamites_planks", MapColor.TERRACOTTA_BROWN);
     public static final SimpleHolder<SaplingBlock> CALAMITES_SAPLING = BLOCKS.registerSapling("calamites_sapling", FATreeGrowers.CALAMITES);
     public static final SimpleHolder<RotatedPillarBlock> CALAMITES_LOG = BLOCKS.registerLog("calamites_log", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_GREEN);
@@ -244,7 +245,7 @@ public final class FABlocks {
     public static final SimpleHolder<RotatedPillarBlock> CALAMITES_WOOD = BLOCKS.registerWood("calamites_wood", MapColor.TERRACOTTA_GREEN);
     public static final SimpleHolder<RotatedPillarBlock> STRIPPED_CALAMITES_WOOD = BLOCKS.registerStrippedWood("stripped_calamites_wood", MapColor.TERRACOTTA_BROWN);
     public static final SimpleHolder<LeavesBlock> CALAMITES_LEAVES = BLOCKS.registerLeaves("calamites_leaves");
-    public static final SimpleHolder<StairBlock> CALAMITES_STAIRS = BLOCKS.registerStairs("calamites_stairs", FABlocks.CALAMITES_PLANKS);
+    public static final SimpleHolder<StairBlock> CALAMITES_STAIRS = BLOCKS.registerWoodStairs("calamites_stairs", FABlocks.CALAMITES_PLANKS);
     public static final SimpleHolder<FossilsStandingSignBlock> CALAMITES_SIGN = BLOCKS.registerSign("calamites_sign", FAWoodTypes.CALAMITES, MapColor.TERRACOTTA_BROWN);
     public static final SimpleHolder<FossilsWallSignBlock> CALAMITES_WALL_SIGN = BLOCKS.registerWallSign("calamites_wall_sign", FABlocks.CALAMITES_SIGN);
     public static final SimpleHolder<DoorBlock> CALAMITES_DOOR = BLOCKS.registerDoor("calamites_door", FABlockSetTypes.CALAMITES, FABlocks.CALAMITES_PLANKS);
@@ -256,7 +257,7 @@ public final class FABlocks {
     public static final SimpleHolder<FenceGateBlock> CALAMITES_FENCE_GATE = BLOCKS.registerFenceGate("calamites_fence_gate", FAWoodTypes.CALAMITES, FABlocks.CALAMITES_PLANKS);
     public static final SimpleHolder<FlowerPotBlock> POTTED_CALAMITES_SAPLING = BLOCKS.registerPottedSapling("potted_calamites_sapling", FABlocks.CALAMITES_SAPLING);
     public static final SimpleHolder<ButtonBlock> CALAMITES_BUTTON = BLOCKS.registerButton("calamites_button", FABlockSetTypes.CALAMITES);
-    public static final SimpleHolder<SlabBlock> CALAMITES_SLAB = BLOCKS.registerSlab("calamites_slab", MapColor.TERRACOTTA_BROWN);
+    public static final SimpleHolder<SlabBlock> CALAMITES_SLAB = BLOCKS.registerWoodSlab("calamites_slab", MapColor.TERRACOTTA_BROWN);
     public static final SimpleHolder<Block> ARCHAEOPTERIS_PLANKS = BLOCKS.registerPlanks("archaeopteris_planks", MapColor.TERRACOTTA_YELLOW);
     public static final SimpleHolder<SaplingBlock> ARCHAEOPTERIS_SAPLING = BLOCKS.registerSapling("archaeopteris_sapling", FATreeGrowers.ARCHAEOPTERIS);
     public static final SimpleHolder<RotatedPillarBlock> ARCHAEOPTERIS_LOG = BLOCKS.registerLog("archaeopteris_log", MapColor.TERRACOTTA_YELLOW, MapColor.TERRACOTTA_BROWN);
@@ -264,7 +265,7 @@ public final class FABlocks {
     public static final SimpleHolder<RotatedPillarBlock> ARCHAEOPTERIS_WOOD = BLOCKS.registerWood("archaeopteris_wood", MapColor.TERRACOTTA_YELLOW);
     public static final SimpleHolder<RotatedPillarBlock> STRIPPED_ARCHAEOPTERIS_WOOD = BLOCKS.registerStrippedWood("stripped_archaeopteris_wood", MapColor.TERRACOTTA_BROWN);
     public static final SimpleHolder<LeavesBlock> ARCHAEOPTERIS_LEAVES = BLOCKS.registerLeaves("archaeopteris_leaves");
-    public static final SimpleHolder<StairBlock> ARCHAEOPTERIS_STAIRS = BLOCKS.registerStairs("archaeopteris_stairs", FABlocks.ARCHAEOPTERIS_PLANKS);
+    public static final SimpleHolder<StairBlock> ARCHAEOPTERIS_STAIRS = BLOCKS.registerWoodStairs("archaeopteris_stairs", FABlocks.ARCHAEOPTERIS_PLANKS);
     public static final SimpleHolder<FossilsStandingSignBlock> ARCHAEOPTERIS_SIGN = BLOCKS.registerSign("archaeopteris_sign", FAWoodTypes.ARCHAEOPTERIS, MapColor.TERRACOTTA_YELLOW);
     public static final SimpleHolder<FossilsWallSignBlock> ARCHAEOPTERIS_WALL_SIGN = BLOCKS.registerWallSign("archaeopteris_wall_sign", FABlocks.ARCHAEOPTERIS_SIGN);
     public static final SimpleHolder<DoorBlock> ARCHAEOPTERIS_DOOR = BLOCKS.registerDoor("archaeopteris_door", FABlockSetTypes.ARCHAEOPTERIS, FABlocks.ARCHAEOPTERIS_PLANKS);
@@ -276,7 +277,7 @@ public final class FABlocks {
     public static final SimpleHolder<FenceGateBlock> ARCHAEOPTERIS_FENCE_GATE = BLOCKS.registerFenceGate("archaeopteris_fence_gate", FAWoodTypes.ARCHAEOPTERIS, FABlocks.ARCHAEOPTERIS_PLANKS);
     public static final SimpleHolder<FlowerPotBlock> POTTED_ARCHAEOPTERIS_SAPLING = BLOCKS.registerPottedSapling("potted_archaeopteris_sapling", FABlocks.ARCHAEOPTERIS_SAPLING);
     public static final SimpleHolder<ButtonBlock> ARCHAEOPTERIS_BUTTON = BLOCKS.registerButton("archaeopteris_button", FABlockSetTypes.ARCHAEOPTERIS);
-    public static final SimpleHolder<SlabBlock> ARCHAEOPTERIS_SLAB = BLOCKS.registerSlab("archaeopteris_slab", MapColor.TERRACOTTA_YELLOW);
+    public static final SimpleHolder<SlabBlock> ARCHAEOPTERIS_SLAB = BLOCKS.registerWoodSlab("archaeopteris_slab", MapColor.TERRACOTTA_YELLOW);
     public static final SimpleHolder<Block> GINKGO_PLANKS = BLOCKS.registerPlanks("ginkgo_planks", MapColor.TERRACOTTA_ORANGE);
     public static final SimpleHolder<SaplingBlock> GINKGO_SAPLING = BLOCKS.registerSapling("ginkgo_sapling", FATreeGrowers.GINKGO);
     public static final SimpleHolder<RotatedPillarBlock> GINKGO_LOG = BLOCKS.registerLog("ginkgo_log", MapColor.TERRACOTTA_ORANGE, MapColor.TERRACOTTA_BROWN);
@@ -284,7 +285,7 @@ public final class FABlocks {
     public static final SimpleHolder<RotatedPillarBlock> GINKGO_WOOD = BLOCKS.registerWood("ginkgo_wood", MapColor.TERRACOTTA_ORANGE);
     public static final SimpleHolder<RotatedPillarBlock> STRIPPED_GINKGO_WOOD = BLOCKS.registerStrippedWood("stripped_ginkgo_wood", MapColor.TERRACOTTA_BROWN);
     public static final SimpleHolder<LeavesBlock> GINKGO_LEAVES = BLOCKS.registerLeaves("ginkgo_leaves");
-    public static final SimpleHolder<StairBlock> GINKGO_STAIRS = BLOCKS.registerStairs("ginkgo_stairs", FABlocks.GINKGO_PLANKS);
+    public static final SimpleHolder<StairBlock> GINKGO_STAIRS = BLOCKS.registerWoodStairs("ginkgo_stairs", FABlocks.GINKGO_PLANKS);
     public static final SimpleHolder<FossilsStandingSignBlock> GINKGO_SIGN = BLOCKS.registerSign("ginkgo_sign", FAWoodTypes.GINKGO, MapColor.TERRACOTTA_ORANGE);
     public static final SimpleHolder<FossilsWallSignBlock> GINKGO_WALL_SIGN = BLOCKS.registerWallSign("ginkgo_wall_sign", FABlocks.GINKGO_SIGN);
     public static final SimpleHolder<DoorBlock> GINKGO_DOOR = BLOCKS.registerDoor("ginkgo_door", FABlockSetTypes.GINKGO, FABlocks.GINKGO_PLANKS);
@@ -296,7 +297,7 @@ public final class FABlocks {
     public static final SimpleHolder<FenceGateBlock> GINKGO_FENCE_GATE = BLOCKS.registerFenceGate("ginkgo_fence_gate", FAWoodTypes.GINKGO, FABlocks.GINKGO_PLANKS);
     public static final SimpleHolder<FlowerPotBlock> POTTED_GINKGO_SAPLING = BLOCKS.registerPottedSapling("potted_ginkgo_sapling", FABlocks.GINKGO_SAPLING);
     public static final SimpleHolder<ButtonBlock> GINKGO_BUTTON = BLOCKS.registerButton("ginkgo_button", FABlockSetTypes.GINKGO);
-    public static final SimpleHolder<SlabBlock> GINKGO_SLAB = BLOCKS.registerSlab("ginkgo_slab", MapColor.TERRACOTTA_ORANGE);
+    public static final SimpleHolder<SlabBlock> GINKGO_SLAB = BLOCKS.registerWoodSlab("ginkgo_slab", MapColor.TERRACOTTA_ORANGE);
     public static final SimpleHolder<Block> ARAUCARIA_PLANKS = BLOCKS.registerPlanks("araucaria_planks", MapColor.TERRACOTTA_LIGHT_BLUE);
     public static final SimpleHolder<SaplingBlock> ARAUCARIA_SAPLING = BLOCKS.registerSapling("araucaria_sapling", FATreeGrowers.ARAUCARIA);
     public static final SimpleHolder<RotatedPillarBlock> ARAUCARIA_LOG = BLOCKS.registerLog("araucaria_log", MapColor.TERRACOTTA_LIGHT_BLUE, MapColor.TERRACOTTA_BROWN);
@@ -304,7 +305,7 @@ public final class FABlocks {
     public static final SimpleHolder<RotatedPillarBlock> ARAUCARIA_WOOD = BLOCKS.registerWood("araucaria_wood", MapColor.TERRACOTTA_LIGHT_BLUE);
     public static final SimpleHolder<RotatedPillarBlock> STRIPPED_ARAUCARIA_WOOD = BLOCKS.registerStrippedWood("stripped_araucaria_wood", MapColor.TERRACOTTA_BROWN);
     public static final SimpleHolder<LeavesBlock> ARAUCARIA_LEAVES = BLOCKS.registerLeaves("araucaria_leaves");
-    public static final SimpleHolder<StairBlock> ARAUCARIA_STAIRS = BLOCKS.registerStairs("araucaria_stairs", FABlocks.ARAUCARIA_PLANKS);
+    public static final SimpleHolder<StairBlock> ARAUCARIA_STAIRS = BLOCKS.registerWoodStairs("araucaria_stairs", FABlocks.ARAUCARIA_PLANKS);
     public static final SimpleHolder<FossilsStandingSignBlock> ARAUCARIA_SIGN = BLOCKS.registerSign("araucaria_sign", FAWoodTypes.ARAUCARIA, MapColor.TERRACOTTA_LIGHT_BLUE);
     public static final SimpleHolder<FossilsWallSignBlock> ARAUCARIA_WALL_SIGN = BLOCKS.registerWallSign("araucaria_wall_sign", FABlocks.ARAUCARIA_SIGN);
     public static final SimpleHolder<DoorBlock> ARAUCARIA_DOOR = BLOCKS.registerDoor("araucaria_door", FABlockSetTypes.ARAUCARIA, FABlocks.ARAUCARIA_PLANKS);
@@ -316,7 +317,7 @@ public final class FABlocks {
     public static final SimpleHolder<FenceGateBlock> ARAUCARIA_FENCE_GATE = BLOCKS.registerFenceGate("araucaria_fence_gate", FAWoodTypes.ARAUCARIA, FABlocks.ARAUCARIA_PLANKS);
     public static final SimpleHolder<FlowerPotBlock> POTTED_ARAUCARIA_SAPLING = BLOCKS.registerPottedSapling("potted_araucaria_sapling", FABlocks.ARAUCARIA_SAPLING);
     public static final SimpleHolder<ButtonBlock> ARAUCARIA_BUTTON = BLOCKS.registerButton("araucaria_button", FABlockSetTypes.ARAUCARIA);
-    public static final SimpleHolder<SlabBlock> ARAUCARIA_SLAB = BLOCKS.registerSlab("araucaria_slab", MapColor.TERRACOTTA_LIGHT_BLUE);
+    public static final SimpleHolder<SlabBlock> ARAUCARIA_SLAB = BLOCKS.registerWoodSlab("araucaria_slab", MapColor.TERRACOTTA_LIGHT_BLUE);
     public static final SimpleHolder<Block> ARAUCARIOXYLON_PLANKS = BLOCKS.registerPlanks("araucarioxylon_planks", MapColor.TERRACOTTA_BROWN);
     public static final SimpleHolder<SaplingBlock> ARAUCARIOXYLON_SAPLING = BLOCKS.registerSapling("araucarioxylon_sapling", FATreeGrowers.ARAUCARIOXYLON);
     public static final SimpleHolder<RotatedPillarBlock> ARAUCARIOXYLON_LOG = BLOCKS.registerLog("araucarioxylon_log", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_BROWN);
@@ -324,7 +325,7 @@ public final class FABlocks {
     public static final SimpleHolder<RotatedPillarBlock> ARAUCARIOXYLON_WOOD = BLOCKS.registerWood("araucarioxylon_wood", MapColor.TERRACOTTA_BROWN);
     public static final SimpleHolder<RotatedPillarBlock> STRIPPED_ARAUCARIOXYLON_WOOD = BLOCKS.registerStrippedWood("stripped_araucarioxylon_wood", MapColor.TERRACOTTA_BROWN);
     public static final SimpleHolder<LeavesBlock> ARAUCARIOXYLON_LEAVES = BLOCKS.registerLeaves("araucarioxylon_leaves");
-    public static final SimpleHolder<StairBlock> ARAUCARIOXYLON_STAIRS = BLOCKS.registerStairs("araucarioxylon_stairs", FABlocks.ARAUCARIOXYLON_PLANKS);
+    public static final SimpleHolder<StairBlock> ARAUCARIOXYLON_STAIRS = BLOCKS.registerWoodStairs("araucarioxylon_stairs", FABlocks.ARAUCARIOXYLON_PLANKS);
     public static final SimpleHolder<FossilsStandingSignBlock> ARAUCARIOXYLON_SIGN = BLOCKS.registerSign("araucarioxylon_sign", FAWoodTypes.ARAUCARIOXYLON, MapColor.TERRACOTTA_BROWN);
     public static final SimpleHolder<FossilsWallSignBlock> ARAUCARIOXYLON_WALL_SIGN = BLOCKS.registerWallSign("araucarioxylon_wall_sign", FABlocks.ARAUCARIOXYLON_SIGN);
     public static final SimpleHolder<DoorBlock> ARAUCARIOXYLON_DOOR = BLOCKS.registerDoor("araucarioxylon_door", FABlockSetTypes.ARAUCARIOXYLON, FABlocks.ARAUCARIOXYLON_PLANKS);
@@ -336,7 +337,7 @@ public final class FABlocks {
     public static final SimpleHolder<FenceGateBlock> ARAUCARIOXYLON_FENCE_GATE = BLOCKS.registerFenceGate("araucarioxylon_fence_gate", FAWoodTypes.ARAUCARIOXYLON, FABlocks.ARAUCARIOXYLON_PLANKS);
     public static final SimpleHolder<FlowerPotBlock> POTTED_ARAUCARIOXYLON_SAPLING = BLOCKS.registerPottedSapling("potted_araucarioxylon_sapling", FABlocks.ARAUCARIOXYLON_SAPLING);
     public static final SimpleHolder<ButtonBlock> ARAUCARIOXYLON_BUTTON = BLOCKS.registerButton("araucarioxylon_button", FABlockSetTypes.ARAUCARIOXYLON);
-    public static final SimpleHolder<SlabBlock> ARAUCARIOXYLON_SLAB = BLOCKS.registerSlab("araucarioxylon_slab", MapColor.TERRACOTTA_BROWN);
+    public static final SimpleHolder<SlabBlock> ARAUCARIOXYLON_SLAB = BLOCKS.registerWoodSlab("araucarioxylon_slab", MapColor.TERRACOTTA_BROWN);
     public static final SimpleHolder<Block> CORDAITES_PLANKS = BLOCKS.registerPlanks("cordaites_planks", MapColor.TERRACOTTA_PURPLE);
     public static final SimpleHolder<SaplingBlock> CORDAITES_SAPLING = BLOCKS.registerSapling("cordaites_sapling", FATreeGrowers.CORDAITES);
     public static final SimpleHolder<RotatedPillarBlock> CORDAITES_LOG = BLOCKS.registerLog("cordaites_log", MapColor.TERRACOTTA_PURPLE, MapColor.TERRACOTTA_BROWN);
@@ -344,7 +345,7 @@ public final class FABlocks {
     public static final SimpleHolder<RotatedPillarBlock> CORDAITES_WOOD = BLOCKS.registerWood("cordaites_wood", MapColor.TERRACOTTA_BROWN);
     public static final SimpleHolder<RotatedPillarBlock> STRIPPED_CORDAITES_WOOD = BLOCKS.registerStrippedWood("stripped_cordaites_wood", MapColor.TERRACOTTA_PURPLE);
     public static final SimpleHolder<LeavesBlock> CORDAITES_LEAVES = BLOCKS.registerLeaves("cordaites_leaves");
-    public static final SimpleHolder<StairBlock> CORDAITES_STAIRS = BLOCKS.registerStairs("cordaites_stairs", FABlocks.CORDAITES_PLANKS);
+    public static final SimpleHolder<StairBlock> CORDAITES_STAIRS = BLOCKS.registerWoodStairs("cordaites_stairs", FABlocks.CORDAITES_PLANKS);
     public static final SimpleHolder<FossilsStandingSignBlock> CORDAITES_SIGN = BLOCKS.registerSign("cordaites_sign", FAWoodTypes.CORDAITES, MapColor.TERRACOTTA_PURPLE);
     public static final SimpleHolder<FossilsWallSignBlock> CORDAITES_WALL_SIGN = BLOCKS.registerWallSign("cordaites_wall_sign", FABlocks.CORDAITES_SIGN);
     public static final SimpleHolder<DoorBlock> CORDAITES_DOOR = BLOCKS.registerDoor("cordaites_door", FABlockSetTypes.CORDAITES, FABlocks.CORDAITES_PLANKS);
@@ -356,7 +357,7 @@ public final class FABlocks {
     public static final SimpleHolder<FenceGateBlock> CORDAITES_FENCE_GATE = BLOCKS.registerFenceGate("cordaites_fence_gate", FAWoodTypes.CORDAITES, FABlocks.CORDAITES_PLANKS);
     public static final SimpleHolder<FlowerPotBlock> POTTED_CORDAITES_SAPLING = BLOCKS.registerPottedSapling("potted_cordaites_sapling", FABlocks.CORDAITES_SAPLING);
     public static final SimpleHolder<ButtonBlock> CORDAITES_BUTTON = BLOCKS.registerButton("cordaites_button", FABlockSetTypes.CORDAITES);
-    public static final SimpleHolder<SlabBlock> CORDAITES_SLAB = BLOCKS.registerSlab("cordaites_slab", MapColor.TERRACOTTA_PURPLE);
+    public static final SimpleHolder<SlabBlock> CORDAITES_SLAB = BLOCKS.registerWoodSlab("cordaites_slab", MapColor.TERRACOTTA_PURPLE);
     public static final SimpleHolder<Block> WOLLEMIA_PLANKS = BLOCKS.registerPlanks("wollemia_planks", MapColor.TERRACOTTA_GRAY);
     public static final SimpleHolder<SaplingBlock> WOLLEMIA_SAPLING = BLOCKS.registerSapling("wollemia_sapling", FATreeGrowers.WOLLEMIA);
     public static final SimpleHolder<RotatedPillarBlock> WOLLEMIA_LOG = BLOCKS.registerLog("wollemia_log", MapColor.TERRACOTTA_GRAY, MapColor.TERRACOTTA_BROWN);
@@ -364,7 +365,7 @@ public final class FABlocks {
     public static final SimpleHolder<RotatedPillarBlock> WOLLEMIA_WOOD = BLOCKS.registerWood("wollemia_wood", MapColor.TERRACOTTA_BROWN);
     public static final SimpleHolder<RotatedPillarBlock> STRIPPED_WOLLEMIA_WOOD = BLOCKS.registerStrippedWood("stripped_wollemia_wood", MapColor.TERRACOTTA_GRAY);
     public static final SimpleHolder<LeavesBlock> WOLLEMIA_LEAVES = BLOCKS.registerLeaves("wollemia_leaves");
-    public static final SimpleHolder<StairBlock> WOLLEMIA_STAIRS = BLOCKS.registerStairs("wollemia_stairs", FABlocks.WOLLEMIA_PLANKS);
+    public static final SimpleHolder<StairBlock> WOLLEMIA_STAIRS = BLOCKS.registerWoodStairs("wollemia_stairs", FABlocks.WOLLEMIA_PLANKS);
     public static final SimpleHolder<FossilsStandingSignBlock> WOLLEMIA_SIGN = BLOCKS.registerSign("wollemia_sign", FAWoodTypes.WOLLEMIA, MapColor.TERRACOTTA_GRAY);
     public static final SimpleHolder<FossilsWallSignBlock> WOLLEMIA_WALL_SIGN = BLOCKS.registerWallSign("wollemia_wall_sign", FABlocks.WOLLEMIA_SIGN);
     public static final SimpleHolder<DoorBlock> WOLLEMIA_DOOR = BLOCKS.registerDoor("wollemia_door", FABlockSetTypes.WOLLEMIA, FABlocks.WOLLEMIA_PLANKS);
@@ -376,7 +377,7 @@ public final class FABlocks {
     public static final SimpleHolder<FenceGateBlock> WOLLEMIA_FENCE_GATE = BLOCKS.registerFenceGate("wollemia_fence_gate", FAWoodTypes.WOLLEMIA, FABlocks.WOLLEMIA_PLANKS);
     public static final SimpleHolder<FlowerPotBlock> POTTED_WOLLEMIA_SAPLING = BLOCKS.registerPottedSapling("potted_wollemia_sapling", FABlocks.WOLLEMIA_SAPLING);
     public static final SimpleHolder<ButtonBlock> WOLLEMIA_BUTTON = BLOCKS.registerButton("wollemia_button", FABlockSetTypes.WOLLEMIA);
-    public static final SimpleHolder<SlabBlock> WOLLEMIA_SLAB = BLOCKS.registerSlab("wollemia_slab", MapColor.TERRACOTTA_GRAY);
+    public static final SimpleHolder<SlabBlock> WOLLEMIA_SLAB = BLOCKS.registerWoodSlab("wollemia_slab", MapColor.TERRACOTTA_GRAY);
     public static final SimpleHolder<Block> METASEQUOIA_PLANKS = BLOCKS.registerPlanks("metasequoia_planks", MapColor.TERRACOTTA_RED);
     public static final SimpleHolder<SaplingBlock> METASEQUOIA_SAPLING = BLOCKS.registerSapling("metasequoia_sapling", FATreeGrowers.METASEQUOIA);
     public static final SimpleHolder<RotatedPillarBlock> METASEQUOIA_LOG = BLOCKS.registerLog("metasequoia_log", MapColor.TERRACOTTA_RED, MapColor.TERRACOTTA_BROWN);
@@ -384,7 +385,7 @@ public final class FABlocks {
     public static final SimpleHolder<RotatedPillarBlock> METASEQUOIA_WOOD = BLOCKS.registerWood("metasequoia_wood", MapColor.TERRACOTTA_BROWN);
     public static final SimpleHolder<RotatedPillarBlock> STRIPPED_METASEQUOIA_WOOD = BLOCKS.registerStrippedWood("stripped_metasequoia_wood", MapColor.TERRACOTTA_RED);
     public static final SimpleHolder<LeavesBlock> METASEQUOIA_LEAVES = BLOCKS.registerLeaves("metasequoia_leaves");
-    public static final SimpleHolder<StairBlock> METASEQUOIA_STAIRS = BLOCKS.registerStairs("metasequoia_stairs", FABlocks.METASEQUOIA_PLANKS);
+    public static final SimpleHolder<StairBlock> METASEQUOIA_STAIRS = BLOCKS.registerWoodStairs("metasequoia_stairs", FABlocks.METASEQUOIA_PLANKS);
     public static final SimpleHolder<FossilsStandingSignBlock> METASEQUOIA_SIGN = BLOCKS.registerSign("metasequoia_sign", FAWoodTypes.METASEQUOIA, MapColor.TERRACOTTA_RED);
     public static final SimpleHolder<FossilsWallSignBlock> METASEQUOIA_WALL_SIGN = BLOCKS.registerWallSign("metasequoia_wall_sign", FABlocks.METASEQUOIA_SIGN);
     public static final SimpleHolder<DoorBlock> METASEQUOIA_DOOR = BLOCKS.registerDoor("metasequoia_door", FABlockSetTypes.METASEQUOIA, FABlocks.METASEQUOIA_PLANKS);
@@ -396,8 +397,40 @@ public final class FABlocks {
     public static final SimpleHolder<FenceGateBlock> METASEQUOIA_FENCE_GATE = BLOCKS.registerFenceGate("metasequoia_fence_gate", FAWoodTypes.METASEQUOIA, FABlocks.METASEQUOIA_PLANKS);
     public static final SimpleHolder<FlowerPotBlock> POTTED_METASEQUOIA_SAPLING = BLOCKS.registerPottedSapling("potted_metasequoia_sapling", FABlocks.METASEQUOIA_SAPLING);
     public static final SimpleHolder<ButtonBlock> METASEQUOIA_BUTTON = BLOCKS.registerButton("metasequoia_button", FABlockSetTypes.METASEQUOIA);
-    public static final SimpleHolder<SlabBlock> METASEQUOIA_SLAB = BLOCKS.registerSlab("metasequoia_slab", MapColor.TERRACOTTA_RED);
+    public static final SimpleHolder<SlabBlock> METASEQUOIA_SLAB = BLOCKS.registerWoodSlab("metasequoia_slab", MapColor.TERRACOTTA_RED);
+    public static final SimpleHolder<Block> ASPHALT = BLOCKS.registerBlock("asphalt", BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 6.0F));
+    public static final SimpleHolder<StairBlock> ASPHALT_STAIRS = BLOCKS.registerStairs("asphalt_stairs", FABlocks.ASPHALT);
+    public static final SimpleHolder<SlabBlock> ASPHALT_SLAB = BLOCKS.registerBlock("asphalt_slab", SlabBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F));
+    public static final SimpleHolder<WallBlock> ASPHALT_WALL = BLOCKS.registerBlock("asphalt_wall", WallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(FABlocks.ASPHALT.get()).forceSolidOn());
+    public static final SimpleHolder<Block> POLISHED_ASPHALT = BLOCKS.registerBlock("polished_asphalt", BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 6.0F));
+    public static final SimpleHolder<StairBlock> POLISHED_ASPHALT_STAIRS = BLOCKS.registerStairs("polished_asphalt_stairs", FABlocks.POLISHED_ASPHALT);
+    public static final SimpleHolder<SlabBlock> POLISHED_ASPHALT_SLAB = BLOCKS.registerBlock("polished_asphalt_slab", SlabBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F));
+    public static final SimpleHolder<WallBlock> POLISHED_ASPHALT_WALL = BLOCKS.registerBlock("polished_asphalt_wall", WallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(FABlocks.POLISHED_ASPHALT.get()).forceSolidOn());
+    public static final SimpleHolder<Block> POLISHED_ASPHALT_BRICKS = BLOCKS.registerBlock("polished_asphalt_bricks", BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 6.0F));
+    public static final SimpleHolder<StairBlock> POLISHED_ASPHALT_BRICK_STAIRS = BLOCKS.registerStairs("polished_asphalt_brick_stairs", FABlocks.POLISHED_ASPHALT);
+    public static final SimpleHolder<SlabBlock> POLISHED_ASPHALT_BRICK_SLAB = BLOCKS.registerBlock("polished_asphalt_brick_slab", SlabBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F));
+    public static final SimpleHolder<WallBlock> POLISHED_ASPHALT_BRICK_WALL = BLOCKS.registerBlock("polished_asphalt_brick_wall", WallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(FABlocks.POLISHED_ASPHALT.get()).forceSolidOn());
+    public static final SimpleHolder<HardenedTarBlock> HARDENED_TAR_BLOCK = BLOCKS.registerBlock("hardened_tar_block", FAModloaderHelper.INSTANCE::getHardenedTarBlock, () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).speedFactor(0.4F).jumpFactor(0.5F).noOcclusion().sound(SoundType.STONE));
+    public static final SimpleHolder<RoadMarkingBlock> SOLID_WHITE_MARKING = BLOCKS.registerBlock("solid_white_marking", RoadMarkingBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(0.1F).noOcclusion().noCollission().sound(SoundType.STONE));
+    public static final SimpleHolder<RoadMarkingBlock> DOUBLE_SOLID_WHITE_MARKING = BLOCKS.registerBlock("double_solid_white_marking", RoadMarkingBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(0.1F).noOcclusion().noCollission().sound(SoundType.STONE));
     public static final SimpleHolder<TarBlock> TAR = BLOCKS.registerBlock("tar", properties -> new TarBlock(FAFluids.TAR.get(), properties), () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).replaceable().noCollission().strength(100.0F).pushReaction(PushReaction.DESTROY).noLootTable().liquid().sound(SoundType.EMPTY));
+    public static final SimpleHolder<HologramProjectorBlock> HOLOGRAM_PROJECTOR = BLOCKS.registerBlock("hologram_projector", HologramProjectorBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE).lightLevel(blockState -> blockState.getValue(HologramProjectorBlock.ON) ? 10 : 0).strength(0.3F).sound(SoundType.GLASS));
+    public static final SimpleHolder<ColoredHologramProjectorBlock> WHITE_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.WHITE);
+    public static final SimpleHolder<ColoredHologramProjectorBlock> ORANGE_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.ORANGE);
+    public static final SimpleHolder<ColoredHologramProjectorBlock> MAGENTA_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.MAGENTA);
+    public static final SimpleHolder<ColoredHologramProjectorBlock> LIGHT_BLUE_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.LIGHT_BLUE);
+    public static final SimpleHolder<ColoredHologramProjectorBlock> YELLOW_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.YELLOW);
+    public static final SimpleHolder<ColoredHologramProjectorBlock> LIME_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.LIME);
+    public static final SimpleHolder<ColoredHologramProjectorBlock> PINK_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.PINK);
+    public static final SimpleHolder<ColoredHologramProjectorBlock> GRAY_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.GRAY);
+    public static final SimpleHolder<ColoredHologramProjectorBlock> LIGHT_GRAY_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.LIGHT_GRAY);
+    public static final SimpleHolder<ColoredHologramProjectorBlock> CYAN_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.CYAN);
+    public static final SimpleHolder<ColoredHologramProjectorBlock> PURPLE_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.PURPLE);
+    public static final SimpleHolder<ColoredHologramProjectorBlock> BLUE_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.BLUE);
+    public static final SimpleHolder<ColoredHologramProjectorBlock> BROWN_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.BROWN);
+    public static final SimpleHolder<ColoredHologramProjectorBlock> GREEN_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.GREEN);
+    public static final SimpleHolder<ColoredHologramProjectorBlock> RED_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.RED);
+    public static final SimpleHolder<ColoredHologramProjectorBlock> BLACK_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.BLACK);
 
     public static BlockBehaviour.Properties flowerPotProperties() {
         return BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY);

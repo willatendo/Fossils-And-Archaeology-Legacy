@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,on=false": {
+      "model": "fossilslegacy:block/brown_hologram_projector",
+      "y": 90
+    },
+    "facing=east,on=true": {
+      "model": "fossilslegacy:block/brown_hologram_projector_on",
+      "y": 90
+    },
+    "facing=north,on=false": {
+      "model": "fossilslegacy:block/brown_hologram_projector"
+    },
+    "facing=north,on=true": {
+      "model": "fossilslegacy:block/brown_hologram_projector_on"
+    },
+    "facing=south,on=false": {
+      "model": "fossilslegacy:block/brown_hologram_projector",
+      "y": 180
+    },
+    "facing=south,on=true": {
+      "model": "fossilslegacy:block/brown_hologram_projector_on",
+      "y": 180
+    },
+    "facing=west,on=false": {
+      "model": "fossilslegacy:block/brown_hologram_projector",
+      "y": 270
+    },
+    "facing=west,on=true": {
+      "model": "fossilslegacy:block/brown_hologram_projector_on",
+      "y": 270
+    }
+  }
+}

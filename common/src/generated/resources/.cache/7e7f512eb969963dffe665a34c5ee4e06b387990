@@ -1,4 +1,4 @@
-// 1.21.4	2025-08-15T23:56:16.2264161	Tags for minecraft:block mod id fossilslegacy
+// 1.21.4	2025-08-27T00:41:47.818401	Tags for minecraft:block mod id fossilslegacy
 a561c61f5552fcb66418d0fd3550fc035ebc6257 data/fossilslegacy/tags/block/araucaria_logs.json
 f89c0b5f538d885a2f4e84ad2ee3005cd2c12cce data/fossilslegacy/tags/block/araucarioxylon_logs.json
 4a9a99727bb7085a53d2ddbf5445552a0bfdca2a data/fossilslegacy/tags/block/archaeopteris_logs.json
@@ -52,14 +52,17 @@ f6475582f9b8c89c4045e252c37c2dd949fc00f4 data/fossilslegacy/tags/block/wollemia_
 cd3ef4b5dd917d5c7bc77d1feabd5166ce94a505 data/minecraft/tags/block/leaves.json
 09ddc27d65ae1675968bf14e1b9a5b43eb7523d5 data/minecraft/tags/block/logs_that_burn.json
 ba184fbe78e65a93af4d99dcfa51f32608e032a4 data/minecraft/tags/block/mineable/axe.json
-f7543acf820b6af0dc2d9650f218b2fde38980cb data/minecraft/tags/block/mineable/pickaxe.json
+7366500780fd1717b801a9eb97ef3fca043c7311 data/minecraft/tags/block/mineable/pickaxe.json
 8dd9337b2a202f40f3cb253ecea1f5a37ccc12ba data/minecraft/tags/block/mineable/shovel.json
 21ecf0344f390cabd28abd6ea4290fdd2b193284 data/minecraft/tags/block/needs_iron_tool.json
 09ddc27d65ae1675968bf14e1b9a5b43eb7523d5 data/minecraft/tags/block/overworld_natural_logs.json
 1713434b12d02a86ba4cc80b80e8136fc6d3476a data/minecraft/tags/block/planks.json
 5b49af36a9b59e09a086fa9202e6fac317a51b26 data/minecraft/tags/block/saplings.json
+1be7850ff28ad6747abfda46a989788f792d1fda data/minecraft/tags/block/slabs.json
+02576060bfef563e9b97f71016fba546dab022c9 data/minecraft/tags/block/stairs.json
 4641cb68a93785aec57f8d07bb08b001b79d3ca4 data/minecraft/tags/block/standing_signs.json
 73613a02583bc5caccb246612cd07e7784e2107d data/minecraft/tags/block/unstable_bottom_center.json
+ecfc4bcd30f11f969e53262c553a3134a1f228a3 data/minecraft/tags/block/walls.json
 0ed0003f7f49da787e5c6cd0a744553eda3def15 data/minecraft/tags/block/wall_hanging_signs.json
 8ce8c3a6c46a8557ef3bac863e22e36b4a9e9053 data/minecraft/tags/block/wall_signs.json
 797196f5504d9af5bc7da7298bfd4afe793f7450 data/minecraft/tags/block/wither_immune.json
@@ -70,3 +73,4 @@ a6ab0f30d7ec6d8a1ac60c46edf89828fbcc1c78 data/minecraft/tags/block/wooden_pressu
 52079645d7412715bb9bed90225e24148c428b6e data/minecraft/tags/block/wooden_slabs.json
 c9d69fb3b50ece98ab26b70860dd93e719806096 data/minecraft/tags/block/wooden_stairs.json
 55a2494658abd0fa440e718ddd694dc9ae9e72c6 data/minecraft/tags/block/wooden_trapdoors.json
+62bdbeb6a1ca82822c8c96f30e70a5b0380c4b74 data/neoforge/tags/block/stones.json

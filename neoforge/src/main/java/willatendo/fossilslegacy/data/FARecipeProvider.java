@@ -138,6 +138,39 @@ public class FARecipeProvider extends RecipeProvider {
         this.shapeless(RecipeCategory.MISC, Items.YELLOW_DYE).requires(FABlocks.COOKSONIA.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.COOKSONIA.get()), this.has(FABlocks.COOKSONIA.get())).save(this.output, FAUtils.ID + ":yellow_dye_from_cooksonia");
         this.shapeless(RecipeCategory.MISC, Items.PINK_DYE, 2).requires(FABlocks.LOTUS.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.LOTUS.get()), this.has(FABlocks.LOTUS.get())).save(this.output, FAUtils.ID + ":pink_dye_from_lotus");
 
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.ASPHALT_STAIRS.get(), 4).pattern("#  ").pattern("## ").pattern("###").define('#', FABlocks.ASPHALT.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.ASPHALT.get()), this.has(FABlocks.ASPHALT.get())).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.ASPHALT_SLAB.get(), 6).pattern("###").define('#', FABlocks.ASPHALT.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.ASPHALT.get()), this.has(FABlocks.ASPHALT.get())).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.ASPHALT_WALL.get(), 6).pattern("###").pattern("###").define('#', FABlocks.ASPHALT.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.ASPHALT.get()), this.has(FABlocks.ASPHALT.get())).save(this.output);
+
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.POLISHED_ASPHALT.get(), 4).pattern("##").pattern("##").define('#', FABlocks.ASPHALT.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.ASPHALT.get()), this.has(FABlocks.ASPHALT.get())).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.POLISHED_ASPHALT_STAIRS.get(), 4).pattern("#  ").pattern("## ").pattern("###").define('#', FABlocks.POLISHED_ASPHALT.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.POLISHED_ASPHALT.get()), this.has(FABlocks.POLISHED_ASPHALT.get())).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.POLISHED_ASPHALT_SLAB.get(), 6).pattern("###").define('#', FABlocks.POLISHED_ASPHALT.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.POLISHED_ASPHALT.get()), this.has(FABlocks.POLISHED_ASPHALT.get())).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.POLISHED_ASPHALT_WALL.get(), 6).pattern("###").pattern("###").define('#', FABlocks.POLISHED_ASPHALT.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.POLISHED_ASPHALT.get()), this.has(FABlocks.POLISHED_ASPHALT.get())).save(this.output);
+
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.POLISHED_ASPHALT_BRICKS.get(), 4).pattern("##").pattern("##").define('#', FABlocks.POLISHED_ASPHALT.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.POLISHED_ASPHALT.get()), this.has(FABlocks.POLISHED_ASPHALT.get())).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.POLISHED_ASPHALT_BRICK_STAIRS.get(), 4).pattern("#  ").pattern("## ").pattern("###").define('#', FABlocks.POLISHED_ASPHALT_BRICKS.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.POLISHED_ASPHALT_BRICKS.get()), this.has(FABlocks.POLISHED_ASPHALT_BRICKS.get())).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.POLISHED_ASPHALT_BRICK_SLAB.get(), 6).pattern("###").define('#', FABlocks.POLISHED_ASPHALT_BRICKS.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.POLISHED_ASPHALT_BRICKS.get()), this.has(FABlocks.POLISHED_ASPHALT_BRICKS.get())).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.POLISHED_ASPHALT_BRICK_WALL.get(), 6).pattern("###").pattern("###").define('#', FABlocks.POLISHED_ASPHALT_BRICKS.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.POLISHED_ASPHALT_BRICKS.get()), this.has(FABlocks.POLISHED_ASPHALT_BRICKS.get())).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.SOLID_WHITE_MARKING.get(), 16).pattern("#").pattern("$").pattern("#").define('#', Items.WHITE_DYE).define('$', Items.IRON_INGOT).unlockedBy(RecipeProvider.getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DOUBLE_SOLID_WHITE_MARKING.get(), 1).pattern("##").define('#', FABlocks.SOLID_WHITE_MARKING.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.SOLID_WHITE_MARKING.get()), this.has(FABlocks.SOLID_WHITE_MARKING.get())).save(this.output);
+        this.hologramProjector(FABlocks.HOLOGRAM_PROJECTOR.get(), Blocks.GLASS);
+        this.hologramProjector(FABlocks.WHITE_HOLOGRAM_PROJECTOR.get(), Blocks.WHITE_STAINED_GLASS);
+        this.hologramProjector(FABlocks.ORANGE_HOLOGRAM_PROJECTOR.get(), Blocks.ORANGE_STAINED_GLASS);
+        this.hologramProjector(FABlocks.MAGENTA_HOLOGRAM_PROJECTOR.get(), Blocks.MAGENTA_STAINED_GLASS);
+        this.hologramProjector(FABlocks.LIGHT_BLUE_HOLOGRAM_PROJECTOR.get(), Blocks.LIGHT_BLUE_STAINED_GLASS);
+        this.hologramProjector(FABlocks.YELLOW_HOLOGRAM_PROJECTOR.get(), Blocks.YELLOW_STAINED_GLASS);
+        this.hologramProjector(FABlocks.LIME_HOLOGRAM_PROJECTOR.get(), Blocks.LIME_STAINED_GLASS);
+        this.hologramProjector(FABlocks.PINK_HOLOGRAM_PROJECTOR.get(), Blocks.PINK_STAINED_GLASS);
+        this.hologramProjector(FABlocks.GRAY_HOLOGRAM_PROJECTOR.get(), Blocks.GRAY_STAINED_GLASS);
+        this.hologramProjector(FABlocks.LIGHT_GRAY_HOLOGRAM_PROJECTOR.get(), Blocks.LIGHT_GRAY_STAINED_GLASS);
+        this.hologramProjector(FABlocks.CYAN_HOLOGRAM_PROJECTOR.get(), Blocks.CYAN_STAINED_GLASS);
+        this.hologramProjector(FABlocks.PURPLE_HOLOGRAM_PROJECTOR.get(), Blocks.PURPLE_STAINED_GLASS);
+        this.hologramProjector(FABlocks.BLUE_HOLOGRAM_PROJECTOR.get(), Blocks.BLUE_STAINED_GLASS);
+        this.hologramProjector(FABlocks.BROWN_HOLOGRAM_PROJECTOR.get(), Blocks.BROWN_STAINED_GLASS);
+        this.hologramProjector(FABlocks.GREEN_HOLOGRAM_PROJECTOR.get(), Blocks.GREEN_STAINED_GLASS);
+        this.hologramProjector(FABlocks.RED_HOLOGRAM_PROJECTOR.get(), Blocks.RED_STAINED_GLASS);
+        this.hologramProjector(FABlocks.BLACK_HOLOGRAM_PROJECTOR.get(), Blocks.BLACK_STAINED_GLASS);
+
         SpecialRecipeBuilder.special(MagicConchRecipe::new).save(this.output, FAUtils.ID + ":magic_conch");
         SpecialRecipeBuilder.special(KeyCloningRecipe::new).save(this.output, FAUtils.ID + ":key_cloning");
 
@@ -401,6 +434,11 @@ public class FARecipeProvider extends RecipeProvider {
     public void coin(ItemLike coin, ItemLike destination) {
         this.shaped(RecipeCategory.MISC, coin).pattern("!@#").pattern("$%^").pattern("&*(").define('!', FAItems.SCARAB_GEM.get()).define('@', Blocks.CREAKING_HEART).define('#', Items.HEART_OF_THE_SEA).define('$', Items.POPPED_CHORUS_FRUIT).define('%', destination).define('^', Items.ECHO_SHARD).define('&', Items.BREEZE_ROD).define('*', Items.BLAZE_ROD).define('(', Items.ENDER_PEARL).unlockedBy(RecipeProvider.getHasName(Items.ENDER_PEARL), this.has(Items.ENDER_PEARL)).save(this.output);
     }
+
+    public void hologramProjector(ItemLike hologramProjector, ItemLike glass) {
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, hologramProjector).pattern("#$#").pattern("#%#").pattern("#^#").define('#', Items.IRON_INGOT).define('$', glass).define('%', Blocks.REDSTONE_LAMP).define('^', Blocks.REDSTONE_TORCH).unlockedBy(RecipeProvider.getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
+    }
+
 
     public void cultivate(CultivationBookCategory cultivationBookCategory, Item ingredient, ItemLike itemLike, int time) {
         CultivationRecipeBuilder.recipe(cultivationBookCategory, null, ingredient, itemLike, time).unlockedBy(RecipeProvider.getHasName(ingredient), this.has(ingredient)).save(this.output);

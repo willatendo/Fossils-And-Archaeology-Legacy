@@ -1,13 +1,12 @@
 package willatendo.fossilslegacy.data.model;
 
-import com.google.errorprone.annotations.Var;
 import net.minecraft.client.color.item.GrassColorSource;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.blockstates.*;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -172,6 +171,26 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         for (int i = 0; i < FABlockRegistry.headSize(); i++) {
             this.createHead(FABlockRegistry.getHeads(i).get(), FABlockRegistry.getWallHeads(i).get(), FAHeadTypes.values()[i], this.modLocation("item/template_" + FAHeadTypes.values()[i].getSerializedName() + "_head"));
         }
+        this.createRoadMarkingBlock(FABlocks.SOLID_WHITE_MARKING.get(), "solid_white_marking");
+        this.createRoadMarkingBlock(FABlocks.DOUBLE_SOLID_WHITE_MARKING.get(), "double_solid_white_marking");
+        this.createHardenedTarBlock(FABlocks.HARDENED_TAR_BLOCK.get());
+        this.createHologramProjector(FABlocks.HOLOGRAM_PROJECTOR.get());
+        this.createColoredHologramProjector(FABlocks.WHITE_HOLOGRAM_PROJECTOR.get(), DyeColor.WHITE);
+        this.createColoredHologramProjector(FABlocks.ORANGE_HOLOGRAM_PROJECTOR.get(), DyeColor.ORANGE);
+        this.createColoredHologramProjector(FABlocks.MAGENTA_HOLOGRAM_PROJECTOR.get(), DyeColor.MAGENTA);
+        this.createColoredHologramProjector(FABlocks.LIGHT_BLUE_HOLOGRAM_PROJECTOR.get(), DyeColor.LIGHT_BLUE);
+        this.createColoredHologramProjector(FABlocks.YELLOW_HOLOGRAM_PROJECTOR.get(), DyeColor.YELLOW);
+        this.createColoredHologramProjector(FABlocks.LIME_HOLOGRAM_PROJECTOR.get(), DyeColor.LIME);
+        this.createColoredHologramProjector(FABlocks.PINK_HOLOGRAM_PROJECTOR.get(), DyeColor.PINK);
+        this.createColoredHologramProjector(FABlocks.GRAY_HOLOGRAM_PROJECTOR.get(), DyeColor.GRAY);
+        this.createColoredHologramProjector(FABlocks.LIGHT_GRAY_HOLOGRAM_PROJECTOR.get(), DyeColor.LIGHT_GRAY);
+        this.createColoredHologramProjector(FABlocks.CYAN_HOLOGRAM_PROJECTOR.get(), DyeColor.CYAN);
+        this.createColoredHologramProjector(FABlocks.PURPLE_HOLOGRAM_PROJECTOR.get(), DyeColor.PURPLE);
+        this.createColoredHologramProjector(FABlocks.BLUE_HOLOGRAM_PROJECTOR.get(), DyeColor.BLUE);
+        this.createColoredHologramProjector(FABlocks.BROWN_HOLOGRAM_PROJECTOR.get(), DyeColor.BROWN);
+        this.createColoredHologramProjector(FABlocks.GREEN_HOLOGRAM_PROJECTOR.get(), DyeColor.GREEN);
+        this.createColoredHologramProjector(FABlocks.RED_HOLOGRAM_PROJECTOR.get(), DyeColor.RED);
+        this.createColoredHologramProjector(FABlocks.BLACK_HOLOGRAM_PROJECTOR.get(), DyeColor.BLACK);
     }
 
     private ResourceLocation basic(Block block, ModelTemplate modelTemplate, TextureMapping textureMapping) {
@@ -470,5 +489,29 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.basic(headBlock, model);
         this.basic(wallHeadBlock, model);
         this.itemModelOutput.accept(headBlock.asItem(), ItemModelUtils.specialModel(modelLocation, new HeadSpecialRenderer.Unbaked(faHeadTypes)));
+    }
+
+    private void createRoadMarkingBlock(Block roadMarkingBlock, String texture) {
+        ResourceLocation straightModel = FAModelTemplates.TEMPLATE_ROAD_MARKING.create(roadMarkingBlock, new TextureMapping().put(TextureSlot.TEXTURE, this.modLocation("block/" + texture)), this.modelOutput);
+        this.block(MultiVariantGenerator.multiVariant(roadMarkingBlock).with(PropertyDispatch.property(RoadMarkingBlock.ROAD_MARKING_SHAPE).select(RoadMarkingBlock.RoadMarkingShape.NORTH_SOUTH, Variant.variant().with(VariantProperties.MODEL, straightModel)).select(RoadMarkingBlock.RoadMarkingShape.EAST_WEST, Variant.variant().with(VariantProperties.MODEL, straightModel).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))));
+        this.blockModelGenerators.registerSimpleFlatItemModel(roadMarkingBlock);
+    }
+
+    private void createHardenedTarBlock(Block hardenedTarBlock) {
+        ResourceLocation block = FAModelTemplates.TEMPLATE_HONEY_BLOCK.create(hardenedTarBlock, new TextureMapping().put(TextureSlot.PARTICLE, this.modLocation("block/hardened_tar_block")).put(TextureSlot.DOWN, this.modLocation("block/hardened_tar_block")).put(TextureSlot.UP, this.modLocation("block/hardened_tar_block")).put(TextureSlot.SIDE, this.modLocation("block/hardened_tar_block")), this.modelOutput);
+        ResourceLocation shortBlock = FAModelTemplates.TEMPLATE_SHORT_HARDENED_TAR_BLOCK.createWithSuffix(hardenedTarBlock, "_short", new TextureMapping().put(TextureSlot.DOWN, this.modLocation("block/hardened_tar_block")).put(TextureSlot.UP, this.modLocation("block/hardened_tar_block")).put(TextureSlot.SIDE, this.modLocation("block/hardened_tar_block")), this.modelOutput);
+        this.block(MultiVariantGenerator.multiVariant(hardenedTarBlock).with(PropertyDispatch.property(HardenedTarBlock.SHORT).select(false, Variant.variant().with(VariantProperties.MODEL, block)).select(true, Variant.variant().with(VariantProperties.MODEL, shortBlock))));
+    }
+
+    private void createHologramProjector(Block hologramProjectorBlock) {
+        ResourceLocation offModel = FAModelTemplates.TEMPLATE_HOLOGRAM_PROJECTOR.create(hologramProjectorBlock, new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/hologram_projector_side")).put(TextureSlot.UP, this.modLocation("block/hologram_projector_top")).put(TextureSlot.DOWN, this.modLocation("block/hologram_projector_bottom")), this.modelOutput);
+        ResourceLocation onModel = FAModelTemplates.TEMPLATE_HOLOGRAM_PROJECTOR.createWithSuffix(hologramProjectorBlock, "_on", new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/hologram_projector_side_on")).put(TextureSlot.UP, this.modLocation("block/hologram_projector_top_on")).put(TextureSlot.DOWN, this.modLocation("block/hologram_projector_bottom")), this.modelOutput);
+        this.block(MultiVariantGenerator.multiVariant(hologramProjectorBlock).with(PropertyDispatch.property(HologramProjectorBlock.ON).select(false, Variant.variant().with(VariantProperties.MODEL, offModel)).select(true, Variant.variant().with(VariantProperties.MODEL, onModel))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
+    }
+
+    private void createColoredHologramProjector(Block coloredHologramProjectorBlock, DyeColor dyeColor) {
+        ResourceLocation offModel = FAModelTemplates.TEMPLATE_HOLOGRAM_PROJECTOR.create(coloredHologramProjectorBlock, new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/hologram_projector_side")).put(TextureSlot.UP, this.modLocation("block/" + dyeColor.getName() + "hologram_projector_top")).put(TextureSlot.DOWN, this.modLocation("block/hologram_projector_bottom")), this.modelOutput);
+        ResourceLocation onModel = FAModelTemplates.TEMPLATE_HOLOGRAM_PROJECTOR.createWithSuffix(coloredHologramProjectorBlock, "_on", new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/hologram_projector_side_on")).put(TextureSlot.UP, this.modLocation("block/" + dyeColor.getName() + "hologram_projector_top_on")).put(TextureSlot.DOWN, this.modLocation("block/hologram_projector_bottom")), this.modelOutput);
+        this.block(MultiVariantGenerator.multiVariant(coloredHologramProjectorBlock).with(PropertyDispatch.property(HologramProjectorBlock.ON).select(false, Variant.variant().with(VariantProperties.MODEL, offModel)).select(true, Variant.variant().with(VariantProperties.MODEL, onModel))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
     }
 }

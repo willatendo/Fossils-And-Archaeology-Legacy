@@ -184,6 +184,38 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         for (Block headBlock : FABlockRegistry.getAllHeads()) {
             this.dropSelf(headBlock);
         }
+        this.dropSelf(FABlocks.ASPHALT.get());
+        this.dropSelf(FABlocks.ASPHALT_STAIRS.get());
+        this.dropSelfSlab(FABlocks.ASPHALT_SLAB.get());
+        this.dropSelf(FABlocks.ASPHALT_WALL.get());
+        this.dropSelf(FABlocks.POLISHED_ASPHALT.get());
+        this.dropSelf(FABlocks.POLISHED_ASPHALT_STAIRS.get());
+        this.dropSelfSlab(FABlocks.POLISHED_ASPHALT_SLAB.get());
+        this.dropSelf(FABlocks.POLISHED_ASPHALT_WALL.get());
+        this.dropSelf(FABlocks.POLISHED_ASPHALT_BRICKS.get());
+        this.dropSelf(FABlocks.POLISHED_ASPHALT_BRICK_STAIRS.get());
+        this.dropSelfSlab(FABlocks.POLISHED_ASPHALT_BRICK_SLAB.get());
+        this.dropSelf(FABlocks.POLISHED_ASPHALT_BRICK_WALL.get());
+        this.dropSelf(FABlocks.SOLID_WHITE_MARKING.get());
+        this.dropSelf(FABlocks.DOUBLE_SOLID_WHITE_MARKING.get());
+        this.dropSelf(FABlocks.HARDENED_TAR_BLOCK.get());
+        this.dropSelf(FABlocks.HOLOGRAM_PROJECTOR.get());
+        this.dropSelf(FABlocks.WHITE_HOLOGRAM_PROJECTOR.get());
+        this.dropSelf(FABlocks.ORANGE_HOLOGRAM_PROJECTOR.get());
+        this.dropSelf(FABlocks.MAGENTA_HOLOGRAM_PROJECTOR.get());
+        this.dropSelf(FABlocks.LIGHT_BLUE_HOLOGRAM_PROJECTOR.get());
+        this.dropSelf(FABlocks.YELLOW_HOLOGRAM_PROJECTOR.get());
+        this.dropSelf(FABlocks.LIME_HOLOGRAM_PROJECTOR.get());
+        this.dropSelf(FABlocks.PINK_HOLOGRAM_PROJECTOR.get());
+        this.dropSelf(FABlocks.GRAY_HOLOGRAM_PROJECTOR.get());
+        this.dropSelf(FABlocks.LIGHT_GRAY_HOLOGRAM_PROJECTOR.get());
+        this.dropSelf(FABlocks.CYAN_HOLOGRAM_PROJECTOR.get());
+        this.dropSelf(FABlocks.PURPLE_HOLOGRAM_PROJECTOR.get());
+        this.dropSelf(FABlocks.BLUE_HOLOGRAM_PROJECTOR.get());
+        this.dropSelf(FABlocks.BROWN_HOLOGRAM_PROJECTOR.get());
+        this.dropSelf(FABlocks.GREEN_HOLOGRAM_PROJECTOR.get());
+        this.dropSelf(FABlocks.RED_HOLOGRAM_PROJECTOR.get());
+        this.dropSelf(FABlocks.BLACK_HOLOGRAM_PROJECTOR.get());
     }
 
     protected LootTable.Builder createFossilOreLootTable(Block block, int randomRange, RandomItemEntry... randomItemEntries) {

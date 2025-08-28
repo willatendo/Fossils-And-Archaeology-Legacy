@@ -7,9 +7,14 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.network.PacketDistributor;
 import willatendo.fossilslegacy.FossilsLegacyNeoforgeMod;
+import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.block.blocks.HardenedTarBlock;
 import willatendo.fossilslegacy.server.fluid.FAFluidTypes;
 import willatendo.fossilslegacy.server.fluid.TarFluid;
 import willatendo.fossilslegacy.server.utils.FAUtils;
@@ -40,6 +45,27 @@ public class FANeoforgeHelper implements FAModloaderHelper {
     @Override
     public <T> Supplier<EntityDataSerializer<T>> registerDataSerializer(String id, EntityDataSerializer<T> entityDataSerializer) {
         return FossilsLegacyNeoforgeMod.ENTITY_DATA_SERIALIZER.register(id, () -> entityDataSerializer);
+    }
+
+    @Override
+    public HardenedTarBlock getHardenedTarBlock(BlockBehaviour.Properties properties) {
+        return new HardenedTarBlock(properties) {
+            @Override
+            public boolean isStickyBlock(BlockState blockState) {
+                return blockState.getBlock() == FABlocks.HARDENED_TAR_BLOCK.get();
+            }
+
+            @Override
+            public boolean canStickTo(BlockState blockState, BlockState otherBlockState) {
+                if (blockState.getBlock() == FABlocks.HARDENED_TAR_BLOCK.get() && otherBlockState.getBlock() == Blocks.SLIME_BLOCK) {
+                    return false;
+                }
+                if (blockState.getBlock() == FABlocks.HARDENED_TAR_BLOCK.get() && otherBlockState.getBlock() == Blocks.HONEY_BLOCK) {
+                    return false;
+                }
+                return blockState.isStickyBlock() || otherBlockState.isStickyBlock();
+            }
+        };
     }
 
     @Override

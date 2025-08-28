@@ -8,22 +8,21 @@ import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
 import net.minecraft.resources.RegistryOps;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import willatendo.fossilslegacy.platform.FAModloaderHelper;
 import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.block.blocks.ColoredHologramProjectorBlock;
 import willatendo.fossilslegacy.server.block.blocks.HeadBlock;
 import willatendo.fossilslegacy.server.command_type.CommandType;
 import willatendo.fossilslegacy.server.decoration_plaque_type.DecorationPlaqueType;
 import willatendo.fossilslegacy.server.entity.entities.DecorationPlaque;
 import willatendo.fossilslegacy.server.entity.entities.StoneTablet;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
-import willatendo.fossilslegacy.server.gene.attributes.AttributeGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.CosmeticGeneHolder;
-import willatendo.fossilslegacy.server.gene.cosmetics.FAModelGenes;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
@@ -76,7 +75,27 @@ public final class FACreativeModeTabs {
     }, List.of("fa_all", "fa_building_blocks", "fa_utilities"), List.of("fa_archaeology", "fa_palaeontology"));
     public static final SimpleHolder<CreativeModeTab> FA_BUILDING_BLOCKS = FACreativeModeTabs.register("fa_building_blocks", () -> new ItemStack(FABlocks.SMALL_CAGE.get()), (itemDisplayParameters, output) -> {
         FACreativeModeTabs.addRails(output);
+        output.accept(FABlocks.HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.WHITE_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.ORANGE_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.MAGENTA_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.LIGHT_BLUE_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.YELLOW_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.LIME_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.PINK_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.GRAY_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.LIGHT_GRAY_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.CYAN_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.PURPLE_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.BLUE_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.BROWN_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.GREEN_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.RED_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.BLACK_HOLOGRAM_PROJECTOR.get());
         FACreativeModeTabs.addDecorationPosts(output);
+        FACreativeModeTabs.addRoadMarkings(output);
+        FACreativeModeTabs.addAsphalt(output);
+        FACreativeModeTabs.addTar(output);
         FACreativeModeTabs.addWood(output);
     }, List.of("fa_all", "fa_utilities"), List.of("fa_archaeology", "fa_palaeontology", "fa_palaeobotany"));
     public static final SimpleHolder<CreativeModeTab> FA_UTILITIES = FACreativeModeTabs.register("fa_utilities", () -> new ItemStack(FABlocks.SMALL_CAGE.get()), (itemDisplayParameters, output) -> {
@@ -108,6 +127,9 @@ public final class FACreativeModeTabs {
         FACreativeModeTabs.addWood(output);
         FACreativeModeTabs.addRails(output);
         FACreativeModeTabs.addDecorationPosts(output);
+        FACreativeModeTabs.addRoadMarkings(output);
+        FACreativeModeTabs.addAsphalt(output);
+        FACreativeModeTabs.addTar(output);
         FACreativeModeTabs.addArchaeology(output, itemDisplayParameters);
         output.accept(FAItems.USER_MANUAL.get());
         output.accept(FAItems.DINOPEDIA.get());
@@ -611,6 +633,30 @@ public final class FACreativeModeTabs {
             output.accept(Items.SPECTRAL_ARROW);
         }
         itemDisplayParameters.holders().lookup(FARegistries.COMMAND_TYPES).ifPresent(registryLookup -> FACreativeModeTabs.generateMagicConches(output, registryLookup));
+    }
+
+    private static void addRoadMarkings(CreativeModeTab.Output output) {
+        output.accept(FABlocks.SOLID_WHITE_MARKING.get());
+        output.accept(FABlocks.DOUBLE_SOLID_WHITE_MARKING.get());
+    }
+
+    private static void addAsphalt(CreativeModeTab.Output output) {
+        output.accept(FABlocks.ASPHALT.get());
+        output.accept(FABlocks.ASPHALT_STAIRS.get());
+        output.accept(FABlocks.ASPHALT_SLAB.get());
+        output.accept(FABlocks.ASPHALT_WALL.get());
+        output.accept(FABlocks.POLISHED_ASPHALT.get());
+        output.accept(FABlocks.POLISHED_ASPHALT_STAIRS.get());
+        output.accept(FABlocks.POLISHED_ASPHALT_SLAB.get());
+        output.accept(FABlocks.POLISHED_ASPHALT_WALL.get());
+        output.accept(FABlocks.POLISHED_ASPHALT_BRICKS.get());
+        output.accept(FABlocks.POLISHED_ASPHALT_BRICK_STAIRS.get());
+        output.accept(FABlocks.POLISHED_ASPHALT_BRICK_SLAB.get());
+        output.accept(FABlocks.POLISHED_ASPHALT_BRICK_WALL.get());
+    }
+
+    private static void addTar(CreativeModeTab.Output output) {
+        output.accept(FABlocks.HARDENED_TAR_BLOCK.get());
     }
 
     private static void addWood(CreativeModeTab.Output output) {

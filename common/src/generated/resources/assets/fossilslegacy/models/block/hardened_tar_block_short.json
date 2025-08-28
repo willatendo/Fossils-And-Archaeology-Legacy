@@ -1,0 +1,9 @@
+{
+  "parent": "fossilslegacy:block/template_short_hardened_tar_block",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "down": "fossilslegacy:block/hardened_tar_block",
+    "side": "fossilslegacy:block/hardened_tar_block",
+    "up": "fossilslegacy:block/hardened_tar_block"
+  }
+}
