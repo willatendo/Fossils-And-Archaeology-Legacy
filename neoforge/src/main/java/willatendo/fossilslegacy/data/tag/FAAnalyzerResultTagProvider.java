@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.data.tag;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.resources.ResourceKey;
 import willatendo.fossilslegacy.server.analyzer_result.AnalyzerResult;
 import willatendo.fossilslegacy.server.analyzer_result.FAAnalyzerResults;
@@ -10,7 +11,7 @@ import willatendo.fossilslegacy.server.tags.FAAnalyzerResultTags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class FAAnalyzerResultTagProvider extends DataDrivenTagsProvider<AnalyzerResult> {
+public class FAAnalyzerResultTagProvider extends TagsProvider<AnalyzerResult> {
     public FAAnalyzerResultTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId) {
         super(packOutput, FARegistries.ANALYZER_RESULT, provider, modId);
     }

@@ -1,4 +1,4 @@
-// 1.21.4	2025-08-23T21:47:39.5370249	Tags for minecraft:entity_type mod id fossilslegacy
+// 1.21.4	2025-09-01T17:57:30.8740122	Tags for minecraft:entity_type mod id fossilslegacy
 916085e25126a0846f1078fb5d713dcdd0be0f69 data/c/tags/entity_type/boats.json
 fef7515d5792ff50535ab28952c3e28057f1ee3a data/fossilslegacy/tags/entity_type/commandable/magic_conch.json
 d60617b82e4e134ca4c9d38086a923ab6c444de8 data/fossilslegacy/tags/entity_type/victims/baryonyx.json
@@ -12,6 +12,8 @@ a85935e7fe31e95c3f4dad3adaaf05c7fcb0ca38 data/fossilslegacy/tags/entity_type/vic
 53adb18756fccaeb4fd7d326cf8425ad1ad19935 data/fossilslegacy/tags/entity_type/victims/spinosaurus.json
 2a02742d24961332a07a6f433f3720554935502a data/fossilslegacy/tags/entity_type/victims/tyrannosaurus.json
 3edb6a727bbc8b9e82ea0b3c973d17cc61db6b2f data/fossilslegacy/tags/entity_type/victims/velociraptor.json
+d6dd6dba1f60df7079b3e60b62be549a5cbfb376 data/minecraft/tags/entity_type/axolotl_always_hostiles.json
 837a42789901512d35b97f7efd169be591c628dc data/minecraft/tags/entity_type/boat.json
 23bcaf8d8d9a24661354b3fb8a81eb38e06fad23 data/minecraft/tags/entity_type/can_breathe_under_water.json
 933cd6ccd542959d505b7c6f647d6c867a439408 data/minecraft/tags/entity_type/fall_damage_immune.json
+d6dd6dba1f60df7079b3e60b62be549a5cbfb376 data/minecraft/tags/entity_type/skeletons.json

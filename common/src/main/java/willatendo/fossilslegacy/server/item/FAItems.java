@@ -711,6 +711,7 @@ public final class FAItems {
     public static final SimpleHolder<BoatItem> METASEQUOIA_CHEST_BOAT = ITEMS.registerChestBoat("metasequoia_chest_boat", properties -> new BoatItem(FAEntityTypes.METASEQUOIA_CHEST_BOAT.get(), properties));
     public static final SimpleHolder<SpawnEggItem> ANU_SPAWN_EGG = ITEMS.registerItem("anu_spawn_egg", properties -> new SpawnEggItem(FAEntityTypes.ANU.get(), properties));
     public static final SimpleHolder<SpawnEggItem> FAILURESAURUS_SPAWN_EGG = ITEMS.registerItem("failuresaurus_spawn_egg", properties -> new SpawnEggItem(FAEntityTypes.FAILURESAURUS.get(), properties));
+    public static final SimpleHolder<SpawnEggItem> DROWNED_PIRATE_SPAWN_EGG = ITEMS.registerItem("drowned_pirate_spawn_egg", properties -> new SpawnEggItem(FAEntityTypes.DROWNED_PIRATE.get(), properties));
     public static final SimpleHolder<DinosaurSpawnEggItem> BRACHIOSAURUS_SPAWN_EGG = ITEMS.registerItem("brachiosaurus_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.BRACHIOSAURUS.get(), properties));
     public static final SimpleHolder<DinosaurSpawnEggItem> DILOPHOSAURUS_SPAWN_EGG = ITEMS.registerItem("dilophosaurus_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.DILOPHOSAURUS.get(), properties));
     public static final SimpleHolder<DinosaurSpawnEggItem> FUTABASAURUS_SPAWN_EGG = ITEMS.registerItem("futabasaurus_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.FUTABASAURUS.get(), properties));

@@ -571,6 +571,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
 
         this.add(FAEntityTypes.FAILURESAURUS.get());
 
+        this.add(FAEntityTypes.DROWNED_PIRATE.get());
+
         this.add(FAEntityTypes.ANCIENT_LIGHTNING_BOLT.get(), "Lightning Bolt");
 
         this.add(FAEntityTypes.THROWN_JAVELIN.get());
@@ -1375,8 +1377,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.JEEP_1993.get(), "1993 Jeep");
 
         this.add(FAItems.ANU_SPAWN_EGG.get());
-
         this.add(FAItems.FAILURESAURUS_SPAWN_EGG.get());
+        this.add(FAItems.DROWNED_PIRATE_SPAWN_EGG.get());
 
         this.add(FAItems.BRACHIOSAURUS_SPAWN_EGG.get());
         this.add(FAItems.DILOPHOSAURUS_SPAWN_EGG.get());
@@ -1537,6 +1539,10 @@ public class FALanguageProvider extends SimpleLanguageProvider {
 
         this.add("cosmetics_holder.fossilslegacy.composite", "%s / %s");
 
+        // Paintings
+        this.add("painting.fossilslegacy.age_of_reptiles.author", "Evergreene");
+        this.add("painting.fossilslegacy.age_of_reptiles.title", "Age of Reptiles");
+
         // Resource Packs
         this.add("resourcePack.fossilslegacy.description", "Fossils and Archaeology: Legacy Assets");
         this.add("resourcePack.fossilslegacy.fa_legacy_textures.description", "1.3.2 Assets");
@@ -1548,10 +1554,10 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.addStat(FAStats.INTERACT_WITH_CULTIVATOR, "Interactions with Cultivator");
         this.addStat(FAStats.INTERACT_WITH_DNA_CODER, "Interactions with DNA Coder");
         this.addStat(FAStats.INTERACT_WITH_DNA_HYBRIDIZER, "Interactions with DNA Hybridizer");
-        this.addStat(FAStats.INTERACT_WITH_FEEDER, "Interactions with Feeder");
         this.addStat(FAStats.INTERACT_WITH_DNA_RECOMBINATOR, "Interactions with DNA Recombinator");
+        this.addStat(FAStats.INTERACT_WITH_FEEDER, "Interactions with Feeder");
+        this.addStat(FAStats.INTERACT_WITH_HOLOGRAM_PROJECTOR, "Interactions with Hologram Projector");
         this.addStat(FAStats.INTERACT_WITH_PALAEONTOLOGY_TABLE, "Interactions with Palaeontology Table");
-        this.addStat(FAStats.INTERACT_WITH_RESTORATION_TABLE, "Interactions with Restoration Table");
         this.addStat(FAStats.INTERACT_WITH_USER_MANUAL, "Interactions with User Manual");
 
         // Stone Tablet
@@ -1745,6 +1751,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABiomeTags.HAS_MACHU_PICCHU, "Has Machu Picchu");
         this.add(FABiomeTags.HAS_MAYAN_TEMPLE, "Has Mayan Temple");
         this.add(FABiomeTags.HAS_MOAI, "Has Moai");
+        this.add(FABiomeTags.HAS_PIRATE_SHIP, "Has Pirate Ship");
         this.add(FABiomeTags.HAS_TOTEM_POLE, "Has Totem Pole");
         this.add(FABiomeTags.HAS_WEAPON_SHOP, "Has Weapon Shop");
 

@@ -1,4 +1,8 @@
 {
   "feature": "fossilslegacy:jurassic_fern_patch",
-  "placement": []
+  "placement": [
+    {
+      "type": "minecraft:biome"
+    }
+  ]
 }

@@ -2,6 +2,7 @@ package willatendo.fossilslegacy.data.tag;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.TagsProvider;
 import willatendo.fossilslegacy.server.gene.cosmetics.FASkinGenes;
 import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
 import willatendo.fossilslegacy.server.registry.FARegistries;
@@ -9,7 +10,7 @@ import willatendo.fossilslegacy.server.tags.FASkinGeneTags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class FASkinTagProvider extends DataDrivenTagsProvider<SkinGene> {
+public class FASkinTagProvider extends TagsProvider<SkinGene> {
     public FASkinTagProvider(PackOutput packOutput, CompletableFuture<Provider> provider, String modId) {
         super(packOutput, FARegistries.SKIN_GENE, provider, modId);
     }

@@ -12,6 +12,9 @@ public final class FAModelLayers {
     public static final ModelLayerLocation ARCHAEOPTERIS_BOAT = FAModelLayers.create("boat/archaeopteris");
     public static final ModelLayerLocation ARCHAEOPTERIS_CHEST_BOAT = FAModelLayers.create("chest_boat/archaeopteris");
     public static final ModelLayerLocation ANU = FAModelLayers.create("anu");
+    public static final ModelLayerLocation DROWNED_PIRATE = FAModelLayers.create("drowned_pirate");
+    public static final ModelLayerLocation DROWNED_PIRATE_INNER_ARMOR = FAModelLayers.createInnerArmor("drowned_pirate");
+    public static final ModelLayerLocation DROWNED_PIRATE_OUTER_ARMOR = FAModelLayers.createOuterArmor("drowned_pirate");
     public static final ModelLayerLocation CALAMITES_BOAT = FAModelLayers.create("boat/calamites");
     public static final ModelLayerLocation CALAMITES_CHEST_BOAT = FAModelLayers.create("chest_boat/calamites");
     public static final ModelLayerLocation CORDAITES_BOAT = FAModelLayers.create("boat/cordaites");
@@ -69,5 +72,13 @@ public final class FAModelLayers {
 
     private static ModelLayerLocation create(String layerName, String layer) {
         return new ModelLayerLocation(FAUtils.resource(layerName), layer);
+    }
+
+    private static ModelLayerLocation createInnerArmor(String layerName) {
+        return FAModelLayers.create(layerName, "inner_armor");
+    }
+
+    private static ModelLayerLocation createOuterArmor(String layerName) {
+        return FAModelLayers.create(layerName, "outer_armor");
     }
 }

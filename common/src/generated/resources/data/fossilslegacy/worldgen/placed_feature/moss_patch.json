@@ -9,6 +9,9 @@
           "Name": "minecraft:moss_carpet"
         }
       }
+    },
+    {
+      "type": "minecraft:biome"
     }
   ]
 }

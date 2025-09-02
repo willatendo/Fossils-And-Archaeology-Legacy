@@ -3,6 +3,6 @@
   "textures": {
     "down": "fossilslegacy:block/hologram_projector_bottom",
     "side": "fossilslegacy:block/hologram_projector_side_on",
-    "up": "fossilslegacy:block/brownhologram_projector_top_on"
+    "up": "fossilslegacy:block/brown_hologram_projector_top_on"
   }
 }

@@ -22,18 +22,27 @@ public class HologramProjectorBlockEntityRenderer implements BlockEntityRenderer
 
     @Override
     public void render(HologramProjectorBlockEntity hologramProjectorBlockEntity, float partialTicks, PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight, int packedOverlay) {
+        BlockState blockState = hologramProjectorBlockEntity.getBlockState();
         Holder<HologramType> hologramType = hologramProjectorBlockEntity.getHologramType();
-        if (hologramType != null) {
-            poseStack.pushPose();
-            poseStack.scale(1.0F, -1.0F, -1.0F);
-            poseStack.translate(0.5F, -2.25F, -0.5F);
-            BlockState blockState = hologramProjectorBlockEntity.getBlockState();
-            if (blockState != null) {
+        if (blockState.getValue(HologramProjectorBlock.ON)) {
+            if (hologramType != null) {
+                poseStack.pushPose();
+                poseStack.scale(1.0F, -1.0F, -1.0F);
+                poseStack.translate(0.5F, -2.25F, -0.5F);
                 poseStack.mulPose(Axis.YP.rotationDegrees(blockState.getValue(HologramProjectorBlock.HORIZONTAL_FACING).toYRot()));
+                EntityModel<?> entityModel = this.getModel(hologramType.value().modelId());
+
+                int color = ARGB.colorFromFloat(0.85F, 1.0F, 1.0F, 1.0F);
+                if (hologramProjectorBlockEntity.getColor() != null) {
+                    int diffuseColor = hologramProjectorBlockEntity.getColor().getTextureDiffuseColor();
+                    float red = ((diffuseColor & 0xFF0000) >> 16) / 255.0F;
+                    float green = ((diffuseColor & 0xFF00) >> 8) / 255.0F;
+                    float blue = (diffuseColor & 0xFF) / 255.0F;
+                    color = ARGB.colorFromFloat(0.85F, red, green, blue);
+                }
+                entityModel.renderToBuffer(poseStack, multiBufferSource.getBuffer(RenderType.entityTranslucent(hologramType.value().texture())), packedLight, packedOverlay, color);
+                poseStack.popPose();
             }
-            EntityModel<?> entityModel = this.getModel(hologramType.value().modelId());
-            entityModel.renderToBuffer(poseStack, multiBufferSource.getBuffer(RenderType.entityTranslucent(hologramType.value().texture())), packedLight, packedOverlay, ARGB.colorFromFloat(0.5F, 1.0F, 1.0F, 1.0F));
-            poseStack.popPose();
         }
     }
 

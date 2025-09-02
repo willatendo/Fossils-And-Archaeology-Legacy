@@ -1,0 +1,13 @@
+{
+  "asset_id": "fossilslegacy:age_of_reptiles",
+  "author": {
+    "color": "gray",
+    "translate": "painting.fossilslegacy.age_of_reptiles.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.fossilslegacy.age_of_reptiles.title"
+  },
+  "width": 3
+}

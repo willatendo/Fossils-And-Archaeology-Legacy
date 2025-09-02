@@ -4,7 +4,11 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -20,9 +24,13 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.redstone.Orientation;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import willatendo.fossilslegacy.server.block.entity.entities.CultivatorBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.entities.HologramProjectorBlockEntity;
+import willatendo.fossilslegacy.server.stats.FAStats;
+import willatendo.simplelibrary.server.util.SimpleUtils;
 
 public class HologramProjectorBlock extends Block implements EntityBlock {
     public static final MapCodec<HologramProjectorBlock> CODEC = Block.simpleCodec(HologramProjectorBlock::new);
@@ -50,6 +58,27 @@ public class HologramProjectorBlock extends Block implements EntityBlock {
         super.triggerEvent(blockState, level, blockPos, id, param);
         BlockEntity blockEntity = level.getBlockEntity(blockPos);
         return blockEntity == null ? false : blockEntity.triggerEvent(id, param);
+    }
+
+    @Override
+    public MenuProvider getMenuProvider(BlockState blockState, Level level, BlockPos blockPos) {
+        BlockEntity blockEntity = level.getBlockEntity(blockPos);
+        return blockEntity instanceof MenuProvider ? (MenuProvider) blockEntity : null;
+    }
+
+
+    @Override
+    public InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
+        if (level.isClientSide) {
+            return InteractionResult.SUCCESS;
+        } else {
+            BlockEntity blockEntity = level.getBlockEntity(blockPos);
+            if (blockEntity instanceof HologramProjectorBlockEntity hologramProjectorBlockEntity && player instanceof ServerPlayer serverPlayer) {
+                SimpleUtils.openContainer(hologramProjectorBlockEntity, blockPos, serverPlayer);
+                player.awardStat(FAStats.INTERACT_WITH_HOLOGRAM_PROJECTOR);
+            }
+            return InteractionResult.CONSUME;
+        }
     }
 
     @Override

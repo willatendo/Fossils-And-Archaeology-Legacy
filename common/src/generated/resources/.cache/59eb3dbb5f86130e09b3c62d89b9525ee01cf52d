@@ -1,4 +1,4 @@
-// 1.21.4	2025-08-28T14:08:28.5418843	Loot Tables
+// 1.21.4	2025-09-01T17:34:35.3723577	Loot Tables
 6b196aa6cdadbe968410835a209fed7ad992066f data/fossilslegacy/loot_table/archaeology/inca_loot.json
 bb0a83fd719766efefe4b270836d5a39651187e0 data/fossilslegacy/loot_table/blocks/amber_ore.json
 0a0a6eb57c884b0e6eb3b1fc9cfbf8c67c956e87 data/fossilslegacy/loot_table/blocks/ankylosaurus_head.json
@@ -360,11 +360,13 @@ afc8958461aba1c4b8fd7959cd7444eb72d0e7f3 data/fossilslegacy/loot_table/blocks/ye
 026b112c31c5f479b02fac0f9f667e956d2b52c7 data/fossilslegacy/loot_table/blocks/zamites_log.json
 6092aafe4bca6a32828a100accc015b5725a7d51 data/fossilslegacy/loot_table/chests/academy_disc.json
 0e504001fa6014fdf23cf4bdb8a81105d95b9d25 data/fossilslegacy/loot_table/chests/academy_loot.json
+d2e5b5d63fc17e3b4e5041819c1902be2f434810 data/fossilslegacy/loot_table/chests/cannon.json
 8ae0de33cdeff1cb04f5846e2ab179c1d3f0e5ca data/fossilslegacy/loot_table/chests/lab_loot/dna.json
 d7989550b74a25cdfbe32dfd8d0e2a0958322fc4 data/fossilslegacy/loot_table/chests/lab_loot/failed_experiment.json
 f1aed07620b24d5e9967a648e0b0e4b2264117e5 data/fossilslegacy/loot_table/chests/lab_loot/fossil.json
 88a81171c39b2bcfe42edbfccc33e71ccd7823df data/fossilslegacy/loot_table/chests/mayan_loot.json
 57b6d6e7d77690ca3e015f4fdf4fecb7352f8cce data/fossilslegacy/loot_table/chests/mayan_treasure.json
+ee30f947ee8986a2e8cfbf092657207ee3a2a387 data/fossilslegacy/loot_table/chests/pirate_loot.json
 333313efde2aa5dc2f635bc654985e327168da58 data/fossilslegacy/loot_table/chests/village/village_archaeologist_hut.json
 2a88c80c64cbf9e441234c69b98903788a57571d data/fossilslegacy/loot_table/chests/weapon_shop_decoy.json
 56fd519c48bb18a79c7304a00c16a702caae46c6 data/fossilslegacy/loot_table/chests/weapon_shop_loot.json
@@ -388,6 +390,7 @@ a704d28cba5a9b022f77f1189beb8de5b0fbe909 data/fossilslegacy/loot_table/entities/
 1c62fa6114da98d766025112c590ee8dd9f29b2f data/fossilslegacy/loot_table/entities/dimetrodon_egg.json
 3fe9646942ed14aef15dc7c839937b6749945016 data/fossilslegacy/loot_table/entities/distortus_rex.json
 cc528cd4399c78003289396e4b64816fb5633618 data/fossilslegacy/loot_table/entities/dodo.json
+ca993582bbe3723ad299dbcb25728ede574899ba data/fossilslegacy/loot_table/entities/drowned_pirate.json
 8262d8e436a72f89b06ed35b4cceed34bd08eede data/fossilslegacy/loot_table/entities/dryosaurus.json
 a425aefe23fa6433eac6bdaeb9d310929a417bba data/fossilslegacy/loot_table/entities/dryosaurus_egg.json
 646a5feaee019ef03688ad7f9ce3a36287719733 data/fossilslegacy/loot_table/entities/elasmotherium.json

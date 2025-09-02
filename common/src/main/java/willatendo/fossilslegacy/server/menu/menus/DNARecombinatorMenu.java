@@ -26,7 +26,7 @@ public class DNARecombinatorMenu extends AbstractContainerMenu {
     public final Slot[] geneticSlots = new Slot[3];
 
     public DNARecombinatorMenu(int windowId, Inventory inventory, DNARecombinatorBlockEntity DNARecombinatorBlockEntity) {
-        super(FAMenuTypes.GENE_MODIFICATION.get(), windowId);
+        super(FAMenuTypes.DNA_RECOMINBATOR.get(), windowId);
         this.containerLevelAccess = ContainerLevelAccess.create(DNARecombinatorBlockEntity.getLevel(), DNARecombinatorBlockEntity.getBlockPos());
         this.DNARecombinatorBlockEntity = DNARecombinatorBlockEntity;
         this.player = inventory.player;

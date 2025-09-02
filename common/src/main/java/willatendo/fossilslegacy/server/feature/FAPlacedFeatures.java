@@ -116,9 +116,9 @@ public final class FAPlacedFeatures {
         PlacementUtils.register(bootstrapContext, FERN_PATCH, configuredFeatures.getOrThrow(FAConfiguredFeatures.FERN_PATCH), NoiseThresholdCountPlacement.of(-0.8, 5, 10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         PlacementUtils.register(bootstrapContext, SHORT_HORSETAIL_PATCH, configuredFeatures.getOrThrow(FAConfiguredFeatures.SHORT_HORSETAIL_PATCH), NoiseThresholdCountPlacement.of(-0.8, 5, 10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         PlacementUtils.register(bootstrapContext, TALL_HORSETAIL_PATCH, configuredFeatures.getOrThrow(FAConfiguredFeatures.TALL_HORSETAIL_PATCH), NoiseThresholdCountPlacement.of(-0.8, 5, 10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
-        PlacementUtils.register(bootstrapContext, JURASSIC_FERN_PATCH, configuredFeatures.getOrThrow(FAConfiguredFeatures.JURASSIC_FERN_PATCH));
+        PlacementUtils.register(bootstrapContext, JURASSIC_FERN_PATCH, configuredFeatures.getOrThrow(FAConfiguredFeatures.JURASSIC_FERN_PATCH), BiomeFilter.biome());
         PlacementUtils.register(bootstrapContext, LOTUS_PATCH, configuredFeatures.getOrThrow(FAConfiguredFeatures.LOTUS_PATCH), VegetationPlacements.worldSurfaceSquaredWithCount(4));
-        PlacementUtils.register(bootstrapContext, MOSS_PATCH, configuredFeatures.getOrThrow(FAConfiguredFeatures.MOSS_PATCH), List.of(PlacementUtils.filteredByBlockSurvival(Blocks.MOSS_CARPET)));
+        PlacementUtils.register(bootstrapContext, MOSS_PATCH, configuredFeatures.getOrThrow(FAConfiguredFeatures.MOSS_PATCH), List.of(PlacementUtils.filteredByBlockSurvival(Blocks.MOSS_CARPET), BiomeFilter.biome()));
         PlacementUtils.register(bootstrapContext, SALVINIA_PATCH, configuredFeatures.getOrThrow(FAConfiguredFeatures.SALVINIA_PATCH), VegetationPlacements.worldSurfaceSquaredWithCount(4));
         PlacementUtils.register(bootstrapContext, ZAMITES_CHECKED, configuredFeatures.getOrThrow(FAConfiguredFeatures.ZAMITES), List.of(PlacementUtils.filteredByBlockSurvival(FABlocks.ZAMITES_HEAD.get())));
         PlacementUtils.register(bootstrapContext, ZAMITES_PATCH, configuredFeatures.getOrThrow(FAConfiguredFeatures.ZAMITES_PATCH), VegetationPlacements.treePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));

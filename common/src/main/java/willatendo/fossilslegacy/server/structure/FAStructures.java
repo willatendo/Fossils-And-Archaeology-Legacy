@@ -27,6 +27,7 @@ public final class FAStructures {
     public static final ResourceKey<Structure> MAYAN_CITY = FAStructures.create("mayan_city");
     public static final ResourceKey<Structure> SMALL_MAYAN_TEMPLE = FAStructures.create("small_mayan_temple");
     public static final ResourceKey<Structure> MOAI = FAStructures.create("moai");
+    public static final ResourceKey<Structure> PIRATE_SHIP = FAStructures.create("pirate_ship");
     public static final ResourceKey<Structure> TOTEM_POLE = FAStructures.create("totem_pole");
     public static final ResourceKey<Structure> WEAPON_SHOP = FAStructures.create("weapon_shop");
 
@@ -43,6 +44,7 @@ public final class FAStructures {
         bootstrapContext.register(MAYAN_CITY, new JigsawStructure(new Structure.StructureSettings.Builder(biomes.getOrThrow(FABiomeTags.HAS_MAYAN_TEMPLE)).terrainAdapation(TerrainAdjustment.BEARD_THIN).build(), structureTemplatePools.getOrThrow(MayanCityPools.START), Optional.empty(), 7, ConstantHeight.of(VerticalAnchor.absolute(0)), false, Optional.of(Heightmap.Types.WORLD_SURFACE_WG), 116, List.of(), JigsawStructure.DEFAULT_DIMENSION_PADDING, JigsawStructure.DEFAULT_LIQUID_SETTINGS));
         bootstrapContext.register(SMALL_MAYAN_TEMPLE, new JigsawStructure(new Structure.StructureSettings.Builder(biomes.getOrThrow(FABiomeTags.HAS_MAYAN_TEMPLE)).terrainAdapation(TerrainAdjustment.BEARD_THIN).build(), structureTemplatePools.getOrThrow(SmallMayanTemplePools.START), 7, ConstantHeight.of(VerticalAnchor.absolute(0)), false, Heightmap.Types.WORLD_SURFACE_WG));
         bootstrapContext.register(MOAI, new JigsawStructure(new Structure.StructureSettings.Builder(biomes.getOrThrow(FABiomeTags.HAS_MOAI)).terrainAdapation(TerrainAdjustment.BEARD_THIN).build(), structureTemplatePools.getOrThrow(MoaiPools.START), 7, ConstantHeight.of(VerticalAnchor.absolute(0)), false, Heightmap.Types.WORLD_SURFACE_WG));
+        bootstrapContext.register(PIRATE_SHIP, new JigsawStructure(new Structure.StructureSettings.Builder(biomes.getOrThrow(FABiomeTags.HAS_PIRATE_SHIP)).terrainAdapation(TerrainAdjustment.NONE).build(), structureTemplatePools.getOrThrow(PirateShipPools.START), 20, ConstantHeight.of(VerticalAnchor.absolute(0)), false, Heightmap.Types.OCEAN_FLOOR_WG));
         bootstrapContext.register(TOTEM_POLE, new JigsawStructure(new Structure.StructureSettings.Builder(biomes.getOrThrow(FABiomeTags.HAS_TOTEM_POLE)).terrainAdapation(TerrainAdjustment.BEARD_THIN).build(), structureTemplatePools.getOrThrow(TotemPolePools.START), 7, ConstantHeight.of(VerticalAnchor.absolute(0)), false, Heightmap.Types.WORLD_SURFACE_WG));
         bootstrapContext.register(WEAPON_SHOP, new WeaponShopStructure(new Structure.StructureSettings(biomes.getOrThrow(FABiomeTags.HAS_WEAPON_SHOP))));
     }

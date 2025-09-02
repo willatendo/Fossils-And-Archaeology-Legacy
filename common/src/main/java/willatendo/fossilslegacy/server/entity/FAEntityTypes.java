@@ -5,6 +5,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.entity.vehicle.ChestBoat;
 import net.minecraft.world.item.Item;
@@ -119,6 +120,7 @@ public final class FAEntityTypes {
     public static final SimpleHolder<EntityType<Anu>> ANU = ENTITY_TYPES.register("anu", FAEntityTypes.simple(Anu::new, MobCategory.MONSTER, 0.6F, 1.95F).fireImmune());
     public static final SimpleHolder<EntityType<TamedZombifiedPiglin>> TAMED_ZOMBIFIED_PIGLIN = ENTITY_TYPES.register("tamed_zombified_piglin", FAEntityTypes.simple(TamedZombifiedPiglin::new, MobCategory.MONSTER, 0.6F, 1.95F));
     public static final SimpleHolder<EntityType<Failuresaurus>> FAILURESAURUS = ENTITY_TYPES.register("failuresaurus", FAEntityTypes.simple(Failuresaurus::new, MobCategory.MONSTER, 1.0F, 1.0F));
+    public static final SimpleHolder<EntityType<DrownedPirate>> DROWNED_PIRATE = ENTITY_TYPES.register("drowned_pirate", FAEntityTypes.simple(DrownedPirate::new, MobCategory.MONSTER, 0.6F, 1.99F).eyeHeight(1.74F).ridingOffset(-0.7F).clientTrackingRange(8));
 
     public static final SimpleHolder<EntityType<Dart>> DART = ENTITY_TYPES.register("dart", FAEntityTypes.<Dart>simple(Dart::new, MobCategory.MISC, 0.5F, 0.5F).noLootTable());
     public static final SimpleHolder<EntityType<ThrownJavelin>> THROWN_JAVELIN = ENTITY_TYPES.register("thrown_javelin", FAEntityTypes.<ThrownJavelin>simple(ThrownJavelin::new, MobCategory.MISC, 0.5F, 0.5F).noLootTable());

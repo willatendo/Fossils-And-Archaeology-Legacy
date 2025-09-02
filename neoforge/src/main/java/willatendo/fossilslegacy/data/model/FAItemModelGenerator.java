@@ -454,6 +454,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.JEEP_1993.get());
         this.spawnEggItem(FAItems.ANU_SPAWN_EGG.get(), 0x432600, 0xa62c14);
         this.spawnEggItem(FAItems.FAILURESAURUS_SPAWN_EGG.get(), 0x51e6a5, 0x1b5128);
+        this.spawnEggItem(FAItems.DROWNED_PIRATE_SPAWN_EGG.get(), 0x4B3324, 0x329400);
         this.spawnEggItem(FAItems.BRACHIOSAURUS_SPAWN_EGG.get(), 0x3b3e55, 0x7f8ba1);
         this.spawnEggItem(FAItems.DILOPHOSAURUS_SPAWN_EGG.get(), 0x686442, 0xf1bc2c);
         this.spawnEggItem(FAItems.FUTABASAURUS_SPAWN_EGG.get(), 0xca6700, 0xb92200);

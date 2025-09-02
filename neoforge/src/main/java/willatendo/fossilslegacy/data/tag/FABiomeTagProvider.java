@@ -20,6 +20,7 @@ public class FABiomeTagProvider extends BiomeTagsProvider {
         this.tag(FABiomeTags.HAS_MACHU_PICCHU).add(Biomes.MEADOW);
         this.tag(FABiomeTags.HAS_MAYAN_TEMPLE).add(Biomes.SPARSE_JUNGLE);
         this.tag(FABiomeTags.HAS_MOAI).add(Biomes.BEACH);
+        this.tag(FABiomeTags.HAS_PIRATE_SHIP).add(Biomes.OCEAN);
         this.tag(FABiomeTags.HAS_TOTEM_POLE).add(Biomes.OLD_GROWTH_PINE_TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA);
         this.tag(FABiomeTags.HAS_WEAPON_SHOP).add(Biomes.OCEAN, Biomes.PLAINS);
     }

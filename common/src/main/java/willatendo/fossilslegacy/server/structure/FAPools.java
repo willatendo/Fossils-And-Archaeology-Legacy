@@ -37,6 +37,7 @@ public class FAPools {
         MayanCityPools.bootstrap(bootstrapContext);
         SmallMayanTemplePools.bootstrap(bootstrapContext);
         MoaiPools.bootstrap(bootstrapContext);
+        PirateShipPools.bootstrap(bootstrapContext);
         TotemPolePools.bootstrap(bootstrapContext);
     }
 }

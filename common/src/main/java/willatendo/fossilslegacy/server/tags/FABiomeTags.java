@@ -14,6 +14,7 @@ public class FABiomeTags {
     public static final TagKey<Biome> HAS_MACHU_PICCHU = BIOME_TAGS.register("has_structure/machu_picchu");
     public static final TagKey<Biome> HAS_MAYAN_TEMPLE = BIOME_TAGS.register("has_structure/mayan_temple");
     public static final TagKey<Biome> HAS_MOAI = BIOME_TAGS.register("has_structure/moai");
+    public static final TagKey<Biome> HAS_PIRATE_SHIP = BIOME_TAGS.register("has_structure/pirate_ship");
     public static final TagKey<Biome> HAS_TOTEM_POLE = BIOME_TAGS.register("has_structure/totem_pole");
     public static final TagKey<Biome> HAS_WEAPON_SHOP = BIOME_TAGS.register("has_structure/weapon_shop");
 }

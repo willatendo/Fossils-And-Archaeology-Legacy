@@ -5,6 +5,7 @@ import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.LootTable.Builder;
@@ -31,6 +32,122 @@ public class FAChestLootSubProvider implements LootTableSubProvider {
         chestLoot.accept(FALootTables.LAB_FAILED_EXPERIMENT_LOOT, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.SLIME_BALL).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))).add(LootItem.lootTableItem(Items.ROTTEN_FLESH).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))).add(LootItem.lootTableItem(Items.BONE).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 5.0F)))).add(LootItem.lootTableItem(Items.BUCKET))));
         chestLoot.accept(FALootTables.MAYAN_LOOT, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.JADE.get()).setWeight(20)).add(LootItem.lootTableItem(FAItems.JADE_OCELOT.get()).setWeight(4)).add(LootItem.lootTableItem(FAItems.JADE_VILLAGER.get()).setWeight(4)).add(LootItem.lootTableItem(Items.ROTTEN_FLESH).setWeight(30)).add(LootItem.lootTableItem(Items.BONE).setWeight(30)).add(LootItem.lootTableItem(FAItems.SCARAB_GEM_JAVELIN.get()).setWeight(10))));
         chestLoot.accept(FALootTables.MAYAN_TREASURE, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.JADE.get()).setWeight(20)).add(LootItem.lootTableItem(FAItems.JADE_OCELOT.get()).setWeight(4)).add(LootItem.lootTableItem(FAItems.JADE_VILLAGER.get()).setWeight(4)).add(LootItem.lootTableItem(FAItems.CODEX.get()).setWeight(6))));
+        chestLoot.accept(FALootTables.PIRATE_SHIP_CANNON, LootTable.lootTable().withPool(
+                LootPool.lootPool().setRolls(
+                        ConstantValue.exactly(1.0F)
+                ).add(
+                        LootItem.lootTableItem(
+                                Items.ARROW
+                        ).apply(
+                                SetItemCountFunction.setCount(
+                                        UniformGenerator.between(1.0F, 32.0F)
+                                )
+                        )
+                )
+        ));
+        chestLoot.accept(FALootTables.PIRATE_SHIP_LOOT, LootTable.lootTable().withPool(
+                LootPool.lootPool().setRolls(
+                        ConstantValue.exactly(
+                                1.0F
+                        )
+                ).add(
+                        LootItem.lootTableItem(
+                                Items.ARROW
+                        ).setWeight(20).apply(
+                                SetItemCountFunction.setCount(
+                                        UniformGenerator.between(1.0F, 16.0F)
+                                )
+                        )
+                ).add(
+                        LootItem.lootTableItem(
+                                Blocks.TNT
+                        ).setWeight(15).apply(
+                                SetItemCountFunction.setCount(
+                                        UniformGenerator.between(1.0F, 16.0F)
+                                )
+                        )
+                ).add(
+                        LootItem.lootTableItem(
+                                FAItems.IRON_JAVELIN.get()
+                        ).setWeight(5).apply(
+                                SetItemCountFunction.setCount(
+                                        UniformGenerator.between(1.0F, 16.0F)
+                                )
+                        )
+                ).add(
+                        LootItem.lootTableItem(
+                                Items.BOW
+                        ).setWeight(2)
+                )
+        ).withPool(
+                LootPool.lootPool().setRolls(
+                        ConstantValue.exactly(
+                                1.0F
+                        )
+                ).add(
+                        LootItem.lootTableItem(
+                                Items.ARROW
+                        ).setWeight(20).apply(
+                                SetItemCountFunction.setCount(
+                                        UniformGenerator.between(1.0F, 16.0F)
+                                )
+                        )
+                ).add(
+                        LootItem.lootTableItem(
+                                Blocks.TNT
+                        ).setWeight(15).apply(
+                                SetItemCountFunction.setCount(
+                                        UniformGenerator.between(1.0F, 16.0F)
+                                )
+                        )
+                ).add(
+                        LootItem.lootTableItem(
+                                FAItems.IRON_JAVELIN.get()
+                        ).setWeight(5).apply(
+                                SetItemCountFunction.setCount(
+                                        UniformGenerator.between(1.0F, 16.0F)
+                                )
+                        )
+                ).add(
+                        LootItem.lootTableItem(
+                                Items.BOW
+                        ).setWeight(2)
+                )
+        ).withPool(
+                LootPool.lootPool().setRolls(
+                        ConstantValue.exactly(
+                                1.0F
+                        )
+                ).add(
+                        LootItem.lootTableItem(
+                                Items.ARROW
+                        ).setWeight(20).apply(
+                                SetItemCountFunction.setCount(
+                                        UniformGenerator.between(1.0F, 16.0F)
+                                )
+                        )
+                ).add(
+                        LootItem.lootTableItem(
+                                Blocks.TNT
+                        ).setWeight(15).apply(
+                                SetItemCountFunction.setCount(
+                                        UniformGenerator.between(1.0F, 16.0F)
+                                )
+                        )
+                ).add(
+                        LootItem.lootTableItem(
+                                FAItems.IRON_JAVELIN.get()
+                        ).setWeight(5).apply(
+                                SetItemCountFunction.setCount(
+                                        UniformGenerator.between(1.0F, 16.0F)
+                                )
+                        )
+                ).add(
+                        LootItem.lootTableItem(
+                                Items.BOW
+                        ).setWeight(2)
+                )
+        ));
         chestLoot.accept(FALootTables.WEAPON_SHOP_DECOY, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(UniformGenerator.between(1.0F, 3.0F)).add(LootItem.lootTableItem(Items.WOODEN_AXE)).add(LootItem.lootTableItem(Items.WOODEN_HOE)).add(LootItem.lootTableItem(Items.WOODEN_PICKAXE)).add(LootItem.lootTableItem(Items.WOODEN_SHOVEL)).add(LootItem.lootTableItem(Items.WOODEN_SWORD)).add(LootItem.lootTableItem(FAItems.WOODEN_JAVELIN.get())).add(LootItem.lootTableItem(Items.STONE_AXE)).add(LootItem.lootTableItem(Items.STONE_HOE)).add(LootItem.lootTableItem(Items.STONE_PICKAXE)).add(LootItem.lootTableItem(Items.STONE_SHOVEL)).add(LootItem.lootTableItem(Items.STONE_SWORD)).add(LootItem.lootTableItem(FAItems.STONE_JAVELIN.get()))));
         chestLoot.accept(FALootTables.WEAPON_SHOP_LOOT, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(UniformGenerator.between(0.0F, 1.0F)).add(LootItem.lootTableItem(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get()))).withPool(LootPool.lootPool().setRolls(UniformGenerator.between(3.0F, 10.0F)).add(LootItem.lootTableItem(Items.GOLDEN_AXE)).add(LootItem.lootTableItem(Items.GOLDEN_HOE)).add(LootItem.lootTableItem(Items.GOLDEN_PICKAXE)).add(LootItem.lootTableItem(Items.GOLDEN_SHOVEL)).add(LootItem.lootTableItem(Items.GOLDEN_SWORD)).add(LootItem.lootTableItem(FAItems.GOLDEN_JAVELIN.get())).add(LootItem.lootTableItem(Items.DIAMOND_AXE)).add(LootItem.lootTableItem(Items.DIAMOND_HOE)).add(LootItem.lootTableItem(Items.DIAMOND_PICKAXE)).add(LootItem.lootTableItem(Items.DIAMOND_SHOVEL)).add(LootItem.lootTableItem(Items.DIAMOND_SWORD)).add(LootItem.lootTableItem(FAItems.DIAMOND_JAVELIN.get())).add(LootItem.lootTableItem(Items.IRON_AXE)).add(LootItem.lootTableItem(Items.IRON_HOE)).add(LootItem.lootTableItem(Items.IRON_PICKAXE)).add(LootItem.lootTableItem(Items.IRON_SHOVEL)).add(LootItem.lootTableItem(Items.IRON_SWORD)).add(LootItem.lootTableItem(FAItems.IRON_JAVELIN.get())).add(LootItem.lootTableItem(Items.BOW)).add(LootItem.lootTableItem(Items.ARROW)).add(LootItem.lootTableItem(Items.TIPPED_ARROW)).apply(SetPotionFunction.setPotion(Potions.HARMING)).add(LootItem.lootTableItem(Items.SPECTRAL_ARROW))));
         chestLoot.accept(FALootTables.VILLAGE_ARCHAEOLOGIST_HUT, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.JADE.get()).setWeight(20)).add(LootItem.lootTableItem(FAItems.JADE_OCELOT.get()).setWeight(4)).add(LootItem.lootTableItem(FAItems.JADE_VILLAGER.get()).setWeight(4)).add(LootItem.lootTableItem(Items.ROTTEN_FLESH).setWeight(30)).add(LootItem.lootTableItem(Items.BONE).setWeight(30)).add(LootItem.lootTableItem(FAItems.SCARAB_GEM_JAVELIN.get()).setWeight(10))));
