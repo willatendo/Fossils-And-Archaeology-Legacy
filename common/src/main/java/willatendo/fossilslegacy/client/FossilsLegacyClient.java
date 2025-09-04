@@ -3,8 +3,6 @@ package willatendo.fossilslegacy.client;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.HumanoidArmorModel;
 import net.minecraft.client.model.PlayerModel;
-import net.minecraft.client.model.SkeletonModel;
-import net.minecraft.client.model.geom.LayerDefinitions;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
@@ -127,7 +125,8 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.ANU.get(), AnuRenderer::new);
         modelRegister.register(FAEntityTypes.FAILURESAURUS.get(), FailuresaurusRenderer::new);
         modelRegister.register(FAEntityTypes.TAMED_ZOMBIFIED_PIGLIN.get(), context -> new TamedZombifiedPiglinRenderer(context, ModelLayers.ZOMBIFIED_PIGLIN, ModelLayers.ZOMBIFIED_PIGLIN_BABY, ModelLayers.ZOMBIFIED_PIGLIN_INNER_ARMOR, ModelLayers.ZOMBIFIED_PIGLIN_OUTER_ARMOR, ModelLayers.ZOMBIFIED_PIGLIN_BABY_INNER_ARMOR, ModelLayers.ZOMBIFIED_PIGLIN_BABY_OUTER_ARMOR));
-        modelRegister.register(FAEntityTypes.DROWNED_PIRATE.get(), DrownedPirateRenderer::new);
+        modelRegister.register(FAEntityTypes.BONES.get(), DrownedPirateRenderer::new);
+        modelRegister.register(FAEntityTypes.PIRATE_CAPTAIN.get(), DrownedPirateRenderer::new);
         modelRegister.register(FAEntityTypes.PREGNANT_ARMADILLO.get(), ArmadilloRenderer::new);
         modelRegister.register(FAEntityTypes.PREGNANT_BAT.get(), BatRenderer::new);
         modelRegister.register(FAEntityTypes.PREGNANT_CAMEL.get(), CamelRenderer::new);
@@ -202,7 +201,8 @@ public final class FossilsLegacyClient {
         LayerDefinition innerArmor = LayerDefinition.create(HumanoidArmorModel.createBodyLayer(new CubeDeformation(0.5F)), 64, 32);
         modelLayerRegister.register(FAModelLayers.ANIMAL_FETUS, AnimalFetusModel::createBodyLayer);
         modelLayerRegister.register(FAModelLayers.ANU, () -> LayerDefinition.create(PlayerModel.createMesh(CubeDeformation.NONE, false), 64, 32));
-        modelLayerRegister.register(FAModelLayers.DROWNED_PIRATE, SkeletonModel::createBodyLayer);
+        modelLayerRegister.register(FAModelLayers.DROWNED_PIRATE, () -> DrownedPirateModel.createBodyLayer(CubeDeformation.NONE));
+        modelLayerRegister.register(FAModelLayers.DROWNED_PIRATE_OUTER_LAYER, () -> DrownedPirateModel.createBodyLayer(new CubeDeformation(0.25F)));
         modelLayerRegister.register(FAModelLayers.DROWNED_PIRATE_INNER_ARMOR, () -> innerArmor);
         modelLayerRegister.register(FAModelLayers.DROWNED_PIRATE_OUTER_ARMOR, () -> outerArmor);
         modelLayerRegister.register(FAModelLayers.FAILURESAURUS, FailuresaurusModel::createBodyLayer);

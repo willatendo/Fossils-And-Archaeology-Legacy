@@ -1,13 +1,13 @@
 {
   "placement": {
     "type": "minecraft:random_spread",
-    "salt": 1476272418,
+    "salt": 1476272419,
     "separation": 8,
     "spacing": 32
   },
   "structures": [
     {
-      "structure": "fossilslegacy:pirate_ship",
+      "structure": "fossilslegacy:viking_ship",
       "weight": 1
     }
   ]

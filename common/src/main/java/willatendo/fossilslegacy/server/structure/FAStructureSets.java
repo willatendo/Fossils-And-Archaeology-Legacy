@@ -19,6 +19,7 @@ public final class FAStructureSets {
     public static final ResourceKey<StructureSet> MOAI = FAStructureSets.create("moai");
     public static final ResourceKey<StructureSet> PIRATE_SHIP = FAStructureSets.create("pirate_ship");
     public static final ResourceKey<StructureSet> TOTEM_POLE = FAStructureSets.create("totem_pole");
+    public static final ResourceKey<StructureSet> VIKING_SHIP = FAStructureSets.create("viking_ship");
     public static final ResourceKey<StructureSet> WEAPON_SHOP = FAStructureSets.create("weapon_shop");
 
     public static ResourceKey<StructureSet> create(String name) {
@@ -33,8 +34,9 @@ public final class FAStructureSets {
         bootstrapContext.register(MAYAN_CITY, new StructureSet(structures.getOrThrow(FAStructures.MAYAN_CITY), new RandomSpreadStructurePlacement(32, 8, RandomSpreadType.LINEAR, 1476272415)));
         bootstrapContext.register(SMALL_MAYAN_TEMPLE, new StructureSet(structures.getOrThrow(FAStructures.SMALL_MAYAN_TEMPLE), new RandomSpreadStructurePlacement(32, 8, RandomSpreadType.LINEAR, 1476272414)));
         bootstrapContext.register(MOAI, new StructureSet(structures.getOrThrow(FAStructures.MOAI), new RandomSpreadStructurePlacement(16, 4, RandomSpreadType.LINEAR, 1476272413)));
-        bootstrapContext.register(PIRATE_SHIP, new StructureSet(structures.getOrThrow(FAStructures.PIRATE_SHIP), new RandomSpreadStructurePlacement(16, 4, RandomSpreadType.LINEAR, 1476272418)));
+        bootstrapContext.register(PIRATE_SHIP, new StructureSet(structures.getOrThrow(FAStructures.PIRATE_SHIP), new RandomSpreadStructurePlacement(32, 8, RandomSpreadType.LINEAR, 1476272418)));
         bootstrapContext.register(TOTEM_POLE, new StructureSet(structures.getOrThrow(FAStructures.TOTEM_POLE), new RandomSpreadStructurePlacement(16, 4, RandomSpreadType.LINEAR, 1476272412)));
+        bootstrapContext.register(VIKING_SHIP, new StructureSet(structures.getOrThrow(FAStructures.VIKING_SHIP), new RandomSpreadStructurePlacement(32, 8, RandomSpreadType.LINEAR, 1476272419)));
         bootstrapContext.register(WEAPON_SHOP, new StructureSet(structures.getOrThrow(FAStructures.WEAPON_SHOP), new RandomSpreadStructurePlacement(32, 8, RandomSpreadType.LINEAR, 1476272411)));
     }
 }

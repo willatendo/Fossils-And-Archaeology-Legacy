@@ -484,8 +484,10 @@
 - Added Green Hologram Projector
 - Added Red Hologram Projector
 - Added Black Hologram Projector
-- Added Drowned Pirate
+- Added Bones
 - Added Pirate Ship
+- Added Pirate Captain
+- Added Captain's Hat
 27/2/2024 1.4.9
 - Fixed Tooth Dagger Not Shearing All Shearables
 - Fixed Mayan Vase Not Wobbling

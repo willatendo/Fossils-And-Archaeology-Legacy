@@ -23,8 +23,8 @@ public class FAEntityTypeTagProvider extends EntityTypeTagsProvider {
         this.tag(EntityTypeTags.BOAT).add(FAEntityTypes.BOATS.stream().map(SimpleHolder::get).toArray(EntityType[]::new));
         this.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(FAEntityTypes.DODO.get(), FAEntityTypes.PTERANODON.get());
         this.tag(EntityTypeTags.CAN_BREATHE_UNDER_WATER).add(FAEntityTypes.MOSASAURUS.get(), FAEntityTypes.FUTABASAURUS.get(), FAEntityTypes.SPINOSAURUS.get());
-        this.tag(EntityTypeTags.AXOLOTL_ALWAYS_HOSTILES).add(FAEntityTypes.DROWNED_PIRATE.get());
-        this.tag(EntityTypeTags.SKELETONS).add(FAEntityTypes.DROWNED_PIRATE.get());
+        this.tag(EntityTypeTags.AXOLOTL_ALWAYS_HOSTILES).add(FAEntityTypes.BONES.get(), FAEntityTypes.PIRATE_CAPTAIN.get());
+        this.tag(EntityTypeTags.SKELETONS).add(FAEntityTypes.BONES.get(), FAEntityTypes.PIRATE_CAPTAIN.get());
         this.tag(Tags.EntityTypes.BOATS).add(FAEntityTypes.ARCHAEOPTERIS_CHEST_BOAT.get(), FAEntityTypes.CALAMITES_CHEST_BOAT.get(), FAEntityTypes.GINKGO_CHEST_BOAT.get(), FAEntityTypes.LEPIDODENDRON_CHEST_BOAT.get(), FAEntityTypes.SIGILLARIA_CHEST_BOAT.get());
 
         this.carnivoreFood(FAEntityTypeTags.BARYONYX_VICTIMS, FAEntityTypes.ANKYLOSAURUS.get(), FAEntityTypes.BRACHIOSAURUS.get(), FAEntityTypes.CARNOTAURUS.get(), FAEntityTypes.COMPSOGNATHUS.get(), FAEntityTypes.CRYOLOPHOSAURUS.get(), FAEntityTypes.DILOPHOSAURUS.get(), FAEntityTypes.DIMETRODON.get(), FAEntityTypes.DODO.get(), FAEntityTypes.DRYOSAURUS.get(), FAEntityTypes.ELASMOTHERIUM.get(), FAEntityTypes.FUTABASAURUS.get(), FAEntityTypes.GALLIMIMUS.get(), FAEntityTypes.MAMMOTH.get(), FAEntityTypes.MOA.get(), FAEntityTypes.MOSASAURUS.get(), FAEntityTypes.NAUTILUS.get(), FAEntityTypes.CENOCERAS.get(), FAEntityTypes.PACHYCEPHALOSAURUS.get(), FAEntityTypes.PTERANODON.get(), FAEntityTypes.SMILODON.get(), FAEntityTypes.SPINOSAURUS.get(), FAEntityTypes.STEGOSAURUS.get(), FAEntityTypes.THERIZINOSAURUS.get(), FAEntityTypes.TRICERATOPS.get(), FAEntityTypes.TYRANNOSAURUS.get(), FAEntityTypes.VELOCIRAPTOR.get());

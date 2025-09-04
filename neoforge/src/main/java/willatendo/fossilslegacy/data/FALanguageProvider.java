@@ -571,7 +571,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
 
         this.add(FAEntityTypes.FAILURESAURUS.get());
 
-        this.add(FAEntityTypes.DROWNED_PIRATE.get());
+        this.add(FAEntityTypes.BONES.get());
+        this.add(FAEntityTypes.PIRATE_CAPTAIN.get());
 
         this.add(FAEntityTypes.ANCIENT_LIGHTNING_BOLT.get(), "Lightning Bolt");
 
@@ -1015,6 +1016,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.GOLDEN_HAMMER.get());
         this.add(FAItems.DIAMOND_HAMMER.get());
         this.add(FAItems.NETHERITE_HAMMER.get());
+        this.add(FAItems.CAPTAINS_HAT.get(), "Captain's Hat");
         this.add(FAItems.RIFLE.get());
         this.add(FAItems.GREEN_TRANQUILIZER_DART.get());
         this.add(FAItems.RED_TRANQUILIZER_DART.get());
@@ -1378,7 +1380,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
 
         this.add(FAItems.ANU_SPAWN_EGG.get());
         this.add(FAItems.FAILURESAURUS_SPAWN_EGG.get());
-        this.add(FAItems.DROWNED_PIRATE_SPAWN_EGG.get());
+        this.add(FAItems.BONES_SPAWN_EGG.get());
+        this.add(FAItems.PIRATE_CAPTAIN_SPAWN_EGG.get());
 
         this.add(FAItems.BRACHIOSAURUS_SPAWN_EGG.get());
         this.add(FAItems.DILOPHOSAURUS_SPAWN_EGG.get());
@@ -1753,6 +1756,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABiomeTags.HAS_MOAI, "Has Moai");
         this.add(FABiomeTags.HAS_PIRATE_SHIP, "Has Pirate Ship");
         this.add(FABiomeTags.HAS_TOTEM_POLE, "Has Totem Pole");
+        this.add(FABiomeTags.HAS_VIKING_SHIP, "Has Viking Ship");
         this.add(FABiomeTags.HAS_WEAPON_SHOP, "Has Weapon Shop");
 
         this.add(FABlockTags.ANKYLOSAURUS_SPAWNABLE, "Ankylosaurus Spawnable");

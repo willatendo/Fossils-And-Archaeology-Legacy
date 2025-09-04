@@ -9,14 +9,12 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.resources.RegistryOps;
 import net.minecraft.world.entity.decoration.Painting;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.block.Blocks;
 import willatendo.fossilslegacy.platform.FAModloaderHelper;
 import willatendo.fossilslegacy.server.block.FABlocks;
-import willatendo.fossilslegacy.server.block.blocks.ColoredHologramProjectorBlock;
 import willatendo.fossilslegacy.server.block.blocks.HeadBlock;
 import willatendo.fossilslegacy.server.command_type.CommandType;
 import willatendo.fossilslegacy.server.decoration_plaque_type.DecorationPlaqueType;
@@ -149,7 +147,8 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.TAR_BUCKET.get());
         FACreativeModeTabs.addCreatureSpawnEggs(output);
         output.accept(FAItems.ANU_SPAWN_EGG.get());
-        output.accept(FAItems.DROWNED_PIRATE_SPAWN_EGG.get());
+        output.accept(FAItems.BONES_SPAWN_EGG.get());
+        output.accept(FAItems.PIRATE_CAPTAIN_SPAWN_EGG.get());
         output.accept(FAItems.FAILURESAURUS_SPAWN_EGG.get());
         FACreativeModeTabs.addMusicDiscs(output);
         //FACreativeModeTabs.addHeads(output, itemDisplayParameters);
@@ -210,6 +209,7 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.DIAMOND_JAVELIN.get());
         output.accept(FAItems.NETHERITE_JAVELIN.get());
         output.accept(FAItems.SCARAB_GEM_JAVELIN.get());
+        output.accept(FAItems.CAPTAINS_HAT.get());
     }
 
     private static void addCreationBlocks(CreativeModeTab.Output output) {

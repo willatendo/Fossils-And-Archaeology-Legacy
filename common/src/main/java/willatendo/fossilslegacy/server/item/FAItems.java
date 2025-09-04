@@ -5,6 +5,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.equipment.ArmorMaterials;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.Level;
@@ -677,6 +678,7 @@ public final class FAItems {
     public static final SimpleHolder<HammerItem> GOLDEN_HAMMER = ITEMS.registerItem("golden_hammer", properties -> new HammerItem(ToolMaterial.GOLD, 7.0F, -3.2F, properties));
     public static final SimpleHolder<HammerItem> DIAMOND_HAMMER = ITEMS.registerItem("diamond_hammer", properties -> new HammerItem(ToolMaterial.DIAMOND, 7.0F, -3.2F, properties));
     public static final SimpleHolder<HammerItem> NETHERITE_HAMMER = ITEMS.registerItem("netherite_hammer", properties -> new HammerItem(ToolMaterial.NETHERITE, 7.0F, -3.2F, properties));
+    public static final SimpleHolder<ArmorItem> CAPTAINS_HAT = ITEMS.registerItem("captains_hat", properties -> new ArmorItem(ArmorMaterials.LEATHER, ArmorType.HELMET, properties));
     public static final SimpleHolder<RifleItem> RIFLE = ITEMS.registerItem("rifle", properties -> new RifleItem(properties.stacksTo(1).durability(250)));
     public static final SimpleHolder<DartItem> GREEN_TRANQUILIZER_DART = ITEMS.registerItem("green_tranquilizer_dart", properties -> new DartItem(Dart.Color.GREEN, 5000, properties));
     public static final SimpleHolder<DartItem> RED_TRANQUILIZER_DART = ITEMS.registerItem("red_tranquilizer_dart", properties -> new DartItem(Dart.Color.RED, 20000, properties));
@@ -711,7 +713,8 @@ public final class FAItems {
     public static final SimpleHolder<BoatItem> METASEQUOIA_CHEST_BOAT = ITEMS.registerChestBoat("metasequoia_chest_boat", properties -> new BoatItem(FAEntityTypes.METASEQUOIA_CHEST_BOAT.get(), properties));
     public static final SimpleHolder<SpawnEggItem> ANU_SPAWN_EGG = ITEMS.registerItem("anu_spawn_egg", properties -> new SpawnEggItem(FAEntityTypes.ANU.get(), properties));
     public static final SimpleHolder<SpawnEggItem> FAILURESAURUS_SPAWN_EGG = ITEMS.registerItem("failuresaurus_spawn_egg", properties -> new SpawnEggItem(FAEntityTypes.FAILURESAURUS.get(), properties));
-    public static final SimpleHolder<SpawnEggItem> DROWNED_PIRATE_SPAWN_EGG = ITEMS.registerItem("drowned_pirate_spawn_egg", properties -> new SpawnEggItem(FAEntityTypes.DROWNED_PIRATE.get(), properties));
+    public static final SimpleHolder<SpawnEggItem> BONES_SPAWN_EGG = ITEMS.registerItem("bones_spawn_egg", properties -> new SpawnEggItem(FAEntityTypes.BONES.get(), properties));
+    public static final SimpleHolder<SpawnEggItem> PIRATE_CAPTAIN_SPAWN_EGG = ITEMS.registerItem("pirate_captain_spawn_egg", properties -> new SpawnEggItem(FAEntityTypes.PIRATE_CAPTAIN.get(), properties));
     public static final SimpleHolder<DinosaurSpawnEggItem> BRACHIOSAURUS_SPAWN_EGG = ITEMS.registerItem("brachiosaurus_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.BRACHIOSAURUS.get(), properties));
     public static final SimpleHolder<DinosaurSpawnEggItem> DILOPHOSAURUS_SPAWN_EGG = ITEMS.registerItem("dilophosaurus_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.DILOPHOSAURUS.get(), properties));
     public static final SimpleHolder<DinosaurSpawnEggItem> FUTABASAURUS_SPAWN_EGG = ITEMS.registerItem("futabasaurus_spawn_egg", properties -> new DinosaurSpawnEggItem(FAEntityTypes.FUTABASAURUS.get(), properties));

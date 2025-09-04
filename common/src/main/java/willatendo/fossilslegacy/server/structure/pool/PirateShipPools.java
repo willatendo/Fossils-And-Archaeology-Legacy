@@ -17,11 +17,11 @@ public class PirateShipPools {
     public static void bootstrap(BootstrapContext<StructureTemplatePool> bootstrapContext) {
         HolderGetter<StructureTemplatePool> structureTemplatePoolHolderGetter = bootstrapContext.lookup(Registries.TEMPLATE_POOL);
         Holder<StructureTemplatePool> empty = structureTemplatePoolHolderGetter.getOrThrow(Pools.EMPTY);
-        bootstrapContext.register(START, new StructureTemplatePool(empty, ImmutableList.of(Pair.of(FAPools.legacy("pirate_ship/pirate_ship_front"), 1)), StructureTemplatePool.Projection.RIGID));
-        FAPools.register(bootstrapContext, "pirate_ship/middle", new StructureTemplatePool(empty, ImmutableList.of(Pair.of(FAPools.legacy("pirate_ship/pirate_ship_middle"), 1)), StructureTemplatePool.Projection.RIGID));
+        bootstrapContext.register(START, new StructureTemplatePool(empty, ImmutableList.of(Pair.of(FAPools.legacy("pirate_ship/pirate_ship_middle"), 1)), StructureTemplatePool.Projection.RIGID));
+        FAPools.register(bootstrapContext, "pirate_ship/front", new StructureTemplatePool(empty, ImmutableList.of(Pair.of(FAPools.legacy("pirate_ship/pirate_ship_front"), 1)), StructureTemplatePool.Projection.RIGID));
         FAPools.register(bootstrapContext, "pirate_ship/back", new StructureTemplatePool(empty, ImmutableList.of(Pair.of(FAPools.legacy("pirate_ship/pirate_ship_back"), 1)), StructureTemplatePool.Projection.RIGID));
-        FAPools.register(bootstrapContext, "pirate_ship/mast_1", new StructureTemplatePool(empty, ImmutableList.of(Pair.of(FAPools.legacy("pirate_ship/pirate_ship_mast_1"), 1)), StructureTemplatePool.Projection.RIGID));
-        FAPools.register(bootstrapContext, "pirate_ship/mast_2", new StructureTemplatePool(empty, ImmutableList.of(Pair.of(FAPools.legacy("pirate_ship/pirate_ship_mast_2"), 1)), StructureTemplatePool.Projection.RIGID));
         FAPools.register(bootstrapContext, "pirate_ship/mobs/drowned_pirate", new StructureTemplatePool(empty, ImmutableList.of(Pair.of(FAPools.legacy("pirate_ship/pirate_ship_drowned_pirate"), 1)), StructureTemplatePool.Projection.RIGID));
+        FAPools.register(bootstrapContext, "pirate_ship/mobs/drowned_pirate_captain", new StructureTemplatePool(empty, ImmutableList.of(Pair.of(FAPools.legacy("pirate_ship/pirate_ship_drowned_pirate_captain"), 1)), StructureTemplatePool.Projection.RIGID));
     }
 }
+

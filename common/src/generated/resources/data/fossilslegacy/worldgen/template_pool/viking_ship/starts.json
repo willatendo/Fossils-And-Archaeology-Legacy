@@ -3,7 +3,7 @@
     {
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
-        "location": "fossilslegacy:pirate_ship/pirate_ship_mast_2",
+        "location": "fossilslegacy:viking_ship/viking_ship_middle",
         "processors": {
           "processors": []
         },

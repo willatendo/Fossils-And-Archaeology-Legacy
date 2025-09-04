@@ -1,4 +1,4 @@
-// 1.21.4	2025-09-01T17:34:35.3723577	Loot Tables
+// 1.21.4	2025-09-02T17:06:28.6961274	Loot Tables
 6b196aa6cdadbe968410835a209fed7ad992066f data/fossilslegacy/loot_table/archaeology/inca_loot.json
 bb0a83fd719766efefe4b270836d5a39651187e0 data/fossilslegacy/loot_table/blocks/amber_ore.json
 0a0a6eb57c884b0e6eb3b1fc9cfbf8c67c956e87 data/fossilslegacy/loot_table/blocks/ankylosaurus_head.json
@@ -375,6 +375,7 @@ ee30f947ee8986a2e8cfbf092657207ee3a2a387 data/fossilslegacy/loot_table/chests/pi
 daf13a0fe51fdd4ca048e716129fc627f715b594 data/fossilslegacy/loot_table/entities/anu.json
 36ffd5674ddda83ca5623f9b4b97e4033d45d0bb data/fossilslegacy/loot_table/entities/baryonyx.json
 0538d2100ba1064f55426f8e1405a0165cc17af0 data/fossilslegacy/loot_table/entities/baryonyx_egg.json
+38545e6ff3b3066a9ece27c8901406d1c6ecd929 data/fossilslegacy/loot_table/entities/bones.json
 839c29493e56e76111a8b6dc4b0fdb774ab02601 data/fossilslegacy/loot_table/entities/brachiosaurus.json
 f31947bac44ca1bda7a4abcf4368f98c04fff405 data/fossilslegacy/loot_table/entities/brachiosaurus_egg.json
 2bc816819dbc650b0e860cbd407dfaecf5107989 data/fossilslegacy/loot_table/entities/carnotaurus.json
@@ -390,7 +391,6 @@ a704d28cba5a9b022f77f1189beb8de5b0fbe909 data/fossilslegacy/loot_table/entities/
 1c62fa6114da98d766025112c590ee8dd9f29b2f data/fossilslegacy/loot_table/entities/dimetrodon_egg.json
 3fe9646942ed14aef15dc7c839937b6749945016 data/fossilslegacy/loot_table/entities/distortus_rex.json
 cc528cd4399c78003289396e4b64816fb5633618 data/fossilslegacy/loot_table/entities/dodo.json
-ca993582bbe3723ad299dbcb25728ede574899ba data/fossilslegacy/loot_table/entities/drowned_pirate.json
 8262d8e436a72f89b06ed35b4cceed34bd08eede data/fossilslegacy/loot_table/entities/dryosaurus.json
 a425aefe23fa6433eac6bdaeb9d310929a417bba data/fossilslegacy/loot_table/entities/dryosaurus_egg.json
 646a5feaee019ef03688ad7f9ce3a36287719733 data/fossilslegacy/loot_table/entities/elasmotherium.json
@@ -410,6 +410,7 @@ fb099f63471c67ea09fc1961cc2ec5642ef87545 data/fossilslegacy/loot_table/entities/
 8bb0da26af8ba5fac3c4c387ae98c0c9bead8da0 data/fossilslegacy/loot_table/entities/nautilus.json
 f7c845e8fe7751672aa1dacd9fd6117e75f4149d data/fossilslegacy/loot_table/entities/pachycephalosaurus.json
 ad9c6f1c1603345c4dddc27b2355049f6e981d63 data/fossilslegacy/loot_table/entities/pachycephalosaurus_egg.json
+786e99c508a2b458e9227d538a1e6d1b77cbed58 data/fossilslegacy/loot_table/entities/pirate_captain.json
 2515c0993b00124e39c75a5316f80d840b573fcc data/fossilslegacy/loot_table/entities/pregnant_armadillo.json
 8bb1ee9bd4207f2dc8c1738a52852ee828c0b3ed data/fossilslegacy/loot_table/entities/pregnant_bat.json
 d9b365171f83fdf3fb5fbf2382df9805f8d89cb7 data/fossilslegacy/loot_table/entities/pregnant_camel.json

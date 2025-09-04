@@ -441,6 +441,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.handheldItem(FAItems.GOLDEN_HAMMER.get());
         this.handheldItem(FAItems.DIAMOND_HAMMER.get());
         this.handheldItem(FAItems.NETHERITE_HAMMER.get());
+        this.generatedItem(FAItems.CAPTAINS_HAT.get());
         this.item(FAItems.RIFLE.get(), ItemModelUtils.plainModel(FAModelTemplates.TEMPLATE_RIFLE.create(FAItems.RIFLE.get(), new TextureMapping().put(TextureSlot.TEXTURE, this.modLocation("item/rifle")), this.modelOutput)));
         this.generatedItem(FAItems.GREEN_TRANQUILIZER_DART.get());
         this.generatedItem(FAItems.RED_TRANQUILIZER_DART.get());
@@ -454,7 +455,8 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.JEEP_1993.get());
         this.spawnEggItem(FAItems.ANU_SPAWN_EGG.get(), 0x432600, 0xa62c14);
         this.spawnEggItem(FAItems.FAILURESAURUS_SPAWN_EGG.get(), 0x51e6a5, 0x1b5128);
-        this.spawnEggItem(FAItems.DROWNED_PIRATE_SPAWN_EGG.get(), 0x4B3324, 0x329400);
+        this.spawnEggItem(FAItems.BONES_SPAWN_EGG.get(), 0x4B3324, 0x329400);
+        this.spawnEggItem(FAItems.PIRATE_CAPTAIN_SPAWN_EGG.get(), 0x4B3324, 0x329400);
         this.spawnEggItem(FAItems.BRACHIOSAURUS_SPAWN_EGG.get(), 0x3b3e55, 0x7f8ba1);
         this.spawnEggItem(FAItems.DILOPHOSAURUS_SPAWN_EGG.get(), 0x686442, 0xf1bc2c);
         this.spawnEggItem(FAItems.FUTABASAURUS_SPAWN_EGG.get(), 0xca6700, 0xb92200);

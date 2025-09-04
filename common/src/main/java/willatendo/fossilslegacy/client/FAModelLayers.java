@@ -13,6 +13,7 @@ public final class FAModelLayers {
     public static final ModelLayerLocation ARCHAEOPTERIS_CHEST_BOAT = FAModelLayers.create("chest_boat/archaeopteris");
     public static final ModelLayerLocation ANU = FAModelLayers.create("anu");
     public static final ModelLayerLocation DROWNED_PIRATE = FAModelLayers.create("drowned_pirate");
+    public static final ModelLayerLocation DROWNED_PIRATE_OUTER_LAYER = FAModelLayers.create("drowned_pirate_outer_layer");
     public static final ModelLayerLocation DROWNED_PIRATE_INNER_ARMOR = FAModelLayers.createInnerArmor("drowned_pirate");
     public static final ModelLayerLocation DROWNED_PIRATE_OUTER_ARMOR = FAModelLayers.createOuterArmor("drowned_pirate");
     public static final ModelLayerLocation CALAMITES_BOAT = FAModelLayers.create("boat/calamites");

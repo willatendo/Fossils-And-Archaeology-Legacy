@@ -25,7 +25,6 @@ import net.minecraft.world.entity.ai.util.DefaultRandomPos;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.animal.Turtle;
 import net.minecraft.world.entity.animal.Wolf;
-import net.minecraft.world.entity.monster.Drowned;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
@@ -48,48 +47,48 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoField;
 import java.util.EnumSet;
 
-public class DrownedPirate extends Monster implements RangedAttackMob {
+public class Bones extends Monster implements RangedAttackMob {
     boolean searchingForLand;
     protected final WaterBoundPathNavigation waterNavigation;
     protected final GroundPathNavigation groundNavigation;
 
-    private final RangedBowAttackGoal<DrownedPirate> bowGoal = new RangedBowAttackGoal<>(this, 1.0, 20, 15.0F);
+    private final RangedBowAttackGoal<Bones> bowGoal = new RangedBowAttackGoal<>(this, 1.0, 20, 15.0F);
     private final MeleeAttackGoal meleeGoal = new MeleeAttackGoal(this, 1.2, false) {
         @Override
         public void stop() {
             super.stop();
-            DrownedPirate.this.setAggressive(false);
+            Bones.this.setAggressive(false);
         }
 
         @Override
         public void start() {
             super.start();
-            DrownedPirate.this.setAggressive(true);
+            Bones.this.setAggressive(true);
         }
     };
 
-    public DrownedPirate(EntityType<? extends DrownedPirate> entityType, Level level) {
+    public Bones(EntityType<? extends Bones> entityType, Level level) {
         super(entityType, level);
         this.reassessWeaponGoal();
-        this.moveControl = new DrownedPirate.DrownedPirateMoveControl(this);
+        this.moveControl = new Bones.DrownedPirateMoveControl(this);
         this.setPathfindingMalus(PathType.WATER, 0.0F);
         this.waterNavigation = new WaterBoundPathNavigation(this, level);
         this.groundNavigation = new GroundPathNavigation(this, level);
     }
 
-    public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, 0.25);
+    public static AttributeSupplier createAttributes() {
+        return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, 0.25).build();
     }
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new DrownedPirate.DrownedPirateGoToWaterGoal(this, 1.0));
+        this.goalSelector.addGoal(1, new Bones.DrownedPirateGoToWaterGoal(this, 1.0));
         this.goalSelector.addGoal(2, new RestrictSunGoal(this));
-        this.goalSelector.addGoal(2, new DrownedPirate.DrownedPirateAttackGoal(this, 1.0, false));
+        this.goalSelector.addGoal(2, new Bones.DrownedPirateAttackGoal(this, 1.0, false));
         this.goalSelector.addGoal(3, new FleeSunGoal(this, 1.0));
         this.goalSelector.addGoal(3, new AvoidEntityGoal<>(this, Wolf.class, 6.0F, 1.0, 1.2));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0));
-        this.goalSelector.addGoal(6, new DrownedPirate.DrownedPirateSwimUpGoal(this, 1.0, this.level().getSeaLevel()));
+        this.goalSelector.addGoal(6, new Bones.DrownedPirateSwimUpGoal(this, 1.0, this.level().getSeaLevel()));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
@@ -313,41 +312,41 @@ public class DrownedPirate extends Monster implements RangedAttackMob {
 
 
     static class DrownedPirateMoveControl extends MoveControl {
-        private final DrownedPirate drownedPirate;
+        private final Bones bones;
 
-        public DrownedPirateMoveControl(DrownedPirate drownedPirate) {
-            super(drownedPirate);
-            this.drownedPirate = drownedPirate;
+        public DrownedPirateMoveControl(Bones bones) {
+            super(bones);
+            this.bones = bones;
         }
 
         @Override
         public void tick() {
-            LivingEntity target = this.drownedPirate.getTarget();
-            if (this.drownedPirate.wantsToSwim() && this.drownedPirate.isInWater()) {
-                if (target != null && target.getY() > this.drownedPirate.getY() || this.drownedPirate.searchingForLand) {
-                    this.drownedPirate.setDeltaMovement(this.drownedPirate.getDeltaMovement().add(0.0, 0.002, 0.0));
+            LivingEntity target = this.bones.getTarget();
+            if (this.bones.wantsToSwim() && this.bones.isInWater()) {
+                if (target != null && target.getY() > this.bones.getY() || this.bones.searchingForLand) {
+                    this.bones.setDeltaMovement(this.bones.getDeltaMovement().add(0.0, 0.002, 0.0));
                 }
 
-                if (this.operation != Operation.MOVE_TO || this.drownedPirate.getNavigation().isDone()) {
-                    this.drownedPirate.setSpeed(0.0F);
+                if (this.operation != Operation.MOVE_TO || this.bones.getNavigation().isDone()) {
+                    this.bones.setSpeed(0.0F);
                     return;
                 }
 
-                double x = this.wantedX - this.drownedPirate.getX();
-                double y = this.wantedY - this.drownedPirate.getY();
-                double z = this.wantedZ - this.drownedPirate.getZ();
+                double x = this.wantedX - this.bones.getX();
+                double y = this.wantedY - this.bones.getY();
+                double z = this.wantedZ - this.bones.getZ();
                 double distance = Math.sqrt(x * x + y * y + z * z);
                 y /= distance;
                 float f = (float) (Mth.atan2(z, x) * 180.0 / 3.1415927410125732) - 90.0F;
-                this.drownedPirate.setYRot(this.rotlerp(this.drownedPirate.getYRot(), f, 90.0F));
-                this.drownedPirate.yBodyRot = this.drownedPirate.getYRot();
-                float movementSpeed = (float) (this.speedModifier * this.drownedPirate.getAttributeValue(Attributes.MOVEMENT_SPEED));
-                float speed = Mth.lerp(0.125F, this.drownedPirate.getSpeed(), movementSpeed);
-                this.drownedPirate.setSpeed(speed);
-                this.drownedPirate.setDeltaMovement(this.drownedPirate.getDeltaMovement().add((double) speed * x * 0.005, (double) speed * y * 0.1, (double) speed * z * 0.005));
+                this.bones.setYRot(this.rotlerp(this.bones.getYRot(), f, 90.0F));
+                this.bones.yBodyRot = this.bones.getYRot();
+                float movementSpeed = (float) (this.speedModifier * this.bones.getAttributeValue(Attributes.MOVEMENT_SPEED));
+                float speed = Mth.lerp(0.125F, this.bones.getSpeed(), movementSpeed);
+                this.bones.setSpeed(speed);
+                this.bones.setDeltaMovement(this.bones.getDeltaMovement().add((double) speed * x * 0.005, (double) speed * y * 0.1, (double) speed * z * 0.005));
             } else {
-                if (!this.drownedPirate.onGround()) {
-                    this.drownedPirate.setDeltaMovement(this.drownedPirate.getDeltaMovement().add(0.0, -0.008, 0.0));
+                if (!this.bones.onGround()) {
+                    this.bones.setDeltaMovement(this.bones.getDeltaMovement().add(0.0, -0.008, 0.0));
                 }
 
                 super.tick();
@@ -415,39 +414,39 @@ public class DrownedPirate extends Monster implements RangedAttackMob {
     }
 
     static class DrownedPirateAttackGoal extends MeleeAttackGoal {
-        private final DrownedPirate drownedPirate;
+        private final Bones bones;
 
-        public DrownedPirateAttackGoal(DrownedPirate drownedPirate, double speedModifier, boolean followingTargetEvenIfNotSeen) {
-            super(drownedPirate, speedModifier, followingTargetEvenIfNotSeen);
-            this.drownedPirate = drownedPirate;
+        public DrownedPirateAttackGoal(Bones bones, double speedModifier, boolean followingTargetEvenIfNotSeen) {
+            super(bones, speedModifier, followingTargetEvenIfNotSeen);
+            this.bones = bones;
         }
 
         @Override
         public boolean canUse() {
-            return super.canUse() && this.drownedPirate.okTarget(this.drownedPirate.getTarget());
+            return super.canUse() && this.bones.okTarget(this.bones.getTarget());
         }
 
         @Override
         public boolean canContinueToUse() {
-            return super.canContinueToUse() && this.drownedPirate.okTarget(this.drownedPirate.getTarget());
+            return super.canContinueToUse() && this.bones.okTarget(this.bones.getTarget());
         }
     }
 
     static class DrownedPirateSwimUpGoal extends Goal {
-        private final DrownedPirate drownedPirate;
+        private final Bones bones;
         private final double speedModifier;
         private final int seaLevel;
         private boolean stuck;
 
-        public DrownedPirateSwimUpGoal(DrownedPirate drownedPirate, double speedModifier, int seaLevel) {
-            this.drownedPirate = drownedPirate;
+        public DrownedPirateSwimUpGoal(Bones bones, double speedModifier, int seaLevel) {
+            this.bones = bones;
             this.speedModifier = speedModifier;
             this.seaLevel = seaLevel;
         }
 
         @Override
         public boolean canUse() {
-            return !this.drownedPirate.level().isDay() && this.drownedPirate.isInWater() && this.drownedPirate.getY() < (double) (this.seaLevel - 2);
+            return !this.bones.level().isDay() && this.bones.isInWater() && this.bones.getY() < (double) (this.seaLevel - 2);
         }
 
         @Override
@@ -457,26 +456,26 @@ public class DrownedPirate extends Monster implements RangedAttackMob {
 
         @Override
         public void tick() {
-            if (this.drownedPirate.getY() < (double) (this.seaLevel - 1) && (this.drownedPirate.getNavigation().isDone() || this.drownedPirate.closeToNextPos())) {
-                Vec3 vec3 = DefaultRandomPos.getPosTowards(this.drownedPirate, 4, 8, new Vec3(this.drownedPirate.getX(), (double) (this.seaLevel - 1), this.drownedPirate.getZ()), 1.5707963705062866);
+            if (this.bones.getY() < (double) (this.seaLevel - 1) && (this.bones.getNavigation().isDone() || this.bones.closeToNextPos())) {
+                Vec3 vec3 = DefaultRandomPos.getPosTowards(this.bones, 4, 8, new Vec3(this.bones.getX(), (double) (this.seaLevel - 1), this.bones.getZ()), 1.5707963705062866);
                 if (vec3 == null) {
                     this.stuck = true;
                     return;
                 }
 
-                this.drownedPirate.getNavigation().moveTo(vec3.x, vec3.y, vec3.z, this.speedModifier);
+                this.bones.getNavigation().moveTo(vec3.x, vec3.y, vec3.z, this.speedModifier);
             }
         }
 
         @Override
         public void start() {
-            this.drownedPirate.setSearchingForLand(true);
+            this.bones.setSearchingForLand(true);
             this.stuck = false;
         }
 
         @Override
         public void stop() {
-            this.drownedPirate.setSearchingForLand(false);
+            this.bones.setSearchingForLand(false);
         }
     }
 }
