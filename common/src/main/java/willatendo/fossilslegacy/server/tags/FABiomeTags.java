@@ -10,6 +10,7 @@ public class FABiomeTags {
     private static final TagRegister<Biome> BIOME_TAGS = TagRegister.create(Registries.BIOME, FAUtils.ID);
 
     public static final TagKey<Biome> HAS_ACADEMY = BIOME_TAGS.register("has_structure/academy");
+    public static final TagKey<Biome> HAS_CHINESE_WARSHIP = BIOME_TAGS.register("has_structure/chinese_warship");
     public static final TagKey<Biome> HAS_LAB = BIOME_TAGS.register("has_structure/lab");
     public static final TagKey<Biome> HAS_MACHU_PICCHU = BIOME_TAGS.register("has_structure/machu_picchu");
     public static final TagKey<Biome> HAS_MAYAN_TEMPLE = BIOME_TAGS.register("has_structure/mayan_temple");

@@ -11,8 +11,7 @@ import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 import willatendo.fossilslegacy.server.biome.FAMultiNoiseBiomeSourceParameterLists;
-import willatendo.fossilslegacy.server.level.FALevels;
-import willatendo.fossilslegacy.server.level.prehistoric.PrehistoricNoiseGeneratorSettings;
+import willatendo.fossilslegacy.server.level.FANoiseGeneratorSettings;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FALevelStems {
@@ -28,6 +27,7 @@ public final class FALevelStems {
         HolderGetter<NoiseGeneratorSettings> noiseGeneratorSettingsRegistry = bootstrapContext.lookup(Registries.NOISE_SETTINGS);
         HolderGetter<DimensionType> dimensionTypeRegistry = bootstrapContext.lookup(Registries.DIMENSION_TYPE);
 
-        bootstrapContext.register(PREHISTORY, new LevelStem(dimensionTypeRegistry.getOrThrow(FADimensionTypes.PREHISTORY), new NoiseBasedChunkGenerator(MultiNoiseBiomeSource.createFromPreset(multiNoiseBiomeSourceParameterListRegistry.getOrThrow(FAMultiNoiseBiomeSourceParameterLists.PREHISTORIC)), noiseGeneratorSettingsRegistry.getOrThrow(PrehistoricNoiseGeneratorSettings.PREHISTORIC))));
+        bootstrapContext.register(ICE_AGE, new LevelStem(dimensionTypeRegistry.getOrThrow(FADimensionTypes.ICE_AGE), new NoiseBasedChunkGenerator(MultiNoiseBiomeSource.createFromPreset(multiNoiseBiomeSourceParameterListRegistry.getOrThrow(FAMultiNoiseBiomeSourceParameterLists.ICE_AGE)), noiseGeneratorSettingsRegistry.getOrThrow(FANoiseGeneratorSettings.ICE_AGE))));
+        bootstrapContext.register(PREHISTORY, new LevelStem(dimensionTypeRegistry.getOrThrow(FADimensionTypes.PREHISTORY), new NoiseBasedChunkGenerator(MultiNoiseBiomeSource.createFromPreset(multiNoiseBiomeSourceParameterListRegistry.getOrThrow(FAMultiNoiseBiomeSourceParameterLists.PREHISTORIC)), noiseGeneratorSettingsRegistry.getOrThrow(FANoiseGeneratorSettings.PREHISTORIC))));
     }
 }

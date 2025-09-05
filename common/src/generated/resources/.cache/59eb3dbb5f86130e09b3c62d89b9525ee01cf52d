@@ -1,4 +1,4 @@
-// 1.21.4	2025-09-02T17:06:28.6961274	Loot Tables
+// 1.21.4	2025-09-04T19:39:08.6753897	Loot Tables
 6b196aa6cdadbe968410835a209fed7ad992066f data/fossilslegacy/loot_table/archaeology/inca_loot.json
 bb0a83fd719766efefe4b270836d5a39651187e0 data/fossilslegacy/loot_table/blocks/amber_ore.json
 0a0a6eb57c884b0e6eb3b1fc9cfbf8c67c956e87 data/fossilslegacy/loot_table/blocks/ankylosaurus_head.json
@@ -361,6 +361,7 @@ afc8958461aba1c4b8fd7959cd7444eb72d0e7f3 data/fossilslegacy/loot_table/blocks/ye
 6092aafe4bca6a32828a100accc015b5725a7d51 data/fossilslegacy/loot_table/chests/academy_disc.json
 0e504001fa6014fdf23cf4bdb8a81105d95b9d25 data/fossilslegacy/loot_table/chests/academy_loot.json
 d2e5b5d63fc17e3b4e5041819c1902be2f434810 data/fossilslegacy/loot_table/chests/cannon.json
+ed9ea02aac59d1cad7b352867f8fcbd7d03e3ded data/fossilslegacy/loot_table/chests/chinese_loot.json
 8ae0de33cdeff1cb04f5846e2ab179c1d3f0e5ca data/fossilslegacy/loot_table/chests/lab_loot/dna.json
 d7989550b74a25cdfbe32dfd8d0e2a0958322fc4 data/fossilslegacy/loot_table/chests/lab_loot/failed_experiment.json
 f1aed07620b24d5e9967a648e0b0e4b2264117e5 data/fossilslegacy/loot_table/chests/lab_loot/fossil.json

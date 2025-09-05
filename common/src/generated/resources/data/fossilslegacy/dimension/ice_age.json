@@ -1,0 +1,11 @@
+{
+  "type": "fossilslegacy:ice_age",
+  "generator": {
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "preset": "fossilslegacy:ice_age"
+    },
+    "settings": "fossilslegacy:ice_age"
+  }
+}

@@ -15,6 +15,7 @@ import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import willatendo.fossilslegacy.server.biome.biomes.IceAgeBiomes;
 import willatendo.fossilslegacy.server.biome.biomes.PrehistoricBiomes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.feature.PrehistoricBiomeFeatures;
@@ -23,37 +24,52 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 public final class FABiomes {
     public static final Music NORMAL_MUSIC = null;
 
-    public static final ResourceKey<Biome> PREHISTORIC_OCEAN = register("prehistoric_ocean");
-    public static final ResourceKey<Biome> DEEP_PREHISTORIC_OCEAN = register("deep_prehistoric_ocean");
-    public static final ResourceKey<Biome> PREHISTORIC_PLAINS = register("prehistoric_plains");
-    public static final ResourceKey<Biome> PREHISTORIC_FOREST = register("prehistoric_forest");
-    public static final ResourceKey<Biome> PREHISTORIC_DESERT = register("prehistoric_desert");
-    public static final ResourceKey<Biome> PREHISTORIC_JUNGLE = register("prehistoric_jungle");
-    public static final ResourceKey<Biome> PREHISTORIC_TAIGA = register("prehistoric_taiga");
-    public static final ResourceKey<Biome> PREHISTORIC_SWAMP = register("prehistoric_swamp");
-    // Based on Morrison Formation
-    public static final ResourceKey<Biome> ARID_PLAINS = FABiomes.register("arid_plains");
-    public static final ResourceKey<Biome> ARID_FOREST = FABiomes.register("arid_forest");
-    // Based On Hell Creek Formation
-    public static final ResourceKey<Biome> RAINY_FLOODPLAINS = FABiomes.register("rainy_floodplains");
-    // Based on Djadochta Formation
-    public static final ResourceKey<Biome> COLD_DESERT = register("cold_desert");
-    // Based on Flaming Cliffs
-    public static final ResourceKey<Biome> RED_DESERT = FABiomes.register("red_desert");
-    // Rivers
-    public static final ResourceKey<Biome> WARM_PREHISTORIC_RIVER = register("warm_prehistoric_river");
-    public static final ResourceKey<Biome> PREHISTORIC_RIVER = register("prehistoric_river");
-    public static final ResourceKey<Biome> COLD_PREHISTORIC_RIVER = register("cold_prehistoric_river");
-    // Beaches
-    public static final ResourceKey<Biome> WARM_PREHISTORIC_BEACH = register("warm_prehistoric_beach");
-    public static final ResourceKey<Biome> PREHISTORIC_BEACH = register("prehistoric_beach");
-    public static final ResourceKey<Biome> COLD_PREHISTORIC_BEACH = register("cold_prehistoric_beach");
+    // Ice Age
+    public static final ResourceKey<Biome> GLACIER = FABiomes.create("glacier");
+    public static final ResourceKey<Biome> FROZEN_PLAINS = FABiomes.create("frozen_plains");
+    public static final ResourceKey<Biome> FROZEN_FOREST = FABiomes.create("frozen_forest");
+    public static final ResourceKey<Biome> COLD_PLAINS = FABiomes.create("cold_plains");
+    public static final ResourceKey<Biome> COLD_FOREST = FABiomes.create("cold_forest");
+    public static final ResourceKey<Biome> COLD_BEACH = FABiomes.create("cold_beach");
+    public static final ResourceKey<Biome> ICE_AGE_BEACH = FABiomes.create("ice_age_beach");
+    public static final ResourceKey<Biome> FROZEN_OCEAN = FABiomes.create("frozen_ocean");
+    public static final ResourceKey<Biome> DEEP_FROZEN_OCEAN = FABiomes.create("deep_frozen_ocean");
+    public static final ResourceKey<Biome> COLD_OCEAN = FABiomes.create("cold_ocean");
+    public static final ResourceKey<Biome> DEEP_COLD_OCEAN = FABiomes.create("deep_cold_ocean");
+    public static final ResourceKey<Biome> MAURITIUS = FABiomes.create("mauritius");
 
-    private static ResourceKey<Biome> register(String name) {
+    // Prehistory
+    public static final ResourceKey<Biome> PREHISTORIC_OCEAN = create("prehistoric_ocean");
+    public static final ResourceKey<Biome> DEEP_PREHISTORIC_OCEAN = create("deep_prehistoric_ocean");
+    public static final ResourceKey<Biome> PREHISTORIC_PLAINS = create("prehistoric_plains");
+    public static final ResourceKey<Biome> PREHISTORIC_FOREST = create("prehistoric_forest");
+    public static final ResourceKey<Biome> PREHISTORIC_DESERT = create("prehistoric_desert");
+    public static final ResourceKey<Biome> PREHISTORIC_JUNGLE = create("prehistoric_jungle");
+    public static final ResourceKey<Biome> PREHISTORIC_TAIGA = create("prehistoric_taiga");
+    public static final ResourceKey<Biome> PREHISTORIC_SWAMP = create("prehistoric_swamp");
+    // Based on Morrison Formation
+    public static final ResourceKey<Biome> ARID_PLAINS = FABiomes.create("arid_plains");
+    public static final ResourceKey<Biome> ARID_FOREST = FABiomes.create("arid_forest");
+    // Based On Hell Creek Formation
+    public static final ResourceKey<Biome> RAINY_FLOODPLAINS = FABiomes.create("rainy_floodplains");
+    // Based on Djadochta Formation
+    public static final ResourceKey<Biome> COLD_DESERT = create("cold_desert");
+    // Based on Flaming Cliffs
+    public static final ResourceKey<Biome> RED_DESERT = FABiomes.create("red_desert");
+    // Rivers
+    public static final ResourceKey<Biome> WARM_PREHISTORIC_RIVER = create("warm_prehistoric_river");
+    public static final ResourceKey<Biome> PREHISTORIC_RIVER = create("prehistoric_river");
+    public static final ResourceKey<Biome> COLD_PREHISTORIC_RIVER = create("cold_prehistoric_river");
+    // Beaches
+    public static final ResourceKey<Biome> WARM_PREHISTORIC_BEACH = create("warm_prehistoric_beach");
+    public static final ResourceKey<Biome> PREHISTORIC_BEACH = create("prehistoric_beach");
+    public static final ResourceKey<Biome> COLD_PREHISTORIC_BEACH = create("cold_prehistoric_beach");
+
+    private static ResourceKey<Biome> create(String name) {
         return ResourceKey.create(Registries.BIOME, FAUtils.resource(name));
     }
 
-    static int calculateSkyColor(float temperature) {
+    public static int calculateSkyColor(float temperature) {
         float color = temperature / 3.0F;
         color = Mth.clamp(color, -1.0F, 1.0F);
         return Mth.hsvToRgb(0.62222224F - color * 0.05F, 0.5F + color * 0.1F, 1.0F);
@@ -77,6 +93,14 @@ public final class FABiomes {
     }
 
     public static void globalPrehistoricGeneration(BiomeGenerationSettings.Builder biomeGenerationSettings) {
+        BiomeDefaultFeatures.addDefaultCarversAndLakes(biomeGenerationSettings);
+        BiomeDefaultFeatures.addDefaultCrystalFormations(biomeGenerationSettings);
+        BiomeDefaultFeatures.addDefaultUndergroundVariety(biomeGenerationSettings);
+        BiomeDefaultFeatures.addDefaultSprings(biomeGenerationSettings);
+        BiomeDefaultFeatures.addSurfaceFreezing(biomeGenerationSettings);
+    }
+
+    public static void globalIceAgeGeneration(BiomeGenerationSettings.Builder biomeGenerationSettings) {
         BiomeDefaultFeatures.addDefaultCarversAndLakes(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultCrystalFormations(biomeGenerationSettings);
         BiomeDefaultFeatures.addDefaultUndergroundVariety(biomeGenerationSettings);
@@ -241,6 +265,7 @@ public final class FABiomes {
         bootstrapContext.register(FABiomes.PREHISTORIC_JUNGLE, FABiomes.jungle(placedFeatures, configuredWorldCarvers));
         bootstrapContext.register(FABiomes.PREHISTORIC_TAIGA, FABiomes.taiga(placedFeatures, configuredWorldCarvers));
         bootstrapContext.register(FABiomes.PREHISTORIC_SWAMP, FABiomes.swamp(placedFeatures, configuredWorldCarvers));
+        IceAgeBiomes.bootstrap(bootstrapContext, placedFeatures, configuredWorldCarvers);
         PrehistoricBiomes.bootstrap(bootstrapContext, placedFeatures, configuredWorldCarvers);
     }
 }

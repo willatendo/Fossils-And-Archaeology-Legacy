@@ -1750,6 +1750,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAAnalyzerResultTags.RAW_BARYONYX_RESULTS, "Raw Baryonyx Results");
 
         this.add(FABiomeTags.HAS_ACADEMY, "Has Academy");
+        this.add(FABiomeTags.HAS_CHINESE_WARSHIP, "Has Chinese Warship");
         this.add(FABiomeTags.HAS_LAB, "Has Lab");
         this.add(FABiomeTags.HAS_MACHU_PICCHU, "Has Machu Picchu");
         this.add(FABiomeTags.HAS_MAYAN_TEMPLE, "Has Mayan Temple");

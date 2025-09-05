@@ -15,7 +15,6 @@ import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
@@ -49,11 +48,10 @@ import willatendo.fossilslegacy.server.gene.cosmetics.FASkinGenes;
 import willatendo.fossilslegacy.server.gene.cosmetics.texture.FACompositeTextureRuleSources;
 import willatendo.fossilslegacy.server.hologram.FAHologramTypes;
 import willatendo.fossilslegacy.server.item.FAItemReferences;
-import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.item.FAJukeboxSongs;
 import willatendo.fossilslegacy.server.item.FATrimMaterials;
 import willatendo.fossilslegacy.server.jewel_recovery.FAJewelRecoveries;
-import willatendo.fossilslegacy.server.level.prehistoric.PrehistoricNoiseGeneratorSettings;
+import willatendo.fossilslegacy.server.level.FANoiseGeneratorSettings;
 import willatendo.fossilslegacy.server.painting.FAPaintingVariants;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.stone_tablet_variant.FAStoneTabletVariants;
@@ -73,7 +71,7 @@ import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber(modid = FAUtils.ID)
 public class FossilsLegacyData {
-    private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder().add(Registries.BIOME, FABiomes::bootstrap).add(Registries.CONFIGURED_FEATURE, FAConfiguredFeatures::bootstrap).add(Registries.DAMAGE_TYPE, FADamageTypes::bootstrap).add(Registries.DIMENSION_TYPE, FADimensionTypes::bootstrap).add(Registries.JUKEBOX_SONG, FAJukeboxSongs::bootstrap).add(Registries.LEVEL_STEM, FALevelStems::bootstrap).add(Registries.MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST, FAMultiNoiseBiomeSourceParameterLists::bootstrap).add(Registries.NOISE_SETTINGS, PrehistoricNoiseGeneratorSettings::bootstrap).add(Registries.PAINTING_VARIANT, FAPaintingVariants::bootstrap).add(Registries.PLACED_FEATURE, FAPlacedFeatures::bootstrap).add(Registries.PROCESSOR_LIST, FAProcessorLists::bootstrap).add(Registries.STRUCTURE, FAStructures::bootstrap).add(Registries.STRUCTURE_SET, FAStructureSets::bootstrap).add(Registries.TEMPLATE_POOL, FAPools::bootstrap).add(Registries.TRIM_MATERIAL, FATrimMaterials::bootstrap).add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, FABiomeModifiers::bootstrap).add(FARegistries.ANALYZER_RESULT, FAAnalyzerResults::bootstrap).add(FARegistries.ANCIENT_AXE_BONUS, FAAncientAxeBonuses::bootstrap).add(FARegistries.COMPOSITE_TEXTURE_RULE_SOURCE, FACompositeTextureRuleSources::bootstrap).add(FARegistries.HOLOGRAM_TYPE, FAHologramTypes::bootstrap).add(FARegistries.MODEL_GENE, FAModelGenes::bootstrap).add(FARegistries.DECORATION_PLAQUE_TYPE, FADecorationPlaqueTypes::bootstrap).add(FARegistries.DINOPEDIA_ENTRY, FADinopediaEntries::bootstrap).add(FARegistries.DINOPEDIA_TYPE, FADinopediaTypes::bootstrap).add(FARegistries.FEEDER_FOOD, FAFeederFoods::bootstrap).add(FARegistries.FOSSIL_VARIANTS, FAFossilVariants::bootstrap).add(FARegistries.FUEL_ENTRY, FAFuelEntries::bootstrap).add(FARegistries.JEWEL_RECOVERY, FAJewelRecoveries::bootstrap).add(FARegistries.PATTERN_GENE, FAPatternGenes::bootstrap).add(FARegistries.SKIN_GENE, FASkinGenes::bootstrap).add(FARegistries.STONE_TABLET_VARIANT, FAStoneTabletVariants::bootstrap);
+    private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder().add(Registries.BIOME, FABiomes::bootstrap).add(Registries.CONFIGURED_FEATURE, FAConfiguredFeatures::bootstrap).add(Registries.DAMAGE_TYPE, FADamageTypes::bootstrap).add(Registries.DIMENSION_TYPE, FADimensionTypes::bootstrap).add(Registries.JUKEBOX_SONG, FAJukeboxSongs::bootstrap).add(Registries.LEVEL_STEM, FALevelStems::bootstrap).add(Registries.MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST, FAMultiNoiseBiomeSourceParameterLists::bootstrap).add(Registries.NOISE_SETTINGS, FANoiseGeneratorSettings::bootstrap).add(Registries.PAINTING_VARIANT, FAPaintingVariants::bootstrap).add(Registries.PLACED_FEATURE, FAPlacedFeatures::bootstrap).add(Registries.PROCESSOR_LIST, FAProcessorLists::bootstrap).add(Registries.STRUCTURE, FAStructures::bootstrap).add(Registries.STRUCTURE_SET, FAStructureSets::bootstrap).add(Registries.TEMPLATE_POOL, FAPools::bootstrap).add(Registries.TRIM_MATERIAL, FATrimMaterials::bootstrap).add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, FABiomeModifiers::bootstrap).add(FARegistries.ANALYZER_RESULT, FAAnalyzerResults::bootstrap).add(FARegistries.ANCIENT_AXE_BONUS, FAAncientAxeBonuses::bootstrap).add(FARegistries.COMPOSITE_TEXTURE_RULE_SOURCE, FACompositeTextureRuleSources::bootstrap).add(FARegistries.HOLOGRAM_TYPE, FAHologramTypes::bootstrap).add(FARegistries.MODEL_GENE, FAModelGenes::bootstrap).add(FARegistries.DECORATION_PLAQUE_TYPE, FADecorationPlaqueTypes::bootstrap).add(FARegistries.DINOPEDIA_ENTRY, FADinopediaEntries::bootstrap).add(FARegistries.DINOPEDIA_TYPE, FADinopediaTypes::bootstrap).add(FARegistries.FEEDER_FOOD, FAFeederFoods::bootstrap).add(FARegistries.FOSSIL_VARIANTS, FAFossilVariants::bootstrap).add(FARegistries.FUEL_ENTRY, FAFuelEntries::bootstrap).add(FARegistries.JEWEL_RECOVERY, FAJewelRecoveries::bootstrap).add(FARegistries.PATTERN_GENE, FAPatternGenes::bootstrap).add(FARegistries.SKIN_GENE, FASkinGenes::bootstrap).add(FARegistries.STONE_TABLET_VARIANT, FAStoneTabletVariants::bootstrap);
 
     @SubscribeEvent
     public static void gatherDataEvent(GatherDataEvent.Client event) {

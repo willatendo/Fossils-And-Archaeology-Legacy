@@ -12,6 +12,7 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FAStructureSets {
     public static final ResourceKey<StructureSet> ACADEMY = FAStructureSets.create("academy");
+    public static final ResourceKey<StructureSet> CHINESE_WARSHIP = FAStructureSets.create("chinese_warship");
     public static final ResourceKey<StructureSet> LAB = FAStructureSets.create("lab");
     public static final ResourceKey<StructureSet> MACHU_PICCHU = FAStructureSets.create("machu_picchu");
     public static final ResourceKey<StructureSet> MAYAN_CITY = FAStructureSets.create("mayan_city");
@@ -29,6 +30,7 @@ public final class FAStructureSets {
     public static void bootstrap(BootstrapContext<StructureSet> bootstrapContext) {
         HolderGetter<Structure> structures = bootstrapContext.lookup(Registries.STRUCTURE);
         bootstrapContext.register(ACADEMY, new StructureSet(structures.getOrThrow(FAStructures.ACADEMY), new RandomSpreadStructurePlacement(32, 8, RandomSpreadType.LINEAR, 1476272410)));
+        bootstrapContext.register(CHINESE_WARSHIP, new StructureSet(structures.getOrThrow(FAStructures.CHINESE_WARSHIP), new RandomSpreadStructurePlacement(32, 8, RandomSpreadType.LINEAR, 1476272420)));
         bootstrapContext.register(LAB, new StructureSet(structures.getOrThrow(FAStructures.LAB), new RandomSpreadStructurePlacement(64, 16, RandomSpreadType.LINEAR, 1476272417)));
         bootstrapContext.register(MACHU_PICCHU, new StructureSet(structures.getOrThrow(FAStructures.MACHU_PICCHU), new RandomSpreadStructurePlacement(32, 8, RandomSpreadType.LINEAR, 1476272416)));
         bootstrapContext.register(MAYAN_CITY, new StructureSet(structures.getOrThrow(FAStructures.MAYAN_CITY), new RandomSpreadStructurePlacement(32, 8, RandomSpreadType.LINEAR, 1476272415)));

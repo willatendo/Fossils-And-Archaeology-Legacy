@@ -32,6 +32,7 @@ public class FAPools {
 
     public static void bootstrap(BootstrapContext<StructureTemplatePool> bootstrapContext) {
         AcademyPools.bootstrap(bootstrapContext);
+        ChineseWarshipPools.bootstrap(bootstrapContext);
         LabPools.bootstrap(bootstrapContext);
         MachuPicchuPools.bootstrap(bootstrapContext);
         MayanCityPools.bootstrap(bootstrapContext);

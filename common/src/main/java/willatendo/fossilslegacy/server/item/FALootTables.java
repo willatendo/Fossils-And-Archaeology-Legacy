@@ -13,12 +13,13 @@ import java.util.Map;
 public final class FALootTables {
     public static final ResourceKey<LootTable> ACADEMY_LOOT = FALootTables.create("chests/academy_loot");
     public static final ResourceKey<LootTable> ACADEMY_DISC = FALootTables.create("chests/academy_disc");
+    public static final ResourceKey<LootTable> CANNON_LOOT = FALootTables.create("chests/cannon");
+    public static final ResourceKey<LootTable> CHINESE_WARSHIP_LOOT = FALootTables.create("chests/chinese_loot");
     public static final ResourceKey<LootTable> LAB_DNA_LOOT = FALootTables.create("chests/lab_loot/dna");
     public static final ResourceKey<LootTable> LAB_FOSSIL_LOOT = FALootTables.create("chests/lab_loot/fossil");
     public static final ResourceKey<LootTable> LAB_FAILED_EXPERIMENT_LOOT = FALootTables.create("chests/lab_loot/failed_experiment");
     public static final ResourceKey<LootTable> MAYAN_LOOT = FALootTables.create("chests/mayan_loot");
     public static final ResourceKey<LootTable> MAYAN_TREASURE = FALootTables.create("chests/mayan_treasure");
-    public static final ResourceKey<LootTable> PIRATE_SHIP_CANNON = FALootTables.create("chests/cannon");
     public static final ResourceKey<LootTable> PIRATE_SHIP_LOOT = FALootTables.create("chests/pirate_loot");
     public static final ResourceKey<LootTable> WEAPON_SHOP_DECOY = FALootTables.create("chests/weapon_shop_decoy");
     public static final ResourceKey<LootTable> WEAPON_SHOP_LOOT = FALootTables.create("chests/weapon_shop_loot");

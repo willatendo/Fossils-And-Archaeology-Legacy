@@ -1,4 +1,4 @@
-package willatendo.fossilslegacy.server.level.prehistoric;
+package willatendo.fossilslegacy.server.level;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.world.level.block.Block;
@@ -8,7 +8,7 @@ import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import willatendo.fossilslegacy.server.biome.FABiomes;
 
-public class PrehistoricSurfaceRules {
+public final class PrehistoricSurfaceRules {
     private static final SurfaceRules.RuleSource BEDROCK = PrehistoricSurfaceRules.makeStateRule(Blocks.BEDROCK);
     private static final SurfaceRules.RuleSource STONE = PrehistoricSurfaceRules.makeStateRule(Blocks.STONE);
     private static final SurfaceRules.RuleSource DEEPSLATE = PrehistoricSurfaceRules.makeStateRule(Blocks.DEEPSLATE);

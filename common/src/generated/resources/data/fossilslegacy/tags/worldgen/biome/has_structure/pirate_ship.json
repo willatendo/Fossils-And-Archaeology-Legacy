@@ -6,6 +6,8 @@
     "minecraft:deep_lukewarm_ocean",
     "minecraft:warm_ocean",
     "minecraft:cold_ocean",
-    "minecraft:deep_cold_ocean"
+    "minecraft:deep_cold_ocean",
+    "minecraft:beach",
+    "minecraft:stony_shore"
   ]
 }
