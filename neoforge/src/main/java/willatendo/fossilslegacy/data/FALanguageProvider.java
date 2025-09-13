@@ -12,14 +12,14 @@ import willatendo.fossilslegacy.server.entity.util.DinoSituation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.SpeakerType;
 import willatendo.fossilslegacy.server.fossil_variant.FAFossilVariants;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
-import willatendo.fossilslegacy.server.gene.attributes.FAGenes;
 import willatendo.fossilslegacy.server.gene.attributes.AttributeGene;
+import willatendo.fossilslegacy.server.gene.attributes.FAGenes;
+import willatendo.fossilslegacy.server.gene.cosmetics.FAModelGenes;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.item.FACreativeModeTabs;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
 import willatendo.fossilslegacy.server.level.FAGameRules;
-import willatendo.fossilslegacy.server.gene.cosmetics.FAModelGenes;
-import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.registry.FABlockRegistry;
 import willatendo.fossilslegacy.server.stats.FAStats;
 import willatendo.fossilslegacy.server.tags.*;
@@ -166,6 +166,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.RELIC_IN_STONE.get(), "Relic in Stone");
         this.add(FABlocks.RELIC_IN_DEEPSLATE.get(), "Relic in Deepslate");
         this.add(FABlocks.LEECH_IN_ICE.get(), "Leech in Ice");
+        this.add(FABlocks.AMBER_BLOCK.get(), "Block of Amber");
         this.add(FABlocks.SKULL_BLOCK.get());
         this.add(FABlocks.SKULL_LANTERN_BLOCK.get());
         this.add(FABlocks.DNA_ANALYZER.get(), "DNA Analyzer");
@@ -241,9 +242,6 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("block.fossilslegacy.small_cage.desc", "In cage: %s");
         this.add("block.fossilslegacy.cage.locked", "Cage is locked!");
         this.add("block.fossilslegacy.cage.incorrect_key", "Key does not fit!");
-        this.add(FABlocks.STRAIGHT_TRACK.get());
-        this.add(FABlocks.CORNER_TRACK.get());
-        this.add(FABlocks.RAMP_TRACK.get());
         this.add(FABlocks.CYCAD_HEAD.get());
         this.add(FABlocks.CYCAD_LOG.get());
         this.add(FABlocks.COOKSONIA.get());
@@ -380,6 +378,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("container.fossilslegacy.analyzer", "Analyzer");
         this.add("container.fossilslegacy.archaeology_workbench", "Archaeology Workbench");
         this.add("container.fossilslegacy.cultivator", "Cultivator");
+        this.add("container.fossilslegacy.shattered_cultivator", "Shattered Cultivator");
         this.add("container.fossilslegacy.dna_coder", "DNA Coder");
         this.add("container.fossilslegacy.dna_hybridizer", "DNA Hybridizer");
         this.add("container.fossilslegacy.dna_recombinator", "DNA Recombinator");
@@ -650,12 +649,15 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.addFossilVariant(FAFossilVariants.VELOCIRAPTOR, "Velociraptor");
 
         // Game Rules
-        this.add(FAGameRules.RULE_DOANIMALBLOCKBREAKING, "Do animals break blocks");
-        this.add(FAGameRules.RULE_DOANIMALHUNGER, "Do animals get hungry");
-        this.add(FAGameRules.RULE_DOANIMALGROWTH, "Do animals grow");
-        this.add(FAGameRules.RULE_DOLOWFEEDERMESSAGE, "Do feeders message the player when low");
-        this.add(FAGameRules.RULE_LOWFEEDERMESSAGEQUORUM, "The quorum required for a feeder to message the player it is low");
-        this.add(FAGameRules.RULE_DOUNTAMEANIMALMESSAGES, "Do animals send messages to all players when untame");
+        this.add(FAGameRules.RULE_DO_ANIMAL_BLOCK_BREAKING, "Do animals break blocks");
+        this.add(FAGameRules.RULE_DO_ANIMAL_HUNGER, "Do animals get hungry");
+        this.add(FAGameRules.RULE_DO_ANIMAL_GROWTH, "Do animals grow");
+        this.add(FAGameRules.RULE_DO_LOW_FEEDER_MESSAGE, "Do feeders message the player when low");
+        this.add(FAGameRules.RULE_LOW_FEEDER_MESSAGE_QUORUM, "The quorum required for a feeder to message the player it is low");
+        this.add(FAGameRules.RULE_DO_UNTAME_ANIMAL_MESSAGES, "Do animals send messages to all players when untame");
+        this.add(FAGameRules.RULE_DO_LIMIT_NOTIFICATION_DISTANCE, "Do notifications have a distance limit");
+        this.add(FAGameRules.RULE_NOTIFICATION_DISTANCE, "The notification distance if there requires one");
+        this.add(FAGameRules.RULE_TAR_SOURCE_CONVERSION, "When flowing tar is surrounded on two sides by tar sources it converts into a source.");
 
         // Genes
         this.add(FAGenes.ARMOR.get(), "Armor");

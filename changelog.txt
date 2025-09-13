@@ -171,7 +171,9 @@
 - Nautilus Shell Now Called Cenoceras Shell
 - Sio-Chiu-Le Now Called Cenoceras Sio-Chiu-Le
 - Similar-Sized Mammals Can Now Only Give Birth To Other Similar-Sized Mammals
-- Small Pregnancies:
+- Cultivators Can Now Be Used To Color Beacon Beams
+- When Cultivators Shatter They Now Send Off Vibrations (Frequency 15)
+- When Cultivators Shatter They Now Break into Shattered Cultivators
 - Added Archaeology Category For Analyzer Recipe Book
 - Added Palaeontology Category For Analyzer Recipe Book
 - Added Mosasaurus Skeleton
@@ -488,6 +490,25 @@
 - Added Pirate Ship
 - Added Pirate Captain
 - Added Captain's Hat
+- Added Viking Ship
+- Added Chinese Warship
+- Added Block of Amber
+- Added Herrasaurus
+- Added Indominus Rex
+- Added Indoraptor
+- Added Scorpius Rex
+- Added Spinoceratops
+- Added Ankylodocus
+- Added Stegoceratops
+- Added Spinoraptor
+- Added Distortus Rex
+- Added Mutadon
+- Added Geneticist Villager
+- Added Vehicle Workshop
+- Added Large Cage
+- Added Huge Cage
+- Added doLimitNotificationDistance Game Rule
+- Added notificationDistance Game Rule
 27/2/2024 1.4.9
 - Fixed Tooth Dagger Not Shearing All Shearables
 - Fixed Mayan Vase Not Wobbling

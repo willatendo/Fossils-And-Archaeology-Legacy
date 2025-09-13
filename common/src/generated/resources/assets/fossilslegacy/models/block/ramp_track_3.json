@@ -1,7 +1,0 @@
-{
-  "parent": "fossilslegacy:block/template_rail_ramp_3",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "rail": "fossilslegacy:block/straight_track"
-  }
-}

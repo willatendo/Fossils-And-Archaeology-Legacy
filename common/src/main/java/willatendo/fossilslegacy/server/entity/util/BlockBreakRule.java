@@ -28,7 +28,7 @@ public class BlockBreakRule {
 
     public boolean canUse() {
         if (this.level instanceof ServerLevel serverLevel) {
-            if (serverLevel.getGameRules().getBoolean(FAGameRules.RULE_DOANIMALBLOCKBREAKING) && this.animal instanceof GrowingEntity growningEntity) {
+            if (serverLevel.getGameRules().getBoolean(FAGameRules.RULE_DO_ANIMAL_BLOCK_BREAKING) && this.animal instanceof GrowingEntity growningEntity) {
                 if (growningEntity.getGrowthStage() >= this.minimumAge) {
                     if (this.animal instanceof TameAccessor tameAccessor) {
                         return !tameAccessor.isTame();

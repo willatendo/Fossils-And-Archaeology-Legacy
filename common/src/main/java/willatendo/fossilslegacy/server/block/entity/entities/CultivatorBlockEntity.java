@@ -110,10 +110,10 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
     public final DyeColor dyeColor;
 
     public CultivatorBlockEntity(BlockPos blockPos, BlockState blockState) {
-        this(DyeColor.RED, blockPos, blockState);
+        this(blockPos, blockState, ((CultivatorBlock) blockState.getBlock()).getColor());
     }
 
-    public CultivatorBlockEntity(DyeColor dyeColor, BlockPos blockPos, BlockState blockState) {
+    public CultivatorBlockEntity(BlockPos blockPos, BlockState blockState, DyeColor dyeColor) {
         super(FABlockEntityTypes.CULTIVATOR.get(), blockPos, blockState);
         this.dyeColor = dyeColor;
     }
@@ -222,7 +222,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
                 ++cultivatorBlockEntity.cultivationProgress;
                 if (cultivatorBlockEntity.cultivationProgress == cultivatorBlockEntity.cultivationTotalTime) {
                     cultivatorBlockEntity.cultivationProgress = 0;
-                    cultivatorBlockEntity.cultivationTotalTime = getTotalCultivationTime(serverLevel, cultivatorBlockEntity);
+                    cultivatorBlockEntity.cultivationTotalTime = CultivatorBlockEntity.getTotalCultivationTime(serverLevel, cultivatorBlockEntity);
                     if (cultivatorBlockEntity.cultivate(serverLevel.registryAccess(), recipe, cultivatorBlockEntity.itemStacks, maxStackSize)) {
                         cultivatorBlockEntity.setRecipeUsed(recipe);
                     }
@@ -236,7 +236,7 @@ public class CultivatorBlockEntity extends BaseContainerBlockEntity implements W
             cultivatorBlockEntity.cultivationProgress = Mth.clamp(cultivatorBlockEntity.cultivationProgress - 2, 0, cultivatorBlockEntity.cultivationTotalTime);
         }
 
-        if (cultivatorBlockEntity.onTime == (cultivatorBlockEntity.getTotalCultivationTime(serverLevel, cultivatorBlockEntity) / 2) + 1) {
+        if (cultivatorBlockEntity.onTime == (CultivatorBlockEntity.getTotalCultivationTime(serverLevel, cultivatorBlockEntity) / 2) + 1) {
             if (!hasInput) {
                 if (cultivatorBlockEntity.level.getRandom().nextInt(100) <= 30) {
                     CultivatorBlock.shatter(serverLevel, blockPos, cultivatorBlockEntity);

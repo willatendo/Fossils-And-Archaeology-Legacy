@@ -45,6 +45,7 @@ public final class FAItems {
     public static final SimpleHolder<BlockItem> RELIC_IN_DEEPSLATE = ITEMS.registerBlock(FABlocks.RELIC_IN_DEEPSLATE);
     public static final SimpleHolder<Item> FROZEN_LEECH = ITEMS.registerItem("frozen_leech", properties -> new BlockItem(FABlocks.FROZEN_LEECH.get(), properties), () -> new Item.Properties().useItemDescriptionPrefix());
     public static final SimpleHolder<BlockItem> LEECH_IN_ICE = ITEMS.registerBlock(FABlocks.LEECH_IN_ICE);
+    public static final SimpleHolder<BlockItem> AMBER_BLOCK = ITEMS.registerBlock(FABlocks.AMBER_BLOCK);
     public static final SimpleHolder<BlockItem> SKULL_BLOCK = ITEMS.registerBlock(FABlocks.SKULL_BLOCK, () -> new Item.Properties().component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD).setSwappable(false).setCameraOverlay(FAUtils.resource("misc/skullblur")).build()));
     public static final SimpleHolder<BlockItem> SKULL_LANTERN_BLOCK = ITEMS.registerBlock(FABlocks.SKULL_LANTERN_BLOCK);
     public static final SimpleHolder<BlockItem> DNA_ANALYZER = ITEMS.registerBlock(FABlocks.DNA_ANALYZER);
@@ -122,9 +123,6 @@ public final class FAItems {
     public static final SimpleHolder<BlockItem> BLACK_DECORATION_POST = ITEMS.registerBlock(FABlocks.BLACK_DECORATION_POST);
     public static final SimpleHolder<CageBlockItem> SMALL_CAGE = ITEMS.registerBlock(FABlocks.SMALL_CAGE, (block, properties) -> new CageBlockItem(1, 1, block, properties), () -> new Item.Properties().stacksTo(1));
     public static final SimpleHolder<CageBlockItem> MEDIUM_CAGE = ITEMS.registerBlock(FABlocks.MEDIUM_CAGE, (block, properties) -> new CageBlockItem(2, 2, block, properties), () -> new Item.Properties().stacksTo(1));
-    public static final SimpleHolder<BlockItem> STRAIGHT_TRACK = ITEMS.registerBlock(FABlocks.STRAIGHT_TRACK);
-    public static final SimpleHolder<BlockItem> CORNER_TRACK = ITEMS.registerBlock(FABlocks.CORNER_TRACK);
-    public static final SimpleHolder<BlockItem> RAMP_TRACK = ITEMS.registerBlock(FABlocks.RAMP_TRACK);
     public static final SimpleHolder<BlockItem> JURASSIC_FERN = ITEMS.registerBlock(FABlocks.JURASSIC_FERN);
     public static final SimpleHolder<BlockItem> SHORT_HORSETAIL = ITEMS.registerBlock(FABlocks.SHORT_HORSETAIL);
     public static final SimpleHolder<DoubleHighBlockItem> TALL_HORSETAIL = ITEMS.registerBlock(FABlocks.TALL_HORSETAIL, DoubleHighBlockItem::new);

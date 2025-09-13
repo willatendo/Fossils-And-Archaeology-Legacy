@@ -3,7 +3,12 @@ package willatendo.fossilslegacy.network.clientbound;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -50,5 +55,9 @@ public final class ClientboundPackets {
         Holder<FossilVariant> fossilVariant = fossilVariantRegistry.get(ResourceLocation.parse(fossilVariantId)).get();
         Minecraft minecraft = Minecraft.getInstance();
         minecraft.setScreen(new FossilScreen(id, fossilRotations, fossilPositions, fossilVariant, FAUtils.translation("entity", "fossil.screen")));
+    }
+
+    public static void clientboundPlaySoundPacket(ClientboundPlaySoundPacket clientboundPlaySoundPacket, Player player) {
+        player.level().playLocalSound(clientboundPlaySoundPacket.blockPos(), BuiltInRegistries.SOUND_EVENT.getOrThrow(clientboundPlaySoundPacket.soundEvent()).value(), SoundSource.valueOf(clientboundPlaySoundPacket.category()), clientboundPlaySoundPacket.volume(), clientboundPlaySoundPacket.pitch(), clientboundPlaySoundPacket.distanceDelay());
     }
 }

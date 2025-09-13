@@ -4,6 +4,7 @@ import willatendo.fossilslegacy.client.FARecipeBookCategories;
 import willatendo.fossilslegacy.server.biome.FABiomeSources;
 import willatendo.fossilslegacy.server.block.FABlockTypes;
 import willatendo.fossilslegacy.server.block.FABlocks;
+import willatendo.fossilslegacy.server.block.FAGameEvents;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.command_type.FACommandTypes;
 import willatendo.fossilslegacy.server.criteria.FACriteriaTriggers;
@@ -63,6 +64,7 @@ public final class FossilsLegacyMod {
         simpleRegistryRegister.register(FAFoliagePlacerTypes.FOLIAGE_PLACER_TYPES);
         simpleRegistryRegister.register(FAFluids.FLUIDS);
         simpleRegistryRegister.register(FABlocks.BLOCKS.blockRegistry());
+        simpleRegistryRegister.register(FAGameEvents.GAME_EVENTS);
         simpleRegistryRegister.register(FABlockTypes.BLOCK_TYPES);
         simpleRegistryRegister.register(FAFeatures.FEATURES);
         simpleRegistryRegister.register(FABlockEntityTypes.BLOCK_ENTITY_TYPES);

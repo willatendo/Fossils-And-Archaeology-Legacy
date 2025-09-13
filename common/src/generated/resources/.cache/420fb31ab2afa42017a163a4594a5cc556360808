@@ -1,4 +1,5 @@
-// 1.21.4	2025-08-28T14:08:28.5528872	F/A Recipes
+// 1.21.4	2025-09-05T18:59:18.2620183	F/A Recipes
+27ef06e7d78ee145bf6e533a237109a0f7cfe0ba data/fossilslegacy/advancement/recipes/building_blocks/amber_block.json
 1338707fdaed8d1fba4efb30f42c8d461e296aab data/fossilslegacy/advancement/recipes/building_blocks/araucaria_planks.json
 5db4e734c77296e26a3f8f52f87e7bd6555aac60 data/fossilslegacy/advancement/recipes/building_blocks/araucaria_slab.json
 c560c2290e30f84997e810aafa8a5d057b03dd8c data/fossilslegacy/advancement/recipes/building_blocks/araucaria_stairs.json
@@ -525,6 +526,7 @@ c2aa0d33bbbf5830f95bc3ba8d59f10061160ba0 data/fossilslegacy/advancement/recipes/
 bd1866a0ec9c493d0a5c70d280ed3435d3f41bb5 data/fossilslegacy/advancement/recipes/transportation/sigillaria_chest_boat.json
 ae346345657f009af7cf933fdeb58eca76c49cd5 data/fossilslegacy/advancement/recipes/transportation/wollemia_boat.json
 4d3eeea8d177aaf3b3c4482d98837b8b91af0964 data/fossilslegacy/advancement/recipes/transportation/wollemia_chest_boat.json
+0dca893d6a601ef6d538f895401c4ef43bf44701 data/fossilslegacy/recipe/amber_block.json
 536a332800f5f1a34cffa748118febc2ae97898f data/fossilslegacy/recipe/ancient_axe.json
 49ec467c0c7d06164bc96ad56deb3b6beb000620 data/fossilslegacy/recipe/ancient_boots.json
 27f2a2a97778d98dde0fb9b0cb4cc69370282cde data/fossilslegacy/recipe/ancient_chestplate.json

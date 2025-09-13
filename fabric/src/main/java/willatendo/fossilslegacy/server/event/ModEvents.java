@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
+import net.fabricmc.fabric.api.registry.SculkSensorFrequencyRegistry;
 import net.minecraft.client.gui.screens.recipebook.RecipeCollection;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.MobCategory;
@@ -16,6 +17,7 @@ import willatendo.fossilslegacy.client.FASearchRecipeBookCategory;
 import willatendo.fossilslegacy.network.NetworkUtils;
 import willatendo.fossilslegacy.network.ServerboundPacketRegistry;
 import willatendo.fossilslegacy.network.clientbound.ClientboundRecipeContentPacket;
+import willatendo.fossilslegacy.server.block.FAGameEvents;
 import willatendo.fossilslegacy.server.dimension.DayCycleLevelData;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.feature.FAPlacedFeatures;
@@ -37,6 +39,7 @@ public class ModEvents {
         BasicEvents.commonSetup();
 
         FuelRegistryEvents.BUILD.register((builder, context) -> builder.add(FAItems.TAR_BUCKET.get(), 20000));
+        SculkSensorFrequencyRegistry.register(FAGameEvents.CULTIVATOR_SHATTER.getKey(), 15);
 
         ServerboundPacketRegistry.serverboundPacketSetup(new FabricServerboundPacketRegister());
         FabricCreativeModeTabModification fabricCreativeModeTabModification = new FabricCreativeModeTabModification();

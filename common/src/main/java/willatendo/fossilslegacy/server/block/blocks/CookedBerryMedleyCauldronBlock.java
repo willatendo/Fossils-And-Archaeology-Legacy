@@ -5,7 +5,7 @@ import net.minecraft.world.level.block.AbstractCauldronBlock;
 import net.minecraft.world.level.block.Block;
 import willatendo.fossilslegacy.server.block.cauldron.FACauldronInteraction;
 
-public class CookedBerryMedleyCauldronBlock extends RawSoupCauldronBlock {
+public class CookedBerryMedleyCauldronBlock extends SoupCauldronBlock {
     public static final MapCodec<CookedBerryMedleyCauldronBlock> CODEC = Block.simpleCodec(CookedBerryMedleyCauldronBlock::new);
 
     public CookedBerryMedleyCauldronBlock(Properties properties) {

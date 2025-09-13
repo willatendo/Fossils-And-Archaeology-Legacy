@@ -24,20 +24,6 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 public final class FABiomes {
     public static final Music NORMAL_MUSIC = null;
 
-    // Ice Age
-    public static final ResourceKey<Biome> GLACIER = FABiomes.create("glacier");
-    public static final ResourceKey<Biome> FROZEN_PLAINS = FABiomes.create("frozen_plains");
-    public static final ResourceKey<Biome> FROZEN_FOREST = FABiomes.create("frozen_forest");
-    public static final ResourceKey<Biome> COLD_PLAINS = FABiomes.create("cold_plains");
-    public static final ResourceKey<Biome> COLD_FOREST = FABiomes.create("cold_forest");
-    public static final ResourceKey<Biome> COLD_BEACH = FABiomes.create("cold_beach");
-    public static final ResourceKey<Biome> ICE_AGE_BEACH = FABiomes.create("ice_age_beach");
-    public static final ResourceKey<Biome> FROZEN_OCEAN = FABiomes.create("frozen_ocean");
-    public static final ResourceKey<Biome> DEEP_FROZEN_OCEAN = FABiomes.create("deep_frozen_ocean");
-    public static final ResourceKey<Biome> COLD_OCEAN = FABiomes.create("cold_ocean");
-    public static final ResourceKey<Biome> DEEP_COLD_OCEAN = FABiomes.create("deep_cold_ocean");
-    public static final ResourceKey<Biome> MAURITIUS = FABiomes.create("mauritius");
-
     // Prehistory
     public static final ResourceKey<Biome> PREHISTORIC_OCEAN = create("prehistoric_ocean");
     public static final ResourceKey<Biome> DEEP_PREHISTORIC_OCEAN = create("deep_prehistoric_ocean");
@@ -65,7 +51,7 @@ public final class FABiomes {
     public static final ResourceKey<Biome> PREHISTORIC_BEACH = create("prehistoric_beach");
     public static final ResourceKey<Biome> COLD_PREHISTORIC_BEACH = create("cold_prehistoric_beach");
 
-    private static ResourceKey<Biome> create(String name) {
+    public static ResourceKey<Biome> create(String name) {
         return ResourceKey.create(Registries.BIOME, FAUtils.resource(name));
     }
 

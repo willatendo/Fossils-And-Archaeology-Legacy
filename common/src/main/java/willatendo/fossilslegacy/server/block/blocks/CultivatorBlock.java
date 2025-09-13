@@ -3,8 +3,14 @@ package willatendo.fossilslegacy.server.block.blocks;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.protocol.game.ClientboundSoundPacket;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
@@ -15,8 +21,10 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BeaconBeamBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -25,17 +33,25 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.ticks.ScheduledTick;
+import willatendo.fossilslegacy.network.NetworkUtils;
+import willatendo.fossilslegacy.network.clientbound.ClientboundPlaySoundPacket;
+import willatendo.fossilslegacy.server.block.FAGameEvents;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.block.entity.entities.CultivatorBlockEntity;
+import willatendo.fossilslegacy.server.block.entity.entities.ShatteredCultivatorBlockEntity;
 import willatendo.fossilslegacy.server.block.properties.FABlockStateProperties;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
+import willatendo.fossilslegacy.server.level.FAGameRules;
 import willatendo.fossilslegacy.server.stats.FAStats;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
-public class CultivatorBlock extends Block implements EntityBlock {
-    public static final MapCodec<CultivatorBlock> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(DyeColor.CODEC.fieldOf("color").forGetter(CultivatorBlock::getDyeColor), Block.propertiesCodec()).apply(instance, CultivatorBlock::new));
+public class CultivatorBlock extends Block implements EntityBlock, BeaconBeamBlock {
+    public static final MapCodec<CultivatorBlock> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(DyeColor.CODEC.fieldOf("color").forGetter(CultivatorBlock::getColor), Block.propertiesCodec()).apply(instance, CultivatorBlock::new));
     public static final BooleanProperty ACTIVE = FABlockStateProperties.ACTIVE;
     private final DyeColor dyeColor;
 
@@ -45,23 +61,36 @@ public class CultivatorBlock extends Block implements EntityBlock {
         this.registerDefaultState(this.getStateDefinition().any().setValue(ACTIVE, false));
     }
 
-    public DyeColor getDyeColor() {
+    @Override
+    public DyeColor getColor() {
         return this.dyeColor;
     }
 
     public static void shatter(Level level, BlockPos blockPos, CultivatorBlockEntity cultivatorBlockEntity) {
-        level.setBlock(blockPos, ShatteredCultivatorBlock.DYE_TO_BLOCK.get(cultivatorBlockEntity.dyeColor).defaultBlockState().setValue(ShatteredCultivatorBlock.WATERLOGGED, true), 3);
-        level.scheduleTick(blockPos, level.getBlockState(blockPos).getBlock(), 1);
+        ItemStack[] items = new ItemStack[]{cultivatorBlockEntity.getItem(0), cultivatorBlockEntity.getItem(1), cultivatorBlockEntity.getItem(2)};
         level.removeBlockEntity(blockPos);
-        level.playLocalSound(blockPos, SoundEvents.GLASS_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F, false);
-
-        for (Player player : level.players()) {
+        BlockState blockState = ShatteredCultivatorBlock.DYE_TO_BLOCK.get(cultivatorBlockEntity.dyeColor).defaultBlockState().setValue(ShatteredCultivatorBlock.WATERLOGGED, true);
+        level.setBlock(blockPos, blockState, 3);
+        for (Player player : level.getEntitiesOfClass(Player.class, new AABB(blockPos).inflate(30.0F), player -> true)) {
             if (player instanceof ServerPlayer serverPlayer) {
-                serverPlayer.sendSystemMessage(FAUtils.translation("itemStack", "cultivator.shatter"));
+                NetworkUtils.sendToClient(serverPlayer, new ClientboundPlaySoundPacket(blockPos, BuiltInRegistries.SOUND_EVENT.getResourceKey(SoundEvents.GLASS_BREAK).get(), "BLOCKS", 1.0F, 1.0F, false));
+            }
+        }
+        level.gameEvent(FAGameEvents.CULTIVATOR_SHATTER, blockPos, GameEvent.Context.of(blockState));
+
+        if (level instanceof ServerLevel serverLevel) {
+            for (Player player : (serverLevel.getGameRules().getBoolean(FAGameRules.RULE_DO_LIMIT_NOTIFICATION_DISTANCE) ? serverLevel.getEntitiesOfClass(Player.class, new AABB(blockPos).inflate(serverLevel.getGameRules().getInt(FAGameRules.RULE_NOTIFICATION_DISTANCE))) : serverLevel.players())) {
+                if (player instanceof ServerPlayer serverPlayer) {
+                    serverPlayer.sendSystemMessage(FAUtils.translation("block", "cultivator.shatter"));
+                }
             }
         }
 
-        Containers.dropContents(level, blockPos, cultivatorBlockEntity);
+        if (level.getBlockEntity(blockPos) instanceof ShatteredCultivatorBlockEntity shatteredCultivatorBlockEntity) {
+            shatteredCultivatorBlockEntity.setItem(0, items[0]);
+            shatteredCultivatorBlockEntity.setItem(1, items[1]);
+            shatteredCultivatorBlockEntity.setItem(2, items[2]);
+        }
 
         int chance = level.getRandom().nextInt(100);
         LivingEntity monster = null;
@@ -138,7 +167,7 @@ public class CultivatorBlock extends Block implements EntityBlock {
 
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return new CultivatorBlockEntity(this.dyeColor, blockPos, blockState);
+        return new CultivatorBlockEntity(blockPos, blockState, this.dyeColor);
     }
 
     @Override

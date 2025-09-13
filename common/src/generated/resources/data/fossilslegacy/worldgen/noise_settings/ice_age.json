@@ -444,7 +444,7 @@
                               "if_true": {
                                 "type": "minecraft:biome",
                                 "biome_is": [
-                                  "fossilslegacy:ice_age_beach"
+                                  "fossilslegacy:ice_age/beach"
                                 ]
                               },
                               "then_run": {
@@ -473,21 +473,6 @@
                                     }
                                   }
                                 ]
-                              }
-                            },
-                            {
-                              "type": "minecraft:condition",
-                              "if_true": {
-                                "type": "minecraft:biome",
-                                "biome_is": [
-                                  "fossilslegacy:prehistoric_beach"
-                                ]
-                              },
-                              "then_run": {
-                                "type": "minecraft:block",
-                                "result_state": {
-                                  "Name": "minecraft:coarse_dirt"
-                                }
                               }
                             }
                           ]
@@ -558,7 +543,7 @@
                               "if_true": {
                                 "type": "minecraft:biome",
                                 "biome_is": [
-                                  "fossilslegacy:ice_age_beach"
+                                  "fossilslegacy:ice_age/beach"
                                 ]
                               },
                               "then_run": {
@@ -587,21 +572,6 @@
                                     }
                                   }
                                 ]
-                              }
-                            },
-                            {
-                              "type": "minecraft:condition",
-                              "if_true": {
-                                "type": "minecraft:biome",
-                                "biome_is": [
-                                  "fossilslegacy:prehistoric_beach"
-                                ]
-                              },
-                              "then_run": {
-                                "type": "minecraft:block",
-                                "result_state": {
-                                  "Name": "minecraft:coarse_dirt"
-                                }
                               }
                             }
                           ]

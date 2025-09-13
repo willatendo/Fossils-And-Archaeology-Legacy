@@ -1,6 +1,6 @@
 {
   "parent": "fossilslegacy:block/template_shattered_cultivator",
-  "render_type": "minecraft:translucent",
+  "render_type": "minecraft:cutout",
   "textures": {
     "side": "fossilslegacy:block/lime_shattered_cultivator_side"
   }

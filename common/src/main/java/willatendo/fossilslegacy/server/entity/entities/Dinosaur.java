@@ -230,7 +230,7 @@ public abstract class Dinosaur extends Animal implements ChromosomedEntity, Comm
         super.tick();
 
         if (!this.isNoAi()) {
-            if (this.level() instanceof ServerLevel serverLevel && serverLevel.getGameRules().getBoolean(FAGameRules.RULE_DOANIMALGROWTH)) {
+            if (this.level() instanceof ServerLevel serverLevel && serverLevel.getGameRules().getBoolean(FAGameRules.RULE_DO_ANIMAL_GROWTH)) {
                 if (this.getGrowthStage() < this.getMaxGrowthStage()) {
                     if (this.internalClock % Level.TICKS_PER_DAY == 0) {
                         if (this.hasSpace()) {
@@ -246,7 +246,7 @@ public abstract class Dinosaur extends Animal implements ChromosomedEntity, Comm
                 this.setDaysAlive(this.getDaysAlive() + 1);
             }
 
-            if (this.level() instanceof ServerLevel serverLevel && serverLevel.getGameRules().getBoolean(FAGameRules.RULE_DOANIMALHUNGER) && !this.isNatural) {
+            if (this.level() instanceof ServerLevel serverLevel && serverLevel.getGameRules().getBoolean(FAGameRules.RULE_DO_ANIMAL_HUNGER) && !this.isNatural) {
                 if (this.level().getDifficulty() != Difficulty.PEACEFUL) {
                     if (this.internalClock % 300 == 0) {
                         this.decreaseHunger();

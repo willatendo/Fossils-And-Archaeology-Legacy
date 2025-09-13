@@ -7,6 +7,7 @@ public final class FAPackets {
     public static final ResourceLocation CLIENTBOUND_OPEN_DEBUG_GENETICS_SCREEN = FAUtils.resource("clientbound_open_debug_genetics_screen");
     public static final ResourceLocation CLIENTBOUND_OPEN_DINOPEDIA_SCREEN = FAUtils.resource("open_dinopedia_screen");
     public static final ResourceLocation CLIENTBOUND_OPEN_FOSSIL_SCREEN = FAUtils.resource("open_fossil_screen");
+    public static final ResourceLocation CLIENTBOUND_PLAY_SOUND = FAUtils.resource("play_sound");
 
     public static final ResourceLocation SERVERBOUND_ADD_NOTIFIED_PLAYER = FAUtils.resource("add_notified_player");
     public static final ResourceLocation SERVERBOUND_DAMAGE_HAMMER = FAUtils.resource("damage_hammer");

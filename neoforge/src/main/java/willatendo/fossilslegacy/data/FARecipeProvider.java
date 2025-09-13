@@ -59,6 +59,7 @@ public class FARecipeProvider extends RecipeProvider {
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DNA_ANALYZER.get()).pattern("#%#").pattern("#$#").define('#', Items.IRON_INGOT).define('%', FAItems.RELIC_SCRAP.get()).define('$', FAItemTags.FOSSILS).unlockedBy("has_fossil", this.has(FAItemTags.FOSSILS)).save(this.output);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DNA_CODER.get()).pattern("#%#").pattern("#$#").define('#', Items.IRON_INGOT).define('%', Items.DIAMOND).define('$', Items.REDSTONE).unlockedBy(RecipeProvider.getHasName(Items.DIAMOND), this.has(Items.DIAMOND)).save(this.output);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DNA_HYBRIDIZER.get()).pattern("@%@").pattern("###").define('@', Tags.Items.GLASS_BLOCKS).define('#', Items.IRON_INGOT).define('%', Items.GOLD_INGOT).unlockedBy(RecipeProvider.getHasName(Items.GOLD_INGOT), this.has(Items.GOLD_INGOT)).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.AMBER_BLOCK.get()).pattern("###").pattern("###").pattern("###").define('#', FAItems.AMBER.get()).unlockedBy(RecipeProvider.getHasName(FAItems.AMBER.get()), this.has(FAItems.AMBER.get())).save(this.output);
         this.cultivator(FABlocks.WHITE_CULTIVATOR.get(), Items.WHITE_DYE, Blocks.WHITE_STAINED_GLASS);
         this.cultivator(FABlocks.ORANGE_CULTIVATOR.get(), Items.ORANGE_DYE, Blocks.ORANGE_STAINED_GLASS);
         this.cultivator(FABlocks.MAGENTA_CULTIVATOR.get(), Items.MAGENTA_DYE, Blocks.MAGENTA_STAINED_GLASS);

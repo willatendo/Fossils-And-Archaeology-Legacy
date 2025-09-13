@@ -55,6 +55,7 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.add(FABlocks.RELIC_IN_DEEPSLATE.get(), block -> this.createFossilOreLootTable(block, 2000, new RandomItemEntry(FAItems.SCARAB_GEM.get(), 0, 1), new RandomItemEntry(FAItems.PREHISTORIC_COIN.get(), 1, 2), new RandomItemEntry(FAItems.RELIC_SCRAP.get(), 2, 1550), new RandomItemEntry(FAItems.ANCIENT_SWORD_ARTIFACT.get(), 1550, 1600), new RandomItemEntry(FAItems.ANCIENT_SHOVEL_ARTIFACT.get(), 1600, 1650), new RandomItemEntry(FAItems.ANCIENT_PICKAXE_ARTIFACT.get(), 1650, 1700), new RandomItemEntry(FAItems.ANCIENT_AXE_ARTIFACT.get(), 1700, 1750), new RandomItemEntry(FAItems.ANCIENT_HOE_ARTIFACT.get(), 1750, 1800), new RandomItemEntry(FAItems.ANCIENT_HELMET_ARTIFACT.get(), 1800, 1850), new RandomItemEntry(FAItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 1850, 1900), new RandomItemEntry(FAItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 1900, 1950), new RandomItemEntry(FAItems.ANCIENT_BOOTS_ARTIFACT.get(), 1950, 2000)));
         this.dropWhenSilkTouch(FABlocks.FROZEN_LEECH.get());
         this.add(FABlocks.LEECH_IN_ICE.get(), block -> this.createSingleItemTableWithSilkTouch(block, FAItems.FROZEN_LEECH.get()));
+        this.dropSelf(FABlocks.AMBER_BLOCK.get());
         this.dropSelf(FABlocks.SKULL_BLOCK.get());
         this.dropSelf(FABlocks.SKULL_LANTERN_BLOCK.get());
         this.dropSelf(FABlocks.DNA_ANALYZER.get());
@@ -139,9 +140,6 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.dropOther(FABlocks.BLACK_DECORATION_POST.get(), FAItems.BLACK_DECORATION_PLAQUE.get());
         this.dropSelf(FABlocks.SMALL_CAGE.get());
         this.add(FABlocks.MEDIUM_CAGE.get(), block -> LootTable.lootTable().withPool(this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(block).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(MediumCageBlock.HALF, DoubleBlockHalf.LOWER).hasProperty(MediumCageBlock.PART, 1)))))));
-        this.dropSelf(FABlocks.STRAIGHT_TRACK.get());
-        this.add(FABlocks.CORNER_TRACK.get(), block -> LootTable.lootTable().withPool(this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(block).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CornerTrackBlock.PART, 1)))))));
-        this.add(FABlocks.RAMP_TRACK.get(), block -> LootTable.lootTable().withPool(this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(block).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(RampTrackBlock.PART, 1)))))));
         this.dropSelf(FABlocks.CYCAD_HEAD.get());
         this.dropSelf(FABlocks.CYCAD_LOG.get());
         this.add(FABlocks.COOKSONIA.get(), block -> LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(this.applyExplosionDecay(block, LootItem.lootTableItem(block).apply(IntStream.rangeClosed(1, 4).boxed().toList(), integer -> SetItemCountFunction.setCount(ConstantValue.exactly(integer)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CooksoniaBlock.AMOUNT, integer))))))));

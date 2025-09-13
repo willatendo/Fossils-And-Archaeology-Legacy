@@ -19,6 +19,7 @@ public final class FAMenuTypes {
     public static final SimpleHolder<MenuType<DNARecombinatorMenu>> DNA_RECOMINBATOR = MENU_TYPES.registerSimple("dna_recombinator", DNARecombinatorMenu::new, DNARecombinatorMenu::new);
     public static final SimpleHolder<MenuType<HologramProjectorMenu>> HOLOGRAM_PROJECTOR = MENU_TYPES.registerSimple("hologram_projector", HologramProjectorMenu::new, HologramProjectorMenu::new);
     public static final SimpleHolder<MenuType<PalaeontologyTableMenu>> PALAEONTOLOGY_TABLE = MENU_TYPES.registerSimple("palaeontology_table", PalaeontologyTableMenu::new);
+    public static final SimpleHolder<MenuType<ShatteredCultivatorMenu>> SHATTERED_CULTIVATOR = MENU_TYPES.registerSimple("shattered_cultivator", ShatteredCultivatorMenu::new, ShatteredCultivatorMenu::new);
     public static final SimpleHolder<MenuType<TimeMachineMenu>> TIME_MACHINE = MENU_TYPES.registerSimple("time_machine", TimeMachineMenu::new, TimeMachineMenu::new);
     public static final SimpleHolder<MenuType<UserManualMenu>> USER_MANUEL = MENU_TYPES.registerSimple("user_manuel", UserManualMenu::new);
 }

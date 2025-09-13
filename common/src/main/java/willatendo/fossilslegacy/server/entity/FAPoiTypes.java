@@ -18,6 +18,7 @@ public final class FAPoiTypes {
 
     public static final ResourceKey<PoiType> ARCHAEOLOGIST = FAPoiTypes.create("archaeologist");
     public static final ResourceKey<PoiType> PALAEONTOLOGIST = FAPoiTypes.create("palaeontologist");
+    public static final ResourceKey<PoiType> GENETICIST = FAPoiTypes.create("geneticist");
 
     private static ResourceKey<PoiType> create(String id) {
         return ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, FAUtils.resource(id));
@@ -30,5 +31,6 @@ public final class FAPoiTypes {
     static {
         FAModloaderHelper.INSTANCE.registerPOI(POI_TYPES, "archaeologist", () -> new PoiType(FAPoiTypes.getBlockStates(FABlocks.ARCHAEOLOGY_WORKBENCH.get()), 1, 1));
         FAModloaderHelper.INSTANCE.registerPOI(POI_TYPES, "palaeontologist", () -> new PoiType(FAPoiTypes.getBlockStates(FABlocks.PALAEONTOLOGY_TABLE.get()), 1, 1));
+        FAModloaderHelper.INSTANCE.registerPOI(POI_TYPES, "geneticist", () -> new PoiType(FAPoiTypes.getBlockStates(FABlocks.DNA_RECOMBINATOR.get()), 1, 1));
     }
 }

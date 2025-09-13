@@ -6,7 +6,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Noises;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
-import willatendo.fossilslegacy.server.biome.FABiomes;
+import willatendo.fossilslegacy.server.biome.biomes.IceAgeBiomes;
 
 public final class IceAgeSurfaceRules {
     private static final SurfaceRules.RuleSource BEDROCK = IceAgeSurfaceRules.makeStateRule(Blocks.BEDROCK);
@@ -15,11 +15,8 @@ public final class IceAgeSurfaceRules {
     private static final SurfaceRules.RuleSource DIRT = IceAgeSurfaceRules.makeStateRule(Blocks.DIRT);
     private static final SurfaceRules.RuleSource GRASS_BLOCK = IceAgeSurfaceRules.makeStateRule(Blocks.GRASS_BLOCK);
     private static final SurfaceRules.RuleSource GRAVEL = IceAgeSurfaceRules.makeStateRule(Blocks.GRAVEL);
-    private static final SurfaceRules.RuleSource RED_SAND = IceAgeSurfaceRules.makeStateRule(Blocks.RED_SAND);
-    private static final SurfaceRules.RuleSource RED_SANDSTONE = IceAgeSurfaceRules.makeStateRule(Blocks.RED_SANDSTONE);
     private static final SurfaceRules.RuleSource SAND = IceAgeSurfaceRules.makeStateRule(Blocks.SAND);
     private static final SurfaceRules.RuleSource SANDSTONE = IceAgeSurfaceRules.makeStateRule(Blocks.SANDSTONE);
-    private static final SurfaceRules.RuleSource WATER = IceAgeSurfaceRules.makeStateRule(Blocks.WATER);
 
     private static SurfaceRules.RuleSource makeStateRule(Block block) {
         return SurfaceRules.state(block.defaultBlockState());
@@ -34,7 +31,7 @@ public final class IceAgeSurfaceRules {
         SurfaceRules.RuleSource noGrassInWater = SurfaceRules.sequence(SurfaceRules.ifTrue(notInWater, GRASS_BLOCK), DIRT);
         SurfaceRules.RuleSource noFallingSand = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_CEILING, SANDSTONE), SAND);
         SurfaceRules.RuleSource noFallingGravel = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_CEILING, STONE), GRAVEL);
-        SurfaceRules.ConditionSource isSandy = SurfaceRules.isBiome(FABiomes.ICE_AGE_BEACH);
+        SurfaceRules.ConditionSource isSandy = SurfaceRules.isBiome(IceAgeBiomes.BEACH);
         SurfaceRules.RuleSource addSand = SurfaceRules.sequence(SurfaceRules.ifTrue(isSandy, noFallingSand));
         SurfaceRules.RuleSource addDirt = SurfaceRules.sequence(addSand, DIRT);
         SurfaceRules.RuleSource addGrass = SurfaceRules.sequence(addSand, noGrassInWater);

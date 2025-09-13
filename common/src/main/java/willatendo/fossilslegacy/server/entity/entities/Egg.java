@@ -30,6 +30,7 @@ import willatendo.fossilslegacy.server.gene.Chromosome;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
+import willatendo.fossilslegacy.server.level.FAGameRules;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
@@ -181,16 +182,18 @@ public abstract class Egg extends Animal implements TicksToBirth, DinopediaInfor
         this.setWarm(this.shouldIncubate());
 
         if (this.getRemainingTime() < -500) {
-            Player player = this.level().getNearestPlayer(this, 25.0D);
-            if (player != null) {
-                if (player instanceof ServerPlayer serverPlayer) {
-                    if (this.isWet()) {
-                        serverPlayer.sendSystemMessage(FAUtils.translation("entity", "egg.died.dry"));
-                    } else {
-                        serverPlayer.sendSystemMessage(FAUtils.translation("entity", "egg.died"));
+            if (this.level() instanceof ServerLevel serverLevel) {
+                Player player = serverLevel.getNearestPlayer(this, serverLevel.getGameRules().getInt(FAGameRules.RULE_NOTIFICATION_DISTANCE));
+                if (player != null) {
+                    if (player instanceof ServerPlayer serverPlayer) {
+                        if (this.isWet()) {
+                            serverPlayer.sendSystemMessage(FAUtils.translation("entity", "egg.died.dry"));
+                        } else {
+                            serverPlayer.sendSystemMessage(FAUtils.translation("entity", "egg.died"));
+                        }
                     }
+                    this.discard();
                 }
-                this.discard();
             }
         }
 

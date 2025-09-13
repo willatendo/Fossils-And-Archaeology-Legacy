@@ -168,7 +168,7 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
         }
 
         if (this.level instanceof ServerLevel serverLevel) {
-            int lowQuorum = serverLevel.getGameRules().getInt(FAGameRules.RULE_LOWFEEDERMESSAGEQUORUM);
+            int lowQuorum = serverLevel.getGameRules().getInt(FAGameRules.RULE_LOW_FEEDER_MESSAGE_QUORUM);
             boolean low = meat ? this.meatLevel <= lowQuorum : this.plantsLevel <= lowQuorum;
             if (low) {
                 this.notifiedPlayers.forEach(uuid -> this.level.getPlayerByUUID(uuid).displayClientMessage(FAUtils.translation("block", "feeder.low." + (low ? "meat" : "plant"), this.getDisplayName()), false));

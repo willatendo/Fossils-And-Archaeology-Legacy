@@ -12,4 +12,5 @@ public final class FAVillagerProfessions {
 
     public static final SimpleHolder<VillagerProfession> ARCHAEOLOGIST = VILLAGER_PROFESSIONS.registerSimple("archaeologist", FAPoiTypes.ARCHAEOLOGIST, SoundEvents.VILLAGER_WORK_CARTOGRAPHER);
     public static final SimpleHolder<VillagerProfession> PALAEONTOLOGIST = VILLAGER_PROFESSIONS.registerSimple("palaeontologist", FAPoiTypes.PALAEONTOLOGIST, SoundEvents.VILLAGER_WORK_CARTOGRAPHER);
+    public static final SimpleHolder<VillagerProfession> GENETICIST = VILLAGER_PROFESSIONS.registerSimple("geneticist", FAPoiTypes.GENETICIST, SoundEvents.VILLAGER_WORK_CARTOGRAPHER);
 }

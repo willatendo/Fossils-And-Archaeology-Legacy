@@ -73,33 +73,13 @@ public final class FACreativeModeTabs {
         FACreativeModeTabs.addPlants(output);
         FACreativeModeTabs.addWood(output);
     }, List.of("fa_all", "fa_building_blocks", "fa_utilities"), List.of("fa_archaeology", "fa_palaeontology"));
-    public static final SimpleHolder<CreativeModeTab> FA_BUILDING_BLOCKS = FACreativeModeTabs.register("fa_building_blocks", () -> new ItemStack(FABlocks.SMALL_CAGE.get()), (itemDisplayParameters, output) -> {
-        FACreativeModeTabs.addRails(output);
-        output.accept(FABlocks.HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.WHITE_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.ORANGE_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.MAGENTA_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.LIGHT_BLUE_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.YELLOW_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.LIME_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.PINK_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.GRAY_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.LIGHT_GRAY_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.CYAN_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.PURPLE_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.BLUE_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.BROWN_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.GREEN_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.RED_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.BLACK_HOLOGRAM_PROJECTOR.get());
-        ItemStack ageOfReptilesPaintingItemStack = new ItemStack(Items.PAINTING);
-        RegistryOps<Tag> registryOps = itemDisplayParameters.holders().createSerializationContext(NbtOps.INSTANCE);
-        CustomData customdata = (CustomData.EMPTY.update(registryOps, Painting.VARIANT_MAP_CODEC, itemDisplayParameters.holders().lookupOrThrow(Registries.PAINTING_VARIANT).getOrThrow(FAPaintingVariants.AGE_OF_REPTILES)).getOrThrow()).update(compoundTag -> compoundTag.putString("id", "minecraft:painting"));
-        ageOfReptilesPaintingItemStack.set(DataComponents.ENTITY_DATA, customdata);
-        output.accept(ageOfReptilesPaintingItemStack);
-        FACreativeModeTabs.addDecorationPosts(output);
-        FACreativeModeTabs.addRoadMarkings(output);
+    public static final SimpleHolder<CreativeModeTab> FA_BUILDING_BLOCKS = FACreativeModeTabs.register("fa_building_blocks", () -> new ItemStack(FABlocks.POLISHED_ASPHALT_BRICKS.get()), (itemDisplayParameters, output) -> {
         FACreativeModeTabs.addAsphalt(output);
+        FACreativeModeTabs.addRoadMarkings(output);
+        output.accept(FABlocks.AMBER_BLOCK.get());
+        FACreativeModeTabs.addHologramProjectors(output);
+        FACreativeModeTabs.addPaintings(output, itemDisplayParameters.holders());
+        FACreativeModeTabs.addDecorationPosts(output);
         FACreativeModeTabs.addTar(output);
         FACreativeModeTabs.addWood(output);
     }, List.of("fa_all", "fa_utilities"), List.of("fa_archaeology", "fa_palaeontology", "fa_palaeobotany"));
@@ -130,7 +110,6 @@ public final class FACreativeModeTabs {
         FACreativeModeTabs.addSeedsAndSpores(output);
         FACreativeModeTabs.addPlants(output);
         FACreativeModeTabs.addWood(output);
-        FACreativeModeTabs.addRails(output);
         FACreativeModeTabs.addDecorationPosts(output);
         FACreativeModeTabs.addRoadMarkings(output);
         FACreativeModeTabs.addAsphalt(output);
@@ -576,10 +555,31 @@ public final class FACreativeModeTabs {
         output.accept(FABlocks.ZAMITES_LOG.get());
     }
 
-    private static void addRails(CreativeModeTab.Output output) {
-        output.accept(FABlocks.STRAIGHT_TRACK.get());
-        output.accept(FABlocks.CORNER_TRACK.get());
-        output.accept(FABlocks.RAMP_TRACK.get());
+    private static void addHologramProjectors(CreativeModeTab.Output output) {
+        output.accept(FABlocks.HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.WHITE_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.ORANGE_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.MAGENTA_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.LIGHT_BLUE_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.YELLOW_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.LIME_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.PINK_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.GRAY_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.LIGHT_GRAY_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.CYAN_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.PURPLE_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.BLUE_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.BROWN_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.GREEN_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.RED_HOLOGRAM_PROJECTOR.get());
+        output.accept(FABlocks.BLACK_HOLOGRAM_PROJECTOR.get());
+    }
+
+    private static void addPaintings(CreativeModeTab.Output output, HolderLookup.Provider itemDisplayParameters) {
+        ItemStack ageOfReptilesPaintingItemStack = new ItemStack(Items.PAINTING);
+        RegistryOps<Tag> registryOps = itemDisplayParameters.createSerializationContext(NbtOps.INSTANCE);
+        ageOfReptilesPaintingItemStack.set(DataComponents.ENTITY_DATA, CustomData.EMPTY.update(registryOps, Painting.VARIANT_MAP_CODEC, itemDisplayParameters.lookupOrThrow(Registries.PAINTING_VARIANT).getOrThrow(FAPaintingVariants.AGE_OF_REPTILES)).getOrThrow().update(compoundTag -> compoundTag.putString("id", "minecraft:painting")));
+        output.accept(ageOfReptilesPaintingItemStack);
     }
 
     private static void addDecorationPosts(CreativeModeTab.Output output) {

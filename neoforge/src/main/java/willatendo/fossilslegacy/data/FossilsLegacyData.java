@@ -20,6 +20,7 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.neoforged.neoforge.registries.datamaps.builtin.FurnaceFuel;
 import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
+import net.neoforged.neoforge.registries.datamaps.builtin.VibrationFrequency;
 import willatendo.fossilslegacy.data.advancement.LegacyAdvancementGenerator;
 import willatendo.fossilslegacy.data.legacy.FALegacyModelProvider;
 import willatendo.fossilslegacy.data.loot.*;
@@ -30,6 +31,7 @@ import willatendo.fossilslegacy.server.analyzer_result.FAAnalyzerResults;
 import willatendo.fossilslegacy.server.ancient_axe_bonus.FAAncientAxeBonuses;
 import willatendo.fossilslegacy.server.biome.FABiomes;
 import willatendo.fossilslegacy.server.biome.FAMultiNoiseBiomeSourceParameterLists;
+import willatendo.fossilslegacy.server.block.FAGameEvents;
 import willatendo.fossilslegacy.server.decoration_plaque_type.FADecorationPlaqueTypes;
 import willatendo.fossilslegacy.server.dimension.FADimensionTypes;
 import willatendo.fossilslegacy.server.dimension.FALevelStems;
@@ -99,6 +101,7 @@ public class FossilsLegacyData {
             @Override
             protected void gather(HolderLookup.Provider provider) {
                 this.builder(NeoForgeDataMaps.FURNACE_FUELS).add(FAItemReferences.TAR_BUCKET, new FurnaceFuel(20000), false);
+                this.builder(NeoForgeDataMaps.VIBRATION_FREQUENCIES).add(FAGameEvents.CULTIVATOR_SHATTER, new VibrationFrequency(15), false);
             }
 
             @Override
@@ -124,6 +127,7 @@ public class FossilsLegacyData {
         event.addProvider(new FASkinTagProvider(packOutput, registries, FAUtils.ID));
         event.addProvider(new FAPatternTagProvider(packOutput, registries, FAUtils.ID));
         event.addProvider(new FAPaintingVariantTagsProvider(packOutput, registries, FAUtils.ID));
+        event.addProvider(new FAGameEventTagProvider(packOutput, registries, FAUtils.ID));
         event.addProvider(new PackMetadataGenerator(packOutput).add(PackMetadataSection.TYPE, new PackMetadataSection(FAUtils.translation("resourcePack", "description"), DetectedVersion.BUILT_IN.getPackVersion(PackType.CLIENT_RESOURCES), Optional.empty())));
 
         ResourceLocation legacyPack = FAUtils.resource("fa_legacy_textures");

@@ -40,7 +40,6 @@ public final class FAEntityTypes {
     public static final SimpleHolder<EntityType<Brachiosaurus>> BRACHIOSAURUS = ENTITY_TYPES.register("brachiosaurus", FAEntityTypes.simple(Brachiosaurus::new, MobCategory.CREATURE, 1.0F, 1.5F));
     public static final SimpleHolder<EntityType<Dilophosaurus>> DILOPHOSAURUS = ENTITY_TYPES.register("dilophosaurus", FAEntityTypes.simple(Dilophosaurus::new, MobCategory.CREATURE, 0.5F, 0.5F));
     public static final SimpleHolder<EntityType<Dimetrodon>> DIMETRODON = ENTITY_TYPES.register("dimetrodon", FAEntityTypes.simple(Dimetrodon::new, MobCategory.CREATURE, 0.5F, 0.5F));
-    public static final SimpleHolder<EntityType<DistortusRex>> DISTORTUS_REX = ENTITY_TYPES.register("distortus_rex", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
     public static final SimpleHolder<EntityType<Mammoth>> MAMMOTH = ENTITY_TYPES.register("mammoth", FAEntityTypes.simple(Mammoth::new, MobCategory.CREATURE, 1.0F, 1.0F));
     public static final SimpleHolder<EntityType<Mosasaurus>> MOSASAURUS = ENTITY_TYPES.register("mosasaurus", FAEntityTypes.simple(Mosasaurus::new, MobCategory.WATER_CREATURE, 0.5F, 0.5F));
     public static final SimpleHolder<EntityType<Nautilidae>> NAUTILUS = ENTITY_TYPES.register("nautilus", FAEntityTypes.simple(Nautilidae::nautilus, MobCategory.WATER_AMBIENT, 1.0F, 0.75F));
@@ -68,6 +67,17 @@ public final class FAEntityTypes {
     public static final SimpleHolder<EntityType<Baryonyx>> BARYONYX = ENTITY_TYPES.register("baryonyx", FAEntityTypes.simple(Baryonyx::new, MobCategory.CREATURE, 0.5F, 0.5F));
     public static final SimpleHolder<EntityType<Isotelus>> ISOTELUS = ENTITY_TYPES.register("isotelus", FAEntityTypes.simple(Isotelus::new, MobCategory.WATER_AMBIENT, 0.5F, 0.5F));
     public static final SimpleHolder<EntityType<IsotelusLarva>> ISOTELUS_LARVA = ENTITY_TYPES.register("isotelus_larva", FAEntityTypes.simple(IsotelusLarva::new, MobCategory.WATER_AMBIENT, 0.15F, 0.15F));
+    public static final SimpleHolder<EntityType<Baryonyx>> HERRERASAURUS = ENTITY_TYPES.register("herrerasaurus", FAEntityTypes.simple(Baryonyx::new, MobCategory.CREATURE, 0.5F, 0.5F));
+
+    public static final SimpleHolder<EntityType<DistortusRex>> DISTORTUS_REX = ENTITY_TYPES.register("distortus_rex", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
+    public static final SimpleHolder<EntityType<DistortusRex>> MUTADON = ENTITY_TYPES.register("mutadon", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
+    public static final SimpleHolder<EntityType<DistortusRex>> INDOMINUS_REX = ENTITY_TYPES.register("indominus_rex", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
+    public static final SimpleHolder<EntityType<DistortusRex>> INDORAPTOR = ENTITY_TYPES.register("indoraptor", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
+    public static final SimpleHolder<EntityType<DistortusRex>> SCORPIUS_REX = ENTITY_TYPES.register("scorpius_rex", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
+    public static final SimpleHolder<EntityType<DistortusRex>> SPINOCERATOPS = ENTITY_TYPES.register("spinoceratops", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
+    public static final SimpleHolder<EntityType<DistortusRex>> ANKYLODOCUS = ENTITY_TYPES.register("ankylodocus", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
+    public static final SimpleHolder<EntityType<DistortusRex>> STEGOCERATOPS = ENTITY_TYPES.register("stegoceratops", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
+    public static final SimpleHolder<EntityType<DistortusRex>> SPINORAPTOR = ENTITY_TYPES.register("spinoraptor", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
 
     public static final SimpleHolder<EntityType<Fossil>> FOSSIL = ENTITY_TYPES.register("fossil", FAEntityTypes.simple(Fossil::new, MobCategory.MISC, 0.5F, 0.5F).noLootTable());
 
@@ -131,6 +141,8 @@ public final class FAEntityTypes {
     public static final SimpleHolder<EntityType<StoneTablet>> STONE_TABLET = ENTITY_TYPES.register("stone_tablet", FAEntityTypes.simple(StoneTablet::new, MobCategory.MISC, 0.5F, 0.5F).noLootTable());
 
     public static final SimpleHolder<EntityType<Jeep>> JEEP = FAEntityTypes.registerJeep("jeep", FAItems.JEEP_1993::get);
+    public static final SimpleHolder<EntityType<Jeep>> FORD_EXPLORER = FAEntityTypes.registerJeep("ford_explorer", FAItems.JEEP_1993::get);
+    public static final SimpleHolder<EntityType<Jeep>> HELICOPTER = FAEntityTypes.registerJeep("helicopter", FAItems.JEEP_1993::get);
 
     public static final SimpleHolder<EntityType<Boat>> ARAUCARIA_BOAT = FAEntityTypes.registerBoat("araucaria_boat", FAItems.ARAUCARIA_BOAT::get);
     public static final SimpleHolder<EntityType<ChestBoat>> ARAUCARIA_CHEST_BOAT = FAEntityTypes.registerChestBoat("araucaria_chest_boat", FAItems.ARAUCARIA_CHEST_BOAT::get);

@@ -15,13 +15,13 @@ public final class FABlockTypes {
     }
 
     static {
+        FABlockTypes.register("amber_block", AmberBlock.CODEC);
         FABlockTypes.register("analyzer", AnalyzerBlock.CODEC);
         FABlockTypes.register("archaeology_workbench", ArchaeologyWorkbenchBlock.CODEC);
         FABlockTypes.register("axolotlspawn", AxolotlspawnBlock.CODEC);
         FABlockTypes.register("cooked_berry_medley_cauldron", CookedBerryMedleyCauldronBlock.CODEC);
         FABlockTypes.register("cooked_chicken_soup_cauldron", CookedChickenSoupCauldronBlock.CODEC);
         FABlockTypes.register("cooksonia", CooksoniaBlock.CODEC);
-        FABlockTypes.register("corner_track", CornerTrackBlock.CODEC);
         FABlockTypes.register("cultivator", CultivatorBlock.CODEC);
         FABlockTypes.register("cycad_head", CycadHeadBlock.CODEC);
         FABlockTypes.register("cycad_log", CycadLogBlock.CODEC);
@@ -46,7 +46,6 @@ public final class FABlockTypes {
         FABlockTypes.register("onychiopsis", OnychiopsisBlock.CODEC);
         FABlockTypes.register("palaeontology_table", PalaeontologyTableBlock.CODEC);
         FABlockTypes.register("permafrost", PermafrostBlock.CODEC);
-        FABlockTypes.register("ramp_track", RampTrackBlock.CODEC);
         FABlockTypes.register("raw_berry_medley_cauldron", RawBerryMedleyCauldronBlock.CODEC);
         FABlockTypes.register("raw_chicken_soup_cauldron", RawChickenSoupCauldronBlock.CODEC);
         FABlockTypes.register("road_marking", RoadMarkingBlock.CODEC);
@@ -55,7 +54,6 @@ public final class FABlockTypes {
         FABlockTypes.register("skull", SkullBlock.CODEC);
         FABlockTypes.register("simple_grassy", SimpleGrassyBlock.CODEC);
         FABlockTypes.register("small_cage", SmallCageBlock.CODEC);
-        FABlockTypes.register("straight_track", StraightTrackBlock.CODEC);
         FABlockTypes.register("tall_horsetail", TallHorsetailBlock.CODEC);
         FABlockTypes.register("time_machine", TimeMachineBlock.CODEC);
         FABlockTypes.register("weathering_copper_llama_statue", WeatheringCopperLlamaStatueBlock.CODEC);
