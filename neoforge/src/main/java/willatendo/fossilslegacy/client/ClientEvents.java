@@ -1,10 +1,16 @@
 package willatendo.fossilslegacy.client;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.Model;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
+import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -13,8 +19,10 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
 import net.neoforged.neoforge.client.extensions.common.IClientBlockExtensions;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import willatendo.fossilslegacy.client.animation.json.JsonAnimationLoader;
+import willatendo.fossilslegacy.client.model.CaptainsHatModel;
 import willatendo.fossilslegacy.client.model.json.JsonLayerDefinitionResourceManager;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
 import willatendo.fossilslegacy.client.resources.DecorationPlaqueTextureManager;
@@ -23,6 +31,7 @@ import willatendo.fossilslegacy.client.user_manual.UserManualItemDataLoader;
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.fluid.FAFluidTypes;
 import willatendo.fossilslegacy.server.fluid.FAFluids;
+import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.client.event.registry.*;
 
@@ -96,6 +105,23 @@ public class ClientEvents {
                 return FossilsLegacyClient.TAR_FLOW;
             }
         }, FAFluidTypes.TAR_TYPE.get());
+        event.registerItem(new IClientItemExtensions() {
+            @Override
+            public Model getHumanoidArmorModel(ItemStack itemStack, EquipmentClientInfo.LayerType layerType, Model original) {
+                Minecraft minecraft = Minecraft.getInstance();
+                if (layerType == EquipmentClientInfo.LayerType.HUMANOID) {
+                    CaptainsHatModel captainsHatModel = new CaptainsHatModel(minecraft.getEntityModels().bakeLayer(FAModelLayers.CAPTAINS_HAT));
+                    captainsHatModel.copyPropertiesTo((HumanoidModel<HumanoidRenderState>) original);
+                    return captainsHatModel;
+                }
+                return original;
+            }
+
+            @Override
+            public ResourceLocation getArmorTexture(ItemStack itemStack, EquipmentClientInfo.LayerType layerType, EquipmentClientInfo.Layer layer, ResourceLocation defaultTexture) {
+                return layerType == EquipmentClientInfo.LayerType.HUMANOID ? FossilsLegacyClient.CAPTAINS_HAT : defaultTexture;
+            }
+        }, FAItems.CAPTAINS_HAT.get());
     }
 
     @SubscribeEvent

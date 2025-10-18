@@ -1,0 +1,28 @@
+{
+  "gui_light": "front",
+  "textures": {
+    "particle": "fossilslegacy:item/diamond_javelin"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [ 0, 60, 0 ],
+      "translation": [ 11, -9, -2 ],
+      "scale": [ 1, 1, 1 ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [ 0, 60, 0 ],
+      "translation": [ 3, -9, 12 ],
+      "scale": [ 1, 1, 1 ]
+    },
+    "firstperson_righthand": {
+      "rotation": [ 0, -90, 25 ],
+      "translation": [ -3, -9, 1],
+      "scale": [ 1, 1, 1 ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [ 0, 90, -25 ],
+      "translation": [ 13, -9, 1],
+      "scale": [ 1, 1, 1 ]
+    }
+  }
+}

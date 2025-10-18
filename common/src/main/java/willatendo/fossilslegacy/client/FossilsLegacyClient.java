@@ -34,6 +34,7 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.client.event.registry.*;
 
 public final class FossilsLegacyClient {
+    public static final ResourceLocation CAPTAINS_HAT = FAUtils.resource("textures/entity/captains_hat/captains_hat_texture.png");
     public static final ResourceLocation TAR_STILL = FAUtils.resource("block/tar_still");
     public static final ResourceLocation TAR_FLOW = FAUtils.resource("block/tar_flowing");
 
@@ -194,6 +195,7 @@ public final class FossilsLegacyClient {
     public static void specialModelsEvent(SpecialRendererRegistry specialRendererRegistry) {
         specialRendererRegistry.register(FAUtils.resource("articulated_fossil"), ArticulatedFossilSpecialRenderer.Unbaked.MAP_CODEC);
         specialRendererRegistry.register(FAUtils.resource("head"), HeadSpecialRenderer.Unbaked.MAP_CODEC);
+        specialRendererRegistry.register(FAUtils.resource("javelin"), JavelinSpecialRenderer.Unbaked.MAP_CODEC);
     }
 
     public static void modelLayerEvent(ModelLayerRegistry modelLayerRegister) {
@@ -211,6 +213,7 @@ public final class FossilsLegacyClient {
         modelLayerRegister.register(FAModelLayers.PLANT_EMBRYO, PlantEmbryoModel::createBodyLayer);
         modelLayerRegister.register(FAModelLayers.REGULAR_EGG, EggModel::createRegularBodyLayer);
         modelLayerRegister.register(FAModelLayers.SMALL_EGG, EggModel::createSmallBodyLayer);
+        modelLayerRegister.register(FAModelLayers.HELD_JAVELIN, JavelinModel::createHeldLayer);
         modelLayerRegister.register(FAModelLayers.THROWN_JAVELIN, JavelinModel::createBodyLayer);
         modelLayerRegister.register(FAModelLayers.TIME_MACHINE_CLOCK, TimeMachineClockModel::createBodyLayer);
         LayerDefinition boatModel = BoatModel.createBoatModel();
@@ -235,6 +238,8 @@ public final class FossilsLegacyClient {
         modelLayerRegister.register(FAModelLayers.METASEQUOIA_CHEST_BOAT, () -> chestBoatModel);
         modelLayerRegister.register(FAModelLayers.SIGILLARIA_CHEST_BOAT, () -> chestBoatModel);
         modelLayerRegister.register(FAModelLayers.WOLLEMIA_CHEST_BOAT, () -> chestBoatModel);
+
+        modelLayerRegister.register(FAModelLayers.CAPTAINS_HAT, CaptainsHatModel::createBodyLayer);
 
         modelLayerRegister.register(FAModelLayers.ANKYLOSAURUS_HEAD, AnkylosaursHeadModel::createBodyLayer);
         modelLayerRegister.register(FAModelLayers.BARYONYX_HEAD, BaryonyxHeadModel::createBodyLayer);

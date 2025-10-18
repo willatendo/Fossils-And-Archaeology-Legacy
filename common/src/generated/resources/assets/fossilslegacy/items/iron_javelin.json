@@ -1,6 +1,39 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "fossilslegacy:item/iron_javelin"
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "fossilslegacy:item/iron_javelin"
+        },
+        "when": [
+          "gui",
+          "ground",
+          "fixed"
+        ]
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:condition",
+      "on_false": {
+        "type": "minecraft:special",
+        "base": "fossilslegacy:item/iron_javelin_in_hand",
+        "model": {
+          "type": "fossilslegacy:javelin",
+          "texture": "fossilslegacy:textures/entity/javelin/iron_javelin_item.png"
+        }
+      },
+      "on_true": {
+        "type": "minecraft:special",
+        "base": "fossilslegacy:item/iron_javelin_throwing",
+        "model": {
+          "type": "fossilslegacy:javelin",
+          "texture": "fossilslegacy:textures/entity/javelin/iron_javelin_item.png"
+        }
+      },
+      "property": "minecraft:using_item"
+    },
+    "property": "minecraft:display_context"
   }
 }

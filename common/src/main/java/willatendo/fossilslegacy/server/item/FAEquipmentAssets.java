@@ -6,8 +6,8 @@ import net.minecraft.world.item.equipment.EquipmentAssets;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 public final class FAEquipmentAssets {
-    public static final ResourceKey<EquipmentAsset> ANCIENT = register("ancient");
-    public static final ResourceKey<EquipmentAsset> SCARAB_GEM = register("scarab_gem");
+    public static final ResourceKey<EquipmentAsset> ANCIENT = FAEquipmentAssets.register("ancient");
+    public static final ResourceKey<EquipmentAsset> SCARAB_GEM = FAEquipmentAssets.register("scarab_gem");
 
     private static ResourceKey<EquipmentAsset> register(String name) {
         return ResourceKey.create(EquipmentAssets.ROOT_ID, FAUtils.resource(name));

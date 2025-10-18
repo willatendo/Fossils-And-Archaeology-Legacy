@@ -25,14 +25,9 @@ public class JavelinItem extends Item {
         this.toolMaterial = toolMaterial;
     }
 
-    public ToolMaterial getTier() {
-        return this.toolMaterial;
-    }
-
-
     @Override
     public ItemUseAnimation getUseAnimation(ItemStack itemStack) {
-        return ItemUseAnimation.BOW;
+        return ItemUseAnimation.SPEAR;
     }
 
     @Override

@@ -14,6 +14,17 @@ public class JavelinModel extends EntityModel<ThrownJavelinRenderState> {
         super(root);
     }
 
+    public static LayerDefinition createHeldLayer() {
+        MeshDefinition meshDefinition = new MeshDefinition();
+        PartDefinition partDefinition = meshDefinition.getRoot();
+
+        PartDefinition bit = partDefinition.addOrReplaceChild("bit", CubeListBuilder.create().texOffs(10, 0).addBox(-5.0F, -2.0F, -5.0F, 10.0F, 0.0F, 10.0F), PartPose.ZERO);
+        bit.addOrReplaceChild("cross_1", CubeListBuilder.create().texOffs(0, -10).addBox(0.0F, -36.0F, -5.0F, 0.0F, 36.0F, 10.0F), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, -0.7854F, 0.0F));
+        bit.addOrReplaceChild("cross_2", CubeListBuilder.create().texOffs(0, -10).addBox(0.0F, -36.0F, -5.0F, 0.0F, 36.0F, 10.0F), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 0.7854F, 0.0F));
+
+        return LayerDefinition.create(meshDefinition, 64, 64);
+    }
+
     public static LayerDefinition createBodyLayer() {
         MeshDefinition meshDefinition = new MeshDefinition();
         PartDefinition partDefinition = meshDefinition.getRoot();

@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleRenderEvents;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
+import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.client.renderer.RenderType;
@@ -17,6 +18,7 @@ import net.minecraft.world.entity.player.Player;
 import willatendo.fossilslegacy.client.animation.json.JsonAnimationLoader;
 import willatendo.fossilslegacy.client.model.json.JsonLayerDefinitionResourceManager;
 import willatendo.fossilslegacy.client.model.json.JsonModelLoader;
+import willatendo.fossilslegacy.client.renderer.FossilsArmorRenderer;
 import willatendo.fossilslegacy.client.resources.DecorationPlaqueTextureManager;
 import willatendo.fossilslegacy.client.resources.StoneTabletTextureManager;
 import willatendo.fossilslegacy.client.user_manual.UserManualItemDataLoader;
@@ -27,6 +29,7 @@ import willatendo.fossilslegacy.network.serverbound.ServerboundVehicleSinkPacket
 import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.Futabasaurus;
 import willatendo.fossilslegacy.server.fluid.FAFluids;
+import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.registry.FABlockRegistry;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.client.event.registry.*;
@@ -190,6 +193,8 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         FossilsLegacyClient.particleRegisterEvent(new FabricParticleRegistry());
 
         FluidRenderHandlerRegistry.INSTANCE.register(FAFluids.TAR.get(), FAFluids.FLOWING_TAR.get(), new SimpleFluidRenderHandler(FossilsLegacyClient.TAR_STILL, FossilsLegacyClient.TAR_FLOW));
+
+        ArmorRenderer.register(new FossilsArmorRenderer(), FAItems.CAPTAINS_HAT.get());
 
         ClientTickEvents.END_CLIENT_TICK.register(minecraft -> {
             Player player = minecraft.player;

@@ -15,6 +15,7 @@ import net.minecraft.world.item.equipment.EquipmentAssets;
 import net.minecraft.world.item.equipment.trim.TrimMaterial;
 import net.minecraft.world.item.equipment.trim.TrimMaterials;
 import willatendo.fossilslegacy.client.model.ArticulatedFossilSpecialRenderer;
+import willatendo.fossilslegacy.client.render.JavelinSpecialRenderer;
 import willatendo.fossilslegacy.data.FAModelTemplates;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.FAEquipmentAssets;
@@ -111,6 +112,15 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         }
 
         this.itemModelOutput.accept(item, ItemModelUtils.select(new TrimMaterialProperty(), unbakedModel, list));
+    }
+
+    private void generateJavelinItem(Item javelinItem, Item brokenJavelinItem, ResourceLocation javelinTexture) {
+        ItemModel.Unbaked itemModel = ItemModelUtils.plainModel(this.itemModelGenerators.createFlatItemModel(javelinItem, ModelTemplates.FLAT_ITEM));
+        ItemModel.Unbaked handModel = ItemModelUtils.specialModel(ModelLocationUtils.getModelLocation(javelinItem, "_in_hand"), new JavelinSpecialRenderer.Unbaked(javelinTexture));
+        ItemModel.Unbaked throwModel = ItemModelUtils.specialModel(ModelLocationUtils.getModelLocation(javelinItem, "_throwing"), new JavelinSpecialRenderer.Unbaked(javelinTexture));
+        ItemModel.Unbaked handheldModel = ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), throwModel, handModel);
+        this.itemModelOutput.accept(javelinItem, ItemModelGenerators.createFlatModelDispatch(itemModel, handheldModel));
+        this.itemModelOutput.accept(brokenJavelinItem, ItemModelGenerators.createFlatModelDispatch(itemModel, handheldModel));
     }
 
     @Override
@@ -421,20 +431,13 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.handheldItem(FAItems.SCARAB_GEM_AXE.get());
         this.handheldItem(FAItems.SCARAB_GEM_HOE.get());
         this.generatedItem(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get());
-        this.generatedItem(FAItems.WOODEN_JAVELIN.get());
-        this.generatedItem(FAItems.BROKEN_WOODEN_JAVELIN.get(), this.modLocation("item/wooden_javelin"));
-        this.generatedItem(FAItems.STONE_JAVELIN.get());
-        this.generatedItem(FAItems.BROKEN_STONE_JAVELIN.get(), this.modLocation("item/stone_javelin"));
-        this.generatedItem(FAItems.IRON_JAVELIN.get());
-        this.generatedItem(FAItems.BROKEN_IRON_JAVELIN.get(), this.modLocation("item/iron_javelin"));
-        this.generatedItem(FAItems.GOLDEN_JAVELIN.get());
-        this.generatedItem(FAItems.BROKEN_GOLDEN_JAVELIN.get(), this.modLocation("item/golden_javelin"));
-        this.generatedItem(FAItems.DIAMOND_JAVELIN.get());
-        this.generatedItem(FAItems.BROKEN_DIAMOND_JAVELIN.get(), this.modLocation("item/diamond_javelin"));
-        this.generatedItem(FAItems.NETHERITE_JAVELIN.get());
-        this.generatedItem(FAItems.BROKEN_NETHERITE_JAVELIN.get(), this.modLocation("item/netherite_javelin"));
-        this.generatedItem(FAItems.SCARAB_GEM_JAVELIN.get());
-        this.generatedItem(FAItems.BROKEN_SCARAB_GEM_JAVELIN.get(), this.modLocation("item/scarab_gem_javelin"));
+        this.generateJavelinItem(FAItems.WOODEN_JAVELIN.get(), FAItems.BROKEN_WOODEN_JAVELIN.get(), FAUtils.resource("textures/entity/javelin/wooden_javelin_item.png"));
+        this.generateJavelinItem(FAItems.STONE_JAVELIN.get(), FAItems.BROKEN_STONE_JAVELIN.get(), FAUtils.resource("textures/entity/javelin/stone_javelin_item.png"));
+        this.generateJavelinItem(FAItems.IRON_JAVELIN.get(), FAItems.BROKEN_IRON_JAVELIN.get(), FAUtils.resource("textures/entity/javelin/iron_javelin_item.png"));
+        this.generateJavelinItem(FAItems.GOLDEN_JAVELIN.get(), FAItems.BROKEN_GOLDEN_JAVELIN.get(), FAUtils.resource("textures/entity/javelin/golden_javelin_item.png"));
+        this.generateJavelinItem(FAItems.DIAMOND_JAVELIN.get(), FAItems.BROKEN_DIAMOND_JAVELIN.get(), FAUtils.resource("textures/entity/javelin/diamond_javelin_item.png"));
+        this.generateJavelinItem(FAItems.NETHERITE_JAVELIN.get(), FAItems.BROKEN_NETHERITE_JAVELIN.get(), FAUtils.resource("textures/entity/javelin/netherite_javelin_item.png"));
+        this.generateJavelinItem(FAItems.SCARAB_GEM_JAVELIN.get(), FAItems.BROKEN_SCARAB_GEM_JAVELIN.get(), FAUtils.resource("textures/entity/javelin/scarab_gem_javelin_item.png"));
         this.handheldItem(FAItems.WOODEN_HAMMER.get());
         this.handheldItem(FAItems.STONE_HAMMER.get());
         this.handheldItem(FAItems.IRON_HAMMER.get());
