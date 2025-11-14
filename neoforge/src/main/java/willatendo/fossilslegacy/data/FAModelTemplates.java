@@ -10,6 +10,12 @@ import java.util.Optional;
 
 public final class FAModelTemplates {
     public static final ModelTemplate FROGSPAWN = FAModelTemplates.createMC("frogspawn", TextureSlot.TEXTURE, TextureSlot.PARTICLE).extend().renderType("cutout").build();
+    public static final ModelTemplate TEMPLATE_BARS_CAP = FAModelTemplates.createMC("iron_bars_cap", FATextureSlot.BARS, TextureSlot.EDGE).extend().renderType("cutout").build();
+    public static final ModelTemplate TEMPLATE_BARS_CAP_ALT = FAModelTemplates.createMC("iron_bars_cap_alt", FATextureSlot.BARS, TextureSlot.EDGE).extend().renderType("cutout").build();
+    public static final ModelTemplate TEMPLATE_BARS_POST = FAModelTemplates.createMC("iron_bars_post", FATextureSlot.BARS, TextureSlot.EDGE).extend().renderType("cutout").build();
+    public static final ModelTemplate TEMPLATE_BARS_POST_ENDS = FAModelTemplates.createMC("iron_bars_post_ends", FATextureSlot.BARS, TextureSlot.EDGE).extend().renderType("cutout").build();
+    public static final ModelTemplate TEMPLATE_BARS_SIDE = FAModelTemplates.createMC("iron_bars_side", FATextureSlot.BARS, TextureSlot.EDGE).extend().renderType("cutout").build();
+    public static final ModelTemplate TEMPLATE_BARS_SIDE_ALT = FAModelTemplates.createMC("iron_bars_side_alt", FATextureSlot.BARS, TextureSlot.EDGE).extend().renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_CULTIVATOR = FAModelTemplates.create("template_cultivator", TextureSlot.SIDE, TextureSlot.TOP).renderType("translucent").build();
     public static final ExtendedModelTemplate TEMPLATE_CULTIVATOR_ACTIVE = FAModelTemplates.create("template_cultivator_active", TextureSlot.SIDE, TextureSlot.TOP).renderType("translucent").build();
     public static final ExtendedModelTemplate TEMPLATE_SHATTERED_CULTIVATOR = FAModelTemplates.create("template_shattered_cultivator", TextureSlot.SIDE).renderType("cutout").build();

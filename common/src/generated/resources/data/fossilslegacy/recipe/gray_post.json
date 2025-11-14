@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "colored_post",
+  "key": {
+    "#": "minecraft:gray_concrete"
+  },
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "result": {
+    "count": 16,
+    "id": "fossilslegacy:gray_post"
+  }
+}

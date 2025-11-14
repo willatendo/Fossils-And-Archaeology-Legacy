@@ -3,6 +3,7 @@ package willatendo.fossilslegacy.data;
 import net.minecraft.client.data.models.model.TextureSlot;
 
 public final class FATextureSlot {
+    public static final TextureSlot BARS = TextureSlot.create("bars");
     public static final TextureSlot CROP_LEAVES = TextureSlot.create("crop_leaves");
     public static final TextureSlot FLOWER = TextureSlot.create("flower");
     public static final TextureSlot HEAD = TextureSlot.create("head");

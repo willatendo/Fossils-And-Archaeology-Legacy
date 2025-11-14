@@ -175,6 +175,7 @@
 - When Cultivators Shatter They Now Send Off Vibrations (Frequency 15)
 - When Cultivators Shatter They Now Break into Shattered Cultivators
 - Javelins Now Use Models In Hands And Use Trident Animation
+- Ores Now Drop Experience (As Much As Coal)
 - Added Archaeology Category For Analyzer Recipe Book
 - Added Palaeontology Category For Analyzer Recipe Book
 - Added Mosasaurus Skeleton
@@ -510,6 +511,7 @@
 - Added Huge Cage
 - Added doLimitNotificationDistance Game Rule
 - Added notificationDistance Game Rule
+- Added Chain Link Fence
 27/2/2024 1.4.9
 - Fixed Tooth Dagger Not Shearing All Shearables
 - Fixed Mayan Vase Not Wobbling

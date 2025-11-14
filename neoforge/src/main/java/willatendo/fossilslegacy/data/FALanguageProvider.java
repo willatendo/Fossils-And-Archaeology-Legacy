@@ -292,8 +292,26 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.POLISHED_ASPHALT_BRICK_STAIRS.get());
         this.add(FABlocks.POLISHED_ASPHALT_BRICK_SLAB.get());
         this.add(FABlocks.POLISHED_ASPHALT_BRICK_WALL.get());
-        this.add(FABlocks.SOLID_WHITE_MARKING.get());
-        this.add(FABlocks.DOUBLE_SOLID_WHITE_MARKING.get());
+        this.add(FABlocks.WHITE_ROAD_MARKING.get());
+        this.add(FABlocks.DOUBLE_WHITE_ROAD_MARKING.get());
+        this.add(FABlocks.YELLOW_ROAD_MARKING.get());
+        this.add(FABlocks.DOUBLE_YELLOW_ROAD_MARKING.get());
+        this.add(FABlocks.WHITE_POST.get());
+        this.add(FABlocks.ORANGE_POST.get());
+        this.add(FABlocks.MAGENTA_POST.get());
+        this.add(FABlocks.LIGHT_BLUE_POST.get());
+        this.add(FABlocks.YELLOW_POST.get());
+        this.add(FABlocks.LIME_POST.get());
+        this.add(FABlocks.PINK_POST.get());
+        this.add(FABlocks.GRAY_POST.get());
+        this.add(FABlocks.LIGHT_GRAY_POST.get());
+        this.add(FABlocks.CYAN_POST.get());
+        this.add(FABlocks.PURPLE_POST.get());
+        this.add(FABlocks.BLUE_POST.get());
+        this.add(FABlocks.BROWN_POST.get());
+        this.add(FABlocks.GREEN_POST.get());
+        this.add(FABlocks.RED_POST.get());
+        this.add(FABlocks.BLACK_POST.get());
         this.add(FABlocks.HARDENED_TAR_BLOCK.get());
         this.add(FABlocks.HOLOGRAM_PROJECTOR.get());
         this.add(FABlocks.WHITE_HOLOGRAM_PROJECTOR.get());
@@ -312,6 +330,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.GREEN_HOLOGRAM_PROJECTOR.get());
         this.add(FABlocks.RED_HOLOGRAM_PROJECTOR.get());
         this.add(FABlocks.BLACK_HOLOGRAM_PROJECTOR.get());
+        this.add(FABlocks.CHAIN_LINK_FENCE.get());
+        this.add(FABlocks.IRON_FENCE.get());
 
         // Biomes
         this.add("biome.fossilslegacy.prehistoric_ocean", "Prehistoric Ocean");
@@ -375,7 +395,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("command_type.fossilslegacy.magic_conch.use", "Set all commanded by magic conch in a 30 block radius to %s.");
 
         // Containers
-        this.add("container.fossilslegacy.analyzer", "Analyzer");
+        this.add("container.fossilslegacy.analyzer", "DNA Analyzer");
         this.add("container.fossilslegacy.archaeology_workbench", "Archaeology Workbench");
         this.add("container.fossilslegacy.cultivator", "Cultivator");
         this.add("container.fossilslegacy.shattered_cultivator", "Shattered Cultivator");
@@ -407,12 +427,8 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("container.fossilslegacy.time_machine.start", "Start");
 
         // Creative Mode Tabs
-        this.add(FACreativeModeTabs.FA_ARCHAEOLOGY.get(), "F/A: Archaeology");
-        this.add(FACreativeModeTabs.FA_PALAEONTOLOGY.get(), "F/A: Palaeontology");
-        this.add(FACreativeModeTabs.FA_PALAEOBOTANY.get(), "F/A: Palaeobotany");
-        this.add(FACreativeModeTabs.FA_BUILDING_BLOCKS.get(), "F/A: Building Blocks");
-        this.add(FACreativeModeTabs.FA_UTILITIES.get(), "F/A: Utilities");
-        this.add(FACreativeModeTabs.FA_ALL.get(), "F/A: All");
+        this.add(FACreativeModeTabs.FA_ITEMS.get(), "F/A: Items");
+        this.add(FACreativeModeTabs.FA_BLOCKS.get(), "F/A: Blocks");
 
         // Deaths
         this.add("death.attack.dinosaur_starve", "%1$s starved to death");
@@ -947,22 +963,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.articulated_fossil.tyrannosaurus", "Articulated Tyrannosaurus Fossil");
         this.add("item.fossilslegacy.articulated_fossil.velociraptor", "Articulated Velociraptor Fossil");
         this.add(FAItems.RELIC_SCRAP.get());
-        this.add(FAItems.WHITE_DECORATION_PLAQUE.get());
-        this.add(FAItems.ORANGE_DECORATION_PLAQUE.get());
-        this.add(FAItems.MAGENTA_DECORATION_PLAQUE.get());
-        this.add(FAItems.LIGHT_BLUE_DECORATION_PLAQUE.get());
-        this.add(FAItems.YELLOW_DECORATION_PLAQUE.get());
-        this.add(FAItems.LIME_DECORATION_PLAQUE.get());
-        this.add(FAItems.PINK_DECORATION_PLAQUE.get());
-        this.add(FAItems.GRAY_DECORATION_PLAQUE.get());
-        this.add(FAItems.LIGHT_GRAY_DECORATION_PLAQUE.get());
-        this.add(FAItems.CYAN_DECORATION_PLAQUE.get());
-        this.add(FAItems.PURPLE_DECORATION_PLAQUE.get());
-        this.add(FAItems.BLUE_DECORATION_PLAQUE.get());
-        this.add(FAItems.BROWN_DECORATION_PLAQUE.get());
-        this.add(FAItems.GREEN_DECORATION_PLAQUE.get());
-        this.add(FAItems.RED_DECORATION_PLAQUE.get());
-        this.add(FAItems.BLACK_DECORATION_PLAQUE.get());
+        this.add(FAItems.DECORATION_PLAQUE.get());
         this.add(FAItems.STONE_TABLET.get());
         this.add(FAItems.ANCIENT_SWORD_ARTIFACT.get());
         this.add(FAItems.ANCIENT_SHOVEL_ARTIFACT.get());

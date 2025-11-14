@@ -51,8 +51,8 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.add(FABlocks.DEEPSLATE_AMBER_ORE.get(), block -> this.createFossilOreLootTable(block, 10, new RandomItemEntry(FAItems.AMBER.get(), 0, 9), new RandomItemEntry(FAItems.MOSQUITO_IN_AMBER.get(), 9, 10)));
         this.add(FABlocks.PLANT_FOSSIL_ORE.get(), block -> this.createFossilOreLootTable(block, 10, new RandomItemEntry(FAItems.PLANT_FOSSIL.get(), 0, 4), new RandomItemEntry(Items.COAL, 6, 10)));
         this.add(FABlocks.DEEPSLATE_PLANT_FOSSIL_ORE.get(), block -> this.createFossilOreLootTable(block, 10, new RandomItemEntry(FAItems.PLANT_FOSSIL.get(), 0, 4), new RandomItemEntry(Items.COAL, 6, 10)));
-        this.add(FABlocks.RELIC_IN_STONE.get(), block -> this.createFossilOreLootTable(block, 2000, new RandomItemEntry(FAItems.SCARAB_GEM.get(), 0, 1), new RandomItemEntry(FAItems.PREHISTORIC_COIN.get(), 1, 2), new RandomItemEntry(FAItems.RELIC_SCRAP.get(), 2, 1550), new RandomItemEntry(FAItems.ANCIENT_SWORD_ARTIFACT.get(), 1550, 1600), new RandomItemEntry(FAItems.ANCIENT_SHOVEL_ARTIFACT.get(), 1600, 1650), new RandomItemEntry(FAItems.ANCIENT_PICKAXE_ARTIFACT.get(), 1650, 1700), new RandomItemEntry(FAItems.ANCIENT_AXE_ARTIFACT.get(), 1700, 1750), new RandomItemEntry(FAItems.ANCIENT_HOE_ARTIFACT.get(), 1750, 1800), new RandomItemEntry(FAItems.ANCIENT_HELMET_ARTIFACT.get(), 1800, 1850), new RandomItemEntry(FAItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 1850, 1900), new RandomItemEntry(FAItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 1900, 1950), new RandomItemEntry(FAItems.ANCIENT_BOOTS_ARTIFACT.get(), 1950, 2000)));
-        this.add(FABlocks.RELIC_IN_DEEPSLATE.get(), block -> this.createFossilOreLootTable(block, 2000, new RandomItemEntry(FAItems.SCARAB_GEM.get(), 0, 1), new RandomItemEntry(FAItems.PREHISTORIC_COIN.get(), 1, 2), new RandomItemEntry(FAItems.RELIC_SCRAP.get(), 2, 1550), new RandomItemEntry(FAItems.ANCIENT_SWORD_ARTIFACT.get(), 1550, 1600), new RandomItemEntry(FAItems.ANCIENT_SHOVEL_ARTIFACT.get(), 1600, 1650), new RandomItemEntry(FAItems.ANCIENT_PICKAXE_ARTIFACT.get(), 1650, 1700), new RandomItemEntry(FAItems.ANCIENT_AXE_ARTIFACT.get(), 1700, 1750), new RandomItemEntry(FAItems.ANCIENT_HOE_ARTIFACT.get(), 1750, 1800), new RandomItemEntry(FAItems.ANCIENT_HELMET_ARTIFACT.get(), 1800, 1850), new RandomItemEntry(FAItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 1850, 1900), new RandomItemEntry(FAItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 1900, 1950), new RandomItemEntry(FAItems.ANCIENT_BOOTS_ARTIFACT.get(), 1950, 2000)));
+        this.add(FABlocks.RELIC_IN_STONE.get(), block -> this.createFossilOreLootTable(block, 2000, new RandomItemEntry(FAItems.SCARAB_GEM.get(), 0, 1), new RandomItemEntry(FAItems.PREHISTORIC_COIN.get(), 1, 2), new RandomItemEntry(Items.FLINT, 2, 100), new RandomItemEntry(Items.GRAVEL, 100, 500), new RandomItemEntry(FAItems.RELIC_SCRAP.get(), 500, 1550), new RandomItemEntry(FAItems.ANCIENT_SWORD_ARTIFACT.get(), 1550, 1600), new RandomItemEntry(FAItems.ANCIENT_SHOVEL_ARTIFACT.get(), 1600, 1650), new RandomItemEntry(FAItems.ANCIENT_PICKAXE_ARTIFACT.get(), 1650, 1700), new RandomItemEntry(FAItems.ANCIENT_AXE_ARTIFACT.get(), 1700, 1750), new RandomItemEntry(FAItems.ANCIENT_HOE_ARTIFACT.get(), 1750, 1800), new RandomItemEntry(FAItems.ANCIENT_HELMET_ARTIFACT.get(), 1800, 1850), new RandomItemEntry(FAItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 1850, 1900), new RandomItemEntry(FAItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 1900, 1950), new RandomItemEntry(FAItems.ANCIENT_BOOTS_ARTIFACT.get(), 1950, 2000)));
+        this.add(FABlocks.RELIC_IN_DEEPSLATE.get(), block -> this.createFossilOreLootTable(block, 2000, new RandomItemEntry(FAItems.SCARAB_GEM.get(), 0, 1), new RandomItemEntry(FAItems.PREHISTORIC_COIN.get(), 1, 2), new RandomItemEntry(Items.FLINT, 2, 100), new RandomItemEntry(Items.GRAVEL, 100, 500), new RandomItemEntry(FAItems.RELIC_SCRAP.get(), 500, 1550), new RandomItemEntry(FAItems.ANCIENT_SWORD_ARTIFACT.get(), 1550, 1600), new RandomItemEntry(FAItems.ANCIENT_SHOVEL_ARTIFACT.get(), 1600, 1650), new RandomItemEntry(FAItems.ANCIENT_PICKAXE_ARTIFACT.get(), 1650, 1700), new RandomItemEntry(FAItems.ANCIENT_AXE_ARTIFACT.get(), 1700, 1750), new RandomItemEntry(FAItems.ANCIENT_HOE_ARTIFACT.get(), 1750, 1800), new RandomItemEntry(FAItems.ANCIENT_HELMET_ARTIFACT.get(), 1800, 1850), new RandomItemEntry(FAItems.ANCIENT_CHESTPLATE_ARTIFACT.get(), 1850, 1900), new RandomItemEntry(FAItems.ANCIENT_LEGGINGS_ARTIFACT.get(), 1900, 1950), new RandomItemEntry(FAItems.ANCIENT_BOOTS_ARTIFACT.get(), 1950, 2000)));
         this.dropWhenSilkTouch(FABlocks.FROZEN_LEECH.get());
         this.add(FABlocks.LEECH_IN_ICE.get(), block -> this.createSingleItemTableWithSilkTouch(block, FAItems.FROZEN_LEECH.get()));
         this.dropSelf(FABlocks.AMBER_BLOCK.get());
@@ -122,22 +122,22 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.dropSelf(FABlocks.WAXED_EXPOSED_COPPER_LLAMA_STATUE.get());
         this.dropSelf(FABlocks.WAXED_WEATHERED_COPPER_LLAMA_STATUE.get());
         this.dropSelf(FABlocks.WAXED_OXIDIZED_COPPER_LLAMA_STATUE.get());
-        this.dropOther(FABlocks.WHITE_DECORATION_POST.get(), FAItems.WHITE_DECORATION_PLAQUE.get());
-        this.dropOther(FABlocks.ORANGE_DECORATION_POST.get(), FAItems.ORANGE_DECORATION_PLAQUE.get());
-        this.dropOther(FABlocks.MAGENTA_DECORATION_POST.get(), FAItems.MAGENTA_DECORATION_PLAQUE.get());
-        this.dropOther(FABlocks.LIGHT_BLUE_DECORATION_POST.get(), FAItems.LIGHT_BLUE_DECORATION_PLAQUE.get());
-        this.dropOther(FABlocks.YELLOW_DECORATION_POST.get(), FAItems.YELLOW_DECORATION_PLAQUE.get());
-        this.dropOther(FABlocks.LIME_DECORATION_POST.get(), FAItems.LIME_DECORATION_PLAQUE.get());
-        this.dropOther(FABlocks.PINK_DECORATION_POST.get(), FAItems.PINK_DECORATION_PLAQUE.get());
-        this.dropOther(FABlocks.GRAY_DECORATION_POST.get(), FAItems.GRAY_DECORATION_PLAQUE.get());
-        this.dropOther(FABlocks.LIGHT_GRAY_DECORATION_POST.get(), FAItems.LIGHT_GRAY_DECORATION_PLAQUE.get());
-        this.dropOther(FABlocks.CYAN_DECORATION_POST.get(), FAItems.CYAN_DECORATION_PLAQUE.get());
-        this.dropOther(FABlocks.PURPLE_DECORATION_POST.get(), FAItems.PURPLE_DECORATION_PLAQUE.get());
-        this.dropOther(FABlocks.BLUE_DECORATION_POST.get(), FAItems.BLUE_DECORATION_PLAQUE.get());
-        this.dropOther(FABlocks.BROWN_DECORATION_POST.get(), FAItems.BROWN_DECORATION_PLAQUE.get());
-        this.dropOther(FABlocks.GREEN_DECORATION_POST.get(), FAItems.GREEN_DECORATION_PLAQUE.get());
-        this.dropOther(FABlocks.RED_DECORATION_POST.get(), FAItems.RED_DECORATION_PLAQUE.get());
-        this.dropOther(FABlocks.BLACK_DECORATION_POST.get(), FAItems.BLACK_DECORATION_PLAQUE.get());
+        this.dropSelf(FABlocks.WHITE_POST.get());
+        this.dropSelf(FABlocks.ORANGE_POST.get());
+        this.dropSelf(FABlocks.MAGENTA_POST.get());
+        this.dropSelf(FABlocks.LIGHT_BLUE_POST.get());
+        this.dropSelf(FABlocks.YELLOW_POST.get());
+        this.dropSelf(FABlocks.LIME_POST.get());
+        this.dropSelf(FABlocks.PINK_POST.get());
+        this.dropSelf(FABlocks.GRAY_POST.get());
+        this.dropSelf(FABlocks.LIGHT_GRAY_POST.get());
+        this.dropSelf(FABlocks.CYAN_POST.get());
+        this.dropSelf(FABlocks.PURPLE_POST.get());
+        this.dropSelf(FABlocks.BLUE_POST.get());
+        this.dropSelf(FABlocks.BROWN_POST.get());
+        this.dropSelf(FABlocks.GREEN_POST.get());
+        this.dropSelf(FABlocks.RED_POST.get());
+        this.dropSelf(FABlocks.BLACK_POST.get());
         this.dropSelf(FABlocks.SMALL_CAGE.get());
         this.add(FABlocks.MEDIUM_CAGE.get(), block -> LootTable.lootTable().withPool(this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(block).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(MediumCageBlock.HALF, DoubleBlockHalf.LOWER).hasProperty(MediumCageBlock.PART, 1)))))));
         this.dropSelf(FABlocks.CYCAD_HEAD.get());
@@ -194,8 +194,10 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.dropSelf(FABlocks.POLISHED_ASPHALT_BRICK_STAIRS.get());
         this.dropSelfSlab(FABlocks.POLISHED_ASPHALT_BRICK_SLAB.get());
         this.dropSelf(FABlocks.POLISHED_ASPHALT_BRICK_WALL.get());
-        this.dropSelf(FABlocks.SOLID_WHITE_MARKING.get());
-        this.dropSelf(FABlocks.DOUBLE_SOLID_WHITE_MARKING.get());
+        this.dropSelf(FABlocks.WHITE_ROAD_MARKING.get());
+        this.dropSelf(FABlocks.DOUBLE_WHITE_ROAD_MARKING.get());
+        this.dropSelf(FABlocks.YELLOW_ROAD_MARKING.get());
+        this.dropSelf(FABlocks.DOUBLE_YELLOW_ROAD_MARKING.get());
         this.dropSelf(FABlocks.HARDENED_TAR_BLOCK.get());
         this.dropSelf(FABlocks.HOLOGRAM_PROJECTOR.get());
         this.dropSelf(FABlocks.WHITE_HOLOGRAM_PROJECTOR.get());
@@ -214,6 +216,8 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.dropSelf(FABlocks.GREEN_HOLOGRAM_PROJECTOR.get());
         this.dropSelf(FABlocks.RED_HOLOGRAM_PROJECTOR.get());
         this.dropSelf(FABlocks.BLACK_HOLOGRAM_PROJECTOR.get());
+        this.dropSelf(FABlocks.CHAIN_LINK_FENCE.get());
+        this.dropSelf(FABlocks.IRON_FENCE.get());
     }
 
     protected LootTable.Builder createFossilOreLootTable(Block block, int randomRange, RandomItemEntry... randomItemEntries) {

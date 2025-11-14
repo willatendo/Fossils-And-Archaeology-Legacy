@@ -17,6 +17,6 @@ public class FADecorationPlaqueTypeTagProvider extends TagsProvider<DecorationPl
 
     @Override
     protected void addTags(Provider provider) {
-        this.tag(FADecorationPlaqueTypeTags.PLACEABLE).add(FADecorationPlaqueTypes.CARNIVORE, FADecorationPlaqueTypes.DOWN, FADecorationPlaqueTypes.HERBIVORE, FADecorationPlaqueTypes.LEFT, FADecorationPlaqueTypes.LEFT_AND_RIGHT, FADecorationPlaqueTypes.RIGHT, FADecorationPlaqueTypes.RIGHT_AND_LEFT, FADecorationPlaqueTypes.UP);
+        this.tag(FADecorationPlaqueTypeTags.PLACEABLE).add(FADecorationPlaqueTypes.CARNIVORE, FADecorationPlaqueTypes.DOWN, FADecorationPlaqueTypes.HERBIVORE, FADecorationPlaqueTypes.LEFT, FADecorationPlaqueTypes.LEFT_AND_RIGHT, FADecorationPlaqueTypes.RIGHT, FADecorationPlaqueTypes.RIGHT_AND_LEFT, FADecorationPlaqueTypes.UP, FADecorationPlaqueTypes.BATHROOM);
     }
 }

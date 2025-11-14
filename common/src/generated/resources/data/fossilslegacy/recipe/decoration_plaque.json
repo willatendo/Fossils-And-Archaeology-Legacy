@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "minecraft:iron_ingot",
+    "$": "minecraft:iron_nugget"
+  },
+  "pattern": [
+    "###",
+    "###",
+    " $ "
+  ],
+  "result": {
+    "count": 4,
+    "id": "fossilslegacy:decoration_plaque"
+  }
+}

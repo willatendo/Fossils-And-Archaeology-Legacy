@@ -29,6 +29,7 @@ public final class FAPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ORE_PLANT_FOSSIL = FAPlacedFeatures.create("ore_plant_fossil");
     public static final ResourceKey<PlacedFeature> ORE_RELIC = FAPlacedFeatures.create("ore_relic");
     public static final ResourceKey<PlacedFeature> ORE_PERMAFROST = FAPlacedFeatures.create("ore_permafrost");
+    public static final ResourceKey<PlacedFeature> ORE_LEECH_IN_ICE = FAPlacedFeatures.create("ore_leech_in_ice");
 
     public static final ResourceKey<PlacedFeature> CYCAD_CHECKED = FAPlacedFeatures.create("cycad");
     public static final ResourceKey<PlacedFeature> CYCAD_PATCH = FAPlacedFeatures.create("cycad_patch");
@@ -108,6 +109,7 @@ public final class FAPlacedFeatures {
         PlacementUtils.register(bootstrapContext, ORE_PLANT_FOSSIL, configuredFeatures.getOrThrow(FAConfiguredFeatures.ORE_PLANT_FOSSIL), FAPlacedFeatures.commonOrePlacement(10, HeightRangePlacement.triangle(VerticalAnchor.absolute(-30), VerticalAnchor.absolute(90))));
         PlacementUtils.register(bootstrapContext, ORE_RELIC, configuredFeatures.getOrThrow(FAConfiguredFeatures.ORE_RELIC), FAPlacedFeatures.commonOrePlacement(15, HeightRangePlacement.triangle(VerticalAnchor.absolute(50), VerticalAnchor.absolute(256))));
         PlacementUtils.register(bootstrapContext, ORE_PERMAFROST, configuredFeatures.getOrThrow(FAConfiguredFeatures.ORE_PERMAFROST), FAPlacedFeatures.commonOrePlacement(25, HeightRangePlacement.triangle(VerticalAnchor.absolute(25), VerticalAnchor.absolute(256))));
+        PlacementUtils.register(bootstrapContext, ORE_LEECH_IN_ICE, configuredFeatures.getOrThrow(FAConfiguredFeatures.ORE_LEECH_IN_ICE), FAPlacedFeatures.commonOrePlacement(5, HeightRangePlacement.triangle(VerticalAnchor.absolute(50), VerticalAnchor.absolute(256))));
 
         // Patches
         PlacementUtils.register(bootstrapContext, CYCAD_CHECKED, configuredFeatures.getOrThrow(FAConfiguredFeatures.CYCAD), List.of(PlacementUtils.filteredByBlockSurvival(FABlocks.CYCAD_HEAD.get())));

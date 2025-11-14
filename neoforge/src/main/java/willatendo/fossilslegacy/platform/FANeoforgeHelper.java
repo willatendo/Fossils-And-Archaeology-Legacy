@@ -35,12 +35,8 @@ public class FANeoforgeHelper implements FAModloaderHelper {
     }
 
     @Override
-    public CreativeModeTab.Builder createCreativeModeTab(String id, List<String> after, List<String> before) {
-        CreativeModeTab.Builder builder = CreativeModeTab.builder();
-        if (id.equals("fa_all")) {
-            builder.withSearchBar();
-        }
-        return builder.title(FAUtils.translation("itemGroup", id)).withTabsAfter(after.stream().map(FAUtils::resource).toArray(ResourceLocation[]::new)).withTabsBefore(before.stream().map(FAUtils::resource).toArray(ResourceLocation[]::new));
+    public CreativeModeTab.Builder createCreativeModeTab(String id) {
+        return CreativeModeTab.builder().title(FAUtils.translation("itemGroup", id)).withSearchBar();
     }
 
     @Override

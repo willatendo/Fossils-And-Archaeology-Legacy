@@ -30,7 +30,7 @@ public interface FAModloaderHelper {
 
     void sendToClient(ServerPlayer serverPlayer, CustomPacketPayload customPacketPayload);
 
-    CreativeModeTab.Builder createCreativeModeTab(String id, List<String> after, List<String> before);
+    CreativeModeTab.Builder createCreativeModeTab(String id);
 
     default <T> Supplier<EntityDataSerializer<Holder<T>>> registerDataSerializer(String id, StreamCodec<RegistryFriendlyByteBuf, Holder<T>> streamCodec) {
         return this.registerDataSerializer(id, EntityDataSerializer.forValueType(streamCodec));

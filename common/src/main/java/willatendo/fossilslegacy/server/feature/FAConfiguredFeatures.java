@@ -55,6 +55,7 @@ public final class FAConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_PLANT_FOSSIL = FAConfiguredFeatures.create("ore_plant_fossil");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_RELIC = FAConfiguredFeatures.create("ore_relic");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_PERMAFROST = FAConfiguredFeatures.create("ore_permafrost");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_LEECH_IN_ICE = FAConfiguredFeatures.create("ore_leech_in_ice");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> CYCAD = FAConfiguredFeatures.create("cycad");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CYCAD_PATCH = FAConfiguredFeatures.create("cycad_patch");
@@ -181,6 +182,7 @@ public final class FAConfiguredFeatures {
         FeatureUtils.register(bootstrapContext, ORE_PLANT_FOSSIL, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), FABlocks.PLANT_FOSSIL_ORE.get().defaultBlockState()), OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), FABlocks.DEEPSLATE_PLANT_FOSSIL_ORE.get().defaultBlockState())), 8, 0.0F));
         FeatureUtils.register(bootstrapContext, ORE_RELIC, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), FABlocks.RELIC_IN_STONE.get().defaultBlockState()), OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), FABlocks.RELIC_IN_DEEPSLATE.get().defaultBlockState())), 8, 0.0F));
         FeatureUtils.register(bootstrapContext, ORE_PERMAFROST, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), FABlocks.PERMAFROST.get().defaultBlockState())), 8, 0.0F));
+        FeatureUtils.register(bootstrapContext, ORE_LEECH_IN_ICE, Feature.SCATTERED_ORE, new OreConfiguration(List.of(OreConfiguration.target(new TagMatchTest(BlockTags.ICE), Blocks.TRIAL_SPAWNER.defaultBlockState())), 1));
 
         // Patches
         FeatureUtils.register(bootstrapContext, CYCAD, FAFeatures.TALL_PLANT.get(), new TallPlantConfiguration(BlockStateProvider.simple(FABlocks.CYCAD_HEAD.get()), BlockStateProvider.simple(FABlocks.CYCAD_LOG.get()), UniformInt.of(1, 4)));

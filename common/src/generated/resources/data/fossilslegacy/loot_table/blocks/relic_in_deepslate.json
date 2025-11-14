@@ -48,6 +48,16 @@
                 },
                 {
                   "hit_from": 2,
+                  "hit_to": 100,
+                  "item": "minecraft:flint"
+                },
+                {
+                  "hit_from": 100,
+                  "hit_to": 500,
+                  "item": "minecraft:gravel"
+                },
+                {
+                  "hit_from": 500,
                   "hit_to": 1550,
                   "item": "fossilslegacy:relic_scrap"
                 },

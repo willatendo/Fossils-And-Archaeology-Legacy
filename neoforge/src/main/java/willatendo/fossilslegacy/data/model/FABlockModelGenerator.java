@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.IronBarsBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
@@ -110,22 +111,22 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createLlamaStatue(FABlocks.WAXED_EXPOSED_COPPER_LLAMA_STATUE.get(), this.modLocation("block/exposed_copper_llama_statue"), this.mcLocation("block/exposed_copper"));
         this.createLlamaStatue(FABlocks.WAXED_WEATHERED_COPPER_LLAMA_STATUE.get(), this.modLocation("block/weathered_copper_llama_statue"), this.mcLocation("block/weathered_copper"));
         this.createLlamaStatue(FABlocks.WAXED_OXIDIZED_COPPER_LLAMA_STATUE.get(), this.modLocation("block/oxidized_copper_llama_statue"), this.mcLocation("block/oxidized_copper"));
-        this.createDecorationPost(FABlocks.WHITE_DECORATION_POST.get(), Blocks.WHITE_CONCRETE);
-        this.createDecorationPost(FABlocks.ORANGE_DECORATION_POST.get(), Blocks.ORANGE_CONCRETE);
-        this.createDecorationPost(FABlocks.MAGENTA_DECORATION_POST.get(), Blocks.MAGENTA_CONCRETE);
-        this.createDecorationPost(FABlocks.LIGHT_BLUE_DECORATION_POST.get(), Blocks.LIGHT_BLUE_CONCRETE);
-        this.createDecorationPost(FABlocks.YELLOW_DECORATION_POST.get(), Blocks.YELLOW_CONCRETE);
-        this.createDecorationPost(FABlocks.LIME_DECORATION_POST.get(), Blocks.LIME_CONCRETE);
-        this.createDecorationPost(FABlocks.PINK_DECORATION_POST.get(), Blocks.PINK_CONCRETE);
-        this.createDecorationPost(FABlocks.GRAY_DECORATION_POST.get(), Blocks.GRAY_CONCRETE);
-        this.createDecorationPost(FABlocks.LIGHT_GRAY_DECORATION_POST.get(), Blocks.LIGHT_GRAY_CONCRETE);
-        this.createDecorationPost(FABlocks.CYAN_DECORATION_POST.get(), Blocks.CYAN_CONCRETE);
-        this.createDecorationPost(FABlocks.PURPLE_DECORATION_POST.get(), Blocks.PURPLE_CONCRETE);
-        this.createDecorationPost(FABlocks.BLUE_DECORATION_POST.get(), Blocks.BLUE_CONCRETE);
-        this.createDecorationPost(FABlocks.BROWN_DECORATION_POST.get(), Blocks.BROWN_CONCRETE);
-        this.createDecorationPost(FABlocks.GREEN_DECORATION_POST.get(), Blocks.GREEN_CONCRETE);
-        this.createDecorationPost(FABlocks.RED_DECORATION_POST.get(), Blocks.RED_CONCRETE);
-        this.createDecorationPost(FABlocks.BLACK_DECORATION_POST.get(), Blocks.BLACK_CONCRETE);
+        this.createDecorationPost(FABlocks.WHITE_POST.get(), Blocks.WHITE_CONCRETE);
+        this.createDecorationPost(FABlocks.ORANGE_POST.get(), Blocks.ORANGE_CONCRETE);
+        this.createDecorationPost(FABlocks.MAGENTA_POST.get(), Blocks.MAGENTA_CONCRETE);
+        this.createDecorationPost(FABlocks.LIGHT_BLUE_POST.get(), Blocks.LIGHT_BLUE_CONCRETE);
+        this.createDecorationPost(FABlocks.YELLOW_POST.get(), Blocks.YELLOW_CONCRETE);
+        this.createDecorationPost(FABlocks.LIME_POST.get(), Blocks.LIME_CONCRETE);
+        this.createDecorationPost(FABlocks.PINK_POST.get(), Blocks.PINK_CONCRETE);
+        this.createDecorationPost(FABlocks.GRAY_POST.get(), Blocks.GRAY_CONCRETE);
+        this.createDecorationPost(FABlocks.LIGHT_GRAY_POST.get(), Blocks.LIGHT_GRAY_CONCRETE);
+        this.createDecorationPost(FABlocks.CYAN_POST.get(), Blocks.CYAN_CONCRETE);
+        this.createDecorationPost(FABlocks.PURPLE_POST.get(), Blocks.PURPLE_CONCRETE);
+        this.createDecorationPost(FABlocks.BLUE_POST.get(), Blocks.BLUE_CONCRETE);
+        this.createDecorationPost(FABlocks.BROWN_POST.get(), Blocks.BROWN_CONCRETE);
+        this.createDecorationPost(FABlocks.GREEN_POST.get(), Blocks.GREEN_CONCRETE);
+        this.createDecorationPost(FABlocks.RED_POST.get(), Blocks.RED_CONCRETE);
+        this.createDecorationPost(FABlocks.BLACK_POST.get(), Blocks.BLACK_CONCRETE);
         this.createSmallCage(FABlocks.SMALL_CAGE.get());
         this.createMediumCage(FABlocks.MEDIUM_CAGE.get());
         this.createJurassicFern(FABlocks.JURASSIC_FERN.get());
@@ -169,8 +170,10 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         for (int i = 0; i < FABlockRegistry.headSize(); i++) {
             this.createHead(FABlockRegistry.getHeads(i).get(), FABlockRegistry.getWallHeads(i).get(), FAHeadTypes.values()[i], this.modLocation("item/template_" + FAHeadTypes.values()[i].getSerializedName() + "_head"));
         }
-        this.createRoadMarkingBlock(FABlocks.SOLID_WHITE_MARKING.get(), "solid_white_marking");
-        this.createRoadMarkingBlock(FABlocks.DOUBLE_SOLID_WHITE_MARKING.get(), "double_solid_white_marking");
+        this.createRoadMarkingBlock(FABlocks.WHITE_ROAD_MARKING.get(), "white_road_marking");
+        this.createRoadMarkingBlock(FABlocks.DOUBLE_WHITE_ROAD_MARKING.get(), "double_white_road_marking");
+        this.createRoadMarkingBlock(FABlocks.YELLOW_ROAD_MARKING.get(), "yellow_road_marking");
+        this.createRoadMarkingBlock(FABlocks.DOUBLE_YELLOW_ROAD_MARKING.get(), "double_yellow_road_marking");
         this.createHardenedTarBlock(FABlocks.HARDENED_TAR_BLOCK.get());
         this.createHologramProjector(FABlocks.HOLOGRAM_PROJECTOR.get());
         this.createColoredHologramProjector(FABlocks.WHITE_HOLOGRAM_PROJECTOR.get(), DyeColor.WHITE);
@@ -189,6 +192,8 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createColoredHologramProjector(FABlocks.GREEN_HOLOGRAM_PROJECTOR.get(), DyeColor.GREEN);
         this.createColoredHologramProjector(FABlocks.RED_HOLOGRAM_PROJECTOR.get(), DyeColor.RED);
         this.createColoredHologramProjector(FABlocks.BLACK_HOLOGRAM_PROJECTOR.get(), DyeColor.BLACK);
+        this.createIronBarsLike(FABlocks.CHAIN_LINK_FENCE.get(), this.modLocation("block/chain_link_fence"));
+        this.createIronBarsLike(FABlocks.IRON_FENCE.get(), this.modLocation("block/iron_fence"), this.modLocation("block/iron_fence_edge"));
     }
 
     private ResourceLocation basic(Block block, ModelTemplate modelTemplate, TextureMapping textureMapping) {
@@ -483,5 +488,21 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         ResourceLocation offModel = FAModelTemplates.TEMPLATE_HOLOGRAM_PROJECTOR.create(coloredHologramProjectorBlock, new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/hologram_projector_side")).put(TextureSlot.UP, this.modLocation("block/" + dyeColor.getName() + "_hologram_projector_top")).put(TextureSlot.DOWN, this.modLocation("block/hologram_projector_bottom")), this.modelOutput);
         ResourceLocation onModel = FAModelTemplates.TEMPLATE_HOLOGRAM_PROJECTOR.createWithSuffix(coloredHologramProjectorBlock, "_on", new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/hologram_projector_side_on")).put(TextureSlot.UP, this.modLocation("block/" + dyeColor.getName() + "_hologram_projector_top_on")).put(TextureSlot.DOWN, this.modLocation("block/hologram_projector_bottom")), this.modelOutput);
         this.block(MultiVariantGenerator.multiVariant(coloredHologramProjectorBlock).with(PropertyDispatch.property(HologramProjectorBlock.ON).select(false, Variant.variant().with(VariantProperties.MODEL, offModel)).select(true, Variant.variant().with(VariantProperties.MODEL, onModel))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
+    }
+
+    public void createIronBarsLike(IronBarsBlock ironBarsBlock, ResourceLocation texture) {
+        this.createIronBarsLike(ironBarsBlock, texture, texture);
+    }
+
+    public void createIronBarsLike(IronBarsBlock ironBarsBlock, ResourceLocation barsTexture, ResourceLocation edgeTexture) {
+        TextureMapping ironBarsTexture = new TextureMapping().put(FATextureSlot.BARS, barsTexture).put(TextureSlot.EDGE, edgeTexture);
+        ResourceLocation postEnd = FAModelTemplates.TEMPLATE_BARS_POST_ENDS.createWithSuffix(ironBarsBlock, "_post_ends", ironBarsTexture, this.modelOutput);
+        ResourceLocation post = FAModelTemplates.TEMPLATE_BARS_POST.createWithSuffix(ironBarsBlock, "_post", ironBarsTexture, this.modelOutput);
+        ResourceLocation cap = FAModelTemplates.TEMPLATE_BARS_CAP.createWithSuffix(ironBarsBlock, "_cap", ironBarsTexture, this.modelOutput);
+        ResourceLocation capAlt = FAModelTemplates.TEMPLATE_BARS_CAP_ALT.createWithSuffix(ironBarsBlock, "_cap_alt", ironBarsTexture, this.modelOutput);
+        ResourceLocation side = FAModelTemplates.TEMPLATE_BARS_SIDE.createWithSuffix(ironBarsBlock, "_side", ironBarsTexture, this.modelOutput);
+        ResourceLocation sideAlt = FAModelTemplates.TEMPLATE_BARS_SIDE_ALT.createWithSuffix(ironBarsBlock, "_side_alt", ironBarsTexture, this.modelOutput);
+        this.blockStateOutput.accept(MultiPartGenerator.multiPart(ironBarsBlock).with(Variant.variant().with(VariantProperties.MODEL, postEnd)).with(Condition.condition().term(BlockStateProperties.NORTH, false).term(BlockStateProperties.EAST, false).term(BlockStateProperties.SOUTH, false).term(BlockStateProperties.WEST, false), Variant.variant().with(VariantProperties.MODEL, post)).with(Condition.condition().term(BlockStateProperties.NORTH, true).term(BlockStateProperties.EAST, false).term(BlockStateProperties.SOUTH, false).term(BlockStateProperties.WEST, false), Variant.variant().with(VariantProperties.MODEL, cap)).with(Condition.condition().term(BlockStateProperties.NORTH, false).term(BlockStateProperties.EAST, true).term(BlockStateProperties.SOUTH, false).term(BlockStateProperties.WEST, false), Variant.variant().with(VariantProperties.MODEL, cap).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)).with(Condition.condition().term(BlockStateProperties.NORTH, false).term(BlockStateProperties.EAST, false).term(BlockStateProperties.SOUTH, true).term(BlockStateProperties.WEST, false), Variant.variant().with(VariantProperties.MODEL, capAlt)).with(Condition.condition().term(BlockStateProperties.NORTH, false).term(BlockStateProperties.EAST, false).term(BlockStateProperties.SOUTH, false).term(BlockStateProperties.WEST, true), Variant.variant().with(VariantProperties.MODEL, capAlt).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)).with(Condition.condition().term(BlockStateProperties.NORTH, true), Variant.variant().with(VariantProperties.MODEL, side)).with(Condition.condition().term(BlockStateProperties.EAST, true), Variant.variant().with(VariantProperties.MODEL, side).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)).with(Condition.condition().term(BlockStateProperties.SOUTH, true), Variant.variant().with(VariantProperties.MODEL, sideAlt)).with(Condition.condition().term(BlockStateProperties.WEST, true), Variant.variant().with(VariantProperties.MODEL, sideAlt).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)));
+        this.blockModelGenerators.registerSimpleFlatItemModel(ironBarsBlock);
     }
 }

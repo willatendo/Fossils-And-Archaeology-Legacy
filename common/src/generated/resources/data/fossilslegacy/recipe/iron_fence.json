@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "minecraft:iron_ingot",
+    "$": "minecraft:iron_nugget"
+  },
+  "pattern": [
+    "#$#",
+    "#$#"
+  ],
+  "result": {
+    "count": 16,
+    "id": "fossilslegacy:iron_fence"
+  }
+}

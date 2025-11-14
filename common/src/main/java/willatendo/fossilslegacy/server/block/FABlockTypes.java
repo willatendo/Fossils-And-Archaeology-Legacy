@@ -25,7 +25,7 @@ public final class FABlockTypes {
         FABlockTypes.register("cultivator", CultivatorBlock.CODEC);
         FABlockTypes.register("cycad_head", CycadHeadBlock.CODEC);
         FABlockTypes.register("cycad_log", CycadLogBlock.CODEC);
-        FABlockTypes.register("decoration_post", DecorationPostBlock.CODEC);
+        FABlockTypes.register("decoration_post", PostBlock.CODEC);
         FABlockTypes.register("dipteris", DipterisBlock.CODEC);
         FABlockTypes.register("dna_coder", DNACoderBlock.CODEC);
         FABlockTypes.register("dna_hybridizer", DNAHybridizerBlock.CODEC);

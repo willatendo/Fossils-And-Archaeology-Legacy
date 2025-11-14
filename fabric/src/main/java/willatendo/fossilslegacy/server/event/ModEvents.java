@@ -67,6 +67,7 @@ public class ModEvents {
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FAPlacedFeatures.ORE_PLANT_FOSSIL);
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FAPlacedFeatures.ORE_RELIC);
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.UNDERGROUND_ORES, FAPlacedFeatures.ORE_PERMAFROST);
+        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), Decoration.TOP_LAYER_MODIFICATION, FAPlacedFeatures.ORE_LEECH_IN_ICE);
         BiomeModifications.addSpawn(BiomeSelectors.tag(BiomeTags.HAS_OCEAN_RUIN_WARM), MobCategory.WATER_AMBIENT, FAEntityTypes.NAUTILUS.get(), 1, 1, 1);
 
         ServerLifecycleEvents.SERVER_STARTING.register(server -> BasicEvents.structurePoolModification(new FabricStructurePoolModification(server)));

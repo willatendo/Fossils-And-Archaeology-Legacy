@@ -34,7 +34,7 @@ public class FAFabricHelper implements FAModloaderHelper {
     }
 
     @Override
-    public CreativeModeTab.Builder createCreativeModeTab(String id, List<String> after, List<String> before) {
+    public CreativeModeTab.Builder createCreativeModeTab(String id) {
         CreativeModeTab.Builder builder = FabricItemGroup.builder();
         return builder.title(FAUtils.translation("itemGroup", id));
     }

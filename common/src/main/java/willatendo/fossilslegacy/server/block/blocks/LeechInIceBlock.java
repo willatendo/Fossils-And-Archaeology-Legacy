@@ -8,25 +8,21 @@ import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.HalfTransparentBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
 import willatendo.fossilslegacy.server.item.FAItems;
 
 public class LeechInIceBlock extends HalfTransparentBlock {
     public static final MapCodec<LeechInIceBlock> CODEC = Block.simpleCodec(LeechInIceBlock::new);
-    public static final EnumProperty<Direction> HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
 
     public LeechInIceBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.getStateDefinition().any().setValue(HORIZONTAL_FACING, Direction.NORTH));
     }
 
     public static BlockState meltsInto() {
@@ -69,27 +65,6 @@ public class LeechInIceBlock extends HalfTransparentBlock {
             level.setBlockAndUpdate(blockPos, LeechInIceBlock.meltsInto());
             level.neighborChanged(blockPos, LeechInIceBlock.meltsInto().getBlock(), null);
         }
-    }
-
-    @Override
-    public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
-        return this.defaultBlockState().setValue(HORIZONTAL_FACING, blockPlaceContext.getHorizontalDirection().getOpposite());
-    }
-
-    @Override
-    public BlockState rotate(BlockState blockState, Rotation rotation) {
-        return blockState.setValue(HORIZONTAL_FACING, rotation.rotate(blockState.getValue(HORIZONTAL_FACING)));
-    }
-
-    @Override
-    public BlockState mirror(BlockState blockState, Mirror mirror) {
-        return blockState.rotate(mirror.getRotation(blockState.getValue(HORIZONTAL_FACING)));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(HORIZONTAL_FACING);
-        super.createBlockStateDefinition(builder);
     }
 
     @Override

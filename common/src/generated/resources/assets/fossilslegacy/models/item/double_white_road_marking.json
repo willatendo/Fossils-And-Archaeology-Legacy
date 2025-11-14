@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "fossilslegacy:block/double_white_road_marking"
+  }
+}

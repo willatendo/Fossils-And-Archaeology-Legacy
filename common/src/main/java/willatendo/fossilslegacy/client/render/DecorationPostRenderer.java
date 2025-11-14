@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.Holder;
 import willatendo.fossilslegacy.client.resources.DecorationPlaqueTextureManager;
-import willatendo.fossilslegacy.server.block.blocks.DecorationPostBlock;
+import willatendo.fossilslegacy.server.block.blocks.PostBlock;
 import willatendo.fossilslegacy.server.block.entity.entities.DecorationPostBlockEntity;
 import willatendo.fossilslegacy.server.decoration_plaque_type.DecorationPlaqueType;
 
@@ -25,7 +25,7 @@ public class DecorationPostRenderer implements BlockEntityRenderer<DecorationPos
             poseStack.pushPose();
             poseStack.translate(0.5F, 0.5F, 0.5F);
             if (decorationPostBlockEntity.getBlockState() != null) {
-                float rotation = 180.0F - ((float) decorationPostBlockEntity.getBlockState().getValue(DecorationPostBlock.ROTATION) * 45.0F);
+                float rotation = 180.0F - ((float) decorationPostBlockEntity.getBlockState().getValue(PostBlock.ROTATION) * 45.0F);
                 poseStack.mulPose(Axis.YP.rotationDegrees(rotation));
                 if (rotation % 90 == 0) {
                     poseStack.translate(0.0F, 0.0F, -0.1F);

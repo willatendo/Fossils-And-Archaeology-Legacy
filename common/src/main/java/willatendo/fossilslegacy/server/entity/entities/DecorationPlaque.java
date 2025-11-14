@@ -16,6 +16,8 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerEntity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.VariantHolder;
@@ -24,8 +26,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import willatendo.fossilslegacy.server.block.entity.entities.DecorationPostBlockEntity;
 import willatendo.fossilslegacy.server.decoration_plaque_type.DecorationPlaqueType;
 import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -46,7 +50,7 @@ public class DecorationPlaque extends HangingEntity implements VariantHolder<Hol
 
     public DecorationPlaque(EntityType<? extends DecorationPlaque> entityType, Level level) {
         super(entityType, level);
-        this.plaqueItemStack = new ItemStack(FAItems.WHITE_DECORATION_PLAQUE.get());
+        this.plaqueItemStack = new ItemStack(FAItems.DECORATION_PLAQUE.get());
     }
 
     @Override
@@ -69,6 +73,32 @@ public class DecorationPlaque extends HangingEntity implements VariantHolder<Hol
     @Override
     public Holder<DecorationPlaqueType> getVariant() {
         return this.entityData.get(DECORATION_PLAQUE_TYPE);
+    }
+
+    @Override
+    public InteractionResult interact(Player player, InteractionHand interactionHand) {
+        if (!this.level().isClientSide() && player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
+            ServerLevel serverLevel = (ServerLevel) this.level();
+            List<Holder<DecorationPlaqueType>> decorationPlaqueTypes = serverLevel.registryAccess().lookupOrThrow(FARegistries.DECORATION_PLAQUE_TYPE).get(FADecorationPlaqueTypeTags.PLACEABLE).get().stream().filter(decorationPlaqueTypeHolder -> {
+                DecorationPlaqueType decorationPlaqueType = decorationPlaqueTypeHolder.value();
+                DecorationPlaqueType thisDecorationPlaqueType = this.getVariant().value();
+                return thisDecorationPlaqueType.width() == decorationPlaqueType.width() && thisDecorationPlaqueType.height() == decorationPlaqueType.height();
+            }).toList();
+            Holder<DecorationPlaqueType> decorationPlaqueTypeHolder;
+            if (this.getVariant() != null) {
+                int index = decorationPlaqueTypes.indexOf(this.getVariant()) + 1;
+                if (index < decorationPlaqueTypes.size()) {
+                    decorationPlaqueTypeHolder = decorationPlaqueTypes.get(index);
+                } else {
+                    decorationPlaqueTypeHolder = decorationPlaqueTypes.getFirst();
+                }
+            } else {
+                decorationPlaqueTypeHolder = decorationPlaqueTypes.getFirst();
+            }
+            this.setVariant(decorationPlaqueTypeHolder);
+            return InteractionResult.SUCCESS;
+        }
+        return super.interact(player, interactionHand);
     }
 
     public static Optional<DecorationPlaque> create(Level level, BlockPos blockPos, ItemStack plaqueItemStack, Direction direction) {

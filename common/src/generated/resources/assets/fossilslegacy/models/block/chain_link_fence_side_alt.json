@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/iron_bars_side_alt",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bars": "fossilslegacy:block/chain_link_fence",
+    "edge": "fossilslegacy:block/chain_link_fence"
+  }
+}

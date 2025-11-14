@@ -7,7 +7,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
 import net.minecraft.resources.RegistryOps;
-import net.minecraft.world.entity.decoration.Painting;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -28,19 +28,15 @@ import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
 import willatendo.fossilslegacy.server.item.data_components.HeadDisplayInformation;
 import willatendo.fossilslegacy.server.item.items.DNAItem;
 import willatendo.fossilslegacy.server.item.items.MagicConchItem;
-import willatendo.fossilslegacy.server.painting.FAPaintingVariants;
 import willatendo.fossilslegacy.server.registry.FABlockRegistry;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.stone_tablet_variant.StoneTabletVariant;
-import willatendo.fossilslegacy.server.tags.FAFossilVariantTags;
 import willatendo.fossilslegacy.server.tags.FASkinGeneTags;
-import willatendo.fossilslegacy.server.tags.FAStoneTabletVariantTags;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.registry.SimpleHolder;
 import willatendo.simplelibrary.server.registry.SimpleRegistry;
 
 import java.util.Comparator;
-import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
@@ -50,232 +46,18 @@ public final class FACreativeModeTabs {
     private static final Comparator<Holder<DecorationPlaqueType>> DECORATION_PLAQUE_COMPARATOR = Comparator.comparing(Holder::value, Comparator.<DecorationPlaqueType>comparingInt(decorationPlaqueType -> decorationPlaqueType.height() * decorationPlaqueType.width()).thenComparing(DecorationPlaqueType::width));
     private static final Comparator<Holder<StoneTabletVariant>> STONE_TABLET_COMPARATOR = Comparator.comparing(Holder::value, Comparator.<StoneTabletVariant>comparingInt(stoneTabletVariant -> stoneTabletVariant.height() * stoneTabletVariant.width()).thenComparing(StoneTabletVariant::width));
 
-    public static final SimpleHolder<CreativeModeTab> FA_ARCHAEOLOGY = FACreativeModeTabs.register("fa_archaeology", () -> new ItemStack(FAItems.SCARAB_GEM.get()), (itemDisplayParameters, output) -> {
-        FACreativeModeTabs.addArchaeology(output, itemDisplayParameters);
-    }, List.of("fa_palaeontology", "fa_palaeobotany", "fa_building_blocks", "fa_utilities", "fa_all"), List.of());
-    public static final SimpleHolder<CreativeModeTab> FA_PALAEONTOLOGY = FACreativeModeTabs.register("fa_palaeontology", () -> new ItemStack(FAItems.TRICERATOPS_DNA.get()), (itemDisplayParameters, output) -> {
-        FACreativeModeTabs.addCreationBlocks(output);
-        output.accept(FABlocks.PALAEONTOLOGY_TABLE.get());
-        FACreativeModeTabs.addAnimalFossils(output, itemDisplayParameters);
-        FACreativeModeTabs.addHammers(output);
-        FACreativeModeTabs.addAnimalDNA(output);
-        FACreativeModeTabs.addEggsAndEmbryos(output);
-        FACreativeModeTabs.addMeat(output);
-        FACreativeModeTabs.addAnimalDrops(output);
-        FACreativeModeTabs.addAnimalBlocks(output);
-        FACreativeModeTabs.addCreatureSpawnEggs(output);
-    }, List.of("fa_all", "fa_palaeobotany", "fa_building_blocks", "fa_utilities"), List.of("fa_archaeology"));
-    public static final SimpleHolder<CreativeModeTab> FA_PALAEOBOTANY = FACreativeModeTabs.register("fa_palaeobotany", () -> new ItemStack(FAItems.LEPIDODENDRON_CONE.get()), (itemDisplayParameters, output) -> {
-        FACreativeModeTabs.addCreationBlocks(output);
-        FACreativeModeTabs.addPlantFossils(output);
-        FACreativeModeTabs.addPlantDNA(output);
-        FACreativeModeTabs.addSeedsAndSpores(output);
-        FACreativeModeTabs.addPlants(output);
-        FACreativeModeTabs.addWood(output);
-    }, List.of("fa_all", "fa_building_blocks", "fa_utilities"), List.of("fa_archaeology", "fa_palaeontology"));
-    public static final SimpleHolder<CreativeModeTab> FA_BUILDING_BLOCKS = FACreativeModeTabs.register("fa_building_blocks", () -> new ItemStack(FABlocks.POLISHED_ASPHALT_BRICKS.get()), (itemDisplayParameters, output) -> {
-        FACreativeModeTabs.addAsphalt(output);
-        FACreativeModeTabs.addRoadMarkings(output);
-        output.accept(FABlocks.AMBER_BLOCK.get());
-        FACreativeModeTabs.addHologramProjectors(output);
-        FACreativeModeTabs.addPaintings(output, itemDisplayParameters.holders());
-        FACreativeModeTabs.addDecorationPosts(output);
-        FACreativeModeTabs.addTar(output);
-        FACreativeModeTabs.addWood(output);
-    }, List.of("fa_all", "fa_utilities"), List.of("fa_archaeology", "fa_palaeontology", "fa_palaeobotany"));
-    public static final SimpleHolder<CreativeModeTab> FA_UTILITIES = FACreativeModeTabs.register("fa_utilities", () -> new ItemStack(FABlocks.SMALL_CAGE.get()), (itemDisplayParameters, output) -> {
-        output.accept(FAItems.USER_MANUAL.get());
-        output.accept(FAItems.DINOPEDIA.get());
-        FACreativeModeTabs.addRifle(output);
-        FACreativeModeTabs.addCages(output);
-        FACreativeModeTabs.addFlare(output);
-        FACreativeModeTabs.addEssences(output);
-        FACreativeModeTabs.addCommandingItems(output, itemDisplayParameters, false);
-        output.accept(FAItems.LEGACY_GENETIC_CODE.get());
-        output.accept(FAItems.TAR_BUCKET.get());
-        FACreativeModeTabs.addMusicDiscs(output);
-    }, List.of("fa_all"), List.of("fa_archaeology", "fa_palaeontology", "fa_palaeobotany", "fa_building_blocks"));
-    public static final SimpleHolder<CreativeModeTab> FA_ALL = FACreativeModeTabs.register("fa_all", () -> new ItemStack(FAItems.MESOZOIC_FOSSIL.get()), (itemDisplayParameters, output) -> {
-        FACreativeModeTabs.addCreationBlocks(output);
-        output.accept(FABlocks.PALAEONTOLOGY_TABLE.get());
-        FACreativeModeTabs.addAnimalFossils(output, itemDisplayParameters);
-        FACreativeModeTabs.addHammers(output);
-        FACreativeModeTabs.addAnimalDNA(output);
-        FACreativeModeTabs.addEggsAndEmbryos(output);
-        FACreativeModeTabs.addMeat(output);
-        FACreativeModeTabs.addAnimalDrops(output);
-        FACreativeModeTabs.addAnimalBlocks(output);
-        FACreativeModeTabs.addPlantFossils(output);
-        FACreativeModeTabs.addPlantDNA(output);
-        FACreativeModeTabs.addSeedsAndSpores(output);
-        FACreativeModeTabs.addPlants(output);
-        FACreativeModeTabs.addWood(output);
-        FACreativeModeTabs.addDecorationPosts(output);
-        FACreativeModeTabs.addRoadMarkings(output);
-        FACreativeModeTabs.addAsphalt(output);
-        FACreativeModeTabs.addTar(output);
-        FACreativeModeTabs.addArchaeology(output, itemDisplayParameters);
-        output.accept(FAItems.USER_MANUAL.get());
-        output.accept(FAItems.DINOPEDIA.get());
-        FACreativeModeTabs.addRifle(output);
-        FACreativeModeTabs.addCages(output);
-        FACreativeModeTabs.addFlare(output);
-        FACreativeModeTabs.addEssences(output);
-        FACreativeModeTabs.addCommandingItems(output, itemDisplayParameters, true);
-        output.accept(FAItems.LEGACY_GENETIC_CODE.get());
-        output.accept(FAItems.TAR_BUCKET.get());
-        FACreativeModeTabs.addCreatureSpawnEggs(output);
-        output.accept(FAItems.ANU_SPAWN_EGG.get());
-        output.accept(FAItems.BONES_SPAWN_EGG.get());
-        output.accept(FAItems.PIRATE_CAPTAIN_SPAWN_EGG.get());
-        output.accept(FAItems.FAILURESAURUS_SPAWN_EGG.get());
-        FACreativeModeTabs.addMusicDiscs(output);
-        //FACreativeModeTabs.addHeads(output, itemDisplayParameters);
-    }, List.of(), List.of("fa_archaeology", "fa_palaeontology", "fa_palaeobotany", "fa_building_blocks"));
-
-    private static SimpleHolder<CreativeModeTab> register(String id, Supplier<ItemStack> icon, CreativeModeTab.DisplayItemsGenerator displayItemsGenerator, List<String> after, List<String> before) {
-        return CREATIVE_MODE_TABS.register(id, () -> FAModloaderHelper.INSTANCE.createCreativeModeTab(id, after, before).icon(icon).displayItems(displayItemsGenerator).build());
-    }
-
-    private static void addArchaeology(CreativeModeTab.Output output, CreativeModeTab.ItemDisplayParameters itemDisplayParameters) {
-        output.accept(FABlocks.RELIC_IN_STONE.get());
-        output.accept(FABlocks.RELIC_IN_DEEPSLATE.get());
-        output.accept(FABlocks.ARCHAEOLOGY_WORKBENCH.get());
-        output.accept(FAItems.RELIC_SCRAP.get());
-        output.accept(FAItems.SCARAB_GEM.get());
-        output.accept(FAItems.JADE.get());
-        output.accept(FAItems.JADE_OCELOT.get());
-        output.accept(FAItems.JADE_VILLAGER.get());
-        output.accept(FAItems.CODEX.get());
-        output.accept(FAItems.QUIPU.get());
-        output.accept(FAItems.ANCIENT_SWORD_ARTIFACT.get());
-        output.accept(FAItems.ANCIENT_SHOVEL_ARTIFACT.get());
-        output.accept(FAItems.ANCIENT_PICKAXE_ARTIFACT.get());
-        output.accept(FAItems.ANCIENT_AXE_ARTIFACT.get());
-        output.accept(FAItems.ANCIENT_HOE_ARTIFACT.get());
-        output.accept(FAItems.ANCIENT_HELMET_ARTIFACT.get());
-        output.accept(FAItems.ANCIENT_CHESTPLATE_ARTIFACT.get());
-        output.accept(FAItems.ANCIENT_LEGGINGS_ARTIFACT.get());
-        output.accept(FAItems.ANCIENT_BOOTS_ARTIFACT.get());
-        output.accept(FAItems.OVERWORLD_COIN.get());
-        output.accept(FAItems.ICE_AGE_COIN.get());
-        output.accept(FAItems.PREHISTORIC_COIN.get());
-        output.accept(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get());
-        output.accept(FAItems.STONE_TABLET.get());
-        itemDisplayParameters.holders().lookup(FARegistries.STONE_TABLET_VARIANT).ifPresent(registryLookup -> FACreativeModeTabs.generateStoneTablets(output, itemDisplayParameters.holders(), registryLookup, stoneTabletVariantHolder -> stoneTabletVariantHolder.is(FAStoneTabletVariantTags.PLACEABLE), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
-        output.accept(FAItems.ANCIENT_SWORD.get());
-        output.accept(FAItems.ANCIENT_SHOVEL.get());
-        output.accept(FAItems.ANCIENT_PICKAXE.get());
-        output.accept(FAItems.ANCIENT_AXE.get());
-        output.accept(FAItems.ANCIENT_HOE.get());
-        output.accept(FAItems.ANCIENT_HELMET.get());
-        output.accept(FAItems.ANCIENT_CHESTPLATE.get());
-        output.accept(FAItems.ANCIENT_LEGGINGS.get());
-        output.accept(FAItems.ANCIENT_BOOTS.get());
-        output.accept(FAItems.SCARAB_GEM_SWORD.get());
-        output.accept(FAItems.SCARAB_GEM_SHOVEL.get());
-        output.accept(FAItems.SCARAB_GEM_PICKAXE.get());
-        output.accept(FAItems.SCARAB_GEM_AXE.get());
-        output.accept(FAItems.SCARAB_GEM_HOE.get());
-        output.accept(FAItems.SCARAB_GEM_HELMET.get());
-        output.accept(FAItems.SCARAB_GEM_CHESTPLATE.get());
-        output.accept(FAItems.SCARAB_GEM_LEGGINGS.get());
-        output.accept(FAItems.SCARAB_GEM_BOOTS.get());
-        output.accept(FAItems.WOODEN_JAVELIN.get());
-        output.accept(FAItems.STONE_JAVELIN.get());
-        output.accept(FAItems.IRON_JAVELIN.get());
-        output.accept(FAItems.GOLDEN_JAVELIN.get());
-        output.accept(FAItems.DIAMOND_JAVELIN.get());
-        output.accept(FAItems.NETHERITE_JAVELIN.get());
-        output.accept(FAItems.SCARAB_GEM_JAVELIN.get());
-        output.accept(FAItems.CAPTAINS_HAT.get());
-    }
-
-    private static void addCreationBlocks(CreativeModeTab.Output output) {
-        output.accept(FABlocks.DNA_ANALYZER.get());
-        output.accept(FABlocks.DNA_CODER.get());
-        output.accept(FAItems.STORAGE_DISC.get());
-        output.accept(FAItems.BLANK_DNA.get());
-        output.accept(FABlocks.DNA_HYBRIDIZER.get());
-        output.accept(FABlocks.DNA_RECOMBINATOR.get());
-        output.accept(FABlocks.WHITE_CULTIVATOR.get());
-        output.accept(FABlocks.LIGHT_GRAY_CULTIVATOR.get());
-        output.accept(FABlocks.GRAY_CULTIVATOR.get());
-        output.accept(FABlocks.BLACK_CULTIVATOR.get());
-        output.accept(FABlocks.BROWN_CULTIVATOR.get());
-        output.accept(FABlocks.RED_CULTIVATOR.get());
-        output.accept(FABlocks.ORANGE_CULTIVATOR.get());
-        output.accept(FABlocks.YELLOW_CULTIVATOR.get());
-        output.accept(FABlocks.LIME_CULTIVATOR.get());
-        output.accept(FABlocks.GREEN_CULTIVATOR.get());
-        output.accept(FABlocks.CYAN_CULTIVATOR.get());
-        output.accept(FABlocks.LIGHT_BLUE_CULTIVATOR.get());
-        output.accept(FABlocks.BLUE_CULTIVATOR.get());
-        output.accept(FABlocks.PURPLE_CULTIVATOR.get());
-        output.accept(FABlocks.MAGENTA_CULTIVATOR.get());
-        output.accept(FABlocks.PINK_CULTIVATOR.get());
-        output.accept(FABlocks.WHITE_SHATTERED_CULTIVATOR.get());
-        output.accept(FABlocks.LIGHT_GRAY_SHATTERED_CULTIVATOR.get());
-        output.accept(FABlocks.GRAY_SHATTERED_CULTIVATOR.get());
-        output.accept(FABlocks.BLACK_SHATTERED_CULTIVATOR.get());
-        output.accept(FABlocks.BROWN_SHATTERED_CULTIVATOR.get());
-        output.accept(FABlocks.RED_SHATTERED_CULTIVATOR.get());
-        output.accept(FABlocks.ORANGE_SHATTERED_CULTIVATOR.get());
-        output.accept(FABlocks.YELLOW_SHATTERED_CULTIVATOR.get());
-        output.accept(FABlocks.LIME_SHATTERED_CULTIVATOR.get());
-        output.accept(FABlocks.GREEN_SHATTERED_CULTIVATOR.get());
-        output.accept(FABlocks.CYAN_SHATTERED_CULTIVATOR.get());
-        output.accept(FABlocks.LIGHT_BLUE_SHATTERED_CULTIVATOR.get());
-        output.accept(FABlocks.BLUE_SHATTERED_CULTIVATOR.get());
-        output.accept(FABlocks.PURPLE_SHATTERED_CULTIVATOR.get());
-        output.accept(FABlocks.MAGENTA_SHATTERED_CULTIVATOR.get());
-        output.accept(FABlocks.PINK_SHATTERED_CULTIVATOR.get());
-    }
-
-    private static void addAnimalFossils(CreativeModeTab.Output output, CreativeModeTab.ItemDisplayParameters itemDisplayParameters) {
-        output.accept(FABlocks.CENOZOIC_FOSSIL_ORE.get());
-        output.accept(FABlocks.DEEPSLATE_CENOZOIC_FOSSIL_ORE.get());
-        output.accept(FABlocks.MESOZOIC_FOSSIL_ORE.get());
-        output.accept(FABlocks.DEEPSLATE_MESOZOIC_FOSSIL_ORE.get());
-        output.accept(FABlocks.PALAEOZOIC_FOSSIL_ORE.get());
-        output.accept(FABlocks.DEEPSLATE_PALAEOZOIC_FOSSIL_ORE.get());
+    public static final SimpleHolder<CreativeModeTab> FA_ITEMS = FACreativeModeTabs.register("fa_items", () -> new ItemStack(FAItems.MESOZOIC_FOSSIL.get()), (itemDisplayParameters, output) -> {
         output.accept(FAItems.CENOZOIC_FOSSIL.get());
-        itemDisplayParameters.holders().lookup(FARegistries.FOSSIL_VARIANTS).ifPresent(registryLookup -> FACreativeModeTabs.generateArticulatedFossils(output, registryLookup, fossilVariantHolder -> fossilVariantHolder.is(FAFossilVariantTags.CENOZOIC), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
         output.accept(FAItems.MESOZOIC_FOSSIL.get());
-        itemDisplayParameters.holders().lookup(FARegistries.FOSSIL_VARIANTS).ifPresent(registryLookup -> FACreativeModeTabs.generateArticulatedFossils(output, registryLookup, fossilVariantHolder -> fossilVariantHolder.is(FAFossilVariantTags.MESOZOIC), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
         output.accept(FAItems.PALAEOZOIC_FOSSIL.get());
-        itemDisplayParameters.holders().lookup(FARegistries.FOSSIL_VARIANTS).ifPresent(registryLookup -> FACreativeModeTabs.generateArticulatedFossils(output, registryLookup, fossilVariantHolder -> fossilVariantHolder.is(FAFossilVariantTags.PALAEOZOIC), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
-        output.accept(FABlocks.AMBER_ORE.get());
-        output.accept(FABlocks.DEEPSLATE_AMBER_ORE.get());
         output.accept(FAItems.AMBER.get());
         output.accept(FAItems.MOSQUITO_IN_AMBER.get());
-        output.accept(FABlocks.LEECH_IN_ICE.get());
         output.accept(FAItems.FROZEN_LEECH.get());
-        output.accept(FABlocks.PERMAFROST.get());
         output.accept(FAItems.FROZEN_MEAT.get());
-    }
-
-    private static void addHammers(CreativeModeTab.Output output) {
-        output.accept(FAItems.WOODEN_HAMMER.get());
-        output.accept(FAItems.STONE_HAMMER.get());
-        output.accept(FAItems.IRON_HAMMER.get());
-        output.accept(FAItems.GOLDEN_HAMMER.get());
-        output.accept(FAItems.DIAMOND_HAMMER.get());
-        output.accept(FAItems.NETHERITE_HAMMER.get());
-    }
-
-    private static void addAnimalBlocks(CreativeModeTab.Output output) {
-        output.accept(FABlocks.DRUM.get());
-        output.accept(FABlocks.FEEDER.get());
-    }
-
-    private static void addPlantFossils(CreativeModeTab.Output output) {
-        output.accept(FABlocks.PLANT_FOSSIL_ORE.get());
-        output.accept(FABlocks.DEEPSLATE_PLANT_FOSSIL_ORE.get());
         output.accept(FAItems.PLANT_FOSSIL.get());
-    }
-
-    private static void addAnimalDNA(CreativeModeTab.Output output) {
+        output.accept(FAItems.RELIC_SCRAP.get());
+        output.accept(FAItems.STORAGE_DISC.get());
+        output.accept(FAItems.BLANK_DNA.get());
         DNAItem.addDNAItem(output, FAItems.ARMADILLO_DNA.get());
         DNAItem.addDNAItem(output, FAItems.AXOLOTL_DNA.get());
         DNAItem.addDNAItem(output, FAItems.BAT_DNA.get());
@@ -335,9 +117,6 @@ public final class FACreativeModeTabs {
         DNAItem.addDNAItem(output, FAItems.VELOCIRAPTOR_DNA.get());
         DNAItem.addDNAItem(output, FAItems.DIMETRODON_DNA.get());
         DNAItem.addDNAItem(output, FAItems.ISOTELUS_DNA.get());
-    }
-
-    private static void addEggsAndEmbryos(CreativeModeTab.Output output) {
         output.accept(FAItems.ARMADILLO_EMBRYO_SYRINGE.get());
         output.accept(FABlocks.AXOLOTLSPAWN.get());
         output.accept(FAItems.BAT_EMBRYO_SYRINGE.get());
@@ -400,9 +179,6 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.VELOCIRAPTOR_EGG.get());
         output.accept(FAItems.DIMETRODON_EGG.get());
         output.accept(FAItems.ISOTELUS_EGGS.get());
-    }
-
-    private static void addMeat(CreativeModeTab.Output output) {
         output.accept(FAItems.RAW_ANKYLOSAURUS.get());
         output.accept(FAItems.COOKED_ANKYLOSAURUS.get());
         output.accept(FAItems.RAW_BARYONYX.get());
@@ -459,15 +235,9 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.COOKED_TYRANNOSAURUS.get());
         output.accept(FAItems.RAW_VELOCIRAPTOR.get());
         output.accept(FAItems.COOKED_VELOCIRAPTOR.get());
-    }
-
-    private static void addAnimalDrops(CreativeModeTab.Output output) {
         output.accept(FAItems.THERIZINOSAURUS_CLAWS.get());
         output.accept(FAItems.TYRANNOSAURUS_TOOTH.get());
         output.accept(FAItems.TOOTH_DAGGER.get());
-    }
-
-    private static void addCreatureSpawnEggs(CreativeModeTab.Output output) {
         output.accept(FAItems.ANKYLOSAURUS_SPAWN_EGG.get());
         output.accept(FAItems.BARYONYX_SPAWN_EGG.get());
         output.accept(FAItems.BRACHIOSAURUS_SPAWN_EGG.get());
@@ -499,9 +269,6 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.TRICERATOPS_SPAWN_EGG.get());
         output.accept(FAItems.TYRANNOSAURUS_SPAWN_EGG.get());
         output.accept(FAItems.VELOCIRAPTOR_SPAWN_EGG.get());
-    }
-
-    private static void addPlantDNA(CreativeModeTab.Output output) {
         DNAItem.addDNAItem(output, FAItems.CYCAD_DNA.get());
         DNAItem.addDNAItem(output, FAItems.GINKGO_DNA.get());
         DNAItem.addDNAItem(output, FAItems.HORSETAIL_DNA.get());
@@ -517,9 +284,6 @@ public final class FACreativeModeTabs {
         DNAItem.addDNAItem(output, FAItems.COOKSONIA_DNA.get());
         DNAItem.addDNAItem(output, FAItems.LEPIDODENDRON_DNA.get());
         DNAItem.addDNAItem(output, FAItems.SIGILLARIA_DNA.get());
-    }
-
-    private static void addSeedsAndSpores(CreativeModeTab.Output output) {
         output.accept(FAItems.CYCAD_CONE.get());
         output.accept(FAItems.GINKGO_SEED.get());
         output.accept(FAItems.HORSETAIL_SPORE.get());
@@ -533,9 +297,6 @@ public final class FACreativeModeTabs {
         output.accept(FAItems.COOKSONIA_SPORES.get());
         output.accept(FAItems.LEPIDODENDRON_CONE.get());
         output.accept(FAItems.SIGILLARIA_SPORE.get());
-    }
-
-    private static void addPlants(CreativeModeTab.Output output) {
         output.accept(FABlocks.CYCAD_HEAD.get());
         output.accept(FABlocks.CYCAD_LOG.get());
         output.accept(FABlocks.SHORT_HORSETAIL.get());
@@ -553,102 +314,17 @@ public final class FACreativeModeTabs {
         output.accept(FABlocks.ZAMITES_BRANCH.get());
         output.accept(FABlocks.ZAMITES_HEAD.get());
         output.accept(FABlocks.ZAMITES_LOG.get());
-    }
+    });
 
-    private static void addHologramProjectors(CreativeModeTab.Output output) {
-        output.accept(FABlocks.HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.WHITE_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.ORANGE_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.MAGENTA_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.LIGHT_BLUE_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.YELLOW_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.LIME_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.PINK_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.GRAY_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.LIGHT_GRAY_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.CYAN_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.PURPLE_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.BLUE_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.BROWN_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.GREEN_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.RED_HOLOGRAM_PROJECTOR.get());
-        output.accept(FABlocks.BLACK_HOLOGRAM_PROJECTOR.get());
-    }
-
-    private static void addPaintings(CreativeModeTab.Output output, HolderLookup.Provider itemDisplayParameters) {
-        ItemStack ageOfReptilesPaintingItemStack = new ItemStack(Items.PAINTING);
-        RegistryOps<Tag> registryOps = itemDisplayParameters.createSerializationContext(NbtOps.INSTANCE);
-        ageOfReptilesPaintingItemStack.set(DataComponents.ENTITY_DATA, CustomData.EMPTY.update(registryOps, Painting.VARIANT_MAP_CODEC, itemDisplayParameters.lookupOrThrow(Registries.PAINTING_VARIANT).getOrThrow(FAPaintingVariants.AGE_OF_REPTILES)).getOrThrow().update(compoundTag -> compoundTag.putString("id", "minecraft:painting")));
-        output.accept(ageOfReptilesPaintingItemStack);
-    }
-
-    private static void addDecorationPosts(CreativeModeTab.Output output) {
-        output.accept(FAItems.WHITE_DECORATION_PLAQUE.get());
-        output.accept(FAItems.LIGHT_GRAY_DECORATION_PLAQUE.get());
-        output.accept(FAItems.GRAY_DECORATION_PLAQUE.get());
-        output.accept(FAItems.BLACK_DECORATION_PLAQUE.get());
-        output.accept(FAItems.BROWN_DECORATION_PLAQUE.get());
-        output.accept(FAItems.RED_DECORATION_PLAQUE.get());
-        output.accept(FAItems.ORANGE_DECORATION_PLAQUE.get());
-        output.accept(FAItems.YELLOW_DECORATION_PLAQUE.get());
-        output.accept(FAItems.LIME_DECORATION_PLAQUE.get());
-        output.accept(FAItems.GREEN_DECORATION_PLAQUE.get());
-        output.accept(FAItems.CYAN_DECORATION_PLAQUE.get());
-        output.accept(FAItems.LIGHT_BLUE_DECORATION_PLAQUE.get());
-        output.accept(FAItems.BLUE_DECORATION_PLAQUE.get());
-        output.accept(FAItems.PURPLE_DECORATION_PLAQUE.get());
-        output.accept(FAItems.MAGENTA_DECORATION_PLAQUE.get());
-        output.accept(FAItems.PINK_DECORATION_PLAQUE.get());
-    }
-
-    private static void addRifle(CreativeModeTab.Output output) {
-        output.accept(FAItems.RIFLE.get());
-        output.accept(FAItems.GREEN_TRANQUILIZER_DART.get());
-        output.accept(FAItems.RED_TRANQUILIZER_DART.get());
-        output.accept(FAItems.BLUE_TRANQUILIZER_DART.get());
-    }
-
-    private static void addCages(CreativeModeTab.Output output) {
-        output.accept(FABlocks.SMALL_CAGE.get());
-        output.accept(FABlocks.MEDIUM_CAGE.get());
-        output.accept(FAItems.IRON_KEY.get());
-        output.accept(FAItems.GOLDEN_KEY.get());
-        output.accept(FAItems.BOLT_CUTTER.get());
-    }
-
-    private static void addFlare(CreativeModeTab.Output output) {
-        output.accept(FAItems.FLARE.get());
-        output.accept(FAItems.FLARE_BODY.get());
-    }
-
-    private static void addEssences(CreativeModeTab.Output output) {
-        output.accept(FAItems.RAW_CHICKEN_SOUP_BUCKET.get());
-        output.accept(FAItems.COOKED_CHICKEN_SOUP_BUCKET.get());
-        output.accept(FAItems.CHICKEN_ESSENCE_BOTTLE.get());
-        output.accept(FAItems.RAW_BERRY_MEDLEY_BUCKET.get());
-        output.accept(FAItems.COOKED_BERRY_MEDLEY_BUCKET.get());
-        output.accept(FAItems.ROMANTIC_CONCOCTION_BOTTLE.get());
-    }
-
-    private static void addCommandingItems(CreativeModeTab.Output output, CreativeModeTab.ItemDisplayParameters itemDisplayParameters, boolean search) {
-        if (!search) {
-            output.accept(Items.STICK);
-            output.accept(Items.BONE);
-        }
-        output.accept(FAItems.SKULL_STICK.get());
-        if (!search) {
-            output.accept(Items.ARROW);
-            output.accept(Items.SPECTRAL_ARROW);
-        }
-        itemDisplayParameters.holders().lookup(FARegistries.COMMAND_TYPES).ifPresent(registryLookup -> FACreativeModeTabs.generateMagicConches(output, registryLookup));
-    }
-
-    private static void addRoadMarkings(CreativeModeTab.Output output) {
-        output.accept(FABlocks.SOLID_WHITE_MARKING.get());
-        output.accept(FABlocks.DOUBLE_SOLID_WHITE_MARKING.get());
-    }
-
-    private static void addAsphalt(CreativeModeTab.Output output) {
+    public static final SimpleHolder<CreativeModeTab> FA_BLOCKS = FACreativeModeTabs.register("fa_blocks", () -> new ItemStack(FABlocks.MESOZOIC_FOSSIL_ORE.get()), (itemDisplayParameters, output) -> {
+        output.accept(FABlocks.CENOZOIC_FOSSIL_ORE.get());
+        output.accept(FABlocks.DEEPSLATE_CENOZOIC_FOSSIL_ORE.get());
+        output.accept(FABlocks.MESOZOIC_FOSSIL_ORE.get());
+        output.accept(FABlocks.DEEPSLATE_MESOZOIC_FOSSIL_ORE.get());
+        output.accept(FABlocks.PALAEOZOIC_FOSSIL_ORE.get());
+        output.accept(FABlocks.DEEPSLATE_PALAEOZOIC_FOSSIL_ORE.get());
+        output.accept(FABlocks.AMBER_ORE.get());
+        output.accept(FABlocks.DEEPSLATE_AMBER_ORE.get());
         output.accept(FABlocks.ASPHALT.get());
         output.accept(FABlocks.ASPHALT_STAIRS.get());
         output.accept(FABlocks.ASPHALT_SLAB.get());
@@ -661,13 +337,66 @@ public final class FACreativeModeTabs {
         output.accept(FABlocks.POLISHED_ASPHALT_BRICK_STAIRS.get());
         output.accept(FABlocks.POLISHED_ASPHALT_BRICK_SLAB.get());
         output.accept(FABlocks.POLISHED_ASPHALT_BRICK_WALL.get());
-    }
-
-    private static void addTar(CreativeModeTab.Output output) {
+        output.accept(FABlocks.CHAIN_LINK_FENCE.get());
+        output.accept(FABlocks.IRON_FENCE.get());
+        output.accept(FABlocks.WHITE_ROAD_MARKING.get());
+        output.accept(FABlocks.DOUBLE_WHITE_ROAD_MARKING.get());
+        output.accept(FABlocks.YELLOW_ROAD_MARKING.get());
+        output.accept(FABlocks.DOUBLE_YELLOW_ROAD_MARKING.get());
+        output.accept(FAItems.DECORATION_PLAQUE.get());
+        output.accept(FABlocks.WHITE_POST.get());
+        output.accept(FABlocks.ORANGE_POST.get());
+        output.accept(FABlocks.MAGENTA_POST.get());
+        output.accept(FABlocks.LIGHT_BLUE_POST.get());
+        output.accept(FABlocks.YELLOW_POST.get());
+        output.accept(FABlocks.LIME_POST.get());
+        output.accept(FABlocks.PINK_POST.get());
+        output.accept(FABlocks.GRAY_POST.get());
+        output.accept(FABlocks.LIGHT_GRAY_POST.get());
+        output.accept(FABlocks.CYAN_POST.get());
+        output.accept(FABlocks.PURPLE_POST.get());
+        output.accept(FABlocks.BLUE_POST.get());
+        output.accept(FABlocks.BROWN_POST.get());
+        output.accept(FABlocks.GREEN_POST.get());
+        output.accept(FABlocks.RED_POST.get());
+        output.accept(FABlocks.BLACK_POST.get());
         output.accept(FABlocks.HARDENED_TAR_BLOCK.get());
-    }
-
-    private static void addWood(CreativeModeTab.Output output) {
+        output.accept(FABlocks.DNA_ANALYZER.get());
+        output.accept(FABlocks.DNA_CODER.get());
+        output.accept(FABlocks.DNA_HYBRIDIZER.get());
+        output.accept(FABlocks.DNA_RECOMBINATOR.get());
+        output.accept(FABlocks.WHITE_CULTIVATOR.get());
+        output.accept(FABlocks.LIGHT_GRAY_CULTIVATOR.get());
+        output.accept(FABlocks.GRAY_CULTIVATOR.get());
+        output.accept(FABlocks.BLACK_CULTIVATOR.get());
+        output.accept(FABlocks.BROWN_CULTIVATOR.get());
+        output.accept(FABlocks.RED_CULTIVATOR.get());
+        output.accept(FABlocks.ORANGE_CULTIVATOR.get());
+        output.accept(FABlocks.YELLOW_CULTIVATOR.get());
+        output.accept(FABlocks.LIME_CULTIVATOR.get());
+        output.accept(FABlocks.GREEN_CULTIVATOR.get());
+        output.accept(FABlocks.CYAN_CULTIVATOR.get());
+        output.accept(FABlocks.LIGHT_BLUE_CULTIVATOR.get());
+        output.accept(FABlocks.BLUE_CULTIVATOR.get());
+        output.accept(FABlocks.PURPLE_CULTIVATOR.get());
+        output.accept(FABlocks.MAGENTA_CULTIVATOR.get());
+        output.accept(FABlocks.PINK_CULTIVATOR.get());
+        output.accept(FABlocks.WHITE_SHATTERED_CULTIVATOR.get());
+        output.accept(FABlocks.LIGHT_GRAY_SHATTERED_CULTIVATOR.get());
+        output.accept(FABlocks.GRAY_SHATTERED_CULTIVATOR.get());
+        output.accept(FABlocks.BLACK_SHATTERED_CULTIVATOR.get());
+        output.accept(FABlocks.BROWN_SHATTERED_CULTIVATOR.get());
+        output.accept(FABlocks.RED_SHATTERED_CULTIVATOR.get());
+        output.accept(FABlocks.ORANGE_SHATTERED_CULTIVATOR.get());
+        output.accept(FABlocks.YELLOW_SHATTERED_CULTIVATOR.get());
+        output.accept(FABlocks.LIME_SHATTERED_CULTIVATOR.get());
+        output.accept(FABlocks.GREEN_SHATTERED_CULTIVATOR.get());
+        output.accept(FABlocks.CYAN_SHATTERED_CULTIVATOR.get());
+        output.accept(FABlocks.LIGHT_BLUE_SHATTERED_CULTIVATOR.get());
+        output.accept(FABlocks.BLUE_SHATTERED_CULTIVATOR.get());
+        output.accept(FABlocks.PURPLE_SHATTERED_CULTIVATOR.get());
+        output.accept(FABlocks.MAGENTA_SHATTERED_CULTIVATOR.get());
+        output.accept(FABlocks.PINK_SHATTERED_CULTIVATOR.get());
         output.accept(FABlocks.ARAUCARIA_LOG.get());
         output.accept(FABlocks.ARAUCARIA_WOOD.get());
         output.accept(FABlocks.STRIPPED_ARAUCARIA_LOG.get());
@@ -858,6 +587,10 @@ public final class FACreativeModeTabs {
         output.accept(FABlocks.WOLLEMIA_HANGING_SIGN.get());
         output.accept(FAItems.WOLLEMIA_BOAT.get());
         output.accept(FAItems.WOLLEMIA_CHEST_BOAT.get());
+    });
+
+    private static SimpleHolder<CreativeModeTab> register(String id, Supplier<ItemStack> icon, CreativeModeTab.DisplayItemsGenerator displayItemsGenerator) {
+        return CREATIVE_MODE_TABS.register(id, () -> FAModloaderHelper.INSTANCE.createCreativeModeTab(id).icon(icon).displayItems(displayItemsGenerator).build());
     }
 
     private static void addHeads(CreativeModeTab.Output output, CreativeModeTab.ItemDisplayParameters itemDisplayParameters) {
@@ -880,12 +613,6 @@ public final class FACreativeModeTabs {
                 }
             }
         }
-    }
-
-    private static void addMusicDiscs(CreativeModeTab.Output output) {
-        output.accept(FAItems.MUSIC_DISC_TRIASSIC.get());
-        output.accept(FAItems.MUSIC_DISC_JURASSIC.get());
-        output.accept(FAItems.MUSIC_DISC_CRETACEOUS.get());
     }
 
     private static void generateMagicConches(CreativeModeTab.Output output, HolderLookup.RegistryLookup<CommandType> registryLookup) {
@@ -913,7 +640,7 @@ public final class FACreativeModeTabs {
         RegistryOps<Tag> registryOps = provider.createSerializationContext(NbtOps.INSTANCE);
         registryLookup.listElements().filter(predicate).sorted(DECORATION_PLAQUE_COMPARATOR).forEach(reference -> {
             CustomData customData = CustomData.EMPTY.update(registryOps, DecorationPlaque.VARIANT_MAP_CODEC, reference).getOrThrow().update(compoundTag -> compoundTag.putString("id", "fossilslegacy:stone_tablet"));
-            ItemStack itemStack = new ItemStack(FAItems.WHITE_DECORATION_PLAQUE.get());
+            ItemStack itemStack = new ItemStack(FAItems.DECORATION_PLAQUE.get());
             itemStack.set(DataComponents.ENTITY_DATA, customData);
             output.accept(itemStack, tabVisibility);
         });

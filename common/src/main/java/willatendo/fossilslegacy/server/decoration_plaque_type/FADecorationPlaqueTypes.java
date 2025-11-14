@@ -14,6 +14,7 @@ public class FADecorationPlaqueTypes {
     public static final ResourceKey<DecorationPlaqueType> RIGHT = FADecorationPlaqueTypes.create("right");
     public static final ResourceKey<DecorationPlaqueType> RIGHT_AND_LEFT = FADecorationPlaqueTypes.create("right_and_left");
     public static final ResourceKey<DecorationPlaqueType> UP = FADecorationPlaqueTypes.create("up");
+    public static final ResourceKey<DecorationPlaqueType> BATHROOM = FADecorationPlaqueTypes.create("bathroom");
 
     private static ResourceKey<DecorationPlaqueType> create(String name) {
         return ResourceKey.create(FARegistries.DECORATION_PLAQUE_TYPE, FAUtils.resource(name));
@@ -32,5 +33,6 @@ public class FADecorationPlaqueTypes {
         FADecorationPlaqueTypes.register(bootstrapContext, RIGHT, 1, 1);
         FADecorationPlaqueTypes.register(bootstrapContext, RIGHT_AND_LEFT, 1, 1);
         FADecorationPlaqueTypes.register(bootstrapContext, UP, 1, 1);
+        FADecorationPlaqueTypes.register(bootstrapContext, BATHROOM, 1, 1);
     }
 }

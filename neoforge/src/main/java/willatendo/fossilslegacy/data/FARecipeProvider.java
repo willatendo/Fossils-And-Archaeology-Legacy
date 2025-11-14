@@ -96,22 +96,23 @@ public class FARecipeProvider extends RecipeProvider {
         this.waxCopper(FABlocks.EXPOSED_COPPER_LLAMA_STATUE.get(), FABlocks.WAXED_EXPOSED_COPPER_LLAMA_STATUE.get());
         this.waxCopper(FABlocks.WEATHERED_COPPER_LLAMA_STATUE.get(), FABlocks.WAXED_WEATHERED_COPPER_LLAMA_STATUE.get());
         this.waxCopper(FABlocks.OXIDIZED_COPPER_LLAMA_STATUE.get(), FABlocks.WAXED_OXIDIZED_COPPER_LLAMA_STATUE.get());
-        this.decorationPlaque(Blocks.WHITE_CONCRETE, FAItems.WHITE_DECORATION_PLAQUE.get());
-        this.decorationPlaque(Blocks.ORANGE_CONCRETE, FAItems.ORANGE_DECORATION_PLAQUE.get());
-        this.decorationPlaque(Blocks.MAGENTA_CONCRETE, FAItems.MAGENTA_DECORATION_PLAQUE.get());
-        this.decorationPlaque(Blocks.LIGHT_BLUE_CONCRETE, FAItems.LIGHT_BLUE_DECORATION_PLAQUE.get());
-        this.decorationPlaque(Blocks.YELLOW_CONCRETE, FAItems.YELLOW_DECORATION_PLAQUE.get());
-        this.decorationPlaque(Blocks.LIME_CONCRETE, FAItems.LIME_DECORATION_PLAQUE.get());
-        this.decorationPlaque(Blocks.PINK_CONCRETE, FAItems.PINK_DECORATION_PLAQUE.get());
-        this.decorationPlaque(Blocks.GRAY_CONCRETE, FAItems.GRAY_DECORATION_PLAQUE.get());
-        this.decorationPlaque(Blocks.LIGHT_GRAY_CONCRETE, FAItems.LIGHT_GRAY_DECORATION_PLAQUE.get());
-        this.decorationPlaque(Blocks.CYAN_CONCRETE, FAItems.CYAN_DECORATION_PLAQUE.get());
-        this.decorationPlaque(Blocks.PURPLE_CONCRETE, FAItems.PURPLE_DECORATION_PLAQUE.get());
-        this.decorationPlaque(Blocks.BLUE_CONCRETE, FAItems.BLUE_DECORATION_PLAQUE.get());
-        this.decorationPlaque(Blocks.BROWN_CONCRETE, FAItems.BROWN_DECORATION_PLAQUE.get());
-        this.decorationPlaque(Blocks.GREEN_CONCRETE, FAItems.GREEN_DECORATION_PLAQUE.get());
-        this.decorationPlaque(Blocks.RED_CONCRETE, FAItems.RED_DECORATION_PLAQUE.get());
-        this.decorationPlaque(Blocks.BLACK_CONCRETE, FAItems.BLACK_DECORATION_PLAQUE.get());
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FAItems.DECORATION_PLAQUE.get(), 4).pattern("###").pattern("###").pattern(" $ ").define('#', Items.IRON_INGOT).define('$', Items.IRON_NUGGET).unlockedBy(RecipeProvider.getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
+        this.coloredPost(Blocks.WHITE_CONCRETE, FAItems.WHITE_POST.get());
+        this.coloredPost(Blocks.ORANGE_CONCRETE, FAItems.ORANGE_POST.get());
+        this.coloredPost(Blocks.MAGENTA_CONCRETE, FAItems.MAGENTA_POST.get());
+        this.coloredPost(Blocks.LIGHT_BLUE_CONCRETE, FAItems.LIGHT_BLUE_POST.get());
+        this.coloredPost(Blocks.YELLOW_CONCRETE, FAItems.YELLOW_POST.get());
+        this.coloredPost(Blocks.LIME_CONCRETE, FAItems.LIME_POST.get());
+        this.coloredPost(Blocks.PINK_CONCRETE, FAItems.PINK_POST.get());
+        this.coloredPost(Blocks.GRAY_CONCRETE, FAItems.GRAY_POST.get());
+        this.coloredPost(Blocks.LIGHT_GRAY_CONCRETE, FAItems.LIGHT_GRAY_POST.get());
+        this.coloredPost(Blocks.CYAN_CONCRETE, FAItems.CYAN_POST.get());
+        this.coloredPost(Blocks.PURPLE_CONCRETE, FAItems.PURPLE_POST.get());
+        this.coloredPost(Blocks.BLUE_CONCRETE, FAItems.BLUE_POST.get());
+        this.coloredPost(Blocks.BROWN_CONCRETE, FAItems.BROWN_POST.get());
+        this.coloredPost(Blocks.GREEN_CONCRETE, FAItems.GREEN_POST.get());
+        this.coloredPost(Blocks.RED_CONCRETE, FAItems.RED_POST.get());
+        this.coloredPost(Blocks.BLACK_CONCRETE, FAItems.BLACK_POST.get());
         this.shaped(RecipeCategory.TOOLS, FABlocks.SMALL_CAGE.get()).pattern("###").pattern("$$$").pattern("###").define('#', Blocks.STONE_BRICKS).define('$', Blocks.IRON_BARS).unlockedBy(RecipeProvider.getHasName(Blocks.IRON_BARS), this.has(Blocks.IRON_BARS)).save(this.output);
         this.shaped(RecipeCategory.COMBAT, FAItems.RIFLE.get()).pattern("###").pattern(" $%").define('#', Items.IRON_INGOT).define('$', Items.STICK).define('%', ItemTags.PLANKS).unlockedBy(RecipeProvider.getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
         this.shaped(RecipeCategory.COMBAT, FAItems.GREEN_TRANQUILIZER_DART.get(), 4).pattern("  $").pattern(" # ").pattern("%  ").define('$', Items.FEATHER).define('#', Items.POISONOUS_POTATO).define('%', Items.IRON_INGOT).unlockedBy(RecipeProvider.getHasName(Items.POISONOUS_POTATO), this.has(Items.POISONOUS_POTATO)).save(this.output);
@@ -152,8 +153,10 @@ public class FARecipeProvider extends RecipeProvider {
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.POLISHED_ASPHALT_BRICK_STAIRS.get(), 4).pattern("#  ").pattern("## ").pattern("###").define('#', FABlocks.POLISHED_ASPHALT_BRICKS.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.POLISHED_ASPHALT_BRICKS.get()), this.has(FABlocks.POLISHED_ASPHALT_BRICKS.get())).save(this.output);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.POLISHED_ASPHALT_BRICK_SLAB.get(), 6).pattern("###").define('#', FABlocks.POLISHED_ASPHALT_BRICKS.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.POLISHED_ASPHALT_BRICKS.get()), this.has(FABlocks.POLISHED_ASPHALT_BRICKS.get())).save(this.output);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.POLISHED_ASPHALT_BRICK_WALL.get(), 6).pattern("###").pattern("###").define('#', FABlocks.POLISHED_ASPHALT_BRICKS.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.POLISHED_ASPHALT_BRICKS.get()), this.has(FABlocks.POLISHED_ASPHALT_BRICKS.get())).save(this.output);
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.SOLID_WHITE_MARKING.get(), 16).pattern("#").pattern("$").pattern("#").define('#', Items.WHITE_DYE).define('$', Items.IRON_INGOT).unlockedBy(RecipeProvider.getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DOUBLE_SOLID_WHITE_MARKING.get(), 1).pattern("##").define('#', FABlocks.SOLID_WHITE_MARKING.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.SOLID_WHITE_MARKING.get()), this.has(FABlocks.SOLID_WHITE_MARKING.get())).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.WHITE_ROAD_MARKING.get(), 16).pattern("#").pattern("$").pattern("#").define('#', Items.WHITE_DYE).define('$', Items.IRON_INGOT).unlockedBy(RecipeProvider.getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DOUBLE_WHITE_ROAD_MARKING.get(), 1).pattern("##").define('#', FABlocks.WHITE_ROAD_MARKING.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.WHITE_ROAD_MARKING.get()), this.has(FABlocks.WHITE_ROAD_MARKING.get())).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.YELLOW_ROAD_MARKING.get(), 16).pattern("#").pattern("$").pattern("#").define('#', Items.YELLOW_DYE).define('$', Items.IRON_INGOT).unlockedBy(RecipeProvider.getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DOUBLE_YELLOW_ROAD_MARKING.get(), 1).pattern("##").define('#', FABlocks.YELLOW_ROAD_MARKING.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.YELLOW_ROAD_MARKING.get()), this.has(FABlocks.YELLOW_ROAD_MARKING.get())).save(this.output);
         this.hologramProjector(FABlocks.HOLOGRAM_PROJECTOR.get(), Blocks.GLASS);
         this.hologramProjector(FABlocks.WHITE_HOLOGRAM_PROJECTOR.get(), Blocks.WHITE_STAINED_GLASS);
         this.hologramProjector(FABlocks.ORANGE_HOLOGRAM_PROJECTOR.get(), Blocks.ORANGE_STAINED_GLASS);
@@ -171,6 +174,8 @@ public class FARecipeProvider extends RecipeProvider {
         this.hologramProjector(FABlocks.GREEN_HOLOGRAM_PROJECTOR.get(), Blocks.GREEN_STAINED_GLASS);
         this.hologramProjector(FABlocks.RED_HOLOGRAM_PROJECTOR.get(), Blocks.RED_STAINED_GLASS);
         this.hologramProjector(FABlocks.BLACK_HOLOGRAM_PROJECTOR.get(), Blocks.BLACK_STAINED_GLASS);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.CHAIN_LINK_FENCE.get(), 16).pattern("###").pattern("###").define('#', Items.IRON_NUGGET).unlockedBy(RecipeProvider.getHasName(Items.IRON_NUGGET), this.has(Items.IRON_NUGGET)).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.IRON_FENCE.get(), 16).pattern("#$#").pattern("#$#").define('#', Items.IRON_INGOT).define('$', Items.IRON_NUGGET).unlockedBy(RecipeProvider.getHasName(Items.IRON_NUGGET), this.has(Items.IRON_NUGGET)).save(this.output);
 
         SpecialRecipeBuilder.special(MagicConchRecipe::new).save(this.output, FAUtils.ID + ":magic_conch");
         SpecialRecipeBuilder.special(KeyCloningRecipe::new).save(this.output, FAUtils.ID + ":key_cloning");
@@ -399,8 +404,8 @@ public class FARecipeProvider extends RecipeProvider {
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(FAItems.SCARAB_GEM_UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(ingredientItem), this.tag(FAItemTags.SCARAB_GEM_TOOL_MATERIALS), category, resultItem).unlocks("has_scarab_gem", this.has(FAItemTags.SCARAB_GEM_TOOL_MATERIALS)).save(this.output, "fossilslegacy:" + getItemName(resultItem) + "_smithing");
     }
 
-    public void decorationPlaque(ItemLike concrete, ItemLike output) {
-        this.shaped(RecipeCategory.DECORATIONS, output).group("decoration_plaque").pattern("###").pattern("###").pattern(" $ ").define('#', concrete).define('$', Items.IRON_INGOT).unlockedBy(RecipeProvider.getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
+    public void coloredPost(ItemLike concrete, ItemLike output) {
+        this.shaped(RecipeCategory.DECORATIONS, output, 16).group("colored_post").pattern("#").pattern("#").pattern("#").define('#', concrete).unlockedBy(RecipeProvider.getHasName(concrete), this.has(concrete)).save(this.output);
     }
 
     public void hammer(TagKey<Item> material, ItemLike output) {
