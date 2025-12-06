@@ -2,12 +2,9 @@ package willatendo.fossilslegacy.data.tag;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.BiomeTagsProvider;
 import net.minecraft.data.tags.GameEventTagsProvider;
 import net.minecraft.tags.GameEventTags;
-import net.minecraft.world.level.biome.Biomes;
 import willatendo.fossilslegacy.server.block.FAGameEvents;
-import willatendo.fossilslegacy.server.tags.FABiomeTags;
 
 import java.util.concurrent.CompletableFuture;
 

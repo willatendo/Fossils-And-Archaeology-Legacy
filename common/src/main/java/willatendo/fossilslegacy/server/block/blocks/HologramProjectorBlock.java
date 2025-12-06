@@ -27,7 +27,6 @@ import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import willatendo.fossilslegacy.server.block.entity.entities.CultivatorBlockEntity;
 import willatendo.fossilslegacy.server.block.entity.entities.HologramProjectorBlockEntity;
 import willatendo.fossilslegacy.server.stats.FAStats;
 import willatendo.simplelibrary.server.util.SimpleUtils;

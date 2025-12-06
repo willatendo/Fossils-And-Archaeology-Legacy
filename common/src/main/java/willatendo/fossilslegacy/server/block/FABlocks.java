@@ -416,22 +416,6 @@ public final class FABlocks {
     public static final SimpleHolder<RoadMarkingBlock> DOUBLE_YELLOW_ROAD_MARKING = BLOCKS.registerBlock("double_yellow_road_marking", RoadMarkingBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(0.1F).noOcclusion().noCollission().sound(SoundType.STONE));
     public static final SimpleHolder<TarBlock> TAR = BLOCKS.registerBlock("tar", properties -> new TarBlock(FAFluids.TAR.get(), properties), () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).replaceable().noCollission().strength(100.0F).pushReaction(PushReaction.DESTROY).noLootTable().liquid().sound(SoundType.EMPTY));
     public static final SimpleHolder<HologramProjectorBlock> HOLOGRAM_PROJECTOR = BLOCKS.registerBlock("hologram_projector", HologramProjectorBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE).lightLevel(blockState -> blockState.getValue(HologramProjectorBlock.ON) ? 10 : 0).strength(0.3F).sound(SoundType.GLASS));
-    public static final SimpleHolder<ColoredHologramProjectorBlock> WHITE_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.WHITE);
-    public static final SimpleHolder<ColoredHologramProjectorBlock> ORANGE_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.ORANGE);
-    public static final SimpleHolder<ColoredHologramProjectorBlock> MAGENTA_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.MAGENTA);
-    public static final SimpleHolder<ColoredHologramProjectorBlock> LIGHT_BLUE_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.LIGHT_BLUE);
-    public static final SimpleHolder<ColoredHologramProjectorBlock> YELLOW_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.YELLOW);
-    public static final SimpleHolder<ColoredHologramProjectorBlock> LIME_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.LIME);
-    public static final SimpleHolder<ColoredHologramProjectorBlock> PINK_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.PINK);
-    public static final SimpleHolder<ColoredHologramProjectorBlock> GRAY_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.GRAY);
-    public static final SimpleHolder<ColoredHologramProjectorBlock> LIGHT_GRAY_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.LIGHT_GRAY);
-    public static final SimpleHolder<ColoredHologramProjectorBlock> CYAN_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.CYAN);
-    public static final SimpleHolder<ColoredHologramProjectorBlock> PURPLE_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.PURPLE);
-    public static final SimpleHolder<ColoredHologramProjectorBlock> BLUE_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.BLUE);
-    public static final SimpleHolder<ColoredHologramProjectorBlock> BROWN_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.BROWN);
-    public static final SimpleHolder<ColoredHologramProjectorBlock> GREEN_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.GREEN);
-    public static final SimpleHolder<ColoredHologramProjectorBlock> RED_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.RED);
-    public static final SimpleHolder<ColoredHologramProjectorBlock> BLACK_HOLOGRAM_PROJECTOR = BLOCKS.registerHologramProjector(DyeColor.BLACK);
     public static final SimpleHolder<IronBarsBlock> CHAIN_LINK_FENCE = BLOCKS.registerBlock("chain_link_fence", IronBarsBlock::new, () -> BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL).noOcclusion());
     public static final SimpleHolder<IronBarsBlock> IRON_FENCE = BLOCKS.registerBlock("iron_fence", IronBarsBlock::new, () -> BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL).noOcclusion());
 

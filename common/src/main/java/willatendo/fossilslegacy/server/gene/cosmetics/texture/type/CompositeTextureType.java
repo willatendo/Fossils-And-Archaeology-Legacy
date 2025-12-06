@@ -4,7 +4,6 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.ExtraCodecs;
 import willatendo.fossilslegacy.client.state.ChromosomedEntityRenderState;
 import willatendo.fossilslegacy.server.gene.cosmetics.texture.TextureInformation;
 

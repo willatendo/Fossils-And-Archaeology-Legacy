@@ -39,6 +39,8 @@ import willatendo.simplelibrary.client.event.registry.*;
 public class ClientEvents {
     @SubscribeEvent
     public static void fmlClientSetupEvent(FMLClientSetupEvent event) {
+        FossilsLegacyClient.setupFilters();
+
         FossilsLegacyClient.loadUserManuelData();
         FossilsLegacyClient.signSheets();
 

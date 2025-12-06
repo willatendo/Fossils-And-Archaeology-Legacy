@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cycad_head": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:cycad_head"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:stick_from_cycad_head"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cycad_head"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:stick_from_cycad_head"
+    ]
+  }
+}

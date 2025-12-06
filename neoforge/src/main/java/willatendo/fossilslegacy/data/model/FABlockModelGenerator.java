@@ -176,22 +176,6 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         this.createRoadMarkingBlock(FABlocks.DOUBLE_YELLOW_ROAD_MARKING.get(), "double_yellow_road_marking");
         this.createHardenedTarBlock(FABlocks.HARDENED_TAR_BLOCK.get());
         this.createHologramProjector(FABlocks.HOLOGRAM_PROJECTOR.get());
-        this.createColoredHologramProjector(FABlocks.WHITE_HOLOGRAM_PROJECTOR.get(), DyeColor.WHITE);
-        this.createColoredHologramProjector(FABlocks.ORANGE_HOLOGRAM_PROJECTOR.get(), DyeColor.ORANGE);
-        this.createColoredHologramProjector(FABlocks.MAGENTA_HOLOGRAM_PROJECTOR.get(), DyeColor.MAGENTA);
-        this.createColoredHologramProjector(FABlocks.LIGHT_BLUE_HOLOGRAM_PROJECTOR.get(), DyeColor.LIGHT_BLUE);
-        this.createColoredHologramProjector(FABlocks.YELLOW_HOLOGRAM_PROJECTOR.get(), DyeColor.YELLOW);
-        this.createColoredHologramProjector(FABlocks.LIME_HOLOGRAM_PROJECTOR.get(), DyeColor.LIME);
-        this.createColoredHologramProjector(FABlocks.PINK_HOLOGRAM_PROJECTOR.get(), DyeColor.PINK);
-        this.createColoredHologramProjector(FABlocks.GRAY_HOLOGRAM_PROJECTOR.get(), DyeColor.GRAY);
-        this.createColoredHologramProjector(FABlocks.LIGHT_GRAY_HOLOGRAM_PROJECTOR.get(), DyeColor.LIGHT_GRAY);
-        this.createColoredHologramProjector(FABlocks.CYAN_HOLOGRAM_PROJECTOR.get(), DyeColor.CYAN);
-        this.createColoredHologramProjector(FABlocks.PURPLE_HOLOGRAM_PROJECTOR.get(), DyeColor.PURPLE);
-        this.createColoredHologramProjector(FABlocks.BLUE_HOLOGRAM_PROJECTOR.get(), DyeColor.BLUE);
-        this.createColoredHologramProjector(FABlocks.BROWN_HOLOGRAM_PROJECTOR.get(), DyeColor.BROWN);
-        this.createColoredHologramProjector(FABlocks.GREEN_HOLOGRAM_PROJECTOR.get(), DyeColor.GREEN);
-        this.createColoredHologramProjector(FABlocks.RED_HOLOGRAM_PROJECTOR.get(), DyeColor.RED);
-        this.createColoredHologramProjector(FABlocks.BLACK_HOLOGRAM_PROJECTOR.get(), DyeColor.BLACK);
         this.createIronBarsLike(FABlocks.CHAIN_LINK_FENCE.get(), this.modLocation("block/chain_link_fence"));
         this.createIronBarsLike(FABlocks.IRON_FENCE.get(), this.modLocation("block/iron_fence"), this.modLocation("block/iron_fence_edge"));
     }
@@ -482,12 +466,6 @@ public class FABlockModelGenerator extends SimpleBlockModelGenerator {
         ResourceLocation offModel = FAModelTemplates.TEMPLATE_HOLOGRAM_PROJECTOR.create(hologramProjectorBlock, new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/hologram_projector_side")).put(TextureSlot.UP, this.modLocation("block/hologram_projector_top")).put(TextureSlot.DOWN, this.modLocation("block/hologram_projector_bottom")), this.modelOutput);
         ResourceLocation onModel = FAModelTemplates.TEMPLATE_HOLOGRAM_PROJECTOR.createWithSuffix(hologramProjectorBlock, "_on", new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/hologram_projector_side_on")).put(TextureSlot.UP, this.modLocation("block/hologram_projector_top_on")).put(TextureSlot.DOWN, this.modLocation("block/hologram_projector_bottom")), this.modelOutput);
         this.block(MultiVariantGenerator.multiVariant(hologramProjectorBlock).with(PropertyDispatch.property(HologramProjectorBlock.ON).select(false, Variant.variant().with(VariantProperties.MODEL, offModel)).select(true, Variant.variant().with(VariantProperties.MODEL, onModel))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
-    }
-
-    private void createColoredHologramProjector(Block coloredHologramProjectorBlock, DyeColor dyeColor) {
-        ResourceLocation offModel = FAModelTemplates.TEMPLATE_HOLOGRAM_PROJECTOR.create(coloredHologramProjectorBlock, new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/hologram_projector_side")).put(TextureSlot.UP, this.modLocation("block/" + dyeColor.getName() + "_hologram_projector_top")).put(TextureSlot.DOWN, this.modLocation("block/hologram_projector_bottom")), this.modelOutput);
-        ResourceLocation onModel = FAModelTemplates.TEMPLATE_HOLOGRAM_PROJECTOR.createWithSuffix(coloredHologramProjectorBlock, "_on", new TextureMapping().put(TextureSlot.SIDE, this.modLocation("block/hologram_projector_side_on")).put(TextureSlot.UP, this.modLocation("block/" + dyeColor.getName() + "_hologram_projector_top_on")).put(TextureSlot.DOWN, this.modLocation("block/hologram_projector_bottom")), this.modelOutput);
-        this.block(MultiVariantGenerator.multiVariant(coloredHologramProjectorBlock).with(PropertyDispatch.property(HologramProjectorBlock.ON).select(false, Variant.variant().with(VariantProperties.MODEL, offModel)).select(true, Variant.variant().with(VariantProperties.MODEL, onModel))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
     }
 
     public void createIronBarsLike(IronBarsBlock ironBarsBlock, ResourceLocation texture) {

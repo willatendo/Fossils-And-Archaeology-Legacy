@@ -139,6 +139,11 @@ public class FARecipeProvider extends RecipeProvider {
         this.coin(FAItems.ICE_AGE_COIN.get(), Blocks.ICE);
         this.shapeless(RecipeCategory.MISC, Items.YELLOW_DYE).requires(FABlocks.COOKSONIA.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.COOKSONIA.get()), this.has(FABlocks.COOKSONIA.get())).save(this.output, FAUtils.ID + ":yellow_dye_from_cooksonia");
         this.shapeless(RecipeCategory.MISC, Items.PINK_DYE, 2).requires(FABlocks.LOTUS.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.LOTUS.get()), this.has(FABlocks.LOTUS.get())).save(this.output, FAUtils.ID + ":pink_dye_from_lotus");
+        this.shapeless(RecipeCategory.MISC, Items.STICK, 4).requires(FABlocks.CYCAD_HEAD.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.CYCAD_HEAD.get()), this.has(FABlocks.CYCAD_HEAD.get())).save(this.output, FAUtils.ID + ":stick_from_cycad_head");
+        this.shapeless(RecipeCategory.MISC, Items.STICK, 2).requires(FABlocks.CYCAD_LOG.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.CYCAD_LOG.get()), this.has(FABlocks.CYCAD_LOG.get())).save(this.output, FAUtils.ID + ":stick_from_cycad_log");
+        this.shapeless(RecipeCategory.MISC, Items.STICK, 4).requires(FABlocks.ZAMITES_HEAD.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.ZAMITES_HEAD.get()), this.has(FABlocks.ZAMITES_HEAD.get())).save(this.output, FAUtils.ID + ":stick_from_zamites_head");
+        this.shapeless(RecipeCategory.MISC, Items.STICK, 2).requires(FABlocks.ZAMITES_LOG.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.ZAMITES_LOG.get()), this.has(FABlocks.ZAMITES_LOG.get())).save(this.output, FAUtils.ID + ":stick_from_zamites_log");
+        this.shapeless(RecipeCategory.MISC, Items.STICK, 2).requires(FABlocks.ZAMITES_BRANCH.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.ZAMITES_BRANCH.get()), this.has(FABlocks.ZAMITES_BRANCH.get())).save(this.output, FAUtils.ID + ":stick_from_zamites_branch");
 
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.ASPHALT_STAIRS.get(), 4).pattern("#  ").pattern("## ").pattern("###").define('#', FABlocks.ASPHALT.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.ASPHALT.get()), this.has(FABlocks.ASPHALT.get())).save(this.output);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.ASPHALT_SLAB.get(), 6).pattern("###").define('#', FABlocks.ASPHALT.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.ASPHALT.get()), this.has(FABlocks.ASPHALT.get())).save(this.output);
@@ -158,22 +163,6 @@ public class FARecipeProvider extends RecipeProvider {
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.YELLOW_ROAD_MARKING.get(), 16).pattern("#").pattern("$").pattern("#").define('#', Items.YELLOW_DYE).define('$', Items.IRON_INGOT).unlockedBy(RecipeProvider.getHasName(Items.IRON_INGOT), this.has(Items.IRON_INGOT)).save(this.output);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.DOUBLE_YELLOW_ROAD_MARKING.get(), 1).pattern("##").define('#', FABlocks.YELLOW_ROAD_MARKING.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.YELLOW_ROAD_MARKING.get()), this.has(FABlocks.YELLOW_ROAD_MARKING.get())).save(this.output);
         this.hologramProjector(FABlocks.HOLOGRAM_PROJECTOR.get(), Blocks.GLASS);
-        this.hologramProjector(FABlocks.WHITE_HOLOGRAM_PROJECTOR.get(), Blocks.WHITE_STAINED_GLASS);
-        this.hologramProjector(FABlocks.ORANGE_HOLOGRAM_PROJECTOR.get(), Blocks.ORANGE_STAINED_GLASS);
-        this.hologramProjector(FABlocks.MAGENTA_HOLOGRAM_PROJECTOR.get(), Blocks.MAGENTA_STAINED_GLASS);
-        this.hologramProjector(FABlocks.LIGHT_BLUE_HOLOGRAM_PROJECTOR.get(), Blocks.LIGHT_BLUE_STAINED_GLASS);
-        this.hologramProjector(FABlocks.YELLOW_HOLOGRAM_PROJECTOR.get(), Blocks.YELLOW_STAINED_GLASS);
-        this.hologramProjector(FABlocks.LIME_HOLOGRAM_PROJECTOR.get(), Blocks.LIME_STAINED_GLASS);
-        this.hologramProjector(FABlocks.PINK_HOLOGRAM_PROJECTOR.get(), Blocks.PINK_STAINED_GLASS);
-        this.hologramProjector(FABlocks.GRAY_HOLOGRAM_PROJECTOR.get(), Blocks.GRAY_STAINED_GLASS);
-        this.hologramProjector(FABlocks.LIGHT_GRAY_HOLOGRAM_PROJECTOR.get(), Blocks.LIGHT_GRAY_STAINED_GLASS);
-        this.hologramProjector(FABlocks.CYAN_HOLOGRAM_PROJECTOR.get(), Blocks.CYAN_STAINED_GLASS);
-        this.hologramProjector(FABlocks.PURPLE_HOLOGRAM_PROJECTOR.get(), Blocks.PURPLE_STAINED_GLASS);
-        this.hologramProjector(FABlocks.BLUE_HOLOGRAM_PROJECTOR.get(), Blocks.BLUE_STAINED_GLASS);
-        this.hologramProjector(FABlocks.BROWN_HOLOGRAM_PROJECTOR.get(), Blocks.BROWN_STAINED_GLASS);
-        this.hologramProjector(FABlocks.GREEN_HOLOGRAM_PROJECTOR.get(), Blocks.GREEN_STAINED_GLASS);
-        this.hologramProjector(FABlocks.RED_HOLOGRAM_PROJECTOR.get(), Blocks.RED_STAINED_GLASS);
-        this.hologramProjector(FABlocks.BLACK_HOLOGRAM_PROJECTOR.get(), Blocks.BLACK_STAINED_GLASS);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.CHAIN_LINK_FENCE.get(), 16).pattern("###").pattern("###").define('#', Items.IRON_NUGGET).unlockedBy(RecipeProvider.getHasName(Items.IRON_NUGGET), this.has(Items.IRON_NUGGET)).save(this.output);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.IRON_FENCE.get(), 16).pattern("#$#").pattern("#$#").define('#', Items.IRON_INGOT).define('$', Items.IRON_NUGGET).unlockedBy(RecipeProvider.getHasName(Items.IRON_NUGGET), this.has(Items.IRON_NUGGET)).save(this.output);
 

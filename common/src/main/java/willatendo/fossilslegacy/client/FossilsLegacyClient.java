@@ -1,5 +1,6 @@
 package willatendo.fossilslegacy.client;
 
+import com.google.common.collect.ImmutableList;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.HumanoidArmorModel;
 import net.minecraft.client.model.PlayerModel;
@@ -13,6 +14,8 @@ import net.minecraft.client.renderer.entity.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.animal.horse.Donkey;
 import net.minecraft.world.entity.animal.horse.Mule;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeMap;
 import net.minecraft.world.level.GrassColor;
 import willatendo.fossilslegacy.client.model.*;
@@ -28,10 +31,15 @@ import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.block.FAWoodTypes;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
+import willatendo.fossilslegacy.server.item.FACreativeModeTabs;
+import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.menu.FAMenuTypes;
 import willatendo.fossilslegacy.server.particles.FAParticleTypes;
+import willatendo.fossilslegacy.server.tags.FAItemTags;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.client.event.registry.*;
+import willatendo.simplelibrary.client.filter.CreativeModeTabFilter;
+import willatendo.simplelibrary.client.filter.Filter;
 
 public final class FossilsLegacyClient {
     public static final ResourceLocation CAPTAINS_HAT = FAUtils.resource("textures/entity/captains_hat/captains_hat_texture.png");
@@ -293,5 +301,29 @@ public final class FossilsLegacyClient {
 
     public static void addRecipes(RecipeMap recipeMap) {
         SyncedData.addRecipes(recipeMap);
+    }
+
+    public static void setupFilters() {
+        ImmutableList.Builder<Filter> itemFilters = ImmutableList.builder();
+        itemFilters.add(new Filter(FAItemTags.FILTER_FOSSILS, new ItemStack(FAItems.MESOZOIC_FOSSIL.get())));
+        itemFilters.add(new Filter(FAItemTags.FILTER_ANIMAL_DNA, new ItemStack(FAItems.TYRANNOSAURUS_DNA.get())));
+        itemFilters.add(new Filter(FAItemTags.FILTER_PLANT_DNA, new ItemStack(FAItems.JURASSIC_FERN_DNA.get())));
+        itemFilters.add(new Filter(FAItemTags.FILTER_EGGS_AND_EMBRYOS, new ItemStack(FAItems.VELOCIRAPTOR_EGG.get())));
+        itemFilters.add(new Filter(FAItemTags.FILTER_CONES_SEEDS_AND_SPORES, new ItemStack(FAItems.CYCAD_CONE.get())));
+        itemFilters.add(new Filter(FAItemTags.FILTER_MEAT, new ItemStack(FAItems.COOKED_ANKYLOSAURUS.get())));
+        itemFilters.add(new Filter(FAItemTags.FILTER_ARTIFACTS, new ItemStack(FAItems.RELIC_SCRAP.get())));
+        itemFilters.add(new Filter(FAItemTags.FILTER_TOOLS_AND_ARMOR, new ItemStack(FAItems.SCARAB_GEM_SWORD.get())));
+        itemFilters.add(new Filter(FAItemTags.FILTER_SPAWN_EGGS, new ItemStack(FAItems.TRICERATOPS_SPAWN_EGG.get())));
+        CreativeModeTabFilter.create(FACreativeModeTabs.FA_ITEMS.get(), itemFilters);
+
+        ImmutableList.Builder<Filter> blockFilters = ImmutableList.builder();
+        blockFilters.add(new Filter(FAItemTags.FILTER_ORES, new ItemStack(FABlocks.MESOZOIC_FOSSIL_ORE.get())));
+        blockFilters.add(new Filter(FAItemTags.FILTER_UTILITIES, new ItemStack(FABlocks.DNA_ANALYZER.get())));
+        blockFilters.add(new Filter(FAItemTags.FILTER_BUILDING_BLOCKS, new ItemStack(FABlocks.POLISHED_ASPHALT_BRICKS.get())));
+        blockFilters.add(new Filter(FAItemTags.FILTER_DECORATIONS, new ItemStack(FAItems.DECORATION_PLAQUE.get())));
+        blockFilters.add(new Filter(FAItemTags.FILTER_ARCHAEOLOGY, new ItemStack(FAItems.IRON_LLAMA_STATUE.get())));
+        blockFilters.add(new Filter(FAItemTags.FILTER_PLANTS, new ItemStack(FABlocks.CYCAD_HEAD.get())));
+        blockFilters.add(new Filter(FAItemTags.FILTER_WOOD, new ItemStack(FABlocks.GINKGO_LOG.get())));
+        CreativeModeTabFilter.create(FACreativeModeTabs.FA_BLOCKS.get(), blockFilters);
     }
 }

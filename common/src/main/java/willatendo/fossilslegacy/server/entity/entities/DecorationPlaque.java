@@ -2,7 +2,6 @@ package willatendo.fossilslegacy.server.entity.entities;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -26,10 +25,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import willatendo.fossilslegacy.server.block.entity.entities.DecorationPostBlockEntity;
 import willatendo.fossilslegacy.server.decoration_plaque_type.DecorationPlaqueType;
 import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
@@ -46,11 +43,13 @@ public class DecorationPlaque extends HangingEntity implements VariantHolder<Hol
     private static final EntityDataAccessor<Holder<DecorationPlaqueType>> DECORATION_PLAQUE_TYPE = SynchedEntityData.defineId(DecorationPlaque.class, FAEntityDataSerializers.DECORATION_PLAQUE_TYPE.get());
     public static final MapCodec<Holder<DecorationPlaqueType>> VARIANT_MAP_CODEC = DecorationPlaqueType.CODEC.fieldOf("variant");
     public static final Codec<Holder<DecorationPlaqueType>> VARIANT_CODEC = VARIANT_MAP_CODEC.codec();
-    private ItemStack plaqueItemStack;
 
     public DecorationPlaque(EntityType<? extends DecorationPlaque> entityType, Level level) {
         super(entityType, level);
-        this.plaqueItemStack = new ItemStack(FAItems.DECORATION_PLAQUE.get());
+    }
+
+    private DecorationPlaque(Level level, BlockPos blockPos) {
+        super(FAEntityTypes.DECORATION_PLAQUE.get(), level, blockPos);
     }
 
     @Override
@@ -76,8 +75,8 @@ public class DecorationPlaque extends HangingEntity implements VariantHolder<Hol
     }
 
     @Override
-    public InteractionResult interact(Player player, InteractionHand interactionHand) {
-        if (!this.level().isClientSide() && player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
+    public InteractionResult interactAt(Player player, Vec3 vec, InteractionHand interactionHand) {
+        if (!this.level().isClientSide() && player.getMainHandItem().isEmpty()) {
             ServerLevel serverLevel = (ServerLevel) this.level();
             List<Holder<DecorationPlaqueType>> decorationPlaqueTypes = serverLevel.registryAccess().lookupOrThrow(FARegistries.DECORATION_PLAQUE_TYPE).get(FADecorationPlaqueTypeTags.PLACEABLE).get().stream().filter(decorationPlaqueTypeHolder -> {
                 DecorationPlaqueType decorationPlaqueType = decorationPlaqueTypeHolder.value();
@@ -96,13 +95,13 @@ public class DecorationPlaque extends HangingEntity implements VariantHolder<Hol
                 decorationPlaqueTypeHolder = decorationPlaqueTypes.getFirst();
             }
             this.setVariant(decorationPlaqueTypeHolder);
-            return InteractionResult.SUCCESS;
+            return InteractionResult.SUCCESS_SERVER;
         }
-        return super.interact(player, interactionHand);
+        return super.interactAt(player, vec, interactionHand);
     }
 
-    public static Optional<DecorationPlaque> create(Level level, BlockPos blockPos, ItemStack plaqueItemStack, Direction direction) {
-        DecorationPlaque decorationPlaque = new DecorationPlaque(level, blockPos, plaqueItemStack);
+    public static Optional<DecorationPlaque> create(Level level, BlockPos blockPos, Direction direction) {
+        DecorationPlaque decorationPlaque = new DecorationPlaque(level, blockPos);
         List<Holder<DecorationPlaqueType>> decorationPlaqueTypes = new ArrayList<>();
         Iterable<Holder<DecorationPlaqueType>> decorationPlaqueTypeIterable = level.registryAccess().lookupOrThrow(FARegistries.DECORATION_PLAQUE_TYPE).getTagOrEmpty(FADecorationPlaqueTypeTags.PLACEABLE);
         Objects.requireNonNull(decorationPlaqueTypeIterable);
@@ -120,20 +119,11 @@ public class DecorationPlaque extends HangingEntity implements VariantHolder<Hol
             } else {
                 int area = decorationPlaqueTypes.stream().mapToInt(DecorationPlaque::variantArea).max().orElse(0);
                 decorationPlaqueTypes.removeIf(holder -> DecorationPlaque.variantArea(holder) < area);
-                Optional<Holder<DecorationPlaqueType>> decorationPlaqueTypeHolder = Util.getRandomSafe(decorationPlaqueTypes, decorationPlaque.random);
-                if (decorationPlaqueTypeHolder.isEmpty()) {
-                    return Optional.empty();
-                }
-                decorationPlaque.setVariant(decorationPlaqueTypeHolder.get());
+                decorationPlaque.setVariant(decorationPlaqueTypes.getFirst());
                 decorationPlaque.setDirection(direction);
                 return Optional.of(decorationPlaque);
             }
         }
-    }
-
-    private DecorationPlaque(Level level, BlockPos blockPos, ItemStack plaqueItemStack) {
-        super(FAEntityTypes.DECORATION_PLAQUE.get(), level, blockPos);
-        this.plaqueItemStack = plaqueItemStack;
     }
 
     private static int variantArea(Holder<DecorationPlaqueType> decorationPlaqueType) {
@@ -144,7 +134,6 @@ public class DecorationPlaque extends HangingEntity implements VariantHolder<Hol
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         VARIANT_CODEC.encodeStart(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), this.getVariant()).ifSuccess(tag -> compoundTag.merge((CompoundTag) tag));
         compoundTag.putByte("facing", (byte) this.direction.get2DDataValue());
-        compoundTag.put("plaque_type", this.plaqueItemStack.save(this.registryAccess()));
         super.addAdditionalSaveData(compoundTag);
     }
 
@@ -154,7 +143,6 @@ public class DecorationPlaque extends HangingEntity implements VariantHolder<Hol
         this.direction = Direction.from2DDataValue(compoundTag.getByte("facing"));
         super.readAdditionalSaveData(compoundTag);
         this.setDirection(this.direction);
-        this.plaqueItemStack = ItemStack.parseOptional(this.registryAccess(), compoundTag.getCompound("plaque_type"));
     }
 
     @Override
@@ -186,7 +174,7 @@ public class DecorationPlaque extends HangingEntity implements VariantHolder<Hol
                 }
             }
 
-            this.spawnAtLocation(serverLevel, this.plaqueItemStack);
+            this.spawnAtLocation(serverLevel, new ItemStack(FAItems.DECORATION_PLAQUE.get()));
         }
     }
 
@@ -223,6 +211,6 @@ public class DecorationPlaque extends HangingEntity implements VariantHolder<Hol
 
     @Override
     public ItemStack getPickResult() {
-        return this.plaqueItemStack;
+        return new ItemStack(FAItems.DECORATION_PLAQUE.get());
     }
 }

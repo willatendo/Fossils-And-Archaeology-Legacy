@@ -38,33 +38,43 @@ public interface TicksToBirth {
 
     default void birthTick(Mob mob, Level level, Optional<UUID> owner) {
         if (this.getRemainingTime() >= this.maxTime()) {
-            Entity offspring = this.getOffspring(level);
-            offspring.moveTo(mob.getX(), mob.getY(), mob.getZ(), 0.0F, 0.0F);
-            if (offspring instanceof GrowingEntity growingEntity) {
-                growingEntity.setGrowthStage(0, true);
+            int count = 1;
+            if (level.getRandom().nextInt(100) == 1) {
+                count = 2;
+            } else if (level.getRandom().nextInt(1000) == 1) {
+                count = 3;
+            } else if (level.getRandom().nextInt(10000) == 1) {
+                count = 4;
             }
-            if (offspring instanceof Animal animal) {
-                animal.setBaby(true);
-            }
-            if (owner.isEmpty()) {
-                if (offspring instanceof TamesOnBirth tamesOnBirth) {
-                    if (tamesOnBirth.tamesOnBirth()) {
-                        Player player = level.getNearestPlayer(offspring, 25.0D);
-                        if (player != null) {
-                            tamesOnBirth.setOwnerUUID(player.getUUID());
-                        }
-                        if (player instanceof ServerPlayer serverPlayer && tamesOnBirth instanceof Animal animal) {
-                            CriteriaTriggers.TAME_ANIMAL.trigger(serverPlayer, animal);
+            for (int i = 0; i < count; i++) {
+                Entity offspring = this.getOffspring(level);
+                offspring.moveTo(mob.getX(), mob.getY(), mob.getZ(), 0.0F, 0.0F);
+                if (offspring instanceof GrowingEntity growingEntity) {
+                    growingEntity.setGrowthStage(0, true);
+                }
+                if (offspring instanceof Animal animal) {
+                    animal.setBaby(true);
+                }
+                if (owner.isEmpty()) {
+                    if (offspring instanceof TamesOnBirth tamesOnBirth) {
+                        if (tamesOnBirth.tamesOnBirth()) {
+                            Player player = level.getNearestPlayer(offspring, 25.0D);
+                            if (player != null) {
+                                tamesOnBirth.setOwnerUUID(player.getUUID());
+                            }
+                            if (player instanceof ServerPlayer serverPlayer && tamesOnBirth instanceof Animal animal) {
+                                CriteriaTriggers.TAME_ANIMAL.trigger(serverPlayer, animal);
+                            }
                         }
                     }
+                } else {
+                    if (offspring instanceof TameAccessor tameAccessor) {
+                        tameAccessor.setOwnerUUID(owner.get());
+                    }
                 }
-            } else {
-                if (offspring instanceof TameAccessor tameAccessor) {
-                    tameAccessor.setOwnerUUID(owner.get());
-                }
+                this.onEntityTicksComplete(mob, offspring, level);
+                level.addFreshEntity(offspring);
             }
-            this.onEntityTicksComplete(mob, offspring, level);
-            level.addFreshEntity(offspring);
         } else {
             this.setRemainingTime(this.getRemainingTime() + 1);
         }

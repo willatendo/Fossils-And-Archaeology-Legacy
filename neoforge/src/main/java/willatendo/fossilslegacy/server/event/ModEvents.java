@@ -1,9 +1,7 @@
 package willatendo.fossilslegacy.server.event;
 
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.crafting.RecipeBookCategory;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.LevelAccessor;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -20,8 +18,6 @@ import net.neoforged.neoforge.registries.NewRegistryEvent;
 import willatendo.fossilslegacy.client.FASearchRecipeBookCategory;
 import willatendo.fossilslegacy.network.ClientboundPacketRegistry;
 import willatendo.fossilslegacy.network.ServerboundPacketRegistry;
-import willatendo.fossilslegacy.server.dimension.DayCycleLevelData;
-import willatendo.fossilslegacy.server.level.FALevels;
 import willatendo.fossilslegacy.server.recipe.FARecipeTypes;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.event.modification.*;

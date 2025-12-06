@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.server.entity.entities.pregnant;
 
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -20,9 +19,6 @@ import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Smilodon;
 import willatendo.fossilslegacy.server.entity.util.interfaces.PregnantAnimal;
 import willatendo.fossilslegacy.server.gene.Chromosome;
-import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
-import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
-import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
 import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.pregnancy_types.PregnancyType;
 

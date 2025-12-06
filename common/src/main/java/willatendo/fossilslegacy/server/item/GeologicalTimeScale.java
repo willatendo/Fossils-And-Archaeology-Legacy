@@ -48,7 +48,9 @@ public final class GeologicalTimeScale {
 
         @Override
         public void appendHoverText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-            tooltipComponents.add(FAUtils.translation("item", "dna.era", FAUtils.translation("item", "dna.era." + this.name).withStyle(this.chatFormatting)).withStyle(ChatFormatting.GRAY));
+            if (tooltipFlag.isAdvanced()) {
+                tooltipComponents.add(FAUtils.translation("item", "dna.era", FAUtils.translation("item", "dna.era." + this.name).withStyle(this.chatFormatting)).withStyle(ChatFormatting.GRAY));
+            }
         }
     }
 
@@ -90,8 +92,10 @@ public final class GeologicalTimeScale {
 
         @Override
         public void appendHoverText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-            this.era.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
-            tooltipComponents.add(FAUtils.translation("item", "dna.period", FAUtils.translation("item", "dna.period." + this.name).withColor(this.color)).withStyle(ChatFormatting.GRAY));
+            if (tooltipFlag.isAdvanced()) {
+                this.era.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
+                tooltipComponents.add(FAUtils.translation("item", "dna.period", FAUtils.translation("item", "dna.period." + this.name).withColor(this.color)).withStyle(ChatFormatting.GRAY));
+            }
         }
     }
 }

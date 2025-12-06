@@ -21,7 +21,7 @@ public class FADecorationPlaqueTypes {
     }
 
     private static void register(BootstrapContext<DecorationPlaqueType> bootstrapContext, ResourceKey<DecorationPlaqueType> resourceKey, int width, int height) {
-        bootstrapContext.register(resourceKey, new DecorationPlaqueType(width, height, resourceKey.location()));
+        bootstrapContext.register(resourceKey, new DecorationPlaqueType(width, height, resourceKey.location(), FAUtils.translation("decoration_plaque_type", resourceKey.location().getPath())));
     }
 
     public static void bootstrap(BootstrapContext<DecorationPlaqueType> bootstrapContext) {

@@ -108,6 +108,8 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
             }
         });
 
+        FossilsLegacyClient.setupFilters();
+
         for (int i = 0; i < FABlockRegistry.woodSize(); i++) {
             BlockRenderLayerMap.INSTANCE.putBlock(FABlockRegistry.getSapling(i).get(), RenderType.cutout());
             BlockRenderLayerMap.INSTANCE.putBlock(FABlockRegistry.getLeaves(i).get(), RenderType.cutout());

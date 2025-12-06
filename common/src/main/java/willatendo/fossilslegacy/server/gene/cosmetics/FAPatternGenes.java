@@ -2,9 +2,7 @@ package willatendo.fossilslegacy.server.gene.cosmetics;
 
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import willatendo.fossilslegacy.server.entity.FAEntityTypeReferences;
 import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
-import willatendo.fossilslegacy.server.gene.cosmetics.texture.CompositeTextureRules;
 import willatendo.fossilslegacy.server.gene.inheritance.InheritanceRules;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.utils.FAUtils;

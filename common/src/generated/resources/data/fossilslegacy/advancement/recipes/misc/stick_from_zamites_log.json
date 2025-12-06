@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fossilslegacy:stick_from_zamites_log"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_zamites_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fossilslegacy:zamites_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_zamites_log"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fossilslegacy:stick_from_zamites_log"
+    ]
+  }
+}

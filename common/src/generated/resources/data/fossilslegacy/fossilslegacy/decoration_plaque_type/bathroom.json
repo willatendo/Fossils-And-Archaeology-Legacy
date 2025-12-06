@@ -1,5 +1,8 @@
 {
   "asset_id": "fossilslegacy:bathroom",
   "height": 1,
+  "translation": {
+    "translate": "decoration_plaque_type.fossilslegacy.bathroom"
+  },
   "width": 1
 }

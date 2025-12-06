@@ -9,10 +9,10 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import willatendo.fossilslegacy.server.gene.attributes.AttributeGeneHolder;
+import willatendo.fossilslegacy.server.gene.cosmetics.CosmeticGeneHolder;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
-import willatendo.fossilslegacy.server.gene.cosmetics.CosmeticGeneHolder;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;

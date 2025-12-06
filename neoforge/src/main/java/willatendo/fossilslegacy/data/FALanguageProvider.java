@@ -314,22 +314,6 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.BLACK_POST.get());
         this.add(FABlocks.HARDENED_TAR_BLOCK.get());
         this.add(FABlocks.HOLOGRAM_PROJECTOR.get());
-        this.add(FABlocks.WHITE_HOLOGRAM_PROJECTOR.get());
-        this.add(FABlocks.ORANGE_HOLOGRAM_PROJECTOR.get());
-        this.add(FABlocks.MAGENTA_HOLOGRAM_PROJECTOR.get());
-        this.add(FABlocks.LIGHT_BLUE_HOLOGRAM_PROJECTOR.get());
-        this.add(FABlocks.YELLOW_HOLOGRAM_PROJECTOR.get());
-        this.add(FABlocks.LIME_HOLOGRAM_PROJECTOR.get());
-        this.add(FABlocks.PINK_HOLOGRAM_PROJECTOR.get());
-        this.add(FABlocks.GRAY_HOLOGRAM_PROJECTOR.get());
-        this.add(FABlocks.LIGHT_GRAY_HOLOGRAM_PROJECTOR.get());
-        this.add(FABlocks.CYAN_HOLOGRAM_PROJECTOR.get());
-        this.add(FABlocks.PURPLE_HOLOGRAM_PROJECTOR.get());
-        this.add(FABlocks.BLUE_HOLOGRAM_PROJECTOR.get());
-        this.add(FABlocks.BROWN_HOLOGRAM_PROJECTOR.get());
-        this.add(FABlocks.GREEN_HOLOGRAM_PROJECTOR.get());
-        this.add(FABlocks.RED_HOLOGRAM_PROJECTOR.get());
-        this.add(FABlocks.BLACK_HOLOGRAM_PROJECTOR.get());
         this.add(FABlocks.CHAIN_LINK_FENCE.get());
         this.add(FABlocks.IRON_FENCE.get());
 
@@ -422,12 +406,14 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("container.fossilslegacy.feeder.notify_me", "Notify me when low");
         this.add("container.fossilslegacy.feeder.dont_notify_me", "Don't notify me when low");
         this.add("container.fossilslegacy.palaeontology_table", "Palaeontology Table");
+        this.add("container.fossilslegacy.place_plaque", "Place Plaque");
         this.add("container.fossilslegacy.restoration_table", "Restoration Table");
         this.add("container.fossilslegacy.time_machine", "Time Machine");
         this.add("container.fossilslegacy.time_machine.start", "Start");
 
         // Creative Mode Tabs
         this.add(FACreativeModeTabs.FA_ITEMS.get(), "F/A: Items");
+        this.add(FACreativeModeTabs.FA_SKELETONS.get(), "F/A: Skeletons");
         this.add(FACreativeModeTabs.FA_BLOCKS.get(), "F/A: Blocks");
 
         // Deaths
@@ -436,16 +422,29 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("death.attack.javelin", "%1$s was impaled");
         this.add("death.attack.javelin.player", "%1$s was impaled by %2$s");
 
+        // Decoration Plaques
+        this.add("decoration_plaque_type.fossilslegacy.bathroom", "Bathroom");
+        this.add("decoration_plaque_type.fossilslegacy.carnivore", "Carnivore Marker");
+        this.add("decoration_plaque_type.fossilslegacy.down", "Down Arrow");
+        this.add("decoration_plaque_type.fossilslegacy.herbivore", "Herbivore Marker");
+        this.add("decoration_plaque_type.fossilslegacy.left", "Left Arrow");
+        this.add("decoration_plaque_type.fossilslegacy.left_and_right", "Left and Right Arrows");
+        this.add("decoration_plaque_type.fossilslegacy.right", "Right Arrow");
+        this.add("decoration_plaque_type.fossilslegacy.right_and_left", "Right and Left Arrows");
+        this.add("decoration_plaque_type.fossilslegacy.up", "Up Arrows");
+
         // Dinopedia
         this.add("dinopedia.fossilslegacy.able_to_fly", "Able to Fly");
         this.add("dinopedia.fossilslegacy.age", "Age: %s");
         this.add("dinopedia.fossilslegacy.caution", "Caution:");
         this.add("dinopedia.fossilslegacy.cold", "Too Cold");
+        this.add("dinopedia.fossilslegacy.commanding_items", "Commanding Items");
         this.add("dinopedia.fossilslegacy.creature", "Creature: %s");
         this.add("dinopedia.fossilslegacy.dangerous", "Dangerous");
         this.add("dinopedia.fossilslegacy.dry", "Too Dry");
         this.add("dinopedia.fossilslegacy.egg", "%s Egg");
         this.add("dinopedia.fossilslegacy.embryo", "Embryo: %s");
+        this.add("dinopedia.fossilslegacy.food_items", "Foods Items");
         this.add("dinopedia.fossilslegacy.health", "Health: %s / %s");
         this.add("dinopedia.fossilslegacy.hunger", "Hunger: %s / %s");
         this.add("dinopedia.fossilslegacy.hybrid_dangerous", "Extremely Dangerous");
@@ -964,6 +963,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.articulated_fossil.velociraptor", "Articulated Velociraptor Fossil");
         this.add(FAItems.RELIC_SCRAP.get());
         this.add(FAItems.DECORATION_PLAQUE.get());
+        this.add("item.fossilslegacy.decoration_plaque.type", "Type: %s");
         this.add(FAItems.STONE_TABLET.get());
         this.add(FAItems.ANCIENT_SWORD_ARTIFACT.get());
         this.add(FAItems.ANCIENT_SHOVEL_ARTIFACT.get());
@@ -1865,10 +1865,45 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAFossilVariantTags.CENOZOIC, "Cenozoic");
         this.add(FAFossilVariantTags.MESOZOIC, "Mesozoic");
         this.add(FAFossilVariantTags.PALAEOZOIC, "Palaeozoic");
+        this.add(FAFossilVariantTags.PLACEABLE, "Placeable");
 
         this.add(FAFuelEntryTags.RESTORE_BY_STONE_TABLET, "Restore By Stone Tablet Fuels");
         this.add(FAFuelEntryTags.ARCHAEOLOGY_WORKBENCH, "Archaeology Workbench Fuels");
         this.add(FAFuelEntryTags.CULTIVATOR, "Cultivator Fuels");
+
+        this.add(FAItemTags.FILTER_FOSSILS, "Filter Fossils");
+        this.add("itemGroup.filter.fossilslegacy.filter.fossils", "Fossils");
+        this.add(FAItemTags.FILTER_ANIMAL_DNA, "Filter Animal DNA");
+        this.add("itemGroup.filter.fossilslegacy.filter.animal_dna", "Animal DNA");
+        this.add(FAItemTags.FILTER_PLANT_DNA, "Filter Plant DNA");
+        this.add("itemGroup.filter.fossilslegacy.filter.plant_dna", "Plant DNA");
+        this.add(FAItemTags.FILTER_EGGS_AND_EMBRYOS, "Filter Eggs and Embryos");
+        this.add("itemGroup.filter.fossilslegacy.filter.eggs_and_embryos", "Eggs and Embryos");
+        this.add(FAItemTags.FILTER_CONES_SEEDS_AND_SPORES, "Filter Cones, Seeds, and Spores");
+        this.add("itemGroup.filter.fossilslegacy.filter.cones_seeds_and_spores", "Cones, Seeds, and Spores");
+        this.add(FAItemTags.FILTER_MEAT, "Filter Meat");
+        this.add("itemGroup.filter.fossilslegacy.filter.meat", "Meat");
+        this.add(FAItemTags.FILTER_ARTIFACTS, "Filter Artifacts");
+        this.add("itemGroup.filter.fossilslegacy.filter.artifacts", "Artifacts");
+        this.add(FAItemTags.FILTER_TOOLS_AND_ARMOR, "Filter Tools and Armor");
+        this.add("itemGroup.filter.fossilslegacy.filter.tools_and_armor", "Tools and Armor");
+        this.add(FAItemTags.FILTER_SPAWN_EGGS, "Filter Spawn Eggs");
+        this.add("itemGroup.filter.fossilslegacy.filter.spawn_eggs", "Spawn Eggs");
+
+        this.add(FAItemTags.FILTER_ORES, "Filter Ores");
+        this.add("itemGroup.filter.fossilslegacy.filter.ores", "Ores");
+        this.add(FAItemTags.FILTER_UTILITIES, "Filter Utilities");
+        this.add("itemGroup.filter.fossilslegacy.filter.utilities", "Utilities");
+        this.add(FAItemTags.FILTER_BUILDING_BLOCKS, "Filter Building Blocks");
+        this.add("itemGroup.filter.fossilslegacy.filter.building_blocks", "Building Blocks");
+        this.add(FAItemTags.FILTER_DECORATIONS, "Filter Decorations");
+        this.add("itemGroup.filter.fossilslegacy.filter.decorations", "Decorations");
+        this.add(FAItemTags.FILTER_ARCHAEOLOGY, "Filter Archaeology");
+        this.add("itemGroup.filter.fossilslegacy.filter.archaeology", "Archaeology");
+        this.add(FAItemTags.FILTER_PLANTS, "Filter Plants");
+        this.add("itemGroup.filter.fossilslegacy.filter.plants", "Plants");
+        this.add(FAItemTags.FILTER_WOOD, "Filter Wood");
+        this.add("itemGroup.filter.fossilslegacy.filter.wood", "Wood");
 
         this.add(FAItemTags.ANIMAL_DNA, "Animal DNA");
         this.add(FAItemTags.ANCIENT_TOOL_MATERIALS, "Ancient Tool Materials");

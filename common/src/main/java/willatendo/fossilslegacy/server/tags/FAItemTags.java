@@ -3,12 +3,31 @@ package willatendo.fossilslegacy.server.tags;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 import willatendo.simplelibrary.server.util.TagRegister;
 
 public class FAItemTags {
     private static final TagRegister<Item> ITEM_TAGS = TagRegister.create(Registries.ITEM, FAUtils.ID);
+
+    // Creative Mode Tab Filters
+    public static final TagKey<Item> FILTER_FOSSILS = ITEM_TAGS.register("filter/fossils");
+    public static final TagKey<Item> FILTER_ANIMAL_DNA = ITEM_TAGS.register("filter/animal_dna");
+    public static final TagKey<Item> FILTER_PLANT_DNA = ITEM_TAGS.register("filter/plant_dna");
+    public static final TagKey<Item> FILTER_EGGS_AND_EMBRYOS = ITEM_TAGS.register("filter/eggs_and_embryos");
+    public static final TagKey<Item> FILTER_CONES_SEEDS_AND_SPORES = ITEM_TAGS.register("filter/cones_seeds_and_spores");
+    public static final TagKey<Item> FILTER_MEAT = ITEM_TAGS.register("filter/meat");
+    public static final TagKey<Item> FILTER_ARTIFACTS = ITEM_TAGS.register("filter/artifacts");
+    public static final TagKey<Item> FILTER_TOOLS_AND_ARMOR = ITEM_TAGS.register("filter/tools_and_armor");
+    public static final TagKey<Item> FILTER_MISCELLANEOUS = ITEM_TAGS.register("filter/miscellaneous");
+    public static final TagKey<Item> FILTER_SPAWN_EGGS = ITEM_TAGS.register("filter/spawn_eggs");
+
+    public static final TagKey<Item> FILTER_ORES = ITEM_TAGS.register("filter/ores");
+    public static final TagKey<Item> FILTER_UTILITIES = ITEM_TAGS.register("filter/utilities");
+    public static final TagKey<Item> FILTER_BUILDING_BLOCKS = ITEM_TAGS.register("filter/building_blocks");
+    public static final TagKey<Item> FILTER_DECORATIONS = ITEM_TAGS.register("filter/decorations");
+    public static final TagKey<Item> FILTER_ARCHAEOLOGY = ITEM_TAGS.register("filter/archaeology");
+    public static final TagKey<Item> FILTER_PLANTS = ITEM_TAGS.register("filter/plants");
+    public static final TagKey<Item> FILTER_WOOD = ITEM_TAGS.register("filter/wood");
 
     public static final TagKey<Item> ANIMAL_DNA = ITEM_TAGS.register("animal_dna");
     public static final TagKey<Item> ANCIENT_TOOL_MATERIALS = ITEM_TAGS.register("ancient_tool_materials");

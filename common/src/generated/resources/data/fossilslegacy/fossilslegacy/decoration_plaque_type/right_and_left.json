@@ -1,5 +1,8 @@
 {
   "asset_id": "fossilslegacy:right_and_left",
   "height": 1,
+  "translation": {
+    "translate": "decoration_plaque_type.fossilslegacy.right_and_left"
+  },
   "width": 1
 }

@@ -2,16 +2,12 @@ package willatendo.fossilslegacy.network.clientbound;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
 import willatendo.fossilslegacy.network.FAPackets;
 
 public record ClientboundPlaySoundPacket(BlockPos blockPos, ResourceKey<SoundEvent> soundEvent, String category, float volume, float pitch, boolean distanceDelay) implements CustomPacketPayload {

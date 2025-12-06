@@ -200,22 +200,6 @@ public class FABlockLootSubProvider extends SimpleBlockLootSubProvider {
         this.dropSelf(FABlocks.DOUBLE_YELLOW_ROAD_MARKING.get());
         this.dropSelf(FABlocks.HARDENED_TAR_BLOCK.get());
         this.dropSelf(FABlocks.HOLOGRAM_PROJECTOR.get());
-        this.dropSelf(FABlocks.WHITE_HOLOGRAM_PROJECTOR.get());
-        this.dropSelf(FABlocks.ORANGE_HOLOGRAM_PROJECTOR.get());
-        this.dropSelf(FABlocks.MAGENTA_HOLOGRAM_PROJECTOR.get());
-        this.dropSelf(FABlocks.LIGHT_BLUE_HOLOGRAM_PROJECTOR.get());
-        this.dropSelf(FABlocks.YELLOW_HOLOGRAM_PROJECTOR.get());
-        this.dropSelf(FABlocks.LIME_HOLOGRAM_PROJECTOR.get());
-        this.dropSelf(FABlocks.PINK_HOLOGRAM_PROJECTOR.get());
-        this.dropSelf(FABlocks.GRAY_HOLOGRAM_PROJECTOR.get());
-        this.dropSelf(FABlocks.LIGHT_GRAY_HOLOGRAM_PROJECTOR.get());
-        this.dropSelf(FABlocks.CYAN_HOLOGRAM_PROJECTOR.get());
-        this.dropSelf(FABlocks.PURPLE_HOLOGRAM_PROJECTOR.get());
-        this.dropSelf(FABlocks.BLUE_HOLOGRAM_PROJECTOR.get());
-        this.dropSelf(FABlocks.BROWN_HOLOGRAM_PROJECTOR.get());
-        this.dropSelf(FABlocks.GREEN_HOLOGRAM_PROJECTOR.get());
-        this.dropSelf(FABlocks.RED_HOLOGRAM_PROJECTOR.get());
-        this.dropSelf(FABlocks.BLACK_HOLOGRAM_PROJECTOR.get());
         this.dropSelf(FABlocks.CHAIN_LINK_FENCE.get());
         this.dropSelf(FABlocks.IRON_FENCE.get());
     }

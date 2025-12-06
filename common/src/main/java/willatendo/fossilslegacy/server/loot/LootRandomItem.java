@@ -17,7 +17,6 @@ import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import willatendo.fossilslegacy.server.item.items.MagicConchItem;
 import willatendo.fossilslegacy.server.registry.FABuiltInRegistries;
-import willatendo.simplelibrary.server.util.SimpleUtils;
 
 import java.util.List;
 import java.util.function.Consumer;

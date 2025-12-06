@@ -353,28 +353,12 @@ public final class FAItems {
     public static final SimpleHolder<BlockItem> POLISHED_ASPHALT_BRICK_STAIRS = ITEMS.registerBlock(FABlocks.POLISHED_ASPHALT_BRICK_STAIRS);
     public static final SimpleHolder<BlockItem> POLISHED_ASPHALT_BRICK_SLAB = ITEMS.registerBlock(FABlocks.POLISHED_ASPHALT_BRICK_SLAB);
     public static final SimpleHolder<BlockItem> POLISHED_ASPHALT_BRICK_WALL = ITEMS.registerBlock(FABlocks.POLISHED_ASPHALT_BRICK_WALL);
-    public static final SimpleHolder<BlockItem> SOLID_WHITE_MARKING = ITEMS.registerBlock(FABlocks.WHITE_ROAD_MARKING);
-    public static final SimpleHolder<BlockItem> DOUBLE_SOLID_WHITE_MARKING = ITEMS.registerBlock(FABlocks.DOUBLE_WHITE_ROAD_MARKING);
+    public static final SimpleHolder<BlockItem> WHITE_ROAD_MARKING = ITEMS.registerBlock(FABlocks.WHITE_ROAD_MARKING);
+    public static final SimpleHolder<BlockItem> DOUBLE_WHITE_ROAD_MARKING = ITEMS.registerBlock(FABlocks.DOUBLE_WHITE_ROAD_MARKING);
     public static final SimpleHolder<BlockItem> YELLOW_ROAD_MARKING = ITEMS.registerBlock(FABlocks.YELLOW_ROAD_MARKING);
     public static final SimpleHolder<BlockItem> DOUBLE_YELLOW_ROAD_MARKING = ITEMS.registerBlock(FABlocks.DOUBLE_YELLOW_ROAD_MARKING);
     public static final SimpleHolder<BlockItem> HARDENED_TAR_BLOCK = ITEMS.registerBlock(FABlocks.HARDENED_TAR_BLOCK);
     public static final SimpleHolder<BlockItem> HOLOGRAM_PROJECTOR = ITEMS.registerBlock(FABlocks.HOLOGRAM_PROJECTOR);
-    public static final SimpleHolder<BlockItem> WHITE_HOLOGRAM_PROJECTOR = ITEMS.registerBlock(FABlocks.WHITE_HOLOGRAM_PROJECTOR);
-    public static final SimpleHolder<BlockItem> ORANGE_HOLOGRAM_PROJECTOR = ITEMS.registerBlock(FABlocks.ORANGE_HOLOGRAM_PROJECTOR);
-    public static final SimpleHolder<BlockItem> MAGENTA_HOLOGRAM_PROJECTOR = ITEMS.registerBlock(FABlocks.MAGENTA_HOLOGRAM_PROJECTOR);
-    public static final SimpleHolder<BlockItem> LIGHT_BLUE_HOLOGRAM_PROJECTOR = ITEMS.registerBlock(FABlocks.LIGHT_BLUE_HOLOGRAM_PROJECTOR);
-    public static final SimpleHolder<BlockItem> YELLOW_HOLOGRAM_PROJECTOR = ITEMS.registerBlock(FABlocks.YELLOW_HOLOGRAM_PROJECTOR);
-    public static final SimpleHolder<BlockItem> LIME_HOLOGRAM_PROJECTOR = ITEMS.registerBlock(FABlocks.LIME_HOLOGRAM_PROJECTOR);
-    public static final SimpleHolder<BlockItem> PINK_HOLOGRAM_PROJECTOR = ITEMS.registerBlock(FABlocks.PINK_HOLOGRAM_PROJECTOR);
-    public static final SimpleHolder<BlockItem> GRAY_HOLOGRAM_PROJECTOR = ITEMS.registerBlock(FABlocks.GRAY_HOLOGRAM_PROJECTOR);
-    public static final SimpleHolder<BlockItem> LIGHT_GRAY_HOLOGRAM_PROJECTOR = ITEMS.registerBlock(FABlocks.LIGHT_GRAY_HOLOGRAM_PROJECTOR);
-    public static final SimpleHolder<BlockItem> CYAN_HOLOGRAM_PROJECTOR = ITEMS.registerBlock(FABlocks.CYAN_HOLOGRAM_PROJECTOR);
-    public static final SimpleHolder<BlockItem> PURPLE_HOLOGRAM_PROJECTOR = ITEMS.registerBlock(FABlocks.PURPLE_HOLOGRAM_PROJECTOR);
-    public static final SimpleHolder<BlockItem> BLUE_HOLOGRAM_PROJECTOR = ITEMS.registerBlock(FABlocks.BLUE_HOLOGRAM_PROJECTOR);
-    public static final SimpleHolder<BlockItem> BROWN_HOLOGRAM_PROJECTOR = ITEMS.registerBlock(FABlocks.BROWN_HOLOGRAM_PROJECTOR);
-    public static final SimpleHolder<BlockItem> GREEN_HOLOGRAM_PROJECTOR = ITEMS.registerBlock(FABlocks.GREEN_HOLOGRAM_PROJECTOR);
-    public static final SimpleHolder<BlockItem> RED_HOLOGRAM_PROJECTOR = ITEMS.registerBlock(FABlocks.RED_HOLOGRAM_PROJECTOR);
-    public static final SimpleHolder<BlockItem> BLACK_HOLOGRAM_PROJECTOR = ITEMS.registerBlock(FABlocks.BLACK_HOLOGRAM_PROJECTOR);
     public static final SimpleHolder<BlockItem> CHAIN_LINK_FENCE = ITEMS.registerBlock(FABlocks.CHAIN_LINK_FENCE);
     public static final SimpleHolder<BlockItem> IRON_FENCE = ITEMS.registerBlock(FABlocks.IRON_FENCE);
 
@@ -742,6 +726,4 @@ public final class FAItems {
     public static final SimpleHolder<DebugItem> DEBUG_BABY = ITEMS.registerItem("debug_baby", properties -> new DebugItem(DebugItem.debugBaby(), properties));
     public static final SimpleHolder<DebugItem> DEBUG_TAME = ITEMS.registerItem("debug_tame", properties -> new DebugItem(DebugItem.debugTame(), properties));
     public static final SimpleHolder<DebugItem> DEBUG_CHANGE_GENETICS = ITEMS.registerItem("debug_change_genetics", properties -> new DebugItem(DebugItem.debugChangeGenetics(), properties));
-
-
 }

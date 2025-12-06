@@ -1,5 +1,8 @@
 {
   "asset_id": "fossilslegacy:carnivore",
   "height": 2,
+  "translation": {
+    "translate": "decoration_plaque_type.fossilslegacy.carnivore"
+  },
   "width": 2
 }

@@ -7,12 +7,16 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.PageButton;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import willatendo.fossilslegacy.server.dinopedia_entry.DinopediaEntry;
 import willatendo.fossilslegacy.server.dinopedia_entry.line.BuiltInDinopediaLines;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
@@ -24,15 +28,16 @@ import java.util.List;
 
 public class DinopediaScreen extends Screen {
     private static final ResourceLocation DINOPEDIA_TEXTURE = FAUtils.resource("textures/gui/container/dinopedia.png");
+    private final int imageWidth = 280;
+    private final int imageHeight = 180;
     private final List<DinopediaEntry> dinopediaEntries;
     private final Player player;
     private final LivingEntity livingEntity;
     private final DinopediaInformation dinopediaInformation;
-    private int index = 0;
+    private final int pages;
+    private int page = 0;
     private PageButton forwardButton;
     private PageButton backButton;
-    private int imageWidth = 280;
-    private int imageHeight = 180;
 
     public DinopediaScreen(Player player, LivingEntity livingEntity, DinopediaInformation dinopediaInformation) {
         super(GameNarrator.NO_TITLE);
@@ -46,22 +51,23 @@ public class DinopediaScreen extends Screen {
         this.player = player;
         this.livingEntity = livingEntity;
         this.dinopediaInformation = dinopediaInformation;
+        this.pages = (int) Math.ceil(this.dinopediaEntries.size() / 2.0D);
     }
 
     @Override
     protected void init() {
         int leftPos = (this.width - this.imageWidth) / 2;
         int topPos = (this.height / 2) - (this.imageHeight / 2);
-        this.forwardButton = this.addRenderableWidget(new PageButton(leftPos + 116, topPos + 157, true, button -> {
-            if (this.index + 1 < this.dinopediaEntries.size()) {
-                this.index++;
+        this.forwardButton = this.addRenderableWidget(new PageButton(leftPos + (this.imageWidth - 25 - 23), topPos + 157, true, button -> {
+            if (this.page + 1 < this.pages) {
+                this.page++;
 
                 this.updateButtonVisibility();
             }
         }, true));
-        this.backButton = this.addRenderableWidget(new PageButton(leftPos + 45, topPos + 157, false, button -> {
-            if (this.index - 1 >= 0) {
-                this.index--;
+        this.backButton = this.addRenderableWidget(new PageButton(leftPos + 25, topPos + 157, false, button -> {
+            if (this.page >= 0) {
+                this.page--;
 
                 this.updateButtonVisibility();
             }
@@ -70,8 +76,8 @@ public class DinopediaScreen extends Screen {
     }
 
     private void updateButtonVisibility() {
-        this.forwardButton.visible = this.index < this.dinopediaEntries.size() - 1;
-        this.backButton.visible = this.index > 0;
+        this.forwardButton.visible = this.page + 1 < this.pages;
+        this.backButton.visible = this.page > 0;
     }
 
     @Override
@@ -110,34 +116,70 @@ public class DinopediaScreen extends Screen {
         super.render(guiGraphics, mouseX, mouseY, partialTick);
 
         if (!this.dinopediaEntries.isEmpty()) {
-            boolean right = this.index % 2 == 0;
-            DinopediaEntry dinopediaEntry = this.dinopediaEntries.get(this.index);
-            int leftPos = (this.width - this.imageWidth) / 2;
-            int topPos = (this.height / 2) - (this.imageHeight / 2);
+            for (int i = 0; i < 2; i++) {
+                int index = (this.page * 2) + i;
+                if (index < this.dinopediaEntries.size()) {
+                    boolean left = i % 2 == 0;
+                    DinopediaEntry dinopediaEntry = this.dinopediaEntries.get(index);
+                    int leftPos = (this.width - this.imageWidth) / 2;
+                    int topPos = (this.height / 2) - (this.imageHeight / 2);
 
-            int textStart = 20;
+                    int textStart = 20;
 
-            if (dinopediaEntry.drawEntity()) {
-                textStart = 90;
-                this.livingEntity.tickCount = this.player.tickCount;
-                DNARecombinatorScreen.renderEntityInInventoryFollowsMouse(guiGraphics, leftPos + 20, topPos + 15, leftPos + 172, topPos + 80, 16, 1.0F, 0.25F, mouseX, mouseY, this.livingEntity);
-            }
+                    if (dinopediaEntry.hasDisplayedItems()) {
+                        int displayLeftPos = left ? (leftPos - (((this.imageWidth - 8) / 2) / 2)) : (leftPos + (((this.imageWidth - 8) / 2) / 2));
+                        int line = 0;
+                        int items = 0;
+                        for (int item = 0; item < dinopediaEntry.displayedItems().get().size(); item++) {
+                            DinopediaEntry.DisplayedItems displayedItems = dinopediaEntry.displayedItems().get().get(item);
+                            this.drawCenteredStringMinusShadow(guiGraphics, this.font, displayedItems.description(), displayLeftPos, topPos + textStart + (line * 10) + (items * 18), 0, true);
+                            line++;
+                            HolderSet.Named<Item> displayedItemsList = this.player.level().registryAccess().lookupOrThrow(Registries.ITEM).getOrThrow(displayedItems.displayedItems());
+                            int itemListSize = displayedItemsList.size();
+                            int rows = (int) Math.ceil(itemListSize / 6.0D);
+                            for (int y = 0; y < rows; y++) {
+                                int preexistingCount = y * rows;
+                                int rowCount = Math.min(itemListSize - preexistingCount, 6);
+                                for (int x = 0; x < rowCount; x++) {
+                                    int itemIndex = (y * rows) + x;
+                                    int itemX = (((this.imageWidth - 8) / 2) / 2) + (x * 18) - ((rowCount / 2) * 16);
+                                    if (!left) {
+                                        itemX += (this.imageWidth - 16) / 2;
+                                    }
+                                    guiGraphics.renderItem(new ItemStack(displayedItemsList.get(itemIndex)), leftPos + itemX, topPos + textStart + (line * 10) + (items * 18));
+                                }
+                                items++;
+                            }
+                        }
+                    } else {
+                        if (dinopediaEntry.drawEntity() && this.livingEntity != null) {
+                            int displayLeftPos = left ? leftPos + 25 : leftPos + 160;
+                            int displayRightPos = left ? leftPos + 120 : leftPos + 255;
+                            textStart = 90;
+                            this.livingEntity.tickCount = this.player.tickCount;
+                            DNARecombinatorScreen.renderEntityInInventoryFollowsMouse(guiGraphics, displayLeftPos, topPos + 15, displayRightPos, topPos + 80, 16, 1.0F, 0.25F, mouseX, mouseY, this.livingEntity);
+                        }
 
-            List<Component> components = new ArrayList<>();
-            if (this.dinopediaInformation.getDinopediaType().isPresent()) {
-                if (this.dinopediaInformation instanceof Entity entity) {
-                    components = dinopediaEntry.getText(entity, this.player);
-                }
-            }
+                        List<Component> components = new ArrayList<>();
+                        if (this.dinopediaInformation.getDinopediaType().isPresent()) {
+                            if (this.dinopediaInformation instanceof Entity entity) {
+                                components = dinopediaEntry.getText(entity, this.player);
+                            }
+                        }
 
-            if (!components.isEmpty()) {
-                boolean displayName = dinopediaEntry.line().contains(BuiltInDinopediaLines.DISPLAY_NAME);
-                if (displayName) {
-                    this.drawCenteredStringMinusShadow(guiGraphics, this.font, components.getFirst(), leftPos + (right ? -78 : 0), topPos + textStart, 0, dinopediaEntry.centerText());
-                }
+                        if (!components.isEmpty()) {
+                            boolean displayName = dinopediaEntry.line().contains(BuiltInDinopediaLines.DISPLAY_NAME);
+                            int displayLeftPos = left ? (leftPos - (((this.imageWidth - 8) / 2) / 2)) : (leftPos + (((this.imageWidth - 8) / 2) / 2));
 
-                for (int i = displayName ? 1 : 0; i < components.size(); i++) {
-                    this.drawCenteredStringMinusShadow(guiGraphics, this.font, components.get(i), leftPos + (right ? -78 : 0), topPos + textStart + (displayName ? 10 : 0) + (i * 10), 0, dinopediaEntry.centerText());
+                            if (displayName) {
+                                this.drawCenteredStringMinusShadow(guiGraphics, this.font, components.getFirst(), displayLeftPos, topPos + textStart, 0, dinopediaEntry.centerText());
+                            }
+
+                            for (int line = displayName ? 1 : 0; line < components.size(); line++) {
+                                this.drawCenteredStringMinusShadow(guiGraphics, this.font, components.get(line), displayLeftPos, topPos + textStart + (displayName ? 10 : 0) + (line * 10), 0, dinopediaEntry.centerText());
+                            }
+                        }
+                    }
                 }
             }
         }

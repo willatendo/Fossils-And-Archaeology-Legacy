@@ -11,10 +11,10 @@ import net.minecraft.world.level.Level;
 import willatendo.fossilslegacy.server.entity.entities.Egg;
 import willatendo.fossilslegacy.server.gene.ChromosomeUtils;
 import willatendo.fossilslegacy.server.gene.attributes.AttributeGeneHolder;
+import willatendo.fossilslegacy.server.gene.cosmetics.CosmeticGeneHolder;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
-import willatendo.fossilslegacy.server.gene.cosmetics.CosmeticGeneHolder;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.ArrayList;

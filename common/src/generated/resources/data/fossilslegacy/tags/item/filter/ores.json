@@ -1,0 +1,19 @@
+{
+  "values": [
+    "fossilslegacy:cenozoic_fossil_ore",
+    "fossilslegacy:deepslate_cenozoic_fossil_ore",
+    "fossilslegacy:mesozoic_fossil_ore",
+    "fossilslegacy:deepslate_mesozoic_fossil_ore",
+    "fossilslegacy:palaeozoic_fossil_ore",
+    "fossilslegacy:deepslate_palaeozoic_fossil_ore",
+    "fossilslegacy:amber_ore",
+    "fossilslegacy:deepslate_amber_ore",
+    "fossilslegacy:plant_fossil_ore",
+    "fossilslegacy:deepslate_plant_fossil_ore",
+    "fossilslegacy:relic_in_stone",
+    "fossilslegacy:relic_in_deepslate",
+    "fossilslegacy:permafrost",
+    "fossilslegacy:iced_stone",
+    "fossilslegacy:leech_in_ice"
+  ]
+}

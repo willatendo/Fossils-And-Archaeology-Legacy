@@ -25,10 +25,10 @@ import willatendo.fossilslegacy.server.entity.FAEntityDataSerializers;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
 import willatendo.fossilslegacy.server.entity.util.interfaces.PregnantAnimal;
 import willatendo.fossilslegacy.server.gene.Chromosome;
-import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
-import willatendo.fossilslegacy.server.item.FALootTables;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
+import willatendo.fossilslegacy.server.gene.cosmetics.skin.SkinGene;
+import willatendo.fossilslegacy.server.item.FALootTables;
 import willatendo.fossilslegacy.server.pregnancy_types.PregnancyType;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 

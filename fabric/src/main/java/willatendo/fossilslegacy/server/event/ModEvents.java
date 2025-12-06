@@ -18,7 +18,6 @@ import willatendo.fossilslegacy.network.NetworkUtils;
 import willatendo.fossilslegacy.network.ServerboundPacketRegistry;
 import willatendo.fossilslegacy.network.clientbound.ClientboundRecipeContentPacket;
 import willatendo.fossilslegacy.server.block.FAGameEvents;
-import willatendo.fossilslegacy.server.dimension.DayCycleLevelData;
 import willatendo.fossilslegacy.server.entity.FAEntityTypes;
 import willatendo.fossilslegacy.server.feature.FAPlacedFeatures;
 import willatendo.fossilslegacy.server.item.FAItems;

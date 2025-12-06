@@ -11,9 +11,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
-import willatendo.fossilslegacy.server.item.FADataComponents;
-import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.gene.cosmetics.CosmeticGeneHolder;
+import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
+import willatendo.fossilslegacy.server.item.FADataComponents;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.List;

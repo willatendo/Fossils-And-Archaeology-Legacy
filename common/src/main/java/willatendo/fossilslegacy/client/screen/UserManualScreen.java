@@ -23,7 +23,6 @@ import willatendo.fossilslegacy.client.screen.user_manual.UserManualGhostSlots;
 import willatendo.fossilslegacy.client.user_manual.SyncedData;
 import willatendo.fossilslegacy.client.user_manual.UserManualData;
 import willatendo.fossilslegacy.client.user_manual.UserManualItemDisplayData;
-import willatendo.fossilslegacy.client.user_manual.draw.Coordinate;
 import willatendo.fossilslegacy.client.user_manual.draw.SlotPlacer;
 import willatendo.fossilslegacy.client.user_manual.draw.SpriteDrawer;
 import willatendo.fossilslegacy.client.user_manual.loot.DrawLootRecipe;
@@ -35,7 +34,6 @@ import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class UserManualScreen extends AbstractContainerScreen<UserManualMenu> {
     private static final ResourceLocation USER_MANUEL_TEXTURE = FAUtils.resource("textures/gui/container/user_manual.png");

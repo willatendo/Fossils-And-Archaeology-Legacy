@@ -1,6 +1,5 @@
 package willatendo.fossilslegacy.server.dinopedia_entry;
 
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.registries.Registries;
@@ -14,8 +13,8 @@ import willatendo.fossilslegacy.server.dinopedia_entry.line.BuiltInDinopediaLine
 import willatendo.fossilslegacy.server.dinopedia_entry.line.CustomDinopediaLine;
 import willatendo.fossilslegacy.server.dinopedia_entry.line.DinopediaLine;
 import willatendo.fossilslegacy.server.dinopedia_entry.util.DinopediaEntityPredicate;
+import willatendo.fossilslegacy.server.utils.FAUtils;
 
-import java.rmi.registry.Registry;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -23,6 +22,10 @@ import java.util.Optional;
 
 public record DinopediaEntry(List<DinopediaLine> line, boolean drawEntity, boolean centerText, Optional<List<DisplayedItems>> displayedItems) {
     public static final Codec<DinopediaEntry> CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.list(DinopediaLine.CODEC).fieldOf("line").forGetter(DinopediaEntry::line), Codec.BOOL.optionalFieldOf("draw_entity", false).forGetter(DinopediaEntry::drawEntity), Codec.BOOL.optionalFieldOf("center_text", false).forGetter(DinopediaEntry::centerText), Codec.list(DisplayedItems.CODEC).optionalFieldOf("displayed_items").forGetter(DinopediaEntry::displayedItems)).apply(instance, DinopediaEntry::new));
+
+    public boolean hasDisplayedItems() {
+        return this.displayedItems.isPresent();
+    }
 
     public List<Component> getText(Entity entity, Player player) {
         ArrayList<Component> text = new ArrayList<>();
@@ -81,6 +84,10 @@ public record DinopediaEntry(List<DinopediaLine> line, boolean drawEntity, boole
         }
 
         public DinopediaEntry build() {
+            if (!this.displayedItems.isEmpty() && !this.text.isEmpty()) {
+                FAUtils.LOGGER.error("Dinopedia entry cannot have displayed items and text!!!");
+                throw new IllegalArgumentException();
+            }
             return new DinopediaEntry(this.text, this.drawEntity, this.centerText, this.displayedItems.isEmpty() ? Optional.empty() : Optional.of(this.displayedItems));
         }
     }

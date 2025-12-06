@@ -3,7 +3,6 @@ package willatendo.fossilslegacy.client.user_manual.loot.type;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.util.StringRepresentable;
-import willatendo.fossilslegacy.client.user_manual.loot.DrawArchaeologyLootRecipe;
 import willatendo.fossilslegacy.client.user_manual.loot.DrawLootRecipe;
 
 public enum DrawLootRecipeTypes implements StringRepresentable {

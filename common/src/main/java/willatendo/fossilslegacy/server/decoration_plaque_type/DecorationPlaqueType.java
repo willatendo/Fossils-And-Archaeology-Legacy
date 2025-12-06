@@ -5,6 +5,8 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.Holder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.ComponentSerialization;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.RegistryFileCodec;
@@ -12,9 +14,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ExtraCodecs;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 
-public record DecorationPlaqueType(int width, int height, ResourceLocation assetId) {
-    public static final Codec<DecorationPlaqueType> DIRECT_CODEC = RecordCodecBuilder.create(instance -> instance.group(ExtraCodecs.intRange(1, 16).fieldOf("width").forGetter(DecorationPlaqueType::width), ExtraCodecs.intRange(1, 16).fieldOf("height").forGetter(DecorationPlaqueType::height), ResourceLocation.CODEC.fieldOf("asset_id").forGetter(DecorationPlaqueType::assetId)).apply(instance, DecorationPlaqueType::new));
-    public static final StreamCodec<ByteBuf, DecorationPlaqueType> DIRECT_STREAM_CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT, DecorationPlaqueType::width, ByteBufCodecs.VAR_INT, DecorationPlaqueType::height, ResourceLocation.STREAM_CODEC, DecorationPlaqueType::assetId, DecorationPlaqueType::new);
+public record DecorationPlaqueType(int width, int height, ResourceLocation assetId, Component translation) {
+    public static final Codec<DecorationPlaqueType> DIRECT_CODEC = RecordCodecBuilder.create(instance -> instance.group(ExtraCodecs.intRange(1, 16).fieldOf("width").forGetter(DecorationPlaqueType::width), ExtraCodecs.intRange(1, 16).fieldOf("height").forGetter(DecorationPlaqueType::height), ResourceLocation.CODEC.fieldOf("asset_id").forGetter(DecorationPlaqueType::assetId), ComponentSerialization.CODEC.fieldOf("translation").forGetter(DecorationPlaqueType::translation)).apply(instance, DecorationPlaqueType::new));
+    public static final StreamCodec<ByteBuf, DecorationPlaqueType> DIRECT_STREAM_CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT, DecorationPlaqueType::width, ByteBufCodecs.VAR_INT, DecorationPlaqueType::height, ResourceLocation.STREAM_CODEC, DecorationPlaqueType::assetId, ComponentSerialization.TRUSTED_CONTEXT_FREE_STREAM_CODEC, DecorationPlaqueType::translation, DecorationPlaqueType::new);
     public static final Codec<Holder<DecorationPlaqueType>> CODEC = RegistryFileCodec.create(FARegistries.DECORATION_PLAQUE_TYPE, DIRECT_CODEC);
     public static final StreamCodec<RegistryFriendlyByteBuf, Holder<DecorationPlaqueType>> STREAM_CODEC = ByteBufCodecs.holder(FARegistries.DECORATION_PLAQUE_TYPE, DIRECT_STREAM_CODEC);
 

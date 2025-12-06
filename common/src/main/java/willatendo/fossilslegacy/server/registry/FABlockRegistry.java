@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.server.registry;
 
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.grower.TreeGrower;
@@ -53,7 +52,6 @@ public record FABlockRegistry(BlockRegistry blockRegistry) {
     public static final List<SimpleHolder<? extends AbstractHeadBlock>> ALL_HEADS = new ArrayList<>();
     public static final List<SimpleHolder<HeadBlock>> HEADS = new ArrayList<>();
     public static final List<SimpleHolder<WallHeadBlock>> WALL_HEADS = new ArrayList<>();
-    public static final List<SimpleHolder<ColoredHologramProjectorBlock>> COLORED_HOLOGRAM_PROJECTOR = new ArrayList<>();
 
     public static int woodSize() {
         return 10;
@@ -247,10 +245,6 @@ public record FABlockRegistry(BlockRegistry blockRegistry) {
         return ALL_HEADS.stream().map(SimpleHolder::get).toArray(Block[]::new);
     }
 
-    public static Block[] getColoredHologramProjectors() {
-        return COLORED_HOLOGRAM_PROJECTOR.stream().map(SimpleHolder::get).toArray(Block[]::new);
-    }
-
     public SimpleHolder<Block> registerPlanks(String name, MapColor mapColor) {
         SimpleHolder<Block> planks = this.registerBlock(name, BlockBehaviour.Properties.of().mapColor(mapColor).instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava());
         PLANKS.add(planks);
@@ -395,12 +389,6 @@ public record FABlockRegistry(BlockRegistry blockRegistry) {
         WALL_HEADS.add(wallHead);
         ALL_HEADS.add(wallHead);
         return wallHead;
-    }
-
-    public SimpleHolder<ColoredHologramProjectorBlock> registerHologramProjector(DyeColor dyeColor) {
-        SimpleHolder<ColoredHologramProjectorBlock> coloredHologramProjector = this.registerBlock(dyeColor.getName() + "_hologram_projector", properties -> new ColoredHologramProjectorBlock(dyeColor, properties), () -> BlockBehaviour.Properties.ofFullCopy(FABlocks.HOLOGRAM_PROJECTOR.get()));
-        COLORED_HOLOGRAM_PROJECTOR.add(coloredHologramProjector);
-        return coloredHologramProjector;
     }
 
     public SimpleHolder<Block> registerBlock(String name, BlockBehaviour.Properties properties) {

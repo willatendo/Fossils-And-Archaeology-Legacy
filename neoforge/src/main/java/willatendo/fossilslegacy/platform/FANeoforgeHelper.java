@@ -2,8 +2,6 @@ package willatendo.fossilslegacy.platform;
 
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.syncher.EntityDataSerializer;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.CreativeModeTab;
@@ -20,7 +18,6 @@ import willatendo.fossilslegacy.server.fluid.FAFluidTypes;
 import willatendo.fossilslegacy.server.fluid.TarFluid;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
-import java.util.List;
 import java.util.function.Supplier;
 
 public class FANeoforgeHelper implements FAModloaderHelper {
@@ -36,7 +33,7 @@ public class FANeoforgeHelper implements FAModloaderHelper {
 
     @Override
     public CreativeModeTab.Builder createCreativeModeTab(String id) {
-        return CreativeModeTab.builder().title(FAUtils.translation("itemGroup", id)).withSearchBar();
+        return CreativeModeTab.builder().title(FAUtils.translation("itemGroup", id));
     }
 
     @Override

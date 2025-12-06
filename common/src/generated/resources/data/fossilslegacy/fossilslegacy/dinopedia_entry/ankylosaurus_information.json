@@ -1,37 +1,17 @@
 {
-  "center_text": true,
-  "line": [
+  "displayed_items": [
     {
-      "type": "fossilslegacy:built_in",
-      "name": "display_name"
+      "description": {
+        "translate": "dinopedia.fossilslegacy.commanding_items"
+      },
+      "displayed_items": "fossilslegacy:commandable/ankylosaurus"
     },
     {
-      "type": "fossilslegacy:built_in",
-      "name": "owner"
-    },
-    {
-      "type": "fossilslegacy:built_in",
-      "name": "age"
-    },
-    {
-      "type": "fossilslegacy:built_in",
-      "name": "health"
-    },
-    {
-      "type": "fossilslegacy:built_in",
-      "name": "hunger"
-    },
-    {
-      "type": "fossilslegacy:built_in",
-      "name": "rideable"
-    },
-    {
-      "type": "fossilslegacy:built_in",
-      "name": "not_owner"
-    },
-    {
-      "type": "fossilslegacy:built_in",
-      "name": "wild"
+      "description": {
+        "translate": "dinopedia.fossilslegacy.food_items"
+      },
+      "displayed_items": "fossilslegacy:herbivore_foods"
     }
-  ]
+  ],
+  "line": []
 }

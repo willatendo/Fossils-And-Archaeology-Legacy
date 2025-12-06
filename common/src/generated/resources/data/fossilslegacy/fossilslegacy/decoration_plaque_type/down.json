@@ -1,5 +1,8 @@
 {
   "asset_id": "fossilslegacy:down",
   "height": 1,
+  "translation": {
+    "translate": "decoration_plaque_type.fossilslegacy.down"
+  },
   "width": 1
 }

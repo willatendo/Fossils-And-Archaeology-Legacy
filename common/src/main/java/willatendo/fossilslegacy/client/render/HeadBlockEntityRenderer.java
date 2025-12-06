@@ -11,8 +11,6 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.SkullBlock;
@@ -31,7 +29,6 @@ import willatendo.fossilslegacy.server.gene.cosmetics.texture.TextureInformation
 import willatendo.fossilslegacy.server.item.FAHeadTypes;
 import willatendo.fossilslegacy.server.item.data_components.HeadDisplayInformation;
 import willatendo.fossilslegacy.server.registry.FARegistries;
-import willatendo.fossilslegacy.server.tags.FASkinGeneTags;
 import willatendo.fossilslegacy.server.utils.FAUtils;
 
 import java.util.HashMap;

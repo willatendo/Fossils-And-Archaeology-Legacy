@@ -36,8 +36,8 @@ import willatendo.fossilslegacy.server.entity.util.Diet;
 import willatendo.fossilslegacy.server.entity.util.DinosaurUtils;
 import willatendo.fossilslegacy.server.entity.util.interfaces.CommandingType;
 import willatendo.fossilslegacy.server.entity.util.interfaces.DinopediaInformation;
-import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
+import willatendo.fossilslegacy.server.item.FAItems;
 import willatendo.fossilslegacy.server.tags.FAEntityTypeTags;
 import willatendo.fossilslegacy.server.tags.FAModelGeneTags;
 

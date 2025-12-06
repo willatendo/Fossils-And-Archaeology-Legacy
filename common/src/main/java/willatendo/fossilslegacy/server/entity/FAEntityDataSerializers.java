@@ -10,8 +10,6 @@ import willatendo.fossilslegacy.server.entity.util.FossilPositions;
 import willatendo.fossilslegacy.server.entity.util.FossilRotations;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 import willatendo.fossilslegacy.server.gene.Chromosome;
-import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
-import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
 import willatendo.fossilslegacy.server.pregnancy_types.PregnancyType;
 import willatendo.fossilslegacy.server.registry.FARegistries;
 import willatendo.fossilslegacy.server.stone_tablet_variant.StoneTabletVariant;

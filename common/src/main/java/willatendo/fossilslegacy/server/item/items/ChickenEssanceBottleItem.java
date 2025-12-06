@@ -8,6 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import willatendo.fossilslegacy.server.entity.util.interfaces.GrowingEntity;
+import willatendo.fossilslegacy.server.entity.util.interfaces.HungerAccessor;
 
 public class ChickenEssanceBottleItem extends DrinkingGlassBottleItem {
     public ChickenEssanceBottleItem(Properties properties) {
@@ -19,6 +20,9 @@ public class ChickenEssanceBottleItem extends DrinkingGlassBottleItem {
         if (livingEntity instanceof GrowingEntity growingEntity) {
             if (growingEntity.getGrowthStage() < growingEntity.getMaxGrowthStage()) {
                 growingEntity.setGrowthStage(growingEntity.getGrowthStage() + 1, true);
+                if (growingEntity instanceof HungerAccessor hungerAccessor) {
+                    hungerAccessor.decreaseHunger(hungerAccessor.getMaxHunger() / 5);
+                }
                 ItemUtils.createFilledResult(itemStack, player, Items.GLASS_BOTTLE.getDefaultInstance());
                 return InteractionResult.SUCCESS;
             }

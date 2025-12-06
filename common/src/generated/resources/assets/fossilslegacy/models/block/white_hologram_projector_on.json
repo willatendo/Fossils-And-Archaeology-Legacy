@@ -1,8 +1,0 @@
-{
-  "parent": "fossilslegacy:block/template_hologram_projector",
-  "textures": {
-    "down": "fossilslegacy:block/hologram_projector_bottom",
-    "side": "fossilslegacy:block/hologram_projector_side_on",
-    "up": "fossilslegacy:block/white_hologram_projector_top_on"
-  }
-}

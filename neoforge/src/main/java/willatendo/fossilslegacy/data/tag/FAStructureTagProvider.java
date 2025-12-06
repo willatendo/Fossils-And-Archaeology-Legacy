@@ -1,12 +1,9 @@
 package willatendo.fossilslegacy.data.tag;
 
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.StructureTagsProvider;
-import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.StructureTags;
-import net.minecraft.world.level.levelgen.structure.Structure;
 import willatendo.fossilslegacy.server.structure.FAStructures;
 import willatendo.fossilslegacy.server.tags.FAStructureTags;
 

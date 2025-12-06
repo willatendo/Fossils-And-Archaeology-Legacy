@@ -3,7 +3,6 @@ package willatendo.fossilslegacy.client.user_manual.loot.type;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
 import willatendo.fossilslegacy.client.user_manual.loot.DrawBlockLootRecipe;
 import willatendo.fossilslegacy.client.user_manual.loot.Drop;

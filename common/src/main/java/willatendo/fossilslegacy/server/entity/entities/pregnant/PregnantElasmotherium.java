@@ -20,8 +20,6 @@ import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.Elasm
 import willatendo.fossilslegacy.server.entity.util.interfaces.PregnantAnimal;
 import willatendo.fossilslegacy.server.gene.Chromosome;
 import willatendo.fossilslegacy.server.item.FAItems;
-import willatendo.fossilslegacy.server.gene.cosmetics.model.ModelGene;
-import willatendo.fossilslegacy.server.gene.cosmetics.pattern.PatternGene;
 import willatendo.fossilslegacy.server.pregnancy_types.PregnancyType;
 
 import java.util.Optional;

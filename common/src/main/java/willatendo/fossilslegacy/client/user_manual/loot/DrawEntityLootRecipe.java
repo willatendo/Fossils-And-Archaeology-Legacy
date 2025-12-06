@@ -4,7 +4,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import willatendo.fossilslegacy.client.screen.UserManualScreen;
 import willatendo.fossilslegacy.client.user_manual.draw.SlotPlacer;
 import willatendo.fossilslegacy.client.user_manual.draw.SpriteDrawer;
