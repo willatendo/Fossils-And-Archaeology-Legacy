@@ -35,18 +35,18 @@ import willatendo.fossilslegacy.server.item.GeologicalTimeScale;
 import java.util.List;
 
 public class SeedItem extends Item {
-    private final GeologicalTimeScale.EraDescription eraDescription;
+    private final GeologicalTimeScale.TimeScaleDescription timeScaleDescription;
     private final Block block;
 
-    public SeedItem(GeologicalTimeScale.EraDescription eraDescription, Block block, Properties properties) {
+    public SeedItem(GeologicalTimeScale.TimeScaleDescription timeScaleDescription, Block block, Properties properties) {
         super(properties);
-        this.eraDescription = eraDescription;
+        this.timeScaleDescription = timeScaleDescription;
         this.block = block;
     }
 
     @Override
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        this.eraDescription.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
+        this.timeScaleDescription.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
         super.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
         this.getBlock().appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
     }

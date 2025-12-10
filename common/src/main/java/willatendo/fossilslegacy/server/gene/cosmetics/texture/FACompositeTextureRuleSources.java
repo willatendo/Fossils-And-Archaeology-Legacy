@@ -22,8 +22,6 @@ public class FACompositeTextureRuleSources {
     public static final ResourceKey<CompositeTextureRules.RuleSource> DILOPHOSAURUS_SKIN = FACompositeTextureRuleSources.create("dilophosaurus_skin");
     public static final ResourceKey<CompositeTextureRules.RuleSource> DIMETRODON_PATTERN = FACompositeTextureRuleSources.create("dimetrodon_pattern");
     public static final ResourceKey<CompositeTextureRules.RuleSource> DIMETRODON_SKIN = FACompositeTextureRuleSources.create("dimetrodon_skin");
-    public static final ResourceKey<CompositeTextureRules.RuleSource> DISTORTUS_REX_PATTERN = FACompositeTextureRuleSources.create("distortus_rex_pattern");
-    public static final ResourceKey<CompositeTextureRules.RuleSource> DISTORTUS_REX_SKIN = FACompositeTextureRuleSources.create("distortus_rex_skin");
     public static final ResourceKey<CompositeTextureRules.RuleSource> DODO_PATTERN = FACompositeTextureRuleSources.create("dodo_pattern");
     public static final ResourceKey<CompositeTextureRules.RuleSource> DODO_SKIN = FACompositeTextureRuleSources.create("dodo_skin");
     public static final ResourceKey<CompositeTextureRules.RuleSource> DRYOSAURUS_PATTERN = FACompositeTextureRuleSources.create("dryosaurus_pattern");
@@ -34,6 +32,8 @@ public class FACompositeTextureRuleSources {
     public static final ResourceKey<CompositeTextureRules.RuleSource> FUTABASAURUS_SKIN = FACompositeTextureRuleSources.create("futabasaurus_skin");
     public static final ResourceKey<CompositeTextureRules.RuleSource> GALLIMIMUS_PATTERN = FACompositeTextureRuleSources.create("gallimimus_pattern");
     public static final ResourceKey<CompositeTextureRules.RuleSource> GALLIMIMUS_SKIN = FACompositeTextureRuleSources.create("gallimimus_skin");
+    public static final ResourceKey<CompositeTextureRules.RuleSource> HERRERASAURUS_PATTERN = FACompositeTextureRuleSources.create("herrerasaurus_pattern");
+    public static final ResourceKey<CompositeTextureRules.RuleSource> HERRERASAURUS_SKIN = FACompositeTextureRuleSources.create("herrerasaurus_skin");
     public static final ResourceKey<CompositeTextureRules.RuleSource> ICHTHYOSAURUS_PATTERN = FACompositeTextureRuleSources.create("ichthyosaurus_pattern");
     public static final ResourceKey<CompositeTextureRules.RuleSource> ICHTHYOSAURUS_SKIN = FACompositeTextureRuleSources.create("ichthyosaurus_skin");
     public static final ResourceKey<CompositeTextureRules.RuleSource> MAMMOTH_PATTERN = FACompositeTextureRuleSources.create("mammoth_pattern");
@@ -71,33 +71,9 @@ public class FACompositeTextureRuleSources {
 
     public static void bootstrap(BootstrapContext<CompositeTextureRules.RuleSource> bootstrapContext) {
         FACompositeTextureRuleSources.register(bootstrapContext, ANKYLOSAURUS_PATTERN, CompositeTextureRules.layer1());
-        FACompositeTextureRuleSources.register(bootstrapContext, ANKYLOSAURUS_SKIN,
-                CompositeTextureRules.sequence(
-                        CompositeTextureRules.ifTrue(
-                                CompositeTextureRules.isBaby(),
-                                CompositeTextureRules.layer0("baby")
-                        ),
-                        CompositeTextureRules.layer0("adult")
-                )
-        );
+        FACompositeTextureRuleSources.register(bootstrapContext, ANKYLOSAURUS_SKIN, CompositeTextureRules.sequence(CompositeTextureRules.ifTrue(CompositeTextureRules.isBaby(), CompositeTextureRules.layer0("baby")), CompositeTextureRules.layer0("adult")));
         FACompositeTextureRuleSources.register(bootstrapContext, BARYONYX_PATTERN, CompositeTextureRules.layer1());
-        FACompositeTextureRuleSources.register(
-                bootstrapContext,
-                BARYONYX_SKIN,
-                CompositeTextureRules.sequence(
-                        CompositeTextureRules.ifTrue(
-                                CompositeTextureRules.isBaby(),
-                                CompositeTextureRules.layer0("baby")
-                        ),
-                        CompositeTextureRules.ifTrue(
-                                CompositeTextureRules.not(
-                                        CompositeTextureRules.isTame()
-                                ),
-                                CompositeTextureRules.layer0("aggressive")
-                        ),
-                        CompositeTextureRules.layer0("adult")
-                )
-        );
+        FACompositeTextureRuleSources.register(bootstrapContext, BARYONYX_SKIN, CompositeTextureRules.sequence(CompositeTextureRules.ifTrue(CompositeTextureRules.isBaby(), CompositeTextureRules.layer0("baby")), CompositeTextureRules.ifTrue(CompositeTextureRules.not(CompositeTextureRules.isTame()), CompositeTextureRules.layer0("aggressive")), CompositeTextureRules.layer0("adult")));
         FACompositeTextureRuleSources.register(bootstrapContext, BRACHIOSAURUS_PATTERN, CompositeTextureRules.layer1());
         FACompositeTextureRuleSources.register(bootstrapContext, BRACHIOSAURUS_SKIN, CompositeTextureRules.layer0());
         FACompositeTextureRuleSources.register(bootstrapContext, CARNOTAURUS_PATTERN, CompositeTextureRules.layer1());
@@ -110,8 +86,6 @@ public class FACompositeTextureRuleSources {
         FACompositeTextureRuleSources.register(bootstrapContext, DILOPHOSAURUS_SKIN, CompositeTextureRules.layer0());
         FACompositeTextureRuleSources.register(bootstrapContext, DIMETRODON_PATTERN, CompositeTextureRules.layer1());
         FACompositeTextureRuleSources.register(bootstrapContext, DIMETRODON_SKIN, CompositeTextureRules.layer0());
-        FACompositeTextureRuleSources.register(bootstrapContext, DISTORTUS_REX_PATTERN, CompositeTextureRules.layer1());
-        FACompositeTextureRuleSources.register(bootstrapContext, DISTORTUS_REX_SKIN, CompositeTextureRules.layer0());
         FACompositeTextureRuleSources.register(bootstrapContext, DODO_PATTERN, CompositeTextureRules.layer1());
         FACompositeTextureRuleSources.register(bootstrapContext, DODO_SKIN, CompositeTextureRules.layer0());
         FACompositeTextureRuleSources.register(bootstrapContext, DRYOSAURUS_PATTERN, CompositeTextureRules.layer1());
@@ -122,6 +96,8 @@ public class FACompositeTextureRuleSources {
         FACompositeTextureRuleSources.register(bootstrapContext, FUTABASAURUS_SKIN, CompositeTextureRules.layer0());
         FACompositeTextureRuleSources.register(bootstrapContext, GALLIMIMUS_PATTERN, CompositeTextureRules.layer1());
         FACompositeTextureRuleSources.register(bootstrapContext, GALLIMIMUS_SKIN, CompositeTextureRules.layer0());
+        FACompositeTextureRuleSources.register(bootstrapContext, HERRERASAURUS_PATTERN, CompositeTextureRules.layer1());
+        FACompositeTextureRuleSources.register(bootstrapContext, HERRERASAURUS_SKIN, CompositeTextureRules.layer0());
         FACompositeTextureRuleSources.register(bootstrapContext, ICHTHYOSAURUS_PATTERN, CompositeTextureRules.layer1());
         FACompositeTextureRuleSources.register(bootstrapContext, ICHTHYOSAURUS_SKIN, CompositeTextureRules.layer0());
         FACompositeTextureRuleSources.register(bootstrapContext, MAMMOTH_PATTERN, CompositeTextureRules.layer1());

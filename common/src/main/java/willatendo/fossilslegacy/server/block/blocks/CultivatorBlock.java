@@ -32,6 +32,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import willatendo.fossilslegacy.network.NetworkUtils;
 import willatendo.fossilslegacy.network.clientbound.ClientboundPlaySoundPacket;
+import willatendo.fossilslegacy.server.block.FABlocks;
 import willatendo.fossilslegacy.server.block.FAGameEvents;
 import willatendo.fossilslegacy.server.block.entity.FABlockEntityTypes;
 import willatendo.fossilslegacy.server.block.entity.entities.CultivatorBlockEntity;
@@ -62,7 +63,7 @@ public class CultivatorBlock extends Block implements EntityBlock, BeaconBeamBlo
     public static void shatter(Level level, BlockPos blockPos, CultivatorBlockEntity cultivatorBlockEntity) {
         ItemStack[] items = new ItemStack[]{cultivatorBlockEntity.getItem(0), cultivatorBlockEntity.getItem(1), cultivatorBlockEntity.getItem(2)};
         level.removeBlockEntity(blockPos);
-        BlockState blockState = ShatteredCultivatorBlock.DYE_TO_BLOCK.get(cultivatorBlockEntity.dyeColor).defaultBlockState().setValue(ShatteredCultivatorBlock.WATERLOGGED, true);
+        BlockState blockState = FABlocks.SHATTERED_CULTIVATOR.get().defaultBlockState().setValue(ShatteredCultivatorBlock.WATERLOGGED, true);
         level.setBlock(blockPos, blockState, 3);
         for (Player player : level.getEntitiesOfClass(Player.class, new AABB(blockPos).inflate(30.0F), player -> true)) {
             if (player instanceof ServerPlayer serverPlayer) {

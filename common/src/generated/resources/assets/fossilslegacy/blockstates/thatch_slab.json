@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "fossilslegacy:block/thatch_slab"
+    },
+    "type=double": {
+      "model": "fossilslegacy:block/thatch_block"
+    },
+    "type=top": {
+      "model": "fossilslegacy:block/thatch_slab_top"
+    }
+  }
+}

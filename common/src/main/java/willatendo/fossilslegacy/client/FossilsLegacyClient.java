@@ -14,7 +14,6 @@ import net.minecraft.client.renderer.entity.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.animal.horse.Donkey;
 import net.minecraft.world.entity.animal.horse.Mule;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeMap;
 import net.minecraft.world.level.GrassColor;
@@ -84,7 +83,6 @@ public final class FossilsLegacyClient {
         modelRegister.register(FAEntityTypes.BRACHIOSAURUS.get(), BrachiosaurusRenderer::new);
         modelRegister.register(FAEntityTypes.DILOPHOSAURUS.get(), DilophosaurusRenderer::new);
         modelRegister.register(FAEntityTypes.DIMETRODON.get(), DimetrodonRenderer::new);
-        modelRegister.register(FAEntityTypes.DISTORTUS_REX.get(), DistortusRexRenderer::new);
         modelRegister.register(FAEntityTypes.DODO.get(), DodoRenderer::new);
         modelRegister.register(FAEntityTypes.DRYOSAURUS.get(), DryosaurusRenderer::new);
         modelRegister.register(FAEntityTypes.MOA.get(), MoaRenderer::new);
@@ -257,7 +255,6 @@ public final class FossilsLegacyClient {
         modelLayerRegister.register(FAModelLayers.CRYOLOPHOSAURUS_HEAD, CryolophosaurusHeadModel::createBodyLayer);
         modelLayerRegister.register(FAModelLayers.DILOPHOSAURUS_HEAD, DilophosaurusHeadModel::createBodyLayer);
         modelLayerRegister.register(FAModelLayers.DIMETRODON_HEAD, DimetrodonHeadModel::createBodyLayer);
-        modelLayerRegister.register(FAModelLayers.DISTORTUS_REX_HEAD, DistortusRexHeadModel::createBodyLayer);
         modelLayerRegister.register(FAModelLayers.DODO_HEAD, DodoHeadModel::createBodyLayer);
         modelLayerRegister.register(FAModelLayers.DRYOSAURUS_HEAD, DryosaurusHeadModel::createBodyLayer);
         modelLayerRegister.register(FAModelLayers.ELASMOTHERIUM_HEAD, ElasmotheriumHeadModel::createBodyLayer);
@@ -313,12 +310,14 @@ public final class FossilsLegacyClient {
         itemFilters.add(new Filter(FAItemTags.FILTER_MEAT, new ItemStack(FAItems.COOKED_ANKYLOSAURUS.get())));
         itemFilters.add(new Filter(FAItemTags.FILTER_ARTIFACTS, new ItemStack(FAItems.RELIC_SCRAP.get())));
         itemFilters.add(new Filter(FAItemTags.FILTER_TOOLS_AND_ARMOR, new ItemStack(FAItems.SCARAB_GEM_SWORD.get())));
+        itemFilters.add(new Filter(FAItemTags.FILTER_MATERIALS, new ItemStack(FAItems.TYRANNOSAURUS_TOOTH.get())));
+        itemFilters.add(new Filter(FAItemTags.FILTER_ITEM_UTILITIES, new ItemStack(FAItems.DINOPEDIA.get())));
         itemFilters.add(new Filter(FAItemTags.FILTER_SPAWN_EGGS, new ItemStack(FAItems.TRICERATOPS_SPAWN_EGG.get())));
         CreativeModeTabFilter.create(FACreativeModeTabs.FA_ITEMS.get(), itemFilters);
 
         ImmutableList.Builder<Filter> blockFilters = ImmutableList.builder();
         blockFilters.add(new Filter(FAItemTags.FILTER_ORES, new ItemStack(FABlocks.MESOZOIC_FOSSIL_ORE.get())));
-        blockFilters.add(new Filter(FAItemTags.FILTER_UTILITIES, new ItemStack(FABlocks.DNA_ANALYZER.get())));
+        blockFilters.add(new Filter(FAItemTags.FILTER_BLOCK_UTILITIES, new ItemStack(FABlocks.DNA_ANALYZER.get())));
         blockFilters.add(new Filter(FAItemTags.FILTER_BUILDING_BLOCKS, new ItemStack(FABlocks.POLISHED_ASPHALT_BRICKS.get())));
         blockFilters.add(new Filter(FAItemTags.FILTER_DECORATIONS, new ItemStack(FAItems.DECORATION_PLAQUE.get())));
         blockFilters.add(new Filter(FAItemTags.FILTER_ARCHAEOLOGY, new ItemStack(FAItems.IRON_LLAMA_STATUE.get())));

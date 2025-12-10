@@ -166,6 +166,11 @@ public class FARecipeProvider extends RecipeProvider {
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.CHAIN_LINK_FENCE.get(), 16).pattern("###").pattern("###").define('#', Items.IRON_NUGGET).unlockedBy(RecipeProvider.getHasName(Items.IRON_NUGGET), this.has(Items.IRON_NUGGET)).save(this.output);
         this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.IRON_FENCE.get(), 16).pattern("#$#").pattern("#$#").define('#', Items.IRON_INGOT).define('$', Items.IRON_NUGGET).unlockedBy(RecipeProvider.getHasName(Items.IRON_NUGGET), this.has(Items.IRON_NUGGET)).save(this.output);
 
+        this.smeltingResultFromBase(FABlocks.DRIED_NIPA_LEAVES.get(), FABlocks.NIPA_LEAVES.get());
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.THATCH_BLOCK.get(), 4).pattern("##").pattern("##").define('#', FABlocks.DRIED_NIPA_LEAVES.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.DRIED_NIPA_LEAVES.get()), this.has(FABlocks.DRIED_NIPA_LEAVES.get())).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.THATCH_STAIRS.get(), 4).pattern("#  ").pattern("## ").pattern("###").define('#', FABlocks.THATCH_BLOCK.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.THATCH_BLOCK.get()), this.has(FABlocks.THATCH_BLOCK.get())).save(this.output);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, FABlocks.THATCH_SLAB.get(), 6).pattern("###").define('#', FABlocks.THATCH_BLOCK.get()).unlockedBy(RecipeProvider.getHasName(FABlocks.THATCH_BLOCK.get()), this.has(FABlocks.THATCH_BLOCK.get())).save(this.output);
+
         SpecialRecipeBuilder.special(MagicConchRecipe::new).save(this.output, FAUtils.ID + ":magic_conch");
         SpecialRecipeBuilder.special(KeyCloningRecipe::new).save(this.output, FAUtils.ID + ":key_cloning");
 

@@ -18,11 +18,12 @@ public class FAItemTags {
     public static final TagKey<Item> FILTER_MEAT = ITEM_TAGS.register("filter/meat");
     public static final TagKey<Item> FILTER_ARTIFACTS = ITEM_TAGS.register("filter/artifacts");
     public static final TagKey<Item> FILTER_TOOLS_AND_ARMOR = ITEM_TAGS.register("filter/tools_and_armor");
-    public static final TagKey<Item> FILTER_MISCELLANEOUS = ITEM_TAGS.register("filter/miscellaneous");
+    public static final TagKey<Item> FILTER_MATERIALS = ITEM_TAGS.register("filter/materials");
+    public static final TagKey<Item> FILTER_ITEM_UTILITIES = ITEM_TAGS.register("filter/item_utilities");
     public static final TagKey<Item> FILTER_SPAWN_EGGS = ITEM_TAGS.register("filter/spawn_eggs");
 
     public static final TagKey<Item> FILTER_ORES = ITEM_TAGS.register("filter/ores");
-    public static final TagKey<Item> FILTER_UTILITIES = ITEM_TAGS.register("filter/utilities");
+    public static final TagKey<Item> FILTER_BLOCK_UTILITIES = ITEM_TAGS.register("filter/block_utilities");
     public static final TagKey<Item> FILTER_BUILDING_BLOCKS = ITEM_TAGS.register("filter/building_blocks");
     public static final TagKey<Item> FILTER_DECORATIONS = ITEM_TAGS.register("filter/decorations");
     public static final TagKey<Item> FILTER_ARCHAEOLOGY = ITEM_TAGS.register("filter/archaeology");

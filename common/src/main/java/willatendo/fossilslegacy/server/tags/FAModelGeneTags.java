@@ -30,6 +30,7 @@ public class FAModelGeneTags {
     public static final TagKey<ModelGene> FUTABASAURUS = MODEL_GENE_TAGS.register("futabasaurus");
     public static final TagKey<ModelGene> NON_LEGACY_FUTABASAURUS = MODEL_GENE_TAGS.register("non_legacy/futabasaurus");
     public static final TagKey<ModelGene> GALLIMIMUS = MODEL_GENE_TAGS.register("gallimimus");
+    public static final TagKey<ModelGene> HERRERASAURUS = MODEL_GENE_TAGS.register("herrerasaurus");
     public static final TagKey<ModelGene> ICHTHYOSAURUS = MODEL_GENE_TAGS.register("ichthyosaurus");
     public static final TagKey<ModelGene> ISOTELUS = MODEL_GENE_TAGS.register("isotelus");
     public static final TagKey<ModelGene> ISOTELUS_LARVA = MODEL_GENE_TAGS.register("isotelus_larva");

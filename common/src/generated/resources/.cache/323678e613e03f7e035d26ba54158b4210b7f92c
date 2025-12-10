@@ -1,4 +1,4 @@
-// 1.21.4	2025-12-05T18:13:49.7316331	Tags for minecraft:item mod id fossilslegacy
+// 1.21.4	2025-12-10T10:59:37.8881498	Tags for minecraft:item mod id fossilslegacy
 cc1c82adb966f74da9898f8ff3e7ad473be3401f data/c/tags/item/bones.json
 d31244a2a7f7cb4224e5362dca80427850e5daa5 data/c/tags/item/buckets.json
 8773b7b9cd8f313f03d59d28a609bd9f1434b870 data/c/tags/item/eggs.json
@@ -40,7 +40,7 @@ e71ff39a58e6626fffa365ff9e1ee48712eecece data/fossilslegacy/tags/item/commandabl
 1ad920aa65e2706dabb6265f3b12546ab33e8936 data/fossilslegacy/tags/item/commandable/triceratops.json
 e71ff39a58e6626fffa365ff9e1ee48712eecece data/fossilslegacy/tags/item/commandable/tyrannosaurus.json
 dbeb45f6e7f51892a4dff371c38ed8617f64ee68 data/fossilslegacy/tags/item/cordaites_logs.json
-138ec2ff922580dd084cd402c834b38063afce4d data/fossilslegacy/tags/item/cultivators.json
+e08b15ce1990c82a7f3d0cbf499c9911181dd1dc data/fossilslegacy/tags/item/cultivators.json
 cc971faa0f00f993095c0060588d78ae00c5b668 data/fossilslegacy/tags/item/darts.json
 a1ba1590380630dd949c27ecb883d7369d4518c8 data/fossilslegacy/tags/item/dino_eggs.json
 e7dc9eccb479fdf49fa7e5f42fa4455af0a10830 data/fossilslegacy/tags/item/dna.json
@@ -49,18 +49,20 @@ e7dc9eccb479fdf49fa7e5f42fa4455af0a10830 data/fossilslegacy/tags/item/dna.json
 ab5f752ac71d268ea06729f4a22fbd899c98dd7b data/fossilslegacy/tags/item/filter/animal_dna.json
 cf2c41b913e12bb76b40615d9dbfe2b94e744c97 data/fossilslegacy/tags/item/filter/archaeology.json
 9d5cc4348bbd2d3937118ba5a173cac7cb4e579d data/fossilslegacy/tags/item/filter/artifacts.json
-ac16216e831670e7ed4dca93916733039c090a56 data/fossilslegacy/tags/item/filter/building_blocks.json
+dfedf75895b8d846daa3c9f8966825991d4caff0 data/fossilslegacy/tags/item/filter/block_utilities.json
+64c9f00547c3ad7469af07318b0adf11d36f5c6d data/fossilslegacy/tags/item/filter/building_blocks.json
 0c5a2bd43dd17a24f24b8226ef3b05e06aea808c data/fossilslegacy/tags/item/filter/cones_seeds_and_spores.json
 9a3648fb1acef4d6de856c94c39a9bebe43cf4f3 data/fossilslegacy/tags/item/filter/decorations.json
 5849e74076a63b1339bd8ac9813da982282dfce3 data/fossilslegacy/tags/item/filter/eggs_and_embryos.json
 e854a2bbe48d92e84e0c28c701de334ff7eaa8a6 data/fossilslegacy/tags/item/filter/fossils.json
+0a8406eb38618e943af97d0107a3797d68b2faf8 data/fossilslegacy/tags/item/filter/item_utilities.json
+a68c1c3328ec81f0bd2d0cf33a0c8956a1c2cbfa data/fossilslegacy/tags/item/filter/materials.json
 9dade8416db06547e2e5c2b7ee8dd4d372a644e1 data/fossilslegacy/tags/item/filter/meat.json
 96c28afea5474ab55d26b6d0984a08bad698cf1a data/fossilslegacy/tags/item/filter/ores.json
-07d0d15b3ac81a03c0f598a3583f19a0ad1bb037 data/fossilslegacy/tags/item/filter/plants.json
+1606b2cf3801fa2d4bdbc5beafd9ad95b22d3f8b data/fossilslegacy/tags/item/filter/plants.json
 1e73d611290532b31bf6e3b7d8eb9d800518d9da data/fossilslegacy/tags/item/filter/plant_dna.json
-21b69e1e43a3810d5ce971f7e75e056c65fcb828 data/fossilslegacy/tags/item/filter/spawn_eggs.json
-2d5e5d5645f6ef9ebc65217b9fe62e3fc362a331 data/fossilslegacy/tags/item/filter/tools_and_armor.json
-2862790b5bf2721171e208fde85abe2aae0037e1 data/fossilslegacy/tags/item/filter/utilities.json
+6f04689270fb0e689625bde8e29963cced49d154 data/fossilslegacy/tags/item/filter/spawn_eggs.json
+506cc23c293edf6e90597a3de6e113cc72fcf273 data/fossilslegacy/tags/item/filter/tools_and_armor.json
 207b69393c3ff9a21d8fc91e45a514605cb5d8ca data/fossilslegacy/tags/item/filter/wood.json
 ece1fe464f1ad83147253b99fb9cf368290ea3f8 data/fossilslegacy/tags/item/fossils.json
 0d91c860420e5c6d47e16f6376dad63806657b0b data/fossilslegacy/tags/item/froglights.json

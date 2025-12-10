@@ -22,14 +22,14 @@ public class AnimalDNAItem extends DNAItem {
     private final Supplier<EntityType<? extends Mob>> entityType;
     private final TagKey<ModelGene> applicableModelGenes;
 
-    public AnimalDNAItem(GeologicalTimeScale.EraDescription eraDescription, Supplier<EntityType<? extends Mob>> entityType, TagKey<ModelGene> applicableModelGenes, Properties properties) {
-        super(eraDescription, DNAItem.EmbryoType.ANIMAL, properties);
+    public AnimalDNAItem(GeologicalTimeScale.TimeScaleDescription timeScaleDescription, Supplier<EntityType<? extends Mob>> entityType, TagKey<ModelGene> applicableModelGenes, Properties properties) {
+        super(timeScaleDescription, DNAItem.EmbryoType.ANIMAL, properties);
         this.entityType = entityType;
         this.applicableModelGenes = applicableModelGenes;
     }
 
-    public AnimalDNAItem(GeologicalTimeScale.EraDescription eraDescription, Supplier<EntityType<? extends Mob>> entityType, Properties properties) {
-        super(eraDescription, DNAItem.EmbryoType.ANIMAL, properties);
+    public AnimalDNAItem(GeologicalTimeScale.TimeScaleDescription timeScaleDescription, Supplier<EntityType<? extends Mob>> entityType, Properties properties) {
+        super(timeScaleDescription, DNAItem.EmbryoType.ANIMAL, properties);
         this.entityType = entityType;
         this.applicableModelGenes = null;
     }

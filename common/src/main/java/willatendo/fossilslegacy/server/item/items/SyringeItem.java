@@ -85,7 +85,9 @@ public class SyringeItem extends Item {
     @Override
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         this.period.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
-        tooltipComponents.add(this.pregnancySize.getToolTip().copy().withStyle(ChatFormatting.GRAY));
+        if (tooltipFlag.isAdvanced()) {
+            tooltipComponents.add(this.pregnancySize.getToolTip().copy().withStyle(ChatFormatting.GRAY));
+        }
         if (itemStack.has(FADataComponents.MODEL_TYPE.get())) {
             Holder<ModelGene> holder = itemStack.get(FADataComponents.MODEL_TYPE.get());
             tooltipComponents.add(FAUtils.translation("item", "model_type", holder.value().displayInfo().modelName()).withStyle(ChatFormatting.GRAY));

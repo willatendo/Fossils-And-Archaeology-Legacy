@@ -18,7 +18,7 @@ public final class FAModelTemplates {
     public static final ModelTemplate TEMPLATE_BARS_SIDE_ALT = FAModelTemplates.createMC("iron_bars_side_alt", FATextureSlot.BARS, TextureSlot.EDGE).extend().renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_CULTIVATOR = FAModelTemplates.create("template_cultivator", TextureSlot.SIDE, TextureSlot.TOP).renderType("translucent").build();
     public static final ExtendedModelTemplate TEMPLATE_CULTIVATOR_ACTIVE = FAModelTemplates.create("template_cultivator_active", TextureSlot.SIDE, TextureSlot.TOP).renderType("translucent").build();
-    public static final ExtendedModelTemplate TEMPLATE_SHATTERED_CULTIVATOR = FAModelTemplates.create("template_shattered_cultivator", TextureSlot.SIDE).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_SHATTERED_CULTIVATOR = FAModelTemplates.create("template_shattered_cultivator").renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_DNA_HYBRIDIZER = FAModelTemplates.create("template_dna_hybridizer", TextureSlot.FRONT).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_SMALL_CAGE = FAModelTemplates.create("template_small_cage").renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_SMALL_CAGE_OPEN = FAModelTemplates.create("template_small_cage_open").renderType("cutout").build();
@@ -43,6 +43,7 @@ public final class FAModelTemplates {
     public static final ExtendedModelTemplate TEMPLATE_ONYCHIOPSIS_2 = FAModelTemplates.create("template_onychiopsis_2", TextureSlot.UPPER_STEM, TextureSlot.STEM).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_ONYCHIOPSIS_3 = FAModelTemplates.create("template_onychiopsis_3", TextureSlot.UPPER_STEM, TextureSlot.STEM).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_ONYCHIOPSIS_4 = FAModelTemplates.create("template_onychiopsis_4", TextureSlot.UPPER_STEM, TextureSlot.STEM).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_DRIED_LEAVES = FAModelTemplates.create("template_dried_leaves", TextureSlot.TEXTURE).renderType("cutout").build();
     public static final ExtendedModelTemplate TEMPLATE_DECORATION_PLAQUE_POST = FAModelTemplates.create("template_decoration_plaque_post", FATextureSlot.POST).build();
     public static final ExtendedModelTemplate TEMPLATE_HOLOGRAM_PROJECTOR = FAModelTemplates.create("template_hologram_projector", TextureSlot.SIDE, TextureSlot.UP, TextureSlot.DOWN).build();
     public static final ExtendedModelTemplate TEMPLATE_HOLOGRAM_PROJECTOR_ON = FAModelTemplates.create("template_hologram_projector_on", TextureSlot.SIDE, TextureSlot.UP, TextureSlot.DOWN).renderType("translucent").build();
@@ -91,6 +92,12 @@ public final class FAModelTemplates {
     public static final ExtendedModelTemplate TEMPLATE_ZAMITES_LOG_LARGE = FAModelTemplates.create("template_zamites_log_large", TextureSlot.SIDE, TextureSlot.TOP).build();
     public static final ExtendedModelTemplate TEMPLATE_ZAMITES_BRANCH = FAModelTemplates.create("template_zamites_branch", TextureSlot.SIDE, TextureSlot.TOP).build();
     public static final ExtendedModelTemplate TEMPLATE_ZAMITES_BRANCH_TOP = FAModelTemplates.create("template_zamites_branch_top", TextureSlot.SIDE, TextureSlot.TOP, FATextureSlot.LEAVES).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_THATCH_BLOCK = FAModelTemplates.create("template_thatch_block", TextureSlot.SIDE, TextureSlot.TOP, FATextureSlot.OVERHANG).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_THATCH_SLAB_BOTTOM = FAModelTemplates.create("template_thatch_slab", TextureSlot.SIDE, TextureSlot.TOP, FATextureSlot.OVERHANG).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_THATCH_SLAB_TOP = FAModelTemplates.create("template_thatch_slab_top", TextureSlot.SIDE, TextureSlot.TOP, FATextureSlot.OVERHANG).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_THATCH_STAIRS_STRAIGHT = FAModelTemplates.create("template_thatch_stairs", TextureSlot.SIDE, TextureSlot.TOP, FATextureSlot.OVERHANG).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_THATCH_STAIRS_INNER = FAModelTemplates.create("template_thatch_inner_stairs", TextureSlot.SIDE, TextureSlot.TOP, FATextureSlot.OVERHANG).renderType("cutout").build();
+    public static final ExtendedModelTemplate TEMPLATE_THATCH_STAIRS_OUTER = FAModelTemplates.create("template_thatch_outer_stairs", TextureSlot.SIDE, TextureSlot.TOP, FATextureSlot.OVERHANG).renderType("cutout").build();
 
     public static final ModelTemplate TEMPLATE_ARTICULATED_FOSSIL = FAModelTemplates.createItem("template_articulated_fossil", TextureSlot.PARTICLE);
     public static final ModelTemplate TEMPLATE_RIFLE = FAModelTemplates.createItem("template_rifle", TextureSlot.TEXTURE);

@@ -1,7 +1,6 @@
 package willatendo.fossilslegacy.server.block.blocks;
 
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -11,7 +10,6 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -34,25 +32,14 @@ import willatendo.fossilslegacy.server.block.entity.entities.ShatteredCultivator
 import willatendo.fossilslegacy.server.stats.FAStats;
 import willatendo.simplelibrary.server.util.SimpleUtils;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class ShatteredCultivatorBlock extends Block implements EntityBlock, SimpleWaterloggedBlock {
-    public static final MapCodec<ShatteredCultivatorBlock> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(DyeColor.CODEC.fieldOf("color").forGetter(ShatteredCultivatorBlock::getDyeColor), Block.propertiesCodec()).apply(instance, ShatteredCultivatorBlock::new));
+    public static final MapCodec<ShatteredCultivatorBlock> CODEC = Block.simpleCodec(ShatteredCultivatorBlock::new);
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    public static final Map<DyeColor, Block> DYE_TO_BLOCK = new HashMap<>();
     private static final VoxelShape SHAPE = Block.box(0.0F, 0.0F, 0.0F, 16.0F, 2.0F, 16.0F);
-    private final DyeColor dyeColor;
 
-    public ShatteredCultivatorBlock(DyeColor dyeColor, Properties properties) {
+    public ShatteredCultivatorBlock(Properties properties) {
         super(properties);
-        this.dyeColor = dyeColor;
-        DYE_TO_BLOCK.put(dyeColor, this);
         this.registerDefaultState(this.getStateDefinition().any().setValue(WATERLOGGED, false));
-    }
-
-    public DyeColor getDyeColor() {
-        return this.dyeColor;
     }
 
     @Override

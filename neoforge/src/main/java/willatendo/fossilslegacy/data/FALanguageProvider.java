@@ -173,37 +173,22 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.DNA_CODER.get(), "DNA Coder");
         this.add(FABlocks.DNA_HYBRIDIZER.get(), "DNA Hybridizer");
         this.add(FABlocks.WHITE_CULTIVATOR.get());
-        this.add(FABlocks.WHITE_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.ORANGE_CULTIVATOR.get());
-        this.add(FABlocks.ORANGE_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.MAGENTA_CULTIVATOR.get());
-        this.add(FABlocks.MAGENTA_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.LIGHT_BLUE_CULTIVATOR.get());
-        this.add(FABlocks.LIGHT_BLUE_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.YELLOW_CULTIVATOR.get());
-        this.add(FABlocks.YELLOW_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.LIME_CULTIVATOR.get());
-        this.add(FABlocks.LIME_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.PINK_CULTIVATOR.get());
-        this.add(FABlocks.PINK_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.GRAY_CULTIVATOR.get());
-        this.add(FABlocks.GRAY_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.LIGHT_GRAY_CULTIVATOR.get());
-        this.add(FABlocks.LIGHT_GRAY_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.CYAN_CULTIVATOR.get());
-        this.add(FABlocks.CYAN_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.PURPLE_CULTIVATOR.get());
-        this.add(FABlocks.PURPLE_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.BLUE_CULTIVATOR.get());
-        this.add(FABlocks.BLUE_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.BROWN_CULTIVATOR.get());
-        this.add(FABlocks.BROWN_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.GREEN_CULTIVATOR.get());
-        this.add(FABlocks.GREEN_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.RED_CULTIVATOR.get());
-        this.add(FABlocks.RED_SHATTERED_CULTIVATOR.get());
         this.add(FABlocks.BLACK_CULTIVATOR.get());
-        this.add(FABlocks.BLACK_SHATTERED_CULTIVATOR.get());
+        this.add(FABlocks.SHATTERED_CULTIVATOR.get());
         this.add("block.fossilslegacy.cultivator.shatter", "Warning! Cultivation failure!");
         this.add(FABlocks.DNA_RECOMBINATOR.get(), "DNA Recombinator");
         this.add(FABlocks.ARCHAEOLOGY_WORKBENCH.get());
@@ -247,6 +232,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.COOKSONIA.get());
         this.add(FABlocks.CLAYTOSMUNDA.get());
         this.add(FABlocks.CYCADEOIDEA.get());
+        this.add(FABlocks.DRIED_NIPA_LEAVES.get());
         this.add(FABlocks.ONYCHIOPSIS.get());
         this.add(FABlocks.MACROTAENIOPTERIS.get());
         this.add(FABlocks.DIPTERIS.get());
@@ -292,6 +278,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FABlocks.POLISHED_ASPHALT_BRICK_STAIRS.get());
         this.add(FABlocks.POLISHED_ASPHALT_BRICK_SLAB.get());
         this.add(FABlocks.POLISHED_ASPHALT_BRICK_WALL.get());
+        this.add(FABlocks.THATCH_BLOCK.get());
+        this.add(FABlocks.THATCH_STAIRS.get());
+        this.add(FABlocks.THATCH_SLAB.get());
         this.add(FABlocks.WHITE_ROAD_MARKING.get());
         this.add(FABlocks.DOUBLE_WHITE_ROAD_MARKING.get());
         this.add(FABlocks.YELLOW_ROAD_MARKING.get());
@@ -480,7 +469,6 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAEntityTypes.CRYOLOPHOSAURUS.get());
         this.add(FAEntityTypes.DILOPHOSAURUS.get());
         this.add(FAEntityTypes.DIMETRODON.get());
-        this.add(FAEntityTypes.DISTORTUS_REX.get());
         this.add(FAEntityTypes.DODO.get());
         this.add(FAEntityTypes.DRYOSAURUS.get());
         this.add(FAEntityTypes.ELASMOTHERIUM.get());
@@ -920,9 +908,9 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.SMILODON_EMBRYO_SYRINGE.get());
         this.add(FAItems.MAMMOTH_EMBRYO_SYRINGE.get());
         this.add(FAItems.ELASMOTHERIUM_EMBRYO_SYRINGE.get());
-        this.add("item.fossilslegacy.pregnancy_size.small", "Small");
-        this.add("item.fossilslegacy.pregnancy_size.medium", "Medium");
-        this.add("item.fossilslegacy.pregnancy_size.large", "Large");
+        this.add("item.fossilslegacy.pregnancy_size.small", "Required Host Size: Small");
+        this.add("item.fossilslegacy.pregnancy_size.medium", "Required Host Size: Medium");
+        this.add("item.fossilslegacy.pregnancy_size.large", "Required Host Size: Large");
         this.add(FAItems.INCUBATED_DODO_EGG.get());
         this.add(FAItems.DODO_EGG.get());
         this.add(FAItems.INCUBATED_MOA_EGG.get());
@@ -1379,7 +1367,7 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("item.fossilslegacy.user_manual.information..use", "");
         */
 
-        this.add(FAItems.JEEP_1993.get(), "1993 Jeep");
+        this.add(FAItems.JEEP.get(), "Jeep");
 
         this.add(FAItems.ANU_SPAWN_EGG.get());
         this.add(FAItems.FAILURESAURUS_SPAWN_EGG.get());
@@ -1416,7 +1404,6 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add(FAItems.ELASMOTHERIUM_SPAWN_EGG.get());
         this.add(FAItems.DRYOSAURUS_SPAWN_EGG.get());
         this.add(FAItems.BARYONYX_SPAWN_EGG.get());
-        this.add(FAItems.DISTORTUS_REX_SPAWN_EGG.get());
         this.add("item.fossilslegacy.dinosaur_spawn_egg.desc", "Crouch to spawn baby");
         this.add(FAItems.MUSIC_DISC_TRIASSIC.get(), "Music Disc");
         this.add(FAItems.MUSIC_DISC_JURASSIC.get(), "Music Disc");
@@ -1887,13 +1874,17 @@ public class FALanguageProvider extends SimpleLanguageProvider {
         this.add("itemGroup.filter.fossilslegacy.filter.artifacts", "Artifacts");
         this.add(FAItemTags.FILTER_TOOLS_AND_ARMOR, "Filter Tools and Armor");
         this.add("itemGroup.filter.fossilslegacy.filter.tools_and_armor", "Tools and Armor");
+        this.add(FAItemTags.FILTER_MATERIALS, "Filter Materials");
+        this.add("itemGroup.filter.fossilslegacy.filter.materials", "Materials");
+        this.add(FAItemTags.FILTER_ITEM_UTILITIES, "Filter Item Utilities");
+        this.add("itemGroup.filter.fossilslegacy.filter.item_utilities", "Utilities");
         this.add(FAItemTags.FILTER_SPAWN_EGGS, "Filter Spawn Eggs");
         this.add("itemGroup.filter.fossilslegacy.filter.spawn_eggs", "Spawn Eggs");
 
         this.add(FAItemTags.FILTER_ORES, "Filter Ores");
         this.add("itemGroup.filter.fossilslegacy.filter.ores", "Ores");
-        this.add(FAItemTags.FILTER_UTILITIES, "Filter Utilities");
-        this.add("itemGroup.filter.fossilslegacy.filter.utilities", "Utilities");
+        this.add(FAItemTags.FILTER_BLOCK_UTILITIES, "Filter Block Utilities");
+        this.add("itemGroup.filter.fossilslegacy.filter.block_utilities", "Utilities");
         this.add(FAItemTags.FILTER_BUILDING_BLOCKS, "Filter Building Blocks");
         this.add("itemGroup.filter.fossilslegacy.filter.building_blocks", "Building Blocks");
         this.add(FAItemTags.FILTER_DECORATIONS, "Filter Decorations");

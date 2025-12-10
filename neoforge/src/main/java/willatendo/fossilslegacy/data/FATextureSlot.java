@@ -8,6 +8,7 @@ public final class FATextureSlot {
     public static final TextureSlot FLOWER = TextureSlot.create("flower");
     public static final TextureSlot HEAD = TextureSlot.create("head");
     public static final TextureSlot LEAVES = TextureSlot.create("leaves");
+    public static final TextureSlot OVERHANG = TextureSlot.create("overhang");
     public static final TextureSlot PLANT_1 = TextureSlot.create("plant_1");
     public static final TextureSlot PLANT_2 = TextureSlot.create("plant_2");
     public static final TextureSlot PLANT_3 = TextureSlot.create("plant_3");

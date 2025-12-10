@@ -135,7 +135,7 @@ public class FossilsLegacyFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.DNA_HYBRIDIZER.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.AMBER_BLOCK.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.WHITE_CULTIVATOR.get(), RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.WHITE_SHATTERED_CULTIVATOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.SHATTERED_CULTIVATOR.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ORANGE_CULTIVATOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.ORANGE_SHATTERED_CULTIVATOR.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FABlocks.MAGENTA_CULTIVATOR.get(), RenderType.translucent());

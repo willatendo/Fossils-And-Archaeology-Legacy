@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": "fossilslegacy:nipa_leaves",
+  "result": {
+    "count": 1,
+    "id": "fossilslegacy:dried_nipa_leaves"
+  }
+}

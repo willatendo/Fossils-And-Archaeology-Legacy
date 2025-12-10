@@ -1,5 +1,7 @@
 {
   "values": [
+    "fossilslegacy:tooth_dagger",
+    "fossilslegacy:therizinosaurus_claws",
     "fossilslegacy:ancient_sword",
     "fossilslegacy:ancient_shovel",
     "fossilslegacy:ancient_pickaxe",
@@ -31,6 +33,11 @@
     "fossilslegacy:golden_hammer",
     "fossilslegacy:diamond_hammer",
     "fossilslegacy:netherite_hammer",
-    "fossilslegacy:captains_hat"
+    "fossilslegacy:captains_hat",
+    "fossilslegacy:rifle",
+    "fossilslegacy:green_tranquilizer_dart",
+    "fossilslegacy:red_tranquilizer_dart",
+    "fossilslegacy:blue_tranquilizer_dart",
+    "fossilslegacy:flare"
   ]
 }

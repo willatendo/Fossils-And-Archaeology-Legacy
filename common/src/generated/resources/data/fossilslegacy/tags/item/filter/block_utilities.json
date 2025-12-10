@@ -1,0 +1,17 @@
+{
+  "values": [
+    "fossilslegacy:dna_analyzer",
+    "fossilslegacy:dna_coder",
+    "fossilslegacy:dna_hybridizer",
+    "fossilslegacy:dna_recombinator",
+    "#fossilslegacy:cultivators",
+    "fossilslegacy:archaeology_workbench",
+    "fossilslegacy:palaeontology_table",
+    "fossilslegacy:drum",
+    "fossilslegacy:feeder",
+    "fossilslegacy:time_machine",
+    "fossilslegacy:hardened_tar_block",
+    "fossilslegacy:small_cage",
+    "fossilslegacy:medium_cage"
+  ]
+}

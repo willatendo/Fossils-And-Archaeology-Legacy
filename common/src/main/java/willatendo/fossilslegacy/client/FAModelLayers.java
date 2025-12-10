@@ -49,7 +49,6 @@ public final class FAModelLayers {
     public static final ModelLayerLocation CRYOLOPHOSAURUS_HEAD = FAModelLayers.create("cryolophosaurus_head");
     public static final ModelLayerLocation DILOPHOSAURUS_HEAD = FAModelLayers.create("dilophosaurus_head");
     public static final ModelLayerLocation DIMETRODON_HEAD = FAModelLayers.create("dimetrodon_head");
-    public static final ModelLayerLocation DISTORTUS_REX_HEAD = FAModelLayers.create("distortus_rex_head");
     public static final ModelLayerLocation DODO_HEAD = FAModelLayers.create("dodo_head");
     public static final ModelLayerLocation DRYOSAURUS_HEAD = FAModelLayers.create("dryosaurus_head");
     public static final ModelLayerLocation ELASMOTHERIUM_HEAD = FAModelLayers.create("elasmotherium_head");

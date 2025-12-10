@@ -242,6 +242,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generatedItem(FAItems.DRYOSAURUS_EGG.get());
         this.generatedItem(FAItems.BARYONYX_EGG.get());
         this.generatedItem(FAItems.ISOTELUS_EGGS.get());
+        this.generatedItem(FAItems.HERRERASAURUS_EGG.get());
         this.generatedItem(FAItems.RAW_TRICERATOPS.get());
         this.generatedItem(FAItems.RAW_VELOCIRAPTOR.get());
         this.generatedItem(FAItems.RAW_TYRANNOSAURUS.get());
@@ -440,7 +441,7 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.generateFlare(FAItems.FLARE.get());
         this.generatedItem(FAItems.FLARE_BODY.get());
         this.generatedItem(FAItems.USER_MANUAL.get());
-        this.generatedItem(FAItems.JEEP_1993.get());
+        this.generatedItem(FAItems.JEEP.get());
         this.spawnEggItem(FAItems.ANU_SPAWN_EGG.get(), 0x432600, 0xa62c14);
         this.spawnEggItem(FAItems.FAILURESAURUS_SPAWN_EGG.get(), 0x51e6a5, 0x1b5128);
         this.spawnEggItem(FAItems.BONES_SPAWN_EGG.get(), 0x4B3324, 0x329400);
@@ -473,7 +474,6 @@ public class FAItemModelGenerator extends SimpleItemModelGenerator {
         this.spawnEggItem(FAItems.ELASMOTHERIUM_SPAWN_EGG.get(), 0x2B1C0A, 0x553E24);
         this.spawnEggItem(FAItems.DRYOSAURUS_SPAWN_EGG.get(), 0xE8E4C1, 0xB3C15C);
         this.spawnEggItem(FAItems.BARYONYX_SPAWN_EGG.get(), 0x3F4D71, 0xA79F7E);
-        this.spawnEggItem(FAItems.DISTORTUS_REX_SPAWN_EGG.get(), 0x80643A, 0xC5875B);
         this.spawnEggItem(FAItems.ISOTELUS_SPAWN_EGG.get(), 0x43403B, 0x24211C);
         this.spawnEggItem(FAItems.ISOTELUS_LARVA_SPAWN_EGG.get(), 0xA9892E, 0xDEBF61);
         this.generatedItem(FAItems.MUSIC_DISC_TRIASSIC.get());

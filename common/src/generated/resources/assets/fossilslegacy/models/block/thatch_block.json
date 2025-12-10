@@ -1,0 +1,9 @@
+{
+  "parent": "fossilslegacy:block/template_thatch_block",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "overhang": "fossilslegacy:block/thatch_block_overhang",
+    "side": "fossilslegacy:block/thatch_block_side",
+    "top": "fossilslegacy:block/thatch_block_top"
+  }
+}

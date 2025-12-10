@@ -12,11 +12,11 @@ import net.minecraft.world.level.block.Blocks;
 import willatendo.fossilslegacy.server.entity.entities.*;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.*;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.guadalupian.Dimetrodon;
-import willatendo.fossilslegacy.server.entity.entities.dinosaur.hybrid.DistortusRex;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.jurassic.*;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.ordovician.Isotelus;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.ordovician.IsotelusLarva;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.*;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.triassic.Herrerasaurus;
 import willatendo.fossilslegacy.server.entity.entities.pregnant.*;
 import willatendo.fossilslegacy.server.entity.entities.projectile.Dart;
 import willatendo.fossilslegacy.server.entity.entities.projectile.ThrownJavelin;
@@ -67,22 +67,12 @@ public final class FAEntityTypes {
     public static final SimpleHolder<EntityType<Baryonyx>> BARYONYX = ENTITY_TYPES.register("baryonyx", FAEntityTypes.simple(Baryonyx::new, MobCategory.CREATURE, 0.5F, 0.5F));
     public static final SimpleHolder<EntityType<Isotelus>> ISOTELUS = ENTITY_TYPES.register("isotelus", FAEntityTypes.simple(Isotelus::new, MobCategory.WATER_AMBIENT, 0.5F, 0.5F));
     public static final SimpleHolder<EntityType<IsotelusLarva>> ISOTELUS_LARVA = ENTITY_TYPES.register("isotelus_larva", FAEntityTypes.simple(IsotelusLarva::new, MobCategory.WATER_AMBIENT, 0.15F, 0.15F));
-    public static final SimpleHolder<EntityType<Baryonyx>> HERRERASAURUS = ENTITY_TYPES.register("herrerasaurus", FAEntityTypes.simple(Baryonyx::new, MobCategory.CREATURE, 0.5F, 0.5F));
-
-    public static final SimpleHolder<EntityType<DistortusRex>> DISTORTUS_REX = ENTITY_TYPES.register("distortus_rex", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
-    public static final SimpleHolder<EntityType<DistortusRex>> MUTADON = ENTITY_TYPES.register("mutadon", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
-    public static final SimpleHolder<EntityType<DistortusRex>> INDOMINUS_REX = ENTITY_TYPES.register("indominus_rex", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
-    public static final SimpleHolder<EntityType<DistortusRex>> INDORAPTOR = ENTITY_TYPES.register("indoraptor", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
-    public static final SimpleHolder<EntityType<DistortusRex>> SCORPIUS_REX = ENTITY_TYPES.register("scorpius_rex", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
-    public static final SimpleHolder<EntityType<DistortusRex>> SPINOCERATOPS = ENTITY_TYPES.register("spinoceratops", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
-    public static final SimpleHolder<EntityType<DistortusRex>> ANKYLODOCUS = ENTITY_TYPES.register("ankylodocus", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
-    public static final SimpleHolder<EntityType<DistortusRex>> STEGOCERATOPS = ENTITY_TYPES.register("stegoceratops", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
-    public static final SimpleHolder<EntityType<DistortusRex>> SPINORAPTOR = ENTITY_TYPES.register("spinoraptor", FAEntityTypes.simple(DistortusRex::new, MobCategory.CREATURE, 0.75F, 2.0F));
+    public static final SimpleHolder<EntityType<Herrerasaurus>> HERRERASAURUS = ENTITY_TYPES.register("herrerasaurus", FAEntityTypes.simple(Herrerasaurus::new, MobCategory.CREATURE, 0.5F, 0.5F));
 
     public static final SimpleHolder<EntityType<Fossil>> FOSSIL = ENTITY_TYPES.register("fossil", FAEntityTypes.simple(Fossil::new, MobCategory.MISC, 0.5F, 0.5F).noLootTable());
 
     public static final SimpleHolder<EntityType<Egg>> ANKYLOSAURUS_EGG = FAEntityTypes.registerLandEgg("ankylosaurus_egg", FAItems.ANKYLOSAURUS_EGG::get, FAEntityTypes.ANKYLOSAURUS);
-    public static final SimpleHolder<EntityType<Egg>> BARYONYX_EGG = FAEntityTypes.registerLandEgg("baryonyx_egg", FAItems.BRACHIOSAURUS_EGG::get, FAEntityTypes.BARYONYX);
+    public static final SimpleHolder<EntityType<Egg>> BARYONYX_EGG = FAEntityTypes.registerLandEgg("baryonyx_egg", FAItems.BARYONYX_EGG::get, FAEntityTypes.BARYONYX);
     public static final SimpleHolder<EntityType<Egg>> BRACHIOSAURUS_EGG = FAEntityTypes.registerLandEgg("brachiosaurus_egg", FAItems.BRACHIOSAURUS_EGG::get, FAEntityTypes.BRACHIOSAURUS);
     public static final SimpleHolder<EntityType<Egg>> CARNOTAURUS_EGG = FAEntityTypes.registerLandEgg("carnotaurus_egg", FAItems.CARNOTAURUS_EGG::get, FAEntityTypes.CARNOTAURUS);
     public static final SimpleHolder<EntityType<Egg>> COMPSOGNATHUS_EGG = FAEntityTypes.registerLandEgg("compsognathus_egg", FAItems.COMPSOGNATHUS_EGG::get, FAEntityTypes.COMPSOGNATHUS);
@@ -92,6 +82,7 @@ public final class FAEntityTypes {
     public static final SimpleHolder<EntityType<Egg>> DRYOSAURUS_EGG = FAEntityTypes.registerLandEgg("dryosaurus_egg", FAItems.DRYOSAURUS_EGG::get, FAEntityTypes.DRYOSAURUS);
     public static final SimpleHolder<EntityType<Egg>> FUTABASAURUS_EGG = FAEntityTypes.registerLandEgg("futabasaurus_egg", FAItems.FUTABASAURUS_EGG::get, FAEntityTypes.FUTABASAURUS);
     public static final SimpleHolder<EntityType<Egg>> GALLIMIMUS_EGG = FAEntityTypes.registerLandEgg("gallimimus_egg", FAItems.GALLIMIMUS_EGG::get, FAEntityTypes.GALLIMIMUS);
+    public static final SimpleHolder<EntityType<Egg>> HERRERASAURUS_EGG = FAEntityTypes.registerLandEgg("herrerasaurus_egg", FAItems.HERRERASAURUS_EGG::get, FAEntityTypes.HERRERASAURUS);
     public static final SimpleHolder<EntityType<Egg>> ICHTHYOSAURUS_EGG = FAEntityTypes.registerWaterEgg("ichthyosaurus_egg", FAItems.ICHTHYOSAURUS_EGG::get, FAEntityTypes.ICHTHYOSAURUS);
     public static final SimpleHolder<EntityType<Egg>> MOSASAURUS_EGG = FAEntityTypes.registerWaterEgg("mosasaurus_egg", FAItems.MOSASAURUS_EGG::get, FAEntityTypes.MOSASAURUS);
     public static final SimpleHolder<EntityType<Egg>> PACHYCEPHALOSAURUS_EGG = FAEntityTypes.registerLandEgg("pachycephalosaurus_egg", FAItems.PACHYCEPHALOSAURUS_EGG::get, FAEntityTypes.PACHYCEPHALOSAURUS);
@@ -140,9 +131,9 @@ public final class FAEntityTypes {
     public static final SimpleHolder<EntityType<DecorationPlaque>> DECORATION_PLAQUE = ENTITY_TYPES.register("decoration_plaque", FAEntityTypes.<DecorationPlaque>simple(DecorationPlaque::new, MobCategory.MISC, 0.5F, 0.5F).noLootTable());
     public static final SimpleHolder<EntityType<StoneTablet>> STONE_TABLET = ENTITY_TYPES.register("stone_tablet", FAEntityTypes.simple(StoneTablet::new, MobCategory.MISC, 0.5F, 0.5F).noLootTable());
 
-    public static final SimpleHolder<EntityType<Jeep>> JEEP = FAEntityTypes.registerJeep("jeep", FAItems.JEEP_1993::get);
-    public static final SimpleHolder<EntityType<Jeep>> FORD_EXPLORER = FAEntityTypes.registerJeep("ford_explorer", FAItems.JEEP_1993::get);
-    public static final SimpleHolder<EntityType<Jeep>> HELICOPTER = FAEntityTypes.registerJeep("helicopter", FAItems.JEEP_1993::get);
+    public static final SimpleHolder<EntityType<Jeep>> JEEP = FAEntityTypes.registerJeep("jeep", FAItems.JEEP::get);
+    public static final SimpleHolder<EntityType<Jeep>> FORD_EXPLORER = FAEntityTypes.registerJeep("ford_explorer", FAItems.JEEP::get);
+    public static final SimpleHolder<EntityType<Jeep>> HELICOPTER = FAEntityTypes.registerJeep("helicopter", FAItems.JEEP::get);
 
     public static final SimpleHolder<EntityType<Boat>> ARAUCARIA_BOAT = FAEntityTypes.registerBoat("araucaria_boat", FAItems.ARAUCARIA_BOAT::get);
     public static final SimpleHolder<EntityType<ChestBoat>> ARAUCARIA_CHEST_BOAT = FAEntityTypes.registerChestBoat("araucaria_chest_boat", FAItems.ARAUCARIA_CHEST_BOAT::get);

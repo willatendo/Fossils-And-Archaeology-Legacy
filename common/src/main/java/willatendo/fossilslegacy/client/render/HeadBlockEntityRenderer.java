@@ -47,7 +47,6 @@ public class HeadBlockEntityRenderer implements BlockEntityRenderer<HeadBlockEnt
         map.put(FAHeadTypes.CRYOLOPHOSAURUS, TextureInformation.item(FAUtils.resource("textures/entity/cryolophosaurus/cryolophosaurus.png")));
         map.put(FAHeadTypes.DILOPHOSAURUS, TextureInformation.item(FAUtils.resource("textures/entity/dilophosaurus/dilophosaurus.png")));
         map.put(FAHeadTypes.DIMETRODON, TextureInformation.item(FAUtils.resource("textures/entity/dimetrodon/dimetrodon_adult.png")));
-        map.put(FAHeadTypes.DISTORTUS_REX, TextureInformation.item(FAUtils.resource("textures/entity/distortus_rex/distortus_rex.png")));
         map.put(FAHeadTypes.DODO, TextureInformation.item(FAUtils.resource("textures/entity/dodo/dodo.png")));
         map.put(FAHeadTypes.DRYOSAURUS, TextureInformation.item(FAUtils.resource("textures/entity/dryosaurus/dryosaurus.png")));
         map.put(FAHeadTypes.ELASMOTHERIUM, TextureInformation.item(FAUtils.resource("textures/entity/elasmotherium/elasmotherium.png")));
@@ -88,8 +87,6 @@ public class HeadBlockEntityRenderer implements BlockEntityRenderer<HeadBlockEnt
             case DILOPHOSAURUS ->
                     headModel = new DilophosaurusHeadModel(modelSet.bakeLayer(FAModelLayers.DILOPHOSAURUS_HEAD));
             case DIMETRODON -> headModel = new DimetrodonHeadModel(modelSet.bakeLayer(FAModelLayers.DIMETRODON_HEAD));
-            case DISTORTUS_REX ->
-                    headModel = new DistortusRexHeadModel(modelSet.bakeLayer(FAModelLayers.DISTORTUS_REX_HEAD));
             case DODO -> headModel = new DodoHeadModel(modelSet.bakeLayer(FAModelLayers.DODO_HEAD));
             case DRYOSAURUS -> headModel = new DryosaurusHeadModel(modelSet.bakeLayer(FAModelLayers.DRYOSAURUS_HEAD));
             case ELASMOTHERIUM ->

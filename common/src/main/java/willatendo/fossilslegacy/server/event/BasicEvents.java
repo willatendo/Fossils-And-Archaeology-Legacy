@@ -44,11 +44,11 @@ import willatendo.fossilslegacy.server.entity.FAVillagerProfessions;
 import willatendo.fossilslegacy.server.entity.entities.*;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.cretaceous.*;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.guadalupian.Dimetrodon;
-import willatendo.fossilslegacy.server.entity.entities.dinosaur.hybrid.DistortusRex;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.jurassic.*;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.ordovician.Isotelus;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.ordovician.IsotelusLarva;
 import willatendo.fossilslegacy.server.entity.entities.dinosaur.quaternary.*;
+import willatendo.fossilslegacy.server.entity.entities.dinosaur.triassic.Herrerasaurus;
 import willatendo.fossilslegacy.server.feeder_food.FeederFood;
 import willatendo.fossilslegacy.server.fossil_variant.FossilVariant;
 import willatendo.fossilslegacy.server.fuel.FuelEntry;
@@ -323,7 +323,6 @@ public final class BasicEvents {
         attributeRegister.register(FAEntityTypes.CRYOLOPHOSAURUS.get(), Cryolophosaurus.cryolophosaurusAttributes());
         attributeRegister.register(FAEntityTypes.DILOPHOSAURUS.get(), Dilophosaurus.dilophosaurusAttributes());
         attributeRegister.register(FAEntityTypes.DIMETRODON.get(), Dimetrodon.dimetrodonAttributes());
-        attributeRegister.register(FAEntityTypes.DISTORTUS_REX.get(), DistortusRex.distortusRexAttributes());
         attributeRegister.register(FAEntityTypes.DODO.get(), Dodo.dodoAttributes());
         attributeRegister.register(FAEntityTypes.BONES.get(), Bones.createAttributes());
         attributeRegister.register(FAEntityTypes.PIRATE_CAPTAIN.get(), PirateCaptain.createAttributes());
@@ -331,6 +330,7 @@ public final class BasicEvents {
         attributeRegister.register(FAEntityTypes.ISOTELUS_LARVA.get(), IsotelusLarva.isotelusLarvaAttributes());
         attributeRegister.register(FAEntityTypes.MOA.get(), Moa.moaAttributes());
         attributeRegister.register(FAEntityTypes.GALLIMIMUS.get(), Gallimimus.gallimimusAttributes());
+        attributeRegister.register(FAEntityTypes.HERRERASAURUS.get(), Herrerasaurus.herrerasaurusAttributes());
         attributeRegister.register(FAEntityTypes.ICHTHYOSAURUS.get(), Ichthyosaurus.ichthyosaurusAttributes());
         attributeRegister.register(FAEntityTypes.DRYOSAURUS.get(), Dryosaurus.dryosaurusAttributes());
         attributeRegister.register(FAEntityTypes.BARYONYX.get(), Baryonyx.baryonyxAttributes());

@@ -30,12 +30,12 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 public class PlaceEntityItem<T extends Entity> extends Item {
-    private final GeologicalTimeScale.EraDescription eraDescription;
+    private final GeologicalTimeScale.TimeScaleDescription timeScaleDescription;
     private final Supplier<EntityType<T>> entityType;
 
-    public PlaceEntityItem(GeologicalTimeScale.EraDescription eraDescription, Supplier<EntityType<T>> entityType, Properties properties) {
+    public PlaceEntityItem(GeologicalTimeScale.TimeScaleDescription timeScaleDescription, Supplier<EntityType<T>> entityType, Properties properties) {
         super(properties);
-        this.eraDescription = eraDescription;
+        this.timeScaleDescription = timeScaleDescription;
         this.entityType = entityType;
     }
 
@@ -49,8 +49,8 @@ public class PlaceEntityItem<T extends Entity> extends Item {
 
     @Override
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        if (this.eraDescription != null) {
-            this.eraDescription.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
+        if (this.timeScaleDescription != null) {
+            this.timeScaleDescription.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
         }
         super.appendHoverText(itemStack, tooltipContext, tooltipComponents, tooltipFlag);
     }

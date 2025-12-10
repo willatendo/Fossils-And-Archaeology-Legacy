@@ -77,16 +77,6 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
         this.add(FAEntityTypes.TYRANNOSAURUS.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_TYRANNOSAURUS.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.TYRANNOSAURUS_TOOTH.get()))));
         this.add(FAEntityTypes.VELOCIRAPTOR.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_VELOCIRAPTOR.get()));
 
-        this.add(FAEntityTypes.DISTORTUS_REX.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_TYRANNOSAURUS.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.TYRANNOSAURUS_TOOTH.get()))));
-        this.add(FAEntityTypes.MUTADON.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_TYRANNOSAURUS.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.TYRANNOSAURUS_TOOTH.get()))));
-        this.add(FAEntityTypes.INDOMINUS_REX.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_TYRANNOSAURUS.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.TYRANNOSAURUS_TOOTH.get()))));
-        this.add(FAEntityTypes.INDORAPTOR.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_TYRANNOSAURUS.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.TYRANNOSAURUS_TOOTH.get()))));
-        this.add(FAEntityTypes.SCORPIUS_REX.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_TYRANNOSAURUS.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.TYRANNOSAURUS_TOOTH.get()))));
-        this.add(FAEntityTypes.SPINOCERATOPS.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_TYRANNOSAURUS.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.TYRANNOSAURUS_TOOTH.get()))));
-        this.add(FAEntityTypes.ANKYLODOCUS.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_TYRANNOSAURUS.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.TYRANNOSAURUS_TOOTH.get()))));
-        this.add(FAEntityTypes.STEGOCERATOPS.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_TYRANNOSAURUS.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.TYRANNOSAURUS_TOOTH.get()))));
-        this.add(FAEntityTypes.SPINORAPTOR.get(), this.createDinosaurTable(8, 1.0F, 3.0F, FAItems.RAW_TYRANNOSAURUS.get()).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(FAItems.TYRANNOSAURUS_TOOTH.get()))));
-
         this.add(FAEntityTypes.ANKYLOSAURUS_EGG.get(), this.createEggTable(FAItems.ANKYLOSAURUS_EGG.get()));
         this.add(FAEntityTypes.BARYONYX_EGG.get(), this.createEggTable(FAItems.BARYONYX_EGG.get()));
         this.add(FAEntityTypes.BRACHIOSAURUS_EGG.get(), this.createEggTable(FAItems.BRACHIOSAURUS_EGG.get()));
@@ -98,6 +88,7 @@ public class FAEntityLootSubProvider extends SimpleEntityLootSubProvider {
         this.add(FAEntityTypes.DRYOSAURUS_EGG.get(), this.createEggTable(FAItems.DRYOSAURUS_EGG.get()));
         this.add(FAEntityTypes.FUTABASAURUS_EGG.get(), this.createEggTable(FAItems.FUTABASAURUS_EGG.get()));
         this.add(FAEntityTypes.GALLIMIMUS_EGG.get(), this.createEggTable(FAItems.GALLIMIMUS_EGG.get()));
+        this.add(FAEntityTypes.HERRERASAURUS_EGG.get(), this.createEggTable(FAItems.HERRERASAURUS_EGG.get()));
         this.add(FAEntityTypes.ICHTHYOSAURUS_EGG.get(), this.createEggTable(FAItems.ICHTHYOSAURUS_EGG.get()));
         this.add(FAEntityTypes.MOSASAURUS_EGG.get(), this.createEggTable(FAItems.MOSASAURUS_EGG.get()));
         this.add(FAEntityTypes.PACHYCEPHALOSAURUS_EGG.get(), this.createEggTable(FAItems.PACHYCEPHALOSAURUS_EGG.get()));

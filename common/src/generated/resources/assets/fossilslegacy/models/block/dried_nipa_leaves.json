@@ -1,0 +1,7 @@
+{
+  "parent": "fossilslegacy:block/template_dried_leaves",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "texture": "fossilslegacy:block/dried_nipa_leaves"
+  }
+}
